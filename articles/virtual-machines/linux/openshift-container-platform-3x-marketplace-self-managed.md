@@ -5,17 +5,17 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 08d32e4b7806ec53f48389b127ab34371271cf07
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527229"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374094"
 ---
 # <a name="configure-prerequisites"></a>設定必要條件
 
@@ -65,7 +65,7 @@ ms.locfileid: "86527229"
 | 管理使用者的 SSH 公開金鑰 | 用來登入 VM 的 SSH 公用金鑰-不能有複雜密碼 |
 | 訂用帳戶 | 要在其中部署叢集的 Azure 訂用帳戶 |
 | 資源群組 | 為叢集資源建立新的資源群組，或選取現有的空白資源群組 |
-| Location | 要在其中部署叢集的 Azure 區域 |
+| 位置 | 要在其中部署叢集的 Azure 區域 |
 
    ![供應專案基本功能分頁](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>

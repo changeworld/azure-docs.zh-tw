@@ -7,26 +7,26 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e500f678d2066d24de12a04f28ccbdb3f76eda3a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255495"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288172"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 自動化 SQL 資料庫的工作流程
 
-本文說明如何使用 SQL Server 連接器，從邏輯應用程式內部存取 SQL 資料庫中的資料。 如此您即可建立邏輯應用程式，以自動化用來管理 SQL 資料和資源的工作、流程或工作流程。 SQL Server 連接器適用于[SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) ，以及[AZURE SQL DATABASE](../azure-sql/database/sql-database-paas-overview.md)和[Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
+本文說明如何使用 SQL Server 連接器，從邏輯應用程式內部存取 SQL 資料庫中的資料。 如此您即可建立邏輯應用程式，以自動化用來管理 SQL 資料和資源的工作、流程或工作流程。 SQL Server 連接器適用于[SQL Server](/sql/sql-server/sql-server-technical-documentation) ，以及[AZURE SQL DATABASE](../azure-sql/database/sql-database-paas-overview.md)和[Azure SQL 受控執行個體](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)。
 
 您可以建立會由 SQL 資料庫或其他系統 (例如，Dynamics CRM Online) 中的事件所觸發而執行的邏輯應用程式。 邏輯應用程式也可以取得、插入及刪除資料，還可執行 SQL 查詢或已儲存的程序。 例如，您可以建置邏輯應用程式，以自動檢查 Dynamics CRM Online 中是否有新記錄、將新記錄的項目新增至 SQL 資料庫，然後傳送有關新增項目的電子郵件警示。
 
-如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需了解連接器專屬的技術資訊、限制和已知問題，請參閱 [SQL Server 連接器參考頁面](https://docs.microsoft.com/connectors/sql/)。
+如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md) 和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需了解連接器專屬的技術資訊、限制和已知問題，請參閱 [SQL Server 連接器參考頁面](/connectors/sql/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* [SQL Server 資料庫](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database)、 [AZURE SQL DATABASE](../azure-sql/database/single-database-create-quickstart.md)或[Azure SQL 受控執行個體](../azure-sql/managed-instance/instance-create-quickstart.md)。
+* [SQL Server 資料庫](/sql/relational-databases/databases/create-a-database)、 [AZURE SQL DATABASE](../azure-sql/database/single-database-create-quickstart.md)或[Azure SQL 受控執行個體](../azure-sql/managed-instance/instance-create-quickstart.md)。
 
   資料表內必須有資料，邏輯應用程式才能在呼叫作業時傳回結果。 如果您使用 Azure SQL Database，您可以使用包含的範例資料庫。
 
@@ -71,10 +71,10 @@ ms.locfileid: "85255495"
 
 1. 針對 [**驗證類型**]，選取您在 Azure SQL Database 或 Azure SQL 受控執行個體中的資料庫所需和啟用的驗證：
 
-   | 驗證 | Description |
+   | 驗證 | 說明 |
    |----------------|-------------|
    | [**Azure AD 整合**](../azure-sql/database/authentication-aad-overview.md) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要具有資料庫存取權的 Azure Active Directory （Azure AD）中的有效身分識別。 <p>如需詳細資訊，請參閱下列主題： <p>- [Azure SQL 安全性總覽-驗證](../azure-sql/database/security-overview.md#authentication) <br>- [授權資料庫存取 Azure SQL-驗證和授權](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL Azure AD 整合式驗證](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server 驗證**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的資料庫中建立並儲存的有效使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱下列主題： <p>- [Azure SQL 安全性總覽-驗證](../azure-sql/database/security-overview.md#authentication) <br>- [授權資料庫存取 Azure SQL-驗證和授權](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**SQL Server 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要在您的資料庫中建立並儲存的有效使用者名稱和強式密碼。 <p>如需詳細資訊，請參閱下列主題： <p>- [Azure SQL 安全性總覽-驗證](../azure-sql/database/security-overview.md#authentication) <br>- [授權資料庫存取 Azure SQL-驗證和授權](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    此範例會繼續**Azure AD 整合**：
@@ -87,9 +87,9 @@ ms.locfileid: "85255495"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **伺服器名稱** | Yes | SQL server 的位址，例如`Fabrikam-Azure-SQL.database.windows.net` |
-   | **資料庫名稱** | Yes | SQL 資料庫的名稱，例如`Fabrikam-Azure-SQL-DB` |
-   | **資料表名稱** | Yes | 您想要使用的資料表，例如`SalesLT.Customer` |
+   | **伺服器名稱** | 是 | SQL server 的位址，例如`Fabrikam-Azure-SQL.database.windows.net` |
+   | **資料庫名稱** | 是 | SQL 資料庫的名稱，例如`Fabrikam-Azure-SQL-DB` |
+   | **資料表名稱** | 是 | 您想要使用的資料表，例如`SalesLT.Customer` |
    ||||
 
    > [!TIP]
@@ -115,10 +115,10 @@ ms.locfileid: "85255495"
 
 1. 針對 [**驗證類型**]，選取您的 SQL Server 所需且已啟用的驗證：
 
-   | 驗證 | Description |
+   | 驗證 | 說明 |
    |----------------|-------------|
-   | [**Windows 驗證**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -僅支援非 ISE SQL Server 連接器，這需要先前在 Azure 中為您的連線建立的資料閘道資源，無論您是使用多租使用者 Azure 或 ISE。 <p><p>-需要有效的 Windows 使用者名稱和密碼，以透過您的 Windows 帳戶確認您的身分識別。 <p>如需詳細資訊，請參閱[Windows 驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
-   | [**SQL Server 驗證**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要有效的使用者名稱和強式密碼，並已建立並儲存在您的 SQL Server 中。 <p>如需詳細資訊，請參閱[SQL Server 驗證](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。 |
+   | [**Windows 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | -僅支援非 ISE SQL Server 連接器，這需要先前在 Azure 中為您的連線建立的資料閘道資源，無論您是使用多租使用者 Azure 或 ISE。 <p><p>-需要有效的 Windows 使用者名稱和密碼，以透過您的 Windows 帳戶確認您的身分識別。 <p>如需詳細資訊，請參閱[Windows 驗證](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) |
+   | [**SQL Server 驗證**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | -支援非 ISE 和 ISE SQL Server 連接器。 <p><p>-需要有效的使用者名稱和強式密碼，並已建立並儲存在您的 SQL Server 中。 <p>如需詳細資訊，請參閱[SQL Server 驗證](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)。 |
    |||
 
    此範例會繼續使用**Windows 驗證**：
@@ -129,12 +129,12 @@ ms.locfileid: "85255495"
 
    | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
-   | **SQL server 名稱** | Yes | SQL server 的位址，例如`Fabrikam-Azure-SQL.database.windows.net` |
-   | **SQL 資料庫名稱** | Yes | SQL Server 資料庫的名稱，例如`Fabrikam-Azure-SQL-DB` |
+   | **SQL server 名稱** | 是 | SQL server 的位址，例如`Fabrikam-Azure-SQL.database.windows.net` |
+   | **SQL 資料庫名稱** | 是 | SQL Server 資料庫的名稱，例如`Fabrikam-Azure-SQL-DB` |
    | **使用者名稱** | 是 | 您的 SQL server 和資料庫的使用者名稱 |
-   | **密碼** | Yes | 您的 SQL server 和資料庫密碼 |
+   | **密碼** | 是 | 您的 SQL server 和資料庫密碼 |
    | **訂用帳戶** |  是，適用于 Windows 驗證 | 您先前在 Azure 中建立之資料閘道資源的 Azure 訂用帳戶 |
-   | **連接閘道** | 是，適用于 Windows 驗證 | 您先前在 Azure 中建立的資料閘道資源名稱 <p><p>**提示**：如果您的閘道未出現在清單中，請檢查您是否正確地[設定閘道](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)。 |
+   | **連接閘道** | 是，適用于 Windows 驗證 | 您先前在 Azure 中建立的資料閘道資源名稱 <p><p>**提示**：如果您的閘道未出現在清單中，請檢查您是否正確地[設定閘道](../logic-apps/logic-apps-gateway-connection.md)。 |
    |||
 
    > [!TIP]
@@ -171,9 +171,9 @@ ms.locfileid: "85255495"
 
    此觸發程式只會從選取的資料表傳回一個資料列，而不會傳回任何其他資料列。 若要執行其他工作，請在邏輯應用程式工作流程中新增[SQL 連接器動作](#add-sql-action)或[其他動作](../connectors/apis-list.md)，以執行您想要的下一個作業。
    
-   例如，若要檢視此資料列中的資料，您可以新增其他動作來建立檔案，使其包含傳回資料列中的欄位，然後傳送電子郵件警示。 若要深入了解此連接器的其他可用動作，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/sql/)。
+   例如，若要檢視此資料列中的資料，您可以新增其他動作來建立檔案，使其包含傳回資料列中的欄位，然後傳送電子郵件警示。 若要深入了解此連接器的其他可用動作，請參閱[連接器的參考頁面](/connectors/sql/)。
 
-1. 在設計工具的工具列上，選取 [儲存]****。
+1. 在設計工具的工具列上，選取 [儲存]。
 
    雖然此步驟會自動啟用併發布 Azure 中的邏輯應用程式，但邏輯應用程式目前所採用的唯一動作，是根據您指定的間隔和頻率來檢查您的資料庫。
 
@@ -201,7 +201,7 @@ ms.locfileid: "85255495"
 
    ![選取資料表名稱並指定資料列識別碼](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
 
-   此動作只會傳回所選資料表的一個資料列而已。 因此，若要查看此資料列中的資料，您可以新增其他動作，以建立包含所傳回欄欄位的檔案，並將該檔案儲存在雲端儲存體帳戶中。 若要深入了解此連接器的其他可用動作，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/sql/)。
+   此動作只會傳回所選資料表的一個資料列而已。 因此，若要查看此資料列中的資料，您可以新增其他動作，以建立包含所傳回欄欄位的檔案，並將該檔案儲存在雲端儲存體帳戶中。 若要深入了解此連接器的其他可用動作，請參閱[連接器的參考頁面](/connectors/sql/)。
 
 1. 當您完成時，請在設計工具的工具列上，選取 [儲存]。
 
@@ -217,13 +217,13 @@ ms.locfileid: "85255495"
 
   在取得或插入多個資料列時，邏輯應用程式可在這些[限制](../logic-apps/logic-apps-limits-and-config.md)內使用 [*until 迴圈*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)，來逐一查看這些資料列。 但是，當邏輯應用程式必須處理的記錄集很大時 (例如，數千或數百萬個資料列)，您應將資料庫的呼叫成本降至最低。
 
-  為了以所需方式組織結果，您可以轉而建立[*預存程序*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine)，其可在 SQL 執行個體中執行，並使用 **SELECT - ORDER BY** 陳述式。 此解決方案可讓您對結果的大小和結構擁有更好的控制能力。 邏輯應用程式會使用 SQL Server 連接器的**執行預存程序**動作來呼叫預存程序。
+  為了以所需方式組織結果，您可以轉而建立[*預存程序*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)，其可在 SQL 執行個體中執行，並使用 **SELECT - ORDER BY** 陳述式。 此解決方案可讓您對結果的大小和結構擁有更好的控制能力。 邏輯應用程式會使用 SQL Server 連接器的**執行預存程序**動作來呼叫預存程序。
 
   如需解決方案的詳細資訊，請參閱下列文章：
 
   * [可供使用 Logic Apps 傳輸大量資料的 SQL 分頁](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
-  * [SELECT - ORDER BY 子句](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  * [SELECT - ORDER BY 子句](/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ### <a name="handle-dynamic-bulk-data"></a>處理動態大量資料
 
@@ -244,14 +244,15 @@ ms.locfileid: "85255495"
    > [!NOTE]
    > 如果您收到 Logic Apps 無法產生結構描述的錯誤，請檢查您輸出範例的語法格式是否正確。 如果您仍然無法產生架構，請在 [**架構**] 方塊中，手動輸入架構。
 
-1. 在設計工具的工具列上，選取 [儲存]****。
+1. 在設計工具的工具列上，選取 [儲存]。
 
 1. 若要參考 JSON 內容屬性，請按一下您要在其中參考這些屬性的編輯方塊內部，讓動態內容清單出現。 在清單中的 [[**剖析 json**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) ] 標題底下，選取您想要的 JSON 內容屬性的資料標記。
 
 ## <a name="connector-specific-details"></a>連接器特定的詳細資料
 
-如需有關此連接器的觸發程式、動作和限制的技術資訊，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/sql/)，其是從 Swagger 描述產生的。
+如需有關此連接器的觸發程式、動作和限制的技術資訊，請參閱[連接器的參考頁面](/connectors/sql/)，其是從 Swagger 描述產生的。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 了解 [Azure Logic Apps 的其他連接器](../connectors/apis-list.md)
+

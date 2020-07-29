@@ -3,12 +3,13 @@ title: 監視在任何環境中執行的 JAVA 應用程式-Azure 監視器 Appli
 description: 應用程式效能監視，適用于使用 JAVA 獨立代理程式在任何環境上執行的 JAVA 應用程式，不需檢測應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 6499fbc62a78cb333c623dbea8269144e623921c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: b1a23c01fdf8a0145c26b709f36709a7b710103f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014236"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374298"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>設定適用于 Azure 監視器 Application Insights 的 JVM args JAVA 獨立代理程式
 

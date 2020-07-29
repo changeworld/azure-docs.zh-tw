@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中將標記新增到實驗室 | Microsoft Docs
 description: 了解如何在 Azure DevTest Labs 中將標記新增到實驗室
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bf835cee705012fd175a3132edde1d241311c576
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483001"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287576"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中將標記新增到實驗室
 
@@ -52,7 +52,7 @@ ms.locfileid: "85483001"
 * 標記名稱上限為 512 個字元，且標記值上限為 256 字元。 儲存體帳戶的標記名稱上限為 128 個字元，且標記值上限為 256 個字元。
 * 資源群組中的資源不會繼承套用至該資源群組的標籤。
 
-[使用標記來組織 Azure 資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)提供在 Azure 中使用標記的更多詳細資料，包括如何使用 PowerShell 或 Azure CLI 管理標記。
+[使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)提供在 Azure 中使用標記的更多詳細資料，包括如何使用 PowerShell 或 Azure CLI 管理標記。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

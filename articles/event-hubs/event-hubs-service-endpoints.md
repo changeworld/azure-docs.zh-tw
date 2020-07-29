@@ -3,12 +3,12 @@ title: 虛擬網路服務端點 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何將 Microsoft EventHub 服務端點新增至虛擬網路的資訊。
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 134e310e0859bb6c0a50630f467513e07e6ff390
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066699"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288004"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>將虛擬網路服務端點搭配 Azure 事件中樞使用
 
@@ -25,7 +25,6 @@ ms.locfileid: "87066699"
 >
 > 無法與「虛擬網路」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
 > - Azure 串流分析
-> - 與 Azure 事件方格的整合
 > - Azure IoT 中樞路由
 > - Azure IoT Device Explorer
 >
@@ -60,7 +59,7 @@ ms.locfileid: "87066699"
 2. 在左側功能表上，選取 [網路] 選項。 如果您選取 [所有網路] 選項，事件中樞便會接受來自任何 IP 位址的連線。 此設定等同於接受 0.0.0.0/0 IP 位址範圍的規則。 
 
     ![防火牆 - 已選取 [所有網路] 選項](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. 若要 restrct 特定網路的存取權，請選取頁面頂端的 [**選取的網路**] 選項。
+1. 若要限制對特定網路的存取，請選取頁面頂端的 [**選取的網路**] 選項。
 2. 在頁面的 [**虛擬網路**] 區段中，選取 [+ 新增現有的虛擬網路] * * *。 如果您想要建立新的 VNet，請選取 [ **+ 建立新的虛擬網路**]。 
 
     ![新增現有的虛擬網路](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -85,9 +84,9 @@ ms.locfileid: "87066699"
 
 範本參數：
 
-* **namespaceName**：事件中樞命名空間。
-* **vnetRuleName**：要建立之虛擬網路規則的名稱。
-* **virtualNetworkingSubnetId**：虛擬網路子網路的完整 Resource Manager 路徑，例如，`/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` 適用於虛擬網路的預設子網路。
+* `namespaceName`：事件中樞命名空間。
+* `vnetRuleName`：要建立之虛擬網路規則的名稱。
+* `virtualNetworkingSubnetId`：虛擬網路子網的完整 Resource Manager 路徑;例如， `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` 針對虛擬網路的預設子網。
 
 > [!NOTE]
 > 雖然無法使用任何拒絕規則，但 Azure Resource Manager 範本是將預設動作設定為不會限制連線的 **"Allow"** 。

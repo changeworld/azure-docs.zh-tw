@@ -1,23 +1,23 @@
 ---
-title: 為 Windows 虛擬桌面秋季2019設定 GPU-Azure
-description: 如何在 Windows 虛擬桌面中啟用 GPU 加速的轉譯和編碼功能。
+title: 設定 Windows 虛擬桌面的 GPU （傳統）-Azure
+description: 如何在 Windows 虛擬桌面（傳統）中啟用 GPU 加速轉譯和編碼。
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: bbb0985e309601562587f3f1b26427f46a4a8987
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e6c8fe95508937604c53d817d60dd637352fb6fa
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087164"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288684"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-fall-2019"></a>設定 Windows 虛擬桌面秋季2019的圖形處理器（GPU）加速
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>設定 Windows 虛擬桌面的圖形處理器（GPU）加速（傳統）
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../configure-vm-gpu.md)。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../configure-vm-gpu.md)。
 
 Windows 虛擬桌面支援採用 GPU 加速的轉譯和編碼功能，可藉此改善應用程式效能和擴充性。 GPU 加速對於需要大量圖形的應用程式特別重要。
 

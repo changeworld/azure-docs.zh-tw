@@ -3,12 +3,12 @@ title: 將 Azure 事件中樞與 Azure Private Link 服務整合
 description: 了解如何將 Azure 事件中樞與 Azure Private Link 服務整合
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: bfed3f8e4c19463e10b721006d742726cf916900
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a07204615c4d81373d744e83862e6de14c7f8165
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512245"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287959"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>將 Azure 事件中樞與 Azure Private Link 整合
 Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取各 Azure 服務 (例如 Azure 事件中樞、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。
@@ -26,9 +26,7 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 > 使用虛擬網路時，不支援信任的 Microsoft 服務。
 >
 > 無法與「虛擬網路」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
-> - Azure 監視器 (診斷設定)
 > - Azure 串流分析
-> - 與 Azure 事件方格的整合
 > - Azure IoT 中樞路由
 > - Azure IoT Device Explorer
 >

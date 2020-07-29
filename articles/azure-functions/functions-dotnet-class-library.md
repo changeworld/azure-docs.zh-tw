@@ -2,13 +2,13 @@
 title: Azure Functions C# 開發人員參考
 description: 了解如何使用 C# 開發 Azure Functions。
 ms.topic: conceptual
-ms.date: 09/12/2018
-ms.openlocfilehash: 9ecc2dad8d1d520b44972022d47c312f495d5c38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/24/2020
+ms.openlocfilehash: 7c00dcd3648ef175d4e834fceef3444f7943e70b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506502"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288199"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# 開發人員參考
 
@@ -31,7 +31,7 @@ Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您需要[
 | ---- | ---- |
 | 函數3。x | .NET Core 3.1 |
 | Functions 2.x | .NET Core 2.2 |
-| Functions 1.x | .NET Framework 4.6 |
+| Functions 1.x | .NET Framework 4.7 |
 
 若要深入瞭解，請參閱[Azure Functions 執行階段版本總覽](functions-versions.md)
 

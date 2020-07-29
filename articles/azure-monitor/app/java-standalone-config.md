@@ -3,12 +3,13 @@ title: 隨時隨地監視 JAVA 應用程式-Azure 監視器 Application Insights
 description: 無程式碼應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，而不需要檢測應用程式。 使用分散式追蹤和應用程式對應，找出問題 d 的根本原因。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 3a01f2e9339f3ba4f8f50fc41617fabf9da9d8cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: ca3094197deb7c74ba9b51422a78ee0f5d3687d2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014196"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374281"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>設定選項-適用于 Azure 監視器的 JAVA 獨立代理程式 Application Insights
 

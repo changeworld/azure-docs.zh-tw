@@ -3,16 +3,16 @@ title: 共置 Vm 以改善延遲
 description: 瞭解如何共同尋找 Azure VM 資源，以改善延遲。
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2019
 ms.author: zivr
-ms.openlocfilehash: 85832fe56b064916b50a63bf4b399f0a21afaaac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5a3c0a582b1e9dfbcf81968ebc9d0c7a0a4f75e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028152"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288319"
 ---
 # <a name="co-locate-resource-for-improved-latency"></a>共同尋找資源以改善延遲
 
@@ -23,7 +23,7 @@ ms.locfileid: "87028152"
 
 [!INCLUDE [virtual-machines-common-ppg-overview](../../../includes/virtual-machines-common-ppg-overview.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 使用 Azure PowerShell 將 VM 部署至[鄰近放置群組](proximity-placement-groups.md)。
 

@@ -3,12 +3,12 @@ title: 提供概念證明-Azure DevTest Labs |Microsoft Docs
 description: 瞭解如何提供概念證明，讓 Azure DevTest Labs 可以成功合併到企業環境中。
 ms.topic: article
 ms.date: 06/2/2020
-ms.openlocfilehash: b0178d412154de556f25ab71bb30eed7be5e9ba6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481352"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288023"
 ---
 # <a name="deliver-a-proof-of-concept"></a>提供概念證明 
 
@@ -33,7 +33,7 @@ DevTest Labs 也提供原則護欄和成本控制，讓企業能夠將「自助 
 * [DevTest Labs 企業檔](devtest-lab-guidance-prescriptive-adoption.md)
 * [Azure 網路功能簡介](../virtual-network/virtual-networks-overview.md)
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 
 若要使用 DevTest Labs 成功完成試驗或概念證明，有幾個必要條件： 
 
@@ -71,7 +71,7 @@ DevTest Labs 也提供原則護欄和成本控制，讓企業能夠將「自助 
 > [!TIP]
 > 若要將您的專案設定失敗的可能性降到最低，我們強烈建議您不要略過本節中所述的範例。 
 
-### <a name="overview"></a>總覽 
+### <a name="overview"></a>概觀 
 
 我們打算以 DevTest Labs 為基礎，在 Azure 中開發新的環境，以供廠商用來做為公司網路的隔離環境。 為了判斷解決方案是否符合需求，我們會開發驗證端對端解決方案的概念證明。 我們已包含數個廠商，可以試用並驗證體驗。 
 
@@ -114,8 +114,8 @@ DevTest Labs 也提供原則護欄和成本控制，讓企業能夠將「自助 
 
 在您發行完整的 DevTest Labs 解決方案之前，您必須先進行一些重要的規劃和設計決策。 處理概念證明的經驗可以協助您進行這些決策。 進一步考慮包括： 
 
-* **訂**用帳戶拓撲 .. 在 Azure 中，資源的企業層級需求可以延伸超過[單一訂用帳戶內可用的配額](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。 這需要多個 Azure 訂用帳戶和/或服務要求，以增加初始訂閱限制。 請務必事先決定如何在訂用帳戶之間散發資源。 有一項重要的資源是訂用帳戶[決策指南](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)，因為稍後很難以將資源移至另一個訂用帳戶。 例如，在建立實驗室之後，無法將其移至另一個訂用帳戶。  
-* **網路拓撲**： DevTest Labs 自動建立的[預設網路基礎結構](../app-service/networking-features.md)可能不足以符合企業使用者的需求和限制。 常見的情況是查看[Azure ExpressRoute 連線的虛擬網路](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)、[中樞和輪輻](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，以在訂用帳戶之間連接，甚至是[強制路由](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以確保僅內部部署連線能力。 DevTest Labs 可讓現有的虛擬網路連接到實驗室，以在您于實驗室中建立新的虛擬機器時啟用其使用。 
+* **訂**用帳戶拓撲 .. 在 Azure 中，資源的企業層級需求可以延伸超過[單一訂用帳戶內可用的配額](../azure-resource-manager/management/azure-subscription-service-limits.md)。 這需要多個 Azure 訂用帳戶和/或服務要求，以增加初始訂閱限制。 請務必事先決定如何在訂用帳戶之間散發資源。 有一項重要的資源是訂用帳戶[決策指南](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)，因為稍後很難以將資源移至另一個訂用帳戶。 例如，在建立實驗室之後，無法將其移至另一個訂用帳戶。  
+* **網路拓撲**： DevTest Labs 自動建立的[預設網路基礎結構](../app-service/networking-features.md)可能不足以符合企業使用者的需求和限制。 常見的情況是查看[Azure ExpressRoute 連線的虛擬網路](/azure/architecture/reference-architectures/hybrid-networking/)、[中樞和輪輻](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，以在訂用帳戶之間連接，甚至是[強制路由](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)，以確保僅內部部署連線能力。 DevTest Labs 可讓現有的虛擬網路連接到實驗室，以在您于實驗室中建立新的虛擬機器時啟用其使用。 
 * **虛擬機器的遠端存取**：有許多選項可供遠端存取位於 DevTest Labs 中的虛擬機器。 最簡單的方法是使用公用 Ip 或共用公用 Ip。 這些是[實驗室中可用的設定](devtest-lab-shared-ip.md)。 如果這些選項不夠，使用遠端存取閘道也是一個選項。 此選項會顯示在[DevTest labs 的「企業參考架構](devtest-lab-reference-architecture.md)」上，並在[DevTest Labs 遠端桌面閘道檔](configure-lab-remote-desktop-gateway.md)中進一步說明。 企業也可以使用 ExpressRoute 或站對站 VPN，將其實驗室連線到其內部部署網路。 此選項可讓您根據其私人 IP 位址，對虛擬機器進行直接遠端桌面或 SSH 連線，而不會暴露在網際網路上。 
 * **處理許可權**： DevTest Labs 常使用的兩個主要許可權是[擁有者和實驗室使用者](devtest-lab-add-devtest-user.md)。 請務必先決定要在實驗室中的每個存取層級上進行信賴的 DevTest Labs。 一般模型是預算擁有者（例如，小組組長）做為實驗室擁有者，而小組成員則是實驗室使用者。 此模型可讓負責預算的人員（小組負責人）調整原則設定，並讓小組維持在預算內。  
 

@@ -3,16 +3,16 @@ title: Azure 上的 FreeBSD 簡介
 description: 了解如何使用 Azure 上的 FreeBSD 虛擬機器
 author: thomas1206
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: mimckitt
-ms.openlocfilehash: c7ca47e0fbb9acbac67f2cc9af6e1e7555690046
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2959904029643e5345590bd49f81b231c49771d4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085600"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286303"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure 上的 FreeBSD 簡介
 本文提供在 Azure 中執行 FreeBSD 虛擬機器的概觀。

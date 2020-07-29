@@ -3,12 +3,12 @@ title: 設定實驗室以使用 Azure DevTest Labs 中的遠端桌面閘道
 description: 瞭解如何使用遠端桌面閘道在 Azure DevTest Labs 中設定實驗室，以確保能夠安全地存取實驗室 Vm，而不需要公開 RDP 埠。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 68cb830c765a71b06f9732c4062be23d9e7f67d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc45a0c2953f8f84289fa01d4af72bf98544bd7f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483834"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288083"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>在 Azure DevTest Labs 中設定您的實驗室以使用遠端桌面閘道
 在 Azure DevTest Labs 中，您可以為您的實驗室設定遠端桌面閘道，以確保能夠安全地存取實驗室虛擬機器（Vm），而不需要公開 RDP 埠。 實驗室提供一個集中的位置，讓您的實驗室使用者能夠查看並聯機到他們可以存取的所有虛擬機器。 [**虛擬機器**] 頁面上的 [連線 **]** 按鈕會建立電腦特定的 RDP 檔案，您可以開啟該檔案來連接到電腦。 您可以藉由將您的實驗室連接至遠端桌面閘道，進一步自訂和保護 RDP 連線。 
@@ -36,7 +36,7 @@ ms.locfileid: "85483834"
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>遠端桌面閘道電腦的需求
 - 必須在閘道電腦上安裝 TLS/SSL 憑證，才能處理 HTTPS 流量。 憑證必須符合閘道伺服器陣列負載平衡器的完整功能變數名稱（FQDN），或電腦本身的 FQDN （如果只有一部電腦）。 萬用字元 TLS/SSL 憑證無法運作。  
 - 已安裝在閘道電腦上的簽署憑證。 使用[Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)腳本來建立簽署憑證。
-- 安裝支援遠端桌面閘道權杖驗證的[插入式驗證](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)模組。 這類別模組的其中一個範例就是 `RDGatewayFedAuth.msi` [SYSTEM CENTER VIRTUAL MACHINE MANAGER （VMM）映射](/system-center/vmm/install-console?view=sc-vmm-1807)隨附。 如需 System Center 的詳細資訊，請參閱[System center 檔](https://docs.microsoft.com/system-center/)和[定價詳細資料](https://www.microsoft.com/cloud-platform/system-center-pricing)。  
+- 安裝支援遠端桌面閘道權杖驗證的[插入式驗證](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273)模組。 這類別模組的其中一個範例就是 `RDGatewayFedAuth.msi` [SYSTEM CENTER VIRTUAL MACHINE MANAGER （VMM）映射](/system-center/vmm/install-console?view=sc-vmm-1807)隨附。 如需 System Center 的詳細資訊，請參閱[System center 檔](/system-center/)和[定價詳細資料](https://www.microsoft.com/cloud-platform/system-center-pricing)。  
 - 閘道伺服器可以處理對提出的要求 `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` 。
 
     如果只有一部電腦，則閘道主機名稱為閘道伺服器陣列的負載平衡器 FQDN，或電腦本身的 FQDN。 `{lab-machine-name}`是您嘗試連線之實驗室電腦的名稱，而 `{port-number}` 是將在其上建立連接的埠。  根據預設，此埠是3389。  不過，如果虛擬機器使用 DevTest Labs 中的[共用 IP](devtest-lab-shared-ip.md)功能，埠會不同。
@@ -159,5 +159,3 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列文章，以深入瞭解遠端桌面服務：[遠端桌面服務檔](/windows-server/remote/remote-desktop-services/Welcome-to-rds)
-
-

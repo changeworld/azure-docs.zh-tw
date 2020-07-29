@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 384335898c7cd6b379c6107152b49e9931cf513a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b82b79d076871b961d5c496bc70beac1b5067b2d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85194963"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288118"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則
 
-自**2020 年5月1日**起，由於 Google 的[資料安全性和隱私權原則](https://www.blog.google/technology/safety-security/project-strobe/)所做的變更，可能會影響使用[Gmail 連接器](https://docs.microsoft.com/connectors/gmail/)的邏輯應用程式工作流程。 如果您的邏輯應用程式使用 Gmail 連接器搭配 Gmail 取用者帳戶（以或結尾的電子郵件地址 @gmail.com @googlemail.com ），則您的邏輯應用程式只能使用特定[的 Google 核准觸發程式、動作和連接器](#approved-connectors)。
+自**2020 年5月1日**起，由於 Google 的[資料安全性和隱私權原則](https://www.blog.google/technology/safety-security/project-strobe/)所做的變更，可能會影響使用[Gmail 連接器](/connectors/gmail/)的邏輯應用程式工作流程。 如果您的邏輯應用程式使用 Gmail 連接器搭配 Gmail 取用者帳戶（以或結尾的電子郵件地址 @gmail.com @googlemail.com ），則您的邏輯應用程式只能使用特定[的 Google 核准觸發程式、動作和連接器](#approved-connectors)。
 
 > [!NOTE]
 > 如果您的邏輯應用程式搭配使用 Gmail 連接器與 G Suite 商務帳戶（具有自訂網域的電子郵件地址），則您的邏輯應用程式不會受到影響，且不會限制使用 Gmail 連接器。
@@ -62,7 +62,7 @@ ms.locfileid: "85194963"
 
   ![不符合規範的邏輯應用程式-範例3](./media/connectors-google-data-security-privacy-policy/not-compliant-logic-app-3.png)
 
-如需最新資訊，請參閱[Gmail 連接器的技術參考檔](https://docs.microsoft.com/connectors/gmail/)。
+如需最新資訊，請參閱[Gmail 連接器的技術參考檔](/connectors/gmail/)。
 
 <a name="update-affected-workflows"></a>
 
@@ -74,11 +74,11 @@ ms.locfileid: "85194963"
 
 1. 在 Gmail 連接器中，從您的 Google 用戶端應用程式使用用戶端識別碼和用戶端密碼值。
 
-如需詳細資訊，請參閱[Gmail 連接器的技術參考檔](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。
+如需詳細資訊，請參閱[Gmail 連接器的技術參考檔](/connectors/gmail/#authentication-and-bring-your-own-application)。
 
 ### <a name="create-google-client-app"></a>建立 Google 用戶端應用程式
 
-若要為您的用戶端應用程式設定專案，請使用[GOOGLE API 主控台 wizard](https://console.developers.google.com/start/api?id=gmail&credential=client_key) ，並遵循指示進行。 或者，如需詳細步驟，請參閱[Gmail 連接器的技術參考檔](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)中的指示。
+若要為您的用戶端應用程式設定專案，請使用[GOOGLE API 主控台 wizard](https://console.developers.google.com/start/api?id=gmail&credential=client_key) ，並遵循指示進行。 或者，如需詳細步驟，請參閱[Gmail 連接器的技術參考檔](/connectors/gmail/#authentication-and-bring-your-own-application)中的指示。
 
 當您完成時，畫面看起來就像這個範例，不同之處在于您會有自己的**用戶端識別碼**和**用戶端秘密**值，您稍後會在邏輯應用程式中使用它們。
 
@@ -117,4 +117,5 @@ ms.locfileid: "85194963"
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[Gmail 連接器](https://docs.microsoft.com/connectors/gmail/)
+深入瞭解[Gmail 連接器](/connectors/gmail/)
+

@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e96fc9af0aa4f362256a5f0fee9465441a1c3928
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62b969ebde1ab5d52968189a6f0865fdb646f6b2
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85210604"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374128"
 ---
 # <a name="data-warehouse-units-dwus"></a>資料倉儲單位（Dwu）
 
@@ -100,7 +100,7 @@ SQL 集區是一個擴增系統，可以佈建大量的計算以及查詢相當�
 
 變更資料倉儲單位需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 中所述的權限。
 
-SQL DB 參與者和 SQL Server 參與者等 Azure 資源內建角色可以變更 DWU 設定。
+Azure 內建角色（例如 SQL DB 參與者和 SQL Server 參與者）可以變更 DWU 設定。
 
 ## <a name="view-current-dwu-settings"></a>檢視目前的 DWU 設定
 

@@ -10,18 +10,18 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d067d4a7fff385deea946ffa5475e1eb83548a50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e71c426fee62187bb680c7b8bd1af92d87e85274
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096413"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288815"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-gen2"></a>布建和管理 Azure 時間序列深入解析 Gen2
 
 本文說明如何使用[Azure 入口網站](https://portal.azure.com/)建立和管理 Azure 時間序列深入解析 Gen2 環境。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 當您布建 Azure 時間序列深入解析 Gen2 環境時，您會建立下列 Azure 資源：
 
@@ -93,7 +93,7 @@ ms.locfileid: "87096413"
 
 * Azure 入口網站的 [**設定**] 分頁已移除，因為縮放單位不適用於 Azure 時間序列深入解析 Gen2 環境。 不過，您可以使用**存放裝置**設定來設定新引進的暖存放區。
 
-* Azure 入口網站的**參考資料**] 分頁會在 Azure 時間序列深入解析 Gen2 中移除，因為參考資料概念已由[時間序列模型（TSM）](./time-series-insights-update-how-to-tsm.md)取代。
+* Azure 入口網站的**參考資料**] 分頁會在 Azure 時間序列深入解析 Gen2 中移除，因為參考資料概念已由[時間序列模型（TSM）](/azure/time-series-insights/concepts-model-overview)取代。
 
 [![Azure 入口網站中的 Azure 時間序列深入解析 Gen2 環境](media/v2-update-manage/create-and-manage-overview-confirm.png)](media/v2-update-manage/create-and-manage-overview-confirm.png#lightbox)
 

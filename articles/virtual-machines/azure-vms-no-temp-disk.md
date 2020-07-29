@@ -3,16 +3,16 @@ title: 不含本機暫存磁片的常見問題 Azure VM 大小
 description: 本文提供有關 Microsoft Azure 不具有本機暫存磁片之 VM 大小的常見問題（FAQ）的解答。
 author: brbell
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 502883a0c4eb36be9e89ba8693f4d32ba7f16ebd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c36e37ba876b4b768d852d6ecedb8e3b4d8f09d0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088864"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288553"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>沒有本機暫存磁片的 Azure VM 大小 
 本文提供有關 Azure VM 大小（不含本機暫存磁片）（也就是沒有本機暫存磁片）的常見問題（FAQ）的解答。 如需這些 VM 大小的詳細資訊，請參閱[Dv4 和 Dsv4 系列（一般用途工作負載）的規格](dv4-dsv4-series.md)，或[Ev4 和 Esv4 系列（記憶體優化工作負載）的規格](ev4-esv4-series.md)。

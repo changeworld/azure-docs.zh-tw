@@ -7,16 +7,18 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: 66971d754d5cd524750fccaa6f89a2cdca138f2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1ae215bcfa8543d134722292bedc5fe1ac76ea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82925910"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288127"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>藉由使用 Azure Logic Apps 來監視及管理 Wunderlist
 
-從 2020 5 月6日起， [Wunderlist 服務會關閉](https://www.wunderlist.com/)，並要求客戶[遷移其資料並開始使用 Microsoft](https://www.wunderlist.com/blog/goodbye-from-wunderlist/)。 您可以使用[Microsoft To Do 連接器](https://docs.microsoft.com/connectors/todo/)來取代已被取代的[Wunderlist 連接器](https://docs.microsoft.com/connectors/wunderlist/)。
+從 2020 5 月6日起， [Wunderlist 服務會關閉](https://www.wunderlist.com/)，並要求客戶[遷移其資料並開始使用 Microsoft](https://www.wunderlist.com/blog/goodbye-from-wunderlist/)。 您可以使用[Microsoft To Do 連接器](/connectors/todo/)來取代已被取代的[Wunderlist 連接器](/connectors/wunderlist/)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+

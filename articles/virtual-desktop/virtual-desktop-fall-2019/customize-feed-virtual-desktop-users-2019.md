@@ -1,6 +1,6 @@
 ---
-title: 自訂 Windows 虛擬桌面秋季2019使用者的摘要-Azure
-description: 如何使用 PowerShell Cmdlet 為 Windows 虛擬桌面使用者自訂摘要。
+title: 自訂 Windows 虛擬桌面（傳統）使用者的摘要-Azure
+description: 如何使用 PowerShell Cmdlet 自訂 Windows 虛擬桌面（傳統）使用者的摘要。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9c573fc1aa220b9301e51ef0ccb1190d9243250e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab1206a8963d9ba3b556a48b2e973eea663c9cb8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011221"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288647"
 ---
-# <a name="customize-feed-for-windows-virtual-desktop-users"></a>適用於 Windows 虛擬桌面使用者的自訂摘要
+# <a name="customize-feed-for-windows-virtual-desktop-classic-users"></a>自訂 Windows 虛擬桌面（傳統）使用者的摘要
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../customize-feed-for-virtual-desktop-users.md)。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../customize-feed-for-virtual-desktop-users.md)。
 
 您可以自訂摘要，讓 RemoteApp 和遠端桌面資源以可辨識的方式顯示給使用者。
 
@@ -72,7 +72,7 @@ Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppG
 > [!div class="mx-imgBorder"]
 > ![已反白顯示 [名稱] 和 [新增 FriendlyName] 的 PowerShell Cmdlet 集 RDSRemoteApp 螢幕擷取畫面。](../media/set-rdsremotedesktop.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 既然您已自訂使用者的摘要，您可以登入 Windows 虛擬桌面的用戶端來進行測試。若要這麼做，請繼續進行連線至 Windows 虛擬桌面的作法：
 

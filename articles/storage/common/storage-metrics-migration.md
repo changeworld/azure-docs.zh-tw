@@ -1,118 +1,117 @@
 ---
-title: Azure 儲存體計量移轉 | Microsoft Docs
-description: 了解如何將舊計量移轉至由 Azure 監視器管理的新計量。
+title: 從儲存體分析計量移至 Azure 監視器計量 |Microsoft Docs
+description: 瞭解如何從儲存體分析計量（傳統計量）轉換為 Azure 監視器中的計量。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/30/2018
+ms.date: 07/28/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 10768ca4c6fbe4afc322fa9a7045c7cc4fe6f175
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 219d2b972089f9d3b7f84caa8b527474ac241c4f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681315"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374162"
 ---
-# <a name="azure-storage-metrics-migration"></a>Azure 儲存體計量移轉
+# <a name="transition-to-metrics-in-azure-monitor"></a>轉換成 Azure 監視器中的計量
 
-為了讓 Azure 有一致的監視器體驗，Azure 儲存體會將計量整合到 Azure 監視器平台。 根據 Azure 原則，舊版計量未來將終止服務，但會提前通知。 如果您依賴舊的儲存體計量，則必須在服務結束日期之前移轉，以保留您的計量資訊。
+Azure 儲存體現在會將計量整合到 Azure 監視器平臺。 **2023 年8月 31**日儲存體分析計量，亦稱為*傳統計量*將會淘汰。 如果您使用傳統計量，請務必在該日期之前轉換到 Azure 監視器中的計量。 本文可協助您進行轉換。
 
-本文說明如何從舊計量移轉到新計量。
+## <a name="steps-to-complete-the-transition"></a>完成轉換的步驟
 
-## <a name="understand-old-metrics-that-are-managed-by-azure-storage"></a>了解由 Azure 儲存體管理的舊計量
+若要轉換為 Azure 監視器中的計量，建議您採用下列方法。
 
-Azure 儲存體會收集舊計量值、加以彙總並儲存在相同儲存體帳戶內的 $Metric 資料表中。 您可以使用 Azure 入口網站來設定監視圖表。 您也可以使用 Azure 儲存體 SDK，從以結構描述為基礎的 $Metric 資料表讀取資料。 如需詳細資訊，請參閱[儲存體分析](./storage-analytics.md)。
+1. 瞭解 Azure 監視器中傳統計量和計量之間的一些[主要差異](#key-differences-between-classic-metrics-and-metrics-in-azure-monitor)。 
 
-舊計量只會在 Azure Blob 儲存體上提供容量計量。 舊計量會提供 Blob 儲存體、表格儲存體、Azure 檔案服務和佇列儲存體的交易計量。
+2. 編譯您目前使用的傳統計量清單。
 
-舊計量是以一般的結構描述來設計。 如果您沒有觸發計量的流量模式，此設計會產生零計量值。 例如，即使未從傳輸到儲存體帳戶的即時流量接收到任何伺服器逾時錯誤，**ServerTimeoutError** 值在 $Metric 表格中也會設定為 0。
+3. 識別[Azure 監視器中的哪些計量](#metrics-mapping-between-old-metrics-and-new-metrics)提供與您目前所使用的計量相同的資料。 
+   
+4. 建立[圖表](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/2-viewing-blob-metrics-in-azure-portal)或[儀表板](https://docs.microsoft.com/learn/modules/gather-metrics-blob-storage/4-using-dashboards-in-the-azure-portal)來查看度量資料。
 
-## <a name="understand-new-metrics-managed-by-azure-monitor"></a>了解由 Azure 監視器管理的新計量
+   > [!NOTE]
+   > Azure 監視器中的計量預設為啟用，因此您不需要執行任何動作來開始捕獲計量。 不過，您必須建立圖表或儀表板來查看這些計量。 
+ 
+5. 如果您已建立以傳統儲存體計量為基礎的警示規則，請根據 Azure 監視器中的計量[建立警示規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。 
 
-對於新的儲存體計量，Azure 儲存體會將計量資料傳送到 Azure 監視器後端。 Azure 監視器會提供統一的監視體驗，包括從入口網站的資料到資料擷取。 如需詳細資訊，您可以參考這篇[文章](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
+6. 在 Azure 監視器中查看所有計量之後，您就可以關閉傳統記錄。 
 
-新計量提供 Blob、表格、檔案、佇列和進階儲存體的容量計量和交易計量。
+<a id="key-differences-between-classic-metrics-and-metrics-in-azure-monitor"></a>
 
-多維度是 Azure 監視器提供的其中一個功能。 Azure 儲存體採用此種設計來定義新的計量結構描述。 如需支援的計量維度，您可以在 [Azure 監視器中的 Azure 儲存體計量](./storage-metrics-in-azure-monitor.md)中找到詳細資訊。 多維度設計能針對擷取的頻寬和儲存計量的容量兩者提供成本效益。 因此，如果您的流量未觸發相關的計量，就不會產生相關的計量資料。 例如，如果您的流量未觸發任何伺服器逾時錯誤，當您查詢維度 **ResponseType** 等於 **ServerTimeoutError** 的 **Transactions** 計量值時，Azure 監視器不會傳回任何資料。
+## <a name="classic-metrics-vs-metrics-in-azure-monitor"></a>傳統計量與 Azure 監視器中的計量
 
-## <a name="metrics-mapping-between-old-metrics-and-new-metrics"></a>舊計量和新計量之間的計量對應
+本節說明這兩個計量平臺之間的幾個主要差異。
 
-如果您以程式設計方式讀取計量資料，就必須在程式中採用新的計量結構描述。 若要進一步了解變更，您可以參考下表所列的對應：
+主要的差異在於計量的管理方式。 傳統計量是由 Azure 儲存體管理，而 Azure 監視器中的計量則是由 Azure 監視器來管理。 使用傳統計量時，Azure 儲存體會收集度量值、加以匯總，然後將它們儲存在位於儲存體帳戶中的資料表。 使用 Azure 監視器中的計量，Azure 儲存體會將度量資料傳送至 Azure 監視器後端。 Azure 監視器提供統一的監視體驗，其中包含來自 Azure 入口網站的資料，以及內嵌的資料。 
+
+就計量支援而言，傳統計量只會提供 Azure Blob 儲存體的**容量**計量。 Azure 監視器中的計量可提供 Blob、資料表、檔案、佇列和 premium 儲存體的容量計量。 傳統計量會在 Blob、資料表、Azure 檔案和佇列儲存體上提供**交易**計量。 Azure 監視器中的計量會將 premium 儲存體新增至該清單。
+
+如果您帳戶中的活動不會觸發計量，則傳統度量會顯示該度量的值為零（0）。 Azure 監視器中的計量會完全省略資料，這會導致更清楚的報告。 例如，使用傳統計量時，如果未報告任何伺服器逾時錯誤，則 `ServerTimeoutError` [計量] 資料表中的值會設定為0。 當您查詢「維度」等於的「度量」值時，Azure 監視器不會傳回任何資料 `Transactions` `ResponseType` `ServerTimeoutError` 。 
+
+若要深入瞭解 Azure 監視器中的計量，請參閱[Azure 監視器中的計量](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)。
+
+<a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
+
+## <a name="map-classic-metrics-to-metrics-in-azure-monitor"></a>將傳統計量對應至 Azure 監視器中的計量
+
+ 使用這些資料表來識別 Azure 監視器中的哪些計量提供與您目前所使用的計量相同的資料。 
 
 **容量計量**
 
-| 舊計量 | 新計量 |
+| 傳統計量 | Azure 監視器中的度量 |
 | ------------------- | ----------------- |
-| **容量**            | 維度 **BlobType** 等於 **BlockBlob** 或 **PageBlob** 的 **BlobCapacity** |
-| **ObjectCount**        | 維度 **BlobType** 等於 **BlockBlob** 或 **PageBlob** 的 **BlobCount** |
-| **ContainerCount**      | **ContainerCount** |
+| `Capacity`            | `BlobCapacity`維度 `BlobType` 等於 `BlockBlob` 或`PageBlob` |
+| `ObjectCount`        | `BlobCount`維度 `BlobType` 等於 `BlockBlob` 或`PageBlob` |
+| `ContainerCount`      | `ContainerCount` |
 
-下列計量是舊計量不支援的新供應項目：
-* **TableCapacity**
-* **TableCount**
-* **TableEntityCount**
-* **QueueCapacity**
-* **QueueCount**
-* **QueueMessageCount**
-* **FileCapacity**
-* **FileCount**
-* **FileShareCount**
-* **UsedCapacity**
+> [!NOTE]
+> 也有數個新的容量計量無法當做傳統計量提供。 若要查看完整清單，請參閱[計量](../common/monitor-storage-reference.md#metrics)。
 
 **交易計量**
 
-| 舊計量 | 新計量 |
+| 傳統計量 | Azure 監視器中的度量 |
 | ------------------- | ----------------- |
-| **AnonymousAuthorizationError** | 維度 **ResponseType** 等於 **AuthorizationError** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
-| **AnonymousClientOtherError** | 維度 **ResponseType** 等於 **ClientOtherError** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
-| **AnonymousClientTimeoutError** | 維度 **ResponseType** 等於 **ClientTimeoutError** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
-| **AnonymousNetworkError** | 維度 **ResponseType** 等於 **NetworkError** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
-| **AnonymousServerOtherError** | 維度 **ResponseType** 等於 **ServerOtherError** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
-| **AnonymousServerTimeoutError** | 維度 **ResponseType** 等於 **ServerTimeoutError** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
-| **AnonymousSuccess** | 維度 **ResponseType** 等於 **Success** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
-| **AnonymousThrottlingError** | 維度 **ResponseType** 等於 **ClientThrottlingError** 或 **ServerBusyError** 且維度 **Authentication** 等於 **Anonymous** 的交易 |
-| **AuthorizationError** | 維度 **ResponseType** 等於 **AuthorizationError** 的交易 |
-| **可用性** | **可用性** |
-| **AverageE2ELatency** | **SuccessE2ELatency** |
-| **AverageServerLatency** | **SuccessServerLatency** |
-| **ClientOtherError** | 維度 **ResponseType** 等於 **ClientOtherError** 的交易 |
-| **ClientTimeoutError** | 維度 **ResponseType** 等於 **ClientTimeoutError** 的交易 |
-| **NetworkError** | 維度 **ResponseType** 等於 **NetworkError** 的交易 |
-| **PercentAuthorizationError** | 維度 **ResponseType** 等於 **AuthorizationError** 的交易 |
-| **PercentClientOtherError** | 維度 **ResponseType** 等於 **ClientOtherError** 的交易 |
-| **PercentNetworkError** | 維度 **ResponseType** 等於 **NetworkError** 的交易 |
-| **PercentServerOtherError** | 維度 **ResponseType** 等於 **ServerOtherError** 的交易 |
-| **PercentSuccess** | 維度 **ResponseType** 等於 **Success** 的交易 |
-| **PercentThrottlingError** | 維度 **ResponseType** 等於 **ClientThrottlingError** 或 **ServerBusyError** 的交易 |
-| **PercentTimeoutError** | 維度 **ResponseType** 等於 **ServerTimeoutError** 或 **ResponseType** 等於 **ClientTimeoutError** 的交易 |
-| **SASAuthorizationError** | 維度 **ResponseType** 等於 **AuthorizationError** 且維度 **Authentication** 等於 **SAS** 的交易 |
-| **SASClientOtherError** | 維度 **ResponseType** 等於 **ClientOtherError** 且維度 **Authentication** 等於 **SAS** 的交易 |
-| **SASClientTimeoutError** | 維度 **ResponseType** 等於 **ClientTimeoutError** 且維度 **Authentication** 等於 **SAS** 的交易 |
-| **SASNetworkError** | 維度 **ResponseType** 等於 **NetworkError** 且維度 **Authentication** 等於 **SAS** 的交易 |
-| **SASServerOtherError** | 維度 **ResponseType** 等於 **ServerOtherError** 且維度 **Authentication** 等於 **SAS** 的交易 |
-| **SASServerTimeoutError** | 維度 **ResponseType** 等於 **ServerTimeoutError** 且維度 **Authentication** 等於 **SAS** 的交易 |
-| **SASSuccess** | 維度 **ResponseType** 等於 **Success** 且維度 **Authentication** 等於 **SAS** 的交易 |
-| **SASThrottlingError** | 維度 **ResponseType** 等於 **ClientThrottlingError** 或 **ServerBusyError** 且維度 **Authentication** 等於 **SAS** 的交易 |
-| **ServerOtherError** | 維度 **ResponseType** 等於 **ServerOtherError** 的交易 |
-| **ServerTimeoutError** | 維度 **ResponseType** 等於 **ServerTimeoutError** 的交易 |
-| 「成功」 | 維度 **ResponseType** 等於 **Success** 的交易 |
-| **ThrottlingError** | 維度 **ResponseType** 等於 **ClientThrottlingError** 或 **ServerBusyError** 的**交易**|
-| **TotalBillableRequests** | **交易** |
-| **TotalEgress** | **輸出** |
-| **TotalIngress** | **輸入** |
-| **TotalRequests** | **交易** |
-
-## <a name="faq"></a>常見問題集
-
-### <a name="how-should-i-migrate-existing-alert-rules"></a>如何移轉現有的警示規則？
-
-如果您已經根據舊的儲存體計量建立傳統的警示規則，就必須根據新的計量結構描述來建立新的警示規則。
-
-### <a name="is-new-metric-data-stored-in-the-same-storage-account-by-default"></a>新的計量資料是否預設儲存在相同的儲存體帳戶中？
-
-否。 若要將計量資料封存至儲存體帳戶，請使用 [Azure 監視器診斷設定 API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)。
+| `AnonymousAuthorizationError` | 維度 `ResponseType` 等於 `AuthorizationError` 且維度 `Authentication` 等於的交易`Anonymous` |
+| `AnonymousClientOtherError` | 維度 `ResponseType` 等於 `ClientOtherError` 且維度 `Authentication` 等於的交易`Anonymous` |
+| `AnonymousClientTimeoutError` | 維度 `ResponseType` 等於 `ClientTimeoutError` 且維度 `Authentication` 等於的交易`Anonymous` |
+| `AnonymousNetworkError` | 維度 `ResponseType` 等於 `NetworkError` 且維度 `Authentication` 等於的交易`Anonymous` |
+| `AnonymousServerOtherError` | 維度 `ResponseType` 等於 `ServerOtherError` 且維度 `Authentication` 等於的交易`Anonymous` |
+| `AnonymousServerTimeoutError` | 維度 `ResponseType` 等於 `ServerTimeoutError` 且維度 `Authentication` 等於的交易`Anonymous` |
+| `AnonymousSuccess` | 維度 `ResponseType` 等於 `Success` 且維度 `Authentication` 等於的交易`Anonymous` |
+| `AnonymousThrottlingError` | 維度 `ResponseType` 等於 `ClientThrottlingError` 或 `ServerBusyError` 且維度 `Authentication` 等於的交易`Anonymous` |
+| `AuthorizationError` | 維度等於的交易 `ResponseType``AuthorizationError` |
+| `Availability` | `Availability` |
+| `AverageE2ELatency` | `SuccessE2ELatency` |
+| `AverageServerLatency` | `SuccessServerLatency` |
+| `ClientOtherError` | 維度等於的交易 `ResponseType``ClientOtherError` |
+| `ClientTimeoutError` | 維度等於的交易 `ResponseType``ClientTimeoutError` |
+| `NetworkError` | 維度等於的交易 `ResponseType``NetworkError` |
+| `PercentAuthorizationError` | 維度等於的交易 `ResponseType``AuthorizationError` |
+| `PercentClientOtherError` | 維度等於的交易 `ResponseType``ClientOtherError` |
+| `PercentNetworkError` | 維度等於的交易 `ResponseType``NetworkError` |
+| `PercentServerOtherError` | 維度等於的交易 `ResponseType``ServerOtherError` |
+| `PercentSuccess` | 維度等於的交易 `ResponseType``Success` |
+| `PercentThrottlingError` | 維度 `ResponseType` 等於或的交易 `ClientThrottlingError``ServerBusyError` |
+| `PercentTimeoutError` | 維度 `ResponseType` 等於 `ServerTimeoutError` 或 `ResponseType` 等於的交易`ClientTimeoutError` |
+| `SASAuthorizationError` | 維度 `ResponseType` 等於 `AuthorizationError` 且維度 `Authentication` 等於的交易`SAS` |
+| `SASClientOtherError` | 維度 `ResponseType` 等於 `ClientOtherError` 且維度 `Authentication` 等於的交易`SAS` |
+| `SASClientTimeoutError` | 維度 `ResponseType` 等於 `ClientTimeoutError` 且維度 `Authentication` 等於的交易`SAS` |
+| `SASNetworkError` | 維度 `ResponseType` 等於 `NetworkError` 且維度 `Authentication` 等於的交易`SAS` |
+| `SASServerOtherError` | 維度 `ResponseType` 等於 `ServerOtherError` 且維度 `Authentication` 等於的交易`SAS` |
+| `SASServerTimeoutError` | 維度 `ResponseType` 等於 `ServerTimeoutError` 且維度 `Authentication` 等於的交易`SAS` |
+| `SASSuccess` | 維度 `ResponseType` 等於 `Success` 且維度 `Authentication` 等於的交易`SAS` |
+| `SASThrottlingError` | 維度 `ResponseType` 等於 `ClientThrottlingError` 或 `ServerBusyError` 且維度 `Authentication` 等於的交易`SAS` |
+| `ServerOtherError` | 維度等於的交易 `ResponseType``ServerOtherError` |
+| `ServerTimeoutError` | 維度等於的交易 `ResponseType``ServerTimeoutError` |
+| `Success` | 維度等於的交易 `ResponseType``Success` |
+| `ThrottlingError` | `Transactions`維度 `ResponseType` 等於 `ClientThrottlingError` 或`ServerBusyError`|
+| `TotalBillableRequests` | `Transactions` |
+| `TotalEgress` | `Egress` |
+| `TotalIngress` | `Ingress` |
+| `TotalRequests` | `Transactions` |
 
 ## <a name="next-steps"></a>後續步驟
 

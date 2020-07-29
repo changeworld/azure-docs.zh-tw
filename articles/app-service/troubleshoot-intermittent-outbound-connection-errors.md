@@ -4,14 +4,15 @@ description: 針對間歇連接錯誤和 Azure App Service 中的相關效能問
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
-ms.date: 03/24/2020
+ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 704c6b026ab656ce52b34e5ac70ba7e2087ccbcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252435"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289155"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>疑難排解 Azure App Service 中的間歇輸出連接錯誤
 
@@ -36,6 +37,8 @@ ms.locfileid: "85252435"
 當應用程式或函式快速開啟新的連線時，他們可以快速耗盡其預先配置的128埠配額。 然後，它們會被封鎖，直到新的 SNAT 埠可供使用為止，不論是透過動態配置額外的 SNAT 埠，或重複使用已回收的 SNAT 埠。 因為無法建立新連線而遭到封鎖的應用程式或函式，將會開始遇到本文的**徵兆**一節中所述的一或多個問題。
 
 ## <a name="avoiding-the-problem"></a>避免此問題
+
+如果您的目的地是支援服務端點的 Azure 服務，您可以使用[VNet 整合](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)和服務端點來避免 SNAT 埠耗盡問題。 當您使用 VNet 整合並將服務端點放在整合子網上時，您的應用程式輸出流量到這些服務將不會有輸出 SNAT 埠限制。
 
 避免 SNAT 埠問題，表示避免重複建立新連線到相同的主機和埠。
 
@@ -121,7 +124,7 @@ HTTP 連接共用
 
 避免輸出 TCP 限制比較容易解決，因為限制是由背景工作角色的大小所設定。 您可以查看[沙箱跨 VM 數值限制的限制-TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)連線
 
-|限制名稱|Description|小型（A1）|中（A2）|大型（A3）|隔離層（ASE）|
+|限制名稱|說明|小型（A1）|中（A2）|大型（A3）|隔離層（ASE）|
 |---|---|---|---|---|---|
 |連接|跨整個 VM 的連線數目|1920|3968|8064|16,000|
 
@@ -153,7 +156,7 @@ TCP 連線和 SNAT 埠並不直接相關。 任何 App Service 網站的 [診斷
 * TCP 連接限制會發生在背景工作角色實例層級。 Azure 網路輸出負載平衡不會使用適用于 SNAT 埠限制的 TCP 連線計量。
 * [沙箱跨 VM 數值限制-tcp](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)連線中描述 tcp 連線限制
 
-|限制名稱|Description|小型（A1）|中（A2）|大型（A3）|隔離層（ASE）|
+|限制名稱|說明|小型（A1）|中（A2）|大型（A3）|隔離層（ASE）|
 |---|---|---|---|---|---|
 |連接|跨整個 VM 的連線數目|1920|3968|8064|16,000|
 

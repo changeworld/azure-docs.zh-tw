@@ -6,18 +6,28 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c0af92bdec6248a38040f972734764fa1bc10226
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505085"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289104"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure 監視器中使用 View Designer 建立自訂視圖
 藉由在 Azure 監視器中使用 View Designer，您可以在 Azure 入口網站中建立各種自訂視圖，以協助您將 Log Analytics 工作區中的資料視覺化。 本文提供檢視設計工具的概觀以及建立和編輯自訂檢視的程序。
 
 > [!IMPORTANT]
-> Azure 監視器中的 Views 會被淘汰，並取代為提供額外功能的活頁[簿](workbooks-overview.md)。 如需將現有的視圖轉換為活頁簿的詳細資訊，請參閱[Azure 監視器 view designer to 活頁簿轉換指南](view-designer-conversion-overview.md)。
+> Azure 監視器中的 Views 會被淘汰，並取代為提供額外功能的活頁[簿](workbooks-overview.md)。 如需將現有的視圖轉換為活頁簿的詳細資訊，請參閱[Azure 監視器 view designer to 活頁簿轉換指南](view-designer-conversion-overview.md)。 請參閱下表，以瞭解接下來幾個月將採取的步驟。
+> 
+> | 變更 | 這表示 | 預期的日期 |
+> |:---|:---|:---|
+> | 停用透過視圖設計工具建立的新 views。 | 您將無法再于 Azure 入口網站中建立新的自訂視圖並加以儲存。| 2020年11月 |
+> | 使用 [視圖設計工具] 停用現有視圖的編輯功能。 | 您將無法再修改並儲存現有自訂視圖的變更。 | 2020年11月 |
+> | 停用 Log Analytics 工作區的視圖部署 | 您將無法再使用 ARM 將自訂視圖部署到 Log Analytics 工作區。 | 2021年3月 |
+> | Azure 入口網站中不再提供視圖設計工具 | 入口網站體驗將不再支援 View Designer。 | 2021年6月 |
+> | 自訂視圖已從工作區摘要中移除 | 您將無法再存取您的自訂視圖資料。 | 2021年12月 |
+ 
+
 
 如需檢視設計工具的詳細資訊，請參閱：
 
@@ -34,11 +44,11 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 
 | 部分 | 描述 |
 |:--- |:--- |
-| 圖格 | 會顯示在您的 Azure 監視器 **[總覽**] 頁面上。 每個圖格會顯示它所呈現自訂檢視的視覺化摘要。 每個圖格類型提供記錄的不同的視覺效果。 您可以選取圖格來顯示自訂檢視。 |
+| Tiles | 會顯示在您的 Azure 監視器 **[總覽**] 頁面上。 每個圖格會顯示它所呈現自訂檢視的視覺化摘要。 每個圖格類型提供記錄的不同的視覺效果。 您可以選取圖格來顯示自訂檢視。 |
 | 自訂檢視 | 當您選取圖格時顯示。 每個檢視包含一或多個視覺效果組件。 |
 | 視覺效果組件 | 根據一或多個[記錄查詢](../log-query/log-query-overview.md)，呈現 Log Analytics 工作區中的資料視覺效果。 大部分組件包含標頭 (提供高階的視覺效果)，以及清單 (顯示前幾名搜尋結果)。 每個組件類型提供 Log Analytics 工作區中不同記錄的視覺效果。 您可以選取元件中的專案來執行記錄查詢，以提供詳細的記錄。 |
 
-## <a name="required-permissions"></a>所需的權限
+## <a name="required-permissions"></a>必要權限
 您至少需要 Log Analytics 工作區中的「[參與者」層級許可權](manage-access.md#manage-access-using-azure-permissions)，才能建立或修改 views。 如果您沒有此許可權，則功能表中不會顯示 [View Designer] 選項。
 
 
@@ -51,7 +61,7 @@ Views 會顯示在 Azure 入口網站的 [Azure 監視器**總覽**] 頁面中�
 
 | 選項 | 說明 |
 |:--|:--|
-| 重新整理   | 使用最新資料重新整理檢視。 | 
+| Refresh   | 使用最新資料重新整理檢視。 | 
 | 記錄      | 開啟[Log Analytics](../log-query/log-query-overview.md)以記錄查詢來分析資料。 |
 | 編輯       | 在檢視表設計工具中開啟檢視以編輯其內容和設定。  |
 | 複製      | 建立新的檢視並且在檢視表設計工具中開啟。 新檢視的名稱與原始檢視的名稱相同，只是再附加*複製*字樣。 |

@@ -5,12 +5,12 @@ description: 了解如何透過 Azure 檔案服務以動態方式建立永續性
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: e6735bba4a84a694e4cf6a58f695f2d89afe8994
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5e9e686d8da420c650709d3bedc103d0043fa679
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057264"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287112"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中以動態方式建立和使用 Azure 檔案服務的永續性磁碟區
 
@@ -186,6 +186,8 @@ parameters:
 ## <a name="next-steps"></a>後續步驟
 
 如需相關的最佳做法，請參閱 [AKS 中的儲存和備份最佳做法][operator-best-practices-storage]。
+
+如需儲存類別參數，請參閱[動態](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#dynamic-provision)布建。
 
 使用「Azure 檔案」來深入了解 Kubernetes 永續性磁碟區。
 

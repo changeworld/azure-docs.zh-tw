@@ -1,25 +1,19 @@
 ---
 title: 在 VM 上安裝 Trend 微深度安全性
 description: 本文說明如何在 Azure 中，在以傳統部署模型建立的 VM 上安裝和設定 Trend Micro 安全性。
-services: virtual-machines-windows
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
 tags: azure-service-management
-ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: c4a4f641283a9a4771a236ba844cfe296b31c28c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bed1d567aa48a11c01ae952e6a4a2028e260e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082673"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288511"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>如何在 Windows VM 上安裝和設定 Trend Micro Deep Security as a Service
 
@@ -100,4 +94,4 @@ Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Versio
 
 <!-- Link references -->
 [如何登入執行 Windows Server 的虛擬機器]:../windows/classic/connect-logon.md
-[Azure VM 延伸模組和功能]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Azure VM 延伸模組和功能]: features-windows.md

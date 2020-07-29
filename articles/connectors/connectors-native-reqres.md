@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 25aafee59c7f5f7ae59aa2fd7871de8926907f68
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ae34840c04c3a1d2fb3646046792c97ed6f521a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261373"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289429"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>在 Azure Logic Apps 中接收和回應輸入 HTTPS 要求
 
@@ -24,7 +24,7 @@ ms.locfileid: "86261373"
 
 * 接收和回應來自另一個邏輯應用程式的 HTTPS 呼叫。
 
-要求觸發程序支援 [Azure Active Directory 開放式驗證](/azure/active-directory/develop/) (Azure AD OAuth)，以授權對邏輯應用程式的輸入呼叫。 如需啟用此驗證的詳細資訊，請參閱[在 Azure Logic Apps 中保護存取和資料 - 啟用 Azure AD OAuth 驗證](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)。
+要求觸發程序支援 [Azure Active Directory 開放式驗證](../active-directory/develop/index.yml) (Azure AD OAuth)，以授權對邏輯應用程式的輸入呼叫。 如需啟用此驗證的詳細資訊，請參閱[在 Azure Logic Apps 中保護存取和資料 - 啟用 Azure AD OAuth 驗證](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -36,7 +36,7 @@ ms.locfileid: "86261373"
 
 ## <a name="transport-layer-security-tls"></a>傳輸層安全性 (TLS)
 
-* 輸入呼叫*僅*支援 TLS) 1.2 (傳輸層安全性。 如果收到 TLS 交握錯誤，請確定您使用 TLS 1.2。 如需詳細資訊，請參閱[解決 TLS 1.0 問題](https://docs.microsoft.com/security/solving-tls1-problem)。 輸出呼叫支援以目標端點的功能為基礎的 TLS 1.0、1.1 和1.2。
+* 輸入呼叫*僅*支援傳輸層安全性（TLS）1.2。 如果收到 TLS 交握錯誤，請確定您使用 TLS 1.2。 如需詳細資訊，請參閱[解決 TLS 1.0 問題](/security/solving-tls1-problem)。 輸出呼叫支援以目標端點的功能為基礎的 TLS 1.0、1.1 和1.2。
 
 * 輸入呼叫支援下列加密套件：
 
@@ -72,7 +72,7 @@ ms.locfileid: "86261373"
 
    ![要求觸發程序](./media/connectors-native-reqres/request-trigger.png)
 
-   | 屬性名稱 | JSON 屬性名稱 | 必要 | 描述 |
+   | 屬性名稱 | JSON 屬性名稱 | 必要 | 說明 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST URL** | {無} | 是 | 在您儲存邏輯應用程式之後產生的端點 URL，用於呼叫邏輯應用程式 |
    | **要求本文 JSON 結構描述** | `schema` | 否 | JSON 結構描述，描述傳入要求本文中的屬性和值 |
@@ -171,7 +171,7 @@ ms.locfileid: "86261373"
 
 1. 若要檢查撥入電話是否有符合您指定之架構的要求主體，請遵循下列步驟：
 
-   1. 在要求觸發程式的標題列中，選取省略號按鈕 (**...** ]) 。
+   1. 在要求觸發程式的標題列中，選取省略號按鈕（**...**）。
 
    1. 在觸發程式的 [設定] 中，開啟 [**架構驗證**]，然後選取 [**完成**]。
 
@@ -179,7 +179,7 @@ ms.locfileid: "86261373"
 
 1. 若要指定其他屬性，請開啟 [新增參數] 清單，然後選取您要新增的參數。
 
-   | 屬性名稱 | JSON 屬性名稱 | 必要 | 描述 |
+   | 屬性名稱 | JSON 屬性名稱 | 必要 | 說明 |
    |---------------|--------------------|----------|-------------|
    | **方法** | `method` | 否 | 傳入要求在呼叫邏輯應用程式時必須使用的方法 |
    | **相對路徑** | `relativePath` | 否 | 參數的相對路徑，指邏輯應用程式的端點 URL 可接受的參數 |
@@ -206,7 +206,7 @@ ms.locfileid: "86261373"
    ![用於觸發邏輯應用程式的 URL](./media/connectors-native-reqres/generated-url.png)
 
    > [!NOTE]
-   > 如果您想要在 **#** 呼叫要求觸發程式時，在 URI 中包含 hash 或井字型大小 () ，請改為使用此編碼版本：`%25%23`
+   > 如果您想要在呼叫要求觸發程式時，將雜湊或井字型大小（ **#** ）包含在 URI 中，請改為使用此編碼版本：`%25%23`
 
 1. 若要觸發邏輯應用程式，請將 HTTP POST 傳送至產生的 URL。
 
@@ -287,3 +287,4 @@ ms.locfileid: "86261373"
 ## <a name="next-steps"></a>後續步驟
 
 * [適用於 Logic Apps 的連接器](../connectors/apis-list.md)
+

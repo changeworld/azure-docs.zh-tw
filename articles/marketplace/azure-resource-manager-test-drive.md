@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.openlocfilehash: 401ffaaa0fa8c8e298a3a1891d93f2c9039d7820
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.author: keferna
+author: keferna
+ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102934"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287933"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager 試用產品
 
@@ -68,7 +70,7 @@ ms.locfileid: "86102934"
 
 ### <a name="accepted-parameter-metadata-types"></a>接受的參數中繼資料類型
 
-| 中繼資料類型   | 參數類型  | 描述     | 範例值    |
+| 中繼資料類型   | 參數類型  | 說明     | 範例值    |
 |---|---|---|---|
 | **baseuri**     | 字串          | 您部署套件的基底 URI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
 | **username**    | 字串          | 新的隨機使用者名稱。| admin68876      |

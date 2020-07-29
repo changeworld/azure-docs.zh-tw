@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 自動化調整工作階段主機 - Azure
-description: 如何使用 Azure 自動化自動調整 Windows 虛擬桌面工作階段主機。
+title: 調整工作階段主機 Azure 自動化 Windows 虛擬桌面（傳統）-Azure
+description: 如何使用 Azure 自動化自動調整 Windows 虛擬桌面（傳統）工作階段主機。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 690f59c643f1fe8c8cfc74758a0f8f13b129f78a
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 4c09ce867a7d4dbc11c42485c39c40bd427fa451
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172062"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288630"
 ---
-# <a name="scale-session-hosts-using-azure-automation"></a>使用 Azure 自動化調整工作階段主機
+# <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>使用 Azure 自動化調整 Windows 虛擬桌面（傳統）工作階段主機的規模
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。
 
 您可以藉由調整虛擬機器 (VM) 來降低 Windows 虛擬桌面部署總成本。 這表示在離峰使用時間將工作階段主機 VM 關閉並解除配置，然後在尖峰時間將 VM 恢復啟動並重新配置。
 

@@ -4,18 +4,18 @@ description: 包含檔案
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: include file
+ms.custom: seodec18
 ms.service: cognitive-services
 ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: cbb79c6c7467306bbc202d317684a5c62835d53c
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: 1684c76e1f00e6b2debca9166ec614cccde8dc02
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374862"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375132"
 ---
 如果您的應用程式需要由其他人撰寫，您必須在 Azure 入口網站的撰寫資源中新增相關聯的電子郵件地址。
 

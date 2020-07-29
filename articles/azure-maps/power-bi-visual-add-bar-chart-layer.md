@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 34d2d96e28f90249ad25788f6994dac63f83b1f6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a686f6915e332893f619e66944591999063a07c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261683"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288163"
 ---
-# <a name="add-a-bar-chart-layer"></a>新增橫條圖圖層
+# <a name="add-a-bar-chart-layer"></a>新增長條圖圖層
 
-**橫條圖圖層**可讓您將位置資料的視覺效果作為地圖上的3d 橫條圖或圓柱，以將資料帶到下一個維度。 類似于反升圖層，在稍後，橫條圖可以輕鬆地使用色彩和相對高度，同時將兩個度量視覺化。 為了讓橫條具有高度，必須將量值新增至 [**欄位**] 窗格的 [**大小**] bucket。 如果未提供量值，則視 [**橫條圖] 圖形**選項而定，沒有高度做為一般正方形或圓形的橫條。
+**橫條圖圖層**可讓您將位置資料的視覺效果作為地圖上的3d 橫條圖或圓柱，以將資料帶到下一個維度。 類似于反升圖層，在稍後，橫條圖可以輕鬆地使用色彩和相對高度，同時將兩個度量視覺化。 為了讓橫條具有高度，必須將量值新增至 [**欄位**] 窗格的 [**大小**] bucket。 如果未提供量值，則不含高度的橫條會顯示為 [一般正方形] 或 [圓圈] （視 [**橫條圖] 圖形**選項而定）。
 
 > [!div class="mx-imgBorder"]
 > ![使用橫條圖圖層顯示點資料的地圖](media/power-bi-visual/bar-chart-layer-styled.png)
@@ -39,7 +39,7 @@ ms.locfileid: "86261683"
 
 以下是 [**橫條圖圖層**] 區段中可用的 [**格式**] 窗格中的所有設定。
 
-| 設定              | 描述      |
+| 設定              | 說明      |
 |----------------------|------------------|
 | 橫條圖圖形            | 3D 橫條的形狀。<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• Box –以矩形方塊呈現的橫條。<br/>&nbsp;&nbsp;&nbsp;&nbsp;•圓柱–橫條圖呈現為圓柱。 |
 | 高度               | 每個橫條的高度。 如果將欄位傳遞至 [**欄位**] 窗格的 [**大小**] 值區，則會相對於此高度值來調整橫條圖。 |

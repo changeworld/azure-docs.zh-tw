@@ -5,12 +5,13 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: d37c7be65eb0c03065c095196a6fec39a2509a3f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 004fb022847432a9739e79f7063b80636f8dcf2b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193423"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374230"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>適用於 Eclipse Java 應用程式開發的 Service Fabric 外掛程式
 Eclipse 是 Java 開發人員最普遍使用的整合式的開發環境 (IDE) 之一。 在本文中，我們將說明如何設定 Eclipse 開發環境來使用 Azure Service Fabric。 了解如何安裝 Service Fabric 外掛程式、建立 Service Fabric 應用程式，以及將 Service Fabric 應用程式部署到 Eclipse 中的本機或遠端 Service Fabric 叢集。 
@@ -36,7 +37,7 @@ Eclipse 是 Java 開發人員最普遍使用的整合式的開發環境 (IDE) �
 
 安裝 Service Fabric 外掛程式，請在 Eclipse 中**移至 [** 說明] [  >  **安裝新軟體**]。
 1. **在 [使用**] 方塊中，輸入 HTTPs： \/ /dl.microsoft.com/eclipse。
-2. 按一下 **[新增]** 。
+2. 按一下 [新增]  。
 
    ![適用於 Eclipse 的 Service Fabric 外掛程式][sf-eclipse-plugin-install]
 3. 選取 Service Fabric 外掛程式，然後按 [下一步]****。

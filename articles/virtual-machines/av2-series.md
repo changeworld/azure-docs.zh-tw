@@ -4,15 +4,15 @@ description: Av2 系列 Vm 的規格。
 author: migerdes
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 1b5b77bb9bdf679fe0fd8bf73966dd45acc80155
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cdcc26a8a22e9a1dc7af75667cdb33bb044c7858
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085770"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288579"
 ---
 # <a name="av2-series"></a>Av2 系列
 
@@ -28,7 +28,6 @@ ACU：100
 
 記憶體保留更新：支援
 
-定價計算機和區域可用性資訊：<a href="https://azure.microsoft.com/en-us/pricing/calculator/">定價計算機</a>
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 NIC | 預期的網路頻寬（Mbps）
 |---|---|---|---|---|---|---|---|
@@ -51,9 +50,9 @@ ACU：100
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
 
-定價計算機和區域可用性資訊：<a href="https://azure.microsoft.com/en-us/pricing/calculator/">定價計算機</a>
+定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：<a href="https://docs.microsoft.com/en-us/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/">磁片類型</a>
+磁片類型的詳細資訊：[磁片類型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>後續步驟
 
