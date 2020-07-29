@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d82289366d79f44460b96d75781cac4fa50de53a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129724"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367430"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>將 Azure 數位 Twins 與其他服務整合
 
@@ -20,11 +20,11 @@ Azure 數位 Twins 通常會與其他服務搭配使用。 使用[**事件路由
 
 ## <a name="data-ingress"></a>資料輸入
 
-Azure 數位 Twins 可透過 IoT 中樞的資料來驅動。 這可讓您從環境中的實體裝置收集遙測，並使用雲端中的 Azure 數位 Twins 圖形來處理此資料。
+Azure 數位 Twins 可透過任何服務中的資料和事件來驅動-IoT 中樞、Logic Apps、您自己的自訂服務等等。 這可讓您從環境中的實體裝置收集遙測，並使用雲端中的 Azure 數位 Twins 圖形來處理此資料。
 
 Azure 數位 Twins 沒有內建的 IoT 中樞。 您可以使用目前在生產環境中現有的 IoT 中樞，或部署新的。 這可讓您完整存取 IoT 中樞的所有裝置管理功能。
 
-若要將 IoT 中樞中的資料內嵌至 Azure 數位 Twins，請使用[azure](../azure-functions/functions-overview.md)函式。 若要深入瞭解此模式，請前往[*如何：從 IoT 中樞內嵌遙測*](how-to-ingest-iot-hub-data.md)，或在 Azure 數位 Twins 教學課程中自行嘗試[*：連接端對端解決方案*](tutorial-end-to-end.md)。
+若要將任何來源的資料內嵌至 Azure 數位 Twins，請使用[azure](../azure-functions/functions-overview.md)函式。 若要深入瞭解此模式，請前往[*如何：從 IoT 中樞內嵌遙測*](how-to-ingest-iot-hub-data.md)，或在 Azure 數位 Twins 教學課程中自行嘗試[*：連接端對端解決方案*](tutorial-end-to-end.md)。
 
 ## <a name="data-egress-services"></a>資料輸出服務
 

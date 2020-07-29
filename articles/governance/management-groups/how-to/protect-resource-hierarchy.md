@@ -3,12 +3,12 @@ title: 如何保護您的資源階層 - Azure 治理
 description: 了解如何使用包含設定預設管理群組的階層設定來保護您的資源階層。
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50b5ba1bccf3d603b6d273892d0c903d433786f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127991"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366767"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保護您的資源階層
 
@@ -23,7 +23,7 @@ ms.locfileid: "87127991"
 - `Microsoft.Management/managementgroups/settings/write`
 - `Microsoft.Management/managementgroups/settings/read`
 
-這些作業僅允許使用者讀取及更新階層設定。 這些作業不會提供對管理群組階層或階層中資源的任何其他存取權。 內建 RBAC 角色中的**階層設定管理員**都有提供這兩項作業。
+這些作業僅允許使用者讀取及更新階層設定。 這些作業不會提供對管理群組階層或階層中資源的任何其他存取權。 這兩項作業都可在 Azure 內建角色階層的 [設定] [**系統管理員**] 中取得。
 
 ## <a name="setting---default-management-group"></a>設定 - 預設管理群組
 

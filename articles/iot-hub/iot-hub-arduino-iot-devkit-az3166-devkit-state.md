@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d8e10a18436b0b52820dd0bf15ad0b2de969b79
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73483951"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337937"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -26,7 +26,7 @@ ms.locfileid: "73483951"
 
 - 如何使用 Azure 裝置對應項來控制 DevKit RGB LED 的色彩。
 
-## <a name="what-you-need"></a>您需要什麼
+## <a name="what-you-need"></a>必要條件
 
 - 依照[快速入門指南](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started)來設定開發環境。
 
@@ -114,7 +114,4 @@ ms.locfileid: "73483951"
 - 將 MXChip IoT DevKit 裝置連線到 Azure IoT 遠端監視解決方案加速器。
 - 使用 Azure IoT 裝置對應項函式來感測和控制 DevKit RGB LED 的色彩。
 
-以下是建議的後續步驟：
-
-* [Azure IoT 遠端監視解決方案加速器概觀](https://docs.microsoft.com/azure/iot-suite/)
-* [將 MXChip IoT DevKit 裝置連線到您的 Azure IoT Central 應用程式](/azure/iot-central/core/howto-connect-devkit)
+以下是建議的後續步驟： [Azure IoT 遠端監視解決方案加速器總覽](https://docs.microsoft.com/azure/iot-suite/)

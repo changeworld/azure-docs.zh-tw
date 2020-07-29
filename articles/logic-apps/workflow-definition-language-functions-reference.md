@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1a5b5ff535b2a0ca84831e8d4c42e80a72395b02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 45ff681bdf0260b6e3c12f7e644d102a49206c9f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048248"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288907"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>在運算式中使用函式的參考指南，適用於 Azure Logic Apps 和 Power Automate
 
@@ -124,7 +124,7 @@ ms.locfileid: "87048248"
 > [!NOTE]
 > 如果您使用邏輯函數或條件來比較值，null 值會轉換成空字串（ `""` ）值。 當您與空字串（而非 null 值）比較時，條件的行為會有所不同。 如需詳細資訊，請參閱[string （）函數](#string)。 
 
-| 邏輯比較函式 | 工作 |
+| 邏輯比較函式 | Task |
 | --------------------------- | ---- |
 | [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | 檢查是否所有運算式都是 True。 |
 | [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | 檢查兩個值是否相等。 |
@@ -146,7 +146,7 @@ ms.locfileid: "87048248"
 > [!NOTE]
 > Azure Logic Apps 會自動將值轉換成某些資料類型，這表示您不需要手動執行這些轉換。 不過，如果您這樣做，可能會遇到非預期的顯示行為，但這不影響實際的轉換，只影響呈現方式。 如需詳細資訊，請參閱[隱含資料類型轉換](#implicit-data-conversions)。
 
-| 轉換函式 | 工作 |
+| 轉換函式 | Task |
 | ------------------- | ---- |
 | [array](../logic-apps/workflow-definition-language-functions-reference.md#array) | 從單一指定輸入傳回的陣列。 關於多個輸入的資訊，請參閱 [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray)。 |
 | [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | 傳回字串的 base64 編碼版本。 |
@@ -228,7 +228,7 @@ Logic Apps 會自動或隱含地執行 base64 編碼或解碼，因此您不需�
 若要處理日期和時間，您可以使用這些日期和時間函式。
 如需有關每個函式的完整參考，請參閱[依字母順序排列的清單](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)。
 
-| 日期或時間函式 | 工作 |
+| 日期或時間函式 | Task |
 | --------------------- | ---- |
 | [addDays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | 將天數加入時間戳記。 |
 | [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | 將時數加入時間戳記。 |
@@ -299,7 +299,7 @@ Logic Apps 會自動或隱含地執行 base64 編碼或解碼，因此您不需�
 若要處理統一資源識別項 (URI) 並取得這些 URI 的各種屬性值，您可以使用這些 URI 剖析函式。
 如需有關每個函式的完整參考，請參閱[依字母順序排列的清單](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)。
 
-| URI 剖析函式 | 工作 |
+| URI 剖析函式 | Task |
 | -------------------- | ---- |
 | [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | 傳回統一資源識別項 (URI) 的 `host` 值。 |
 | [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | 傳回統一資源識別項 (URI) 的 `path` 值。 |
@@ -352,7 +352,7 @@ action().outputs.body.<property>
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*property*> | 否 | 字串 | 您需要其值的動作物件屬性名稱：**name**、**startTime** **endTime** **inputs** **outputs** **status** **code** **trackingId** 和 **clientTrackingId**。 在 Azure 入口網站中，您可以藉由檢閱特定執行歷程記錄的詳細資料來找出這些屬性。 如需詳細資訊，請參閱 [REST API - 工作流程執行動作](/rest/api/logic/workflowrunactions/get)。 |
+| <*property*> | 否 | String | 您需要其值的動作物件屬性名稱：**name**、**startTime** **endTime** **inputs** **outputs** **status** **code** **trackingId** 和 **clientTrackingId**。 在 Azure 入口網站中，您可以藉由檢閱特定執行歷程記錄的詳細資料來找出這些屬性。 如需詳細資訊，請參閱 [REST API - 工作流程執行動作](/rest/api/logic/workflowrunactions/get)。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -379,7 +379,7 @@ actionBody('<actionName>')
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | -----| ----------- |
-| <*action-body-output*> | 字串 | 來自指定動作的 `body` 輸出 |
+| <*action-body-output*> | String | 來自指定動作的 `body` 輸出 |
 ||||
 
 *範例*
@@ -419,7 +419,7 @@ actionOutputs('<actionName>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | 是 | 字串 | 所需動作輸出的名稱 |
+| <*actionName*> | 是 | String | 所需動作輸出的名稱 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -492,8 +492,8 @@ actions('<actionName>').outputs.body.<property>
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | 是 | 字串 | 您需要其輸出的動作物件名稱  |
-| <*property*> | 否 | 字串 | 您需要其值的動作物件屬性名稱：**name**、**startTime** **endTime** **inputs** **outputs** **status** **code** **trackingId** 和 **clientTrackingId**。 在 Azure 入口網站中，您可以藉由檢閱特定執行歷程記錄的詳細資料來找出這些屬性。 如需詳細資訊，請參閱 [REST API - 工作流程執行動作](/rest/api/logic/workflowrunactions/get)。 |
+| <*actionName*> | 是 | String | 您需要其輸出的動作物件名稱  |
+| <*property*> | 否 | String | 您需要其值的動作物件屬性名稱：**name**、**startTime** **endTime** **inputs** **outputs** **status** **code** **trackingId** 和 **clientTrackingId**。 在 Azure 入口網站中，您可以藉由檢閱特定執行歷程記錄的詳細資料來找出這些屬性。 如需詳細資訊，請參閱 [REST API - 工作流程執行動作](/rest/api/logic/workflowrunactions/get)。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -553,9 +553,9 @@ addDays('<timestamp>', <days>, '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
 | <*days*> | 是 | 整數 | 要加入的天數 (正數或負數) |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -595,9 +595,9 @@ addHours('<timestamp>', <hours>, '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
 | <*hours*> | 是 | 整數 | 要加入的時數 (正數或負數) |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -637,9 +637,9 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
 | <*minutes*> | 是 | 整數 | 要加入的分鐘數 (正數或負數) |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -698,7 +698,7 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | Object | 您要對其新增屬性的 JSON 物件 |
-| <*parent-property*> | 是 | 字串 | 父屬性的名稱，表示您想在其中新增子屬性 |
+| <*parent-property*> | 是 | String | 父屬性的名稱，表示您想在其中新增子屬性 |
 | <*child-property*> | 是 | String | 子屬性的名稱，代表要新增的屬性 |
 | <*value*> | 是 | 任意 | 要為指定屬性設定的值 |
 |||||
@@ -778,9 +778,9 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
 | <*seconds*> | 是 | 整數 | 要加入的秒數 (正數或負數) |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -821,10 +821,10 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
 | <*interval*> | 是 | 整數 | 要加入的指定時間單位數字 |
-| <*timeUnit*> | 是 | 字串 | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*timeUnit*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -918,7 +918,7 @@ array('<value>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 字串 | 建立陣列的字串 |
+| <*value*> | 是 | String | 建立陣列的字串 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -956,7 +956,7 @@ base64('<value>')
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*base64-string*> | 字串 | 輸入字串的 base64 編碼版本 |
+| <*base64-string*> | String | 輸入字串的 base64 編碼版本 |
 ||||
 
 *範例*
@@ -1024,7 +1024,7 @@ base64ToString('<value>')
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*decoded-base64-string*> | 字串 | 傳回 base64 編碼字串的字串版本 |
+| <*decoded-base64-string*> | String | 傳回 base64 編碼字串的字串版本 |
 ||||
 
 *範例*
@@ -1054,7 +1054,7 @@ binary('<value>')
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*binary-for-input-value*> | 字串 | 指定字串的二進位版本 |
+| <*binary-for-input-value*> | String | 指定字串的二進位版本 |
 ||||
 
 *範例*
@@ -1204,7 +1204,7 @@ concat('<text1>', '<text2>', ...)
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*text1text2...* > | 字串 | 從合併輸入字串中建立的字串 |
+| <*text1text2...* > | String | 從合併輸入字串中建立的字串 |
 ||||
 
 *範例*
@@ -1275,9 +1275,9 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
-| <*destinationTimeZone*> | 是 | 字串 | 目標時區的名稱。 如需時區名稱，請參閱 [Microsoft 時區索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
+| <*destinationTimeZone*> | 是 | String | 目標時區的名稱。 如需時區名稱，請參閱 [Microsoft 時區索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -1317,15 +1317,15 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
 | <*sourceTimeZone*> | 是 | String | 來源時區的名稱。 如需時區名稱，請參閱 [Microsoft 時區索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
-| <*destinationTimeZone*> | 是 | 字串 | 目標時區的名稱。 如需時區名稱，請參閱 [Microsoft 時區索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*destinationTimeZone*> | 是 | String | 目標時區的名稱。 如需時區名稱，請參閱 [Microsoft 時區索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*converted-timestamp*> | 字串 | 轉換為目標時區的時間戳記 |
+| <*converted-timestamp*> | String | 轉換為目標時區的時間戳記 |
 ||||
 
 *範例 1*
@@ -1360,14 +1360,14 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
-| <*sourceTimeZone*> | 是 | 字串 | 來源時區的名稱。 如需時區名稱，請參閱 [Microsoft 時區索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
+| <*sourceTimeZone*> | 是 | String | 來源時區的名稱。 如需時區名稱，請參閱 [Microsoft 時區索引值](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)，但您可能必須從時區名稱中移除任何標點符號。 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*converted-timestamp*> | 字串 | 轉換為 UTC 的時間戳記 |
+| <*converted-timestamp*> | String | 轉換為 UTC 的時間戳記 |
 ||||
 
 *範例 1*
@@ -1438,7 +1438,7 @@ dataUri('<value>')
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*data-uri*> | 字串 | 輸入字串的資料 URI |
+| <*data-uri*> | String | 輸入字串的資料 URI |
 ||||
 
 *範例*
@@ -1530,7 +1530,7 @@ dayOfMonth('<timestamp>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -1560,7 +1560,7 @@ dayOfWeek('<timestamp>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -1590,7 +1590,7 @@ dayOfYear('<timestamp>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -1669,7 +1669,7 @@ decodeUriComponent('<value>')
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*decoded-uri*> | 字串 | 更新後的字串，其中逸出字元已解碼 |
+| <*decoded-uri*> | String | 更新後的字串，其中逸出字元已解碼 |
 ||||
 
 *範例*
@@ -1736,7 +1736,7 @@ encodeUriComponent('<value>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 字串 | 要轉換成 URI 編碼格式的字串 |
+| <*value*> | 是 | String | 要轉換成 URI 編碼格式的字串 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -1947,12 +1947,12 @@ formatDateTime('<timestamp>', '<format>'?)
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | 是 | String | 包含時間戳記的字串 |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*reformatted-timestamp*> | 字串 | 所指定格式的更新時間戳記 |
+| <*reformatted-timestamp*> | String | 所指定格式的更新時間戳記 |
 ||||
 
 *範例*
@@ -1977,8 +1977,8 @@ formDataMultiValues('<actionName>', '<key>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | 是 | 字串 | 其輸出中有您所需索引鍵值的動作 |
-| <*key*> | 是 | 字串 | 您需要其值的索引鍵名稱 |
+| <*actionName*> | 是 | String | 其輸出中有您所需索引鍵值的動作 |
+| <*key*> | 是 | String | 您需要其值的索引鍵名稱 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -2009,13 +2009,13 @@ formDataValue('<actionName>', '<key>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | 是 | 字串 | 其輸出中有您所需索引鍵值的動作 |
-| <*key*> | 是 | 字串 | 您需要其值的索引鍵名稱 |
+| <*actionName*> | 是 | String | 其輸出中有您所需索引鍵值的動作 |
+| <*key*> | 是 | String | 您需要其值的索引鍵名稱 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*key-value*> | 字串 | 所指定索引鍵中的值  |
+| <*key-value*> | String | 所指定索引鍵中的值  |
 ||||
 
 *範例*
@@ -2041,8 +2041,8 @@ formatNumber(<number>, <format>, <locale>?)
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
 | <*number*> | 是 | 整數或雙精度浮點數 | 您想要格式化的值。 |
-| <*format*> | 是 | 字串 | 複合格式字串，可指定您要使用的格式。 如需支援的數值格式字串，請參閱 `number.ToString(<format>, <locale>)` 支援的[標準數值格式字串](/dotnet/standard/base-types/standard-numeric-format-strings)。 |
-| <*locale*> | 否 | 字串 | 使用 `number.ToString(<format>, <locale>)` 支援的地區設定。 若未指定，則預設值為 `en-us`。 |
+| <*format*> | 是 | String | 複合格式字串，可指定您要使用的格式。 如需支援的數值格式字串，請參閱 `number.ToString(<format>, <locale>)` 支援的[標準數值格式字串](/dotnet/standard/base-types/standard-numeric-format-strings)。 |
+| <*locale*> | 否 | String | 使用 `number.ToString(<format>, <locale>)` 支援的地區設定。 若未指定，則預設值為 `en-us`。 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -2095,8 +2095,8 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | 是 | 整數 | 要加入的指定時間單位數字 |
-| <*timeUnit*> | 是 | 字串 | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*timeUnit*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -2139,8 +2139,8 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
 | <*interval*> | 是 | 整數 | 要減去的指定時間單位數字 |
-| <*timeUnit*> | 是 | 字串 | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*timeUnit*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -2262,7 +2262,7 @@ guid('<format>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | 否 | 字串 | 所傳回 GUID 的單一[格式規範](/dotnet/api/system.guid.tostring?view=netcore-3.1#system_guid_tostring_system_string_)。 預設格式為 "D"，但您可以使用 "N"、"D"、"B"、"P" 或 "X"。 |
+| <*format*> | 否 | String | 所傳回 GUID 的單一[格式規範](/dotnet/api/system.guid.tostring?view=netcore-3.1#system_guid_tostring_system_string_)。 預設格式為 "D"，但您可以使用 "N"、"D"、"B"、"P" 或 "X"。 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -2292,7 +2292,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | 布林值 | 要檢查的運算式 |
+| <*expression*> | 是 | Boolean | 要檢查的運算式 |
 | <*valueIfTrue*> | 是 | 任意 | 運算式為 True 時要傳回的值 |
 | <*valueIfFalse*> | 是 | 任意 | 運算式為 False 時要傳回的值 |
 |||||
@@ -2324,7 +2324,7 @@ indexOf('<text>', '<searchText>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | 字串 | 具有子字串要尋找的字串 |
+| <*text*> | 是 | String | 具有子字串要尋找的字串 |
 | <*searchText*> | 是 | String | 要尋找的子字串 |
 |||||
 
@@ -2642,7 +2642,7 @@ join([<collection>], '<delimiter>')
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | 是 | Array | 要將其項目聯結的陣列 |
-| <*delimiter*> | 是 | 字串 | 在結果字串中，要出現在每個字元之間的分隔符號 |
+| <*delimiter*> | 是 | String | 在結果字串中，要出現在每個字元之間的分隔符號 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -2708,8 +2708,8 @@ lastIndexOf('<text>', '<searchText>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | 字串 | 具有子字串要尋找的字串 |
-| <*searchText*> | 是 | 字串 | 要尋找的子字串 |
+| <*text*> | 是 | String | 具有子字串要尋找的字串 |
+| <*searchText*> | 是 | String | 要尋找的子字串 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -3000,7 +3000,7 @@ multipartBody('<actionName>', <index>)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | 是 | 字串 | 其輸出具有多個部分的動作名稱 |
+| <*actionName*> | 是 | String | 其輸出具有多個部分的動作名稱 |
 | <*index*> | 是 | 整數 | 所需部分的索引值 |
 |||||
 
@@ -3022,7 +3022,7 @@ not(<expression>)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | 是 | 布林值 | 要檢查的運算式 |
+| <*expression*> | 是 | Boolean | 要檢查的運算式 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -3071,7 +3071,7 @@ or(<expression1>, <expression2>, ...)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | 是 | 布林值 | 要檢查的運算式 |
+| <*expression1*>, <*expression2*>, ... | 是 | Boolean | 要檢查的運算式 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -3119,7 +3119,7 @@ outputs('<actionName>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | 是 | 字串 | 所需動作輸出的名稱 |
+| <*actionName*> | 是 | String | 所需動作輸出的名稱 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -3282,9 +3282,9 @@ replace('<text>', '<oldText>', '<newText>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | 字串 | 有子字串要取代的字串 |
-| <*oldText*> | 是 | 字串 | 要取代的子字串 |
-| <*newText*> | 是 | 字串 | 取代字串 |
+| <*text*> | 是 | String | 有子字串要取代的字串 |
+| <*oldText*> | 是 | String | 要取代的子字串 |
+| <*newText*> | 是 | String | 取代字串 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -3315,7 +3315,7 @@ removeProperty(<object>, '<property>')
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | Object | 您要從中移除屬性的 JSON 物件 |
-| <*property*> | 是 | 字串 | 要移除的屬性名稱 |
+| <*property*> | 是 | String | 要移除的屬性名稱 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -3332,7 +3332,7 @@ removeProperty(<object>['<parent-property>'], '<child-property>')
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | 是 | Object | 您想要從中移除屬性的 JSON 物件 |
-| <*parent-property*> | 是 | 字串 | 父屬性的名稱，其中有您想要移除的子屬性 |
+| <*parent-property*> | 是 | String | 父屬性的名稱，其中有您想要移除的子屬性 |
 | <*child-property*> | 是 | String | 子屬性的名稱，代表要移除的屬性 |
 |||||
 
@@ -3655,8 +3655,8 @@ split('<text>', '<delimiter>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | 字串 | 要根據原始字串中指定的分隔符號分隔成子字串的字串 |
-| <*delimiter*> | 是 | 字串 | 原始字串中用來作為分隔符號的字元 |
+| <*text*> | 是 | String | 要根據原始字串中指定的分隔符號分隔成子字串的字串 |
+| <*delimiter*> | 是 | String | 原始字串中用來作為分隔符號的字元 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -3686,8 +3686,8 @@ startOfDay('<timestamp>', '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -3717,8 +3717,8 @@ startOfHour('<timestamp>', '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -3748,8 +3748,8 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -3791,8 +3791,8 @@ startsWith('<text>', '<searchText>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | 字串 | 要檢查的字串 |
-| <*searchText*> | 是 | 字串 | 要尋找的起始字串 |
+| <*text*> | 是 | String | 要檢查的字串 |
+| <*searchText*> | 是 | String | 要尋找的起始字串 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -3837,7 +3837,7 @@ string(<value>)
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*string-value*> | 字串 | 指定值的字串版本。 如果*value*參數為 null 或評估為 null，則會以空字串（）值傳回此值 `""` 。 |
+| <*string-value*> | String | 指定值的字串版本。 如果*value*參數為 null 或評估為 null，則會以空字串（）值傳回此值 `""` 。 |
 ||||
 
 
@@ -3908,7 +3908,7 @@ substring('<text>', <startIndex>, <length>)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | 字串 | 您需要其中字元的字串 |
+| <*text*> | 是 | String | 您需要其中字元的字串 |
 | <*startIndex*> | 是 | 整數 | 等於或大於 0 的正數，作為起始位置或索引值 |
 | <*length*> | 是 | 整數 | 子字串中您需要的字元數正數 |
 |||||
@@ -3941,15 +3941,15 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 包含時間戳記的字串 |
+| <*timestamp*> | 是 | String | 包含時間戳記的字串 |
 | <*interval*> | 是 | 整數 | 要減去的指定時間單位數字 |
-| <*timeUnit*> | 是 | 字串 | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*timeUnit*> | 是 | String | 與 *interval* 搭配使用的時間單位："Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*updated-timestamp*> | 字串 | 時間戳記減去指定的時間單位數字 |
+| <*updated-timestamp*> | String | 時間戳記減去指定的時間單位數字 |
 ||||
 
 *範例 1*
@@ -4020,7 +4020,7 @@ ticks('<timestamp>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*timestamp*> | 是 | 字串 | 時間戳記的字串 |
+| <*timestamp*> | 是 | String | 時間戳記的字串 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -4040,7 +4040,7 @@ toLower('<text>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | 字串 | 要以小寫格式傳回的字串 |
+| <*text*> | 是 | String | 要以小寫格式傳回的字串 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -4070,12 +4070,12 @@ toUpper('<text>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | 字串 | 要以大寫格式傳回的字串 |
+| <*text*> | 是 | String | 要以大寫格式傳回的字串 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*uppercase-text*> | 字串 | 大寫格式的原始字串 |
+| <*uppercase-text*> | String | 大寫格式的原始字串 |
 ||||
 
 *範例*
@@ -4107,7 +4107,7 @@ trigger()
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*trigger-output*> | 字串 | 執行階段上觸發程序的輸出 |
+| <*trigger-output*> | String | 執行階段上觸發程序的輸出 |
 ||||
 
 <a name="triggerBody"></a>
@@ -4139,7 +4139,7 @@ triggerFormDataMultiValues('<key>')
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*key*> | 是 | 字串 | 您需要其值的索引鍵名稱 |
+| <*key*> | 是 | String | 您需要其值的索引鍵名稱 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -4170,12 +4170,12 @@ triggerFormDataValue('<key>')
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*key*> | 是 | 字串 | 您需要其值的索引鍵名稱 |
+| <*key*> | 是 | String | 您需要其值的索引鍵名稱 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*key-value*> | 字串 | 所指定索引鍵中的值 |
+| <*key-value*> | String | 所指定索引鍵中的值 |
 ||||
 
 *範例*
@@ -4237,12 +4237,12 @@ trim('<text>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*text*> | 是 | 字串 | 要為其移除開頭和尾端空白字元的字串 |
+| <*text*> | 是 | String | 要為其移除開頭和尾端空白字元的字串 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*updatedText*> | 字串 | 不含開頭或尾端空白字元的原始字串更新版本 |
+| <*updatedText*> | String | 不含開頭或尾端空白字元的原始字串更新版本 |
 ||||
 
 *範例*
@@ -4301,7 +4301,7 @@ uriComponent('<value>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 字串 | 要轉換成 URI 編碼格式的字串 |
+| <*value*> | 是 | String | 要轉換成 URI 編碼格式的字串 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -4331,12 +4331,12 @@ uriComponentToBinary('<value>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 字串 | 要轉換的 URI 編碼字串 |
+| <*value*> | 是 | String | 要轉換的 URI 編碼字串 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*binary-for-encoded-uri*> | 字串 | URI 編碼字串的二進位版本。 二進位內容是以 base64 編碼，而且由 `$content` 表示。 |
+| <*binary-for-encoded-uri*> | String | URI 編碼字串的二進位版本。 二進位內容是以 base64 編碼，而且由 `$content` 表示。 |
 ||||
 
 *範例*
@@ -4366,7 +4366,7 @@ uriComponentToString('<value>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 字串 | 要解碼的 URI 編碼字串 |
+| <*value*> | 是 | String | 要解碼的 URI 編碼字串 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -4396,7 +4396,7 @@ uriHost('<uri>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | 是 | 字串 | 您需要其 `host` 值的 URI |
+| <*uri*> | 是 | String | 您需要其 `host` 值的 URI |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -4426,12 +4426,12 @@ uriPath('<uri>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | 是 | 字串 | 您需要其 `path` 值的 URI |
+| <*uri*> | 是 | String | 您需要其 `path` 值的 URI |
 |||||
 
 | 傳回值 | 類型 | 描述 |
 | ------------ | ---- | ----------- |
-| <*path-value*> | 字串 | 所指定 URI 的 `path` 值。 如果 `path` 沒有值，則傳回 "/" 字元。 |
+| <*path-value*> | String | 所指定 URI 的 `path` 值。 如果 `path` 沒有值，則傳回 "/" 字元。 |
 ||||
 
 *範例*
@@ -4456,7 +4456,7 @@ uriPathAndQuery('<uri>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | 是 | 字串 | 您需要其 `path` 和 `query` 值的 URI |
+| <*uri*> | 是 | String | 您需要其 `path` 和 `query` 值的 URI |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -4486,7 +4486,7 @@ uriPort('<uri>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | 是 | 字串 | 您需要其 `port` 值的 URI |
+| <*uri*> | 是 | String | 您需要其 `port` 值的 URI |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -4516,7 +4516,7 @@ uriQuery('<uri>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | 是 | 字串 | 您需要其 `query` 值的 URI |
+| <*uri*> | 是 | String | 您需要其 `query` 值的 URI |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -4546,7 +4546,7 @@ uriScheme('<uri>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*uri*> | 是 | 字串 | 您需要其 `scheme` 值的 URI |
+| <*uri*> | 是 | String | 您需要其 `scheme` 值的 URI |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -4579,12 +4579,12 @@ utcNow('<format>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | 否 | 字串 | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
+| <*format*> | 否 | String | [單一格式規範](/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式模式](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 時間戳記的預設格式為 ["o"](/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK)，其符合 [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) \(英文\) 並保留時區資訊。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
 | ------------ | ---- | ----------- |
-| <*current-timestamp*> | 字串 | 目前的日期和時間 |
+| <*current-timestamp*> | String | 目前的日期和時間 |
 ||||
 
 *範例 1*
@@ -4621,7 +4621,7 @@ variables('<variableName>')
 
 | 參數 | 必要 | 類型 | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*variableName*> | 是 | 字串 | 您需要其值的變數名稱 |
+| <*variableName*> | 是 | String | 您需要其值的變數名稱 |
 |||||
 
 | 傳回值 | 類型 | 描述 |
@@ -4675,7 +4675,7 @@ xml('<value>')
 
 | 參數 | 必要 | 類型 | 說明 |
 | --------- | -------- | ---- | ----------- |
-| <*value*> | 是 | 字串 | 其中有 JSON 物件要轉換的字串 <p>JSON 物件必須只能有一個根屬性，且不可以是陣列。 <br>使用反斜線字元 (\\) 作為雙引號 (") 的逸出字元。 |
+| <*value*> | 是 | String | 其中有 JSON 物件要轉換的字串 <p>JSON 物件必須只能有一個根屬性，且不可以是陣列。 <br>使用反斜線字元 (\\) 作為雙引號 (") 的逸出字元。 |
 |||||
 
 | 傳回值 | 類型 | 說明 |
@@ -4746,21 +4746,15 @@ xpath('<xml>', '<xpath>')
 
 *範例 1*
 
-此範例會尋找是否有節點符合指定引數中的 `<name></name>` 節點，並傳回包含這些節點值的陣列：
+假設您有 `'items'` 下列 XML 字串： 
+
+`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+
+這個範例會傳入 XPath 運算式， `'/produce/item/name'` 以尋找符合 `<name></name>` XML 字串中節點的節點 `'items'` ，並傳回具有這些節點值的陣列：
 
 `xpath(xml(parameters('items')), '/produce/item/name')`
 
-以下是引數：
-
-* 包含此 XML 的 "items" 字串：
-
-  `"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
-
-  此範例會使用 [parameters()](#parameters) 函式來取得 "items" 引數中的 XML 字串，但也必須使用 [xml()](#xml) 函式將字串轉換為 XML 格式。
-
-* 作為字串傳遞的此 XPath 運算式：
-
-  `"/produce/item/name"`
+此範例也會使用[parameters （）](#parameters)函式，從取得 xml 字串 `'items'` ，並使用[xml （）](#xml)函式將字串轉換為 xml 格式。
 
 以下是結果陣列，其中有符合 `<name></name`的節點：
 
@@ -4768,63 +4762,103 @@ xpath('<xml>', '<xpath>')
 
 *範例 2*
 
-以範例 1 為基礎，此範例會尋找符合 `<count></count>` 節點的節點，並使用 `sum()` 函式將這些節點值相加：
+在範例1上，此範例會傳入 XPath 運算式， `'/produce/item/name[1]'` 以尋找屬於元素子系的第一個 `name` 元素 `item` 。
 
-`xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
+`xpath(xml(parameters('items')), '/produce/item/name[1]')`
 
-並傳回此結果：`30`
+結果如下：`Gala`
 
 *範例 3*
 
-在此範例中，有兩個運算式會在指定的引數中 (其中包含具有命名空間的 XML) 尋找符合 `<location></location>` 節點的節點。 
+在範例1上，此範例會傳入 XPath 運算式， `'/produce/item/name[last()]'` 以尋找屬於元素子系的最後一個 `name` 元素 `item` 。
 
-> [!NOTE]
+`xpath(xml(parameters('items')), '/produce/item/name[last()]')`
+
+結果如下：`Honeycrisp`
+
+*範例 4*
+
+在此範例中，假設您 `items` 的 XML 字串也包含屬性， `expired='true'` 而且 `expired='false'` ：
+
+`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+
+這個範例會傳入 XPath 運算式， `'//name[@expired]'` 以尋找具有屬性的所有 `name` 元素 `expired` ：
+
+`xpath(xml(parameters('items')), '//name[@expired]')`
+
+結果如下：`[ Gala, Honeycrisp ]`
+
+*範例 5*
+
+在此範例中，假設您的 `items` XML 字串只包含此屬性 `expired = 'true'` ：
+
+`"<?xml version="1.0"?> <produce> <item> <name expired='true'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+
+這個範例會傳入 XPath 運算式， `'//name[@expired = 'true']'` 以尋找具有屬性的所有 `name` 元素 `expired = 'true'` ：
+
+`xpath(xml(parameters('items')), '//name[@expired = 'true']')`
+
+結果如下：`[ Gala ]`
+
+*範例 6*
+
+在此範例中，假設您的 `items` XML 字串也包含下列屬性： 
+
+* `expired='true' price='12'`
+* `expired='false' price='40'`
+
+`"<?xml version="1.0"?> <produce> <item> <name expired='true' price='12'>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name expired='false' price='40'>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+
+這個範例會傳入 XPath 運算式， `'//name[price>35]'` 以尋找 `name` 具有下列專案的所有元素 `price > 35` ：
+
+`xpath(xml(parameters('items')), '//name[price>35]')`
+
+結果如下：`Honeycrisp`
+
+*範例 7*
+
+在此範例中，假設您 `items` 的 XML 字串與範例1中的相同：
+
+`"<?xml version="1.0"?> <produce> <item> <name>Gala</name> <type>apple</type> <count>20</count> </item> <item> <name>Honeycrisp</name> <type>apple</type> <count>10</count> </item> </produce>"`
+
+這個範例會尋找符合節點的節點 `<count></count>` ，並使用函數來新增這些節點值 `sum()` ：
+
+`xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
+
+結果如下：`30`
+
+*範例 8*
+
+在此範例中，假設您有此 XML 字串，其中包含 XML 檔命名空間 `xmlns="http://contoso.com"` ：
+
+`"<?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>"`
+
+這些運算式會使用 XPath 運算式 `/*[name()="file"]/*[name()="location"]` 或 `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` 來尋找符合節點的節點 `<location></location>` 。 這些範例會顯示您在邏輯應用程式設計工具或運算式編輯器中使用的語法：
+
+* `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
+* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
+
+以下是符合 `<location></location>` 節點的結果節點： 
+
+`<location xmlns="https://contoso.com">Paris</location>`
+
+> [!IMPORTANT]
 >
-> 如果您在程式碼檢視中工作，請使用反斜線字元 (\\) 來逸出雙引號 (")。 
+> 如果您在程式碼視圖中工作，請使用反斜線字元（）來將雙引號（"）換成引號 \\ 。 
 > 例如，當您將運算式序列化為 JSON 字串時，您必須使用逸出字元。 
-> 不過，如果您在邏輯應用程式設計工具或運算式編輯器中工作，則不需要逸出雙引號，因為反斜線字元會自動新增至基礎定義，例如：
+> 不過，如果您是在邏輯應用程式設計工具或運算式編輯器中工作，則不需要將雙引號轉義，因為會自動將反斜線字元新增至基礎定義，例如：
 > 
 > * 程式碼檢視：`xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
 >
 > * 運算式編輯器：`xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
-> 
-> 下列範例適用於您在運算式編輯器中輸入的運算式。
 
-* 運算式 1
+*範例9*
 
-  `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
-
-* 運算式2 
-
-  `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
-
-以下是引數：
-
-* 包含 XML 文件命名空間的此 XML `xmlns="http://contoso.com"`：
-
-  ```xml
-  <?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>
-  ```
-
-* 此處其中一個 XPath 運算式：
-
-  * `/*[name()="file"]/*[name()="location"]`
-
-  * `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]`
-
-以下是符合 `<location></location>` 節點的結果節點：
-
-```xml
-<location xmlns="https://contoso.com">Paris</location>
-```
-
-*範例 4*
-
-以範例 3 為基礎，此範例會尋找 `<location></location>` 節點中的值：
+在範例8之後，此範例會使用 XPath 運算式 `'string(/*[name()="file"]/*[name()="location"])'` 來尋找節點中的值 `<location></location>` ：
 
 `xpath(xml(body('Http')), 'string(/*[name()="file"]/*[name()="location"])')`
 
-並傳回此結果：`"Paris"`
+結果如下：`Paris`
 
 ## <a name="next-steps"></a>後續步驟
 

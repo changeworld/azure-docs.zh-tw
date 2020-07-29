@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 279ba2ca5b82d7bad5b55736179f92a0146bdc84
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/28/2020
+ms.openlocfilehash: 904b3ce1c2d05d713ee1ae99662148217f2a358e
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048159"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337818"
 ---
 # <a name="export-data-module"></a>匯出資料模組
 
@@ -41,6 +41,9 @@ ms.locfileid: "87048159"
 1. 選取 [**匯出資料**] 以開啟 [**屬性**] 窗格。
 
 1. 針對**資料**存放區，請從下拉式清單中選取現有的資料存放區。 您也可以建立新的資料存放區。 查看如何造訪[Azure 儲存體服務中的存取資料](../how-to-access-data.md)。
+
+    > [!NOTE]
+    > 不支援將特定資料類型的資料匯出到指定為另一個資料類型的 SQL 資料庫資料行。
 
 1. [重新產生**輸出**] 核取方塊會決定是否要執行模組，以便在執行時間重新產生輸出。 
 

@@ -1,7 +1,7 @@
 ---
 title: Azure 服務的虛擬網路
 titlesuffix: Azure Virtual Network
-description: 了解將資源部署到擬網路的優點。 虛擬網路中的資源可以彼此通訊，並且可以內部部署資源，而不會產生周遊網際網路的流量。
+description: 瞭解如何將專用的 Azure 服務部署到虛擬網路，並瞭解這些部署所提供的功能。
 services: virtual-network
 documentationcenter: na
 author: mohnader
@@ -12,11 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/06/2020
 ms.author: kumud
-ms.openlocfilehash: cb63f99e93d4324e3f2addde7eadf18ac15f3d2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 442059f4ff3502b99bf4aa93d581c39331e4f7d8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463343"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287691"
 ---
 # <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>將專用 Azure 服務部署至虛擬網路
 

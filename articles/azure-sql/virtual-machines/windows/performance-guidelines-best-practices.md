@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/18/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0e840a9f78a4d6a9fef83abd7b0f011b700f985f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 3ce829a9fd58fb2940ee3265a66717af3dc9c0b5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231932"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289064"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上 SQL Server 的效能指導方針
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "86231932"
 
  在 Azure 虛擬機器上執行 SQL Server 時，建議您繼續使用適用于內部部署伺服器環境中 SQL Server 的相同資料庫效能微調選項。 不過，公用雲端中關聯式資料庫的效能優劣取決於許多因素，例如虛擬機器的大小和資料磁碟的組態。
 
-[SQL Server 在 Azure 入口網站中布建的映射](sql-vm-create-portal-quickstart.md)遵循一般存放裝置設定最佳作法 (如需有關存放裝置設定方式的詳細資訊，請參閱[SQL Server 虛擬機器 (vm) ) 的存放裝置配置](storage-configuration.md)。 佈建之後，請考慮套用本文所討論的其他最佳化作業。 依據您的工作負載做選擇，並透過測試進行確認。
+[在 Azure 入口網站中布建的 SQL Server 映射](sql-vm-create-portal-quickstart.md)遵循一般存放裝置設定最佳作法（如需有關如何設定儲存體的詳細資訊，請參閱[SQL Server 虛擬機器（Vm）的儲存體](storage-configuration.md)設定。 佈建之後，請考慮套用本文所討論的其他最佳化作業。 依據您的工作負載做選擇，並透過測試進行確認。
 
 > [!TIP]
 > 您通常必須在最佳化成本與最佳化效能之間做出取捨。 本文著重于取得 Azure 虛擬機器上 SQL Server 的*最佳*效能。 如果您的工作負載需求較低，可能就不需要採用下列每一項最佳化條件。 評估以下建議時，請考量您的效能需求、成本和工作負載模式。
@@ -69,7 +69,7 @@ ms.locfileid: "86231932"
 
 Azure 虛擬機器上有三種主要的磁片類型：
 
-* **OS 磁片**：當您建立 Azure 虛擬機器時，此平臺會至少連接一個磁片 (標示為適用于您作業系統磁片的 VM) **C**磁片磁碟機。 此磁碟是以分頁 Blob 的形式儲存於儲存體的 VHD。
+* **OS 磁片**：當您建立 Azure 虛擬機器時，此平臺會至少將一個磁片（標示為**C**磁片磁碟機）連接到 VM 作為您的作業系統磁片。 此磁碟是以分頁 Blob 的形式儲存於儲存體的 VHD。
 * **暫存磁碟**：Azure Stack 虛擬機器會包含另一個稱為暫存磁碟的磁碟 (標示為 **D**: 磁碟機)。 此磁碟位於可用於塗銷空間的節點上。
 * **資料磁碟**：您也可以將其他磁碟連接至虛擬機器作為資料磁碟，這些磁碟將會以分頁 Blob 形式儲存於儲存體。
 
@@ -108,13 +108,17 @@ Azure 虛擬機器上有三種主要的磁片類型：
       1. 將 OLTP 工作負載的間隔 (等量磁碟區大小) 設為 64 KB (65,536 位元組)，資料倉儲的工作負載則設為 256 KB (262,144 位元組)，以避免分割對齊錯誤影響效能。 必須使用 PowerShell 來設定。
       2. 設定資料行數目 = 實體磁碟數量。 設定 8 個以上的磁碟 (不是伺服器管理員 UI) 時，使用 PowerShell。 
 
-    例如，下列 PowerShell 會建立新的儲存體集區，其間隔大小為 64 KB，且資料行數目為 2︰
+    例如，下列 PowerShell 會建立一個新的存放集區，其中的交錯大小為 64 KB，而資料行數目等於存放集區中的實體磁片數量：
 
     ```powershell
-    $PoolCount = Get-PhysicalDisk -CanPool $True
     $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
-
-    New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false 
+    
+    New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" `
+        -PhysicalDisks $PhysicalDisks | New- VirtualDisk -FriendlyName "DataFiles" `
+        -Interleave 65536 -NumberOfColumns $PhysicalDisks .Count -ResiliencySettingName simple `
+        –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter `
+        -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" `
+        -AllocationUnitSize 65536 -Confirm:$false 
     ```
 
   * 對於 Windows 2008 R2 之前的版本，可以使用動態磁碟 (OS 分割的磁碟區)，且等量磁碟區的大小一律為 64 KB。 Windows 8/Windows Server 2012 已不再提供此選項。 如需相關資訊，請參閱 [虛擬磁碟服務正轉換為 Windows 存放管理 API](https://msdn.microsoft.com/library/windows/desktop/hh848071.aspx)中的支援聲明。
@@ -123,7 +127,7 @@ Azure 虛擬機器上有三種主要的磁片類型：
 
   * 請根據您預期的負載量，決定與您的儲存體集區相關聯的磁碟數量。 請注意，各 VM 大小所允許連接的資料磁碟數量皆不同。 如需詳細資訊，請參閱[虛擬機器的大小](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
-  * 如果您未使用 premium Ssd (開發/測試案例) ，建議您新增[VM 大小](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)所支援的資料磁片數目上限，並使用磁片等量分割。
+  * 如果您不是使用 premium Ssd （開發/測試案例），建議您新增[VM 大小](../../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)所支援的最大資料磁片數目，並使用磁片等量分割。
 
 * **快取原則**：請注意，下列快取原則的建議會視您的儲存體設定而有所不同。
 

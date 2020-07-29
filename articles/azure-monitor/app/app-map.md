@@ -3,13 +3,14 @@ title: Azure Application Insights 的應用程式對應 | Microsoft Docs
 description: 使用應用程式對應監視複雜的應用程式拓撲
 ms.topic: conceptual
 ms.date: 03/15/2019
+ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 1f9f19ea9370b9da3e69d871e8b53ccf7f64a6a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008501"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367005"
 ---
 # <a name="application-map-triage-distributed-applications"></a>應用程式對應：對分散式應用程式進行分級
 
@@ -289,7 +290,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ![MapLink-1 影像](./media/app-map/14-updated.png)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 若要深入瞭解相互關聯的運作方式 Application Insights 參閱[遙測相互關聯一文](correlation.md)。
 * [端對端交易診斷體驗](transaction-diagnostics.md)會將伺服器端的遙測資料從您的所有 Application Insights 監視元件，相互關聯至單一視圖。

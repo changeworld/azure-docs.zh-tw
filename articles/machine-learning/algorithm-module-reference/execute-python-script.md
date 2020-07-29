@@ -9,17 +9,17 @@ ms.topic: reference
 ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
-ms.date: 06/16/2020
-ms.openlocfilehash: 2115a0bae8b26113fc10648db2584210809441de
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/27/2020
+ms.openlocfilehash: d07681798cadf1d983942d681b910e26ea48d6d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147258"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285929"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
-本文說明 Azure Machine Learning 設計工具 (preview) 中的 [執行 Python 腳本] 模組。
+本文說明 Azure Machine Learning 設計工具（預覽）中的 [執行 Python 腳本] 模組。
 
 使用此模組來執行 Python 程式碼。 如需有關 Python 架構和設計原則的詳細資訊，請參閱[如何在 Azure Machine Learning 設計工具中執行 Python 程式碼](../how-to-designer-python.md)。
 
@@ -30,124 +30,16 @@ ms.locfileid: "86147258"
 + 從匯[入資料](./import-data.md)模組不支援的來源讀取、載入和運算元據。
 + 執行您自己的深入學習程式碼。 
 
+## <a name="supported-python-packages"></a>支援的 Python 套件
 
 Azure Machine Learning 使用 Python 的 Anaconda 散發，其中包含許多常用的資料處理公用程式。 我們會自動更新 Anaconda 版本。 目前的版本為：
  -  適用于 Python 3.6 的 Anaconda 4.5 + 散發 
 
-預先安裝的套件包括：
--    adal==1.2.2
--    applicationinsights==0.11.9
--    attrs = = 19.3。0
--    azure-common = = 1.1.25
--    azure-核心 = = 1.3。0
--    azure-graphrbac==0.61.1
--    azure-identity = = 1.3。0
--    azure-mgmt-authorization==0.60.0
--    azure-mgmt-containerregistry==2.8.0
--    azure-管理-keyvault = = 2.2。0
--    azure-管理-資源 = = 8.0。1
--    azure-管理-儲存體 = = 8.0。0
--    azure-儲存體-blob = = 1.5。0
--    azure-儲存體-通用 = = 1.4。2
--    azureml-核心 = = 1.1.5。5
--    azureml-dataprep-native = = 14.1。0
--    azureml-dataprep = = 1.3。5
--    azureml-預設值 = = 1.1.5。1
--    azureml-設計工具-傳統模組 = = 0.0.118
--    azureml-設計工具-核心 = = 0.0.31
--    azureml-設計工具-內部 = = 0.0.18
--    azureml-模型管理-sdk = = 1.0.1 b6. post1
--    azureml-管線-核心 = = 1.1。5
--    azureml-遙測 = = 1.1.5。3
--    backports.tempfile==1.0
--    backports.weakref==1.0.post1
--    boto3 = = 1.12.29
--    botocore = = 1.15.29
--    cachetools = = 4.0。0
--    certifi = = 2019.11.28
--    cffi==1.12.3
--    chardet==3.0.4
--    按一下 = = 7.1。1
--    clouDPIckle = = 1.3。0
--    configparser = = 3.7。4
--    coNtextlib2 = = 0.6.0. post1
--    密碼編譯 = = 2。8
--    cycler==0.10.0
--    dill==0.3.1.1
--    distro==1.4.0
--    docker = = 4.2。0
--    docutils==0.15.2
--    dotnetcore2 = = 2.1.13
--    flask = = 1.0。3
--    fusepy==3.0.1
--    gensim==3.8.1
--    google-api-核心 = = 1.16。0
--    google-auth = = 1.12。0
--    google-雲端核心 = = 1.3。0
--    google-雲端-儲存體 = = 1.26。0
--    google 可繼續-media = = 0.5。0
--    googleapis-common-protos = = 1.51。0
--    gunicorn = = 19.9。0
--    idna = = 2。9
--    不平衡-學習 = = 0.4。3
--    isodate==0.6.0
--    itsdangerous = = 1.1。0
--    jeepney = = 0.4。3
--    jinja2 = = 2.11。1
--    jmespath = = 0.9。5
--    joblib = = 0.14。0
--    json-記錄-.py = = 0。2
--    jsonpickle = = 1。3
--    jsonschema = = 3.0。1
--    kiwisolver==1.1.0
--    liac-arff = = 2.4。0
--    lightgbm==2.2.3
--    markupsafe = = 1.1。1
--    matplotlib = = 3.1。3
--    itertools = = 6.0。0
--    msal-extensions = = 0.1。3
--    msal = = 1.1。0
--    msrest = = 0.6.11
--    msrestazure = = 0.6。3
--    ndg-httpsclient==0.5.1
--    nimbusml = = 1.6。1
--    numpy = = 1.18。2
--    oauthlib==3.1.0
--    pandas = = 0.25。3
--    pathspec = = 0.7。0
--    pip = = 20.0。2
--    portalocker = = 1.6。0
--    protobuf = = 3.11。3
--    pyarrow = = 0.16。0
--    pyasn1-模組 = = 0.2。8
--    pyasn1 = = 0.4。8
--    pycparser = = 2.20
--    pycryptodomex = = 3.7。3
--    pyjwt = = 1.7。1
--    pyopenssl = = 19.1。0
--    pyparsing = = 2.4。6
--    pyrsistent = = 0.16。0
--    python-dateutil = = 2.8。1
--    pytz==2019.3
--    要求-oauthlib = = 1.3。0
--    要求 = = 2.23。0
--    rsa = = 4。0
--    ruamel.yaml==0.15.89
--    s3transfer = = 0.3。3
--    scikit-learn-學習 = = 0.22。2
--    scipy = = 1.4。1
--    secretstorage = = 3.1。2
--    setuptools = = 46.1.1. post20200323
--    六 = = 1.14。0
--    智慧型-開啟 = = 1.10。0
--    urllib3 = = 1.25。8
--    websocket-client = = 0.57。0
--    werkzeug = = 0.16。1
--    滾輪 = = 0.34。2
+如需完整清單，請參閱[預先安裝的 Python 套件](#preinstalled-python-packages)一節。
 
- 若要安裝不在預先安裝清單中的封裝 (例如*scikit-learn-其他*) ，請將下列程式碼新增至您的腳本： 
+若要安裝不在預先安裝清單中的封裝（例如， *scikit-learn-其他*），請將下列程式碼新增至您的腳本： 
 
- ```python
+```python
 import os
 os.system(f"pip install scikit-misc")
 ```
@@ -262,6 +154,117 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 + **結果資料集 2**，在 Python 腳本中由第二個傳回的 pandas 資料框架所定義。
 
+## <a name="preinstalled-python-packages"></a>預先安裝的 Python 套件
+預先安裝的套件包括：
+-    adal==1.2.2
+-    applicationinsights==0.11.9
+-    attrs = = 19.3。0
+-    azure-common = = 1.1.25
+-    azure-核心 = = 1.3。0
+-    azure-graphrbac==0.61.1
+-    azure-identity = = 1.3。0
+-    azure-mgmt-authorization==0.60.0
+-    azure-mgmt-containerregistry==2.8.0
+-    azure-管理-keyvault = = 2.2。0
+-    azure-管理-資源 = = 8.0。1
+-    azure-管理-儲存體 = = 8.0。0
+-    azure-儲存體-blob = = 1.5。0
+-    azure-儲存體-通用 = = 1.4。2
+-    azureml-核心 = = 1.1.5。5
+-    azureml-dataprep-native = = 14.1。0
+-    azureml-dataprep = = 1.3。5
+-    azureml-預設值 = = 1.1.5。1
+-    azureml-設計工具-傳統模組 = = 0.0.118
+-    azureml-設計工具-核心 = = 0.0.31
+-    azureml-設計工具-內部 = = 0.0.18
+-    azureml-模型管理-sdk = = 1.0.1 b6. post1
+-    azureml-管線-核心 = = 1.1。5
+-    azureml-遙測 = = 1.1.5。3
+-    backports.tempfile==1.0
+-    backports.weakref==1.0.post1
+-    boto3 = = 1.12.29
+-    botocore = = 1.15.29
+-    cachetools = = 4.0。0
+-    certifi = = 2019.11.28
+-    cffi==1.12.3
+-    chardet==3.0.4
+-    按一下 = = 7.1。1
+-    clouDPIckle = = 1.3。0
+-    configparser = = 3.7。4
+-    coNtextlib2 = = 0.6.0. post1
+-    密碼編譯 = = 2。8
+-    cycler==0.10.0
+-    dill==0.3.1.1
+-    distro==1.4.0
+-    docker = = 4.2。0
+-    docutils==0.15.2
+-    dotnetcore2 = = 2.1.13
+-    flask = = 1.0。3
+-    fusepy==3.0.1
+-    gensim==3.8.1
+-    google-api-核心 = = 1.16。0
+-    google-auth = = 1.12。0
+-    google-雲端核心 = = 1.3。0
+-    google-雲端-儲存體 = = 1.26。0
+-    google 可繼續-media = = 0.5。0
+-    googleapis-common-protos = = 1.51。0
+-    gunicorn = = 19.9。0
+-    idna = = 2。9
+-    不平衡-學習 = = 0.4。3
+-    isodate==0.6.0
+-    itsdangerous = = 1.1。0
+-    jeepney = = 0.4。3
+-    jinja2 = = 2.11。1
+-    jmespath = = 0.9。5
+-    joblib = = 0.14。0
+-    json-記錄-.py = = 0。2
+-    jsonpickle = = 1。3
+-    jsonschema = = 3.0。1
+-    kiwisolver==1.1.0
+-    liac-arff = = 2.4。0
+-    lightgbm==2.2.3
+-    markupsafe = = 1.1。1
+-    matplotlib = = 3.1。3
+-    itertools = = 6.0。0
+-    msal-extensions = = 0.1。3
+-    msal = = 1.1。0
+-    msrest = = 0.6.11
+-    msrestazure = = 0.6。3
+-    ndg-httpsclient==0.5.1
+-    nimbusml = = 1.6。1
+-    numpy = = 1.18。2
+-    oauthlib==3.1.0
+-    pandas = = 0.25。3
+-    pathspec = = 0.7。0
+-    pip = = 20.0。2
+-    portalocker = = 1.6。0
+-    protobuf = = 3.11。3
+-    pyarrow = = 0.16。0
+-    pyasn1-模組 = = 0.2。8
+-    pyasn1 = = 0.4。8
+-    pycparser = = 2.20
+-    pycryptodomex = = 3.7。3
+-    pyjwt = = 1.7。1
+-    pyopenssl = = 19.1。0
+-    pyparsing = = 2.4。6
+-    pyrsistent = = 0.16。0
+-    python-dateutil = = 2.8。1
+-    pytz==2019.3
+-    要求-oauthlib = = 1.3。0
+-    要求 = = 2.23。0
+-    rsa = = 4。0
+-    ruamel.yaml==0.15.89
+-    s3transfer = = 0.3。3
+-    scikit-learn-學習 = = 0.22。2
+-    scipy = = 1.4。1
+-    secretstorage = = 3.1。2
+-    setuptools = = 46.1.1. post20200323
+-    六 = = 1.14。0
+-    智慧型-開啟 = = 1.10。0
+-    urllib3 = = 1.25。8
+-    websocket-client = = 0.57。0
+-    werkzeug = = 0.16。1
+-    滾輪 = = 0.34。2
 
 ## <a name="next-steps"></a>後續步驟
 

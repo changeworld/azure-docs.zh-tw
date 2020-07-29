@@ -3,16 +3,16 @@ title: 跨多個實驗室和訂用帳戶的 Azure DevTest Labs 使用量
 description: 瞭解如何跨多個實驗室和訂用帳戶報告 Azure DevTest Labs 的使用量。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8650244df4c8eb08d4ccc87b1e23fe1e3d047c54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d2663113e929145308f5a5712b968f3551668c2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483426"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287273"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>跨多個實驗室和訂用帳戶報告 Azure DevTest Labs 使用量
 
-大部分的大型組織想要藉由視覺化使用量中的趨勢和極端值來追蹤資源使用量，以更有效率地使用這些資源。 根據資源使用量，實驗室擁有者或管理員可以自訂實驗室，以[改善資源使用量和成本](https://docs.microsoft.com/azure/billing/billing-getting-started)。 在 Azure DevTest Labs 中，您可以下載每個實驗室的資源使用量，讓歷程記錄深入探討使用模式。 這些使用模式有助於找出變更以提升效率。 大部分的企業都想要在[多個實驗室和](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)訂用帳戶中使用個別的實驗室和整體使用量。 
+大部分的大型組織想要藉由視覺化使用量中的趨勢和極端值來追蹤資源使用量，以更有效率地使用這些資源。 根據資源使用量，實驗室擁有者或管理員可以自訂實驗室，以[改善資源使用量和成本](../cost-management-billing/manage/getting-started.md)。 在 Azure DevTest Labs 中，您可以下載每個實驗室的資源使用量，讓歷程記錄深入探討使用模式。 這些使用模式有助於找出變更以提升效率。 大部分的企業都想要在[多個實驗室和](/azure/architecture/cloud-adoption/decision-guides/subscriptions/)訂用帳戶中使用個別的實驗室和整體使用量。 
 
 本文討論如何處理跨多個實驗室和訂用帳戶的資源使用量資訊。
 
@@ -24,8 +24,8 @@ ms.locfileid: "85483426"
 
 您必須先設定 Azure 儲存體帳戶，以允許儲存使用資料的不同檔案，才能匯出 DevTest Labs 的資源使用量。 有兩種常見的方式可執行資料的匯出：
 
-* [DevTest Labs REST API](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* PowerShell Az. Resource 模組會叫用[AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) ，其中包含的動作 `exportResourceUsage` 、實驗室資源識別碼和必要的參數。 
+* [DevTest Labs REST API](/rest/api/dtl/labs/exportresourceusage) 
+* PowerShell Az. Resource 模組會叫用[AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) ，其中包含的動作 `exportResourceUsage` 、實驗室資源識別碼和必要的參數。 
 
     [匯出或刪除個人資料](personal-data-delete-export.md)文章包含範例 PowerShell 腳本，其中含有匯出資料的詳細資訊。 
 
@@ -48,8 +48,8 @@ ms.locfileid: "85483426"
 
 若要匯出多個實驗室的使用方式資訊，請考慮使用 
 
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)，適用于許多語言，包括 PowerShell，或 
-* [Azure 自動化 runbook](https://docs.microsoft.com/azure/automation/)，請使用 PowerShell、Python 或自訂的圖形設計工具來撰寫匯出程式碼。
+* [Azure Functions](../azure-functions/index.yml)，適用于許多語言，包括 PowerShell，或 
+* [Azure 自動化 runbook](../automation/index.yml)，請使用 PowerShell、Python 或自訂的圖形設計工具來撰寫匯出程式碼。
 
 使用這些技術，您可以在特定的日期和時間，在所有實驗室上執行個別的實驗室匯出。 
 
@@ -69,7 +69,7 @@ ms.locfileid: "85483426"
 
 ## <a name="visualizing-data-and-gathering-insights"></a>將資料視覺化並收集見解
 
-使用您選擇的資料視覺效果工具連接到您的長期儲存體，以顯示使用量資料並收集深入解析，以驗證使用效率。 例如， [Power BI](https://docs.microsoft.com/power-bi/power-bi-overview)可以用來組織和顯示使用量資料。 
+使用您選擇的資料視覺效果工具連接到您的長期儲存體，以顯示使用量資料並收集深入解析，以驗證使用效率。 例如， [Power BI](/power-bi/power-bi-overview)可以用來組織和顯示使用量資料。 
 
 您可以使用[Azure Data Factory](https://azure.microsoft.com/services/data-factory/) ，在單一位置介面中建立、連結及管理您的資源。 如果需要更大的控制，可以在單一資源群組內建立個別資源，並獨立管理 Data Factory 服務。  
 

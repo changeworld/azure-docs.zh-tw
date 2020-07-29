@@ -4,12 +4,12 @@ description: 本文提供在應用程式遷移與整合的內容中，管理 Azu
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: cebc32edf78df1fa6a72876f8c8e5d23525942b7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d86728eefc46c74b49ac610e2207ce5e7ae6a9d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481573"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289347"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>治理 Azure DevTest Labs 基礎結構 - 應用程式移轉和整合
 一旦建立您的開發/測試實驗室環境之後，您需要思考下列問題：
@@ -50,14 +50,14 @@ ms.locfileid: "85481573"
 如何設定可輕鬆重複執行的程序，以便將自訂的組織映像帶入 DevTest Labs 環境？
 
 ### <a name="answer"></a>回答
-請參閱[映射 Factory 模式的這段影片](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/)。 此案例是一個進階案例，而提供的指令碼只是範例指令碼。 如果不需要任何變更，則您需要管理和維護環境中所使用的指令碼。
+請參閱[映射 Factory 模式的這段影片](./devtest-lab-faq.md#blog-post)。 此案例是一個進階案例，而提供的指令碼只是範例指令碼。 如果不需要任何變更，則您需要管理和維護環境中所使用的指令碼。
 
 在 Azure Pipelines 中，使用 DevTest Labs 建立自訂映像管線：
 
-- [簡介：藉由在 Azure DevTest Labs 中設定映像處理站，在數分鐘內備妥 VM](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/) \(英文\)
-- [映射 Factory –第2部分！設定 Azure Pipelines 和 Factory 實驗室來建立 Vm](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
-- [映像處理站 - 第 3 部分：儲存自訂映像並散發至多個實驗室](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/) \(英文\)
-- [影片：使用 Azure DevTest Labs 自訂映像處理站](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) \(英文\)
+- [簡介：藉由在 Azure DevTest Labs 中設定映像處理站，在數分鐘內備妥 VM](./devtest-lab-faq.md#blog-post) \(英文\)
+- [映射 Factory –第2部分！設定 Azure Pipelines 和 Factory 實驗室來建立 Vm](./devtest-lab-faq.md#blog-post)
+- [映像處理站 - 第 3 部分：儲存自訂映像並散發至多個實驗室](./devtest-lab-faq.md#blog-post) \(英文\)
+- [影片：使用 Azure DevTest Labs 自訂映像處理站](./devtest-lab-faq.md#blog-post) \(英文\)
 
 ## <a name="patterns-to-set-up-network-configuration"></a>設定網路設定的模式
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 07/24/2020
 ms.author: aahi
-ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e6b90e17c96f7636fa509e31354f9413b312803f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81383089"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289029"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>語音服務容器的常見問題（FAQ）
 
@@ -30,7 +30,7 @@ ms.locfileid: "81383089"
 
 **答：** 設定生產叢集時，有幾件事需要考慮。 首先，在同一部電腦上設定單一語言、多個容器，應該不會有太大的問題。 如果您遇到問題，可能是硬體相關問題-因此，我們會先查看資源，也就是：CPU 和記憶體規格。
 
-請考慮一下容器和最`ja-JP`新的模型。 聲場模型是 CPU 取向最嚴苛的部分，而語言模型則要求最多的記憶體。 當我們對使用進行基準測試時，會花費大約0.6 的 CPU 核心來處理單一語音轉換文字的要求（當音訊即時流入時）（例如從麥克風）。 如果您是以比即時（如檔案）更快的速度來提供音訊，則該使用方式可能會加倍（1.2 x 核心）。 同時，下面所列的記憶體是解碼語音的操作記憶體。 它不*會*考慮語言模型的實際完整大小，這會位於檔案快取中。 `ja-JP`這是額外的 2 GB;若`en-US`為，則可能是更多（6-7 GB）。
+請考慮一下 `ja-JP` 容器和最新的模型。 聲場模型是 CPU 取向最嚴苛的部分，而語言模型則要求最多的記憶體。 當我們對使用進行基準測試時，會花費大約0.6 的 CPU 核心來處理單一語音轉換文字的要求（當音訊即時流入時）（例如從麥克風）。 如果您是以比即時（如檔案）更快的速度來提供音訊，則該使用方式可能會加倍（1.2 x 核心）。 同時，下面所列的記憶體是解碼語音的操作記憶體。 它不*會*考慮語言模型的實際完整大小，這會位於檔案快取中。 `ja-JP`這是額外的 2 GB; 針對 `en-US` ，可能會有更多（6-7 GB）。
 
 如果您的電腦記憶體不足，而且您嘗試在其上部署多個語言，檔案快取可能已滿，而且會強制 OS 將模型放入和移出。對於執行中的轉譯而言，這可能是災難性的，而且可能會導致速度變慢和其他效能的影響。
 
@@ -42,23 +42,23 @@ ms.locfileid: "81383089"
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-最後，您可以使用`DECODER MAX_COUNT`變數，在*單一*容器內設定您想要的解碼器數目。 因此，基本上，我們應該從您的 SKU （CPU/記憶體）開始，我們可以建議如何充分發揮其效能。 很棒的起點是指建議的主機機器資源規格。
+最後，您可以使用變數，在*單一*容器內設定您想要的解碼器數目 `DECODER MAX_COUNT` 。 因此，基本上，我們應該從您的 SKU （CPU/記憶體）開始，我們可以建議如何充分發揮其效能。 很棒的起點是指建議的主機機器資源規格。
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>您是否可以協助內部部署語音容器的容量規劃和成本估計？</b>
+<b>您是否可以協助內部部署的語音轉換文字容器進行容量規劃和成本估計？</b>
 </summary>
 
 **答：** 針對批次處理模式中的容器容量，每個解碼器都可以使用兩個 CPU 核心來處理單一辨識的 2-3 倍。 我們不建議每個容器實例保留兩個以上的並行辨識，但建議您在負載平衡器後方，針對可靠性/可用性原因，執行更多的容器實例。
 
-雖然我們可以讓每個容器實例以更多的解碼器來執行。 例如，我們可以在八個核心機器上設定每個容器實例7個的解碼器（每個最多2倍），以產生15倍的輸送量。 有一個要注意`DECODER_MAX_COUNT`的參數。 在極端情況下，會發生可靠性和延遲問題，輸送量也大幅增加。 若為麥克風，則會即時使用1x。 整體使用方式應該是單一辨識的大約一個核心。
+雖然我們可以讓每個容器實例以更多的解碼器來執行。 例如，我們可以在八個核心機器上設定每個容器實例7個的解碼器（每個最多2倍），以產生15倍的輸送量。 有一個 `DECODER_MAX_COUNT` 要注意的參數。 在極端情況下，會發生可靠性和延遲問題，輸送量也大幅增加。 若為麥克風，則會即時使用1x。 整體使用方式應該是單一辨識的大約一個核心。
 
 針對在批次處理模式中處理 1 K 小時/天的情況，在極端的情況下，3個 Vm 可以在24小時內處理它，但無法保證。 若要處理尖峰天數、容錯移轉、更新，以及提供最低的備份/BCP，建議使用4-5 部機器，而不是每個叢集有3個，並搭配2個以上的叢集。
 
-針對硬體，我們使用標準 Azure VM `DS13_v2`做為參考（每個核心必須是 2.6 GHz 或更佳，並已啟用 AVX2 指令集）。
+針對硬體，我們使用標準 Azure VM `DS13_v2` 做為參考（每個核心必須是 2.6 GHz 或更佳，並已啟用 AVX2 指令集）。
 
 | 執行個體  | vCPU （秒） | RAM    | 暫存儲存體 | 隨用隨付與 AHB | 含 AHB 的1年保留期（省下%） | 3年保留 AHB （節省%） |
 |-----------|---------|--------|--------------|------------------------|-------------------------------------|--------------------------------------|
@@ -95,7 +95,7 @@ Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 <b>為什麼轉譯中遺漏了標點符號？</b>
 </summary>
 
-**答：** 如果`speech_recognition_language=<YOUR_LANGUAGE>`是使用碳 client，則應該在要求中明確設定。
+**答：**`speech_recognition_language=<YOUR_LANGUAGE>`如果是使用碳 client，則應該在要求中明確設定。
 
 例如：
 
@@ -168,7 +168,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**回答2：** 您必須在要求中提供正確的語音名稱，這會區分大小寫。 請參閱完整的服務名稱對應。 您必須使用`en-US-JessaRUS`，因為`en-US-JessaNeural`目前無法在文字轉換語音的容器版本中提供。
+**回答2：** 您必須在要求中提供正確的語音名稱，這會區分大小寫。 請參閱完整的服務名稱對應。 您必須使用 `en-US-JessaRUS` ，因為 `en-US-JessaNeural` 目前無法在文字轉換語音的容器版本中提供。
 
 **錯誤3：**
 
@@ -299,9 +299,9 @@ WebSocket
 **答：** 這是的融合：
 - 嘗試進行容器聽寫端點的人員（我不確定他們取得該 URL 的方式）
 - 1<sup>st</sup>合作物件端點是容器中的一個。
-- 1<sup>st</sup>合作物件端點會傳回 speech 訊息，而不是`speech.hypothesis`針對聽寫端點傳回的3個<sup>rd</sup>元件端點訊息。
-- 碳快速入門全部使用`RecognizeOnce` （互動模式）
-- 對於要求不會在互動`speech.fragment`模式中傳回的訊息，其具有判斷提示。
+- 1<sup>st</sup>合作物件端點會傳回 speech 訊息，而不是 `speech.hypothesis` 針對聽寫端點傳回的3個<sup>rd</sup>元件端點訊息。
+- 碳快速入門全部使用 `RecognizeOnce` （互動模式）
+- 對於 `speech.fragment` 要求不會在互動模式中傳回的訊息，其具有判斷提示。
 - 在發行組建中引發判斷提示的碳（終止進程）。
 
 因應措施是切換至在您的程式碼中使用連續辨識，或（更快）連接到容器中的互動式或連續端點。
@@ -366,7 +366,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 檔指出要公開不同的埠，我這麼做，但 LUIS 容器仍在接聽埠5000？
 
-**答：** 試試`-p <outside_unique_port>:5000`看。 例如： `-p 5001:5000` 。
+**答：** 試試看 `-p <outside_unique_port>:5000` 。 例如： `-p 5001:5000` 。
 
 
 <br>
@@ -376,10 +376,10 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 <details>
 <summary>
-<b>如何取得非批次 Api 以處理音訊&lt;15 秒的時間？</b>
+<b>如何取得非批次 Api 以處理音訊 &lt; 15 秒的時間？</b>
 </summary>
 
-**答：** `RecognizeOnce()`在互動模式中，只會處理最多15秒的音訊，因為模式適用于語音命令，其中語句應該是 short。 如果您使用`StartContinuousRecognition()`進行聽寫或交談，則不會有15秒的限制。
+**答：** `RecognizeOnce()`在互動模式中，只會處理最多15秒的音訊，因為模式適用于語音命令，其中語句應該是 short。 如果您使用 `StartContinuousRecognition()` 進行聽寫或交談，則不會有15秒的限制。
 
 
 <br>
@@ -392,7 +392,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 有多少個並行要求會有4個核心，4 GB 的 RAM 處理？ 例如，如果我們必須提供50個並行要求，建議使用多少核心和 RAM？
 
-**答：** 使用最新`en-US`的8個即時，因此建議使用超過6個並行要求的 docker 容器。 它會 crazier 超過16個核心，而且它會變成非統一記憶體存取（NUMA）節點的敏感性。 下表說明每個語音容器的資源的最低和建議配置。
+**答：** 使用最新的8個即時， `en-US` 因此建議使用超過6個並行要求的 docker 容器。 它會 crazier 超過16個核心，而且它會變成非統一記憶體存取（NUMA）節點的敏感性。 下表說明每個語音容器的資源的最低和建議配置。
 
 # <a name="speech-to-text"></a>[語音轉文字](#tab/stt)
 
@@ -422,7 +422,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 - 每個核心必須至少有 2.6 GHz 或更快的速度。
 - 針對檔案，節流將會在語音 SDK 中，在2分鐘（前5秒的音訊未進行節流）。
-- 此解碼器能夠進行大約 2-3 倍的即時作業。 為此，單一辨識的整體 CPU 使用量會接近兩個核心。 這就是為什麼我們不建議在每個容器實例中保留兩個以上的使用中連接。 最極端的是在八個核心機器（例如`DS13_V2`）中，將大約10個解碼器放在2倍。 針對容器版本1.3 和更新版本，有一個您可以嘗試設定`DECODER_MAX_COUNT=20`的參數。
+- 此解碼器能夠進行大約 2-3 倍的即時作業。 為此，單一辨識的整體 CPU 使用量會接近兩個核心。 這就是為什麼我們不建議在每個容器實例中保留兩個以上的使用中連接。 最極端的是在八個核心機器（例如）中，將大約10個解碼器放在2倍 `DS13_V2` 。 針對容器版本1.3 和更新版本，有一個您可以嘗試設定的參數 `DECODER_MAX_COUNT=20` 。
 - 若為麥克風，則會即時為1x。 整體使用方式應該是單一辨識的大約一個核心。
 
 請考慮您擁有的音訊時數總計。 如果數位很大，若要改善可靠性/可用性，建議您在負載平衡器後方的單一或多個方塊上執行更多的容器實例。 您可以使用 Kubernetes （K8S）和 Helm，或透過 Docker 撰寫來完成協調流程。
@@ -439,7 +439,7 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 
 **答：** 在內部部署容器中，我們有大小寫（ITN）可供使用。 標點符號與語言無關，而某些語言（包括中文和日文）則不支援。
 
-針對現有的容器，我們有隱含和*基本的標點符號*支援，但它`off`預設為。 這表示您可以取得範例中的`.`字元，而不是`。`字元。 若要啟用此隱含邏輯，以下是如何使用我們的語音 SDK 在 Python 中執行此動作的範例（類似于其他語言）：
+針對現有的容器 *，我們有*隱含和基本的標點符號支援，但它 `off` 預設為。 這表示您可以取得 `.` 範例中的字元，而不是 `。` 字元。 若要啟用此隱含邏輯，以下是如何使用我們的語音 SDK 在 Python 中執行此動作的範例（類似于其他語言）：
 
 ```python
 speech_config.set_service_property(
@@ -514,7 +514,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-較舊的容器沒有適用于此`FromHost` API 之碳的必要端點。 如果用於1.3 版的容器，則應該使用此程式碼：
+較舊的容器沒有適用于此 API 之碳的必要端點 `FromHost` 。 如果用於1.3 版的容器，則應該使用此程式碼：
 
 ```cpp
 const auto host = "http://localhost:5000";
@@ -525,7 +525,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-以下是使用`FromEndpoint` API 的範例：
+以下是使用 API 的範例 `FromEndpoint` ：
 
 ```cpp
 const auto endpoint = "http://localhost:5000/cognitiveservices/v1";
@@ -553,11 +553,11 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 它們適用于不同的用途，並以不同的方式使用。
 
 Python[範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)：
-- 適用于具有自訂端點的單一辨識（互動模式）（也就是`SpeechConfig`使用端點參數），請參閱`speech_recognize_once_from_file_with_custom_endpoint_parameters()`。
-- 如需連續辨識（對話模式），並只修改以使用上述的自訂端點， `speech_recognize_continuous_from_file()`請參閱。
-- 若要啟用上述範例中的聽寫（僅在您真正需要的情況下），請`speech_config`在建立之後`speech_config.enable_dictation()`，立即加入程式碼。
+- 如需使用自訂端點（也就是使用端點參數）的單一辨識（互動模式） `SpeechConfig` ，請參閱 `speech_recognize_once_from_file_with_custom_endpoint_parameters()` 。
+- 如需連續辨識（對話模式），並只修改以使用上述的自訂端點，請參閱 `speech_recognize_continuous_from_file()` 。
+- 若要啟用上述範例中的聽寫（僅在您真正需要的情況下），請在建立之後 `speech_config` ，立即加入程式碼 `speech_config.enable_dictation()` 。
 
-在 c # 中啟用聽寫`SpeechConfig.EnableDictation()`功能，叫用函式。
+在 c # 中啟用聽寫功能，叫用函式 `SpeechConfig.EnableDictation()` 。
 
 ### <a name="fromendpoint-apis"></a>`FromEndpoint`Api
 | Language | API 詳細資料 |
@@ -577,7 +577,7 @@ Python[範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/bl
 <b>我要如何搭配語音容器來使用「1.8 版」的語音 SDK？</b>
 </summary>
 
-**答：** 有一個新`FromHost`的 API。 這不會取代或修改任何現有的 Api。 它只是新增了使用自訂主機來建立語音設定的替代方式。
+**答：** 有一個新的 `FromHost` API。 這不會取代或修改任何現有的 Api。 它只是新增了使用自訂主機來建立語音設定的替代方式。
 
 ### <a name="fromhost-apis"></a>`FromHost`Api
 
@@ -592,15 +592,15 @@ Python[範例](https://github.com/Azure-Samples/cognitive-services-speech-sdk/bl
 
 > 參數：主機（必要）、訂用帳戶金鑰（選擇性，如果您可以使用服務，則不需要它）。
 
-Host 的格式是`protocol://hostname:port`選擇性`:port`的（如下所示）：
-- 如果容器是在本機執行，則主機名稱`localhost`為。
+Host 的格式是 `protocol://hostname:port` `:port` 選擇性的（如下所示）：
+- 如果容器是在本機執行，則主機名稱為 `localhost` 。
 - 如果容器是在遠端伺服器上執行，請使用該伺服器的主機名稱或 IPv4 位址。
 
 語音轉換文字的主機參數範例：
 - `ws://localhost:5000`-使用埠5000對本機容器進行不安全的連接
 - `ws://some.host.com:5000`-與遠端伺服器上執行之容器的非安全連線
 
-上述的 Python 範例，但使用`host`參數，而`endpoint`不是：
+上述的 Python 範例，但使用 `host` 參數，而不是 `endpoint` ：
 
 ```python
 speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")

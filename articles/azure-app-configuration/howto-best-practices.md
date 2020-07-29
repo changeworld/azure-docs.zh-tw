@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: df56f53b64a35737700529b80c004efeb31eaabc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80348666"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367515"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 應用程式組態最佳做法
 
@@ -42,7 +42,7 @@ ms.locfileid: "80348666"
 
 應用程式組態會將與它一起儲存的所有金鑰視為獨立的實體。 應用程式組態不會嘗試推斷索引鍵之間的任何關聯性，或根據其階層繼承索引鍵值。 不過，您可以匯總多組索引鍵，方法是使用標籤與應用程式程式碼中適當的設定堆疊結合。
 
-讓我們來看看範例。 假設您有一個名為**Asset1**的設定，其值可能會根據開發環境而有所不同。 您會建立名為 "Asset1" 的機碼，其中包含空白卷標和名為「開發」的標籤。 在第一個標籤中，您會放入**Asset1**的預設值，並在後者中放置「開發」的特定值。
+以下舉例說明。 假設您有一個名為**Asset1**的設定，其值可能會根據開發環境而有所不同。 您會建立名為 "Asset1" 的機碼，其中包含空白卷標和名為「開發」的標籤。 在第一個標籤中，您會放入**Asset1**的預設值，並在後者中放置「開發」的特定值。
 
 在您的程式碼中，您會先取出索引鍵值，而不使用任何標籤，然後再以「開發」標籤第二次抓取相同的索引鍵值組。 當您第二次取得值時，會覆寫先前的索引鍵值。 .NET Core 設定系統可讓您將多組設定資料「堆疊」在彼此之上。 如果索引鍵存在於一個以上的集合中，則會使用包含它的最後一組。 使用現代化的程式設計架構（例如 .NET Core）時，如果您使用原生設定提供者來存取應用程式組態，就可以免費取得這項堆疊功能。 下列程式碼片段會示範如何在 .NET Core 應用程式中執行堆疊：
 

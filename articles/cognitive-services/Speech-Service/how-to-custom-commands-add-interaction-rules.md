@@ -10,28 +10,28 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: f37109cc2677ad5ef18c5677bda9308a78cebccf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d6c0928196c9e8e1abf6aa7f724a58753ce3d2a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851317"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289038"
 ---
 # <a name="add-interaction-rules"></a>新增互動規則
 
-在本文中，您將瞭解*互動規則*。 這些額外的規則會處理更具體或複雜的情況。 您可以撰寫自己的自訂互動規則，但在本文中，您會將互動規則用於下列目標案例：
+在本文中，您將瞭解**互動規則**。 這些是額外的規則，可處理更具體或複雜的情況。 雖然您可以免費撰寫自己的自訂互動規則，但在本文中，您會針對下列目標案例使用互動規則：
 
 * 確認命令
 * 將單步驟更正新增至命令
 
 若要深入瞭解互動規則，請移至[參考](./custom-commands-references.md)一節。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您必須已完成下列文章中的步驟：
 > [!div class="checklist"]
-> * [使用簡單的命令建立應用程式](./how-to-custom-commands-create-application-with-simple-commands.md)
-> * [將參數新增至命令](./how-to-custom-commands-add-parameters-to-commands.md)
+> * [如何：使用簡單的命令建立應用程式](./how-to-custom-commands-create-application-with-simple-commands.md)
+> * [如何：將參數新增至命令](./how-to-custom-commands-add-parameters-to-commands.md)
 
 ## <a name="add-confirmations-to-a-command"></a>將確認新增至命令
 
@@ -40,7 +40,7 @@ ms.locfileid: "85851317"
 1. 在左窗格中選取 [ **SetTemperature** ] 命令。
 1. 選取中間窗格中的 [**新增**] 來新增互動規則。 然後選取 [**互動規則**] [  >  **確認命令**]。
 
-    此動作會新增三個互動規則。 此規則會要求使用者確認警示的日期和時間，並預期會進行確認（是/否）以進行下一回合。
+    此動作會新增三個互動規則，會要求使用者確認警示的日期和時間，並預期會進行確認（是/否）以進行下一回合。
 
     1. 依據下列設定，修改 [**確認命令**互動] 規則：
         1. 將**名稱**重新命名以**確認溫度**。
@@ -75,14 +75,14 @@ ms.locfileid: "85851317"
 
 選取 [**定型**]，等待訓練完成，然後選取 [**測試**]。
 
-- **輸入**：將溫度設定為80度。
-- **輸出**：確定80？
-- **輸入**：否。
+- **輸入**：將溫度設定為80度
+- **輸出**：您確定要將溫度設定為80度嗎？
+- **輸入**：否
 - **輸出**：沒有問題。 接下來的溫度為何？
-- **輸入**：83度。
-- **輸出**：確定83？
-- **輸入**：是。
-- **輸出**： [確定]，將溫度設定為83度。
+- **輸入**：72度
+- **輸出**：您確定要將溫度設定為72度嗎？
+- **輸入**：是
+- **輸出**：正常，將溫度設定為83度
 
 
 ## <a name="implement-corrections-in-a-command"></a>在命令中執行更正

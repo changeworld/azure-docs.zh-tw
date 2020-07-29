@@ -4,16 +4,16 @@ description: 列出 Azure 中適用于虛擬機器的不同 GPU 優化大小。 
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: efb26260d0e1f59e78c8328de298c3d4d92c19d3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 15b6de6a03bc5dd67650076beac603845b99ff59
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509303"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286184"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最佳化的虛擬機器大小
 
@@ -37,7 +37,7 @@ GPU 優化的 VM 大小是使用單一、多個或小數 Gpu 提供的特製化�
 
 - 針對 AMD Gpu 支援的 Vm，請參閱[在執行 Windows 的 N 系列 vm 上安裝 AMD gpu 驅動程式](./windows/n-series-amd-driver-setup.md)，以取得支援的作業系統、驅動程式、安裝和驗證步驟。
 
-## <a name="deployment-considerations"></a>部署考量
+## <a name="deployment-considerations"></a>部署考量因素
 
 - 如需了解 N 系列 VM 的可用性，請參閱[依區域提供的產品](https://azure.microsoft.com/regions/services/)。
 

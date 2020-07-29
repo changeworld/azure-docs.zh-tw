@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: aca2e0a878470a644aff3a42411b69da9096fc78
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: af554b2055102b12a8c0e89c6301400f76021ede
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170525"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313331"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 身分識別平臺識別碼權杖
 
@@ -27,11 +27,11 @@ ms.locfileid: "87170525"
 
 ## <a name="using-the-id_token"></a>使用 id_token
 
-識別碼權杖應該用來驗證使用者是否為其所宣稱的身分，並取得其相關的其他實用資訊-不應將其用於授權來取代[存取權杖](access-tokens.md)。 它所提供的宣告可用於應用程式內的 UX、做為資料庫中的索引鍵，以及提供用戶端應用程式的存取權。  建立資料庫的金鑰時， `idp` 不應使用，因為它會混亂來賓案例。  金鑰應 `sub` 單獨完成（一律是唯一的），並在 `tid` 需要時用於路由。  如果您需要在服務之間共用資料， `oid` + `sub` + `tid` 將可使用，因為多個服務全都取得相同的 `oid` 。
+識別碼權杖應該用來驗證使用者是否為其所宣稱的身分，並取得其相關的其他實用資訊-不應將其用於授權來取代[存取權杖](access-tokens.md)。 它所提供的宣告可用於應用程式內的 UX、做為[資料庫中](#using-claims-to-reliably-identify-a-user-subject-and-object-id)的索引鍵，以及提供用戶端應用程式的存取權。  
 
 ## <a name="claims-in-an-id_token"></a>id_token 中的宣告
 
-`id_tokens`Microsoft 身分識別的[jwt](https://tools.ietf.org/html/rfc7519) （JSON Web 權杖），表示它們是由標頭、承載和簽章部分所組成。 您可以使用標頭和簽章來驗證權杖的真確性，而承載則包含您用戶端所要求使用者的相關資訊。 除非另有說明，此處所列的所有 JWT 宣告都會同時出現在 v1.0 和 v2.0 權杖中。
+`id_tokens`是[jwt](https://tools.ietf.org/html/rfc7519) （JSON Web 權杖），這表示它們是由標頭、承載和簽章部分所組成。 您可以使用標頭和簽章來驗證權杖的真確性，而承載則包含您用戶端所要求使用者的相關資訊。 除非另有說明，此處所列的所有 JWT 宣告都會同時出現在 v1.0 和 v2.0 權杖中。
 
 ### <a name="v10"></a>v1.0
 
@@ -87,14 +87,25 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`ver` | 字串，1.0 或 2.0 | 表示 id_token 的版本。 |
 
 > [!NOTE]
-> V1.0 和 v2.0 id_token 與上述範例中所見的資訊數量有所差異。 版本基本上會指定發出它的 Azure AD 平臺端點。 [Azure AD 的 OAuth 實行](about-microsoft-identity-platform.md)已演變到數年。 Azure AD 應用程式目前有兩個不同的 Outh 端點。 您可以使用任何分類為 v2.0 或 v1.0 的新端點。 這兩者的 OAuth 端點都不同。 V2.0 端點較新，而 v1.0 端點的功能會遷移至此端點。 新的開發人員應該使用 v2.0 端點。
+> V1.0 和 v2.0 id_token 與上述範例中所見的資訊數量有所差異。 版本是以其所要求之處的端點為基礎。 雖然現有的應用程式可能會使用 Azure AD 端點，但新的應用程式應該使用 v2.0 「Microsoft 身分識別平臺」端點。
 >
 > - v1.0： Azure AD 端點：`https://login.microsoftonline.com/common/oauth2/authorize`
-> - v2.0： Microsoft identitypPlatform 端點：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+> - v2.0： Microsoft 身分識別平臺端點：`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
+
+### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>使用宣告來可靠地識別使用者（主旨和物件識別碼）
+
+識別使用者時（例如，在資料庫中查閱，或決定他們擁有的許可權），請務必使用會在一段時間內保持不變且不重複的資訊。  繼承應用程式有時會使用電子郵件地址、電話號碼或 UPN 之類的欄位。  所有這些專案都可能隨著時間而改變，而且也可以在一段時間後重複使用，也就是當員工變更其名稱時，或員工的電子郵件地址符合先前的、不再存在的員工）。 因此，您的應用程式不一定要使用人類看得懂的資料來識別使用者-人類可**讀的，** 通常表示有人會讀取它，並想要加以變更。  相反地，請使用 OIDC 標準所提供的宣告，或由 Microsoft 提供的延伸模組宣告，也就是 `sub` 和 `oid` 宣告。
+
+若要正確地儲存每位使用者的資訊，請使用 `sub` 或 `oid` 單獨（這是 guid 是唯一的），並在 `tid` 需要時用於路由或分區化。  如果您需要跨服務共用資料， `oid` + `tid` 最棒的是所有應用程式都會取得相同的 `oid` 和 `tid` 宣告給指定的使用者。  `sub`Microsoft 身分識別平臺中的宣告是「配對」-它是以權杖收件者、租使用者和使用者的組合為唯一的。  因此，針對指定使用者要求識別碼權杖的兩個應用程式將會收到不同的 `sub` 宣告，但該 `oid` 使用者的宣告相同。
+
+>[!NOTE]
+> 請不要使用宣告 `idp` 來儲存使用者的相關資訊，以嘗試讓租使用者之間的使用者相互關聯。  它將不會運作，因為在租使用者之間，系統會 `oid` `sub` 依設計來變更使用者的和宣告，以確保應用程式無法跨租使用者追蹤使用者。  
+>
+> 來賓案例（其中使用者位於某個租使用者中，並在另一個租使用者中進行驗證）應將使用者視為服務的全新使用者。  您在 Contoso 租使用者中的檔和許可權不應套用於 Fabrikam 租使用者中。 這很重要，可防止跨租使用者的意外資料洩漏。
 
 ## <a name="validating-an-id_token"></a>驗證 id_token
 
-驗證與 `id_token` [驗證存取權杖](access-tokens.md#validating-tokens)的第一個步驟類似-您的用戶端應該驗證正確的簽發者是否已送回權杖，而且它尚未遭到篡改。 因為 `id_tokens` 一律是 JWT 權杖，所以有許多程式庫都是用來驗證這些權杖，我們建議您使用其中一個，而不是自行執行。
+驗證與 `id_token` [驗證存取權杖](access-tokens.md#validating-tokens)的第一個步驟類似-您的用戶端可以驗證正確的簽發者是否已送回權杖，而且它尚未遭到篡改。 因為 `id_tokens` 一律是 JWT 權杖，所以有許多程式庫都是用來驗證這些權杖，我們建議您使用其中一個，而不是自行執行。  請注意，只有機密的用戶端（具有密碼）才會驗證識別碼權杖。  公用應用程式（完全在您未控制的裝置或網路上執行的程式碼，例如，使用者的瀏覽器或其家用網路）不會因為驗證識別碼權杖而受益，因為惡意使用者可以攔截並編輯用於驗證權杖的金鑰。
 
 若要手動驗證權杖，請參閱[驗證存取權杖](access-tokens.md#validating-tokens)中的步驟詳細資料。 驗證權杖上的簽章之後，應在 id_token 中驗證下列 JWT 宣告（也可以透過您的權杖驗證程式庫來完成）：
 

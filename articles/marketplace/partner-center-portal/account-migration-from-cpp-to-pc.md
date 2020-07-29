@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 09/23/2019
-ms.openlocfilehash: 723690c29cd6ce77d7615fc613e50740ef2a45c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbf76f846395d6bf0b02828ab1d6ad8b70c97784
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520148"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289333"
 ---
 # <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>如何將您的帳戶從 Cloud Partner 入口網站遷移至合作夥伴中心
 
@@ -59,7 +59,7 @@ ms.locfileid: "86520148"
 
 如果您不是 Microsoft 合作夥伴網路的成員，您可以[由此加入](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new)，以取得 MPN 識別碼。 記下您的 MPN 識別碼，因為您必須在帳戶啟用程序中輸入此識別碼。
 
-若要深入了解 Microsoft 合作夥伴網路，請參閱合作夥伴網站上的[加入 Microsoft 合作夥伴網路](https://partner.microsoft.com/en-US/membership)。 若要深入了解 Microsoft 合作夥伴網路中的 ISV 權益，請參閱 [ISV 資源中樞](https://partner.microsoft.com/isv-resource-hub)。  
+若要深入了解 Microsoft 合作夥伴網路，請參閱合作夥伴網站上的[加入 Microsoft 合作夥伴網路](https://partner.microsoft.com/membership)。 若要深入了解 Microsoft 合作夥伴網路中的 ISV 權益，請參閱 [ISV 資源中樞](https://partner.microsoft.com/isv-resource-hub)。  
 
 ## <a name="move-dynamics-365-and-powerapps-offers-to-partner-center"></a>將 Dynamics 365 和 PowerApps 供應項目移至合作夥伴中心
 

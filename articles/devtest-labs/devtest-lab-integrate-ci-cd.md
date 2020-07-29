@@ -3,12 +3,12 @@ title: 將 Azure DevTest Labs 整合到您的 Azure Pipelines
 description: 了解如何將 Azure DevTest Labs 整合到 Azure Pipelines 持續整合和傳遞管線
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 080577a74a1cb168453c6a027d77ae395072ccc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 96f99d41d0a7ea07bf3854292f9c3bd6245414b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480570"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288923"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>將 Azure DevTest Labs 整合到您的 Azure Pipelines CI/CD 管線
 
@@ -24,7 +24,7 @@ ms.locfileid: "85480570"
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 註冊或登入您的[Azure DevOps](https://dev.azure.com)組織，並在組織中[建立專案](/vsts/organizations/projects/create-project)。 
   
@@ -109,7 +109,7 @@ ms.locfileid: "85480570"
    
 1. 針對每個變數，選取 [**新增**]，然後輸入名稱和值：
    
-   |名稱|值|
+   |Name|值|
    |---|---|
    |*vmName*|您在 Resource Manager 範本中指派的 VM 名稱|
    |*userName*|存取 VM 的使用者名稱|
@@ -218,5 +218,5 @@ ms.locfileid: "85480570"
 ## <a name="next-steps"></a>後續步驟
 - 了解如何[使用 Resource Manager 範本建立多個 VM 環境](devtest-lab-create-environment-from-arm.md)。
 - 從[公用 DevTest Labs GitHub 存放庫](https://github.com/Azure/azure-quickstart-templates)探索更多 DevTest Labs 自動化的快速入門 Resource Manager 範本。
-- 如有必要，請參閱[Azure DevOps 疑難排解](https://docs.microsoft.com/azure/devops/pipelines/troubleshooting)頁面。
+- 如有必要，請參閱[Azure DevOps 疑難排解](/azure/devops/pipelines/troubleshooting)頁面。
  

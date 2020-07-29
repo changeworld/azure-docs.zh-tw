@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 35fd95272530ed31f8ee197679e9368ca74ebef1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089663"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367396"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 身分識別管理和存取控制安全性最佳作法
 
@@ -204,7 +204,7 @@ ms.locfileid: "87089663"
 您可以使用 [RBAC](/azure/role-based-access-control/overview) 來將權限指派給特定範圍的使用者、群組及應用程式。 角色指派的範圍可以是訂用帳戶、資源群組或單一資源。
 
 **最佳做法**：請區隔小組內的職責，而僅授與使用者執行作業所需的存取權。 不要授與每個人 Azure 訂用帳戶或資源中無限制的權限，而是只允許在特定範圍執行特定的動作。
-**詳細資料**：使用 Azure 中的[內建 RBAC 角色](/azure/role-based-access-control/built-in-roles)指派權限給使用者。
+**詳細資料**：在 azure 中使用[azure 內建角色](/azure/role-based-access-control/built-in-roles)，將許可權指派給使用者。
 
 > [!Note]
 > 特定的權限會造成不必要的複雜性和混淆，從而累積成「舊版」設定，令人難以進行修正而不害怕造成破壞。 避免資源特定的許可權。 相反地，請針對整個企業的權限使用管理群組，並針對訂用帳戶內的權限使用資源群組。 請避免使用者特定的權限。 相反地，請將存取權指派給 Azure AD 中的群組。

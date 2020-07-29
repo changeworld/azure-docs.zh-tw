@@ -3,28 +3,26 @@ title: 在 Azure 入口網站中建立和管理動作群組
 description: 了解如何在 Azure 入口網站中建立和管理動作群組。
 author: dkamstra
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 0c090238192b49af00856f6fcd002e95d154d2c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a9d0fa9efaa07582212344e617d9a42f264b99ee
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321848"
+ms.locfileid: "87337714"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
-
-您可以設定一個動作，透過電子郵件或 SMS 來通知某人，他們會收到確認指出已新增至動作群組。
 
 本文將說明如何在 Azure 入口網站中建立和管理動作群組。
 
 每個動作是由下列屬性所組成：
 
-* **Name**：動作群組內的唯一識別碼。  
-* **動作類型**：執行的動作。 範例包括傳送語音電話、SMS、電子郵件或觸發各種類型的自動化動作。 請參閱本文稍後的類型。
-* **詳細資料**：對應的詳細資料，會依「動作類型」而有所不同。
+* **類型**：已執行的通知或動作。 範例包括傳送語音電話、SMS、電子郵件或觸發各種類型的自動化動作。 請參閱本文稍後的類型。
+* **Name**：動作群組內的唯一識別碼。
+* **詳細資料**：依*類型*而異的對應詳細資料。
 
 如需如何使用 Azure Resource Manager 範本設定動作群組的資訊，請參閱[動作群組 Resource Manager 範本](./action-groups-create-resource-manager-template.md)。
 
@@ -32,33 +30,75 @@ ms.locfileid: "87321848"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [監視器]。 [監視器] 頁面會將您的所有監視設定與資料合併在一個檢視中。
 
-1. 選取 [警示]，然後選取 [管理動作]。
+1. 選取 [**警示**]，然後選取 [**管理動作**]。
 
     ![管理動作按鈕](./media/action-groups/manage-action-groups.png)
     
-1. 選取 [新增動作群組]，並填寫各欄位。
+1. 選取 [**新增動作群組**]，並在 [wizard] 體驗中填入相關欄位。
 
-    ![「新增動作群組」命令](./media/action-groups/add-action-group.png)
+    ![「新增動作群組」命令](./media/action-groups/add-action-group.PNG)
+
+### <a name="configure-basic-action-group-settings"></a>設定基本動作群組設定
+
+在 [**專案詳細資料**] 下：
+
+選取要儲存動作群組的 [**訂**用帳戶] 和 [**資源群組**]。
+
+在 [執行個體詳細資料] 下方：
+
+1. 輸入**動作組名**。
+
+1. 輸入 [**顯示名稱**]。 當使用這個群組傳送通知時，會使用顯示名稱來取代完整的動作組名。
+
+      ![「新增動作群組」對話方塊](./media/action-groups/action-group-1-basics.png)
+
+
+### <a name="configure-notifications"></a>設定通知
+
+1. 按一下 [**下一步：通知 >** ] 按鈕以移至 [**通知**] 索引標籤，或選取畫面頂端的 [**通知**] 索引標籤。
+
+1. 定義觸發警示時要傳送的通知清單。 針對每個通知提供下列各項：
+
+    a. **通知類型**：選取您想要傳送的通知類型。 可用的選項如下：
+      * 電子郵件 Azure Resource Manager 角色-傳送電子郵件給指派給特定訂用帳戶層級 ARM 角色的使用者。
+      * 電子郵件/SMS/推播/語音-將這些通知類型傳送給特定收件者。
     
-1. 在 [動作群組名稱] 方塊中輸入名稱，然後在 [簡短名稱] 方塊中，輸入名稱。 使用這個群組傳送通知時，會使用簡短名稱來取代完整的動作群組名稱。
+    b. **名稱**：輸入通知的唯一名稱。
 
-      ![「新增動作群組」對話方塊](./media/action-groups/action-group-define.png)
-
-1. [訂用帳戶] 方塊會自動填入您目前的訂用帳戶。 訂用帳戶是要儲存動作群組的位置。
-
-1. 選取要在其中儲存動作群組的 [資源群組]。
-
-1. 定義動作的清單。 針對每個動作提供下列各項：
-
-    1. **Name**：輸入此動作的唯一識別碼。
-
-    1. **動作類型**：選取自動化 Runbook、Azure Function、電子郵件 Azure Resource Manager 角色、電子郵件/SMS/推播/語音、ITSM、邏輯應用程式、安全 Webhook、Webhook。
-
-    1. **詳細資料**：根據動作類型，輸入電話號碼、電子郵件地址、Webhook URI、Azure 應用程式、ITSM 連線或自動化 Runbook。 針對 ITSM 動作，請額外指定 [工作項目] 與您 ITSM 工具所需的其他欄位。
+    c. **詳細資料**：根據選取的通知類型，輸入電子郵件地址、電話號碼等。
     
-    1. **一般警示結構描述**：您可以選擇啟用[一般警示結構描述](https://aka.ms/commonAlertSchemaDocs)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
+    d. **一般警示結構描述**：您可以選擇啟用[一般警示結構描述](https://aka.ms/commonAlertSchemaDocs)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
 
-1. 選取 [確定] 來建立動作群組。
+    ![[通知] 索引標籤](./media/action-groups/action-group-2-notifications.png)
+    
+### <a name="configure-actions"></a>設定動作
+
+1. 按一下 [**下一步：動作 >** ] 按鈕以移至 [**動作**] 索引標籤，或選取畫面頂端的 [**動作**] 索引標籤。
+
+1. 定義觸發警示時要觸發的動作清單。 針對每個動作提供下列各項：
+
+    a. **動作類型**：選取自動化 Runbook、Azure 函式、ITSM、邏輯應用程式、安全 Webhook、webhook。
+    
+    b. **名稱**：輸入動作的唯一名稱。
+
+    c. **詳細資料**：根據動作類型，輸入 webhook URI、Azure 應用程式、ITSM 連線或自動化 runbook。 針對 ITSM 動作，請額外指定 [工作項目] 與您 ITSM 工具所需的其他欄位。
+    
+    d. **一般警示結構描述**：您可以選擇啟用[一般警示結構描述](https://aka.ms/commonAlertSchemaDocs)，這可讓您在 Azure 監視器中的所有警示服務上擁有單一可擴充且整合的警示承載。
+    
+    ![[動作] 索引標籤](./media/action-groups/action-group-3-actions.png)
+
+### <a name="create-the-action-group"></a>建立動作群組
+
+1. 您可以視需要瀏覽 [標記] 設定。 這可讓您將索引鍵/值組關聯至您的分類的動作群組，而且這是適用于任何 Azure 資源的功能。
+
+    ![[標記] 索引標籤](./media/action-groups/action-group-4-tags.png)
+    
+1. 按一下 [檢閱 + 建立] 以檢閱設定。 這會快速驗證您的輸入，以確保所有必要欄位都已選取。 如果發生問題，則會在這裡回報。 檢查設定後，請按一下 [建立] 以布**建**動作群組。
+    
+    ![[審查 + 建立] 索引標籤](./media/action-groups/action-group-5-review.png)
+
+> [!NOTE]
+> 當您設定動作以透過電子郵件或 SMS 來通知人員時，他們會收到確認已新增至動作群組的確認訊息。
 
 ## <a name="manage-your-action-groups"></a>管理您的動作群組
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 07/13/2020
+ms.date: 07/28/2020
 ms.author: yushwang
-ms.openlocfilehash: 86f040ab4735276e77d537f65130ae125c4757e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a4214e89b72ba3b782a8b141203ac0f4bbca635
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086943"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367720"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>關於 VPN 裝置和站對站 VPN 閘道連線的 IPsec/IKE 參數
 
@@ -66,7 +66,8 @@ ms.locfileid: "87086943"
 | SonicWall |TZ 系列、NSA 系列<br>SuperMassive 系列<br>E-Class NSA 系列 |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |不相容 |[設定指南](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG 新一代防火牆 | XG v17 | （未測試） | [設定指南](https://community.sophos.com/kb/127546)<br><br>[設定指南 - 多個 SA](https://community.sophos.com/kb/en-us/133154) |
 | Synology | MR2200ac <br>RT2600ac <br>RT1900ac | SRM 1.1.5/VpnPlusServer-1.2。0 | （未測試） | [設定指南](https://www.synology.com/en-global/knowledgebase/SRM/tutorial/VPN/How_to_set_up_Site_to_Site_VPN_between_Synology_Router_and_MS_Azure) |
-| Ubiquiti | EdgeRouter | EdgeOS v1.10 | （未測試） | [透過 IKEv2/IPsec 的 BGP](https://help.ubnt.com/hc/en-us/articles/115012374708) \(英文\)<br><br>[透過 IKEv2/IPsec 的 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347) \(英文\)
+| Ubiquiti | EdgeRouter | EdgeOS v1.10 | （未測試） | [透過 IKEv2/IPsec 的 BGP](https://help.ubnt.com/hc/en-us/articles/115012374708) \(英文\)<br><br>[透過 IKEv2/IPsec 的 VTI](https://help.ubnt.com/hc/en-us/articles/115012305347) \(英文\) |
+| 魏 | 3E-636L3 | 5.2.0 T3 組建-13  | （未測試） | [設定指南](https://ultra-3eti.com/wp-content/uploads/2020/07/Azure-VPN-636L3-Site-to-Site-Test-Notes.pdf) |
 | WatchGuard |全部 |Fireware XTM<br> 原則式：v11.11.x<br>路由式：v11.12.x |[設定指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[設定指南](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 | Zyxel |ZyWALL USG 系列<br>ZyWALL ATP 系列<br>ZyWALL VPN 系列 | ZLD v 4.32 + | （未測試） | [透過 IKEv2/IPsec 的 VTI](https://businessforum.zyxel.com/discussion/2648/) \(英文\)<br><br>[透過 IKEv2/IPsec 的 BGP](https://businessforum.zyxel.com/discussion/2650/) \(英文\)|
 

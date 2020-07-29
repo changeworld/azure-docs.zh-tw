@@ -12,12 +12,12 @@ ms.date: 03/28/2019
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae90a682ea2d1abb8159ec28ed02ed122494f512
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f45cc2444a14fc138d201e3d7f81e687f53d3ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019245"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285895"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>使用租用戶限制來管理對 SaaS 雲端應用程式的存取
 
@@ -69,6 +69,11 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 
 針對每個傳送到 login.microsoftonline.com、login.microsoft.com 及 login.windows.net 的連入要求，請插入兩個 HTTP 標頭：*Restrict-Access-To-Tenants* 和 *Restrict-Access-Context*。
 
+> [!NOTE]
+> 設定 SSL 攔截和標頭插入時，請確定 https://device.login.microsoftonline.com 已排除的流量。 此 URL 用於裝置驗證，而執行 TLS 中斷和檢查可能會干擾用戶端憑證驗證，這可能會造成裝置註冊和裝置型條件式存取的問題。
+
+
+
 這些標頭應該包含下列元素︰
 
 - 對於 [*限制存取至*租使用者]，請使用值 \<permitted tenant list\> ，這是您想要允許使用者存取的租使用者清單（以逗號分隔）。 與租用戶一起註冊的任何網域都可用來在此清單中識別該租用戶。 例如，若要允許存取 Contoso 和 Fabrikam 租用戶，名稱/值組會顯示如下： `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
@@ -81,6 +86,9 @@ Azure Active Directory (Azure AD) 對此查問所提出的解決方案是稱為�
 若要防止使用者插入自己的含有非核准租用戶的 HTTP 標頭，Proxy 就必須在連入要求中已經有 *Restrict-Access-To-Tenants* 標頭時取代此標頭。
 
 必須強制用戶端針對所有傳送到 login.microsoftonline.com、login.microsoft.com 及 login.windows.net 的要求使用 Proxy。 例如，如果使用 PAC 檔案來指示用戶端使用 Proxy，使用者應該要不能夠編輯或停用 PAC 檔案。
+
+> [!NOTE]
+> 請不要在 proxy 設定中的 *. login.microsoftonline.com 底下包含子域。 這麼做會包含 device.login.microsoftonline.com，而且可能會干擾用戶端憑證驗證，這會在裝置註冊和裝置型條件式存取案例中使用。 將您的 proxy 伺服器設定為從 TLS 中斷和檢查和標頭插入排除 device.login.microsoftonline.com。
 
 ## <a name="the-user-experience"></a>使用者體驗
 

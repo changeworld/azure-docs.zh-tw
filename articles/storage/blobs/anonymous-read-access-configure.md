@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: a153a3735bbc46dbbce7e58374e1015ac1ec0bfb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133175"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289254"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>設定容器和 blob 的匿名公用讀取權限
 
-Azure 儲存體支援容器和 blob 的選擇性匿名公用讀取權限。 根據預設，永遠不允許匿名存取您的資料。 除非您明確啟用匿名存取，否則所有對容器及其 blob 的要求都必須使用 Azure Active Directory （Azure AD）或共用金鑰授權進行授權。 當您將容器的公用存取層級設定設為允許匿名存取時，用戶端可以讀取該容器中的資料，而不需要授權要求。
+Azure 儲存體支援容器和 blob 的選擇性匿名公用讀取權限。 根據預設，永遠不允許匿名存取您的資料。 除非您明確啟用匿名存取，否則對容器及其 blob 的所有要求都必須獲得授權。 當您將容器的公用存取層級設定設為允許匿名存取時，用戶端可以讀取該容器中的資料，而不需要授權要求。
 
 > [!WARNING]
 > 設定容器的公用存取權時，任何用戶端都可以讀取該容器中的資料。 公用存取會帶來潛在的安全性風險，因此，如果您的案例不需要它，Microsoft 建議您不要將它用於儲存體帳戶。 如需詳細資訊，請參閱[防止對容器和 blob 的匿名公用讀取權限](anonymous-read-access-prevent.md)。
@@ -41,7 +41,7 @@ Azure 儲存體支援容器和 blob 的選擇性匿名公用讀取權限。 根�
 
 ## <a name="allow-or-disallow-public-read-access-for-a-storage-account"></a>允許或禁止儲存體帳戶的公用讀取權限
 
-根據預設，儲存體帳戶中的個別容器允許公用存取。 允許公用存取時，具有適當許可權的使用者可以修改容器的公用存取設定，以啟用對該容器中之資料的匿名公用存取。
+根據預設，儲存體帳戶會設定為允許具有適當許可權的使用者啟用容器的公用存取。 允許公用存取時，具有適當許可權的使用者可以修改容器的公用存取設定，以啟用對該容器中之資料的匿名公用存取。 除非使用者採取額外的步驟來明確設定容器的公用存取設定，否則 Blob 資料永遠不會提供公用存取。
 
 請記住，容器的公用存取預設一律會關閉，而且必須明確地設定為允許匿名要求。 不論儲存體帳戶上的設定為何，除非具有適當許可權的使用者採取此額外步驟來啟用容器的公用存取權，否則您的資料永遠不會提供公用存取。
 

@@ -4,15 +4,16 @@ description: 本文提供 azcopy 作業 clean 命令的參考資訊。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a06e428908777c526602166f127a28304b595ba0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3e9d70ced0d2974a66717436c28c5b6914f6745
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84220072"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287147"
 ---
 # <a name="azcopy-jobs-clean"></a>azcopy 作業清除
 
@@ -26,7 +27,7 @@ azcopy jobs clean [flags]
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 - [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
-- [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
+- [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>範例
@@ -35,15 +36,15 @@ azcopy jobs clean [flags]
   azcopy jobs clean --with-status=completed
 ```
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
-**-h、--help**               清除的說明。
+**--help**               清除的說明。
 
-**--with-status**字串只會移除具有此狀態的工作、可用的值：已取消、已完成、失敗、InProgress、全部（預設值為 "all"）
+**--with-status**字串只會移除具有此狀態的工作，可用的值為： `Canceled` 、 `Completed` 、 `Failed` 、 `InProgress` 、 `All` （預設 `All` ）
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-**--cap-mbps uint32**     上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。
+**--cap-mbps 浮點數**     上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。
 
 **--輸出-** 命令輸出的類型字串格式。 選項包括： text、json。 預設值為「文字」。 （預設值為 "text"）
 

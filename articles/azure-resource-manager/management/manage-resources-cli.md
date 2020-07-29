@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: b40b1f23673b589cfea40bddc3f0497860a86ae3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: edd424d7d64e484f3b42084d1aa0744ec522bf92
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326812"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87366811"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>使用 Azure CLI 來管理 Azure 資源
 
@@ -60,7 +60,7 @@ az group deployment create --resource-group $resourceGroupName --template-uri "h
 
 ## <a name="deploy-resources-to-multiple-subscriptions-or-resource-groups"></a>將資源部署至多個訂用帳戶或資源群組
 
-一般而言，您要將範本中的所有資源部署至單一資源群組。 不過，在某些情況下，您要將一組資源部署在一起，但將它們放在不同的資源群組或訂用帳戶中。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](../templates/cross-resource-group-deployment.md)。
+一般而言，您要將範本中的所有資源部署至單一資源群組。 不過，在某些情況下，您要將一組資源部署在一起，但將它們放在不同的資源群組或訂用帳戶中。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](../templates/cross-scope-deployment.md)。
 
 ## <a name="delete-resources"></a>刪除資源
 

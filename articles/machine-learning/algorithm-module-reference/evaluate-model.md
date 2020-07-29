@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/08/2020
-ms.openlocfilehash: fe0d3819701e062fa2253bc6dd0c3a28eaeaadfb
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/27/2020
+ms.openlocfilehash: 7f37a598c31f340e66437a6478512fad1f79121f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171105"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285946"
 ---
 # <a name="evaluate-model-module"></a>評估模型模組
 
@@ -80,9 +80,9 @@ ms.locfileid: "86171105"
   
 -   **正確性**會測量分類模型的健全情況，表現方式為 True 結果對整體案例的比例。  
   
--   **精確度**是 True 結果對所有正面結果的比例。  
+-   **精確度**是 True 結果對所有正面結果的比例。 Precision = TP/（TP + FP）  
   
--   **召回率**是模型傳回的所有正確結果所佔的比例。  
+-   **回想**是實際抓取的相關實例總數的分數。 召回 = TP/（TP + FN）  
   
 -   **F1 分數**會計算為精確度的加權平均值，並在0和1之間重新叫用，其中理想的 F1 分數值是1。  
   

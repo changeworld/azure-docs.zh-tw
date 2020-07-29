@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dae797e73d52391288a5e8b7cf4a5c6ab2a122fc
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75977306"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337869"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>門監視器--使用 Azure Functions 和 SendGrid，開啟門時傳送電子郵件           
 
@@ -172,7 +173,7 @@ VS Code 終端機中會有互動式命令列引導您佈建所需的 Azure 服�
 
 ![device-upload](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/device-upload.png)
 
-DevKit 會重新開機，然後開始執行程式碼。
+DevKit 會重新開機並開始執行程式碼。
 
 > [!NOTE]
 > 在少數情況下，您可能會收到「錯誤：AZ3166：未知的套件」錯誤訊息。 未正確重新整理面板套件索引時，就會發生此錯誤。 若要解決此錯誤，請參閱 [IoT DevKit 常見問題集的開發一節](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)。
@@ -196,7 +197,4 @@ DevKit 會重新開機，然後開始執行程式碼。
 
 ## <a name="next-steps"></a>後續步驟
 
-您已了解如何將 DevKit 裝置連線至 Azure IoT 遠端監視解決方案加速器，並使用 SendGrid 服務傳送電子郵件。 以下是建議的後續步驟：
-
-* [Azure IoT 遠端監視解決方案加速器概觀](https://docs.microsoft.com/azure/iot-suite/)
-* [將 MXChip IoT DevKit 裝置連線到您的 Azure IoT Central 應用程式](/azure/iot-central/core/howto-connect-devkit)
+您已了解如何將 DevKit 裝置連線至 Azure IoT 遠端監視解決方案加速器，並使用 SendGrid 服務傳送電子郵件。 以下是建議的後續步驟：[Azure IoT 遠端監視解決方案加速器總覽](https://docs.microsoft.com/azure/iot-suite/)

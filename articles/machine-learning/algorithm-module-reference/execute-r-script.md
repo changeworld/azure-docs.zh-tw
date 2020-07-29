@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: 3559ae5c246129aa369cb49e7749e499002f1dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/27/2020
+ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87048190"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337835"
 ---
 # <a name="execute-r-script-module"></a>執行 R 腳本模組
 
@@ -119,6 +119,22 @@ azureml_main <- function(dataframe1, dataframe2){
 > [!div class="mx-imgBorder"]
 > ![已上傳影像的預覽](media/module/upload-image-in-r-script.png)
 
+## <a name="access-to-registered-dataset"></a>存取已註冊的資料集
+
+您可以參考下列範例程式碼，以存取您工作區中[已註冊的資料集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script)：
+
+```R
+        azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="how-to-configure-execute-r-script"></a>如何設定執行 R 腳本
 
 [執行 R 腳本] 模組包含可用來做為起點的範例程式碼。 若要設定執行 R 腳本模組，請提供一組要執行的輸入和程式碼。
@@ -177,6 +193,25 @@ azureml_main <- function(dataframe1, dataframe2){
  
     > [!NOTE]
     > 現有的 R 程式碼可能需要較小的變更，才能在設計工具管線中執行。 例如，您以 CSV 格式提供的輸入資料應該先明確轉換成資料集，您才能在程式碼中使用它。 在 R 語言中使用的資料和資料行類型，在設計工具中使用的資料和資料行類型方面也有不同的差異。
+
+    如果您的腳本大於16KB，請使用**腳本**組合埠來避免類似于*命令列的錯誤超過16597個字元的限制*。 
+    
+    將腳本和其他自訂資源組合成 zip 檔案，並將 zip 檔案當做檔案**資料集**上傳至 studio。 接著，您可以從 [設計工具撰寫] 頁面左側模組窗格中的 [*我的資料集*] 清單拖曳資料集模組。 將資料集模組連接到 [**執行 R 腳本**] 模組的 [**腳本**組合] 通訊埠。
+    
+    以下是在腳本配套中使用腳本的範例程式碼：
+
+    ```R
+    azureml_main <- function(dataframe1, dataframe2){
+    # Source the custom R script: my_script.R
+    source("./Script Bundle/my_script.R")
+
+    # Use the function that defined in my_script.R
+    dataframe1 <- my_func(dataframe1)
+
+    sample <- readLines("./Script Bundle/my_sample.txt")
+    return (list(dataset1=dataframe1, dataset2=data.frame("Sample"=sample)))
+    }
+    ```
 
 1.  針對 [**隨機種子**]，輸入要在 R 環境內用來做為隨機種子值的值。 此參數等同於呼叫 R 程式碼中的 `set.seed(value)`。  
 

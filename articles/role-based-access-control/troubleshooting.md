@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/01/2020
+ms.date: 07/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8d6c9ab2bacf94b3a27bfd1de0189d8b89b5efaf
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bf8fa174611c7173c957ded49ff9135f90cebc08
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129435"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287209"
 ---
 # <a name="troubleshoot-azure-rbac"></a>針對 Azure RBAC 進行疑難排解
 
@@ -52,6 +52,22 @@ $ras.Count
 ## <a name="problems-with-azure-role-assignments"></a>Azure 角色指派的問題
 
 - 如果您無法在 [**存取控制（IAM）** ] 的 Azure 入口網站中新增角色指派，因為 [**新增**  >  **新增角色指派**] 選項已停用，或因為您收到許可權錯誤「物件識別碼的用戶端沒有執行動作的授權」，請確認您目前登入的使用者是在嘗試指派角色的範圍內，具有許可權的角色，例如擁有者 `Microsoft.Authorization/roleAssignments/write` 或[使用者存取系統管理員](built-in-roles.md#user-access-administrator)。 [Owner](built-in-roles.md#owner)
+- 如果您使用服務主體來指派角色，您可能會收到「許可權不足，無法完成作業」錯誤。 例如，假設您有已獲指派擁有者角色的服務主體，而且您嘗試使用 Azure CLI 建立下列角色指派做為服務主體：
+
+    ```azurecli
+    az login --service-principal --username "SPNid" --password "password" --tenant "tenantid"
+    az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
+
+    如果您收到「許可權不足，無法完成作業」錯誤，可能是因為 Azure CLI 嘗試在 Azure AD 中查閱「受託者」身分識別，而服務主體預設無法讀取 Azure AD。
+
+    有兩種方式可以解決此錯誤。 第一種方式是將[目錄讀取](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)者角色指派給服務主體，讓它能夠讀取目錄中的資料。 您也可以授與[目錄。](https://docs.microsoft.com/graph/permissions-reference) Microsoft Graph 中的擁有權限。
+
+    解決這個錯誤的第二個方法是使用 `--assignee-object-id` 參數（而非）來建立角色指派 `--assignee` 。 藉由使用 `--assignee-object-id` ，Azure CLI 將會略過 Azure AD 查閱。 您將需要取得要指派角色的使用者、群組或應用程式的物件識別碼。 如需詳細資訊，請參閱[使用 Azure CLI 新增或移除 Azure 角色指派](role-assignments-cli.md#new-service-principal)。
+
+    ```azurecli
+    az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
+    ```
 
 ## <a name="problems-with-custom-roles"></a>自訂角色的問題
 
@@ -205,7 +221,7 @@ Web 應用程式因為幾個互有關聯的資源而顯得複雜。 以下是具
 * 端點  
 * IP 位址  
 * 磁碟  
-* Extensions  
+* 延伸模組  
 
 這些項目都需要同時具備「虛擬機器」**** 與所屬之「資源群組」****(連同網域名稱) 的**寫入**權：  
 

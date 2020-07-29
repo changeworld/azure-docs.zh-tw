@@ -1,6 +1,6 @@
 ---
 title: IP 位址 168.63.129.16 是什麼？ | Microsoft Docs
-description: 了解 IP 位址 168.63.129.16 及其與您的資源搭配運作的方式。
+description: 深入瞭解 IP 位址168.63.129.16，特別是用來協助 Azure 平臺資源的通道。
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: bae1fbc89564ca17938e6a630146be5e5fb5b11f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f0bfa693086a3a097df219132d696a1d04e6f56
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550856"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286031"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP 位址 168.63.129.16 是什麼？
 

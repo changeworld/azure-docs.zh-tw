@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 9d44c1da27a1440e105ce76436bc284a537503c7
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 3b1a0d646c05be0de83837b33e77e34969c9254c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054435"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287802"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS 保護設計彈性解決方案
 
@@ -48,7 +48,7 @@ DDoS 是一種嘗試耗盡應用程式資源的攻擊類型。 目標是影響�
 
 延展性是指系統能夠處理負載增加的能力。 將您的應用程式設計為可[水平調整](/azure/architecture/guide/design-principles/scale-out)以滿足放大負載的需求，遭遇 DDoS 攻擊時尤其需要。 如果您的應用程式相依於服務的單一執行個體，它會建立單一失敗點。 佈建多個執行個體可讓系統更有彈性且更具延展性。
 
-對於 [Azure App Service](/azure/app-service/app-service-value-prop-what-is)，請選擇可提供多個執行個體的 [App Service 方案](/azure/app-service/overview-hosting-plans)。 對於 Azure 雲端服務，設定您的每個角色以使用[多個執行個體](/azure/cloud-services/cloud-services-choose-me)。 對於 [Azure 虛擬機器](/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，確保虛擬機器 (VM) 架構包含多個 VM，而且每個 VM 都包含於[可用性設定組](/azure/virtual-machines/virtual-machines-windows-manage-availability)中。 我們建議使用[虛擬機器擴展集](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)來進行自動調整功能。
+對於 [Azure App Service](/azure/app-service/app-service-value-prop-what-is)，請選擇可提供多個執行個體的 [App Service 方案](/azure/app-service/overview-hosting-plans)。 對於 Azure 雲端服務，設定您的每個角色以使用[多個執行個體](/azure/cloud-services/cloud-services-choose-me)。 對於 [Azure 虛擬機器](../../virtual-machines/index.yml)，確保虛擬機器 (VM) 架構包含多個 VM，而且每個 VM 都包含於[可用性設定組](../../virtual-machines/windows/tutorial-availability-sets.md)中。 我們建議使用[虛擬機器擴展集](../../virtual-machine-scale-sets/overview.md)來進行自動調整功能。
 
 ### <a name="defense-in-depth"></a>深層防禦
 
