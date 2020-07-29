@@ -1,6 +1,5 @@
 ---
-title: 使用範例資料集
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (傳統版)：使用範例資料集 - Azure
 description: Machine Learning Studio (傳統版) 中包含的範例模型所使用之資料集的描述。 您可以為您的實驗使用這些範例資料集。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 3cd7d880efaa5c69301c25c69d55f4b21dd97242
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43f26133cb7fe36a399e2d98ca3e2129b88f52e8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321836"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326302"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>在 Azure Machine Learning Studio (傳統版) 中使用範例資料集
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
+
 
 [top]: #machine-learning-sample-datasets
 

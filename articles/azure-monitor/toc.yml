@@ -485,7 +485,7 @@
             - name: 檢視通知
               href: ../service-health/service-notifications.md
             - name: 設定通知事件警示
-              href: platform/alerts-activity-log-service-notifications.md
+              href: ../service-health/alerts-activity-log-service-notifications-portal.md
         - name: 通知和動作
           items:
             - name: 動作規則 (預覽)
@@ -905,18 +905,24 @@
           href: insights/vminsights-ga-release-faq.md
         - name: 常見問題集
           href: faq.md#azure-monitor-for-vms
-        - name: 啟用監視
+        - name: 設定工作區
+          href: insights/vminsights-configure-workspace.md
+        - name: 安裝代理程式
           items:
-            - name: 啟用監視概觀
+            - name: 概觀
               href: insights/vminsights-enable-overview.md
-            - name: 啟用以供單一 Azure 虛擬機器使用
-              href: insights/vminsights-enable-single-vm.md
-            - name: 使用 Azure 原則啟用
-              href: insights/vminsights-enable-at-scale-policy.md
-            - name: 使用 Azure PowerShell 啟用
-              href: insights/vminsights-enable-at-scale-powershell.md
-            - name: 針對混合式環境啟用
-              href: insights/vminsights-enable-hybrid-cloud.md
+            - name: Azure 入口網站
+              href: insights/vminsights-enable-portal.md
+            - name: Azure PowerShell
+              href: insights/vminsights-enable-powershell.md
+            - name: ARM 範本
+              href: insights/vminsights-enable-resource-manager.md
+            - name: Azure 原則
+              href: insights/vminsights-enable-policy.md
+            - name: 混合式 VM
+              href: insights/vminsights-enable-hybrid.md
+            - name: 升級相依性代理程式
+              href: insights/vminsights-dependency-agent-maintenance.md
         - name: 對應相依性
           href: insights/vminsights-maps.md
         - name: 監視效能
@@ -927,8 +933,6 @@
           href: insights/vminsights-workbooks.md
         - name: 建立警示規則
           href: insights/vminsights-alerts.md
-        - name: 升級相依性代理程式
-          href: insights/vminsights-dependency-agent-maintenance.md
         - name: 停用監視
           href: insights/vminsights-optout.md
     - name: 適用於容器的 Azure 監視器

@@ -228,6 +228,8 @@
           href: /azure/templates/microsoft.authorization/policysetdefinitions
 - name: 資源
   items:
+    - name: 已知問題
+      href: 'https://github.com/azure/azure-policy#known-issues'
     - name: GitHub - Azure 原則範例
       href: 'https://github.com/Azure/azure-policy'
     - name: GitHub - 社群原則存放庫
@@ -246,8 +248,8 @@
           href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
         - name: 補救工作
           href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
-    - name: 影片 - Build 2018
-      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
+    - name: 影片 - Ignite 2019
+      href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 定價計算機
