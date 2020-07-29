@@ -5,18 +5,18 @@ description: 瞭解如何使用 Azure Machine Learning studio、CLI、SDK 及已
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
-ms.custom: seodec18
-ms.openlocfilehash: 78e8d02ecaaf57c457a0eaeed86d392cd6372fa9
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 657f6dd32c18b5b0745883da02563e9f5257d92d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963694"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307211"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>匯出或刪除您的 Machine Learning services 工作區資料
 
@@ -246,7 +246,7 @@ Azure Machine Learning 所儲存的產品內資料可透過 Azure Machine Learni
 
 1. 在清單中，選取要刪除的個別管線草稿。
 
-1. 選取 [刪除] 。
+1. 選取 [刪除]。
 
 ### <a name="delete-datasets-in-the-designer"></a>在設計工具中刪除資料集
 

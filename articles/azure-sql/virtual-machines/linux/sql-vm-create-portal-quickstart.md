@@ -10,11 +10,12 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 41f39c7e60e79e034d4c855a77bfee0f6fa2094d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ce3ab92be33b378aeb6694efe181ee19da5d3f4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669506"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284348"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>布建在 Azure 入口網站中執行 SQL Server 的 Linux 虛擬機器
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -71,7 +72,7 @@ ms.locfileid: "84669506"
 1. 接著，輸入或選取下列值：
    * **區域**：選取適合您的 Azure 區域。
    * **可用性選項**：選擇最適合您應用程式和資料的可用性與備援選項。
-   * **變更大小**：選取此選項可挑選機器大小，完成時，請選擇 [選取]。 如需關於 VM 機器大小的詳細資訊，請參閱 [Linux VM 大小](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)。
+   * **變更大小**：選取此選項可挑選機器大小，完成時，請選擇 [選取]。 如需 VM 電腦大小的詳細資訊，請參閱[vm 大小](../../../virtual-machines/sizes.md)。
 
      ![選擇 VM 大小](./media/sql-vm-create-portal-quickstart/vmsizes.png)
 
@@ -81,7 +82,7 @@ ms.locfileid: "84669506"
    * **驗證類型**：選取 [SSH 公開金鑰]。
 
      > [!Note]
-     > 您可以選擇使用 SSH 公開金鑰或密碼進行驗證。 SSH 較為安全。 如需有關如何產生 SSH 金鑰的指示，請參閱[在 Linux 和 Mac 上為 Azure 中的 Linux VM 建立 SSH 金鑰](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
+     > 您可以選擇使用 SSH 公開金鑰或密碼進行驗證。 SSH 較為安全。 如需有關如何產生 SSH 金鑰的指示，請參閱[在 Linux 和 Mac 上為 Azure 中的 Linux VM 建立 SSH 金鑰](../../../virtual-machines/linux/mac-create-ssh-keys.md)。
 
    * **使用者名稱**：輸入 VM 的系統管理員名稱。
    * **SSH 公開金鑰**：輸入 RSA 公開金鑰。
@@ -121,7 +122,7 @@ ssh azureadmin@40.55.55.555
 
 1. 選取 [開啟]，並在提示時輸入您的使用者名稱和密碼。
 
-如需有關連線至 Linux VM 的詳細資訊，請參閱[使用入口網站在 Azure 上建立 Linux VM](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal)。
+如需有關連線至 Linux VM 的詳細資訊，請參閱[使用入口網站在 Azure 上建立 Linux VM](../../../virtual-machines/linux/quick-create-portal.md)。
 
 > [!NOTE]
 > 如果您看到有關未將伺服器主機金鑰快取在登錄中的 PuTTY 安全性警示，請從下列選項中做選擇。 如果您信任此主機，請選取 [是] 以將金鑰新增至 PuTTy 的快取並繼續連線。 如果您只想要繼續連線一次，而不想要將金鑰新增至快取，請選取 [否]。 如果您不信任此主機，請選取 [取消] 以放棄連線。

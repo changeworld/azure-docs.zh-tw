@@ -1,79 +1,117 @@
 ---
 title: 執行 IoT 隨插即用預覽模型探索 |Microsoft Docs
-description: 身為解決方案開發人員，瞭解如何在您的解決方案中執行 IoT 隨插即用模型探索。
-author: Philmea
-ms.author: philmea
-ms.date: 12/26/2019
+description: 作為解決方案產生器，深入瞭解如何在您的解決方案中執行 IoT 隨插即用模型探索。
+author: prashmo
+ms.author: prashmo
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
-manager: philmea
-ms.openlocfilehash: 74eb38269a3c7fbdc6d95554a8a8cef14eb0b787
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 364b85a8ead09858b97d5d7e6ca8c130b9960b2c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770465"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337376"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>在 IoT 解決方案中執行 IoT 隨插即用預覽模型探索
 
-本文說明如何以解決方案開發人員的身分，在 IoT 解決方案中執行 IoT 隨插即用預覽模型探索。  Iot 隨插即用模型探索是 IoT 隨插即用裝置如何識別其支援的功能模型和介面，以及 IoT 解決方案如何抓取這些功能模型和介面。
+本文說明如何作為解決方案產生器，您可以在 IoT 解決方案中執行 IoT 隨插即用預覽模型探索。 模型探索說明如何：
 
-IoT 解決方案有兩種廣泛的類別：專門建立的解決方案，可與一組已知的 IoT 隨插即用裝置搭配使用，以及與任何 IoT 隨插即用裝置搭配使用的模型驅動解決方案。
+- IoT 隨插即用裝置會註冊其模型識別碼。
+- IoT 解決方案會抓取裝置所執行的介面。
 
-此概念文章說明如何在兩種類型的方案中執行模型探索。
+IoT 解決方案有兩種廣泛的類別：
+
+- *專門建立的 iot 解決方案*適用于一組已知的 iot 隨插即用裝置型號。
+
+- *模型驅動的 iot 解決方案*可與任何 IoT 隨插即用裝置搭配使用。 建立模型驅動的解決方案比較複雜，但好處是您的解決方案會與未來新增的任何裝置搭配運作。
+
+    若要建立模型驅動的 IoT 解決方案，您必須針對 IoT 隨插即用介面基本類型建立邏輯：遙測、屬性和命令。 您的解決方案邏輯會藉由結合多個遙測、屬性和命令功能來代表裝置。
+
+本文說明如何在這兩種類型的方案中執行模型探索。
 
 ## <a name="model-discovery"></a>模型探索
 
-當 IoT 隨插即用裝置第一次連接到您的 IoT 中樞時，它會傳送模型資訊遙測訊息。 此訊息包含裝置所執行介面的識別碼。 為了讓您的解決方案與裝置搭配使用，它必須解析這些識別碼，並抓取每個介面的定義。
+若要探索裝置所執行的模型，解決方案可以使用以事件為基礎的探索或對應項型探索來取得模型識別碼：
 
-以下是 IoT 隨插即用裝置在使用裝置布建服務（DPS）連線至中樞時所採取的步驟：
+### <a name="event-based-discovery"></a>以事件為基礎的探索
 
-1. 當裝置開啟時，它會連線到 DPS 的全域端點，並使用其中一種允許的方法進行驗證。
-1. 接著，DPS 會驗證裝置並尋找規則，告訴它要將裝置指派給哪個 IoT 中樞。 然後，DPS 會向該中樞註冊裝置。
-1. DPS 會將 IoT 中樞連接字串傳回至裝置。
-1. 裝置接著會將探索遙測訊息傳送至您的 IoT 中樞。 探索遙測訊息包含裝置所實行介面的識別碼。
-1. IoT 隨插即用裝置現在已準備好搭配使用 IoT 中樞的解決方案。
+當 IoT 隨插即用裝置連接到 IoT 中樞時，它會註冊其所執行的模型。 此註冊會產生數位對應項[變更事件](concepts-digital-twin.md#digital-twin-change-events)通知。 若要瞭解如何啟用數位對應項事件的路由，請參閱[使用 IoT 中樞訊息路由將裝置到雲端訊息傳送至不同的端點](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events)。
 
-如果裝置直接連接到您的 IoT 中樞，則會使用內嵌在裝置程式碼中的連接字串進行連線。 裝置接著會將探索遙測訊息傳送至您的 IoT 中樞。
+解決方案可以使用下列程式碼片段中顯示的事件，以瞭解連線並取得其模型識別碼的 IoT 隨插即用裝置：
 
-若要深入瞭解模型資訊遙測訊息，請參閱[ModelInformation](concepts-common-interfaces.md)介面。
+```json
+iothub-connection-device-id:sample-device
+iothub-enqueuedtime:7/22/2020 8:02:27 PM
+iothub-message-source:digitalTwinChangeEvents
+correlation-id:100f322dc2c5
+content-type:application/json-patch+json
+content-encoding:utf-8
+[
+  {
+    "op": "replace",
+    "path": "/$metadata/$model",
+    "value": "dtmi:com:example:TemperatureController;1"
+  }
+]
+```
 
-### <a name="purpose-built-iot-solutions"></a>專門打造的 IoT 解決方案
+新增或更新裝置型號識別碼時，就會觸發此事件。
 
-專門建立的 IoT 解決方案適用于一組已知的 IoT 隨插即用裝置功能模型和介面。
+### <a name="twin-based-discovery"></a>以對應項為基礎的探索
 
-您將會有裝置的功能模型和介面，以便在一段時間內連接到您的解決方案。 使用下列步驟來準備您的解決方案：
+如果解決方案想要知道特定裝置的功能，它可以使用「[取得數位](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin/getdigitaltwin)對應項 API」來抓取資訊。
 
-1. 將介面 JSON 檔案儲存在您的解決方案可從中讀取的[模型存放庫](./howto-manage-models.md)中。
-1. 根據預期的 IoT 隨插即用功能模型和介面，在 IoT 解決方案中撰寫邏輯。
-1. 訂閱您的解決方案所使用之 IoT 中樞的通知。
+在下列數位對應項程式碼片段中， `$metadata.$model` 包含 IoT 隨插即用裝置的型號識別碼：
 
-當您收到新裝置連線的通知時，請遵循下列步驟：
+```json
+{
+    "$dtId": "sample-device",
+    "$metadata": {
+        "$model": "dtmi:com:example:TemperatureController;1",
+        "serialNumber": {
+            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+        }
+    }
+}
+```
 
-1. 請閱讀探索遙測訊息，以抓取裝置所執行的功能模型和介面的識別碼。
-1. 比較功能模型的識別碼與您之前儲存的功能模型識別碼。
-1. 現在您知道裝置的類型已連線。 使用您稍早撰寫的邏輯，讓使用者能夠適當地與裝置互動。
+解決方案也可以使用**Get**對應項，從裝置對應項中取出模型識別碼，如下列程式碼片段所示：
 
-### <a name="model-driven-solutions"></a>模型驅動解決方案
+```json
+{
+    "deviceId": "sample-device",
+    "etag": "AAAAAAAAAAc=",
+    "deviceEtag": "NTk0ODUyODgx",
+    "status": "enabled",
+    "statusUpdateTime": "0001-01-01T00:00:00Z",
+    "connectionState": "Disconnected",
+    "lastActivityTime": "2020-07-17T06:12:26.8402249Z",
+    "cloudToDeviceMessageCount": 0,
+    "authenticationType": "sas",
+    "x509Thumbprint": {
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+    },
+    "modelId": "dtmi:com:example:TemperatureController;1",
+    "version": 15,
+    "properties": {...}
+    }
+}
+```
 
-模型驅動的 IoT 解決方案可與任何 IoT 隨插即用裝置搭配使用。 建立模型驅動的 IoT 解決方案更複雜，但好處是您的解決方案會與未來新增的任何裝置搭配運作。
+## <a name="model-resolution"></a>模型解析
 
-若要建立模型驅動的 IoT 解決方案，您必須針對 IoT 隨插即用介面基本類型建立邏輯：遙測、屬性和命令。 您的 IoT 解決方案邏輯會藉由結合多個遙測、屬性和命令功能來代表裝置。
+解決方案會使用模型解析來存取從模型識別碼組成模型的介面。 
 
-您的解決方案也必須訂閱其所使用之 IoT 中樞的通知。
-
-當您的解決方案收到新裝置連線的通知時，請遵循下列步驟：
-
-1. 請閱讀探索遙測訊息，以抓取裝置所執行的功能模型和介面的識別碼。
-1. 針對每個識別碼，請閱讀完整的 JSON 檔案以尋找裝置的功能。
-1. 檢查您所建立的任何快取中是否有每個介面，以儲存您的解決方案稍早所抓取的 JSON 檔案。
-1. 然後，檢查具有該識別碼的介面是否存在於公用模型存放庫中。 如需詳細資訊，請參閱[公用模型存放庫](howto-manage-models.md)。
-1. 如果公用模型存放庫中沒有介面，請嘗試在您的解決方案已知的任何公司模型儲存機制中尋找它。 您需要連接字串，才能存取公司模型存放庫。 如需詳細資訊，請參閱[公司模型存放庫](howto-manage-models.md)。
-1. 如果您找不到公用模型存放庫或公司模型存放庫中的所有介面，可以檢查裝置是否可以提供介面定義。 裝置可以執行標準的[ModelDefinition](concepts-common-interfaces.md)介面，以發佈有關如何使用命令來取得介面檔案的資訊。
-1. 如果您找到裝置所執行之每個介面的 JSON 檔案，您可以列舉裝置的功能。 使用您稍早撰寫的邏輯，讓使用者能夠與裝置互動。
-1. 您隨時都可以呼叫數位 twins API 來取得裝置的功能模型識別碼和介面識別碼。
+- 解決方案可以選擇將這些介面當做檔案儲存在本機資料夾中。 
+- 解決方案可以使用[模型存放庫](concepts-model-repository.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-既然您已瞭解如何使用 IoT 解決方案來探索模型，請深入瞭解[Azure Iot 平臺](overview-iot-plug-and-play.md)，以利用您解決方案的其他功能。
+既然您已瞭解如何使用 IoT 解決方案來探索模型，請深入瞭解[Azure iot 平臺](overview-iot-plug-and-play.md)以將其他功能用於您的解決方案。
+
+- [從您的解決方案與裝置互動](quickstart-service-node.md)
+- [IoT 數位對應項 REST API](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin)
+- [Azure IoT explorer](howto-use-iot-explorer.md)

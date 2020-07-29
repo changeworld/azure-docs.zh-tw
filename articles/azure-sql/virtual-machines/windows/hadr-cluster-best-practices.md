@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d20ac5964ef70618d4d7dc2d4a7fe7d7d01284ce
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965475"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285623"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>叢集設定的最佳作法（在 Azure Vm 上 SQL Server）
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,27 +42,26 @@ ms.locfileid: "85965475"
 
 仲裁資源會針對這些問題的其中一個來保護叢集。 
 
-若要在 Azure Vm 上以 SQL Server 設定仲裁資源，您可以使用下列見證類型： 
+下表列出 Azure VM 的建議使用順序中可用的仲裁選項，而磁片見證是慣用的選擇： 
 
 
 ||[磁碟見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[雲端見證](/windows-server/failover-clustering/deploy-cloud-witness)  |[檔案共用見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**支援的 OS**| 全部 |Windows Server 2016+| Windows Server 2012 +|
-|**支援的 SQL Server 版本**|SQL Server 2019|SQL Server 2016 +|SQL Server 2016 +|
+
 
 
 
 ### <a name="disk-witness"></a>磁碟見證
 
-磁片見證是叢集可用儲存群組中的小型叢集磁片。 此磁片具有高度可用性，而且可以在節點之間進行故障切換。 它包含叢集資料庫的複本，其預設大小通常小於 1 GB。 
+磁片見證是叢集可用儲存群組中的小型叢集磁片。 此磁片具有高度可用性，而且可以在節點之間進行故障切換。 它包含叢集資料庫的複本，其預設大小通常小於 1 GB。 磁片見證是 Azure VM 慣用的仲裁選項，因為它可以解決時間分割問題，而不像雲端見證和檔案共用見證。 
 
 將 Azure 共用磁片設定為磁片見證。 
 
 若要開始使用，請參閱[設定磁片見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
-**支援的作業系統**：全部    
-**支援的 SQL 版本**： SQL Server 2019   
+**支援的作業系統**：全部   
 
 
 ### <a name="cloud-witness"></a>雲端見證
@@ -73,21 +72,18 @@ ms.locfileid: "85965475"
 
 
 **支援的作業系統**： Windows Server 2016 和更新版本   
-**支援的 SQL 版本**： SQL Server 2016 和更新版本     
 
 
 ### <a name="file-share-witness"></a>檔案共用見證
 
 「檔案共用見證」是 SMB 檔案共用，通常是在執行 Windows Server 的檔案伺服器上設定。 它會在見證記錄檔中維護叢集資訊，但不會儲存叢集資料庫的複本。 在 Azure 中，您可以將 Azure 檔案[共用](../../../storage/files/storage-how-to-create-file-share.md)設定為做為檔案共用見證使用，或者您也可以在個別的虛擬機器上使用檔案共用。
 
-如果您要使用另一個 Azure 檔案共用，您可以使用用來[掛接 Premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)的相同程式來掛接它。 
+如果您要使用 Azure 檔案共用，您可以使用用來[掛接 Premium 檔案共用](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)的相同程式來掛接它。 
 
 若要開始使用，請參閱[設定檔案共用見證](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)。
 
 
 **支援的作業系統**： Windows Server 2012 和更新版本   
-**支援的 SQL 版本**： SQL Server 2016 和更新版本   
-
 
 ## <a name="connectivity"></a>連線能力
 

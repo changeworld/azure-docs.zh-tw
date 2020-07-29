@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224726"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337087"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -25,14 +25,14 @@ ms.locfileid: "86224726"
 
 一般來說，您必須先在應用程式中註冊裝置，才能進行連接。 不過，IoT Central 支援[可在未先註冊裝置](#connect-without-registering-devices)的情況下進行連線的案例。
 
-IoT Central 會使用[Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/about-iot-dps.md)來管理連接程式。 裝置會先連線到 DPS 端點，以取得連線到您的應用程式所需的資訊。 就內部而言，您的 IoT Central 應用程式會使用 IoT 中樞來處理裝置連線能力。 使用 DPS 可實現如下效果：
+IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/about-iot-dps.md)來管理連接程式。 裝置會先連線到 DPS 端點，以取得連線到您的應用程式所需的資訊。 就內部而言，您的 IoT Central 應用程式會使用 IoT 中樞來處理裝置連線能力。 使用 DPS 可實現如下效果：
 
 - 讓 IoT Central 支援大規模的裝置上線和連線。
 - 讓您產生裝置認證並在離線狀態下設定裝置，而不需要透過 IoT Central UI 來註冊裝置。
 - 讓您使用自己的裝置識別碼在 IoT Central 中註冊裝置。 使用自己的裝置識別碼可簡化與現有後台系統的整合。
 - 讓您以單一且一致的方式將裝置連線到 IoT Central。
 
-為了保護裝置與應用程式之間的通訊安全，IoT Central 支援共用存取簽章 (SAS) 和 x.509 憑證。 X.509 憑證建議用於生產環境中。
+為了保護裝置與應用程式之間的通訊安全，IoT Central 支援共用存取簽章（SAS）和 x.509 憑證。 X.509 憑證建議用於生產環境中。
 
 本文說明下列使用案例：
 
@@ -74,7 +74,7 @@ IoT Central 會使用[Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/a
 
 將具有 x.509 憑證的裝置連接到您的應用程式：
 
-1. 建立使用**憑證 (x.509) **證明類型的*註冊群組*。
+1. 建立使用**憑證（x.509）** 證明類型的*註冊群組*。
 2. 新增並驗證註冊群組中的中繼或根 x.509 憑證。
 3. 註冊並聯機使用分葉 x.509 憑證的裝置（從註冊群組中的根或中繼憑證所產生）。
 
@@ -183,7 +183,7 @@ IoT Central 會使用[Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/a
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>以個人註冊為基礎的裝置連線能力
 
-若客戶連線的裝置都有自己的驗證認證，請使用個別註冊。 個別註冊是允許連接的單一裝置專案。 個別註冊可以使用 x.509 分葉憑證或 SAS 權杖 (從實體或虛擬的可信賴平臺模組) 作為證明機制。 在個別註冊中，裝置識別碼 (也稱為註冊識別碼) 是英數位元、小寫，而且可能包含連字號。 如需詳細資訊，請參閱[DPS 個別註冊](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)。
+若客戶連線的裝置都有自己的驗證認證，請使用個別註冊。 個別註冊是允許連接的單一裝置專案。 個別註冊可以使用 x.509 分葉憑證或 SAS 權杖（來自實體或虛擬的可信賴平臺模組）作為證明機制。 個別註冊中的裝置識別碼（也稱為註冊識別碼）是英數位元、小寫，而且可能包含連字號。 如需詳細資訊，請參閱[DPS 個別註冊](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)。
 
 > [!NOTE]
 > 當您建立裝置的個別註冊時，其優先順序會高於 IoT Central 應用程式中的預設群組註冊選項。
@@ -192,17 +192,17 @@ IoT Central 會使用[Azure IoT 中樞裝置布建服務 (DPS) ](../../iot-dps/a
 
 IoT Central 支援個別註冊的下列證明機制：
 
-- **對稱金鑰證明：** 對稱金鑰證明是使用 DPS 實例驗證裝置的簡單方法。 若要建立使用對稱金鑰的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為連線方法，並將 [共用存取簽章] ** (SAS) **作為 [機制]。 輸入 base64 編碼的主要和次要金鑰，然後儲存您的變更。 使用**識別碼範圍**、**裝置識別碼**，以及主要或次要金鑰來連接您的裝置。
+- **對稱金鑰證明：** 對稱金鑰證明是使用 DPS 實例驗證裝置的簡單方法。 若要建立使用對稱金鑰的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為連線方法，以及 [**共用存取簽章（SAS）** ] 做為機制。 輸入 base64 編碼的主要和次要金鑰，然後儲存您的變更。 使用**識別碼範圍**、**裝置識別碼**，以及主要或次要金鑰來連接您的裝置。
 
     > [!TIP]
     > 若要進行測試，您可以使用**OpenSSL**來產生 base64 編碼的金鑰：`openssl rand -base64 64`
 
-- **X.509 憑證：** 若要建立使用 x.509 憑證的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為連線方法，並將 [**憑證] (x.509) **作為 [機制]。 與個別註冊專案搭配使用的裝置憑證，必須將簽發者和主體 CN 設定為裝置識別碼。
+- **X.509 憑證：** 若要建立使用 x.509 憑證的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為連線方法，以及 [**憑證（x.509）** ] 做為機制。 與個別註冊專案搭配使用的裝置憑證，必須將簽發者和主體 CN 設定為裝置識別碼。
 
     > [!TIP]
     > 若要進行測試，您可以使用[適用于 Node.js的 Azure IoT 裝置布建裝置 SDK 工具](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)來產生自我簽署憑證：`node create_test_cert.js device "mytestdevice"`
 
-- **信賴平臺模組 (TPM) 證明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一種硬體安全性模組。 使用 TPM 是連接裝置的其中一個最安全的方式。 本文假設您使用的是獨立、固件或整合的 TPM。 軟體模擬 Tpm 非常適合用於原型設計或測試，但不提供與離散、固件或整合式 Tpm 相同層級的安全性。 請勿在生產環境中使用軟體 Tpm。 若要建立使用 TPM 的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為 [連線方法]，將 [ **TPM** ] 做為機制。 輸入 TPM 簽署金鑰並儲存裝置連接資訊。
+- **信賴平臺模組（TPM）證明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一種硬體安全性模組。 使用 TPM 是連接裝置的其中一個最安全的方式。 本文假設您使用的是獨立、固件或整合的 TPM。 軟體模擬 Tpm 非常適合用於原型設計或測試，但不提供與離散、固件或整合式 Tpm 相同層級的安全性。 請勿在生產環境中使用軟體 Tpm。 若要建立使用 TPM 的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為 [連線方法]，將 [ **TPM** ] 做為機制。 輸入 TPM 簽署金鑰並儲存裝置連接資訊。
 
 ## <a name="automatically-associate-with-a-device-template"></a>自動與裝置範本產生關聯
 
@@ -213,13 +213,13 @@ IoT Central 的主要功能之一，就是能夠在裝置連線上自動建立�
 
 下列程式碼片段顯示裝置必須在 DPS 註冊呼叫期間傳送的其他承載格式，才能讓自動關聯正常執行。
 
-這是使用已正式運作的裝置 SDK （不支援 IoT 隨插即用）之裝置的格式：
+這是使用正式運作的裝置 SDK 之裝置的格式：
 
 ```javascript
     iotcModelId: '< this is the URN for the capability model>';
 ```
 
-這是使用公開預覽裝置 SDK （支援 IoT 隨插即用）之裝置的格式：
+這是使用公開預覽裝置 SDK 之裝置的格式：
 
 ```javascript
 '__iot:interfaces': {
@@ -270,7 +270,7 @@ Azure 裝置 Sdk 提供最簡單的方式來執行您的裝置程式碼。 可�
 所有裝置在與 IoT 中樞通訊時，都會使用下列 IoT 中樞連線能力選項：
 
 - [裝置到雲端傳訊](../../iot-hub/iot-hub-devguide-messages-d2c.md)
-- [裝置對應項](../../iot-hub/iot-hub-devguide-device-twins.md)
+- [裝置 twins](../../iot-hub/iot-hub-devguide-device-twins.md)
 
 下表摘要說明 Azure IoT Central 裝置功能與 IoT 中樞功能的對應方式：
 
@@ -280,8 +280,6 @@ Azure 裝置 Sdk 提供最簡單的方式來執行您的裝置程式碼。 可�
 | 屬性 | 裝置對應項的報告屬性 |
 | 屬性 (可寫入) | 裝置對應項所需和所報告的屬性 |
 | 命令 | 直接方法 |
-
-若要深入瞭解如何使用裝置 Sdk，請參閱[將 MXChip IoT DevKit 裝置連線到您的 Azure IoT Central 應用程式](howto-connect-devkit.md)，以取得範例程式碼。
 
 ### <a name="protocols"></a>通訊協定
 

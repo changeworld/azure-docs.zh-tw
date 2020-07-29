@@ -1,6 +1,5 @@
 ---
-title: 'Net # 自訂類神經網路'
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio （傳統）： Net # 自訂類神經網路-Azure'
 description: 適用於 Net# 類神經網路規格語言的語法指南。 瞭解如何在 Azure Machine Learning Studio （傳統）中建立自訂類神經網路模型。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: b297a3f975450b7459895ce7c0abc79e9b2fcdea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92fd68be6f2611b01be7f2b262de53597c452596
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85129512"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282563"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 的 Net # 類神經網路規格語言指南（傳統）
+# <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Machine Learning Studio 的 Net # 類神經網路規格語言指南（傳統）
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
 
 Net # 是由 Microsoft 開發的語言，用來定義複雜的類神經網路架構，例如，任意維度的深度神經網路或迴旋。 您可以使用複雜的結構來改善影像、視訊或音訊等的資料學習。
 
@@ -199,7 +200,7 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 
 + **Sharing**：(選用) 為迴旋的每個維度定義加權共用。 其值可以是單一布林值，或是長度為套組 Arity 之布林值的 Tuple。 單一布林值可擴充為具有正確長度、所有元件皆等於指定值的 Tuple。 預設值是全部由 True 值組成的 Tuple。
 
-+ **MapCount**：(選用) 定義迴旋套組的特性對應數目。 其值可以是單一正整數，或是長度為套組 Arity 之正整數的 Tuple。 單一整數值可擴充為具有正確長度、第一個元件皆等於指定值且其餘元件皆等於一的 Tuple。 預設值為一。 特性對應的總數是 Tuple 元件的乘積。 各個元件的此一總數經過因式分解後，將決定特性對應值在目的地節點中的分組方式。
++ **MapCount**：(選用) 定義迴旋套組的特性對應數目。 其值可以是單一正整數，或是長度為套組 Arity 之正整數的 Tuple。 單一整數值可擴充為具有正確長度、第一個元件皆等於指定值且其餘元件皆等於一的 Tuple。 預設值為 1。 特性對應的總數是 Tuple 元件的乘積。 各個元件的此一總數經過因式分解後，將決定特性對應值在目的地節點中的分組方式。
 
 + **Weights**：(選用) 定義套組的初始加權。 其值必須是長度為核心數目乘以每個核心的加權數目之浮點值的 Tuple，如本文稍後的定義。 預設加權會隨機產生。
 

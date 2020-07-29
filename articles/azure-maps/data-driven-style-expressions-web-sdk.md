@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: aaf974eca4b307fc122cf0ee5fdb0ddbcf75088a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 54477bd74df660edb12f6daffbaa2a7390f9516a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242605"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285708"
 ---
-# <a name="data-driven-style-expressions-web-sdk"></a> (Web SDK) 的資料驅動樣式表達式
+# <a name="data-driven-style-expressions-web-sdk"></a>資料驅動樣式表達式（Web SDK）
 
 運算式可讓您將商務邏輯套用至樣式選項，以觀察資料來源中每個圖形中所定義的屬性。 運算式可以篩選資料來源或圖層中的資料。 運算式可能包含條件式邏輯，例如 if 語句。 而且，它們可以用來使用：字串運算子、邏輯運算子和數學運算子來運算元據。
 
@@ -28,7 +28,7 @@ ms.locfileid: "86242605"
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-運算式會以 JSON 陣列表示。 陣列中運算式的第一個元素是指定運算式運算子名稱的字串。 例如，"+" 或 "case"。 下一個元素 (是否有任何) 是運算式的引數。 每個引數都是字串、數位、布林值或 `null`) 或另一個運算式陣列 (的常值。 下列虛擬程式碼會定義運算式的基本結構。 
+運算式會以 JSON 陣列表示。 陣列中運算式的第一個元素是指定運算式運算子名稱的字串。 例如，"+" 或 "case"。 下一個元素（如果有的話）是運算式的引數。 每個引數都是常值（字串、數位、布林值或 `null` ）或另一個運算式陣列。 下列虛擬程式碼會定義運算式的基本結構。 
 
 ```javascript
 [ 
@@ -41,7 +41,7 @@ ms.locfileid: "86242605"
 
 Azure 地圖服務 Web SDK 支援許多類型的運算式。 運算式可以單獨使用，或與其他運算式搭配使用。
 
-| 運算式的類型 | 描述 |
+| 運算式的類型 | 說明 |
 |---------------------|-------------|
 | [匯總運算式](#aggregate-expression) | 運算式，定義在一組資料上處理的計算，並可與的選項搭配使用 `clusterProperties` `DataSource` 。 |
 | [布林運算式](#boolean-expressions) | 布林運算式提供一組布林運算子運算式來評估布林值比較。 |
@@ -81,16 +81,16 @@ Azure 地圖服務 Web SDK 支援許多類型的運算式。 運算式可以單�
 
 日期運算式可讓您存取功能中的屬性資料。 
 
-| 運算式 | 傳回類型 | 描述 |
+| 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
-| `['at', number, array]` | 物件 (object) | 從陣列中抓取專案。 |
+| `['at', number, array]` | object | 從陣列中抓取專案。 |
 | `['geometry-type']` | 字串 | 取得功能的 geometry 類型： Point、MultiPoint、LineString、MultiLineString、多邊形、MultiPolygon。 |
 | `['get', string]` | value | 從目前功能的屬性取得屬性值。 如果要求的屬性遺失，則傳回 null。 |
 | `['get', string, object]` | value | 從提供之物件的屬性取得屬性值。 如果要求的屬性遺失，則傳回 null。 |
 | `['has', string]` | boolean | 判斷功能的屬性是否具有指定的屬性。 |
 | `['has', string, object]` | boolean | 判斷物件的屬性是否具有指定的屬性。 |
 | `['id']` | value | 取得功能的識別碼（如果有的話）。 |
-| `['length', string | array]` | number | 取得字串或陣列的長度。 |
+| `['length', string | array]` | 數字 | 取得字串或陣列的長度。 |
 | `['in', boolean | string | number, array]` | boolean | 判斷專案是否存在於陣列中 |
 | `['in', substring, string]` | boolean | 判斷字串中是否有子字串 |
 
@@ -141,34 +141,34 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 數學運算式提供數學運算子，以在 expression framework 中執行資料驅動計算。
 
-| 運算式 | 傳回類型 | 描述 |
+| 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
-| `['+', number, number, …]` | number | 計算指定數位的總和。 |
-| `['-', number]` | number | 以指定的數位減去0。 |
-| `['-', number, number]` | number | 將第一個數位減去第二個數字。 |
-| `['*', number, number, …]` | number | 將指定的數位相乘。 |
-| `['/', number, number]` | number | 將第一個數位除以第二個數字。 |
-| `['%', number, number]` | number | 計算將第一個數位除以第二個數字時的餘數。 |
-| `['^', number, number]` | number | 計算第一個值的值，該值為第二個數字的乘冪。 |
-| `['abs', number]` | number | 計算指定之數字的絕對值。 |
-| `['acos', number]` | number | 計算指定數位的反余弦值。 |
-| `['asin', number]` | number | 計算指定數位的反正弦值。 |
-| `['atan', number]` | number | 計算指定數位的反正切值。 |
-| `['ceil', number]` | number | 將數位四捨五入到下一個整數。 |
-| `['cos', number]` | number | 計算指定數位的 cos。 |
-| `['e']` | number | 傳回數學常數 `e` 。 |
-| `['floor', number]` | number | 將數位向下舍入到前一個整數。 |
-| `['ln', number]` | number | 計算指定數位的自然對數。 |
-| `['ln2']` | number | 傳回數學常數 `ln(2)` 。 |
-| `['log10', number]` | number | 計算指定數位的底數為10的對數。 |
-| `['log2', number]` | number | 計算指定數位的底數為2的對數。 |
-| `['max', number, number, …]` | number | 計算指定數位集合中的最大數目。 |
-| `['min', number, number, …]` | number | 計算指定數位集合中的最小數目。 |
-| `['pi']` | number | 傳回數學常數 `PI` 。 |
-| `['round', number]` | number | 將數位四捨五入至最接近的整數。 中間值會從零進位出來。 例如，會 `['round', -1.5]` 評估為-2。 |
-| `['sin', number]` | number | 計算指定數位的正弦值。 |
-| `['sqrt', number]` | number | 計算指定之數字的平方根。 |
-| `['tan', number]` | number | 計算指定數位的正切函數。 |
+| `['+', number, number, …]` | 數字 | 計算指定數位的總和。 |
+| `['-', number]` | 數字 | 以指定的數位減去0。 |
+| `['-', number, number]` | 數字 | 將第一個數位減去第二個數字。 |
+| `['*', number, number, …]` | 數字 | 將指定的數位相乘。 |
+| `['/', number, number]` | 數字 | 將第一個數位除以第二個數字。 |
+| `['%', number, number]` | 數字 | 計算將第一個數位除以第二個數字時的餘數。 |
+| `['^', number, number]` | 數字 | 計算第一個值的值，該值為第二個數字的乘冪。 |
+| `['abs', number]` | 數字 | 計算指定之數字的絕對值。 |
+| `['acos', number]` | 數字 | 計算指定數位的反余弦值。 |
+| `['asin', number]` | 數字 | 計算指定數位的反正弦值。 |
+| `['atan', number]` | 數字 | 計算指定數位的反正切值。 |
+| `['ceil', number]` | 數字 | 將數位四捨五入到下一個整數。 |
+| `['cos', number]` | 數字 | 計算指定數位的 cos。 |
+| `['e']` | 數字 | 傳回數學常數 `e` 。 |
+| `['floor', number]` | 數字 | 將數位向下舍入到前一個整數。 |
+| `['ln', number]` | 數字 | 計算指定數位的自然對數。 |
+| `['ln2']` | 數字 | 傳回數學常數 `ln(2)` 。 |
+| `['log10', number]` | 數字 | 計算指定數位的底數為10的對數。 |
+| `['log2', number]` | 數字 | 計算指定數位的底數為2的對數。 |
+| `['max', number, number, …]` | 數字 | 計算指定數位集合中的最大數目。 |
+| `['min', number, number, …]` | 數字 | 計算指定數位集合中的最小數目。 |
+| `['pi']` | 數字 | 傳回數學常數 `PI` 。 |
+| `['round', number]` | 數字 | 將數位四捨五入至最接近的整數。 中間值會從零進位出來。 例如，會 `['round', -1.5]` 評估為-2。 |
+| `['sin', number]` | 數字 | 計算指定數位的正弦值。 |
+| `['sqrt', number]` | 數字 | 計算指定之數字的平方根。 |
+| `['tan', number]` | 數字 | 計算指定數位的正切函數。 |
 
 ## <a name="aggregate-expression"></a>匯總運算式
 
@@ -196,7 +196,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 比較值時，會以嚴格的類型進行比較。 不同類型的值一律視為不相等。 在剖析階段已知類型不同的情況會被視為無效，而且會產生剖析錯誤。 
 
-| 運算式 | 傳回類型 | 描述 |
+| 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
 | `['! ', boolean]` | boolean | 邏輯否定。 `true`如果輸入為，則傳回 `false` ， `false` 如果輸入為，則傳回 `true` 。 |
 | `['!= ', value, value]` | boolean | `true`如果輸入值不相等，則傳回， `false` 否則傳回。 |
@@ -399,13 +399,13 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 型別運算式提供的工具可用來測試和轉換不同的資料類型，例如字串、數位和布林值。
 
-| 運算式 | 傳回類型 | 描述 |
+| 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| 物件 | 傳回常值陣列或物件值。 使用此運算式來防止陣列或物件被評估為運算式。 當運算式必須傳回陣列或物件時，這是必要的。 |
 | `['image', string]` | 字串 | 檢查是否已將指定的映射識別碼載入地圖影像 sprite。 如果是，則會傳回識別碼，否則會傳回 null。 |
 | `['to-boolean', value]` | boolean | 將輸入值轉換為布林值。 `false`當輸入是空字串、、、或時，結果為， `0` `false` 否則為 `null` `NaN` `true` 。 |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 將輸入值轉換成色彩。 如果提供多個值，則會依序評估每一個值，直到取得第一個成功的轉換為止。 如果無法轉換任何輸入，則運算式會是錯誤。 |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | 盡可能將輸入值轉換成數位。 如果輸入為 `null` 或 `false` ，則結果為0。 如果輸入為 `true` ，則結果為1。 如果輸入為字串，則會使用 ECMAScript 語言規格的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字串函數轉換成數位。 如果提供多個值，則會依序評估每一個值，直到取得第一個成功的轉換為止。 如果無法轉換任何輸入，則運算式會是錯誤。 |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | 數字 | 盡可能將輸入值轉換成數位。 如果輸入為 `null` 或 `false` ，則結果為0。 如果輸入為 `true` ，則結果為1。 如果輸入為字串，則會使用 ECMAScript 語言規格的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字串函數轉換成數位。 如果提供多個值，則會依序評估每一個值，直到取得第一個成功的轉換為止。 如果無法轉換任何輸入，則運算式會是錯誤。 |
 | `['to-string', value]` | 字串 | 將輸入值轉換成字串。 如果輸入為 `null` ，則結果為 `""` 。 如果輸入是布林值，則結果會是 `"true"` 或 `"false"` 。 如果輸入是數位，則會使用 ECMAScript 語言規格的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函數將它轉換成字串。 如果輸入是色彩，則會轉換成 CSS RGBA 色彩字串 `"rgba(r,g,b,a)"` 。 否則，會使用 ECMAScript 語言規格的[json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函數，將輸入轉換成字串。 |
 | `['typeof', value]` | 字串 | 傳回描述指定值之類型的字串。 |
 
@@ -435,7 +435,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 色彩運算式可讓您更輕鬆地建立和操作色彩值。
 
-| 運算式 | 傳回類型 | 描述 |
+| 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | 從*紅色*、*綠色*和*藍色*元件建立色彩值，其範圍必須介於 `0` 和之間 `255` ，以及的 Alpha 元件 `1` 。 如果有任何元件超出範圍，運算式就會是錯誤。 |
 | `['rgba', number, number, number, number]` | color | 從*紅色*、*綠色*、*藍色*元件建立色彩值，其範圍必須介於 `0` 和之間 `255` ，以及在和範圍內的 Alpha `0` 元件 `1` 。 如果有任何元件超出範圍，運算式就會是錯誤。 |
@@ -463,7 +463,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 字串運算子運算式會對字串執行轉換作業，例如串連和轉換案例。 
 
-| 運算式 | 傳回類型 | 描述 |
+| 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | 字串 | 將多個字串串連在一起。 每個值都必須是字串。 `to-string`如有需要，請使用類型運算式將其他實數值型別轉換成字串。 |
 | `['downcase', string]` | 字串 | 將指定字串轉換為小寫。 |
@@ -861,7 +861,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 變數系結運算式會將計算的結果儲存在變數中。 因此，可以多次在運算式中的其他地方參考計算結果。 對於牽涉到許多計算的運算式而言，這是很有用的優化。
 
-| 運算式 | 傳回類型 | 描述 |
+| 運算是 | 傳回類型 | 描述 |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;「let」，<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1： string、<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1： any、<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2：字串、<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2： any、<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | 儲存一或多個值做為變數，以供傳回 `var` 結果的子運算式中的運算式使用。 |
 | `['var', name: string]` | 任意 | 參考使用運算式建立的變數 `let` 。 |

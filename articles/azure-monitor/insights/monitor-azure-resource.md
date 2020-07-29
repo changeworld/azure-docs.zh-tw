@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 727653314104ee1b2a27a1342de9824d8f303e23
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: de381b4200e2ec3381f452ac0ec32e61a055a6ec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539732"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326166"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 資源
 當您有依賴 Azure 資源的重要應用程式和商務程序時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure 資源所產生的監視資料，以如何使用 Azure 監視器的功能來分析此資料並發出警示。
@@ -96,7 +96,7 @@ Azure 中的資源會產生下圖所示的[記錄](../platform/data-platform-log
 
 
 ### <a name="insights-and-solutions"></a>深入解析和解決方案 
-有些服務會提供超越 Azure 監視器標準功能的工具。 [深入解析](../insights/insights-overview.md)可提供建置於 Azure 監視器資料平台和標準功能之上的自訂監視體驗。 [解決方案](../insights/solutions.md)可提供建置於 Azure 監視器記錄之上的預先定義監視邏輯。 
+有些服務會提供超越 Azure 監視器標準功能的工具。 [深入解析](./insights-overview.md)可提供建置於 Azure 監視器資料平台和標準功能之上的自訂監視體驗。 [解決方案](./solutions.md)可提供建置於 Azure 監視器記錄之上的預先定義監視邏輯。 
 
 如果服務有 Azure 監視器深入解析，您可以從資源各自功能表中的 [監視] 來加以存取。 從 [Azure 監視器] 功能表則可存取所有的深入解析和解決方案。
 
@@ -164,3 +164,4 @@ Azure 監視器記錄會合併來自多個服務和其他資料來源的記錄�
 ## <a name="next-steps"></a>後續步驟
 
 * 如需不同 Azure 服務的資源記錄詳細資訊，請參閱[Azure 資源記錄的支援服務、結構描述和類別](../platform/resource-logs-schema.md)。  
+

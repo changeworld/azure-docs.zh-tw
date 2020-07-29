@@ -7,13 +7,14 @@ ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8660cb18f5e7ac5f3695eb15475570b107bf25c
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759099"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337070"
 ---
-# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>將 Azure IoT Edge 裝置連線到 Azure IoT Central 應用程式
+# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>將 Azure IoT Edge 裝置連線至 Azure IoT Central 應用程式
 
 *本文適用於解決方案建置人員和裝置開發人員。*
 
@@ -57,7 +58,7 @@ IoT Edge 是由三個元件組成：
 
 ![部署資訊清單生命週期的流程圖](./media/concepts-iot-edge/dmflow.png)
 
-IoT 隨插即用（預覽）會將 IoT Edge 裝置模型，如下所示：
+IoT Central 將 IoT Edge 裝置模型，如下所示：
 
 * 每個 IoT Edge 裝置範本都有一個裝置功能模型。
 * 部署資訊清單中列出的每個自訂模組，都會產生模組功能模型。

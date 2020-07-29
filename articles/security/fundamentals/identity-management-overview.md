@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: d1440bf2b8af85b81355dbc43b695a85994e4b8d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d6c82b1070f76cedcd84b8cd8a0a7bb6f683110d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124131"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285317"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 身分識別管理安全性概觀
 
@@ -40,7 +40,7 @@ ms.locfileid: "87124131"
 
 * 單一登入
 * 反向 proxy
-* 多重要素驗證
+* Multi-Factor Authentication
 * 角色型存取控制 (RBAC)
 * 安全性監視、警示以及機器學習服務型報告
 * 消費者身分識別與存取管理
@@ -77,7 +77,7 @@ Azure AD 應用程式 Proxy 可讓您在私人網路內發佈內部部署應用�
 * [使用應用程式 Proxy 進行單一登入](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [使用條件式存取](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
-## <a name="multi-factor-authentication"></a>多重要素驗證
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Azure Multi-Factor Authentication 是需要使用多種驗證方法，並在使用者登入和交易中新增重要的第二層安全性的驗證方法。 Multi-Factor Authentication 有助於保護對資料與應用程式的存取，同時滿足使用者對簡單登入程序的需求。 它可以透過一些驗證選項：例如電話、文字訊息，或行動應用程式通知或驗證代碼，以及第三方 OAuth 權杖，來提供強大的驗證功能。
 
@@ -91,10 +91,10 @@ Azure Multi-Factor Authentication 是需要使用多種驗證方法，並在使�
 
 RBAC 是建置於 Azure Resource Manager 上的授權系統，可提供更細緻的 Azure 資源存取管理。 RBAC 讓您能精確控制使用者擁有的存取範圍。 舉例來說，您可以限制讓一個使用者只能管理虛擬網路，而另一個使用者只能管理一個資源群組中的資源。 Azure 包含數個供您使用的內建角色。 以下列出四個基本內建角色。 前三個適用於所有資源類型。
 
-- [擁有者](/azure/role-based-access-control/built-in-roles.md#owner) - 具有所有資源的完整存取權，包括將存取權委派給其他人的權限。 
-- [參與者](/azure/role-based-access-control/built-in-roles.md#contributor) - 可以建立和管理所有類型的 Azure 資源，但是不能將存取權授與其他人。
-- [讀者](/azure/role-based-access-control/built-in-roles.md#reader) - 可以檢視現有的 Azure 資源。
-- [使用者存取管理員](/azure/role-based-access-control/built-in-roles.md#administrator) - 讓您管理使用者對 Azure 資源的存取權。
+- [擁有者](/azure/role-based-access-control/built-in-roles#owner) - 具有所有資源的完整存取權，包括將存取權委派給其他人的權限。 
+- [參與者](/azure/role-based-access-control/built-in-roles#contributor) - 可以建立和管理所有類型的 Azure 資源，但是不能將存取權授與其他人。
+- [讀者](/azure/role-based-access-control/built-in-roles#reader) - 可以檢視現有的 Azure 資源。
+- [使用者存取管理員](/azure/role-based-access-control/built-in-roles#user-access-administrator) - 讓您管理使用者對 Azure 資源的存取權。
 
 深入了解：
 
@@ -176,7 +176,7 @@ Azure AD Identity Protection 是一項安全性服務，可為風險偵測和潛
 
 Microsoft 的身分識別解決方案可跨越內部部署和雲端架構功能，建立單一使用者身分識別以用於所有資源的驗證和授權，不論位於何處。 我們稱之為混合式身分識別。 Azure AD Connect 是一種 Microsoft 工具，其設計目的是要符合並完成混合式身分識別的目標。 這可讓您為與 Azure AD 整合之 Office 365、Azure 和 SaaS 應用程式的使用者提供通用身分識別。 它可提供下列功能：
 
-* 同步處理
+* Synchronization
 * AD FS 和同盟整合
 * 通過驗證
 * 健康狀態監視

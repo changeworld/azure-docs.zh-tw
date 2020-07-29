@@ -3,22 +3,22 @@ title: 如何在 Azure 中測試應用程式 | Microsoft Docs
 description: 了解如何在實驗室中建立檔案共用，並且在本機電腦和實驗室中的虛擬機器上掛接，然後將傳統型/Web 應用程式部署到檔案共用並進行測試。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30e77e67a1674b2170c1d1782f1389274afa4c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2dbbf349da4e352fe20a22db03cc9063d801990
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476490"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282240"
 ---
 # <a name="test-your-app-in-azure"></a>在 Azure 測試您的應用程式 
 本文提供在 Azure 中使用 DevTest Labs 測試應用程式的步驟。 首先，您會在實驗室內設定檔案共用，並將它掛接為本機開發電腦和實驗室內 VM 上的磁碟機。 然後，您會使用 Visual Studio 2019 將應用程式部署至檔案共用，以便在實驗室中的 VM 上執行應用程式。  
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件 
+## <a name="prerequisites"></a>先決條件 
 1. [建立 Azure 訂用帳戶](https://azure.microsoft.com/free/) (如果您還沒有的話)，然後登入 [Azure 入口網站](https://portal.azure.com)。
 2. 遵循[這篇文章](devtest-lab-create-lab.md)中的指示，使用 Azure DevTest Labs 建立實驗室。 將實驗室釘選至儀表板，以便下次登入時可以輕鬆找到它。 Azure DevTest Labs 可讓您藉由減少浪費並控制成本，在 Azure 內快速建立資源。 若要深入了解 DevTest Labs，請參閱[概觀](devtest-lab-overview.md)。 
-3. 遵循[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)一文中的指示，在實驗室的資源群組中建立 Azure 儲存體帳戶。 在 [建立儲存體帳戶]**** 頁面上，針對 [資源群組]**** 選取 [使用現有的]****，然後選取 [實驗室的資源群組]****。 
+3. 遵循[建立儲存體帳戶](../storage/common/storage-account-create.md)一文中的指示，在實驗室的資源群組中建立 Azure 儲存體帳戶。 在 [建立儲存體帳戶]**** 頁面上，針對 [資源群組]**** 選取 [使用現有的]****，然後選取 [實驗室的資源群組]****。 
 4. 遵循[在 Azure 檔案服務中建立檔案共用](../storage/files/storage-how-to-create-file-share.md)一文中的指示，在 Azure 儲存體中建立檔案共用。 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>在本機電腦上掛接檔案共用

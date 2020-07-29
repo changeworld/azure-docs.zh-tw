@@ -4,15 +4,15 @@ description: Mv2 系列 Vm 的規格。
 author: ayshakeen
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 21c28f3b6b498b162cbff276755b098c5ebba7c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 74d8c4dc9f6b8f1a409f5f6766bea57b23b15ba7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010473"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284790"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -30,12 +30,12 @@ Mv2 系列 VM 的功能 Intel®超執行緒技術
 
 寫入加速器：[支援](./windows/how-to-enable-write-accelerator.md)
 
-|大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC/預期的網路頻寬 (Mbps) |
-|---|---|---|---|---|---|---|---|
-| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000/800 （7040） | 40000/1000 | 8 / 16000 |
-| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 （7040） | 40000/1000 | 8 / 16000 |
-| Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 （14080） | 80000/2000 | 8 / 32000 |
-| Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 （14080） | 80000/2000 | 8 / 32000 |
+|大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC | 預期的網路頻寬（Mbps） |
+|---|---|---|---|---|---|---|---|---|
+| Standard_M208ms_v2<sup>1</sup> | 208 | 5700 | 4096 | 64 | 80000/800 （7040） | 40000/1000 | 8 | 16000 |
+| Standard_M208s_v2<sup>1</sup> | 208 | 2850 | 4096 | 64 | 80000/800 （7040） | 40000/1000 | 8 | 16000 |
+| Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 （14080） | 80000/2000 | 8 | 32000 |
+| Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 （14080） | 80000/2000 | 8 | 32000 |
 
 <sup>1</sup> Mv2 系列 vm 僅限第2代，並支援第2代支援映射的子集。 如需 Mv2 系列所支援映射的完整清單，請參閱下文。 如果您使用 Linux，請參閱[Azure 上的第2代 Vm 支援](./linux/generation-2.md)，以取得如何尋找和選取映射的指示。 如果您使用的是 Windows，請參閱[Azure 上第2代 vm 的支援](./windows/generation-2.md)，以取得如何尋找及選取映射的指示。 
 
@@ -48,7 +48,7 @@ Mv2 系列 VM 的功能 Intel®超執行緒技術
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="other-sizes"></a>其他大小
+## <a name="other-sizes-and-information"></a>其他大小和資訊
 
 - [一般用途](sizes-general.md)
 - [記憶體最佳化](sizes-memory.md)
@@ -56,6 +56,11 @@ Mv2 系列 VM 的功能 Intel®超執行緒技術
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
+
+定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+
+磁片類型的詳細資訊：[磁片類型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+
 
 ## <a name="next-steps"></a>後續步驟
 

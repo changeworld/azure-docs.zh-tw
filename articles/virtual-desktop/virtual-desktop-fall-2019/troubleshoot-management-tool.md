@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面管理工具-Azure
-description: 如何針對 Windows 虛擬桌面管理工具的問題進行疑難排解。
+title: Windows 虛擬桌面（傳統）管理工具-Azure
+description: 如何針對 Windows 虛擬桌面（傳統）管理工具的問題進行疑難排解。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bb9206d2c2c15c036b0cf1184b79ed126966eb3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 442cdce2ebb6c1a3e38932411dfa2b081a44ef9f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82614794"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283362"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Windows 虛擬桌面管理工具疑難排解
+# <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>針對 Windows 虛擬桌面（傳統）管理工具進行疑難排解
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。
 
 本文說明部署 Windows 虛擬桌面管理工具時可能發生的問題，以及如何加以修正。
 

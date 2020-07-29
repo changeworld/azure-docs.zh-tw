@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 3c3f43ac1c4f427f74c86ccb06018688f80ddb55
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: afd68f9c71281deb3752e29eb57f53227999c01a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231109"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283923"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-v2-for-sql-api-release-notes-and-resources"></a>適用于 SQL API 的 Azure Cosmos DB .NET Core SDK v2：版本資訊與資源
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "86231109"
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST] (/rest/api
+> * 停(/rest/api
 > * [REST 資源提供者](/azure/azure-resource-manager/management/azure-services-resource-providers)
 > * [SQL](sql-api-query-reference.md)
 > * [大量執行程式-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)
@@ -44,11 +44,13 @@ ms.locfileid: "86231109"
 ## <a name="release-notes"></a>版本資訊
 
 > [!NOTE]
-> 如果您使用 .NET Core，請參閱以 .NET Standard 為目標的最新 3.x 版 [.NET SDK](sql-api-sdk-dotnet-standard.md)。 
+> 如果您使用 .NET Core，請參閱以 .NET Standard 為目標的最新 3.x 版 [.NET SDK](sql-api-sdk-dotnet-standard.md)。
+
+下列 .NET Sdk 的子版本適用于2.x 版：
 
 [!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v2/changelog.md)]
 
-
 ## <a name="see-also"></a>另請參閱
+
 若要深入了解 Cosmos DB，請參閱 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服務頁面。
 

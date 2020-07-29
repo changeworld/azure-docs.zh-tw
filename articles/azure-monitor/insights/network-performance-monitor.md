@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 68be8d08939464d200da588c481447f8206c9117
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117204"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326081"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的網路效能監控解決方案
 
@@ -37,7 +37,7 @@ ms.locfileid: "87117204"
 ## <a name="supported-regions"></a>支援的區域
 NPM 可使用在下列其中一個區域裝載的工作區，監視世界各地的網路和應用程式之間的連線情形：
 * 北歐
-* 歐洲西部
+* 西歐
 * 法國中部
 * 加拿大中部
 * 美國西部
@@ -113,7 +113,7 @@ ExpressRoute 監視器的支援區域清單提供於[文件](../../expressroute/
 
 ### <a name="configure-the-solution"></a>設定解決方案 
 
-1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) 將網路效能監視器解決方案新增至您的 OMS 工作區。 您也可以使用[從方案庫新增 Azure 監視器解決方案](../../azure-monitor/insights/solutions.md)中所述的程式。 
+1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) 將網路效能監視器解決方案新增至您的 OMS 工作區。 您也可以使用[從方案庫新增 Azure 監視器解決方案](./solutions.md)中所述的程式。 
 2. 開啟 Log Analytics 工作區，然後選取 [概觀]**** 圖格。 
 3. 選取具有「*解決方案需要其他*設定」訊息的 [**網路效能監控**] 磚。
 
@@ -291,3 +291,4 @@ ExpressRoute 監視器的支援區域清單提供於[文件](../../expressroute/
 
 ## <a name="next-steps"></a>後續步驟 
 深入了解[效能監視器](network-performance-monitor-performance-monitor.md)、[服務連線能力監視](network-performance-monitor-performance-monitor.md)與 [ExpressRoute 監視](network-performance-monitor-expressroute.md)。 
+

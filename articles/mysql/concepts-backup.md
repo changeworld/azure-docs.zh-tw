@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: e28fc3c5779f2c31abbb48a7ced448cd8f92d1a2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 3f24e3538f05ca3b6a27907e0b794705402fce7c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171845"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285436"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>在適用於 MySQL 的 Azure 資料庫中備份與還原
 
@@ -41,8 +41,8 @@ ms.locfileid: "87171845"
 備份會根據伺服器上的備份保留期限設定而保留。 您可以選取7到35天的保留期間。 預設的保留期限為7天。 您可以使用[Azure 入口網站](https://docs.microsoft.com/azure/mysql/howto-restore-server-portal#set-backup-configuration)或[Azure CLI](https://docs.microsoft.com/azure/mysql/howto-restore-server-cli#set-backup-configuration)更新備份設定，以在伺服器建立期間或更新版本中設定保留期間。 
 
 備份保留期限會控制可往回多少時間來擷取時間點還原，因為這會以可用的備份為基礎。 您也可以從還原的角度，將備份保留期限視為復原視窗。 在備份保留期限內執行時間點還原所需的所有備份都會保留在備份儲存體中。 例如，如果備份保留期限設定為7天，則會將修復視窗視為過去7天。 在此案例中，會保留在過去7天還原伺服器所需的所有備份。 備份保留時間範圍為7天：
-- 具有 4 TB 儲存空間的舊版伺服器將會保留最多2個完整資料庫備份、所有差異備份，以及自最早的完整資料庫備份之後執行的交易記錄備份。
--   具有大型儲存體（16 TB）的伺服器將會保留完整的資料庫快照集、所有差異快照集，以及過去8天內的交易記錄備份。
+- 最多 4 TB 儲存空間的伺服器會保留最多2個完整資料庫備份、所有差異備份，以及自最早完整資料庫備份之後執行的交易記錄備份。
+-   具有最多 16 TB 儲存空間的伺服器將會保留完整的資料庫快照集、所有差異快照集，以及過去8天的交易記錄備份。
 
 ### <a name="backup-redundancy-options"></a>備份備援選項
 

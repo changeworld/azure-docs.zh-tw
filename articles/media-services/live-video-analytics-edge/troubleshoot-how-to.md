@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: 62163217862f586be7ed5c0a6000693f8e7fcdd6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043195"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285453"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>針對 IoT Edge 上的即時影片分析進行疑難排解
 
@@ -266,6 +266,9 @@ IoT Edge 上的即時影片分析提供了以方法為基礎的直接程式設�
 
 當自行引導的疑難排解步驟無法解決您的問題時，請前往 Azure 入口網站並[開啟支援票證](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
+> [!WARNING]
+> 記錄檔可能包含個人識別資訊（PII），例如您的 IP 位址。 當我們完成檢查並關閉支援票證時，就會立即刪除記錄的所有本機複本。  
+
 若要收集應新增至票證的相關記錄，請遵循下一節中的指示。 您可以在支援要求的**詳細資料**窗格上上傳記錄檔。
 
 ### <a name="use-the-support-bundle-command"></a>使用支援組合命令
@@ -343,6 +346,6 @@ IoT Edge 上的即時影片分析提供了以方法為基礎的直接程式設�
 
     `"DebugLogsDirectory": ""`
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [教學課程：以事件為基礎的影片錄製到雲端並從雲端播放](event-based-video-recording-tutorial.md)

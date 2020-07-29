@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: 0ba93db3e692a34de42849b469978cea4459c6fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dd8dcbe136558e997ca16a2d9754cbf1c4e7620b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498860"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326098"
 ---
 # <a name="service-connectivity-monitor"></a>服務連線能力監視
 
@@ -75,7 +75,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 
 
-## <a name="walkthrough"></a>逐步解說 
+## <a name="walkthrough"></a>逐步介紹 
 
 移至 [網路效能監控] 儀表板檢視。 若要對您所建立的不同測試取得健康情況摘要，請查看 [服務連線能力監視]**** 頁面。 
 
@@ -133,4 +133,5 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 | MS 團隊 | gov.teams.microsoft.us | 
 
 ## <a name="next-steps"></a>後續步驟
-[搜尋記錄](../../azure-monitor/log-query/log-query-overview.md)以檢視詳細的網路效能資料記錄。
+[搜尋記錄](../log-query/log-query-overview.md)以檢視詳細的網路效能資料記錄。
+

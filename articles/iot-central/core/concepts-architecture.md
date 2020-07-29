@@ -8,11 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 12ad231d81b6c134ebb8d4902b3f95c978e9622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e4b81f2350795b1244289119d714e99bc06ba6f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84695329"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337138"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT 中心架構
 
@@ -29,7 +30,7 @@ ms.locfileid: "84695329"
 - 傳送遙測等量值。
 - 同步處理您應用程式的設定。
 
-在 Azure IoT 中心，裝置範本會指定裝置可與您的應用程式交換的資料。 如需裝置範本的詳細資訊，請參閱[中繼資料管理](#metadata-management)。
+在 Azure IoT Central 中，可和您應用程式交換的裝置資料是在裝置範本中定義。 如需裝置範本的詳細資訊，請參閱[中繼資料管理](#metadata-management)。
 
 若要深入了解如何將裝置連線到 Azure IoT 中心應用程式，請參閱[裝置連線能力](concepts-get-connected.md)。
 
@@ -122,7 +123,7 @@ Azure IoT 中心會使用時間序列來儲存您的裝置所傳送的量值資�
 
 分析服務負責產生應用程式顯示的自訂報告資料。 操作者可以[自訂分析](howto-create-analytics.md) (適用於應用程式中顯示的分析)。 分析服務是以 [Azure 時間序列深入解析](https://azure.microsoft.com/services/time-series-insights/)為基礎，可處理您的裝置所傳送的量值資料。
 
-## <a name="rules-and-actions"></a>執行和動作
+## <a name="rules-and-actions"></a>規則與動作
 
 [規則和動作](tutorial-create-telemetry-rules.md)會密切搭配運作，讓應用程式內的工作自動化。 建置者可以根據裝置遙測定義規則，例如超過所定義閾值的溫度。 Azure IoT 中心會使用資料流處理器來判斷何時符合規則條件。 符合規則條件時，就會觸發建置者所定義的動作。 例如，動作可以傳送一封電子郵件來通知工程師，裝置的溫度過高。
 
@@ -134,7 +135,7 @@ Azure IoT 中心會使用時間序列來儲存您的裝置所傳送的量值資�
 
 在 IoT Central 應用程式裝置範本中包含：
 
-- **裝置功能模型**會指定裝置的功能，例如它所傳送的遙測、定義裝置狀態的屬性，以及裝置所回應的命令。 裝置功能會組織成一或多個介面。 如需裝置功能模型的詳細資訊，請參閱[IoT 隨插即用（預覽）](../../iot-pnp/overview-iot-plug-and-play.md)檔。
+- **裝置功能模型**會指定裝置的功能，例如它所傳送的遙測、定義裝置狀態的屬性，以及裝置所回應的命令。 裝置功能會組織成一或多個介面。
 - **雲端屬性**指定裝置 IoT Central 存放區的屬性。 這些屬性只會儲存在 IoT Central 中，而且永遠不會傳送至裝置。
 - **Views**會指定產生器所建立的儀表板和表單，讓操作員監視和管理裝置。
 - **自訂**可讓建立器覆寫裝置功能模型中的某些定義，使其更與 IoT Central 應用程式相關。

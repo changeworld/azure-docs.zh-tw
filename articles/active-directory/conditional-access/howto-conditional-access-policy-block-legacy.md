@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d6539a233fbb8038d82a8ea41da2c9e79745324
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 15e3c5ba72ff7b97e03cd7aa2b68eeffb2aa7882
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995185"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283005"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>條件式存取：封鎖舊式驗證
 
@@ -35,7 +36,7 @@ ms.locfileid: "83995185"
    1. 選取 [完成] 。
 1. 在 [雲端應用程式或動作] 下，選取 [所有雲端應用程式]。
    1. 選取 [完成] 。
-1. 在 [條件] > [用戶端應用程式 (預覽)] 下，將 [設定] 設為 [是]。
+1. 在**Conditions**  >  **[條件用戶端應用程式（預覽）**] 底下**的 [選取要套用此原則的用戶端應用程式**] 底下：
    1. 僅勾選方塊 [行動裝置應用程式和桌面用戶端] > [其他用戶端]。
    1. 選取 [完成] 。
 1. 在 [存取控制] > [授與] 下，選取 [封鎖存取]。

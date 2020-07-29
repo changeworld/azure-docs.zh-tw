@@ -5,18 +5,18 @@ description: 使用隔離的 Azure 虛擬網路搭配 Azure Machine Learning 來
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: fa99a5c78fb533d17cb7f70b3545aa9ef6439b32
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, contperfq4, tracking-python
+ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072623"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320165"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>使用私人虛擬網路進行定型 & 推斷期間的網路隔離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -304,8 +304,8 @@ Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性
 - 使用 NSG 規則來拒絕輸出網際網路連線。
 
 - 針對__計算執行個體__或__計算叢集__，限制目的地為下列項目的輸出流量：
-   - Azure 儲存體，方法是使用__儲存體__的__服務標記__。
-   - Azure Container Registry，方法是使用__AzureContainerRegistry__的__服務標記__。
+   - Azure 儲存體，方法是使用 __Storage.RegionName__ 的__服務標籤__。 其中 `{RegionName}` 是 Azure 區域的名稱。
+   - Azure Container Registry，方法是使用 __AzureContainerRegistry.RegionName__ 的__服務標籤__。 其中 `{RegionName}` 是 Azure 區域的名稱。
    - Azure Machine Learning，方法是使用 __AzureMachineLearning__ 的__服務標籤__
    - Azure Resource Manager，方法是使用 __AzureResourceManager__ 的__服務標籤__
    - Azure Active Directory，方法是使用 __AzureActiveDirectory__ 的__服務標籤__

@@ -5,11 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 06507c75d486717a77676154818f2032b7e8c807
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: feea8c3cba170244be2ca3ec7a11c36a3c39f700
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84195557"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281220"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>建立使用可用性區域的 Azure Kubernetes Service (AKS) 叢集
 
@@ -98,7 +99,7 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-接下來使用 [kubectl describe][kubectl-describe] 命令列出叢集中的節點。 篩選 *failure-domain.Beta.kubernetes.io/zone* 值，如以下範例所示：
+接下來，使用 [ [kubectl 描述][kubectl-describe]] 命令來列出叢集中的節點，並根據*failure-domain.Beta.kubernetes.io/zone*值進行篩選。 下列範例適用于 Bash shell。
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"
@@ -130,7 +131,7 @@ az aks scale \
     --node-count 5
 ```
 
-當調整作業在幾分鐘後完成後，命令 `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` 應該會出現類似下列範例的輸出：
+當調整作業在幾分鐘後完成後， `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` Bash shell 中的命令應該會提供類似下列範例的輸出：
 
 ```console
 Name:       aks-nodepool1-28993262-vmss000000
@@ -151,7 +152,7 @@ Name:       aks-nodepool1-28993262-vmss000004
 kubectl run nginx --image=nginx --replicas=3
 ```
 
-檢視 Pod 執行所在的節點，即可發現 Pod 是在對應到三個不同可用性區域的節點上執行。 例如，使用命令 `kubectl describe pod | grep -e "^Name:" -e "^Node:"` 會得到類似如下的輸出：
+檢視 Pod 執行所在的節點，即可發現 Pod 是在對應到三個不同可用性區域的節點上執行。 例如，使用 `kubectl describe pod | grep -e "^Name:" -e "^Node:"` Bash shell 中的命令時，您會得到類似下面的輸出：
 
 ```console
 Name:         nginx-6db489d4b7-ktdwg

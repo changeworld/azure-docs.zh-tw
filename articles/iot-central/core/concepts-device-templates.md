@@ -7,12 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7e90a4e9ec88e074ec7b30d78bc99cfa8bf39ba2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1eab1022e9b0f03597c108c3c927909aa9bb2712
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002347"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337104"
 ---
 # <a name="what-are-device-templates"></a>什麼是裝置範本？
 
@@ -28,6 +28,9 @@ Azure IoT Central 中的裝置範本是一個藍圖，可定義連線至您應�
 - _雲端屬性_。 裝置範本的這個部分可讓解決方案開發人員指定要儲存的任何裝置中繼資料。 雲端屬性永遠不會與裝置同步處理，而且只存在於應用程式中。 雲端屬性不會影響裝置開發人員為了實行 DCM 而撰寫的程式碼。
 - _自訂_。 裝置範本的這個部分可讓解決方案開發人員覆寫 DCM 中的部分定義。 如果解決方案開發人員想要精簡應用程式處理值的方式（例如變更屬性的顯示名稱或用來顯示遙測值的色彩），自訂就很有用。 自訂不會影響裝置開發人員為了實行 DCM 而撰寫的程式碼。
 - _Views_。 裝置範本的這個部分可讓解決方案開發人員定義視覺效果，以查看裝置的資料，並使用表單來管理和控制裝置。 這些視圖會使用 DCM、雲端屬性和自訂。 Views 不會影響裝置開發人員撰寫來實行 DCM 的程式碼。
+
+> [!NOTE]
+> [IoT 隨插即用公開預覽](../../iot-pnp/overview-iot-plug-and-play.md)重新整理版本的目標是裝置開發人員和 oem，以開始建立裝置，他們可以在正式發行版本之前，為 IoT 隨插即用認證。
 
 ## <a name="device-capability-models"></a>裝置功能模型
 
@@ -164,7 +167,7 @@ DCM 會定義裝置與您的 IoT Central 應用程式互動的方式。 裝置�
 
 選擇性欄位（例如 [顯示名稱] 和 [描述]）可讓您將更多詳細資料新增至介面和功能。
 
-### <a name="properties"></a>[內容]
+### <a name="properties"></a>屬性
 
 根據預設，屬性為唯讀。 唯讀屬性表示裝置會向您的 IoT Central 應用程式報告屬性值更新。 您的 IoT Central 應用程式無法設定唯讀屬性的值。
 
@@ -219,7 +222,7 @@ IoT Central 可讓您在儀表板和圖表上查看遙測，並在達到閾值�
 
 您可以新增至視圖的遙測、屬性和命令，是由 [裝置] 範本中的 DCM、雲端屬性和自訂所決定。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 身為裝置開發人員，現在您已瞭解裝置範本，建議的後續步驟是閱讀[遙測、屬性和命令](./concepts-telemetry-properties-commands.md)承載，以深入瞭解裝置與 IoT Central 交換的資料。
 

@@ -11,11 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 8e1b953cd2a108e216b4f8e3889287c724f68fa0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479bbe2dbef2d28a2744b667184c45e85faf9adc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781611"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283090"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>為您的多租使用者應用程式啟用自動使用者布建
 
@@ -114,4 +115,4 @@ SAML JIT 會使用 SAML 權杖中的宣告資訊，在應用程式中建立和�
 
 * 向 Microsoft[提交您的應用程式清單](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)和合作夥伴，以在 microsoft 網站上建立檔。
 
-* [加入 Microsoft 合作夥伴網路（免費），並建立您的進入市場計畫](https://partner.microsoft.com/en-us/explore/commercial)。
+* [加入 Microsoft 合作夥伴網路（免費），並建立您的進入市場計畫](https://partner.microsoft.com/explore/commercial)。

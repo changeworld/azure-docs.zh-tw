@@ -6,11 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84197055"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371816"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>將您的 GitHub 存放庫同步至應用程式組態
 
@@ -24,7 +25,7 @@ GitHub Actions [工作流程](https://help.github.com/articles/about-github-acti
 GitHub [文件](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) \(英文\) 提供 GitHub 工作流程和動作的深入觀點。 
 
 ## <a name="enable-github-actions-in-your-repository"></a>在您的存放庫中啟用 GitHub Actions
-若要開始使用此 GitHub 動作，請移至您的存放庫，然後選取 [Actions] \(動作\) 索引標籤。依序按一下 [New workflow] \(新的工作流程\)、[Set up a workflow yourself] \(自行設定工作流程\)。 最後，在 Marketplace 中搜尋「Azure App Configuration Sync」。
+若要開始使用此 GitHub 動作，請移至您的存放庫並選取 [**動作**] 索引標籤。選取 [**新增工作流程**]，然後**自行設定工作流程**。 最後，在 Marketplace 中搜尋「Azure App Configuration Sync」。
 > [!div class="mx-imgBorder"]
 > ![選取 [動作] 索引標籤](media/find-github-action.png)
 
@@ -307,13 +308,13 @@ jobs:
 
 | 輸入名稱 | 必要項？ | 值 |
 |----|----|----|
-| configurationFile | Yes | 設定檔在存放庫中的相對路徑。  支援 Glob 模式，而且可以包含多個檔案。 |
-| format | Yes | 設定檔案的檔案格式。  有效的格式為：JSON、YAML、屬性。 |
-| connectionString | Yes | 應用程式組態執行個體的連接字串。 連接字串應儲存為 GitHub 存放庫中的祕密，而且工作流程中只應使用祕密名稱。 |
+| configurationFile | 是 | 設定檔在存放庫中的相對路徑。  支援 Glob 模式，而且可以包含多個檔案。 |
+| format | 是 | 設定檔案的檔案格式。  有效的格式為：JSON、YAML、屬性。 |
+| connectionString | 是 | 應用程式組態執行個體的連接字串。 連接字串應儲存為 GitHub 存放庫中的祕密，而且工作流程中只應使用祕密名稱。 |
 | separator | 是 | 設定檔壓平合併成機碼/值組時，所使用的分隔符號。  有效的值為：. , ; : - _ __ / |
-| prefix | No | 要加入至機碼開頭的前置詞。 |
-| 標籤 | No | 設定機碼/值組時使用的標籤。 如果未指定，則會使用 Null 標籤。 |
-| strict | No | 判斷是否已啟用嚴格模式的布林值。 預設值為 false。 |
+| prefix | 否 | 要加入至機碼開頭的前置詞。 |
+| 標籤 | 否 | 設定機碼/值組時使用的標籤。 如果未指定，則會使用 Null 標籤。 |
+| strict | 否 | 判斷是否已啟用嚴格模式的布林值。 預設值為 false。 |
 | depth | 否 | 將設定檔壓平合併的最大深度。  深度必須是正數。  預設值將沒有最大深度。 |
 | tags | 否 | 指定在機碼/值組上設定的標記。  預期的格式是具有下列形狀的字串化格式 JSON 物件：{ [propertyName: string]: string; } 每個屬性值-名稱都會成為標籤。 |
 

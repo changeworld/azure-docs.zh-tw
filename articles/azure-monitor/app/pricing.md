@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: ff7d088a80ceaf01e9434ef62beb0e771cdf6b55
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3914764035d65482bcf224f8d0eda9c6579e03a4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081656"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309676"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>管理 Application Insights 的使用量和成本
 
@@ -24,9 +24,9 @@ Application Insights 設計的目的在取得您所需的各項資源，以監�
 
 ## <a name="pricing-model"></a>定價模式
 
-[Azure Application Insights][start] 的價格是**隨用隨付**模式 (以擷取的資料量做為根據)，而且可選擇性地用於需要長時間保留資料的情況。 每項 Application Insights 資源都是個別計費的服務，並且會計入到您的 Azure 訂用帳戶帳單。 資料量是以 Application Insights 從應用程式接收的未壓縮 JSON 資料套件大小來測量。 使用[即時計量資料流](../../azure-monitor/app/live-stream.md)不會產生任何資料量費用。
+[Azure Application Insights][start] 的價格是**隨用隨付**模式 (以擷取的資料量做為根據)，而且可選擇性地用於需要長時間保留資料的情況。 每項 Application Insights 資源都是個別計費的服務，並且會計入到您的 Azure 訂用帳戶帳單。 資料量是以 Application Insights 從應用程式接收的未壓縮 JSON 資料套件大小來測量。 使用[即時計量資料流](./live-stream.md)不會產生任何資料量費用。
 
-[多重步驟 Web 測試](../../azure-monitor/app/availability-multistep.md)會產生額外費用。 多重步驟 Web 測試係指執行一系列動作的 Web 測試。 單一頁面的「Ping 測試」不另外收費。 針對來自 Ping 測試和多重步驟測試的遙測，收費方式與來自您應用程式的其他遙測一樣。
+[多重步驟 Web 測試](./availability-multistep.md)會產生額外費用。 多重步驟 Web 測試係指執行一系列動作的 Web 測試。 單一頁面的「Ping 測試」不另外收費。 針對來自 Ping 測試和多重步驟測試的遙測，收費方式與來自您應用程式的其他遙測一樣。
 
 Application Insights 選項 [[啟用自訂計量維度的警示]](./pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation) 也會產生額外的成本，因為這會額外建立預先彙總指標。 [深入了解](./pre-aggregated-metrics-log-metrics.md) Application Insights 中以記錄為基礎和預先彙總的計量，以及關於 Azure 監視器自訂計量的[價格](https://azure.microsoft.com/pricing/details/monitor/)。
 
@@ -48,7 +48,7 @@ Application Insights 選項 [[啟用自訂計量維度的警示]](./pre-aggregat
 
 ### <a name="learn-from-what-similar-customers-collect"></a>從類似客戶收集內容中了解
 
-在適用於 Application Insights 的 Azure 監視定價計算機中，如果您啟用「根據應用程式活動估算資料量」功能，您可以提供應用程式的相關輸入 (如果您要收集用戶端遙測，則可提供每月要求和每月頁面檢視次數)，然後計算機會讓您知道類似的應用程式所收集資料量的中位數和第 90 個百分位數。 這些應用程式跨越 Application Insights 設定的範圍 (例如，有些有預設的[取樣](../../azure-monitor/app/sampling.md)，有些沒有取樣等等)，因此，您仍然可以使用取樣，控制將擷取的資料量減少到遠低於中位數層級以下。 但這是了解其他類似客戶看法的起點。
+在適用於 Application Insights 的 Azure 監視定價計算機中，如果您啟用「根據應用程式活動估算資料量」功能，您可以提供應用程式的相關輸入 (如果您要收集用戶端遙測，則可提供每月要求和每月頁面檢視次數)，然後計算機會讓您知道類似的應用程式所收集資料量的中位數和第 90 個百分位數。 這些應用程式跨越 Application Insights 設定的範圍 (例如，有些有預設的[取樣](./sampling.md)，有些沒有取樣等等)，因此，您仍然可以使用取樣，控制將擷取的資料量減少到遠低於中位數層級以下。 但這是了解其他類似客戶看法的起點。
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>了解您的使用量並估算成本
 
@@ -56,10 +56,10 @@ Application Insights 可讓您根據最近的使用模式，輕鬆了解可能�
 
 ![選擇價格](./media/pricing/pricing-001.png)
 
-A. 檢閱當月的資料量。 這包括從您的伺服器和用戶端應用程式，以及從可用性測試接收並保留的所有資料 (在任何[取樣](../../azure-monitor/app/sampling.md)之後)。  
-B. 進行[多步驟 Web 測試](../../azure-monitor/app/availability-multistep.md)需另外收費。 (這不包括簡單的可用性測試，其已包含在資料量費用中。)  
+A. 檢閱當月的資料量。 這包括從您的伺服器和用戶端應用程式，以及從可用性測試接收並保留的所有資料 (在任何[取樣](./sampling.md)之後)。  
+B. [多步驟 web 測試](./availability-multistep.md)會產生不同的費用。 (這不包括簡單的可用性測試，其已包含在資料量費用中。)  
 C. 檢視上個月的資料量趨勢。  
-D. 啟用資料擷取[取樣](../../azure-monitor/app/sampling.md)。
+D. 啟用資料擷取[取樣](./sampling.md)。
 E. 設定每日資料量上限。  
 
 (請注意，本文中螢幕擷取畫面顯示的所有價格僅供範例使用。 如需屬於您貨幣與區域的目前定價，請參閱 [Application Insights 價格][pricing]。)
@@ -183,11 +183,11 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 您可以使用下列技術來管理您傳送的資料量：
 
-* **取樣**：您可以使用取樣來減少從伺服器和用戶端應用程式傳送的遙測量，這對計量的扭曲程度最小。 取樣是您可用來調整所傳送資料量的主要工具。 深入了解[取樣功能](../../azure-monitor/app/sampling.md)。
+* **取樣**：您可以使用取樣來減少從伺服器和用戶端應用程式傳送的遙測量，這對計量的扭曲程度最小。 取樣是您可用來調整所傳送資料量的主要工具。 深入了解[取樣功能](./sampling.md)。
 
-* **限制 Ajax 呼叫**：您可以[限制可回報的 Ajax 呼叫次數](../../azure-monitor/app/javascript.md#configuration) (在每個頁面檢視中)，或關閉 Ajax 報告功能。
+* **限制 Ajax 呼叫**：您可以[限制可回報的 Ajax 呼叫次數](./javascript.md#configuration) (在每個頁面檢視中)，或關閉 Ajax 報告功能。
 
-* **停用不必要的模組**：[編輯 ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)以關閉您不需要的集合模組。 例如，您可能會決定效能計數器或相依性資料是不必要的。
+* **停用不必要的模組**：[編輯 ApplicationInsights.config](./configuration-with-applicationinsights-config.md)以關閉您不需要的集合模組。 例如，您可能會決定效能計數器或相依性資料是不必要的。
 
 * **預先彙總計量**：如果您在應用程式中呼叫 TrackMetric，便可以使用接受一批測量之平均及標準差計算的多載來減少流量。 或者，您也可以使用[預先彙總套件](https://www.myget.org/gallery/applicationinsights-sdk-labs)。
  
@@ -207,7 +207,7 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 您可以使用每日用量上限來限制所收集的資料。 不過，如果達到上限，就會失去當天其餘時間從您應用程式傳送的所有遙測資料。 建議您「不要」讓應用程式達到每日上限。 一旦應用程式達到每日上限，您便無法追蹤應用程式的健康情況和效能。
 
-請不要使用每日用量上限，而是改用[取樣](../../azure-monitor/app/sampling.md)將資料量調整到您想要的程度。 然後，只使用每日上限作為應付萬一應用程式開始未預期地傳送大量遙測時的「最後手段」。
+請不要使用每日用量上限，而是改用[取樣](./sampling.md)將資料量調整到您想要的程度。 然後，只使用每日上限作為應付萬一應用程式開始未預期地傳送大量遙測時的「最後手段」。
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>識別要定義的每日資料限制
 
@@ -219,7 +219,7 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 ![調整每日遙測資料量上限](./media/pricing/pricing-003.png)
 
-若要[透過 Azure Resource Manager 變更每日上限](../../azure-monitor/app/powershell.md)，要變更的屬性為 `dailyQuota`。  透過 Azure Resource Manager，您也可以設定 `dailyQuotaResetTime` 和每日上限的 `warningThreshold`。
+若要[透過 Azure Resource Manager 變更每日上限](./powershell.md)，要變更的屬性為 `dailyQuota`。  透過 Azure Resource Manager，您也可以設定 `dailyQuotaResetTime` 和每日上限的 `warningThreshold`。
 
 ### <a name="create-alerts-for-the-daily-cap"></a>建立每日上限的警示
 
@@ -230,13 +230,13 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 * 已達到 Application Insights 元件每日上限
 
 ## <a name="sampling"></a>取樣
-[取樣](../../azure-monitor/app/sampling.md)是一種方法，可降低將遙測傳送到您應用程式時的速率，同時仍保留在診斷搜尋期間尋找相關事件的功能。 此外，也保留正確的事件計數。
+[取樣](./sampling.md)是一種降低遙測傳送至應用程式的速率，同時保留在診斷搜尋期間尋找相關事件的能力。 此外，也保留正確的事件計數。
 
 取樣可有效減少費用並維持在每月配額內。 取樣演算法會保留相關的遙測項目，因此，例如在使用 [搜尋] 時，您便可以找到與特定例外狀況相關的要求。 此演算法也會保留正確的計數，因此您在 [計量瀏覽器] 中會看到要求率、例外狀況率及其他計數的正確值。
 
 取樣有數種形式。
 
-* [調適型取樣](../../azure-monitor/app/sampling.md)是 ASP.NET SDK 的預設值。 調適型取樣會自動針對應用程式所傳送的遙測量進行調整。 這會自動在 Web 應用程式的 SDK 中運作，以便降低網路上的遙測流量。 
+* [調適型取樣](./sampling.md)是 ASP.NET SDK 的預設值。 調適型取樣會自動針對應用程式所傳送的遙測量進行調整。 這會自動在 Web 應用程式的 SDK 中運作，以便降低網路上的遙測流量。 
 *  是替代方法，它會在遙測從應用程式進入 Application Insights 服務時運作。 擷取取樣不會影響從應用程式傳送的遙測量，但可減少服務所保留的量。 您可以使用擷取取樣來減少被來自瀏覽器及其他 SDK 的遙測用光的配額。
 
 若要設定擷取取樣，請移至 [定價] 窗格：
@@ -310,7 +310,7 @@ Application Insights 資源的預設保留期為 90 天。 可以為每個 Appli
   * 「節點」是裝載應用程式的實體或虛擬伺服器機器，或是平台即服務 (PaaS) 角色執行個體。
   * 開發用機器、用戶端瀏覽器及行動裝置不算節點。
   * 如果您的應用程式有數個會傳送遙測的元件，例如 Web 服務和後端背景工作角色，則會分開計算元件。
-  * [即時計量串流](../../azure-monitor/app/live-stream.md)資料不會計入價格用途。 訂用帳戶的收費是依照每一節點，而非每一應用程式。 如果您有五個節點傳送 12 個應用程式的遙測，則是以五個節點計算收費。
+  * [即時計量串流](./live-stream.md)資料不會計入價格用途。 訂用帳戶的收費是依照每一節點，而非每一應用程式。 如果您有五個節點傳送 12 個應用程式的遙測，則是以五個節點計算收費。
 * 雖然費用是按月報價，您的收費僅適用於一個節點從一個應用程式傳送遙測的任何小時。 每小時的費用是月費報價除以 744 (一個月 31 天的小時數)。
 * 每個節點 (資料粒度為小時) 偵測每日 200 MB 的資料量配置。 未使用的資料配置不會累計到隔天。
   * 如果您選擇「每節點」定價方案，每個訂閱會根據傳送遙測資料至該訂閱中 Application Insights 資源的節點數，得到每日資料額度。 因此，如果您有 5 個節點全天候傳送資料，您會有合起來 1GB 的資料額度，套用至該訂用帳戶中的所有 Application Insights 資源。 由於內含資料會在所有節點之間共用，因此特定節點所傳送的資料是否超過其他節點並無妨。 如果某一天，Application Insights 資源收到超過此訂閱的每日資料配置，則會按 GB 收取資料超量費用。 
@@ -339,10 +339,11 @@ Application Insights 資源的預設保留期為 90 天。 可以為每個 Appli
 
 ## <a name="next-steps"></a>後續步驟
 
-* [取樣](../../azure-monitor/app/sampling.md)
+* [抽樣](./sampling.md)
 
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
+

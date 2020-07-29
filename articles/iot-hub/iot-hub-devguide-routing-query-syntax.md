@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 34ffa7a9fe9bd129fa3fd572bc8ef4d80b43ab9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322970"
+ms.locfileid: "87336492"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT 中樞訊息路由查詢語法
 
@@ -59,9 +59,10 @@ IoT 中樞會針對所有裝置到雲端訊息定義[常見格式](iot-hub-devgu
 | contentEncoding | 字串 | 使用者會指定訊息的編碼類型。 允許的值為 UTF-8、UTF-16、UTF-32 (若 contentType 是設為 application/JSON)。 |
 | iothub-connection-device-id | 字串 | 此值是由 IoT 中樞設定，並能識別裝置的識別碼。 若要查詢，請使用 `$connectionDeviceId`。 |
 | iothub-enqueuedtime | 字串 | 此值是由 IoT 中樞設定，並代表將訊息加入佇列的實際時間 (以 UTC 表示)。 若要查詢，請使用 `enqueuedTime`。 |
-| iothub-interface-name | 字串 | 這個值是由使用者設定，代表實作為遙測訊息的數位對應項介面名稱。 若要查詢，請使用 `$interfaceName`。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 |
+| dt-dataschema | 字串 |  此值是由 IoT 中樞在裝置到雲端訊息上設定。 其中包含裝置連接中設定的裝置型號識別碼。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 若要查詢，請使用 `$dt-dataschema`。 |
+| dt-主旨 | 字串 | 傳送裝置到雲端訊息的元件名稱。 這項功能可做為[IoT 隨插即用公開預覽](../iot-pnp/overview-iot-plug-and-play.md)的一部分。 若要查詢，請使用 `$dt-subject`。 |
 
-如 [IoT 中樞訊息](iot-hub-devguide-messages-construct.md)中所述，訊息中還有其他系統屬性。 除了**contentType**、 **contentEncoding**和**Enqueuedtime 之外**，也可以查詢**connectionDeviceId**和**connectionModuleId** 。
+如 [IoT 中樞訊息](iot-hub-devguide-messages-construct.md)中所述，訊息中還有其他系統屬性。 除了上表中的上述屬性以外，您也可以查詢**connectionDeviceId**， **connectionModuleId**。
 
 ### <a name="application-properties"></a>應用程式屬性
 

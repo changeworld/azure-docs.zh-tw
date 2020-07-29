@@ -3,12 +3,12 @@ title: 範本函式 - 資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 19f5b6c07010c82ba6675e6db031e663ef7c5cdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 89241558164505573e098bdf580af6542c6095c5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044955"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372377"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 範本的資源函式
 
@@ -665,7 +665,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 ### <a name="remarks"></a>備註
 
-`resourceGroup()` 函式不能用於[部署在訂用帳戶層級](deploy-to-subscription.md)中的範本， 只能用於部署到資源群組中的範本。 您可以在以資源群組為目標的[連結或巢狀範本 (具有內部範圍)](linked-templates.md) 中使用 `resourceGroup()` 函式，即使已將父範本部署至訂用帳戶亦然。 在此情況下，連結或巢狀範本會在資源群組層級部署。 如需關於在訂用帳戶層級部署中將資源群組設為目標的詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶和資源群組](cross-resource-group-deployment.md)。
+`resourceGroup()` 函式不能用於[部署在訂用帳戶層級](deploy-to-subscription.md)中的範本， 只能用於部署到資源群組中的範本。 您可以在以資源群組為目標的[連結或巢狀範本 (具有內部範圍)](linked-templates.md) 中使用 `resourceGroup()` 函式，即使已將父範本部署至訂用帳戶亦然。 在此情況下，連結或巢狀範本會在資源群組層級部署。 如需關於在訂用帳戶層級部署中將資源群組設為目標的詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶和資源群組](cross-scope-deployment.md)。
 
 resourceGroup 函式的常見用法是在和資源群組相同的位置中建立資源。 下列範例會使用資源群組位置作為預設參數值。
 
@@ -680,7 +680,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 您也可以使用 resourceGroup 函式，將資源群組中的標籤套用至資源。 如需詳細資訊，請參閱[從資源群組套用標籤](../management/tag-resources.md#apply-tags-from-resource-group)。
 
-使用巢狀範本部署至多個資源群組時，您可以指定評估 resourceGroup 函式的範圍。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](cross-resource-group-deployment.md)。
+使用巢狀範本部署至多個資源群組時，您可以指定評估 resourceGroup 函式的範圍。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](cross-scope-deployment.md)。
 
 ### <a name="resource-group-example"></a>資源群組範例
 
@@ -890,7 +890,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 ### <a name="remarks"></a>備註
 
-使用巢狀範本部署至多個訂用帳戶時，您可以指定評估訂用帳戶函式的範圍。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](cross-resource-group-deployment.md)。
+使用巢狀範本部署至多個訂用帳戶時，您可以指定評估訂用帳戶函式的範圍。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](cross-scope-deployment.md)。
 
 ### <a name="subscription-example"></a>訂用帳戶範例
 

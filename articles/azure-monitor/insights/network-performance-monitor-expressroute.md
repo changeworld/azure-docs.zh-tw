@@ -6,11 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9f268e5080a5c04c5cdb4767f2db5fd2d77cd3c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77660745"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326149"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute 監視
 
@@ -22,7 +23,7 @@ ms.locfileid: "77660745"
 
 ![ExpressRoute 監視](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
-## <a name="configuration"></a>組態 
+## <a name="configuration"></a>設定 
 若要開啟網路效能監控的設定，請開啟[網路效能監控解決方案](network-performance-monitor.md)，然後選取 [**設定**]。
 
 ### <a name="configure-network-security-group-rules"></a>設定網路安全性群組規則 
@@ -108,7 +109,7 @@ ms.locfileid: "77660745"
 
 您可以查看通知代碼，並透過 **LogAnalytics** 設定其警示。 在 [NPM 診斷]**** 頁面上，您可以看到每個觸發診斷訊息的描述。
 
-| 通知代碼 (記錄) | Description |
+| 通知代碼 (記錄) | 說明 |
 | --- | --- |
 | 5501 | 無法周遊通過 ExpressRoute 線路的次要連線 |
 | 5502 | 無法周遊通過 ExpressRoute 線路的主要連線 |
@@ -139,4 +140,5 @@ ms.locfileid: "77660745"
  
 
 ## <a name="next-steps"></a>後續步驟
-[搜尋記錄](../../azure-monitor/log-query/log-query-overview.md)以檢視詳細的網路效能資料記錄。
+[搜尋記錄](../log-query/log-query-overview.md)以檢視詳細的網路效能資料記錄。
+

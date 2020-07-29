@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.custom: codepen
-ms.openlocfilehash: 12c407ecacdce6b9052ca70ef70a2ae87928b6c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: codepen, devx-track-javascript
+ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064687"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285674"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用映像範本
 
@@ -106,7 +106,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 
 > [!TIP]
-> 影像範本也可以在地圖之外使用。 GetImageTemplate 運作會傳回具有預留位置的 SVG 字串;`{color}`, `{secondaryColor}`, `{scale}`, `{text}`. 取代這些預留位置值，以建立有效的 SVG 字串。 接著，您可以將 SVG 字串直接新增至 HTML DOM，或將它轉換成資料 URI，並將它插入影像標記中。 例如:
+> 影像範本也可以在地圖之外使用。 GetImageTemplate 運作會傳回具有預留位置的 SVG 字串;`{color}`, `{secondaryColor}`, `{scale}`, `{text}`. 取代這些預留位置值，以建立有效的 SVG 字串。 接著，您可以將 SVG 字串直接新增至 HTML DOM，或將它轉換成資料 URI，並將它插入影像標記中。 例如：
 > ```JavaScript
 > //Retrieve an SVG template and replace the placeholder values.
 > var svg = atlas.getImageTemplate('marker').replace(/{color}/, 'red').replace(/{secondaryColor}/, 'white').replace(/{text}/, '').replace(/{scale}/, 1);
@@ -119,7 +119,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 如果您的應用程式使用不同圖示的相同圖示，或如果您要建立可新增其他影像範本的模組，您可以從 Azure 地圖服務 web SDK 輕鬆地新增和取出這些圖示。 在命名空間上使用下列靜態函式 `atlas` 。
 
-| 名稱 | 傳回類型 | 描述 | 
+| 名稱 | 傳回類型 | 說明 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 將自訂 SVG 影像範本新增至 [阿特拉斯] 命名空間。 |
 |  `getImageTemplate(templateName: string, scale?: number)`| 字串 | 依名稱捕獲 SVG 範本。 |

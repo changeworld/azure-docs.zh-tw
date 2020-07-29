@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: amishu
-zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: 13cb35ffa650661da2855787279c4bdc37126ac9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+zone_pivot_groups: programming-languages-set-twenty-two
+ms.openlocfilehash: 14f87dff680fb72654d1d3e20fe2f0516f9709aa
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585009"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282722"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>搭配使用編解碼器壓縮的音訊輸入與語音 SDK
 
 語音服務 SDK**壓縮的音訊輸入資料流程**API 提供了一種方式，可以使用或，將壓縮的音訊串流至語音服務 `PullStream` `PushStream` 。
 
-目前支援針對 Windows 上的 c #、c + +、JAVA 提供串流處理壓縮的輸入音訊（不支援 UWP 應用程式）和 Linux （Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8）。 Android 中的 JAVA 和 iOS 平臺的目標-C 也支援此功能。
+目前支援在 Windows 上針對 c #、c + +、JAVA 和 Python 提供串流處理壓縮的輸入音訊（不支援 UWP 應用程式）和 Linux （Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8）。 Android 中的 JAVA 也支援此功能。
 * RHEL 8 和 CentOS 8 需要1.10.0 或更新版本的語音 SDK
 * Windows 需要1.11.0 或更新版本的語音 SDK。
 
@@ -42,8 +42,8 @@ ms.locfileid: "83585009"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/prerequisites.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-objectivec"
-[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/prerequisites.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/prerequisites.md)]
 ::: zone-end
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>使用編解碼器壓縮音訊輸入的範例程式碼
@@ -60,8 +60,8 @@ ms.locfileid: "83585009"
 [!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/java/examples.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-objectivec"
-[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/objectivec/examples.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [prerequisites](includes/how-to/compressed-audio-input/python/examples.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>後續步驟

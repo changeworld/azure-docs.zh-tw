@@ -7,15 +7,15 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 01/31/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 90ad8cc87f1d6a1893b96f6201a4260c03c94fee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: 8aebcfc2a46de3922dbc41942e63e71844de6e83
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072210"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319740"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 建立、執行及刪除 Azure ML 資源
 
@@ -202,10 +202,10 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 請注意，若要列出實驗，一開始是 `history/v1.0` 以列出模型，路徑的開頭為 `modelmanagement/v1.0` 。 REST API 分成數個作業群組，每個都有不同的路徑。 
 
-|區域|路徑|
+|區域|Path|
 |-|-|
-|Artifacts|成品/v2.0/|
-|資料存放區|資料存放區/v1.0/|
+|Artifacts|/rest/api/azureml|
+|資料存放區|/azure/machine-learning/how-to-access-data|
 |超參數微調|hyperdrive/v1.0/|
 |模型|modelmanagement/v1.0/|
 |執行記錄|執行/v1.0/和歷程記錄/1.0/|

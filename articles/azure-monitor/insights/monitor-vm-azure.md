@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 9a96db0e9a834dcddbb5f247953fa1bbf0dc39ce
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 294c93242a3fee5db14f5919ebb367aebcca3a80
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539698"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326183"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>使用 Azure 監視器監視 Azure 虛擬機器
 本文說明如何使用 Azure 監視器來收集和分析來自 Azure 虛擬機器的監視資料，以維持資料健康。 您可以使用 Azure 監視器來監視虛擬機器的可用性和效能，如同監視任何[其他 Azure 資源](monitor-azure-resource.md)一樣，但虛擬機器與其他資源不同，因為您也需要監視客體作業和系統，及其在其中執行的工作負載。 
@@ -134,7 +134,7 @@ az monitor diagnostic-settings create \
 |:---|:---|
 | 概觀 | 顯示虛擬機器主機的[平台計量](../platform/data-platform-metrics.md)。 按一下圖表，即可在[計量瀏覽器](../platform/metrics-getting-started.md)中使用此資料。 |
 | 活動記錄檔 | 已針對目前虛擬機器篩選的[活動記錄](../platform/activity-log.md#view-the-activity-log)項目。 |
-| 深入解析 | 使用目前選擇的虛擬機器對應，開啟[適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)。 |
+| 深入解析 | 使用目前選擇的虛擬機器對應，開啟[適用於 VM 的 Azure 監視器](./vminsights-overview.md)。 |
 | 警示 | 檢視目前虛擬機器的[警示](../platform/alerts-overview.md)。  |
 | 計量 | 開啟[計量瀏覽器](../platform/metrics-getting-started.md)，並將範圍設定為目前的虛擬機器。 |
 | 診斷設定 | 啟用和設定目前虛擬機器的[診斷擴充功能](../platform/diagnostics-extension-overview.md)。 |
@@ -242,3 +242,4 @@ System Center Operations Manager (SCOM) 提供虛擬機器上工作負載的細�
 
 * [了解如何使用記錄查詢來分析 Azure 監視器記錄中的資料。](../log-query/get-started-queries.md)
 * [了解在 Azure 監視器中使用計量和記錄的警示。](../platform/alerts-overview.md)
+

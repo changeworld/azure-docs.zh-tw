@@ -2,19 +2,16 @@
 title: 針對 Azure 自動化 Runbook 問題進行疑難排解
 description: 此文章說明如何針對 Azure 自動化 Runbook 問題進行疑難排解及解決問題。
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/24/2019
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 9bf04ae6985ac2ce0e20bf70b3d7c003bbddca69
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187178"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337291"
 ---
 # <a name="troubleshoot-runbook-issues"></a>針對 Runbook 問題進行疑難排解
 
@@ -511,6 +508,24 @@ The quota for the monthly total job run time has been reached for this subscript
 1. 選取 [設定]，然後選取 [定價]。
 1. 選取頁面底部的 [啟用]，以將您的帳戶升級至基本層。
 
+## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>案例： Runbook 輸出資料流程大於 1 MB
+
+### <a name="issue"></a>問題
+
+您在 Azure 沙箱中執行的 runbook 因下列錯誤而失敗：
+
+```error
+The runbook job failed due to a job stream being larger than 1MB, this is the limit supported by an Azure Automation sandbox.
+```
+
+### <a name="cause"></a>原因
+
+發生此錯誤的原因是您的 runbook 嘗試將太多例外狀況資料寫入輸出資料流程。
+
+### <a name="resolution"></a>解決方案
+
+作業輸出資料流程有 1 MB 的限制。 確定您的 Runbook 會使用 `try` 和 `catch` 區塊，來括住對可執行檔或子處理序的呼叫。 如果作業擲回例外狀況，則讓程式碼將來自例外狀況的訊息寫入到自動化變數中。 此技術可避免將訊息寫入到作業輸出資料流。 針對執行的混合式 Runbook 背景工作角色作業，會顯示截斷為 1 MB 的輸出資料流程，而不會出現錯誤訊息。
+
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>案例：已嘗試啟動 Runbook 作業三次，但無法每次都順利啟動
 
 ### <a name="issue"></a>問題
@@ -526,20 +541,22 @@ The job was tried three times but it failed
 此錯誤是因為下列其中一個問題而引發：
 
 * **記憶體限制。** 作業若使用超過 400 MB 的記憶體，可能就會失敗。 配置給沙箱的記憶體限制記載於[自動化服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)中。 
+
 * **網路通訊端。** Azure 沙箱會限制為 1,000 個並行網路通訊端。 如需詳細資訊，請參閱[自動化服務限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。
+
 * **模組不相容。** 模組相依性可能不正確。 在此案例中，您的 Runbook 通常會傳回 `Command not found` 或 `Cannot bind parameter` 訊息。
+
 * **未針對沙箱向 Active Directory 進行驗證。** 您的 Runbook 已嘗試呼叫在 Azure 沙箱中執行的可執行檔或子處理序。 不支援使用 Azure Active Directory 驗證程式庫 (ADAL) 來設定 Runbook 以向 Azure AD 進行驗證。
-* **太多例外狀況資料。** 您的 Runbook 已嘗試將太多例外狀況資料寫入至輸出資料流。
 
 ### <a name="resolution"></a>解決方案
 
 * **記憶體限制，網路通訊端。** 建議在記憶體限制內運作的方式是，在多個 Runbook 之間分割工作負載、不要在記憶體中處理太多資料、避免寫入來自您 Runbook 的不必要輸出，以及考慮寫入至您 PowerShell 工作流程 Runbook 的檢查點數目。 使用 clear 方法 (例如 `$myVar.clear`) 來清除變數，並使用 `[GC]::Collect` 立即執行記憶體回收。 這些動作會減少 Runbook 在執行階段的記憶體使用量。
+
 * **模組不相容。** 遵循[如何更新 Azure 自動化中的 Azure PowerShell 模組](../automation-update-azure-modules.md)步驟來更新 Azure 模組。
+
 * **未針對沙箱向 Active Directory 進行驗證。** 當您使用 Runbook 以向 Azure AD 進行驗證時，確認您的自動化帳戶中有可用的 Azure AD 模組。 請務必為執行身分帳戶授與必要權限，以執行 Runbook 自動化的工作。
 
   如果您的 Runbook 無法呼叫在 Azure 沙箱中執行的可執行檔或子處理序，則需在[混合式 Runbook 背景工作角色](../automation-hrw-run-runbooks.md)上使用 Runbook。 混合式背景工作角色不會受限於 Azure 沙箱所受到的記憶體和網路限制。
-
-* **太多例外狀況資料。** 作業輸出資料流的限制為 1 MB。 確定您的 Runbook 會使用 `try` 和 `catch` 區塊，來括住對可執行檔或子處理序的呼叫。 如果作業擲回例外狀況，則讓程式碼將來自例外狀況的訊息寫入到自動化變數中。 此技術可避免將訊息寫入到作業輸出資料流。
 
 ## <a name="scenario-powershell-job-fails-with-cannot-invoke-method-error-message"></a><a name="cannot-invoke-method"></a>案例：PowerShell 作業失敗且出現「無法叫用方法」錯誤訊息
 

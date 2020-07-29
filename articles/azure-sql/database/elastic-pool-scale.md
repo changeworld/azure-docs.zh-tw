@@ -10,12 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
-ms.date: 3/14/2019
-ms.openlocfilehash: 4cc5ad575b0fbe371d9432668e8ccf43b45ae717
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 7/28/2020
+ms.openlocfilehash: 8cd8dda807b27bc1a83176c6a46596eccfd19073
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84032069"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372088"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>在 Azure SQL Database 中調整彈性集區
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -55,7 +56,17 @@ ms.locfileid: "84032069"
 >
 > - 如果變更服務層級或重新調整彈性集區的計算，就應該使用集區中所有資料庫所使用的空間總和來計算估計值。
 > - 如果將資料庫移入/移出彈性集區，只有資料庫所使用的空間會影響延遲，而非彈性集區所使用的空間。
->
+> - 針對標準和一般用途的彈性集區，如果彈性集區使用 Premium 檔案共用（[PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)）儲存體，則將資料庫移入/移出彈性集區的延遲，或在彈性集區之間移動時，將會與資料庫大小成正比。 若要判斷集區是否使用 PFS 儲存體，請在集區中任何資料庫的內容中執行下列查詢。 如果 AccountType 資料行中的值為 `PremiumFileStorage` ，則集區會使用 PFS 儲存體。
+
+```sql
+SELECT s.file_id,
+       s.type_desc,
+       s.name,
+       FILEPROPERTYEX(s.name, 'AccountType') AS AccountType
+FROM sys.database_files AS s
+WHERE s.type_desc IN ('ROWS', 'LOG');
+```
+
 > [!TIP]
 > 若要監視進行中的作業，請參閱：[使用 SQL REST API 管理作業](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理](/cli/azure/sql/db/op)作業、[使用 t-sql 監視作業](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)和這兩個 PowerShell 命令： [get-azsqldatabaseactivity](/powershell/module/az.sql/get-azsqldatabaseactivity)和[get-azsqldatabaseactivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/10/2020
+ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 34b1ce42850fcefcc2b0d146e7f33d720fd8062d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a99499110951ccbc0458b5ce848930fed9205dad
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202529"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371994"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>使用本機 web UI 來管理您的資料箱和 Data Box Heavy
 
@@ -35,7 +35,7 @@ ms.locfileid: "86202529"
 
 如果您遇到任何裝置問題，您可以從系統記錄建立支援套件。 Microsoft 支援服務會使用此套件來針對問題進行疑難排解。 若要產生支援封裝，請執行下列步驟：
 
-1. 在本機 Web UI 中，移至 [連絡支援服務]****，然後按一下 [建立支援套件]****。
+1. 在本機 web UI 中，移至 [**連絡人支援**]，然後選取 [**建立支援封裝**]。
 
     ![建立支援套件 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,14 +43,13 @@ ms.locfileid: "86202529"
 
     ![建立支援套件 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. 建立支援套件之後，按一下 [下載支援套件]****。 
+3. 支援套件建立完成後，請選取 [**下載支援套件**]。
 
     ![建立支援套件 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
 4. 瀏覽並選擇下載位置。 開啟資料夾以檢視內容。
 
     ![建立支援套件 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
-
 
 ## <a name="shut-down-or-restart-your-device"></a>關閉或重新啟動您的裝置
 
@@ -59,7 +58,7 @@ ms.locfileid: "86202529"
 若要關閉您的裝置，請執行下列步驟。
 
 1. 在本機 Web UI 中，移至 [關機或重新啟動]****。
-2. 按一下 [關機]****。
+2. 選取 [關機]。
 
     ![將資料箱關機 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
 
@@ -72,17 +71,17 @@ ms.locfileid: "86202529"
 若要將資料箱重新啟動，請執行下列步驟。
 
 1. 在本機 Web UI 中，移至 [關機或重新啟動]****。
-2. 按一下 [重新啟動]****。
+2. 選取 [重新啟動]****。
 
     ![將資料箱重新啟動 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
-3. 系統提示您進行確認時，按一下 [確定]**** 以繼續。
+3. 當系統提示您確認時，請選取 **[確定]** 以繼續。
 
    裝置將會關機並重新啟動。
 
 ## <a name="download-bom-or-manifest-files"></a>下載 BOM 或資訊清單檔
 
-材料的物料單 (BOM) 或資訊清單檔案包含複製到資料箱或 Data Box Heavy 的檔案清單。 當您準備要寄送的裝置時，系統會針對匯入順序產生這些檔案。
+[物料單（BOM）] 或 [資訊清單檔案] 包含複製到資料箱或 Data Box Heavy 的檔案清單。 當您準備要寄送的裝置時，系統會針對匯入順序產生這些檔案。
 
 開始之前，請確定您的裝置已完成**寄送準備**步驟。 請遵循下列步驟來下載您匯入順序的 BOM 或資訊清單檔案：
 
@@ -90,9 +89,9 @@ ms.locfileid: "86202529"
 
     ![裝置準備好寄送](media/data-box-portal-admin/ready-to-ship.png)
 
-2. 按一下 [下載檔案清單]****，以下載資料箱上複製的檔案清單。
+2. 選取 [**下載檔案清單**] 以下載您的資料箱複製的檔案清單。
 
-    ![按一下 [下載檔案清單]](media/data-box-portal-admin/download-list-of-files.png)
+    ![選取要下載的檔案清單](media/data-box-portal-admin/download-list-of-files.png)
 
 3. 在 [檔案總管] 中，您會看到根據用來連線到裝置的通訊協定和所用的 Azure 儲存體類型產生的個別檔案清單。
 
@@ -113,7 +112,7 @@ ms.locfileid: "86202529"
 在資料箱返回 Azure 資料中心之後，您可使用這份清單來確認已上傳到 Azure 儲存體帳戶的檔案。 範例資訊清單檔如下所示。
 
 > [!NOTE]
-> 在 Data Box Heavy 上， () BOM 檔案的兩組檔案清單會對應到裝置上的兩個節點。
+> 在 Data Box Heavy 上，會有兩組檔案（BOM 檔案）對應到裝置上的兩個節點。
 
 ```xml
 <file size="52689" crc64="0x95a62e3f2095181e">\databox\media\data-box-deploy-copy-data\prepare-to-ship2.png</file>
@@ -179,10 +178,51 @@ ms.locfileid: "86202529"
     ![停用總和檢查碼](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. [停用]**** 總和檢查碼驗證
-3. 按一下 [套用]。
+3. 選取 [套用]。
 
 > [!NOTE]
 > 只有在 Azure 資料箱解除鎖定時，才可以使用 [略過總和檢查碼計算] 選項。 當裝置鎖定時，您不會看到此選項。
 
-- 瞭解如何透過[Azure 入口網站管理資料箱和 Data Box Heavy](data-box-portal-admin.md)。
+## <a name="enable-smb-signing"></a>啟用 SMB 簽署
 
+伺服器訊息區（SMB）簽署是一項功能，可透過它在封包層級以數位方式簽署使用 SMB 的通訊。 此簽章可防止在傳輸中修改 SMB 封包的攻擊。
+
+如需有關 SMB 簽署的詳細資訊，請參閱[伺服器訊息區簽署的總覽](https://support.microsoft.com/help/887429/overview-of-server-message-block-signing)。
+
+若要在您的 Azure 裝置中啟用 SMB 簽署：
+
+1. 在裝置本機 web UI 的右上角，選取 [**設定**]。
+
+    ![開啟 \[設定\]](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **啟用**SMB 簽署。
+
+    ![啟用 SMB 簽署](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
+
+3. 選取 [套用]。
+4. 在本機 Web UI 中，移至 [關機或重新啟動]****。
+5. 選取 [重新啟動]****。
+
+## <a name="enable-tls-11"></a>啟用 TLS 1。1
+
+根據預設，Azure 資料箱會使用傳輸層安全性（TLS）1.2 進行加密，因為它比 TSL 1.1 更安全。 不過，如果您或您的用戶端使用瀏覽器來存取不支援 TLS 1.2 的資料，您可以啟用 TLS 1.1。
+
+如需 TLS 的相關詳細資訊，請參閱[Azure 資料箱閘道安全性](../databox-online/data-box-gateway-security.md)。
+
+若要在您的 Azure 裝置中啟用 TLS 1.1：
+
+1. 在裝置本機 web UI 的右上角，選取 [**設定**]。
+
+    ![開啟 \[設定\]](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+
+2. **啟用**TLS 1.1。
+
+    ![啟用 TLS 1。1](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
+
+3. 選取 [套用]。
+4. 在本機 Web UI 中，移至 [關機或重新啟動]****。
+5. 選取 [重新啟動]****。
+
+## <a name="next-steps"></a>後續步驟
+
+- 瞭解如何透過[Azure 入口網站管理資料箱和 Data Box Heavy](data-box-portal-admin.md)。

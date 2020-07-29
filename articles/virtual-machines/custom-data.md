@@ -4,15 +4,15 @@ description: 有關在 Azure 虛擬機器上使用自訂資料和 cloud-init 的
 services: virtual-machines
 author: mimckitt
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 1dcba7da09cff3b7123521a4daf1028ab17e199a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029139"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284909"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>在 Azure 虛擬機器上的自訂資料和 cloud-init
 

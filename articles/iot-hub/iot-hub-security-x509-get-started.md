@@ -8,18 +8,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.custom: amqp
-ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- amqp
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: e9fd4308f89873183e4f5f57cee56887ce181fae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759644"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307279"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在您的 Azure IoT 中樞中設定 X.509 安全性
 
 本教學課程說明使用*X.509 憑證驗證*來保護 Azure IoT 中樞所需的步驟。 為了說明，我們使用開放原始碼工具 OpenSSL，在您的 Windows 電腦本機上建立憑證。 建議您僅將本教學課程用於測試目的。 針對生產環境，您應該向根憑證授權單位 (CA) 購買憑證**。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本教學課程需要您準備下列資源：
 
@@ -86,7 +90,7 @@ ms.locfileid: "81759644"
 
 接下來，我們將示範如何建立 C# 應用程式來模擬為您 IoT 中樞註冊的 X.509 裝置。 我們會將氣溫和溼度值從模擬裝置傳送至您的中樞。 在本教學課程中，我們只會建立裝置應用程式。 它會保留給讀者作為練習建立 IoT 中樞服務應用程式，將回應傳送給此模擬裝置所傳送的事件。 C# 應用程式假設您已依照[管理用於範例和教學課程的測試 CA 憑證](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)中的步驟操作。
 
-1. 開啟 Visual Studio，選取 [**建立新專案**]，然後選擇 [**主控台應用程式（.NET Framework）** ] 專案範本。 選取 [下一步]。
+1. 開啟 Visual Studio，選取 [**建立新專案**]，然後選擇 [**主控台應用程式（.NET Framework）** ] 專案範本。 選取 [下一步]  。
 
 1. 在 [**設定您的新專案**] 中，將專案命名為*SimulateX509Device*，然後選取 [**建立**]。
 

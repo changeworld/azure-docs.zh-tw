@@ -11,11 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: d997c6d4eae93290cbb1e4cafe6c7ad662a65933
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c12cfc21668a13586d94089a7049f6f0d6066d7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336870"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336917"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory 中的持續整合和傳遞
 
@@ -48,7 +49,7 @@ ms.locfileid: "85336870"
 
 1.  在提取要求經過核准並在主要分支中合併變更後，變更就會發佈到開發處理站。
 
-1.  當小組準備好將變更部署到測試或 UAT 處理站時，小組會前往其 Azure Pipelines 發行，並將所需的開發處理站版本部署至 UAT。 此部署會在 Azure Pipelines 工作中進行，並使用 Resource Manager 範本參數來套用適當的組態。
+1.  當小組準備好要將變更部署到測試或 UAT （使用者接受度測試） factory 時，小組會前往其 Azure Pipelines 版本，並將所需的開發工廠版本部署至 UAT。 此部署會在 Azure Pipelines 工作中進行，並使用 Resource Manager 範本參數來套用適當的組態。
 
 1.  在測試處理站中驗證變更之後，請使用管線發行的下一個工作來部署到生產處理站。
 

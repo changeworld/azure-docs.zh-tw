@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 90ca46ace5f774e288b40a969f8f7e9802e79857
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7399bc60ffa88112fee87b429571772f634c0754
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080874"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285419"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>適用於 MySQL 的 Azure 資料庫資料加密 (使用客戶管理的金鑰)
 
@@ -22,7 +22,7 @@ ms.locfileid: "87080874"
 Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為 RSA 密碼編譯金鑰提供可調整且安全的儲存體，並可選擇由 FIPS 140-2 層級 2 驗證的硬體安全性模組 (HSM) 加以支援。 其不允許直接存取儲存的金鑰，但會提供加密和解密服務給已授權的實體。 Key Vault 可以產生金鑰、將其匯入，或[從內部部署 HSM 裝置進行傳輸](../key-vault/key-Vault-hsm-protected-keys.md)。
 
 > [!NOTE]
-> 「適用於 MySQL 的 Azure 資料庫」支援「一般用途」和「記憶體最佳化」定價層，其中所有 Azure 區域都可使用此功能。
+> 「適用於 MySQL 的 Azure 資料庫」支援「一般用途」和「記憶體最佳化」定價層，其中所有 Azure 區域都可使用此功能。 如需其他限制，請參閱[限制](concepts-data-encryption-mysql.md#limitations)一節。
 
 ## <a name="benefits"></a>優點
 

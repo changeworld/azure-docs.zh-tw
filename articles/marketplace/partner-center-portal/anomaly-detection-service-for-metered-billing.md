@@ -4,17 +4,17 @@ description: 描述異常偵測的運作方式、傳送通知的時機，以及�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
 ms.author: mingshen
+author: mingshen-ms
 ms.date: 06/10/2020
-ms.openlocfilehash: becd15ceea41e40b35848f46f9657c501acf659a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cb134c82f231eb8b6329b1acafb181032edd6936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122025"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320080"
 ---
-# <a name="anomaly-detection-service-for-metered-billing"></a>計量付費計費的異常偵測服務
+# <a name="anomaly-detection-service-for-metered-billing"></a>計量付費的異常偵測服務
 
 [Marketplace 計量服務](marketplace-metering-service-apis-faq.md)可讓您在商業市場方案中建立依非標準單位收費的供應專案。 透過計量付費計費，您可以將客戶使用方式事件傳送給 Microsoft，並根據該使用量來準備計費。
 
@@ -60,7 +60,7 @@ ms.locfileid: "86122025"
 
 如果您將不正確的使用方式傳送給 Microsoft，或將導致客戶 undercharge，Microsoft 將不會對客戶起始帳單，也不會向您收取該使用量的費用。 因為報告不足，所以您將必須承受收益的損失。
 
-如果適用下列其中一種情況，您可以開啟支援票證，為您的客戶要求退款或帳單調整：
+如果適用下列其中一種情況，您可以開立支援票證，為您的客戶要求退款或帳單調整：
 
 - 您已確認我們發現的其中一個異常是真正的問題，而不正確的使用方式會導致客戶**overcharge** 。
 - 您發現您傳送了不正確的使用量給我們，而不正確的使用方式會導致客戶**overcharge** 。
@@ -76,6 +76,6 @@ ms.locfileid: "86122025"
 
 如需更多發行者支援選項，請參閱[合作夥伴中心的商業 marketplace 方案支援](support.md)。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 
 - 瞭解[Marketplace 計量服務 API](marketplace-metering-service-apis.md)。

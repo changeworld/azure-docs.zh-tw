@@ -5,20 +5,20 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/28/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: baab0160247e17556f0928f12f26a5ecca767210
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f6185cbb871d63cfdf5a4c336944158593b63e4a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129299"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372836"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>在 Windows 虛擬桌面上使用 Microsoft 團隊
 
 >[!IMPORTANT]
->Microsoft 小組的媒體優化目前處於公開預覽狀態。 我們建議您在部署生產工作負載的小組之前，先評估優化的小組使用者經驗。 可能不支援特定功能，或可能已經限制功能。
+>Microsoft 365 的政府環境不支援小組的媒體優化。
 
 >[!NOTE]
 >Microsoft 小組的媒體優化僅適用于 Windows 10 電腦上的 Windows 桌面用戶端。 媒體優化需要 Windows 桌面用戶端版本1.2.1026.0 或更新版本。
@@ -27,7 +27,7 @@ Microsoft 團隊的 Windows 虛擬桌面支援聊天與共同作業。 透過媒
 
 透過適用于 Microsoft 小組的媒體優化，Windows 桌面用戶端會在本機處理音訊和影片，供小組通話和會議使用。 您仍然可以使用 Microsoft 小組在 Windows 虛擬桌面與其他用戶端，而不需要經過優化的通話和會議。 所有平臺都支援小組交談和共同作業功能。 若要重新導向遠端會話中的本機裝置，請參閱[自訂主機集區的遠端桌面通訊協定屬性](#customize-remote-desktop-protocol-properties-for-a-host-pool)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在 Windows 虛擬桌面上使用 Microsoft 團隊之前，您必須執行下列動作：
 
@@ -53,15 +53,21 @@ Microsoft 團隊的 Windows 虛擬桌面支援聊天與共同作業。 透過媒
 
 ### <a name="install-the-teams-websocket-service"></a>安裝小組 WebSocket 服務
 
-在您的 VM 映射上安裝[WebSocket 服務](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i)。 如果您遇到安裝錯誤，請安裝[最新的 Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)可轉散發套件，然後再試一次。
+在您的 VM 映射上安裝最新的[WebSocket 服務](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt)。 如果您遇到安裝錯誤，請安裝[最新的 Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)可轉散發套件，然後再試一次。
 
 #### <a name="latest-websocket-service-versions"></a>最新的 WebSocket 服務版本
 
-下表列出每個使用者群組可用的目前版本：
+下表列出 WebSocket 服務的最新版本：
 
-|版本    |發行日期  |
-|-----------|--------------|
-|0.11.0     |05/29/2020    |
+|版本        |發行日期  |
+|---------------|--------------|
+|1.0.2006.11001 |07/28/2020    |
+|0.11.0         |05/29/2020    |
+
+#### <a name="updates-for-version-10200611001"></a>版本1.0.2006.11001 的更新
+
+- 已修正問題：在呼叫或會議期間，將小組應用程式降至最低會導致連入影片下降。
+- 已新增在多監視器桌面會話中選取一個監視器以進行共用的支援。
 
 ### <a name="install-microsoft-teams"></a>安裝 Microsoft 團隊
 
@@ -117,7 +123,7 @@ Microsoft 團隊的 Windows 虛擬桌面支援聊天與共同作業。 透過媒
 
 3. 選取您的使用者設定檔影像，然後選取 [**設定**]。
 
-      如果已載入媒體優化，則會在 [裝置] 功能表中列舉本機可用的音訊裝置和相機。 如果功能表顯示**遠端音訊**，請退出小組應用程式，然後再試一次。 如果裝置仍未出現在功能表中，請返回[安裝 Microsoft 小組](#install-microsoft-teams)，並確定您已完成安裝程式。
+      如果已載入媒體優化，則會在 [裝置] 功能表中列舉本機可用的音訊裝置和相機。 如果功能表顯示**遠端音訊**，請退出小組應用程式，然後再試一次。 如果裝置仍未出現在功能表中，請檢查您的本機電腦上的隱私權設定。 確定 [**設定**] [  >  **隱私權**  >  **應用程式**] [許可權] 設定的 [**允許應用程式存取您的麥克風**] 已**開啟**。 中斷與遠端會話的連線，然後重新連線並再次檢查音訊和視頻裝置。 若要使用影片加入電話和會議，您也必須授與應用程式存取相機的許可權。
 
 ## <a name="known-issues-and-limitations"></a>已知的問題和限制
 
@@ -133,9 +139,7 @@ Microsoft 團隊的 Windows 虛擬桌面支援聊天與共同作業。 透過媒
 ### <a name="calls-and-meetings"></a>通話與會議
 
 - Windows 虛擬桌面環境中的小組桌面用戶端不支援實況活動。 目前，我們建議您改為在遠端會話中加入[小組 web 用戶端](https://teams.microsoft.com)的實況活動。
-- 在通話或會議期間將小組應用程式最小化，可能會在您展開應用程式時導致傳入的影片摘要消失。
 - 通話或會議目前不支援應用程式共用。 桌面會話支援桌面共用。
-- 在多監視器安裝程式中進行桌面共用時，會共用所有監視器。
 - 目前不支援 [提供控制項] 和 [取得控制項]。
 - Windows 虛擬桌面的小組一次只支援一個傳入的影片輸入。 這表示每當有人嘗試共用其畫面時，畫面將會出現，而不是會議領導者的畫面。
 - 由於 WebRTC 限制，傳入和傳出的影片串流解析度僅限於720p。

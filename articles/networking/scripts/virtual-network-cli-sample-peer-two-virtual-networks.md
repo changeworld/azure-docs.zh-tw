@@ -1,6 +1,6 @@
 ---
 title: Azure CLI 指令碼範例 - 讓兩個虛擬網路對等互連 | Microsoft Docs
-description: Azure CLI 指令碼範例 - 讓兩個虛擬網路對等互連
+description: 使用 Azure CLI 腳本範例，透過 Azure 網路建立和連接相同區域中的兩個虛擬網路。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.openlocfilehash: c301c66c3b668ae48314c4d1eb06657d8573209c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a4c3c353e87ad88d7bae10ae011bdd59e7992309
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030397"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282087"
 ---
 # <a name="use-an-azure-cli-sample-script-to-connect-two-virtual-networks"></a>使用 Azure CLI 範例腳本來連接兩個虛擬網路
 

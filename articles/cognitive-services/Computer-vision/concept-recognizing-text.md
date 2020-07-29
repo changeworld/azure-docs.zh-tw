@@ -1,7 +1,7 @@
 ---
-title: " (OCR) 的光學字元辨識-電腦視覺"
+title: 光學字元辨識（OCR）-電腦視覺
 titleSuffix: Azure Cognitive Services
-description: 與光學字元辨識相關的概念 (OCR) 從影像和檔，以及使用電腦視覺 API 的列印和手寫文字。
+description: 使用電腦視覺 API，從影像和檔與列印和手寫文字的光學字元辨識（OCR）相關概念。
 services: cognitive-services
 author: msbbonsu
 manager: netahw
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: t-bebon
 ms.custom: seodec18
-ms.openlocfilehash: 6bc118145bec30085c2d9fbf726c40a20b312430
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 83e76cd96e09b0e136d2bfbe2e5863b289724bdd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207062"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284246"
 ---
 # <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
-Microsoft 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影像和 PDF 檔中解壓縮列印或手寫文字。 OCR Api 會將類比檔中的文字從 (影像、掃描的檔) 和數位化的檔中解壓縮。 您可以從真實影像中取出文字，例如授權盤子的相片或具有序號的容器，以及檔-發票、帳單、財務報告、文章等等。 新的讀取 OCR API 可作為雲端或內部部署 (容器) 的受控服務之一部分。 此外，它也支援虛擬網路和私人端點，以符合您的企業級合規性和隱私權需求。
+Microsoft 的電腦視覺 API 包含光學字元辨識（OCR）功能，可從影像和 PDF 檔解壓縮列印或手寫文字。 OCR Api 會從類比檔（影像、掃描的檔）和數位化的檔中，解壓縮文字。 您可以從真實影像中取出文字，例如授權盤子的相片或具有序號的容器，以及檔-發票、帳單、財務報告、文章等等。 新的讀取 OCR API 可作為雲端或內部部署（容器）中受控服務的一部分。 此外，它也支援虛擬網路和私人端點，以符合您的企業級合規性和隱私權需求。
 
 ## <a name="read-api"></a>讀取 API 
 
-電腦視覺的[讀取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是 Microsoft 的最新 OCR 技術，可將印刷文字 (七種語言) 、手寫文字僅 (英文) 、數位和貨幣符號，從影像和多頁 PDF 檔中取得。 它已優化，可從具有混合語言的內部文字大量影像和多頁 PDF 檔中解壓縮文字。 它支援在相同的影像或檔中偵測列印和手寫文字 (英文) 。 請參閱[OCR 支援語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)的完整清單頁面。
+電腦視覺的[讀取 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)是 Microsoft 的最新 OCR 技術，會以數種語言、手寫文字（僅限英文）、數位和貨幣符號（從影像和多頁 PDF 檔）來解壓縮印刷文字。 它已優化，可從具有混合語言的內部文字大量影像和多頁 PDF 檔中解壓縮文字。 它支援在相同的影像或檔中偵測列印和手寫文字（僅限英文）。 請參閱[OCR 支援語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)的完整清單頁面。
 
 ### <a name="how-ocr-works"></a>OCR 的運作方式
 
@@ -123,7 +123,7 @@ Microsoft 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影�
 
 ### <a name="printed-text-in-supported-languages"></a>支援的語言中的印刷文字
 
-讀取 API 支援以英文、西班牙文、德文、法文、義大利文、葡萄牙文和荷蘭文語言來解壓縮印刷文字。 如果您的案例需要支援更多語言，請參閱本檔中的 OCR API 總覽。 請參閱所有[OCR 支援語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)的清單
+讀取 3.0 API 支援以英文、西班牙文、德文、法文、義大利文、葡萄牙文和荷蘭文語言來解壓縮印刷文字。 [閱讀 3.1-preview。 1 API 公開預覽](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)新增了簡體中文的支援。 如果您的案例需要支援更多語言，請參閱本檔中的 OCR API 總覽。 請參閱所有[OCR 支援語言](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr)的清單
 
 ![要旋轉的影像及其要讀取和描繪的文字](./Images/supported-languages-example.png)
 
@@ -137,9 +137,9 @@ Microsoft 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影�
 
 就像所有認知服務一樣，使用「讀取」服務的開發人員應該要瞭解 Microsoft 對於客戶資料的原則。 若要深入瞭解，請參閱[Microsoft 信任中心](https://www.microsoft.com/en-us/trust-center/product-overview)上的認知服務頁面。
 
-### <a name="deploy-on-premises"></a>部署內部部署
+### <a name="containers-for-on-premise-deployment"></a>內部部署的容器
 
-[讀取] 也可作為 Docker 容器 (預覽) ，讓您在自己的環境中部署新的 OCR 功能。 容器非常適合用於特定的安全性和資料控管需求。 請參閱[如何安裝和執行讀取容器。](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
+「讀取」也是 Docker 容器（預覽），可讓您在自己的環境中部署新的 OCR 功能。 容器非常適合用於特定的安全性和資料控管需求。 請參閱[如何安裝和執行讀取容器。](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
 
 
 ## <a name="ocr-api"></a>OCR API
@@ -149,4 +149,5 @@ Microsoft 的電腦視覺 API 包含光學字元辨識 (OCR) 功能，可從影�
 ## <a name="next-steps"></a>後續步驟
 
 - 瞭解[讀取 3.0 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)。
+- 瞭解[讀取 3.1-preview 1 REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)加上簡體中文的支援。
 - 遵循[解壓縮文字](./QuickStarts/CSharp-hand-text.md)快速入門，使用 c #、JAVA、JavaScript 或 Python 搭配 REST API 來執行 OCR。

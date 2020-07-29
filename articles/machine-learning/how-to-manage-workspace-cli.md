@@ -5,16 +5,17 @@ description: 了解如何使用 Azure CLI 建立新的 Azure Machine Learning �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 06/25/2020
-ms.openlocfilehash: 64963bfc28921d195d9ed0f96b2673a9c9e4aa2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 1cc280dc12fcb462e11a568910eef053e4bdac50
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392704"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319689"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 建立 Azure Machine Learning 的工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -59,7 +60,13 @@ az extension add -n azure-cli-ml
 Azure Machine Learning 工作區依賴下列 Azure 服務或實體：
 
 > [!IMPORTANT]
-> 如果未指定現有的 Azure 服務，則會在工作區建立期間自動建立一個。 請務必指定資源群組。 附加您自己的儲存體帳戶時，請確定它已啟用 Azure Blob 和 Azure 檔案功能，而且已停用階層命名空間（ADLS Gen 2）。 您稍後可以在工作區建立為數據存放區之後，隨時附加您自己的儲存體帳戶。
+> 如果未指定現有的 Azure 服務，則會在工作區建立期間自動建立一個。 請務必指定資源群組。 附加您自己的儲存體帳戶時，請確定它符合下列準則：
+>
+> * 儲存體帳戶_不_是 premium 帳戶（Premium_LRS 和 Premium_GRS）
+> * 已啟用 Azure Blob 和 Azure 檔案功能
+> * 階層命名空間（ADLS Gen 2）已停用
+>
+> 這些需求僅適用于工作區所使用的_預設_儲存體帳戶。
 
 | 服務 | 用來指定現有執行個體的參數 |
 | ---- | ---- |
@@ -147,6 +154,9 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     此命令的回應類似下列文字，這是儲存體帳戶的識別碼：
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
+
+    > [!IMPORTANT]
+    > 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶（Premium_LRS 和 Premium_GRS）。 它也不能有階層式命名空間（與 Azure Data Lake Storage Gen2 一起使用）。 工作區的_預設_儲存體帳戶不支援 premium 儲存體或階層式命名空間。 您可以使用 premium 儲存體或具有_非預設_儲存體帳戶的階層命名空間。
 
 + **Azure Application Insights**：
 

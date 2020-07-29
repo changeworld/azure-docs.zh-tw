@@ -1,29 +1,30 @@
 ---
-title: '互動式調試： VS Code & ML 計算實例 (預覽) '
+title: 互動式調試： VS Code & ML 計算實例（預覽）
 titleSuffix: Azure Machine Learning
 description: 設定 VS Code Remote，以互動方式使用 Azure Machine Learning 來偵錯工具代碼。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 07/09/2020
-ms.openlocfilehash: 46aefa62ab00c0b3bc2b90467a9fafd61439a10e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: dfb8dac1b9027acd01b3c13c919d9c3cd8368819
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203448"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320114"
 ---
-# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>使用 VS Code Remote (preview 以互動方式在 Azure Machine Learning 計算實例上進行偵錯工具) 
+# <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote-preview"></a>使用 VS Code 遠端（預覽）以互動方式在 Azure Machine Learning 計算實例上進行偵錯工具
 
 在本文中，您將瞭解如何在 Azure Machine Learning 計算實例上設定 Visual Studio Code 遠端，讓您可以從 VS Code**以互動方式進行程式碼的偵錯工具**。 
 
 + [Azure Machine Learning 計算實例](concept-compute-instance.md)是一種完全受控的雲端式工作站，適用于資料科學家，並為 IT 系統管理員提供管理和企業就緒功能。 
 
 
-+ [Visual Studio Code 遠端](https://code.visualstudio.com/docs/remote/remote-overview)開發可讓您使用容器、遠端電腦或適用于 Linux 的 Windows 子系統 (WSL) 作為功能完整的開發環境。 
++ [Visual Studio Code 遠端](https://code.visualstudio.com/docs/remote/remote-overview)開發可讓您使用容器、遠端電腦或適用于 Linux 的 Windows 子系統（WSL）作為功能完整的開發環境。 
 
 ## <a name="prerequisite"></a>必要條件  
 
@@ -70,7 +71,7 @@ ms.locfileid: "86203448"
 
 ## <a name="add-instance-as-a-host"></a>將實例新增為主機 
 
-開啟 `~/.ssh/config` (Linux) 的檔案 `C:\Users<username>.ssh\config` ，或在編輯器中 (Windows) 並新增類似以下的專案：
+`~/.ssh/config`在編輯器中開啟檔案（Linux）或 `C:\Users<username>.ssh\config` （Windows），並新增類似以下的專案：
 
 ```
 Host azmlci1 
@@ -86,12 +87,12 @@ Host azmlci1
 
 以下是欄位的一些詳細資料： 
 
-|欄位|描述|
+|欄位|說明|
 |----|---------|
 |主機|針對計算實例使用您喜歡的任何縮寫 |
 |HostName|這是計算實例的 IP 位址 |
-|連接埠|這是上述 SSH 對話方塊上顯示的埠 |
-|使用者|這必須是 `azureuser` |
+|Port|這是上述 SSH 對話方塊上顯示的埠 |
+|User|這必須是 `azureuser` |
 |IdentityFile|應該指向您儲存私密金鑰的檔案 |
 
 現在，您應該能夠使用上述所用的縮寫，以 ssh 連線到您的計算實例 `ssh azmlci1` 。 

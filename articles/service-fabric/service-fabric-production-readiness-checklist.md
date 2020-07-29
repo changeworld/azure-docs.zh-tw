@@ -3,12 +3,12 @@ title: Azure Service Fabric 生產整備度檢查清單
 description: 遵循最佳做法來使您的 Service Fabric 應用程式和叢集生產環境準備就緒。
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: 7011860b8e1162b35cbfee3a9e796163710b7fdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf5245b4b97706703d9f96e047ecb49786ff6266
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610025"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282053"
 ---
 # <a name="production-readiness-checklist"></a>實際執行整備檢查清單
 
@@ -22,7 +22,7 @@ ms.locfileid: "85610025"
 1. 針對主要節點類型使用 D2v2 或更高的 SKU。 建議挑選至少具有 50 GB 硬碟容量的 SKU。
 1. 生產環境叢集必須是[安全的](service-fabric-cluster-security.md)。 如需設定安全叢集的範例，請參閱此[叢集範本](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG) \(英文\)。 針對憑證使用通用名稱，並避免使用自我簽署的憑證。
 1. 新增[容器和服務的資源條件約束](service-fabric-resource-governance.md)，如此一來，它們就不會耗用超過 75% 的節點資源。 
-1. 了解並設定[持久性層級](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)。 建議針對執行具狀態工作負載的節點類型使用銀級或更高的持久性層級。 主要節點類型的持久性層級應該設定為銀級或更高層級。
+1. 了解並設定[持久性層級](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)。 建議針對執行具狀態工作負載的節點類型使用銀級或更高的持久性層級。
 1. 了解並挑選節點類型的[可靠性層級](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)。 建議採用銀級或更高層級的可靠性。
 1. 載入您的工作負載並進行調整測試，以識別叢集的[容量需求](service-fabric-cluster-capacity.md)。 
 1. 您的服務和應用程式會受到監視，並產生及儲存應用程式記錄，而且會發出警示。 例如，請參閱[將記錄新增至您的 Service Fabric 應用程式](service-fabric-how-to-diagnostics-log.md)和[使用 Azure 監視器記錄監視容器](service-fabric-diagnostics-oms-containers.md)。

@@ -4,16 +4,16 @@ description: 本文包含 AzCopy 範例命令的集合，可協助您建立容�
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ac96008987b0dbed9e3a39f92e608b8ae6c82512
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bcb4563f7106161920b89897b706b05d2f819938
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513767"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282444"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 儲存體傳輸資料
 
@@ -63,7 +63,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 > |狀況|旗標|
 > |---|---|
 > |以附加 Blob 或分頁 Blob 的形式上傳檔案。|**--blob-類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
-> |上傳至特定的存取層（例如封存層）。|**--區塊-blob 層** = \[無經常性存取封存 \| \| \|\]|
+> |上傳至特定存取層 (例如封存層)。|**--區塊-blob 層** = \[無經常性存取封存 \| \| \|\]|
 > 
 > 如需完整清單，請參閱[選項](storage-ref-azcopy-copy.md#options)。
 
@@ -111,7 +111,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 
 ### <a name="upload-specific-files"></a>上傳特定檔案
 
-您可以指定完整的檔案名，或使用包含萬用字元（*）的部分名稱。
+您可以使用完整檔案名、具有萬用字元（*）的部分名稱，或使用日期和時間來上傳特定檔案。
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多個完整的檔案名
 
@@ -140,6 +140,18 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 您也可以使用選項來排除檔案 `--exclude-pattern` 。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
 `--include-pattern`和 `--exclude-pattern` 選項僅適用于檔案名，而不會套用至路徑。  如果您想要複製存在於目錄樹狀結構中的所有文字檔，請使用 `–recursive` 選項來取得整個目錄樹狀結構，然後使用 `–include-pattern` 並指定 `*.txt` 來取得所有文字檔。
+
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上傳在日期和時間之後修改的檔案 
+
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間（例如： `2020-08-19T15:04:00Z` ）。 
+
+|    |     |
+|--------|-----------|
+| **語法** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **範例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+| **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory'   --include-after '2020-08-19T15:04:00Z'` |
+
+如需詳細參考，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
 ## <a name="download-files"></a>下載檔案
 
@@ -202,7 +214,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 
 ### <a name="download-specific-files"></a>下載特定檔案
 
-您可以指定完整的檔案名，或使用包含萬用字元（*）的部分名稱。
+您可以使用完整檔案名、具有萬用字元（*）的部分名稱，或使用日期和時間來下載特定檔案。 
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多個完整的檔案名
 
@@ -231,6 +243,18 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 您也可以使用選項來排除檔案 `--exclude-pattern` 。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
 `--include-pattern`和 `--exclude-pattern` 選項僅適用于檔案名，而不會套用至路徑。  如果您想要複製存在於目錄樹狀結構中的所有文字檔，請使用 `–recursive` 選項來取得整個目錄樹狀結構，然後使用 `–include-pattern` 並指定 `*.txt` 來取得所有文字檔。
+
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下載在日期和時間之後修改的檔 
+
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間（例如： `2020-08-19T15:04:00Z` ）。 
+
+|    |     |
+|--------|-----------|
+| **語法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>/*' '<local-directory-path>' --include-after <Date-Time-in-ISO-8601-format>` |
+| **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+| **範例**（階層式命名空間） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+
+如需詳細參考，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
 ## <a name="copy-blobs-between-storage-accounts"></a>在儲存體帳戶間複製 Blob
 
@@ -339,7 +363,7 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 | **語法** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **範例** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
 
-### <a name="update-a-local-file-system-with-changes-to-a-container"></a>以容器的變更來更新本機檔案系統
+### <a name="update-a-local-file-system-with-changes-to-a-container"></a>將有變更的本機檔案系統上傳至容器
 
 在此情況下，本機檔案系統是目的地，而容器是來源。
 
@@ -374,7 +398,7 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 
 - [教學課程：使用 AzCopy 將內部部署資料移轉至雲端儲存體](storage-use-azcopy-migrate-on-premises-data.md)
 
-- [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
+- [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 
 - [使用 AzCopy 和 Amazon S3 貯體轉送資料](storage-use-azcopy-s3.md)
 

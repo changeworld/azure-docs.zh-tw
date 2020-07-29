@@ -12,11 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e35772e81329e112aac361b6a533c559154f03f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76543013"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284688"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解當您在 Azure 中管理虛擬機器時，常見的錯誤訊息
 
@@ -175,7 +176,7 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  OSProvisioningClientError  |  對 VM 指定的使用者名稱不適用於此 Linux 散發套件。 錯誤詳細資料：{0}。  |
 |  OSProvisioningInternalError  |  由於發生內部錯誤，VM '{0}' 的 OS 佈建失敗。  |
 |  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 VM 仍可能成功完成佈建。 請稍後再查看佈建狀態。  |
-|  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 VM 仍可能成功完成佈建。 請稍後再查看佈建狀態。 也請確認已正確備妥 (一般化) 映像。   <ul><li>適用於 Windows 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 適用於 Linux 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
+|  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 VM 仍可能成功完成佈建。 請稍後再查看佈建狀態。 也請確認已正確備妥 (一般化) 映像。   <ul><li>適用于[Windows]( ../windows/upload-image.md)的指示。</li><li> 適用于[Linux](../linux/capture-image.md)的指示</li></ul>  |
 |  OSProvisioningTimedOut  |  VM '{0}'的 OS 佈建未於配置的時間內完成。 不過，已偵測到 VM 客體代理程式正在執行。 這表示客體 OS 尚未備妥做為 VM 映像 (CreateOption=FromImage)。 若要解決此問題，請依現狀使用 VHD 並指定 CreateOption=Attach，或適當備妥它做為映像：   <ul><li>適用於 Windows 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> 適用於 Linux 的指示：https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |
 |  OverConstrainedAllocationRequest  |  選取的位置目前沒有所要求的 VM 大小可用。  |
 |  ResourceUpdateBlockedOnPlatformUpdate  |  因為目前正在執行平台更新，所以無法更新資源。 請稍後再試一次。  |

@@ -7,18 +7,19 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1ba623a00c84a7b83afe778c808251e49c7008e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 072fa659d6f5cf55da4dfc99cfed38220be70812
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515354"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337342"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 檔案同步
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
 
 強烈建議您先閱讀[規劃 Azure 檔案服務部署](storage-files-planning.md)和[規劃 Azure 檔案同步部署](storage-sync-files-planning.md)，再完成本文章中描述的步驟。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 * 您想要部署 Azure 檔案同步的相同區域中的 Azure 檔案共用。如需詳細資訊，請參閱：
     - Azure 檔案同步的[區域可用性](storage-sync-files-planning.md#azure-file-sync-region-availability)。
     - [建立檔案共用](storage-how-to-create-file-share.md)以取得如何建立檔案共用的逐步說明。
@@ -29,7 +30,7 @@ ms.locfileid: "85515354"
     $PSVersionTable.PSVersion
     ```
 
-    如果您的 PSVersion 值小於 5.1.\* (大部分的 Windows Server 2012 R2 全新安裝都會發生此類情況)，您可以下載並安裝 [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) \(英文\) 來輕鬆地升級。 針對 Windows Server 2012 R2 下載和安裝的適當套件是**win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64。** 
+    如果您的**PSVersion**值小於 5.1 \* ，則在最新安裝的 Windows Server 2012 R2 中，您可以藉由下載並安裝[WINDOWS Management Framework （WMF） 5.1](https://www.microsoft.com/download/details.aspx?id=54616)，輕鬆地進行升級。 針對 Windows Server 2012 R2 下載和安裝的適當套件是**win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64。** 
 
     PowerShell 6 + 可以搭配任何支援的系統使用，並可透過其[GitHub 頁面](https://github.com/PowerShell/PowerShell#get-powershell)下載。 
 
@@ -214,6 +215,8 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 
 > [!Note]
 > 伺服器註冊會使用您的 Azure 認證來建立儲存體同步服務和 Windows Server 之間的信任關係；但是，之後伺服器會建立並使用自有的身分識別，只要伺服器維持註冊狀態，且目前的共用存取簽章權杖 (儲存體 SAS) 有效，此身分識別就會是有效的。 如果伺服器未註冊，新的 SAS 權杖就無法發行至伺服器，並會因此移除伺服器存取您 Azure 檔案共用的能力，進而停止任何同步。
+
+註冊伺服器的系統管理員必須是所指定儲存體同步服務的管理角色**擁有**者或**參與者**的成員。 這可以在儲存體同步服務的 Azure 入口網站中的**存取控制（IAM）** 底下設定。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 安裝 Azure 檔案同步代理程式之後，伺服器註冊 UI 應該會自動開啟。 如果沒有，您可以從其檔案位置手動開啟它：C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe。 伺服器註冊 UI 開啟時，請選取 [登入]**** 以開始。

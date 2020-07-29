@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 7818ae36c785311466d2fb26ce45dcf50983145d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266758"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283481"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上開發安全的應用程式
 在本文中，我們會提供您在開發雲端應用程式時應考慮的安全性活動和控制。 其中涵蓋 Microsoft [安全性開發生命週期 (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) 執行期間和驗證階段所要考慮的安全性問題和概念。 其目標是要協助您定義活動和 Azure 服務，以便您用來開發更安全的應用程式。
@@ -48,21 +48,21 @@ Azure Marketplace 提供的[開發人員工具](https://azuremarketplace.microso
 
 在資料流程中預先驗證輸入，可確保只有格式正確的資料進入工作流程。 您應避免在資料庫中保存格式不正確的資料，或在下游元件中觸發故障事件。
 
-封鎖清單和允許清單功能是執行輸入語法驗證的兩個一般方法：
+黑名單和白名單功能是執行輸入語法驗證的兩個一般方法：
 
-  - 封鎖清單功能會嘗試檢查指定的使用者輸入是否未包含「已知的惡意」內容。
+  - 黑名單功能會嘗試檢查指定的使用者輸入是否未包含「已知的惡意」內容。
 
-  - 允許清單功能會嘗試檢查指定的使用者輸入是否符合一組「已知良好」的輸入。 字元型允許清單是允許清單的一種形式，其中應用程式會檢查使用者輸入是否只包含「已知良好」的字元，或輸入是否符合已知的格式。
+  - 白名單功能會嘗試檢查指定的使用者輸入是否符合一組「已知良好」的輸入。 字元型白名單是白名單的一種形式，其中應用程式會檢查使用者輸入是否只包含「已知良好」的字元，或輸入是否符合已知的格式。
     例如，這可能牽涉到檢查使用者名稱是否只包含英數字元，或只包含剛好兩個數字。
 
-允許清單是建立安全軟體的慣用方法。
-封鎖清單功能很容易發生錯誤，因為不可能考慮有可能是惡意輸入的完整名單。
+白名單是建立安全軟體的慣用方法。
+黑名單功能很容易發生錯誤，因為不可能考慮有可能是惡意輸入的完整名單。
 
 請在伺服器上執行此工作，而不是在用戶端 (或是在伺服器和用戶端上)。
 
 ### <a name="verify-your-applications-outputs"></a>驗證應用程式的輸出
 
-您以視覺化方式或在文件中呈現的任何輸出，都應一律進行編碼和逸出。 [逸出](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29) (也稱為輸出編碼) 可用來協助確保不受信任的資料不是插入式攻擊的媒介。 與資料驗證結合的逸出功能可提供多層式防禦，以提高系統整體的安全性。
+您以視覺化方式或在文件中呈現的任何輸出，都應一律進行編碼和逸出。 [逸出](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29) (也稱為輸出編碼) 可用來協助確保不受信任的資料不是插入式攻擊的媒介。 與資料驗證結合的逸出功能可提供多層式防禦，以提高系統整體的安全性。
 
 逸出功能可確保所有項目都會顯示為「輸出」。 此外，也可讓解譯器知道資料並非要執行，這可防止攻擊執行。 這是另一種常見的攻擊技巧，稱為「跨網站指令碼處理 (XSS)」。
 
@@ -134,7 +134,7 @@ DAST 與靜態應用程式安全性測試 (SAST) 不同。 SAST 工具會在程�
 
 在[模糊測試](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)中，您可以故意將格式錯誤或隨機的資料引進應用程式來引發程式失敗。 引發程式失敗有助於在發行應用程式之前，發現潛在的安全性問題。
 
-[安全性風險偵測](https://docs.microsoft.com/security-risk-detection/)是 Microsoft 獨特的模糊測試服務，用以尋找軟體中的安全性關鍵錯誤。
+[安全性風險偵測](https://www.microsoft.com/en-us/security-risk-detection/)是 Microsoft 獨特的模糊測試服務，用以尋找軟體中的安全性關鍵錯誤。
 
 ### <a name="conduct-attack-surface-review"></a>執行攻擊面檢閱
 

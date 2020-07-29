@@ -3,19 +3,19 @@ title: 加密待用應用程式來源
 description: 在 Azure 儲存體中加密您的應用程式資料，並將它部署為封裝檔案。
 ms.topic: article
 ms.date: 03/06/2020
-ms.openlocfilehash: 6dfb56a5ef6b1ab3cfbd0762bf7816e37ce0aa39
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081877"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282325"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>使用客戶管理的金鑰將您的應用程式資料加密
 
 將您的函式應用程式待用資料加密需要 Azure 儲存體帳戶和 Azure Key Vault。 當您從部署套件執行應用程式時，會使用這些服務。
 
   - [Azure 儲存體提供待用加密](../storage/common/storage-service-encryption.md)。 您可以使用系統提供的金鑰，或您自己的客戶管理金鑰。 這是您的應用程式資料在 Azure 中的函式應用程式未執行時儲存的位置。
-  - [從部署套件執行]（（run-functions-from-deployment-package.md）是 App Service 的部署功能。 它可讓您使用共用存取簽章（SAS） URL，從 Azure 儲存體帳戶部署您的網站內容。
+  - [從部署套件](run-functions-from-deployment-package.md)執行是 App Service 的部署功能。 它可讓您使用共用存取簽章（SAS） URL，從 Azure 儲存體帳戶部署您的網站內容。
   - [Key Vault 參考](../app-service/app-service-key-vault-references.md)是 App Service 的安全性功能。 它可讓您在執行時間將秘密匯入為應用程式設定。 使用此來加密 Azure 儲存體帳戶的 SAS URL。
 
 ## <a name="set-up-encryption-at-rest"></a>設定待用加密

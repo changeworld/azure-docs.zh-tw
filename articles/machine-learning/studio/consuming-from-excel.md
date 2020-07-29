@@ -1,6 +1,5 @@
 ---
-title: 在 Excel 中取用 Web 服務
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）：使用 Excel 中的 web 服務-Azure
 description: Azure Machine Learning Studio （傳統）可讓您輕鬆地直接從 Excel 呼叫 web 服務，而不需要撰寫任何程式碼。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 8f9e0fb900bb3265c6ec79a85fb19efd76e719ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9459977d2b72374bdfd081d164da7d1861576cc7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696553"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282529"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>從 Excel 使用 Azure Machine Learning Studio （傳統） Web 服務
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
 
 Azure Machine Learning Studio （傳統）可讓您輕鬆地直接從 Excel 呼叫 web 服務，而不需要撰寫任何程式碼。
 

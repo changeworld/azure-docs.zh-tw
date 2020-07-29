@@ -10,25 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 02/24/2020
-ms.openlocfilehash: d92882014f66234be8a8b1d7063dae866ec6f230
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 4dd27a5d3bca5ca1c0395feb049d5a814211c539
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84031469"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309251"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>在 Azure SQL Database 中複製資料庫的交易一致性複本
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL Database 提供數種方法，可在相同伺服器或不同的伺服器上，建立現有[資料庫](single-database-overview.md)的交易一致性複本。 您可以使用 Azure 入口網站、PowerShell 或 T-sql 來複製資料庫。
+Azure SQL Database 提供數種方法，可在相同伺服器或不同的伺服器上建立現有[資料庫](single-database-overview.md)的複本。 您可以使用 Azure 入口網站、PowerShell、Azure CLI 或 T-sql 來複製資料庫。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-資料庫複本是發生複製要求時的來源資料庫快照集。 您可以選取相同的伺服器或不同的伺服器。 此外，您也可以選擇保留其服務層級和計算大小，或在相同的服務層級（版本）中使用不同的計算大小。 複製完成之後，複本會變成功能完整的獨立資料庫。 此時，您可以將它升級或降級成任何版本。 可以個別管理登入、使用者和權限。 此複本是使用異地複寫技術所建立，一旦植入完成，異地複寫連結就會自動終止。 使用異地複寫的所有需求都適用于資料庫複製作業。 如需詳細資訊，請參閱[主動式異地複寫總覽](active-geo-replication-overview.md)。
-
-> [!NOTE]
-> 當您建立資料庫複本時，會使用[自動資料庫備份](automated-backups-overview.md)。
+資料庫複本是源資料庫的交易一致性快照集，從起始複製要求之後的時間點開始。 您可以為複本選取相同的伺服器或不同的伺服器。 此外，您也可以選擇保留源資料庫的服務層級和計算大小，或在相同或不同的服務層級中使用不同的計算大小。 複製完成之後，複本會變成功能完整的獨立資料庫。 複製的資料庫中的登入、使用者和許可權，會與源資料庫分開管理。 此複本是使用異地複寫技術所建立。 一旦完成複本植入，異地複寫連結就會自動終止。 使用異地複寫的所有需求都適用于資料庫複製作業。 如需詳細資訊，請參閱[主動式異地複寫總覽](active-geo-replication-overview.md)。
 
 ## <a name="logins-in-the-database-copy"></a>資料庫複本中的登入
 
@@ -170,7 +168,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 在 Azure SQL Database 中複製資料庫時，可能會發生下列錯誤。 如需詳細資訊，請參閱 [複製 Azure SQL Database](database-copy.md)。
 
-| 錯誤碼 | Severity | Description |
+| 錯誤碼 | 嚴重性 | 說明 |
 | ---:| ---:|:--- |
 | 40635 |16 |IP 位址 '%.&#x2a;ls' 的用戶端已暫時停用。 |
 | 40637 |16 |建立資料庫副本目前已停用。 |
