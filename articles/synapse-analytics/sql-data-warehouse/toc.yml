@@ -74,7 +74,7 @@
   items:
     - name: 安全性
       items:
-        - name: 概觀
+        - name: 總覽
           href: sql-data-warehouse-overview-manage-security.md
         - name: 進階資料安全性
           items:
@@ -98,7 +98,7 @@
               href: /azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
         - name: 驗證
           items:
-            - name: 概觀
+            - name: 總覽
               href: sql-data-warehouse-authentication.md
             - name: Azure Active Directory
               href: /azure/sql-database/sql-database-aad-authentication?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
@@ -182,6 +182,8 @@
               href: /sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
             - name: 清除快取
               href: /sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
+        - name: 機器學習預測
+          href: sql-data-warehouse-predict.md
         - name: 資料表
           items:
             - name: 概觀

@@ -3,12 +3,12 @@ title: 功能概觀 - Azure 事件中樞 | Microsoft Docs
 description: 本文將詳細說明 Azure 事件中樞的相關功能與術語。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 034983074ddc6faf324d70a18a9a49b8df659649
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2de83be023c32df067712146937f880092025a44
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537304"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172114"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
 
@@ -39,7 +39,7 @@ ms.locfileid: "86537304"
 
 ![事件中樞](./media/event-hubs-features/partition_keys.png)
 
-事件中樞能確保所有共用資料分割索引鍵值的事件依序傳遞至同一個資料分割。 如果資料分割索引鍵與發佈者原則搭配使用，發佈者的身分識別與資料分割索引鍵的值必須相符， 否則就會發生錯誤。
+事件中樞能確保所有共用資料分割索引鍵值的事件依序傳遞至同一個資料分割。 如果資料分割索引鍵與發佈者原則搭配使用，發佈者的身分識別與資料分割索引鍵的值必須相符， 否則，系統將發生錯誤。
 
 ### <a name="publisher-policy"></a>發佈者原則
 
@@ -118,7 +118,7 @@ Azure Sdk 所提供的某些用戶端是智慧型取用者代理程式，可自�
 - 適用于 .NET 的[EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient)
 - 適用于 JAVA 的[EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient)
 - 適用于 Python 的[EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient)
-- JavaScript/TypeScript 的[EventHubSoncumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
+- JavaScript/TypeScript 的[EventHubConsumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
 
 #### <a name="read-events"></a>讀取事件
 

@@ -3,20 +3,20 @@ title: 在 Application Insights 中使用 PowerShell 設定警示 | Microsoft Do
 description: 自動化 Application Insights 的組態以取得有關度量變更的電子郵件。
 ms.topic: conceptual
 ms.date: 07/23/2016
-ms.openlocfilehash: 00212aa8783a6bfc8e46d325a882781e33b7de51
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117164"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322460"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>在 Application Insights 中使用 PowerShell 設定警示
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-您可以在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中自動設定[警示](../../azure-monitor/platform/alerts-log.md)的組態。
+您可以在 [Application Insights](./app-insights-overview.md) 中自動設定[警示](../platform/alerts-log.md)的組態。
 
-此外，您可以[設定 webhook 以自動回應至警示](../../azure-monitor/platform/alerts-webhooks.md)。
+此外，您可以[設定 webhook 以自動回應至警示](../platform/alerts-webhooks.md)。
 
 > [!NOTE]
 > 如果您想要同時建立資源和警示，請考慮[使用 Azure Resource Manager 範本](powershell.md)。
@@ -82,7 +82,7 @@ Add-AzMetricAlertRule -Name "slow responses" `
 ```
 
 ## <a name="example-2"></a>範例 2
-我已有應用程式，並在其中使用 [TrackMetric()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) 來報告名為 "salesPerHour" 的度量。 若 salesPerHour 超過 24 小時皆低於平均值 100，則傳送電子郵件給我的同事。
+我已有應用程式，並在其中使用 [TrackMetric()](./api-custom-events-metrics.md#trackmetric) 來報告名為 "salesPerHour" 的度量。 若 salesPerHour 超過 24 小時皆低於平均值 100，則傳送電子郵件給我的同事。
 
 ```azurepowershell
 Add-AzMetricAlertRule -Name "poor sales" `
@@ -98,7 +98,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
   -RuleType Metric
 ```
 
-您亦可針對使用其他追蹤呼叫之 [測量參數](../../azure-monitor/app/api-custom-events-metrics.md#properties) (例如 TrackEvent 或 trackPageView) 報告的度量，使用相同的規則。
+您亦可針對使用其他追蹤呼叫之 [測量參數](./api-custom-events-metrics.md#properties) (例如 TrackEvent 或 trackPageView) 報告的度量，使用相同的規則。
 
 ## <a name="metric-names"></a>度量名稱
 | 度量名稱 | 畫面名稱 | 描述 |
@@ -124,22 +124,23 @@ Add-AzMetricAlertRule -Name "poor sales" `
 | `request.rate` |要求率 |每秒發出所有應用程式要求的速率。 |
 | `requestFailed.count` |失敗的要求 |產生回應碼的 HTTP 要求計數 >= 400 |
 | `view.count` |頁面檢視 |網頁的用戶端使用者要求計數。 系統會篩選掉綜合流量。 |
-| {您的自訂度量名稱} |{您的度量名稱} |由 [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) 或[追蹤呼叫之測量參數](../../azure-monitor/app/api-custom-events-metrics.md#properties)所報告的度量值。 |
+| {您的自訂度量名稱} |{您的度量名稱} |由 [TrackMetric](./api-custom-events-metrics.md#trackmetric) 或[追蹤呼叫之測量參數](./api-custom-events-metrics.md#properties)所報告的度量值。 |
 
 此度量由不同遙測模組所傳送：
 
 | 度量群組 | 收集器模組 |
 | --- | --- |
-| basicExceptionBrowser、<br/>clientPerformance、<br/>檢視 |[瀏覽器 JavaScript](../../azure-monitor/app/javascript.md) |
-| performanceCounter |[效能](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[相依性](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| request、<br/>requestFailed |[伺服器要求](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser、<br/>clientPerformance、<br/>檢視 |[瀏覽器 JavaScript](./javascript.md) |
+| performanceCounter |[效能](./configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[相依性](./configuration-with-applicationinsights-config.md) |
+| request、<br/>requestFailed |[伺服器要求](./configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhook
-您可以[自動回應至警示](../../azure-monitor/platform/alerts-webhooks.md)。 Azure 會在出現警示時呼叫您選擇的網址。
+您可以[自動回應至警示](../platform/alerts-webhooks.md)。 Azure 會在出現警示時呼叫您選擇的網址。
 
 ## <a name="see-also"></a>另請參閱
 * [用來設定 Application Insights 的指令碼](./create-new-resource.md#creating-a-resource-automatically)
 * [從範本建立 Application Insights 和 Web 測試資源](powershell.md)
 * [自動化 Microsoft Azure 診斷與 Application Insights 的耦合](powershell-azure-diagnostics.md)
-* [自動回應至警示](../../azure-monitor/platform/alerts-webhooks.md)
+* [自動化您對警示的回應](../platform/alerts-webhooks.md)
+

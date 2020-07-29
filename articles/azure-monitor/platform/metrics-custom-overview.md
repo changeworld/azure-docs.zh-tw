@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: 9581bb17e29a25b618a90aece5675d132c14a97c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081486"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321270"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure 監視器中的自訂計量（預覽）
 
@@ -28,7 +28,7 @@ Azure 監視器自訂計量目前處於公開預覽狀態。
 - 使用 Application Insights SDK 檢測您的應用程式，並將自訂遙測傳送至 Azure 監視器。 
 - 將 Windows Azure 診斷 (WAD) 擴充功能安裝在 [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[虛擬機器擴展集](collect-custom-metrics-guestos-resource-manager-vmss.md)、[傳統 VM](collect-custom-metrics-guestos-vm-classic.md) 或[傳統雲端服務](collect-custom-metrics-guestos-vm-cloud-service-classic.md)，並將效能計數器傳送至 Azure 監視器。 
 - 將 [InfluxData Telegraf 代理程式](collect-custom-metrics-linux-telegraf.md)安裝在 Azure Linux VM，並使用 Azure 監視器輸出外掛程式傳送計量。
-- 將自訂計量[直接傳送至 Azure 監視器 REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)， `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` 。
+- 將自訂計量[直接傳送至 Azure 監視器 REST API](./metrics-store-custom-rest-api.md)， `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` 。
 
 ## <a name="pricing-model-and-retention"></a>計價模式與保留期
 
@@ -199,7 +199,7 @@ Azure 監視器會儲存一分鐘資料粒度間隔內的所有計量。 我們�
 |美國東部 2 | HTTPs： \/ /eastus2.monitoring.azure.com |
 | **歐洲** | |
 |歐洲北部    | HTTPs： \/ /northeurope.monitoring.azure.com |
-|歐洲西部     | HTTPs： \/ /westeurope.monitoring.azure.com |
+|西歐     | HTTPs： \/ /westeurope.monitoring.azure.com |
 |英國南部 | HTTPs： \/ /uksouth.monitoring.azure.com
 |法國中部 | HTTPs： \/ /francecentral.monitoring.azure.com |
 | **非洲** | |
@@ -235,6 +235,7 @@ Azure 監視器會對自訂計量加諸下列使用量限制：
  - [虛擬機器擴展集](collect-custom-metrics-guestos-resource-manager-vmss.md)
  - [Azure 虛擬機器（傳統）](collect-custom-metrics-guestos-vm-classic.md)
  - [使用 Telegraf 代理程式的 Linux 虛擬機器](collect-custom-metrics-linux-telegraf.md)
- - [REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)
+ - [REST API](./metrics-store-custom-rest-api.md)
  - [傳統雲端服務](collect-custom-metrics-guestos-vm-cloud-service-classic.md)
  
+

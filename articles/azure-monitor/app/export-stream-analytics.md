@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 中的串流分析匯出 | Microsoft Do
 description: 串流分析可以持續轉換、篩選和路由傳送您從 Application Insights 匯出的資料。
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70f952dcd6f8d942ac272afed58a7fe0f47d8a6e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d90b965ca65af0acf7032067c77591a2ac4d4b02
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539953"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324347"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用串流分析來處理從 Application Insights 匯出的資料
 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)是處理[從 Application Insights 匯出](export-telemetry.md)之資料的理想工具。 串流分析可以從各種來源提取資料。 它可以轉換和篩選資料，然後將它路由傳送至各種接收。
@@ -16,7 +16,7 @@ ms.locfileid: "86539953"
 在此範例中，將建立配接器，以從 Application Insights 取得資料、重新命名與處理某些欄位，以及透過管線將它傳送到 Power BI。
 
 > [!WARNING]
-> [在 Power BI 中顯示 Application Insights 資料的建議方式](../../azure-monitor/app/export-power-bi.md )更好也更容易。 這裡所述的路徑只是說明如何處理所匯出資料的範例。
+> [在 Power BI 中顯示 Application Insights 資料的建議方式](./export-power-bi.md)更好也更容易。 這裡所述的路徑只是說明如何處理所匯出資料的範例。
 > 
 > 
 
@@ -55,7 +55,7 @@ ms.locfileid: "86539953"
 
     ![選擇事件類型](./media/export-stream-analytics/080.png)
 
-1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中看到統計圖表，並在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中看到個別事件。 
+1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../platform/metrics-charts.md)中看到統計圖表，並在[診斷搜尋](./diagnostic-search.md)中看到個別事件。 
    
     此外，資料會匯出至您的儲存體。 
 2. 檢查匯出的資料。 在 Visual Studio 中，依序選擇 [檢視] 和 [Cloud Explorer]，然後依序開啟 [Azure] 和 [儲存體]。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
@@ -186,7 +186,7 @@ FROM flat
 
 ## <a name="see-results-in-power-bi"></a>在 Power BI 中查看結果
 > [!WARNING]
-> [在 Power BI 中顯示 Application Insights 資料的建議方式](../../azure-monitor/app/export-power-bi.md )更好也更容易。 這裡所述的路徑只是說明如何處理所匯出資料的範例。
+> [在 Power BI 中顯示 Application Insights 資料的建議方式](./export-power-bi.md)更好也更容易。 這裡所述的路徑只是說明如何處理所匯出資料的範例。
 > 
 > 
 
@@ -211,4 +211,5 @@ Noam Ben Zeev 示範如何使用串流分析來處理匯出的資料。
 ## <a name="next-steps"></a>後續步驟
 * [連續匯出](export-telemetry.md)
 * [屬性類型和值的詳細資料模型參考。](export-data-model.md)
-* [Application Insights](../../azure-monitor/app/app-insights-overview.md)
+* [Application Insights](./app-insights-overview.md)
+

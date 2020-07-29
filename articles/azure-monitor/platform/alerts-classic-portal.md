@@ -5,16 +5,16 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.openlocfilehash: 97c1819d665e6964343e853249a0d22aa07c3588
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93a86bc035803517ff61c79ae4b8a7fc46dd811f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045579"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322375"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理傳統計量警示
 
-想在其中一個計量超過閾值時收到通知，可以利用 Azure 監視器中的傳統計量警示。 傳統計量警示是較舊的功能，允許只針對無維度計量發出警示。 現有的較新功能稱為計量警示，和傳統計量警示相比，功能更強。 您可以在[計量警示概觀](../../azure-monitor/platform/alerts-metric-overview.md)深入了解新的計量警示功能。 在此文章中，我們將會說明如何透過 Azure 入口網站、Azure CLI 與 Powershell 建立、檢視及管理傳統計量警示規則。
+想在其中一個計量超過閾值時收到通知，可以利用 Azure 監視器中的傳統計量警示。 傳統計量警示是較舊的功能，允許只針對無維度計量發出警示。 現有的較新功能稱為計量警示，和傳統計量警示相比，功能更強。 您可以在[計量警示概觀](./alerts-metric-overview.md)深入了解新的計量警示功能。 在此文章中，我們將會說明如何透過 Azure 入口網站、Azure CLI 與 Powershell 建立、檢視及管理傳統計量警示規則。
 
 ## <a name="with-azure-portal"></a>使用 Azure 入口網站
 
@@ -130,5 +130,6 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Resource Manager 範本建立傳統計量警示](../../azure-monitor/platform/alerts-enable-template.md)。
-- [設定傳統計量警示使用 Webhook 通知非 Azure 系統](../../azure-monitor/platform/alerts-webhooks.md)。
+- [使用 Resource Manager 範本建立傳統計量警示](./alerts-enable-template.md)。
+- [設定傳統計量警示使用 Webhook 通知非 Azure 系統](./alerts-webhooks.md)。
+

@@ -3,11 +3,12 @@ title: JAVA web 應用程式效能監視-Azure 應用程式深入資訊
 description: 使用 Application Insights 延伸 Java 網站的效能和使用量監視。
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.openlocfilehash: b047a8dd8c67679a5cc8a45e8be82f9ab5227aa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2ce02c3ec9fbbc762b7919ee31d9b69306a008a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537537"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322613"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>監視 JAVA web 應用程式中的相依性、攔截到的例外狀況和方法執行時間
 
@@ -119,19 +120,20 @@ ms.locfileid: "81537537"
 
 若要搜尋相依性、例外狀況及方法報告的個別執行個體，請開啟[搜尋][diagnostic]。
 
-[診斷相依性問題 - 深入了解](../../azure-monitor/app/asp-net-dependencies.md#diagnosis)。
+[診斷相依性問題 - 深入了解](./asp-net-dependencies.md#diagnosis)。
 
-## <a name="questions-problems"></a>有問題嗎？ 有問題嗎？
-* 沒有資料？ [設定防火牆例外狀況](../../azure-monitor/app/ip-addresses.md)
+## <a name="questions-problems"></a>有任何問題嗎？ 有問題嗎？
+* 沒有資料？ [設定防火牆例外狀況](./ip-addresses.md)
 * [疑難排解 Java](java-troubleshoot.md)
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[metrics]: ../platform/metrics-charts.md
+

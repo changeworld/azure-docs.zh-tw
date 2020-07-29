@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 自訂 RDP 屬性春季 2020-Azure
+title: 使用 PowerShell 自訂 RDP 屬性-Azure
 description: 如何使用 PowerShell Cmdlet 自訂 Windows 虛擬桌面的 RDP 屬性。
 services: virtual-desktop
 author: Heidilohr
@@ -8,20 +8,17 @@ ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5fb992edea38c3dff9beffab1f131d3e7a6fdbf6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 630f2a7fe2e95992cb7724a7906a0949ffcea784
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087215"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271105"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>自訂主機集區的遠端桌面通訊協定（RDP）內容
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
->
-> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md)。
 
 自訂主機集區的遠端桌面通訊協定（RDP）內容，例如多監視器體驗和音訊重新導向，可讓您根據自己的需求為使用者提供最佳的體驗。 您可以使用 Azure 入口網站或在**AzWvdHostPool** Cmdlet 中使用 *-CustomRdpProperty*參數，在 WINDOWS 虛擬桌面中自訂 RDP 屬性。
 

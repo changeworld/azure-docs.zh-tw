@@ -5,15 +5,15 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/18/2020
-ms.openlocfilehash: dc1aef1f25be8d65dbd4f34bfc728335dc7a90f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cf4ac48cfbb969ae617551f13b43c15819510f7b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014451"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322647"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 位址
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 服務會使用一些 IP 位址。 如果您所監視的應用程式裝載於防火牆後面，您可能需要知道這些位址。
+[Azure Application Insights](./app-insights-overview.md) 服務會使用一些 IP 位址。 如果您所監視的應用程式裝載於防火牆後面，您可能需要知道這些位址。
 
 > [!NOTE]
 > 雖然這些位址是靜態的，但可能隨時需要變更。 除了可用性監視和需要輸入防火牆規則的 Webhook 之外，Application Insights 的所有流量都表示輸出流量。
@@ -48,7 +48,7 @@ ms.locfileid: "87014451"
 | 安裝 | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>可用性集合
-這是用來執行 [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md) 的位址清單。 如果您想要在您的應用程式上執行 Web 測試，但您的 Web 伺服器限於為特定用戶端提供服務，則您必須允許來自我們的可用性測試伺服器的連入流量。
+這是用來執行 [可用性 Web 測試](./monitor-web-app-availability.md) 的位址清單。 如果您想要在您的應用程式上執行 Web 測試，但您的 Web 伺服器限於為特定用戶端提供服務，則您必須允許來自我們的可用性測試伺服器的連入流量。
 
 ### <a name="service-tag"></a>服務標籤
 
@@ -245,3 +245,4 @@ Azure US Government (Not needed if you are an Azure Public cloud customer)
 | 代理程式 | ppe.azureserviceprofiler.net<br/>*.ppe.azureserviceprofiler.net | 20.190.60.38<br/>20.190.60.32<br/>52.173.196.230<br/>52.173.196.209<br/>23.102.44.211<br/>23.102.45.216<br/>13.69.51.218<br/>13.69.51.175<br/>138.91.32.98<br/>138.91.37.93<br/>40.121.61.208<br/>40.121.57.2<br/>51.140.60.235<br/>51.140.180.52<br/>52.138.31.112<br/>52.138.31.127<br/>104.211.90.234<br/>104.211.91.254<br/>13.70.124.27<br/>13.75.195.15<br/>52.185.132.101<br/>52.185.132.170<br/>20.188.36.28<br/>40.89.153.171<br/>52.141.22.239<br/>52.141.22.149<br/>102.133.162.233<br/>102.133.161.73<br/>191.232.214.6<br/>191.232.213.239 | 443
 | 入口網站 | ppe.gateway.azureserviceprofiler.net | 動態 | 443
 | 儲存體 | *.core.windows.net | 動態 | 443
+

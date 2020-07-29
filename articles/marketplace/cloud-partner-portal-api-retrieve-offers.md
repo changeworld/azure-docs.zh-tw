@@ -4,15 +4,15 @@ description: API，用來抓取發行者命名空間底下的供應專案摘要�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 22d22feb3931f466647c2c4d94bdf924568f2dc5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 39d07751c708d5555799ecbb3b3bc66d3f44f43a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535887"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271955"
 ---
 # <a name="retrieve-offers"></a>擷取供應項目
 
@@ -27,8 +27,8 @@ ms.locfileid: "86535887"
 
 | **名稱**         |  **說明**                         |  **Data type** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | 發行者識別碼，例如 `contoso` |   字串    |
-|  api-version     | API 的最新版本                    |    日期        |
+|  publisherId     | 發行者識別碼，例如 `contoso` |   String    |
+|  api-version     | API 的最新版本                    |    Date        |
 |  |  |
 
 ## <a name="header"></a>頁首
@@ -90,7 +90,7 @@ ms.locfileid: "86535887"
 |  NeverPublished              | 供應項目從未發行。                  |
 |  NotStarted                  | 供應項目是新的，但未啟動。                 |
 |  WaitingForPublisherReview   | 供應項目正在等候發行者核准。         |
-|  正在執行                     | 正在處理供應項目提交。             |
+|  執行中                     | 正在處理供應項目提交。             |
 |  成功                   | 已完成處理供應項目提交。       |
 |  已取消                    | 已取消供應項目提交。                   |
 |  失敗                      | 供應項目提交失敗。                         |

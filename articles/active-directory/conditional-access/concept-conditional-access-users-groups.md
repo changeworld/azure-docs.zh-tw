@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 127d76bedafd4c857686e93f21d3cccdc36b98dd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80755278"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274658"
 ---
 # <a name="conditional-access-users-and-groups"></a>條件式存取：使用者和群組
 
@@ -29,7 +30,7 @@ ms.locfileid: "80755278"
 
 建立條件式存取原則時，可以包含下列選項。
 
-- None
+- 無
    - 未選取任何使用者
 - 所有使用者
    - 存在於目錄中的所有使用者，包括 B2B 來賓。
@@ -39,7 +40,10 @@ ms.locfileid: "80755278"
    - 目錄角色
       - 可讓系統管理員選取用來判斷指派的特定 Azure AD 目錄角色。 例如，組織可能會在指派全域管理員角色的使用者上建立限制更嚴格的原則。
    - 使用者和群組
-      - 允許特定使用者集合的目標。 例如，組織可以選取一個群組，其中包含 hr 部門的所有成員（在選取 HR 應用程式作為雲端應用程式時）。 群組可以是 Azure AD 中任何類型的群組，包括動態或已指派的安全性與通訊群組。
+      - 允許特定使用者集合的目標。 例如，組織可以選取一個群組，其中包含 hr 部門的所有成員（在選取 HR 應用程式作為雲端應用程式時）。 群組可以是 Azure AD 中任何類型的群組，包括動態或已指派的安全性與通訊群組。 原則將套用至嵌套的使用者和群組。
+
+> [!WARNING]
+> 如果使用者或群組是超過2048個群組的成員，其存取權可能會被封鎖。 這項限制同時適用于直接和嵌套群組成員資格。
 
 ## <a name="exclude-users"></a>排除使用者
 

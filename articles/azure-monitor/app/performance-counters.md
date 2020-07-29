@@ -3,12 +3,12 @@ title: Application Insights 中的效能計數器 | Microsoft Docs
 description: 監視 Application Insights 中的系統和自訂 .NET 效能計數器。
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: e60663d9e767db020fc93eba1f4c1c6babb32294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb5e20403cc826619eb1f67de2fc4179e17b5aa4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024413"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322511"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系統效能計數器
 
@@ -131,7 +131,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 *  是系統效能計數器。 CLR 會計算所有擲回之已處理和未處理的例外狀況，並依據間隔的長度將總數分割為取樣間隔。 Application Insights SDK 會收集此結果並將它傳送至入口網站。
 
-*  是在圖表的取樣間隔中由入口網站接收之 TrackException 報告的計數。 它只包含您程式碼中撰寫 TrackException 呼叫所在位置的已處理例外狀況，並且不包含所有的 [未處理例外狀況](../../azure-monitor/app/asp-net-exceptions.md)。 
+*  是在圖表的取樣間隔中由入口網站接收之 TrackException 報告的計數。 它只包含您程式碼中撰寫 TrackException 呼叫所在位置的已處理例外狀況，並且不包含所有的 [未處理例外狀況](./asp-net-exceptions.md)。 
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>在 Azure Web Apps 中執行之應用程式的效能計數器
 
@@ -147,9 +147,10 @@ ASP.NET Core 效能計數器的支援受限制：
 * SDK 2.8.0 和更新版本支援 Linux 中的 cpu/記憶體計數器。 Linux 不支援其他計數器。 在 Linux (和其他非 Windows 環境) 中取得系統計數器的建議方式是使用 [EventCounters](eventcounters.md)
 
 ## <a name="alerts"></a>警示
-與其他計量一樣，您可以[設定警示](../../azure-monitor/platform/alerts-log.md)，在效能計數器超出您指定的界限時提出警告。 開啟 [警示] 窗格，然後按一下 [新增警示]。
+與其他計量一樣，您可以[設定警示](../platform/alerts-log.md)，在效能計數器超出您指定的界限時提出警告。 開啟 [警示] 窗格，然後按一下 [新增警示]。
 
 ## <a name="next-steps"></a><a name="next"></a>後續步驟
 
-* [相依性追蹤](../../azure-monitor/app/asp-net-dependencies.md)
-* [例外狀況追蹤](../../azure-monitor/app/asp-net-exceptions.md)
+* [相依性追蹤](./asp-net-dependencies.md)
+* [例外狀況追蹤](./asp-net-exceptions.md)
+

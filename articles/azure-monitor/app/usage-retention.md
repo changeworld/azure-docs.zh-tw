@@ -6,16 +6,16 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25d1cccdbd56db397fc444d1488c773515ad6553
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7f6155d3230d234e1163ee12cd7685817331b93
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499302"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323531"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>使用 Application Insights 進行 Web 應用程式的使用者保留期分析
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的保留功能可協助您分析回來使用您應用程式的使用者人數，以及他們執行特定工作或達成目標的頻率。 例如，如果您執行遊戲網站，您可以比較使用者在遊戲落敗與遊戲獲勝後，回到網站的數目。 這項知識可以協助您改善使用者體驗和商務策略。
+[Azure Application Insights](./app-insights-overview.md) 中的保留功能可協助您分析回來使用您應用程式的使用者人數，以及他們執行特定工作或達成目標的頻率。 例如，如果您執行遊戲網站，您可以比較使用者在遊戲落敗與遊戲獲勝後，回到網站的數目。 這項知識可以協助您改善使用者體驗和商務策略。
 
 ## <a name="get-started"></a>開始使用
 
@@ -54,7 +54,7 @@ ms.locfileid: "86499302"
    telemetry.TrackEvent("won game");
 ```
 
-[深入了解撰寫自訂事件](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)。
+[深入了解撰寫自訂事件](./api-custom-events-metrics.md#trackevent)。
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -63,5 +63,6 @@ ms.locfileid: "86499302"
     - [使用者、工作階段、事件](usage-segmentation.md)
     - [漏斗圖](usage-funnels.md)
     - [使用者流程](usage-flows.md)
-    - [活頁簿](../../azure-monitor/platform/workbooks-overview.md)
+    - [活頁簿](../platform/workbooks-overview.md)
     - [新增使用者內容](usage-send-user-context.md)
+

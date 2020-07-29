@@ -3,12 +3,12 @@ title: Web 應用程式效能監視-Azure 應用程式深入資訊
 description: Application Insights 如何融入 DevOps 循環
 ms.topic: conceptual
 ms.date: 12/21/2018
-ms.openlocfilehash: fa62e8840c14e87d24db029d6bb7a215124a0511
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d2c3326c3f655d4bdfeaa42ac272658b251b7f82
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033677"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324483"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>使用 Application Insights 深入診斷 Web 應用程式
 ## <a name="why-do-i-need-application-insights"></a>我為什麼需要 Application Insights 呢？
@@ -85,7 +85,7 @@ Web 系統中的失敗通常是由組態問題或其許多元件之間的互動�
 ![Application Insights 遙測的 Power BI 檢視](./media/devops/080.png)
 
 ## <a name="smart-detection"></a>智慧型偵測
-[主動診斷](../../azure-monitor/app/proactive-diagnostics.md)是一項最新功能。 您不需提供任何特殊組態，Application Insights 就會自動偵測並警示您，關於您應用程式中異常提高的失敗率。 它的智慧型功能足以忽略偶爾失敗的背景，而且也只會依要求中的增加比率按比例提高。 例如，如果您依存的其中一個服務中發生失敗，或者如果您剛部署的新組建並沒有運作得很好，則當您查看電子郵件之後立即就能了解相關資訊 (而且會提供 Webhook，讓您能夠觸發其他應用程式)。
+[主動診斷](./proactive-diagnostics.md)是一項最新功能。 您不需提供任何特殊組態，Application Insights 就會自動偵測並警示您，關於您應用程式中異常提高的失敗率。 它的智慧型功能足以忽略偶爾失敗的背景，而且也只會依要求中的增加比率按比例提高。 例如，如果您依存的其中一個服務中發生失敗，或者如果您剛部署的新組建並沒有運作得很好，則當您查看電子郵件之後立即就能了解相關資訊 (而且會提供 Webhook，讓您能夠觸發其他應用程式)。
 
 這項功能的另一個層面會針對遙測執行每日的深入分析，以找出很難發現的異常效能模式。 例如，它會找到與特定地理區域或特定瀏覽器版本相關聯的慢速效能。
 
@@ -145,9 +145,9 @@ Visual Studio 和 Eclipse 提供工具，可為您正在開發的專案設定正
 產生警示時，Application Insights 可以在您的工作追蹤系統中自動建立工作項目。
 
 ## <a name="but-what-about"></a>但是，您認為...？
-* [隱私權和儲存體](../../azure-monitor/app/data-retention-privacy.md) - 您的遙測會保留於 Azure 安全伺服器上。
+* [隱私權和儲存體](./data-retention-privacy.md) - 您的遙測會保留於 Azure 安全伺服器上。
 * 效能 - 影響很低。 遙測會進行批次處理。
-* [價格](../../azure-monitor/app/pricing.md) - 您可以開始免費使用，當您處於低用量期間可繼續使用。
+* [價格](./pricing.md) - 您可以開始免費使用，當您處於低用量期間可繼續使用。
 
 
 ## <a name="video"></a>影片
@@ -157,6 +157,7 @@ Visual Studio 和 Eclipse 提供工具，可為您正在開發的專案設定正
 ## <a name="next-steps"></a>後續步驟
 開始使用 Application Insights 很簡單。 主要選項包括：
 
-* [IIS 伺服器](../../azure-monitor/app/monitor-performance-live-website-now.md)，也適用于[Azure App Service](../../azure-monitor/app/app-insights-overview.md)。
-* 在開發期間檢測您的專案。 您可以針對 [ASP.NET](../../azure-monitor/app/asp-net.md) 或 [Java](../../azure-monitor/app/java-get-started.md) 應用程式，以及 [Node.js](../../azure-monitor/app/nodejs.md) 和許多[其他類型](../../azure-monitor/app/platforms.md)執行此動作。 
-* 藉由新增簡短的程式碼片段來檢測 [任何網頁](../../azure-monitor/app/javascript.md) 。
+* [IIS 伺服器](./monitor-performance-live-website-now.md)，也適用于[Azure App Service](./app-insights-overview.md)。
+* 在開發期間檢測您的專案。 您可以針對 [ASP.NET](./asp-net.md) 或 [Java](./java-get-started.md) 應用程式，以及 [Node.js](./nodejs.md) 和許多[其他類型](./platforms.md)執行此動作。 
+* 藉由新增簡短的程式碼片段來檢測 [任何網頁](./javascript.md) 。
+

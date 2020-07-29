@@ -1,17 +1,17 @@
 ---
 title: 管理 Azure 自動化中的角色權限與安全性
-description: 本文說明如何使用角色型存取控制 (RBAC)，以啟用對 Azure 資源的存取權管理。
+description: 本文說明如何使用角色型存取控制（RBAC），以啟用 Azure 資源的存取管理。
 keywords: 自動化 rbac, 角色型存取控制, azure rbac
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 05/17/2018
+ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a970122c5f034e6215d2e829657c9eec99f14371
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186141"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87279877"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色權限與安全性
 
@@ -69,7 +69,12 @@ ms.locfileid: "86186141"
 
 ### <a name="automation-operator"></a>自動化運算子
 
-自動化操作員可在自動化帳戶中建立和管理作業，以及讀取所有 Runbook 的名稱和屬性。  注意:如果您想要控制操作員存取個別 Runbook，請不要設定此角色，而是改為搭配使用「自動化作業操作員」和「自動化 Runbook 操作員」角色。 下表說明針對此角色授與的權限：
+自動化操作員可在自動化帳戶中建立和管理作業，以及讀取所有 Runbook 的名稱和屬性。
+
+>[!NOTE]
+>如果您想要控制操作員存取個別 runbook，請不要設定此角色。 相反地，請使用**自動化作業運算子**和**自動化 Runbook 操作員**角色組合。
+
+下表說明針對此角色授與的權限：
 
 |**動作**  |**說明**  |
 |---------|---------|
@@ -96,7 +101,9 @@ ms.locfileid: "86186141"
 
 ### <a name="automation-job-operator"></a>自動化作業運算子
 
-授與「自動化作業操作員」角色時會在「自動化」帳戶範圍內授與。 這可讓操作員有權建立和管理帳戶中所有 Runbook 作業。 下表說明針對此角色授與的權限：
+授與「自動化作業操作員」角色時會在「自動化」帳戶範圍內授與。 這可讓操作員有權建立和管理帳戶中所有 Runbook 作業。 如果作業操作員角色被授與包含自動化帳戶之資源群組的讀取權限，則該角色的成員就能夠啟動 runbook。 不過，他們沒有建立、編輯或刪除它們的能力。
+
+下表說明針對此角色授與的權限：
 
 |**動作**  |**說明**  |
 |---------|---------|
@@ -114,7 +121,7 @@ ms.locfileid: "86186141"
 
 ### <a name="automation-runbook-operator"></a>自動化 Runbook 運算子
 
-授與「自動化 Runbook 運算子」角色時，會在 Runbook 範圍授與。 「自動化 Runbook 操作員」可檢視 Runbook 的名稱和屬性。  此角色與「自動化作業操作員」角色結合，可讓操作員也建立及管理 Runbook 的作業。 下表說明針對此角色授與的權限：
+授與「自動化 Runbook 運算子」角色時，會在 Runbook 範圍授與。 「自動化 Runbook 操作員」可檢視 Runbook 的名稱和屬性。此角色與**自動化作業操作員**角色結合，可讓操作員同時建立和管理 runbook 的作業。 下表說明針對此角色授與的權限：
 
 |**動作**  |**說明**  |
 |---------|---------|
@@ -290,6 +297,7 @@ ms.locfileid: "86186141"
    ![列出使用者](media/automation-role-based-access-control/automation-05-list-users.png)
 
    您也可以從 [角色] 頁面指派角色給使用者。
+
 4. 從 [存取控制 (IAM)] 頁面中，按一下 [角色]，以開啟 [角色] 頁面。 您可以檢視角色的名稱、指派給該角色的使用者和群組數目。
 
     ![從 [使用者] 頁面指派角色](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
@@ -353,7 +361,7 @@ ObjectType         : User
 ```
 
 使用 [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) 可將特定範圍的存取權指派給使用者、群組及應用程式。
-    
+
 **範例︰** 請使用下列命令來為「自動化帳戶」範圍內的使用者指派「自動化運算子」角色。
 
 ```azurepowershell-interactive

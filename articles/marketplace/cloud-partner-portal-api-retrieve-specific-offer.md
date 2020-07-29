@@ -4,15 +4,15 @@ description: 要在發行者命名空間內抓取指定供應專案的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: bf64645f672e54849064d86f9250a62efeac8d66
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f3ba6b2f13b9f2bb1d538db84723e3a9baaef12
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087402"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87271836"
 ---
 # <a name="retrieve-a-specific-offer"></a>擷取特定供應項目
 
@@ -37,13 +37,13 @@ ms.locfileid: "87087402"
 
 ## <a name="uri-parameters"></a>URI 參數
 
-| **名稱**    | **描述**                                                                          | **Data type** |
+| **名稱**    | **說明**                                                                          | **Data type** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | publisherId。 例如 Contoso                                                        | 字串        |
-| offerId     | 可唯一識別供應項目的 GUID。                                                 | 字串        |
+| publisherId | publisherId。 例如 Contoso                                                        | String        |
+| offerId     | 可唯一識別供應項目的 GUID。                                                 | String        |
 | version     | 要擷取之供應項目的版本。 根據預設值，會擷取最新的供應項目版本。 | 整數       |
 | slotId      | 要從中擷取供應項目的位置，這可以是下列其中一個：      <br/>  - `Draft` (預設值) 會擷取目前處於草稿狀態的供應項目版本。  <br/>  -  `Preview` 會擷取目前處於預覽狀態的供應項目版本。     <br/>  -  `Production` 會擷取目前處於生產狀態的供應項目版本。          |      列舉 |
-| api-version | API 的最新版本                                                                    | 日期          |
+| api-version | API 的最新版本                                                                    | Date          |
 |  |  |  |
 
 ## <a name="header"></a>頁首
@@ -171,7 +171,7 @@ ms.locfileid: "87087402"
 
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**       |   **描述**                                                                                                               |
+|  **名稱**       |   **說明**                                                                                                               |
 |  -------------  |   -----------------------------------------------------------------------------------------------------                         |
 |  offerTypeId    | 指出供應項目類型                                                                                                    |
 |  publisherId    | 發行者的唯一識別碼                                                                                              |
@@ -184,7 +184,7 @@ ms.locfileid: "87087402"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **Code**  | **描述**                                                                                                                 |
+| **Code**  | **說明**                                                                                                                 |
 |  ------   | ------------------------------------------------------------------------------------------------------------------------------- |
 |  200      | `OK` - 已成功處理要求，且發行者下的所有供應項目已傳回給用戶端。               |
 |  400      | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                                                 |
@@ -194,12 +194,12 @@ ms.locfileid: "87087402"
 
 ### <a name="offer-status"></a>供應項目狀態
 
-|  **名稱**                   |   **描述**                             |
+|  **名稱**                   |   **說明**                             |
 | --------------------------- |  -------------------------------------------- |
 |  NeverPublished             | 供應項目從未發行。               |
 |  NotStarted                 | 供應項目是新的，但未啟動。              |
 |  WaitingForPublisherReview  | 供應項目正在等候發行者核准。      |
-|  正在執行                    | 正在處理供應項目提交。          |
+|  執行中                    | 正在處理供應項目提交。          |
 |  成功                  | 已完成處理供應項目提交。    |
 |  已取消                   | 已取消供應項目提交。                |
 |  失敗                     | 供應項目提交失敗。                      |

@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 7baabe455128bf420a3c3e11ea83bb5357ed35c8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2df7d8273b2b25cd0171b38e5cc0ada557ea9a2d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505154"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325350"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>將 ITSM 產品/服務與 IT Service Management Connector 連線
-本文提供如何設定 ITSM 產品/服務與 Log Analytics 中 IT Service Management Connector (ITSMC) 之間的連線，以集中管理工作項目的相關資訊。 如需 ITSMC 的詳細資訊，請參閱[概觀](../../azure-monitor/platform/itsmc-overview.md)。
+本文提供如何設定 ITSM 產品/服務與 Log Analytics 中 IT Service Management Connector (ITSMC) 之間的連線，以集中管理工作項目的相關資訊。 如需 ITSMC 的詳細資訊，請參閱[概觀](./itsmc-overview.md)。
 
 支援下列 ITSM 產品/服務。 選取產品來檢視如何將該產品連線到 ITSMC 的詳細資訊。
 
@@ -35,7 +35,7 @@ ms.locfileid: "86505154"
 
 請確保已符合下列必要條件︰
 
-- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 已部署及設定 Service Manager Web 應用程式 (Web 應用程式)。 Web 應用程式的相關在[這裡](#create-and-deploy-service-manager-web-app-service)。
 - 已建立及設定的混合式連線。 詳細資訊：[設定混合式連線](#configure-the-hybrid-connection)。
 - Service Manager 的支援版本：2012 R2 或 2016。
@@ -64,7 +64,7 @@ ms.locfileid: "86505154"
 | **連接名稱**   | 輸入您想要與 ITSMC 連線之 System Center Service Manager 執行個體的名稱。  稍後當您設定這個執行個體的工作項目/檢視詳細的記錄分析時，會使用這個名稱。 |
 | **夥伴類型**   | 選取 **System Center Service Manager**。 |
 | **伺服器 URL**   | 輸入 Service Manager Web 應用程式的 URL。 Service Manager Web 應用程式的相關詳細資訊在[這裡](#create-and-deploy-service-manager-web-app-service)。
-| **用戶端識別碼**   | 將您所產生 (使用自動指令碼) 用來驗證 Web 應用程式的用戶端識別碼輸入。 自動化指令碼的相關詳細資訊在[這裡](../../azure-monitor/platform/itsmc-service-manager-script.md)。|
+| **用戶端識別碼**   | 將您所產生 (使用自動指令碼) 用來驗證 Web 應用程式的用戶端識別碼輸入。 自動化指令碼的相關詳細資訊在[這裡](./itsmc-service-manager-script.md)。|
 | **用戶端祕密**   | 輸入針對此識別碼產生的用戶端祕密。   |
 | **同步資料**   | 選取您想要透過 ITSMC 同步的 Service Manager 工作項目。  系統會將這些工作項目匯入 Log Analytics。 **選項︰** 事件、變更要求。|
 | **資料同步範圍** | 輸入您想要起算資料的過去天數。 **上限**：120 天。 |
@@ -79,7 +79,7 @@ ms.locfileid: "86505154"
 - 您可以在這個 Service Manager 執行個體中建立來自 Log Analytics 警示、記錄檔記錄或 Azure 警示的事件。
 
 
-深入了解：[從 Azure 警示建立 ITSM 工作項目](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+深入了解：[從 Azure 警示建立 ITSM 工作項目](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>建立及部署 Service Manager Web 應用程式服務
 
@@ -87,11 +87,11 @@ ms.locfileid: "86505154"
 
 若要為您的 Service Manager 設定 ITSM Web 應用程式，請執行下列作業︰
 
-- **部署 Web 應用程式** – 部署 Web 應用程式、設定屬性，以及驗證 Azure AD。 您可以使用 Microsoft 所提供給您的[自動化指令碼](../../azure-monitor/platform/itsmc-service-manager-script.md)來部署 Web 應用程式。
+- **部署 Web 應用程式** – 部署 Web 應用程式、設定屬性，以及驗證 Azure AD。 您可以使用 Microsoft 所提供給您的[自動化指令碼](./itsmc-service-manager-script.md)來部署 Web 應用程式。
 - **設定混合式連線** - [以手動方式設定此連線](#configure-the-hybrid-connection)。
 
 #### <a name="deploy-the-web-app"></a>部署 Web 應用程式
-使用自動化[指令碼](../../azure-monitor/platform/itsmc-service-manager-script.md)來部署 Web 應用程式、設定屬性，以及驗證 Azure AD。
+使用自動化[指令碼](./itsmc-service-manager-script.md)來部署 Web 應用程式、設定屬性，以及驗證 Azure AD。
 
 提供下列必要的詳細資料來執行指令碼︰
 
@@ -178,7 +178,7 @@ ms.locfileid: "86505154"
 
 ### <a name="prerequisites"></a>Prerequisites
 請確保已符合下列必要條件︰
-- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - ServiceNow 支援的版本：New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
 > [!NOTE]
 > ITSMC 僅支援 Service Now 提供的官方 SaaS 供應項目。 目前不支援 Service Now 的私人部署。 
@@ -247,7 +247,7 @@ ms.locfileid: "86505154"
 
 - 您可以在這個 ServiceNow 執行個體中建立來自 Log Analytics 警示、記錄檔記錄或 Azure 警示的事件。
 
-深入了解：[從 Azure 警示建立 ITSM 工作項目](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+深入了解：[從 Azure 警示建立 ITSM 工作項目](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 
 > [!NOTE]
@@ -303,7 +303,7 @@ ms.locfileid: "86505154"
 請確保已符合下列必要條件︰
 
 
-- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 應該向 Azure AD 註冊 Provance 應用程式 - 並將用戶端識別碼設為可用。 如需詳細資訊，請參閱[如何設定 Active Directory 驗證](../../app-service/configure-authentication-provider-aad.md)。
 
 - 使用者角色：系統管理員。
@@ -345,7 +345,7 @@ ms.locfileid: "86505154"
 
 - 您可以在這個 Provance 執行個體中建立來自 Log Analytics 警示、記錄檔記錄或 Azure 警示的事件。
 
-深入了解：[從 Azure 警示建立 ITSM 工作項目](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+深入了解：[從 Azure 警示建立 ITSM 工作項目](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>將 Cherwell 連線到 Azure 中的 IT Service Management Connector
 
@@ -355,7 +355,7 @@ ms.locfileid: "86505154"
 
 請確保已符合下列必要條件︰
 
-- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](../../azure-monitor/platform/itsmc-overview.md#adding-the-it-service-management-connector-solution)。
+- 已安裝 ITSMC。 詳細資訊：[新增 IT 服務管理連接器解決方案](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
 - 所產生的用戶端識別碼。 詳細資訊：[產生 Cherwell 的用戶端識別碼](#generate-client-id-for-cherwell)。
 - 使用者角色：系統管理員。
 
@@ -397,7 +397,7 @@ ms.locfileid: "86505154"
 
 - 您可以在這個 Cherwell 執行個體中建立來自 Log Analytics 警示、記錄檔記錄或 Azure 警示的事件。
 
-深入了解：[從 Azure 警示建立 ITSM 工作項目](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
+深入了解：[從 Azure 警示建立 ITSM 工作項目](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)。
 
 ### <a name="generate-client-id-for-cherwell"></a>產生 Cherwell 的用戶端識別碼
 
@@ -411,4 +411,5 @@ ms.locfileid: "86505154"
 
 
 ## <a name="next-steps"></a>後續步驟
- - [建立 Azure 警示的 ITSM 工作項目](../../azure-monitor/platform/itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+ - [建立 Azure 警示的 ITSM 工作項目](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
+

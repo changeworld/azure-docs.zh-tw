@@ -4,12 +4,12 @@ description: 搭配 ASP.NET Core 和主控台應用程式使用 Azure 應用程�
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 419813eba371def9eeeb43e45b51b38d1f20c607
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 171aaeb624bfedb9aa7408a736c11faca316b392
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014468"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322630"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>適用于 .NET Core ILogger 記錄的 ApplicationInsightsLoggerProvider
 
@@ -218,7 +218,7 @@ public class Startup
 ## <a name="console-application"></a>主控台應用程式
 
 > [!NOTE]
-> 有一個新的 Application Insights SDK，稱為[ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) ，可用來為任何主控台應用程式啟用 Application Insights （ILogger 和其他 Application Insights 遙測）。 建議使用此套件，以及[這裡](../../azure-monitor/app/worker-service.md)的相關指示。
+> 有一個新的 Application Insights SDK，稱為[ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) ，可用來為任何主控台應用程式啟用 Application Insights （ILogger 和其他 Application Insights 遙測）。 建議使用此套件，以及[這裡](./worker-service.md)的相關指示。
 
 下列程式碼顯示的範例主控台應用程式，已設定為將 ILogger 追蹤傳送至 Application Insights。
 
@@ -392,7 +392,7 @@ class Program
 
 ### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>我已更新為[ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.7.1，並自動捕捉來自 ILogger 的記錄。 如何? 完全關閉此功能嗎？
 
-請參閱[控制記錄層級](../../azure-monitor/app/ilogger.md#control-logging-level)一節，以瞭解如何在一般情況中篩選記錄。 若要關閉 ApplicationInsightsLoggerProvider，請使用 `LogLevel.None` ：
+請參閱[控制記錄層級](#control-logging-level)一節，以瞭解如何在一般情況中篩選記錄。 若要關閉 ApplicationInsightsLoggerProvider，請使用 `LogLevel.None` ：
 
 **在程式碼中：**
 
@@ -499,4 +499,5 @@ Azure Web Apps 中的 Application Insights 延伸模組會使用新的提供者�
 深入了解：
 
 * [ASP.NET Core 中的記錄](/aspnet/core/fundamentals/logging)
-* [Application Insights 中的 .NET 追蹤記錄](../../azure-monitor/app/asp-net-trace-logs.md)
+* [Application Insights 中的 .NET 追蹤記錄](./asp-net-trace-logs.md)
+

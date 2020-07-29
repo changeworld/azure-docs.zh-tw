@@ -3,12 +3,12 @@ title: 使用 Logic Apps 自動化 Azure 應用程式 Insights 進程
 description: 了解如何透過將 Application Insights Connector 新增到您的邏輯應用程式，快速自動執行重複程序。
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.openlocfilehash: 76a199023ef37fbda27be59fdf70f6ca5d8481bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d023d774c130a9db513fbcf9452b05fa030a967a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079616"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323191"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用 Logic Apps 自動執行 Application Insights 程序
 
@@ -130,9 +130,10 @@ ms.locfileid: "87079616"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解建立 [Analytics 查詢](../../azure-monitor/log-query/get-started-queries.md)。
+- 深入了解建立 [Analytics 查詢](../log-query/get-started-queries.md)。
 - 深入瞭解[Logic Apps](../../logic-apps/logic-apps-overview.md)。
 
 
 
 <!--Link references-->
+

@@ -4,12 +4,13 @@ description: 了解如何使用 IntelliJ IDEA 建立您的第一個 Azure Resour
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: bce3d8ff2662ff62e1493cb26d797619b65c2762
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: 4039a70bf90bc8f4b7932dbf40d8369e9773abf3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321814"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>使用 IntelliJ 概念來建立和部署 ARM 範本
 
@@ -78,7 +79,7 @@ ms.locfileid: "87040746"
 > [!NOTE]
 > 請注意，刪除部署並不會刪除部署所建立的資源。 如果您不再需要對應的資源群組或特定資源，請將其刪除。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文的主要重點是要使用 IntelliJ 概念，從 Azure 快速入門範本部署現有的範本。 您也已經了解如何在 Azure 上檢視和更新現有部署。 Azure 快速入門範本中的範本可能無法提供您所需的一切。 若要深入了解範本開發，請參閱我們的新初學者教學課程系列：
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: d90f38f83bd4d2d5311f277fcc928e442d7ea793
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4680d989cc1befe50955af408aec79a14031481e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416387"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321236"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Delete 活動
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -46,9 +46,6 @@ ms.locfileid: "81416387"
 -   [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) \(部分機器翻譯\)
 -   [Azure 檔案儲存體](connector-azure-file-storage.md)
-
-### <a name="file-system-data-stores"></a>檔案系統資料存放區
-
 -   [檔案系統](connector-file-system.md)
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
@@ -82,7 +79,7 @@ ms.locfileid: "81416387"
 
 ## <a name="type-properties"></a>類型屬性
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | 資料集 | 提供資料集參考，以判斷要刪除哪些檔案或資料夾 | 是 |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式刪除檔案。  | 否。 預設值為 `false`。 |

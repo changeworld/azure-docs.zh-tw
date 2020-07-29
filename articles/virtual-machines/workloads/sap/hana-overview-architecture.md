@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d413b2babda4c73f9f29ce3750bf7d0461db43c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1575ee02a520fd39a1c659eadaeda5822207539
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065094"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171137"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>什麼是 SAP HANA on Azure (大型執行個體)？
 
@@ -56,6 +56,7 @@ HANA 大型執行個體指南的不同文件涵蓋下列領域：
 - [Azure 上的 SAP Hana （大型實例）疑難排解和監視](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [使用 STONITH 在 SUSE 中進行高可用性設定](./ha-setup-with-stonith.md)
 - [修訂版3戳記之類型 II Sku 的 OS 備份和還原](./os-backup-type-ii-skus.md)
+- [使用 Azure 保留來節省 SAP Hana 的大型實例](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)
 
 **後續步驟**
 - 請參閱[認識詞彙](hana-know-terms.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: 983091ac0d1f9fdcb33e64d2af521ec3442a040b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d9efdb11ffd30c68a0ac8ea8e8156fe707f188de
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515507"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322307"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure 監視器中的 Syslog 資料來源
 Syslog 是通用於 Linux 的事件記錄通訊協定。 應用程式將傳送的訊息可能會儲存在本機電腦上，或傳遞到 Syslog 收集器。 安裝 Log Analytics Linux 代理程式時，它會設定本機 Syslog 精靈來將訊息轉送到代理程式。 然後，代理程式會將訊息傳送至 Azure 監視器 (建立相對應記錄的位置)。  
@@ -54,7 +54,7 @@ Log Analytics Linux 代理程式只會收集具有其設定中指定之設備和
 根據預設，所有組態變更都會自動發送給所有代理程式。 如果您想要在每個 Linux 代理程式上手動設定 Syslog，請取消核取 [*將下列設定套用到我的電腦*] 方塊。
 
 ### <a name="configure-syslog-on-linux-agent"></a>在 Linux 代理程式上設定 Syslog
-當 [Log Analytics 代理程式安裝於 Linux 用戶端](../../azure-monitor/learn/quick-collect-linux-computer.md)時，它會安裝預設的 syslog 組態檔，其中定義所收集資訊的設備和嚴重性。 您可以修改此檔案來變更組態。 組態檔會根據用戶端已安裝的 Syslog 精靈而有所不同。
+當 [Log Analytics 代理程式安裝於 Linux 用戶端](../learn/quick-collect-linux-computer.md)時，它會安裝預設的 syslog 組態檔，其中定義所收集資訊的設備和嚴重性。 您可以修改此檔案來變更組態。 組態檔會根據用戶端已安裝的 Syslog 精靈而有所不同。
 
 > [!NOTE]
 > 如果您編輯 syslog 組態，則必須重新啟動 syslog 精靈，變更才會生效。
@@ -227,6 +227,7 @@ Syslog 記錄具有 **Syslog** 類型，以及下表中的屬性。
 | Syslog &#124; summarize AggregatedValue = count() by Facility |依設備的 Syslog 記錄計數。 |
 
 ## <a name="next-steps"></a>後續步驟
-* 了解[記錄查詢](../../azure-monitor/log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。
-* 使用 [自訂欄位](../../azure-monitor/platform/custom-fields.md) ，以將來自 syslog 記錄的資料剖析至個別欄位。
-* [設定 Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) ，以收集其他類型的資料。
+* 了解[記錄查詢](../log-query/log-query-overview.md)，以分析從資料來源和解決方案收集到的資料。
+* 使用 [自訂欄位](./custom-fields.md) ，以將來自 syslog 記錄的資料剖析至個別欄位。
+* [設定 Linux 代理程式](../learn/quick-collect-linux-computer.md) ，以收集其他類型的資料。
+

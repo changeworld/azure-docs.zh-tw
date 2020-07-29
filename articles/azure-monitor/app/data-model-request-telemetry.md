@@ -4,19 +4,20 @@ description: 要求遙測的 Application Insights 資料模型
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 57cc9c95137facaaf2ddf5bb212121f88e150f5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807650"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320556"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求遙測：Application Insights 資料模型
 
-要求遙測項目 (在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中) 代表外部要求對應用程式所觸發的執行邏輯順序。 每個要求執行都是由包含所有執行參數的唯一 `ID` 和 `url` 所識別。 您可以將這些要求依邏輯 `name` 群組，並定義這項要求的 `source`。 程式碼執行可能會導致 `success` 或 `fail`，並且有特定 `duration`。 成功和失敗的執行都可以進一步以 `resultCode` 分組。 信封層級上定義之要求遙測的開始時間。
+要求遙測項目 (在 [Application Insights](./app-insights-overview.md) 中) 代表外部要求對應用程式所觸發的執行邏輯順序。 每個要求執行都是由包含所有執行參數的唯一 `ID` 和 `url` 所識別。 您可以將這些要求依邏輯 `name` 群組，並定義這項要求的 `source`。 程式碼執行可能會導致 `success` 或 `fail`，並且有特定 `duration`。 成功和失敗的執行都可以進一步以 `resultCode` 分組。 信封層級上定義之要求遙測的開始時間。
 
 要求遙測會使用自訂 `properties` 和 `measurements`支援標準的擴充性模型。
 
-## <a name="name"></a>Name
+## <a name="name"></a>名稱
 
 要求的名稱代表處理要求所採用的程式碼路徑。 較低的基數值可使群組要求更妥善。 針對 HTTP 要求，它代表 HTTP 方法和 URL 路徑範本，例如無實際 `id` 值的 `GET /values/{id}`。
 
@@ -26,7 +27,7 @@ Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字�
 
 ## <a name="id"></a>識別碼
 
-要求呼叫執行個體的識別碼。 用於要求和其他遙測項目之間的相互關聯。 識別碼必須是全域唯一的。 如需詳細資訊，請參閱[相互關聯](../../azure-monitor/app/correlation.md)頁面。
+要求呼叫執行個體的識別碼。 用於要求和其他遙測項目之間的相互關聯。 識別碼必須是全域唯一的。 如需詳細資訊，請參閱[相互關聯](./correlation.md)頁面。
 
 最大長度︰128 個字元
 
@@ -38,7 +39,7 @@ Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字�
 
 ## <a name="source"></a>來源
 
-要求的來源。 範例包括呼叫端的檢測金鑰或呼叫端的 IP 位址。 如需詳細資訊，請參閱[相互關聯](../../azure-monitor/app/correlation.md)頁面。
+要求的來源。 範例包括呼叫端的檢測金鑰或呼叫端的 IP 位址。 如需詳細資訊，請參閱[相互關聯](./correlation.md)頁面。
 
 最大長度︰1024 個字元
 
@@ -52,7 +53,7 @@ Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字�
 
 最大長度︰1024 個字元
 
-## <a name="success"></a>成功
+## <a name="success"></a>Success
 
 表示成功或失敗的呼叫。 此為必要欄位。 當未明確設定為 `false` 時 - 要求會視為成功。 如果作業是例外狀況而中斷或傳回錯誤結果碼，將此值設定為 `false`。
 
@@ -72,7 +73,8 @@ Application Insights web SDK 會將要求名稱依「現狀」傳送 (考量字�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [撰寫自訂要求遙測](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest)
+- [撰寫自訂要求遙測](./api-custom-events-metrics.md#trackrequest)
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](data-model.md)。
-- 了解如何使用 Application Insights [設定 ASP.NET Core](../../azure-monitor/app/asp-net.md) 應用程式。
-- 查看 Application Insights 支援的[平台](../../azure-monitor/app/platforms.md)。
+- 了解如何使用 Application Insights [設定 ASP.NET Core](./asp-net.md) 應用程式。
+- 查看 Application Insights 支援的[平台](./platforms.md)。
+

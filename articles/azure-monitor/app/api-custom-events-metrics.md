@@ -3,16 +3,16 @@ title: 自訂事件和度量的 Application Insights API | Microsoft Docs
 description: 在您的裝置或桌面應用程式、網頁或服務中插入幾行程式碼，來追蹤使用狀況及診斷問題。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 43951a415256577144b93c7deea168e30e7a13ba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d263c99af7793acbe1f939f64c5cc2dcadd3a054
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014723"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323225"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>自訂事件和度量的 Application Insights API
 
-在您的應用程式中插入幾行程式碼，以了解使用者對它進行的動作或協助診斷問題。 您可以從裝置和桌面應用程式、Web 用戶端以及 Web 伺服器傳送遙測。 使用 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 核心遙測 API 來傳送自訂的事件和度量，以及您自己的標準遙測版本。 這個 API 與標準 Application Insights 資料收集器所使用的 API 相同。
+在您的應用程式中插入幾行程式碼，以了解使用者對它進行的動作或協助診斷問題。 您可以從裝置和桌面應用程式、Web 用戶端以及 Web 伺服器傳送遙測。 使用 [Azure Application Insights](./app-insights-overview.md) 核心遙測 API 來傳送自訂的事件和度量，以及您自己的標準遙測版本。 這個 API 與標準 Application Insights 資料收集器所使用的 API 相同。
 
 ## <a name="api-summary"></a>API summary
 
@@ -37,11 +37,11 @@ ms.locfileid: "87014723"
 
 * 將 Application Insights SDK 加入至專案：
 
-  * [ASP.NET 專案](../../azure-monitor/app/asp-net.md)
-  * [ASP.NET Core 專案](../../azure-monitor/app/asp-net-core.md)
-  * [JAVA 專案](../../azure-monitor/app/java-get-started.md)
-  * [Node.js 專案](../../azure-monitor/app/nodejs.md)
-  * [每個網頁中的 JavaScript](../../azure-monitor/app/javascript.md) 
+  * [ASP.NET 專案](./asp-net.md)
+  * [ASP.NET Core 專案](./asp-net-core.md)
+  * [JAVA 專案](./java-get-started.md)
+  * [Node.js 專案](./nodejs.md)
+  * [每個網頁中的 JavaScript](./javascript.md) 
 * 在裝置或 Web 伺服器程式碼中，加入：
 
     *C #：*`using Microsoft.ApplicationInsights;`
@@ -107,7 +107,7 @@ telemetry.getContext().getDevice().setId("...");
 
 ## <a name="trackevent"></a>TrackEvent
 
-在 Application Insights 中，「自訂事件」** 是您可以在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)顯示為彙總計數，以及在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中顯示為個別發生點的資料點。 (它與 MVC 或其他架構的「事件」不相關。)
+在 Application Insights 中，「自訂事件」** 是您可以在[計量瀏覽器](../platform/metrics-charts.md)顯示為彙總計數，以及在[診斷搜尋](./diagnostic-search.md)中顯示為個別發生點的資料點。 (它與 MVC 或其他架構的「事件」不相關。)
 
 在您的程式碼中插入 `TrackEvent` 呼叫，以計算各種事件。 使用者選擇特定功能的頻率、達成特定目標的頻率，或他們犯特定類型錯誤的頻率。
 
@@ -147,11 +147,11 @@ telemetry.trackEvent({name: "WinGame"});
 
 [Application Insights 分析](../log-query/log-query-overview.md)的 `customEvents` 資料表中有提供遙測資料。 每個資料列各代表應用程式中的一個 `trackEvent(..)` 呼叫。
 
-如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackEvent() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得自訂事件的正確計數，您應該使用之類的程式碼 `customEvents | summarize sum(itemCount)` 。
+如果[取樣](./sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackEvent() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得自訂事件的正確計數，您應該使用之類的程式碼 `customEvents | summarize sum(itemCount)` 。
 
 ## <a name="getmetric"></a>GetMetric
 
-若要瞭解如何有效地使用 GetMetric （）呼叫來捕獲 .NET 和 .NET Core 應用程式的本機預先匯總計量，請造訪[GetMetric](../../azure-monitor/app/get-metric.md)檔。
+若要瞭解如何有效地使用 GetMetric （）呼叫來捕獲 .NET 和 .NET Core 應用程式的本機預先匯總計量，請造訪[GetMetric](./get-metric.md)檔。
 
 ## <a name="trackmetric"></a>TrackMetric
 
@@ -307,9 +307,9 @@ pageViews
 
 ## <a name="operation-context"></a>作業內容
 
-您可以使遙測項目和作業內容產生關聯，藉此讓遙測項目相互關聯。 標準的要求追蹤模組會針對在處理 HTTP 要求時傳送的例外狀況和其他事件執行此動作。 在[搜尋](../../azure-monitor/app/diagnostic-search.md)和[分析](../log-query/log-query-overview.md)中，您可以使用要求的作業識別碼，輕易地找出任何與要求相關聯的事件。
+您可以使遙測項目和作業內容產生關聯，藉此讓遙測項目相互關聯。 標準的要求追蹤模組會針對在處理 HTTP 要求時傳送的例外狀況和其他事件執行此動作。 在[搜尋](./diagnostic-search.md)和[分析](../log-query/log-query-overview.md)中，您可以使用要求的作業識別碼，輕易地找出任何與要求相關聯的事件。
 
-如需相互關聯的詳細資訊，請參閱 [Application Insights 中的遙測相互關聯](../../azure-monitor/app/correlation.md)。
+如需相互關聯的詳細資訊，請參閱 [Application Insights 中的遙測相互關聯](./correlation.md)。
 
 以手動方式追蹤遙測時，確保遙測相互關聯最簡單的方式是使用此模式：
 
@@ -341,13 +341,13 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 ![相關項目](./media/api-custom-events-metrics/21.png)
 
-如需有關自訂作業追蹤的詳細資訊，請參閱[使用 Application Insights .NET SDK 追蹤自訂作業](../../azure-monitor/app/custom-operations-tracking.md)。
+如需有關自訂作業追蹤的詳細資訊，請參閱[使用 Application Insights .NET SDK 追蹤自訂作業](./custom-operations-tracking.md)。
 
 ### <a name="requests-in-analytics"></a>分析中的要求
 
 在 [Application Insights 分析](../log-query/log-query-overview.md)中，要求會顯示在 `requests` 資料表中。
 
-如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性將會顯示大於 1 的值。 例如，itemCount==10 表示在 trackRequest() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得依要求名稱分割的正確要求計數和平均持續時間，請使用類似如下的程式碼：
+如果[取樣](./sampling.md)運作中，itemCount 屬性將會顯示大於 1 的值。 例如，itemCount==10 表示在 trackRequest() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得依要求名稱分割的正確要求計數和平均持續時間，請使用類似如下的程式碼：
 
 ```kusto
 requests
@@ -358,8 +358,8 @@ requests
 
 傳送例外狀況至 Application Insights︰
 
-* 以[計算數目](../../azure-monitor/platform/metrics-charts.md)，來指出問題的頻率。
-* 以[檢查個別出現次數](../../azure-monitor/app/diagnostic-search.md)。
+* 以[計算數目](../platform/metrics-charts.md)，來指出問題的頻率。
+* 以[檢查個別出現次數](./diagnostic-search.md)。
 
 報告包含堆疊追蹤。
 
@@ -414,8 +414,8 @@ catch (ex)
 
 SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 TrackException。
 
-* ASP.NET：[撰寫程式碼以攔截例外](../../azure-monitor/app/asp-net-exceptions.md)狀況。
-* JAVA EE：[例外狀況會自動捕捉](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
+* ASP.NET：[撰寫程式碼以攔截例外](./asp-net-exceptions.md)狀況。
+* JAVA EE：[例外狀況會自動捕捉](./java-get-started.md#exceptions-and-request-failures)。
 * JavaScript：自動攔截例外狀況。 如果您想要停用自動收集，請在您插入網頁的程式碼片段中加入一行：
 
 ```javascript
@@ -429,7 +429,7 @@ SDK 將自動攔截許多例外狀況，所以您不一定需要明確呼叫 Tra
 
 在 [Application Insights 分析](../log-query/log-query-overview.md)中，例外狀況會顯示在 `exceptions` 資料表中。
 
-如果[取樣](../../azure-monitor/app/sampling.md)運作中，`itemCount` 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackException() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得依例外狀況類型分割的正確例外狀況計數，請使用類似如下的程式碼：
+如果[取樣](./sampling.md)運作中，`itemCount` 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackException() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得依例外狀況類型分割的正確例外狀況計數，請使用類似如下的程式碼：
 
 ```kusto
 exceptions
@@ -452,11 +452,11 @@ exceptions
 
 ## <a name="tracktrace"></a>TrackTrace
 
-使用 TrackTrace 可協助您藉由將 "breadcrumb trail" 傳送至 Application Insights 來診斷問題。 您可以傳送診斷資料區塊，並在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中加以檢查。
+使用 TrackTrace 可協助您藉由將 "breadcrumb trail" 傳送至 Application Insights 來診斷問題。 您可以傳送診斷資料區塊，並在[診斷搜尋](./diagnostic-search.md)中加以檢查。
 
-在 .NET 中，[記錄配接器](../../azure-monitor/app/asp-net-trace-logs.md)使用此 API 將第三方記錄傳送至入口網站。
+在 .NET 中，[記錄配接器](./asp-net-trace-logs.md)使用此 API 將第三方記錄傳送至入口網站。
 
-在 Java 中，[Log4J、Logback 等標準記錄器](../../azure-monitor/app/java-trace-logs.md)使用 Application Insights Log4j 或 Logback 附加器將第三方記錄傳送至入口網站。
+在 Java 中，[Log4J、Logback 等標準記錄器](./java-trace-logs.md)使用 Application Insights Log4j 或 Logback 附加器將第三方記錄傳送至入口網站。
 
 *C#*
 
@@ -488,7 +488,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 記錄診斷事件，例如進入或離開某個方法。
 
- 參數 | 描述
+ 參數 | 說明
 ---|---
 `message` | 診斷資料。 可以比名稱長很多。
 `properties` | 字串與字串的對應：用來在入口網站中[篩選例外](#properties)狀況的其他資料。 預設為空白。
@@ -518,13 +518,13 @@ properties.put("Database", db.ID);
 telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
 ```
 
-在[搜尋](../../azure-monitor/app/diagnostic-search.md)中，您便可以輕鬆地篩選出與特定資料庫相關且具有特定嚴重性層級的所有訊息。
+在[搜尋](./diagnostic-search.md)中，您便可以輕鬆地篩選出與特定資料庫相關且具有特定嚴重性層級的所有訊息。
 
 ### <a name="traces-in-analytics"></a>分析中的追蹤
 
 在 [Application Insights 分析](../log-query/log-query-overview.md)中，TrackTrace 的呼叫會顯示在 `traces` 資料表中。
 
-如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 `trackTrace()` 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得正確的追蹤呼叫計數，您應該使用程式碼，例如 `traces | summarize sum(itemCount)`。
+如果[取樣](./sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 `trackTrace()` 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得正確的追蹤呼叫計數，您應該使用程式碼，例如 `traces | summarize sum(itemCount)`。
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -591,19 +591,19 @@ finally
 }
 ```
 
-請記住，伺服器 SDK 包含[相依性模組](../../azure-monitor/app/asp-net-dependencies.md)，可用來自動探索和追蹤特定相依性呼叫 (例如資料庫和 REST API)。 您必須在伺服器上安裝代理程式才能讓模組正常運作。 
+請記住，伺服器 SDK 包含[相依性模組](./asp-net-dependencies.md)，可用來自動探索和追蹤特定相依性呼叫 (例如資料庫和 REST API)。 您必須在伺服器上安裝代理程式才能讓模組正常運作。 
 
-在 Java 中，您可以使用 [Java 代理程式](../../azure-monitor/app/java-agent.md)追蹤某些相依性呼叫。
+在 Java 中，您可以使用 [Java 代理程式](./java-agent.md)追蹤某些相依性呼叫。
 
 如果您想要追蹤自動化追蹤不會攔截的呼叫，或不想安裝代理程式，您可以使用這個呼叫。
 
-若要在 C# 中關閉標準相依性追蹤模組，請編輯 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 並刪除 `DependencyCollector.DependencyTrackingTelemetryModule` 的參考。 在 Java 中，如果您不想要自動收集標準相依性，請勿安裝 Java 用戶端。
+若要在 C# 中關閉標準相依性追蹤模組，請編輯 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 並刪除 `DependencyCollector.DependencyTrackingTelemetryModule` 的參考。 在 Java 中，如果您不想要自動收集標準相依性，請勿安裝 Java 用戶端。
 
 ### <a name="dependencies-in-analytics"></a>分析中的相依性
 
 在 [Application Insights 分析](../log-query/log-query-overview.md)中，trackDependency 呼叫會顯示在 `dependencies` 資料表中。
 
-如果[取樣](../../azure-monitor/app/sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackDependency() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得依目標元件分割的正確相依性計數，請使用類似如下的程式碼：
+如果[取樣](./sampling.md)運作中，itemCount 屬性會顯示大於 1 的值。 例如，itemCount==10 表示在 trackDependency() 的 10 個呼叫中，取樣處理序只會傳輸其中一個。 若要取得依目標元件分割的正確相依性計數，請使用類似如下的程式碼：
 
 ```kusto
 dependencies
@@ -649,7 +649,7 @@ telemetry.flush();
 
 ## <a name="authenticated-users"></a>驗證的使用者
 
-在 web 應用程式中，使用者依預設會[由 cookie 識別](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)。 如果使用者從不同的電腦或瀏覽器存取您的 app 或刪除 Cookie，就可能多次計算他們。
+在 web 應用程式中，使用者依預設會[由 cookie 識別](./usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)。 如果使用者從不同的電腦或瀏覽器存取您的 app 或刪除 Cookie，就可能多次計算他們。
 
 如果使用者登入您的 app，您可以藉由在瀏覽器程式碼中設定經過驗證的使用者識別碼，來取得更正確的計數：
 
@@ -689,9 +689,9 @@ function Authenticated(signInId) {
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中，您可建立可計算 [已驗證的使用者]**** 和 [使用者帳戶]**** 的圖表。
+在[計量瀏覽器](../platform/metrics-charts.md)中，您可建立可計算 [已驗證的使用者]**** 和 [使用者帳戶]**** 的圖表。
 
-您也可以[搜尋](../../azure-monitor/app/diagnostic-search.md)具有特定使用者名稱和帳戶的用戶端資料點。
+您也可以[搜尋](./diagnostic-search.md)具有特定使用者名稱和帳戶的用戶端資料點。
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>使用屬性篩選、搜尋和分割資料
 
@@ -822,7 +822,7 @@ requests
 請注意：
 
 * 當您從 customDimensions 或 customMeasurements JSON 中擷取值時，其類型為動態，因此您必須將它轉換成 `tostring` 或 `todouble`。
-* 考量到[取樣](../../azure-monitor/app/sampling.md)的可能性，您應該使用 `sum(itemCount)`，而不是 `count()`。
+* 考量到[取樣](./sampling.md)的可能性，您應該使用 `sum(itemCount)`，而不是 `count()`。
 
 ## <a name="timing-events"></a><a name="timed"></a> 計時事件
 
@@ -919,19 +919,19 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 *針對 javascript web 用戶端*，請使用 javascript 遙測初始化運算式。
 
-*若要將屬性新增至所有遙測*，並包括來自標準集合模組的資料，請[實作 `ITelemetryInitializer`](../../azure-monitor/app/api-filtering-sampling.md#add-properties)。
+*若要將屬性新增至所有遙測*，並包括來自標準集合模組的資料，請[實作 `ITelemetryInitializer`](./api-filtering-sampling.md#add-properties)。
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>取樣、篩選及處理遙測資料
 
 您可以撰寫程式碼，在從 SDK 傳送遙測資料前加以處理。 處理包括從標準遙測模組 (如 HTTP 要求收集和相依性收集) 的資料。
 
-實作 `ITelemetryInitializer` 以[屬性](../../azure-monitor/app/api-filtering-sampling.md#add-properties)至遙測資料。 例如，您可以新增版本號碼或從其他屬性計算得出的值。
+實作 `ITelemetryInitializer` 以[屬性](./api-filtering-sampling.md#add-properties)至遙測資料。 例如，您可以新增版本號碼或從其他屬性計算得出的值。
 
-[篩選](../../azure-monitor/app/api-filtering-sampling.md#filtering)可以先修改或捨棄遙測，再藉由實作 `ITelemetryProcessor` 從 SDK 傳送遙測。 您可控制要傳送或捨棄的項目，但是您必須考量這對您的度量的影響。 視您捨棄項目的方式而定，您可能會喪失在相關項目之間瀏覽的能力。
+[篩選](./api-filtering-sampling.md#filtering)可以先修改或捨棄遙測，再藉由實作 `ITelemetryProcessor` 從 SDK 傳送遙測。 您可控制要傳送或捨棄的項目，但是您必須考量這對您的度量的影響。 視您捨棄項目的方式而定，您可能會喪失在相關項目之間瀏覽的能力。
 
-[取樣](../../azure-monitor/app/api-filtering-sampling.md)是減少從應用程式傳送至入口網站的資料量的套件方案。 它在這麼做時並不會影響顯示的度量。 而且它在這麼做時可藉由在相關項目 (如例外狀況、要求和頁面檢視) 之間瀏覽，而不會影響您診斷問題的能力。
+[取樣](./api-filtering-sampling.md)是減少從應用程式傳送至入口網站的資料量的套件方案。 它在這麼做時並不會影響顯示的度量。 而且它在這麼做時可藉由在相關項目 (如例外狀況、要求和頁面檢視) 之間瀏覽，而不會影響您診斷問題的能力。
 
-[深入了解](../../azure-monitor/app/api-filtering-sampling.md)。
+[深入了解](./api-filtering-sampling.md)。
 
 ## <a name="disabling-telemetry"></a>停用遙測
 
@@ -951,7 +951,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-若要*停用選取的標準收集*器（例如效能計數器、HTTP 要求或相依性），請刪除或批註掉[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中的相關行。例如，如果您想要傳送自己的 TrackRequest 資料，可以這麼做。
+若要*停用選取的標準收集*器（例如效能計數器、HTTP 要求或相依性），請刪除或批註掉[ApplicationInsights.config](./configuration-with-applicationinsights-config.md)中的相關行。例如，如果您想要傳送自己的 TrackRequest 資料，可以這麼做。
 
 *Node.js*
 
@@ -1012,7 +1012,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動態檢測金鑰
 
-為了避免混合來自開發、測試和生產環境的遙測，您可以[建立不同的 Application Insights 資源](../../azure-monitor/app/create-new-resource.md )並變更其金鑰，視環境而定。
+為了避免混合來自開發、測試和生產環境的遙測，您可以[建立不同的 Application Insights 資源](./create-new-resource.md)並變更其金鑰，視環境而定。
 
 而不是從組態檔取得檢測金鑰，您可以在程式碼中設定。 在初始化方法中設定金鑰，例如 ASP.NET 服務中的 global.aspx.cs：
 
@@ -1068,7 +1068,7 @@ TelemetryClient 具有內容屬性，其中包含與所有遙測資料一起傳�
 telemetry.Context.Operation.Name = "MyOperationName";
 ```
 
-如果您自行設定這些值，請考慮從 [ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 移除相關的程式碼行，讓您的值和標準值不致混淆。
+如果您自行設定這些值，請考慮從 [ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 移除相關的程式碼行，讓您的值和標準值不致混淆。
 
 * **元件**：應用程式及其版本。
 * **裝置**︰應用程式執行所在裝置的相關資料  (在 Web 應用程式中，這是傳送遙測的伺服器或用戶端裝置)。
@@ -1086,9 +1086,9 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-若要避免達到資料速率限制，請使用[取樣](../../azure-monitor/app/sampling.md)。
+若要避免達到資料速率限制，請使用[取樣](./sampling.md)。
 
-若要決定資料的保留時間，請參閱[資料保留和隱私權](../../azure-monitor/app/data-retention-privacy.md)。
+若要決定資料的保留時間，請參閱[資料保留和隱私權](./data-retention-privacy.md)。
 
 ## <a name="reference-docs"></a>參考文件
 
@@ -1112,9 +1112,10 @@ telemetry.Context.Operation.Name = "MyOperationName";
     無。 您不需要將它們包裝在 try-catch 子句中。 如果 SDK 發生問題，它會在偵錯主控台輸出以及 (若訊息得以傳輸過去) 診斷搜尋中記錄訊息。
 * *是否有 REST API 可供從入口網站中取得資料？*
 
-    是，[資料存取 API](https://dev.applicationinsights.io/)。 其他擷取資料的方法包括[從分析匯出至 Power BI](../../azure-monitor/app/export-power-bi.md ) 和[連續匯出](../../azure-monitor/app/export-telemetry.md)。
+    是，[資料存取 API](https://dev.applicationinsights.io/)。 其他擷取資料的方法包括[從分析匯出至 Power BI](./export-power-bi.md) 和[連續匯出](./export-telemetry.md)。
 
 ## <a name="next-steps"></a><a name="next"></a>後續步驟
 
-* [搜尋事件和記錄](../../azure-monitor/app/diagnostic-search.md)
+* [搜尋事件和記錄](./diagnostic-search.md)
 * [疑難排解](../faq.md)
+

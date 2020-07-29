@@ -3,12 +3,12 @@ title: ASP.NET Core 應用程式的 Azure 應用程式見解 |Microsoft Docs
 description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用方式。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1d5ce4fe2a3ceb3235b77916aa408c681f81b0de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 770cc3f34487f837631a98c6f652d8746ae2c2df
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517224"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321389"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -30,7 +30,7 @@ ms.locfileid: "86517224"
 > [!NOTE]
 > ASP.NET Core 3.x 需要[Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)或更新版本。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 正常運作的 ASP.NET Core 應用程式。 如果您需要建立 ASP.NET Core 應用程式，請遵循此[ASP.NET Core 教學](/aspnet/core/getting-started/)課程。
 - 有效的 Application Insights 檢測金鑰。 必須要有此金鑰，才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源來取得檢測金鑰，請參閱[建立 Application Insights 資源](./create-new-resource.md)。
@@ -46,7 +46,7 @@ ms.locfileid: "86517224"
 
 3. 選取 **[馬上開始]** 。 根據您的 Visual Studio 版本而定，此選取的文字可能會有所不同。 某些較舊版本則改為使用 [**開始免費**] 按鈕。
 
-4. 選取您的訂閱。 然後選取 [**資源**  >  **註冊**]。
+4. 選取您的訂用帳戶。 然後選取 [**資源**  >  **註冊**]。
 
 5. 將 Application Insights 新增至您的專案之後，請檢查以確認您使用的是最新穩定版本的 SDK。 移至 [**專案**] [  >  **管理 NuGet 套件**] [  >  **ApplicationInsights. AspNetCore**]。 如有需要，請選擇 [**更新**]。
 
@@ -221,7 +221,7 @@ public void ConfigureServices(IServiceCollection services)
 
 適用于 ASP.NET Core 的 Application Insights SDK 支援固定速率和調適型取樣。 預設會啟用調適型取樣。 
 
-如需詳細資訊，請參閱[設定 ASP.NET Core 應用程式的](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)調適型取樣。
+如需詳細資訊，請參閱[設定 ASP.NET Core 應用程式的](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)調適型取樣。
 
 ### <a name="adding-telemetryinitializers"></a>加入 TelemetryInitializers
 
@@ -420,7 +420,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-否。 [狀態監視器](./monitor-performance-live-website-now.md)和[狀態監視器 v2](./status-monitor-v2-overview.md)目前僅支援 ASP.NET 4.x。
+不可以。 [狀態監視器](./monitor-performance-live-website-now.md)和[狀態監視器 v2](./status-monitor-v2-overview.md)目前僅支援 ASP.NET 4.x。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Application Insights 自動啟用我的 ASP.NET Core 2.0 應用程式嗎？
 
@@ -459,8 +459,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="next-steps"></a>後續步驟
 
-* [探索使用者流程](../../azure-monitor/app/usage-flows.md)，以瞭解使用者如何流覽您的應用程式。
+* [探索使用者流程](./usage-flows.md)，以瞭解使用者如何流覽您的應用程式。
 * [設定快照集集合](./snapshot-debugger.md)，以查看擲回例外狀況時原始程式碼和變數的狀態。
-* [使用 API](../../azure-monitor/app/api-custom-events-metrics.md)來傳送您自己的事件和計量，以深入瞭解應用程式的效能和使用方式。
-* 使用[可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)持續從世界各地檢查您的應用程式。
+* [使用 API](./api-custom-events-metrics.md)來傳送您自己的事件和計量，以深入瞭解應用程式的效能和使用方式。
+* 使用[可用性測試](./monitor-web-app-availability.md)持續從世界各地檢查您的應用程式。
 * [ASP.NET Core 中的相依性插入](/aspnet/core/fundamentals/dependency-injection)
+

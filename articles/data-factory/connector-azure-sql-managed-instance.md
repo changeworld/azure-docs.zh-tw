@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: d67a050ccd590e220c51e02b827013ace7707ee2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ae0ab6c4279136c0a5ec86c1f8f52baa0fd69763
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523242"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171400"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure SQL 受控執行個體複製資料
 
@@ -43,7 +43,7 @@ ms.locfileid: "86523242"
 >[!NOTE]
 > 此連接器目前不支援 SQL 受控執行個體[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) 。 若要解決此情況，您可以透過自我裝載整合執行時間使用[一般 odbc 連接器](connector-odbc.md)和 SQL Server ODBC 驅動程式。 若要深入瞭解，請[使用 Always Encrypted](#using-always-encrypted)一節。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要存取 SQL 受控執行個體[公用端點](../azure-sql/managed-instance/public-endpoint-overview.md)，您可以使用 Azure Data Factory 受控 Azure 整合執行時間。 請確定您已啟用公用端點，而且也允許網路安全性群組上的公用端點流量，讓 Azure Data Factory 可以連接到您的資料庫。 如需詳細資訊，請參閱[本指引](../azure-sql/managed-instance/public-endpoint-configure.md)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "86523242"
 
 以下是針對 SQL 受控執行個體連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | Type 屬性必須設定為**AzureSqlMI**。 | 是 |
 | connectionString |這個屬性會指定使用 SQL 驗證連接到 SQL 受控執行個體所需的**connectionString**資訊。 如需詳細資訊，請參閱下列範例。 <br/>預設的連接埠為 1433。 如果您使用具有公用端點的 SQL 受控執行個體，請明確指定埠3342。<br> 您也可以將密碼放在 Azure Key Vault 中。 如果是 SQL 驗證，請 `password` 從連接字串中提取設定。 如需詳細資訊，請參閱資料表後面的 JSON 範例，並[將認證儲存在 Azure Key Vault 中](store-credentials-in-key-vault.md)。 |是 |
@@ -228,7 +228,7 @@ ms.locfileid: "86523242"
 
 若要將資料複製到 SQL 受控執行個體，並將其複製到其中，則支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為**AzureSqlMITable**。 | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
@@ -264,13 +264,13 @@ ms.locfileid: "86523242"
 
 若要從 SQL 受控執行個體複製資料，複製活動的 [來源] 區段中支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為**SqlMISource**。 | 是 |
 | sqlReaderQuery |此屬性使用自訂 SQL 查詢來讀取資料。 例如 `select * from MyTable`。 |否 |
 | sqlReaderStoredProcedureName |此屬性是從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 |否 |
 | storedProcedureParameters |這些是預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 |否 |
-| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值有：**ReadCommitted** (預設值)、**ReadUncommitted**、**RepeatableRead**、**Serializable**、**Snapshot**。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
+| isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值為： **ReadCommitted**、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 如果未指定，則會使用資料庫的預設隔離等級。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
 
 **請注意下列幾點：**
 
@@ -371,7 +371,7 @@ GO
 
 若要將資料複製到 SQL 受控執行個體，複製活動接收區段中支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動接收器的 type 屬性必須設定為**SqlMISink**。 | 是 |
 | preCopyScript |這個屬性會指定要在將資料寫入 SQL 受控執行個體之前，要執行之複製活動的 SQL 查詢。 每一複製回合只會叫用此查詢一次。 您可以使用此屬性來清除預先載入的資料。 |否 |
@@ -591,7 +591,7 @@ END
 | SMALLINT |Int16 |
 | SMALLMONEY |Decimal |
 | sql_variant |Object |
-| text |String, Char[] |
+| 文字 |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | TINYINT |Int16 |

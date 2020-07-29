@@ -7,12 +7,15 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: asrastog
-ms.openlocfilehash: ef622d950595752e616608ef56d8df66b8a9813f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: IoT Device'
+ms.openlocfilehash: 81c5d410599edcbbb4e216b630709541be02c9fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610144"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323004"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>了解和使用 IoT 中樞的模組對應項
 
@@ -193,7 +196,7 @@ ms.locfileid: "85610144"
 
   - 主體
         
-    本節包含所有對應項變更 (JSON 格式)。 它使用的格式與修補程式的格式相同，差別在於它可以包含所有對應項區段︰tags、properties.reported、properties.desired，而且包含 “$metadata” 項目。 例如，
+    本節包含所有對應項變更 (JSON 格式)。 它使用的格式與修補程式的格式相同，差別在於它可以包含所有對應項區段︰tags、properties.reported、properties.desired，而且包含 “$metadata” 項目。 例如
 
     ```json
     {

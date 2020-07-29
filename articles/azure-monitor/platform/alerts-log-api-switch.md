@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
-ms.openlocfilehash: a5613198b404f629727f3040b308c030763a10b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7e1073817013d45558a9679a4f70db0c002cfaa9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515796"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324075"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>切換記錄警示的 API 喜好設定
 
@@ -115,4 +115,5 @@ armclient GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>
 
 - 了解 [Azure 監視器 - 記錄警示](alerts-unified-log.md)。
 - 了解如何建立 [Azure 警示中的記錄警示](alerts-log.md)。
-- 深入了解 [Azure 警示體驗](../../azure-monitor/platform/alerts-overview.md)。
+- 深入了解 [Azure 警示體驗](./alerts-overview.md)。
+

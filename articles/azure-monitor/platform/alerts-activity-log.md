@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站、Azure Resource Manager 範本和 Azure 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 5019c3111a6e04dd9b7ba6ecbb9f62c7969075ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b202e3d47b98c5e395b3a8b525b9b8c0a04c0f76
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516051"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322409"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>使用 Azure 監視器中建立、檢視及管理活動記錄警示  
 
@@ -92,7 +92,7 @@ ms.locfileid: "86516051"
     - **描述**：新警示規則的描述。
     - **將警示儲存到資源群組**：選取您儲存此新規則的資源群組。
 
-5. 在 [動作群組] 下，從下拉式功能表中指定您想要指派給此新警示規則的動作群組。 或者，[建立新的動作群組](../../azure-monitor/platform/action-groups.md)並指派給新規則。 若要建立新群組，請選取 [+ 新增群組]。
+5. 在 [動作群組] 下，從下拉式功能表中指定您想要指派給此新警示規則的動作群組。 或者，[建立新的動作群組](./action-groups.md)並指派給新規則。 若要建立新群組，請選取 [+ 新增群組]。
 
 6. 若要在建立群組之後啟用規則，請選取 [在建立時啟用規則] 選項的 [是] 。
 7. 選取 [建立警示規則]。
@@ -285,7 +285,8 @@ Azure CLI 命令 [az monitor activity-log alert delete](/cli/azure/monitor/activ
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解[活動記錄的 Webhook 結構描述](../../azure-monitor/platform/activity-log-alerts-webhook.md)。
-- 參閱[活動記錄概觀](../../azure-monitor/platform/activity-log-alerts.md)。
-- 深入了解[動作群組](../../azure-monitor/platform/action-groups.md)。  
+- 了解[活動記錄的 Webhook 結構描述](./activity-log-alerts-webhook.md)。
+- 參閱[活動記錄概觀](./activity-log-alerts.md)。
+- 深入了解[動作群組](./action-groups.md)。  
 - 深入了解[服務健康狀態通知](../../service-health/service-notifications.md)。
+

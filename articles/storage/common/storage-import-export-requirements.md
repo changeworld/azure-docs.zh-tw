@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 877d1442c346b321562cb396a77224a6b40c7df2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b7915e1b7779c4d0359b9ac190574c43a624cbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087232"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276392"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 匯入/匯出系統需求
 
@@ -50,7 +50,7 @@ Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 每項工作都只能從僅只一個儲存體帳戶收送資料。 換句話說，單一匯入/匯出作業不能跨越多個儲存體帳戶。 如需建立新儲存體帳戶的詳細資訊，請參閱 [如何建立儲存體帳戶](storage-account-create.md)(英文)。
 
 > [!IMPORTANT]
-> 對於已啟用「[虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)」功能的儲存體帳戶   ，請使用 [**允許受信任的 Microsoft 服務 ...** ] 設定來[啟用](/storage-network-security.md)匯入/匯出服務，以便在 Azure 中執行資料的匯入/匯出。
+> 對於已啟用「[虛擬網路服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)」功能的儲存體帳戶   ，請使用 [**允許受信任的 Microsoft 服務 ...** ] 設定來[啟用](/azure/storage/common/storage-network-security)匯入/匯出服務，以便在 Azure 中執行資料的匯入/匯出。
 
 ## <a name="supported-storage-types"></a>支援的儲存體類型
 
@@ -72,7 +72,7 @@ Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 以下是支援與匯入/匯出服務搭配使用的儲存類型清單。
 
 
-|磁碟類型  |Size  |支援 |
+|磁碟類型  |大小  |支援 |
 |---------|---------|---------|
 |SSD    |   2.5 吋      |SATA III          |
 |HDD     |  2.5 吋<br>3.5 吋       |SATA II、SATA III         |

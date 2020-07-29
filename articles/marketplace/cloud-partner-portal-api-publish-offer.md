@@ -4,15 +4,15 @@ description: 用來發佈指定供應項目的 API。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 1dede788242f858468c00e9f30f70ebdbe60cd1b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 60e75aff79913896bdf1dcdc8754b6ecf5620b06
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086399"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87272040"
 ---
 # <a name="publish-an-offer"></a>發佈供應項目
 
@@ -26,11 +26,11 @@ ms.locfileid: "87086399"
 ## <a name="uri-parameters"></a>URI 參數
 --------------
 
-|  **名稱**      |    **描述**                               |  **Data type** |
+|  **名稱**      |    **說明**                               |  **Data type** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | 發行者識別碼，例如 `contoso`      |   字串       |
-|  offerId       | 供應項目識別碼                                 |   字串       |
-|  api-version   | API 的最新版本                        |   日期         |
+|  publisherId   | 發行者識別碼，例如 `contoso`      |   String       |
+|  offerId       | 供應項目識別碼                                 |   String       |
+|  api-version   | API 的最新版本                        |   Date         |
 |  |  |
 
 ## <a name="header"></a>頁首
@@ -59,7 +59,7 @@ ms.locfileid: "87086399"
 
 ### <a name="request-body-properties"></a>要求本文屬性
 
-|  **名稱**               |   **描述**                                                                                 |
+|  **名稱**               |   **說明**                                                                                 |
 |  ---------------------  | ------------------------------------------------------------------------------------------------- |
 |  notification-emails    | 以逗號分隔的電子郵件地址清單；系統會向這些地址傳送發佈作業進度通知。 |
 |  |  |
@@ -78,12 +78,12 @@ ms.locfileid: "87086399"
 
 |  **名稱**             |    **ReplTest1**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| Location    | 要取出此作業狀態的相對路徑     |
+| 位置    | 要取出此作業狀態的相對路徑     |
 |  |  |
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **Code** |  **描述**                                                                                                                           |
+| **Code** |  **說明**                                                                                                                           |
 | ------   |  ----------------------------------------------------------------------------------------------------------------------------------------- |
 | 202   | `Accepted`：已順利接受要求。 回應包含可用來追蹤已啟動之作業的位置。 |
 | 400   | `Bad/Malformed request`：錯誤回應本文可能會提供更多資訊。                                                               |

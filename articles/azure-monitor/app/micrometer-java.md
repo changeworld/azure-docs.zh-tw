@@ -3,14 +3,15 @@ title: 如何搭配 Azure Application Insights Java SDK 使用 Micrometer
 description: 搭配 Application Insights Spring Boot 和非 Spring Boot 應用程式使用 Micrometer 的逐步解說指南。
 ms.topic: conceptual
 author: lgayhardt
+ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: da75498d6e4616b287ddb11c69df2469baaf2655
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2fbdf4e267e0f9a479a89d6f31e72f09d9e11bb0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067635"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322562"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>如何搭配 Azure Application Insights Java SDK 使用 Micrometer
 Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼的計量，並可讓您將資料匯出到您慣用的監視系統。 這篇文章會教導您如何搭配 Application Insights Spring Boot 和非 Spring Boot 應用程式使用 Micrometer。
@@ -20,7 +21,7 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
 * [Application Insights 春季開機-入門](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter)2.5.0 或更新版本
 * Micrometer Azure Registry 1.1.0 或更新版本
 * [Micrometer Spring Legacy](https://micrometer.io/docs/ref/spring/1.5) 1.1.0 或更新版本 (這會反向移植 Spring Framework 中的自動設定程式碼)。
-* [ApplicationInsights 資源](../../azure-monitor/app/create-new-resource.md )
+* [ApplicationInsights 資源](./create-new-resource.md)
 
 步驟
 
@@ -58,7 +59,7 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
 
 * Application Insights Spring-boot-starter 2.1.2 或更新版本
 * Azure-短期開機-計量-初學者2.0.7 或更新版本
-* [Application Insights 資源](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights 資源](./create-new-resource.md)
 
 步驟：
 
@@ -117,7 +118,7 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
 
 * Application Insights Web 自動2.5.0 或更新版本
 * Micrometer Azure Registry 1.1.0 或更新版本
-* [Application Insights 資源](../../azure-monitor/app/create-new-resource.md )
+* [Application Insights 資源](./create-new-resource.md)
 
 步驟：
 
@@ -272,3 +273,4 @@ Micrometer 應用程式監視會測量以 JVM 為基礎之應用程式程式碼�
 
 * 若要深入瞭解 Micrometer，請參閱官方[Micrometer 檔](https://micrometer.io/docs)。
 * 若要深入瞭解 Azure 上的春天，請參閱[azure 上的官方春季檔](/java/azure/spring-framework/?view=azure-java-stable)。
+

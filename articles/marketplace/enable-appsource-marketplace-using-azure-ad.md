@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/24/2020
+ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103618"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323259"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>整合您的商業市集清單與 Azure Active Directory
 
@@ -35,15 +35,16 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 | 虛擬機器 | N/A | 否 | 否 | 否 |
 | Azure 應用程式 (解決方案範本)  | 不適用 | N/A | N/A | N/A |
-| 受管理的應用程式  | 不適用 | N/A | N/A | No |
-| SaaS  | No | 是 | 是 | 是 |
-| 容器  | N/A | N/A | N/A | 否 |
+| 受管理的應用程式  | 不適用 | N/A | N/A | 否 |
+| SaaS  | 否 | 是 | 是 | 是 |
+| 容器  | 不適用 | N/A | N/A | 否 |
 | 諮詢服務  | 否 | 不適用 | N/A | N/A |
 
-如需有關 Saas 技術需求的詳細資訊，請參閱 [SaaS 應用程式供應項目發佈指南](marketplace-saas-applications-technical-publishing-guide.md)。
+如需有關 SaaS 技術需求的詳細資訊，請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](./azure-ad-saas.md)供應專案。
 
 ## <a name="azure-ad-integration"></a>Azure AD 整合
 
+- 如需如何整合 transactable software as a service （SaaS）供應專案 Azure AD 的詳細資訊，請參閱[商用 marketplace 中的 Azure AD 和 Transactable SaaS](./azure-ad-saas.md)供應專案。
 - 如需如何將 Azure AD 整合到您的清單以啟用單一登入的相關資訊，請參閱[開發人員適用的 Azure Active Directory](../active-directory/develop/index.yml)。
 - 如需關於 Azure AD 單一登入的詳細資料，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../active-directory/manage-apps/what-is-single-sign-on.md)。
 

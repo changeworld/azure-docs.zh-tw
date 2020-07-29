@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面主機集區 Azure Resource Manager-Azure
-description: 如何使用 Azure Resource Manager 範本在 Windows 虛擬桌面中建立主機集區。
+title: Windows 虛擬桌面（傳統）主機集區 Azure Resource Manager-Azure
+description: 如何使用 Azure Resource Manager 範本在 Windows 虛擬桌面（傳統）中建立主機集區。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 925d3ab7c01ef8dc4a2c5d590a56b4d558170472
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88027db54f9b7d4a7ef2ef32d4ea0434d8a26a10
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204756"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270255"
 ---
-# <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立主機集區
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本在 Windows 虛擬桌面（傳統）中建立主機集區
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。
 
 主機集區是 Windows 虛擬桌面租用戶環境中一或多個相同虛擬機器的集合。 每個主機集區都可以包含一個應用程式群組，而使用者可如同在實體桌面上與其互動。
 
@@ -38,7 +38,7 @@ ms.locfileid: "85204756"
 
 若要開始，請移至[此 GITHUB URL](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/Create%20and%20provision%20WVD%20host%20pool)。
 
-### <a name="deploy-the-template-to-azure"></a>將範本部署到 Azure
+### <a name="deploy-the-template-to-azure"></a>將範本部署至 Azure
 
 如果您要在企業訂用帳戶中進行部署，請向下選取 [**部署至 Azure**]，然後跳過 [根據您的影像來源，直接填寫參數]。
 

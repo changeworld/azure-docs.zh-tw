@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 5d16c62c14ff6f24e519173b979e11d21d997927
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7cfa3d5652e13ddc88db70674049069a5b391297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505783"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322120"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure 監視器中執行跨資源記錄查詢  
 
@@ -120,7 +120,7 @@ app('Contoso-app5').requests
 
 
 
-您現在可以在跨資源查詢中[使用此函式](../../azure-monitor/log-query/functions.md#use-a-function)，如下所示。 函式別名 _applicationsScoping_ 會從所有定義的應用程式傳送要求資料表的聯集。 接著，查詢會篩選失敗的要求，並依應用程式將趨勢視覺化。 在此範例中，_parse_ 運算子是選用的。 它會從 _SourceApp_ 屬性擷取應用程式名稱。
+您現在可以在跨資源查詢中[使用此函式](./functions.md#use-a-function)，如下所示。 函式別名 _applicationsScoping_ 會從所有定義的應用程式傳送要求資料表的聯集。 接著，查詢會篩選失敗的要求，並依應用程式將趨勢視覺化。 在此範例中，_parse_ 運算子是選用的。 它會從 _SourceApp_ 屬性擷取應用程式名稱。
 
 ```Kusto
 applicationsScoping 
@@ -141,3 +141,4 @@ applicationsScoping
 
 - 檢閱[分析 Azure 監視器中的記錄資料](log-query-overview.md)，了解記錄查詢的簡短概觀，以及建置 Azure 監視器記錄資料結構的方式。
 - 檢閱 [Azure 監視器記錄查詢](query-language.md)，以檢視所有 Azure 監視器記錄查詢的資源。
+

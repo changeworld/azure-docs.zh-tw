@@ -3,12 +3,12 @@ title: Application Insights 中的事件計數器 | Microsoft Docs
 description: 監視 Application Insights 中的系統和自訂 .NET/.NET Core EventCounter。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 06bf15bf60b1ee5e2c301935a30b3981d5233a08
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539936"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324398"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter 簡介
 
@@ -124,7 +124,7 @@ customMetrics
 與其他遙測一樣，**customMetrics** 也有 `cloud_RoleInstance` 資料行，可指出應用程式執行所在主機伺服器執行個體的身分識別。 上述查詢會顯示每個執行個體的計數器值，而且可以用來比較不同伺服器執行個體的效能。
 
 ## <a name="alerts"></a>警示
-與其他計量一樣，您可以[設定警示](../../azure-monitor/platform/alerts-log.md)，在事件計數器超出您指定的界限時提出警告。 開啟 [警示] 窗格，然後按一下 [新增警示]。
+與其他計量一樣，您可以[設定警示](../platform/alerts-log.md)，在事件計數器超出您指定的界限時提出警告。 開啟 [警示] 窗格，然後按一下 [新增警示]。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -148,4 +148,5 @@ EventCounter 不需要任何特殊權限，而且在支援 .NET Core 3.0 的所�
 
 ## <a name="next-steps"></a><a name="next"></a>後續步驟
 
-* [相依性追蹤](../../azure-monitor/app/asp-net-dependencies.md)
+* [相依性追蹤](./asp-net-dependencies.md)
+

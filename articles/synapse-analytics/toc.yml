@@ -32,9 +32,9 @@
       href: release-notes.md
 - name: 快速入門
   items:
-    - name: 建立 Azure Synapse 工作區
+    - name: 建立 Synapse 工作區
       href: quickstart-create-workspace.md
-    - name: 使用 Azure Synapse Studio
+    - name: 使用 Synapse Studio
       href: quickstart-synapse-studio.md
     - name: 連結 Power BI 工作區
       href: quickstart-power-bi.md

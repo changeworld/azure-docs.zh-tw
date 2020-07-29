@@ -8,11 +8,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 31a5d55d1067b9dd946c1667118d0bde5ee3d59e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: b9d8f0c2a573ba1749b414a389cd7181ddd5f95a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81682506"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321678"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用適用於 Visual Studio Code 的 Azure IoT Tools 來傳送和接收裝置與 IoT 中樞之間的訊息
 
@@ -32,13 +35,13 @@ ms.locfileid: "81682506"
 
 * 使用適用於 Visual Studio Code 的 Azure IoT Tools 來傳送雲端到裝置訊息。
 
-## <a name="what-you-need"></a>您需要什麼
+## <a name="what-you-need"></a>必要條件
 
 * 有效的 Azure 訂用帳戶。
 
 * 位於您訂用帳戶中的 Azure IoT 中樞。
 
-* [Visual Studio Code](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/) \(英文\)
 
 * [Azure IoT Tools，VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或將此 URL 複製並貼到瀏覽器視窗中：`vscode:extension/vsciot-vscode.azure-iot-tools`
 

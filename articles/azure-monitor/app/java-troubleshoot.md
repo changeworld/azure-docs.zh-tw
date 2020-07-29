@@ -3,11 +3,12 @@ title: 疑難排解 Java Web 專案中的 Application Insights
 description: 疑難排解指南 - 使用 Application Insights 監視即時的 Java 應用程式。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74b4bc009158d826955f851f22458e9570a58e7c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484788"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324143"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Application Insights for Java 的疑難排解和問答集
 [Java 中的 Azure Application Insights][java] 疑問或問題？ 以下是一些秘訣。
@@ -23,7 +24,7 @@ ms.locfileid: "84484788"
 * 請稍等片刻，然後按一下 [重新整理]。 圖表會定期自行重新整理，但您也可以手動重新整理。 重新整理間隔取決於圖表的時間範圍。
 * 檢查 ApplicationInsights.xml 檔案 (位於專案的 resources 資料夾) 中是否已定義檢測金鑰，或已將檢測金鑰設為環境變數。
 * 確認 xml 檔案中沒有 `<DisableTelemetry>true</DisableTelemetry>` 節點。
-* 在防火牆中，您可能必須開啟 TCP 連接埠 80 和 443，以允許連出流量送往 dc.services.visualstudio.com。 請參閱 [完整的防火牆例外狀況清單](../../azure-monitor/app/ip-addresses.md)
+* 在防火牆中，您可能必須開啟 TCP 連接埠 80 和 443，以允許連出流量送往 dc.services.visualstudio.com。 請參閱 [完整的防火牆例外狀況清單](./ip-addresses.md)
 * 在 Microsoft Azure 開始面板中，查看服務狀態對應。 如果看到一些警示指示，請等待它們恢復 [正常]，然後關閉再重新開啟 Application Insights 應用程式刀鋒視窗。
 * [Turn on logging](#debug-data-from-the-sdk)藉由在 `<SDKLogger />` ApplicationInsights.xml 檔案（位於專案的 resources 資料夾）的根節點下加入元素，來開啟記錄功能，並檢查是否有任何可疑記錄檔前面加上 AI： INFO/警告/ERROR 的專案。 
 * 藉由查看主控台的輸出訊息「已成功找到組態檔」陳述式，確定 Java SDK 已成功載入正確的 ApplicationInsights.xml 檔案。
@@ -37,7 +38,7 @@ ms.locfileid: "84484788"
 * 正在尋找適當的 AI 資源嗎？ 請比對應用程式的 iKey 與您預期遙測的資源。 它們應該相同。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>我並沒有看到預期的所有資料
-* 開啟 [使用量和估計成本] 頁面，並檢查[取樣](../../azure-monitor/app/sampling.md)是否正在運作。 （100% 傳輸表示取樣不在作業中。）Application Insights 服務可以設定為只接受從您的應用程式抵達的一小部分遙測。 這有助於您維持在每月的遙測配額內。
+* 開啟 [使用量和估計成本] 頁面，並檢查[取樣](./sampling.md)是否正在運作。 （100% 傳輸表示取樣不在作業中。）Application Insights 服務可以設定為只接受從您的應用程式抵達的一小部分遙測。 這有助於您維持在每月的遙測配額內。
 * 您是否已開啟 SDK 取樣？ 如果是，則應該會針對所有適用的類型以指定的速率進行資料取樣。
 * 您正在執行較舊版本的 Java SDK？ 從 2.0.1 版開始，我們引進容錯機制來處理間歇性的網路和後端失敗，以及本機磁碟上的資料持續性。
 * 是否因為過多的遙測而遭到節流？ 如果您開啟 INFO 記錄，將會看到記錄訊息「應用程式已節流」。 我們目前的限制為每秒 32,000 個遙測項目。
@@ -186,17 +187,17 @@ Application insights 會使用 `org.apache.http`。 這會重新配置在 Applic
 * [撰寫程式碼以追蹤應用程式使用狀況][track]
 * [擷取診斷記錄][javalogs]
 
-## <a name="get-help"></a>取得協助
+## <a name="get-help"></a>取得說明
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [在 GitHub 上提出問題](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[data]: ../../azure-monitor/app/data-retention-privacy.md
+[availability]: ./monitor-web-app-availability.md
+[data]: ./data-retention-privacy.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[platforms]: ../../azure-monitor/app/platforms.md
-[track]: ../../azure-monitor/app/api-custom-events-metrics.md
+[platforms]: ./platforms.md
+[track]: ./api-custom-events-metrics.md
 [usage]: javascript.md
 

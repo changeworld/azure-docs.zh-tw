@@ -14,12 +14,13 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e5978cff8da4697cf130e499c8d9273d75118963
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: 73dfa45361f2c111934ee7b938c44824112c6c8d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000613"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322681"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>開始在 Azure 媒體服務上使用 Java 用戶端 SDK  
 
@@ -28,7 +29,7 @@ ms.locfileid: "87000613"
 
 本教學課程會逐步引導您使用 Java 用戶端 SDK，來實作搭配 Azure 媒體服務的基本視訊內容傳遞服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 需要有下列項目，才能完成本教學課程：
 

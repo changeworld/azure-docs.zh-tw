@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: e88d51e014244892fc3ac9e2cca242dacdfd9997
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c090238192b49af00856f6fcd002e95d154d2c0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516170"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321848"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -26,7 +26,7 @@ ms.locfileid: "86516170"
 * **動作類型**：執行的動作。 範例包括傳送語音電話、SMS、電子郵件或觸發各種類型的自動化動作。 請參閱本文稍後的類型。
 * **詳細資料**：對應的詳細資料，會依「動作類型」而有所不同。
 
-如需如何使用 Azure Resource Manager 範本設定動作群組的資訊，請參閱[動作群組 Resource Manager 範本](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)。
+如需如何使用 Azure Resource Manager 範本設定動作群組的資訊，請參閱[動作群組 Resource Manager 範本](./action-groups-create-resource-manager-template.md)。
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>使用 Azure 入口網站建立動作群組
 
@@ -86,12 +86,12 @@ ms.locfileid: "86516170"
 - azureemail-noreply@microsoft.com
 - alerts-noreply@mail.windowsazure.com
 
-您在動作群組中可以有有限數量的電子郵件動作。 請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+您在動作群組中可以有有限數量的電子郵件動作。 請參閱[速率限制資訊](./alerts-rate-limiting.md)一文。
 
 ### <a name="email-azure-resource-manager-role"></a>寄送電子郵件給 Azure Resource Manager 角色
 傳送電子郵件給訂用帳戶角色的成員。 只會將電子郵件傳送給 **Azure AD 使用者**角色成員。 不會將電子郵件傳送給 Azure AD 群組或服務主體。
 
-您在動作群組中可以有有限數量的電子郵件動作。 請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+您在動作群組中可以有有限數量的電子郵件動作。 請參閱[速率限制資訊](./alerts-rate-limiting.md)一文。
 
 ### <a name="function"></a>函式
 在 [Azure Functions](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app) 中呼叫現有的 HTTP 觸發程序端點。
@@ -99,7 +99,7 @@ ms.locfileid: "86516170"
 您在動作群組中可以有有限數量的 Function 動作。
 
 ### <a name="itsm"></a>ITSM
-ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](../../azure-monitor/platform/itsmc-overview.md)。
+ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](./itsmc-overview.md)。
 
 您在動作群組中可以有有限數量的 ITSM 動作。 
 
@@ -109,8 +109,8 @@ ITSM 動作需要 ITSM 連線。 了解如何建立 [ITSM 連線](../../azure-mo
 ### <a name="secure-webhook"></a>安全 Webhook
 動作群組 Webhook 動作可讓您利用 Azure Active Directory 來保護您的動作群組與受保護 Web API (Webhook 端點) 之間的連線。 利用這項功能的整體工作流程說明如下。 如需 Azure AD 應用程式和服務主體的概觀，請參閱 [Microsoft 身分識別平台 (v2.0) 概觀](../../active-directory/develop/v2-overview.md)。
 
-1. 為受保護 Web API 建立 Azure AD 應用程式。 請參閱[受保護的 Web API：應用程式註冊](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration)。
-    - 將受保護的 API 設定為可[由背景程式應用程式呼叫](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)。
+1. 為受保護 Web API 建立 Azure AD 應用程式。 請參閱[受保護的 Web API：應用程式註冊](../../active-directory/develop/scenario-protected-web-api-app-registration.md)。
+    - 將受保護的 API 設定為可[由背景程式應用程式呼叫](../../active-directory/develop/scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)。
     
 2. 啟用 [動作群組] 以使用您的 Azure AD 應用程式。
 
@@ -196,7 +196,7 @@ Write-Host $myApp.AppRoles
 ```
 
 ### <a name="sms"></a>sms
-如需其他重要資訊，請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)和 [SMS 警示行為](../../azure-monitor/platform/alerts-sms-behavior.md)。 
+如需其他重要資訊，請參閱[速率限制資訊](./alerts-rate-limiting.md)和 [SMS 警示行為](./alerts-sms-behavior.md)。 
 
 您在動作群組中可以有有限數量的 SMS 動作。
 
@@ -207,7 +207,7 @@ Write-Host $myApp.AppRoles
   
 
 ### <a name="voice"></a>語音
-針對其他重要行為，請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+針對其他重要行為，請參閱[速率限制資訊](./alerts-rate-limiting.md)一文。
 
 您在動作群組中可以有有限數量的語音動作。
 
@@ -248,9 +248,10 @@ Webhook 會使用下列規則來處理
 
 
 ## <a name="next-steps"></a>後續步驟
-* 進一步了解 [SMS 警示行為](../../azure-monitor/platform/alerts-sms-behavior.md)。  
-* 了解[活動記錄警示 Webhook 結構描述](../../azure-monitor/platform/activity-log-alerts-webhook.md)。  
-* 深入瞭解[ITSM 連接器](../../azure-monitor/platform/itsmc-overview.md)。
-* 深入了解警示的[速率限制](../../azure-monitor/platform/alerts-rate-limiting.md)。
-* 取得[活動記錄警示的概觀](../../azure-monitor/platform/alerts-overview.md)，並了解如何收到警示。  
+* 進一步了解 [SMS 警示行為](./alerts-sms-behavior.md)。  
+* 了解[活動記錄警示 Webhook 結構描述](./activity-log-alerts-webhook.md)。  
+* 深入瞭解[ITSM 連接器](./itsmc-overview.md)。
+* 深入了解警示的[速率限制](./alerts-rate-limiting.md)。
+* 取得[活動記錄警示的概觀](./alerts-overview.md)，並了解如何收到警示。  
 * 了解如何[設定每當服務健康狀態通知公佈時的警示](../../service-health/alerts-activity-log-service-notifications-portal.md)。
+

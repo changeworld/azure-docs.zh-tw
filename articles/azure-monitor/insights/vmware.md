@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: bda1acde914aa068fe3a87d307a29583f87af34f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9d27e602062ff2638d8eea23fe64497fd66512d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091176"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322902"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure 監視器中的 VMware 監控（已淘汰）解決方案
 
@@ -27,7 +27,7 @@ Azure 監視器中的 VMware 監控解決方案是一種解決方案，可協助
 ## <a name="install-and-configure-the-solution"></a>安裝和設定解決方案
 請使用下列資訊來安裝和設定方案。
 
-* 使用[安裝監視解決方案](../insights/solutions.md#install-a-monitoring-solution)中所述的流程，將 VMware 監視解決方案新增至您的訂用帳戶。
+* 使用[安裝監視解決方案](./solutions.md#install-a-monitoring-solution)中所述的流程，將 VMware 監視解決方案新增至您的訂用帳戶。
 
 #### <a name="supported-vmware-esxi-hosts"></a>支援的 VMware ESXi 主機
 vSphere ESXi 主機 5.5、6.0 和 6.5
@@ -50,14 +50,14 @@ vSphere ESXi 主機 5.5、6.0 和 6.5
     ![vspherefwproperties](./media/vmware/vsphere3.png)  
 1. 檢查 vSphere 主控台，確認 syslog 設定正確。 確認 ESXI 主機上已設定連接埠 **1514**。
 1. 在 Linux 伺服器上下載並安裝 Log Analytics Linux 代理程式。 如需詳細資訊，請參閱 [Log Analytics Linux 代理程式的文件](https://github.com/Microsoft/OMS-Agent-for-Linux)。
-1. 安裝 Log Analytics Linux 代理程式後，移至 /etc/opt/microsoft/omsagent/sysconf/omsagent.d 目錄，將 vmware_esxi.conf 檔複製到 /etc/opt/microsoft/omsagent/conf/omsagent.d directory 目錄，並變更檔案的擁有者/群組和權限。 例如:
+1. 安裝 Log Analytics Linux 代理程式後，移至 /etc/opt/microsoft/omsagent/sysconf/omsagent.d 目錄，將 vmware_esxi.conf 檔複製到 /etc/opt/microsoft/omsagent/conf/omsagent.d directory 目錄，並變更檔案的擁有者/群組和權限。 例如：
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
 1. 執行 `sudo /opt/microsoft/omsagent/bin/service_control restart` 啟動 Log Analytics Linux 代理程式。
-1. 在 ESXi 主機上使用 `nc`命令測試 Linux 伺服器和 ESXi 主機之間的連線。 例如:
+1. 在 ESXi 主機上使用 `nc`命令測試 Linux 伺服器和 ESXi 主機之間的連線。 例如：
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
@@ -66,7 +66,7 @@ vSphere ESXi 主機 5.5、6.0 和 6.5
 
 1. 在 Azure 入口網站中，執行的記錄查詢 `VMware_CL` 。 當 Azure 監視器收集 syslog 資料時，它會保留 syslog 格式。 在入口網站中，會擷取某些特定欄位，例如 Hostname** 和 ProcessName**。  
 
-    ![類型](./media/vmware/type.png)  
+    ![type](./media/vmware/type.png)  
 
     如果您的檢視記錄搜尋結果類似上圖，表示您已設定為可使用 VMware 監控解決方案儀表板。  
 
@@ -200,3 +200,4 @@ syslog 時間戳記有一個 ESXi 主機錯誤。 如需詳細資訊，請參閱
 * 使用 Log Analytics 中的[記錄查詢](../log-query/log-query-overview.md)來檢視詳細的 VMware 主機資料。
 * [建立您自己的儀表板](../learn/tutorial-logs-dashboards.md)來顯示 VMware 主機的資料。
 * 在特定的 VMware 主機事件發生時[建立警示](../platform/alerts-overview.md)。
+

@@ -5,16 +5,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: 1808623821d71169ec35beab1d33d4eb2c32c189
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008399"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320624"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>使用 Azure Functions 建立及執行自訂可用性測試
 
-本文將說明如何使用 TrackAvailability （）建立 Azure 函式，該函數會根據 TimerTrigger 函式中提供的設定，以您自己的商務邏輯定期執行。 這項測試的結果將會傳送至您的 Application Insights 資源，您可以在其中查詢可用性結果資料併發出警示。 這可讓您建立自訂的測試，就像您可以透過入口網站中的[可用性監視](../../azure-monitor/app/monitor-web-app-availability.md)來執行此動作。 自訂測試可讓您撰寫更複雜的可用性測試，而不是使用入口網站 UI、監視 Azure VNET 內的應用程式、變更端點位址，或建立可用性測試，即使您的區域無法使用這項功能。
+本文將說明如何使用 TrackAvailability （）建立 Azure 函式，該函數會根據 TimerTrigger 函式中提供的設定，以您自己的商務邏輯定期執行。 這項測試的結果將會傳送至您的 Application Insights 資源，您可以在其中查詢可用性結果資料併發出警示。 這可讓您建立自訂的測試，就像您可以透過入口網站中的[可用性監視](./monitor-web-app-availability.md)來執行此動作。 自訂測試可讓您撰寫更複雜的可用性測試，而不是使用入口網站 UI、監視 Azure VNET 內的應用程式、變更端點位址，或建立可用性測試，即使您的區域無法使用這項功能。
 
 > [!NOTE]
 > 此範例是專為示範 TrackAvailability （） API 呼叫在 Azure 函式中的運作方式所設計。 不是如何撰寫基本的 HTTP 測試程式碼/商務邏輯，將它轉換成功能完整的可用性測試。 根據預設，如果您逐步執行此範例，將會建立一律會產生失敗的可用性測試。
@@ -177,7 +177,7 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ## <a name="query-in-logs-analytics"></a>記錄中的查詢（分析）
 
-您可以使用記錄（分析）來查看可用性結果、相依性等。 若要深入瞭解記錄，請造訪[記錄查詢總覽](../../azure-monitor/log-query/log-query-overview.md)。
+您可以使用記錄（分析）來查看可用性結果、相依性等。 若要深入瞭解記錄，請造訪[記錄查詢總覽](../log-query/log-query-overview.md)。
 
 >[!div class="mx-imgBorder"]
 >![可用性結果](media/availability-azure-functions/availabilityresults.png)
@@ -185,7 +185,8 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 >[!div class="mx-imgBorder"]
 >![Dependencies](media/availability-azure-functions/dependencies.png) (相依性)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- [應用程式對應](../../azure-monitor/app/app-map.md)
-- [交易診斷](../../azure-monitor/app/transaction-diagnostics.md)
+- [應用程式對應](./app-map.md)
+- [交易診斷](./transaction-diagnostics.md)
+
