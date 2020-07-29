@@ -3,15 +3,15 @@ title: 從 Azure 下載 Linux VHD
 description: 使用 Azure CLI 和 Azure 入口網站來下載 Linux VHD。
 author: cynthn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 14beeebe15193cbe2ef4684f97e4783810ad77a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6254be55ae2a1ba6d178d330a41903585da2e50a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510544"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289774"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>從 Azure 下載 Linux VHD
 

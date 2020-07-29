@@ -7,11 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77659657"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318380"
 ---
 # <a name="troubleshooting-metrics-charts"></a>對計量圖表進行疑難排解
 
@@ -67,7 +68,7 @@ ms.locfileid: "77659657"
 
 要收集**客體 OS** 計量，必須設定 Azure 診斷擴充功能，或使用資源的 [診斷設定]**** 面板加以啟用。
 
-**解決方案：** 如果已啟用 Azure 診斷延伸模組，但您仍然無法看到計量，請遵循[Azure 診斷延伸模組疑難排解指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)中所述的步驟。 另請參閱[無法挑選來賓 OS 命名空間和計量](metrics-troubleshoot.md#cannot-pick-guest-os-namespace-and-metrics)的疑難排解步驟
+**解決方案：** 如果已啟用 Azure 診斷延伸模組，但您仍然無法看到計量，請遵循[Azure 診斷延伸模組疑難排解指南](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)中所述的步驟。 另請參閱[無法挑選來賓 OS 命名空間和計量](#cannot-pick-guest-os-namespace-and-metrics)的疑難排解步驟
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>儀表板上的「抓取資料時發生錯誤」訊息
 
@@ -105,7 +106,7 @@ Azure 計量圖表使用虛線樣式，表示兩個已知時間細微性資料�
     > [!WARNING]
     > 您無法使用 [Log Analytics 代理程式](agents-overview.md#log-analytics-agent) (也稱為 Microsoft Monitoring Agent，或簡稱 "MMA") 將**客體 OS** 傳送至儲存體帳戶中。
 
-1. 請確定已為[您的訂](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)用帳戶註冊**Microsoft Insights**資源提供者。
+1. 請確定已為[您的訂](#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)用帳戶註冊**Microsoft Insights**資源提供者。
 
 1. 確認儲存體帳戶未受防火牆保護。 Azure 入口網站需要存取儲存體帳戶，才能取出計量資料並繪製圖表。
 
@@ -117,3 +118,4 @@ Azure 計量圖表使用虛線樣式，表示兩個已知時間細微性資料�
 * [深入瞭解計量瀏覽器的 advanced 功能](metrics-charts.md)
 * [查看 Azure 服務的可用計量清單](metrics-supported.md)
 * [查看已設定的圖表範例](metric-chart-samples.md)
+

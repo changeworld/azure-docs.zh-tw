@@ -5,18 +5,18 @@ description: 瞭解部署 Azure Machine Learning 模型的方式和位置，包�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2020
-ms.custom: seoapril2019, tracking-python
-ms.openlocfilehash: ee116d668b9c351ecf5b130a39e418a3da8fc053
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to, tracking-python
+ms.openlocfilehash: f592e265cafc3e56dc0616e6eeb748c851084c32
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536380"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317870"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,6 +31,11 @@ ms.locfileid: "86536380"
 1. 測試已部署的模型，也稱為 web 服務。
 
 如需部署工作流程中相關概念的詳細資訊，請參閱[使用 Azure Machine Learning 來管理、部署和監視模型](concept-model-management-and-deployment.md)。
+
+> [!IMPORTANT]
+> 強烈建議您在部署至 web 服務之前，先在本機進行偵錯工具。如需詳細資訊，請參閱在[本機進行調試](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+>
+> 您也可以參考 Azure Machine Learning-[部署至本機筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -560,7 +565,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 | 計算目標 | 部署設定範例 |
 | ----- | ----- |
 | 本機 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
-| Azure 容器執行個體 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+| Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 本機、Azure 容器實例和 AKS web 服務的類別可以從下列來源匯入 `azureml.core.webservice` ：
@@ -608,10 +613,10 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 下表描述不同的服務狀態：
 
-| Webservice 狀態 | 描述 | 最終狀態？
+| Webservice 狀態 | 說明 | 最終狀態？
 | ----- | ----- | ----- |
 | 正在 | 服務正在進行部署。 | 否 |
-| 狀況不良 | 服務已部署，但目前無法連線。  | 否 |
+| Unhealthy | 服務已部署，但目前無法連線。  | 否 |
 | 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | 否 |
 | 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
 | Healthy | 服務狀況良好，且端點可供使用。 | 是 |

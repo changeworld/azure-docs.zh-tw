@@ -5,16 +5,16 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: e254c0c87465b79a37d9a849cc966e34eed01474
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 989c67d0d1b1cd8257da089ec9c31f247228018e
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010558"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367940"
 ---
 # <a name="openshift-in-azure"></a>Azure 中的 OpenShift
 
@@ -42,7 +42,7 @@ Microsoft Azure Red Hat OpenShift 是在 Azure 中執行之 OpenShift 的完全�
 
 OKD 是由社群支援的 OpenShift [開放原始碼](https://www.okd.io/)上游專案。 OKD 可以安裝在 CentOS 或 Red Hat Enterprise Linux (RHEL) 上。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - [在 Azure 中設定 OpenShift 的一般必要條件](./openshift-container-platform-3x-prerequisites.md)
 - [在 Azure 中部署 OpenShift 容器平臺](./openshift-container-platform-3x.md)

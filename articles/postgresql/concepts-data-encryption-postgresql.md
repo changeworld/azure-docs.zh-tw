@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e8ab6e2e62bdcb08754d011a6b576cb615371a09
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 965118345a003aface0373bda7496243bcab8429
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076466"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290167"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器會使用客戶管理的金鑰進行資料加密
 
@@ -22,7 +22,7 @@ ms.locfileid: "87076466"
 Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為 RSA 密碼編譯金鑰提供可調整且安全的儲存體，並可選擇由 FIPS 140-2 層級 2 驗證的硬體安全性模組 (HSM) 加以支援。 它不允許直接存取儲存的金鑰，但會提供加密和解密服務給已授權的實體。 Key Vault 可以產生金鑰、將其匯入，或[從內部部署 HSM 裝置進行傳輸](../key-vault/key-Vault-hsm-protected-keys.md)。
 
 > [!NOTE]
-> 「適用於 PostgreSQL 單一伺服器的 Azure 資料庫」支援「一般用途」和「記憶體最佳化」定價層，其中所有 Azure 區域都可使用此功能。
+> 「適用於 PostgreSQL 單一伺服器的 Azure 資料庫」支援「一般用途」和「記憶體最佳化」定價層，其中所有 Azure 區域都可使用此功能。 如需其他限制，請參閱[限制](concepts-data-encryption-postgresql.md#limitations)一節。
 
 ## <a name="benefits"></a>優點
 

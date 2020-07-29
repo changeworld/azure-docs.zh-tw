@@ -3,12 +3,13 @@ title: 在 Linux 上建立 Azure Service Fabric 可靠的動作專案 JAVA 應�
 description: 了解如何在五分鐘內建立和部署 Java Service Fabric Reliable Actors 應用程式。
 ms.topic: conceptual
 ms.date: 06/18/2018
-ms.openlocfilehash: 4d09666bad7b4e03b8598191d99a9db717c277d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 28ddc4f0e47d853df6b026cf2495d710bebfa980
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82193559"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368926"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上建立第一個 Java Service Fabric Reliable Actors 應用程式
 > [!div class="op_single_selector"]
@@ -19,7 +20,7 @@ ms.locfileid: "82193559"
 
 本快速入門可協助您在短短幾分鐘內在 Linux 開發環境中建立第一個 Azure Service Fabric Java 應用程式。  當您完成時，您會有一個在本機開發叢集上執行的簡單 Java 單一服務應用程式。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 開始之前，請在 [Linux 開發環境](service-fabric-get-started-linux.md)中安裝 Service Fabric SDK、Service Fabric CLI、Yeoman，然後設定 Java 開發環境，並設定開發叢集。 如果您使用 Mac OS X，您可以[使用 Docker 在 Mac 上設定開發環境](service-fabric-get-started-mac.md)。
 
 另請安裝 [Service Fabric CLI](service-fabric-cli.md)。

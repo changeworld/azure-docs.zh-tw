@@ -5,14 +5,15 @@ services: virtual-machines
 ms.subservice: sizes
 author: ayshakeen
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678540"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292079"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
@@ -57,7 +58,7 @@ B16 特性：
 
 ![每小時流量資料的圖表](./media/b-series-burstable/office-workload.png)
 
-| 狀況 | 時間 | CPU 使用量（%） | 累積的信用額度<sup>1</sup> | 可用點數 |
+| 狀況 | Time | CPU 使用量（%） | 累積的信用額度<sup>1</sup> | 可用點數 |
 | --- | --- | --- | --- | --- |
 | B16ms 部署 | 部署 | 部署  | 480（初始信用額度） | 480 |
 | 沒有流量 | 0:00 | 0 | 162 | 642 |
@@ -134,7 +135,7 @@ B16 特性：
 
 **答**： B1ls 只支援 Linux 映射，如果您部署任何另一個作業系統映射，您可能無法取得最佳的客戶體驗。
 
-## <a name="other-sizes"></a>其他大小
+## <a name="other-sizes-and-information"></a>其他大小和資訊
 
 - [一般用途](sizes-general.md)
 - [計算最佳化](sizes-compute.md)
@@ -142,6 +143,10 @@ B16 特性：
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
+
+定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+
+磁片類型的詳細資訊：[磁片類型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -6,15 +6,15 @@ author: tanmaygore
 manager: vashan
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: dd32b2a59a05578c061c2e21704001558706aede
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79e560f73b69047419626086af9c975c90870edc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510526"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291122"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>規劃將 IaaS 資源從傳統遷移至 Linux 中的 Azure Resource Manager
 
@@ -153,7 +153,7 @@ ms.locfileid: "86510526"
 - 請勿採取捷徑而略過驗證/準備/中止試執行移轉。
 - 在驗證/準備/中止步驟期間，您可能發生的問題，幾乎全都會浮現。
 
-## <a name="migration"></a>移轉
+## <a name="migration"></a>遷移
 
 ### <a name="technical-considerations-and-tradeoffs"></a>技術考量和取捨
 

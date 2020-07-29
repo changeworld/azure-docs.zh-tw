@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 96df96fd6145d1c6e58eb5dfc672ec324da75202
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccdf5885dd1199ff8ed8000e5feaf80662aae42a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041603"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318057"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的 Azure 網路監視解決方案
 
@@ -79,7 +79,7 @@ Azure 應用程式閘道分析和網路安全性群組分析管理解決方案�
 ### <a name="install-and-configure-the-solution"></a>安裝和設定解決方案
 使用下列指示來安裝和設定 Azure 應用程式閘道分析解決方案：
 
-1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) 或使用[從方案庫新增 Azure 監視器解決方案](../../azure-monitor/insights/solutions.md)中所述的程序，以啟用 Azure 應用程式閘道分析解決方案。
+1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) 或使用[從方案庫新增 Azure 監視器解決方案](./solutions.md)中所述的程序，以啟用 Azure 應用程式閘道分析解決方案。
 2. 針對您想要監視的[應用程式閘道](../../application-gateway/application-gateway-diagnostics.md)啟用診斷記錄。
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>在入口網站中啟用 Azure 應用程式閘道診斷
@@ -150,7 +150,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 ### <a name="install-and-configure-the-solution"></a>安裝和設定解決方案
 使用下列指示來安裝和設定 Azure 網路分析解決方案︰
 
-1. 使用[從方案庫新增 Azure 監視器解決方案](../../azure-monitor/insights/solutions.md)中所述的程序，以啟用 Azure 網路安全性群組分析解決方案。
+1. 使用[從方案庫新增 Azure 監視器解決方案](./solutions.md)中所述的程序，以啟用 Azure 網路安全性群組分析解決方案。
 2. 針對您想要監視的[網路安全性群組](../../virtual-network/virtual-network-nsg-manage-log.md)資源啟用診斷記錄。
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>在入口網站中啟用 Azure 網路安全性群組診斷
@@ -230,3 +230,4 @@ Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -
 
 ## <a name="next-steps"></a>後續步驟
 * 使用 [Azure 監視器中的記錄查詢](../log-query/log-query-overview.md)來檢視詳細的 Azure 診斷資料。
+

@@ -4,16 +4,16 @@ description: 針對 Azure 虛擬機器中的 grub 使用序列主控台。
 services: virtual-machines-linux
 author: asinn826
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: d594f4d8019a7c23da79506cd702adbe9f25038d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da7e558464c82db9d71132c4b1f53f9892d2d653
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028935"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292243"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用序列主控台來存取 GRUB 與單一使用者模式
 GRUB 的全名是 GRand Unified Bootloader。 從 GRUB，您可以修改開機設定，以開機到單一使用者模式。
@@ -120,7 +120,7 @@ Ubuntu 映像不需要 root 密碼。 如果系統開機進入單一使用者模
 1. 將 `GRUB_TIMEOUT` 值變更為非零值
 1. 在您慣用的文字編輯器中開啟 `/etc/default/grub`
 1. 將 `GRUB_HIDDEN_TIMEOUT=1` 行變成註解
-1. 執行 `sudo update-grub`
+1. `sudo update-grub`執行
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu 中的單一使用者模式
 Ubuntu 會在無法正常開機時讓您進入單一使用者模式。 若要手動進入單一使用者模式，請依下列指示執行：
@@ -177,7 +177,7 @@ Oracle Linux 預設會啟用 GRUB。 若要進入 GRUB，請使用 `sudo reboot`
 ### <a name="single-user-mode-in-oracle-linux"></a>Oracle Linux 中的單一使用者模式
 依照上述適用於 RHEL 的指示來在 Oracle Linux 中啟用單一使用者模式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 * 主要序列主控台 Linux 檔頁面位於[這裡](../troubleshooting/serial-console-linux.md)。
 * 使用「序列主控台」來進行[NMI 和 SysRq 呼叫](serial-console-nmi-sysrq.md)
 * 「序列主控台」也適用於 [Windows](../troubleshooting/serial-console-windows.md) VM

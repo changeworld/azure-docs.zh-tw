@@ -3,12 +3,12 @@ title: Azure DevTest Labs 常見問題集 | Microsoft Docs
 description: 本文提供一些 Azure DevTest Labs 相關常見問題集 (FAQ) 的解答。
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 707b66fadab482a31ac02f10460d581997931a0b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537476"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289370"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs 常見問題集
 獲得一些關於 Azure DevTest Labs 最常見問題的解答。
@@ -36,7 +36,7 @@ ms.locfileid: "86537476"
 如果這裡未列出您的問題，請告訴我們，好讓我們能協助您找到答案。
 
 - 將問題張貼在此常見問題集尾端。
-- 若要觸及更多受眾，請在 [Azure DevTest Labs 的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-devtestlabs.html)上張貼問題。 與 Azure DevTest Labs 小組和社群的其他成員交流。
+- 若要觸及更多受眾，請在 [Azure DevTest Labs 的 Microsoft 問與答頁面](/answers/topics/azure-devtestlabs.html)上張貼問題。 與 Azure DevTest Labs 小組和社群的其他成員交流。
 - 若要提出功能要求，請將您的要求和想法提交到 [Azure DevTest Labs 使用者心聲](https://feedback.azure.com/forums/320373-azure-devtest-labs)。
 
 ### <a name="what-is-a-microsoft-account"></a>什麼是 Microsoft 帳戶？

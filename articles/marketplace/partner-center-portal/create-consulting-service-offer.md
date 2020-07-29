@@ -1,18 +1,18 @@
 ---
 title: 建立諮詢服務供應項目 - Microsoft 商業市集
 description: 了解如何使用合作夥伴中心將諮詢服務供應項目發佈至 Microsoft AppSource 或 Azure Marketplace。
-author: anbene
-ms.author: mingshen
+author: Microsoft-BradleyWright
+ms.author: brwrigh
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a06f0838f25e771a90fb6dc6f4fcd3bd9bdeda87
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203814"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317768"
 ---
 # <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應項目
 
@@ -77,8 +77,8 @@ ms.locfileid: "86203814"
 以下是一些額外的潛在客戶管理資源：
 
 - [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
-- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
-- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
+- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
+- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
 - [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)
 
 選取 [儲存草稿] 後再繼續。
@@ -129,7 +129,7 @@ ms.locfileid: "86203814"
 > [!NOTE]
 > 如果供應項目描述開頭為以下詞句：&quot;此應用程式僅適用於 [非英文語言]。&quot;，則供應項目詳細資料不需要為英文。也可利用不同於供應項目清單詳細資料中所使用的語言，來提供供應項目內容的有用連結。
 
-以下範例說明如何在 Azure Marketplace 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
+以下範例說明如何在 Azure Marketplace 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
 
 :::image type="content" source="media/example-consulting-service-offer.png" alt-text="說明此供應專案在 Azure Marketplace 中的顯示方式。":::
 
@@ -141,10 +141,10 @@ ms.locfileid: "86203814"
 4. 產業
 5. 供應項目名稱
 6. 總結
-7. 描述
+7. 說明
 8. 螢幕擷取畫面/影片
 
-<br>以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
+<br>以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
 
 :::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="說明此供應專案在 Microsoft AppSource 中的顯示方式。":::
 
@@ -152,11 +152,11 @@ ms.locfileid: "86203814"
 
 1. 標誌
 2. 價格
-3. Products
+3. 產品
 4. 產業
 5. 供應項目名稱
 6. 總結
-7. 描述
+7. 說明
 8. 螢幕擷取畫面/影片
 9. 文件
 

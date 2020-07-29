@@ -4,12 +4,12 @@ description: 自動調整規模設定及其運作方式的詳細解說。 適用
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 03019b35a85d8d511e3ada131eff890a60fd57f6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539375"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317462"
 ---
 # <a name="understand-autoscale-settings"></a>了解自動調整設定
 自動調整設定可協助您確保執行中的資源數量正確，能夠處理變動的應用程式負載。 您可以設定根據指出負載或效能的計量，或是在排定的日期和時間，觸發自動調整設定。 本文將詳細探討自動調整設定的剖析。 本文開頭是設定的結構描述和屬性，然後逐步說明可以設定的各種設定檔類型。 最後，本文會討論 Azure 中的自動調整功能如何評估在任何指定的時間要執行哪個設定檔。
@@ -87,7 +87,7 @@ ms.locfileid: "86539375"
 
 | 區段 | 元素名稱 | 描述 |
 | --- | --- | --- |
-| 設定 | ID | 自動調整規模設定的資源識別碼。 自動調整規模設定是 Azure Resource Manager 資源。 |
+| 設定 | 識別碼 | 自動調整規模設定的資源識別碼。 自動調整規模設定是 Azure Resource Manager 資源。 |
 | 設定 | NAME | 自動調整規模設定名稱。 |
 | 設定 | location | 自動調整規模設定的位置。 此位置可以與要調整規模的資源位置不同。 |
 | properties | targetResourceUri | 要調整規模之資源的資源識別碼。 每個資源都只能有一個自動調整規模設定。 |
@@ -301,8 +301,9 @@ ms.locfileid: "86539375"
 ## <a name="next-steps"></a>後續步驟
 請參考下列各項，以深入了解自動調整︰
 
-* [自動調整的概觀](../../azure-monitor/platform/autoscale-overview.md)
-* [Azure 監視器自動調整的常用度量](../../azure-monitor/platform/autoscale-common-metrics.md)
-* [Azure 監視器自動調整的最佳作法](../../azure-monitor/platform/autoscale-best-practices.md)
-* [使用自動調整動作傳送電子郵件和 Webhook 警示通知](../../azure-monitor/platform/autoscale-webhook-email.md)
+* [自動調整的概觀](./autoscale-overview.md)
+* [Azure 監視器自動調整的常用度量](./autoscale-common-metrics.md)
+* [Azure 監視器自動調整的最佳作法](./autoscale-best-practices.md)
+* [使用自動調整動作傳送電子郵件和 Webhook 警示通知](./autoscale-webhook-email.md)
 * [自動調整 REST API](/rest/api/monitor/autoscalesettings)
+

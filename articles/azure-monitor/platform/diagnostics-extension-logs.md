@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a367e819ab9f12d9adcb448848c80eaeea73d113
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 095fd0b534c0dffaf80d2464fb9734f295335b84
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008025"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317173"
 ---
 # <a name="collect-data-from-azure-diagnostics-extension-to-azure-monitor-logs"></a>將資料從 Azure 診斷延伸模組收集到 Azure 監視器記錄
 Azure 診斷擴充功能是[Azure 監視器中的代理程式](agents-overview.md)，可從 Azure 計算資源（包括虛擬機器）的客體作業系統收集監視資料。 本文說明如何將診斷擴充功能所收集的資料從 Azure 儲存體收集到 Azure 監視器記錄。
@@ -22,7 +22,7 @@ Azure 診斷擴充功能是[Azure 監視器中的代理程式](agents-overview.m
 ## <a name="supported-data-types"></a>支援的資料類型
 Azure 診斷擴充功能會將資料儲存在 Azure 儲存體帳戶中。 若要 Azure 監視器記錄檔來收集此資料，它必須位於下列位置：
 
-| 記錄類型 | 資源類型 | Location |
+| 記錄類型 | 資源類型 | 位置 |
 | --- | --- | --- |
 | IIS 記錄 |虛擬機器 <br> Web 角色 <br> 背景工作角色 |wad-iis-logfiles (Blob 儲存體) |
 | syslog |虛擬機器 |LinuxsyslogVer2v0 (表格儲存體) |
@@ -61,8 +61,9 @@ Azure 診斷擴充功能會將資料儲存在 Azure 儲存體帳戶中。 若要
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 針對支援的 Azure 服務[收集 Azure 服務的記錄與計量](./resource-logs.md#send-to-log-analytics-workspace)。
-* [啟用解決方案](../../azure-monitor/insights/solutions.md) 以提供資料的深入見解。
-* [使用搜尋查詢](../../azure-monitor/log-query/log-query-overview.md) 以分析資料。
+* [啟用解決方案](../insights/solutions.md) 以提供資料的深入見解。
+* [使用搜尋查詢](../log-query/log-query-overview.md) 以分析資料。
+

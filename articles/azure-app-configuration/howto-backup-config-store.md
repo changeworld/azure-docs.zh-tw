@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 6dd485adb71bf05be6499f2fc18572e8a28357d7
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0b057172c822f893e602d60f77a285f0867cf368
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209400"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367753"
 ---
 # <a name="backup-app-configuration-stores-automatically"></a>備份應用程式組態自動儲存
 
@@ -32,12 +32,12 @@ ms.locfileid: "86209400"
 
 在本教學課程中，您將會在區域 `centralus` 和區域中的所有其他資源中建立次要存放區 `westus` 。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
-- Azure 訂用帳戶-[免費建立一個](https://azure.microsoft.com/free/)。 您可以選擇性地使用 Azure Cloud Shell。
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。 您可以選擇性地使用 Azure Cloud Shell。
 - 使用 Azure 開發工作負載[Visual Studio 2019](https://visualstudio.microsoft.com/vs) 。
 - 下載並安裝 [.NET Core SDK](https://dotnet.microsoft.com/download)。
-- 最新版的 Azure CLI (2.3.1 或更新版本) 。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您使用 Azure CLI，則必須先使用登入 `az login` 。 您可以選擇性地使用 Azure Cloud Shell。
+- 最新版的 Azure CLI （2.3.1 或更新版本）。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您使用 Azure CLI，則必須先使用登入 `az login` 。 您可以選擇性地使用 Azure Cloud Shell。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -169,7 +169,7 @@ az functionapp identity assign --name $functionAppName --resource-group $resourc
 ```
 
 > [!NOTE]
-> 若要執行必要的資源建立和角色管理，您的帳戶需要有 `'Owner'` 適當範圍的許可權， (您的訂用帳戶或資源群組) 。 如果您需要角色指派的協助，請瞭解[如何使用 Azure 入口網站新增或移除 Azure 角色指派](/azure/role-based-access-control/role-assignments-portal)。
+> 若要執行必要的資源建立和角色管理，您的帳戶需要 `'Owner'` 適當範圍（您的訂用帳戶或資源群組）的許可權。 如果您需要角色指派的協助，請瞭解[如何使用 Azure 入口網站新增或移除 Azure 角色指派](/azure/role-based-access-control/role-assignments-portal)。
 
 使用下列命令或[Azure 入口網站](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration)，將您 Azure 函數應用程式存取權的受控識別授與您的應用程式組態存放區。
 - 指派 `App Configuration Data Reader` 主要應用程式組態存放區中的角色。

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: aahi
-ms.openlocfilehash: 4cdf58974cd8fa9d7813df7e970caea260409225
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79bbdd109d005b7c6de293aebf50433fb7ea1d91
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251314"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291639"
 ---
 # <a name="external--community-content-for-the-text-analytics-cognitive-service"></a>文字分析認知服務的外部和社群內容
 
@@ -23,7 +23,7 @@ ms.locfileid: "78251314"
 
 ## <a name="blogs"></a>部落格
 
-+ [Text Analytics API original announcement (Azure blog)](https://blogs.technet.microsoft.com/machinelearning/2015/04/08/introducing-text-analytics-in-the-azure-ml-marketplace/) (文字分析 API 原始宣告 (Azure 部落格))
++ [Text Analytics API original announcement (Azure blog)](https://azure.microsoft.com/blog/using-text-analytics-in-call-centers/) (文字分析 API 原始宣告 (Azure 部落格))
 
 + [使用 PowerShell 的文字分析關鍵片語認知服務 API (AutomationNext 部落格)](https://automationnext.wordpress.com/tag/text-analytics/)
 
@@ -51,7 +51,7 @@ ms.locfileid: "78251314"
 
 您正在尋找未涵蓋功能或使用案例的相關資訊嗎？ 請考慮在 [UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics) 上要求或對它投票。 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
  [StackOverflow： Azure 文字分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Azure Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive) (StackOverflow：Azure 認知服務)

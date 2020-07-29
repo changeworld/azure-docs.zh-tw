@@ -10,20 +10,20 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c7c74bc8bd92e2d210c8fe5deaff30d55a36bb5e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: afa48c07e628eaeb013c24fa38fcda1adea2555a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127208"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368962"
 ---
 # <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 來指派用於存取 blob 和佇列資料的 RBAC 角色
 
-Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../role-based-access-control/overview.md)，來授與存取受保護資源的權限。 Azure 儲存體會定義一組內建的 RBAC 角色，其中包含用來存取 blob 或佇列資料的常用許可權集。
+Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../role-based-access-control/overview.md)，來授與存取受保護資源的權限。 Azure 儲存體定義一組 Azure 內建角色，其中包含用來存取 blob 或佇列資料的常用許可權集。
 
 當 RBAC 角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以包括訂用帳戶、資源群組、儲存體帳戶或個別的容器或佇列層級。 Azure AD 的安全性主體可以是使用者、群組、應用程式服務主體，或[適用于 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
 
-本文說明如何使用 Azure CLI 來列出內建的 RBAC 角色，並將其指派給使用者。 如需使用 Azure CLI 的詳細資訊，請參閱[Azure 命令列介面（CLI）](/cli/azure)。
+本文說明如何使用 Azure CLI 來列出 Azure 內建角色，並將其指派給使用者。 如需使用 Azure CLI 的詳細資訊，請參閱[Azure 命令列介面（CLI）](/cli/azure)。
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>適用於 Blob 和佇列的 RBAC 角色
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../
 
 ## <a name="list-available-rbac-roles"></a>列出可用的 RBAC 角色
 
-若要列出具有 Azure CLI 的可用內建 RBAC 角色，請使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)命令：
+若要列出具有 Azure CLI 的可用 Azure 內建角色，請使用[az role definition list](/cli/azure/role/definition#az-role-definition-list)命令：
 
 ```azurecli-interactive
 az role definition list --out table

@@ -5,16 +5,16 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: bc30275b2ee24af7bb526b3b43618c706bc027ca
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502090"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87368144"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺3.11
 
@@ -243,7 +243,7 @@ ms.locfileid: "86502090"
 
 ### <a name="azuredeployparametersjson-file-explained"></a>檔案上的 azuredeploy.Parameters.js說明
 
-| 屬性 | 描述 | 有效選項 | 預設值 |
+| 屬性 | 說明 | 有效選項 | 預設值 |
 |----------|-------------|---------------|---------------|
 | `_artifactsLocation`  | 成品的 URL （json、腳本等） |  |  HTTPs： \/ /raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | 要部署資源的 Azure 區域 |  |  |
@@ -295,9 +295,9 @@ ms.locfileid: "86502090"
 | `existingInfraSubnetReference` | 基礎節點之現有子網的完整參考。 建立新的 vNet/子網時不需要 |  |  |
 | `existingCnsSubnetReference` | 對 CN 節點的現有子網的完整參考。 建立新的 vNet/子網時不需要 |  |  |
 | `existingNodeSubnetReference` | 計算節點之現有子網的完整參考。 建立新的 vNet/子網時不需要 |  |  |
-| `masterClusterType` | 指定叢集是否使用私用或公用主要節點。 如果選擇 [私人]，主要節點將不會透過公用 IP 向網際網路公開。 相反地，它會使用在中指定的私人 IP`masterPrivateClusterIp` | public <br> private | public |
+| `masterClusterType` | 指定叢集是否使用私用或公用主要節點。 如果選擇 [私人]，主要節點將不會透過公用 IP 向網際網路公開。 相反地，它會使用在中指定的私人 IP`masterPrivateClusterIp` | 公開 <br> private | 公開 |
 | `masterPrivateClusterIp` | 如果選取私人主要節點，則必須指定私人 IP 位址，以供主要節點的內部負載平衡器使用。 此靜態 IP 必須位於主要子網的 CIDR 區塊內，而且尚未使用。 如果選取了 [公用主要節點]，則不會使用此值，但仍然必須指定 |  | 10.1.0.200 |
-| `routerClusterType` | 指定叢集是使用私用或公用基礎節點。 如果選擇 [私人]，則基礎節點將不會透過公用 IP 向網際網路公開。 相反地，它會使用在中指定的私人 IP`routerPrivateClusterIp` | public <br> private | public |
+| `routerClusterType` | 指定叢集是使用私用或公用基礎節點。 如果選擇 [私人]，則基礎節點將不會透過公用 IP 向網際網路公開。 相反地，它會使用在中指定的私人 IP`routerPrivateClusterIp` | 公開 <br> private | 公開 |
 | `routerPrivateClusterIp` | 如果選取私人基礎節點，則必須指定私人 IP 位址，以供基礎節點的內部負載平衡器使用。 此靜態 IP 必須位於基礎網的 CIDR 區塊內，而且尚未使用。 如果選取公用基礎節點，則不會使用此值，但仍然必須指定 |  | 10.2.0.200 |
 | `routingCertType` | 將自訂憑證用於路由網域或預設的自我簽署憑證-遵循**自訂憑證**一節中的指示 | lnk-selfsigned 之類 <br> 自訂 | lnk-selfsigned 之類 |
 | `masterCertType` | 將自訂憑證用於主要網域或預設的自我簽署憑證-遵循**自訂憑證**一節中的指示 | lnk-selfsigned 之類 <br> 自訂 | lnk-selfsigned 之類 |

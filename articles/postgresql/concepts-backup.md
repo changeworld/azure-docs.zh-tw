@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 92f35968156e787b844d28f866a832940cc8ef64
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: d3630b631944befaf8a8c3d32e90e775dd6d63fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171605"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292863"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的備份與還原-單一伺服器
 
@@ -32,19 +32,15 @@ ms.locfileid: "87171605"
 
 #### <a name="servers-with-up-to-16-tb-storage"></a>最多 16 TB 儲存空間的伺服器
 
-在[Azure 區域](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器最多可支援 16 TB 的儲存體。 這些大型存放伺服器上的備份是以快照集為基礎。 在建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基底備份。 後續的快照集備份只是差異備份。 
-
-差異快照集備份一天至少會執行一次。 差異快照集備份不會依固定排程進行。 差異快照集備份會每隔24小時執行一次，除非交易記錄（MySQL 中的 binlog）在上次差異備份之後超過 50-GB。 一天內，最多允許六個差異快照集。 
-
-交易記錄備份每五分鐘發生一次。 
+在[Azure 區域](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage)的子集中，所有新布建的伺服器最多可支援 16 TB 的儲存體。 這些大型存放伺服器上的備份是以快照集為基礎。 在建立伺服器之後，會立即排程第一次完整快照集備份。 第一次完整快照集備份會保留為伺服器的基底備份。 後續的快照集備份只是差異備份。 差異快照集備份不會依固定排程進行。 在一天內，會執行三個差異快照集備份。 交易記錄備份每五分鐘發生一次。 
 
 ### <a name="backup-retention"></a>備份保留期
 
 備份會根據伺服器上的備份保留期限設定而保留。 您可以選取7到35天的保留期間。 預設的保留期限為7天。 您可以使用[Azure 入口網站](https://docs.microsoft.com/azure/postgresql/howto-restore-server-portal#set-backup-configuration)或[Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-restore-server-cli#set-backup-configuration)更新備份設定，以在伺服器建立期間或更新版本中設定保留期間。 
 
 備份保留期限會控制可往回多少時間來擷取時間點還原，因為這會以可用的備份為基礎。 您也可以從還原的角度，將備份保留期限視為復原視窗。 在備份保留期限內執行時間點還原所需的所有備份都會保留在備份儲存體中。 例如，如果備份保留期限設定為7天，則會將修復視窗視為過去7天。 在此案例中，會保留在過去7天還原伺服器所需的所有備份。 備份保留時間範圍為7天：
-- 具有 4 TB 儲存空間的舊版伺服器將會保留最多2個完整資料庫備份、所有差異備份，以及自最早的完整資料庫備份之後執行的交易記錄備份。
--   具有大型儲存體（16 TB）的伺服器將會保留完整的資料庫快照集、所有差異快照集，以及過去8天內的交易記錄備份。
+- 最多 4 TB 儲存空間的伺服器會保留最多2個完整資料庫備份、所有差異備份，以及自最早完整資料庫備份之後執行的交易記錄備份。
+-   具有最多 16 TB 儲存空間的伺服器將會保留完整的資料庫快照集、所有差異快照集，以及過去8天的交易記錄備份。
 
 ### <a name="backup-redundancy-options"></a>備份備援選項
 

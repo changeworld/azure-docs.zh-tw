@@ -3,12 +3,12 @@ title: 關於 Azure 檔案共用備份
 description: 瞭解如何在復原服務保存庫中備份 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 40cb9ca0bd34fd65ab1983af6384d617db26e996
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7441157d6346eefc256e9e7c29f9bb1fa5c13b79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539086"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289526"
 ---
 # <a name="about-azure-file-share-backup"></a>關於 Azure 檔案共用備份
 
@@ -42,9 +42,11 @@ Azure 檔案共用備份是以雲端為基礎的原生備份解決方案，可�
     >[!NOTE]
     >檔案共用資料不會傳輸到備份服務，因為備份服務會建立並管理屬於您儲存體帳戶的快照集，而且備份不會傳輸至保存庫。
 
-6. 您可以從來源檔案共用上可用的快照集還原 Azure 檔案共用內容（個別檔案或完整共用）。 觸發作業之後，就會從中繼資料存放區抓取快照集 URL，並列出資料，並從來源快照集傳送到您選擇的目標檔案共用。
+6. 您可以從來源檔案共用上可用的快照集還原 Azure 檔案共用內容（個別檔案或完整共用）。 觸發作業之後，就會從中繼資料存放區抓取快照集 URL，並列出資料，並從來源快照集傳送到您選擇的目標檔案共用。 
 
-7. 備份和還原作業監視資料會推送至 Azure 備份監視服務。 這可讓您在單一儀表板中監視檔案共用的雲端備份。 此外，您也可以在備份健全狀況受到影響時，設定警示或電子郵件通知。 電子郵件是透過 Azure 電子郵件服務傳送。
+7. 如果您使用 Azure 檔案同步，備份服務會向 Azure 檔案同步服務指示要還原之檔案的路徑，然後觸發這些檔案的背景變更偵測程式。 任何已變更的檔案都會同步處理到伺服器端點。 此程式會與原始還原平行處理至 Azure 檔案共用。 
+
+8. 備份和還原作業監視資料會推送至 Azure 備份監視服務。 這可讓您在單一儀表板中監視檔案共用的雲端備份。 此外，您也可以在備份健全狀況受到影響時，設定警示或電子郵件通知。 電子郵件是透過 Azure 電子郵件服務傳送。
 
 ## <a name="backup-costs"></a>備份成本
 

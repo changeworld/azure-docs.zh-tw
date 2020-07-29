@@ -3,12 +3,12 @@ title: 使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift
 description: 本文說明如何使用裝載于 Azure Red Hat OpenShift 第3版和更高版本上的 Azure 監視器來設定監視 Kubernetes 叢集。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 438a0513b6aceb876df4f9e3d0f4510c7cf8235e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac70ccc40da15318dd2dece17e429bb091e1860
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092893"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317972"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift v3
 
@@ -173,7 +173,7 @@ ms.locfileid: "87092893"
     ![啟用非受監視叢集的監視](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >如果您想要建立新的 Log Analytics 工作區以儲存來自叢集的監視資料，請遵循[建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)中的指示。 請務必在部署 RedHat OpenShift 叢集所在的相同訂用帳戶中建立工作區。
+    >如果您想要建立新的 Log Analytics 工作區以儲存來自叢集的監視資料，請遵循[建立 Log Analytics 工作區](../learn/quick-create-workspace.md)中的指示。 請務必在部署 RedHat OpenShift 叢集所在的相同訂用帳戶中建立工作區。
 
 啟用監視之後，可能需要約 15 分鐘的時間才能檢視叢集的健康情況計量。
 
@@ -244,3 +244,4 @@ ms.locfileid: "87092893"
 - 若要從您的叢集中抓取和分析 Prometheus 計量，請參閱[設定 Prometheus 計量抓取](container-insights-prometheus-integration.md)
 
 - 若要瞭解如何使用容器的 Azure 監視器來停止監視您的叢集，請參閱[如何停止監視您的 Azure Red Hat OpenShift](./container-insights-optout-openshift-v3.md)叢集。
+

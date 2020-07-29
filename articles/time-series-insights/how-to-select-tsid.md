@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: 026b7dd0da393faef6bdce0e37a17ac54a382aaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 94abdf8735fa487f46d423f17f7e1ff7bc853eb7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096262"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289881"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>選擇時間序列識別碼的最佳做法
 
@@ -75,8 +75,12 @@ ms.locfileid: "87096262"
 ```
 
 在 Azure 入口網站中，您可以接著輸入複合索引鍵，如下所示：
-
+ 
 [![設定環境的時間序列識別碼。](media/v2-how-to-tsid/configure-environment-key.png)](media/v2-how-to-tsid/configure-environment-key.png#lightbox)
+
+  > [!NOTE]
+  > 在 Azure 入口網站中，請勿在一個文字方塊中輸入以逗號分隔的屬性名稱，否則會被視為包含逗號的單一屬性名稱。
+  > 在自己的文字方塊中輸入每個屬性名稱。
 
 ## <a name="next-steps"></a>後續步驟
 

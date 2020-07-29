@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 939a2e67d6d2c215f7a575b6b9bd08660fc03b27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a6afd42c12a523523b45861b38b323fa680ecab
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008194"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317279"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>設計 Azure 監視器記錄部署
 
@@ -47,12 +47,12 @@ Log Analytics 工作區提供：
 
 使用 Log Analytics 代理程式來收集資料時，您必須了解下列事項才能規劃代理程式的部署：
 
-* 若要從 Windows 代理程式收集資料，您可以[將每個代理程式設定為向一或多個工作區報告](../../azure-monitor/platform/agent-windows.md)，即使其同時會向 System Center Operations Manager 管理群組報告也沒關係。 Windows 代理程式最多可以向四個工作區報告。
+* 若要從 Windows 代理程式收集資料，您可以[將每個代理程式設定為向一或多個工作區報告](./agent-windows.md)，即使其同時會向 System Center Operations Manager 管理群組報告也沒關係。 Windows 代理程式最多可以向四個工作區報告。
 * Linux 代理程式不支援多重主目錄，只能向單一工作區報告。
 
 如果您使用 System Center Operations Manager 2012 R2 或更新版本：
 
-* 每個 Operations Manager 管理群組[只能連線到一個工作區](../platform/om-agents.md)。 
+* 每個 Operations Manager 管理群組[只能連線到一個工作區](./om-agents.md)。 
 * 向管理群組報告的 Linux 電腦必須設定為直接向 Log Analytics 工作區報告。 如果您的 Linux 電腦已直接向工作區報告，而您想要使用 Operations Manager 來監視這些電腦，請遵循這些步驟來[向 Operations Manager 管理群組報告](agent-manage.md#configure-agent-to-report-to-an-operations-manager-management-group)。 
 * 您可以在 Windows 電腦上安裝 Log Analytics Windows 代理程式，並讓其同時向已與工作區整合的 Operations Manager 以及不同工作區報告。
 
@@ -62,7 +62,7 @@ Log Analytics 工作區提供：
 
 使用者可以存取的資料是由下表所列的因素組合所決定。 以下各節將說明每個步驟。
 
-| 因數 | 描述 |
+| 因數 | 說明 |
 |:---|:---|
 | [存取模式](#access-mode) | 使用者用來存取工作區的方法。  定義可用資料的範圍，以及套用的存取控制模式。 |
 | [存取控制模式](#access-control-mode) | 在工作區上設定，以定義是否要在工作區或資源層級套用許可權。 |
@@ -163,6 +163,7 @@ Operation
 * 移除應用程式小組讀取和查詢工作區的許可權。
 * 啟用和設定任何監視解決方案，例如容器和/或適用於 VM 的 Azure 監視器的 Azure 監視器、您的自動化帳戶，以及部署在原始工作區中的管理解決方案（例如更新管理、啟動/停止 Vm 等）。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要執行本指南中建議的安全性許可權和控制項，請參閱[管理對記錄的存取權](manage-access.md)。
+
