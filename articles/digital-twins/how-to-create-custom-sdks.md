@@ -7,23 +7,26 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2e2a7f09ac6ff3be119a07ed0a2162525801ceef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e7533b87e28fa2bb95aaaddd31f7871e8ccdb600
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061854"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285606"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>使用 AutoRest 建立適用于 Azure 數位 Twins 的自訂 Sdk
 
-目前，用來與 Azure 數位 Twins Api 互動的唯一已發佈資料平面 SDK 適用于 .NET （c #）。 如需瞭解 .NET SDK 和 Api 的一般資訊，請參閱[*如何：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)。 如果您使用另一種語言，本文將說明如何使用 AutoRest，以您選擇的語言產生您自己的 SDK。
+目前，用來與 Azure 數位 Twins Api 互動的唯一已發佈資料平面 SDK 適用于 .NET （c #）。 如需瞭解 .NET SDK 和 Api 的一般資訊，請參閱[*如何：使用 Azure 數位 Twins api 和 sdk*](how-to-use-apis-sdks.md)。 如果您使用另一種語言，本文將說明如何使用 AutoRest，以您選擇的語言產生您自己的資料平面 SDK。
+
+>[!NOTE]
+> 如果您想要的話，也可以使用 AutoRest 來產生控制平面 SDK。 若要這麼做，請使用[控制平面 Swagger （OpenAPI）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview)檔案，而不是資料平面一來完成本文中的步驟。
 
 ## <a name="set-up-your-machine"></a>設定您的電腦
 
 若要產生 SDK，您將需要：
 * [AutoRest](https://github.com/Azure/autorest)，版本2.0.4413 （目前不支援版本3）
 * [Node.js](https://nodejs.org)為 AutoRest 的必要條件
-* *digitaltwins.js*的[Azure 數位 Twins Swagger （OpenAPI）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview)檔案和其隨附的範例資料夾。 將 Swagger 檔案及其範例的資料夾下載到您的本機電腦。
+* *digitaltwins.js*的 Azure 數位 Twins[資料平面 Swagger （OpenAPI）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview)檔案和其隨附的範例資料夾。 將 Swagger 檔案及其範例的資料夾下載到您的本機電腦。
 
 當您的機器配備上述清單中的所有專案之後，您就可以開始使用 AutoRest 來建立 SDK。
 
@@ -53,7 +56,7 @@ AutoRest 支援各種語言的程式碼產生器。
 
 本節提供如何建立 SDK 做為類別庫的指示，這是它自己的專案，而且可以包含在其他專案中。 這些步驟依賴**Visual Studio** （您可以從[這裡](https://visualstudio.microsoft.com/downloads/)安裝最新版本）。
 
-步驟如下：
+以下是步驟：
 
 1. 為類別庫建立新的 Visual Studio 解決方案
 2. 使用*ADTApi*做為專案名稱

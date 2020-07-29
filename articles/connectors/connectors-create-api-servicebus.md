@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 50f43283d1113a5beb05b5898514623be37e5de9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84141988"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283991"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息
 
@@ -28,7 +29,7 @@ ms.locfileid: "84141988"
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -149,13 +150,13 @@ ms.locfileid: "84141988"
 
    例如，您可以新增一個動作來傳送電子郵件，以確認您的郵件已送出。
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]****。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 <a name="sequential-convoy"></a>
 
 ## <a name="send-correlated-messages-in-order"></a>依序傳送相互關聯的訊息
 
-當您需要以特定順序傳送相關訊息時，您可以使用[Azure 服務匯流排連接器](../connectors/connectors-create-api-servicebus.md)來使用[*順序*群組模式](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)。 相互關聯的訊息具有屬性，可定義這些訊息之間的關聯性，例如服務匯流排中的[會話](../service-bus-messaging/message-sessions.md)識別碼。
+當您需要以特定順序傳送相關訊息時，您可以使用[Azure 服務匯流排連接器](../connectors/connectors-create-api-servicebus.md)來使用[*順序*群組模式](/azure/architecture/patterns/sequential-convoy)。 相互關聯的訊息具有屬性，可定義這些訊息之間的關聯性，例如服務匯流排中的[會話](../service-bus-messaging/message-sessions.md)識別碼。
 
 當您建立邏輯應用程式時，您可以**使用服務匯流排會話**範本來選取相互關聯的依序傳遞，以執行連續的群組模式。 如需詳細資訊，請參閱依[序傳送相關訊息](../logic-apps/send-related-messages-sequential-convoy.md)。
 
@@ -170,3 +171,4 @@ ms.locfileid: "84141988"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+

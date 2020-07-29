@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: b490b4304dd74d8266b24d0ea5af58726b14d747
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 57be62d0f74f19e35eedf8720e2a6f5cbd3b45d4
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125767"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87335747"
 ---
 您的組織可能需要有來自訂用帳戶擁有者的其他動作，才能成功設定應用程式註冊（因此，因此會完成設定可用的 Azure 數位 Twins 實例）。 所需的步驟可能會根據您組織的特定設定而有所不同。
 
@@ -21,7 +21,6 @@ ms.locfileid: "87125767"
   - 如果已成功授與同意，則 Azure 數位 Twins 的專案應該會顯示 [已授與] 的*狀態值* _ **（您的公司）** _
    
     :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/granted-admin-consent.png" alt-text="以 API 許可權授與公司系統管理員同意的入口網站視圖":::
-  - 擁有者可能會想要針對每個建立的應用程式註冊重複此流程，或執行一次，並針對訂用帳戶中的所有 Azure 數位 Twins 實例建立單一的共用應用程式註冊。 在第二個案例中，擁有者應該將應用程式註冊的*用戶端識別碼*和*租使用者識別碼*，與需要使用應用程式註冊的開發人員共用。 （這就是在 Microsoft 自己的租使用者中完成此作業的方式）。
 * 啟動公用用戶端存取
 * 為 web 和桌上型電腦存取設定特定的回復 Url
 * 允許隱含 OAuth2 驗證流程

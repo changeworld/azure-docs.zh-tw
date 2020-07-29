@@ -2,15 +2,15 @@
 title: Azure Linux Vm 的計算基準測試分數
 description: 在執行 Linux 的 Azure VM 之間比較 CoreMark 計算基準測試分數。
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: afe1bddd5822b506dcf2c177fc308b717ddc2129
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61deac4c94902dc392a23f05674e2b1fb3f3cf87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82580455"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373414"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM 的計算基準測試分數
 下列 CoreMark 基準測試分數顯示執行 Ubuntu 的 Azure 高效能 VM 產品陣容的計算效能。 也有 [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)的計算基準測試分數。
@@ -151,7 +151,7 @@ ms.locfileid: "82580455"
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 2 | 1 | 7.8 | 20359 | 799 | 3.93% | 154 |
-| Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 7.8 | 20737 | 1422 | 6.86% | 546 |
+| Standard_D2_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 2 | 1 | 7.8 | 20737 | 1,422 | 6.86% | 546 |
 | Standard_D4_v3 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 4 | 1 | 15.7 | 40095 | 1501 | 3.74% | 147 |
 | Standard_D4_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 1 | 15.7 | 41147 | 2706 | 6.58% | 546 |
 | Standard_D8_v3 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 8 | 1 | 31.4 | 80383 | 1486 | 1.85% | 133 |

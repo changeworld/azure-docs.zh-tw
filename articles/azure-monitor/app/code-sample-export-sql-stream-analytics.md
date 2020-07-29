@@ -3,12 +3,12 @@ title: 從 Azure Application Insights 匯出至 SQL | Microsoft Docs
 description: 使用 Stream Analytics 持續將 Application Insights 資料匯出至 SQL。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540089"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311223"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>逐步解說：使用串流分析從 Application Insights 匯出至 SQL
 本文說明如何使用[連續匯出][export]和[Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)，將您的遙測資料從[Azure 應用程式深入][start]解析移至 Azure SQL Database。 
@@ -24,9 +24,9 @@ ms.locfileid: "86540089"
 ## <a name="add-application-insights-to-your-application"></a>將 Application Insights 加入應用程式中
 開始進行之前：
 
-1. [為您的網頁設定 Application Insights](../../azure-monitor/app/javascript.md)。 
+1. [為您的網頁設定 Application Insights](./javascript.md)。 
    
-    (在此範例中，我們將著重於處理來自用戶端瀏覽器的頁面檢視資料，但您也可以針對 [Java](../../azure-monitor/app/java-get-started.md) 或 [ASP.NET](../../azure-monitor/app/asp-net.md) 應用程式的伺服器端設定 Application Insights，並處理要求、相依性及其他伺服器遙測。)
+    (在此範例中，我們將著重於處理來自用戶端瀏覽器的頁面檢視資料，但您也可以針對 [Java](./java-get-started.md) 或 [ASP.NET](./asp-net.md) 應用程式的伺服器端設定 Application Insights，並處理要求、相依性及其他伺服器遙測。)
 2. 發行應用程式，並觀察出現在 Application Insights 資源中的遙測資料。
 
 ## <a name="create-storage-in-azure"></a>在 Azure 中建立儲存體
@@ -61,7 +61,7 @@ ms.locfileid: "86540089"
     ![選擇事件類型](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中看到統計圖表，並在[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)中看到個別事件。 
+1. 可讓一些資料累積。 請休息一下，讓其他人使用您的應用程式一段時間。 遙測資料會送過來，而您會在[計量瀏覽器](../platform/metrics-charts.md)中看到統計圖表，並在[診斷搜尋](./diagnostic-search.md)中看到個別事件。 
    
     此外，資料會匯出至您的儲存體。 
 2. 在入口網站 (選擇 [瀏覽]****、選取您的儲存體帳戶，然後選取 [容器]****) 或 Visual Studio 中，檢查匯出的資料。 在 Visual Studio 中，依序選擇 [檢視] 和 [Cloud Explorer]，然後依序開啟 [Azure] 和 [儲存體]。 (如果您沒有此功能表選項，您需要安裝 Azure SDK：開啟 [新增專案] 對話方塊，然後開啟 [Visual C#] / [Cloud] / [取得 Microsoft Azure SDK for .NET]。)
@@ -128,7 +128,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![建立 PageViewsTable](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
-在此範例中，我們會使用頁面檢視的資料。 若要查看其他可用的資料，請檢查您的 JSON 輸出，並查看 [匯出資料模型](../../azure-monitor/app/export-data-model.md)。
+在此範例中，我們會使用頁面檢視的資料。 若要查看其他可用的資料，請檢查您的 JSON 輸出，並查看 [匯出資料模型](./export-data-model.md)。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>建立 Azure 串流分析執行個體
 在 [Azure 入口網站](https://portal.azure.com/)中，選取 Azure 串流分析服務，然後建立新的串流分析工作：
@@ -165,7 +165,7 @@ webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 * `webapplication27` 是 Application Insights 資源名稱， **全部小寫**。 
 * `1234...` 是 Application Insights 資源的檢測金鑰， **但移除了連字號**。 
-* `PageViews` 是我們想要分析的資料類型。 可用的類型取決於您在「連續匯出」中設定的篩選。 檢查匯出的資料以查看其他可用的類型，並查看 [匯出資料模型](../../azure-monitor/app/export-data-model.md)。
+* `PageViews` 是我們想要分析的資料類型。 可用的類型取決於您在「連續匯出」中設定的篩選。 檢查匯出的資料以查看其他可用的類型，並查看 [匯出資料模型](./export-data-model.md)。
 * `/{date}/{time}` 是要依字面意思寫入資訊的格式。
 
 若要取得 Application Insights 資源的名稱和 iKey，請在資源的概觀頁面中開啟 Essentials，或開啟 [設定]。
@@ -215,7 +215,7 @@ webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 ```
 
-請注意，前幾個屬性是頁面檢視資料的特定屬性。 其他遙測資料類型的匯出會有不同的屬性。 請參閱 [屬性類型和值的詳細資料模型參考。](../../azure-monitor/app/export-data-model.md)
+請注意，前幾個屬性是頁面檢視資料的特定屬性。 其他遙測資料類型的匯出會有不同的屬性。 請參閱 [屬性類型和值的詳細資料模型參考。](./export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>設定資料庫的輸出
 選取 SQL 做為輸出。
@@ -243,15 +243,16 @@ FROM [dbo].[PageViewsTable]
 ```
 
 ## <a name="related-articles"></a>相關文章
-* [使用串流分析匯出至 Power BI](../../azure-monitor/app/export-power-bi.md )
-* [屬性類型和值的詳細資料模型參考。](../../azure-monitor/app/export-data-model.md)
-* [Application Insights 中的連續匯出](../../azure-monitor/app/export-telemetry.md)
+* [使用串流分析匯出至 Power BI](./export-power-bi.md)
+* [屬性類型和值的詳細資料模型參考。](./export-data-model.md)
+* [Application Insights 中的連續匯出](./export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[diagnostic]: ./diagnostic-search.md
+[export]: ./export-telemetry.md
+[metrics]: ../platform/metrics-charts.md
 [portal]: https://portal.azure.com/
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
+

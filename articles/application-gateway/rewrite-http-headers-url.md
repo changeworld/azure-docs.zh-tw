@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 46cb4d0d099cd21db3ce51c337d3b059206bb425
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097418"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281186"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>使用應用程式閘道重寫 HTTP 標頭和 URL
 
@@ -109,25 +109,25 @@ HTTP 標頭可讓用戶端和伺服器透過要求或回應傳遞其他資訊。
 | add_x_forwarded_for_proxy | 以 IP1、IP2、I P 3 等格式附加變數的 [X-轉送-適用于用戶端要求標頭] 欄位 `client_ip` （請參閱本表格稍後的說明）。 如果 X 轉送的欄位不在用戶端要求標頭中，則 `add_x_forwarded_for_proxy` 變數會等於 `$client_ip` 變數。   當您想要重寫由應用程式閘道所設定之 X 轉送的標頭時，這個變數特別有用，因為標頭只包含不含埠資訊的 IP 位址。 |
 | ciphers_supported         | 用戶端支援的密碼清單。               |
 | ciphers_used              | 用於已建立之 TLS 連線的加密字串。 |
-| client_ip                 | 應用程式閘道從中接收要求之用戶端的 IP 位址。 如果應用程式閘道和原始用戶端之前有反向 proxy， *client_ip*會傳回反向 PROXY 的 ip 位址。 |
+| client_ip                 | 應用程式閘道從中接收要求之用戶端的 IP 位址。 如果應用程式閘道和原始用戶端之前有反向 proxy，則 `client_ip` 會傳回反向 proxy 的 IP 位址。 |
 | client_port               | 用戶端埠。                                             |
 | client_tcp_rtt            | 用戶端 TCP 連線的相關資訊。 可在支援 TCP_INFO 通訊端選項的系統上使用。 |
 | client_user               | 使用 HTTP 驗證時，提供用於驗證的使用者名稱。 |
-| 主機                      | 依照下列優先順序：要求行中的主機名稱、主機要求標頭欄位中的主機名稱，或符合要求的伺服器名稱。 範例：在要求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，主機值會是*contoso.com* |
+| 主機                      | 依照下列優先順序：要求行中的主機名稱、主機要求標頭欄位中的主機名稱，或符合要求的伺服器名稱。 範例：在要求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ，主機值會是`contoso.com` |
 | cookie_*名稱*             | *名稱*cookie。                                           |
 | http_method               | 用來提出 URL 要求的方法。 例如，GET 或 POST。 |
 | http_status               | 會話狀態。 例如，200、400或403。           |
 | http_version              | 要求通訊協定。 通常是 HTTP/1.0、HTTP/1.1 或 HTTP/2.0。 |
-| query_string              | 在要求的 URL 中，後面接著 "？" 的變數/值配對清單。 範例：在要求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，query_string 值會是*識別碼 = 123&title = fabrikam* |
+| query_string              | 在要求的 URL 中，後面接著 "？" 的變數/值配對清單。 範例：在要求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ，query_string 值會是`id=123&title=fabrikam` |
 | received_bytes            | 要求的長度（包括要求行、標頭和要求本文）。 |
 | request_query             | 要求行中的引數。                           |
 | request_scheme            | 要求配置： HTTP 或 HTTPs。                           |
-| request_uri               | 完整的原始要求 URI （含引數）。 範例：在要求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，request_uri 值會是 */article.aspx？ id = 123&title = fabrikam* |
+| request_uri               | 完整的原始要求 URI （含引數）。 範例：在要求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` ，request_uri 值會是`/article.aspx?id=123&title=fabrikam` |
 | sent_bytes                | 傳送至用戶端的位元組數目。                        |
 | server_port               | 接受要求之伺服器的埠。              |
 | ssl_connection_protocol   | 已建立 TLS 連接的通訊協定。               |
 | ssl_enabled               | 如果連接是以 TLS 模式運作，則為 "On"。 否則為空字串。 |
-| uri_path                  | 識別 web 用戶端想要存取之主機中的特定資源。 這是要求 URI 中沒有引數的部分。 範例：在要求中 *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* ，uri_path 值會是 */article.aspx* |
+| uri_path                  | 識別 web 用戶端想要存取之主機中的特定資源。 這是要求 URI 中沒有引數的部分。 範例：在要求中 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` ，uri_path 值會是`/article.aspx` |
 
  
 
@@ -230,7 +230,7 @@ HTTP 標頭可讓用戶端和伺服器透過要求或回應傳遞其他資訊。
 
 假設有一個購物網站的案例，使用者看得見的連結應該簡單明瞭，但是後端伺服器需要查詢字串參數來顯示正確的內容。
 
-在此情況下，應用程式閘道可以從 URL 捕捉參數，並從 URL 中新增查詢字串索引鍵值組。 例如，假設使用者想要重寫 https://www.contoso.com/fashion/shirts 到 https://www.contoso.com/buy.aspx?category=fashion&product=shirts ，可以透過下列 URL 重寫設定來達成。
+在此情況下，應用程式閘道可以從 URL 捕捉參數，並從 URL 中新增查詢字串索引鍵值組。 例如，假設使用者想要重寫 `https://www.contoso.com/fashion/shirts` 到 `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` ，可以透過下列 URL 重寫設定來達成。
 
 **條件**-如果伺服器變數 `uri_path` 等於模式`/(.+)/(.+)`
 

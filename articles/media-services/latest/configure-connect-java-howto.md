@@ -12,13 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
+ms.custom: devx-track-java
 ms.author: juliako
-ms.openlocfilehash: 2337a7543f84d7eba5f565d875129cf22e8b27ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 098e1db7470124dc7c15b3ee65d6ab9cb3fadabd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001208"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319825"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>連接到媒體服務 v3 API-JAVA
 
@@ -126,7 +127,7 @@ mvn archetype:generate -DgroupId=com.azure.ams -DartifactId=testAzureApp -Darche
 - [JAVA 參考](https://aka.ms/ams-v3-java-ref)
 - [windowsazure.mediaservices.extensions。 v2018_07_01： azure-管理-媒體](https://search.maven.org/artifact/com.microsoft.azure.mediaservices.v2018_07_01/azure-mgmt-media/1.0.0-beta/jar)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您現在可以包含 `import com.microsoft.azure.management.mediaservices.v2018_07_01.*;` 並開始操作實體。
 

@@ -4,15 +4,15 @@ description: 瞭解如何使用合作夥伴中心在 Azure Marketplace 中建立
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
-ms.author: mingshen
+author: keferna
+ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: b2a1e523e2af8c0be9c4211dfc8a0ffd2a889ca0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5ead227d886805c0ed48ebb52c4c0e30ef13b851
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053663"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320029"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>建立 IoT Edge 模組供應項目
 
@@ -225,11 +225,11 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 大型標誌
-2. Categories
+2. 類別
 3. 支援位址（連結）
 4. 條款及條件
 5. 隱私權原則位址（連結）
-6. 名稱
+6. Name
 7. 總結
 8. 說明
 9. 實用的連結
@@ -251,7 +251,7 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. 名稱
+1. Name
 2. 說明
 3. 實用的連結
 4. 螢幕擷取畫面
@@ -418,7 +418,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. 存取金鑰
+1. 便捷鍵
 2. 使用者名稱
 3. 密碼
 

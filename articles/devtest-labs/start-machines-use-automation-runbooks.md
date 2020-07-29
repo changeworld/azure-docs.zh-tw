@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中使用自動化 runbook 啟動機器
 description: 瞭解如何使用 Azure 自動化 runbook，在 Azure DevTest Labs 中啟動實驗室中的虛擬機器。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 72ce964b451fb6bcd1e93d75e6ae674c7608d63a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 231e79d594aab7c59fa21f9ee512abaa9ac67043
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481896"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282257"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>使用 Azure 自動化 runbook 來啟動實驗室中的虛擬機器
 DevTest Labs 的[自動啟動](devtest-lab-set-lab-policy.md#set-autostart)功能可讓您將 vm 設定為在指定的時間自動啟動。 不過，這項功能不支援以特定順序啟動電腦。 在許多情況下，這種類型的自動化會很有用。  其中一個案例是，實驗室中的 Jumpbox VM 必須先在其他 Vm 之前先啟動，因為 Jumpbox 是用來作為其他 Vm 的存取點。  本文說明如何使用執行腳本的 PowerShell runbook 來設定 Azure 自動化帳戶。 此腳本會在實驗室中的 Vm 上使用標記，讓您控制啟動順序，而不需要變更腳本。
@@ -20,7 +20,7 @@ DevTest Labs 的[自動啟動](devtest-lab-set-lab-policy.md#set-autostart)功�
 遵循[本文中的](../automation/automation-create-standalone-account.md)指示建立 Azure 自動化帳戶。 建立帳戶時，請選擇 [**執行身分帳戶**] 選項。 建立自動化帳戶之後，請開啟 [**模組**] 頁面，然後選取功能表列上的 [**更新 Azure 模組**]。 預設模組是舊版的幾個版本，而且沒有更新，腳本可能無法運作。
 
 ## <a name="add-a-runbook"></a>新增 runbook
-現在，若要將 runbook 新增至自動化帳戶，請選取左側功能表上的 [ **runbook** ]。 選取功能表上的 [**新增 runbook** ]，並依照指示來[建立 PowerShell runbook](../automation/automation-first-runbook-textual-powershell.md)。
+現在，若要將 runbook 新增至自動化帳戶，請選取左側功能表上的 [ **runbook** ]。 選取功能表上的 [**新增 runbook** ]，並依照指示來[建立 PowerShell runbook](../automation/learn/automation-tutorial-runbook-textual-powershell.md)。
 
 ## <a name="powershell-script"></a>PowerShell 指令碼
 下列腳本會採用訂用帳戶名稱、實驗室名稱作為參數。 腳本的流程是取得實驗室中的所有 Vm，然後剖析標記資訊，以建立 VM 名稱的清單及其啟動順序。 此腳本會逐步執行 Vm，並啟動 Vm。 如果有多個 Vm 是以特定的順序編號，則會使用 PowerShell 工作以非同步方式啟動。 對於沒有標記的 Vm，將 [啟動值] 設定為最後一個（10），預設為 [已啟動]。  如果實驗室不想讓 VM 自動安裝，請將 [標籤] 值設定為11，它將會被忽略。

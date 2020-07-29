@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 7ec89d985c025814d903ae9a16f9b0f5123b3571
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef16339d9a584eb12c611a25d636a9287265953a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056433"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284331"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API 管理層的功能式比較
 
@@ -31,7 +31,7 @@ ms.locfileid: "87056433"
 | Azure AD 整合<sup>1</sup>                                                             | 否          | 是       | 否    | 是      | 是     |
 | 虛擬網路 (VNet) 支援                                                               | 否          | 是       | 否    | 否       | 是     |
 | 多重區域部署                                                                      | 否          | 否        | 否    | 否       | 是     |
-| 多重自訂網域名稱                                                                 | 否          | 否        | 否    | 否       | 是     |
+| 多重自訂網域名稱                                                                 | 否          | 是        | 否    | 否       | 是     |
 | 開發人員入口網站<sup>2</sup>                                                                 | 否          | 是       | 是   | 是      | 是     |
 | 內建快取                                                                               | 否          | 是       | 是   | 是      | 是     |
 | 內建分析                                                                           | 否          | 是       | 是   | 是      | 是     |

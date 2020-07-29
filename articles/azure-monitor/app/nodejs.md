@@ -3,16 +3,17 @@ title: 使用 Azure Application Insights 監視 Node.js 服務 | Microsoft Docs
 description: 使用 Application Insights 監視 Node.js 服務的效能和診斷問題。
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 80b4c4336a3e253e38790520a7eb4458ca36ff30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c6a1a030829f128c4369e99efcd56a416390afc6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024379"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371612"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 監視 Node.js 服務和應用程式
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md)在部署後監視您的後端服務和元件，以協助您探索並快速診斷效能和其他問題。 您可以將 Application Insights 用於您的資料中心、Azure Vm 和 web 應用程式，甚至是其他公用雲端中裝載的 Node.js 服務。
+[Application Insights](./app-insights-overview.md)在部署後監視您的後端服務和元件，以協助您探索並快速診斷效能和其他問題。 您可以將 Application Insights 用於您的資料中心、Azure Vm 和 web 應用程式，甚至是其他公用雲端中裝載的 Node.js 服務。
 
 若要接收、儲存和探索您的監視資料，請在您的程式碼中包含 SDK，然後在 Azure 中設定對應的 Application Insights 資源。 SDK 會將資料傳送至該資源，進行進一步的分析和探索。
 
@@ -80,8 +81,8 @@ SDK 會自動收集有關 Node.js 執行時間和一些常見協力廠商模組�
 
 * 繼續使用應用程式。 採取更多動作以產生更多遙測。
 * 按一下入口網站資源檢視中的 [重新整理]****。 圖表會自行定期重新整理，但手動重新整理會強制圖表立即重新整理。
-* 確認[所需的連出連接埠](../../azure-monitor/app/ip-addresses.md)已開啟。
-* 使用 [搜尋](../../azure-monitor/app/diagnostic-search.md) 來尋找特定的事件。
+* 確認[所需的連出連接埠](./ip-addresses.md)已開啟。
+* 使用 [搜尋](./diagnostic-search.md) 來尋找特定的事件。
 * 請查看[常見問題][FAQ]。
 
 ## <a name="basic-usage"></a>基本使用方式
@@ -216,7 +217,7 @@ appInsights
 
 ## <a name="telemetryclient-api"></a>TelemetryClient API
 
-如需 TelemetryClient API 的完整說明，請參閱[自訂事件和度量的 Application Insights API](../../azure-monitor/app/api-custom-events-metrics.md)。
+如需 TelemetryClient API 的完整說明，請參閱[自訂事件和度量的 Application Insights API](./api-custom-events-metrics.md)。
 
 您可以使用 Application Insights Node.js SDK 來追蹤任何要求、事件、計量或例外狀況。 下列程式碼範例示範您可以使用的一些 API：
 
@@ -396,7 +397,7 @@ client.config.PROPERTYNAME = VALUE;
 
 這些屬性是用戶端特定的，因此您可以 `appInsights.defaultClient` 與使用建立的用戶端分開設定 `new appInsights.TelemetryClient()` 。
 
-| 屬性                        | 描述                                                                                                |
+| 屬性                        | 說明                                                                                                |
 | ------------------------------- |------------------------------------------------------------------------------------------------------------|
 | instrumentationKey              | Application Insights 資源的識別碼。                                                      |
 | endpointUrl                     | 要用來傳送遙測承載的內嵌端點。                                                      |
@@ -412,12 +413,13 @@ client.config.PROPERTYNAME = VALUE;
 | correlationIdRetryIntervalMs    | 重試取得跨元件相互關聯的識別碼之前，所要等待的時間（預設值 `30000` ）。     |
 | correlationHeaderExcludedDomains| 要從跨元件相互關聯標頭插入排除的網域清單（預設請參閱[Config. ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Config.ts)）。|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-* [在入口網站中監視遙測](../../azure-monitor/app/overview-dashboard.md)
-* [[寫您的遙測的分析查詢](../../azure-monitor/log-query/get-started-portal.md)
+* [在入口網站中監視遙測](./overview-dashboard.md)
+* [[寫您的遙測的分析查詢](../log-query/get-started-portal.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
+

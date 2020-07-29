@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 51a25b66968f43facddb9187a6793b2e39e0fdbd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536618"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281016"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>從氣象合作夥伴取得天氣資料
 
@@ -18,7 +18,7 @@ Azure FarmBeats 可協助您使用以 Docker 為基礎的連接器架構，從�
 
 天氣資料可以用來產生可操作的深入解析，並在 FarmBeats 中建立 AI 或 ML 模型。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 若要取得天氣資料，請確定您已[安裝 FarmBeats](https://aka.ms/farmbeatsinstalldocumentation)。 1.2.11 和更高版本中支援氣象整合。 
 
@@ -26,7 +26,7 @@ Azure FarmBeats 可協助您使用以 Docker 為基礎的連接器架構，從�
 
 若要開始在您的 FarmBeats Datahub 上取得天氣資料：
 
-1. 前往您的 FarmBeats Datahub [Swagger](https://farmbeatswebsite-api.azurewebsites.net/swagger)。
+1. 前往您的 FarmBeats Datahub Swagger `https://farmbeatswebsite-api.azurewebsites.net/swagger` 。
 
 2. 移至/Partner API，然後發出 POST 要求。 使用下列輸入裝載：
 

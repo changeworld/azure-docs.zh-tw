@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面環境（秋季2019）-Azure
-description: 瞭解 Windows 虛擬桌面（2019版）環境（例如租使用者和主機集區）的基本元素。
+title: Windows 虛擬桌面（傳統）環境-Azure
+description: Windows 虛擬桌面（傳統）環境的基本元素。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8cb41b4f94b14a94c79b490e38889825fd9d8d1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c019dd187c0ccd7a63f71c0373a0388135afda9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082642"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285011"
 ---
-# <a name="windows-virtual-desktop-environment-fall-2019-release"></a>Windows 虛擬桌面環境（秋季2019版）
+# <a name="windows-virtual-desktop-classic-environment"></a>Windows 虛擬桌面（傳統）環境
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../environment-setup.md)。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../environment-setup.md)。
 
 Windows 虛擬桌面是一種服務，可讓使用者輕鬆且安全地存取其虛擬化的桌面和 Remoteapp。 本主題將告訴您更多有關 Windows 虛擬桌面環境的一般結構。
 

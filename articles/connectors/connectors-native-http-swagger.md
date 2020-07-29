@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: a5c00dc64dd39ba2fdbb734f4e9749fbe42e246e
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831920"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281458"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 呼叫 REST 端點
 
@@ -27,11 +28,11 @@ ms.locfileid: "83831920"
 
   * Swagger 檔案必須裝載於可公開存取的 HTTPS URL 上。
 
-  * Swagger 檔案必須已啟用[跨原始來源資源共用 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) \(部分機器翻譯\)。
+  * Swagger 檔案必須已啟用[跨原始來源資源共用 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) \(部分機器翻譯\)。
 
   若要參考未裝載或不符合安全性和跨原始來源需求的 Swagger 檔案，您可以[將 Swagger 檔案上傳到 Azure 儲存體帳戶中的 Blob 容器](#host-swagger)，並在該儲存體帳戶上啟用 CORS，如此就能參考檔案。
 
-  此主題中的範例會使用[認知服務臉部 API](https://docs.microsoft.com/azure/cognitive-services/face/overview)，其需要[認知服務帳戶和存取金鑰](../cognitive-services/cognitive-services-apis-create-account.md)。
+  此主題中的範例會使用[認知服務臉部 API](../cognitive-services/face/overview.md)，其需要[認知服務帳戶和存取金鑰](../cognitive-services/cognitive-services-apis-create-account.md)。
 
 * [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識。 如果您不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
@@ -117,7 +118,7 @@ ms.locfileid: "83831920"
 
 您可以藉由將 Swagger 檔案上傳到 Azure 儲存體帳戶中的 Blob 容器，並在該儲存體帳戶上啟用 CORS，來參考未裝載或不符合安全性和跨原始來源需求的 Swagger 檔案。 若要在 Azure 儲存體中建立、設定和儲存 Swagger 檔案，請遵循下列步驟：
 
-1. [建立 Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)。
+1. [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md)。
 
 1. 現在針對 Blob 啟用 CORS。 在您的儲存體帳戶功能表上，選取 [CORS]。 在 [Blob 服務] 索引標籤上，指定這些值，然後選取 [儲存]。
 
@@ -165,3 +166,4 @@ ms.locfileid: "83831920"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+

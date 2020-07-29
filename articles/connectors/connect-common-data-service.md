@@ -7,26 +7,27 @@ ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
-ms.openlocfilehash: 98da7e959e4b59ad2d0f3f3f79364391b4ceddbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cce90a8a65a7f070459e220e6d92ef0be57e909
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82997096"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284110"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 建立和管理 Common Data Service 中的記錄
 
-您可以使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[Common Data Service 連接器](https://docs.microsoft.com/connectors/commondataservice/)，建立自動化的工作流程，以管理[Common Data Service](https://docs.microsoft.com/powerapps/maker/common-data-service/data-platform-intro)資料庫中的記錄。 這些工作流程可以建立記錄、更新記錄，以及執行其他作業。 您也可以從 Common Data Service 資料庫取得資訊，並讓輸出可供其他動作用於邏輯應用程式。 例如，當您在 Common Data Service 資料庫中更新記錄時，您可以使用 Office 365 Outlook 連接器傳送電子郵件。
+您可以使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[Common Data Service 連接器](/connectors/commondataservice/)，建立自動化的工作流程，以管理[Common Data Service](/powerapps/maker/common-data-service/data-platform-intro)資料庫中的記錄。 這些工作流程可以建立記錄、更新記錄，以及執行其他作業。 您也可以從 Common Data Service 資料庫取得資訊，並讓輸出可供其他動作用於邏輯應用程式。 例如，當您在 Common Data Service 資料庫中更新記錄時，您可以使用 Office 365 Outlook 連接器傳送電子郵件。
 
 本文說明如何建立邏輯應用程式，以在每次建立新的潛在客戶記錄時建立工作記錄。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* [Common Data Service 環境](https://docs.microsoft.com/power-platform/admin/environments-overview)，這是您的組織儲存、管理及共用商務資料和 Common Data Service 資料庫的空間。 如需詳細資訊，請參閱這些資源：<p>
+* [Common Data Service 環境](/power-platform/admin/environments-overview)，這是您的組織儲存、管理及共用商務資料和 Common Data Service 資料庫的空間。 如需詳細資訊，請參閱這些資源：<p>
 
-  * [瞭解：開始使用 Common Data Service](https://docs.microsoft.com/learn/modules/get-started-with-powerapps-common-data-service/)
-  * [Power 平臺-環境總覽](https://docs.microsoft.com/power-platform/admin/environments-overview)
+  * [瞭解：開始使用 Common Data Service](/learn/modules/get-started-with-powerapps-common-data-service/)
+  * [Power 平臺-環境總覽](/power-platform/admin/environments-overview)
 
 * 有關[如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)和邏輯應用程式的基本知識，而您想要在其中存取 Common Data Service 資料庫中的記錄。 若要使用 Common Data Service 觸發程式來啟動邏輯應用程式，您需要空白邏輯應用程式。 如果您不熟悉 Azure Logic Apps，請參閱[快速入門：使用 Azure Logic Apps 建立您的第一個工作流程](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -50,9 +51,9 @@ ms.locfileid: "82997096"
 
    | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
-   | **環境** | Yes | 要監視的環境，例如「Fabrikam 銷售生產」。 如需詳細資訊，請參閱[Power Platform-環境總覽](https://docs.microsoft.com/power-platform/admin/environments-overview)。 |
-   | **實體名稱** | Yes | 要監視的實體，例如「潛在客戶」 |
-   | **範圍** | Yes | 建立新記錄的來源，例如您業務單位中的使用者或組織中的任何使用者。 這個範例會使用「業務單位」。 |
+   | **環境** | 是 | 要監視的環境，例如「Fabrikam 銷售生產」。 如需詳細資訊，請參閱[Power Platform-環境總覽](/power-platform/admin/environments-overview)。 |
+   | **實體名稱** | 是 | 要監視的實體，例如「潛在客戶」 |
+   | **範圍** | 是 | 建立新記錄的來源，例如您業務單位中的使用者或組織中的任何使用者。 這個範例會使用「業務單位」。 |
    ||||
 
 ## <a name="add-common-data-service-action"></a>新增 Common Data Service 動作
@@ -71,8 +72,8 @@ ms.locfileid: "82997096"
 
    | 屬性 | 必要 | 說明 |
    |----------|----------|-------------|
-   | **組織名稱** | Yes | 您想要建立記錄的環境，在您的觸發程式中不一定要是相同的環境，但在此範例中為「Fabrikam 銷售生產」 |
-   | **實體名稱** | Yes | 要在其中建立記錄的實體，例如「Tasks」 |
+   | **組織名稱** | 是 | 您想要建立記錄的環境，在您的觸發程式中不一定要是相同的環境，但在此範例中為「Fabrikam 銷售生產」 |
+   | **實體名稱** | 是 | 要在其中建立記錄的實體，例如「Tasks」 |
    | **主旨** | 是，根據此範例中選取的實體而定 | 這項工作的目標簡短描述 |
    ||||
 
@@ -86,18 +87,18 @@ ms.locfileid: "82997096"
 
       ![選取要在工作記錄中使用的觸發程式輸出](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | 觸發程式輸出 | Description |
+      | 觸發程式輸出 | 說明 |
       |----------------|-------------|
       | **First Name** | 潛在客戶記錄中用來做為工作記錄中主要連絡人的名字 |
       | **姓氏** | 要做為工作記錄中主要連絡人之潛在客戶記錄的姓氏 |
-      | **描述** | 要包含在工作記錄中的其他輸出，例如電子郵件地址和公司電話號碼 |
+      | **說明** | 要包含在工作記錄中的其他輸出，例如電子郵件地址和公司電話號碼 |
       |||
 
    當您完成時，動作可能會如下列範例所示：
 
    ![已完成「建立新記錄」動作](./media/connect-common-data-service/finished-create-record-action-details.png)
 
-1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]****。
+1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 1. 若要手動啟動邏輯應用程式，請在設計工具工具列上，選取 [**執行**]。 若要測試您的邏輯應用程式，請建立新的「潛在客戶」記錄。
 
@@ -125,7 +126,7 @@ ms.locfileid: "82997096"
 
    ![輸入用於篩選記錄的 ODATA 篩選查詢](./media/connect-common-data-service/list-records-action-filter-query-value.png)
 
-如需 `$filter` 系統查詢選項的詳細資訊，請參閱[Common Data Service 篩選結果](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)。
+如需 `$filter` 系統查詢選項的詳細資訊，請參閱[Common Data Service 篩選結果](/powerapps/developer/common-data-service/webapi/query-data-web-api#filter-results)。
 
 ## <a name="list-records-based-on-an-order"></a>依據訂單列出記錄
 
@@ -139,7 +140,7 @@ ms.locfileid: "82997096"
 
    ![輸入用於排序記錄的 ODATA 篩選查詢](./media/connect-common-data-service/list-records-action-order-by-value.png)
 
-如需 `$orderby` 系統查詢選項的詳細資訊，請參閱[Common Data Service 順序結果](https://docs.microsoft.com/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)。
+如需 `$orderby` 系統查詢選項的詳細資訊，請參閱[Common Data Service 順序結果](/powerapps/developer/common-data-service/webapi/query-data-web-api#order-results)。
 
 ## <a name="field-data-types"></a>欄位資料類型
 
@@ -165,7 +166,7 @@ ms.locfileid: "82997096"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需以連接器的 Swagger 描述為基礎的技術資訊，例如觸發程式、動作、限制和其他詳細資料，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/commondataservice/)。
+如需以連接器的 Swagger 描述為基礎的技術資訊，例如觸發程式、動作、限制和其他詳細資料，請參閱[連接器的參考頁面](/connectors/commondataservice/)。
 
 ## <a name="next-steps"></a>後續步驟
 

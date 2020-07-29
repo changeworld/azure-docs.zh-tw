@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面診斷問題–秋季2019– Azure
-description: 如何使用 Windows 虛擬桌面診斷功能來診斷問題。
+title: Windows 虛擬桌面（傳統）診斷問題-Azure
+description: 如何使用 Windows 虛擬桌面（傳統）診斷功能來診斷問題。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0aad1c780c6695c771d3cfea04509acde65c051e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 257ad5aa11bfaece70f676b452119d7800e2d1e2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085855"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285045"
 ---
-# <a name="identify-and-diagnose-issues"></a>識別並診斷問題
+# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>識別及診斷 Windows 虛擬桌面中的問題（傳統）
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../diagnostics-role-service.md)。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../diagnostics-role-service.md)。
 
 Windows 虛擬桌面提供診斷功能，可讓系統管理員透過單一介面識別問題。 每當使用者與系統互動時，Windows 虛擬桌面角色都會記錄診斷活動。 每個記錄都包含相關資訊，例如交易中涉及的 Windows 虛擬桌面角色、錯誤訊息、租用戶資訊、使用者資訊。 診斷活動是由使用者和系統管理動作建立，可分為三大類：
 

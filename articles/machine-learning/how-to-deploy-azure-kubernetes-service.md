@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 9c927015114bb0e7230dcb96cd16a81e7763f64d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325877"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372105"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,6 +34,8 @@ ms.locfileid: "87325877"
 
 * 使用 Azure Machine Learning SDK、Machine Learning CLI 或[Azure Machine Learning studio](https://ml.azure.com)來建立 AKS 叢集。 此程式會自動將叢集連接到工作區。
 * 將現有的 AKS 叢集附加至您的 Azure Machine Learning 工作區。 您可以使用 [Azure Machine Learning SDK]、[Machine Learning CLI] 或 Azure Machine Learning studio 來連接叢集。
+
+AKS 叢集和 AML 工作區可以位於不同的資源群組中。
 
 > [!IMPORTANT]
 > 建立或附加程式是一次性的工作。 一旦 AKS 叢集連線到工作區，您就可以將它用於部署。 如果您不再需要 AKS 叢集，您可以卸離或刪除該叢集。 卸離或刪除之後，您將無法再部署到叢集。
@@ -61,11 +63,28 @@ ms.locfileid: "87325877"
 
 - 本文中的__CLI__程式碼片段假設您已建立 `inferenceconfig.json` 檔。 如需有關建立此檔的詳細資訊，請參閱[如何和部署模型的位置](how-to-deploy-and-where.md)。
 
+- 如果您附加的 AKS 叢集已[啟用授權的 IP 範圍來存取 API 伺服器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，請啟用 AKS 叢集的 AML 主平面 ip 範圍。 AML 控制平面會部署在配對的區域中，並將推斷 pod 部署在 AKS 叢集上。 如果沒有 API 伺服器的存取權，就無法部署推斷 pod。 在 AKS 叢集中啟用 IP 範圍時，請使用兩個[配對區域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 範圍](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)
+ 
+ - 計算名稱在工作區中必須是唯一的
+   - 名稱是必要的，且長度必須介於3到24個字元之間。
+   - 有效字元是大寫和小寫字母、數位和-字元。
+   - 名稱必須以字母開頭
+   - 在 Azure 區域內的所有現有計算中，名稱必須是唯一的。 如果您選擇的名稱不是唯一的，您將會看到警示
+   
+ - 如果您想要將模型部署至 GPU 節點或 FPGA 節點（或任何特定 SKU），則必須建立具有特定 SKU 的叢集。 不支援在現有的叢集中建立次要節點集區，以及在次要節點集區中部署模型。
+ 
+ - 如果您需要部署在叢集中的 Standard Load Balancer （SLB），而不是基本 Load Balancer （BLB），請在 AKS portal/CLI/SDK 中建立叢集，然後將它連結到 AML 工作區。 
+
+
+
 ## <a name="create-a-new-aks-cluster"></a>建立新的 AKS 叢集
 
-**估計時間**：約20分鐘。
+**估計時間**：約10分鐘。
 
 建立或附加 AKS 叢集是工作區的一次性程式。 您可以重複使用此叢集進行多個部署。 如果您刪除叢集或包含該叢集的資源群組，則必須在下次需要部署時建立新的叢集。 您可以將多個 AKS 叢集附加至您的工作區。
+ 
+Azure Machine Learning 現在支援使用已啟用私用連結的 Azure Kubernetes Service。
+若要建立私用 AKS 叢集，請遵循[這裡](https://docs.microsoft.com/azure/aks/private-clusters)的檔
 
 > [!TIP]
 > 如果您想要使用 Azure 虛擬網路保護您的 AKS 叢集，您必須先建立虛擬網路。 如需詳細資訊，請參閱[使用 Azure 虛擬網路保護實驗和推斷](how-to-enable-virtual-network.md#aksvnet)。

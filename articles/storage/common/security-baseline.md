@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cd7e7df5c789743cf6bd84c6150fd901490bdedd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751642"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371680"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>適用于 Azure 儲存體的 Azure 安全性基準
 
@@ -240,7 +240,7 @@ ms.locfileid: "84751642"
 
 - [如何對 log analytics 記錄資料發出警示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
 
-- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging) (部分機器翻譯)
+- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Azure 資訊安全中心監視**：是
 
@@ -428,7 +428,7 @@ ms.locfileid: "84751642"
 
 建立 Azure Active Directory 使用者帳戶的診斷設定，將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 工作區中設定所需的警示。 若要監視對 Azure 儲存體帳戶的驗證失敗，您可以建立警示，在達到儲存體資源計量的特定閾值時通知您。 此外，請使用 Azure 監視器，以使用匿名驗證條件來對儲存體帳戶的匿名存取發出警示。
 
-- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging) (部分機器翻譯)
+- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -534,7 +534,7 @@ ms.locfileid: "84751642"
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導**方針： Azure Active Directory （Azure AD）透過角色型存取控制（RBAC）來授權受保護資源的存取權限。 Azure 儲存體會定義一組內建的 RBAC 角色，其中包含用來存取 blob 或佇列資料的常用許可權集。 
+**指導**方針： Azure Active Directory （Azure AD）透過角色型存取控制（RBAC）來授權受保護資源的存取權限。 Azure 儲存體定義一組 Azure 內建角色，其中包含用來存取 blob 或佇列資料的常用許可權集。 
 
 - [如何為 Azure 儲存體帳戶指派 RBAC 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)
 
@@ -574,7 +574,7 @@ ms.locfileid: "84751642"
 
 - [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging) (部分機器翻譯)
+- [Azure 儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [如何設定 Azure 儲存體帳戶的計量警示](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 

@@ -11,11 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 450f04c7de68bf6db282577fbc8e841f1f3c93fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74900363"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284399"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>裝置身分識別與桌面虛擬化
 
@@ -42,20 +43,20 @@ ms.locfileid: "74900363"
 
 | 裝置身分識別類型 | 身分識別基礎結構 | Windows 裝置 | VDI 平臺版本 | 支援 |
 | --- | --- | --- | --- | --- |
-| 已聯結的混合式 Azure AD | 建立 | Windows 目前 * * * 和舊版 Windows * * * * | 持續性 | Yes |
-|   |   | Windows 目前 | 非持續性 | No |
-|   |   | 舊版 Windows | 非持續性 | Yes |
-|   | 受控 * * | Windows 目前和舊版 Windows | 持續性 | Yes |
-|   |   | Windows 目前 | 非持續性 | No |
-|   |   | 舊版 Windows | 非持續性 | Yes |
-| 已聯結的 Azure AD | 同盟 | Windows 目前 | 持續性 | No |
-|   |   |   | 非持續性 | No |
-|   | 受控 | Windows 目前 | 持續性 | No |
-|   |   |   | 非持續性 | No |
-| 已註冊 Azure AD | 同盟 | Windows 目前 | 持續性 | No |
-|   |   |   | 非持續性 | No |
-|   | 受控 | Windows 目前 | 持續性 | No |
-|   |   |   | 非持續性 | No |
+| 已聯結的混合式 Azure AD | 建立 | Windows 目前 * * * 和舊版 Windows * * * * | 持續性 | 是 |
+|   |   | Windows 目前 | 非持續性 | 否 |
+|   |   | 舊版 Windows | 非持續性 | 是 |
+|   | 受控 * * | Windows 目前和舊版 Windows | 持續性 | 是 |
+|   |   | Windows 目前 | 非持續性 | 否 |
+|   |   | 舊版 Windows | 非持續性 | 是 |
+| 已聯結的 Azure AD | 同盟 | Windows 目前 | 持續性 | 否 |
+|   |   |   | 非持續性 | 否 |
+|   | 受管理 | Windows 目前 | 持續性 | 否 |
+|   |   |   | 非持續性 | 否 |
+| 已註冊 Azure AD | 同盟 | Windows 目前 | 持續性 | 不適用 |
+|   |   |   | 非持續性 | 否 |
+|   | 受管理 | Windows 目前 | 持續性 | 不適用 |
+|   |   |   | 非持續性 | 否 |
 
 \*同盟**身分識別基礎**結構環境代表具有身分識別提供者（例如 AD FS 或其他協力廠商 IDP）的環境。
 

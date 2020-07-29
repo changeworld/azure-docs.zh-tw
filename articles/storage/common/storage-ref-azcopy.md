@@ -4,15 +4,16 @@ description: 本文提供 azcopy 命令的參考資訊。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18972e991f08db7fa9548454a5c5cdc3ff0f552f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74038097"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285181"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -28,16 +29,18 @@ AzCopy 是一種命令列工具，可將資料移入和移出 Azure 儲存體。
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 - [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
-- [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
+- [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
-**--cap-mbps uint32**  上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。
+**--cap-mbps** （Float） Caps 的傳輸速率（以每秒 mb 為單位）。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。
 
-**-h、--help**Azcopy 的說明
+**--help**Azcopy 的說明
       
-**--output-類型** 命令輸出的格式。 選項包括： text、json。 預設值為「文字」。 （預設值為 "text"）
+**--** 命令輸出的輸出類型（字串）格式。 選項包括： text、json。 預設值是 `text`。 （預設值 `text` ）
+
+**--trusted-microsoft-** 後置字元（string）會指定其他可在其中傳送 Azure Active Directory 登入權杖的網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處列出的任何內容都會新增至預設值。 基於安全性，您應該只將 Microsoft Azure 網域放在這裡。 以分號分隔多個專案。
 
 ## <a name="see-also"></a>另請參閱
 

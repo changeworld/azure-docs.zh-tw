@@ -1,6 +1,6 @@
 ---
-title: 部署適用于 Windows 虛擬桌面的診斷工具-Azure
-description: 如何部署 Windows 虛擬桌面的診斷 UX 工具。
+title: 部署適用于 Windows 虛擬桌面的診斷工具（傳統）-Azure
+description: 如何部署適用于 Windows 虛擬桌面的診斷 UX 工具（傳統）。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362334"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285096"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>部署診斷工具
+# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虛擬桌面（傳統）診斷工具
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。
 
 >[!IMPORTANT]
 >從2020年3月16日起，我們已暫時停用因服務需求增加而影響使用者體驗的診斷查詢。 這會導致工具停止運作，因為它依賴這些查詢來運作。 當診斷查詢再次可供使用時，我們將會更新本文。
@@ -34,7 +34,7 @@ ms.locfileid: "85362334"
 - 將訊息傳送給特定工作階段主機上的作用中使用者。
 - 將使用者登出工作階段主機。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 您必須先建立 Azure Active Directory 應用程式註冊和 Log Analytics 工作區，才能部署工具的 Azure Resource Manager 範本。 您或系統管理員需要這些許可權才能執行此動作：
 

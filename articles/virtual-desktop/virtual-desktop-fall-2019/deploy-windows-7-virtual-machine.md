@@ -1,6 +1,6 @@
 ---
-title: 部署 Windows 7 虛擬機器 Windows 虛擬桌面秋季 2019-Azure
-description: 如何在 Windows 虛擬桌面上設定和部署 Windows 7 虛擬機器。
+title: 部署 Windows 7 虛擬機器 Windows 虛擬桌面（傳統）-Azure
+description: 如何在 Windows 虛擬桌面 Windows 虛擬桌面（傳統）上設定和部署 Windows 7 虛擬機器。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d8ce67f129844c09a93b29c8100fe28096c520c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99c82f63e88815edba13bf88ba23c18493649dd9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085872"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285079"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop---fall-2019"></a>在 Windows 虛擬桌面-秋季2019上部署 Windows 7 虛擬機器
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>在 Windows 虛擬桌面上部署 Windows 7 虛擬機器（傳統）
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../deploy-windows-7-virtual-machine.md)。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您嘗試管理目前版本 Windows 虛擬桌面中引進 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../deploy-windows-7-virtual-machine.md)。
 
 在 Windows 虛擬桌面上部署 Windows 7 虛擬機器（VM）的程式，與執行較新版本 Windows 的 Vm 略有不同。 本指南將告訴您如何部署 Windows 7。
 

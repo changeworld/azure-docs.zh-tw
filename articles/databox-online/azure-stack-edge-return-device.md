@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 29ecd2e90812da533eb59db71a876b6d23f20918
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 018fe9b97b343bc07cf3c04a1d0e84edaf6cc7ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067010"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283855"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>傳回您的 Azure Stack Edge 裝置
 
@@ -117,14 +117,14 @@ ms.locfileid: "87067010"
 
 Azure 資料中心收到裝置後，就會檢查裝置是否受損或有任何篡改跡象。
 
-- 如果裝置原封不動地抵達，而且是良好的圖形，則該資源的計費計量會停止。 Microsoft 支援服務會與您連絡，確認裝置已退回。 然後，您可以在 Azure 入口網站中刪除與裝置相關聯的資源。
+- 如果裝置原封不動地抵達，而且是良好的圖形，則該資源的計費計量會停止。 Azure Stack Edge 作業小組會與您聯繫，以確認已傳回裝置。 然後，您可以在 Azure 入口網站中刪除與裝置相關聯的資源。
 - 如果裝置送達時明顯受損，則可能會酌收罰款。 如需詳細資訊，請參閱[裝置遺失或受損的常見問題集](https://azure.microsoft.com/pricing/details/databox/edge/)和[產品服務條款](https://www.microsoft.com/licensing/product-licensing/products)。  
 
 
 您可以在 Azure 入口網站中刪除裝置：
 
 - 在您下訂單之後，以及在 Microsoft 準備好裝置之前。
-- 將裝置退回給 Microsoft 之後，其會在 Azure 資料中心通過實體檢查，且 Microsoft 支援服務會來電確認裝置已退回。
+- 將裝置傳回給 Microsoft 之後，它會在 Azure 資料中心傳遞實體檢查，並 Azure Stack Edge 作業小組呼叫來確認裝置是否已傳回。
 
 如果您已針對另一個訂用帳戶或位置啟用該裝置，Microsoft 會在一個工作天內將您的訂單移至新的訂用帳戶或位置。 移轉訂單之後，您即可刪除此資源。
 

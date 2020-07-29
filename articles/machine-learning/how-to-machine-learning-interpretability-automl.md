@@ -5,16 +5,17 @@ description: 瞭解如何取得自動化 ML 模型判斷功能重要性的說明
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: 13fd9aaa58032f4fc4d2e31c1341001109b09e6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ddfb0c9b10d96acd511b7bfaee4c6ef85d04812
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072252"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306412"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretability：自動化機器學習中的模型說明（預覽）
 

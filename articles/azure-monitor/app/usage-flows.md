@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6583a2fe5abd0193f37502e07c7b3fa0ee58ba9d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a31ab24b96fa44787d08801a0680f94ff98bb5a2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963411"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87309264"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>在 Application Insights 中使用使用者流程分析使用者瀏覽模式
 
@@ -27,7 +27,7 @@ ms.locfileid: "85963411"
 「使用者流程」工具會從您指定的初始網頁檢視、自訂事件或例外狀況來開始。 在給定這個初始事件時，使用者流程會顯示使用者工作階段期間之前和之後所發生的事件。 不同粗細的線條顯示每個路徑被使用者追蹤的次數。 特殊的**工作階段已啟動**節點會顯示後續節點開始工作階段的位置。 **工作階段已結束**節點則會顯示在上一個節點之後有多少使用者未傳送任何網頁檢視或自訂事件，醒目提示使用者可能是在哪個位置離開網站。
 
 > [!NOTE]
-> 您的 Application Insights 資源必須包含分頁檢視或自訂事件，以便使用「使用者流程」工具。 [了解如何設定應用程式以使用 Application Insights JavaScript SDK 自動收集分頁檢視](../../azure-monitor/app/javascript.md)。
+> 您的 Application Insights 資源必須包含分頁檢視或自訂事件，以便使用「使用者流程」工具。 [了解如何設定應用程式以使用 Application Insights JavaScript SDK 自動收集分頁檢視](./javascript.md)。
 >
 >
 
@@ -52,7 +52,7 @@ ms.locfileid: "85963411"
 * 檢查 [**編輯**] 功能表中的 [**排除的事件**] 區段。
 * 使用 [其他]**** 節點上的加號按鈕，在視覺效果中納入較不常見的事件。
 * 如果使用者不常傳送您預期的網頁檢視或自訂事件，請嘗試在 [**編輯**] 功能表中增加視覺效果的時間範圍。
-* 請確定您預期的網頁檢視、自訂事件或例外狀況已設定為由網站原始程式碼中的 Application Insights SDK 來收集。 [深入了解收集自訂事件。](../../azure-monitor/app/api-custom-events-metrics.md)
+* 請確定您預期的網頁檢視、自訂事件或例外狀況已設定為由網站原始程式碼中的 Application Insights SDK 來收集。 [深入了解收集自訂事件。](./api-custom-events-metrics.md)
 
 如果您想要看到更多視覺效果中的步驟，請使用視覺效果上方的 [先前的步驟]**** 和 [後續步驟]**** 下拉式清單。
 
@@ -92,4 +92,5 @@ ms.locfileid: "85963411"
 * [使用量概觀](usage-overview.md)
 * [使用者、工作階段和事件](usage-segmentation.md)
 * [保留](usage-retention.md)
-* [將自訂事件新增至您的應用程式](../../azure-monitor/app/api-custom-events-metrics.md)
+* [將自訂事件新增至您的應用程式](./api-custom-events-metrics.md)
+

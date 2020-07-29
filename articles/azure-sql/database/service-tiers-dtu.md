@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 7ca106e076bc789e8435b9e67d6bffa20af8a635
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 901ad08440cf1cfbbbab4779a08a87c89a72cc59
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539171"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281492"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>以 DTU 為基礎的購買模式的服務層
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "86539171"
 |CPU|低|低、中、高|中、高|
 |IO 輸送量 (大約) |1-5 每個 DTU 的 IOPS| 1-5 每個 DTU 的 IOPS | 每個 DTU 25 IOPS|
 |IO 延遲 (大約)|5 毫秒 (讀取)，10 毫秒 (寫入)|5 毫秒 (讀取)，10 毫秒 (寫入)|2 毫秒 (讀取/寫入)|
-|資料行存放區索引 |N/A|S3 和更新版本|支援|
+|資料行存放區索引 |不適用|S3 和更新版本|支援|
 |記憶體內部 OLTP|不適用|N/A|支援|
 |||||
 
@@ -59,7 +59,7 @@ ms.locfileid: "86539171"
 
 單一資料庫的計算大小會以資料庫交易單位 (DTU) 表示，而彈性集區的計算大小則會以彈性資料庫交易單位 (eDTU) 表示。 如需 Dtu 和 Edtu 的詳細資訊，請參閱以[dtu 為基礎的購買模型](purchasing-models.md#dtu-based-purchasing-model)。
 
-|基本|標準|Premium|
+||基本|標準|Premium|
 | :-- | --: | --: | --: |
 | 儲存體大小上限 | 2 GB | 1 TB | 4 TB  |
 | DTU 上限 | 5 | 3000 | 4000 | 
@@ -70,7 +70,7 @@ ms.locfileid: "86539171"
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>彈性集區 eDTU、儲存體及集區資料庫限制
 
-| **基本** | **Standard** | **高級** |
+|| **基本** | **Standard** | **高級** |
 | :-- | --: | --: | --: |
 | 每個資料庫的儲存體大小上限  | 2 GB | 1 TB | 1 TB |
 | 每個集區的儲存體大小上限 | 156 GB | 4 TB | 4 TB |
@@ -108,11 +108,11 @@ ms.locfileid: "86539171"
 
 資料庫的大小是根據「縮放比例」來設定。 縮放比例 (簡寫為 SF) 可決定調整和成長資料表的基數。 如以下的＜使用者與步調＞一節所述，資料庫大小、使用者數目和最大效能都會根據彼此的比例進行調整。
 
-### <a name="transactions"></a>異動
+### <a name="transactions"></a>交易
 
 工作負載包含九種交易類型，如下表所示。 每一筆交易都設計為反白顯示資料庫引擎和系統硬體中特定的一組系統特性，與其他交易呈現高度對比。 此方法可讓您更容易評估不同元件對整體效能的影響。 例如，「頻繁讀取」交易會從磁碟產生大量的讀取作業。
 
-| 交易類型 | 描述 |
+| 交易類型 | 說明 |
 | --- | --- |
 | 輕度讀取 |SELECT；記憶體中；唯讀 |
 | 中度讀取 |SELECT；大部分記憶體中；唯讀 |

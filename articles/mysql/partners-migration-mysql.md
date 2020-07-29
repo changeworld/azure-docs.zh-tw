@@ -6,11 +6,12 @@ ms.author: jtoland
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 7f922275e5541baabc77a1efb19e48fa8be4c5ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f325280cb4b18def603410464a06fddaed09c78a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76289419"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285402"
 ---
 # <a name="azure-database-for-mysql-migration-partners"></a>適用於 MySQL 的 Azure 資料庫移轉合作夥伴
 為廣泛支援「適用於 MySQL 的 Azure 資料庫」解決方案，您可以從各種不同的業界領導合作夥伴和工具中擇一使用。 本文主要說明有移轉解決方案可支援「適用於 MySQL 的 Azure 資料庫」的 Microsoft 合作夥伴。
@@ -26,7 +27,7 @@ ms.locfileid: "76289419"
 | ![Pactera][6] |**Pactera**<br>Pactera 是一家全球性公司，提供顧問、數位、與營運服務給全球領先企業。 從其工程方面根基，到數位轉換中的最新技術，他們都能為客戶提供最具競爭優勢的產品與服務。 其經過實證的方法和工具可確保您資料的安全性、真確性與精確性。|[網站][pactera_website]<br>[Twitter][pactera_twitter]<br>[Contact][pactera_contact] | |
 
 ## <a name="next-steps"></a>後續步驟
-若要深入了解 Microsoft 的其他某些合作夥伴，請參閱 [Microsoft 合作夥伴網站](https://partner.microsoft.com/en-US/)。
+若要深入了解 Microsoft 的其他某些合作夥伴，請參閱 [Microsoft 合作夥伴網站](https://partner.microsoft.com/)。
 
 <!--Image references-->
 [1]: ./media/partner-migration-mysql/SNP_Logo.png

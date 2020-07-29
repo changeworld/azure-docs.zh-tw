@@ -4,16 +4,16 @@ description: 本文提供要對 IaaS VM 使用 Microsoft Azure 磁碟加密所�
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8ad34d0a3db3b2b9d3662329e95b27c214dfc247
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb625624fa6faa4fdf3ef4fba3b49a0d2d5d7e09
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088507"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284535"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>使用 Azure AD 建立和設定 Azure 磁碟加密的金鑰保存庫（舊版）
 
@@ -220,7 +220,7 @@ Azure 平台需要存取您金鑰保存庫中的加密金鑰或密碼，讓該�
 1. 選取金鑰保存庫，移至 [存取原則]****，然後**按一下以顯示進階存取原則**。
 2. 選取標示為**為磁碟區加密啟用對 Azure 磁碟加密的存取**的方塊。
 3. 視需要選取 [為部署啟用對 Azure 虛擬機器的存取]**** 及/或 [為範本部署啟用對 Azure Resource Manager 的存取]****。 
-4. 按一下 [檔案] 。
+4. 按一下 **[儲存]** 。
 
 ![Azure 金鑰保存庫進階存取原則](../media/disk-encryption/keyvault-portal-fig4.png)
 

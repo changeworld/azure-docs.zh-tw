@@ -4,15 +4,15 @@ description: 了解如何在 Microsoft 合作夥伴中心管理商業市集帳�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
-ms.author: mingshen
+author: parthpandyaMSFT
+ms.author: parthp
 ms.date: 04/27/2020
-ms.openlocfilehash: 90ce9e48515213460fdb3db4fed57fd6f5d2688a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8362019365aab002929cc3414e6ca742952fc8ae
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112845"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320012"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>在合作夥伴中心管理您的商業市集帳戶
 

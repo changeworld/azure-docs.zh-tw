@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: e31a10b1086679b7c2493f5a6d6b62f75e363dd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036466"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284705"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用序列主控台來存取 GRUB 與單一使用者模式
 當您啟動虛擬機器（VM）時，可能是您第一次看到的是最重要的整合開機載入器（GRUB）。 因為它是在作業系統啟動之前顯示，所以無法透過 SSH 存取 GRUB。 在 GRUB 中，您可以修改開機設定以開機進入單一使用者模式，還有其他專案。
@@ -241,7 +241,7 @@ Oracle Linux 預設會啟用 GRUB。 若要進入 GRUB，請執行來重新開�
 ## <a name="next-steps"></a>後續步驟
 若要深入瞭解序列主控台，請參閱：
 * [Linux 序列主控台檔](serial-console-linux.md)
-* [使用序列主控台在各種發行版本中啟用 GRUB](/archive/blogs/linuxonazure/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time)
+* [使用序列主控台在各種發行版本中啟用 GRUB](http://linuxonazure.azurewebsites.net/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)
 * [使用序列主控台進行 NMI 和 SysRq 呼叫](serial-console-nmi-sysrq.md)
 * [Windows Vm 的序列主控台](serial-console-windows.md)
 * [開機診斷](boot-diagnostics.md)

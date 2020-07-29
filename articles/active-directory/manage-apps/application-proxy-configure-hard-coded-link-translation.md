@@ -16,13 +16,14 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764837"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282920"
 ---
-# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>重新導向使用 Azure AD Application Proxy 發佈之應用程式的硬式編碼連結
+# <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>為使用 Azure AD 應用程式 Proxy 發佈的應用程式重新導向硬式編碼連結
 
 Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用者使用，或讓使用者在其自己的裝置上使用。 不過，有些應用程式是以 HTML 中內嵌的本機連結進行開發。 從遠端使用應用程式時，這些連結無法正常運作。 當您有數個指向彼此的內部部署應用程式時，使用者預期當他們不在辦公室時，連結可持續運作。 
 
@@ -32,13 +33,13 @@ Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用�
 如果您無法在租用戶中使用自訂網域，有數個其他選項可提供這項功能。 這些選項全部也都可與自訂網域相容且彼此相容，讓您可以視需要設定自訂網域和其他解決方案。
 
 > [!NOTE]
-> 透過 JAVAscript 產生的硬式編碼內部 Url 不支援連結轉譯。
+> 透過 JavaScript 產生的硬式編碼內部 Url 不支援連結轉譯。
 
-**選項1：使用 Managed Browser 或 Microsoft edge** -只有當您計畫建議或要求使用者透過 Intune Managed Browser 或 Microsoft Edge 瀏覽器存取應用程式時，才適用此解決方案。 它將會處理所有已發佈的 URL。 
+**選項1：使用 Microsoft edge** -只有在您計畫建議或要求使用者透過 Microsoft Edge 瀏覽器存取應用程式時，才適用此解決方案。 它將會處理所有已發佈的 URL。 
 
 **選項 2：使用 MyApps 延伸模組** – 這個解決方案會要求使用者安裝用戶端瀏覽器延伸模組，但它將會處理所有已發佈的 URL，而且適用於最熱門的瀏覽器。 
 
-**選項 3：使用連結轉譯設定** – 這是使用者看不到的管理員端設定。 不過，它將只會處理 HTML 和 CSS 中的 URL。   
+**選項 3：使用連結轉譯設定** – 這是使用者看不到的管理員端設定。 不過，它只會處理 HTML 和 CSS 中的 Url。   
 
 不論您的使用者位於何處，這三個功能都會讓您的連結保持運作。 當您有直接指向內部端點或連接埠的應用程式時，您可以將這些內部 URL 對應至已發佈的外部 Application Proxy URL。 
 
@@ -49,11 +50,11 @@ Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用�
 > 或者，如果您需要透過連結轉譯設定的應用程式為 SharePoint，請參閱[設定 SharePoint 2013 的備用存取對應](https://technet.microsoft.com/library/cc263208.aspx)以取得對應連結的另一種方法。 
 
  
-### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>選項1： Intune Managed Browser 和 Microsoft Edge 整合 
+### <a name="option-1-microsoft-edge-integration"></a>選項1： Microsoft Edge 整合 
 
-您可以使用 Intune Managed Browser 或 Microsoft Edge 進一步保護您的應用程式和內容。 若要使用此解決方案，您必須要求/建議使用者透過 Intune Managed Browser 存取應用程式。 Managed Browser 將會辨識出以應用程式 Proxy 發佈的所有內部 URL，並將其重新導向至對應的外部 URL。 這樣可以確保所有硬式編碼的內部 URL 均會運作，而且，如果使用者前往瀏覽器並直接輸入內部 URL，即便使用者位於遠端，它還是會運作。  
+您可以使用 Microsoft Edge 進一步保護您的應用程式和內容。 若要使用此解決方案，您必須要求/建議使用者透過 Microsoft Edge 存取應用程式。 以應用程式 Proxy 發佈的所有內部 Url 都會被 Edge 辨識，並重新導向至對應的外部 URL。 這樣可以確保所有硬式編碼的內部 URL 均會運作，而且，如果使用者前往瀏覽器並直接輸入內部 URL，即便使用者位於遠端，它還是會運作。  
 
-如需深入了解 (包括如何設定這個選項)，請參閱 [Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) \(機器翻譯\) 文件。  
+若要深入瞭解，包括如何設定此選項，請參閱[使用適用于 iOS 和 Android 的 Edge 來管理 web 存取與 Microsoft Intune](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge)檔。  
 
 ### <a name="option-2-myapps-browser-extension"></a>選項 2：MyApps 瀏覽器延伸模組 
 
@@ -72,9 +73,9 @@ Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用�
 
 ## <a name="how-link-translation-works"></a>連結轉譯的運作方式
 
-驗證之後，當 Proxy 伺服器將應用程式資料傳遞給使用者時，Application Proxy 會掃描應用程式中的硬式編碼連結，然後以其各自發佈的外部 URL 加以取代。
+驗證之後，當 proxy 伺服器將應用程式資料傳遞給使用者時，應用程式 Proxy 會掃描應用程式中是否有硬式編碼的連結，並將其取代為其各自發行的外部 Url。
 
-應用程式 Proxy 假設應用程式是以 UTF-8 編碼。 如果事實並非如此，請在 http 回應標頭中指定編碼類型，例如 `Content-Type:text/html;charset=utf-8`。
+應用程式 Proxy 假設應用程式是以 UTF-8 編碼。 如果不是這種情況，請在 HTTP 回應標頭中指定編碼類型，例如 `Content-Type:text/html;charset=utf-8` 。
 
 ### <a name="which-links-are-affected"></a>哪些連結會受影響？
 
@@ -83,7 +84,7 @@ Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用�
 內部部署應用程式中有兩種常見的內部連結類型：
 
 - **相對內部連結**，其指向本機檔案結構中的共用資源，例如 `/claims/claims.html`。 這些連結會自動在透過應用程式 Proxy 發佈的應用程式中運作，並且持續運作 (不論是否啟用連結轉譯)。 
-- 其他內部部署應用程式 (例如 `http://expenses`) 或已發佈檔案 (例如 `http://expenses/logo.jpg`) 的**硬式編碼內部連結**。 連結轉譯功能適用於硬式編碼內部連結，並可將這些連結變更為指向遠端使用者必須通過的外部 URL。
+- 其他內部部署應用程式的**硬式編碼內部連結**，例如 `http://expenses` 或已發佈的檔案，例如 `http://expenses/logo.jpg` 。 連結轉譯功能適用于硬式編碼的內部連結，並將它們變更為指向遠端使用者需要進行的外部 Url。
 
 應用程式 Proxy 支援連結轉譯的 HTML 程式碼標記完整清單包括：
 * a
@@ -102,7 +103,7 @@ Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用�
 * link
 * menuitem
 * meta
-* 物件 (object)
+* object
 * 指令碼
 * source
 * 追蹤
@@ -140,7 +141,7 @@ Azure AD Application Proxy 讓您的內部部署應用程式可供遠端使用�
 3. 將 [轉譯應用程式主體中的 URL]**** 切換為 [是]****。
 
    ![選取 [是] 可轉譯應用程式主體中的 URL](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
-4. 選取 [儲存]**** 以套用變更。
+4. 選取 [儲存] 來套用您的變更。
 
 現在，當您的使用者存取此應用程式時，Proxy 會自動掃描已透過您租用戶上的 Application Proxy 發佈的內部 URL。
 

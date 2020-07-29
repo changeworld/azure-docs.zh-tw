@@ -4,18 +4,16 @@ description: 瞭解如何進行虛刪除，以保護您的 Azure 檔案共用不
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 7070cb1ee3881fbec2c6f44eae18f3bc51f8051d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ec2d3bf84aed19b608a92b6f21cd1674ba5b7cf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054378"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282699"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>使用 Azure 備份意外刪除 Azure 檔案共用的保護
 
-若要針對網路攻擊或意外刪除提供保護，當您為個別儲存體帳戶中的任何檔案共用設定備份時，會針對儲存體帳戶中的所有檔案共用啟用虛[刪除](../storage/files/storage-files-prevent-file-share-deletion.md)。 使用虛刪除時，即使惡意執行者刪除檔案共用，檔案共用的內容和復原點（快照集）至少會保留14個額外的天數，允許復原不會遺失資料的檔案共用。  
-
-只有 standard 和 premium 儲存體帳戶支援虛刪除，而且目前可從[這些區域](azure-file-share-support-matrix.md)的 Azure 備份端啟用。
+若要針對網路攻擊或意外刪除提供保護，當您為個別儲存體帳戶中的任何檔案共用設定備份時，會針對儲存體帳戶中的所有檔案共用啟用虛[刪除](../storage/files/storage-files-prevent-file-share-deletion.md)。 使用虛刪除時，即使惡意執行者刪除檔案共用，檔案共用的內容和復原點（快照集）至少會保留14個額外的天數，允許復原不會遺失資料的檔案共用。  標準和高階儲存體帳戶支援虛刪除，而且設定是針對所有裝載備份檔案共用的儲存體帳戶 Azure 備份啟用。
 
 下列流程圖顯示針對儲存體帳戶中的檔案共用啟用虛刪除時，備份專案的不同步驟和狀態：
 

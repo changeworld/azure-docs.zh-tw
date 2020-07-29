@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 757dd7280867e9b31fdc0750fc0848de8f266770
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: fff44617a5621d4edd84bee8f9b1e6b6e6924cd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045615"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305919"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>使用受控識別從 Azure 串流分析作業 (預覽) 存取 Azure SQL Database
 
@@ -102,7 +102,7 @@ Azure 串流分析支援 Azure SQL Database 輸出接收的[受控識別驗證](
 
 ## <a name="grant-stream-analytics-job-permissions"></a>授與串流分析作業權限
 
-當您在入口網站中建立自主資料庫使用者並取得 Azure 服務的存取權 (如上一節所述) 之後，您的串流分析作業會從受控識別獲得權限，可透過受控識別**連線**到您的 SQL Database 資源。 建議您將 SELECT 和 INSERT 權限授與串流分析作業，因為稍後在串流分析工作流程中需要用到。 **SELECT** 權限可讓作業測試其與 SQL Database 中資料表的連線。 **INSERT** 權限可讓您在設定輸入和 SQL Database 輸出之後，測試端對端串流分析查詢。您可以使用 SQL Server Management Studio 將這些權限授與串流分析作業。 如需詳細資訊，請參閱 [GRANT (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) 參考。
+當您在入口網站中建立自主資料庫使用者並取得 Azure 服務的存取權 (如上一節所述) 之後，您的串流分析作業會從受控識別獲得權限，可透過受控識別**連線**到您的 SQL Database 資源。 建議您將 SELECT 和 INSERT 權限授與串流分析作業，因為稍後在串流分析工作流程中需要用到。 **SELECT** 權限可讓作業測試其與 SQL Database 中資料表的連線。 **INSERT** 權限可讓您在設定輸入和 SQL Database 輸出之後，測試端對端串流分析查詢。您可以使用 SQL Server Management Studio 將這些權限授與串流分析作業。 如需詳細資訊，請參閱 GRANT （Transact-sql）參考。
 
 若只要授與資料庫中特定資料表或物件的權限，請使用下列 T-SQL 語法並執行查詢。 
 

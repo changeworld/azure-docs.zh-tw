@@ -3,12 +3,12 @@ title: 檢視 Azure DevTest Labs 中的每月估計實驗室成本趨勢
 description: 本文提供有關如何在 Azure DevTest Labs 中追蹤實驗室成本（每月估計成本趨勢圖表）的資訊。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8bf8b1db82983cd7e1ecc5a45bf2d47a2787cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482763"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283821"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中追蹤與實驗室相關聯的成本
 本文提供如何追蹤實驗室成本的相關資訊。 它會示範如何針對實驗室的目前日曆月份，查看估計的成本趨勢。 本文也會說明如何在實驗室中查看每個資源的每月成本。
@@ -69,7 +69,7 @@ DevTest Labs 可讓您更輕鬆地管理您實驗室中的成本，方法是設�
      - 同樣地，如果您定義 webhook URL，就必須將 [成本閾值] 窗格中的 [通知]**** 設定為 [開啟]****。
      - 在這裡輸入 webhook 之前，您必須先建立 webhook。  
 
-       如需 webhook 的詳細資訊，請參閱[建立 webhook 或 API Azure 函式](../azure-functions/functions-create-a-web-hook-or-api-function.md)。 
+       如需 webhook 的詳細資訊，請參閱[建立 webhook 或 API Azure 函式](../azure-functions/functions-bindings-http-webhook.md)。 
 
 ## <a name="view-cost-by-resource"></a>依資源查看成本 
 實驗室中的每月成本趨勢功能，可讓您查看目前行事曆月份所花費的工作量。 它也會根據您過去七天的費用，顯示到月底的預測。 為了協助您瞭解為什麼實驗室中的消費成本提早達到閾值，您可以使用 [**依資源的成本**] 功能，顯示資料表中**每個資源的每**月費用。
@@ -93,4 +93,3 @@ DevTest Labs 可讓您更輕鬆地管理您實驗室中的成本，方法是設�
 * [建立自訂映像](devtest-lab-create-template.md) - 當您建立 VM 時，您要指定一個基本映像，它可以是自訂映像或 Marketplace 映像。 本文會示範如何從 VHD 檔案建立自訂的映像。
 * [設定 Marketplace 映像](devtest-lab-configure-marketplace-images.md) - DevTest Labs 支援根據 Azure Marketplace 映像建立 VM。 本文會示範在實驗室中建立 VM 時，如何指定可以使用哪些 Azure Marketplace 映像 (如果有的話)。
 * [在實驗室中建立 VM](devtest-lab-add-vm.md) - 示範如何從基本映像 (自訂或 Marketplace) 建立 VM，以及如何使用 VM 中的構件。
-

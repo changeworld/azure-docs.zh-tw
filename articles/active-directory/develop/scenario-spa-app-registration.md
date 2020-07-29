@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 238bcc6c706f2fab969c98b73ca879d064498693
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026504"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311563"
 ---
 # <a name="single-page-application-app-registration"></a>單頁應用程式：應用程式註冊
 
 若要在 Microsoft 身分識別平台中註冊單頁應用程式 (SPA)，請完成下列步驟。 註冊步驟在 MSAL.js 1.0 (支援隱含授與流程) 和 MSAL.js 2.0 (支援使用 PKCE 的授權碼流程) 之間有所不同。
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="create-the-app-registration"></a>建立應用程式註冊
 
@@ -67,7 +69,7 @@ ms.locfileid: "87026504"
 
 您現在已完成單頁應用程式 (SPA) 的註冊，並已設定重新導向 URI；系統會將用戶端重新導向到該 URI，也會將任何安全性權杖傳送到該 URI。 藉由個別或同時選取 [識別碼權杖] 和 [存取權杖]，您已啟用隱含授與流程。
 
-遵循[教學](tutorial-v2-javascript-spa.md)課程以取得進一步的指引。 
+遵循[教學](tutorial-v2-javascript-spa.md)課程以取得進一步的指引。
 
 ## <a name="note-about-authorization-flows"></a>授權流程的相關注意事項
 

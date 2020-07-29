@@ -1,6 +1,6 @@
 ---
 title: Azure 網路服務總覽
-description: 瞭解 Azure 中的網路服務及其功能-聯機服務、應用程式保護服務、應用程式傳遞服務，以及網路監視。
+description: 瞭解 Azure 中的網路服務，包括聯機服務、應用程式保護服務、應用程式傳遞服務，以及網路監視。
 services: networking
 documentationcenter: na
 author: KumudD
@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 097d2b4dffd1dda02d8e342a11b3a907bad4e90a
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 5b32f6b368af62bad13a505472a9ddd4709c032c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851648"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282155"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 網路服務總覽
 
@@ -34,7 +34,7 @@ Azure 中的網路服務提供各種不同的網路功能，可一起或分開�
 |[虛擬網路](#vnet)|可讓 Azure 資源安全地與彼此、網際網路和內部部署網路通訊。| <p>[篩選網路流量](../virtual-network/tutorial-filter-network-traffic.md)</p> <p>[路由網路流量](../virtual-network/tutorial-create-route-table-portal.md)</p> <p>[限制對資源的網路存取](../virtual-network/tutorial-restrict-network-access-to-resources.md)</p> <p>[連線虛擬網路](../virtual-network/tutorial-connect-virtual-networks-portal.md)</p>|
 |[ExpressRoute](#expressroute)|透過連線提供者所提供的私人連線，將您的內部部署網路延伸至 Microsoft 雲端。|<p>[建立和修改 ExpressRoute 線路](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)</p> <p>[建立和修改 ExpressRoute 線路的對等互連](../expressroute/expressroute-howto-routing-portal-resource-manager.md)</p> <p>[將 VNet 連結到 ExpressRoute 線路](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)</p> <p>[設定和管理 ExpressRoute 線路的路由篩選](../expressroute/how-to-routefilter-portal.md)</p>|
 |[VPN 閘道](#vpngateway)|透過公用網際網路在 Azure 虛擬網路與內部部署位置之間傳送加密的流量。|<p>[站對站連線](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)</p> <p>[VNet 對 VNet 連線](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)</p> <p>[點對站連線](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)</p>|
-|[Virtual WAN](#virtualwan)|將分支連線優化並自動執行至 Azure。 Azure 區域作為中樞，您可以選擇將您的分支連線到該中樞。|<p>[站對站](../virtual-wan/virtual-wan-site-to-site-portal.md)連線、 [ExpressRoute](../virtual-wan/virtual-wan-expressroute-portal.md)連線</p>|
+|[虛擬 WAN](#virtualwan)|將分支連線優化並自動執行至 Azure。 Azure 區域作為中樞，您可以選擇將您的分支連線到該中樞。|<p>[站對站](../virtual-wan/virtual-wan-site-to-site-portal.md)連線、 [ExpressRoute](../virtual-wan/virtual-wan-expressroute-portal.md)連線</p>|
 |[Azure DNS](#dns)|裝載使用 Microsoft Azure 基礎結構來提供名稱解析的 DNS 網域。|<p>[在 Azure DNS 上裝載您的網域](../dns/dns-delegate-domain-azure-dns.md)</p><p>[建立 web 應用程式的 DNS 記錄](../dns/dns-web-sites-custom-domain.md)</p> <p>[建立流量管理員的別名記錄](../dns/tutorial-alias-tm.md)</p> <p>[建立公用 IP 位址的別名記錄](../dns/tutorial-alias-pip.md)</p> <p>[建立區域資源記錄的別名記錄](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|透過 TLS 直接在 Azure 入口網站中，為您的虛擬機器設定安全且順暢的 RDP/SSH 連線能力。 當您透過 Azure 防禦進行連接時，您的虛擬機器不需要公用 IP 位址|<p>[建立 Azure Bastion 主機](../bastion/bastion-create-host-portal.md)</p><p>[使用 SSH 連接至 Linux VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[使用 RDP 連接到 Windows VM](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[虛擬網路 NAT 閘道](#nat)|建立 NAT 閘道，為虛擬機器提供輸出連線能力。|<p>[建立 NAT 閘道](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
@@ -53,7 +53,7 @@ Azure 虛擬網路 (VNet) 是私人網路在 Azure 中的基本建置組塊。 �
 如需詳細資訊，請參閱[什麼是 Azure 虛擬網路？](../virtual-network/virtual-networks-overview.md)。
 
 ### <a name="expressroute"></a><a name="expressroute"></a>ExpressRoute
-ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 此連線是私人連線。 流量不會經由網際網路傳送。 透過 ExpressRoute，您可以建立 Microsoft 雲端服務的連線，例如 Microsoft Azure、Office 365 和 Dynamics 365。  如需詳細資訊，請參閱[什麼是 ExpressRoute？](../expressroute/expressroute-introduction.md)。
+ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部部署網路延伸至 Microsoft 雲端。 此連線是私人連線。 流量不會經由網際網路傳送。 透過 ExpressRoute，您可以建立 Microsoft 與雲端服務 (例如 Microsoft Azure、Office 365 和 Dynamics 365) 的連線。  如需詳細資訊，請參閱[什麼是 ExpressRoute？](../expressroute/expressroute-introduction.md)。
 
 ![Azure ExpressRoute](./media/networking-overview/expressroute-connection-overview.png)
 
@@ -65,13 +65,13 @@ VPN 閘道可協助您從內部部署位置建立虛擬網路的加密跨單位�
 
 如需不同 VPN 連線類型的詳細資訊，請參閱[VPN 閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
 
-### <a name="virtual-wan"></a><a name="virtualwan"></a>Virtual WAN
+### <a name="virtual-wan"></a><a name="virtualwan"></a>虛擬 WAN
 Azure 虛擬 WAN 是一種網路服務，可將最佳且自動化的分支連線提供給 Azure，或透過 Azure 提供最佳且自動化的分支連線。 Azure 區域作為中樞，您可以選擇將您的分支連線到該中樞。 您也可以利用 Azure 骨幹來連接分支，並享受分支對 VNet 的連線能力。 Azure 虛擬 WAN 將許多 Azure 雲端聯機服務（例如站對站 VPN、ExpressRoute、點對站使用者 VPN）整合成單一操作介面。 使用虛擬網路連線可建立與 Azure Vnet 的連線。 如需詳細資訊，請參閱[什麼是 Azure 虛擬 WAN？](../virtual-wan/virtual-wan-about.md)。
 
 ![虛擬 WAN 的圖表](./media/networking-overview/virtualwan1.png)
 
 ### <a name="azure-dns"></a><a name="dns"></a>Azure DNS
-Azure DNS 是 DNS 網域的主機服務，採用 Microsoft Azure 基礎結構來提供名稱解析。 只要將您的網域裝載於 Azure，就可以像管理其他 Azure 服務一樣，使用相同的認證、API、工具和計費方式來管理 DNS 記錄。 如需詳細資訊，請參閱[什麼是 Azure DNS？](../dns/dns-overview.md)。
+Azure DNS 是 DNS 網域的主機服務，可使用 Microsoft Azure 基礎結構來提供名稱解析。 只要將您的網域裝載於 Azure，就可以像管理其他 Azure 服務一樣，使用相同的認證、API、工具和計費方式來管理 DNS 記錄。 如需詳細資訊，請參閱[什麼是 Azure DNS？](../dns/dns-overview.md)。
 
 ### <a name="azure-bastion"></a><a name="bastion"></a>Azure Bastion
 Azure Bastion 服務是您可在虛擬網路內佈建的新完全平台受控 PaaS 服務。 直接在 Azure 入口網站中，透過 TLS 提供與虛擬機器之間安全且順暢的 RDP/SSH 連線。 透過 Azure Bastion 連線時，虛擬機器不需要公用 IP 位址。 如需詳細資訊，請參閱[什麼是 Azure 防禦？](../bastion/bastion-overview.md)。
@@ -102,7 +102,7 @@ Azure 對等服務可加強客戶對 Microsoft 雲端服務的連線，例如 Of
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS 保護 
 [Azure DDoS 保護](../virtual-network/manage-ddos-protection.md)針對最複雜的 DDoS 威脅提供對策。 此服務為您的應用程式和虛擬網路中部署的資源，提供增強的 DDoS 風險降低功能。 此外，使用 Azure DDoS 保護的客戶可以存取 DDoS 快速回應支援，以在主動攻擊期間與 DDoS 專家接洽。
 
-![DDoS保護](./media/networking-overview/ddos-protection.png)
+![DDoS 保護](./media/networking-overview/ddos-protection.png)
 
 ### <a name="web-application-firewall"></a><a name="waf"></a>Web 應用程式防火牆
 
@@ -167,7 +167,7 @@ Azure 流量管理員是 DNS 型流量負載平衡器，可讓您跨全球的 Az
 
 如需流量管理員的詳細資訊，請參閱[什麼是 Azure 流量管理員？](../traffic-manager/traffic-manager-overview.md)
 
-### <a name="load-balancer"></a><a name="loadbalancer"></a>Load Balancer
+### <a name="load-balancer"></a><a name="loadbalancer"></a>負載平衡器
 Azure Load Balancer 針對所有 UDP 和 TCP 通訊協定提供高效能、低延遲的第 4 層負載平衡。 它會管理輸入及輸出連線。 您可以設定公用和內部負載平衡端點。 您可以使用 TCP 和 HTTP 健全狀況探查選項定義規則，將輸入連線對應至後端集區目的地，以管理服務可用性。 若要深入了解負載平衡器，請閱讀[負載平衡器概觀](../load-balancer/load-balancer-overview.md)一文。
 
 下圖顯示同時使用外部和內部負載平衡器的網際網路對向多層應用程式︰

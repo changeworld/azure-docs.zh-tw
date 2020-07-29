@@ -3,12 +3,12 @@ title: Azure 事件中樞 Resource Manager 例外狀況 |Microsoft Docs
 description: Azure Resource Manager 和建議的動作所呈現的 Azure 事件中樞例外狀況清單。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d8d52f0a0c58ee756afa4d5d8599e2981edb9cdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa1a3ca647bbf9e6590446549455a9853411fd7d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312520"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281033"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure 事件中樞 Resource Manager 例外狀況
 本文列出使用 Azure Resource Manager 的範本或直接呼叫來與 Azure 事件中樞互動時所產生的例外狀況。
@@ -44,7 +44,7 @@ ms.locfileid: "85312520"
 | BadRequest | 無 | 無法更新次要命名空間 | 無法更新命名空間，因為它是[GeoDR 配對](event-hubs-geo-dr.md)中的次要命名空間。 | 如有需要，請改為變更此配對中的主要命名空間。 否則，請中斷 GeoDR 配對以進行變更。 |
 | BadRequest | 無 | 無法在基本 SKU 中設定自動擴充 | 無法在基本層事件中樞命名空間上啟用自動擴充。 | 若要在命名空間上[啟用自動](event-hubs-auto-inflate.md)擴充，請確定它是標準層。 |
 | BadRequest | 無 | 沒有足夠的容量可建立命名空間。 請洽詢您的事件中樞系統管理員。 | 選取的區域位於容量中，而且無法建立更多的命名空間。 | 選取另一個區域來存放您的命名空間。 |
-| BadRequest | 無 | 無法在實體類型 ' ConsumerGroup ' 上執行作業，因為命名空間的命名空間名稱 ' 使用「基本」層。  | 基本層事件中樞命名空間具有一個取用者群組的 [配額] （（事件中樞-配額. md # 事件中樞-基本和標準---配額和限制）（預設值）。 不支援建立更多取用者群組。 | 繼續使用預設取用者群組（$Default），或如果需要更多，請考慮改為使用標準層事件中樞命名空間。 | 
+| BadRequest | 無 | 無法在實體類型 ' ConsumerGroup ' 上執行作業，因為命名空間的命名空間名稱 ' 使用「基本」層。  | 基本層事件中樞命名空間具有一個取用者群組的[配額](event-hubs-quotas.md#event-hubs-basic-and-standard---quotas-and-limits)（預設值）。 不支援建立更多取用者群組。 | 繼續使用預設取用者群組（$Default），或如果需要更多，請考慮改為使用標準層事件中樞命名空間。 | 
 | BadRequest | 無 | 命名空間 ' namespace name ' 不存在。 | 找不到提供的命名空間。 | 再次檢查命名空間名稱是否正確，並可在您的訂用帳戶中找到。 如果不是，請[建立事件中樞命名空間](event-hubs-create.md)。 | 
 | BadRequest | 無 | 資源的 location 屬性不符合其包含的命名空間。 | 在特定區域中建立事件中樞失敗，因為它不符合命名空間的區域。 | 嘗試在與命名空間相同的區域中建立事件中樞。 | 
 

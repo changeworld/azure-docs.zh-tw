@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 06/10/2020
-ms.openlocfilehash: f501e84e988d340ba710e49d30caddbe56006c8a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: f40da30ff0d702078861367dea810cc8ca1ab91b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109411"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87305137"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的 SaaS 履行 Api 第2版
 
@@ -149,7 +151,7 @@ Microsoft 會在自動取消訂用帳戶之前，為客戶提供30天的寬限�
 
 SaaS 訂用帳戶可以在其生命週期中的任何時間點取消。 一旦取消，就無法重新開機訂用帳戶。
 
-## <a name="api-reference"></a>應用程式開發介面參考
+## <a name="api-reference"></a>API 參考資料
 
 本節記載 SaaS 訂用帳戶和作業 Api。
 
@@ -313,7 +315,7 @@ TLS 版本1.2 版本將會立即強制執行，做為 HTTPS 通訊的最低版�
 
 此 API 會傳回分頁的結果。 頁面大小為100。
 
-##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>獲取`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
+##### <a name="gethttpsmarketplaceapimicrosoftcomapisaassubscriptionsapi-versionapiversion"></a>Get`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`
 
 查詢參數：
 
@@ -615,7 +617,7 @@ TLS 版本1.2 版本將會立即強制執行，做為 HTTPS 通訊的最低版�
 
 基座數量不得超過目前方案中允許的數目。  在此情況下，您應該在變更數量之前變更計畫。
 
-##### <a name="patchhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>修補`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
+##### <a name="patchhttpsmarketplaceapimicrosoftcomapisaassubscriptionssubscriptionidapi-versionapiversion"></a>跳`https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`
 
 查詢參數：
 
@@ -952,7 +954,7 @@ Code：200呼叫以通知合作夥伴端的作業完成。  例如，此回應�
 } 
 ```
 
-## <a name="development-and-testing"></a>開發和測試
+## <a name="development-and-testing"></a>開發與測試
 
 若要開始開發程式，建議您在發行者端建立虛擬 API 回應。  這些回應可以根據本檔中提供的範例回應。
 

@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9989d0ebd95bfe5ee49be2ba76b73e07630b519a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656991"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283940"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure Logic Apps 從您的 SMTP 帳戶傳送電子郵件
 
@@ -50,12 +51,12 @@ ms.locfileid: "80656991"
 
    | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
-   | **連接名稱** | Yes | 與 SMTP 伺服器的連線名稱 | 
-   | **SMTP 伺服器位址** | Yes | SMTP 伺服器的位址 | 
-   | **使用者名稱** | Yes | SMTP 帳戶的使用者名稱 | 
+   | **連接名稱** | 是 | 與 SMTP 伺服器的連線名稱 | 
+   | **SMTP 伺服器位址** | 是 | SMTP 伺服器的位址 | 
+   | **使用者名稱** | 是 | SMTP 帳戶的使用者名稱 | 
    | **密碼** | 是 | SMTP 帳戶的密碼 | 
-   | **SMTP 伺服器連接埠** | No | SMTP 伺服器上您想要使用的特定連接埠 | 
-   | **要啟用 SSL 嗎？** | No | 開啟或關閉 TLS/SSL 加密。 | 
+   | **SMTP 伺服器連接埠** | 否 | SMTP 伺服器上您想要使用的特定連接埠 | 
+   | **要啟用 SSL 嗎？** | 否 | 開啟或關閉 TLS/SSL 加密。 | 
    |||| 
 
 1. 為您選取的動作提供必要的詳細資料。 
@@ -64,7 +65,7 @@ ms.locfileid: "80656991"
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/smtpconnector/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](/connectors/smtpconnector/)。
 
 > [!NOTE]
 > 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。

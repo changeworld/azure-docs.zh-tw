@@ -6,19 +6,19 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: 59d5c6c4a9c3af70eb08e9d5a05d516f4b8b8bdd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097635"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337257"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure Cache for Redis 與 Azure 私人連結（預覽）
 Azure 私用端點是一種網路介面，可讓您私下且安全地連線到 azure Cache for Redis （由 Azure 私用連結提供技術支援）。 
 
 在本文中，您將瞭解如何使用 Azure 入口網站來建立 Azure 快取、Azure 虛擬網路和私人端點。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 * Azure 訂用帳戶- [免費建立一個](https://azure.microsoft.com/free/)
 
 > [!NOTE]
@@ -73,7 +73,7 @@ Azure 私用端點是一種網路介面，可讓您私下且安全地連線到 a
     | 訂用帳戶     | 下拉並選取您的訂用帳戶。                                  |
     | 資源群組   | 下拉並選取資源群組。 |
     | **執行個體詳細資料** |                                                                 |
-    | 名稱             | 輸入**\<virtual-network-name>**                                    |
+    | 名稱             | 輸入 **\<virtual-network-name>**                                    |
     | 區域           | 請**\<region-name>** |
 
 4. 選取 [ **IP 位址**] 索引標籤，或選取頁面底部的 [**下一步： IP 位址**] 按鈕。
@@ -82,7 +82,7 @@ Azure 私用端點是一種網路介面，可讓您私下且安全地連線到 a
 
     | 設定            | 值                      |
     |--------------------|----------------------------|
-    | IPv4 位址空間 | 輸入**\<IPv4-address-space>** |
+    | IPv4 位址空間 | 輸入 **\<IPv4-address-space>** |
 
 6. 在 [**子網名稱**] 底下，選取 [**預設**] 這個字。
 
@@ -90,8 +90,8 @@ Azure 私用端點是一種網路介面，可讓您私下且安全地連線到 a
 
     | 設定            | 值                      |
     |--------------------|----------------------------|
-    | 子網路名稱 | 輸入**\<subnet-name>** |
-    | 子網路位址範圍 | 輸入**\<subnet-address-range>**
+    | 子網路名稱 | 輸入 **\<subnet-name>** |
+    | 子網路位址範圍 | 輸入 **\<subnet-address-range>**
 
 8. 選取 [儲存]。
 
@@ -124,7 +124,7 @@ Azure 私用端點是一種網路介面，可讓您私下且安全地連線到 a
     | 訂用帳戶 | 下拉並選取您的訂用帳戶。 |
     | 資源群組 | 下拉並選取資源群組。 |
     | **執行個體詳細資料** |  |
-    | 名稱 |輸入私人端點的 [名稱]。  |
+    | Name |輸入私人端點的 [名稱]。  |
     | 區域 |下拉並選取位置。 |
     |||
 
@@ -142,10 +142,16 @@ Azure 私用端點是一種網路介面，可讓您私下且安全地連線到 a
 
 9. 選取頁面底部的 [下一步: 標記]**** 按鈕。
 
-10. 在 [**標記**] 索引標籤中，如果您想要將資源分類，請輸入名稱和值。 這是選擇性步驟。
+10. 在 [**標記**] 索引標籤中，如果您想要將資源分類，請輸入名稱和值。 此為選用步驟。
 
     :::image type="content" source="media/cache-private-link/12-tags-private-endpoint.png" alt-text="私人連結的標記。":::
 
 11. 選取 [檢閱 + 建立] ****。 您會進入 [ **審核] + [建立**] 索引標籤，   其中 Azure 會驗證您的設定。
 
 12. 一旦出現綠色**驗證**的訊息，請選取 [**建立**]。
+
+
+## <a name="next-steps"></a>後續步驟
+
+若要深入瞭解私人連結，請參閱[Azure 私人連結檔](https://docs.microsoft.com/azure/private-link/private-link-overview)。 
+

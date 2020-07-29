@@ -4,15 +4,16 @@ description: 本文提供 azcopy 同步命令的參考資訊。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d4b43b590b147335a70877a7c3c0b07f8b818e3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b87f8d0dd6a8fff35e3ae769652b50e7d0ef34
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221066"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285198"
 ---
 # <a name="azcopy-sync"></a>azcopy 同步
 
@@ -32,13 +33,13 @@ Sync 命令與 copy 命令的差異有好幾種：
 
 1. 根據預設，遞迴旗標為 true，同步會複製所有子目錄。 如果遞迴旗標為 false，同步只會複製目錄中的最上層檔案。
 2. 在虛擬目錄之間進行同步處理時，如果有 blob 的名稱與其中一個虛擬目錄相同，請在路徑中加上尾端斜線（請參閱範例）。
-3. 如果 ' deleteDestination ' 旗標設為 true 或 prompt，則 sync 會刪除來源上不存在之目的地的檔案和 blob。
+3. 如果 `deleteDestination` 旗標設定為 true 或 prompt，則同步將會刪除來源上不存在之目的地的檔案和 blob。
 
 ## <a name="related-conceptual-articles"></a>相關的概念性文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 - [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
-- [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
+- [使用 AzCopy 和檔案儲存體傳輸資料](storage-use-azcopy-files.md) (機器翻譯)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
 ### <a name="advanced"></a>進階
@@ -65,16 +66,13 @@ azcopy sync <source> <destination> [flags]
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-> [!NOTE]
-> 目的地 blob*必須*存在。 用 `azcopy copy` 來複製目的地中尚未存在的單一檔案。 否則，會發生下列錯誤： `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container` 。
-
-與上述相同，但這次也會計算檔案內容的 MD5 雜湊，並將它儲存為 blob 的 Content-MD5 屬性：
+與上述相同，但也會計算檔案內容的 MD5 雜湊，然後將該 MD5 雜湊儲存為 blob 的 Content-MD5 屬性。 
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
 ```
 
-同步整個目錄（包括其子目錄）（請注意，遞迴預設為開啟）：
+同步整個目錄（包括其子目錄）（請注意，遞迴預設為 on）：
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
@@ -86,22 +84,22 @@ azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
 ```
 
-只同步目錄中的前幾個檔案，而不是它的子目錄：
+只同步目錄內的檔案，而不是子目錄中的檔案或子目錄內的檔案：
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-同步目錄中的檔案子集（例如：只有 jpg 和 pdf 檔案，或檔案名為 "exactName"）：
+同步目錄中的檔案子集（例如：只有 jpg 和 pdf 檔案，或檔案名為 `exactName` ）：
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include="*.jpg;*.pdf;exactName"
+azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
 同步整個目錄，但排除範圍中的某些檔案（例如：以 foo 或結尾為 bar 的每個檔案）：
 
 ```azcopy
-azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
+azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude-pattern="foo*;*bar"
 ```
 
 同步處理單一 blob：
@@ -131,31 +129,33 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 > [!NOTE]
 > 如果同時使用包含/排除旗標，則只會查看符合 include 模式的檔案，但是符合排除模式的檔一律會被忽略。
 
-## <a name="options"></a>選項
+## <a name="options"></a>選項。
 
---當上傳至 Azure 儲存體或從 Azure 儲存體下載時，**區塊大小-mb** float 使用此區塊大小（以 MiB 指定）。 預設值會根據檔案大小自動計算。 允許小數分數（例如：0.25）。
+--當上傳至 Azure 儲存體或從 Azure 儲存體下載時，**區塊大小-mb** float 使用此區塊大小（以 MiB 指定）。 預設值會根據檔案大小自動計算。 允許小數分數（例如： `0.25` ）。
 
-**--check-md5**字串指定在下載時應如何驗證嚴格的 md5 雜湊。 只有在下載時，才可以使用此選項。 可用的值包括： NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing。 （預設值為 ' FailIfDifferent '）。 （預設值為 "FailIfDifferent"）
+**--check-md5**字串指定在下載時應如何驗證嚴格的 md5 雜湊。 只有在下載時，才可以使用此選項。 可用的值包括： `NoCheck` 、 `LogOnly` 、 `FailIfDifferent` 、 `FailIfDifferentOrMissing` 。 （預設值 `FailIfDifferent` ）。 （預設值 `FailIfDifferent` ）
 
-**--delete-destination** string 定義是否要從目的地刪除不存在於來源的額外檔案。 可以設定為 true、false 或 prompt。 如果設定為 [提示]，則會在排程檔案和 blob 以供刪除之前，詢問使用者一個問題。 （預設值為 ' false '）。 （預設值為 "false"）
+**--delete-destination** string 定義是否要從目的地刪除不存在於來源的額外檔案。 可以設定為 `true` 、 `false` 或 `prompt` 。 如果設定為 `prompt` ，則會在排程檔案和 blob 以供刪除之前，詢問使用者一個問題。 （預設值 `false` ）。 （預設值 `false` ）
 
-**--exclude-** attribute 字串（僅限 Windows）排除其屬性符合屬性清單的檔案。 例如： A;今日R
+**--exclude-** attribute 字串（僅限 Windows）排除其屬性符合屬性清單的檔案。 例如：`A;S;R`
 
-**--exclude-** 在複製時排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： myFolder; myFolder/subDirName/file.pdf）。 與帳戶遍歷搭配使用時，路徑不會包含容器名稱。
+**--排除-** 在比較來源與目的地時，不包含這些路徑的路徑字串。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： `myFolder;myFolder/subDirName/file.pdf` ）。
 
-**--排除-模式**字串排除名稱符合模式清單的檔案。 例如： \* .jpg; \* 。pdf; exactName
+**--排除-模式**字串排除名稱符合模式清單的檔案。 例如：`*.jpg;*.pdf;exactName`
 
-**-h、--** 適用于同步處理的協助說明
+**--** 適用于同步處理的說明協助。
 
-**--include-屬性**字串（僅限 Windows）只包含屬性符合屬性清單的檔案。 例如： A;今日R
+**--include-屬性**字串（僅限 Windows）只包含屬性符合屬性清單的檔案。 例如：`A;S;R`
 
-**--include-模式**字串只包含名稱符合模式清單的檔案。 例如： \* .jpg; \* 。pdf; exactName
+**--include-模式**字串只包含名稱符合模式清單的檔案。 例如：`*.jpg;*.pdf;exactName`
 
-**--記錄層級**字串會定義記錄檔的記錄詳細資訊、可用的層級： INFO （所有要求和回應）、警告（回應緩慢）、錯誤（僅限失敗的要求）和無（沒有輸出記錄）。 （預設資訊）。 （預設值為 "INFO"）
+**--記錄層級**字串會定義記錄檔的記錄詳細資訊、可用的層級： `INFO` （所有要求和回應）、 `WARNING` （回應緩慢）、 `ERROR` （僅限失敗的要求）和 `NONE` （沒有輸出記錄）。 （預設值 `INFO` ）。 
 
-**--put-md5**                    建立每個檔案的 MD5 雜湊，並將雜湊儲存為目的地 blob 或檔案的 Content-MD5 屬性。 （根據預設，不會建立雜湊）。只有在上傳時才可使用。
+**--put-md5**    建立每個檔案的 MD5 雜湊，並將雜湊儲存為目的地 blob 或檔案的 Content-MD5 屬性。 （根據預設，不會建立雜湊）。只有在上傳時才可使用。
 
-**--遞迴**                  True 根據預設，在目錄之間同步時，會以遞迴方式查看子目錄。 （預設值為 true）。 （預設值為 true）
+**--遞迴** `True`根據預設，在目錄之間同步時，會以遞迴方式查看子目錄。     （預設值 `True` ）。 
+
+**--s2s-保留-存取層** 在服務對服務複製期間保留存取層。 請參閱[Azure Blob 儲存體：經常性、非經常性和封存存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。 （預設值 `true` ）。 
 
 ## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
