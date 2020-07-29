@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
-ms.openlocfilehash: 7926e3b8aedde63c3a1a5a57c42b3d4f29cb9797
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java
+ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076227"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369028"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>將現有的 JAVA Message Service （JMS）2.0 應用程式從 Apache ActiveMQ 遷移至 Azure 服務匯流排
 
@@ -26,7 +27,7 @@ ms.locfileid: "87076227"
 
 Azure 服務匯流排支援 JAVA 2 平臺、企業版和春季工作負載，其使用 JMS 2.0 API over Advanced Message 佇列通訊協定（AMQP）。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 ### <a name="differences-between-azure-service-bus-and-apache-activemq"></a>Azure 服務匯流排與 Apache ActiveMQ 之間的差異
 
@@ -59,7 +60,7 @@ Azure 服務匯流排的兩層式本質提供各種商務持續性功能（高�
 
 在遷移和修改用戶端應用程式以與 Azure 服務匯流排互動的過程中，保留在 ActiveMQ 中的資料不會遷移至服務匯流排。 您可能需要自訂應用程式來清空 ActiveMQ 佇列、主題和訂用帳戶，然後將訊息重新執行至佇列、主題和訂用帳戶服務匯流排。
 
-#### <a name="authentication-and-authorization"></a>驗證和授權
+#### <a name="authentication-and-authorization"></a>驗證與授權
 
 角色型存取控制（RBAC）（由 Azure Active Directory 支援）是服務匯流排慣用的驗證機制。 因為 RBAC 或宣告式驗證目前不受 Apache QPID JMS 的支援，不過，您應該使用 SAS 金鑰進行驗證。
 
@@ -89,7 +90,7 @@ Azure 服務匯流排的兩層式本質提供各種商務持續性功能（高�
   * [防火牆](service-bus-ip-filtering.md)
   * [使用客戶管理的金鑰進行服務端加密（BYOK）](configure-customer-managed-key.md)
   * [私人端點](private-link-service.md)
-  * [驗證和授權](service-bus-authentication-and-authorization.md)
+  * [驗證與授權](service-bus-authentication-and-authorization.md)
 
 ### <a name="monitoring-alerts-and-tracing"></a>監視、警示和追蹤
 

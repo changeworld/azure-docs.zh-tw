@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: mayg
-ms.openlocfilehash: 976888f57269cc9fe6107a38e30d78c73eb5c124
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a78ed25be80cbf083467209f764109a26782278
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037843"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292793"
 ---
 # <a name="reprotect-from-azure-to-on-premises"></a>從 Azure 移至內部部署來重新保護
 
@@ -33,7 +33,7 @@ ms.locfileid: "87037843"
     - 如果您使用的是 ESXi 5.5 免費版或 vSphere 6 程式管理的免費版本。 升級至不同的版本。
     - 如果您有 Windows Server 2008 R2 SP1 實體伺服器，則為。
     - VMware Vm 無法容錯回復至 Hyper-v。
-    - 已[遷移](migrate-overview.md#what-do-we-mean-by-migration)的 vm。
+    - 已遷移的 Vm。
     - 已移至另一個資源群組的 VM。
     - 已刪除的複本 Azure VM。
     - 未受保護的複本 Azure VM （複寫至內部部署網站）。
@@ -47,7 +47,7 @@ ms.locfileid: "87037843"
 - 如果您重新保護復原方案，您必須為每部受保護的機器提供值。
 - 如果 Vm 屬於多部 VM 一致性的複寫群組，則只能使用復原方案來重新保護它們。 複寫群組中的 Vm 必須使用相同的主要目標伺服器
 
-### <a name="before-you-start"></a>開始之前
+### <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 在容錯移轉之後，在 Azure 中啟動 VM 之後，代理程式需要一些時間才會註冊回設定伺服器（最多15分鐘）。 在這段時間，您將無法執行重新保護，且會有錯誤訊息指出代理程式未安裝。 如果發生這種情況，請等候幾分鐘的時間，然後再重新保護。
 - 如果您想要將 Azure VM 容錯回復到現有的內部部署 VM，請在主要目標伺服器的 ESXi 主機上掛接具有讀取/寫入存取權的內部部署 VM 資料存放區。

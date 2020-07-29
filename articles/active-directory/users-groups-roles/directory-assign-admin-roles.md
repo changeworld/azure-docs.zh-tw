@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b94d195ea1f31d228505f01c2a77a299e63c0a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 487177b4a114ba7537ac4f1aa74a4e2472455d4b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518091"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369555"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -289,6 +289,12 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 具備此角色的使用者可以啟用、設定及管理與在 Azure AD 中啟用混合式身分識別相關的服務和設定。 此角色能夠將 Azure AD 設定為三種支援的驗證方法之一 (密碼雜湊同步處理 (PHS)、傳遞驗證 (PTA) 或同盟 (AD FS 或第三方同盟提供者))，以及部署相關的內部部署基礎結構來啟用這些驗證方法。 內部部署基礎結構包含佈建和 PTA 代理程式。 此角色能夠啟用無縫單一登入 (SSO)，以在非 Windows 10 裝置或非 Windows Server 2016 電腦上啟用無縫驗證。 此外，此角色還能夠查看登入記錄，以及存取健康情況和分析，以供監視和疑難排解之用。 
 
+### <a name="insights-administrator"></a>[Insights 管理員](#insights-administrator-permissions)
+此角色中的使用者可以存取[M365 Insights 應用程式](https://go.microsoft.com/fwlink/?linkid=2129521)中的一組完整系統管理功能。 此角色能夠讀取目錄資訊、監視服務健全狀況、檔案支援票證，以及存取深入解析系統管理員設定的層面。
+
+### <a name="insights-business-leader"></a>[深入解析商務領導人](#insights-business-leader-permissions)
+此角色中的使用者可以透過[M365 insights 應用程式](https://go.microsoft.com/fwlink/?linkid=2129521)存取一組儀表板和深入解析。 這包括所有儀表板的完整存取權，以及呈現的深入解析和資料探索功能。 此角色中的使用者沒有存取產品設定的許可權，這是 Insights 管理員角色的責任。
+
 ### <a name="intune-administrator"></a>[Intune 管理員](#intune-service-administrator-permissions)
 
 此角色的使用者具有 Microsoft Intune Online (如其存在) 的全域權限。 此外，此角色包含管理使用者和裝置的能力，可相關聯原則以及建立和管理群組。 如需詳細資訊，請參閱[將角色型系統管理控制用於 Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)。
@@ -314,22 +320,22 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 此角色中的使用者可以在 [Office 365 訊息中心](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093)內，為他們的組織監視所設服務 (例如 Exchange、Intune 和 Microsoft Teams) 的通知和諮詢健康情況更新。 訊息中心讀者每週會收到貼文的電子郵件摘要和更新，並且可以在 Office 365 中分享訊息中心的貼文。 在 Azure AD 中，指派至此角色的使用者只會有 Azure AD 服務的唯讀存取權，與使用者和群組一樣。 這個角色沒有檢視、建立或管理支援票證的存取權。
 
-### <a name="modern-commerce-administrator"></a>[Modern Commerce 管理員](#modern-commerce-administrator-permissions)
+### <a name="modern-commerce-user"></a>[現代化商務使用者](#modern-commerce-user-permissions)
 
 請勿使用。 此角色會從 Commerce 自動指派，不適用於、也不支援任何其他用途。 請參閱下面的詳細資料。
 
-Modern Commerce 管理員角色可讓特定使用者有權存取 Microsoft 365 系統管理中心，以及查看 [首頁]、[計費] 和 [支援] 的左側導覽項目。 這些區域中可用的內容是由指派給使用者的[商務專用角色](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles)所控制，以管理其為自己或貴組織所購買的產品。 這可能包括支付帳單之類的工作，或對計費帳戶和帳單設定檔的存取權。 
+新式商務使用者角色會授與特定使用者存取 Microsoft 365 系統管理中心的許可權，並查看**首頁**、**帳單**和**支援**的左側導覽專案。 這些區域中可用的內容是由指派給使用者的[商務專用角色](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles)所控制，以管理其為自己或貴組織所購買的產品。 這可能包括支付帳單之類的工作，或對計費帳戶和帳單設定檔的存取權。 
 
-具有 Modern Commerce 管理員角色的使用者，在其他 Microsoft 採購系統中通常具有系統管理權限，但沒有用來存取系統管理中心的全域管理員或計費管理員角色。 
+具有新式商務使用者角色的使用者，在其他 Microsoft 購買系統中通常會有管理許可權，但沒有全域管理員或計費管理員用來存取系統管理中心的角色。 
 
-**何時會指派 Modern Commerce 管理員角色？**
+**何時會指派新式商務使用者角色？**
 
-* **Microsoft 365 系統管理中心的自助式採購** - 自助式採購讓使用者有機會藉由自行購買或註冊來試用新產品。 這些產品都是在系統管理中心進行管理。 進行自助式採購的使用者會被指派商務系統中的角色以及 Modern Commerce 管理員角色，以便在系統管理中心管理其採購項目。 系統管理員可透過 [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) 來封鎖自助式採購 (針對 Power BI、Power Apps、Power Automate)。 如需詳細資訊，請參閱[自助式購買常見問題集](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)。  
-* **從 Microsoft 商業市集採購** - 類似於自助式採購，當使用者從 Microsoft AppSource 或 Azure Marketplace 購買產品或服務時，如果他們沒有全域管理員或計費管理員角色，則會被指派 Modern Commerce 管理員角色。 在某些情況下，使用者可能會遭到封鎖而無法進行採購。 如需詳細資訊，請參閱 [Microsoft 商業市集](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)。
-* **Microsoft 的提案** – 提案是來自 Microsoft 的正式報價，可供貴組織購買 Microsoft 產品和服務。 如果接受提案的人員在 Azure AD 中沒有全域管理員或計費管理員角色，他們就會被指派商務專用角色來完成提案，以及被指派 Modern Commerce 管理員角色來存取系統管理中心。 當他們存取系統管理中心時，只能使用其商務專用角色所授權的功能。
-* **商務專用角色** – 某些使用者會被指派商務專用角色。 如果使用者不是全域或計費管理員，他們會取得 Modern Commerce 管理員角色，以便存取系統管理中心。  
+* **Microsoft 365 系統管理中心的自助式採購** - 自助式採購讓使用者有機會藉由自行購買或註冊來試用新產品。 這些產品都是在系統管理中心進行管理。 進行自助式購買的使用者會被指派商務系統中的角色，以及現代化的商務使用者角色，讓他們可以在系統管理中心管理他們的購買專案。 系統管理員可透過 [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) 來封鎖自助式採購 (針對 Power BI、Power Apps、Power Automate)。 如需詳細資訊，請參閱[自助式購買常見問題集](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)。  
+* **從 Microsoft 商業 Marketplace 購買**-類似于自助購買，當使用者從 Microsoft AppSource 或 Azure Marketplace 購買產品或服務時，如果他們沒有全域管理員或計費管理員角色，則會指派新式商務使用者角色。 在某些情況下，使用者可能會遭到封鎖而無法進行採購。 如需詳細資訊，請參閱 [Microsoft 商業市集](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)。
+* **Microsoft 的提案** – 提案是來自 Microsoft 的正式報價，可供貴組織購買 Microsoft 產品和服務。 當接受提案的人員在 Azure AD 中沒有全域系統管理員或計費管理員角色時，他們會獲派商業特定角色來完成提案和現代化商務使用者角色，以存取系統管理中心。 當他們存取系統管理中心時，只能使用其商務專用角色所授權的功能。
+* **商務專用角色** – 某些使用者會被指派商務專用角色。 如果使用者不是全域或計費管理員，他們會取得現代化的商務使用者角色，讓他們能夠存取系統管理中心。  
 
-如果取消指派使用者的 Modern Commerce 管理員角色，他們就會喪失 Microsoft 365 系統管理中心的存取權。 如果他們正為自己或貴組織管理任何產品，將無法管理這些產品。 這可能包括指派授權、變更付款方式、支付帳單，或其他管理訂用帳戶的工作。
+如果未指派使用者的新式商業使用者角色，他們就無法存取 Microsoft 365 系統管理中心。 如果他們正為自己或貴組織管理任何產品，將無法管理這些產品。 這可能包括指派授權、變更付款方式、支付帳單，或其他管理訂用帳戶的工作。
 
 ### <a name="network-administrator"></a>[網路管理員](#network-administrator-permissions)
 
@@ -1224,6 +1230,27 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
 
+### <a name="insights-administrator-permissions"></a>深入解析管理員許可權
+
+具有 M365 Insights 應用程式中的 sdministrative 存取權。 
+
+| **動作** | **說明** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
+| microsoft insights/allEntities/allTasks | 管理見解的所有層面。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
+
+### <a name="insights-business-leader-permissions"></a>Insights 商務領導人許可權
+
+可以透過 M365 Insights 應用程式來查看及共用儀表板和深入解析。
+
+| **動作** | **說明** |
+| --- | --- |
+| microsoft insights/報表/讀取 | 在 Insights 應用程式中查看報表和儀表板。 |
+| microsoft insights/程式/更新 | 在 Insights 應用程式中部署和管理程式。 |
 
 ### <a name="intune-service-administrator-permissions"></a>Intune 服務管理員權限
 
@@ -1338,7 +1365,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 | microsoft.office365.messageCenter/messages/read | 讀取 microsoft.office365.messageCenter 中的訊息。 |
 
-### <a name="modern-commerce-administrator-permissions"></a>Modern Commerce 管理員權限
+### <a name="modern-commerce-user-permissions"></a>現代化商務使用者權限
 可以管理公司、部門或團隊的商業採購。 
 
 > [!NOTE]
@@ -1619,24 +1646,26 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
 | microsoft.directory/applications/policies/update | 更新 Azure Active Directory 中的 applications.policies 屬性。 |
 | microsoft.directory/auditLogs/allProperties/read | 讀取 Azure Active Directory 中的 auditLogs 所包含的所有屬性 (包括特殊權限的屬性)。 |
 | microsoft.directory/devices/bitLockerRecoveryKeys/read | 讀取 Azure Active Directory 中的 devices.bitLockerRecoveryKeys 屬性。 |
+| microsoft 目錄/Microsoft.aad.identityprotection/allProperties/read | 讀取 microsoft.aad.identityProtection 中的所有資源。 |
+| microsoft directory/Microsoft.aad.identityprotection/allProperties/update | 更新 microsoft.aad.identityProtection 中的所有資源。 |
 | microsoft.directory/policies/basic/update | 更新 Azure Active Directory 中 policies 的基本屬性。 |
 | microsoft.directory/policies/create | 在 Azure Active Directory 中建立原則。 |
 | microsoft.directory/policies/delete | 刪除 Azure Active Directory 中的原則。 |
 | microsoft.directory/policies/owners/update | 更新 Azure Active Directory 中的 policies.owners 屬性。 |
 | microsoft.directory/policies/tenantDefault/update | 更新 Azure Active Directory 中的 policies.tenantDefault 屬性。 |
+| microsoft 目錄/Microsoft.aad.privilegedidentitymanagement/allProperties/read | 讀取 microsoft.aad.privilegedIdentityManagement 中的所有資源。 |
 | microsoft.directory/servicePrincipals/policies/update | 更新 Azure Active Directory 中的 servicePrincipals.policies 屬性。 |
 | microsoft.directory/signInReports/allProperties/read | 讀取 Azure Active Directory 中的 signInReports 所包含的所有屬性 (包括特殊權限的屬性)。 |
-| microsoft.aad.identityProtection/allEntities/read | 讀取 microsoft.aad.identityProtection 中的所有資源。 |
-| microsoft.aad.identityProtection/allEntities/update | 更新 microsoft.aad.identityProtection 中的所有資源。 |
-| microsoft.aad.privilegedIdentityManagement/allEntities/read | 讀取 microsoft.aad.privilegedIdentityManagement 中的所有資源。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
-| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 | microsoft.office365.protectionCenter/allEntities/read | 讀取 Office 365 防護中心的所有層面。 |
 | microsoft.office365.protectionCenter/allEntities/update | 更新 microsoft.office365.protectionCenter 中的所有資源。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
+| microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 
 ### <a name="security-operator-permissions"></a>安全性操作員權限
 
@@ -1649,12 +1678,13 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
-| microsoft.aad.cloudAppSecurity/allEntities/allTasks | 讀取及設定 Microsoft Cloud App Security。 |
-| microsoft.aad.identityProtection/allEntities/read | 讀取 microsoft.aad.identityProtection 中的所有資源。 |
-| microsoft.aad.privilegedIdentityManagement/allEntities/read | 讀取 microsoft.aad.privilegedIdentityManagement 中的所有資源。 |
 | microsoft.azure.advancedThreatProtection/allEntities/read | 讀取及設定 Azure AD 進階威脅防護。 |
+| microsoft 目錄/cloudAppSecurity/allProperties/allTasks | 讀取及設定 Microsoft Cloud App Security。 |
+| microsoft 目錄/Microsoft.aad.identityprotection/allProperties/read | 讀取 microsoft.aad.identityProtection 中的所有資源。 |
+| microsoft 目錄/Microsoft.aad.privilegedidentitymanagement/allProperties/read | 讀取 microsoft.aad.privilegedIdentityManagement 中的所有資源。 |
 | microsoft.intune/allEntities/allTasks | 管理 Intune 的所有層面。 |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | 讀取及設定安全性與合規性中心。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | 讀取及設定 Windows Defender 進階威脅防護。 |
 
 ### <a name="security-reader-permissions"></a>安全性讀取者權限
@@ -1872,13 +1902,15 @@ Exchange 服務管理員 | Exchange 系統管理員 | 29232cdf-9323-42fd-ade2-1d
 來賓邀請者 | 來賓邀請者 | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 服務台系統管理員 | 服務台管理員 | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 混合式身分識別管理員 | 混合式身分識別管理員 | 8ac3fc64-6eca-42ea-9e69-59f4c7b60eb2
+Insights 管理員 | Insights 管理員 | eb1f4a8d-243a-41f0-9fbd-c7cdf6c5ef7c
+深入解析商務領導人 | 深入解析商務領導人 | 31e939ad-9672-4796-9c2e-873181342d2d
 Intune 服務管理員 | Intune 管理員 | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala 管理員 | Kaizala 管理員 | 74ef975b-6605-40af-a5d2-b9539d836353
 授權管理員 | 授權管理員 | 4d6ac14f-3453-41d0-bef9-a3e0c569773a
 Lync 服務管理員 | 商務用 Skype 的管理員 | 75941009-915a-4869-abe7-691bff18279e
 訊息中心隱私權讀取者 | 訊息中心隱私權讀取者 | ac16e43d-7b2d-40e0-ac05-243ff356ab5b
 訊息中心讀取者 | 訊息中心讀取者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
-Modern Commerce 管理員 | Modern Commerce 管理員 | d24aef57-1500-4070-84db-2666f29cf966
+現代化商務使用者 | 現代化商務使用者 | d24aef57-1500-4070-84db-2666f29cf966
 網路管理員 | 網路管理員 | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office 應用程式管理員 | Office 應用程式管理員 | 2b745bdf-0803-4d80-aa65-822c4493daac
 合作夥伴第 1 層支援 | 未顯示，因為不得使用 | 4ba39ca4-527c-499a-b93d-d9b492c50246

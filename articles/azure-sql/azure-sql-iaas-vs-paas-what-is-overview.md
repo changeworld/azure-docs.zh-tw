@@ -12,13 +12,13 @@ keywords: SQL Server 雲端，SQL Server 在雲端，PaaS 資料庫，雲端 SQL
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/27/2020
-ms.openlocfilehash: 7a4f26b11911caaa7bce40b77570331b492ceb9d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 07/27/2020
+ms.openlocfilehash: ff8dd9d10bf5970a5a96080beb51e2c111d481e3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080171"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280846"
 ---
 # <a name="what-is-azure-sql"></a>什麼是 Azure SQL？ 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -110,7 +110,7 @@ Azure SQL Database 提供下列部署選項：
 | Azure SQL Database | Azure SQL 受控執行個體 | Azure VM 上的 SQL Server |
 | :--- | :--- | :--- |
 |支援大多數的內部部署資料庫層級功能。 提供最常使用的 SQL Server 功能。<br/>保證 99.995% 的可用性。<br/>內建備份、修補、復原。<br/>資料庫引擎最新穩定版。<br/>將所需的資源 (CPU/儲存體) 指派給個別資料庫的能力。<br/>內建進階智能和安全性。<br/>線上資源變更 (CPU/儲存體)。| 支援幾乎所有的內部部署執行個體層級和資料庫層級功能。 與 SQL Server 的高度相容性。<br/>保證 99.99% 可用性。<br/>內建備份、修補、復原。<br/>資料庫引擎最新穩定版。<br/>從 SQL Server 輕鬆移轉。<br/>Azure 虛擬網路中的私人 IP 位址。<br/>內建進階智能和安全性。<br/>線上資源變更 (CPU/儲存體)。| 您對 SQL Server 引擎具有完全的控制權。 支援所有內部部署功能。<br/>最高可達99.99% 的可用性。<br/>與內部部署 SQL Server 的相符版本完全一致。<br/>已修正、已知的資料庫引擎版本。<br/>從 SQL Server 輕鬆移轉。<br/>Azure 虛擬網路中的私人 IP 位址。<br/>您能夠在放置 SQL Server 的主機上部署應用程式或服務。|
-|從 SQL Server 遷移可能是一項挑戰。<br/>無法使用部分 SQL Server 功能。<br/>不保證確切的維護時間 (但近乎透明)。<br/>可以只使用資料庫相容性層級來達成與 SQL Server 版本的相容性。<br/>無法指派私人 IP 位址 (您可以使用防火牆規則限制存取)。|仍有極少數的 SQL Server 功能無法使用。<br/>不保證確切的維護時間 (但近乎透明)。<br/>可以只使用資料庫相容性層級來達成與 SQL Server 版本的相容性。|您需要管理備份和修補程式。<br>您需要實作自己的高可用性解決方案。<br/>變更資源 (CPU/儲存體) 時會出現停機時間|
+|從 SQL Server 遷移可能是一項挑戰。<br/>無法使用部分 SQL Server 功能。<br/>不保證確切的維護時間 (但近乎透明)。<br/>可以只使用資料庫相容性層級來達成與 SQL Server 版本的相容性。<br/>使用[Azure 私人連結](database/private-endpoint-overview.md)的私人 IP 位址支援。|仍有極少數的 SQL Server 功能無法使用。<br/>不保證確切的維護時間 (但近乎透明)。<br/>可以只使用資料庫相容性層級來達成與 SQL Server 版本的相容性。|您需要管理備份和修補程式。<br>您需要實作自己的高可用性解決方案。<br/>變更資源 (CPU/儲存體) 時會出現停機時間|
 | 最多 100 TB 的資料庫。 | 最多 8 TB。 | SQL Server 的實例，最多可達 256 TB 的儲存體。 執行個體可以支援所需數量的資料庫。 |
 | 內部部署應用程式可以存取 Azure SQL Database 中的資料。 | 使用 Azure Express Route 或 VPN 閘道[執行原生虛擬網路](managed-instance/vnet-existing-add-subnet.md)和內部部署環境的連線。 | 有了 SQL 虛擬機器，您就可以讓應用程式在雲端中執行，而且部分內部部署。 例如，您可以透過 [ [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)] 將內部部署網路和 Active Directory 網域延伸到雲端。 如需有關混合式雲端解決方案的詳細資訊，請參閱[將內部部署資料解決方案擴充至雲端](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)。 |
 

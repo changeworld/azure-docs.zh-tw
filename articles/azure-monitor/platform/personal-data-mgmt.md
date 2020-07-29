@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 7d8998b450613e097230d7692a8ad1990830993b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539324"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318312"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>儲存在 Log Analytics 和 Application Insights 中的個人資料指引
 
@@ -48,7 +48,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
     ```
   請記住，不要只是尋找人類看得懂的使用者名稱，還要尋找可以直接回溯追蹤到特定使用者的 GUID！
 * *裝置識別碼*：有時候，使用者識別碼、裝置識別碼等資料也會視為是「私人」資料。 請使用和上述針對使用者識別碼所列出的相同方法，來識別可能有這方面疑慮的資料表。 
-* *自訂資料*：Log Analytics 允許以各種方法收集資料：自訂記錄和自訂欄位、[HTTP 資料收集器 API](../../azure-monitor/platform/data-collector-api.md)，以及隨系統事件記錄一起收集的自訂資料。 這些項目全都可能包含私人資料，所以應該加以檢查以確認是否有這類資料存在。
+* *自訂資料*：Log Analytics 允許以各種方法收集資料：自訂記錄和自訂欄位、[HTTP 資料收集器 API](./data-collector-api.md)，以及隨系統事件記錄一起收集的自訂資料。 這些項目全都可能包含私人資料，所以應該加以檢查以確認是否有這類資料存在。
 * *解決方案所擷取的資料*：因為解決方案採開放式機制，建議您檢閱解決方案所產生的所有資料表以確保合規性。
 
 ### <a name="application-data"></a>應用程式資料
@@ -124,5 +124,6 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 >  雖然絕大多數清除作業的完成速度應該都遠遠超過 SLA，但由於這些作業會對 Application Insights 所使用的資料平台產生重大影響，所以**清除作業的正式完成 SLA 是設定為 30 天**。
 
 ## <a name="next-steps"></a>後續步驟
-- 若要深入了解 Log Analytics 資料的收集、處理和保護方式，請參閱 [Log Analytics 資料安全性](../../azure-monitor/platform/data-security.md)。
-- 若要深入了解 Application Insights 資料的收集、處理和保護方式，請參閱 [Application Insights 資料安全性](../../azure-monitor/app/data-retention-privacy.md)。
+- 若要深入了解 Log Analytics 資料的收集、處理和保護方式，請參閱 [Log Analytics 資料安全性](./data-security.md)。
+- 若要深入了解 Application Insights 資料的收集、處理和保護方式，請參閱 [Application Insights 資料安全性](../app/data-retention-privacy.md)。
+

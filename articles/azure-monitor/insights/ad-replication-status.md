@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516782"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318074"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure 監視器監視 Active Directory 複寫狀態
 
@@ -34,13 +34,13 @@ AD 複寫狀態解決方案會定期監視您的 Active Directory 環境是否�
 
 
 ### <a name="install-agents-on-domain-controllers"></a>在網域控制站上安裝代理程式
-您必須將代理程式安裝在隸屬於要評估之網域成員的網域控制站上。 或者您必須將代理程式安裝在成員伺服器上，並設定讓代理程式將 AD 複寫資料傳送至 Azure 監視器。 若要了解如何將 Windows 電腦連線到 Azure 監視器，請參閱[將 Windows 電腦連線到 Azure 監視器](../../azure-monitor/platform/agent-windows.md)。 如果您的網域控制站已屬於您要連線到 Azure 監視器的現有 System Center Operations Manager 環境，請參閱[將 Operations Manager 連線到 Azure 監視器](../../azure-monitor/platform/om-agents.md)。
+您必須將代理程式安裝在隸屬於要評估之網域成員的網域控制站上。 或者您必須將代理程式安裝在成員伺服器上，並設定讓代理程式將 AD 複寫資料傳送至 Azure 監視器。 若要了解如何將 Windows 電腦連線到 Azure 監視器，請參閱[將 Windows 電腦連線到 Azure 監視器](../platform/agent-windows.md)。 如果您的網域控制站已屬於您要連線到 Azure 監視器的現有 System Center Operations Manager 環境，請參閱[將 Operations Manager 連線到 Azure 監視器](../platform/om-agents.md)。
 
 ### <a name="enable-non-domain-controller"></a>啟用非網域控制站
 如果您不要將任何網域控制站直接連線到 Azure 監視器，您可以使用網域中任何其他連線到 Azure 監視器的電腦來收集「AD 複寫狀態」解決方案套件的資料並讓它傳送資料。
 
 1. 確認電腦是您要使用 AD 複寫狀態解決方案監視的網域成員。
-2. [將 Windows 電腦連線到 Azure 監視器](../../azure-monitor/platform/om-agents.md)或[使用現有 Operations Manager 環境將它連線到 Azure 監視器](../../azure-monitor/platform/om-agents.md) (如果尚未連線)。
+2. [將 Windows 電腦連線到 Azure 監視器](../platform/om-agents.md)或[使用現有 Operations Manager 環境將它連線到 Azure 監視器](../platform/om-agents.md) (如果尚未連線)。
 3. 該該電腦上，設定下列登錄機碼︰<br>機碼： **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management Groups \<ManagementGroupName> \Solutions\ADReplication**<br>值：**IsTarget**<br>數值資料︰**true**
 
    > [!NOTE]
@@ -110,7 +110,7 @@ AD 複寫狀態解決方案會定期監視您的 Active Directory 環境是否�
 
 ![查詢結果中的 AD 複寫狀態錯誤](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-從這裡，您可以進一步篩選、修改記錄查詢等。 如需使用 Azure 監視器中記錄查詢的詳細資訊，請參閱[在 Azure 監視器中分析記錄資料](../../azure-monitor/log-query/log-query-overview.md)。
+從這裡，您可以進一步篩選、修改記錄查詢等。 如需使用 Azure 監視器中記錄查詢的詳細資訊，請參閱[在 Azure 監視器中分析記錄資料](../log-query/log-query-overview.md)。
 
 **HelpLink** 欄位會顯示 TechNet 頁面的 URL，其中包含該特定錯誤的其他詳細資訊。 您可以將此連結複製並貼入瀏覽器視窗，以查看疑難排解和修正此錯誤的相關資訊。
 
@@ -150,9 +150,10 @@ A：是。 您可以設定要啟用此解決方案的登錄機碼值。 請參�
 ## <a name="troubleshoot-data-collection-problems"></a>疑難排解資料收集問題
 為了收集資料，「AD 複寫狀態」解決方案套件需要至少有一個網域控制站連線至您的 Log Analytics 工作區。 連接網域控制站後，會彈出訊息顯示**資料仍在收集中**。
 
-如果您需要協助以連線您的其中一個網域控制站，您可以檢視[將 Windows 電腦連線到 Azure 監視器](../../azure-monitor/platform/om-agents.md)文件。 或者，如果您的網域控制站已連線到現有的 System Center Operations Manager 環境，您可以檢視[將 System Center Operations Manage 連線到 Azure 監視器](../../azure-monitor/platform/om-agents.md)文件。
+如果您需要協助以連線您的其中一個網域控制站，您可以檢視[將 Windows 電腦連線到 Azure 監視器](../platform/om-agents.md)文件。 或者，如果您的網域控制站已連線到現有的 System Center Operations Manager 環境，您可以檢視[將 System Center Operations Manage 連線到 Azure 監視器](../platform/om-agents.md)文件。
 
 如果您不想要將任何網域控制站直接連線到 Azure 監視器或 System Center Operations Manager，請參閱[啟用非網域控制站](#enable-non-domain-controller)。
 
 ## <a name="next-steps"></a>後續步驟
-* 使用 [Azure 監視器中的記錄查詢](../../azure-monitor/log-query/log-query-overview.md)來檢視 Active Directory 複寫狀態資料。
+* 使用 [Azure 監視器中的記錄查詢](../log-query/log-query-overview.md)來檢視 Active Directory 複寫狀態資料。
+

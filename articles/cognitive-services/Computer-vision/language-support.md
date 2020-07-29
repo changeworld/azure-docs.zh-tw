@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 81d0183b6dde1a5fe6bd9cd36910fd3dfc1cc5b1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 16bb5fa41389dcf1ddd8ee2e3434e15755bb0d8d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205283"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290925"
 ---
 # <a name="language-support-for-computer-vision"></a>電腦視覺的語言支援
 
@@ -23,42 +23,42 @@ ms.locfileid: "86205283"
 
 ## <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
-電腦視覺的 OCR Api 支援數種語言。 您不需要指定語言代碼。 如需詳細資訊，請參閱[光學字元辨識 (OCR) ](concept-recognizing-text.md) 。
+電腦視覺的 OCR Api 支援數種語言。 您不需要指定語言代碼。 如需詳細資訊，請參閱[光學字元辨識（OCR）](concept-recognizing-text.md) 。
 
-|Language| 語言代碼 | OCR API | 讀取 API |
-|:-----|:----:|:-----:|:---:|
-|阿拉伯文 | `ar`|✔ | |
-|簡體中文 | `zh-Hans`|✔ | |
-|繁體中文 | `zh-Hant`|✔ | |
-|捷克文 | `cs` |✔ | |
-|丹麥文 | `da` |✔ | |
-|荷蘭文 | `nl` |✔ |✔ |
-|英文 | `en` |✔ |✔ |
-|芬蘭文 | `fi` |✔ | |
-|法文 | `fr` |✔ |✔ |
-|德文 | `de` |✔ |✔ |
-|希臘文 | `el` |✔ | |
-|匈牙利文 | `hu` |✔ | |
-|義大利文 | `it` |✔ |✔ |
-|日文 | `ja` |✔ | |
-|韓文 | `ko` |✔ | |
-|挪威文 | `nb` |✔ | |
-|波蘭文 | `pl` |✔ | |
-|葡萄牙文 | `pt` |✔ |✔ |
-|羅馬尼亞文 | `ro` |✔ | |
-|俄文 | `ru` |✔ | |
-|塞爾維亞文 (斯拉夫) | `sr-Cyrl` |✔ | |
-|塞爾維亞文 (拉丁) | `sr-Latn` |✔ | |
-|斯洛伐克文 | `sk` |✔ | |
-|西班牙文 | `es` |✔ |✔ |
-|瑞典文 | `sw` |✔ | |
-|土耳其文 | `tr` |✔ | |
+|Language| 語言代碼 | OCR API | 閱讀 v3。0 | 閱讀 3.1-preview。1 |
+|:-----|:----:|:-----:|:---:|:---:|
+|阿拉伯文 | `ar`|✔ | | |
+|簡體中文 | `zh-Hans`|✔ | |✔ |
+|繁體中文 | `zh-Hant`|✔ | | |
+|捷克文 | `cs` |✔ | | |
+|丹麥文 | `da` |✔ | | |
+|荷蘭文 | `nl` |✔ |✔ |✔ |
+|英文 | `en` |✔ |✔ |✔ |
+|芬蘭文 | `fi` |✔ | | |
+|法文 | `fr` |✔ |✔ |✔ |
+|德文 | `de` |✔ |✔ |✔ |
+|希臘文 | `el` |✔ | | |
+|匈牙利文 | `hu` |✔ | | |
+|義大利文 | `it` |✔ |✔ |✔ |
+|日文 | `ja` |✔ | | |
+|韓文 | `ko` |✔ | | |
+|挪威文 | `nb` |✔ | | |
+|波蘭文 | `pl` |✔ | | |
+|葡萄牙文 | `pt` |✔ |✔ |✔ |
+|羅馬尼亞文 | `ro` |✔ | | |
+|俄文 | `ru` |✔ | | |
+|塞爾維亞文 (斯拉夫) | `sr-Cyrl` |✔ | | |
+|塞爾維亞文 (拉丁) | `sr-Latn` |✔ | | |
+|斯洛伐克文 | `sk` |✔ | | |
+|西班牙文 | `es` |✔ |✔ |✔ |
+|瑞典文 | `sw` |✔ | | |
+|土耳其文 | `tr` |✔ | | |
 
 ## <a name="image-analysis"></a>影像分析
 
 [分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的某些動作可以傳回其他語言的結果，並以 `language` 查詢參數指定。 無論指定何種語言，其他動作都會傳回英文的結果，而其他動作則會擲回不支援語言的例外狀況。 動作是使用 `visualFeatures` 和 `details` 查詢參數所指定; 請參閱[總覽](home.md)，以取得您可以使用影像分析執行的所有動作清單。
 
-|Language | 語言代碼 | 類別 | Tags | 描述 | 成人 | 品牌 | 色彩 | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
+|Language | 語言代碼 | 類別 | Tags | 說明 | 成人 | 品牌 | Color | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英文 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
@@ -70,5 +70,5 @@ ms.locfileid: "86205283"
 
 開始使用本指南中所述的電腦視覺功能。
 
-* [ (REST) 分析本機影像](./quickstarts/csharp-analyze.md)
-* [將列印的文字解壓縮 (REST) ](./quickstarts/csharp-print-text.md)
+* [分析本機影像（REST）](./quickstarts/csharp-analyze.md)
+* [解壓縮列印的文字（REST）](./quickstarts/csharp-print-text.md)

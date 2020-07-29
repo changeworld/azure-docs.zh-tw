@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 8544ad292d9e8982e236566fb53189c70922232c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041390"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318142"
 ---
 # <a name="troubleshooting"></a>疑難排解
 
@@ -81,7 +81,7 @@ ms.locfileid: "87041390"
 
 ### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>我看不到任何相關的伺服器端遙測來診斷測試失敗嗎？ *
 
-如果您已針對伺服器端應用程式設定 Application Insights，這可能是因為正在進行[取樣](../../azure-monitor/app/sampling.md)。 請選取不同的可用性結果。
+如果您已針對伺服器端應用程式設定 Application Insights，這可能是因為正在進行[取樣](./sampling.md)。 請選取不同的可用性結果。
 
 ### <a name="can-i-call-code-from-my-web-test"></a>可以從我的 Web 測試呼叫程式碼嗎？
 
@@ -96,7 +96,7 @@ ms.locfileid: "87041390"
 
    有兩種可能的解決方法：
 
-   * 設定防火牆以允許來自[我們 Web 測試代理程式的 IP 位址](../../azure-monitor/app/ip-addresses.md)所發出的內送要求。
+   * 設定防火牆以允許來自[我們 Web 測試代理程式的 IP 位址](./ip-addresses.md)所發出的內送要求。
    * 撰寫您自己的程式碼以定期測試您的內部伺服器。 執行程式碼作為您防火牆後方測試伺服器上的背景處理序。 您的測試處理序可以使用核心 SDK 套件中的 [TrackAvailability()](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API，將其結果傳送至 Application Insights。 這需要測試伺服器具有 Application Insights 內嵌端點的連出存取，但這比起替代的允許連入要求是較小的安全性風險。 結果會顯示在 [可用性 web 測試] blade 中，但體驗會稍微簡化，可供透過入口網站所建立的測試使用。 自訂可用性測試也會在分析、搜尋和計量中顯示為可用性結果。
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>上傳多步驟 Web 測試失敗
@@ -130,7 +130,8 @@ ms.locfileid: "87041390"
 
 如果您需要根據使用者的角色來通知他們，請使用新警示體驗/近乎即時警示。 使用[動作群組](../platform/action-groups.md)，您可以為具有任一個參與者/擁有者/讀者角色 (不會結合來作為單一選項) 的使用者設定電子郵件通知。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [多步驟 web 測試](availability-multistep.md)
 * [URL ping 測試](monitor-web-app-availability.md)
+

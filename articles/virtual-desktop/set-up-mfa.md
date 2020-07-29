@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 47b1a3a44c494560dde9ffdab004ea576f434ffe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a8f5cb792f524354754b4368c0b68d5f9d40699
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091295"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291375"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>為 Windows 虛擬桌面啟用 Azure Multi-Factor Authentication
 
 >[!IMPORTANT]
-> 如果您是從2019秋季檔造訪此頁面，請務必在完成後[回到秋季2019檔](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。
+> 如果您是從 Windows 虛擬桌面（傳統）檔造訪此頁面，請務必在完成後[返回 Windows 虛擬桌面（傳統）檔](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。
 
 適用于 Windows 虛擬桌面的 Windows 用戶端是將 Windows 虛擬桌面與本機電腦整合的絕佳選項。 不過，當您將 Windows 虛擬桌面帳戶設定為 Windows 用戶端時，您必須採取一些措施來保護自己和使用者的安全。
 
@@ -26,7 +26,7 @@ ms.locfileid: "87091295"
 
 雖然記住認證很方便，但它也可以讓企業案例或個人裝置上的部署更不安全。 若要保護您的使用者，您必須確定用戶端持續要求 Azure 多重要素驗證（MFA）認證。 本文將說明如何設定 Windows 虛擬桌面的條件式存取原則，以啟用此設定。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 以下是您需要的入門：
 
@@ -50,10 +50,10 @@ ms.locfileid: "87091295"
 7. 選取 [完成]。
 8. 在 [**雲端應用程式或動作**  >  **包括**] 底下，選取 [**選取應用程式**]。
 9. 根據您所使用的 Windows 虛擬桌上出版本，選取下列其中一個應用程式群組。
-   - 如果您使用秋季2019版，請選擇下列兩個應用程式：
+   - 如果您使用的是 Windows 虛擬桌面（傳統），請選擇下列兩個應用程式：
        - **Windows 虛擬桌面**（應用程式識別碼5a0aa725-4958-4b0c-80a9-34562e23f3b7）
        - **Windows 虛擬桌面用戶端**（應用程式識別碼 fa4345a4-a730-4230-84a8-7d9651b86739）
-   - 如果您使用春季2020版本，請改為選擇這兩個應用程式：
+   - 如果您使用的是 Windows 虛擬桌面，請改為選擇這兩個應用程式：
        -  **Windows 虛擬桌面**（應用程式識別碼9cdead84-a844-4324-93f2-b2e6bb768d07）
        -  **Windows 虛擬桌面用戶端**（應用程式識別碼 a85cf173-4192-42f8-81fa-777a763e6e2c）
 

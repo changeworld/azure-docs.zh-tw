@@ -4,15 +4,15 @@ description: 檔案
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
-author: anbene
+author: mingshen-ms
 ms.author: mingshen
 ms.date: 05/19/2020
-ms.openlocfilehash: 91c27143b4b122b1913429879d227125e1b2169c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5197b71db4f46d9908d5539c114d636b9474a870
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109638"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317626"
 ---
 使用 HTML 標記來格式化您的描述以使其更引人注目。 大部分的標記都需要開頭和結尾元件，如下表所示。
 

@@ -5,26 +5,29 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: dd75ad4ed1024292868f113e474fe8b8b73679b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/24/2020
+ms.openlocfilehash: e1c60542ec16ca19d26a77c1b9fb9676cf875e3d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75445138"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318261"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中最佳化查詢成本
 
-Azure Cosmos DB 會提供一組豐富的資料庫作業，包括對容器內的項目進行關聯式和階層式的查詢。 與上述各項作業相關聯的成本，會因為完成作業所需的 CPU、IO 和記憶體而不同。 您不需要考慮和管理硬體資源，您可以將要求單位 (RU) 想成是執行各種資料庫作業以服務要求時所需的資源數量。 這篇文章說明如何評估查詢的要求單位費用，並在效能和成本方面最佳化查詢。 
+Azure Cosmos DB 會提供一組豐富的資料庫作業，包括對容器內的項目進行關聯式和階層式的查詢。 與上述各項作業相關聯的成本，會因為完成作業所需的 CPU、IO 和記憶體而不同。 您不需要考慮和管理硬體資源，您可以將要求單位 (RU) 想成是執行各種資料庫作業以服務要求時所需的資源數量。 這篇文章說明如何評估查詢的要求單位費用，並在效能和成本方面最佳化查詢。
 
-Azure Cosmos DB 中的查詢通常已依輸送量排序，從最快/最有效率到速度較慢/較無效率，如下所示：  
+Azure Cosmos DB 中的讀取通常是根據輸送量，從最快/最有效率到速度較慢/較不有效率地排序，如下所示：  
 
-* 單一分割區索引鍵和項目索引鍵上的 GET 作業。
+* 點讀取（單一專案識別碼和分割區索引鍵上的索引鍵/值查閱）。
 
 * 單一分割區索引鍵內具有篩選子句的查詢。
 
 * 任何屬性上不具等號比較或範圍篩選子句的查詢。
 
 * 不含篩選的查詢。
+
+因為專案識別碼上的索引鍵/值查閱是最有效率的讀取類型，所以您應該確定專案識別碼具有有意義的值。
 
 從一或多個分割區讀取資料的查詢會產生較高的延遲，並使用更多的要求單位。 由於每個分割區都會針對所有屬性自動編製索引，因此就能有效率地從索引中提供查詢。 您可以使用平行處理原則選項，更快速地進行使用多個分割區的查詢。 若要深入了解分割區和分割區索引鍵，請參閱[在 Azure Cosmos DB 中進行資料分割](partitioning-overview.md)。
 
@@ -35,7 +38,7 @@ Azure Cosmos DB 中的查詢通常已依輸送量排序，從最快/最有效率
 您還可以使用 SDK 以程式設計方式取得查詢的成本。 若要測量任何作業 (如建立、更新或刪除) 的額外負荷，請在使用 REST API 時檢查 `x-ms-request-charge` 標頭。 如果您使用 .NET 或 JAVA SDK， `RequestCharge` 屬性會是取得要求費用的對等屬性，而此屬性會出現在 ResourceResponse 或 FeedResponse 內。
 
 ```csharp
-// Measure the performance (request units) of writes 
+// Measure the performance (request units) of writes
 ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument); 
 
 Console.WriteLine("Insert of an item consumed {0} request units", response.RequestCharge); 

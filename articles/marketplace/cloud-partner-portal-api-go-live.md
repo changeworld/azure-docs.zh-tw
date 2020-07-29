@@ -4,15 +4,15 @@ description: Go Live API 會起始供應項目即時上市程序。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 5c5448a853447a0eacc8d974a5b00d5d1e8f4be2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d612b796f85c9eaab1600c55cde7e79acb49f352
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535938"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292941"
 ---
 # <a name="go-live"></a>Go Live
 
@@ -28,9 +28,9 @@ ms.locfileid: "86535938"
 
 |  **名稱**      |   **說明**                                                           | **Data type** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | 要擷取之供應項目的發行者識別碼，例如 `contoso`       |  字串       |
-| offerId        | 要擷取之供應項目的供應項目識別碼                                   |  字串       |
-| api-version    | API 的最新版本                                                   |  日期         |
+| publisherId    | 要擷取之供應項目的發行者識別碼，例如 `contoso`       |  String       |
+| offerId        | 要擷取之供應項目的供應項目識別碼                                   |  String       |
+| api-version    | API 的最新版本                                                   |  Date         |
 |  |  |  |
 
 ## <a name="header"></a>頁首
@@ -58,7 +58,7 @@ ms.locfileid: "86535938"
 
 |  **名稱**             |      **ReplTest1**                                                            |
 |  --------             |      ----------                                                           |
-| Location    |  要取出此作業狀態的相對路徑            |
+| 位置    |  要取出此作業狀態的相對路徑            |
 |  |  |
 
 ### <a name="response-status-codes"></a>回應狀態碼

@@ -3,12 +3,12 @@ title: Azure 雲端服務的 Application Insight | Microsoft Docs
 description: 使用 Application Insights 有效地監視您的 Web 和背景工作角色
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: bf75bb145a3b0d7c861d3c92af972b39de11bcdf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2adcdcdc36fdd41b1f871acbea386beb1d7a9451
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075420"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318431"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure 雲端服務的 Application Insights
 [Application Insights][start] 透過將 Application Insights SDK 的資料與 [Azure 診斷](../platform/diagnostics-extension-overview.md) 資料結合的方式，監視 [Azure 雲端服務應用程式](https://azure.microsoft.com/services/cloud-services/)的可用性、效能、故障與使用狀況。 當您取得有關應用程式在現實世界的效能和效率的意見反應時，您可以在每個開發生命週期中針對設計方向做出明智的抉擇。
@@ -31,9 +31,9 @@ ms.locfileid: "87075420"
 
 如果此選項就是您所需的一切，您就已大功告成。 
 
-接下來的步驟是[從您的應用程式中查看計量](../../azure-monitor/platform/metrics-charts.md)，[流量分析查詢您的資料](../log-query/log-query-overview.md)。 
+接下來的步驟是[從您的應用程式中查看計量](../platform/metrics-charts.md)，[流量分析查詢您的資料](../log-query/log-query-overview.md)。 
 
-若要在瀏覽器中監視效能，您可以設定[可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)及[在網頁中新增程式碼](../../azure-monitor/app/javascript.md)。
+若要在瀏覽器中監視效能，您可以設定[可用性測試](./monitor-web-app-availability.md)及[在網頁中新增程式碼](./javascript.md)。
 
 下列各節將討論下列其他選項：
 
@@ -51,9 +51,9 @@ ms.locfileid: "87075420"
 每個資源只屬於一個資源群組。 資源群組用來在經過協調的單一交易中管理成本、將存取權授與小組成員，以及部署更新項目。 例如，您可以[撰寫腳本來部署](../../azure-resource-manager/templates/deploy-powershell.md)Azure 雲端服務及其 Application Insights 監視資源，全部都在一個作業中運作。
 
 ### <a name="resources-for-components"></a>元件的資源
-我們建議您建立為您應用程式的每個元件建立不同的資源。 也就是為每個 Web 角色和背景工作角色建立資源。 您可以個別分析每個元件，但建立一個[儀表板](../../azure-monitor/app/overview-dashboard.md)來彙總所有元件的重要圖表，讓您能夠在單一檢視中一起比較和監視這些圖表。 
+我們建議您建立為您應用程式的每個元件建立不同的資源。 也就是為每個 Web 角色和背景工作角色建立資源。 您可以個別分析每個元件，但建立一個[儀表板](./overview-dashboard.md)來彙總所有元件的重要圖表，讓您能夠在單一檢視中一起比較和監視這些圖表。 
 
-替代方法是將來自多個角色的遙測傳送給同一個資源，但[為每個遙測項目新增一個維度屬性](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)來識別其來源角色。 在此方法中，計量圖表 (例如例外狀況) 通常會顯示來自各種角色之計數的彙總，但您可以視需要依角色識別碼分割該圖表。 您也可以依相同的維度來篩選搜尋。 此替代方案可讓您稍微容易同時檢視每個項目，但也會造成角色之間的一些混淆。
+替代方法是將來自多個角色的遙測傳送給同一個資源，但[為每個遙測項目新增一個維度屬性](./api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)來識別其來源角色。 在此方法中，計量圖表 (例如例外狀況) 通常會顯示來自各種角色之計數的彙總，但您可以視需要依角色識別碼分割該圖表。 您也可以依相同的維度來篩選搜尋。 此替代方案可讓您稍微容易同時檢視每個項目，但也會造成角色之間的一些混淆。
 
 瀏覽器遙測通常包含在與其伺服器端 Web 角色相同的資源中。
 
@@ -68,7 +68,7 @@ ms.locfileid: "87075420"
 
 ## <a name="create-an-application-insights-resource-for-each-role"></a>為每個角色建立 Application Insights 資源
 
-如果您已決定為每個角色建立個別的資源，或許也為每個組建組態建立一組個別的資源，則最簡單的方式就是全部都在 Application Insights 入口網站中建立。 如果您要建立很多資源，您可以[將程序自動化](../../azure-monitor/app/powershell.md)。
+如果您已決定為每個角色建立個別的資源，或許也為每個組建組態建立一組個別的資源，則最簡單的方式就是全部都在 Application Insights 入口網站中建立。 如果您要建立很多資源，您可以[將程序自動化](./powershell.md)。
 
 1. 在 [Azure 入口網站][portal]中，選取 [新增] **** >  [開發人員服務] **** >  [Application Insights]****。  
 
@@ -92,7 +92,7 @@ ms.locfileid: "87075420"
 
 這會將您的 Application insights 檢測金鑰插入名為 *ServiceConfiguration.\*.cscfg* 的檔案中。 以下是[範例程式碼](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg)。
 
-如果您想要變更傳送到 Application Insights 的診斷資訊層級，[做法是直接編輯 *.cscfg* 檔案](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)。
+如果您想要變更傳送到 Application Insights 的診斷資訊層級，[做法是直接編輯 *.cscfg* 檔案](../platform/diagnostics-extension-to-application-insights.md)。
 
 ## <a name="install-the-sdk-in-each-project"></a><a name="sdk"></a>在每個專案中安裝 SDK
 使用此選項，您可以將自訂業務遙測新增至任何角色。 此選項會對您應用程式的使用與執行方式進行更精確的分析。
@@ -165,7 +165,7 @@ ms.locfileid: "87075420"
 
 1. 開啟您建立的 Application Insights 資源。
 
-   個別資料點會顯示在[搜尋][diagnostic]中，彙總的資料則會顯示在[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中。
+   個別資料點會顯示在[搜尋][diagnostic]中，彙總的資料則會顯示在[計量瀏覽器](../platform/metrics-charts.md)中。
 
 1. 新增更多遙測 (請參閱以下章節)，然後再發佈應用程式以取得即時診斷和使用方式的意見反應。 
 
@@ -184,11 +184,11 @@ ms.locfileid: "87075420"
 * Windows 事件記錄顯示為追蹤和自訂事件。
 * 應用程式記錄、ETW 記錄和任何診斷基礎結構記錄顯示為追蹤。
 
-若要查看效能計數器和事件計數，請開啟[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md) 並新增下列圖表：
+若要查看效能計數器和事件計數，請開啟[計量瀏覽器](../platform/metrics-charts.md) 並新增下列圖表：
 
 ![Azure 診斷資料](./media/cloudservices/23-wad.png)
 
-若要搜尋 Azure 診斷所傳送的各種追蹤記錄檔，請使用[搜尋](../../azure-monitor/app/diagnostic-search.md)或[分析查詢](../../azure-monitor/log-query/get-started-portal.md)。 例如，假設您有未處理的例外狀況導致角色損毀並需要回收。 這項資訊會出現在 Windows 事件記錄檔的「應用程式 (Application)」通道。 您可以使用 [搜尋] 來檢視 Windows 事件記錄檔錯誤，並取得例外狀況的完整堆疊追蹤。 這將協助您找出問題的根本原因。
+若要搜尋 Azure 診斷所傳送的各種追蹤記錄檔，請使用[搜尋](./diagnostic-search.md)或[分析查詢](../log-query/get-started-portal.md)。 例如，假設您有未處理的例外狀況導致角色損毀並需要回收。 這項資訊會出現在 Windows 事件記錄檔的「應用程式 (Application)」通道。 您可以使用 [搜尋] 來檢視 Windows 事件記錄檔錯誤，並取得例外狀況的完整堆疊追蹤。 這將協助您找出問題的根本原因。
 
 ![Azure 診斷搜尋](./media/cloudservices/25-wad.png)
 
@@ -205,7 +205,7 @@ ms.locfileid: "87075420"
 * [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>例外狀況
-如需如何從各種 Web 應用程式類型收集未處理例外狀況的資訊，請參閱[在 Application Insights 中監視例外狀況](../../azure-monitor/app/asp-net-exceptions.md)。
+如需如何從各種 Web 應用程式類型收集未處理例外狀況的資訊，請參閱[在 Application Insights 中監視例外狀況](./asp-net-exceptions.md)。
 
 範例 Web 角色具有 MVC5 以及 Web API 2 控制器。 來自這兩者的未處理例外狀況是使用下列處理常式擷取：
 
@@ -255,11 +255,11 @@ ms.locfileid: "87075420"
 若要確認應用程式處於線上狀態且能夠回應，請[設定 Web 測試][availability]。
 
 ## <a name="display-everything-together"></a>將所有內容一起顯示
-如需您系統的整體情況，您可以將重要的監視圖表在一個[儀表板](../../azure-monitor/app/overview-dashboard.md)上一起顯示。 例如，您可以釘選每個角色的要求和失敗計數。 
+如需您系統的整體情況，您可以將重要的監視圖表在一個[儀表板](./overview-dashboard.md)上一起顯示。 例如，您可以釘選每個角色的要求和失敗計數。 
 
 如果您的系統使用其他 Azure 服務 (例如「串流分析」)，請將它們的監視圖表一併納入。 
 
-如果您有用戶端行動應用程式，請使用 [App Center](../../azure-monitor/learn/mobile-center-quickstart.md)。 請在[分析](../log-query/log-query-overview.md)中建立查詢以顯示事件計數，並將它們釘選到儀表板。
+如果您有用戶端行動應用程式，請使用 [App Center](../learn/mobile-center-quickstart.md)。 請在[分析](../log-query/log-query-overview.md)中建立查詢以顯示事件計數，並將它們釘選到儀表板。
 
 ## <a name="example"></a>範例
 [此範例](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) 監視具有 Web 角色和兩個背景工作角色的服務。
@@ -272,18 +272,19 @@ ms.locfileid: "87075420"
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>後續步驟
-* [設定將 Azure 診斷傳送至 Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
-* [自動建立 Application Insights 資源](../../azure-monitor/app/powershell.md)
-* [自動執行 Azure 診斷](../../azure-monitor/app/powershell-azure-diagnostics.md)
+* [設定將 Azure 診斷傳送至 Application Insights](../platform/diagnostics-extension-to-application-insights.md)
+* [自動建立 Application Insights 資源](./powershell.md)
+* [自動執行 Azure 診斷](./powershell-azure-diagnostics.md)
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample)
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[azure]: ../../azure-monitor/app/app-insights-overview.md
-[client]: ../../azure-monitor/app/javascript.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[netlogs]: ../../azure-monitor/app/asp-net-trace-logs.md
+[api]: ./api-custom-events-metrics.md
+[availability]: ./monitor-web-app-availability.md
+[azure]: ./app-insights-overview.md
+[client]: ./javascript.md
+[diagnostic]: ./diagnostic-search.md
+[netlogs]: ./asp-net-trace-logs.md
 [portal]: https://portal.azure.com/
 [qna]: ../faq.md
-[redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[redfield]: ./monitor-performance-live-website-now.md
+[start]: ./app-insights-overview.md
+

@@ -4,21 +4,21 @@ description: Azure 監視器的參考瞭解 Azure 資源記錄的支援服務和
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
-ms.openlocfilehash: ceca6b0a230de6d3eeab47e60d90767b33b5ac59
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 81f79b81c03e7996d7f6d45b002d8160740c3c14
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515388"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318295"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>支援的 Azure 資源記錄類別
 
 > [!NOTE]
 > 資源記錄先前稱為診斷記錄。 名稱在2019年10月已變更，因為所收集的記錄類型 Azure 監視器轉移，而不只包含 Azure 資源。
 
-[Azure 監視器資源記錄](../../azure-monitor/platform/platform-logs-overview.md)是由 Azure 服務發出的記錄，可描述這些服務或資源的操作。 透過 Azure 監視器所提供的所有資源記錄都會共用通用的最上層架構，而且每個服務都可以彈性地為自己的事件發出唯一的屬性。
+[Azure 監視器資源記錄](./platform-logs-overview.md)是由 Azure 服務發出的記錄，可描述這些服務或資源的操作。 透過 Azure 監視器所提供的所有資源記錄都會共用通用的最上層架構，而且每個服務都可以彈性地為自己的事件發出唯一的屬性。
 
-資源類型 (適用於 `resourceId` 屬性) 與 `category` 的組合可唯一識別結構描述。 針對具有服務特定欄位的所有資源記錄，會有一個通用架構，然後針對不同的記錄類別新增。 如需詳細資訊，請參閱[適用于 Azure 資源記錄的通用和服務特定架構](resource-logs-categories.md)
+資源類型 (適用於 `resourceId` 屬性) 與 `category` 的組合可唯一識別結構描述。 針對具有服務特定欄位的所有資源記錄，會有一個通用架構，然後針對不同的記錄類別新增。 如需詳細資訊，請參閱[適用于 Azure 資源記錄的通用和服務特定架構]()
 
 ## <a name="supported-log-categories-per-resource-type"></a>每個資源類型支援的記錄檔類別
 
@@ -253,7 +253,7 @@ ms.locfileid: "86515388"
 |類別|類別顯示名稱|
 |---|---|
 |Checkpoint|Checkpoint|
-|連線|連線|
+|Connection|Connection|
 |錯誤|錯誤|
 |HostRegistration|HostRegistration|
 |管理性|管理性|
@@ -711,7 +711,8 @@ ms.locfileid: "86515388"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [深入瞭解資源記錄](../../azure-monitor/platform/platform-logs-overview.md)
+* [深入瞭解資源記錄](./platform-logs-overview.md)
 * [將資源資源記錄串流至**事件中樞**](./resource-logs.md#send-to-azure-event-hubs)
 * [使用 Azure 監視器 REST API 變更資源記錄診斷設定](/rest/api/monitor/diagnosticsettings)
 * [使用 Log Analytics 分析來自 Azure 儲存體的記錄](./resource-logs.md#send-to-log-analytics-workspace)
+

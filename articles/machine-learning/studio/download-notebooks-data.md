@@ -1,6 +1,5 @@
 ---
-title: 如何下載筆記本（預覽）資料
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）：如何下載筆記本（預覽）資料-Azure
 description: 如何下載 ML Studio （傳統）中的筆記本（預覽）資料。
 ms.service: machine-learning
 ms.subservice: studio
@@ -8,14 +7,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
-ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cc12204c5eabf857fd1143e71df9b2b505d88a23
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208460"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318652"
 ---
 # <a name="download-notebookspreview-data"></a>下載筆記本（預覽）資料
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
 
 筆記本（預覽）功能已于*13 2020 年4月*移除。 移除 [筆記本（預覽）] 索引標籤和使用者筆記本檔案目前正在推出到全球的 Azure 區域。
 

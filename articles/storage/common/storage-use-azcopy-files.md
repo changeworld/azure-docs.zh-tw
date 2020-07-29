@@ -4,15 +4,15 @@ description: 使用 AzCopy 和檔案儲存體來傳輸資料。
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a836f4ce40f4d2e0871f99122d25bb6c6f346d05
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7123a90505e5068422d76f22042deac46e721218
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527875"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292721"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和檔案儲存體傳輸資料 (機器翻譯) 
 
@@ -49,12 +49,12 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 > [!TIP]
 > 您可以使用選擇性旗標來調整您的上傳作業。 以下是一些範例。
 >
-> |情節|旗標|
+> |狀況|旗標|
 > |---|---|
 > |複製存取控制清單（Acl）以及檔案。|**--保留-smb-許可權** = \[true \| false\]|
 > |連同檔案一起複製 SMB 屬性資訊。|**--保留-smb-資訊** = \[true \| false\]|
 > |以附加 Blob 或分頁 Blob 的形式上傳檔案。|**--blob-類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
-> |上傳至特定的存取層（例如封存層）。|**--區塊-blob 層** = \[無經常性存取封存 \| \| \|\]|
+> |上傳至特定存取層 (例如封存層)。|**--區塊-blob 層** = \[無經常性存取封存 \| \| \|\]|
 > 
 > 如需完整清單，請參閱[選項](storage-ref-azcopy-copy.md#options)。
 
@@ -101,7 +101,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 ### <a name="upload-specific-files"></a>上傳特定檔案
 
-您可以指定完整的檔案名，或使用包含萬用字元（*）的部分名稱。
+您可以使用完整檔案名、具有萬用字元（*）的部分名稱，或使用日期和時間來上傳特定檔案。
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多個完整的檔案名
 
@@ -129,6 +129,17 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 `--include-pattern`和 `--exclude-pattern` 選項僅適用于檔案名，而不會套用至路徑。  如果您想要複製存在於目錄樹狀結構中的所有文字檔，請使用 `–recursive` 選項來取得整個目錄樹狀結構，然後使用 `–include-pattern` 並指定 `*.txt` 來取得所有文字檔。
 
+#### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上傳在日期和時間之後修改的檔案 
+
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-after` 選項。 以 ISO 8601 格式指定日期和時間（例如： `2020-08-19T15:04:00Z` ）。 
+
+|    |     |
+|--------|-----------|
+| **語法** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **範例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --include-after '2020-08-19T15:04:00Z'` |
+
+如需詳細參考，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
+
 ## <a name="download-files"></a>下載檔案
 
 您可以使用[azcopy copy](storage-ref-azcopy-copy.md)命令，將檔案、目錄和檔案共用下載到本機電腦。
@@ -144,7 +155,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 > [!TIP]
 > 您可以使用選擇性旗標來調整您的下載作業。 以下是一些範例。
 >
-> |情節|旗標|
+> |狀況|旗標|
 > |---|---|
 > |複製存取控制清單（Acl）以及檔案。|**--保留-smb-許可權** = \[true \| false\]|
 > |連同檔案一起複製 SMB 屬性資訊。|**--保留-smb-資訊** = \[true \| false\]|
@@ -185,7 +196,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 ### <a name="download-specific-files"></a>下載特定檔案
 
-您可以指定完整的檔案名，或使用包含萬用字元（*）的部分名稱。
+您可以使用完整檔案名、具有萬用字元（*）的部分名稱，或使用日期和時間來下載特定檔案。
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多個完整的檔案名
 
@@ -213,6 +224,18 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 `--include-pattern`和 `--exclude-pattern` 選項僅適用于檔案名，而不會套用至路徑。  如果您想要複製存在於目錄樹狀結構中的所有文字檔，請使用 `–recursive` 選項來取得整個目錄樹狀結構，然後使用 `–include-pattern` 並指定 `*.txt` 來取得所有文字檔。
 
+#### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下載在日期和時間之後修改的檔 
+
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間（例如： `2020-08-19T15:04:00Z` ）。 
+
+|    |     |
+|--------|-----------|
+| **語法** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name>/*<SAS-token>' '<local-directory-path>'  --include-after <Date-Time-in-ISO-8601-format>` |
+| **範例** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myfileshare/*?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory' --include-after '2020-08-19T15:04:00Z'` |
+
+
+如需詳細參考，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
+
 ## <a name="copy-files-between-storage-accounts"></a>在儲存體帳戶之間複製檔案
 
 您可以使用 AzCopy 將檔案複製到其他儲存體帳戶。 複製作業是同步的，因此當命令傳回時，表示已複製所有檔案。
@@ -230,7 +253,7 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 > [!TIP]
 > 您可以使用選擇性旗標來調整複製作業。 以下是一些範例。
 >
-> |情節|旗標|
+> |狀況|旗標|
 > |---|---|
 > |複製存取控制清單（Acl）以及檔案。|**--保留-smb-許可權** = \[true \| false\]|
 > |連同檔案一起複製 SMB 屬性資訊。|**--保留-smb-資訊** = \[true \| false\]|
@@ -281,7 +304,7 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 > [!TIP]
 > 您可以使用選擇性旗標來調整同步作業。 以下是一些範例。
 >
-> |情節|旗標|
+> |狀況|旗標|
 > |---|---|
 > |指定下載時應如何驗證嚴格的 MD5 雜湊。|**--check-md5** = \[NoCheck \| LogOnly \| FailIfDifferent \| FailIfDifferentOrMissing\]|
 > |根據模式排除檔案。|**--排除-路徑**|

@@ -10,26 +10,36 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362137"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289427"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>使用自訂命令建立語音助理
 
 在本快速入門中，您會使用語音 Studio 來建立及測試基本的自訂命令應用程式。 您也將能夠從 Windows 用戶端應用程式存取此應用程式。 **自訂命令**可讓您輕鬆地建立針對語音優先互動體驗優化的豐富語音命令應用程式。 它提供統一的撰寫體驗、自動裝載模型，以及相對較低的複雜性，協助您專注于為語音命令案例建立最佳解決方案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="region-availability"></a>區域可用性
+目前，自訂命令支援在下欄區域中建立的語音訂用帳戶：
+* 美國西部
+* 美國西部 2
+* 美國東部
+* 美國東部 2
+* 北歐
+* 西歐
+* 美國中西部
+* 印度中部
+* 東亞
+* 東南亞
+
+## <a name="prerequisites"></a>先決條件
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">在支援自訂命令的區域中建立 Azure 語音資源。<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">在支援自訂命令的區域中建立 Azure 語音資源。<span class="docon docon-navigate-external x-hidden-focus"></span></a> 如需支援的區域清單，請參閱上方的**區域可用性**一節。
 > * 下載範例[智慧室 Lite](https://aka.ms/speech/cc-quickstart) json 檔案。
 > * 下載最新版本的[Windows 語音助理用戶端](https://aka.ms/speech/va-samples-wvac)。
-
-> [!NOTE]
-> 目前，自訂命令僅支援 westus、westus2 和 northeurope 區域中的語音訂用帳戶。
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>前往適用于自訂命令的語音 Studio
 

@@ -4,12 +4,12 @@ description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: f40d38d182e1a8c233b15f711fd557a5d72e8f30
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077329"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318329"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -268,7 +268,7 @@ Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，
 
 ## <a name="next-steps"></a>後續步驟
 
-- [深入瞭解 Azure 監視器](../../azure-monitor/overview.md)
+- [深入瞭解 Azure 監視器](../overview.md)
 - [使用 REST API 存取計量](rest-api-walkthrough.md)
 - [將活動記錄串流至非 Microsoft 服務](./activity-log.md#legacy-collection-methods)
 - [將資源記錄串流至非 Microsoft 服務](./resource-logs.md#send-to-azure-event-hubs)
@@ -281,13 +281,13 @@ Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，
 [atlassian-doc]: https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/
 [botmetric-doc]: https://www.botmetric.com/blog/announcing-botmetric-cost-governance-beta-microsoft-azure/ "Botmetric 簡介。"
 [circonus-doc]: https://docs.circonus.com/circonus/agents/cloud-agent/azure/ 
-[cloudhealth-doc]: https://www.cloudhealthtech.com/azure
+[cloudhealth-doc]: https://www.cloudhealthtech.com/products/azure-management
 [cloudmonix-doc]: https://cloudmonix.com/features/azure-management/ "CloudMonix 簡介。"
 [datadog-doc]: https://docs.datadoghq.com/integrations/azure/ "Datadog 文件。"
 [dynatrace-doc]: https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/ "Dynatrace 文件。"
 [elastic-doc]: https://www.elastic.co/guide/en/logstash/master/azure-module.html "Elastic 文件。"
 [grafana-doc]: ./grafana-plugin.md "Azure 監視器 Grafana 整合。"
-[influxdata-doc]: ./../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md "Azure 監視器異常湧入資料 Telegraf 整合。"
+[influxdata-doc]: ./collect-custom-metrics-linux-telegraf.md "Azure 監視器異常湧入資料 Telegraf 整合。"
 [logicmonitor-doc]: https://www.logicmonitor.com/lp/azure-monitoring/ "Logic Monitor 文件。"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft 文件。"
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文件。"
@@ -302,3 +302,4 @@ Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，
 [splunk-doc]: https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk "Splunk 文件。"
 [sumologic-doc]: https://www.sumologic.com/azure "SumoLogic 文件。"
 [turbonomic-doc]: https://turbonomic.com/ "Turbonomic 簡介。"
+

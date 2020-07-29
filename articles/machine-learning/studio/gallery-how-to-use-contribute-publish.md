@@ -1,6 +1,5 @@
 ---
-title: Azure AI 資源庫
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）： Azure AI 資源庫-Azure
 description: 共用及探索 Azure AI 資源庫中的分析資源等內容。 了解其他人並且自己貢獻社群。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: cf483dadb9e27020095329d948698807a14012af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bbece33d443139c9f1b1384c1a9e0b3c4da0d08
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709023"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318550"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>共用及探索 Azure AI 資源庫中的資源
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
+
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -25,7 +28,7 @@ ms.locfileid: "84709023"
 
 ## <a name="what-can-i-find-in-the-gallery"></a>我可以在資源庫中找到什麼？
 
-Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表的不同資源。 這些包括：
+Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表的不同資源。 它們包括：
 
 * **實驗**-資源庫包含各種已在 Azure Machine Learning Studio （傳統）中開發的實驗。 小至示範特定機器學習服務技術的快速概念證明實驗，大至用於解決複雜機器學習服務問題的完整開發解決方案，都在這些實驗的涵蓋範圍內。
 * **教學課程**：此資源中提供了許多教學課程來引導您了解機器學習服務的技術和概念，或說明用來解決各種機器學習服務問題的進階方法。
@@ -95,7 +98,7 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
    * 實驗圖表的螢幕擷取畫面
    * 資料來源和說明
    * 資料處理
-   * 特徵設計
+   * 特色工程
    * 模型描述
    * 成果和模型效能評估
 
@@ -122,7 +125,7 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 * 實驗名稱
 * 摘要或描述
 * Tags
-* Image
+* 映像
 * 可視性設定 ([公開]**** 或 [未公開]****)
 
 您也可以將實驗從 Gallery 中刪除。
@@ -150,9 +153,9 @@ Azure AI 資源庫包含一些由 Microsoft 和資料科學社群成員所發表
 
 1. 選取 [**新增專案**]。
 
-1. 在 [描述]**** 頁面上，針對 [項目類型]****，選取 [教學課程]**** 或 [集合]****。 輸入名稱、摘要、詳細的描述，以及有助於其他使用者找到發表項目的任何標記。 然後按一下 [下一步] 。
+1. 在 [描述]**** 頁面上，針對 [項目類型]****，選取 [教學課程]**** 或 [集合]****。 輸入名稱、摘要、詳細的描述，以及有助於其他使用者找到發表項目的任何標記。 然後按一下 [下一步]。
 
-1. 在 [映像選取]**** 頁面上，選取與發表項目一起顯示的映像。 您可以上傳您自己的映像檔，也可以選取內建映像。 選擇可能有助於使用者識別發表項目內容與用途的映像。 然後按一下 [下一步] 。
+1. 在 [映像選取]**** 頁面上，選取與發表項目一起顯示的映像。 您可以上傳您自己的映像檔，也可以選取內建映像。 選擇可能有助於使用者識別發表項目內容與用途的映像。 然後按一下 [下一步]。
 
 1. 在 [設定]**** 頁面上，針對 [可見性]****，選取您的發表項目為 [公開]**** \(任何人都可以檢視) 或 [未公開]**** \(僅限有直接連結的人員可以檢視)。
 

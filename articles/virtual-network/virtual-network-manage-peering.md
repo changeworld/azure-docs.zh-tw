@@ -1,6 +1,6 @@
 ---
 title: 建立、變更或刪除 Azure 虛擬網路對等互連 | Microsoft Docs
-description: 了解如何建立、變更或刪除虛擬網路對等互連。
+description: 建立、變更或刪除虛擬網路對等互連。 透過虛擬網路對等互連，您可以將相同區域和跨區域的虛擬網路連線。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: d38b164e95b1791971f88f62e7eccfee8a59bd71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb59d30079c830ad7d6f3dbd5fb8d48e6cd06c67
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711097"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291873"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>建立、變更或刪除虛擬網路對等互連
 
@@ -46,7 +46,7 @@ ms.locfileid: "84711097"
 1. 在 Azure 入口網站頂端的搜尋方塊中輸入「虛擬網路」**。 當搜尋結果中出現**虛擬網路**時加以選取。 如果清單中出現 [虛擬網路 (傳統)]**** 選項，請勿選取此選項，因為您並無法從透過傳統部署模型所部署的虛擬網路建立對等互連。
 2. 在清單中選取您想要為其建立對等互連的虛擬網路。
 3. 在 [設定] 底下，選取 [對等互連]。
-4. 選取 [+ 新增] 。 
+4. 選取 [+ 新增]。 
 5. <a name="add-peering"></a>輸入或選取下列設定的值：
     - **名稱︰** 對等互連的名稱必須是虛擬網路中的唯一名稱。
     - **虛擬網路部署模型：** 選取您想要對等互連之虛擬網路是透過哪個部署模型所部署的。

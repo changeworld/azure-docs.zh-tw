@@ -4,15 +4,15 @@ description: 本文說明將 Power BI 應用程式發佈至 Microsoft AppSource 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: anbene
-ms.author: mingshen
+author: navits09
+ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: 9bf02fe6552b47070d4f79c4c497830ac2bfad84
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f3699892471a1535cda5fc182a4c9121fd3c250c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121770"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317598"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI 應用程式建立總覽
 
@@ -50,7 +50,7 @@ ms.locfileid: "86121770"
 - [撰寫 Power BI 應用程式的秘訣](https://docs.microsoft.com/power-bi/service-template-apps-tips)
 - [範例](https://docs.microsoft.com/power-bi/service-template-apps-samples)
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 若要在商業 marketplace 中發佈，您的 Power BI 應用程式供應專案必須符合下列技術和商務需求。
 
@@ -68,7 +68,7 @@ ms.locfileid: "86121770"
 
 在 Power BI 中建立並測試您的應用程式之後，請儲存應用程式安裝 web 位址，因為您需要它來[建立 Power BI 應用程式供應](create-power-bi-app-offer.md)專案。
 
-### <a name="business-requirements"></a>商業需求
+### <a name="business-requirements"></a>商務需求
 
 商務需求包括程式性、合約和法律責任。 您必須：
 
@@ -76,6 +76,6 @@ ms.locfileid: "86121770"
 - 提供符合準則的內容，以在 AppSource 上列出您的供應專案。 如需詳細資訊，請參閱[讓應用程式在 AppSource 上列出？做法如下](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how)：
 - 同意並遵循[Microsoft 隱私權聲明](https://privacy.microsoft.com/privacystatement)。
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>後續步驟
 
 - [在合作夥伴中心建立 Power BI 應用程式供應專案](create-power-bi-app-offer.md)

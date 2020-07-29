@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: fcd73a5bb6de162fc258d93398b7d00044429588
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d9a4f7aa270aa4ed2b02e61da984e14379a241a9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097575"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289926"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>診斷 Azure 時間序列深入解析 Gen2 環境並進行疑難排解
 
@@ -121,7 +121,7 @@ ms.locfileid: "87097575"
 
 ## <a name="problem-all-my-instances-in-the-gen2-explorer-lack-a-parent"></a>問題： Gen2 Explorer 中的所有實例都缺少父系
 
-如果您的環境沒有定義時間序列模型階層，可能會發生此問題。 如需詳細資訊，請參閱如何使用[時間序列模型](./time-series-insights-update-how-to-tsm.md)。
+如果您的環境沒有定義時間序列模型階層，可能會發生此問題。 如需詳細資訊，請參閱如何使用[時間序列模型](/azure/time-series-insights/time-series-insights-overview)。
 
   [![無上層實例將會顯示警告。](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 
@@ -135,7 +135,7 @@ ms.locfileid: "87097575"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何使用[時間序列模型](./time-series-insights-update-how-to-tsm.md)。
+- 瞭解如何使用[時間序列模型](/azure/time-series-insights/time-series-insights-overview)。
 
 - 瞭解[支援的 JSON 圖形](./how-to-shape-query-json.md)。
 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: 62d16bc9ca6c4238ff7c6304c5e1964c2956c898
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/24/2020
+ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505290"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318346"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>將 Operations Manager 連接到 Azure 監視器
 
@@ -31,7 +31,7 @@ ms.locfileid: "86505290"
 
 ![oms-operations-manager-integration-diagram](./media/om-agents/oms-operations-manager-connection.png)
 
-如果 IT 安全性原則不允許您網路上的電腦連線到網際網路，則可以將管理伺服器設定為連線到 Log Analytics 閘道，以根據已啟用的解決方案來接收組態資訊和傳送收集到的資料。 如需有關如何設定 Operations Manager 管理群組以透過 Log Analytics 閘道與 Azure 監視器通訊的詳細資訊和步驟，請參閱[使用 Log analytics 閘道將電腦連線至 Azure 監視器](../../azure-monitor/platform/gateway.md)。  
+如果 IT 安全性原則不允許您網路上的電腦連線到網際網路，則可以將管理伺服器設定為連線到 Log Analytics 閘道，以根據已啟用的解決方案來接收組態資訊和傳送收集到的資料。 如需有關如何設定 Operations Manager 管理群組以透過 Log Analytics 閘道與 Azure 監視器通訊的詳細資訊和步驟，請參閱[使用 Log analytics 閘道將電腦連線至 Azure 監視器](./gateway.md)。  
 
 ## <a name="prerequisites"></a>先決條件
 
@@ -40,7 +40,7 @@ ms.locfileid: "86505290"
 * Azure 監視器只支援 System Center Operations Manager 2016 或更新版本、Operations Manager 2012 SP1 UR6 或更新版本，以及 Operations Manager 2012 R2 UR2 或更新版本。 Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中已加入 Proxy 支援。
 * 將 System Center Operations Manager 2016 與美國政府雲端整合，需要更新彙總套件2（含）以後版本隨附的更新後 Advisor 管理元件。 System Center Operations Manager 2012 R2 需要包含在更新彙總套件3或更新版本中的更新後 Advisor 管理元件。
 * 所有 Operations Manager 代理程式必須符合最低支援需求。 請確定代理程式已安裝最低更新版本，否則 Windows 代理程式通訊可能會失敗，而且會在 Operations Manager 事件記錄中產生錯誤。
-* Log Analytics 工作區。 如需進一步資訊，請檢閱 [Log Analytics 工作區概觀](design-logs-deployment.md)。 
+* Log Analytics 工作區。 如需進一步資訊，請檢閱 [Log Analytics 工作區概觀](design-logs-deployment.md)。
 * 您必須使用屬於 [Log Analytics 參與者角色](manage-access.md#manage-access-using-azure-permissions)向 Azure 驗證。
 
 * 支援的區域-System Center Operations Manager 連接到 Log Analytics 工作區時，僅支援下列 Azure 區域：
@@ -95,7 +95,7 @@ ms.locfileid: "86505290"
 
 ### <a name="tls-12-protocol"></a>TLS 1.2 通訊協定
 
-若要確保傳輸中的資料安全性以 Azure 監視器，我們強烈建議您將代理程式和管理群組設定為至少使用傳輸層安全性（TLS）1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本。 如需其它資訊，請檢閱[使用 TLS 1.2 安全地傳送](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)。
+若要確保傳輸中的資料安全性以 Azure 監視器，我們強烈建議您將代理程式和管理群組設定為至少使用傳輸層安全性（TLS）1.2。 我們已發現較舊版本的 TLS/安全通訊端層 (SSL) 較易受到攻擊，而且在其目前的運作中仍允許回溯相容性，因此並**不建議使用**這些版本。 如需其它資訊，請檢閱[使用 TLS 1.2 安全地傳送](./data-security.md#sending-data-securely-using-tls-12)。
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>將 Operations Manager 連接到 Azure 監視器
 
@@ -193,25 +193,15 @@ ms.locfileid: "86505290"
 
 ## <a name="validate-operations-manager-integration-with-azure-monitor"></a>驗證與 Azure 監視器的 Operations Manager 整合
 
-有幾種不同的方式可讓您確認 Azure 監視器 Operations Manager 整合成功。
+使用下列查詢來取得已連接的 Operations Manager 實例：
 
-### <a name="to-confirm-integration-from-the-azure-portal"></a>從 Azure 入口網站確認整合
-
-1. 在 Azure 入口網站中，按一下左下角的 [更多服務]。 在資源清單中輸入 **Log Analytics**。 當您開始輸入時，清單會根據您輸入的文字進行篩選。
-1. 在 Log Analytics 工作區清單中，選取適用的工作區。  
-1. 選取 [進階設定]****，選取 [連接的來源]**** 然後選取 [系統中心]****。
-1. 在 [System Center Operations Manager] 區段下方的表格中，您應該會看到管理群組名稱，還會列出上次收到資料時的代理程式數目和狀態。
-
-   ![oms-settings-connectedsources](./media/om-agents/oms-settings-connectedsources.png)
-
-### <a name="to-confirm-integration-from-the-operations-console"></a>從 Operations 主控台確認整合
-
-1. 開啟 Operations Manager 主控台，然後選取 [管理]**** 工作區。
-1. 選取 [管理組件]****，並在 [尋找:]**** 文字方塊中輸入 **Advisor** 或 **Intelligence**。
-1. 根據您已啟用的解決方案，您會看到搜尋結果中列出對應的管理組件。  例如，如果您已啟用警示管理解決方案，則 [Microsoft System Center Advisor 警示管理] 管理組件會在清單中。
-1. 從 [監視]**** 檢視中，瀏覽至 [Operations Management Suite\健全狀況狀態]**** 檢視。  在 [管理伺服器狀態]**** 窗格下選取管理伺服器，然後在 [詳細資料檢視]**** 窗格中，確認 [驗證服務 URI]**** 屬性的值符合 Log Analytics 工作區識別碼。
-
-   ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
+```azurepowershell
+union *
+| where isnotempty(MG)
+| where not(ObjectName == 'Advisor Metrics' or ObjectName == 'ManagedSpace')
+| summarize LastData = max(TimeGenerated) by lowerCasedComputerName=tolower(Computer), MG, ManagementGroupName
+| sort by lowerCasedComputerName asc
+```
 
 ## <a name="remove-integration-with-azure-monitor"></a>移除與 Azure 監視器的整合
 
@@ -354,4 +344,5 @@ ms.locfileid: "86505290"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要加入功能和收集資料，請參閱[從方案庫加入 Azure 監視器解決方案](../../azure-monitor/insights/solutions.md)。
+若要加入功能和收集資料，請參閱[從方案庫加入 Azure 監視器解決方案](../insights/solutions.md)。
+

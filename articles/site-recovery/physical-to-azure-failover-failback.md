@@ -8,17 +8,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
-ms.openlocfilehash: ea5893f45962d67f4b6f3e9a261c65aa0ec926bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75497867"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292812"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>將複寫的實體伺服器容錯移轉及容錯回復至 Azure
 
 本教學課程說明如何故障切換使用[Azure Site Recovery](site-recovery-overview.md)複寫到 Azure 的內部部署實體伺服器。 容錯回復之後，您可以從 Azure 容錯回復到您的內部部署網站（如果有的話）。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 - [瞭解](failover-failback-overview.md)嚴重損壞修復中的容錯移轉程式。
 - 如果您想要故障處理多部電腦，請[瞭解](recovery-plan-overview.md)如何在復原方案中一起收集機器。
@@ -48,7 +49,7 @@ ms.locfileid: "75497867"
    - **最新應用程式一致**：此選項會將機器容錯移轉到 Site Recovery 所處理的最近應用程式一致復原點。
    - **自訂**：指定任何復原點。
 
-3. 如果想在觸發容錯移轉之前，讓 Site Recovery 嘗試將來源 VM 關機，請選取 [先將機器關機再開始容錯移轉]****。 即使關機失敗，仍會繼續容錯移轉。 您可以 [作業] 頁面上追蹤容錯移轉進度。
+3. 如果想在觸發容錯移轉之前，讓 Site Recovery 嘗試將來源 VM 關機，請選取 [先將機器關機再開始容錯移轉]****。 即使關機失敗，仍會繼續容錯移轉。 您可以 [作業]  頁面上追蹤容錯移轉進度。
 4. 如果您已準備好連線到 Azure VM，請進行連線以在容錯移轉之後加以驗證。
 5. 驗證之後，請 [認可]**** 容錯移轉。 這會刪除所有可用的復原點。
 
@@ -83,7 +84,7 @@ ms.locfileid: "75497867"
 10. 確認您無法容錯回復的下列案例：
     - 如果您使用的是 ESXi 5.5 免費版或 vSphere 6 程式管理的免費版本。 升級至不同的版本。
     - 如果您有 Windows Server 2008 R2 SP1 實體伺服器，則為。
-    - 已[遷移](migrate-overview.md#what-do-we-mean-by-migration)的 vm。
+    - 已遷移的 Vm。
     - 已移至另一個資源群組的 VM。
     - 已刪除的複本 Azure VM。
     - 未受保護的複本 Azure VM （複寫至內部部署網站）。

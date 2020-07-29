@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 5366166a31ee45c74c34b8af0e01da251bd7f7f0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499217"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318108"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -655,7 +655,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 此 Microsoft 常見問題集是適用於 VM 的 Azure 監視器常見問題清單。 若您有任何關於解決方案的其他問題，請前往[討論論壇](https://feedback.azure.com/forums/34192--general-feedback)並張貼您的問題。 當問到常見問題時，我們會將其新增至此文章，以便其他人可以快速輕鬆地找到此問題。
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>我可以將現有的工作區上線嗎？
-如果您的虛擬機器已經連線到 Log Analytics 工作區，則您可以在上線到適用於 VM 的 Azure 監視器時繼續使用該工作區，但前提是它位於[此處](insights/vminsights-enable-overview.md#prerequisites)所列的其中一個支援區域。
+如果您的虛擬機器已連線到 Log Analytics 工作區，您可以在上架至適用於 VM 的 Azure 監視器時繼續使用該工作區，前提是它位於其中一個[支援的區域](insights/vminsights-configure-workspace.md#supported-regions)。
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>我可以上線到新的工作區嗎？ 

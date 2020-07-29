@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面秋季 2019-Azure 中的委派存取權
-description: 如何在 Windows 虛擬桌面部署上委派系統管理功能，包括範例。
+title: Windows 虛擬桌面中的委派存取（傳統）-Azure
+description: 如何在 Windows 虛擬桌面（傳統）部署上委派系統管理功能，包括範例。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91be20de49f549f3530e6c817906f1abf8f106b6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fbb8c6e100a9f72c20bcfaba7049b6724ee458b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527552"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292528"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-fall-2019"></a>Windows 虛擬桌面中的委派存取2019秋季
+# <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Windows 虛擬桌面中的委派存取（傳統）
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../delegated-access-virtual-desktop.md)。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../delegated-access-virtual-desktop.md)。
 
 Windows 虛擬桌面具有委派的存取模型，可讓您藉由指派角色給使用者，來定義允許特定使用者擁有的存取權數量。 角色指派有三個元件：安全性主體、角色定義和範圍。 Windows 虛擬桌面委派的存取模型是以 Azure RBAC 模型為基礎。 若要深入瞭解特定角色指派及其元件，請參閱[Azure 角色型存取控制總覽](../../role-based-access-control/built-in-roles.md)。
 

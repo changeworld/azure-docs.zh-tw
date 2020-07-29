@@ -4,12 +4,12 @@ description: 計量與自動調整傳統 API 即將停用，此 API 亦稱為「
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 65ce7a5c876c7a8e96f945d9d4db871c84f86a4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505426"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87317377"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure 監視器停用計量與自動調整的傳統部署模型 API
 
@@ -21,7 +21,7 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 
 如果您是透過 Azure 入口網站、[新 Azure 監視器 SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)、PowerShell、CLI 或 Resource Manager 範本來管理自動調整，則不需要採取任何動作。  
 
-如果您是透過 Azure 入口網站或透過各種[監視合作夥伴服務](../../azure-monitor/platform/partners.md)取用計量，則不需要採取任何動作。 Microsoft 正在與監視合作夥伴合作，移轉至新 API。
+如果您是透過 Azure 入口網站或透過各種[監視合作夥伴服務](./partners.md)取用計量，則不需要採取任何動作。 Microsoft 正在與監視合作夥伴合作，移轉至新 API。
 
 ## <a name="who-is-affected"></a>會受影響的對象
 
@@ -85,7 +85,8 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 
 如有任何疑問，請與我們連絡：MonitorClassicAPIhelp@microsoft.com。  
 
-## <a name="references"></a>參考資料
+## <a name="references"></a>參考
 
 - [Azure 監視器的新 REST API](/rest/api/monitor/) (英文) 
 - [新 Azure 監視器 SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) (英文)
+
