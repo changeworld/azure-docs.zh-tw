@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 118c80b27d10714703d631f0e2560540eb2d39cf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012547"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287227"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什麼是 Azure Machine Learning 工作區？
 
@@ -116,6 +116,9 @@ ms.locfileid: "87012547"
 
 > [!NOTE]
 > 除了建立新的版本之外，您也可以使用現有的 Azure 服務。
+
+> [!IMPORTANT]
+> 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶（Premium_LRS 和 Premium_GRS）。 它也不能有階層式命名空間（與 Azure Data Lake Storage Gen2 一起使用）。 工作區的_預設_儲存體帳戶不支援 premium 儲存體或階層式命名空間。 您可以使用 premium 儲存體或具有_非預設_儲存體帳戶的階層命名空間。
 
 ## <a name="next-steps"></a>後續步驟
 

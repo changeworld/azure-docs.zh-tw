@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 950f258e7380d7fbd25e1a5fe2dd4673ba122c52
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321576"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373737"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動化機器學習服務中的特徵化
 
@@ -114,13 +114,13 @@ ms.locfileid: "87321576"
 
 您可以自訂特徵化設定，以確保用來將 ML 模型定型的資料和功能會產生相關的預測。
 
-若要自訂 featurizations，請  `"featurization": FeaturizationConfig` 在您的物件中指定 `AutoMLConfig` 。 如果您要使用 Azure Machine Learning studio 進行實驗，請參閱操作[說明文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。
+若要自訂 featurizations，請  `"featurization": FeaturizationConfig` 在您的物件中指定 `AutoMLConfig` 。 如果您要使用 Azure Machine Learning studio 進行實驗，請參閱操作[說明文章](how-to-use-automated-ml-for-ml-models.md#customize-featurization)。 若要自訂 forecastings 工作類型的特徵化，請參閱[預測](how-to-auto-train-forecast.md#customize-featurization)作法。
 
 支援的自訂項目包含：
 
 |自訂|定義|
 |--|--|
-|**資料行用途更新**|覆寫指定之資料行的功能類型。|
+|**資料行用途更新**|針對指定的資料行覆寫自動偵測的功能類型。|
 |**轉換器參數更新** |更新指定之轉換器的參數。 目前支援*Imputer* （mean、最常和中位數）和*HashOneHotEncoder*。|
 |**卸除資料行** |指定要從特徵化中捨棄的資料行。|
 |**區塊轉換器**| 指定要在特徵化進程中使用的區塊轉換器。|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0a8680dc5c06bd1527b2cca732b58f484101a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705367"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286490"
 ---
 # <a name="symmetric-key-attestation"></a>對稱金鑰證明
 
@@ -26,7 +26,7 @@ ms.locfileid: "84705367"
 
 ## <a name="symmetric-key-creation"></a>對稱金鑰建立
 
-在**自動產生金鑰**選項啟用的情況下儲存新的註冊項目時，裝置佈建服務預設會建立預設長度為 32 位元組的新對稱金鑰。
+根據預設，裝置布建服務會在啟用 [**自動產生金鑰**] 選項的儲存新註冊時，建立預設長度為64個位元組的新對稱金鑰。
 
 ![自動產生對稱金鑰](./media/concepts-symmetric-key-attestation/auto-generate-keys.png)
 

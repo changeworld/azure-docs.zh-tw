@@ -3,7 +3,7 @@ title: 教學課程：設定 SQL Server Always On 可用性群組
 description: 本教學課程說明如何在「Azure 虛擬機器」上建立「SQL Server Always On 可用性群組」。
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -12,13 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
-ms.author: mikeray
+ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0b98838441325245b3f4322a32eb5e2376557313
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 22240c61b2341999528dcb477308990133042fa0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960736"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286847"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>教學課程：以手動方式在 Azure 虛擬機器上設定 SQL Server 可用性群組
 
@@ -118,7 +119,7 @@ ms.locfileid: "85960736"
    >如果您使用「儲存空間」但未取消選取 [新增適合的儲存裝置到叢集]，Windows 就會在進行叢集程序時將虛擬機器中斷連結。 因此，它們不會出現在 [磁片管理員] 或 [Explorer] 中，直到從叢集中移除儲存空間，並使用 PowerShell 重新附加為止。 儲存空間可將多個磁碟分組為存放集區。 如需詳細資訊，請參閱[儲存空間](https://technet.microsoft.com/library/hh831739)。
    >
 
-1. 選取 [下一步]。
+1. 選取 [下一步] 。
 
 1. 選取 [完成]。
 
@@ -142,9 +143,9 @@ ms.locfileid: "85960736"
 
    使用「建立共用資料夾精靈」來建立共用。
 
-1. 在 [**資料夾路徑**] 上，選取 **[流覽]** ，並找出或建立共用資料夾的路徑。 選取 [下一步]。
+1. 在 [**資料夾路徑**] 上，選取 **[流覽]** ，並找出或建立共用資料夾的路徑。 選取 [下一步] 。
 
-1. 在 [名稱、描述和設定] 中，確認共用名稱和路徑。 選取 [下一步]。
+1. 在 [名稱、描述和設定] 中，確認共用名稱和路徑。 選取 [下一步] 。
 
 1. 在 [共用資料夾權限] 上，設定 [自訂權限]。 選取 [**自訂 ...**]。
 
@@ -154,7 +155,7 @@ ms.locfileid: "85960736"
 
    ![新增共用](./media/availability-group-manually-configure-tutorial/50-filesharepermissions.png)
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 1. 在 [**共用資料夾許可權**] 中，選取 **[完成]**。 再次選取 [完成]****。  
 
@@ -180,9 +181,9 @@ ms.locfileid: "85960736"
    >Windows Server 2016 支援雲端見證。 如果您選擇此類型的見證，就不需要檔案共用見證。 如需詳細資訊，請參閱[為容錯移轉叢集部署雲端見證 (Deploy a cloud witness for a Failover Cluster)](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness)。 本教學課程使用檔案共用見證，這是舊版作業系統所支援的類型。
    >
 
-1. 在 [設定檔按共用見證] 上，輸入您所建立共用的路徑。 選取 [下一步]。
+1. 在 [設定檔按共用見證] 上，輸入您所建立共用的路徑。 選取 [下一步] 。
 
-1. 確認 [確認] 上的設定。 選取 [下一步]。
+1. 確認 [確認] 上的設定。 選取 [下一步] 。
 
 1. 選取 [完成]。
 
@@ -245,9 +246,9 @@ Repeat these steps on the second SQL Server.
 
    使用「建立共用資料夾精靈」來建立共用。
 
-1. 在 [**資料夾路徑**] 上，選取 **[流覽]** ，並找出或建立資料庫備份共用資料夾的路徑。 選取 [下一步]。
+1. 在 [**資料夾路徑**] 上，選取 **[流覽]** ，並找出或建立資料庫備份共用資料夾的路徑。 選取 [下一步] 。
 
-1. 在 [名稱、描述和設定] 中，確認共用名稱和路徑。 選取 [下一步]。
+1. 在 [名稱、描述和設定] 中，確認共用名稱和路徑。 選取 [下一步] 。
 
 1. 在 [共用資料夾權限] 上，設定 [自訂權限]。 選取 [**自訂 ...**]。
 
@@ -257,7 +258,7 @@ Repeat these steps on the second SQL Server.
 
    ![新增共用](./media/availability-group-manually-configure-tutorial/68-backupsharepermission.png)
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 1. 在 [**共用資料夾許可權**] 中，選取 **[完成]**。 再次選取 [完成]****。  
 
@@ -284,7 +285,7 @@ Repeat these steps on the second SQL Server.
 
     ![啟動新增可用性群組精靈](./media/availability-group-manually-configure-tutorial/56-newagwiz.png)
 
-2. 在 [**簡介**] 頁面中，選取 **[下一步]**。 在 [**指定可用性組名**] 頁面的 [**可用性組名**] 中，輸入可用性群組的名稱。 例如**AG1**。 選取 [下一步]。
+2. 在 [**簡介**] 頁面中，選取 **[下一步]**。 在 [**指定可用性組名**] 頁面的 [**可用性組名**] 中，輸入可用性群組的名稱。 例如**AG1**。 選取 [下一步] 。
 
     ![新增可用性群組嚮導，請指定可用性組名](./media/availability-group-manually-configure-tutorial/58-newagname.png)
 
@@ -310,7 +311,7 @@ Repeat these steps on the second SQL Server.
 
     ![[新增可用性組嚮導] 中，選取 [初始資料同步處理]](./media/availability-group-manually-configure-tutorial/66-endpoint.png)
 
-8. 在 [選取初始資料同步處理] 頁面中，選取 [完整]，然後指定一個共用網路位置。 針對位置，請使用[您所建立的備份共用](#backupshare)。 在範例中， ** \\ \\<先 SQL Server \> \Backup \\ **。 選取 [下一步]。
+8. 在 [選取初始資料同步處理] 頁面中，選取 [完整]，然後指定一個共用網路位置。 針對位置，請使用[您所建立的備份共用](#backupshare)。 在範例中， ** \\ \\<先 SQL Server \> \Backup \\ **。 選取 [下一步] 。
 
    >[!NOTE]
    >完整同步處理會完整備份第一個 SQL Server 執行個體上的資料庫，然後將它還原到第二個執行個體。 就大型資料庫而言，不建議進行完整同步處理，因為可能費時很久。 您可以手動備份並使用 `NO RECOVERY` 來還原備份，以縮短此時間。 如果在設定「可用性群組」之前已經使用 `NO RECOVERY` 在第二部 SQL Server 上還原資料庫，請選擇 [僅聯結]。 如果您想要在設定「可用性群組」之後進行備份，請選擇 [略過初始資料同步處理]。
@@ -509,7 +510,7 @@ WSFC IP 位址也必須位於負載平衡器上。
 
 1. 您現在應該會看到在容錯移轉叢集管理員中建立的接聽程式名稱。 以滑鼠右鍵按一下接聽程式名稱，然後選取 [**屬性**]。
 
-1. 在 [連接埠] 方塊中，為「可用性群組」接聽程式指定連接埠號碼。 預設值為1433。 選取 [確定]。
+1. 在 [連接埠] 方塊中，為「可用性群組」接聽程式指定連接埠號碼。 預設值為1433。 選取 [確定]  。
 
 現在，您在以 Resource Manager 模式執行的 Azure 虛擬機器中，已有一個「SQL Server 可用性群組」。
 

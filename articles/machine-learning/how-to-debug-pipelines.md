@@ -5,16 +5,17 @@ description: 在 Python 中，對您的 Azure Machine Learning 管線進行偵�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 3eb0cf85dce02595f3679a96b497e286682840bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: troubleshooting, tracking-python
+ms.openlocfilehash: 6fa75c0c6ec6146ca59f6eaf4593b4912ae823c1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557442"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372955"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機器學習管線的偵錯和疑難排解
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +27,7 @@ ms.locfileid: "84557442"
 * 使用 Application Insights 進行 Debug
 * 使用 Visual Studio Code （VS Code）和適用於 Visual Studio 的 Python 工具（PTVSD）以互動方式進行調試
 
-## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK 中的調試和疑難排解
+## <a name="azure-machine-learning-sdk"></a>Azure Machine Learning SDK
 下列各節概述建立管線時的常見陷阱，以及用來偵測管線中執行之程式碼的不同策略。 當您無法如預期般執行管線時，請使用下列秘訣。
 
 ### <a name="testing-scripts-locally"></a>在本機測試指令碼
@@ -72,11 +73,11 @@ ms.locfileid: "84557442"
 > [!TIP]
 > 可以在工作區的 [**端點**] 索引標籤中找到*已發行管線*的執行。 在**實驗**或**管線**中可以找到*非已發行管線*的執行。
 
-### <a name="troubleshooting-tips"></a>疑難排解秘訣
+### <a name="troubleshooting-tips"></a>疑難排解提示
 
 下表包含管線開發期間的常見問題，以及可能的解決方案。
 
-| 問題 | 可能的解決方案 |
+| 問題 | 可能的解決方法 |
 |--|--|
 | 無法將資料傳遞至 `PipelineData` 目錄 | 請確定您已在對應至管線預期步驟輸出資料所在位置的腳本中建立目錄。 在大部分情況下，輸入引數會定義輸出目錄，然後您會明確建立目錄。 使用 `os.makedirs(args.output_dir, exist_ok=True)` 來建立輸出目錄。 如需顯示此設計模式的評分腳本範例，請參閱[教學](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script)課程。 |
 | 相依性 bug | 如果您已在本機開發和測試腳本，但在管線的遠端計算上執行時發現相依性問題，請確定您的計算環境相依性和版本符合您的測試環境。 （請參閱[環境建立、快取和重複使用](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
@@ -91,8 +92,8 @@ ms.locfileid: "84557442"
 | 程式庫                    | 類型   | 範例                                                          | Destination                                  | 資源                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | 計量 | `run.log(name, val)`                                             | Azure Machine Learning 入口網站 UI             | [如何追蹤實驗](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml. core. 執行類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Python 列印/記錄    | 記錄檔    | `print(val)`<br>`logging.info(message)`                          | 驅動程式記錄檔，Azure Machine Learning 設計工具 | [如何追蹤實驗](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python 記錄](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
-| OpenCensus Python          | 記錄檔    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-追蹤                | [對 Application Insights 中的管線進行偵錯](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python 記錄操作手冊](https://docs.python.org/3/howto/logging-cookbook.html) |
+| Python 列印/記錄    | Log    | `print(val)`<br>`logging.info(message)`                          | 驅動程式記錄檔，Azure Machine Learning 設計工具 | [如何追蹤實驗](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python 記錄](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | Log    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-追蹤                | [對 Application Insights 中的管線進行偵錯](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python 記錄操作手冊](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>記錄選項範例
 
@@ -126,9 +127,13 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>在 Azure Machine Learning 設計工具中進行調試和疑難排解（預覽）
+## <a name="azure-machine-learning-designer-preview"></a>Azure Machine Learning 設計工具 (預覽)
 
 本節提供如何在設計工具中針對管線進行疑難排解的總覽。 針對在設計工具中建立的管線，您可以在 [撰寫] 頁面或 [管線執行詳細資料] 頁面中找到**70_driver_log**檔案。
+
+### <a name="enable-logging-for-real-time-endpoints"></a>啟用即時端點的記錄功能
+
+若要在設計工具中疑難排解和偵測即時端點，您必須使用 SDK 啟用應用程式深入解析記錄。 記錄可讓您疑難排解和調試模型部署和使用問題。 如需詳細資訊，請參閱已[部署之模型的記錄](how-to-enable-logging.md#logging-for-deployed-models)。 
 
 ### <a name="get-logs-from-the-authoring-page"></a>從撰寫頁面取得記錄
 
@@ -155,14 +160,14 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 > [!IMPORTANT]
 > 若要從 [管線執行詳細資料] 頁面更新管線，您必須將管線執行**複製**到新的管線草稿。 管線執行是管線的快照集。 它類似于記錄檔，而且無法變更。 
 
-## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights 中的 Debug 和疑難排解
+## <a name="application-insights"></a>Application Insights
 如需以這種方式使用 OpenCensus Python 程式庫的詳細資訊，請參閱此指南： [Application Insights 中的機器學習管線的 Debug 和疑難排解](how-to-debug-pipelines-application-insights.md)
 
-## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Visual Studio Code 中的 Debug 和疑難排解
+## <a name="visual-studio-code"></a>Visual Studio Code
 
 在某些情況下，您可能需要以互動方式來對 ML 管線中使用的 Python 程式碼進行偵錯工具。 藉由使用 Visual Studio Code （VS Code）和適用於 Visual Studio 的 Python 工具（PTVSD），您可以附加至在定型環境中執行的程式碼。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
 * 設定為使用__Azure 虛擬網路__的__Azure Machine Learning 工作區__。
 * 在管線步驟中使用 Python 腳本的__Azure Machine Learning 管線__。 例如，PythonScriptStep。

@@ -6,13 +6,13 @@ ms.topic: how-to
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.custom: tracking-python
-ms.openlocfilehash: ae4840f5ca31f9bbef1fa5f9ffd175a1f1d7696b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python, devx-track-java
+ms.openlocfilehash: e1321c0d5b1f83ffcfd3f46384dfb3af792c9b8b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832214"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373091"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>匯出 Azure Cosmos DB 模擬器憑證以與 Java、Python 和 Node.js 搭配使用
 
@@ -49,7 +49,7 @@ Azure Cosmos DB 本機模擬器中的憑證會在模擬器第一次執行時產�
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 3":::
 
-4. 按 [下一步] 。
+4. 按 [下一步]  。
 
     :::image type="content" source="./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png" alt-text="Azure Cosmos DB 本機模擬器的匯出步驟 4":::
 

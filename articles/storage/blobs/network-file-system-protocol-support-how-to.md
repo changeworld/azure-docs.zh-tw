@@ -9,12 +9,12 @@ ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 8f4ef046221ae50d2b05525d6cea2d268282551c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097610"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372904"
 ---
 # <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>使用網路檔案系統（NFS）3.0 通訊協定（預覽）在 Linux 上掛接 Blob 儲存體
 
@@ -92,12 +92,12 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 |設定 | 值|
 |----|---|
-|Location|下列其中一個區域：美國東部、美國中部和加拿大中部 |
+|位置|下列其中一個區域：美國東部、美國中部和加拿大中部 |
 |效能|Premium|
-|帳戶類型|BlockBlobStorage|
+|帳戶種類|BlockBlobStorage|
 |複寫|本地備援儲存體 (LRS)|
 |連線方法|公用端點（選取的網路）或私人端點|
-|需要安全傳輸|已停用|
+|需要安全傳輸|停用|
 |階層式命名空間|啟用|
 |NFS V3|啟用|
 
@@ -113,7 +113,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+|[Azure 入口網站](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>步驟7：掛接容器
 
@@ -139,9 +139,8 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 |---|---|
 |`Access denied by server while mounting`|確定您的用戶端是在支援的子網內執行。 請參閱[支援的網路位置](network-file-system-protocol-support.md#supported-network-connections)。|
 |`No such file or directory`| 確認您要掛接的容器是在您確認該功能已註冊之後所建立。 請參閱[步驟2：確認已註冊此功能](#step-2-verify-that-the-feature-is-registered)。此外，請務必在終端機中直接輸入 mount 命令和它的參數。 如果您將此命令的任何部分複製並貼到另一個應用程式的終端機中，則貼上資訊中的隱藏字元可能會導致此錯誤出現。|
-|使用非 NFS 3.0 工具所上傳的檔案，不會顯示在目錄中。 | 請取消掛接容器，然後重新裝載容器。 |
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [Azure Blob 儲存體中的網路檔案系統（NFS）3.0 通訊協定支援（預覽）](network-file-system-protocol-support.md)
 

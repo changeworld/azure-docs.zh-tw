@@ -2,12 +2,13 @@
 title: 延伸模組資源類型
 description: 列出 Azure 資源類型是用來擴充其他資源類型的功能。
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 84de9b66f9001985b8c7b92882f03ff8c7cbf431
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754863"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374009"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>擴充其他資源功能的資源類型
 
@@ -25,9 +26,11 @@ ms.locfileid: "80754863"
 - Microsoft 授權/findOrphanRoleAssignments
 - Microsoft.Authorization/locks
 - Microsoft。授權/許可權
-- Microsoft 授權/policyAssignments
+- Microsoft.Authorization/policyAssignments
 - Microsoft 授權/policyDefinitions
+- Microsoft 授權/policyExemptions
 - Microsoft 授權/policySetDefinitions
+- Microsoft 授權/privateLinkAssociations
 - Microsoft.Authorization/roleAssignments
 - Microsoft 授權/roleAssignmentsUsageMetrics
 - Microsoft 授權/roleDefinitions
@@ -38,6 +41,7 @@ ms.locfileid: "80754863"
 - Microsoft 帳單/createBillingRoleAssignment
 - Microsoft 藍圖/blueprintAssignments
 - Microsoft 藍圖/藍圖
+- ChangeAnalysis/resourceChanges
 - Microsoft. 耗用量/AggregatedCost
 - Microsoft. 耗用量/餘額
 - Microsoft. 耗用量/預算
@@ -49,6 +53,7 @@ ms.locfileid: "80754863"
 - Microsoft. 耗用量/OperationStatus
 - Microsoft. 耗用量/Pricesheets
 - Microsoft. 耗用量/ReservationDetails
+- Microsoft. 耗用量/ReservationRecommendationDetails
 - Microsoft. 耗用量/ReservationRecommendations
 - Microsoft. 耗用量/ReservationSummaries
 - Microsoft. 耗用量/ReservationTransactions
@@ -63,6 +68,7 @@ ms.locfileid: "80754863"
 - Microsoft.containerinstance/serviceAssociationLinks
 - CostManagement/警示
 - CostManagement/預算
+- CostManagement/costAllocationRules
 - CostManagement/維度
 - CostManagement/匯出
 - CostManagement/ExternalSubscriptions
@@ -70,8 +76,8 @@ ms.locfileid: "80754863"
 - CostManagement/Query
 - CostManagement/Reportconfigs
 - CostManagement/Reports
-- CostManagement/Views
 - CostManagement/showbackRules
+- CostManagement/Views
 - Microsoft.CustomProviders/associations
 - Microsoft.EventGrid/eventSubscriptions
 - Microsoft.EventGrid/extensionTopics
@@ -107,12 +113,13 @@ ms.locfileid: "80754863"
 - ManagedServices/registrationDefinitions
 - Microsoft.operationalinsights/storageInsightConfigs
 - Microsoft.operationsmanagement/managementassociations
+- Microsoft.policyinsights/證明
 - Microsoft.policyinsights/policyEvents
 - Microsoft.policyinsights/policyStates
 - Microsoft.policyinsights/policyTrackedResources
 - Microsoft.PolicyInsights/remediations
 - Azurerm.recoveryservices/backupProtectedItems
-- Azurerm.recoveryservices/replicationEligibilityResults    
+- Azurerm.recoveryservices/replicationEligibilityResults
 - ResourceHealth/availabilityStatuses
 - ResourceHealth/childAvailabilityStatuses
 - ResourceHealth/childResources
@@ -130,11 +137,12 @@ ms.locfileid: "80754863"
 - Microsoft. Security/complianceResults
 - Microsoft. Security/dataCollectionAgents
 - Microsoft. Security/deviceSecurityGroups
-- Microsoft. Security/Networkdata.xml
+- Microsoft. Security/jitPolicies
 - Microsoft. Security/serverVulnerabilityAssessments
 - SecurityInsights/匯總
 - SecurityInsights/alertRuleTemplates
 - SecurityInsights/alertRules
+- SecurityInsights/automationRules
 - SecurityInsights/書簽
 - SecurityInsights/案例
 - SecurityInsights/dataConnectors
@@ -144,6 +152,7 @@ ms.locfileid: "80754863"
 - SecurityInsights/事件
 - SecurityInsights/officeConsents
 - SecurityInsights/settings
+- SecurityInsights/threatIntelligence
 - SoftwarePlan/hybridUseBenefits
 - Microsoft 訂用帳戶/CreateSubscription
 - microsoft 支援/supporttickets

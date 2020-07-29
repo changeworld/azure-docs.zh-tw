@@ -10,17 +10,18 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 188aa8c91ac54316dc1aff9f8add7f8559cae5b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 230fac982e19c1106aa5757c9bf1c32d192740d7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809270"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87314504"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Microsoft Azure 儲存體搭配 Java 的用戶端加密和 Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 [Azure Storage Client Library for Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) 支援在上傳至 Azure 儲存體之前將用戶端應用程式內的資料加密，並在下載至用戶端時解密資料。 程式庫也支援與儲存體帳戶金鑰管理[Azure Key Vault](https://azure.microsoft.com/services/key-vault/)整合。
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>透過信封技術進行加密和解密

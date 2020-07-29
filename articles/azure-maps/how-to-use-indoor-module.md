@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5f7bca363e22524546e7ee46bf44ddb18dacf00d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b9ec42620ee5ffaaf5fd79da5dabc944fc3bc422
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064238"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287083"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>使用 Azure 地圖服務室內地圖模組
 

@@ -3,12 +3,12 @@ title: 預覽 - 了解適用於 Kubernetes 的 Azure 原則
 description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。 這是預覽功能。
 ms.date: 06/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: a044ea33f1a7710c4bb97d30cf8f11d4de2838b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373619"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373754"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>了解適用於 Kubernetes 叢集的 Azure 原則 (預覽)
 
@@ -373,7 +373,7 @@ kubectl get pods -n gatekeeper-system
 
 ## <a name="assign-a-built-in-policy-definition"></a>指派內建原則定義
 
-若要將原則定義指派給您的 Kubernetes 叢集，必須獲指派適當的角色型存取控制 (RBAC) 原則指派作業。 內建的 RBAC 角色 [資源原則參與者] 和 [擁有者] 具有這些作業。 若要深入了解，請參閱 [Azure 原則中的 RBAC 權限](../overview.md#rbac-permissions-in-azure-policy)。
+若要將原則定義指派給您的 Kubernetes 叢集，必須獲指派適當的角色型存取控制 (RBAC) 原則指派作業。 Azure 內建角色**資源原則參與者**和**擁有**者具有這些作業。 若要深入了解，請參閱 [Azure 原則中的 RBAC 權限](../overview.md#rbac-permissions-in-azure-policy)。
 
 使用 Azure 入口網站搭配下列步驟，尋找用於管理叢集的內建原則定義：
 

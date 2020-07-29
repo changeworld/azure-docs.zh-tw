@@ -3,12 +3,12 @@ title: 管理 Azure DevTest Labs 中的 autoshutdown 原則 |Microsoft Docs
 description: 瞭解如何設定實驗室的 autoshutdown 原則，讓虛擬機器在不使用時自動關閉。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a865d178bd4bcf9715cefc7c5a01b31a6d6a9435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482729"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287547"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中設定實驗室和計算虛擬機器的 autoshutdown
 
@@ -71,7 +71,7 @@ Autoshutdown 原則可讓您指定此實驗室的 Vm 關閉時間，協助將實
 - 在此時間略過 autoshutdown
 - 將 autoshutdown 延遲一小時或2小時，讓它們可以繼續在 VM 上運作。
 
-通知會透過設定的網頁攔截端點或實驗室擁有者在 autoshutdown 設定中所指定的電子郵件地址傳送。 Webhook 可讓您建立或設定訂閱特定事件的整合。 觸發其中一個事件時，DevTest Labs 會將 HTTP POST 承載傳送至 webhook 的已設定 URL。 如需 webhook 的詳細資訊，請參閱[建立 webhook 或 API Azure 函式](../azure-functions/functions-create-a-web-hook-or-api-function.md)。 
+通知會透過設定的網頁攔截端點或實驗室擁有者在 autoshutdown 設定中所指定的電子郵件地址傳送。 Webhook 可讓您建立或設定訂閱特定事件的整合。 觸發其中一個事件時，DevTest Labs 會將 HTTP POST 承載傳送至 webhook 的已設定 URL。 如需 webhook 的詳細資訊，請參閱[建立 webhook 或 API Azure 函式](../azure-functions/functions-bindings-http-webhook.md)。 
 
 我們建議您使用 web 勾點，因為各種應用程式（例如，時差、Azure Logic Apps 等等）都有廣泛的支援。這可讓您執行自己的傳送通知方式。 例如，本文將逐步引導您瞭解如何使用 Azure Logic Apps 從電子郵件取得 autoshutdown 通知。 首先，讓我們快速完成在實驗室中啟用 autoshutdown 通知的基本步驟。   
 
@@ -211,4 +211,3 @@ Autoshutdown 原則可讓您指定此實驗室的 Vm 關閉時間，協助將實
 
 ## <a name="next-steps"></a>後續步驟
 若要瞭解如何設定所有原則，請參閱[在 Azure DevTest Labs 中定義實驗室原則](devtest-lab-set-lab-policy.md)。
-

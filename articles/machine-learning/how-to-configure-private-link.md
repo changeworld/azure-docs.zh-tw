@@ -10,20 +10,20 @@ ms.custom: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/14/2020
-ms.openlocfilehash: 4a723c76f04c85bffd7ae4d1d1e8bf5b65ad4619
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/28/2020
+ms.openlocfilehash: 59a82b8d7037fb9f2ca03b99b9e797920644fbd6
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326489"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373720"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>設定 Azure Machine Learning 工作區的 Azure 私人連結（預覽）
 
 在本檔中，您將瞭解如何搭配使用 Azure 私用連結與您的 Azure Machine Learning 工作區。 
 
 > [!IMPORTANT]
-> 使用具有 Azure Machine Learning 工作區的 Azure 私人連結目前為公開預覽狀態。 這項功能僅適用于**美國東部**、**美國西部 2**和**美國中南部**區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 使用具有 Azure Machine Learning 工作區的 Azure 私人連結目前為公開預覽狀態。 這項功能僅適用于**美國東部**和**美國西部 2**區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人端點是虛擬網路內的一組私人 IP 位址。 接著，您可以將工作區的存取限制為只在私人 IP 位址上進行。 私用連結有助於降低資料外泄的風險。 若要深入了解私人端點，請參閱 [Azure Private Link](/azure/private-link/private-link-overview) 一文。
 
@@ -134,8 +134,8 @@ az group deployment create \
 
 若要保護您的工作區所使用的 Azure Kubernetes services，請將它放在虛擬網路中。 如需詳細資訊，請參閱搭配[使用 Azure Kubernetes Services 與您的工作區](how-to-enable-virtual-network.md#aksvnet)。
 
-> [!WARNING]
-> Azure Machine Learning 不支援使用已啟用 Private Link 的 Azure Kubernetes Service。
+Azure Machine Learning 現在支援使用已啟用私用連結的 Azure Kubernetes Service。
+若要建立私用 AKS 叢集，請遵循[這裡](https://docs.microsoft.com/azure/aks/private-clusters)的檔
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 

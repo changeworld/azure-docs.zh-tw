@@ -3,13 +3,13 @@ title: Azure 應用程式 Insights 覆寫預設 SDK 端點
 description: 針對 Azure Government 之類的區域，修改預設 Azure 監視器 Application Insights SDK 端點。
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.custom: references_regions
-ms.openlocfilehash: 50a072cd7e509642c36c783e3cc0fd78e4d5adc0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: references_regions, devx-track-javascript
+ms.openlocfilehash: 22f81b327c161df4f6605cfcb64b48b8d75beed3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092859"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373125"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>覆寫預設端點 Application Insights
 

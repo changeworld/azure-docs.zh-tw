@@ -1,6 +1,6 @@
 ---
-title: Windows 7 虛擬機器 Windows 虛擬桌面-Azure
-description: 如何解決 Windows 虛擬桌面環境中 Windows 7 虛擬機器（Vm）的問題。
+title: Windows 7 虛擬機器 Windows 虛擬桌面（傳統）-Azure
+description: 如何解決 Windows 虛擬桌面（傳統）環境中 Windows 7 虛擬機器（Vm）的問題。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 74f2e22bcc9d75070e4f7af304f92d9c5640ca7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7f433668c34fb5edc35889adcd604023202ada4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82615275"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286337"
 ---
-# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows 虛擬桌面的 Windows 7 虛擬機器問題疑難排解
+# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Windows 虛擬桌面中的 Windows 7 虛擬機器疑難排解（傳統）
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。
 
 使用本文來針對設定 Windows 虛擬桌面工作階段主機虛擬機器（Vm）時所發生的問題進行疑難排解。
 

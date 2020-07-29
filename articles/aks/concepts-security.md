@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: conceptual
 ms.date: 07/01/2020
 ms.author: mlearned
-ms.openlocfilehash: b3ad8fdce873b31c8ea6b1c8176ed41587b4b298
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a210098652a18959debfeabe36b390d1bdfca7fc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507092"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287472"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的應用程式和叢集的安全性概念
 
@@ -50,7 +50,7 @@ Azure 平臺會在夜間自動將 OS 安全性修補程式套用至 Linux 節點
 
 若要防止儲存，節點應使用 Azure 受控磁碟。 就大部分的 VM 節點大小而言，這是指採用高效能 SSD 的進階磁碟。 儲存於受控磁碟上的資料會自動加密，並在 Azure 平台內待用。 若要提高備援性，這些磁碟也會安全地複寫於 Azure 資料中心內。
 
-目前，多租用戶如有惡意的使用，AKS 或其他位置中的 Kubernetes 環境就並不完全安全。 將其他安全功能 (例如 *Pod 安全性原則*或更精細的角色型存取控制 (RBAC)) 用於節點，可以提高攻擊的難度。 不過，在執行惡意的多租用戶工作負載時若要保有真正的安全性，Hypervisor 才是您唯一可信賴的安全性層級。 Kubernetes 的安全性網域會成為整個叢集，而非個別節點。 對於這些類型的惡意多租用戶工作負載，您應使用實際隔離的叢集。 如需隔離工作負載方式的詳細資訊，請參閱[AKS 中叢集隔離的最佳做法][cluster-isolation]。
+目前，多租用戶如有惡意的使用，AKS 或其他位置中的 Kubernetes 環境就並不完全安全。 適用于節點的其他安全性功能（例如*Pod 安全性原則*）或更精細的角色型存取控制（RBAC）可讓您更容易入侵。 不過，在執行惡意的多租用戶工作負載時若要保有真正的安全性，Hypervisor 才是您唯一可信賴的安全性層級。 Kubernetes 的安全性網域會成為整個叢集，而非個別節點。 對於這些類型的惡意多租用戶工作負載，您應使用實際隔離的叢集。 如需隔離工作負載方式的詳細資訊，請參閱[AKS 中叢集隔離的最佳做法][cluster-isolation]。
 
 ### <a name="compute-isolation"></a>計算隔離
 

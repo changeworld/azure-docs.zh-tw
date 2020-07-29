@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 77cbd5a3c293b137f49a11263580ef45407c6c2b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3dea4c0f63b6c4e76c2289e6c3d930ea32cf2880
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090462"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373210"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理儲存體帳戶金鑰
 
@@ -43,7 +43,7 @@ Azure AD 租使用者會提供每個已註冊的應用程式與[服務主體](/a
 
 Key Vault 是在所有 Azure AD 租使用者中預先註冊的 Microsoft 應用程式。 Key Vault 會在每個 Azure 雲端中的相同應用程式識別碼下註冊。
 
-| 租用戶 | Cloud | 應用程式識別碼 |
+| 租用戶 | 雲端 | 應用程式識別碼 |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure 公用 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
@@ -99,7 +99,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>授與 Key Vault 對儲存體帳戶的存取權
 
-在 Key Vault 可以存取並管理您的儲存體帳戶金鑰之前，您必須為它授權以存取您的儲存體帳戶。 Key Vault 應用程式需要「列出」** 及「重新產生」** 儲存體帳戶金鑰的使用權限。 這些使用權限是透過內建的 RBAC 角色[儲存體帳戶金鑰操作員服務角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)來啟用。 
+在 Key Vault 可以存取並管理您的儲存體帳戶金鑰之前，您必須為它授權以存取您的儲存體帳戶。 Key Vault 應用程式需要「列出」** 及「重新產生」** 儲存體帳戶金鑰的使用權限。 這些許可權是透過 Azure 內建角色[儲存體帳戶金鑰操作員服務角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)來啟用。 
 
 使用 Azure PowerShell [new-azroleassignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) Cmdlet，將此角色指派給 Key Vault 服務主體，並將範圍限制為您的儲存體帳戶。
 

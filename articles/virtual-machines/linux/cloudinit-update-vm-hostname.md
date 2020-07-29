@@ -3,14 +3,15 @@ title: 使用雲端 init 來設定 Linux VM 的主機名稱
 description: 如何透過 Azure CLI 在建立期間使用 cloud-init 來自訂 Linux VM
 author: rickstercdn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 631b8ef83d5fbf10ec401df7432b23238f2ae2e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85d2772596224a3c4252d950ca6ca8d6af02991b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78969174"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373652"
 ---
 # <a name="use-cloud-init-to-set-hostname-for-a-linux-vm-in-azure"></a>使用 cloud-init 為 Azure 上的 Linux 虛擬機器設定主機名稱
 本文會示範如何在 Azure 佈建期間，使用 [cloud-init](https://cloudinit.readthedocs.io) 在虛擬機器 (VM) 上或虛擬機器擴展集 (VMSS) 上設定特定的主機名稱。 一旦 Azure 佈建資源，這些 cloud-init 指令碼就會在初次開機時執行。 如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/05/2019
-ms.openlocfilehash: 1b508a6b4fa8a541381ea8b74046adb2f79034d3
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044136"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87314215"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>串流分析及 Power BI：適用於串流資料的即時分析儀表板
 
@@ -184,16 +184,6 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 
      ![完成的 Power BI 儀表板，以兩個磚來顯示詐騙電話](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
-
-## <a name="learn-more-about-power-bi"></a>深入了解 Power BI
-
-本教學課程示範如何為一個資料集只建立幾種視覺效果。 Power BI 可協助您為組織建立其他客戶商業智慧型工具。 關於其他構想，請參閱下列資源：
-
-* 如需其他 Power BI 儀表板範例，請觀賞 [開始使用 Power BI](https://youtu.be/L-Z_6P56aas?t=1m58s) 視訊。
-* 如需有關設定串流分析作業輸出至 Power BI 及使用 Power BI 群組的詳細資訊，請檢閱[串流分析輸出](stream-analytics-define-outputs.md)一文的 [Power BI](stream-analytics-define-outputs.md#power-bi) 小節。 
-* 如需 Power BI 一般用法的相關資訊，請參閱 [Power BI 中的儀表板](https://powerbi.microsoft.com/documentation/powerbi-service-dashboards/)。
-
-
 ## <a name="learn-about-limitations-and-best-practices"></a>了解限制和最佳作法
 目前來說，系統大約每秒可呼叫 Power BI 一次。 串流視覺效果支援 15 KB 的封包。 超過 15 KB，串流視覺效果就會失敗 (但仍會繼續推送)。 由於有這些限制，Power BI 最適用的自然是 Azure 串流分析會大量降低資料載入的案例。 我們建議使用輪轉視窗或跳動視窗，以確保資料推送最多為每秒推送 1 次，而且您的查詢符合輸送量需求。
 
@@ -234,12 +224,9 @@ Azure 串流分析可讓您使用其中一個頂尖的商業智慧工具：[Micr
 
 Power BI 在重新整理過授權後，授權區域就會出現綠色警示，表示問題已獲得解決。
 
-## <a name="get-help"></a>取得說明
-如需進一步的協助，請嘗試 [Azure 串流分析的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html)。
-
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
 * [開始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
+* [串流分析輸出](stream-analytics-define-outputs.md)
 * [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

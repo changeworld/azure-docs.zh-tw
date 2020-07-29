@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bc22cf5a21709ccacafe068a60541cc9990d1131
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8c9fbf7bc45ed2070570faf0d1dfdb15b5fd98ee
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132257"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373261"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>管理 Azure 數位 Twins 中的端點和路由
 
@@ -184,7 +184,7 @@ catch (RequestFailedException e)
 
 從入口網站首頁中，搜尋您的 Azure 數位 Twins 實例以提取其詳細資料。 從 Azure 數位 Twins 實例的功能表中選取 [**計量**] 選項，以顯示 [*計量*] 頁面。
 
-:::image type="content" source="media/how-to-manage-routes/metrics.png" alt-text="Azure 入口網站中 Azure 數位 Twins 實例的 [計量] 頁面":::
+:::image type="content" source="media/how-to-view-metrics/azure-digital-twins-metrics.png" alt-text="顯示 Azure 數位 Twins 的 [計量] 頁面的螢幕擷取畫面":::
 
 從這裡，您可以查看實例的計量，並建立自訂的視圖。
 

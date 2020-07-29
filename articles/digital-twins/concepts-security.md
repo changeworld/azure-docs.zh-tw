@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ec681d0af132d11e18703dce6105352651a70180
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131611"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373278"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>使用以角色為基礎的存取控制來保護 Azure 數位 Twins
 
@@ -24,7 +24,7 @@ RBAC 會透過與[Azure Active Directory](../active-directory/fundamentals/activ
 
 您可以使用 RBAC 將許可權授與*安全性主體*，這可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，並接收傳回的 OAuth 2.0 權杖。 此權杖可用來授權對 Azure 數位 Twins 實例的存取要求。
 
-## <a name="authentication-and-authorization"></a>驗證和授權
+## <a name="authentication-and-authorization"></a>驗證與授權
 
 有了 Azure AD，存取是兩個步驟的程式。 當安全性主體（使用者、群組或應用程式）嘗試存取 Azure 數位 Twins 時，要求必須*經過驗證*和*授權*。 
 
@@ -45,7 +45,7 @@ RBAC 會透過與[Azure Active Directory](../active-directory/fundamentals/activ
 
 ### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>授權： Azure 數位 Twins 的 RBAC 角色
 
-Azure 提供下列內建的 RBAC 角色，以授權 Azure 數位 Twins 資源的存取權：
+Azure 提供下列 Azure 內建角色，以授權 Azure 數位 Twins 資源的存取權：
 * *Azure 數位 Twins 擁有者（預覽）* -使用此角色可透過 Azure 數位 Twins 資源提供完整存取權。
 * *Azure 數位 Twins 讀者（預覽）* -使用此角色可提供 Azure 數位 Twins 資源的唯讀存取權。
 

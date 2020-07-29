@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/15/2020
+ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: 7d479f18e8764a69cdc81f99d723534e4895b0e4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025076"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373142"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理開發人員入口網站概觀
 
@@ -105,7 +105,19 @@ ms.locfileid: "87025076"
 
 此 API 記載于[GitHub 存放庫的 wiki 一節][2]。 它可以用來自動化環境之間的入口網站內容遷移-例如，從測試環境到生產環境。 您可以在 GitHub 上的[此檔文章中](https://aka.ms/apimdocs/migrateportal)深入瞭解此程式。
 
+### <a name="how-do-i-move-from-the-managed-to-the-self-hosted-version"></a>如何? 從受管理的移至自我裝載版本？
+
+請參閱[GitHub 上開發人員入口網站存放庫的 Wiki 一節][2]中的詳細文章。
+
+### <a name="can-i-have-multiple-developer-portals-in-one-api-management-service"></a>我可以在一個 API 管理服務中有多個開發人員入口網站嗎？
+
+您可以有一個受管理的入口網站和多個自我裝載的入口網站。 所有入口網站的內容都儲存在相同的 API 管理服務中，因此它們會完全相同。 如果您想要區分入口網站的外觀和功能，您可以使用自己的自訂小工具自行裝載，以在執行時間以動態方式自訂頁面，例如根據 URL。
+
 ### <a name="does-the-portal-support-azure-resource-manager-templates-andor-is-it-compatible-with-api-management-devops-resource-kit"></a>入口網站是否支援 Azure Resource Manager 範本和（或）是否與 API 管理 DevOps 資源套件相容？
+
+不可以。
+
+### <a name="is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management"></a>入口網站的內容是否會隨著「API 管理」中的備份/還原功能一起儲存？
 
 不可以。
 
@@ -210,7 +222,7 @@ New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM N
 
  <small><sup>1</sup>在兩個最新的生產版本中都有支援。</small>
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入瞭解新的開發人員入口網站：
 

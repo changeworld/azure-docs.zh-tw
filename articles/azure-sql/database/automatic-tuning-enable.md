@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 6ffc81f7fc5cf36ff4e9bada8f72cfef013afcbc
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982772"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373499"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>在 Azure 入口網站中啟用自動調整，以監視查詢並改善工作負載效能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -117,7 +117,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 ## <a name="permissions"></a>權限
 
-因為自動調整是 Azure 功能，所以若要使用它，您必須使用 Azure 的內建 RBAC 角色。 僅使用 SQL 驗證並不會足以使用 Azure 入口網站的功能。
+因為自動調整是 Azure 功能，所以若要使用它，您必須使用 Azure 的內建角色。 僅使用 SQL 驗證並不會足以使用 Azure 入口網站的功能。
 
 若要使用自動調整，授與使用者的最低必要許可權是 Azure 的內建[SQL Database 參與者](../../role-based-access-control/built-in-roles.md#sql-db-contributor)角色。 您也可以考慮使用較高的許可權角色，例如 SQL Server 參與者、SQL 受控執行個體參與者、參與者和擁有者。
 

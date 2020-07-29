@@ -8,15 +8,15 @@ ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
-ms.custom: contperfq4
+ms.topic: conceptual
+ms.custom: troubleshooting, contperfq4
 ms.date: 03/31/2020
-ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536108"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373686"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 中的已知問題和疑難排解
 
@@ -368,6 +368,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 ```
 
 例如，如果您嘗試從 ML 管線建立或連結為遠端執行所提交的計算目標，您會收到錯誤。
+
+## <a name="missing-user-interface-items-in-studio"></a>Studio 中缺少使用者介面專案
+
+Azure 角色型存取控制可用來限制您可以使用 Azure Machine Learning 執行的動作。 這些限制可以防止使用者介面專案顯示在 Azure Machine Learning studio 中。 例如，如果您被指派無法建立計算實例的角色，建立計算實例的選項就不會出現在 studio 中。
+
+如需詳細資訊，請參閱[管理使用者和角色](how-to-assign-roles.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

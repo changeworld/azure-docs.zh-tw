@@ -5,22 +5,23 @@ author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
 ms.subservice: workloads
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 14af110b5cf50f167d0c4961e26454bc33c6ed7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2fb1657c26fce3e1fdd67f36b0c6511b78dd216
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81759487"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373533"
 ---
 # <a name="deploy-openshift-container-platform-4x-in-azure"></a>在 Azure 中部署 OpenShift Container Platform 4。x
 
 Azure 現在透過安裝程式布建的基礎結構（IPI）模型，支援部署 OpenShift 容器平臺（OCP）4.2。  嘗試 OpenShift 4 的登陸頁面是[try.openshift.com](https://try.openshift.com/)。 若要在 Azure 中安裝 OCP 4.2，請造訪[Red Hat OpenShift Cluster Manager](https://cloud.redhat.com/openshift/install/azure/installer-provisioned)頁面。  需要有 Red Hat 認證才能存取此網站。
 
 
-## <a name="notes"></a>備註 
+## <a name="notes"></a>注意 
 
  - 需要有 Azure Active Directory （AAD）服務主體（SP）才能在 Azure 中安裝和執行 OCP 4。x
      - SP 必須被授與**OwnedBy** For Azure Active Directory GRAPH 的 API 許可權

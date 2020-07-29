@@ -3,12 +3,12 @@ title: 無效範本錯誤
 description: 描述如何解決在部署 Azure Resource Manager 範本時出現的無效範本錯誤。
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: a3589f42f707240272a411a985adefd5e6c5539c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118880"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373805"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>解決無效範本的錯誤
 
@@ -130,7 +130,7 @@ part of the allowed values
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>解決方案 4 - 太多目標資源群組
 
-您可能會在先前的部署中看到此錯誤，因為您在單一部署中的限制為五個目標資源群組。 在 2020 年 5 月，該限制已增加到 800 個資源群組。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](cross-resource-group-deployment.md)。
+您可能會在先前的部署中看到此錯誤，因為您在單一部署中的限制為五個目標資源群組。 在 2020 年 5 月，該限制已增加到 800 個資源群組。 如需詳細資訊，請參閱[將 Azure 資源部署至多個訂用帳戶或資源群組](cross-scope-deployment.md)。
 
 <a id="circular-dependency"></a>
 

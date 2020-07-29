@@ -7,19 +7,20 @@ ms.reviewer: jasonh
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: how-to
 ms.date: 08/20/2019
-ms.openlocfilehash: e5ff12479333c4b36cc7712e0e363a055b9f6dc6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-java
+ms.openlocfilehash: bac13f187c99166bc868112792d80833387a84dc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127650"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373771"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>使用 Java 應用程式來管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 本文說明如何使用以 Azure Java SDK 所撰寫的應用程式，來管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和作業。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 * **JAVA 開發工具組（JDK） 8** （使用 java 版本1.8）。
 * **IntelliJ**或其他合適的 JAVA 開發環境。 本文件中的指示使用 IntelliJ。
 * 建立 Azure Active Directory (AAD) 應用程式，並擷取其**用戶端識別碼**、**租用戶識別碼**和**金鑰**。 如需了解 AAD 應用程式，以及如何取得用戶端識別碼的指示，請參閱 [使用入口網站建立 Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。 建立應用程式並產生金鑰後，可以從入口網站取得回覆 URI 和金鑰。

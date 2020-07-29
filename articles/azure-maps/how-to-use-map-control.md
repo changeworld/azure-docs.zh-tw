@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bdbdbfada3c7c4cfb4350bb11a33defd743b7195
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 40ae1492084430f7dbca331d1439b4ded099c866
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87064204"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287075"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務的地圖控制項
 
@@ -251,7 +252,7 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 
 如果直接存取 Azure 地圖服務 REST 服務，請將 URL 網域變更為 `atlas.azure.us` 。 例如，如果使用搜尋 API 服務，請將 URL 網域從變更 `https://atlas.microsoft.com/search/` 為 `https://atlas.azure.us/search/` 。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 了解如何建立地圖並與其互動：
 

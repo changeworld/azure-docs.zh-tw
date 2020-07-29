@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: cbc950647dc2f7102f20766c22f434526ab66639
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122277"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373465"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用文字分析的健全狀況（預覽）
 
@@ -23,9 +23,9 @@ ms.locfileid: "86122277"
 > 健全狀況的文字分析是以「原樣」提供的預覽功能，以及「所有的錯誤」。 因此，**在任何生產環境中使用時，不應執行或部署健康情況的文字分析（預覽）。** 適用于健康情況的文字分析並非適用于醫療裝置、臨床支援、診斷工具或其他要用於診斷、解決、緩和、處理或預防疾病或其他條件的技術，而且 Microsoft 不會授與授權或權利以用於這種用途。 這項功能並非設計或部署為替代專業醫學建議或醫療保健專業人員的醫療意見、診斷、治療或臨床判斷，因此不應使用。 客戶完全負責任何使用文字分析健康情況。 Microsoft 不保證健康情況的文字分析或與該功能連線所提供的任何資料，都能滿足任何醫療的目的，或符合任何人的健康或醫療需求。 
 
 
-適用于健康情況的 Azure 文字分析是一種容器化服務，可從非結構化的文字（例如醫生的記事、放電摘要、臨床檔和電子醫療記錄）中，將相關醫療資訊解壓縮並加以標記。  
+「健康情況文字分析」是一種容器化服務，可從非結構化的文字（例如醫生的記事、放電摘要、臨床檔和電子醫療記錄）中，將相關醫療資訊解壓縮並加以標示。  
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 健全狀況容器的文字分析目前會在您自己的開發環境中，針對符合您特定安全性和資料控管需求的英文文字執行命名實體辨識（NER）、關聯性提取、實體否定和實體連結。
 
@@ -62,7 +62,7 @@ ms.locfileid: "86122277"
 
 ---
 
-如需所支援實體的完整清單，請參閱醫療保健的文字分析所傳回的[實體類別](../named-entity-types.md?tabs=health)。
+如需所支援實體的完整清單，請參閱文字分析的健全狀況所傳回的[實體類別](../named-entity-types.md?tabs=health)。
 
 ## <a name="supported-languages"></a>支援的語言
 
@@ -80,8 +80,8 @@ ms.locfileid: "86122277"
 
 有多種方式可供您安裝和執行容器。 
 
-1. 使用[Azure 入口網站](text-analytics-how-to-install-containers.md?tabs=healthcare)建立文字分析資源，並使用 Docker 來取得您的容器。
-2. 使用下列 PowerShell 和[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)腳本，將資源部署容器設定自動化。
+- 使用[Azure 入口網站](text-analytics-how-to-install-containers.md?tabs=healthcare)建立文字分析資源，並使用 Docker 來取得您的容器。
+- 使用下列 PowerShell 和[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)腳本，將資源部署容器設定自動化。
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>使用 Azure 用於容器的 Web App 安裝容器
 

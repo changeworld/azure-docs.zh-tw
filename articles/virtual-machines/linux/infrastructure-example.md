@@ -4,14 +4,15 @@ description: 了解適合用來在 Azure 中部署範例基礎結構的關鍵設
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 500de3f89bd041adf0b73e21762495d8c89e19c8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944893"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286286"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>適用於 Linux VM 的範例 Azure 基礎結構逐步解說
 本文將逐步解說建置範例應用程式基礎結構的方法。 我們會詳述設計簡單線上商店基礎結構的方式，此線上商店能將所有命名慣例、可用性設定組、虛擬網路及負載平衡器的指導方針和決定集合在一起，並實際部署您的虛擬機器 (VM)。

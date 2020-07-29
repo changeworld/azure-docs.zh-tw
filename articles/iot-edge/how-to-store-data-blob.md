@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b647515e9bd802673114de82089ede5f52f9016
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07da9316ea76e609948eed586f776be33c91b4bb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562699"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287253"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>在 IoT Edge 使用 Azure Blob 儲存體，以便在邊緣儲存資料
 
@@ -173,7 +173,10 @@ sudo chmod -R 700 <blob-dir>
   * `http://<device IP >:11002/<account name>`
   * `http://<IoT Edge device hostname>:11002/<account name>`
   * `http://<fully qualified domain name>:11002/<account name>`
-
+ 
+ > [!IMPORTANT]
+ > 當您對模組進行呼叫時，Azure IoT Edge 會區分大小寫，而且儲存體 SDK 也會預設為小寫。 雖然[Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace)中的模組名稱是**AzureBlobStorageonIoTEdge**，但將名稱變更為小寫有助於確保您與 IoT Edge 模組上 Azure Blob 儲存體的連線不會中斷。
+ 
 ## <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob 儲存體快速入門範例
 
 Azure Blob 儲存體檔包含幾種語言的快速入門範例程式碼。 您可以藉由變更 Blob 端點以連接到本機 Blob 儲存體模組，來執行這些範例以測試 IoT Edge 上的 Azure Blob 儲存體。

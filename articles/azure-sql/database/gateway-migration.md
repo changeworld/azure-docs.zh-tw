@@ -10,15 +10,15 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: e9bf1f06b1ec1f99da1ce653b4bc72f4638ba451
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084948"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373482"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database 流量遷移至較新的閘道
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 隨著 Azure 基礎結構的改善，Microsoft 會定期重新整理硬體，以確保我們能提供最佳的客戶體驗。 在接下來的幾個月，我們打算新增以較新硬體層代為基礎的閘道、將流量遷移至它們，最後解除委任在某些區域的舊版硬體上建立的閘道。  
 
@@ -26,7 +26,20 @@ ms.locfileid: "86084948"
 
 ## <a name="status-updates"></a>狀態更新
 
-# <a name="in-progress"></a>[正在進行](#tab/in-progress-ip)
+# <a name="in-progress"></a>[進行中](#tab/in-progress-ip)
+### <a name="september-2020"></a>2020 年 9 月
+
+新的 SQL 閘道將會新增至下欄區域：
+
+- 北歐：13.74.104.113 
+- West 美國2：40.78.248.10 
+- 西歐：52.236.184.163 
+- 美國中南部：20.45.121.1、20.49.88。1 
+
+現有的 SQL 閘道將會開始接受下欄區域中的流量：
+- 日本東部：40.79.184.8、40.79.192。5
+
+這些 SQL 閘道應于2020年9月1日開始接受客戶流量。 
 
 ### <a name="august-2020"></a>2020年8月
 
@@ -38,7 +51,7 @@ ms.locfileid: "86084948"
 
 這些 SQL 閘道應于2020年8月10日開始接受客戶流量。 
 
-# <a name="completed"></a>[已完成](#tab/completed-ip)
+# <a name="completed"></a>[Completed](#tab/completed-ip)
 
 下列閘道遷移已完成： 
 
@@ -50,7 +63,7 @@ ms.locfileid: "86084948"
 - 美國中部
 - 東南亞
 - 美國中南部
-- 北歐
+- 歐洲北部
 - 美國中北部
 - 日本西部
 - 日本東部

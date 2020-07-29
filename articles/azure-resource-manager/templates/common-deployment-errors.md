@@ -4,12 +4,12 @@ description: 說明如何解決使用 Azure Resource Manager 將資源部署至 
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 06/25/2020
-ms.openlocfilehash: 9914cf8267624cd05db860e7dd8eb8d8c5831f7e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 652e4ec3c7f0de982b973733d75d736949b97bcc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055659"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373992"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解
 
@@ -78,7 +78,7 @@ ms.locfileid: "86055659"
 | SubnetsNotInSameVnet | 虛擬機器只能有一個虛擬網路。 在部署數個 NIC 時，請確定它們屬於相同的虛擬網路。 | [多個 NIC](../../virtual-machines/windows/multiple-nics.md) |
 | SubscriptionNotRegistered | 部署網路資源時，會自動在訂用帳戶中註冊 Microsoft 網路資源提供者。 有時候，自動註冊不會及時完成。 若要避免此間歇性錯誤，請在部署前註冊 Microsoft 網路資源提供者。 | [解析註冊](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | 移除不必要的相依性。 | [解析循環相依性](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | 減少單一部署的資源群組數目。 | [跨資源群組部署](cross-resource-group-deployment.md) |
+| TooManyTargetResourceGroups | 減少單一部署的資源群組數目。 | [跨領域部署](cross-scope-deployment.md) |
 
 ## <a name="find-error-code"></a>尋找錯誤碼
 

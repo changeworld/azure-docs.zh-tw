@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中啟用授權映像 | Microsoft Docs
 description: 了解如何使用 Azure 入口網站在 Azure DevTest Labs 中啟用授權映像
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6a4023a0107acf5aa4cabc2178d17f7be40301f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a043679e27580254c56fe118838dd355be5a58de
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481012"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286507"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中啟用授權映像
 
@@ -50,7 +50,7 @@ ms.locfileid: "85481012"
     ![[設定以程式設計方式部署] 視窗](./media/devtest-lab-create-custom-image-from-licensed-image/devtest-lab-licensed-images.png)
 
    > [!NOTE]
-   > 「資料科學 VM」是預先安裝、設定及測試過數個熱門工具的 Azure 虛擬機器映像，這些工具常用於資料分析、機器學習服務和 AI 訓練。 [適用於 Linux 和 Windows 的 Azure 資料科學虛擬機器簡介](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview)提供有關 DSVM 的大量相關資訊。
+   > 「資料科學 VM」是預先安裝、設定及測試過數個熱門工具的 Azure 虛擬機器映像，這些工具常用於資料分析、機器學習服務和 AI 訓練。 [適用於 Linux 和 Windows 的 Azure 資料科學虛擬機器簡介](../machine-learning/data-science-virtual-machine/overview.md)提供有關 DSVM 的大量相關資訊。
    >
    >
 
@@ -78,7 +78,7 @@ ms.locfileid: "85481012"
 
 ## <a name="related-blog-posts"></a>相關部落格文章
 
-- [自訂映像或公式？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [自訂映像或公式？](./devtest-lab-faq.md#blog-post)
 - [在 Azure DevTest Labs 之間複製自訂映像](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>後續步驟

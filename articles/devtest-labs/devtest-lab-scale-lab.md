@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中調整實驗室的配額和限制 | Microsoft D
 description: 本文說明如何在 Azure DevTest Labs 中調整您的實驗室。 查看您的使用量配額和限制，並要求增加。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9c999760a649d4df4b34221633491b8ece784f52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dacc699a6f4e7663d0f314acfc2212bd69d46d18
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477086"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287319"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>在 DevTest Labs 中調整配額和限制
 當您在 DevTest Labs 中工作時，您可能會發現某些 Azure 資源有特定預設限制，會影響 DevTest Labs 服務。 這些限制稱為**配額**。
@@ -20,7 +20,7 @@ ms.locfileid: "85477086"
 
 例如，每個訂用帳戶都有預設配額 20 個核心。 因此，如果您在具有四個核心的實驗室中建立 VM，則您只能建立五個 VM。
 
-[Azure 訂用帳戶和服務限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)列出一些 Azure 資源最常見的配額。 在實驗室中最常使用的資源 (且您可能會遇到其配額) 包括 VM 核心、公用 IP 位址、網路介面、受控磁碟、RBAC 角色指派，以及 ExpressRoute 線路。
+[Azure 訂用帳戶和服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md)列出一些 Azure 資源最常見的配額。 在實驗室中最常使用的資源 (且您可能會遇到其配額) 包括 VM 核心、公用 IP 位址、網路介面、受控磁碟、RBAC 角色指派，以及 ExpressRoute 線路。
 
 ## <a name="view-your-usage-and-quotas"></a>檢視使用量和配額
 下列步驟將示範如何檢視訂用帳戶中 Azure 資源的目前配額，以及查看您使用的每個配額百分比。
@@ -37,7 +37,7 @@ ms.locfileid: "85477086"
    ![配額和使用量](./media/devtest-lab-scale-lab/devtestlab-view-quotas-new.png)
 
 ## <a name="requesting-more-resources-in-your-subscription"></a>要求訂用帳戶中的更多資源
-如果達到配額上限，訂用帳戶中資源的預設限制可以增加到最大限制，如 [Azure 訂用帳戶和服務限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)中所述。
+如果達到配額上限，訂用帳戶中資源的預設限制可以增加到最大限制，如 [Azure 訂用帳戶和服務限制](../azure-resource-manager/management/azure-subscription-service-limits.md)中所述。
 
 這些步驟為您示範如何透過 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)要求配額增加。
 

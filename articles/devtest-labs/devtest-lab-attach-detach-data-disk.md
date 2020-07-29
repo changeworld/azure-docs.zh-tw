@@ -3,22 +3,22 @@ title: 在 Azure DevTest Labs 中將資料磁碟連結至虛擬機器或中斷�
 description: 了解如何在 Azure DevTest Labs 中將資料磁碟連結至虛擬機器或中斷連結
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 164c2335f0aadc08a447dd61e259786d5bfb104d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5faae56307639e369130ec7443c8bceab2f794d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482967"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287573"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中將資料磁碟連結至虛擬機器或中斷連結
-[Azure 受控磁碟](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)會管理與虛擬機器資料磁碟相關聯的儲存體帳戶。 使用者將新的資料磁碟連結至 VM、指定所需的磁碟類型和大小，Azure 就會自動建立和管理磁碟。 之後資料磁碟可以從 VM 中斷連結，稍後再重新連結至相同的 VM，或連結至屬於相同使用者的不同 VM。
+[Azure 受控磁碟](../virtual-machines/windows/managed-disks-overview.md)會管理與虛擬機器資料磁碟相關聯的儲存體帳戶。 使用者將新的資料磁碟連結至 VM、指定所需的磁碟類型和大小，Azure 就會自動建立和管理磁碟。 之後資料磁碟可以從 VM 中斷連結，稍後再重新連結至相同的 VM，或連結至屬於相同使用者的不同 VM。
 
 這項功能對於管理每部個別虛擬機器外部的儲存體或軟體而言很方便。 如果儲存體或軟體已存在於資料磁碟內，可以輕鬆地連結、中斷連結然後再重新連結至擁有該資料磁碟之使用者所擁有的任何 VM。
 
 ## <a name="attach-a-data-disk"></a>連接資料磁碟
 將資料磁碟連結至 VM 之前，請檢閱下列提示︰
 
-- VM 的大小會控制您可以連結的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。
+- VM 的大小會控制您可以連結的資料磁碟數目。 如需詳細資訊，請參閱 [虛擬機器的大小](../virtual-machines/sizes.md)。
 - 您只能將資料磁碟連結至執行中的 VM。 請確認 VM 正在執行，然後再嘗試連結資料磁碟。
 
 ### <a name="attach-a-new-disk"></a>附加新的磁碟
@@ -35,7 +35,7 @@ ms.locfileid: "85482967"
 1. 藉由輸入資料磁碟名稱、類型和大小，來完成 [連結新磁碟]**** 窗格。
 
     ![完成「連結新磁碟」表單](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-new-form.png)
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 幾分鐘後，就會建立新的資料磁片，並將其連結至 VM，並出現在該 VM 的**資料磁片**清單中。
 
@@ -90,4 +90,3 @@ ms.locfileid: "85482967"
 
 ## <a name="next-steps"></a>後續步驟
 了解如何管理[可宣告虛擬機器](devtest-lab-add-claimable-vm.md#unclaim-a-vm)的資料磁碟。
-

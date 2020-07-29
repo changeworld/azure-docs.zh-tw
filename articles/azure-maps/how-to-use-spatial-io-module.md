@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0532b1548af9be04a53f3ba06147fdde4722f307
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f848274f67b5ebf5349cbef24a769aaae39b9955
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130693"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287032"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>如何使用 Azure 地圖服務空間 IO 模組
 
@@ -37,7 +38,7 @@ Azure 地圖服務 Web SDK 提供**空間 IO 模組**，它會使用 JavaScript 
 > [!WARNING]
 > 只使用來自您信任來源的資料和服務，特別是從另一個網域參考它時。 空間 IO 模組會採取步驟來將風險降至最低，不過，最安全的方法就是不允許任何 danagerous 的資料從您的應用程式開始。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 在您可以使用空間 IO 模組之前，您必須先[建立 Azure 地圖服務帳戶](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account)，並[取得帳戶的主要訂](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)用帳戶金鑰。
 
@@ -133,7 +134,7 @@ Azure 地圖服務 Web SDK 提供**空間 IO 模組**，它會使用 JavaScript 
     var datasource, layer;
     ```
 
-    及
+    和
 
     ```javascript
     //Create a data source and add it to the map.

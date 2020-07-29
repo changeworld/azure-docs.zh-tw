@@ -7,11 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/09/2020
 tags: connectors
-ms.openlocfilehash: 23c6a555909d43f640fb5089fb60da8bac065886
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c7a0ddb80ba28548fc1821cc2063e500af0fa66
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609504"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286626"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>從 Azure Logic Apps 透過 HTTP 或 HTTPS 呼叫服務端點
 
@@ -23,7 +24,7 @@ ms.locfileid: "84609504"
 
 本文說明如何將 HTTP 觸發程式或動作新增至邏輯應用程式的工作流程。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
@@ -60,7 +61,7 @@ ms.locfileid: "84609504"
 
 1. 請使用當引發觸發程序時執行的動作，繼續建置邏輯應用程式的工作流程。
 
-1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]****。
+1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 <a name="http-action"></a>
 
@@ -93,7 +94,7 @@ ms.locfileid: "84609504"
 
 1. 若要新增其他可用參數，開啟 [新增參數] 清單，然後選取您所需的參數。
 
-1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]****。
+1. 當您完成時，請記得儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]。
 
 <a name="tls-support"></a>
 
@@ -161,7 +162,7 @@ ms.locfileid: "84609504"
 
 ## <a name="asynchronous-request-response-behavior"></a>非同步要求-回應行為
 
-根據預設，Azure Logic Apps 中的所有 HTTP 型動作都會遵循標準[非同步作業模式](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)。 此模式會指定在 HTTP 動作呼叫或將要求傳送至端點、服務、系統或 API 之後，接收者會立即傳回「202已[接受](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)」回應。 這段程式碼會確認接收者是否已接受要求，但尚未完成處理。 回應可以包含 `location` 指定 URL 的標頭，以及呼叫者可以用來輪詢或檢查非同步要求狀態的重新整理識別碼，直到接收者停止處理並傳回「 [200 確定](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)」成功回應或其他非202回應為止。 不過，呼叫端不需要等候要求完成處理，而且可以繼續執行下一個動作。 如需詳細資訊，請參閱[非同步微服務整合會強制執行微服務自治](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)。
+根據預設，Azure Logic Apps 中的所有 HTTP 型動作都會遵循標準[非同步作業模式](/azure/architecture/patterns/async-request-reply)。 此模式會指定在 HTTP 動作呼叫或將要求傳送至端點、服務、系統或 API 之後，接收者會立即傳回「202已[接受](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)」回應。 這段程式碼會確認接收者是否已接受要求，但尚未完成處理。 回應可以包含 `location` 指定 URL 的標頭，以及呼叫者可以用來輪詢或檢查非同步要求狀態的重新整理識別碼，直到接收者停止處理並傳回「 [200 確定](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)」成功回應或其他非202回應為止。 不過，呼叫端不需要等候要求完成處理，而且可以繼續執行下一個動作。 如需詳細資訊，請參閱[非同步微服務整合會強制執行微服務自治](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)。
 
 * 在邏輯應用程式設計工具中，HTTP 動作（但非觸發程式）具有**非同步模式**設定，預設為啟用。 此設定指定呼叫端不會等待處理完成，而且可以移至下一個動作，但會繼續檢查狀態，直到處理停止為止。 如果停用，此設定會指定呼叫端等待處理完成，然後再繼續進行下一個動作。
 
@@ -252,7 +253,7 @@ HTTP 要求具有[超時限制](../logic-apps/logic-apps-limits-and-config.md#ht
 
 以下是 HTTP 觸發程式或動作輸出的詳細資訊，會傳回下列資訊：
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 說明 |
 |----------|------|-------------|
 | `headers` | JSON 物件 | 要求的標頭 |
 | `body` | JSON 物件 | 具有來自要求之本文內容的物件 |
@@ -273,3 +274,4 @@ HTTP 要求具有[超時限制](../logic-apps/logic-apps-limits-and-config.md#ht
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+

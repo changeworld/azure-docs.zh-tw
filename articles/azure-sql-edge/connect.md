@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d82446a915863e6aa95cc79a421f86b8c4dd3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/25/2020
+ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252639"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373108"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>連線及查詢 Azure SQL Edge (預覽)
 
@@ -29,8 +29,8 @@ ms.locfileid: "85252639"
 
 您可以從下列任何一個常用工具連接到 Azure SQL Edge 實例的實例：
 
-* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)： sqlcmd 用戶端工具已包含在 Azure SQL Edge 的容器映射中。 如果您使用互動式 Bash Shell 來附加至正在執行的容器，則您可以在本機執行這些工具。
-* [Transact-SQL](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
+* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)： sqlcmd 用戶端工具已包含在 Azure SQL Edge 的容器映射中。 如果您使用互動式 Bash Shell 來附加至正在執行的容器，則您可以在本機執行這些工具。 SQL 用戶端工具無法在 ARM64 平臺上使用，因為它們不包含在 SQL Edge 容器的 ARM64 版本中。 
+* [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
 
@@ -55,7 +55,7 @@ ms.locfileid: "85252639"
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>從容器內連接到資料庫引擎
 
-[SQL Server 命令列工具](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)會包含在 Azure SQL Edge 的容器映射中。 如果您使用互動式命令提示字元附加至容器，您可以在本機執行這些工具。
+[SQL Server 命令列工具](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)會包含在 Azure SQL Edge 的容器映射中。 如果您使用互動式命令提示字元附加至容器，您可以在本機執行這些工具。 SQL 用戶端工具無法在 ARM64 平臺上使用，因為它們不包含在 SQL Edge 容器的 ARM64 版本中。 
 
 1. 使用 `docker exec -it` 命令在您執行的容器中啟動互動式 Bash 殼層。 在下列範例中， `e69e056c702d` 是容器識別碼。
 

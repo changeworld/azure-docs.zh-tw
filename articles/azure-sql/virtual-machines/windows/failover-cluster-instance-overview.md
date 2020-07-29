@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a40c5512da40ede84251ec16345a3957c391bb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965478"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287362"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上具有 SQL Server 的容錯移轉叢集實例
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 當您使用 Azure 虛擬機器（Vm）上的 SQL Server 容錯移轉叢集實例（FCI）時，本文會介紹功能差異。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure Vm 上的 SQL Server 會使用 Windows Server 容錯移轉叢集（WSFC）功能，透過伺服器實例層級的冗余來提供本機高可用性：容錯移轉叢集實例。 FCI 是安裝在 WSFC （或單純叢集）節點上，而且可能跨多個子網的單一 SQL Server 實例。 在網路上，FCI 似乎是在單一電腦上執行 SQL Server 的實例。 但是，如果目前的節點變得無法使用，FCI 會提供從一個 WSFC 節點容錯移轉到另一個。
 
@@ -48,10 +48,10 @@ Azure Vm 上的 SQL Server 提供各種選項，作為部署 SQL Server 容錯�
 
 ||[Azure 共用磁碟](../../../virtual-machines/windows/disks-shared.md)|[Premium 檔案共用](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[儲存空間直接存取 (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**最低 OS 版本**| Windows Server 2016|Windows Server 2012|Windows Server 2016|
-|**最低 SQL Server 版本**|SQL Server 2019|SQL Server 2012|SQL Server 2016|
+|**最低 OS 版本**| 全部 |Windows Server 2012|Windows Server 2016|
+|**最低 SQL Server 版本**|全部|SQL Server 2012|SQL Server 2016|
 |**支援的 VM 可用性** |具有鄰近放置群組的可用性設定組 |可用性設定組和可用性區域|可用性設定組 |
-|**支援 FileStream**|否|否|是 |
+|**支援 FileStream**|是|否|是 |
 |**Azure blob 快取**|否|否|是|
 
 本節的其餘部分列出適用于 Azure Vm 上 SQL Server 的每個儲存體選項的優點和限制。 
@@ -60,25 +60,25 @@ Azure Vm 上的 SQL Server 提供各種選項，作為部署 SQL Server 容錯�
 
 [Azure 共用磁片](../../../virtual-machines/windows/disks-shared.md)是[azure 受控磁片](../../../virtual-machines/windows/managed-disks-overview.md)的一項功能。 Windows Server 容錯移轉叢集支援將 Azure 共用磁片與容錯移轉叢集實例搭配使用。 
 
-**支援的作業系統**： Windows Server 2019   
-**支援的 SQL 版本**： SQL Server 2019   
+**支援的作業系統**：全部   
+**支援的 SQL 版本**：全部     
 
 **優點**： 
 - 適用于想要遷移至 Azure 的應用程式，同時保持其高可用性和嚴重損壞修復（HADR）架構。 
 - 可以將叢集應用程式遷移至 Azure，因為支援 SCSI 持續保留（SCSI PR）。 
 - 支援適用于所有 SQL Server 版本的共用 Azure 進階 SSD，以及 SQL Server 2019 的共用 Azure Ultra 磁碟儲存體。 
 - 可以使用單一共用磁片或 stripe 多個共用磁片來建立共用存放集區。 
+- 支援 Filestream。
 
 
 **限制**： 
-- 僅適用于 SQL Server 2019 和 Windows Server 2019 （預覽期間）。 
 - 虛擬機器必須放在相同的可用性設定組和鄰近放置群組中。
 - 不支援可用性區域。
 - 不支援進階 SSD 的磁碟快取。
  
 若要開始使用，請參閱[SQL Server 容錯移轉叢集實例與 Azure 共用磁片](failover-cluster-instance-azure-shared-disks-manually-configure.md)。 
 
-### <a name="storage-spaces-direct"></a>儲存空間 Direct
+### <a name="storage-spaces-direct"></a>儲存空間直接存取
 
 [儲存空間直接存取](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)是 Azure 虛擬機器上的容錯移轉叢集所支援的 Windows Server 功能。 它提供了以軟體為基礎的虛擬 SAN。
 
@@ -159,14 +159,14 @@ Azure 虛擬機器支援 Windows Server 2019 上的 MSDTC 和叢集共用磁片�
 在 Azure 虛擬機器上，Windows Server 2016 或更早版本不支援 MSDTC，因為：
 
 - 叢集 MSDTC 資源無法設為使用共用儲存體。 若在 Windows Server 2016 上建立 MSDTC 資源，即使有儲存體可用，系統也不會顯示任何可用的共用儲存體。 Windows Server 2019 中已修正此問題。
-- 基本負載平衡器不處理 RPC 連接埠。
+- 基本負載平衡器不會處理 RPC 連接埠。
 
 
 ## <a name="next-steps"></a>後續步驟
 
 查看叢集設定的[最佳做法](hadr-cluster-best-practices.md)，然後您就可以[準備 SQL Server VM 以進行 FCI](failover-cluster-instance-prepare-vm.md)。 
 
-如需詳細資訊，請參閱： 
+如需詳細資訊，請參閱 
 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server 容錯移轉叢集實例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

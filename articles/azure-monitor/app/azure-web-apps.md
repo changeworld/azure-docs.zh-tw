@@ -3,12 +3,13 @@ title: 監視 Azure 應用程式服務效能 | Microsoft Docs
 description: Azure 應用程式服務的應用程式效能監視。 圖表載入和回應時間、相依性資訊，以及設定效能警示。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 042dd67c0e1e5a0ba2f81d5678e191dbfdd60a43
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067889"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373159"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -405,10 +406,11 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 使用無程式碼監視時，只需要連接字串。 不過，我們仍建議您在執行手動檢測時，設定檢測金鑰以保留與舊版 SDK 的回溯相容性。
 
 ## <a name="next-steps"></a>後續步驟
-* [在即時應用程式上執行分析工具](../app/profiler.md)。
+* [在即時應用程式上執行分析工具](./profiler.md)。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 監視 Azure Functions
 * [能夠讓 Azure 診斷](../platform/diagnostics-extension-to-application-insights.md) 傳送至 Application Insights。
 * [監視服務健康狀態計量](../platform/data-platform.md)，確保您的服務可用且回應正常。
 * 每當發生作業事件或計量超過臨界值時，[接收警示通知](../platform/alerts-overview.md)。
 * 使用 [JavaScript 應用程式和網頁適用的 Application Insights](javascript.md) ，以從造訪網頁的瀏覽器取得用戶端遙測。
 * [設定可用性 Web 測試](monitor-web-app-availability.md) ，以在您的網站關閉時發出警示。
+

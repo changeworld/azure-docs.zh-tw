@@ -1,6 +1,5 @@
 ---
-title: 建立 & 部署自訂 R 模組
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）：建立 & 部署自訂 R 模組-Azure
 description: 瞭解如何在 ML Studio （傳統）中撰寫及部署自訂 R 模組。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 389290b01848d598ada9ca49bee932a764854088
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4b4251a426d33c0a3b8cc7584d2bf6375dcd0f79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957319"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287252"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>定義 Azure Machine Learning Studio 的自訂 R 模組（傳統）
+# <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>定義 Machine Learning Studio 的自訂 R 模組（傳統）
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
 
 本主題說明如何撰寫和部署自訂的 R Studio （傳統）。 它說明什麼是自訂 R 模組，以及使用哪些檔案定義這些模組； 並說明如何在 Machine Learning 工作區中建構這些用來定義模組的檔案，以及如何註冊模組以進行部署。 接著，詳細說明用於自訂模組定義中的元素和屬性。 此外，也討論如何使用輔助功能和檔案以及多個輸出。 
 
@@ -142,7 +144,7 @@ XML 定義檔中的 **Language** 元素可用來指定自訂模組的語言。 �
 
 * **輸入和輸出連接埠** 數目上限各為 8 個。
 
-### <a name="input-elements"></a>Input 元素
+### <a name="input-elements"></a>輸入元素
 輸入連接埠可讓您將資料傳遞至 R 函式和工作區。 輸入連接埠支援的 **資料類型** 如下所示： 
 
 **DataTable：** 這個類型會當做 data.frame 傳遞至 R 函數。 事實上，機器學習服務支援之所有與 **DataTable** 相容的類型 (例如 CSV 檔案或 ARFF 檔案)，都會自動轉換成 data.frame。 
@@ -306,11 +308,11 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
     * String
     * 標籤
     * 功能
-    * Score
+    * 分數
     * 全部
   * **default** - 資料行選擇器的有效預設選取項目包括： 
     
-    * None
+    * 無
     * NumericFeature
     * NumericLabel
     * NumericScore
