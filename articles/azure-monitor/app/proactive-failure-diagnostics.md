@@ -4,19 +4,19 @@ description: 針對 Web 應用程式失敗要求比率的不尋常變化對您�
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 27cf38a1cfcf8a9f87582ab3e78b48e78f3c63c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30bb95c4c47c02fe6b3d31d6e6763656aa96fdec
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045803"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315932"
 ---
 # <a name="smart-detection---failure-anomalies"></a>智慧型偵測 - 失敗異常
-當 Web 應用程式的失敗要求比率異常增加時，[Application Insights](../../azure-monitor/app/app-insights-overview.md) 會以幾乎即時的方式自動向您發出警示。 它偵測到回報為失敗的 HTTP 要求率異常提高或相依性呼叫。 對於要求，失敗的要求通常會有 400 或更高的回應碼。 為了協助您分級並診斷問題，警示詳細資料中會提供失敗的特性分析與相關應用程式資料。 其中也有 Application Insights 入口網站的連結，以供進一步診斷。 不需要設定該功能，因為它是使用機器學習演算法來預測一般失敗率。
+當 Web 應用程式的失敗要求比率異常增加時，[Application Insights](./app-insights-overview.md) 會以幾乎即時的方式自動向您發出警示。 它偵測到回報為失敗的 HTTP 要求率異常提高或相依性呼叫。 對於要求，失敗的要求通常會有 400 或更高的回應碼。 為了協助您分級並診斷問題，警示詳細資料中會提供失敗的特性分析與相關應用程式資料。 其中也有 Application Insights 入口網站的連結，以供進一步診斷。 不需要設定該功能，因為它是使用機器學習演算法來預測一般失敗率。
 
-這項功能適用於任何 Web 應用程式 (裝載於雲端或您自己的伺服器上)，其會產生應用程式要求或相依性資料。 例如，如果您的背景工作角色會呼叫 [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 或 [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)。
+這項功能適用於任何 Web 應用程式 (裝載於雲端或您自己的伺服器上)，其會產生應用程式要求或相依性資料。 例如，如果您的背景工作角色會呼叫 [TrackRequest()](./api-custom-events-metrics.md#trackrequest) 或 [TrackDependency()](./api-custom-events-metrics.md#trackdependency)。
 
-設定[專案的 Application Insights](../../azure-monitor/app/app-insights-overview.md)之後，如果您的應用程式產生某些最少量的資料，錯誤異常的「智慧偵測」需先花費 24 小時來了解您應用程式的正常行為，然後才會啟動而能夠傳送警示。
+設定[專案的 Application Insights](./app-insights-overview.md)之後，如果您的應用程式產生某些最少量的資料，錯誤異常的「智慧偵測」需先花費 24 小時來了解您應用程式的正常行為，然後才會啟動而能夠傳送警示。
 
 以下是警示範例：
 
@@ -31,10 +31,10 @@ ms.locfileid: "87045803"
 * 直接連結到 Application Insights 的資料上相關搜尋。
 
 ## <a name="benefits-of-smart-detection"></a>智慧型偵測的優點
-一般的 [度量警示](../../azure-monitor/platform/alerts-log.md) 會告訴您可能有問題。 但「智慧偵測」會為您啟動診斷工作，執行許多您原本必須自己執行的分析。 您達到幾近封裝完成的結果，幫助您快速取得問題的根源。
+一般的 [度量警示](../platform/alerts-log.md) 會告訴您可能有問題。 但「智慧偵測」會為您啟動診斷工作，執行許多您原本必須自己執行的分析。 您達到幾近封裝完成的結果，幫助您快速取得問題的根源。
 
 ## <a name="how-it-works"></a>運作方式
-「智慧偵測」會監視從應用程式收到的資料，特別是失敗率的資料。 此規則會計算 `Successful request` 屬性為 false 的要求數，以及 `Successful call` 屬性為 false 的相依性呼叫數。 對於要求，根據預設，`Successful request == (resultCode < 400)` (除非您撰寫自訂程式碼來[篩選](../../azure-monitor/app/api-filtering-sampling.md#filtering)或產生自己的 [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 呼叫)。 
+「智慧偵測」會監視從應用程式收到的資料，特別是失敗率的資料。 此規則會計算 `Successful request` 屬性為 false 的要求數，以及 `Successful call` 屬性為 false 的相依性呼叫數。 對於要求，根據預設，`Successful request == (resultCode < 400)` (除非您撰寫自訂程式碼來[篩選](./api-filtering-sampling.md#filtering)或產生自己的 [TrackRequest](./api-custom-events-metrics.md#trackrequest) 呼叫)。 
 
 您的應用程式效能具有一般的行為模式。 某些要求或相依性呼叫會比其他要求更容易失敗；且整體失敗率可能會隨著負載增加而上移。 「智慧型偵測」會使用機器學習服務來尋找這些異常狀況。
 
@@ -48,7 +48,7 @@ ms.locfileid: "87045803"
 
 產生的分析報告會以警示寄送給您，除非您已設定不接收該報告。
 
-和[您手動設定的警示](../../azure-monitor/platform/alerts-log.md)一樣，您也可以檢查所引發警示的狀態，如果問題已修正，就可以解決此警示。 在 Application Insights 資源的 [警示] 頁面中設定警示規則。 但與其他警示不同，您並不需要設定「智慧型偵測」。 若有需要，您可以將它停用或變更其目標電子郵件地址。
+和[您手動設定的警示](../platform/alerts-log.md)一樣，您也可以檢查所引發警示的狀態，如果問題已修正，就可以解決此警示。 在 Application Insights 資源的 [警示] 頁面中設定警示規則。 但與其他警示不同，您並不需要設定「智慧型偵測」。 若有需要，您可以將它停用或變更其目標電子郵件地址。
 
 ### <a name="alert-logic-details"></a>警示邏輯詳細資料
 
@@ -292,7 +292,7 @@ ms.locfileid: "87045803"
 
 發出警示表示系統偵測到要求失敗率異常上升。 原因可能是您的應用程式或其環境有問題。
 
-若要進一步調查，請按一下 [在 Application Insights 中檢視完整詳細資料]。此頁面中的連結會直接帶您前往[搜尋頁面](../../azure-monitor/app/diagnostic-search.md)，其已經過篩選而會顯示相關的要求、例外狀況、相依性或追蹤。 
+若要進一步調查，請按一下 [在 Application Insights 中檢視完整詳細資料]。此頁面中的連結會直接帶您前往[搜尋頁面](./diagnostic-search.md)，其已經過篩選而會顯示相關的要求、例外狀況、相依性或追蹤。 
 
 您也可以開啟 [Azure 入口網站](https://portal.azure.com)，瀏覽至應用程式的 Application Insights 資源，並開啟 [失敗] 頁面。
 
@@ -317,7 +317,7 @@ ms.locfileid: "87045803"
 ## <a name="whats-the-difference-"></a>不同之處在於...
 失敗異常的「智慧型偵測」可以與其他相似但不同的 Application Insights 功能互補。
 
-* 您可以設定[度量警示](../../azure-monitor/platform/alerts-log.md)，且可以檢視各種度量，例如 CPU 使用量、要求率、頁面載入時間等等。 您可以使用它們來向自己發出警告，例如，如果您需要增加更多資源時。 對比之下，失敗異常的「智慧偵測」只涵蓋小範圍的重要計量 (目前僅包含要求失敗率)，其設計目的是要在 Web 應用程式的要求失敗率與其正常行為相比有所增加時，能以幾乎即時的方式通知您。 不同於計量警示，智慧偵測會自動設定並更新行為中回應變更的臨界值。 智慧偵測也會為您啟動診斷工作，讓您省下解決問題的時間。
+* 計量[警示](../platform/alerts-log.md)是由您設定，而且可以監視各種不同的度量，例如 CPU 使用量、要求率、頁面載入時間等等。 您可以使用它們來向自己發出警告，例如，如果您需要增加更多資源時。 對比之下，失敗異常的「智慧偵測」只涵蓋小範圍的重要計量 (目前僅包含要求失敗率)，其設計目的是要在 Web 應用程式的要求失敗率與其正常行為相比有所增加時，能以幾乎即時的方式通知您。 不同於計量警示，智慧偵測會自動設定並更新行為中回應變更的臨界值。 智慧偵測也會為您啟動診斷工作，讓您省下解決問題的時間。
 
 * [效能異常的智慧型偵測](proactive-performance-diagnostics.md)也會使用機器智慧在您的度量中探索不尋常的模式，且您不需要進行任何設定。 但與失敗異常的「智慧型偵測」不同，效能異常的「智慧型偵測」目的是要尋找您各種使用方式中未獲得正確處理的片段，例如未獲得特定瀏覽器上特定的頁面正確處理。 此分析會每日執行，且如果發現任何結果，它可能不像警示那麼緊急。 對比之下，失敗異常的分析則是會對傳入的應用程式資料持續執行，且如果伺服器失敗率超出預期，您就會在幾分鐘內收到通知。
 
@@ -332,7 +332,7 @@ ms.locfileid: "87045803"
 
 *那麼，您會查看我的應用程式資料嗎？*
 
-* 否。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](../../azure-monitor/app/data-retention-privacy.md)。
+* 否。 服務完全是自動的。 只有您會收到通知。 您的資料是 [不公開的](./data-retention-privacy.md)。
 
 *我是否必須訂閱此警示？*
 
@@ -353,11 +353,12 @@ ms.locfileid: "87045803"
 ## <a name="next-steps"></a>後續步驟
 這些診斷工具可協助您檢查來自您的應用程式的資料︰
 
-* [計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)
-* [搜尋總管](../../azure-monitor/app/diagnostic-search.md)
-* [分析 - 功能強大的查詢語言](../../azure-monitor/log-query/get-started-portal.md)
+* [計量瀏覽器](../platform/metrics-charts.md)
+* [搜尋總管](./diagnostic-search.md)
+* [分析 - 功能強大的查詢語言](../log-query/get-started-portal.md)
 
 智慧偵測會自動進行。 但是，或許您會想要再設定一些警示？
 
-* [手動設定的度量警示](../../azure-monitor/platform/alerts-log.md)
-* [可用性 Web 測試](../../azure-monitor/app/monitor-web-app-availability.md)
+* [手動設定的度量警示](../platform/alerts-log.md)
+* [可用性 Web 測試](./monitor-web-app-availability.md)
+

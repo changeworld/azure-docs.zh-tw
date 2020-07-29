@@ -10,12 +10,12 @@ ms.author: daperlov
 author: djpmsft
 manager: anandsub
 ms.date: 07/16/2020
-ms.openlocfilehash: 83a7f072af64b0fe8f7f3d7c982cf3466288f63e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7239c1516c4a04b57249ea4f39bff4aec9156d72
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007192"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337682"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>在 Azure Data Factory 中執行 Azure Machine Learning 管線
 
@@ -60,6 +60,9 @@ experimentName | 執行 Machine Learning 管線執行的歷程記錄實驗名稱
 mlPipelineParameters | 要傳遞至已發行 Azure Machine Learning 管線端點的索引鍵/值組。 索引鍵必須符合已發佈 Machine Learning 管線中定義之管線參數的名稱 | 具有索引鍵值組（或具有 resultType 物件的運算式）的物件 | 否
 mlParentRunId | 父 Azure Machine Learning 管線執行識別碼 | 字串 (或含有字串之 resultType 的運算式) | 否
 continueOnStepFailure | 當步驟失敗時，是否要繼續執行 Machine Learning 管線中的其他步驟 | boolean | 否
+
+> [!NOTE]
+> 若要填入 Machine Learning 管線名稱和識別碼中的下拉式專案，使用者必須擁有列出 ML 管線的許可權。 ADF UX 會使用登入的使用者認證直接呼叫 AzureMLService Api。  
 
 ## <a name="next-steps"></a>後續步驟
 請參閱下列文章，其說明如何以其他方式轉換資料：

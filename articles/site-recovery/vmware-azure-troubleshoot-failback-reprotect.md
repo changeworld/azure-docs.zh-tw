@@ -7,11 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6640a6e807bdcc7a08476a18467745330742ee2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84309946"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289291"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>針對從 Azure 至內部部署環境的容錯回復進行疑難排解
 
@@ -28,7 +29,7 @@ ms.locfileid: "84309946"
 - 若無法從處理伺服器連線至組態伺服器，請使用 Telnet 檢查在連接埠 443 上連至組態伺服器的連線。 您也可以嘗試從處理伺服器 Ping 組態伺服器。 當處理序伺服器已連線至組態伺服器時，應該會有活動訊號。
 - 以實體內部部署伺服器的形式受到保護的 Windows Server 2008 R2 SP1 伺服器無法從 Azure 容錯回復至內部部署網站。
 - 在下列情況下，您無法容錯回復：
-    - 已將機器遷移至 Azure。 [深入了解](migrate-overview.md#what-do-we-mean-by-migration)。
+    - 已將機器遷移至 Azure。 
     - 已將 VM 移至另一個資源群組。
     - 已刪除 Azure VM。
     - 已停用 VM 的保護。
@@ -63,7 +64,7 @@ ms.locfileid: "84309946"
 若要解決此問題：
 
 * 在不同的主機上選取不同的主要目標伺服器，使重新保護可在不同的主機上建立機器，而其中的名稱不會衝突。
-* 您也可以使用 vMotion 將主要目標移到不同的主機，而其中的名稱不會發生衝突。 如果現有的 VM 是偏離機器，您可以將其重新命名，以在相同的 ESXi 主機上建立新的 VM。
+* 您也可以使用 VMotion 將主要目標移至不同的主機，而不會發生名稱衝突。 如果現有的 VM 是偏離機器，您可以將其重新命名，以在相同的 ESXi 主機上建立新的 VM。
 
 
 ### <a name="error-code-78093"></a>錯誤碼 78093
@@ -97,4 +98,4 @@ ms.locfileid: "84309946"
 若要解決此問題：
 
 * 在 ESXi 主機上佈建更多記憶體。
-* 此外，您可以使用 vMotion 將虛擬機器移到另一部有足夠記憶體可啟動 VM 的 ESXi 主機。
+* 此外，您可以使用 VMotion 將 VM 移至另一個具有足夠記憶體可啟動 VM 的 ESXi 主機。

@@ -9,11 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73888872"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337665"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>將 IoT DevKit 裝置連線到遠端監視解決方案加速器
 
@@ -48,7 +49,7 @@ ms.locfileid: "73888872"
 1. 將 IoT DevKit 切換為設定**模式**：
 
     * 按住 **A** 按鈕。
-    * 按下再放開 [重設]**** 按鈕。
+    * 推送並放開 [**重設**] 按鈕。
 
 1. 畫面會顯示 DevKit 識別碼和 `Configuration`。
 
@@ -129,4 +130,3 @@ ms.locfileid: "73888872"
 
 * [Azure IoT 解決方案加速器概觀](https://docs.microsoft.com/azure/iot-accelerators/)
 * [自訂 UI](iot-accelerators-remote-monitoring-customize.md)
-* [將 IoT DevKit 連線到 Azure IoT Central 應用程式](../iot-central/core/howto-connect-devkit.md)

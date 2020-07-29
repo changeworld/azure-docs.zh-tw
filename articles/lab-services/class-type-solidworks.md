@@ -1,29 +1,30 @@
 ---
-title: 使用 Azure 實驗室服務設定 SolidWorks 實驗室以進行工程設計 |Microsoft Docs
-description: 瞭解如何使用 SolidWorks 來設定工程課程的實驗室。
+title: 使用 Azure 實驗室服務設定 SOLIDWORKS 實驗室以進行工程設計 |Microsoft Docs
+description: 瞭解如何使用 SOLIDWORKS 來設定工程課程的實驗室。
 author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: fa1b93bd71c1319bf8705c8c84cdb3e6f9da19e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443803"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290729"
 ---
-# <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>使用 SolidWorks 設定工程類別的實驗室
+# <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>使用 SOLIDWORKS 設定工程類別的實驗室
 
-[SolidWorks](https://www.solidworks.com/)提供3d 電腦輔助設計（CAD）環境來模型化實體物件，並用於各種工程欄位。  透過 SolidWorks，工程師可以輕鬆地建立、視覺化、模擬和記錄其設計。
+[SOLIDWORKS](https://www.solidworks.com/)提供3d 電腦輔助設計（CAD）環境來模型化實體物件，並用於不同種類的工程欄位。  透過 SOLIDWORKS，工程師可以輕鬆地建立、視覺化、模擬和記錄其設計。
 
-大學常使用的授權選項是 SolidWorks 的網路授權。   使用此選項時，使用者會共用授權伺服器所管理的授權集區。  這種類型的授權有時稱為「浮動」授權，因為您只需要有足夠的並行使用者數目授權。  當使用者使用 SolidWorks 完成時，他們的授權會回到集中管理的授權集區，讓另一位使用者可以重複使用它。
+大學常使用的授權選項是 SOLIDWORKS 的網路授權。   使用此選項時，使用者會共用授權伺服器所管理的授權集區。  這種類型的授權有時稱為「浮動」授權，因為您只需要有足夠的並行使用者數目授權。  當使用者使用 SOLIDWORKS 完成時，他們的授權會回到集中管理的授權集區，讓另一位使用者可以重複使用它。
 
-在本文中，我們將示範如何設定使用 SolidWorks 2019 和網路授權的類別。
+在本文中，我們將示範如何設定使用 SOLIDWORKS 2019 和網路授權的類別。
 
 ## <a name="license-server"></a>授權伺服器
 
-SolidWorks 網路授權要求您必須在授權伺服器上安裝並啟用 SolidNetWork 授權管理員。  此授權伺服器通常位於您的內部部署網路或 Azure 中的私人網路。  如需有關如何在您的伺服器上設定 SolidNetWork 授權管理員的詳細資訊，請參閱 SolidWorks 安裝指南中的[安裝和啟用授權管理員](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm)。  設定此設定時，請記住所使用的**埠號碼**和[**序號**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm)，因為在後續步驟中將會用到它們。
+SOLIDWORKS 網路授權要求您必須在授權伺服器上安裝並啟用 SolidNetWork 授權管理員。  此授權伺服器通常位於您的內部部署網路或 Azure 中的私人網路。  如需有關如何在您的伺服器上設定 SolidNetWork 授權管理員的詳細資訊，請參閱 SOLIDWORKS 安裝指南中的[安裝和啟用授權管理員](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm)。  設定此設定時，請記住所使用的**埠號碼**和[**序號**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm)，因為在後續步驟中將會用到它們。
 
-設定授權伺服器之後，您必須將[虛擬網路（VNet）](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network)對等互連至您的[實驗室帳戶](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)。  您必須先完成網路對等互連，才能建立實驗室，讓實驗室虛擬機器可以存取授權伺服器，反之亦然。
+設定授權伺服器之後，您必須將[虛擬網路（VNet）](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network)對等互連至您的[實驗室帳戶](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)。  您必須先完成網路對等互連，才能建立實驗室，讓實驗室虛擬機器可以存取授權伺服器，並以另一種方式進行。
 
 > [!NOTE]
 > 您應該確認防火牆上已開啟適當的埠，以允許實驗室虛擬機器與授權伺服器之間的通訊。  例如，請參閱[針對 Windows 防火牆修改授權管理員電腦埠](http://help.solidworks.com/2019/english/installation/install_guide/t_mod_ports_on_lic_mgr_for_firewall.htm)的指示，以瞭解如何將輸入和輸出規則新增至授權伺服器的防火牆。  您可能也需要開啟實驗室虛擬機器的埠。  請遵循適用于[實驗室的防火牆設定](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-firewall-settings)一文中的步驟，以取得有關此項的詳細資訊，包括如何取得實驗室的公用 IP 位址。
@@ -41,7 +42,7 @@ SolidWorks 網路授權要求您必須在授權伺服器上安裝並啟用 Solid
 |Marketplace 映像| 啟用 Windows 10 Pro 映射以在實驗室帳戶中使用。|
 
 > [!NOTE]
-> 除了 Windows 10 以外，SolidWorks 還支援其他版本的 Windows。  如需詳細資訊，請參閱[SolidWorks 系統需求](https://www.solidworks.com/sw/support/SystemRequirements.html)。
+> 除了 Windows 10 以外，SOLIDWORKS 還支援其他版本的 Windows。  如需詳細資訊，請參閱[SOLIDWORKS 系統需求](https://www.solidworks.com/sw/support/SystemRequirements.html)。
 
 ### <a name="lab-settings"></a>實驗室設定
 
@@ -60,17 +61,17 @@ SolidWorks 網路授權要求您必須在授權伺服器上安裝並啟用 Solid
 
 ## <a name="template-virtual-machine-configuration"></a>範本虛擬機器設定
 
-本節中的步驟示範如何藉由下載 SolidWorks 安裝檔案並安裝用戶端軟體，來設定您的範本虛擬機器：
+本節中的步驟示範如何藉由下載 SOLIDWORKS 安裝檔案並安裝用戶端軟體，來設定您的範本虛擬機器：
 
 1. 啟動範本虛擬機器，並使用 RDP 連接到電腦。
 
-1. 下載 SolidWorks 用戶端軟體的安裝檔案。 您有兩個選項可供下載：
-   - 從[SolidWorks 客戶入口網站](https://login.solidworks.com/nidp/idff/sso?id=cpenglish&sid=1&option=credential&sid=1&target=https%3A%2F%2Fcustomerportal.solidworks.com%2F)下載。
+1. 下載 SOLIDWORKS 用戶端軟體的安裝檔案。 您有兩個選項可供下載：
+   - 從[SOLIDWORKS 客戶入口網站](https://login.solidworks.com/nidp/idff/sso?id=cpenglish&sid=1&option=credential&sid=1&target=https%3A%2F%2Fcustomerportal.solidworks.com%2F)下載。
    - 從伺服器上的目錄下載。  如果您使用此選項，您必須確定可以從範本虛擬機器存取伺服器。  例如，此伺服器可能位於與您的實驗室帳戶對等互連的相同虛擬網路中。
   
-    如需詳細資訊，請參閱 SolidWorks 安裝指南[中 SolidWorks 的個別電腦上的安裝](http://help.solidworks.com/2019/english/Installation/install_guide/c_installing_on_individual_computers.htm?id=fc149e8a968a422a89e2a943265758d3#Pg0)。
+    如需詳細資訊，請參閱 SOLIDWORKS 安裝指南[中 SOLIDWORKS 的個別電腦上的安裝](http://help.solidworks.com/2019/english/Installation/install_guide/c_installing_on_individual_computers.htm?id=fc149e8a968a422a89e2a943265758d3#Pg0)。
 
-1. 下載安裝檔案之後，請使用 SolidWorks 安裝管理員來安裝用戶端軟體。 請參閱 SolidWorks 安裝指南中有關[安裝授權用戶端](http://help.solidworks.com/2019/english/installation/install_guide/t_installing_snl_license_client.htm)的詳細資料。
+1. 下載安裝檔案之後，請使用 SOLIDWORKS 安裝管理員來安裝用戶端軟體。 請參閱 SOLIDWORKS 安裝指南中有關[安裝授權用戶端](http://help.solidworks.com/2019/english/installation/install_guide/t_installing_snl_license_client.htm)的詳細資料。
 
     > [!NOTE]
     > 在 [**新增伺服器**] 對話方塊中，系統會提示您輸入授權伺服器所使用的**埠號碼**，以及授權伺服器的名稱或 IP 位址。

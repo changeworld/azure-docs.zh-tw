@@ -5,12 +5,12 @@ description: 了解如何建立和使用內部負載平衡器，透過 Azure Kub
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 58aadc4fadb93a4f6eb47214f580f7a2bebdf49c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec8fd1f1b32d5bba6dc4dc756e1f95f4a74f9a96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056815"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285878"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>搭配 Azure Kubernetes Service (AKS) 使用內部負載平衡器
 
@@ -25,7 +25,9 @@ ms.locfileid: "87056815"
 
 您也必須安裝並設定 Azure CLI 2.0.59 版或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
-如果您使用現有的子網或資源群組，則 AKS 叢集服務主體需要管理網路資源的許可權。 一般來說，請將「網路參與者」角色指派給委派資源上的服務主體。 您可以使用系統指派的受控識別來取得許可權，而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。 如需權限的詳細資訊，請參閱[將 AKS 存取權委派給其他 Azure 資源][aks-sp]。
+如果您使用現有的子網或資源群組，則 AKS 叢集服務主體需要管理網路資源的許可權。 如需相關資訊，請參閱[在 Azure Kubernetes Service （AKS）中搭配您自己的 IP 位址範圍使用 kubenet 網路][use-kubenet]，或[在 Azure Kubernetes Service （AKS）中設定 Azure CNI 網路][advanced-networking]。 如果您要將負載平衡器設定為使用[不同子網中的 IP 位址][different-subnet]，請確定 AKS 叢集服務主體也具有該子網的讀取權限。
+
+您也可以使用系統指派的受控識別來取得權限，取代服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。 如需權限的詳細資訊，請參閱[將 AKS 存取權委派給其他 Azure 資源][aks-sp]。
 
 ## <a name="create-an-internal-load-balancer"></a>建立內部負載平衡器
 
@@ -65,7 +67,7 @@ internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 
 ## <a name="specify-an-ip-address"></a>指定 IP 位址
 
-如果您想要搭配內部負載平衡器使用特定 IP 位址，請將 loadBalancerIP** 屬性新增至負載平衡器 YAML 資訊清單中。 指定的 IP 位址必須位於與 AKS 叢集相同的子網路，而且必須尚未指派給資源。 例如，您不應該使用 Kubernetes 子網指定範圍中的 IP 位址。
+如果您想要搭配內部負載平衡器使用特定 IP 位址，請將 loadBalancerIP** 屬性新增至負載平衡器 YAML 資訊清單中。 在此案例中，指定的 IP 位址必須位於與 AKS 叢集相同的子網中，且必須尚未指派給資源。 例如，您不應該使用 Kubernetes 子網指定範圍中的 IP 位址。
 
 ```yaml
 apiVersion: v1
@@ -91,6 +93,8 @@ $ kubectl get service internal-app
 NAME           TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 ```
+
+如需在不同子網中設定負載平衡器的詳細資訊，請參閱[指定不同的子網][different-subnet]
 
 ## <a name="use-private-networks"></a>使用私人網路
 
@@ -153,3 +157,4 @@ spec:
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
+[different-subnet]: #specify-a-different-subnet

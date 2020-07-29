@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74a20e46858aada48151809c5bedf1f93076827e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495375"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289965"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure 時間序列深入解析 Gen2 中的時間序列模型
 
@@ -24,9 +24,9 @@ ms.locfileid: "86495375"
 > [!TIP]
 >
 > * 移至 [Contoso 風伺服器陣列示範](https://insights.timeseries.azure.com/preview/samples)環境，以取得即時時間序列模型範例。
-> * 瞭解如何使用 Azure 時間序列深入解析 Gen2 Explorer[來處理時間序列模型](time-series-insights-update-how-to-tsm.md)。
+> * 瞭解如何使用 Azure 時間序列深入解析 Gen2 Explorer[來處理時間序列模型](/azure/time-series-insights/how-to-edit-your-model)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 傳統上，從 IoT 裝置收集的資料缺發關聯的資訊，因此很難快速地尋找及分析感應器。 時間序列模型的主要動機是簡化尋找和分析 IoT 或時間序列資料的程式。 它可讓您鑒藏、維護和擴充時間序列資料，以協助準備取用者準備好用於分析的資料集，達到此目標。
 
@@ -75,7 +75,7 @@ ms.locfileid: "86495375"
 
 [![時間序列模型總覽圖表](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-您可以透過[Azure 時間序列深入解析 Gen2 Explorer](time-series-insights-update-how-to-tsm.md)來建立及管理時間序列模型。 時間序列模型設定可以透過[模型設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)來管理。
+您可以透過[Azure 時間序列深入解析 Gen2 Explorer](/azure/time-series-insights/concepts-model-overview)來建立及管理時間序列模型。 時間序列模型設定可以透過[模型設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api)來管理。
 
 ## <a name="time-series-model-instances"></a>時間序列模型執行個體
 
@@ -97,7 +97,7 @@ ms.locfileid: "86495375"
 
 實例是由**timeSeriesId**、 **typeId**、 **name**、 **description**、 **hierarchyIds**和**instancefields 定義**所定義。 每個實例只會對應至一個*類型*，以及一個或多個*階層。*
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | --- | ---|
 | timeSeriesId | 與實例相關聯之時間序列的唯一識別碼。 在大部分情況下，實例是以 deviceId 或 assetId 之類的屬性來唯一識別。 在某些情況下，可以使用更明確的複合識別碼，其中最多可結合3個屬性。 |
 | typeId | 與實例相關聯之時間序列模型類型的區分大小寫唯一字串識別碼。 根據預設，所有探索到的新實例都會與預設類型建立關聯。
@@ -283,12 +283,13 @@ ms.locfileid: "86495375"
   ]
 }
 ```
+
 時間序列模型類型可以有許多變數，可指定事件的公式和計算規則。 深入瞭解[如何定義時間序列模型變數](./concepts-variables.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需如何透過 Api 編輯模型的詳細資訊，請參閱[時間序列模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)參考檔。
+* 如需如何透過 Api 編輯模型的詳細資訊，請參閱[時間序列模型](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)參考檔。
 
-- 探索您可以使用[時間序列模型變數](./concepts-variables.md)建立的公式和計算
+* 探索您可以使用[時間序列模型變數](./concepts-variables.md)建立的公式和計算
 
-- 瞭解如何在 Azure 時間序列深入解析 Gen2 中[查詢資料](concepts-query-overview.md)
+* 瞭解如何在 Azure 時間序列深入解析 Gen2 中[查詢資料](concepts-query-overview.md)

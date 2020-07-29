@@ -9,20 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/20/2020
 ms.author: diberry
-ms.openlocfilehash: 831e766fbb10d616b3fbaf8f878228a9a51ece37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ec9cd8aade1edb7d2df2bab5cec8de445af7e44
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090938"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337971"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>在您 LUIS 模型中，每個文化特性的實體
 
-Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程式中包含預先建置的實體時，LUIS 就會在端點回應中包含對應的實體預測。 所有範例語句也都會標示該實體。 預先建置實體的行為**無法**修改。 除非另有註明，否則預先建置的實體在所有 LUIS 應用程式地區設定 (文化特性) 中均適用。 下表列出支援各種文化特性的預先建置實體。
+Language Understanding (LUIS) 提供預先建置的實體。
 
-|文化特性|次文化特性|附註|
+## <a name="entity-resolution"></a>實體解析
+當您的應用程式中包含預先建立的實體時，LUIS 會在端點回應中包含對應的實體解析。 所有範例語句也都會標示該實體。
+
+無法修改預建實體的行為，但是您可以藉由[將預建實體當做功能新增至機器學習實體或列](luis-concept-entity-types.md#effective-prebuilt-entities)來改善解決方式。
+
+## <a name="availability"></a>可用性
+除非另有註明，否則預先建置的實體在所有 LUIS 應用程式地區設定 (文化特性) 中均適用。 下表列出支援各種文化特性的預先建置實體。
+
+|文化特性|次文化特性|注意|
 |--|--|--|
 |中文|[zh-CN](#chinese-entity-support)||
 |荷蘭文|[nl-NL](#dutch-entity-support)||
@@ -56,7 +64,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -78,7 +86,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -100,7 +108,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2、V3   |
-[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    V2、V3   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -122,7 +130,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |   -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -144,7 +152,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -166,7 +174,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -190,7 +198,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -212,7 +220,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、-   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    V2、-   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    V2、-   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、-   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、-   |
@@ -234,7 +242,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    -   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    -   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    -   |
@@ -256,7 +264,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -278,7 +286,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    V2、V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    V2、V3   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    V2、V3   |
@@ -300,7 +308,7 @@ Language Understanding (LUIS) 提供預先建置的實體。 當您的應用程�
 [Number](luis-reference-prebuilt-number.md)   |    V2、V3   |
 [序列](luis-reference-prebuilt-ordinal.md)   |    -   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[比例](luis-reference-prebuilt-percentage.md)   |    -   |
+[百分比](luis-reference-prebuilt-percentage.md)   |    -   |
 [PersonName](luis-reference-prebuilt-person.md)   |    -   |
 [Phonenumber](luis-reference-prebuilt-phonenumber.md)   |    V2、V3   |
 [溫度](luis-reference-prebuilt-temperature.md)：<br>華氏<br>克式<br>蘭氏<br>德氏<br>攝氏   |    -   |

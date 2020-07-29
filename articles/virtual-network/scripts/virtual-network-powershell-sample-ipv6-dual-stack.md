@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell 腳本範例-設定 IPv6 端點
 titlesuffix: Azure Virtual Network
-description: 在 Azure 中使用 Powershell 啟用 IPv6 端點虛擬網路
+description: 使用 Azure PowerShell 腳本來設定虛擬網路中的 IPv6 端點，並尋找命令特定檔的連結，以協助 PowerShell 範例。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 667cf9d8a902a329b6b0cfc0d183e4f229e59372
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 83153023d7d58f215d5e62d8502baa01b99ed2e1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068649"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291890"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-with-azure-powershell-script-sample-preview"></a>使用 Azure PowerShell 腳本範例在虛擬網路中設定 IPv6 端點（預覽）
 
@@ -27,7 +27,7 @@ ms.locfileid: "87068649"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 在 Azure 中部署雙重堆疊應用程式之前，您必須使用下列 Azure PowerShell，只為此預覽功能設定訂用帳戶一次：
 
 如下所示進行註冊：

@@ -6,14 +6,14 @@ author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/18/2019
-ms.openlocfilehash: c79d810979641d1dc128c741c2124d9b5887aa3d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c22f028779090e735bf6f91d5ecc1fc572f190ab
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020741"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313637"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 串流分析中常見的查詢模式
 
@@ -28,200 +28,6 @@ Azure 串流分析的查詢會以類似 SQL 的查詢語言表達。 語言建�
 Azure 串流分析可處理資料格式為 CSV、JSON 和 Avro 的事件。
 
 JSON 和 Avro 可能包含巢狀物件 (記錄) 或陣列等複雜類型。 如需使用這些複雜資料類型的詳細資訊，請參閱[剖析 JSON 和 AVRO 資料](stream-analytics-parsing-json.md)一文。
-
-## <a name="simple-pass-through-query"></a>簡單的傳遞查詢
-
-簡單的傳遞查詢可以用來將輸入資料流資料複製到輸出。 例如，如果包含即時車輛資訊的資料流必須儲存在 SQL 資料庫中以進行信件分析，則簡單的傳遞查詢將會執行此作業。
-
-**輸入**：
-
-| 請確定 | Time | Weight |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
-
-**輸出**：
-
-| 請確定 | Time | Weight |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
-
-**查詢**：
-
-```SQL
-SELECT
-    *
-INTO Output
-FROM Input
-```
-
-**SELECT** * 查詢會預測傳入事件的所有欄位，並將其傳送至輸出。 同樣地，**SELECT** 也可以用來只預測輸入中的必要欄位。 在此範例中，如果車輛 *Make* 和 *Time* 是要儲存的唯一必要欄位，則可以在 **SELECT** 陳述式中指定這些欄位。
-
-**輸入**：
-
-| 請確定 | Time | Weight |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |1000 |
-| Make1 |2015-01-01T00:00:02.0000000Z |2000 |
-| Make2 |2015-01-01T00:00:04.0000000Z |1500 |
-
-**輸出**：
-
-| 請確定 | Time |
-| --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |
-| Make1 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:04.0000000Z |
-
-**查詢**：
-
-```SQL
-SELECT
-    Make, Time
-INTO Output
-FROM Input
-```
-## <a name="data-aggregation-over-time"></a>一段時間的資料彙總
-
-若要計算一段時間範圍的資訊，可以將資料彙總在一起。 在此範例中，會針對每個特定汽車的時間，計算過去10秒內的計數。
-
-**輸入**：
-
-| 請確定 | Time | Weight |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |1000 |
-| Make1 |2015-01-01T00:00:02.0000000Z |2000 |
-| Make2 |2015-01-01T00:00:04.0000000Z |1500 |
-
-**輸出**：
-
-| 請確定 | Count |
-| --- | --- |
-| Make1 | 2 |
-| Make2 | 1 |
-
-**查詢**：
-
-```SQL
-SELECT
-    Make,
-    COUNT(*) AS Count
-FROM
-    Input TIMESTAMP BY Time
-GROUP BY
-    Make,
-    TumblingWindow(second, 10)
-```
-
-此彙總會依 *Make* 將汽車分組，並每隔 10 秒對其進行計數一次。 對於通過收費站的汽車，輸出具有其 *Make* 和 *Count*。
-
-TumblingWindow 是用來將事件群組在一起的視窗化函式。 彙總可以套用至所有分組的事件。 如需詳細資訊，請參閱[視窗化函式](stream-analytics-window-functions.md)。
-
-如需彙總的詳細資訊，請參閱[彙總函式](/stream-analytics-query/aggregate-functions-azure-stream-analytics)。
-
-## <a name="data-conversion"></a>資料轉換
-
-您可以使用 **CAST** 方法來即時轉換資料。 例如，汽車權數可以從類型 **nvarchar(max)** 轉換成類型 **bigint**，並用於數值計算。
-
-**輸入**：
-
-| 請確定 | Time | Weight |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
-
-**輸出**：
-
-| 請確定 | Weight |
-| --- | --- |
-| Make1 |3000 |
-
-**查詢**：
-
-```SQL
-SELECT
-    Make,
-    SUM(CAST(Weight AS BIGINT)) AS Weight
-FROM
-    Input TIMESTAMP BY Time
-GROUP BY
-    Make,
-    TumblingWindow(second, 10)
-```
-
-使用 **CAST** 陳述式來指定其資料類型。 請參閱[資料類型 (Azure 串流分析)](/stream-analytics-query/data-types-azure-stream-analytics) 上的支援資料類型清單。
-
-如需詳細資訊，請參閱[資料轉換函式](/stream-analytics-query/conversion-functions-azure-stream-analytics)。
-
-## <a name="string-matching-with-like-and-not-like"></a>搭配 LIKE 和 NOT LIKE 的字串比對
-
-**LIKE** 和 **NOT LIKE** 可以用來驗證欄位是否符合特定模式。 例如，您可以建立一個篩選條件，只傳回以字母 'A' 開頭並以數字 9 結尾的車牌。
-
-**輸入**：
-
-| 請確定 | License_plate | Time |
-| --- | --- | --- |
-| Make1 |ABC-123 |2015-01-01T00:00:01.0000000Z |
-| Make2 |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Make3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
-
-**輸出**：
-
-| 請確定 | License_plate | Time |
-| --- | --- | --- |
-| Make2 |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Make3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
-
-**查詢**：
-
-```SQL
-SELECT
-    *
-FROM
-    Input TIMESTAMP BY Time
-WHERE
-    License_plate LIKE 'A%9'
-```
-
-使用 **LIKE** 陳述式檢查 **License_plate** 欄位值。 其開頭應該為字母 A，接著是長度為零或更多字元的字串，並以數字 9 結尾。
-
-## <a name="specify-logic-for-different-casesvalues-case-statements"></a>針對不同的案例/值指定邏輯 (CASE 陳述式)
-
-**CASE** 陳述式可以根據特定準則，為不同的欄位提供不同的計算。 例如，將車道 'A' 指派給 *Make1* 的汽車，並將車道 'B' 指派給任何其他製造商。
-
-**輸入**：
-
-| 請確定 | Time |
-| --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |
-| Make2 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:03.0000000Z |
-
-**輸出**：
-
-| 請確定 |Dispatch_to_lane | Time |
-| --- | --- | --- |
-| Make1 |"A" |2015-01-01T00:00:01.0000000Z |
-| Make2 |"B" |2015-01-01T00:00:02.0000000Z |
-
-**解決方案**：
-
-```SQL
-SELECT
-    Make
-    CASE
-        WHEN Make = "Make1" THEN "A"
-        ELSE "B"
-    END AS Dispatch_to_lane,
-    System.TimeStamp() AS Time
-FROM
-    Input TIMESTAMP BY Time
-```
-
-**CASE** 運算式會比較運算式和一組簡單運算式來決定其結果。 在此範例中，*Make1* 的車輛會分派給車道 'A'，而任何其他製造商的車輛則會指派給車道 'B'。
-
-如需詳細資訊，請參閱 [case 運算式](/stream-analytics-query/case-azure-stream-analytics)。
 
 ## <a name="send-data-to-multiple-outputs"></a>將資料傳送至多個輸出
 
@@ -308,40 +114,91 @@ HAVING [Count] >= 3
 
 如需詳細資訊，請參閱 [**WITH** 子句](/stream-analytics-query/with-azure-stream-analytics)。
 
-## <a name="count-unique-values"></a>計算唯一值
+## <a name="simple-pass-through-query"></a>簡單的傳遞查詢
 
-**COUNT** 和 **DISTINCT** 可用來計算某個時間範圍內在串流中所出現唯一欄位值的數目。 例如，在 2 秒鐘時間範圍內有多少部獨特 *Make* 的汽車通過收費站。
+簡單的傳遞查詢可以用來將輸入資料流資料複製到輸出。 例如，如果包含即時車輛資訊的資料流必須儲存在 SQL 資料庫中以進行信件分析，則簡單的傳遞查詢將會執行此作業。
 
 **輸入**：
+
+| 請確定 | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
+
+**輸出**：
+
+| 請確定 | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
+
+**查詢**：
+
+```SQL
+SELECT
+    *
+INTO Output
+FROM Input
+```
+
+**SELECT** * 查詢會預測傳入事件的所有欄位，並將其傳送至輸出。 同樣地，**SELECT** 也可以用來只預測輸入中的必要欄位。 在此範例中，如果車輛 *Make* 和 *Time* 是要儲存的唯一必要欄位，則可以在 **SELECT** 陳述式中指定這些欄位。
+
+**輸入**：
+
+| 請確定 | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |1000 |
+| Make1 |2015-01-01T00:00:02.0000000Z |2000 |
+| Make2 |2015-01-01T00:00:04.0000000Z |1500 |
+
+**輸出**：
 
 | 請確定 | Time |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000Z |
 | Make1 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:01.0000000Z |
-| Make2 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:03.0000000Z |
+| Make2 |2015-01-01T00:00:04.0000000Z |
 
-**輸出：**
-
-| Count_make | Time |
-| --- | --- |
-| 2 |2015-01-01T00:00:02.000Z |
-| 1 |2015-01-01T00:00:04.000Z |
-
-**查詢：**
+**查詢**：
 
 ```SQL
 SELECT
-     COUNT(DISTINCT Make) AS Count_make,
-     System.TIMESTAMP() AS Time
-FROM Input TIMESTAMP BY TIME
-GROUP BY 
-     TumblingWindow(second, 2)
+    Make, Time
+INTO Output
+FROM Input
 ```
 
-**COUNT(DISTINCT Make)** 會傳回一個時間範圍內 **Make** 資料行的相異值計數。
-如需詳細資訊，請參閱 [**COUNT** 彙總函式](/stream-analytics-query/count-azure-stream-analytics)。
+## <a name="string-matching-with-like-and-not-like"></a>搭配 LIKE 和 NOT LIKE 的字串比對
+
+**LIKE** 和 **NOT LIKE** 可以用來驗證欄位是否符合特定模式。 例如，您可以建立一個篩選條件，只傳回以字母 'A' 開頭並以數字 9 結尾的車牌。
+
+**輸入**：
+
+| 請確定 | License_plate | Time |
+| --- | --- | --- |
+| Make1 |ABC-123 |2015-01-01T00:00:01.0000000Z |
+| Make2 |AAA-999 |2015-01-01T00:00:02.0000000Z |
+| Make3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
+
+**輸出**：
+
+| 請確定 | License_plate | Time |
+| --- | --- | --- |
+| Make2 |AAA-999 |2015-01-01T00:00:02.0000000Z |
+| Make3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
+
+**查詢**：
+
+```SQL
+SELECT
+    *
+FROM
+    Input TIMESTAMP BY Time
+WHERE
+    License_plate LIKE 'A%9'
+```
+
+使用 **LIKE** 陳述式檢查 **License_plate** 欄位值。 其開頭應該為字母 A，接著是長度為零或更多字元的字串，並以數字 9 結尾。
 
 ## <a name="calculation-over-past-events"></a>過去事件的計算
 
@@ -375,69 +232,6 @@ WHERE
 使用 **LAG** 查看前一個事件的輸入資料流，同時擷取 *Make* 值，並將其與目前事件的 *Make* 進行比較，然後輸出事件。
 
 如需詳細資訊，請參閱 [**LAG**](/stream-analytics-query/lag-azure-stream-analytics)。
-
-## <a name="retrieve-the-first-event-in-a-window"></a>擷取時間範圍內的第一個事件
-
-**IsFirst** 可用來取出時間範圍內的第一個事件。 例如，每隔 10 分鐘輸出第一部汽車資訊。
-
-**輸入**：
-
-| License_plate | 請確定 | Time |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
-| RMV 8282 |Make1 |2015-07-27T00:05:01.0000000Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
-| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
-
-**輸出**：
-
-| License_plate | 請確定 | Time |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
-
-**查詢**：
-
-```SQL
-SELECT 
-    License_plate,
-    Make,
-    Time
-FROM 
-    Input TIMESTAMP BY Time
-WHERE 
-    IsFirst(minute, 10) = 1
-```
-
-**IsFirst** 也可以分割資料，並計算每部特定汽車 *Make* 每隔 10 分鐘找到的第一個事件。
-
-**輸出**：
-
-| License_plate | 請確定 | Time |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
-
-**查詢**：
-
-```SQL
-SELECT 
-    License_plate,
-    Make,
-    Time
-FROM 
-    Input TIMESTAMP BY Time
-WHERE 
-    IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
-```
-
-如需詳細資訊，請參閱 [**IsFirst**](/stream-analytics-query/isfirst-azure-stream-analytics)。
 
 ## <a name="return-the-last-event-in-a-window"></a>傳回時間範圍內的最後一個事件
 
@@ -492,6 +286,89 @@ FROM
 
 如需聯結資料流的詳細資訊，請參閱 [**JOIN**](/stream-analytics-query/join-azure-stream-analytics)。
 
+## <a name="data-aggregation-over-time"></a>一段時間的資料彙總
+
+若要計算一段時間範圍的資訊，可以將資料彙總在一起。 在此範例中，會針對每個特定汽車的時間，計算過去10秒內的計數。
+
+**輸入**：
+
+| 請確定 | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |1000 |
+| Make1 |2015-01-01T00:00:02.0000000Z |2000 |
+| Make2 |2015-01-01T00:00:04.0000000Z |1500 |
+
+**輸出**：
+
+| 請確定 | Count |
+| --- | --- |
+| Make1 | 2 |
+| Make2 | 1 |
+
+**查詢**：
+
+```SQL
+SELECT
+    Make,
+    COUNT(*) AS Count
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+```
+
+此彙總會依 *Make* 將汽車分組，並每隔 10 秒對其進行計數一次。 對於通過收費站的汽車，輸出具有其 *Make* 和 *Count*。
+
+TumblingWindow 是用來將事件群組在一起的視窗化函式。 彙總可以套用至所有分組的事件。 如需詳細資訊，請參閱[視窗化函式](stream-analytics-window-functions.md)。
+
+如需彙總的詳細資訊，請參閱[彙總函式](/stream-analytics-query/aggregate-functions-azure-stream-analytics)。
+
+## <a name="periodically-output-values"></a>定期輸出值
+
+萬一發生異常或遺失的事件，可以從更疏鬆的資料輸入產生定期輸出。 例如，每隔 5 秒產生事件，報告最近所見的資料點。
+
+**輸入**：
+
+| Time | 值 |
+| --- | --- |
+| "2014-01-01T06:01:00" |1 |
+| "2014-01-01T06:01:05" |2 |
+| "2014-01-01T06:01:10" |3 |
+| "2014-01-01T06:01:15" |4 |
+| "2014-01-01T06:01:30" |5 |
+| "2014-01-01T06:01:35" |6 |
+
+**輸出 (前 10 個資料列)** ：
+
+| Window_end | Last_event.Time | Last_event.Value |
+| --- | --- | --- |
+| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
+| 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
+| 2014-01-01T14:01:10.000Z |2014-01-01T14:01:10.000Z |3 |
+| 2014-01-01T14:01:15.000Z |2014-01-01T14:01:15.000Z |4 |
+| 2014-01-01T14:01:20.000Z |2014-01-01T14:01:15.000Z |4 |
+| 2014-01-01T14:01:25.000Z |2014-01-01T14:01:15.000Z |4 |
+| 2014-01-01T14:01:30.000Z |2014-01-01T14:01:30.000Z |5 |
+| 2014-01-01T14:01:35.000Z |2014-01-01T14:01:35.000Z |6 |
+| 2014-01-01T14:01:40.000Z |2014-01-01T14:01:35.000Z |6 |
+| 2014-01-01T14:01:45.000Z |2014-01-01T14:01:35.000Z |6 |
+
+**查詢**：
+
+```SQL
+SELECT
+    System.Timestamp() AS Window_end,
+    TopOne() OVER (ORDER BY Time DESC) AS Last_event
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    HOPPINGWINDOW(second, 300, 5)
+```
+
+此查詢會每隔 5 秒產生事件，並輸出先前所收到的最後一個事件。 **HOPPINGWINDOW** 持續時間會決定查詢要回到多久前，才能找到最新的事件。
+
+如需詳細資訊，請參閱[跳動視窗](/stream-analytics-query/hopping-window-azure-stream-analytics)。
 
 ## <a name="correlate-events-in-a-stream"></a>使資料流中的事件相互關聯
 
@@ -565,6 +442,224 @@ WHERE
 
 **LAST** 函式可以用來擷取特定條件內的最後一個事件。 在此範例中，條件是類型為 Start 的事件，藉由 **PARTITION BY** 使用者和功能來分割搜尋。 如此一來，在搜尋 Start 事件時，每個使用者和功能都會獨立處理。 **LIMIT DURATION** 將向後搜尋的時間限制為 End 和 Start 事件之間的 1 小時。
 
+## <a name="count-unique-values"></a>計算唯一值
+
+**COUNT** 和 **DISTINCT** 可用來計算某個時間範圍內在串流中所出現唯一欄位值的數目。 例如，在 2 秒鐘時間範圍內有多少部獨特 *Make* 的汽車通過收費站。
+
+**輸入**：
+
+| 請確定 | Time |
+| --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |
+| Make1 |2015-01-01T00:00:02.0000000Z |
+| Make2 |2015-01-01T00:00:01.0000000Z |
+| Make2 |2015-01-01T00:00:02.0000000Z |
+| Make2 |2015-01-01T00:00:03.0000000Z |
+
+**輸出：**
+
+| Count_make | Time |
+| --- | --- |
+| 2 |2015-01-01T00:00:02.000Z |
+| 1 |2015-01-01T00:00:04.000Z |
+
+**查詢：**
+
+```SQL
+SELECT
+     COUNT(DISTINCT Make) AS Count_make,
+     System.TIMESTAMP() AS Time
+FROM Input TIMESTAMP BY TIME
+GROUP BY 
+     TumblingWindow(second, 2)
+```
+
+**COUNT(DISTINCT Make)** 會傳回一個時間範圍內 **Make** 資料行的相異值計數。
+如需詳細資訊，請參閱 [**COUNT** 彙總函式](/stream-analytics-query/count-azure-stream-analytics)。
+
+## <a name="retrieve-the-first-event-in-a-window"></a>擷取時間範圍內的第一個事件
+
+**IsFirst** 可用來取出時間範圍內的第一個事件。 例如，每隔 10 分鐘輸出第一部汽車資訊。
+
+**輸入**：
+
+| License_plate | 請確定 | Time |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
+| RMV 8282 |Make1 |2015-07-27T00:05:01.0000000Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
+| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
+
+**輸出**：
+
+| License_plate | 請確定 | Time |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
+
+**查詢**：
+
+```SQL
+SELECT 
+    License_plate,
+    Make,
+    Time
+FROM 
+    Input TIMESTAMP BY Time
+WHERE 
+    IsFirst(minute, 10) = 1
+```
+
+**IsFirst** 也可以分割資料，並計算每部特定汽車 *Make* 每隔 10 分鐘找到的第一個事件。
+
+**輸出**：
+
+| License_plate | 請確定 | Time |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
+
+**查詢**：
+
+```SQL
+SELECT 
+    License_plate,
+    Make,
+    Time
+FROM 
+    Input TIMESTAMP BY Time
+WHERE 
+    IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
+```
+
+如需詳細資訊，請參閱 [**IsFirst**](/stream-analytics-query/isfirst-azure-stream-analytics)。
+
+## <a name="remove-duplicate-events-in-a-window"></a>移除時間範圍內的重複事件
+
+執行如計算指定時間範圍內事件平均值的作業時，應該要將重複的事件篩選出來。 在下列範例中，第二個事件是第一個事件的重複。
+
+**輸入**：  
+
+| DeviceId | Time | 屬性 | 值 |
+| --- | --- | --- | --- |
+| 1 |2018-07-27T00:00:01.0000000Z |溫度 |50 |
+| 1 |2018-07-27T00:00:01.0000000Z |溫度 |50 |
+| 2 |2018-07-27T00:00:01.0000000Z |溫度 |40 |
+| 1 |2018-07-27T00:00:05.0000000Z |溫度 |60 |
+| 2 |2018-07-27T00:00:05.0000000Z |溫度 |50 |
+| 1 |2018-07-27T00:00:10.0000000Z |溫度 |100 |
+
+**輸出**：  
+
+| AverageValue | deviceId |
+| --- | --- |
+| 70 | 1 |
+|45 | 2 |
+
+**查詢**：
+
+```SQL
+With Temp AS (
+SELECT
+    COUNT(DISTINCT Time) AS CountTime,
+    Value,
+    DeviceId
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Value,
+    DeviceId,
+    SYSTEM.TIMESTAMP()
+)
+
+SELECT
+    AVG(Value) AS AverageValue, DeviceId
+INTO Output
+FROM Temp
+GROUP BY DeviceId,TumblingWindow(minute, 5)
+```
+
+**COUNT(DISTINCT Time)** 會傳回時間範圍內 Time 資料行中的相異值數目。 然後，可以使用第一個步驟的輸出，透過捨棄重複項目來計算每個裝置的平均值。
+
+如需詳細資訊，請參閱 [COUNT(DISTINCT Time)](/stream-analytics-query/count-azure-stream-analytics)。
+
+## <a name="specify-logic-for-different-casesvalues-case-statements"></a>針對不同的案例/值指定邏輯 (CASE 陳述式)
+
+**CASE** 陳述式可以根據特定準則，為不同的欄位提供不同的計算。 例如，將車道 'A' 指派給 *Make1* 的汽車，並將車道 'B' 指派給任何其他製造商。
+
+**輸入**：
+
+| 請確定 | Time |
+| --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |
+| Make2 |2015-01-01T00:00:02.0000000Z |
+| Make2 |2015-01-01T00:00:03.0000000Z |
+
+**輸出**：
+
+| 請確定 |Dispatch_to_lane | Time |
+| --- | --- | --- |
+| Make1 |"A" |2015-01-01T00:00:01.0000000Z |
+| Make2 |"B" |2015-01-01T00:00:02.0000000Z |
+
+**解決方案**：
+
+```SQL
+SELECT
+    Make
+    CASE
+        WHEN Make = "Make1" THEN "A"
+        ELSE "B"
+    END AS Dispatch_to_lane,
+    System.TimeStamp() AS Time
+FROM
+    Input TIMESTAMP BY Time
+```
+
+**CASE** 運算式會比較運算式和一組簡單運算式來決定其結果。 在此範例中，*Make1* 的車輛會分派給車道 'A'，而任何其他製造商的車輛則會指派給車道 'B'。
+
+如需詳細資訊，請參閱 [case 運算式](/stream-analytics-query/case-azure-stream-analytics)。
+
+## <a name="data-conversion"></a>資料轉換
+
+您可以使用 **CAST** 方法來即時轉換資料。 例如，汽車權數可以從類型 **nvarchar(max)** 轉換成類型 **bigint**，並用於數值計算。
+
+**輸入**：
+
+| 請確定 | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
+
+**輸出**：
+
+| 請確定 | Weight |
+| --- | --- |
+| Make1 |3000 |
+
+**查詢**：
+
+```SQL
+SELECT
+    Make,
+    SUM(CAST(Weight AS BIGINT)) AS Weight
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+```
+
+使用 **CAST** 陳述式來指定其資料類型。 請參閱[資料類型 (Azure 串流分析)](/stream-analytics-query/data-types-azure-stream-analytics) 上的支援資料類型清單。
+
+如需詳細資訊，請參閱[資料轉換函式](/stream-analytics-query/conversion-functions-azure-stream-analytics)。
+
 ## <a name="detect-the-duration-of-a-condition"></a>偵測某個條件的持續時間
 
 對於跨越多個事件的條件，**LAG** 函式可以用來識別該條件的持續時間。 例如，假設有個錯誤導致所有車輛的重量不正確 (超過 20,000 磅)，而且必須計算該錯誤的持續時間。
@@ -612,52 +707,6 @@ WHERE
 
 End_fault 是上一個事件發生錯誤的目前非錯誤事件，而 Start_fault 是在這之前的最後一個非錯誤事件。
 
-## <a name="periodically-output-values"></a>定期輸出值
-
-萬一發生異常或遺失的事件，可以從更疏鬆的資料輸入產生定期輸出。 例如，每隔 5 秒產生事件，報告最近所見的資料點。
-
-**輸入**：
-
-| Time | 值 |
-| --- | --- |
-| "2014-01-01T06:01:00" |1 |
-| "2014-01-01T06:01:05" |2 |
-| "2014-01-01T06:01:10" |3 |
-| "2014-01-01T06:01:15" |4 |
-| "2014-01-01T06:01:30" |5 |
-| "2014-01-01T06:01:35" |6 |
-
-**輸出 (前 10 個資料列)** ：
-
-| Window_end | Last_event.Time | Last_event.Value |
-| --- | --- | --- |
-| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
-| 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
-| 2014-01-01T14:01:10.000Z |2014-01-01T14:01:10.000Z |3 |
-| 2014-01-01T14:01:15.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:20.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:25.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:30.000Z |2014-01-01T14:01:30.000Z |5 |
-| 2014-01-01T14:01:35.000Z |2014-01-01T14:01:35.000Z |6 |
-| 2014-01-01T14:01:40.000Z |2014-01-01T14:01:35.000Z |6 |
-| 2014-01-01T14:01:45.000Z |2014-01-01T14:01:35.000Z |6 |
-
-**查詢**：
-
-```SQL
-SELECT
-    System.Timestamp() AS Window_end,
-    TopOne() OVER (ORDER BY Time DESC) AS Last_event
-FROM
-    Input TIMESTAMP BY Time
-GROUP BY
-    HOPPINGWINDOW(second, 300, 5)
-```
-
-此查詢會每隔 5 秒產生事件，並輸出先前所收到的最後一個事件。 **HOPPINGWINDOW** 持續時間會決定查詢要回到多久前，才能找到最新的事件。
-
-如需詳細資訊，請參閱[跳動視窗](/stream-analytics-query/hopping-window-azure-stream-analytics)。
-
 ## <a name="process-events-with-independent-time-substreams"></a>以獨立時間處理事件 (子資料流)
 
 事件會因事件產生器之間的時鐘誤差、分割之間的時鐘誤差或網路延遲，而導致延遲發生或順序錯誤。
@@ -701,55 +750,6 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 **TIMESTAMP BY OVER** 子句會使用子資料流個別查看每個裝置時間軸。 計算時會產生每個 *TollID* 的輸出事件，這表示事件的順序均與每個 *TollID* 有關，而不會重新排列順序，就像所有裝置都依據同一個時鐘一般。
 
 如需詳細資訊，請參閱 [TIMESTAMP BY OVER](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering)。
-
-## <a name="remove-duplicate-events-in-a-window"></a>移除時間範圍內的重複事件
-
-執行如計算指定時間範圍內事件平均值的作業時，應該要將重複的事件篩選出來。 在下列範例中，第二個事件是第一個事件的重複。
-
-**輸入**：  
-
-| deviceId | Time | 屬性 | 值 |
-| --- | --- | --- | --- |
-| 1 |2018-07-27T00:00:01.0000000Z |溫度 |50 |
-| 1 |2018-07-27T00:00:01.0000000Z |溫度 |50 |
-| 2 |2018-07-27T00:00:01.0000000Z |溫度 |40 |
-| 1 |2018-07-27T00:00:05.0000000Z |溫度 |60 |
-| 2 |2018-07-27T00:00:05.0000000Z |溫度 |50 |
-| 1 |2018-07-27T00:00:10.0000000Z |溫度 |100 |
-
-**輸出**：  
-
-| AverageValue | deviceId |
-| --- | --- |
-| 70 | 1 |
-|45 | 2 |
-
-**查詢**：
-
-```SQL
-With Temp AS (
-SELECT
-    COUNT(DISTINCT Time) AS CountTime,
-    Value,
-    DeviceId
-FROM
-    Input TIMESTAMP BY Time
-GROUP BY
-    Value,
-    DeviceId,
-    SYSTEM.TIMESTAMP()
-)
-
-SELECT
-    AVG(Value) AS AverageValue, DeviceId
-INTO Output
-FROM Temp
-GROUP BY DeviceId,TumblingWindow(minute, 5)
-```
-
-**COUNT(DISTINCT Time)** 會傳回時間範圍內 Time 資料行中的相異值數目。 然後，可以使用第一個步驟的輸出，透過捨棄重複項目來計算每個裝置的平均值。
-
-如需詳細資訊，請參閱 [COUNT(DISTINCT Time)](/stream-analytics-query/count-azure-stream-analytics)。
 
 ## <a name="session-windows"></a>工作階段時間範圍
 
@@ -885,6 +885,7 @@ MATCH_RECOGNIZE (
 如需詳細資訊，請參閱 [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics)。
 
 ## <a name="geofencing-and-geospatial-queries"></a>地理柵欄和地理空間查詢
+
 Azure 串流分析提供內建的地理空間函式，可用來實作車隊管理、共駕、連線汽車和資產追蹤等案例。
 地理空間資料可以採用 GeoJSON 或 WKT 格式內嵌成事件資料流或參考資料的一部分。
 例如，專精於製造列印護照機器的公司，會將其機器租用給政府和領事館。 這些機器的位置會受到嚴格控制，以避免放錯位置和可能用於偽造護照。 每部機器都配有 GPS 追蹤器，這項資訊會轉送回 Azure 串流分析作業。

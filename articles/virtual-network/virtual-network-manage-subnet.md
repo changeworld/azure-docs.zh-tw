@@ -1,7 +1,7 @@
 ---
 title: 加入、變更或刪除 Azure 虛擬網路子網路
 titlesuffix: Azure Virtual Network
-description: 了解如何加入、變更或刪除 Azure 中的虛擬網路子網路。
+description: 瞭解哪裡可以找到有關虛擬網路的資訊，以及如何在 Azure 中新增、變更或刪除虛擬網路子網。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2020
 ms.author: kumud
-ms.openlocfilehash: b43fb027116d746a60c9cd4e690e63181fff4ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15fe5d6d16948875253d65e70d9d440214a4a2e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711012"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286099"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>加入、變更或刪除虛擬網路子網路
 
@@ -39,7 +40,7 @@ ms.locfileid: "84711012"
 
 ## <a name="add-a-subnet"></a>新增子網路
 
-1. 移至 [ [Azure 入口網站](https://portal.azure.com)] 以查看您的虛擬網路。 搜尋並選取 [虛擬網路]  。
+1. 移至 [ [Azure 入口網站](https://portal.azure.com)] 以查看您的虛擬網路。 搜尋並選取 [虛擬網路]。
 
 2. 選取您想要新增子網的虛擬網路名稱。
 
@@ -60,14 +61,14 @@ ms.locfileid: "84711012"
 
 ### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) |
 | PowerShell | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) |
 
 ## <a name="change-subnet-settings"></a>變更子網路設定
 
-1. 移至 [ [Azure 入口網站](https://portal.azure.com)] 以查看您的虛擬網路。 搜尋並選取 [虛擬網路]  。
+1. 移至 [ [Azure 入口網站](https://portal.azure.com)] 以查看您的虛擬網路。 搜尋並選取 [虛擬網路]。
 
 2. 選取包含您要變更之子網的虛擬網路名稱。
 
@@ -89,7 +90,7 @@ ms.locfileid: "84711012"
 
 ### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
@@ -98,7 +99,7 @@ ms.locfileid: "84711012"
 
 您只能刪除未包含任何資源的子網路。 如果資源位於子網中，您必須先刪除這些資源，才能刪除子網。 不同資源的資源刪除步驟也各異。 若要瞭解如何刪除子網中的資源，請閱讀這些資源類型的檔。
 
-1. 移至 [ [Azure 入口網站](https://portal.azure.com)] 以查看您的虛擬網路。 搜尋並選取 [虛擬網路]  。
+1. 移至 [ [Azure 入口網站](https://portal.azure.com)] 以查看您的虛擬網路。 搜尋並選取 [虛擬網路]。
 
 2. 選取包含您要刪除之子網的虛擬網路名稱。
 
@@ -110,7 +111,7 @@ ms.locfileid: "84711012"
 
 ### <a name="commands"></a>命令
 
-| 工具 | Command |
+| 工具 | 命令 |
 | ---- | ------- |
 | Azure CLI | [az network vnet subnet delete](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete) |
 | PowerShell | [移除-New-azvirtualnetworksubnetconfig](/powershell/module/az.network/remove-azvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json) |

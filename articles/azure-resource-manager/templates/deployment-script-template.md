@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: fcdcf563cd88cbf6604877636432a406c1960cff
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117048"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291802"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署指令碼 (預覽)
 
@@ -147,7 +147,7 @@ ms.locfileid: "87117048"
 
     如果引數包含逸出字元，請使用[JsonEscaper](https://www.jsonescaper.com/)來重複字元的轉義。 將原始的逸出字元串貼入工具中，然後選取 [ **Escape**]。  此工具會輸出雙重的逸出字元串。 例如，在前一個範例範本中，引數為 **-name \\ "John Dole \\ "**。  此轉義的字串為 **-name \\ \\ \\ "John dole \\ \\ \\ "**。
 
-    若要將類型為 object 的 ARM 範本參數當做引數傳遞，請使用[string （）](./template-functions-string.md#string)函式將物件轉換為字串，然後使用[replace （）](./template-functions-string.md#replace)函式來取代任何** \\ "** into ** \\ \\ \\ "**。 例如:
+    若要將類型為 object 的 ARM 範本參數當做引數傳遞，請使用[string （）](./template-functions-string.md#string)函式將物件轉換為字串，然後使用[replace （）](./template-functions-string.md#replace)函式來取代任何** \\ "** into ** \\ \\ \\ "**。 例如：
 
     ```json
     replace(string(parameters('tables')), '\"', '\\\"')
@@ -556,48 +556,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 ## <a name="configure-development-environment"></a>設定開發環境
 
-您可以使用預先設定的 Docker 容器映像做為部署指令碼開發環境。 若要安裝 Docker，請參閱[取得 docker](https://docs.docker.com/get-docker/)。
-您也需要設定檔案共用，將包含部署腳本的目錄掛接到 Docker 容器中。
-
-1. 將部署指令碼容器映像提取到本機電腦：
-
-    ```command
-    docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    此範例使用 PowerShell 2.7.0 版。
-
-    從 Microsoft Container Registry (MCR) 提取 CLI 映像：
-
-    ```command
-    docker pull mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-    此範例使用 CLI 2.0.80 版。 部署指令碼會使用[這裡](https://hub.docker.com/_/microsoft-azure-cli)找到的預設 CLI 容器映像。
-
-1. 在本機執行 Docker 映像。
-
-    ```command
-    docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    以共用磁碟機上的現有資料夾取代 **&lt;主機驅動程式代號>** 和 **&lt;主機目錄名稱>** 。  其會將資料夾對應至容器中的 **/data** 資料夾。 例如，對應 D:\docker：
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    **-it** 表示讓容器映像保持運作。
-
-    CLI 範例：
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-1. 下列螢幕擷取畫面顯示如何執行 PowerShell 腳本（假設您在共用磁片磁碟機中有 helloworld.ps1 檔案）。
-
-    ![Resource Manager 範本部署指令碼 Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
+您可以使用預先設定的容器映射作為部署腳本開發環境。 如需詳細資訊，請參閱[在範本中設定部署腳本的開發環境](./deployment-script-template-configure-dev.md)。
 
 成功測試腳本之後，您可以使用它做為範本中的部署腳本。
 
@@ -619,7 +578,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 | DeploymentScriptStorageAccountInvalidAccessKeyFormat | 儲存體帳戶金鑰格式無效。 請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。 |
 | DeploymentScriptExceededMaxAllowedTime | 部署腳本執行時間超過部署腳本資源定義中指定的超時值。 |
 | DeploymentScriptInvalidOutputs | 部署腳本輸出不是有效的 JSON 物件。 |
-| DeploymentScriptContainerInstancesServiceLoginFailure | 使用者指派的受控識別在10次嘗試之後，將無法登入1分鐘的間隔。 |
+| DeploymentScriptContainerInstancesServiceLoginFailure | 使用者指派的受控識別在10次嘗試之後，無法以1分鐘的間隔登入。 |
 | DeploymentScriptContainerGroupNotFound | 外部工具或進程已刪除部署腳本服務所建立的容器群組。 |
 | DeploymentScriptDownloadFailure | 無法下載支援的腳本。 請參閱[使用支援的腳本](#use-supporting-scripts)。|
 | DeploymentScriptError | 使用者腳本擲回錯誤。 |

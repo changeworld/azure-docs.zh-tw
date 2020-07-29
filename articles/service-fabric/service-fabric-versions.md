@@ -3,16 +3,18 @@ title: Azure 中支援的叢集版本 Service Fabric
 description: 瞭解 Azure Service Fabric 中的叢集版本，包括來自 Service Fabric team blog 的最新發行連結。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 211197ced52ca094d375d3ae212957fa25a523fc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d849b4471bf11183dc02735c7373f858f0c773be
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091635"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289310"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
 請確定您的叢集一律執行支援的 Azure Service Fabric 版本。 在我們宣佈發行新版本的 Service Fabric 之後，最少60天，對舊版的支援結束。 您會在[Service Fabric 小組的 blog](https://azure.microsoft.com/updates/?product=service-fabric)中找到新版本的公告。
+
+針對特定版本的 Service Fabric 執行時間，您可以使用 SDK/NuGet 套件的指定或較舊版本。 不支援較新版本的套件，而且可能會有以較舊叢集為目標的問題，因為這些環境可能會有不支援的功能或通訊協定變更。
 
 如需如何讓叢集執行支援的 Service Fabric 版本的詳細資訊，請參閱下列檔：
 

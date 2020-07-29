@@ -8,11 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7c83bc55a00774966681973b95d18cdc58dba19c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037200"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337801"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>對 Azure 串流分析查詢進行疑難排解
 
@@ -27,9 +28,9 @@ ms.locfileid: "86037200"
     - 在 Azure 入口網站的 [查詢] 索引標籤上，選取 [測試]。 使用下載的範例資料[測試查詢](stream-analytics-test-query.md)。 檢查是否有任何錯誤並嘗試修正。   
     - 您也可以使用適用於 Visual Studio 的 Azure 串流分析工具或 [Visual Studio Code](visual-studio-code-local-run-live-input.md)，[在本機測試查詢](stream-analytics-live-data-local-testing.md)。 
 
-2.  在適用於 Visual Studio 的 Azure 串流分析工具中，[使用作業圖表在本機逐步偵錯查詢](debug-locally-using-job-diagram.md)。 作業圖表顯示資料如何從輸入來源 (事件中樞、IoT 中樞等)，經過多個查詢步驟，最後流向輸出接收。 每個查詢步驟都使用 WITH 陳述式，對應到指令碼中定義的暫存結果集。 您可以在每個中繼結果集檢視資料和計量，以找出問題的來源。
+2.  在適用于 Visual Studio Code 的 Azure 串流分析工具中，[使用工作圖表在本機逐步執行 Debug 查詢](debug-locally-using-job-diagram-vs-code.md)。 作業圖表顯示資料如何從輸入來源 (事件中樞、IoT 中樞等)，經過多個查詢步驟，最後流向輸出接收。 每個查詢步驟都使用 WITH 陳述式，對應到指令碼中定義的暫存結果集。 您可以在每個中繼結果集檢視資料和計量，以找出問題的來源。
 
-    ![作業圖表預覽結果](./media/debug-locally-using-job-diagram/preview-result.png)
+    ![作業圖表預覽結果](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
 3.  如果您使用 [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)，請確定事件有大於[作業開始時間](stream-analytics-out-of-order-and-late-events.md)的時間戳記。
 

@@ -4,15 +4,15 @@ description: 使用 Cloud Partner 入口網站 Api 的必要條件。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: b672afcd8f52d8293b1bb81e30097062e2ee49c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2cce5d3463ced126a3e6e77323110e4a70024acb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053589"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292911"
 ---
 <a name="api-prerequisites"></a>API 先決條件
 ================

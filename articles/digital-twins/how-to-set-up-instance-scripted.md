@@ -1,5 +1,5 @@
 ---
-title: 設定實例和驗證（已編寫腳本）
+title: 設定執行個體和驗證 (已編寫指令碼)
 titleSuffix: Azure Digital Twins
 description: 請參閱如何設定 Azure 數位 Twins 服務的實例，包括適當的驗證。 已編寫版本的腳本。
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c601d01589a89667b630d04ddb19dfbe190cca9f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125768"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337903"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>設定 Azure 數位 Twins 實例和驗證（已編寫腳本）
 
@@ -49,7 +49,7 @@ ms.locfileid: "87125768"
     * 針對實例：要使用之 Azure 訂用帳戶的訂用帳戶*識別碼*
     * 針對實例：您想要部署實例的*位置*。 若要查看哪些區域支援 Azure 數位 Twins，請造訪[*依區域提供的 azure 產品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
     * 實例的：*資源組*名。 您可以使用現有的資源群組，或輸入一個新的名稱來建立。
-    * 針對實例：您的 Azure 數位 Twins 實例的*名稱*。 新實例的名稱在區域內必須是唯一的（也就是說，如果該區域中的另一個 Azure 數位 Twins 實例已經使用您選擇的名稱，系統會要求您挑選不同的名稱）。
+    * 針對實例：您的 Azure 數位 Twins 實例的*名稱*。 新實例的名稱在您訂用帳戶的區域中必須是唯一的（也就是說，如果您的訂用帳戶在已使用所選名稱的區域中有另一個 Azure 數位 Twins 實例，系統會要求您挑選不同的名稱）。
     * 應用程式註冊：要與註冊建立關聯的*Azure AD 應用程式顯示名稱*。 此應用程式註冊可讓您設定[Azure 數位 Twins api](how-to-use-apis-sdks.md)的存取權限。 之後，用戶端應用程式會對應用程式註冊進行驗證，因此會授與對 Api 所設定的存取權限。
     * 針對 [應用程式註冊]： Azure AD 應用程式的*Azure AD 應用程式回復 URL* 。 您可以使用 `http://localhost` 。
 

@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 74250a54d7b835ceb37614450de07e9e3baefd83
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 1ec2aed0a2cceebe4685cf75c7007d1ce0785615
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183149"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293089"
 ---
 # <a name="troubleshoot-update-management-issues"></a>針對更新管理問題進行疑難排解
 
@@ -59,7 +59,7 @@ Error details: Failed to enable the Update solution
 
 已取代的更新未正確地表示為已拒絕，因此可視為不適用。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 當已取代的更新變成 100% 不適用時，您應該將該更新的核准狀態變更為 `Declined`。 若要變更所有更新的核准狀態：
 
@@ -99,7 +99,7 @@ Error details: Failed to enable the Update solution
 
 * 您可能已在工作區中定義已達到的配額，因而導致無法進一步儲存資料。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 1. 視作業系統而定，執行 [Windows](update-agent-issues.md#troubleshoot-offline) 或 [Linux](update-agent-issues-linux.md#troubleshoot-offline) 的疑難排解員。
 
@@ -144,7 +144,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 自動化資源提供者未在訂用帳戶中註冊。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 若要註冊自動化資源提供者，請在 Azure 入口網站中執行下列步驟。
 
@@ -222,7 +222,7 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 * ARG 查詢未擷取預期的電腦。
 * 混合式 Runbook 背景工作角色未安裝在電腦上。
 
-### <a name="resolution"></a>解決方法 
+### <a name="resolution"></a>解決方案 
 
 #### <a name="incorrect-access-on-selected-scopes"></a>選取範圍的存取權不正確
 
@@ -293,7 +293,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 * 正在部署的 VM 映像可能來自於未使用系統準備 (sysprep) 做準備，且已安裝適用於 Windows 的 Log Analytics 代理程式的複製電腦。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 若要協助判斷 VM 的確切問題，請在與您的自動化帳戶連結的 Log Analytics 工作區中執行下列查詢。
 
@@ -341,7 +341,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 當您建立的更新部署中有 Azure VM 位在某個更新部署中的其他租用戶內，就會發生此錯誤。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 使用以下因應措施將這些項目安排妥當。 您可以使用 [New-AzAutomationSchedule](/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) Cmdlet 搭配 `ForUpdateConfiguration` 參數來建立排程。 然後，使用 [New-AzAutomationSoftwareUpdateConfiguration](/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) Cmdlet，並將其他租用戶中的電腦傳遞至 `NonAzureComputer` 參數。 下列範例示範如何執行：
 
@@ -365,7 +365,7 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 Windows Update 可以由數個登錄機碼修改，其中任何一個都可以修改重新開機行為。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 檢閱[藉由編輯登錄來設定自動更新](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)和[用來管理重新啟動的登錄機碼](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)底下列出的登錄機碼，以確定您的電腦已正確設定。
 
@@ -387,7 +387,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 * 電腦已關閉且無法連線。
 * 電腦發生網路連線問題，因此無法連線到電腦上的混合式背景工作角色。
 * MMA 的更新變更了來源電腦識別碼。
-* 如果您達到自動化帳戶中 2000 個並行作業的限制，則您的更新執行已節流。 系統會將每個部署視為一項作業，而更新部署中的每部電腦會計算為一項作業。 目前在您的自動化帳戶中執行的任何其他自動化作業或更新部署，都會計入並行作業限制。
+* 如果您達到自動化帳戶中200個並行作業的限制，則您的更新執行已節流。 系統會將每個部署視為一項作業，而更新部署中的每部電腦會計算為一項作業。 目前在您的自動化帳戶中執行的任何其他自動化作業或更新部署，都會計入並行作業限制。
 
 ### <a name="resolution"></a>解決方案
 
@@ -415,7 +415,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 在 Windows 上，更新會在可用時立即自動安裝。 如果您未排程將更新部署到電腦上，這種行為可能會造成混淆。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` 登錄機碼預設為 4 的設定：`auto download and install`。
 
@@ -437,7 +437,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 電腦已部署至另一個工作區以進行「更新管理」。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 1. 依照[電腦未顯示於更新管理下的入口網站中](#nologs)底下的步驟，以確定電腦回報至正確的工作區。
 2. 藉由[刪除混合式 Runbook 群組](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group)來清除電腦上的成品，然後再試一次。
@@ -468,7 +468,7 @@ Access is denied. (Exception form HRESULT: 0x80070005(E_ACCESSDENIED))
 
 Proxy、閘道或防火牆可能封鎖網路通訊。 
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 檢閱您的網路並確定已允許適當的連接埠和位址。 如需「更新管理」和「混合式 Runbook 背景工作角色」所需的連接埠和位址清單，請參閱[網路需求](../automation-hybrid-runbook-worker.md#network-planning)。
 
@@ -486,7 +486,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 混合式 Runbook 背景工作角色無法產生自我簽署憑證。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 確認系統帳戶具有 **C:\ProgramData\Microsoft\Crypto\RSA** 資料夾的讀取存取權，然後再試一次。
 
@@ -496,7 +496,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 更新的預設維護期間是 120 分鐘。 您可以將維護期間增加到最多 6 小時或 360 分鐘。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 編輯任何失敗的排程更新部署，並增加維護期間。
 
@@ -513,7 +513,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 更新代理程式 (Windows 上的 Windows Update 代理程式、Linux 發行版本的套件管理員) 未正確設定。 「更新管理」依賴電腦的更新代理程式提供所需的更新、修補程式的狀態，以及所部署修補程式的結果。 若無此資訊，「更新管理」無法正確回報是否需要或安裝了修補程式。
 
-### <a name="resolution"></a>解決方法
+### <a name="resolution"></a>解決方案
 
 嘗試在電腦本機上執行更新。 如果此作業失敗，通常表示有更新代理程式設定錯誤。
 

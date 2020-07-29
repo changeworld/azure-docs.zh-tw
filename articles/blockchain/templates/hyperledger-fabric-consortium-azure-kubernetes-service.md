@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service （AKS）上的 Hyperledger 網狀架構聯盟
 description: 如何在 Azure Kubernetes Service 上部署和設定 Hyperledger Fabric 聯盟網路
-ms.date: 07/07/2020
+ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 1e90eeccb015b4d5ef78b79297565ddde9cfa305
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081267"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286048"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service （AKS）上的 Hyperledger 網狀架構聯盟
 
@@ -28,13 +28,15 @@ ms.locfileid: "87081267"
 
 選項 | 服務模型 | 一般使用案例
 -------|---------------|-----------------
-解決方案範本 | IaaS | 解決方案範本是 Azure Resource Manager 範本，可用來布建完整設定的區塊鏈網路拓撲。 這些範本會針對指定的區塊鏈網路類型，部署和設定 Microsoft Azure 計算、網路和儲存體服務。 解決方案範本是在沒有服務等級協定的情況下提供。 使用[Microsoft Q&支援的問題頁面](/answers/topics/azure-blockchain-workbench.html)。
+解決方案範本 | IaaS | 解決方案範本是 Azure Resource Manager 範本，可用來布建完整設定的區塊鏈網路拓撲。 這些範本會針對指定的區塊鏈網路類型，部署和設定 Microsoft Azure 計算、網路和儲存體服務。 解決方案範本是在沒有服務等級協定的情況下提供。 使用 [Microsoft 問與答頁面](/answers/topics/azure-blockchain-workbench.html)來取得支援。
 [Azure 區塊鏈服務](../service/overview.md) | PaaS | Azure 區塊鏈 Service Preview 簡化了聯盟區塊鏈網路的構成、管理和治理。 針對需要 PaaS、聯盟管理或合約和交易隱私權的解決方案，使用 Azure 區塊鏈 Service。
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 預覽是 Azure 服務和功能的集合，目的是要協助您建立及部署區塊鏈應用程式，以與其他組織共用商務程序和資料。 使用 Azure Blockchain Workbench 來建立區塊鏈解決方案的原型或區塊鏈應用程式概念證明。 Azure Blockchain Workbench 目前沒有服務等級合約。 使用[Microsoft Q&支援的問題頁面](/answers/topics/azure-blockchain-workbench.html)。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 預覽是 Azure 服務和功能的集合，目的是要協助您建立及部署區塊鏈應用程式，以與其他組織共用商務程序和資料。 使用 Azure Blockchain Workbench 來建立區塊鏈解決方案的原型或區塊鏈應用程式概念證明。 Azure Blockchain Workbench 目前沒有服務等級合約。 使用 [Microsoft 問與答頁面](/answers/topics/azure-blockchain-workbench.html)來取得支援。
 
 ## <a name="hyperledger-fabric-consortium-architecture"></a>Hyperledger Fabric 聯盟架構
 
-若要在 Azure 上建立 Hyperledger Fabric 網路，您需要使用對等節點來部署訂購服務和組織。 在範本部署過程中建立的不同基本元件如下：
+若要在 Azure 上建立 Hyperledger Fabric 網路，您需要使用對等節點來部署訂購服務和組織。 您可以使用 Hyperledger Fabric on Azure Kubernetes Service 解決方案範本，建立訂單節點或對等節點。 您需要為您想要建立的每個節點部署範本。
+
+在範本部署過程中建立的不同基本元件如下：
 
 - **排序者節點**：負責在總帳中進行交易排序的節點。 除了其他節點，已排序的節點會形成 Hyperledger 網狀架構網路的訂購服務。
 
@@ -58,22 +60,13 @@ ms.locfileid: "87081267"
 - **Azure 受控磁片**： azure 受控磁片適用于總帳和對等節點世界狀態資料庫的持續性存放區。
 - **公用 ip**：為了與叢集互動而部署之 AKS 叢集的公用 ip 端點。
 
-## <a name="hyperledger-fabric-blockchain-network-setup"></a>Hyperledger 網狀架構區塊鏈網路設定
+## <a name="deploy-the-ordererpeer-organization"></a>部署排序者/對等組織
 
 若要開始，您需要可支援部署數個虛擬機器和標準儲存體帳戶的 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，則可[建立免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-使用下列步驟設定 Hyperledger Fabric 區塊鏈網路：
+若要開始使用 HLF 網路元件部署，請流覽至[Azure 入口網站](https://portal.azure.com)。
 
-- [部署排序者/對等組織](#deploy-the-ordererpeer-organization)
-- [建立聯盟](#build-the-consortium)
-
-## <a name="deploy-the-ordererpeer-organization"></a>部署排序者/對等組織
-
-若要開始使用 HLF 網路元件部署，請流覽至[Azure 入口網站](https://portal.azure.com)。 選取 [**建立資源] > 區塊鏈**> 搜尋**Azure Kubernetes Service 上**的 [Hyperledger 網狀架構]。
-
-1. 選取 [**建立**] 以啟動範本部署。 **Azure Kubernetes Service 上的 [建立 Hyperledger 網狀架構**] 隨即顯示。
-
-    ![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-fabric-aks.png)
+1. 選取 [**建立資源] > 區塊鏈**，>**在 Azure Kubernetes Service （預覽）上搜尋 Hyperledger Fabric**。
 
 2. 在 [**基本**] 頁面中輸入專案詳細資料。
 
@@ -103,7 +96,7 @@ ms.locfileid: "87081267"
     - **根憑證私密金鑰**：上傳根憑證的私密金鑰。 如果您有結合公用和私密金鑰的 pem 憑證，也請在這裡上傳。
 
 
-6. 選取 [ **AKS 叢集設定**] 索引標籤，以定義 Azure Kubernetes 叢集設定，這是將在其上設定網狀架構網路元件的基礎結構。
+6. 選取 [ **AKS 叢集設定**] 索引標籤，以定義 Azure Kubernetes 叢集設定，這是將設定網狀架構網路元件的基礎結構。
 
     ![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-aks-cluster-settings-1.png)
 
@@ -136,7 +129,7 @@ ms.locfileid: "87081267"
 > 提供的 Azure HLF （azhlf）腳本僅協助示範/DevTest 案例。 此腳本所建立的通道和聯盟具有基本的 HLF 原則，可簡化示範/DevTest 案例。 針對生產環境設定，我們建議您使用原生 HLF Api，依據您的組織合規性需求來更新通道/聯盟 HLF 原則。
 
 
-所有執行 Azure HLF 腳本的命令都可以透過 Azure Bash 命令列來執行。 介面（CLI）。 您可以透過登入 Azure shell web 版本  ![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 選項，位於 Azure 入口網站的右上角。 在命令提示字元中，輸入 bash，然後輸入以切換至 bash CLI。
+所有執行 Azure HLF 腳本的命令都可以透過 Azure Bash 命令列來執行。 介面（CLI）。 您可以在   ![ Azure 入口網站右上角的 Azure Kubernetes Service 範本] 選項上，透過 Hyperledger Fabric 登入 Azure shell web 版本 ](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 。 在命令提示字元中，輸入 bash，然後輸入以切換至 bash CLI，或從 shell 工具列選擇*bash* 。
 
 如需詳細資訊，請參閱[Azure shell](../../cloud-shell/overview.md) 。
 
@@ -147,17 +140,17 @@ ms.locfileid: "87081267"
 
 ![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
 
-針對用戶端應用程式的初始設定，請遵循下列命令： 
+完成用戶端應用程式初始設定的各節： 
 
-1.  [下載用戶端應用程式檔](#download-client-application-files)
-2.  [設定環境變數](#setup-environment-variables)
-3.  [匯入組織連線設定檔、系統管理員使用者和 MSP](#import-organization-connection-profile-admin-user-identity-and-msp)
+1. 下載用戶端應用程式檔
+1. 設定環境變數
+1. 匯入組織連線設定檔、系統管理員使用者和 MSP
 
-完成初始設定之後，您可以使用用戶端應用程式來達成下列作業：  
+完成初始設定之後，請使用用戶端應用程式來達成下列作業：  
 
-- [通道管理命令](#channel-management-commands)
-- [聯盟管理命令](#consortium-management-commands)
-- [鏈碼管理命令](#chaincode-management-commands)
+- 通道管理
+- 聯盟管理
+- 鏈碼管理
 
 ### <a name="download-client-application-files"></a>下載用戶端應用程式檔
 
@@ -168,19 +161,16 @@ curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kuberne
 cd azhlfTool
 npm install
 npm run setup
-
 ```
-這些命令會從公用 GitHub 存放庫複製 Azure HLF 用戶端應用程式程式碼，然後再載入所有相依的 npm 套件。 成功執行命令之後，您可以在目前目錄中看到 node_modules 資料夾。 所有必要的套件都會載入 node_modules 資料夾中。
 
+這些命令會從公用 GitHub 存放庫複製 Azure HLF 用戶端應用程式程式碼，然後再載入所有相依的 npm 套件。 成功執行命令之後，您可以在目前目錄中看到 node_modules 資料夾。 所有必要的套件都會載入 node_modules 資料夾中。
 
 ### <a name="setup-environment-variables"></a>設定環境變數
 
 > [!NOTE]
 > 所有環境變數都遵循 Azure 資源命名慣例。
 
-
-**為排序者組織用戶端設定下列環境變數**
-
+#### <a name="set-environment-variables-for-orderer-organization-client"></a>設定排序者組織用戶端的環境變數
 
 ```bash
 ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
@@ -189,7 +179,8 @@ ORDERER_ORG_NAME=<ordererOrgName>
 ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-**針對對等組織用戶端設定下列環境變數**
+
+#### <a name="set-the-environment-variables-for-peer-organization-client"></a>設定對等組織用戶端的環境變數
 
 ```bash
 PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
@@ -202,7 +193,7 @@ CHANNEL_NAME=<channelName>
 > [!NOTE]
 > 根據聯盟中的對等組織數目，您可能需要重複執行對等命令，並據以設定環境變數。
 
-**設定下列環境變數，以設定 Azure 儲存體帳戶**
+#### <a name="set-the-environment-variables-for-setting-up-azure-storage-account"></a>設定環境變數以設定 Azure 儲存體帳戶
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -212,7 +203,7 @@ STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
 ```
 
-請遵循下列步驟來建立 Azure 儲存體帳戶。 如果您已經建立 Azure 儲存體帳戶，請略過下列步驟
+請使用下列步驟來建立 Azure 儲存體帳戶。 如果您已經建立 Azure 儲存體帳戶，請略過這些步驟。
 
 ```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
@@ -220,14 +211,14 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 ```
 
-請遵循下列步驟，在 Azure 儲存體帳戶中建立檔案共用。 如果您已經建立檔案共用，請略過下列步驟
+在 Azure 儲存體帳戶中，使用下列步驟來建立檔案共用。 如果您已經建立檔案共用，請略過下列步驟
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
 ```
 
-請遵循下列步驟來產生 Azure 檔案共用連接字串
+使用下列步驟來產生 Azure 檔案共用連接字串。
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
@@ -256,39 +247,13 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 ./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ```
 
-### <a name="channel-management-commands"></a>通道管理命令
-
-> [!NOTE]
-> 開始進行任何通道作業之前，請確定已完成用戶端應用程式的初始設定。  
-
-以下是兩個通道管理命令：
-
-1. [建立通道命令](#create-channel-command)
-2. [設定錨點對等命令](#setting-anchor-peers-command)
-
-
-#### <a name="create-channel-command"></a>建立通道命令
+### <a name="create-channel-command"></a>建立通道命令
 
 從排序者組織用戶端，發出命令以建立新的通道。 此命令將會建立一個通道，其中僅包含排序者組織。  
 
 ```bash
 ./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
-
-#### <a name="setting-anchor-peers-command"></a>設定錨點對等命令
-從對等組織用戶端，發出下列命令，以針對指定通道上的對等組織設定錨點對等。
-
->[!NOTE]
-> 執行此命令之前，請確定已使用聯盟管理命令在通道中新增對等組織。
-
-```bash
-./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
-```
-
-`<anchorPeersList>`這是要設定為錨點對等節點的空格分隔清單。 例如
-
-  - `<anchorPeersList>`如果您只想要將 peer1 節點設定為錨點對等，請設定為 "peer1"。
-  - `<anchorPeersList>`如果您想要將 peer1 和 peer3 節點設定為錨點對等，請設定為 "peer1" "peer3"。
 
 ### <a name="consortium-management-commands"></a>聯盟管理命令
 
@@ -324,6 +289,21 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 
 同樣地，若要在通道中新增更多對等組織，請根據所需的對等組織更新對等環境變數，並執行步驟1到4。
 
+### <a name="set-anchor-peers-command"></a>設定錨點對等命令
+
+從對等組織用戶端，發出命令以針對指定通道上的對等組織設定錨點對等。
+
+>[!NOTE]
+> 執行此命令之前，請確定已使用聯盟管理命令在通道中新增對等組織。
+
+```bash
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
+```
+
+`<anchorPeersList>`這是要設定為錨點對等節點的空格分隔清單。 例如
+
+  - `<anchorPeersList>`如果您只想要將 peer1 節點設定為錨點對等，請設定為 "peer1"。
+  - `<anchorPeersList>`如果您想要將 peer1 和 peer3 節點設定為錨點對等，請設定為 "peer1" "peer3"。
 
 ### <a name="chaincode-management-commands"></a>鏈碼管理命令
 
@@ -344,7 +324,7 @@ CC_VERSION=<chaincodeVersion>
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
 # CC_PATH contains the path where your chaincode is place.
-# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/chaincode/src/chaincode_example02/go”
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  

@@ -3,12 +3,12 @@ title: 從 VHD 檔案建立 Azure DevTest Labs 自訂映像 | Microsoft Docs
 description: 了解如何使用 Azure 入口網站在 Azure DevTest Labs 中從 VHD 檔案建立自訂映像
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ba627421a43a8e4e7f193ad96da09da8934d028c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cac812a9c38fc1dedfd31659a626b122f9527e63
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481267"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289402"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>從 VHD 檔案建立自訂映像
 
@@ -69,7 +69,7 @@ ms.locfileid: "85481267"
 
 ## <a name="related-blog-posts"></a>相關部落格文章
 
-- [自訂映像或公式？](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [自訂映像或公式？](./devtest-lab-faq.md#blog-post)
 - [在 Azure DevTest Labs 之間複製自訂映像](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>後續步驟

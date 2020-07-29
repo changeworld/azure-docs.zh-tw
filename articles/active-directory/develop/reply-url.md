@@ -4,17 +4,18 @@ description: 回覆 URL/重新導向 URl 限制
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 06/29/2019
+ms.date: 07/17/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: b7aefc54a20e23ae969750532e7e3bc824f69c56
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4fdeb0018e27a2557161b2ec1c4794d975403523
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725307"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311614"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>重新導向 URI/回覆 URL 限制
 
@@ -40,17 +41,34 @@ ms.locfileid: "83725307"
 在您新增至應用程式註冊的每個重新導向 URI 上，您最多可以使用 256 個字元。
 
 ## <a name="supported-schemes"></a>支援的配置
+
 Azure AD 應用程式模型現在可支援 HTTP 和 HTTPS 配置，適用於在任何組織的 Azure Active Directory (Azure AD) 租用戶者中登入 Microsoft 公司或學校帳戶的應用程式。 也就是，應用程式資訊清單中的 `signInAudience` 欄位會設定為 *AzureADMyOrg* 或 *AzureADMultipleOrgs*。 對於登入個人 Microsoft 帳戶和公司及學校帳戶的應用程式 (`signInAudience` 會設定為 *AzureADandPersonalMicrosoftAccount*)，只允許 HTTPS 配置。
 
 > [!NOTE]
 > 新的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗不允許開發人員在 UI 上使用 HTTP 配置來新增 URI。 只有透過應用程式資訊清單編輯器，才能為登入公司或學校帳戶的應用程式新增 HTTP URI。 未來，新的應用程式將無法在重新導向 URI 中使用 HTTP 配置。 不過，在重新導向 URI 中包含 HTTP 配置的舊有應用程式將會繼續運作。 開發人員必須在重新導向 URI 中使用 HTTPS 配置。
 
+## <a name="localhost-exceptions"></a>Localhost 例外狀況
+
+根據[RFC 8252 區段 8.3](https://tools.ietf.org/html/rfc8252#section-8.3)和[7.3](https://tools.ietf.org/html/rfc8252#section-7.3)，「回送」或「Localhost」重新導向 uri 有兩個特殊考慮：
+
+1. `http`URI 配置是可接受的，因為重新導向絕不會離開裝置。  這表示 `http://127.0.0.1/myApp` 是可接受的，也是 `https://127.0.0.1/myApp` 。 
+1. 由於原生應用程式通常需要暫時埠範圍，因此會忽略埠元件（例如 `:5001` 或 `:443` ），以符合重新導向 URI 的目的。  因此， `http://127.0.0.1:5000/MyApp` 和 `http://127.0.0.1:1234/MyApp` 兩者都符合 `http://127.0.0.1/MyApp``http://127.0.0.1:8080/MyApp`
+
+從開發的觀點來看，這表示幾件事：
+
+1. 請勿在只有埠不同的情況下註冊多個回復 Uri。  登入伺服器會任意挑選其中一個，並使用與該回復 URI 相關聯的行為（例如，它是否為 `web` 、 `native` 和 `spa` -類型重新導向）。
+1. 如果您需要在 localhost 上註冊多個重新導向 Uri，以便在開發期間測試不同的流程，請使用 URI 的*路徑*元件來區分它們。  `http://127.0.0.1/MyWebApp`不符合 `http://127.0.0.1/MyNativeApp` 。  
+1. 根據 RFC 指導方針，您不應該 `localhost` 在重新導向 URI 中使用。  相反地，請使用實際的回送 IP 位址- `127.0.0.1` 。 這可防止您的應用程式因設定錯誤的防火牆或重新命名的網路介面而中斷。
+
+>[!NOTE]
+> 目前不支援 IPv6 回送（ `[::1]` ）。  這會在日後新增。
+
 ## <a name="restrictions-using-a-wildcard-in-uris"></a>在 URI 中使用萬用字元的限制
 
-萬用字元 URI (例如 `https://*.contoso.com`) 很方便，但應該避免。 在重新導向 URI 中使用萬用字元會影響安全性。 根據 OAuth 2.0 規格 ([RFC 6749 的第 3.1.2 節](https://tools.ietf.org/html/rfc6749#section-3.1.2))，重新導向端點 URI 必須是絕對 URI。 
+萬用字元 URI (例如 `https://*.contoso.com`) 很方便，但應該避免。 在重新導向 URI 中使用萬用字元會影響安全性。 根據 OAuth 2.0 規格 ([RFC 6749 的第 3.1.2 節](https://tools.ietf.org/html/rfc6749#section-3.1.2))，重新導向端點 URI 必須是絕對 URI。
 
-針對設定為登入個人 Microsoft 帳戶和公司或學校帳戶的應用程式，Azure AD 應用程式模型不支援萬用字元 URI。 不過，現在已設定為在組織的 Azure AD 租用戶中登入公司或學校帳戶的應用程式中，則允許使用萬用字元 URI。 
- 
+針對設定為登入個人 Microsoft 帳戶和公司或學校帳戶的應用程式，Azure AD 應用程式模型不支援萬用字元 URI。 不過，現在已設定為在組織的 Azure AD 租用戶中登入公司或學校帳戶的應用程式中，則允許使用萬用字元 URI。
+
 > [!NOTE]
 > 新的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗不允許開發人員在 UI 上新增萬用字元 URI。 只有透過應用程式資訊清單編輯器，才能為登入公司或學校帳戶的應用程式新增萬用字元 URI。 未來，新的應用程式將無法在重新導向 URI 中使用萬用字元。 不過，在重新導向 URI 中包含萬用字元的舊有應用程式將會繼續運作。
 
@@ -58,7 +76,7 @@ Azure AD 應用程式模型現在可支援 HTTP 和 HTTPS 配置，適用於在�
 
 ### <a name="use-a-state-parameter"></a>使用狀態參數
 
-如果您有一些子網域，而且您的案例需要您在成功驗證時將使用者重新導向至其一開始的相同頁面，則使用狀態參數可能會很實用。 
+如果您有一些子網域，而且您的案例需要您在成功驗證時將使用者重新導向至其一開始的相同頁面，則使用狀態參數可能會很實用。
 
 在此方法中：
 

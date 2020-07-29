@@ -1,6 +1,6 @@
 ---
 title: 對 Azure 中的網路虛擬設備問題進行疑難排解 | Microsoft Docs
-description: 了解如何對 Azure 中的網路虛擬設備問題進行疑難排解。
+description: 針對 Azure 中的網路虛擬裝置（NVA）問題進行疑難排解，並驗證 NVA 設定的基本 Azure 平臺需求。
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 353ab1f15a6df8700a9abda22233dc052aa10095
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 112792d4ccee2be7f85e6a5a6c0caf64df9a019e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130700"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286065"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的網路虛擬設備問題
 

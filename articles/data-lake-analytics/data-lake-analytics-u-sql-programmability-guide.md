@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 80edafb9cffa43f7163c1b75c9faaaefbb97c616
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127412"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288936"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可程式性指南
 
@@ -125,7 +125,7 @@ REFERENCE ASSEMBLY MyDB.[MyAssembly];
 
 
 ### <a name="use-assembly-versioning"></a>使用組件版本控制
-U-SQL 目前使用 .Net Framework 4.5 版。 因此，請確定您自己的組件與該執行階段版本相容。
+目前，U-SQL 會使用 .NET Framework 版本4.7.2。 因此，請確定您自己的組件與該執行階段版本相容。
 
 如前面所述，U-SQL 會執行 64 位元 (x64) 格式的程式碼。 因此，請確定您的程式碼是編譯為可在 x64 上執行。 否則，您會得到如上所示的格式不正確錯誤。
 

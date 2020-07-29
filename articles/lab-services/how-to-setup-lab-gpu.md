@@ -5,11 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 63b7a8c58bb6d277233268ed4fc0bc870fdd337f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443395"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285997"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>使用 GPU 虛擬機器設定實驗室
 
@@ -31,7 +32,7 @@ ms.locfileid: "85443395"
 | ---- | ----- | --- | ----------- | 
 | 小型 GPU (計算) | -&nbsp;6個 &nbsp; 核心<br>-&nbsp;56 &nbsp; GB 的 &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |此大小最適合需要大量電腦的應用程式，例如人工智慧（AI）和深度學習。 |
 
-*視覺效果*GPU 大小適用于需要大量圖形的應用程式。  例如， [SolidWorks 工程類別類型](./class-type-solidworks.md)會顯示使用**小型 GPU （視覺效果）** 大小。  視覺效果 GPU 適用于這種類型的類別，因為學生會與 SolidWorks 3D 電腦輔助設計（CAD）環境互動，以建立穩固物件的模型並將其視覺化。
+*視覺效果*GPU 大小適用于需要大量圖形的應用程式。  例如， [SOLIDWORKS 工程類別類型](./class-type-solidworks.md)會顯示使用**小型 GPU （視覺效果）** 大小。  視覺效果 GPU 適用于這種類型的類別，因為學生會與 SOLIDWORKS 3D 電腦輔助設計（CAD）環境互動，以建立穩固物件的模型並將其視覺化。
 
 | 大小 | 核心 | RAM | 描述 | 
 | ---- | ----- | --- | ----------- | 
@@ -44,7 +45,7 @@ ms.locfileid: "85443395"
 ![「新實驗室」的螢幕擷取畫面，其中顯示 [安裝 GPU 驅動程式] 選項](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
 如上圖所示，預設會啟用此選項，以確保安裝*最新*的驅動程式適用于您所選取的 GPU 和映射類型。
-- 當您選取*計算*GPU 大小時，您的實驗室 vm 是由[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU 提供技術支援。  在此情況下，會安裝最新的[計算整合裝置架構（CUDA）](https://www.nvidia.com/object/io_69526.html)驅動程式，以啟用高效能運算。
+- 當您選取*計算*GPU 大小時，您的實驗室 vm 是由[NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU 提供技術支援。  在此情況下，會安裝最新的[計算整合裝置架構（CUDA）](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf)驅動程式，以啟用高效能運算。
 - 當您選取*視覺效果*GPU 大小時，您的實驗室 vm 是由[NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和[方格技術](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf)提供技術支援。  在此情況下，會安裝最新的方格驅動程式，這可讓您使用需要大量圖形的應用程式。
 
 ### <a name="install-the-drivers-manually"></a>手動安裝驅動程式
@@ -66,7 +67,7 @@ ms.locfileid: "85443395"
    d. 根據您在建立實驗室時選取的基底映射類型來設定**作業系統**。  
    e. 將**CUDA 工具**組設定為您所需的 CUDA 驅動程式版本。  
    f. 選取 [**搜尋**] 以尋找您的驅動程式。  
-   如 選取 [**下載**] 以下載安裝程式。  
+   g. 選取 [**下載**] 以下載安裝程式。  
    h. 執行安裝程式，以便將驅動程式安裝在範本 VM 上。  
 1. 遵循[驗證已安裝的驅動程式](how-to-setup-lab-gpu.md#validate-the-installed-drivers)一節中的指示，確認驅動程式已正確安裝。 
 1. 在您安裝了類別所需的驅動程式和其他軟體之後，請選取 [**發佈**] 來建立您的學生 vm。
@@ -112,7 +113,7 @@ ms.locfileid: "85443395"
 查看下列文章：
 
 - [建立和管理教室實驗室](how-to-manage-classroom-labs.md)
-- [SolidWorks 電腦輔助設計（CAD）類別類型](class-type-solidworks.md)
+- [SOLIDWORKS 電腦輔助設計（CAD）類別類型](class-type-solidworks.md)
 - [MATLAB （矩陣實驗室）類別類型](class-type-matlab.md)
 
 

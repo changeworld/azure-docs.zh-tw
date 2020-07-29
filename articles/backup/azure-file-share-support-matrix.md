@@ -4,26 +4,22 @@ description: 摘要說明備份 Azure 檔案共用時的支援設定和限制。
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: d0172ecab682b69f255eedb9270a6208b52dac45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7d01f0f64fd183204fb7617040325e7d1b6e553e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514540"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289504"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 檔案共用備份的支援矩陣
 
 您可以使用 [Azure 備份服務](./backup-overview.md)來備份 Azure 檔案共用。 本文將摘要說明使用 Azure 備份來備份 Azure 檔案共用時的支援設定與限制。
 
-## <a name="supported-regions"></a>支援區域
+## <a name="supported-regions"></a>支援的區域
 
 ### <a name="ga-regions-for-azure-file-shares-backup"></a>Azure 檔案共用備份的 GA 區域
 
 Azure 檔案共用備份適用于所有區域，**除了**：德國中部（主權）、德國東北部（主權）、中國東部、中國東部2、中國北部、中國北部2、US Gov 愛荷華州
-
-### <a name="supported-regions-for-accidental-delete-protection"></a>不小心刪除保護的支援區域
-
-美國中西部，澳大利亞中南部，加拿大中部，美國中西部，印度南部，美國中北部、日本東部、巴西南部、美國中南部、澳大利亞東部、美國東部、美國東部2
 
 ## <a name="supported-storage-accounts"></a>支援的儲存體帳戶
 

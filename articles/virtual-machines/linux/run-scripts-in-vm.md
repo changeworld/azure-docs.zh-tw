@@ -6,13 +6,13 @@ ms.service: virtual-machines-linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
-ms.topic: article
-ms.openlocfilehash: d40352d2110fa54ab699e41fa6d161d5c9ea4f4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.openlocfilehash: 0f91bb33116947312173d8f22929b8548d23a9ab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010507"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292276"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>在 Linux 虛擬機器中執行指令碼
 
@@ -63,7 +63,7 @@ ms.locfileid: "87010507"
 * 以本機使用者帳戶登入機器。
 * 無論機器的網路或作業系統狀態為何，需要存取虛擬機器時均可使用。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 深入了解可在虛擬機器中執行指令碼和命令的不同功能。
 

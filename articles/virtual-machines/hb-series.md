@@ -4,14 +4,15 @@ description: HB 系列 Vm 的規格。
 author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: b0ffd9af8df830c1bdacbfe3809d4086346679b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34fbc0683ac39429193f488f3ade289996a67fb4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678557"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291162"
 ---
 # <a name="hb-series"></a>HB 系列
 

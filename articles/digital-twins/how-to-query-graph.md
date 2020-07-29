@@ -7,15 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 93043874db6076b26d0fefe447db7acd83547442
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84725579"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337597"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖形
 
-本文深入探討如何使用[Azure 數位 Twins 查詢存放區語言](concepts-query-language.md)來查詢對應項[圖形](concepts-twins-graph.md)，以取得相關資訊。 您可以使用 Azure 數位 Twins[**查詢 api**](how-to-use-apis-sdks.md)在圖表上執行查詢。
+本文提供使用[Azure 數位 Twins 查詢存放區語言](concepts-query-language.md)查詢對應項[圖形](concepts-twins-graph.md)的範例和詳細資料，以取得相關資訊。 您可以使用 Azure 數位 Twins[**查詢 api**](how-to-use-apis-sdks.md)在圖表上執行查詢。
 
 ## <a name="query-syntax"></a>查詢語法
 
@@ -40,6 +41,52 @@ AND T.roomSize > 50
 
 > [!TIP]
 > 數位對應項的識別碼是使用 [中繼資料] 欄位進行查詢 `$dtId` 。
+
+### <a name="query-based-on-relationships"></a>以關聯性為基礎的查詢
+
+根據數位 twins 的關聯性進行查詢時，Azure 數位 Twins 查詢存放區語言會有特殊的語法。
+
+關聯性會提取至子句中的查詢範圍 `FROM` 。 與「傳統」 SQL 類型語言的差異在於，這個子句中的每個運算式 `FROM` 都不是資料表，而是由 `FROM` 子句來表示跨實體的關聯性，並使用的 Azure 數位 Twins 版本來撰寫 `JOIN` 。 
+
+回想一下，使用 Azure 數位 Twins[模型](concepts-models.md)功能時，關聯性不會與 Twins 分開存在。 這表示 Azure 數位 Twins 查詢存放區語言與 `JOIN` 一般 SQL 有點不同 `JOIN` ，因為此處的關聯性無法獨立查詢，且必須系結至對應項。
+為了併入這項差異， `RELATED` 子句中使用關鍵字 `JOIN` 來參考對應項的關聯性集合。 
+
+下一節提供幾個範例，說明這看起來的樣子。
+
+> [!TIP]
+> 在概念上，這項功能會模擬以檔為中心的 CosmosDB 功能， `JOIN` 可在檔內的子物件上執行。 CosmosDB 會使用 `IN` 關鍵字來指示，其 `JOIN` 目的是要在目前的內容檔中反復查看陣列元素。
+
+#### <a name="relationship-based-query-examples"></a>以關聯性為基礎的查詢範例
+
+若要取得包含關聯性的資料集，請使用單一 `FROM` 語句，後面接著 N `JOIN` 個語句，其中的 `JOIN` 語句會在前一個或語句的結果上表示關聯性 `FROM` `JOIN` 。
+
+以下是以關聯性為基礎的範例查詢。 此程式碼片段會選取*ID*屬性為 ' ABC ' 的所有數位 twins，以及透過*contains*關聯性與這些數位 twins 相關的所有數位 twins。 
+
+```sql
+SELECT T, CT
+FROM DIGITALTWINS T
+JOIN CT RELATED T.contains
+WHERE T.$dtId = 'ABC' 
+```
+
+>[!NOTE] 
+> 開發人員不需要將此 `JOIN` 值與子句中的索引鍵值相互關聯 `WHERE` （或指定以內嵌方式定義的索引鍵值 `JOIN` ）。 此相互關聯是由系統自動計算，因為關聯性屬性本身會識別目標實體。
+
+#### <a name="query-the-properties-of-a-relationship"></a>查詢關聯性的屬性
+
+類似于數位 twins 具有透過 DTDL 描述之屬性的方式，關聯性也可以具有屬性。 Azure 數位 Twins 查詢存放區語言會藉由將別名指派給子句內的關聯性，來篩選和投射關聯性 `JOIN` 。 
+
+例如，假設有一個具有*reportedCondition*屬性的*servicedBy*關聯性。 在下列查詢中，會為此關聯性提供 ' R ' 的別名，以便參考其屬性。
+
+```sql
+SELECT T, SBT, R
+FROM DIGITALTWINS T
+JOIN SBT RELATED T.servicedBy R
+WHERE T.$dtId = 'ABC' 
+AND R.reportedCondition = 'clean'
+```
+
+在上述範例中，請注意*reportedCondition*是*servicedBy*關聯性本身的屬性（而不是具有*servicedBy*關聯性的數位對應項）。
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 呼叫執行查詢
 
@@ -75,53 +122,7 @@ catch (RequestFailedException e)
 }
 ```
 
-## <a name="query-based-on-relationships"></a>以關聯性為基礎的查詢
-
-根據數位 twins 的關聯性進行查詢時，Azure 數位 Twins 查詢存放區語言會有特殊的語法。
-
-關聯性會提取至子句中的查詢範圍 `FROM` 。 與「傳統」 SQL 類型語言的差異在於，這個子句中的每個運算式 `FROM` 都不是資料表，而是由 `FROM` 子句來表示跨實體的關聯性，並使用的 Azure 數位 Twins 版本來撰寫 `JOIN` 。 
-
-回想一下，使用 Azure 數位 Twins[模型](concepts-models.md)功能時，關聯性不會與 Twins 分開存在。 這表示 Azure 數位 Twins 查詢存放區語言與 `JOIN` 一般 SQL 有點不同 `JOIN` ，因為此處的關聯性無法獨立查詢，且必須系結至對應項。
-為了併入這項差異， `RELATED` 子句中使用關鍵字 `JOIN` 來參考對應項的關聯性集合。 
-
-下一節提供幾個範例，說明這看起來的樣子。
-
-> [!TIP]
-> 在概念上，這項功能會模擬以檔為中心的 CosmosDB 功能， `JOIN` 可在檔內的子物件上執行。 CosmosDB 會使用 `IN` 關鍵字來指示，其 `JOIN` 目的是要在目前的內容檔中反復查看陣列元素。
-
-### <a name="relationship-based-query-examples"></a>以關聯性為基礎的查詢範例
-
-若要取得包含關聯性的資料集，請使用單一 `FROM` 語句，後面接著 N `JOIN` 個語句，其中的 `JOIN` 語句會在前一個或語句的結果上表示關聯性 `FROM` `JOIN` 。
-
-以下是以關聯性為基礎的範例查詢。 此程式碼片段會選取*ID*屬性為 ' ABC ' 的所有數位 twins，以及透過*contains*關聯性與這些數位 twins 相關的所有數位 twins。 
-
-```sql
-SELECT T, CT
-FROM DIGITALTWINS T
-JOIN CT RELATED T.contains
-WHERE T.$dtId = 'ABC' 
-```
-
->[!NOTE] 
-> 開發人員不需要將此 `JOIN` 值與子句中的索引鍵值相互關聯 `WHERE` （或指定以內嵌方式定義的索引鍵值 `JOIN` ）。 此相互關聯是由系統自動計算，因為關聯性屬性本身會識別目標實體。
-
-### <a name="query-the-properties-of-a-relationship"></a>查詢關聯性的屬性
-
-類似于數位 twins 具有透過 DTDL 描述之屬性的方式，關聯性也可以具有屬性。 Azure 數位 Twins 查詢存放區語言會藉由將別名指派給子句內的關聯性，來篩選和投射關聯性 `JOIN` 。 
-
-例如，假設有一個具有*reportedCondition*屬性的*servicedBy*關聯性。 在下列查詢中，會為此關聯性提供 ' R ' 的別名，以便參考其屬性。
-
-```sql
-SELECT T, SBT, R
-FROM DIGITALTWINS T
-JOIN SBT RELATED T.servicedBy R
-WHERE T.$dtId = 'ABC' 
-AND R.reportedCondition = 'clean'
-```
-
-在上述範例中，請注意*reportedCondition*是*servicedBy*關聯性本身的屬性（而不是具有*servicedBy*關聯性的數位對應項）。
-
-### <a name="query-limitations"></a>查詢限制
+## <a name="query-limitations"></a>查詢限制
 
 在查詢中反映實例的變更之前，可能會有最多10秒的延遲。 例如，如果您使用選取 API 完成建立或刪除 twins 之類的作業，結果可能不會立即反映在查詢 API 要求中。 等待短時間應該就足以解決。
 

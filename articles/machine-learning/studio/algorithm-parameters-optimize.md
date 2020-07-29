@@ -1,6 +1,5 @@
 ---
-title: 將演算法最佳化
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio （傳統）：優化演算法-Azure
 description: 說明如何為 Azure Machine Learning Studio （傳統）中的演算法選擇最佳的參數集。
 services: machine-learning
 ms.service: machine-learning
@@ -10,13 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 52853bb14b49d429100dabeffc46661289f55c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc0e003e7c767fb3441e26787f5687473ac51f44
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711199"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292965"
 ---
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>選擇參數來最佳化 Azure Machine Learning Studio (傳統) 中的演算法
+# <a name="choose-parameters-to-optimize-your-algorithms-in-machine-learning-studio-classic"></a>選擇參數以優化 Machine Learning Studio 中的演算法（傳統）
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
 
 本主題描述如何為 Azure Machine Learning Studio （傳統）中的演算法選擇正確的超參數集。 大部分的機器學習服務演算法都會有需要設定的參數。 當您訓練一個模型時，必須提供這些參數的值。 訓練過的模型效率會依據所選擇的模型參數而定。 找出最佳參數集的過程稱為*模型選擇*。
 

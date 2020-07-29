@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d75e7e7b4870f46c978fd70039441c8851844082
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81258451"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337954"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>將 MXChip IoT DevKit 連線到 Azure IoT 遠端監視解決方案加速器
 
@@ -133,7 +134,5 @@ DevKit 會重新開機，然後開始執行程式碼。
 您已了解如何將 DevKit 裝置連線至 Azure IoT 遠端監視解決方案加速器並將感應器資料視覺化，以下是建議的後續步驟：
 
 * [Azure IoT 解決方案加速器概觀](https://docs.microsoft.com/azure/iot-suite/)
-
-* [將 MXChip IoT DevKit 裝置連線到您的 Azure IoT Central 應用程式](/azure/iot-central/core/howto-connect-devkit)
 
 * [IoT 開發人員套件](https://microsoft.github.io/azure-iot-developer-kit/) 

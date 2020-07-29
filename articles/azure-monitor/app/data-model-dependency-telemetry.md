@@ -4,15 +4,16 @@ description: 相依性遙測的 Application Insights 資料模型
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77671914"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87315966"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>相依性遙測：Application Insights 資料模型
 
-相依性遙測 (在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中) 代表受監視元件與遠端元件 (例如 SQL 或 HTTP 端點) 的互動。
+相依性遙測 (在 [Application Insights](./app-insights-overview.md) 中) 代表受監視元件與遠端元件 (例如 SQL 或 HTTP 端點) 的互動。
 
 ## <a name="name"></a>Name
 
@@ -20,7 +21,7 @@ ms.locfileid: "77671914"
 
 ## <a name="id"></a>識別碼
 
-相依性呼叫執行個體的識別碼。 用來與此相依性呼叫的對應要求遙測項目相互關聯。 如需詳細資訊，請參閱[相互關聯](../../azure-monitor/app/correlation.md)頁面。
+相依性呼叫執行個體的識別碼。 用來與此相依性呼叫的對應要求遙測項目相互關聯。 如需詳細資訊，請參閱[相互關聯](./correlation.md)頁面。
 
 ## <a name="data"></a>資料
 
@@ -32,7 +33,7 @@ ms.locfileid: "77671914"
 
 ## <a name="target"></a>目標
 
-相依性呼叫的目標網站。 範例為伺服器名稱、主機位址。 如需詳細資訊，請參閱[相互關聯](../../azure-monitor/app/correlation.md)頁面。
+相依性呼叫的目標網站。 範例為伺服器名稱、主機位址。 如需詳細資訊，請參閱[相互關聯](./correlation.md)頁面。
 
 ## <a name="duration"></a>Duration
 
@@ -42,7 +43,7 @@ ms.locfileid: "77671914"
 
 相依性呼叫的結果碼。 範例為 SQL 錯誤碼與 HTTP 狀態碼。
 
-## <a name="success"></a>成功
+## <a name="success"></a>Success
 
 表示成功或失敗的呼叫。
 
@@ -57,8 +58,9 @@ ms.locfileid: "77671914"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 設定 [.NET](../../azure-monitor/app/asp-net-dependencies.md) 的相依性追蹤。
-- 設定 [Java](../../azure-monitor/app/java-agent.md) 的相依性追蹤。
-- [撰寫自訂相依性遙測](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
+- 設定 [.NET](./asp-net-dependencies.md) 的相依性追蹤。
+- 設定 [Java](./java-agent.md) 的相依性追蹤。
+- [撰寫自訂相依性遙測](./api-custom-events-metrics.md#trackdependency)
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](data-model.md)。
-- 查看 Application Insights 支援的[平台](../../azure-monitor/app/platforms.md)。
+- 查看 Application Insights 支援的[平台](./platforms.md)。
+

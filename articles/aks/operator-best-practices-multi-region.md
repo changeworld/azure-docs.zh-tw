@@ -1,22 +1,22 @@
 ---
 title: AKS 商務持續性和嚴重損壞修復的最佳做法
-description: 瞭解叢集操作員的最佳作法，為您的應用程式達到最大執行時間，在 Azure Kubernetes Service (AKS) 中提供高可用性和準備嚴重損壞修復。
+description: 瞭解叢集操作員的最佳作法，為您的應用程式達到最大執行時間，提供高可用性，並在 Azure Kubernetes Service （AKS）中準備損毀修復。
 services: container-service
 author: lastcoolnameleft
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251191"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285861"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>因應 Azure Kubernetes Service (AKS) 中商務持續性和災害復原的最佳做法
 
-當您在管理 Azure Kubernetes Service (AKS) 中的叢集時，應用程式的執行時間會變得很重要。 根據預設，AKS 會在[虛擬機器擴展集](../virtual-machine-scale-sets/overview.md)內使用多個節點來提供高可用性， (VMSS) 。 但是，這些多個節點不會保護您的系統免于區域失敗。 為了充分發揮您的執行時間，請事先規劃以維持商務持續性，並準備嚴重損壞修復。
+當您在管理 Azure Kubernetes Service (AKS) 中的叢集時，應用程式的執行時間會變得很重要。 根據預設，AKS 會使用[虛擬機器擴展集（VMSS）](../virtual-machine-scale-sets/overview.md)中的多個節點來提供高可用性。 但是，這些多個節點不會保護您的系統免于區域失敗。 為了充分發揮您的執行時間，請事先規劃以維持商務持續性，並準備嚴重損壞修復。
 
 本文著重于如何規劃 AKS 中的商務持續性和嚴重損壞修復。 您會了解如何：
 
@@ -57,9 +57,9 @@ AKS 區域可用性和配對區域是共同考慮。 請將 AKS 叢集部署到�
 
 如需有關如何設定端點和路由的詳細資訊，請參閱[使用流量管理員設定地理流量路由方法](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)。
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>第7層應用程式路由與 Azure Front 服務
+### <a name="application-routing-with-azure-front-door-service"></a>使用 Azure Front 服務進行應用程式路由
 
-流量管理員使用 DNS (第3層) 來塑造流量。 [Azure Front 開門服務](../frontdoor/front-door-overview.md)提供 HTTP/HTTPS (第7層) 路由選項。 Azure 前門服務的其他功能包括 TLS 終止、自訂網域、web 應用程式防火牆、URL 重寫和會話親和性。 請檢閱應用程式流量的需求，以了解哪一種解決方案最合適。
+使用分割 TCP 型的任意傳播通訊協定， [Azure Front 開門服務](../frontdoor/front-door-overview.md)可確保您的終端使用者立即連線到最接近的前門 POP （目前狀態點）。 Azure 前門服務的其他功能包括 TLS 終止、自訂網域、web 應用程式防火牆、URL 重寫和會話親和性。 請檢閱應用程式流量的需求，以了解哪一種解決方案最合適。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>具有全域虛擬網路對等互連的相互連接區域
 
@@ -87,7 +87,7 @@ AKS 區域可用性和配對區域是共同考慮。 請將 AKS 叢集部署到�
 
 ## <a name="remove-service-state-from-inside-containers"></a>從容器內移除服務狀態
 
-**最佳做法**：可能的話，請勿將服務狀態儲存在容器內。 相反地，請使用 Azure 平臺即服務， (支援多區域複寫的 PaaS) 。
+**最佳做法**：可能的話，請勿將服務狀態儲存在容器內。 相反地，請使用支援多區域複寫的 Azure 平臺即服務（PaaS）。
 
 *服務狀態*是指服務正常運作所需的記憶體中或磁片上的資料。 狀態包括服務會讀取及寫入的資料結構和成員變數。 根據服務的架構方式而定，狀態也可能包含檔案或儲存在磁片上的其他資源。 例如，狀態可能包括資料庫用來儲存資料和交易記錄檔的檔案。
 
