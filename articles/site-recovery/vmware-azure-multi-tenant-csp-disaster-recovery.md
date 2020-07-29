@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60460979"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292845"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用雲端解決方案提供者 (CSP) 方案在多租用戶環境中設定 VMware 災害復原
 
-[CSP 計畫](https://partner.microsoft.com/en-US/cloud-solution-provider)會針對 Microsoft 雲端服務 (包括 Office 365、Enterprise Mobility Suite 和 Microsoft Azure) 樹立雙贏的案例。 藉由 CSP，合作夥伴全面掌握與客戶的端對端關係，並且成為主要的關係連絡窗口。 合作夥伴可以為客戶部署 Azure 訂用帳戶，並將這些訂用帳戶與他們自己的加值自訂供應項目結合。
+[CSP 計畫](https://partner.microsoft.com/cloud-solution-provider)會針對 Microsoft 雲端服務 (包括 Office 365、Enterprise Mobility Suite 和 Microsoft Azure) 樹立雙贏的案例。 藉由 CSP，合作夥伴全面掌握與客戶的端對端關係，並且成為主要的關係連絡窗口。 合作夥伴可以為客戶部署 Azure 訂用帳戶，並將這些訂用帳戶與他們自己的加值自訂供應項目結合。
 
 使用 [Azure Site Recovery](site-recovery-overview.md)，身為合作夥伴的您可以直接透過 CSP 管理客戶的災害復原。 或者，您可以使用 CSP 設定 Site Recovery 環境，並讓客戶藉由自助服務的方式管理自己的災害復原需求。 在這兩種情況下，合作夥伴是 Site Recovery 與客戶之間的連絡窗口。 合作夥伴負責維護客戶關係，以及向客戶收取 Site Recovery 使用量的費用。
 

@@ -7,11 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
-ms.openlocfilehash: 73aeef24fde9fe58b89f1aa7789970e77e985d50
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9950951ab5189c8c7b72de78bca9465ec5f22748
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834827"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290589"
 ---
 # <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 來監視、建立及管理 Salesforce 資源
 
@@ -59,7 +60,7 @@ ms.locfileid: "83834827"
 
 ## <a name="get-support"></a>取得支援
 
-* 如有任何問題，請造訪 [Microsoft 的 Azure Logic Apps 問與答頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)。
+* 如有任何問題，請造訪 [Microsoft 的 Azure Logic Apps 問與答頁面](/answers/topics/azure-logic-apps.html)。
 * 若要提交或票選功能構想，請造訪 [Logic Apps 使用者意見反應網站](https://aka.ms/logicapps-wish)。
 
 ## <a name="next-steps"></a>後續步驟

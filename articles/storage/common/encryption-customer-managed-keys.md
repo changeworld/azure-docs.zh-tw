@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: d53818c91d32bc7435d1328c2ae73a8eb3172cd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: af70b1746b2ac847d964975aaf1b2186aa89be01
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029785"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292733"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>搭配 Azure Key Vault 使用客戶管理的金鑰來管理 Azure 儲存體加密
 
@@ -70,7 +70,7 @@ ms.locfileid: "87029785"
 
 Azure 儲存體加密支援 RSA 和 RSA-大小為2048、3072和4096的 HSM 金鑰。 如需金鑰的詳細資訊，請參閱[關於 Azure Key Vault 金鑰、秘密和憑證](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)中的**Key Vault 金鑰**。
 
-使用 Azure Key Vault 具有相關聯的成本。 如需詳細資訊，請參閱[Key Vault 定價](/pricing/details/key-vault/)。
+使用 Azure Key Vault 具有相關聯的成本。 如需詳細資訊，請參閱[Key Vault 定價](https://azure.microsoft.com/pricing/details/key-vault/)。
 
 ## <a name="rotate-customer-managed-keys"></a>輪替客戶管理的金鑰
 

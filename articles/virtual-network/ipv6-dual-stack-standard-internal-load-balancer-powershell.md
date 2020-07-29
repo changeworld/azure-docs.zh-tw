@@ -13,19 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
-ms.openlocfilehash: 67bc7994d2628790e84d3b3752f894a36486ca86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c224332eec31b343bdc53564ef4075a0620ac340
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707509"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289569"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>使用 Azure 中的標準內部 Load Balancer 部署 IPv6 雙重堆疊應用程式-PowerShell （預覽）
 
 本文說明如何在 Azure 中部署雙重堆疊（IPv4 + IPv6）應用程式，其中包含雙重堆疊虛擬網路和子網、具有雙重（IPv4 + IPv6）前端設定的標準內部 Load Balancer、具有雙 IP 設定的 Nic、網路安全性群組和公用 Ip。
-
-> [!Important]
-> Azure 虛擬網路的 IPv6 支援目前處於公開預覽狀態。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 建立具備 IPv6 功能之內部 Load Balancer 的程式，與建立網際網路對向 IPv6 Load Balancer 的程式幾乎完全相同，如[這裡](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)所述。 建立內部負載平衡器的唯一差異在於前端設定，如下列 PowerShell 範例所示：
 
@@ -46,7 +43,7 @@ ms.locfileid: "84707509"
 
 如果您選擇在本機安裝和使用 PowerShell，本文會要求使用 Azure PowerShell 模組 6.9.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 在 Azure 中部署雙重堆疊應用程式之前，您必須使用下列 Azure PowerShell 來設定此預覽功能的訂用帳戶：
 
 如下所示進行註冊：

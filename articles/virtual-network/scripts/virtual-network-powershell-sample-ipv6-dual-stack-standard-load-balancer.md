@@ -1,7 +1,7 @@
 ---
 title: Azure PowerShell 腳本範例-使用 Standard Load Balancer 設定 IPv6 前端（預覽）
 titlesuffix: Azure Virtual Network
-description: 在 Azure 中使用 Powershell 啟用 IPv6 端點虛擬網路
+description: 瞭解如何在具有 Standard Load Balancer 的虛擬網路腳本範例中設定 IPv6 前端。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 2de93f66bdb2647bcc612322d90eb9197e0ad63e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24057c494d76cf9435ed60ecf2a13db4eab36fbf
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068673"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291900"
 ---
 # <a name="configure-ipv6-frontend-in-virtual-network-script-sample-with-standard-load-balancerpreview"></a>使用 Standard Load Balancer 在虛擬網路中設定 IPv6 前端腳本範例（預覽）
 
@@ -26,7 +26,7 @@ ms.locfileid: "87068673"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 在 Azure 中部署雙重堆疊應用程式之前，您必須使用下列 Azure PowerShell，只為此預覽功能設定訂用帳戶一次：
 
 如下所示進行註冊：

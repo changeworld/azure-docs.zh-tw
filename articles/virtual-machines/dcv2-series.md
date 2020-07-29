@@ -4,15 +4,15 @@ description: DC 系列 VM 的規格。
 author: susaxen
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 88aaa10bf84d0195cc22d11d7fa1cfdcd639d475
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c5074a81625f38cf94d5acd9751414bad4a9c3e8
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207437"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292462"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -47,7 +47,7 @@ DCv2 系列可協助在公用雲端處理資料與程式碼時，保護其機密
 
 
 
-## <a name="other-sizes"></a>其他大小
+## <a name="other-sizes-and-information"></a>其他大小和資訊
 
 - [一般用途](sizes-general.md)
 - [記憶體最佳化](sizes-memory.md)
@@ -55,6 +55,10 @@ DCv2 系列可協助在公用雲端處理資料與程式碼時，保護其機密
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
+
+定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+
+磁片類型的詳細資訊：[磁片類型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
 
 ## <a name="next-steps"></a>後續步驟
 

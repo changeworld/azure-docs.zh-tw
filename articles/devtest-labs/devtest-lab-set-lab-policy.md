@@ -3,12 +3,12 @@ title: 在 Azure DevTest Labs 中管理實驗室原則 | Microsoft Docs
 description: 了解如何定義實驗室原則，例如 VM 大小、每位使用者的 VM 數目上限，以及自動關機。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 95d91cfc70d603187543e308d2b1355c549c88f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab2e2b1905a515d3a85339099f02d93d8e5c0424
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483392"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290423"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中管理實驗室的所有原則
 
@@ -70,7 +70,7 @@ Azure DevTest Labs 讓您管理每個實驗室的原則 (設定)，以控制實�
 
 1. 對於在指定的自動關機時間之前 15 分鐘傳送通知的選項中，指定 [是]**** 或 [否]****。 如果您選擇 [是]****，請輸入 Webhook URL 端點或電子郵件地址，指定您要在哪裡張貼或傳送通知。 使用者會收到通知並取得延後關機的選項。
 
-   如需 webhook 的詳細資訊，請參閱[建立 webhook 或 API Azure 函式](../azure-functions/functions-create-a-web-hook-or-api-function.md)。 
+   如需 webhook 的詳細資訊，請參閱[建立 webhook 或 API Azure 函式](../azure-functions/functions-bindings-http-webhook.md)。 
 
 1. 選取 [儲存]。
 
@@ -129,4 +129,3 @@ Azure DevTest Labs 讓您管理每個實驗室的原則 (設定)，以控制實�
 * [建立自訂映像](devtest-lab-create-template.md) - 當您建立 VM 時，您要指定一個基本映像，它可以是自訂映像或 Marketplace 映像。 本文會示範如何從 VHD 檔案建立自訂的映像。
 * [設定 Marketplace 映像](devtest-lab-configure-marketplace-images.md) - Azure DevTest Labs 支援根據 Azure Marketplace 映像建立 VM。 本文會示範在實驗室中建立 VM 時，如何指定可以使用哪些 Azure Marketplace 映像 (如果有的話)。
 * [在實驗室中建立 VM](devtest-lab-add-vm.md) - 示範如何從基本映像 (自訂或 Marketplace) 建立 VM，以及如何使用 VM 中的構件。
-

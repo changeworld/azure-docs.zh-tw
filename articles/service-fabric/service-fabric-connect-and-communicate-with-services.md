@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: a873a32aa8c12b535c06711ea7dc7a4aa920a27f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5081ad813d871db0f60284bca4a0c53ee5bbf6b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257772"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287753"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>連接至 Service Fabric 中的服務並與其進行通訊
 在 Service Fabric 中，服務會在 Service Fabric 叢集中的某處執行，通常是分散到多個 VM。 它可以由服務擁有者或是 Service Fabric 自動從某個位置移到其他位置。 服務無法以靜態方式繫結至特定電腦或位址。
@@ -58,7 +58,7 @@ Service Fabric 提供稱為「命名服務」的探索和解析服務。 「命�
 如需有關如何使用反向 Proxy 服務的詳細資訊，請參閱 [Azure Service Fabric 中的反向 Proxy](service-fabric-reverseproxy.md) 一文。
 
 ## <a name="connections-from-external-clients"></a>從外部用戶端連接
-叢集內彼此連接的服務通常可以直接存取其他服務的端點，因為叢集中的節點位於相同的本機網路上。 但是，在相同的環境中，叢集可能會位於負載平衡器後方，該負載平衡器會透過有限制的一組連接埠路由傳送外部輸入流量。 在這些情況下，服務仍然可以使用「命名服務」，彼此進行通訊及解析位址，但是必須採取額外的步驟，讓外部用戶端連接至服務。
+叢集內彼此連接的服務通常可以直接存取其他服務的端點，因為叢集中的節點位於相同的本機網路上。 不過，在某些環境中，叢集可能會在負載平衡器後方，透過一組有限的埠來路由輸入流量。 在這些情況下，服務仍然可以使用「命名服務」，彼此進行通訊及解析位址，但是必須採取額外的步驟，讓外部用戶端連接至服務。
 
 ## <a name="service-fabric-in-azure"></a>Azure 中的 Service Fabric
 Azure 中的 Service Fabric 叢集位於 Azure 負載平衡器後方。 到叢集的所有外部流量必須經過負載平衡器。 負載平衡器會自動將指定連接埠上的輸入流量轉送至具有相同的開啟連接埠的隨機「節點」 ** 。 Azure Load Balancer 只會知道「節點」** 上開啟的連接埠，它不知道由個別「服務」** 開啟的連接埠。

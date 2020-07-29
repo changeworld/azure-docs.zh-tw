@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: a7822d6ea46b7efc21f43e944d0a96f609df389a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 242e2a2bf743777dd43a4c84194ebd894b5edd3c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84892526"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290410"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 在 Azure DevTest Labs 的實驗室中建立自訂角色
 
@@ -46,6 +46,6 @@ ms.locfileid: "84892526"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/)。
 
 您可以在 [Azure 實驗室服務 PowerShell 範例](../samples-powershell.md)中找到其他的 Azure 實驗室服務 PowerShell 指令碼範例。

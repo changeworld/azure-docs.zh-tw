@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 01ac6ccbc2789d2052bab07e2da51630b6dbf581
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 834083b0f472de6ac1fd157ee966ebb021286cff
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79537154"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290184"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>適用於 MySQL 的 Azure 資料庫進階威脅防護
 
@@ -20,7 +20,7 @@ ms.locfileid: "79537154"
 > [!NOTE]
 > 先進的威脅防護處於公開預覽狀態。
 
-「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 您可以透過[Azure 入口網站](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)來存取和管理「先進的威脅防護」。 這項功能適用于一般用途和記憶體優化的伺服器。
+「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 您可以透過[Azure 入口網站](https://portal.azure.com)或使用[REST API](/rest/api/mysql)來存取和管理「先進的威脅防護」。 這項功能適用于一般用途和記憶體優化的伺服器。
 
 > [!NOTE]
 > 下列 Azure Government 和主權雲端區域**無法**使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。

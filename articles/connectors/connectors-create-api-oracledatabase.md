@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/20/2020
 tags: connectors
-ms.openlocfilehash: f4bca70fbec5cf847a6bb5c0b97ed3496d6c2f8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 988d1efd348fe8e85dd33fbe35cc8dc9362c081b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039998"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290611"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>開始使用 Oracle Database 連接器
 
@@ -122,10 +122,11 @@ ms.locfileid: "87039998"
 
 ## <a name="get-some-help"></a>取得協助
 
-若要提出問題、回答問題及了解其他 Logic Apps 使用者的近況，[Microsoft 的 Azure Logic Apps 問與答頁面](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)是最好的地方。 
+若要提出問題、回答問題及了解其他 Logic Apps 使用者的近況，[Microsoft 的 Azure Logic Apps 問與答頁面](/answers/topics/azure-logic-apps.html)是最好的地方。 
 
 您可以投票並在 [https://aka.ms/logicapps-wish](https://aka.ms/logicapps-wish) 中提交意見，協助改善 Logic Apps 和連接器。 
 
 
 ## <a name="next-steps"></a>後續步驟
 [建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)，並到 [API 清單](apis-list.md)探索 Logic Apps 中其他可用的連接器。
+

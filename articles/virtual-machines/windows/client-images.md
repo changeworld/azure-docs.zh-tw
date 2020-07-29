@@ -4,16 +4,16 @@ description: 如何使用 Visual Studio 訂用帳戶權益，在 Azure 中部署
 author: cynthn
 ms.subservice: imaging
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: e0853b08ced0b9ca328d5e7f506ca54299aebeee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 26bfd9a65cd3e6d36b8190e87d382543cc7f0f60
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028187"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292047"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>在 Azure 中使用 Windows 用戶端進行開發/測試案例
 假設您有適當的 Visual Studio (先前稱為 MSDN) 訂閱，您可以在 Azure 中使用 Windows 7、Windows 8 或 Windows 10 企業版(x64) 進行開發/測試案例。 這篇文章概述在 Azure 中執行 Windows 7、Windows 8.1、Windows 10 企業版和使用下列「Azure 資源庫」映像的資格需求。
@@ -57,5 +57,5 @@ ms.locfileid: "87028187"
 
 ![Azure 帳戶入口網站中的供應項目識別碼詳細資料](./media/client-images/offer-id-azure-account-portal.png) 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 您現在可以使用 [PowerShell](quick-create-powershell.md)、[Resource Manager templates](ps-template.md) 或 [Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) 來部署您的 VM。

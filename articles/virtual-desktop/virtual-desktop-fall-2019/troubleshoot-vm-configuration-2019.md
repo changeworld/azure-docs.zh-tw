@@ -1,6 +1,6 @@
 ---
-title: 疑難排解 Windows 虛擬桌面工作階段主機秋季 2019-Azure
-description: 如何解決在設定 Windows 虛擬桌面工作階段主機虛擬機器時的問題。
+title: 針對 Windows 虛擬桌面（傳統）工作階段主機進行疑難排解-Azure
+description: 如何解決當您設定 Windows 虛擬桌面（傳統）工作階段主機虛擬機器時的問題。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b2f4a288ab83ca9f20434c55a180c2d9b30be5d4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0155c9cf6b5d9df8a6a8831896093c4c6b074cd6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527654"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291262"
 ---
-# <a name="troubleshoot-session-host-virtual-machine-configuration"></a>針對工作階段主機虛擬機器設定進行疑難排解
+# <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows 虛擬桌面（傳統）工作階段主機虛擬機器設定
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-vm-configuration.md)。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-vm-configuration.md)。
 
 使用本文來針對設定 Windows 虛擬桌面工作階段主機虛擬機器（Vm）時所發生的問題進行疑難排解。
 

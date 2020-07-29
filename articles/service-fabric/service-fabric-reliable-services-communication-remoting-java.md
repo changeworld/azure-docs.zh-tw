@@ -4,13 +4,14 @@ description: Service Fabric 遠端處理可讓用戶端和服務使用遠端程�
 author: PavanKunapareddyMSFT
 ms.topic: conceptual
 ms.date: 06/30/2017
+ms.custom: devx-track-java
 ms.author: pakunapa
-ms.openlocfilehash: 2942c015ba9265d7f2c597ced2321a7789c28576
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d53d20510db70d81aab796efab48de40c880bb3a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253384"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87316119"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>使用 Reliable Services 在 Java 中進行服務遠端處理
 > [!div class="op_single_selector"]

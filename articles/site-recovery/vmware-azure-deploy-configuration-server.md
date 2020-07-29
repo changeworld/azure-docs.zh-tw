@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 9d6b912229b1365dd7bd8d466af18d1e81b5aa8e
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132156"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287741"
 ---
 # <a name="deploy-a-configuration-server"></a>部署設定伺服器
 
@@ -26,7 +26,7 @@ ms.locfileid: "86132156"
 
 設定伺服器必須設定為具有特定最低硬體和大小需求的高可用性 VMware VM。 為了方便且輕鬆地部署，Site Recovery 提供可下載的開放式虛擬化應用程式（OVA）範本，以設定符合此處所列所有規定需求的設定伺服器。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 下列各節將摘要說明設定伺服器的最低硬體需求。
 
@@ -66,7 +66,7 @@ ms.locfileid: "86132156"
 
 ## <a name="import-the-template-in-vmware"></a>在 VMware 中匯入範本
 
-1. 使用 VMWare vSphere 用戶端，登入 VMware vCenter 伺服器或 vSphere ESXi 主機。
+1. 使用 VMware vSphere 用戶端登入 VMware vCenter server 或 vSphere ESXi 主機。
 2. **在 [檔案] 功能表上**，選取 [**部署 OVF 範本**] 以啟動 [**部署 OVF 範本**]。
 
      ![部署 OVF 範本](./media/vmware-azure-deploy-configuration-server/vcenter-wizard.png)
@@ -98,7 +98,7 @@ ms.locfileid: "86132156"
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>向 Azure Site Recovery 服務註冊設定伺服器
 
-1. 從 VMWare vSphere 用戶端主控台開啟 VM。
+1. 在 VMware vSphere 用戶端主控台中，開啟 VM。
 2. VM 會開機進入 Windows Server 2016 安裝體驗。 接受授權合約，並輸入系統管理員密碼。
 3. 在安裝完成之後，以系統管理員身分登入 VM。
 4. 第一次登入時，Azure Site Recovery 設定工具會在幾秒內啟動。
@@ -154,10 +154,10 @@ ms.locfileid: "86132156"
 
 * 可以針對不同用途使用設定伺服器安裝所在的 VM 嗎？
 
-    否。 將 VM 用於設定伺服器的唯一用途。 請確定您遵循[必要條件](#prerequisites)中所述的所有規格，以有效率地管理嚴重損壞修復。
+    不可以。 將 VM 用於設定伺服器的唯一用途。 請確定您遵循[必要條件](#prerequisites)中所述的所有規格，以有效率地管理嚴重損壞修復。
 * 是否可以將已在設定伺服器中註冊的保存庫與新建立的保存庫交換？
 
-    否。 在設定伺服器註冊保存庫之後，就無法變更。
+    不可以。 在設定伺服器註冊保存庫之後，就無法變更。
 * 我可以使用相同的設定伺服器來保護實體和虛擬機器嗎？
 
     是。 您可以使用相同的設定伺服器來複寫實體和虛擬機器。 不過，實體機器只能容錯回復到 VMware VM。
@@ -172,17 +172,17 @@ ms.locfileid: "86132156"
     若要下載複雜密碼，請參閱[管理 VMWARE VM 嚴重損壞修復的設定伺服器](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)。
 * 我可以變更複雜密碼嗎？
 
-    否。 請勿變更設定伺服器的複雜密碼。 複雜密碼的變更會中斷受保護機器的複寫，並導致嚴重的健全狀況狀態。
+    不可以。 請勿變更設定伺服器的複雜密碼。 複雜密碼的變更會中斷受保護機器的複寫，並導致嚴重的健全狀況狀態。
 * 哪裡可以下載保存庫註冊金鑰？
 
     在 [復原**服務保存庫**] 中，選取 [**管理**  >  **Site Recovery 基礎結構**設定  >  **伺服器**]。 在 [伺服器]**** 中，選取 [下載註冊金鑰]**** 以下載保存庫認證檔案。
 * 我可以複製現有的設定伺服器，並將它用於複寫協調流程嗎？
 
-    否。 不支援使用複製的設定伺服器元件。 複製相應放大進程伺服器也是不支援的案例。 複製 Site Recovery 元件會影響進行中的複寫。
+    不可以。 不支援使用複製的設定伺服器元件。 複製相應放大進程伺服器也是不支援的案例。 複製 Site Recovery 元件會影響進行中的複寫。
 
 * 我可以變更設定伺服器的 IP 嗎？
 
-    否。 請勿變更設定伺服器的 IP 位址。 確定指派給設定伺服器的所有 Ip 都是靜態 Ip，而不是 DHCP Ip。
+    不可以。 請勿變更設定伺服器的 IP 位址。 確定指派給設定伺服器的所有 Ip 都是靜態 Ip，而不是 DHCP Ip。
 * 我可以在 Azure 上設定設定伺服器嗎？
 
     在內部部署環境中設定一部設定伺服器，並可透過 v 中心直接進行連線，並將資料傳輸延遲降到最低。 您可以對設定伺服器建立排程的備份，以實現[容錯回復目的](vmware-azure-manage-configuration-server.md#failback-requirements)。

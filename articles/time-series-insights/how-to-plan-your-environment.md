@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0a17f28f2a87ae42b552bfa07732b8b8232ef5e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531169"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289907"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>規劃您的 Azure 時間序列深入解析 Gen2 環境
 
@@ -78,7 +78,7 @@ Azure 時間序列深入解析採用隨用隨付商務模型。 如需有關費�
 
 您現在可以設定 Azure 時間序列深入解析環境的時間序列模型。 使用新模型很容易就能尋找及分析 IoT 資料。 它能用來鑑藏、維護及擴充時間序列資料，並協助準備取用者可用的資料集。 該模型使用時間序列識別碼，它對應到的執行個體與唯一資源相關聯，且該資源有變數 (稱為類型) 和階層。 若要深入瞭解，請參閱[時間序列模型](./concepts-model-overview.md)總覽。
 
-模型是動態的，所以隨時可以建置。 若要快速開始，請先建立並上傳，再將資料推送到 Azure 時間序列深入解析。 若要建立您的模型，請參閱[使用時間序列模型](./time-series-insights-update-how-to-tsm.md)。
+模型是動態的，所以隨時可以建置。 若要快速開始，請先建立並上傳，再將資料推送到 Azure 時間序列深入解析。 若要建立您的模型，請參閱[使用時間序列模型](/azure/time-series-insights/concepts-model-overview)。
 
 對許多客戶而言，時間序列模型對應至現有的資產模型或 ERP 系統。 如果您沒有現有的模型，我們[提供](https://github.com/Microsoft/tsiclient)的預先建置使用者體驗可快速啟動並執行。 若要了解模型能如何協助您，請檢視[範例示範環境](https://insights.timeseries.azure.com/preview/demo)。
 

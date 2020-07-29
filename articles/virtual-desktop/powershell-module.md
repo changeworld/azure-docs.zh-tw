@@ -8,20 +8,17 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 67276f7dedccc20fb768e717c237d04aa4b4a1cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d5193cbaf759e513eb8d6e88e70abc74a2dd30d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212746"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291401"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>設定適用於 Windows 虛擬桌面的 PowerShell 模組
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。
->
-> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>此內容適用于具有 Azure Resource Manager 整合的 Windows 虛擬桌面。
 
 Windows 虛擬桌面 PowerShell 模組已整合至 Azure PowerShell 模組。 此文章將會說明如何設定 PowerShell 模組，使您可以針對 Windows 虛擬桌面執行 Cmdlet。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure DDoS 保護標準總覽
-description: 深入了解 Azure DDoS Protection 服務。
+description: 瞭解如何與應用程式設計最佳作法結合 Azure DDoS 保護標準，以提供對抗 DDoS 攻擊的防禦。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: fc47e1f4fbdb48e6e0abc1f2a7e32127b0325f47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e92f3b5d8c48c783648285c9a03d8cb8d391a5ac
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82130960"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289612"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard 概觀
 
@@ -25,13 +25,13 @@ ms.locfileid: "82130960"
 結合應用程式設計最佳做法的 Azure DDoS 保護可提供 DDoS 攻擊的防禦。 Azure DDoS 保護提供下列服務層級：
 
 - **基本**：已在 Azure 平台中自動啟用。 一般網路層級攻擊的 alwayson 流量監視和即時緩和功能，提供 Microsoft 線上服務所使用的相同防禦。Azure 全球網路的整個規模可用於分散和緩和跨區域的攻擊流量。針對 IPv4 和 IPv6 Azure [公用 IP 位址](virtual-network-public-ip-address.md)提供保護。
-- **標準**：提供 [基本] 服務層級以外特別針對 Azure 虛擬網路資源調整的額外安全防護功能。 DDoS 保護「標準」層級很容易啟用，而且不需要變更應用程式。 保護原則是透過專用的流量監視和機器學習演算法進行調整。 原則會套用至與虛擬網路中所部署資源相關聯的公用 IP 位址，例如 Azure Load Balancer、Azure 應用程式閘道和 Azure Service Fabric 執行個體，但是此保護功能不適用於 App Service Environments。在攻擊期間，可透過 Azure 監視器檢視取得即時遙測與歷史記錄。 透過診斷設定可以獲得豐富的攻擊風險降低分析。 透過 [Azure 應用程式閘道 Web 應用程式防火牆](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，或者從 Azure Marketplace 安裝第 3 方防火牆，可以加上應用程式層保護。 針對 IPv4 和 IPv6 Azure [公用 IP 位址](virtual-network-public-ip-address.md)提供保護。
+- **標準**：提供 [基本] 服務層級以外特別針對 Azure 虛擬網路資源調整的額外安全防護功能。 DDoS 保護「標準」層級很容易啟用，而且不需要變更應用程式。 保護原則會透過專用的流量監視和機器學習演算法進行調整。 原則會套用至與虛擬網路中所部署資源相關聯的公用 IP 位址，例如 Azure Load Balancer、Azure 應用程式閘道和 Azure Service Fabric 執行個體，但是此保護功能不適用於 App Service Environments。在攻擊期間，可透過 Azure 監視器檢視取得即時遙測與歷史記錄。 透過診斷設定可以獲得豐富的攻擊風險降低分析。 透過 [Azure 應用程式閘道 Web 應用程式防火牆](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，或者從 Azure Marketplace 安裝第 3 方防火牆，可以加上應用程式層保護。 針對 IPv4 和 IPv6 Azure [公用 IP 位址](virtual-network-public-ip-address.md)提供保護。
 
 |功能                                         |基本 DDoS 保護                 |Azure 標準 DDoS 保護                      |
 |------------------------------------------------|--------------------------------------|----------------------------------------------|
 |主動流量監視 & always on 偵測 |是                                   |是                                           |
 |自動攻擊緩和措施                    |是                                   |是                                           |
-|可用性保證                          |Azure 區域                          |Application                                   |
+|可用性保證                          |Azure 區域                          |應用程式                                   |
 |風險降低原則                             |針對 Azure 流量區域量進行調整 |調整應用程式流量量          |
 |計量 & 警示                                |否                                    |即時攻擊計量透過 Azure 監視器 & 資源記錄                                 |
 |風險降低報告                              |否                                    |攻擊後的風險降低報告                |
@@ -72,7 +72,7 @@ DDoS Protection Standard 功能包括：
 
 DDoS 保護標準層會監視實際流量使用率，且時常將它與 DDoS 原則中定義的閾值比較。 當超過該流量閾值時，就會自動起始 DDoS 安全防護功能。 當傳回流量低於閾值時，就會移除安全防護功能。
 
-![降低](./media/ddos-protection-overview/mitigation.png)
+![緩和措施](./media/ddos-protection-overview/mitigation.png)
 
 在安全防護期間，DDoS 保護服務會重新導向傳送至受保護資源的流量，而且會執行數個檢查，例如下列檢查：
 
@@ -80,7 +80,7 @@ DDoS 保護標準層會監視實際流量使用率，且時常將它與 DDoS 原
 - 與用戶端互動，判斷流量是否可能是詐騙封包 (例如： SYN Auth 或 SYN Cookie 或置放封包以供來源將它重新傳輸)。
 - 速率限制封包 (如果沒有其他強制方法可以執行)。
 
-DDoS 保護會封鎖攻擊流量並將剩餘流量轉送至其目的地。 在偵測到攻擊的幾分鐘內，系統會使用 Azure 監視器計量通知您。 藉由設定登入 DDoS Protection Standard 遙測，您可以將記錄寫入至可用的選項，以供日後分析。 適用於 DDoS 保護標準層的 Azure 監視器中的計量資料會保留 30 天。
+DDoS 保護會封鎖攻擊流量並將剩餘流量轉送至其預定目的地。 在偵測到攻擊的幾分鐘內，系統會使用 Azure 監視器計量通知您。 藉由設定登入 DDoS Protection Standard 遙測，您可以將記錄寫入至可用的選項，以供日後分析。 適用於 DDoS 保護標準層的 Azure 監視器中的計量資料會保留 30 天。
 
 Microsoft 已與 [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) 合作建立一個介面，您可以針對啟用 DDoS 保護的公用 IP 位址產生流量，以進行模擬。 BreakPoint Cloud 模擬可讓您：
 

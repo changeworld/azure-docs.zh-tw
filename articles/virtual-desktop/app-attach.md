@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204466"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291517"
 ---
 # <a name="set-up-msix-app-attach"></a>設定 MSIX 應用程式附加
 
@@ -29,7 +29,7 @@ ms.locfileid: "85204466"
 在您開始之前，設定 MSIX 應用程式附加會需要下列項目：
 
 - 存取 Windows 測試人員入口網站以取得支援 MSIX 應用程式附加 API 的 Windows 10 版本。
-- 運作中的 Windows 虛擬桌面部署。 若要瞭解如何部署 Windows 虛擬桌面秋季2019版，請參閱[在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。 若要瞭解如何部署 Windows 虛擬桌面春季2020版，請參閱[使用 Azure 入口網站建立主機集](./create-host-pools-azure-marketplace.md)區。
+- 運作中的 Windows 虛擬桌面部署。 若要瞭解如何部署 Windows 虛擬桌面（傳統），請參閱[在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。 若要瞭解如何使用 Azure Resource Manager 整合來部署 Windows 虛擬桌面，請參閱[使用 Azure 入口網站建立主機集](./create-host-pools-azure-marketplace.md)區。
 - MSIX 封裝工具。
 - Windows 虛擬桌面部署中將儲存 MSIX 套件的網路共用。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 01c9c4389e2c950fe68c8be171b4c50d3d6271c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f4ebf433237193c0db7859b029bb224c72c92eae
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052025"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291016"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Azure 中可用的 Red Hat Enterprise Linux （RHEL）映射
 Azure 針對不同的使用案例提供各種 RHEL 映射。
@@ -31,7 +31,7 @@ Azure 針對不同的使用案例提供各種 RHEL 映射。
 > [!NOTE]
 > 不會再以 LVM 分割的映射來產生原始影像。 LVM 與較舊的原始（非 LVM）資料分割配置相比，提供了數個優點，包括大幅彈性的資料分割調整大小選項。
 
-供應項目| SKU | 資料分割 | 正在佈建 | 附註
+供應項目| SKU | 資料分割 | 佈建 | 注意
 :----|:----|:-------------|:-------------|:-----
 RHEL          | 6.7      | RAW    | Linux 代理程式 |
 |             | 6.8      | RAW    | Linux 代理程式 |
@@ -88,9 +88,17 @@ RHEL-SAP-HA   | 7.4          | LVM    | Linux 代理程式 | 具有 HA 和更新
 rhel-byos     |rhel-lvm74| LVM    | Linux 代理程式 | RHEL 7.4 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
 |             |rhel-lvm75| LVM    | Linux 代理程式 | RHEL 7.5 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
 |             |rhel-lvm76| LVM    | Linux 代理程式 | RHEL 7.6 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
+|             |rhel-lvm76-gen2| LVM    | Linux 代理程式 | RHEL 7.6 第2代 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
 |             |rhel-lvm77| LVM    | Linux 代理程式 | RHEL 7.7 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
+|             |rhel-lvm77-gen2| LVM    | Linux 代理程式 | RHEL 7.7 第2代 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
+|             |rhel-lvm78| LVM    | Linux 代理程式 | RHEL 7.8 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
+|             |rhel-lvm78-gen2| LVM    | Linux 代理程式 | RHEL 7.8 第2代 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
 |             |rhel-lvm8 | LVM    | Linux 代理程式 | RHEL 8.0 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
+|             |rhel-lvm8-gen2 | LVM    | Linux 代理程式 | RHEL 8.0 第2代 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
 |             |rhel-lvm81 | LVM    | Linux 代理程式 | RHEL 8.1 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
+|             |rhel-lvm81-gen2 | LVM    | Linux 代理程式 | RHEL 8.1 第2代 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
+|             |rhel-lvm82 | LVM    | Linux 代理程式 | RHEL 8.2 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
+|             |rhel-lvm82-gen2 | LVM    | Linux 代理程式 | RHEL 8.2 第2代 BYOS 映射（不會附加至任何更新來源）不會向 RHEL premium 收費。
 
 > [!NOTE]
 > RHEL-SAP-HANA 產品供應專案被 Red Hat 視為生命週期結束。 現有的部署將會繼續正常運作，但 Red Hat 建議客戶從 RHEL-SAP-HANA 映射遷移到 RHEL-SAP-HA 映射，其中包括 SAP Hana 存放庫以及 HA 附加元件。 如需 Red Hat SAP 雲端供應專案的更多詳細資料，請參閱[這裡](https://access.redhat.com/articles/3751271)。

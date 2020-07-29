@@ -4,16 +4,16 @@ description: 本文提供針對各種案例啟用 Windows Vm Microsoft Azure 磁
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: edc52198208aa86772704bde7637a2801688da59
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036126"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291967"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM 上的 Azure 磁碟加密案例
 
@@ -140,6 +140,33 @@ Azure 磁碟加密會與 [Azure Key Vault](disk-encryption-key-vault.md) 整合�
 | resizeOSDisk | 是否應該先將 OS 分割區調整大小以佔用完整的 OS VHD，然後才分割系統磁碟區。 |
 | location | 所有資源的位置。 |
 
+## <a name="enable-encryption-on-nvme-disks-for-lsv2-vms"></a>在 Lsv2 Vm 的 NVMe 磁片上啟用加密
+
+此案例說明如何在 Lsv2 系列 Vm 的 NVMe 磁片上啟用 Azure 磁碟加密。  Lsv2 系列功能本機 NVMe 儲存體。 本機 NVMe 磁片是暫時性的，如果您停止/解除配置 VM，則會在這些磁片上遺失資料（請參閱： [Lsv2 系列](../lsv2-series.md)）。
+
+若要在 NVMe 磁片上啟用加密：
+
+1. 初始化 NVMe 磁片並建立 NTFS 磁片區。
+1. 在 VM 上啟用加密，並將 VolumeType 參數設定為 All。 這會啟用所有 OS 和資料磁片的加密，包括 NVMe 磁片所支援的磁片區。 如需相關資訊，請參閱[在現有或執行中的 WINDOWS VM 上啟用加密](#enable-encryption-on-an-existing-or-running-windows-vm)。
+
+在下列案例中，加密會保存在 NVMe 磁片上：
+- VM 重新啟動
+- VMSS 重新安裝映射
+- 交換 OS
+
+NVMe 磁片將會在下列案例中解除初始化：
+
+- 解除配置後啟動 VM
+- 服務修復
+- Backup
+
+在這些情況下，必須在 VM 啟動之後初始化 NVMe 磁片。 若要在 NVMe 磁片上啟用加密，請執行命令，以在 NVMe 磁片初始化之後再次啟用 Azure 磁碟加密。
+
+除了[不支援的案例](#unsupported-scenarios)一節中所列的案例以外，不支援 NVMe 磁片的加密：
+
+- 使用 AAD 以 Azure 磁碟加密加密的 Vm （舊版）
+- 具有儲存空間的 NVMe 磁片
+- 具有 NVMe 磁片的 Sku Azure Site Recovery （請參閱 azure[區域之間的 AZURE VM 嚴重損壞修復支援矩陣：複寫的機器-儲存體](../../site-recovery/azure-to-azure-support-matrix.md#replicated-machines---storage)）。
 
 ## <a name="new-iaas-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>透過客戶加密的 VHD 和加密金鑰建立的新 IaaS VM
 
@@ -236,7 +263,6 @@ Azure 磁碟加密不適用於下列案例、功能和技術：
 - 將已加密的 Vm 移到另一個訂用帳戶或區域。
 - 建立已加密 VM 的映射或快照集，並使用它來部署額外的 Vm。
 - Gen2 Vm （請參閱：[在 Azure 上支援第2代 vm](generation-2.md#generation-1-vs-generation-2-capabilities)）
-- Lsv2 系列 Vm （請參閱： [Lsv2 系列](../lsv2-series.md)）
 - 具有寫入加速器磁片的 M 系列 Vm。
 - 將 ADE 套用至具有以[客戶管理的金鑰](disk-encryption.md)（SSE + CMK）加密之資料磁片的 vm，或將 SSE + CMK 套用至以 ADE 加密之 VM 上的資料磁片。
 - 將使用 ADE 加密的 VM 遷移至[使用客戶管理金鑰的伺服器端加密](disk-encryption.md)。

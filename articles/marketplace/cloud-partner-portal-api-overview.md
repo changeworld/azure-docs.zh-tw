@@ -4,15 +4,15 @@ description: Marketplace API 作業的描述、使用先決條件及清單。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 51c8b91ccf85087f965d632dee9296076aba0d86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011953"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292927"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud Partner 入口網站 API 參考
 

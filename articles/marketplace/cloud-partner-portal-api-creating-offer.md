@@ -4,15 +4,15 @@ description: API 來建立新的或更新現有的供應專案。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-author: dsindona
-ms.author: dsindona
+author: mingshen-ms
+ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 249eb982ee701ea0a442121c02e55ad98e1f6fb9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68416fa91f6b75fb3ef2b91c1297f13d84f2bdab
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011986"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292954"
 ---
 <a name="create-or-modify-an-offer"></a>建立或修改供應項目
 =========================
@@ -28,11 +28,11 @@ ms.locfileid: "87011986"
 <a name="uri-parameters"></a>URI 參數
 --------------
 
-|  **名稱**         |  **描述**                      |  **Data type**  |
+|  **名稱**         |  **說明**                      |  **Data type**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  發行者識別碼，例如 `contoso` |   字串 |
-| offerId           |  供應項目識別碼                     |   字串        |
-| api-version       |  API 的最新版本            |   日期           |
+| publisherId       |  發行者識別碼，例如 `contoso` |   String |
+| offerId           |  供應項目識別碼                     |   String        |
+| api-version       |  API 的最新版本            |   Date           |
 |  |  |  |
 
 <a name="header"></a>頁首
@@ -271,7 +271,7 @@ ms.locfileid: "87011986"
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **Code**  |  **描述**                                                                            |
+| **Code**  |  **說明**                                                                            |
 | --------  |  ---------------                                                                            |
 |  200      | `OK`. 已成功處理要求，並已成功修改供應項目。           |
 |  201      | `Created`. 已成功處理要求，並已成功建立供應項目。   |

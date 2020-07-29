@@ -1,5 +1,5 @@
 ---
-title: 針對服務連線 Windows 虛擬桌面春季2020進行疑難排解-Azure
+title: 針對服務連線 Windows 虛擬桌面進行疑難排解 - Azure
 description: 如何解決在 Windows 虛擬桌面租用戶環境中設定用戶端連線時的問題。
 services: virtual-desktop
 author: Heidilohr
@@ -8,28 +8,25 @@ ms.topic: troubleshooting
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9aced0e420826cd73526a54da728c20d8d8e0142
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 875f39653c5240e3a1b571b531eb2bb08c4811d0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020418"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289841"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虛擬桌面服務連線
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
->
-> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
 
-使用本文來解決 Windows 虛擬桌面用戶端連線的問題。
+使用此文章來解決 Windows 虛擬桌面用戶端連線的問題。
 
 ## <a name="provide-feedback"></a>提供意見反應
 
-您可以在 [Windows 虛擬桌面技術社群](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)提供意見反應，並與產品小組和其他活躍的社群成員一起討論 Windows 虛擬桌面服務。
+您可以在 [Windows 虛擬桌面技術社群](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) \(英文\) 提供意見反應，並與產品小組和其他活躍的社群成員一起討論 Windows 虛擬桌面服務。
 
-## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>使用者連線，但不顯示任何內容 (沒有摘要)
+## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>使用者連線，但未顯示任何內容 (沒有摘要)
 
 使用者可以啟動遠端桌面用戶端，而且能夠進行驗證，不過使用者在 Web 探索摘要中看不到任何圖示。
 

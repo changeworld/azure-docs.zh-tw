@@ -11,11 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682727"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290713"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航太工業中預測性維護的解決方案範本的技術指南
 
@@ -57,7 +58,7 @@ ms.locfileid: "83682727"
 使用 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)提供有關 [Azure 事件中樞](#azure-event-hub)服務之輸入串心的近乎即時分析。 接著將結果發佈到 [Power BI](https://powerbi.microsoft.com) 儀表板，以及將所有未經處理的內送事件封存至 [Azure 儲存體](https://azure.microsoft.com/services/storage/)服務，供 [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) 服務後續處理。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight 自訂彙總
-使用 HDInsight 執行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 指令碼 (由 Azure Data Factory 協調)，以提供使用 Azure 串流分析資源封存之原始事件的彙總。
+使用 HDInsight 執行 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼 (由 Azure Data Factory 協調)，以提供使用 Azure 串流分析資源封存之原始事件的彙總。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 使用 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 服務 (由 Azure Data Factory 協調) 對特定飛機引擎 (提供所收到輸入資料) 的剩餘使用年限 (RUL) 進行預測。 
@@ -112,22 +113,22 @@ Azure 串流分析查詢建構的相關資訊可在 MSDN 上的 [串流分析查
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-此 Factory 的其中兩個管線包含 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 指令碼，可用來分割及彙總資料。 如上述，指令碼會位在安裝期間建立的 [Azure 儲存體](https://azure.microsoft.com/services/storage/)帳戶中。 其位置會是：maintenancesascript\\\\script\\\\hive\\\\ (或 https://[您的解決方案名稱].blob.core.windows.net/maintenancesascript)。
+此 Factory 的其中兩個管線包含 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼，可用來分割及彙總資料。 如上述，指令碼會位在安裝期間建立的 [Azure 儲存體](https://azure.microsoft.com/services/storage/)帳戶中。 其位置會是：maintenancesascript\\\\script\\\\hive\\\\ (或 https://[您的解決方案名稱].blob.core.windows.net/maintenancesascript)。
 
-類似於 [Azure 串流分析](#azure-stream-analytics-1)查詢，[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 指令碼對於內送資料格式具有隱含知識，因此必須根據您的資料格式進行變更。
+類似於 [Azure 串流分析](#azure-stream-analytics-1)查詢，[Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼對於內送資料格式具有隱含知識，因此必須根據您的資料格式進行變更。
 
 #### <a name="aggregateflightinfopipeline"></a><bpt id="p1">*</bpt>AggregateFlightInfoPipeline<ept id="p1">*</ept>
-這個[管線](../../data-factory/concepts-pipelines-activities.md)包含單一活動 - 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活動，會在 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)作業期間，執行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 指令碼來分割放在 [Azure 儲存體](https://azure.microsoft.com/services/storage/)中的資料。
+這個[管線](../../data-factory/concepts-pipelines-activities.md)包含單一活動 - 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活動，會在 [Azure 串流分析](https://azure.microsoft.com/services/stream-analytics/)作業期間，執行 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼來分割放在 [Azure 儲存體](https://azure.microsoft.com/services/storage/)中的資料。
 
-此資料分割工作的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 指令碼為 ***AggregateFlightInfo.hql***
+此資料分割工作的 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼為 ***AggregateFlightInfo.hql***
 
 #### <a name="mlscoringpipeline"></a><bpt id="p1">*</bpt>MLScoringPipeline<ept id="p1">*</ept>
 這個[管線](../../data-factory/concepts-pipelines-activities.md)包含數個活動，而其最終結果為來自與這個解決方案範本相關聯的 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 實驗評分的預測。
 
 包含的活動為：
 
-* 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活動會執行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 指令碼來執行 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 實驗所需的彙總及特徵工程設計。
-  此資料分割工作的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 指令碼是 ***PrepareMLInput.hql***。
+* 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活動會執行 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼來執行 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 實驗所需的彙總及特徵工程設計。
+  此資料分割工作的 [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) 指令碼是 ***PrepareMLInput.hql***。
 * [複製](https://msdn.microsoft.com/library/azure/dn835035.aspx)活動，它會將來自 [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) 活動的結果移至 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活動所存取的單一 [Azure 儲存體](https://azure.microsoft.com/services/storage/) Blob。
 * 呼叫 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) 實驗的 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活動，會導致將結果放入單一 [Azure 儲存體](https://azure.microsoft.com/services/storage/) Blob。
 

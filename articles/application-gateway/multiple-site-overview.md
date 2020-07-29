@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 07/20/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: b3e6bc6d2dd5568dcc11a37c6ab44bd3b4089c66
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067919"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290976"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>應用程式閘道多站台裝載
 
@@ -40,12 +40,8 @@ ms.locfileid: "87067919"
 >[!NOTE]
 > 這項功能目前為預覽狀態，僅適用于應用程式閘道的 Standard_v2 和 WAF_v2 SKU。 若要深入瞭解預覽，請參閱[這裡的使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
-在[Azure 入口網站](create-multiple-sites-portal.md)中，您可以在個別的文字方塊中定義它們，如下列螢幕擷取畫面所示。
-
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-example.png" alt-text="萬用字元接聽程式範例設定":::
-
 >[!NOTE]
->如果您要建立新的多網站接聽程式，或將多個主機名稱新增至 Azure 入口網站的現有多網站接聽程式，則預設會將它新增至接聽程式設定的 `HostNames` 參數，這會在設定中新增更多功能至現有的 `HostName` 參數。
+>這項功能目前僅透過[Azure PowerShell](tutorial-multiple-sites-powershell.md)和[Azure CLI](tutorial-multiple-sites-cli.md)提供。 即將推出入口網站支援。
 
 在[Azure PowerShell](tutorial-multiple-sites-powershell.md)中，您必須使用， `-HostNames` 而不是 `-HostName` 。 使用主機名稱時，您最多可以提及5個主機名稱做為逗號分隔值，並使用萬用字元。 例如， `-HostNames "*.contoso.com,*.fabrikam.com"`
 
@@ -77,7 +73,7 @@ ms.locfileid: "87067919"
 *   屬性「主機名稱」接受一個字串做為輸入，您可以在其中只提及一個非萬用字元功能變數名稱，而「主機名稱」接受字串陣列做為輸入，您可以在其中提及最多5個萬用字元功能變數名稱。 但這兩個屬性一次不能使用。
 *   您無法使用使用萬用字元或多個主機名稱的目標接聽程式來建立重新[導向規則。](redirect-overview.md)
 
-如需如何在多網站接聽程式中設定萬用字元主機名稱的逐步指南，請參閱[使用 Azure 入口網站建立多網站](create-multiple-sites-portal.md)或[使用 Azure PowerShell](tutorial-multiple-sites-powershell.md)或[使用 Azure CLI](tutorial-multiple-sites-cli.md) 。
+如需如何在多網站接聽程式中設定萬用字元主機名稱的逐步指南，請參閱[使用 Azure PowerShell 建立多網站](tutorial-multiple-sites-powershell.md)或[使用 Azure CLI](tutorial-multiple-sites-cli.md) 。
 
 ## <a name="host-headers-and-server-name-indication-sni"></a>主機標頭和伺服器名稱指示 (SNI)
 
@@ -95,6 +91,9 @@ ms.locfileid: "87067919"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解多個網站裝載之後，請移至[使用 Azure 入口網站建立多網站](create-multiple-sites-portal.md)或[使用 Azure PowerShell](tutorial-multiple-sites-powershell.md)或[使用 Azure CLI](tutorial-multiple-sites-cli.md) ，以取得建立應用程式閘道來裝載多個網站的逐步指南。
+瞭解如何在應用程式閘道中設定多個網站裝載
+* [使用 Azure 入口網站](create-multiple-sites-portal.md)
+* [使用 Azure PowerShell](tutorial-multiple-sites-powershell.md) 
+* [使用 Azure CLI](tutorial-multiple-sites-cli.md)
 
 您可以瀏覽[使用多站台裝載的 Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/201-application-gateway-multihosting)，以了解以範本為基礎的端對端部署。

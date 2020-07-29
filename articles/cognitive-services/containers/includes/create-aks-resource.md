@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: d01245a76c5210a1843307b543f98d4f1d59d2cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7f5b6f3685a94b5497784360f8f12b22fb95012
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877801"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298747"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>建立 Azure Kubernetes Service 叢集資源
 
@@ -33,16 +33,16 @@ ms.locfileid: "80877801"
     |節點大小|標準 DS2 v2：<br>`2 vCPUs`, `7 GB`|
     |節點計數|將滑杆保持為預設值。|
 
-1. 在 [**調整規模**] 索引標籤上，將 [**虛擬節點**] 和 [ **VM 擴展集**] 設定為預設值。
+1. 在 [**節點**集區] 索引標籤上，將 [**虛擬節點**] 和 [ **VM 擴展集**] 設定為預設值。
 1. 在 [**驗證**] 索引標籤上，將 [**服務主體**] 和 [**啟用 RBAC** ] 設定為其預設值。
 1. 在 [**網路**功能] 索引標籤上，輸入下列選項：
 
     |設定|值|
     |--|--|
-    |HTTP 應用程式路由|No|
+    |HTTP 應用程式路由|否|
     |網路設定|基本|
 
-1. 在 [**監視**] 索引標籤上，確定 [**啟用容器監視**] 已設定為 **[是]**，並將 [ **Log Analytics 工作區**] 保留為預設值。
+1. **在 [整合**] 索引標籤上，確定 [**容器監視**] 已設定為 [**已啟用**]，並將 [ **Log Analytics 工作區**] 保留為預設值。
 1. 在 [**標記**] 索引標籤上，將 [名稱/值組] 保留空白。
 1. 選取 [**審查並建立**]。
 1. 通過驗證之後，請選取 [**建立**]。

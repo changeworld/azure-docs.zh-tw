@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8a951a4920f2f80a4b9738317bdb2da96c613d53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013040"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290033"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 
@@ -136,7 +136,7 @@ ms.locfileid: "87013040"
 
 + Azure Machine Learning Studio：[透過這些步驟](how-to-use-automated-ml-for-ml-models.md#customize-featurization)，在 [檢視其他設定] 區段中啟用 [自動特徵化]。
 
-+ Python SDK： `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` 在您的[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)物件中指定。 深入瞭解 [啟用特徵化] （（如何設定-自動 features.md）。 
++ Python SDK： `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` 在您的[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)物件中指定。 深入瞭解[啟用特徵化](how-to-configure-auto-features.md)。 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> 集團模型
 

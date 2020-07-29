@@ -5,15 +5,15 @@ author: gbowerman
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: ed14aee756456e35198a501df309fc9eb032898e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080075"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292129"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>準備適用於 Azure 的 SLES 或 openSUSE 虛擬機器
 
@@ -133,7 +133,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 2. 按一下 **[連接]** ，以開啟虛擬機器的視窗。
 3. 在 Shell 上執行命令 '`zypper lr`'。 如果此命令傳回的輸出與下列類似，則該儲存機制已如預期設定，不需進行調整 (請注意，版本號碼可能會不同)：
 
-   | # | Alias                 | 名稱                  | 啟用 | 重新整理
+   | # | Alias                 | Name                  | 啟用 | Refresh
    | - | :-------------------- | :-------------------- | :------ | :------
    | 1 | 雲端： Tools_13 1      | 雲端： Tools_13 1      | 是     | 是
    | 2 | openSUSE_13。1_OSS     | openSUSE_13。1_OSS     | 是     | 是

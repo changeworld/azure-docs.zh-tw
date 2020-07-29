@@ -4,14 +4,15 @@ description: 使用 Azure CLI 將 VM 移至另一個 Azure 訂用帳戶或資源
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: ebcd5f166fd1876f67121787c23d23860c9fa4b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: db4c7e0126616e2d8bd120e7430c70b89c5cf36d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944595"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291105"
 ---
 # <a name="move-a-vm-to-another-subscription-or-resource-group"></a>將 VM 移至另一個訂用帳戶或資源群組
 本文會逐步引導您瞭解如何在資源群組或訂用帳戶之間移動虛擬機器（VM）。 如果您在個人訂用帳戶中建立了 VM，而現在想要將它移至您的公司訂用帳戶以繼續工作，在訂用帳戶之間移動 VM 會很方便。

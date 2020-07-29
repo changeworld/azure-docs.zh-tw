@@ -7,12 +7,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 108a7940084e99348dc8fdfa0143d5c6855599df
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097365"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291606"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>遙測、屬性和命令裝載
 
@@ -30,6 +30,9 @@ Azure IoT Central 中的裝置範本是一個藍圖，可定義：
 
 每個範例都會顯示裝置功能模型（DCM）中的程式碼片段，其定義型別和範例 JSON 承載，以說明裝置應該如何與 IoT Central 應用程式互動。
 
+> [!NOTE]
+> IoT Central 會接受任何有效的 JSON，但如果它符合 DCM 中的定義，則只能用於視覺效果。 您可以匯出不符合定義的資料，請參閱[將 IoT 資料匯出至 Azure 中的目的地](howto-export-data.md)。
+
 定義 DCM 的 JSON 檔案會使用數位對應項[定義語言（DTDL） V1](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v1-preview/dtdlv1.md)。 此規格包含屬性格式的定義 `@id` 。
 
 如需顯示使用中部分承載的範例裝置程式碼，請參閱[建立用戶端應用程式並將其連接到您的 azure IoT Central 應用程式（Node.js）](tutorial-connect-device-nodejs.md) ，並[建立用戶端應用程式並將其連接到您的 azure IoT Central 應用程式（Python）](tutorial-connect-device-python.md)教學課程。
@@ -43,9 +46,8 @@ IoT Central 可讓您查看裝置傳送至應用程式的原始資料。 此視�
 1. 選取 [**原始資料**] 索引標籤：
 
     :::image type="content" source="media/concepts-telemetry-properties-commands/raw-data.png" alt-text="原始資料檢視":::
-    
-    在此視圖中，您可以選取要顯示的資料行，並設定要查看的時間範圍。 [未**模型化資料**] 欄位會顯示裝置中不符合裝置範本中任何屬性或遙測定義的資料。
 
+    在此視圖中，您可以選取要顯示的資料行，並設定要查看的時間範圍。 [未**模型化資料**] 欄位會顯示裝置中不符合裝置範本中任何屬性或遙測定義的資料。
 
 ## <a name="telemetry"></a>遙測
 
@@ -466,7 +468,7 @@ IoT Central 可讓您查看裝置傳送至應用程式的原始資料。 此視�
 { "IntegerState": 2 }
 ```
 
-## <a name="properties"></a>[內容]
+## <a name="properties"></a>屬性
 
 > [!NOTE]
 > 屬性的裝載格式適用于在07/14/2020 或之後建立的應用程式。
@@ -769,7 +771,7 @@ IoT Central 預期裝置的回應可寫入屬性更新。 回應訊息應該包�
 | 值 | 標籤 | 描述 |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Completed | 已成功完成屬性變更作業。 |
-| `'ac': 202`或`'ac': 201` | 暫止 | 屬性變更作業暫止或進行中 |
+| `'ac': 202`或`'ac': 201` | Pending | 屬性變更作業暫止或進行中 |
 | `'ac': 4xx` | 錯誤 | 要求的屬性變更無效或發生錯誤 |
 | `'ac': 5xx` | 錯誤 | 在處理要求的變更時，裝置發生未預期的錯誤。 |
 
