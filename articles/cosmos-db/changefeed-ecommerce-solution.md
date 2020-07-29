@@ -7,12 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: ade688c3fe339db864994923d0ff40dfe41b7cb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263002"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319757"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 變更摘要以視覺方式呈現即時資料分析
 
@@ -53,7 +54,7 @@ Azure Cosmos DB 變更摘要是一種機制，可在建立或修改這些記錄�
 
 7. **Power BI：** Power BI 可以視覺方式呈現 Azure 串流分析所傳送的資料。 您可以建置儀表板，以即時查看計量的變化。  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Microsoft .NET Framework 4.7.1 或更新版本
 
@@ -208,7 +209,7 @@ Azure 串流分析是一項完全受控、可即時處理串流資料的雲端�
 
 5. 瀏覽回串流分析作業頁面，並選取 [輸出]****。  
 
-6. 選取 [+ 新增] 。 然後，從下拉式功能表中選取 [Power BI]****。  
+6. 選取 [+ 新增]。 然後，從下拉式功能表中選取 [Power BI]****。  
 
 7. 若要建立新的 Power BI 輸出並以視覺方式呈現平均價格，請執行下列動作：
 

@@ -4,16 +4,16 @@ description: 本文提供針對 Windows Vm 啟用 Microsoft Azure 磁片加密�
 author: msmbaldwin
 ms.service: virtual-machines-windows
 ms.subservice: security
-ms.topic: article
+ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 649fcc270f8c8cc1f476e677d0886f2c34bc620f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4650df71acb088fafc1280d31d9abfb398e06741
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088490"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284484"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>適用于 Windows Vm 的 Azure 磁碟加密 
 
@@ -72,7 +72,7 @@ Azure 磁碟加密需要 Azure Key Vault 來控制及管理磁碟加密金鑰與
 
 如需詳細資料，請參閱[建立及設定適用於 Azure 磁碟加密的金鑰保存庫](disk-encryption-key-vault.md)。
 
-## <a name="terminology"></a>術語
+## <a name="terminology"></a>詞彙
 下表定義 Azure 磁碟加密文件中所使用的一些常見詞彙：
 
 | 詞彙 | 定義 |

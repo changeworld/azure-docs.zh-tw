@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 82b721d14d114b358939bebecff00bc762b075a6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058342"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336339"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>依支援的帳戶類型（signInAudience）的驗證差異
 
@@ -41,13 +41,13 @@ ms.locfileid: "87058342"
 | 重新導向 Uri （ `replyURLs` ） | 如需詳細資訊，請參閱重新[導向 URI/回復 URL 限制和限制](reply-url.md)。 | | | 
 | API 許可權（ `requiredResourceAccess` ） | 無限制 * | 無限制 * | 每個應用程式最多50個資源，每個資源30個許可權（例如 Microsoft Graph）。 每個應用程式200的總限制（資源 x 許可權）。 | 
 | 此 API 定義的範圍（ `oauth2Permissions` ） | 最大範圍名稱長度為120個字元 <br><br> 定義的範圍數目沒有限制 * | 最大範圍名稱長度為120個字元 <br><br> 定義的範圍數目沒有限制 * |  最大範圍名稱長度為40個字元 <br><br> 已定義最多100個範圍 | 
-| 授權的用戶端應用程式（ `preautorizedApplications` ） | 無限制 * | 無限制 * | 總計上限為500 <br><br> 最多已定義100個用戶端應用程式 <br><br> 每個用戶端最多定義30個範圍 | 
+| 授權的用戶端應用程式（ `preAuthorizedApplications` ） | 無限制 * | 無限制 * | 總計上限為500 <br><br> 最多已定義100個用戶端應用程式 <br><br> 每個用戶端最多定義30個範圍 | 
 | appRoles | 支援 <br> 無限制 * | 支援 <br> 無限制 * | 不支援 | 
 | 登出 URL | http://localhost允許 <br><br> 長度上限為255個字元 | http://localhost允許 <br><br> 長度上限為255個字元 | <br><br> https://localhost允許， http://localhost MSA 失敗 <br><br> 長度上限為255個字元 <br><br> 不允許 HTTP 配置 <br><br> 不支援萬用字元 | 
 
 * 應用程式物件的所有集合屬性有大約1000個專案的全域限制
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 瞭解[應用程式註冊](app-objects-and-service-principals.md)
 - 了解[應用程式資訊清單](reference-app-manifest.md)

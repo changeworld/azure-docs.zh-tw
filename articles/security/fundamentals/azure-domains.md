@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/07/2020
 ms.author: memildin
-ms.openlocfilehash: f12a137d4cf182837e2f2212923b97cb7dc5f34a
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: d1a11ac42a7fb280ba96229f0f67b9c45999b310
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057767"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285368"
 ---
 # <a name="reference-list-of-azure-domains-not-comprehensive"></a>Azure 網域的參考清單（不完整）
 
@@ -48,5 +48,5 @@ ms.locfileid: "86057767"
 |[Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/)和[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)|*.azureedge.net|
 |[Azure 資料表儲存體](https://docs.microsoft.com/azure/storage/tables/table-storage-overview)|*.table.core.windows.net|
 |[Azure 流量管理員](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)|*. trafficmanager.net|
-|[Azure 網站](https://azure.microsoft.com/resources/videos/playlists/websites/)|*.azurewebsites.net|
-|[Visual Studio Codespaces](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)|*.visualStudio.com|
+|[Azure 網站](https://azure.microsoft.com/resources/videos/home/)|*.azurewebsites.net|
+|[Visual Studio 程式碼空間](https://visualstudio.microsoft.com/services/visual-studio-codespaces/)|*.visualStudio.com|

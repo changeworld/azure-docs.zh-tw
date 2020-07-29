@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Resource Manager 範本部署管理工具 - Azure
-description: 如何透過 Azure Resource Manager 範本安裝使用者介面工具以管理 Windows 虛擬桌面資源。
+description: 如何安裝具有 Azure Resource Manager 範本的使用者介面工具，以管理 Windows 虛擬桌面（傳統）資源。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,21 +8,21 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf9fff614f638aec9519c11b2bb558cc77b94814
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514231"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284943"
 ---
-# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>透過 Azure Resource Manager 範本部署管理工具
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署 Windows 虛擬桌面（傳統）管理工具
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。
+>此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。
 
 依照本文中的指示，使用 Azure Resource Manager 範本部署 UI。
 
-## <a name="important-considerations"></a>重要考量︰
+## <a name="important-considerations"></a>重要考量
 
 因為應用程式需要獲得同意才能與 Windows 虛擬桌面互動，此工具不支援企業對企業 (B2B) 案例。 每個 Azure Active Directory (AAD) 租用戶的訂閱帳戶都需要它自己的獨立管理工具部署。
 
@@ -51,7 +51,7 @@ ms.locfileid: "85514231"
 依照下列指示部署 Azure 資源管理範本：
 
 1. 移至 [GitHub Azure RDS 範本頁面](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy) \(英文\)。
-2. 將範本部署到 Azure。
+2. 將範本部署至 Azure。
     - 若您是在「企業」訂用帳戶中部署，請向下捲動並選取 [部署至 Azure]****。
     - 若您是在「雲端解決方案提供者」訂用帳戶中部署，請依照下列指示部署到 Azure：
         1. 向下捲動並以滑鼠右鍵按一下 [部署至 Azure]****，然後選取 [複製連結位置]****。

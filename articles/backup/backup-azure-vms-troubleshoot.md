@@ -4,12 +4,12 @@ description: 在本文中，了解如何針對備份和還原 Azure 虛擬機器
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 5393ba1b7c604ef49cee83f759ed798cfc473417
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f598e0058d817fbba8d816500ab252134be0eb5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032828"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371731"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
@@ -39,14 +39,24 @@ ms.locfileid: "87032828"
 
 以下是 Azure 虛擬機器上備份失敗的常見問題。
 
-## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime - 從保存庫複製備份的資料已逾時
+### <a name="vmrestorepointinternalerror---antivirus-configured-in-the-vm-is-restricting-the-execution-of-backup-extension"></a>VMRestorePointInternalError-VM 中設定的防毒軟體正在限制備份延伸模組的執行
+
+錯誤碼： VMRestorePointInternalError
+
+如果在備份時，**事件檢視器應用程式記錄**檔會顯示訊息錯誤的**應用程式名稱： IaaSBcdrExtension.exe**然後確認 VM 中設定的防毒軟體正在限制備份延伸模組的執行。
+若要解決此問題，請在防毒軟體設定中排除下列目錄，然後重試備份操作。
+
+* `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
+* `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
+
+### <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime - 從保存庫複製備份的資料已逾時
 
 錯誤碼：CopyingVHDsFromBackUpVaultTakingLongTime <br/>
 錯誤訊息：從保存庫複製備份的資料已逾時
 
 發生此情況的原因是儲存體有暫時性的錯誤，或儲存體帳戶的 IOPS 不足，導致備份服務無法在逾時期間內將資料傳輸到保存庫。 請使用這些[最佳做法](backup-azure-vms-introduction.md#best-practices)設定 VM 備份，然後重試備份作業。
 
-## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState - VM 不是處於允許備份的狀態
+### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState - VM 不是處於允許備份的狀態
 
 錯誤碼：UserErrorVmNotInDesirableState <br/>
 錯誤訊息：VM 目前的狀態不允許備份。<br/>
@@ -56,7 +66,7 @@ ms.locfileid: "87032828"
 * 如果 VM 處於 [正在執行] 和 [關機] 之間的暫時性狀態，請等候狀態變更。 然後再觸發備份作業。
 * 如果 VM 是 Linux VM 並使用安全性強化的 Linux 核心模組，請從安全性原則中排除 Azure Linux 代理程式路徑 **/var/lib/waagent**，並確定已安裝備份延伸模組。
 
-## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed - 無法凍結 VM 的一或多個掛接點，以取得檔案系統一致快照集
+### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed - 無法凍結 VM 的一或多個掛接點，以取得檔案系統一致快照集
 
 錯誤碼：UserErrorFsFreezeFailed <br/>
 錯誤訊息：無法凍結 VM 的一或多個掛接點以建立檔案系統一致快照集。
@@ -65,7 +75,7 @@ ms.locfileid: "87032828"
 * 使用 **fsck** 命令對這些裝置執行檔案系統一致性檢查。
 * 重新裝載裝置並重試備份作業。</ol>
 
-## <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC - 擴充功能安裝/作業由於 COM+ 錯誤而失敗
+### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM/ExtensionInstallationFailedCOM/ExtensionInstallationFailedMDTC - 擴充功能安裝/作業由於 COM+ 錯誤而失敗
 
 錯誤碼：ExtensionSnapshotFailedCOM <br/>
 錯誤訊息：因 COM + 錯誤而導致快照集作業失敗
@@ -88,7 +98,7 @@ ms.locfileid: "87032828"
   * 啟動 MSDTC 服務
 * 啟動 Windows 服務 **COM+ System Application**。 **COM+ System Application** 啟動後，請從 Azure 入口網站觸發備份作業。</ol>
 
-## <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState - 快照集作業失敗，因為 VSS 寫入器處於不良狀態。
+### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState - 快照集作業失敗，因為 VSS 寫入器處於不良狀態。
 
 錯誤碼：ExtensionFailedVssWriterInBadState <br/>
 錯誤訊息：快照集作業失敗，因為 VSS 寫入器處於不良狀態。
@@ -100,19 +110,19 @@ ms.locfileid: "87032828"
 
 另一個可協助的程序是，從提高權限的命令提示字元執行下列命令 (以管理員身分執行)。
 
-```CMD
+```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
 新增此登錄機碼將導致不會針對 blob 快照集建立執行緒，並防止逾時。
 
-## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 備份擴充功能的剖析和設定失敗
+### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 備份擴充功能的剖析和設定失敗
 
 錯誤碼：ExtensionConfigParsingFailure<br/>
 錯誤訊息：備份擴充功能的剖析和設定失敗。
 
 此錯誤是因為 **MachineKeys** 目錄上的權限已變更︰ **%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**。
-執行下列命令，並確認 **MachineKeys** 目錄上的權限是預設的︰**icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**。
+執行下列命令，並確認**MachineKeys**目錄的許可權是預設值： `icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys` 。
 
 預設的權限如下︰
 
@@ -137,7 +147,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
    * 在 [個人] > [憑證] 底下，刪除 [核發對象] 是傳統部署模型或 **Windows Azure CRP 憑證產生器**的所有憑證。
 3. 觸發 VM 備份作業。
 
-## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState - 擴充狀態不支援備份作業
+### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState - 擴充狀態不支援備份作業
 
 錯誤碼：ExtensionStuckInDeletionState <br/>
 錯誤訊息：擴充狀態不支援備份作業
@@ -150,7 +160,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 * 刪除備份擴充後，請再嘗試執行備份作業
 * 後續的備份作業將會以所需狀態安裝新的擴充
 
-## <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError - 因為某些附加的磁碟超出快照集限制，所以快照集作業失敗
+### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError - 因為某些附加的磁碟超出快照集限制，所以快照集作業失敗
 
 錯誤碼：ExtensionFailedSnapshotLimitReachedError  <br/>
 錯誤訊息：快照集作業失敗，因為部分連結的磁碟已超出快照集限制
@@ -164,7 +174,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
   * 確定 **isanysnapshotfailed** 的值已在 /etc/azure/vmbackup.conf 設為 false
   * 將 Azure Site Recovery 排定在不同的時間進行，使其不會與備份作業發生衝突。
 
-## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - 因為 VM 資源不足，所以快照集作業失敗
+### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - 因為 VM 資源不足，所以快照集作業失敗
 
 錯誤碼：ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
 錯誤訊息：因為 VM 資源不足，所以快照集作業失敗。
@@ -175,7 +185,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 從提升權限的 (系統管理) 命令提示字元中，執行下列命令：
 
-```text
+```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTimeFromHost /t REG_SZ /d True /f
 ```
@@ -184,57 +194,62 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 **步驟 2**：嘗試將備份排程變更為 VM 負載較少 (低 CPU/IOps 等) 的時間
 
-**步驟 3**：嘗試[增加 VM 大小](https://azure.microsoft.com/blog/resize-virtual-machines/) 並重試作業
+**步驟 3**：嘗試[增加 VM 的大小](https://azure.microsoft.com/blog/resize-virtual-machines/)，然後重試操作
 
-
-## <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001，ResourceNotFound-無法執行作業，因為 VM 不再存在/400094、BCMV2VMNotFound-虛擬機器不存在/找不到 Azure 虛擬機器
+### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001，ResourceNotFound-無法執行作業，因為 VM 不再存在/400094、BCMV2VMNotFound-虛擬機器不存在/找不到 Azure 虛擬機器
 
 錯誤碼：320001, ResourceNotFound <br/> 錯誤訊息：無法執行作業，因為 VM 已不存在。 <br/> <br/> 錯誤碼：400094, BCMV2VMNotFound <br/> 錯誤訊息：虛擬機器不存在 <br/>
 找不到 Azure 虛擬機器。
 
 此錯誤會在已刪除主要 VM，但備份原則仍然在尋找 VM 來備份時發生。 若要修正此錯誤，請遵循下列步驟：
-- 重新建立具有相同名稱和相同資源群組名稱 (**雲端服務名稱**) 的虛擬機器，<br>或
-- 停止保護虛擬機器 (不論是否刪除備份資料)。 如需詳細資訊，請參閱[停止保護虛擬機器](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>
 
-## <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-因為儲存體帳戶中的可用空間不足，所以無法複製虛擬機器的快照集
+* 重新建立具有相同名稱和相同資源群組名稱 (**雲端服務名稱**) 的虛擬機器，<br>或
+* 停止保護虛擬機器 (不論是否刪除備份資料)。 如需詳細資訊，請參閱[停止保護虛擬機器](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>
+
+### <a name="usererrorbcmpremiumstoragequotaerror---could-not-copy-the-snapshot-of-the-virtual-machine-due-to-insufficient-free-space-in-the-storage-account"></a>UserErrorBCMPremiumStorageQuotaError-因為儲存體帳戶中的可用空間不足，所以無法複製虛擬機器的快照集
 
 錯誤碼：UserErrorBCMPremiumStorageQuotaError<br/> 錯誤訊息：無法複製虛擬機器的快照集，因為儲存體帳戶中的可用空間不足
 
  針對 VM 備份堆疊 V1 上的進階 VM，我們會將快照集複製到儲存體帳戶。 此步驟是為了確定快照集上運作的備份管理流量不會限制可供使用進階磁碟的應用程式使用的 IOPS 數目。 <br><br>我們建議您僅配置 50% (17.5 TB) 的總儲存體帳戶空間。 然後 Azure 備份服務便可以將快照集複製到儲存體帳戶，並從儲存體帳戶中的這個複製位置將資料傳送到到保存庫。
 
+### <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008，AzureVmOffline-無法安裝 Microsoft 復原服務延伸模組，因為虛擬機器並未執行
 
-## <a name="380008-azurevmoffline---failed-to-install-microsoft-recovery-services-extension-as-virtual-machine--is-not-running"></a>380008，AzureVmOffline-無法安裝 Microsoft 復原服務延伸模組，因為虛擬機器並未執行
 錯誤碼：380008, AzureVmOffline <br/> 錯誤訊息：安裝 Microsoft 復原服務延伸失敗，因為虛擬機器並未執行
 
 VM 代理程式是 Azure 復原服務延伸模組的必要條件。 請安裝 Azure 虛擬機器代理程式並重新啟動註冊作業。 <br> <ol> <li>檢查是否已正確安裝 VM 代理程式。 <li>確定已正確設定 VM 設定上的旗標。</ol> 深入了解如何安裝 VM 代理程式，以及如何驗證 VM 代理程式安裝。
 
-## <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-快照集作業失敗，發生磁碟區陰影複製服務（VSS）作業錯誤
+### <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-快照集作業失敗，發生磁碟區陰影複製服務（VSS）作業錯誤
+
 錯誤碼：ExtensionSnapshotBitlockerError <br/> 錯誤訊息：快照集作業失敗，發生磁碟區陰影複製服務（VSS）作業錯誤，**此磁片磁碟機已由 BitLocker 磁碟機加密鎖定。您必須從 [控制台] 解除鎖定這個磁片磁碟機。**
 
 對 VM 上的所有磁碟機關閉 BitLocker，並檢查是否已解決 VSS 問題。
 
-## <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>VmNotInDesirableState-VM 不是處於允許備份的狀態
+### <a name="vmnotindesirablestate---the-vm-isnt-in-a-state-that-allows-backups"></a>VmNotInDesirableState-VM 不是處於允許備份的狀態
+
 錯誤碼：VmNotInDesirableState <br/> 錯誤訊息：VM 目前的狀態不允許備份。
-- 如果 VM 處於 [正在執行] 和 [關機] 之間的暫時性狀態，請等候狀態變更。 然後再觸發備份作業。
-- 如果 VM 是 Linux VM 並使用安全性強化的 Linux 核心模組，請從安全性原則中排除 Azure Linux 代理程式路徑 **/var/lib/waagent**，並確定已安裝備份延伸模組。
 
-- 虛擬機器上沒有 VM 代理程式： <br>請安裝所有必要條件和 VM 代理程式。 接著請重新啟動作業。 |深入瞭解[Vm 代理程式安裝，以及如何驗證 Vm 代理程式安裝](#vm-agent)。
+* 如果 VM 處於 [正在執行] 和 [關機] 之間的暫時性狀態，請等候狀態變更。 然後再觸發備份作業。
+* 如果 VM 是 Linux VM 並使用安全性強化的 Linux 核心模組，請從安全性原則中排除 Azure Linux 代理程式路徑 **/var/lib/waagent**，並確定已安裝備份延伸模組。
 
+* 虛擬機器上沒有 VM 代理程式： <br>請安裝所有必要條件和 VM 代理程式。 接著請重新啟動作業。 |深入瞭解[Vm 代理程式安裝，以及如何驗證 Vm 代理程式安裝](#vm-agent)。
 
-## <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork-快照集作業失敗，因為無法建立安全的網路通道
+### <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork-快照集作業失敗，因為無法建立安全的網路通道
+
 錯誤碼：ExtensionSnapshotFailedNoSecureNetwork <br/> 錯誤訊息：快照集作業失敗，因為無法建立安全網路通訊通道。
-- 在提高權限的模式中執行 **regedit.exe**，來開啟登錄編輯程式。
-- 識別系統中存在的所有 .NET Framework 版本。 它們位於登錄機碼 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** 的階層下。
-- 針對登錄機碼中的每個 .NET Framework，新增下列機碼︰ <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>
 
+* 在提高權限的模式中執行 **regedit.exe**，來開啟登錄編輯程式。
+* 識別系統中存在的所有 .NET Framework 版本。 它們位於登錄機碼 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** 的階層下。
+* 針對登錄機碼中的每個 .NET Framework，新增下列機碼︰ <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>
 
-## <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure-快照集作業失敗，因為無法安裝適用於 Visual Studio 的 Visual C++ 可轉散發套件2012
+### <a name="extensionvcredistinstallationfailure---the-snapshot-operation-failed-because-of-failure-to-install-visual-c-redistributable-for-visual-studio-2012"></a>ExtensionVCRedistInstallationFailure-快照集作業失敗，因為無法安裝適用於 Visual Studio 的 Visual C++ 可轉散發套件2012
+
 錯誤碼：ExtensionVCRedistInstallationFailure <br/> 錯誤訊息：快照集作業失敗，因為無法安裝適用於 Visual Studio 2012 的 Visual C++ 可轉散發套件。
-- 瀏覽至 `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` 並安裝 vcredist2013_x64。<br/>確定允許服務安裝的登錄機碼值已設定為正確的值。 也就是說，將 **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** 中的 **Start** 值設定為 **3**，而不是 **4**。 <br><br>如果您仍遇到安裝問題，請從提高權限的命令提示字元執行 **MSIEXEC /UNREGISTER**，再執行 **MSIEXEC /REGISTER**，以重新啟動安裝服務。
-- 檢查事件記錄檔，以驗證您是否注意到存取相關的問題。 例如：*產品：Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- 錯誤 1401。無法建立機碼：Software\Classes。系統錯誤 5。請驗證您是否有足夠的權限存取該機碼，或是連絡支援人員。* <br><br> 請確定管理員或使用者帳戶具有足夠權限，可更新登錄機碼 **HKEY_LOCAL_MACHINE \SOFTWARE\Classes**。 提供足夠的權限，並重新啟動 Windows Azure 客體代理程式。<br><br> <li> 如果您已備妥防毒軟體，請確定其具有正確的排除規則以允許安裝。
 
+* 瀏覽至 `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` 並安裝 vcredist2013_x64。<br/>確定允許服務安裝的登錄機碼值已設定為正確的值。 也就是說，將 **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** 中的 **Start** 值設定為 **3**，而不是 **4**。 <br><br>如果您仍遇到安裝問題，請從提高權限的命令提示字元執行 **MSIEXEC /UNREGISTER**，再執行 **MSIEXEC /REGISTER**，以重新啟動安裝服務。
+* 檢查事件記錄檔，以驗證您是否注意到存取相關的問題。 例如：*產品：Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- 錯誤 1401。無法建立機碼：Software\Classes。系統錯誤 5。請驗證您是否有足夠的權限存取該機碼，或是連絡支援人員。* <br><br> 請確定管理員或使用者帳戶具有足夠權限，可更新登錄機碼 **HKEY_LOCAL_MACHINE \SOFTWARE\Classes**。 提供足夠的權限，並重新啟動 Windows Azure 客體代理程式。<br><br> <li> 如果您已備妥防毒軟體，請確定其具有正確的排除規則以允許安裝。
 
-## <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy-VM 上設定了不正確原則，導致無法進行快照操作
+### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy-VM 上設定了不正確原則，導致無法進行快照操作
+
 錯誤碼：UserErrorRequestDisallowedByPolicy <BR> 錯誤訊息：VM 上設定了會防止進行快照集作業的無效原則。
 
 如果您有[在環境內管理標籤](../governance/policy/tutorials/govern-tags.md)的 Azure 原則，請考慮將原則從[拒絕效果](../governance/policy/concepts/effects.md#deny)變更為[修改效果](../governance/policy/concepts/effects.md#modify)，或根據 [Azure 備份所需的命名結構描述](./backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)，手動建立資源群組。
@@ -312,7 +327,7 @@ VM 備份仰賴發給底層儲存體的快照命令。 無法存取儲存體或�
 
 * **已設定 SQL Server 備份的 VM 可能會造成快照集工作延遲**。 根據預設，VM 備份會在 Windows VM 上建立 VSS 完整備份。 執行 SQL Server 並已設定 SQL Server 備份的 VM，可能會遇到快照集延遲。 如果快照集延遲會導致備份失敗，請設定下列登錄機碼：
 
-   ```text
+   ```console
    [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
    "USEVSSCOPYBACKUP"="TRUE"
    ```
