@@ -5,23 +5,24 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681476"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433132"
 ---
 # <a name="override-materials-during-model-conversion"></a>在模型轉換期間覆寫材質
 
-在轉換期間，來源模型中的材質設定會用來定義轉譯器所使用的[.pbr 材質](../../overview/features/pbr-materials.md)。
+來源模型中的材質設定是用來定義轉譯器所使用的[.pbr 材質](../../overview/features/pbr-materials.md)。
 有時候，[預設轉換](../../reference/material-mapping.md)不會提供所需的結果，因此您需要進行變更。
 當模型轉換成在 Azure 遠端轉譯中使用時，您可以提供材質覆寫檔案，以自訂如何以每個材質為基礎來進行材質轉換。
 設定[模型轉換](configure-model-conversion.md)的一節包含宣告材質覆寫檔案名的指示。
 
 ## <a name="the-override-file-used-during-conversion"></a>轉換期間使用的覆寫檔案
 
-簡單的範例是，假設方塊模型有一個稱為「預設」的單一材質。 Albedo 色彩必須經過調整，才能在 ARR 中使用。
+簡單的範例是，假設方塊模型有一個稱為「預設」的單一材質。
+此外，假設其 albedo 色彩需要調整，以用於 ARR。
 在此情況下，可以建立一個檔案，如下 `box_materials_override.json` 所示：
 
 ```json
@@ -38,7 +39,7 @@ ms.locfileid: "80681476"
 ]
 ```
 
-檔案 `box_materials_override.json` 會放在輸入容器中，並在 `ConversionSettings.json` 旁邊加入，以 `box.fbx` 指示轉換何處尋找覆寫檔案（請參閱設定[模型轉換](configure-model-conversion.md)）：
+檔案 `box_materials_override.json` 會放在輸入容器中，並在 `box.ConversionSettings.json` 旁邊加入，以 `box.fbx` 指示轉換何處尋找覆寫檔案（請參閱設定[模型轉換](configure-model-conversion.md)）：
 
 ```json
 {
@@ -51,7 +52,7 @@ ms.locfileid: "80681476"
 ### <a name="color-materials"></a>色彩材質
 
 [色彩材質](../../overview/features/color-materials.md)模型描述與光源無關的持續陰影表面。
-例如，這適用于攝影測量演算法所製作的資產。
+例如，色彩材質適用于攝影測量演算法所製作的資產。
 在材質覆寫檔案中，將設定為，可以將材質宣告為色彩 `unlit` 材質 `true` 。
 
 ```json

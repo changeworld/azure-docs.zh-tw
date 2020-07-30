@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 3217a8e8ef011cb949444858601f1c93b8db14c7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 37b7e47d4cf70f6f4fb4e6a9364c12bbe69daf9d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292039"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423893"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>計算最佳化的虛擬機器大小
 
@@ -35,3 +35,5 @@ Fsv2 系列的每小時訂價較低，在 Azure 產品組合中，就每一 vCPU
 ## <a name="next-steps"></a>後續步驟
 
 深入了解 [Azure 計算單位 (ACU)](acu.md) 如何協助您比較各個 Azure SKU 的計算效能。
+
+如需 Azure 如何為其 Vm 命名的詳細資訊，請參閱[azure 虛擬機器大小命名慣例](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions)。

@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246512"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388113"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的登入活動報告
 
@@ -128,7 +128,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 **位置**-連接起始的位置：
 
-- City
+- 城市
 
 - 州/省
 
@@ -184,7 +184,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - **成功**：在登入期間套用至使用者和應用程式的一或多個條件式存取原則（但不一定是其他條件）。 
 
-- **失敗**：已套用一或多個條件式存取原則，但在登入期間未滿足。
+- **失敗**：登入符合至少一個條件式存取原則的使用者和應用程式條件，且未滿足或未將授與控制設定為封鎖存取。
 
 
 
@@ -231,14 +231,14 @@ Azure AD 和 Azure 入口網站都提供登入資料的額外進入點：
 按一下項目，即可取得有關登入作業的更多詳細資料：
 
 - 使用者識別碼
-- 使用者
+- User
 - 使用者名稱
 - 應用程式識別碼
-- Application
-- 用戶端
-- 位置
+- 應用程式
+- Client
+- Location
 - IP 位址
-- 日期
+- Date
 - 需要 MFA
 - 登入狀態
 

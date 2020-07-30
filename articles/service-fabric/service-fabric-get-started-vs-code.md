@@ -5,12 +5,13 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: b34893b64ac3533406f33c45583a911b70ae42af
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1480b5e1ddab86761adb1c7caef808de89a3d947
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247433"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428990"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>適用於 Visual Studio Code 的 Service Fabric
 
@@ -98,7 +99,7 @@ ms.locfileid: "86247433"
 **Service Fabric: Deploy Application** 命令會在本機叢集上部署您的 Service Fabric 應用程式。 在使用命令之前，請先確定您的本機叢集正在執行。 
 
 1. 選取 **Service Fabric: Deploy Application** 命令
-2.  (HTTP： \/ /localhost： 19080/Explorer) 來查看 Service Fabric Explorer 本機叢集，以確認已安裝應用程式。 這可能需要一些時間，請耐心等候。
+2. 使用 Service Fabric Explorer （HTTP： \/ /localhost： 19080/Explorer）來查看本機叢集，以確認已安裝應用程式。 這可能需要一些時間，請耐心等候。
 3. 您也可以於未在 Cloud.json 檔案中設定參數時使用 **Service Fabric: Publish Application** 命令，以部署到本機叢集。
 
 > [!NOTE]

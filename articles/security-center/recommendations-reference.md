@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: ff988dd382c5df5d764c7ab29e8a469f510ba7f9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9d03866858c9f8af521b27c5e36f882d9e0e177d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529330"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404968"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全性建議 - 參考指南
 
@@ -55,10 +55,12 @@ ms.locfileid: "86529330"
 
 |建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|資源類型|
 |----|----|----|----|----|
-|**Kubernetes Services 上應定義授權 IP 範圍**|僅將 API 存取權授與特定範圍內的 IP 位址，以限制對 Kubernetes Service 管理 API 的存取。 建議設定授權 IP 範圍，僅限來自允許網路的應用程式存取叢集。<br>(相關原則：[預覽]：Kubernetes Services 上應定義授權 IP 範圍)|高|否|計算資源 (容器)|
+|**應在 Azure Kubernetes Service 叢集上啟用進階威脅防護**|資訊安全中心可為您的容器化環境提供即時威脅防護，並產生可疑活動的警示。 您可以使用這項資訊來快速修復安全性問題，並改善您容器的安全性。<br>重要事項：補救此建議會導致保護您的 AKS 叢集的費用。 如果您在此訂用帳戶中沒有任何 AKS 叢集，則不會產生任何費用。 如果您未來在此訂用帳戶上建立任何 AKS 叢集，這些叢集將會自動受到保護，並將于該時間開始收費。<br>（相關原則：[應該在 Azure Kubernetes Service 叢集上啟用 Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)）|高|**Y**|訂用帳戶|
+|**Kubernetes Services 上應定義授權 IP 範圍**|僅將 API 存取權授與特定範圍內的 IP 位址，以限制對 Kubernetes Service 管理 API 的存取。 建議設定授權 IP 範圍，僅限來自允許網路的應用程式存取叢集。<br>(相關原則：[預覽]：Kubernetes Services 上應定義授權 IP 範圍)|高|N|計算資源 (容器)|
 |**應定義 Pod 安全性原則，藉由移除不必要的應用程式權限，減少攻擊媒介 (預覽)**|移除不必要的應用程式權限來定義 Pod 安全性原則，以減少攻擊媒介。 建議設定 Pod 安全性原則，如此 Pod 只能存取有權存取的資源。<br>(相關原則：[預覽]：Kubernetes Services 上應定義 Pod 安全性原則)|中|N|計算資源 (容器)|
 |**應使用角色型存取控制來限制對 Kubernetes Service 叢集的存取**|若要提供使用者可執行動作的細微篩選，請使用角色型存取控制 (RBAC) 來管理 Kubernetes Service 叢集中的權限，並設定相關的授權原則。 如需詳細資訊，請參閱 [Azure 角色型存取控制](https://docs.microsoft.com/azure/aks/concepts-identity#role-based-access-controls-rbac)。<br>(相關原則：[預覽]：應在 Kubernetes Service 上使用角色型存取控制 (RBAC))|中|N|計算資源 (容器)|
 |**應將 Kubernetes Service 升級為最新的 Kubernetes 版本**|將 Azure Kubernetes Service 叢集升級為最新的 Kubernetes 版本，以使用最新的弱點修補程式。 如需特定 Kubernetes 弱點的相關詳細資料，請參閱 [Kubernetes CVE](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=kubernetes)。<br>(相關原則：[預覽]：應將 Kubernetes Services 升級為不易受攻擊的 Kubernetes 版本)|高|否|計算資源 (容器)|
+|**應在 Azure Container Registry 登錄上啟用進階威脅防護**|若要建立安全的容器化工作負載，請確定它們所依據的映射沒有已知的弱點。 資訊安全中心會在每個推送的容器映射上掃描您的登錄是否有安全性弱點，並公開每個映射的詳細結果。<br>重要事項：補救此建議會導致保護您的 ACR 登錄的費用。 如果您在此訂用帳戶中沒有任何 ACR 登錄，則不會產生任何費用。 如果您未來在此訂用帳戶上建立任何 ACR 登錄，它們會自動受到保護，而且會從該時間開始收費。<br>（相關原則：[應該在 Azure Container Registry 登錄上啟用 Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)）|高|**Y**|訂用帳戶|
 |**Azure Container Registry 映像中應予補救的弱點 (Qualys 技術提供)**|容器映像弱點評定會掃描您的登錄，以判斷每個推送的容器映像是否有安全性弱點，並公開每個映像的詳細結果。 解決這些弱點可以大幅改善容器的安全性狀態，並保護容器免於遭受攻擊。<br>(無相關原則)|高|否|計算資源 (容器)|
 ||||||
 
@@ -67,6 +69,7 @@ ms.locfileid: "86529330"
 
 |建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|資源類型|
 |----|----|----|----|----|
+|**應在 Azure App Service 方案上啟用進階威脅防護**|資訊安全中心利用雲端的規模，以及 Azure 做為雲端提供者的可見度，來監視常見的 web 應用程式攻擊。<br>重要事項：補救此建議會導致保護 App Service 方案的費用。 如果您在此訂用帳戶中沒有任何 App Service 方案，則不會產生任何費用。 如果您日後在此訂用帳戶上建立任何 App Service 方案，它們會自動受到保護，而且會從該時間開始收費。<br>（相關原則：[應該在 Azure App Service 方案上啟用 Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)）|高|**Y**|訂用帳戶|
 |**Web 應用程式應只可經由 HTTPS 存取**|啟用 Web 應用程式的「僅限 HTTPS」存取。 使用 HTTPS 可確保伺服器/服務驗證，並保護傳輸中的資料不受網路層的竊聽攻擊。<br>(相關原則：Web 應用程式應只可經由 HTTPS 存取)|中|**Y**|App Service|
 |**函式應用程式應只可經由 HTTPS 存取**|啟用函式應用程式的「僅限 HTTPS」存取。 使用 HTTPS 可確保伺服器/服務驗證，並保護傳輸中的資料不受網路層的竊聽攻擊。<br>(相關原則：函式應用程式應只可經由 HTTPS 存取)|中|**Y**|App Service|
 |**API 應用程式應只可經由 HTTPS 存取**|僅限透過 HTTPS 存取 API Apps。<br>(相關原則：API 應用程式應只可經由 HTTPS 存取)|中|N|App Service|
@@ -84,6 +87,7 @@ ms.locfileid: "86529330"
 
 |建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|資源類型|
 |----|----|----|----|----|
+|**應該在虛擬機器上啟用先進的威脅防護**|資訊安全中心為您的虛擬機器工作負載提供即時威脅防護，並產生強化 recommmendations 以及有關可疑活動的警示。<br>您可以使用這項資訊來快速修復安全性問題，並改善虛擬機器的安全性。<br>重要事項：補救此建議會導致保護虛擬機器的費用。 如果您在此訂用帳戶中沒有任何虛擬機器，則不會產生任何費用。 如果您未來在此訂用帳戶上建立任何虛擬機器，它們會自動受到保護，而費用將會在該時間開始。<br>（相關原則：[應該在虛擬機器上啟用 Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)）|高|**Y**|訂用帳戶|
 |**應啟用 Azure 串流分析中的診斷記錄**|啟用記錄並保留最多一年。 這可讓您在發生安全性事件或網路遭到損害時，重新建立活動線索供調查之用。<br>(相關原則：應啟用 Azure 串流分析中的診斷記錄)|低|**Y**|計算資源 (串流分析)|
 |**應啟用 Batch 帳戶中的診斷記錄**|啟用記錄並保留最多一年。 這可讓您在發生安全性事件或網路遭到損害時，重新建立活動線索供調查之用。<br>(相關原則：應啟用 Batch 帳戶中的診斷記錄)|低|**Y**|計算資源 (Batch)|
 |**應啟用事件中樞內的診斷記錄**|啟用記錄並保留最多一年。 這可讓您在發生安全性事件或網路遭到損害時，重新建立活動線索供調查之用。<br>(相關原則：應啟用事件中樞內的診斷記錄)|低|**Y**|計算資源 (事件中樞)|
@@ -108,8 +112,8 @@ ms.locfileid: "86529330"
 |**您應在機器上安裝系統更新**|安裝缺少的系統安全性與重大更新，以保護您的 Windows 及 Linux 虛擬機器與電腦<br>(相關原則：您應在機器上安裝系統更新)|高|N|電腦|
 |**應在 Linux 虛擬機器上安裝網路流量資料收集代理程式 (預覽)**|資訊安全中心使用 Microsoft Monitoring Dependency Agent 從您的 Azure 虛擬機器收集網路流量資料，以啟用進階網路保護功能，如網路對應上的流量視覺效果、網路強化建議與特定網路威脅。<br>(相關原則：[預覽]：應在 Linux 虛擬機器上安裝網路流量資料收集代理程式)|中|**Y**|電腦|
 |**應在 Windows 虛擬機器上安裝網路流量資料收集代理程式 (預覽)**|資訊安全中心使用 Microsoft Monitoring Dependency Agent 從您的 Azure 虛擬機器收集網路流量資料，以啟用進階網路保護功能，如網路對應上的流量視覺效果、網路強化建議與特定網路威脅。<br>(相關原則：[預覽]：應在 Windows 虛擬機器上安裝網路流量資料收集代理程式)|中|**Y**|電腦|
-|**在虛擬機器上啟用內建弱點評定解決方案**|安裝 Qualys 代理程式 (內建 Azure 資訊安全中心標準層供應項目)，以在您的虛擬機器上啟用最優秀的弱點評定解決方案。<br>(相關原則：[預覽] 應在虛擬機器上啟用弱點評定)|中|**Y**|電腦|
-|**補救在您的虛擬機器上發現的弱點 (Qualys 技術提供)**|監視 Azure 資訊安全中心內建弱點評定解決方案在您虛擬機器上發現的弱點 (Qualys 技術提供)。<br>(相關原則：[預覽] 應在虛擬機器上啟用弱點評定)|低|N|電腦|
+|**在虛擬機器上啟用內建弱點評定解決方案**|安裝 Qualys 代理程式 (內建 Azure 資訊安全中心標準層供應項目)，以在您的虛擬機器上啟用最優秀的弱點評定解決方案。<br>（相關原則：[應該在虛擬機器上啟用弱點評估](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9)）|中|**Y**|電腦|
+|**補救在您的虛擬機器上發現的弱點 (Qualys 技術提供)**|監視 Azure 資訊安全中心內建弱點評定解決方案在您虛擬機器上發現的弱點 (Qualys 技術提供)。<br>（相關原則：弱點評估應在虛擬機器上啟用）|低|N|電腦|
 |**應重新啟動機器以套用系統更新**|重新啟動機器，以套用系統更新及避免機器受到弱點損害。<br>(無相關原則 - 取決於「您應在機器上安裝系統更新」)|中|N|電腦|
 |**應加密自動化帳戶變數**|儲存敏感性資料時，啟用自動化帳戶變數資產加密。<br>(相關原則：應對自動化帳戶變數啟用加密)|高|否|計算資源 (自動化帳戶)|
 |**應在虛擬機器上套用磁碟加密**|使用「Azure 磁碟加密」為 Windows 和 Linux 虛擬機器磁碟加密虛擬機器磁碟。 「Azure 磁碟加密」(ADE) 利用 Windows 的業界標準 BitLocker 功能及 Linux 的 DM-Crypt 功能來提供 OS 和資料磁碟加密，以協助您在客戶 Azure Key Vault 中保護資料並滿足組織的安全性與合規性承諾。 當您的合規性與安全性需求要求您使用加密金鑰來進行端對端資料加密 (包括加密暫時磁碟 (本機連結的臨時磁碟)) 時，請使用「Azure 磁碟加密」。 或者，系統預設會使用「Azure 儲存體服務加密」將待用的「受控磁碟」加密，其中加密金鑰為 Azure 中的 Microsoft 受控金鑰。 如果這符合您的合規性與安全性需求，您便可以利用預設的受控磁碟加密來滿足您的需求。<br>(相關原則：應在虛擬機器上套用磁碟加密)|高|N|電腦|
@@ -130,8 +134,8 @@ ms.locfileid: "86529330"
 |**應補救虛擬機器擴展集上失敗的端點保護健康情況**|修復虛擬機器擴展集的端點保護健康狀態失敗，避免其遭受威脅與弱點的傷害。<br>(無相關原則 - 取決於「應在虛擬機器擴展集上安裝端點保護解決方案」)|低|N|虛擬機器擴展集|
 |**應在虛擬機器擴展集上安裝端點保護解決方案**|在虛擬機器擴展集上安裝端點保護解決方案，避免其遭受威脅及弱點的傷害。<br>(相關原則：應在虛擬機器擴展集上安裝端點保護解決方案)|高|N|虛擬機器擴展集|
 |**應於虛擬機器擴展集上安裝監視代理程式**|資訊安全中心使用 Microsoft Monitoring Agent (MMA) 從 Azure 虛擬機器擴展集收集安全性事件。 您無法為 Azure 虛擬機器擴展集設定 MMA 的自動佈建。 若要在虛擬機器擴展集上部署 MMA (包括 Azure 受控服務使用的擴展集，例如 Azure Kubernetes Service 和 Azure Service Fabric)，請遵循修復步驟中的程序。|高|**Y**|虛擬機器擴展集|
-|**應在虛擬機器擴展集上安裝系統更新**|安裝遺漏的系統安全性及重大更新，以保護您的 Windows 與 Linux 虛擬機器擴展集。<br>(相關原則：應在虛擬機器擴展集上安裝系統更新)|高|N|虛擬機器擴展集|
-|**應修復虛擬機器擴展集上安全性組態的弱點**|修復虛擬機器擴展集之安全性設定中的弱點，避免其遭受攻擊。 <br>(相關原則：應修復虛擬機器擴展集上安全性組態的弱點)|高|N|虛擬機器擴展集|
+|**應在虛擬機器擴展集上安裝系統更新**|安裝遺漏的系統安全性及重大更新，以保護您的 Windows 與 Linux 虛擬機器擴展集。<br>(相關原則：應在虛擬機器擴展集上安裝系統更新)|高|否|虛擬機器擴展集|
+|**應修復虛擬機器擴展集上安全性組態的弱點**|修復虛擬機器擴展集之安全性設定中的弱點，避免其遭受攻擊。 <br>(相關原則：應修復虛擬機器擴展集上安全性組態的弱點)|高|否|虛擬機器擴展集|
 ||||||
 
 
@@ -139,22 +143,25 @@ ms.locfileid: "86529330"
 
 |建議|描述與相關原則|Severity|是否啟用快速修正？([深入了解](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|資源類型|
 |----|----|----|----|----|
+|**Azure SQL Database 伺服器應啟用進階資料安全性**|Advanced data security 是整合的封裝，提供先進的 SQL 安全性功能。 其中包括呈現和減輕潛在資料庫弱點的功能、偵測可能表示對資料庫有威脅的異常活動，以及探索和分類敏感性資料。 <br>重要事項：補救此建議會導致保護您 Azure SQL Database 伺服器的費用。 如果您在此訂用帳戶中沒有任何 Azure SQL Database 伺服器，則不會產生任何費用。 如果您在未來于此訂用帳戶上建立任何 Azure SQL Database 伺服器，它們會自動受到保護，而且會從該時間開始收費。<br>（相關原則：[應該在 Azure SQL Database 伺服器上啟用 Advanced data security](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)）|高|**Y**|訂用帳戶|
+|**應在機器上的 SQL 伺服器啟用進階資料安全性**|Advanced data security 是整合的封裝，提供先進的 SQL 安全性功能。 其中包括呈現和減輕潛在資料庫弱點的功能、偵測可能表示對資料庫有威脅的異常活動，以及探索和分類敏感性資料。 <br>重要事項：補救這項建議會導致在電腦上保護 SQL server 的費用。 如果您在此訂用帳戶中的電腦上沒有任何 SQL server，則不會產生任何費用。 如果您未來在此訂用帳戶上的電腦上建立任何 SQL server，這些伺服器會自動受到保護，而且會從該時間開始收費。<br>（相關原則：您[應該在電腦上的 SQL server 上啟用 Advanced data security](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b)）|高|**Y**|訂用帳戶|
+|**應在 Azure 儲存體帳戶上啟用進階威脅防護**|儲存體的先進威脅防護會偵測到不尋常且可能有害的嘗試存取或惡意探索儲存體帳戶。<br>重要事項：補救此建議會導致保護您 Azure 儲存體帳戶的費用。 如果您在此訂用帳戶中沒有任何 Azure 儲存體帳戶，則不會產生任何費用。 如果您在未來于此訂用帳戶上建立任何 Azure 儲存體帳戶，它們會自動受到保護，而且會從該時間開始收費。<br>（相關原則：[應該在 Azure 儲存體帳戶上啟用 Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)）|高|**Y**|訂用帳戶|
 |**應限制存取具防火牆與虛擬網路設定的儲存體帳戶**|稽核儲存體帳戶防火牆設定中不受限制的網路存取。 請改為設定網路規則，只允許來自認可之網路的應用程式存取儲存體帳戶。 若要允許來自特定網際網路或內部部署用戶端的連線，可將存取權授與來自特定 Azure 虛擬網路的流量，或授與公用網際網路 IP 位址範圍。<br>(相關原則：稽核不受限制的儲存體帳戶網路存取)|低|N|儲存體帳戶|
 |**應在受控執行個體上啟用進階資料安全性**|進階資料安全性 (ADS) 是提供進階 SQL 安全性功能的整合套件。 其可探索和分類敏感性資料、找出潛在資料庫弱點並減低其風險，及偵測可能代表資料庫受威脅的異常活動。 廣告的費用為每個受控實例 $15。<br>（相關原則：您應該在 SQL 受控執行個體上啟用 Advanced data security）|高|**Y**|SQL|
 |**應在 SQL 伺服器上啟用進階資料安全性**|進階資料安全性 (ADS) 是提供進階 SQL 安全性功能的整合套件。 其可探索和分類敏感性資料、找出潛在資料庫弱點並減低其風險，及偵測可能代表資料庫受威脅的異常活動。 ADS 的費用是每個 SQL 伺服器 $15 美元。<br>(相關原則：應在 SQL 伺服器上啟用進階資料安全性)|高|**Y**|SQL|
-|**應為 SQL Database 布建 Azure Active Directory 系統管理員**|為您的 SQL Database 布建 Azure AD 系統管理員，以啟用 Azure AD 驗證。 Azure AD 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。<br>(相關原則：稽核 SQL 伺服器的 Azure Active Directory 管理員佈建)|高|否|SQL|
+|**應為 SQL Database 布建 Azure Active Directory 系統管理員**|為您的 SQL Database 布建 Azure AD 系統管理員，以啟用 Azure AD 驗證。 Azure AD 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。<br>(相關原則：稽核 SQL 伺服器的 Azure Active Directory 管理員佈建)|高|N|SQL|
 |**應該啟用 SQL Database 上的審核**|啟用 SQL Database 的審核。 <br>（相關原則：您應該針對伺服器的 advanced data security 設定，啟用 SQL Database 的審核）|低|**Y**|SQL|
 |**應在 Azure Data Lake Store 中啟用診斷記錄**|啟用記錄並保留最多一年。 這可讓您在發生安全性事件或網路遭到損害時，重新建立活動線索供調查之用。<br>(相關原則：應在 Azure Data Lake Store 中啟用診斷記錄)|低|**Y**|Data Lake Store|
 |**應在 Data Lake Analytics 中啟用診斷記錄**|啟用記錄並保留最多一年。 這可讓您在發生安全性事件或網路遭到損害時，重新建立活動線索供調查之用。<br>(相關原則：應在 Data Lake Analytics 中啟用診斷記錄)|低|**Y**|Data Lake 分析|
-|**應該只允許對 Redis Cache 的安全連線**|只允許透過 SSL 對 Azure Cache for Redis 進行連線。 使用安全連線可確保伺服器與服務之間的驗證，避免傳輸中的資料遭受網路層的攻擊，例如中間人攻擊、竊聽及工作階段劫持。<br>(相關原則：應該只允許對 Azure Cache for Redis 的安全連線)|高|N|Redis|
+|**應該只允許對 Redis Cache 的安全連線**|只允許透過 SSL 對 Azure Cache for Redis 進行連線。 使用安全連線可確保伺服器與服務之間的驗證，避免傳輸中的資料遭受網路層的攻擊，例如中間人攻擊、竊聽及工作階段劫持。<br>(相關原則：應該只允許對 Azure Cache for Redis 的安全連線)|高|否|Redis|
 |**應啟用儲存體帳戶的安全傳輸**|安全傳輸這個選項會強制您的儲存體帳戶僅接受來自安全連線 (HTTPS) 的要求。 HTTPS 可確保伺服器與服務之間的驗證，避免傳輸中的資料遭受網路層的攻擊，例如中間人攻擊、竊聽及工作階段劫持。<br>(相關原則：應啟用儲存體帳戶的安全傳輸)|高|否|儲存體帳戶|
-|**應分類 SQL 資料庫中的敏感性資料**|Azure SQL Database 資料探索 & 分類可提供功能來探索、分類、標記和保護資料庫中的敏感性資料。 一旦您的資料經過分類，您就可以使用 Azure SQL Database 的審核來審核存取和監視敏感性資料。 Azure SQL Database 也會啟用先進的威脅防護功能，根據機密資料的存取模式變更來建立智慧型警示。<br>(相關原則：[預覽]：應分類 SQL 資料庫中的敏感性資料)|高|否|SQL|
+|**應分類 SQL 資料庫中的敏感性資料**|Azure SQL Database 資料探索 & 分類可提供功能來探索、分類、標記和保護資料庫中的敏感性資料。 一旦您的資料經過分類，您就可以使用 Azure SQL Database 的審核來審核存取和監視敏感性資料。 Azure SQL Database 也會啟用先進的威脅防護功能，根據機密資料的存取模式變更來建立智慧型警示。<br>(相關原則：[預覽]：應分類 SQL 資料庫中的敏感性資料)|高|N|SQL|
 |**儲存體帳戶應移轉至新的 Azure Resource Manager 資源**|在您的儲存體帳戶使用新的 Azure Resource Manager 以加強安全性，除了增強存取控制 (RBAC)、改善稽核、提供以 Resource Manager 為基礎的部署及治理、受控身分識別的存取、金鑰保存庫的祕密存取，以及以 Azure AD 為基礎的驗證，還支援標記和資源群組，讓安全性管理更加輕鬆。<br>(相關原則：儲存體帳戶應移轉至新的 Azure Resource Manager 資源)|低|N|儲存體帳戶|
 |**應在 SQL 資料庫上啟用透明資料加密**|啟用透明資料加密，以保護待用資料及符合合規要求。<br>(相關原則：應在 SQL 資料庫上啟用透明資料加密)|低|**Y**|SQL|
 |**應該在 SQL Database 上啟用弱點評估**|弱點評估可發現、追蹤並協助您補救資料庫的潛在弱點。<br>(相關原則：弱點評估應於您的 SQL 伺服器上啟用)|高|**Y**|SQL|
 |**應在 SQL 受控執行個體上啟用弱點評定**|弱點評估可發現、追蹤並協助您補救資料庫的潛在弱點。<br>（相關原則：弱點評估應該在 SQL 受控執行個體上啟用）|高|**Y**|SQL|
 |**應補救機器上 SQL server 上的弱點**|SQL 弱點評定會掃描資料庫有無安全性弱點，並公開任何與最佳做法不同的差異，例如設定不正確、過多權限，以及未保護敏感性資料等等。 解決找到的弱點可以大幅改進資料庫的安全性等級。|高|否|SQL|
-|**應修復 SQL 資料庫的弱點**|SQL 弱點評定會掃描資料庫有無安全性弱點，並公開任何與最佳做法不同的差異，例如設定不正確、過多權限，以及未保護敏感性資料等等。 解決找到的弱點可以大幅改進資料庫的安全性等級。<br>(相關原則：應修復 SQL 資料庫的弱點)|高|N|SQL|
+|**應修復 SQL 資料庫的弱點**|SQL 弱點評定會掃描資料庫有無安全性弱點，並公開任何與最佳做法不同的差異，例如設定不正確、過多權限，以及未保護敏感性資料等等。 解決找到的弱點可以大幅改進資料庫的安全性等級。<br>(相關原則：應修復 SQL 資料庫的弱點)|高|否|SQL|
 ||||||
 
 
@@ -172,6 +179,7 @@ ms.locfileid: "86529330"
 |**已取代帳戶應該從您的訂用帳戶中移除**|從訂用帳戶中移除不再使用的帳戶，以僅允許目前的使用者存取。<br>(相關原則：已取代帳戶應該從您的訂閱中移除)|高|N|訂用帳戶|
 |**應將一個以上的擁有者指派給您的訂用帳戶**|指定多位訂用帳戶擁有者，以擁有系統管理員存取備援。<br>(相關原則：應將一個以上的擁有者指派給您的訂閱)|高|N|訂用帳戶|
 |**應針對您的訂用帳戶指定最多 3 位擁有者**|指定少於三位的訂閱擁有者，以降低遭入侵擁有者導致資料外洩的可能。<br>(相關原則：應針對您的訂閱指定最多 3 位擁有者)|高|N|訂用帳戶|
+|**應在 Azure Key Vault 保存庫上啟用進階威脅防護**|Azure 資訊安全中心包含適用於 Azure Key Vault 的 Azure 原生進階威脅防護，可額外提供多一層的安全情報。<br>重要事項：補救此建議會導致保護 AKV 保存庫的費用。 如果您在此訂用帳戶中沒有任何 AKV 保存庫，則不會產生任何費用。 如果您日後在此訂用帳戶上建立任何 AKV 保存庫，它們會自動受到保護，而且會從該時間開始收費。<br>（相關原則：[應該在 Azure Key Vault 保存庫上啟用 Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)）|高|**Y**|訂用帳戶|
 |**應啟用 Key Vault 中的診斷記錄**|啟用記錄並保留最多一年。 這可讓您在發生安全性事件或網路遭到損害時，重新建立活動線索供調查之用。<br>(相關原則：應啟用 Key Vault 中的診斷記錄)|低|**Y**|Key Vault|
 ||||||
 

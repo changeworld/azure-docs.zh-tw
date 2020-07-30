@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 07/14/2020
-ms.openlocfilehash: f3589fb9ae176e04f727f516cca7c18c87dad9e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/29/2020
+ms.openlocfilehash: 3c5c86f89882654e44f924ce0a19d4d71713144d
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317496"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431698"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>取得 VM 映像的共用存取簽章 URI
 
@@ -31,17 +31,15 @@ ms.locfileid: "87317496"
 
 有兩個常用的工具可用來建立 SAS 位址 (URL)：
 
-* **Microsoft 儲存體總管** – 適用於 Windows、macOS 和 Linux 的圖形化工具。
+* **Microsoft 儲存體總管**– Azure 入口網站中提供的圖形化工具。
 * **Microsoft Azure CLI** – 建議用於非 Windows 作業系統和自動化或持續整合環境。
 
 ### <a name="use-microsoft-storage-explorer"></a>使用 Microsoft 儲存體總管
 
-1. 下載並安裝 [Microsoft Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)。
-2. 開啟瀏覽器，然後在左側功能表中，選取 [新增帳戶]。 隨即出現 [連線至 Azure 儲存體] 對話方塊。
-3. 選取 [新增 Azure 帳戶]，然後 [登入]。 完成所需的步驟以登入 Azure 帳戶。
-4. 在左側 [Explorer] 窗格中，移至您的 [儲存體帳戶]，並展開此節點。
-5. 以滑鼠右鍵按一下您的 VHD，然後選取 [取得共用存取簽章]。
-6. 隨即出現 [共用存取簽章] 對話方塊。 完成以下欄位：
+1. 在 Azure 入口網站中，移至您的儲存體帳戶。
+2. 在左側的 [Explorer] 窗格中，開啟 [**儲存體總管**（預覽）] 工具。
+3. 以滑鼠右鍵按一下您的 VHD，然後選取 [**取得共用存取**簽章]。
+4. 隨即出現 [共用存取簽章] 對話方塊。 完成以下欄位：
 
     * **開始時間** – VHD 存取的權限開始日期。 提供目前日期前一天的日期。
     * **到期時間** – VHD 存取的權限到期日。 提供至少超過目前日期三週的日期。
@@ -50,20 +48,11 @@ ms.locfileid: "87317496"
 
         :::image type="content" source="media/create-sas-uri-storage-explorer.png" alt-text="說明 [共用存取簽章] 對話方塊":::
 
-7. 若要建立此 VHD 相關聯的 SAS URI，請選取 [建立]。 對話方塊會重新整理並顯示此作業的相關詳細資料。
-8. 複製 **URI**，並將其儲存到安全位置的文字檔中。
+5. 若要建立此 VHD 相關聯的 SAS URI，請選取 [建立]。 對話方塊會重新整理並顯示此作業的相關詳細資料。
+6. 複製 **URI**，並將其儲存到安全位置的文字檔中。
 
     :::image type="content" source="media/create-sas-uri-shared-access-signature-details.png" alt-text="說明 [共用存取簽章] 詳細資料方塊":::
-
-    產生的 SAS URI 適用於容器層級存取。 若要讓其變成特定名稱，請編輯文字檔以加入 VHD 名稱 (下一個步驟)。
-
-9. 在 SAS URI 中的 vhds 字串後面插入您的 VHD 名稱 (包含前置正斜線)。 最終 SAS URI 應如下：
-
-    `<blob-service-endpoint-url> + /vhds/ + <vhd-name>? + <sas-connection-string>` 例如，如果 VDH 名稱為 `TestRGVM2.vhd`，則產生的 SAS URI 會是：
-
-    `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
-
-10. 針對您將發佈之方案中的每個 VHD 重複這些步驟。
+7. 針對您將發佈之方案中的每個 VHD 重複這些步驟。
 
 ### <a name="using-azure-cli"></a>使用 Azure CLI
 

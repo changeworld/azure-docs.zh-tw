@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 08e70265399a67ee58ad66e06adffbfd30b20e10
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b43b20023aa0d96dcaa3ce79b626d61ec6f6752d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289236"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423826"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
@@ -97,7 +97,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 若要瞭解如何驗證和指派角色，請參閱[在 Azure 入口網站中使用 RBAC 授與 Azure blob 和佇列資料的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
-> 請記住，RBAC 角色指派最多可能需要五分鐘的時間來傳播。
+> 請記住，Azure 角色指派最多可能需要五分鐘的時間來傳播。
 
 如果您的安全性主體已新增至目標容器或目錄的存取控制清單（ACL），則您不需要將這些角色指派給您的安全性主體。 在 ACL 中，您的安全性主體需要目標目錄的寫入權限，以及容器和每個父目錄的執行許可權。
 
@@ -271,7 +271,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 若要取得連結，請執行此命令：
 
-| 作業系統  | 命令 |
+| 作業系統  | Command |
 |--------|-----------|
 | **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
@@ -281,7 +281,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 此 URL 會出現在此命令的輸出中。 接著，您的腳本就可以使用該 URL 來下載 AzCopy。
 
-| 作業系統  | 命令 |
+| 作業系統  | Command |
 |--------|-----------|
 | **Linux** | `wget -O azcopy_v10.tar.gz https://aka.ms/downloadazcopy-v10-linux && tar -xf azcopy_v10.tar.gz --strip-components=1` |
 | **Windows** | `Invoke-WebRequest https://azcopyvnext.azureedge.net/release20190517/azcopy_windows_amd64_10.1.2.zip -OutFile azcopyv10.zip <<Unzip here>>` |

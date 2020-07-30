@@ -8,20 +8,18 @@ ms.topic: reference
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3331a0a9a8d3fb5d028d801d334daf2dbfa25235
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5638cd9973c6a4df809e0b200efe85b067aae026
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337325"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407790"
 ---
-# <a name="iot-plug-and-play-libraries-and-sdks"></a>IoT 隨插即用程式庫和 Sdk
+# <a name="microsoft-sdks-for-iot-plug-and-play"></a>適用于 IoT 隨插即用的 Microsoft Sdk
 
 IoT 隨插即用程式庫和 Sdk 可讓開發人員在多個平臺上使用各種程式設計語言來建立 IoT 解決方案。 下表包含範例和快速入門的連結，可協助您開始使用：
 
-## <a name="microsoft-sdks-for-iot-plug-and-play"></a>適用于 IoT 隨插即用的 Microsoft Sdk
-
-**裝置 SDK**
+## <a name="device-sdks-ga"></a>裝置 Sdk （GA）
 
 | Language | Package | 程式碼存放庫 | 範例 | 快速入門 | 參考 |
 |---|---|---|---|---|---|
@@ -31,14 +29,23 @@ IoT 隨插即用程式庫和 Sdk 可讓開發人員在多個平臺上使用各�
 | Python-裝置 | [pip 2.1。4](https://pypi.org/project/azure-iot-device/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/master/) | [範例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/pnp) | [連線至 IoT 中樞](quickstart-connect-device-python.md) | [參考](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device?view=azure-python) |
 | 節點-裝置 | [npm 1.17.0 或](https://www.npmjs.com/package/azure-iot-device)  | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/master/) | [範例](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/pnp) | [連線至 IoT 中樞](quickstart-connect-device-node.md) | [參考](https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-node-latest) |
 
-**服務 Sdk （預覽）**
+## <a name="device-sdks-preview"></a>裝置 Sdk （預覽）
+
+| 語言 | 程式碼存放庫/範例 |
+|---|---|
+|適用于 Embedded 的 Azure SDK| [GitHub](https://github.com/Azure/azure-sdk-for-c/#) |
+|Azure RTO IoT 中介軟體| [GitHub](https://github.com/azure-rtos/azure-iot-preview#) |
+|Azure RTO 快速入門手冊 | [GitHub](https://github.com/azure-rtos/getting-started) |
+
+## <a name="service-sdks-preview"></a>服務 Sdk （預覽）
 
 | Language | Package | 程式碼存放庫 | 範例 | 快速入門 | 參考 |
 |---|---|---|---|---|---|
-| .NET-IoT 中樞服務預覽 | [NuGet 1.27.1-預覽-002](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.27.1-preview-002 ) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp/tree/pnp-preview-refresh) | [範例](https://github.com/Azure/azure-iot-sdk-csharp/tree/pnp-preview-refresh/iothub/service/samples/PnpServiceSamples) | NA | [參考](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet) |
-| JAVA-IoT 中樞服務預覽 | [Maven 1.1。0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client-preview/1.1.0) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/pnp-preview-refresh) | [範例](https://github.com/Azure/azure-iot-sdk-java/tree/pnp-preview-refresh/service/iot-service-samples/pnp-service-sample) | NA | [參考](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service?view=azure-java-stable) |
-| Python-IoT 中樞/數位 Twins 服務預覽 | [pip 2.2.1 rc1](https://pypi.org/project/azure-iot-hub/2.2.1rc1/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/pnp-preview-refresh) | [範例](https://github.com/Azure/azure-iot-sdk-python/tree/pnp-preview-refresh/azure-iot-hub/samples) | [與 IoT 中樞數位 Twins API 互動](quickstart-service-python.md) | [參考](https://docs.microsoft.com/python/api/azure-iot-hub/?view=azure-python) |
-| 節點 IoT 中樞/數位 Twins 服務預覽 | [npm 1.0.0-pnp-重新整理。3](https://www.npmjs.com/package/azure-iot-digitaltwins-service/v/1.0.0-pnp-refresh.3) | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh/) | [範例](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh/digitaltwins/samples/service/javascript) | [與 IoT 中樞數位 Twins API 互動](quickstart-service-node.md) | [參考](https://docs.microsoft.com/javascript/api/azure-iothub/?view=azure-node-latest) |
+| .NET-IoT 中樞服務預覽 | [NuGet 1.27.1-預覽-002](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.27.1-preview-002 ) | [GitHub](https://github.com/Azure/azure-iot-sdk-csharp/tree/pnp-preview-refresh) | [範例](https://github.com/Azure/azure-iot-sdk-csharp/tree/pnp-preview-refresh/iothub/service/samples/PnpServiceSamples) | 不適用 | N/A |
+| JAVA-IoT 中樞服務預覽 | [Maven 1.1。0](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot/iot-service-client-preview/1.1.0) | [GitHub](https://github.com/Azure/azure-iot-sdk-java/tree/pnp-preview-refresh) | [範例](https://github.com/Azure/azure-iot-sdk-java/tree/pnp-preview-refresh/service/iot-service-samples/pnp-service-sample) | 不適用 | N/A |
+| 節點 IoT 中樞服務預覽 | [npm 1.12.4-pnp-重新整理4](https://www.npmjs.com/package/azure-iothub/v/1.12.4-pnp-refresh.4) | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh/) | [範例](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh/service/samples) | 不適用 | N/A |
+| Python-IoT 中樞/數位 Twins 服務預覽 | [pip 2.2.1 rc1](https://pypi.org/project/azure-iot-hub/2.2.1rc1/) | [GitHub](https://github.com/Azure/azure-iot-sdk-python/tree/pnp-preview-refresh) | [範例](https://github.com/Azure/azure-iot-sdk-python/tree/pnp-preview-refresh/azure-iot-hub/samples) | [與 IoT 中樞數位 Twins API 互動](quickstart-service-python.md) | N/A |
+| 節點-數位 Twins 服務預覽 | [npm 1.0.0-pnp-重新整理。3](https://www.npmjs.com/package/azure-iot-digitaltwins-service/v/1.0.0-pnp-refresh.3) | [GitHub](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh/) | [範例](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh/digitaltwins/samples/service/javascript) | [與 IoT 中樞數位 Twins API 互動](quickstart-service-node.md) | N/A |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 1956090f1b927d9fd4e205eaa57bf1952cb1b070
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f80403946b3097e81678383c4829ef6606f26cd6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083985"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430344"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure 資訊安全中心中增強的安全分數
 
@@ -169,6 +169,10 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">啟用稽核和記錄功能 (最高分數 1)</p></strong>記錄資料可讓您深入解析過去的問題、防止可能的問題、改善應用程式效能，並提供將手動動作自動化的功能。<br>- <strong>控制和管理記錄</strong>提供 <a href="https://docs.microsoft.com/azure/azure-resource-manager/management/overview">Azure Resource Manager</a> 作業的相關資訊。<br>- <strong>資料平面記錄</strong>提供使用 Azure 資源時所引發事件的相關資訊。<br>- <strong>已處理的事件</strong>提供分析已處理事件/警示的相關資訊。</td>
     <td class="tg-lboi"; width=55%>- 應啟用 SQL 伺服器上的稽核<br>- 應啟用 App Service 中的診斷記錄<br>- 應啟用 Azure Data Lake Store 中的診斷記錄<br>- 應啟用 Azure 串流分析中的診斷記錄<br>- 應啟用 Batch 帳戶中的診斷記錄<br>- 應啟用 Data Lake Analytics 中的診斷記錄<br>- 應啟用事件中樞中的診斷記錄<br>- 應啟用 IoT 中樞中的診斷記錄<br>- 應啟用 Key Vault 中的診斷記錄<br>- 應啟用 Logic Apps 中的診斷記錄<br>- 應啟用搜尋服務中的診斷記錄<br>- 應啟用服務匯流排中的診斷記錄<br>- 應啟用虛擬機器擴展集中的診斷記錄<br>- Batch 帳戶上應設定計量警示規則<br>- SQL 稽核設定應已設定動作群組來擷取重要活動<br>- SQL 伺服器應設定有 90 天以上的稽核保留天數</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">啟用先進的威脅防護（最大分數0）</p></strong>Azure 資訊安全中心的威脅防護為您的環境提供全面的防護。 資訊安全中心在您環境的任何區域中偵測到威脅時，會產生警示。 這些警示會說明受影響資源的詳細資料、建議的補救步驟，以及在某些情況下會說明觸發邏輯應用程式以進行回應的選項。<br>每個威脅防護配套都是個別的選擇性供應專案，您可以使用此安全性控制中的相關建議來啟用。<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">深入瞭解資訊安全中心中的威脅防護</a>。</td>
+    <td class="tg-lboi"; width=55%>-應該在 Azure SQL Database 伺服器上啟用 Advanced data security<br>-應該在電腦上的 SQL server 上啟用 Advanced data security<br>-應該在虛擬機器上啟用先進的威脅防護<br>-應該在 Azure App Service 方案上啟用先進的威脅防護<br>-應該在 Azure 儲存體帳戶上啟用 Advanced 威脅防護<br>-應該在 Azure Kubernetes Service 叢集上啟用先進的威脅防護<br>-應在 Azure Container Registry 登錄上啟用 Advanced 威脅防護<br>-應該在 Azure Key Vault 保存庫上啟用先進的威脅防護</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">實作安全性最佳做法 (最高分數 0)</p></strong>現代的安全性最佳做法「假定」網路周邊有缺口。 基於這個理由，此控制項中的許多最佳做法都著重於管理身分識別。<br>遺失金鑰和認證是相當常見的問題。 <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> 藉由加密金鑰、.pfx 檔案、密碼來保護金鑰和秘密。<br>虛擬私人網路 (VPN) 是存取虛擬機器的安全方式。 如果沒有 VPN 可用 ，請使用複雜的密碼和雙重要素驗證，例如 <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure 多重要素驗證</a>。 雙重要素驗證可避免只依賴使用者名稱和密碼而固有的弱點。<br>使用增強式驗證和授權平台是另一個最佳做法。 使用同盟身分識別可讓組織將已授權身分的管理委派他人。 當員工離職，而必須撤銷他們的存取權時，這很重要。</td>

@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 65778d0a6ba3bd5cdc719609ae4c2d18bf05aab9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80632530"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424404"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 至 Azure 災害復原架構
 
@@ -32,8 +32,25 @@ ms.locfileid: "80632530"
 
 **VMware 至 Azure 架構**
 
-![單元](./media/vmware-azure-architecture/arch-enhanced.png)
+![元件](./media/vmware-azure-architecture/arch-enhanced.png)
 
+## <a name="set-up-outbound-network-connectivity"></a>設定輸出網路連線能力
+
+若要讓 Site Recovery 如預期般運作，您需要修改輸出網路連線能力，以允許您的環境進行複寫。
+
+> [!NOTE]
+> Site Recovery 不支援使用驗證 Proxy 來控制網路連線能力。
+
+### <a name="outbound-connectivity-for-urls"></a>URL 的輸出連線能力
+
+如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許存取這些 URL：
+
+| **名稱**                  | **商業**                               | **政府**                                 | **說明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
+| 複寫               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允許 VM 與 Site Recovery 服務進行通訊。 |
+| 服務匯流排               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
 
 ## <a name="replication-process"></a>複寫程序
 

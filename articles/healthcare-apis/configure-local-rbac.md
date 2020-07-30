@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: a8c1b36d6a439297dfb0bbcb34efe059349fc5a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8aa454e272e0dbf4c69941c35a63ee036c16f78f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871158"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422567"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>設定 FHIR 的本機 RBAC 
 
@@ -69,4 +69,3 @@ Azure API for FHIR 將會快取最多5分鐘的決策。 如果您授與使用�
  
 >[!div class="nextstepaction"]
 >[其他設定 Azure API for FHIR](azure-api-for-fhir-additional-settings.md)
-

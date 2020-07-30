@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 58a8bd6b8e5594f36bf27a3ad76bee137fdd1160
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372105"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433226"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,11 @@ AKS 叢集和 AML 工作區可以位於不同的資源群組中。
 
 - 本文中的__CLI__程式碼片段假設您已建立 `inferenceconfig.json` 檔。 如需有關建立此檔的詳細資訊，請參閱[如何和部署模型的位置](how-to-deploy-and-where.md)。
 
-- 如果您附加的 AKS 叢集已[啟用授權的 IP 範圍來存取 API 伺服器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，請啟用 AKS 叢集的 AML 主平面 ip 範圍。 AML 控制平面會部署在配對的區域中，並將推斷 pod 部署在 AKS 叢集上。 如果沒有 API 伺服器的存取權，就無法部署推斷 pod。 在 AKS 叢集中啟用 IP 範圍時，請使用兩個[配對區域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 範圍](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)
+- 如果您需要部署在叢集中的 Standard Load Balancer （SLB），而不是基本 Load Balancer （BLB），請在 AKS portal/CLI/SDK 中建立叢集，然後將它連結到 AML 工作區。
+
+- 如果您附加的 AKS 叢集已[啟用授權的 IP 範圍來存取 API 伺服器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，請啟用 AKS 叢集的 AML 主平面 ip 範圍。 AML 控制平面會部署在配對的區域中，並將推斷 pod 部署在 AKS 叢集上。 如果沒有 API 伺服器的存取權，就無法部署推斷 pod。 在 AKS 叢集中啟用 IP 範圍時，請使用兩個[配對區域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 範圍](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)。
+
+__Authroized IP 範圍僅適用于 Standard Load Balancer。__
  
  - 計算名稱在工作區中必須是唯一的
    - 名稱是必要的，且長度必須介於3到24個字元之間。
@@ -73,7 +77,7 @@ AKS 叢集和 AML 工作區可以位於不同的資源群組中。
    
  - 如果您想要將模型部署至 GPU 節點或 FPGA 節點（或任何特定 SKU），則必須建立具有特定 SKU 的叢集。 不支援在現有的叢集中建立次要節點集區，以及在次要節點集區中部署模型。
  
- - 如果您需要部署在叢集中的 Standard Load Balancer （SLB），而不是基本 Load Balancer （BLB），請在 AKS portal/CLI/SDK 中建立叢集，然後將它連結到 AML 工作區。 
+ 
 
 
 
@@ -257,6 +261,30 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 > [!IMPORTANT]
 > 透過 VS Code 部署時，必須事先建立 AKS 叢集或將其附加至您的工作區。
+
+### <a name="understand-the-deployment-processes"></a>瞭解部署程式
+
+「部署」一詞同時用於 Kubernetes 和 Azure Machine Learning。 「部署」在這兩個內容中具有非常不同的意義。 在 Kubernetes 中， `Deployment` 是使用宣告式 YAML 檔案所指定的具體實體。 Kubernetes 與 `Deployment` 其他 Kubernetes 實體（例如和）具有已定義的生命週期和實體關聯性 `Pods` `ReplicaSets` 。 您可以在[什麼是 Kubernetes](https://aka.ms/k8slearning)中瞭解 Kubernetes 的檔和影片？。
+
+在 Azure Machine Learning 中，您可以使用「部署」，以更通用的方式來提供和清除您的專案資源。 Azure Machine Learning 考慮部署部分的步驟如下：
+
+1. 壓縮專案資料夾中的檔案，忽略 amlignore 或. .gitignore 中指定的檔案。
+1. 相應增加您的計算叢集（與 Kubernetes 相關）
+1. 建立或下載 dockerfile 至計算節點（與 Kubernetes 相關）
+    1. 系統會計算的雜湊： 
+        - 基底映射 
+        - 自訂 docker 步驟（請參閱[使用自訂的 docker 基底映射部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)）
+        - Conda 定義 YAML （請參閱[建立 & 使用 Azure Machine Learning 中的軟體環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)）
+    1. 系統會使用此雜湊做為 Azure Container Registry （ACR）查詢工作區的索引鍵
+    1. 如果找不到，它會在全域 ACR 中尋找相符的
+    1. 如果找不到，系統會建立新的映射（將會快取並向工作區 ACR 註冊）
+1. 將壓縮的專案檔案下載到計算節點上的暫存儲存體
+1. 解壓縮專案檔案
+1. 執行的計算節點`python <entry script> <arguments>`
+1. 將記錄檔、模型檔案和其他寫入的檔案儲存 `./outputs` 至與工作區相關聯的儲存體帳戶
+1. 相應減少計算，包括移除暫存儲存體（與 Kubernetes 相關）
+
+當您使用 AKS 時，計算的向上和向下調整是由 Kubernetes 所控制，使用如上所述的 dockerfile 建立或找到。 
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控制的推出（預覽）將模型部署至 AKS
 

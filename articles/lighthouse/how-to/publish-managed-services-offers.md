@@ -1,14 +1,14 @@
 ---
 title: 將受控服務供應專案發佈至 Azure Marketplace
 description: 瞭解如何將將上線客戶的受控服務供應專案發佈至 Azure 燈塔。
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 19364164617a32a561140e985c8723f8deafe1a7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e86cec16cc377470f255c8b677d7462dee6b3573
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133309"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407059"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>將受控服務供應專案發佈至 Azure Marketplace
 
@@ -34,7 +34,7 @@ ms.locfileid: "86133309"
 一旦客戶加入您的供應專案，他們就能夠委派一或多個訂用帳戶或資源群組，然後再將其[上架至 Azure 燈塔](#the-customer-onboarding-process)。
 
 > [!IMPORTANT]
-> 受控服務供應專案中的每個方案都包含 [**資訊清單詳細資料**] 區段，您可以在其中定義租使用者中的 Azure Active Directory （Azure AD）實體，以存取購買該方案之客戶的委派資源群組和/或訂用帳戶。 請務必注意，您所包含的任何群組（或使用者或服務主體）對於每個購買方案的客戶都有相同的許可權。 若要指派不同的群組來與每個客戶一起使用，您必須發行每個客戶專屬的個別[私人方案](../../marketplace/private-offers.md)。
+> 受控服務供應專案中的每個方案都包含 [**資訊清單詳細資料**] 區段，您可以在其中定義租使用者中的 Azure Active Directory （Azure AD）實體，以存取購買該方案之客戶的委派資源群組和/或訂用帳戶。 請務必注意，您所包含的任何群組（或使用者或服務主體）對於每個購買方案的客戶都有相同的許可權。 若要指派不同的群組來與每個客戶一起使用，您可以發行個別的[私用方案](../../marketplace/private-offers.md)，以供每個客戶使用。 請記住，透過雲端解決方案提供者（CSP）計畫的轉銷商所建立的訂用帳戶不支援私用方案。
 
 ## <a name="publish-your-offer"></a>發佈您的供應項目
 

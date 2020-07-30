@@ -1,18 +1,18 @@
 ---
 title: 設定執行個體和驗證 (已編寫指令碼)
 titleSuffix: Azure Digital Twins
-description: 請參閱如何設定 Azure 數位 Twins 服務的實例，包括適當的驗證。 已編寫版本的腳本。
+description: 請參閱如何藉由執行自動化部署腳本來設定 Azure 數位 Twins 服務的實例
 author: baanders
 ms.author: baanders
-ms.date: 7/22/2020
+ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 076bde9e2760a862822d80d63197e2c15a678d35
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337903"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407423"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>設定 Azure 數位 Twins 實例和驗證（已編寫腳本）
 
@@ -20,9 +20,12 @@ ms.locfileid: "87337903"
 
 本文涵蓋**設定新的 Azure 數位 Twins 實例**的步驟，包括建立實例和設定驗證。 完成本文之後，您將擁有可開始進行程式設計的 Azure 數位 Twins 實例。
 
-這一版的文章會藉由執行可簡化程式的[**自動化部署腳本**範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)來完成這些步驟。 若要查看腳本在幕後執行的手動步驟，請參閱這篇文章的手動版本：[*如何：設定實例和驗證（手動）*](how-to-set-up-instance-manual.md)。
+這一版的文章會藉由執行可簡化程式的[**自動化部署腳本**範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)來完成這些步驟。 
+* 若要查看腳本在幕後執行的手動 CLI 步驟，請參閱這篇文章的 CLI 版本：[*如何：設定實例和驗證（CLI）*](how-to-set-up-instance-cli.md)。
+* 若要根據 Azure 入口網站來查看手動步驟，請參閱本文的入口網站版本：[*如何：設定實例和驗證（入口網站）*](how-to-set-up-instance-portal.md)。
 
-[!INCLUDE [digital-twins-setup-starter.md](../../includes/digital-twins-setup-starter.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-role-cli.md](../../includes/digital-twins-setup-role-cli.md)]
 
 ## <a name="run-the-deployment-script"></a>執行部署指令碼
 
@@ -41,7 +44,7 @@ ms.locfileid: "87337903"
  
 2. 登入之後，請查看 Cloud Shell 視窗圖示列。 選取 [上傳/下載檔案] 圖示，然後選擇 [上傳]。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell-upload.png" alt-text="顯示上傳選項選取範圍的 Cloud Shell 視窗":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="顯示上傳選項選取範圍的 Cloud Shell 視窗":::
 
     流覽至您電腦上的_**deploy.ps1**_ 檔案，然後按 [開啟]。 這會將檔案上傳至 Cloud Shell，讓您可以在 [Cloud Shell] 視窗中執行該檔案。
 
@@ -57,21 +60,38 @@ ms.locfileid: "87337903"
 
 以下是腳本的輸出記錄摘錄：
 
-:::image type="content" source="media/how-to-set-up-instance/deployment-script-output.png" alt-text="Cloud Shell 視窗，顯示透過執行部署腳本的輸入和輸出記錄" lightbox="media/how-to-set-up-instance/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="Cloud Shell 視窗，顯示透過執行部署腳本的輸入和輸出記錄" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 如果腳本順利完成，最後的列印結果會顯示 `Deployment completed successfully` 。 否則，請解決錯誤訊息，然後重新執行腳本。 它會略過您已完成的步驟，並在您離開的位置再次開始要求輸入。
 
-腳本完成時，您現在已有 Azure 數位 Twins 實例準備就緒，並已設定許可權來進行管理。
+腳本完成時，您現在已有 Azure 數位 Twins 實例可供使用管理它的許可權，並已設定用戶端應用程式存取它的許可權。
+
+> [!NOTE]
+> 此腳本目前會將 Azure 數位 Twins （*Azure 數位 Twins 擁有者（預覽）*）中的必要管理角色指派給 Cloud Shell 執行腳本的相同使用者。 如果您需要將此角色指派給將管理實例的其他人，您可以透過 Azure 入口網站（[指示](how-to-set-up-instance-portal.md#set-up-user-access-permissions)）或 CLI （[指示](how-to-set-up-instance-cli.md#set-up-user-access-permissions)）立即執行此動作。
 
 ## <a name="collect-important-values"></a>收集重要值
 
-應用程式註冊中有兩個重要的值，稍後會在[針對 Azure 數位 Twins api 驗證用戶端應用程式](how-to-authenticate-client.md)時需要用到。 
+當您繼續使用您的 Azure 數位 Twins 實例時，您可能需要的腳本所設定的資源有幾個重要的值。 在本節中，您將使用[Azure 入口網站](https://portal.azure.com)來收集這些值。 您應該將它們儲存在安全的地方，或返回此區段，以便稍後在需要時尋找。
+
+如果其他使用者會針對該實例進行程式設計，您也應該與它們共用這些值。
+
+### <a name="collect-instance-values"></a>收集實例值
+
+在[Azure 入口網站](https://portal.azure.com)中，搜尋您在入口網站搜尋列中的實例名稱，以尋找您的 Azure 數位 Twins 實例。
+
+選取它會開啟實例的 *[總覽*] 頁面。 請記下其*名稱*、*資源群組*和*主機名稱*。 稍後您可能會需要這些識別碼，以識別並連接到您的實例。
+
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="反白顯示實例 [總覽] 頁面中的重要值":::
+
+### <a name="collect-app-registration-values"></a>收集應用程式註冊值 
+
+應用程式註冊中有兩個重要的值，稍後會需要用來[撰寫 Azure 數位 Twins api 的用戶端應用程式驗證碼](how-to-authenticate-client.md)。 
 
 若要尋找它們，請遵循[此連結](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)以流覽至 Azure 入口網站中的 Azure AD 應用程式註冊總覽頁面。 此頁面會顯示您的訂用帳戶中已建立的所有應用程式註冊。
 
 您應該會在此清單中看到您剛才建立的應用程式註冊。 選取它以開啟其詳細資料：
 
-:::image type="content" source="media/how-to-set-up-instance/app-important-values.png" alt-text="應用程式註冊重要值的入口網站視圖":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="應用程式註冊重要值的入口網站視圖":::
 
 記**下頁面上**顯示的 [*應用程式（用戶端）識別碼*] 和 [*目錄（租使用者）] 識別碼*。 如果您不是要為用戶端應用程式撰寫程式碼的人員，您將需要與即將擁有的人員共用這些值。
 
@@ -86,6 +106,9 @@ ms.locfileid: "87337903"
 ### <a name="verify-user-role-assignment"></a>驗證使用者角色指派
 
 [!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
+
+> [!NOTE]
+> 回想一下，腳本目前將此必要角色指派給執行腳本的相同使用者 Cloud Shell。 如果您需要將此角色指派給將管理實例的其他人，您可以透過 Azure 入口網站（[指示](how-to-set-up-instance-portal.md#set-up-user-access-permissions)）或 CLI （[指示](how-to-set-up-instance-cli.md#set-up-user-access-permissions)）立即執行此動作。
 
 ### <a name="verify-app-registration"></a>驗證應用程式註冊
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 72408b4f17aa5e8601095b27478806883739a7a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0aac3d7a4bc2eb8bb83405155b345360f5d2c699
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87031621"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407348"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 連線能力合作夥伴和對等互連位置
 
@@ -82,7 +82,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **[Aryaka Networks](https://www.aryaka.com/)** |支援 |支援 |阿姆斯特丹、芝加哥、達拉斯、香港特別行政區、聖保羅、西雅圖、矽谷、新加坡、東京、華盛頓特區 |
 | **[Ascenty Data Centers](https://www.ascenty.com/en/cloud/microsoft-express-route)** |支援 |支援 |聖保羅 |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |支援 |支援 |阿姆斯特丹、芝加哥、達拉斯、法蘭克福、倫敦、矽谷、新加坡、雪梨、東京、多倫多、華盛頓特區 |
-| **[AT TOKYO](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | 支援 | 支援 | 東京 2 |
+| **[AT TOKYO](https://www.attokyo.com/connectivity/azure.html)** | 支援 | 支援 | 大阪、Tokyo2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | 支援 | 支援 | 東京 |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |支援 |支援 |開普敦、約翰尼斯堡|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |支援 |支援 |蒙特婁、多倫多、魁北克市 |
@@ -109,7 +109,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **Etisalat UAE** |支援 |支援 |杜拜|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |支援 |支援 |阿姆斯特丹、阿姆斯特丹2、都柏林、法蘭克福、倫敦 |
 | **FarEasTone** |支援 |支援 |台北|
-| **GÉANT** |支援 |支援 |阿姆斯特丹、都柏林、法蘭克福、馬賽 |
+| **GÉANT** |支援 |支援 |阿姆斯特丹、阿姆斯特丹2、都柏林、法蘭克福、馬賽 |
 | **GTT** |支援 |支援 |London2 |
 | **[Global Cloud Xchange (GCX)](https://globalcloudxchange.com/cloud-platform/cloud-x-fusion/)** | 支援| 支援 | 辰內，孟買 |
 | **Intelsat** | 支援 | 支援 | 華盛頓特區 2 |

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: cc02890cb5293e48a8065b63f4f9c799c5dda7f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55ee6e99cdf6d77ea1e78799e016d4c276e85fcd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081044"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423859"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 認知搜尋中的安全性-總覽
 
@@ -107,14 +107,14 @@ Azure 認知搜尋的[私用端點](../private-link/private-endpoint-overview.md
 
 如果您需要細微的每一使用者控制搜尋結果，您可以在查詢上建立安全性篩選，並傳回與指定的安全性識別相關聯的檔。 以身分識別為基礎的存取控制，而不是預先定義的角色和角色指派，會實作為*篩選*條件，以根據識別來修剪檔和內容的搜尋結果。 下表說明兩個針對未經授權的內容縮減搜尋結果的方法。
 
-| 方法 | Description |
+| 方法 | 描述 |
 |----------|-------------|
 |[根據身分識別篩選進行安全性範圍縮減](search-security-trimming-for-azure-search.md)  | 記載實作使用者身分識別存取控制的基本工作流程。 其中涵蓋在索引中新增安全性識別碼，然後說明如何針對該欄位進行篩選來縮減所禁止內容的結果。 |
 |[根據 Azure Active Directory 身分識別進行安全性範圍縮減](search-security-trimming-for-azure-search-with-aad.md)  | 本文是上一篇文章的延伸，提供從 Azure Active Directory (AAD) (Azure 雲端平台上的其中一項[免費服務](https://azure.microsoft.com/free/)) 擷取身分識別的步驟。 |
 
 ## <a name="administrative-rights"></a>系統管理許可權
 
-[角色型存取（RBAC）](../role-based-access-control/overview.md)是根據布建 Azure 資源[Azure Resource Manager](../azure-resource-manager/management/overview.md)建立的授權系統。 在 Azure 認知搜尋中，會使用 Resource Manager 來建立或刪除服務、管理 API 金鑰，以及調整服務規模。 因此，RBAC 角色指派會決定誰可以執行這些工作，不論他們是使用[入口網站](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)或[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+[角色型存取（RBAC）](../role-based-access-control/overview.md)是根據布建 Azure 資源[Azure Resource Manager](../azure-resource-manager/management/overview.md)建立的授權系統。 在 Azure 認知搜尋中，會使用 Resource Manager 來建立或刪除服務、管理 API 金鑰，以及調整服務規模。 因此，不論是使用[入口網站](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)或[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)，Azure 角色指派都會決定誰可以執行這些工作。
 
 相反地，在服務上裝載之內容的系統管理許可權（例如建立或刪除索引的能力）是透過 API 金鑰來授予，如[前一節](#index-access)中所述。
 

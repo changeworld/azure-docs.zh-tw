@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 70173e1904ce9d7a159532c8962932765060e4d9
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946292"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406940"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>如何快取驗證權杖
 
@@ -22,7 +23,7 @@ ms.locfileid: "75946292"
 
 ## <a name="using-aspnet"></a>使用 ASP.NET
 
-匯入**microsoft.identitymodel** ，這是用來取得權杖的 NuGet 套件。 接下來，使用下列程式`AuthenticationResult`代碼來取得，使用您在[建立沉浸式讀取器資源](./how-to-create-immersive-reader.md)時所得到的驗證值。
+匯入**microsoft.identitymodel** ，這是用來取得權杖的 NuGet 套件。 接下來，使用下列程式碼來取得 `AuthenticationResult` ，使用您在[建立沉浸式讀取器資源](./how-to-create-immersive-reader.md)時所得到的驗證值。
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,9 +35,9 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-`AuthenticationResult`物件具有`AccessToken`屬性，這是您使用 SDK 啟動沉浸式讀取器時將使用的實際 token。 它也具有代表`ExpiresOn`權杖何時到期的屬性。 啟動沉浸式讀取器之前，您可以檢查權杖是否已過期，並只在過期時取得新的權杖。
+`AuthenticationResult`物件具有屬性， `AccessToken` 這是您使用 SDK 啟動沉浸式讀取器時將使用的實際 token。 它也具有 `ExpiresOn` 代表權杖何時到期的屬性。 啟動沉浸式讀取器之前，您可以檢查權杖是否已過期，並只在過期時取得新的權杖。
 
-## <a name="using-nodejs"></a>使用 NODE.JS
+## <a name="using-nodejs"></a>使用 Node.JS
 
 將[**要求**](https://www.npmjs.com/package/request)npm 套件新增至您的專案。 使用下列程式碼來取得權杖，使用您在[建立沉浸式讀取器資源](./how-to-create-immersive-reader.md)時所得到的驗證值。
 

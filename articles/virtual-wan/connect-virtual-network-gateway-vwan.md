@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d94904e580cefb53b2c71d21259bebfc07c1ad6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749703"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431279"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>將 VPN 閘道（虛擬網路閘道）連線到虛擬 WAN
 
@@ -33,17 +33,19 @@ Azure 虛擬網路
 
 * 建立不含任何虛擬網路閘道的虛擬網路。 驗證沒有任何內部部署網路的子網路與您要連線的虛擬網路子網路重疊。 若要在 Azure 入口網站中建立虛擬網路，請參閱[快速入門](../virtual-network/quick-create-portal.md)。
 
-## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1. 建立 Azure 虛擬網路閘道
+## <a name="1-create-a-vpn-gateway-virtual-network-gateway"></a><a name="vnetgw"></a>1. 建立 VPN 閘道虛擬網路閘道
 
-為虛擬網路建立以主動-主動模式為虛擬網路的 VPN 閘道虛擬網路閘道。 當您建立閘道時，您可以針對閘道的兩個實例使用現有的公用 IP 位址，也可以建立新的公用 IP。 設定虛擬 WAN 網站時，您會使用這些公用 Ip。 如需主動-主動模式的詳細資訊，請參閱[設定主動-主動連接](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)。
+針對您的虛擬網路，建立主動-主動模式的**VPN 閘道**虛擬網路閘道。 當您建立閘道時，您可以針對閘道的兩個實例使用現有的公用 IP 位址，也可以建立新的公用 IP。 設定虛擬 WAN 網站時，您將會使用這些公用 Ip。 如需主動-主動 VPN 閘道和設定步驟的詳細資訊，請參閱[設定主動-主動 vpn 閘道](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)。
 
 ### <a name="active-active-mode-setting"></a><a name="active-active"></a>主動-主動模式設定
+
+在 [虛擬**網路閘道**設定] 頁面上，啟用主動-主動模式。
 
 ![主動-主動](./media/connect-virtual-network-gateway-vwan/active.png "主動-主動")
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP 設定
 
-BGP ASN 不能是65515。 Azure 虛擬 WAN 將使用66515。
+在 [虛擬**網路閘道**設定] 頁面上，您可以設定**BGP ASN**。 變更 BGP ASN。 BGP ASN 不能是65515。 Azure 虛擬 WAN 將使用66515。
 
 ![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
@@ -60,16 +62,16 @@ BGP ASN 不能是65515。 Azure 虛擬 WAN 將使用66515。
 1. 選取 [ **+ 建立網站**]。
 2. 在 [**建立 VPN 網站**] 頁面上，輸入下列值：
 
-   * **區域**-（與 Azure VPN 閘道虛擬網路閘道相同的區域）
-   * **裝置廠商**-輸入裝置廠商（任何名稱）
-   * **私人位址空間**-（輸入值，或在啟用 BGP 時保留空白）
-   * **邊界閘道協定**-（如果 Azure VPN 閘道虛擬網路閘道已啟用 BGP，則設定為 [**啟用**]）
-   * 連線**至中樞**（從下拉式清單中選取您在必要條件中建立的中樞）
+   * **區域**-與 Azure VPN 閘道虛擬網路閘道相同的區域。
+   * **裝置廠商**-輸入裝置廠商（任何名稱）。
+   * **私人位址空間**-輸入值，或在啟用 BGP 時保留空白。
+   * **邊界閘道協定**-如果 Azure VPN 閘道虛擬網路閘道已啟用 BGP，則設定為 [**啟用**]。
+   * 連線**到中樞**-從下拉式清單中選取您在必要條件中建立的中樞。 如果您沒有看到中樞，請確認您已為中樞建立站對站 VPN 閘道。
 3. 在 [**連結**] 底下，輸入下列值：
 
-   * **提供者名稱**-輸入連結名稱和提供者名稱（任何名稱）
-   * **速度**-速度（任何數位）
-   * **Ip 位址**-輸入 ip 位址（與（VPN 閘道）虛擬網路閘道屬性底下顯示的第一個公用 IP 位址相同）
+   * **提供者名稱**-輸入連結名稱和提供者名稱（任何名稱）。
+   * **速度**-速度（任何數位）。
+   * **Ip 位址**-輸入 ip 位址（與 [（VPN 閘道）虛擬網路閘道屬性] 底下顯示的第一個公用 IP 位址相同）。
    * **Bgp 位址**和**asn** -bgp 位址和 asn。 這些必須與其中一個 BGP 對等互連 IP 位址，以及您在[步驟 1](#vnetgw)中設定的 VPN 閘道虛擬網路閘道的 ASN 相同。
 4. 檢查並選取 [**確認**] 以建立網站。
 5. 重複上述步驟來建立第二個網站，以符合 VPN 閘道虛擬網路閘道的第二個實例。 除了使用第二個公用 IP 位址和第二個 VPN 閘道設定的 BGP 對等 IP 位址以外，您會保留相同的設定。
@@ -81,7 +83,7 @@ BGP ASN 不能是65515。 Azure 虛擬 WAN 將使用66515。
 
 1. 在 [虛擬 WAN **vpn 網站**] 頁面的頂端，選取**網站**，然後選取 [**下載站對站 VPN**設定]。 Azure 會建立具有設定的設定檔。
 
-   ![下載設定檔](./media/connect-virtual-network-gateway-vwan/download.png "下載")
+   ![下載設定檔](./media/connect-virtual-network-gateway-vwan/download.png "下載這篇文章")
 2. 下載並開啟設定檔。
 3. 針對第二個網站重複這些步驟。 當您開啟兩個設定檔時，您可以繼續進行下一節。
 
@@ -114,12 +116,12 @@ BGP ASN 不能是65515。 Azure 虛擬 WAN 將使用66515。
    * **局域網路閘道：** 此連線會將虛擬網路閘道連接到局域網路閘道。 選擇您稍早建立的其中一個局域網路閘道。
    * **共用金鑰：** 輸入共用金鑰。
    * **IKE 通訊協定：** 選擇 [IKE] 通訊協定。
-   * **BGP：** 如果連接是透過 BGP，請選擇 [**啟用 BGP** ]。
 3. 按一下 [確定] **** 來建立連線。
 4. 您可以在虛擬網路閘道**的 [連線**] 頁面中，查看連接。
 
    ![[連接]](./media/connect-virtual-network-gateway-vwan/connect.png "連接")
 5. 重複上述步驟以建立第二個連接。 針對第二個連接，請選取您所建立的其他局域網路閘道。
+6. 如果連線是透過 BGP，在您建立連線之後，請流覽至連線**並選取 [** 設定]。 **在 [設定**] 頁面上，針對 [ **BGP**] 選取 [**已啟用**]。 然後按一下 [ **儲存**]。 針對第二個連接重複此步驟。
 
 ## <a name="6-test-connections"></a><a name="test"></a>6. 測試連接
 
@@ -133,7 +135,7 @@ BGP ASN 不能是65515。 Azure 虛擬 WAN 將使用66515。
     * **中樞** - 選取要與此連線產生關聯的中樞。
     * **訂用帳戶** - 請確認訂用帳戶。
     * **虛擬網路** - 選取要與此中樞連線的虛擬網路。 虛擬網路不能有現有的虛擬網路閘道。
-4. 按一下 [確定]**** 以建立虛擬網路連線。
+4. 按一下 [確定] 以建立虛擬網路連線。
 5. 現在 Vm 之間已設定連線。 您應該能夠 ping 另一個 VM，除非有任何防火牆或其他原則封鎖通訊。
 
 ## <a name="next-steps"></a>後續步驟

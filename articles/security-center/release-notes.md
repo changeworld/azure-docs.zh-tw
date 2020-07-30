@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 66c8db580d0da29aa0be1193bf41b491f388e55a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 17b54eb747e3ddd3b381659031171bc795b61f54
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083968"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430453"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -32,9 +32,27 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 ## <a name="july-2020"></a>2020 年 7 月
 
 7月份的更新包括：
+- [虛擬機器的弱點評定現在可供非 marketplace 映射自動使用](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)        
 - [Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 （預覽）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [啟用威脅防護功能的八個新建議](#eight-new-recommendations-to-enable-threat-protection-features)
 - [容器安全性改進-更快的登錄掃描和重新整理檔](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
+- [更新彈性應用程式控制項規則的新建議](#new-recommendation-to-update-your-adaptive-application-controls-rules)
 - [適用于 SQL advanced data security 的六個原則已被取代](#six-policies-for-sql-advanced-data-security-deprecated)
+
+
+
+
+### <a name="vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images"></a>虛擬機器的弱點評定現在適用于非 marketplace 映射
+
+部署弱點評估解決方案時，資訊安全中心先前已執行驗證檢查，然後再進行部署。 檢查是要確認目的地虛擬機器的 marketplace SKU。 
+
+在此更新中，已移除檢查，而且您現在可以將弱點評定工具部署到「自訂」 Windows 和 Linux 電腦。 自訂映射是您從 marketplace 預設值修改的影像。
+
+雖然您現在可以在許多電腦上部署整合式弱點評定延伸模組（由 Qualys 提供支援），但只有當您使用的作業系統是在[部署 Qualys 內建的弱點掃描器](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)中時才可使用。
+
+深入瞭解[虛擬機器的整合式弱點掃描器（僅限標準層）](built-in-vulnerability-assessment.md)。
+
+在[部署合作夥伴弱點掃描解決方案](partner-vulnerability-assessment.md)中，深入瞭解如何在 Qualys 或 Rapid7 中使用您自己的私用授權弱點評估解決方案。
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 （預覽）
@@ -44,6 +62,39 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 您的資料可以受到保護，不論其儲存為 blob 容器、檔案共用或資料 lake。 
 
 深入瞭解[Azure 儲存體的威脅防護](threat-protection.md#threat-protection-for-azure-storage-)。
+
+
+
+
+### <a name="eight-new-recommendations-to-enable-threat-protection-features"></a>啟用威脅防護功能的八個新建議
+
+新增了八項新的建議，為下列資源類型提供一個簡單的方式來啟用 Azure 資訊安全中心的威脅防護功能：虛擬機器、App Service 計畫、Azure SQL Database 伺服器、電腦上的 SQL server、Azure 儲存體帳戶、Azure Kubernetes Service 叢集、Azure Container Registry 登錄，以及 Azure Key Vault 保存庫。
+
+新的建議如下：
+
+- **Azure SQL Database 伺服器應啟用進階資料安全性**
+- **應在機器上的 SQL 伺服器啟用進階資料安全性**
+- **應在 Azure App Service 方案上啟用進階威脅防護**
+- **應在 Azure Container Registry 登錄上啟用進階威脅防護**
+- **應在 Azure Key Vault 保存庫上啟用進階威脅防護**
+- **應在 Azure Kubernetes Service 叢集上啟用進階威脅防護**
+- **應在 Azure 儲存體帳戶上啟用進階威脅防護**
+- **應該在虛擬機器上啟用先進的威脅防護**
+
+這些新的建議屬於 [**啟用先進的威脅防護**] 安全性控制。
+
+這些建議也包含快速修正功能。 
+
+> [!IMPORTANT]
+> 補救這些建議的任何一項，會導致保護相關資源的費用。 如果您有目前訂用帳戶中的相關資源，這些費用就會立即開始。 或未來，如果您在日後新增它們。
+> 
+> 例如，如果您的訂用帳戶中沒有任何 Azure Kubernetes Service 叢集，而您啟用威脅防護，則不會產生任何費用。 未來，如果您在相同的訂用帳戶上新增叢集，該叢集將會自動受到保護，並將于該時間開始收費。
+
+若要深入瞭解這些資訊，請[參閱安全性建議參考頁面](recommendations-reference.md)。
+
+深入瞭解[Azure 資訊安全中心中的威脅防護](https://docs.microsoft.com/azure/security-center/threat-protection)。
+
+
 
 
 ### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>容器安全性改進-更快的登錄掃描和重新整理檔
@@ -62,6 +113,15 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 - [來自 Azure Kubernetes Service 主機威脅防護功能的安全性警示](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
 - [容器的安全性建議](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
 
+
+
+### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>更新彈性應用程式控制項規則的新建議
+
+彈性應用程式控制功能會持續監視已設定群組中電腦的活動。 在此更新中，系統會通知您有可能是先前未允許的合法行為，而這可能會導致誤報的警示。
+
+**您應該更新彈性應用程式控制原則中的允許清單規則**，並提示您將新規則新增至現有的原則，以減少彈性應用程式控制違規警示中的誤報數目。
+
+[深入了解自適性應用程式控制](security-center-adaptive-application.md)。
 
 
 
@@ -185,9 +245,9 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [Azure SQL Database 伺服器應啟用進階資料安全性](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
 | [應在機器上的 SQL 伺服器啟用進階資料安全性](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
-| [應在儲存體帳戶上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
+| [應在 Azure 儲存體帳戶上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
 | [應在 Azure Key Vault 保存庫上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)           | 0e6763cc-5078-4e64-889d-ff4d9a839047 |
-| [應該在 App Service 方案上啟用先進的威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
+| [應在 Azure App Service 方案上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
 | [應在 Azure Container Registry 登錄上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)   | c25d9a16-bc35-4e15-a7e5-9db606bf9ed4 |
 | [應在 Azure Kubernetes Service 叢集上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)   | 523b5cd1-3e23-492f-a539-13118b6d1e3a |
 | [應在虛擬機器上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
@@ -275,7 +335,7 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 深入瞭解[在 Azure 資訊安全中心之內的增強型安全分數 (預覽)](secure-score-security-controls.md) 中出現的安全性控制項。
 
-![建議的 [群組依據控制項] 切換](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
+![建議的 [群組依據控制項] 切換](./media/secure-score-security-controls/recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>擴充的安全性控制「實作安全性最佳做法」 
 

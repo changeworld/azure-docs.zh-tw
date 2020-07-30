@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 81d65954197c0ebe0de77dc2fea63239d4c3f17b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056662"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412944"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>使用 Azure 防火牆來保護 Azure Kubernetes Service （AKS）部署
 
@@ -50,7 +50,9 @@ Azure 防火牆提供 AKS FQDN 標記來簡化設定。 使用下列步驟來允
       如需更具體的資訊，請參閱 * 「*hcp <location> 」。* 下表中的 azmk8s.io 和位址。
    - UDP 連接埠 123，用於網路時間通訊協定 (NTP) 時間同步處理 (Linux 節點)。
    - 如果您有 Pod 會直接存取 API 伺服器，則也需要針對 DNS 使用 UDP 連接埠 53。
-- 設定 AzureMonitor 和儲存體服務標記。 Azure 監視器接收 log analytics 資料。 
+
+   如需詳細資訊，請參閱[在 Azure Kubernetes Service 中控制叢集節點的輸出流量（AKS）](../aks/limit-egress-traffic.md)。
+- 設定 AzureMonitor 和儲存體服務標記。 Azure 監視器接收 log analytics 資料。
 
    您也可以個別允許您的工作區 URL： `<worksapceguid>.ods.opinsights.azure.com` 、和 `<worksapceguid>.oms.opinsights.azure.com` 。 您可以透過下列其中一種方式來解決此情況：
 

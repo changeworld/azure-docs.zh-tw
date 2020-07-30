@@ -5,14 +5,14 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef469eb74c3dd7d82dec908dba8c53136df206e4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340435"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423417"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link"></a>將 Azure 服務匯流排與 Azure Private Link 整合
+# <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>允許透過私人端點存取 Azure 服務匯流排命名空間
 
 Azure Private Link 服務可供透過虛擬網路中的**私人端點**存取 Azure 服務 (例如 Azure 服務匯流排、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。
 
@@ -46,7 +46,7 @@ Azure Private Link 服務可供透過虛擬網路中的**私人端點**存取 Az
 
 - 服務匯流排命名空間。
 - Azure 虛擬網路。
-- 虛擬網路中的子網路。
+- 虛擬網路中的子網路。 您可以使用**預設**子網。 
 - 服務匯流排命名空間和虛擬網路的擁有者或參與者權限。
 
 您的私人端點和虛擬網路必須位於相同區域。 當您使用入口網站選取私人端點的區域時，其只會自動篩選該區域中的虛擬網路。 服務匯流排命名空間可位於不同區域。 此外，私人端點會使用虛擬網路中的私人 IP 位址。
@@ -58,8 +58,19 @@ Azure Private Link 服務可供透過虛擬網路中的**私人端點**存取 Az
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 2. 在搜尋列中，鍵入 [服務匯流排]。
 3. 從清單中選取想要新增私人端點的**命名空間**。
-4. 選取 [設定] 下的 [網路] 索引標籤。
-5. 選取頁面頂端的 [私人端點連線] 索引標籤
+2. 在左側功能表上，選取 [**設定**] 底下的 [**網路**] 選項。 
+
+    > [!NOTE]
+    > 您只會看到**premium**命名空間的 [**網路**功能] 索引標籤。  
+    
+    預設會選取 [**選取的網路**] 選項。 如果您未在此頁面上新增至少一個 IP 防火牆規則或虛擬網路，則可透過公用網際網路存取命名空間（使用存取金鑰）。
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="網路頁面-預設" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    如果您選取 [**所有網路**] 選項，您的服務匯流排命名空間會接受來自任何 IP 位址的連接（使用存取金鑰）。 這項預設設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
+
+    ![防火牆 - 已選取 [所有網路] 選項](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+5. 若要允許透過私人端點存取命名空間，請選取頁面頂端的 [**私人端點連接**] 索引標籤
 6. 選取頁面頂端的 [+ 私人端點] 按鈕。
 
     ![新增私人端點按鈕](./media/private-link-service/private-link-service-3.png)

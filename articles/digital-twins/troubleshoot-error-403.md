@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 95372d69f58249afc946f12ec74696507429e5c6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a971291dd423894e4d04158abe873a7222f9802c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125276"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405558"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服務要求失敗。 狀態：403（禁止）
 
@@ -57,7 +57,7 @@ ms.locfileid: "87125276"
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-如需有關此角色需求和指派程式的詳細資訊，請參閱*如何：設定實例和驗證（手動）* 中的[*設定您的使用者存取權限*一節](how-to-set-up-instance-manual.md#set-up-your-users-access-permissions)。
+如需有關此角色需求和指派程式的詳細資訊，請參閱*如何：設定實例和驗證（CLI 或入口網站）* 中的[*設定您的使用者存取權限*一節](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)。
 
 如果您已有此角色指派，但仍遇到403問題，請繼續進行下一個解決方案。
 
@@ -75,12 +75,12 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 #### <a name="fix-issues"></a>修正問題
 
-如果這其中任何一項的顯示方式與所述不同，請遵循*如何：設定實例和驗證（手動）* 的[*設定用戶端應用程式的存取權限*一節](how-to-set-up-instance-manual.md#set-up-access-permissions-for-client-applications)中的指示，以瞭解如何設定應用程式註冊。
+如果這其中任何一項的顯示方式與說明不同，請遵循*如何：設定實例和驗證（CLI 或入口網站）* 的[*設定用戶端應用程式的存取權限*一節](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications)中有關如何設定應用程式註冊的指示。
 
 ## <a name="next-steps"></a>後續步驟
 
 閱讀建立和驗證新的 Azure 數位 Twins 實例的設定步驟：
-* [*如何：設定實例和驗證（手動）*](how-to-set-up-instance-manual.md)
+* [*如何：設定實例和驗證（CLI）*](how-to-set-up-instance-cli.md)
 
 深入瞭解 Azure 數位 Twins 的安全性和許可權：
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)

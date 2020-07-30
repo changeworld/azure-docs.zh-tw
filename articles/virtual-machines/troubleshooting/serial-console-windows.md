@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4778ea7781d181a89e7a6b2d6c4ad5d474e9b5c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30999a5f0239e60c842084b60b44c165fb7182e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005934"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423995"
 ---
 # <a name="azure-serial-console-for-windows"></a>適用於 Windows 的 Azure 序列主控台
 
@@ -26,10 +26,12 @@ Azure 入口網站上的序列主控台可供針對 Windows 虛擬機器 (VM) �
 
 序列主控台的運作方式與 VM 和虛擬機器擴展集執行個體相同。 在本文件中，除非另有指示，否則所有提及的 VM 都隱含虛擬機器擴展集執行個體。
 
+序列主控台已在全球 Azure 區域正式推出，並在 Azure Government 中公開預覽。 目前尚未在「Azure 中國」雲端中提供序列主控台。
+
 如需 Linux 的序列主控台文件，請參閱[適用於 Linux 的 Azure 序列主控台](serial-console-linux.md)。
 
 > [!NOTE]
-> 序列主控台已在全球 Azure 區域中正式推出，且在 Azure Government 中處於公開預覽階段。 目前尚未在「Azure 中國」雲端中提供序列主控台。
+> 序列主控台目前與受管理的開機診斷儲存體帳戶不相容。 若要使用序列主控台，請確定您使用的是自訂儲存體帳戶。
 
 
 ## <a name="prerequisites"></a>必要條件

@@ -1,14 +1,14 @@
 ---
 title: 雲端解決方案提供者方案考量
 description: 對於 CSP 合作夥伴，Azure 委派的資源管理可藉由啟用細微的權限劃分來協助改善安全性與控管。
-ms.date: 07/06/2020
+ms.date: 07/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8dd40c5c4f7131554dcc3249777de9f0d92c35bb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 0ae7ef0b78f2f37708c6b442a9591fcbcce25646
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131504"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429452"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse 與雲端解決方案提供者計畫
 
@@ -32,6 +32,9 @@ ms.locfileid: "86131504"
 將您透過 CSP 計畫建立的訂用帳戶上線，會遵循將[訂用帳戶上架到 Azure 燈塔](../how-to/onboard-customer.md)中所述的步驟。 您租用戶中有「系統管理代理人」角色的任何使用者都能執行此上線作業。
 
 ![使用 AOBO 和 Azure 委派的資源管理進行租用戶管理](../media/csp-2.jpg)
+
+> [!TIP]
+> 透過雲端解決方案提供者（CSP）計畫的轉銷商所建立的訂用帳戶，不支援使用私人方案的[受控服務提供](managed-services-offers.md)。 您可以[使用 Azure Resource Manager 範本](../how-to/onboard-customer.md)，將這些訂用帳戶上架到 Azure 燈塔。
 
 > [!NOTE]
 > Azure 入口網站中的 [ [**我的客戶**] 頁面](../how-to/view-manage-customers.md)現在包含 [**雲端解決方案提供者（預覽）** ] 區段，其中會顯示已[簽署 Microsoft 客戶合約（MCA）](/partner-center/confirm-customer-agreement)且位於[Azure 方案](/partner-center/azure-plan-get-started)底下之 CSP 客戶的帳單資訊和資源。 如需詳細資訊，請參閱[開始使用您的 Microsoft 合作夥伴合約計費帳戶](../../cost-management-billing/understand/mpa-overview.md)。

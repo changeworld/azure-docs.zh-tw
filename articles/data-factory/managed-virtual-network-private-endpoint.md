@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/26/2020
-ms.openlocfilehash: f6868e3a77cbc4b262180b47ed3b387840062969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/15/2020
+ms.openlocfilehash: a4594ca1a992f158522eccb4ffa6e846a1f4f605
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096141"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406277"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory 受控虛擬網路（預覽）
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文將說明 Azure Data Factory 中的受控虛擬網路和受控私人端點。
 
@@ -63,7 +63,7 @@ Azure Data Factory 支援私用連結。 私人連結可讓您存取 Azure （Pa
 
 當您在 Azure Data Factory 中建立受控私用端點時，會以「擱置」狀態建立私用端點連接。 已起始核准工作流程。 私人連結資源的擁有者會負責核准或拒絕連線。
 
-![管理私用端點](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png)
+![管理私人端點](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png)
 
 如果擁有者核准連線，就會建立私人連結。 否則，系統將不會建立私人連結。 無論是哪一種情況，受控私人端點都會以連線狀態來更新。
 
@@ -82,6 +82,7 @@ Azure Data Factory 支援私用連結。 私人連結可讓您存取 Azure （Pa
 - Azure SQL 資料倉儲
 - Azure CosmosDB SQL
 - Azure 金鑰保存庫
+- Azure Private Link
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>透過來自 ADF 受控虛擬網路的公用端點輸出通訊
 - 僅針對輸出通訊開啟埠443。

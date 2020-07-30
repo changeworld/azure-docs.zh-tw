@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 07/20/2020
-ms.openlocfilehash: 0eea1b696d8eae8606c0b6009f248a215d12db57
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed3f23b13920a9c3220a030059fdc8471f350d28
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515103"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428225"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -161,6 +161,9 @@ SQL Database 和 SQL 受控執行個體會在所有備份檔案中，以累計�
 新增 [**服務名稱**] 的篩選，然後在下拉式清單中選取 **[sql database** ]。 使用 [**計量子類別**目錄] 篩選器可選擇服務的計費計數器。 針對單一資料庫或彈性資料庫集區，選取 [**單一/彈性集區 pitr 備份儲存體**]。 針對受控實例，選取 [ **mi] [pitr 備份儲存體**]。 **儲存體**和**計算**子類別也可能會對您感興趣，但不會與備份儲存體成本相關聯。
 
 ![備份儲存體成本分析](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
+
+  >[!NOTE]
+  > 計量只會顯示在目前使用中的計數器。 如果計數器無法使用，可能是目前未使用該類別。 例如，對於未部署受控實例的客戶，將不會顯示受控實例計數器。 同樣地，不會對未耗用儲存體的資源顯示儲存體計數器。 
 
 ## <a name="encrypted-backups"></a>加密的備份
 

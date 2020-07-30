@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: tracking-python
-ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b35f971d90f8cd74e2f5a60e34864d8e55a743c4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147055"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431913"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -92,9 +92,31 @@ Azure Machine Learning 提供數種方式供您將模型定型，從使用 SDK �
 * [範例：管線與自動化機器學習](https://aka.ms/pl-automl)
 * [範例：管線與估算器](https://aka.ms/pl-estimator)
 
+### <a name="understand-what-happens-when-you-submit-a-training-job"></a>瞭解當您提交定型作業時會發生什麼事
+
+Azure 訓練週期由下列各項組成：
+
+1. 壓縮專案資料夾中的檔案，忽略 amlignore 或 _. .gitignore_中指定的檔案 _。_
+1. 相應增加您的計算叢集 
+1. 建立或下載 dockerfile 至計算節點 
+    1. 系統會計算的雜湊： 
+        - 基底映射 
+        - 自訂 docker 步驟（請參閱[使用自訂的 docker 基底映射部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)）
+        - Conda 定義 YAML （請參閱[建立 & 使用 Azure Machine Learning 中的軟體環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)）
+    1. 系統會使用此雜湊做為 Azure Container Registry （ACR）查詢工作區的索引鍵
+    1. 如果找不到，它會在全域 ACR 中尋找相符的
+    1. 如果找不到，系統會建立新的映射（將會快取並向工作區 ACR 註冊）
+1. 將壓縮的專案檔案下載到計算節點上的暫存儲存體
+1. 解壓縮專案檔案
+1. 執行的計算節點`python <entry script> <arguments>`
+1. 將記錄檔、模型檔案和其他寫入的檔案儲存 `./outputs` 至與工作區相關聯的儲存體帳戶
+1. 相應減少計算，包括移除暫存儲存體 
+
+如果您選擇在本機電腦上定型（「設定為本機執行」），則不需要使用 Docker。 如果您選擇，您可以在本機使用 Docker （如需範例，請參閱[設定 ML 管線](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline )一節）。
+
 ## <a name="r-sdk"></a>R SDK
 
-R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用網狀套件來繫結至 Azure Machine Learning 的 Python SDK。 這可讓您從任何 R 環境存取在 Python SDK 中實作的核心物件和方法。
+R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用網狀套件來繫結至 Azure Machine Learning 的 Python SDK。 這可讓您從任何 R 環境存取在 Python SDK 中執行的核心物件和方法。
 
 如需詳細資訊，請參閱下列文章：
 
@@ -103,7 +125,7 @@ R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用�
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning 設計工具
 
-此設計工具可讓您在網頁瀏覽器中使用拖放介面來將模型定型。
+設計工具可讓您在網頁瀏覽器中使用拖放介面來定型模型。
 
 + [什麼是設計工具？](concept-designer.md)
 + [教學課程：預測汽車價格](tutorial-designer-automobile-price-train-score.md)

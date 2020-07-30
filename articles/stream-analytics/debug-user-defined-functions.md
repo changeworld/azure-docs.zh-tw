@@ -7,22 +7,23 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 46aa9879af4bda1cd4a5e06894ea2d964f838f32
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 758846e2b4bfa42c9f6db0dc330c12e38a2f8c96
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86181347"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432359"
 ---
 # <a name="debug-user-defined-functions-in-azure-stream-analytics"></a>在 Azure 串流分析中的 Debug 使用者定義函數 
 
-當 (UDF 的使用者定義函式) 不會如預期般運作時，您需要進行偵錯工具來找出問題。 當您使用[Visual Studio Code](visual-studio-code-local-run-live-input.md)或[Visual Studio](stream-analytics-vs-tools-local-run.md)在本機執行您的作業時，可以針對串流分析作業來進行 udf 的偵錯工具。
+當使用者定義函式（UDF）未如預期般運作時，您需要進行偵錯工具來找出問題。 當您使用[Visual Studio Code](visual-studio-code-local-run-live-input.md)或[Visual Studio](stream-analytics-vs-tools-local-run.md)在本機執行您的作業時，可以針對串流分析作業來進行 udf 的偵錯工具。
 
 當您在本機對即時輸入資料流程執行作業時，它只會模擬在一個節點上執行雲端 Azure 串流分析引擎。 即時資料本機測試無法取代您在雲端中執行的效能和擴充性測試，但您可以在功能測試期間節省時間，而不必在每次想要測試時將作業提交至雲端。 此外，時間原則會停用本機或範例資料的本機執行，但支援即時資料測試的時間原則。
 
 ## <a name="pick-your-language"></a>選擇您的語言
 
-您可以使用 .NET (c # ) 或 JavaScript 來撰寫適用于 Azure 串流分析的 Udf。 
+您可以使用 .NET （c #）或 JavaScript 撰寫適用于 Azure 串流分析的 Udf。 
 
 ### <a name="functions-in-c"></a>C 中的函式# 
 
@@ -48,14 +49,14 @@ JavaScript 是在串流分析中建立函數的另一個選項。 JavaScript 程
 
 下列範例示範如何在[Visual Studio Code](quick-create-vs-code.md)的整合執行時間環境中，以一些限制來調試 JavaScript udf。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 開始之前，請確定您的 Azure 串流分析專案具有下列專案：
 
 * 輸入 
 * 輸出 
-* 串流分析查詢 (. script.asaql)  
-* ) 上 ( # B0 的串流分析作業設定
+* 串流分析查詢（. script.asaql） 
+* 串流分析作業設定（JobConfig.js于）
 * JavaScript UDF
 
 ### <a name="prepare-files"></a>準備檔案
@@ -94,7 +95,7 @@ exports.data = methods;
 
 ### <a name="debug-user-defined-aggregates"></a>Debug 使用者定義匯總 
 
-您可以使用 JavaScript Udf 的 debug 方法，來 (UDA) 中的使用者定義匯總進行偵錯工具。 在此範例中，會將 UDA 加入至*script.asaql*查詢檔案和測試檔案。
+您可以使用 JavaScript Udf 的 debug 方法來進行使用者定義匯總（UDA）的偵錯工具。 在此範例中，會將 UDA 加入至*script.asaql*查詢檔案和測試檔案。
 
 如同 UDF，您會加入 UDA 的呼叫，以確保專案會在進行變更之後進行編譯。 
 

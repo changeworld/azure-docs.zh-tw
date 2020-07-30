@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: dcbf9ba00592a9f4e25f9355549629f7eeb9b92a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 08fcf3540b2f8677f3fbfff49f21f99062d0ca40
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318482"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433255"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>使用 API 管理來管理 Machine Learning Studio (傳統版) Web 服務
 
-**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
+**適用物件：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） ![ 否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 ## <a name="overview"></a>概觀
@@ -41,7 +41,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [+ 建立資源]。
 3. 在搜尋方塊中，輸入 [API 管理]，然後選取 [API 管理] 資源。
-4. 按一下 [建立]  。
+4. 按一下 [建立]。
 5. [名稱] 值將用來建立唯一的 URL (此範例使用 "demoazureml")。
 6. 針對您的服務執行個體，選取 [訂用帳戶]、[資源群組] 和 [位置]。
 7. 指定 [組織名稱] 的值 (此範例使用 "demoazureml")。
@@ -69,7 +69,7 @@ Azure API 管理是一項 Azure 服務，可讓您藉由定義使用者存取、
 4. 輸入 [Web API URL 尾碼]。 此尾碼會成為 URL 的結尾，客戶將使用該 URL 將要求傳送至服務執行個體 (此範例使用 "azureml-demo")。
 5. 對於 [Web API URL 配置]，選取 [HTTPS]。
 6. 對於 [產品]，選取 [入門]。
-7. 按一下 **[儲存]** 。
+7. 按一下 [檔案] 。
 
 
 ## <a name="add-the-operations"></a>加入作業

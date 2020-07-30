@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88270d51bf50b2b175d9d8761685a8a2a8ae19b1
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027507"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428270"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>將 API 連接器新增至使用者流程
 
@@ -42,9 +42,16 @@ ms.locfileid: "87027507"
 8. 選取您想要傳送至 API 的宣告。
 9. 選取您計畫要從 API 接收回的任何宣告。
 
-   ![設定 API 連接器宣告](./media/self-service-sign-up-add-api-connector/api-connector-claims.png)
+   <!-- ![Set API connector claims](./media/self-service-sign-up-add-api-connector/api-connector-claims.png) -->
 
 10. 選取 [儲存]。
+
+### <a name="selection-of-claims-to-send-and-claims-to-receive"></a>選取 [要傳送的宣告] 和 [要接收的宣告]
+> [!IMPORTANT]
+> 您可能會看到依預設選取的所有宣告，如下所示。 所有 API 連接器都會更新為以這種方式運作。 您的 API 將會接收所有可用的宣告，並可傳回任何支援的宣告，而不需要在 API 連接器定義中進行設定。 
+
+![設定 API 連接器宣告](./media/self-service-sign-up-add-api-connector/api-connector-claims-new.png)
+
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>在使用者流程中啟用 API 連接器
 
@@ -164,7 +171,7 @@ Content-type: application/json
 | version     | String | 是      | API 的版本。                                                    |
 | 動作      | String | 是      | 值必須是`ShowBlockPage`                                              |
 | userMessage | String | 是      | 要向使用者顯示的訊息。                                            |
-| 代碼        | 字串 | 否       | 錯誤碼。 可以用於偵錯工具。 不向使用者顯示。 |
+| 代碼        | String | 否       | 錯誤碼。 可以用於偵錯工具。 不向使用者顯示。 |
 
 #### <a name="end-user-experience-with-a-blocking-response"></a>具有封鎖回應的終端使用者體驗
 
@@ -195,7 +202,7 @@ Content-type: application/json
 | 動作      | String  | 是      | 值必須為 `ValidationError`。                                           |
 | status      | 整數 | 是      | 必須是 `400` ValidationError 回應的值。                        |
 | userMessage | String  | 是      | 要向使用者顯示的訊息。                                            |
-| 代碼        | 字串  | 否       | 錯誤碼。 可以用於偵錯工具。 不向使用者顯示。 |
+| 代碼        | String  | 否       | 錯誤碼。 可以用於偵錯工具。 不向使用者顯示。 |
 
 #### <a name="end-user-experience-with-a-validation-error-response"></a>具有驗證錯誤回應的終端使用者體驗
 
@@ -204,7 +211,7 @@ Content-type: application/json
 ### <a name="integration-with-azure-functions"></a>與 Azure Functions 整合
 您可以使用 Azure Functions 中的 HTTP 觸發程式，做為建立 API 以搭配 API 連接器使用的簡單方式。 [例如](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)，您可以使用 Azure 函式來執行驗證邏輯，並限制對特定網域的登入。 您也可以呼叫和叫用其他 web Api、使用者存放區和其他雲端服務。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 <!-- - Learn [where you can enable an API connector](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow) -->
 - 瞭解如何[將自訂核准工作流程新增至自助式註冊](self-service-sign-up-add-approvals.md)

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20d1dfea251fdfd0bd6e8432d1ea0c7af7284cb5
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068023"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428175"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -55,7 +55,7 @@ Azure 也會在每個子網中保留五個 IP 位址供內部使用：前四個�
   - 請勿移除預設輸出規則。
   - 請勿建立會拒絕任何輸出連線能力的其他輸出規則。
 
-- 必須允許來自**AzureLoadBalancer**標記的流量。
+- 必須允許來自**AzureLoadBalancer**標記且目的地子網為「**任何**」的流量。
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>允許應用程式閘道存取一些來源 Ip
 
@@ -74,7 +74,7 @@ Azure 也會在每個子網中保留五個 IP 位址供內部使用：前四個�
 
 - **v1**
 
-   就 v1 SKU 而言，應用程式閘道子網支援使用者定義的路由（Udr），但前提是它們不會改變端對端要求/回應通訊。 例如，您可以在應用程式閘道子網中設定 UDR，以指向防火牆設備以進行封包檢查。 但是您必須確定封包在檢查之後可以到達其預定目的地。 如果無法這樣做，可能會導致健康情況探查或流量路由行為不正確。 這包括學習到的路由，或虛擬網路中的 Azure ExpressRoute 或 VPN 閘道所傳播的預設 0.0.0.0/0 路由。
+   就 v1 SKU 而言，應用程式閘道子網支援使用者定義的路由（Udr），但前提是它們不會改變端對端要求/回應通訊。 例如，您可以在應用程式閘道子網中設定 UDR，以指向防火牆設備以進行封包檢查。 但是您必須確定封包在檢查之後可以到達其預定目的地。 如果無法這樣做，可能會導致健康情況探查或流量路由行為不正確。 這包括學習到的路由，或虛擬網路中的 Azure ExpressRoute 或 VPN 閘道所傳播的預設 0.0.0.0/0 路由。 V1 不支援任何需要在內部部署（強制通道）重新導向 0.0.0.0/0 的案例。
 
 - **v2**
 

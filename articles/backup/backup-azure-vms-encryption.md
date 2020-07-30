@@ -2,13 +2,13 @@
 title: 備份和還原已加密的 Azure Vm
 description: 說明如何使用 Azure 備份服務來備份和還原已加密的 Azure Vm。
 ms.topic: conceptual
-ms.date: 04/03/2019
-ms.openlocfilehash: 20310c6c51a2467e9389bc77dd9ada4848c69be4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 07/29/2020
+ms.openlocfilehash: 25c5e66bde817e824a307df2a2b1b5f76c773c01
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371748"
+ms.locfileid: "87405672"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>備份和還原已加密的 Azure VM
 
@@ -56,29 +56,33 @@ Azure 備份可以使用具有和不含 Azure AD 應用程式的 ADE 來備份�
 
 ## <a name="configure-a-backup-policy"></a>設定備份原則
 
-1. 如果您尚未建立復原服務備份保存庫，請遵循[這些指示](backup-create-rs-vault.md)
-2. 在入口網站中開啟保存庫，然後選取 [**消費者入門**] 區段中的 [**備份**]。
+1. 如果您尚未建立復原服務備份保存庫，請遵循[這些指示](backup-create-rs-vault.md)。
+1. 在入口網站中開啟保存庫，然後選取 [**總覽**] 區段中的 [ **+ 備份**]。
 
-    ![備份刀鋒視窗](./media/backup-azure-vms-encryption/select-backup.png)
+    ![備份窗格](./media/backup-azure-vms-encryption/select-backup.png)
 
-3. 在您的工作負載執行所在的**備份目標**  >  **？** 選取 [ **Azure**]。
-4. 在 [您要備份什麼?] 中，選取 [虛擬機器] > [確定]。
+1. 在您的工作負載執行所在的**備份目標**  >  **？** 選取 [ **Azure**]。
+1. 在 [**您要備份什麼？** ] 中，選取 [**虛擬機器**]。 然後選取 [**備份**]。
 
       ![案例刀鋒視窗](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
-5. 在 [**備份原則**] 中  >  ，**選擇 [備份原則**]，選取您想要與保存庫產生關聯的原則。 然後按一下 [確定]。
+1. 在 [**備份原則**] 中  >  ，**選擇 [備份原則**]，選取您想要與保存庫產生關聯的原則。 然後選取 [確定]。
     - 備份原則會指定備份的執行時間，以及儲存的時間長度。
     - 預設原則的詳細資料便會列在下拉式功能表之下。
 
     ![開啟 [案例] 刀鋒視窗](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
-6. 如果您不想要使用預設原則，請選取 [**建立新**的]，然後[建立自訂原則](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
+1. 如果您不想要使用預設原則，請選取 [**建立新**的]，然後[建立自訂原則](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
 
-7. 選擇您想要使用 [選取原則] 來備份的已加密 Vm，然後選取 **[確定]**。
+1. 在 [**虛擬機器**] 底下，選取 [**新增**]。
+
+    ![開啟 [案例] 刀鋒視窗](./media/backup-azure-vms-encryption/add-virtual-machines.png)
+
+1. 選擇您想要使用 [選取原則] 來備份的已加密 Vm，然後選取 **[確定]**。
 
       ![選取加密的 VM](./media/backup-azure-vms-encryption/selected-encrypted-vms.png)
 
-8. 如果您使用 Azure Key Vault，在 [保存庫] 頁面上，您會看到一則訊息，指出 Azure 備份需要 Key Vault 中金鑰和密碼的唯讀存取權。
+1. 如果您使用 Azure Key Vault，在 [保存庫] 頁面上，您會看到一則訊息，Azure 備份需要 Key Vault 中的金鑰和密碼的唯讀存取權。
 
     - 如果您收到此訊息，則不需要採取任何動作。
 
@@ -88,17 +92,17 @@ Azure 備份可以使用具有和不含 Azure AD 應用程式的 ADE 來備份�
 
         ![存取警告](./media/backup-azure-vms-encryption/access-warning.png)
 
-9. 按一下 [**啟用備份**] 以在保存庫中部署備份原則，並為選取的 vm 啟用備份。
+1. 選取 [**啟用備份**] 以在保存庫中部署備份原則，並為選取的 vm 啟用備份。
 
 ## <a name="trigger-a-backup-job"></a>觸發備份作業
 
 初始備份會根據排程執行，但也可以立即執行，如下所示：
 
-1. 在保存庫功能表中，按一下 [備份項目]。
-2. 在 [備份項目] 中，按一下 [Azure 虛擬機器]。
-3. 在 [備份項目] 清單中，按一下省略符號 (...)。
-4. 按一下 [立即備份]。
-5. 在 [立即備份] 中，使用行事曆控制項來選取復原點應該保留的最後一天。 然後按一下 [確定] 。
+1. 在 [保存庫] 功能表中，選取 [**備份專案**]。
+2. 在 [**備份專案**] 中，選取 [ **Azure 虛擬機器**]。
+3. 在 [**備份專案**] 清單中，選取省略號（...）。
+4. 選取 [**立即備份**]。
+5. 在 [立即備份] 中，使用行事曆控制項來選取復原點應該保留的最後一天。 然後選取 [確定]。
 6. 監視入口網站通知。 您可以在保存庫儀表板中監視作業進度 > [備份作業] > [進行中]。 根據您的 VM 大小，建立初始備份可能需要花一點時間。
 
 ## <a name="provide-permissions"></a>提供許可權
@@ -111,24 +115,27 @@ Azure 備份需要備份金鑰和密碼的唯讀存取權，以及相關聯的 V
 若要設定許可權：
 
 1. 在 [Azure 入口網站中，選取 [**所有服務**]，然後搜尋**金鑰保存庫**。
-2. 選取與您要備份的加密 VM 相關聯的金鑰保存庫。
-3. 選取 [**存取原則**] [  >  **加入新**的]。
-4. 選取 [**選取主體**]，然後輸入**備份管理**。
-5. 選取 [**備份管理服務**] [  >  **選取**]。
+1. 選取與您要備份的加密 VM 相關聯的金鑰保存庫。
+1. 選取 [**存取原則**] [  >  **新增存取原則**]。
+
+    ![新增存取原則](./media/backup-azure-vms-encryption/add-access-policy.png)
+
+1. 選取 [**選取主體**]，然後輸入**備份管理**。
+1. 選取 [**備份管理服務**] [  >  **選取**]。
 
     ![備份服務選取項目](./media/backup-azure-vms-encryption/select-backup-service.png)
 
-6. 在 [**新增存取原則**]  >  **[從範本設定（選擇性）**] 中，選取 [ **Azure 備份**]。
+1. 在 [**新增存取原則**]  >  **[從範本設定（選擇性）**] 中，選取 [ **Azure 備份**]。
     - 該備份會在 [金鑰權限]**** 和 [祕密權限]**** 預先填入必要的權限。
     - 如果您的 VM 只使用**BEK**加密，請移除**金鑰許可權**的選擇，因為您只需要密碼的許可權。
 
     ![Azure 備份選取項目](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-7. 按一下 [確定]。 **備份管理服務**會新增至**存取原則**。
+1. 選取 [新增]。 **備份管理服務**會新增至**存取原則**。
 
     ![存取原則](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
-8. 按一下 [**儲存**] 以提供許可權給 Azure 備份。
+1. 選取 [**儲存**] 以提供許可權給 Azure 備份。
 
 ## <a name="restore-an-encrypted-vm"></a>還原已加密的 VM
 

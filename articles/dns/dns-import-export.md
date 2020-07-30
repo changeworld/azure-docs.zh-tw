@@ -5,15 +5,15 @@ description: 了解如何使用 Azure CLI 匯入和匯出 DNS 區域檔案至 Az
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.date: 4/3/2019
+ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
-ms.openlocfilehash: bd40b3400b2a1c09be8fabd1201bedc7043bf19b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f17d7f32d774cac283ec335c372e8f68d50931f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84709091"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424217"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>使用 Azure CLI 匯入及匯出 DNS 區域檔案
 
@@ -82,7 +82,7 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 1. 如果您還沒有 Resource Manager 資源群組，則必須建立一個。
 
     ```azurecli
-    az group create --group myresourcegroup -l westeurope
+    az group create --resource-group myresourcegroup -l westeurope
     ```
 
 2. 為了將 **contoso.com.txt** 檔案中的 **contoso.com** 區域匯入至 **myresourcegroup** 資源群組中的新 DNS 區域，您將會執行命令 `az network dns zone import`。<BR>此命令會載入並剖析該區域檔案。 此命令會在 Azure DNS 服務上執行一系列的命令，以建立區域和區域中的所有記錄集。 此命令會在主控台視窗中報告進度，以及任何的錯誤或警告。 由於記錄集是以系列方式建立，可能需要幾分鐘的時間來匯入大型的區域檔案。

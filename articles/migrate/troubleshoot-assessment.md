@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121668"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422856"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評量/相依性視覺效果疑難排解
 
@@ -52,7 +52,7 @@ ms.locfileid: "86121668"
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>以匯入為基礎的 AVS 評估中的建議遷移工具標示為不明
 
-針對透過 CSV 檔案匯入的電腦，和 AVS 評估中的預設遷移工具是未知的。 不過，對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能（HCX）解決方案。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
+針對透過 CSV 檔案匯入的電腦，和 AVS 評估中的預設遷移工具是未知的。 不過，對於 VMware 機器，建議使用 VMware 混合式雲端擴充功能（HCX）解決方案。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>在 Azure VM 評估中，Linux Vm 已「有條件地準備就緒」
 
@@ -180,6 +180,9 @@ Azure Migrate 取決於相依性視覺效果功能的服務對應。 因為服�
 
 ## <a name="dependencies-export-csv-shows-unknown-process"></a>相依性匯出 CSV 顯示「未知的進程」
 在無代理程式相依性分析中，會以最大的方式來捕捉進程名稱。 在某些情況下，雖然會捕捉來源和目的地伺服器名稱和目的地埠，但在相依性的兩端判斷進程名稱並不可行。 在這種情況下，進程會標示為「未知的進程」。
+
+## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-server-assessment"></a>嘗試在伺服器評估中設定工作區時，未列出我的 Log Analytics 工作區
+Azure Migrate 目前支援在「美國東部」、「東南亞」和「西歐」區域中建立 OMS 工作區。 如果工作區是在任何其他區域的 Azure Migrate 外部建立，則目前無法與 Azure Migrate 專案相關聯。
 
 
 ## <a name="capture-network-traffic"></a>捕捉網路流量

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ce85473e80bfccf1bcff3e21408fd91e4cd428a4
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f508974891266735c5c193baa116771f11dc40a7
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131322"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388096"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>在 Azure 中管理 Durable Functions 中的執行個體
 
@@ -258,8 +258,8 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 * ** `id` （必要）**：協調流程實例的識別碼。
 * ** `show-input` （選擇性）**：如果設為 `true` ，回應會包含函式的輸入。 預設值是 `false`。
 * ** `show-output` （選擇性）**：如果設為 `true` ，回應會包含函式的輸出。 預設值是 `false`。
-* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設為 `AzureWebJobsStorage`。
-* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在[host.js](durable-functions-bindings.md#host-json)中設定它。
+* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設值為 `AzureWebJobsStorage`。
+* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設值為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在[host.js](durable-functions-bindings.md#host-json)中設定它。
 
 下列命令會抓取協調流程實例識別碼為0ab8c55a66644d68a3a8b220b12d209c 之實例的狀態（包括輸入和輸出）。 它假設您是從函式 `func` 應用程式的根目錄執行命令：
 
@@ -270,8 +270,8 @@ func durable get-runtime-status --id 0ab8c55a66644d68a3a8b220b12d209c --show-inp
 您可以使用 `durable get-history` 命令來取出協調流程實例的歷程記錄。 它需要以下參數：
 
 * ** `id` （必要）**：協調流程實例的識別碼。
-* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設為 `AzureWebJobsStorage`。
-* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在 host.js中設定它。
+* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設值為 `AzureWebJobsStorage`。
+* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設值為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在 host.js中設定它。
 
 ```bash
 func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
@@ -281,7 +281,7 @@ func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
 
 不是一次查詢協調流程中的一個實例，您可能會發現一次查詢所有專案會更有效率。
 
-您可以使用 `GetStatusAsync` （.net）、 `getStatusAll` （JavaScript）或 `get_status_all` （Python）方法來查詢所有協調流程實例的狀態。 在 .NET 中，您可以 `CancellationToken` 在想要取消物件時傳遞物件。 此方法會和使用參數的 `GetStatusAsync`方法一樣傳回具有相同屬性的物件。
+您可以使用[ListInstancesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) （.net）、 [getStatusAll](https://docs.microsoft.com/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusall--) （JavaScript）或 `get_status_all` （Python）方法來查詢所有協調流程實例的狀態。 在 .NET 中，您可以 `CancellationToken` 在想要取消物件時傳遞物件。 方法會傳回物件的清單，這些物件代表符合查詢參數的協調流程實例。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -292,11 +292,14 @@ public static async Task Run(
     [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
-    IList<DurableOrchestrationStatus> instances = await client.GetStatusAsync(); // You can pass CancellationToken as a parameter.
-    foreach (var instance in instances)
+    var noFilter = new OrchestrationStatusQueryCondition();
+    OrchestrationStatusQueryResult result = await client.ListInstancesAsync(
+        noFilter,
+        CancellationToken.None);
+    foreach (DurableOrchestrationStatus instance in result.DurableOrchestrationState)
     {
         log.LogInformation(JsonConvert.SerializeObject(instance));
-    };
+    }
 }
 ```
 
@@ -346,8 +349,8 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 * ** `top` （選擇性）**：此命令支援分頁。 此參數會對應至每個要求擷取的執行個體數目。 預設值為 10。
 * ** `continuation-token` （選擇性）**：用來指出要取得之實例頁面或區段的 token。 每個 `get-instances` 執行都會將權杖傳回給下一組執行個體。
-* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設為 `AzureWebJobsStorage`。
-* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在[host.js](durable-functions-bindings.md#host-json)中設定它。
+* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設值為 `AzureWebJobsStorage`。
+* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設值為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在[host.js](durable-functions-bindings.md#host-json)中設定它。
 
 ```bash
 func durable get-instances
@@ -357,7 +360,7 @@ func durable get-instances
 
 如果您不需要標準實例查詢可以提供的所有資訊，該怎麼辦？ 例如，如果您只是要尋找協調流程建立時間或協調流程執行時間狀態呢？ 您可以藉由套用篩選來縮小查詢範圍。
 
-使用 `GetStatusAsync` （.net）或 `getStatusBy` （JavaScript）方法來取得符合一組預先定義之篩選準則的協調流程實例清單。
+使用[ListInstancesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationclient.listinstancesasync?view=azure-dotnet#Microsoft_Azure_WebJobs_Extensions_DurableTask_IDurableOrchestrationClient_ListInstancesAsync_Microsoft_Azure_WebJobs_Extensions_DurableTask_OrchestrationStatusQueryCondition_System_Threading_CancellationToken_) （.net）或[getStatusBy](https://docs.microsoft.com/javascript/api/durable-functions/durableorchestrationclient?view=azure-node-latest#getstatusby-date---undefined--date---undefined--orchestrationruntimestatus---) （JavaScript）方法來取得符合一組預先定義之篩選準則的協調流程實例清單。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -368,19 +371,26 @@ public static async Task Run(
     [DurableClient] IDurableOrchestrationClient client,
     ILogger log)
 {
-    var runtimeStatus = new List<OrchestrationRuntimeStatus> {
-        OrchestrationRuntimeStatus.Completed,
-        OrchestrationRuntimeStatus.Running
+    // Get the first 100 running or pending instances that were created between 7 and 1 day(s) ago
+    var queryFilter = new OrchestrationStatusQueryCondition
+    {
+        RuntimeStatus = new[]
+        {
+            OrchestrationRuntimeStatus.Pending,
+            OrchestrationRuntimeStatus.Running,
+        },
+        CreatedTimeFrom = DateTime.UtcNow.Subtract(TimeSpan.FromDays(7)),
+        CreatedTimeTo = DateTime.UtcNow.Subtract(TimeSpan.FromDays(1)),
+        PageSize = 100,
     };
-    IList<DurableOrchestrationStatus> instances = await starter.GetStatusAsync(
-        new DateTime(2018, 3, 10, 10, 1, 0),
-        new DateTime(2018, 3, 10, 10, 23, 59),
-        runtimeStatus
-    ); // You can pass CancellationToken as a parameter.
-    foreach (var instance in instances)
+    
+    OrchestrationStatusQueryResult result = await client.ListInstancesAsync(
+        queryFilter,
+        CancellationToken.None);
+    foreach (DurableOrchestrationStatus instance in result.DurableOrchestrationState)
     {
         log.LogInformation(JsonConvert.SerializeObject(instance));
-    };
+    }
 }
 ```
 
@@ -448,8 +458,8 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 * ** `runtime-status` （選擇性）**：取得具有特定狀態（例如，執行中或已完成）的實例。 可以提供多個狀態 (以空格分隔)。
 * ** `top` （選擇性）**：每個要求所抓取的實例數目。 預設值為 10。
 * ** `continuation-token` （選擇性）**：用來指出要取得之實例頁面或區段的 token。 每個 `get-instances` 執行都會將權杖傳回給下一組執行個體。
-* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設為 `AzureWebJobsStorage`。
-* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在[host.js](durable-functions-bindings.md#host-json)中設定它。
+* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設值為 `AzureWebJobsStorage`。
+* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設值為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在[host.js](durable-functions-bindings.md#host-json)中設定它。
 
 如果您未提供任何篩選（ `created-after` 、 `created-before` 或 `runtime-status` ），此命令只會抓取 `top` 實例，而不考慮執行時間狀態或建立時間。
 
@@ -520,8 +530,8 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 * ** `id` （必要）**：要終止之協調流程實例的識別碼。
 * ** `reason` （選擇性）**：終止的原因。
-* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設為 `AzureWebJobsStorage`。
-* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在[host.js](durable-functions-bindings.md#host-json)中設定它。
+* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設值為 `AzureWebJobsStorage`。
+* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設值為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在[host.js](durable-functions-bindings.md#host-json)中設定它。
 
 下列命令會終止識別碼為0ab8c55a66644d68a3a8b220b12d209c 的協調流程實例：
 
@@ -597,8 +607,8 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 * ** `id` （必要）**：協調流程實例的識別碼。
 * **`event-name`**：要引發之事件的名稱。
 * ** `event-data` （選用）**：要傳送至協調流程實例的資料。 這可以是 JSON 檔案的路徑，或者您可以直接在命令列上提供資料。
-* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設為 `AzureWebJobsStorage`。
-* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在[host.js](durable-functions-bindings.md#host-json)中設定它。
+* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設值為 `AzureWebJobsStorage`。
+* ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 預設值為 `DurableFunctionsHub`。 您也可以使用 durableTask： HubName，在[host.js](durable-functions-bindings.md#host-json)中設定它。
 
 ```bash
 func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEvent --event-data @eventdata.json
@@ -852,7 +862,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 * ** `id` （必要）**：協調流程實例的識別碼。
 * ** `reason` （選擇性）**：倒帶協調流程實例的原因。
-* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設為 `AzureWebJobsStorage`。
+* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設值為 `AzureWebJobsStorage`。
 * ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 根據預設，會使用檔案[上host.js](durable-functions-bindings.md#host-json)中的工作中樞名稱。
 
 ```bash
@@ -996,7 +1006,7 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 * ** `created-after` （選擇性）**：清除這個日期/時間（UTC）之後所建立之實例的歷程記錄。 可接受 ISO 8601 格式的日期時間。
 * ** `created-before` （選擇性）**：清除在此日期/時間（UTC）之前建立之實例的歷程記錄。 可接受 ISO 8601 格式的日期時間。
 * ** `runtime-status` （選擇性）**：清除具有特定狀態之實例的歷程記錄（例如，執行中或已完成）。 可以提供多個狀態 (以空格分隔)。
-* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設為 `AzureWebJobsStorage`。
+* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設值為 `AzureWebJobsStorage`。
 * ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 根據預設，會使用檔案[上host.js](durable-functions-bindings.md#host-json)中的工作中樞名稱。
 
 下列命令會刪除2018年11月14日下午 7:35 PM （UTC）之前建立之所有失敗實例的歷程記錄。
@@ -1009,7 +1019,7 @@ func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runti
 
 您可以使用[Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` 命令來刪除與特定工作中樞相關聯的所有儲存體成品，包括 Azure 儲存體資料表、佇列和 blob。 此命令有兩個參數：
 
-* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設為 `AzureWebJobsStorage`。
+* ** `connection-string-setting` （選用）**：應用程式設定的名稱，其中包含要使用的儲存體連接字串。 預設值為 `AzureWebJobsStorage`。
 * ** `task-hub-name` （選用）**：要使用 Durable Functions 工作中樞的名稱。 根據預設，會使用檔案[上host.js](durable-functions-bindings.md#host-json)中的工作中樞名稱。
 
 下列命令會刪除與工作中樞相關聯的所有 Azure 儲存體資料 `UserTest` 。

@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 00f9e4c1ebd162883f62280e753b6e0c4c13a21d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027167"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428013"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -436,6 +436,9 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 在 Azure AD 中，當您可以為特定的服務主體自訂權杖中所發出的宣告時，許多案例便可能實現。 在本節中，我們將逐步解說一些常見案例，以協助您掌握如何使用宣告對應原則類型。
 
+> [!NOTE]
+> 建立宣告對應原則時，您也可以從權杖中的目錄架構延伸模組屬性發出宣告。 請在專案中使用擴充屬性的*ExtensionID* ，而不是*ID* `ClaimsSchema` 。  如需擴充屬性的詳細資訊，請參閱[使用目錄架構延伸屬性](active-directory-schema-extensions.md)。
+
 #### <a name="prerequisites"></a>Prerequisites
 
 在下列範例中，您會為服務主體建立、更新、連結和刪除原則。 如果您是 Azure AD 的新手，建議您[先了解如何取得 Azure AD 租用戶](quickstart-create-new-tenant.md)，然後再參考範例繼續操作。
@@ -527,4 +530,5 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 ## <a name="see-also"></a>另請參閱
 
-若要了解如何透過 Azure 入口網站自訂 SAML 權杖中發出的宣告，請參閱[如何：針對 Azure AD 中的企業應用程式，自訂 SAML 權杖中發出的宣告](active-directory-saml-claims-customization.md)
+- 若要了解如何透過 Azure 入口網站自訂 SAML 權杖中發出的宣告，請參閱[如何：針對 Azure AD 中的企業應用程式，自訂 SAML 權杖中發出的宣告](active-directory-saml-claims-customization.md)
+- 若要深入瞭解延伸模組屬性，請參閱[在宣告中使用目錄架構延伸模組屬性](active-directory-schema-extensions.md)。

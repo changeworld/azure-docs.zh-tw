@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: e3a5d2228074ed358244b49bdf283c09f777ddee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d8ac2a8317343b1bc172eefa17c6eb0074c5c21f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292079"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432624"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
@@ -92,18 +92,21 @@ B16 特性：
 
 ## <a name="q--a"></a>問答集
 
+### <a name="q-what-happens-if-the-credits-run-out"></a>問：如果信用額度用盡，會發生什麼事？
+**答**：當點數用完時，VM 會回到基準效能。
+
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>問：如何從 VM 取得 135% 的基準效能？
 
 **答**：會在構成 VM 大小的 8 個 vCPU 之間共用 135%。 例如，如果您的應用程式將 8 個核心其中 4 個用於批次處理，而這 4 個 vCPU 每個都以 30% 的使用率執行，VM CPU 效能的總數就會等於 120%。  這表示 VM 會以您基準效能的 15% 差異作為基礎來建置點數時間。  但這也表示，當您有可用點數時，該相同 VM 可以 100% 使用所有 8 個 vCPU，使該 VM 擁有 800% 的最大 CPU 效能。
 
 
-### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>問：如何監視我的點數結餘和耗用量
+### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>問：如何監視我的點數餘額和耗用量？
 
 **答**：我們在未來幾週會推出 2 個新的計量，**點數**計量可讓您檢視 VM 累積了多少點數，而**已耗用點數**計量會顯示 VM 從撲滿中耗用了多少 CPU 點數。    您可以在入口網站中的 [計量] 窗格檢視這些計量，或透過 Azure 監視器 API 以程式設計方式檢視。
 
 如需如何存取 Azure 計量資料的詳細資訊，請參閱 [Microsoft Azure 的計量概觀](../azure-monitor/platform/data-platform.md)。
 
-### <a name="q-how-are-credits-accumulated"></a>問：如何累積點數？
+### <a name="q-how-are-credits-accumulated-and-consumed"></a>問：如何累積和取用信用額度？
 
 **答**：VM 累積與消耗率設定的方式，是以基礎效能層級執行的 VM 會具有高載點數的淨累積或耗用量。  每當 VM 在其基礎效能層級下執行時，點數淨值都會增加，且每當 VM 利用 CPU 超過其基礎效能層級時，點數淨值就會降低。
 

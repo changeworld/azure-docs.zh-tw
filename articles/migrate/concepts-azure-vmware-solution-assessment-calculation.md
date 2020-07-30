@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 84798dbcd158b62ce6714bf73494a9e85bf932a8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118812"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387943"
 ---
 # <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate 中的 AVS 評估：伺服器評量
 
@@ -28,8 +28,8 @@ ms.locfileid: "86118812"
 
 **評量類型** | **詳細資料**
 --- | --- 
-**Azure VM** | 將內部部署伺服器遷移至 Azure 虛擬機器的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)，以遷移至 Azure。[深入瞭解](concepts-assessment-calculation.md)
-**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](../azure-vmware/introduction.md)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。[深入瞭解](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | 評估內部部署伺服器，並將其遷移至 Azure 虛擬機器。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)，以遷移至 Azure。[深入瞭解](concepts-assessment-calculation.md)
+**Azure VMware 解決方案 (AVS)** | 評估內部部署伺服器，並將其遷移至 [Azure VMware 解決方案 (AVS)](../azure-vmware/introduction.md)。 <br/><br/> 您可以使用此評量類型，評量內部部署 [VMware VM](how-to-set-up-appliance-vmware.md) 以移轉至 Azure VMware 解決方案 (AVS)。[深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
 
 伺服器評估中的 Azure VMware 解決方案（AVS）評估提供兩個調整準則選項：
 
@@ -119,7 +119,7 @@ ms.locfileid: "86118812"
 | **屬性** | **詳細資料** 
 | - | - 
 | **目標位置** | 指定您要遷移到的 AVS 私人雲端位置。<br/><br/> 伺服器評估中的 AVS 評估目前支援下列目的地區域：美國東部、西歐、美國西部。 
-| **儲存類型** | 指定要用於 AVS 的儲存引擎。<br/><br/> AVS 評量僅支援 vSAN 做為預設儲存體類型。 
+| **儲存體類型** | 指定要用於 AVS 的儲存引擎。<br/><br/> AVS 評量僅支援 vSAN 做為預設儲存體類型。 
 **保留實例（RIs）** | 此屬性可協助您指定 AVS 中的保留實例。 目前不支援 AVS 節點的 RIs。 
 **節點類型** | 指定用來對應內部部署 Vm 的[AVS 節點類型](../azure-vmware/concepts-private-clouds-clusters.md)。 預設節點類型為 AV36。 <br/><br/> Azure Migrate 會建議將 Vm 遷移至 AVS 所需的節點數目。 
 **FTT 設定，RAID 層級** | 指定可容忍和 Raid 組合的適當失敗。 選取的 FTT 選項結合了內部部署 VM 磁片需求，將會決定 AVS 所需的 vSAN 儲存空間總計。 
@@ -128,7 +128,7 @@ ms.locfileid: "86118812"
 **百分位數使用率** | 指定要針對適當調整大小所考慮之效能範例集的百分位數值。 只有在調整大小是以效能為基礎的情況下，才適用此屬性。
 **緩和因數** | Azure Migrate Server 評估會考慮在評估期間的緩衝區（緩和因數）。 此緩衝區適用於 VM 的機器使用量資料 (CPU、記憶體、磁碟和網路)。 緩和因數會考量各個問題，例如季節性使用量、簡短的效能歷程記錄，以及未來可能增加的使用量。<br/><br/> 以 10 核心的 VM 為例，如果使用率為 20%，一般即相當於一個 2 核心的 VM。 但如果緩和因數為 2.0 x，則結果為 4 核心的 VM。 
 **供應項目** | 顯示您所註冊的[Azure 供應](https://azure.microsoft.com/support/legal/offer-details/)專案。 Azure Migrate 會據以預估成本。
-**貨幣** | 顯示您帳戶的帳單貨幣。 
+**符號** | 顯示您帳戶的帳單貨幣。 
 **折扣 (%)** | 列出您在 Azure 供應專案上所收到的任何訂用帳戶特定折扣。 預設設定為 0%。 
 **Azure Hybrid Benefit** | 指定您是否擁有軟體保證，以及是否符合[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/)的資格。 雖然它不會影響以節點為基礎的 Azure VMware 解決方案價格，但客戶仍可使用 Azure 混合式權益，在 AVS 中套用內部部署的 OS 授權（Microsoft 型）。 其他軟體作業系統廠商也必須提供自己的授權條款，例如 RHEL。 
 **vCPU 過度訂閱** | 指定與 AVS 節點中的一個實體核心系結之虛擬核心數目的比率。 計算中的預設值為 4 vCPU：1個在 AVS 中的實體核心。 <br/><br/> API 使用者可以將此值設定為整數。 請注意，vCPU 超額訂閱 > 4:1 可能會影響工作負載（視其 CPU 使用量而定）。 
@@ -256,8 +256,8 @@ Azure Migrate 中的每個以效能為基礎的評量，都與信賴評等相關
 ## <a name="migration-tool-guidance"></a>遷移工具指引
 
 在 Azure VMware 解決方案 (AVS) 評量的 Azure 移轉整備程度報表中，您可以看到下列建議的工具： 
-- **VMware HCX 或 Enterprise**：針對 VMware 機器，VMWare 混合式雲端擴充功能 (HCX) 解決方案是建議的遷移工具，可將您的內部部署工作負載遷移至 Azure VMWare 解決方案 (AVS) 私人雲端。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
-- **未知**：針對透過 CSV 檔案匯入的電腦，預設的移轉工具是未知的。 但對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能 (HCX) 解決方案。
+- **VMWARE HCX 或 Enterprise**：針對 vmware 機器，vmware 混合式雲端擴充功能（HCX）解決方案是建議的遷移工具，可將內部部署工作負載遷移至 Azure VMware 解決方案（AVS）私人雲端。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
+- **未知**：針對透過 CSV 檔案匯入的電腦，預設的移轉工具是未知的。 但對於 VMware 機器，建議使用 VMware 混合式雲端擴充功能（HCX）解決方案。
 
 ## <a name="next-steps"></a>後續步驟
 

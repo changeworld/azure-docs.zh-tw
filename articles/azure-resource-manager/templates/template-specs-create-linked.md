@@ -3,12 +3,12 @@ title: 使用連結的範本建立範本規格
 description: 瞭解如何使用連結的範本來建立範本規格。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c2648cb8a71be709406f314d02a226ed097be6f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096145"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387858"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教學課程：使用連結的範本建立範本規格（預覽）
 
@@ -33,7 +33,7 @@ ms.locfileid: "87096145"
 - `/artifacts/linkedTemplate.json`
 - `artifacts/linkedTemplate.json`
 
-如果在上有另一個從 linkedTemplate.js呼叫的 linkedTemplate2.js，而且上的 linkedTemplate2.js儲存在相同的成品子資料夾中，則 linkedTemplate.js上指定的 relativePath 會**在上linkedTemplate2.js**。
+`relativePath`屬性一律相對於宣告的範本檔案 `relativePath` ，因此，如果從上的 linkedTemplate.js呼叫了另一個 linkedTemplate2.js，而 linkedTemplate2.js上的則儲存在相同的成品子資料夾中，則在 linkedTemplate.js中指定的 relativePath 就是 `linkedTemplate2.json` 。
 
 1. 使用下列 JSON 建立主要範本。 將azuredeploy.js的主要範本儲存到本機電腦**上**。 本教學課程假設您已儲存至的路徑**c:\Templates\linkedTS\azuredeploy.js** ，但您可以使用任何路徑。
 

@@ -9,17 +9,17 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 83c4a48f8c177cf84078966bae32126102b45c3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bfbe67c20fdec292dca0d6e07a05f2ff27637396
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521015"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87427966"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
 > [!NOTE]
-> 本文中記載的驗證方法不再被視為最佳作法。 我們建議您採用更新的驗證方法，以[瞭解如何向 Azure Key Vault 進行驗證](authentication.md)。
+> **AppAuthentication**已被取代。 它會取代 wit 新的 Azure 身分識別程式庫**DefaultAzureCredentials** ，適用于 .Net、JAVA、TypeScript 和 Python，並應用於所有新的開發。 如需詳細資訊，請參閱：[驗證和 AZURE SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html)。
 
 若要驗證 Azure Key Vault，您需要一個 Azure Active Directory （Azure AD）認證，也就是共用密碼或憑證。
 
@@ -27,7 +27,7 @@ ms.locfileid: "86521015"
 
 連結 `Microsoft.Azure.Services.AppAuthentication` 庫會自動管理驗證，而這可讓您專注于您的解決方案，而不是您的認證。 它支援 Microsoft Visual Studio、Azure CLI 或 Azure AD 整合式驗證的本機開發。 如果部署到支援受控執行個體的 Azure 資源，程式庫會自動使用 [Azure 資源的受控識別](../../active-directory/msi-overview.md)。 不需要任何程式碼或設定變更。 當受控識別無法使用時，或在本機開發期間無法判斷開發人員的安全性內容時，程式庫也支援直接使用 Azure AD[用戶端認證](../../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)或[Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/)。
 
@@ -235,7 +235,7 @@ ms.locfileid: "86521015"
 
 若要控制處理程序，請使用傳遞至 `AzureServiceTokenProvider` 建構函式或 *AzureServicesAuthConnectionString* 環境變數中指定的連接字串。  支援下列選項：
 
-| 連接字串選項 | 情節 | 註解|
+| 連接字串選項 | 狀況 | 註解|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本機開發 | `AzureServiceTokenProvider`會使用 AzureCli 來取得權杖。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本機開發 | `AzureServiceTokenProvider`會使用 Visual Studio 來取得權杖。 |

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f644203b494e5baf087241e2a4fe669b7db07b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077894"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431080"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用應用程式 Proxy 與 PingAccess 的單一登入之標頭式驗證
 
@@ -105,7 +105,7 @@ Azure Active Directory （Azure AD）應用程式 Proxy 已與 PingAccess 合作
    ![顯示使用者和群組的清單](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
 1. 選取要進行應用程式測試的使用者，然後選取 [**選取**]。 請確定此測試帳戶可存取內部部署應用程式。
-1. 選取 [**指派**]。
+1. 選取 [指派]。
 1. 從 [應用程式] 提要欄位中，選取 [**單一登入**  >  **標頭-型**]。
 
    > [!TIP]
@@ -121,6 +121,11 @@ Azure Active Directory （Azure AD）應用程式 Proxy 已與 PingAccess 合作
 1. 選取您的應用程式。
 1. 選取 [重新**導向 uri**] 旁的連結，顯示針對 web 和公用用戶端所設定的重新導向 uri 數目。 [ ** \<application name> -驗證**] 頁面隨即出現。
 1. 檢查您稍早指派給應用程式的外部 URL 是否位於 [重新**導向 uri** ] 清單中。 如果不是，請立即新增外部 URL，使用**Web**的重新導向 URI 類型，然後選取 [**儲存**]。
+
+除了外部 URL 之外，也應該將外部 URL 上 Azure Active Directory 的授權端點新增至 [重新導向 Uri] 清單。
+
+`https://*.msappproxy.net/pa/oidc/cb`
+`https://*.msappproxy.net/`
 
 最後，設定您的內部部署應用程式，讓使用者擁有讀取存取權，而其他應用程式則具有讀取/寫入權限：
 
@@ -164,7 +169,7 @@ Azure Active Directory （Azure AD）應用程式 Proxy 已與 PingAccess 合作
 **更新 `acceptMappedClaims` 欄位：**
 
 1. 以應用程式系統管理員身分登入[Azure Active Directory 入口網站](https://aad.portal.azure.com/)。
-1. 選取 [Azure Active Directory]   > [應用程式註冊]  。 應用程式清單隨即出現。
+1. 選取 [Azure Active Directory] > [應用程式註冊]。 應用程式清單隨即出現。
 1. 選取您的應用程式。
 1. 從應用程式的 [**應用程式註冊**] 頁面的提要欄位中，選取 [**資訊清單**]。 應用程式註冊的資訊清單 JSON 程式碼隨即出現。
 1. 搜尋 `acceptMappedClaims` 欄位，並將值變更為 `True` 。
