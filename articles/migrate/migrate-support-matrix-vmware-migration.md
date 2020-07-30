@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 遷移支援
 description: 深入瞭解 Azure Migrate 中的 VMware VM 遷移支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5b53ae811786b1712ccd833ff155c408010d4fa4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9de0609361e67d5251b25df798b61a4ab13e432c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022730"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387416"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
 
@@ -74,7 +74,7 @@ ms.locfileid: "87022730"
 
 ### <a name="appliance-requirements-agentless"></a>設備需求（無代理程式）
 
-無代理程式遷移會使用[Azure Migrate 設備](migrate-appliance.md)。 您可以使用 OVA 範本、匯入到 vCenter Server 或使用 [PowerShell 指令碼](deploy-appliance-script.md)來將設備部署為 VMWare VM。
+無代理程式遷移會使用[Azure Migrate 設備](migrate-appliance.md)。 您可以使用 OVA 範本將設備部署為 VMware VM、匯入 vCenter Server，或使用[PowerShell 腳本](deploy-appliance-script.md)。
 
 - 了解 VMware 的[設備需求](migrate-appliance.md#appliance---vmware)。
 - 了解設備必須在[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端中存取的 URL。
@@ -155,7 +155,7 @@ VM | 在 Vm 上執行的行動服務會與埠 HTTPS 443 輸入上的內部部署
 
 所有使用無代理程式或代理程式型遷移來複寫至 Azure 的內部部署 Vm，都必須符合此表中摘要說明的 Azure VM 需求。 
 
-**元件** | **Requirements** 
+**元件** | **需求** 
 --- | --- | ---
 客體作業系統 | 驗證支援的 VMware VM 作業系統以進行遷移。<br/> 您可以遷移在支援的作業系統上執行的任何工作負載。 
 客體作業系統架構 | 64 位元。 
@@ -172,6 +172,6 @@ VM 名稱 | 從 1 到 63 個字元。<br/><br/> 只能使用字母、數字和�
 在遷移後連接-Linux | 若要在使用 SSH 進行遷移之後連線到 Azure Vm：<br/><br/> 在進行遷移之前，請在內部部署機器上，確認安全殼層服務已設定為 [啟動]，且防火牆規則允許 SSH 連線。<br/><br/> 容錯移轉之後，在 Azure VM 上，允許已容錯移轉的 VM 上的網路安全性群組規則之 SSH 埠的連入連線，以及它所連接的 Azure 子網。<br/><br/> 此外，請新增 VM 的公用 IP 位址。  
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [選取](server-migrate-overview.md)[VMware 遷移] 選項。

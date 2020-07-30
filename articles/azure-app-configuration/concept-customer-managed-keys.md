@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: bcafdbdfd07456a01d956b622d9c5e6ed4b0b6f2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371850"
+ms.locfileid: "87384866"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>使用客戶管理的金鑰來加密您的應用程式組態資料
 Azure 應用程式組態[加密待用的機密資訊](../security/fundamentals/encryption-atrest.md)。 使用客戶管理的金鑰可讓您管理您的加密金鑰，以提供增強的資料保護。  使用受控金鑰加密時，應用程式組態中的所有機密資訊都會以使用者提供的 Azure Key Vault 金鑰進行加密。  這可讓您視需要輪替加密金鑰。  它也會撤銷應用程式組態實例的存取權，以撤銷 Azure 應用程式組態對機密資訊存取權的能力。
@@ -20,7 +20,7 @@ Azure 應用程式組態[加密待用的機密資訊](../security/fundamentals/e
 Azure 應用程式組態使用 Microsoft 所提供的256位 AES 加密金鑰，加密待用的機密資訊。 每個應用程式組態實例都有其自己的加密金鑰（由服務管理），並用來加密機密資訊。 敏感性資訊包括在索引鍵/值組中找到的值。  啟用客戶管理的金鑰功能時，應用程式組態會使用指派給應用程式組態實例的受控識別，以 Azure Active Directory 進行驗證。 受控識別接著會呼叫 Azure Key Vault 並包裝應用程式組態實例的加密金鑰。 然後會儲存已包裝的加密金鑰，並在應用程式組態中快取已解除包裝的加密金鑰一小時。 應用程式組態會每小時重新整理應用程式組態實例之加密金鑰的未包裝版本。 這可確保在正常操作條件下的可用性。 
 
 >[!IMPORTANT]
-> 如果指派給應用程式組態實例的身分識別已不再被授權解除包裝實例的加密金鑰，或永久刪除了受控金鑰，則將無法再解密儲存在應用程式組態實例中的機密資訊。 使用 Azure Key Vault 的虛[刪除](../key-vault/general/overview-soft-delete.md)功能可減輕不小心刪除加密金鑰的機會。
+> 如果指派給應用程式組態實例的身分識別已不再被授權解除包裝實例的加密金鑰，或永久刪除了受控金鑰，則將無法再解密儲存在應用程式組態實例中的機密資訊。 使用 Azure Key Vault 的虛[刪除](../key-vault/general/soft-delete-overview.md)功能可減輕不小心刪除加密金鑰的機會。
 
 當使用者在其 Azure 應用程式組態實例上啟用客戶管理的金鑰功能時，他們會控制服務存取其敏感性資訊的能力。 受控金鑰會作為根加密金鑰。 使用者可以藉由變更其金鑰保存庫存取原則，撤銷其應用程式組態實例對其受控金鑰的存取權。 撤銷此存取權時，應用程式組態將會失去在一小時內解密使用者資料的能力。 此時，應用程式組態實例將禁止所有的存取嘗試。 這種情況可復原，方法是再次將服務存取權授與受控金鑰。  在一小時內，應用程式組態將能夠在正常情況下解密使用者資料和操作。
 

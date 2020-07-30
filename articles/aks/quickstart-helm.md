@@ -4,14 +4,14 @@ description: 使用 Helm 搭配 AKS 和 Azure Container Registry 來封裝和執
 services: container-service
 author: zr-msft
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 1f67605918e093e9ab28aa88be777d27acd831ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82169563"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407110"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>快速入門：使用 Helm 在 Azure Kubernetes Service （AKS）上進行開發
 
@@ -23,7 +23,6 @@ ms.locfileid: "82169563"
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 * [已安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-* 已安裝並設定 Docker。 Docker 提供可在 [Mac][docker-for-mac]、[Windows][docker-for-windows] 或 [Linux][docker-for-linux] 系統上設定 Docker 的套件。
 * [已安裝 Helm v3][helm-install]。
 
 ## <a name="create-an-azure-container-registry"></a>建立 Azure Container Registry
@@ -57,14 +56,6 @@ az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
   "type": "Microsoft.ContainerRegistry/registries"
 }
 ```
-
-若要使用 ACR 實例，您必須先登入。 使用[az acr login][az-acr-login]命令來登入。 下列範例會登入名為*MyHelmACR*的 ACR。
-
-```azurecli
-az acr login --name MyHelmACR
-```
-
-完成後，命令會傳回*登入成功*訊息。
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>建立 Azure Kubernetes Service 叢集
 
@@ -122,18 +113,12 @@ CMD ["node","server.js"]
 
 ## <a name="build-and-push-the-sample-application-to-the-acr"></a>建立範例應用程式並將其推送至 ACR
 
-使用[az acr list][az-acr-list]命令並查詢*loginServer*，以取得登入伺服器位址：
+使用[az acr build][az-acr-build]命令來建立映射，並使用先前的 Dockerfile 將其推送到登錄。 命令結尾處的 `.` 會設定 Dockerfile 的位置，在此案例中為目前的目錄。
 
 ```azurecli
-az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
-```
-
-使用 Docker 來建立、標記範例應用程式容器，並將其推送至 ACR：
-
-```console
-docker build -t webfrontend:latest .
-docker tag webfrontend <acrLoginServer>/webfrontend:v1
-docker push <acrLoginServer>/webfrontend:v1
+az acr build --image webfrontend:v1 \
+  --registry MyHelmACR \
+  --file Dockerfile .
 ```
 
 ## <a name="create-your-helm-chart"></a>建立 Helm 圖
@@ -144,9 +129,9 @@ docker push <acrLoginServer>/webfrontend:v1
 helm create webfrontend
 ```
 
-對*webfrontend/values*進行下列更新。 yaml：
+對*webfrontend/values. yaml*進行下列更新。 取代您在先前步驟中記下的登錄 loginServer，例如*myhelmacr.azurecr.io*：
 
-* 將 `image.repository` 變更為 `<acrLoginServer>/webfrontend`
+* 將 `image.repository` 變更為 `<loginServer>/webfrontend`
 * 將 `service.type` 變更為 `LoadBalancer`
 
 例如：
@@ -159,7 +144,7 @@ helm create webfrontend
 replicaCount: 1
 
 image:
-  repository: <acrLoginServer>/webfrontend
+  repository: *myhelmacr.azurecr.io*/webfrontend
   pullPolicy: IfNotPresent
 ...
 service:
@@ -168,7 +153,7 @@ service:
 ...
 ```
 
-`appVersion` `v1` 在*webfrontend/Chart. yaml*中更新至。 例如
+`appVersion` `v1` 在*webfrontend/Chart. yaml*中更新至。 例如：
 
 ```yml
 apiVersion: v2
@@ -218,16 +203,11 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [Helm 文件][helm-documentation]
 
-[az-acr-login]: /cli/azure/acr#az-acr-login
 [az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-list]: /cli/azure/acr#az-acr-list
+[az-acr-build]: /cli/azure/acr#az-acr-build
 [az-group-delete]: /cli/azure/group#az-group-delete
 [az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az aks install-cli]: /cli/azure/aks#az-aks-install-cli
-
-[docker-for-linux]: https://docs.docker.com/engine/installation/#supported-platforms
-[docker-for-mac]: https://docs.docker.com/docker-for-mac/
-[docker-for-windows]: https://docs.docker.com/docker-for-windows/
 [example-nodejs]: https://github.com/Azure/dev-spaces/tree/master/samples/nodejs/getting-started/webfrontend
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [helm]: https://helm.sh/

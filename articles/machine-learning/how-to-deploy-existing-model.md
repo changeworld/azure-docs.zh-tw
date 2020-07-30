@@ -1,54 +1,42 @@
 ---
 title: 使用和部署現有的模型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure Machine Learning 與在服務外部定型的模型。 您可以註冊在 Azure Machine Learning 外部建立的模型，然後將其部署為 web 服務或 Azure IoT Edge 模組。
+description: 瞭解如何使用 Azure Machine Learning 將您的本機訓練 ML 模型帶入 Azure 雲端。  您可以註冊在 Azure Machine Learning 外部建立的模型，然後將其部署為 web 服務或 Azure IoT Edge 模組。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/17/2020
+ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7dc58540cf78356021f1fa2d33dd498381f1da7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e9177fdbac6173040145ff6d84dda8a579ee1d9e
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325826"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429424"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning"></a>使用現有的模型搭配 Azure Machine Learning
+# <a name="deploy-your-existing-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署現有的模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-瞭解如何搭配 Azure Machine Learning 使用現有的機器學習模型。
+在本文中，您將瞭解如何註冊和部署您在 Azure Machine Learning 外部定型的機器學習模型。 您可以將部署為 web 服務或 IoT Edge 裝置。  一旦部署之後，您就可以監視模型，並偵測 Azure Machine Learning 中的資料漂移。 
 
-如果您有在 Azure Machine Learning 外部定型的機器學習模型，您仍然可以使用服務將模型部署為 web 服務或 IoT Edge 裝置。 
+如需本文中概念和詞彙的詳細資訊，請參閱[管理、部署及監視機器學習服務模型](concept-model-management-and-deployment.md)。
 
-> [!TIP]
-> 本文提供註冊和部署現有模型的基本資訊。 一旦部署之後，Azure Machine Learning 會為您的模型提供監視。 它也可讓您儲存傳送至部署的輸入資料，以用於資料漂移分析或訓練新版本的模型。
->
-> 如需此處所用概念和詞彙的詳細資訊，請參閱[管理、部署及監視機器學習服務模型](concept-model-management-and-deployment.md)。
->
-> 如需部署程式的一般資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
+## <a name="prerequisites"></a>必要條件
 
-## <a name="prerequisites"></a>Prerequisites
+* [Azure Machine Learning 工作區](how-to-manage-workspace.md)
+  + Python 範例假設 `ws` 變數已設定為您的 Azure Machine Learning 工作區。
+  
+  + CLI 範例會使用和的預留位置 `myworkspace` `myresourcegroup` ，您應該將取代為您的工作區名稱和包含它的資源群組。
 
-* Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立工作區](how-to-manage-workspace.md)。
-
-    > [!TIP]
-    > 本文中的 Python 範例假設 `ws` 變數已設定為您的 Azure Machine Learning 工作區。
-    >
-    > CLI 範例會使用和的預留位置 `myworkspace` `myresourcegroup` 。 以您工作區的名稱和包含它的資源群組取代。
-
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
+* [Azure Machine Learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)和[Machine Learning CLI 擴充](reference-azure-machine-learning-cli.md)功能。
 
-* 已定型的模型。 模型必須保存到開發環境中的一個或多個檔案。
-
-    > [!NOTE]
-    > 為了示範如何註冊在 Azure Machine Learning 外部定型的模型，本文中的範例程式碼片段會使用 Paolo Ripamonti 的 Twitter 情感分析專案所建立的模型： [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) 。
+* 已定型的模型。 模型必須保存到開發環境中的一個或多個檔案。 <br><br>為了示範註冊已定型的模型，本文中的範例程式碼會使用[Paolo Ripamonti 的 Twitter 情感分析專案](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)中的模型。
 
 ## <a name="register-the-models"></a>註冊模型
 
@@ -82,7 +70,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 
 推斷設定會定義用來執行已部署模型的環境。 推斷設定會參考下列實體，在部署時用來執行模型：
 
-* 輸入指令碼。 這個檔案（名為 `score.py` ）會在部署的服務啟動時載入模型。 它也會負責接收資料、將它傳遞至模型，然後傳迴響應。
+* 已部署的服務啟動時，名為的專案腳本會 `score.py` 載入模型。 此腳本也會負責接收資料、將它傳遞至模型，然後傳迴響應。
 * Azure Machine Learning[環境](how-to-use-environments.md)。 環境會定義執行模型和專案腳本所需的軟體相依性。
 
 下列範例示範如何使用 SDK 來建立環境，然後將它與推斷設定搭配使用：
@@ -145,7 +133,7 @@ dependencies:
 
 如需有關推斷設定的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
-### <a name="entry-script"></a>輸入腳本
+### <a name="entry-script-scorepy"></a>專案腳本（score.py）
 
 專案腳本只有兩個必要函式： `init()` 和 `run(data)` 。 這些函式是用來在啟動時初始化服務，並使用用戶端傳入的要求資料來執行模型。 腳本的其餘部分會處理模型的載入和執行。
 
@@ -309,5 +297,4 @@ print(response.json())
 
 * [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)
 * [在生產環境中收集模型資料](how-to-enable-data-collection.md)
-* [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [如何建立已部署模型的用戶端](how-to-consume-web-service.md)

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147933"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432010"
 ---
 # <a name="configure-the-model-conversion"></a>設定模型轉換
 
@@ -18,7 +18,8 @@ ms.locfileid: "84147933"
 
 ## <a name="settings-file"></a>設定檔案
 
-如果在輸入模型旁的輸入容器中找到名為 `ConversionSettings.json` 的檔案，則會使用其來提供模型轉換程序的其他設定。
+如果在輸入 `<modelName>.ConversionSettings.json` 模型旁邊的輸入容器中找到名為的檔案 `<modelName>.<ext>` ，則會使用它來提供模型轉換程式的其他設定。
+例如， `box.ConversionSettings.json` 會在轉換時使用 `box.gltf` 。
 
 檔案的內容應該符合下列 json 結構描述：
 
@@ -54,7 +55,7 @@ ms.locfileid: "84147933"
 }
 ```
 
-範例 `ConversionSettings.json` 檔案可能是：
+範例檔案 `box.ConversionSettings.json` 可能是：
 
 ```json
 {
@@ -66,15 +67,18 @@ ms.locfileid: "84147933"
 
 ### <a name="geometry-parameters"></a>Geometry 參數
 
-* `scaling` - 這個參數會一致地調整模型。 縮放比例可以用來放大或縮小模型，例如在資料表頂端顯示建築物模型。 由於轉譯引擎預期會以公尺指定長度，因此當模型以不同的單位定義時，就會發生此參數的另一個重要用法。 例如，如果模型是以公分定義，則套用 0.01 的縮放比例應該會以正確的大小來轉譯模型。
+* `scaling` - 這個參數會一致地調整模型。 縮放比例可以用來放大或縮小模型，例如在資料表頂端顯示建築物模型。
+當模型定義為計量以外的單位時，調整也很重要，因為轉譯引擎會預期計量。
+例如，如果模型是以公分定義，則套用 0.01 的縮放比例應該會以正確的大小來轉譯模型。
 某些來源資料格式 (例如 .fbx) 會提供單位縮放比例提示，在這種情況下，轉換會隱含地將模型縮放為公尺單位。 來源格式所提供的隱含縮放比例會套用在縮放參數的頂端。
 最終的縮放比例因數會套用至幾何頂點和場景圖表節點的本機轉換。 根實體轉換的縮放比例會保持未修改。
 
 * `recenterToOrigin` - 指出應該轉換模型，使其周框方塊在原點置中。
-如果來源模型偏離原點，則置中很重要，因為在這種情況下，浮點數精確度問題可能會導致轉譯成品。
+如果來源模型從原點中被取代，則浮點精確度的問題可能會導致轉譯成品。
+在這種情況下，模型的置中會有説明。
 
 * `opaqueMaterialDefaultSidedness` - 轉譯引擎會假設不透明材質為雙面。
-如果這不是預期的行為，這個參數應該設定為「SingleSided」。 如需詳細資訊， [ :::no-loc text="single sided"::: 請參閱轉譯](../../overview/features/single-sided-rendering.md)。
+如果特定模型的假設不成立，則此參數應設為 "SingleSided"。 如需詳細資訊， [ :::no-loc text="single sided"::: 請參閱轉譯](../../overview/features/single-sided-rendering.md)。
 
 ### <a name="material-overrides"></a>材質覆寫
 
@@ -99,10 +103,10 @@ ms.locfileid: "84147933"
 
 * `sceneGraphMode` - 定義來源檔案中場景圖表的轉換方式：
   * `dynamic` (預設值)︰檔案中的所有物件都會公開為 API 中的[實體](../../concepts/entities.md)，且可以獨立轉換。 執行階段的節點階層與來源檔案中的結構相同。
-  * `static`:所有物件都會在 API 中公開，但無法獨立轉換。
+  * `static`：所有物件都會在 API 中公開，但無法獨立轉換。
   * `none`:場景圖表會摺疊成一個物件。
 
-每種模式都有不同的執行階段效能。 在 `dynamic` 模式中，效能成本會隨著圖表中的[實體](../../concepts/entities.md)數目呈線性縮放比例，即使未移動任何部分也一樣。 其應該只在應用程式需要個別移動組件時使用，例如「分解視圖」動畫。
+每種模式都有不同的執行階段效能。 在 `dynamic` 模式中，效能成本會隨著圖表中的[實體](../../concepts/entities.md)數目呈線性縮放比例，即使未移動任何部分也一樣。 `dynamic`只有在需要個別移動元件時才使用模式，例如「爆炸視圖」動畫。
 
 `static` 模式會匯出完整的場景圖表，但此圖表內的組件具有相對於其根部分的常數轉換。 不過，物件的根節點仍然可以移動、旋轉或縮放比例，而不會有顯著的效能成本。 此外，[空間查詢](../../overview/features/spatial-queries.md)會傳回個別的組件，且每個組件分都可以透過[狀態覆寫](../../overview/features/override-hierarchical-state.md)來進行修改。 使用此模式時，每個物件的執行階段額外負荷都是可忽略的。 這很適合您在其中仍需要每個物件檢查，但不需要每個物件轉換變更的大型場景。
 
@@ -207,7 +211,7 @@ ms.locfileid: "84147933"
 
 載入內容的記憶體耗用量可能會成為轉譯系統上的瓶頸。 如果記憶體承載變得太大，可能會危害轉譯效能，或導致模型不會全部載入。 這段影片將討論減少記憶體使用量的一些重要策略。
 
-### <a name="instancing"></a>執行個體化
+### <a name="instancing"></a>實例
 
 實例是一種概念，其中網格會針對具有不同空間轉換的部分重複使用，而不是每個參考自己唯一幾何的元件。 實例對記憶體使用量有顯著的影響。
 實例的使用案例範例是引擎模型中的螺絲或架構模型中的椅子。
@@ -278,6 +282,11 @@ ms.locfileid: "84147933"
 * 個別組件應該是可選取且可移動的，因此 `sceneGraphMode` 必須保持 `dynamic`。
 * 光線投射通常是應用程式的整數部分，因此必須產生衝突網格。
 * 在啟用 `opaqueMaterialDefaultSidedness` 旗標的情況下，切割平面外觀較佳。
+
+## <a name="deprecated-features"></a>已淘汰的功能
+
+仍然支援使用非模型特定檔案名提供設定 `conversionSettings.json` ，但已被取代。
+請改用模型特定的檔案名 `<modelName>.ConversionSettings.json` 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 09e32d5baa367b76c34ebca28adfdd20385e4e18
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c6db571d64b0fd276519f15a3984848e80c4e18a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374522"
+ms.locfileid: "87387671"
 ---
 # <a name="view-and-understand-azure-digital-twins-metrics"></a>觀看並瞭解 Azure 數位 Twins 計量
 
@@ -36,7 +36,7 @@ ms.locfileid: "87374522"
 
     :::image type="content" source="media/how-to-view-metrics/diagnostic-settings.png" alt-text="顯示 [診斷設定] 頁面和要新增之按鈕的螢幕擷取畫面":::
 
-    如需此流程的詳細資訊，請參閱[*如何：設定診斷*](how-to-set-up-diagnostics.md)。
+    如需此流程的詳細資訊，請參閱[*疑難排解：設定診斷*](troubleshoot-diagnostics.md)。
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure 數位 Twins 計量和使用方式
 
@@ -48,21 +48,21 @@ Azure 數位 Twins 提供數個計量，可讓您大致瞭解實例和其相關�
 
 需要使用 API 要求的計量：
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API 要求（預覽） | Count | 總計 | 針對數位 Twins 讀取、寫入、刪除和查詢作業所提出的 API 要求數目。 |  驗證 </br>作業 </br>通訊協定 </br>狀態碼 </br>狀態碼類別 </br>狀態文字 |
 | ApiRequestsLatency | API 要求延遲（預覽） | 毫秒 | Average | API 要求的回應時間。 這是指 Azure 數位 Twins 收到要求的時間，直到服務傳送數位 Twins 讀取、寫入、刪除和查詢作業的成功/失敗結果為止。 | 驗證 </br>作業 </br>通訊協定 |
-| ApiRequestsFailureRate | API 要求失敗率（預覽） | 百分比 | 平均 | 服務為您的實例所接收的 API 要求百分比，可提供內部錯誤（500）回應碼給數位 Twins 讀取、寫入、刪除和查詢作業。 | 驗證 </br>作業 </br>通訊協定 </br>狀態碼 </br>狀態碼類別 </br>狀態文字
+| ApiRequestsFailureRate | API 要求失敗率（預覽） | 百分比 | Average | 服務為您的實例所接收的 API 要求百分比，可提供內部錯誤（500）回應碼給數位 Twins 讀取、寫入、刪除和查詢作業。 | 驗證 </br>作業 </br>通訊協定 </br>狀態碼 </br>狀態碼類別 </br>狀態文字
 
 #### <a name="routing-metrics"></a>路由計量
 
 與路由有關的計量：
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | 路由 | 路由（預覽） | Count | 總計 | 路由傳送至端點 Azure 服務的訊息數目，例如事件中樞、服務匯流排或事件方格。 | 作業 </br>結果 |
 | RoutingLatency | 路由延遲（預覽） | 毫秒 | Average | 在事件從 Azure 數位 Twins 發佈到端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）之間經過的時間。 | 作業 </br>結果 |
-| RoutingFailureRate | 路由失敗率（預覽） | 百分比 | 平均 | 當事件從 Azure 數位 Twins 路由傳送至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）時，會導致錯誤的事件百分比。 | 作業 </br>結果 |
+| RoutingFailureRate | 路由失敗率（預覽） | 百分比 | Average | 當事件從 Azure 數位 Twins 路由傳送至端點 Azure 服務（例如事件中樞、服務匯流排或事件方格）時，會導致錯誤的事件百分比。 | 作業 </br>結果 |
 
 #### <a name="billing-metrics"></a>計費計量
 
@@ -71,7 +71,7 @@ Azure 數位 Twins 提供數個計量，可讓您大致瞭解實例和其相關�
 >[!NOTE]
 > 在預覽期間，**計費為零成本**。 雖然這些計量仍會顯示在可選取的清單中，但它們不會在預覽期間套用，且會維持為零，直到服務移動超過預覽為止。
 
-| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 說明 | 維度 |
+| 計量 | 度量顯示名稱 | 單位 | 彙總類型| 描述 | 維度 |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | 計費 API 作業（預覽） | Count | 總計 | 針對 Azure 數位 Twins 服務提出的所有 API 要求計數的計費計量。 | `MeterId` |
 | BillingQueryUnits | 計費查詢單位（預覽） | Count | 總計 | 查詢單位的數目，即內部計算的服務資源使用量測量，用於執行查詢。 還有一個協助程式 API 可用於測量查詢單位： [QueryChargeHelper 類別](https://docs.microsoft.com/dotnet/api/azure.digitaltwins.core.querychargehelper?view=azure-dotnet-preview) | `MeterId` |
@@ -94,7 +94,7 @@ Azure 數位 Twins 提供數個計量，可讓您大致瞭解實例和其相關�
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解如何管理 Azure 數位 Twins 的已記錄計量，請參閱[*如何：設定診斷*](how-to-set-up-diagnostics.md)。
+若要深入瞭解如何管理 Azure 數位 Twins 的已記錄計量，請參閱[*疑難排解：設定診斷*](troubleshoot-diagnostics.md)。
 
 或者，現在您已瞭解 Azure 數位 Twins 計量的總覽，請參考下列連結以深入瞭解如何管理 Azure 數位 Twins：
 

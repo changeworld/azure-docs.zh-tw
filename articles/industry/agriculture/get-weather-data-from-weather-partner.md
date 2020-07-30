@@ -5,16 +5,20 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: e6678eb2e738c206bbe67151361b594679d97b35
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 35acf4e9bd338a0e67b046a59d8884df0626e516
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281016"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429264"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>從氣象合作夥伴取得天氣資料
 
-Azure FarmBeats 可協助您使用以 Docker 為基礎的連接器架構，從氣象資料提供者帶入氣象資料。 使用此架構，氣象資料提供者會執行可與 FarmBeats 整合的 Docker。 目前僅支援[DTN](https://www.dtn.com/dtn-content-integration/)氣象資料提供者。
+Azure FarmBeats 可協助您使用以 Docker 為基礎的連接器架構，從氣象資料提供者帶入氣象資料。 使用此架構，氣象資料提供者會執行可與 FarmBeats 整合的 Docker。 目前支援下列天氣資料提供者。
+
+  ![FarmBeats 合作夥伴](./media/get-sensor-data-from-sensor-partner/dtn-logo.png)
+  
+   [DTN](https://www.dtn.com/dtn-content-integration/)
 
 天氣資料可以用來產生可操作的深入解析，並在 FarmBeats 中建立 AI 或 ML 模型。
 

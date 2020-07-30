@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfb6e0608609a3940affd83a0aa235a2ef7c041c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce4c64f0be61c2fe28a102674929333235ee29c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357557"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385087"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>變更 ADSync 服務帳戶密碼
 如果您變更 ADSync 服務帳戶密碼，同步處理服務將無法正確啟動，直到您放棄加密金鑰並重新初始化 ADSync 服務帳戶密碼為止。 
@@ -52,7 +52,7 @@ Azure AD Connect，做為同步處理服務的一部分，會使用加密金鑰�
  
 ## <a name="abandoning-the-adsync-service-account-encryption-key"></a>放棄 ADSync 服務帳戶加密金鑰
 >[!IMPORTANT]
->下列程序只適用於 Azure AD Connect 組建 1.1.443.0 或更舊版本。
+>下列程序只適用於 Azure AD Connect 組建 1.1.443.0 或更舊版本。 這無法用於較新版本的 Azure AD Connect。
 
 使用下列程序來放棄加密金鑰。
 

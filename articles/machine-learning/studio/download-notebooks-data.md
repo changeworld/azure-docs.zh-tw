@@ -7,16 +7,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
-ms.openlocfilehash: cc12204c5eabf857fd1143e71df9b2b505d88a23
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c900700fa1588cd341171a0176c19acc51129a4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318652"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430961"
 ---
 # <a name="download-notebookspreview-data"></a>下載筆記本（預覽）資料
 
-**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
+**適用物件：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） ![ 否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 筆記本（預覽）功能已于*13 2020 年4月*移除。 移除 [筆記本（預覽）] 索引標籤和使用者筆記本檔案目前正在推出到全球的 Azure 區域。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 3835046e50180e1d1091f5083f276c7c1ad56612
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eec056cbe246f129fb78e15faa0027846c271181
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117376"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382945"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure 監視器客戶管理的金鑰 
 
@@ -187,8 +187,8 @@ CMK 功能會在專用的 Log Analytics 叢集上提供。若要確認您的區�
 
 這些設定可以透過 CLI 和 PowerShell 更新：
 
-- [虛刪除](../../key-vault/general/overview-soft-delete.md)
-- [清除保護](../../key-vault/general/overview-soft-delete.md#purge-protection)可防止強制刪除祕密/保存庫，即使在虛刪除之後也一樣
+- [虛刪除](../../key-vault/general/soft-delete-overview.md)
+- [清除保護](../../key-vault/general/soft-delete-overview.md#purge-protection)可防止強制刪除祕密/保存庫，即使在虛刪除之後也一樣
 
 ### <a name="create-cluster-resource"></a>建立「叢集」資源
 
@@ -706,8 +706,8 @@ Content-type: application/json
 - CMK 加密適用于 CMK 設定後的新內嵌資料。  在 CMK 設定之前擷取的資料會持續以 Microsoft 金鑰加密。  您可順暢地查詢在 CMK 設定前後擷取的資料。
 
 - Azure Key Vault 必須設定為可復原。 這些屬性預設不會啟用，而且應該使用 CLI 或 PowerShell 來設定：<br>
-  - [虛刪除](../../key-vault/general/overview-soft-delete.md)
-  - 應開啟[清除保護](../../key-vault/general/overview-soft-delete.md#purge-protection)，以防止強制刪除秘密/保存庫，即使在虛刪除之後也一樣。
+  - [虛刪除](../../key-vault/general/soft-delete-overview.md)
+  - 應開啟[清除保護](../../key-vault/general/soft-delete-overview.md#purge-protection)，以防止強制刪除秘密/保存庫，即使在虛刪除之後也一樣。
 
 - 目前不支援將*叢集資源移*到另一個資源群組或訂用帳戶。
 
@@ -763,7 +763,7 @@ Content-type: application/json
   -  400--叢集處於刪除狀態。 非同步作業進行中。 在執行任何更新作業之前，叢集必須完成其作業。
   -  400--KeyVaultProperties 不是空的，但格式不正確。 請參閱[金鑰識別碼更新](#update-cluster-resource-with-key-identifier-details)。
   -  400--無法驗證 Key Vault 中的金鑰。 可能是因為許可權不足或索引鍵不存在。 確認您已在 Key Vault 中[設定金鑰和存取原則](#grant-key-vault-permissions)。
-  -  400--金鑰無法復原。 Key Vault 必須設定為虛刪除和清除保護。 請參閱[Key Vault 檔](../../key-vault/general/overview-soft-delete.md)
+  -  400--金鑰無法復原。 Key Vault 必須設定為虛刪除和清除保護。 請參閱[Key Vault 檔](../../key-vault/general/soft-delete-overview.md)
   -  400--無法立即執行作業。 請等候非同步作業完成，然後再試一次。
   -  400--叢集處於刪除狀態。 請等候非同步作業完成，然後再試一次。
 

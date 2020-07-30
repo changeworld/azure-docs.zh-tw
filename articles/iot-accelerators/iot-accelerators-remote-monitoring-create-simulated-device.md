@@ -8,13 +8,13 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: mqtt
-ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-javascript
+ms.openlocfilehash: c0aac897d85cd96d537238bc81cbc89d3626a07c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81681998"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422754"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>建立及測試新模擬裝置
 
@@ -31,7 +31,7 @@ ms.locfileid: "81681998"
 
 *屬性*
 
-| Name                     | 值                      |
+| 名稱                     | 值                      |
 | ------------------------ | --------------------------- |
 | Color                    | 白色、紅色、藍色            |
 | 亮度               | 0 到 100                    |
@@ -41,7 +41,7 @@ ms.locfileid: "81681998"
 
 下表顯示燈泡 (lightbulb) 以資料流向雲端報告的資料：
 
-| Name   | 值      |
+| 名稱   | 值      |
 | ------ | ----------- |
 | 狀態 | 「開啟」、「關閉」 |
 | 溫度 | 華氏度數 |
@@ -54,7 +54,7 @@ ms.locfileid: "81681998"
 
 下表會顯示新裝置所支援的動作：
 
-| Name        |
+| 名稱        |
 | ----------- |
 | 開啟   |
 | 關閉  |
@@ -63,9 +63,9 @@ ms.locfileid: "81681998"
 
 下表會顯示裝置的初始狀態：
 
-| Name                     | 值 |
+| 名稱                     | 值 |
 | ------------------------ | -------|
-| 初始色彩            | 白色  |
+| 初始色彩            | 白種人  |
 | 初始亮度       | 75     |
 | 初始剩餘時間   | 10,000 |
 | 初始遙測狀態 | 「開啟」   |

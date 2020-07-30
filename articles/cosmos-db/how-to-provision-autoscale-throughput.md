@@ -5,21 +5,22 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/10/2020
-ms.openlocfilehash: 59feabce099087edb011df471561229bfa88a289
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.openlocfilehash: e8dadbad309a146500db342f55bee9339fde6172
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85118724"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430981"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的資料庫或容器上佈建自動調整輸送量
 
-本文說明如何在 Azure Cosmos DB 中的資料庫或容器 (集合、圖表或資料表) 上佈建自動調整輸送量。 您可在單一容器上啟用自動調整，或在資料庫上佈建自動調整輸送量，並在資料庫中的所有容器之間共用。 
+本文說明如何在 Azure Cosmos DB 中的資料庫或容器 (集合、圖表或資料表) 上佈建自動調整輸送量。 您可在單一容器上啟用自動調整，或在資料庫上佈建自動調整輸送量，並在資料庫中的所有容器之間共用。
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
 ### <a name="create-new-database-or-container-with-autoscale"></a>建立可自動調整的新資料庫或容器
+
 1. 登入 [Azure 入口網站](https://portal.azure.com)或 [Azure Cosmos DB 總管](https://cosmos.azure.com/)。
 
 1. 巡覽至 Azure Cosmos DB 帳戶並開啟 [資料總管] 索引標籤。
@@ -51,12 +52,14 @@ ms.locfileid: "85118724"
 > 當在現有的資料庫或容器上啟用自動調整時，最大 RU/秒的起始值是由系統根據您目前手動佈建輸送量設定和儲存體來決定。 作業完成之後，即可視需要變更最大 RU/秒。 [深入了解。](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
 
 ## <a name="azure-cosmos-db-net-v3-sdk-for-sql-api"></a>適用於 SQL API 的 Azure Cosmos DB .NET V3 SDK
+
 使用適用於 SQL API 的 Azure Cosmos DB .NET SDK [3.9 版或更高版本](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)來管理自動調整資源。 
 
 > [!IMPORTANT]
 > 您可使用此 .NET SDK 來建立新的自動調整資源。 此 SDK 不支援在自動調整與標準 (手動) 輸送量之間進行移轉。 目前只有 Azure 入口網站支援移轉案例。 
 
 ### <a name="create-database-with-shared-throughput"></a>建立具有共用輸送量的資料庫
+
 ```csharp
 // Create instance of CosmosClient
 CosmosClient cosmosClient = new CosmosClient(Endpoint, PrimaryKey);
@@ -69,6 +72,7 @@ database = await cosmosClient.CreateDatabaseAsync(DatabaseName, throughputProper
 ```
 
 ### <a name="create-container-with-dedicated-throughput"></a>建立具有專用輸送量的容器
+
 ```csharp
 // Get reference to database that container will be created in
 Database database = await cosmosClient.GetDatabase("DatabaseName");
@@ -82,6 +86,7 @@ container = await database.CreateContainerAsync(autoscaleContainerProperties, au
 ```
 
 ### <a name="read-the-current-throughput-rus"></a>讀取目前的輸送量 (RU/秒)
+
 ```csharp
 // Get a reference to the resource
 Container container = cosmosClient.GetDatabase("DatabaseName").GetContainer("ContainerName");
@@ -97,16 +102,18 @@ int? currentThroughput = autoscaleContainerThroughput.Throughput;
 ```
 
 ### <a name="change-the-autoscale-max-throughput-rus"></a>變更自動調整的最大輸送量 (RU/秒)
+
 ```csharp
 // Change the autoscale max throughput (RU/s)
 await container.ReplaceThroughputAsync(ThroughputProperties.CreateAutoscaleThroughput(newAutoscaleMaxThroughput));
 ```
 
 ## <a name="azure-cosmos-db-java-v4-sdk-for-sql-api"></a>適用於 SQL API 的 Azure Cosmos DB Java V4 SDK
-您可使用適用於 SQL API 的 Azure Cosmos DB Java SDK [4.0 版或更高版本](https://mvnrepository.com/artifact/com.azure/azure-cosmos)來管理自動調整資源。 
+
+您可使用適用於 SQL API 的 Azure Cosmos DB Java SDK [4.0 版或更高版本](https://mvnrepository.com/artifact/com.azure/azure-cosmos)來管理自動調整資源。
 
 > [!IMPORTANT]
-> 您可使用此 Java SDK 來建立新的自動調整資源。 此 SDK 不支援在自動調整與標準 (手動) 輸送量之間進行移轉。 目前只有 Azure 入口網站支援移轉案例。 
+> 您可使用此 Java SDK 來建立新的自動調整資源。 此 SDK 不支援在自動調整與標準 (手動) 輸送量之間進行移轉。 目前只有 Azure 入口網站支援移轉案例。
 
 ### <a name="create-database-with-shared-throughput"></a>建立具有共用輸送量的資料庫
 
@@ -233,18 +240,26 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newAutoscaleMaxThroughput));
 ```
 
---- 
+---
 
-## <a name="cassandra-api"></a>Cassandra API 
-請參閱[如何使用 CQL 命令](manage-scale-cassandra.md#use-autoscale)這篇文章來啟用自動調整。
+## <a name="cassandra-api"></a>Cassandra API
 
-## <a name="azure-cosmos-db-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API 
-請參閱[如何使用 MongoDB 擴充命令](mongodb-custom-commands.md)這篇文章來啟用自動調整。
+您可以使用[CQL 命令](manage-scale-cassandra.md#use-autoscale)、 [Azure CLI](cli-samples.md)或[Azure Resource Manager 範本](resource-manager-samples.md)，針對 Cassandra API 的 Azure Cosmos DB 帳戶布建自動調整。
+
+## <a name="azure-cosmos-db-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
+
+您可以使用[mongodb 擴充功能命令](mongodb-custom-commands.md)、 [Azure CLI](cli-samples.md)或[AZURE RESOURCE MANAGER 範本](resource-manager-samples.md)，為 mongodb API Azure Cosmos DB 帳戶布建自動調整。
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-您可使用 Resource Manager 範本來為任何 API 在資料庫或容器上佈建自動調整輸送量。 如需範例，請參閱[本文](manage-sql-with-resource-manager.md#azure-cosmos-account-with-autoscale-throughput)。
+
+Azure Resource Manager 範本可以用來為所有 Azure Cosmos DB Api 布建資料庫或容器層級資源的自動調整輸送量。 如需範例，請參閱[Azure Cosmos DB Azure Resource Manager 範本](resource-manager-samples.md)。
+
+## <a name="azure-cli"></a>Azure CLI
+
+Azure CLI 可用來針對所有 Azure Cosmos DB Api，在資料庫或容器層級資源上布建自動調整輸送量。 如需範例，請參閱[Azure Cosmos DB 的 Azure CLI 範例](cli-samples.md)。
 
 ## <a name="next-steps"></a>後續步驟
+
 * 了解[可自動調整的佈建輸送量優點](provision-throughput-autoscale.md#benefits-of-autoscale)。
 * 了解如何[在手動與自動調整輸送量之間進行選擇](how-to-choose-offer.md)。
 * 檢閱[自動調整常見問題集](autoscale-faq.md)。

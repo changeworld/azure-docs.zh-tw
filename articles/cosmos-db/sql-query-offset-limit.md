@@ -4,14 +4,14 @@ description: 瞭解如何使用 OFFSET LIMIT 子句來略過，並在中查詢�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.author: tisande
+ms.openlocfilehash: 9342c0c10ed4f7287716d21823fddfe992e0568f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76771579"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432717"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的位移限制子句
 
@@ -39,9 +39,9 @@ OFFSET <offset_amount> LIMIT <limit_amount>
   
   `OFFSET` `LIMIT` 子句中都需要計數和計數 `OFFSET LIMIT` 。 如果使用了選擇性的 `ORDER BY` 子句，就會藉由跳過已排序的值來產生結果集。 否則，查詢會傳回固定的值順序。
 
-  具有之查詢的 RU 費用 `OFFSET LIMIT` 會隨著位移增加的詞彙數目而增加。 對於包含多個頁面結果的查詢，我們通常建議使用接續 token。 接續 token 是一個「書簽」，可供稍後繼續查詢的位置使用。 如果您使用 `OFFSET LIMIT` ，則不會有「書簽」。 如果您想要傳回查詢的下一個頁面，您必須從頭開始。
+  具有之查詢的 RU 費用 `OFFSET LIMIT` 會隨著位移增加的詞彙數目而增加。 對於包含[多個頁面結果](sql-query-pagination.md)的查詢，我們通常建議使用[接續](sql-query-pagination.md#continuation-tokens)token。 接續 token 是一個「書簽」，可供稍後繼續查詢的位置使用。 如果您使用 `OFFSET LIMIT` ，則不會有「書簽」。 如果您想要傳回查詢的下一個頁面，您必須從頭開始。
   
-  `OFFSET LIMIT`當您想要完全略過檔並儲存用戶端資源時，應該使用。 例如， `OFFSET LIMIT` 如果您想要跳到1000th 查詢結果，而不需要看到結果1到999，則應該使用。 在後端， `OFFSET LIMIT` 仍然會載入每份檔，包括已略過的檔。 效能優勢是避免處理不需要的檔，而節省用戶端資源。
+  `OFFSET LIMIT`當您想要完全略過專案並儲存用戶端資源時，應該使用。 例如， `OFFSET LIMIT` 如果您想要跳到1000th 查詢結果，而不需要看到結果1到999，則應該使用。 在後端， `OFFSET LIMIT` 仍然會載入每個專案，包括已略過的專案。 效能優勢是藉由避免處理不需要的專案，來節省用戶端資源。
 
 ## <a name="examples"></a>範例
 
@@ -54,7 +54,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
     OFFSET 1 LIMIT 1
 ```
 
-結果如下：
+結果為：
 
 ```json
     [
@@ -68,7 +68,7 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 以下是略過第一個值並傳回第二個值的查詢（沒有排序）：
 
 ```sql
-   SELECT f.id, f.address.city
+    SELECT f.id, f.address.city
     FROM Families f
     OFFSET 1 LIMIT 1
 ```

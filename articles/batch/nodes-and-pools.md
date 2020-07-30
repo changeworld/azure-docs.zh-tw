@@ -3,12 +3,12 @@ title: Azure Batch 中的節點和集區
 description: 從開發觀點了解計算節點和集區，以及如何在 Azure Batch 工作流程中使用。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 5707d834a7d99e147a81ee2b39952863a63ed695
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144928"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385750"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的節點和集區
 
@@ -28,7 +28,7 @@ Batch 中的所有計算節點也包括︰
 - **防火牆** 設定。
 - [遠端存取](error-handling.md#connect-to-compute-nodes) Windows (遠端桌面通訊協定 (RDP)) 和 Linux (安全殼層 (SSH)) 節點。
 
-根據預設，節點可以彼此通訊，但無法與不屬於相同集區的虛擬機器進行通訊。 若要允許節點與其他虛擬機器或內部部署網路安全地進行通訊，您可以[在 Azure 虛擬網路的子網中](batch-virtual-network.md)布建集區， (VNet) 。 當您這麼做時，可以透過公用 IP 位址存取您的節點。 這些公用 IP 位址是由 Batch 所建立，而且可能會在集區的存留期間變更。 您也可以使用您控制的[靜態公用 IP 位址來建立集](create-pool-public-ip.md)區，以確保它們不會意外變更。
+根據預設，節點可以彼此通訊，但無法與不屬於相同集區的虛擬機器進行通訊。 若要允許節點與其他虛擬機器或內部部署網路安全地進行通訊，您可以[在 Azure 虛擬網路（VNet）的子網中](batch-virtual-network.md)布建集區。 當您這麼做時，可以透過公用 IP 位址存取您的節點。 這些公用 IP 位址是由 Batch 所建立，而且可能會在集區的存留期間變更。 您也可以使用您控制的[靜態公用 IP 位址來建立集](create-pool-public-ip.md)區，以確保它們不會意外變更。
 
 ## <a name="pools"></a>集區
 
@@ -119,7 +119,7 @@ Azure 多餘的容量不足時，可能會佔用低優先順序的節點。 如�
 
 針對動態工作負載，您可以將自動調整原則套用至集區。 Batch 服務將會根據計算案例的目前工作負載和資源使用狀況，定期評估您的公式，並動態調整集區中的計算節點數目。 這樣一來，您只會使用所需資源並可釋放不需要的資源，因而能夠降低應用程式的整體執行成本。
 
-撰寫 [自動調整公式](batch-automatic-scaling.md#automatic-scaling-formulas) 並將該公式與集區建立關聯，以啟用自動調整。 Batch 服務使用此公式來決定集區中下一個調整間隔 (您可以設定的間隔) 的目標節點數目。 您可以在建立集區時指定集區的自動調整設定，或稍後在集區上啟用調整。 您也可以更新已啟用調整的集區上的調整設定。
+撰寫 [自動調整公式](batch-automatic-scaling.md#autoscale-formulas) 並將該公式與集區建立關聯，以啟用自動調整。 Batch 服務使用此公式來決定集區中下一個調整間隔 (您可以設定的間隔) 的目標節點數目。 您可以在建立集區時指定集區的自動調整設定，或稍後在集區上啟用調整。 您也可以更新已啟用調整的集區上的調整設定。
 
 例如，或許作業需要您提交大量要執行的工作。 您可以指派調整公式給集區，以根據目前已排入佇列的工作數目和作業中工作的完成率來調整集區中的節點數目。 Batch 服務會定期評估公式，並根據工作負載和其他公式設定來調整集區大小。 服務會在有大量排入佇列的工作時視需要新增節點，並在沒有排入佇列或正在執行時移除節點。
 

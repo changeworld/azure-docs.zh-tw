@@ -1,18 +1,18 @@
 ---
-title: 快速入門：使用適用于 node.js 的 REST Api QnA Maker
+title: 快速入門：使用適用于 Node.js 的 REST Api QnA Maker
 description: 本快速入門示範如何開始使用適用於 Node.js 的 QnA Maker REST API。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。  QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27
+ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 18ccec5332e3751a86225ab087a1f68b0577cf96
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342726"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406090"
 ---
-# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入門： QnA Maker 適用于 node.js 的 REST Api
+# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入門： QnA Maker Node.js 的 REST Api
 
 開始使用適用於 Node.js 的 QnA Maker REST API。 請依照下列步驟試用基本工作的範例程式碼。  QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。
 
@@ -29,7 +29,7 @@ ms.locfileid: "84342726"
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * 最新版的 [Node.js](https://nodejs.org)。

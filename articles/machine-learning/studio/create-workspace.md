@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: c30797ad757fa12c4dfdf4749536c1095259eb58
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 89c79f668da3ff924dbb7f27574260118003655f
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283515"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433243"
 ---
 # <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>建立和共用 Machine Learning Studio （傳統）工作區
 
-**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
+**適用物件：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） ![ 否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 若要使用 Azure Machine Learning Studio （傳統），您需要有 Machine Learning Studio （傳統）工作區。 此工作區包含您建立、管理及發行實驗所需的工具。
 
@@ -44,7 +44,7 @@ ms.locfileid: "87283515"
 
      ![建立新的 Studio （傳統）工作區](./media/create-workspace/create-new-workspace.png)
 
-5. 按一下 [建立]  。
+5. 按一下 [建立]。
 
    機器學習服務目前可用於數量有限的區域。 如果您的訂用帳戶不包含其中一個區域，您可能會看到錯誤訊息「您在允許的區域中沒有任何訂用帳戶。」  為了要求將區域新增至您的訂用帳戶，請從 Azure 入口網站中建立新的 Microsoft 支援要求，選取 [計費]**** 做為問題類型，並遵照提示來提交您的要求。
 

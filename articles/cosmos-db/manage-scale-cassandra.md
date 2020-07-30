@@ -4,14 +4,14 @@ description: 了解可用來調整 Azure Cosmos DB Cassandra API 帳戶的選項
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 447744f0436cb29e849a52694a02600183fd357a
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119149"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432821"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>彈性調整 Azure Cosmos DB Cassandra API 帳戶
 
@@ -46,7 +46,7 @@ ms.locfileid: "85119149"
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>使用控制平面
 
-Azure Cosmos DB 的 Cassandra API 可讓您使用我們的各種控制平面功能，以程式設計方式調整輸送量。 如需指引和範例，請參閱 [Azure Resource Manager](manage-cassandra-with-resource-manager.md)、[PowerShell](powershell-samples-cassandra.md) 和 [Azure CLI](cli-samples-cassandra.md) 等文章。
+Azure Cosmos DB 的 Cassandra API 可讓您使用我們的各種控制平面功能，以程式設計方式調整輸送量。 如需指引和範例，請參閱 [Azure Resource Manager](manage-cassandra-with-resource-manager.md)、[PowerShell](powershell-samples-cassandra.md) 和 [Azure CLI](cli-samples.md) 等文章。
 
 此方法的優點是，您可以根據計時器來自動擴大或縮小資源，以因應尖峰活動或活動較少的期間。 請參閱[這裡](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)的範例，以了解如何使用 Azure Functions 和 PowerShell 來完成此操作。
 

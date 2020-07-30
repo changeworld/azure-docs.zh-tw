@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: baaad137e4a5bc5268642addb5779961b7be3b04
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b879fac7482b000e1b92f2fcc3f7586ae7dae321
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326234"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430196"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>啟用 Azure Machine Learning Studio （傳統） web 服務的記錄功能
 
-**適用物件：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） 
+**適用物件：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） ![ 否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
 
 
 本檔提供 Machine Learning Studio （傳統） web 服務之記錄功能的相關資訊。 記錄除了錯誤號碼和訊息以外，還提供額外的資訊，可協助您針對 Machine Learning Studio （傳統） Api 的呼叫進行疑難排解。  
@@ -44,7 +44,7 @@ ms.locfileid: "87326234"
 
    ![選取記錄等級](./media/web-services-logging/enable-logging.png)
 
-6. 按一下 [儲存]。
+6. 按一下 [檔案] 。
 
 7. 對於傳統 Web 服務，請建立 **ml-診斷**容器。
 

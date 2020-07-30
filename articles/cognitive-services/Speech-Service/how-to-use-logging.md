@@ -10,23 +10,24 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 707a0f801a739a7a91cee19635e609305cd8f021
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 21f4494bedd824cef373a391c5635e35ec2600d0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74805785"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406872"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>在語音 SDK 中啟用記錄功能
 
-[記錄至檔案] 是語音 SDK 的選用功能。 在開發記錄期間，會從語音 SDK 的核心元件提供其他資訊和診斷。 將語音設定物件上的屬性`Speech_LogFilename`設為記錄檔的位置和名稱，即可啟用此功能。 當辨識器是從該設定建立而來，且之後無法停用時，將會全域啟用記錄功能。 您無法在執行中的記錄會話期間變更記錄檔的名稱。
+[記錄至檔案] 是語音 SDK 的選用功能。 在開發記錄期間，會從語音 SDK 的核心元件提供其他資訊和診斷。 將語音設定物件上的屬性設 `Speech_LogFilename` 為記錄檔的位置和名稱，即可啟用此功能。 當辨識器是從該設定建立而來，且之後無法停用時，將會全域啟用記錄功能。 您無法在執行中的記錄會話期間變更記錄檔的名稱。
 
 > [!NOTE]
 > 從所有支援的語音 sdk 程式設計語言1.4.0 的語音 SDK 版本，都可以使用記錄功能，但 JavaScript 除外。
 
 ## <a name="sample"></a>範例
 
-記錄檔名稱是在設定物件上指定。 採用`SpeechConfig`作為範例，並假設您已建立名`config`為的實例：
+記錄檔名稱是在設定物件上指定。 採用 `SpeechConfig` 作為範例，並假設您已建立名為的實例 `config` ：
 
 ```csharp
 config.SetProperty(PropertyId.Speech_LogFilename, "LogfilePathAndName");
@@ -51,7 +52,7 @@ config.set_property(speechsdk.PropertyId.Speech_LogFilename, "LogfilePathAndName
 您可以從 config 物件建立辨識器。 這會啟用所有辨識器的記錄。
 
 > [!NOTE]
-> 如果您`SpeechSynthesizer`從 config 物件建立，則不會啟用記錄。 如果已啟用記錄功能，您也會從接收診斷`SpeechSynthesizer`。
+> 如果您 `SpeechSynthesizer` 從 config 物件建立，則不會啟用記錄。 如果已啟用記錄功能，您也會從接收診斷 `SpeechSynthesizer` 。
 
 ## <a name="create-a-log-file-on-different-platforms"></a>在不同的平臺上建立記錄檔
 
@@ -79,9 +80,9 @@ File logFile = new File(dir, "logfile.txt");
 config.setProperty(PropertyId.Speech_LogFilename, logFile.getAbsolutePath());
 ```
 
-上述程式碼會將記錄檔儲存至應用程式特定目錄根目錄中的外部儲存體。 使用者可以使用檔案管理員來存取檔案（通常是在`Android/data/ApplicationName/logfile.txt`中）。 卸載應用程式時，將會刪除檔案。
+上述程式碼會將記錄檔儲存至應用程式特定目錄根目錄中的外部儲存體。 使用者可以使用檔案管理員來存取檔案（通常是在中 `Android/data/ApplicationName/logfile.txt` ）。 卸載應用程式時，將會刪除檔案。
 
-您也需要在指令`WRITE_EXTERNAL_STORAGE`清單檔案中要求許可權：
+您也需要 `WRITE_EXTERNAL_STORAGE` 在資訊清單檔案中要求許可權：
 
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="...">
@@ -104,7 +105,7 @@ NSString *filePath = [
 [speechConfig setPropertyTo:filePath byId:SPXSpeechLogFilename];
 ```
 
-若要存取已建立的檔案，請將下列屬性`Info.plist`新增至應用程式的屬性清單：
+若要存取已建立的檔案，請將下列屬性新增至 `Info.plist` 應用程式的屬性清單：
 
 ```xml
 <key>UIFileSharingEnabled</key>

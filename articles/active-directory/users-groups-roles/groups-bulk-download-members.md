@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65a6a622a0d3fac7b28cc699d860068f12b780fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9abfe79989dbefe79a001e4638c7318bd99d54a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728600"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421700"
 ---
 # <a name="bulk-download-members-of-a-group-in-azure-active-directory"></a>在 Azure Active Directory 中大量下載群組的成員
 
@@ -37,7 +37,7 @@ ms.locfileid: "84728600"
 
 您可以在 [大量作業結果] 頁面中，查看所有待決之大量要求的狀態。
 
-[![](media/groups-bulk-download-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-download-members/bulk-center.png#lightbox)
+[![檢查 [大量作業結果] 頁面中的狀態。](media/groups-bulk-download-members/bulk-center.png)](media/groups-bulk-download-members/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>大量下載服務限制
 

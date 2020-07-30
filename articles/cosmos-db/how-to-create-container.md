@@ -1,21 +1,21 @@
 ---
 title: 在 Azure Cosmos DB 中建立容器
-description: 瞭解如何使用 Azure 入口網站、.Net、JAVA、Python、Node.js 和其他 Sdk，在 Azure Cosmos DB 中建立容器。
+description: 瞭解如何使用 Azure 入口網站、.NET、JAVA、Python、Node.js 和其他 Sdk，在 Azure Cosmos DB 中建立容器。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 761789b36e85b16f0b4482cef12645e673c73be7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390885"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429706"
 ---
 # <a name="create-an-azure-cosmos-container"></a>建立 Azure Cosmos 容器
 
-本文說明建立 Azure Cosmos 容器 (集合、資料表或圖形) 的不同方式。 您可使用 Azure 入口網站、Azure CLI 或支援的 SKD。 本文將示範如何建立容器、指定分割區索引鍵，以及佈建輸送量。
+本文說明使用 Azure 入口網站、Azure CLI、PowerShell 或支援的 Sdk 來建立 Azure Cosmos 容器（集合、資料表或圖形）的不同方式。 本文將示範如何建立容器、指定分割區索引鍵，以及佈建輸送量。
 
 > [!NOTE]
 > 建立容器時，請確定您不會建立兩個名稱相同但大小寫不同的容器。 這是因為 Azure 平台的某些部分不會區分大小寫，而這可能導致在具有這類名稱的容器上發生遙測和動作的混淆/衝突。
@@ -111,7 +111,7 @@ ms.locfileid: "85390885"
 
 下列連結顯示如何使用 Azure CLI 建立 Azure Cosmos DB 的容器資源。
 
-如需所有 Azure Cosmos DB Api 中所有 Azure CLI 範例的清單，請參閱[SQL API](cli-samples.md)、 [CASSANDRA API](cli-samples-cassandra.md)、 [MongoDB api](cli-samples-mongodb.md)、 [Gremlin API](cli-samples-gremlin.md)和[資料表 API](cli-samples-table.md)
+如需所有 Azure Cosmos DB Api 的所有 Azure CLI 範例清單，請參閱[Azure Cosmos DB 的 Azure CLI 範例](cli-samples.md)。
 
 * [建立具有 Azure CLI 的容器](manage-with-cli.md#create-a-container)
 * [使用 Azure CLI 建立 MongoDB API Azure Cosmos DB 的集合](./scripts/cli/mongodb/create.md)
@@ -123,13 +123,13 @@ ms.locfileid: "85390885"
 
 下列連結顯示如何使用 PowerShell 建立 Azure Cosmos DB 的容器資源。
 
-如需所有 Azure Cosmos DB Api 中所有 Azure CLI 範例的清單，請參閱[SQL API](powershell-samples-sql.md)、 [CASSANDRA API](powershell-samples-cassandra.md)、 [MongoDB api](powershell-samples-mongodb.md)、 [Gremlin API](powershell-samples-gremlin.md)和[資料表 API](powershell-samples-table.md)
+如需所有 Azure Cosmos DB Api 中所有 PowerShell 範例的清單，請參閱[SQL API](powershell-samples-sql.md)、 [CASSANDRA API](powershell-samples-cassandra.md)、 [MongoDB api](powershell-samples-mongodb.md)、 [Gremlin API](powershell-samples-gremlin.md)和[資料表 API](powershell-samples-table.md)
 
-* [使用 Powershell 建立容器](manage-with-powershell.md#create-container)
-* [使用 Powershell 建立 MongoDB API Azure Cosmos DB 的集合](./scripts/powershell/mongodb/ps-mongodb-create.md)
-* [使用 Powershell 建立 Cassandra 資料表](./scripts/powershell/cassandra/ps-cassandra-create.md)
-* [使用 Powershell 建立 Gremlin 圖形](./scripts/powershell/gremlin/ps-gremlin-create.md)
-* [使用 Powershell 建立資料表 API 資料表](./scripts/powershell/table/ps-table-create.md)
+* [使用 PowerShell 建立容器](manage-with-powershell.md#create-container)
+* [使用 PowerShell 建立 MongoDB API Azure Cosmos DB 的集合](./scripts/powershell/mongodb/ps-mongodb-create.md)
+* [使用 PowerShell 建立 Cassandra 資料表](./scripts/powershell/cassandra/ps-cassandra-create.md)
+* [使用 PowerShell 建立 Gremlin 圖形](./scripts/powershell/gremlin/ps-gremlin-create.md)
+* [使用 PowerShell 建立資料表 API 資料表](./scripts/powershell/table/ps-table-create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>使用 .NET SDK 建立容器
 
