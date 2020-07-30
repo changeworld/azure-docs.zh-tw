@@ -3,16 +3,16 @@ title: Microsoft 商業市集的地理可用性和貨幣支援
 description: 商業市集交易的地理可用性和貨幣支援
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 01/29/2020
-ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120002"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387433"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商業市集的地理可用性和貨幣支援
 
@@ -43,9 +43,9 @@ ms.locfileid: "86120002"
 | 巴西                              | BR        | BRL\*        |
 | 汶萊                              | BN        | 美元          |
 | 保加利亞                            | BG        | 歐元          |
+| 維德角                          | CV        | 美元          |
 | 喀麥隆                            | CM        | 美元          |
 | Canada                              | CA        | 加拿大幣          |
-| 維德角                          | CV        | 美元          |
 | 開曼群島                      | KY        | 美元          |
 | 智利                               | CL        | 美元          |
 | 中國\**                            | CN        | N/A          |
@@ -110,8 +110,8 @@ ms.locfileid: "86120002"
 | 納米比亞                             | NA        | 美元          |
 | 尼泊爾                               | NP        | 美元          |
 | 荷蘭                         | NL        | 歐元          |
-| 尼加拉瓜                           | NI        | 美元          |
 | 紐西蘭                         | NZ        | 紐西蘭幣          |
+| 尼加拉瓜                           | NI        | 美元          |
 | 奈及利亞                             | NG        | 美元          |
 | 挪威                              | 否        | 挪威克朗          |
 | 阿曼                                | OM        | 美元          |
@@ -148,15 +148,15 @@ ms.locfileid: "86120002"
 | 突尼西亞                             | TN        | 美元          |
 | 土耳其                              | TR        | 美元          |
 | 土庫曼                        | TM        | 美元          |
-| 梵蒂岡 (教廷)             | VA        | 歐元          |
-| 美屬維京群島 | VI        | 美元          |
 | 烏干達                              | UG        | 美元          |
 | 烏克蘭                             | UA        | 美元          |
 | 阿拉伯聯合大公國                | AE        | 美元          |
 | United Kingdom                      | GB        | 英鎊          |
 | 美國                       | US        | 美元          |
+| 美式英文維京群島                 | VI        | 美元          |
 | 烏拉圭                             | UY        | 美元          |
 | 烏茲別克                          | UZ        | 美元          |
+| 梵蒂岡 (教廷)             | VA        | 歐元          |
 | 委內瑞拉                           | VE        | 美元          |
 | 越南                             | VN        | 美元          |
 | 葉門                               | YE        | 美元          |

@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/08/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 292b94e56d988a1126db83e2f8ce40bbb0af6f42
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 069f3b95d76d8321ce0b1bba4ae61f35d0f14a57
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873248"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326778"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>快速入門：使用 Java 呼叫您的 Bing 自訂搜尋端點
 

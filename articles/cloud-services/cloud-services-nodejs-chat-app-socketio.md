@@ -9,12 +9,13 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 5bea3bec68217881729f1daf8d75837e1d67e8ce
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8029c243052114b9a0932e5372301be84440cf85
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85919975"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386577"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>在 Azure 雲端服務上使用 Socket.IO 建立 Node.js 交談應用程式
 
@@ -24,7 +25,7 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
 
 ![A browser window displaying the service hosted on Azure][completed-app]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 請確定已安裝下列產品及版本，以順利完成本文中的範例：
 
 * 安裝 [Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
@@ -138,7 +139,7 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. 若要將應用程式部署至 Azure，請使用 **Publish-AzureServiceProject** Cmdlet。 例如：
+5. 若要將應用程式部署至 Azure，請使用 **Publish-AzureServiceProject** Cmdlet。 例如︰
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch

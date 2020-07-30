@@ -21,8 +21,6 @@
       href: delete-application-portal.md
 - name: 教學課程
   items:
-    - name: 新增未列在資源庫中的應用程式
-      href: add-non-gallery-app.md
     - name: 整合式資源庫應用程式 (例如 ServiceNow、Salesforce、Dropbox)
       href: /azure/active-directory/saas-apps/
     - name: 透過應用程式 Proxy 新增內部部署應用程式
@@ -42,6 +40,8 @@
       items:
         - name: 開始使用應用程式整合
           href: plan-an-application-integration.md
+        - name: 規劃未列在資源庫中的應用程式
+          href: non-gallery-apps.md
         - name: 規劃存取面板部署
           href: access-panel-deployment-plan.md
         - name: 開發人員指導方針
@@ -106,7 +106,7 @@
             - name: 設定 SAML 型單一登入
               items:
                 - name: 設定 SAML 型單一登入
-                  href: configure-single-sign-on-non-gallery-applications.md
+                  href: configure-saml-single-sign-on.md
                 - name: 自訂使用者屬性和宣告
                   items:
                     - name: 設定群組宣告

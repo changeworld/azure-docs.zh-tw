@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f2a0560163f9806053f49944cbec0db2b1a9de8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ed7900373c5d8897fd360c708434d96e5dfbc73d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67105469"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034394"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>教學課程：Azure Active Directory 與 Clear Review 整合
 
@@ -42,6 +42,9 @@ Clear Review 與 Azure AD 整合提供下列優點：
 * Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以申請[免費帳戶](https://azure.microsoft.com/free/)
 * 已啟用 Clear Review 單一登入的訂用帳戶
 
+> [!NOTE]
+> 也可以在 Azure AD 美國政府雲端環境中使用此整合。 您可以在 Azure AD 美國政府雲端應用程式庫中找到此應用程式，並以與公用雲端相同的方式進行設定。
+
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
@@ -54,19 +57,19 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
 **若要從資源庫新增 Clear Review，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 瀏覽至 [企業應用程式]  ，然後選取 [所有應用程式]  選項。
+2. 瀏覽至 [企業應用程式]，然後選取 [所有應用程式] 選項。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
+3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Clear Review**，從結果面板中選取 [Clear Review]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Clear Review**，從結果面板中選取 [Clear Review]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 Clear Review](common/search-new-app.png)
 
@@ -90,15 +93,15 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
 若要設定與 Clear Review 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Clear Review]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Clear Review] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
-2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
+2. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
@@ -106,24 +109,24 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
     ![Clear Review 網域與 URL 單一登入資訊](common/idp-intiated.png)
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://<customer name>.clearreview.com/sso/metadata/`
+    a. 在 [識別碼] 文字方塊中，使用下列模式來輸入 URL：`https://<customer name>.clearreview.com/sso/metadata/`
 
-    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<customer name>.clearreview.com/sso/acs/`
+    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<customer name>.clearreview.com/sso/acs/`
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Clear Review 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<customer name>.clearreview.com`
+    在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<customer name>.clearreview.com`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Clear Review 用戶端支援小組](https://clearreview.com/contact/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-6. Clear Review 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增到 SAML 權杖屬性組態。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。 Clear Review 應用程式要求 **nameidentifier** 需與 **user.mail** 相對應，因此您必須按一下 [編輯]  圖示以編輯屬性對應，並變更屬性對應。
+6. Clear Review 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增到 SAML 權杖屬性組態。 下列螢幕擷取畫面顯示預設屬性清單，其中的 **nameidentifier** 與 **user.userprincipalname** 相對應。 Clear Review 應用程式要求 **nameidentifier** 需與 **user.mail** 相對應，因此您必須按一下 [編輯] 圖示以編輯屬性對應，並變更屬性對應。
 
     ![image](common/edit-attribute.png)
 
-7. 在 [使用者屬性和宣告]  對話方塊中，執行下列步驟：
+7. 在 [使用者屬性和宣告] 對話方塊中，執行下列步驟：
 
     a. 按一下 [名稱識別項值] 右邊的 [編輯] 圖示。
 
@@ -131,15 +134,15 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
     ![image](./media/clearreview-tutorial/attribute01.png)
 
-    b. 從 [來源屬性]  清單中，選取該資料列的 **user.mail** 屬性值。
+    b. 從 [來源屬性] 清單中，選取該資料列的 **user.mail** 屬性值。
 
-    c. 按一下 [檔案]  。
+    c. 按一下 [檔案] 。
 
 8. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
-9. 在 [設定 Clear Review]  區段上，依據您的需求複製適當的 URL。
+9. 在 [設定 Clear Review] 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -153,7 +156,7 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
 1. 若要設定 **Clear Review** 端的單一登入，使用系統管理員認證開啟 **Clear Review** 入口網站。
 
-2. 選取左側導覽中的 [管理]  。
+2. 選取左側導覽中的 [管理]。
 
     ![設定單一登入儲存按鈕](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
@@ -161,29 +164,29 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入儲存按鈕](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
-4. 在 [單一登入設定]  頁面上執行下列步驟。
+4. 在 [單一登入設定] 頁面上執行下列步驟。
 
     ![設定單一登入儲存按鈕](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
-    a. 在 [簽發者 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼]  值。
+    a. 在 [簽發者 URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [Azure AD 識別碼] 值。
 
-    b. 在 [SAML 端點]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。  
+    b. 在 [SAML 端點] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。  
 
-    c. 在 [SLO 端點]  文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]  值。  
+    c. 在 [SLO 端點] 文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL] 值。  
 
-    d. 在記事本中開啟下載的憑證，在 [x.509 憑證]  文字方塊中貼上其內容。   
+    d. 在記事本中開啟下載的憑證，在 [x.509 憑證] 文字方塊中貼上其內容。   
 
-    e. 按一下 [檔案]  。
+    e. 按一下 [檔案] 。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  。
+2. 在畫面頂端選取 [新增使用者]。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -191,28 +194,28 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Clear Review 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Clear Review]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [Clear Review]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Clear Review]  。
+2. 在應用程式清單中，選取 [Clear Review]。
 
     ![應用程式清單中的 Clear Review 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. 在左側功能表中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -220,11 +223,11 @@ Clear Review 與 Azure AD 整合提供下列優點：
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
-7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ### <a name="create-clear-review-test-user"></a>建立 Clear Review 測試使用者
 

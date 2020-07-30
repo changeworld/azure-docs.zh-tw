@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 0058c250c2d1d29061ac7a4130dffedbcf62a249
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4fabaed28ca186f3ca091107e51ed3900168ba41
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293987"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387722"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure Vm 的暫時 OS 磁片
 
@@ -35,7 +35,7 @@ ms.locfileid: "87293987"
 |                             | 持續性作業系統磁片                          | 暫時性 OS 磁碟                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | **OS 磁片的大小限制**      | 2 TiB                                                                                        | VM 大小或2TiB 的快取大小，以較小者為准。 如需**GiB 中**的快取大小，請參閱[DS](sizes-general.md)、 [ES](sizes-memory.md)、 [M](sizes-memory.md)、 [FS](sizes-compute.md)和[GS](sizes-previous-gen.md#gs-series)              |
-| **支援的 VM 大小**          | 全部                                                                                          | 支援 Premium 儲存體的 VM 大小，例如 DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、LSv2、M                                               |
+| **支援的 VM 大小**          | 全部                                                                                          | 支援 Premium 儲存體的 VM 大小，例如 DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
 | **磁片類型支援**           | 受控和非受控 OS 磁片                                                                | 僅限受控 OS 磁片                                                               |
 | **區域支援**              | 所有區域                                                                                  | 所有區域                              |
 | **資料持續性**            | 寫入 OS 磁片的 OS 磁片資料會儲存在 Azure 儲存體                                  | 寫入 OS 磁片的資料會儲存至本機 VM 儲存體，而且不會保存到 Azure 儲存體。 |

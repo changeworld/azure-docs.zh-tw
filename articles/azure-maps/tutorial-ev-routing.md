@@ -1,20 +1,20 @@
 ---
 title: 教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線 | Microsoft Azure 地圖服務
 description: 使用 Microsoft Azure 地圖服務路線規劃 API 和 Azure Notebooks 來規劃電動車的路線。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 8c78913486610b171b7577d0bc239e0e7060038e
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: f341179d121af2fa4e5b198aeee2ea65bc6c378c
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560383"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133311"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 規劃電動車的路線
 
@@ -39,7 +39,7 @@ Azure 地圖服務是以原生方式整合到 Azure 的地理空間服務 API �
 
 若要完成此教學課程，您必須先建立 Azure 地圖服務帳戶，並取得主要金鑰 (訂用帳戶金鑰)。 
 
-若要建立 Azure 地圖服務帳戶訂用帳戶，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示操作。 您必須要有採用 S1 定價層的 Azure 地圖服務帳戶訂用帳戶。 
+若要建立 Azure 地圖服務帳戶訂用帳戶，請依照[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)中的指示操作。 您必須要有採用 S1 定價層的 Azure 地圖服務帳戶訂用帳戶。 
 
 若要取得帳戶的主要訂用帳戶金鑰，請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的指示操作。
 

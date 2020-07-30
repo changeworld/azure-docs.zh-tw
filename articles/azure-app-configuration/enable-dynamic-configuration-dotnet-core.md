@@ -14,16 +14,16 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: af9d92c47982a58530a42a4ecdd41032196a9da9
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: fb55b5669c1be43b208a8d86b1676f163015f76f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856490"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278347"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>教學課程：使用 .NET Core 應用程式中的動態設定
 
-應用程式設定 .NET Core 用戶端程式庫可支援依需求更新一組組態設定，而不會造成應用程式重新啟動。 若要實作此功能，請先從組態提供者的選項取得 `IConfigurationRefresher` 的執行個體，然後在程式碼任意處對該執行個體呼叫 `Refresh`。
+應用程式設定 .NET Core 用戶端程式庫可支援依需求更新一組組態設定，而不會造成應用程式重新啟動。 若要實作此功能，請先從組態提供者的選項取得 `IConfigurationRefresher` 的執行個體，然後在程式碼任意處對該執行個體呼叫 `TryRefreshAsync`。
 
 若要讓設定持續更新，並避免設定存放區有太多呼叫，每一項設定會使用一個快取。 在設定的快取值到期前，重新整理作業都不會更新值，即使值在設定存放區中已變更也是如此。 每個要求的預設到期時間為 30 秒，但您可以視需要加以覆寫。
 
@@ -45,7 +45,7 @@ ms.locfileid: "85856490"
 
 ## <a name="reload-data-from-app-configuration"></a>從應用程式設定重新載入資料
 
-開啟 Program.cs  ，並更新該檔案來將參考新增至 `System.Threading.Tasks` 命名空間，以在 `AddAzureAppConfiguration` 方法中指定重新整理組態，並使用 `Refresh` 方法觸發手動重新整理。
+開啟 Program.cs  ，並更新該檔案來將參考新增至 `System.Threading.Tasks` 命名空間，以在 `AddAzureAppConfiguration` 方法中指定重新整理組態，並使用 `TryRefreshAsync` 方法觸發手動重新整理。
 
 ```csharp
 using System;
@@ -84,14 +84,14 @@ class Program
         // Wait for the user to press Enter
         Console.ReadLine();
 
-        await _refresher.Refresh();
+        await _refresher.TryRefreshAsync();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
 }
 }
 ```
 
-`ConfigureRefresh` 方法可用來指定相關設定，以用來在系統觸發重新整理作業時，使用應用程式組態存放區來更新組態資料。 您可以藉由在提供給 `AddAzureAppConfiguration` 方法的選項上呼叫 `GetRefresher` 方法來擷取 `IConfigurationRefresher` 的執行個體，而且此執行個體上的 `Refresh` 方法可用來在程式碼任意處觸發重新整理作業。
+`ConfigureRefresh` 方法可用來指定相關設定，以用來在系統觸發重新整理作業時，使用應用程式組態存放區來更新組態資料。 您可以藉由在提供給 `AddAzureAppConfiguration` 方法的選項上呼叫 `GetRefresher` 方法來擷取 `IConfigurationRefresher` 的執行個體，而且此執行個體上的 `TryRefreshAsync` 方法可用來在程式碼任意處觸發重新整理作業。
     
 > [!NOTE]
 > 組態設定的預設快取到期時間為 30 秒，但可加以複寫，方法是在以引數形式傳遞至 `ConfigureRefresh` 方法的選項初始設定式上呼叫 `SetCacheExpiration` 方法。
