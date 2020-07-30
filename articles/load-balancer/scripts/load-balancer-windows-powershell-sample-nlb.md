@@ -12,18 +12,18 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: ccc9ed364ce7ec5b18d04a71a8215675f7876b81
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 404d473419508bc5871de80835bda29d449d6d23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74075913"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078797"
 ---
 # <a name="azure-powershell-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure PowerShell 指令碼範例：為目標為 VM 的流量進行負載平衡以達到高可用性
 
 此 Azure PowerShell 指令碼範例會建立所需的一切，以執行數部依據高可用性和負載平衡組態所設定的 Windows 虛擬機器。 執行指令碼之後，您將擁有三部已加入至 Azure 可用性設定組並可透過 Azure Load Balancer 存取的虛擬機器。
 
-您可以視需要使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。
+您可以視需要使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azure/) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -65,6 +65,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/overview)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/)。
 
 您可以在 [Azure 網路概觀文件](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)中找到其他網路 PowerShell 指令碼範例。

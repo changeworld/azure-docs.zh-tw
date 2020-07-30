@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: tyao
-ms.openlocfilehash: 10f8bd3682b442dd55e195c6dc1855fae07a155c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2ce55ee50a2b302712973b99dc6503f1e6bbc425
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744091"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074786"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>如何為 Front Door 設定地區篩選 WAF 原則
 本教學課程會說明如何使用 Azure PowerShell 來建立簡單的地區篩選原則，並將此原則與現有的 Front Door 前端主機產生關聯。 此範例地區篩選原則範例會封鎖來自美國以外的所有其他國家/地區的要求。
@@ -28,7 +28,7 @@ ms.locfileid: "83744091"
 ### <a name="set-up-your-powershell-environment"></a>設定 PowerShell 環境
 Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 模型來管理 Azure 資源。 
 
-您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)，並將其用於任何 PowerShell 工作階段。 請遵循頁面上的指示，使用 Azure 認證進行登入，並安裝 Az PowerShell 模組。
+您可以在本機電腦上安裝 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)，並將其用於任何 PowerShell 工作階段。 請遵循頁面上的指示，使用 Azure 認證進行登入，並安裝 Az PowerShell 模組。
 
 #### <a name="connect-to-azure-with-an-interactive-dialog-for-sign-in"></a>使用互動式登入對話方塊連線至 Azure
 ```

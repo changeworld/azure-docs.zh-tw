@@ -3,23 +3,20 @@ title: 快速入門：Azure 佇列儲存體程式庫 v12 - .NET
 description: 了解如何使用 Azure 佇列 .NET v12 程式庫來建立佇列，並將訊息新增至該佇列。 接下來，您會了解如何讀取和刪除佇列中的訊息。 您也將了解如何刪除佇列。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/22/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: c69aa91596ff203445aa4fa3ccd59001ffe16649
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5931311368a6389386adb689a505feeeed03b29c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78197482"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289181"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>快速入門：適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12
 
 開始使用適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12。 Azure 佇列儲存體是用來儲存大量訊息的服務，以便日後擷取和處理。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
-
-> [!NOTE]
-> 若要開始使用舊版 SDK，請參閱[快速入門：使用適用於 .NET 的 Azure 儲存體 SDK v11 來管理佇列](storage-quickstart-queues-dotnet-legacy.md)。
 
 使用適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12：
 
@@ -31,9 +28,14 @@ ms.locfileid: "78197482"
 * 刪除佇列中的訊息
 * 刪除佇列
 
-[API 參考文件](/dotnet/api/azure.storage.queues) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0) | [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+其他資源：
 
-## <a name="prerequisites"></a>Prerequisites
+* [API 參考文件](/dotnet/api/azure.storage.queues)
+* [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Queues)
+* [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Queues/12.0.0)
+* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -45,15 +47,15 @@ ms.locfileid: "78197482"
 
 ### <a name="create-the-project"></a>建立專案
 
-建立一個名為 QueuesQuickstartV12  的 .NET Core 應用程式。
+建立一個名為 QueuesQuickstartV12 的 .NET Core 應用程式。
 
-1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 QueuesQuickstartV12  的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*Program.cs*。
+1. 在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 QueuesQuickstartV12 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*Program.cs*。
 
    ```console
    dotnet new console -n QueuesQuickstartV12
    ```
 
-1. 切換至新建立的 QueuesQuickstartV12  目錄。
+1. 切換至新建立的 QueuesQuickstartV12 目錄。
 
    ```console
    cd QueuesQuickstartV12
@@ -71,7 +73,7 @@ dotnet add package Azure.Storage.Queues
 
 從專案目錄：
 
-1. 在編輯器中開啟 Program.cs  檔案
+1. 在編輯器中開啟 Program.cs 檔案
 1. 移除 `Console.WriteLine("Hello World!");` 陳述式
 1. 新增 `using` 指示詞
 1. 更新 `Main` 方法宣告以[支援非同步程式碼](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7-1#async-main)

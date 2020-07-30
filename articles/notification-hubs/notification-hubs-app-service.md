@@ -17,16 +17,16 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e6c4fb767e6237f390cdb467b35c323f637bebf2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 647c5f40c7b02b8d9b488ce0812f27c0c0dde1a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76264147"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022135"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>與 App Service Mobile Apps 整合
 
-為了在 Azure 服務間促進完美且統一的體驗， [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) 具備使用通知中樞提供推播通知的內建支援。 [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) 具有高擴充性且可供全球使用，是專為企業開發人員與系統整合人員設計的行動應用程式開發平台，能提供一組豐富的功能給行動應用程式開發人員。
+為了在 Azure 服務間促進完美且統一的體驗， [App Service Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) 具備使用通知中樞提供推播通知的內建支援。 [App Service Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) 具有高擴充性且可供全球使用，是專為企業開發人員與系統整合人員設計的行動應用程式開發平台，能提供一組豐富的功能給行動應用程式開發人員。
 
 Mobile Apps 開發人員可以使用下列流程來利用通知中樞：
 
