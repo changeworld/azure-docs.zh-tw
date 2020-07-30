@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 4e3953c56a9acf911c7dc2bbbd453b52b72f9bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f7534fe5fe68e2b94b106e464006ee45957bd99
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833233"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077839"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>快速入門：適用於 JavaScript 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -28,9 +28,14 @@ ms.locfileid: "85833233"
 * 刪除佇列中的訊息
 * 刪除佇列
 
-[API 參考文件](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [套件 (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-queue) | [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+其他資源：
 
-## <a name="prerequisites"></a>Prerequisites
+* [API 參考文件](https://docs.microsoft.com/javascript/api/@azure/storage-queue/)
+* [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)
+* [套件 (節點套件管理員)](https://www.npmjs.com/package/@azure/storage-queue)
+* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)

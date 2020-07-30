@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c9f514b70eda7d74950576a1a6f3a1199cddb232
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f7f3e0dfd7da98cade0183825463c6b17f49dc1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077449"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教學課程 - 使用 Azure PowerShell 管理 Azure 磁碟
 
@@ -63,10 +63,10 @@ Azure 提供兩種類型的磁碟。
 
 若要完成本教學課程中的範例，您目前必須具有虛擬機器。 如有需要，請使用下列命令建立虛擬機器。
 
-使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 設定虛擬機器上系統管理員帳戶所需的使用者名稱和密碼：
+使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 設定虛擬機器上系統管理員帳戶所需的使用者名稱和密碼：
 
 
-使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 來建立虛擬機器。 系統會提示您輸入 VM 系統管理員帳戶的使用者名稱和密碼。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 來建立虛擬機器。 系統會提示您輸入 VM 系統管理員帳戶的使用者名稱和密碼。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -80,7 +80,7 @@ New-AzVm `
 ```
 
 
-使用 [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) 建立初始組態。 下列範例會設定大小為 128 GB 的磁碟。
+使用 [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) 建立初始組態。 下列範例會設定大小為 128 GB 的磁碟。
 
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
@@ -89,7 +89,7 @@ $diskConfig = New-AzDiskConfig `
     -DiskSizeGB 128
 ```
 
-使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) 命令來建立資料磁碟。
+使用 [New-AzDisk](/powershell/module/az.compute/new-azdisk) 命令來建立資料磁碟。
 
 ```azurepowershell-interactive
 $dataDisk = New-AzDisk `
@@ -98,13 +98,13 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 命令來取得您要在其中新增資料磁碟的虛擬機器。
+使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 命令來取得您要在其中新增資料磁碟的虛擬機器。
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-使用 [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) 命令將資料磁碟新增至虛擬機器組態。
+使用 [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) 命令將資料磁碟新增至虛擬機器組態。
 
 ```azurepowershell-interactive
 $vm = Add-AzVMDataDisk `
@@ -115,7 +115,7 @@ $vm = Add-AzVMDataDisk `
     -Lun 1
 ```
 
-使用 [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) 命令來更新虛擬機器。
+使用 [Update-AzVM](/powershell/module/az.compute/add-azvmdatadisk) 命令來更新虛擬機器。
 
 ```azurepowershell-interactive
 Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm

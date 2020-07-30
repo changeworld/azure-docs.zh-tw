@@ -2,13 +2,13 @@
 title: 教學課程：建立內容庫以在 Azure VMware Solution (AVS) 中部署 VM
 description: 在這個 Azure VMware Solution (AVS) 教學課程中，您會建立內容庫以在 AVS 私人雲端中部署 VM。
 ms.topic: tutorial
-ms.date: 07/10/2020
-ms.openlocfilehash: bdea4304baa92fadc4d6c3d0060f99cf37af5f77
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/16/2020
+ms.openlocfilehash: d5f0f26293af9eb146cfb4b2f3adf47fe8cce94f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079378"
 ---
 # <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>教學課程：建立內容庫以在 Azure VMware Solution (AVS) 中部署 VM
 

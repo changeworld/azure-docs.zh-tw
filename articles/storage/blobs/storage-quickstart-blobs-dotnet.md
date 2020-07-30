@@ -3,23 +3,20 @@ title: 快速入門：Azure Blob 儲存體程式庫 v12 - .NET
 description: 在本快速入門中，您將了解如何使用適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 12 版，在 Blob (物件) 儲存體中建立容器與 Blob。 接下來，您要了解如何將 Blob 下載到本機電腦，以及如何列出容器中的所有 Blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 5cfb0430bc94d347afd75bc01170a71a7ad53565
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: d142206a9640ce53ea7463a2c68c5d1c8f64c354
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84711862"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287193"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v12
 
 開始使用適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v12。 Azure Blob 儲存體是 Microsoft 針對雲端推出的物件儲存體解決方案。 請依照下列步驟來安裝套件，並試用基本工作的範例程式碼。 Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資料。
-
-> [!NOTE]
-> 若要開始使用舊版 SDK，請參閱[快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫](storage-quickstart-blobs-dotnet-legacy.md)。
 
 使用適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v12：
 
@@ -29,11 +26,16 @@ ms.locfileid: "84711862"
 * 將 Blob 下載到本機電腦
 * 刪除容器
 
-[API 參考文件](/dotnet/api/azure.storage.blobs) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+其他資源：
+
+* [API 參考文件](/dotnet/api/azure.storage.blobs)
+* [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
+* [套件 (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
+* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
@@ -77,7 +79,7 @@ dotnet add package Azure.Storage.Blobs
 
 從專案目錄：
 
-1. 在編輯器中開啟 Program.cs  檔案
+1. 在編輯器中開啟 Program.cs 檔案
 1. 移除 `Console.WriteLine("Hello World!");` 陳述式
 1. 新增 `using` 指示詞
 1. 更新 `Main` 方法宣告以支援非同步程式碼

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 883bc209c343784e07bb5e03dc9f721c19b2f635
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b2e7153cfe9e355ae86beae66723ec0b44513001
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460081"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010609"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>教學課程：了解如何使用 Azure CLI 管理 Linux 虛擬機器
 
@@ -25,7 +25,7 @@ ms.locfileid: "81460081"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 Azure CLI，則在本教學課程中，您必須執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 Azure CLI，則在本教學課程中，您必須執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="understand-scope"></a>了解範圍
 
@@ -55,7 +55,7 @@ az group create --name myResourceGroup --location "East US"
 
 相較於將角色指派給個別使用者，使用 Azure Active Directory 群組來含括需要執行類似動作的使用者，通常會較為容易。 然後，將該群組指派給適當的角色。 在本文中，請使用現有的群組來管理虛擬機器，或使用入口網站來[建立 Azure Active Directory 群組](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-建立新群組或找到現有群組後，請使用 [az role assignment create](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) 命令，將新的 Azure Active Directory 群組指派給資源群組的虛擬機器參與者角色。
+建立新群組或找到現有群組後，請使用 [az role assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) 命令，將新的 Azure Active Directory 群組指派給資源群組的虛擬機器參與者角色。
 
 ```azurecli-interactive
 adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
@@ -65,11 +65,11 @@ az role assignment create --assignee-object-id $adgroupId --role "Virtual Machin
 
 如果出現錯誤，指出**原則 \<guid> 不存在於目錄中**，表示新群組未傳播至整個 Azure Active Directory。 請嘗試再次執行命令。
 
-通常您需要針對網路參與者  和儲存體帳戶參與者  重複進行此程序，以確保已指派使用者來管理已部署的資源。 在本文中，您可以略過這些步驟。
+通常您需要針對網路參與者和儲存體帳戶參與者重複進行此程序，以確保已指派使用者來管理已部署的資源。 在本文中，您可以略過這些步驟。
 
 ## <a name="azure-policy"></a>Azure 原則
 
-[Azure 原則](../../governance/policy/overview.md)可協助您確認訂用帳戶中的所有資源均符合公司標準。 您的訂用帳戶已經有數個原則定義。 若要查看可用的原則定義，請使用 [az policy definition list](https://docs.microsoft.com/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-list) 命令：
+[Azure 原則](../../governance/policy/overview.md)可協助您確認訂用帳戶中的所有資源均符合公司標準。 您的訂用帳戶已經有數個原則定義。 若要查看可用的原則定義，請使用 [az policy definition list](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-list) 命令：
 
 ```azurecli-interactive
 az policy definition list --query "[].[displayName, policyType, name]" --output table
@@ -81,7 +81,7 @@ az policy definition list --query "[].[displayName, policyType, name]" --output 
 * 限制虛擬機器的 SKU。
 * 稽核未使用受控磁碟的虛擬機器。
 
-在下列範例中，您會根據顯示名稱擷取三個原則定義。 您使用 [az policy assignment create](https://docs.microsoft.com/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) 命令將這些定義指派給資源群組。 針對某些原則，您要提供參數值來指定允許的值。
+在下列範例中，您會根據顯示名稱擷取三個原則定義。 您使用 [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) 命令將這些定義指派給資源群組。 針對某些原則，您要提供參數值來指定允許的值。
 
 ```azurecli-interactive
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
@@ -143,7 +143,7 @@ az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --ge
 
 若要建立或刪除管理鎖定，您必須擁有 `Microsoft.Authorization/locks/*` 動作的存取權。 在內建角色中，只有 **擁有者** 和 **使用者存取管理員** 被授與這些動作的存取權。
 
-若要鎖定虛擬機器和網路安全性群組，請使用 [az lock create](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-create) 命令：
+若要鎖定虛擬機器和網路安全性群組，請使用 [az lock create](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-create) 命令：
 
 ```azurecli-interactive
 # Add CanNotDelete lock to the VM
@@ -175,7 +175,7 @@ az group delete --name myResourceGroup
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
-若要將標籤套用至虛擬機器，請使用 [az resource tag](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) 命令。 資源上的任何現有標記都不會保留。
+若要將標籤套用至虛擬機器，請使用 [az resource tag](/cli/azure/resource?view=azure-cli-latest#az-resource-list) 命令。 資源上的任何現有標記都不會保留。
 
 ```azurecli-interactive
 az resource tag -n myVM \
@@ -186,7 +186,7 @@ az resource tag -n myVM \
 
 ### <a name="find-resources-by-tag"></a>依標籤尋找資源
 
-若要尋找具有某標籤名稱和值的資源，請使用 [az resource list](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-list) 命令：
+若要尋找具有某標籤名稱和值的資源，請使用 [az resource list](/cli/azure/resource?view=azure-cli-latest#az-resource-list) 命令：
 
 ```azurecli-interactive
 az resource list --tag Environment=Test --query [].name
@@ -204,7 +204,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 ## <a name="clean-up-resources"></a>清除資源
 
-您無法刪除已鎖定的網路安全性群組，除非移除鎖定。 若要移除鎖定，請擷取鎖定的識別碼，並將這些識別碼提供給 [az lock delete](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-delete) 命令：
+您無法刪除已鎖定的網路安全性群組，除非移除鎖定。 若要移除鎖定，請擷取鎖定的識別碼，並將這些識別碼提供給 [az lock delete](/cli/azure/resource/lock?view=azure-cli-latest#az-resource-lock-delete) 命令：
 
 ```azurecli-interactive
 vmlock=$(az lock show --name LockVM \
@@ -218,7 +218,7 @@ nsglock=$(az lock show --name LockNSG \
 az lock delete --ids $vmlock $nsglock
 ```
 
-若不再需要，您可以使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令來移除資源群組、VM 和所有相關資源。 結束 SSH 工作階段並返回您的 VM，然後將資源刪除，如下所示：
+若不再需要，您可以使用 [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令來移除資源群組、VM 和所有相關資源。 結束 SSH 工作階段並返回您的 VM，然後將資源刪除，如下所示：
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -239,4 +239,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [管理虛擬機器](tutorial-config-management.md)
-

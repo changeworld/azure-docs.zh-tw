@@ -5,15 +5,15 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 04/10/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1b63b0316b8314e4c5107ddd3f1d22c1d59cbb08
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262076"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281798"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>使用 Azure 計費與成本管理避免非預期的費用
 
@@ -196,7 +196,7 @@ SLA 閾值會因服務而異。 例如，SQL Web 層的 SLA 為 99.9%，VM 的 S
 
 ### <a name="review-invoiced-charges-in-cost-analysis"></a>檢閱成本分析中的發票費用
 
-若要在 Azure 入口網站中檢視發票詳細資料，請瀏覽至與您正在分析之發票相關聯範圍的「成本分析」。 選取 [發票詳細資料]  檢視。 發票詳細資料會顯示發票上顯示的費用。
+若要在 Azure 入口網站中檢視發票詳細資料，請瀏覽至與您正在分析之發票相關聯範圍的「成本分析」。 選取 [發票詳細資料] 檢視。 發票詳細資料會顯示發票上顯示的費用。
 
 [![顯示發票詳細資料的範例](./media/getting-started/invoice-details.png)](./media/getting-started/invoice-details.png#lightbox)
 
@@ -217,8 +217,8 @@ SLA 閾值會因服務而異。 例如，SQL Web 層的 SLA 為 99.9%，VM 的 S
 
 - 計算時數
 - IP 位址時數
-- 資料傳入
-- 資料傳出
+- 資料轉入
+- 資料轉出
 - 標準受控磁碟
 - 標準受控磁碟作業
 - 標準 IO 磁碟

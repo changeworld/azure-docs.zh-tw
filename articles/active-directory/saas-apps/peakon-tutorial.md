@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: b093a26848701254ad674081037c266f1fb012b2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 94f8e80c7c5cb13646fbd284f2a2d7b2f6308614
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67094712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>教學課程：Azure Active Directory 與 Peakon 整合
 
@@ -41,6 +41,9 @@ Peakon 與 Azure AD 整合提供下列優點：
 * Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以在[這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月的試用帳戶
 * 已啟用 Peakon 單一登入的訂用帳戶
 
+> [!NOTE]
+> 也可以在 Azure AD 美國政府雲端環境中使用此整合。 您可以在 Azure AD 美國政府雲端應用程式庫中找到此應用程式，並以與公用雲端相同的方式進行設定。
+
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
@@ -53,19 +56,19 @@ Peakon 與 Azure AD 整合提供下列優點：
 
 **若要從資源庫新增Peakon，請執行下列步驟：**
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
+1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory] 圖示。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 瀏覽至 [企業應用程式]  ，然後選取 [所有應用程式]  選項。
+2. 瀏覽至 [企業應用程式]，然後選取 [所有應用程式] 選項。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
+3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Peakon**，從結果面板中選取 [Peakon]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Peakon**，從結果面板中選取 [Peakon]，然後按一下 [新增] 按鈕以新增應用程式。
 
      ![結果清單中的 Peakon](common/search-new-app.png)
 
@@ -89,15 +92,15 @@ Peakon 與 Azure AD 整合提供下列優點：
 
 若要使用 Peakon 設定 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Peakon]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Peakon] 應用程式整合頁面上，選取 [單一登入]。
 
     ![設定單一登入連結](common/select-sso.png)
 
-2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
+2. 在 [選取單一登入方法] 對話方塊中，選取 [SAML/WS-Fed] 模式以啟用單一登入。
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
@@ -105,24 +108,24 @@ Peakon 與 Azure AD 整合提供下列優點：
 
     ![Peakon 網域及 URL 單一登入資訊](common/idp-intiated.png)
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`https://app.peakon.com/saml/<companyid>/metadata`
+    a. 在 [識別碼] 文字方塊中，使用下列模式來輸入 URL：`https://app.peakon.com/saml/<companyid>/metadata`
 
-    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://app.peakon.com/saml/<companyid>/assert`
+    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://app.peakon.com/saml/<companyid>/assert`
 
 5. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![Peakon 網域及 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
-    在 [登入 URL]  文字方塊中，輸入 URL：`https://app.peakon.com/login`
+    在 [登入 URL] 文字方塊中，輸入 URL：`https://app.peakon.com/login`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的識別碼及回覆 URL 來更新這些值 (本教學課程稍後會說明)。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-6. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (原始)]  ，並儲存在您的電腦上。
+6. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (原始)]，並儲存在您的電腦上。
 
     ![憑證下載連結](common/certificateraw.png)
 
-7. 在 [設定 Peakon]  區段上，依據您的需求複製適當的 URL。
+7. 在 [設定 Peakon] 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -136,27 +139,27 @@ Peakon 與 Azure AD 整合提供下列優點：
 
 1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入 Peakon。
 
-2. 在頁面左側的功能表列中，按一下 [設定]  ，然後瀏覽至 [整合]  。
+2. 在頁面左側的功能表列中，按一下 [設定]，然後瀏覽至 [整合]。
 
     ![設定](./media/peakon-tutorial/tutorial_peakon_config.png)
 
-3. 在 [Integrations]  \(整合\) 頁面上，按一下 [Single Sign-On]  \(單一登入\)。
+3. 在 [Integrations] \(整合\) 頁面上，按一下 [Single Sign-On] \(單一登入\)。
 
     ![單一](./media/peakon-tutorial/tutorial_peakon_single.png)
 
-4. 在 [Single Sign-On]  \(單一登入\) 區段下方，按一下 [Enable]  \(啟用\)。
+4. 在 [Single Sign-On] \(單一登入\) 區段下方，按一下 [Enable] \(啟用\)。
 
     ![啟用](./media/peakon-tutorial/tutorial_peakon_enable.png)
 
-5. 在 [Single sign-on for employees using SAML]  \(使用 SAML 針對員工進行單一登入\) 區段上，執行下列步驟：
+5. 在 [Single sign-on for employees using SAML] \(使用 SAML 針對員工進行單一登入\) 區段上，執行下列步驟：
 
     ![saml](./media/peakon-tutorial/tutorial_peakon_saml.png)
 
-    a. 在 [SSO Login URL]  \(SSO 登入 URL\) 文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
+    a. 在 [SSO Login URL] \(SSO 登入 URL\) 文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
 
-    b. 在 [SSO Logout URL]  \(SSO 登出 URL\) 文字方塊中，貼上您從 Azure 入口網站複製的**登出 URL** 值。
+    b. 在 [SSO Logout URL] \(SSO 登出 URL\) 文字方塊中，貼上您從 Azure 入口網站複製的**登出 URL** 值。
 
-    c. 按一下 [Choose file]  \(選擇檔案\)，將您從 Azure 入口網站下載的憑證上傳至 [憑證] 方塊。
+    c. 按一下 [Choose file] \(選擇檔案\)，將您從 Azure 入口網站下載的憑證上傳至 [憑證] 方塊。
 
     d. 按一下**圖示**以複製 [實體 URL]，並且在 Azure 入口網站上貼入 [基本 SAML 設定] 區段的 [識別碼] 文字方塊中。
 
@@ -168,11 +171,11 @@ Peakon 與 Azure AD 整合提供下列優點：
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  。
+2. 在畫面頂端選取 [新增使用者]。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -180,28 +183,28 @@ Peakon 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
+    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Peakon 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Peakon]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [Peakon]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取[Peakon]  。
+2. 在應用程式清單中，選取[Peakon]。
 
     ![應用程式清單中的 Peakon 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. 在左側功能表中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -209,11 +212,11 @@ Peakon 與 Azure AD 整合提供下列優點：
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
-7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ### <a name="create-peakon-test-user"></a>建立 Peakon 測試使用者
 
@@ -224,23 +227,23 @@ Peakon 需以手動方式佈建。
 
 1. 以系統管理員身分登入您的 Peakon 公司網站。
 
-2. 在頁面左側的功能表列中，按一下 [設定]  ，然後瀏覽至 [員工]  。
+2. 在頁面左側的功能表列中，按一下 [設定]，然後瀏覽至 [員工]。
 
     ![員工](./media/peakon-tutorial/tutorial_peakon_employee.png)
 
-3. 按一下頁面右上方的 [新增員工]  。
+3. 按一下頁面右上方的 [新增員工]。
 
       ![新增員工](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
-3. 在 [New employee]  \(新增員工\) 對話方塊頁面上，執行下列步驟：
+3. 在 [New employee] \(新增員工\) 對話方塊頁面上，執行下列步驟：
 
      ![新增員工](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. 在 [Name]  \(名稱\) 文字方塊中，輸入 **Britta** 作為名字，並輸入 **simon** 作為姓氏。
+    a. 在 [Name] \(名稱\) 文字方塊中，輸入 **Britta** 作為名字，並輸入 **simon** 作為姓氏。
 
-    b. 在 [電子郵件]  文字方塊中，輸入電子郵件地址，例如 **Brittasimon\@contoso.com**。
+    b. 在 [電子郵件] 文字方塊中，輸入電子郵件地址，例如 **Brittasimon\@contoso.com**。
 
-    c. 按一下 [Create employee]  \(建立員工\)。
+    c. 按一下 [Create employee] \(建立員工\)。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

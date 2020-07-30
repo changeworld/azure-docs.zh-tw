@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: b8fcef13fbe41ac26b2a31d6871896428649eaa1
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: f7f16093074b48610c1db8fec7f05ee01e7ab1ed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920848"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078779"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-standard-load-balancer-in-the-azure-portal"></a>教學課程：在 Azure 入口網站中使用標準負載平衡器來平衡內部流量負載
 
@@ -32,25 +32,23 @@ ms.locfileid: "85920848"
 
 若要使用本教學課程執行步驟，請登入 Azure 入口網站，網址為：[https://portal.azure.com](https://portal.azure.com)。
 
-## <a name="create-a-vnet-back-end-servers-and-a-test-vm"></a>建立 VNet、後端伺服器和測試 VM
+## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
+在本節中，您需要使用下列資訊來取代步驟中的下列參數：
 
-首先，建立虛擬網路 (VNet)。 在 VNet 中，建立要用於標準負載平衡器後端集區的兩個 VM，以及要用於測試負載平衡器的第三個 VM。 
+| 參數                   | 值                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | myResourceGroupSLB |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | 美國東部 2      |
+| **\<IPv4-address-space>**   | 10.3.0.0\16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.3.0.0\24          |
 
-### <a name="create-a-virtual-network"></a>建立虛擬網路
-
-1. 在入口網站的左上方，選取 [建立資源] > [網路] > [虛擬網路]。
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
    
-1. 在 [建立虛擬網路] 窗格中，輸入或選取下列值：
-   
-   - **Name**：輸入 MyVNet。
-   - **資源群組**：選取 [新建]，然後輸入 MyResourceGroupLB，然後選取 [確定]。 
-   - [子網路] > [名稱]：輸入 MyBackendSubnet。
-   
-1. 選取 [建立]。
 
-   ![建立虛擬網路](./media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
-### <a name="create-virtual-machines"></a>建立虛擬機器
+## <a name="create-virtual-machines"></a>建立虛擬機器
 
 1. 在入口網站的左上方，選取 [建立資源] >  **[計算]**  > [Windows Server 2016 Datacenter]。 
    

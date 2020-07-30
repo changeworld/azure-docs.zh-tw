@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 4d3d522de84ebd019fd432f5c4e5d89ac5ef8bcf
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263732"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282478"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure 媒體播放器外掛程式庫 #
 
@@ -20,7 +20,7 @@ ms.locfileid: "84263732"
 | 外掛程式名稱                         | 示範 URL                    | 原始程式碼                | 描述    |
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | 其他功能                 | | | |
-| **新功能！** AMP360Video                | [示範](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | 此外掛程式可讓您在桌面或 VR 相容裝置的 AMP 中，將 360 影片視覺化。 您可以在[這裡](https://doc\.babylonjs\.com/extensions/amp360video)取得完整文件： |
+| **新功能！** AMP360Video                | [示範](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | 此外掛程式可讓您在桌面或 VR 相容裝置的 AMP 中，將 360 影片視覺化。 您可以在[這裡](https://doc.babylonjs.com/extensions/amp360video)取得完整文件： |
 |  原件提示                         | [示範](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure 媒體播放器 (AMP) 外掛程式，用於呈現從 Azure 媒體服務 (AMS) 媒體編碼器標準 (MES) 產生的影片縮圖影像原件。 |
 | 診斷重疊                 | [示範](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | 此外掛程式會顯示：所有金鑰參數、影片統計資料、影片播放生命週期中的所有事件，以及 DRM 保護資訊 (如金鑰識別碼、授權取得 URL) (如果受保護)。                                                                                                                                                                      |
 | 畫面播放速率和時間碼計算機 | 沒有可用的示範 | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | 此外掛程式會根據第一個 MPEG-DASH 影片片段的 `tfhd`/`trun` MP4 方塊來計算影片的畫面播放速率、剖析來自 MPEG-DASH 用戶端資訊清單的時間刻度值，也會提供方法讓您從播放器產生指定絕對時間的時間碼 (以及在給定時間碼的情況下提供播放器絕對時間) |

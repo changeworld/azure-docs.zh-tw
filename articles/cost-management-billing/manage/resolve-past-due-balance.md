@@ -5,15 +5,15 @@ author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/13/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: cbfd5f7bf47cdaf43df00c710bd6680373d67b09
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9548900fe627f774aca08c05a243d807bb5a699c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200600"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282682"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>解決 Azure 訂用帳戶的逾期未付帳款
 

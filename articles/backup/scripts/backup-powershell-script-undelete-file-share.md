@@ -3,12 +3,12 @@ title: PowerShell 指令碼 - 將已刪除的檔案共用取消刪除
 description: 瞭解如何使用 Azure PowerShell 指令碼，將意外刪除的檔案共用取消刪除。
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: 199cb4720c2efe03d47fd06ea0cf41eae29d06fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d3a3ad3c2904b98f7a3350d3672b51f3a1e9415e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513229"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007627"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>用來將意外刪除的檔案共用取消刪除的 PowerShell 指令碼
 
@@ -154,7 +154,7 @@ Restore-DeletedFileShare $sa.Context $FileShareName $DeletedShareVersion
 
 ### <a name="prerequisites"></a>必要條件
 
-1. 在執行指令碼之前，請先從[此連結](//powershell/azure/install-az-ps)安裝最新的 Azure PowerShell Az 模組。
+1. 在執行指令碼之前，請先從[此連結](/powershell/azure/install-az-ps)安裝最新的 Azure PowerShell Az 模組。
 2. 請備妥下列詳細資料，因為您必須將這些資料當做指令碼的不同參數值來傳遞：
 
     * **-SubscriptionId** - 檔案共用所屬之訂用帳戶 ID。

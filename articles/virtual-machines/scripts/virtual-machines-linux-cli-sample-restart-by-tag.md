@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cac918f369a10a8084cdc7d0c66d5c0c4c400cc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f098b866eee6fd8555cafcec0f64a0a5f261f9e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458534"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079973"
 ---
 # <a name="restart-vms"></a>重新啟動 VM
 
@@ -86,15 +86,15 @@ az group delete -n myResourceGroup --no-wait --yes
 
 | Command | 注意 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | 建立虛擬機器。  |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm) | 與 `--query` 搭配使用，確保在重新啟動 VM 之前先加以佈建，然後取得 VM 識別碼加以重新啟動。 |
-| [az resource list](https://docs.microsoft.com/cli/azure/vm) | 與 `--query` 搭配使用，使用標籤取得 VM 的識別碼。 |
-| [az vm restart](https://docs.microsoft.com/cli/azure/vm) | 重新啟動 VM。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 刪除資源群組，包括所有的巢狀資源。 |
+| [az group create](/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
+| [az vm create](/cli/azure/vm/availability-set) | 建立虛擬機器。  |
+| [az vm list](/cli/azure/vm) | 與 `--query` 搭配使用，確保在重新啟動 VM 之前先加以佈建，然後取得 VM 識別碼加以重新啟動。 |
+| [az resource list](/cli/azure/vm) | 與 `--query` 搭配使用，使用標籤取得 VM 的識別碼。 |
+| [az vm restart](/cli/azure/vm) | 重新啟動 VM。 |
+| [az group delete](/cli/azure/vm/extension) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure Linux VM 文件](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他的虛擬機器 CLI 指令碼範例。

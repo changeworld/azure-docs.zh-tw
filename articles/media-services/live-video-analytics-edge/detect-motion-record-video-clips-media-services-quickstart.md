@@ -3,12 +3,12 @@ title: 偵測動作、將影片錄製到 Azure 媒體服務
 description: 本快速入門說明如何在 IoT Edge 上使用 Live Video Analytics，以偵測即時影片串流中的動作，並將視訊剪輯錄製到 Azure 媒體服務。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074411"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>快速入門：偵測動作、將影片錄製到媒體服務
 
@@ -655,7 +655,7 @@ ms.locfileid: "84817308"
 
 請注意上述訊息中的下列屬性
 
-* 每則訊息都包含 "body" 區段和 "applicationProperties" 區段。 若要了解這些區段所代表的意思，請參閱[建立及讀取 IoT 中樞訊息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct) (機器翻譯) 一文。
+* 每則訊息都包含 "body" 區段和 "applicationProperties" 區段。 若要了解這些區段所代表的意思，請參閱[建立及讀取 IoT 中樞訊息](../../iot-hub/iot-hub-devguide-messages-construct.md) (機器翻譯) 一文。
 * 第一則訊息為診斷事件 MediaSessionEstablished，表示 RTSP 來源節點 (主體) 能夠與 RTSP 模擬器建立連線，並開始接收 (模擬的) 即時摘要。
 * applicationProperties 中的 "subject" 會參考產生訊息之圖表拓撲中的節點。 在此案例中，訊息是來自 RTSP 來源節點。
 * applicationProperties 中的 "eventType" 表示這是診斷事件。

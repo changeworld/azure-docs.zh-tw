@@ -1,20 +1,20 @@
 ---
 title: UK OFFICIAL 與 UK NHS 藍圖範例控制項
 description: UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 05/08/2020
+ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 88f9606df5c3dcbca6ade05be918e3500a6ba64c
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 360c6bc2e1f207ca2d4470ffe62a81f524ce2a73
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005604"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078989"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL 與 UK NHS 藍圖範例的控制項對應
 
 下列文章詳細說明 UK OFFICIAL 和 UK NHS 藍圖範例如何對應至 UK OFFICIAL 和 UK NHS 控制項。 如需控制項的詳細資訊，請參閱 [UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications)。
 
-以下是 **UK OFFICIAL** 和 **UK NHS** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]  ，然後選取 [定義]  頁面。 然後，找出並選取 **\[預覽\] 稽核 UK OFFICIAL 和 UK NHS 控制項並部署特定的 VM 擴充功能，以支援稽核需求**內建原則計畫。
+以下是 **UK OFFICIAL** 和 **UK NHS** 控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\] 稽核 UK OFFICIAL 和 UK NHS 控制項並部署特定的 VM 擴充功能，以支援稽核需求**內建原則計畫。
 
 > [!IMPORTANT]
 > 下列每個控制措施都與一或多個 [Azure 原則](../../../policy/overview.md)定義相關聯。 這些原則可協助您使用工具[存取合規性](../../../policy/how-to/get-compliance-data.md)；不過，控制措施和一或多個原則之間，通常不是 1：1 或完整對應。 因此，Azure 原則中的**符合規範**只是指原則本身，這不保證您符合控制措施所有需求的規範。 此外，合規性標準包含目前未由任何 Azure 原則定義解決的控制措施。 因此，Azure 原則中的合規性只是整體合規性狀態的部分觀點。 此合規性藍圖範例的控制措施與 Azure 原則定義之間的關聯，可能會隨著時間而改變。 若要檢視變更歷程記錄，請參閱 [GitHub 認可歷程記錄](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md) \(英文\)。
@@ -27,6 +27,9 @@ ms.locfileid: "83005604"
 - 應啟用儲存體帳戶的安全傳輸
 - 從未使用安全通訊協定的 Windows 網頁伺服器顯示稽核結果
 - 部署必要條件以稽核未使用安全通訊協定的 Windows 網頁伺服器
+- Web 應用程式應只可經由 HTTPS 存取
+- 函式應用程式應只可經由 HTTPS 存取
+- API 應用程式應只可經由 HTTPS 存取
 
 ## <a name="23-data-at-rest-protection"></a>2.3 待用資料保護
 
@@ -107,27 +110,27 @@ Azure 會實作角色型存取控制 (RBAC)，以協助您管理有權存取 Azu
 
 此藍圖也指派了 Azure 原則定義來稽核 Linux VM 密碼檔案權限，以在其設定不正確時發出警示。 此設計可讓您採取更正措施，以確保驗證器不會遭到入侵。
 
-- \[預覽\]：從密碼檔權限未設為 0644 的 Linux VM 顯示稽核結果
+- 從密碼檔權限未設為 0644 的 Linux VM 顯示稽核結果
 
 此藍圖指派了 Azure 原則定義，用以稽核未強制執行最低強度和其他密碼需求的 Windows VM，以協助您強制執行強式密碼。 確知有哪些 VM 違反密碼強度原則可協助您採取更正措施，以確保所有 VM 使用者帳戶的密碼均符合原則。
 
-- \[預覽\]：部署必要條件以稽核未啟用密碼複雜度設定的 Windows VM
-- \[預覽\]：部署必要條件以稽核最大密碼存留期不是 70 天的 Windows VM
-- \[預覽\]：部署必要條件以稽核最小密碼存留期不是 1 天的 Windows VM
-- \[預覽\]：部署必要條件以稽核最小密碼長度未限制為 14 個字元的 Windows VM
-- \[預覽\]：部署必要條件以稽核允許重複使用前 24 個舊密碼的 Windows VM
-- \[預覽\]：從未啟用密碼複雜度設定的 Windows VM 顯示稽核結果
-- \[預覽\]：從最大密碼存留期不是 70 天的 Windows VM 顯示稽核結果
-- \[預覽\]：從最小密碼存留期不是 1 天的 Windows VM 顯示稽核結果
-- \[預覽\]：從最小密碼長度未限制為 14 個字元的 Windows VM 顯示稽核結果
-- \[預覽\]：從允許重複使用前 24 個舊密碼的 Windows VM 顯示稽核結果
+- 部署必要條件以稽核未啟用密碼複雜度設定的 Windows VM
+- 部署必要條件以稽核最大密碼存留期不是 70 天的 Windows VM
+- 部署必要條件以稽核最小密碼存留期不是 1 天的 Windows VM
+- 部署必要條件以稽核最小密碼長度未限制為 14 個字元的 Windows VM
+- 部署必要條件以稽核允許重複使用前 24 個舊密碼的 Windows VM
+- 從未啟用密碼複雜度設定的 Windows VM 顯示稽核結果
+- 從最大密碼存留期不是 70 天的 Windows VM 顯示稽核結果
+- 從最小密碼存留期不是 1 天的 Windows VM 顯示稽核結果
+- 從最小密碼長度未限制為 14 個字元的 Windows VM 顯示稽核結果
+- 從允許重複使用前 24 個舊密碼的 Windows VM 顯示稽核結果
 
 此藍圖也指派了 Azure 原則定義來協助您控制對 Azure 資源的存取。 這些原則會稽核資源類型和組態的使用方式是否可能會允許更寬鬆資源存取。 了解有哪些資源違反這些原則可協助您採取修正動作，以確保 Azure 資源僅限定給經授權的使用者存取。
 
-- \[預覽\]：部署需求以稽核有不具密碼帳戶的 Linux VM
-- \[預覽\]：部署需求以稽核允許不使用密碼從帳戶遠端連線的 Linux VM
-- \[預覽\]：從帳戶沒有密碼的 Linux VM 顯示稽核結果
-- \[預覽\]：從允許不使用密碼從帳戶遠端連線的 Linux VM 顯示稽核結果
+- 部署需求以稽核有不具密碼帳戶的 Linux VM
+- 部署需求以稽核允許不使用密碼從帳戶遠端連線的 Linux VM
+- 從帳戶沒有密碼的 Linux VM 顯示稽核結果
+- 從允許不使用密碼從帳戶遠端連線的 Linux VM 顯示稽核結果
 - 儲存體帳戶應移轉至新的 Azure Resource Manager 資源
 - 虛擬機器應移轉到新的 Azure Resource Manager 資源
 - 稽核不是使用受控磁碟的 VM
@@ -145,36 +148,6 @@ Azure 會實作角色型存取控制 (RBAC)，以協助您管理有權存取 Azu
 - 函式應用程式的遠端偵錯應關閉
 - Web 應用程式的遠端偵錯應關閉
 - 應關閉 API 應用程式的遠端偵錯
-- Web 應用程式應只可經由 HTTPS 存取
-- 函式應用程式應只可經由 HTTPS 存取
-- API 應用程式應只可經由 HTTPS 存取
-
-## <a name="12-secure-service-administration"></a>12 安全的服務管理
-
-Azure 會實作角色型存取控制 (RBAC)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了五項 [Azure 原則](../../../policy/overview.md)定義，以稽核具有擁有者及/或寫入權限的外部帳戶，及具有擁有者及/或寫入權限且未啟用多重要素驗證的帳戶，藉此協助您限制及控制特殊權限的存取權。
-
-用於雲端服務管理的系統將會有該服務的高度存取權限。 其洩露會有重大影響，包括規避安全性控制及竊取或操控大量資料。 服務提供者的系統管理員用來管理操作服務的方法，其設計訴求應該是降低任何可能破壞服務安全性的攻擊風險。 如果未實作此準則，攻擊者可能有辦法規避安全性控制及竊取或操控大量資料。
-
-- 應在您訂用帳戶上具有擁有者權限的帳戶上啟用 MFA
-- 應在您訂用帳戶上具有寫入權限的帳戶上啟用 MFA
-- 具有擁有者權限的外部帳戶應該從您的訂用帳戶中移除
-- 應從訂用帳戶移除具有寫入權限的外部帳戶
-
-此藍圖指派了 Azure 原則定義，以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。
-
-- 應針對 SQL 伺服器佈建 Azure Active Directory 管理員
-- Service Fabric 叢集應只能使用 Azure Active Directory 進行用戶端驗證
-
-此藍圖也指派了 Azure 原則定義來稽核應優先檢閱的帳戶，包括已停用的帳戶和已提高權限的外部帳戶。 必要時可以封鎖帳戶的登入 (或移除帳戶)，而立即移除對 Azure 資源的存取權限。 此藍圖指派了兩項 Azure 原則定義來稽核應考慮移除的停用帳戶。
-
-- 已取代帳戶應該從您的訂用帳戶中移除
-- 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除
-- 具有擁有者權限的外部帳戶應該從您的訂用帳戶中移除
-- 應從訂用帳戶移除具有寫入權限的外部帳戶
-
-此藍圖也指派了 Azure 原則定義來稽核 Linux VM 密碼檔案權限，以在其設定不正確時發出警示。 此設計可讓您採取更正措施，以確保驗證器不會遭到入侵。
-
-- \[預覽\]：從密碼檔權限未設為 0644 的 Linux VM 顯示稽核結果
 
 ## <a name="13-audit-information-for-users"></a>13 稽核使用者的資訊
 
