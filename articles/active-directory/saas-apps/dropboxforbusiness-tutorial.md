@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c596a1477c773717e0a6170d8931aeaf40594f5
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 67d684b85948a0d153d334a26f6860b4c13ed26c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85479958"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017800"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>教學課程：整合 Dropbox Business 與 Azure Active Directory
 
@@ -38,6 +38,9 @@ ms.locfileid: "85479958"
 
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以在[這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月的免費試用。
 * 已啟用 Dropbox Business 單一登入 (SSO) 的訂用帳戶。
+
+> [!NOTE]
+> 也可以在 Azure AD 美國政府雲端環境中使用此整合。 您可以在 Azure AD 美國政府雲端應用程式庫中找到此應用程式，並以與公用雲端相同的方式進行設定。
 
 ## <a name="scenario-description"></a>案例描述
 

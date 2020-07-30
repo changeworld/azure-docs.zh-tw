@@ -7,18 +7,18 @@ ms.date: 11/07/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
-ms.openlocfilehash: c4e8608c0d5c8dc79fa299d5d814f33cd6c8da2d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f66c188186c81e5a4d15c417a31ab096ba7ef598
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68726315"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020894"
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>適用於 Azure Blob 儲存體的 Azure PowerShell 範例
 
 下表包含可供建立和管理 Azure 儲存體之 PowerShell 指令碼範例的連結。
 
-| | |
+| 指令碼 | 描述 |
 |---|---|
 |**儲存體帳戶**||
 | [建立儲存體帳戶並擷取/輪替存取金鑰](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| 建立 Azure 儲存體帳戶並擷取和輪替其中一個存取金鑰。 |

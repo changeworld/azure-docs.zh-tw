@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 385b06dd7756c3bebf6557f9ea0b518473a37d49
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7676f4aeeb9485ce5e3a702027884bc54d79a863
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075891"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387314"
 ---
 # <a name="use-synapse-studio-to-monitor-your-workspace-pipeline-runs"></a>使用 Synapse Studio 來監視您的工作區管線執行
 
@@ -22,7 +22,7 @@ ms.locfileid: "87075891"
 
 本文說明如何監視您的管線執行，讓您留意管線的最新狀態、問題和進度。
 
-## <a name="access-the-list-of-pipeline-runs"></a>存取管線執行清單
+## <a name="access-pipeline-runs-list"></a>存取管線執行清單
 
 若要查看您工作區中的管線執行清單，請先[開啟 Synapse Studio](https://web.azuresynapse.net/) ，然後選取您的工作區。
 
@@ -36,7 +36,7 @@ ms.locfileid: "87075891"
 
 ![選取管線執行](./media/how-to-monitor-pipeline-runs/monitor-hub-nav-pipelineruns.png)
 
-## <a name="filtering-your-pipeline-runs"></a>篩選您的管線執行
+## <a name="filter-your-pipeline-runs"></a>篩選您的管線執行
 
 您可以篩選您感興趣的管線執行清單。 畫面頂端的篩選準則可讓您指定您想要篩選的欄位。
 
@@ -46,7 +46,7 @@ ms.locfileid: "87075891"
 
 ![範例篩選](./media/how-to-monitor-pipeline-runs/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-pipeline-run"></a>查看特定管線執行的詳細資料
+## <a name="view-details-about-a-specific-pipeline-run"></a>查看特定管線執行的詳細資料
 
 若要查看管線執行的詳細資料，請選取管線執行。 然後，查看與管線執行相關聯的活動執行。 如果管線仍在執行中，您可以監視進度。 
   

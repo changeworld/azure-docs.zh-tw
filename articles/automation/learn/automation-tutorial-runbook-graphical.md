@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 53031efa831f788fe0fe58146496b427f4cfb4db
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: fa92cd4f4cba63eee09714813954af9fa9c9c4ea
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185529"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290950"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>教學課程：建立圖形化 Runbook
 
@@ -32,6 +32,7 @@ ms.locfileid: "86185529"
 * Azure 訂用帳戶。 如果您沒有這類帳戶，可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自動化帳戶](../index.yml) ，用來保存 Runbook 以及向 Azure 資源驗證。 此帳戶必須擁有啟動和停止虛擬機器的權限。
 * Azure 虛擬機器。 您會停止並啟動這部電腦，因此其不該是生產 VM。
+* 如有必要，根據您所使用的 Cmdlet，[匯入 Azure 模組](../shared-resources/modules.md)或[更新模組](../automation-update-azure-modules.md)。
 
 ## <a name="step-1---create-runbook"></a>步驟 1 - 建立 Runbook
 

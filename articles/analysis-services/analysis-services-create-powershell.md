@@ -7,12 +7,13 @@ ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e2b772ac060e55d21341626772667d56245542ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: references_regions
+ms.openlocfilehash: 375d72c8de0aa16d2c10da701fb9670a9c87b79f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80409942"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015443"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>快速入門：建立伺服器 - PowerShell
 

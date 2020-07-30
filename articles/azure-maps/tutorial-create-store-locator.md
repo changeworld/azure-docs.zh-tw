@@ -1,20 +1,20 @@
 ---
 title: 教學課程：使用 Azure 地圖服務建立商店定位器應用程式 | Microsoft Azure 地圖服務
 description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務 Web SDK 來建立商店定位器 Web 應用程式。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 5caeb9ff5c289343e1869a55808bde7fbe035479
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 4bb0a4a0a621881fe1d9a59585476baa2ce05f8e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517547"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289557"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務建立商店定位器
 

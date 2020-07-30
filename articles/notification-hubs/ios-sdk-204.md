@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 2103c93e553cc5e1e94941b1567bd3c0f168eabf
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 80a9a98043a39b654f0d62a84ae81e12797b15b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85127155"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022356"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>教學課程：使用 Azure 通知中樞 (2.0.4 版) 將推播通知傳送至 iOS 應用程式
 
@@ -491,7 +491,7 @@ ms.locfileid: "85127155"
 - [註冊管理](notification-hubs-push-notification-registration-management.md)
 - [使用標記](notification-hubs-tags-segment-push-message.md)
 - [使用自訂範本](notification-hubs-templates-cross-platform-push-messages.md)
-- [使用共用存取簽章的服務匯流排存取控制](/azure/service-bus-messaging/service-bus-sas)
+- [使用共用存取簽章的服務匯流排存取控制](../service-bus-messaging/service-bus-sas.md)
 - [以程式設計方式產生 SAS 權杖](/rest/api/eventhub/generate-sas-token)
 - [Apple 安全性：一般加密](https://developer.apple.com/security/)
 - [Unix Epoch 時間](https://en.wikipedia.org/wiki/Unix_time)

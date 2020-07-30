@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 627dfee81cb10e4e442b3cefb10d786d87d5c81d
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: cb8a29c5d2eff46eecb2cf977bfb492f28731e68
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005882"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043632"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>關於金鑰、祕密與憑證
 
@@ -58,7 +58,7 @@ Key Vault 中的物件可以藉由指定版本來定址，或藉由對現行物�
 
 其中：  
 
-|||  
+| 元素 | 描述 |  
 |-|-|  
 |`keyvault-name`|Microsoft Azure Key Vault 服務中的金鑰保存庫名稱。<br /><br /> Key Vault 名稱由使用者選取，且具有全域唯一性。<br /><br /> Key Vault 名稱必須是 3-24 個字元的字串，且只能包含 0-9、a-z、A-Z 和 -。|  
 |`object-type`|物件的類型，「金鑰」、「秘密」或「憑證」。|  

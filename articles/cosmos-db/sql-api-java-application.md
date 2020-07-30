@@ -8,12 +8,13 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6dcfdc63946bcc2a9ffe4c5c767e81ca3b32107b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-java
+ms.openlocfilehash: eeac1c3cb7f92a7e407511c6436fe9d0723b2648
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025279"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87308775"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>教學課程：使用 Azure Cosmos DB 和 SQL API 來建置 Java Web 應用程式
 

@@ -5,12 +5,13 @@ author: anthonychu
 ms.topic: quickstart
 ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 4ac33a01f574f537d64c706842c7d867f387c804
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7614cec43fd9b2f294a04ed266cb0614f6cde872
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194462"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291837"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>使用 JavaScript 建立第一個耐久函式
 
@@ -185,7 +186,7 @@ Azure Functions Core Tools 可讓您在本機開發電腦上執行 Azure Functio
 
 ## <a name="test-your-function-in-azure"></a>在 Azure 中測試您的函式
 
-1. 從 [輸出] 面板中複製 HTTP 觸發程序的 URL。 呼叫 HTTP 觸發函式的 URL 應採用下列格式：`http://<functionappname>.azurewebsites.net/orchestrators/HelloOrchestrator`
+1. 從 [輸出] 面板中複製 HTTP 觸發程序的 URL。 呼叫 HTTP 觸發函式的 URL 應採用下列格式：`http://<functionappname>.azurewebsites.net/api/orchestrators/HelloOrchestrator`
 
 2. 將 HTTP 要求的新 URL 貼到瀏覽器的網址列。 在使用已發佈的應用程式之前，您應會取得如同以往的相同狀態回應。
 

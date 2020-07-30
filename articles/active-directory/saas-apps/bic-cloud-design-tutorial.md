@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de3ebba84a56a0dd997a2d0309bbc203cd606fa1
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 2d1c02f1382305f48f0857e80193a201726df4f8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607951"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018361"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bic-cloud-design"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 BIC Cloud Design 整合
 
@@ -39,6 +39,9 @@ ms.locfileid: "85607951"
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 * 已啟用 BIC Cloud Design 單一登入 (SSO) 的訂用帳戶。
 
+> [!NOTE]
+> 也可以在 Azure AD 美國政府雲端環境中使用此整合。 您可以在 Azure AD 美國政府雲端應用程式庫中找到此應用程式，並以與公用雲端相同的方式進行設定。
+
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
@@ -51,11 +54,11 @@ ms.locfileid: "85607951"
 若要設定將 BIC Cloud Design 整合到 Azure AD 中，您需要從資源庫將 BIC Cloud Design 新增到受控 SaaS 應用程式清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **BIC Cloud Design**。
-1. 從結果面板選取 [BIC Cloud Design]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **BIC Cloud Design**。
+1. 從結果面板選取 [BIC Cloud Design]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-bic-cloud-design"></a>設定及測試 BIC Cloud Design 的 Azure AD 單一登入
@@ -75,13 +78,13 @@ ms.locfileid: "85607951"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [BIC Cloud Design]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [BIC Cloud Design] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定]  區段上執行下列步驟：
+1. 如果您有**服務提供者中繼資料檔案**，請在 [基本 SAML 設定] 區段上執行下列步驟：
 
     a. 按一下 [上傳中繼資料檔案]  。
 
@@ -91,11 +94,11 @@ ms.locfileid: "85607951"
 
     ![選擇中繼資料檔案](common/browse-upload-metadata.png)
 
-    c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 設定] 區段中自動填入 [識別碼]  值。
+    c. 成功上傳中繼資料檔案後，就會在 [基本 SAML 設定] 區段中自動填入 [識別碼] 值。
 
     ![BIC Cloud Design 網域和 URL 單一登入資訊](common/sp-identifier.png)
 
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰
+    在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰
 
     ```https
     https://<customer-specific-name/tenant>.biccloud.com
@@ -103,7 +106,7 @@ ms.locfileid: "85607951"
     ```
 
     > [!Note]
-    > 如果 [識別碼]  值未自動填入，請根據您的需求手動填入這些值。 [登入 URL] 的值不是真正的值。 使用實際的「登入 URL」來更新此值。 請連絡 [BIC Cloud Design 用戶端支援小組](mailto:bicsupport@gbtec.de)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 如果 [識別碼] 值未自動填入，請根據您的需求手動填入這些值。 [登入 URL] 的值不是真正的值。 使用實際的「登入 URL」來更新此值。 請連絡 [BIC Cloud Design 用戶端支援小組](mailto:bicsupport@gbtec.de)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. BIC Cloud Design 應用程式預期應有特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -119,7 +122,7 @@ ms.locfileid: "85607951"
     | 電子郵件 | user.mail |
     | nametest | user.displayname |
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將資料儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]，並將資料儲存在您的電腦上。
 
     ![憑證下載連結](common/copy-metadataurl.png)
 
@@ -127,31 +130,31 @@ ms.locfileid: "85607951"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 BIC Cloud Design 的存取權授與 B.Simon，讓其能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，選取 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 在應用程式清單中，選取 [BIC Cloud Design]  。
-1. 在應用程式的概觀頁面中尋找 [管理]  區段，然後選取 [使用者和群組]  。
+1. 在 Azure 入口網站中，選取 [企業應用程式]，然後選取 [所有應用程式]。
+1. 在應用程式清單中，選取 [BIC Cloud Design]。
+1. 在應用程式的概觀頁面中尋找 [管理] 區段，然後選取 [使用者和群組]。
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
-1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
+1. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ## <a name="configure-bic-cloud-design-sso"></a>設定 BIC Cloud Design SSO
 

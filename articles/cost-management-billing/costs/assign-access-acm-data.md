@@ -3,17 +3,17 @@ title: 指派對 Azure 成本管理資料的存取權
 description: 本文逐步引導您針對不同存取範圍，指派對 Azure 成本管理資料的權限。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
-ms.topic: conceptual
+ms.date: 07/24/2020
+ms.topic: how-to
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 0b3ede4dcc4df8bf10ce24b3d74dc5af0424de5a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: a11dcbf9aaa383fca1a0d99539b63ff9478176e9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879100"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290888"
 ---
 # <a name="assign-access-to-cost-management-data"></a>指派成本管理資料的存取權
 
