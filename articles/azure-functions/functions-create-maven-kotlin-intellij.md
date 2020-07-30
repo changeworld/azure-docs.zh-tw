@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 2eb1a016e04a4150a76112c68683926810f5c66d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: fa834e3ac4946c4f617e857342f850445eebfd30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055439"
 ---
 # <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>快速入門：使用 Kotlin 和 IntelliJ 建立您的第一個 HTTP 觸發函式
 
@@ -26,7 +26,7 @@ ms.locfileid: "80674549"
 - [Java Developer Kit](https://aka.ms/azure-jdks) (JDK) 第 8 版
 - [Apache Maven](https://maven.apache.org) 3.0 版或更高版本
 - [IntelliJ IDEA](https://www.jetbrains.com/idea/download) Community 或 Ultimate 版 (含 Maven)
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - [2.x 版](functions-run-local.md#v2) 的 Azure Functions Core Tools。 其可提供撰寫、執行和偵錯 Azure Functions 的本機開發環境。
 
 > [!IMPORTANT]
@@ -45,7 +45,7 @@ ms.locfileid: "80674549"
 1. 依序選取 [確定]  和 [下一步]  。
 1. 輸入目前專案的詳細資料，然後選取 [完成]  。
 
-Maven 會在和 [ArtifactId]  值具有相同名稱的新資料夾中建立專案檔。 專案所產生的程式碼是 [HTTP 觸發](/azure/azure-functions/functions-bindings-http-webhook)的簡單函式，此函式會回應觸發 HTTP 要求的本文。
+Maven 會在和 [ArtifactId]  值具有相同名稱的新資料夾中建立專案檔。 專案所產生的程式碼是 [HTTP 觸發](./functions-bindings-http-webhook.md)的簡單函式，此函式會回應觸發 HTTP 要求的本文。
 
 ## <a name="run-functions-locally-in-the-ide"></a>在 IDE 中本機執行函式
 

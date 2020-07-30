@@ -3,16 +3,16 @@ title: 使用成本警示監視使用量和支出
 description: 本文說明成本警示如何協助您在 Azure 成本管理中監視使用量和支出。
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
-ms.topic: conceptual
+ms.date: 07/24/2020
+ms.topic: how-to
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: e3816c167aea80f32c35c7196de166de57dc9622
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ce63756e19e0991ce7aee0b2b6c9c65712b1680b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203061"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290793"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>使用成本警示監視使用量和支出
 

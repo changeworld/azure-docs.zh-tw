@@ -4,12 +4,12 @@ description: 在本快速入門中，您將了解如何設定使用 Azure 監視
 ms.topic: quickstart
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: b47f3ce1ebed12d14dffd68e87dd013bb86218ea
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: eb6c0a8319257949cee8f35be6cdfac22f1fe5d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801632"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323429"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>快速入門：使用 Azure 監視器 Application Insights 開始監視您的網站
 
@@ -30,7 +30,7 @@ Application Insights 可以從任何連上網際網路的應用程式 (不論是
 1. 選取 [建立資源]   > [管理工具]   > [Application Insights]  。
 
    > [!NOTE]
-   >如果這是您第一次建立 Application Insights 資源，請參閱[建立 Application Insights 資源](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
+   >如果這是您第一次建立 Application Insights 資源，請參閱[建立 Application Insights 資源](./create-new-resource.md)。
 1. 當設定方塊出現時，請使用下表來完成輸入欄位：
 
     | 設定        | 值           | 描述  |
@@ -105,15 +105,15 @@ Application Insights 可以從任何連上網際網路的應用程式 (不論是
 
    ![經過一段時間的使用者要求分析圖表](./media/website-monitoring/analytics-query.png)
 
-1. 請返回 [概觀]  頁面。 在 [調查]  標頭底下，選取 [瀏覽器]  ，然後選取 [效能]  。  與您網站效能相關的計量會隨即顯示。 其中有對應的檢視，可用來分析網站中的失敗和例外狀況。 您可以選取**範例**來存取[端對端交易詳細資料](../../azure-monitor/app/transaction-diagnostics.md)。
+1. 請返回 [概觀]  頁面。 在 [調查]  標頭底下，選取 [瀏覽器]  ，然後選取 [效能]  。  與您網站效能相關的計量會隨即顯示。 其中有對應的檢視，可用來分析網站中的失敗和例外狀況。 您可以選取**範例**來存取[端對端交易詳細資料](./transaction-diagnostics.md)。
 
    ![伺服器計量圖表](./media/website-monitoring/browser-performance.png)
 
-1. 若要開始探索[使用者行為分析工具](../../azure-monitor/app/usage-overview.md)，請從主要 Application Insights 功能表中，選取 [使用量]  標頭下的[**使用者**](../../azure-monitor/app/usage-segmentation.md)。 因為我們會從單一機器進行測試，所以只會看到一位使用者的資料。 對於即時網站，使用者的分布情形可能如下所示：
+1. 若要開始探索[使用者行為分析工具](./usage-overview.md)，請從主要 Application Insights 功能表中，選取 [使用量]  標頭下的[**使用者**](./usage-segmentation.md)。 因為我們會從單一機器進行測試，所以只會看到一位使用者的資料。 對於即時網站，使用者的分布情形可能如下所示：
 
      ![使用者圖形](./media/website-monitoring/usage-users.png)
 
-1. 針對更複雜的多頁面網站，您可以使用[**使用者流程**](../../azure-monitor/app/usage-flows.md)工具來追蹤造訪者瀏覽您網站各部分的路徑。
+1. 針對更複雜的多頁面網站，您可以使用[**使用者流程**](./usage-flows.md)工具來追蹤造訪者瀏覽您網站各部分的路徑。
 
    ![使用者流程視覺效果](./media/website-monitoring/user-flows.png)
 
@@ -132,4 +132,5 @@ Application Insights 可以從任何連上網際網路的應用程式 (不論是
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [尋找並診斷效能問題](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)
+> [尋找並診斷效能問題](../log-query/log-query-overview.md)
+

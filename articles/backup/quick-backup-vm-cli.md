@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: a359e47a70f6a1a9e0957b4e1c3965c8db12339a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 275a53c0ae5e1058d58516e9c01fa894ddad2120
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74171979"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054601"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>使用 CLI 在 Azure 中備份虛擬機器
 
@@ -26,7 +26,7 @@ Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。
 
 復原服務保存庫是一個邏輯容器，可儲存每個受保護資源 (例如 Azure VM) 的備份資料。 執行受保護資源的備份作業時，它會在復原服務保存庫內建立復原點。 然後您可以使用其中一個復原點，將資料還原到指定的時間點。
 
-使用 [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault#az-backup-vault-create) 建立復原服務保存庫。 指定與您想要保護的 VM 相同的資源群組和位置。 如果您使用了 [VM 快速入門](../virtual-machines/linux/quick-create-cli.md)，則您已建立：
+使用 [az backup vault create](/cli/azure/backup/vault#az-backup-vault-create) 建立復原服務保存庫。 指定與您想要保護的 VM 相同的資源群組和位置。 如果您使用了 [VM 快速入門](../virtual-machines/linux/quick-create-cli.md)，則您已建立：
 
 - 名為 *myResourceGroup* 的資源群組、
 - 名為 *myVM* 的虛擬機器、
@@ -38,7 +38,7 @@ az backup vault create --resource-group myResourceGroup \
     --location eastus
 ```
 
-根據預設，已針對異地備援儲存體設定復原服務保存庫。 異地備援儲存體可確保您的備份資料會複寫到與主要區域距離數百英哩的次要 Azure 區域。 如果需要修改儲存體備援設定，請使用 [az backup vault backup-properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) Cmdlet。
+根據預設，已針對異地備援儲存體設定復原服務保存庫。 異地備援儲存體可確保您的備份資料會複寫到與主要區域距離數百英哩的次要 Azure 區域。 如果需要修改儲存體備援設定，請使用 [az backup vault backup-properties set](/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) Cmdlet。
 
 ```azurecli
 az backup vault backup-properties set \
@@ -49,7 +49,7 @@ az backup vault backup-properties set \
 
 ## <a name="enable-backup-for-an-azure-vm"></a>啟用 Azure VM 的備份
 
-建立要定義的保護原則：備份作業的執行時機以及復原點的儲存時間長度。 預設保護原則會每天執行備份作業並將復原點保留 30 天。 您可以使用這些預設原則值來快速保護您的 VM。 若要啟用 VM 的備份保護，請使用 [az backup protection enable-for-vm](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-enable-for-vm)。 指定要保護的資源群組和 VM，然後指定要使用的原則：
+建立要定義的保護原則：備份作業的執行時機以及復原點的儲存時間長度。 預設保護原則會每天執行備份作業並將復原點保留 30 天。 您可以使用這些預設原則值來快速保護您的 VM。 若要啟用 VM 的備份保護，請使用 [az backup protection enable-for-vm](/cli/azure/backup/protection#az-backup-protection-enable-for-vm)。 指定要保護的資源群組和 VM，然後指定要使用的原則：
 
 ```azurecli-interactive
 az backup protection enable-for-vm \
@@ -71,11 +71,11 @@ az backup protection enable-for-vm \
 ```
 
 > [!IMPORTANT]
-> 使用 CLI 同時啟用多個 VM 的備份時，請確定單一原則不會有超過 100 部相關聯的 VM。 這是[建議的最佳做法](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy)。 目前，如果有超過 100 部 VM，但已規劃在未來新增檢查，則 PS 用戶端不會明確封鎖。
+> 使用 CLI 同時啟用多個 VM 的備份時，請確定單一原則不會有超過 100 部相關聯的 VM。 這是[建議的最佳做法](./backup-azure-vm-backup-faq.md#is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy)。 目前，如果有超過 100 部 VM，但已規劃在未來新增檢查，則 PS 用戶端不會明確封鎖。
 
 ## <a name="start-a-backup-job"></a>開始備份作業
 
-若要立即開始備份，而非等候預設原則在排定的時間執行此作業，請使用 [az backup protection backup-now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now)。 這第一個備份作業會建立完整復原點。 此初始備份之後的每個備份作業會建立增量復原點。 增量復原點符合儲存和時間效率，因為它只會傳輸自上次備份後所做的變更。
+若要立即開始備份，而非等候預設原則在排定的時間執行此作業，請使用 [az backup protection backup-now](/cli/azure/backup/protection#az-backup-protection-backup-now)。 這第一個備份作業會建立完整復原點。 此初始備份之後的每個備份作業會建立增量復原點。 增量復原點符合儲存和時間效率，因為它只會傳輸自上次備份後所做的變更。
 
 下列參數用於備份 VM：
 
@@ -96,7 +96,7 @@ az backup protection backup-now \
 
 ## <a name="monitor-the-backup-job"></a>監視備份作業
 
-若要監視備份作業的狀態，請使用 [az backup job list](https://docs.microsoft.com/cli/azure/backup/job#az-backup-job-list)：
+若要監視備份作業的狀態，請使用 [az backup job list](/cli/azure/backup/job#az-backup-job-list)：
 
 ```azurecli-interactive
 az backup job list \

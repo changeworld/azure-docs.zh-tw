@@ -11,17 +11,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3f2ad007ff0e1012f957c718d125b2e5b2e40964
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 8bbdf984311883006fcd6af16f42d7f7972cc169
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249225"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323310"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教學課程：使用 Azure 通知中樞和 Google 雲端通訊 (已淘汰) 將通知推送至 Android 裝置
 
@@ -485,7 +485,7 @@ ms.locfileid: "85249225"
 
 ## <a name="optional-send-push-notifications-directly-from-the-app"></a>(選擇性) 從應用程式直接傳送推播通知
 
-一般來說，您會使用後端伺服器傳送通知。 在某些情況下，您可能希望能夠直接從用戶端應用程式傳送推播通知。 本節說明如何使用 [Azure 通知中樞 REST API](https://msdn.microsoft.com/library/azure/dn223264.aspx)從用戶端傳送通知。
+一般來說，您會使用後端伺服器傳送通知。 在某些情況下，您可能希望能夠直接從用戶端應用程式傳送推播通知。 本節說明如何使用 [Azure 通知中樞 REST API](/previous-versions/azure/reference/dn223264(v=azure.100))從用戶端傳送通知。
 
 1. 在 [Android Studio 專案檢視] 中，展開 [App]   > [src]   > [main]   > [res]   > [layout]  。 開啟 `activity_main.xml` 配置檔案，然後按一下 [文字]  索引標籤以更新檔案的文字內容。 以下列程式碼進行更新，這會加入新的 `Button` 和 `EditText` 控制項，以便將推播通知訊息傳送至通知中樞。 在底部將此程式碼加在 `</RelativeLayout>`之前。
 
@@ -544,7 +544,7 @@ ms.locfileid: "85249225"
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. 建立軟體存取簽章 (SaS) 權杖來驗證 POST 要求，以將訊息傳送至您的通知中樞。 剖析連接字串中的金鑰資料，然後建立 [一般概念](https://msdn.microsoft.com/library/azure/dn495627.aspx) REST API 參考中所提的 SaS 權杖。 下列程式碼是範例實作。
+6. 建立軟體存取簽章 (SaS) 權杖來驗證 POST 要求，以將訊息傳送至您的通知中樞。 剖析連接字串中的金鑰資料，然後建立 [一般概念](/previous-versions/azure/reference/dn495627(v=azure.100)) REST API 參考中所提的 SaS 權杖。 下列程式碼是範例實作。
 
     在 `MainActivity.java` 中，將下列方法加入至 `MainActivity` 類別，以剖析連接字串。
 
@@ -741,7 +741,7 @@ ms.locfileid: "85249225"
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
-[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure 入口網站]: https://portal.azure.com

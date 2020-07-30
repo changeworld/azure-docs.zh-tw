@@ -6,13 +6,13 @@ ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 2e50daf3d94d30e4799bf7a645f46bb70fd6750c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
+ms.openlocfilehash: af75afb2840d2bc14e1fa46310f76f662efa2a54
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516493"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384781"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入門：使用 Azure Application Insights 開始監視您的 Node.js Web 應用程式
 
@@ -112,11 +112,11 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
    </script>
    ```
 
-5. 從左側選取 [計量]  。 使用計量瀏覽器來調查資源的健康情況和使用量。 您可以選取 [新增新的圖表]  來建立額外的自訂檢視，或選取 [編輯]  來修改現有圖表的類型、高度、調色盤、群組和計量。 例如，您可以製作圖表來顯示平均瀏覽器頁面載入時間，方法是從 [計量] 下拉式清單選取 [瀏覽器頁面載入時間] 並從 [彙總] 選取 [平均]。 若要深入了解 Azure 計量瀏覽器，請瀏覽[開始使用 Azure 計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)。
+5. 從左側選取 [計量]  。 使用計量瀏覽器來調查資源的健康情況和使用量。 您可以選取 [新增新的圖表]  來建立額外的自訂檢視，或選取 [編輯]  來修改現有圖表的類型、高度、調色盤、群組和計量。 例如，您可以製作圖表來顯示平均瀏覽器頁面載入時間，方法是從 [計量] 下拉式清單選取 [瀏覽器頁面載入時間] 並從 [彙總] 選取 [平均]。 若要深入了解 Azure 計量瀏覽器，請瀏覽[開始使用 Azure 計量瀏覽器](../platform/metrics-getting-started.md)。
 
    ![Application Insights 伺服器計量圖表](./media/nodejs-quick-start/azure-app-insights-server-metrics.png)
 
-若要深入了解監視 Node.js，請參閱[其他 AppInsights Node.js 文件](../../azure-monitor/app/nodejs.md)。
+若要深入了解監視 Node.js，請參閱[其他 AppInsights Node.js 文件](../app/nodejs.md)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -132,3 +132,4 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 
 > [!div class="nextstepaction"]
 > [尋找並診斷效能問題](../log-query/log-query-overview.md)
+

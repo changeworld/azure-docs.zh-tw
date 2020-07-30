@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515371"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322290"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>在 Azure 監視器中建立計量警示規則的 Resource Manager 範本範例
 
@@ -23,7 +23,7 @@ ms.locfileid: "86515371"
 如需可用於計量警示規則的資源清單，請參閱 [Azure 監視器中計量警示所支援的資源](../platform/alerts-metric-near-real-time.md)。 您可以在[計量警示 - 建立或更新](/rest/api/monitor/metricalerts/createorupdate)中取得警示規則的結構描述和屬性說明。
 
 > [!NOTE]
-> 建立資源類型之計量警示的資源範本：Azure Log Analytics 工作區 (例如 `Microsoft.OperationalInsights/workspaces`)，需要其他步驟。 如需詳細資訊，請參閱[記錄的計量警示 - 資源範本](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
+> 建立資源類型之計量警示的資源範本：Azure Log Analytics 工作區 (例如 `Microsoft.OperationalInsights/workspaces`)，需要其他步驟。 如需詳細資訊，請參閱[記錄的計量警示 - 資源範本](../platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
 
 
 
@@ -3127,7 +3127,7 @@ ms.locfileid: "86515371"
 
 
 ## <a name="availability-test-with-metric-alert"></a>使用計量警示的可用性測試
-[Application Insights 可用性測試](../../azure-monitor/app/monitor-web-app-availability.md)可協助您從全球各地的不同位置，監視您網站/應用程式的可用性。 可用性測試警示會在特定幾個位置中的可用性測試失敗時，向您發出通知。 可用性測試警示與計量警示 (Microsoft.Insights/metricAlerts) 屬於相同資源類型。 下列範例會建立簡單的可用性測試和相關警示。
+[Application Insights 可用性測試](../app/monitor-web-app-availability.md)可協助您從全球各地的不同位置，監視您網站/應用程式的可用性。 可用性測試警示會在特定幾個位置中的可用性測試失敗時，向您發出通知。 可用性測試警示與計量警示 (Microsoft.Insights/metricAlerts) 屬於相同資源類型。 下列範例會建立簡單的可用性測試和相關警示。
 
 > [!NOTE]
 > `&amp`; 是 & 的 HTML 實體參考。 URL 參數仍會以單一 & 來分隔，但如果您在 HTML 中提及 URL，則需要對其進行編碼。 因此，如果您的 pingURL 參數值中有任何 "&"，您就必須使用 "`&amp`;" 來替代
@@ -3266,3 +3266,4 @@ ms.locfileid: "86515371"
 - [取得 Azure 監視器的其他範例範本](resource-manager-samples.md)。
 - [深入了解警示](../platform/alerts-overview.md)。
 - [取得以 Resource Manager 範本建立動作群組的範例](resource-manager-action-groups.md)
+

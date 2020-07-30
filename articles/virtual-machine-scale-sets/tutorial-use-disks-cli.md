@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e50f025ebd22cbe231dcd01e277a76b0f8e9b56d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1aa87d72bf2b73b1fa616d7ff7535dac4da9b7fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198262"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029615"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>教學課程：使用 Azure CLI 建立及使用虛擬機器擴展集所適用的磁碟
 虛擬機器擴展集會使用磁碟來儲存 VM 執行個體的作業系統、應用程式和資料。 當您建立及管理擴展集時，請務必選擇預期的工作負載所適用的磁碟大小和組態。 本教學課程將說明如何建立及管理 VM 磁碟。 在本教學課程中，您將了解如何：
@@ -43,12 +43,12 @@ ms.locfileid: "83198262"
 ### <a name="temporary-disk-sizes"></a>暫存磁碟大小
 | 類型 | 一般大小 | 暫存磁碟大小上限 (GiB) |
 |----|----|----|
-| [一般用途](../virtual-machines/linux/sizes-general.md) | A、B 和 D 系列 | 1600 |
-| [計算最佳化](../virtual-machines/linux/sizes-compute.md) | F 系列 | 576 |
-| [記憶體最佳化](../virtual-machines/linux/sizes-memory.md) | D、E、G 和 M 系列 | 6144 |
-| [儲存體最佳化](../virtual-machines/linux/sizes-storage.md) | L 系列 | 5630 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N 系列 | 1440 |
-| [高效能](../virtual-machines/linux/sizes-hpc.md) | A 和 H 系列 | 2000 |
+| [一般用途](../virtual-machines/sizes-general.md) | A、B 和 D 系列 | 1600 |
+| [計算最佳化](../virtual-machines/sizes-compute.md) | F 系列 | 576 |
+| [記憶體最佳化](../virtual-machines/sizes-memory.md) | D、E、G 和 M 系列 | 6144 |
+| [儲存體最佳化](../virtual-machines/sizes-storage.md) | L 系列 | 5630 |
+| [GPU](../virtual-machines/sizes-gpu.md) | N 系列 | 1440 |
+| [高效能](../virtual-machines/sizes-hpc.md) | A 和 H 系列 | 2000 |
 
 
 ## <a name="azure-data-disks"></a>Azure 資料磁碟
@@ -112,7 +112,7 @@ az vmss disk attach \
 ## <a name="prepare-the-data-disks"></a>準備資料磁碟
 您所建立並連結至擴展集 VM 執行個體的磁碟，是原始磁碟。 磁碟必須完成準備工作，才能用於您的資料與應用程式。 若要準備磁碟，您可以建立分割區、建立檔案系統，並將其掛接。
 
-若要自動執行跨擴展集中多個 VM 執行個體的程序，您可以使用 Azure 自訂指令碼延伸模組。 此延伸模組可在每個 VM 執行個體的本機位置執行指令碼，以準備已連結的資料磁碟 (舉例而言)。 如需詳細資訊，請參閱[自訂指令碼延伸模組概觀](../virtual-machines/linux/extensions-customscript.md)。
+若要自動執行跨擴展集中多個 VM 執行個體的程序，您可以使用 Azure 自訂指令碼延伸模組。 此延伸模組可在每個 VM 執行個體的本機位置執行指令碼，以準備已連結的資料磁碟 (舉例而言)。 如需詳細資訊，請參閱[自訂指令碼延伸模組概觀](../virtual-machines/extensions/custom-script-linux.md)。
 
 下列範例會使用 [az vmss extension set](/cli/azure/vmss/extension) 在每個 VM 執行個體上執行 GitHub 範例存放庫中的指令碼，以準備所有已連結的原始資料磁碟：
 

@@ -3,12 +3,12 @@ title: 快速入門：使用 LUIS 入口網站部署應用程式
 description: 此快速入門說明如何藉由建立預測端點資源、指派資源、訓練及發佈應用程式來部署應用程式。
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3d12fa2956f962fe7a05b9639c1d32a7069635f9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653240"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336358"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入門：在 LUIS 入口網站中部署應用程式
 
@@ -19,7 +19,7 @@ LUIS 應用程式準備將表達預測傳回用戶端應用程式 (例如聊天�
 ## <a name="prerequisites"></a>Prerequisites
 
 * 取得 [Azure 訂用帳戶](https://azure.microsoft.com/free)。
-* 完成[先前的入口網站快速入門](get-started-portal-build-app.md)，或[下載並匯入應用程式](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)。
+* 完成[先前的入口網站快速入門](get-started-portal-build-app.md)，或[下載並匯入應用程式](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/portal-build-app.json)。
 * 如果您的應用程式版本早於 Azure 資源驗證，請[遷移至 Azure 資源](luis-migration-authoring.md)。 當電子郵件驗證生效時，某些入口網站頁面的外觀會有所不同。
 
 <a name="create-the-endpoint-resource"></a>

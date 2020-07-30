@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 06/01/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e97611cdfdca28b2c2b22f21d3aedcc79c4ee6d0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d005cf64089abee07c44f584366fee9cd26c2c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198112"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085413"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>教學課程：使用 Azure CLI 在 Linux 上建立虛擬機器擴展集及部署高可用性應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "83198112"
 > * 檢視擴展集執行個體的連線資訊
 > * 在擴展集內使用資料磁碟
 
-本教學課程會使用 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]  。
+本教學課程會使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -91,13 +91,13 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>建立擴展集
-請先使用 [az group create](/cli/azure/group#az-group-create) 建立資源群組，才可以建立擴展集。 下列範例會在 eastus  位置建立名為 myResourceGroupScaleSet  的資源群組：
+請先使用 [az group create](/cli/azure/group#az-group-create) 建立資源群組，才可以建立擴展集。 下列範例會在 eastus 位置建立名為 myResourceGroupScaleSet 的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
-現在使用 [az vmss create](/cli/azure/vmss#az-vmss-create) 建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet  的擴展集，使用 cloud-int 檔案來自訂 VM，以及產生 SSH 金鑰 (如果不存在)︰
+現在使用 [az vmss create](/cli/azure/vmss#az-vmss-create) 建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet 的擴展集，使用 cloud-int 檔案來自訂 VM，以及產生 SSH 金鑰 (如果不存在)︰
 
 ```azurecli-interactive
 az vmss create \
@@ -116,7 +116,7 @@ az vmss create \
 ## <a name="allow-web-traffic"></a>允許 Web 流量
 負載平衡器會自動建立，作為虛擬機器擴展集的一部分。 負載平衡器會使用負載平衡器規則，將流量分散於一組定義的 VM。 您可以在下一個教學課程[如何平衡 Azure 中虛擬機器的負載](tutorial-load-balancer.md)中，深入了解負載平衡器的概念和設定。
 
-若要允許流量觸達 Web 應用程式，請使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 建立規則。 下列範例會建立名為 myLoadBalancerRuleWeb  的規則：
+若要允許流量觸達 Web 應用程式，請使用 [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) 建立規則。 下列範例會建立名為 myLoadBalancerRuleWeb 的規則：
 
 ```azurecli-interactive
 az network lb rule create \
@@ -131,7 +131,7 @@ az network lb rule create \
 ```
 
 ## <a name="test-your-app"></a>測試應用程式
-若要查看 Web 上的 Node.js 應用程式，請使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 取得負載平衡器的公用 IP 位址。 下列範例會取得建立作為擴展集一部分的 myScaleSetLBPublicIP  IP 位址︰
+若要查看 Web 上的 Node.js 應用程式，請使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 取得負載平衡器的公用 IP 位址。 下列範例會取得建立作為擴展集一部分的 myScaleSetLBPublicIP IP 位址︰
 
 ```azurecli-interactive
 az network public-ip show \
@@ -172,7 +172,7 @@ az vmss list-instances \
 
 
 ### <a name="manually-increase-or-decrease-vm-instances"></a>手動增加或減少 VM 執行個體
-若要查看擴展集中目前擁有的執行個體數目，請使用 [az vmss show](/cli/azure/vmss#az-vmss-show)並查詢 sku.capacity  ：
+若要查看擴展集中目前擁有的執行個體數目，請使用 [az vmss show](/cli/azure/vmss#az-vmss-show)並查詢 sku.capacity：
 
 ```azurecli-interactive
 az vmss show \
@@ -205,7 +205,7 @@ az vmss list-instance-connection-info \
 您可以建立及使用資料磁碟搭配擴展集。 在先前的教學課程中，您已了解如何[管理 Azure 磁碟](tutorial-manage-disks.md)，其中概述了在資料磁碟上 (不是在 OS 磁碟上) 建置應用程式的最佳做法和效能改進。
 
 ### <a name="create-scale-set-with-data-disks"></a>使用資料磁碟建立擴展集
-若要建立擴展集並連結資料磁碟，可將 `--data-disk-sizes-gb` 參數新增到 [az vmss create](/cli/azure/vmss#az-vmss-create)命令。 下列範例會建立有 50  GB 資料磁碟且連結到每個執行個體的擴展集︰
+若要建立擴展集並連結資料磁碟，可將 `--data-disk-sizes-gb` 參數新增到 [az vmss create](/cli/azure/vmss#az-vmss-create)命令。 下列範例會建立有 50GB 資料磁碟且連結到每個執行個體的擴展集︰
 
 ```azurecli-interactive
 az vmss create \
@@ -222,7 +222,7 @@ az vmss create \
 當執行個體從擴展集移除時，所有連結的資料磁碟也會一併移除。
 
 ### <a name="add-data-disks"></a>新增資料磁碟
-若要將資料磁碟新增到擴展集中的執行個體，請使用 [az vmss disk attach](/cli/azure/vmss/disk#az-vmss-disk-attach)。 下列範例會將 50  GB 的磁碟新增到每個執行個體：
+若要將資料磁碟新增到擴展集中的執行個體，請使用 [az vmss disk attach](/cli/azure/vmss/disk#az-vmss-disk-attach)。 下列範例會將 50GB 的磁碟新增到每個執行個體：
 
 ```azurecli-interactive
 az vmss disk attach \
@@ -233,7 +233,7 @@ az vmss disk attach \
 ```
 
 ### <a name="detach-data-disks"></a>卸離資料磁碟
-若要將資料磁碟從擴展集中的執行個體上移除，請使用 [az vmss disk detach](/cli/azure/vmss/disk#az-vmss-disk-detach)。 下列範例會從每個執行個體移除在 LUN 2  的資料磁碟︰
+若要將資料磁碟從擴展集中的執行個體上移除，請使用 [az vmss disk detach](/cli/azure/vmss/disk#az-vmss-disk-detach)。 下列範例會從每個執行個體移除在 LUN 2 的資料磁碟︰
 
 ```azurecli-interactive
 az vmss disk detach \
