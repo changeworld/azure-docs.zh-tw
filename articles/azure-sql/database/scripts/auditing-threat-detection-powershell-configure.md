@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: carlrab, vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 1b709d1968a066ab5e4da4fef1659150d645ac26
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d44370e17b0d38f1d19849e97b2a7f41b50a4119
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040577"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>使用 PowerShell 設定 SQL Database 稽核與進階威脅防護
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -58,6 +58,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 其他的 SQL Database PowerShell 指令碼範例可於 [Azure SQL Database PowerShell 指令碼](../powershell-script-content-guide.md)中找到。

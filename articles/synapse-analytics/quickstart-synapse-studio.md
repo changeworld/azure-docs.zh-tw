@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 271fd77e519ce9d78e2fa4e4837004a77cf73522
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 8b35b281f6a70d5485004dc61563271132734a87
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276051"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374145"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>快速入門：使用 Synapse Studio (預覽)
 
@@ -49,7 +49,7 @@ ms.locfileid: "86276051"
 ## <a name="query-files-on-storage-account"></a>查詢儲存體帳戶上的檔案
 
 > [!IMPORTANT]
-> 您必須是基礎儲存體中 `Storage Blob Reader` 角色的成員，才能夠查詢檔案。 了解如何在 Azure 儲存體中[指派**儲存體 Blob 資料讀者**或**儲存體 Blob 資料參與者**的 RBAC 權限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)。
+> 您必須是基礎儲存體中 `Storage Blob Reader` 角色的成員，才能夠查詢檔案。 了解如何在 Azure 儲存體中[指派**儲存體 Blob 資料讀者**或**儲存體 Blob 資料參與者**的 RBAC 權限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role)。
 
 1. 上傳一些 `PARQUET` 檔案。
 2. 選取一或多個檔案，然後建立新的 SQL 指令碼或 Spark 筆記本，以查看檔案的內容。 如果想建立筆記本，您必須[在 Synapse 工作區中建立 Apache Spark 集區](quickstart-create-apache-spark-pool-studio.md)。
@@ -64,7 +64,7 @@ ms.locfileid: "86276051"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在 Azure 儲存體中[指派**儲存體 Blob 資料讀者**或**儲存體 Blob 資料參與者**的 RBAC 權限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)，讓 Azure AD 使用者查詢檔案
+- 在 Azure 儲存體中[指派**儲存體 Blob 資料讀者**或**儲存體 Blob 資料參與者**的 RBAC 權限](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role)，讓 Azure AD 使用者查詢檔案
 - [使用 SQL 隨選查詢 Azure 儲存體上的檔案](sql/on-demand-workspace-overview.md)
 - [使用 Azure 入口網站建立 Apache Spark 集區](quickstart-create-apache-spark-pool-portal.md)
 - [建立儲存在 Azure 儲存體上之檔案的 Power BI 報告](sql/tutorial-connect-power-bi-desktop.md)

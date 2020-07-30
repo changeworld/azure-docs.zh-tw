@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 12b32256c91dfcf93ca55eeb348cc78613ba860e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f8bd47a8fde700382f9789ab1c77ff35e9b1f4f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067111"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999508"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>計算 Blob 容器的帳單大小總計
 
@@ -120,6 +120,6 @@ For-Each Signed Identifier[512 bytes]
 
 - 如需有關 Azure 儲存體計費的詳細資訊，請參閱[了解 Windows Azure 儲存體計費](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)。
 
-- 如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/overview)。
+- 如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/)。
 
 - 您可以在 [Azure 儲存體的 PowerShell 範例](../blobs/storage-samples-blobs-powershell.md) 找到其他的儲存體 PowerShell 指令碼範例。

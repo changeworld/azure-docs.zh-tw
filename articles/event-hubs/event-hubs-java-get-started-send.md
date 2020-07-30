@@ -3,12 +3,13 @@ title: 使用 Java 從 Azure 事件中樞傳送或接收事件 (舊版)
 description: 本文提供的逐步解說說明如何建立 Java 應用程式，以使用舊有的 azure-eventhubs 套件，從 Azure 事件中樞傳送/接收事件。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 8c44cfa2a3130e714ac95989248aee634996df2a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-java
+ms.openlocfilehash: 6efa21f4869dddef9d54001a8669b4b039240910
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320312"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371969"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>使用 Java 將事件傳送至 Azure 事件中樞或從中接收事件 (azure-eventhubs)
 

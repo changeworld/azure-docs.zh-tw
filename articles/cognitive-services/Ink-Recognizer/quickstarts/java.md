@@ -10,12 +10,13 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: bc7dfcef45917081ec9ea1e97f4c36e4348dd9e7
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-java
+ms.openlocfilehash: 902d8a592893a70b8a694ab888bb3c22c6c9670a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985270"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371544"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>快速入門：使用筆跡辨識器 REST API 與 Java 來辨識數位筆跡
 
@@ -29,7 +30,7 @@ ms.locfileid: "85985270"
 
 此快速入門的原始程式碼可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2089904) 上找到。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Java&trade; 開發套件 (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 或更新版本。
 

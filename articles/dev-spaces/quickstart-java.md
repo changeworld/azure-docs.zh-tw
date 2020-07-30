@@ -6,12 +6,13 @@ ms.topic: quickstart
 description: 本快速入門說明如何使用 Azure Dev Spaces 和 Visual Studio Code 對 Azure Kubernetes Service 上的 Java 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Java, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: ac7a1b37b565f3589b7c049a3c1ed2a84972ded0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-java
+ms.openlocfilehash: c0fd035a0341e5e92b2706d833b24d5e5b87e018
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239739"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371561"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>快速入門：使用 Visual Studio Code 和 Java 在 Kubernetes 上偵錯和逐一查看 - Azure Dev Spaces
 
@@ -29,7 +30,7 @@ ms.locfileid: "80239739"
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>建立 Azure Kubernetes Service 叢集
 
-您必須在[支援的區域][supported-regions]中建立 AKS 叢集。 下列命令會建立名為 MyResourceGroup  的資源群組與名為 MyAKS  的 AKS 叢集。
+您必須在[支援的區域][supported-regions]中建立 AKS 叢集。 下列命令會建立名為 MyResourceGroup 的資源群組與名為 MyAKS 的 AKS 叢集。
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
@@ -38,7 +39,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>在 AKS 叢集上啟用 Azure Dev Spaces
 
-使用 `use-dev-spaces` 命令在 AKS 叢集上啟用 Dev Spaces，並遵循提示來進行。 下列命令會在 MyResourceGroup  群組中的 MyAKS  叢集上啟用 Dev Spaces，並建立「預設」  開發空間。
+使用 `use-dev-spaces` 命令在 AKS 叢集上啟用 Dev Spaces，並遵循提示來進行。 下列命令會在 MyResourceGroup 群組中的 MyAKS 叢集上啟用 Dev Spaces，並建立「預設」開發空間。
 
 > [!NOTE]
 > `use-dev-spaces` 命令也會安裝 Azure Dev Spaces CLI (如果尚未安裝)。 您無法在 Azure Cloud Shell 中安裝 Azure Dev Spaces CLI。
@@ -75,11 +76,11 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="prepare-the-sample-application-in-visual-studio-code"></a>在 Visual Studio Code 中準備範例應用程式
 
-開啟 Visual Studio Code，依序選取 [檔案]  和 [開啟]  ，瀏覽至 dev-dev-spaces/samples/java/getting-started/webfrontend  目錄，然後選取 [開啟]  。
+開啟 Visual Studio Code，依序選取 [檔案] 和 [開啟]，瀏覽至 dev-dev-spaces/samples/java/getting-started/webfrontend 目錄，然後選取 [開啟]。
 
 您現在已在 Visual Studio Code 中開啟 *webfrontend* 專案。 若要在您的開發空間中執行應用程式，請在命令選擇區中使用 Azure Dev Spaces 擴充功能產生 Docker 和 Helm 圖表資產。
 
-若要在 Visual Studio Code 中開啟命令選擇區，請依序選取 [檢視]  和 [命令選擇區]  。 開始輸入 `Azure Dev Spaces` 並選取 **[Azure Dev Spaces：準備 Azure Dev Spaces 的組態檔]** 。
+若要在 Visual Studio Code 中開啟命令選擇區，請依序選取 [檢視] 和 [命令選擇區]。 開始輸入 `Azure Dev Spaces` 並選取 **[Azure Dev Spaces：準備 Azure Dev Spaces 的組態檔]** 。
 
 ![準備 Azure Dev Spaces 的組態檔](./media/common/command-palette.png)
 
@@ -98,24 +99,24 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>從 Visual Studio Code 在 Kubernetes 中建置和執行程式碼
 
-選取左側的 [偵錯]  圖示，然後選取頂端的 [啟動 Java 程式 (AZDS)]  。
+選取左側的 [偵錯] 圖示，然後選取頂端的 [啟動 Java 程式 (AZDS)]。
 
 ![啟動 Java 程式](media/get-started-java/debug-configuration.png)
 
-此命令會在 Azure Dev Spaces 中建置和執行您的服務。 底部的 [終端機]  視窗會顯示您在 Azure Dev Spaces 中所執行服務的建置輸出和 URL。 [偵錯主控台]  會顯示記錄輸出。
+此命令會在 Azure Dev Spaces 中建置和執行您的服務。 底部的 [終端機] 視窗會顯示您在 Azure Dev Spaces 中所執行服務的建置輸出和 URL。 [偵錯主控台] 會顯示記錄輸出。
 
 > [!Note]
-> 如果您未在 [命令選擇區]  中看到任何 Azure Dev Spaces 命令，請確定您已安裝[適用於 Azure Dev Spaces 的 Visual Studio Code 擴充功能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 也請確認您已在 Visual Studio Code 中開啟 dev-spaces/samples/java/getting-started/webfrontend  目錄。
+> 如果您未在 [命令選擇區] 中看到任何 Azure Dev Spaces 命令，請確定您已安裝[適用於 Azure Dev Spaces 的 Visual Studio Code 擴充功能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 也請確認您已在 Visual Studio Code 中開啟 dev-spaces/samples/java/getting-started/webfrontend 目錄。
 
 您可以開啟公用 URL，查看執行的服務。
 
-依序選取 [偵錯]  和 [停止偵錯]  以停止偵錯工具。
+依序選取 [偵錯] 和 [停止偵錯] 以停止偵錯工具。
 
 ## <a name="update-code"></a>更新程式碼
 
-若要部署更新過的服務版本，您可以在專案中更新任何檔案，然後重新執行「啟動 Java 程式 (AZDS)」  。 例如：
+若要部署更新過的服務版本，您可以在專案中更新任何檔案，然後重新執行「啟動 Java 程式 (AZDS)」。 例如：
 
-1. 如果您的應用程式仍在執行中，請選取 [偵錯]  ，然後按一下 [停止偵錯]  加以停止。
+1. 如果您的應用程式仍在執行中，請選取 [偵錯]，然後按一下 [停止偵錯] 加以停止。
 1. 將 [`src/main/java/com/ms/sample/webfrontend/Application.java` 中的第 19 行](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) \(英文\) 更新為：
     
     ```java
@@ -123,17 +124,17 @@ git clone https://github.com/Azure/dev-spaces
     ```
 
 1. 儲存您的變更。
-1. 重新執行 [啟動 Java 程式 (AZDS)]  。
+1. 重新執行 [啟動 Java 程式 (AZDS)]。
 1. 瀏覽至執行中的服務，然後觀察您的變更。
-1. 選取按一下 [偵錯]  和 [停止偵錯]  以停止您的應用程式。
+1. 選取按一下 [偵錯] 和 [停止偵錯] 以停止您的應用程式。
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>設定和使用偵錯的中斷點
 
-使用 [啟動 Java 程式 (AZDS)]  啟動您的服務。 這也會在偵錯模式中執行您的服務。
+使用 [啟動 Java 程式 (AZDS)] 啟動您的服務。 這也會在偵錯模式中執行您的服務。
 
-依序選取 [檢視]  和 [總管]  ，往回瀏覽至 [總管]  檢視。 開啟 *src/main/java/com/ms/sample/webfrontend/Application.java*，然後按一下第 19 行上的某處，將游標放在該處。 若要設定中斷點，請按 F9  ，或依序選取 [偵錯]  和 [切換中斷點]  。
+依序選取 [檢視] 和 [總管]，往回瀏覽至 [總管] 檢視。 開啟 *src/main/java/com/ms/sample/webfrontend/Application.java*，然後按一下第 19 行上的某處，將游標放在該處。 若要設定中斷點，請按 F9，或依序選取 [偵錯] 和 [切換中斷點]。
 
-在瀏覽器中開啟您的服務，並注意其中並未顯示任何訊息。 返回 Visual Studio Code，您會看到第 19 行已醒目提示。 您所設定的中斷點已讓服務在第 19 行暫停。 若要讓服務繼續，請按 F5  ，或依序選取 [偵錯]  和 [繼續]  。 返回您的瀏覽器，並注意現在會顯示訊息。
+在瀏覽器中開啟您的服務，並注意其中並未顯示任何訊息。 返回 Visual Studio Code，您會看到第 19 行已醒目提示。 您所設定的中斷點已讓服務在第 19 行暫停。 若要讓服務繼續，請按 F5，或依序選取 [偵錯] 和 [繼續]。 返回您的瀏覽器，並注意現在會顯示訊息。
 
 在連結了偵錯工具的 Kubernetes 中執行您的服務時，您可以完整地存取偵錯資訊，例如呼叫堆疊、區域變數和例外狀況資訊。
 
@@ -146,7 +147,7 @@ git clone https://github.com/Azure/dev-spaces
 return "Hello from webfrontend in Azure while debugging!";
 ```
 
-儲存檔案。 依序選取 [偵錯]  和 [重新啟動偵錯]  ，或在 [偵錯工具列]  中選取 [重新啟動偵錯]  按鈕。
+儲存檔案。 依序選取 [偵錯] 和 [重新啟動偵錯]，或在 [偵錯工具列] 中選取 [重新啟動偵錯] 按鈕。
 
 ![重新整理偵錯](media/common/debug-action-refresh.png)
 

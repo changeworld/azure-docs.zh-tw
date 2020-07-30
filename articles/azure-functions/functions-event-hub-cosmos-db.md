@@ -5,12 +5,13 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-java
+ms.openlocfilehash: ef2b774195f522be3520850d2e6e7193e70dd4fb
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77425318"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372445"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>教學課程：使用事件中樞觸發程序和 Azure Cosmos DB 輸出繫結來建立以 Java 撰寫的函式
 
@@ -445,9 +446,9 @@ az group delete --name $RESOURCE_GROUP
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何建立 Azure 函式，以處理事件中樞的事件並更新 Cosmos DB。 如需詳細資訊，請參閱 [Azure Functions Java 開發人員指南](/azure/azure-functions/functions-reference-java)。 如需所用註釋的相關資訊，請參閱 [com.microsoft.azure.functions.annotation](/java/api/com.microsoft.azure.functions.annotation) 參考資料。
+在本教學課程中，您已了解如何建立 Azure 函式，以處理事件中樞的事件並更新 Cosmos DB。 如需詳細資訊，請參閱 [Azure Functions Java 開發人員指南](./functions-reference-java.md)。 如需所用註釋的相關資訊，請參閱 [com.microsoft.azure.functions.annotation](/java/api/com.microsoft.azure.functions.annotation) 參考資料。
 
-本教學課程使用了環境變數和應用程式設定來儲存秘密 (例如連接字串)。 如需在 Azure Key Vault 中儲存這些秘密的相關資訊，請參閱[使用 App Service 和 Azure Functions 的 Key Vault 參考](/azure/app-service/app-service-key-vault-references)。
+本教學課程使用了環境變數和應用程式設定來儲存秘密 (例如連接字串)。 如需在 Azure Key Vault 中儲存這些秘密的相關資訊，請參閱[使用 App Service 和 Azure Functions 的 Key Vault 參考](../app-service/app-service-key-vault-references.md)。
 
 接下來，請了解如何使用 Azure Pipelines CI/CD 來進行自動化部署：
 

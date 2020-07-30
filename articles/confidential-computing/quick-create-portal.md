@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
-ms.openlocfilehash: 3cf772fb10ee41887d76976b30e9bebaba51a2f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 476b93400b69063590c12ed38037c0bf6c6d1714
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85830463"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281067"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中部署 Azure 機密運算 VM
 
@@ -84,7 +84,7 @@ ms.locfileid: "85830463"
    * **驗證類型**：如果您要建立 Linux VM，請選取 [SSH 公開金鑰]。 
 
         > [!NOTE]
-        > 您可以選擇使用 SSH 公開金鑰或密碼進行驗證。 SSH 較為安全。 如需有關如何產生 SSH 金鑰的指示，請參閱[在 Linux 和 Mac 上為 Azure 中的 Linux VM 建立 SSH 金鑰](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)。
+        > 您可以選擇使用 SSH 公開金鑰或密碼進行驗證。 SSH 較為安全。 如需有關如何產生 SSH 金鑰的指示，請參閱[在 Linux 和 Mac 上為 Azure 中的 Linux VM 建立 SSH 金鑰](../virtual-machines/linux/mac-create-ssh-keys.md)。
 
     * **使用者名稱**：輸入 VM 的系統管理員名稱。
 

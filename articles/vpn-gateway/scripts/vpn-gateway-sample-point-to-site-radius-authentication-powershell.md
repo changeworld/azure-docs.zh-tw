@@ -3,18 +3,18 @@ title: Azure PowerShell 指令碼範例 - 設定使用 RADIUS 使用者名稱/�
 description: 設定使用 RADIUS 使用者名稱/密碼驗證的點對站 VPN。 本文使用 PowerShell。
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 05/30/2018
 ms.author: alzam
-ms.openlocfilehash: 703ffac5775c979199afdd44afe0941b1416369b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d546fe2568c0c061c9a08e7fa4a98aa8c5e55c55
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "66113682"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068551"
 ---
 # <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>使用 PowerShell 建立 VPN 閘道並新增點對站設定
 
@@ -109,4 +109,4 @@ Remove-AzResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。

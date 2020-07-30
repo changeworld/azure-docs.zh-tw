@@ -3,12 +3,12 @@ title: 將以事件為基礎的影片錄製到雲端並從雲端播放的教學�
 description: 在本教學課程中，您將了解如何在 Azure IoT Edge 上使用 Azure Live Video Analytics，將以事件為基礎的影片錄製到雲端並從雲端播放。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 938bae28b1a523e23ea9f8f1ba79bbe6c487d5db
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: cbd00bf5737e9833a860e154c629bb344416b6ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765194"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011765"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>教學課程：將以事件為基礎的影片錄製到雲端並從雲端播放
 
@@ -32,9 +32,9 @@ ms.locfileid: "84765194"
 * [IoT Edge 上的 Live Video Analytics 術語](terminology.md)
 * [媒體圖表概念](media-graph-concept.md) 
 * [發生事件時錄製影片](event-based-video-recording-concept.md)
-* [教學課程：開發 IoT Edge 模組](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)
+* [教學課程：開發 IoT Edge 模組](../../iot-edge/tutorial-develop-for-linux.md)
 * [如何編輯 deployment.*.template.json](https://github.com/microsoft/vscode-azure-iot-edge/wiki/How-to-edit-deployment.*.template.json)
-* 有關[如何在 IoT Edge 部署資訊清單中宣告路由](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)的章節
+* 有關[如何在 IoT Edge 部署資訊清單中宣告路由](../../iot-edge/module-composition.md#declare-routes)的章節
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -52,7 +52,7 @@ ms.locfileid: "84765194"
 * Azure IoT 中樞
 * Azure 儲存體帳戶
 * Azure 媒體服務帳戶
-* Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)
 
 ## <a name="concepts"></a>概念
 
@@ -135,9 +135,9 @@ ms.locfileid: "84765194"
 * **rtspsim**：這是 RTSP 模擬器。
 * **objectCounter**：這是在 yolov3 結果中尋找特定物件的模組。
 
-針對 objectCounter 模組，請參閱用於「映像」值的字串 (${MODULES.objectCounter})。 這會以開發 IoT Edge 模組的[教學課程](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux)為基礎。 Visual Studio Code 會自動辨識 objectCounter 模組的程式碼位於 src/edge/modules/objectCounter 之下。 
+針對 objectCounter 模組，請參閱用於「映像」值的字串 (${MODULES.objectCounter})。 這會以開發 IoT Edge 模組的[教學課程](../../iot-edge/tutorial-develop-for-linux.md)為基礎。 Visual Studio Code 會自動辨識 objectCounter 模組的程式碼位於 src/edge/modules/objectCounter 之下。 
 
-請閱讀[本節](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)，以了解如何在 IoT Edge 部署資訊清單中宣告路由。 然後檢查 JSON 檔案範本中的路由。 請注意：
+請閱讀[本節](../../iot-edge/module-composition.md#declare-routes)，以了解如何在 IoT Edge 部署資訊清單中宣告路由。 然後檢查 JSON 檔案範本中的路由。 請注意：
 
 * LVAToObjectCounter 是用來將特定事件傳送至 objectCounter 模組中的特定端點。
 * ObjectCounterToLVA 是用來將觸發程式事件傳送至 lvaEdge 模組中的特定端點 (應該是 IoT 中樞的來源節點)。
@@ -150,7 +150,7 @@ ms.locfileid: "84765194"
 
 部署資訊清單會定義要將部署至邊緣裝置的模組，以及這些模組的組態設定。 請遵循下列步驟，從範本檔案產生資訊清單，然後將其部署到邊緣裝置。
 
-使用 Visual Studio Code，依照[這些指示](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) 來登入 Docker。 然後選取 [組建和推送 IoT Edge 解決方案]。 在此步驟中使用 src/edge/deployment.objectCounter.template.json。
+使用 Visual Studio Code，依照[這些指示](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) 來登入 Docker。 然後選取 [組建和推送 IoT Edge 解決方案]。 在此步驟中使用 src/edge/deployment.objectCounter.template.json。
 
 ![組建和推送 IoT Edge 解決方案](./media/event-based-video-recording-tutorial/build-push.png)
 
@@ -259,7 +259,7 @@ ms.locfileid: "84765194"
 
 ## <a name="interpret-the-results"></a>解讀結果 
 
-當您執行媒體圖時，IoT Edge 模組上的 Live Video Analytics 會將特定的診斷和操作事件傳送至 IoT Edge 中樞。 這些事件就是您在 Visual Studio Code 的 [輸出] 視窗中看到的訊息。 訊息包含 body 區段和 applicationProperties 區段。 若要瞭解這些區段所表示的內容，請參閱[建立和讀取 IoT 中樞訊息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)。
+當您執行媒體圖時，IoT Edge 模組上的 Live Video Analytics 會將特定的診斷和操作事件傳送至 IoT Edge 中樞。 這些事件就是您在 Visual Studio Code 的 [輸出] 視窗中看到的訊息。 訊息包含 body 區段和 applicationProperties 區段。 若要瞭解這些區段所表示的內容，請參閱[建立和讀取 IoT 中樞訊息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
 在下列訊息中，Live Video Analytics 模組會定義應用程式屬性和本文內容。
 
@@ -413,4 +413,4 @@ applicationProperties 中的 subject 區段會參考圖表中產生此訊息的�
 ## <a name="next-steps"></a>後續步驟
 
 * 使用具有 RTSP 支援的 [IP 攝影機](https://en.wikipedia.org/wiki/IP_camera)，而非使用 RTSP 模擬器。 您可以藉由在[符合 ONVIF 標準產品頁面](https://www.onvif.org/conformant-products/)上尋找符合設定檔 G、S 或 T 的裝置，以搜尋具有 RTSP 支援的 IP 攝影機。
-* 使用 AMD64 或 X64 Linux 裝置 (相較於使用 Azure Linux VM)。 此裝置必須與 IP 攝影機位於相同的網路中。 遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)中的指示。 然後按照[將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)快速入門中的指示操作，向 Azure IoT 中樞註冊裝置。
+* 使用 AMD64 或 X64 Linux 裝置 (相較於使用 Azure Linux VM)。 此裝置必須與 IP 攝影機位於相同的網路中。 遵循[在 Linux 上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)中的指示。 然後按照[將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置](../../iot-edge/quickstart-linux.md)快速入門中的指示操作，向 Azure IoT 中樞註冊裝置。
