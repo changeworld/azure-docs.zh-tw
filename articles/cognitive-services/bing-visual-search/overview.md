@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: scottwhi
-ms.openlocfilehash: 14acebb71538dddfd2421fbb27794f456b6c9c8f
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 192517aa16e0fe56eb5b7dc8b852116af500b715
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611504"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023716"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>什麼是 Bing 圖像式搜尋 API？
 
@@ -57,7 +57,15 @@ Bing 圖像式搜尋 API 是一種 RESTful Web 服務，因此可輕易地從任
 首先，觀看 Bing 圖像式搜尋 API 的[互動式示範](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/)。
 此示範將說明如何快速地自訂搜尋查詢，並翻找出 Web 上的影像。
 
-若要快速開始使用您的第一個要求，請參閱快速入門：[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
+若要快速開始使用您的第一個要求，請參閱快速入門：
+
+* [C#](quickstarts/csharp.md)
+
+* [Java](quickstarts/java.md)
+
+* [node.js](quickstarts/nodejs.md)
+
+* [Python](quickstarts/python.md)
 
 ## <a name="see-also"></a>另請參閱
 

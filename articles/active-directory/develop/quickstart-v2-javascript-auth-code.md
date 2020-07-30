@@ -9,26 +9,25 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 0eaa4a828716f1a52161726e768acc817d1fde17
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
+ms.openlocfilehash: 02652243b3c25c0a02e325c8b7b1d7e7c226abcd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134178"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311937"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入門：使用授權碼流程讓使用者登入並取得 JavaScript SPA 中的存取權杖
-
-> [!IMPORTANT]
-> 此功能目前為預覽狀態。 若您同意[補充的使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)即可取得預覽。 在公開上市 (GA) 之前，此功能的某些領域可能會變更。
 
 在本快速入門中，您會執行程式碼範例，該範例會示範 JavaScript 單頁應用程式 (SPA) 如何使用授權碼流程讓使用者登入個人帳戶、公司帳戶和學校帳戶。 此程式碼範例也會示範如何取得存取權杖來呼叫 Web API (在此案例中為 Microsoft Graph API)。 如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
 本快速入門會使用 MSAL.js 2.0 搭配授權碼流程。 如需搭配使用 MSAL.js 1.0 與隱含流程的類似快速入門，請參閱[快速入門：在 JavaScript 單頁應用程式中讓使用者登入](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript)。
 
-## <a name="prerequisites"></a>必要條件
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
+
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [免費建立 Azure 訂用帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)

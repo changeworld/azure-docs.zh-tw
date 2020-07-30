@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 317d5681ac3b09cb433cdc2bc3c83b6b1c8d37dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b656774762f5930c5665166a701bda7333940307
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516357"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322426"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>使用 Azure Application Insights 尋找並診斷執行階段例外狀況
 
@@ -36,7 +36,7 @@ Azure Application Insights 會從您的應用程式收集遙測，以協助識�
     - Azure 開發
 - 下載並安裝 [Visual Studio 快照集偵錯工具](https://aka.ms/snapshotdebugger) \(英文\)。
 - 啟用 [Visual Studio 快照集偵錯工具](../app/snapshot-debugger.md)
-- 將 .NET 應用程式部署至 Azure，並[啟用 Application Insights SDK](../../azure-monitor/app/asp-net.md)。 
+- 將 .NET 應用程式部署至 Azure，並[啟用 Application Insights SDK](../app/asp-net.md)。 
 - 本教學課程會追蹤您應用程式中的例外狀況識別情形，因此，請修改您開發或測試環境中的程式碼以產生例外狀況。 
 
 ## <a name="log-in-to-azure"></a>登入 Azure
@@ -63,7 +63,7 @@ Application Insights 會收集應用程式中的任何失敗，並可讓您檢�
 
     ![失敗的要求範例](media/tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. 失敗要求的詳細資料會顯示甘特圖，說明此交易中有兩個相依性失敗，而這也造就了該交易 50% 以上的總持續時間。 此體驗顯示了所有遙測資料，來源包括與此作業識別碼相關的分散式應用程式的各個元件。 [深入了解新的體驗](../../azure-monitor/app/transaction-diagnostics.md)。 您可以選取任何項目，以在右側查看其詳細資料。 
+6. 失敗要求的詳細資料會顯示甘特圖，說明此交易中有兩個相依性失敗，而這也造就了該交易 50% 以上的總持續時間。 此體驗顯示了所有遙測資料，來源包括與此作業識別碼相關的分散式應用程式的各個元件。 [深入了解新的體驗](../app/transaction-diagnostics.md)。 您可以選取任何項目，以在右側查看其詳細資料。 
 
     ![失敗的要求詳細資料](media/tutorial-runtime-exceptions/failed-request-details.png)
 
@@ -112,4 +112,5 @@ Application Insights 收集的所有資料都會儲存在 Azure Log Analytics �
 由於您已學會如何識別執行階段例外狀況，請前進到下一個教學課程，了解如何識別並診斷效能問題。
 
 > [!div class="nextstepaction"]
-> [識別效能問題](../../azure-monitor/learn/tutorial-performance.md)
+> [識別效能問題](./tutorial-performance.md)
+

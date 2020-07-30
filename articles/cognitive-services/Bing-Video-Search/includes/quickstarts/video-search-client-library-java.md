@@ -7,13 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/19/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 8124afef1aa12dbf3ec51e10597cb1567fc85551
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2b3d4993406f150b2983d4d820f7d070b5de1e96
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80289912"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375142"
 ---
 使用本快速入門，透過適用於 Java 的 Bing 影片搜尋用戶端程式庫開始搜尋新聞。 雖然 Bing 影片搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 在 [Github](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch) 上可找到此範例的完整原始程式碼，以及其他註釋和功能。
 
