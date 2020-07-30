@@ -7,21 +7,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 06/03/2020
-ms.openlocfilehash: e4aba05df23ce4048ba711680086407cb764a24a
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: 23ee9dea87e358e731b7c9e525c7b9728006f116
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84514600"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084750"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-gremlin-api-database-and-graph-using-azure-cli"></a>使用 Azure CLI 建立 Azure Cosmos Gremlin API 資料庫與圖表的資源鎖定
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-若選擇在本機安裝及使用 CLI，此主題需要您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本主題會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]
-> 除非先啟用 `disableKeyBasedMetadataWriteAccess` 屬性鎖定 Cosmos DB 帳戶，否則資源鎖定對使用任何 Gremlin SDK 或 Azure 入口網站進行連線之使用者所做的變更無效。 若要深入了解如何啟用此屬性，請參閱[防止 SDK 進行變更](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk)。
+> 除非先啟用 `disableKeyBasedMetadataWriteAccess` 屬性鎖定 Cosmos DB 帳戶，否則資源鎖定對使用任何 Gremlin SDK 或 Azure 入口網站進行連線之使用者所做的變更無效。 若要深入了解如何啟用此屬性，請參閱[防止來自 SDK 的變更](../../../role-based-access-control.md#prevent-sdk-changes) (機器翻譯)。
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -40,7 +40,7 @@ ms.locfileid: "84514600"
 
 ## <a name="next-steps"></a>後續步驟
 
--[鎖定資源防止未預期的變更](../../../../azure-resource-manager/management/lock-resources.md)
+-[鎖定資源以防止非預期的變更](../../../../azure-resource-manager/management/lock-resources.md)
 
 -[Azure Cosmos DB CLI 文件](/cli/azure/cosmosdb)。
 

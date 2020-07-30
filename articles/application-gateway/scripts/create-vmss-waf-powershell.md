@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7232d7d3bfad23a91bf93adb679973f5a419aa76
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c797c8d0b29304f628b0e4e3b8045c3a9d607f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81457751"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081945"
 ---
 # <a name="restrict-web-traffic-using-azure-powershell"></a>使用 Azure PowerShell 限制網路流量
 
@@ -69,6 +69,6 @@ Remove-AzResourceGroup -Name myResourceGroupAG
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 移除資源群組及其內含的所有資源。 | 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure 應用程式閘道文件](../powershell-samples.md)中找到其他應用程式閘道的 PowerShell 指令碼範例。

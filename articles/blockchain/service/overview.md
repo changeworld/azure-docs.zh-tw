@@ -4,12 +4,12 @@ description: Azure 區塊鏈服務的概觀
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: d7aedbc837a58a65fe4c29dbdeed8662d94fc534
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214072"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076945"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什麼是 Azure 區塊鏈服務？
 
@@ -75,7 +75,7 @@ Azure 區塊鏈服務的區塊鏈資料管理員會將 Azure 區塊鏈服務交�
 
 洽詢 Microsoft 工程師和 Azure 區塊鏈服務社群專家。
 
-* [Azure 區塊鏈服務的 Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
+* [Azure 區塊鏈服務的 Microsoft 問與答頁面](/answers/topics/azure-blockchain-service.html)
 * [Microsoft 技術社群](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 

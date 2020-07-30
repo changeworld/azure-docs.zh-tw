@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 04/05/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 0c97206d4e2f0c0484cfd89138dde7e2b0d0c625
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a1e2f2f9d6f33a53c824377e1836db2c2da2355e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698640"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082659"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 建立區域備援虛擬機器擴展集
 此指令碼會建立能在多個可用性區域執行 Windows Server 2016 的虛擬機器擴展集。 執行指令碼之後，您可以透過 RDP 存取虛擬機器。
@@ -48,4 +48,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 
 ## <a name="next-steps"></a>後續步驟
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。

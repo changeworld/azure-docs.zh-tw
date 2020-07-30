@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3e44236f74a5448c540c58ba730d65b412d48bd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c53194bd345c18ac582acd538f1e8f8e1e34d54
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101700"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87027847"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 在 Windows VM 中安裝 SQL、IIS、.NET 堆疊
 
@@ -33,7 +33,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 ## <a name="create-an-iis-vm"></a>建立 IIS VM 
 
-在此範例中，我們會使用 PowerShell Cloud Shell 中的 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) Cmdlet 快速建立 Windows Server 2016 VM，然後再安裝 IIS 和 .NET Framework。 IIS 和 SQL VM 會共用資源群組和虛擬網路，因此我們要建立那些名稱的變數。
+在此範例中，我們會使用 PowerShell Cloud Shell 中的 [New-AzVM](/powershell/module/az.compute/new-azvm) Cmdlet 快速建立 Windows Server 2016 VM，然後再安裝 IIS 和 .NET Framework。 IIS 和 SQL VM 會共用資源群組和虛擬網路，因此我們要建立那些名稱的變數。
 
 
 ```azurepowershell-interactive
@@ -52,7 +52,7 @@ New-AzVm `
     -OpenPorts 80,3389 
 ```
 
-使用自訂指令碼擴充功能和 [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) Cmdlet 來安裝 IIS 和 .NET Framework。
+使用自訂指令碼擴充功能和 [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) Cmdlet 來安裝 IIS 和 .NET Framework。
 
 ```azurepowershell-interactive
 Set-AzVMExtension `
@@ -76,7 +76,7 @@ $vNet = Get-AzVirtualNetwork `
    -ResourceGroupName $resourceGroup
 ```
 
-使用 [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 建立子網路的設定。
+使用 [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) 建立子網路的設定。
 
 
 ```azurepowershell-interactive
@@ -87,7 +87,7 @@ Add-AzVirtualNetworkSubnetConfig `
    -ServiceEndpoint Microsoft.Sql
 ```
 
-使用 [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) 將 vNet 更新為新的子網路資訊
+使用 [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) 將 vNet 更新為新的子網路資訊
    
 ```azurepowershell-interactive   
 $vNet | Set-AzVirtualNetwork
@@ -111,7 +111,7 @@ New-AzVm `
     -OpenPorts 3389,1401 
 ```
 
-使用 [Set-AzVMSqlServerExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension) 將 [SQL Server 擴充功能](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)新增至 SQL VM。
+使用 [Set-AzVMSqlServerExtension](/powershell/module/az.compute/set-azvmsqlserverextension) 將 [SQL Server 擴充功能](../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md)新增至 SQL VM。
 
 ```azurepowershell-interactive
 Set-AzVMSqlServerExtension `
@@ -135,4 +135,3 @@ Set-AzVMSqlServerExtension `
 
 > [!div class="nextstepaction"]
 > [使用 TLS/SSL 憑證保護 IIS Web 伺服器](tutorial-secure-web-server.md)
-

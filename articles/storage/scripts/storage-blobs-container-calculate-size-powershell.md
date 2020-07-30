@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: de51ed7d91ba1102f5a9cd376ab95f49dd54d9f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c95f66a492f1fdb6f3c0aef6390f0b925dcf6e53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067063"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089360"
 ---
 # <a name="calculate-the-size-of-a-blob-container-with-powershell"></a>使用 PowerShell 計算 Blob 容器的大小
 
@@ -53,6 +53,6 @@ Remove-AzResourceGroup -Name bloblisttestrg
 
 如需針對帳單目的計算容器大小的指令碼，請參閱[針對帳單目的計算 Blob 儲存體容器的大小](../scripts/storage-blobs-container-calculate-billing-size-powershell.md)。
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 如需其他的儲存體 PowerShell 指令碼範例，可參閱 [Azure 儲存體的 PowerShell 範例](../blobs/storage-samples-blobs-powershell.md)。

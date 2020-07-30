@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 66c62156cec79a65b856a6f4c8f2ad34aa687b05
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: d5af288ea564c4118e010c8d0f0f86c5337ce170
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83853190"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024047"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Azure 監視器中 Log Analytics 工作區的 Resource Manager 範本範例
 本文包含 [Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)範例，可用來在 Azure 監視器中建立和設定 Log Analytics 工作區。 每個範例都包含範本檔案和參數檔案，且附有要提供給範本的範例值。
@@ -609,7 +609,7 @@ ms.locfileid: "83853190"
 
 ### <a name="notes"></a>注意
 
-- 分隔符號和提取的設定可能很複雜。 如需協助，您可以使用 Azure 入口網站定義自訂記錄，並使用 **-Kind** 設定為 **CustomLog** 的 [Get-AzOperationalInsightsDataSource](https://docs.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) 來擷取其設定。
+- 分隔符號和提取的設定可能很複雜。 如需協助，您可以使用 Azure 入口網站定義自訂記錄，並使用 **-Kind** 設定為 **CustomLog** 的 [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) 來擷取其設定。
 
   
 ### <a name="template-file"></a>範本檔案

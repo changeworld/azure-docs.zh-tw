@@ -3,16 +3,16 @@ title: 快速入門：Azure Blob 儲存體程式庫 v12 - JavaScript
 description: 在本快速入門中，您將了解如何使用適用於 JavaScript 的 Azure Blob 儲存體用戶端程式庫 12 版，在 Blob (物件) 儲存體中建立容器與 Blob。 接下來，您要了解如何將 Blob 下載到本機電腦，以及如何列出容器中的所有 Blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 72d1048af5f1d6d812228d8928224b2104958300
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 002266285c9ed6722f4d15d37cafe9eb8bd42c5b
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528565"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290652"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>快速入門：使用 Node.js 中的 JavaScript v12 SDK 來管理 Blob
 
@@ -30,9 +30,6 @@ ms.locfileid: "86528565"
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure 儲存體帳戶。 [建立儲存體帳戶](../common/storage-account-create.md)。
 - [Node.js](https://nodejs.org/en/download/).
-
-> [!NOTE]
-> 若要開始使用舊版 SDK，請參閱[快速入門：使用 Node.js 中的 JavaScript v10 SDK 來管理 Blob](storage-quickstart-blobs-nodejs-legacy.md)。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

@@ -9,12 +9,12 @@ ms.subservice: powershell
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: ab096fd2425f0efe65f2b048435a9d7f67a4cb9e
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: aff871562c366836906d5125b0cd675a51f9a20c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85374758"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087062"
 ---
 # <a name="install-applications-into-a-virtual-machine-scale-set-with-powershell"></a>使用 PowerShell 將應用程式安裝到虛擬機器擴展集
 此指令碼會建立執行 Windows Server 2016 的虛擬機器擴展集，並使用自訂指令碼擴充功能來安裝基本 Web 應用程式。 執行指令碼之後，您就可以透過網頁瀏覽器來存取 Web 應用程式。
@@ -47,4 +47,4 @@ Remove-AzResourceGroup -Name myResourceGroup
 |  [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 移除資源群組及其內含的所有資源。 |
 
 ## <a name="next-steps"></a>後續步驟
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。

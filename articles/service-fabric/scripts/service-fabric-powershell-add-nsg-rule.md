@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 33ee8028031bf94d69d11b08c347f84db94494a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 167fa74b04af7c086c2c95b0fdd56e5932483080
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75610415"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076197"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>新增輸入網路安全性群組規則
 
@@ -27,7 +27,7 @@ ms.locfileid: "75610415"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview)中的指示來安裝 Azure PowerShell。 
+您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/)中的指示來安裝 Azure PowerShell。 
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -46,4 +46,4 @@ ms.locfileid: "75610415"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。

@@ -6,12 +6,13 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.openlocfilehash: a92c5fde68227bf94342dd380250429675bd084d
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.custom: devx-track-java
+ms.openlocfilehash: 8cc8f347330904bfab980b79cf5c5f351ce16629
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248850"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089476"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>搭配 Azure Spring Cloud 使用斷路器儀表板
 Spring [Cloud Netflix Turbine](https://github.com/Netflix/Turbine) 已廣泛用於彙總多個 [Hystrix](https://github.com/Netflix/Hystrix) 計量串流，讓您可以使用 Hystrix 儀表板在單一檢視中監視串流。 本教學課程將示範如何在 Azure Spring Cloud 上使用這些功能。

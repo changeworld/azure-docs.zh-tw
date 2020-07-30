@@ -3,12 +3,12 @@ title: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 47adca5867fef1d41ccfec2455acc6932269842d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282274"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387824"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
 
@@ -547,7 +547,7 @@ Microsoft 會在支援 Azure DevTest Labs 的基礎資源上執行弱點管理�
 **指導方針：** 當您使用 Azure 備份備份受控磁片時，Vm 會使用儲存體服務加密（SSE）進行待用加密。 Azure 備份也可以使用 Azure 磁碟加密來備份已加密的 Azure Vm。 Azure 磁碟加密與 BitLocker 加密金鑰（Bek）整合，其在金鑰保存庫中受到保護以作為秘密。 Azure 磁碟加密也會與 Azure Key Vault 金鑰加密金鑰（Kek）整合。 在 Key Vault 中啟用虛刪除，以防止金鑰遭到意外或惡意刪除。
 
 - [Vm 的虛刪除](../backup/soft-delete-virtual-machines.md)
-- [Azure Key Vault-虛刪除總覽](../key-vault/general/overview-soft-delete.md)
+- [Azure Key Vault-虛刪除總覽](../key-vault/general/soft-delete-overview.md)
 
 **Azure 資訊安全中心監視：** 是的
 
