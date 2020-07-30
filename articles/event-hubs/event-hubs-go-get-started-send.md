@@ -3,12 +3,12 @@ title: 快速入門：使用 Go 來傳送和接收事件 - Azure 事件中樞
 description: 快速入門：本文將逐步解說如何建立一個會從 Azure 事件中樞傳送事件的 Go 應用程式。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320347"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002449"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>快速入門：使用 Go 將事件傳送至事件中樞或從中接收事件
 Azure 事件中樞是巨量資料串流平台和事件擷取服務，每秒可接收和處理數百萬個事件。 事件中樞可以處理及儲存分散式軟體和裝置所產生的事件、資料或遙測。 傳送至事件中樞的資料可以透過任何即時分析提供者或批次/儲存體配接器來轉換和儲存。 如需事件中樞的詳細概觀，請參閱[事件中樞概觀](event-hubs-about.md)和[事件中樞功能](event-hubs-features.md)。
@@ -126,7 +126,7 @@ log.Printf("got partition IDs: %s\n", info.PartitionIDs)
 
 ### <a name="create-a-storage-account-and-container"></a>建立儲存體帳戶和容器
 
-分割區上的租用和事件資料流中的檢查點等狀態，都會使用 Azure 儲存體容器在接收者之間共用。 您可以搭配 Go SDK 建立儲存體帳戶和容器，但您也可以依照[關於 Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)中的指示建立它們。
+分割區上的租用和事件資料流中的檢查點等狀態，都會使用 Azure 儲存體容器在接收者之間共用。 您可以搭配 Go SDK 建立儲存體帳戶和容器，但您也可以依照[關於 Azure 儲存體帳戶](../storage/common/storage-account-create.md)中的指示建立它們。
 
 搭配 Go SDK 建立儲存體構件的範例，可於 [Go 範例存放庫](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage) \(英文\) 和本教學課程所對應的範例中取得。
 

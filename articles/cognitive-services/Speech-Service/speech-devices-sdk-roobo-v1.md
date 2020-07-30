@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a32e485dfc9cd465f6dd6d50abdb166737dc3aa
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74815585"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387977"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>裝置： Roobo 智慧型音訊開發工具組
 
@@ -54,7 +54,7 @@ ms.locfileid: "74815585"
     > [!NOTE]
     > 這些命令會使用 Android Debug Bridge `adb.exe`，它是 Android Studio 安裝的一部分。 此工具位於 C:\Users\[使用者名稱]\AppData\Local\Android\Sdk\platform-tools。 您可以將此目錄新增至您的路徑，以便更方便地叫用 `adb`。 否則，您必須在叫用 `adb` 的每個命令中指定 adb.exe 的完整安裝路徑。
     >
-    > 如果您看到錯誤`no devices/emulators found` ，請檢查您的 USB 纜線已連線，而且是高品質的纜線。 您可以使用 `adb devices` 來確認電腦是否可以與開發套件通訊，以便其可傳回裝置清單。
+    > 如果您看到錯誤，請 `no devices/emulators found` 檢查您的 USB 纜線已連線，而且是高品質的纜線。 您可以使用 `adb devices` 來確認電腦是否可以與開發套件通訊，以便其可傳回裝置清單。
     >
     > [!TIP]
     > 請將您電腦的麥克風和喇叭靜音，以確定您使用的是開發套件的麥克風。 如此一來，您就不會不小心讓來自電腦的音訊觸發該裝置。
@@ -69,7 +69,7 @@ ms.locfileid: "74815585"
 
 ## <a name="audio"></a>音訊
 
-Roobo 提供一種工具，可將所有音訊都捕獲到閃光燈記憶體。 它可以協助您針對音訊問題進行疑難排解。 針對每個開發套件設定提供了工具版本。 在[Roobo 網站](https://ddk.roobo.com/)上，選取您的裝置，然後選取頁面底部的 [ **Roobo 工具**] 連結。
+Roobo 提供一種工具，可將所有音訊都捕獲到閃光燈記憶體。 它可以協助您針對音訊問題進行疑難排解。 針對每個開發套件設定提供了工具版本。 在[Roobo 網站](http://ddk.roobo.com/)上，選取您的裝置，然後選取頁面底部的 [ **Roobo 工具**] 連結。
 
 ## <a name="next-steps"></a>後續步驟
 

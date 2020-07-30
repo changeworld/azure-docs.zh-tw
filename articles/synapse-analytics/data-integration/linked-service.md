@@ -1,6 +1,6 @@
 ---
 title: 保護連結服務
-description: 瞭解如何布建及保護使用受控 Vnet 的連結服務
+description: 瞭解如何布建及保護使用受控 VNet 的連結服務
 services: synapse-analytics
 author: acomet
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496072"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387231"
 ---
-# <a name="securing-a-linked-service-with-private-links"></a>使用私人連結保護連結服務 
+# <a name="secure-a-linked-service-with-private-links"></a>使用私人連結保護連結服務 
 
 在本文中，您將瞭解如何使用私人端點來保護 Synapse 中的連結服務。
 
@@ -35,27 +35,27 @@ ms.locfileid: "86496072"
 1. 在 [**外部連接**] 底下，選取 [**連結服務**]。
 1. 若要加入連結服務，請按一下 [**新增**]。
 1. 從清單中選取 [Azure Data Lake Storage Gen2] 磚，然後按一下 [**繼續**]。
-1. 請務必啟用**互動式撰寫**。 可能需要約1分鐘的時間才能啟用。 
+1. 請務必啟用**互動式撰寫**。 可能需要約 1 分鐘的時間才能啟用。 
 1. 輸入您的驗證認證。 帳戶金鑰、服務主體和受控識別目前支援的驗證類型。 按一下 [測試連接] 以確認您的認證正確無誤。
 1. 選取 [**測試**連線]，它應該會失敗，因為儲存體帳戶不會在建立和核准私用端點的情況下啟用存取權。 在錯誤訊息中，您應該會看到用來建立**私人端點**的連結，讓您可以遵循以移至下一個部分。 如果您遵循該連結，請略過下一個部分。
 1. 完成後，請選取 [建立]****。
 
-## <a name="create-a-managed-private-endpoint"></a>建立受控私用端點
+## <a name="create-a-managed-private-endpoint"></a>建立受控私人端點
 
-如果您在測試上述連接時未按下超連結，請遵循下列路徑。 現在您需要建立受控私用端點，以連線至上面所建立的連結服務。
+如果您在測試上述連接時未按下超連結，請遵循下列路徑。 現在您需要建立受控私人端點，以連線至上面所建立的連結服務。
 
 1. 移至 [**管理**] 索引標籤。
 1. 移至 [**受管理的虛擬網路**] 區段。
 1. 選取 [受控私人端點] 底下的 [ **+ 新增**]。
 1. 從清單中選取 [Azure Data Lake Storage Gen2] 磚，然後選取 [**繼續**]。
-1. 輸入您在上面建立的儲存體帳戶名稱。
+1. 輸入先前建立的儲存體帳戶名稱。
 1. 選取 [建立] 
-1. 在等候幾秒鐘之後，您應該會看到建立的私用連結需要核准。
+1. 在等候幾秒鐘之後，您應該會看到建立的私人連結需要核准。
 
-## <a name="approval-of-a-private-link"></a>私人連結的核准
-1. 選取您在上面建立的私用端點。 您可以看到超連結，可讓您在儲存體帳戶層級核准私人端點。 *另一個替代方式是直接前往 Azure 入口網站儲存體帳戶，然後進入 [**私人端點連接**] 分頁。*
+## <a name="private-link-approval"></a>私人連結核准
+1. 選取之前建立的私人端點。 您可以看到超連結，可讓您在儲存體帳戶層級核准私人端點。 *另一個替代方式是直接前往 Azure 入口網站儲存體帳戶，然後進入 [**私人端點連接**] 分頁。*
 1. 勾選您在 Studio 中建立的私用端點，然後選取 [**核准**]。
-1. 新增描述，然後按一下 **[是]**
+1. 新增 [描述]，然後按一下 [是]
 1. 回到 [**管理**] 索引標籤的 [**受管理的虛擬網路**] 區段下的 [Synapse Studio]。
 1. 這應該需要大約1分鐘的時間，才能為您的私用端點反映出核准。
 

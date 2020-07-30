@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 20f22825e6954f32d7f020dd160f36c3c1859c86
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287716"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387552"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>在 Linux 虛擬機器中設定 DPDK
 
@@ -44,7 +44,7 @@ DPDK 可以在 Azure 虛擬機器中執行，並支援多個作業系統散發�
 |--------------|---------------------------   |
 | Ubuntu 16.04 | 4.15.0-1014-azure+           | 
 | Ubuntu 18.04 | 4.15.0-1014-azure+           |
-| SLES 15 SP1  | 4.12.14-8.27-azure+          | 
+| SLES 15 SP1  | 4.12.14-8.19-azure +          | 
 | RHEL 7.5     | 3.10.0-862.11.6.el7.x86_64+  | 
 | CentOS 7.5   | 3.10.0-862.11.6.el7.x86_64+  | 
 

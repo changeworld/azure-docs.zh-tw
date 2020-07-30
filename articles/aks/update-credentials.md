@@ -1,18 +1,18 @@
 ---
 title: 重設叢集的認證
 titleSuffix: Azure Kubernetes Service
-description: 瞭解如何更新或重設 Azure Kubernetes Service (AKS) 叢集的服務主體或 AAD 應用程式認證
+description: 瞭解如何更新或重設 Azure Kubernetes Service （AKS）叢集的服務主體或 AAD 應用程式認證
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: a9cc19184cc39975cce18d17a6047bedf5915555
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a824606bc0e77ba069b6b54725645ee3f348de27
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251021"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386923"
 ---
-# <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或輪替 Azure Kubernetes Service (AKS 的認證) 
+# <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>更新或輪替 Azure Kubernetes Service 的認證（AKS）
 
 根據預設，建立 AKS 叢集時包含的服務主體到期時間為期一年。 當到期日接近時，您可以重設認證，將服務主體再延長一段時間。 您可能也想為已定義的安全性原則更新或輪替認證。 本文詳述如何更新 AKS 叢集的認證。
 
@@ -26,10 +26,12 @@ ms.locfileid: "86251021"
 
 ## <a name="update-or-create-a-new-service-principal-for-your-aks-cluster"></a>為您的 AKS 叢集更新或建立新的服務主體
 
-當您想要更新 AKS 叢集的認證時，可以選擇：
+當您想要更新 AKS 叢集的認證時，可以選擇下列其中一項：
 
-* 更新叢集所使用之現有服務主體的認證，或
-* 建立服務主體，並更新叢集，以使用這些新認證。
+* 更新現有服務主體的認證。
+* 建立新的服務主體，並更新叢集以使用這些新的認證。 
+
+> !WARNING如果您選擇建立*新*的服務主體，則更新大型 AKS 叢集以使用這些認證可能需要很長的時間才能完成。
 
 ### <a name="check-the-expiration-date-of-your-service-principal"></a>檢查服務主體的到期日
 
@@ -41,7 +43,7 @@ SP_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster \
 az ad sp credential list --id $SP_ID --query "[].endDate" -o tsv
 ```
 
-### <a name="reset-existing-service-principal-credential"></a>重設現有的服務主體認證
+### <a name="reset-the-existing-service-principal-credential"></a>重設現有的服務主體認證
 
 若要更新現有服務主體的認證，請使用 [az aks show][az-aks-show] 命令，取得叢集的服務主體識別碼。 下列範例會針對 *myResourceGroup* 資源群組中名稱為 *myAKSCluster* 的叢集取得識別碼。 服務主體識別碼會設定為名為*SP_ID*的變數，以在其他命令中使用。 這些命令會使用 Bash 語法。
 
@@ -90,6 +92,9 @@ SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 
 ## <a name="update-aks-cluster-with-new-service-principal-credentials"></a>以新的服務主體認證更新 AKS 叢集
 
+> [!IMPORTANT]
+> 對於大型叢集，使用新的服務主體來更新 AKS 叢集可能需要很長的時間才能完成。
+
 無論您選擇要更新現有服務主體的認證，或建立服務主體，您現在可利用 [az aks update-credentials][az-aks-update-credentials] 命令，使用新認證更新 AKS 叢集。 使用 *--service-principal* 和 *--client-secret* 的變數：
 
 ```azurecli-interactive
@@ -101,11 +106,11 @@ az aks update-credentials \
     --client-secret "$SP_SECRET"
 ```
 
-在 AKS 上更新服務主體認證需要幾分鐘的時間。
+對於小型和中型大小的叢集，在 AKS 中更新服務主體認證需要幾分鐘的時間。
 
 ## <a name="update-aks-cluster-with-new-aad-application-credentials"></a>使用新的 AAD 應用程式認證來更新 AKS 叢集
 
-您可以遵循[AAD 整合步驟][create-aad-app]來建立新的 AAD 伺服器和用戶端應用程式。 或重設現有的 AAD 應用程式，[方法與服務主體重設相同](#reset-existing-service-principal-credential)。 之後，您只需要使用相同的[az aks update-認證][az-aks-update-credentials]命令來更新叢集 AAD 應用程式認證，但使用 *--reset-AAD*變數。
+您可以遵循[AAD 整合步驟][create-aad-app]來建立新的 AAD 伺服器和用戶端應用程式。 或重設現有的 AAD 應用程式，[方法與服務主體重設相同](#reset-the-existing-service-principal-credential)。 之後，您只需要使用相同的[az aks update-認證][az-aks-update-credentials]命令來更新叢集 AAD 應用程式認證，但使用 *--reset-AAD*變數。
 
 ```azurecli-interactive
 az aks update-credentials \

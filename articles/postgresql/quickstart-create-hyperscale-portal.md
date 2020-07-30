@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4ff80330ab6244bc9d108b7f5a1d4e4e0dbd4feb
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290326"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387399"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus)
 
@@ -77,6 +77,8 @@ CREATE INDEX payload_index ON github_events USING GIN (payload jsonb_path_ops);
 SELECT create_distributed_table('github_events', 'user_id');
 SELECT create_distributed_table('github_users', 'user_id');
 ```
+
+[!INCLUDE [azure-postgresql-hyperscale-dist-alert](../../includes/azure-postgresql-hyperscale-dist-alert.md)]
 
 我們準備好載入資料。 同樣在 psql 中，使用 curl 和 -O 選項來下載檔案：
 

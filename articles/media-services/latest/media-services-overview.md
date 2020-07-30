@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: bd3890757377525cf9c178866a2a2fbc0791b9de
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79461005"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87000920"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure 媒體服務 v3 概觀
 
@@ -31,7 +31,7 @@ Azure 媒體服務是雲端式平台，可讓您建置的解決方案擁有廣�
 媒體服務 v3 SDK 是以[媒體服務 v3 OpenAPI 規格 (Swagger)](https://aka.ms/ams-v3-rest-sdk) \(英文\) 為基礎。
 
 > [!NOTE]
-> 目前，您可以使用 [Azure 入口網站](https://portal.azure.com/) 來：管理媒體服務 v3 [即時活動](live-events-outputs-concept.md)、檢視 (不管理) v3 [資產](assets-concept.md)、[取得存取 API 的相關資訊](access-api-portal.md)。 針對所有其他管理工作 (例如，[轉換和作業](transforms-jobs-concept.md)和[內容保護](content-protection-overview.md))，請使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
+> 目前，您可以使用 [Azure 入口網站](https://portal.azure.com/) 來：管理媒體服務 v3 [即時活動](live-events-outputs-concept.md)、檢視 (不管理) v3 [資產](assets-concept.md)、[取得存取 API 的相關資訊](./access-api-howto.md)。 針對所有其他管理工作 (例如，[轉換和作業](transforms-jobs-concept.md)和[內容保護](content-protection-overview.md))，請使用 [REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -53,8 +53,8 @@ Azure 媒體服務是雲端式平台，可讓您建置的解決方案擁有廣�
 * 分析錄製的視訊或音訊內容。 例如，為了達到更高的客戶滿意度，組織可以擷取語音轉換文字，並建置搜尋索引和儀表板。 接著便可以從一般客訴、客訴來源及其他相關資料中獲取情報。
 * 建立訂閱影片服務，並在客戶需要限制對著作權所有作品的存取及使用時，串流受 DRM 保護的內容。
 * 傳遞離線內容，以在飛機、火車和汽車上播放。 當客戶預期會從網路中斷連線時，他們可能需要將內容下載到手機或平板電腦上播放。
-* 使用 Azure 媒體服務和 [Azure 認知服務 API](https://docs.microsoft.com/azure/?pivot=products&panel=ai) 的語音文字轉換、翻譯成多語言等功能，實作教育電子化學習影片平台。
-* 搭配使用 Azure 媒體服務與 [Azure 認知服務 API](https://docs.microsoft.com/azure/?pivot=products&panel=ai) 在影片加入標題和字幕，以服務更廣大的觀眾 (例如聽障人士或想要以其他語言閱讀的人)。
+* 使用 Azure 媒體服務和 [Azure 認知服務 API](../../index.yml?pivot=products&panel=ai) 的語音文字轉換、翻譯成多語言等功能，實作教育電子化學習影片平台。
+* 搭配使用 Azure 媒體服務與 [Azure 認知服務 API](../../index.yml?pivot=products&panel=ai) 在影片加入標題和字幕，以服務更廣大的觀眾 (例如聽障人士或想要以其他語言閱讀的人)。
 * 啟用 Azure CDN 以達成大規模調整，進而妥善處理瞬間高負載 (例如，在產品上市活動開始時)。
 
 ## <a name="how-can-i-get-started-with-v3"></a>如何開始使用 v3？ 
@@ -88,14 +88,14 @@ Azure 媒體服務是雲端式平台，可讓您建置的解決方案擁有廣�
 
 ### <a name="samples"></a>範例
 
-使用[此範例瀏覽器](https://docs.microsoft.com/samples/browse/?products=azure-media-services)瀏覽 Azure 媒體服務程式碼範例。
+使用[此範例瀏覽器](/samples/browse/?products=azure-media-services)瀏覽 Azure 媒體服務程式碼範例。
 
 ### <a name="how-to-guides"></a>操作指南
 
 操作指南中包含示範如何完成工作的程式碼範例。 在本節中，您會發現許多範例。 以下提供其中一些範例：
 
-* [建立帳戶 - CLI](create-account-cli-how-to.md)
-* [存取 API - CLI](access-api-cli-how-to.md)
+* [建立帳戶 - CLI](./create-account-howto.md)
+* [存取 API - CLI](./access-api-howto.md)
 * [使用 HTTPS 即作業輸入編碼 - .NET](job-input-from-http-how-to.md)  
 * [監視事件 - 入口網站](monitor-events-portal-how-to.md)
 * [透過多重 DRM 進行動態加密 - .NET](protect-with-drm.md) 

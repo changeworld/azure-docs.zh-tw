@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: b6d30aebd4de272ba98fce87f23701b129eacb02
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6f3c173c61e9f6d82a51fcaf7e11cda47eb47c1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727555"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011699"
 ---
 # <a name="azure-media-player-overview"></a>Azure 媒體播放器概觀 #
 
@@ -28,7 +28,7 @@ Azure 媒體播放器是一款網頁視訊播放器，可以在各種瀏覽器�
 
 ## <a name="license"></a>授權 ##
 
-Azure 媒體播放器已獲得授權，並受限於 Azure 媒體播放器的 Microsoft 軟體授權條款中所述的條款。 如需完整的條款，請參閱[授權檔案](azure-media-player-license.md)。 請參閱[隱私權聲明](https://www.microsoft.com/en-us/privacystatement/default.aspx)以取得詳細資訊。
+Azure 媒體播放器已獲得授權，並受限於 Azure 媒體播放器的 Microsoft 軟體授權條款中所述的條款。 如需完整的條款，請參閱[授權檔案](/legal/azure-media-player/azure-media-player-license)。 請參閱[隱私權聲明](https://www.microsoft.com/en-us/privacystatement/default.aspx)以取得詳細資訊。
 
 Copyright 2015 Microsoft Corporation.
 

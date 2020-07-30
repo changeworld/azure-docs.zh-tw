@@ -49,6 +49,8 @@
       href: synchronization.md
     - name: 密碼雜湊同步處理如何運作
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: 虛擬網路考量事項
+      href: network-considerations.md
     - name: 傳統部署遷移的優點
       href: concepts-migration-benefits.md
     - name: 什麼是 Azure Active Directory？
@@ -65,10 +67,6 @@
           href: create-ou.md
         - name: 建立群組受控服務帳戶 (gMSA)
           href: create-gmsa.md
-    - name: 適用於 Azure AD DS 的方案
-      items:
-        - name: 虛擬網路考量事項
-          href: network-considerations.md
     - name: 管理 Azure AD DS
       items:
         - name: 管理群組原則

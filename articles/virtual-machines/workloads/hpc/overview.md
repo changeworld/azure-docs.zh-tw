@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f88496a6c474194089f20e128b2b92ec61e8559
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76271010"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083424"
 ---
 # <a name="high-performance-computing-on-h-series-vms"></a>H 系列 VM 上的高效能運算
 
@@ -39,7 +39,7 @@ RDMA 介面是 HB 系列和 HC 系列 VM 上的標準介面。 支援 RDMA 的�
 
 ## <a name="get-started"></a>開始使用
 
-首先，請決定您要使用哪一個 H 系列 VM。 如需 HPC 最佳化 VM 的詳細資料，請參閱 [HB 系列概觀](hb-series-overview.md)和 [HC 系列概觀](hc-series-overview.md)。 規格則請參閱[高效能運算 VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)。
+首先，請決定您要使用哪一個 H 系列 VM。 如需 HPC 最佳化 VM 的詳細資料，請參閱 [HB 系列概觀](hb-series-overview.md)和 [HC 系列概觀](hc-series-overview.md)。 規格則請參閱[高效能運算 VM 大小](../../sizes-hpc.md)。
 
 為應用程式選取並建立 VM 後，您就必須藉由啟用 InfiniBand 來設定 VM。 若要了解如何在 Windows 和 Linux VM 上啟用 InfiniBand，請參閱[啟用 InfiniBand](enable-infiniband.md)。
 
@@ -51,4 +51,4 @@ HPC 工作負載的重要元件是 MPI。 HB 系列和 HC 系列可支援幾乎�
 
 - 檢閱 [HB 系列概觀](hb-series-overview.md)和 [HC 系列概觀](hc-series-overview.md)來了解主要差異和規格。
 
-- 如需執行中 HPC 工作負載較高階的架構檢視，請參閱 [Azure 上的高效能運算 (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)。
+- 如需執行中 HPC 工作負載較高階的架構檢視，請參閱 [Azure 上的高效能運算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

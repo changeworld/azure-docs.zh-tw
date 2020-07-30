@@ -7,18 +7,18 @@ ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 5116585b701717a82b757cae70f938c321a1f7d1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: c0e68627691732e6cbcd08b423199164a69193d4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532478"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083339"
 ---
 # <a name="bind-a-custom-tlsssl-certificate-to-a-web-app-using-powershell"></a>使用 PowerShell 將自訂 TLS/SSL 憑證繫結至 Web 應用程式
 
 此範例指令碼會在 App Service 中建立 Web 應用程式及其相關的資源，然後將自訂網域名稱的 TLS/SSL 憑證加以繫結。 
 
-您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。 此外，請確定：
+您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。 此外，請確定：
 
 - 已使用 `az login` 命令建立與 Azure 的連線。
 - 您可以存取網域註冊機構的 DNS 設定頁面。
@@ -53,6 +53,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure PowerShell 範例](../samples-powershell.md)中找到適用於 App Service Web Apps 的其他 Azure PowerShell 範例。

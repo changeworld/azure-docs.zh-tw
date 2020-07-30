@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/03/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 441d830c7512b7d06c5d4f3e64dc59844b764453
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782257"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387161"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 使用者佈建服務 SCIM 2.0 通訊協定相容性的已知問題和解決方法
 
@@ -33,16 +33,16 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 
 | **SCIM 2.0 相容性問題** |  **固定匯率?** | **修正日期**  |  
 |---|---|---|
-| Azure AD 要求應用程式的 SCIM 端點 URL 根目錄中必須有 "/scim"  | Yes  |  2018 年 12 月 18 日 | 
-| 延伸模組屬性在屬性名稱前面使用點 "." 標記法，而不是冒號 ":" 標記法 |  Yes  | 2018 年 12 月 18 日  | 
-|  多重值屬性的修補程式要求包含無效的路徑篩選語法 | Yes  |  2018 年 12 月 18 日  | 
-|  群組建立要求包含無效的結構描述 URI | Yes  |  2018 年 12 月 18 日  |  
+| Azure AD 要求應用程式的 SCIM 端點 URL 根目錄中必須有 "/scim"  | 是  |  2018 年 12 月 18 日 | 
+| 延伸模組屬性在屬性名稱前面使用點 "." 標記法，而不是冒號 ":" 標記法 |  是  | 2018 年 12 月 18 日  | 
+|  多重值屬性的修補程式要求包含無效的路徑篩選語法 | 是  |  2018 年 12 月 18 日  | 
+|  群組建立要求包含無效的結構描述 URI | 是  |  2018 年 12 月 18 日  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>上述服務修正會自動套用至我既存的 SCIM 應用程式嗎？
 
-否。 由於這會構成 SCIM 應用程式的一項重大變更，並撰寫應用程式程式碼來使用舊版行為，因此這些變更不會自動套用至現有的應用程式。
+不可以。 由於這會構成 SCIM 應用程式的一項重大變更，並撰寫應用程式程式碼來使用舊版行為，因此這些變更不會自動套用至現有的應用程式。
 
-在修正日期之後，這些變更會套用至 Azure 入口網站中已設定之所有[不在資源庫內的新 SCIM 應用程式](../manage-apps/configure-single-sign-on-non-gallery-applications.md)。
+在修正日期之後，這些變更會套用至 Azure 入口網站中已設定之所有不在資源庫內的新 SCIM 應用程式。
 
 如需如何遷移既存的使用者佈建作業以包含最新修正的資訊，請參閱下一節。
 

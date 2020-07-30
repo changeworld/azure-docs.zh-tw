@@ -9,12 +9,12 @@ ms.subservice: cli
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 5c7621915d9393adce373f68363f6c57b70d9907
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 416b5c03686f1b008473dd843c71bbe1139c444c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027268"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083560"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>快速入門：使用 Azure CLI 建立虛擬機器擴展集
 虛擬機器擴展集可讓您部署和管理一組自動調整的虛擬機器。 您可以手動調整擴展集中的 VM 數目，或定義規則以根據 CPU、記憶體需求或網路流量等資源使用量進行自動調整。 其後，Azure 負載平衡器會將流量分配到擴展集中的多個 VM 執行個體。 在本快速入門中，您會使用 Azure CLI 建立虛擬機器擴展集，並部署範例應用程式。
@@ -49,7 +49,7 @@ az vmss create \
 
 
 ## <a name="deploy-sample-application"></a>部署範例應用程式
-若要測試您的擴展集，請安裝基本的 Web 應用程式。 您可以使用 Azure 自訂指令碼擴充功能來下載及執行會在 VM 執行個體上安裝應用程式的指令碼。 此擴充功能適用於部署後組態、軟體安裝或其他任何組態/管理工作。 如需詳細資訊，請參閱[自訂指令碼延伸模組概觀](../virtual-machines/linux/extensions-customscript.md)。
+若要測試您的擴展集，請安裝基本的 Web 應用程式。 您可以使用 Azure 自訂指令碼擴充功能來下載及執行會在 VM 執行個體上安裝應用程式的指令碼。 此擴充功能適用於部署後組態、軟體安裝或其他任何組態/管理工作。 如需詳細資訊，請參閱[自訂指令碼延伸模組概觀](../virtual-machines/extensions/custom-script-linux.md)。
 
 使用自訂指令碼擴充功能安裝基本的 NGINX Web 伺服器。 使用 [az vmss extension set](/cli/azure/vmss/extension) 套用安裝 NGINX 的自訂指令碼擴充功能，如下所示：
 
@@ -109,4 +109,3 @@ az group delete --name myResourceGroup --yes --no-wait
 
 > [!div class="nextstepaction"]
 > [建立和管理 Azure 虛擬機器擴展集](tutorial-create-and-manage-cli.md)
-

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 40a907cdeb4934b4518fb6b1923d69a004f14d8d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d0aebffa5f3d27a77928c2a1c7461384bf99ce8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291482"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387875"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-android-client"></a>使用 Android 用戶端連接到 Windows 虛擬桌面
 
@@ -21,9 +21,6 @@ ms.locfileid: "87291482"
 
 >[!IMPORTANT]
 >此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/connect-android-2019.md)。
-
->[!NOTE]
-> 從 Android 用戶端存取 Windows 虛擬桌面資源的能力目前已提供預覽。
 
 您可以使用可下載的用戶端，從您的 Android 裝置存取 Windows 虛擬桌面資源。 您也可以在支援 Google Play 商店的 Chromebook 裝置上使用 Android 用戶端。 本指南將告訴您如何設定 Android 用戶端。
 

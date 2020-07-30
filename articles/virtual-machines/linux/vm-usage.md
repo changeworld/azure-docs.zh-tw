@@ -3,24 +3,19 @@ title: 了解 Azure 虛擬機器使用情況
 description: 了解虛擬機器使用情況詳細資料
 services: virtual-machines
 documentationcenter: ''
-author: mmccrory
-manager: gwallace
-editor: ''
-tags: azure-virtual-machine
-ms.assetid: ''
+author: mimckitt
+ms.author: mimckitt
 ms.service: virtual-machines-linux
-ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
-ms.author: memccror
-ms.openlocfilehash: 9abb6948a91545439b429316dc2b71c14a1792d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/28/2020
+ms.openlocfilehash: 30d665cc1d573ec47681599f2bde6a40864796c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284824"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387705"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虛擬機器使用情況
 分析您的 Azure 使用情況資料，可以深入了解使用量，以在整個組織內實現更妥善的成本管理與配置。 本文件會針對您的 Azure 計算使用量詳細資料，提供深入探討。 如需有關一般 Azure 使用情況的詳細資訊，請瀏覽至[了解您的帳單](../../cost-management-billing/understand/review-individual-bill.md)。
@@ -29,87 +24,86 @@ ms.locfileid: "87284824"
 若要開始，請[下載使用情況詳細資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)。 下表針對透過 Azure Resource Manager 部署的虛擬機器，提供其使用情況的定義和範例值。 本文件不包含透過傳統模型部署之 VM 的詳細資訊。
 
 
-| 欄位             | 意義                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 範例值                                                                                                                                                                                                                                                                                                                                                   |
-|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 使用日期         | 使用資源的日期。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |  “2017/11/23”                                                                                                                                                                                                                                                                                                                                                     |
-| 計量識別碼           | 識別這個使用量所屬的最上層服務。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | “虛擬機器”                                                                                                                                                                                                                                                                                                                                               |
-| 計量子類別 | 計費的計量識別碼。 <ul><li>針對「計算時數」使用情況，每個 VM 大小 + 作業系統 (Windows、非 Windows) + 區域都會有一個計量。</li><li>針對進階軟體使用情況，則每個軟體類型都有一個計量。 大部分的進階軟體映像都會有適用於每個核心大小的不同計量。 如需詳細資訊，請瀏覽[計算定價頁面](https://azure.microsoft.com/pricing/details/virtual-machines/)。</li></ul>                                                                                                                                                                                                                                                                                                                                         | “2005544f-659d-49c9-9094-8e0aea1be3a5”                                                                                                                                                                                                                                                                                                                           |
-| 計量名稱         | 這對於 Azure 中的每個服務都是特定的。 對於計算，它一律是 “計算時數”。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | “計算時數”                                                                                                                                                                                                                                                                                                                                                  |
-| 計量區域       | 針對根據資料中心位置定價的某些服務，識別資料中心的位置。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |  “日本東部”                                                                                                                                                                                                                                                                                                                                                       |
-| 單位               | 識別服務的計費單位。 計算資源是以每小時計費。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | “小時 ”                                                                                                                                                                                                                                                                                                                                                          |
-| 已耗用           | 當日已耗用的資源量。 對於計算，我們會針對 VM 在指定時間內運作的每一分鐘計費 (精確度高達 6 個小數位數)。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |    “1”, “0.5”                                                                                                                                                                                                                                                                                                                                                    |
-| 資源位置  | 識別正在執行資源的資料中心。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | “日本東部”                                                                                                                                                                                                                                                                                                                                                        |
-| 已耗用的服務   | 您所使用的 Azure 平台服務。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | "Microsoft.Compute"                                                                                                                                                                                                                                                                                                                                              |
-| 資源群組     | 部署的資源正在其中執行的資源群組。 如需詳細資訊，請參閱 [Azure Resource Manager 概觀]()。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |    "MyRG"                                                                                                                                                                                                                                                                                                                                                        |
-| 執行個體識別碼        | 資源的識別碼。 識別碼包含在建立時為資源指定的名稱。 針對 VM，執行個體識別碼將會包含 SubscriptionId、ResourceGroupName 和 VMName (或用於擴展集的擴展集名稱)。                                                                                                                                                                                                                                                                                                                                                                                                                    | "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1”<br><br>或<br><br>"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1”                                                                                           |
-| Tags               | 您指派給資源的標記。 使用標記為帳單記錄分組。 深入了解如何[標記虛擬機器](tag.md)。 這僅適用於 Resource Manager VM。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | "{"myDepartment":"RD","myUser":"myName"}"                                                                                                                                                                                                                                                                                                                        |
-| 其他資訊    | 服務專屬的中繼資料。 針對 VM，我們會在其他資訊欄位中填入下列資料： <ul><li>您所執行之映像類型專屬的映像。 在 [映像類型] 底下，尋找以下支援字串的完整清單。</li><li>服務類型：您部署的大小。</li><li>VMName：您 VM 的名稱。 只會針對擴展集 VM 填入此欄位。 如果您需要您擴展集 VM 的 VM 名稱，可以在上面的執行個體識別碼字串中找到。</li><li>UsageType：這會指定此項目代表的使用方式類型。<ul><li>ComputeHR 是底層 VM 的「計算時數」使用情況，例如 Standard_D1_v2。</li><li>如果 VM 使用的是進階軟體 (如 Microsoft R Server)，則 ComputeHR_SW 將是進階軟體費用。</li></ul></li></ul>    | 虛擬機器 {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}<br><br>虛擬機器擴展集 {"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}<br><br>進階軟體 {"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"} |
+| 欄位 | 意義 | 範例值 | 
+|---|---|---|
+| 使用日期 | 使用資源的日期 | `11/23/2017` |
+| Meter ID | 識別此使用量所屬的最上層服務| `Virtual Machines`|
+| 計量子類別 | 計費的計量識別碼。 <br><br> 針對「計算時數」使用情況，每個 VM 大小 + 作業系統 (Windows、非 Windows) + 區域都會有一個計量。 <br><br> 針對進階軟體使用情況，則每個軟體類型都有一個計量。 大部分的進階軟體映像都會有適用於每個核心大小的不同計量。 如需詳細資訊，請造訪[計算定價頁面](https://azure.microsoft.com/pricing/details/virtual-machines/)</li></ul>| `2005544f-659d-49c9-9094-8e0aea1be3a5`|
+| 計量名稱| 這對於 Azure 中的每個服務都是特定的。 對於計算，它一律是 “計算時數”。| `Compute Hours`|
+| 計量區域| 針對根據資料中心位置定價的某些服務，識別資料中心的位置。|  `JA East`|
+| 單位| 識別服務的計費單位。 計算資源是以每小時計費。| `Hours`|
+| 已耗用| 當日已耗用的資源量。 對於計算，我們會針對 VM 在指定時間內運作的每一分鐘計費 (精確度高達 6 個小數位數)。| `1, 0.5`|
+| 資源位置  | 識別正在執行資源的資料中心。| `JA East`|
+| 已耗用的服務 | 您所使用的 Azure 平台服務。| `Microsoft.Compute`|
+| 資源群組 | 部署的資源正在其中執行的資源群組。 如需詳細資訊，請參閱 [Azure Resource Manager 概觀](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)。|`MyRG`|
+| 執行個體識別碼 | 資源的識別碼。 識別碼包含在建立時為資源指定的名稱。 針對 VM，執行個體識別碼將會包含 SubscriptionId、ResourceGroupName 和 VMName (或用於擴展集的擴展集名稱)。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>或<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
+| Tags| 您指派給資源的標記。 使用標記為帳單記錄分組。 深入了解如何[標記虛擬機器](tag.md)。 這僅適用於 Resource Manager VM。| `{"myDepartment":"RD","myUser":"myName"}`|
+| 其他資訊 | 服務專屬的中繼資料。 針對 VM，我們會在其他資訊欄位中填入下列資料： <br><br> 您所執行之映像類型專屬的映像。 在 [映像類型] 底下，尋找以下支援字串的完整清單。<br><br> 服務類型：您部署的大小。<br><br> VMName：您 VM 的名稱。 只會針對擴展集 VM 填入此欄位。 如果您需要您擴展集 VM 的 VM 名稱，可以在上面的執行個體識別碼字串中找到。<br><br> UsageType：這會指定此項目代表的使用方式類型。<br><br> ComputeHR 是底層 VM 的「計算時數」使用情況，例如 Standard_D1_v2。<br><br> 如果 VM 使用的是進階軟體 (如 Microsoft R Server)，則 ComputeHR_SW 將是進階軟體費用。 | 虛擬機器<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>虛擬機器擴展集<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium 軟體<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
 
 ## <a name="image-type"></a>映像類型
 對於 Azure 資源庫中的部分映像，系統會在 [其他資訊] 欄位中填入映像類型。 這可讓使用者了解並追蹤他們在虛擬機器上部署的類型。 根據您所部署的映像填入此欄位中以下的值：
-  - BitRock 
-  - Canonical 
-  - FreeBSD 
-  - Open Logic 
-  - Oracle 
-  - 適用於 SAP 的 SLES 
-  - Windows Server 2012 R2 Preview 上的 SQL Server 14 Preview 
-  - SUSE
-  - SUSE Premium
-  - StorSimple 雲端設備 
-  - Red Hat
-  - 適用於 SAP 商務應用程式的 Red Hat     
-  - 適用於 SAP HANA 的 Red Hat 
-  - Windows 用戶端 BYOL 
-  - Windows Server BYOL 
-  - Windows Server Preview 
+- BitRock 
+- 標準 FreeBSD 
+- Open Logic 
+- Oracle 
+- 適用於 SAP 的 SLES 
+- Windows Server 2012 R2 Preview 上的 SQL Server 14 Preview 
+- SUSE
+- SUSE Premium
+- StorSimple 雲端設備 
+- Red Hat
+- 適用於 SAP 商務應用程式的 Red Hat     
+- 適用於 SAP HANA 的 Red Hat 
+- Windows 用戶端 BYOL 
+- Windows Server BYOL 
+- Windows Server Preview 
 
 ## <a name="service-type"></a>服務類型
-[其他資訊] 欄位中的 [服務類型] 欄位會對應至您所部署的確切 VM 大小。 進階儲存體 VM (SSD 型) 和非進階儲存體 VM (HDD 型) 的價格相同。 如果您部署 SSD 型的大小 (例如 Standard\_DS2\_v2)，則會在 [計量子類別] 欄中看到非 SSD 大小 (‘Standard\_D2\_v2 VM’)，並在 [其他資訊] 欄位中看到 SSD 大小 (‘Standard\_DS2\_v2’)。
+[其他資訊] 欄位中的 [服務類型] 欄位會對應至您所部署的確切 VM 大小。 進階儲存體 VM (SSD 型) 和非進階儲存體 VM (HDD 型) 的價格相同。 如果您部署以 SSD 為基礎的大小（例如標準 \_ DS2 \_ v2），您會在 [計量子類別] 資料行中看到非 ssd 大小（ `Standard\_D2\_v2 VM` ），並在 `Standard\_DS2\_v2` [其他資訊] 欄位中查看 ssd 大小（）。
 
 ## <a name="region-names"></a>區域名稱
 在使用情況詳細資料中，[資源位置] 欄位內填入的區域名稱不同於 Azure Resource Manager 中使用的區域名稱。 以下是區域值之間的對應：
 
-|    **Resource Manager 區域名稱**       |    **使用情況詳細資料中的資源位置**    |
-|--------------------------|------------------------------------------|
-|    australiaeast         |    澳大利亞東部                               |
-|    australiasoutheast    |    澳大利亞東南部                          |
-|    brazilsouth           |    巴西南部                              |
-|    CanadaCentral         |    加拿大中部                            |
-|    CanadaEast            |    加拿大東部                               |
-|    CentralIndia          |    印度中部                            |
-|    centralus             |    美國中部                            |
-|    chinaeast             |    中國東部                            |
-|    chinanorth            |    中國北部                           |
-|    eastasia              |    東亞                             |
-|    eastus                |    美國東部                               |
-|    eastus2               |    美國東部 2                             |
-|    GermanyCentral        |    德國中部                            |
-|    GermanyNortheast      |    德國東北部                          |
-|    japaneast             |    日本東部                               |
-|    japanwest             |    日本西部                               |
-|    KoreaCentral          |    南韓中部                            |
-|    KoreaSouth            |    韓國南部                              |
-|    northcentralus        |    美國中北部                      |
-|    northeurope           |    北歐                          |
-|    southcentralus        |    美國中南部                      |
-|    southeastasia         |    東南亞                        |
-|    SouthIndia            |    印度南部                              |
-|    UKNorth               |    英國北部                              |
-|    uksouth               |    英國南部                              |
-|    UKSouth2              |    英國南部 2                            |
-|    ukwest                |    英國西部                               |
-|    USDoDCentral          |    US DoD 中部                        |
-|    USDoDEast             |    US DoD 東部                           |
-|    USGovArizona          |    美國政府亞利桑那州                         |
-|    usgoviowa             |    美國政府愛荷華州                            |
-|    USGovTexas            |    美國政府德克薩斯州                           |
-|    usgovvirginia         |    美國政府維吉尼亞州                        |
-|    westcentralus         |    美國中西部                       |
-|    westeurope            |    西歐                           |
-|    WestIndia             |    印度西部                               |
-|    westus                |    美國西部                               |
-|    westus2               |    美國西部 2                             |
+| **Resource Manager 區域名稱** | **使用情況詳細資料中的資源位置** |
+|---|---|
+| australiaeast |澳大利亞東部|
+| australiasoutheast | 澳大利亞東南部|
+| brazilsouth | 巴西南部|
+| CanadaCentral | 加拿大中部|
+| CanadaEast | 加拿大東部|
+| CentralIndia | 印度中部|
+| centralus | 美國中部|
+| chinaeast | 中國東部|
+| chinanorth | 中國北部|
+| eastasia | 東亞|
+| eastus | 美國東部|
+| eastus2 | 美國東部 2|
+| GermanyCentral | 德國中部|
+| GermanyNortheast | 德國東北部|
+| japaneast | 日本東部|
+| japanwest | 日本西部|
+| KoreaCentral | 南韓中部|
+| KoreaSouth | 韓國南部|
+| northcentralus | 美國中北部|
+| northeurope | 北歐|
+| southcentralus | 美國中南部|
+| southeastasia | 東南亞|
+| SouthIndia | 印度南部|
+| UKNorth | 英國北部|
+| uksouth | 英國南部|
+| UKSouth2 | 英國南部 2|
+| ukwest | 英國西部|
+| USDoDCentral | US DoD 中部|
+| USDoDEast | US DoD 東部|
+| USGovArizona | 美國政府亞利桑那州|
+| usgoviowa | 美國政府愛荷華州|
+| USGovTexas | 美國政府德克薩斯州|
+| usgovvirginia | 美國政府維吉尼亞州|
+| westcentralus | 美國中西部|
+| westeurope | 西歐|
+| WestIndia | 印度西部|
+| westus | 美國西部|
+| westus2 | 美國西部 2|
 
 
 ## <a name="virtual-machine-usage-faq"></a>虛擬機器使用情況常見問題集

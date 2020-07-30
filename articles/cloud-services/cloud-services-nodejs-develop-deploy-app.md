@@ -9,12 +9,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 25cde21d72de49c5a4f51121f2aa4295319899ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 33006463ed826d1efe32f8beee361eb211e9d709
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049199"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386549"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>建立 Node.js 應用程式並部署到 Azure 雲端服務
 
@@ -31,7 +32,7 @@ ms.locfileid: "87049199"
 
 ![顯示 Hello World 網頁的網頁瀏覽器][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 > [!NOTE]
 > 本教學課程使用 Azure PowerShell (需要 Windows)。
 

@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: fd8b88e55f487032f76aa379018f09c144842d60
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa86773f52c05818f4abea2b7a8b5347e1778274
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200301"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046314"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 加密虛擬機器擴展集中的 OS 與連結的資料磁碟
 
@@ -32,7 +32,7 @@ Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。
 az group create --name myResourceGroup --location eastus
 ```
 
-現在使用 [az vmss create](/cli/azure/vmss) 建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet 的擴展集，其已設定為在套用變更時自動更新，並在 ~/.ssh/id_rsa 中沒有 SSH 金鑰時產生 SSH 金鑰。 系統會將 32 Gb 資料磁碟連結至每個 VM 執行個體，並使用 Azure [自訂指令碼擴充功能](../virtual-machines/linux/extensions-customscript.md)搭配 [az vmss extension set](/cli/azure/vmss/extension) 來準備資料磁碟：
+現在使用 [az vmss create](/cli/azure/vmss) 建立虛擬機器擴展集。 下列範例會建立名為 myScaleSet 的擴展集，其已設定為在套用變更時自動更新，並在 ~/.ssh/id_rsa 中沒有 SSH 金鑰時產生 SSH 金鑰。 系統會將 32 Gb 資料磁碟連結至每個 VM 執行個體，並使用 Azure [自訂指令碼擴充功能](../virtual-machines/extensions/custom-script-linux.md)搭配 [az vmss extension set](/cli/azure/vmss/extension) 來準備資料磁碟：
 
 ```azurecli-interactive
 # Create a scale set with attached data disk
