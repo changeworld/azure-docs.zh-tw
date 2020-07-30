@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 78f5a34b64736808ac03771dcd8b5380482ab341
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a077e1dfd166051ad1cf16e42d11e8eeb61d2c91
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089743"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419847"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用及時存取保護您的管理埠
 
@@ -35,7 +35,8 @@ ms.locfileid: "87089743"
 - 定價：**標準層**。 [深入瞭解定價](/azure/security-center/security-center-pricing)。
 - 必要的角色和許可權：
     - 「**讀取**者」和**SecurityReader**角色都可以同時查看 JIT 狀態和參數。
-    - 若要建立可與 JIT 搭配使用的自訂角色，請參閱[設定和使用 jit 所需的許可權？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)。
+    - 若要建立可與 JIT 搭配使用的自訂角色，請參閱[設定和使用 jit 需要哪些許可權？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)
+    - 若要為需要要求對 VM 進行 JIT 存取的使用者建立最低許可權的角色，並不執行其他 JIT 作業，請使用資訊安全中心 GitHub 社區頁面中的[JitLeastPrivilegedRole 腳本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)。
 - 支援的 Vm： 
     - ✔透過 Azure Resource Manager 部署的 Vm。
     - ✘以傳統部署模型部署的 Vm。 [深入瞭解這些部署模型](../azure-resource-manager/management/deployment-models.md)。

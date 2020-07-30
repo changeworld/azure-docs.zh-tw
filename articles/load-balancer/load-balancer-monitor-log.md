@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 351307132e231f1fc6639333e6839848ac933337
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809182"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420901"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公用基礎負載平衡器的 Azure 監視器記錄
 
@@ -39,8 +39,8 @@ ms.locfileid: "84809182"
 
 1. 在入口網站中，按一下 [**資源群組**]。
 2. 選取 **\<resource-group-name>** 負載平衡器所在的位置。
-3. 選取您的負載平衡器。
-4. 選取 [**監視**] [  >  **診斷設定**]。
+3. 選取負載平衡器。
+4. 選取 [**活動記錄**] [  >  **診斷設定**]。
 5. 在 [**診斷設定**] 窗格的 [**診斷設定**] 底下，選取 [ **+ 新增診斷設定**]。
 6. 在 [**診斷設定**] 建立窗格的 [**名稱**] 欄位中，輸入**myLBDiagnostics** 。
 7. 您有三個**診斷設定**選項。  您可以選擇其中一個、兩個或全部三個，並針對您的需求進行設定：

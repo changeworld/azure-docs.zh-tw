@@ -1,16 +1,16 @@
 ---
 title: 將 Azure 事件中樞與 Azure Private Link 服務整合
 description: 了解如何將 Azure 事件中樞與 Azure Private Link 服務整合
-ms.date: 06/23/2020
+ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: a07204615c4d81373d744e83862e6de14c7f8165
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 66753e51fd1e918e5659e219c5ebbe471705b3ee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287959"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421091"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link"></a>將 Azure 事件中樞與 Azure Private Link 整合
+# <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>允許透過私人端點存取 Azure 事件中樞命名空間 
 Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取各 Azure 服務 (例如 Azure 事件中樞、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。
 
 私人端點是一種網路介面，可讓您以私人且安全的方式連線至 Azure Private Link 所支援的服務。 私人端點會使用您虛擬網路中的私人 IP 位址，有效地將服務帶入您的虛擬網路。 服務的所有流量都可以透過私人端點路由傳送，因此不需要閘道、NAT 裝置、ExpressRoute 或 VPN 連線或公用 IP 位址。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您可連線到 Azure 資源的執行個體，以取得最高層級的存取控制細微性。
@@ -42,7 +42,7 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 
 - 事件中樞命名空間。
 - Azure 虛擬網路。
-- 虛擬網路中的子網路。
+- 虛擬網路中的子網路。 您可以使用**預設**子網。 
 - 命名空間和虛擬網路的擁有者或參與者權限。
 
 您的私人端點和虛擬網路必須位於相同區域。 當您使用入口網站選取私人端點的區域時，其只會自動篩選該區域中的虛擬網路。 您的命名空間可以位於不同區域。
@@ -55,10 +55,15 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 2. 在搜尋列中輸入**事件中樞**。
 3. 從清單中選取您要新增私人端點的**命名空間**。
-4. 選取 [設定] 底下的 [網路] 索引標籤。
+4. 在左側功能表上，選取 [**設定**] 底下的 [**網路**]。
 
     > [!NOTE]
     > 您只會看到**標準**或**專用**命名空間的 [**網路**功能] 索引標籤。 
+
+    :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="網路索引標籤-選取的網路選項" lightbox="./media/private-link-service/selected-networks-page.png":::    
+
+    > [!NOTE]
+    > 預設會選取 [**選取的網路**] 選項。 如果您未指定 IP 防火牆規則或新增虛擬網路，則可以透過公用網際網路存取該命名空間。 
 1. 選取頁面頂端的 [私人端點連線] 索引標籤。 
 1. 選取頁面頂端的 [+ 私人端點] 按鈕。
 

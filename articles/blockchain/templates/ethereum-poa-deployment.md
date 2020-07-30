@@ -4,12 +4,13 @@ description: 使用乙太坊證明聯盟解決方案，在 Azure 上部署和設
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: d75b5348c49728d2a796257fa4000f6c3a36831d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124919"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386107"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署乙太坊證明聯盟解決方案範本
 
@@ -28,9 +29,9 @@ ms.locfileid: "87124919"
 
 選項 | 服務模型 | 一般使用案例
 -------|---------------|-----------------
-解決方案範本 | IaaS | 解決方案範本是 Azure Resource Manager 範本，可用來布建完整設定的區塊鏈網路拓撲。 這些範本會針對指定的區塊鏈網路類型，部署和設定 Microsoft Azure 計算、網路和儲存體服務。 解決方案範本是在沒有服務等級協定的情況下提供。 使用[Microsoft Q&支援的問題頁面](/answers/topics/azure-blockchain-workbench.html)。
+解決方案範本 | IaaS | 解決方案範本是 Azure Resource Manager 範本，可用來布建完整設定的區塊鏈網路拓撲。 這些範本會針對指定的區塊鏈網路類型，部署和設定 Microsoft Azure 計算、網路和儲存體服務。 解決方案範本是在沒有服務等級協定的情況下提供。 使用 [Microsoft 問與答頁面](/answers/topics/azure-blockchain-workbench.html)來取得支援。
 [Azure 區塊鏈服務](../service/overview.md) | PaaS | Azure 區塊鏈 Service Preview 簡化了聯盟區塊鏈網路的構成、管理和治理。 針對需要 PaaS、聯盟管理或合約和交易隱私權的解決方案，使用 Azure 區塊鏈 Service。
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 預覽是 Azure 服務和功能的集合，目的是要協助您建立及部署區塊鏈應用程式，以與其他組織共用商務程序和資料。 使用 Azure Blockchain Workbench 來建立區塊鏈解決方案的原型或區塊鏈應用程式概念證明。 Azure Blockchain Workbench 目前沒有服務等級合約。 使用[Microsoft Q&支援的問題頁面](/answers/topics/azure-blockchain-workbench.html)。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 預覽是 Azure 服務和功能的集合，目的是要協助您建立及部署區塊鏈應用程式，以與其他組織共用商務程序和資料。 使用 Azure Blockchain Workbench 來建立區塊鏈解決方案的原型或區塊鏈應用程式概念證明。 Azure Blockchain Workbench 目前沒有服務等級合約。 使用 [Microsoft 問與答頁面](/answers/topics/azure-blockchain-workbench.html)來取得支援。
 
 ## <a name="solution-architecture"></a>解決方案架構
 
@@ -89,7 +90,7 @@ Docker 容器可用於可靠性和模組化。 Azure Container Registry 是用�
 
 ![基本概念](./media/ethereum-poa-deployment/basic-blade.png)
 
-參數 | 說明 | 範例值
+參數 | 描述 | 範例值
 ----------|-------------|--------------
 建立新的網路或加入現有的網路 | 您可以建立新的聯盟網路，或加入既有的聯盟網路。 加入現有的網路需要額外的參數。 | 新建
 電子郵件地址 | 當您的部署完成時，您會收到電子郵件通知，其中包含部署的相關資訊。 | 有效的電子郵件地址
@@ -108,7 +109,7 @@ Location | 資源群組的 Azure 區域。 | 美國西部 2
 
 ![部署區域](./media/ethereum-poa-deployment/deployment-regions.png)
 
-參數 | 說明 | 範例值
+參數 | 描述 | 範例值
 ----------|-------------|--------------
 區域數目|要部署聯盟網路的區域數目| 2
 第一個區域 | 要部署聯盟網路的第一個區域 | 美國西部 2
@@ -122,7 +123,7 @@ Location | 資源群組的 Azure 區域。 | 美國西部 2
 
 ![網路大小和效能](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
-參數 | 說明 | 範例值
+參數 | 描述 | 範例值
 ----------|-------------|--------------
 負載平衡的驗證器節點數目 | 要布建為網路一部分的驗證程式節點數目。 | 2
 驗證器節點儲存體效能 | 每個已部署驗證器節點的受控磁片類型。 如需定價的詳細資訊，請參閱[儲存體定價](https://azure.microsoft.com/pricing/details/managed-disks/) | 標準 SSD
@@ -144,7 +145,7 @@ F16s|進階 SSD|high|high|low
 
 ![以太坊設定](./media/ethereum-poa-deployment/ethereum-settings.png)
 
-參數 | 說明 | 範例值
+參數 | 描述 | 範例值
 ----------|-------------|--------------
 聯盟成員識別碼 | 與參與聯盟網路的每個成員相關聯的識別碼。 它可用來設定 IP 位址空間，以避免發生衝突。 若是私人網路，成員識別碼在相同網路中的不同組織間應該是唯一的。  即使相同組織會部署到多個區域，仍然需要唯一成員識別碼。 請記下此參數的值，因為您需要與其他加入的成員共用它，以確保不會發生衝突。 有效範圍是0到255。 | 0
 網路識別碼 | 為要部署的聯盟以太坊網路指定網路識別碼。 每個以太坊網路都有自己的網路識別碼，1 是公用網路的識別碼。 有效範圍為5到999999999 | 10101010
@@ -163,7 +164,7 @@ F16s|進階 SSD|high|high|low
 
 ![Azure 監視器](./media/ethereum-poa-deployment/azure-monitor.png)
 
-參數 | 說明 | 範例值
+參數 | 描述 | 範例值
 ----------|-------------|--------------
 監視 | 啟用監視的選項 | 啟用
 連接到現有的 Azure 監視器記錄 | 建立新 Azure 監視器記錄實例或加入現有實例的選項 | 新建
@@ -173,7 +174,7 @@ Location | 部署新實例的區域 | 美國東部
 
 選取 [確定]。
 
-### <a name="summary"></a>總結
+### <a name="summary"></a>摘要
 
 按一下 [摘要] 以查看指定的輸入，並執行基本的預先部署驗證。 部署之前，您可以下載範本和參數。
 
@@ -332,7 +333,7 @@ ParityLog_CL
 
 1. 選取 [儲存]。 可能需要幾分鐘的時間才能套用變更。
 
-您可以使用所提供的系統管理員使用者名稱和密碼/SSH 金鑰，透過 SSH 從遠端連線到驗證器節點的虛擬機器。 用來存取第一個驗證程式節點的 SSH 命令會列在範本部署輸出中。 例如:
+您可以使用所提供的系統管理員使用者名稱和密碼/SSH 金鑰，透過 SSH 從遠端連線到驗證器節點的虛擬機器。 用來存取第一個驗證程式節點的 SSH 命令會列在範本部署輸出中。 例如：
 
 ``` bash
 ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.

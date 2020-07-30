@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 評估支援
 description: 了解使用 Azure Migrate 伺服器評估來評估 VMware VM 的支援。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 9c981306b7e026dcc811618302ecbd3e80b6486d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9c9b1f7687d1ab1af36ac603501ecbaa7affd9b6
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321423"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387025"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>VMware 評估的支援矩陣 
 
@@ -82,7 +82,7 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 
 **需求** | **詳細資料**
 --- | --- 
-**部署之前** | 請先備妥 Azure Migrate 專案，並已在專案中新增伺服器評估工具。<br/><br/>  請在設定 Azure Migrate 設備以探索內部部署 VMWare 機器之後，部署相依性視覺效果。<br/><br/> [了解如何](create-manage-projects.md)第一次建立專案。<br/> [了解如何](how-to-assess.md)將評估工具新增至現有專案。<br/> [了解如何](how-to-set-up-appliance-vmware.md)設定 Azure Migrate 設備以評估 VMware VM。
+**部署之前** | 請先備妥 Azure Migrate 專案，並已在專案中新增伺服器評估工具。<br/><br/>  您會在設定 Azure Migrate 設備以探索內部部署 VMware 機器之後，部署相依性視覺效果。<br/><br/> [了解如何](create-manage-projects.md)第一次建立專案。<br/> [了解如何](how-to-assess.md)將評估工具新增至現有專案。<br/> [了解如何](how-to-set-up-appliance-vmware.md)設定 Azure Migrate 設備以評估 VMware VM。
 **支援的機器** | 目前僅支援 VMware VM。
 **Windows VM** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 位元)。
 **vCenter Server 認證** | 相依性視覺效果需要具有唯讀存取權的 vCenter Server 帳戶，以及為 [虛擬機器] > [來賓作業] 啟用權限。

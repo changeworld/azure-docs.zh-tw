@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764820"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387263"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>使用應用程式 Proxy 進行內部部署應用程式的 SAML 單一登入
 
@@ -47,7 +47,7 @@ SAML SSO 與應用程式 Proxy 也適用于 SAML 權杖加密功能。 如需詳
 
 4. 選取 [ **SAML** ] 做為單一登入方法。
 
-5. 第一次設定 SAML SSO 在公司網路上運作。 在 [以**SAML 設定單一登入**] 頁面中，移至 [**基本 SAML**設定] 標題，然後選取其 [**編輯**] 圖示（鉛筆）。 依照[輸入基本 SAML](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration)設定中的步驟，為應用程式設定 SAML 型驗證。
+5. 第一次設定 SAML SSO 在公司網路上運作時，請參閱[設定 saml 型單一登入](configure-saml-single-sign-on.md)來為應用程式設定 saml 型驗證的基本 SAML 設定一節。
 
 6. 將至少一個使用者新增至應用程式，並確定測試帳戶具有應用程式的存取權。 連線到公司網路時，請使用測試帳戶來查看您是否有應用程式的單一登入。 
 
@@ -81,7 +81,7 @@ SAML SSO 與應用程式 Proxy 也適用于 SAML 權杖加密功能。 如需詳
 
 4. 選取更新的**回復 URL**旁的核取方塊，將它標示為預設值。
 
-   * Aftering 將所需的**回復 url**標示為預設值，您也可以刪除先前設定的「**回復 url** 」，以使用內部 URL。
+   * 將必要的**回復 url**標記為預設值之後，您也可以刪除先前設定的「**回復 url** 」，以使用內部 URL。
 
    * 若為 SP 起始的流程，請確定後端應用程式指定了正確的**回復 URL**或判斷提示取用者服務 URL，以接收驗證權杖。
 

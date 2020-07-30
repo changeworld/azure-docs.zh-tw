@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 507253fcddddf7331ff51c71904c2cdd8e7e5dfd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cf0fec1f081a232abc88941e3dd785fb7617fb57
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514711"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387110"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>搭配使用 Azure SQL 透明資料加密與客戶管理的金鑰
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -78,7 +78,7 @@ Azure SQL[透明資料加密（TDE）](/sql/relational-databases/security/encryp
 
 - 金鑰保存庫和 SQL Database/受控實例必須屬於相同的 Azure Active Directory 租使用者。 不支援跨租用戶金鑰保存庫與伺服器的互動。 若要之後移動資源，則必須重新設定具有 AKV 的 TDE。 深入瞭解如何[移動資源](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
-- 必須在金鑰保存庫上啟用虛[刪除](../../key-vault/general/overview-soft-delete.md)功能，以防止意外遺失金鑰（或金鑰保存庫）刪除。 虛刪除的資源會保留90天，除非客戶在此期間復原或清除。 *復原*和*清除*動作本身的權限已在金鑰保存庫的存取原則中建立關聯。 虛刪除功能預設為關閉，並可透過[PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete)或[CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)啟用。 它無法透過 Azure 入口網站啟用。  
+- 必須在金鑰保存庫上啟用虛[刪除](../../key-vault/general/soft-delete-overview.md)功能，以防止意外遺失金鑰（或金鑰保存庫）刪除。 虛刪除的資源會保留90天，除非客戶在此期間復原或清除。 *復原*和*清除*動作本身的權限已在金鑰保存庫的存取原則中建立關聯。 虛刪除功能預設為關閉，並可透過[PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete)或[CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete)啟用。 它無法透過 Azure 入口網站啟用。  
 
 - 使用 Azure Active Directory 身分識別，將存取金鑰保存庫（get、wrapKey、unwrapKey）的許可權授與伺服器或受控實例。 使用 Azure 入口網站時，會自動建立 Azure AD 身分識別。 使用 PowerShell 或 CLI 時，必須明確地建立 Azure AD 身分識別，並驗證完成。 如需使用 PowerShell 的詳細逐步指示，請參閱[CONFIGURE TDE WITH BYOK](transparent-data-encryption-byok-configure.md)和[CONFIGURE TDE WITH BYOK for SQL 受控執行個體](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md)。
 

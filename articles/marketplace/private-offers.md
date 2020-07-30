@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: aea093cbbb59824973c351f6df23113e1b51ab69
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319859"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420102"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的私人優惠
 
@@ -43,6 +43,9 @@ ms.locfileid: "87319859"
 
 對於*僅包含私人方案的新*供應專案，發行者可以建立其供應專案做為任何其他供應專案，然後將方案標示為私用。 只有私人方案才可透過 Microsoft 商業 marketplace 或未與供應專案相關聯的客戶[Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)來探索或存取。
 
+>[!NOTE]
+>公用 Azure Marketplace 或 AppSource 中不會顯示僅包含私人方案的供應專案。
+
 ## <a name="targeting-customers-with-private-offers"></a>以私用供應專案為目標的客戶
 
 針對新的和現有的私人供應項目，發行者可以使用訂用帳戶識別碼來設定目標客戶。 使用虛擬機器或 Azure 應用程式供應專案的發行者可以將私人方案的可用性限制為個別的 Azure 訂用帳戶識別碼，或上傳最多20000個 Azure 訂用帳戶識別碼的 CSV。 使用 SaaS 應用程式私用供應專案時，發行者可以使用手動或 CSV 上傳方法，讓租使用者識別碼與私人方案的可用性產生關聯。
@@ -61,6 +64,7 @@ ms.locfileid: "87319859"
 
 >[!Note]
 >透過雲端解決方案提供者（CSP）計畫的轉銷商所建立的訂用帳戶，不支援私用供應專案。
+
 
 <!---
 ## Next steps

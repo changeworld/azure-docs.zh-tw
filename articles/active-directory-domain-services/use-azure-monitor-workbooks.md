@@ -9,16 +9,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7d1cd032f6042f57a096c5c8e7624f66a4b01355
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223035"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419592"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure 監視器活頁簿審查 Azure Active Directory Domain Services 中的安全性 audit 事件
 
-為了協助您瞭解 Azure Active Directory Domain Services (Azure AD DS) 受控網域的狀態，您可以啟用安全性 audit 事件。 然後您可以使用將文字、分析查詢和參數結合成豐富互動式報表的 Azure 監視器活頁簿，來檢查這些安全性 audit 事件。 Azure AD DS 包含適用于安全性總覽和帳戶活動的活頁簿範本，可讓您深入探索 audit 事件和管理您的環境。
+為了協助您瞭解 Azure Active Directory Domain Services （Azure AD DS）受控網域的狀態，您可以啟用安全性 audit 事件。 然後您可以使用將文字、分析查詢和參數結合成豐富互動式報表的 Azure 監視器活頁簿，來檢查這些安全性 audit 事件。 Azure AD DS 包含適用于安全性總覽和帳戶活動的活頁簿範本，可讓您深入探索 audit 事件和管理您的環境。
 
 本文說明如何使用 Azure 監視器活頁簿來審查 Azure AD DS 中的安全性 audit 事件。
 
@@ -75,7 +75,7 @@ Azure AD DS 包含下列兩個活頁簿範本：
 
 1. 圖表下方 [安全性總覽] 報告的下半部，會細分選取的 [活動類型]。 您可以依照右手邊的使用者名稱進行篩選，如下列範例報告所示：
 
-    [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
+    [![Azure 監視器活頁簿中的帳戶鎖定詳細資料。](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png)](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
 ## <a name="use-the-account-activity-report-workbook"></a>使用帳戶活動報表活頁簿
 
@@ -93,7 +93,7 @@ Azure AD DS 包含下列兩個活頁簿範本：
 
     您可以依**帳戶使用者名稱**進行篩選，例如*felix*，如下列範例報告所示：
 
-    [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
+    [![Azure 監視器活頁簿中的帳戶活動報告。](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
     圖表下方的區域會顯示個別的登入事件，以及活動結果和來源工作站等資訊。 這項資訊可協助您判斷可能造成帳戶鎖定或表示潛在攻擊的重複登入事件來源。
 

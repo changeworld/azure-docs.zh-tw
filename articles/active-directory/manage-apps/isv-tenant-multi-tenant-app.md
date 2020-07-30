@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a0b63c130d7d1e72bd3320e40213ae3cb1069a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 264d4afb50904be17624f8801b7b79fe4b232030
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763239"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386804"
 ---
 # <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>建立多租使用者應用程式的 Azure 租使用者  
 
@@ -37,7 +37,7 @@ Azure Active Directory 在多個版本中都有提供。 [請參閱詳細的功�
 
    a. **針對 OIDC 或 Oath 應用**程式，請將[您的應用程式註冊](../develop/quickstart-register-app.md)為多租使用者應用程式。 在 [支援的帳戶類型] 中，選取 [任何組織目錄中的帳戶] 和 [個人 Microsoft 帳戶] 選項
 
-   b. **針對 saml 和以 WS 為基礎的應用程式**，您可以使用 Azure AD 中的一般 SAML 範本來[設定 saml 型單一登入](configure-single-sign-on-non-gallery-applications.md)應用程式。
+   b. **針對 saml 和以 WS 為基礎的應用程式**，您可以使用 Azure AD 中的一般 SAML 範本來[設定 saml 型單一登入](configure-saml-single-sign-on.md)應用程式。
 
 您也可以視需要[將單一租使用者應用程式轉換成多租](../develop/howto-convert-app-to-be-multi-tenant.md)使用者。
 

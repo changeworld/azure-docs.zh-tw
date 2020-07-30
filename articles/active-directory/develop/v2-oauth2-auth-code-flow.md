@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 42356ec4277c8441b4833560f431740e9e2f56c8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 945d6ac15c3cb0b3f98ebb14e6b859b8f356b944
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311342"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419830"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 授權碼流程
 
@@ -96,7 +96,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
 
-| 參數 | 說明  |
+| 參數 | 描述  |
 |-----------|--------------|
 | `code` | 應用程式要求的 authorization_code。 應用程式可以使用授權碼要求目標資源的存取權杖。 Authorization_codes 的有效期很短，通常會在大約 10 分鐘後到期。 |
 | `state` | 如果要求中包含狀態參數，回應中就應該出現相同的值。 應用程式應該確認要求和回應中的狀態值完全相同。 |
@@ -113,7 +113,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| 參數 | 說明  |
+| 參數 | 描述  |
 |----------|------------------|
 | `error`  | 用以分類發生的錯誤類型與回應錯誤的錯誤碼字串。 |
 | `error_description` | 協助開發人員識別驗證錯誤根本原因的特定錯誤訊息。 |
@@ -187,9 +187,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `access_token`  | 所要求的存取權杖。 應用程式可以使用這個權杖驗證受保護的資源，例如 Web API。  |
 | `token_type`    | 表示權杖類型值。 Azure AD 唯一支援的類型是 Bearer。 |
 | `expires_in`    | 存取權杖的有效期 (以秒為單位)。 |
-| `scope`         | access_token 有效的範圍。 |
+| `scope`         | access_token 有效的範圍。 選擇性-這不是標準的，而且如果省略，則權杖將會用於流程初始階段所要求的範圍。 |
 | `refresh_token` | OAuth 2.0 重新整理權杖。 應用程式可以使用這個權杖，在目前的存取權杖過期之後，取得其他的存取權杖。 Refresh_token 的有效期很長，而且可以用來延長保留資源存取權的時間。 如需有關重新整理存取權杖的詳細資訊，請參閱[下一節](#refresh-the-access-token)。 <br> **注意：** 只在要求 `offline_access` 範圍時提供。 |
-| `id_token`      | JSON Web 權杖 (JWT)。 應用程式可以將這個權杖的區段解碼，來要求已登入使用者的相關資訊。 應用程式可以快取並顯示值，但不應依賴這些值來取得任何授權或安全性界限。 如需有關 id_token 的詳細資訊，請參閱 [`id_token reference`](id-tokens.md)。 <br> **注意：** 只在要求 `openid` 範圍時提供。 |
+| `id_token`      | JSON Web 權杖 (JWT)。 應用程式可以將這個權杖的區段解碼，來要求已登入使用者的相關資訊。 應用程式可以快取值並加以顯示，而機密用戶端可以將其用於授權。 如需有關 id_token 的詳細資訊，請參閱 [`id_token reference`](id-tokens.md)。 <br> **注意：** 只在要求 `openid` 範圍時提供。 |
 
 ### <a name="error-response"></a>錯誤回應
 
@@ -208,7 +208,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| 參數         | 說明    |
+| 參數         | 描述    |
 |-------------------|----------------|
 | `error`       | 用以分類發生的錯誤類型與回應錯誤的錯誤碼字串。 |
 | `error_description` | 協助開發人員識別驗證錯誤根本原因的特定錯誤訊息。 |
@@ -227,8 +227,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `invalid_client` | 用戶端驗證失敗。  | 用戶端認證無效。 若要修正，應用程式系統管理員必須更新認證。   |
 | `unsupported_grant_type` | 授權伺服器不支援授權授與類型。 | 變更要求中的授與類型。 這種類型的錯誤應該只會在開發期間發生，並且會在初始測試期間偵測出來。 |
 | `invalid_resource` | 目標資源無效，因為它不存在、Azure AD 無法找到它，或是它並未正確設定。 | 這表示尚未在租用戶中設定資源 (如果存在)。 應用程式可以對使用者提示關於安裝應用程式，並將它加入至 Azure AD 的指示。  |
-| `interaction_required` | 要求需要使用者互動。 例如，必須進行其他驗證步驟。 | 以相同資源重試要求。  |
-| `temporarily_unavailable` | 伺服器暫時過於忙碌而無法處理要求。 | 重試要求。 用戶端應用程式可能會向使用者解釋其回應因暫時性狀況而延遲。 |
+| `interaction_required` | 非標準，因為 OIDC 規格只會在端點上呼叫此 `/authorize` 。要求需要使用者互動。 例如，必須進行其他驗證步驟。 | 請 `/authorize` 使用相同的範圍重試要求。 |
+| `temporarily_unavailable` | 伺服器暫時過於忙碌而無法處理要求。 | 請在短暫的延遲後重試要求。 用戶端應用程式可能會向使用者解釋其回應因暫時性狀況而延遲。 |
+|`consent_required` | 要求需要使用者同意。 此錯誤並非標準，因為它通常只會在 `/authorize` 每個 OIDC 規格的端點上傳回。 在 `scope` 用戶端應用程式沒有許可權要求的程式碼兌換流程上使用參數時傳回。  | 用戶端應將使用者傳回 `/authorize` 具有正確範圍的端點，才能觸發同意。 |
 
 > [!NOTE]
 > 單頁應用程式可能會收到 `invalid_request` 錯誤，指出只允許「單頁應用程式」用戶端類型的跨原始來源權杖兌換。  這表示用來要求權杖的重新導向 URI 尚未標示為 `spa` 重新導向 URI。  關於如何啟用此流程，請參閱[應用程式註冊步驟](#redirect-uri-setup-required-for-single-page-apps)。
@@ -278,7 +279,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 參數     | 類型           | 說明        |
 |---------------|----------------|--------------------|
-| `tenant`        | 必要     | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。   |
+| `tenant`        | required     | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。   |
 | `client_id`     | 必要    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
 | `grant_type`    | 必要    | 必須是授權碼流程此階段的 `refresh_token` 。 |
 | `scope`         | required    | 範圍的空格分隔清單。 在此階段中要求的範圍必須相當於或為原始 authorization_code 要求階段中所要求的範圍子集。 如果這個要求中指定的範圍遍及多個資源伺服器，Microsoft 身分識別平台端點就會傳回第一個範圍中所指定資源的權杖。 如需範圍的詳盡說明，請參閱 [權限、同意和範圍](v2-permissions-and-consent.md)。 |

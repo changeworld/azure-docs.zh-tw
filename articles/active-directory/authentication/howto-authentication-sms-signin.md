@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55e64fad910aba25354d8d7829fc1189b744ca16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550478"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419558"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>使用 Azure Active Directory 設定及啟用使用者的 SMS 型驗證 (預覽)
 
@@ -65,7 +65,7 @@ ms.locfileid: "85550478"
 1. 搜尋並選取 [Azure Active Directory]。
 1. 從 Azure Active Directory 視窗左側的導覽功能表中，選取 [安全性 > 驗證方法 > 驗證方法原則 (預覽)]。
 
-    [![](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png "Browse to and select the Authentication method policy (preview) window in the Azure portal")](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![流覽至 Azure 入口網站中的 [驗證方法原則（預覽）] 視窗並加以選取。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. 從可用驗證方法的清單中，選取 [文字簡訊]。
 1. 將 [啟用] 設定為 [是]。
@@ -81,7 +81,7 @@ ms.locfileid: "85550478"
 1. 在文字簡訊驗證原則視窗中，將 [目標] 設定為 [選取使用者]。
 1. 選擇 [新增使用者或群組]，然後選取測試使用者或群組，例如「Contoso 使用者」或「Contoso SMS 使用者」。
 
-    [![](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png "Choose users or groups to enable for SMS-based authentication in the Azure portal")](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
+    [![選擇 [使用者或群組]，在 Azure 入口網站中啟用以 SMS 為基礎的驗證。](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png)](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
 
 1. 當您選取使用者或群組之後，請選擇 [選取]，然後選擇 [儲存] 已更新的驗證方法原則。
 

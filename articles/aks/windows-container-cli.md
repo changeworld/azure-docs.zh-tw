@@ -4,12 +4,12 @@ description: 瞭解如何快速建立 Kubernetes 叢集、使用 Azure CLI 在 A
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 5baa4f807002cc39428eb46e5a86cf59bd022cb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff7fc00c8de5b4d577770c140d356d7f9da1b7e7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015624"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421224"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>使用 Azure CLI 在 Azure Kubernetes Service （AKS）叢集上建立 Windows Server 容器
 
@@ -94,8 +94,7 @@ az aks create \
 ```
 
 > [!NOTE]
-> 如果您收到密碼驗證錯誤，請嘗試在另一個區域中建立您的資源群組。
-> 然後嘗試使用新的資源群組來建立叢集。
+> 如果您收到密碼驗證錯誤，請確認*windows-admin-password*參數符合[windows Server 密碼需求][windows-server-password]。 如果您的密碼符合需求，請嘗試在另一個區域中建立您的資源群組。 然後嘗試使用新的資源群組來建立叢集。
 
 在幾分鐘之後，此命令就會完成，並以 JSON 格式傳回叢集的相關資訊。 叢集有時可能需要超過幾分鐘的時間來佈建。 在這些情況下，最多允許 10 分鐘的時間。
 

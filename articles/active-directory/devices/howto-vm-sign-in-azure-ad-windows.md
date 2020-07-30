@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282937"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419779"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication （預覽）登入 Azure 中的 Windows 虛擬機器
 
@@ -69,7 +69,7 @@ ms.locfileid: "87282937"
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>在 Azure 中啟用 Windows VM 的 Azure AD 登入
 
-若要在 Azure 中使用適用于 Windows VM 的 Azure AD 登入，您必須先啟用 Windows VM 的 Azure AD 登入選項，然後您必須為已獲授權可登入 VM 的使用者設定 RBAC 角色指派。
+若要在 Azure 中使用適用于 Windows VM 的 Azure AD 登入，您必須先啟用 Windows VM 的 Azure AD 登入選項，然後您必須為已獲授權可登入 VM 的使用者設定 Azure 角色指派。
 有多種方式可讓您啟用 Windows VM 的 Azure AD 登入：
 
 - 在建立 Windows VM 時使用 Azure 入口網站體驗

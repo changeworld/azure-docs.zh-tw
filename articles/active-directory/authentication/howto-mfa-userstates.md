@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 860616cbea598e40494155e250254b3c607c1173
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bd688a9e488c1206b0c8531698b061f650e2afe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027490"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417925"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>啟用個別使用者的 Azure Multi-Factor Authentication 以保護登入事件
 
@@ -55,7 +55,7 @@ Azure Multi-Factor Authentication 中的使用者帳戶具有下列三種不同�
 
 1. 以系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 1. 搜尋並選取 [Azure Active Directory]，然後選取 [使用者] > [所有使用者]。
-1. 選取 [多重要素驗證]。 您可能必須捲動到右邊才能看到此功能表選項。 選取以下的範例螢幕擷取畫面，以查看完整的 Azure 入口網站視窗和功能表位置：[![](media/howto-mfa-userstates/selectmfa-cropped.png "從 Azure AD 中的 [使用者] 視窗選取 [Multi-Factor Authentication]")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. 選取 [多重要素驗證]。 您可能必須捲動到右邊才能看到此功能表選項。 選取以下的範例螢幕擷取畫面，以查看完整的 Azure 入口網站視窗和功能表位置： [ ![ 從 Azure AD 的 [使用者] 視窗中選取 [多重要素驗證]。](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. 隨即開啟新的頁面，其中顯示使用者狀態，如下列範例所示。
    ![顯示 Azure Multi-Factor Authentication 中範例使用者狀態資訊的螢幕擷取畫面](./media/howto-mfa-userstates/userstate1.png)
 

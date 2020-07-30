@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: damendo
-ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d31240cad709a156d7235f116c9cd2c8fb698b03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76840548"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421139"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>使用網路監看員功能時所需的角色型存取控制權限
 
@@ -31,14 +31,14 @@ Azure 角色型存取控制 (RBAC) 可將指派給組織成員的動作，限縮
 | Microsoft.Network/networkWatchers/write                             | 建立或更新網路監看員                             |
 | Microsoft.Network/networkWatchers/delete                            | 刪除網路監看員                                       |
 
-## <a name="nsg-flow-logs"></a>NSG 流量記錄
+## <a name="nsg-flow-logs"></a>NSG 流程記錄
 
 | 動作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/configureFlowLog/action           | 設定流量記錄                                           |
 | Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | 流量記錄的查詢狀態                                    |
 
-## <a name="connection-troubleshoot"></a>針對連線問題進行疑難排解
+## <a name="connection-troubleshoot"></a>疑難排解連線
 
 | 動作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
@@ -67,7 +67,7 @@ Azure 角色型存取控制 (RBAC) 可將指派給組織成員的動作，限縮
 | Microsoft.Network/networkWatchers/packetCaptures/write              | 建立封包擷取                                        |
 | Microsoft.Network/networkWatchers/packetCaptures/delete             | 刪除封包擷取                                        |
 
-## <a name="ip-flow-verify"></a>IP 流量驗證
+## <a name="ip-flow-verify"></a>IP 流程驗證
 
 | 動作                                                              | 描述                                                           |
 | ---------                                                           | -------------                                                  |
@@ -102,9 +102,9 @@ Azure 角色型存取控制 (RBAC) 可將指派給組織成員的動作，限縮
 
 網路監看員功能也需要下列動作：
 
-| 動作（秒）                                                           | Description                                                    |
+| 動作（秒）                                                           | 描述                                                    |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Authorization/\*/Read                                     | 用來提取 RBAC 角色指派和原則定義          |
+| Microsoft.Authorization/\*/Read                                     | 用來提取 Azure 角色指派和原則定義          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | 用來列舉訂用帳戶中的所有資源群組    |
 | Microsoft.Storage/storageAccounts/Read                              | 用來取得指定之儲存體帳戶的屬性   |
 | Microsoft. Storage/storageAccounts/listServiceSas/Action、 </br> Microsoft. Storage/storageAccounts/listAccountSas/Action、 <br> Microsoft.Storage/storageAccounts/listKeys/Action| 用來提取共用存取簽章（SAS），[以安全存取儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)並寫入儲存體帳戶 |

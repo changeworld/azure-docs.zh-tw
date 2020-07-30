@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 06/16/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: e0b14eefcc0b484c92faf1148ae2972f51b04d31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 473bc8677c5369833928eb4648f32bb146e83e65
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260690"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420646"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的 MongoDB API 中的索引編制
 
@@ -23,7 +24,7 @@ Azure Cosmos DB 適用于 MongoDB 的 API 會利用 Azure Cosmos DB 的核心索
 
 Azure Cosmos DB 適用于 MongoDB 的 API 伺服器3.6 版會自動為無法卸載的欄位編制索引 `_id` 。 它會自動強制執行 `_id` 每個分區索引鍵的欄位唯一性。 在 Azure Cosmos DB 適用于 MongoDB 的 API 中，分區化和索引是不同的概念。 您不需要為您的分區金鑰編制索引。 不過，與檔中的任何其他屬性一樣，如果此屬性是查詢中的通用篩選，我們建議您為分區索引鍵編制索引。
 
-若要為其他欄位編制索引，請套用 MongoDB 索引管理命令。 如同在 MongoDB 中，Azure Cosmos DB 的適用于 MongoDB 的 API 只會自動為欄位編制索引 `_id` 。 此預設索引編制原則與 Azure Cosmos DB SQL API 不同，預設會為所有欄位編制索引。
+若要為其他欄位編製索引，請套用 MongoDB 索引管理命令。 如同在 MongoDB 中，Azure Cosmos DB 的適用于 MongoDB 的 API 只會自動為欄位編制索引 `_id` 。 這個預設的編製索引原則與 Azure Cosmos DB SQL API 不同，後者預設會為所有欄位編製索引。
 
 若要將排序套用至查詢，您必須在排序作業中使用的欄位上建立索引。
 
@@ -49,7 +50,7 @@ Azure Cosmos DB 的適用于 MongoDB 的 API 支援使用3.6 線路通訊協定�
 
 `db.coll.find().sort({name:1,age:1})`
 
-您也可以使用上述的複合索引，有效率地排序在所有欄位上具有相反排序次序的查詢。 以下是範例：
+您也可以使用上述的複合索引，有效率地排序在所有欄位上具有相反排序次序的查詢。 以下為範例：
 
 `db.coll.find().sort({name:-1,age:-1})`
 

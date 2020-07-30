@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371408"
+ms.locfileid: "87421887"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 入口網站中的 Azure 認知搜尋服務管理
 
@@ -58,7 +58,7 @@ Azure 訂用帳戶管理員或共同管理員可以佈建或解除委任服務�
 
 服務布建儀器的許可權是透過角色指派來授與。 [角色型存取（RBAC）](../role-based-access-control/overview.md)是根據布建 Azure 資源[Azure Resource Manager](../azure-resource-manager/management/overview.md)建立的授權系統。 
 
-在 Azure 認知搜尋的內容中， [RBAC 角色指派](search-security-rbac.md)會決定誰可以執行工作，不論他們是使用[入口網站](search-manage.md)、 [PowerShell](search-manage-powershell.md)還是[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)：
+在 Azure 認知搜尋的內容中， [azure 角色指派](search-security-rbac.md)會決定誰可以執行工作，不論他們使用的是[入口網站](search-manage.md)、 [PowerShell](search-manage-powershell.md)或[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)：
 
 * 建立或刪除服務
 * 調整服務規模

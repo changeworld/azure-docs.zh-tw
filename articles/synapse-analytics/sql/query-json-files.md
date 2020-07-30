@@ -9,136 +9,162 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 5d02736e9cb0a612e434dc5a79a73d7a62785728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8b95f6b6eca0f1464a7d09d2810aa66836d76f8f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207646"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386634"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 的查詢 JSON 檔案
 
-本文會說明如何在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 來寫入查詢。 查詢的目標是要讀取 JSON 檔案。 支援的格式會列在 [OPENROWSET](develop-openrowset.md) 中。
+本文會說明如何在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 來寫入查詢。 查詢的目標是要使用[OPENROWSET](develop-openrowset.md)來讀取 JSON 檔案。 
+- 將多個 JSON 檔儲存為 JSON 陣列的標準 JSON 檔案。
+- 以行分隔的 JSON 檔案，其中 JSON 檔會以新行字元分隔。 這些檔案類型的一般延伸模組為 `jsonl` 、 `ldjson` 和 `ndjson` 。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="reading-json-documents"></a>讀取 JSON 檔
 
-您的第一個步驟是**建立資料庫**，您將在其中執行查詢。 然後在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)，將物件初始化。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
+查看 JSON 檔案內容最簡單的方式，就是提供要函式的檔案 URL `OPENROWSET` 、指定 csv `FORMAT` ，以及設定 `0x0b` 和的值 `fieldterminator` `fieldquote` 。 如果您需要讀取以行分隔的 JSON 檔案，這就夠了。 如果您有傳統 JSON 檔案，則需要設定 `0x0b` 的值 `rowterminator` 。 `OPENROWSET`函式會剖析 JSON，並以下列格式傳回每份檔：
 
-## <a name="sample-json-files"></a>範例 JSON 檔案
+| doc |
+| --- |
+|{"date_rep"： "2020-07-24"，"day"：24，"month"：7，"year"：2020，"案例"：3，"裝死"：0，"geo_id"： "AF"}|
+|{"date_rep"： "2020-07-25"，"day"：25，"month"：7，"year"：2020，"案例"：7，"裝死"：0，"geo_id"： "AF"}|
+|{"date_rep"： "2020-07-26"，"day"：26，"month"：7，"year"：2020，"案例"：4，"裝死"：0，"geo_id"： "AF"}|
+|{"date_rep"： "2020-07-27"，"day"：27，"month"：7，"year"：2020，"案例"：8，"裝死"：0，"geo_id"： "AF"}|
 
-下一節包含可讀取 JSON 檔案的範例指令碼。 檔案會儲存在 json 容器的 books 資料夾中，並包含採用下列結構的單一書籍項目：
+如果檔案可公開使用，或者您的 Azure AD 身分識別可以存取此檔案，則您應該能夠使用如下列範例所示的查詢來查看檔案的內容。
+
+### <a name="read-json-files"></a>讀取 JSON 檔案
+
+下列範例查詢會讀取 JSON 和以行分隔的 JSON 檔案，並將每個檔當做個別的資料列傳回。
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.jsonl',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+go
+select top 10 *
+from openrowset(
+        bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.json',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b',
+        rowterminator = '0x0b' --> You need to override rowterminator to read classic JSON
+    ) with (doc nvarchar(max)) as rows
+```
+
+此查詢會將每個 JSON 檔傳回為結果集的個別資料列。 請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂身分識別的保護，您就必須設定[sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。 
+
+### <a name="using-data-source"></a>使用資料來源
+
+上一個範例使用檔案的完整路徑。 或者，您可以建立外部資料源，其位置會指向儲存體的根資料夾，並使用該資料來源和函式中檔案的相對路徑 `OPENROWSET` ：
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+go
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+go
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.json',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b',
+        rowterminator = '0x0b' --> You need to override rowterminator to read classic JSON
+    ) with (doc nvarchar(max)) as rows
+```
+
+如果資料來源受到 SAS 金鑰或自訂身分識別的保護，您可以[使用資料庫範圍認證來設定資料來源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+
+在下列各節中，您可以瞭解如何查詢各種類型的 JSON 檔案。
+
+## <a name="parse-json-documents"></a>剖析 JSON 檔
+
+先前範例中的查詢會以單一字串的形式，將每個 JSON 檔傳回為結果集的個別資料列。 您可以使用函數 `JSON_VALUE` 和 `OPENJSON` 來剖析 JSON 檔中的值，並將它們當做關聯式值傳回，如下列範例所示：
+
+| 日期 \_ 代表 | 案例 | 地理 \_ 識別碼 |
+| --- | --- | --- |
+| 2020-07-24 | 3 | AF |
+| 2020-07-25 | 7 | AF |
+| 2020-07-26 | 4 | AF |
+| 2020-07-27 | 8| AF |
+
+### <a name="sample-json-document"></a>範例 JSON 檔
+
+查詢範例會讀取*json*檔案，其中包含具有下列結構的檔：
 
 ```json
 {
-   "_id":"ahokw88",
-   "type":"Book",
-   "title":"The AWK Programming Language",
-   "year":"1988",
-   "publisher":"Addison-Wesley",
-   "authors":[
-      "Alfred V. Aho",
-      "Brian W. Kernighan",
-      "Peter J. Weinberger"
-   ],
-   "source":"DBLP"
+    "date_rep":"2020-07-24",
+    "day":24,"month":7,"year":2020,
+    "cases":13,"deaths":0,
+    "countries_and_territories":"Afghanistan",
+    "geo_id":"AF",
+    "country_territory_code":"AFG",
+    "continent_exp":"Asia",
+    "load_date":"2020-07-25 00:05:14",
+    "iso_country":"AF"
 }
 ```
 
-## <a name="read-json-files"></a>讀取 JSON 檔案
-
-若要使用 JSON_VALUE 和 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 來處理 JSON 檔案，您必須以單一資料行的形式從儲存體讀取 JSON 檔案。 下列指令碼會將 *book1 json* 檔案讀取為單一資料行：
-
-```sql
-SELECT
-    *
-FROM
-    OPENROWSET(
-        BULK 'json/books/book1.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent varchar(8000)
-    ) AS [r];
-```
-
 > [!NOTE]
-> 您將讀取整個 JSON 檔案成為單一資料列或資料行。 因此，FIELDTERMINATOR、FIELDQUOTE 和 ROWTERMINATOR 都會設定為 0x0b。
+> 如果這些檔儲存為以行分隔的 JSON，您必須將和設定為 `FIELDTERMINATOR` `FIELDQUOTE` 0x0b。 如果您有標準 JSON 格式，您必須將設定 `ROWTERMINATOR` 為0x0b。
 
-## <a name="query-json-files-using-json_value"></a>使用 JSON_VALUE 查詢 JSON 檔案
+### <a name="query-json-files-using-json_value"></a>使用 JSON_VALUE 查詢 JSON 檔案
 
-下列查詢會示範如何使用 [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，從名為 *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics* 的書籍中擷取純量值 (書名、發行者)：
+下列查詢會示範如何使用[JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)從 JSON 檔中取出純量值（title、publisher）：
 
 ```sql
-SELECT
-    JSON_VALUE(jsonContent, '$.title') AS title,
-    JSON_VALUE(jsonContent, '$.publisher') as publisher,
-    jsonContent
-FROM
-    OPENROWSET(
-        BULK 'json/books/*.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent varchar(8000)
-    ) AS [r]
-WHERE
-    JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
+select
+    JSON_VALUE(doc, '$.date_rep') AS date_reported,
+    JSON_VALUE(doc, '$.countries_and_territories') AS country,
+    JSON_VALUE(doc, '$.cases') as cases,
+    doc
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+order by JSON_VALUE(doc, '$.geo_id') desc
 ```
 
-## <a name="query-json-files-using-json_query"></a>使用 JSON_QUERY 查詢 JSON 檔案
+### <a name="query-json-files-using-openjson"></a>使用 OPENJSON 查詢 JSON 檔案
 
-下列查詢會示範如何使用 [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，從名為 *Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics* 的書籍中擷取物件和陣列 (作者)：
-
-```sql
-SELECT
-    JSON_QUERY(jsonContent, '$.authors') AS authors,
-    jsonContent
-FROM
-    OPENROWSET(
-        BULK 'json/books/*.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent varchar(8000)
-    ) AS [r]
-WHERE
-    JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
-```
-
-## <a name="query-json-files-using-openjson"></a>使用 OPENJSON 查詢 JSON 檔案
-
-下列查詢使用 [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。 這會擷取《*概率和統計方法，精選主題簡介*》一書中的物件和屬性：
+下列查詢使用 [OPENJSON](/sql/t-sql/functions/openjson-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。 它會抓取塞爾維亞中報告的 COVID 統計資料：
 
 ```sql
-SELECT
-    j.*
-FROM
-    OPENROWSET(
-        BULK 'json/books/*.json',
-        DATA_SOURCE = 'SqlOnDemandDemo',
-        FORMAT='CSV',
-        FIELDTERMINATOR ='0x0b',
-        FIELDQUOTE = '0x0b',
-        ROWTERMINATOR = '0x0b'
-    )
-    WITH (
-        jsonContent NVARCHAR(max) -- Use appropriate length. Make sure JSON fits. 
-    ) AS [r]
-CROSS APPLY OPENJSON(jsonContent) AS j
-WHERE
-    JSON_VALUE(jsonContent, '$.title') = 'Probabilistic and Statistical Methods in Cryptology, An Introduction by Selected Topics';
+select
+    *
+from openrowset(
+        bulk 'latest/ecdc_cases.jsonl',
+        data_source = 'covid',
+        format = 'csv',
+        fieldterminator ='0x0b',
+        fieldquote = '0x0b'
+    ) with (doc nvarchar(max)) as rows
+    cross apply openjson (doc)
+        with (  date_rep datetime2,
+                cases int,
+                fatal int '$.deaths',
+                country varchar(100) '$.countries_and_territories')
+where country = 'Serbia'
+order by country, date_rep desc;
 ```
 
 ## <a name="next-steps"></a>後續步驟

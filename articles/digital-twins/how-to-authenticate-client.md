@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4d235280ae4a600994eb93ec08c7a13630f9682f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1eebacefa2e91970263c301de4ff160ea7c9f2eb
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131577"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420340"
 ---
 # <a name="write-client-app-authentication-code"></a>撰寫用戶端應用程式驗證碼
 
@@ -199,4 +200,4 @@ MSAL 有更多您可以使用的選項，以執行快取和其他驗證流程等
 * [*概念： Azure 數位 Twins 解決方案的安全性*](concepts-security.md)
 
 或者，現在已設定驗證，請繼續在您的實例中建立模型：
-* [*操作說明：管理自訂模型*](how-to-manage-model.md)
+* [操作說明：管理自訂模型](how-to-manage-model.md)

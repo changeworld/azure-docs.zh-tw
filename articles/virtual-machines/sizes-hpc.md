@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: c347f637083d8dfdf39cbd032df97bc52973465f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c02b0d63db3a761f52c9ea15e6fc6ba3356cd4be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372564"
+ms.locfileid: "87421360"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高效能計算 VM 大小
 
@@ -46,9 +46,9 @@ Azure H 系列虛擬機器（Vm）的設計目的是針對各種實際的 HPC �
 
 - 不限型**和 RDMA 驅動程式**-在已啟用未支援的 vm 上，需要適當的驅動程式才能啟用 RDMA。 在 Linux 上，Marketplace 中的 CentOS-HPC VM 映射已預先設定適當的驅動程式。 您可以使用[這裡的指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，利用正確的驅動程式來設定 Ubuntu VM 映射。 在啟用 SR-IOV 的 H 和 N 系列 Vm 上， [INFINIBANDDRIVERLINUX VM 擴充](./extensions/hpc-compute-infiniband-linux.md)功能可以用來安裝 Mellanox OFED 驅動程式並啟用「自動」。 深入瞭解如何在支援 RDMA 的 VM sat [HPC 工作負載](./workloads/hpc/overview.md)上啟用「不允許」。
 
-在 Windows 上， [INFINIBANDDRIVERWINDOWS VM 擴充](./extensions/hpc-compute-infiniband-windows.md)功能會安裝 Windows 網路直接驅動程式（在非 sr-iov vm 上）或 Mellanox OFED 驅動程式（在 sr-iov vm 上）以進行 RDMA 連線。 在 A8 和 A9 實例的某些部署中，會自動新增 HpcVmDrivers 擴充功能。 請注意，HpcVmDrivers VM 擴充功能即將淘汰;它將不會更新。
+   在 Windows 上， [INFINIBANDDRIVERWINDOWS VM 擴充](./extensions/hpc-compute-infiniband-windows.md)功能會安裝 Windows 網路直接驅動程式（在非 sr-iov vm 上）或 Mellanox OFED 驅動程式（在 sr-iov vm 上）以進行 RDMA 連線。 在 A8 和 A9 實例的某些部署中，會自動新增 HpcVmDrivers 擴充功能。 請注意，HpcVmDrivers VM 擴充功能即將淘汰;它將不會更新。
 
-若要將 VM 擴充功能新增至 VM，您可以使用 [Azure PowerShell](/powershell/azure/) Cmdlet。 如需詳細資訊，請參閱[虛擬機器擴充功能和功能](./extensions/overview.md)。 您也可以針對已在[傳統部署模型](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)中部署的 VM 使用擴充功能。
+   若要將 VM 擴充功能新增至 VM，您可以使用 [Azure PowerShell](/powershell/azure/) Cmdlet。 如需詳細資訊，請參閱[虛擬機器擴充功能和功能](./extensions/overview.md)。 您也可以針對已在[傳統部署模型](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)中部署的 VM 使用擴充功能。
 
 - **Mpi** -在 Azure 上啟用 SR-IOV 的 VM 大小（HBV2、HB、HC、NCv3、NDv2）幾乎可讓 MPI 的任何一種類別與 Mellanox OFED 搭配使用。
 在非 SR-IOV 啟用的 Vm 上，支援的 MPI 執行會使用 Microsoft Network Direct （ND）介面在 Vm 之間進行通訊。 因此，只支援 Microsoft MPI （MS-MPI） 2012 R2 或更新版本和 Intel MPI 5.x 版本。 Intel MPI 執行時間程式庫的較新版本（2017、2018）可能會與 Azure RDMA 驅動程式不相容。
@@ -98,6 +98,6 @@ Azure 提供數個選項來建立 Windows HPC VM 的叢集，而這些 VM 可以
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解如何將 Azure 的 HPC 應用程式優化，以及[Hpc 工作負載](./workloads/hpc/overview.md)的一些範例 
+- 深入瞭解如何將 Azure 的 HPC 應用程式優化，以及[Hpc 工作負載](./workloads/hpc/overview.md)的一些範例。
 
-- 深入了解 [Azure 計算單位 (ACU)](acu.md) 如何協助您比較各個 Azure SKU 的計算效能。
+- 閱讀[Azure 計算技術小組的 blog](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)，瞭解最新的公告和一些 HPC 範例和結果。

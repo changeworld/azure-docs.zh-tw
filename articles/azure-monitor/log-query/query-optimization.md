@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dca320168805e9f7c8f6336b39c4f9394255f9b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067481"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416310"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>優化 Azure 監視器中的記錄查詢
 Azure 監視器記錄會使用[Azure 資料總管（ADX）](/azure/data-explorer/)來儲存記錄資料，並執行查詢來分析該資料。 它會為您建立、管理及維護 ADX 叢集，並針對您的記錄分析工作負載將它們優化。 當您執行查詢時，它會進行優化，並路由傳送至適當的 ADX 叢集，以儲存工作區資料。 Azure 監視器記錄和 Azure 資料總管都使用許多自動查詢優化機制。 雖然自動優化提供顯著的提升，但在某些情況下，您可以大幅提升查詢效能。 這篇文章說明效能考慮，以及解決這些問題的數種技術。
@@ -98,14 +98,14 @@ SecurityEvent
 Heartbeat 
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
 | where IPRegion == "WestCoast"
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 ```Kusto
 //more efficient
 Heartbeat 
 | where RemoteIPLongitude  < -94
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>在摘要和聯結中使用有效的匯總命令和維度
@@ -319,7 +319,7 @@ Perf
 ) on Computer
 ```
 
-發生這種錯誤的常見情況是，當[arg_max （）](/azure/kusto/query/arg-max-aggfunction)用來尋找最近發生的情況時。 例如:
+發生這種錯誤的常見情況是，當[arg_max （）](/azure/kusto/query/arg-max-aggfunction)用來尋找最近發生的情況時。 例如：
 
 ```Kusto
 Perf
@@ -433,7 +433,7 @@ Azure 監視器記錄會使用 Azure 資料總管的大型叢集來執行查詢�
 - 使用序列化和視窗函數，例如[序列化運算子](/azure/kusto/query/serializeoperator)、 [next （）](/azure/kusto/query/nextfunction)、[上月（）](/azure/kusto/query/prevfunction)和資料[列](/azure/kusto/query/rowcumsumfunction)函數。 在這些情況下，可以使用時間序列和使用者分析函數。 如果下列運算子不是用在查詢的結尾，也可能會發生沒有效率的序列化： [range](/azure/kusto/query/rangeoperator)、 [sort](/azure/kusto/query/sortoperator)、 [order](/azure/kusto/query/orderoperator)、 [top](/azure/kusto/query/topoperator)、 [top-hitters](/azure/kusto/query/tophittersoperator)、 [getschema](/azure/kusto/query/getschemaoperator)。
 -    使用[dcount （）](/azure/kusto/query/dcount-aggfunction)彙總函式會強制系統擁有相異值的中央複本。 當資料的小數值偏高時，請考慮使用 dcount 函數的選擇性參數來降低精確度。
 -    在許多情況下，[聯結](/azure/kusto/query/joinoperator?pivots=azuremonitor)運算子會降低整體平行處理原則。 當效能問題時，請檢查隨機聯結做為替代方案。
--    在資源範圍查詢中，預先執行的 RBAC 檢查可能會在有大量 RBAC 指派的情況下逗留。 這可能會導致較長的檢查，而導致平行處理原則。 例如，查詢是在有數千個資源的訂用帳戶上執行，而每個資源在資源層級中有許多角色指派，而不是在訂用帳戶或資源群組上。
+-    在資源範圍查詢中，預先執行的 RBAC 檢查可能會在有大量 Azure 角色指派的情況下逗留。 這可能會導致較長的檢查，而導致平行處理原則。 例如，查詢是在有數千個資源的訂用帳戶上執行，而每個資源在資源層級中有許多角色指派，而不是在訂用帳戶或資源群組上。
 -    如果查詢處理的資料量很小，則其平行處理會很低，因為系統不會將其分散到多個計算節點。
 
 

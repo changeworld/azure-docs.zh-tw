@@ -3,12 +3,12 @@ title: 設定 VMware 的 Azure Migrate 設備
 description: 瞭解如何設定 Azure Migrate 設備，以評估和遷移 VMware Vm。
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 272481640db739a458a19a2c9383ff45b54974b5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 24ba978d776da375b417fb67823651727836cb22
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112811"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386736"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>設定適用于 VMware Vm 的應用裝置
 
@@ -34,7 +34,7 @@ ms.locfileid: "86112811"
 ## <a name="download-the-ova-template"></a>下載 OVA 範本
 
 1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評量]** 中，按一下 [探索]。
-2. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [是，使用 VMWare vSphere Hypervisor]。
+2. 在 [**探索機器**  >  **是否已虛擬化？**] 中，按一下 **[是]，使用 VMware vSphere 的管理**程式。
 3. 按一下 [下載]**** 以下載 .OVA 範本檔案。
 
   ![用於下載 OVA 檔案的選項](./media/tutorial-assess-vmware/download-ova.png)
@@ -89,7 +89,7 @@ ms.locfileid: "86112811"
         - 僅支援 HTTP Proxy。
     - **時間同步**：系統會確認時間。 設備上的時間應該與網際網路時間同步，探索才能正常運作。
     - **安裝更新**： Azure Migrate 檢查是否已安裝最新的設備更新。
-    - **安裝 VDDK**： Azure Migrate 檢查是否已安裝 VMWare VSphere 虛擬磁片開發工具組（VDDK）。
+    - **安裝 VDDK**： Azure Migrate 檢查是否已安裝 VMware vSphere 虛擬磁片開發工具組（VDDK）。
         - Azure 遷移會使用 VDDK 在遷移至 Azure 期間複寫機器。
         - 從 VMware 下載 VDDK 6.7，並將下載的 zip 內容解壓縮到設備上的指定位置。
 
@@ -124,7 +124,7 @@ ms.locfileid: "86112811"
 2. 選取 [作業系統]****。
 3. 為認證提供易記名稱。
 4. 在 [使用者名稱]**** 與 [密碼]**** 中，指定至少在 VM 上具有來賓存取權的帳戶。
-5. 按一下 [新增] 。
+5. 按一下 [新增]  。
 
 一旦指定 vCenter Server 與 VM 認證 (選擇性)，請按一下 [儲存並開始探索]**** 以開始探索內部部署環境。
 

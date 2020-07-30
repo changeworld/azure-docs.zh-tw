@@ -10,12 +10,12 @@ ms.date: 02/26/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b4af9c23e2599ad666908763720a5f01303b8d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0b3890c50a476e4c3b3247db435c6032bf9bbc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805489"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417296"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>使用 Azure CLI 授權 blob 或佇列資料的存取權
 
@@ -57,7 +57,7 @@ Azure 儲存體提供 Azure CLI 的延伸模組，可讓您指定您想要如何
 1. 建立容器之前，請將 [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的許可權，才能對儲存體帳戶執行資料作業。 如需指派 RBAC 角色的詳細資訊，請參閱[在 Azure 入口網站中使用 RBAC 授與 Azure blob 和佇列資料的存取權](storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
-    > RBAC 角色指派可能需要幾分鐘的時間才能傳播。
+    > Azure 角色指派可能需要幾分鐘的時間才能傳播。
 
 1. 呼叫[az storage container create](/cli/azure/storage/container#az-storage-container-create)命令，並將 `--auth-mode` 參數設定為， `login` 以使用您的 Azure AD 認證來建立容器。 請記得以您自己的值取代角括號中的預留位置值：
 

@@ -3,16 +3,17 @@ title: Azure 轉送 Node API 概觀 | Microsoft Docs
 description: 本文概要說明 Azure 轉送服務的 Node.js API。 它也會說明如何使用 hyco-ws-ws 節點套件。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 71faa2ee143488483aff4300152aab6d1e2b2a88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 67d818a95d63b3097f81f799a287fb4c48a1cfb7
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316745"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386243"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>轉送混合式連線 Node API 概觀
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 轉送混合式連線的 [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) 節點封裝建置於並擴充[' ws '](https://www.npmjs.com/package/ws) NPM 封裝。 此封裝重新匯出該基本封裝的所有匯出，並新增新的匯出，可啟用與 Azure 轉送服務混合式連線功能整合。 
 
@@ -199,5 +200,5 @@ WebSocket.relayedConnect(
 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解 Azure 轉送，請造訪下列連結：
-* [什麼是 Azure 轉送？](relay-what-is-it.md)
+* [什麼是 Azure 轉送？](relay-what-is-it.md)(機器翻譯)
 * [可用的轉送 API](relay-api-overview.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373788"
+ms.locfileid: "87415018"
 ---
 # <a name="speech-service-release-notes"></a>語音服務版本資訊
 
@@ -28,20 +28,20 @@ ms.locfileid: "87373788"
 - **C #**：已新增非同步對話轉譯的支援。 請參閱[這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription)的檔。  
 - **JavaScript**：已為[瀏覽器](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition)和[node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition)新增說話者辨識支援。
 - **JavaScript**：已新增自動語言偵測/語言識別項的支援。 請參閱[這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript)的檔。
-- **目標-C**：已新增對多重裝置交談和交談轉譯的支援。 
+- **目標-C**：已新增對[多重裝置交談](https://docs.microsoft.com/azure/cognitive-services/speech-service/multi-device-conversation)和[交談](https://docs.microsoft.com/azure/cognitive-services/speech-service/conversation-transcription)轉譯的支援。 
 - **Python**：已在 Windows 和 Linux 上新增適用于 Python 的壓縮音訊支援。 請參閱[這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)的檔。 
 
 **Bug 修正**
 - **全部**：已修正導致 KeywordRecognizer 在辨識之後不會向前移動資料流程的問題。
 - **全部**：已修正導致從 KeywordRecognitionResult 取得的資料流程未包含關鍵字的問題。
 - **全部**：修正 SendMessageAsync 在使用者完成等待之後，不會真正透過網路傳送訊息的問題。
-- **全部**：已修正當使用者啟動多個 VoiceProfileClient：： SpeakerRecEnrollProfileAsync 但未等待他們完成時，說話者辨識 api 中的損毀。
+- **全部**：當使用者多次呼叫 VoiceProfileClient：： SpeakerRecEnrollProfileAsync 方法，且未等待來電完成時，修正說話者辨識 api 中的損毀。
 - **全部**：已修正在 VoiceProfileClient 和 SpeakerRecognizer 類別中啟用檔案記錄。
 - **JavaScript**：已修正瀏覽器最小化時的節流[問題](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74)。
 - **JavaScript**：已修正資料流程上記憶體流失的[問題](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78)。
 - **JavaScript**：已從 NODEJS 新增 OCSP 回應的快取。
 - **JAVA**：已修正導致 BigInteger 欄位一律傳回0的問題。
-- **ios**：修正併發行 Ios App Store[中的以](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702)語音 SDK 為基礎的應用程式。
+- **ios**：已修正在 IOS App Store 中發佈以語音 SDK 為基礎之應用程式的[問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702)。
 
 **範例**
 - **C + +**：[在這裡](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)新增說話者辨識的範例程式碼。
@@ -85,7 +85,7 @@ ms.locfileid: "87373788"
 
 * 改善5種語言的單字層級發音準確度。
 
-    | Language | 發音錯誤減少 |
+    | 語言 | 發音錯誤減少 |
     |---|---|
     | `en-GB` | 51% |
     | `ko-KR` | 17% |
@@ -98,7 +98,7 @@ ms.locfileid: "87373788"
 * 貨幣閱讀
     * 已修正和的貨幣讀取問題 `es-ES``es-MX`
      
-    | Language | 輸入 | 改進後的讀出 |
+    | 語言 | 輸入 | 改進後的讀出 |
     |---|---|---|
     | `es-MX` | $1.58 | un 比索 cincuenta y ocho centavos |
     | `es-ES` | $1.58 | un dólar cincuenta y ocho centavos |

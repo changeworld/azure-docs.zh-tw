@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 84166e5523cdbdb9ccebf9a0cbfc5e4dee0eb9e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981323"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387127"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：使用來自 Azure Key Vault 的客戶管理金鑰來啟用透明資料加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "85981323"
 - 建立要用於 TDE 的 Azure Key Vault 和金鑰。
   - [使用硬體安全性模組 (HSM) 與 Key Vault 的指示](../../key-vault/keys/hsm-protected-keys.md)
     - 金鑰保存庫必須具有下列屬性才能用於 TDE：
-  - 虛[刪除](../../key-vault/general/overview-soft-delete.md)和清除保護
+  - 虛[刪除](../../key-vault/general/soft-delete-overview.md)和清除保護
 - 金鑰必須具有下列屬性才能用於 TDE：
   - 沒有到期日
   - 未停用

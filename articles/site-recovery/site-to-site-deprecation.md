@@ -2,18 +2,18 @@
 title: 使用 Azure Site Recovery 在客戶管理的網站（含 VMM）之間淘汰嚴重損壞修復Microsoft Docs
 description: 有關使用 Hyper-v 在客戶擁有的網站與從 SCVMM 管理的網站之間的 DR 即將淘汰的詳細資料，以及其他選項
 services: site-recovery
-author: rajani-janaki-ram
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: rajanaki
-ms.openlocfilehash: 501cf161a22aaa1ec37abda2b750106b6eaf3dc4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 9ffe7a3158b1de6828350947dcf81ef41d08708d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135217"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421836"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客戶管理的網站（與 VMM）之間淘汰嚴重損壞修復
 

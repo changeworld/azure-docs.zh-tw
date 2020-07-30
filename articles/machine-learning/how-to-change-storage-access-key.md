@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 1cb9600393fe50226da1efcef550cbb8b26f7f14
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6b8f9d7f99d49f65a45d0e09623ef2f0e1217f2
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321583"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387059"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>重新產生儲存體帳戶存取金鑰
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "87321583"
 基於安全考慮，您可能需要變更 Azure 儲存體帳戶的存取金鑰。 當您重新產生存取金鑰時，必須將 Azure Machine Learning 更新為使用新的金鑰。 Azure Machine Learning 可能會同時針對模型儲存體和資料存放區使用儲存體帳戶。
 
 > [!IMPORTANT]
-> 使用資料存放區已註冊的認證會儲存在與工作區相關聯的 Azure Key Vault 中。 如果您已為您的 Key Vault 啟用虛[刪除](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)，請務必遵循這篇文章來更新認證。 取消註冊資料存放區，並以相同名稱重新註冊，將會失敗。
+> 使用資料存放區已註冊的認證會儲存在與工作區相關聯的 Azure Key Vault 中。 如果您已為您的 Key Vault 啟用虛[刪除](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)，請務必遵循這篇文章來更新認證。 取消註冊資料存放區，並以相同名稱重新註冊，將會失敗。
 
 ## <a name="prerequisites"></a>Prerequisites
 

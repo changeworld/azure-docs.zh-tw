@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8584ca84efc889afebe6758e254bda845912316
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639856"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418231"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>使用登入報告來檢閱 Azure Multi-Factor Authentication 事件
 
@@ -44,7 +44,7 @@ ms.locfileid: "83639856"
 
     事件詳細資料的 [驗證詳細資料] 或 [條件式存取] 索引標籤會顯示狀態碼或觸發 MFA 提示的原則。
 
-    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
+    [![Azure 入口網站中範例 Azure Active Directory 登入報告的螢幕擷取畫面](media/howto-mfa-reporting/sign-in-report-cropped.png)](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
 在適用的情況下，會顯示驗證方式，例如簡訊、Microsoft Authenticator 應用程式通知或撥打電話。
 
@@ -145,8 +145,8 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 | FAILED_INVALID_EXTENSION | 分機號碼無效 | 分機號碼包含無效的字元。  允許的字元僅限數字、逗號、* 及 #。  前面還可以加上 @。 |
 | FAILED_FRAUD_CODE_ENTERED | 已輸入詐騙代碼 | 在導致系統拒絕驗證並封鎖電話號碼的通話期間，使用者已選擇回報詐騙。| 
 | FAILED_SERVER_ERROR | 無法撥打電話 | Multi-Factor Authentication 服務無法撥打電話。 |
-| FAILED_SMS_NOT_SENT | 無法傳送簡訊 | 無法傳送簡訊。  驗證遭到拒絕。 |
-| FAILED_SMS_OTP_INCORRECT | 簡訊 OTP 不正確 | 使用者從收到的簡訊所輸入一次性密碼 (OTP) 不正確。  驗證遭到拒絕。 |
+| FAILED_SMS_NOT_SENT | 無法傳送簡訊 | 無法傳送簡訊。 驗證遭到拒絕。 |
+| FAILED_SMS_OTP_INCORRECT | 簡訊 OTP 不正確 | 使用者從收到的簡訊所輸入一次性密碼 (OTP) 不正確。 驗證遭到拒絕。 |
 | FAILED_SMS_OTP_PIN_INCORRECT | 簡訊 OTP + PIN 不正確 | 使用者輸入的一次性密碼 (OTP) 及/或使用者 PIN 不正確。  驗證遭到拒絕。 |
 | FAILED_SMS_MAX_OTP_RETRY_REACHED | 已超過簡訊 OTP 嘗試次數上限 | 使用者已超過一次性密碼 (OTP) 嘗試次數上限。 |
 | FAILED_PHONE_APP_DENIED | 拒絕行動裝置應用程式 | 使用者已按下 [拒絕] 按鈕，在行動裝置應用程式中拒絕驗證。 |

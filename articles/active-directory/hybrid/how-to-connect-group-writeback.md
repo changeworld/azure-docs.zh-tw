@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7992563bdfb318867e963ed4f371998bafbbbcdb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c8fb54261f51d74f02b7b79c27f7a2043426686
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019908"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385138"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect 群組回寫
 
@@ -34,13 +34,13 @@ ms.locfileid: "87019908"
 
 1. 開啟 Azure AD Connect wizard，選取 [**設定**]，然後按 **[下一步]**。
 2. 選取 **[自訂同步處理選項**]，然後按 **[下一步]**。
-3. 在 [連線**至 Azure AD]** 頁面上，輸入您的認證。 按 [下一步]  。
+3. 在 [連線**至 Azure AD]** 頁面上，輸入您的認證。 按 [下一步] 。
 4. 在 [**選用功能**] 頁面上，確認您先前設定的選項仍為選取狀態。
 5. 選取 [**群組回寫**]，然後按 **[下一步]**。
 6. 在 [**回寫] 頁面**上，選取 Active Directory 的組織單位（OU），將從 Office 365 同步處理的物件儲存到您的內部部署組織，然後按 **[下一步]**。
 7. 在 [**準備好**設定] 頁面上，按一下 [**設定**]。
 8. 當 wizard 完成時，按一下 [設定完成] 頁面**上的 [** 結束]。
-9. 在 Azure Active Directory Connect 伺服器上開啟 Windows PowerShell，然後執行下列命令。
+9. 以 Azure Active Directory Connect 伺服器上的系統管理員身分開啟 Windows PowerShell，然後執行下列命令。
 
 ```Powershell
 $AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>
@@ -61,7 +61,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnect
 
    ![取消核取核取方塊](media/how-to-connect-group-writeback/group2.png)
   
-3. 按 [下一步]  。
+3. 按 [下一步] 。
 4. 按一下 [設定]****。
 
  >[!NOTE]

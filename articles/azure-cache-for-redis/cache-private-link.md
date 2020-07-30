@@ -6,25 +6,28 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5db756b60330cdac4e43e13bfe29d9397f87af50
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337257"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421649"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure Cache for Redis 與 Azure 私人連結（預覽）
 Azure 私用端點是一種網路介面，可讓您私下且安全地連線到 azure Cache for Redis （由 Azure 私用連結提供技術支援）。 
 
 在本文中，您將瞭解如何使用 Azure 入口網站來建立 Azure 快取、Azure 虛擬網路和私人端點。  
 
-## <a name="prerequisites"></a>先決條件
+> [!IMPORTANT]
+> 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱[Microsoft Azure 預覽的補充使用規定。](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
+> 
+
+## <a name="prerequisites"></a>必要條件
 * Azure 訂用帳戶- [免費建立一個](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-  > 這項功能目前為預覽狀態，如果您有興趣，[請洽詢我們](mailto:azurecache@microsoft.com)。
-  >
-
+> 這項功能目前為預覽狀態，如果您有興趣，[請洽詢我們](mailto:azurecache@microsoft.com)。
+>
 
 ## <a name="create-a-cache"></a>建立快取
 1. 若要建立快取，請登入 [Azure 入口網站](https://portal.azure.com)，然後選取 [建立資源]****。 
@@ -124,7 +127,7 @@ Azure 私用端點是一種網路介面，可讓您私下且安全地連線到 a
     | 訂用帳戶 | 下拉並選取您的訂用帳戶。 |
     | 資源群組 | 下拉並選取資源群組。 |
     | **執行個體詳細資料** |  |
-    | Name |輸入私人端點的 [名稱]。  |
+    | 名稱 |輸入私人端點的 [名稱]。  |
     | 區域 |下拉並選取位置。 |
     |||
 

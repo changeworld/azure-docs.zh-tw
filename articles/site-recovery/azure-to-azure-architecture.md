@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135866"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421445"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
 
@@ -96,13 +96,13 @@ Site Recovery 會依照下列方式建立快照集：
 
 ### <a name="crash-consistent"></a>絕對一致
 
-**描述** | **詳細資料** | **建議**
+**說明** | **詳細資料** | **建議**
 --- | --- | ---
 絕對一致的快照集會擷取在快照建立時位於磁碟上的資料。 其中不含記憶體中的任何資料。<br/><br/> 其中所含的資料，相當於設若在建立快照集時發生 VM 當機的狀況，或從伺服器上拔開電源線，所將存在於磁碟上的資料。<br/><br/> 「絕對一致」並不保證資料在作業系統上或 VM 的應用程式間可保有一致性。 | Site Recovery 依預設會每五分鐘建立一次絕對一致復原點。 此設定無法修改。<br/><br/>  | 現在，大部分的應用程式都可以從絕對一致復原點妥善復原。<br/><br/> 對作業系統的複寫，以及 DHCP 伺服器和列印伺服器之類的應用程式而言，使用絕對一致復原點通常就已足夠。
 
 ### <a name="app-consistent"></a>應用程式一致
 
-**描述** | **詳細資料** | **建議**
+**說明** | **詳細資料** | **建議**
 --- | --- | ---
 應用程式一致復原點可從應用程式一致快照集建立。<br/><br/> 應用程式一致的快照集包含絕對一致快照集中的所有資訊，以及記憶體和進行中的交易所包含的所有資料。 | 應用程式一致快照集會使用磁碟區陰影複製服務 (VSS)：<br/><br/>   1) 在起始快照集時，VSS 會在磁碟區上執行「寫入時複製」(COW) 作業。<br/><br/>   2) 在執行 COW 之前，VSS 會通知機器上的每個應用程式它需要將其記憶體常駐資料排清到磁碟。<br/><br/>   3) 接著，VSS 會允許備份/災害復原應用程式 (在此案例中為 Site Recovery) 讀取快照集資料並繼續執行。 | 應用程式一致快照集會依據您指定的頻率建立。 此頻率一律應小於您的保留復原點設定。 例如，如果您使用預設設定 24 小時來保留復原點，您所設定的頻率就應該小於 24 小時。<br/><br/>此類快照集比絕對一致快照集更複雜，且需要較長的時間才能完成。<br/><br/> 在 VM 上執行且已啟用複寫的應用程式，效能將會受其影響。 
 
@@ -128,14 +128,14 @@ Site Recovery 會依照下列方式建立快照集：
 
 如果使用 URL 來控制 VM 的輸出存取，請允許這些 URL。
 
-| **URL** | **詳細資料** |
-| ------- | ----------- |
-| *.blob.core.windows.net | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
-| login.microsoftonline.com | 提供 Site Recovery 服務 URL 的授權和驗證。 |
-| *.hypervrecoverymanager.windowsazure.com | 允許 VM 與 Site Recovery 服務進行通訊。 |
-| *.servicebus.windows.net | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
-| *.vault.azure.net | 允許存取透過入口網站啟用已啟用 ADE 之虛擬機器的複寫
-| *. automation.ext.azure.com | 允許透過入口網站為複寫的專案啟用自動升級行動代理程式
+| **名稱**                  | **商業**                               | **政府**                                 | **說明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
+| 複寫               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | 允許 VM 與 Site Recovery 服務進行通訊。 |
+| 服務匯流排               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
+| Key Vault                 | `*.vault.azure.net`                        | `*.vault.usgovcloudapi.net`                  | 允許存取透過入口網站啟用已啟用 ADE 之虛擬機器的複寫 |
+| Azure 自動化          | `*.automation.ext.azure.com`               | `*.azure-automation.us`                      | 允許透過入口網站為複寫的專案啟用自動升級行動代理程式 |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
 

@@ -1,17 +1,15 @@
 ---
 title: 有關 Azure Functions 網路功能的常見問題
 description: 解決一些最常見的問題，以及 Azure Functions 的網路功能案例的解答。
-author: alexkarcher-msft
 ms.topic: troubleshooting
 ms.date: 4/11/2019
-ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 7d3493cc76dfb05cca3c89114b279b99ab49bac2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52e0a6f9261d89ecd7c660be118162a898988526
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081639"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385903"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>有關 Azure Functions 網路功能的常見問題
 

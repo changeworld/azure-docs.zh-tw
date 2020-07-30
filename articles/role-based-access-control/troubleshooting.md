@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/24/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: bf8fa174611c7173c957ded49ff9135f90cebc08
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287209"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382571"
 ---
 # <a name="troubleshoot-azure-rbac"></a>針對 Azure RBAC 進行疑難排解
 
@@ -61,7 +61,7 @@ $ras.Count
 
     如果您收到「許可權不足，無法完成作業」錯誤，可能是因為 Azure CLI 嘗試在 Azure AD 中查閱「受託者」身分識別，而服務主體預設無法讀取 Azure AD。
 
-    有兩種方式可以解決此錯誤。 第一種方式是將[目錄讀取](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)者角色指派給服務主體，讓它能夠讀取目錄中的資料。 您也可以授與[目錄。](https://docs.microsoft.com/graph/permissions-reference) Microsoft Graph 中的擁有權限。
+    有兩種方式可以解決此錯誤。 第一種方式是將[目錄讀取](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)者角色指派給服務主體，讓它能夠讀取目錄中的資料。
 
     解決這個錯誤的第二個方法是使用 `--assignee-object-id` 參數（而非）來建立角色指派 `--assignee` 。 藉由使用 `--assignee-object-id` ，Azure CLI 將會略過 Azure AD 查閱。 您將需要取得要指派角色的使用者、群組或應用程式的物件識別碼。 如需詳細資訊，請參閱[使用 Azure CLI 新增或移除 Azure 角色指派](role-assignments-cli.md#new-service-principal)。
 

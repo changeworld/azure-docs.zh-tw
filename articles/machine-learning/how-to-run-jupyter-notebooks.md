@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: c794b87a88cec20b75923e1f251c1e309a43ef1c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319587"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386447"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作區中執行 Jupyter Notebook
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -185,11 +185,20 @@ ms.locfileid: "87319587"
 筆記本會自動尋找連線的計算執行個體上安裝的所有 Jupyter 核心程序。  將核心程序加入計算執行個體：
 
 1. 選取 [筆記本] 工具列中的[**開啟終端機**](#terminal)。
-1. 使用終端機視窗建立新的環境。
+1. 使用終端機視窗建立新的環境。  例如，下列程式碼會建立 `newenv` ：
+    ```shell
+    conda create --name newenv
+    ```
 1. 啟用環境。  例如，建立 `newenv` 之後：
 
     ```shell
-    source activate newenv
+    conda activate newenv
+    ```
+1. 將 pip 和 ipykernel 套件安裝到新環境，並建立該 conda env 的核心
+
+    ```shell
+    conda install pip
+    conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 

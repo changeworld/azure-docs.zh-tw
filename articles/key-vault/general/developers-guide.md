@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090530"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386209"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -122,7 +122,7 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 的概觀和概念
 
-- [Key Vault 虛刪除行為](overview-soft-delete.md)）描述一項功能，可讓您復原已刪除的物件，不論是意外或故意刪除。
+- [Key Vault 虛刪除行為](soft-delete-overview.md)）描述一項功能，可讓您復原已刪除的物件，不論是意外或故意刪除。
 - [Key Vault 用戶端節流](overview-throttling.md)可讓您了解節流的基本概念，並提供適用於您應用程式的方法。
 - [Key Vault 儲存體帳戶金鑰總覽](../secrets/overview-storage-keys.md)）描述 Key Vault 整合 Azure 儲存體帳戶金鑰。
 - [Key Vault 安全世界](overview-security-worlds.md)描述地區和安全區域之間的關聯性。

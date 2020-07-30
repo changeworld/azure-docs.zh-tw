@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189457"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421734"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的疑難排解和限制
 
@@ -122,7 +122,7 @@ Cloud Shell 支援下列最新版的瀏覽器：
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="usage-limits"></a>使用限制
+### <a name="usage-limits"></a>使用方式限制
 
 Cloud Shell 主要用於互動式的使用案例。 因此，任何長時間執行而沒有互動的工作階段會在不發出警告的情況下結束。
 
@@ -141,26 +141,6 @@ Cloud Shell 主要用於互動式的使用案例。 因此，任何長時間執�
 ### <a name="preview-version-of-azuread-module"></a>AzureAD 模組的預覽版
 
 以 .NET Standard 為基礎的模組目前有預覽版 `AzureAD.Standard.Preview` 可供使用。 此模組提供與 `AzureAD` 相同的功能。
-
-### <a name="sqlserver-module-functionality"></a>`SqlServer` 模組功能
-
-包含在 Cloud Shell 中的 `SqlServer` 模組只提供發行前版本的 PowerShell Core 支援。 具體來說，`Invoke-SqlCmd` 目前還無法使用。
-
-### <a name="default-file-location-when-created-from-azure-drive"></a>從 Azure 磁碟機建立時的預設檔案位置
-
-使用 PowerShell Cmdlet 時，使用者無法在 Azure 磁碟機底下建立檔案。 當使用者使用其他工具 (例如 vim 或 nano) 來建立新檔案時，檔案預設會儲存至 `$HOME` 資料夾。
-
-### <a name="tab-completion-can-throw-psreadline-exception"></a>Tab 鍵自動完成可能擲回 PSReadline 例外狀況
-
-如果使用者的 PSReadline EditMode 設定為 Emacs，並且嘗試透過 Tab 鍵自動完成來顯示所有可能的值，但視窗尺寸過小而無法顯示所有可能值，PSReadline 就會擲回例外狀況。
-
-### <a name="large-gap-after-displaying-progress-bar"></a>顯示進度列之後出現過大間距
-
-如果命令或使用者動作顯示進度列，而使 Tab 鍵在 `Azure:` 磁碟機中自動完成，則可能會因為資料指標設定錯誤，導致先前進度列的所在位置出現間隔。
-
-### <a name="random-characters-appear-inline"></a>隨機出現內嵌字元
-
-資料指標位置序列程式碼 (如 `5;13R`)，可能會出現在使用者輸入的內容中。 可以手動移除這些字元。
 
 ## <a name="personal-data-in-cloud-shell"></a>Cloud Shell 中的個人資料
 

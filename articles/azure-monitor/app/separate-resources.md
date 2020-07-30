@@ -3,18 +3,18 @@ title: 如何設計 Application Insights 部署 (一或多個資源)？
 description: 將遙測導向開發、測試和生產戳記的不同資源。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 159a1c5554c0ac017bc9eeb2e9df65fddba334ba
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4f539862432fcdc67632e91caadf71d6584fbc3e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326540"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420561"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>我應該部署多少 Application Insights 資源
 
-當您在開發下一版 Web 應用程式時，您不會想看到新版與已發行版本的 [Application Insights](./app-insights-overview.md) 遙測混合在一起。 為了避免混淆，請將不同開發階段的遙測，以不同的檢測金鑰 (ikey) 傳送到不同的 Application Insights 資源。 為了能夠在版本移到另一個階段時更輕鬆地變更檢測金鑰，您可以將 ikey 設定在程式碼中 (而不是設定在組態檔中)。
+當您在開發下一版 Web 應用程式時，您不會想看到新版與已發行版本的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 遙測混合在一起。 為了避免混淆，請將不同開發階段的遙測，以不同的檢測金鑰 (ikey) 傳送到不同的 Application Insights 資源。 為了能夠在版本移到另一個階段時更輕鬆地變更檢測金鑰，您可以將 ikey 設定在程式碼中 (而不是設定在組態檔中)。
 
-(如果您的系統是「Azure 雲端服務」，有[另一個設定個別 ikey 的方法](./cloudservices.md))。
+(如果您的系統是「Azure 雲端服務」，有[另一個設定個別 ikey 的方法](../../azure-monitor/app/cloudservices.md))。
 
 ## <a name="about-resources-and-instrumentation-keys"></a>關於資源和檢測金鑰
 
@@ -35,7 +35,7 @@ ms.locfileid: "87326540"
 
 ### <a name="other-things-to-keep-in-mind"></a>要牢記在心的其他事項
 
--   您可能需要加入自訂程式碼，才能確保在 [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) 屬性中設定有意義的值。 如果沒有為此屬性設定有意義的值，*任何*入口網站體驗都不會有任何作用。
+-   您可能需要加入自訂程式碼，才能確保在 [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name) 屬性中設定有意義的值。 如果沒有為此屬性設定有意義的值，*任何*入口網站體驗都不會有任何作用。
 - SDK 會針對 Service Fabric 應用程式和傳統雲端服務，自動從 Azure 角色環境讀取並進行這些設定。 置於其他所有類型的應用程式，您可能需要明確地進行這個設定。
 -   即時計量體驗不支援依角色名稱分割。
 
@@ -58,7 +58,7 @@ protected void Application_Start()
 在此範例中，不同資源的 ikeys 會放置在不同版本的 Web 組態檔中。 交換 Web 組態檔 (您可以在發行指令碼中進行) 將會交換目標資源。
 
 ### <a name="web-pages"></a>網頁
-iKey 也會用在您的應用程式網頁中，在[您從快速啟動窗格取得的指令碼](./javascript.md)中。 不要按其原義編寫至指令碼，請從伺服器狀態產生。 例如，在 ASP.NET 應用程式中：
+iKey 也會用在您的應用程式網頁中，在[您從快速啟動窗格取得的指令碼](../../azure-monitor/app/javascript.md)中。 不要按其原義編寫至指令碼，請從伺服器狀態產生。 例如，在 ASP.NET 應用程式中：
 
 ```javascript
 <script type="text/javascript">
@@ -86,14 +86,14 @@ var appInsights = window.appInsights || function(config){ ...
 ## <a name="filter-on-build-number"></a>篩選組建編號
 當您發佈新的 App 版本時，希望能夠將不同組建的遙測分開。
 
-您可以設定 [應用程式版本] 屬性，如此便能篩選[搜尋](./diagnostic-search.md)和[計量總管](../platform/metrics-charts.md)的結果。
+您可以設定 [應用程式版本] 屬性，如此便能篩選[搜尋](../../azure-monitor/app/diagnostic-search.md)和[計量總管](../../azure-monitor/platform/metrics-charts.md)的結果。
 
 設定 [應用程式版本] 屬性有幾種不同的方法。
 
 * 直接設定：
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* 在 [遙測初始設定式](./api-custom-events-metrics.md#defaults) 中將該行換行，以確保會以一致性方式設定所有 TelemetryClient 執行個體。
+* 在 [遙測初始設定式](../../azure-monitor/app/api-custom-events-metrics.md#defaults) 中將該行換行，以確保會以一致性方式設定所有 TelemetryClient 執行個體。
 * [ASP.NET] 在 `BuildInfo.config`中設定版本。 Web 模組將會從 BuildLabel 節點取得版本。 在您的專案中包含此檔案， 而且記得要在 [方案總管] 中設定 [永遠複製] 屬性。
 
     ```XML
@@ -132,15 +132,14 @@ var appInsights = window.appInsights || function(config){ ...
 </PropertyGroup>
 ```
 
-當它有組建資訊時，Application Insights Web 模組會自動新增 **應用程式版本** ，做為每個遙測項目的屬性。 如此可讓您在執行[診斷搜尋](./diagnostic-search.md)或在[探索計量](../platform/metrics-charts.md)時，依據版本來篩選。
+當它有組建資訊時，Application Insights Web 模組會自動新增 **應用程式版本** ，做為每個遙測項目的屬性。 如此可讓您在執行[診斷搜尋](../../azure-monitor/app/diagnostic-search.md)或在[探索計量](../../azure-monitor/platform/metrics-charts.md)時，依據版本來篩選。
 
 但請注意，組建版本號碼只由 Microsoft Build Engine 產生，而不是由 Visual Studio 的開發人員組建產生。
 
 ### <a name="release-annotations"></a>版本註解
-如果您使用 Azure DevOps，您可以[取得註解標記](./annotations.md) (每當發行新版本時，此標記就會新增至您的圖表)。 
+如果您使用 Azure DevOps，您可以[取得註解標記](../../azure-monitor/app/annotations.md) (每當發行新版本時，此標記就會新增至您的圖表)。 
 
 ## <a name="next-steps"></a>後續步驟
 
-* [多個角色的共用資源](./app-map.md)
-* [建立遙測初始設定式來區分 A |B 變體](./api-filtering-sampling.md#add-properties)
-
+* [多個角色的共用資源](../../azure-monitor/app/app-map.md)
+* [建立遙測初始設定式來區分 A |B 變體](../../azure-monitor/app/api-filtering-sampling.md#add-properties)

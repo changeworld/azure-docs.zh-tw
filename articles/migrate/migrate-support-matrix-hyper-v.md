@@ -3,12 +3,12 @@ title: 支援 Azure Migrate 中的 Hyper-v 評估
 description: 瞭解 Azure Migrate Server 評估的 Hyper-v 評估支援
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 2cf13904a3642b8b91d61c84bb1c51cbb97f0846
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 563a98162a2453ac1c96baf9f04500ee880e0ce5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324806"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420952"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-v 評估的支援矩陣
 
@@ -34,7 +34,7 @@ ms.locfileid: "87324806"
 
 | **支援**                | **詳細資料**               
 | :-------------------       | :------------------- |
-| **Hyper-V 主機**       | Hyper-v 主機可以是獨立的，或部署在叢集中。<br/><br/> Hyper-v 主機可以執行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。<br/> 您無法評估位於執行 Windows Server 2012 的 Hyper-V 主機上的 VM。
+| **Hyper-V 主機**       | Hyper-v 主機可以是獨立的，或部署在叢集中。<br/><br/> Hyper-v 主機可以執行 Windows Server 2019、Windows Server 2016 或 Windows Server 2012 R2。 此外，也支援 Windows Server 2016 和 Windows Server 2012 R2 的 Server core 安裝。 <br/>您無法評估位於執行 Windows Server 2012 的 Hyper-V 主機上的 VM。
 | **權限**           | 您需要 Hyper-v 主機的系統管理員許可權。 <br/> 如果您不想要指派系統管理員許可權，請建立本機或網域使用者帳戶，並將使用者帳戶新增至這些群組-遠端系統管理使用者、Hyper-v 系統管理員和效能監視器使用者。 |
 | **PowerShell 遠端**   | 必須在每部 Hyper-v 主機上啟用[PowerShell 遠端](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7)。 |
 | **Hyper-V 複本**       | 如果您使用 Hyper-v 複本（或您有多個 vm 具有相同的 VM 識別碼），而且您使用 Azure Migrate 探索原始和複寫的 Vm，則 Azure Migrate 所產生的評量可能不正確。 |

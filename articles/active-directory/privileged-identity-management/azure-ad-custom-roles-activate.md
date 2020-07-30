@@ -16,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f389bfe19eb6dde5416d8cba0b67d964e69bc860
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 398db465a6cc383f8869c549761afc0947e7ed03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743162"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421156"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>在 Privileged Identity Management (PIM) 中啟用 Azure AD 自訂角色
 
@@ -30,7 +30,7 @@ Azure Active Directory (Azure AD) 中的 Privileged Identity Management 現在�
 > [!NOTE]
 > 在預覽期間，Azure AD 自訂角色不會與內建目錄角色整合。 在功能正式推出後，角色管理就會在內建角色體驗中進行。 如果您看到下列橫幅，這些角色應該[以內建角色的體驗](pim-how-to-activate-role.md)進行管理，本文並不適用：
 >
-> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+> :::image type="content" source="media/pim-how-to-add-role-to-user/pim-new-version.png" alt-text="選取 Azure AD 中的 Privileged Identity Management。" lightbox="media/pim-how-to-add-role-to-user/pim-new-version.png":::
 
 ## <a name="activate-a-role"></a>啟用角色
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) 中的 Privileged Identity Management 現在�
    ![查看符合資格的 Azure AD 自訂角色指派清單](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
 
 > [!Note] 
->  指派角色之前，您必須建立/設定角色。 如需有關設定 AAD 自訂角色的進一步資訊，請參閱 [這裡] （https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure)
+> 指派角色之前，您必須建立/設定角色。 如需有關設定 AAD 自訂角色的進一步資訊，請參閱[在 Privileged Identity Management 中設定 Azure AD 自訂角色](azure-ad-custom-roles-configure.md)。
 
 1. 在 [Azure AD 自訂角色 (預覽)]**** 頁面上，尋找您需要的指派。
 1. 選取 [啟用您的角色]****，以開啟 [啟用]**** 頁面。

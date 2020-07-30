@@ -6,16 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: 68416fa91f6b75fb3ef2b91c1297f13d84f2bdab
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/29/2020
+ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292954"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420221"
 ---
-<a name="create-or-modify-an-offer"></a>建立或修改供應項目
-=========================
+# <a name="create-or-modify-an-offer"></a>建立或修改供應項目
 
 > [!NOTE]
 > Cloud Partner 入口網站 Api 會與整合，並會繼續在合作夥伴中心運作。 轉換會引進微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](./cloud-partner-portal-api-overview.md)中所列的變更，以確保您的程式碼在轉換至合作夥伴中心後繼續運作。 只有在轉換至合作夥伴中心之前已整合的現有產品，才應該使用 CPP Api;新產品應使用合作夥伴中心提交 Api。
@@ -24,9 +23,7 @@ ms.locfileid: "87292954"
 
   `PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31`
 
-
-<a name="uri-parameters"></a>URI 參數
---------------
+## <a name="uri-parameters"></a>URI 參數
 
 |  **名稱**         |  **說明**                      |  **Data type**  |
 |  --------         |  ----------------                     |  -------------  |
@@ -35,8 +32,7 @@ ms.locfileid: "87292954"
 | api-version       |  API 的最新版本            |   Date           |
 |  |  |  |
 
-<a name="header"></a>頁首
-------
+## <a name="header"></a>頁首
 
 |  **名稱**        |  **ReplTest1**               |
 |  ---------       |  ----------              | 
@@ -44,9 +40,7 @@ ms.locfileid: "87292954"
 | 授權    | `Bearer YOUR_TOKEN`      |
 |  |  |
 
-
-<a name="body-example"></a>本文範例
-------------
+## <a name="body-example"></a>本文範例
 
 下列範例會建立 offerID 為 `contosovirtualmachine` 的供應項目。
 
@@ -143,7 +137,6 @@ ms.locfileid: "87292954"
       "version": 5
   }
 ```
-
 
 ### <a name="response"></a>回應
 
@@ -268,7 +261,6 @@ ms.locfileid: "87292954"
 > [!NOTE]
 > 若要修改此供應項目，請在上述要求中加入 **If-Match** 標頭 (設定為 *)。 使用與上述相同的要求主體，但根據需要修改值。 
 
-
 ### <a name="response-status-codes"></a>回應狀態碼
 
 | **Code**  |  **說明**                                                                            |
@@ -281,8 +273,275 @@ ms.locfileid: "87292954"
 |  412      | 伺服器不符合其中一個申請者在要求中指定的先決條件。 用戶端應該檢查與要求一起傳送的 ETAG。 |
 |  |  |
 
-
-<a name="uploading-artifacts"></a>正在上傳成品
--------------------
+## <a name="uploading-artifacts"></a>正在上傳成品
 
 成品 (例如影像和標誌) 應該透過將它們上傳至 Web 上可存取的位置來共用，然後將每個成品包含在 PUT 要求中作為 URI，如上述範例所示。 系統會偵測到這些檔案不存在 Azure Marketplace 儲存體中，並將這些檔案下載到儲存體中。  因此，您會發現未來的 GET 要求將會傳回這些檔案的 Azure Marketplace 服務 URL。
+
+## <a name="categories-and-industries"></a>類別和產業
+
+建立新的供應專案時，您必須在 marketplace 中指定供應專案的類別。 或者，針對某些供應專案類型，您也可以指定產業。 根據供應專案類型，使用下表中的特定金鑰值，提供適用于供應專案的類別/產業。
+
+### <a name="azure-marketplace-categories"></a>Azure Marketplace 類別
+
+這些類別及其各自的金鑰適用于 Azure 應用程式、虛擬機器、核心虛擬機器、容器、容器應用程式、IoT Edge 模組和 SaaS 供應專案類型。 粗體斜體（例如***分析***）中的專案是分類，而標準文字專案（例如資料深入解析）則是其底下的子類別。 使用精確的索引鍵值，而不變更間距或大小寫。
+
+| 類別 | SaaS 金鑰 | Azure App 金鑰 | 虛擬機器，容器，容器應用程式，IoT Edge 模組，核心虛擬機器金鑰 |
+| --- | --- | --- | --- |
+| ***分析*** | ***分析*** | ***分析-azure-應用程式*** | ***分析-amp*** |
+| 資料見解 | 資料深入解析 | 資料深入解析 | 資料深入解析 |
+| 資料分析 | 資料分析 | 資料分析 | 資料分析 |
+| 巨量資料 | big-資料 | bigData | big-資料 |
+| 預測性分析 | 預測性分析 | 預測性分析 | 預測性分析 |
+| 即時/串流分析 | 即時串流分析 | 即時串流分析 | 即時串流分析 |
+| 其他 | 其他 | 其他-分析 | 其他 |
+| ***AI + Machine Learning*** | ***ArtificialIntelligence*** | ***ai-plus-機器學習*** | ***ai-plus-機器學習*** |
+| Bot 服務 | bot-服務 | bot-服務 | bot-服務 |
+| 認知服務 | 認知服務 | 認知服務 | 認知服務 |
+| ML 服務 | ml-服務 | ml-服務 | ml-服務 |
+| 自動化 ML | 自動化-ml | 自動化-ml | 自動化-ml |
+| 商務/機器人流程自動化 | 業務機器人-進程-自動化 | 業務機器人-進程-自動化 | 業務機器人-進程-自動化 |
+| 標示的資料 | 資料-標示 | 資料-標示 | 資料-標示 |
+| 資料準備 | 資料準備 | 資料準備 | 資料準備 |
+| 知識挖掘 | 知識-挖掘 | 知識-挖掘 | 知識-挖掘 |
+| ML 作業 | ml-作業 | ml-作業 | ml-作業 |
+| 其他 | 其他-AI 和機器學習 | 其他 | 其他 |
+| ***區塊鏈*** | ***區塊鏈*** | ***區塊鏈*** | ***區塊鏈*** |
+| 應用程式加速器 | 應用程式加速器 | 應用程式加速器 | 應用程式加速器 |
+| 單一節點的總帳 | 單一節點-總帳 | 單一節點-總帳 | 單一節點-總帳 |
+| 多節點總帳 | 多節點-總帳 | 多節點-總帳 | 多節點-總帳 |
+| 工具 | tools | tools | tools |
+| 其他 | 其他 | 其他 | 其他 |
+| ***計算*** | ***計算-saas*** | ***計算-azure-應用程式*** | ***密集型*** |
+| 應用程式基礎結構 | appInfra | appInfrastructure | 應用程式-基礎結構 |
+| 作業系統 | clientOS | clientOS | 作業系統 |
+| 快取 | 快取 | 快取 | 快取 |
+| 其他 | 其他-計算 | 其他-計算 | 其他 |
+| ***容器*** | ***那裡*** | ***那裡*** | ***那裡*** |
+| 容器應用程式 | 容器-應用程式 | 容器-應用程式 | 容器-應用程式 |
+| 容器映像 | 容器-映射 | 容器-映射 | 容器-映射 |
+| 開始使用容器 | 入門-使用-容器 | 入門-使用-容器 | 入門-使用-容器 |
+| 其他 | 其他 | 其他 | 其他 |
+| ***資料庫*** | ***資料庫-saas*** | ***database*** | ***資料庫*** |
+| NoSQL 資料庫 | nosql-資料庫 | nosql-資料庫 | nosql-資料庫 |
+| 關聯式資料庫 | 關聯式-資料庫 | 關聯式-資料庫 | 關聯式-資料庫 |
+| 總帳/區塊鏈資料庫 | 總帳-區塊鏈-資料庫 | 總帳-區塊鏈-資料庫 | 總帳-區塊鏈-資料庫 |
+| 資料 Lake | 資料-lake | 資料-lake | 資料-lake |
+| 資料倉儲 (data warehouse) | 資料-倉儲 | 資料-倉儲 | 資料-倉儲 |
+| 其他 | 其他-資料庫 | 其他-資料庫 | 其他 |
+| ***開發人員工具*** | ***開發人員工具-saas*** | ***開發人員工具-azure-應用程式*** | ***開發人員工具*** |
+| 工具 | 工具-開發人員-工具 | 工具-開發人員-工具 | 工具-開發人員-工具 |
+| 指令碼 | 指令碼 | 指令碼 | 指令碼 |
+| 開發人員服務 | devService | devService | 開發人員-服務 |
+| 其他 | 其他開發人員工具 | 其他開發人員工具 | 其他 |
+| ***DevOps*** | ***devops*** | ***devops*** | ***devops*** |
+| 其他 | 其他 | 其他 | 其他 |
+| ***身分識別*** | ***身分識別*** | ***身分識別*** | ***身分識別*** |
+| 存取管理 | 存取管理 | 存取管理 | 存取管理 |
+| 其他 | 其他 | 其他 | 其他 |
+| ***整合*** | ***整合*** | ***整合*** | ***整合*** |
+| Messaging (傳訊) | 傳訊 | 傳訊 | 傳訊 |
+| 其他 | 其他 | 其他 | 其他 |
+| ***物聯網*** | ***IoT*** | ***物聯網-azure-應用程式*** | ***物聯網*** |
+| IoT 核心版服務 | N/A | iot-核心-服務 | iot-核心-服務 |
+| IoT Edge 模組 | N/A | iot-邊緣-模組 | iot-邊緣-模組 |
+| IoT 解決方案 | iot-解決方案 | iot-解決方案 | iot-解決方案 |
+| 資料分析 & 視覺效果 | 資料分析和視覺效果 | 資料分析和視覺效果 | 資料分析和視覺效果 |
+| IoT 連線能力 | iot-連線能力 | iot-連線能力 | iot-連線能力 |
+| 其他 | 其他-物聯網 | 其他-物聯網 | 其他 |
+| ***IT & 管理工具*** | ***ITandAdministration*** | ***it 和管理工具-azure-應用程式*** | ***it 與管理工具*** |
+| 管理解決方案 | 管理-解決方案 | 管理-解決方案 | 管理-解決方案 |
+| 商務應用程式 | businessApplication | businessApplication | 商務應用程式 |
+| 其他 | 其他-it 管理工具 | 其他-it 管理工具 | 其他 |
+| ***監視 & 診斷*** | ***監視與診斷*** | ***監視與診斷*** | ***監視與診斷*** |
+| 其他 | 其他 | 其他 | 其他 |
+| ***媒體*** | ***media*** | ***media*** | ***media*** |
+| 媒體服務 | media-services | media-services | media-services |
+| 內容保護 | content-protection | content-protection | content-protection |
+| 即時 & 隨選串流 | 即時和隨選串流 | 即時和隨選串流 | 即時和隨選串流 |
+| 其他 | 其他 | 其他 | 其他 |
+| ***移轉*** | ***移動*** | ***移動*** | ***移動*** |
+| 資料移轉 | 資料移轉 | 資料移轉 | 資料移轉 |
+| 其他 | 其他 | 其他 | 其他 |
+| ***混合實境*** | ***mixed-reality*** | ***mixed-reality*** | ***mixed-reality*** |
+| 其他 | 其他 | 其他 | 其他 |
+| ***網路功能*** | ***連*** | ***連*** | ***連*** |
+| 裝置管理員 | 設備-管理員 | 設備-管理員 | 設備-管理員 |
+| 連線能力 | 連線能力 | 連線能力 | 連線能力 |
+| 防火牆 | 防火牆 | 防火牆 | 防火牆 |
+| 負載平衡器 | 負載平衡器 | 負載平衡器 | 負載平衡器 |
+| 其他 | 其他 | 其他 | 其他 |
+| ***安全性*** | ***安全級*** | ***安全級*** | ***安全級*** |
+| 身分識別與存取管理 | 身分識別與存取管理 | 身分識別與存取管理 | 身分識別與存取管理 |
+| 威脅防護 | 威脅保護 | 威脅保護 | 威脅保護 |
+| 資訊保護 | 資訊保護 | 資訊保護 | 資訊保護 |
+| 其他 | 其他 | 其他 | 其他 |
+| ***Storage*** | ***儲存體-saas*** | ***儲存體-azure-應用程式*** | ***儲存體*** |
+| 備份 & 復原 | 備份 (backup) | 備份 (backup) | 備份與復原 |
+| 企業混合式儲存體 | 企業-混合式儲存體 | 企業-混合式儲存體 | 企業-混合式儲存體 |
+| 檔案共用 | 檔案共用 | 檔案共用 | 檔案共用 |
+| 資料生命週期管理 | 資料-生命週期-管理 | 資料-生命週期-管理 | 資料-生命週期-管理 |
+| 其他 | 其他-儲存體 | 其他-儲存體 | 其他 |
+| ***Web*** | ***網路*** | ***網路*** | ***網路*** |
+| & Cms 的 blog | blog-和-cms | blog-和-cms | blog-和-cms |
+| 入門 Web Apps | 入門-web 應用程式 | 入門-web 應用程式 | 入門-web 應用程式 |
+| 電子商務 | 電子商務 | 電子商務 | 電子商務 |
+| Web Apps 架構 | web 應用程式-架構 | web 應用程式-架構 | web 應用程式-架構 |
+| Web Apps | web 應用程式 | web 應用程式 | web 應用程式 |
+| 其他 | 其他 | 其他 | 其他 |
+||||
+
+### <a name="microsoft-appsource-categories"></a>Microsoft AppSource 類別
+
+這些類別及其各自的金鑰適用于 SaaS、PowerBI 應用程式、Dynamics 365 business central、Dynamics 365 for customer engagement 和 Dynamics 365 for operation 供應專案類型。 粗體斜體（例如***分析***）中的專案是分類，而標準文字專案（例如 advanced analytics）是其底下的子類別。 使用精確的索引鍵值，而不變更間距或大小寫。
+
+| 類別 | SaaS 金鑰 | Dynamics 365 business central、Dynamics 365 for customer engagement、Dynamics 365 for operation 金鑰 | PowerBI 應用程式金鑰 |
+| --- | --- | --- | --- |
+| ***分析*** | ***分析*** | ***分析*** | ***分析*** |
+| 進階分析 | advanced-analytics | advanced-analytics | advanced-analytics |
+| 視覺效果 & 報告 | 視覺效果-報告 | 視覺效果-報告 | 視覺效果-報告 |
+| 其他 | 其他 | 其他-分析 | 其他-分析 |
+| ***AI + Machine Learning*** | ***ArtificialIntelligence*** | ***ai-plus-機器學習服務-dynamics*** | ***ai-plus-機器學習-appsource*** |
+| 商務用 AI | ai-企業版 | ai-企業版 | ai-企業版 |
+| Bot 應用程式 | bot-應用程式 | bot-應用程式 | bot-應用程式 |
+| 其他 | 其他-ai 和機器學習 | 其他-ai 和機器學習 | 其他-ai 和機器學習 |
+| ***共同作業*** | ***共同作業*** | ***共同作業*** | ***協作*** |
+| 連絡人 & 人員 | 連絡人-人員 | 連絡人-人員 | 連絡人與人員 |
+| 會議管理 | 會議管理 | 會議管理 | 會議管理 |
+| 網站設計 & 管理 | 網站-設計-管理 | 網站-設計-管理 | 網站-設計和管理 |
+| 工作 & 專案管理 | 工作-專案管理 | 工作-專案管理 | 工作和專案管理 |
+| 語音 & 視訊會議 | 語音-視訊會議 | 語音-視訊會議 | 語音和視訊會議 |
+| 其他 | 其他-共同作業 | 其他-共同作業 | 其他 |
+| ***合規性 & 法律*** | ***實現*** | ***實現*** | ***合規性與法律*** |
+| 稅務 & Audit | 稅務-audit | 稅務-audit | 稅務和審計 |
+| 法律 | 法律 | 法律 | legal |
+| 資料，治理 & 隱私權 | 資料治理-隱私權 | 資料治理-隱私權 | 資料管理與隱私權 |
+| 健全狀況 & 安全 | 健全狀況-安全 | 健全狀況-安全 | 健全狀況與安全性 |
+| 其他 | 其他-合規性-法律 | 其他-合規性-法律 | 其他 |
+| ***Customer Service*** | ***CustomerService*** | ***CustomerService*** | ***客戶-服務*** |
+| 連絡人中心 | 連絡人中心 | 連絡人中心 | 連絡人中心 |
+| 臉部服務 | 臉部到臉部服務 | 臉部到臉部服務 | 臉部到臉部服務 |
+| 後端 Office & 員工服務 | 後端-員工-服務 | 後端-員工-服務 | 後端-和員工-服務 |
+| 知識 & 案例管理 | 知識-案例管理 | 知識-案例管理 | 知識和案例管理 |
+| 社交媒體 & Omnichannel Engagement | 社交-媒體-omnichannel-engagement | 社交-媒體-omnichannel-engagement | 社交-媒體和 omnichannel-互動 |
+| 其他 | 其他-客戶-服務 | 其他-客戶-服務 | 其他 |
+| ***財務*** | ***財務*** | ***財務*** | ***財經*** |
+| 會計 | 會計 | 會計 | 會計 |
+| 資產管理 | 資產-管理 | 資產-管理 | 資產-管理 |
+| 分析、匯總 & 報告 | 分析-匯總-報告 | 分析-匯總-報告 | 分析-匯總與報告 |
+| 點數 & 的集合 | 點數-集合 | 點數-集合 | 點數和集合 |
+| 合規性 & 風險管理 | 合規性-風險管理 | 合規性-風險管理 | 合規性與風險管理 |
+| 其他 | 其他-財務 | 其他-財務 | 其他 |
+| ***Human Resources*** | ***HumanResources*** | ***HumanResources*** | ***人力資源*** |
+| 人才獲取 | 人才獲取 | 人才獲取 | 人才獲取 |
+| 人才管理 | 人才-管理 | 人才-管理 | 人才-管理 |
+| HR 作業 | hr-作業 | hr-作業 | hr-作業 |
+| 員工規劃 & 分析 | 員工-規劃-分析 | 員工-規劃-分析 | 員工-規劃和分析 |
+| 其他 | 其他人為資源 | 其他人為資源 | 其他 |
+| ***物聯網*** | ***IoT*** | ***物聯網-dynamics*** | ***物聯網-appsource*** |
+| 資產管理 & 作業 | 資產管理-作業 | 資產管理-作業 | 資產-管理與作業 |
+| 連線的產品 | 已連接-產品 | 已連接-產品 | 已連接-產品 |
+| 智慧供應鏈 | 智慧供應鏈 | 智慧供應鏈 | 智慧供應鏈 |
+| 預測性維護 | 預測性-維護 | 預測性-維護 | 預測性-維護 |
+| 遠端監視 | 遠端監視 | 遠端監視 | 遠端監視 |
+| 安全 & 安全性 | 安全-安全性 | 安全-安全性 | 安全和安全性 |
+| 智慧型基礎結構 & 資源 | 智慧型基礎結構-資源 | 智慧型基礎結構-資源 | 智慧型基礎結構和資源 |
+| 車輛 & 行動性 | 車輛-行動性 | 車輛-行動性 | 車輛和行動性 |
+| 其他 | 其他-物聯網 | 其他-物聯網 | 其他 |
+| ***IT & 管理工具*** | ***ITandAdministration*** | ***ITandAdministration*** | ***it 與管理工具*** |
+| 管理解決方案 | 管理-解決方案 | 管理-解決方案 | 管理-解決方案 |
+| 商務應用程式 | businessApplication | businessApplication | 商務應用程式 |
+| 其他 | 其他-it 管理工具 | 其他-it 管理工具 | 其他 |
+| ***行銷*** | ***行銷*** | ***行銷*** | ***部門*** |
+| 公告 | 公告 | 公告 | 公告 |
+| 分析 | 分析-行銷 | 分析-行銷 | 分析-行銷 |
+| 行銷活動管理 & 自動化 | 活動-管理-自動化 | 活動-管理-自動化 | 行銷活動-管理和自動化 |
+| 電子郵件行銷 | 電子郵件-行銷 | 電子郵件-行銷 | 電子郵件-行銷 |
+| L2-事件 & 資源管理 | 事件-資源管理 | 事件-資源管理 | 事件與資源管理 |
+| 研究 & 分析 | 研究分析 | 研究分析 | 研究與分析 |
+| 社群媒體 | 社交媒體 | 社交媒體 | 社交媒體 |
+| 其他 | 其他-行銷 | 其他-行銷 | 其他 |
+| ***作業 & 供應鏈*** | ***OperationsSupplyChain*** | ***OperationsSupplyChain*** | ***作業與供應鏈*** |
+| 資產 & 生產管理 | 資產-生產管理 | 資產-生產管理 | 資產與生產管理 |
+| 需求預測 | 需求-預測 | 需求-預測 | 需求-預測 |
+| 資訊管理 & 連線能力 | 資訊管理-連線能力 | 資訊管理-連線能力 | 資訊-管理與連線能力 |
+| 規劃、購買 & 報告 | 規劃-購買-報告 | 規劃-購買-報告 | 規劃-購買與報告 |
+| 品質 & 服務管理 | 品質-服務管理 | 品質-服務管理 | 品質與服務管理 |
+| 銷售 & 訂單管理 | 銷售-訂單-管理 | 銷售-訂單-管理 | 銷售與訂單管理 |
+| 運輸 & 倉儲管理 | 運輸-倉儲-管理 | 運輸-倉儲-管理 | 運輸和倉儲管理 |
+| 其他 | 其他-作業-供應鏈 | 其他-作業-供應鏈 | 其他 |
+| ***生產力*** | ***生產力*** | ***生產力*** | ***生產力*** |
+| 內容建立 & 管理 | 內容建立-管理 | 內容建立-管理 | 內容-建立和管理 |
+| 語言 & 翻譯 | 語言-轉譯 | 語言-轉譯 | 語言與轉譯 |
+| 文件管理 | 檔管理 | 檔管理 | 檔管理 |
+| 電子郵件管理 | 電子郵件管理 | 電子郵件管理 | 電子郵件管理 |
+| 搜尋 & 參考 | 搜尋-參考 | 搜尋-參考 | 搜尋與參考 |
+| 其他 | 其他-生產力 | 其他-生產力 | 其他 |
+| 遊戲化 | 遊戲化 | 遊戲化 | 遊戲化 |
+| ***Sales*** | ***Sales*** | ***Sales*** | ***Sales*** |
+| 銷售 | 銷售 | 銷售 | 銷售 |
+| 設定、價格、報價（CPQ） | 設定-價格-報價 | 設定-價格-報價 | 設定-價格-報價 |
+| 合約管理 | 合約管理 | 合約管理 | 合約管理 |
+| CRM | crm | crm | crm |
+| 電子商務 | 電子商務 | 電子商務 | 電子商務 |
+| 商務資料擴充 | 商務資料-擴充 | 商務資料-擴充 | 商務資料-擴充 |
+| 銷售支援 | 銷售-啟用 | 銷售-啟用 | 銷售-啟用 |
+| 其他 | 其他-銷售 | 其他-銷售 | 其他-銷售 |
+| ***地理位置*** | ***地理位置*** | ***地理位置*** | ***地理位置*** |
+| 地圖 | maps | maps | maps |
+| 新聞 & 氣象 | 新聞和天氣 | 新聞和天氣 | 新聞和天氣 |
+| 其他 | 其他-地理位置 | 其他-地理位置 | 其他-地理位置 |
+||||
+
+### <a name="microsoft-appsource-industries"></a>Microsoft AppSource 產業
+
+這些產業和其各自的金鑰適用于 SaaS、PowerBI 應用程式、Dynamics 365 business central、Dynamics 365 for customer engagement 和 Dynamics 365 for operation 供應專案類型。 粗體斜體（例如***汽車***）中的專案是分類，而標準文字專案（例如 AutomotiveL2）則是其底下的子類別。 使用精確的索引鍵值，而不變更間距或大小寫。
+
+| 產業 | SaaS，Dynamics 365 business central，Dynamics 365 for customer engagement，Dynamics 365 for operation keys | PowerBI 應用程式金鑰 |
+| --- | --- | --- |
+| ***汽車*** | ***汽車*** | ***製造*** |
+| 汽車 | AutomotiveL2 | AutomotiveL2 |
+| ***農業*** | ***農業*** | ***農業*** |
+| 其他-Unsegmented | 農業 \_ OtherUnsegmented | 其他-unsegmented |
+| ***Distribution*** | ***Distribution*** | ***版本*** |
+| 簽署 | 簽署 | 簽署 |
+| & 套件運送的包裹 | ParcelAndPackageShipping | 包裹和套件運送 |
+| ***教育訓練*** | ***教育訓練*** | ***教育*** |
+| 高等教育 | HigherEducation | 高等教育 |
+| 主要 & 次要教育/K-12 | PrimaryAndSecondaryEducationK12 | 主要和次要教育 |
+| & 博物館的程式庫 | LibrariesAndMuseums | 程式庫-和-博物館 |
+| ***金融服務*** | ***FinancialServices*** | ***金融服務*** |
+| 銀行業 & 資本市場 | BankingAndCapitalMarkets | 銀行和資本市場 |
+| Insurance | Insurance | 保險 |
+| ***政府*** | ***政府*** | ***身份證*** |
+| 防禦 & 情報 | DefenseAndIntelligence | 防禦和智慧 |
+| 公用安全 & 司法 | PublicSafetyAndJustice | public-安全和司法 |
+| 文職政府 | CivilianGovernment | 文職-政府 |
+| ***醫療保健*** | ***HealthCareandLifeSciences*** | ***面向*** |
+| 健全狀況醫療給付 | HealthPayor | 健全狀況-醫療給付 |
+| 健全狀況提供者 | HealthProvider | 健全狀況-提供者 |
+| Pharmaceuticals | Pharmaceuticals | 製藥 |
+| ***製造 & 資源*** | ***製造業*** | ***製造和資源*** |
+| 化學 & Agrochemical | ChemicalAndAgrochemical | 化學和 agrochemical |
+| 離散製造 | DiscreteManufacturing | 離散-製造 |
+| 能源 | 能源 | energy |
+| ***零售 & 消費性商品*** | ***RetailandConsumerGoods*** | ***零售和消費者-商品*** |
+| 消費性商品 | ConsumerGoods | 消費性-商品 |
+| 零售商 | 零售商 | 零售商 |
+| ***媒體 & 通訊*** | ***MediaAndCommunications*** | ***媒體與通訊*** |
+| 媒體 & 娛樂 | MediaandEntertainment | 媒體和娛樂 |
+| 電信業 | 電信業 | 遠端 |
+| ***專業服務*** | ***ProfessionalServices*** | ***專業-服務*** |
+| 法律 | 法律 | legal |
+| 合作夥伴專業服務 | PartnerProfessionalServices | 合作夥伴-專業-服務 |
+| ***架構 & 結構*** | ***ArchitectureAndConstruction*** | ***架構與結構*** |
+| 其他-Unsegmented | ArchitectureAndConstruction \_ OtherUnsegmented | 其他-unsegmented |
+| ***旅行 & 旅遊*** | ***HospitalityandTravel*** | ***出差和旅遊*** |
+|    飯店 & 休閒 | HotelsAndLeisure | 飯店和休閒 |
+| 旅遊和運輸 | TravelAndTransportation | 旅行和運輸 |
+| 餐廳 & 食物服務 | RestaurantsAndFoodServices | 餐廳與食物-服務 |
+| ***其他公用部門產業*** | ***OtherPublicSectorIndustries*** | ***其他-公共磁區-產業*** |
+| 林業 & 釣魚 | ForestryAndFishing | 林業和釣魚 |
+| 非營利組織 | 非營利組織 | 非營利組織 |
+| ***房地產*** | ***RealEstate*** | ***房地產*** |
+| 其他-Unsegmented | RealEstate \_ OtherUnsegmented | 其他-unsegmented |
+|||

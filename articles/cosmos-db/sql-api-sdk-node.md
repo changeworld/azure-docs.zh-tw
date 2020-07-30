@@ -8,12 +8,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 67b85c34c72d8c4b4dc7cecaeb74a9b164133702
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 64bc8e76a4dcce963251219528bd93dd786f01cf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391956"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419609"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Node.js SDK：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -36,7 +37,7 @@ ms.locfileid: "85391956"
 |---------|---------|
 |下載 SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |API 文件  |  [JavaScript SDK 參考文件](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
-|SDK 安裝指示  |  [安裝指示](https://github.com/Azure/azure-cosmos-js#installation)
+|SDK 安裝指示  |  [安裝指示](https://github.com/Azure/azure-sdk-for-js)
 |參與 SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
 | 範例 | [Node.js 程式碼範例](sql-api-nodejs-samples.md)
 | 入門教學課程 | [開始使用 JavaScript SDK](sql-api-nodejs-get-started.md)

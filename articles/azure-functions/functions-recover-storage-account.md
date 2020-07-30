@@ -1,16 +1,14 @@
 ---
 title: 疑難排解錯誤：無法連線 Azure Functions 執行階段
 description: 了解如何針對無效的儲存體帳戶進行疑難排解。
-author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: alkarche
-ms.openlocfilehash: d84e1269fecf3bd85538415b5790c22aaf6eb01e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c46ca214ab6c0798fdc39ead575fb2873b8c51c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085107"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385852"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>疑難排解錯誤：「無法連線到 Azure Functions 執行階段」
 

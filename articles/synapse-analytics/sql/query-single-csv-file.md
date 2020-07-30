@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214446"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383880"
 ---
 # <a name="query-csv-files"></a>查詢 CSV 檔案
 
@@ -26,6 +26,72 @@ ms.locfileid: "85214446"
 - 未加上引號和加上引號的值，以及逸出字元
 
 以下將涵蓋上述所有變化。
+
+## <a name="quickstart-example"></a>快速入門範例
+
+`OPENROWSET`函式可讓您藉由提供檔案的 URL，讀取 CSV 檔案的內容。
+
+### <a name="reading-csv-file"></a>正在讀取 csv 檔案
+
+查看檔案內容最簡單的方式 `CSV` ，就是提供檔案 URL 來 `OPENROWSET` 運作、指定 csv `FORMAT` 和 2.0 `PARSER_VERSION` 。 如果檔案可公開使用，或者您的 Azure AD 身分識別可以存取此檔案，則您應該能夠使用查詢來查看檔案的內容，如下列範例所示：
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2 ) as rows
+```
+
+選項 `firstrow` 是用來略過 CSV 檔案中的第一個資料列，在此案例中代表標頭。 請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂身分識別的保護，您就必須設定[sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+
+### <a name="using-data-source"></a>使用資料來源
+
+上一個範例使用檔案的完整路徑。 或者，您可以建立外部資料源，其位置會指向儲存體的根資料夾：
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+```
+
+建立資料來源之後，您可以在函式中使用該資料來源和檔案的相對路徑 `OPENROWSET` ：
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) as rows
+```
+
+如果資料來源受到 SAS 金鑰或自訂身分識別的保護，您可以[使用資料庫範圍認證來設定資料來源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+
+### <a name="explicitly-specify-schema"></a>明確指定架構
+
+`OPENROWSET`可讓您使用子句明確指定您想要從檔案讀取的資料行 `WITH` ：
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) with (
+        date_rep date 1,
+        cases int 5,
+        geo_id varchar(6) 8
+    ) as rows
+```
+
+子句中資料類型後的數位 `WITH` 代表 CSV 檔案中的資料行索引。
+
+在下列各節中，您可以瞭解如何查詢各種類型的 CSV 檔案。
 
 ## <a name="prerequisites"></a>必要條件
 

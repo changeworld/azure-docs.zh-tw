@@ -3,14 +3,13 @@ title: Azure Application Insights 的應用程式對應 | Microsoft Docs
 description: 使用應用程式對應監視複雜的應用程式拓撲
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367005"
+ms.locfileid: "87421292"
 ---
 # <a name="application-map-triage-distributed-applications"></a>應用程式對應：對分散式應用程式進行分級
 
@@ -82,9 +81,12 @@ ms.locfileid: "87367005"
 
 ![Analytics 體驗的螢幕擷取畫面](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>設定雲端角色名稱
+## <a name="set-or-override-cloud-role-name"></a>設定或覆寫雲端角色名稱
 
-應用程式對應會使用 [**雲端角色名稱**] 屬性來識別地圖上的元件。 Application Insights SDK 會自動將 [雲端角色名稱] 屬性新增至元件所發出的遙測。 例如，SDK 會將網站名稱或服務角色名稱新增至 [雲端角色名稱] 屬性。 但是，有時候您可能會想覆寫預設值。 若要覆寫雲端角色名稱，並變更應用程式對應上顯示的內容：
+應用程式對應會使用 [**雲端角色名稱**] 屬性來識別地圖上的元件。 若要手動設定或覆寫雲端角色名稱，並變更應用程式對應上顯示的內容：
+
+> [!NOTE]
+> Application Insights SDK 或代理程式會自動將 [雲端角色名稱] 屬性新增至 Azure App Service 環境中元件所發出的遙測。
 
 # <a name="netnetcore"></a>[.NET/. NetCore](#tab/net)
 
@@ -266,7 +268,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 3. 如果您使用的是 c # 的 Azure Functions，請升級至[函數 V2](../../azure-functions/functions-versions.md)。
 
-4. 確認已正確設定[雲端角色名稱](#set-cloud-role-name)。
+4. 確認已正確設定[雲端角色名稱](#set-or-override-cloud-role-name)。
 
 5. 如果缺少相依性，請確定相依性是否列在這份[自動收集的相依性](./auto-collect-dependencies.md) (英文) 清單中。 如果不在此清單中，仍可以使用[追蹤相依性呼叫](./api-custom-events-metrics.md#trackdependency) (英文)，以手動方式進行追蹤。
 
@@ -282,7 +284,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 * 相依性類型應代表相依性的邏輯類型。 例如，HTTP、SQL 或 Azure Blob 都是典型的相依性類型。 它不應該包含唯一的識別碼。
 
-* [上一節](#set-cloud-role-name)將說明雲端角色名稱的用途。
+* [上一節](#set-or-override-cloud-role-name)將說明雲端角色名稱的用途。
 
 ## <a name="portal-feedback"></a>入口網站意見反應
 

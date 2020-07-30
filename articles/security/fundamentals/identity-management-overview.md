@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: d6c82b1070f76cedcd84b8cd8a0a7bb6f683110d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6abfcaac06dd82be79c9136718878f801ca241cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285317"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384526"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 身分識別管理安全性概觀
 
@@ -64,7 +64,7 @@ Azure AD 將內部部署的 Active Directory 環境延伸到雲端，讓使用�
 
 * [單一登入總覽](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [整合 Azure Active Directory 單一登入與 SaaS 應用程式](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)
+* [應用程式管理的快速入門系列](../../active-directory/manage-apps/view-applications-portal.md)
 
 ## <a name="reverse-proxy"></a>反向 proxy
 

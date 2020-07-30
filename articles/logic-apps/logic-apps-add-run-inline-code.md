@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a1c3828a4b1899ff4b22c0a9520f676add21fe02
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75453502"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420119"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用內嵌程式碼來新增和執行程式碼片段
 
@@ -128,7 +129,7 @@ ms.locfileid: "75453502"
 
 此資料表包含這些子屬性的詳細資訊：
 
-| 屬性 | 類型 | Description |
+| 屬性 | 類型 | 說明 |
 |----------|------|-------|
 | `actions` | 物件集合 | 在您的程式碼片段執行之前執行之動作的結果物件。 每個物件都有索引*鍵/值*組，其中索引鍵是動作的名稱，而值相當於呼叫[actions （）](../logic-apps/workflow-definition-language-functions-reference.md#actions)函式 `@actions('<action-name>')` 。 動作的名稱會使用在基礎工作流程定義中使用的相同動作名稱，這會以底線（_）取代動作名稱中的空格（""）。 這個物件可讓您從目前的工作流程實例執行存取動作屬性值。 |
 | `trigger` | Object | 來自觸發程式的結果物件，相當於呼叫[trigger （）函數](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 這個物件可讓您從目前的工作流程實例執行，存取觸發程式的屬性值。 |
@@ -205,7 +206,7 @@ ms.locfileid: "75453502"
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>加入參數
+## <a name="add-parameters"></a>新增參數
 
 在某些情況下，您可能必須明確要求內嵌程式**代碼**動作包含觸發程式的結果，或您的程式碼藉由新增**trigger**或**actions**參數來參考為相依性的特定動作。 此選項適用于在執行時間找不到參考結果的案例。
 
@@ -216,7 +217,7 @@ ms.locfileid: "75453502"
 
 若要新增這些參數，請開啟 [**加入新的參數**] 清單，然後選取您想要的參數：
 
-   ![加入參數](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
+   ![新增參數](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
    | 參數 | 描述 |
    |-----------|-------------|

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: a9ebc6b0cdbaa05c36383fa5126c2672fb19b69c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370949"
+ms.locfileid: "87386175"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>從 Azure Logic Apps 連線到內部部署資料來源
 
@@ -50,15 +50,15 @@ ms.locfileid: "87370949"
 
 Azure Logic Apps 支援透過資料閘道進行的讀取和寫入作業。 不過，這些作業的[承載大小有限制](/data-integration/gateway/service-gateway-onprem#considerations)。 雖然閘道本身不會產生額外成本，但[Logic Apps 定價模式](../logic-apps/logic-apps-pricing.md)適用于 Azure Logic Apps 中的這些連接器和其他作業。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-* 您已在[本機電腦上安裝內部部署資料閘道](../logic-apps/logic-apps-gateway-install.md)。
+* 您已在[本機電腦上安裝內部部署資料閘道](../logic-apps/logic-apps-gateway-install.md)。 此閘道安裝必須先存在，您才能建立連結到此安裝的閘道資源。
 
-* 您擁有用於閘道安裝的[相同 Azure 帳戶和訂用帳戶](../logic-apps/logic-apps-gateway-install.md#requirements)。 此 Azure 帳戶只能屬於單一[Azure Active Directory （Azure AD）租使用者或目錄](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 您需要相同的 Azure 帳戶和訂用帳戶，才能在 Azure 中建立閘道資源，因為只有閘道系統管理員可以在 Azure 中建立閘道資源。 目前不支援服務主體。
+* 您擁有用於閘道安裝的[相同 Azure 帳戶和訂用帳戶](../logic-apps/logic-apps-gateway-install.md#requirements)。 此 Azure 帳戶只能屬於單一[Azure Active Directory （Azure AD）租使用者或目錄](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 您必須使用相同的 Azure 帳戶和訂用帳戶在 Azure 中建立閘道資源，因為只有閘道系統管理員可以在 Azure 中建立閘道資源。 目前不支援服務主體。
 
-  * 當您在 Azure 中建立閘道資源時，您會選取要與閘道資源搭配使用的閘道安裝，而僅限於該閘道資源。 每個閘道資源只能連結至一個閘道安裝，這只能連結到一個 Azure 帳戶和訂用帳戶。 因此，您無法選取已與另一個閘道資源相關聯的閘道安裝。
+  * 當您在 Azure 中建立閘道資源時，您會選取要與閘道資源連結的閘道安裝，而只是該閘道資源。 每個閘道資源只能連結至一個閘道安裝。 您無法選取已與另一個閘道資源相關聯的閘道安裝。
   
-  * 您的邏輯應用程式和閘道資源不一定要存在於相同的 Azure 訂用帳戶中。 如果您有訂用帳戶存取權，在可存取內部部署資料來源的觸發程式和動作中，您可以從與不同閘道資源相關聯的不同 Azure 訂用帳戶中進行選取。
+  * 您的邏輯應用程式和閘道資源不一定要存在於相同的 Azure 訂用帳戶中。 如果您有訂用帳戶存取權，在可存取內部部署資料來源的觸發程式和動作中，您可以選取具有閘道資源的其他 Azure 訂用帳戶。
 
 <a name="create-gateway-resource"></a>
 

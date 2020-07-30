@@ -3,12 +3,12 @@ title: 備份 Azure 檔案服務常見問題集
 description: 在本文中，您可以針對如何使用 Azure 備份服務來保護 Azure 檔案共用的常見問題，找到相關解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054972"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382707"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有關備份 Azure 檔案服務的問題
 
@@ -34,13 +34,13 @@ ms.locfileid: "87054972"
 
 嘗試備份，並選取 [儲存體帳戶] 以探索其中的檔案共用時，向保存庫註冊此 [儲存體帳戶]。 如果您選擇使用不同的保存庫來保護檔案共用，從這個保存庫[取消註冊](manage-afs-backup.md#unregister-a-storage-account)所選的儲存體帳戶。
 
+### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>為什麼我無法變更保存庫來設定檔案共用的備份？
+
+如果儲存體帳戶已向保存庫註冊，或儲存體帳戶中的其他檔案共用使用保存庫來保護，您就無法選擇變更它，因為儲存體帳戶中的所有檔案共用只能由相同的保存庫保護。 以免您想要變更保存庫時，您必須[停止保護儲存體帳戶中的所有檔案共用](manage-afs-backup.md#stop-protection-on-a-file-share)，從已連線的保存庫中[取消註冊](manage-afs-backup.md#unregister-a-storage-account)儲存體帳戶，然後選擇不同的保存庫來進行保護。
+
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>可以將保存庫變更為我備份檔案共用的保存庫嗎？
 
 是。 不過，您必須從已連線的保存庫[停止保護檔案共用](manage-afs-backup.md#stop-protection-on-a-file-share)，[取消註冊](manage-afs-backup.md#unregister-a-storage-account)這個儲存體帳戶，然後從不同的保存庫加以保護。
-
-### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>我可以在一個保存庫中保護多少個 Azure 檔案共用？
-
-您在每個保存庫中最多可以保護 50 個儲存體帳戶的 Azure 檔案共用。 此外，您在單一保存庫中最多可保護 200 個檔案共用。
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>可以將相同儲存體帳戶中的兩個不同檔案共用放入不同的保存庫中保護？
 

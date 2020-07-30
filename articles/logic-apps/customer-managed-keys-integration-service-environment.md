@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 7e1432cf74dc741a6e2f5d561e9dc203df95007c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7cc135555db2673225d857bf6a21e57de3e3f6b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072676"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386158"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>設定客戶管理的金鑰，以加密 Azure Logic Apps 中整合服務環境（Ise）的待用資料
 
@@ -33,13 +33,13 @@ Azure Logic Apps 依賴 Azure 儲存體來儲存及自動[加密待用資料](..
 
 * 在您傳送建立 ISE 的 HTTPS PUT 要求之後的*30 分鐘*內，您必須將[金鑰保存庫的存取權授與您 ise 系統指派](#identity-access-to-key-vault)的身分識別。 否則，ISE 建立會失敗，並擲回許可權錯誤。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 相同的[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和需求，可讓您在 Azure 入口網站中建立 ise 時，[啟用 ise 的存取權。](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)
 
 * 已啟用「虛**刪除**」和「**不要清除**」屬性的 Azure 金鑰保存庫
 
-  如需有關啟用這些屬性的詳細資訊，請參閱[Azure Key Vault 虛刪除總覽](../key-vault/general/overview-soft-delete.md)和[使用 Azure Key Vault 設定客戶管理的金鑰](../storage/common/storage-encryption-keys-portal.md)。 如果您不熟悉 Azure Key Vault，請瞭解[如何使用 Azure 入口網站建立金鑰保存庫](../key-vault/secrets/quick-create-portal.md#create-a-vault)，或使用 Azure PowerShell 命令[AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)。
+  如需有關啟用這些屬性的詳細資訊，請參閱[Azure Key Vault 虛刪除總覽](../key-vault/general/soft-delete-overview.md)和[使用 Azure Key Vault 設定客戶管理的金鑰](../storage/common/storage-encryption-keys-portal.md)。 如果您不熟悉 Azure Key Vault，請瞭解[如何使用 Azure 入口網站建立金鑰保存庫](../key-vault/secrets/quick-create-portal.md#create-a-vault)，或使用 Azure PowerShell 命令[AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)。
 
 * 在您的金鑰保存庫中，使用這些屬性值建立的金鑰：
 

@@ -10,20 +10,20 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: scottsta
-ms.openlocfilehash: af410310e3866b547b8c898a1cc4f91f4f851bc7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 084c50a67fe332751a3679da4c97f67d414ebb94
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223018"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419524"
 ---
-# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用電子郵件做為替代登入識別碼 (預覽，以 Azure Active Directory 登入) 
+# <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>使用電子郵件作為替代登入識別碼（預覽）來登入 Azure Active Directory
 
-許多組織想要讓使用者使用與內部部署目錄環境相同的認證，登入 Azure Active Directory (Azure AD) 。 使用這種稱為混合式驗證的方法，使用者只需要記住一組認證。
+許多組織都想要讓使用者使用與內部部署目錄環境相同的認證來登入 Azure Active Directory （Azure AD）。 使用這種稱為混合式驗證的方法，使用者只需要記住一組認證。
 
 有些組織尚未移至混合式驗證，其原因如下：
 
-* 根據預設，Azure AD 的使用者主體名稱 (UPN) 會設定為與內部部署目錄相同的 UPN。
+* 根據預設，Azure AD 的使用者主體名稱（UPN）會設定為與內部部署目錄相同的 UPN。
 * 變更 Azure AD UPN 會在內部部署和 Azure AD 環境之間建立不相符的情況，這可能會造成特定應用程式和服務發生問題。
 * 由於商務或合規性的緣故，組織不會想要使用內部部署 UPN 來登入 Azure AD。
 
@@ -158,6 +158,8 @@ Azure AD Connect 自動同步的其中一個使用者屬性是 *ProxyAddresses*�
     ```powershell
     Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
     ```
+
+套用原則之後，最多可能需要一小時的時間才能傳播，讓使用者能夠使用他們的替代登入識別碼來登入。
 
 ## <a name="test-user-sign-in-with-email"></a>使用電子郵件測試使用者登入
 

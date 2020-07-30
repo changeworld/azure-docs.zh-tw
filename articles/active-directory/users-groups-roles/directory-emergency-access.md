@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338279"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421717"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理緊急存取帳戶
 
@@ -56,7 +56,7 @@ ms.locfileid: "85338279"
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>從條件式存取原則中排除至少一個帳戶
 
-在緊急情況下，您不希望有可能會阻止您存取以解決問題的原則。 應該從所有條件式存取原則中，排除至少一個緊急存取帳戶。 如果您已啟用[基準原則](../conditional-access/baseline-protection.md)，您應該排除緊急存取帳戶。
+在緊急情況下，您不希望有可能會阻止您存取以解決問題的原則。 應該從所有條件式存取原則中，排除至少一個緊急存取帳戶。
 
 ## <a name="federation-guidance"></a>同盟指引
 

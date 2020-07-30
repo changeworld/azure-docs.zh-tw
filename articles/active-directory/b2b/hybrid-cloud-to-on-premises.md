@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b510326b6683ae48b6521483118367f36e0dc58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387009"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385206"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>對 Azure AD 中的 B2B 使用者授與內部部署應用程式的存取權
 
@@ -28,7 +28,7 @@ ms.locfileid: "85387009"
 
 您必須執行下列兩個動作：
 
-- 使用非資源庫的應用程式範本整合 SAML 應用程式，如[設定對不在 Azure Active Directory 應用程式庫中的應用程式的單一登入](../manage-apps/configure-single-sign-on-non-gallery-applications.md)所述。 請務必記下您所使用的**登入 URL** 值。
+- 使用 SAML 整合應用程式，如[設定 saml 型單一登入](../manage-apps/configure-saml-single-sign-on.md)中所述。 請務必記下您所使用的**登入 URL** 值。
 -  使用 Azure AD 應用程式 Proxy 來發行內部部署應用程式，並將 **Azure Active Directory** 設定為驗證來源。 如需指示，請參閱[使用 Azure AD 應用程式 Proxy 發行應用程式](../manage-apps/application-proxy-publish-azure-portal.md)。 
 
    當您設定 [內部 Url]**** 設定時，請使用您在非資源庫的應用程式範本中指定的登入 URL。 如此一來，使用者就可以從組織界限外存取應用程式。 應用程式 Proxy 會為內部部署應用程式執行 SAML 單一登入。
