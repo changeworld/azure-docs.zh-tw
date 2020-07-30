@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 5fe8d261cb6804ffdf2cbe4f543db29336c4c78b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656412"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337172"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -63,11 +63,8 @@ IoT Central 文件提及四個會與 IoT Central 應用程式互動的角色：
 
 ### <a name="create-device-templates"></a>建立裝置範本
 
-[IoT 隨插即用 (預覽)](../../iot-pnp/overview-iot-plug-and-play.md) 可讓 IoT Central 整合裝置，您不需要撰寫任何內嵌的裝置程式碼。 IoT 隨插即用 (預覽) 的核心是說明裝置功能的裝置功能模型結構描述。 在 IoT Central 應用程式中，裝置範本會使用這些 IoT 隨插即用 (預覽) 裝置功能模型。
-
 身為解決方案建置者，您可以利用數個選項來建立裝置範本：
 
-- 從 [Azure IoT 認證裝置目錄](https://aka.ms/iotdevcat)匯入裝置功能模型，然後新增您的 IoT Central 應用程式所需的任何雲端屬性、自訂和儀表板。
 - 在 IoT Central 中設計裝置範本，然後在您的裝置程式碼中實作其裝置功能模型。
 - 使用 Visual Studio 程式碼建立裝置功能模型，然後將模型發佈至存放庫。 從模型實作您的裝置程式碼，並將您的裝置連線至 IoT Central 應用程式。 IoT Central 會從存放庫中尋找裝置功能模型，並為您建立簡單的裝置範本。
 - 使用 Visual Studio Code 建立裝置功能模型。 從模型實作您的裝置程式碼。 手動將裝置功能模型匯入您的 IoT Central 應用程式中，然後新增您的 IoT Central 應用程式所需的任何雲端屬性、自訂和儀表板。
@@ -149,7 +146,6 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 - IoT Central 目前適用於美國、歐洲、亞太地區、澳大利亞、英國及日本地區。
 - 您無法在英國和日本地區中使用**自訂應用程式 (舊版)** 的應用程式範本。
 - 裝置功能模型必須具有在相同檔案中以內嵌方式定義的所有介面。
-- [IoT 隨插即用](../../iot-pnp/overview-iot-plug-and-play.md) 為預覽版本，僅在數個區域中支援。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -158,7 +154,6 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 - 了解可用於[建立 IoT 解決方案的 Azure 技術和服務](../../iot-fundamentals/iot-services-and-technologies.md)。
 - 熟悉 [Azure IoT 中心 UI](overview-iot-central-tour.md)。
 - 從[建立 Azure IoT 中心應用程式](quick-deploy-iot-central.md)著手。
-- 深入了解 [IoT 隨插即用 (預覽)](../../iot-pnp/overview-iot-plug-and-play.md)。
 - 了解如何[讓 Azure IoT Edge 裝置連線](./tutorial-add-edge-as-leaf-device.md)。
 - 深入了解 [Azure IoT 技術和服務](../../iot-fundamentals/iot-services-and-technologies.md)。
 

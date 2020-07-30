@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: c43194db6d1d629003079db7248223aee52ffa70
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 99540e8518aa31a2221844aa954ff665609d8217
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609621"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374781"
 ---
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前：
 
@@ -25,7 +25,7 @@ ms.locfileid: "84609621"
 藉由新增以下這一行，以最新的 SDK 版本更新 go.mod 檔案
 ```sh
 require (
-    github.com/Microsoft/cognitive-services-speech-sdk-go v1.12.1
+    github.com/Microsoft/cognitive-services-speech-sdk-go v1.13.0
 )
 ```
 

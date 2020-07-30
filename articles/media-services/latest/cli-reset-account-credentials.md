@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/20/2019
 ms.author: juliako
-ms.openlocfilehash: 63f2abe7a3890efbaf4c79186467a3eb20d8afda
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 0a1a5bf9f192a7128da8843b79b60be0175cec23
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382982"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092128"
 ---
 # <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI 的範例：重設帳戶認證
 
@@ -27,7 +27,7 @@ ms.locfileid: "80382982"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-[建立媒體服務帳戶](create-account-cli-how-to.md)。
+[建立媒體服務帳戶](./create-account-howto.md)。
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 

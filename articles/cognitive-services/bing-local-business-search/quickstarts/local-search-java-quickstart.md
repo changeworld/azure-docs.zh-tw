@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 05/12/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: eb236c77fb9b5e2d5da16ff980693d1c9fce3d8d
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 8780caae20b779997e32750ed7829afd7d969a02
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85611212"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320233"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>快速入門：使用 Java 向 Bing 當地商家搜尋 API 傳送查詢
 

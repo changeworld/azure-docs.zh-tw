@@ -1,5 +1,5 @@
 ---
-title: 教學課程：將 SQL 隨選連線至 Power BI Desktop 並建立報告
+title: 將 SQL 隨選連線至 Power BI Desktop 並建立報告
 description: 在本教學課程中，您將了解如何將 Azure Synapse Analytics 中的 SQL 隨選連線至 Power BI Desktop，並根據檢視建立示範報告。
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2f4a1ab6dc2f5cb8576931ea5fc1da85f5597624
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 325a2015e4107a20dfaec22e904cf3cc6ce3085d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85213222"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089170"
 ---
 # <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>教學課程：使用 SQL 隨選搭配 Power BI Desktop 並建立報告
 

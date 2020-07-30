@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: a73a99d1e6200faf9feb227f562f5b77b0461f1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce2e4ca2cad0fc080d6a750b3f1682210a5b9b20
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737048"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387654"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>在 ExpressRoute Direct 埠上設定 MACsec
 
@@ -47,7 +47,7 @@ ms.locfileid: "84737048"
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    如果您已經有金鑰保存庫或資源群組，您可以重複使用它們。 不過，在現有的金鑰保存庫上啟用虛[**刪除**功能](../key-vault/general/overview-soft-delete.md)是很重要的。 如果未啟用虛刪除，您可以使用下列命令來啟用它：
+    如果您已經有金鑰保存庫或資源群組，您可以重複使用它們。 不過，在現有的金鑰保存庫上啟用虛[**刪除**功能](../key-vault/general/soft-delete-overview.md)是很重要的。 如果未啟用虛刪除，您可以使用下列命令來啟用它：
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"

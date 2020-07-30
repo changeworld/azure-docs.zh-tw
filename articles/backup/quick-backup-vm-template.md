@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4e54ca6452a219dedca56885bda28ed43991ad37
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7aef0e7e48bfd3f56bd1c3718b1a547bea66cbe8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054484"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>快速入門：使用 ARM 範本在 Azure 中備份虛擬機器
 
-[Azure 備份](backup-overview.md)會備份內部部署機器與應用程式，以及 Azure VM。 本文說明如何使用 Azure Resource Manager 範本 (ARM 範本) 和 Azure PowerShell 來備份 Azure VM。 本快速入門著重於部署 ARM 範本來建立「復原服務」保存庫的程序。 如需開發 ARM 範本的詳細資訊，請參閱 [Azure Resource Manager 文件](/azure/azure-resource-manager/)和[範本參考](/azure/templates/microsoft.recoveryservices/allversions)。
+[Azure 備份](backup-overview.md)會備份內部部署機器與應用程式，以及 Azure VM。 本文說明如何使用 Azure Resource Manager 範本 (ARM 範本) 和 Azure PowerShell 來備份 Azure VM。 本快速入門著重於部署 ARM 範本來建立「復原服務」保存庫的程序。 如需開發 ARM 範本的詳細資訊，請參閱 [Azure Resource Manager 文件](../azure-resource-manager/index.yml)和[範本參考](/azure/templates/microsoft.recoveryservices/allversions)。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

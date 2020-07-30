@@ -46,6 +46,9 @@
       href: /powershell/scripting/dsc/overview/overview
     - name: 安全性
       items:
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全性基準
           href: security-baseline.md
     - name: 資料安全性

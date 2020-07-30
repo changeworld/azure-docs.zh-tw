@@ -7,13 +7,13 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: e06d7d73230b17710d8c667ab89d5ead522e6de1
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 92bfaa7718a8e094fcfc1479e9dba6790438f7a7
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85254237"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322698"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>快速入門：在 Linux 上的 Azure App Service 中建立 Java 應用程式
 
@@ -21,7 +21,7 @@ ms.locfileid: "85254237"
 
 > [!NOTE]
 >
-> 使用 IntelliJ、Eclipse 和 VS Code 等熱門 IDE 也可以執行相同的動作。 請參閱 [Azure Toolkit for IntelliJ 快速入門](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)、[Azure Toolkit for Eclipse 快速入門](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)或 [VS Code 快速入門](https://code.visualstudio.com/docs/java/java-webapp)中的類似文件。
+> 使用 IntelliJ、Eclipse 和 VS Code 等熱門 IDE 也可以執行相同的動作。 請參閱 [Azure Toolkit for IntelliJ 快速入門](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)、[Azure Toolkit for Eclipse 快速入門](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)或 [VS Code 快速入門](https://code.visualstudio.com/docs/java/java-webapp)中的類似文件。
 >
 ![在 Azure App Service 中執行的範例應用程式](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 

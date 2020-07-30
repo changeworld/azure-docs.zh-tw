@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260511"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089612"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入門：將 Windows 容器部署至 Service Fabric
 
@@ -86,7 +86,7 @@ Microsoft 針對建置於不同 Windows Server 版本的 IIS 版本，發行了�
 
 以下範例指令碼會建立一個使用 X.509 憑證保護的五節點 Service Fabric 叢集。 此命令會建立自我簽署的憑證，並將它上傳到新的金鑰保存庫。 憑證也會複製到本機目錄。 您可以在[建立 Service Fabric 叢集](scripts/service-fabric-powershell-create-secure-cluster-cert.md)中，深入了解如何使用這個指令碼建立叢集。
 
-您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview)中的指示來安裝 Azure PowerShell。
+您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/)中的指示來安裝 Azure PowerShell。
 
 執行以下程式碼之前，請在 PowerShell 中執行 `Connect-AzAccount` 來建立與 Azure 的連線。
 

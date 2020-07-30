@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3007aa1fab8797d77e1edde83f22e359196641cc
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 91a92f9dd0eaf55b8ba35f38102ee30b8cda4bfa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85248576"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053806"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>教學課程：使用 REST API 建立 Azure Data Factory 管線來複製資料 
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ ms.locfileid: "85248576"
   2. 取得**用戶端識別碼**和**秘密金鑰**。 
   3. 取得 **租用戶識別碼**。 
   4. 將 **ADFCopyTutorialApp** 應用程式指派給 **Data Factory 參與者**角色。  
-* 安裝 [Azure PowerShell](/powershell/azure/overview)。  
+* 安裝 [Azure PowerShell](/powershell/azure/)。  
 * 啟動 **PowerShell** 並執行下列步驟。 將 Azure PowerShell 維持在開啟狀態，直到本教學課程結束為止。 如果您關閉並重新開啟，則需要再次執行這些命令。
   
   1. 執行下列命令並輸入您用來登入 Azure 入口網站的使用者名稱和密碼：

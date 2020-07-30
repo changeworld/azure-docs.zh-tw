@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 309016821eb13ef6332ba248a11593fec8da9f75
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 6d16e663626a1b19271b7d37b39202a0a9b605b9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267557"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87126120"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>新增或變更 Azure 訂用帳戶系統管理員
 
@@ -22,7 +22,7 @@ ms.locfileid: "84267557"
 
 本文說明如何在訂用帳戶範圍使用 RBAC 來新增或變更使用者的系統管理員角色。
 
-Microsoft 建議您使用 RBAC 來管理對資源的存取。 不過，如果您仍是使用傳統部署模型，且使用 [Azure 服務管理 PowerShell 模組](https://docs.microsoft.com/powershell/module/servicemanagement/azure) \(英文\) 來管理傳統資源，您會需要使用傳統系統管理員。
+Microsoft 建議您使用 RBAC 來管理對資源的存取。 不過，如果您仍是使用傳統部署模型，且使用 [Azure 服務管理 PowerShell 模組](/powershell/module/servicemanagement/azure.service) \(英文\) 來管理傳統資源，您會需要使用傳統系統管理員。
 
 > [!TIP]
 > 如果您只使用 Azure 入口網站來管理傳統資源，則不需要使用傳統系統管理員。
@@ -69,7 +69,7 @@ Microsoft 建議您使用 RBAC 來管理對資源的存取。 不過，如果您
 
 ## <a name="next-steps"></a>後續步驟
 
-* [什麼是角色型存取控制 (RBAC)？](../../role-based-access-control/overview.md)
+* [什麼是 Azure 角色型存取控制 (Azure RBAC)？](../../role-based-access-control/overview.md)
 * [了解 Azure 中的不同角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Azure Active Directory 中的系統管理員角色權限](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)

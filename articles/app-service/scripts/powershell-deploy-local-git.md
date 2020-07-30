@@ -6,18 +6,18 @@ ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 7355f2730cc54ca027e20c48e989e9f28dac7487
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be2f066f5150c0d3a9f1cfce639c26db853e0cb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74684829"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084886"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>建立 Web 應用程式並從本機 Git 存放庫部署程式碼
 
 此範例指令碼會在 App Service 中建立 Web 應用程式及其相關資源，然後從本機 Git 存放庫中部署 Web 應用程式程式碼。
 
-您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/overview) 中的指示以更新為最新的 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。 此外，應用程式程式碼必須認可到本機 Git 儲存機制。
+您可以視需要使用 [Azure PowerShell 指南](/powershell/azure/) 中的指示以更新為最新的 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。 此外，應用程式程式碼必須認可到本機 Git 儲存機制。
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -43,6 +43,6 @@ Remove-AzResourceGroup -Name $webappname -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure PowerShell 範例](../samples-powershell.md)中找到適用於 App Service Web Apps 的其他 Azure PowerShell 範例。

@@ -52,8 +52,12 @@
     - name: 存取與身分識別
       href: concepts-identity.md
     - name: 安全性
-      href: concepts-security.md
-      items: null
+      items:
+        - name: 應用程式和叢集的安全性
+          href: concepts-security.md
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: 網路功能
       href: concepts-network.md
     - name: 儲存體
