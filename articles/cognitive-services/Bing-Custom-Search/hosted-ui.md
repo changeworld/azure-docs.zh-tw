@@ -10,12 +10,13 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 7ec407b7f6baf56f0a2fe724089826d8f9303b85
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 857195e0befb95035572b5b52a01d151b332518e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186838"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406345"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>設定託管的 UI 體驗
 
@@ -35,7 +36,7 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
   
 4. 選取配置。
 
-    -  (預設) 的搜尋列和結果：在其底下顯示搜尋結果的搜尋方塊。
+    - 搜尋列和結果（預設值）：在搜尋方塊下方顯示搜尋結果。
     - 僅結果：只顯示搜尋結果，不包含搜尋方塊。 使用此版面配置時，您必須提供搜尋查詢 (`&q=<query string>`)。 在 JavaScript 程式碼片段或 HTML 端點連結中，將查詢參數新增到要求 URL。
     - 快顯：提供搜尋方塊，並在滑動重迭中顯示搜尋結果。
 
@@ -94,20 +95,20 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 
 ### <a name="web-search-configurations"></a>Web 搜尋組態
 
-- 已啟用 web 結果：決定是否啟用 web 搜尋 (您會在頁面頂端看到 [Web] 索引標籤) 
-- Enable 自動建議：決定是否啟用自訂自動建議 (請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)以取得額外成本) 。
-- 每頁的 web 結果：一次顯示的 web 搜尋結果數目 (最大值為每頁50個結果) 。
+- 已啟用 web 結果：決定是否啟用 web 搜尋（您會在頁面頂端看到 [Web] 索引標籤）
+- Enable 自動建議：決定是否啟用自訂自動建議（請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)以取得額外費用）。
+- 每頁的 web 結果：一次顯示的 web 搜尋結果數目（最大值為每頁50個結果）。
 - 影像標題：決定是否要以搜尋結果顯示影像。
 
 如果您按一下 [**顯示高級**設定]，則會顯示下列設定：
 
 - 反白顯示文字：決定是否要以粗體顯示結果的搜尋字詞。
-- 連結目標：決定當使用者按一下搜尋結果時，是否在新的瀏覽器索引標籤中開啟網頁 (空白) 或相同的瀏覽器索引標籤 (自我) 。
+- 連結目標：決定當使用者按一下搜尋結果時，網頁會在新的瀏覽器索引標籤（空白）還是相同的瀏覽器索引標籤（本身）中開啟。
 
 ### <a name="image-search-configurations"></a>影像搜尋組態
 
-- 已啟用影像結果：決定是否啟用影像搜尋 (您會在頁面頂端看到 [影像] 索引標籤) 。
-- 每頁的影像結果：一次顯示的影像搜尋結果數目 (最大值為每頁150個結果) 。
+- 已啟用影像結果：決定是否啟用影像搜尋（您會在頁面頂端看到 [影像] 索引標籤）。
+- 每頁的影像結果：一次顯示的影像搜尋結果數目（最大值為每頁150個結果）。
 
 如果您按一下 [顯示進階設定]****，將顯示下列設定。  
   
@@ -115,8 +116,8 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 
 ### <a name="video-search-configurations"></a>影片搜尋組態
 
-- 已啟用影片結果：決定是否啟用影片搜尋 (您會在頁面頂端看到 [影片] 索引標籤) 。
-- 每頁的影片結果：一次顯示的影片搜尋結果數目 (最大值為每頁150個結果) 。
+- 已啟用影片結果：決定是否啟用影片搜尋（您會在頁面頂端看到 [影片] 索引標籤）。
+- 每頁的影片結果：一次顯示的影片搜尋結果數目（最大值為每頁150個結果）。
 
 如果您按一下 [顯示進階設定]****，將顯示下列設定。  
   
@@ -124,7 +125,7 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 
 ### <a name="miscellaneous-configurations"></a>其他組態
 
-- 頁面標題：顯示在 [搜尋結果] 頁面標題區域中的文字， (不適用於快顯版面配置) 。
+- 頁面標題：顯示在 [搜尋結果] 頁面標題區域中的文字（不適用於快顯版面配置）。
 - 工具列主題：決定 [搜尋結果] 頁面標題區域的背景色彩。
 
 如果您按一下 [顯示進階設定]****，將顯示下列設定。  

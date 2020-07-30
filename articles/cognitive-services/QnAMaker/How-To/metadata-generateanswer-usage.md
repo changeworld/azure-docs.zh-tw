@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 863143cb2ec1085bf03b070c225f2be5e8e4393d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7120f95b8b61fc08759f4d15061ec530849dfc05
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126171"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406515"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>取得 GenerateAnswer API 和中繼資料的解答
 
@@ -268,7 +269,7 @@ GenerateAnswer 的回應包含相符的問題和答案配對的對應中繼資�
 
 |程式碼|說明|
 |:--|--|
-|2xx|成功|
+|2xx|Success|
 |400|要求的參數不正確，表示必要參數遺失、格式不正確或太大|
 |400|要求的本文不正確，表示 JSON 遺失、格式不正確或太大|
 |401|金鑰無效|

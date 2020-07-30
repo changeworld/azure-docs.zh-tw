@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: f592e265cafc3e56dc0616e6eeb748c851084c32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fb23893f176a2b51e5917ea5bbcb0e52faa64bf3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317870"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423434"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -218,6 +218,8 @@ myenv = Environment.from_conda_specification(name = 'myenv',
                                              file_path = 'path-to-conda-specification-file'
 myenv.register(workspace=ws)
 ```
+
+如需使用和自訂具有 Azure Machine Learning 之 Python 環境的完整討論，請參閱[在 Azure Machine Learning 中建立 & 使用軟體環境](how-to-use-environments.md)
 
 ### <a name="2-define-scoring-code"></a><a id="script"></a>2. 定義評分程式碼
 
@@ -613,7 +615,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 
 下表描述不同的服務狀態：
 
-| Webservice 狀態 | 說明 | 最終狀態？
+| Webservice 狀態 | 描述 | 最終狀態？
 | ----- | ----- | ----- |
 | 正在 | 服務正在進行部署。 | 否 |
 | Unhealthy | 服務已部署，但目前無法連線。  | 否 |
@@ -636,7 +638,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 ### <a name="ab-testing-controlled-rollout"></a>A/B 測試（受控首度發行）
 如需詳細資訊，請參閱[管理 ML 模型的推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
 
-## <a name="consume-web-services"></a>取用 Web 服務
+## <a name="inference-using-web-services"></a>使用 web 服務的推斷
 
 每個已部署的 web 服務都會提供 REST 端點，因此您可以使用任何程式設計語言來建立用戶端應用程式。
 如果您已為服務啟用以金鑰為基礎的驗證，您必須提供服務金鑰做為要求標頭中的權杖。

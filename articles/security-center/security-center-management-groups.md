@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 236153612f6056e90cb9b5af128f49ed550e3fe9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2ef2cc86b3e12149977fa819a7e54ee9a1c0d7ac
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080868"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423978"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>取得 Azure 資訊安全中心的全租用戶可見性
 本文說明如何藉由將安全性原則套用至連結至 Azure Active Directory 租使用者的所有 Azure 訂用帳戶，大規模管理您組織的安全性狀態。
@@ -26,7 +26,7 @@ ms.locfileid: "86080868"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>管理群組
-Azure 管理群組可讓您有效管理訂用帳戶群組的存取、原則和報告，並藉由對根管理群組執行動作來有效管理整個 Azure 資產。 每個 Azure AD 租用戶都會有一個最上層管理群組，名為根管理群組。 這個根管理群組會建置於階層內，讓所有的管理群組和訂用帳戶摺疊於其中。 此群組可讓全域原則和 RBAC 指派套用於目錄層級。 
+Azure 管理群組可讓您有效管理訂用帳戶群組的存取、原則和報告，並藉由對根管理群組執行動作來有效管理整個 Azure 資產。 每個 Azure AD 租用戶都會有一個最上層管理群組，名為根管理群組。 這個根管理群組會建置於階層內，讓所有的管理群組和訂用帳戶摺疊於其中。 此群組可讓您在目錄層級套用全域原則和 Azure 角色指派。 
 
 當您執行下列任何動作時，即會自動建立根管理群組： 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)中的 [管理群組]****，以選擇使用 Azure 管理群組。
@@ -49,7 +49,7 @@ Azure 管理群組可讓您有效管理訂用帳戶群組的存取、原則和�
     - [顯示名稱] 欄位是顯示在 Azure 入口網站內的名稱。 在建立管理群組時，不同的顯示名稱是選擇性欄位，並且可以隨時進行變更。  
 
       ![建立](./media/security-center-management-groups/create_context_menu.png)  
-5.  選取 [儲存]
+5.  選取 [儲存]。
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>檢視 Azure 入口網站中的管理群組
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
@@ -185,7 +185,7 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
    > [!NOTE]
    > 管理群組可同時包含訂用帳戶和子管理群組。 當您將使用者的 RBAC 角色指派給父管理群組時，子管理群組的訂用帳戶即會繼承存取權。 子系也會繼承在父管理群組上設定的原則。 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 在本文中，您已了解如何取得 Azure 資訊安全中心的全租用戶可見性。 如要深入了解資訊安全中心，請參閱下列文章：
 
 > [!div class="nextstepaction"]
@@ -193,4 +193,3 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
 
 > [!div class="nextstepaction"]
 > [在 Azure 資訊安全中心管理和回應安全性警示](security-center-managing-and-responding-alerts.md)
-

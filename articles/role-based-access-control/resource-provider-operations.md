@@ -1,5 +1,5 @@
 ---
-title: Azure 資源提供者作業 (機器翻譯)
+title: Azure 資源提供者作業
 description: 列出 Azure 資源提供者的作業。
 services: active-directory
 ms.service: role-based-access-control
@@ -8,14 +8,14 @@ ms.workload: identity
 author: rolyon
 ms.author: rolyon
 ms.date: 07/16/2020
-ms.openlocfilehash: 0fc2039805b155535eeac1d653fc9ecb9e576d5d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d28f852ad4159472b7fcb3289a322db54be8af1e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496939"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387382"
 ---
-# <a name="azure-resource-providers-operations"></a>Azure 資源提供者作業 (機器翻譯)
+# <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
 本節列出在內建角色中使用的 Azure 資源提供者的作業。 您可以在自己的[azure 自訂角色](custom-roles.md)中使用這些作業，以對 Azure 中的資源提供細微的存取控制。 資源提供者作業會不斷發展。 若要取得最新的作業，請使用 [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) 或 [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "86496939"
 | [Microsoft.ClassicCompute](#microsoftclassiccompute) |
 | [Microsoft.Compute](#microsoftcompute) |
 | [Microsoft.ServiceFabric](#microsoftservicefabric) |
-| **網路** |
+| **網路功能** |
 | [Microsoft.Cdn](#microsoftcdn) |
 | [Microsoft.ClassicNetwork](#microsoftclassicnetwork) |
 | [Microsoft.Network](#microsoftnetwork) |
@@ -1290,7 +1290,7 @@ Azure 服務：[應用程式閘道](../application-gateway/index.yml)、 [azure]
 > | Microsoft.Network/vpnsites/delete | 刪除 VPN 網站資源。 |
 > | microsoft. network/vpnSites/vpnSiteLinks/read | 取得 Vpn 站台連結 |
 
-## <a name="storage"></a>存放裝置
+## <a name="storage"></a>儲存體
 
 ### <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
@@ -6607,7 +6607,7 @@ Azure 服務： [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | Microsoft.VisualStudio/Project/Delete | 刪除專案 |
 > | Microsoft.VisualStudio/Project/Read | 讀取專案 |
 
-## <a name="migrate"></a>移轉
+## <a name="migrate"></a>遷移
 
 ### <a name="microsoftmigrate"></a>Microsoft.Migrate
 
@@ -7636,7 +7636,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | microsoft.operationalinsights/workspace/scopedPrivateLinkProxies/read | 取得限定範圍的私用連結 Proxy。 |
 > | microsoft.operationalinsights/workspace/scopedPrivateLinkProxies/write | 放置範圍私人連結 Proxy。 |
 > | microsoft.operationalinsights/workspace/scopedPrivateLinkProxies/delete | 刪除已設定範圍的私用連結 Proxy。 |
-> | microsoft.operationalinsights/workspaces/search/read | 取得搜尋結果。 已被取代。 |
+> | microsoft.operationalinsights/workspaces/search/read | 取得搜尋結果。 已取代。 |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/read | 擷取工作區的共用金鑰。 這些金鑰可用來將 Microsoft Operational Insights 代理程式連線到工作區。 |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/write | 建立新的儲存體組態。 這些組態可用來提取現有儲存體帳戶中來自某個位置的資料。 |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/read | 取得儲存體組態。 |

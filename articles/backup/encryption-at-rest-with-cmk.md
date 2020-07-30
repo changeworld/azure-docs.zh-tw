@@ -3,12 +3,12 @@ title: 使用客戶管理的金鑰來加密備份資料
 description: 瞭解 Azure 備份如何讓您使用客戶管理的金鑰（CMK）來加密備份資料。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: c26466582cbe5a10610f6766160c2b0bc51a4828
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1586a40d115a591c474c3bc8c1fed5448eb90bcd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091091"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387994"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
 
@@ -23,7 +23,7 @@ Azure 備份可讓您使用客戶管理的金鑰（CMK）來加密備份資料�
 - 執行使用客戶管理的金鑰加密的保存庫備份
 - 從備份還原資料
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 - 這項功能可讓您**僅加密新**的復原服務保存庫。 不支援包含已註冊或嘗試向其註冊之現有專案的任何保存庫。
 
@@ -92,7 +92,7 @@ Azure 備份會使用系統指派的受控識別來驗證復原服務保存庫�
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>在 Azure Key Vault 上啟用虛刪除和清除保護
 
-您必須在儲存加密金鑰的 Azure Key Vault 上**啟用虛刪除和清除保護**。 您可以從 [Azure Key Vault] UI 執行此動作，如下所示。 （或者，您可以在建立 Key Vault 時設定這些屬性）。 如需這些 Key Vault 屬性的詳細資訊，請參閱[這裡](../key-vault/general/overview-soft-delete.md)。
+您必須在儲存加密金鑰的 Azure Key Vault 上**啟用虛刪除和清除保護**。 您可以從 [Azure Key Vault] UI 執行此動作，如下所示。 （或者，您可以在建立 Key Vault 時設定這些屬性）。 如需這些 Key Vault 屬性的詳細資訊，請參閱[這裡](../key-vault/general/soft-delete-overview.md)。
 
 ![啟用虛刪除和清除保護](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 

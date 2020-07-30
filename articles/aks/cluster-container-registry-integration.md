@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: e1ddff9a416b55c22fcd2bfaedff32666414e4bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057254"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406498"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>從 Azure Kubernetes Service 對 Azure Container Registry 進行驗證
 
@@ -60,7 +60,7 @@ az aks create -n myAKSCluster -g myResourceGroup --generate-ssh-keys --attach-ac
 提供**acr 名稱**或**acr 資源識別碼**的有效值，以整合現有的 ACR 與現有的 AKS 叢集，如下所示。
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-name>
 ```
 
 或者，
@@ -72,7 +72,7 @@ az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 您也可以使用下列程式來移除 ACR 與 AKS 叢集之間的整合
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-name>
 ```
 
 或
@@ -89,7 +89,7 @@ az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
 
 
 ```azurecli
-az acr import  -n <myContainerRegistry> --source docker.io/library/nginx:latest --image nginx:v1
+az acr import  -n <acr-name> --source docker.io/library/nginx:latest --image nginx:v1
 ```
 
 ### <a name="deploy-the-sample-image-from-acr-to-aks"></a>將範例映射從 ACR 部署至 AKS
@@ -100,7 +100,7 @@ az acr import  -n <myContainerRegistry> --source docker.io/library/nginx:latest 
 az aks get-credentials -g myResourceGroup -n myAKSCluster
 ```
 
-建立名為**acr-nginx. yaml**的檔案，其中包含下列內容：
+建立名為**acr-nginx. yaml**的檔案，其中包含下列各項。 以您登錄的資源名稱取代**acr 名稱**。 範例： *myContainerRegistry*。
 
 ```yaml
 apiVersion: apps/v1
@@ -121,7 +121,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: <replace this image property with you acr login server, image and tag>
+        image: <acr-name>.azurecr.io/nginx:v1
         ports:
         - containerPort: 80
 ```

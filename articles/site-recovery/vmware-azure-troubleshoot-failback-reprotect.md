@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure Site Recovery 針對 VMware VM 嚴重損壞修復中的容錯回復進行疑難排解
 description: 本文說明對使用 Azure Site Recovery 從 VMWare VM 災害復原至 Azure 期間所發生的容錯回復和重新保護問題進行疑難排解的方式。
-author: rajani-janaki-ram
-manager: gauravd
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: d6640a6e807bdcc7a08476a18467745330742ee2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.author: sharrai
+ms.openlocfilehash: ed4e52470264441a99c5ccf0a736bb00233510c1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289291"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423111"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>針對從 Azure 至內部部署環境的容錯回復進行疑難排解
 

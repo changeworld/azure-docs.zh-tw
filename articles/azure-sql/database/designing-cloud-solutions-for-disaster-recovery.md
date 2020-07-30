@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 12/04/2018
-ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: a23330bb00fb06a3ed9d3dfe28666e8f27dae4fa
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344640"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405036"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>使用 Azure SQL Database 設計全域可用的服務
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,13 @@ ms.locfileid: "84344640"
 > 災害復原的應用程式部署設定，建議限制在兩個區域。 這是因為大部分的 Azure 地理位置只有兩個區域。 這些設定不會保護應用程式免於遭受兩個區域同時發生的重大失敗。 在這種罕見的失敗情況下，您可以使用[異地復原作業](disaster-recovery-guidance.md#recover-using-geo-restore)，在第三個區域復原資料庫。
 >
 
- 一旦運作中斷情況趨緩後，次要資料庫會自動與主要資料庫同步處理。 同步處理期間，可能會影響主要區域的效能。 特定的影響取決於容錯移轉之後，新的主要區域取得的資料量。 下圖說明次要地區發生運作中斷的情形：
+ 一旦運作中斷情況趨緩後，次要資料庫會自動與主要資料庫同步處理。 同步處理期間，可能會影響主要區域的效能。 特定的影響取決於容錯移轉之後，新的主要區域取得的資料量。 
+
+> [!NOTE]
+> 降低中斷之後，流量管理員會開始將區域 A 中應用程式的連線路由至較高優先順序的端點。 如果您想要將主要區域 B 保留一段時間，則應據以變更 Trafic Manager 設定檔中的優先順序資料表。 
+>
+ 
+ 下圖說明次要地區發生運作中斷的情形：
 
 ![案例 1. 次要區域中發生中斷後的設定。](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 
@@ -153,7 +159,7 @@ ms.locfileid: "84344640"
 
 特定的雲端災害復原策略可以合併或擴充這些設計模式，以完全滿足應用程式的需求。  如先前所述，您選擇的策略取決於您想要提供給客戶的 SLA 和應用程式部署拓樸。 為了協助指導您做決定，下表是以復原點目標 (RPO) 和預估復原時間 (ERT) 作為基礎來比較各種選擇。
 
-| 模式 | RPO | ERT |
+| 模式 | 復原點目標 (RPO) | ERT |
 |:--- |:--- |:--- |
 | 災害復原的主動-被動部署，使用共置資料庫存取 |讀寫存取 < 5 秒 |失敗偵測時間 + DNS TTL |
 | 應用程式負載平衡的主動-主動部署 |讀寫存取 < 5 秒 |失敗偵測時間 + DNS TTL |

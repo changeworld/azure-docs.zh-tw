@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fc393279aaa6b293c2eb29099be45385ad08d9a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 82304052d6ed0c0169c24c19c58d53548b4479cc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731491"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423587"
 ---
 # <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Active Directory 中的大量刪除使用者
 
@@ -68,7 +68,7 @@ ms.locfileid: "84731491"
 
 您可以在 [大量作業結果] 頁面中，查看所有待決之大量要求的狀態。
 
-   [![](media/users-bulk-delete/bulk-center.png "Check delete status in the Bulk Operations Results page")](media/users-bulk-delete/bulk-center.png#lightbox)
+   [![在 [大量作業結果] 頁面中，選取 [刪除狀態]。](media/users-bulk-delete/bulk-center.png)](media/users-bulk-delete/bulk-center.png#lightbox)
 
 接下來，您可以檢查您刪除的使用者是否存在於 Azure 入口網站中的 Azure AD 組織，或使用 PowerShell。
 

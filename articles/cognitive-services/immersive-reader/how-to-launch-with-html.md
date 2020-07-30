@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: bc7ab46113e1b819fc71a9f6e8a18400f8acfbef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: fbe54b3bd6e0fc8c42b4dfc7401be74ae65ce6cd
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946306"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406923"
 ---
 # <a name="how-to-launch-the-immersive-reader-with-html-content"></a>如何啟動具有 HTML 內容的沉浸式讀取器
 
@@ -22,7 +23,7 @@ ms.locfileid: "75946306"
 
 ## <a name="prepare-the-html-content"></a>準備 HTML 內容
 
-將您想要呈現的內容放在容器元素內的沉浸式讀取器中。 請確定容器元素具有唯一`id`的。 沉浸式讀取器提供基本 HTML 專案的支援，如需詳細資訊，請參閱[參考](./reference.md#html-support)。
+將您想要呈現的內容放在容器元素內的沉浸式讀取器中。 請確定容器元素具有唯一的 `id` 。 沉浸式讀取器提供基本 HTML 專案的支援，如需詳細資訊，請參閱[參考](./reference.md#html-support)。
 
 ```html
 <div id='immersive-reader-content'>
@@ -40,7 +41,7 @@ ms.locfileid: "75946306"
 
 ## <a name="get-the-html-content-in-javascript"></a>以 JavaScript 取得 HTML 內容
 
-`id`使用容器元素的來取得 JavaScript 程式碼中的 HTML 內容。
+使用 `id` 容器元素的來取得 JavaScript 程式碼中的 HTML 內容。
 
 ```javascript
 const htmlContent = document.getElementById('immersive-reader-content').innerHTML;
@@ -48,7 +49,7 @@ const htmlContent = document.getElementById('immersive-reader-content').innerHTM
 
 ## <a name="launch-the-immersive-reader-with-your-html-content"></a>使用您的 HTML 內容啟動沉浸式讀取器
 
-呼叫`ImmersiveReader.launchAsync`時，將區塊的`mimeType`屬性設定為`text/html` ，以啟用轉譯 HTML。
+呼叫時 `ImmersiveReader.launchAsync` ，將區塊的 `mimeType` 屬性設定為， `text/html` 以啟用轉譯 HTML。
 
 ```javascript
 const data = {

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5dbf26bc636107576af15a0217eb16302f63f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5022dfc5811f3db59774a46a7034ff14c4dcf4a8
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601627"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428027"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 應用程式啟用無密碼登入（預覽）
 
@@ -45,7 +45,7 @@ Microsoft Authenticator 應用程式可用來登入任何 Azure AD 帳戶 (而�
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>啟用無密碼電話登入驗證方法
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)
+1. 使用**全域系統管理員**帳戶登入[Azure 入口網站](https://portal.azure.com)。
 1. 搜尋並選取 [Azure Active Directory]。 選取**安全性**  >  **驗證方法**  >  **驗證方法原則（預覽）**
 1. 在 [**無密碼電話**] [登入] 底下，選擇下列選項
    1. **啟用**-是或否

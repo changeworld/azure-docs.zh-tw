@@ -1,19 +1,18 @@
 ---
 title: Linux Vm 的應用程式一致備份
 description: 在 Azure 建立 Linux 虛擬機器的應用程式一致備份。 本文說明如何設定指令碼架構，備份以 Azure 部署的 Linux VM。 本文另包含疑難排解資訊。
-ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 8d578df45235b3bef314245e4eb7a0976c4d48d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1ebf1b4148c43b07c0fddee67970abe8381e4c30
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054855"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407093"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM 的應用程式一致備份
 
-在擷取 VM 的備份快照集時，應用程式一致性代表當 VM 還原後，應用程式隨著 VM 開機而啟動。 可想而知，應用程式一致性是多麼重要的環節。 為了確保 Linux VM 符合應用程式一致性，您可以使用 Linux 前置指令碼和後置指令碼架構來製作應用程式一致備份。 前置指令碼和後置指令碼架構支援以 Azure Resource Manager 部署的 Linux 虛擬機器。 應用程式一致性指令碼不支援以 Service Manager 部署的虛擬機器或 Windows 虛擬機器。
+在擷取 VM 的備份快照集時，應用程式一致性代表當 VM 還原後，應用程式隨著 VM 開機而啟動。 可想而知，應用程式一致性是多麼重要的環節。 為了確保 Linux VM 符合應用程式一致性，您可以使用 Linux 前置指令碼和後置指令碼架構來製作應用程式一致備份。 前置指令碼和後置指令碼架構支援以 Azure Resource Manager 部署的 Linux 虛擬機器。 應用程式一致性的腳本不支援 Service Manager 部署的虛擬機器或 Windows 虛擬機器。
 
 ## <a name="how-the-framework-works"></a>架構的運作方式
 
@@ -53,19 +52,19 @@ ms.locfileid: "87054855"
 
     - **postScriptParams**：提供必須傳遞給前置指令碼的選擇性參數。 所有參數都應該以引號括住。 如果您使用多個參數，請以逗號分隔參數。
 
-    - **preScriptNoOfRetries**：設定在終止前如果發生任何錯誤，應重試前置指令碼的次數。 零表示只嘗試一次，若系統故障則不重試。
+    - **preScriptNoOfRetries**：設定在終止前，如果發生任何錯誤，應重試前置腳本的次數。 零表示只有一次嘗試，如果失敗，則不重試。
 
-    - **postScriptNoOfRetries**：設定在終止前如果發生任何錯誤，應重試後置指令碼的次數。 零表示只嘗試一次，若系統故障則不重試。
+    - **postScriptNoOfRetries**：設定在終止前如果發生任何錯誤，應重試後置腳本的次數。 零表示只有一次嘗試，如果失敗，則不重試。
 
     - **timeoutInSeconds**：指定前置腳本和後置腳本的個別超時（最大值可以是1800）。
 
-    - **continueBackupOnFailure**：如果您在前置或後置指令碼失敗時想要 Azure 備份回復使用檔案系統一致/損毀一致備份，請將這個值設定為 true****。 若將此設定為 false****，則當指令碼失敗會使備份失敗 (但當您有無論此設定為何都會回復為損毁一致備份的單磁碟 VM 時除外)。
+    - **continueBackupOnFailure**：如果您在前置或後置指令碼失敗時想要 Azure 備份回復使用檔案系統一致/損毀一致備份，請將這個值設定為 true****。 若將此設定為**false** ，則會在發生腳本失敗時導致備份失敗（但當您的單一磁片 VM 切換回損毀一致備份時，不論此設定為何）。 當**continueBackupOnFailure**值設定為 false 時，如果備份失敗，則會根據服務中的重試邏輯（針對約定嘗試次數），再次嘗試備份作業。
 
     - **fsFreezeEnabled**：指定當您在擷取 VM 快照時是否應該呼叫 Linux fsfreeze，以確保檔案系統一致性。 我們建議您將這個設定保持為 true****，除非您的應用程式在已停用的 fsfreeze 上具有相依性。
 
     - **ScriptsExecutionPollTimeSeconds**：設定在每次輪詢與腳本執行之間，延伸模組必須進入睡眠狀態的時間。 例如，如果值為2，延伸模組會檢查前置/後置腳本執行是否每2秒完成一次。 其可接受的最小和最大值分別為1和5。 此值應嚴格為整數。
 
-6. 此指令碼架構現在已設定完成。 如果已經設定 VM 備份，則下次備份會叫用指令碼，並觸發應用程式一致備份。 如果未設定 VM 備份，則使用[將 Azure 虛擬機器備份到復原服務保存庫](./backup-azure-vms-first-look-arm.md)來設定。
+6. 此指令碼架構現在已設定完成。 如果已經設定 VM 備份，則下次備份會叫用指令碼，並觸發應用程式一致備份。 如果未設定 VM 備份，請使用將[Azure 虛擬機器備份至復原服務保存庫來](./backup-azure-vms-first-look-arm.md)設定它。
 
 ## <a name="troubleshooting"></a>疑難排解
 

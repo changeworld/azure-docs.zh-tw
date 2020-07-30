@@ -3,12 +3,13 @@ title: 在 Linux 上設定開發環境
 description: 在 Linux 上安裝執行階段和 SDK，並建立本機開發叢集。 完成此設定之後，您就可以開始建置應用程式。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 8610feb68e16646c73c132c0577fd3ff198d74b8
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 420284a512147d729db23f3b71cbe8e9f6f050d9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186889"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429050"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上準備您的開發環境
 > [!div class="op_single_selector"]
@@ -29,7 +30,7 @@ ms.locfileid: "86186889"
 
 以下為支援開發的作業系統版本。
 
-* Ubuntu 16.04 (`Xenial Xerus`) 、18.04 (`Bionic Beaver`) 
+* Ubuntu 16.04 （ `Xenial Xerus` ）、18.04 （ `Bionic Beaver` ）
 
     請確定已安裝 `apt-transport-https` 安裝套件。
          
@@ -68,7 +69,7 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-3. 將新的 MS Open 技術 Gnu 隱私權防護 (GnuPG 或 GPG) 金鑰新增至您的 APT keyring。
+3. 將新的 MS Open Tech Gnu 隱私權防護（GnuPG 或 GPG）金鑰新增至您的 APT keyring。
 
     ```bash
     sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
@@ -161,7 +162,7 @@ SDK 安裝程式隨附的 Service Fabric 執行階段包含下表中的套件。
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-**Ubuntu** \(英文\) | 2.0.0 | AzulJDK 1.8 | 內含於 npm | 最新 |
+**Ubuntu** | 2.0.0 | AzulJDK 1.8 | 內含於 npm | 最新 |
 **RHEL** | - | OpenJDK 1.8 | 內含於 npm | 最新 |
 
 ## <a name="set-up-a-local-cluster"></a>設定本機叢集
@@ -173,7 +174,7 @@ SDK 安裝程式隨附的 Service Fabric 執行階段包含下表中的套件。
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. 開啟網頁瀏覽器，並移至**Service Fabric Explorer** (`http://localhost:19080/Explorer`) 。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
+2. 開啟網頁瀏覽器並移至**Service Fabric Explorer** （ `http://localhost:19080/Explorer` ）。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
 
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 

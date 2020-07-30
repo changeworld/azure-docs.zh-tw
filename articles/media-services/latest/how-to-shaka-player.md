@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3c04009da67ad7c0b0b09278c25d75c678e23960
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5882b79232e858bbc8ad7e0da94ad4b04f5165ca
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294141"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422975"
 ---
 # <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>如何搭配 Azure 媒體服務使用 Shaka 播放機
 

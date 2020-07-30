@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 983a3e04921bb3d8e804430948013a1b51802727
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549638"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424063"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 閘道資源設計虛擬網路
 
@@ -28,7 +28,7 @@ NAT 閘道資源是[虛擬網路 NAT](nat-overview.md) 的一部分，可為虛�
 
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="可供輸出到網際網路的虛擬網路 NAT">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="可供輸出到網際網路的虛擬網路 NAT">
 </p>
 
 *圖：可供輸出到網際網路的虛擬網路 NAT*
@@ -54,7 +54,7 @@ NAT 閘道資源：
 下圖顯示不同 Azure Resource Manager 資源之間的可寫入參考。  箭號表示參考的方向，其源自可寫入的位置。 檢閱 
 
 <p align="center">
-  <img src="media/nat-overview/flow-map.svg" width="256" title="虛擬網路 NAT 物件模型">
+  <img src="media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="虛擬網路 NAT 物件模型">
 </p>
 
 *圖：虛擬網路 NAT 物件模型*
@@ -119,7 +119,7 @@ NAT 閘道與下列項目相容：
 開發新的部署時，請從標準 SKU 開始。
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="可供輸出到網際網路的虛擬網路 NAT">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network." width="256" title="可供輸出到網際網路的虛擬網路 NAT">
 </p>
 
 *圖：可供輸出到網際網路的虛擬網路 NAT*
@@ -129,7 +129,7 @@ NAT 閘道所提供的僅限網際網路輸出案例，可以使用從網際網�
 #### <a name="nat-and-vm-with-instance-level-public-ip"></a>具有執行個體層級公用 IP 的 NAT 和 VM
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction2.svg" width="300" title="具有執行個體層級公用 IP 的虛擬網路 NAT 和 VM">
+  <img src="media/nat-overview/flow-direction2.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP." width="300" title="具有執行個體層級公用 IP 的虛擬網路 NAT 和 VM">
 </p>
 
 *圖：具有執行個體層級公用 IP 的虛擬網路 NAT 和 VM*
@@ -144,7 +144,7 @@ VM 將使用 NAT 閘道進行輸出。  源自的輸入不受影響。
 #### <a name="nat-and-vm-with-public-load-balancer"></a>具有公用負載平衡器的 NAT 和 VM
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction3.svg" width="350" title="具有公用負載平衡器的虛擬網路 NAT 和 VM">
+  <img src="media/nat-overview/flow-direction3.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with a public load balancer." width="350" title="具有公用負載平衡器的虛擬網路 NAT 和 VM">
 </p>
 
 *圖：具有公用負載平衡器的虛擬網路 NAT 和 VM*
@@ -159,7 +159,7 @@ VM 將使用 NAT 閘道進行輸出。  源自的輸入不受影響。
 #### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>具有執行個體層級公用 IP 和公用負載平衡器的 NAT 和 VM
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction4.svg" width="425" title="具有執行個體層級公用 IP 和公用負載平衡器的虛擬網路 NAT 和 VM">
+  <img src="media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="425" title="具有執行個體層級公用 IP 和公用負載平衡器的虛擬網路 NAT 和 VM">
 </p>
 
 *圖：具有執行個體層級公用 IP 和公用負載平衡器的虛擬網路 NAT 和 VM*
@@ -182,7 +182,7 @@ NAT 閘道的優先順序高於子網路的輸出案例。 基本負載平衡器
 #### <a name="zone-isolation-with-zonal-stacks"></a>使用區域性堆疊的區域隔離
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="虛擬網路 NAT 與區域隔離，建立多個 "zonal stacks"">
+  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="虛擬網路 NAT 與區域隔離，建立多個 "zonal stacks"">
 </p>
 
 *圖：* 虛擬網路 NAT 與區域隔離，建立多個「區域堆疊」
@@ -210,7 +210,7 @@ NAT 閘道的優先順序高於子網路的輸出案例。 基本負載平衡器
 #### <a name="cross-zone-outbound-scenarios-not-supported"></a>不支援跨區域輸出案例
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="虛擬網路 NAT 與區域跨區域子網路不相容">
+  <img src="media/nat-overview/az-directions2.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet, with the connections between to of the gateways and their subnets broken." width="425" title="虛擬網路 NAT 與區域跨區域子網路不相容">
 </p>
 
 *圖：虛擬網路 NAT 與區域跨區域子網路不相容*
@@ -268,7 +268,7 @@ NAT 所提供的 SNAT 不同於數個層面的 [Load Balancer](../load-balancer/
 NAT 會針對新的輸出流量提供隨選 SNAT 連接埠。 透過 NAT 設定的子網路上的任何虛擬機器都會使用庫存中所有可用的 SNAT 連接埠。 
 
 <p align="center">
-  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="虛擬網路 NAT 隨選輸出 SNAT">
+  <img src="media/nat-overview/lb-vnnat-chart.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T." width="550" title="虛擬網路 NAT 隨選輸出 SNAT">
 </p>
 
 *圖：虛擬網路 NAT 隨選輸出 SNAT*
@@ -276,7 +276,7 @@ NAT 會針對新的輸出流量提供隨選 SNAT 連接埠。 透過 NAT 設定�
 虛擬機器的任何 IP 組態均可視需要建立隨選輸出流量。  不需要根據執行個體規劃 (包括根據執行個體最差案例過度佈建) 預先配置。  
 
 <p align="center">
-  <img src="media/nat-overview/exhaustion-threshold.svg" width="550" title="消耗案例的差異">
+  <img src="media/nat-overview/exhaustion-threshold.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T with exhaustion threshold." width="550" title="消耗案例的差異">
 </p>
 
 *圖：消耗案例的差異*

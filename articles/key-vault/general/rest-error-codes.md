@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432056"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424370"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 錯誤代碼
  
@@ -134,7 +134,7 @@ HTTP 403 表示已驗證要求（它知道要求的身分識別），但識別�
 
 ### <a name="troubleshooting-403"></a>疑難排解403
 
-首先，開啟記錄功能。 如需有關如何執行此操作的指示，請參閱[Azure Key Vault 記錄](logging.md)）。
+首先，開啟記錄功能。 如需有關如何執行此操作的指示，請參閱[Azure Key Vault 記錄](logging.md)。
 
 一旦開啟記錄功能，您可以判斷403是因為存取原則或防火牆原則。
 

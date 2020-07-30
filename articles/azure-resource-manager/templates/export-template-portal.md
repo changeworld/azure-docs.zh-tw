@@ -2,13 +2,13 @@
 title: Azure 入口網站中匯出範本
 description: 使用 Azure 入口網站從您的訂用帳戶中的資源匯出 Azure Resource Manager 範本。
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: dbdcaa6e6db4a7a4a958f1be2e9977a14e092663
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.date: 07/29/2020
+ms.openlocfilehash: 0262517df11f0d91920fd7e44f96ff532ffbe63f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057699"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423230"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>單一和多重資源匯出至 Azure 入口網站中的範本
 
@@ -52,6 +52,8 @@ Resource Manager 可讓您挑選一或多個要匯出至範本的資源。 您�
 「匯出範本」功能不支援匯出 Azure Data Factory 資源。 若要瞭解如何匯出 Data Factory 資源，請參閱[在 Azure Data Factory 中複製或複製資料](https://aka.ms/exportTemplateViaAdf)處理站。
 
 若要匯出透過傳統部署模型建立的資源，您必須將[它們遷移至 Resource Manager 部署模型](https://aka.ms/migrateclassicresourcetoarm)。
+
+如果您在匯出範本時收到警告，指出未匯出資源類型，您仍然可以探索該資源的屬性。 若要瞭解用於查看資源屬性的不同選項，請參閱[探索資源屬性](view-resources.md)。 您也可以查看適用于資源類型的[Azure REST API](/rest/api/azure/) 。
 
 ## <a name="export-template-from-a-resource-group"></a>從資源群組匯出範本
 

@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: d6fdf25087ec376ec1bc9173aae16f357795372e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: edfdbef2dd0cbfe264ae6a52741413ca28d70864
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130914"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424455"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>使用 Azure CLI 建立容器或 blob 的使用者委派 SAS
 
@@ -129,7 +129,7 @@ az storage account revoke-delegation-keys \
 ```
 
 > [!IMPORTANT]
-> Azure 儲存體會快取使用者委派金鑰和 RBAC 角色指派，因此當您起始撤銷的進程，以及現有的使用者委派 SAS 失效時，可能會有延遲。
+> Azure 儲存體會快取使用者委派金鑰和 Azure 角色指派，因此當您起始撤銷的進程，以及現有的使用者委派 SAS 失效時，可能會有延遲。
 
 ## <a name="next-steps"></a>後續步驟
 

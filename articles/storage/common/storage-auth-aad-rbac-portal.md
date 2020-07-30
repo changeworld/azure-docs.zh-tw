@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 160833817150332b240ec17b2b700fbcb7a4456b
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 28cb140293d449876cc05e3e5f9e59a04b8396e0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370643"
+ms.locfileid: "87423695"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 Azure 入口網站來指派用於存取 Blob 和佇列資料的 RBAC 角色
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../
 
     ![顯示如何指派 RBAC 角色的螢幕擷取畫面](media/storage-auth-aad-rbac-portal/add-rbac-role.png)
 
-1. 按一下 **[儲存]** 。 您對其指派角色的身分識別會出現在該角色下方。 如下圖所示，新增的使用者現在有權對名為 sample-container** 容器讀取資料。
+1. 按一下 [檔案] 。 您對其指派角色的身分識別會出現在該角色下方。 如下圖所示，新增的使用者現在有權對名為 sample-container** 容器讀取資料。
 
     ![顯示指派給角色的使用者清單的螢幕擷取畫面](media/storage-auth-aad-rbac-portal/container-scoped-role.png)
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../
 
 - 如需儲存體資源之 RBAC 角色的詳細資訊，請參閱[使用 Azure Active Directory 來驗證 Azure blob 和佇列的存取權](storage-auth-aad.md)。 
 - 若要深入瞭解 RBAC，請參閱[什麼是 Azure 角色型存取控制（AZURE RBAC）？](../../role-based-access-control/overview.md)。
-- 若要了解如何使用 Azure PowerShell、Azure CLI 或 REST API 來指派和管理 RBAC 角色指派，請參閱下列文章：
+- 若要瞭解如何使用 Azure PowerShell、Azure CLI 或 REST API 來指派和管理 Azure 角色指派，請參閱下列文章：
     - [使用 Azure PowerShell 管理角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-powershell.md)
     - [使用 Azure CLI 管理角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-cli.md)
     - [使用 REST API 管理角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-rest.md)

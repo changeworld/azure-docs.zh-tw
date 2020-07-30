@@ -5,18 +5,18 @@ description: 了解如何使用「LUIS 撰寫 API」，從 CSV 格式的既有�
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-javascript
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 69eb6c5e5d0139049e252b0a22fefad747429068
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 669c5f1ae6b667073e885a0077e9f3130ba3c4f0
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057733"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405971"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>使用 Node.js 以程式設計方式建置 LUIS 應用程式
 
@@ -27,7 +27,7 @@ LUIS 提供一個具備 [LUIS](luis-reference-regions.md) 網站所有功能的�
 ## <a name="prerequisites"></a>必要條件
 
 * 登入 [LUIS](luis-reference-regions.md) 網站，然後在 [帳戶設定] 中尋找您的[撰寫金鑰](luis-how-to-azure-subscription.md#authoring-key)。 您可以使用此金鑰來呼叫「撰寫 API」。
-* 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 如尚未擁有 Azure 訂用帳戶，請在開始之前先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 這篇文章的開頭是一個 CSV，適用于假設公司的使用者要求記錄檔。 在 [這裡](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)下載。
 * 安裝含有 NPM 的最新 Node.js。 請從[這裡](https://nodejs.org/en/download/)下載。
 * **[建議使用]** 適用於 IntelliSense 和偵錯的 Visual Studio Code，請從[這裡](https://code.visualstudio.com/)免費下載。

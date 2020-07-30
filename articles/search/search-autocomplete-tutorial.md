@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 004f1ea55bcda68485d8b11ed472b6cab2ca7545
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 2de282da56a40c92eacde84ac913be0ceacf9e2b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562492"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413012"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>將自動完成和建議新增至用戶端應用程式
 
@@ -66,7 +67,7 @@ Api 不會強加部分查詢的最小長度需求;它可以只是一個字元。
 
 如需建議，您應該進一步精簡回應以避免重複或看似不相關的結果。 若要控制結果，請在要求中包含更多參數。 下列參數適用于自動完成和建議，但可能更需要建議，特別是當建議工具組含多個欄位時。
 
-| 參數 | 使用方式 |
+| 參數 | 使用量 |
 |-----------|-------|
 | **$select** | 如果您在建議工具中有多個**sourceFields** ，請使用 **$select**來選擇哪些欄位會提供值（ `$select=GameTitle` ）。 |
 | **searchFields** | 將查詢限制為特定欄位。 |

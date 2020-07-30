@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: 69458a7a3f2555a301c1266addfe7c49cb111ef6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 532a2ce429899d3674a8f6d8308188e9b1f737b1
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317751"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407943"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>建立 Azure 虛擬機器技術資產
 
@@ -282,4 +282,4 @@ Windoes 作業系統磁碟是使用 [sysprep 工具](https://docs.microsoft.com/
 
 否則：
 
-* [認證 VM 映像](get-sas-uri.md)說明如何測試和提交 Azure Marketplace 認證的 VM 映像，包括可在何處取得「適用於 Azure 認證的認證測試工具」，以及如何使用該工具來認證 VM 映像。
+* [從 VHD 部署的測試虛擬機器（VM）](azure-vm-image-certification.md)說明如何測試和提交 VM 映射以進行 Azure Marketplace 認證，包括可在何處取得*Azure 認證工具的認證測試控管*，以及如何使用它來認證您的 VM 映射。
