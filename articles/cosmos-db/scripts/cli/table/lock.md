@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 06/03/2020
-ms.openlocfilehash: d8ace63ed99b8fc857f61b9211068e37e3bac412
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: bb66f215241755ae0fbcef3c95f5ea67a686a4fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84514556"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092570"
 ---
 # <a name="create-resource-lock-for-a-azure-cosmos-db-table-api-table-using-azure-cli"></a>使用 Azure CLI 建立 Azure Cosmos DB 資料表 API 資料表的資源鎖定
 
@@ -21,7 +21,7 @@ ms.locfileid: "84514556"
 如果您選擇在本機安裝和使用 CLI，本主題會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 > [!IMPORTANT]
-> 除非先啟用 `disableKeyBasedMetadataWriteAccess` 屬性以鎖定 Cosmos DB 帳戶，否則只要使用者連線至 Cosmos DB 資料表 SDK、Azure 儲存體資料表 SDK、透過帳戶金鑰連線的任何工具或 Azure 入口網站，其所做的變更都無法用於資源鎖定。 若要深入了解如何啟用此屬性，請參閱[防止來自 SDK 的變更](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk) (機器翻譯)。
+> 除非先啟用 `disableKeyBasedMetadataWriteAccess` 屬性以鎖定 Cosmos DB 帳戶，否則只要使用者連線至 Cosmos DB 資料表 SDK、Azure 儲存體資料表 SDK、透過帳戶金鑰連線的任何工具或 Azure 入口網站，其所做的變更都無法用於資源鎖定。 若要深入了解如何啟用此屬性，請參閱[防止來自 SDK 的變更](../../../role-based-access-control.md#prevent-sdk-changes) (機器翻譯)。
 
 ## <a name="sample-script"></a>範例指令碼
 

@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a08e00b2debce970bdbd385b785806c8636e5946
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77661629"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318414"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 建立自訂 KPI 儀表板
 
@@ -31,7 +31,7 @@ ms.locfileid: "77661629"
 
 若要完成本教學課程：
 
-- 將 .NET 應用程式部署至 Azure，並[啟用 Application Insights SDK](../../azure-monitor/app/asp-net.md)。
+- 將 .NET 應用程式部署至 Azure，並[啟用 Application Insights SDK](../app/asp-net.md)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
@@ -127,4 +127,5 @@ Azure Applications Insights Logs (Analytics) 是分開的服務，因此您必�
 由於您已學會如何建立自訂儀表板，請看看含有個案研究的其餘 Application Insights 說明文件。
 
 > [!div class="nextstepaction"]
-> [深入診斷](../../azure-monitor/app/devops.md)
+> [深入診斷](../app/devops.md)
+

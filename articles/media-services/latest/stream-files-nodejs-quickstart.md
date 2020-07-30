@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: fa9fbf3bac55ca0b26c3644b7f6818fa96088612
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5e4c50b4b66d164ba2e89cfc537d9dd8593c4f57
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "69639396"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092026"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - Node.js
 
@@ -35,8 +35,8 @@ ms.locfileid: "69639396"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 安裝 [Node.js](https://nodejs.org/en/download/)
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
-- 請依照[使用 Azure CLI 存取 Azure 媒體服務 API](access-api-cli-how-to.md) 中的步驟，並儲存認證。 您必須使用這些認證來存取 API。
+- [建立媒體服務帳戶](./create-account-howto.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
+- 請依照[使用 Azure CLI 存取 Azure 媒體服務 API](./access-api-howto.md) 中的步驟，並儲存認證。 您必須使用這些認證來存取 API。
 
 ## <a name="download-and-configure-the-sample"></a>下載並設定範例
 
@@ -48,7 +48,7 @@ ms.locfileid: "69639396"
 
 此範例位於 [StreamFilesSample](https://github.com/Azure-Samples/media-services-v3-node-tutorials/tree/master/AMSv3Samples/StreamFilesSample) 資料夾。
 
-開啟所下載專案中的 [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25)。 將 `endpoint config` 值取代為您從[存取 API](access-api-cli-how-to.md) 中取得的認證。
+開啟所下載專案中的 [index.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L25)。 將 `endpoint config` 值取代為您從[存取 API](./access-api-howto.md) 中取得的認證。
 
 此範例會執行下列動作：
 
@@ -101,7 +101,7 @@ az group delete --name amsResourceGroup
 
 ## <a name="see-also"></a>另請參閱
 
-[作業錯誤碼](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
+[作業錯誤碼](/rest/api/media/jobs/get#joberrorcode)。
 
 ## <a name="next-steps"></a>後續步驟
 

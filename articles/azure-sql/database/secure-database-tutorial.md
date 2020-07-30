@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: c658283ed610dcd14fca82b14217cba979388fc2
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 73ffe7fe6336d9547ebbbf4c894bd1b9398e0900
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252911"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092927"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教學課程：保護 Azure SQL Database 中的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -146,7 +146,7 @@ Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺�
 - [將自有的網域名稱新增至 Azure AD](../../active-directory/fundamentals/add-custom-domain.md)
 - [Microsoft Azure 現在支援與 Windows Server AD 同盟](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [管理 Azure AD 目錄](../../active-directory/fundamentals/active-directory-whatis.md)
-- [使用 PowerShell 管理 Azure AD](/powershell/azure/overview?view=azureadps-2.0)
+- [使用 PowerShell 管理 Azure AD](/powershell/azure/?view=azureadps-2.0)
 - [混合式身分識別所需的連接埠和通訊協定](../../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="manage-database-access"></a>管理資料庫存取
