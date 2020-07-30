@@ -43,8 +43,6 @@
           href: tutorial-connect-device-nodejs.md
         - name: 連線到裝置 (Python)
           href: tutorial-connect-device-python.md
-        - name: 連接隨插即用 (預覽) 裝置
-          href: tutorial-connect-pnp-device.md
         - name: 建立閘道裝置範本
           href: tutorial-define-gateway-device-type.md
         - name: 連線到 IoT Edge 裝置
@@ -79,8 +77,6 @@
       items:
         - name: 設定裝置範本
           href: howto-set-up-template.md
-        - name: 準備及連線 MXChip IoT DevKit
-          href: howto-connect-devkit.md
         - name: 準備和連線 Azure Sphere DevKit
           href: howto-connect-sphere.md
         - name: 準備及連線 RuuviTag 裝置

@@ -4,87 +4,75 @@
   items:
     - name: 什麼是 IoT 隨插即用？
       href: overview-iot-plug-and-play.md
+    - name: 預覽版重新整理更新
+      href: overview-iot-plug-and-play-preview-updates.md
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立裝置
-      items:
-        - name: C Linux
-          href: quickstart-create-pnp-device-linux.md
-        - name: C Windows
-          href: quickstart-create-pnp-device-windows.md
     - name: 將裝置連線到 IoT 中樞
       items:
-        - name: C Linux
-          href: quickstart-connect-pnp-device-c-linux.md
-        - name: C Windows
-          href: quickstart-connect-pnp-device-c-windows.md
-        - name: C#
-          href: quickstart-connect-pnp-device-csharp.md
-        - name: Java
-          href: quickstart-connect-pnp-device-java.md
+        - name: C
+          href: quickstart-connect-device-c.md
         - name: Node.js
-          href: quickstart-connect-pnp-device-node.md
-    - name: 將裝置連線到 IoT Central
-      href: ../iot-central/core/tutorial-connect-pnp-device.md
-    - name: 連線到解決方案中的裝置
+          href: quickstart-connect-device-node.md
+        - name: Python
+          href: quickstart-connect-device-python.md
+        - name: C#
+          href: quickstart-connect-device-csharp.md
+        - name: Java
+          href: quickstart-connect-device-java.md
+    - name: 從您的解決方案與裝置互動
       items:
-        - name: C#
-          href: quickstart-connect-pnp-device-solution-csharp.md
-        - name: Java
-          href: quickstart-connect-pnp-device-solution-java.md
         - name: Node.js
-          href: quickstart-connect-pnp-device-solution-node.md
+          href: quickstart-service-node.md
+        - name: Python
+          href: quickstart-service-python.md
 - name: 教學課程
   items:
-    - name: 使用 VS Code 建立裝置
-      href: tutorial-pnp-visual-studio-code.md
-    - name: 建立可供認證的裝置
-      href: tutorial-build-device-certification.md
-    - name: 認證您的裝置
-      href: tutorial-certification-test.md
+    - name: 連接多個元件裝置 (C#)
+      href: tutorial-multiple-components-csharp.md
+    - name: 連接多個元件裝置 (Java)
+      href: tutorial-multiple-components-java.md
+    - name: 連接多個元件裝置 (Node.js)
+      href: tutorial-multiple-components-node.md
+    - name: 連接多個元件裝置 (Python)
+      href: tutorial-multiple-components-python.md
 - name: 概念
   items:
-    - name: 詞彙
-      href: iot-plug-and-play-glossary.md
+    - name: 架構
+      href: concepts-architecture.md
     - name: 開發人員指南
       href: concepts-developer-guide.md
-    - name: 通用介面
-      href: concepts-common-interfaces.md
+    - name: 元件
+      href: concepts-components.md
+    - name: IoT 隨插即用慣例
+      href: concepts-convention.md
+    - name: Digital Twins
+      href: concepts-digital-twin.md
+    - name: 模型存放庫
+      href: concepts-model-repository.md
     - name: 模型探索
       href: concepts-model-discovery.md
+    - name: 模型剖析器
+      href: concepts-model-parser.md
     - name: 限制和配額
       href: concepts-limits-quotas.md
+    - name: 詞彙
+      href: iot-plug-and-play-glossary.md
 - name: 操作指南
   items:
-    - name: 使用 Visual Studio 和 Visual Studio Code 開發
-      href: howto-develop-with-vs-vscode.md
-    - name: 安裝 IoT 檔案總管
-      href: howto-install-iot-explorer.md
-    - name: 安裝 Azure CLI 擴充功能
-      href: howto-install-pnp-cli.md
-    - name: 上線到 IoT 入口網站
-      href: howto-onboard-portal.md
-    - name: 管理模型
-      href: howto-manage-models.md
-    - name: 連線到裝置並與其互動
-      href: howto-develop-solution.md
+    - name: 安裝和使用 IoT 總管
+      href: howto-use-iot-explorer.md
+    - name: 安裝和使用 Azure IoT CLI 擴充功能
+      href: howto-use-iot-pnp-cli.md
+    - name: 管理 Digital Twins
+      href: howto-manage-digital-twin.md
 - name: 參考
   items:
     - name: 程式庫和 SDK
       href: libraries-sdks.md
-    - name: REST API
-      items:
-        - name: 數位分身
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
-        - name: 數位分身服務
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
-        - name: 數位分身模型存放庫
-          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
-        - name: 產生 REST 安全性權杖
-          href: howto-generate-sas-token.md
-- name: 參考
-  items:
+    - name: Digital Twin REST API
+      href: 'https://aka.ms/iot-pnp-preview-rest'
     - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: 資源

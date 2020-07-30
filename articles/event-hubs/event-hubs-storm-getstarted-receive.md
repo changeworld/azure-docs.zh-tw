@@ -3,12 +3,12 @@ title: 快速入門：使用 Apache Storm 接收事件 - Azure 事件中樞
 description: 快速入門：本文提供有關如何使用 Apache Storm 從「Azure 事件中樞」接收事件的資訊。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 05973a9a930cd7b42a5a00554c48832065c794ec
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 099a3ff1ad57616de0d7929d787b82e9d55c9e00
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315355"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087572"
 ---
 # <a name="quickstart-receive-events-from-event-hubs-using-apache-storm"></a>快速入門：使用 Apache Storm 從事件中樞接收事件
 
@@ -238,7 +238,7 @@ ms.locfileid: "85315355"
 * [事件中樞常見問題集](event-hubs-faq.md)
 
 <!-- Links -->
-[Event Hubs overview]: event-hubs-what-is-event-hubs.md
+[Event Hubs overview]: ./event-hubs-about.md
 [HDInsight Storm]: ../hdinsight/storm/apache-storm-overview.md
 [採用事件中樞的 HDInsight Storm 範例]: https://github.com/Azure-Samples/hdinsight-java-storm-eventhub
 

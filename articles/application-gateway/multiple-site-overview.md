@@ -16,9 +16,9 @@ ms.locfileid: "87290976"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>應用程式閘道多站台裝載
 
-多網站裝載可讓您在應用程式閘道的相同埠上設定多個 web 應用程式。 它可讓您為部署設定更有效率的拓撲，其方式是在一個應用程式閘道上新增多達100個以上的網站。 每個網站都可以導向到自己的後端集區。 例如，有三個網域、contoso.com、fabrikam.com 和 adatum.com，指向應用程式閘道的 IP 位址。 您會建立三個多網站接聽程式，並針對個別的埠和通訊協定設定，設定每個接聽程式。 
+多網站裝載可讓您在應用程式閘道的相同埠上設定多個 web 應用程式。 此功能可讓您將 100 多個網站新增到一個應用程式閘道，為您的部署設定更有效率的拓撲。 每個網站都可以導向到自己的後端集區。 例如，contoso.com、fabrikam.com 和 adatum.com 三個網域都指向應用程式閘道的 IP 位址。 您會建立三個多網站接聽程式，並針對個別的連接埠和通訊協定設定來設定每個接聽程式。 
 
-您也可以在多網站接聽程式中定義萬用字元主機名稱，以及每個接聽程式最多5個主機名稱。 若要深入瞭解，請參閱接聽程式[中的萬用字元主機名稱](#wildcard-host-names-in-listener-preview)。
+您也可以在多網站接聽程式中定義萬用字元主機名稱，並為每個接聽程式定義最多 5 個主機名稱。 若要深入瞭解，請參閱接聽程式[中的萬用字元主機名稱](#wildcard-host-names-in-listener-preview)。
 
 :::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="多網站應用程式閘道":::
 

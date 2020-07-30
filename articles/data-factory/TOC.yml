@@ -732,6 +732,8 @@
           href: connector-troubleshoot-guide.md
         - name: 資料流程
           href: data-flow-troubleshoot-guide.md
+        - name: 複製資料工具
+          href: copy-data-tool-troubleshoot-guide.md
         - name: 自我裝載整合執行階段
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 整合執行階段

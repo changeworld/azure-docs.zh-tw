@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8418a45c9eba596339999c2bddf937a516d3e2d9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223341"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338039"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入門：針對您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定屬性
 
@@ -41,15 +40,15 @@ ms.locfileid: "86223341"
 若要編輯應用程式屬性：
 
 1. 在 Azure AD 入口網站中，選取 [企業應用程式]。 然後尋找並選取您要設定的應用程式。
-1. 在 [管理] 區段中，選取 [屬性] 來開啟 [屬性] 窗格以進行編輯。
+2. 在 [管理] 區段中，選取 [屬性] 來開啟 [屬性] 窗格以進行編輯。
 
     ![[屬性] 畫面的螢幕擷取畫面，其中顯示可編輯的應用程式屬性。](media/add-application-portal/edit-properties.png)
 
-1. 請花點時間了解可供設定的選項：
+3. 請花點時間了解可供設定的選項：
     - [為使用者啟用登入？] 可決定指派給應用程式的使用者是否可以登入。
     - [需要使用者指派？] 可決定未指派給應用程式的使用者是否可以登入。
     - [可讓使用者看見？] 可決定指派給應用程式的使用者是否可以在[存取面板](https://myapps.microsoft.com)和 Office 365 啟動器中看見應用程式。 (請參閱 Office 365 或 Microsoft 365 網站左上角的鬆餅功能表)。
-1. 您可以使用下表來協助您選擇最符合需求的選項。
+4. 您可以使用下表來協助您選擇最符合需求的選項。
 
    - *已指派*的使用者行為：
 
@@ -86,10 +85,10 @@ ms.locfileid: "86223341"
 使用自訂標誌：
 
 1. 建立 215 x 215 像素的標誌，並將其儲存為 .png 格式。
-1. 在 Azure AD 入口網站中，選取 [企業應用程式]。 然後尋找並選取您要設定的應用程式。
-1. 在 [管理] 區段中，選取 [屬性] 來開啟 [屬性] 窗格以進行編輯。 
-1. 選取圖示以上傳標誌。
-1. 完成之後，選取 [儲存]。
+2. 在 Azure AD 入口網站中，選取 [企業應用程式]。 然後尋找並選取您要設定的應用程式。
+3. 在 [管理] 區段中，選取 [屬性] 來開啟 [屬性] 窗格以進行編輯。 
+4. 選取圖示以上傳標誌。
+5. 完成之後，選取 [儲存]。
 
     ![[屬性] 畫面的螢幕擷取畫面，其中會說明如何變更標誌。](media/add-application-portal/change-logo.png)
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4cea4fa293083298858a775eff01b9acf17d6c7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f894d4f29ce8729ff88faa72b0d6c470fd6f87c9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81458602"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088677"
 ---
 # <a name="create-a-vm-with-nginx"></a>使用 NGINX 建立 VM
 
@@ -62,14 +62,14 @@ az group delete --name myResourceGroup
 
 | Command | 注意 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 建立虛擬機器。 此命令也會指定要使用的虛擬機器映像和管理認證。  |
-| [az vm open-port](https://docs.microsoft.com/cli/azure/network/nsg/rule) | 建立網路安全性群組規則以允許輸入流量。 在此範例中，會開放連接埠 80 供 HTTP 流量使用。 |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 對 VM 新增並執行虛擬機器擴充功能。 此範例使用自訂指令碼擴充功能來安裝 NGINX。|
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 刪除資源群組，包括所有的巢狀資源。 |
+| [az group create](/cli/azure/group) | 建立用來存放所有資源的資源群組。 |
+| [az vm create](/cli/azure/vm) | 建立虛擬機器。 此命令也會指定要使用的虛擬機器映像和管理認證。  |
+| [az vm open-port](/cli/azure/network/nsg/rule) | 建立網路安全性群組規則以允許輸入流量。 在此範例中，會開放連接埠 80 供 HTTP 流量使用。 |
+| [azure vm extension set](/cli/azure/vm/extension) | 對 VM 新增並執行虛擬機器擴充功能。 此範例使用自訂指令碼擴充功能來安裝 NGINX。|
+| [az group delete](/cli/azure/vm/extension) | 刪除資源群組，包括所有的巢狀資源。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。
 
 您可以在 [Azure Linux VM 文件](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他的虛擬機器 CLI 指令碼範例。

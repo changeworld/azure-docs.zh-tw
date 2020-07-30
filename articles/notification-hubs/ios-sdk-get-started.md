@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: bf6477fed1840daa326f411862a7304018f39e3c
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252197"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022424"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式
 
@@ -185,7 +185,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
    這是稍後將用來設定通知中樞的權杖值。
 
-在這些步驟的最後，您應該具有下列資訊，以便稍後在 [使用 APNS 資訊設定通知中樞](notification-hubs-ios-push-notifications-swift-apps-get-started.md#configure-your-notification-hub-with-apns-information)中使用：
+在這些步驟的最後，您應該具有下列資訊，以便稍後在 [使用 APNS 資訊設定通知中樞](#configure-the-notification-hub-with-apns-information)中使用：
 
 - **小組識別碼** (請參閱步驟 1)
 - **套件組合識別碼** (請參閱步驟 1)
@@ -264,7 +264,7 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>使用 APNS 資訊設定您的通知中樞
 
-在 **[通知服務]** 下，選取 **[Apple (APNS)]** ，然後遵循先前在 [＜建立通知中樞的憑證＞](notification-hubs-ios-push-notifications-swift-apps-get-started.md#creating-a-certificate-for-notification-hubs) 一節中選擇的方法進行適當的步驟。
+在 **[通知服務]** 下，選取 **[Apple (APNS)]** ，然後遵循先前在 [＜建立通知中樞的憑證＞](#create-a-certificate-for-notification-hubs) 一節中選擇的方法進行適當的步驟。
 
 > [!NOTE]
 > 只有在您想傳送推播通知給從市集購買應用程式的使用者時，才可使用 [生產] 的 [應用程式模式]。
@@ -306,4 +306,4 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 
 在本教學課程中，您已在 Azure 中建立並設定通知中樞，並將其設定為允許透過 Apple Push Notification Service (APNS) 將通知傳送至您的應用程式。 接下來，我們將建立 iOS 應用程式範例，並整合 Azure 通知中樞 SDK，讓其可以接收透過 Azure 入口網站傳送的推播通知。 根據您選擇的語言，前往下列教學課程：
 
-- [教學課程：使用 Swift 與 iOS 應用程式整合](notification-hubs-ios-push-notifications-swift-apps-get-started.md)
+- [教學課程：使用 Swift 與 iOS 應用程式整合]()

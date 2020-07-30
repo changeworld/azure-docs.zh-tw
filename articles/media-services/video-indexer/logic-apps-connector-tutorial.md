@@ -1,19 +1,19 @@
 ---
 title: 影片索引器連接器與邏輯應用程式和 Power Automate 教學課程。
 description: 本教學課程示範如何使用邏輯應用程式和 Power Automate，帶來新體驗和創造影片索引器連接器的營收商機。
-author: anikaz
+author: anzaman
 manager: johndeu
-ms.author: anzaman
+ms.author: alzam
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 05/01/2020
-ms.openlocfilehash: 932f52aa694c13fd3696d82872135304a4e41bdc
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 5f29e616c0643914ca28921eee481105a5feb0c5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87047096"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>教學課程：使用影片索引器與邏輯應用程式和 Power Automate
 
@@ -64,7 +64,7 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 ![依路徑的 SAS URI](./media/logic-apps-connector-tutorial/sas-uri-by-path.jpg)
 
-填寫[您的帳戶位置和識別碼](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location) ，以取得影片索引器帳戶權杖。
+填寫[您的帳戶位置和識別碼](./video-indexer-use-apis.md#account-id) ，以取得影片索引器帳戶權杖。
 
 ![取得帳戶存取權杖](./media/logic-apps-connector-tutorial/account-access-token.png)
 
@@ -90,7 +90,7 @@ Azure 媒體服務[影片索引器 v2 REST API](https://api-portal.videoindexer.
 
 針對觸發程式，您會看到 HTTP POST URL 欄位。 在儲存流程後才會產生 URL。不過，您最後會需要此 URL。 我們稍後會再回到這裡。 
 
-填寫[您的帳戶位置和識別碼](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-use-apis#location) ，以取得影片索引器帳戶權杖。  
+填寫[您的帳戶位置和識別碼](./video-indexer-use-apis.md#account-id) ，以取得影片索引器帳戶權杖。  
 
 移至「取得影片索引」動作，並填寫必要的參數。 針對影片識別碼，置入下列運算式：triggerOutputs()['queries']['id'] 
 

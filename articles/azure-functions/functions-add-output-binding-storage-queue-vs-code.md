@@ -3,14 +3,14 @@ title: 使用 Visual Studio Code 將 Azure Functions 連線至 Azure 儲存體
 description: 了解如何將輸出繫結新增至您的 Visual Studio Code 專案，進而將 Azure Functions 連線至 Azure 儲存體佇列。
 ms.date: 02/07/2020
 ms.topic: quickstart
-ms.custom: tracking-python
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 65570674f16e660c4101088cd77db433abab59a2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 49f0f9f89ad22694f762b58ae5a0e44dc158cfcd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540327"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291823"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>使用 Visual Studio Code 將 Azure Functions 連線至 Azure 儲存體
 

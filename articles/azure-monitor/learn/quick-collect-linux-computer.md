@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: d99af6965e4d2e73ed302530d76126e0e6e8a3ef
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1adf167bb23b3d66f6dcbd07794145f7c817105
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505919"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322154"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>快速入門：使用 Azure 監視器從混合式環境中的 Linux 電腦收集資料
 
-[Azure 監視器](../overview.md)可將來自環境中實體或虛擬 Linux 電腦的資料直接收集到 Log Analytics 工作區，以供詳細分析和相互關聯。 安裝 [Log Analytics 代理程式](../platform/log-analytics-agent.md)可讓 Azure 監視器從資料中心或其他雲端環境收集資料。 本快速入門向您示範如何以幾個簡單步驟來設定和收集 Linux 伺服器中的資料。 如需 Azure Linux VM 的相關資訊，請參閱[收集關於 Azure 虛擬機器的資料](../../azure-monitor/learn/quick-collect-azurevm.md)。  
+[Azure 監視器](../overview.md)可將來自環境中實體或虛擬 Linux 電腦的資料直接收集到 Log Analytics 工作區，以供詳細分析和相互關聯。 安裝 [Log Analytics 代理程式](../platform/log-analytics-agent.md)可讓 Azure 監視器從資料中心或其他雲端環境收集資料。 本快速入門向您示範如何以幾個簡單步驟來設定和收集 Linux 伺服器中的資料。 如需 Azure Linux VM 的相關資訊，請參閱[收集關於 Azure 虛擬機器的資料](./quick-collect-azurevm.md)。  
 
-若要了解支援的組態，請參閱[支援的 Windows 作業系統](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)和[網路防火牆組態](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)。
+若要了解支援的組態，請參閱[支援的 Windows 作業系統](../platform/log-analytics-agent.md#supported-linux-operating-systems)和[網路防火牆組態](../platform/log-analytics-agent.md#network-requirements)。
  
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -169,3 +169,4 @@ Azure 監視器可以從 Linux Syslog 收集事件，和收集您指定要用於
 
 > [!div class="nextstepaction"]
 > [在 Log Analytics 中檢視或分析資料](../log-query/get-started-portal.md)
+
