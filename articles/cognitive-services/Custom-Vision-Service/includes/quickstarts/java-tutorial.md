@@ -1,14 +1,15 @@
 ---
 author: areddish
+ms.custom: devx-track-java
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 04/14/2020
-ms.openlocfilehash: efbfed5198620fc07b10354a5b74f6ddaf2cd4ab
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f4d4075fae22c22e249a6891185c7b7fc9a572de
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133969"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375432"
 ---
 本文說明如何開始使用自訂視覺 Java SDK 來建置影像分類模型。 建立它之後，您就可以新增標記、上傳影像、為專案定型、取得專案的預設預測端點 URL，並使用端點以程式設計方式測試影像。 請使用此範例作為範本來建置您自己的 Java 應用程式。 如果您想要進行「不用」  程式碼來建置及使用分類模型的程序，請改為參閱[以瀏覽器為基礎的指引](../../getting-started-build-a-classifier.md)。
 

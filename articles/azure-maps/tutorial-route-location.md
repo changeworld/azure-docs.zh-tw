@@ -1,20 +1,20 @@
 ---
 title: 教學課程：尋找前往位置的路線 | Microsoft Azure 地圖服務
 description: 本教學課程會示範如何使用 Microsoft Azure 地圖服務的路線服務，在地圖上呈現如何前往某個位置 (景點) 的路線。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 98c36176ecd2996e5f735c52017162a076ef4bde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: d6a526e23be47c9e05de0c9064bdb4095a49d132
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333767"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287420"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>教學課程：使用 Azure 地圖服務的景點路線
 
@@ -27,7 +27,7 @@ ms.locfileid: "80333767"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-在繼續作業之前，依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示，您需要 S1 定價層的訂用帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
+在繼續作業之前，依照[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)中的指示，您需要 S1 定價層的訂用帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 <a id="getcoordinates"></a>
 

@@ -7,13 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/26/2020
+ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 9a8ea8ff03c495411910c775e5161b8ab216097a
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 37c750f32e45f811930d046c8d55a0d23469cf17
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85805653"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87374985"
 ---
 使用本快速入門，開始使用 Java 用戶端程式庫從 Bing 圖像式搜尋服務取得影像見解。 雖然 Bing 圖像式搜尋具有與大部分程式設計語言相容的 REST API，但此用戶端程式庫可提供簡單的方法，將服務整合到您的應用程式。 此快速入門的原始程式碼可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVisualSearch) 上找到。
 

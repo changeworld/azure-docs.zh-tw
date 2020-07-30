@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d269b95e5e6fb8491afd4c2f9729cbb047cf3419
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100442"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065262"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立及部署高可用性的虛擬機器
 
@@ -47,7 +47,7 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 位置中的硬體已分為多個更新網域和容錯網域。 **更新網域**是一組虛擬機器和可同時重新啟動的基礎實體硬體。 相同**容錯網域**中的 VM 會共用一般儲存體以及通用電源和網路交換器。  
 
-您可以使用 [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) 建立可用性設定組。 在此範例中，更新和容錯網域數目為 2  ，而 可用性設定組會命名為 myAvailabilitySet  。
+您可以使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 建立可用性設定組。 在此範例中，更新和容錯網域數目為 2  ，而 可用性設定組會命名為 myAvailabilitySet  。
 
 建立資源群組。
 
@@ -57,7 +57,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-使用 [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) 搭配 `-sku aligned` 參數建立受控的可用性設定組。
+使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 搭配 `-sku aligned` 參數建立受控的可用性設定組。
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -73,15 +73,15 @@ New-AzAvailabilitySet `
 您必須將 VM 建立於可用性設定組內，才能確保 VM 會在硬體中正確地分散。 您無法在建立可用性設定組之後，將現有的 VM 新增到其中。 
 
 
-您在透過 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 建立 VM 時，會使用 `-AvailabilitySetName` 參數來指定可用性設定組的名稱。
+您在透過 [New-AzVM](/powershell/module/az.compute/new-azvm) 建立 VM 時，會使用 `-AvailabilitySetName` 參數來指定可用性設定組的名稱。
 
-首先，使用 [Get-credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 設定 VM 的系統管理員使用者名稱和密碼：
+首先，使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-現在，請使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 在可用性設定組中建立兩個 VM。
+現在，請使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在可用性設定組中建立兩個 VM。
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -107,7 +107,7 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="check-for-available-vm-sizes"></a>檢查可用的 VM 大小 
 
-在可用性設定組中建立 VM 時，需要知道硬體上有哪些可用的 VM 大小。 使用 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令，取得可在可用性設定組中部署之虛擬機器的所有可用大小。
+在可用性設定組中建立 VM 時，需要知道硬體上有哪些可用的 VM 大小。 使用 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 命令，取得可在可用性設定組中部署之虛擬機器的所有可用大小。
 
 ```azurepowershell-interactive
 Get-AzVMSize `
@@ -136,5 +136,3 @@ Get-AzVMSize `
 
 > [!div class="nextstepaction"]
 > [建立 VM 擴展集](tutorial-create-vmss.md)
-
-

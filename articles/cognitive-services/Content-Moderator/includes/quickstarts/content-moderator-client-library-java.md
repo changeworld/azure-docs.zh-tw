@@ -9,13 +9,14 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: include
 ms.date: 01/27/2020
+ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: ffbb0e4bd2eec3299b4d5b2b38477edf611db1a2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4d4e09bed1350a59848ef6853efe2a301d7357e9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187443"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87375027"
 ---
 開始使用適用於 Java 的 Content Moderator 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 Content Moderator 是一項認知服務，可檢查文字、影像和視訊內容是否含有可能具冒犯意味、有風險或不當的資料。 找到這類資料時，服務會對內容套用適當的標籤 (旗標)。 加上旗標的內容隨後可由您的應用程式處理，以遵循法規或維護使用者應有的環境。
 
@@ -27,7 +28,7 @@ ms.locfileid: "82187443"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * 最新版的 [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle 建置工具](https://gradle.org/install/)，或其他相依性管理員。
 
@@ -37,10 +38,9 @@ ms.locfileid: "82187443"
 
 Azure 認知服務會由您訂閱的 Azure 資源呈現。 請使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) 在本機電腦上建立 Content Moderator 的資源。 您也可以：
 
-* 取得可免費使用 7 天的[試用版金鑰](https://azure.microsoft.com/try/cognitive-services/#decision)。 註冊之後，即可在 [Azure 網站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上取得該金鑰。  
 * 在 [Azure 入口網站](https://portal.azure.com/)上檢視您的資源。
 
-從試用版訂用帳戶或資源取得金鑰後，請為名為 `AZURE_CONTENTMODERATOR_KEY` 的金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
+從資源取得金鑰後，請為名為 `AZURE_CONTENTMODERATOR_KEY` 的金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)。
 
 ### <a name="create-a-new-gradle-project"></a>建立新的 Gradle 專案
 
@@ -55,7 +55,7 @@ mkdir myapp && cd myapp
 gradle init --type basic
 ```
 
-出現選擇建置指令碼 DSL 的提示時，請選取 [Kotlin]  。
+出現選擇建置指令碼 DSL 的提示時，請選取 [Kotlin]。
 
 找出 *build.gradle.kts*，並使用您慣用的 IDE 或文字編輯器加以開啟。 然後，在其中複製下列組建組態。 此組態會將專案定義為進入點為 **ContentModeratorQuickstart** 類別的 Java 應用程式。 其會匯入 Content Moderator 用戶端程式庫以及 Gson SDK，以進行 JSON 序列化。
 
@@ -93,7 +93,7 @@ mkdir -p src/main/java
 
 下列類別會處理 Content Moderator Java 用戶端程式庫的一些主要功能。
 
-|名稱|描述|
+|Name|說明|
 |---|---|
 |[ContentModeratorClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable)|所有 Content Moderator 功能都需要此類別。 您可以使用訂用帳戶資訊來具現化此類別，並用其來產生其他類別的執行個體。|
 |[ImageModeration](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.imagemoderations?view=azure-java-stable)|此類別提供對成人內容、個人資訊或人臉的影像進行分析的功能。|

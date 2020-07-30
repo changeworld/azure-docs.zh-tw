@@ -3,7 +3,7 @@ title: 教學課程 - 建立存取套件 - Azure AD 權利管理
 description: 在 Azure Active Directory 權利管理中建立第一個存取套件的逐步教學課程。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
-ms.date: 03/30/2020
-ms.author: ajburnle
+ms.date: 07/22/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2d31ef46dfba31a8f217f68e8d5f98b67d58da5
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: b79a631ba82d0b4a420ef27684e5a62571ddf85a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410579"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034571"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>教學課程：在 Azure AD 權利管理中建立您的第一個存取套件
 

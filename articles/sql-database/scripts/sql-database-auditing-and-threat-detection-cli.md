@@ -11,12 +11,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: carlrab, vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 34cbba15f5798286be63171da0173f6214fe7822
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ac945b14091ae01cfad66c3776c84406583e491f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022721"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037112"
 ---
 # <a name="use-cli-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>使用 CLI 設定 SQL Database 稽核與進階威脅防護
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| | |
+| Command | 說明 |
 |---|---|
 | [az sql db audit-policy](/cli/azure/sql/db/audit-policy) | 設定資料庫的稽核原則。 |
 | [az sql db threat-policy](/cli/azure/sql/db/threat-policy) | 設定資料庫的進階威脅防護原則。 |

@@ -6,15 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/17/2020
+ms.date: 07/27/2020
+ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: a4db7c59bd43a541a350d78511c6749a914bec79
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6e8e00d7f9f529010cf99ae5a180c1ecb0a74177
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735526"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375354"
 ---
 <a name="HOLTop"></a>
 
@@ -22,7 +23,7 @@ ms.locfileid: "84735526"
 
 ## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * [Java 開發套件](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) 含第 8 版或更新版本
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank">建立文字分析資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。  在其部署後，按一下 [前往資源]。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
@@ -39,7 +40,7 @@ ms.locfileid: "84735526"
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0</version>
+        <version>5.0.0</version>
     </dependency>
 </dependencies>
 ```

@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 05/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 3e5e1df77b8bc701bf330d98f264db26a01ea748
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4be9944a53aaf0c697d55ff567dee7f2fbb3ed85
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614752"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038081"
 ---
 # <a name="open-an-application-port-in-the-azure-load-balancer"></a>在 Azure Load Balancer 中開啟應用程式連接埠
 
@@ -48,6 +48,6 @@ ms.locfileid: "75614752"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [PowerShell 範例](../service-fabric-powershell-samples.md)中找到適用於 Azure Service Fabric 的其他 Azure PowerShell 範例。

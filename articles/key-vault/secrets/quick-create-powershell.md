@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 459c9f2d68d8a3a3c1b597665914146987aecdc2
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 9e3f5e37462b30b0201be5350dedc103a49bb39a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801660"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039288"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>快速入門：使用 PowerShell 從 Azure Key Vault 設定及擷取祕密
 
@@ -62,8 +62,6 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 * **保存庫 URI**：在此範例中是 https://Contoso-Vault2.vault.azure.net/ 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
 
 在保存庫建立後，您的 Azure 帳戶是唯一能夠在這個新保存庫上執行任何作業的帳戶。
-
-![Key Vault 建立命令完成後的輸出](../media/quick-create-powershell/output-after-creating-keyvault.png)
 
 ## <a name="give-your-user-account-permissions-to-manage-secrets-in-key-vault"></a>授與使用者帳戶在 Key Vault 中管理密碼的權限
 

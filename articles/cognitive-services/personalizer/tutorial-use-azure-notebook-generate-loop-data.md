@@ -3,20 +3,18 @@ title: 教學課程：Azure Notebook - 個人化工具
 titleSuffix: Azure Cognitive Services
 description: 此教學課程會模擬 Azure Notebook 中的個人化工具迴圈 _system，它會建議客戶應訂購的咖啡類型。 使用者及其喜好設定會儲存在使用者資料集中。 咖啡的相關資訊也可供使用，並儲存在咖啡資料集內。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.author: diberry
 ms.custom: tracking-python
-ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 62e9140a1bab44d913e164304af13204f375f461
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608480"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131968"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>教學課程：在 Azure Notebook 中使用個人化工具
 

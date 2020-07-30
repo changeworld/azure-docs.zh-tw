@@ -2,14 +2,14 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/11/2020
+ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 6c6de0eb8ca2d1eeee5b882a7a17ca292d816e8a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: c2a2dbd4ab7c1e16522c61c17cb7f6b2a20f9ae1
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735528"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375387"
 ---
 <a name="HOLTop"></a>
 
@@ -23,9 +23,9 @@ ms.locfileid: "84735528"
 
 ---
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="建立文字分析資源"  target="_blank">建立文字分析資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 在其部署後，按一下 [前往資源]。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至文字分析 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
@@ -40,7 +40,7 @@ ms.locfileid: "84735528"
 #### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 ```console
-pip install azure-ai-textanalytics
+pip install --upgrade azure-ai-textanalytics
 ```
 
 > [!TIP]

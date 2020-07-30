@@ -3,19 +3,19 @@ title: Microsoft 客戶合約的計費角色 - Azure
 description: 了解 Azure 中可對 Microsoft 客戶合約的計費帳戶進行處理的計費角色。
 author: amberbhargava
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/13/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 84cb68c4cae962fd985a02a72cc85c6b2cf1aa1d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207210"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286575"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Microsoft 客戶合約管理角色
 
-若要管理 Microsoft 客戶合約的計費帳戶，請使用以下幾節所說明的角色。 這些角色是額外的角色，獨立於資源存取權須受到 Azure 控制的內建角色以外。 如需詳細資訊，請參閱 [Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)。
+若要管理 Microsoft 客戶合約的計費帳戶，請使用以下幾節所說明的角色。 這些角色是額外的角色，獨立於資源存取權須受到 Azure 控制的內建角色以外。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 本文適用於 Microsoft 客戶合約的計費帳戶。 請確認您是否有 Microsoft 客戶合約的存取權。
 
