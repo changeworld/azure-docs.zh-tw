@@ -1,16 +1,16 @@
 ---
 title: 建立商業就緒的 Azure 遠端轉譯應用程式
 description: 使用 Azure 遠端轉譯建立商業就緒應用程式的策略和考量
-author: m-the-hoff
-ms.author: v-michof
+author: FlorianBorn71
+ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: fa1a49aeef8b86230dc1d5ea898832cfb1cee852
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e827f7eff707f5a7c467f53eacab6973bff2ef2f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85566315"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076427"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>教學課程：建立商業就緒的 Azure 遠端轉譯應用程式
 

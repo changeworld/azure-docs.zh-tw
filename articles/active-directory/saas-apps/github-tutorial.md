@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ade9e3200909c781dc00cf4e3713395f55f173d
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253729"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170527"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 GitHub 整合
 
@@ -87,7 +87,7 @@ ms.locfileid: "85253729"
 
     b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://github.com/orgs/<Organization ID>`
 
-    c. 在 [回覆 URL] 文字方塊中，以下列模式輸入 URL：`https://github.com/orgs/<Organization ID>/saml/consume`
+    c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://github.com/orgs/<Organization ID>/saml/consume`
 
 
     > [!NOTE]

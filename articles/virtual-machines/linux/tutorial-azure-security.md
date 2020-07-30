@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9b70474a985cde1cd6d7d98e84f7f228fde7a812
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6711075ba3a58e526733c3a18cab03084edc067e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460098"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080092"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>教學課程：使用 Azure 資訊安全中心來監視 Linux 虛擬機器
 
@@ -57,7 +57,7 @@ Azure 資訊安全中心可協助您了解 Azure 資源的安全性作法。 資
 
 ## <a name="set-up-a-security-policy"></a>設定安全性原則
 
-安全性原則可用來定義原則項目，讓資訊安全中心收集其資料並提出建議。 您可以對不同的 Azure 資源集合套用不同的安全性原則。 雖然系統預設會根據所有原則項目來評估 Azure 資源，但您可以針對所有 Azure 資源或某個資源群組來關閉個別的原則項目。 若要深入了解資訊安全中心的安全性原則，請參閱[在 Azure 資訊安全中心設定安全性原則](../../security-center/security-center-policies.md)。 
+安全性原則可用來定義原則項目，讓資訊安全中心收集其資料並提出建議。 您可以對不同的 Azure 資源集合套用不同的安全性原則。 雖然系統預設會根據所有原則項目來評估 Azure 資源，但您可以針對所有 Azure 資源或某個資源群組來關閉個別的原則項目。 若要深入了解資訊安全中心的安全性原則，請參閱[在 Azure 資訊安全中心設定安全性原則](../../security-center/tutorial-security-policy.md)。 
 
 設定整個訂用帳戶的安全性原則：
 
@@ -134,4 +134,3 @@ Azure 資訊安全中心可協助您了解 Azure 資源的安全性作法。 資
 
 > [!div class="nextstepaction"]
 > [以 Jenkins、GitHub 及 Docker 建立 CI/CD 基礎結構](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
-

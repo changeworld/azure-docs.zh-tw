@@ -4,16 +4,16 @@ description: 教學課程：本教學課程說明如何使用由事件格線觸�
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: b5f38c1a5b60dc8c8f0d9e8710c5dbc95434fe78
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85322500"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039492"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教學課程：使用事件方格和 Azure Functions 將擷取的事件中樞資料遷移至 SQL 資料倉儲
 
-要將事件中樞內的串流資料自動傳遞至 Azure Blob 儲存體或 Azure Data Lake Store，事件中樞[擷取](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)是最簡單的方式。 接著，您將可處理這些資料，並將其傳遞至您所選擇的任何其他儲存體目的地，例如 SQL 資料倉儲或 Cosmos DB。 在本教學課程中，您將了解如何使用由[事件格線](https://docs.microsoft.com/azure/event-grid/overview)觸發的 Azure 函式，將資料從事件中樞擷取到 SQL 資料倉儲中。
+要將事件中樞內的串流資料自動傳遞至 Azure Blob 儲存體或 Azure Data Lake Store，事件中樞[擷取](./event-hubs-capture-overview.md)是最簡單的方式。 接著，您將可處理這些資料，並將其傳遞至您所選擇的任何其他儲存體目的地，例如 SQL 資料倉儲或 Cosmos DB。 在本教學課程中，您將了解如何使用由[事件格線](../event-grid/overview.md)觸發的 Azure 函式，將資料從事件中樞擷取到 SQL 資料倉儲中。
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
@@ -178,7 +178,4 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 ## <a name="next-steps"></a>後續步驟 
 您可以對資料倉儲使用功能強大的資料視覺效果工具，以產生付諸行動的深入解析。
 
-本文說明如何[搭配使用 Power BI 與 SQL 資料倉儲](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi)
-
-
-
+本文說明如何[搭配使用 Power BI 與 SQL 資料倉儲](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi)

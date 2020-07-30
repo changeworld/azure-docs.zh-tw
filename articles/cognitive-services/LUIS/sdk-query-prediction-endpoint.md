@@ -2,15 +2,15 @@
 title: 快速入門：SDK 查詢預測端點 - LUIS
 description: 本快速入門將說明如何使用 SDK 將使用者語句傳送至 Azure 認知服務的 LUIS 應用程式，並接收預測。
 ms.topic: quickstart
-ms.date: 05/28/2020
-ms.custom: tracking-python
+ms.date: 07/28/2020
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 27bf958e32402549e148e4b5d71391e8867bd4e4
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c4929f73add9c5d9aabd8ddd3c4878e88c9a9b27
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605570"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369238"
 ---
 # <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>快速入門：使用 SDK 查詢 V3 預測端點
 

@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: 3014a66c633a4293de8cd6eb325e962366c103b9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: d32bae48348e482e0e175760a416097ffbc17a1c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85208258"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080942"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 通知中樞
 
@@ -95,7 +95,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-   若您提供給 `az notification-hub namespace create` 命令的 `--name` 無法使用，或不符合 [Azure 資源的命名規則與限制](/azure/azure-resource-manager/management/resource-name-rules)，Azure CLI 會以下列主控台輸出回應：
+   若您提供給 `az notification-hub namespace create` 命令的 `--name` 無法使用，或不符合 [Azure 資源的命名規則與限制](../azure-resource-manager/management/resource-name-rules.md)，Azure CLI 會以下列主控台輸出回應：
 
    ```output
    #the name is not available
@@ -148,7 +148,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
 1. 列出通知中樞的存取原則。
 
-   Azure 通知中樞透過使用存取原則，使用[共用存取簽章安全性](/azure/notification-hubs/notification-hubs-push-notification-security)。  當您建立通知中樞時，會自動建立兩個原則。  必須有這些原則的連接字串，才能設定推播通知。  [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) 命令會提供原則名稱與其各自資源群組的清單。
+   Azure 通知中樞透過使用存取原則，使用[共用存取簽章安全性](./notification-hubs-push-notification-security.md)。  當您建立通知中樞時，會自動建立兩個原則。  必須有這些原則的連接字串，才能設定推播通知。  [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) 命令會提供原則名稱與其各自資源群組的清單。
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
@@ -167,7 +167,7 @@ Azure 通知中樞提供易於使用且相應放大的推播引擎，可讓您�
 
 3. 列出通知中樞存取原則的索引鍵和連接字串
 
-   每個存取原則都有兩組索引鍵和連接字串。  您稍後需要用到這些連接字串來[設定通知中樞](/azure/notification-hubs/configure-notification-hub-portal-pns-settings)。  若要列出通知中樞存取原則的索引鍵和連接字串，請執行 [az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys)命令。
+   每個存取原則都有兩組索引鍵和連接字串。  您稍後需要用到這些連接字串來[設定通知中樞](./configure-notification-hub-portal-pns-settings.md)。  若要列出通知中樞存取原則的索引鍵和連接字串，請執行 [az notification-hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys)命令。
 
    ```azurecli
    #query the keys and connection strings for DefaultListenSharedAccessSignature

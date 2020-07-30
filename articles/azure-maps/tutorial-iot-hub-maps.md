@@ -1,20 +1,20 @@
 ---
 title: 教學課程：執行 IoT 空間分析 | Microsoft Azure 地圖服務
 description: 整合 IoT 中樞與 Microsoft Azure 地圖服務 API。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cf1d732391f86bec9c0ec2de1e6bace2e808bb19
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 2bb5876424730e55d15cc52aeb98aa04af040821
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85318921"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133396"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>教學課程：使用 Azure 地圖服務執行 IoT 空間分析
 
@@ -110,7 +110,7 @@ Azure 函式內的程式碼會檢查車輛是否已離開地理柵欄。 如果�
 
 ### <a name="create-an-azure-maps-account"></a>建立 Azure 地圖服務帳戶 
 
-若要根據 Azure 地圖服務空間分析來實作商務邏輯，我們必須在已建立的資源群組中建立 Azure 地圖服務帳戶。 依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示，在 S1 定價層中建立 Azure 地圖服務帳戶訂用帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
+若要根據 Azure 地圖服務空間分析來實作商務邏輯，我們必須在已建立的資源群組中建立 Azure 地圖服務帳戶。 依照[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)中的指示，在 S1 定價層中建立 Azure 地圖服務帳戶訂用帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 
 

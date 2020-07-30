@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6530d05b8e1aa565e64256054e81b785572edfb0
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307053"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080143"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM 佈建
 當您從一般化映像 (共用映像庫或受控映像) 建立 VM 時，控制平面可讓您建立 VM，並將參數和設定傳遞至 VM。 這稱為 VM「佈建」。 在佈建期間，平台會在虛擬機器啟動時，讓必要的 VM Create 參數值 (主機名稱、使用者名稱、密碼、SSH 金鑰、customData) 可供 VM 使用。 
 
 內建在映像內的佈建代理程式會與平台連接，連線到多個獨立的佈建介面，將屬性和訊號設定至已完成的平台。 
 
-佈建代理程式可以是 [Azure Linux 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) 或 [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)。 這些是建立一般化映像的[必要條件](create-upload-generic.md)。
+佈建代理程式可以是 [Azure Linux 代理程式](../extensions/agent-linux.md) 或 [cloud-init](./using-cloud-init.md)。 這些是建立一般化映像的[必要條件](create-upload-generic.md)。
 
-佈建代理程式會為所有經過背書的 [Azure Linux 散發套件](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)提供支援，而且在許多情況下，您會發現經過背書的散發版本映像會隨附於 cloud-init 和 Linux 代理程式。 這可讓您選擇讓 cloud-init 處理佈建，然後 Linux 代理程式將提供處理 [Azure 擴充功能](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows)的支援。 提供擴充功能的支援表示 VM 接著有資格支援其他 Azure 服務，例如 VM 密碼重設、Azure 監視、Azure 備份、Azure 磁碟加密等。
+佈建代理程式會為所有經過背書的 [Azure Linux 散發套件](./endorsed-distros.md)提供支援，而且在許多情況下，您會發現經過背書的散發版本映像會隨附於 cloud-init 和 Linux 代理程式。 這可讓您選擇讓 cloud-init 處理佈建，然後 Linux 代理程式將提供處理 [Azure 擴充功能](../extensions/features-windows.md)的支援。 提供擴充功能的支援表示 VM 接著有資格支援其他 Azure 服務，例如 VM 密碼重設、Azure 監視、Azure 備份、Azure 磁碟加密等。
 
 佈建完成之後，就會在每次開機時執行 cloud-init。 cloud-init 會監視 VM 的變更，例如網路變更、掛接和格式化暫時磁碟，以及啟動 Linux 代理程式。 Linux 代理程式會持續在伺服器上執行，並從 Azure 平台尋找「目標狀態」(新的設定)，因此每當您安裝擴充功能時，代理程式就能夠進行處理。
 

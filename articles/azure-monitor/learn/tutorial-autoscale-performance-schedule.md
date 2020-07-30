@@ -8,12 +8,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 9a069c4e63abd5307c123799d92e656294045a65
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a55ab9b6b87a379fbdebcead4467ec47507d67a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505851"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327509"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>根據效能資料或排程建立自動調整 Azure 資源規模設定
 
@@ -180,7 +180,8 @@ ms.locfileid: "86505851"
 > * 清除資源
 
 
-若要深入了解自動調整規模設定，請繼續閱讀[自動調整規模概觀](../../azure-monitor/platform/autoscale-overview.md)。
+若要深入了解自動調整規模設定，請繼續閱讀[自動調整規模概觀](../platform/autoscale-overview.md)。
 
 > [!div class="nextstepaction"]
 > [封存監視資料](../platform/platform-logs-overview.md)
+
