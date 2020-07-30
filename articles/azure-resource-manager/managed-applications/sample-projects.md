@@ -5,20 +5,19 @@ author: tfitzmac
 ms.topic: sample
 ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7c04f5d78f742eda70e71d9bee9ce4482c48f0f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2ce9ac925cce96af8a0017a5e97b3f52dc8e5669
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75648765"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040975"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>適用於 Azure 受控應用程式之範例專案
 
 下表連結至 GitHub 中的範例 Azure 受控應用程式。
 
-|  |  |
+| 範例 | 描述 |
 | --- | --- |
-| **範例** | |
 | [將受控應用程式 (試用或生產) 插入新的或現有虛擬網路](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-app-using-existing-vnet) | 示範如何為客戶建立彈性部署選項。 此受控應用程式可部署至新的虛擬網路或現有虛擬網路。 客戶可以指定受控應用程式的試用或生產版本。 |
 | [受控 Azure 儲存體帳戶](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-storage-account) | 部署單一儲存體帳戶。 使用這個範例專案作為建立受控應用程式之簡介。 |
 | [受控 Service Fabric 與 Azure 管理服務](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-service-fabric) | 部署 Service Fabric 叢集與虛擬機器擴展集。 包含用於記錄和診斷的儲存體帳戶。 |

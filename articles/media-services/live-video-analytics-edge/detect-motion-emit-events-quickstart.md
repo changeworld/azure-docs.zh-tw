@@ -3,12 +3,12 @@ title: 偵測動作並發出事件 - Azure
 description: 本快速入門說明如何透過程式設計方式呼叫直接方法，在 IoT Edge 上使用 Live Video Analytics 來偵測動作並發出事件。
 ms.topic: quickstart
 ms.date: 05/29/2020
-ms.openlocfilehash: 69486515125c624b3ef5d44aba6e6d8f7694a3cc
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: fca773d0583bee3bef4e7254bcca95866b2205e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84816698"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091907"
 ---
 # <a name="quickstart-detect-motion-and-emit-events"></a>快速入門：偵測動作並發出事件
 
@@ -36,7 +36,7 @@ ms.locfileid: "84816698"
 * IoT 中樞
 * 儲存體帳戶
 * Azure 媒體服務帳戶
-* Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)
+* Azure 中的 Linux VM，已安裝 [IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)
 
 在本快速入門中，我們建議您使用 [Live Video Analytics 資源設定指令碼](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)，在您的 Azure 訂用帳戶中部署所需的資源。 若要這樣做，請依照下列步驟執行：
 
@@ -228,7 +228,7 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 
 ## <a name="interpret-results"></a>解譯結果
 
-當您執行媒體圖表時，來自動作偵測器處理器節點的結果會透過 IoT 中樞接收節點傳遞至 IoT 中樞。 您在 Visual Studio Code 的 [輸出] 視窗中看到的訊息包含 `body` 區段和 `applicationProperties` 區段。 如需詳細資訊，請參閱[建立及讀取 IoT 中樞訊息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)。
+當您執行媒體圖表時，來自動作偵測器處理器節點的結果會透過 IoT 中樞接收節點傳遞至 IoT 中樞。 您在 Visual Studio Code 的 [輸出] 視窗中看到的訊息包含 `body` 區段和 `applicationProperties` 區段。 如需詳細資訊，請參閱[建立及讀取 IoT 中樞訊息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
 在下列訊息中，Live Video Analytics 模組會定義應用程式屬性和主體內容。
 

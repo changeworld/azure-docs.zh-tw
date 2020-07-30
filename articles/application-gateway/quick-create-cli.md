@@ -8,13 +8,13 @@ ms.service: application-gateway
 ms.topic: quickstart
 ms.date: 03/05/2020
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: f60b26756c0affffbd45c8596fdf73d11ffa8e81
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: b36b5b1700df1767ad4323fed72ee05fdb05321f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239517"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290963"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>快速入門：使用 Azure 應用程式閘道引導網路流量 - Azure CLI
 
@@ -35,7 +35,7 @@ ms.locfileid: "80239517"
 
 在 Azure 中，您可以將相關資源配置到資源群組。 使用 `az group create` 建立資源群組。 
 
-下列範例會在 eastus  位置建立名為 myResourceGroupAG  的資源群組。
+下列範例會在 eastus 位置建立名為 myResourceGroupAG 的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupAG --location eastus
@@ -159,13 +159,13 @@ az network application-gateway create \
   --servers "$address1" "$address2"
 ```
 
-Azure 建立應用程式閘道最多可能需要 30 分鐘。 建立之後，您可以在 [應用程式閘道]  頁面的 [設定]  區段中檢視下列設定：
+Azure 建立應用程式閘道最多可能需要 30 分鐘。 建立之後，您可以在 [應用程式閘道] 頁面的 [設定] 區段中檢視下列設定：
 
-- **appGatewayBackendPool**：位於 [後端集區]  頁面上。 它會指定所需的後端集區。
-- **appGatewayBackendHttpSettings**：位於 [HTTP 設定]  頁面上。 它會指定應用程式閘道應使用連接埠 80 和 HTTP 通訊協定進行通訊。
-- **appGatewayHttpListener**：位於 [接聽程式]  頁面上。 它會指定與 **appGatewayBackendPool** 相關聯的預設接聽程式。
-- **appGatewayFrontendIP**：位於 [前端 IP 組態]  頁面上。 它會將 *myAGPublicIPAddress* 指派給 **appGatewayHttpListener**。
-- **rule1**：位於 [規則]  頁面上。 它會指定與 **appGatewayHttpListener** 相關聯的預設路由規則。
+- **appGatewayBackendPool**：位於 [後端集區] 頁面上。 它會指定所需的後端集區。
+- **appGatewayBackendHttpSettings**：位於 [HTTP 設定] 頁面上。 它會指定應用程式閘道應使用連接埠 80 和 HTTP 通訊協定進行通訊。
+- **appGatewayHttpListener**：位於 [接聽程式] 頁面上。 它會指定與 **appGatewayBackendPool** 相關聯的預設接聽程式。
+- **appGatewayFrontendIP**：位於 [前端 IP 組態] 頁面上。 它會將 *myAGPublicIPAddress* 指派給 **appGatewayHttpListener**。
+- **rule1**：位於 [規則] 頁面上。 它會指定與 **appGatewayHttpListener** 相關聯的預設路由規則。
 
 ## <a name="test-the-application-gateway"></a>測試應用程式閘道
 

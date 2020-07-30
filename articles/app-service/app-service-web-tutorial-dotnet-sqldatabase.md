@@ -6,12 +6,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: 57701218186266e897e8312d01372fd36ddee715
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: a1fdc9e37084b1e8064bf642ff84646149c32ee7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84906117"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050661"
 ---
 # <a name="tutorial-deploy-an-aspnet-app-to-azure-with-azure-sql-database"></a>教學課程：使用 Azure SQL Database 將 ASP.NET 應用程式部署至 Azure
 
@@ -415,3 +415,8 @@ Application: 2017-04-06T23:30:54  PID[8132] Verbose     GET /Todos/Index
 
 > [!div class="nextstepaction"]
 > [設定 ASP.NET 應用程式](configure-language-dotnet-framework.md)
+
+想要最佳化並節省您的雲端費用嗎？
+
+> [!div class="nextstepaction"]
+> [使用成本管理開始分析成本](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

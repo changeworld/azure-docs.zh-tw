@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: e066ef1910373734d9a6607500e45e8a9ccc80b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c9787a88cba051dcfaa58a188bf43fb03cafe70a
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539749"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325163"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>開始監視 ASP.NET Core Web 應用程式
 
@@ -30,7 +30,7 @@ Azure Application Insights 可讓您輕鬆監視 Web 應用程式的可用性、
 - [安裝 .NET Core 2.0 SDK](https://dotnet.microsoft.com/download)
 - 您需要 Azure 訂用帳戶和現有的 .NET Core Web 應用程式。
 
-如果您沒有 ASP.NET Core Web 應用程式，可以使用我們的逐步指南來[建立 ASP.NET Core 應用程式，並新增 Application Insights](../../azure-monitor/app/asp-net-core.md)。
+如果您沒有 ASP.NET Core Web 應用程式，可以使用我們的逐步指南來[建立 ASP.NET Core 應用程式，並新增 Application Insights](../app/asp-net-core.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -96,7 +96,7 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 
    ![健康情況概觀時間軸圖表](./media/dotnetcore-quick-start/7kpidashboards.png)
 
-5. 在左側按一下 [計量]  。 使用計量瀏覽器來調查資源的健康情況和使用量。 您可以按一下 [新增新的圖表]  來建立額外的自訂檢視，或選取 [編輯]  來修改現有圖表的類型、高度、調色盤、群組和計量。 例如，您可以製作圖表來顯示平均瀏覽器頁面載入時間，方法是從 [計量] 下拉式清單選取 [瀏覽器頁面載入時間] 並從 [彙總] 選取 [平均]。 若要深入了解 Azure 計量瀏覽器，請瀏覽[開始使用 Azure 計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)。
+5. 在左側按一下 [計量]  。 使用計量瀏覽器來調查資源的健康情況和使用量。 您可以按一下 [新增新的圖表]  來建立額外的自訂檢視，或選取 [編輯]  來修改現有圖表的類型、高度、調色盤、群組和計量。 例如，您可以製作圖表來顯示平均瀏覽器頁面載入時間，方法是從 [計量] 下拉式清單選取 [瀏覽器頁面載入時間] 並從 [彙總] 選取 [平均]。 若要深入了解 Azure 計量瀏覽器，請瀏覽[開始使用 Azure 計量瀏覽器](../platform/metrics-getting-started.md)。
 
      ![[計量] 索引標籤：瀏覽器頁面的平均載入時間圖表](./media/dotnetcore-quick-start/8metrics.png)
 
@@ -113,3 +113,4 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 
 > [!div class="nextstepaction"]
 > [尋找並診斷執行階段例外狀況](./tutorial-runtime-exceptions.md)
+

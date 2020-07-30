@@ -48,7 +48,7 @@ Azure 監視器為 Azure、其他雲端和內部部署中的應用程式和服�
 
 使用 Azure 監視器將監視資料路由傳送至事件中樞，可讓您輕鬆地與外部 SIEM 和監視工具整合。 具有 Azure 監視器整合的工具範例包括下列各項：
 
-| 工具 | 託管于 Azure | 說明 |
+| 工具 | 託管于 Azure | 描述 |
 |:---|:---| :---|
 |  IBM QRadar | 否 | Microsoft Azure DSM 與 Microsoft Azure 事件中樞通訊協定均可從 [IBM 支援網站](https://www.ibm.com/support)下載。 您可以在[QRADAR DSM](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)設定深入瞭解與 Azure 的整合。 |
 | Splunk | 否 | [適用于 Splunk 的 Azure 監視器附加](https://splunkbase.splunk.com/app/3534/)元件是 splunkbase 取得中提供的開放原始碼專案。 檔可在 Splunk 的[Azure 監視器](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)附加元件中取得。<br><br> 如果您無法在 Splunk 實例中安裝附加元件（例如，您使用 proxy 或在 Splunk Cloud 上執行），您可以使用[適用于 Splunk 的 Azure](https://github.com/Microsoft/AzureFunctionforSplunkVS)函式將這些事件轉送至 Splunk HTTP 事件收集器，此功能是由事件中樞的新訊息所觸發。 |

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 76ceba11ffeb5569e250fab6bc47fe8faf019361
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 668154b5e54ed4d496d272e33e8fc7f378e75e8a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521100"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386260"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault 備份
 
@@ -27,7 +27,7 @@ Azure Key Vault 會自動提供幾項功能來協助您維護可用性並防止�
 
 Key Vault 會在發生災害的情況下保有可用性，並會自動將要求容錯移轉至配對的區域，而不需要使用者介入。 如需詳細資訊，請參閱 [Azure Key Vault 可用性與備援](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance)。
 
-如果您想要防止祕密遭到意外或惡意刪除，請在金鑰保存庫上設定虛刪除和清除保護功能。 如需詳細資訊，請參閱 [Azure Key Vault 虛刪除概觀](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)。
+如果您想要防止祕密遭到意外或惡意刪除，請在金鑰保存庫上設定虛刪除和清除保護功能。 如需詳細資訊，請參閱 [Azure Key Vault 虛刪除概觀](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)。
 
 ## <a name="limitations"></a>限制
 

@@ -5,17 +5,17 @@ description: 了解如何使用設計工具來定型模型和設定批次預測�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
-ms.custom: Ignite2019, designer
-ms.openlocfilehash: a464ab001eec877ffc6dc0ab5e33e82493c226ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, designer
+ms.openlocfilehash: 61465210c9ad476c6d8d2987330498aa0efa39d4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84429937"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319604"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具執行批次預測 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -34,6 +34,8 @@ ms.locfileid: "84429937"
 ## <a name="prerequisites"></a>Prerequisites
 
 本操作說明假設您已經有訓練管線。 如需設計工具的導引簡介，請完成[設計工具教學課程的第一部分](tutorial-designer-automobile-price-train-score.md)。 
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-batch-inference-pipeline"></a>建立批次推斷管線
 

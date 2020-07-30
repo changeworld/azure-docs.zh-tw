@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 0b6667965ddd1fce30bb2da2593e2a9274b595ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b92d26da837cab72a4c4404a7b5b3de5d3116480
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472011"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043356"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>教學課程：透過媒體服務進行即時串流
 
 > [!NOTE]
-> 雖然教學課程使用 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 範例，但是 [REST API](https://docs.microsoft.com/rest/api/media/liveevents)、[CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支援 [SDK](media-services-apis-overview.md#sdks) 的一般步驟都相同。
+> 雖然教學課程使用 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) 範例，但是 [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest) 或其他受支援 [SDK](media-services-apis-overview.md#sdks) 的一般步驟都相同。
 
-在 Azure 媒體服務中，[即時事件](https://docs.microsoft.com/rest/api/media/liveevents)會負責處理即時串流內容。 即時事件會提供輸入端點 (內嵌 URL)，接著您再提供給即時編碼器。 即時事件會從即時編碼器接收即時輸入資料流，再透過一或多個[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints)進行串流處理。 即時事件也會提供預覽端點 (預覽 URL)，您可在進一步處理和傳遞之前先用來預覽及驗證您的資料流。 本教學課程說明如何使用 .NET Core 建立即時事件的**傳遞**類型。
+在 Azure 媒體服務中，[即時事件](/rest/api/media/liveevents)會負責處理即時串流內容。 即時事件會提供輸入端點 (內嵌 URL)，接著您再提供給即時編碼器。 即時事件會從即時編碼器接收即時輸入資料流，再透過一或多個[串流端點](/rest/api/media/streamingendpoints)進行串流處理。 即時事件也會提供預覽端點 (預覽 URL)，您可在進一步處理和傳遞之前先用來預覽及驗證您的資料流。 本教學課程說明如何使用 .NET Core 建立即時事件的**傳遞**類型。
 
 本教學課程說明如何：
 
@@ -44,8 +44,8 @@ ms.locfileid: "79472011"
 需要有下列項目，才能完成教學課程：
 
 - 安裝 Visual Studio Code 或 Visual Studio。
-- [建立媒體服務帳戶](create-account-cli-how-to.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
-- 請依照[使用 Azure CLI 存取 Azure 媒體服務 API](access-api-cli-how-to.md) 中的步驟，並儲存認證。 您必須使用這些認證來存取 API。
+- [建立媒體服務帳戶](./create-account-howto.md)。<br/>請務必記住您用於資源群組名稱和「媒體服務」帳戶名稱的值。
+- 請依照[使用 Azure CLI 存取 Azure 媒體服務 API](./access-api-howto.md) 中的步驟，並儲存認證。 您必須使用這些認證來存取 API。
 - 用來廣播事件的相機或裝置 (例如筆記型電腦)。
 - 內部部署即時編碼器，其會將相機中的訊號轉換成資料流，再傳送至媒體服務即時串流服務；請參閱[建議的內部部署即時編碼器](recommended-on-premises-live-encoders.md)。 資料流的格式必須是 **RTMP** 或 **Smooth Streaming**。
 
@@ -62,7 +62,7 @@ ms.locfileid: "79472011"
 
 即時串流範例位於 [Live](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live/MediaV3LiveApp) 資料夾中。
 
-在您下載的專案中開啟 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json)。 將值取代為您從[存取 API](access-api-cli-how-to.md) 中取得的認證。
+在您下載的專案中開啟 [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json)。 將值取代為您從[存取 API](./access-api-howto.md) 中取得的認證。
 
 > [!IMPORTANT]
 > 此範例會對每個資源使用唯一尾碼。 如果您取消偵錯，或在應用程式執行完成之前加以終止，您的帳戶將會出現多個即時事件。 <br/>請確實停止執行即時事件。 否則將會產生相關**費用**！

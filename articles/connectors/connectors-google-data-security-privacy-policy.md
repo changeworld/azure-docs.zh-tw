@@ -98,7 +98,7 @@ ms.locfileid: "87288118"
 
    ![提供連線資訊](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | **驗證類型** | **攜帶您自己的應用程式** | 指定您將使用自己的用戶端應用程式進行驗證。 |
    | **用戶端識別碼** | <*client-ID*> | 來自 Google 用戶端應用程式的用戶端識別碼 |

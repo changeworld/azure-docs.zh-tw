@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f98df33b3efc697e349ddeae31439dd2fb701d91
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7023a2301b6b6137f7a0485523c68f21d72d67a9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202021"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385733"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何以 CLI 使用金鑰保存庫虛刪除
 
@@ -245,6 +245,6 @@ az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge
 
 ## <a name="other-resources"></a>其他資源
 
-- 如需 Key Vault 的虛刪除功能概觀，請參閱 [Azure Key Vault 虛刪除概觀](overview-soft-delete.md))。
+- 如需 Key Vault 的虛刪除功能概觀，請參閱 [Azure Key Vault 虛刪除概觀](soft-delete-overview.md))。
 - 如需 Azure Key Vault 使用方式的一般概觀，請參閱[什麼是 Azure Key Vault？](overview.md))。
 
