@@ -4,12 +4,12 @@ description: Azure 容器實例服務相關常見問題的解答
 author: dkkapur
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 21643ccfb6bb256e29114435ccb39a009d1b8dae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806596"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421275"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure 容器實例的相關常見問題
 
@@ -89,7 +89,7 @@ Azure 容器實例的目標是無伺服器容器隨選服務，因此我們希�
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>在自訂 VNet 中執行的實例可使用哪些功能？
 
-您可以在您選擇的[Azure 虛擬網路中部署容器群組](container-instances-vnet.md)，並將私人 ip 委派給容器群組，以將 VNet 內的流量路由傳送到您的 azure 資源。 將容器群組部署至虛擬網路目前適用于 Azure 區域子集中的生產工作負載。
+您可以在您選擇的[Azure 虛擬網路中部署容器群組](container-instances-vnet.md)，並將私人 ip 委派給容器群組，以將 VNet 內的流量路由傳送到您的 azure 資源。 如需 Azure 容器實例的網路案例和限制，請參閱[虛擬網路案例和資源](container-instances-virtual-network-concepts.md)。
 
 ## <a name="pricing"></a>定價
 

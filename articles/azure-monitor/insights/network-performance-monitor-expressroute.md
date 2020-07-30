@@ -23,7 +23,7 @@ ms.locfileid: "87326149"
 
 ![ExpressRoute 監視](media/network-performance-monitor-expressroute/expressroute-intro.png)
 
-## <a name="configuration"></a>設定 
+## <a name="configuration"></a>組態 
 若要開啟網路效能監控的設定，請開啟[網路效能監控解決方案](network-performance-monitor.md)，然後選取 [**設定**]。
 
 ### <a name="configure-network-security-group-rules"></a>設定網路安全性群組規則 
@@ -109,7 +109,7 @@ ms.locfileid: "87326149"
 
 您可以查看通知代碼，並透過 **LogAnalytics** 設定其警示。 在 [NPM 診斷]**** 頁面上，您可以看到每個觸發診斷訊息的描述。
 
-| 通知代碼 (記錄) | 說明 |
+| 通知代碼 (記錄) | 描述 |
 | --- | --- |
 | 5501 | 無法周遊通過 ExpressRoute 線路的次要連線 |
 | 5502 | 無法周遊通過 ExpressRoute 線路的主要連線 |

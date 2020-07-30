@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: ac701b70a9db860e2f839ab30fb575133703c142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd476d3210263268627541eb40c50048f0eddd1b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708470"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422907"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>教學課程：設定兩個受控實例之間的複寫
 
@@ -26,7 +26,7 @@ ms.locfileid: "84708470"
 異動複寫可讓您將資料從某個資料庫複寫至裝載于 SQL Server 或[AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)（公開預覽）上的另一個資料庫。 SQL 受控執行個體可以是複寫拓撲中的「發行者」、「散發者」或「訂閱者」。 如需可用的設定，請參閱[異動複寫](replication-transactional-overview.md#common-configurations)設定。
 
 > [!NOTE]
-> 本文說明如何在 Azure SQL 受控執行個體中使用[異動複寫](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它與[容錯移轉群組](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)無關，這是一項 Azure SQL 受控執行個體功能，可讓您建立個別實例的完整可讀取複本。
+> 本文說明如何在 Azure SQL 受控執行個體中使用[異動複寫](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它與[容錯移轉群組](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)無關，這是一項 Azure SQL 受控執行個體功能，可讓您建立個別實例的完整可讀取複本。 [使用容錯移轉群組設定異動複寫](replication-transactional-overview.md#with-failover-groups)時，還有其他考慮。
 
 本教學課程會教您將一個受控實例設定為「發行者」和「散發者」，然後將第二個受控實例設為「訂閱者」。  
 
@@ -36,7 +36,7 @@ ms.locfileid: "84708470"
   > - 本文旨在引導使用 SQL 受控執行個體從端對端設定複寫的先進使用者，從建立資源群組開始。 如果您已經部署受控實例，請直接跳到[步驟 4](#4---create-a-publisher-database)來建立發行者資料庫，如果您已經有發行者和訂閱者資料庫，而且準備好開始設定複寫，請略過步驟[6](#6---configure-distribution) 。  
   > - 這篇文章會在同一個受控實例上設定您的發行者和散發者。 若要將「散發者」放在個別的受控實例上，請參閱[設定 AZURE SQL 受控執行個體與 SQL Server 之間的異動複寫](replication-two-instances-and-sql-server-configure-tutorial.md)教學課程。 
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 將 SQL 受控執行個體設定為「發行者」和/或「散發者」的功能需要：
 

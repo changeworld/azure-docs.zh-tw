@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 755e59a029b0a12e51db53c6c7d3bb00358af635
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 89b8097aa288be710e95e835bb66904ef2c6ab56
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742007"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421666"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>在 Azure Active Directory 中大量新增群組成員
 
@@ -69,7 +69,7 @@ ms.locfileid: "84742007"
 
 您可以在 [大量作業結果] 頁面中，查看所有待決之大量要求的狀態。
 
-[![](media/groups-bulk-import-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-import-members/bulk-center.png#lightbox)
+[![檢查 [大量作業結果] 頁面中的狀態。](media/groups-bulk-import-members/bulk-center.png)](media/groups-bulk-import-members/bulk-center.png#lightbox)
 
 如需大量作業中每行項目的詳細資料，請選取 [成功數目]、[失敗數目] 或 [要求總計] 欄底下的值。 如果發生失敗，將會列出失敗的原因。
 

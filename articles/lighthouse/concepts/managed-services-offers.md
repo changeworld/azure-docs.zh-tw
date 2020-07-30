@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace 中的受控服務供應項目
 description: 受管理的服務提供允許服務提供者在 Azure Marketplace 中銷售資源管理供應專案給客戶。
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 119ecc8d15ef93a265cb5419404840496aaa1572
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121583"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406855"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace 中的受控服務供應項目
 
@@ -24,7 +24,10 @@ ms.locfileid: "86121583"
 
 每個受管理的服務供應專案都包含一或多個方案。 方案可以是私用或公用。
 
-如果您想要將供應項目限制為僅提供特定客戶使用，則可以發佈私人方案。 當您這麼做時，該方案只能針對由您提供的特定訂用帳戶識別碼購買。 如需詳細資訊，請參閱[私人供應項目](../../marketplace/private-offers.md) \(部分機器翻譯\)。
+如果您想要將供應項目限制為僅提供特定客戶使用，則可以發佈私人方案。 當您這麼做時，只能針對您提供的特定訂用帳戶 Id 購買方案。 如需詳細資訊，請參閱[私人供應項目](../../marketplace/private-offers.md) \(部分機器翻譯\)。
+
+> [!NOTE]
+> 透過雲端解決方案提供者（CSP）計畫的轉銷商所建立的訂用帳戶，不支援私用供應專案。
 
 公用方案能讓您將服務推廣給新的客戶。 當您僅需要客戶租用戶的有限存取權時，這通常是較為適合的選擇。 當您與客戶建立關聯性之後，如果他們決定將額外存取權授與您的組織，您可以僅為該客戶發佈新的私人方案，或是[使用 Azure Resource Manager 範本將他們上線以取得進一步存取](../how-to/onboard-customer.md)。
 

@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 04ebb4298f8a5398b0aa9921d740e3eaacfd8e11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: af743ca56572f507091db01f11d3283294a9e3d5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74973997"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382792"
 ---
 # <a name="nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的節點–超大規模資料庫（Citus）
 
@@ -22,7 +22,9 @@ ms.locfileid: "74973997"
 
 每個伺服器群組都有協調器節點和多個背景工作角色。 應用程式會將其查詢傳送至協調器節點，以將其轉送至相關的背景工作並累計其結果。 應用程式無法直接連接到背景工作角色。
 
-針對每個查詢，協調器會將其路由傳送至單一背景工作角色節點，或根據所需的資料是否存在於單一節點上或多個來平行處理。 協調器會透過諮詢中繼資料資料表來決定要執行的動作。 這些資料表會追蹤背景工作節點的 DNS 名稱和健康情況，以及跨節點的資料分佈。
+超大規模資料庫（Citus）可讓資料庫管理員*散發*資料表，並將不同的資料列儲存在不同的背景工作節點上。 分散式資料表是超大規模資料庫效能的關鍵。 無法散發資料表會將它們完全保留在協調器節點上，而且無法利用跨電腦的平行處理原則。
+
+針對分散式資料表上的每個查詢，協調器會將其路由傳送至單一背景工作節點，或根據所需的資料是否存在於單一節點上或多個來平行處理。 協調器會透過諮詢中繼資料資料表來決定要執行的動作。 這些資料表會追蹤背景工作節點的 DNS 名稱和健康情況，以及跨節點的資料分佈。
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解節點如何儲存[分散式資料](concepts-hyperscale-distributed-data.md)
+- 瞭解[分散式資料表](concepts-hyperscale-distributed-data.md)

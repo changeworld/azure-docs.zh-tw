@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 02/26/2020
 ms.author: martinco
-ms.openlocfilehash: 5075ae57df6a7306f0c860690931c846e52c2a89
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31fde1b80a1646a92688a0fcc1fa221cf01ba0a9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78926892"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418860"
 ---
 # <a name="compare-active-directory-to-azure-active-directory"></a>比較 Active Directory 與 Azure Active Directory
 
@@ -42,7 +42,7 @@ Azure AD 藉由為組織提供身分識別即服務（IDaaS）解決方案，跨
 | 中層/後臺服務|在內部部署環境中執行的服務通常會使用 AD 服務帳戶或群組受管理的服務帳戶（gMSA）來執行。 然後，這些應用程式會繼承服務帳戶的許可權。| Azure AD 提供[受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)識別，以在雲端中執行其他工作負載。 這些身分識別的生命週期是由 Azure AD 管理，而且系結至資源提供者無法用於其他目的，以取得後門程式存取權。|
 | **裝置**|||
 | 行動|Active Directory 不會在沒有協力廠商解決方案的情況下，原生支援行動裝置。| Microsoft 的行動裝置管理解決方案（Microsoft Intune）已與 Azure AD 整合。 Microsoft Intune 提供裝置狀態資訊給身分識別系統，以在驗證期間進行評估。 |
-| Windows 桌面|Active Directory 提供網域加入 Windows 裝置的功能，以使用群組原則、System Center Configuration Manager 或其他協力廠商解決方案來管理它們。|Windows 裝置可以[聯結到 Azure AD](https://docs.microsoft.com/azure/active-directory/devices/)。 條件式存取可以檢查裝置是否 Azure AD 在驗證過程中聯結。 Windows 裝置也可以使用[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)來管理。 在此情況下，條件式存取會在允許存取應用程式之前，考慮裝置是否為投訴（例如，最新的安全性修補程式和病毒碼標記）。|
+| Windows 桌面|Active Directory 提供網域加入 Windows 裝置的功能，以使用群組原則、System Center Configuration Manager 或其他協力廠商解決方案來管理它們。|Windows 裝置可以[聯結到 Azure AD](https://docs.microsoft.com/azure/active-directory/devices/)。 條件式存取可以檢查裝置是否 Azure AD 在驗證過程中聯結。 Windows 裝置也可以使用[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune)來管理。 在此情況下，條件式存取會考慮裝置是否相容（例如，最新的安全性修補程式和病毒簽章），然後才允許存取應用程式。|
 | Windows 伺服器| Active Directory 為使用群組原則或其他管理解決方案的內部部署 Windows 伺服器提供強大的管理功能。| 您可以使用[Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/)來管理 Azure 中的 Windows server 虛擬機器。 當 Vm 需要存取身分識別系統目錄或資源時，可以使用[受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)識別。|
 | Linux/Unix 工作負載|Active Directory 不會在不使用協力廠商解決方案的情況下，原生支援非 Windows，不過 Linux 電腦可以設定為以 Active Directory 作為 Kerberos 領域進行驗證。|Linux/Unix Vm 可以使用[受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/index)識別來存取身分識別系統或資源。 有些組織會將這些工作負載遷移至雲端容器技術，也可以使用受控識別。|
 

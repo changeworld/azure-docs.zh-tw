@@ -7,26 +7,26 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: tracking-python
-ms.openlocfilehash: b4facaee44a0bc5c7d64376ca80e5aaf8d0768d0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fa68f1ea8c0dd0d4367d3dcf39f059d0bd8a77ea
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323157"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421921"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
-在微服務的世界裡，每個邏輯作業都需要在服務的各種元件中完成工作。 您可以使用[Application Insights](./app-insights-overview.md)分別監視每個元件。 Application Insights 支援分散式遙測相互關聯，這可供您用來偵測造成失敗或效能衰退的元件。
+在微服務的世界裡，每個邏輯作業都需要在服務的各種元件中完成工作。 您可以使用[Application Insights](../../azure-monitor/app/app-insights-overview.md)分別監視每個元件。 Application Insights 支援分散式遙測相互關聯，這可供您用來偵測造成失敗或效能衰退的元件。
 
 本文說明 Application Insights 所使用的資料模型，以關聯多個元件所傳送的遙測。 它涵蓋內容傳播技巧和通訊協定。 它也涵蓋不同語言和平臺上的相互關聯策略的執行。
 
 ## <a name="data-model-for-telemetry-correlation"></a>遙測相互關聯的資料模型
 
-Application Insights 會定義分散遙測相互關聯的[資料模型](./data-model.md)。 為了讓遙測與邏輯作業產生關聯，每個遙測專案都有一個稱為的內容欄位 `operation_Id` 。 每個遙測項目會在分散式追蹤內共用這個識別碼。 因此，即使您遺失單一層的遙測，仍然可以將其他元件所報告的遙測相關聯。
+Application Insights 會定義分散遙測相互關聯的[資料模型](../../azure-monitor/app/data-model.md)。 為了讓遙測與邏輯作業產生關聯，每個遙測專案都有一個稱為的內容欄位 `operation_Id` 。 每個遙測項目會在分散式追蹤內共用這個識別碼。 因此，即使您遺失單一層的遙測，仍然可以將其他元件所報告的遙測相關聯。
 
-分散式邏輯作業通常包含一組較小的作業，這是由其中一個元件所處理的要求。 這些作業是由[要求遙測](./data-model-request-telemetry.md)所定義。 每個要求遙測專案都有自己 `id` 的唯一和全域識別。 與要求相關聯的所有遙測專案（例如追蹤和例外狀況）都應該將設定 `operation_parentId` 為要求的值 `id` 。
+分散式邏輯作業通常包含一組較小的作業，這是由其中一個元件所處理的要求。 這些作業是由[要求遙測](../../azure-monitor/app/data-model-request-telemetry.md)所定義。 每個要求遙測專案都有自己 `id` 的唯一和全域識別。 與要求相關聯的所有遙測專案（例如追蹤和例外狀況）都應該將設定 `operation_parentId` 為要求的值 `id` 。
 
-每個連出作業 (例如對另一個元件的 HTTP 呼叫) 都會由[相依性遙測](./data-model-dependency-telemetry.md)代表。 相依性遙測也會定義它自己 `id` 的全域唯一的。 由這個相依性呼叫起始的要求遙測會使用 這個 `id` 作為其 `operation_parentId`。
+每個連出作業 (例如對另一個元件的 HTTP 呼叫) 都會由[相依性遙測](../../azure-monitor/app/data-model-dependency-telemetry.md)代表。 相依性遙測也會定義它自己 `id` 的全域唯一的。 由這個相依性呼叫起始的要求遙測會使用 這個 `id` 作為其 `operation_parentId`。
 
 您可以將 `operation_Id`、`operation_parentId` 和 `request.id` 與 `dependency.id` 搭配使用，來建置分散式邏輯作業的檢視。 這些欄位也會定義遙測呼叫的因果順序。
 
@@ -216,7 +216,7 @@ public void ConfigureServices(IServiceCollection services)
 | `Operation_Id`                         | `TraceId`                                           |
 | `Operation_ParentId`                   | 類型 `ChildOf` 的 `Reference` (父代範圍)     |
 
-如需詳細資訊，請參閱[Application Insights 遙測資料模型](./data-model.md)。
+如需詳細資訊，請參閱[Application Insights 遙測資料模型](../../azure-monitor/app/data-model.md)。
 
 如需 OpenTracing 概念的定義，請參閱 OpenTracing[規格](https://github.com/opentracing/specification/blob/master/specification.md)和[語義慣例](https://github.com/opentracing/specification/blob/master/semantic_conventions.md)。
 
@@ -372,11 +372,10 @@ Application Insights SDK 從 2.4.0-beta1 版開始，會使用 `DiagnosticSource
 
 ## <a name="next-steps"></a>後續步驟
 
-- 撰寫[自訂遙測](./api-custom-events-metrics.md)。
+- 撰寫[自訂遙測](../../azure-monitor/app/api-custom-events-metrics.md)。
 - 如需 ASP.NET Core 和 ASP.NET 中的先進相互關聯案例，請參閱[追蹤自訂作業](custom-operations-tracking.md)。
-- 深入了解為其他 SDK [設定 cloud_RoleName](./app-map.md#set-cloud-role-name)。
+- 深入了解為其他 SDK [設定 cloud_RoleName](./app-map.md#set-or-override-cloud-role-name)。
 - 在 Application Insights 上將微服務的所有元件上線。 查看[支援的平台](./platforms.md)。
 - 參閱[資料模型](./data-model.md)以了解 Application Insights 類型。
 - 了解如何[擴充和篩選遙測](./api-filtering-sampling.md)。
 - 檢閱 [Application Insights 設定參考](configuration-with-applicationinsights-config.md)。
-

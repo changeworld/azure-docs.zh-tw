@@ -10,12 +10,12 @@ ms.date: 12/30/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 80ca5b63a91da31a5b226a589e15fb202eabd4ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7e93f54c1aa0eaa5edf3b3fcbfbf8bd9a6442d7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805765"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417534"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>使用 Azure AD 認證執行 PowerShell 命令，以存取 blob 或佇列資料
 
@@ -71,7 +71,7 @@ Azure 儲存體提供 PowerShell 的延伸模組，可讓您使用 Azure Active 
 1. 建立容器之前，請將 [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的許可權，才能對儲存體帳戶執行資料作業。 如需指派 RBAC 角色的詳細資訊，請參閱[在 Azure 入口網站中使用 RBAC 授與 Azure blob 和佇列資料的存取權](storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
-    > RBAC 角色指派可能需要幾分鐘的時間才能傳播。
+    > Azure 角色指派可能需要幾分鐘的時間才能傳播。
 
 1. 藉由呼叫[new-azstoragecontainer](/powershell/module/az.storage/new-azstoragecontainer)來建立容器。 因為此呼叫會使用在先前步驟中建立的內容，所以會使用您的 Azure AD 認證來建立容器。
 

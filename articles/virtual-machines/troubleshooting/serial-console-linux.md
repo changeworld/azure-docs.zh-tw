@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a9c2cee1478bc64c63b0d7ad09eec386b59678ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509013"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423451"
 ---
 # <a name="azure-serial-console-for-linux"></a>適用於 Linux 的 Azure 序列主控台
 
@@ -26,11 +26,12 @@ Azure 入口網站中的序列主控台可讓您存取 Linux 虛擬機器（Vm�
 
 序列主控台的運作方式與 VM 和虛擬機器擴展集執行個體相同。 在本文件中，除非另有指示，否則所有提及的 VM 都隱含虛擬機器擴展集執行個體。
 
+序列主控台已在全球 Azure 區域正式推出，並在 Azure Government 中公開預覽。 目前尚未在「Azure 中國」雲端中提供序列主控台。
+
 如需 Windows 的序列主控台檔，請參閱[windows 的序列主控台](./serial-console-windows.md)。
 
 > [!NOTE]
-> 序列主控台已在全球 Azure 區域中正式推出，且在 Azure Government 中處於公開預覽階段。 目前尚未在「Azure 中國」雲端中提供序列主控台。
-
+> 序列主控台目前與受管理的開機診斷儲存體帳戶不相容。 若要使用序列主控台，請確定您使用的是自訂儲存體帳戶。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -78,7 +79,7 @@ Oracle Linux        | 預設啟用的序列主控台存取。
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>存取序列主控台的常見案例
 
-情節          | 序列主控台中的動作
+狀況          | 序列主控台中的動作
 :------------------|:-----------------------------------------
 中斷的*FSTAB*檔 | 按下 **Enter** 鍵以繼續，並使用文字編輯器來修正 *FSTAB* 檔案。 您可能必須在單一使用者模式下，才能進行此操作。 如需詳細資訊，請參閱[如何修正 fstab 問題](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)和[使用序列主控台來存取 GRUB 與單一使用者模式](serial-console-grub-single-user-mode.md)的序列主控台一節。
 不正確的防火牆規則 |  如果您已將 iptables 設定為封鎖 SSH 連線，您可以使用序列主控台來與您的 VM 互動，而不需要 SSH。 如需更多詳細資料，請參閱[iptables man 頁面](https://linux.die.net/man/8/iptables)。<br>同樣地，如果您的 firewalld 封鎖了 SSH 存取，您可以透過序列主控台存取 VM，然後重新設定 firewalld。 您可以在[firewalld 檔](https://firewalld.org/documentation/)中找到更多詳細資料。
@@ -110,7 +111,7 @@ SSH 設定問題 | 存取序列主控台，然後變更設定。 無論 VM 的 S
 > [!CAUTION]
 > 這表示已中斷連線的使用者將不會登出。在進行中斷連線時強制登出的功能（使用 SIGHUP 或類似的機制）仍在藍圖中。 就 Windows 而言，在特殊系統管理主控台 (SAC) 中會啟用自動逾時，不過，針對 Linux，您則可以設定終端機逾時設定。 為此，請在您用以登入主控台之使用者的 *.bash_profile* 或 *.profile* 檔案中新增 `export TMOUT=600`。 此設定將在 10 分鐘後逾時。
 
-## <a name="accessibility"></a>協助工具選項
+## <a name="accessibility"></a>協助工具
 協助工具是 Azure 序列主控台的主要焦點。 為此，我們已確認序列主控台完全可供存取。
 
 ### <a name="keyboard-navigation"></a>鍵盤導覽

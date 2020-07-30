@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283464"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423145"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 作業安全性最佳做法
 本文提供一組可在 Azure 中保護您的資料、應用程式和其他資產的操作最佳作法。
@@ -55,7 +55,7 @@ Azure 作業安全性是指使用者可在 Azure 中用來保護其資料、應�
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>將 Azure 訂用帳戶組織成管理群組
 如果您的組織有許多訂用帳戶，則可能需要有效管理這些訂用帳戶的存取權、原則與合規性方法。 [Azure 管理群組](/azure/governance/management-groups/create)可提供高於訂用帳戶的範圍層級。 您會將訂用帳戶組織成稱為「管理群組」的容器，並將您的治理條件套用至管理群組。 管理群組內的所有訂用帳戶都會自動繼承套用到管理群組的條件。
 
-您可以將管理群組和訂用帳戶的彈性結構建立到目錄中。 每個目錄都有一個最上層管理群組，稱為「根管理群組」。 這個根管理群組會建置於階層內，讓所有的管理群組和訂用帳戶摺疊於其中。 根管理群組可讓全域原則和 RBAC 指派在目錄層級套用。
+您可以將管理群組和訂用帳戶的彈性結構建立到目錄中。 每個目錄都有一個最上層管理群組，稱為「根管理群組」。 這個根管理群組會建置於階層內，讓所有的管理群組和訂用帳戶摺疊於其中。 根管理群組可讓全域原則和 Azure 角色指派在目錄層級套用。
 
 以下是使用管理群組的一些最佳作法：
 

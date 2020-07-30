@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bd6157f2775b2496e489cfbf03b35f49fb6f5442
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124709"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385478"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>適用于 Linux 虛擬機器的 Azure 安全性基準
 
@@ -232,7 +232,7 @@ ms.locfileid: "87124709"
 
 * [查看和取出 Azure 活動記錄事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Application Insights 總覽](../../azure-monitor/app/app-insights-overview.md)
+* [Application Insights 概觀](../../azure-monitor/app/app-insights-overview.md)
 
 **Azure 資訊安全中心監視**：無法使用
 
@@ -1096,7 +1096,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 * [Vm 的虛刪除](../../backup/soft-delete-virtual-machines.md)
 
-* [Azure Key Vault 虛刪除概觀](../../key-vault/general/overview-soft-delete.md)
+* [Azure Key Vault 虛刪除概觀](../../key-vault/general/soft-delete-overview.md)
 
 **Azure 資訊安全中心監視**：是
 

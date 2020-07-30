@@ -2,15 +2,15 @@
 title: 虛擬網路服務端點 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何將 Microsoft EventHub 服務端點新增至虛擬網路的資訊。
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/29/2020
+ms.openlocfilehash: 15778c85f28300df3d5af34e2940b3854d814c66
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288004"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420444"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>將虛擬網路服務端點搭配 Azure 事件中樞使用
+# <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>允許從特定虛擬網路存取 Azure 事件中樞命名空間 
 
 將事件中樞與[虛擬網路 (VNet) 服務端點][vnet-sep]整合，可以安全存取來自虛擬機器 (繫結至虛擬網路) 等工作負載的傳訊功能，而且兩端的網路流量路徑都能受到保護。
 
@@ -56,10 +56,19 @@ ms.locfileid: "87288004"
 本節說明如何使用 Azure 入口網站來新增虛擬網路服務端點。 若要限制存取，您需要整合此事件中樞命名空間的虛擬網路服務端點。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽到您的**事件中樞命名空間**。
-2. 在左側功能表上，選取 [網路] 選項。 如果您選取 [所有網路] 選項，事件中樞便會接受來自任何 IP 位址的連線。 此設定等同於接受 0.0.0.0/0 IP 位址範圍的規則。 
+4. 在左側功能表上，選取 [**設定**] 底下的 [**網路**]。 
+
+    > [!NOTE]
+    > 您只會看到**標準**或**專用**命名空間的 [**網路**功能] 索引標籤。 
+
+    預設會選取 [**選取的網路**] 選項。 如果您未指定 IP 防火牆規則或在此頁面上新增虛擬網路，則可以從所有網路（包括公用網際網路（使用存取金鑰））存取命名空間。 
+
+    :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="網路索引標籤-選取的網路選項" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
+
+    如果您選取 [**所有網路**] 選項，事件中樞會接受來自任何 IP 位址的連接（使用存取金鑰）。 此設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
 
     ![防火牆 - 已選取 [所有網路] 選項](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. 若要限制對特定網路的存取，請選取頁面頂端的 [**選取的網路**] 選項。
+1. 若要限制對特定網路的存取，請選取頁面頂端的 [**選取的網路**] 選項（如果尚未選取）。
 2. 在頁面的 [**虛擬網路**] 區段中，選取 [+ 新增現有的虛擬網路] * * *。 如果您想要建立新的 VNet，請選取 [ **+ 建立新的虛擬網路**]。 
 
     ![新增現有的虛擬網路](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -77,6 +86,8 @@ ms.locfileid: "87288004"
 
     ![儲存網路](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
+    > [!NOTE]
+    > 若要限制對特定 IP 位址或範圍的存取，請參閱[允許來自特定 ip 位址或範圍的存取](event-hubs-ip-filtering.md)。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 範本
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 16828435dc8913fff8da4717ee7f77cc701504ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93ada332fdf9179cf0f582195779afc085416e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213069"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386226"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用 Key Vault 的最佳做法
 
@@ -33,7 +33,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 我們的建議是在每個環境中使用每個應用程式的保存庫（開發、生產前和生產）。 這可協助您在不同的環境之間共用秘密，同時也會在發生缺口時減少威脅。
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
 請確定您在保存庫中的物件上進行更新/刪除/建立時，定期備份您的保存庫。
 
@@ -56,5 +56,5 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 ## <a name="turn-on-recovery-options"></a>開啟修復選項
 
-1. 開啟虛[刪除](overview-soft-delete.md)。
+1. 開啟虛[刪除](soft-delete-overview.md)。
 2. 如果您想要防止在開啟虛刪除之後強制刪除秘密/保存庫，請開啟 [清除保護]。

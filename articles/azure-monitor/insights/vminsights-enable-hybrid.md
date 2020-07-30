@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7a6105e8742a4cb3d2f113c6ef723f6171baf4d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ccf4ad960abfd737a9a05d8fdc77a8bb1ea92d2d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328198"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417109"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>啟用混合式虛擬機器的適用於 VM 的 Azure 監視器
 本文說明如何針對 Azure 外部的虛擬機器（包括內部部署和其他雲端環境）啟用適用於 VM 的 Azure 監視器。
 
 > [!IMPORTANT]
-> 啟用混合式 Vm 的建議方法是先啟用[伺服器的 Azure Arc](/azure-arc/servers/overview.md) ，讓 vm 可以使用類似 Azure vm 的程式來啟用適用於 VM 的 Azure 監視器。 本文說明如何在您選擇不要使用 Azure Arc 的情況下，將混合式 Vm 上架。
+> 啟用混合式 Vm 的建議方法是先啟用[伺服器的 Azure Arc](../../azure-arc/servers/overview.md) ，讓 vm 可以使用類似 Azure vm 的程式來啟用適用於 VM 的 Azure 監視器。 本文說明如何在您選擇不要使用 Azure Arc 的情況下，將混合式 Vm 上架。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -31,7 +31,7 @@ Azure 外部的虛擬機器需要與適用于 Azure Vm 的相同 Log Analytics �
 如需部署 Log Analytics 代理程式的詳細資訊，請參閱[將 Windows 電腦連線至 Azure 監視器](../platform/agent-windows.md)或[將 Linux 電腦連接到 Azure 監視器](../platform/agent-linux.md)。 如需相依性代理程式的詳細資料，請參閱這篇文章。 
 
 ## <a name="firewall-requirements"></a>防火牆需求
-Log Analytics 代理程式[總覽](..//platform/log-analytics-agent.md#network-requirements)中提供 log analytics 代理程式的防火牆需求。 適用於 VM 的 Azure 監視器對應 Dependency Agent 本身不會傳輸任何資料，因此不需變更防火牆或連接埠。 如果您的 IT 安全性原則不允許網路上的電腦連線到網際網路，則對應資料一律會由 Log Analytics 代理程式直接傳輸到 Azure 監視器服務，或是透過[Operations Management Suite 閘道](../../azure-monitor/platform/gateway.md)來傳送。
+Log Analytics 代理程式[總覽](../platform/log-analytics-agent.md#network-requirements)中提供 log analytics 代理程式的防火牆需求。 適用於 VM 的 Azure 監視器對應 Dependency Agent 本身不會傳輸任何資料，因此不需變更防火牆或連接埠。 如果您的 IT 安全性原則不允許網路上的電腦連線到網際網路，則對應資料一律會由 Log Analytics 代理程式直接傳輸到 Azure 監視器服務，或是透過[Operations Management Suite 閘道](../../azure-monitor/platform/gateway.md)來傳送。
 
 
 ## <a name="dependency-agent"></a>相依性代理程式
@@ -80,7 +80,7 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 > 必須有 root 權限，以便安裝或設定代理程式。
 >
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |:--|:--|
 | -help | 取得命令列選項的清單。 |
 | -S | 執行無訊息安裝，不會出現任何使用者提示。 |
@@ -92,7 +92,7 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 
 Dependency Agent 的檔案位於下列目錄：
 
-| 檔案 | 位置 |
+| 檔案 | Location |
 |:--|:--|
 | 核心檔案 | /opt/microsoft/dependency-agent |
 | 記錄檔 | /var/opt/microsoft/dependency-agent/log |

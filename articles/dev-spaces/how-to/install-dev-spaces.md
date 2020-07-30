@@ -5,18 +5,18 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: 瞭解如何在 AKS 叢集上啟用 Azure Dev Spaces 並安裝用戶端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: b62c4a4861529c19363f159b8cc64a32a0ba11e8
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: ac010a466f7db7b829cc3d6f0687dbdbefdd7b6c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996256"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407892"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>在 AKS 叢集上啟用 Azure Dev Spaces 並安裝用戶端工具
 
 本文說明在 AKS 叢集上啟用 Azure Dev Spaces 以及安裝用戶端工具的數種方式。
 
-## <a name="enable-or-remove-azure-dev-spaces-using-the-cli"></a>使用 CLI 啟用或移除 Azure Dev Spaces
+## <a name="enable-azure-dev-spaces-using-the-cli"></a>使用 CLI 啟用 Azure Dev Spaces
 
 需先達成以下條件，方能使用 CLI 啟用 Dev Spaces：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶][az-portal-create-account]。
@@ -49,7 +49,23 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 
 `use-dev-spaces` 命令也會安裝 Azure Dev Spaces CLI。
 
-若要從您的 AKS 叢集中移除 Azure Dev Spaces，請使用 `azds remove` 命令。 例如：
+## <a name="install-the-client-side-tools"></a>安裝用戶端工具
+
+您可以使用 Azure Dev Spaces 的用戶端工具，從您的本機電腦與 AKS 叢集上的開發空間互動。 有幾種方式可以安裝用戶端工具：
+
+* 在 [Visual Studio Code][vscode] 中，安裝 [Azure Dev Spaces 擴充功能][vscode-extension]。
+* 在 [Visual Studio 2019][visual-studio] 中，安裝 Azure 開發工作負載。
+* 下載並安裝 [Windows][cli-win]、[Mac][cli-mac] 或 [Linux][cli-linux] CLI。
+
+## <a name="remove-azure-dev-spaces-using-the-cli"></a>使用 CLI 移除 Azure Dev Spaces
+
+若要從您的 AKS 叢集中移除 Azure Dev Spaces，請使用 `azds remove` 命令。
+
+```azurecli
+azds remove -g MyResourceGroup -n MyAKS
+```
+
+下列範例輸出顯示從*MyAKS*叢集移除 Azure Dev Spaces。
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -58,15 +74,7 @@ Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that tar
 Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAks' in resource group 'MyResourceGroup' (takes a few minutes)...
 ```
 
-上述命令會從 *MyResourceGroup*中的 *MyAKS* 叢集移除 Azure Dev Spaces。 以 Azure Dev Spaces 建立的所有命名空間，都會保留在其工作負載中，但這些命名空間中的新工作負載將不會使用 Azure Dev Spaces 進行檢測。 此外，如果您重新啟動任何以 Azure Dev Spaces 檢測的現有 Pod，可能會看到錯誤。 必須在不使用 Azure Dev Spaces 工具處理的情況下，重新部署這些 Pod。 若要從您的叢集中完全移除 Azure Dev Spaces，請在所有啟用 Azure Dev Spaces 的命名空間中，刪除所有 Pod。
-
-## <a name="install-the-client-side-tools"></a>安裝用戶端工具
-
-您可以使用 Azure Dev Spaces 的用戶端工具，從您的本機電腦與 AKS 叢集上的開發空間互動。 有幾種方式可以安裝用戶端工具：
-
-* 在 [Visual Studio Code][vscode] 中，安裝 [Azure Dev Spaces 擴充功能][vscode-extension]。
-* 在 [Visual Studio 2019][visual-studio] 中，安裝 Azure 開發工作負載。
-* 下載並安裝 [Windows][cli-win]、[Mac][cli-mac] 或 [Linux][cli-linux] CLI。
+以 Azure Dev Spaces 建立的所有命名空間，都會保留在其工作負載中，但這些命名空間中的新工作負載將不會使用 Azure Dev Spaces 進行檢測。 此外，如果您重新啟動任何以 Azure Dev Spaces 檢測的現有 Pod，可能會看到錯誤。 必須在不使用 Azure Dev Spaces 工具處理的情況下，重新部署這些 Pod。 若要從您的叢集中完全移除 Azure Dev Spaces，請在所有啟用 Azure Dev Spaces 的命名空間中，刪除所有 Pod。
 
 ## <a name="next-steps"></a>後續步驟
 

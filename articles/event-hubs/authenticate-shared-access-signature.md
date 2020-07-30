@@ -3,12 +3,13 @@ title: 使用共用存取簽章來驗證 Azure 事件中樞的存取權
 description: 本文說明如何使用共用存取簽章來驗證事件中樞資源的存取權。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ed389460cf3461df060df79fb756e73711f693f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 5397cd746f33fc82ee63cc7d2a1f396ba704f334
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318040"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423094"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>使用共用存取簽章（SAS）驗證事件中樞資源的存取權
 共用存取簽章（SAS）可讓您更精確地控制授與具有共用存取簽章之用戶端的存取類型。 以下是您可以在 SAS 中設定的一些控制項： 

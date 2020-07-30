@@ -9,16 +9,66 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4bab1ef4588a705f0dd6cdb34be8272868f826e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207561"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386617"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 來查詢 Parquet 檔案
 
 本文中會介紹如何使用會讀取 Parquet 檔案的 SQL 隨選 (預覽) 來寫入查詢。
+
+## <a name="quickstart-example"></a>快速入門範例
+
+`OPENROWSET`函式可讓您藉由提供檔案的 URL 來讀取 parquet 檔案的內容。
+
+### <a name="reading-parquet-file"></a>正在讀取 parquet 檔
+
+查看檔案內容最簡單的方式， `PARQUET` 就是提供要運作的檔案 URL `OPENROWSET` ，並指定 parquet `FORMAT` 。 如果檔案可公開使用，或者您的 Azure AD 身分識別可以存取此檔案，則您應該能夠使用查詢來查看檔案的內容，如下列範例所示：
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.parquet',
+    format = 'parquet') as rows
+```
+
+請確定您已存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂 Azure 身分識別的保護，您就必須設定[sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+
+### <a name="using-data-source"></a>使用資料來源
+
+上一個範例使用檔案的完整路徑。 或者，您可以建立外部資料源，其位置會指向儲存體的根資料夾，並使用該資料來源和函式中檔案的相對路徑 `OPENROWSET` ：
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+go
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.parquet',
+        data_source = 'covid',
+        format = 'parquet'
+    ) as rows
+```
+
+如果資料來源受到 SAS 金鑰或自訂身分識別的保護，您可以[使用資料庫範圍認證來設定資料來源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+
+### <a name="explicitly-specify-schema"></a>明確指定架構
+
+`OPENROWSET`可讓您使用子句明確指定您想要從檔案讀取的資料行 `WITH` ：
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.parquet',
+        data_source = 'covid',
+        format = 'parquet'
+    ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
+```
+
+在下列各節中，您可以瞭解如何查詢各種類型的 PARQUET 檔案。
 
 ## <a name="prerequisites"></a>Prerequisites
 

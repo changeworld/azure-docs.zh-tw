@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: a970122c5f034e6215d2e829657c9eec99f14371
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c7051cca9029283b150eea0519aa7432d6a9c937
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279877"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420476"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色權限與安全性
 
@@ -338,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) 會列出在指定範圍的 Azure AD RBAC 角色指派。 如果沒有任何參數，此 Cmdlet 會傳回在訂閱下所做的所有角色指派。 使用 `ExpandPrincipalGroups` 參數，列出特定使用者以及該使用者所屬群組的存取權指派。
+[New-azroleassignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)會列出指定範圍的 Azure 角色指派。 如果沒有任何參數，此 Cmdlet 會傳回在訂閱下所做的所有角色指派。 使用 `ExpandPrincipalGroups` 參數，列出特定使用者以及該使用者所屬群組的存取權指派。
 
 **範例︰** 使用下列 Cmdlet 列出自動化帳戶中的所有使用者以及其角色。
 

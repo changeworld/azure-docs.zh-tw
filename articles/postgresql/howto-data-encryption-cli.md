@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
-ms.openlocfilehash: 731827fb63f8b23d21ea2eddaef3fa9b796d14bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 64cf2568b448c74748be63901cafb51305eab713
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119577"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386362"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>使用 Azure CLI 適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 
@@ -33,13 +33,13 @@ ms.locfileid: "86119577"
    ```
 
 * 若要使用現有的金鑰保存庫，它必須具有下列屬性，才能用來作為客戶管理的金鑰：
-  * [虛刪除](../key-vault/general/overview-soft-delete.md)
+  * [虛刪除](../key-vault/general/soft-delete-overview.md)
 
       ```azurecli-interactive
       az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
       ```
 
-  * [清除受保護](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [清除受保護](../key-vault/general/soft-delete-overview.md#purge-protection)
 
       ```azurecli-interactive
       az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true

@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e6965cef0257ee472c08b19e3a9b1c2ec2860128
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116913"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415035"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用 App Service 和 Azure Functions 的受控身分識別
 
@@ -176,6 +176,15 @@ ms.locfileid: "87116913"
 ```
 
 tenantId 屬性能辨識身分識別所隸屬的 Azure AD 租用戶。 principalId 是應用程式新身分識別的唯一識別碼。 在 Azure AD 內，服務主體的名稱與您提供給 App Service 或 Azure Functions 執行個體的名稱相同。
+
+如果您需要在範本的後續階段中參考這些屬性，您可以透過具有旗標的[ `reference()` 範本](../azure-resource-manager/templates/template-functions-resource.md#reference)函式來執行 `'Full'` 此動作，如下列範例所示：
+
+```json
+{
+    "tenantId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.tenantId]",
+    "objectId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.principalId]",
+}
+```
 
 ## <a name="add-a-user-assigned-identity"></a>新增使用者指派的身分識別
 

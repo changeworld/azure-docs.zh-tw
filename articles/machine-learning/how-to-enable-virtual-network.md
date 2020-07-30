@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320165"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420527"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>使用私人虛擬網路進行定型 & 推斷期間的網路隔離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,9 +57,6 @@ __虛擬網路__可充當安全邊界，將 Azure 資源與公用網際網路隔
 > [!WARNING]
 > 
 > 已啟用 Private Link 的工作區不支援 Azure Machine Learning 計算執行個體預覽。
->
-> Azure Machine Learning 不支援使用已啟用 Private Link 的 Azure Kubernetes Service。 您可以改為在虛擬網路中使用 Azure Kubernetes Service。 如需詳細資訊，請參閱[保護 Azure 虛擬網路內的 Azure ML 實驗和推斷作業](how-to-enable-virtual-network.md)。
-
 
 <a id="amlcompute"></a>
 
@@ -448,9 +445,6 @@ except ComputeTargetException:
 > 在開始進行下列程序前，請先遵循[在 Azure Kubernetes Service (AKS) 中設定進階網路](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites)操作說明中的必要條件，並規劃叢集的 IP 位址。
 >
 > AKS 執行個體和 Azure 虛擬網路必須位於相同的區域。 如果您在虛擬網路中保護工作區所使用的 Azure 儲存體帳戶，則這些帳戶必須位於與 AKS 執行個體相同的虛擬網路中。
-
-> [!WARNING]
-> Azure Machine Learning 不支援使用已啟用 Private Link 的 Azure Kubernetes Service。
 
 1. 登入 [Azure Machine Learning Studio](https://ml.azure.com/)，然後選取您的訂用帳戶和工作區。
 

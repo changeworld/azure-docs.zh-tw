@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326611"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405240"
 ---
 # <a name="create-a-managed-service-offer"></a>建立受控服務供應項目
 
@@ -194,6 +194,9 @@ ms.locfileid: "87326611"
 目前，只有一個可用於受控服務供應項目的定價模型：**自備授權 (BYOL)** 。 這表示您會直接向您的客戶收取此供應項目的相關費用，而且 Microsoft 不會向您收取任何費用。
 
 [方案可視性] 區段可讓您指出此方案是否應為[私人](../../marketplace/private-offers.md)。 如果您未核取 [這是私人方案] 方塊，則您的方案將不限於特定客戶 (或特定數目的客戶)。
+
+> [!NOTE]
+> 透過雲端解決方案提供者（CSP）計畫的轉銷商所建立的訂用帳戶，不支援私用方案。
 
 若要使此方案只有特定客戶才能取得，請選取 [是]。 當您這麼做時，必須提供訂用帳戶識別碼來識別客戶。 您可以逐一輸入 (最多 10 個訂用帳戶)，或上傳 .csv 檔案 (在所有方案中，上限為 10,000 個)。 請務必在此包含您自己的訂用帳戶，以便您可以測試及驗證供應項目。
 

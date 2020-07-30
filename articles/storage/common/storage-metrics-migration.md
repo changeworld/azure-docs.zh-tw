@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 219d2b972089f9d3b7f84caa8b527474ac241c4f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a1f977cef614a52853407c0d0665399f1a249c53
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374162"
+ms.locfileid: "87422057"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>轉換成 Azure 監視器中的計量
 
-Azure 儲存體現在會將計量整合到 Azure 監視器平臺。 **2023 年8月 31**日儲存體分析計量，亦稱為*傳統計量*將會淘汰。 如果您使用傳統計量，請務必在該日期之前轉換到 Azure 監視器中的計量。 本文可協助您進行轉換。
+Azure 儲存體現在會將計量整合到 Azure 監視器平臺。 本文可協助您進行轉換。
 
 ## <a name="steps-to-complete-the-transition"></a>完成轉換的步驟
 

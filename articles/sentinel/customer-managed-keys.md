@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/19/2020
 ms.author: yelevin
-ms.openlocfilehash: ded28ef872bbc3147793ea3d68c94f8dde35f74e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 44a2c0c1b4bc9b4e6fc1247497640b261d1d0fa1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674189"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387909"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>設定 Azure Sentinel 客戶管理的金鑰
 
@@ -64,9 +64,9 @@ Azure Sentinel 解決方案會針對記錄收集和功能使用數個儲存體�
 
 1.  [開啟復原選項：](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   請確定已開啟[虛刪除](../key-vault/general/overview-soft-delete.md)。
+    -   請確定已開啟[虛刪除](../key-vault/general/soft-delete-overview.md)。
 
-    -   開啟[清除保護](../key-vault/general/overview-soft-delete.md#purge-protection)，以防止強制刪除秘密/保存庫，即使在虛刪除之後也一樣。
+    -   開啟[清除保護](../key-vault/general/soft-delete-overview.md#purge-protection)，以防止強制刪除秘密/保存庫，即使在虛刪除之後也一樣。
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>步驟 2：在您的 Log Analytics 工作區啟用 CMK
 

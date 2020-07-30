@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41329f2f5500db35ee76c9880bdbef984413004b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057891"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423604"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>在 Azure Active Directory 中大量建立使用者
 
@@ -60,7 +60,7 @@ Azure Active Directory (Azure AD) 支援大量使用者建立和刪除作業，�
 
 1. 開啟 CSV 檔案，並為您想要建立的每位使用者新增一行。 必要值只有**名稱**、**使用者主體名稱**、**初始密碼**和**封鎖登入 (是/否)** 。 然後儲存檔案。
 
-   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
+   [![CSV 檔案包含要建立之使用者的名稱和識別碼](media/users-bulk-add/add-csv-file.png)](media/users-bulk-add/add-csv-file.png#lightbox)
 
 1. 在 [大量建立使用者] 頁面的 [上傳您的 CSV 檔案] 底下，瀏覽至該檔案。 當您選取該檔案並按一下 [提交] 時，就會開始驗證 CSV 檔案。
 1. 當檔案內容經過驗證後，您將會看到「已成功上傳檔案」。 如果發生錯誤，您必須修正這些錯誤，才能提交作業。
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) 支援大量使用者建立和刪除作業，�
 
 您可以在 [大量作業結果] 頁面中，查看所有待決之大量要求的狀態。
 
-   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
+   [![在 [大量作業結果] 頁面中檢查建立狀態](media/users-bulk-add/bulk-center.png)](media/users-bulk-add/bulk-center.png#lightbox)
 
 接下來，您可以在 Azure 入口網站中或使用 PowerShell，來檢查您建立的使用者是否存在於 Azure AD 組織中。
 

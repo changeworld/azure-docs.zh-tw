@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253183"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419728"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 條件式存取中的服務相依性為何？ 
 
@@ -51,6 +51,7 @@ ms.locfileid: "85253183"
 |                     | SharePoint                                  | 早期繫結 |
 | Microsoft Teams     | Exchange                                    | 早期繫結 |
 |                     | MS Planner                                  | 晚期繫結  |
+|                     | Microsoft Stream                            | 晚期繫結  |
 |                     | SharePoint                                  | 早期繫結 |
 |                     | 商務用 Skype Online                   | 早期繫結 |
 | Office 入口網站       | Exchange                                    | 晚期繫結  |
@@ -59,7 +60,7 @@ ms.locfileid: "85253183"
 |                     | SharePoint                                  | 早期繫結 |
 | PowerApps           | Microsoft Azure 管理（入口網站和 API） | 早期繫結 |
 |                     | Windows Azure Active Directory              | 早期繫結 |
-| Project             | Dynamics CRM                                | 早期繫結 |
+| 隨附此逐步解說的專案             | Dynamics CRM                                | 早期繫結 |
 | 商務用 Skype  | Exchange                                    | 早期繫結 |
 | Visual Studio       | Microsoft Azure 管理（入口網站和 API） | 早期繫結 |
 | Microsoft Forms     | Exchange                                    | 早期繫結 |

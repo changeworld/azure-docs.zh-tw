@@ -14,12 +14,12 @@ ms.date: 07/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 433ccecdc5eee5314114d020571761ee82afd6b9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: cb1041cb5fc4aa7503f5ae9de6ffc74ba72052b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024091"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421394"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>在 PIM 中啟用 Azure AD 角色
 
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 簡化了
 1. 以[特殊權限角色管理員](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色登入[Azure 入口網站](https://portal.azure.com/)。
 1. 開啟**Azure AD Privileged Identity Management**。 如果您在 [總覽] 頁面頂端有橫幅，請遵循本文的 [**新版本**] 索引標籤中的指示。 否則，請依照 [**先前版本**] 索引標籤中的指示進行。
 
-    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
+    [![選取 Azure AD > Privileged Identity Management。](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 # <a name="new-version"></a>[新版本](#tab/new)
 
@@ -158,7 +158,7 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 簡化了
 
     ![具有自訂開始時間、持續時間、票證和原因的已完成啟用窗格](./media/pim-how-to-activate-role/directory-roles-activation-pane.png)
 
-1. 按一下 [啟動]****。
+1. 按一下 [啟用]。
 
     如果角色不需要核准，則會出現 [**啟用狀態**] 窗格，顯示啟用的狀態。
 

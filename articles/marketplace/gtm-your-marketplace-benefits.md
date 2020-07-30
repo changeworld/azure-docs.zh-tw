@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8aa9fa1701f41c6fd1adacc264b811e0d9849ab5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287886"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408113"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>您的商業市集權益
 
@@ -106,9 +106,15 @@ Marketplace Rewards 設計是為了在特定成長階段為您提供支援，先
 對於出現已下行為的發行者，Microsoft 將保留撤銷及終止 Marketplace Rewards 權益的權利： 
 
 * 使用其 marketplace 清單參與不合法的活動。
+* 接收已知或被視為詐騙的購買。
 * 會從商業 marketplace 中取消列出。 
 * 使用其供應專案來顯示違反著作權或商標法則的行銷或其他內容。
 * 違反[azure 贊助方案](https://azure.microsoft.com/offers/ms-azr-0036p/)的原則，包括（但不限於）使用 azure 贊助資金來進行自己的內部作業或比特幣的發掘。
+
+當下列情況發生時，Microsoft 會保留撤銷及終止 Marketplace 報酬的權利：
+
+* 進行購買的客戶不小心，希望取消購買。 
+* 客戶會在使用合作夥伴的產品前取消。
 
 ### <a name="offer-availability"></a>供應專案可用性
 

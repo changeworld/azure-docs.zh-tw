@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/15/2020
+ms.date: 07/16/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 4e21edd662649238b16cf7e7df9d9904f3f17752
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34720a10796a1a215d541baef9f2c225857d3bc0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015896"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423621"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>關於 Microsoft Authenticator 應用程式的常見問題（FAQ）
 
@@ -30,6 +30,7 @@ Microsoft Authenticator 應用程式取代了 Azure 驗證器應用程式，而�
 | 問題 | Answer |
 | -------- | ------ |
 | 註冊裝置是否即表示同意公司或服務存取我的裝置？ | 註冊裝置可讓您的裝置存取您組織的服務，但不允許您組織存取您的裝置。 |
+| 什麼是應用程式鎖定，我該如何使用它來協助讓我更安全？ | 應用程式鎖定有助於讓您的一次性密碼、應用程式資訊和應用程式設定更安全。 當應用程式鎖定啟用時，系統會要求您在每次開啟驗證器時使用您的裝置 PIN 或生物特徵辨識來進行驗證。 應用程式鎖定也可協助確保您可以在核准登入通知時，隨時提示您的 PIN 或生物識別來核准通知。 您可以在 [驗證器設定] 頁面上開啟或關閉應用程式鎖定。 根據預設，當您在裝置上設定 PIN 或生物特徵辨識時，應用程式鎖定會開啟。<br><br>可惜的是，不保證應用程式鎖定會阻止某人存取驗證器。 這是因為裝置註冊可能會發生在驗證器以外的其他位置，例如 Android 帳戶設定或公司入口網站應用程式中。 |
 | 我有 Windows Mobile 裝置，而 Windows Mobile 上的 Microsoft Authenticator 已被取代。 我可以繼續使用應用程式進行驗證嗎？ | 在2020年7月15日之後，所有使用 Windows Mobile Microsoft Authenticator 的驗證都會淘汰。 我們強烈建議您使用替代的驗證方法，以避免您的帳戶遭到鎖定。<br>企業使用者的替代選項包括：<br><ul><li>設定[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)或[iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)的 Microsoft Authenticator。</li><li>[設定 SMS](multi-factor-authentication-setup-phone-number.md)以接收驗證碼。</li><li>設定電話號碼以接收[電話，以驗證其身分識別](multi-factor-authentication-setup-office-phone.md)。</li></ul><br>個人 Microsoft 帳戶使用者的替代選項包括：<br><ul><li>設定[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)或[iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)的 Microsoft Authenticator。</li><li>藉由從[Microsoft 帳戶安全性頁面](https://account.microsoft.com/security/)更新您的安全性資訊，以設定替代的登入方法（SMS 或電子郵件）。</li></ul> |
 | 我可以將我的一次性密碼（OTP）代碼的螢幕擷取畫面帶到 Android 驗證器嗎？ | 從驗證器 Android 的 release 6.2003.1704 開始，每當採取驗證器的螢幕擷取畫面時，預設都會隱藏所有的 OTP 程式碼。 如果您想要在螢幕擷取畫面中查看 OTP 代碼，或允許其他應用程式捕捉驗證器畫面，您可以。 只要在驗證器中開啟 [**螢幕**快照] 設定，然後重新開機應用程式即可。 |
 | Authenticator 會為我儲存何種資料，而我該如何刪除它？ | 驗證器應用程式會收集三種類型的資訊：<ul><li>您新增帳戶時提供的帳戶資訊。 這項資料可以藉由移除帳戶來移除。</li><li>在您選取應用程式之 [說明] 功能表中的 [傳送記錄]，將紀錄傳送給 Microsoft 之前，診斷記錄資料只會存留在應用程式中。 這些記錄檔可能包含個人資料，例如電子郵件地址、伺服器位址或 IP 位址。 它們也可以包含裝置資料，例如裝置名稱和作業系統版本。 收集的任何個人資料僅限於協助疑難排解應用程式問題所需的資訊。 您可以隨時在應用程式中流覽這些記錄檔，以查看所收集的資訊。 如果您傳送記錄檔，驗證應用程式工程師只會使用它們來疑難排解客戶回報的問題。</li><li>非個人的可識別使用量資料，例如「已啟動的新增帳戶流程/已成功新增的帳戶」或「已核准的通知。」 這項資料是我們工程決策不可或缺的一部分。 您的使用方式可協助我們判斷如何以對您而言很重要的方式來改善應用程式。 當您第一次使用應用程式時，您會看到此資料收集的通知。 它會通知您，您可以在應用程式的 [**設定**] 頁面上關閉它。 您可以隨時開啟或關閉此設定。</li></ul> |

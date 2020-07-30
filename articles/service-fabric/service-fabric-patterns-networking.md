@@ -3,12 +3,12 @@ title: Azure Service Fabric 的網路模式
 description: 描述 Service Fabric 常見的網路功能模式，以及如何使用 Azure 網路功能建立叢集。
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 0c3664d1890fd318aa1bff508a51cb227bdcc01d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 20bd5e931307725016c3e2ad69dae91214b2caab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258525"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421462"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric 網路功能模式
 您可以將 Azure Service Fabric 叢集與其他的 Azure 網路功能整合起來。 本文說明如何建立使用下列功能的叢集︰
@@ -99,6 +99,8 @@ DnsSettings              : {
                 "defaultValue": "10.0.0.0/24"
             },*/
     ```
+
+   您也可以將名稱為 "virtualNetworkName" 的參數批註，使其不會在 Azure 入口網站的 [叢集部署] 分頁中，提示您輸入虛擬網路名稱兩次。
 
 2. 將 `Microsoft.Compute/virtualMachineScaleSets` 的 `nicPrefixOverride` 屬性註解化，因為您是使用現有的子網路，且已在步驟 1 中停用此變數。
 
@@ -598,7 +600,7 @@ DnsSettings              : {
 
 ## <a name="notes-for-production-workloads"></a>生產工作負載的相關注意事項
 
-上述 GitHub 範本的設計目的是要搭配 Azure Standard Load Balancer (SLB) （基本 SKU）的預設 SKU。 此 SLB 沒有 SLA，因此針對生產工作負載，應使用標準 SKU。 如需詳細資訊，請參閱[Azure Standard Load Balancer 總覽](../load-balancer/load-balancer-overview.md)。 任何使用 SLB 標準 SKU 的 Service Fabric 叢集都必須確保每個節點類型都有規則允許埠443上的輸出流量。 這是完成叢集設定的必要步驟，而且沒有這類規則的任何部署將會失敗。 在上述「僅限內部」負載平衡器的範例中，必須將額外的外部負載平衡器新增至範本，並提供允許埠443輸出流量的規則。
+上述 GitHub 範本是設計用來與 Azure Standard Load Balancer （SLB）（基本 SKU）的預設 SKU 搭配使用。 此 SLB 沒有 SLA，因此針對生產工作負載，應使用標準 SKU。 如需詳細資訊，請參閱[Azure Standard Load Balancer 總覽](../load-balancer/load-balancer-overview.md)。 任何使用 SLB 標準 SKU 的 Service Fabric 叢集都必須確保每個節點類型都有規則允許埠443上的輸出流量。 這是完成叢集設定的必要步驟，而且沒有這類規則的任何部署將會失敗。 在上述「僅限內部」負載平衡器的範例中，必須將額外的外部負載平衡器新增至範本，並提供允許埠443輸出流量的規則。
 
 ## <a name="next-steps"></a>後續步驟
 [建立叢集](service-fabric-cluster-creation-via-arm.md)

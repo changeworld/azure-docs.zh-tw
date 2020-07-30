@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 125f4188ed3f12f366c619af9efe3aa203987c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 668b8d714c4d6c146d9b279d9e6a49599c04775c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870524"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423502"
 ---
 # <a name="require-secure-transfer-to-ensure-secure-connections"></a>需要安全傳輸以確保連接安全
 
@@ -51,7 +51,7 @@ ms.locfileid: "81870524"
 
 ## <a name="require-secure-transfer-from-code"></a>需要從程式碼進行安全傳輸
 
-若要以程式設計方式要求安全傳輸，請在儲存體帳戶上設定_supportsHttpsTrafficOnly_屬性。 您可以使用儲存體資源提供者 REST API、用戶端程式庫或工具來設定此屬性：
+若要以程式設計方式要求安全傳輸，請在儲存體帳戶上將_enableHTTPstrafficonly 屬性_屬性設定為_True_ 。 您可以使用儲存體資源提供者 REST API、用戶端程式庫或工具來設定此屬性：
 
 * [REST API](/rest/api/storagerp/storageaccounts)
 * [PowerShell](/powershell/module/az.storage/set-azstorageaccount)

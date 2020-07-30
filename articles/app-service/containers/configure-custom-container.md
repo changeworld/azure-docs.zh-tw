@@ -3,12 +3,12 @@ title: 設定自訂的 Linux 容器
 description: 瞭解如何在 Azure App Service 中設定自訂的 Linux 容器。 本文說明最常見的設定工作。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: df766c289ac9ece4c1dc1fbdc65d49ae1306a592
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a3e360270ac388d0f8434a9184d39d602c98e9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008586"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422771"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>設定 Azure App Service 的自訂 Linux 容器
 
@@ -18,7 +18,7 @@ ms.locfileid: "87008586"
 
 ## <a name="configure-port-number"></a>設定埠號碼
 
-根據預設，App Service 會假設您的自訂容器在埠80上接聽。 自訂映射中的 web 伺服器可能會使用80以外的埠。 您會使用應用程式設定，告訴 Azure 您的自訂容器所使用的埠 `WEBSITES_PORT` 。 [本教學課程中的 Python 範例](https://github.com/Azure-Samples/docker-django-webapp-linux) GitHub 頁面說明您必須將 `WEBSITES_PORT` 設定為 _8000_。 您可以藉由 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 在 Cloud Shell 中執行命令來設定它。 例如:
+根據預設，App Service 會假設您的自訂容器在埠80上接聽。 自訂映射中的 web 伺服器可能會使用80以外的埠。 您會使用應用程式設定，告訴 Azure 您的自訂容器所使用的埠 `WEBSITES_PORT` 。 [本教學課程中的 Python 範例](https://github.com/Azure-Samples/docker-django-webapp-linux) GitHub 頁面說明您必須將 `WEBSITES_PORT` 設定為 _8000_。 您可以藉由 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 在 Cloud Shell 中執行命令來設定它。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -26,7 +26,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 ## <a name="configure-environment-variables"></a>設定環境變數
 
-您的自訂容器可能會使用需要在外部提供的環境變數。 您可以藉由在 Cloud Shell 中執行命令，在中傳遞它們 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 。 例如:
+您的自訂容器可能會使用需要在外部提供的環境變數。 您可以藉由在 Cloud Shell 中執行命令，在中傳遞它們 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WORDPRESS_DB_HOST="myownserver.mysql.database.azure.com"
@@ -40,7 +40,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 停用持續性儲存體時， `/home` 不會跨應用程式重新開機或跨多個實例來保存目錄的寫入。 唯一的例外是 `/home/LogFiles` 用來儲存 Docker 和容器記錄檔的目錄。 啟用持續性儲存體時，會保存目錄的所有寫入， `/home` 並可供相應放大應用程式的所有實例存取。
 
-根據預設，會*啟用*持續性儲存體，且不會在應用程式設定中公開設定。 若要停用它，請在 Cloud Shell 中執行命令，以設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 應用程式設定 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 。 例如:
+根據預設，會*啟用*持續性儲存體，且不會在應用程式設定中公開設定。 若要停用它，請在 Cloud Shell 中執行命令，以設定 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` 應用程式設定 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 。 例如：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
@@ -63,7 +63,7 @@ SSH 可讓容器和用戶端之間進行安全通訊。 為了讓自訂容器支
          && echo "root:Docker!" | chpasswd 
     ```
 
-    此設定不允許對容器的外部連線。 SSH 只能透過 `https://<app-name>.scm.azurewebsites.net` 發佈認證進行驗證。
+    此組態不允許容器的外部連線。 SSH 只能透過 `https://<app-name>.scm.azurewebsites.net` 發佈認證進行驗證。
 
 - 將[此 sshd_config](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)檔案新增至您的映射存放庫，並使用[複製](https://docs.docker.com/engine/reference/builder/#copy)指令將檔案複製到*到/etc/ssh/* 目錄。 如需*sshd_config*檔案的詳細資訊，請參閱[OpenBSD](https://man.openbsd.org/sshd_config)檔。
 
@@ -112,7 +112,7 @@ az webapp config appsettings set --resource-group <resource-group-name> --name <
 
 在您的*docker-compose.dev.debug.yml. yml*檔案中，將 `volumes` 選項對應至 `${WEBAPP_STORAGE_HOME}` 。 
 
-`WEBAPP_STORAGE_HOME` 是 App Service 中與您應用程式的永續性儲存體相對應的環境變數。 例如:
+`WEBAPP_STORAGE_HOME` 是 App Service 中與您應用程式的永續性儲存體相對應的環境變數。 例如：
 
 ```yaml
 wordpress:
@@ -156,13 +156,9 @@ wordpress:
 > [!NOTE]
 > 公開預覽中會忽略未明確呼叫的任何其他選項。
 
-## <a name="configure-vnet-integration"></a>設定 VNet 整合
-
-使用具有 VNet 整合的自訂容器可能需要額外的容器設定。 請參閱[將您的應用程式與 Azure 虛擬網路整合](../web-sites-integrate-with-vnet.md)。
-
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [教學課程：從私人容器存放庫部署](tutorial-custom-docker-image.md)

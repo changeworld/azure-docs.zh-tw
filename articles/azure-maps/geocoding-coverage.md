@@ -1,26 +1,29 @@
 ---
-title: 地理編碼涵蓋範圍 |Microsoft Azure 對應
-description: 將位置位址轉換成緯度和經度座標的程式稱為地理編碼。 在本文中，您將瞭解 Microsoft Azure Maps 中具有地理編碼涵蓋範圍的區域。
+title: Microsoft Azure Maps 搜尋服務中的地理編碼涵蓋範圍
+description: 在本文中，您將瞭解不同國家/地區的 Microsoft Azure Maps 地理編碼涵蓋範圍。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/31/2019
+ms.date: 07/28/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 52c6cda800b535109d906fd6e6ae1aa8c709f23f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+manager: philmea
+ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132801"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386906"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure 地圖地理編碼涵蓋範圍
 
-當您使用 Azure 地圖服務搜尋位置時，搜尋服務（例如[取得搜尋位址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)）會接受您的搜尋字詞，並傳回緯度和經度座標。 此程序稱為「地理編碼」。 不過，對於所有區域和國家/地區而言，Azure 地圖服務沒有相同層級的資訊和精確度。 請參考本文，以判斷您在各個區域中能夠可靠地搜尋何種地點。 
+Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search)支援地理編碼，這表示您的 API 要求可以具有搜尋詞彙，例如位址或位置的名稱，並以緯度和經度座標的形式傳回結果。 例如，Azure 地圖服務[取得搜尋位址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)會接收包含位置資訊的查詢，並以緯度和經度座標的形式傳回結果。
 
-在國家/地區地理編碼的能力取決於道路資料涵蓋範圍，以及地理編碼服務的地理編碼精確度。 下列分類是用來指定每個國家/地區的地理編碼支援層級。
-* **地址點** - 地址資料可解析為地址地塊 (屬性界限) 內的緯度/經度座標。 有時稱為「屋頂」精確。 這是地址可用的最高層級精確度。 
+不過，Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search)對於所有區域和國家沒有相同層級的資訊和精確度。 請參考本文，以判斷您在各個區域中能夠可靠地搜尋何種地點。
+
+在國家/地區地理編碼的能力，取決於地理編碼服務的道路資料涵蓋範圍和地理編碼精確度。 下列分類可用來指定每個國家/地區中的地理編碼支援層級。
+
+* **位址點**-位址資料可以解析為位址包裹（屬性界限）內的緯度/經度座標。 位址點通常稱為「屋頂」精確，這是位址可用的最高精確度層級。
 * **門牌號碼** - 地址會插入到街道上的緯度/經度座標。
 * **街道層級** - 地址會解析為包含地址的街道緯度/經度座標。 可能不會處理門牌號碼。
 * **縣 (市) 層級** - 支援城市位置的名稱。
@@ -214,7 +217,6 @@ ms.locfileid: "87132801"
 | 烏茲別克                                          |                 |                |              |      ✓     |          ✓         |
 | 梵蒂岡                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
-
 ## <a name="middle-east-and-africa"></a>中東與非洲
 
 | 國家/地區                                      | 地址點 |門牌號碼 | 街道層級 | 縣 (市) 層級 | 感興趣的點 |
@@ -295,11 +297,8 @@ ms.locfileid: "87132801"
 | 尚比亞                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | 辛巴威                                            |                 |                |       ✓      |      ✓     |          ✓         |
 
-
-
 ## <a name="next-steps"></a>後續步驟
 
-如需關於 Azure 地圖地理編碼的詳細資訊，請參閱[搜尋](https://docs.microsoft.com/rest/api/maps/search)參考頁面。
-
-了解[地圖交通服務的涵蓋區域](traffic-coverage.md)。 
-
+深入瞭解 Azure 地圖服務地理編碼：
+> [!div class="nextstepaction"]
+> [Azure 地圖服務搜尋服務](https://docs.microsoft.com/rest/api/maps/search)

@@ -10,12 +10,13 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: d76f3afa3a831f402f93322ecec350bfdb0c788d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-javascript
+ms.openlocfilehash: afc49e959061bcd2327f1c3a4f988c9ed6e5ce11
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166020"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414015"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在您的應用程式中內嵌影片索引子小工具
 
@@ -33,7 +34,7 @@ ms.locfileid: "86166020"
 |---|---|---|
 |`widgets` | 以逗號分隔的字串 | 可讓您控制要呈現的見解。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` 只呈現人員和關鍵字 UI 深入解析。<br/>可用的選項：人員、animatedCharacters、關鍵字、標籤、情緒、表情、主題、主要畫面格、文字記錄、ocr、喇叭、場景和 namedEntities。|
 |`controls`|以逗號分隔的字串|可讓您控制要呈現的控制項。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` 只呈現搜尋選項和下載按鈕。<br/>可用選項： [搜尋]、[下載]、[預設]、[語言]。|
-|`language`| (語言名稱的簡短語言代碼) |控制 insights 語言。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|簡短的語言代碼（語言名稱）|控制 insights 語言。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | 簡短的語言代碼 | 控制 UI 的語言。 預設值是 `en`。 <br/>範例： `locale=de`.|
 |`tab` | 預設選取的索引標籤 | 控制預設呈現的 [**深入**解析] 索引標籤。 <br/>範例： `tab=timeline` 使用已選取的 [**時間軸**] 索引標籤呈現見解。|
 |`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial` 應該將用於 [位置] 值。 `trial`這是參數的預設值 `location` 。| 
@@ -47,7 +48,7 @@ ms.locfileid: "86166020"
 |`t` | 開始的秒數 | 讓玩家從指定的時間點開始播放。<br/> 範例： `t=60`. |
 |`captions` | 語言代碼 | 在 widget 載入時，以指定的語言提取標題，以供 [**標題**] 功能表使用。<br/> 範例： `captions=en-US`. |
 |`showCaptions` | 布林值 | 可讓播放器載入已啟用的標題。<br/> 範例： `showCaptions=true`. |
-|`type`| |  () 移除影片部分，啟動音訊播放機外觀。<br/> 範例： `type=audio`. |
+|`type`| | 啟動音訊播放機面板（影片部分已移除）。<br/> 範例： `type=audio`. |
 |`autoplay` | 布林值 | 表示播放者是否應該在載入時開始播放影片。 預設值是 `true`。<br/> 範例： `autoplay=false`. |
 |`language`/`locale` | 語言代碼 | 控制播放機語言。 預設值是 `en-US`。<br/>範例： `language=de-DE`.|
 |`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial` 應該將用於 [位置] 值。 `trial`這是參數的預設值 `location` 。| 
@@ -69,7 +70,7 @@ ms.locfileid: "86166020"
 
 本節討論如何將公開和私人內容內嵌至應用程式。
 
-`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial` 應該將用於 [位置] 值。 `trial`這是參數的預設值 `location` 。 例如：`https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`。
+`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial` 應該將用於 [位置] 值。 `trial`這是參數的預設值 `location` 。 例如： `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
 
 > [!IMPORTANT]
 > 共用**播放**程式或**深入**解析 widget 的連結將會包含存取權杖，並將唯讀許可權授與您的帳戶。
@@ -78,9 +79,9 @@ ms.locfileid: "86166020"
 
 1. 登入[影片索引子](https://www.videoindexer.ai/)網站。
 1. 選取您想要使用的影片，然後按 [**播放**]。
-1. 選取您想要 (**認知深入**解析、**播放**程式或**編輯器**) 的 widget 類型。
+1. 選取您想要的 widget 類型（[**認知深入**解析]、[**播放**程式] 或 [**編輯器**]）。
 1. 按一下 [ ** &lt; / &gt; 內嵌**]。
-5. 複製 [內嵌程式碼] (會出現在 [在**共用 &** 內嵌] 對話方塊) 中**複製內嵌程式碼**。
+5. 複製內嵌程式碼（會出現在 [複製**共用 & 嵌入**] 對話方塊中**的內嵌程式碼**）。
 6. 將程式碼新增至您的應用程式。
 
 ### <a name="private-content"></a>私人內容
@@ -111,7 +112,7 @@ ms.locfileid: "86166020"
 
 如果您執行自己的播放機程式碼，並與認知深入解析小工具整合，您必須負責驗證來自 VideoIndexer.ai 的訊息來源。
 
-### <a name="embed-widgets-in-your-app-or-blog-recommended"></a>在您的應用程式中內嵌小工具或 (建議的 blog) 
+### <a name="embed-widgets-in-your-app-or-blog-recommended"></a>將小工具內嵌至您的應用程式或 blog （建議選項）
 
 本節說明如何在兩個影片索引子 widget 之間達成互動，以便在使用者選取應用程式上的深入解析控制項時，player 會跳到相關的時間。
 
@@ -233,13 +234,13 @@ ms.locfileid: "86166020"
 
 ## <a name="adding-subtitles"></a>新增字幕
 
-如果您使用自己的[Azure 媒體播放機](https://aka.ms/azuremediaplayer)來內嵌影片索引子深入解析，您可以使用 `GetVttUrl` 方法， (子字幕) 取得隱藏式輔助字幕。 您也可以從影片索引子 AMP 外掛程式呼叫 JavaScript 方法 `getSubtitlesUrl` (如先前的) 所示。
+如果您使用自己的[Azure 媒體播放機](https://aka.ms/azuremediaplayer)內嵌影片索引子深入解析，您可以使用 `GetVttUrl` 方法來取得隱藏式輔助字幕（字幕）。 您也可以從影片索引子 AMP 外掛程式呼叫 JavaScript 方法 `getSubtitlesUrl` （如先前所示）。
 
 ## <a name="customizing-embeddable-widgets"></a>自訂可內嵌的小工具
 
 ### <a name="cognitive-insights-widget"></a>認知深入解析小工具
 
-您可以選擇您想要的深入解析類型。 若要執行這項操作，請將它們指定為下列 URL 參數的值，這會新增至您從 API 取得 (或從 web 應用程式) 的內嵌程式碼： `&widgets=<list of wanted widgets>` 。
+您可以選擇您想要的深入解析類型。 若要執行這項操作，請將其指定為下列 URL 參數的值，此參數會新增至您取得的內嵌程式碼（從 API 或 web 應用程式）： `&widgets=<list of wanted widgets>` 。
 
 可能的值為：、、、、、、、、、、、 `people` `animatedCharacters` `keywords` `labels` `sentiments` `emotions` `topics` `keyframes` `transcript` `ocr` `speakers` `scenes` 和 `namedEntities` 。
 
@@ -247,7 +248,7 @@ ms.locfileid: "86166020"
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 來自訂。  (它會自訂 `<title>`) 的 HTML 值。
+iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 來自訂。 （它會自訂 HTML `<title>` 值）。
    
 例如，若您想要為您的 iframe 視窗指定標題 "MyInsights"，URL w看起來會像這樣：
 
@@ -284,7 +285,7 @@ iframe 視窗的標題也可透過將 `&title=<YourTitle>` 提供給 iframe URL 
 | `azure-media-player`              | 在自訂 Azure 媒體播放機中載入影片索引子影片。                        |
 | `azure-media-player-vi-insights`  | 使用自訂 Azure 媒體播放機內嵌 VI 深入解析。                             |
 | `control-vi-embedded-player`      | 內嵌 VI Player 並從外部進行控制。                                    |
-| `custom-index-location`           | 從自訂的外部位置內嵌 VI 深入解析 (可以為客戶提供 blob) 。     |
+| `custom-index-location`           | 從自訂外部位置（可以是客戶 a blob）內嵌 VI 深入解析。     |
 | `embed-both-insights`             | VI 深入解析播放機和深入解析的基本使用方式。                            |
 | `embed-insights-with-AMP`         | 使用自訂 Azure 媒體播放機內嵌 VI 深入解析 widget。                      |
 | `customize-the-widgets`           | 使用自訂選項內嵌 VI widget。                                     |

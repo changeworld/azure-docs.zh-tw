@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 072fa659d6f5cf55da4dfc99cfed38220be70812
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337342"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386685"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 檔案同步
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
 
 強烈建議您先閱讀[規劃 Azure 檔案服務部署](storage-files-planning.md)和[規劃 Azure 檔案同步部署](storage-sync-files-planning.md)，再完成本文章中描述的步驟。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 * 您想要部署 Azure 檔案同步的相同區域中的 Azure 檔案共用。如需詳細資訊，請參閱：
     - Azure 檔案同步的[區域可用性](storage-sync-files-planning.md#azure-file-sync-region-availability)。
     - [建立檔案共用](storage-how-to-create-file-share.md)以取得如何建立檔案共用的逐步說明。
@@ -218,6 +218,13 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 
 註冊伺服器的系統管理員必須是所指定儲存體同步服務的管理角色**擁有**者或**參與者**的成員。 這可以在儲存體同步服務的 Azure 入口網站中的**存取控制（IAM）** 底下設定。
 
+您也可以區分能夠註冊伺服器的系統管理員，以允許也在儲存體同步服務中設定同步。 為此，您需要建立自訂角色，您可以在其中列出僅允許註冊伺服器的系統管理員，並為您的自訂角色授與下列許可權：
+
+* "Microsoft.storagesync/storageSyncServices/registeredServers/write"
+* 「Microsoft.storagesync/storageSyncServices/read」
+* 「Microsoft.storagesync/storageSyncServices/工作流程/讀取」
+* 「Microsoft.storagesync/storageSyncServices/工作流程/作業/讀取」
+
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 安裝 Azure 檔案同步代理程式之後，伺服器註冊 UI 應該會自動開啟。 如果沒有，您可以從其檔案位置手動開啟它：C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe。 伺服器註冊 UI 開啟時，請選取 [登入]**** 以開始。
 
@@ -245,6 +252,8 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 
 > [!Important]  
 > 您可以對同步群組中的任何雲端端點或伺服器端點進行變更，您的檔案將會與同步群組中的其他端點同步。 如果直接對雲端端點 (Azure 檔案共用) 進行變更，則必須先由 Azure 檔案同步變更偵測作業探索到該變更。 針對雲端端點的變更偵測作業，每隔 24 小時才會起始一次。 如需詳細資訊，請參閱 [Azure 檔案服務常見問題集](storage-files-faq.md#afs-change-detection)。
+
+建立雲端端點的系統管理員必須是包含雲端端點所指向之 Azure 檔案共用的儲存體帳戶之管理角色**擁有**者的成員。 這可以在儲存體帳戶的 Azure 入口網站中的**存取控制（IAM）** 底下設定。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 若要建立同步群組，請在[Azure 入口網站](https://portal.azure.com/)中，移至您的儲存體同步服務，然後選取 [ **+ 同步群組**]：

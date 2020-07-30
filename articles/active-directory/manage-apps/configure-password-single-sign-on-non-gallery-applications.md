@@ -1,6 +1,6 @@
 ---
-title: 如何為 Azure AD 應用程式設定密碼單一登入 |Microsoft Docs
-description: 如何在 Microsoft 身分識別平臺（Azure AD）中，為您的 Azure AD 企業應用程式設定密碼單一登入（SSO）
+title: 如何為 Azure AD 應用程式設定密碼型單一登入
+description: 如何在 Microsoft 身分識別平臺（Azure AD）中為您的 Azure AD 應用程式設定密碼型單一登入（SSO）
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -8,60 +8,56 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/10/2019
+ms.date: 07/29/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043adc309c3480865eb9aa7a7bff8d35e85bc78a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3f9f96c6429d4925c60a56cd450a9c2ee7dde24
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763494"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419949"
 ---
-# <a name="configure-password-single-sign-on"></a>設定密碼單一登入
+# <a name="configure-password-based-single-sign-on"></a>設定以密碼為基礎的單一登入
 
-當您[將資源庫應用程式](add-gallery-app.md)或[非資源庫 web 應用](add-non-gallery-app.md)程式新增至 Azure AD 企業應用程式時，您可以使用的其中一個單一登入選項為 [[密碼單一登入](what-is-single-sign-on.md#password-based-sso)]。 此選項適用于具有 HTML 登入頁面的任何 web。 密碼 SSO 也稱為密碼儲存庫存，可讓您管理使用者對不支援身分識別同盟之 Web 應用程式的存取和密碼。 這也適用于數個使用者需要共用單一帳戶的案例，例如組織的社交媒體應用程式帳戶。 
+在應用程式管理的[快速入門系列](view-applications-portal.md)中，您已瞭解如何使用 Azure AD 做為應用程式的身分識別提供者（IdP）。 在快速入門手冊中，您會設定 SAML 型 SSO。 除了 SAML，還有一個用於密碼型 SSO 的選項。 本文會詳細說明單一登入的密碼型選項。 
+
+此選項適用于具有 HTML 登入頁面的任何網站。 密碼 SSO 也稱為密碼儲存庫存，可讓您管理使用者對不支援身分識別同盟之 Web 應用程式的存取和密碼。 這也適用于數個使用者需要共用單一帳戶的案例，例如組織的社交媒體應用程式帳戶。 
 
 密碼型 SSO 是開始將應用程式整合到 Azure AD 快速的絕佳方式，可讓您：
 
--   針對已經與 Azure AD 整合的應用程式，安全地儲存和重播使用者名稱和密碼，以啟用**使用者的單一登入**
+- 針對您已整合的應用程式，安全地儲存及重新執行使用者名稱和密碼，為您的使用者啟用單一登入 Azure AD
 
--   針對需要使用者名稱和密碼以外的更多欄位才能登入的應用程式，**支援需要多個登入欄位的應用程式**
+- 針對需要使用者名稱和密碼以外的更多欄位才能登入的應用程式，支援需要多個登入欄位的應用程式
 
--   針對使用者在[應用程式存取面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)輸入認證時所看到的使用者名稱和密碼輸入欄位，**自訂標籤**
+- 針對使用者在[應用程式存取面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)輸入認證時所看到的使用者名稱和密碼輸入欄位，自訂標籤
 
--   針對**使用者**在[應用程式存取面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)手動輸入的任何現有應用程式帳戶，允許他們提供自己的使用者名稱和密碼
+- 允許您的使用者針對他們以手動方式輸入的任何現有應用程式帳戶，提供自己的使用者名稱和密碼。
 
--   允許**商務群組的成員**使用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)功能，指定要指派給使用者的使用者名稱和密碼
+- 允許商務群組的成員使用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)功能，指定要指派給使用者的使用者名稱和密碼
 
--   允許**系統管理員**在使用 [更新認證] 功能登入應用程式時，指定個人或群組所要使用的使用者名稱和密碼 
+-   允許系統管理員在使用 [更新認證] 功能登入應用程式時，指定個人或群組所要使用的使用者名稱和密碼 
 
 ## <a name="before-you-begin"></a>開始之前
 
-如果尚未將應用程式新增至您的 Azure AD 租用戶，請參閱[新增資源庫應用程式](add-gallery-app.md)或[新增非資源庫應用程式](add-non-gallery-app.md)。
+視所使用的應用程式而定，使用 Azure AD 做為身分識別提供者，以及設定單一登入（SSO）的方式都很簡單或很複雜。 有些應用程式只能透過幾個動作來設定。 其他則需要深入設定。 若要快速增加，請逐步執行應用程式管理的[快速入門系列](view-applications-portal.md)。 如果您要新增的應用程式很簡單，那麼您可能不需要閱讀這篇文章。 如果您要新增的應用程式需要自訂設定，而且您需要使用密碼型 SSO，則本文適用于您。
 
-## <a name="open-the-app-and-select-password-single-sign-on"></a>開啟應用程式，然後選取 [密碼] [單一登入]
+> [!IMPORTANT] 
+> 在某些情況下，[**單一登入**] 選項不會出現在**企業應用**程式中的應用程式導覽中。 
+>
+> 如果應用程式是使用**應用程式註冊**註冊，則單一登入功能會設定為預設使用 OIDC OAuth。 在此情況下，[**企業應用程式**] 下的流覽中不會顯示 [**單一登入**] 選項。 當您使用**應用程式註冊**新增自訂應用程式時，您可以在資訊清單檔中設定選項。 若要深入瞭解資訊清單檔案，請參閱[Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。 若要深入瞭解 SSO 標準，請參閱[使用 Microsoft 身分識別平臺的驗證和授權](https://docs.microsoft.com/azure/active-directory/develop/authentication-vs-authorization#authentication-and-authorization-using-microsoft-identity-platform)。 
+>
+> 當應用程式裝載于另一個租使用者時，或您的帳戶沒有必要許可權（全域管理員、雲端應用程式系統管理員、應用程式系統管理員或服務主體的擁有者）時，流覽中將遺失**單一登入**的其他案例。 許可權也可能會導致您可以開啟**單一登入**但無法儲存的案例。 若要深入瞭解 Azure AD 系統管理角色，請參閱（ https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 。
 
-1. 以雲端應用程式系統管理員或 Azure AD 租用戶的應用程式系統管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 流覽至**Azure Active Directory**  >  **企業應用程式**。 Azure AD 租用戶中應用程式的隨機樣本隨即出現。 
+## <a name="basic-configuration"></a>基本設定
 
-3. 在 [應用程式類型]**** 功能表中，選取 [所有應用程式]****，然後選取 [套用]****。
+在[快速入門系列](view-applications-portal.md)中，您已瞭解如何將應用程式新增至您的租使用者，讓 Azure AD 知道它正作為應用程式的身分識別提供者（IdP）使用。 某些應用程式已預先設定，而且它們會顯示在 Azure AD 資源庫中。 其他應用程式不在資源庫中，您必須建立泛型應用程式並手動進行設定。 視應用程式而定，可能無法使用以密碼為主的 SSO 選項。 如果您在應用程式的單一登入頁面上看不到以密碼為基礎的選項清單，則無法使用。
 
-4. 在搜尋方塊中輸入應用程式的名稱，然後從結果中選取應用程式。
+密碼型 SSO 的設定頁面很簡單。 它只包含應用程式所使用之登入頁面的 URL。 這個字串必須是包含 [使用者名稱] 輸入欄位的頁面。
 
-5. 在 [管理] 區段中，選取 [單一登入]。 
-
-6. 選取 [**密碼型**]。
-
-7. 輸入應用程式網頁型登入頁面的 URL。 這個字串必須是包含 [使用者名稱] 輸入欄位的頁面。
-
-   ![密碼單一登入](./media/configure-single-sign-on-non-gallery-applications/password-based-sso.png)
-
-8. 選取 [儲存]。 Azure AD 嘗試剖析登入頁面的使用者名稱輸入和密碼輸入。 如果嘗試成功，就大功告成了。 
+輸入 URL 之後，請選取 [**儲存**]。 Azure AD 會剖析登入頁面的 HTML，以取得使用者名稱和密碼輸入欄位。 如果嘗試成功，就大功告成了。
  
-> [!NOTE]
-> 下一個步驟是[將使用者或群組指派給應用程式](methods-for-assigning-users-and-groups.md)。 指派使用者和群組之後，您可以提供認證，以在使用者登入應用程式時代表使用者使用。 選取 [**使用者和群組**]，選取使用者或群組的資料列核取方塊，然後按一下 [**更新認證**]。 然後，輸入要代表使用者或群組使用的使用者名稱和密碼。 否則，系統會在啟動時提示使用者輸入認證。
+下一個步驟是[將使用者或群組指派給應用程式](methods-for-assigning-users-and-groups.md)。 指派使用者和群組之後，您可以提供認證，以在使用者登入應用程式時代表使用者使用。 選取 [**使用者和群組**]，選取使用者或群組的資料列核取方塊，然後選取 [**更新認證**]。 然後，輸入要代表使用者或群組使用的使用者名稱和密碼。 否則，系統會在啟動時提示使用者輸入認證。
  
 
 ## <a name="manual-configuration"></a>手動設定
@@ -86,11 +82,6 @@ ms.locfileid: "84763494"
 7. 在 [Azure AD**設定**登入] 頁面中，選取 **[確定]，我可以成功登入應用程式**。
 
 8. 選取 [確定]。
-
-在登入頁面的 capture 之後，您可以指派使用者和群組，而且您可以設定認證原則，就像一般的[密碼 SSO 應用程式](what-is-single-sign-on.md)一樣。
-
-> [!NOTE]
-> 您可以在應用程式的 [設定]**** 索引標籤上使用 [上傳標誌]**** 按鈕，來上傳應用程式的圖格標誌。
 
 ## <a name="next-steps"></a>後續步驟
 

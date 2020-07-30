@@ -1,18 +1,18 @@
 ---
 title: 在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
-description: 瞭解如何使用所需的方案，在 Azure Marketplace 上建立虛擬機器供應專案。
+description: 瞭解如何將虛擬機器供應專案發佈至 Azure Marketplace。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-author: iqshahmicrosoft
-ms.author: iqshah
-ms.date: 07/17/2020
-ms.openlocfilehash: 8da76650f9cc3da0ff8f79a9d3df7a00cdd01a24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.topic: how-to
+author: emuench
+ms.author: mingshen
+ms.date: 07/28/2020
+ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324687"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386430"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
@@ -352,7 +352,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 #### <a name="plan-name"></a>方案名稱
 
-此欄位會自動填入您在建立方案時提供給您方案的名稱。 這個名稱在 Azure Marketplace 上會顯示為此方案的標題。 其限制為 100 個字元。
+當您建立方案時，這個欄位會自動填入您所提供的名稱。 這個名稱在 Azure Marketplace 上會顯示為此方案的標題。 其限制為 100 個字元。
 
 #### <a name="plan-summary"></a>方案摘要
 
@@ -368,7 +368,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 在此窗格上，您可以設定：
 
-- 此方案可供使用的市場。
+- 此方案可供使用的市場。 必須至少有一個[市場](../marketplace-geo-availability-currencies.md)提供每個方案。
 - 每小時的價格。
 - 是否要讓每個人都能看到此方案，或僅特定客戶 (私人對象) 看得到。
 
@@ -534,7 +534,7 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 4. 條款及條件
 5. 隱私權原則位址（連結）
 6. 供應項目名稱
-7. 說明
+7. 描述
 8. 實用的連結
 9. 螢幕擷取畫面/影片
 
@@ -566,7 +566,7 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 名稱
-2. 說明
+2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面/影片
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c6a779deef3ed1dc0a4d5e83c38f483776adf6fe
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519709"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387365"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 資訊安全中心的資料收集
 資訊安全中心會從您的 Azure 虛擬機器 (VM)、虛擬機器擴展集、IaaS 容器和非 Azure (包括內部部署機器) 電腦收集資料，以監視是否有安全性弱點和威脅。 資料是使用 Log Analytics 代理程式收集而得，收集的方式是讀取機器的各種安全性相關組態和事件記錄，並將資料複製到工作區進行分析。 這類資料的範例包括︰作業系統類型和版本、作業系統記錄 (Windows 事件記錄)、執行中程序、電腦名稱、IP 位址和已登入的使用者。
@@ -211,15 +211,17 @@ ms.locfileid: "86519709"
     - 如果您環境中的用戶端工作站上已安裝 Log Analytics 代理程式，並會向現有的 Log Analytics 工作區報告，請檢閱 [Azure 資訊安全中心支援的作業系統](security-center-os-coverage.md)清單，確保您的作業系統受支援。 如需詳細資訊，請參閱[現有的 Log Analytics 客戶](./faq-azure-monitor-logs.md)。
  
 ### <a name="turn-off-automatic-provisioning"></a>關閉自動佈建 <a name="offprovisioning"></a>
-您可以在安全性原則中關閉從資源自動佈建，隨時關閉這項設定。 
+若要關閉 Log Analytics 代理程式的自動布建：
 
+1. 從入口網站中資訊安全中心的功能表中，選取 [定價和設定]。
+2. 選取相關的訂用帳戶。
 
-1. 返回 [資訊安全中心] 主功能表，並選取 [安全性原則]。
-2. 在您想要停用自動佈建的訂用帳戶資料列上，選取 [編輯設定]。
-3. 在 [安全性原則 - 資料收集] 頁面的 [自動佈建] 下，選取 [關閉]。
-4. 選取 [儲存]。
+   ![選取訂閱][7]
 
-   ![停用自動佈建][6]
+3. 選取 [資料收集]。
+4. 在 [**自動**布建] 下，選取 [**關閉**] 以停用自動布建。
+5. 選取 [儲存]。 
+
 
 自動佈建停用 (關閉) 後，就不會顯示預設的工作區組態區段。
 

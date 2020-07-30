@@ -3,12 +3,13 @@ title: Azure 轉送混合式連接-節點中的 Websocket
 description: 為 Azure 轉送混合式連線 Websocket 撰寫 Node.js 主控台應用程式
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 86897c0a752e4203537135dbac68cc0b4c1da44c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8dc52c93d4b5cd6d50b66338350a41cf0e24daa0
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316913"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386294"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>在 Node.js 中開始使用轉送混合式連線 WebSocket
 

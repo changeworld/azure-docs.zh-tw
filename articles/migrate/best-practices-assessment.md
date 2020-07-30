@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 648ec2d9fea3e4e112e65cec44a0518b653ddbea
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8694b766d98c6240d7745b814d13358debe714e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119968"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387042"
 ---
 # <a name="best-practices-for-creating-assessments"></a>建立評量的最佳做法
 
@@ -25,17 +25,17 @@ ms.locfileid: "86119968"
 
 **評量類型** | **詳細資料**
 --- | --- 
-**Azure VM** | 將內部部署伺服器遷移至 Azure 虛擬機器的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)，以遷移至 Azure。 [深入了解](concepts-assessment-calculation.md)
-**Azure VMware 解決方案 (AVS)** | 將您的內部部署伺服器遷移至[Azure VMware 解決方案（AVS）](../azure-vmware/introduction.md)的評量。 <br/><br/> 您可以使用此評量類型，評估您的內部部署[Vmware vm](how-to-set-up-appliance-vmware.md) ，以遷移至 Azure VMware 解決方案（AVS）。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | 評估內部部署伺服器，並將其遷移至 Azure 虛擬機器。 <br/><br/> 您可以使用評量類型，評量內部部署 [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md) 和[實體伺服器](how-to-set-up-appliance-physical.md)以移轉至 Azure。 [深入了解](concepts-assessment-calculation.md)
+**Azure VMware 解決方案 (AVS)** | 評估內部部署伺服器，並將其遷移至 [Azure VMware 解決方案 (AVS)](../azure-vmware/introduction.md)。 <br/><br/> 您可以使用此評量類型，評量內部部署 [VMware VM](how-to-set-up-appliance-vmware.md) 以移轉至 Azure VMware 解決方案 (AVS)。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
 
 
 ### <a name="sizing-criteria"></a>調整大小準則
-伺服器評估提供兩個調整準則選項：
+伺服器評量提供兩個調整大小準則選項：
 
 **調整大小準則** | **詳細資料** | **Data**
 --- | --- | ---
-**以效能為基礎** | 根據所收集的效能資料做出建議的評量 | **AZURE vm 評估**： VM 大小建議是根據 CPU 和記憶體使用量資料。<br/><br/> 磁片類型建議（標準 HDD/SSD 或 premium 受控磁片）是以內部部署磁片的 IOPS 和輸送量為基礎。<br/><br/> **Azure VMware 解決方案（AVS）評估**： AVS 節點建議是根據 CPU 和記憶體使用量資料。
-**依內部部署** | 不使用效能資料來提出建議的評量。 | **AZURE vm 評估**： VM 大小建議是根據內部部署 VM 大小<br/><br> 建議的磁片類型是根據您在評量的 [儲存類型] 設定中所選取的內容。<br/><br/> **Azure VMware 解決方案（AVS）評估**： AVS 節點建議是以內部部署 VM 大小為基礎。
+**以效能為基礎** | 根據所收集的效能資料做出建議的評量 | **VMware VM 評量**：以 CPU 和記憶體使用量資料為基礎的 VM 大小建議。<br/><br/> 磁碟類型建議 (標準 HDD/SSD 或進階受控磁碟) 是以內部部署磁碟的 IOPS 和輸送量為基礎。<br/><br/> **Azure VMware 解決方案 (AVS) 評量**：以 CPU 和記憶體使用量資料為基礎的 AVS 節點建議。
+**依內部部署** | 不使用效能資料來提出建議的評量。 | **VMware VM 評量**：VM 大小建議是根據內部部署 VM 大小而提供<br/><br> 建議的磁碟類型是根據您在評量的儲存體類型設定中所選取的內容而定。<br/><br/> **Azure VMware 解決方案 (AVS) 評量**：AVS 節點建議是根據內部部署 VM 大小而提供。
 
 #### <a name="example"></a>範例
 例如，如果您的內部部署 VM 有四個核心，20% 使用率，而記憶體為 8 GB，使用率為10%，則 Azure VM 評估將會如下所示：
@@ -132,8 +132,8 @@ AVS 中使用的儲存引擎是 vSAN。 vSAN 儲存原則會定義虛擬機器�
 ### <a name="migration-tool-guidance-for-avs-assessments"></a>適用于 AVS 評量的遷移工具指引
 
 在 Azure VMware 解決方案 (AVS) 評量的 Azure 移轉整備程度報表中，您可以看到下列建議的工具： 
-- **VMware HCX 或 Enterprise**：針對 VMware 機器，VMWare 混合式雲端擴充功能 (HCX) 解決方案是建議的遷移工具，可將您的內部部署工作負載遷移至 Azure VMWare 解決方案 (AVS) 私人雲端。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
-- **未知**：針對透過 CSV 檔案匯入的電腦，預設的移轉工具是未知的。 不過，對於 VMware 機器，建議使用 VMWare 混合式雲端擴充功能（HCX）解決方案。
+- **VMWARE HCX 或 Enterprise**：針對 vmware 機器，vmware 混合式雲端擴充功能（HCX）解決方案是建議的遷移工具，可將內部部署工作負載遷移至 Azure VMware 解決方案（AVS）私人雲端。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
+- **未知**：針對透過 CSV 檔案匯入的電腦，預設的移轉工具是未知的。 不過，對於 VMware 機器，建議使用 VMware 混合式雲端擴充功能（HCX）解決方案。
 
 
 ## <a name="next-steps"></a>後續步驟

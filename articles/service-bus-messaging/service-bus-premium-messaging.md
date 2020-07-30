@@ -2,13 +2,13 @@
 title: Azure 服務匯流排 premium 和標準層
 description: 本文說明 Azure 服務匯流排的標準層和進階層。 比較這些層級，並提供技術上的差異。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337422"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386345"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>服務匯流排進階和標準傳訊層級
 
@@ -24,7 +24,7 @@ ms.locfileid: "85337422"
 | 可預測的效能 |變動延遲 |
 | 固定價格 |隨用隨付變動價格 |
 | 相應增加和相應減少工作負載的能力 |N/A |
-| 訊息大小上限為 1 MB |訊息大小上限為 256 KB |
+| 訊息大小上限為 1 MB。 未來可能會引發此限制。 如需服務的最新重要更新，請參閱[Azure blog 上的訊息](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog)。 |訊息大小上限為 256 KB |
 
 **服務匯流排進階傳訊**提供 CPU 和記憶體層級的資源隔離，讓每個客戶工作負載能隔離執行。 此資源容器稱為*訊息單位*。 每個進階命名空間都會被配置至少一個傳訊單位。 您可以為每個服務匯流排 Premium 命名空間購買1、2、4或8個訊息單位。 單一工作負載或實體可以跨越多個訊息單位，而訊息單位的數目也可以隨時變更。 結果是您的服務匯流排方案的效能可預測並可重複。
 
@@ -36,11 +36,11 @@ ms.locfileid: "85337422"
 
 ### <a name="partitioned-queues-and-topics"></a>分割的佇列和主題
 
-進階傳訊中不支援分割的佇列和主題。 如需分割的詳細資訊，請參閱[分割的佇列和主題](service-bus-partitioning.md)。
+Premium 訊息中不支援分割的佇列和主題。 如需分割的詳細資訊，請參閱[分割的佇列和主題](service-bus-partitioning.md)。
 
 ### <a name="express-entities"></a>快速實體
 
-因為進階傳訊是在完全隔離的執行階段環境中執行，所以在進階命名空間中並不支援快速實體。 如需快速功能的詳細資訊，請參閱 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 屬性。
+因為高階訊息會在隔離的執行時間環境中執行，所以高階命名空間中不支援快速實體。 如需快速功能的詳細資訊，請參閱 [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 屬性。
 
 如果您的程式碼是在標準傳訊下執行，而您想要將它移植到高階層，請確定 [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) 屬性設為 **false** (預設值)。
 
@@ -51,7 +51,7 @@ ms.locfileid: "85337422"
 - 執行時間作業（傳送和接收訊息）
 - 監視作業和警示
 
-除此之外，額外的 CPU 和記憶體使用量也不是定價。 針對 Premium 訊息層，訊息單位有單一價格。
+不過，額外的 CPU 和記憶體使用量並不會另外計價。 針對 Premium 訊息層，訊息單位有單一價格。
 
 基於下列原因，會追蹤並顯示 CPU 和記憶體使用量： 
 

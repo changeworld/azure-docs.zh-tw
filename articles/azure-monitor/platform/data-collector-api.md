@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: 80ad9475eb9b3724e09fb450787adfa079896bed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40f688d6acd1714999210e67567d25faa14c5d6e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075320"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384849"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器 (公開預覽)
 本文示範如何使用 HTTP 資料收集器 API 將記錄資料從 REST API 用戶端傳送給 Azure 監視器。  內容說明如何將您指令碼或應用程式所收集的資料格式化、將其包含在要求中，以及讓 Azure 監視器授權該要求。  提供的範例適用於 PowerShell、C# 及 Python。
@@ -134,8 +134,8 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 | 屬性資料類型 | 後置詞 |
 |:--- |:--- |
-| 字串 |_s |
-| 布林值 |_b |
+| String |_s |
+| Boolean |_b |
 | Double |_d |
 | 日期/時間 |_t |
 | GUID （儲存為字串） |_g |
@@ -210,7 +210,7 @@ HTTP 狀態碼 200 表示已經接受要求且正在處理。 這表示作業已
 在每個範例中，執行下列步驟來設定授權標頭的變數︰
 
 1. 在 Azure 入口網站中，找出 Log Analytics 工作區。
-2. 依序選取 [進階設定]**** 和 [連接的來源]****。
+2. 選取 [**代理程式管理**]。
 2. 選取 [工作區識別碼]**** 右邊的複製圖示，然後貼上識別碼做為 [客戶識別碼]**** 變數值。
 3. 選取 [主要金鑰]**** 右邊的複製圖示，然後貼上識別碼做為 [共用金鑰]**** 變數值。
 

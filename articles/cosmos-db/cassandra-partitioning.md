@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5f159ffcea0aa88f354ae503be96a5c571c10adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806827"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423315"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API 中的資料分割
 
@@ -31,7 +31,7 @@ Apache Cassandra 會針對可儲存在資料分割中的資料大小，建議 10
 
 在 Azure Cosmos DB 中，每個實體分割區都是由一組複本（也稱為複本集）所組成，每個資料分割至少有4個複本。 這與 Apache Cassandra 相較之下，可能會將複寫因數設定為1。 不過，如果只有一個具有資料的節點停止運作，這會導致低可用性。 在 Cassandra API 一律會有一個複寫因數4（仲裁3）。 Azure Cosmos DB 會自動管理複本集，而這些都需要使用 Apache Cassandra 中的各種工具來維護。 
 
-Apache Cassandra 具有權杖的概念，這是資料分割索引鍵的雜湊。 權杖是以 murmur3 64 位元組雜湊為基礎，其值範圍介於-2 ^ 63 到-2 ^ 63-1 之間。 此範圍通常稱為 Apache Cassandra 中的「權杖環」。 權杖環形會散發至權杖範圍，而這些範圍會劃分成原生 Apache Cassandra 叢集中存在的節點。 Azure Cosmos DB 的資料分割會以類似的方式執行，但它會使用不同的雜湊演算法，並具有較大的權杖環形。 
+Apache Cassandra 具有權杖的概念，這是資料分割索引鍵的雜湊。 權杖是以 murmur3 64 位元組雜湊為基礎，其值範圍介於-2 ^ 63 到-2 ^ 63-1 之間。 此範圍通常稱為 Apache Cassandra 中的「權杖環」。 權杖環形會散發至權杖範圍，而這些範圍會劃分成原生 Apache Cassandra 叢集中存在的節點。 Azure Cosmos DB 的資料分割會以類似的方式執行，但它會使用不同的雜湊演算法，並具有較大的內部權杖環形。 不過，在外部我們會公開與 Apache Cassandra 相同的權杖範圍，亦即-2 ^ 63 到-2 ^ 63-1。
 
 
 ## <a name="primary-key"></a>主索引鍵

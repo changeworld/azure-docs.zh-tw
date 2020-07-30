@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 75e2ffcad4caeb6500f05ce3801797084c18a043
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321644"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407025"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>使用適用于 Azure Machine Learning 的 Azure 防火牆後方的工作區
 
@@ -60,9 +60,9 @@ ms.locfileid: "87321644"
 
 | **主機名稱** | **目的** |
 | ---- | ---- |
-| **anaconda.com** | 安裝 conda 套件時使用 |
-| **pypi.org** | 安裝 pip 套件時使用 |
-
+| **anaconda.com** | 用來安裝預設封裝。 |
+| **\*. anaconda.org** | 用來取得存放庫資料。 |
+| **pypi.org** | 用來列出來自預設索引的相依性（如果有的話），而且使用者設定不會覆寫索引。 如果覆寫索引，您也必須允許** \* pythonhosted.org**。 |
 
 ## <a name="r-hosts"></a>R 主機
 

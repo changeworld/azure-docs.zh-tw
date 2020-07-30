@@ -13,18 +13,18 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00dfac7c3036c4fd457c5d3a6bb4eb7bd4e56998
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb119ef0ffd4da4dc524c9d3c0a88b94e2251142
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731319"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423553"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>在 Azure Active Directory 入口網站中下載使用者清單
 
 Azure Active Directory （Azure AD）支援大量使用者匯入（建立）作業。
 
-## <a name="required-permissions"></a>所需的權限
+## <a name="required-permissions"></a>必要權限
 
 若要從 Azure AD 系統管理中心下載使用者清單，您必須使用在 Azure AD 中指派給一或多個組織層級系統管理員角色的使用者登入（使用者管理員是所需的最低角色）。 來賓邀請者和應用程式開發人員不會被視為系統管理員角色。
 
@@ -72,7 +72,7 @@ Azure Active Directory （Azure AD）支援大量使用者匯入（建立）作�
 
 您可以在 [**大量作業結果**] 頁面中查看暫止大量要求的狀態。
 
-[![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
+[![檢查 [大量作業結果] 頁面中的狀態。](media/users-bulk-download/bulk-center.png)](media/users-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>大量下載服務限制
 

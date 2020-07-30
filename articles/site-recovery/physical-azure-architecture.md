@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的實體伺服器嚴重損壞修復架構
 description: 本文概述使用 Azure Site Recovery 服務將內部部署實體伺服器災害復原至 Azure 期間，所使用的元件和架構。
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 089d981284986a2b6eb0ee7f1dbd401fc7ce4fcd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77162832"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422652"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>實體伺服器至 Azure 的災害復原架構
 
@@ -27,7 +27,26 @@ ms.locfileid: "77162832"
 
 **實體至 Azure 架構**
 
-![單元](./media/physical-azure-architecture/arch-enhanced.png)
+![元件](./media/physical-azure-architecture/arch-enhanced.png)
+
+## <a name="set-up-outbound-network-connectivity"></a>設定輸出網路連線能力
+
+若要讓 Site Recovery 如預期般運作，您需要修改輸出網路連線能力，以允許您的環境進行複寫。
+
+> [!NOTE]
+> Site Recovery 不支援使用驗證 Proxy 來控制網路連線能力。
+
+### <a name="outbound-connectivity-for-urls"></a>URL 的輸出連線能力
+
+如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許存取這些 URL：
+
+| **名稱**                  | **商業**                               | **政府**                                 | **說明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
+| 複寫               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允許 VM 與 Site Recovery 服務進行通訊。 |
+| 服務匯流排               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
+
 
 ## <a name="replication-process"></a>複寫程序
 

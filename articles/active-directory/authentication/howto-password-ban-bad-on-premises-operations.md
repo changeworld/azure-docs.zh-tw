@@ -11,16 +11,16 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ee0f3d89d48b23db48e3bf4b78203b09fbcbdbd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4797c3e089e0ae9d15cc604e9f93605978b36c
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652626"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419762"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>啟用內部部署 Azure Active Directory 密碼保護
 
-使用者通常會建立使用像是學校、體育小組或知名人等常見當地用語的密碼。 這些密碼很容易猜測，而且不會受到字典型攻擊的危害。 為了在您的組織中強制使用強式密碼，Azure Active Directory （Azure AD）密碼保護提供了全域和自訂的禁用密碼清單。 如果這些禁用密碼清單中有相符的結果，密碼變更要求就會失敗。
+使用者通常會建立使用常見當地字組 (例如學校、運動團隊或知名人士) 的密碼。 這些密碼很容易猜測，且容易遭受字典型攻擊。 為了在您的組織中強制使用強式密碼，Azure Active Directory （Azure AD）密碼保護提供了全域和自訂的禁用密碼清單。 如果這些禁用密碼清單中有相符的結果，密碼變更要求就會失敗。
 
 若要保護您的內部部署 Active Directory Domain Services （AD DS）環境，您可以安裝和設定 Azure AD 密碼保護，以與您的內部內部部署 DC 搭配使用。 本文說明如何為您的內部部署環境啟用 Azure AD 密碼保護。
 
@@ -40,7 +40,7 @@ ms.locfileid: "80652626"
 1. 建議您一開始先將**模式**設定為*Audit*。 在您熟悉此功能以及對組織中的使用者所造成的影響之後，您可以將**模式**切換為 [*強制*]。 如需詳細資訊，請參閱下一節的[操作模式](#modes-of-operation)。
 1. 在準備就緒時，選取 [儲存]。
 
-    [![](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png "Enable on-premises password protection under Authentication Methods in the Azure portal")](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
+    [![在 Azure 入口網站的驗證方法下啟用內部部署密碼保護](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png)](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)
 
 ## <a name="modes-of-operation"></a>作業模式
 

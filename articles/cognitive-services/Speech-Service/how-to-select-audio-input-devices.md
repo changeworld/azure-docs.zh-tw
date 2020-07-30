@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 80671a40b5933a89962fa07b267d7e99e475657f
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74109970"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406685"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：使用語音 SDK 選取音訊輸入裝置
 
@@ -175,7 +176,7 @@ namespace ConsoleApp
 
 ## <a name="audio-device-ids-on-uwp"></a>UWP 上的音訊裝置識別碼
 
-在通用 Windows 平臺（UWP）上，可以使用對應`Id()` [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation)物件的屬性來取得音訊輸入裝置。
+在通用 Windows 平臺（UWP）上，可以使用對應物件的屬性來取得音訊輸入裝置 `Id()` [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) 。
 
 下列程式碼範例說明如何在 C++ 和 C# 中執行此作業：
 
@@ -365,7 +366,7 @@ CFArrayRef CreateInputDeviceArray()
 
 ## <a name="audio-device-ids-on-ios"></a>iOS 上的音訊裝置識別碼
 
-iOS 不支援使用語音 SDK 選取音訊裝置的功能。 不過，使用 SDK 的應用程式可能會影響透過架構[`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc)的音訊路由。
+iOS 不支援使用語音 SDK 選取音訊裝置的功能。 不過，使用 SDK 的應用程式可能會影響透過架構的音訊路由 [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) 。
 
 例如，指令
 
@@ -385,7 +386,7 @@ iOS 不支援使用語音 SDK 選取音訊裝置的功能。 不過，使用 SDK
 > [!div class="nextstepaction"]
 > [在 GitHub 上探索我們的範例](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [自訂原音模型](how-to-customize-acoustic-models.md)
 - [自訂語言模型](how-to-customize-language-model.md)

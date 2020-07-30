@@ -1,21 +1,21 @@
 ---
-title: '設定 (預覽的 OpenID Connect 提供者) '
+title: 設定 OpenID Connect 提供者（預覽）
 description: 瞭解如何將 OpenID Connect 提供者設定為 App Service 或 Azure Functions 應用程式的身分識別提供者。
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
-ms.openlocfilehash: 1a4f956c15fae640c2a7978a14bb95328dc9aa71
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 89164061a968e37f928f8c21f5323c418e85361f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209404"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413913"
 ---
-# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>使用 (Preview 的 OpenID Connect 提供者，將您的 App Service 或 Azure Functions 應用程式設定為登入) 
+# <a name="configure-your-app-service-or-azure-functions-app-to-login-using-an-openid-connect-provider-preview"></a>使用 OpenID Connect 提供者（預覽）將您的 App Service 或 Azure Functions 應用程式設定為登入
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-本文說明如何設定 Azure App Service 或 Azure Functions，以使用符合[OpenID connect 規格](https://openid.net/connect/)的自訂驗證提供者。 OpenID Connect (OIDC) 是許多身分識別提供者 (Idp) 所使用的業界標準。 您不需要瞭解規格的詳細資料，就能將應用程式設定為使用 adherent IDP。
+本文說明如何設定 Azure App Service 或 Azure Functions，以使用符合[OpenID connect 規格](https://openid.net/connect/)的自訂驗證提供者。 OpenID Connect （OIDC）是許多身分識別提供者（Idp）所使用的業界標準。 您不需要瞭解規格的詳細資料，就能將應用程式設定為使用 adherent IDP。
 
 您可以將應用程式設定為使用一或多個 OIDC 提供者。 每個都必須在設定中提供唯一的名稱，而且只有一個可作為預設的重新導向目標。
 
@@ -31,7 +31,7 @@ ms.locfileid: "86209404"
 >
 
 > [!NOTE]
-> 某些提供者可能需要額外的步驟來進行設定，以及如何使用它們所提供的值。 例如，Apple 提供的私密金鑰本身並不是用來做為 OIDC 用戶端密碼，而您必須使用它來製作 JWT，這會被視為您在應用程式設定中提供的秘密 (請參閱[使用 Apple 登入檔](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens)的「建立用戶端密碼」一節) 
+> 某些提供者可能需要額外的步驟來進行設定，以及如何使用它們所提供的值。 例如，Apple 提供的私密金鑰本身並不是用來做為 OIDC 用戶端密碼，而您必須使用它來製作 JWT，這會被視為您在應用程式設定中提供的密碼（請參閱[使用 Apple 登入](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens)的「建立用戶端密碼」一節）
 >
 
 使用您選擇的設定名稱，將用戶端密碼新增為應用[程式的應用程式設定](./configure-common.md#configure-app-settings)。 請記下此名稱以供稍後查看。
@@ -40,15 +40,15 @@ ms.locfileid: "86209404"
 
 如果您無法使用設定元資料檔案，您將需要分別收集下列值：
 
-- 簽發者 URL (有時候會顯示為 `issuer`) 
-- [OAuth 2.0 授權端點](https://tools.ietf.org/html/rfc6749#section-3.1) (有時候會顯示為 `authorization_endpoint`) 
-- [OAuth 2.0 權杖端點](https://tools.ietf.org/html/rfc6749#section-3.2) (有時候會顯示為 `token_endpoint`) 
-- [OAuth 2.0 JSON Web 金鑰集](https://tools.ietf.org/html/rfc8414#section-2)檔的 URL (有時候會顯示為 `jwks_uri`) 
+- 簽發者 URL （有時顯示為 `issuer` ）
+- [OAuth 2.0 授權端點](https://tools.ietf.org/html/rfc6749#section-3.1)（有時顯示為 `authorization_endpoint` ）
+- [OAuth 2.0 權杖端點](https://tools.ietf.org/html/rfc6749#section-3.2)（有時會顯示為 `token_endpoint` ）
+- [OAuth 2.0 JSON Web 金鑰集](https://tools.ietf.org/html/rfc8414#section-2)檔的 URL （有時顯示為 `jwks_uri` ）
 
 ## <a name="add-provider-information-to-your-application"></a><a name="configure"> </a>將提供者資訊新增至您的應用程式
 
 > [!NOTE]
-> 所需的設定為新的 API 格式，目前僅支援以檔案[為基礎的 configuration (預覽) ](.\app-service-authentication-how-to.md#config-file)。 您必須使用這類檔案來遵循下列步驟。
+> 所需的設定為新的 API 格式，目前僅支援以檔案[為基礎的設定（預覽）](.\app-service-authentication-how-to.md#config-file)。 您必須使用這類檔案來遵循下列步驟。
 
 本節將逐步引導您更新設定，以包含您的新 IDP。 範例設定如下。
 
@@ -61,7 +61,7 @@ ms.locfileid: "86209404"
        "registration" : {},
        "login": {
              "nameClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-             "loginScopes": [],
+             "scope": [],
              "loginParameterNames": [],
        }
     }
@@ -92,7 +92,7 @@ ms.locfileid: "86209404"
 
 設定此設定之後，您就可以開始在應用程式中使用您的 OpenID Connect 提供者進行驗證。
 
-範例設定看起來可能像下列 (使用以 Apple 登入作為範例，其中 APPLE_GENERATED_CLIENT_SECRET 設定會指向根據[Apple 檔](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens)) 所產生的 JWT：
+範例設定可能如下所示（使用 Apple 的登入作為範例，其中 APPLE_GENERATED_CLIENT_SECRET 設定會指向根據[apple 檔](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens)產生的 JWT）：
 
 ```json
 {
@@ -112,7 +112,7 @@ ms.locfileid: "86209404"
                         "secretSettingName": "APPLE_GENERATED_CLIENT_SECRET"
                     },
                     "openIdConnectConfiguration": {
-                        "authorizationEndpoint": "https://appleid.apple.com/.well-known/openid-configuration"
+                        "wellKnownOpenIdConfiguration": "https://appleid.apple.com/.well-known/openid-configuration"
                     }
                 },
                 "login": {

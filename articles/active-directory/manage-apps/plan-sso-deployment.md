@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374435"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387773"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>規劃單一登入部署
 
@@ -55,7 +55,7 @@ ms.locfileid: "85374435"
 ### <a name="considerations-for-federation-based-sso"></a>同盟型 SSO 的考慮
 
 - **使用 OpenID connect 和 OAuth** -如果您要連線的應用程式支援它，請使用 OIDC/OAuth 2.0 方法，讓您的 SSO 能夠連到該應用程式。 此方法需要較少的設定，並可提供更豐富的使用者體驗。 如需詳細資訊，請參閱[OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)、 [OpenID connect 1.0](../develop/v2-protocols-oidc.md)和[Azure Active Directory 開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
-- **Saml 型 SSO 的端點**設定-如果您使用 saml，在設定應用程式之前，您的開發人員將需要特定資訊。 如需詳細資訊，請參閱[編輯基本 SAML](configure-single-sign-on-non-gallery-applications.md)設定。
+- **Saml 型 SSO 的端點**設定-如果您使用 saml，在設定應用程式之前，您的開發人員將需要特定資訊。 如需詳細資訊，請參閱[設定 SAML 型單一登入](configure-saml-single-sign-on.md)。
 - **SAML 型 sso 的憑證管理**-當您為應用程式啟用同盟 SSO 時，Azure AD 會建立預設有效期限為三年的憑證。 如有需要，您可以自訂該憑證的到期日。 請確定您已備妥在到期前更新憑證的處理常式。 若要深入瞭解，請參閱[管理憑證 Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)。
 
 ### <a name="considerations-for-password-based-sso"></a>密碼型 SSO 的考慮
@@ -235,11 +235,11 @@ Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作
 
 | 生活| 角色 | Azure AD 角色（如有必要） |
 |--------|-------|-----------------------------|
-| 技術支援中心系統管理員 | 第1層支援 | None |
+| 技術支援中心系統管理員 | 第1層支援 | 無 |
 | 身分識別管理員 | 在問題影響時設定和調試 Azure AD | 全域系統管理員 |
-| 應用程式管理員 | 應用程式中的使用者證明，具有許可權的使用者設定 | None |
+| 應用程式管理員 | 應用程式中的使用者證明，具有許可權的使用者設定 | 無 |
 | 基礎結構管理員 | 憑證變換擁有者 | 全域系統管理員 |
-| 商務擁有者/專案關係人 | 應用程式中的使用者證明，具有許可權的使用者設定 | None |
+| 商務擁有者/專案關係人 | 應用程式中的使用者證明，具有許可權的使用者設定 | 無 |
 
 我們建議使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) （PIM）來管理您的角色，以針對具有目錄許可權的使用者提供額外的審核、控制和存取權審查。
 

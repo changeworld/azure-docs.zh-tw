@@ -2,18 +2,18 @@
 title: 使用 Azure Site Recovery 將 Azure Vm 重新保護到主要區域 |Microsoft Docs
 description: 說明如何使用 Azure Site Recovery，在容錯移轉之後重新保護 Azure Vm （次要到主要區域）。
 services: site-recovery
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: ramamill
+ms.openlocfilehash: da740909cedb8e2bb78f5f70e062481395a5c181
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82738060"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422074"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保護已容錯移轉到主要區域的 Azure VM
 
@@ -33,7 +33,7 @@ ms.locfileid: "82738060"
 
    ![重新保護](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-1. 檢閱資源群組、網路、儲存體和可用性設定組。 然後按一下 [確定] 。 如果有任何資源標示為新的，則會在重新保護程式中建立它們。
+1. 檢閱資源群組、網路、儲存體和可用性設定組。 然後按一下 [確定]。 如果有任何資源標示為新的，則會在重新保護程式中建立它們。
 1. 重新保護作業會在目標網站植入最新資料。 作業完成後，就會進行差異複寫。 然後，您可以容錯移轉回到主要網站。 您可以使用自訂選項，來選取您想要在重新保護期間使用的儲存體帳戶或網路。
 
    ![自訂選項](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
@@ -44,7 +44,7 @@ ms.locfileid: "82738060"
 
 ![自訂](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
-|屬性 |備忘稿  |
+|屬性 |注意  |
 |---------|---------|
 |目標資源群組 | 修改要在其中建立 VM 的目標資源群組。 目標 VM 會在重新保護過程中加以刪除。 您可以選擇容錯移轉之後要在其中建立 VM 的新資源群組。 |
 |目標虛擬網路 | 目標網路無法在重新保護作業期間進行變更。 若要變更網路，請重新進行網路對應。 |
@@ -95,10 +95,6 @@ ms.locfileid: "82738060"
 |來源區域有1個具有 1 TB premium 磁片的 VM。<br/>僅使用 20 GB 資料，而磁片的其餘部分是空的。<br/>磁片類型是具有 200 MBps 輸送量的 premium。<br/>容錯移轉後立即在磁片上的初始資料為 15 GB。 容錯移轉之後，有 5 GB 的資料變更。 因此，填入的資料總數為 20 GB| 大約時間：30-45 分鐘。<br/>因為磁片中填入的資料小於磁片大小的10%，所以我們會執行完整的初始複寫。<br/>傳送速率大約是輸送量或32MBps 的16%。 因此，傳輸時間以套用 20 GB 的變更，也就是 20 GB/32 MBps，約11分鐘。<br/>Site Recovery 需要一些額外的時間才能自動調整，大約20-30 分鐘 |
 
 當 VM 在容錯回復到主要區域之後重新受到保護（也就是，如果 VM 從主要區域重新保護到 DR 區域），則會刪除目標 VM 和相關聯的 NIC。
-
-當 VM 從 DR 區域重新保護到主要區域時，我們不會刪除先前主要 VM 和相關聯的 NIC。
-
-當 VM 在容錯回復到主要區域之後重新受到保護（也就是，如果 VM 從主要區域重新保護到 DR 區域），則會刪除目標 VM 和相關聯的 NIC。 
 
 當 VM 從 DR 區域重新保護到主要區域時，我們不會刪除先前主要 VM 和相關聯的 NIC。
 

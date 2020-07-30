@@ -3,12 +3,12 @@ title: 透過 Azure Active Directory 授與存取權
 description: 本文提供使用 Azure Active Directory 授權存取事件中樞資源的相關資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: cb55a716498bc50dff72c0d98943de407a367d4a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c6d1be2825ea716c72d70cd38babbb2d95083198
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371493"
+ms.locfileid: "87413386"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授權事件中樞資源的存取權
 Azure 事件中樞支援使用 Azure Active Directory （Azure AD）來授權事件中樞資源的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者或應用程式服務主體。 若要深入瞭解角色和角色指派，請參閱[瞭解不同的角色](../role-based-access-control/overview.md)。
@@ -49,7 +49,7 @@ Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權�
 - **訂**用帳戶：角色指派會套用至訂用帳戶中所有資源群組內的所有事件中樞資源。
 
 > [!NOTE]
-> - 請記住，RBAC 角色指派最多可能需要五分鐘的時間來傳播。 
+> - 請記住，Azure 角色指派最多可能需要五分鐘的時間來傳播。 
 > - 此內容適用于 Apache Kafka 的事件中樞和事件中樞。 如需 Kafka 支援之事件中樞的詳細資訊，請參閱[Kafka 的事件中樞-安全性和驗證](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)。
 
 

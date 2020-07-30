@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090173"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420884"
 ---
 # <a name="train-wide--deep-recommender"></a>& 深度推薦訓練寬
 本文說明如何使用 Azure Machine Learning 設計工具（預覽）中的 [**定型寬 & Deep 推薦**] 模組來定型建議模型。 此課程模組是以 Google 所提議的寬 & 深度學習為基礎。
@@ -105,7 +105,7 @@ Recommender 系統有兩種主要方法。
 
     此超參數會決定每個定型步驟的步驟大小，同時移至最少的損失函式。 過大的學習速率可能會導致學習跳躍 minima，而太小的學習率可能會導致聚合問題。
 
-7.  **交叉功能維度**：輸入跨越使用者識別碼和專案識別碼功能的維度。 
+7.  **交叉功能維度**：輸入所需的 [使用者識別碼] 和 [專案識別碼] 功能來輸入維度。 
 
     寬 & 深度推薦預設會執行跨產品的轉換，而不是依使用者識別碼和專案識別碼功能。 交叉的結果將會根據此數位進行雜湊，以確保維度的大小。
 

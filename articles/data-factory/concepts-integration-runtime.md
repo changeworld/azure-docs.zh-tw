@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497636"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407688"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory 中的整合執行階段 
 
@@ -45,13 +45,10 @@ Data Factory 提供三種類型的 Integration Runtime （IR），您應該選�
 
 IR 類型 | 公用網路 | 私人網路
 ------- | -------------- | ---------------
-Azure | 資料流程<br/>資料移動<br/>活動分派 | &nbsp;
+Azure | 資料流程<br/>資料移動<br/>活動分派 | 資料流程<br/>資料移動<br/>活動分派
 自我裝載 | 資料移動<br/>活動分派 | 資料移動<br/>活動分派
 Azure-SSIS | SSIS 封裝執行 | SSIS 封裝執行
 
-下圖顯示如何結合使用不同的整合執行階段，以提供豐富的資料整合功能和網路支援：
-
-![不同類型的整合執行階段](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Azure 整合執行階段
 
@@ -63,7 +60,7 @@ Azure 整合執行時間可以：
 
 ### <a name="azure-ir-network-environment"></a>Azure IR 網路環境
 
-Azure Integration Runtime 支援連接到資料存放區，並計算具有公用可存取端點的服務。 在 Azure 虛擬網路環境中使用自我裝載整合執行階段。
+Azure Integration Runtime 支援連接到資料存放區，並計算具有公用可存取端點的服務。 啟用受控虛擬網路，Azure Integration Runtime 支援在私人網路環境中使用私人連結服務連接到資料存放區。
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure IR 計算資源和調整規模
 Azure 整合執行階段在 Azure 中提供完全受控、無伺服器的計算。  您不必擔心基礎結構布建、軟體安裝、修補或容量調整。  此外，您只需支付實際使用時間。
@@ -136,7 +133,7 @@ Azure-SSIS IR 是一個完全受控的 Azure VM 叢集，專門用來執行您�
 
 您可以設定 Azure IR 的特定位置，在此情況下，活動執行或分派將會發生在該特定區域中。
 
-如果您選擇使用自動解析 Azure IR （預設值），
+如果您選擇在公用網路（預設值）中使用自動解析 Azure IR，
 
 - 針對複製活動，ADF 會盡力自動偵測接收資料存放區的位置，然後在相同的區域中使用 IR （如果有的話），或位於相同地理位置中最接近的一處;如果無法偵測接收資料存放區的區域，則會使用 data factory 區域中的 IR 做為替代。
 
@@ -154,6 +151,8 @@ Azure-SSIS IR 是一個完全受控的 Azure VM 叢集，專門用來執行您�
 
   > [!TIP] 
   > 最好的作法是確保資料流程會在與對應資料存放區相同的區域中執行（如果可能的話）。 若要達到此目的，您可以自動解決 Azure IR （如果資料存放區位置與 Data Factory 位置相同），或在與資料存放區相同的區域中建立新的 Azure IR 實例，然後在其上執行資料流程。 
+
+如果您針對自動解析 Azure IR 啟用受控虛擬網路，ADF 會使用 data factory 區域中的 IR。 
 
 您可以在 UI 上的管線活動監視檢視中或活動監視承載中，監視在活動執行期間生效的 IR 位置。
 
