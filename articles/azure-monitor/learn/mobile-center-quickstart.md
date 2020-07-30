@@ -8,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: a5c025f40f3d78e9e2ff54a0de76763a3e717640
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0539dcecbbbfe28817122e0f47e813182a9abd9d
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498690"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322137"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>開始使用 App Center 和 Application Insights 分析您的行動應用程式
 
@@ -167,4 +167,5 @@ Application Insights 可以查詢、分割、篩選及分析應用程式的自�
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [了解客戶如何使用您的應用程式](../../azure-monitor/app/usage-overview.md)
+> [了解客戶如何使用您的應用程式](../app/usage-overview.md)
+

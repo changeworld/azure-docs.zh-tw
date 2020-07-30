@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511903"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117246"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Windows 裝置
 
@@ -22,10 +22,12 @@ ms.locfileid: "86511903"
 
 在此快速入門中，您將了解如何：
 
-1. 建立 IoT 中樞。
-2. 向 IoT 中樞註冊 IoT Edge 裝置。
-3. 在虛擬裝置上安裝並啟動 IoT Edge 執行階段。
-4. 將模組從遠端部署至 IoT Edge 裝置，並將遙測資料傳送至 IoT 中樞。
+> [!div class="checklist"]
+>
+> * 建立 IoT 中樞。
+> * 向 IoT 中樞註冊 IoT Edge 裝置。
+> * 在虛擬裝置上安裝並啟動 IoT Edge 執行階段。
+> * 將模組從遠端部署至 IoT Edge 裝置，並將遙測資料傳送至 IoT 中樞。
 
 ![圖表 - 裝置和雲端的快速入門架構](./media/quickstart/install-edge-full.png)
 

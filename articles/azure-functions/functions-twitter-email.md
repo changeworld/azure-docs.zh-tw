@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: aa4087f3eafcd217eedc707697d093155b13b9e6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a7cdeb7bfde7396026b782382b34228c309b37d7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116311"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088138"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>建立與 Azure Logic Apps 整合的函式
 
@@ -38,7 +38,7 @@ Azure Functions 與 Logic Apps 設計工具中的 Azure Logic Apps 進行整合�
 + [Outlook.com](https://outlook.com/) 帳戶 (用於傳送通知)。
 
 > [!NOTE]
-> 如果您想要使用 Gmail 連接器，只有 G-Suite 的商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用 Gmail 連接器搭配特定的 Google 核准應用程式及服務，或者您可以[建立 Google 用戶端應用程式，以用來在 Gmail 連接器中進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+> 如果您想要使用 Gmail 連接器，只有 G-Suite 的商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用 Gmail 連接器搭配特定的 Google 核准應用程式及服務，或者您可以[建立 Google 用戶端應用程式，以用來在 Gmail 連接器中進行驗證](/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 + 本文使用[從 Azure 入口網站建立您的第一個函式](functions-create-first-azure-function.md)中所建立的資源作為起點。
 如果您尚未這麼做，請立即完成這些步驟，才能建立函式應用程式。
@@ -304,4 +304,3 @@ Azure Functions 提供的絕佳方法，可讓您將 Logic Apps 工作流程中�
 > [使用 Azure Functions 建立無伺服器 API](functions-create-serverless-api.md)
 
 若要深入了解 Logic Apps，請參閱 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)。
-

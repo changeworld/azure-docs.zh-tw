@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 9ac4c23468c74b5a2c6874de2cb6b8d0e6b9e7dd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8b4b07288ce2c3570da5482a446b9418c7319011
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75610279"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086195"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster-using-powershell"></a>使用 PowerShell 從 Service Fabric 叢集中移除應用程式
 
@@ -42,6 +42,6 @@ ms.locfileid: "75610279"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Service Fabric PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/service-fabric/?view=azureservicefabricps)。
+如需有關 Service Fabric PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/service-fabric/overview?view=azureservicefabricps)。
 
 您可以在 [PowerShell 範例](../service-fabric-powershell-samples.md)中找到適用於 Azure Service Fabric 的其他 Azure PowerShell 範例。
