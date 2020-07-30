@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 21cb7133bad27013895a5e717cb7729b71795ce9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078958"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>使用存取控制原則提供 Key Vault 驗證
 
@@ -39,7 +39,7 @@ ms.locfileid: "85126224"
    - [使用 Azure CLI 建立金鑰保存庫](../secrets/quick-create-cli.md)
    - [使用 Azure PowerShell 建立金鑰保存庫](../secrets/quick-create-powershell.md)
    - [使用 Azure 入口網站建立金鑰保存庫](../secrets/quick-create-portal.md)。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)。 或者，您可以使用 [Azure 入口網站](https://portal.azure.com)。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)。 或者，您可以使用 [Azure 入口網站](https://portal.azure.com)。
 
 ## <a name="grant-access-to-your-key-vault"></a>授與對金鑰保存庫的存取權
 

@@ -9,23 +9,24 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fada393dcab61cf00a0a3befcf4af3660bf625dc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 36bebe829ccf81ef5b1832b90b2f73d15d5499af
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536516"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384798"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Linux 裝置
 
 藉由將容器化程式碼部署至虛擬 Linux IoT Edge 裝置，在本快速入門中測試 Azure IoT Edge。 IoT Edge 可讓您從遠端管理裝置上的程式碼，以便可以將更多的工作負載傳送到邊緣。 在本快速入門中，建議您對 IoT Edge 裝置使用 Azure 虛擬機器，以便您可以快速建立已安裝 IoT Edge 服務的測試機器，然後在完成時將其刪除。
 
 在此快速入門中，您將了解如何：
-
-1. 建立 IoT 中樞。
-2. 向 IoT 中樞註冊 IoT Edge 裝置。
-3. 在虛擬裝置上安裝並啟動 IoT Edge 執行階段。
-4. 將模組從遠端部署到 IoT Edge 裝置。
+> [!div class="checklist"]
+>
+> * 建立 IoT 中樞。
+> * 向 IoT 中樞註冊 IoT Edge 裝置。
+> * 在虛擬裝置上安裝並啟動 IoT Edge 執行階段。
+> * 將模組從遠端部署到 IoT Edge 裝置。
 
 ![圖表 - 裝置和雲端的快速入門架構](./media/quickstart-linux/install-edge-full.png)
 
@@ -116,14 +117,7 @@ IoT Edge 執行階段會在所有 IoT Edge 裝置上部署。 它有三個元件
 * 針對 Bash 或 Cloud Shell 使用者，請將下列命令複製到文字編輯器 (以您的資訊取代預留位置文字)，然後複製到您的 Bash 或 Cloud Shell 視窗：
 
    ```azurecli-interactive
-   az deployment group create \
-   --resource-group IoTEdgeResources \
-   --template-uri "https://aka.ms/iotedge-vm-deploy" \
-   --parameters dnsLabelPrefix='my-edge-vm' \
-   --parameters adminUsername='azureUser' \
-   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) \
-   --parameters authenticationType='password' \
-   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
 * 針對 PowerShell 使用者，請將下列命令複製到您的 PowerShell 視窗，然後以您自己的資訊取代預留位置文字：

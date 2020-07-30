@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c576ac1f56a29fc73f92e2292b457262828c5046
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14d0190a97c22a805065ceaf41dcd655b9e8182b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100459"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065285"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>教學課程 - 使用自訂指令碼擴充功能將應用程式部署至 Azure 中的 Windows 虛擬機器
 
-若要以快速且一致的方式設定虛擬機器 (VM)，您可以使用[適用於 Windows 的自訂指令碼擴充功能](extensions-customscript.md)。 在本教學課程中，您將了解如何：
+若要以快速且一致的方式設定虛擬機器 (VM)，您可以使用[適用於 Windows 的自訂指令碼擴充功能](../extensions/custom-script-windows.md)。 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 使用自訂指令碼擴充功能安裝 IIS
@@ -39,13 +39,13 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 
 ## <a name="create-virtual-machine"></a>建立虛擬機器
-使用 [Get-credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 來設定 VM 的系統管理員使用者名稱和密碼：
+使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 來設定 VM 的系統管理員使用者名稱和密碼：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-現在您可以使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 建立 VM。 下列範例會在 *EastUS* 位置中建立名為 *myVM* 的 VM。 如果它們尚不存在，建立支援網路資源的資源群組 *myResourceGroupAutomate*。 為了允許 Web 流量，此 Cmdlet 也會開啟連接埠 *80*。
+現在您可以使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 建立 VM。 下列範例會在 *EastUS* 位置中建立名為 *myVM* 的 VM。 如果它們尚不存在，建立支援網路資源的資源群組 *myResourceGroupAutomate*。 為了允許 Web 流量，此 Cmdlet 也會開啟連接埠 *80*。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -64,7 +64,7 @@ New-AzVm `
 
 
 ## <a name="automate-iis-install"></a>自動安裝 IIS
-使用 [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) 來安裝自訂指令碼擴充功能。 擴充功能會執行 `powershell Add-WindowsFeature Web-Server` 以安裝 IIS Web 伺服器，然後更新 Default.htm  頁面以顯示 VM 的主機名稱：
+使用 [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) 來安裝自訂指令碼擴充功能。 擴充功能會執行 `powershell Add-WindowsFeature Web-Server` 以安裝 IIS Web 伺服器，然後更新 Default.htm  頁面以顯示 VM 的主機名稱：
 
 ```azurepowershell-interactive
 Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
@@ -79,7 +79,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupAutomate" `
 
 
 ## <a name="test-web-site"></a>測試網站
-使用 [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) 取得負載平衡器的公用 IP 位址。 下列範例會取得稍早建立的 *myPublicIPAddress* IP 位址︰
+使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 取得負載平衡器的公用 IP 位址。 下列範例會取得稍早建立的 *myPublicIPAddress* IP 位址︰
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress `

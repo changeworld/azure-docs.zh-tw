@@ -3,12 +3,12 @@ title: 使用入口網站上傳、編碼和串流內容 - Azure
 description: 本快速入門說明如何搭配 Azure 媒體服務使用入口網站來上傳、編碼和串流內容。
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: 374e8a22bf8fdcb14101bffc26f9d1b27480ce88
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232469"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053347"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>快速入門：使用入口網站上傳、編碼和串流內容
 
@@ -35,7 +35,7 @@ ms.locfileid: "86232469"
 
         目前，使用 Azure 入口網站時，您可以執行下列動作：產生 TTML 和 WebVTT 隱藏式輔助字幕檔案。 這些格式的檔案可以用來讓具有聽力障礙的人存取音訊和視訊檔案。 您也可以從內容中擷取關鍵字。
 
-        如需可讓您從影片和音訊檔案擷取深入解析的豐富體驗，請使用媒體服務 v3 預設值 (如[教學課程：透過媒體服務 v3 分析影片](analyze-videos-tutorial-with-api.md)中所述)。 <br/>如果您想要更多詳細的深入解析，請直接使用[影片索引子](https://docs.microsoft.com/azure/media-services/video-indexer/)。    
+        如需可讓您從影片和音訊檔案擷取深入解析的豐富體驗，請使用媒體服務 v3 預設值 (如[教學課程：透過媒體服務 v3 分析影片](analyze-videos-tutorial-with-api.md)中所述)。 <br/>如果您想要更多詳細的深入解析，請直接使用[影片索引子](../video-indexer/index.yml)。    
 * 一旦處理了您的內容，您就可以將媒體內容提供給用戶端播放程式。 若要讓輸出資產中的影片可供用戶端播放，您必須建立**串流定位器**。 建立**串流定位器**時，您必須指定**串流原則**。 **串流原則**可讓您定義**串流定位器**的串流通訊協定和加密選項 (如果有的話)。
     
     檢閱：

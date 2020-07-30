@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413887"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055251"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure 監視器 PowerShell 範例
 本文說明可協助您存取 Azure 監視器 功能的範例 PowerShell 命令。
@@ -22,10 +22,10 @@ ms.locfileid: "85413887"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="set-up-powershell"></a>設定 PowerShell
-設定要在電腦上執行的 PowerShell (如果您還未設定)。 如需詳細資訊，請參閱[如何安裝及設定 PowerShell](/powershell/azure/overview)。
+設定要在電腦上執行的 PowerShell (如果您還未設定)。 如需詳細資訊，請參閱[如何安裝及設定 PowerShell](/powershell/azure/)。
 
 ## <a name="examples-in-this-article"></a>本文中的範例
-本文中的範例將說明如何使用Azure 監視器 Cmdlet。 您也可以在 [Azure 監視器 Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
+本文中的範例將說明如何使用Azure 監視器 Cmdlet。 您也可以在 [Azure 監視器 Cmdlet](/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
 
 ## <a name="sign-in-and-use-subscriptions"></a>登入和使用訂用帳戶
 首先，登入您的 Azure 訂用帳戶。
@@ -53,7 +53,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log"></a>取出活動記錄
-使用 [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) Cmdlet。  以下是一些常見的範例。 活動記錄會保存過去 90 天的作業。 若使用此時間之前的日期，將會產生錯誤訊息。  
+使用 [Get-AzLog](/powershell/module/az.monitor/get-azlog) Cmdlet。  以下是一些常見的範例。 活動記錄會保存過去 90 天的作業。 若使用此時間之前的日期，將會產生錯誤訊息。  
 
 請查看目前的日期/時間，以確認要在下列命令中使用的時間：
 ```powershell
@@ -116,7 +116,7 @@ Get-AzLog -Caller "Microsoft.Insights/alertRules" -DetailedOutput -StartTime 201
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-`Get-AzAlertHistory` Cmdlet 支援多各種參數。 如需詳細資訊，請參閱 [Get AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx)。
+`Get-AzAlertHistory` Cmdlet 支援多各種參數。 如需詳細資訊，請參閱 [Get AlertHistory](/previous-versions/azure/mt282453(v=azure.100))。
 
 ## <a name="retrieve-information-on-alert-rules"></a>擷取警示規則的相關資訊
 下列所有命令都會處理一個名為 "montest" 的資源群組。
@@ -139,7 +139,7 @@ Get-AzAlertRule -ResourceGroup montest
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule` 支援其他參數。 如需詳細資訊，請參閱 [Get AlertRule](https://msdn.microsoft.com/library/mt282459.aspx) 。
+`Get-AzAlertRule` 支援其他參數。 如需詳細資訊，請參閱 [Get AlertRule](/previous-versions/azure/mt282459(v=azure.100)) 。
 
 ## <a name="create-metric-alerts"></a>建立計量警示
 您可以使用 `Add-AlertRule` Cmdlet 建立、更新或停用警示規則。
@@ -201,7 +201,7 @@ Get-AzMetricDefinition -ResourceId <resource_id>
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-`Get-AzMetricDefinition` 的可用選項完整清單可在 [Get MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx)取得。
+`Get-AzMetricDefinition` 的可用選項完整清單可在 [Get MetricDefinitions](/previous-versions/azure/mt282458(v=azure.100))取得。
 
 ## <a name="create-and-manage-activity-log-alerts"></a>建立和管理活動記錄警示
 您可以使用 `Set-AzActivityLogAlert` Cmdlet 來設定活動記錄警示。 活動記錄警示需要您先將您的條件定義為條件的字典，然後建立會使用這些條件的警示。
@@ -272,7 +272,7 @@ $notification1= New-AzAutoscaleNotification -CustomEmails ashwink@microsoft.com 
 Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
-如需有關管理自動調整設定的詳細資訊，請參閱 [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx)。
+如需有關管理自動調整設定的詳細資訊，請參閱 [Get-AutoscaleSetting](/previous-versions/azure/mt282461(v=azure.100))。
 
 ## <a name="autoscale-history"></a>自動調整歷程記錄
 下列範例示範如何檢視最新的自動調整和警示的事件。 使用活動記錄檔搜尋檢視自動調整歷程記錄。
@@ -287,7 +287,7 @@ Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartT
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
-如需詳細資訊，請參閱 [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx)。
+如需詳細資訊，請參閱 [Get-AutoscaleHistory](/previous-versions/azure/mt282464(v=azure.100))。
 
 ### <a name="view-details-for-an-autoscale-setting"></a>檢視自動調整設定的詳細資料
 您可以使用 `Get-Autoscalesetting` Cmdlet 擷取有關自動調整設定的詳細資訊。
@@ -399,4 +399,3 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 ```
 
 這些命令可以合併以將資料傳送至多個目的地。
-

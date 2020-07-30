@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: a98989ed48e515cafeca27ae492c83efca6002c4
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 0d001144f1a2703db118261e5cae5417b1d8c17a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871606"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080126"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>教學課程 - 設定 Azure Linux 虛擬機器的藍綠部署策略
 
@@ -29,7 +29,7 @@ Azure Pipelines 提供了一組功能齊全的 CI/CD 自動化工具，可用來
 
 ### <a name="configure-cicd-on-virtual-machines"></a>在虛擬機器上設定 CI/CD
 
-您可以將虛擬機器新增為[部署群組](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups)的目標。 然後，您可以將其設為多機器更新的目標。 部署至機器後，請檢視部署群組內的 [部署歷程記錄]。 此檢視可讓您從 VM 追蹤至管線，然後再追蹤至認可。
+您可以將虛擬機器新增為[部署群組](/azure/devops/pipelines/release/deployment-groups)的目標。 然後，您可以將其設為多機器更新的目標。 部署至機器後，請檢視部署群組內的 [部署歷程記錄]。 此檢視可讓您從 VM 追蹤至管線，然後再追蹤至認可。
 
 ### <a name="blue-green-deployments"></a>藍綠部署
 
@@ -88,5 +88,5 @@ Azure Pipelines 提供了一組功能齊全的 CI/CD 自動化工具，可用來
 
 ## <a name="additional-resources"></a>其他資源
 
-- [使用 Azure DevOps Projects 部署 Azure 虛擬機器](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
-- [為應用程式實作目標為虛擬機器擴展集的持續部署](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
+- [使用 Azure DevOps Projects 部署 Azure 虛擬機器](../../devops-project/azure-devops-project-vms.md)
+- [為應用程式實作目標為虛擬機器擴展集的持續部署](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)
