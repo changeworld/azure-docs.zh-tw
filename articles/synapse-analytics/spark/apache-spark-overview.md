@@ -1,5 +1,5 @@
 ---
-title: 什麼是 Azure Synapse Analytics 中的 Apache Spark？
+title: 什麼是 Apache Spark
 description: 本文將提供 Azure Synapse Analytics 中的 Apache Spark 簡介，以及您可以使用 Spark 的各種案例。
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 0a9a89b6ff3d0e2d3987d4b4281b9e4e1605475f
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: 0fce972b6b0ceb426ab4b08ab26e664d068af16f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85476779"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089272"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>什麼是 Azure Synapse Analytics 中的 Apache Spark
 

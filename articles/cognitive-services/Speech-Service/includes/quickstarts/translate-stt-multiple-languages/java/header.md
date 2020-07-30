@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 73e0bf9bc0d659c2847bc2133b470fee3b748b63
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: eba246d6404ea7f4909794110c3d3d7b89af0d45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75468895"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102529"
 ---
-如果您想要直接進入，請在 GitHub 上檢視或下載所有<a href="https://aka.ms/speech/github-java">語音 SDK Java 範例</a> \(英文\)。 否則，讓我們開始吧。
+您可以在 GitHub 上檢視或下載所有<a href="https://aka.ms/speech/github-java">語音 SDK Java 範例</a>。 

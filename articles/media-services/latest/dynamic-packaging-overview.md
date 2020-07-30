@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 06/11/2020
 ms.author: juliako
-ms.openlocfilehash: 20389c8298f4e970c4b3ba93d96f811fdc905003
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791600"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090105"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
 
@@ -28,7 +28,7 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 在媒體服務中，[串流端點](streaming-endpoint-concept.md) (原點) 代表動態 (Just-In-Time) 封裝及原始服務，其可將即時且隨選的內容直接傳遞至用戶端播放應用程式。 它會使用下節中所述的其中一種常見串流媒體通訊協定。 「動態封裝」是隨附於所有串流端點 (標準或進階) 的標準功能。
 
 > [!NOTE]
-> 您可以使用 [Azure 入口網站](https://portal.azure.com/)來管理 v3 [即時活動](live-events-outputs-concept.md)、檢視 v3 [資產](assets-concept.md)、取得存取 API 的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](https://docs.microsoft.com/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
+> 您可以使用 [Azure 入口網站](https://portal.azure.com/)來管理 v3 [即時活動](live-events-outputs-concept.md)、檢視 v3 [資產](assets-concept.md)、取得存取 API 的相關資訊。 針對所有其他管理工作 (例如，轉換和作業)，請使用 [REST API](/rest/api/media/)、[CLI](https://aka.ms/ams-v3-cli-ref) 或其中一個支援的 [SDK](media-services-apis-overview.md#sdks)。
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>準備來源檔案以進行傳遞
 
@@ -126,7 +126,7 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 動態封裝支援 MP4 檔案，其包含使用 [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC 或 AVC1) 或 [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC、hev1 或 hvc1) 編碼的視訊。
 
 > [!NOTE]
-> 最多可達 4K 的解析度，以及最多每秒 60 個畫面的畫面播放速率，皆已透過「動態封裝」進行測試。 [進階編碼器](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow)支援透過舊版 v2 API 編碼成 H.265。
+> 最多可達 4K 的解析度，以及最多每秒 60 個畫面的畫面播放速率，皆已透過「動態封裝」進行測試。 [進階編碼器](../previous/media-services-encode-asset.md#media-encoder-premium-workflow)支援透過舊版 v2 API 編碼成 H.265。
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>動態封裝支援的音訊轉碼器
 

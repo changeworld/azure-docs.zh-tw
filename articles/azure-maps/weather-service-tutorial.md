@@ -1,20 +1,20 @@
 ---
 title: 教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料 | Microsoft Azure 地圖服務
 description: 本教學課程說明如何使用 Azure Notebooks (Python) 來聯結感應器資料與得自 Microsoft Azure 地圖服務氣象服務的氣象預報資料。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 41d52eff2dc2d9fc1e4c956c893a2f14c91d9f92
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5a262c95328fef772c9158082f554de9f7ac5f81
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560367"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133226"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教學課程：使用 Azure Notebooks (Python) 來聯結感應器資料與氣象預報資料
 
@@ -35,7 +35,7 @@ ms.locfileid: "84560367"
 
 若要完成本教學課程，您需要先：
 
-1. 依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示，在 S0 定價層中建立 Azure 地圖服務帳戶訂用帳戶。
+1. 依照[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)中的指示，在 S0 定價層中建立 Azure 地圖服務帳戶訂用帳戶。
 2. 依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的指示，取得帳戶的主要訂用帳戶金鑰。
 
 

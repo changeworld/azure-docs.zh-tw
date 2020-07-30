@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 98a118ef662abd323854911e9fc1ffc6b7374db2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a62cb11e862bb8733e2758297d82aa7732b2d739
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84232986"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082459"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虛擬機器
 
@@ -30,7 +30,7 @@ Azure 虛擬機器可用於許多用途。 部份範例如下：
 您的應用程式所使用的 VM 數目可以擴大及擴增為符合您需求的任何內容。
 
 ## <a name="what-do-i-need-to-think-about-before-creating-a-vm"></a>我在建立 VM 之前需要先考慮什麼？
-當您在 Azure 中建置應用程式基礎結構時，總是會有許多[設計考量](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/windows-vm)。 在您開始之前，仔細考量 VM 的這些層面很重要︰
+當您在 Azure 中建置應用程式基礎結構時，總是會有許多[設計考量](/azure/architecture/reference-architectures/n-tier/windows-vm)。 在您開始之前，仔細考量 VM 的這些層面很重要︰
 
 * 應用程式資源的名稱
 * 將儲存資源的位置
@@ -48,9 +48,9 @@ Azure 中所建立的所有資源分散在世界各地的多個[地理區域](ht
 | 方法 | 描述 |
 | --- | --- |
 | Azure 入口網站 |當您建立 VM 時，請從清單中選取位置。 |
-| Azure PowerShell |使用 [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) 命令。 |
-| REST API |使用[列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions)作業。 |
-| Azure CLI |使用 [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) 作業。 |
+| Azure PowerShell |使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 命令。 |
+| REST API |使用[列出位置](/rest/api/resources/subscriptions)作業。 |
+| Azure CLI |使用 [az account list-locations](/cli/azure/account?view=azure-cli-latest) 作業。 |
 
 ## <a name="availability"></a>可用性
 Azure 已宣布推出業界領先的單一執行個體虛擬機器 99.9% 服務等級協定 (前提是您部署的所有磁碟都是進階儲存體的 VM)。  為了讓您的部署符合標準的 99.95% VM 服務等級協定資格，您還必須在可用性設定組內部署兩個或更多執行工作負載的 VM。 可用性設定組可確保您的 VM 會分散在 Azure 資料中心內的多個容錯網域，以及部署至具有不同維護期間的主機。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 說明保證的 Azure 整體可用性。
@@ -95,7 +95,7 @@ Microsoft 與合作夥伴密切合作，以確保更新可用的映像並針對 
 為了實現適當的 DevOps 文化特性，所有基礎結構都必須是程式碼。  當所有基礎結構都留存在程式碼中時，便可以輕鬆地重新建立基礎結構。  Azure 可以與所有主要的自動化工具 (例如 Ansible、Chef、SaltStack 及 Puppet) 搭配運作。  Azure 也有自己的自動化工具：
 
 * [Azure 範本](create-ssh-secured-vm-from-template.md)
-* [Azure VMAccess](using-vmaccess-extension.md)
+* [Azure VMAccess](../extensions/vmaccess.md)
 
 在支援 [cloud-init](https://cloud-init.io/) 的多數 Linux 散發版本上，Azure 均支援 cloud-init。  我們一直積極地與背書的 Linux 發行版本合作夥伴合作，以便在 Azure Marketplace 中提供支援 Cloud-init 的映像。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。
 
@@ -120,4 +120,3 @@ Microsoft 與合作夥伴密切合作，以確保更新可用的映像並針對 
 - [入口網站](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)
 - [PowerShell](quick-create-powershell.md)
-
