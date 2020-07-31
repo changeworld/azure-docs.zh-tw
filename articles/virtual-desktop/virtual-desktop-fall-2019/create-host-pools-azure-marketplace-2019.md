@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面主機集區 Azure Marketplace - Azure
-description: 如何使用 Azure Marketplace 建立 Windows 虛擬桌面主機集區。
+title: Windows 虛擬桌面 (傳統) 主機集區 Azure Marketplace - Azure
+description: 如何使用 Azure Marketplace 建立 Windows 虛擬桌面 (傳統) 主機集區。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b4472baa51bb0b8806c7ad617c0fc1001c800ff0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3f0db05459b8e81764915c5dffb373e7f19edbc4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256844"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291304"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>教學課程：使用 Azure Marketplace 建立主機集區
+# <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>教學課程：在 Windows 虛擬桌面 (傳統) 中建立主機集區
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../create-host-pools-azure-marketplace.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../create-host-pools-azure-marketplace.md)。
 
 在本教學課程中，您將了解如何使用 Microsoft Azure Marketplace 供應項目，在 Windows 虛擬桌面租用戶中建立主機集區。
 
