@@ -167,8 +167,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 整合執行階段
       href: concepts-integration-runtime.md
-    - name: 受控虛擬網路
-      href: managed-virtual-network-private-endpoint.md
     - name: 安全性
       items:
         - name: 安全性基準
@@ -588,6 +586,8 @@
           href: data-factory-service-identity.md
         - name: 客戶管理的金鑰加密
           href: enable-customer-managed-key.md
+        - name: 受控虛擬網路
+          href: managed-virtual-network-private-endpoint.md
     - name: 監視及管理
       items:
         - name: 以視覺化方式監視

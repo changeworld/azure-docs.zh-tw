@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: bd849a413d718ba5a25839c50c63ec2ad39be440
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128092"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439219"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -168,7 +168,9 @@ Azure 防火牆的初始輸送量容量為 2.5 - 3 Gbps，並擴增為 30 Gbps�
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火牆需要多久的時間來擴增？
 
-當平均輸送量或 CPU 耗用量在 60% 時，Azure 防火牆會逐漸調整。 擴增需要五到七分鐘。 執行效能測試時，請確定您至少測試了10到15分鐘，並開始新的連線以利用新建立的防火牆節點。
+當平均輸送量或 CPU 耗用量在 60% 時，Azure 防火牆會逐漸調整。 預設部署的最大輸送量大約是 2.5-3 Gbps，而當達到該數位的60% 時，就會開始相應放大。 擴增需要五到七分鐘。 
+
+執行效能測試時，請確定您至少測試了10到15分鐘，並開始新的連線以利用新建立的防火牆節點。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>根據預設，Azure 防火牆允許存取 Active Directory 嗎？
 

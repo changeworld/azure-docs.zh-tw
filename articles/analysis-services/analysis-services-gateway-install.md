@@ -4,15 +4,15 @@ description: 瞭解如何安裝和設定內部部署資料閘道，以從 Azure 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77062144"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438956"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安裝及設定內部部署資料閘道
 
@@ -44,11 +44,11 @@ ms.locfileid: "77062144"
 * 如果[租用戶](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant)與您要註冊閘道的訂用帳戶相同，請以 Azure AD 中的帳戶登入 Azure。 安裝和註冊閘道時不支援 Azure B2B (來賓) 帳戶。
 * 如果資料來源位於 Azure 虛擬網路 (VNet) 上，您必須設定 [AlwaysUseGateway](analysis-services-vnet-gateway.md) 伺服器屬性。
 
-## <a name="download"></a><a name="download"></a>下載
+## <a name="download"></a>下載
 
  [下載閘道](https://go.microsoft.com/fwlink/?LinkId=820925&clcid=0x409)
 
-## <a name="install"></a><a name="install"></a>安裝
+## <a name="install"></a>安裝
 
 1. 執行安裝程式。
 
@@ -67,7 +67,7 @@ ms.locfileid: "77062144"
    > [!NOTE]
    > 如果您使用網域帳戶來登入，該帳戶會對應至 Azure AD 中的組織帳戶。 您的組織帳戶會當作閘道管理員。
 
-## <a name="register"></a><a name="register"></a>註冊
+## <a name="register"></a>註冊
 
 若要在 Azure 中建立閘道資源，您必須向閘道雲端服務註冊您安裝的本機執行個體。 
 
@@ -83,7 +83,7 @@ ms.locfileid: "77062144"
    ![註冊](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
-## <a name="create-an-azure-gateway-resource"></a><a name="create-resource"></a>建立 Azure 閘道資源
+## <a name="create-an-azure-gateway-resource"></a>建立 Azure 閘道資源
 
 安裝並註冊閘道之後，您必須在 Azure 中建立閘道資源。 使用您用於註冊閘道的相同帳戶登入 Azure。
 
@@ -107,7 +107,12 @@ ms.locfileid: "77062144"
 
      完成之後，請按一下 [建立] ****。
 
-## <a name="connect-servers-to-the-gateway-resource"></a><a name="connect-servers"></a>將伺服器連線到閘道資源
+## <a name="connect-gateway-resource-to-server"></a>將閘道資源連接到伺服器
+
+> [!NOTE]
+> 在入口網站中不支援從您的伺服器連線至不同訂用帳戶中的閘道資源，但使用 PowerShell 支援。
+
+# <a name="portal"></a>[入口網站](#tab/azure-portal)
 
 1. 在 Azure Analysis Services 伺服器概觀中，按一下 [內部部署資料閘道]****。
 
@@ -124,6 +129,27 @@ ms.locfileid: "77062144"
 
 
     ![將伺服器連線至閘道資源成功](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+使用[Get get-azresource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource)取得閘道 ResourceID。 然後在[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver)或[AzAnalysisServicesServer](https://docs.microsoft.com/powershell/module/az.analysisservices/new-azanalysisservicesserver)中指定 **-GatewayResourceID** ，以將閘道資源連接到現有或新的伺服器。
+
+若要取得閘道資源識別碼：
+
+```azurepowershell-interactive
+Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforGateway -Environment "AzureCloud"
+$GatewayResourceId = $(Get-AzResource -ResourceType "Microsoft.Web/connectionGateways" -Name $gatewayName).ResourceId  
+
+```
+
+若要設定現有的伺服器：
+
+```azurepowershell-interactive
+Connect-AzAccount -Tenant $TenantId -Subscription $subscriptionIdforAzureAS -Environment "AzureCloud"
+Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -GatewayResourceId $GatewayResourceId
+
+```
+---
 
 這樣就大功告成了！ 如果您需要開啟連接埠，或進行疑難排解，請務必簽出[內部部署資料閘道](analysis-services-gateway.md)。
 

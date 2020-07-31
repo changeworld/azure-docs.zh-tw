@@ -45,6 +45,9 @@
       items:
         - name: 安全性
           items:
+            - name: Azure 原則的安全性控制
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: 安全性基準
               href: security-baseline.md
         - name: 容器登錄層級和限制

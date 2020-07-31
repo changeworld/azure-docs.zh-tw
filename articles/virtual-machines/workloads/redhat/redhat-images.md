@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525495"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439480"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux 映射的總覽
 
@@ -99,6 +99,9 @@ RHEL 7.x 映射有幾種不同的映射類型。 下表顯示我們所提供的�
 |RedHat | RHEL | RHEL-SAP-HANA | RHEL 次要版本的串連值和發佈的日期（例如，7.3.2018051421） | 這些映射已過期，因為 SAP 應用程式和 SAP Hana 存放庫已合併至 SAP 存放庫。 這些映射是 RHEL，用於 SAP Hana 映射。 他們有權存取 SAP Hana 存放庫和基礎 RHEL 存放庫。
 
 ## <a name="rhel-8-image-types"></a>RHEL 8 映射類型
+
+>[!NOTE]
+> Red Hat 建議使用 Grubby 來設定 RHEL 8 + 中的核心命令列參數。 您可以在[這裡](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)取得更多詳細資料。
 
 RHEL 8 映射類型的詳細資料如下。
 

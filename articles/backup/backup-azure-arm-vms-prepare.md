@@ -3,12 +3,12 @@ title: 備份復原服務保存庫中的 Azure VM
 description: 說明如何使用 Azure 備份將 Azure VM 備份到備份復原服務保存庫
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: c4fbafc63ce063159d0524ddf26bb936c53328df
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373846"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439712"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>備份復原服務保存庫中的 Azure VM
 
@@ -88,7 +88,7 @@ s ![ 設定新保存庫的存放裝置配置](./media/backup-azure-arm-vms-prepa
      ![[選取虛擬機器] 窗格](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > 與保存庫相同的區域和訂用帳戶中的所有 Vm 都可以用來設定備份。 在設定備份時，您可以流覽至虛擬機器名稱及其資源群組，即使您沒有這些 Vm 的必要許可權也一樣。  
+    > 與保存庫相同的區域和訂用帳戶中的所有 Vm 都可以用來設定備份。 在設定備份時，您可以流覽至虛擬機器名稱及其資源群組，即使您沒有這些 Vm 的必要許可權也一樣。 如果您的 VM 處於「虛刪除」狀態，則不會顯示在此清單中。 如果您需要重新保護 VM，則需要等候虛刪除週期過期，或從虛刪除清單中取消刪除 VM。 如需詳細資訊，請參閱[vm 的虛刪除一文](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal)。
 
 1. 在 [備份] 中，選取 [啟用備份]。 這會將原則部署到保存庫和 VM，並在執行於 Azure VM 的 VM 代理程式上安裝備份擴充功能。
 

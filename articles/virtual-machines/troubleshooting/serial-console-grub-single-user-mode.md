@@ -13,19 +13,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 3b074bb1d439a6d20ac476f4e10b6a26b7107be8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5341cc62a7d02c3072df90becf893dec18427ac2
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284705"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439543"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用序列主控台來存取 GRUB 與單一使用者模式
 當您啟動虛擬機器（VM）時，可能是您第一次看到的是最重要的整合開機載入器（GRUB）。 因為它是在作業系統啟動之前顯示，所以無法透過 SSH 存取 GRUB。 在 GRUB 中，您可以修改開機設定以開機進入單一使用者模式，還有其他專案。
 
 單一使用者模式是具有最少功能的最小環境。 它有助於調查開機問題、檔案系統問題或網路問題。 較少的服務可以在背景中執行，而視 runlevel 而定，檔案系統可能甚至不會自動裝載。
 
-在您的 VM 可能設定為只接受 SSH 金鑰進行登入的情況下，單一使用者模式也很有用。 在此情況下，您可能可以使用單一使用者模式來建立具有密碼驗證的帳戶。 
+在您的 VM 可能設定為只接受 SSH 金鑰進行登入的情況下，單一使用者模式也很有用。 在此情況下，您可能可以使用單一使用者模式來建立具有密碼驗證的帳戶。
 
 > [!NOTE]
 > 序列主控台服務僅允許具有「*參與者*」層級或更高許可權的使用者存取 VM 的序列主控台。
@@ -66,6 +66,9 @@ RHEL 預設會啟用 GRUB。 若要進入 GRUB，請執行來重新開機您的 
 
 **適用于 RHEL 8**
 
+>[!NOTE]
+> Red Hat 建議使用 Grubby 來設定 RHEL 8 + 中的核心命令列參數。 目前無法使用 grubby 來更新 grub timeout 和 terminal 參數。 若要修改更新所有開機專案的 GRUB_CMDLINE_LINUX 引數，請執行 `grubby --update-kernel=ALL --args="console=ttyS0,115200 console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"` 。 您可以在[這裡](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)取得更多詳細資料。
+
 ```
 GRUB_TIMEOUT=5
 GRUB_TERMINAL="serial console"
@@ -90,8 +93,7 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
 1. 切換至 [根]。
 1. 執行下列動作，以啟用根使用者的密碼：
     * 執行 `passwd root` （設定強式根密碼）。
-1. 執行下列動作，確保根使用者只能透過 ttyS0 登入：  
-    a. 執行 `edit /etc/ssh/sshd_config` ，並確定 PermitRootLogIn 設定為 `no` 。  
+1. 執行下列動作，確保根使用者只能透過 ttyS0 登入： a。 執行 `edit /etc/ssh/sshd_config` ，並確定 PermitRootLogIn 設定為 `no` 。
     b. 執行 `edit /etc/securetty file` 以只允許透過 ttyS0 登入。
 
 現在，如果系統開機進入單一使用者模式，您就可以使用根密碼進行登入。
@@ -106,7 +108,7 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
 1. 尋找核心線。 在 Azure 中，它會以*linux16*開頭。
 1. 按 Ctrl + E 移至行尾。
 1. 在行的結尾，新增 systemd。 *unit = [修復*]。目標。
-    
+
     此動作會將您引導至單一使用者模式。 如果您想要使用緊急模式，請將*systemd*新增至該行結尾（而不是*systemd。 unit = [修復] 目標*）。
 
 1. 按 Ctrl + X 以結束並以套用的設定重新開機。
@@ -130,11 +132,11 @@ GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200
     此動作會在將控制權從傳遞至之前中斷啟動程式 `initramfs` `systemd` ，如[Red Hat 檔](https://aka.ms/rhel7rootpassword)中所述。
 1. 按 Ctrl + X 以結束並以套用的設定重新開機。
 
-   重新開機之後，您就可以使用唯讀檔案系統進入緊急模式。 
-   
+   重新開機之後，您就可以使用唯讀檔案系統進入緊急模式。
+
 1. 在 shell 中，輸入 `mount -o remount,rw /sysroot` 以重新掛接具有讀取/寫入權限的根檔案系統。
 1. 當您開機進入單一使用者模式之後，請輸入 `chroot /sysroot` 以切換到 `sysroot` jb。
-1. 您現在是在根目錄。 您可以輸入 `passwd` ，然後使用上述指示來進入單一使用者模式，以重設您的根密碼。 
+1. 您現在是在根目錄。 您可以輸入 `passwd` ，然後使用上述指示來進入單一使用者模式，以重設您的根密碼。
 1. 完成之後，請輸入 `reboot -f` 以重新開機。
 
 ![顯示命令列介面的動畫影像。 使用者選取伺服器，尋找核心行的結尾，然後輸入指定的命令。](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)

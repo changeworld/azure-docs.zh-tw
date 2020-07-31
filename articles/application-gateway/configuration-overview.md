@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 20d1dfea251fdfd0bd6e8432d1ea0c7af7284cb5
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428175"
+ms.locfileid: "87438909"
 ---
 # <a name="application-gateway-configuration-overview"></a>應用程式閘道設定總覽
 
@@ -50,7 +50,7 @@ Azure 也會在每個子網中保留五個 IP 位址供內部使用：前四個�
 
 - 針對應用程式閘道 v1 SKU 的 TCP 通訊埠 65503-65534，以及 v2 SKU 的 TCP 通訊埠 65200-65535，您必須允許目的地子網路為 **Any** 且來源為 **GatewayManager** 服務標記的連入網際網路流量。 Azure 基礎結構通訊需要此連接埠範圍。 這些埠會受到 Azure 憑證的保護（鎖定）。 外部實體（包括這些閘道的客戶）無法在這些端點上進行通訊。
 
-- 無法封鎖輸出網際網路連線。 NSG 中的預設輸出規則允許網際網路連線能力。 建議您：
+- 無法封鎖輸出網際網路連線能力。 NSG 中的預設輸出規則允許網際網路連線能力。 建議您：
 
   - 請勿移除預設輸出規則。
   - 請勿建立會拒絕任何輸出連線能力的其他輸出規則。
@@ -65,7 +65,7 @@ Azure 也會在每個子網中保留五個 IP 位址供內部使用：前四個�
 2. 允許來自來源的傳入要求做為**GatewayManager**服務標籤和目的地，做為應用程式閘道 v1 SKU 的**任何**和目的地埠（65503-65534），以及 v2 sku 的埠65200-65535 （適用于[後端健康狀態通訊](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)）。 Azure 基礎結構通訊需要此連接埠範圍。 這些埠會受到 Azure 憑證的保護（鎖定）。 若沒有適當的憑證，外部實體就無法在這些端點上起始變更。
 3. 允許[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)上的傳入 Azure Load Balancer 探查（*AzureLoadBalancer*標記）和輸入虛擬網路流量（*VirtualNetwork*標記）。
 4. 使用「全部拒絕」規則封鎖所有其他連入流量。
-5. 允許所有目的地對網際網路的輸出流量。
+5. 允許所有目的地連到網際網路的輸出流量。
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>應用程式閘道子網路上支援的使用者定義路由
 
@@ -122,11 +122,19 @@ Azure 也會在每個子網中保留五個 IP 位址供內部使用：前四個�
 
 ## <a name="front-end-ip"></a>前端 IP
 
-您可以將應用程式閘道設定為具有公用 IP 位址、私人 IP 位址或兩者。 當您裝載的後端必須透過網際網路對向的虛擬 IP （VIP）來存取用戶端時，就需要公用 IP。 
+您可以將應用程式閘道設定為具有公用 IP 位址、私人 IP 位址或兩者。 當您裝載的後端必須透過網際網路對向的虛擬 IP （VIP）來存取用戶端時，就需要公用 IP。
+
+> [!NOTE]
+> 應用程式閘道 V2 目前不支援私人 IP 模式。 它支援下列組合：
+>* 私人 IP 和公用 IP
+>* 僅限公用 IP
+>
+> 如需詳細資訊，請參閱[關於應用程式閘道的常見問題](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)。
+
 
 不會對網際網路公開的內部端點，不需要公用 IP。 這稱為*內部負載平衡器*（ILB）端點或私人前端 IP。 應用程式閘道 ILB 適用于不會向網際網路公開的內部企業營運系統應用程式。 對於不會公開至網際網路，但需要迴圈配置資源負載分配、會話粘性或 TLS 終止的安全性界限內的服務和層級，它也很有用。
 
-僅支援1個公用 IP 位址或一個私人 IP 位址。 當您建立應用程式閘道時，請選擇前端 IP。
+僅支援一個公用 IP 位址或一個私人 IP 位址。 當您建立應用程式閘道時，請選擇前端 IP。
 
 - 針對公用 IP，您可以建立新的公用 IP 位址，或使用與應用程式閘道位於相同位置的現有公用 IP。 如需詳細資訊，請參閱[靜態與動態公用 IP 位址](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)。
 

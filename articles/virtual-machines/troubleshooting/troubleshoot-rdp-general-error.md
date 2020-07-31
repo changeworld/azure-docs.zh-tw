@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: df318fea4960601dcbfa84149fdc47bedc9104a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2a1a5f3eaf79a345b0d33f43d260fe6aa15236b
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079820"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439245"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>在 Azure VM 中對 RDP 一般錯誤進行疑難排解
 
@@ -58,7 +58,7 @@ ms.locfileid: "87079820"
 
 RDP 接聽程式的設定不正確。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 若要解決此問題，請使用序列控制或離線修復 VM。
 
@@ -81,7 +81,7 @@ RDP 接聽程式的設定不正確。
 1. 檢查是否已由群組原則停用 RDP。
 
     ```
-    REM Get the group policy 
+    REM Get the group policy setting
     reg query "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fDenyTSConnections
     ```
     如果群組原則指出 RDP 已停用（fDenyTSConnections 值為0x1），請執行下列命令以啟用 TermService 服務。 如果找不到登錄機碼，則沒有設定為停用 RDP 的群組原則。 您可以移至下一個步驟。

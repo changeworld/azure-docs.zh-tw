@@ -458,12 +458,15 @@
         - name: 參數化查詢
           displayName: 'parameterized query, parameterized, parameter, parameters'
           href: sql-query-parameterized-queries.md
-        - name: LINQ to SQL
-          displayName: 'linq, .NET'
-          href: sql-query-linq-to-sql.md
         - name: SQL 查詢執行
           displayName: 'query performance, query execution'
           href: sql-query-execution.md
+        - name: 分頁
+          displayName: 'page, paging, continuation, token, pagination'
+          href: sql-query-pagination.md
+        - name: LINQ to SQL
+          displayName: 'linq, .NET'
+          href: sql-query-linq-to-sql.md
     - name: 使用 Azure Cosmos 帳戶
       href: account-overview.md
     - name: 容器和項目
@@ -671,7 +674,7 @@
             - name: 使用 Powershell 管理
               href: powershell-samples-cassandra.md
             - name: 使用 Azure CLI 管理
-              href: cli-samples-cassandra.md
+              href: cli-samples.md
     - name: MongoDB API
       items:
         - name: 概觀
@@ -765,7 +768,7 @@
             - name: 使用 Powershell 管理
               href: powershell-samples-mongodb.md
             - name: 使用 Azure CLI 管理
-              href: cli-samples-mongodb.md
+              href: cli-samples.md
             - name: 針對常見問題進行疑難排解
               href: mongodb-troubleshoot.md
     - name: Gremlin API
@@ -825,7 +828,7 @@
             - name: 使用 Powershell 管理
               href: powershell-samples-gremlin.md
             - name: 使用 Azure CLI 管理
-              href: cli-samples-gremlin.md
+              href: cli-samples.md
         - name: 參考
           items:
             - name: 回應標頭
@@ -896,7 +899,7 @@
             - name: 使用 Powershell 管理
               href: powershell-samples-table.md
             - name: 使用 Azure CLI 管理
-              href: cli-samples-table.md
+              href: cli-samples.md
         - name: 參考
           items:
             - name: .NET

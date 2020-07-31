@@ -4,15 +4,15 @@ description: 如果 Azure 中的 Analysis Services 伺服器會連接到內部�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76310147"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438832"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用內部部署資料閘道連接到內部部署資料來源
 
@@ -28,12 +28,12 @@ ms.locfileid: "76310147"
 
 - 在**azure 中建立閘道資源**-在此步驟中，您會在 azure 中建立閘道資源。
 
-- **將您的伺服器連線到閘道資源**-一旦您擁有閘道資源之後，就可以開始將伺服器連接到它。 您可以將多部伺服器和其他資源連接到相同的區域。
+- 將**閘道資源連接到伺服器**-一旦您擁有閘道資源，就可以開始連接伺服器。 您可以將多部伺服器和其他資源連接到相同的區域。
 
 
 
-## <a name="how-it-works"></a><a name="how-it-works"> </a>運作方式
-您在組織的電腦上安裝的閘道會以 Windows 服務 (**內部部署資料閘道**) 的形式執行。 此本機服務已透過 Azure 服務匯流排向閘道雲端服務註冊。 接著，您會為您的 Azure 訂用帳戶建立內部部署資料閘道資源。 您的 Azure Analysis Services 伺服器接著會連線到您的 Azure 閘道資源。 當您伺服器上的模型需要連線到內部部署資料來源進行查詢或處理時，查詢和資料流程會周遊閘道資源、Azure 服務匯流排、本機內部部署資料閘道服務以及您的資料來源。 
+## <a name="how-it-works"></a>運作方式
+您在組織的電腦上安裝的閘道會以 Windows 服務 (**內部部署資料閘道**) 的形式執行。 此本機服務已透過 Azure 服務匯流排向閘道雲端服務註冊。 接著，您可以為 Azure 訂用帳戶建立內部部署資料閘道資源。 您的 Azure Analysis Services 伺服器接著會連線到您的 Azure 閘道資源。 當您伺服器上的模型需要連線到內部部署資料來源進行查詢或處理時，查詢和資料流程會周遊閘道資源、Azure 服務匯流排、本機內部部署資料閘道服務以及您的資料來源。 
 
 ![運作方式](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
@@ -46,9 +46,13 @@ ms.locfileid: "76310147"
 5. 閘道將查詢傳送至資料來源執行。
 6. 結果會從資料來源傳送回閘道，然後再到雲端服務和您的伺服器。
 
-## <a name="installing"></a>安裝
+## <a name="installing"></a>安裝中
 
 針對 Azure Analysis Services 環境進行安裝時，請務必遵循[安裝和設定 azure Analysis Services 的內部部署資料閘道](analysis-services-gateway-install.md)中所述的步驟。 本文適用于 Azure Analysis Services。 其中包含在 Azure 中設定內部部署資料閘道資源所需的額外步驟，並將您的 Azure Analysis Services 伺服器連線至資源。
+
+## <a name="connecting-to-a-gateway-resource-in-a-different-subscription"></a>連接到不同訂用帳戶中的閘道資源
+
+建議您在與伺服器相同的訂用帳戶中建立 Azure 閘道資源。 不過，您可以將伺服器設定為連接到另一個訂用帳戶中的閘道資源。 在入口網站中設定現有的伺服器設定或建立新的伺服器時，不支援連接到另一個訂用帳戶中的閘道資源，但可以使用 PowerShell 進行設定。 若要深入瞭解，請參閱[將閘道資源連接到伺服器](analysis-services-gateway-install.md#connect-gateway-resource-to-server)。
 
 ## <a name="ports-and-communication-settings"></a>埠和通訊設定
 
@@ -58,7 +62,7 @@ ms.locfileid: "76310147"
 
 以下是閘道所使用的完整功能變數名稱。
 
-| 網域名稱 | 輸出連接埠 | Description |
+| 網域名稱 | 輸出連接埠 | 描述 |
 | --- | --- | --- |
 | *.powerbi.com |80 |用於下載安裝程式的 HTTP。 |
 | *.powerbi.com |443 |HTTPS |
@@ -71,9 +75,9 @@ ms.locfileid: "76310147"
 | login.microsoftonline.com |443 |HTTPS |
 | *.msftncsi.com |443 |如果 Power BI 服務無法連接至閘道，則用來測試網際網路連線能力。 |
 | *.microsoftonline-p.com |443 |用於驗證 (視設定而定)。 |
-| dc.services.visualstudio.com  |443 |供 AppInsights 用來收集遙測資料。 |
+| dc.services.visualstudio.com    |443 |供 AppInsights 用來收集遙測資料。 |
 
-### <a name="forcing-https-communication-with-azure-service-bus"></a><a name="force-https"></a>強制使用 Azure 服務匯流排進行 HTTPS 通訊
+### <a name="forcing-https-communication-with-azure-service-bus"></a>強制使用 Azure 服務匯流排進行 HTTPS 通訊
 
 您可以強制閘道使用 HTTPS 取代直接 TCP 來與 Azure 服務匯流排通訊；但這樣會大幅降低效能。 您可以修改 *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* 檔案，方法是將值從 `AutoDetect` 變更為 `Https`。 這個檔案通常位於 *C:\Program Files\On-premises data gateway*。
 

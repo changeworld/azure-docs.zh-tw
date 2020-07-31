@@ -3,16 +3,16 @@ title: 加拿大聯邦 PBMM 藍圖範例概觀
 description: 加拿大聯邦 PBMM 藍圖範例概觀。 此藍圖範例可協助客戶評定特定加拿大聯邦 PBMM 控制措施。
 ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: fcaf4a844db10f4a87b205d08cfe3a86a6182957
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: a33cba28459b1d01e816babbfc65c1b662bd2718
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005670"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419677"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大聯邦 PBMM 藍圖範例概觀
 
-加拿大聯邦 B 級保護。中度完整性、中度可用 (PBMM) 藍圖範例使用 [Azure 原則](../../../policy/overview.md)提供一組細項分類的治理方式，協助使用者取得[加拿大聯邦 PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4) 證明。 
+加拿大聯邦 B 級保護。中度完整性、中度可用 (PBMM) 藍圖範例使用 [Azure 原則](../../../policy/overview.md)提供一組細項分類的治理方式，協助使用者取得[加拿大聯邦 PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html) 證明。 
 
 ## <a name="blueprint-sample"></a>藍圖範例
 

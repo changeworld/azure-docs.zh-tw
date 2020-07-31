@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 17b54eb747e3ddd3b381659031171bc795b61f54
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bf503cf90df7b08e5a957416d66eae2f1a599bed
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430453"
+ms.locfileid: "87438954"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -32,11 +32,11 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 ## <a name="july-2020"></a>2020 年 7 月
 
 7月份的更新包括：
-- [虛擬機器的弱點評定現在可供非 marketplace 映射自動使用](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)        
+- [虛擬機器的弱點評定現在適用于非 marketplace 映射](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
 - [Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 （預覽）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
 - [啟用威脅防護功能的八個新建議](#eight-new-recommendations-to-enable-threat-protection-features)
 - [容器安全性改進-更快的登錄掃描和重新整理檔](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
-- [更新彈性應用程式控制項規則的新建議](#new-recommendation-to-update-your-adaptive-application-controls-rules)
+- [在路徑規則中使用新的建議和萬用字元支援來更新彈性應用程式控制](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
 - [適用于 SQL advanced data security 的六個原則已被取代](#six-policies-for-sql-advanced-data-security-deprecated)
 
 
@@ -115,11 +115,16 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 
 
 
-### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>更新彈性應用程式控制項規則的新建議
+### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>在路徑規則中使用新的建議和萬用字元支援來更新彈性應用程式控制
 
-彈性應用程式控制功能會持續監視已設定群組中電腦的活動。 在此更新中，系統會通知您有可能是先前未允許的合法行為，而這可能會導致誤報的警示。
+調適型應用程式控制功能已收到兩個重大更新：
 
-**您應該更新彈性應用程式控制原則中的允許清單規則**，並提示您將新規則新增至現有的原則，以減少彈性應用程式控制違規警示中的誤報數目。
+- 新的建議會識別先前未允許的可能合法行為。 **您應該更新彈性應用程式控制原則中的允許清單規則**，並提示您將新規則新增至現有的原則，以減少彈性應用程式控制違規警示中的誤報數目。
+
+- 路徑規則現在支援萬用字元。 在此更新中，您可以使用萬用字元來設定允許的路徑規則。 支援的案例有兩種：
+
+    - 在路徑結尾使用萬用字元，以允許此資料夾和子資料夾中的所有可執行檔
+    - 在路徑中間使用萬用字元，可啟用具有變更資料夾名稱的已知可執行檔名稱（例如，具有已知可執行檔的個人使用者資料夾、自動產生的資料夾名稱等等）。 
 
 [深入了解自適性應用程式控制](security-center-adaptive-application.md)。
 
