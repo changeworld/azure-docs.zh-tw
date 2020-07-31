@@ -220,11 +220,11 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: 安全
       items:
-        - name: 設定防火牆
+        - name: 允許從特定 IP 位址的存取
           href: service-bus-ip-filtering.md
-        - name: 設定虛擬網路服務端點
+        - name: 允許從特定虛擬網路的存取
           href: service-bus-service-endpoints.md
-        - name: 設定私人端點
+        - name: 允許透過私人端點的存取
           href: private-link-service.md
         - name: 設定客戶管理的金鑰
           href: configure-customer-managed-key.md

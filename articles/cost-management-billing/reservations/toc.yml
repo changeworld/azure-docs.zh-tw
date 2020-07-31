@@ -51,6 +51,8 @@
       items:
         - name: 檢視保留項目和使用率
           href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 以 CSP 的形式檢視保留項目
+          href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 管理保留項目
           href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: 變更最佳化設定

@@ -5,16 +5,16 @@ author: vikramdesai01
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/12/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: e7a6f105c6c8292e8e95b388d60dd95c3548dbb5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 74c00678ca901d163d951e02167c89896c43e7b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79237661"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281764"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>管理對 Azure 帳單資訊的存取
 
@@ -105,7 +105,7 @@ ms.locfileid: "79237661"
 ## <a name="next-steps"></a>後續步驟
 
 - 具備其他角色 (例如「擁有者」和「參與者」) 的使用者不僅可存取帳單資訊，還可存取 Azure 服務。 若要管理這些角色，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
-- 如需角色的詳細資訊，請參閱 [Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)。
+- 如需角色的詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 

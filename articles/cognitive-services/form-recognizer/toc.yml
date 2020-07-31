@@ -42,6 +42,8 @@
   items:
     - name: 使用表單辨識器搭配認知搜尋
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
+    - name: 使用表單辨識器搭配 AI Builder
+      href: tutorial-ai-builder.md
 - name: 操作指南
   items:
     - name: 建置訓練資料集

@@ -8,6 +8,7 @@
     - name: 什麼是單一登入 (SSO)？
       href: what-is-single-sign-on.md
 - name: 快速入門
+  expanded: true
   items:
     - name: 檢視您的應用程式
       href: view-applications-portal.md
@@ -30,7 +31,7 @@
     - name: 適用於應用程式 Proxy 的 Azure PowerShell 範例
       href: application-proxy-powershell-samples.md
 - name: 概念
-  expanded: true
+  expanded: false
   items:
     - name: 應用程式管理最佳做法
       href: application-management-fundamentals.md
@@ -97,195 +98,177 @@
         - name: 比較遠端存取解決方案
           href: application-proxy-migration.md
 - name: 操作指南
-  expanded: true
+  expanded: false
   items:
-    - name: 雲端應用程式和單一登入
+    - name: 設定單一登入
       items:
-        - name: 設定單一登入
-          items:
-            - name: 設定 SAML 型單一登入
-              items:
-                - name: 設定 SAML 型單一登入
-                  href: configure-saml-single-sign-on.md
-                - name: 自訂使用者屬性和宣告
-                  items:
-                    - name: 設定群組宣告
-                      href: /azure/active-directory/hybrid/how-to-connect-fed-group-claims?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: 設定角色宣告
-                      href: /azure/active-directory/develop/active-directory-enterprise-app-role-management?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: 在入口網站中自訂宣告
-                      href: /azure/active-directory/develop/active-directory-saml-claims-customization?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: 透過 PowerShell 自訂宣告
-                      href: /azure/active-directory/develop/active-directory-claims-mapping?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: 設定選擇性宣告
-                      href: /azure/active-directory/develop/active-directory-optional-claims?context=azure/active-directory/manage-apps/context/manage-apps-context
-                    - name: 設定權杖存留期
-                      href: /azure/active-directory/develop/active-directory-configurable-token-lifetimes?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: 設定密碼式登入
-              href: configure-password-single-sign-on-non-gallery-applications.md
-            - name: 設定連結的登入
-              href: configure-linked-sign-on.md
-        - name: 指派使用者和管理應用程式存取
-          items:
-            - name: 設定使用者同意
-              href: configure-user-consent.md
-            - name: 管理和評估同意要求
-              href: manage-consent-requests.md
-            - name: 授與全租用戶管理員同意
-              href: grant-admin-consent.md
-            - name: 設定管理員同意工作流程 (預覽)
-              href: configure-admin-consent-workflow.md
-            - name: 將使用者或群組指派給應用程式
-              href: assign-user-or-group-access-portal.md
-            - name: 檢閱授與給應用程式的權限
-              href: manage-application-permissions.md
-            - name: 在我的應用程式上建立集合
-              href: access-panel-collections.md
-            - name: 使用服務應用程式存取
-              href: access-panel-manage-self-service-access.md
-            - name: 將使用者存取權從應用程式移除的方法
-              href: methods-for-removing-user-access.md
-            - name: 移除使用者或群組存取權
-              href: remove-user-or-group-access-portal.md
-            - name: 隱藏來自使用者的應用程式
-              href: hide-application-from-user-portal.md
-            - name: 停用使用者登入
-              href: disable-user-sign-in-portal.md
-            - name: 設定自助式應用程式指派
-              href: manage-self-service-access.md
-            - name: 主領域探索
-              href: configure-authentication-for-federated-users-portal.md
+        - name: 設定 SAML 型單一登入
+          href: configure-saml-single-sign-on.md
+        - name: 設定密碼式登入
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: 設定連結的登入
+          href: configure-linked-sign-on.md
         - name: 使用 MS Graph API 自動執行 SAML 型單一登入
           href: application-saml-sso-configure-api.md
-        - name: 將應用程式遷移至 Azure AD
-          items:
-            - name: 移轉資源
-              href: migration-resources.md
-            - name: 將 ADFS 應用程式遷移至 Azure
-              href: migrate-adfs-apps-to-azure.md
-            - name: 使用 AD FS 應用程式活動報告 (預覽)
-              href: migrate-adfs-application-activity.md
-        - name: 疑難排解
-          items:
-            - name: 新增應用程式疑難排解
-              items:
-                - name: 常見問題 - 資源庫應用程式
-                  href: adding-gallery-app-common-problems.md
-                - name: 常見問題 - 非資源庫應用程式
-                  href: adding-non-gallery-app-common-problems.md
-            - name: 使用者登入疑難排解
-              items:
-                - name: 未預期的同意提示
-                  href: application-sign-in-unexpected-user-consent-prompt.md
-                - name: 使用者同意錯誤
-                  href: application-sign-in-unexpected-user-consent-error.md
-                - name: 從自訂入口網站登入時發生問題
-                  href: application-sign-in-other-problem-deeplink.md
-                - name: 從存取面板登入時發生問題
-                  href: application-sign-in-other-problem-access-panel.md
-                - name: 應用程式登入頁面發生錯誤
-                  href: application-sign-in-problem-application-error.md
-                - name: 密碼單一登入問題 - 非資源庫應用程式
-                  href: application-sign-in-problem-password-sso-non-gallery.md
-                - name: 密碼單一登入問題 - 資源庫應用程式
-                  href: application-sign-in-problem-password-sso-gallery.md
-                - name: 登入 Microsoft 應用程式時發生問題
-                  href: application-sign-in-problem-first-party-microsoft.md
-                - name: 同盟單一登入問題 - 非資源庫應用程式
-                  href: application-sign-in-problem-federated-sso-non-gallery.md
-                - name: 同盟單一登入問題 - 資源庫應用程式
-                  href: application-sign-in-problem-federated-sso-gallery.md
-                - name: 自訂開發應用程式問題
-                  href: application-sign-in-problem-custom-dev.md
-            - name: 單一登入疑難排解
-              items:
-                - name: 設定同盟常見問題 - 資源庫應用程式
-                  href: configure-federated-single-sign-on-gallery-applications-problems.md
-                - name: 設定同盟常見問題 - 非資源庫應用程式
-                  href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-                - name: 設定密碼常見問題 - 資源庫應用程式
-                  href: configure-password-single-sign-on-gallery-applications-problems.md
-                - name: 設定密碼常見問題 - 非資源庫應用程式
-                  href: configure-password-single-sign-on-non-gallery-applications-problems.md
-            - name: 應用程式清單和指派疑難排解
-              items:
-                - name: 管理租用戶應用程式清單
-                  href: application-types.md
-                - name: 指派未預期的使用者
-                  href: ways-users-get-assigned-to-applications.md
-            - name: 存取面板疑難排解
-              items:
-                - name: 管理瀏覽器延伸模組
-                  href: manage-access-panel-browser-extension.md
-                - name: 未顯示的應用程式
-                  href: access-panel-troubleshoot-application-not-appearing.md
-                - name: 出現未預期的應用程式
-                  href: access-panel-troubleshoot-unexpected-application.md
-                - name: 無法登入
-                  href: access-panel-troubleshoot-web-sign-in-problem.md
-                - name: 安裝瀏覽器擴充功能時發生錯誤
-                  href: access-panel-extension-problem-installing.md
-                - name: 使用自助應用程式存取時發生錯誤
-                  href: access-panel-troubleshoot-self-service-access.md
-    - name: 適用於內部部屬應用程式的 Application Proxy
+    - name: 指派使用者和管理應用程式存取
       items:
-        - name: 設定連接器
+        - name: 設定使用者同意
+          href: configure-user-consent.md
+        - name: 管理和評估同意要求
+          href: manage-consent-requests.md
+        - name: 授與全租用戶管理員同意
+          href: grant-admin-consent.md
+        - name: 設定管理員同意工作流程 (預覽)
+          href: configure-admin-consent-workflow.md
+        - name: 將使用者或群組指派給應用程式
+          href: assign-user-or-group-access-portal.md
+        - name: 檢閱授與給應用程式的權限
+          href: manage-application-permissions.md
+        - name: 在我的應用程式上建立集合
+          href: access-panel-collections.md
+        - name: 使用服務應用程式存取
+          href: access-panel-manage-self-service-access.md
+        - name: 將使用者存取權從應用程式移除的方法
+          href: methods-for-removing-user-access.md
+        - name: 移除使用者或群組存取權
+          href: remove-user-or-group-access-portal.md
+        - name: 隱藏來自使用者的應用程式
+          href: hide-application-from-user-portal.md
+        - name: 停用使用者登入
+          href: disable-user-sign-in-portal.md
+        - name: 設定自助式應用程式指派
+          href: manage-self-service-access.md
+        - name: 主領域探索
+          href: configure-authentication-for-federated-users-portal.md
+    - name: 將身分識別遷移至 Azure AD
+      items:
+        - name: 移轉資源
+          href: migration-resources.md
+        - name: 將 ADFS 應用程式遷移至 Azure
+          href: migrate-adfs-apps-to-azure.md
+        - name: 使用 AD FS 應用程式活動報告 (預覽)
+          href: migrate-adfs-application-activity.md
+    - name: 設定內部部署連接器
+      items:
+        - name: 使用 Proxy 伺服器設定
+          href: application-proxy-configure-connectors-with-proxy-servers.md
+        - name: 註冊連接器 - 無訊息安裝
+          href: application-proxy-register-connector-powershell.md
+    - name: 設定內部部署應用程式存取
+      items:
+        - name: 設定宣告感知應用程式
+          href: application-proxy-configure-for-claims-aware-applications.md
+        - name: 提供內部部署 API 行動和桌面應用程式存取權
+          href: application-proxy-secure-api-access.md
+        - name: 設定行動和桌面用戶端應用程式
+          href: application-proxy-configure-native-client-application.md
+        - name: 設定自訂首頁
+          href: application-proxy-configure-custom-home-page.md
+        - name: 翻譯內嵌連結
+          href: application-proxy-configure-hard-coded-link-translation.md
+        - name: 設定 cookie 設定
+          href: application-proxy-configure-cookie-settings.md
+        - name: 使用萬用字元發佈
+          href: application-proxy-wildcard.md
+        - name: 移除個人資料
+          href: application-proxy-remove-personal-data.md
+        - name: 設定自訂網域
+          href: application-proxy-configure-custom-domain.md
+        - name: 使用應用程式 Proxy 進行單一登入
           items:
-            - name: 使用 Proxy 伺服器設定
-              href: application-proxy-configure-connectors-with-proxy-servers.md
-            - name: 註冊連接器 - 無訊息安裝
-              href: application-proxy-register-connector-powershell.md
-        - name: 設定應用程式存取
+            - name: Kerberos 限制委派 (KCD)
+              href: application-proxy-configure-single-sign-on-with-kcd.md
+            - name: 密碼保存庫
+              href: application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: headers
+              href: application-proxy-configure-single-sign-on-with-ping-access.md
+            - name: SAML SSO
+              href: application-proxy-configure-single-sign-on-on-premises-apps.md
+        - name: 使用應用程式傳遞控制器或網路保護舊版應用程式
+          href: secure-hybrid-access.md
+        - name: 發佈逐步解說
           items:
-            - name: 設定宣告感知應用程式
-              href: application-proxy-configure-for-claims-aware-applications.md
-            - name: 提供內部部署 API 行動和桌面應用程式存取權
-              href: application-proxy-secure-api-access.md
-            - name: 設定行動和桌面用戶端應用程式
-              href: application-proxy-configure-native-client-application.md
-            - name: 設定自訂首頁
-              href: application-proxy-configure-custom-home-page.md
-            - name: 翻譯內嵌連結
-              href: application-proxy-configure-hard-coded-link-translation.md
-            - name: 設定 cookie 設定
-              href: application-proxy-configure-cookie-settings.md
-            - name: 使用萬用字元發佈
-              href: application-proxy-wildcard.md
-            - name: 移除個人資料
-              href: application-proxy-remove-personal-data.md
-            - name: 設定自訂網域
-              href: application-proxy-configure-custom-domain.md
-            - name: 使用應用程式 Proxy 進行單一登入
-              items:
-                - name: Kerberos 限制委派 (KCD)
-                  href: application-proxy-configure-single-sign-on-with-kcd.md
-                - name: 密碼保存庫
-                  href: application-proxy-configure-single-sign-on-password-vaulting.md
-                - name: headers
-                  href: application-proxy-configure-single-sign-on-with-ping-access.md
-                - name: SAML SSO
-                  href: application-proxy-configure-single-sign-on-on-premises-apps.md
-            - name: 發佈逐步解說
-              items:
-                - name: 與 NDES 伺服器上的應用程式 Proxy 整合
-                  href: active-directory-app-proxy-protect-ndes.md
-                - name: 與 Azure AD Domain Services 整合
-                  href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
-                - name: 與 Power BI 整合
-                  href: application-proxy-integrate-with-power-bi.md
-                - name: 與 Cloud App Security 整合
-                  href: application-proxy-integrate-with-microsoft-cloud-application-security.md
-                - name: 與遠端桌面整合
-                  href: application-proxy-integrate-with-remote-desktop-services.md
-                - name: 與 SharePoint 整合
-                  href: application-proxy-integrate-with-sharepoint-server.md
-                - name: 與 Teams 整合
-                  href: application-proxy-integrate-with-teams.md
-                - name: 與 Tableau 整合
-                  href: application-proxy-integrate-with-tableau.md
-                - name: 與 OIik 整合
-                  href: application-proxy-qlik.md
-        - name: 疑難排解應用程式 Proxy
+            - name: 與 NDES 伺服器上的應用程式 Proxy 整合
+              href: active-directory-app-proxy-protect-ndes.md
+            - name: 與 Azure AD Domain Services 整合
+              href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
+            - name: 與 Power BI 整合
+              href: application-proxy-integrate-with-power-bi.md
+            - name: 與 Cloud App Security 整合
+              href: application-proxy-integrate-with-microsoft-cloud-application-security.md
+            - name: 與遠端桌面整合
+              href: application-proxy-integrate-with-remote-desktop-services.md
+            - name: 與 SharePoint 整合
+              href: application-proxy-integrate-with-sharepoint-server.md
+            - name: 與 Teams 整合
+              href: application-proxy-integrate-with-teams.md
+            - name: 與 Tableau 整合
+              href: application-proxy-integrate-with-tableau.md
+            - name: 與 OIik 整合
+              href: application-proxy-qlik.md
+    - name: 疑難排解
+      items:
+        - name: 新增應用程式疑難排解
+          items:
+            - name: 常見問題 - 資源庫應用程式
+              href: adding-gallery-app-common-problems.md
+            - name: 常見問題 - 非資源庫應用程式
+              href: adding-non-gallery-app-common-problems.md
+        - name: 使用者登入疑難排解
+          items:
+            - name: 未預期的同意提示
+              href: application-sign-in-unexpected-user-consent-prompt.md
+            - name: 使用者同意錯誤
+              href: application-sign-in-unexpected-user-consent-error.md
+            - name: 從自訂入口網站登入時發生問題
+              href: application-sign-in-other-problem-deeplink.md
+            - name: 從存取面板登入時發生問題
+              href: application-sign-in-other-problem-access-panel.md
+            - name: 應用程式登入頁面發生錯誤
+              href: application-sign-in-problem-application-error.md
+            - name: 密碼單一登入問題 - 非資源庫應用程式
+              href: application-sign-in-problem-password-sso-non-gallery.md
+            - name: 密碼單一登入問題 - 資源庫應用程式
+              href: application-sign-in-problem-password-sso-gallery.md
+            - name: 登入 Microsoft 應用程式時發生問題
+              href: application-sign-in-problem-first-party-microsoft.md
+            - name: 同盟單一登入問題 - 非資源庫應用程式
+              href: application-sign-in-problem-federated-sso-non-gallery.md
+            - name: 同盟單一登入問題 - 資源庫應用程式
+              href: application-sign-in-problem-federated-sso-gallery.md
+            - name: 自訂開發應用程式問題
+              href: application-sign-in-problem-custom-dev.md
+        - name: 單一登入疑難排解
+          items:
+            - name: 設定同盟常見問題 - 資源庫應用程式
+              href: configure-federated-single-sign-on-gallery-applications-problems.md
+            - name: 設定同盟常見問題 - 非資源庫應用程式
+              href: configure-federated-single-sign-on-non-gallery-applications-problems.md
+            - name: 設定密碼常見問題 - 資源庫應用程式
+              href: configure-password-single-sign-on-gallery-applications-problems.md
+            - name: 設定密碼常見問題 - 非資源庫應用程式
+              href: configure-password-single-sign-on-non-gallery-applications-problems.md
+        - name: 應用程式清單和指派疑難排解
+          items:
+            - name: 管理租用戶應用程式清單
+              href: application-types.md
+            - name: 指派未預期的使用者
+              href: ways-users-get-assigned-to-applications.md
+        - name: 存取面板疑難排解
+          items:
+            - name: 管理瀏覽器延伸模組
+              href: manage-access-panel-browser-extension.md
+            - name: 未顯示的應用程式
+              href: access-panel-troubleshoot-application-not-appearing.md
+            - name: 出現未預期的應用程式
+              href: access-panel-troubleshoot-unexpected-application.md
+            - name: 無法登入
+              href: access-panel-troubleshoot-web-sign-in-problem.md
+            - name: 安裝瀏覽器擴充功能時發生錯誤
+              href: access-panel-extension-problem-installing.md
+            - name: 使用自助應用程式存取時發生錯誤
+              href: access-panel-troubleshoot-self-service-access.md
+        - name: 針對內部部署應用程式進行疑難排解
           items:
             - name: 應用程式 Proxy 疑難排解
               href: application-proxy-troubleshoot.md
@@ -319,10 +302,6 @@
               href: application-sign-in-problem-on-premises-application-proxy.md
             - name: 應用程式 Proxy 中的 CORS 問題
               href: application-proxy-understand-cors-issues.md
-    - name: 安全混合式存取 (雲端和內部部署)
-      items:
-        - name: 使用應用程式傳遞控制器或網路保護舊版應用程式
-          href: secure-hybrid-access.md
 - name: 參考
   items:
     - name: 應用程式 Proxy 常見問題集

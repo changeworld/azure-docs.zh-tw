@@ -512,6 +512,8 @@
           href: active-directory-claims-mapping.md
         - name: 設定選擇性宣告
           href: active-directory-optional-claims.md
+        - name: 在宣告中使用目錄結構描述擴充屬性
+          href: active-directory-schema-extensions.md
         - name: 設定權杖存留期
           href: active-directory-configurable-token-lifetimes.md
         - name: 處理 Chrome 瀏覽器中的 SameSite Cookie 變更

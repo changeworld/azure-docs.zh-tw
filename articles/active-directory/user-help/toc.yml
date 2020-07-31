@@ -68,7 +68,9 @@
       href: my-account-portal-privacy-page.md
     - name: 檢視您最近的登入活動
       href: my-account-portal-sign-ins-page.md
-- name: 安全性資訊 (預覽) 說明
+    - name: 變更您的入口網站設定
+      href: my-account-portal-settings.md
+- name: 安全性資訊說明
   items:
     - name: 在登入期間新增安全性資訊
       href: security-info-setup-signin.md

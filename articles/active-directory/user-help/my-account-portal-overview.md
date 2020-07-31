@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/20/2020
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 878fbb81e05db058aa015f8b4a7eae42e8cfea2e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742199"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422400"
 ---
 # <a name="what-is-the-my-account-portal"></a>什麼是「我的帳戶」入口網站？
 
@@ -33,7 +33,7 @@ ms.locfileid: "83742199"
 ![[我的帳戶] 入口網站，[概觀] 頁面](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->本文適用於嘗試進入我的帳戶入口網站的使用者，以更新其安全性資訊、裝置資訊、密碼、已連線的組織、隱私權或先前的登入資訊。 如果您是系統管理員，且正在尋找如何為您的員工和其他使用者開啟驗證和其他 Azure Active Directory (Azure AD) 功能的相關資訊，請參閱[適用於系統管理員的 Azure AD 文件](https://docs.microsoft.com/azure/active-directory/)。
+>本文適用於嘗試進入我的帳戶入口網站的使用者，以更新其安全性資訊、裝置資訊、密碼、已連線的組織、語言設定、隱私權或先前的登入資訊。 如果您是系統管理員，且正在尋找如何為您的員工和其他使用者開啟驗證和其他 Azure Active Directory (Azure AD) 功能的相關資訊，請參閱[適用於系統管理員的 Azure AD 文件](https://docs.microsoft.com/azure/active-directory/)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -46,6 +46,8 @@ ms.locfileid: "83742199"
 - 檢視您的[登入活動](my-account-portal-sign-ins-page.md)
 
 - 檢視貴組織如何[使用您的隱私權相關資料](my-account-portal-privacy-page.md)
+
+- 變更 [我的帳戶入口網站設定](my-account-portal-settings.md)
 
 ## <a name="related-microsoft-office-content"></a>相關 Microsoft Office 內容
 

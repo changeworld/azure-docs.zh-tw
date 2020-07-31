@@ -4,6 +4,8 @@
   items:
     - name: 關於 Azure 應用程式組態
       href: overview.md
+    - name: 最佳作法
+      href: howto-best-practices.md
     - name: 常見問題集
       href: faq.md
 - name: 快速入門
@@ -34,26 +36,32 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: 教學課程
   items:
-    - name: 啟用 ASP.NET Core 中的動態組態
-      href: enable-dynamic-configuration-aspnet-core.md
-    - name: 啟用 .NET Core 應用程式中的動態組態
-      href: enable-dynamic-configuration-dotnet-core.md
-    - name: 啟用 .NET Framework 中的動態組態
-      href: enable-dynamic-configuration-dotnet.md
-    - name: 啟用 Azure Functions 中的動態組態
-      href: enable-dynamic-configuration-azure-functions-csharp.md
-    - name: 啟用 Spring Boot 中的動態組態
-      href: enable-dynamic-configuration-java-spring-app.md
-    - name: 在 .NET Core 應用程式中使用功能旗標
-      href: use-feature-flags-dotnet-core.md
-    - name: 在 Spring Boot 應用程式中使用功能旗標
-      href: use-feature-flags-spring-boot.md
+    - name: 啟用動態組態
+      items:
+        - name: ASP.NET Core
+          href: enable-dynamic-configuration-aspnet-core.md
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core.md
+        - name: .NET Framework
+          href: enable-dynamic-configuration-dotnet.md
+        - name: Azure Functions
+          href: enable-dynamic-configuration-azure-functions-csharp.md
+        - name: Spring Boot
+          href: enable-dynamic-configuration-java-spring-app.md
+    - name: 使用功能旗標
+      items:
+        - name: .NET Core
+          href: use-feature-flags-dotnet-core.md
+        - name: Spring Boot
+          href: use-feature-flags-spring-boot.md
     - name: 管理功能旗標
       href: manage-feature-flags.md
-    - name: 在 ASP.NET Core 中使用 Key Vault 參考
-      href: use-key-vault-references-dotnet-core.md
-    - name: 在 Spring Boot 中使用 Key Vault 參考
-      href: use-key-vault-references-spring-boot.md
+    - name: 使用 Key Vault 參考
+      items:
+        - name: ASP.NET Core
+          href: use-key-vault-references-dotnet-core.md
+        - name: Spring Boot
+          href: use-key-vault-references-spring-boot.md
     - name: 與 CI/CD 管線整合
       href: integrate-ci-cd-pipeline.md
     - name: 使用 Helm 與 Kubernetes 部署整合
@@ -105,8 +113,6 @@
       href: howto-app-configuration-event.md
     - name: 自動備份設定存放區
       href: howto-backup-config-store.md
-    - name: 最佳作法
-      href: howto-best-practices.md
 - name: 參考
   items:
     - name: 組態

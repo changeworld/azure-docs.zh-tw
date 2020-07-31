@@ -29,30 +29,36 @@
           href: cache-python-get-started.md
 - name: 教學課程
   items:
+    - name: ASP.NET
+      items:
+        - name: 使用工作階段狀態提供者
+          href: cache-aspnet-session-state-provider.md
+        - name: 使用輸出快取提供者
+          href: cache-aspnet-output-cache-provider.md
+    - name: Java Spring
+      items:
+        - name: 使用 Spring Boot 初始設定式
+          href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: 使用快取排行榜
       href: cache-web-app-cache-aside-leaderboard.md
-- name: 範例
-  items:
-    - name: Azure Cache for Redis 範例
-      href: cache-redis-samples.md
-    - name: Azure
+    - name: Azure PowerShell
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure 原則內建
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 安全性
-      items:
-        - name: 安全性基準
-          href: security-baseline.md
     - name: 容錯移轉和修補
       href: cache-failover.md
     - name: 最佳作法
       href: cache-best-practices.md
-    - name: 適用於快取的 Architecture 最佳做法
+    - name: 安全性
+      items:
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
+        - name: 安全性基準
+          href: security-baseline.md
+    - name: 快取架構
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: 操作指南
   items:
@@ -86,18 +92,6 @@
           href: cache-redis-cache-arm-provision.md
         - name: 使用 Azure Cache for Redis 佈建 Web 應用程式
           href: cache-web-app-arm-with-redis-cache-provision.md
-    - name: 與應用程式整合
-      items:
-        - name: ASP.NET
-          items:
-            - name: 使用工作階段狀態提供者
-              href: cache-aspnet-session-state-provider.md
-            - name: 使用輸出快取提供者
-              href: cache-aspnet-output-cache-provider.md
-        - name: Java Spring
-          items:
-            - name: 使用 Spring Boot 初始設定式
-              href: cache-java-spring-boot-initializer-with-redis-cache.md
     - name: 管理
       items:
         - name: 在 Azure 入口網站中設定
@@ -136,35 +130,37 @@
           href: cache-how-to-premium-clustering.md
 - name: 參考
   items:
-    - name: 程式碼範例
-      href: 'https://azure.microsoft.com/resources/samples/?service=redis-cache'
-    - name: Azure PowerShell
-      href: /powershell/module/az.rediscache
-    - name: Azure CLI
-      href: /cli/azure/redis
+    - name: Azure Cache for Redis 範例
+      href: cache-redis-samples.md
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
       href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis 用戶端
       href: 'https://redis.io/clients'
-    - name: Redis 命令
-      href: 'https://redis.io/commands#'
+    - name: Azure PowerShell
+      href: /powershell/module/az.rediscache
+    - name: Azure CLI
+      href: /cli/azure/redis
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/redis/'
     - name: Resource Manager 範本
       href: /azure/templates/microsoft.cache/allversions
+    - name: Azure 原則內建
+      href: ./policy-samples.md
+    - name: Redis 命令
+      href: 'https://redis.io/commands#'
 - name: 資源
   items:
-    - name: 透過 Microsoft Learn 增進您的技巧
-      href: /learn/browse/?products=azure-redis-cache
-    - name: Azure 藍圖
-      href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: 定價
-      href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Azure Cache for Redis 常見問題集
       href: cache-faq.md
     - name: 影片
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Microsoft 問與答頁面
       href: 'https://docs.microsoft.com/answers/topics/azure-cache-redis.html'
+    - name: 定價
+      href: 'https://azure.microsoft.com/pricing/details/cache/'
+    - name: 透過 Microsoft Learn 增進您的技巧
+      href: /learn/browse/?products=azure-redis-cache
+    - name: Azure 藍圖
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'

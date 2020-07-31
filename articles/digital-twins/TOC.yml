@@ -42,8 +42,10 @@
           href: how-to-use-cli.md
         - name: 設定執行個體和驗證 (已編寫指令碼)
           href: how-to-set-up-instance-scripted.md
-        - name: 設定執行個體和驗證 (手動)
-          href: how-to-set-up-instance-manual.md
+        - name: 設定執行個體和驗證 (CLI)
+          href: how-to-set-up-instance-cli.md
+        - name: 設定執行個體和驗證 (入口網站)
+          href: how-to-set-up-instance-portal.md
         - name: 撰寫應用程式驗證碼
           href: how-to-authenticate-client.md
     - name: 設計模型
