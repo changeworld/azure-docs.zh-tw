@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31388f27eddcef2c75d4ad4d2030655b35f6aa1c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76897045"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446957"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health︰版本發行歷程記錄
 Azure Active Directory 團隊會定期以新的特性和功能更新 Azure AD Connect Health。 本文列出已發行的版本和功能。  
@@ -42,11 +42,11 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
    1. 新增 TestWindowsTransport 測試和移除 CheckOffice365Endpoints 測試中的 WsTrust 端點檢查
    2. 記錄 OS 和 .NET 資訊
    3. 將 RP 設定訊息上傳大小增加至 1 MB。
-   4. Bug 修正
+   4. 錯誤修正
    
 * AD DS 的 Azure AD Connect Health 代理程式（版本3.1.56.0） 
    1. 記錄 OS 和 .NET 資訊 
-   2. Bug 修正
+   2. 錯誤修正
 
 ## <a name="may-2019"></a>2019 年 5 月
 **代理程式更新：** 
@@ -217,7 +217,7 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
 ## <a name="november-2015"></a>2015 年 11 月
 **新功能︰**
 
-* 支援 [角色型存取控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* 支援[azure 角色型存取控制（AZURE RBAC）](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
 
 **新的預覽功能：**
 
@@ -253,4 +253,3 @@ Azure AD Connect Health for Sync 會與 Azure AD Connect Health 安裝整合。 
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 [在雲端中監視內部部署身分識別基礎結構和同步處理服務](whatis-hybrid-identity-health.md)。
-

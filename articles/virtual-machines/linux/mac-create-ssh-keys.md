@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: d956ce273a7ea630bfdcf900fbbba5e8be30b254
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 940a24aedb8592d0e809bc79dc1c8977bc3abd38
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288455"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448981"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步驟：在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組
 
@@ -37,10 +37,10 @@ ms.locfileid: "87288455"
 ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-如果您使用 [Azure CLI](/cli/azure) 搭配 [az vm create](/cli/azure/vm#az-vm-create) 命令來建立您的 VM，您即可選擇性地使用 `--generate-ssh-keys` 選項產生 SSH 公開金鑰和私密金鑰檔案。 金鑰檔案會儲存在 ~/.ssh 目錄中，除非使用 `--ssh-dest-key-path` 選項另行指定。 `--generate-ssh-keys` 選項不會覆寫現有的金鑰檔案，而會傳回錯誤。 在下列命令中，將 *VMname* 和 *RGname* 取代為您自己的值：
+如果您使用 [Azure CLI](/cli/azure) 搭配 [az vm create](/cli/azure/vm#az-vm-create) 命令來建立您的 VM，您即可選擇性地使用 `--generate-ssh-keys` 選項產生 SSH 公開金鑰和私密金鑰檔案。 金鑰檔案會儲存在 ~/.ssh 目錄中，除非使用 `--ssh-dest-key-path` 選項另行指定。 如果 ssh 金鑰組已經存在，且 `--generate-ssh-keys` 使用了選項，將不會產生新的金鑰組，而是會使用現有的金鑰組。 在下列命令中，將 *VMname* 和 *RGname* 取代為您自己的值：
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --generate-ssh-keys 
+az vm create --name VMname --resource-group RGname --image UbuntuLTS --generate-ssh-keys 
 ```
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>部署 VM 時，提供 SSH 公開金鑰

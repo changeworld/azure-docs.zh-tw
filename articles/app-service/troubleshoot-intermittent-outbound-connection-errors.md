@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289155"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447908"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>疑難排解 Azure App Service 中的間歇輸出連接錯誤
 
@@ -38,7 +38,7 @@ ms.locfileid: "87289155"
 
 ## <a name="avoiding-the-problem"></a>避免此問題
 
-如果您的目的地是支援服務端點的 Azure 服務，您可以使用[VNet 整合](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)和服務端點來避免 SNAT 埠耗盡問題。 當您使用 VNet 整合並將服務端點放在整合子網上時，您的應用程式輸出流量到這些服務將不會有輸出 SNAT 埠限制。
+如果您的目的地是支援服務端點的 Azure 服務，您可以使用[區域 VNet 整合](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)和服務端點或私人端點來避免 SNAT 埠耗盡問題。 當您使用區域 VNet 整合並將服務端點放在整合子網上時，您的應用程式輸出流量到這些服務將不會有輸出 SNAT 埠限制。 同樣地，如果您使用區域 VNet 整合和私人端點，則該目的地不會有任何輸出 SNAT 埠問題。 
 
 避免 SNAT 埠問題，表示避免重複建立新連線到相同的主機和埠。
 

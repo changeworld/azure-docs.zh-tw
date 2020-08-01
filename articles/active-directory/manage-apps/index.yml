@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: ed81c8d5eda3a9db84d85d79b10c0a5ab76705a4
-  ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+  ms.openlocfilehash: b91e63e7e0b639ca969f9a35c6e3352343408194
+  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85339192"
+  ms.lasthandoff: 07/29/2020
+  ms.locfileid: "87385801"
 landingContent:
 - title: 關於應用程式管理
   linkLists:
@@ -44,7 +44,7 @@ landingContent:
     - text: 新增非資源庫應用程式
       url: add-non-gallery-app.md
     - text: 設定單一登入
-      url: configure-single-sign-on-non-gallery-applications.md
+      url: configure-saml-single-sign-on.md
     - text: 將使用者或群組指派給應用程式
       url: assign-user-or-group-access-portal.md
 - title: 將使用者和群組佈建到應用程式

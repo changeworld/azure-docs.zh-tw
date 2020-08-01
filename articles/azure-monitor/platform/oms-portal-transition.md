@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: b33bd5ba20e21d757e412e9dac7c474308c4561d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077163"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446784"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS 入口網站移至 Azure
 
@@ -32,7 +32,7 @@ Azure 入口網站為所有 Azure 服務的中樞，提供豐富的管理體驗�
 - [OMS 行動裝置應用程式](#oms-mobile-app)即將淘汰。 
 - [NSG 解決方案正](#azure-network-security-group-analytics)由透過流量分析解決方案提供的增強功能所取代。
 - System Center Operations Manager 與 Log Analytics 的新連線需要[更新的管理組件](#system-center-operations-manager)。
-- 如需[更新管理](../../automation/automation-update-management.md)變更的詳細資訊，請參閱[將您的 OMS 更新部署移轉至 Azure](../../automation/migrate-oms-update-deployments.md)。
+- 如需[更新管理](../../automation/update-management/update-mgmt-overview.md)變更的詳細資訊，請參閱[將您的 OMS 更新部署移轉至 Azure](../../automation/migrate-oms-update-deployments.md)。
 
 
 ## <a name="what-should-i-do-now"></a>我現在該怎麼辦？

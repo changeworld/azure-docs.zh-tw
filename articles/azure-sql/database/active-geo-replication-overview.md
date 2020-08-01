@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/28/2020
-ms.openlocfilehash: bdf5d006cf47f4552684aac8af4a759ed1761c93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 10c0d3d5f043d31454810b55e808cd6df01467a4
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087946"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448745"
 ---
 # <a name="creating-and-using-active-geo-replication---azure-sql-database"></a>建立和使用主動式異地複寫-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -238,14 +238,14 @@ ms.locfileid: "87087946"
 
 ## <a name="programmatically-managing-active-geo-replication"></a>以程式設計方式管理主動式異地複寫
 
-如前所述，作用中異地複寫可使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需如何實作存取角色的詳細資訊，請參閱 [Azure 角色型存取控制](../../role-based-access-control/overview.md)。
+如前所述，作用中異地複寫可使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需如何執行存取角色的詳細資訊，請參閱[azure 角色型存取控制（AZURE RBAC）](../../role-based-access-control/overview.md)。
 
 ### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-sql：管理單一和集區資料庫的容錯移轉
 
 > [!IMPORTANT]
 > 這些 Transact-SQL 命令僅適用於作用中異地複寫，不適用於容錯移轉群組。 因此，它們也不適用於 SQL 受控執行個體的實例，因為它們只支援容錯移轉群組。
 
-| 命令 | 說明 |
+| Command | 說明 |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 ADD SECONDARY ON SERVER 引數，針對現有資料庫建立次要資料庫並開始資料複寫 |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |使用 FAILOVER 或 FORCE_FAILOVER_ALLOW_DATA_LOSS，將次要資料庫切換為主要資料庫以便開始容錯移轉 |
@@ -262,7 +262,7 @@ ms.locfileid: "87087946"
 > [!IMPORTANT]
 > Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
-| Cmdlet | 描述 |
+| Cmdlet | 說明 |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |取得一或多個資料庫。 |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |針對現有資料庫建立次要資料庫並開始資料複寫。 |

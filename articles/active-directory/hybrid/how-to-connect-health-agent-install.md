@@ -16,25 +16,25 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7267da7db91e153190e98b09e9a3c505837bd042
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849967"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446318"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理程式安裝
 
 本文件會逐步引導您安裝和設定 Azure AD Connect Health 代理程式。 您可以從 [這裡](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)下載代理程式。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 下表是使用 Azure AD Connect Health 的需求清單。
 
 | 需求 | 說明 |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health 是 Azure AD Premium 的一個功能，而且需要 Azure AD Premium。 <br /><br />如需詳細資訊，請參閱[開始使用 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md) <br />若要開始使用 30 天免費試用版，請參閱[開始使用試用版](https://azure.microsoft.com/trial/get-started-active-directory/)。 |
-| 您必須是 Azure AD 的全域系統管理員，才能開始使用 Azure AD Connect Health |依預設，只有全域系統管理員可以安裝和設定 Health 代理程式，以便開始使用、存取入口網站，以及在 Azure AD Connect Health 內執行任何作業。 如需詳細資訊，請參閱[管理您的 Azure AD 目錄](../fundamentals/active-directory-administer.md)。 <br /><br /> 使用角色型存取控制，您可以允許貴組織中的其他使用者存取 Azure AD Connect Health。 如需詳細資訊，請參閱[適用於 Azure AD Connect Health 的角色型存取控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)。 <br /><br />**重要：** 在安裝代理程式時使用的帳戶必須是工作或學校帳戶。 不能是 Microsoft 帳戶。 如需詳細資訊，請參閱[以組織身分註冊 Azure](../fundamentals/sign-up-organization.md) |
+| 您必須是 Azure AD 的全域系統管理員，才能開始使用 Azure AD Connect Health |依預設，只有全域系統管理員可以安裝和設定 Health 代理程式，以便開始使用、存取入口網站，以及在 Azure AD Connect Health 內執行任何作業。 如需詳細資訊，請參閱[管理您的 Azure AD 目錄](../fundamentals/active-directory-administer.md)。 <br /><br /> 使用 Azure 角色型存取控制（Azure RBAC），您可以允許存取您組織中的其他使用者 Azure AD Connect Health。 如需詳細資訊，請參閱[適用于 Azure AD Connect Health 的 Azure 角色型存取控制（AZURE RBAC）。](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) <br /><br />**重要：** 在安裝代理程式時使用的帳戶必須是工作或學校帳戶。 不能是 Microsoft 帳戶。 如需詳細資訊，請參閱[以組織身分註冊 Azure](../fundamentals/sign-up-organization.md) |
 | Azure AD Connect Health 代理程式安裝在每部目標伺服器上 | Azure AD Connect Health 會要求在目標伺服器上安裝及設定 Health 代理程式，才能接收資料及提供監視和分析功能。 <br /><br />例如，若要從 AD FS 基礎結構取得資料，代理程式必須安裝於 AD FS 及 Web 應用程式 Proxy 伺服器上。 同樣地，若要取得內部部署 AD DS 基礎結構的相關資料，代理程式必須安裝在網域控制站上。 <br /><br /> |
 | Azure 服務端點的輸出連線 | 在安裝期間和執行階段，代理程式需要連線至 Azure AD Connect Health 服務端點。 如果使用防火牆封鎖輸出連線，請確定已將下列端點新增至允許清單。 請參閱[輸出連線端點](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) |
 |以 IP 位址為基礎的輸出連線 | 如需防火牆上以 IP 位址為基礎的篩選，請參閱 [Azure IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。|
@@ -56,7 +56,7 @@ ms.locfileid: "85849967"
 | 網域環境 | 必要 Azure 服務端點 |
 | --- | --- |
 | 一般公用 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
-| Azure 德國 | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
+| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *此端點在註冊期間僅用於探索目的。</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *此端點在註冊期間僅用於探索目的。</li> |
 
 
@@ -294,7 +294,7 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 這些命令接受「認證」做為參數，進而以非互動方式或在 Server Core 機器上完成註冊。
 * 您可以在當作參數傳遞的 PowerShell 變數中擷取認證。
 * 您可以提供任何有權註冊代理程式但未啟用 MFA 的 Azure AD 身分識別。
-* 預設全域系統管理員有權執行代理程式註冊。 您也可以允許其他權限較小的身分識別執行此步驟。 深入了解[角色型存取控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)。
+* 預設全域系統管理員有權執行代理程式註冊。 您也可以允許其他權限較小的身分識別執行此步驟。 深入瞭解[azure 角色型存取控制（AZURE RBAC）](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)。
 
 ```powershell
     $cred = Get-Credential
@@ -383,7 +383,7 @@ Test-AzureADConnectHealthConnectivity -Role ADFS
 角色參數目前可接受下列值：
 
 * ADFS
-* Sync
+* 同步
 * ADDS
 
 > [!NOTE]

@@ -6,12 +6,12 @@ manager: gwallace
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 06a97126df449b77bf3fcc48bd23231512c9dff2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 896986775f0132ef08b17bdfefc00e5e06cf3d9f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056649"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448136"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-受控 Azure Active Directory 整合
 
@@ -146,7 +146,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-設定以[角色為基礎的存取控制（RBAC）](./azure-ad-rbac.md) ，為您的叢集設定額外的安全性群組。
+設定[azure 角色型存取控制（AZURE RBAC）](./azure-ad-rbac.md) ，為您的叢集設定額外的安全性群組。
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>針對 Azure AD 的存取問題進行疑難排解
 
@@ -190,7 +190,7 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 
 有些非互動式案例（例如持續整合管線）目前無法在 kubectl 中使用。 您可以使用 [`kubelogin`](https://github.com/Azure/kubelogin) 來存取具有非互動式服務主體登入的叢集。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解[適用于 Kubernetes 授權的 AZURE RBAC 整合][azure-rbac-integration]
 * 深入瞭解[Azure AD 與 KUBERNETES RBAC 整合][azure-ad-rbac]。

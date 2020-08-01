@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e067e8d56f8a928f952648fc76cd5d6b7a1afe7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221243"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448685"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中檢視和指派系統管理員角色
 
@@ -30,7 +30,7 @@ ms.locfileid: "86221243"
 
 1. 選取 [**角色和系統管理員**] 以查看所有可用角色的清單。
 
-1. 選取每個資料列右側的省略號，以查看角色的許可權。 選取角色以查看指派給角色的使用者。 如果您看到與下圖不同的內容，請閱讀[許可權角色的 View 指派](#view-assignments-for-privileged-roles)中的附注，以確認您是否位於 PRIVILEGED IDENTITY MANAGEMENT (PIM) 。
+1. 選取每個資料列右側的省略號，以查看角色的許可權。 選取角色以查看指派給角色的使用者。 如果您看到與下圖不同的內容，請閱讀[許可權角色的 View 指派](#view-assignments-for-privileged-roles)中的附注，以確認您是否位於 PRIVILEGED IDENTITY MANAGEMENT （PIM）。
 
     ![Azure AD 入口網站中的角色清單](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
 
@@ -56,6 +56,12 @@ ms.locfileid: "86221243"
 當您檢視角色的成員時，請選取 [描述]**** 以查看角色指派所授與權限的完整清單。 此頁面包括相關文件的連結，協助引導您管理目錄角色。
 
 ![管理員角色權限清單](./media/directory-manage-roles-portal/role-description.png)
+
+## <a name="download-role-assignments"></a>下載角色指派
+
+若要下載特定角色的所有指派，請在 [**角色和系統管理員**] 頁面上選取角色，然後選取 [**下載角色指派**]。 一種 CSV 檔案，其中列出該角色所有範圍的指派。
+
+![下載角色的所有指派](./media/directory-manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>指派角色
 

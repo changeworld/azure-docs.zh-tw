@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325333"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445298"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
 
@@ -32,7 +32,7 @@ ms.locfileid: "87325333"
 | | 診斷<br>延伸模組（WAD） | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|
 | **支援的環境** | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
-| **代理程式需求**  | 無 | 無 | 需要 Log Analytics 代理程式 |
+| **代理程式需求**  | None | None | 需要 Log Analytics 代理程式 |
 | **收集的資料** | 事件記錄<br>ETW 事件<br>效能<br>檔案型記錄<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<IIS logs><br>檔案型記錄<br>見解和解決方案<br>其他服務 | 進程詳細資料和相依性<br>網路連接計量 |
 | **資料傳送至** | Azure 儲存體<br>Azure 監視器計量<br>事件中樞 | Azure 監視器記錄 | Azure 監視器記錄 |
 
@@ -42,7 +42,7 @@ ms.locfileid: "87325333"
 | | 診斷<br>延伸模組（LAD） | Telegraf<br>代理程式 | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
 |:---|:---|:---|:---|:---|
 | **支援的環境** | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 |
-| **代理程式需求**  | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
+| **代理程式需求**  | None | None | None | 需要 Log Analytics 代理程式 |
 | **收集的資料** | syslog<br>效能 | 效能 | syslog<br>效能| 進程詳細資料和相依性<br>網路連接計量 |
 | **資料傳送至** | Azure 儲存體<br>事件中樞 | Azure 監視器計量 | Azure 監視器記錄 | Azure 監視器記錄 |
 
@@ -62,7 +62,7 @@ ms.locfileid: "87325333"
 * 將資料傳送至 Log Analytics 工作區，以利用[Azure 監視器記錄](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)（例如[記錄查詢](../log-query/log-query-overview.md)）所支援的功能。
 * 使用[適用於 VM 的 Azure 監視器](../insights/vminsights-overview.md)可讓您大規模監視您的虛擬機器，並監視其進程和其他資源和外部進程的相依性。  
 * 使用[Azure 資訊安全中心](../../security-center/security-center-intro.md)或[Azure Sentinel](../../sentinel/overview.md)管理虛擬機器的安全性。
-* 使用[Azure 自動化的更新管理](../../automation/automation-update-management.md)、 [Azure 自動化狀態設定](../../automation/automation-dsc-overview.md)，或[Azure 自動化變更追蹤和清查](../../automation/change-tracking.md)，以提供 Azure vm 的全面管理
+* 使用[Azure 自動化的更新管理](../../automation/update-management/update-mgmt-overview.md)、 [Azure 自動化狀態設定](../../automation/automation-dsc-overview.md)，或[Azure 自動化變更追蹤和清查](../../automation/change-tracking.md)，以提供 Azure vm 的全面管理
 * 使用不同的[解決方案](../monitor-reference.md#insights-and-core-solutions)來監視特定服務或應用程式。
 
 Log Analytics 代理程式的限制包括：

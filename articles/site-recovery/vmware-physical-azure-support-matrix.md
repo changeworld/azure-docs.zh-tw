@@ -3,12 +3,12 @@ title: Azure Site Recovery 中 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 對 VMware Vm 和實體伺服器至 Azure 的嚴重損壞修復支援。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c7eebfee771a9c65901bd89336e49c026a944a65
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56c86993e4e98764bc7e3ce04180f9e870cc612d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528854"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458020"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -91,7 +91,7 @@ Linux：CentOS | 5.2 到5.11</b><br/> 6.1 到6.10</b><br/> 7.0 到7。8<br/> <br
 Ubuntu | Ubuntu 14.04 LTS 伺服器[（請參閱支援的核心版本）](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS 伺服器[（請參閱支援的核心版本）](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS 伺服器[（請參閱支援的核心版本）](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 （包含所有7的支援。 *x*、8。 *x*版） [（請參閱支援的核心版本）](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4、 [SP5](https://support.microsoft.com/help/4570609) [（請參閱支援的核心版本）](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15，15 SP1 [（請參閱支援的核心版本）](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4<br/> 不支援將複寫的機器從 SUSE Linux Enterprise Server 11 SP3 升級到 SP4。 若要升級，請停用複寫，然後在升級之後重新啟用。
-Oracle Linux | 6.4，6.5，6.6，6.7，6.8，6.9，6.10，7.0，7.1，7.2，7.3，7.4，7.5，7.6， [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) [7.8](https://support.microsoft.com/help/4573888/)， [8.0](https://support.microsoft.com/help/4573888/)， [8.1](https://support.microsoft.com/help/4573888/)， [8.2](https://support.microsoft.com/help/4573888/) <br/><br/> 執行 Red Hat 相容核心或 Unbreakable Enterprise Kernel 第 3、4 及 5 版 (UEK3、UEK4、UEK5)
+Oracle Linux | 6.4，6.5，6.6，6.7，6.8，6.9，6.10，7.0，7.1，7.2，7.3，7.4，7.5，7.6， [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)， [7.8](https://support.microsoft.com/help/4573888/)， [8.0](https://support.microsoft.com/help/4573888/)， [8.2](https://support.microsoft.com/help/4573888/)  <br/> 執行 Red Hat 相容核心或 Unbreakable Enterprise Kernel 第 3、4 及 5 版 (UEK3、UEK4、UEK5)<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>支援在所有 UEK 核心和 RedHat kernel 上執行 <= 3.10.0-1062. *。 支援 RedHat 核心的其餘部分將于9.36 年8月底推出。
 
 > [!Note]
 > 針對每個 Windows 版本，Azure Site Recovery 只支援[長期維護通道（LTSC）](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc)組建。  目前不支援[半年通道](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)發行。
@@ -327,7 +327,7 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 
 ## <a name="obtain-latest-components"></a>取得最新元件
 
-**名稱** | **說明** | **詳細資料**
+**名稱** | **描述** | **詳細資料**
 --- | --- | ---
 組態伺服器 | 已安裝在內部部署。<br/> 協調內部部署 VMware 伺服器或實體機器與 Azure 之間的通訊。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md)設定伺服器。<br/> - [瞭解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何升級至最新版本。<br/> - [深入瞭解](vmware-azure-deploy-configuration-server.md)設定伺服器。
 處理序伺服器 | 預設會安裝在組態伺服器上。<br/> 接收復寫資料，以快取、壓縮和加密進行優化，並將其傳送至 Azure。<br/> 隨著部署的成長，您可以新增額外的進程伺服器來處理較大量的複寫流量。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md)進程伺服器。<br/> - [瞭解](vmware-azure-manage-process-server.md#upgrade-a-process-server)如何升級至最新版本。<br/> - [瞭解如何](vmware-physical-large-deployment.md#set-up-a-process-server)設定相應放大進程伺服器。

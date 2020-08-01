@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085141"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449134"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -33,18 +33,19 @@ Azure Functions Core Tools 可讓您使用命令提示字元或終端機，在�
 
 Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您的本機開發環境、[選擇的語言](supported-languages.md)，以及所需的支援層級：
 
-+ 1.x**版**：支援版本1.x 的 Azure Functions 執行時間。 這個版本的工具只有在 Windows 電腦上提供支援，並且從 [npm 套件](https://www.npmjs.com/package/azure-functions-core-tools)進行安裝。
-
 + [**版本 3.x/**](#v2)2.X：支援[版本3.x 或2.x 的 Azure Functions 運行](functions-versions.md)時間。 這些版本支援[Windows](?tabs=windows#v2)、 [macOS](?tabs=macos#v2)和[Linux](?tabs=linux#v2) ，並使用平臺特定套件管理員或 npm 進行安裝。
 
++ 1.x**版**：支援版本1.x 的 Azure Functions 執行時間。 這個版本的工具只有在 Windows 電腦上提供支援，並且從 [npm 套件](https://www.npmjs.com/package/azure-functions-core-tools)進行安裝。
+
 除非另有說明，否則本文中的範例適用于3.x 版。
+
+## <a name="prerequisites"></a>先決條件
+
+Azure Functions Core Tools 目前取決於使用您的 Azure 帳戶進行驗證的 Azure CLI。 這表示您必須在[本機上安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能夠從 Azure Functions Core Tools[發佈至 Azure](#publish) 。 
 
 ## <a name="install-the-azure-functions-core-tools"></a>安裝 Azure Functions Core Tools
 
 [Azure Functions Core Tools] 包含相同的執行階段版本，以支援您可在本機開發電腦上執行的 Azure Functions 執行階段。 它也提供命令來建立函式、連線到 Azure，以及部署函式專案。
-
->[!IMPORTANT]
->您必須將[Azure CLI](/cli/azure/install-azure-cli)安裝在本機上，才能從 Azure Functions Core Tools 發佈到 Azure。  
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>3.x 和2.x 版
 
@@ -55,27 +56,12 @@ Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您�
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-下列步驟使用 npm 在 Windows 上安裝 Core Tools。 您也可以使用 [Chocolatey](https://chocolatey.org/)。 如需詳細資訊，請參閱 [Core Tools 讀我檔案](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
+下列步驟會使用 Windows installer （MSI）來安裝 Core Tools v3. x。 如需其他以套件為基礎的安裝程式的詳細資訊，這些是安裝 Core Tools v2. x 的必要條件，請參閱[Core tools 讀我檔案](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
-1. 安裝 [Node.js] (內含 npm)。
-    - 針對2.x 版的工具，僅支援 Node.js 10 和更新版本。
-    - 針對 2.x 版的工具，只支援 Node.js 8.5 和更新版本。
+1. 根據您的 Windows 版本，下載並執行 Core Tools 安裝程式：
 
-1. 安裝 Core Tools 套件：
-
-    ##### <a name="v3x-recommended"></a>v3. x （建議選項）
-
-    ```cmd
-    npm install -g azure-functions-core-tools@3
-    ```
-
-    ##### <a name="v2x"></a>v2.x
-
-    ```cmd
-    npm install -g azure-functions-core-tools@2
-    ```
-
-   可能需要幾分鐘的時間，npm 才能下載並安裝 Core Tools 套件。
+    - [v3. x-Windows 64 位](https://go.microsoft.com/fwlink/?linkid=2135274)（建議使用）。 [Visual Studio Code 的調試](functions-develop-vs-code.md#debugging-functions-locally)需要64位）。
+    - [v3. x-Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 1. 如果您不打算使用[延伸](functions-bindings-register.md#extension-bundles)模組配套，請安裝[適用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
@@ -205,7 +191,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`支援下列版本 3.x/2. x-only 的選項，除非另有注明：
 
-| 選項     | 描述                            |
+| 選項     | 說明                            |
 | ------------ | -------------------------------------- |
 | **`--csx`** | 建立 .NET 函數做為 c # 腳本，這是1.x 版的行為。 僅適用于 `--worker-runtime dotnet` 。 |
 | **`--docker`** | 使用以選擇的為基礎的基底映射，建立容器的 Dockerfile `--worker-runtime` 。 如果您要發佈至自訂 Linux 容器，請使用此選項。 |
@@ -303,7 +289,7 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 您也可以使用下列引數，在命令中指定這些選項：
 
-| 引數     | 描述                            |
+| 引數     | 說明                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | （2.x 版和更新版本）。產生在1.x 版和入口網站中使用的相同 c # 腳本（. .csx）範本。 |
 | **`--language`**, **`-l`**| 範本程式語言，例如 C#、F# 或 JavaScript。 這是 1.x 版中的必要選項。 在2.x 版和更新版本中，請勿使用此選項，或選擇符合背景工作執行時間的語言。 |
@@ -363,7 +349,7 @@ npm start
 
 `func start` 支援下列選項：
 
-| 選項     | 描述                            |
+| 選項     | 說明                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 執行前請勿建置目前的專案。 僅適用於 dotnet 專案。 預設會設定為 false。 1.x 版不支援。 |
 | **`--cors-credentials`** | 針對1.x 版，允許不支援跨原始來源驗證的要求（也就是 cookie 和驗證標頭）。 |
@@ -472,7 +458,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 
 `func run` 支援下列選項：
 
-| 選項     | 描述                            |
+| 選項     | 說明                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | 內嵌內容。 |
 | **`--debug`**, **`-d`** | 在執行函式之前，請先將偵錯工具附加到主機處理序。|
@@ -511,14 +497,14 @@ func azure functionapp publish <FunctionAppName>
 
 下列發行選項適用于所有版本：
 
-| 選項     | 描述                            |
+| 選項     | 說明                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  將 local.settings.json 中的設定發佈至 Azure，若設定已經存在，則提示進行覆寫。 如果您使用 Microsoft Azure 儲存體模擬器，請先將應用程式設定變更為[實際的儲存體連接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 在使用 `--publish-local-settings -i` 時隱藏覆寫應用程式設定的提示。|
 
 只有2.x 版和更新版本才支援下列發行選項：
 
-| 選項     | 描述                            |
+| 選項     | 說明                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  僅發佈設定而略過內容。 預設值為提示。 |
 |**`--list-ignored-files`** | 顯示在發佈期間忽略的檔案清單，以 .funcignore 檔案為準。 |
@@ -526,7 +512,7 @@ func azure functionapp publish <FunctionAppName>
 | **`--nozip`** | 關閉預設 `Run-From-Package` 模式。 |
 | **`--build-native-deps`** | 發行 Python 函式應用程式時，略過產生車輪資料夾。 |
 | **`--build`**, **`-b`** | 部署至 Linux 函式應用程式時執行組建動作。 接受： `remote` 和 `local` 。 |
-| **`--additional-packages`** | 建置原生相依性時將安裝的套件清單。 例如：`python3-dev libevent-dev`。 |
+| **`--additional-packages`** | 建置原生相依性時將安裝的套件清單。 例如： `python3-dev libevent-dev` 。 |
 | **`--force`** | 在設定情況下忽略發佈前驗證。 |
 | **`--csx`** | 發佈 C# 指令碼 (.csx) 專案。 |
 | **`--no-build`** | 發行期間不會建立專案。 針對 Python，則 `pip install` 不會執行。 |
@@ -542,7 +528,7 @@ func deploy
 
 以下是可用的自訂容器部署選項：
 
-| 選項     | 描述                            |
+| 選項     | 說明                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 目前的使用者所登入的 Docker 登錄名稱。 |
 | **`--platform`** | 函式應用程式的裝載平台。 有效選項為 `kubernetes` |

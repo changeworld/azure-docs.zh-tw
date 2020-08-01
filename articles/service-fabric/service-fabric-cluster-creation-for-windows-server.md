@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: ba6474751913b4994ae840f77577b3c1db6c5f73
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6fa27008ea22e1a2bd9a83ce3888370cf2213935
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259279"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458071"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>建立在 Windows Server 上執行的獨立叢集
 您可以使用 Azure Service Fabric 在執行 Windows Server 的任何虛擬機器或電腦上建立 Service Fabric 叢集。 這表示您能夠在包含一組互連式 Windows Server 電腦的任何環境中部署和執行 Service Fabric 應用程式，不論該環境是內部部署或是透過任何雲端提供者來提供。 Service Fabric 會提供一個安裝封裝來建立稱為獨立 Windows Server 封裝的 Service Fabric 叢集。 傳統的 Service Fabric 叢集在 Azure 上是以受控服務的形式提供，而獨立 Service Fabric 叢集則是自助服務。 如需差異的詳細資訊，請參閱[比較 Azure 和獨立 Service Fabric 叢集](./service-fabric-deploy-anywhere.md)。
@@ -128,7 +128,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <*IPAddressofaMachine*>:<Client
 
 例如：
 ```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.2345:19000
+Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
 如需連線到叢集的其他範例，請參閱[連線到安全的叢集](service-fabric-connect-to-secure-cluster.md)。 連線到叢集之後，使用 [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) Cmdlet 來顯示叢集中的節點清單以及每個節點的狀態資訊。 每個節點的 **HealthState** 應該為「正常」。

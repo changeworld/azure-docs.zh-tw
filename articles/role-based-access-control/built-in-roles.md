@@ -7,13 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/16/2020
-ms.openlocfilehash: c0a397ac71c7c466145357093b6c22f78e627d1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/29/2020
+ms.custom: generated
+ms.openlocfilehash: edf0d0085a8f1f9446e9c699c15b1eebb0a2d004
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511580"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448889"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -180,6 +181,7 @@ ms.locfileid: "86511580"
 > | [成本管理參與者](#cost-management-contributor) | 可檢視成本和管理成本組態 (例如預算、匯出) | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | [成本管理讀者](#cost-management-reader) | 可檢視成本資料和組態 (例如預算、匯出) | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | [階層設定管理員](#hierarchy-settings-administrator) | 允許使用者編輯和刪除階層設定 | 350f8d15-c687-4448-8ae1-157740a3936d |
+> | [Kubernetes 叢集-Azure Arc 上架](#kubernetes-cluster---azure-arc-onboarding) | 用來授權任何使用者/服務建立 connectedClusters 資源的角色定義 | 34e09817-6cbe-4d01-b1a2-e0eac5743d41 |
 > | [受控應用程式參與者角色](#managed-application-contributor-role) | 允許建立受控應用程式資源。 | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [受控應用程式操作員角色](#managed-application-operator-role) | 可讓您讀取受控應用程式資源及對其執行動作 | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [受控應用程式讀者](#managed-applications-reader) | 可讓您讀取受控應用程式中的資源及要求 JIT 存取權。 | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
@@ -3097,7 +3099,7 @@ ACR 隔離資料寫入者
 
 ### <a name="azure-kubernetes-service-contributor-role"></a>Azure Kubernetes Service 參與者角色
 
-授與讀取和寫入 Azure Kubernetes Service 叢集的存取權
+授與讀取和寫入 Azure Kubernetes Service 叢集的存取權[深入瞭解](../aks/concepts-identity.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -3140,7 +3142,7 @@ ACR 隔離資料寫入者
 
 ### <a name="azure-kubernetes-service-rbac-admin"></a>Azure Kubernetes Service RBAC 管理員
 
-可讓您管理叢集/命名空間下的所有資源，但更新或刪除資源配額和命名空間除外。 [深入了解](../aks/concepts-identity.md)
+可讓您管理叢集/命名空間下的所有資源，但更新或刪除資源配額和命名空間除外。 [深入了解](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -3203,7 +3205,7 @@ ACR 隔離資料寫入者
 
 ### <a name="azure-kubernetes-service-rbac-cluster-admin"></a>Azure Kubernetes Service RBAC 叢集系統管理員
 
-可讓您管理叢集中的所有資源。 [深入了解](../aks/concepts-identity.md)
+可讓您管理叢集中的所有資源。 [深入了解](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -3258,7 +3260,7 @@ ACR 隔離資料寫入者
 
 ### <a name="azure-kubernetes-service-rbac-reader"></a>Azure Kubernetes Service RBAC 讀取器
 
-可讓您查看叢集/命名空間中的所有資源（秘密除外）。 [深入了解](../aks/concepts-identity.md)
+可讓您查看叢集/命名空間中的所有資源（秘密除外）。 [深入了解](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -3319,7 +3321,7 @@ ACR 隔離資料寫入者
 
 ### <a name="azure-kubernetes-service-rbac-writer"></a>Azure Kubernetes Service RBAC 寫入器
 
-可讓您更新叢集/命名空間中的所有專案，但資源配額、命名空間、pod 安全性原則、憑證簽署要求、（叢集）角色和（叢集）角色系結除外。 [深入了解](../aks/concepts-identity.md)
+可讓您更新叢集/命名空間中的所有專案，但資源配額、命名空間、pod 安全性原則、憑證簽署要求、（叢集）角色和（叢集）角色系結除外。 [深入了解](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -6486,12 +6488,12 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
+> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/read | 讀取傳統計量警示 |
 > | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
+> | [/Deployments/*](resource-provider-operations.md#microsoftresources)/read |  |
 > | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/read | 讀取安全性元件和原則 |
-> | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
+> | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/*/read |  |
 > | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6512,12 +6514,12 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
     {
       "actions": [
         "Microsoft.Authorization/*/read",
-        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Insights/alertRules/read",
         "Microsoft.operationalInsights/workspaces/*/read",
-        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/deployments/*/read",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Security/*/read",
-        "Microsoft.Support/*",
+        "Microsoft.Support/*/read",
         "Microsoft.Management/managementGroups/read"
       ],
       "notActions": [],
@@ -7641,6 +7643,61 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
     }
   ],
   "roleName": "Hierarchy Settings Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="kubernetes-cluster---azure-arc-onboarding"></a>Kubernetes 叢集-Azure Arc 上架
+
+用來授權任何使用者/服務建立 connectedClusters 資源的角色定義[深入瞭解](../azure-arc/kubernetes/connect-cluster.md)
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
+> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
+> | /Deployments/write[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 建立或更新部署。 |
+> | /Subscriptions/operationresults/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶作業結果。 |
+> | /Subscriptions/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶清單。 |
+> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | 寫入 connectedClusters |
+> | [Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/read | 閱讀 connectedClusters |
+> | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
+> | **NotActions** |  |
+> | 無 |  |
+> | **DataActions** |  |
+> | 無 |  |
+> | **NotDataActions** |  |
+> | 無 |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role definition to authorize any user/service to create connectedClusters resource",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/34e09817-6cbe-4d01-b1a2-e0eac5743d41",
+  "name": "34e09817-6cbe-4d01-b1a2-e0eac5743d41",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/write",
+        "Microsoft.Resources/subscriptions/operationresults/read",
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Kubernetes/connectedClusters/Write",
+        "Microsoft.Kubernetes/connectedClusters/read",
+        "Microsoft.Support/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Kubernetes Cluster - Azure Arc Onboarding",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

@@ -4,12 +4,12 @@ description: 使用角色型存取控制來管理復原服務保存庫中的備�
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 89e5cf7c6b46d63b10bd358fc078f8f87db689c8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4c5a0a43efe7bda5fdc4b60d13b97f61565809bd
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371697"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445315"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用角色型存取控制來管理 Azure 備份復原點
 
@@ -77,7 +77,7 @@ Azure 備份提供三個內建角色來控制備份管理作業。 深入瞭解[
 
 ## <a name="next-steps"></a>後續步驟
 
-* [角色型存取控制](../role-based-access-control/role-assignments-portal.md)：開始在 Azure 入口網站中使用 RBAC。
+* [Azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/role-assignments-portal.md)：開始使用 Azure 入口網站中的 RBAC。
 * 了解如何使用下列各項管理存取權：
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

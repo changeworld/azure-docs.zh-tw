@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72acf60bd9bc5baeba37d8ccffa79fe597954f16
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 04f97dc7296dd2ca9e9f869373cbf82838aa79f5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230378"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445325"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本發行歷程記錄
 Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 Azure AD Connect。 並非所有新增項目都適用於所有的對象。
@@ -47,6 +47,20 @@ Azure Active Directory (Azure AD) 團隊會定期以新的特性和功能更新 
 >如果啟用了 Azure AD Connect 進行同步，您將會立即自動開始收到 Health 通知，以在執行其中一個舊版時，警告該版本即將淘汰。
 >
 >請參閱[本文](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)，以深入了解如何將 Azure AD Connect 升級至最新版本。
+
+## <a name="15450"></a>1.5.45.0
+
+### <a name="release-status"></a>發行狀態
+07/29/2020：已發行以供下載
+
+### <a name="functional-changes"></a>功能性變更
+這是 bug 修正版本。 此版本中沒有任何功能變更。
+
+### <a name="fixed-issues"></a>已修正的問題
+
+- 已修正「Active Directory」中已有 AZUREADSSOACC 電腦帳戶時，系統管理員無法啟用「無縫單一登入」的問題。
+- 已修正在 V2 API 差異匯入期間，針對透過健康情況入口網站修復的衝突物件造成暫存錯誤的問題。
+- 已修正 [匯入/匯出設定] 中停用的自訂規則已匯入為已啟用的問題。
 
 ## <a name="15420"></a>1.5.42.0
 
@@ -587,7 +601,7 @@ Azure AD Connect 1.1.654.0 版 (和更新版本) 已新增改進，以確保 Azu
 
 類型     | 名稱                          | 存取               | 套用至
 ---------|-------------------------------|----------------------|--------------|
-允許    | 系統                        | 完全控制         | 此物件  |
+Allow    | 系統                        | 完全控制         | 此物件  |
 Allow    | 企業系統管理員             | 完全控制         | 此物件  |
 Allow    | 網域管理員                 | 完全控制         | 此物件  |
 Allow    | 系統管理員                | 完全控制         | 此物件  |

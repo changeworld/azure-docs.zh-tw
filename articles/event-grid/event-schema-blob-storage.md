@@ -3,12 +3,12 @@ title: 做為事件方格來源 Azure Blob 儲存體
 description: 描述 Azure Event Grid blob 儲存體事件的屬性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 792e4b24df5eb374d1e3589629fa8628d6680cf8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a914edbb6f624617766c77b277d7ee8e6ad08bd9
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371272"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458938"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>做為事件方格來源 Azure Blob 儲存體
 
@@ -25,7 +25,7 @@ ms.locfileid: "87371272"
 當用戶端藉由呼叫 Blob REST Api 來建立、取代或刪除 blob 時，就會觸發這些事件。
 
 > [!NOTE]
-> 使用 *`(abfss://URI) `* 未啟用階層命名空間之帳戶的 dfs 端點將不會產生事件。 對於這類帳戶，只有 blob 端點 *`(wasb:// URI)`* 會產生事件。
+> `$logs`和 `$blobchangefeed` 容器不會與事件方格整合，因此這些容器中的活動不會產生事件。 此外，使用 *`(abfss://URI) `* 未啟用階層命名空間之帳戶的 dfs 端點將不會產生事件，但 blob 端點 *`(wasb:// URI)`* 會產生事件。
 
  |事件名稱 |說明|
  |----------|-----------|
@@ -33,7 +33,7 @@ ms.locfileid: "87371272"
  |**Microsoft.Storage.BlobDeleted** |刪除 blob 時觸發。 <br>具體而言，當用戶端呼叫 `DeleteBlob` Blob REST API 中可用的作業時，就會觸發此事件。 |
 
 > [!NOTE]
-> 如果您想要確保只有在完全認可區塊 Blob 時才會觸發**microsoft.storage.blobcreated**事件，請篩選 `CopyBlob` 、 `PutBlob` 和 `PutBlockList` REST API 呼叫的事件。 只有在資料完全認可至區塊 Blob 之後，這些 API 呼叫才會觸發**microsoft.storage.blobcreated**事件。 若要瞭解如何建立篩選準則，請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+> 如果您想要確保只有在完全認可區塊 Blob 時才會觸發**microsoft.storage.blobcreated**事件，請篩選 `CopyBlob` 、 `PutBlob` 和 `PutBlockList` REST API 呼叫的事件。 只有在資料完全認可至區塊 Blob 之後，這些 API 呼叫才會觸發**microsoft.storage.blobcreated**事件。 若要瞭解如何建立篩選準則，請參閱[篩選事件方格的事件](./how-to-filter-events.md)。
 
 ### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Data Lake Storage Gen 2 REST Api 的事件清單
 
@@ -49,7 +49,7 @@ ms.locfileid: "87371272"
 |**DirectoryDeleted**|刪除目錄時觸發。 <br>具體而言，當用戶端使用 `DeleteDirectory` Azure Data Lake Storage Gen2 REST API 中提供的作業時，就會觸發此事件。|
 
 > [!NOTE]
-> 如果您想要確保只有在完全認可區塊 Blob 時才會觸發**microsoft.storage.blobcreated**事件，請篩選 `FlushWithClose` REST API 呼叫的事件。 只有在資料完全認可至區塊 Blob 之後，此 API 呼叫才會觸發**microsoft.storage.blobcreated**事件。 若要瞭解如何建立篩選準則，請參閱[篩選事件方格的事件](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)。
+> 如果您想要確保只有在完全認可區塊 Blob 時才會觸發**microsoft.storage.blobcreated**事件，請篩選 `FlushWithClose` REST API 呼叫的事件。 只有在資料完全認可至區塊 Blob 之後，此 API 呼叫才會觸發**microsoft.storage.blobcreated**事件。 若要瞭解如何建立篩選準則，請參閱[篩選事件方格的事件](./how-to-filter-events.md)。
 
 <a name="example-event"></a>
 ### <a name="the-contents-of-an-event-response"></a>事件回應的內容
@@ -307,8 +307,8 @@ ms.locfileid: "87371272"
 | 屬性 | 類型 | Description |
 | -------- | ---- | ----------- |
 | api | 字串 | 觸發事件的作業。 |
-| clientRequestId | 字串 | 用於儲存體 API 作業的用戶端提供要求識別碼。 此識別碼可用來在記錄檔中使用「用戶端要求識別碼」欄位與 Azure 儲存體診斷記錄相互關聯，並可在使用「x-ms-用戶端要求-識別碼」標頭的用戶端要求中提供。 請參閱[記錄格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
-| requestId | 字串 | 儲存體 API 作業由服務產生的要求識別碼。 可用於利用記錄中的 "request-id-header" 欄位與 Azure 儲存體診斷記錄建立關聯，並從 'x-ms-request-id' 標頭中的 API 呼叫初始化傳回。 請參閱[記錄格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
+| clientRequestId | 字串 | 用於儲存體 API 作業的用戶端提供要求識別碼。 此識別碼可用來在記錄檔中使用「用戶端要求識別碼」欄位與 Azure 儲存體診斷記錄相互關聯，並可在使用「x-ms-用戶端要求-識別碼」標頭的用戶端要求中提供。 請參閱[記錄格式](/rest/api/storageservices/storage-analytics-log-format)。 |
+| requestId | 字串 | 儲存體 API 作業由服務產生的要求識別碼。 可用於利用記錄中的 "request-id-header" 欄位與 Azure 儲存體診斷記錄建立關聯，並從 'x-ms-request-id' 標頭中的 API 呼叫初始化傳回。 請參閱[記錄格式](/rest/api/storageservices/storage-analytics-log-format)。 |
 | etag | 字串 | 此值可讓您依條件執行作業。 |
 | ContentType | 字串 | 為 blob 指定內容類型。 |
 | contentLength | integer | Blob 大小 (以位元組為單位)。 |

@@ -3,12 +3,12 @@ title: 做為事件方格來源 Azure Machine Learning
 description: 說明使用 Azure 事件方格為 Machine Learning 工作區事件提供的屬性
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: e256dbcef8c4e4a1354455843e4466d666c7d7b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090666"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458037"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>做為事件方格來源 Azure Machine Learning
 
@@ -186,7 +186,7 @@ Azure Machine Learning 會發出下列事件種類：
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 | subject | 字串 | 發行者定義事件主旨的路徑。 |
@@ -255,13 +255,13 @@ Azure Machine Learning 會發出下列事件種類：
 | runStatus | 字串 | 執行的狀態。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
-| 標題 | 描述 |
+| 標題 | 說明 |
 | ----- | ----- |
-| [取用 Azure Machine Learning 事件](../machine-learning/concept-event-grid-integration.md) | 整合 Azure Machine Learning 與事件方格的總覽。 |
+| [取用 Azure Machine Learning 事件](../machine-learning/how-to-use-event-grid.md) | 整合 Azure Machine Learning 與事件方格的總覽。 |
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需 Azure Event Grid 的簡介，請參閱[什麼是 Event Grid？](overview.md)
 * 如需有關建立 Azure 事件方格訂用帳戶的詳細資訊，請參閱[Event grid 訂](subscription-creation-schema.md)用帳戶架構
-* 如需搭配使用 Azure 事件方格與 Azure Machine Learning 的簡介，請參閱取用[Azure Machine Learning 事件](/azure/machine-learning/concept-event-grid-integration)
-* 如需搭配使用 Azure 事件方格與 Azure Machine Learning 的範例，請參閱[建立事件驅動機器學習工作流程](/azure/machine-learning/how-to-use-event-grid)
+* 如需搭配使用 Azure 事件方格與 Azure Machine Learning 的簡介，請參閱取用[Azure Machine Learning 事件](../machine-learning/how-to-use-event-grid.md)
+* 如需搭配使用 Azure 事件方格與 Azure Machine Learning 的範例，請參閱[建立事件驅動機器學習工作流程](../machine-learning/how-to-use-event-grid.md)

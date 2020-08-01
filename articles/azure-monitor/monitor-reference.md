@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 1f76966b0ed82ae3d4b32e54627a28e99b0dba2f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505715"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447318"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -176,7 +176,7 @@ ms.locfileid: "86505715"
 
 | 產品/服務 | 描述 |
 |:---|:---|
-| [Azure 自動化](../automation/index.yml) | 管理作業系統更新，並追蹤 Windows 和 Linux 電腦上的變更。 請參閱[變更追蹤](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
+| [Azure 自動化](../automation/index.yml) | 管理作業系統更新，並追蹤 Windows 和 Linux 電腦上的變更。 請參閱[變更追蹤](../automation/change-tracking.md)和[更新管理](../automation/update-management/update-mgmt-overview.md)。 |
 | [Azure 資訊保護](/azure/information-protection/) | 分類並選擇性地保護文件和電子郵件。 請參閱 [Azure 資訊保護的中央報告](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
 | [Azure 資訊安全中心](../security-center/index.yml) | 收集和分析安全性事件，並執行威脅分析。 請參閱 [Azure 資訊安全中心的資料收集](../security-center/security-center-enable-data-collection.md)。 |
 | [Azure Sentinel](../sentinel/index.yml) | 連線到不同的來源，包括 Office 365 和 Amazon Web Services 雲端軌跡。 請參閱[連線資料來源](../sentinel/connect-data-sources.md)。 |

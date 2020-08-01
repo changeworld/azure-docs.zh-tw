@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2019
 ms.author: rogardle
 ms.custom: ''
-ms.openlocfilehash: dd5e3cf8ce9e52768c28598a819a28ad1ec4413c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4be24d645d2145ee07f9b9a4696b825a26dcf5c9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525512"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448759"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Azure 上 Oracle Database Enterprise Edition 的參考架構
 
@@ -211,7 +211,7 @@ Oracle Data Guard 可用於分區化系統管理的使用者定義和複合分�
 
 將您的 Oracle 工作負載部署至 Azure 時，Microsoft 會負責所有主機 OS 層級的修補。 所有規劃的 OS 層級維護都會事先向客戶傳達，以允許客戶進行此規劃的維護。 來自兩個不同可用性區域的兩部伺服器不會同時進行修補。 如需 VM 維護和修補的詳細資訊，請參閱[管理虛擬機器的可用性](../../../virtual-machines/linux/manage-availability.md)。 
 
-您可以使用[Azure 自動化](../../../automation/automation-tutorial-update-management.md)來自動修補虛擬機器作業系統。 您可以使用[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops)或[Azure 自動化](../../../automation/automation-tutorial-update-management.md)來自動修補和維護 Oracle 資料庫，以將停機時間降到最低。 請參閱[持續傳遞和藍色/綠色部署](/azure/devops/learn/what-is-continuous-delivery)，以瞭解如何在 Oracle 資料庫的內容中使用它。
+您可以使用[Azure 自動化更新管理](../../../automation/update-management/update-mgmt-overview.md)來自動修補虛擬機器作業系統。 您可以使用[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops)或[Azure 自動化更新管理](../../../automation/update-management/update-mgmt-overview.md)來自動修補及維護 Oracle 資料庫，以將停機時間降到最低。 請參閱[持續傳遞和藍色/綠色部署](/azure/devops/learn/what-is-continuous-delivery)，以瞭解如何在 Oracle 資料庫的內容中使用它。
 
 ## <a name="architecture-and-design-considerations"></a>架構和設計考慮
 

@@ -1,5 +1,5 @@
 ---
-title: 為 Azure API for FHIR 設定以本機角色為基礎的存取控制（RBAC）
+title: 設定 Azure API for FHIR 的本機角色型存取控制（本機 RBAC）
 description: 本文說明如何將 Azure API for FHIR 設定為使用資料平面的外部 Azure AD 租使用者
 author: hansenms
 ms.service: healthcare-apis
@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: 8aa454e272e0dbf4c69941c35a63ee036c16f78f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 11e7d31385140206070e3b415224ccca725d110f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422567"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446902"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>設定 FHIR 的本機 RBAC 
 

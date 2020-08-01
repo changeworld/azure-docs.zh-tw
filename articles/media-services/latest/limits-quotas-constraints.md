@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: e358742635d9ed939bbc62bb0d54e8169382e7de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2845cd0fad8375db67d1aa86333f144222dc0aa
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043499"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446331"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure 媒體服務配額和限制
@@ -28,21 +28,21 @@ ms.locfileid: "87043499"
 
 ## <a name="account-limits"></a>帳戶限制
 
-| 資源 | 預設限制 | 
-| --- | --- | 
+| 資源 | 預設限制 |
+| --- | --- |
 | 在單一訂用[帳戶中媒體服務帳戶](media-services-account-concept.md) | 25 (固定) |
 
 ## <a name="asset-limits"></a>資產限制
 
-| 資源 | 預設限制 | 
-| --- | --- | 
+| 資源 | 預設限制 |
+| --- | --- |
 | 每個媒體服務帳戶的[資產](assets-concept.md) | 1,000,000|
 
 ## <a name="storage-limits"></a>儲存體限制
 
 | 資源 | 預設限制 | 
 | --- | --- | 
-| 檔案大小| 在某些情況下，對於媒體服務中支援處理的檔案大小上限有所限制。 <sup>sha-1</sup> |
+| 檔案大小| 在某些情況下，對於媒體服務中支援處理的檔案大小上限有所限制。 <sup>(1)</sup> |
 | [儲存體帳戶](storage-account-concept.md) | 100<sup>（2）</sup> （固定） |
 
 <sup>1</sup> 單一 blob 支援的大小上限目前在 Azure Blob 儲存體是最多 5 TB。 根據服務所使用的 VM 大小，媒體服務中會套用額外的限制。 大小限制適用于您上傳的檔案，以及因媒體服務處理（編碼或分析）而產生的檔案。 如果原始程式檔超過 260 GB，您的工作可能會失敗。 
@@ -86,9 +86,10 @@ ms.locfileid: "87043499"
 
 ## <a name="packaging--delivery-limits"></a>封裝 & 傳遞限制
 
-| 資源 | 預設限制 | 
-| --- | --- | 
+| 資源 | 預設限制 |
+| --- | --- |
 | 每個媒體服務帳戶的[串流端點](streaming-endpoint-concept.md)（已停止或正在執行）|2 |
+| Premium 串流單位 | 10 |
 | [動態資訊清單篩選條件](filters-dynamic-manifest-overview.md)|100|
 | [串流原則](streaming-policy-concept.md) | 100 <sup>（6）</sup> |
 | 一次與資產相關聯的唯一[串流定位器](streaming-locators-concept.md) | 100<sup>（7）</sup> （固定） |

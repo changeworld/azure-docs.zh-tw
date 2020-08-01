@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e6fe4f0db31687d402f960f2752fe021d3ec9d3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73162756"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448346"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure 安全性管理和監視概觀
 本文涵蓋 Azure 提供來協助管理和監視 Azure 雲端服務和虛擬機器的安全性功能和服務概觀。
@@ -32,7 +32,7 @@ ms.locfileid: "73162756"
 深入了解：
 
 * [有關 RBAC 的 Active Directory 小組部落格](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
-* [以 Azure 角色為基礎的存取控制](../../role-based-access-control/role-assignments-portal.md)
+* [Azure 角色型存取控制（Azure RBAC）](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>反惡意程式碼
 
@@ -52,7 +52,7 @@ Azure 也支援 Symantec Endpoint Protection (SEP)。 透過入口網站整合�
 * [如何在 Windows VM 上安裝和設定 Symantec Endpoint Protection](/azure/virtual-machines/windows/classic/install-symantec)
 * [可用於保護 Azure 虛擬機器的新反惡意程式碼選項](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/) \(英文\)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>多重要素驗證
 
 Azure Multi-Factor Authentication 是一種驗證方法，其需要使用一個以上的驗證方法。 它可以為使用者登入和交易新增重要的第二層安全性。
 

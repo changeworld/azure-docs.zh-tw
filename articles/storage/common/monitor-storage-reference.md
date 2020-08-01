@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: fa8838dd5eca03d9dd85e424f0163eb9ca8ed5e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 28a127b4debeacd2562867008bc594897558d50d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077855"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446846"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Azure 儲存體監視資料參考
 
@@ -104,7 +104,7 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 
 | 維度名稱 | 描述 |
 | ------------------- | ----------------- |
-| **BlobType** | 只適用於 Blob 計量的 Blob 類型。 支援的值為 **BlockBlob**、**PageBlob** 和 **Azure Data Lake Storage**。 附加 Blob 隨附於 BlockBlob。 |
+| **BlobType** | 只適用於 Blob 計量的 Blob 類型。 支援的值為 **BlockBlob**、**PageBlob** 和 **Azure Data Lake Storage**。 附加 blob 會包含在**BlockBlob**中。 |
 | **BlobTier** | Azure 儲存體提供不同的存取層，可讓您以最符合成本效益的方式儲存 Blob 物件資料。 如需詳細資訊，請參閱 [Azure 儲存體 Blob 層](../blobs/storage-blob-storage-tiers.md)。 支援的值包括： <br/> <li>**經常性**：經常性存取層</li> <li>**非經常性**：非經常性存取層</li> <li>**封存**：封存層</li> <li>**進階**：區塊 Blob 的進階層</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**：進階分頁 Blob 的層級類型</li> <li>**標準**：標準分頁 Blob 的層級類型</li> <li>**無分層**：一般用途 v1 儲存體帳戶的層級類型</li> |
 | **GeoType** | 來自主要或次要叢集的交易。 可用的值包括**主要**和**次要**。 在從次要租用戶讀取物件時，此維度會套用到讀取權限異地備援儲存體 (RA-GRS)。 |
 | **ResponseType** | 交易回應類型。 可用的值包括： <br/><br/> <li>**ServerOtherError**：描述項目之外的其他所有伺服器端錯誤 </li> <li>**ServerBusyError**：傳回 HTTP 503 狀態碼的已驗證要求。 </li> <li>**ServerTimeoutError**：已逾時並傳回 HTTP 500 狀態碼的已驗證要求。 逾時是因為伺服器錯誤而發生。 </li> <li>**AuthorizationError**：由於未經授權存取資料或授權失敗，從而發生失敗的已驗證要求。 </li> <li>**NetworkError**：由於網路錯誤而失敗的已驗證要求。 當用戶端在逾時到期前就過早關閉連線時，最常會發生這個情況。 </li><li>**ClientAccountBandwidthThrottlingError**：要求會針對超過[儲存體帳戶可擴縮性限制](scalability-targets-standard-account.md)，在頻寬上受到節流。</li><li>**ClientAccountRequestThrottlingError**：要求會針對超過[儲存體帳戶可擴縮性限制](scalability-targets-standard-account.md)，在要求速率上進行節流。<li>**ClientThrottlingError**：其他用戶端節流錯誤。 已排除 ClientAccountBandwidthThrottlingError 和 ClientAccountRequestThrottlingError。</li> <li>**ClientTimeoutError**：已逾時並傳回 HTTP 500 狀態碼的已驗證要求。 如果用戶端的網路逾時或要求逾時設定為比儲存體服務預期的值還低，則此值是符合預期的逾時。 否則，它會回報為 ServerTimeoutError。 </li> <li>**ClientOtherError**：描述項目之外的其他所有用戶端錯誤。 </li> <li>**成功**：成功的要求</li> <li> **SuccessWithThrottling**：當 SMB 用戶端在第一次嘗試中受到節流，但是在重試之後成功時，成功的要求。</li> |
@@ -142,20 +142,20 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 
 | 屬性 | 說明 |
 |:--- |:---|
-|**time** | 儲存體收到要求時的國際標準時間 (UTC) 時間。 例如：`2018/11/08 21:09:36.6900118`。|
+|**time** | 儲存體收到要求時的國際標準時間 (UTC) 時間。 例如： `2018/11/08 21:09:36.6900118` 。|
 |**resourceId** | 儲存體帳戶的資源識別碼。 例如：`/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
 |**類別** | 所要求作業的分類。 例如：`StorageRead`、`StorageWrite` 或 `StorageDelete`。|
 |**operationName** | 執行的 REST 作業類型。 <br> 如需作業的完整清單，請參閱[儲存體分析記錄作業和狀態訊息主題](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 |
-|**operationVersion** | 提出要求時所指定的儲存體服務版本。 這等同於 **x-ms-version** 標頭值。 例如：`2017-04-17`。|
-|**schemaVersion** | 記錄的結構描述版本。 例如：`1.0`。|
+|**operationVersion** | 提出要求時所指定的儲存體服務版本。 這等同於 **x-ms-version** 標頭值。 例如： `2017-04-17` 。|
+|**schemaVersion** | 記錄的結構描述版本。 例如： `1.0` 。|
 |**statusCode** | 要求的 HTTP 狀態碼。 如果要求中斷，此值可能會被設為 `Unknown`。 <br> 例如：`206` |
 |**statusText** | 所要求作業的狀態。  如需狀態訊息的完整清單，請參閱[儲存體分析記錄作業和狀態訊息主題](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。 在 2017-04-17 版和更新版本中，不會使用狀態訊息 `ClientOtherError`。 相反地，此欄位包含錯誤碼。 例如：`SASSuccess`  |
 |**durationMs** | 執行要求作業的總時間 (以毫秒表示)。 包括讀取連入要求和傳送回應給要求者的時間。 例如： `12` 。|
-|**callerIpAddress** | 要求者的 IP 位址，包含連接埠號碼。 例如：`192.100.0.102:4362`。 |
-|**correlationId** | 用來讓資源之間記錄相互關聯的識別碼。 例如：`b99ba45e-a01e-0042-4ea6-772bbb000000`。 |
-|**location** | 儲存體帳戶的位置。 例如：`North Europe`。 |
+|**callerIpAddress** | 要求者的 IP 位址，包含連接埠號碼。 例如： `192.100.0.102:4362` 。 |
+|**correlationId** | 用來讓資源之間記錄相互關聯的識別碼。 例如： `b99ba45e-a01e-0042-4ea6-772bbb000000` 。 |
+|**location** | 儲存體帳戶的位置。 例如： `North Europe` 。 |
 |**protocol**|作業中使用的通訊協定。 例如：`HTTP`、`HTTPS`、`SMB` 或 `NFS`|
-| **uri** | 要求的統一資源識別項。 例如：`http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`。 |
+| **uri** | 要求的統一資源識別項。 例如： `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10` 。 |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>描述如何驗證作業的欄位
 
@@ -194,15 +194,15 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 |**identity / tokenHash**|這個欄位保留為僅供內部使用。 |
 |**authorization / action** | 指派給要求的動作。 例如： `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
 |**authorization / roleAssignmentId** | 角色指派識別碼。 例如： `4e2521b7-13be-4363-aeda-111111111111` 。|
-|**authorization / roleDefinitionId** | 角色定義識別碼。 例如：`ba92f5b4-2d11-453d-a403-111111111111"`。|
-|**principals / id** | 安全性主體的識別碼。 例如：`a4711f3a-254f-4cfb-8a2d-111111111111`。|
-|**principals / type** | 安全性主體的類型。 例如：`ServicePrincipal`。 |
-|**requester / appID** | 用來作為要求者的 Open Authorization (OAuth) 應用程式識別碼。 <br> 例如：`d3f7d5fe-e64a-4e4e-871d-333333333333`。|
-|**requester / audience** | 要求的 OAuth 對象。 例如：`https://storage.azure.com`。 |
-|**requester / objectId** | 要求者的 OAuth 物件識別碼。 若為 Kerberos 驗證，則代表 Kerberos 已驗證使用者的物件識別碼。 例如：`0e0bf547-55e5-465c-91b7-2873712b249c`。 |
+|**authorization / roleDefinitionId** | 角色定義識別碼。 例如： `ba92f5b4-2d11-453d-a403-111111111111"` 。|
+|**principals / id** | 安全性主體的識別碼。 例如： `a4711f3a-254f-4cfb-8a2d-111111111111` 。|
+|**principals / type** | 安全性主體的類型。 例如： `ServicePrincipal` 。 |
+|**requester / appID** | 用來作為要求者的 Open Authorization (OAuth) 應用程式識別碼。 <br> 例如： `d3f7d5fe-e64a-4e4e-871d-333333333333` 。|
+|**requester / audience** | 要求的 OAuth 對象。 例如： `https://storage.azure.com` 。 |
+|**requester / objectId** | 要求者的 OAuth 物件識別碼。 若為 Kerberos 驗證，則代表 Kerberos 已驗證使用者的物件識別碼。 例如： `0e0bf547-55e5-465c-91b7-2873712b249c` 。 |
 |**requester / tenantId** | 身分識別的 OAuth 租用戶識別碼。 例如： `72f988bf-86f1-41af-91ab-222222222222` 。|
-|**requester / tokenIssuer** | OAuth 權杖簽發者。 例如：`https://sts.windows.net/72f988bf-86f1-41af-91ab-222222222222/`。|
-|**requester / upn** | 要求者的使用者主體名稱 (UPN)。 例如：`someone@contoso.com`。 |
+|**requester / tokenIssuer** | OAuth 權杖簽發者。 例如： `https://sts.windows.net/72f988bf-86f1-41af-91ab-222222222222/` 。|
+|**requester / upn** | 要求者的使用者主體名稱 (UPN)。 例如： `someone@contoso.com` 。 |
 |**requester / userName** | 這個欄位保留為僅供內部使用。|
 
 ### <a name="fields-that-describe-the-service"></a>描述服務的欄位
@@ -246,22 +246,22 @@ Azure 儲存體支援下列 Azure 監視器計量維度。
 | 屬性 | 描述 |
 |:--- |:---|
 |**accountName** | 儲存體帳戶的名稱。 例如： `mystorageaccount` 。  |
-|**requestUrl** | 要求的 URL。 例如：`http://mystorageaccount.blob.core.windows.net/cont1/blobname?timeout=10`。|
-|**userAgentHeader** | **使用者代理程式標頭**值，以引號括住。 例如：`WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)`。|
-|**referrerHeader** | **查閱者**標頭值。 例如：`http://contoso.com/about.html`。|
-|**clientRequestId** | 要求的 **x-ms-client-request-id** 標頭值。 例如：`360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6`。 |
-|**etag** | 所傳回物件的 ETag 識別碼 (以引號括住)。 例如：`0x8D101F7E4B662C4`。  |
-|**serverLatencyMs** | 執行要求作業的總時間 (以毫秒表示)。 此值不包括網路延遲 (讀取連入要求和傳送回應給要求者的時間)。 例如：`22`。 |
+|**requestUrl** | 要求的 URL。 例如： `http://mystorageaccount.blob.core.windows.net/cont1/blobname?timeout=10` 。|
+|**userAgentHeader** | **使用者代理程式標頭**值，以引號括住。 例如： `WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)` 。|
+|**referrerHeader** | **查閱者**標頭值。 例如： `http://contoso.com/about.html` 。|
+|**clientRequestId** | 要求的 **x-ms-client-request-id** 標頭值。 例如： `360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6` 。 |
+|**etag** | 所傳回物件的 ETag 識別碼 (以引號括住)。 例如： `0x8D101F7E4B662C4` 。  |
+|**serverLatencyMs** | 執行要求作業的總時間 (以毫秒表示)。 此值不包括網路延遲 (讀取連入要求和傳送回應給要求者的時間)。 例如： `22` 。 |
 |**serviceType** | 與此要求相關聯的服務。 例如：`blob`、`table`、`files` 或 `queue`。 |
-|**operationCount** | 要求中牽涉到的每個已記錄作業的數目。 此計數會從 `0` 的索引開始。 某些要求需要一項以上的作業，例如複製 Blob 的要求。 大部分的要求只會執行一項作業。 例如：`1`。 |
-|**requestHeaderSize** | 要求標頭的大小 (以位元組表示)。 例如：`578`。 <br>如果要求不成功，這個值可能是空值。 |
-|**requestBodySize** | 儲存體服務讀取的要求封包大小 (以位元組表示)。 <br> 例如：`0`。 <br>如果要求不成功，這個值可能是空值。  |
-|**responseHeaderSize** | 回應標頭的大小 (以位元組表示)。 例如：`216`。 <br>如果要求不成功，這個值可能是空值。  |
-|**responseBodySize** | 儲存體服務寫入的回應封包大小 (以位元組為單位)。 如果要求不成功，這個值可能是空值。 例如：`216`。  |
-|**requestMd5** | 要求中 **Content-MD5** 標頭或 **x-ms-content-md5** 標頭的值。 在此欄位中指定的 MD5 雜湊值代表要求中的內容。 例如：`788815fd0198be0d275ad329cafd1830`。 <br>這個欄位可以是空白的。  |
-|**serverMd5** | 儲存體服務計算的 MD5 雜湊值。 例如：`3228b3cf1069a5489b298446321f8521`。 <br>這個欄位可以是空白的。  |
-|**lastModifiedTime** | 所傳回物件的上次修改時間 (LMT)。  例如：`Tuesday, 09-Aug-11 21:13:26 GMT`。 <br>對於可傳回多個物件的作業而言，此欄位是空白的。 |
-|**conditionsUsed** | 代表條件的索引鍵/值組分號分隔清單。 條件可以是下列任何一項： <li> If-Modified-Since <li> If-Unmodified-Since <li> If-Match <li> If-None-Match  <br> 例如：`If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT`。 |
+|**operationCount** | 要求中牽涉到的每個已記錄作業的數目。 此計數會從 `0` 的索引開始。 某些要求需要一項以上的作業，例如複製 Blob 的要求。 大部分的要求只會執行一項作業。 例如： `1` 。 |
+|**requestHeaderSize** | 要求標頭的大小 (以位元組表示)。 例如： `578` 。 <br>如果要求不成功，這個值可能是空值。 |
+|**requestBodySize** | 儲存體服務讀取的要求封包大小 (以位元組表示)。 <br> 例如： `0` 。 <br>如果要求不成功，這個值可能是空值。  |
+|**responseHeaderSize** | 回應標頭的大小 (以位元組表示)。 例如： `216` 。 <br>如果要求不成功，這個值可能是空值。  |
+|**responseBodySize** | 儲存體服務寫入的回應封包大小 (以位元組為單位)。 如果要求不成功，這個值可能是空值。 例如： `216` 。  |
+|**requestMd5** | 要求中 **Content-MD5** 標頭或 **x-ms-content-md5** 標頭的值。 在此欄位中指定的 MD5 雜湊值代表要求中的內容。 例如： `788815fd0198be0d275ad329cafd1830` 。 <br>這個欄位可以是空白的。  |
+|**serverMd5** | 儲存體服務計算的 MD5 雜湊值。 例如： `3228b3cf1069a5489b298446321f8521` 。 <br>這個欄位可以是空白的。  |
+|**lastModifiedTime** | 所傳回物件的上次修改時間 (LMT)。  例如： `Tuesday, 09-Aug-11 21:13:26 GMT` 。 <br>對於可傳回多個物件的作業而言，此欄位是空白的。 |
+|**conditionsUsed** | 代表條件的索引鍵/值組分號分隔清單。 條件可以是下列任何一項： <li> If-Modified-Since <li> If-Unmodified-Since <li> If-Match <li> If-None-Match  <br> 例如： `If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT` 。 |
 |**contentLengthHeader** | 傳送至儲存體服務的要求內容長度標頭值。 如果要求成功，則此值等於 requestBodySize。 如果要求不成功，則此值可能不等於 requestBodySize，或可能是空值。 |
 |**tlsVersion** | 要求連線中使用的 TLS 版本。 例如： `TLS 1.2` 。 |
 |**smbTreeConnectID** | 伺服器訊息區 (SMB) **treeConnectId** 會在樹狀結構連線時間建立。 例如：`0x3` |

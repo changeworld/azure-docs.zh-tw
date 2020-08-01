@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 38ddfad179a8ef459b5c10f84619a836193ee092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781645"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445620"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
@@ -162,7 +162,7 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 
 ### <a name="how-long-provisioning-takes"></a>佈建時間長短
 
-效能取決於佈建作業是執行的是初始佈建週期還是增量週期。 如需佈建所需時間和如何監視佈建服務狀態的詳細資訊，請參閱[檢查使用者佈建的狀態](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)。
+效能取決於佈建作業是執行的是初始佈建週期還是增量週期。 如需佈建所需時間和如何監視佈建服務狀態的詳細資訊，請參閱[檢查使用者佈建的狀態](application-provisioning-when-will-provisioning-finish-specific-user.md)。
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>如何判斷是否已正確佈建使用者
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 091a5d33e49e2abe811bf3cc250d04d69506165d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011629"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448386"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒體服務 v2 與 v3
 
@@ -83,7 +83,8 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
     * 在輸入沒有音訊時插入無訊息音訊播放軌
     * 在輸入沒有影片時插入影片播放軌
 * 具有轉碼的即時事件目前不支援候選影片插入中間串流，以及透過 API 呼叫插入廣告標記。 
- 
+* 如需有關 `https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git` 使用 V2 REST API on 的最佳做法和模式，請參閱範例程式碼。NETCore SDK。
+
 ## <a name="asset-specific-changes"></a>資產特定變更
 
 ### <a name="map-v3-asset-properties-to-v2"></a>將 v3 資產屬性對應至 v2
@@ -107,7 +108,7 @@ v3 API 與 v2 API 具有下列功能差距。 縮小差距是刻不容緩的工�
 
 若要保護待用資產，資產應該透過儲存端加密來進行加密。 下表顯示儲存端加密在媒體服務中的運作方式：
 
-|加密選項|描述|媒體服務 v2|媒體服務 v3|
+|加密選項|說明|媒體服務 v2|媒體服務 v3|
 |---|---|---|---|
 |媒體服務的儲存體加密|AES-256 加密，媒體服務管理的金鑰。|支援<sup>(1)</sup>|不支援<sup>(2)</sup>|
 |[待用資料的儲存體服務加密](../../storage/common/storage-service-encryption.md)|Azure 儲存體提供的伺服器端加密、由 Azure 或客戶管理的金鑰。|支援|支援|

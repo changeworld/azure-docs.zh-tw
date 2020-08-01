@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: dd179160ad6796da40a5b98e89a10999ad0445d1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e50c1e3efc33fb761068b3009979079b2ba4b760
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070537"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447141"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 儲存體模擬器進行開發和測試
 
@@ -178,13 +178,13 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 `AzureStorageEmulator.exe [start] [stop] [status] [clear] [init] [help]`
 
-### <a name="options"></a>選項
+### <a name="options"></a>選項。
 
 若要檢視選項清單，請在命令提示字元輸入 `/help` 。
 
-| 選項 | 描述 | 命令 | 引數 |
+| 選項 | 說明 | Command | 引數 |
 | --- | --- | --- | --- |
-| **開始** |啟動儲存體模擬器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-* 重新處理：在目前的進程中啟動模擬器，而不是建立新的進程。 |
+| **啟動** |啟動儲存體模擬器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-* 重新處理：在目前的進程中啟動模擬器，而不是建立新的進程。 |
 | **停止** |停止儲存體模擬器。 |`AzureStorageEmulator.exe stop` | |
 | **狀態** |列印儲存體模擬器的狀態。 |`AzureStorageEmulator.exe status` | |
 | **清除** |清除命令列上指定的所有服務中的資料。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*：清除 blob 資料。 <br/>*queue*：清除佇列資料。 <br/>*table*：清除資料表資料。 <br/>*all*：清除所有服務中的所有資料。 |
@@ -210,7 +210,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 * 增量複本會讓來自覆寫 blob 的快照進行複製，其會在服務時傳回失敗。
 * 取得頁面範圍差異在使用累加複製 Blob 複製的快照之間無法正常執行。
 * 即使未在要求中指定租用識別碼，Put Blob 作業仍可針對存在於具有作用中租用的儲存體模擬器中的 blob 進行成功。
-* 模擬器不支援附加 Blob 作業。 在附加 Blob 上嘗試作業會傳回 FeatureNotSupportedByEmulator 錯誤 (HTTP 狀態碼 400-不正確的要求)。
+* 模擬器不支援附加 blob 作業。 在附加 Blob 上嘗試作業會傳回 FeatureNotSupportedByEmulator 錯誤 (HTTP 狀態碼 400-不正確的要求)。
 
 ### <a name="differences-for-table-storage"></a>資料表儲存體的差異
 
@@ -304,7 +304,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ### <a name="version-41"></a>4.1 版
 
-* 儲存體模擬器現在支援 Blob、佇列和表格服務端點上的2015-02-21 版的儲存體服務。 它不支援新的附加 Blob 功能。
+* 儲存體模擬器現在支援 Blob、佇列和表格服務端點上的2015-02-21 版的儲存體服務。 它不支援新的附加 blob 功能。
 * 模擬器現在會針對不支援的儲存體服務版本傳回有意義的錯誤訊息。 我們建議使用最新版本的模擬器。 如果您收到 VersionNotSupportedByEmulator 錯誤（HTTP 狀態碼 400-不正確的要求），請下載最新版本的模擬器。
 * 修正競爭情形造成資料表實體資料在並行合併作業期間會不正確的 bug。
 

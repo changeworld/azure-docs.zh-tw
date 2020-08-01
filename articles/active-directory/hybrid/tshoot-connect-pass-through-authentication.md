@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baf3566e90802f73accdd27f1cd5435e4af7b9be
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f480118aaabf24bd7c5ca472bf04b12ee1405010
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281815"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446989"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>針對 Azure Active Directory 傳遞驗證進行疑難排解
 
@@ -74,10 +74,8 @@ ms.locfileid: "87281815"
 
 如果您收到相同的使用者名稱/密碼錯誤，這表示傳遞驗證代理程式正常運作，而問題可能是內部部署 UPN 無法路由傳送。 若要深入瞭解，請參閱設定[替代登入識別碼]( https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More)。
 
-
-
-
-
+> [!IMPORTANT]
+> 如果 Azure AD Connect 伺服器未加入網域，則[Azure AD Connect：必要條件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#installation-prerequisites)中所述的需求，會發生不正確使用者名稱/密碼問題。
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心上的登入失敗原因 (需要 Premium 授權)
 

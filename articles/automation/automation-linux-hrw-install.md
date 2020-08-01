@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fc7951411f1c8956b4816f9031a8b7c26594b42
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 7f19aec65ed2616d757718116ac948473dd4b0ed
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856141"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448020"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>部署 Linux 混合式 Runbook 背景工作角色
 
@@ -18,7 +18,7 @@ ms.locfileid: "85856141"
 
 在您成功部署 Runbook 背景工作角色後，請檢閱[在混合式 Runbook 背景工作角色上執行 Runbook](automation-hrw-run-runbooks.md)，以了解如何設定 Runbook 以將內部部署資料中心或其他雲端環境中的程序自動化。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您有下列項目：
 
@@ -28,7 +28,7 @@ ms.locfileid: "85856141"
 
 如果您沒有 Azure 監視器 Log Analytics 工作區，請在建立工作區之前，先參閱[Azure 監視器記錄設計指引](../azure-monitor/platform/design-logs-deployment.md)。
 
-如果您有工作區，但它並未連結至您的自動化帳戶，則啟用自動化功能可為 Azure 自動化新增功能，包括混合式 Runbook 背景工作角色的支援。 當您在 Log Analytics 工作區中啟用其中一項 Azure 自動化功能時，特別是[更新管理](automation-update-management.md)或[變更追蹤和清查](change-tracking.md)，背景工作元件會自動推送至代理程式電腦。
+如果您有工作區，但它並未連結至您的自動化帳戶，則啟用自動化功能可為 Azure 自動化新增功能，包括混合式 Runbook 背景工作角色的支援。 當您在 Log Analytics 工作區中啟用其中一項 Azure 自動化功能時，特別是[更新管理](update-management/update-mgmt-overview.md)或[變更追蹤和清查](change-tracking.md)，背景工作元件會自動推送至代理程式電腦。
 
 若要將更新管理功能新增至您的工作區，請執行下列 PowerShell Cmdlet：
 
@@ -58,7 +58,7 @@ ms.locfileid: "85856141"
 * Ubuntu 12.04 LTS、14.04 LTS、16.04 LTS 和 18.04 (x86/x64)
 * SUSE Linux Enterprise Server 11 和 12 (x86/x64)
 
-### <a name="minimum-requirements"></a>最低要求條件
+### <a name="minimum-requirements"></a>最低需求
 
 Linux 混合式 Runbook 背景工作角色的最低需求如下：
 
@@ -82,11 +82,11 @@ Linux 混合式 Runbook 背景工作角色在 Azure 自動化中支援一組有�
 
 |Runbook 類型 | 支援 |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |是 |
 |PowerShell |是<sup>1</sup> |
-|PowerShell 工作流程 |No |
-|圖形化 |No |
-|圖形化 PowerShell 工作流程 |No |
+|PowerShell 工作流程 |否 |
+|圖形化 |否 |
+|圖形化 PowerShell 工作流程 |否 |
 
 <sup>1</sup>PowerShell runbook 需要在 Linux 機器上安裝 PowerShell Core。 請參閱[在 Linux 上安裝 PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-linux) 以了解其安裝方式。
 

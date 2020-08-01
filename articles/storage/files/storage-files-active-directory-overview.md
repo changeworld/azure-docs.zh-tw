@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 48441a48fe6f72e88e080967451d9904c3e586b2
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 65d7845763b60a66f396d9081f3c9c6e1d04c1bc
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372311"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447243"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>瞭解 SMB 存取的 Azure 檔案儲存體身分識別型驗證選項
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "87372311"
 
     內部部署 Active Directory Domain Services （AD DS）與 Azure 檔案儲存體整合提供儲存目錄資料的方法，同時讓網路使用者和系統管理員使用。 安全性透過登入驗證和對目錄中物件的存取控制，與 AD DS 整合。 透過單一網路登入，系統管理員可以管理整個網路的目錄資料和組織，而已授權的網路使用者可以存取網路上任何位置的資源。 內部部署環境中的企業通常會採用 AD DS，而 AD DS 認證則是用來做為存取控制的身分識別。 如需詳細資訊，請參閱[Active Directory Domain Services 總覽](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
 
--   **Azure 角色型存取控制 (RBAC)**
+-   **Azure 角色型存取控制（Azure RBAC）**
 
     Azure 角色型存取控制（Azure RBAC）可為 Azure 提供更細緻的存取權管理。 使用 RBAC，您可以對使用者授權執行其執行工作所需的最少權限，以便管理對資源的存取權。 如需 RBAC 的詳細資訊，請參閱[什麼是 azure 中的 azure 角色型存取控制（AZURE RBAC）？](../../role-based-access-control/overview.md)。
 

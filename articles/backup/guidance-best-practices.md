@@ -1,14 +1,14 @@
 ---
-title: 指導方針和最佳作法
+title: 指導方針和最佳做法
 description: 探索將雲端和內部部署工作負載備份到雲端的最佳做法和指導方針
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4a5f7e1f55eb5b4a68ee889ef6e1378eb573a6a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d0ce7877ebd33385deb98977c9439bf8a05b5325
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097347"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447281"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>將雲端和內部部署工作負載備份到雲端
 
@@ -137,7 +137,7 @@ Azure 備份原則有兩個元件：*排程*（何時進行備份）和*保留�
 
 ### <a name="authentication-and-authorization"></a>驗證和授權
 
-* Azure 角色型存取控制（RBAC）可讓您進行更細緻的存取管理、小組內的職責劃分，以及僅授與執行其工作所需的使用者存取權。 [在這裡深入瞭解](backup-rbac-rs-vault.md)。
+* Azure 角色型存取控制（Azure RBAC）可讓您進行更細緻的存取管理、小組內的職責劃分，以及僅授與執行其工作所需的使用者存取權。 [在這裡深入瞭解](backup-rbac-rs-vault.md)。
 
 * Azure 備份提供三個內建角色來控制備份管理作業：備份參與者、操作員和讀取者。 [在這裡深入瞭解](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)。
 

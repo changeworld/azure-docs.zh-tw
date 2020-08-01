@@ -31,14 +31,6 @@
           href: storage-files-active-directory-overview.md
         - name: 直接存取的網路功能考量
           href: storage-files-networking-overview.md
-        - name: 防止資料意外刪除
-          href: storage-files-prevent-file-share-deletion.md
-        - name: 備份檔案共用
-          href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 待用加密
-          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 使用客戶管理的金鑰加密待用資料
-          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 災害復原和容錯移轉
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure 檔案共用快照集
@@ -69,6 +61,14 @@
           href: storage-sync-files-networking-overview.md
         - name: 關於雲端階層處理
           href: storage-sync-cloud-tiering.md
+    - name: 防止資料意外刪除
+      href: storage-files-prevent-file-share-deletion.md
+    - name: 備份檔案共用
+      href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: 待用加密
+      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: 使用客戶管理的金鑰加密待用資料
+      href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 擴充和效能目標
       href: storage-files-scale-targets.md
     - name: 合規性供應項目
@@ -85,6 +85,70 @@
           href: storage-files-how-to-create-large-file-share.md
         - name: 建立進階檔案共用
           href: storage-how-to-create-premium-fileshare.md
+    - name: 部署
+      items:
+        - name: 部署 Azure 檔案
+          href: storage-files-deployment-guide.md
+        - name: 部署 Azure 檔案同步
+          href: storage-sync-files-deployment-guide.md
+        - name: SQL Server FCI 搭配進階檔案共用
+          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: 掛接
+      items:
+        - name: 搭配使用 Azure 檔案服務與 Windows
+          href: storage-how-to-use-files-windows.md
+        - name: 搭配 Linux 使用 Azure 檔案
+          href: storage-how-to-use-files-linux.md
+        - name: 搭配使用 Azure 檔案服務與 macOS
+          href: storage-how-to-use-files-mac.md
+    - name: 網路
+      items:
+        - name: Azure 檔案
+          items:
+            - name: 設定 Azure 檔案儲存體網路端點
+              href: storage-files-networking-endpoints.md
+            - name: 設定 Azure 檔案儲存體的 DNS 轉送
+              href: storage-files-networking-dns.md
+        - name: Azure 檔案同步
+          items:
+            - name: 設定 Azure 檔案同步網路端點
+              href: storage-sync-files-networking-endpoints.md
+            - name: 設定檔案同步 Proxy 和防火牆設定
+              href: storage-sync-files-firewall-and-proxy.md
+        - name: 設定站對站 VPN
+          href: storage-files-configure-s2s-vpn.md
+        - name: 在 Windows 上設定點對站 VPN
+          href: storage-files-configure-p2s-vpn-windows.md
+        - name: 在 Linux 上設定點對站 VPN
+          href: storage-files-configure-p2s-vpn-linux.md
+    - name: Authenticate
+      items:
+        - name: 啟用內部部署 AD DS 驗證和授權
+          items:
+            - name: AD DS 概觀
+              href: storage-files-identity-auth-active-directory-enable.md
+            - name: 啟用 AD DS 驗證
+              href: storage-files-identity-ad-ds-enable.md
+            - name: 指派共用層級權限
+              href: storage-files-identity-ad-ds-assign-permissions.md
+            - name: 指派目錄/檔案層級權限
+              href: storage-files-identity-ad-ds-configure-permissions.md
+            - name: 掛接檔案共用
+              href: storage-files-identity-ad-ds-mount-file-share.md
+            - name: 更新密碼
+              href: storage-files-identity-ad-ds-update-password.md
+        - name: 啟用 Azure AD DS 驗證和授權
+          href: storage-files-identity-auth-active-directory-domain-service-enable.md
+    - name: 管理
+      items:
+        - name: 向 Azure 檔案同步註冊伺服器
+          href: storage-sync-files-server-registration.md
+        - name: 新增 Azure 檔案同步伺服器端點
+          href: storage-sync-files-server-endpoint.md
+        - name: 管理 Azure 獨立雲端中的儲存體
+          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: 初始化帳戶容錯移轉
+          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 資料保護
       items:
         - name: 啟用虛刪除
@@ -133,70 +197,6 @@
               href: ../../backup/manage-afs-powershell.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: REST API
               href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 部署
-      items:
-        - name: 部署 Azure 檔案
-          href: storage-files-deployment-guide.md
-        - name: 部署 Azure 檔案同步
-          href: storage-sync-files-deployment-guide.md
-        - name: SQL Server FCI 搭配進階檔案共用
-          href: ../../virtual-machines/windows/sql/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 掛接
-      items:
-        - name: 搭配使用 Azure 檔案服務與 Windows
-          href: storage-how-to-use-files-windows.md
-        - name: 搭配 Linux 使用 Azure 檔案
-          href: storage-how-to-use-files-linux.md
-        - name: 搭配使用 Azure 檔案服務與 macOS
-          href: storage-how-to-use-files-mac.md
-    - name: 網路
-      items:
-        - name: Azure 檔案
-          items:
-            - name: 設定 Azure 檔案儲存體網路端點
-              href: storage-files-networking-endpoints.md
-            - name: 設定 Azure 檔案儲存體的 DNS 轉送
-              href: storage-files-networking-dns.md
-        - name: Azure 檔案同步
-          items:
-            - name: 設定 Azure 檔案同步網路端點
-              href: storage-sync-files-networking-endpoints.md
-            - name: 設定檔案同步 Proxy 和防火牆設定
-              href: storage-sync-files-firewall-and-proxy.md
-        - name: 設定站對站 VPN
-          href: storage-files-configure-s2s-vpn.md
-        - name: 在 Windows 上設定點對站 VPN
-          href: storage-files-configure-p2s-vpn-windows.md
-        - name: 在 Linux 上設定點對站 VPN
-          href: storage-files-configure-p2s-vpn-linux.md
-    - name: 管理
-      items:
-        - name: 向 Azure 檔案同步註冊伺服器
-          href: storage-sync-files-server-registration.md
-        - name: 新增 Azure 檔案同步伺服器端點
-          href: storage-sync-files-server-endpoint.md
-        - name: 管理 Azure 獨立雲端中的儲存體
-          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 初始化帳戶容錯移轉
-          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Authenticate
-      items:
-        - name: 啟用內部部署 AD DS 驗證和授權
-          items:
-            - name: AD DS 概觀
-              href: storage-files-identity-auth-active-directory-enable.md
-            - name: 啟用 AD DS 驗證
-              href: storage-files-identity-ad-ds-enable.md
-            - name: 指派共用層級權限
-              href: storage-files-identity-ad-ds-assign-permissions.md
-            - name: 指派目錄/檔案層級權限
-              href: storage-files-identity-ad-ds-configure-permissions.md
-            - name: 掛接檔案共用
-              href: storage-files-identity-ad-ds-mount-file-share.md
-            - name: 更新密碼
-              href: storage-files-identity-ad-ds-update-password.md
-        - name: 啟用 Azure AD DS 驗證和授權
-          href: storage-files-identity-auth-active-directory-domain-service-enable.md
     - name: 監視
       items:
         - name: 監視 Azure 檔案同步
@@ -247,6 +247,8 @@
                   href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 啟用儲存體帳戶的基礎結構加密
           href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json
+        - name: 進階威脅防護
+          href: ../common/storage-advanced-threat-protection.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 設定防火牆和虛擬網路
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 需要安全傳輸

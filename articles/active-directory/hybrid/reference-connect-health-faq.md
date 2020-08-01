@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427a09f3855d44af0206ebf1fd6183099da75f19
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80331085"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446983"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常見問題集
 本文會回答有關 Azure Active Directory (Azure AD) Connect Health 的常見問題 (FAQ)。 這些常見問題涵蓋如何使用服務的相關問題，包括計費模型、功能、限制及支援。
@@ -66,7 +66,7 @@ ms.locfileid: "80331085"
 
 德國雲端不支援 Azure AD Connect Health，但[同步處理錯誤報告功能](how-to-connect-health-sync.md#object-level-synchronization-error-report)除外。
 
-| 角色 | 功能 | 德國雲端中支援 |
+| 角色 | 特性 | 德國雲端中支援 |
 | ------ | --------------- | --- |
 | 適用於同步處理的 Connect Health | 監視/見解/警示/分析 | 否 |
 |  | 同步處理錯誤報告 | 是 |
@@ -96,7 +96,7 @@ ms.locfileid: "80331085"
 
 **問：在安裝 Azure AD Connect Health 代理程式期間，我是否需要重新啟動我的伺服器？**
 
-不會。 安裝代理程式不需要您重新啟動伺服器。 不過，安裝某些先決條件的步驟可能需要重新啟動伺服器。
+否。 安裝代理程式不需要您重新啟動伺服器。 不過，安裝某些先決條件的步驟可能需要重新啟動伺服器。
 
 例如，在 Windows Server 2008 R2 上安裝 .NET 4.5 Framework 需要重新啟動伺服器。
 
@@ -113,7 +113,7 @@ ms.locfileid: "80331085"
 
 **問：連線到 HTTP Proxy 時，Azure AD Connect Health 是否支援基本驗證？**
 
-不會。 目前不支援為基本驗證指定任意使用者名稱和密碼的機制。
+否。 目前不支援為基本驗證指定任意使用者名稱和密碼的機制。
 
 **問：我需要開放哪些防火牆連接埠，Azure AD Connect Health 代理程式才能運作？**
 
@@ -135,11 +135,11 @@ Health 代理程式會因為下列可能原因而無法註冊：
 
 * 因為防火牆封鎖流量，代理程式無法與所需端點通訊。 在 Web 應用程式 Proxy 伺服器上尤其常見。 請確定您已允許針對所需端點和連接埠的輸出通訊。 如需詳細資訊，請參閱[需求一節](how-to-connect-health-agent-install.md#requirements)。
 * 輸出通訊會受到網路層的 TLS 檢查。 這會導致代理程式所使用的憑證遭到檢查伺服器/實體所取代，完成代理程式註冊的步驟便會失敗。
-* 使用者沒有執行代理程式註冊的存取權。 根據預設，全域系統管理員具有存取權。 您可以使用[角色型存取控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)將存取權委派給其他使用者。
+* 使用者沒有執行代理程式註冊的存取權。 根據預設，全域系統管理員具有存取權。 您可以使用[azure 角色型存取控制（AZURE RBAC）](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) ，將存取權委派給其他使用者。
 
 **問：我收到「健全狀況服務資料不是最新狀態」的警示。如何? 對問題進行疑難排解？**
 
-當 Azure AD Connect Health 在過去 2 小時沒有從伺服器收到所有資料點，就會產生此警示。 [閱讀更多](how-to-connect-health-data-freshness.md)。
+當 Azure AD Connect Health 在過去 2 小時沒有從伺服器收到所有資料點，就會產生此警示。 [閱讀其他資訊](how-to-connect-health-data-freshness.md)。
 
 ## <a name="operations-questions"></a>操作問題
 **問：我是否需要在 web 應用程式 proxy 伺服器上啟用審核功能？**

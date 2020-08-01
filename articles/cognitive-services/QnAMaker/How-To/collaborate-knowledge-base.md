@@ -1,14 +1,14 @@
 ---
 title: 在知識庫上共同作業-QnA Maker
-description: QnA Maker 可讓多位使用者對知識庫進行共同作業。 這項功能是連同 Azure 角色型存取控制一起提供。
+description: QnA Maker 可讓多位使用者對知識庫進行共同作業。 這項功能是透過 Azure 角色型存取控制（Azure RBAC）提供。
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20eb58f346322cb78bff85af3d6a0d366090763d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054051"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446942"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>與作者和編輯者共同作業
 
@@ -36,7 +36,7 @@ QnA Maker 可讓多人共同處理相同 QnA Maker 資源中的所有知識庫�
 
     ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. 選取 [新增]。
+1. 選取 [加入]  。
 
     ![QnA Maker IAM 新增](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 

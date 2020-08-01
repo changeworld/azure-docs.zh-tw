@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: da09f78817e1271832397b4a130195385207645f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e20b2f8c0e12fdb23668d16e2cbd7936cc4e48c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477782"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445470"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>如何：將您的 Azure AD 應用程式限制為 Azure AD 租使用者中的一組使用者
 
@@ -26,7 +26,7 @@ ms.locfileid: "85477782"
 
 同樣地，在[多租用戶](howto-convert-app-to-be-multi-tenant.md)應用程式的案例中，於此應用程式佈建所在的 Azure AD 租用戶中，使用者一旦成功驗證其各自的租用戶後，都能夠存取此應用程式。
 
-租用戶系統管理員和開發人員通常需要將應用程式限制為僅供一組特定的使用者存取。 開發人員可以使用角色型存取控制 (RBAC) 等熱門的授權模式來完成相同限制，但此方法會讓開發人員這一方必須進行大量的工作。
+租用戶系統管理員和開發人員通常需要將應用程式限制為僅供一組特定的使用者存取。 開發人員可以使用 Azure 角色型存取控制（Azure RBAC）之類的熱門授權模式來完成相同的工作，但這種方法在開發人員中需要大量的工作量。
 
 租使用者系統管理員和開發人員也可以使用 Azure AD 的這項內建功能，將應用程式限制為租使用者中一組特定的使用者或安全性群組。
 

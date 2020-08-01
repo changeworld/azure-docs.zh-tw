@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03258bf204491afce4635828b3a33a06886aca2d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450010"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448404"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure 中 IaaS 工作負載的安全性最佳作法
 本文說明適用於 VM 和作業系統的最佳做法。
@@ -40,7 +40,7 @@ ms.locfileid: "81450010"
 **最佳做法**：控制 VM 存取。   
 **詳細資訊**：使用 [Azure 原則](/azure/azure-policy/azure-policy-introduction)為組織資源制定慣例及建立自訂原則。 將這些原則套用到資源，例如[資源群組](/azure/azure-resource-manager/resource-group-overview)。 屬於某資源群組的 VM 會繼承其原則。
 
-如果貴組織有多個訂用帳戶，您可能需要一個方法來有效率地管理這些訂用帳戶的存取、原則和相容性。 [Azure 管理群組](/azure/azure-resource-manager/management-groups-overview)提供了訂用帳戶之上的範圍層級。 您可將訂用帳戶整理到管理群組 (容器) 中，並將治理條件套用至這些群組。 管理群組內的所有訂用帳戶都會自動繼承套用到該群組的條件。 無論具有何種類型的訂用帳戶，管理群組都可為您提供企業級的大規模管理功能。
+如果您的組織有許多訂用帳戶，則可能需要有效管理這些訂用帳戶的存取權、原則與合規性方法。 [Azure 管理群組](/azure/azure-resource-manager/management-groups-overview)提供了訂用帳戶之上的範圍層級。 您可將訂用帳戶整理到管理群組 (容器) 中，並將治理條件套用至這些群組。 管理群組內的所有訂用帳戶都會自動繼承套用到該群組的條件。 無論您具有何種類型的訂用帳戶，管理群組都可為您提供企業級的大規模管理功能。
 
 **最佳做法**：降低 VM 設定和部署的變化性。   
 **詳細資訊**：使用 [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) 範本強化部署選項，更輕鬆了解及清查環境中的 VM。
@@ -84,7 +84,7 @@ Microsoft Antimalware 包含下列功能：即時防護、排程掃描、惡意�
 Azure VM 就跟所有內部部署 VM 一樣，受控於使用者。 Azure 不會向使用者推送 Windows 更新。 您需自行管理 VM 更新。
 
 **最佳做法**：讓 VM 保持最新狀態。   
-**詳細資訊**：使用 Azure 自動化中的[更新管理](../../automation/automation-update-management.md)解決方案，以便管理 Azure、內部部署環境或其他雲端提供者中所部署 Windows 和 Linux 電腦的作業系統更新。 您可以快速評估所有代理程式電腦上可用更新的狀態，並管理為伺服器安裝必要更新的程序。
+**詳細資訊**：使用 Azure 自動化中的[更新管理](../../automation/update-management/update-mgmt-overview.md)解決方案，以便管理 Azure、內部部署環境或其他雲端提供者中所部署 Windows 和 Linux 電腦的作業系統更新。 您可以快速評估所有代理程式電腦上可用更新的狀態，並管理為伺服器安裝必要更新的程序。
 
 「更新管理」所管理的電腦會使用下列設定來執行評估和更新部署：
 

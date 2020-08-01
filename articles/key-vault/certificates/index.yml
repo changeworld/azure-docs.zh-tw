@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: 365f0b07370937a73d3925373be0be544a182865
+  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81423525"
+  ms.lasthandoff: 07/29/2020
+  ms.locfileid: "87386770"
 landingContent:
 - title: 憑證
   linkLists:
@@ -24,6 +24,8 @@ landingContent:
     links:
     - text: 什麼是 Key Vault 憑證？
       url: about-certificates.md
+    - text: 關於虛刪除的重要新聞
+      url: ../general/soft-delete-change.md
     - text: 開始使用 Key Vault 憑證
       url: certificate-scenarios.md
     - text: 憑證建立方式
@@ -53,7 +55,7 @@ landingContent:
     - text: 基本概念
       url: ../general/basic-concepts.md
     - text: 虛刪除概觀
-      url: ../general/overview-soft-delete.md
+      url: ../general/soft-delete-overview.md
     - text: 安全性概觀
       url: ../general/overview-security.md
 - title: Microsoft Learn

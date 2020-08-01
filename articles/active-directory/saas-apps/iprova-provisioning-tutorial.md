@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: b914292e03078021c02d777505543a537b50260f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16cba1896a9e9e4038091769fb78ca0c0469710e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367609"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448825"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>教學課程：設定 iProva 來自動布建使用者
 
@@ -114,7 +114,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 [儲存]。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 iProva**]。
 
@@ -150,7 +150,6 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
 
 
 10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 iProva**]。

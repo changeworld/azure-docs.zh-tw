@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e609e755f02d4321664804bfbb90f979c1c06ead
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133056"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448931"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁碟儲存體的伺服器端加密
 
@@ -34,7 +34,7 @@ Azure 受控磁碟中的資料會使用 256 位元的 [AES 加密](https://en.wi
 
 ### <a name="platform-managed-keys"></a>平台管理的金鑰
 
-根據預設，受控磁碟會使用平台管理的加密金鑰。 從 2017 年 6 月 10 日開始，所有新的受控磁碟、快照集、映像和寫入至現有受控磁碟的新資料都會使用平台管理的金鑰自動加密待用資料。
+根據預設，受控磁碟會使用平台管理的加密金鑰。 所有寫入現有受控磁片的受控磁片、快照集、映射和資料，都會使用平臺管理的金鑰進行待用加密。
 
 ### <a name="customer-managed-keys"></a>客戶管理的金鑰
 

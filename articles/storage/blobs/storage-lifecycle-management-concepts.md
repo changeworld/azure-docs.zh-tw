@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6285c25c44b7b8c5b2c1d9c148424fc36912b57c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 624b8e18f8c0fb523c27c41ce9c10af93c8b6190
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528689"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446670"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
 
@@ -124,7 +124,7 @@ ms.locfileid: "86528689"
    }
    ```
 
-5. 選取 [儲存]。
+5. 選取 [儲存]  。
 
 6. 如需有關此 JSON 範例的詳細資訊，請參閱[原則](#policy)和[規則](#rules)章節。
 
@@ -234,10 +234,10 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 | 參數名稱 | 參數類型 | 備忘稿 | 必要 |
 |----------------|----------------|-------|----------|
-| `name`         | 字串 |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | True |
-| `enabled`      | 布林值 | 選擇性布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | False | 
-| `type`         | 列舉值 | 目前的有效類型為 `Lifecycle` 。 | True |
-| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
+| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | 是 |
+| `enabled`      | Boolean | 選擇性布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | 否 | 
+| `type`         | 列舉值 | 目前的有效類型為 `Lifecycle` 。 | 是 |
+| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | 是 |
 
 ## <a name="rules"></a>規則
 
@@ -248,7 +248,8 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 下列範例規則會篩選帳戶，以針對存在於內 `container1` 且開頭為的物件執行動作 `foo` 。  
 
 >[!NOTE]
->生命週期管理僅支援區塊 blob 類型。  
+>- 生命週期管理僅支援區塊 blob 類型。<br>
+>- 生命週期管理不會影響系統容器，例如 $logs 和 $web。
 
 - 在上次修改 30 天後將 Blob 分層到「非經常性」層
 - 在上次修改 90 天後將 Blob 分層到「封存」層
@@ -304,7 +305,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 生命週期管理支援分層及刪除 blob 和刪除 blob 快照集。 在 Blob 或 Blob 快照集上每項規則至少需定義一個動作。
 
-| 動作        | 基底 Blob                                   | 快照集      |
+| 動作        | 基底 Blob                                   | 快照式      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 支援目前在經常性儲存層的 Blob         | 不支援 |
 | tierToArchive | 支援目前在經常儲存性或非經常性儲存層的 Blob | 不支援 |
@@ -315,7 +316,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 執行條件是以年齡為基礎。 基底 Blob 使用上次修改時間來追蹤存在時間，而 Blob 快照集使用快照集建立時間來追蹤存在時間。
 
-| 動作執行條件             | 條件值                          | 描述                             |
+| 動作執行條件             | 條件值                          | 說明                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | 表示存在時間的整數值 (以天數為單位) | 基底 blob 動作的條件     |
 | daysAfterCreationGreaterThan     | 表示存在時間的整數值 (以天數為單位) | Blob 快照集動作的條件 |

@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/02/2020
-ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.openlocfilehash: d28cd7a7edd5d6405761bf21ee87ec39dc9ec9cb
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84298596"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448546"
 ---
 # <a name="data-flow-script-dfs"></a>資料流程腳本（DFS）
 
@@ -195,13 +195,21 @@ Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
 ```
 
 ### <a name="count-number-of-updates-upserts-inserts-deletes"></a>更新次數、更新插入、插入、刪除
-當使用 Alter Row 轉換時，您可能會想要計算從您的 Alter Row 原則產生的更新、更新插入、插入、刪除數目。 在您的 alter row 之後加入匯總轉換，並將此資料流程腳本貼入這些計數的匯總定義中：
+當使用 Alter Row 轉換時，您可能會想要計算從您的 Alter Row 原則產生的更新、更新插入、插入、刪除數目。 在您的 alter row 之後加入匯總轉換，並將此資料流程腳本貼入這些計數的匯總定義中。
 
 ```
 aggregate(updates = countIf(isUpdate(), 1),
         inserts = countIf(isInsert(), 1),
         upserts = countIf(isUpsert(), 1),
         deletes = countIf(isDelete(),1)) ~> RowCount
+```
+
+### <a name="distinct-row-using-all-columns"></a>使用所有資料行的相異資料列
+此程式碼片段會將新的匯總轉換加入至您的資料流程，此資料流程會接受所有傳入的資料行、產生用於分組以消除重複專案的雜湊，然後提供每個重複的第一次出現做為輸出。 您不需要明確地命名資料行，它們將會從您的傳入資料流程自動產生。
+
+```
+aggregate(groupBy(mycols = sha2(256,columns())),
+    each(match(true()), $$ = first($$))) ~> DistinctRows
 ```
 
 ## <a name="next-steps"></a>後續步驟

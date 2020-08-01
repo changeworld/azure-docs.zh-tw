@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 351307132e231f1fc6639333e6839848ac933337
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b49669dac2b28dac631f71b9cd07c0851ff8df05
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420901"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448852"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公用基礎負載平衡器的 Azure 監視器記錄
 
@@ -29,7 +29,7 @@ ms.locfileid: "87420901"
 * **健康狀態探查記錄︰** 您可以使用此記錄來檢視健康狀態探查所偵測到的問題，例如後端集區中因為健康狀態探查失敗而未從負載平衡器接收要求的執行個體數目。 健康狀態探查狀態發生變更時會寫入此記錄。
 
 > [!IMPORTANT]
-> Azure 監視器記錄檔目前僅適用于公用基本負載平衡器。 記錄僅適用於在資源管理員部署模型中部署的資源。 您無法將記錄使用於傳統部署模型中的資源。 如需這些部署模型的詳細資訊，請參閱[了解 Resource Manager 部署和傳統部署](../azure-resource-manager/management/deployment-models.md)。
+> **健康情況探查事件記錄檔目前無法正常運作，而且會列在[Azure Load Balancer 的已知問題](whats-new.md#known-issues)中。** Azure 監視器記錄檔目前僅適用于公用基本負載平衡器。 記錄僅適用於在資源管理員部署模型中部署的資源。 您無法將記錄使用於傳統部署模型中的資源。 如需這些部署模型的詳細資訊，請參閱[了解 Resource Manager 部署和傳統部署](../azure-resource-manager/management/deployment-models.md)。
 
 ## <a name="enable-logging"></a>啟用記錄
 

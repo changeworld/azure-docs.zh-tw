@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 409a119804354b85e3af380d33a4801549ef8133
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325282"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446541"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式概觀
 開發 Azure Log Analytics 代理程式是為了能夠全面管理任何雲端中的虛擬機器、內部部署機器，以及 [System Center Operations Manager](/system-center/scom/) 所監視的機器。 Windows 和 Linux 代理程式會將從不同來源收集而來的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、[Azure 資訊安全中心](../../security-center/index.yml)和 [Azure 自動化](../../automation/automation-intro.md)。
@@ -51,7 +51,7 @@ Log Analytics 代理程式沒有任何成本，但您可能會因為所擷取的
 Log Analytics 代理程式會將資料傳送至 Azure 監視器中的 Log Analytics 工作區。 Windows 代理程式可以有多重主目錄，以將資料傳送至多個工作區和 System Center Operations Manager 管理群組。 Linux 代理程式則只能傳送至單一目的地。
 
 ## <a name="other-services"></a>其他服務
-適用於 Linux 與 Windows 的代理程式不僅可用於連線到 Azure 監視器，也支援「Azure 自動化」以裝載「混合式 Runbook」背景工作角色與其他服務，例如[變更追蹤](../../automation/change-tracking.md)、[更新管理](../../automation/automation-update-management.md)與 [Azure 資訊安全中心](../../security-center/security-center-intro.md)。 如需有關「混合式 Runbook」背景工作角色的詳細資訊，請參閱 [Azure 自動化混合式 Runbook 背景工作](../../automation/automation-hybrid-runbook-worker.md)。  
+適用於 Linux 與 Windows 的代理程式不僅可用於連線到 Azure 監視器，也支援「Azure 自動化」以裝載「混合式 Runbook」背景工作角色與其他服務，例如[變更追蹤](../../automation/change-tracking.md)、[更新管理](../../automation/update-management/update-mgmt-overview.md)與 [Azure 資訊安全中心](../../security-center/security-center-intro.md)。 如需有關「混合式 Runbook」背景工作角色的詳細資訊，請參閱 [Azure 自動化混合式 Runbook 背景工作](../../automation/automation-hybrid-runbook-worker.md)。  
 
 ## <a name="installation-and-configuration"></a>安裝和組態
 

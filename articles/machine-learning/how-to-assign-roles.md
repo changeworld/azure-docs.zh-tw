@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 2e787bb494c1e919a235b762b4d8c5250c8cda61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6a49497cbe71dddb8ab6e76be9b3679dd62b0cee
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321610"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449033"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理 Azure Machine Learning 工作區的存取權
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -369,7 +369,7 @@ az provider operation show –n Microsoft.MachineLearningServices
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>Q. 使用 Azure RBAC 時有哪些常見的問題？
 
-當您使用 Azure 角色型存取控制時，以下是一些要注意的事項：
+當您使用 Azure 角色型存取控制（Azure RBAC）時，以下是一些要注意的事項：
 
 - 當您在 Azure 中建立資源（例如工作區）時，您不是直接擁有工作區的擁有者。 您的角色會繼承自您在該訂用帳戶中授權的最高範圍角色。 舉例來說，如果您是網路系統管理員，而且擁有建立 Machine Learning 工作區的許可權，則會針對該工作區指派網路管理員角色，而不是擁有者角色。
 - 若有兩個角色指派給相同的 AAD 使用者，且動作/NotActions 有衝突的區段，則如果您在另一個角色中也將這些作業列為動作，則從某個角色 NotActions 列出的作業可能不會生效。 若要深入瞭解 Azure 如何剖析角色指派，請參閱[AZURE RBAC 如何判斷使用者是否有資源的存取權](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)

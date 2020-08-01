@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 04/20/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: d22afd60d4c89c842d78d5803b4d04965eca6fda
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 47dec238474558869d6c8f7fc876e72bb5be6ff5
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320845"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457646"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure Machine Learning 中的資料集進行定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "87320845"
 
 Azure Machine Learning 資料集提供與 Azure Machine Learning 訓練產品（例如[ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py)、[估計工具](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py)、 [HyperDrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py)和[Azure Machine Learning 管線](how-to-create-your-first-pipeline.md)）的完美整合。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要使用資料集來建立和定型，您需要：
 
@@ -191,14 +191,24 @@ y_train = load_data(y_train_path, True).reshape(-1)
 y_test = load_data(y_test, True).reshape(-1)
 ```
 
+## <a name="accessing-source-code-during-training"></a>在定型期間存取原始程式碼
+
+Azure Blob 儲存體的輸送量速度高於 Azure 檔案共用，且會調整為以平行方式啟動的大量作業。 因此，建議您將執行設定為使用 Blob 儲存體來傳輸原始程式碼檔案。
+
+下列程式碼範例會在執行設定中指定要用於原始程式碼傳輸的 Blob 資料存放區。
+
+```python 
+# workspaceblobstore is the default blob storage
+run_config.source_directory_data_store = "workspaceblobstore" 
+```
 
 ## <a name="mount-vs-download"></a>掛接與下載
 
 針對從 Azure Blob 儲存體、Azure 檔案儲存體、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database 和適用於 PostgreSQL 的 Azure 資料庫所建立的資料集，支援裝載或下載任何格式的檔案。 
 
-當您掛接資料集時，您會將資料集所參考的檔案附加至目錄（掛接點），並將它提供給計算目標。 針對以 Linux 為基礎的計算支援掛接，包括 Azure Machine Learning 計算、虛擬機器和 HDInsight。 
+當您**掛接**資料集時，您會將資料集所參考的檔案附加至目錄（掛接點），並將它提供給計算目標。 針對以 Linux 為基礎的計算支援掛接，包括 Azure Machine Learning 計算、虛擬機器和 HDInsight。 
 
-當您下載資料集時，資料集所參考的所有檔案都會下載到計算目標。 所有計算類型都支援下載。 
+當您**下載**資料集時，資料集所參考的所有檔案都會下載到計算目標。 所有計算類型都支援下載。 
 
 如果您的腳本會處理資料集所參考的所有檔案，且您的計算磁片可以符合您的完整資料集，則建議下載，以避免從儲存體服務串流資料的額外負荷。 如果您的資料大小超過計算磁片大小，則無法下載。 針對此案例，我們建議您掛接，因為在處理時只會載入腳本所使用的資料檔案。
 
@@ -228,4 +238,4 @@ print (mounted_path)
 
 * 使用 FileDatasets 將[影像分類模型定型](https://aka.ms/filedataset-samplenotebook)。
 
-* [使用管線將資料集定型](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)。
+* [使用管線將資料集定型](how-to-create-your-first-pipeline.md)。

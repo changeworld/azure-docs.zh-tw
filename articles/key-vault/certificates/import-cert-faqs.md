@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 1063f7189de4bdf1aaca4a6d72c979476433c32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096252"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445786"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>常見問題-Azure Key Vault 憑證匯入
 
@@ -64,6 +64,9 @@ ms.locfileid: "87096252"
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-auto-renew-feature-still-work"></a>如果我從合作夥伴 CA 匯入憑證，自動續約功能仍然可以使用嗎？
 是，您必須確定在上傳之後，您會在憑證的發佈原則中指定 autorotation。 此外，變更將會反映到下一個週期或憑證版本。
+
+### <a name="unable-to-see-the-app-service-certificate-imported-to-key-vault"></a>無法看到匯入 Key Vault 的 App Service 憑證嗎？ 
+如果成功匯入憑證，請在 [秘密] 分頁底下查看。
 
 
 ## <a name="next-steps"></a>後續步驟

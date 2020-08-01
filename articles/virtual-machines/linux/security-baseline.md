@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 0231070e73c5b38562e8d110d80a2fba3c28724d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b0e8de797d66b875b65c1b6b593852707c587e6e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385478"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446557"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>適用于 Linux 虛擬機器的 Azure 安全性基準
 
@@ -628,9 +628,9 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 **指引**：使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的系統。
 
-* [Azure 中的更新管理解決方案](../../automation/automation-update-management.md)
+* [Azure 中的更新管理解決方案](../../automation/update-management/update-mgmt-overview.md)
 
-* [管理 Azure VM 的更新和修補程式](../../automation/automation-tutorial-update-management.md)
+* [管理 Vm 的更新和修補程式](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -640,9 +640,9 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 **指導**方針：您可以使用協力廠商的修補程式管理解決方案。 您可以使用 Azure 更新管理解決方案來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的系統。
 
-* [Azure 中的更新管理解決方案](../../automation/automation-update-management.md)
+* [Azure 中的更新管理解決方案](../../automation/update-management/update-mgmt-overview.md)
 
-* [管理 Azure VM 的更新和修補程式](../../automation/automation-tutorial-update-management.md)
+* [管理 Vm 的更新和修補程式](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure 資訊安全中心監視**：無法使用
 

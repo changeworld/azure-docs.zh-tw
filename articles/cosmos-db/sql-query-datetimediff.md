@@ -7,21 +7,21 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: db037668cec736bc3060b1cd3bb9651ee860a39b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b90b45072128252e8abc22d3422c84c813808119
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261839"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446382"
 ---
-# <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff (Azure Cosmos DB) 
+# <a name="datetimediff-azure-cosmos-db"></a>DateTimeDiff （Azure Cosmos DB）
 
-傳回 (為帶正負號整數值的計數，) 在指定的開始和*結束**日期*之間跨越指定的 DateTimePart 界限。
+傳回跨越指定的開始和*結束**日期*之間所指定 DateTimePart 界限的計數（以帶正負號的整數值）。
   
 ## <a name="syntax"></a>語法
   
 ```sql
-DateTimeAdd (<DateTimePart> , <StartDate> , <EndDate>)
+DateTimeDiff (<DateTimePart> , <StartDate> , <EndDate>)
 ```
 
 ## <a name="arguments"></a>引數
@@ -32,7 +32,7 @@ DateTimeAdd (<DateTimePart> , <StartDate> , <EndDate>)
 | DateTimePart | 縮寫        |
 | ------------ | -------------------- |
 | 年         | "year"、"yyyy"、"yy" |
-| 月        | "month"、"mm"、"m"   |
+| Month        | "month"、"mm"、"m"   |
 | 天          | "day"、"dd"、"d"     |
 | 小時         | "hour"、"hh"         |
 | Minute       | "minute"、"mi"、"n"  |
@@ -47,14 +47,14 @@ DateTimeAdd (<DateTimePart> , <StartDate> , <EndDate>)
   |[格式]|描述|
   |-|-|
   |YYYY|四位數的年份|
-  |MM|兩位數的月份 (01 = 一月等等 ) |
-  |DD|兩位數的當月日期 (01 到 31) |
+  |MM|兩位數的月份（01 = 一月等等）|
+  |DD|兩位數的月份日期（01到31）|
   |T|時間元素開頭的 signifier|
-  |hh|兩位數的小時 (00 到 23) |
-  |mm|兩位數的分鐘 (00 到 59) |
-  |ss|兩位數的秒 (00 到 59) |
+  |hh|兩位數的小時（00到23）|
+  |mm|兩位數的分鐘數（00到59）|
+  |ss|兩位數的秒數（00到59）|
   |. fffffff|七位數的小數秒數|
-  |Z|UTC (國際標準時間) 指示項||
+  |Z|UTC （國際標準時間）指示項||
   
   如需 ISO 8601 格式的詳細資訊，請參閱[ISO_8601](https://en.wikipedia.org/wiki/ISO_8601)
 

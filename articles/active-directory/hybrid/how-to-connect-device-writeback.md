@@ -16,12 +16,12 @@ ms.date: 05/08/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043c30af6d28e61a532c8030dabdc17b73303e7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b139441adb02f5fb33ae8c4a70aaa9b423f0d0e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360124"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447087"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：啟用裝置回寫
 > [!NOTE]
@@ -61,7 +61,7 @@ ms.locfileid: "85360124"
 
     a. **提供企業系統管理員認證**：如果針對裝置需要回寫的樹系提供企業系統管理員認證，則 Azure AD Connect 會在裝置回寫的設定期間自動準備樹系。
 
-    b. **下載 PowerShell 指令碼**：Azure AD Connect 會自動產生 PowerShell 指令碼，以便針對裝置回寫準備 Active Directory。 為了避免無法在 Azure AD Connect 中提供企業系統管理員認證，建議下載 PowerShell 指令碼。 將下載的 PowerShell 指令碼 **CreateDeviceContainer.psq** 提供給要回寫裝置之樹系的企業系統管理員。
+    b. **下載 PowerShell 指令碼**：Azure AD Connect 會自動產生 PowerShell 指令碼，以便針對裝置回寫準備 Active Directory。 為了避免無法在 Azure AD Connect 中提供企業系統管理員認證，建議下載 PowerShell 指令碼。 提供下載的 PowerShell 腳本**CreateDeviceContainer.ps1**給樹系的企業系統管理員，以將裝置寫回其中。
     ![準備 Active Directory 樹系](./media/how-to-connect-device-writeback/devicecontainercreds.png)
     
     執行下列作業以準備 Active Directory 樹系：

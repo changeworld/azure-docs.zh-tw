@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: bba634fa20c3bab6e3763f6cedcbeb77f4546098
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bbc6b4c1317ac31d6262892ac32e2d45cf4863db
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327866"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449081"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -579,7 +579,7 @@ union *
 - **定義警示條件**：將您的 Log Analytics 工作區指定為資源目標。
 - **警示準則**：指定下列項目：
    - **訊號名稱**：選取 [自訂記錄搜尋]
-   - **搜尋查詢**至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 如果您想要不同 
+   - **搜尋查詢**至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 
    - [警示邏輯] 為 [根據結果數目]，而 [條件] 為 [大於臨界值 0]
    - 每個 1440 minutesto 一天執行一次的**時間週期**為*1440*分鐘，而每個*1440*的**警示頻率**為。
 - **定義警示詳細資料**：指定下列項目：

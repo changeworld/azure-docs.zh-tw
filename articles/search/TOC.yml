@@ -110,6 +110,11 @@
           href: knowledge-store-projection-overview.md
         - name: 累加擴充
           href: cognitive-search-incremental-indexing-conceptual.md
+    - name: 安全性
+      items:
+        - name: Azure 原則的安全性控制
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
 - name: 操作指南
   items:
     - name: 建立索引和建構

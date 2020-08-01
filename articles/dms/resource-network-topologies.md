@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 31dfae60b1967e221e294195f66bb7fe59a15e64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69926671730e41845cd28df3108ec86b24a57075
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84187529"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448522"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>使用 Azure 資料庫移轉服務進行 Azure SQL 受控執行個體遷移的網路拓朴
 
@@ -39,7 +39,7 @@ ms.locfileid: "84187529"
 如果您的環境需符合一或多個下列情況案例，請使用此網路拓撲：
 
 - SQL 受控執行個體與內部部署連線隔離，但您的 Azure 資料庫移轉服務實例已連接到內部部署網路。
-- 如果角色型存取控制（RBAC）原則已就緒，您必須限制使用者存取裝載 SQL 受控執行個體的相同訂用帳戶。
+- 如果 Azure 角色型存取控制（Azure RBAC）原則已就緒，您必須限制使用者存取裝載 SQL 受控執行個體的相同訂用帳戶。
 - 用於 SQL 受控執行個體和 Azure 資料庫移轉服務的虛擬網路位於不同的訂用帳戶中。
 
 ![受控執行個體與內部部署網路分開的網路拓撲](media/resource-network-topologies/mi-isolated-workload.png)
@@ -64,7 +64,7 @@ ms.locfileid: "84187529"
 如果您的環境需符合一或多個下列情況案例，請使用此網路拓撲：
 
 - SQL 受控執行個體會布建在隔離的虛擬網路中。
-- 如果角色型存取控制（RBAC）原則已就緒，您必須限制使用者存取裝載 SQL 受控執行個體的相同訂用帳戶。
+- 如果 Azure 角色型存取控制（Azure RBAC）原則已就緒，您必須限制使用者存取裝載 SQL 受控執行個體的相同訂用帳戶。
 - 用於 SQL 受控執行個體和 Azure 資料庫移轉服務的虛擬網路位於不同的訂用帳戶中。
 
 ![使用隔離的 VNet 進行雲端到雲端遷移的網路拓朴](media/resource-network-topologies/cloud-to-cloud-isolated.png)
@@ -90,7 +90,7 @@ ms.locfileid: "84187529"
 | SMB 共用                 | 445                                                   | TCP          | 任意        | 內部部署位址空間 | 允許      | 適用於 DMS 的 SMB 網路共用可儲存資料庫備份檔案，以便遷移到 Azure VM 上的 Azure SQL Database MI 和 SQL Server <br/>(如果您擁有站對站連線，則可能需要此規則)。 |
 | DMS_subnet                | 任意                                                   | 任意          | 任意        | DMS_Subnet                | 允許      |                                                                                                                                                                                                  |
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [將 SQL Server 遷移至 SQL 受控執行個體](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
 - [使用 Azure 資料庫移轉服務的必要條件總覽](https://docs.microsoft.com/azure/dms/pre-reqs)

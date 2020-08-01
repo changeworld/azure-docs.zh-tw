@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3195c27351ba6110c784ddd8a10ea9ddfb0d903a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084038"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447350"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公用雲端中的隔離
 
@@ -76,7 +76,7 @@ Azure RBAC 有適用於所有資源類型的三個基本角色：
 
 - **讀者** 可以檢視現有的 Azure 資源。
 
-![Azure 角色型存取控制](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure 角色型存取控制（Azure RBAC）](./media/isolation-choices/azure-isolation-fig3.png)
 
 Azure 中其餘的 RBAC 角色可以管理特定 Azure 資源。 例如，「虛擬機器參與者」角色可讓使用者建立和管理虛擬機器。 但不會授予他們存取虛擬機器所連接之 Azure 虛擬網路或子網路的存取權。
 

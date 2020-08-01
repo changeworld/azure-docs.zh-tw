@@ -1,5 +1,5 @@
 ---
-title: 為 Azure API for FHIR 設定以 Azure 角色為基礎的存取控制（RBAC）
+title: 設定適用于 Azure API for FHIR 的 Azure 角色型存取控制（Azure RBAC）
 description: 本文說明如何為 Azure API for FHIR 資料平面設定 Azure RBAC
 author: hansenms
 ms.service: healthcare-apis
@@ -7,16 +7,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: 3fbbfd931efb0e570bc96639bc6b7943fddc0237
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a3cdb5a640e09c0095db79f5e3a43b455a1a5705
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417670"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447157"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>設定適用于 FHIR 的 Azure RBAC 
 
-在本文中，您將瞭解如何使用以[Azure 角色為基礎的存取控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/) ，將存取權指派給 Azure API for FHIR 資料平面。 在與您的 Azure 訂用帳戶相關聯的 Azure Active Directory 租使用者中管理資料平面的使用者時，Azure RBAC 是指派資料平面存取權的慣用方法。 如果您使用外部 Azure Active Directory 租使用者，請參閱[本機 RBAC 指派參考](configure-local-rbac.md)。
+在本文中，您將瞭解如何使用[azure 角色型存取控制（AZURE RBAC）](https://docs.microsoft.com/azure/role-based-access-control/)來指派 Azure API for FHIR 資料平面的存取權。 在與您的 Azure 訂用帳戶相關聯的 Azure Active Directory 租使用者中管理資料平面的使用者時，Azure RBAC 是指派資料平面存取權的慣用方法。 如果您使用外部 Azure Active Directory 租使用者，請參閱[本機 RBAC 指派參考](configure-local-rbac.md)。
 
 ## <a name="confirm-azure-rbac-mode"></a>確認 Azure RBAC 模式
 

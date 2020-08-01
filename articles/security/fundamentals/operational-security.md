@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2a49c76e6fdb7f957c026e8f8220cd29a7b35d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749966"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448368"
 ---
 # <a name="azure-operational-security"></a>Azure 作業安全性
 ## <a name="introduction"></a>簡介
 
-### <a name="overview"></a>總覽
+### <a name="overview"></a>概觀
 我們知道安全性是雲端中的首要工作和其重要性，因為您可在其中找到精確且及時的 Azure 安全性資訊。 針對您的應用程式和服務使用 Azure 的其中一個最佳原因是可以利用各種可用的安全性工具和功能。 這些工具和功能可協助您在安全的 Azure 平台上建立安全的解決方案。 Microsoft Azure 必須提供客戶資料的機密性、完整性和可用性，同時也能釐清責任。
 
 為了協助客戶從客戶和 Microsoft 作業的觀點深入了解如何在 Microsoft Azure 內實作一系列安全性控制，因而編寫了本技術白皮書＜Azure 作業安全性＞來提供可透過 Windows Azure 取得之作業安全性的完整介紹。
@@ -70,7 +70,7 @@ Azure 監視器記錄的核心功能是由在 Azure 中執行的一組服務所�
 | :------------- | :-------------|
 | Azure 監視器記錄 | 監視及分析不同資源 (包括實體和虛擬機器) 的可用性和效能。 |
 |自動化 | 讓手動程序自動化，並強制設定實體和虛擬機器。 |
-| 備份 | 備份及還原重要資料。 |
+| Backup | 備份及還原重要資料。 |
 | Site Recovery | 為重要應用程式提供高可用性。 |
 
 ### <a name="azure-monitor-logs"></a>Azure 監視器記錄
@@ -108,7 +108,7 @@ Azure 備份中受保護的資料會儲存在位於特定地理區域的備份�
 
 ![管理解決方案](./media/operational-security/azure-operational-security-fig4.png)
 
-[更新管理解決方案](../../automation/automation-update-management.md)就是使用多項服務來提供其他功能的良好解決方案範例。 此解決方案使用適用于 Windows 和 Linux 的[Azure 監視器 logs](../../log-analytics/log-analytics-queries.md)代理程式，來收集每個代理程式上必要更新的相關資訊。 它會將此資料寫入 Azure 監視器記錄存放庫，您可以在其中使用內含的儀表板來分析它。
+[更新管理解決方案](../../automation/update-management/update-mgmt-overview.md)就是使用多項服務來提供其他功能的良好解決方案範例。 此解決方案使用適用于 Windows 和 Linux 的[Azure 監視器 logs](../../log-analytics/log-analytics-queries.md)代理程式，來收集每個代理程式上必要更新的相關資訊。 它會將此資料寫入 Azure 監視器記錄存放庫，您可以在其中使用內含的儀表板來分析它。
 
 當您建立部署時，可以使用 [Azure 自動化](../../automation/automation-intro.md)中的 Runbook 來安裝必要的更新。 您可在入口網站中管理這整個程序，而不需擔心基礎詳細資料。
 
@@ -128,7 +128,7 @@ Azure 資訊安全中心可協助保護您的 Azure 資源。 它提供您 Azure
 在訂用帳戶層級啟用的原則將會自動傳播至訂用帳戶中的所有資源群組，如圖中的右側所示：
 
 
-### <a name="data-collection"></a>資料收集
+### <a name="data-collection"></a>資料集合
 
 資訊安全中心會收集虛擬機器 (VM) 的資料，以便評估其安全性狀態、提供安全性建議，並對您發出威脅警示。 當您第一次存取資訊安全中心時，訂用帳戶中的所有 VM 都會啟用資料收集。 建議啟用資料收集，但您可以在資訊安全中心原則中關閉資料收集來選擇退出。
 

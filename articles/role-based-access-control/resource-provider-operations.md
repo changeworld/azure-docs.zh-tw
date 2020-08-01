@@ -7,13 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/16/2020
-ms.openlocfilehash: d28f852ad4159472b7fcb3289a322db54be8af1e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 07/29/2020
+ms.custom: generated
+ms.openlocfilehash: 753ee8eef1af1dbac9c776ed0410d2143cd71735
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387382"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449067"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure 資源提供者作業
 
@@ -143,6 +144,7 @@ ms.locfileid: "87387382"
 | [Microsoft.Features](#microsoftfeatures) |
 | [Microsoft.GuestConfiguration](#microsoftguestconfiguration) |
 | [Microsoft.HybridCompute](#microsofthybridcompute) |
+| [Microsoft.Kubernetes](#microsoftkubernetes) |
 | [Microsoft.ManagedServices](#microsoftmanagedservices) |
 | [Microsoft.Management](#microsoftmanagement) |
 | [Microsoft.PolicyInsights](#microsoftpolicyinsights) |
@@ -567,7 +569,7 @@ Azure 服務：[虛擬機器](../virtual-machines/index.yml)、[虛擬機器擴�
 > | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipConfigurations/read | 取得使用虛擬機器擴展集建立的網路介面其中一個或所有 IP 設定屬性。 IP 設定代表私人 IP |
 > | Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkInterfaces/ipConfigurations/publicIPAddresses/read | 取得使用虛擬機器擴展集建立的公用 IP 位址屬性。 虛擬機器擴展集最多可以在每個 ipconfiguration (私人 IP) 建立一個公用 IP |
 > | Microsoft。 Compute/virtualMachineScaleSets/的 vmsizes/read | 列出在虛擬機器擴展集中建立或更新虛擬機器的可用大小 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Compute/virtualMachines/login/action | 以一般使用者身分登入虛擬機器 |
 > | Microsoft.Compute/virtualMachines/loginAsAdmin/action | 以 Windows 系統管理員或 Linux 根使用者權限登入虛擬機器 |
 
@@ -913,6 +915,9 @@ Azure 服務：[應用程式閘道](../application-gateway/index.yml)、 [azure]
 > | Microsoft 網路/firewallPolicies/聯結/動作 | 加入防火牆原則。 不可警示。 |
 > | Microsoft 網路/firewallPolicies/憑證/動作 | 產生防火牆原則憑證 |
 > | Microsoft 網路/firewallPolicies/刪除 | 刪除防火牆原則 |
+> | Microsoft. Network/firewallPolicies/ruleCollectionGroups/read | 取得防火牆原則規則集合群組 |
+> | FirewallPolicies/ruleCollectionGroups/write | 建立防火牆原則規則集合群組，或更新現有的防火牆原則規則集合群組 |
+> | Microsoft. Network/firewallPolicies/ruleCollectionGroups/delete | 刪除防火牆原則規則集合群組 |
 > | Microsoft. Network/firewallPolicies/ruleGroups/read | 取得防火牆原則規則群組 |
 > | FirewallPolicies/ruleGroups/write | 建立防火牆原則規則群組，或更新現有的防火牆原則規則群組 |
 > | Microsoft. Network/firewallPolicies/ruleGroups/delete | 刪除防火牆原則規則群組 |
@@ -982,6 +987,7 @@ Azure 服務：[應用程式閘道](../application-gateway/index.yml)、 [azure]
 > | Microsoft.Network/locations/checkAcceleratedNetworkingSupport/action | 檢查加速網路支援 |
 > | Microsoft. Network/位置/checkPrivateLinkServiceVisibility/action | 檢查私人連結服務可見度 |
 > | Microsoft.Network/locations/bareMetalTenants/action | 配置或驗證裸機租用戶 |
+> | Microsoft. Network/位置/setLoadBalancerFrontendPublicIpAddresses/action | SetLoadBalancerFrontendPublicIpAddresses 以2個負載平衡器的前端 IP 設定為目標。 要求的主體中會提供 IP 設定的 Azure Resource Manager 識別碼。 |
 > | Microsoft. 網路/位置/autoApprovedPrivateLinkServices/讀取 | 取得自動核准的私用連結服務 |
 > | Microsoft.Network/locations/availableDelegations/read | 取得可用的委派 |
 > | Microsoft. 網路/位置/availablePrivateEndpointTypes/讀取 | 取得可用的私用端點資源 |
@@ -1087,6 +1093,7 @@ Azure 服務：[應用程式閘道](../application-gateway/index.yml)、 [azure]
 > | Microsoft.Network/p2sVpnGateways/read | 取得 P2SVpnGateway。 |
 > | Microsoft.Network/p2sVpnGateways/write | 放置 P2SVpnGateway。 |
 > | Microsoft.Network/p2sVpnGateways/delete | 刪除 P2SVpnGateway。 |
+> | microsoft 網路/p2sVpnGateways/重設/動作 | 重設 P2SVpnGateway |
 > | Microsoft.Network/p2sVpnGateways/generatevpnprofile/action | 產生 P2SVpnGateway 的 Vpn 設定檔 |
 > | Microsoft.Network/p2sVpnGateways/getp2svpnconnectionhealth/action | 取得 P2SVpnGateway 的 P2S Vpn 連線健康情況 |
 > | Microsoft. Network/p2sVpnGateways/getp2svpnconnectionhealthdetailed/action | 取得 P2SVpnGateway 的詳細 P2S Vpn 連線健全狀況 |
@@ -1281,6 +1288,8 @@ Azure 服務：[應用程式閘道](../application-gateway/index.yml)、 [azure]
 > | microsoft.network/vpnGateways/vpnConnections/read | 取得 VpnConnection。 |
 > | microsoft.network/vpnGateways/vpnConnections/write | 放置 VpnConnection。 |
 > | microsoft.network/vpnGateways/vpnConnections/delete | 刪除 VpnConnection。 |
+> | microsoft. network/vpnGateways/vpnConnections/startpacketcapture/action | 為 vpn 連線中選取的已連結啟動封包捕獲 |
+> | microsoft. network/vpnGateways/vpnConnections/stoppacketcapture/action | 針對 vpn 連線中選取的已連結停止封包捕獲 |
 > | microsoft. network/vpnGateways/vpnConnections/vpnLinkConnections/read | 取得 Vpn 連結連線 |
 > | Microsoft 網路/vpnServerConfigurations/讀取 | 取得 VpnServerConfiguration |
 > | Microsoft 網路/vpnServerConfigurations/寫入 | 建立或更新 VpnServerConfiguration |
@@ -1550,7 +1559,7 @@ Azure 服務：[儲存體](../storage/index.yml)
 > | Microsoft. Storage/storageAccounts/tableServices/tables/read |  |
 > | Microsoft. Storage/storageAccounts/tableServices/tables/write |  |
 > | Microsoft.Storage/usages/read | 傳回指定訂用帳戶資源的限制和目前的使用量計數 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | 傳回 Blob 或 Blob 清單 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | 傳回寫入 Blob 的結果 |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | 傳回刪除 Blob 的結果 |
@@ -1879,7 +1888,7 @@ Azure 服務： [Azure 地圖服務](../azure-maps/index.yml)
 > | Microsoft. Maps/accounts/privateAtlases/read | 取得私用的阿特拉斯。 |
 > | Microsoft. Maps/accounts/privateAtlases/delete | 刪除私人的阿特拉斯。 |
 > | Microsoft。地圖/作業/讀取 | 讀取提供者作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft。地圖服務/帳戶/服務/資料/讀取 | 允許讀取資料上傳服務和私用的資料。 |
 > | Microsoft。地圖服務/帳戶/服務/資料/刪除 | 允許刪除資料上傳服務和私用的資料 |
 > | Microsoft。地圖服務/帳戶/服務/資料/寫入 | 允許寫入或更新資料上傳服務和私用的資料。 |
@@ -2056,7 +2065,7 @@ Azure 服務： [Azure SignalR Service](../azure-signalr/index.yml)
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/write | 核准或拒絕私人端點連接 |
 > | Microsoft.signalrservice/SignalR/privateEndpointConnections/read | 讀取私人端點連接 |
 > | Microsoft.signalrservice/SignalR/privateLinkResources/read | 列出所有 SignalR 的私人連結資源 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.signalrservice/SignalR/serverConnection/write | 啟動伺服器連接。 |
 > | Microsoft.signalrservice/SignalR/service/accessKey/action | 取得用於簽署 ClientTokens 的暫時 AccessKey。 |
 > | Microsoft.signalrservice/SignalR/service/clientToken/action | 取得啟動用戶端連接的 ClientToken。 |
@@ -2687,7 +2696,7 @@ Azure 服務： [Azure Kubernetes Service （AKS）](../aks/index.yml)
 > | Microsoft.ContainerService/openShiftManagedClusters/write | 建立新的或更新現有的 Open Shift 受控叢集 |
 > | Microsoft.ContainerService/openShiftManagedClusters/delete | 刪除 Open Shift 受控叢集 |
 > | Microsoft.ContainerService/operations/read | 列出 Microsoft.ContainerService 資源提供者的可用作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.containerservice/managedClusters/admissionregistration. k8s io/initializerconfigurations/read | 讀取 initializerconfigurations |
 > | Microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/write | 寫入 initializerconfigurations |
 > | Microsoft.containerservice/managedClusters/admissionregistration. k8s. io/initializerconfigurations/delete | 刪除/DeletesCollection initializerconfigurations 資源 |
@@ -3248,6 +3257,8 @@ Azure 服務：[適用於 MariaDB 的 Azure 資料庫](../mariadb/index.yml)
 > | Microsoft.DBforMariaDB/performanceTiers/read | 傳回可用的效能層級清單。 |
 > | DBforMariaDB/servers/queryTexts/action | 傳回查詢清單的文字 |
 > | DBforMariaDB/servers/queryTexts/action | 傳回查詢的文字 |
+> | DBforMariaDB/servers/start/action | 啟動特定的伺服器。 |
+> | DBforMariaDB/伺服器/停止/動作 | 停止特定的伺服器。 |
 > | Microsoft.DBforMariaDB/servers/read | 傳回伺服器清單，或取得指定伺服器的屬性。 |
 > | Microsoft.DBforMariaDB/servers/write | 使用指定參數建立伺服器，或更新指定伺服器的屬性或標記。 |
 > | Microsoft.DBforMariaDB/servers/delete | 刪除現有伺服器。 |
@@ -3324,6 +3335,9 @@ Azure 服務：[適用於 MySQL 的 Azure 資料庫](../mysql/index.yml)
 > | Microsoft.dbformysql/位置/serverKeyOperationResults/讀取 | 取得資料加密伺服器金鑰的進行中作業 |
 > | Microsoft.dbformysql/作業/讀取 | 傳回 MySQL 作業的清單。 |
 > | Microsoft.DBforMySQL/performanceTiers/read | 傳回可用的效能層級清單。 |
+> | Microsoft.dbformysql/servers/start/action | 啟動特定的伺服器。 |
+> | Microsoft.dbformysql/伺服器/停止/動作 | 停止特定的伺服器。 |
+> | Microsoft.dbformysql/伺服器/匯出/動作 |  |
 > | Microsoft.dbformysql/servers/queryTexts/action | 傳回查詢清單的文字 |
 > | Microsoft.dbformysql/servers/queryTexts/action | 傳回查詢的文字 |
 > | Microsoft.DBforMySQL/servers/read | 傳回伺服器清單，或取得指定伺服器的屬性。 |
@@ -3695,6 +3709,8 @@ Azure 服務： [Azure Cosmos DB](../cosmos-db/index.yml)
 > | Microsoft.DocumentDB/locations/deleteVirtualNetworkOrSubnets/action | 通知 Microsoft.DocumentDB 正在刪除虛擬網路或子網路 |
 > | Microsoft.DocumentDB/locations/deleteVirtualNetworkOrSubnets/operationResults/read | 讀取 deleteVirtualNetworkOrSubnets 非同步作業的狀態 |
 > | Microsoft.DocumentDB/位置/operationsStatus/讀取 | 讀取非同步作業的狀態 |
+> | Microsoft.DocumentDB/位置/restorableDatabaseAccounts/讀取 | 讀取可還原的資料庫帳戶，或列出所有可還原的資料庫帳戶 |
+> | Microsoft.DocumentDB/位置/restorableDatabaseAccounts/還原/動作 | 提交還原要求 |
 > | Microsoft.DocumentDB/operationResults/read | 讀取非同步作業的狀態 |
 > | Microsoft.DocumentDB/operations/read | 讀取可供 Microsoft DocumentDB 使用的作業  |
 
@@ -3727,6 +3743,8 @@ Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure 
 > | Microsoft.Sql/locations/elasticPoolOperationResults/read | 取得彈性集區作業的結果。 |
 > | Microsoft .Sql/位置/encryptionProtectorAzureAsyncOperation/讀取 | 取得透明資料加密加密保護裝置上的進行中作業 |
 > | Microsoft .Sql/位置/encryptionProtectorOperationResults/讀取 | 取得透明資料加密加密保護裝置上的進行中作業 |
+> | Microsoft .Sql/位置/exportManagedDatabaseOperationResults/讀取 | 取得進行中的 managed 資料庫匯出作業 |
+> | Microsoft .Sql/位置/exportManagedInstanceOperationResults/讀取 | 取得進行中的匯出作業 |
 > | Microsoft.Sql/locations/extendedAuditingSettingsAzureAsyncOperation/read | 擷取擴充伺服器的 Blob 稽核原則設定作業結果 |
 > | Microsoft.Sql/locations/extendedAuditingSettingsOperationResults/read | 擷取擴充伺服器的 Blob 稽核原則設定作業結果 |
 > | Microsoft.Sql/locations/firewallRulesAzureAsyncOperation/read | 取得防火牆規則作業的狀態。 |
@@ -3796,6 +3814,7 @@ Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure 
 > | Microsoft.Sql/managedInstances/databases/read | 取得現有的受控資料庫 |
 > | Microsoft.Sql/managedInstances/databases/delete | 刪除現有的受控資料庫 |
 > | Microsoft.Sql/managedInstances/databases/write | 建立新的資料庫或更新現有資料庫。 |
+> | Microsoft .Sql/managedInstances/資料庫/匯出/動作 | 匯出使用者資料庫。 |
 > | Microsoft .Sql/managedInstances/資料庫/completeRestore/action | 完成受控資料庫還原作業 |
 > | Microsoft .Sql/managedInstances/資料庫/backupLongTermRetentionPolicies/write | 更新受控資料庫的長期保留原則 |
 > | Microsoft .Sql/managedInstances/資料庫/backupLongTermRetentionPolicies/read | 取得受控資料庫的長期保留原則 |
@@ -3838,7 +3857,6 @@ Azure 服務： [Azure SQL Database](../azure-sql/database/index.yml)、 [azure 
 > | Microsoft .Sql/managedInstances/encryptionProtector/重新驗證/動作 | 更新指定伺服器加密保護裝置的屬性。 |
 > | Microsoft.Sql/managedInstances/encryptionProtector/read | 傳回伺服器加密保護裝置的清單，或取得指定伺服器加密保護裝置的屬性。 |
 > | Microsoft.Sql/managedInstances/encryptionProtector/write | 更新指定伺服器加密保護裝置的屬性。 |
-> | ManagedInstances/exportOperationResults/read | 取得進行中的匯出作業 |
 > | ManagedInstances/inaccessibleManagedDatabases/read | 取得受控實例中無法存取的受控資料庫清單 |
 > | Microsoft.Sql/managedInstances/keys/read | 傳回受控執行個體金鑰的清單，或取得指定受控執行個體金鑰的屬性。 |
 > | Microsoft.Sql/managedInstances/keys/write | 使用指定參數建立金鑰，或更新指定受控執行個體金鑰的屬性或標記。 |
@@ -4180,6 +4198,14 @@ Azure 服務： [Azure Databricks](https://docs.microsoft.com/azure/databricks/)
 > | Databricks/workspace/updateDenyAssignment/action | 針對工作區的受控資源群組更新拒絕指派而非動作 |
 > | Databricks/workspace/refreshWorkspaces/action | 使用新的詳細資料（例如 URL）重新整理工作區 |
 > | Databricks/workspace/dbWorkspaces/write | 初始化 Databricks 工作區（僅限內部） |
+> | Databricks/workspace/privateEndpointConnectionProxies/read | 取得私人端點連接 Proxy |
+> | Databricks/workspace/privateEndpointConnectionProxies/validate/action | 驗證私人端點連接 proxy |
+> | Databricks/workspace/privateEndpointConnectionProxies/write | 放置私人端點連接 proxy |
+> | Databricks/workspace/privateEndpointConnectionProxies/delete | 刪除私人端點連接 proxy |
+> | Databricks/workspace/privateEndpointConnections/read | 列出私人端點連接 |
+> | Databricks/workspace/privateEndpointConnections/write | 核准私人端點連接 |
+> | Databricks/workspace/privateEndpointConnections/delete | 移除私人端點連接 |
+> | Databricks/workspace/privateLinkResources/read | 列出私人連結資源 |
 > | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/read | 設定 Databricks 工作區的可用診斷設定 |
 > | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/diagnosticSettings/write | 新增或修改診斷設定。 |
 > | Microsoft.Databricks/workspaces/providers/Microsoft.Insights/logDefinitions/read | 取得 Databricks 工作區的可用記錄定義 |
@@ -4342,7 +4368,7 @@ Azure 服務：[事件中樞](../event-hubs/index.yml)
 > | Microsoft.EventHub/operations/read | 取得作業 |
 > | Microsoft.EventHub/sku/read | 取得 SKU 資源描述的清單 |
 > | Microsoft.EventHub/sku/regions/read | 取得 SkuRegions 資源描述的清單 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft. EventHub/命名空間/訊息/傳送/動作 | 傳送訊息 |
 > | Microsoft. EventHub/命名空間/訊息/接收/動作 | 接收訊息 |
 > | Microsoft. EventHub/命名空間/架構/讀取 | 取出架構 |
@@ -4525,7 +4551,7 @@ Azure 服務： [Azure 區塊鏈服務](../blockchain/workbench/index.yml)
 > | 區塊鏈/位置/checkNameAvailability/動作 | 檢查資源名稱是否有效，且不在使用中。 |
 > | 區塊鏈/位置/blockchainMemberOperationResults/讀取 | 取得區塊鏈成員的作業結果。 |
 > | 區塊鏈/作業/讀取 | 列出 Microsoft 區塊鏈資源提供者中的所有作業。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | 連線至區塊鏈成員交易節點。 |
 
 ## <a name="ai--machine-learning"></a>AI + 機器學習
@@ -4546,10 +4572,30 @@ Azure 服務： [Azure Bot service](https://docs.microsoft.com/azure/bot-service
 > | Microsoft.BotService/botServices/channels/write | 撰寫 Bot 服務通道 |
 > | Microsoft.BotService/botServices/channels/delete | 刪除 Bot 服務通道 |
 > | BotService/botServices/頻道/listchannelwithkeys/action | 列出具有秘密的 Botservice 頻道 |
+> | BotService/botServices/頻道/提供者/Microsoft Insights/diagnosticSettings/read | 取得資源的診斷設定 |
+> | BotService/botServices/頻道/提供者/Microsoft Insights/diagnosticSettings/write | 建立或更新資源的診斷設定 |
+> | BotService/botServices/頻道/提供者/Microsoft Insights/logDefinitions/read | 取得資源名稱的可用記錄 &lt;&gt; |
+> | BotService/botServices/頻道/提供者/Microsoft Insights/Metricdefinitions.listasync/read | 建立或更新資源的診斷設定 |
 > | Microsoft.BotService/botServices/connections/read | 讀取 Bot 服務連線 |
 > | Microsoft.BotService/botServices/connections/write | 撰寫 Bot 服務連線 |
 > | Microsoft.BotService/botServices/connections/delete | 刪除 Bot 服務連線 |
 > | BotService/botServices/connections/listwithsecrets/write | 撰寫 Bot 服務連接清單  |
+> | BotService/botServices/connections/provider/Microsoft. Insights/diagnosticSettings/read | 取得資源的診斷設定 |
+> | BotService/botServices/connections/provider/Microsoft. Insights/diagnosticSettings/write | 建立或更新資源的診斷設定 |
+> | BotService/botServices/connections/provider/Microsoft. Insights/logDefinitions/read | 取得資源名稱的可用記錄 &lt;&gt; |
+> | BotService/botServices/connections/provider/Microsoft. Insights/Metricdefinitions.listasync/read | 建立或更新資源的診斷設定 |
+> | BotService/botServices/provider/Microsoft Insights/diagnosticSettings/read | 取得資源的診斷設定 |
+> | BotService/botServices/provider/Microsoft Insights/diagnosticSettings/write | 建立或更新資源的診斷設定 |
+> | BotService/botServices/provider/Microsoft Insights/logDefinitions/read | 取得資源名稱的可用記錄 &lt;&gt; |
+> | BotService/botServices/provider/Microsoft Insights/Metricdefinitions.listasync/read | 建立或更新資源的診斷設定 |
+> | BotService/checknameavailability/provider/Microsoft Insights/diagnosticSettings/read | 取得資源的診斷設定 |
+> | BotService/checknameavailability/provider/Microsoft Insights/diagnosticSettings/write | 建立或更新資源的診斷設定 |
+> | BotService/checknameavailability/provider/Microsoft Insights/logDefinitions/read | 取得資源名稱的可用記錄 &lt;&gt; |
+> | BotService/checknameavailability/provider/Microsoft Insights/Metricdefinitions.listasync/read | 建立或更新資源的診斷設定 |
+> | BotService/listauthserviceproviders/provider/Microsoft Insights/diagnosticSettings/read | 取得資源的診斷設定 |
+> | BotService/listauthserviceproviders/provider/Microsoft Insights/diagnosticSettings/write | 建立或更新資源的診斷設定 |
+> | BotService/listauthserviceproviders/provider/Microsoft Insights/logDefinitions/read | 取得資源名稱的可用記錄 &lt;&gt; |
+> | BotService/listauthserviceproviders/provider/Microsoft Insights/Metricdefinitions.listasync/read | 建立或更新資源的診斷設定 |
 > | Microsoft.BotService/locations/operationresults/read | 讀取非同步作業的狀態 |
 > | Microsoft.BotService/Operations/read | 讀取所有資源類型的作業 |
 
@@ -4584,7 +4630,7 @@ Azure 服務：[認知服務](../cognitive-services/index.yml)
 > | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | 讀取訂用帳戶的可用 Sku。 |
 > | CognitiveServices/位置/operationresults/讀取 | 讀取非同步作業的狀態。 |
 > | Microsoft.CognitiveServices/Operations/read | 列出所有可用的作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/整個/偵測/動作 | 這項作業會使用整個數列來產生模型，並使用相同的模型偵測到每個點。<br>使用這個方法時，會使用特定點前後的點來判斷它是否為異常。<br>整個偵測可為使用者提供時間序列的整體狀態。 |
 > | CognitiveServices/accounts/AnomalyDetector/時間序列/last/偵測/action | 這項作業會使用最新的點來產生模型。 使用此方法時，只會使用歷程記錄點來判斷目標點是否為異常。 偵測到的最新點符合商務計量的即時監視案例。 |
 > | CognitiveServices/帳戶/自動建議/搜尋/動作 | 這種作業會提供給定查詢或部分查詢的建議。 |
@@ -4930,7 +4976,7 @@ Azure 服務： [Machine Learning 服務](../machine-learning/index.yml)
 > | 動作 | 描述 |
 > | --- | --- |
 > | Microsoft.MachineLearningServices/register/action | 為機器學習服務資源提供者註冊訂用帳戶 |
-> | Microsoft.machinelearningservices/位置/updateQuotas/動作 | 更新工作區中每個 VM 系列的配額。 |
+> | Microsoft.machinelearningservices/位置/updateQuotas/動作 | 為訂用帳戶或工作區層級的每個 VM 系列更新配額。 |
 > | Microsoft.machinelearningservices/位置/computeoperationsstatus/讀取 | 取得特定計算作業的狀態 |
 > | Microsoft.machinelearningservices/位置/配額/讀取 | 根據 VMFamily 取得目前指派的工作區配額。 |
 > | Microsoft.MachineLearningServices/locations/usages/read | 訂用帳戶中的 aml 計算資源的使用量報告 |
@@ -5276,7 +5322,7 @@ Azure 服務： [Azure 空間錨點](../spatial-anchors/index.yml)
 > | MixedReality/spatialAnchorsAccounts/provider/Microsoft Insights/diagnosticSettings/read | 取得 MixedReality/spatialAnchorsAccounts 的診斷設定 |
 > | MixedReality/spatialAnchorsAccounts/provider/Microsoft Insights/diagnosticSettings/write | 建立或更新 MixedReality/spatialAnchorsAccounts 的診斷設定 |
 > | MixedReality/spatialAnchorsAccounts/provider/Microsoft Insights/Metricdefinitions.listasync/read | 取得 MixedReality/spatialAnchorsAccounts 的可用計量 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | MixedReality/ObjectUnderstandingAccounts/內嵌/動作 | 建立模型內嵌作業 |
 > | MixedReality/ObjectUnderstandingAccounts/內嵌/讀取 | 取得模型內嵌作業狀態 |
 > | MixedReality/RemoteRenderingAccounts/convert/action | 開始資產轉換 |
@@ -5549,7 +5595,7 @@ Azure 服務：核心
 > | AppConfiguration/configurationStores/provider/Microsoft Insights/Metricdefinitions.listasync/read | 取得 Microsoft 應用程式組態的所有度量定義。 |
 > | AppConfiguration/位置/operationsStatus/讀取 | 取得作業的狀態。 |
 > | AppConfiguration/作業/讀取 | 列出 Microsoft 應用程式組態支援的所有作業。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | AppConfiguration/configurationStores/配置/read | 從設定存放區讀取索引鍵/值。 |
 > | AppConfiguration/configurationStores/配置/write | 建立或更新設定存放區中的索引鍵/值。 |
 > | AppConfiguration/configurationStores/配置/delete | 從設定存放區刪除現有的索引鍵/值。 |
@@ -6011,7 +6057,7 @@ Azure 服務：[服務匯流排](../service-bus/index.md)
 > | Microsoft.ServiceBus/operations/read | 取得作業 |
 > | Microsoft.ServiceBus/sku/read | 取得 SKU 資源描述的清單 |
 > | Microsoft.ServiceBus/sku/regions/read | 取得 SkuRegions 資源描述的清單 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft. 執行匯流排/命名空間/訊息/傳送/動作 | 傳送訊息 |
 > | Microsoft. 執行匯流排/命名空間/訊息/接收/動作 | 接收訊息 |
 
@@ -6208,7 +6254,7 @@ Azure 服務： [Key Vault](../key-vault/index.yml)
 > | KeyVault/vault/eventGridFilters/delete | 通知 KeyVault，正在刪除 Key Vault 的 EventGrid 訂用帳戶 |
 > | Microsoft.KeyVault/vaults/secrets/read | 查看密碼的內容，而不是其值。 |
 > | Microsoft.KeyVault/vaults/secrets/write | 建立新的密碼，或更新現有密碼的值。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | KeyVault/vault/certificatecas/delete | 刪除憑證簽發者 |
 > | KeyVault/vault/certificatecas/read | 讀取憑證簽發者 |
 > | KeyVault/vault/certificatecas/write | 寫入憑證簽發者 |
@@ -7272,7 +7318,7 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft Insights/活頁簿/寫入 | 建立或更新活頁簿 |
 > | Microsoft Insights/活頁簿/刪除 | 刪除活頁簿 |
 > | Microsoft Insights/活頁簿/讀取 | 讀取活頁簿 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft Insights/DataCollectionRules/資料/寫入 | 將資料傳送至資料收集規則 |
 > | Microsoft.Insights/Metrics/Write | 寫入計量 |
 
@@ -7339,6 +7385,9 @@ Azure 服務： [Azure 監視器](../azure-monitor/index.yml)
 > | Microsoft.operationalinsights/工作區/查詢/AADDomainServicesPolicyChange/讀取 | 讀取來自 AADDomainServicesPolicyChange 資料表的資料 |
 > | Microsoft.operationalinsights/工作區/查詢/AADDomainServicesPrivilegeUse/讀取 | 讀取來自 AADDomainServicesPrivilegeUse 資料表的資料 |
 > | Microsoft.operationalinsights/工作區/查詢/AADDomainServicesSystemSecurity/讀取 | 讀取來自 AADDomainServicesSystemSecurity 資料表的資料 |
+> | Microsoft.operationalinsights/工作區/查詢/AADManagedIdentitySignInLogs/讀取 | 讀取來自 AADManagedIdentitySignInLogs 資料表的資料 |
+> | Microsoft.operationalinsights/工作區/查詢/AADNonInteractiveUserSignInLogs/讀取 | 讀取來自 AADNonInteractiveUserSignInLogs 資料表的資料 |
+> | Microsoft.operationalinsights/工作區/查詢/AADServicePrincipalSignInLogs/讀取 | 讀取來自 AADServicePrincipalSignInLogs 資料表的資料 |
 > | Microsoft.OperationalInsights/workspaces/query/ADAssessmentRecommendation/read | 從 ADAssessmentRecommendation 資料表讀取資料 |
 > | Microsoft.operationalinsights/工作區/查詢/AddonAzureBackupAlerts/讀取 | 讀取來自 AddonAzureBackupAlerts 資料表的資料 |
 > | Microsoft.operationalinsights/工作區/查詢/AddonAzureBackupJobs/讀取 | 讀取來自 AddonAzureBackupJobs 資料表的資料 |
@@ -7933,7 +7982,7 @@ Azure 服務： [Batch](../batch/index.yml)
 > | Microsoft.Batch/locations/accountOperationResults/read | 取得長時間執行 Batch 帳戶作業的結果 |
 > | Microsoft.Batch/locations/quotas/read | 取得指定訂用帳戶在指定 Azure 區域內的 Batch 配額 |
 > | Microsoft.Batch/operations/read | 列出可對 Microsoft.Batch 資源提供者進行的作業 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.Batch/batchAccounts/jobs/read | 列出 Batch 帳戶上的作業，或取得作業的屬性 |
 > | Microsoft.Batch/batchAccounts/jobs/write | 在 Batch 帳戶上建立新作業，或更新現有的作業 |
 > | Microsoft.Batch/batchAccounts/jobs/delete | 從 Batch 帳戶刪除作業 |
@@ -8183,6 +8232,317 @@ Azure 服務： [Azure Arc](../azure-arc/index.yml)
 > | HybridCompute/電腦/擴充功能/刪除 | 刪除 Azure Arc 延伸模組 |
 > | HybridCompute/作業/讀取 | 讀取適用于伺服器的 Azure Arc 所有作業 |
 
+### <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
+
+Azure 服務：[啟用 Azure Arc 的 Kubernetes](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)
+
+> [!div class="mx-tableFixed"]
+> | 動作 | 描述 |
+> | --- | --- |
+> | Kubernetes/connectedClusters/Read | 閱讀 connectedClusters |
+> | Kubernetes/connectedClusters/Write | 寫入 connectedClusters |
+> | Kubernetes/connectedClusters/Delete | 刪除 connectedClusters |
+> | Kubernetes/connectedClusters/listClusterUserCredentials/action | 列出 clusterUser 認證 |
+> | Kubernetes/RegisteredSubscriptions/read | 讀取已註冊的訂用帳戶 |
+> | **DataAction** | **描述** |
+> | Kubernetes/connectedClusters/admissionregistration. k8s io/initializerconfigurations/read | 讀取 initializerconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/write | 寫入 initializerconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/initializerconfigurations/delete | 刪除 initializerconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s io/mutatingwebhookconfigurations/read | 讀取 mutatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/mutatingwebhookconfigurations/write | 寫入 mutatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/mutatingwebhookconfigurations/delete | 刪除 mutatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s io/validatingwebhookconfigurations/read | 讀取 validatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/validatingwebhookconfigurations/write | 寫入 validatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/admissionregistration. k8s. io/validatingwebhookconfigurations/delete | 刪除 validatingwebhookconfigurations |
+> | Kubernetes/connectedClusters/api/讀取 | 讀取 api |
+> | Kubernetes/connectedClusters/api/v1/read | 讀取 api/v1 |
+> | Kubernetes/connectedClusters/apiextensions. k8s io/customresourcedefinitions/read | 讀取 customresourcedefinitions |
+> | Kubernetes/connectedClusters/apiextensions. k8s. io/customresourcedefinitions/write | 寫入 customresourcedefinitions |
+> | Kubernetes/connectedClusters/apiextensions. k8s. io/customresourcedefinitions/delete | 刪除 customresourcedefinitions |
+> | Kubernetes/connectedClusters/apiregistration. k8s io/apiservices/read | 讀取 apiservices |
+> | Kubernetes/connectedClusters/apiregistration. k8s. io/apiservices/write | 寫入 apiservices |
+> | Kubernetes/connectedClusters/apiregistration. k8s. io/apiservices/delete | 刪除 apiservices |
+> | Kubernetes/connectedClusters/api/讀取 | 讀取 api |
+> | Kubernetes/connectedClusters/api/admissionregistration. k8s. io/read | 讀取 admissionregistration.k8s.io |
+> | Kubernetes/connectedClusters/api/admissionregistration. io/v1/read | 讀取 admissionregistration.k8s.io/v1 |
+> | Kubernetes/connectedClusters/api/admissionregistration. k8s io/v1Beta1/read | 讀取 admissionregistration.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/apiextensions. k8s. io/read | 讀取 apiextensions.k8s.io |
+> | Kubernetes/connectedClusters/api/apiextensions. io/v1/read | 讀取 apiextensions.k8s.io/v1 |
+> | Kubernetes/connectedClusters/api/apiextensions. k8s io/v1Beta1/read | 讀取 apiextensions.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/apiregistration. k8s. io/read | 讀取 apiregistration.k8s.io |
+> | Kubernetes/connectedClusters/api/apiregistration. io/v1/read | 讀取 apiregistration.k8s.io/v1 |
+> | Kubernetes/connectedClusters/api/apiregistration. k8s io/v1Beta1/read | 讀取 apiregistration.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/應用程式/讀取 | 讀取應用程式 |
+> | Kubernetes/connectedClusters/api/apps/v1Beta1/read | 讀取應用程式/v1Beta1 |
+> | Kubernetes/connectedClusters/api/apps/v1Beta2/read | 讀取 v1Beta2 |
+> | Kubernetes/connectedClusters/api/authentication k8s。 io/read | 讀取 authentication.k8s.io |
+> | Kubernetes/connectedClusters/api/authentication。 k8s/v1/read | 讀取 authentication.k8s.io/v1 |
+> | Kubernetes/connectedClusters/api/authentication k8s。 io/v1Beta1/read | 讀取 authentication.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/authorization k8s。 io/read | 讀取 authorization.k8s.io |
+> | Kubernetes/connectedClusters/api/authorization k8s。 io/v1/read | 讀取 authorization.k8s.io/v1 |
+> | Kubernetes/connectedClusters/api/authorization k8s。 io/v1Beta1/read | 讀取 authorization.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/自動調整/讀取 | 讀取自動調整 |
+> | Kubernetes/connectedClusters/api/自動調整/v1/讀取 | 讀取自動調整/v1 |
+> | Kubernetes/connectedClusters/api/自動調整/v2Beta1/讀取 | 讀取自動調整/v2Beta1 |
+> | Kubernetes/connectedClusters/api/自動調整/v2Beta2/讀取 | 讀取自動調整/v2Beta2 |
+> | Kubernetes/connectedClusters/api/批次/讀取 | 讀取批次 |
+> | Kubernetes/connectedClusters/api/批次/v1/讀取 | 讀取批次/v1 |
+> | Kubernetes/connectedClusters/api/batch/v1Beta1/read | 讀取批次/v1Beta1 |
+> | Kubernetes/connectedClusters/api/certificate. k8s. io/read | 讀取 certificates.k8s.io |
+> | Kubernetes/connectedClusters/api/certificate. k8s. io/v1Beta1/read | 讀取 certificates.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/協調 k8s。 io/read | 讀取 coordination.k8s.io |
+> | Kubernetes/connectedClusters/api/協調 k8s。 io/v1/讀取 | 讀取協調/v1 |
+> | Kubernetes/connectedClusters/api/協調 k8s。 io/v1Beta1/read | 讀取 coordination.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/events k8s。 io/read | 讀取 events.k8s.io |
+> | Kubernetes/connectedClusters/api/k8s. io/v1Beta1/read | 讀取 events.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/擴充功能/讀取 | 讀取延伸模組 |
+> | Kubernetes/connectedClusters/api/extensions/v1Beta1/read | 讀取延伸模組/v1Beta1 |
+> | Kubernetes/connectedClusters/api/計量 k8s。 io/read | 讀取 metrics.k8s.io |
+> | Kubernetes/connectedClusters/api/k8s. io/v1Beta1/read | 讀取 metrics.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/網路 k8s。 io/read | 讀取 networking.k8s.io |
+> | Kubernetes/connectedClusters/api/網路 k8s。 io/v1/讀取 | 讀取網路/v1 |
+> | Kubernetes/connectedClusters/api/網路 k8s。 io/v1Beta1/read | 讀取 networking.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/node k8s。 io/read | 讀取 node.k8s.io |
+> | Kubernetes/connectedClusters/api/k8s. io/v1Beta1/read | 讀取 node.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/原則/讀取 | 讀取原則 |
+> | Kubernetes/connectedClusters/api/原則/v1Beta1/read | 讀取原則/v1Beta1 |
+> | Kubernetes/connectedClusters/api/rbac k8s. io/read | 讀取 rbac.authorization.k8s.io |
+> | Kubernetes/connectedClusters/api/rbac. k8s. io/v1/read | 讀取 rbac. authorization/v1 |
+> | Kubernetes/connectedClusters/api/rbac k8s. io/v1Beta1/read | 讀取 rbac.authorization.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/排程. k8s io/read | 讀取 scheduling.k8s.io |
+> | Kubernetes/connectedClusters/api/排程。 k8s/v1/讀取 | 讀取排程/v1 |
+> | Kubernetes/connectedClusters/api/排程. k8s io/v1Beta1/read | 讀取 scheduling.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/api/k8s. io/read | 讀取 storage.k8s.io |
+> | Kubernetes/connectedClusters/api/k8s. io/v1/read | 讀取儲存體/v1 |
+> | Kubernetes/connectedClusters/api/k8s. io/v1Beta1/read | 讀取 storage.k8s.io/v1Beta1 |
+> | Kubernetes/connectedClusters/apps/controllerrevisions/read | 讀取 controllerrevisions |
+> | Kubernetes/connectedClusters/apps/controllerrevisions/write | 寫入 controllerrevisions |
+> | Kubernetes/connectedClusters/apps/controllerrevisions/delete | 刪除 controllerrevisions |
+> | Kubernetes/connectedClusters/apps/daemonset/read | 讀取 daemonset |
+> | Kubernetes/connectedClusters/apps/daemonset/write | 寫入 daemonset |
+> | Kubernetes/connectedClusters/apps/daemonset/delete | 刪除 daemonset |
+> | Kubernetes/connectedClusters/apps/部署/讀取 | 讀取部署 |
+> | Kubernetes/connectedClusters/apps/部署/寫入 | 寫入部署 |
+> | Kubernetes/connectedClusters/apps/部署/刪除 | 刪除部署 |
+> | Kubernetes/connectedClusters/apps/replicasets/read | 讀取 replicasets |
+> | Kubernetes/connectedClusters/apps/replicasets/write | 寫入 replicasets |
+> | Kubernetes/connectedClusters/apps/replicasets/delete | 刪除 replicasets |
+> | Kubernetes/connectedClusters/apps/statefulset/read | 讀取 statefulset |
+> | Kubernetes/connectedClusters/apps/statefulset/write | 寫入 statefulset |
+> | Kubernetes/connectedClusters/apps/statefulset/delete | 刪除 statefulset |
+> | Kubernetes/connectedClusters/authentication k8s。 io/tokenreviews/write | 寫入 tokenreviews |
+> | Kubernetes/connectedClusters/authentication. k8s. io/userextras/模擬/動作 | 模擬 userextras |
+> | Kubernetes/connectedClusters/authorization k8s。 io/localsubjectaccessreviews/write | 寫入 localsubjectaccessreviews |
+> | Kubernetes/connectedClusters/authorization k8s。 io/selfsubjectaccessreviews/write | 寫入 selfsubjectaccessreviews |
+> | Kubernetes/connectedClusters/authorization k8s。 io/selfsubjectrulesreviews/write | 寫入 selfsubjectrulesreviews |
+> | Kubernetes/connectedClusters/authorization k8s。 io/subjectaccessreviews/write | 寫入 subjectaccessreviews |
+> | Kubernetes/connectedClusters/自動調整/horizontalpodautoscalers/讀取 | 讀取 horizontalpodautoscalers |
+> | Kubernetes/connectedClusters/自動調整/horizontalpodautoscalers/寫入 | 寫入 horizontalpodautoscalers |
+> | Kubernetes/connectedClusters/自動調整/horizontalpodautoscalers/刪除 | 刪除 horizontalpodautoscalers |
+> | Kubernetes/connectedClusters/batch/cronjobs/read | 讀取 cronjobs |
+> | Kubernetes/connectedClusters/batch/cronjobs/write | 寫入 cronjobs |
+> | Kubernetes/connectedClusters/batch/cronjobs/delete | 刪除 cronjobs |
+> | Kubernetes/connectedClusters/批次/作業/讀取 | 讀取作業 |
+> | Kubernetes/connectedClusters/批次/作業/寫入 | 寫入作業 |
+> | Kubernetes/connectedClusters/批次/作業/刪除 | 刪除作業 |
+> | Kubernetes/connectedClusters/bindings/write | 寫入系結 |
+> | Kubernetes/connectedClusters/certificate. k8s. io/certificatesigningrequests/read | 讀取 certificatesigningrequests |
+> | Kubernetes/connectedClusters/certificate. k8s. io/certificatesigningrequests/write | 寫入 certificatesigningrequests |
+> | Kubernetes/connectedClusters/certificate. k8s. io/certificatesigningrequests/delete | 刪除 certificatesigningrequests |
+> | Kubernetes/connectedClusters/clusterconfig.x509.multimachine.json。 azure .com/azureclusteridentityrequests/read | 讀取 azureclusteridentityrequests |
+> | Kubernetes/connectedClusters/clusterconfig.x509.multimachine.json。 azure .com/azureclusteridentityrequests/write | 寫入 azureclusteridentityrequests |
+> | Kubernetes/connectedClusters/clusterconfig.x509.multimachine.json。 azure .com/azureclusteridentityrequests/delete | 刪除 azureclusteridentityrequests |
+> | Kubernetes/connectedClusters/componentstatuses/read | 讀取 componentstatuses |
+> | Kubernetes/connectedClusters/componentstatuses/write | 寫入 componentstatuses |
+> | Kubernetes/connectedClusters/componentstatuses/delete | 刪除 componentstatuses |
+> | Kubernetes/connectedClusters/configmaps/read | 讀取 configmaps |
+> | Kubernetes/connectedClusters/configmaps/write | 寫入 configmaps |
+> | Kubernetes/connectedClusters/configmaps/delete | 刪除 configmaps |
+> | Kubernetes/connectedClusters/k8s io/租用/讀取 | 讀取租用 |
+> | Kubernetes/connectedClusters/k8s io/租用/寫入 | 寫入租用 |
+> | Kubernetes/connectedClusters/k8s io/租用/刪除 | 刪除租用 |
+> | Kubernetes/connectedClusters/端點/讀取 | 讀取端點 |
+> | Kubernetes/connectedClusters/端點/寫入 | 寫入端點 |
+> | Kubernetes/connectedClusters/端點/刪除 | 刪除端點 |
+> | Kubernetes/connectedClusters/events/read | 讀取事件 |
+> | Kubernetes/connectedClusters/events/write | 寫入事件 |
+> | Kubernetes/connectedClusters/events/delete | 刪除事件 |
+> | Kubernetes/connectedClusters/k8s。 io/events/read | 讀取事件 |
+> | Kubernetes/connectedClusters/k8s。 io/events/write | 寫入事件 |
+> | Kubernetes/connectedClusters/k8s io/events/delete | 刪除事件 |
+> | Kubernetes/connectedClusters/extensions/daemonset/read | 讀取 daemonset |
+> | Kubernetes/connectedClusters/extensions/daemonset/write | 寫入 daemonset |
+> | Kubernetes/connectedClusters/extensions/daemonset/delete | 刪除 daemonset |
+> | Kubernetes/connectedClusters/extensions/部署/讀取 | 讀取部署 |
+> | Kubernetes/connectedClusters/extensions/部署/寫入 | 寫入部署 |
+> | Kubernetes/connectedClusters/extensions/部署/刪除 | 刪除部署 |
+> | Kubernetes/connectedClusters/extensions/會輸入/read | 讀取會輸入 |
+> | Kubernetes/connectedClusters/extensions/會輸入/write | 寫入會輸入 |
+> | Kubernetes/connectedClusters/extensions/會輸入/delete | 刪除會輸入 |
+> | Kubernetes/connectedClusters/extensions/networkpolicies/read | 讀取 networkpolicies |
+> | Kubernetes/connectedClusters/extensions/networkpolicies/write | 寫入 networkpolicies |
+> | Kubernetes/connectedClusters/extensions/networkpolicies/delete | 刪除 networkpolicies |
+> | Kubernetes/connectedClusters/extensions/podsecuritypolicies/read | 讀取 podsecuritypolicies |
+> | Kubernetes/connectedClusters/extensions/podsecuritypolicies/write | 寫入 podsecuritypolicies |
+> | Kubernetes/connectedClusters/extensions/podsecuritypolicies/delete | 刪除 podsecuritypolicies |
+> | Kubernetes/connectedClusters/extensions/replicasets/read | 讀取 replicasets |
+> | Kubernetes/connectedClusters/extensions/replicasets/write | 寫入 replicasets |
+> | Kubernetes/connectedClusters/extensions/replicasets/delete | 刪除 replicasets |
+> | Kubernetes/connectedClusters/groups/模擬/動作 | 模擬群組 |
+> | Kubernetes/connectedClusters/healthz/read | 讀取 healthz |
+> | Kubernetes/connectedClusters/healthz/autoregister-完成/讀取 | 讀取 autoregister-完成 |
+> | Kubernetes/connectedClusters/healthz/etcd/read | 讀取 etcd |
+> | Kubernetes/connectedClusters/healthz/log/read | 讀取記錄檔 |
+> | Kubernetes/connectedClusters/healthz/ping/read | 讀取 ping |
+> | Kubernetes/connectedClusters/healthz/poststarthook/apiservice-openapi-controller/read | 讀取 apiservice-openapi-控制器 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/apiservice-註冊-控制器/讀取 | 讀取 apiservice-註冊控制器 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/apiservice-status-可用-控制器/讀取 | 讀取 apiservice-狀態-可用-控制器 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/啟動程式-控制器/讀取 | 讀取啟動程式-控制器 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/ca-註冊/讀取 | 讀取 ca 註冊 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/.crd-informer-已同步/已讀取 | 讀取 .crd-informer-已同步 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/generic-kube-apiserver-start-洩密者/read | 讀取一般-kube-apiserver-start-洩密者 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/kube-kube-apiserver-自動註冊/read | 讀取 kube-kube-apiserver-自動註冊 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/rbac/啟動程式-角色/讀取 | 讀取啟動程式-角色 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/排程/啟動程式-系統優先順序-類別/讀取 | 讀取啟動程式-系統優先順序類別 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/開始-apiextensions-控制器/讀取 | 讀取開始-apiextensions-控制器 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/start-apiextensions-洩密者/read | 讀取開始-apiextensions-洩密者 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/start-kube-匯總工具-洩密者/read | 讀取開始-kube-匯總工具-洩密者 |
+> | Kubernetes/connectedClusters/healthz/poststarthook/start-kube-kube-apiserver-「許可-初始化運算式/讀取」 | 讀取開始-kube-kube-apiserver-型式-初始化運算式 |
+> | Kubernetes/connectedClusters/limitranges/read | 讀取 limitranges |
+> | Kubernetes/connectedClusters/limitranges/write | 寫入 limitranges |
+> | Kubernetes/connectedClusters/limitranges/delete | 刪除 limitranges |
+> | Kubernetes/connectedClusters/livez/read | 讀取 livez |
+> | Kubernetes/connectedClusters/livez/autoregister-完成/讀取 | 讀取 autoregister-完成 |
+> | Kubernetes/connectedClusters/livez/etcd/read | 讀取 etcd |
+> | Kubernetes/connectedClusters/livez/log/read | 讀取記錄檔 |
+> | Kubernetes/connectedClusters/livez/ping/read | 讀取 ping |
+> | Kubernetes/connectedClusters/livez/poststarthook/apiservice-openapi-controller/read | 讀取 apiservice-openapi-控制器 |
+> | Kubernetes/connectedClusters/livez/poststarthook/apiservice-註冊-控制器/讀取 | 讀取 apiservice-註冊控制器 |
+> | Kubernetes/connectedClusters/livez/poststarthook/apiservice-status-可用-控制器/讀取 | 讀取 apiservice-狀態-可用-控制器 |
+> | Kubernetes/connectedClusters/livez/poststarthook/啟動程式-控制器/讀取 | 讀取啟動程式-控制器 |
+> | Kubernetes/connectedClusters/livez/poststarthook/ca-註冊/讀取 | 讀取 ca 註冊 |
+> | Kubernetes/connectedClusters/livez/poststarthook/.crd-informer-已同步/已讀取 | 讀取 .crd-informer-已同步 |
+> | Kubernetes/connectedClusters/livez/poststarthook/generic-kube-apiserver-start-洩密者/read | 讀取一般-kube-apiserver-start-洩密者 |
+> | Kubernetes/connectedClusters/livez/poststarthook/kube-kube-apiserver-自動註冊/read | 讀取 kube-kube-apiserver-自動註冊 |
+> | Kubernetes/connectedClusters/livez/poststarthook/rbac/啟動程式-角色/讀取 | 讀取啟動程式-角色 |
+> | Kubernetes/connectedClusters/livez/poststarthook/排程/啟動程式-系統優先順序-類別/讀取 | 讀取啟動程式-系統優先順序類別 |
+> | Kubernetes/connectedClusters/livez/poststarthook/開始-apiextensions-控制器/讀取 | 讀取開始-apiextensions-控制器 |
+> | Kubernetes/connectedClusters/livez/poststarthook/start-apiextensions-洩密者/read | 讀取開始-apiextensions-洩密者 |
+> | Kubernetes/connectedClusters/livez/poststarthook/start-kube-匯總工具-洩密者/read | 讀取開始-kube-匯總工具-洩密者 |
+> | Kubernetes/connectedClusters/livez/poststarthook/start-kube-kube-apiserver-「許可-初始化運算式/讀取」 | 讀取開始-kube-kube-apiserver-型式-初始化運算式 |
+> | Kubernetes/connectedClusters/logs/read | 讀取記錄 |
+> | Kubernetes/connectedClusters/計量/讀取 | 讀取計量 |
+> | Kubernetes/connectedClusters/計量 k8s。 io/節點/讀取 | 讀取節點 |
+> | Kubernetes/connectedClusters/計量 k8s。 io/pod/讀取 | 讀取 pod |
+> | Kubernetes/connectedClusters/命名空間/讀取 | 讀取命名空間 |
+> | Kubernetes/connectedClusters/命名空間/寫入 | 寫入命名空間 |
+> | Kubernetes/connectedClusters/命名空間/刪除 | 刪除命名空間 |
+> | Kubernetes/connectedClusters/網路 k8s。 io/會輸入/read | 讀取會輸入 |
+> | Kubernetes/connectedClusters/網路 k8s。 io/會輸入/write | 寫入會輸入 |
+> | Kubernetes/connectedClusters/網路 k8s。 io/會輸入/delete | 刪除會輸入 |
+> | Kubernetes/connectedClusters/網路 k8s。 io/networkpolicies/read | 讀取 networkpolicies |
+> | Kubernetes/connectedClusters/網路 k8s。 io/networkpolicies/write | 寫入 networkpolicies |
+> | Kubernetes/connectedClusters/網路 k8s。 io/networkpolicies/delete | 刪除 networkpolicies |
+> | Kubernetes/connectedClusters/k8s. io/runtimeclasses/read | 讀取 runtimeclasses |
+> | Kubernetes/connectedClusters/k8s. io/runtimeclasses/write | 寫入 runtimeclasses |
+> | Kubernetes/connectedClusters/k8s. io/runtimeclasses/delete | 刪除 runtimeclasses |
+> | Kubernetes/connectedClusters/節點/讀取 | 讀取節點 |
+> | Kubernetes/connectedClusters/節點/寫入 | 寫入節點 |
+> | Kubernetes/connectedClusters/節點/刪除 | 刪除節點 |
+> | Kubernetes/connectedClusters/openapi/v2/read | 讀取 v2 |
+> | Kubernetes/connectedClusters/persistentvolumeclaims/read | 讀取 persistentvolumeclaims |
+> | Kubernetes/connectedClusters/persistentvolumeclaims/write | 寫入 persistentvolumeclaims |
+> | Kubernetes/connectedClusters/persistentvolumeclaims/delete | 刪除 persistentvolumeclaims |
+> | Kubernetes/connectedClusters/persistentvolumes/read | 讀取 persistentvolumes |
+> | Kubernetes/connectedClusters/persistentvolumes/write | 寫入 persistentvolumes |
+> | Kubernetes/connectedClusters/persistentvolumes/delete | 刪除 persistentvolumes |
+> | Kubernetes/connectedClusters/pod/讀取 | 讀取 pod |
+> | Kubernetes/connectedClusters/pod/write | 寫入 pod |
+> | Kubernetes/connectedClusters/pod/delete | 刪除 pod |
+> | Kubernetes/connectedClusters/podtemplates/read | 讀取 podtemplates |
+> | Kubernetes/connectedClusters/podtemplates/write | 寫入 podtemplates |
+> | Kubernetes/connectedClusters/podtemplates/delete | 刪除 podtemplates |
+> | Kubernetes/connectedClusters/policy/poddisruptionbudgets/read | 讀取 poddisruptionbudgets |
+> | Kubernetes/connectedClusters/policy/poddisruptionbudgets/write | 寫入 poddisruptionbudgets |
+> | Kubernetes/connectedClusters/policy/poddisruptionbudgets/delete | 刪除 poddisruptionbudgets |
+> | Kubernetes/connectedClusters/policy/podsecuritypolicies/read | 讀取 podsecuritypolicies |
+> | Kubernetes/connectedClusters/policy/podsecuritypolicies/write | 寫入 podsecuritypolicies |
+> | Kubernetes/connectedClusters/policy/podsecuritypolicies/delete | 刪除 podsecuritypolicies |
+> | Kubernetes/connectedClusters/policy/podsecuritypolicies/use/action | 在 podsecuritypolicies 上使用動作 |
+> | Kubernetes/connectedClusters/rbac k8s. io/clusterrolebindings/read | 讀取 clusterrolebindings |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterrolebindings/write | 寫入 clusterrolebindings |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterrolebindings/delete | 刪除 clusterrolebindings |
+> | Kubernetes/connectedClusters/rbac k8s. io/clusterroles/read | 讀取 clusterroles |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterroles/write | 寫入 clusterroles |
+> | Kubernetes/connectedClusters/rbac. k8s. io/clusterroles/delete | 刪除 clusterroles |
+> | Kubernetes/connectedClusters/rbac/k8s. io/clusterroles/bind/action | 系結 clusterroles |
+> | Kubernetes/connectedClusters/rbac k8s。 io/clusterroles/呈報/動作 | 呈報 |
+> | Kubernetes/connectedClusters/rbac k8s. io/rolebindings/read | 讀取 rolebindings |
+> | Kubernetes/connectedClusters/rbac. k8s. io/rolebindings/write | 寫入 rolebindings |
+> | Kubernetes/connectedClusters/rbac. k8s. io/rolebindings/delete | 刪除 rolebindings |
+> | Kubernetes/connectedClusters/rbac/k8s. io/roles/read | 讀取角色 |
+> | Kubernetes/connectedClusters/rbac/k8s. io/roles/write | 寫入角色 |
+> | Kubernetes/connectedClusters/rbac/k8s. io/roles/delete | 刪除角色 |
+> | Kubernetes/connectedClusters/rbac/k8s. io/roles/bind/action | 系結角色 |
+> | Kubernetes/connectedClusters/rbac。 k8s. io/roles/呈報/action | 升級角色 |
+> | Kubernetes/connectedClusters/readyz/read | 讀取 readyz |
+> | Kubernetes/connectedClusters/readyz/autoregister-完成/讀取 | 讀取 autoregister-完成 |
+> | Kubernetes/connectedClusters/readyz/etcd/read | 讀取 etcd |
+> | Kubernetes/connectedClusters/readyz/log/read | 讀取記錄檔 |
+> | Kubernetes/connectedClusters/readyz/ping/read | 讀取 ping |
+> | Kubernetes/connectedClusters/readyz/poststarthook/apiservice-openapi-controller/read | 讀取 apiservice-openapi-控制器 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/apiservice-註冊-控制器/讀取 | 讀取 apiservice-註冊控制器 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/apiservice-status-可用-控制器/讀取 | 讀取 apiservice-狀態-可用-控制器 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/啟動程式-控制器/讀取 | 讀取啟動程式-控制器 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/ca-註冊/讀取 | 讀取 ca 註冊 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/.crd-informer-已同步/已讀取 | 讀取 .crd-informer-已同步 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/generic-kube-apiserver-start-洩密者/read | 讀取一般-kube-apiserver-start-洩密者 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/kube-kube-apiserver-自動註冊/read | 讀取 kube-kube-apiserver-自動註冊 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/rbac/啟動程式-角色/讀取 | 讀取啟動程式-角色 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/排程/啟動程式-系統優先順序-類別/讀取 | 讀取啟動程式-系統優先順序類別 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/開始-apiextensions-控制器/讀取 | 讀取開始-apiextensions-控制器 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/start-apiextensions-洩密者/read | 讀取開始-apiextensions-洩密者 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/start-kube-匯總工具-洩密者/read | 讀取開始-kube-匯總工具-洩密者 |
+> | Kubernetes/connectedClusters/readyz/poststarthook/start-kube-kube-apiserver-「許可-初始化運算式/讀取」 | 讀取開始-kube-kube-apiserver-型式-初始化運算式 |
+> | Kubernetes/connectedClusters/readyz/shutdown/read | 讀取關閉 |
+> | Kubernetes/connectedClusters/replicationcontrollers/read | 讀取 replicationcontrollers |
+> | Kubernetes/connectedClusters/replicationcontrollers/write | 寫入 replicationcontrollers |
+> | Kubernetes/connectedClusters/replicationcontrollers/delete | 刪除 replicationcontrollers |
+> | Kubernetes/connectedClusters/resetMetrics/read | 讀取 resetMetrics |
+> | Kubernetes/connectedClusters/resourcequotas/read | 讀取 resourcequotas |
+> | Kubernetes/connectedClusters/resourcequotas/write | 寫入 resourcequotas |
+> | Kubernetes/connectedClusters/resourcequotas/delete | 刪除 resourcequotas |
+> | Kubernetes/connectedClusters/k8s. io/priorityclasses/read | 讀取 priorityclasses |
+> | Kubernetes/connectedClusters/k8s. io/priorityclasses/write | 寫入 priorityclasses |
+> | Kubernetes/connectedClusters/k8s. io/priorityclasses/delete | 刪除 priorityclasses |
+> | Kubernetes/connectedClusters/秘密/讀取 | 讀取秘密 |
+> | Kubernetes/connectedClusters/秘密/寫入 | 寫入秘密 |
+> | Kubernetes/connectedClusters/秘密/刪除 | 刪除秘密 |
+> | Kubernetes/connectedClusters/serviceaccounts/read | 讀取 serviceaccounts |
+> | Kubernetes/connectedClusters/serviceaccounts/write | 寫入 serviceaccounts |
+> | Kubernetes/connectedClusters/serviceaccounts/delete | 刪除 serviceaccounts |
+> | Kubernetes/connectedClusters/serviceaccounts/模擬/動作 | 模擬 serviceaccounts |
+> | Kubernetes/connectedClusters/services/read | 讀取服務 |
+> | Kubernetes/connectedClusters/services/write | 寫入服務 |
+> | Kubernetes/connectedClusters/services/delete | 刪除服務 |
+> | Kubernetes/connectedClusters/k8s. io/csidrivers/read | 讀取 csidrivers |
+> | Kubernetes/connectedClusters/k8s. io/csidrivers/write | 寫入 csidrivers |
+> | Kubernetes/connectedClusters/k8s. io/csidrivers/delete | 刪除 csidrivers |
+> | Kubernetes/connectedClusters/k8s. io/csinodes/read | 讀取 csinodes |
+> | Kubernetes/connectedClusters/k8s. io/csinodes/write | 寫入 csinodes |
+> | Kubernetes/connectedClusters/k8s. io/csinodes/delete | 刪除 csinodes |
+> | Kubernetes/connectedClusters/k8s. io/storageclass/read | 讀取 storageclass |
+> | Kubernetes/connectedClusters/k8s. io/storageclass/write | 寫入 storageclass |
+> | Kubernetes/connectedClusters/k8s. io/storageclass/delete | 刪除 storageclass |
+> | Kubernetes/connectedClusters/k8s. io/volumeattachments/read | 讀取 volumeattachments |
+> | Kubernetes/connectedClusters/k8s. io/volumeattachments/write | 寫入 volumeattachments |
+> | Kubernetes/connectedClusters/k8s. io/volumeattachments/delete | 刪除 volumeattachments |
+> | Kubernetes/connectedClusters/swagger-api/讀取 | 讀取 swagger-api |
+> | Kubernetes/connectedClusters/swagger-ui/讀取 | 讀取 swagger-ui |
+> | Kubernetes/connectedClusters/ui/read | 讀取 ui |
+> | Kubernetes/connectedClusters/users/模擬/動作 | 模擬使用者 |
+> | Kubernetes/connectedClusters/version/read | 讀取版本 |
+
 ### <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
 Azure 服務： [Azure 燈塔](../lighthouse/index.yml)
@@ -8251,7 +8611,7 @@ Azure 服務： [Azure 原則](../governance/policy/index.yml)
 > | Microsoft.PolicyInsights/remediations/delete | 刪除原則補救。 |
 > | Microsoft.PolicyInsights/remediations/cancel/action | 取消進行中的 Microsoft 原則補救。 |
 > | Microsoft.PolicyInsights/remediations/listDeployments/read | 列出原則補救所需的部署。 |
-> | **DataAction** | **說明** |
+> | **DataAction** | **描述** |
 > | Microsoft.PolicyInsights/checkDataPolicyCompliance/action | 根據資料原則檢查給定元件的合規性狀態。 |
 > | Microsoft.PolicyInsights/policyEvents/logDataEvents/action | 記錄資源元件原則事件。 |
 

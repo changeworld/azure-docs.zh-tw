@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: 6e3ce99211da35105fd9e118a850110dfd48ece1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4ea5889cbecbbb8609f90eed83ec9bd6b0032f9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986290"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448239"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>利用 Blob 索引標記 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料
 
@@ -70,7 +70,9 @@ using System.Threading.Tasks;
 ![使用 Blob 索引標記上傳資料](media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png)
 
 # <a name="net"></a>[.NET](#tab/net)
+
 下列範例示範如何建立附加 Blob，並在建立期間設定標記。
+
 ```csharp
 static async Task BlobIndexTagsOnCreate()
    {
@@ -84,7 +86,7 @@ static async Task BlobIndexTagsOnCreate()
 
           // Create an append blob
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
-         
+
           // Blob Index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>

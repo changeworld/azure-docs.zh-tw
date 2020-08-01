@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 030a10e9138af32ee848009a14216c37567d9d2d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d725ed8a69e2dfed6f5197db731f4adac57e2e2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091992"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446206"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒體服務中的串流端點（原點）
 
@@ -47,9 +47,11 @@ ms.locfileid: "87091992"
 
 **串流端點**類型有兩種：**標準**（預覽）和**Premium**。 類型會根據您為串流端點配置的縮放單位數 (`scaleUnits`) 來定義。
 
+串流單位限制的上限通常是10。 請洽詢[這裡](https://azure.microsoft.com/support/create-ticket/)以提高您帳戶的限制。
+
 類型描述如下表所示：
 
-|類型|縮放單位|描述|
+|類型|縮放單位|說明|
 |--------|--------|--------|  
 |**Standard**|0|預設的串流端點是**標準**類型，可以藉由調整來變更為 Premium 類型 `scaleUnits` 。|
 |**高級**|>0|**Premium**串流端點適用于先進的工作負載，並提供專用且可調整的頻寬容量。 您可以藉由**Premium**調整 `scaleUnits` （串流單位）移至 Premium 類型。 `scaleUnits` 提供您專用的輸出容量，您可以透過每次增量 200 Mbps 的方式來購買。 使用**Premium**類型時，每個啟用的單位會為應用程式提供額外的頻寬容量。 |
@@ -61,7 +63,7 @@ ms.locfileid: "87091992"
 
 ## <a name="comparing-streaming-types"></a>比較串流類型
 
-功能|標準|Premium
+特徵|標準|Premium
 ---|---|---
 輸送量 |在使用 CDN 時，最高可達 600 Mbps，並可提供更高的有效輸送量。|每個串流單位 (SU) 200 Mbps。 使用 CDN 時，可以提供更高的有效輸送量。
 CDN|Azure CDN、協力廠商 CDN 或沒有 CDN。|Azure CDN、協力廠商 CDN 或沒有 CDN。

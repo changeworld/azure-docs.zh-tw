@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3b86c249630f7bfa5c2d319577c66d750b0f6268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045916"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447714"
 ---
 # <a name="azure-security-baseline-for-automation"></a>自動化的 Azure 安全性基準
 
@@ -220,7 +220,7 @@ ms.locfileid: "87045916"
 
 * [已連結 Log Analytics 工作區的支援區域](./how-to/region-mappings.md)
 
-* [查詢更新管理記錄](./automation-update-management-query-logs.md)
+* [查詢更新管理記錄](./update-management/update-mgmt-query-logs.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -646,9 +646,9 @@ ms.locfileid: "87045916"
 
 如果您使用的是 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，請使用 Azure 更新管理來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher （Updates Publisher）之類的工具可讓您將自訂更新發佈至 Windows Server Update Services （WSUS）。 此案例可讓更新管理利用協力廠商軟體，修補使用 Configuration Manager 作為其更新存放庫的機器。
 
-* [Azure 中的更新管理](./automation-update-management.md)
+* [Azure 中的更新管理](./update-management/update-mgmt-overview.md)
 
-* [管理 Azure VM 的更新和修補程式](./automation-tutorial-update-management.md)
+* [管理 Vm 的更新和修補程式](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -660,9 +660,9 @@ ms.locfileid: "87045916"
 
 如果您使用的是 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，則您可以使用 Azure 更新管理來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher （Updates Publisher）之類的工具可讓您將自訂更新發佈至 Windows Server Update Services （WSUS）。 此案例可讓更新管理將使用 Configuration Manager 作為其更新存放庫的機器修補為協力廠商軟體。
 
-* [Azure 中的更新管理解決方案](./automation-update-management.md)
+* [Azure 中的更新管理解決方案](./update-management/update-mgmt-overview.md)
 
-* [管理 Azure VM 的更新和修補程式](./automation-tutorial-update-management.md)
+* [管理 Azure VM 的更新和修補程式](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure 資訊安全中心監視**：不適用
 

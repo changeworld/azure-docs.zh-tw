@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781628"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445656"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>規劃自動使用者佈建部署
 
@@ -26,7 +26,7 @@ Azure Active Directory （Azure AD）自動使用者布建會藉由在 SaaS 應�
 
 請參閱[使用 Azure Active Directory 來自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md)布建和解除布建，以進一步瞭解功能。
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>學習
 
 使用者布建會建立持續身分識別管理的基礎，並增強依賴授權身分識別資料的商務程式品質。
 
@@ -256,7 +256,7 @@ Azure AD 支援直接屬性與屬性的對應、提供常數值，或[撰寫屬�
 
 當 Azure AD 布建服務第一次執行時，針對來源系統和目標系統的初始週期會針對每個目標系統建立所有使用者物件的快照集。
 
-啟用應用程式的自動布建時，初始週期可能需要20分鐘到數小時的時間。 持續時間取決於 Azure AD 目錄大小和布建範圍中的使用者數目。 瞭解[如何改善](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)布建效能。
+啟用應用程式的自動布建時，初始週期可能需要20分鐘到數小時的時間。 持續時間取決於 Azure AD 目錄大小和布建範圍中的使用者數目。
 
 布建服務會在初始迴圈後儲存這兩個系統的狀態，以改善後續增量迴圈的效能。
 
@@ -299,8 +299,6 @@ Azure AD 可以透過 audit 記錄和報告，為您組織的使用者布建使�
 * [設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題](../app-provisioning/application-provisioning-config-problem.md)
 
 * [將內部部署 Active Directory 的屬性同步處理至 Azure AD 以布建至應用程式](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
-
-* [將使用者佈建至 Azure AD 資源庫應用程式花費數小時以上](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)
 
 * [在設定 Azure Active Directory 資源庫應用程式之使用者佈建的情況下儲存系統管理員認證時發生問題](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
 

@@ -3,12 +3,12 @@ title: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b392af17a24b0a5aabdd245af236caa743762244
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387824"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448962"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
 
@@ -275,7 +275,7 @@ Microsoft 會在支援 Azure DevTest Labs 的基礎資源上執行弱點管理�
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自動化的作業系統修補程式管理解決方案
 **指導方針：** 使用 Azure 更新管理確保最新的安全性更新已安裝在裝載于 DevTest Labs 內的 Windows 和 Linux Vm 上。 若為 Windows Vm，請確定已啟用 Windows Update，並將其設定為自動更新。 此設定目前無法透過 DevTest Labs 進行設定，不過，實驗室系統管理員/訂用帳戶管理員可以在其訂用帳戶中的基礎計算 Vm 上設定這項設定。 
 
-- [如何在 Azure 中設定 Vm 的更新管理](../automation/automation-update-management.md)
+- [如何在 Azure 中設定 Vm 的更新管理](../automation/update-management/update-mgmt-overview.md)
 - [瞭解由資訊安全中心監視的 Azure 安全性原則](../security-center/security-center-policy-definitions.md)
 
 **Azure 資訊安全中心監視：** 不適用
@@ -289,8 +289,8 @@ Microsoft 會在支援 Azure DevTest Labs 的基礎資源上執行弱點管理�
 
 身為訂用帳戶管理員，您也可以使用 Azure 更新管理解決方案來管理 DevTest Labs Vm 的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher （Updates Publisher）之類的工具可讓您將自訂更新發佈至 Windows Server Update Services （WSUS）。 此案例可讓更新管理利用協力廠商軟體，修補使用 Configuration Manager 作為其更新存放庫的機器。
 
-- [Azure 中的更新管理解決方案](../automation/automation-update-management.md)
-- [管理 Azure VM 的更新和修補程式](../automation/automation-tutorial-update-management.md)
+- [Azure 中的更新管理解決方案](../automation/update-management/update-mgmt-overview.md)
+- [管理 Vm 的更新和修補程式](../automation/update-management/update-mgmt-overview.md)
 
 **Azure 資訊安全中心監視：** 不適用
 

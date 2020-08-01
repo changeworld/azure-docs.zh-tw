@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f9bfd601642ff9d6b5b5c5a1c2c508d1821e19c7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 64798e22a893c87a17e3f17077860537c7694c40
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042182"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448206"
 ---
 # <a name="use-an-app-service-environment"></a>使用 App Service 環境
 
@@ -126,15 +126,15 @@ SCM URL 是用來存取 Kudu 主控台，或使用 Web Deploy 來發佈您的應
 
 若要使用您的 ILB ASE 在自己的 DNS 伺服器中設定 DNS：
 
-1. 建立 appserviceenvironment.net 的區域 <ASE name>
+1. 為 &lt;ASE 名稱&gt;.appserviceenvironment.net 建立一個區域
 1. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
 1. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
-1. 在 appserviceenvironment.net 中建立 <ASE name> 名為 scm 的區域
+1. 在名為 scm 的 &lt;ASE 名稱&gt;.appserviceenvironment.net 中建立一個區域
 1. 在 scm 區域中建立一個將 * 指向 ILB IP 位址的 A 記錄
 
 若要在 Azure DNS 私人區域中設定 DNS：
 
-1. 建立名為 appserviceenvironment.net 的 Azure DNS 私人區域 <ASE name> 。
+1. 建立名為 ASE 名稱 appserviceenvironment.net 的 Azure DNS 私人區域 &lt; &gt; 。
 1. 在該區域中建立一個指向 ILB IP 位址的 A 記錄
 1. 在該區域中建立一個將 @ 指向 ILB IP 位址的 A 記錄
 1. 在該區域中建立 A 記錄，並將 *. scm 指向 ILB IP 位址
@@ -161,7 +161,7 @@ ASE 預設網域尾碼的 DNS 設定並不會將您的應用程式限制為僅�
 
 ILB ASE 中應用程式的發佈端點會使用用來建立 ILB ASE 的網域。 您可以在應用程式的發行設定檔和應用程式的入口網站窗格中看到它（在 [**總覽**] [  >  **基本**] 和 [**屬性**] 中）。
 
-## <a name="storage"></a>存放裝置
+## <a name="storage"></a>儲存體
 
 ASE 針對 ASE 中的所有應用程式都有 1 TB 的儲存體。 隔離定價 SKU 中的 App Service 方案有 250 GB 的限制。 在 ASE 中，250 GB 的儲存體會根據 App Service 方案新增至 1 TB 的限制。 您可以有多個 App Service 方案，而不只是四個，但不會有超過 1 TB 限制的額外儲存空間。
 

@@ -10,12 +10,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261183"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447863"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>已連結 Log Analytics 工作區的支援區域
 
@@ -78,11 +78,11 @@ ms.locfileid: "85261183"
 
 或者，您可以將工作區與工作區內的自動化帳戶取消連結。
 
-1. 在工作區中，選取 [相關資源] 底下的 [自動化帳戶]。 
+1. 在工作區中，選取 [相關資源] 底下的 [自動化帳戶]。
 2. 在 [自動化帳戶] 頁面上，選取 [取消連結帳戶]。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解[更新管理概觀](../automation-update-management.md)中的更新管理。
+* 了解[更新管理概觀](../update-management/update-mgmt-overview.md)中的更新管理。
 * 了解[變更追蹤和清查概觀](../change-tracking.md)中的變更追蹤和清查。
 * 了解[停機期間啟動/停止 VM 概觀](../automation-solution-vm-management.md)中的停機期間啟動/停止 VM。
