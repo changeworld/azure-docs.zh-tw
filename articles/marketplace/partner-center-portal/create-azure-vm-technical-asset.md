@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: 532a2ce429899d3674a8f6d8308188e9b1f737b1
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: afc012329d0d9e337dfca93a88615ba7c28f1754
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407943"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460363"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>建立 Azure 虛擬機器技術資產
 
@@ -77,6 +77,7 @@ VM 映像包含一個作業系統磁碟以及多逹 16 個資料磁碟。 針對
 Windows 架構 VM 映像的作業系統 VHD 必須以獲得 Azure 核准的基底映像為基礎，其包含 Windows Server 或 SQL Server。 若要開始，請從 Azure 入口網站中的下列映像選擇一個來建立 VM：
 
 * Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)、[2012 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+* [Windows 10 IoT 企業版](/windows/iot-core/windows-iot-enterprise)
 * [SQL Server 2014](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md) (Enterprise, Standard, Web)
 * [SQL Server 2012 SP2](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md) (Enterprise, Standard, Web)
 

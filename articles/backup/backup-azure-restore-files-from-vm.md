@@ -4,12 +4,12 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: a594b9636dcb4e584fd10a17bca6c48c2d1fb960
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514079"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475051"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -132,28 +132,96 @@ Windows 儲存空間是一種可將儲存體虛擬化的 Windows 技術。 您�
 
 #### <a name="for-lvm-partitions"></a>若為 LVM 磁碟分割
 
-若要列出實體磁碟區之下的磁碟區群組名稱：
+執行腳本之後，LVM 磁碟分割會掛接在腳本輸出中指定的實體磁片區/disk 中。 處理常式是
+
+1. 從實體磁片區或磁片取得唯一的磁片區組名清單
+2. 然後列出那些磁片區群組中的邏輯磁片區
+3. 然後將邏輯磁片區掛接到所需的路徑。
+
+##### <a name="listing-volume-group-names-from-physical-volumes"></a>列出實體磁片區的磁片區組名
+
+若要列出磁片區組名：
+
+```bash
+pvs -o +vguuid
+```
+
+此命令將會列出所有實體磁片區（包括執行腳本之前的現有磁片區）、其對應的磁片區組名，以及磁片區群組的唯一使用者識別碼（Uuid）。 命令的範例輸出如下所示。
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdf   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+
+  /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+```
+
+第1個數據行（PV）顯示實體磁片區，後續的資料行會顯示相關的磁片區組名、格式、屬性、大小、可用空間和磁片區群組的唯一識別碼。 命令輸出會顯示所有實體磁片區。 請參閱腳本輸出，並找出與備份相關的磁片區。 在上述範例中，腳本輸出會顯示/dev/sdf 和/dev/sdd。 因此，datavg_db 磁片區群組屬於腳本，而 Appvg_new 磁片區群組屬於該機器。 最後的想法是確保唯一的磁片區組名應該有1個唯一識別碼。
+
+###### <a name="duplicate-volume-groups"></a>重複的磁片區群組
+
+在某些情況下，在執行腳本之後，磁片區組名可以有2個 Uuid。 這表示在執行腳本的電腦和備份的 VM 中，磁片區組名會相同。 然後，我們需要重新命名已備份的 Vm 磁片區群組。 請看下面的範例。
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdg   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdh   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
+```
+
+腳本輸出會將/dev/sdg、/dev/sdh、/dev/sdm2 顯示為已附加。 因此，對應的 VG 名稱會 Appvg_new 和 rootvg。 但相同的名稱也會出現在電腦的 VG 清單中。 我們可以確認 1 VG 名稱有2個 Uuid。
+
+現在，我們需要為以腳本為基礎的磁片區重新命名 VG 名稱，例如/dev/sdg、/dev/sdh、/dev/sdm2。 若要重新命名磁片區群組，請使用下列命令
+
+```bash
+vgimportclone -n rootvg_new /dev/sdm2
+vgimportclone -n APPVg_2 /dev/sdg /dev/sdh
+```
+
+現在，我們有具有唯一識別碼的所有 VG 名稱。
+
+###### <a name="active-volume-groups"></a>作用中磁片區群組
+
+請確定對應到腳本磁片區的磁片區群組為作用中。 下列命令可用來顯示作用中的磁片區群組。 檢查腳本的相關磁片區群組是否存在於此清單中。
+
+```bash
+vgdisplay -a
+```  
+
+否則，請使用下列命令來啟動磁片區群組。
 
 ```bash
 #!/bin/bash
-pvs <volume name as shown above in the script output>
+vgchange –a y  <volume-group-name>
 ```
 
-若要列出磁碟區群組中的所有邏輯磁碟區、名稱及其路徑：
+##### <a name="listing-logical-volumes-within-volume-groups"></a>列出磁片區群組內的邏輯磁片區
+
+一旦取得與腳本相關的唯一、作用中的 VGs 清單，就可以使用下列命令來列出這些磁片區群組中的邏輯磁片區。
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs commands results>
+lvdisplay <volume-group-name>
 ```
 
-```lvdisplay``` 命令也會顯示磁碟區群組是否為作用中。 如果磁碟區群組標示為非作用中，則必須再次啟用才能掛接。 如果磁碟區群組顯示為非作用中，請使用下列命令加以啟用。
+此命令會將每個邏輯磁片區的路徑顯示為「LV 路徑」。
 
-```bash
-#!/bin/bash
-vgchange –a y  <volume-group-name from the pvs commands results>
-```
-
-在磁碟區群組名稱處於作用中之後，再次執行 ```lvdisplay``` 命令，以查看所有相關的屬性。
+##### <a name="mounting-logical-volumes"></a>裝載邏輯磁片區
 
 若要將邏輯磁碟區掛接至您所選擇的路徑：
 
@@ -161,6 +229,9 @@ vgchange –a y  <volume-group-name from the pvs commands results>
 #!/bin/bash
 mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
+
+> [!WARNING]
+> 請勿使用「掛接-a」。 此命令會掛接 '/etc/fstab ' 中所述的所有裝置。 這可能表示可以裝載重複的裝置。 資料可以重新導向至腳本所建立的裝置，這不會保存資料，因此可能會導致資料遺失。
 
 #### <a name="for-raid-arrays"></a>若為 RAID 陣列
 

@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 547b3ed84c8e4406b65ee8cf51c0db10b6878793
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c89bc434d9d67144a95b5c2f23e7664078fe7825
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063843"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474303"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI 元素
 
@@ -29,6 +29,7 @@ ms.locfileid: "87063843"
     "label": "Name",
     "defaultValue": "contoso123",
     "toolTip": "Use only allowed characters",
+    "placeholder": "",
     "constraints": {
         "required": true,
         "validations": [
@@ -60,6 +61,7 @@ ms.locfileid: "87063843"
 - `isValid`屬性包含評估為 true 或 false 的運算式。 在運算式中，您可以定義條件來判斷文字方塊是否有效。
 - `message`屬性是當文字方塊的值無法通過驗證時，所要顯示的字串。
 - 當 `required` 設為 **false** 時，您可指定 `regex` 的值。 在此案例中，文字方塊不需要值，即可順利通過驗證。 如果指定的話，它必須符合規則運算式模式。
+- `placeholder`屬性是使用者開始編輯時消失的解說文字。 如果 `placeholder` `defaultValue` 同時定義和，則 `defaultValue` 會優先使用並顯示。
 
 ## <a name="example"></a>範例
 
@@ -92,7 +94,7 @@ ms.locfileid: "87063843"
 ]
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

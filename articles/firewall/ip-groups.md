@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d8d10e30d0d0c1654c82651220489785a37059
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565553"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460213"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Azure 防火牆中的 IP 群組
 
@@ -70,43 +70,7 @@ IP 群組適用于所有公用雲端區域。
 
 ## <a name="ip-address-limits"></a>IP 位址限制
 
-針對 50 IP 群組（或更少），每個防火牆實例最多可以有5000個個別 IP 位址。 針對51到100的 IP 群組，每個防火牆實例可以有500個個別 IP 位址。
-
-### <a name="examples"></a>範例
-
-#### <a name="example-1-supported"></a>範例1：支援
-
-|IP 群組  |IP 位址數目  |表示法  |規則  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Rule1|
-|IPGroup3     |1|1.2.3.4|Rule1|
-|     |**總計4100**|         |         |
-|     |         |         |         |
-
-#### <a name="example-2-supported"></a>範例2：支援
-
-|IP 群組  |IP 位址數目  |表示法  |規則  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0 版/20|Rule1|
-|     |**總計8192**|         |         |
-
-#### <a name="example-3-not-supported"></a>範例3：不支援
-
-|IP 群組  |IP 位址數目  |表示法  |規則  |
-|---------|---------|---------|---------|
-|IPGroup1 |8192     |10.0.0.0/20、11.0.0.0 版/20  |Rule1|
-|     |**總計8192**|||
-
-#### <a name="example-4-supported"></a>範例4：支援
-
-|IP 群組  |IP 位址數目  |表示法  |規則  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0 版/20|Rule2|
-|     |**總計8192**|         |         |
-
+每個防火牆最多可以有100個 IP 群組，每個 IP 群組最多有5000個個別 IP 位址或 IP 首碼。
 
 ## <a name="related-azure-powershell-cmdlets"></a>相關 Azure PowerShell Cmdlet
 

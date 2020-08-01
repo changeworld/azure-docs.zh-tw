@@ -1,14 +1,14 @@
 ---
 title: 最佳作法
 description: 了解開發 Azure Batch 解決方案的最佳做法和實用秘訣。
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497772"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474898"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -56,6 +56,10 @@ ms.locfileid: "86497772"
 Batch 集區可能會在 Azure 中遇到停機事件。 在規劃和開發 Batch 案例或工作流程時，請記住這一點。
 
 如果節點失敗，Batch 會自動嘗試代表您復原這些計算節點。 這可能會在復原的節點上，觸發任何正在執行的工作進行重新排程。 如需有關中斷工作的詳細資訊，請參閱[重試設計](#design-for-retries-and-re-execution)。
+
+### <a name="third-party-images"></a>協力廠商映射
+
+您可以使用發佈到 Azure Marketplace 的協力廠商映射來建立集區。 使用使用者訂用帳戶模式 Batch 帳戶時，您可能會在使用特定協力廠商映射建立集區時，看到「因 marketplace 購買資格檢查而導致配置失敗」錯誤。 若要解決此錯誤，請接受映射發行者所設定的條款。 您可以使用[Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0)或[Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest)來執行此動作。
 
 ### <a name="azure-region-dependency"></a>Azure 區域相依性
 

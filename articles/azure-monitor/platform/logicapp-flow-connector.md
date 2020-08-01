@@ -7,15 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081554"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475731"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>適用于 Logic Apps 和流程的 Azure 監視器記錄連接器
-[Azure Logic Apps](../../logic-apps/index.yml)和[電源自動化](https://ms.flow.microsoft.com)可讓您針對各種服務，使用數百個動作來建立自動化工作流程。 Azure 監視器 Logs 連接器可讓您建立工作流程，以從 Log Analytics 工作區或 Azure 監視器中的 Application Insights 應用程式抓取資料。 本文說明連接器所包含的動作，並提供使用此資料來建立工作流程的逐步解說。
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>適用于 Logic Apps 和電源自動化的 Azure 監視器記錄連接器
+[Azure Logic Apps](../../logic-apps/index.yml)和[電源自動化](https://flow.microsoft.com)可讓您針對各種服務，使用數百個動作來建立自動化工作流程。 Azure 監視器 Logs 連接器可讓您建立工作流程，以從 Log Analytics 工作區或 Azure 監視器中的 Application Insights 應用程式抓取資料。 本文說明連接器所包含的動作，並提供使用此資料來建立工作流程的逐步解說。
 
 例如，您可以建立邏輯應用程式，以在 Office 365 的電子郵件通知中使用 Azure 監視器記錄資料、在 Azure DevOps 中建立 bug，或張貼時差訊息。  您可以使用簡易排程或從連接的服務中的某個動作觸發工作流程，例如收到郵件或推文時。 
 
@@ -126,4 +126,4 @@ Event
 
 - 深入了解 [Azure 監視器中的記錄查詢](../log-query/log-query-overview.md)。
 - 深入瞭解[Logic Apps](../../logic-apps/index.yml)
-- 深入了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
+- 深入瞭解[電源自動化](https://flow.microsoft.com)。

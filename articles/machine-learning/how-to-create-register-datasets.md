@@ -11,13 +11,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 06/29/2020
-ms.openlocfilehash: a220a7279cbb5ba75c8aa803cb4bd709442a52fe
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 07/22/2020
+ms.openlocfilehash: 5f58698de289efc0b74550260c2229f2a08d798d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326387"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461369"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>建立 Azure Machine Learning 資料集
 
@@ -33,7 +33,9 @@ ms.locfileid: "87326387"
 
 * 共用資料並與其他使用者共同作業。
 
-## <a name="prerequisites"></a>必要條件
+[深入了解如何使用資料集進行定型](how-to-train-with-datasets.md)。
+
+## <a name="prerequisites"></a>先決條件
 
 若要建立及使用資料集，您需要：
 
@@ -50,27 +52,23 @@ ms.locfileid: "87326387"
 
 建立資料集時，請檢查您的計算處理能力和記憶體中的資料大小。 儲存體中的資料大小與資料框架中的資料大小不同。 例如，CSV 檔案中的資料最多可在資料框架中展開10倍，因此 1 GB 的 CSV 檔案在資料框架中可能會變成 10 GB。 
 
-主要因素是資料集在記憶體中的大小，亦即資料框架。 我們建議您的計算大小和處理能力，包含 RAM 大小的2倍。 因此，如果您的資料框架是 10 gb，則您想要具有20個以上 RAM 的計算目標，以確保資料框架可納入記憶體中並加以處理。 如果您的資料已壓縮，則可以進一步擴充;以壓縮的 parquet 格式儲存的 20 GB 相對稀疏資料，在記憶體中可以擴充至 ~ 800 GB。 由於 Parquet 檔案會以單欄式格式儲存資料，如果您只需要一半的資料行，則您只需要在記憶體中載入 ~ 400 GB。
+如果您的資料已壓縮，則可以進一步擴充;以壓縮的 parquet 格式儲存的 20 GB 相對稀疏資料，在記憶體中可以擴充至 ~ 800 GB。 由於 Parquet 檔案會以單欄式格式儲存資料，如果您只需要一半的資料行，則您只需要在記憶體中載入 ~ 400 GB。
  
 如果您使用 Pandas，則不會有超過1個 vCPU 的理由，因為這就是它將會使用的。 您可以透過 Modin 和 Dask/Ray 輕鬆地平行處理單一 Azure Machine Learning 計算實例/節點上的多個個 vcpu，並視需要向外延展至大型叢集，只要 `import pandas as pd` 將變更為即可 `import modin.pandas as pd` 。 
  
-如果您無法為數據取得夠大的虛擬機器，您有兩個選項：使用 Spark 或 Dask 之類的架構來執行資料「記憶體不足」的處理，亦即，資料框架會依分割區載入 RAM 分割並加以處理，最後的結果會在結尾收集。 如果此速度太慢，Spark 或 Dask 可讓您相應放大到仍然可以互動方式使用的叢集。 
+[深入瞭解如何在 Azure Machine Learning 中優化資料處理](concept-optimize-data-processing.md)
 
 ## <a name="dataset-types"></a>資料集類型
 
 有兩種資料集類型，根據使用者在定型中取用它們的方式而定：
 
-* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)藉由剖析提供的檔案或檔案清單，以表格格式表示資料。 這讓您能夠將資料具體化為 Pandas 或 Spark 資料框架。 您可以 `TabularDataset` 從 .csv、tsv、parquet、. jsonl 檔案和 SQL 查詢結果建立物件。 如需完整清單，請參閱[TabularDatasetFactory 類別](https://aka.ms/tabulardataset-api-reference)。
-
 * [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py)類別會參考資料存放區或公用 url 中的單一或多個檔案。 藉由這個方法，您可以將檔案下載或掛接至您的計算，做為 FileDataset 物件。 這些檔案可以是任何格式，可提供更廣泛的機器學習服務案例，包括深度學習。 
 
-## <a name="create-datasets"></a>建立資料集
+* [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py)藉由剖析提供的檔案或檔案清單，以表格格式表示資料。 這讓您能夠將資料具體化為 Pandas 或 Spark 資料框架。 您可以 `TabularDataset` 從 .csv、tsv、parquet、. jsonl 檔案和 SQL 查詢結果建立物件。 如需完整清單，請參閱[TabularDatasetFactory 類別](https://aka.ms/tabulardataset-api-reference)。
 
-藉由建立資料集，您可以建立資料來源位置的參考，以及其中繼資料的複本。 因為資料會保留在其現有的位置，所以您不會產生額外的儲存成本。 您可以 `TabularDataset` `FileDataset` 使用 Python SDK 或 Azure Machine Learning studio （位於）來建立和資料集 https://ml.azure.com 。
+## <a name="create-datasets-via-the-sdk"></a>透過 SDK 建立資料集
 
-若要讓 Azure Machine Learning 可存取的資料，必須從[Azure 資料存放區](how-to-access-data.md)或公用 web url 中的路徑建立資料集。 
-
-### <a name="use-the-sdk"></a>使用 SDK
+藉由建立資料集，您可以建立資料來源位置的參考，以及其中繼資料的複本。 因為資料會保留在其現有的位置，所以您不會產生額外的儲存成本。 若要讓 Azure Machine Learning 可存取的資料，必須從[Azure 資料存放區](how-to-access-data.md)或公用 web url 中的路徑建立資料集。 
 
 若要使用 Python SDK 從[Azure 資料](how-to-access-data.md)存放區建立資料集：
 
@@ -80,6 +78,21 @@ ms.locfileid: "87326387"
 
 > [!Note]
 > 您可以從多個資料存放區中的多個路徑建立資料集。 您可以從中建立資料集的檔案或資料大小沒有固定限制。 不過，針對每個資料路徑，會將幾個要求傳送至儲存體服務，以檢查它是否指向檔案或資料夾。 此額外負荷可能會導致效能降低或失敗。 參考一個含有1000檔案的資料夾的資料集會被視為參考一個資料路徑。 建議您在資料存放區中建立參考小於100路徑的資料集，以獲得最佳效能。
+
+#### <a name="create-a-filedataset"></a>建立 FileDataset
+
+在 [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) 類別上使用方法， `FileDatasetFactory` 以任何格式載入檔案，並建立未註冊的 FileDataset。 如果您的存放裝置位於虛擬網路或防火牆後方，請 `validate=False` 在您的方法中設定參數 `from_files()` 。 這會略過初始驗證步驟，並確保您可以從這些安全檔案建立資料集。
+
+```Python
+# create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
+datastore_paths = [(datastore, 'animals')]
+animal_ds = Dataset.File.from_files(path=datastore_paths)
+
+# create a FileDataset from image and label files behind public web urls
+web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
+mnist_ds = Dataset.File.from_files(path=web_paths)
+```
 
 #### <a name="create-a-tabulardataset"></a>建立 TabularDataset
 
@@ -126,8 +139,8 @@ titanic_ds.take(3).to_pandas_dataframe()
 |指數|PassengerId|存活的|Pclass|名稱|性別|年齡|SibSp|Parch|票證|費用|插槽|著手
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund，Mr. Owen Harris|male|22.0|1|0|A/5 21171|7.2500||S
-1|2|True|1|Cumings，Mrs John Bradley （Florence Briggs Th .。。|female|38.0|1|0|電腦17599|71.2833|C85|C
-2|3|True|3|Heikkinen，錯過。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
+1|2|是|1|Cumings，Mrs John Bradley （Florence Briggs Th .。。|female|38.0|1|0|電腦17599|71.2833|C85|C
+2|3|是|3|Heikkinen，錯過。 Laina|female|26.0|0|0|STON/O2。 3101282|7.9250||S
 
 若要從記憶體中的 pandas 資料框架建立資料集，請將資料寫入本機檔案（例如 csv），然後從該檔案建立資料集。 下列程式碼示範此工作流程。
 
@@ -185,24 +198,22 @@ data_slice = dataset.time_after(datetime(2019, 1, 1))
 data_slice = dataset.time_between(datetime(2019, 1, 1), datetime(2019, 2, 1))
 data_slice = dataset.time_recent(timedelta(weeks=1, days=1))
 ```
+### <a name="register-datasets"></a>註冊資料集
 
-#### <a name="create-a-filedataset"></a>建立 FileDataset
-
-在 [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) 類別上使用方法， `FileDatasetFactory` 以任何格式載入檔案，並建立未註冊的 FileDataset。 如果您的存放裝置位於虛擬網路或防火牆後方，請 `validate=False` 在您的方法中設定參數 `from_files()` 。 這會略過初始驗證步驟，並確保您可以從這些安全檔案建立資料集。
+若要完成建立程式，請向工作區註冊您的資料集。 使用 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) 方法向您的工作區註冊資料集，以便與其他人共用，並跨工作區中的實驗重複使用它們：
 
 ```Python
-# create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
-datastore_paths = [(datastore, 'animals')]
-animal_ds = Dataset.File.from_files(path=datastore_paths)
-
-# create a FileDataset from image and label files behind public web urls
-web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
-             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
-mnist_ds = Dataset.File.from_files(path=web_paths)
+titanic_ds = titanic_ds.register(workspace=workspace,
+                                 name='titanic_ds',
+                                 description='titanic training data')
 ```
 
-#### <a name="on-the-web"></a>網路上 
-下列步驟和動畫示範如何在 Azure Machine Learning studio 中建立資料集 https://ml.azure.com 。
+## <a name="create-datasets-in-the-studio"></a>在 studio 中建立資料集
+
+下列步驟和動畫示範如何在[Azure Machine Learning studio](https://ml.azure.com)中建立資料集。
+
+> [!Note]
+> 透過 Azure Machine Learning studio 建立的資料集會自動註冊到工作區。
 
 ![使用 UI 建立資料集](./media/how-to-create-register-datasets/create-dataset-ui.gif)
 
@@ -216,19 +227,6 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 1. 選取 **[下一步]** 以填入**設定和預覽**和**架構**表單;它們會根據檔案類型以智慧方式填入，您可以在建立這些表單之前進一步設定您的資料集。 
 1. 選取 **[下一步]** 以查看 [**確認詳細資料**] 表單。 檢查您的選擇，並為您的資料集建立選擇性的資料設定檔。 深入了解[資料分析](how-to-use-automated-ml-for-ml-models.md#profile)。 
 1. 選取 [**建立**] 以完成建立資料集。
-
-## <a name="register-datasets"></a>註冊資料集
-
-若要完成建立程式，請向工作區註冊您的資料集。 使用 [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-) 方法向您的工作區註冊資料集，以便與其他人共用，並跨工作區中的實驗重複使用它們：
-
-```Python
-titanic_ds = titanic_ds.register(workspace=workspace,
-                                 name='titanic_ds',
-                                 description='titanic training data')
-```
-
-> [!Note]
-> 透過 Azure Machine Learning studio 建立的資料集會自動註冊到工作區。
 
 ## <a name="create-datasets-with-azure-open-datasets"></a>使用 Azure 開放資料集建立資料集
 

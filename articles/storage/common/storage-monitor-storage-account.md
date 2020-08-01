@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 46ff6fb26cf568474b24d941e4a174b425bf5207
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684670"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474354"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>在 Azure 入口網站中監視儲存體帳戶
 
@@ -141,7 +141,7 @@ ms.locfileid: "83684670"
     ![在 Azure 入口網站中設定記錄。](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. 按一下 [檔案] 。
 
-診斷記錄會儲存在儲存體帳戶中名為 *$logs* 的 Blob 容器內。 若要檢視記錄資料，您可以使用 [Microsoft 儲存體總管](https://storageexplorer.com)之類的儲存體總管，或使用儲存體用戶端程式庫或 PowerShell 以程式設計方式進行檢視。
+診斷記錄會儲存在儲存體帳戶中名為 *$logs* 的 Blob 容器內。 您可以使用儲存體 explorer （如[Microsoft Azure 儲存體總管](https://storageexplorer.com)）或以程式設計方式使用儲存體用戶端程式庫或 PowerShell 來查看記錄資料。
 
 如需存取 $logs 容器的詳細資訊，請參閱[儲存體分析記錄](storage-analytics-logging.md)。
 

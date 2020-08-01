@@ -1,19 +1,19 @@
 ---
-title: 對應資料流程視覺化監視
-description: 如何以視覺化方式監視 Azure Data Factory 資料流程
+title: 監視對應資料流程
+description: 如何在 Azure Data Factory 中以視覺化方式監視對應的資料流程
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/03/2020
-ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958886"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475544"
 ---
 # <a name="monitor-data-flows"></a>監視資料流程
 
@@ -27,7 +27,7 @@ ms.locfileid: "85958886"
 
 您也會看到此層級的統計資料，包括執行時間和狀態。 活動層級的執行識別碼與管線層級的執行識別碼不同。 前一層級的執行識別碼適用於管線。 選取眼鏡可讓您深入了解資料流程執行的詳細資料。
 
-![資料流程監視](media/data-flow/mon002.png "資料流程監視")
+![資料流程監視](media/data-flow/monitoring-details.png "資料流程監視")
 
 當您在圖形化節點監視檢視時，您可以看到經過簡化的僅供檢視資料流程圖版本。
 

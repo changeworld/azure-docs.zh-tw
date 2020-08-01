@@ -7,17 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff77d6cad60b459b1fe6a4f83641c7aebe204dfa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79256961"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460094"
 ---
 # <a name="manage-the-mobility-agent"></a>管理行動代理程式 
 
 當您使用 Azure Site Recovery 進行 VMware Vm 和實體伺服器至 Azure 的嚴重損壞修復時，您會在伺服器上設定行動代理程式。 行動代理程式會協調受保護機器、設定伺服器/相應放大進程伺服器和管理資料複寫之間的通訊。 本文摘要說明在部署行動代理程式之後管理其一般工作。
 
+>[!TIP]
+>若要下載特定 OS/Linux 散發版本的安裝程式，請參閱[這裡](vmware-physical-mobility-service-overview.md#locate-installer-files)的指引。 若要從入口網站自動更新，您不需要下載安裝程式。 [ASR 會自動從設定伺服器提取安裝程式，並更新代理](#update-mobility-service-from-azure-portal)程式。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -29,11 +31,11 @@ ms.locfileid: "79256961"
 
      ![[複寫的項目] 視窗](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
-4. 按一下通知，然後在 [代理程式更新]**** 中，選取您想要升級行動服務的機器。 然後按一下 [確定] 。
+4. 按一下通知，然後在 [代理程式更新]**** 中，選取您想要升級行動服務的機器。 然後按一下 [確定]。
 
      ![複寫的項目 VM 清單](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-5. 「更新行動服務」作業會針對每個選取的機器啟動。
+5. 「更新行動服務」作業會針對每個選取的機器啟動。 行動代理程式已更新為設定伺服器的版本。 例如，如果設定伺服器的版本是9.33，受保護 VM 上的行動代理程式也會更新為9.33 版。
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>透過 Windows server 上的 powershell 腳本更新行動服務
 

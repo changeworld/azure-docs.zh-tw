@@ -4,16 +4,16 @@ description: 設定具有共用磁片的 Azure 受控磁片，讓您可以跨多
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 07/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: e36c539cc1143490aeb4862c928589db5c502656
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc365f6eef4da61ab7de5113b8f4b2b185360740
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080213"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460179"
 ---
 # <a name="enable-shared-disk"></a>啟用共用磁碟
 

@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422856"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460978"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評量/相依性視覺效果疑難排解
 
@@ -66,6 +66,9 @@ ms.locfileid: "87422856"
 
 在 VMware Vm 上啟用[應用程式探索](./how-to-discover-applications.md)，即可解決此間隙。 伺服器評估會使用所提供的來賓認證，從 VM 偵測到的作業系統。 在 Windows 和 Linux Vm 的情況下，此作業系統資料會識別正確的作業系統資訊。
 
+## <a name="operating-system-version-not-available"></a>作業系統版本無法使用
+
+針對實體伺服器，應該可以使用作業系統次要版本資訊。 如果無法使用，請聯絡 Microsoft 支援服務。 針對 VMware 機器，伺服器評估會使用 vCenter Server 中為 VM 指定的作業系統資訊。 不過，vCenter Server 不會提供作業系統的次要版本。 若要探索次要版本，您必須設定[應用程式探索](./how-to-discover-applications.md)。 對於 Hyper-v Vm，不支援作業系統次要版本探索。 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>在 Azure VM 評估中大於內部部署的 azure Sku
 

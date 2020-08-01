@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: f5eac1d331bd439ad4066d1dea1b9aa950fcce60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc50e49d4bc59235a147d114d86ecdff95dca797
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004426"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474337"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Microsoft.Common.DropDown UI 元素
 
@@ -47,6 +47,7 @@ ms.locfileid: "87004426"
     "name": "element1",
     "type": "Microsoft.Common.DropDown",
     "label": "Example drop down",
+    "placeholder": "",
     "defaultValue": "Value two",
     "toolTip": "",
     "multiselect": true,  
@@ -90,8 +91,9 @@ ms.locfileid: "87004426"
 - `constraints.allowedValues` 必須有至少一個項目。
 - 若要模擬不需要的值，將包含標籤和 `""` (空字串) 值的項目新增至 `constraints.allowedValues`。
 - `defaultDescription`屬性用於沒有描述的專案。
+- `placeholder`屬性是使用者開始編輯時消失的解說文字。 如果 `placeholder` `defaultValue` 同時定義和，則 `defaultValue` 會優先使用並顯示。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 如需建立 UI 定義的簡介，請參閱[開始使用 CreateUiDefinition](create-uidefinition-overview.md)。
 * 如需 UI 元素中通用屬性的說明，請參閱 [CreateUiDefinition 元素](create-uidefinition-elements.md)。

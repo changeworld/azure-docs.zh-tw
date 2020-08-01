@@ -7,16 +7,16 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 3699213fe61c64d7677ba026a8df54ccbbfe4b33
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: dadb1f044547acd6e5f0d274143123e89d7dae46
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352159"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475476"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>安裝並使用適用於 Azure CLI 的 Azure IoT 延伸模組
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 是開放原始碼的跨平台命令列工具，其用於管理 IoT 中樞等 Azure 資源。 Azure CLI 適用於 Windows、Linux 和 MacOS。 Azure CLI 也會預先安裝在 [Azure Cloud Shell](https://shell.azure.com) 中。 Azure CLI 可供管理 Azure IoT 中樞資源、裝置佈建服務執行個體，以及不需要安裝任何延伸模組的連結中樞。
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 是開放原始碼的跨平台命令列工具，其用於管理 IoT 中樞等 Azure 資源。 Azure CLI 適用于 Windows、Linux 和 macOS。 Azure CLI 可供管理 Azure IoT 中樞資源、裝置佈建服務執行個體，以及不需要安裝任何延伸模組的連結中樞。
 
 適用於 Azure CLI 其 Azure IoT 延伸模組是用來與 IoT 隨插即用 Preview 裝置互動和測試的命令列工具。 您可使用此延伸模組來執行下列動作：
 
@@ -51,9 +51,6 @@ ms.locfileid: "87352159"
 ```azurecli
 az login
 ```
-
-> [!NOTE]
-> 如果使用 Azure Cloud Shell，您就會自動登入，而不需要執行上述命令。
 
 若要使用適用於 Azure CLI 的 Azure IoT 延伸模組，您需要：
 
@@ -109,6 +106,65 @@ az iot pnp twin invoke-command --cn getMaxMinReport -n {iothub_name} -d {device_
 az iot hub monitor-events -n {iothub_name} -d {device_id} -i {interface_id}
 ```
 
+### <a name="manage-models-in-the-model-repository"></a>管理模型存放庫中的模型
+
+您可以使用 Azure CLI 模型存放庫命令來管理存放庫中的模型。
+
+#### <a name="create-model-repository"></a>建立模型存放庫
+
+如果您是租使用者中的第一個使用者，請為您的租使用者建立新的 IoT 隨插即用公司存放庫：
+
+```azurecli
+az iot pnp repo create
+```
+
+#### <a name="manage-model-repository-tenant-roles"></a>管理模型存放庫租使用者角色
+
+為使用者或服務主體建立特定資源的角色指派。
+
+例如，為租使用者提供 user@consoso.com **ModelsCreator**的角色：
+
+```azurecli
+az iot pnp role-assignment create --resource-id {tenant_id} --resource-type Tenant --subject-id {user@contoso.com} --subject-type User --role ModelsCreator
+```
+
+或為 user@consoso.com 特定模型提供**ModelAdministrator**的角色：
+
+```azurecli
+az iot pnp role-assignment create --resource-id {model_id} --resource-type Model --subject-id {user@contoso.com} --subject-type User --role ModelAdministrator
+```
+
+#### <a name="create-a-model"></a>建立模型
+
+在公司存放庫中建立新的模型：
+
+```azurecli
+az iot pnp model create --model {model_json or path_to_file}
+```
+
+#### <a name="search-a-model"></a>搜尋模型
+
+列出符合特定關鍵字的模型：
+
+```azurecli
+az iot pnp model list -q {search_keyword}
+```
+
+#### <a name="publish-a-model"></a>發佈模型
+
+將位於公司存放庫中的裝置型號發佈至公用存放庫。
+
+例如，讓具有下列識別碼的模型變成公用 `dtmi:com:example:ClimateSensor;1` ：
+
+```azurecli
+az iot pnp model publish --dtmi "dtmi:com:example:ClimateSensor;1"
+```
+
+若要發行模型，必須符合下列需求：
+
+- 公司或組織租使用者必須是 Microsoft 合作夥伴。 
+- 使用者或服務主體必須是存放庫租使用者之**發行者**角色的成員。
+
 ## <a name="next-steps"></a>後續步驟
 
-在此操作說明文章中，您已了解如何安裝並使用適用於 Azure CLI 的 Azure IoT 延伸模組，以與隨插即用裝置互動。 建議的下一個步驟是瞭解如何搭配使用[Azure IoT explorer 與您的裝置](./howto-use-iot-explorer.md)。
+在此操作說明文章中，您已瞭解如何安裝和使用適用于 Azure CLI 的 Azure IoT 擴充功能，以與您的 IoT 隨插即用裝置互動。 建議的下一個步驟是瞭解如何搭配使用[Azure IoT explorer 與您的裝置](./howto-use-iot-explorer.md)。

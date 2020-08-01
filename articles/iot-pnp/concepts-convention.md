@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b06edb83e85ef6d56cf8bf8f91551fe99535eba1
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352183"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475663"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT 隨插即用慣例
 
@@ -25,11 +25,11 @@ IoT 隨插即用預覽裝置在與 IoT 中樞交換訊息時，應遵循一組�
 
 如需詳細資訊，請參閱[IoT 隨插即用模型中的元件](concepts-components.md)。
 
-## <a name="model-discovery"></a>模型探索
+## <a name="identify-the-model"></a>識別模型
 
 為了宣佈它所執行的模型，IoT 隨插即用裝置藉由將加入至欄位，在 MQTT 連線封包中包含模型識別碼 `model-id` `USERNAME` 。
 
-若要探索裝置所實行的模型，服務可以從下列來源取得模型識別碼：
+若要識別裝置所執行的模型，服務可以從下列來源取得模型識別碼：
 
 - 裝置對應項 `modelId` 欄位。
 - 數位對應項 `$metadata.$model` 欄位。

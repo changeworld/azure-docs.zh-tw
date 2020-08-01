@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/28/2020
-ms.openlocfilehash: 904b3ce1c2d05d713ee1ae99662148217f2a358e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d0fd11ce5b25b8796b07176a4ba83091a8f7cc0b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337818"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461012"
 ---
 # <a name="export-data-module"></a>匯出資料模組
 
@@ -26,8 +26,8 @@ ms.locfileid: "87337818"
 
 - Azure Blob 容器
 - Azure 檔案共用
-- Azure Data Lake
-- Azure Data Lake Gen2
+- Azure Data Lake Storage Gen1
+- Azure Data Lake Storage Gen2
 - Azure SQL 資料庫
 
 在匯出資料之前，您必須先在 Azure Machine Learning 工作區中註冊資料存放區。 如需詳細資訊，請參閱[存取 Azure 儲存體服務中的資料](../how-to-access-data.md)。
@@ -43,7 +43,7 @@ ms.locfileid: "87337818"
 1. 針對**資料**存放區，請從下拉式清單中選取現有的資料存放區。 您也可以建立新的資料存放區。 查看如何造訪[Azure 儲存體服務中的存取資料](../how-to-access-data.md)。
 
     > [!NOTE]
-    > 不支援將特定資料類型的資料匯出到指定為另一個資料類型的 SQL 資料庫資料行。
+    > 不支援將特定資料類型的資料匯出到指定為另一個資料類型的 SQL 資料庫資料行。 目標資料表不需要先存在。
 
 1. [重新產生**輸出**] 核取方塊會決定是否要執行模組，以便在執行時間重新產生輸出。 
 

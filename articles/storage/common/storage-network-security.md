@@ -9,12 +9,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 61c2b2b8bce676bd7032eb65fcf48b5ad07092ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d45b792c655820b771ba956721e9169750c39fbd
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070659"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475408"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -120,7 +120,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 
 為 VNet 內的 Azure 儲存體啟用[服務端點](/azure/virtual-network/virtual-network-service-endpoints-overview)。 服務端點會透過最佳路徑，將來自 VNet 的流量路由至 Azure 儲存體服務。 子網路和虛擬網路的身分識別也會隨著每個要求傳輸。 管理員接著可以設定儲存體帳戶的網路規則，允許接收來自 VNet 中特定子網路的要求。 透過這些網路規則授與存取的用戶端，必須仍要繼續符合儲存體帳戶的授權需求，才能存取資料。
 
-每個儲存體帳戶最多可支援 100 個虛擬網路規則，它們也可以結合 [IP 網路規則](#grant-access-from-an-internet-ip-range)。
+每個儲存體帳戶最多支援200個虛擬網路規則，可能會結合[IP 網路規則](#grant-access-from-an-internet-ip-range)。
 
 ### <a name="available-virtual-network-regions"></a>可用的虛擬網路區域
 

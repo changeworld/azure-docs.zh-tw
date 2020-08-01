@@ -93,7 +93,7 @@
     - name: Resource Manager 範本
       href: template-samples.md
     - name: 程式碼範例
-      href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
+      href: /samples/browse/?term=Event+Grid
     - name: Azure 原則內建
       href: ./policy-samples.md
 - name: 概念

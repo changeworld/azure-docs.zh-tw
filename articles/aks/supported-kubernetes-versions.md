@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056543"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475187"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中支援的 Kubernetes 版本
 
@@ -91,6 +91,14 @@ New Supported Version List
 1.17.*9*, 1.17.*8*, 1.16.*11*, 1.16.*10*
 ```
 
+### <a name="supported-kubectl-versions"></a>支援的 `kubectl` 版本
+
+您可以使用比 kube-kube-apiserver 版本更舊或較新的次要版本 `kubectl` ，這與[Kubectl 的 Kubernetes 支援原則](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl)一致。 *kube-apiserver*
+
+例如，如果您的*kube kube-apiserver*位於*1.17*，則您可以使用*1.16*版的來*1.18* `kubectl` 與該*kube-kube-apiserver*。
+
+若要安裝或更新您的版本 `kubectl` ，請執行 `az aks install-cli` 。
+
 ## <a name="release-and-deprecation-process"></a>發行和淘汰程式
 
 您可以參考[AKS Kubernetes 發行日曆](#aks-kubernetes-release-calendar)上即將發行的版本和棄用功能。
@@ -121,7 +129,6 @@ AKS 保留新增或移除已識別為有一或多個重大生產影響 bug 或�
 az aks get-versions --location eastus --output table
 ```
 
-
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes 發行行事曆
 
 如需過去的發行歷程記錄，請參閱[這裡](https://en.wikipedia.org/wiki/Kubernetes#History)。
@@ -139,7 +146,7 @@ az aks get-versions --location eastus --output table
 
 **當使用者升級的 Kubernetes 叢集具有不支援的次要版本時，會發生什麼事？**
 
-如果您是在*3*個或更舊版本，則表示您不在支援範圍內，而且會要求您進行升級。 當您從第 n-3 版升級至 n-2 成功時，您就會回到我們的支援原則中。 例如:
+如果您是在*3*個或更舊版本，則表示您不在支援範圍內，而且會要求您進行升級。 當您從第 n-3 版升級至 n-2 成功時，您就會回到我們的支援原則中。 例如：
 
 - 如果最舊的支援 AKS 版本是*1.15* ，而且您是在*1.14*或更舊版本上，您就不會在支援範圍內。
 - 當從*1.14*升級到*1.15*時，或更新版本成功時，您就會回到我們的支援原則中。
@@ -170,7 +177,7 @@ az aks get-versions --location eastus --output table
 
 只有在從不受支援的版本升級回支援的版本時，才能略過多個版本。 例如，從不支援的*1.10. x*升級 > 支援的*1.15。 x*可以完成。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需如何升級叢集的相關資訊，請參閱[升級 Azure Kubernetes Service (AKS) 叢集][aks-upgrade]。
 

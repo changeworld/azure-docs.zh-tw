@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84635115"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475561"
 ---
 # <a name="what-are-mapping-data-flows"></a>什麼是對應資料流程？
 
@@ -93,41 +93,9 @@ ms.locfileid: "84635115"
 
 #### <a name="optimize"></a>最佳化
 
-[**優化**] 索引標籤包含用於設定資料分割配置的設定。
+[**優化**] 索引標籤包含用於設定資料分割配置的設定。 若要深入瞭解如何優化您的資料流程，請參閱[對應資料流程效能指南](concepts-data-flow-performance.md)。
 
-![最佳化](media/data-flow/optimize1.png "最佳化")
-
-預設設定為 [**使用目前**的資料分割]，這會指示 Azure Data Factory 使用在 Spark 上執行之資料流程的原生資料分割配置。 在大部分的情況下，我們建議這項設定。
-
-在某些情況下，您可能會想要調整資料分割。 例如，如果您想要將轉換輸出到 lake 中的單一檔案，請選取 [接收] 轉換中的 [**單一分割**區]。
-
-另一種情況是，您可能會想要控制資料分割配置，以優化效能。 調整資料分割可讓您控制跨計算節點和資料位置的優化，對整體資料流程效能有正面和負面影響。 如需詳細資訊，請參閱[資料流程效能指南](concepts-data-flow-performance.md)。
-
-若要變更任何轉換的資料分割，請選取 [**優化**] 索引標籤，然後選取 [**設定分割**] 選項按鈕。 您會看到一系列的資料分割選項。 分割的最佳方法會根據您的資料磁片區、候選索引鍵、null 值和基數而有所不同。 
-
-最佳做法是從預設分割開始，然後嘗試不同的資料分割選項。 您可以使用管線的「檢查」執行進行測試，並從 [監視] 視圖查看每個轉換群組中的執行時間和資料分割使用量。 如需詳細資訊，請參閱[監視資料流程](concepts-data-flow-monitoring.md)。
-
-下列是可用的資料分割選項。
-
-##### <a name="round-robin"></a>迴圈配置資源 
-
-迴圈配置資源是一種簡單的資料分割，會在不同的分割區上自動分散資料。 當您沒有良好的金鑰候選項目來實行穩固的智慧型資料分割策略時，請使用迴圈配置資源。 您可以設定實體分割區的數目。
-
-##### <a name="hash"></a>雜湊
-
-Azure Data Factory 會產生資料行的雜湊來產生統一的分割區，讓具有類似值的資料列落在相同的分割區中。 當您使用 Hash 選項時，請測試可能的分割區誤差。 您可以設定實體分割區的數目。
-
-##### <a name="dynamic-range"></a>動態範圍
-
-動態範圍會根據您提供的資料行或運算式來使用 Spark 動態範圍。 您可以設定實體分割區的數目。 
-
-##### <a name="fixed-range"></a>固定範圍
-
-建立運算式，為分割資料行內的值提供固定範圍。 若要避免分割區扭曲，您應該先充分瞭解您的資料，再使用此選項。 您為運算式輸入的值會當做資料分割函數的一部分來使用。 您可以設定實體分割區的數目。
-
-##### <a name="key"></a>答案
-
-如果您對資料的基數有充分的瞭解，則索引鍵分割可能是很好的策略。 索引鍵分割會針對資料行中的每個唯一值建立資料分割。 您無法設定分割區數目，因為此數目是以資料中的唯一值為基礎。
+![最佳化](media/data-flow/optimize.png "最佳化")
 
 #### <a name="inspect"></a>檢查
 

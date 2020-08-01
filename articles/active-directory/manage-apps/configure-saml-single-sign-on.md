@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 1abde88b653ae0f0ef3651b161e806047e143078
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 82b10525fe4d8b9db88300b61ae2da6630030dfd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418775"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461182"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>設定 SAML 型單一登入
 
@@ -25,7 +25,7 @@ ms.locfileid: "87418775"
 
 ## <a name="before-you-begin"></a>開始之前
 
-視所使用的應用程式而定，使用 Azure AD 做為身分識別提供者，以及設定單一登入（SSO）的方式都很簡單或很複雜。 有些應用程式只能透過幾個動作來設定。 其他則需要深入設定。 若要快速增加，請逐步執行應用程式管理的[快速入門系列](view-applications-portal.md)。 如果您要新增的應用程式很簡單，那麼您可能不需要閱讀這篇文章。 如果您要新增的應用程式需要 SAML 型 SSO 的自訂設定，則本文適用于您。
+視所使用的應用程式而定，使用 Azure AD 做為身分識別提供者（IdP），以及設定單一登入（SSO）的方式都很簡單或很複雜。 有些應用程式只能透過幾個動作來設定。 其他則需要深入設定。 若要快速增加，請逐步執行應用程式管理的[快速入門系列](view-applications-portal.md)。 如果您要新增的應用程式很簡單，那麼您可能不需要閱讀這篇文章。 如果您要新增的應用程式需要 SAML 型 SSO 的自訂設定，則本文適用于您。
 
 在[快速入門系列](view-applications-portal.md)中，有關于設定單一登入的文章。 在其中，您將瞭解如何存取應用程式的 [SAML 設定] 頁面。 [SAML 設定] 頁面包含五個區段。 本文會詳細討論這些章節。
 

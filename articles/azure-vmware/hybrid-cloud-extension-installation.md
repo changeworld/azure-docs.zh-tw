@@ -3,12 +3,12 @@ title: 安裝混合式雲端擴充功能 (HCX)
 description: 為您的 Azure VMware 解決方案 (AVS) 私人雲端設定 VMware 混合式雲端擴充功能 (HCX) 解決方案
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539154"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475442"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安裝適用於 Azure VMware 解決方案的 HCX
 
@@ -19,7 +19,7 @@ HCX Advanced （預設安裝）支援最多三個 vCenters。 如果需要超過
 
 [在開始之前](#before-you-begin)，請先仔細檢閱[軟體版本需求](#software-version-requirements)和[先決條件](#prerequisites)。 
 
-然後，我們會逐步解說所有必要的程序，藉以：
+然後，我們將逐步解說所有必要的程式，以：
 
 > [!div class="checklist"]
 > * 部署內部部署 HCX OVA
@@ -31,10 +31,10 @@ HCX Advanced （預設安裝）支援最多三個 vCenters。 如果需要超過
 
 ## <a name="before-you-begin"></a>開始之前
     
-* 參閱基本 AVS 軟體定義資料中心 (SDDC) [教學課程系列](tutorial-network-checklist.md)
-* 檢閱並參考 [VMware HCX 文件](https://docs.vmware.com/en/VMware-HCX/index.html)，包括 HCX 使用者指南
-* 檢閱 VMware 文件[使用 VMware HCX 移轉虛擬機器](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
-* 可選擇檢閱 [VMware HCX 部署考量因素](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)
+* 請參閱基本的 AVS 軟體定義資料中心（SDDC）[教學課程系列](tutorial-network-checklist.md)。
+* 複習並參考[VMWARE HCX 檔](https://docs.vmware.com/en/VMware-HCX/index.html)，包括 HCX 使用者指南。
+* 請參閱[使用 VMWARE HCX 遷移虛擬機器的](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)vmware 檔。
+* （選擇性）查看[VMWARE HCX 部署考慮](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)。
 * 可選檢閱 HCX 上的相關 VMware 資料，例如 HCX 上 的 VMware vSphere [部落格系列](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html)。 
 * 透過 AVS 支援通道訂購 AVS HCX Enterprise 啟用。
 
@@ -47,12 +47,12 @@ HCX Advanced （預設安裝）支援最多三個 vCenters。 如果需要超過
 | --- | --- | --- |
 | vCenter Server   | 5.1<br/><br/>如果使用 5.5 U1 或更早的版本，請使用獨立 HCX 使用者介面來進行 HCX 作業。  | 6.0 U2 及更高版本   |
 | ESXi   | 5.0    | ESXi 6.0 及更高版本   |
-| NSX    | 針對位於來源的邏輯交換器 HCX 網路延伸模組：NSXv 6.2+ 或 NSX-T 2.4+   | NSXv 6.2+ 或 NSX-T 2.4+<br/><br/>針對 HCX 鄰近性路由： NSXv 6.4 + （不支援以 NSX-T 進行的鄰近性路由） |
+| NSX    | 針對位於來源的邏輯交換器 HCX 網路延伸模組： NSXv 6.2 + 或 NSX-T 2.4 +   | NSXv 6.2+ 或 NSX-T 2.4+<br/><br/>針對 HCX 鄰近性路由： NSXv 6.4 + （不支援以 NSX-T 進行鄰近性路由） |
 | vCloud Director   | 非必要 - 來源網站沒有與 vCloud Director 的互通性 | 將目的地環境與 Vcloud 進行整合主管整合時，最小值為9.1.0.2。  |
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 內部部署和 AVS SDDC ER 線路之間應設定全域觸及。
+* ExpressRoute Global 觸及應設定于內部部署和 AVS SDDC ExpressRoute 線路之間。
 
 * 所有必要的連接埠都應該在內部部署和 AVS SDDC 之間開啟 (請參閱 [VMware HCX 文件](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html))。
 

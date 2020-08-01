@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 55ee6e99cdf6d77ea1e78799e016d4c276e85fcd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 07/30/2020
+ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423859"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475425"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 認知搜尋中的安全性-總覽
 
 本文說明 Azure 認知搜尋中可保護內容和作業的主要安全性功能。 
 
-+ 在儲存層中，待用加密是在平台層級提供的，但認知搜尋也會為想要同時保護使用者擁有與 Microsoft 管理金鑰的客戶提供「雙重加密」選項。
++ 在儲存層中，待用加密是在平台層級提供的，但認知搜尋也會透過 Azure Key Vault 來提供客戶管理的金鑰，以供額外的加密層使用。
 
 + 輸入安全性可保護搜尋服務端點的安全性層級：從要求的 API 金鑰，到防火牆中的輸入規則，到從公用網際網路完全防護服務的私人端點。
 
@@ -107,7 +107,7 @@ Azure 認知搜尋的[私用端點](../private-link/private-endpoint-overview.md
 
 如果您需要細微的每一使用者控制搜尋結果，您可以在查詢上建立安全性篩選，並傳回與指定的安全性識別相關聯的檔。 以身分識別為基礎的存取控制，而不是預先定義的角色和角色指派，會實作為*篩選*條件，以根據識別來修剪檔和內容的搜尋結果。 下表說明兩個針對未經授權的內容縮減搜尋結果的方法。
 
-| 方法 | 描述 |
+| 方法 | 說明 |
 |----------|-------------|
 |[根據身分識別篩選進行安全性範圍縮減](search-security-trimming-for-azure-search.md)  | 記載實作使用者身分識別存取控制的基本工作流程。 其中涵蓋在索引中新增安全性識別碼，然後說明如何針對該欄位進行篩選來縮減所禁止內容的結果。 |
 |[根據 Azure Active Directory 身分識別進行安全性範圍縮減](search-security-trimming-for-azure-search-with-aad.md)  | 本文是上一篇文章的延伸，提供從 Azure Active Directory (AAD) (Azure 雲端平台上的其中一項[免費服務](https://azure.microsoft.com/free/)) 擷取身分識別的步驟。 |
@@ -125,7 +125,11 @@ Azure 認知搜尋的[私用端點](../private-link/private-endpoint-overview.md
 
 Azure 認知搜尋已認證符合適用于公用雲端和 Azure Government 的多個全域、區域和業界特定標準。 如需完整清單，請從官方審查報告頁面下載[ **Microsoft Azure 合規性供應**專案白皮書](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)。
 
-## <a name="see-also"></a>另請參閱
+為了符合規範，您可以使用[Azure 原則](../governance/policy/overview.md)來協助您執行[Azure 安全性基準測試](../security/benchmarks/introduction.md)的高安全性最佳作法。 Azure 安全性基準測試是安全性建議的集合，編碼到安全性控制，這些控制項對應至您應採取的重要動作，以減輕對服務和資料的威脅。 目前有11個安全性控制項，包括[網路安全性](../security/benchmarks/security-control-network-security.md)、[記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)，以及[資料保護](../security/benchmarks/security-control-data-protection.md)等等。
+
+Azure 原則是 Azure 內建的功能，可協助您管理多項標準的合規性，包括 Azure 安全性基準測試的規範。 針對已知的基準測試，Azure 原則提供內建定義，讓您可以更輕鬆地建立原則。 針對「Azure 認知搜尋」，目前有一個內建的診斷記錄定義，這表示您可以指派一個原則，以識別並修正任何不符合「記錄和監視」安全性控制規範的搜尋服務。 如需詳細資訊，請參閱[Azure 原則 Azure 認知搜尋的法規合規性控制](security-controls-policy.md)。
+
+## <a name="see-also"></a>請參閱
 
 + [Azure 安全性基本概念](../security/fundamentals/index.yml)
 + [Azure 安全性](https://azure.microsoft.com/overview/security)

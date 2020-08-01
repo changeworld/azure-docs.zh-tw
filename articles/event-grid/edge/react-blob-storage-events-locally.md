@@ -7,14 +7,14 @@ ms.author: arduppal
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: 9389e0aff04baa18cb216f2a7ab6da42eb7031f2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171426"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462015"
 ---
-# <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教學課程：對 IoT Edge (Preview 上的 Blob 儲存體事件做出反應) 
+# <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教學課程：回應 IoT Edge 上的 Blob 儲存體事件（預覽）
 本文說明如何在 IoT 模組上部署 Azure Blob 儲存體，其可做為事件方格發行者，以便在建立 Blob 時傳送事件以及將 Blob 刪除到事件方格。  
 
 如需 IoT Edge 上 Azure Blob 儲存體的總覽，請參閱[IoT Edge 上的 Azure Blob 儲存體](../../iot-edge/how-to-store-data-blob.md)及其功能。
@@ -75,7 +75,7 @@ ms.locfileid: "86171426"
         }
     ```    
 
- 1. 按一下 [儲存]
+ 1. 按一下 [儲存] 
  1. 繼續進行下一節，以新增 Azure Event Grid 訂閱者模組，然後再將它們部署在一起。
 
     >[!IMPORTANT]
@@ -95,7 +95,7 @@ ms.locfileid: "86171426"
    * **名稱**：訂閱者
    * **映射 URI**：`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **容器建立選項**：無
-1. 按一下 [儲存]
+1. 按一下 [儲存] 
 1. 繼續進行下一節以新增 Azure Blob 儲存體模組
 
 ## <a name="deploy-azure-blob-storage-module"></a>部署 Azure Blob 儲存體模組
@@ -146,7 +146,7 @@ ms.locfileid: "86171426"
      - 針對 Linux 容器，**我的磁片區：/blobroot**
      - 對於 Windows 容器，**我的磁片區： C：/blobroot 與**
 
-5. 按一下 [儲存]
+5. 按一下 [儲存] 
 6. 按 **[下一步]** 繼續前往 [路由] 區段
 
     > [!NOTE]
@@ -337,11 +337,11 @@ ms.locfileid: "86171426"
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | api | 字串 | 觸發事件的作業。 它可能是下列其中一個值： <ul><li>Microsoft.storage.blobcreated-允許的值為： `PutBlob` 和`PutBlockList`</li><li>BlobDeleted-允許的值為 `DeleteBlob` 、 `DeleteAfterUpload` 和 `AutoDelete` 。 <p>`DeleteAfterUpload`當自動刪除 blob 時，會產生事件，因為 deleteAfterUpload desired 屬性會設定為 true。 </p><p>`AutoDelete`當 blob 因為 deleteAfterMinutes 所需的屬性值過期而自動刪除時，就會產生事件。</p></li></ul>|
 | clientRequestId | 字串 | 用於儲存體 API 作業的用戶端提供要求識別碼。 此識別碼可用來在記錄檔中使用「用戶端要求識別碼」欄位與 Azure 儲存體診斷記錄相互關聯，並可在使用「x-ms-用戶端要求-識別碼」標頭的用戶端要求中提供。 如需詳細資訊，請參閱[記錄格式](/rest/api/storageservices/storage-analytics-log-format)。 |
-| requestId | 字串 | 服務為儲存體 API 作業所產生的要求識別碼。 可用於利用記錄中的 "request-id-header" 欄位與 Azure 儲存體診斷記錄建立關聯，並從 'x-ms-request-id' 標頭中的 API 呼叫初始化傳回。 請參閱[記錄格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
+| requestId | 字串 | 服務為儲存體 API 作業所產生的要求識別碼。 可用於利用記錄中的 "request-id-header" 欄位與 Azure 儲存體診斷記錄建立關聯，並從 'x-ms-request-id' 標頭中的 API 呼叫初始化傳回。 請參閱[記錄格式](/rest/api/storageservices/storage-analytics-log-format)。 |
 | etag | 字串 | 此值可讓您依條件執行作業。 |
 | ContentType | 字串 | 為 blob 指定內容類型。 |
 | contentLength | integer | Blob 大小 (以位元組為單位)。 |
@@ -356,7 +356,7 @@ ms.locfileid: "86171426"
 - [篩選 Blob 儲存體事件](../../storage/blobs/storage-blob-event-overview.md#filtering-events)
 - [使用 Blob 儲存體事件的建議做法](../../storage/blobs/storage-blob-event-overview.md#practices-for-consuming-events)
 
-在本教學課程中，您會藉由在 Azure Blob 儲存體中建立或刪除 blob 來發佈事件。 請參閱其他教學課程，以瞭解如何將事件轉送至雲端 (Azure 事件中樞或 Azure IoT 中樞) ： 
+在本教學課程中，您會藉由在 Azure Blob 儲存體中建立或刪除 blob 來發佈事件。 請參閱其他教學課程，以瞭解如何將事件轉送至雲端（Azure 事件中樞或 Azure IoT 中樞）： 
 
 - [將事件轉送至 Azure 事件方格](forward-events-event-grid-cloud.md)
 - [將事件轉送至 Azure IoT 中樞](forward-events-iothub.md)

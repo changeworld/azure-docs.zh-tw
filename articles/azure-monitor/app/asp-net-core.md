@@ -3,12 +3,12 @@ title: ASP.NET Core 應用程式的 Azure 應用程式見解 |Microsoft Docs
 description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用方式。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 770cc3f34487f837631a98c6f652d8746ae2c2df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321389"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475510"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -30,7 +30,7 @@ ms.locfileid: "87321389"
 > [!NOTE]
 > ASP.NET Core 3.x 需要[Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0)或更新版本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - 正常運作的 ASP.NET Core 應用程式。 如果您需要建立 ASP.NET Core 應用程式，請遵循此[ASP.NET Core 教學](/aspnet/core/getting-started/)課程。
 - 有效的 Application Insights 檢測金鑰。 必須要有此金鑰，才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源來取得檢測金鑰，請參閱[建立 Application Insights 資源](./create-new-resource.md)。
@@ -420,7 +420,7 @@ public class HomeController : Controller
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>我可以使用狀態監視器之類的工具來啟用 Application Insights 監視嗎？
 
-不可以。 [狀態監視器](./monitor-performance-live-website-now.md)和[狀態監視器 v2](./status-monitor-v2-overview.md)目前僅支援 ASP.NET 4.x。
+否。 [狀態監視器](./monitor-performance-live-website-now.md)和[狀態監視器 v2](./status-monitor-v2-overview.md)目前僅支援 ASP.NET 4.x。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Application Insights 自動啟用我的 ASP.NET Core 2.0 應用程式嗎？
 
@@ -455,7 +455,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>開放原始碼 SDK
 
-[閱讀並參與程式碼](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)。
+* [閱讀並參與程式碼](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)。
+
+如需最新的更新和錯誤修正，[請參閱版本](./release-notes.md)資訊。
 
 ## <a name="next-steps"></a>後續步驟
 

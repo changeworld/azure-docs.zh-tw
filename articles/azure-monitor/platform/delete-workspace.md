@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: e6ecd40d34233ba6f0b886f4b55aedf4339bf6de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ba079e76ea806bb12bff16eb636d0fa21b0e152b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505188"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461726"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>刪除和復原 Azure Log Analytics 工作區
 
@@ -64,7 +64,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 > [!IMPORTANT]
 > 請小心使用永久刪除工作區作業，此作業無法復原，而且您將無法復原工作區和其資料。
 
-新增 '-forceDelete ' 標記來永久刪除您的工作區：
+新增 '-ForceDelete ' 標記，以永久刪除您的工作區。 '-ForceDelete ' 選項目前可用於 Az. Microsoft.operationalinsights 2.3.0 或更高版本。 
 
 ```powershell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -ForceDelete

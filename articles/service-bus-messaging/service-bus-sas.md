@@ -2,13 +2,13 @@
 title: 使用共用存取簽章 Azure 服務匯流排存取控制
 description: 使用共用存取簽章的服務匯流排存取控制概觀，詳細說明 Azure 服務匯流排之 SAS 授權的相關資訊。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: e0d8abcd5693ac20c79a1357eb066e3ae8dcdfe8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/30/2020
+ms.openlocfilehash: b75f1ec3a1aac36124287523140c24d468329aaa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340959"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460689"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共用存取簽章的服務匯流排存取控制
 
@@ -49,7 +49,7 @@ SAS 會根據授權規則保護對服務匯流排的存取。 這些規則會設
 
 授權規則會被指派「主要金鑰」** 和「次要金鑰」**。 這些是密碼編譯增強式金鑰。 請勿遺失或洩漏金鑰 - 它們永遠都可在 [Azure 入口網站][Azure portal]取得。 您可以使用其中一個產生的金鑰，以及您可以隨時重新產生它們。 如果您重新產生或變更原則中的金鑰，所有先前根據該金鑰發行的權杖都將立即無效。 不過，根據這類權杖建立的作用中連線會繼續運作，直到權杖到期。
 
-當您建立服務匯流排命名空間時，系統會自動為命名空間建立名為 **RootManageSharedAccessKey** 的原則規則。 此原則具有整個命名空間的「管理」權限。 建議您將此規則視為系統管理**根**帳戶，且不要將其用於您的應用程式。 您可以在入口網站中，透過 Powershell 或 Azure CLI 在命名空間的 [設定]**** 索引標籤中建立額外的原則規則。
+當您建立服務匯流排命名空間時，系統會自動為命名空間建立名為 **RootManageSharedAccessKey** 的原則規則。 此原則具有整個命名空間的「管理」權限。 建議您將此規則視為系統管理**根**帳戶，且不要將其用於您的應用程式。 您可以在入口網站中的命名空間的 [**設定**] 索引標籤中，透過 PowerShell 或 Azure CLI 建立額外的原則規則。
 
 ## <a name="configuration-for-shared-access-signature-authentication"></a>共用存取簽章驗證的設定
 
@@ -89,6 +89,9 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 用於簽署的共用存取授權規則必須設定於此 URI 或其中一個階層式上層所指定的實體。 例如，先前範例中的 `http://contoso.servicebus.windows.net/contosoTopics/T1` 或 `http://contoso.servicebus.windows.net`。
 
 SAS 權杖適用於所有以 `signature-string` 中所使用的 `<resourceURI>` 開頭的資源。
+
+> [!NOTE]
+> 如需使用不同的程式設計語言產生 SAS 權杖的範例，請參閱[產生 sas 權杖](/rest/api/eventhub/generate-sas-token)。 
 
 ## <a name="regenerating-keys"></a>重新產生金鑰
 
@@ -177,7 +180,7 @@ ContentType: application/atom+xml;type=entry;charset=utf-8
 
 ## <a name="use-the-shared-access-signature-at-amqp-level"></a>使用共用存取簽章 (於 AMQP 層級)
 
-在前一節中，說明了如何使用 SAS 權杖搭配 HTTP POST 要求傳送資料到服務匯流排。 如您所了解，您可以使用進階訊息佇列通訊協定 (AMQP) 來存取服務匯流排，此通訊協定在許多案例中，都是基於效能考量而做為慣用的通訊協定。 如需使用 SAS 權杖搭配 AMQP 的用法，請參閱 [AMQP 宣告型安全性 1.0 版](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) 文件中的說明，該文件是自 2013 年開始的工作草稿，不過現在 Azure 已經提供良好的支援。
+在前一節中，說明了如何使用 SAS 權杖搭配 HTTP POST 要求傳送資料到服務匯流排。 如您所了解，您可以使用進階訊息佇列通訊協定 (AMQP) 來存取服務匯流排，此通訊協定在許多案例中，都是基於效能考量而做為慣用的通訊協定。 AMQP 的 SAS 權杖使用方式說明于 AMQP 以宣告為[基礎的安全性1.0 版](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc)（從2013開始，在工作草稿中），但 Azure 目前支援。
 
 開始將資料傳送到服務匯流排之前，發行者必須在 AMQP 訊息內部將 SAS 權杖傳送至正確定義且名為 **$cbs** 的 AMQP 節點 (您可以將它視為一個由服務所使用的「特別」佇列，用來取得並驗證所有的 SAS 權杖)。 發行者必須在 AMQP 訊息中指定 **ReplyTo** 欄位；這是服務將以權杖驗證結果 (發行者與服務之間的簡單要求/回覆模式) 回覆發行者的節點所在。 此回覆節點是「動態」建立，如 AMQP 1.0 規格中所述的「動態建立遠端節點」。 檢查 SAS 權杖有效之後，發行者可以繼續並開始將資料傳送至服務。
 
@@ -251,7 +254,7 @@ AMQP 訊息包含眾多屬性，以及比簡單訊息更多的資訊。 SAS 權�
 
 下表顯示服務匯流排資源上各種作業所需的存取權限。
 
-| 操作 | 所需的宣告 | 宣告範圍 |
+| 作業 | 所需的宣告 | 宣告範圍 |
 | --- | --- | --- |
 | **Namespace** | | |
 | 在命名空間上設定授權規則 |管理 |任何命名空間位址 |

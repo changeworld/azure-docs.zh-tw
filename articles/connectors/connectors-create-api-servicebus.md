@@ -3,16 +3,16 @@ title: 與 Azure 服務匯流排交換訊息
 description: 建立自動化的工作和工作流程，以使用中的 Azure 服務匯流排來傳送和接收訊息 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283991"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461583"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure Logic Apps 和 Azure 服務匯流排在雲端中交換訊息
 
@@ -29,9 +29,9 @@ ms.locfileid: "87283991"
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
+* Azure 帳戶和訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * 服務匯流排命名空間和傳訊實體，例如佇列。 這些專案和您的邏輯應用程式都必須使用相同的 Azure 訂用帳戶。 如果您沒有這些項目，請了解如何[建立您的服務匯流排命名空間和佇列](../service-bus-messaging/service-bus-create-namespace-portal.md)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "87283991"
 
 確認您的邏輯應用程式有權可以存取您的服務匯流排命名空間。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 在[Azure 入口網站](https://portal.azure.com)中，使用您的 Azure 帳戶登入。
 
 1. 移至您的服務匯流排「命名空間」**。 在命名空間頁面的 [設定]**** 之下，選取 [共用存取原則]****。 在 [**宣告**] 底下，確認您有該命名空間的 [**管理**] 許可權。
 
@@ -54,7 +54,7 @@ ms.locfileid: "87283991"
 1. 取得服務匯流排命名空間的連接字串。 當您在邏輯應用程式中提供連接資訊時，需要此字串。
 
    1. 在 [**共用存取原則**] 窗格上，選取 [ **RootManageSharedAccessKey**]。
-   
+
    1. 在您的主要連接字串旁，選取 [複製] 按鈕。 儲存連接字串以供稍後使用。
 
       ![複製服務匯流排命名空間連接字串](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
@@ -171,4 +171,3 @@ ms.locfileid: "87283991"
 ## <a name="next-steps"></a>後續步驟
 
 * 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
-

@@ -8,24 +8,24 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 4a763a3bb4d46ba03808423d4d1283381c1174a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02ec26c80a8a64f88a30ded2067a377c292d621d
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605400"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475595"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>對應資料流程的偵錯模式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure Data Factory 對應資料流程的 [偵錯工具模式] 可讓您在建立和偵錯工具資料流程時，以互動方式監看「資料圖形」轉換。 您可以在資料流程設計會話以及管線的資料流程執行期間，使用 debug 會話。 若要開啟 [偵錯模式]，請使用設計介面頂端的 [資料流程 Debug] 按鈕。
 
 ![Debug 滑杆](media/data-flow/debugbutton.png "Debug 滑杆")
 
-當您開啟滑杆時，系統會提示您選取想要使用的整合執行時間設定。 如果選擇 AutoResolveIntegrationRuntime，則會啟動具有8個一般計算核心（具有60分鐘存留時間）的叢集。 如需有關「資料流程整合執行時間」的詳細資訊，請參閱[資料流程效能](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime)。
+當您開啟滑杆時，系統會提示您選取想要使用的整合執行時間設定。 如果選擇 AutoResolveIntegrationRuntime，則會啟動具有8個一般計算核心（具有60分鐘存留時間）的叢集。 如需有關「資料流程整合執行時間」的詳細資訊，請參閱[資料流程效能](concepts-data-flow-performance.md#ir)。
 
 ![Debug IR 選取範圍](media/data-flow/debugbutton2.png "Debug IR 選取範圍")
 

@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f2d9407d9c7172839027e2650486695244f67889
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352152"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475680"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>IoT 隨插即用預覽架構
+# <a name="iot-plug-and-play-preview-architecture"></a>IoT 隨插即用預覽版架構
 
 IoT 隨插即用 Preview 可讓解決方案產生器將智慧型裝置與解決方案整合，而不需要任何手動設定。 IoT 隨插即用的核心是一種裝置_型號_，可描述裝置的 iot 隨插即用啟用應用程式的功能。 此模型是結構化的一組介面，可定義：
 
@@ -79,5 +79,5 @@ IoT 中樞：
 既然您已大致瞭解 IoT 隨插即用解決方案的架構，接下來的步驟是深入瞭解：
 
 - [模型存放庫](./concepts-model-repository.md)
-- [模型探索進程](./concepts-model-discovery.md)
+- [數位對應項模型整合](./concepts-model-discovery.md)
 - [針對 IoT 隨插即用進行開發](./concepts-developer-guide.md)

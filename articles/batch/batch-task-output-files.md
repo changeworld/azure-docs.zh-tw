@@ -2,14 +2,14 @@
 title: 使用 Batch 服務 API 將輸出資料保存到 Azure 儲存體
 description: 了解如何使用 Batch 服務 API 將 Batch 工作和作業輸出資料保存到 Azure 儲存體。
 ms.topic: how-to
-ms.date: 03/05/2019
+ms.date: 07/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 964ffea2ed1536dc1851aefc03c735cb08ba7ed7
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143517"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475612"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服務 API 將工作資料保存到 Azure 儲存體
 
@@ -19,6 +19,9 @@ Batch 服務 API 針對使用虛擬機器設定在集區上執行的工作和作
 
 使用 Batch 服務 API 來保存工作輸出的好處，是您不需要修改工作正在執行的應用程式。 相反地，對用戶端應用程式進行幾項修改，即可從建立工作的相同程式碼內保存工作的輸出。
 
+> [!IMPORTANT]
+> 使用 Batch 服務 API 將工作資料保存到 Azure 儲存體，無法與[2018 年2月 1](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204)日前建立的集區搭配使用。
+
 ## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>何時使用 Batch 服務 API 來保存工作輸出？
 
 Azure Batch 提供多個方法來保存工作輸出。 使用 Batch 服務 API 是一個便利方式，最適合下列情節：
@@ -26,7 +29,7 @@ Azure Batch 提供多個方法來保存工作輸出。 使用 Batch 服務 API �
 - 您需要撰寫程式碼，以從用戶端應用程式內保存工作輸出，而不需要修改您工作正在執行的應用程式。
 - 您需要保存的輸出，是來自使用虛擬機器設定在集區中建立的 Batch 工作和作業管理員工作。
 - 您需要將輸出保存到具有任意名稱的 Azure 儲存體容器。
-- 您需要將輸出保存到根據 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)命名的 Azure 儲存體容器。 
+- 您需要將輸出保存到根據 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)命名的 Azure 儲存體容器。
 
 如果您的情節與以上所列不同，可能需要考慮不同的方法。 例如，Batch 服務 API 目前不支援在工作執行時將輸出串流至 Azure 儲存體。 若要將輸出串流，請考慮使用適用於 .NET 的 Batch 檔案慣例程式庫。 針對其他語言，您必須實作自己的解決方案。 如需保存工作輸出之其他選項的詳細資訊，請參閱[將作業和工作輸出保存到 Azure 儲存體](batch-task-output.md)。
 
@@ -88,6 +91,9 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
             uploadCondition: OutputFileUploadCondition.TaskCompletion)),
 }
 ```
+
+> [!NOTE]
+> 如果使用此範例搭配 Linux，請務必將反斜線變更為正斜線。
 
 ### <a name="specify-a-file-pattern-for-matching"></a>指定要進行比對的檔案模式
 
@@ -169,7 +175,7 @@ string containerName = job.OutputStorageContainerName();
 
 ## <a name="code-sample"></a>程式碼範例
 
-[PersistOutputs][github_persistoutputs] 範例專案是 GitHub 上的其中一個 [Azure Batch 程式碼範例][github_samples]。 此 Visual Studio 解決方案示範如何使用適用於 .NET 的 Batch 用戶端程式庫，將工作輸出保存到永久性儲存體。 若要執行範例，請遵循下列步驟：
+[PersistOutputs](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs) 範例專案是 GitHub 上的其中一個 [Azure Batch 程式碼範例](https://github.com/Azure/azure-batch-samples)。 此 Visual Studio 解決方案示範如何使用適用於 .NET 的 Batch 用戶端程式庫，將工作輸出保存到永久性儲存體。 若要執行範例，請遵循下列步驟：
 
 1. 在 **Visual Studio 2019** 中開啟專案。
 2. 將您 Batch 和儲存體的**帳戶認證**新增到 Microsoft.Azure.Batch.Samples.Common 專案中的 **AccountSettings.settings**。
@@ -181,8 +187,5 @@ string containerName = job.OutputStorageContainerName();
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需使用適用於 .NET 的檔案慣例程式庫來保存工作輸出的詳細資訊，請參閱[使用適用於 .NET 的 Batch 檔案慣例程式庫，將作業和工作資料保存到 Azure 儲存體](batch-task-output-file-conventions.md)。
-- 如需在 Azure Batch 中保存輸出資料之其他方法的相關資訊，請參閱[將作業和工作輸出保存到 Azure 儲存體](batch-task-output.md)。
-
-[github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
-[github_samples]: https://github.com/Azure/azure-batch-samples
+- 若要深入瞭解如何使用適用于 .NET 的檔案慣例程式庫來保存工作輸出，請參閱[使用適用于 .net 的 Batch 檔案慣例程式庫將作業和工作資料保存到 Azure 儲存體](batch-task-output-file-conventions.md)。
+- 若要瞭解在 Azure Batch 中保存輸出資料的其他方法，請參閱[將作業和工作輸出保存到 Azure 儲存體](batch-task-output.md)。

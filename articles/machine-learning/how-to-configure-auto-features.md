@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1c26164ed7a2b7c335d3977e143fcef28c8955db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373737"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475816"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動化機器學習服務中的特徵化
 
@@ -64,7 +64,7 @@ ms.locfileid: "87373737"
 | ------------- | ------------- |
 |**捨棄高基數或無變異數功能*** |從定型和驗證集卸載這些功能。 適用于所有遺漏值的功能，在所有資料列中具有相同的值，或具有高基數（例如，雜湊、識別碼或 Guid）。|
 |**插補遺漏值*** |對於數值特徵，請插補資料行中值的平均值。<br/><br/>針對類別特徵，請插補最常出現的值。|
-|**產生其他功能*** |針對 DateTime 特徵：年、月、日、星期幾、幾月幾日、季、第幾週、小時、分鐘、秒。<br/><br/>針對文字功能：根據 unigrams、bigrams 和 trigrams 的詞彙頻率。 深入瞭解[如何使用經理 bert 完成此作業。](#bert-integration)|
+|**產生其他功能*** |針對 DateTime 特徵：年、月、日、星期幾、幾月幾日、季、第幾週、小時、分鐘、秒。<br><br> *針對預測工作，* 會建立這些額外的日期時間功能： ISO Year、半年半年度、日曆月份（如字串）、周數、每週的日期、年中的日、上午/下午（0表示小時是下午（下午12點），1（12hr）），AM/pm as String，hour<br/><br/>針對文字功能：根據 unigrams、bigrams 和 trigrams 的詞彙頻率。 深入瞭解[如何使用經理 bert 完成此作業。](#bert-integration)|
 |**轉換和編碼***|將具有幾個唯一值的數值特徵轉換成類別功能。<br/><br/>一種經常性編碼用於低基數分類功能。 一種經常性雜湊編碼用於高基數類別功能。|
 |**字組內嵌**|文字 featurizer 會使用預先定型模型，將文字標記的向量轉換成句子向量。 檔中每個單字的內嵌向量都會與其余部分匯總，以產生檔功能向量。|
 |**目標編碼**|針對分類功能，此步驟會將每個類別對應至回歸問題的平均目標值，並針對分類問題的每個類別，將其設為類別的機率。 會套用以頻率為基礎的加權和 k 折迭交叉驗證，以減少稀疏資料類別所造成之對應和雜訊的過度學習。|
@@ -163,9 +163,11 @@ text_transformations_used
 
 3. 在此功能清除步驟中，AutoML 會比較經理 BERT 與資料範例上的基準（一組字組功能 + 預先定型單字內嵌），並判斷經理 BERT 是否能提供精確度的改善。 如果判斷經理 BERT 的執行效果優於基準，AutoML 就會使用經理 BERT 做為文字特徵化的最佳特徵化策略，並繼續 featurizing 整個資料。 在這種情況下，您會在最終模型中看到 "PretrainedTextDNNTransformer"。
 
+經理 BERT 通常會比其他大部分的有長執行時間。 藉由在您的叢集中提供更多計算，即可加速。 AutoML 會將經理 BERT 訓練散發到多個節點（如果有的話）（最大值為8個節點）。 將[max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)設定為大於1，即可完成這項作業。 為了達到較佳的效能，我們建議使用具有 RDMA 功能的 sku （例如 "STANDARD_NC24r" 或 "STANDARD_NC24rs_V3"）
+
 AutoML 目前支援大約100語言，而視資料集的語言而定，AutoML 會選擇適當的經理 BERT 模型。 對於德文的資料，我們使用德文經理 BERT 模型。 若是英文，我們使用英文經理 BERT 模型。 針對所有其他語言，我們會使用多語系經理 BERT 模型。
 
-在下列程式碼中，會觸發德文經理 BERT 模型，因為資料集語言已指定為 ' deu '，而德文的3個字母語言代碼是根據[ISO 分類](https://iso639-3.sil.org/code/hbs)：
+在下列程式碼中，會觸發德文經理 BERT 模型，因為資料集語言已指定為 ' deu '，而德文的3個字母語言代碼是根據[ISO 分類](https://iso639-3.sil.org/code/deu)：
 
 ```python
 from azureml.automl.core.featurization import FeaturizationConfig

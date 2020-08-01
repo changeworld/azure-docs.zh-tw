@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16203ab972f6117cec41e43ee5dd89cda7e95ede
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c4b9ae0ed682d6b34099c8eff941f1d0b6cabad
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025689"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461760"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>How To:規劃混合式 Azure Active Directory Join 實作
 
@@ -122,6 +122,9 @@ ms.locfileid: "87025689"
 
 在這些案例中，您不需要設定同盟伺服器以進行驗證。
 
+> [!NOTE]
+> 只有從 Windows 10 1903 update 開始才支援[使用分段推出的雲端驗證](/hybrid/how-to-connect-staged-rollout)
+
 ### <a name="federated-environment"></a>同盟環境
 
 同盟環境應具有支援下列需求的識別提供者。 如果您的同盟環境使用 Active Directory 同盟服務 (AD FS)，則已支援下列需求。
@@ -159,7 +162,7 @@ ms.locfileid: "87025689"
 
 下表提供有關在 Windows 10 混合式 Azure AD Join 中支援這些內部部署 AD UPN 的詳細資料
 
-| 內部部署 AD UPN 的類型 | 網域類型 | Windows 10 版本 | 描述 |
+| 內部部署 AD UPN 的類型 | 網域類型 | Windows 10 版本 | 說明 |
 | ----- | ----- | ----- | ----- |
 | 路由式 | 同盟 | 自 1703 版起 | 正式推出 |
 | 非可路由傳送 | 同盟 | 自 1803 版起 | 正式推出 |

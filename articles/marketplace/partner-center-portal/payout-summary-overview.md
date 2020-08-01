@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 0f19d63bd5f22dc7bc60ceb76ef5bdbeff717dbb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ee970f7e4a1228d40a284372300ed9e95c00b7e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325724"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460383"
 ---
 # <a name="payout-summary-overview"></a>支付摘要概觀
 
@@ -23,7 +23,7 @@ ms.locfileid: "87325724"
 > [!NOTE]
 > 若要符合支付資格，收益必須達到美金 $50 元的[付款門檻](./payment-thresholds-methods-timeframes.md)。 如需付款門檻的詳細資料，請參閱 [Microsoft Azure Marketplace 發行者合約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (英文)。
 
-您可在合作夥伴中心的 [分析] 區段中找到交易發行選項的所有報告和見解，使用入口網站右上角的這個圖示即可進行存取：
+若要查看付款詳細資料，請登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)，並選取畫面右上角的支出圖示：
 
 ![說明合作夥伴中心入口網站右上角的支付圖示。](./media/payout-overview.png)
 

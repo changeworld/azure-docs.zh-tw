@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 64bc8e76a4dcce963251219528bd93dd786f01cf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ddbbb9f39dd17daf5c500bf582c100b4e1754a15
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419609"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461352"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Node.js SDK：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -410,17 +410,8 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 * GA SDK。
 
 ## <a name="release--retirement-dates"></a>發行和停用日期
-Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。
 
-新的功能與最佳化項目只會新增至目前的 SDK，因此建議您一律盡早升級至最新的 SDK 版本。
-
-服務將會拒絕使用已停用 SDK 的任何 Cosmos DB 要求。
-
-> [!WARNING]
-> 所有 **1.x** 版適用於 SQL API 的 Node 用戶端 SDK 都將於 **2020 年 8 月 30 日**淘汰。 這只會影響用戶端 Node SDK，而不會影響伺服器端指令碼 (預存程序、觸發程序和 UDF)。
-> 
->
-<br/>
+Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。 新的功能與最佳化項目只會新增至目前的 SDK，因此建議您一律盡早升級至最新的 SDK 版本。
 
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |

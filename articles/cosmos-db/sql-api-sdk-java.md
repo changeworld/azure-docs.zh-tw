@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 06/03/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a4d6f01271c5026463ac0dc946fb1b2991de09
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2de46f050d17049848024d70f43bd23621b43b13
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323820"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461029"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Java SDK：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -256,19 +256,11 @@ ms.locfileid: "87323820"
 * GA SDK
 
 ## <a name="release-and-retirement-dates"></a>發行和停用日期
-Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。
 
-新的功能與最佳化項目只會新增至目前的 SDK，因此建議您一律盡早升級至最新的 SDK 版本。
-
-服務將會拒絕使用已停用 SDK 的任何 Cosmos DB 要求。
+Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。 新的功能與最佳化項目只會新增至目前的 SDK，因此建議您一律盡早升級至最新的 SDK 版本。
 
 > [!WARNING]
-> SQL SDK for Java 的所有版本 **1.x** 將於 **2020 年 5 月 30 日**淘汰。
-> 
->
-
-> [!WARNING]
-> 所有 **1.0.0** 版之前的 SQL SDK 版本都將於「2016 年 2 月 29 日」淘汰。
+> SQL SDK for Java 的所有版本 **1.x** 將於 **2020 年 5 月 30 日**淘汰。 所有 **1.0.0** 版之前的 SQL SDK 版本都將於「2016 年 2 月 29 日」淘汰。
 > 
 > 
 

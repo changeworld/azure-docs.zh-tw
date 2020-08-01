@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 8b931519abb1af48ce139193366649ad3f355569
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 49e005d67702013b77d688d346860a217a13c561
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172030"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460111"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -109,7 +109,7 @@ SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4、SP5 [（支援的核�
 SUSE Linux Enterprise Server 15 | 15 和 15 SP1。 [(支援的核心版本)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> 不支援將複寫機器從 SP3 升級至 SP4。 如果已升級複寫的機器，您需要在升級後停用複寫，然後再重新啟用複寫。
 SUSE Linux Enterprise Server 11 | SP4
-Oracle Linux | 6.4，6.5，6.6，6.7，6.8，6.9，6.10，7.0，7.1，7.2，7.3，7.4，7.5，7.6， [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)， [7.8](https://support.microsoft.com/help/4573888/)， [8.0](https://support.microsoft.com/help/4573888/)， [8.1](https://support.microsoft.com/help/4573888/) <br/><br/> 執行 Red Hat 相容核心或 Unbreakable Enterprise Kernel 第 3、4 及 5 版 (UEK3、UEK4、UEK5)
+Oracle Linux | 6.4，6.5，6.6，6.7，6.8，6.9，6.10，7.0，7.1，7.2，7.3，7.4，7.5，7.6， [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)， [7.8](https://support.microsoft.com/help/4573888/)， [8.0](https://support.microsoft.com/help/4573888/)  <br/> 執行 Red Hat 相容核心或 Unbreakable Enterprise Kernel 第 3、4 及 5 版 (UEK3、UEK4、UEK5)<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>支援在所有 UEK 核心和 RedHat kernel 上執行 <= 3.10.0-1062. *。 支援 RedHat 核心的其餘部分將于9.36 年8月底推出。
 
 * * 注意：若要在發行後的30天內支援最新的 Linux 核心，Azure Site Recovery 會在最新的行動代理程式版本之上推出熱修復修補程式。 這項修正程式會在兩個主要版本之間推出。 若要更新為最新版本的行動代理程式（包括熱修復修補程式），請遵循[本文中所述的步驟](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)。 針對 Azure 至 Azure DR 案例中使用的行動代理程式，目前推出此修補程式。
 

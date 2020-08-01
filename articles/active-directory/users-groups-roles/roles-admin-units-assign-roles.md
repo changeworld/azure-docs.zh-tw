@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/10/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d0a1f2551338207a71b6c547d9c2cd57fea777
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 918675b111b7b1b85669692b63fed683ea2831f8
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284382"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475629"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>將限域角色指派給管理單位
 
@@ -46,7 +46,7 @@ ms.locfileid: "87284382"
 
 ![選取要變更角色範圍的管理單位](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
 
-選取要指派的角色，然後選取 [**新增指派**]。 這會滑動開啟右側的面板，您可以在其中選取一或多個要指派給角色的使用者。
+選取要指派的角色，然後選取 [**新增指派**]。 右側會開啟一個面板，您可以在其中選取一或多個要指派給角色的使用者。
 
 ![選取要設定範圍的角色，然後選取 [新增指派]](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
@@ -104,4 +104,5 @@ Request body
 
 ## <a name="next-steps"></a>後續步驟
 
-- [管理單位疑難排解和常見問題](roles-admin-units-faq-troubleshoot.md)
+- [使用雲端群組來管理角色指派](roles-groups-concept.md)
+- [針對指派給雲端群組的角色進行疑難排解](roles-groups-faq-troubleshooting.md)

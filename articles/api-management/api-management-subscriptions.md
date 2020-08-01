@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 137cbec270b40042503fc7687c9deb39b0df1aa4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b4a3e8c71757417240af2719c317bbbd49cef9fc
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243285"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475765"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的訂用帳戶
 
@@ -41,7 +41,7 @@ ms.locfileid: "86243285"
 
 ### <a name="subscriptions-for-a-product"></a>產品的訂用帳戶
 
-傳統上，APIM 中的訂用帳戶始終與單一 [API 產品](api-management-terminology.md)範圍相關聯。 開發人員可在開發人員入口網站上找到產品清單。 然後他們會針對想要使用的產品提交訂用帳戶要求。 在核准訂用帳戶要求之後（自動或由 API 發行者），開發人員可以使用其中的金鑰來存取產品中的所有 Api。目前，開發人員入口網站只會在 [使用者設定檔] 區段下顯示產品範圍的訂閱。 
+傳統上，APIM 中的訂用帳戶始終與單一 [API 產品](api-management-terminology.md)範圍相關聯。 開發人員可在開發人員入口網站上找到產品清單。 然後他們會針對想要使用的產品提交訂用帳戶要求。 訂用帳戶要求核准之後 (自動或由 API 發行者)，開發人員可以使用其中的金鑰存取產品中的所有 API。 目前，開發人員入口網站只會在 [使用者設定檔] 區段下顯示產品範圍的訂閱。 
 
 ![產品訂用帳戶](./media/api-management-subscriptions/product-subscription.png)
 

@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d88ac62d9117df9d24c6d865e684a0972c87dae
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337308"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475459"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 隨插即用預覽版的名詞解釋
 
@@ -98,10 +98,6 @@ IoT 隨插即用裝置通常是小型的獨立計算裝置，可收集資料或�
 ## <a name="iot-plug-and-play-conventions"></a>IoT 隨插即用慣例
 
 IoT 隨插即用[裝置](#iot-plug-and-play-device)在與解決方案交換資料時，預期會遵循一組[慣例](concepts-convention.md)。
-
-## <a name="model-discovery"></a>模型探索
-
-當[iot 隨插即用裝置](#iot-plug-and-play-device)連線到 iot 解決方案時，解決方案可以藉由尋找[裝置型號](#device-model)來探索裝置的功能。 解決方案可以在[模型存放庫](#model-repository)或其他位置中找到裝置型號。
 
 ## <a name="model-id"></a>模型識別碼
 

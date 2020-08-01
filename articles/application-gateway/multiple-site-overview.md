@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 07/20/2020
-ms.author: amsriva
+ms.author: surmb
 ms.topic: conceptual
-ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290976"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474320"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>應用程式閘道多站台裝載
 
@@ -42,6 +42,7 @@ ms.locfileid: "87290976"
 
 >[!NOTE]
 >這項功能目前僅透過[Azure PowerShell](tutorial-multiple-sites-powershell.md)和[Azure CLI](tutorial-multiple-sites-cli.md)提供。 即將推出入口網站支援。
+> 請注意，由於入口網站支援並非完全可用，因此，如果您只使用主機名稱參數，接聽程式會在入口網站中顯示為基本接聽程式，而接聽程式清單視圖的 [主機名稱] 欄則不會顯示已設定的主機名稱。 對於萬用字元接聽程式的任何變更，請務必使用 Azure PowerShell 或 CLI，直到入口網站支援該功能為止。
 
 在[Azure PowerShell](tutorial-multiple-sites-powershell.md)中，您必須使用， `-HostNames` 而不是 `-HostName` 。 使用主機名稱時，您最多可以提及5個主機名稱做為逗號分隔值，並使用萬用字元。 例如， `-HostNames "*.contoso.com,*.fabrikam.com"`
 

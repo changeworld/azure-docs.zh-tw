@@ -7,12 +7,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/10/2019
-ms.openlocfilehash: 54524b0528f94ca9386c2d0d45ba4393c965fa88
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 39b4a3bc5e5f70a5699f4fd84ec86dc61cf21483
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128806"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475255"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>瞭解如何針對因為執行時間變更而發生的 U-SQL 執行時間失敗進行疑難排解
 
@@ -46,11 +46,6 @@ release_YYYYMMDD_adl_buildno [_modifier]
 
 例如，release_20190318_adl_3394512_2 表示執行時間版本3月 18 2019 的第二版組建3394512，而 release_20190318_adl_3394512_private 表示相同版本的私用組建。 注意：當上次簽入已針對該發行，而不一定是官方發行日期時，該日期與相關。
 
-以下是目前可用的執行階段版本。
-
-- release_20190318_adl_3394512
-- release_20190318_adl_5832669 目前的預設值
-- release_20190703_adl_4713356
 
 ## <a name="troubleshooting-u-sql-runtime-version-issues"></a>針對 U-SQL 執行時間版本問題進行疑難排解
 

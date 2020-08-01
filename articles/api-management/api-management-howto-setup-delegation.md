@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 07/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 43dc0020f64a80e10f179fd194c4878f2fec41ad
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243200"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460995"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派使用者註冊和產品訂閱
 
@@ -49,8 +49,6 @@ ms.locfileid: "86243200"
 1. 接收下列形式的要求：
    
    > *http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
-   > 
-   > 
    
     登入/註冊案例的查詢參數：
    
@@ -84,6 +82,7 @@ ms.locfileid: "86243200"
 * **ChangePassword**
 * **ChangeProfile**
 * **CloseAccount**
+* **SignOut**
 
 您必須傳遞下列查詢參數，供帳戶管理作業使用。
 
@@ -93,6 +92,7 @@ ms.locfileid: "86243200"
 * **sig**：已經過計算的安全性雜湊，用於和您已計算的雜湊進行比較
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"></a>委派產品訂閱
+
 委派產品訂閱的作法類似於委派使用者登入/註冊。 最終工作流程如下所示：
 
 1. 在 API 管理開發人員入口網站中，開發人員選取產品，然後按一下 [訂閱] 按鈕。
@@ -114,9 +114,9 @@ ms.locfileid: "86243200"
      * "Subscribe"：為使用者訂閱具有提供之識別碼的 (請參閱下面) 指定產品的要求
      * "Unsubscribe"：將為使用者取消訂閱產品的要求
      * "Renew"：訂閱續訂要求 (例如，可能過期)
-   * **productId**：使用者要求訂閱之產品的識別碼
+   * **productId**：*訂閱*時-使用者要求訂閱之產品的識別碼
    * **subscriptionId**：在 [取消訂閱] 和 [更新] 上 - 產品訂閱的識別碼
-   * **userId**：使用者的識別碼，表示對此使用者提出要求
+   * **userId**：*訂閱*時-提出要求之使用者的識別碼
    * **salt**：特殊 salt 字串，用於計算安全性雜湊
    * **sig**：已經過計算的安全性雜湊，用於和您已計算的雜湊進行比較
 

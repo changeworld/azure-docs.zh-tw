@@ -2,16 +2,14 @@
 title: JavaScript web 應用程式的 Azure 應用程式 Insights
 description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁面應用程式（SPA），以及追蹤使用模式。 Detect exceptions and performance issues in JavaScript web pages.
 ms.topic: conceptual
-author: Dawgfan
-ms.author: mmcc
 ms.date: 09/20/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8cd0c7c73ac4f5c531d91d7e458300ab1b0ad1af
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 063d648c68431dd84fd1aeb88b85bc68f2acbe62
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371476"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475748"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -151,7 +149,7 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 大部分設定欄位的名稱都是，讓它們可以預設為 false。 除了以外，所有欄位都是選擇性的 `instrumentationKey` 。
 
 | 名稱 | 預設 | 描述 |
@@ -342,7 +340,9 @@ Chrome 最新✔ |  Firefox 最新✔ | IE 9 + & Edge ✔<br>IE 8 相容 | Opera
 
 ## <a name="open-source-sdk"></a>開放原始碼 SDK
 
-Application Insights JavaScript SDK 是開放原始碼，可供您查看原始程式碼或參與專案，請造訪官方的[GitHub 存放庫](https://github.com/Microsoft/ApplicationInsights-JS)。
+Application Insights JavaScript SDK 是開放原始碼，可供您查看原始程式碼或參與專案，請造訪官方的[GitHub 存放庫](https://github.com/Microsoft/ApplicationInsights-JS)。 
+
+如需最新的更新和錯誤修正，[請參閱版本](./release-notes.md)資訊。
 
 ## <a name="next-steps"></a><a name="next"></a> 後續步驟
 * [追蹤流量](usage-overview.md)

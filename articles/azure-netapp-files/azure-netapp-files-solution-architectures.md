@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 07/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 23ec482de740cc1ac8800a5de1c0e3be1f055df7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6437e25a2d6afc547b03f2b2144df63728116ef4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045479"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460230"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp Files 的方案架構
 本文提供最佳做法的參考，可協助您瞭解使用 Azure NetApp Files 的解決方案架構。  
@@ -45,6 +45,7 @@ ms.locfileid: "86045479"
 ### <a name="file-sharing-and-global-file-caching"></a>檔案共用和全域檔案快取
 
 * [Talon/Azure NetApp Files 部署](https://youtu.be/91LKb1qsLIM)
+* [建立您自己的 Azure NFS？將 Linux 檔案共用 Wrestling 到雲端](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares)
 
 ### <a name="sql-server"></a>SQL Server
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7a30238250c9fcb86f1cc01226d44ab385c61843
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e90a8bc0998b43a84658958215e4b7977f8fdd0
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086620"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461301"
 ---
 # <a name="use-fqdn-filtering-in-network-rules-preview"></a>在網路規則中使用 FQDN 篩選（預覽）
 
@@ -20,15 +20,16 @@ ms.locfileid: "87086620"
 > 網路規則中的 FQDN 篩選目前為公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-完整功能變數名稱（FQDN）代表主機的功能變數名稱。 定義功能變數名稱稱與單一或多個 IP 位址相關聯。 您可以允許或封鎖應用程式規則中的 Fqdn 和 FQDN 標記。 使用自訂 DNS 和 DNS proxy 設定時，您也可以在網路規則中使用 FQDN 篩選。
+完整功能變數名稱（FQDN）代表主機或 IP 位址的功能變數名稱。 您可以根據 Azure 防火牆和防火牆原則中的 DNS 解析，使用網路規則中的 Fqdn。 這項功能可讓您使用任何 TCP/UDP 通訊協定（包括 NTP、SSH、RDP 等等）來篩選輸出流量。 您必須啟用 DNS Proxy，才能在您的網路規則中使用 Fqdn。 如需詳細資訊，請參閱[Azure 防火牆 DNS 設定（預覽）](dns-settings.md)。
 
 ## <a name="how-it-works"></a>運作方式
 
-Azure 防火牆會使用其 DNS 設定將 FQDN 轉譯為 IP 位址，並根據 Azure DNS 或自訂 DNS 設定進行規則處理。
+定義您的組織所需的 DNS 伺服器（Azure DNS 或您自己的自訂 DNS）之後，Azure 防火牆會根據選取的 DNS 伺服器將 FQDN 轉譯為 IP 位址。 這項轉譯會同時用於應用程式和網路規則處理。
 
-若要在網路規則中使用 Fqdn，您應該啟用 DNS proxy。 如果您未啟用 DNS proxy，可靠的規則處理會有風險。 啟用時，會將 DNS 流量導向至 Azure 防火牆，您可以在其中設定您的自訂 DNS 伺服器。 然後防火牆和用戶端會使用相同設定的 DNS 伺服器。 如果 DNS proxy 未啟用，Azure 防火牆可能會產生不同的回應，因為用戶端和防火牆可能會使用不同的伺服器來進行名稱解析。 如果用戶端和防火牆收到不同的 DNS 回應，則網路規則中的 FQDN 篩選可能會發生錯誤或不一致。
+與網路規則相較之下，在應用程式規則中使用功能變數名稱有何差異？ 
 
-您可以選擇在規則集合中選取 [**儲存**] 之前，先確認風險，以覆寫這項需求。
+- HTTP/S 和 MSSQL 應用程式規則中的 FQDN 篩選是以應用層級透明 proxy 和 SNI 標頭為基礎。 因此，它可以分辨兩個解析成相同 IP 位址的 Fqdn。 這不是在網路規則中使用 FQDN 篩選的情況。 可能的話，請一律使用應用程式規則。
+- 在 [應用程式規則] 中，您可以使用 HTTP/S 和 MSSQL 作為選取的通訊協定。 在 [網路規則] 中，您可以將任何 TCP/UDP 通訊協定與目的地 Fqdn 搭配使用。
 
 ## <a name="next-steps"></a>後續步驟
 

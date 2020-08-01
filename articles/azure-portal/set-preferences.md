@@ -5,22 +5,23 @@ services: azure-portal
 keywords: 設定、超時、語言、地區
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 07/30/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: d4c675ab18a7a9231229ce0c7de9a7450dc1baa8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8ce638bf61c69fb732d94d537218aabaeaa9a7c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763953"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461917"
 ---
 # <a name="set-your-azure-portal-preferences"></a>設定您的 Azure 入口網站喜好設定
 
 您可以變更 Azure 入口網站的預設值，以符合您自己的喜好設定。 下面列出的每個設定都可以變更：
 
 * [非使用中會話超時](#change-the-idle-duration-for-inactive-sign-out)
+* [預設訂用帳戶](#choose-your-default-subscription)
 * [預設視圖](#choose-your-default-view)
 * [入口網站功能表模式](#choose-a-portal-menu-mode)
 * [色彩和高對比主題](#choose-a-theme)
@@ -54,6 +55,18 @@ ms.locfileid: "84763953"
 > [!NOTE]
 > 如果您是系統管理員，而且想要為 Azure 入口網站的所有使用者強制執行非作用中的 timeout 設定，請參閱[為使用者的 Azure 入口網站設定目錄層級的非使用時間超時](admin-timeout.md)
 >
+
+### <a name="choose-your-default-subscription"></a>選擇您的預設訂用帳戶
+
+當您登入 Azure 入口網站時，您可以變更預設開啟的訂用帳戶。 如果您有使用的主要訂用帳戶，但偶爾使用其他訂閱，這會很有説明。 
+
+:::image type="content" source="media/set-preferences/filter-subscription-default-view.png" alt-text="依訂用帳戶篩選資源清單。":::
+
+1. 選取頂端導覽中的 [目錄] 和 [訂用帳戶篩選] 圖示。
+1. 當您啟動入口網站時，請選取您想要作為預設訂用帳戶的訂用帳戶。 
+
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="當您啟動入口網站時，請選取您想要作為預設訂用帳戶的訂用帳戶。"::: 
+
 
 ### <a name="choose-your-default-view"></a>選擇您的預設 view 
 

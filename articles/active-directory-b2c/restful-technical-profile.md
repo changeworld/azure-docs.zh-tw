@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8486241d4de0025603b22b591f4a8f62901bd7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1875c9147f62619d8961096adb6a0f3986496b41
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203651"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459436"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 RESTful 技術設定檔
 
@@ -114,16 +114,16 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 | 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| ServiceUrl | Yes | REST API 端點的 URL。 |
-| AuthenticationType | Yes | RESTful 宣告提供者正在執行的驗證類型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None` 值表示 REST API 並非匿名。 `Basic` 值表示 REST API 受到 HTTP 基本驗證保護。 只有經過驗證的使用者 (包括 Azure AD B2C) 才能存取您的 API。 `ClientCertificate`（建議）值表示 REST API 使用用戶端憑證驗證來限制存取。 只有具有適當憑證（例如 Azure AD B2C）的服務才能存取您的 API。 `Bearer`值表示 REST API 使用用戶端 OAuth2 持有人權杖來限制存取。 |
-| AllowInsecureAuthInProduction| No| 指出是否 `AuthenticationType` 可 `none` 在生產環境中設定為（ `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md)的設定為 `Production` 或未指定）。 可能的值： true 或 false （預設值）。 |
-| SendClaimsIn | No | 指定輸入宣告如何傳送至 RESTful 宣告提供者。 可能的值：`Body` (預設)、`Form`、`Header` 或 `QueryString`。 `Body` 值是以 JSON 格式在要求本文中傳送的輸入宣告。 `Form` 值是以符號 '&' 分隔的金鑰值格式在要求本文中傳送的輸入宣告。 `Header` 值是在要求標題中傳送的輸入宣告。 `QueryString` 值是在要求查詢字串中傳送的輸入宣告。 每個所叫用的 HTTP 指令動詞如下：<br /><ul><li>`Body`： POST</li><li>`Form`： POST</li><li>`Header`： GET</li><li>`QueryString`： GET</li></ul> |
-| ClaimsFormat | No | 目前未使用，可以忽略。 |
-| ClaimUsedForRequestPayload| No | 字串宣告的名稱，其中包含要傳送至 REST API 的承載。 |
-| DebugMode | No | 在偵錯模式中執行技術設定檔。 可能的值為：`true` 或 `false` (預設)。 在偵錯模式中，REST API 可以傳回更多資訊。 請參閱傳回[錯誤訊息](#returning-validation-error-message)一節。 |
-| IncludeClaimResolvingInClaimsHandling  | No | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true` 、或 `false`   （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
-| ResolveJsonPathsInJsonTokens  | No | 指出技術設定檔是否會解析 JSON 路徑。 可能的值為：`true` 或 `false` (預設)。 使用此中繼資料，從嵌套的 JSON 元素讀取資料。 在[OutputClaim](technicalprofiles.md#outputclaims)中，將設定 `PartnerClaimType` 為您想要輸出的 JSON 路徑元素。 例如： `firstName.localized` 、或 `data.0.to.0.email` 。|
-| UseClaimAsBearerToken| No| 包含持有人權杖的宣告名稱。|
+| ServiceUrl | 是 | REST API 端點的 URL。 |
+| AuthenticationType | 是 | RESTful 宣告提供者正在執行的驗證類型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None`值表示 REST API 是匿名的。 `Basic` 值表示 REST API 受到 HTTP 基本驗證保護。 只有經過驗證的使用者 (包括 Azure AD B2C) 才能存取您的 API。 `ClientCertificate`（建議）值表示 REST API 使用用戶端憑證驗證來限制存取。 只有具有適當憑證（例如 Azure AD B2C）的服務才能存取您的 API。 `Bearer`值表示 REST API 使用用戶端 OAuth2 持有人權杖來限制存取。 |
+| AllowInsecureAuthInProduction| 否| 指出是否 `AuthenticationType` 可 `none` 在生產環境中設定為（ `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md)的設定為 `Production` 或未指定）。 可能的值： true 或 false （預設值）。 |
+| SendClaimsIn | 否 | 指定輸入宣告如何傳送至 RESTful 宣告提供者。 可能的值：`Body` (預設)、`Form`、`Header` 或 `QueryString`。 `Body` 值是以 JSON 格式在要求本文中傳送的輸入宣告。 `Form` 值是以符號 '&' 分隔的金鑰值格式在要求本文中傳送的輸入宣告。 `Header` 值是在要求標題中傳送的輸入宣告。 `QueryString` 值是在要求查詢字串中傳送的輸入宣告。 每個所叫用的 HTTP 指令動詞如下：<br /><ul><li>`Body`： POST</li><li>`Form`： POST</li><li>`Header`： GET</li><li>`QueryString`： GET</li></ul> |
+| ClaimsFormat | 否 | 目前未使用，可以忽略。 |
+| ClaimUsedForRequestPayload| 否 | 字串宣告的名稱，其中包含要傳送至 REST API 的承載。 |
+| DebugMode | 否 | 在偵錯模式中執行技術設定檔。 可能的值為：`true` 或 `false` (預設)。 在偵錯模式中，REST API 可以傳回更多資訊。 請參閱傳回[錯誤訊息](#returning-validation-error-message)一節。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值： `true` 、或 `false`   （預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將此設定為 `true` 。 |
+| ResolveJsonPathsInJsonTokens  | 否 | 指出技術設定檔是否會解析 JSON 路徑。 可能的值為：`true` 或 `false` (預設)。 使用此中繼資料，從嵌套的 JSON 元素讀取資料。 在[OutputClaim](technicalprofiles.md#outputclaims)中，將設定 `PartnerClaimType` 為您想要輸出的 JSON 路徑元素。 例如： `firstName.localized` 、或 `data.0.to.0.email` 。|
+| UseClaimAsBearerToken| 否| 包含持有人權杖的宣告名稱。|
 
 ## <a name="error-handling"></a>錯誤處理
 
@@ -131,10 +131,10 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 | 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| DefaultUserMessageIfRequestFailed | No | 所有 REST API 例外狀況的預設自訂錯誤訊息。|
-| UserMessageIfCircuitOpen | No | 無法連線到 REST API 時，出現錯誤訊息。 如果未指定，則會傳回 DefaultUserMessageIfRequestFailed。 |
-| UserMessageIfDnsResolutionFailed | No | DNS 解析例外狀況的錯誤訊息。 如果未指定，則會傳回 DefaultUserMessageIfRequestFailed。 | 
-| UserMessageIfRequestTimeout | No | 當連接逾時時的錯誤訊息。如果未指定，則會傳回 DefaultUserMessageIfRequestFailed。 | 
+| DefaultUserMessageIfRequestFailed | 否 | 所有 REST API 例外狀況的預設自訂錯誤訊息。|
+| UserMessageIfCircuitOpen | 否 | 無法連線到 REST API 時，出現錯誤訊息。 如果未指定，則會傳回 DefaultUserMessageIfRequestFailed。 |
+| UserMessageIfDnsResolutionFailed | 否 | DNS 解析例外狀況的錯誤訊息。 如果未指定，則會傳回 DefaultUserMessageIfRequestFailed。 | 
+| UserMessageIfRequestTimeout | 否 | 當連接逾時時的錯誤訊息。如果未指定，則會傳回 DefaultUserMessageIfRequestFailed。 | 
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
@@ -156,8 +156,8 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 | 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | Yes | 用來驗證的使用者名稱。 |
-| BasicAuthenticationPassword | Yes | 用來驗證的密碼。 |
+| BasicAuthenticationUsername | 是 | 用來驗證的使用者名稱。 |
+| BasicAuthenticationPassword | 是 | 用來驗證的密碼。 |
 
 下列範例是使用基本驗證的技術設定檔：
 
@@ -181,7 +181,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 | 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| ClientCertificate | Yes | 用來驗證的 X509 憑證 (RSA 金鑰組)。 |
+| ClientCertificate | 是 | 用來驗證的 X509 憑證 (RSA 金鑰組)。 |
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -202,7 +202,7 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
 | 屬性 | 必要 | 說明 |
 | --------- | -------- | ----------- |
-| BearerAuthenticationToken | No | OAuth 2.0 持有人權杖。 |
+| BearerAuthenticationToken | 否 | OAuth 2.0 持有人權杖。 |
 
 ```xml
 <TechnicalProfile Id="REST-API-SignUp">
@@ -235,15 +235,15 @@ REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 }
 ```
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| version | Yes | 您的 REST API 版本。 例如：1.0。1 |
-| status | Yes | 必須是409 |
-| 代碼 | No | RESTful 端點提供者的錯誤代碼，在啟用 `DebugMode` 時顯示。 |
-| requestId | No | RESTful 端點提供者的要求識別碼，在啟用 `DebugMode` 時顯示。 |
-| userMessage | Yes | 向使用者顯示的錯誤訊息。 |
-| developerMessage | No | 問題的詳細描述及修復方式，在啟用 `DebugMode` 時顯示。 |
-| moreInfo | No | 指向其他資訊的的 URI，在啟用 `DebugMode` 時顯示。 |
+| version | 是 | 您的 REST API 版本。 例如：1.0。1 |
+| status | 是 | 必須是409 |
+| 代碼 | 否 | RESTful 端點提供者的錯誤代碼，在啟用 `DebugMode` 時顯示。 |
+| requestId | 否 | RESTful 端點提供者的要求識別碼，在啟用 `DebugMode` 時顯示。 |
+| userMessage | 是 | 向使用者顯示的錯誤訊息。 |
+| developerMessage | 否 | 問題的詳細描述及修復方式，在啟用 `DebugMode` 時顯示。 |
+| moreInfo | 否 | 指向其他資訊的的 URI，在啟用 `DebugMode` 時顯示。 |
 
 
 下列範例顯示的是傳回錯誤訊息的 C# 類別：

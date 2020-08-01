@@ -3,12 +3,12 @@ title: 驗證事件傳遞至事件處理常式（Azure 事件方格）
 description: 本文說明在 Azure 事件方格中驗證傳遞至事件處理常式的不同方式。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: d48930ac9cfdd1ecd3e7d6c64067d5389323f8bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119934"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460638"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>驗證事件傳遞至事件處理常式（Azure 事件方格）
 本文提供有關驗證事件傳遞至事件處理常式的資訊。 它也會示範如何使用 Azure Active Directory （Azure AD）或共用密碼，來保護用來從事件方格接收事件的 webhook 端點。
@@ -35,7 +35,7 @@ ms.locfileid: "86119934"
 ### <a name="using-client-secret-as-a-query-parameter"></a>使用用戶端秘密作為查詢參數
 您也可以在建立事件訂閱時將查詢參數新增至指定的 Webhook 目的地 URL，以保護您的 Webhook 端點。 將這些查詢參數中的其中一個設定為用戶端祕密，例如[存取權杖](https://en.wikipedia.org/wiki/Access_token)或共用秘密。 事件方格服務會在 Webhook 的每個事件傳遞要求中包含這些查詢參數。 Webhook 服務可以擷取和驗證祕密。 如果用戶端秘密已更新，則也需要更新事件訂用帳戶。 為避免在此秘密輪替期間發生傳遞失敗，請在有限的期間內讓 Webhook 接受舊秘密與新秘密，然後再利用新祕密更新事件訂閱。 
 
-由於查詢參數可能包含用戶端秘密，因此會特別小心加以處理。 用戶端秘密會以加密方式儲存，且不能供服務操作員存取。 其不會記錄為服務記錄/追蹤的一部分。 在擷取事件訂閱屬性時，預設不會傳回目的地查詢參數。 例如：[--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 參數將用於 Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) 中。
+由於查詢參數可能包含用戶端秘密，因此會特別小心加以處理。 用戶端秘密會以加密方式儲存，且不能供服務操作員存取。 其不會記錄為服務記錄/追蹤的一部分。 在擷取事件訂閱屬性時，預設不會傳回目的地查詢參數。 例如：[--include-full-endpoint-url](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) 參數將用於 Azure [CLI](/cli/azure?view=azure-cli-latest) 中。
 
 如需將事件傳遞至 Webhook 的詳細資訊，請參閱 [Webhook 事件傳遞](webhook-event-delivery.md)
 
