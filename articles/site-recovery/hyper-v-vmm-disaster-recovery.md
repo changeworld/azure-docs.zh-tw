@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 482a3808065bb2ec565bad7e760b9337b3db7007
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2164f8927e5c3224f8b07c30d057f48fb7bbc32
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134000"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495961"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>設定從 Hyper-V VM 到次要內部部署網站的災害復原
 
@@ -80,7 +80,7 @@ ms.locfileid: "86134000"
 4. 下載 Azure Site Recovery Provider 安裝檔案。
 5. 下載註冊金鑰。 您在安裝 Provider 時需要此金鑰。 該金鑰在產生後會維持 5 天有效。
 
-    ![設定來源](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
+    ![下載提供者和註冊金鑰之選項的螢幕擷取畫面。](./media/hyper-v-vmm-disaster-recovery/source-settings.png)
 
 6. 在每個 VMM 伺服器上安裝 Provider。 您不需要明確地在 Hyper-V 主機上安裝任何項目。
 
@@ -94,7 +94,7 @@ ms.locfileid: "86134000"
 4. 在 [安裝] 中，接受或修改預設安裝位置，然後按一下 [安裝]。
 5. 安裝完成之後，按一下 [註冊] 以在保存庫中註冊伺服器。
 
-    ![安裝位置](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
+    ![提供者安裝畫面的螢幕擷取畫面，包括安裝位置。](./media/hyper-v-vmm-disaster-recovery/provider-register.png)
 6. 在 [保存庫名稱] 中，確認要註冊伺服器的保存庫名稱。 按 [下一步] 。
 7. 在 [Proxy 連線] 中，指定 VMM 伺服器上執行的 Provider 連線至 Azure 的方式。
    - 您可以指定提供者應該直接或透過 proxy 連接至網際網路。 視需要指定 Proxy 設定。
@@ -115,7 +115,7 @@ ms.locfileid: "86134000"
 1. 按一下 [準備基礎結構] > [目標]，然後選取目標 VMM 伺服器。
 2. 隨即顯示與 Site Recovery 同步處理的 VMM 雲端。 選取目標雲端。
 
-   ![目標](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
+   ![目標 VMM 伺服器和雲端選取專案的螢幕擷取畫面。](./media/hyper-v-vmm-disaster-recovery/target-vmm.png)
 
 
 ## <a name="set-up-a-replication-policy"></a>設定複寫原則
@@ -138,7 +138,7 @@ ms.locfileid: "86134000"
 5. 選取 [刪除複本 VM]，以指定如果您停用對來源 VM 的保護，則應刪除複本虛擬機器。 如果啟用此設定，當您停用對來源 VM 的保護時，便會從 Site Recovery 主控台中加以移除、在 VMM 主控台中移除 VMM 的 Site Recovery 設定，並刪除複本。
 6. 在 [初始複寫方法] 中，如果您要透過網路進行複寫，請指定是否要啟動初始複寫，或將它排程。 若要節省網路頻寬，您可能要將它排程在離峰時間執行。 然後按一下 [確定] 。
 
-     ![複寫原則](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
+     ![複寫原則選項的螢幕擷取畫面。](./media/hyper-v-vmm-disaster-recovery/replication-policy.png)
      
 7. 新原則會自動與 VMM 雲端產生關聯。 在 [複寫原則] 中，按一下 [確定]。 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca54cb44618da1ff92b12b3ad918da513ab2be2f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: edcecefab6243645c47af0ec1b8dd4b26fe22bb7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131815"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501111"
 ---
 # <a name="azure-security-baseline-for-cosmos-db"></a>適用于 Cosmos DB 的 Azure 安全性基準
 
@@ -324,7 +324,7 @@ Azure Cosmos DB 在 Azure Cosmos DB 中提供常見管理案例的內建 RBAC。
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
-**指導**方針：不適用;Azure Cosmos DB 不支援系統管理員帳戶。  所有存取都與 Azure Active Directory 和 Azure 角色型存取控制（RBAC）整合。
+**指導**方針：不適用;Azure Cosmos DB 不支援系統管理員帳戶。  所有存取都會與 Azure Active Directory 和 Azure 角色型存取控制（Azure RBAC）整合。
 
 
 

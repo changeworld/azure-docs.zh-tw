@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2dc96f587a9e5db9d9810a4d1ab7d32c4ff49f7d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: df4d1b98eac782641fb36c614d2df9508c6131ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289867"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498662"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虛擬桌面中委派的存取權
 
@@ -40,7 +40,7 @@ Windows 虛擬桌面委派存取針對角色指派的每個元素支援下列值
 
 開始之前，請務必遵循[設定 powershell 模組](powershell-module.md)中的指示來設定 Windows 虛擬桌面 powershell 模組（如果尚未安裝的話）。
 
-Windows 虛擬桌面會在將應用程式群組發佈至使用者或使用者群組時，使用 Azure 角色型存取控制（RBAC）。 「桌面虛擬化」使用者角色會指派給使用者或使用者群組，而範圍則是「應用程式群組」。 此角色可讓使用者在應用程式群組上進行特殊資料存取。  
+Windows 虛擬桌面會在將應用程式群組發佈至使用者或使用者群組時，使用 Azure 角色型存取控制（Azure RBAC）。 「桌面虛擬化」使用者角色會指派給使用者或使用者群組，而範圍則是「應用程式群組」。 此角色可讓使用者在應用程式群組上進行特殊資料存取。  
 
 執行下列 Cmdlet，將 Azure Active Directory 使用者新增至應用程式群組：
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 63755616bb524226d3c40d32b9695f4b787860d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383880"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489702"
 ---
 # <a name="query-csv-files"></a>查詢 CSV 檔案
 
@@ -31,7 +31,7 @@ ms.locfileid: "87383880"
 
 `OPENROWSET`函式可讓您藉由提供檔案的 URL，讀取 CSV 檔案的內容。
 
-### <a name="reading-csv-file"></a>正在讀取 csv 檔案
+### <a name="read-a-csv-file"></a>讀取 csv 檔案
 
 查看檔案內容最簡單的方式 `CSV` ，就是提供檔案 URL 來 `OPENROWSET` 運作、指定 csv `FORMAT` 和 2.0 `PARSER_VERSION` 。 如果檔案可公開使用，或者您的 Azure AD 身分識別可以存取此檔案，則您應該能夠使用查詢來查看檔案的內容，如下列範例所示：
 
@@ -46,7 +46,7 @@ from openrowset(
 
 選項 `firstrow` 是用來略過 CSV 檔案中的第一個資料列，在此案例中代表標頭。 請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂身分識別的保護，您就必須設定[sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
-### <a name="using-data-source"></a>使用資料來源
+### <a name="data-source-usage"></a>資料來源使用方式
 
 上一個範例使用檔案的完整路徑。 或者，您可以建立外部資料源，其位置會指向儲存體的根資料夾：
 
@@ -93,7 +93,7 @@ from openrowset(
 
 在下列各節中，您可以瞭解如何查詢各種類型的 CSV 檔案。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 第一個步驟是**建立將在其中建立資料表的資料庫**。 然後藉由在該資料庫上執行[安裝指令碼](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql)來初始化物件。 此安裝指令碼會建立資料來源、資料庫範圍認證，以及用於這些範例中的外部檔案格式。
 
@@ -214,7 +214,7 @@ WHERE
 > [!NOTE]
 > 如果省略 FIELDQUOTE 參數，則此查詢會傳回相同的結果，因為 FIELDQUOTE 的預設值是雙引號。
 
-## <a name="escaping-characters"></a>逸出字元
+## <a name="escape-characters"></a>逸出字元
 
 下列查詢顯示如何讀取一個檔案，其包含標頭資料列、採用 UNIX 樣式新行、以逗號分隔資料行，且針對值內的欄位分隔符號 (逗號) 使用逸出字元。 請注意，與其他範例相比，檔案的位置不同。
 
@@ -246,7 +246,7 @@ WHERE
 > [!NOTE]
 > 如果未指定 ESCAPECHAR，此查詢將會失敗，因為在 "Slov,enia" 中的逗號會視為欄位分隔符號，而不是國家/地區名稱的一部分。 "Slov,enia" 會視為兩個資料行。 因此，特定資料列會比其他資料列多出一個的資料行，且比您在 WITH 子句中的定義多一個資料行。
 
-### <a name="escaping-quoting-characters"></a>轉義引號字元
+### <a name="escape-quoting-characters"></a>轉義引號字元
 
 下列查詢顯示如何讀取具有標頭資料列的檔案，其中包含 Unix 樣式的新行、以逗號分隔的資料行，以及值內的已轉義雙引號字元。 請注意，與其他範例相比，檔案的位置不同。
 
@@ -306,7 +306,7 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>傳回資料行的子集
+## <a name="return-a-subset-of-columns"></a>傳回資料行的子集
 
 到目前為止，您已使用 WITH 來指定 CSV 檔案結構描述，並列出所有資料行。 在查詢中，您只能針對每個必要資料行使用序數來指定實際需要的資料行。 您也會省略不感興趣的資料行。
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131975"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499750"
 ---
 # <a name="troubleshoot-the-process-server"></a>針對處理序伺服器進行疑難排解
 
@@ -91,7 +91,7 @@ ms.locfileid: "86131975"
 
  初始和進行中的複寫失敗通常是來源電腦與處理序伺服器之間的連線能力問題所造成，或處理序伺服器與 Azure 之間的連線能力問題所造成。 下圖摘要說明這些步驟，接著是可協助您執行這些步驟的程序。
 
-![針對連線能力和複寫進行疑難排解](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
+![流程圖，顯示針對連線能力和複寫進行疑難排解的步驟。](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>步驟 4：確認來源機器上的時間同步
@@ -170,7 +170,7 @@ ms.locfileid: "86131975"
   2. 選取 [效能] 索引標籤 > [開啟資源監視器]。
   3. 在 [資源監視器] 頁面中，選取 [網路] 索引標籤。在 [具有網路活動的處理程序] 底下，檢查 cbengine.exe 是否正主動傳送大量資料。
 
-       ![具有網路活動的處理程序底下的資料量](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![螢幕擷取畫面，其中顯示 [具有網路活動的進程] 底下的磁片區數目龐大。](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
   如果 cbengine.exe 未傳送大量資料，請完成下列各節中的步驟。
 
@@ -179,7 +179,7 @@ ms.locfileid: "86131975"
 1. 在 [資源監視器] 中，選取 [cbengine.exe]。
 2. 在 [TCP 連線] 底下，檢查是否有從處理序伺服器到 Azure 儲存體的連線能力。
 
-  ![cbengine.exe 與 Azure Blob 儲存體 URL 之間的連線能力](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![顯示 cbengine.exe 與 Azure Blob 儲存體 URL 之間連線的螢幕擷取畫面。](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>檢查服務
 

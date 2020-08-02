@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 111453b30a0c2fd7c0b2a2077b31b2cf16ebda06
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: d981bad30bf57fde64d1f6e903039dda5007e526
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445665"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483904"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
 
@@ -3407,7 +3407,7 @@ Azure AD 目錄角色的核准工作流程已正式運作。
 
 * 使用恰到好處的系統管理。
 * 要求必須經過核准才能啟用資源角色。
-* 排定要求必須經過核准才能取得 Azure AD 和 Azure RBAC 角色的未來角色啟用。
+* 排定未來啟用需要核准 Azure AD 和 Azure 角色的角色。
 
 如需詳細資訊，請參閱[適用於 Azure 資源的 Privileged Identity Management (預覽)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac) \(機器翻譯\)。
 

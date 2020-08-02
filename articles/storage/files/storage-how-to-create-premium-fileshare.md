@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a5bdfbbc505f6abe4fee021df014e32d3ccae074
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509977"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497625"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何建立 premium Azure 檔案共用
 高階檔案共用是在固態硬碟（SSD）儲存媒體上提供，適用于需要大量 IO 的工作負載，包括裝載資料庫和高效能運算（HPC）。 高階檔案共用裝載在特殊用途的儲存體帳戶類型中，稱為 FileStorage 帳戶。 Premium 檔案共用是針對高效能和企業級應用程式所設計，可提供一致的低延遲、高 IOPS 和高輸送量的共用。

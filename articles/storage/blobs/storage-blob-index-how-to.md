@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: d4ea5889cbecbbb8609f90eed83ec9bd6b0032f9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 57366011c93065803162164c03c7878e1610af9f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448239"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500380"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>利用 Blob 索引標記 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料
 
@@ -32,11 +32,9 @@ Blob 索引標記會使用索引鍵/值標記屬性，將儲存體帳戶中的�
 # <a name="net"></a>[.NET](#tab/net)
 由於 Blob 索引處於公開預覽狀態，因此 .NET 儲存體套件會在預覽 NuGet 摘要中發行。 此程式庫在現在和正式發行之間可能會有變更。 
 
-1. 在 Visual Studio 中，將 URL `https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` 新增至您的 NuGet 套件來源。 
+1. 設定您的 Visual Studio 專案，以開始使用適用于 .NET 的 Azure Blob 儲存體用戶端程式庫 v12。 若要深入瞭解，請參閱[.Net 快速入門](storage-quickstart-blobs-dotnet.md)
 
-   若要了解作法，請參閱[套件來源](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)。
-
-2. 在 NuGet 套件管理員中，尋找 **Azure.Storage.Blobs** 套件，並且將 **12.5.0-dev.20200422.2** 版本安裝至您的專案。 您也可以執行 ```Install-Package Azure.Storage.Blobs -Version 12.5.0-dev.20200422.2``` 命令
+2. 在 NuGet 套件管理員中，尋找 [ **Azure** ] 的 [儲存體] 套件，然後將 [ **12.5.0-preview. 6**或更新版本] 安裝至您的專案。 您也可以執行 ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6``` 命令
 
    若要了解作法，請參閱[尋找並安裝套件](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
 

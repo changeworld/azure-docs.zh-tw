@@ -3,12 +3,12 @@ title: 使用受管理的服務識別進行事件傳遞
 description: 本文說明如何為 Azure 事件方格主題啟用受管理的服務識別。 使用它來將事件轉送到支援的目的地。
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: c05eb2e78595e962494a60b1ffa8ead899aa0109
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b437d519a076104b64fb2df5cba1cd61a865b1fc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371255"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499818"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>使用受控識別傳遞事件
 本文說明如何啟用 Azure 事件方格主題或網域的[受控服務識別](../active-directory/managed-identities-azure-resources/overview.md)。 使用此功能將事件轉送到支援的目的地，例如，服務匯流排佇列和主題、事件中樞，以及儲存體帳戶。
@@ -42,7 +42,7 @@ az eventgrid topic create -g <RESOURCE GROUP NAME> --name <TOPIC NAME> -l <LOCAT
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 下列程式說明如何針對主題啟用系統管理的身分識別。 啟用網域身分識別的步驟很類似。 
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)。
+1. 前往 [Azure 入口網站](https://portal.azure.com)。
 2. 在頂端的搜尋列中搜尋**事件方格主題**。
 3. 選取您要啟用受控識別的 [主題]。 
 4. 切換至 [身分識別] 索引標籤。 
@@ -64,7 +64,7 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 更新現有網域的命令是類似的 (`az eventgrid domain update`)。
 
 ## <a name="supported-destinations-and-rbac-roles"></a>支援的目的地和 RBAC 角色
-啟用事件方格主題或網域的身分識別之後，Azure 會在 Azure Active Directory 中自動建立身分識別。 將此身分識別新增至適當的角色型存取控制（RBAC）角色，讓主題或網域可以將事件轉送至支援的目的地。 例如，將身分識別新增至 Azure 事件中樞命名空間的**Azure 事件中樞資料**傳送者角色，讓事件方格主題可以將事件轉送至該命名空間中的事件中樞。 
+啟用事件方格主題或網域的身分識別之後，Azure 會在 Azure Active Directory 中自動建立身分識別。 將此身分識別新增至適當的 Azure 角色，讓主題或網域可以將事件轉送至支援的目的地。 例如，將身分識別新增至 Azure 事件中樞命名空間的**Azure 事件中樞資料**傳送者角色，讓事件方格主題可以將事件轉送至該命名空間中的事件中樞。 
 
 目前，Azure 事件方格支援使用系統指派的受控識別設定的主題或網域，將事件轉寄至下列目的地。 此表也提供您身分識別應該處於何種角色，讓主題可以轉送事件。
 

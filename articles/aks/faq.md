@@ -2,13 +2,13 @@
 title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service (AKS) 的常見問題解答。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: 4d93a4f3b58fc38710184f345fd467b2beb32b1a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/31/2020
+ms.openlocfilehash: 6d30bc1faa6a896233d09f9247fe8c56f82371fa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057189"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87485621"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -190,6 +190,10 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此，如果您
 ## <a name="can-i-use-custom-vm-extensions"></a>我可以使用自訂 VM 延伸模組嗎？
 
 AKS 不是受控服務，且不支援操作 IaaS 資源。 若要安裝自訂元件等， 請利用 Kubernetes API 和機制。 例如，利用 DaemonSet 來安裝必要元件。
+
+## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否將任何客戶資料儲存在叢集的區域之外？
+
+否。 在 AKS 叢集中建立的所有資料都會保留在叢集的區域內。
 
 <!-- LINKS - internal -->
 

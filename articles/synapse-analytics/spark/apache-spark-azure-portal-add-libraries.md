@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b0231b28894ea7233e5f6e588300f03cb8784e5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0d34d80df77b5c6fcdefc39b3bc3b1619a93705
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036449"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496248"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中新增和管理 Apache Spark 的程式庫
 
@@ -21,7 +21,7 @@ Apache Spark 取決於許多程式庫來提供功能。 這些程式庫可以擴
 
 您可以在 Spark 集區（預覽）層級新增 Python 套件，並可在 Spark 作業定義層級新增以 .jar 為基礎的套件。
 
-## <a name="adding-or-updating-python-libraries"></a>新增或更新 Python 程式庫
+## <a name="add-or-update-python-libraries"></a>新增或更新 Python 程式庫
 
 Azure Synapse 分析中的 Apache Spark 有完整的 Anacondas 安裝加上額外的程式庫。 您可以在[Apache Spark 版本支援](apache-spark-version-support.md)中找到完整的程式庫清單。
 
@@ -51,7 +51,7 @@ alabaster==0.7.10
 
 ![新增 Python 程式庫](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "新增 Python 程式庫")
 
-### <a name="verifying-installed-libraries"></a>驗證已安裝的程式庫
+### <a name="verify-installed-libraries"></a>確認已安裝的程式庫
 
 若要確認是否已安裝正確的正確程式庫版本，請執行下列程式碼
 

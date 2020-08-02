@@ -277,7 +277,7 @@
                 - name: Databricks
                   href: reservations/prepay-databricks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
                 - name: 資料總管
-                  href: /dataexplorer-docs/data-explorer/pricing-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+                  href: /dataexplorer-docs/data-explorer/pricing-reserved-capacity.md
                 - name: 磁碟儲存體
                   href: ../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
                 - name: 專用主機

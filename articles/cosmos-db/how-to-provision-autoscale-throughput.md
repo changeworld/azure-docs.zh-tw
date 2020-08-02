@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2020
-ms.openlocfilehash: e8dadbad309a146500db342f55bee9339fde6172
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 07/30/2020
+ms.openlocfilehash: dba0fccaa3eb79ad297ce80462efea5b69a4a009
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430981"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497047"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中的資料庫或容器上佈建自動調整輸送量
 
@@ -244,11 +244,11 @@ container.replaceThroughput(ThroughputProperties.createAutoscaledThroughput(newA
 
 ## <a name="cassandra-api"></a>Cassandra API
 
-您可以使用[CQL 命令](manage-scale-cassandra.md#use-autoscale)、 [Azure CLI](cli-samples.md)或[Azure Resource Manager 範本](resource-manager-samples.md)，針對 Cassandra API 的 Azure Cosmos DB 帳戶布建自動調整。
+您可以使用[CQL 命令](manage-scale-cassandra.md#use-autoscale)、 [Azure CLI](cli-samples.md)、 [Azure PowerShell](powershell-samples.md)或[Azure Resource Manager 範本](resource-manager-samples.md)，布建 Cassandra API 的 Azure Cosmos DB 帳戶以進行自動調整。
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
 
-您可以使用[mongodb 擴充功能命令](mongodb-custom-commands.md)、 [Azure CLI](cli-samples.md)或[AZURE RESOURCE MANAGER 範本](resource-manager-samples.md)，為 mongodb API Azure Cosmos DB 帳戶布建自動調整。
+您可以使用[mongodb 延伸模組命令](mongodb-custom-commands.md)、 [Azure CLI](cli-samples.md)、 [Azure PowerShell](powershell-samples.md)或[Azure Resource Manager 範本](resource-manager-samples.md)，為 mongodb API Azure Cosmos DB 帳戶布建自動調整。
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -257,6 +257,10 @@ Azure Resource Manager 範本可以用來為所有 Azure Cosmos DB Api 布建資
 ## <a name="azure-cli"></a>Azure CLI
 
 Azure CLI 可用來針對所有 Azure Cosmos DB Api，在資料庫或容器層級資源上布建自動調整輸送量。 如需範例，請參閱[Azure Cosmos DB 的 Azure CLI 範例](cli-samples.md)。
+
+## <a name="azure-powershell"></a>Azure PowerShell
+
+Azure PowerShell 可用來針對所有 Azure Cosmos DB Api，在資料庫或容器層級資源上布建自動調整輸送量。 如需範例，請參閱[Azure Cosmos DB 的 Azure PowerShell 範例](powershell-samples.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

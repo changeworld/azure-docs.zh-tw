@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 92568ceb9c7f0a428189647f259a3f84278eb612
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326999"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495366"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>將資料匯入 Azure Machine Learning 設計工具（預覽）
 
@@ -32,7 +32,7 @@ ms.locfileid: "87326999"
 
 ### <a name="register-a-dataset"></a>註冊資料集
 
-您可[使用 SDK 以程式設計方式](how-to-create-register-datasets.md#use-the-sdk)註冊現有的資料集，或[在 Azure Machine Learning Studio 中以視覺化方式](how-to-create-register-datasets.md#use-the-ui)註冊現有的資料集。
+您可[使用 SDK 以程式設計方式](how-to-create-register-datasets.md#datasets-sdk)註冊現有的資料集，或[在 Azure Machine Learning Studio 中以視覺化方式](how-to-create-register-datasets.md#datasets-ui)註冊現有的資料集。
 
 您也可以將任何設計工具模組的輸出註冊為資料集。
 
@@ -59,7 +59,7 @@ ms.locfileid: "87326999"
 如需如何使用匯入資料模組的詳細資訊，請參閱[匯入資料參考頁面](algorithm-module-reference/import-data.md)。
 
 > [!NOTE]
-> 如果資料集有太多資料行，可能會遇到下列錯誤：「驗證因大小限制而失敗」。 若要避免這種情況，請[在資料集介面中註冊資料集](how-to-create-register-datasets.md#use-the-ui)。
+> 如果資料集有太多資料行，可能會遇到下列錯誤：「驗證因大小限制而失敗」。 若要避免這種情況，請[在資料集介面中註冊資料集](how-to-create-register-datasets.md#datasets-ui)。
 
 ## <a name="supported-sources"></a>支援的來源
 

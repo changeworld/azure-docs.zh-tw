@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964986"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495296"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>在 Synapse SQL 中使用 T-sql 迴圈
 本文提供在 Synapse SQL 中使用 T-sql 迴圈、取代資料指標，以及使用 SQL 集區開發相關解決方案的重要秘訣。
@@ -26,7 +26,7 @@ Synapse SQL 支援[WHILE](https://docs.microsoft.com/sql/t-sql/language-elements
 
 SQL 集區中的迴圈適用于取代 SQL 程式碼中定義的資料指標。 幸運的是，幾乎所有以 SQL 程式碼撰寫的資料指標都是向前快轉，並且只讀取多樣性。 因此，[WHILE] 迴圈是取代資料指標的絕佳替代方式。
 
-## <a name="replacing-cursors-in-sql-pool"></a>取代 SQL 集區中的資料指標
+## <a name="replace-cursors-in-sql-pool"></a>取代 SQL 集區中的資料指標
 
 在深入探討之前，應該先考慮下列問題：「這個資料指標是否可以重寫以使用集合型作業？」 在許多情況下，答案都是「是」，而且通常是最佳的方法。 以集合為基礎的作業執行速度通常會比反復的逐列方法更快。
 

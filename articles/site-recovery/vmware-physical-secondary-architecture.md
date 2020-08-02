@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9b16a0edc1549a1b4d8ef5ba53d8b795f6d74e07
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7c884ce839523706e67e4278f43e237e1a2b0580
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418316"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496962"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>將 VMware/實體伺服器複寫到次要內部部署站台的架構
 
@@ -42,7 +42,7 @@ ms.locfileid: "87418316"
 
 如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許存取這些 URL：
 
-| **名稱**                  | **商業**                               | **政府**                                 | **說明** |
+| **Name**                  | **商業**                               | **政府**                                 | **描述** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
@@ -55,9 +55,7 @@ ms.locfileid: "87418316"
 2. 初始複寫之後，每部機器上的代理程式會將差異複寫變更傳送至處理序伺服器。
 3. 處理序伺服器會最佳化此資料，並且將其傳輸至次要網站上的主要目標伺服器。 設定伺服器會管理複寫程序。
 
-**圖 6：VMware 到 VMware 的複寫**
-
-![VMware 至 VMware](./media/site-recovery-components/vmware-to-vmware.png)
+![顯示將 VMware Vm 和實體伺服器複寫至次要資料中心的圖表](./media/site-recovery-components/vmware-to-vmware.png)
 
 
 

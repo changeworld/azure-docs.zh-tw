@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 03/31/2020
-ms.openlocfilehash: 7c6278d24e52159424c3e346b2382c93f4ab8160
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c043941543088d9bdbfd535f372e2335e1ba55a5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075797"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500346"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>自動調整 Azure Synapse Analytics Apache Spark 集區
 
@@ -67,9 +67,9 @@ ms.locfileid: "87075797"
 
 完成調整作業可能需要 1 到 5 分鐘的時間。
 
-### <a name="preparation-for-scaling-down"></a>縮小的準備
+### <a name="prepare-for-scaling-down"></a>準備相應減少
 
-在縮小執行個體的期間，自動調整會使節點處於解除委任狀態，如此該節點上就不會啟動任何新的執行程式。
+在實例相應減少進程期間，自動調整會使節點處於解除委任狀態，讓該節點上不會啟動任何新的執行程式。
 
 執行中的作業將會繼續執行並完成。 暫止的作業將像平常一樣等候排程，但可用節點會變少。
 

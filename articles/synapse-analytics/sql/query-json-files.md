@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8b95f6b6eca0f1464a7d09d2810aa66836d76f8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386634"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489719"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 的查詢 JSON 檔案
 
@@ -22,7 +22,7 @@ ms.locfileid: "87386634"
 - 將多個 JSON 檔儲存為 JSON 陣列的標準 JSON 檔案。
 - 以行分隔的 JSON 檔案，其中 JSON 檔會以新行字元分隔。 這些檔案類型的一般延伸模組為 `jsonl` 、 `ldjson` 和 `ndjson` 。
 
-## <a name="reading-json-documents"></a>讀取 JSON 檔
+## <a name="read-json-documents"></a>讀取 JSON 檔
 
 查看 JSON 檔案內容最簡單的方式，就是提供要函式的檔案 URL `OPENROWSET` 、指定 csv `FORMAT` ，以及設定 `0x0b` 和的值 `fieldterminator` `fieldquote` 。 如果您需要讀取以行分隔的 JSON 檔案，這就夠了。 如果您有傳統 JSON 檔案，則需要設定 `0x0b` 的值 `rowterminator` 。 `OPENROWSET`函式會剖析 JSON，並以下列格式傳回每份檔：
 
@@ -60,7 +60,7 @@ from openrowset(
 
 此查詢會將每個 JSON 檔傳回為結果集的個別資料列。 請確定您可以存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂身分識別的保護，您就必須設定[sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。 
 
-### <a name="using-data-source"></a>使用資料來源
+### <a name="data-source-usage"></a>資料來源使用方式
 
 上一個範例使用檔案的完整路徑。 或者，您可以建立外部資料源，其位置會指向儲存體的根資料夾，並使用該資料來源和函式中檔案的相對路徑 `OPENROWSET` ：
 

@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac87bda4251a8414ef659ad486c989c0c1cd42e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc316db0146943113b97b680229bd113f6fc1de5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034715"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494803"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能？
 
@@ -36,6 +36,176 @@ Azure AD 會持續不斷進行改進。 為了讓您隨時掌握最新的開發�
 - 方案變更
 
 此頁面會每月更新，因此請定期瀏覽。 如果想要尋找超過 6 個月的項目，請至 [Azure Active Directory 的新增功能封存](whats-new-archive.md) (英文)。
+
+---
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="as-an-it-admin-i-want-to-target-client-apps-using-conditional-access"></a>身為 IT 系統管理員，我想要使用條件式存取將用戶端應用程式設為目標
+
+**類型：** 方案變更   
+**服務類別：** 條件式存取  
+**產品功能：** 身分識別安全性 & 保護
+ 
+在條件式存取的用戶端應用程式的 GA 版本中，新的原則現在預設會套用至所有用戶端應用程式，包括舊版驗證用戶端。 現有的原則將保持不變，但會從現有的原則中移除 [*設定是/否]* 切換，以輕鬆查看原則套用至哪些用戶端應用程式。 
+
+建立新原則時，請務必排除仍在使用舊版驗證的使用者和服務帳戶;如果不這麼做，將會遭到封鎖。 [深入了解](https://aka.ms/caclientapps)。
+ 
+---
+
+### <a name="upcoming-scim-compliance-fixes"></a>即將推出的 SCIM 合規性修正
+
+**類型：** 方案變更  
+**服務類別：** 應用程式佈建  
+**產品功能：** 身分識別生命週期管理
+ 
+Azure AD 布建服務會利用 SCIM 標準來與應用程式整合。 我們的 SCIM standard 實現不斷演進，我們預期會對我們如何執行修補程式作業，以及在資源上設定「作用中」屬性的行為進行變更。 [深入了解](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility)。
+ 
+---
+
+### <a name="group-owner-setting-on-azure-admin-portal-will-be-changed"></a>Azure 系統管理員入口網站上的群組擁有者設定將會變更
+
+**類型：** 方案變更  
+**服務類別：** 群組管理  
+**產品功能：** 共同作業
+
+[群組一般設定] 頁面上的 [擁有者設定] 可以設定為在 Azure 系統管理員入口網站中將擁有者指派許可權限制為有限的使用者群組，並存取面板。 我們很快就能在這兩個 UX 入口網站上指派群組擁有者許可權，但也可以在後端強制執行原則，以提供跨端點（例如 PowerShell 和 Microsoft Graph）一致的行為。 
+
+我們會開始停用目前未使用此設定的客戶，並可在接下來幾個月內提供選項來界定使用者的群組擁有者許可權。 如需更新群組設定的指引，請參閱使用[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context)編輯群組資訊。
+
+---
+
+### <a name="azure-active-directory-registration-service-is-ending-support-for-tls-10-and-11"></a>Azure Active Directory 註冊服務即將結束對 TLS 1.0 和1.1 的支援
+
+**類型：** 方案變更  
+**服務類別：** 裝置註冊與管理  
+**產品功能：** 平台
+
+傳輸層安全性（TLS）1.2 和補救伺服器和用戶端很快就會與 Azure Active Directory 裝置註冊服務通訊。 支援 TLS 1.0 和1.1 以與 Azure AD 裝置註冊服務通訊，將會淘汰：
+- 2020年8月31日，所有主權雲端（GCC High、DoD 等等）
+- 在2020年10月30日，所有的商用雲端
+
+[深入瞭解](https://docs.microsoft.com/azure/active-directory/devices/reference-device-registration-tls-1-2)適用于 Azure AD 註冊服務的 TLS 1.2。
+
+---
+
+### <a name="windows-hello-for-business-sign-ins-visible-in-azure-ad-sign-in-logs"></a>Azure AD 登入記錄檔中顯示 Windows Hello 企業版登入
+
+**類型：** 固定  
+**服務類別：** 報告  
+**產品功能：** 監視和報告
+ 
+Windows Hello 企業版可讓使用者使用手勢（例如 PIN 或生物識別）來登入 Windows 電腦。 Azure AD 系統管理員可能會想要將 Windows Hello 企業版登入從其他 Windows 登入區別為組織無密碼驗證的過程。 
+
+系統管理員現在可以藉由在 Azure 入口網站的 Azure AD 登入] 分頁中，核取 Windows 登入事件的 [驗證詳細資料] 索引標籤，以查看 Windows 驗證是否使用 Windows Hello 企業版。 Windows Hello 企業版驗證會在 [驗證方法] 欄位中包含 "WindowsHelloForBusiness"。 如需有關解讀登入記錄的詳細資訊，請參閱[登入記錄檔](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
+ 
+---
+
+### <a name="fixes-to-group-deletion-behavior-and-performance-improvements"></a>對群組刪除行為和效能改善的修正
+
+**類型：** 固定  
+**服務類別：** 應用程式佈建  
+**產品功能：** 身分識別生命週期管理
+ 
+先前，當群組從「範圍內」變更為「超出範圍」，而且系統管理員在變更完成之前按一下 [重新開機] 時，不會刪除群組物件。 現在，當目標應用程式超出範圍（已停用、已刪除、未指派，或未通過範圍篩選器）時，會將該群組物件從它刪除。 [深入了解](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#incremental-cycles)。
+ 
+---
+
+### <a name="public-preview-admins-can-now-add-custom-content-in-the-email-to-reviewers-when-creating-an-access-review"></a>公開預覽：系統管理員現在可以在建立存取權審查時，將電子郵件中的自訂內容新增至審核者
+
+**類型：** 新功能  
+**服務類別：** 存取評論  
+**產品功能：** 身分識別治理
+ 
+建立新的存取權審查時，審核者會收到一封電子郵件，要求他們完成存取權審查。 我們有許多客戶要求能夠將自訂內容新增至電子郵件，例如連絡人資訊，或其他支援內容以引導審核者。 
+
+現在提供公開預覽，系統管理員可以在 Azure AD 存取評論的「advanced」區段中新增內容，以在傳送給審核者的電子郵件中指定自訂內容。 如需建立存取權審查的指引，請參閱[在 Azure AD 存取審查中建立群組和應用程式的存取權審查](https://docs.microsoft.com/azure/active-directory/governance/create-access-review)。
+ 
+---
+
+### <a name="authorization-code-flow-for-single-page-apps-available"></a>適用于單一頁面應用程式的授權碼流程
+
+**類型：** 新功能  
+**服務類別：** 驗證 (登入)  
+**產品功能：** 開發人員體驗
+ 
+因為現代化的瀏覽器協力廠商 cookie 限制（例如 Safari ITP），Spa 將必須使用授權碼流程，而不是隱含流程來維護 SSO，而 MSAL.js v 2. x 現在會支援授權碼流程。 
+
+Azure 入口網站有對應的更新，因此您可以將 SPA 更新為「spa」類型，並使用驗證碼流程。 如需進一步指引，請參閱[使用驗證碼流程登入使用者並取得 JAVASCRIPT SPA 中的存取權杖](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript-auth-code)。
+ 
+---
+
+### <a name="azure-ad-application-proxy-now-supports-the-remote-desktop-services-web-client"></a>Azure AD 應用程式 Proxy 現在支援遠端桌面服務 Web 用戶端
+
+**類型：** 新功能  
+**服務類別：** 應用程式 Proxy  
+**產品功能：** 存取控制
+
+Azure AD 應用程式 Proxy 現在支援遠端桌面服務（RDS） Web 用戶端。 RDS web 用戶端可讓使用者透過任何支援 HTLM5 的瀏覽器（例如 Microsoft Edge、Internet Explorer 11、Google Chrome 等等）來存取遠端桌面基礎結構。使用者可以從任何地方與遠端應用程式或桌上型電腦互動，就像使用本機裝置一樣。 藉由使用 Azure AD 應用程式 Proxy，您可以針對所有類型的豐富型用戶端應用程式強制執行預先驗證和條件式存取原則，藉此提高 RDS 部署的安全性。 如需指引，請參閱[使用 Azure AD 應用程式 Proxy 發佈遠端桌面](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-integrate-with-remote-desktop-services)。
+ 
+---
+
+### <a name="next-generation-azure-ad-b2c-user-flows-in-public-preview"></a>下一代 Azure AD B2C 使用者流程處於公開預覽狀態
+
+**類型：** 新功能  
+**服務類別：** B2C - 取用者身分識別管理  
+**產品功能：** B2B/B2C
+ 
+簡化的使用者流程體驗提供與預覽功能相同的功能，而且是所有新功能的首頁。 使用者將能夠在同一個使用者流程中啟用新功能，而不需要在每個新功能版本中建立多個版本。 最後，使用者易記的新 UX 可簡化使用者流程的選取和建立。 藉由[建立使用者流程](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)來立即試用。 
+
+如需使用者流程的詳細資訊，請參閱[Azure Active Directory B2C 中的使用者流程版本](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-versions#:~:text=%20%20%20%20User%20flow%20%20%2caccount.%20Usi%20...%20%201%20more%20rows%20)。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-application-gallery---july-2020"></a>Azure AD 應用程式庫中可用的新同盟應用程式-2020 年7月
+
+**類型：** 新功能  
+**服務類別：** 企業應用程式  
+**產品功能：** 協力廠商整合
+ 
+在2020年7月，我們已在具有同盟支援的應用程式庫中新增下列55個新應用程式：
+
+[Clap 您的手](http://www.rmit.com.ar/)、 [Appreiz](https://microsoftteams.appreiz.com/)、 [Inextor Vault](https://inexto.com/inexto-suite/inextor)、 [Beekast](https://my.beekast.com/)、 [Templafy OpenID connect](https://app.templafy.com/)、 [PeterConnects 接待員](https://msteams.peterconnects.com/)、 [AlohaCloud](https://appfusions.alohacloud.com/auth)、 [Control 塔式](https://bpm.tnxcorp.com/sso/microsoft)、 [Cocoom](https://start.cocoom.com/)、[硬幣建築 Cloud](https://sso.coinsconstructioncloud.com/#login/)、 [Medxnote MT](https://task.teamsmain.medx.im/authorization)、 [Reflekt](https://reflekt.konsolute.com/login)、Rever [、MyCompanyArchive、GReminders](https://login.mycompanyarchive.com/)、 [Titanfile](https://docs.microsoft.com/azure/active-directory/saas-apps/titanfile-tutorial)、 [Wootric、SolarWinds](https://docs.microsoft.com/azure/active-directory/saas-apps/wootric-tutorial) [Orion](https://support.solarwinds.com/SuccessCenter/s/orion-platform?language=en_US)、OpenText[目錄服務](https://docs.microsoft.com/azure/active-directory/saas-apps/opentext-directory-services-tutorial) [ ](https://app.reverscore.net/access)、 [Datasite](https://docs.microsoft.com/azure/active-directory/saas-apps/datasite-tutorial)、 [BlogIn](https://docs.microsoft.com/azure/active-directory/saas-apps/blogin-tutorial)、 [IntSights、kpifire](https://docs.microsoft.com/azure/active-directory/saas-apps/intsights-tutorial) [、](https://docs.microsoft.com/azure/active-directory/saas-apps/kpifire-tutorial) [system.windows.media.textformatting.textline>](https://docs.microsoft.com/azure/active-directory/saas-apps/textline-tutorial)、 [Cloud 學院-SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/cloud-academy-sso-tutorial)、[社區 Spark](https://docs.microsoft.com/azure/active-directory/saas-apps/community-spark-tutorial) [、Chatwork、](https://docs.microsoft.com/azure/active-directory/saas-apps/chatwork-tutorial) [CloudSign](https://docs.microsoft.com/azure/active-directory/saas-apps/cloudsign-tutorial)、 [C3M Cloud Control](https://docs.microsoft.com/azure/active-directory/saas-apps/c3m-cloud-control-tutorial)， [SmartHR](https://smarthr.jp/)， [NumlyEngage™](https://docs.microsoft.com/azure/active-directory/saas-apps/numlyengage-tutorial)，[密歇根 Data Hub 單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/michigan-data-hub-single-sign-on-tutorial) [，輸出，](https://docs.microsoft.com/azure/active-directory/saas-apps/egress-tutorial) [SendSafely](https://docs.microsoft.com/azure/active-directory/saas-apps/sendsafely-tutorial)， [Eletive](https://app.eletive.com/)，右手邊[網路安全性 ADI](https://right-hand.ai/)， [Fyde Enterprise Authentication](https://enterprise.fyde.com/)， [Verme](https://docs.microsoft.com/azure/active-directory/saas-apps/verme-tutorial)， [Lenses.io](https://docs.microsoft.com/azure/active-directory/saas-apps/lensesio-tutorial)， [Momenta](https://docs.microsoft.com/azure/active-directory/saas-apps/momenta-tutorial) [，Uprise](https://app.uprise.co/sign-in)， [Q](https://q.moduleq.com/login)， [CloudCords](https://docs.microsoft.com/azure/active-directory/saas-apps/cloudcords-tutorial)， [TellMe Bot](https://tellme365liteweb.azurewebsites.net/)，[鼓舞](https://app.inspiresoftware.com/)， [Maverics Identity Orchestrator SAML Connector](https://www.strata.io/identity-fabric/)，Smartschool [（學校管理系統）](https://smart-schoolapp.com/frmLoginForm)， [Zepto-智慧型 timekeeping](https://user.zepto-ai.com/signin)， [Studi.ly](https://studi.ly/) [，Trackplan](http://www.trackplanfm.com/) [，Skedda，WhosOnLocation](https://docs.microsoft.com/azure/active-directory/saas-apps/skedda-tutorial)， [Coggle](https://docs.microsoft.com/azure/active-directory/saas-apps/whos-on-location-tutorial)， [Coggle](https://docs.microsoft.com/azure/active-directory/saas-apps/coggle-tutorial) [Kemp LoadMaster](https://kemptechnologies.com/cloud-load-balancer/)， [BrowserStack 單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/browserstack-single-sign-on-tutorial) [GReminders](https://app.greminders.com/o365-oauth)
+
+您也可以從這裡找到所有應用程式的檔https://aka.ms/AppsTutorial
+
+如需在 Azure AD 應用程式庫中列出您的應用程式，請參閱這裡的詳細資料https://aka.ms/AzureADAppRequest
+
+---
+
+### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---july-2020"></a>Azure AD 應用程式資源庫中的新布建連接器-2020 年7月
+
+**類型：** 新功能  
+**服務類別：** 應用程式佈建  
+**產品功能：** 協力廠商整合
+
+您現在可以自動建立、更新和刪除新整合式應用程式[LinkedIn Learning](https://docs.microsoft.com/azure/active-directory/saas-apps/linkedin-learning-provisioning-tutorial)的使用者帳戶。
+
+如需如何使用自動化使用者帳戶佈建來加強組織安全性的詳細資訊，請參閱[使用 Azure AD 自動將使用者佈建至 SaaS 應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+
+---
+
+### <a name="view-role-assignments-across-all-scopes-and-ability-to-download-them-to-a-csv-file"></a>查看所有範圍的角色指派，以及將它們下載到 csv 檔案的能力
+
+**類型：** 已變更的功能  
+**服務類別：** RBAC  
+**產品功能：** 存取控制
+ 
+您現在可以在 Azure AD 入口網站的 [角色和系統管理員] 索引標籤中，查看角色所有範圍的角色指派。 您也可以將每個角色的角色指派下載至 CSV 檔案。 如需有關如何查看和新增角色指派的指引，請參閱[在 Azure Active Directory 中查看和指派系統管理員角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-manage-roles-portal)。
+ 
+---
+
+### <a name="azure-multi-factor-authentication-software-development-azure-mfa-sdk-deprecation"></a>Azure 多因素驗證軟體發展（Azure MFA SDK）已淘汰
+
+**類型：** 已被取代  
+**服務類別：** MFA  
+**產品功能：** 身分識別安全性 & 保護
+ 
+Azure 多因素驗證軟體發展（Azure MFA SDK）已于2018年11月14日到期，第一次於2017年11月宣佈。 Microsoft 將于2020年9月30日起關閉 SDK 服務。 對 SDK 進行的任何呼叫都會失敗。
+
+如果您的組織使用 Azure MFA SDK，您必須在2020年9月30日前遷移：
+- 適用于 MIM 的 Azure MFA SDK：如果您搭配使用 SDK 與 MIM，您應該遷移至 Azure MFA Server，並遵循這些[指示](https://docs.microsoft.com/microsoft-identity-manager/working-with-mfaserver-for-mim)來啟動特殊許可權存取管理（PAM）。   
+- 適用于自訂應用程式的 Azure MFA SDK：考慮將您的應用程式整合到 Azure AD，並使用條件式存取來強制執行 MFA。 若要開始使用，請參閱此[頁面](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-an-application-integration)。 
 
 ---
 
@@ -1116,85 +1286,4 @@ Azure AD 布建服務提供一組豐富的設定功能。 客戶必須能夠儲�
 **產品功能：** 終端使用者體驗
  
 新的我的帳戶終端使用者體驗將會 `https://myaccount.microsoft.com` 在下個月更新其 URL。 在[我的帳戶入口網站](https://docs.microsoft.com/azure/active-directory/user-help/my-account-portal-overview)說明中，尋找體驗的詳細資訊，以及它提供給終端使用者的所有帳戶自助功能。
-
----
- 
-## <a name="january-2020"></a>2020 年 1 月
- 
-### <a name="the-new-my-apps-portal-is-now-generally-available"></a>新的我的應用程式入口網站現已正式推出
-
-**類型：** 方案變更  
-**服務類別：** 我的應用程式  
-**產品功能：** 終端使用者體驗
- 
-將您的組織升級至現已正式推出的新我的應用程式入口網站！ 在[我的應用程式入口網站上的建立集合中](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections)，尋找新入口網站和集合的詳細資訊。
-
----
- 
-### <a name="workspaces-in-azure-ad-have-been-renamed-to-collections"></a>Azure AD 中的工作區已重新命名為集合
-
-**類型：** 已變更的功能  
-**服務類別：** 我的應用程式   
-**產品功能：** 終端使用者體驗
- 
-工作區是系統管理員可以設定來組織其使用者應用程式的篩選器，現在稱為「集合」。 在[我的應用程式入口網站上的 [建立集合](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-collections)] 中，尋找如何設定它們的詳細資訊。
-
----
- 
-### <a name="azure-ad-b2c-phone-sign-up-and-sign-in-using-custom-policy-public-preview"></a>使用自訂原則 Azure AD B2C 手機註冊和登入（公開預覽）
-
-**類型：** 新功能  
-**服務類別：** B2C - 取用者身分識別管理  
-**產品功能：** B2B/B2C
- 
-有了電話號碼註冊和登入，開發人員和企業可以讓他們的客戶使用透過 SMS 傳送到使用者電話號碼的一次性密碼來註冊和登入。 這項功能也可讓客戶在無法存取其電話時變更其電話號碼。 藉由自訂原則的威力，電話註冊和登入可讓開發人員和企業透過頁面自訂來傳達其品牌。 瞭解如何[使用 Azure AD B2C 中的自訂原則來設定電話註冊和登入](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication)。
- 
----
- 
-### <a name="new-provisioning-connectors-in-the-azure-ad-application-gallery---january-2020"></a>Azure AD 應用程式資源庫中的新布建連接器-2020 年1月
-
-**類型：** 新功能  
-**服務類別：** 企業應用程式  
-**產品功能：** 協力廠商整合
- 
-您現在可以為這些新整合的應用程式，自動建立、更新和刪除使用者帳戶：
-
-- [Promapp]( https://docs.microsoft.com/azure/active-directory/saas-apps/promapp-provisioning-tutorial)
-- [Zscaler Private Access](https://docs.microsoft.com/azure/active-directory/saas-apps/zscaler-private-access-provisioning-tutorial)
-
-如需如何使用自動化使用者帳戶佈建來加強組織安全性的詳細資訊，請參閱[使用 Azure AD 自動將使用者佈建至 SaaS 應用程式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
-
----
- 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2020"></a>Azure AD App 資源庫中可用的新同盟應用程式-2020 年1月
-
-**類型：** 新功能  
-**服務類別：** 企業應用程式  
-**產品功能：** 協力廠商整合
- 
-在2020年1月，我們已將這些33新的應用程式與同盟支援新增至應用程式庫： 
-
-[JOSA](https://docs.microsoft.com/azure/active-directory/saas-apps/josa-tutorial)、 [Fastly Edge Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/fastly-edge-cloud-tutorial)、 [Terraform Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/terraform-enterprise-tutorial)、 [Spintr SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/spintr-sso-tutorial)、 [Abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik)、 [SkyKick](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access)、 [Upshotly](https://docs.microsoft.com/azure/active-directory/saas-apps/upshotly-tutorial)、 [LeaveBot](https://leavebot.io/#home)、 [DataCamp](https://docs.microsoft.com/azure/active-directory/saas-apps/datacamp-tutorial)、 [TripActions](https://docs.microsoft.com/azure/active-directory/saas-apps/tripactions-tutorial)、 [SmartWork、Dotcom](https://www.intumit.com/english/SmartWork.html) [-Monitor](https://docs.microsoft.com/azure/active-directory/saas-apps/dotcom-monitor-tutorial)、 [SSOGEN-Azure AD 適用于 Oracle 電子商務套件的 SSO 閘道-EBS、PeopleSoft 和 JDE](https://docs.microsoft.com/azure/active-directory/saas-apps/ssogen-tutorial)、 [Hosted MyCirqa SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/hosted-mycirqa-sso-tutorial)、 [Yuhu 內容管理平臺](https://docs.microsoft.com/azure/active-directory/saas-apps/yuhu-property-management-platform-tutorial)、 [LumApps](https://sites.lumapps.com/login)、 [Upwork Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/upwork-enterprise-tutorial)、 [Talentsoft](https://docs.microsoft.com/azure/active-directory/saas-apps/talentsoft-tutorial)、 [SmartDB for Microsoft 小組](http://teams.smartdb.jp/login/)、 [PressPage](https://docs.microsoft.com/azure/active-directory/saas-apps/presspage-tutorial)、 [ContractSafe Saml2 SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/contractsafe-saml2-sso-tutorial)、 [Maxient 籌辦經理軟體](https://docs.microsoft.com/azure/active-directory/saas-apps/maxient-conduct-manager-software-tutorial)、 [Helpshift](https://docs.microsoft.com/azure/active-directory/saas-apps/helpshift-tutorial)、PortalTalk [365](https://www.portaltalk.com/)、 [CoreView](https://portal.coreview.com/)、[隱藏 Cloud Office365 Connector](https://laxmi.squelch.io/login)、 [PingFlow Authentication](https://app-staging.pingview.io/)、PrinterLogic [SaaS](https://docs.microsoft.com/azure/active-directory/saas-apps/printerlogic-saas-tutorial)、Taskize [Connect](https://docs.microsoft.com/azure/active-directory/saas-apps/taskize-connect-tutorial)、 [Sandwai](https://app.sandwai.com/)、EZRentOut [、AssetSonar、Akari](https://docs.microsoft.com/azure/active-directory/saas-apps/assetsonar-tutorial) [Virtual Assistant](https://akari.io/akari-virtual-assistant/) [EZRentOut](https://docs.microsoft.com/azure/active-directory/saas-apps/ezrentout-tutorial)
-
-如需應用程式的詳細資訊，請參閱[與 Azure Active Directory 整合的 SaaS 應用程式](https://aka.ms/appstutorial)。 如需在 Azure AD 應用程式庫中列出應用程式的詳細資訊，請參閱[在 Azure Active Directory 應用程式庫中列出您的應用程式](https://aka.ms/azureadapprequest)。
-
----
-
-### <a name="two-new-identity-protection-detections"></a>兩個新的身分識別保護偵測
-
-**類型：** 新功能  
-**服務類別：** 身分識別保護  
-**產品功能：** 身分識別安全性 & 保護
- 
-我們已將兩個新的登入連結偵測類型新增至 Identity Protection：可疑的收件匣操作規則和不可能的移動。 Microsoft Cloud App Security （MCAS）會探索這些離線偵測，並會影響身分識別保護中的使用者和登入風險。 如需這些偵測的詳細資訊，請參閱我們的登[入風險類型](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk)。
- 
----
- 
-### <a name="breaking-change-uri-fragments-will-not-be-carried-through-the-login-redirect"></a>中斷性變更：不會透過登入重新導向來執行 URI 片段
-
-**類型：** 已變更的功能  
-**服務類別：** 驗證 (登入)  
-**產品功能：** 使用者驗證
- 
-從2020年2月8日開始，當要求傳送至 login.microsoftonline.com 以登入使用者時，服務會將空的片段附加至要求。  這可確保瀏覽器抹除要求中任何現有的片段，藉此防止重新導向攻擊的類別。 應用程式不應該依賴此行為。 如需詳細資訊，請參閱 Microsoft 身分識別平臺檔中的[重大變更](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#february-2020)。
 

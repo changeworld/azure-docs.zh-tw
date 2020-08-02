@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 60f2a1992750950b50995fcf36513e44e377004d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fb56c4da77ddeb87ebc3724a3b138994e4da98e7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386600"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489685"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的 SQL 隨選（預覽）在 Parquet 和 JSON 檔案中查詢巢狀型別
 
@@ -117,7 +117,7 @@ FROM
 
 結果如下表所示：
 
-|title  | first_author_name | body_text | complex_column |
+|標題  | first_author_name | body_text | complex_column |
 | --- | --- | --- | --- |
 | 補充資訊的 epidemiolo .。。 | Julien   | -圖 S1： Phylogeny .。。 | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
@@ -203,7 +203,7 @@ FROM
 
 結構會當做資料 `MapOfPersons` `VARCHAR` 行傳回，並格式化為 JSON 字串。
 
-## <a name="projecting-values-from-repeated-columns"></a>投射重復資料行的值
+## <a name="project-values-from-repeated-columns"></a>重復資料行中的專案值
 
 如果您在某些資料行中有純量值的陣列（例如 `[1,2,3]` ），您可以使用下列腳本輕鬆地展開它們，並將其與主要資料列聯結：
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 06/22/2020
-ms.openlocfilehash: 3d8692d3180e4164bff544f71a1216097a390773
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 37647a9591c0f686e4fc3f1fd858baa46e01f7ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103648"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498067"
 ---
 # <a name="determine-your-publishing-option"></a>決定您的發佈選項
 
@@ -47,18 +47,7 @@ ms.locfileid: "86103648"
 
 &#42;&#42;Microsoft 365 供應項目可免費安裝，並可透過 SaaS 供應項目作為授權服務來販售。 如需詳細資訊，請參閱[透過 Microsoft 商業市集販售 Office 365 增益集](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
-## <a name="selecting-a-storefront"></a>選取店面
-
-選取發佈選項之前，請務必了解商業市集解決方案、應用程式和服務的店面資格需求。 每個店面分別可滿足不同的客戶需求，並以特定對象為目標。 您的供應項目類型、交易功能以及類別或產業將決定供應項目的發佈位置。
-
-**Microsoft AppSource** 應用程式是企業營運解決方案，可以內建於 Azure 或針對下列項目建置：Dynamics 365、Office 365、Power BI 或 Power Apps。 AppSource 諮詢服務是專業服務供應項目，協助客戶開始使用或加速使用 Dynamics 365 和 Power BI。
-
-**Azure Marketplace** 應用程式是 Azure 內建或針對 Azure 建置的技術「建置組塊」，適用於 IT 或開發人員受眾。 Azure Marketplace 諮詢服務是專業服務供應項目，協助客戶開始使用或加速使用 Azure。
-
->[!Note]
->「交叉清單」（僅適用于 SaaS 應用程式）：如果您的 SaaS 供應專案適用于技術物件（Azure Marketplace）和企業物件（AppSource），您可以選取適用于任一店面的類別及/或子類別。 請注意，「交叉清單」您的供應專案應該以擴充到這兩個目標物件的價值主張為基礎。 按一下[這裡](./gtm-offer-listing-best-practices.md#categories)可查看適用于每個店面的類別。
-
-## <a name="choose-a-publishing-option"></a>選擇發佈選項
+## <a name="choose-a-call-to-action"></a>選擇動作的呼叫
 
 可用的發佈選項會提供差異化客戶參與，同時給予您潛在客戶共用和[商業市集權益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)的存取權。 請注意與發佈選項對應的呼籲行動：
 
@@ -71,6 +60,43 @@ ms.locfileid: "86103648"
 
 > [!Note]
 > 當使用交易發佈選項時，請務必了解定價、計費、發票處理和付款考量，然後再選取供應項目類型與建立供應項目。 若要深入了解，請參閱[商業市集交易功能](./marketplace-commercial-transaction-capabilities-and-considerations.md)一文。
+
+## <a name="selecting-a-storefront"></a>選取店面
+
+每個店面分別可滿足不同的客戶需求，並以特定對象為目標。 您的供應專案類型、交易功能和類別將會決定您的供應專案發佈位置。 類別和子類別會根據目標物件對應至每個店面：
+
+**Microsoft AppSource**以商務使用者為目標，尋找企業營運或產業解決方案，以及 Dynamics 365、Microsoft 365 和 Power 平臺的諮詢服務。
+
+**Azure Marketplace**的目標是 IT 專業人員和開發人員，尋找在 azure 上建立的解決方案，以及可加速使用 azure 的諮詢服務。
+
+選取最符合目標物件的類別和子類別。 例如，web 應用程式防火牆應該發佈到安全性類別下的 Azure Marketplace，因為目標物件是 IT 專業人員。 合約管理應用程式應改為發行至 [Sales] 類別之下的 [AppSource]，因為目標物件是商務使用者。 選取不正確的類別或子類別可能會導致您的供應專案發佈至錯誤的店面。
+
+### <a name="publishing-to-both-storefronts-saas-offers-only"></a>發行至兩個店面（僅限 SaaS 提供）
+
+SaaS 供應專案可以發佈至 Azure Marketplace 或 AppSource。 如果您的 SaaS 供應專案適用*于技術*物件（Azure Marketplace）和企業物件（AppSource），請選取適用于每個店面的類別及/或子類別。 發佈給這兩個店面的供應專案都應該有一個價值主張，可延伸至 IT 專業人員*和*商務使用者。
+
+> [!IMPORTANT]
+> 具有計量付費的 SaaS 供應專案可透過 Azure Marketplace 和 Azure 入口網站取得。 只有私人方案的 SaaS 供應專案可透過 Azure 入口網站取得。
+
+| 計量付費計費 | 公用方案 | 私用計畫 | 適用于： |
+|---|---|---|---|
+| 是             | 是         | 否           | Azure Marketplace 和 Azure 入口網站 |
+| 是             | 是         | 是          | Azure Marketplace 和 Azure 入口網站 * |
+| 是             | 否          | 是          | 僅 Azure 入口網站 |
+| 否              | 否          | 是          | 僅 Azure 入口網站 |
+
+&#42; 供應專案的私用計畫將只能透過 Azure 入口網站
+
+例如，只有計量付費的供應專案和私人方案（不公開方案），才會由 Azure 入口網站的客戶購買。 深入瞭解[Microsoft 商業 marketplace 中的私人](private-offers.md)供應專案。
+
+### <a name="categories"></a>類別
+
+類別和子類別會根據目標物件對應至每個店面。 選取最符合您供應專案和預定物件的類別和子類別。 您可以選取：
+
+- 至少一個和最多兩個類別。 您可以選擇 [主要] 和 [次要] 類別。
+- 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您未選取任何子類別，則您的供應專案仍然可以在選取的類別下找到。
+
+[!INCLUDE [categories and subcategories](./includes/categories.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

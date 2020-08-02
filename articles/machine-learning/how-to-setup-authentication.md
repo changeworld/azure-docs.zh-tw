@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 867babcf7160ce6e589197be0a3186e5a2156238
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4061d7a3d21b8c2db2bf161c422994cb2742b0b4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423570"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489872"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "87423570"
 
 ## <a name="service-principal-authentication"></a>服務主體驗證
 
-若要使用服務主體（SP）驗證，您必須先建立 SP 並授與它對您工作區的存取權。 如先前所述，Azure 角色型存取控制（RBAC）是用來控制存取權，因此您也必須決定要授與 SP 的存取權。
+若要使用服務主體（SP）驗證，您必須先建立 SP 並授與它對您工作區的存取權。 如先前所述，Azure 角色型存取控制（Azure RBAC）是用來控制存取權，因此您也必須決定要授與 SP 的存取權。
 
 > [!IMPORTANT]
 > 使用服務主體時，請授與它用於__的工作所需的最小存取權__。 例如，如果用來讀取 web 部署的存取權杖，您就不會授與服務主體擁有者或參與者存取權。

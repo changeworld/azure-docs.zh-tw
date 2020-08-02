@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 347232d452b5d309da7cdb7c8fe34f0e41abde00
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 86223c35118c9c54be49fa830a264a0059ef3937
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025333"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494429"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶
 
@@ -91,10 +91,10 @@ Azure 訂用帳戶與 Azure Active Directory （Azure AD）之間具有信任關
 
 - 如果您已使用此訂用帳戶註冊 Azure Stack，則必須重新註冊。 如需詳細資訊，請參閱[向 Azure 註冊 Azure Stack](/azure-stack/operator/azure-stack-registration)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 - 若要建立新的 Azure AD 租使用者，請參閱[快速入門：在 Azure Active Directory 中建立新的租](active-directory-access-create-new-tenant.md)使用者。
 
-- 若要深入瞭解 Microsoft Azure 如何控制資源存取，請參閱[傳統訂用帳戶管理員角色、AZURE RBAC 角色和 Azure AD 系統管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
+- 若要深入瞭解 Microsoft Azure 如何控制資源存取，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 系統管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 - 若要深入瞭解如何在 Azure AD 中指派角色，請參閱[將系統管理員和非系統管理員角色指派給具有 Azure Active Directory 的使用者](active-directory-users-assign-role-azure-portal.md)。

@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, seodec18, tracking-python
-ms.openlocfilehash: ca7feacf5d631b4e85a0b3f4e7a039bbb79abe45
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f30f2b45944281ed74da2026eb14e8938260b259
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460196"
+ms.locfileid: "87496095"
 ---
 # <a name="connect-to-azure-storage-services"></a>連線至 Azure 儲存體服務
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -176,7 +176,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 針對 Azure Data Lake Storage Generation 2 (ADLS Gen 2) 資料存放區，請使用 [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) 透過[服務主體權限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)註冊連線至 Azure DataLake Gen 2 儲存體的認證資料存放區。 
 
-若要使用您的服務主體，您必須[註冊應用程式](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)，並且為服務主體授與**儲存體 Blob 資料讀取器**存取權。 深入了解 [ADLS Gen 2 的存取控制設定](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
+若要利用您的服務主體，您必須[註冊應用程式](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)，並將**儲存體 Blob 資料讀取器**存取權授與服務主體。 深入了解 [ADLS Gen 2 的存取控制設定](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
 
 下列程式碼會建立 `adlsgen2_datastore_name` 資料存放區，並將其註冊至 `ws` 工作區。 此資料存放區會使用提供的服務主體認證，存取 `account_name` 儲存體帳戶中的檔案系統 `test`。
 
@@ -202,7 +202,9 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 <a name="studio"></a>
 
+
 ## <a name="create-datastores-in-the-studio"></a>在 studio 中建立資料存放區 
+
 
 使用 Azure Machine Learning studio 的幾個步驟，建立新的資料存放區。
 
@@ -212,17 +214,16 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 1. 登入 [Azure Machine Learning Studio](https://ml.azure.com/)。
 1. 在左窗格中，選取 [管理] 底下的 [資料存放區]。
 1. 選取 [+ 新增資料存放區]。
-1. 完成新資料存放區的表單。 此表單會根據您選取的 Azure 儲存體類型和驗證類型，以智慧方式自行更新。 請參閱[儲存體存取和許可權一節](#access-validation)，以瞭解要在何處尋找您填入此表單所需的驗證認證。
+1. 完成新資料存放區的表單。 此表單會根據您選取的 Azure 儲存體類型和驗證類型，以智慧方式自行更新。 請參閱[儲存體存取和許可權一節](#access-validation)，以瞭解在何處尋找您需要的驗證認證才能填入此表單。
 
 下列範例示範當您建立**Azure blob 資料**存放區時，表單看起來的樣子： 
     
 ![新資料存放區的表單](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
-
 ## <a name="use-data-in-your-datastores"></a>在您的資料存放區中使用資料
 
-建立資料存放區之後，請[建立 Azure Machine Learning 資料集](how-to-create-register-datasets.md)來與您的資料互動。 Dataset 會將您的資料封裝到延遲評估的可取用物件中，以進行機器學習工作，例如訓練。 它們也能讓您從 Azure 儲存體服務（例如 Azure Blob 儲存體和 ADLS Gen 2）[下載或掛接](how-to-train-with-datasets.md#mount-vs-download)任何格式的檔案。 您也可以使用它們來將表格式資料載入至 pandas 或 Spark 資料框架。
+建立資料存放區之後，請[建立 Azure Machine Learning 資料集](how-to-create-register-datasets.md)來與您的資料互動。 Dataset 會將您的資料封裝到延遲評估的可取用物件中，以進行機器學習工作（例如訓練）。 它們也能讓您從 Azure 儲存體服務（例如 Azure Blob 儲存體和 ADLS Gen 2）[下載或掛接](how-to-train-with-datasets.md#mount-vs-download)任何格式的檔案。 您也可以使用它們來將表格式資料載入至 pandas 或 Spark 資料框架。
 
 <a name="get"></a>
 

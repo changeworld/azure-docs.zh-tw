@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c31053f62f768cc534e07a8ac8d692176cf52b1e
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 8acdf714f459ae604ccd7788b021aee3ee037935
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757611"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482578"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>概述 Azure Active Directory B2C 中的權杖
 
@@ -97,7 +97,7 @@ Azure AD B2C 支援 [OAuth 2.0 和 OpenID Connect 通訊協定](protocols-overvi
 
 ## <a name="pass-through"></a>傳遞
 
-使用者旅程啟動時，Azure AD B2C 會收到識別提供者所提供的存取權杖。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您可[在使用者流程中啟用宣告](idp-pass-through-user-flow.md)或[在自訂原則中定義宣告](idp-pass-through-custom.md)，以將權杖傳至您在 Azure AD B2C 中註冊的應用程式。 您的應用程式必須使用 [v2 使用者流程](user-flow-versions.md)，才能使用傳遞權杖作為宣告的機制。
+使用者旅程啟動時，Azure AD B2C 會收到識別提供者所提供的存取權杖。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您可[在使用者流程中啟用宣告](idp-pass-through-user-flow.md)或[在自訂原則中定義宣告](idp-pass-through-custom.md)，以將權杖傳至您在 Azure AD B2C 中註冊的應用程式。 您的應用程式必須使用[建議的使用者流程](user-flow-versions.md)，才能利用傳遞權杖做為宣告。
 
 Azure AD B2C 目前僅支援傳遞 OAuth 2.0 識別提供者的存取權杖，其中包括 Facebook 和 Google。 對於所有其他識別提供者，宣告會傳回空白。
 

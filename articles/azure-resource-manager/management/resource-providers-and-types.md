@@ -3,12 +3,13 @@ title: 資源提供者和資源類型
 description: 說明支援資源管理員、其結構描述及可用 API 版本的資源提供者，以及可裝載資源的區域。
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.openlocfilehash: 82b8251006a1a2d4edd198eca843489d3720f8d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 581b653c6d4769f7777b0ca56f136d25443c1ae4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702766"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500005"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 資源提供者和類型
 
@@ -34,7 +35,7 @@ ms.locfileid: "84702766"
 若要查看所有資源提供者，以及您訂用帳戶的登錄狀態：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在 Azure 入口網站功能表上，選取 [所有服務]****。
+2. 在 Azure 入口網站功能表上，選取 [所有服務]。
 
     ![選取 [訂用帳戶]](./media/resource-providers-and-types/select-all-services.png)
 
@@ -51,7 +52,7 @@ ms.locfileid: "84702766"
 若要查看特定資源提供者的資訊：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在 Azure 入口網站功能表上，選取 [所有服務]****。
+2. 在 Azure 入口網站功能表上，選取 [所有服務]。
 3. 在 [所有服務]**** 方塊中，輸入 [資源總管]****，然後選取 [資源總管]****。
 
     ![選取所有服務](./media/resource-providers-and-types/select-resource-explorer.png)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7d583172fe4021a2709a4d58b5488e9bc3898919
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281543"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497591"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
 
@@ -47,8 +47,22 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 您可以使用快照集原則，將磁片區快照集排程為自動執行。 您也可以視需要修改快照集原則，或刪除不再需要的快照集原則。  
 
-> [!IMPORTANT] 
-> 使用快照集原則功能需要允許清單。 使用您的訂閱識別碼傳送電子郵件 anffeedback@microsoft.com，以要求此功能。
+### <a name="register-the-feature"></a>註冊功能
+
+1. **快照集原則**功能目前為預覽狀態。 如果這是您第一次使用此功能，請在使用此功能之前先進行註冊： 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
+
+2. 檢查功能註冊的狀態： 
+
+    > [!NOTE]
+    > 在變更為之前， **RegistrationState**可能處於 `Registering` 數分鐘的狀態 `Registered` 。 等候狀態為 [**已註冊**]，再繼續進行。
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
 
 ### <a name="create-a-snapshot-policy"></a>建立快照集原則 
 
@@ -80,7 +94,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![每月快照集原則](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  按一下 **[儲存]** 。  
+4.  按一下 [儲存]。  
 
 如果您需要建立其他快照集原則，請重複步驟3。
 您所建立的原則會顯示在 [快照集原則] 頁面中。

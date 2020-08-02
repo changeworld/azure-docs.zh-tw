@@ -6,12 +6,13 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
-ms.openlocfilehash: dcc8a99480400786a48ff952eb378a57c595464f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 097e07f3f39fc647d311af5e4eface4a7c6b3675
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388181"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498475"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>使用 Azure 入口網站適用於 MySQL 的 Azure 資料庫的資料加密
 
@@ -49,7 +50,7 @@ ms.locfileid: "87388181"
 
    ![存取原則總覽](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. 選取 [儲存]。
+3. 選取 [儲存]  。
 
 ## <a name="set-data-encryption-for-azure-database-for-mysql"></a>設定適用於 MySQL 的 Azure 資料庫的資料加密
 
@@ -61,7 +62,7 @@ ms.locfileid: "87388181"
 
    ![適用於 MySQL 的 Azure 資料庫的螢幕擷取畫面，其中已反白顯示資料加密選項](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. 選取 [儲存]。
+3. 選取 [儲存]  。
 
 4. 若要確保所有檔案（包括暫存檔案）都已完全加密，請重新開機伺服器。
 

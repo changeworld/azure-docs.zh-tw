@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 08a65ff8d276cd27c9f8fa07393600bc24e7b17f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367515"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500295"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 應用程式組態最佳做法
 
@@ -86,6 +86,10 @@ configBuilder.AddAzureAppConfiguration(options => {
 ## <a name="importing-configuration-data-into-app-configuration"></a>將設定資料匯入應用程式組態
 
 應用程式組態提供選項，可讓您使用 Azure 入口網站或 CLI 從目前的設定檔大容量[導入](https://aka.ms/azconfig-importexport1)您的設定。 您也可以使用相同的選項來匯出應用程式組態的值，例如在相關的存放區之間。 如果您想要設定與 GitHub 存放庫的持續同步，可以使用我們的[Github 動作](https://aka.ms/azconfig-gha2)，讓您可以繼續使用現有的原始檔控制做法，同時取得應用程式組態的優點。
+
+## <a name="multi-region-deployment-in-app-configuration"></a>應用程式組態中的多重區域部署
+
+應用程式組態是區域性服務。 針對每個區域具有不同設定的應用程式，將這些設定儲存在一個實例中，可能會產生單一失敗點。 在多個區域中每個區域部署一個應用程式組態實例，可能是較好的選擇。 它有助於區域性損毀修復、效能和安全性 siloing。 依區域設定也會改善延遲，並使用分隔的節流配額，因為節流是針對每個實例。 若要套用嚴重損壞修復風險降低，您可以使用[多個](./concept-disaster-recovery.md)設定存放區。 
 
 ## <a name="next-steps"></a>後續步驟
 

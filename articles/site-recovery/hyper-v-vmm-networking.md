@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021659"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495938"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>設定在容錯移轉後用來連線至次要內部部署網站的 IP 定址
 
@@ -63,11 +63,11 @@ ms.locfileid: "87021659"
 
 **容錯移轉前**
 
-![容錯移轉前](./media/hyper-v-vmm-networking/network-design2.png)
+![此圖顯示容錯移轉之前的子網。](./media/hyper-v-vmm-networking/network-design2.png)
 
 **容錯移轉後**
 
-![容錯移轉後](./media/hyper-v-vmm-networking/network-design3.png)
+![在容錯移轉之後顯示子網的圖表。](./media/hyper-v-vmm-networking/network-design3.png)
 
 在容錯移轉後，Site Recovery 會為 VM 上的每個網路介面配置一個 IP 位址。 系統會針對每個 VM 執行個體，從相關網路中的靜態 IP 位址集區配置 IP 位址。
 
@@ -118,14 +118,14 @@ $ip.address
 
 **容錯移轉前**
 
-![不同的 IP 位址 - 容錯移轉之前](./media/hyper-v-vmm-networking/network-design10.png)
+![此圖顯示容錯移轉之前的不同 IP 位址。](./media/hyper-v-vmm-networking/network-design10.png)
 
 **容錯移轉後**
 
-![不同的 IP 位址 - 容錯移轉之後](./media/hyper-v-vmm-networking/network-design11.png)
+![在容錯移轉之後顯示不同 IP 位址的圖表。](./media/hyper-v-vmm-networking/network-design11.png)
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [執行容錯移轉](hyper-v-vmm-failover-failback.md)
 

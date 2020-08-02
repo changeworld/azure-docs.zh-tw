@@ -6,12 +6,13 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 8/7/2019
-ms.openlocfilehash: 2f04bbf052716b32c012222d4c5dbdcd8f4571bd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4d4d9c6ac3eb4e9b0642f1ecb714b19a5029a314
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119696"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87493766"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>自動成長適用於 PostgreSQL 的 Azure 資料庫儲存體-使用 Azure CLI 的單一伺服器
 本文說明如何在不影響工作負載的情況下，將適用於 PostgreSQL 的 Azure 資料庫伺服器存放裝置設定為可成長。

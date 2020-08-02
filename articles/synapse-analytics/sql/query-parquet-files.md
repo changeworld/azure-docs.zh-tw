@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386617"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496231"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 隨選 (預覽) 來查詢 Parquet 檔案
 
@@ -24,7 +24,7 @@ ms.locfileid: "87386617"
 
 `OPENROWSET`函式可讓您藉由提供檔案的 URL 來讀取 parquet 檔案的內容。
 
-### <a name="reading-parquet-file"></a>正在讀取 parquet 檔
+### <a name="read-parquet-file"></a>讀取 parquet 檔案
 
 查看檔案內容最簡單的方式， `PARQUET` 就是提供要運作的檔案 URL `OPENROWSET` ，並指定 parquet `FORMAT` 。 如果檔案可公開使用，或者您的 Azure AD 身分識別可以存取此檔案，則您應該能夠使用查詢來查看檔案的內容，如下列範例所示：
 
@@ -37,7 +37,7 @@ from openrowset(
 
 請確定您已存取此檔案。 如果您的檔案受到 SAS 金鑰或自訂 Azure 身分識別的保護，您就必須設定[sql 登入的伺服器層級認證](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
-### <a name="using-data-source"></a>使用資料來源
+### <a name="data-source-usage"></a>資料來源使用方式
 
 上一個範例使用檔案的完整路徑。 或者，您可以建立外部資料源，其位置會指向儲存體的根資料夾，並使用該資料來源和函式中檔案的相對路徑 `OPENROWSET` ：
 

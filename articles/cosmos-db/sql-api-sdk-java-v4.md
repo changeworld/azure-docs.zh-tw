@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 45da3ec95167cbb4fa087435e0e88f85c0eb6463
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461046"
+ms.locfileid: "87500652"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API：版本資訊與資源
 > [!div class="op_single_selector"]
@@ -63,7 +63,30 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 
 ## <a name="release-history"></a>版本歷程記錄
 
+### <a name="440-beta1-unreleased"></a>4.4.0-Beta 1 （建置）
+
+### <a name="430-2020-07-29"></a>4.3.0 （2020-07-29）
+#### <a name="new-features"></a>新功能
+* 已將 reactor 核心程式庫版本更新為 `3.3.8.RELEASE` 。 
+* 已將 reactor-netty 程式庫版本更新為 `0.9.10.RELEASE` 。 
+* 已將 netty 程式庫版本更新為 `4.1.51.Final` 。 
+* 已為新增新的多載 Api `upsertItem` `partitionKey` 。 
+* 已新增開啟的遙測追蹤支援。 
+#### <a name="key-bug-fixes"></a>金鑰錯誤修正
+* 已修正在閘道模式中取消要求時，會擲回 SSLException 的問題。
+* 已修正預存程式執行的資源節流重試原則。
+* 已修正 SDK 在記錄層級的 DEBUG 模式中停止回應的問題。 
+* 已修正直接模式延遲的定期尖峰。 
+* 已修正高用戶端初始化時間問題。 
+* 已修正自訂具有直接模式和閘道模式的用戶端時的 HTTP proxy 錯誤。 
+* 已修正使用者中的潛在 NPE 傳遞 null 選項。 
+* 已 `requestLatency` 在診斷字串中將 timeUnit 新增至。
+* 已從診斷字串中移除重複的 uri 字串。 
+* 已修正適用于點作業的適當 JSON 格式的診斷字串。
+* 已修正運算子的問題， `.single()` 導致 reactor 鏈在找不到例外狀況時出現。 
+
 ### <a name="420-2020-07-14"></a>4.2.0 （2020-07-14）
+#### <a name="new-features"></a>新功能
 * 已將腳本記錄啟用的 API 新增至 `CosmosStoredProcedureRequestOptions` 。
 * 已 `DirectConnectionConfig` 將預設值更新 `idleEndpointTimeout` 為1h，並預設 `connectTimeout` 為5秒。
 #### <a name="key-bug-fixes"></a>金鑰錯誤修正

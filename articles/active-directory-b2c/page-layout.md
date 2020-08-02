@@ -8,21 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/26/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4548b50e4168f260cb401c40dd4e61192cea1015
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78183970"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489532"
 ---
 # <a name="page-layout-versions"></a>頁面配置版本
 
 頁面配置套件會定期更新，以在其頁面元素中包含修正和改善。 下列變更記錄檔指定每個版本中引進的變更。
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+## <a name="210"></a>2.1.0
+
+- 自我判斷頁（ `selfasserted` ）
+  - 當地語系化和協助工具修正。
+- 統一的 SSP 頁面（ `unifiedssp` ）
+  - 已新增多個註冊連結的支援。
+  - 已根據原則中定義的述詞規則，新增使用者輸入驗證的支援。
 
 ## <a name="200"></a>2.0.0
 
@@ -40,6 +48,8 @@ ms.locfileid: "78183970"
   - 支援 Chrome 轉譯
 - 統一和自我判斷的頁面
   - [使用者名稱/電子郵件] 和 [密碼] 欄位現在會使用 `form` HTML 元素，讓 Edge 和 Internet Explorer （IE）適當地儲存此資訊。
+- 自我判斷頁
+  - 已新增可設定的使用者輸入驗證延遲，以提升使用者體驗。
 
 ## <a name="110"></a>1.1.0
 
