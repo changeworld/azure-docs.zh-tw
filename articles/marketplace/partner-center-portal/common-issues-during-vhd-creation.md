@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: d717d93b616e8acd296c89322b7277cda5ade3a3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323990"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504308"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD 建立過程中的常見問題
 
@@ -34,8 +34,8 @@ Azure Marketplace 目前不支援從受控儲存體或 Azure 進階儲存體的�
 
 這些文章說明如何針對以 Windows 和 Linux 為基礎的虛擬機器，執行 RDS 重設：
 
-* [如何在 Windows VM 中重設遠端桌面服務或其登入密碼](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [如何使用 VMAccess 擴充功能重設 Linux VM 密碼或 SSH 金鑰、修正 SSH 設定，和檢查磁碟一致性](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [如何在 Windows VM 中重設遠端桌面服務或其登入密碼](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [如何使用 VMAccess 擴充功能重設 Linux VM 密碼或 SSH 金鑰、修正 SSH 設定，和檢查磁碟一致性](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>如何產生新的 SSH 憑證？
 
@@ -59,7 +59,7 @@ Azure Marketplace 目前不支援從受控儲存體或 Azure 進階儲存體的�
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>在 VM 中，如何在啟動工作中管理自訂指令碼延伸模組？
 
-如需如何透過 Azure PowerShell 模組、Azure Resource Manager 範本以及 Windows 系統上的疑難排解步驟使用自訂指令碼延伸模組的詳細資料，請參閱[自訂適用於 Windows 的指令碼延伸模組](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)。
+如需如何透過 Azure PowerShell 模組、Azure Resource Manager 範本以及 Windows 系統上的疑難排解步驟使用自訂指令碼延伸模組的詳細資料，請參閱[自訂適用於 Windows 的指令碼延伸模組](/azure/virtual-machines/extensions/custom-script-windows)。
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>Azure Marketplace 是否支援 32 位元應用程式或服務？
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075634"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504410"
 ---
-# <a name="windows-virtual-desktop-faq"></a>Windows 虛擬桌面常見問題
+# <a name="windows-virtual-desktop-faq"></a>Windows 虛擬桌面常見問題集
 
 本文提供常見問題的解答，並說明 Windows 虛擬桌面的最佳做法。
 
@@ -25,7 +25,7 @@ ms.locfileid: "87075634"
 
 您必須獲指派應用程式群組的「使用者存取系統管理員」角色，才能將應用程式群組發佈給使用者或使用者群組。
 
-若要限制系統管理員只能管理使用者會話，例如傳送訊息給使用者、登出使用者等等，您可以建立自訂角色。 例如: 
+若要限制系統管理員只能管理使用者會話，例如傳送訊息給使用者、登出使用者等等，您可以建立自訂角色。 例如： 
 
 ```powershell
 "actions": [
@@ -46,7 +46,7 @@ ms.locfileid: "87075634"
 
 ## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Windows 虛擬桌面支援分割 Azure Active Directory 模型嗎？
 
-將使用者指派給應用程式群組時，服務會執行簡單的 Azure 角色型存取控制（RBAC）角色指派。 因此，使用者的 Azure Active Directory （AD）和應用程式群組的 Azure AD 必須位於相同的位置。 所有服務物件（例如主機集區、應用程式群組和工作區）也必須與使用者位於相同的 Azure AD。
+將使用者指派給應用程式群組時，服務會執行簡單的 Azure 角色指派。 因此，使用者的 Azure Active Directory （AD）和應用程式群組的 Azure AD 必須位於相同的位置。 所有服務物件（例如主機集區、應用程式群組和工作區）也必須與使用者位於相同的 Azure AD。
 
 您可以在不同的 Azure AD 中建立虛擬機器（Vm），只要您在相同的虛擬網路（VNET）中，將 Active Directory 與使用者的 Azure AD 同步。
 
@@ -62,7 +62,7 @@ Azure 燈塔不完全支援管理 Windows 虛擬桌面環境。 由於燈塔目�
 
 當您執行 PowerShell Cmdlet 時，您只會看到資源名稱和位置。
 
-例如:
+例如：
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg
@@ -74,7 +74,7 @@ westus   0224hp Microsoft.DesktopVirtualization/hostpools
 
 若要查看所有資源的屬性，請將 `format-list` 或新增 `fl` 至 Cmdlet 的結尾。
 
-例如:
+例如：
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
@@ -82,7 +82,7 @@ Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
 
 若要查看特定屬性，請在或後面加入特定的屬性名稱 `format-list` `fl` 。
 
-例如:
+例如：
 
 ```powershell
 Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty

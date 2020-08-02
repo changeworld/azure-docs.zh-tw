@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 36f3c4192f43e323df2aaf9397364dfd1b4da731
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371680"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501367"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>適用于 Azure 儲存體的 Azure 安全性基準
 
@@ -292,7 +292,7 @@ ms.locfileid: "87371680"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：變更預設密碼（若適用）
 
-**指導**方針： Azure 儲存體帳戶或 Azure Active Directory 具有預設或空白密碼的概念。 Azure 儲存體會實行支援 Azure 角色型存取控制（RBAC）以及共用金鑰和共用存取簽章（SAS）的存取控制模型。 共用金鑰和 SAS 驗證的特性是沒有與呼叫者相關聯的身分識別，因此無法執行以許可權為基礎的安全性主體授權。 
+**指導**方針： Azure 儲存體帳戶或 Azure Active Directory 具有預設或空白密碼的概念。 Azure 儲存體會實行支援 Azure 角色型存取控制（Azure RBAC）以及共用金鑰和共用存取簽章（SAS）的存取控制模型。 共用金鑰和 SAS 驗證的特性是沒有與呼叫者相關聯的身分識別，因此無法執行以許可權為基礎的安全性主體授權。 
 
 - [授權存取 Azure 儲存體中的資料](https://docs.microsoft.com/azure/storage/common/storage-auth)
 

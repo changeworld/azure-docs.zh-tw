@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.author: thweiss
-ms.openlocfilehash: bb1310d0f45f945fc150e0ae011ede0d102a5918
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: aa8fd911aaf5c61fc8c33ca469798291fca3d3d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259117"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502115"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>設定 Azure Cosmos 帳戶的 Azure Private Link
 
@@ -622,7 +623,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
   * 由私人端點對應之資料庫帳戶的流量會透過私用端點路由傳送，
   * 來自子網的其他資料庫帳戶的流量會透過服務端點來路由傳送。
 
-* 如果未設定任何公用流量或服務端點並建立私人端點，則只能透過私人端點來存取 Azure Cosmos 帳戶。 如果您未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私用端點之後，除非 [PublicNetworkAccess] 設為 [已停用]，否則會開啟整個網路的帳戶， (請參閱) 下一節。
+* 如果未設定任何公用流量或服務端點並建立私人端點，則只能透過私人端點來存取 Azure Cosmos 帳戶。 如果您未設定公用流量或服務端點，則在拒絕或刪除所有已核准的私用端點之後，除非 [PublicNetworkAccess] 設為 [已停用] （請參閱下一節），否則將會開啟整個網路的帳戶。
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>在帳戶建立期間封鎖公用網路存取
 
@@ -630,7 +631,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 ## <a name="port-range-when-using-direct-mode"></a>使用 direct 模式時的埠範圍
 
-當您透過直接模式連線搭配 Azure Cosmos 帳戶使用私人連結時，您必須確定已開啟完整範圍的 TCP 埠 (0-65535) 。
+當您透過直接模式連線搭配 Azure Cosmos 帳戶使用私人連結時，您必須確定已開啟完整範圍的 TCP 埠（0-65535）。
 
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>新增或移除區域時更新私人端點
 

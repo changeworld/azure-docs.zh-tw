@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 33c3cf4b9da33b15d7a7d1c14b0c3fb892b60121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317802"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503560"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商業市集交易功能
 
 ## <a name="transactions-by-publishing-option"></a>依發行選項的交易
 
-發行者或 Microsoft 負責管理商業市集中供應項目的軟體授權交易。 您為供應項目選擇的發行選項會決定誰負責管理交易。 如需每個發行選項的可用性和說明，請參閱[決定您的發行選項](./determine-your-listing-type.md#choose-a-publishing-option)。
+發行者或 Microsoft 負責管理商業市集中供應項目的軟體授權交易。 您為供應項目選擇的發行選項會決定誰負責管理交易。 如需每個發行選項的可用性和說明，請參閱[決定您的發行選項](./determine-your-listing-type.md#choose-a-call-to-action)。
 
 ### <a name="list-trial-and-byol-publishing-options"></a>清單、試用版和 BYOL 發行選項
 
@@ -136,7 +136,7 @@ BYOL 具有下列成本結構：
 |Microsoft 向您支付授權成本的 80% <br> \* Microsoft 針對任何符合資格的 SaaS 應用程式支付 90% 授權成本給您   |   每月 $80.00 <br> \* 每月 $90.00    |
 |Microsoft 保留授權成本的 20% <br> \* Microsoft 針對任何符合資格的 SaaS 應用程式保留 10% 授權成本。  |  每月 $20.00 <br> \* $10.00     |
 
-對於您在商業 marketplace 上發佈的特定供應專案，Microsoft 會將其 Marketplace 服務費用從20% （如 Microsoft 發行者合約中所述）降到10%。 若您的供應專案符合資格，Microsoft 必須將您的供應專案指定為 Azure IP 共同銷售 incetivized。 在每個日曆月份結束前，至少必須符合五（5）個工作天的資格，才能收到該月份的縮減 Marketplace 服務費用。 降低的 Marketplace 服務費用適用于 Azure IP 共同銷售受到激勵 SaaS、Vm、受管理的應用程式，以及透過商業 Marketplace 提供的任何其他合格 transactable IaaS 供應專案。
+對於您在商業 marketplace 上發佈的特定供應專案，Microsoft 會將其 Marketplace 服務費用從20% （如 Microsoft 發行者合約中所述）降到10%。 若您的供應專案符合資格，Microsoft 必須將您的供應專案指定為 Azure IP 共同銷售受到激勵。 在每個日曆月份結束前，至少必須符合五（5）個工作天的資格，才能收到該月份的縮減 Marketplace 服務費用。 降低的 Marketplace 服務費用適用于 Azure IP 共同銷售受到激勵 SaaS、Vm、受管理的應用程式，以及透過商業 Marketplace 提供的任何其他合格 transactable IaaS 供應專案。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客戶發票開立、付款和收帳
 
@@ -163,7 +163,7 @@ BYOL 具有下列成本結構：
 
 #### <a name="billing-questions-and-support"></a>計費問題和支援
 
-如需詳細資訊和法律原則，請參閱[發行者合約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (可在合作夥伴中心取得)。
+如需詳細資訊和法律原則，請參閱[發行者合約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (可在合作夥伴中心取得)。
 
 如需帳單問題的說明，請連絡[商業市集發行者支援](https://aka.ms/marketplacepublishersupport)。
 

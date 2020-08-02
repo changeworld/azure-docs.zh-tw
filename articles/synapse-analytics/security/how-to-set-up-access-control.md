@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e66af8e55f7b60347d9577c64b7183c6ef8b44f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b1fe78ac00b57d7627a64970e84ae8b717ae5c3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089306"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501911"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>保護您的 Synapse 工作區 (預覽)
 
@@ -82,7 +82,7 @@ ms.locfileid: "87089306"
   - 將 **WS1\_SparkAdmins** 指派給 Synapse Spark 管理員
   - 將 **WS1\_SQLAdmins** 指派給 Synapse SQL 管理員
 
-## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>步驟4：設定 Synapse 工作區所使用的 Data Lake Storage Gen2
+## <a name="step-4-configure-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>步驟4：設定 Synapse 工作區所使用的 Data Lake Storage Gen2
 
 Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統工作。
 
@@ -100,7 +100,7 @@ Synapse 工作區需要 STG1 和 CNT1 的存取權，才能執行管線和系統
 - 在 [設定] 底下，按一下 [SQL Active Directory 管理員]
 - 按一下 [設定系統管理員]，然後選擇 [WS1\_SQLAdmins]
 
-## <a name="step-6-maintaining-access-control"></a>步驟 6：維護存取控制
+## <a name="step-6-maintain-access-control"></a>步驟6：維護存取控制
 
 設定已完成。
 

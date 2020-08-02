@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9e871b7959c11d7fbae650abf8394811b9088ed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020555"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503203"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的臨時表
 
@@ -23,7 +23,7 @@ ms.locfileid: "87020555"
 
 SQL 集區和 SQL 隨選（預覽）資源都可以利用臨時表。 SQL 隨選的限制會在本文結尾處討論。 
 
-## <a name="what-are-temporary-tables"></a>什麼是暫存資料表？
+## <a name="temporary-tables"></a>暫存資料表
 
 暫存資料表在處理資料時很有用，尤其是具有暫時性中繼結果的轉換期間。 在 Synapse SQL 中，臨時表存在於工作階段層級。  只有出現在其建立所在的工作階段。 如此一來，當該工作階段登出時，就會自動將其卸除。 
 
@@ -98,7 +98,7 @@ GROUP BY
 > 
 > 
 
-### <a name="dropping-temporary-tables"></a>捨棄暫存資料表
+### <a name="drop-temporary-tables"></a>捨棄臨時表
 建立新的工作階段時，不應該存在任何暫存資料表。  不過，如果您呼叫的相同預存程式會建立具有相同名稱的臨時表，若要確保 `CREATE TABLE` 語句成功，請搭配使用簡單的預先存在檢查 `DROP` ： 
 
 ```sql
@@ -116,7 +116,7 @@ END
 DROP TABLE #stats_ddl
 ```
 
-### <a name="modularizing-code"></a>模組化程式碼
+### <a name="modularize-code"></a>模組化程式碼
 在使用者會話中的任何位置都可以使用臨時表。 如此一來，就可以利用這項功能來協助您模組化應用程式的程式碼。  為了示範，下列預存程式會產生 DDL，以依據統計資料名稱來更新資料庫中的所有統計資料：
 
 ```sql

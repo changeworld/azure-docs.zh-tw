@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: dc690e29129f5be68456e6a9dc075ba72f11b121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a013dd875fc5a97e5e2e619553cdeb8c6d729298
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318227"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502625"
 ---
 # <a name="payout-summaries"></a>支出摘要
 
 支出摘要會顯示您透過 Microsoft 獲得的款項詳細資料。 此外，其還會告知何時會收到付款，以及將收到多少款項。
 
-如果您在 Azure Marketplace 中銷售產品，則將會在支出摘要中看到成功的支出資訊。 如需詳細資料，請參閱 [Microsoft Azure Marketplace 參與原則](https://docs.microsoft.com/legal/marketplace/participation-policy) (英文) 和 [Microsoft Azure Marketplace 發行者合約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) (英文)。
+如果您在 Azure Marketplace 中銷售產品，則將會在支出摘要中看到成功的支出資訊。 如需詳細資料，請參閱 [Microsoft Azure Marketplace 參與原則](https://docs.microsoft.com/legal/marketplace/participation-policy) (英文) 和 [Microsoft Azure Marketplace 發行者合約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx) (英文)。
 
 > [!NOTE]
 > 若要符合支付資格，收益必須達到美金 $50 元的[付款門檻](payment-thresholds-methods-timeframes.md)。 如需付款門檻的詳細資料，請參閱此頁面並檢閱應用程式開發人員合約。

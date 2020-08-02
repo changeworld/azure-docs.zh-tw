@@ -3,12 +3,12 @@ title: 疑難排解-QnA Maker
 description: 有關 QnA Maker 服務的常見問題策劃清單，可協助您更快速地採用服務，並獲得更好的結果。
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 50823e29eb5c276c00a1c8f0e3227ec67999a703
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131985"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502574"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>疑難排解 QnA Maker
 
@@ -87,7 +87,7 @@ ms.locfileid: "87131985"
 <details>
 <summary><b>是否可以與不屬於相同 AAD 租用戶的參與者共用知識庫，以修改該知識庫？</b></summary>
 
-**答**：共用是以 Azure 角色型存取控制（RBAC）為基礎。 如果您可以與另一個使用者共用 Azure 中的「任何」__ 資源，便代表您也可以共用 QnA Maker。
+**答**：共用是以 azure 角色型存取控制（azure RBAC）為基礎。 如果您可以與另一個使用者共用 Azure 中的「任何」__ 資源，便代表您也可以共用 QnA Maker。
 
 </details>
 

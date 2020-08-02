@@ -10,12 +10,13 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: bf7d72e6f16605827b55e3a460a9b28010842d2f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 07e265710c69c2ed72df520bf090b7c7d86c8097
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220825"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503764"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>建立支援資料表和佇列之客戶管理金鑰的帳戶
 
@@ -141,7 +142,7 @@ N/A
 - 包含 `-EncryptionKeyTypeForQueue` 選項，並將其值設定為 `Account` ，以使用帳戶加密金鑰來加密佇列儲存體中的資料。
 - 包含 `-EncryptionKeyTypeForTable` 選項，並將其值設定為 `Account` ，以使用帳戶加密金鑰來加密資料表儲存體中的資料。
 
-下列範例示範如何建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體 (GRS) ，並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
+下列範例示範如何建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體（RA-GRS），並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -162,7 +163,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 - 包含 `--encryption-key-type-for-queue` 選項，並將其值設定為 `Account` ，以使用帳戶加密金鑰來加密佇列儲存體中的資料。
 - 包含 `--encryption-key-type-for-table` 選項，並將其值設定為 `Account` ，以使用帳戶加密金鑰來加密資料表儲存體中的資料。
 
-下列範例示範如何建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體 (GRS) ，並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
+下列範例示範如何建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體（RA-GRS），並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```azurecli
 az storage account create \
@@ -177,7 +178,7 @@ az storage account create \
 
 # <a name="template"></a>[範本](#tab/template)
 
-下列 JSON 範例會建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體 (GRS) ，並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代角括弧中的預留位置值：
+下列 JSON 範例會建立一般用途 v2 儲存體帳戶，其設定為讀取權限異地多餘儲存體（RA-GRS），並使用帳戶加密金鑰來加密佇列和資料表儲存體的資料。 請記得以您自己的值取代角括弧中的預留位置值：
 
 ```json
 "resources": [

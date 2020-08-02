@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f87f732fbfff23e71096a89a7c04c65d1bd7959
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: a88e30e85402f60489839b0a34b5a793fd7192df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432348"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502472"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -392,7 +392,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="privileged-role-administrator"></a>[特殊權限角色管理員](#privileged-role-administrator-permissions)
 
-具備此角色的使用者可以管理 Azure Active Directory 中，以及 Azure AD Privileged Identity Management 內的角色指派。 此外，這個角色允許管理 Privileged Identity Management 的各個層面和管理單位。
+具備此角色的使用者可以管理 Azure Active Directory 中，以及 Azure AD Privileged Identity Management 內的角色指派。 他們可以建立和管理可以指派給 Azure AD 角色的群組。 此外，這個角色允許管理 Privileged Identity Management 的各個層面和管理單位。
 
 > [!IMPORTANT]
 > 此角色能夠管理所有 Azure AD 角色 (包括全域管理員角色) 的指派。 此角色不包含 Azure AD 中的任何其他特殊權限能力，例如建立或更新使用者。 不過，指派給這個角色的使用者可以藉由指派額外的角色，來授與自己或其他人額外權限。
@@ -748,6 +748,9 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.directory/directoryRoleTemplates/allProperties/allTasks | 建立和刪除 directoryRoleTemplates，以及在 Azure Active Directory 中讀取和更新所有屬性。 |
 | microsoft.directory/domains/allProperties/allTasks | 建立和刪除 domains，以及在 Azure Active Directory 中讀取和更新所有屬性。 |
 | microsoft.directory/groups/allProperties/allTasks | 建立和刪除 groups，以及讀取與更新 Azure Active Directory 中的所有屬性。 |
+| microsoft directory/groupsAssignableToRoles/allProperties/update | 在 Azure Active Directory 中，將 isAssignableToRole 屬性設定為 true 的群組更新。 |
+| microsoft 目錄/groupsAssignableToRoles/建立 | 在 Azure Active Directory 中，建立 isAssignableToRole 屬性設為 true 的群組。 |
+| microsoft 目錄/groupsAssignableToRoles/delete | 在 Azure Active Directory 中，刪除 isAssignableToRole 屬性設定為 true 的群組。 |
 | microsoft.directory/groupSettings/allProperties/allTasks | 建立和刪除 groupSettings，以及讀取與更新 Azure Active Directory 中的所有屬性。 |
 | microsoft.directory/groupSettingTemplates/allProperties/allTasks | 建立和刪除 groupSettingTemplates，以及讀取與更新 Azure Active Directory 中的所有屬性。 |
 | microsoft.directory/loginTenantBranding/allProperties/allTasks | 建立和刪除 loginTenantBranding，以及在 Azure Active Directory 中讀取和更新所有屬性。 |
@@ -1582,7 +1585,10 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
-| microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | 建立和刪除所有資源，以及讀取和更新 microsoft.aad.privilegedIdentityManagement 中的標準屬性。 |
+| microsoft directory/groupsAssignableToRoles/allProperties/update | 在 Azure Active Directory 中，將 isAssignableToRole 屬性設定為 true 的群組更新。 |
+| microsoft 目錄/groupsAssignableToRoles/建立 | 在 Azure Active Directory 中，建立 isAssignableToRole 屬性設為 true 的群組。 |
+| microsoft 目錄/groupsAssignableToRoles/delete | 在 Azure Active Directory 中，刪除 isAssignableToRole 屬性設定為 true 的群組。 |
+| microsoft 目錄/Microsoft.aad.privilegedidentitymanagement/allEntities/allTasks | 建立和刪除所有資源，以及讀取和更新 microsoft.aad.privilegedIdentityManagement 中的標準屬性。 |
 | microsoft.directory/servicePrincipals/appRoleAssignedTo/allTasks | 讀取及設定 Azure Active Directory 中的 servicePrincipals.appRoleAssignedTo 屬性。 |
 | microsoft.directory/servicePrincipals/oAuth2PermissionGrants/allTasks | 讀取及設定 Azure Active Directory 中的 servicePrincipals.oAuth2PermissionGrants 屬性。 |
 | microsoft.directory/administrativeUnits/allProperties/allTasks | 建立及管理系統管理單位 (包括成員) |

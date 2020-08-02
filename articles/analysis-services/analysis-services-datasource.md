@@ -4,15 +4,15 @@ description: 描述 Azure Analysis Services 中表格式 1200 和更高資料模
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 07/31/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc25c853a37de5c310d37e7ee64c6f762283cb0a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 72a1a37bf240355e6bc87cbfd62b0dc2d25ce68b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077434"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503594"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支援的資料來源
 
@@ -80,7 +80,7 @@ ms.locfileid: "86077434"
 <a name="tab1400b">6</a> - 僅限表格式 1400 和更高模型。  
 <a name="sqlim">7</a> - 在表格式 1200 和更高模型中指定為「提供者」資料來源時，請指定 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (建議)、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
 <a name="instgw">8</a> - 如果指定 MSOLEDBSQL 作為資料提供者，則可能需要在與內部部署資料閘道相同的電腦上，下載並安裝 [Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server)。  
-<a name="oracle">9</a> - 您可針對表格式 1200 模型指定 Oracle Data Provider for .NET，或將其指定為表格式 1400+ 模型中的「提供者」資料來源。  
+<a name="oracle">9</a> - 您可針對表格式 1200 模型指定 Oracle Data Provider for .NET，或將其指定為表格式 1400+ 模型中的「提供者」資料來源。 如果指定為結構化資料來源，請務必[啟用 Oracle managed 提供者](#enable-oracle-managed-provider)。   
 <a name="teradata">10</a> - 您可針對表格式 1200 模型指定 Teradata Data Provider for .NET，或將其指定為表格式 1400+ 模型中的「提供者」資料來源。  
 <a name="filesSP">11</a> - 不支援內部部署 SharePoint 中的檔案。
 
@@ -123,6 +123,43 @@ ms.locfileid: "86077434"
 若是1400和更高相容性層級的表格式模型使用記憶體中模式，Azure SQL Database、Azure Synapse （先前稱為 SQL 資料倉儲）、Dynamics 365 和 SharePoint 清單都支援 OAuth 認證。 Azure Analysis Services 會管理 OAuth 資料來源的權杖重新整理，以避免長時間執行的重新整理作業逾時。 若要產生有效的權杖，請使用 SSMS 來設定認證。
 
 OAuth 認證不支援 DirectQuery 模式。
+
+## <a name="enable-oracle-managed-provider"></a>啟用 Oracle 受管理提供者
+
+在某些情況下，對 Oracle 資料來源的 DAX 查詢可能會傳回非預期的結果。 這可能是因為資料來源連接所使用的提供者。
+
+如[瞭解提供者](#understanding-providers)一節所述，表格式模型會以*結構化*資料來源或*提供者*資料來源的形式，連接至資料來源。 針對具有指定為提供者資料來源之 Oracle 資料來源的模型，請確定指定的提供者為 .NET 的 Oracle Data Provider （DataAccess. Client）。 
+
+如果將 Oracle 資料來源指定為結構化資料來源，請啟用**MDataEngine\UseManagedOracleProvider**伺服器屬性。 設定此屬性可確保您的模型會使用建議的 Oracle Data Provider for .NET managed 提供者連接到 Oracle 資料來源。
+ 
+若要啟用 Oracle 受管理提供者：
+
+1. 在 SQL Server Management Studio 中，連接到您的伺服器。
+2. 使用下列腳本建立 XMLA 查詢。 以完整伺服器名稱取代**ServerName** ，然後執行查詢。
+
+    ```xml
+    <Alter AllowCreate="true" ObjectExpansion="ObjectProperties" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+        <Object />
+        <ObjectDefinition>
+            <Server xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" 
+    xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" 
+    xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" 
+    xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500">
+                <ID>ServerName</ID>
+                <Name>ServerName</Name>
+                <ServerProperties>
+                    <ServerProperty>
+                        <Name>MDataEngine\UseManagedOracleProvider</Name>
+                        <Value>1</Value>
+                    </ServerProperty>
+                </ServerProperties>
+            </Server>
+        </ObjectDefinition>
+    </Alter>
+    ```
+
+3. 重新啟動伺服器。
+
 
 ## <a name="next-steps"></a>後續步驟
 

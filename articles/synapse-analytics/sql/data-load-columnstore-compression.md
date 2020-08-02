@@ -11,14 +11,14 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c885bce5ca17d5919ec134d179f6009e91a969cc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4496b74f162bfaeda7205963cbbe7e355db841f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495477"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503900"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore-index-performance"></a>最大化資料行存放區索引效能的資料列群組品質
+# <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>最大化資料行存放區索引效能的資料列群組品質
 
 資料列群組品質取決於資料列群組中的資料列數目。 增加可用的記憶體可以將資料行存放區索引壓縮成每個資料列群組的資料列數目最大化。  使用這些方法來改善壓縮率和查詢資料行存放區索引的效能。
 

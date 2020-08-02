@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262475"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503730"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>使用 Azure Functions 計時器觸發程式來調整 Azure Cosmos DB 輸送量
 
 Azure Cosmos 帳戶的效能取決於以每秒要求單位（RU/秒）表示的布建輸送量。 布建為第二個數據細微性，且以每小時最高的 RU 為依據計費。 此佈建容量模型可讓服務提供可預測且一致的輸送量、保證低延遲以及高可用性。 這些功能的大部分生產工作負載。 不過，在開發和測試環境中，Azure Cosmos DB 只會在工作時間內使用，您可以在早上相應增加輸送量，並在上班時間後的晚上相應減少規模。
 
-您可以透過[Azure Resource Manager 範本](resource-manager-samples.md)、 [Azure CLI](cli-samples.md)和[PowerShell](powershell-samples-sql.md)、適用于 Core （SQL） API 帳戶，或使用特定語言的 Azure Cosmos DB sdk 來設定輸送量。 使用 Resource Manager 範本，Azure CLI 或 PowerShell 的優點是它們支援所有 Azure Cosmos DB 模型 Api。
+您可以透過[Azure Resource Manager 範本](resource-manager-samples.md)、 [Azure CLI](cli-samples.md)和[PowerShell](powershell-samples.md)、適用于 Core （SQL） API 帳戶，或使用特定語言的 Azure Cosmos DB sdk 來設定輸送量。 使用 Resource Manager 範本，Azure CLI 或 PowerShell 的優點是它們支援所有 Azure Cosmos DB 模型 Api。
 
 ## <a name="throughput-scheduler-sample-project"></a>輸送量排程器範例專案
 

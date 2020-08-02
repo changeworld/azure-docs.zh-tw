@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2cd42d8d4ba1ecabc1b87942536e2ef9a9017b22
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370269"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501945"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>適用于 Synapse 分析的 Azure 安全性基準
 
@@ -584,7 +584,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
 
-**指導**方針：使用 azure 角色型存取控制（RBAC）來管理 Synapse SQL 集區中 azure SQL 資料庫的存取權。
+**指引**：使用 azure 角色型存取控制（azure RBAC）來管理 Synapse SQL 集區中 azure SQL 資料庫的存取權。
 
 授權是由使用者帳戶的資料庫角色成員資格和物件層級許可權所控制。 最好的作法是，您應該授與使用者所需的最低權限。
 
@@ -1014,7 +1014,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 **指引**： Synapse SQL 集區的快照集會在每天自動進行，建立可供七天使用的還原點。 此保留期無法變更。 SQL 集區支援八小時的復原點目標（RPO）。 您可以透過過去七天內所建立的任一個快照集，在主要區域中還原資料倉儲。 請注意，您也可以視需要手動觸發快照集。
 
-* [Azure Synapse SQL 集區中的備份與還原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure Synapse SQL 集區中的備份與還原](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 **Azure 資訊安全中心監視**：不適用
 
