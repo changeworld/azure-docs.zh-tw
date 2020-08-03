@@ -1,5 +1,5 @@
 ---
-title: 快速入門：從 Azure Key Vault 設定及擷取憑證
+title: 快速入門：設定與檢視 Azure Key Vault 憑證 – Azure PowerShell
 description: 說明如何使用 Azure PowerShell 從 Azure Key Vault 設定及擷取憑證的快速入門
 services: key-vault
 author: msmbaldwin
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ecb9262a96d1c9857283de00224950d9bc7a583f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: efd73907a8ca691ceb451391477c9c8e2239c250
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421022"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043910"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 從 Azure Key Vault 設定及擷取憑證
 
@@ -61,8 +61,6 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 * **保存庫 URI**：在此範例中是 https://Contoso-Vault2.vault.azure.net/ 。 透過其 REST API 使用保存庫的應用程式必須使用此 URI。
 
 在保存庫建立後，您的 Azure 帳戶是唯一能夠在這個新保存庫上執行任何作業的帳戶。
-
-![Key Vault 建立命令完成後的輸出](../media/quick-create-powershell/output-after-creating-keyvault.png)
 
 ## <a name="add-a-certificate-to-key-vault"></a>在 Key Vault 中新增憑證
 

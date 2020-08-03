@@ -1,6 +1,6 @@
 ---
-title: 設定 Windows 虛擬桌面的服務警示 - Azure
-description: 如何設定 Azure 服務健康狀態，以接收 Windows 虛擬桌面的服務通知。
+title: 設定 Windows 虛擬桌面 (傳統) 的服務警示 - Azure
+description: 如何設定 Azure 服務健康狀態，以接收 Windows 虛擬桌面 (傳統) 的服務通知。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2eead8dfd1f4d88d28de1f70134dcfcad8471d3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a3f938c6e4c9bb13794ddd01092f0e79077a89cc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259770"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283379"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>教學課程：設定服務警示
+# <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>教學課程：設定 Windows 虛擬桌面 (傳統) 的服務警示
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。 如果您嘗試管理 2020 年春季版更新中引進的 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../set-up-service-alerts.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../set-up-service-alerts.md)。
 
 您可以使用 Azure 服務健康狀態，監視 Windows 虛擬桌面的服務問題和健康狀態諮詢。 Azure 服務健康狀態會以不同類型的警示 (例如，電子郵件或簡訊) 通知您，協助您了解問題所帶來的影響，並在問題解決時通知您； 也會協助您少停機時間，並針對可能影響資源可用性的計劃性維護和變更做好準備。
 

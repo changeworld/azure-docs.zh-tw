@@ -1,15 +1,16 @@
 ---
 title: 建立 Azure 區塊鏈服務成員 - Azure CLI
 description: 使用 Azure CLI 建立區塊鏈聯盟的 Azure 區塊鏈服務成員。
-ms.date: 03/30/2020
+ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 1561f485917ecbb64d51ffbe045ab4120fbf58ad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: references_regions
+ms.openlocfilehash: 2514447eaceb83da0bee81c1475a3137f0d1af07
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116803"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170653"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>快速入門：使用 Azure CLI 建立 Azure 區塊鏈服務的區塊鏈成員
 
@@ -27,17 +28,41 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 若要開啟 Cloud Shell，只要選取程式碼區塊右上角的 [試試看]  即可。 您也可以移至 [https://shell.azure.com/bash](https://shell.azure.com/bash)，從另一個瀏覽器索引標籤啟動 Cloud Shell。 選取 [複製]  即可複製程式碼區塊，將它貼到 Cloud Shell 中，然後按 enter 鍵加以執行。
 
-如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0.51 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+如果您偏好在本機安裝和使用 CLI，本快速入門需要有 Azure CLI 2.0.51 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="create-a-resource-group"></a>建立資源群組
+## <a name="prepare-your-environment"></a>準備您的環境
 
-使用 [az group create](https://docs.microsoft.com/cli/azure/group) 命令來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
+1. 登入。
 
-```azurecli-interactive
-az group create \
-                 --name myResourceGroup \
-                 --location westus2
-```
+    如果您使用的是 CLI 的本機安裝，請使用 [az login](/cli/azure/reference-index#az-login) 命令登入。
+
+    ```azurecli
+    az login
+    ```
+
+    請遵循您終端機上顯示的步驟，來完成驗證程序。
+
+1. 安裝 Azure CLI 擴充功能。
+
+    當搭配 Azure CLI 的延伸模組參考一起使用時，您必須先安裝延伸模組。  Azure CLI 延伸模組可讓您存取核心 CLI 尚未隨附的實驗性與發行前版本命令。  若要深入了解延伸模組 (包括更新及解除安裝)，請參閱[使用 Azure CLI 延伸模組](/cli/azure/azure-cli-extensions-overview) (英文)。
+
+    執行下列命令，以安裝[適用於 Azure 區塊鏈服務的擴充功能](/cli/azure/ext/blockchain/blockchain)：
+
+    ```azurecli-interactive
+    az extension add --name blockchain
+    ```
+
+1. 建立資源群組。
+
+    Azure 區塊鏈服務與所有 Azure 資源一樣都必須部署到資源群組中。 資源群組可讓您組織和管理相關的 Azure 資源。
+
+    在此快速入門中，使用下列 [az group create](/cli/azure/group#az-group-create) 命令，在 _eastus_ 位置中建立一個名為 _myResourceGroup_ 的資源群組：
+
+    ```azurecli-interactive
+    az group create \
+                     --name "myResourceGroup" \
+                     --location "eastus"
+    ```
 
 ## <a name="create-a-blockchain-member"></a>建立區塊鏈成員
 
@@ -46,23 +71,27 @@ Azure 區塊鏈服務成員是私人聯盟區塊鏈網路中的區塊鏈節點�
 您必須傳入數個參數和屬性。 請將範例參數取代為您自己的值。
 
 ```azurecli-interactive
-az resource create \
-                    --resource-group myResourceGroup \
-                    --name myblockchainmember \
-                    --resource-type Microsoft.Blockchain/blockchainMembers \
-                    --is-full-object \
-                    --properties '{"location":"westus2", "properties":{"password":"strongMemberAccountPassword@1", "protocol":"Quorum", "consortium":"myConsortiumName", "consortiumManagementAccountPassword":"strongConsortiumManagementPassword@1"}, "sku":{"name":"S0"}}'
+az blockchain member create \
+                            --resource-group "MyResourceGroup" \
+                            --name "myblockchainmember" \
+                            --location "eastus" \
+                            --password "strongMemberAccountPassword@1" \
+                            --protocol "Quorum" \
+                            --consortium "myconsortium" \
+                            --consortium-management-account-password "strongConsortiumManagementPassword@1" \
+                            --sku "Basic"
 ```
 
 | 參數 | 描述 |
 |---------|-------------|
 | **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 請使用您在上一節中建立的資源群組。
 | **name** | 可識別 Azure 區塊鏈服務區塊鏈成員的唯一名稱。 用於公開端點位址的名稱。 例如： `myblockchainmember.blockchain.azure.com` 。
-| **location** | 區塊鏈成員建立所在的 Azure 區域。 例如： `westus2` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。
+| **location** | 區塊鏈成員建立所在的 Azure 區域。 例如： `westus2` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。 某些區域可能無法使用這些功能。 下列 Azure 區域提供 Azure 區塊鏈資料管理員服務：美國東部和西歐。
 | **password** | 成員預設交易節點的密碼。 連線至區塊鏈成員的預設交易節點公用端點時，請使用此密碼進行基本驗證。
+| **protocol** | 區塊鏈通訊協定。 目前支援 Quorum 通訊協定。
 | **consortium** | 要加入或建立的聯盟名稱。 如需聯盟的詳細資訊，請參閱 [Azure 區塊鏈服務聯盟](consortium.md)。
-| **consortiumAccountPassword** | 聯盟帳戶密碼也稱為成員帳戶密碼。 成員帳戶密碼可用來對為您的成員建立的 Ethereum 帳戶進行私密金鑰加密。 您可以使用帳戶成員和成員帳戶密碼進行聯盟管理。
-| **skuName** | 服務層級類型。 使用 S0 表示「標準」，B0 表示「基本」。 使用「基本」  層來進行開發、測試和概念證明。 使用「標準」  層來進行生產等級的部署。 如果您使用區塊鏈資料管理員或傳送大量的私人交易，也應該使用*標準*層。 不支援在建立成員之後變更基本和標準間的定價層。
+| **consortium-management-account-password** | 聯盟帳戶密碼也稱為成員帳戶密碼。 成員帳戶密碼可用來對為您的成員建立的 Ethereum 帳戶進行私密金鑰加密。 您可以使用帳戶成員和成員帳戶密碼進行聯盟管理。
+| **sku** | 服務層級類型。 「標準」或「基本」。 使用「基本」層來進行開發、測試和概念證明。 使用「標準」層來進行生產等級的部署。 如果您使用區塊鏈資料管理員或傳送大量的私人交易，也應該使用*標準*層。 不支援在建立成員之後變更基本和標準間的定價層。
 
 建立區塊鏈成員和支援的資源需要約 10 分鐘的時間。
 

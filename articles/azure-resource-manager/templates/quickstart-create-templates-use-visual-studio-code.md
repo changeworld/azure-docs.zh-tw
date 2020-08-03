@@ -5,12 +5,12 @@ author: neilpeterson
 ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d36f8a9a8650b504da206e884d9be8e43e1becdb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86058141"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040510"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本
 
@@ -102,7 +102,7 @@ ARM 範本參數檔案可讓您儲存環境特有的參數值，並在部署階�
 
 此動作會建立新的參數檔案，並將其與建立該檔案的範本對應。 選取範本時，您可以在 Visual Studio Code 狀態列中查看和修改目前的範本/參數檔案對應。
 
-![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+![顯示 Visual Studio Code 狀態列中範本/參數檔案對應的影像。](./media/quickstart-create-templates-use-visual-studio-code/16.png)
 
 現在，參數檔案已對應至範本，接著擴充功能會同時驗證範本和參數檔案。 若要查看此驗證實務，請將兩個字元的值新增至參數檔案中的 `storageAccountName` 參數，並儲存檔案。
 

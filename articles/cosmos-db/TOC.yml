@@ -592,6 +592,8 @@
           href: policy.md
     - name: 服務配額
       href: concepts-limits.md
+    - name: 自動建議
+      href: automated-recommendations.md
 - name: Cassandra、MongoDB 及其他 API
   expanded: true
   items:

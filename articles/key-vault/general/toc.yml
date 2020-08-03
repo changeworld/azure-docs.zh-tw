@@ -67,7 +67,9 @@
     - name: 虛刪除
       items:
         - name: Azure Key Vault 虛刪除
-          href: overview-soft-delete.md
+          href: soft-delete-overview.md
+        - name: 依預設進行虛刪除
+          href: soft-delete-change.md
     - name: 驗證、要求和回應
       href: authentication-requests-and-responses.md
     - name: Azure Key Vault 節流指導方針

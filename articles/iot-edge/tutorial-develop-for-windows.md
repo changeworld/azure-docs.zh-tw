@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 58a63c9e11cf86318f0e9f051d034cbbaf7c40a9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6411ec5a7e5e8af146eb2e906ea3d1c6ce7693ac
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76772256"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387606"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>教學課程：開發適用於 Windows 裝置的 IoT Edge 模組
 
@@ -117,7 +117,7 @@ IoT Edge 模組會封裝為容器，因此開發機器上必須有容器引擎�
 
 Azure IoT Edge Tools 擴充功能會針對 Visual Studio 中所有支援的 IoT Edge 模組語言，提供專案範本。 這些範本具有您部署運作中模組以測試 IoT Edge 時需要的所有檔案和程式碼，或可成為您利用自己的商務邏輯自訂此範本的起點。
 
-1. 選取 [檔案]   > [新增]   > [專案...] 
+1. 選取 [檔案]   > [新增]   > [專案...]
 
 2. 在新的專案視窗中，搜尋 [IoT Edge]  ，然後選擇 [Azure IoT Edge (Windows amd64)]  專案。 按 [下一步]  。
 
@@ -133,7 +133,7 @@ Azure IoT Edge Tools 擴充功能會針對 Visual Studio 中所有支援的 IoT 
    | ----- | ----- |
    | Visual Studio 範本 | 選取 [C# 模組]  。 |
    | 模組名稱 | 接受預設值 **IotEdgeModule1**。 |
-   | 存放庫 URL | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會從模組專案名稱值預先填入容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀]  頁面擷取**登入伺服器**值。 <br><br> 最終的映像存放庫看起來類似於：\<登錄名稱\>.azurecr.io/iotedgemodule1。 |
+   | 存放庫 URL | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會從模組專案名稱值預先填入容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器值。 <br><br> 最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/iotedgemodule1。 |
 
       ![針對目標裝置、模組類型和容器登錄設定您的專案](./media/tutorial-develop-for-windows/add-module-to-solution.png)
 
@@ -179,7 +179,7 @@ IoT Edge 執行階段需要登錄認證才能將容器映像提取到 IoT Edge �
 
 您所建立的解決方案範本包含 IoT Edge 模組的程式碼範例。 此模組範例只會接收訊息，再加以傳遞。 管線功能會示範 IoT Edge 中的重要概念，也就是模組彼此之間要如何通訊。
 
-每個模組都可以在其程式碼中宣告多個「輸入」  和「輸出」  佇列。 在裝置上執行的 IoT Edge 中樞會將訊息從某個模組的輸出路由傳送至一或多個模組的輸入。 用於宣告輸入和輸出的特定語言會隨語言而異，但概念在所有模組則都相同。 如需模組之間路由方式的詳細資訊，請參閱[宣告路由](module-composition.md#declare-routes)。
+每個模組都可以在其程式碼中宣告多個「輸入」  和「輸出」  佇列。 在裝置上執行的 IoT Edge 中樞會將訊息從某個模組的輸出路由傳送至一或多個模組的輸入。 用於宣告輸入和輸出的特定程式碼會隨語言而異，但概念在所有模組則都相同。 如需模組之間路由方式的詳細資訊，請參閱[宣告路由](module-composition.md#declare-routes)。
 
 專案範本所隨附的範例 C# 程式碼會使用 IoT Hub SDK for .NET 所提供的 [ModuleClient 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)。
 
@@ -199,13 +199,13 @@ IoT Edge 執行階段需要登錄認證才能將容器映像提取到 IoT Edge �
 
 6. 尋找 $edgeAgent 所需屬性的 **modules** 屬性。
 
-   這裡應該會列出兩個模組。 第一個是 **SimulatedTemperatureSensor**，所有範本預設都會隨附此模組，以提供可讓您用來測試模組的模擬溫度資料。 第二個是您在此專案內建立的 **IotEdgeModule1** 模組。
+   這裡應該會列出兩個模組。 其中一個是 **SimulatedTemperatureSensor** 模組，所有範本預設都會隨附此模組，以提供可讓您用來測試模組的模擬溫度資料。 另一個是您在此專案內建立的 **IotEdgeModule1** 模組。
 
    此 modules 屬性會宣告哪些模組應該包含在您的裝置部署中。
 
 7. 尋找 $edgeHub 所需屬性的 **routes** 屬性。
 
-   IoT Edge 中樞模組的其中一個函式會在部署中的所有模組之間路由傳送訊息。 檢閱 routes 屬性中的值。 第一個路由 **IotEdgeModule1ToIoTHub** 會使用萬用字元 ( **\*** ) 來包含任何來自 IotEdgeModule1 模組中任何輸出佇列的訊息。 這些訊息會進入 $upstream  ，這是會指出 IoT 中樞的保留名稱。 第二個路由 **sensorToIotEdgeModule1** 會取得來自 SimulatedTemperatureSensor 模組的訊息，並將它們路由傳送至 IotEdgeModule1 模組的 *input1* 輸入佇列。
+   IoT Edge 中樞模組的其中一個函式會在部署中的所有模組之間路由傳送訊息。 檢閱 routes 屬性中的值。 其中一個路由 **IotEdgeModule1ToIoTHub** 會使用萬用字元 ( **\*** ) 來包含任何來自 IotEdgeModule1 模組中任何輸出佇列的訊息。 這些訊息會進入 $upstream  ，這是會指出 IoT 中樞的保留名稱。 另一個路由 **sensorToIotEdgeModule1** 會取得來自 SimulatedTemperatureSensor 模組的訊息，並將它們路由傳送至 IotEdgeModule1 模組的 *input1* 輸入佇列。
 
    ![檢閱 deployment.template.json 中的路由](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -252,7 +252,7 @@ IoT Edge 執行階段需要登錄認證才能將容器映像提取到 IoT Edge �
 
 6. 將變更儲存至 module.json 檔案。
 
-7. 再次以滑鼠右鍵按一下 **CSharpTutorialApp** 專案資料夾，然後再次選取 [建置和推送 IoT Edge 模組]  。
+7. 再次以滑鼠右鍵按一下 **CSharpTutorialApp** 專案資料夾，然後再次選取 [建置和推送 IoT Edge 模組]。
 
 8. 再次開啟 **deployment.windows-amd64.json** 檔案。 請注意，當您再次執行建置和推送命令時，系統並未建立新的檔案。 反過來，系統會更新同一個檔案以反映變更。 IotEdgeModule1 映像現在會指向容器的 0.0.2 版本。 在部署資訊清單中進行這項變更可讓 IoT Edge 裝置知道有新的模組版本需要提取。
 
@@ -267,7 +267,7 @@ IoT Edge 執行階段需要登錄認證才能將容器映像提取到 IoT Edge �
 如果您在建置和推送模組映像時遇到錯誤，原因往往與開發機器上的 Docker 設定有關。 請使用下列檢查來檢閱您的設定：
 
 * 您是否使用從容器登錄複製的認證來執行 `docker login` 命令？ 這些認證與您用來登入 Azure 的認證不同。
-* 您的容器存放庫是否正確？ 其是否有正確的容器登錄名稱和正確的模組名稱？ 開啟 IotEdgeModule1 資料夾中的 **module.json** 檔案來進行檢查。 存放庫值看起來類似於： **\<登錄名稱\>.azurecr.io/iotedgemodule1**。
+* 您的容器存放庫是否正確？ 其是否有正確的容器登錄名稱和正確的模組名稱？ 開啟 IotEdgeModule1 資料夾中的 **module.json** 檔案來進行檢查。 存放庫值看起來應該類似於： **\<registry name\>.azurecr.io/iotedgemodule1**。
 * 如果您為模組使用不同於 **IotEdgeModule1** 的名稱，該名稱在整個解決方案中是否保持一致？
 * 機器所執行的容器類型是否與所建置的容器類型相同？ 本教學課程適用於 Windows 的 IoT Edge 裝置，因此 Visual Studio 檔案應該要有 **windows-amd64** 擴充功能，且 Docker Desktop 應該執行 Windows 容器。
 
@@ -328,6 +328,14 @@ IotEdgeModule1 程式碼會透過其輸入佇列接收訊息，並透過其輸�
    IoT Edge 模組會區分大小寫。
 
    SimulatedTemperatureSensor 和 IotEdgeModule1 記錄應該會顯示它們正在處理的訊息。 edgeAgent 模組負責啟動其他模組，因此其記錄會有關於實做部署資訊清單的資訊。 如果有任何模組並未列出或未執行，edgeAgent 記錄可能會有錯誤。 edgeHub 模組負責模組與 IoT 中樞之間的通訊。 如果模組已啟動並執行，但訊息並未抵達 IoT 中樞，則 edgeHub 記錄可能會有錯誤。
+
+## <a name="clean-up-resources"></a>清除資源
+
+如果您打算繼續閱讀下一篇建議的文章，則可以保留您所建立的資源和組態，並加以重複使用。 您可以也繼續使用相同的 IoT Edge 裝置作為測試裝置。
+
+否則，可以刪除您在本文中使用的本機設定和 Azure 資源，以避免產生費用。
+
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

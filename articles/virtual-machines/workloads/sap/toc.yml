@@ -237,21 +237,41 @@
       href: ../../../site-recovery/site-recovery-workload.md#protect-sap
     - name: 適用於最佳網路延遲的 Azure Proximity Placement Groups (搭配 SAP 應用程式)
       href: sap-proximity-placement-scenarios.md
-- name: AAD SAP 身分識別整合及單一登入
+- name: 將 Azure AD 與 SAP 應用程式整合
   items:
-    - name: 與 SAP 雲端整合
-      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD 與 SAP 雲端平台身分識別驗證整合
+    - name: 將使用者從 SAP SuccessFactors 佈建到 Active Directory
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 將使用者從 SAP SuccessFactors 佈建到 Azure AD
+      href: ../../../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 將使用者從 Azure AD 寫回 SAP SuccessFactors
+      href: ../../../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 將使用者佈建到 SAP Cloud Platform Identity Authentication 服務
+      href: ../../../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 設定 SAP Cloud Platform Identity Authentication 服務的 SSO
       href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: 透過 SAP 雲端平台設定單一登入
+    - name: 設定 SAP SuccessFactors 的 SSO
+      href: ../../../active-directory/saas-apps/successfactors-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 設定 SAP Analytics Cloud 的 SSO
+      href: ../../../active-directory/saas-apps/sapboc-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 設定 SAP Fiori 的 SSO
+      href: ../../../active-directory/saas-apps/sap-fiori-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 設定 SAP Qualtrics 的 SSO
+      href: ../../../active-directory/saas-apps/qualtrics-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 設定 SAP Ariba 的 SSO
+      href: ../../../active-directory/saas-apps/ariba-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 設定 SAP Concur 旅遊和支出的 SSO
+      href: ../../../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 設定 SAP Cloud Platform 的 SSO
       href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD 與 SAP NetWeaver 整合
+    - name: 設定 SAP NetWeaver 的 SSO
       href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD 與 SAP Business ByDesign 整合
+    - name: 設定 SAP Business ByDesign 的 SSO
       href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: AAD 與 SAP HANA DBMS 整合
+    - name: 設定 SAP HANA 的 SSO
       href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-    - name: SAP Fiori Launchpad SAML 單一登入與 Azure AD
+    - name: 設定 SAP Cloud for Customer 的 SSO
+      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 設定 SAP Fiori Launchpad 的 SSO
       href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
 - name: 與 SAP 整合的 Azure 服務
   items:

@@ -1,15 +1,15 @@
 ---
-title: 快速入門：部署 Azure Kubernetes Service 叢集
+title: 快速入門：使用 PowerShell 部署 AKS 叢集
 description: 了解如何使用 PowerShell 快速建立 Kubernetes 叢集、部署應用程式，以及監視 Azure Kubernetes Service (AKS) 中的效能。
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e786b64554b5fbaf5bb7051e09daca8fb1eaf049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 503011f2b9c595feb4d2f94a60e61dcd217c52b0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251411"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057011"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>快速入門：使用 PowerShell 部署 Azure Kubernetes Service 叢集
 

@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 42c6ad7f77d1b42c02f57f161874eadb75387dc2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 196577741ae1560232f8ae193aacd51a446431c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496004"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385529"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics 共用資料庫
 
@@ -34,7 +34,7 @@ Spark 預設資料庫 (稱為 `default`) 也會在 SQL 隨選內容中顯示為�
 
 如果您使用 SQL 隨選在 Spark 所建資料庫中建立物件，或嘗試卸除資料庫，則作業將會成功。 但是，原始的 Spark 資料庫不會有任何改變。
 
-## <a name="handling-of-name-conflicts"></a>名稱衝突的處理方式
+## <a name="how-name-conflicts-are-handled"></a>如何處理名稱衝突
 
 如果 Spark 資料庫的名稱與現有 SQL 隨選資料庫的名稱衝突，則會在 SQL 隨選中為 Spark 資料庫附加尾碼。 SQL 隨選中的尾碼是 `_<workspace name>-ondemand-DefaultSparkConnector`。
 
@@ -57,7 +57,7 @@ Spark 資料庫和資料表，以及其在 SQL 引擎中的同步代表項目，
 
 ## <a name="examples"></a>範例
 
-### <a name="create--connect-to-spark-database---sql-on-demand"></a>建立 Spark 資料庫並與其連線 - SQL 隨選
+### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>使用隨選 SQL 建立並連線到 Spark 資料庫
 
 首先，請使用您已在工作區中建立的 Spark 叢集來建立名為 `mytestdb` 的新 Spark 資料庫。 例如，您可以使用 Spark C# Notebook 搭配下列 .NET for Spark 陳述式來達成此目的：
 

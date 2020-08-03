@@ -1,20 +1,20 @@
 ---
 title: 教學課程：依行進模式尋找多條路線 | Microsoft Azure 地圖服務
 description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務尋找不同行進模式的路線。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: c7ed2421f468dfbb64c635683a7909b517105bc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 0cb3c1eadae426cef59b7aad8821343c23e76d79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333797"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289531"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>教學課程：使用 Azure 地圖服務尋找不同行進模式的路線
 
@@ -27,7 +27,7 @@ ms.locfileid: "80333797"
 > * 在地圖上顯示多條路線
 
 ## <a name="prerequisites"></a>Prerequisites
-在繼續作業之前，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)中的指示選取 S1 定價層。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
+在繼續作業之前，請依照[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)中的指示選取 S1 定價層。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
 ## <a name="create-a-new-map"></a>建立新的地圖
 
@@ -206,7 +206,7 @@ ms.locfileid: "80333797"
 
 以下所有程式碼區塊都應該新增至**地圖載入 eventListener 內**，以確保會在地圖完整載入之後載入。
 
-1. 在 GetMap 函式中，將下列內容新增至 Javascript 程式碼。
+1. 在 GetMap 函式中，將下列內容新增至 JavaScript 程式碼。
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key

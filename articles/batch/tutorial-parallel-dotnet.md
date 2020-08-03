@@ -1,16 +1,16 @@
 ---
-title: 執行平行工作負載
+title: 使用 .NET API 執行平行工作負載
 description: 教學課程 - 使用 Batch .NET 用戶端程式庫透過 Azure Batch 中的 ffmpeg 平行進行媒體檔案轉碼
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: d8a5db6c6c63d680514e21bef0e5a8bc6b3ea550
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: afa660a7138f3b69b2a6f7c478550095f357e29b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733068"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062592"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>教學課程：使用 .NET API 透過 Azure Batch 執行平行工作負載
 

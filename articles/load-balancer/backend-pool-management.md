@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: f1718de6bc9a86f85cadf4531386e663d5a420d3
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 7fe7c1473579c62b110548a2c5e98f9bdfaf6bf9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273756"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131458"
 ---
 # <a name="backend-pool-management"></a>後端集區管理
 後端集區是負載平衡器的重要元件。 後端集區會定義將為指定負載平衡規則提供流量的資源群組。
@@ -255,10 +255,12 @@ JSON 要求本文：
 
   >[!IMPORTANT] 
   >此功能目前在預覽階段，但是有下列限制：
-  >* 可新增 100 個 IP 位址的限制
+  >* 僅限標準負載平衡器
+  >* 後端集區中的 100 個 IP 位址限制
   >* 後端資源必須位於與負載平衡器相同的虛擬網路
   >* Azure 入口網站目前不支援此功能
-  >* 僅限標準負載平衡器
+  >* 此功能目前不支援 ACI 容器
+  >* 負載平衡器或負載平衡器前端的服務不能放在負載平衡器的後端集區中
   
 ### <a name="powershell"></a>PowerShell
 建立新的後端集區：
@@ -271,8 +273,7 @@ $vnetName = "myVnet"
 $location = "eastus"
 $nicName = "myNic"
 
-$backendPool = 
-New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName  
+$backendPool = New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName  
 ```
 
 使用現有虛擬網路中的新 IP 更新後端集區：
@@ -281,18 +282,17 @@ New-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBa
 $virtualNetwork = 
 Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroup 
  
-$ip1 = 
-New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
+$ip1 = New-AzLoadBalancerBackendAddressConfig -IpAddress "10.0.0.5" -Name "TestVNetRef" -VirtualNetwork $virtualNetwork  
  
 $backendPool.LoadBalancerBackendAddresses.Add($ip1) 
 
-Set-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup  -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
+Set-AzLoadBalancerBackendAddressPool -InputObject $backendPool
 ```
 
 取出負載平衡器的後端集區資訊，確認已將後端位址新增至後端集區：
 
 ```azurepowershell-interactive
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -BackendAddressPoolName $backendPoolName -BackendAddressPool $backendPool  
+Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $loadBalancerName -Name $backendPoolName 
 ```
 建立網路介面，並將其新增至後端集區。 將 IP 位址設定為其中一個後端位址：
 

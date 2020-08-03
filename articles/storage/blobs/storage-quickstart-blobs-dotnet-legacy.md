@@ -3,23 +3,23 @@ title: 快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫
 description: 在此快速入門中，您將了解如何使用適用於 .NET 的 Azure Blob 儲存體用戶端程式庫在 Blob (物件) 儲存體中建立容器與 Blob。 接下來，您要了解如何將 Blob 下載到本機電腦，以及如何列出容器中的所有 Blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/20/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 5205506e3e7a32423dd9b438b648ff4af5136caa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4fa2d7f3884a30e60ce703dd45b295a85722fe67
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528548"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285283"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v11
 
 開始使用適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v11。 Azure Blob 儲存體是 Microsoft 針對雲端推出的物件儲存體解決方案。 請依照下列步驟來安裝套件，並試用基本工作的範例程式碼。 Blob 儲存體經過最佳化，已能妥善儲存大量的非結構化資料。
 
 > [!NOTE]
-> 本快速入門會使用舊版的 Azure Blob 儲存體用戶端程式庫。 若要開始使用最新版本，請參閱[快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫](storage-quickstart-blobs-dotnet.md)。
+> 本快速入門會使用舊版的 Azure Blob 儲存體用戶端程式庫。 若要開始使用最新版本，請參閱[快速入門：適用於 .NET 的 Azure Blob 儲存體用戶端程式庫 v12](storage-quickstart-blobs-dotnet.md)。
 
 使用適用於 .NET 的 Azure Blob 儲存體用戶端程式庫：
 

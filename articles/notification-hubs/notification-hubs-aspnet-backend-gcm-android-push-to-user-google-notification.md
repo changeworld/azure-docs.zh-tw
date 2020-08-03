@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 709926671e1ad4d8beefaf0f1cff4c56b1948ca3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 27a56a45845c1515b500a71528d3449b63c3f869
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127374"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323956"
 ---
 # <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教學課程：使用 Azure 通知中樞和 Google 雲端通訊 (已淘汰) 將推播通知傳送給特定 Android 使用者
 
@@ -154,7 +154,7 @@ ms.locfileid: "80127374"
 
     您的 `main_activity.xml` 圖形版面配置現在應如下圖所示：
 
-    ![][A1]
+    ![應用程式的螢幕擷取畫面，其中包含使用者名稱、密碼、收件者和訊息的方塊，以及用來登入和傳送通知的按鈕。][A1]
 3. 在與 `MainActivity` 類別相同的套件中，建立名為 `RegisterClient` 的新類別。 將下列程式碼使用於新的類別檔案。
 
     ```java
@@ -262,7 +262,7 @@ ms.locfileid: "80127374"
     }
     ```
 
-    為註冊推播通知，此元件會實作連絡應用程式後端所需的 REST 呼叫。 它也會在本機儲存通知中心所建立的 *registrationIds* ，如 [從您的應用程式後端註冊](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中的詳細說明。 當您按一下 [登入]  按鈕時，系統便會使用儲存在本機儲存體中的授權權杖。
+    為註冊推播通知，此元件會實作連絡應用程式後端所需的 REST 呼叫。 它也會在本機儲存通知中心所建立的 *registrationIds* ，如 [從您的應用程式後端註冊](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中的詳細說明。 當您按一下 [登入] 按鈕時，系統便會使用儲存在本機儲存體中的授權權杖。
 4. 在您的類別中，針對 `NotificationHub` 移除或註解排除您的私用欄位，並對 `RegisterClient` 類別新增一個欄位，以及對 ASP.NET 後端端點新增一個字串。 請務必將 `<Enter Your Backend Endpoint>` 取代為您先前取得的實際後端端點。 例如： `http://mybackend.azurewebsites.net` 。
 
     ```java
@@ -324,7 +324,7 @@ ms.locfileid: "80127374"
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. 然後，新增下列方法來處理 [登入]  按鈕 click 事件及傳送推播通知。
+9. 然後，新增下列方法來處理 [登入] 按鈕 click 事件及傳送推播通知。
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -406,7 +406,7 @@ ms.locfileid: "80127374"
     }
     ```
 
-    [登入]  按鈕的 `login` 處理常式會使用輸入使用者名稱和密碼 (這代表驗證結構描述使用的任何權杖) 產生基本驗證權杖，然後使用 `RegisterClient` 呼叫後端進行註冊。
+    [登入] 按鈕的 `login` 處理常式會使用輸入使用者名稱和密碼 (這代表驗證結構描述使用的任何權杖) 產生基本驗證權杖，然後使用 `RegisterClient` 呼叫後端進行註冊。
 
     `sendPush` 方法會呼叫後端，以根據使用者標記觸發使用者的安全通知。 `sendPush` 鎖定目標的平台通知服務取決於傳入的 `pns` 字串。
 
@@ -472,9 +472,9 @@ ms.locfileid: "80127374"
 
 1. 在使用 Android Studio 的裝置或模擬器上執行應用程式。
 2. 在 Android 應用程式中，輸入使用者名稱和密碼。 兩者必須是相同的字串值，而且不得包含空格或特殊字元。
-3. 在 Android 應用程式中，按一下 [登入]  。 等待快顯訊息出現，指出 [ **已登入並註冊**]。 這會啟用 [傳送通知]  按鈕。
+3. 在 Android 應用程式中，按一下 [登入]。 等待快顯訊息出現，指出 [ **已登入並註冊**]。 這會啟用 [傳送通知] 按鈕。
 
-    ![][A2]
+    ![應用程式的螢幕擷取畫面。 確認已顯示使用者已登入並註冊的快顯訊息，而且 [傳送通知] 按鈕已開啟。][A2]
 4. 按一下切換按鈕，啟用您已執行應用程式並註冊使用者的所有平台。
 5. 輸入會收到通知訊息的使用者名稱。 該使用者必須在目標裝置上註冊通知。
 6. 輸入做為推播通知訊息的訊息，以便使用者接收。

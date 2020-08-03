@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 01/08/2020
-ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 07/21/2020
+ms.openlocfilehash: 0dd150909a56aafdd2005f2d68a12d32a1e8fae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187532"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087776"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure 資料庫移轉服務的執行個體
 
@@ -30,6 +30,9 @@ ms.locfileid: "84187532"
 開啟網頁瀏覽器，瀏覽至 [Microsoft Azure 入口網站](https://portal.azure.com/)，然後輸入您的認證來登入入口網站。
 
 預設檢視是您的服務儀表板。
+
+> [!NOTE]
+> 每個訂用帳戶最多可以建立 10 個 DNS 執行個體。 如果需要更多的執行個體，請建立支援票證。
 
 ## <a name="register-the-resource-provider"></a>註冊資源提供者
 

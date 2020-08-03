@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e7f7535cf66da721e1738da6d0efbf335d97a6da
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a3cec6cb009e3d83d22f3f2a4140afe16db180a8
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134498"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372921"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>設定適用於 Azure VM 的災害復原
 
@@ -94,7 +94,7 @@ Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作
 
 - **Site Recovery 讀者**：此角色擁有可檢視所有 Site Recovery 管理作業的權限。 此角色最適合 IT 監督主管，以便監控目前的保護狀態並提出支援票證。
 
-深入了解 [Azure RBAC 內建角色](../role-based-access-control/built-in-roles.md)。
+深入了解 [Azure 內建角色](../role-based-access-control/built-in-roles.md)。
 
 ## <a name="enable-replication-for-a-vm"></a>啟用 VM 複寫
 

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: b8693ea09ccbb6f0a3f8dfe0846a9b1b256872b6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045139"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124335"
 ---
 # <a name="managing-azure-enterprise-roles"></a>管理 Azure 企業角色
 
@@ -32,7 +32,7 @@ ms.locfileid: "86045139"
 
 例如，如果初始驗證類型設定為「混合」，則 EA 會新增為 Microsoft 帳戶，而帳單與連絡人將會擁有唯讀 EA 管理員權限。 如果 EA 管理員未核准現有帳單連絡人的 Microsoft 帳戶授權，EA 管理員可刪除有問題的使用者，並要求客戶將使用者重新新增為唯讀管理員，並且在 EA 入口網站的註冊層級設定其僅限公司或學校的帳戶。
 
-這些角色專門用來管理 Azure Enterprise 合約，而 Azure 必須控制資源存取權的內建角色除外。 如需詳細資訊，請參閱 [Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)。
+這些角色專門用來管理 Azure Enterprise 合約，而 Azure 必須控制資源存取權的內建角色除外。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 下列各節說明每個角色的限制和功能。
 
@@ -121,4 +121,4 @@ Azure EA 系統管理員建立部門之後，Azure 企業系統管理員就可�
 
 - [管理對 Azure 帳單資訊的存取](manage-billing-access.md)
 - [使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)
-- [適用於 Azure 資源的內建角色](../../role-based-access-control/built-in-roles.md)
+- [Azure 內建角色](../../role-based-access-control/built-in-roles.md)

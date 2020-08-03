@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ce9bf6fe6d130cf8511db2b2351c0de01b753d81
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77670350"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318397"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>藉由 Azure Application Insights，以了解客戶如何使用您的應用程式
 
@@ -36,9 +36,9 @@ Azure Application Insights 會收集使用資訊，以協助您了解使用者�
     - ASP.NET 和 Web 開發
     - Azure 開發
 - 下載並安裝 [Visual Studio 快照集偵錯工具](https://aka.ms/snapshotdebugger) \(英文\)。
-- 將 .NET 應用程式部署至 Azure，並[啟用 Application Insights SDK](../../azure-monitor/app/asp-net.md)。 
-- [從您的應用程式傳送遙測](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app)以新增自訂事件/頁面檢視
-- 傳送[使用者內容](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)以追蹤使用者過去的活動，並充分運用使用方式功能。
+- 將 .NET 應用程式部署至 Azure，並[啟用 Application Insights SDK](../app/asp-net.md)。 
+- [從您的應用程式傳送遙測](../app/usage-overview.md#send-telemetry-from-your-app)以新增自訂事件/頁面檢視
+- 傳送[使用者內容](../app/usage-send-user-context.md)以追蹤使用者過去的活動，並充分運用使用方式功能。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 在 [https://portal.azure.com](https://portal.azure.com) 上登入 Azure 入口網站。
@@ -102,66 +102,67 @@ Azure Application Insights 會收集使用資訊，以協助您了解使用者�
 
 1. 選取功能表中的 [漏斗圖]  ，然後按一下 [新增]  。 
 
-    ![](media/tutorial-users/funnelsnew.png)
+    ![螢幕擷取畫面，顯示如何建立新的漏斗圖。](media/tutorial-users/funnelsnew.png)
 
-2. 輸入 [漏斗圖名稱]  。
+2. 輸入 [漏斗圖名稱]。
 3. 針對每個步驟選取一個動作，以建立至少包含兩個步驟的漏斗圖。  此動作清單是根據 Application Insights 所收集的使用方式資料建立的。
 
-    ![](media/tutorial-users/funnelsedit.png)
+    ![螢幕擷取畫面，顯示如何在新的漏斗圖中建立步驟。](media/tutorial-users/funnelsedit.png)
 
-4. 按一下 [儲存]  儲存漏斗圖，然後檢視其結果。  漏斗圖右邊的視窗顯示第一個活動前和最後一個活動後最常見的事件，以協助您了解特定序列周圍的使用者傾向。
+4. 按一下 [儲存] 儲存漏斗圖，然後檢視其結果。  漏斗圖右邊的視窗顯示第一個活動前和最後一個活動後最常見的事件，以協助您了解特定序列周圍的使用者傾向。
 
-    ![](media/tutorial-users/funnelsright.png)
+    ![螢幕擷取畫面，顯示新建立漏斗圖的事件結果。](media/tutorial-users/funnelsright.png)
 
 
 ## <a name="learn-which-customers-return"></a>了解哪些客戶會返回
-[保留期]  可協助您了解哪些使用者重新回到您的應用程式。  
+[保留期] 可協助您了解哪些使用者重新回到您的應用程式。  
 
-1. 選取功能表中的 [保留期]  。
+1. 選取功能表中的 [保留期]。
 2. 根據預設，這項分析資訊包含了執行任一動作後又返回執行任一動作的使用者。  您可以將這個篩選條件變更為任一篩選條件，例如只包含完成購物後又返回的使用者。
 
-    ![](media/tutorial-users/retentionquery.png)
+    ![螢幕擷取畫面，顯示如何設定保留篩選。](media/tutorial-users/retentionquery.png)
 
 3. 符合準則的返回使用者，以有著不同持續時間的圖形化和表格格式顯示。  這個典型的模式象徵返回的使用者數目隨著時間逐漸下降。  一個時段到下一時段若出現驟降的趨勢，可能需要關注。 
 
-    ![](media/tutorial-users/retentiongraph.png)
+    ![螢幕擷取畫面，顯示符合保留篩選之準則集的使用者圖形。](media/tutorial-users/retentiongraph.png)
 
 ## <a name="analyze-user-navigation"></a>分析使用者瀏覽
-[使用者流程]  會將使用者在您應用程式的頁面和功能之間瀏覽的方式視覺化。  這可協助您回答以下問題：例如，使用者通常從特定的頁面移往何處、他們通常如何結束您的應用程式，以及是否有任何動作會定期重複。
+[使用者流程] 會將使用者在您應用程式的頁面和功能之間瀏覽的方式視覺化。  這可協助您回答以下問題：例如，使用者通常從特定的頁面移往何處、他們通常如何結束您的應用程式，以及是否有任何動作會定期重複。
 
-1.  選取功能表中的 [使用者流程]  。
-2.  按一下 [新增]  以建立新的使用者流程，然後按一下 [編輯]  以編輯其詳細資料。
-3.  將 [時間範圍]  增加至 7 天，然後選取一個初始事件。  流程將會追蹤以該事件開始的使用者工作階段。
+1.  選取功能表中的 [使用者流程]。
+2.  按一下 [新增] 以建立新的使用者流程，然後按一下 [編輯] 以編輯其詳細資料。
+3.  將 [時間範圍] 增加至 7 天，然後選取一個初始事件。  流程將會追蹤以該事件開始的使用者工作階段。
 
-    ![](media/tutorial-users/flowsedit.png)
+    ![螢幕擷取畫面，顯示如何建立新的使用者流程。](media/tutorial-users/flowsedit.png)
 
 4.  顯示使用者流程，您可以看到不同的使用者路徑和其工作階段計數。  藍線表示使用者在目前的動作之後所執行的動作。  紅線表示使用者工作階段結束。
 
-    ![](media/tutorial-users/flows.png)
+    ![螢幕擷取畫面，顯示使用者流程的使用者路徑和工作階段計數。](media/tutorial-users/flows.png)
 
-5.  若要將某事件從流程中移除，按一下該動作角落的 **x**，然後按一下 [建立圖表]  。  重繪後的圖形會移除該事件所有的執行個體。  按一下 [編輯]  ，查看該事件現在是否已新增至 [排除的事件]  。
+5.  若要將某事件從流程中移除，按一下該動作角落的 **x**，然後按一下 [建立圖表]。  重繪後的圖形會移除該事件所有的執行個體。  按一下 [編輯]，查看該事件現在是否已新增至 [排除的事件]。
 
-    ![](media/tutorial-users/flowsexclude.png)
+    ![螢幕擷取畫面，顯示使用者流程的已排除事件清單。](media/tutorial-users/flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>合併使用方式資料
-[活頁簿]  可將資料視覺效果、Analytics 查詢及文字合併成互動式文件。  您可以使用活頁簿來彙整常見的使用方式資訊、合併來自特定事件的資訊，或向您的小組回報應用程式的使用方式。
+[活頁簿] 可將資料視覺效果、Analytics 查詢及文字合併成互動式文件。  您可以使用活頁簿來彙整常見的使用方式資訊、合併來自特定事件的資訊，或向您的小組回報應用程式的使用方式。
 
-1.  選取功能表中的 [活頁簿]  。
-2.  按一下 [新增]  以建立新的活頁簿。
-3.  提供的現有查詢會以橫條圖顯示前一天的所有使用方式資料。  您可以使用這個查詢、以手動方式編輯它，或按一下 [範例查詢]  以選取其他有用的查詢。
+1.  選取功能表中的 [活頁簿]。
+2.  按一下 [新增] 以建立新的活頁簿。
+3.  提供的現有查詢會以橫條圖顯示前一天的所有使用方式資料。  您可以使用這個查詢、以手動方式編輯它，或按一下 [範例查詢] 以選取其他有用的查詢。
 
-    ![](media/tutorial-users/samplequeries.png)
+    ![螢幕擷取畫面，顯示您可以使用的範例查詢清單。](media/tutorial-users/samplequeries.png)
 
-4.  按一下 [完成編輯]  。
-5.  按一下上方窗格中的 [編輯]  ，以編輯活頁簿頂端的文字。  文字會使用 Markdown 格式化。
+4.  按一下 [完成編輯]。
+5.  按一下上方窗格中的 [編輯]，以編輯活頁簿頂端的文字。  文字會使用 Markdown 格式化。
 
-    ![](media/tutorial-users/markdown.png)
+    ![螢幕擷取畫面，顯示如何編輯活頁簿頂端的文字。](media/tutorial-users/markdown.png)
 
-6.  按一下 [新增使用者]  ，以新增含有使用者資訊的圖形。  視需要編輯圖形的詳細資料，然後按一下 [完成編輯]  儲存它。
+6.  按一下 [新增使用者]，以新增含有使用者資訊的圖形。  視需要編輯圖形的詳細資料，然後按一下 [完成編輯] 儲存它。
 
 
 ## <a name="next-steps"></a>後續步驟
 由於您已學會如何分析使用者，請前進到下一個教學課程，了解如何建立自訂儀表板以結合此資訊和關於您應用程式的其他有用資料。
 
 > [!div class="nextstepaction"]
-> [建立自訂儀表板](../../azure-monitor/learn/tutorial-app-dashboards.md)
+> [建立自訂儀表板](./tutorial-app-dashboards.md)
+

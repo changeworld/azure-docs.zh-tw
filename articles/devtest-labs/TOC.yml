@@ -232,10 +232,12 @@
           href: devtest-lab-mandatory-artifacts.md
         - name: 套用成品相關問題疑難排解
           href: devtest-lab-troubleshoot-apply-artifacts.md
-    - name: 將實驗室所使用的儲存體和作業系統磁碟加密
+    - name: 將實驗室資源加密
       items:
         - name: 將實驗室所使用的儲存體加密
           href: encrypt-storage.md
+        - name: 使用客戶自控金鑰將作業系統磁碟加密
+          href: encrypt-disks-customer-managed-keys.md
     - name: 與 CI/CD 整合
       items:
         - name: 將實驗室與您的 Azure Pipelines CI/CD 管線整合

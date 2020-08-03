@@ -9,7 +9,7 @@
 - name: 教學課程
   expanded: true
   items:
-    - name: 建立基本受控網域
+    - name: 建立受控網域
       href: tutorial-create-instance.md
     - name: 設定適用於應用程式的虛擬網路
       href: tutorial-configure-networking.md
@@ -21,9 +21,11 @@
       href: tutorial-configure-ldaps.md
     - name: 設定密碼雜湊同步
       href: tutorial-configure-password-hash-sync.md
-    - name: 建立進階受控網域
+    - name: 建立複本集 (預覽)
+      href: tutorial-create-replica-set.md
+    - name: 建立自訂的受控網域
       href: tutorial-create-instance-advanced.md
-    - name: 建立樹系信任 (預覽)
+    - name: 建立樹系信任
       href: tutorial-create-forest-trust.md
 - name: 範例
   items:
@@ -33,12 +35,16 @@
       href: template-create-instance.md
     - name: 使用 Azure AD PowerShell 設定保留範圍同步處理
       href: powershell-scoped-synchronization.md
+    - name: 使用 Azure PowerShell 建立資源樹系和信任
+      href: create-resource-forest-powershell.md
 - name: 概念
   items:
     - name: 管理基本概念
       href: administration-concepts.md
     - name: 一般部署案例
       href: scenarios.md
+    - name: 複本集 (預覽)
+      href: concepts-replica-sets.md
     - name: 樹系和信任
       items:
         - name: 資源樹系

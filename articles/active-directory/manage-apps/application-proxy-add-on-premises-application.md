@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b225b6471dd59275b3963bc2de09607c97a21465
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: a7153200bc80f6e27a99123a1bba676d0188f607
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85373398"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129027"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 若要在生產環境中實現高可用性，建議您準備多個 Windows 伺服器。 在本教學課程中，一部 Windows 伺服器就已足夠。
 
 > [!IMPORTANT]
-> 如果您要在 Windows Server 2019 上安裝連接器，您必須停用 WinHttp 元件中的 HTTP2 通訊協定支援。 在舊版的支援作業系統中，預設會停用此功能。 新增下列登錄機碼並重新啟動伺服器，即可在 Windows Server 2019 上停用此功能。 請注意，這是整部機器適用的登錄機碼。
+> 如果您要在 Windows Server 2019 上安裝連接器，必須停用 WinHttp 元件中的 HTTP2 通訊協定支援，Kerberos 限制委派才能正常運作。 在舊版的支援作業系統中，預設會停用此功能。 新增下列登錄機碼並重新啟動伺服器，即可在 Windows Server 2019 上停用此功能。 請注意，這是整部機器適用的登錄機碼。
 >
 > ```
 > Windows Registry Editor Version 5.00
@@ -88,12 +88,12 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 
 1. 重新啟動伺服器。
 
-> [!IMPORTANT]
-> 為了將頂級的加密提供給客戶，應用程式 Proxy 服務會限制僅接受 TLS 1.2 通訊協定的存取。 這些變更已逐漸推出，並於 2019 年 8 月 31 日起生效。 請確定所有用戶端-伺服器和瀏覽器-伺服器組合都已更新為使用 TLS 1.2，以保持與應用程式 Proxy 服務的連線。 其中包括使用者存取透過應用程式 Proxy 發佈的應用程式時，所使用的用戶端。 請參閱準備 [Office 365 中的 TLS 1.2](https://support.microsoft.com/help/4057306/preparing-for-tls-1-2-in-office-365)，以取得實用的參考和資源。
-
 ## <a name="prepare-your-on-premises-environment"></a>準備內部部署環境
 
 一開始請先啟用與 Azure 資料中心的通訊，以準備適合 Azure AD 應用程式 Proxy 的環境。 如果路徑中有防火牆，請確定防火牆已開啟。 防火牆開啟才能讓連接器對「應用程式 Proxy」提出 HTTPS (TCP) 要求。
+
+> [!IMPORTANT]
+> 如果您要安裝適用於 Azure Government 雲端的連接器，請遵循[必要條件](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls)和[安裝步驟](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。 您需要啟用一組不同 URL 的存取權，以及執行安裝的其他參數。
 
 ### <a name="open-ports"></a>開啟連接埠
 
@@ -121,6 +121,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 ## <a name="install-and-register-a-connector"></a>安裝並註冊連接器
 
 若要使用應用程式 Proxy，請在與應用程式 Proxy 服務搭配使用的每一部 Windows 伺服器上安裝連接器。 連接器會作為代理程式來管理從內部部署應用程式伺服器到 Azure AD 中應用程式 Proxy 的輸出連線。 在同時安裝了其他驗證代理程式 (例如，Azure AD Connect) 的伺服器上，您也可以安裝連接器。
+
 
 若要安裝連接器：
 
@@ -186,7 +187,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 4. 在 [內部部署應用程式]  區段中，選取 [新增內部部署應用程式]  。
 5. 在 [新增自己的內部部署應用程式]  區段中，提供您應用程式的下列資訊：
 
-    | 欄位 | 描述 |
+    | 欄位 | 說明 |
     | :---- | :---------- |
     | **名稱** | 會出現在存取面板上和 Azure 入口網站的應用程式名稱。 |
     | **內部 URL** | 用於從私用網路內部存取應用程式的 URL。 您可以提供後端伺服器上要發佈的特定路徑，而伺服器的其餘部分則不發佈。 如此一來，您可以在相同的伺服器上將不同網站發佈為不同應用程式，並給予各自的名稱和存取規則。<br><br>如果您發佈路徑，請確定其中包含您的應用程式的所有必要映像、指令碼和樣式表。 例如，如果您的應用程式位於 https:\//yourapp/app 並使用位於 https:\//yourapp/media 的映像，您應該發佈 https:\//yourapp/ 做為路徑。 此內部 URL 不一定是您使用者所看見的登陸頁面。 如需詳細資訊，請參閱[針對發佈應用程式設定自訂的首頁](application-proxy-configure-custom-home-page.md)。 |

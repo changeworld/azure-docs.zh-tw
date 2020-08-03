@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f93a25854bc8b93e9bd75ea71037f6363d143914
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145721"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338022"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>快速入門：將應用程式新增到您的 Azure Active Directory (Azure AD) 租用戶
 
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
 6. 您可以瀏覽您要新增之應用程式的資源庫，或在搜尋方塊中輸入應用程式的名稱加以搜尋。 然後，從結果中選取應用程式。 在表單中，您可以編輯應用程式名稱，以符合您的組織需求。 在此範例中，我們選取了 GitHub 並將名稱變更為 **GitHub-test**。
     ![說明如何從資源庫新增應用程式](media/add-application-portal/create-application.png)
     >[!TIP]
-    >如果您要尋找的應用程式不在資源庫中，您可以按一下**建立您自己的應用程式**連結。 Microsoft 已經與許多應用程式開發人員合作，將他們預先設定為可使用 Azure AD。 這些都是顯示在資源庫中的應用程式。 但如果未列出您要新增的應用程式，您可以建立新的一般應用程式，然後自行設定，或使用建立者的開發人員指導方針來設定。
+    >如果您要尋找的應用程式不在資源庫中，可以按一下連結**建立您自己的應用程式**，然後在**您想要對應用程式執行哪些動作？** 下選擇 [整合您在資源庫中找不到的任何其他應用程式]。 Microsoft 已經與許多應用程式開發人員合作，將他們預先設定為可使用 Azure AD。 這些都是顯示在資源庫中的應用程式。 但如果未列出您要新增的應用程式，您可以建立新的一般應用程式，然後自行設定，或使用建立者的開發人員指導方針來設定。
 7. 選取 [建立]。 [開始使用] 頁面會隨即顯示，其中包含可為您組織設定應用程式的選項。
 
 您已完成新增應用程式。 下一個快速入門將示範如何為應用程式變更標誌和編輯其他屬性。

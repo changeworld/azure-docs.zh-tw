@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: bfed93a4ed13878448d21b95d265e49bf0260742
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798250"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075344"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>教學課程：開始使用 Log Analytics 查詢
 
@@ -189,21 +189,25 @@ Event
    
    若要將查詢儲存為函式，請提供**函式別名**，這是讓其他查詢用來呼叫此查詢的簡短名稱。
    
-1. 提供**查詢總管**的**類別**，以用於查詢。
+1. 如果您位於 Log Analytics 工作區，請提供**類別**，以供**查詢總管**用來查詢。 (類別不適用於 Application Insights 查詢)
    
-1. 選取 [儲存]  。
+1. 選取 [儲存]。
    
    ![儲存函式](media/get-started-portal/save-function.png)
 
 ### <a name="load-queries"></a>載入查詢
-若要載入已儲存的查詢，請選取右上方的 [查詢總管]  。 [查詢總管]  窗格隨即開啟，並依類別列出所有查詢。 展開類別或在搜尋列中輸入查詢名稱，然後選取查詢，以將其載入至 [查詢編輯器]  。 您可以選取查詢名稱旁邊的星號，以將查詢標示為**我的最愛**。
+若要載入已儲存的查詢，請選取右上方的 [查詢總管]。 [查詢總管] 窗格隨即開啟，並依類別列出所有查詢。 展開類別或在搜尋列中輸入查詢名稱，然後選取查詢，以將其載入至 [查詢編輯器]。 您可以選取查詢名稱旁邊的星號，以將查詢標示為**我的最愛**。
 
 ![查詢總管](media/get-started-portal/query-explorer.png)
 
 ### <a name="export-and-share-queries"></a>匯出及共用查詢
-若要匯出查詢，請選取頂端列上的 [匯出]  ，然後從下拉式清單中選取 [匯出至 CSV - 所有資料行]  、[匯出至 CSV - 顯示的資料行]  或 [匯出至 Power BI (M 查詢)]  。
+若要匯出查詢，請選取頂端列上的 [匯出]，然後從下拉式清單中選取 [匯出至 CSV - 所有資料行]、[匯出至 CSV - 顯示的資料行] 或 [匯出至 Power BI (M 查詢)]。
 
-若要共用查詢的連結，請選取頂端列上的 [複製連結]  ，然後選取 [複製連結以查詢]  、[複製查詢文字]  或 [複製查詢結果]  ，以複製到剪貼簿。 您可以將查詢連結傳送給有權存取相同工作區的其他人。
+下列影片說明如何整合 Log Analytics 與 Excel。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Asme]
+
+若要共用查詢的連結，請選取頂端列上的 [複製連結]，然後選取 [複製連結以查詢]、[複製查詢文字] 或 [複製查詢結果]，以複製到剪貼簿。 您可以將查詢連結傳送給有權存取相同工作區的其他人。
 
 ## <a name="next-steps"></a>後續步驟
 

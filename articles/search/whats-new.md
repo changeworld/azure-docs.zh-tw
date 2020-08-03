@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/15/2020
-ms.openlocfilehash: 238ede3e79b7d7c5a22d24dfc52530fe391b600b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8c6486a3a64dcbe3dd37770844296da73724f3a3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519621"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076341"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
@@ -24,9 +24,9 @@ ms.locfileid: "86519621"
 
 |功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [ **.NET 用戶端程式庫**](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | Azure SDK | Azure SDK 團隊發行了新用戶端程式庫，其設計是為了與其他 .NET 用戶端程式庫一致。 版本 11。 | 正式推出。 </br> 安裝來自 NuGet 的 [Azure.Search.Documents 套件](https://www.nuget.org/packages/Azure.Search.Documents/)。 |
-| [**Python 用戶端程式庫**](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | Azure SDK | Azure SDK 團隊發行了新用戶端程式庫，其設計是為了與其他 Python 用戶端程式庫一致。 版本 11。 | 正式推出。 </br> 安裝來自 PyPI 的 [azure-search-documents 套件](https://pypi.org/project/azure-search-documents/)。 |
-| [**JavaScript 用戶端程式庫**](https://azuresdkdocs.blob.core.windows.net/$web/javascript/azure-search-documents/11.0.0/index.html)  | Azure SDK | Azure SDK 團隊發行了新用戶端程式庫，其設計是為了與其他 JavaScript 用戶端程式庫一致。 版本 11。 | 正式推出。 </br> 從 npm 安裝[@azure/search-documents 套件](https://www.npmjs.com/package/@azure/search-documents)。 |
+| [Azure.Search.Documents 用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet) | 適用於 .NET 的 Azure SDK | Azure SDK 團隊發行了 .NET 用戶端程式庫，其設計是為了與其他 .NET 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30，但尚不支援知識存放區、異地篩選或 [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder?view=azure-dotnet)。 | 正式推出。 </br> 安裝來自 NuGet 的 [Azure.Search.Documents 套件](https://www.nuget.org/packages/Azure.Search.Documents/)。 |
+| [azure.search.documents 用戶端程式庫](https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python)  | 適用於 Python 的 Azure SDK| Azure SDK 團隊發行了 Python 用戶端程式庫，其設計是為了與其他 Python 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30。 | 正式推出。 </br> 安裝來自 PyPI 的 [azure-search-documents 套件](https://pypi.org/project/azure-search-documents/)。 |
+| [@azure/search-documents用戶端程式庫](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest)  | 適用於 JavaScript 的 Azure SDK | Azure SDK 團隊發行了 JavaScript 用戶端程式庫，其設計是為了與其他 JavaScript 用戶端程式庫一致。 <br/><br/>版本 11 的目標為搜尋 REST api-version=2020-06-30。 | 正式推出。 </br> 從 npm 安裝[@azure/search-documents 套件](https://www.npmjs.com/package/@azure/search-documents)。 |
 
 ### <a name="june-2020"></a>2020 年 6 月
 

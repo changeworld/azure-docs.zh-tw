@@ -1,5 +1,5 @@
 ---
-title: 在 Synapse SQL 中使用 SQL 隨選 (預覽) 存取儲存體上的檔案
+title: 在隨選 SQL 中存取儲存體上的檔案 (預覽)
 description: 說明如何在 Synapse SQL 中使用 SQL 隨選 (預覽) 資源來查詢儲存體檔案。
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f786e92ca99c4c1700d00adf396ba1127b66ea7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247093"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046884"
 ---
 # <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>存取 Synapse SQL 中的外部儲存體 (隨選)
 
@@ -43,7 +43,7 @@ SELECT * FROM
 - Azure AD 使用者 - OPENROWSET 會使用呼叫者的 Azure AD 身分識別存取 Azure 儲存體，或以匿名存取方式存取儲存體。
 - SQL 使用者 – OPENROWSET 以匿名存取的方式存取儲存體。
 
-SQL 主體也可以使用 OPENROWSET 來直接查詢以 SAS 權杖或工作區受控識別保護的檔案。 如果 SQL 使用者執行此函式，具有 ALTER ANY CREDENTIAL 權限的進階使用者就必須建立符合函式中 URL 的伺服器範圍認證 (使用儲存體名稱和容器)，並將此認證的 REFERENCES 授權授與 OPENROWSET 函式的呼叫者：
+SQL 主體也可以使用 OPENROWSET 來直接查詢以 SAS 權杖或工作區受控識別保護的檔案。 如果 SQL 使用者執行此函式，具有 `ALTER ANY CREDENTIAL` 權限的進階使用者就必須建立符合函式中 URL 的伺服器範圍認證 (使用儲存體名稱和容器)，並將此認證的 REFERENCES 授權授與 OPENROWSET 函式的呼叫者：
 
 ```sql
 EXECUTE AS somepoweruser
@@ -87,8 +87,8 @@ DATABASE SCOPED CREDENTIAL 會指定如何存取參考資料來源 (目前為 SA
 呼叫者必須具有下列其中一個權限，才能執行 OPENROWSET 函式：
 
 - 執行 OPENROWSET 的其中一個權限：
-  - ADMINISTER BULK OPERATION 可讓登入執行 OPENROWSET 函式。
-  - ADMINISTER DATABASE BULK OPERATION 可讓資料庫範圍的使用者執行 OPENROWSET 函式。
+  - `ADMINISTER BULK OPERATIONS` 可讓登入執行 OPENROWSET 函式。
+  - `ADMINISTER DATABASE BULK OPERATIONS` 可讓資料庫範圍的使用者執行 OPENROWSET 函式。
 - EXTERNAL DATA SOURCE 中所參考認證的 REFERENCES DATABASE SCOPED CREDENTIAL
 
 #### <a name="accessing-anonymous-data-sources"></a>存取匿名資料來源
@@ -151,13 +151,13 @@ FROM dbo.DimProductsExternal
 
 | 查詢 | 所需的權限|
 | --- | --- |
-| 沒有資料來源的 OPENROWSET(BULK) | `ADMINISTER BULK ADMIN`、`ADMINISTER DATABASE BULK ADMIN` 或 SQL 登入必須具有 REFERENCES CREDENTIAL::\<URL>，才能存取 SAS 保護的儲存體 |
-| 有資料來源但沒有認證的 OPENROWSET(BULK) | `ADMINISTER BULK ADMIN` 或 `ADMINISTER DATABASE BULK ADMIN` |
-| 有資料來源和認證的 OPENROWSET(BULK) | `ADMINISTER BULK ADMIN`、`ADMINISTER DATABASE BULK ADMIN` 或 `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| 沒有資料來源的 OPENROWSET(BULK) | `ADMINISTER BULK OPERATIONS`、`ADMINISTER DATABASE BULK OPERATIONS` 或 SQL 登入必須具有 REFERENCES CREDENTIAL::\<URL>，才能存取 SAS 保護的儲存體 |
+| 有資料來源但沒有認證的 OPENROWSET(BULK) | `ADMINISTER BULK OPERATIONS` 或 `ADMINISTER DATABASE BULK OPERATIONS` |
+| 有資料來源和認證的 OPENROWSET(BULK) | `REFERENCES DATABASE SCOPED CREDENTIAL` 和其中一個 `ADMINISTER BULK OPERATIONS` 或 `ADMINISTER DATABASE BULK OPERATIONS` |
 | CREATE EXTERNAL DATA SOURCE | `ALTER ANY EXTERNAL DATA SOURCE` 和 `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CREATE EXTERNAL TABLE | `CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY EXTERNAL FILE FORMAT` 和 `ALTER ANY EXTERNAL DATA SOURCE` |
 | SELECT FROM EXTERNAL TABLE | `SELECT TABLE` 和 `REFERENCES DATABASE SCOPED CREDENTIAL` |
-| CETAS | 若要建立資料表 - `CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY DATA SOURCE` 和 `ALTER ANY EXTERNAL FILE FORMAT`。 若要讀取資料：查詢中每個資料表/檢視/函式的 `ADMIN BULK OPERATIONS` 或 `REFERENCES CREDENTIAL` 或 `SELECT TABLE` + 儲存體上的 R/W 權限 |
+| CETAS | 若要建立資料表 - `CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY DATA SOURCE` 和 `ALTER ANY EXTERNAL FILE FORMAT`。 若要讀取資料：查詢中每個資料表/檢視/函式的 `ADMINISTER BULK OPERATIONS` 或 `REFERENCES CREDENTIAL` 或 `SELECT TABLE` + 儲存體上的 R/W 權限 |
 
 ## <a name="next-steps"></a>後續步驟
 

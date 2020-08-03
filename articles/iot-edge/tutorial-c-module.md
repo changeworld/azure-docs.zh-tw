@@ -9,12 +9,12 @@ ms.date: 11/07/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4236b7ad3b15d1bb58a146f5905d226e0c3833d5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a71797319aca58e1064396e76f3d5b3a761ce85d
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76760942"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387637"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 C IoT Edge 模組
 
@@ -78,7 +78,7 @@ ms.locfileid: "76760942"
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱或接受預設值 **EdgeSolution**。 |
    | 選取模組範本 | 選擇 [C 模組]  。 |
    | 提供模組名稱 | 將模組命名為 **CModule**。 |
-   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<登錄名稱\>.azurecr.io/cmodule。 |
+   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/cmodule。 |
 
    ![提供 Docker 映像存放庫](./media/tutorial-c-module/repository.png)
 
@@ -86,8 +86,10 @@ ms.locfileid: "76760942"
 
 環境檔案會儲存容器登錄的認證，並與 IoT Edge 執行階段共用這些認證。 執行階段需要有這些認證才能將私人映像提取到 IoT Edge 裝置。
 
+IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將這些認證填入到環境檔案中。 請查看您的認證是否已包含其中。 如果沒有，請立即新增：
+
 1. 在 VS Code 總管中，開啟 .env 檔案。
-2. 使用從 Azure Container Registry 複製過來的 [使用者名稱]  和 [密碼]  值來更新欄位。
+2. 使用從 Azure Container Registry 複製過來的 [使用者名稱] 和 [密碼] 值來更新欄位。
 3. 儲存這個檔案。
 
 ### <a name="select-your-target-architecture"></a>選取您的目標架構
@@ -106,7 +108,7 @@ ms.locfileid: "76760942"
 
    1. 下載 [Parson GitHub 存放庫](https://github.com/kgabis/parson)。 將 **parson.c** 和 **parson.h** 檔案複製到 **CModule** 資料夾中。
 
-   2. 開啟 [模組]   > [CModule]   > [CMakeLists.txt]  。 在檔案頂端匯入 Parson 檔案，作為名為 **my_parson** 的程式庫。
+   2. 開啟 [模組] > [CModule] > [CMakeLists.txt]。 在檔案頂端匯入 Parson 檔案，作為名為 **my_parson** 的程式庫。
 
       ```txt
       add_library(my_parson
@@ -119,7 +121,7 @@ ms.locfileid: "76760942"
 
    4. 儲存 **CMakeLists.txt** 檔案。
 
-   5. 開啟 [模組]   > [CModule]   > [main.c]  。 在 Include 陳述式清單底部新增包含 `parson.h` 的新陳述式，以支援 JSON：
+   5. 開啟 [模組] > [CModule] > [main.c]。 在 Include 陳述式清單底部新增包含 `parson.h` 的新陳述式，以支援 JSON：
 
       ```c
       #include "parson.h"
@@ -292,9 +294,9 @@ ms.locfileid: "76760942"
 
 在上一節中，您已建立 IoT Edge 解決方案，並在 CModule 中新增了程式碼，以篩選出回報的機器溫度在可接受限制內的訊息。 現在，您需要建置容器映像形式的解決方案，並將它推送到容器登錄。
 
-1. 選取 [檢視]   > [終端機]  ，以開啟 VS Code 終端機。
+1. 選取 [檢視] > [終端機]，以開啟 VS Code 終端機。
 
-1. 在終端機中輸入下列命令來登入 Docker。 使用您 Azure 容器登錄中的使用者名稱、密碼和登入伺服器登入。 您可以在 Azure 入口網站中，從登錄的 [存取金鑰]  區段擷取這些值。
+2. 在終端機中輸入下列命令來登入 Docker。 使用您 Azure 容器登錄中的使用者名稱、密碼和登入伺服器登入。 您可以在 Azure 入口網站中，從登錄的 [存取金鑰] 區段擷取這些值。
 
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -302,21 +304,23 @@ ms.locfileid: "76760942"
 
    您可能會收到安全性警告，建議您使用 `--password-stdin`。 雖然建議生產案例使用該最佳做法，但是不在本教學課程的討論範圍內。 如需詳細資訊，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 參考。
 
-1. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]  。
+3. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]。
 
    建置和推送命令會啟動三項作業。 首先，它會在解決方案中建立名為 **config** 的新資料夾，以保存完整部署資訊清單 (根據部署範本中的資訊建立)，以及其他解決方案檔案。 接著，它會執行 `docker build`，以根據目標架構的適當 dockerfile 建置容器映像。 然後，它會執行 `docker push` 以將映像存放庫推送至您的容器登錄。
 
+   此程序第一次進行時可能需要幾分鐘的時間，但下一次執行命令時速度就會變快。
+
 ## <a name="deploy-modules-to-device"></a>將模組部署到裝置
 
-使用 Visual Studio Code 總管和 Azure IoT Tools 擴充功能，將模組專案部署到您的 IoT Edge 裝置。 您已備妥您的案例所需的部署資訊清單，即 config 資料夾中的 **deployment.json** 檔案。 現在您只需選取要接收部署的裝置即可。
+使用 Visual Studio Code 總管和 Azure IoT Tools 擴充功能，將模組專案部署到您的 IoT Edge 裝置。 您已備妥您的案例所需的部署資訊清單，即 config 資料夾中的 **deployment.amd64.json** 檔案。 現在您只需選取要接收部署的裝置即可。
 
 請確定您的 IoT Edge 裝置已啟動並執行。
 
-1. 在 Visual Studio Code 總管中，展開 [Azure IoT 中樞裝置]  區段來查看您的 IoT 裝置清單。
+1. 在 Visual Studio Code 總管中，展開 [Azure IoT 中樞/裝置] 區段來查看您的 IoT 裝置清單。
 
-2. 以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [建立單一裝置的部署]  。
+2. 以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [建立單一裝置的部署]。
 
-3. 選取 **config** 資料夾中的 **deployment.json** 檔案，然後按一下 [選取 Edge 部署資訊清單]  。 請勿使用 deployment.template.json 檔案。
+3. 選取 **config** 資料夾中的 **deployment.amd64.json** 檔案，然後按一下 [選取 Edge 部署資訊清單]。 請勿使用 deployment.template.json 檔案。
 
 4. 按一下 [重新整理] 按鈕。 您應該會看到新的 **CModule** 正在與 **SimulatedTemperatureSensor** 模組以及 **$edgeAgent** 和 **$edgeHub** 一起執行。
 
@@ -324,11 +328,11 @@ ms.locfileid: "76760942"
 
 在您將部署資訊清單套用至 IoT Edge 裝置後，裝置的 IoT Edge 執行階段即會收集新的部署資訊，並開始在裝置上執行。 裝置上任何執行中、但未包含在部署資訊清單中的模組都會停止。 裝置中遺漏的任何模組都會啟動。
 
-您可以使用 Visual Studio Code 總管的 [Azure IoT 中樞裝置]  區段，檢視 IoT Edge 裝置的狀態。 請展開裝置的詳細資料，以查看已部署且執行中的模組清單。
+您可以使用 Visual Studio Code 總管的 [Azure IoT 中樞/裝置] 區段，檢視 IoT Edge 裝置的狀態。 請展開裝置的詳細資料，以查看已部署且執行中的模組清單。
 
-1. 在 Visual Studio Code 總管中，以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [開始監視內建事件端點]  。
+1. 在 Visual Studio Code 總管中，以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [開始監視內建事件端點]。
 
-2. 檢視送達 IoT 中樞的訊息。 訊息可能需要一段時間才能送達，因為 IoT Edge 裝置必須接收其新的部署和啟動所有模組。 然後，我們對 CModule 程式碼所做的變更會等到機器溫度達到 25 度時才會傳送訊息。 它也會將 [警示]  訊息類型新增至任何觸達該溫度閾值的訊息。
+2. 檢視送達 IoT 中樞的訊息。 訊息可能需要一段時間才能送達，因為 IoT Edge 裝置必須接收其新的部署和啟動所有模組。 然後，我們對 CModule 程式碼所做的變更會等到機器溫度達到 25 度時才會傳送訊息。 它也會將 [警示] 訊息類型新增至任何觸達該溫度閾值的訊息。
 
    ![檢視送達 IoT 中樞的訊息](./media/tutorial-c-module/view-d2c-message.png)
 
@@ -338,13 +342,13 @@ ms.locfileid: "76760942"
 
 1. 在 Visual Studio Code 中，展開您 IoT Edge 裝置底下的詳細資料，以查看執行中的模組。
 
-2. 以滑鼠右鍵按一下 **CModule** 並選取 [編輯模組對應項]  。
+2. 以滑鼠右鍵按一下 **CModule** 並選取 [編輯模組對應項]。
 
 3. 在所需的屬性中尋找 **TemperatureThreshold**。 將其值變更為高於最近報告溫度 5 到 10 度的新溫度。
 
 4. 儲存模組對應項檔案。
 
-5. 以滑鼠右鍵按一下模組對應項編輯窗格中的任意位置，然後選取 [更新模組對應項]  。
+5. 以滑鼠右鍵按一下模組對應項編輯窗格中的任意位置，然後選取 [更新模組對應項]。
 
 6. 監視傳入的裝置到雲端訊息。 在新的溫度閾值送達前，您應該會看到訊息停止。
 

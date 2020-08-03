@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: cd4128328ac0c3e9f03ecc80abb6e7b17537b2ee
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483052"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086790"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教學課程：在 Azure 中為 RHEL 虛擬機器上的 SQL Server 設定可用性群組 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -497,7 +497,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>為隔離代理程式建立自訂角色
 
-依照教學課程的指示，[使用 Azure CLI 為 Azure 資源建立自訂角色](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role)。
+遵循教學課程來[使用 Azure CLI 建立 Azure 自訂角色](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role)。
 
 您的 json 檔案應會顯示如下：
 
@@ -571,7 +571,7 @@ az role definition create --role-definition "<filename>.json"
 5. 按一下 [新增角色指派]
 6. 從 [角色] 清單中選取角色 `Linux Fence Agent Role-<username>`
 7. 在 [選取] 清單中，輸入您先前建立的應用程式名稱 `<resourceGroupName>-app`
-8. 按一下 [儲存] 
+8. 按一下 [儲存]
 9. 對所有叢集節點重複上述步驟。
 
 ### <a name="create-the-stonith-devices"></a>建立 STONITH 裝置
@@ -951,17 +951,17 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 
 1. 根據稍早選擇的環境，使用下列其中一個命令，在可用性群組 `ag1` 中建立資源 `ag_cluster`。
 
-      **RHEL 7** 
+    **RHEL 7**
   
-        ```bash
-        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
-        ```
+    ```bash
+    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
+    ```
 
-      **RHEL 8** 
+    **RHEL 8**
   
-        ```bash
-        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
-        ```
+    ```bash
+    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
+    ```
 
 2. 檢查並確定您的資源已連線，然後再繼續使用下列命令：
 

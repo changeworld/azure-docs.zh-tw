@@ -175,6 +175,22 @@
               href: roles-custom-available-permissions.md
             - name: 委派應用程式管理權限
               href: roles-delegate-app-roles.md
+        - name: 使用群組來管理角色指派
+          items:
+            - name: 群組型角色指派預覽
+              href: roles-groups-concept.md
+            - name: 建立可指派角色的群組
+              href: roles-groups-create-eligible.md
+            - name: 將角色指派給群組
+              href: roles-groups-assign-role.md
+            - name: 從群組移除角色指派
+              href: roles-groups-remove-assignment.md
+            - name: 檢視群組的角色指派
+              href: roles-groups-view-assignments.md
+            - name: 讓群組符合 PIM 中角色的資格
+              href: roles-groups-pim-eligible.md
+            - name: 常見問題集和疑難排解
+              href: roles-groups-faq-troubleshooting.md
         - name: 依工作區分的最低特殊權限角色
           href: roles-delegate-by-task.md
         - name: Microsoft 365 角色
@@ -189,7 +205,7 @@
           items:
             - name: 系統管理單位概觀
               href: directory-administrative-units.md
-            - name: 新增及管理 AU
+            - name: 新增和管理 AU
               href: roles-admin-units-manage.md
             - name: 在 AU 中新增及管理使用者
               href: roles-admin-units-add-manage-users.md

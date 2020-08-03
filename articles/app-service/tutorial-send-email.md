@@ -4,12 +4,12 @@ description: 了解如何從您的 App Service 應用程式叫用商務流程。
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: a8b94d626916b00d75eea3fea0567fa33df3382c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 2b478ae75c8be978ea93a493b65dafdc7756c4b6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083237"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教學課程：傳送電子郵件並從 App Service 叫用其他商務流程
 
@@ -17,7 +17,7 @@ ms.locfileid: "82562299"
 
 - 傳送交易的確認電子郵件
 - 將使用者新增至 Facebook 群組
-- 連線到第三方系統，例如 SAP、SalesForce 等等。
+- 連線到第三方系統，例如 SAP、Salesforce 等等。
 - 交換標準 B2B 訊息
 
 在本教學課程中，您會使用 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)，從 App Service 應用程式透過 Gmail 傳送電子郵件。 還有其他方法可以從 Web 應用程式傳送電子郵件，例如您的語言架構所提供的 SMTP 設定。 不過，Logic Apps 為您的 App Service 應用程式帶來更多功效，但不會增加程式碼的複雜度。 Logic Apps 針對大多數熱門的商務整合提供了簡單的設定介面，而您的應用程式可以隨時使用 HTTP 要求進行呼叫。
@@ -57,10 +57,10 @@ ms.locfileid: "82562299"
 1. 在 [Azure 入口網站](https://portal.azure.com)中，遵循[建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)中的指示，建立空的邏輯應用程式。 當您看到 [Logic Apps 設計工具]  時，請回到本教學課程。
 1. 在 Logic Apps 設計工具的啟動顯示頁面中，選取 [從一般觸發程序開始]  之下的 [收到 HTTP 要求時]  。
 
-    ![](./media/tutorial-send-email/receive-http-request.png)
-1. 在 [收到 HTTP 要求時]  的對話方塊中，選取 [使用範例承載來產生結構描述]  。
+    ![顯示 Logic Apps Designer 啟動顯示畫面已反白顯示 [收到 HTTP 要求時] 的螢幕擷取畫面。](./media/tutorial-send-email/receive-http-request.png)
+1. 在 [收到 HTTP 要求時] 的對話方塊中，選取 [使用範例承載來產生結構描述]。
 
-    ![](./media/tutorial-send-email/generate-schema-with-payload.png)
+    ![顯示已選取 [收到 HTTP 要求時] 對話方塊和 [使用範例承載來產生結構描述] 選項的螢幕擷取畫面。 ](./media/tutorial-send-email/generate-schema-with-payload.png)
 
 1. 將下列範例 JSON 複製到文字方塊中，然後選取 [完成]  。
 
@@ -77,7 +77,7 @@ ms.locfileid: "82562299"
 
     您現在可以看到 HTTP 要求觸發程序的 URL。 選取複製圖示進行複製，以供日後使用。
 
-    ![](./media/tutorial-send-email/http-request-url.png)
+    ![反白顯示複製圖示以複製 HTTP 要求觸發程序 URL 的螢幕擷取畫面。](./media/tutorial-send-email/http-request-url.png)
 
     此 HTTP 要求定義可觸發您想要在此邏輯應用程式中執行的任何一切，也就是 Gmail 或任何其他項目。 稍後您將在 App Service 應用程式中叫用此 URL。 如需要求觸發程序的詳細資訊，請參閱 [HTTP 要求/回應參考](../connectors/connectors-native-reqres.md)。
 
@@ -87,18 +87,18 @@ ms.locfileid: "82562299"
     > 您可以搜尋其他類型的整合，例如 SendGrid、MailChimp、Office 365 和 SalesForce。 如需詳細資訊，請參閱 [Logic Apps 文件](https://docs.microsoft.com/azure/logic-apps/)。
 1. 在 [Gmail]  對話方塊中，選取 [登入]  並登入您想用來傳送電子郵件的 Gmail 帳戶。
 
-    ![](./media/tutorial-send-email/gmail-sign-in.png)
+    ![顯示 Gmail 對話方塊的螢幕擷取畫面，您使用此對話方塊來登入要從中傳送電子郵件的 Gmail 帳戶。](./media/tutorial-send-email/gmail-sign-in.png)
 
 1. 登入後，按一下 [收件人]  文字方塊，動態內容對話方塊就會自動開啟。
 
 1. 選取 [收到 HTTP 要求時]  動作旁邊的 [更多資訊]  。
 
-    ![](./media/tutorial-send-email/expand-dynamic-content.png)
+    ![顯示 [收到 HTTP 要求時] 動作旁 [查看更多] 按鈕的螢幕擷取畫面。](./media/tutorial-send-email/expand-dynamic-content.png)
 
     您現在應會看到您稍早使用的範例 JSON 資料中的三個屬性。 在此步驟中，您會使用 HTTP 要求中的這些屬性來建構電子郵件。
 1. 因為您要選取 [收件人]  欄位的值，請選擇 [電子郵件]  。 如有需要，請按一下 [新增動態內容]  以關閉動態內容對話方塊。
 
-    ![](./media/tutorial-send-email/hide-dynamic-content.png)
+    ![反白顯示 [電子郵件] 選項和 [新增動態競爭] 選項的螢幕擷取畫面。](./media/tutorial-send-email/hide-dynamic-content.png)
 
 1. 在 [新增參數]  下拉式清單中，選取 [主旨]  和 [本文]  。
 
@@ -109,15 +109,15 @@ ms.locfileid: "82562299"
     > [!TIP]
     > 如果您想要直接在電子郵件本文中編輯 HTML 內容，請選取 [Logic Apps 設計工具] 視窗頂端的 [程式碼檢視]  。 只要確定您保留動態內容程式碼 (例如 `@{triggerBody()?['due']}`)
     >
-    > ![](./media/tutorial-send-email/edit-rich-html-email.png) 
+    > ![顯示程式碼檢視以直接在電子郵件內文中檢視 HTML 內容的螢幕擷取畫面。](./media/tutorial-send-email/edit-rich-html-email.png) 
 
 1. 接下來，將非同步 HTTP 回應新增至 HTTP 觸發程序。 在 HTTP 觸發程序與 Gmail 動作之間，按一下 **+** 號，然後選取 [新增平行分支]  。
 
-    ![](./media/tutorial-send-email/add-http-response.png)
+    ![反白顯示 + 符號 和 [新增平行分支] 選項的螢幕擷取畫面。](./media/tutorial-send-email/add-http-response.png)
 
-1. 在搜尋方塊中，搜尋**回應**，然後選取 [回應]  動作。
+1. 在搜尋方塊中，搜尋**回應**，然後選取 [回應] 動作。
 
-    ![](./media/tutorial-send-email/choose-response-action.png)
+    ![反白顯示搜尋列和回應動作的螢幕擷取畫面。](./media/tutorial-send-email/choose-response-action.png)
 
     根據預設，回應動作會傳送 HTTP 200。 這對本教學課程而言夠好。 如需詳細資訊，請參閱 [HTTP 要求/回應參考](../connectors/connectors-native-reqres.md)。
 

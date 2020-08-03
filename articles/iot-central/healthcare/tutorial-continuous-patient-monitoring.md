@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 704c56745ad89e9ed2f79e8a863f1d0bc9845bf9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77021282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001820"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>教學課程：部署和逐步解說持續性患者監視應用程式範本
 
@@ -85,7 +85,10 @@ ms.locfileid: "77021282"
 >[!div class="mx-imgBorder"] 
 >![Smart Vitals Patch 裝置範本](media/smart-vitals-device-template.png)
 
-如果您按一下 [裝置群組]  索引標籤，就會發現這些裝置範本會自動建立裝置群組。
+### <a name="device-groups"></a>裝置群組 
+裝置群組可讓您以邏輯方式將一組裝置分組，然後執行大量查詢或作業。 
+
+如果您按一下 [裝置群組] 索引標籤，就會看到我們已為應用程式中的每個裝置範本建立一些預設的裝置群組。 您會注意到我們也建立了兩個額外的範例裝置群組，稱為「佈建裝置」和「韌體過期裝置」。 我們將使用這些範例裝置群組作為輸入，以執行某些 [作業](#jobs)。
 
 ### <a name="rules"></a>規則
 
@@ -100,22 +103,33 @@ ms.locfileid: "77021282"
 >[!div class="mx-imgBorder"] 
 >![護膝高溫規則](media/brace-temp-rule.png)
 
+### <a name="jobs"></a>工作
+
+作業可讓您在一組裝置上執行大量作業，使用[裝置群組](#device-groups)作為輸入。 我們已植入應用程式範本，其中有兩個解決方案操作員可能需要在裝置生命週期的某個時間點執行的範例作業：
+* **更新護膝韌體**：此工作會在裝置群組「過期韌體裝置」中尋找裝置，並執行命令以將這些裝置更新為護膝的最新韌體版本。 此範例作業假設裝置具有可接收「更新」命令，並直接從雲端提取韌體檔案的功能。  
+
+* **重新佈建裝置**：如果您有一組最近交還給醫院的裝置，而且需要針對下一組患者重新佈建，可以執行此作業來大量更新您的佈建裝置。 在此情況下，我們會從名為「佈建裝置」的裝置群組中取得所有裝置，並會執行命令以進行佈建。 
+
 ### <a name="devices"></a>裝置
 
-按一下 [裝置]  索引標籤，然後選取 [智慧型護膝]  的執行個體。 您會看到三個檢視畫面，其可深入研究所選特定裝置的相關資訊。 在建置裝置的裝置範本時會建立和發佈這些檢視，這表示其會在您連線或模擬的所有裝置上保持一致。
+按一下 [裝置] 索引標籤，然後選取 [智慧型護膝] 的執行個體。 您會看到三個檢視畫面，其可深入研究所選特定裝置的相關資訊。 在建置裝置的裝置範本時會建立和發佈這些檢視，這表示其會在您連線或模擬的所有裝置上保持一致。
 
-[儀表板]  可概覽來自裝置的遙測資料和屬性，主要供操作員使用。
+[儀表板] 可概覽來自裝置的遙測資料和屬性，主要供操作員使用。
 
-[屬性]  索引標籤可讓您編輯雲端屬性和讀取/寫入裝置屬性。
+[屬性] 索引標籤可讓您編輯雲端屬性和讀取/寫入裝置屬性。
 
-[命令]  索引標籤可讓您執行已模型化為裝置範本一部分的命令。
+[命令] 索引標籤可讓您執行已模型化為裝置範本一部分的命令。
 
 >[!div class="mx-imgBorder"] 
 >![護膝檢視](media/knee-brace-dashboard.png)
 
+### <a name="data-export"></a>資料匯出
+
+資料匯出可讓您將 IoT Central 的裝置資料持續匯出至其他 Azure 服務，包括 [Azure API for FHIR](concept-continuous-patient-monitoring-architecture.md#export-to-azure-api-for-fhir)。
+
 ## <a name="clean-up-resources"></a>清除資源
 
-如果您不打算繼續使用此應用程式，請前往 [系統管理] > [應用程式設定]  ，然後按一下 [刪除]  以刪除應用程式。
+如果您不打算繼續使用此應用程式，請前往 [系統管理] > [應用程式設定]，然後按一下 [刪除] 以刪除應用程式。
 
 >[!div class="mx-imgBorder"] 
 >![刪除應用程式](media/admin-delete.png)

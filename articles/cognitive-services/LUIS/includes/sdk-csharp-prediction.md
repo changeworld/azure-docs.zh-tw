@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 4bf86c616420bb049e1d7a82ad0e942e6eb7b36f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732046"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369240"
 ---
 使用適用於 .NET 的 Language Understanding (LUIS) 預測用戶端程式庫可以：
 
@@ -31,46 +31,6 @@ ms.locfileid: "81732046"
 * LUIS 應用程式識別碼 - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公用 IoT 應用程式識別碼。 快速入門程式碼中使用的使用者查詢是該應用程式所專屬。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-an-environment-variable"></a>建立環境變數
-
-使用您的金鑰和資源的名稱，建立兩個環境變數以進行驗證：
-
-* `LUIS_PREDICTION_KEY` - 用於驗證您要求的資源金鑰。
-* `LUIS_ENDPOINT_NAME` - 與您金鑰相關聯的資源名稱。
-
-請使用適合您作業系統的指示。
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_PREDICTION_KEY <replace-with-your-resource-key>
-setx LUIS_ENDPOINT_NAME <replace-with-your-resource-name>
-```
-
-新增環境變數之後，請重新啟動主控台視窗。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-新增環境變數之後，從主控台視窗執行 `source ~/.bashrc`，讓變更生效。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-編輯 `.bash_profile`，然後新增環境變數：
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-新增環境變數之後，從主控台視窗執行 `source .bash_profile`，讓變更生效。
-
----
 
 ### <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
 
@@ -134,13 +94,7 @@ Language Understanding (LUIS) 預測執行階段用戶端是向 Azure 進行驗�
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-1. 建立金鑰、名稱和應用程式識別碼的變數：
-
-    此變數用來管理從名為 `LUIS_PREDICTION_KEY` 的環境變數中提取的撰寫金鑰。 如果您在應用程式啟動後才建立環境變數，則執行該應用程式的編輯器、IDE 或殼層必須先關閉再重新載入後，才能存取該變數。 方法會於稍後建立。
-
-    建立用來保存資源名稱的變數 `LUIS_ENDPOINT_NAME`。
-
-    建立應用程式識別碼的變數，作為名為 `LUIS_APP_ID` 的環境變數。 將環境變數設定為公用 IoT 應用程式：
+1. 建立金鑰、資源名稱、應用程式識別碼和發佈位置的變數。 將應用程式識別碼設定為公用 IoT 應用程式：
 
     **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`**
 

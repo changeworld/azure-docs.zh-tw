@@ -12,12 +12,12 @@ metadata:
   ms.date: 11/08/2019
   author: curtand
   ms.author: curtand
-  ms.openlocfilehash: 242bbfa3143827162b087e231d99b6de451d4908
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 716551f4b298a9a7be2425fdd4cd8246afb5a924
+  ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78272979"
+  ms.lasthandoff: 07/31/2020
+  ms.locfileid: "87503458"
 landingContent:
 - title: 關於使用者、群組、角色和授權
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
     links:
     - text: 委派系統管理
       url: roles-concept-delegation.md
-    - text: 比較 Azure RBAC 角色與 Azure AD 管理員角色
+    - text: 比較 Azure 角色與 Azure AD 管理員角色
       url: https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
 - title: 開始使用
   linkLists:

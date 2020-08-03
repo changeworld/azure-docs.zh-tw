@@ -1,5 +1,5 @@
 ---
-title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 F5 整合 | Microsoft Docs
+title: 教學課程：Azure AD 單一登入與 F5 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 F5 之間的單一登入。
 services: active-directory
 documentationCenter: na
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a24ec98e9d5978a6f896715b25bd6b08d4a0262d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 8d64774bd76a88c2ee8c1981fb3509c7265f4736
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232180"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017324"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 F5 整合
 
@@ -282,45 +282,45 @@ ms.locfileid: "86232180"
 
 您可以在 Access Policy Manager (APM) 中設定 Active Directory AAA 伺服器，以指定 APM 用來驗證使用者的網域控制站和認證。
 
-1.    在 [主要] 索引標籤上，按一下 [存取原則] > [AAA 伺服器] > [Active Directory]。 [Active Directory 伺服器清單] 畫面隨即開啟。
+1. 在 [主要] 索引標籤上，按一下 [存取原則] > [AAA 伺服器] > [Active Directory]。 [Active Directory 伺服器清單] 畫面隨即開啟。
 
-2.    按一下 [建立]。 [新增伺服器屬性] 畫面隨即開啟。
+2. 按一下 [建立]。 [新增伺服器屬性] 畫面隨即開啟。
 
-3.    在 [名稱] 欄位中，輸入驗證伺服器的唯一名稱。
+3. 在 [名稱] 欄位中，輸入驗證伺服器的唯一名稱。
 
-4.    在 [網域名稱] 欄位中，輸入 Windows 網域的名稱。
+4. 在 [網域名稱] 欄位中，輸入 Windows 網域的名稱。
 
-5.    針對 [伺服器連線] 設定中，選取下列其中一個選項：
+5. 針對 [伺服器連線] 設定中，選取下列其中一個選項：
 
-    * 選取 [使用集區] 以設定 AAA 伺服器的高可用性。
+   * 選取 [使用集區] 以設定 AAA 伺服器的高可用性。
 
-    * 選取 [直接]，以設定 AAA 伺服器的獨立功能。
+   * 選取 [直接]，以設定 AAA 伺服器的獨立功能。
 
-6.    如果您選取 [直接]，請在 [網域控制站] 欄位中輸入名稱。
+6. 如果您選取 [直接]，請在 [網域控制站] 欄位中輸入名稱。
 
-7.    如果您選取 [使用集區]，請設定集區：
+7. 如果您選取 [使用集區]，請設定集區：
 
-    * 在 [網域控制站集區名稱] 欄位中輸入名稱。
+   * 在 [網域控制站集區名稱] 欄位中輸入名稱。
 
-    * 輸入各個網域控制站的 IP 位址和主機名稱，然後按一下 [新增] 按鈕，以指定集區中的 [網域控制站]。
+   * 輸入各個網域控制站的 IP 位址和主機名稱，然後按一下 [新增] 按鈕，以指定集區中的 [網域控制站]。
 
-    * 若要監視 AAA 伺服器的健康情況，您可以選取健康情況監視器：在此案例中，只有 **gateway_icmp** 監視器是適用選項；您可以從 [伺服器集區監視] 清單中選取監視器。
+   * 若要監視 AAA 伺服器的健康情況，您可以選取健康情況監視器：在此案例中，只有 **gateway_icmp** 監視器是適用選項；您可以從 [伺服器集區監視] 清單中選取監視器。
 
-8.    在 [管理員名稱] 欄位中，針對具有 Active Directory 管理權限的管理員，輸入區分大小寫的名稱。 APM 會使用 [AD 查詢] 的 [管理員名稱] 和 [管理員密碼] 欄位中的資訊。 如果已設定 Active Directory 以進行匿名查詢，則不需要提供管理員名稱。 否則，APM 需要有足夠權限可繫結至 Active Directory 伺服器、提取使用者群組資訊，以及提取 Active Directory 密碼原則的帳戶，以支援密碼相關功能。 (例如，如果您在 [AD 查詢] 動作中選取了 [在密碼到期前提示使用者變更密碼] 選項，APM 就必須提取密碼原則。)如果您未在此設定中提供管理員帳戶資訊，APM 將會使用使用者帳戶來提取資訊。 這適用於使用者帳戶有足夠的權限時。
+8. 在 [管理員名稱] 欄位中，針對具有 Active Directory 管理權限的管理員，輸入區分大小寫的名稱。 APM 會使用 [AD 查詢] 的 [管理員名稱] 和 [管理員密碼] 欄位中的資訊。 如果已設定 Active Directory 以進行匿名查詢，則不需要提供管理員名稱。 否則，APM 需要有足夠權限可繫結至 Active Directory 伺服器、提取使用者群組資訊，以及提取 Active Directory 密碼原則的帳戶，以支援密碼相關功能。 (例如，如果您在 [AD 查詢] 動作中選取了 [在密碼到期前提示使用者變更密碼] 選項，APM 就必須提取密碼原則。)如果您未在此設定中提供管理員帳戶資訊，APM 將會使用使用者帳戶來提取資訊。 這適用於使用者帳戶有足夠的權限時。
 
-9.    在 [管理員密碼] 欄位中，輸入與網域名稱相關聯的管理員密碼。
+9. 在 [管理員密碼] 欄位中，輸入與網域名稱相關聯的管理員密碼。
 
-10.    在 [驗證管理員密碼] 欄位中，再次輸入與 [網域名稱] 設定相關聯的管理員密碼。
+10. 在 [驗證管理員密碼] 欄位中，再次輸入與 [網域名稱] 設定相關聯的管理員密碼。
 
-11.    在 [群組快取存留期] 欄位中，輸入天數。 預設存留期為 30 天。
+11. 在 [群組快取存留期] 欄位中，輸入天數。 預設存留期為 30 天。
 
-12.    在 [密碼安全性物件快取存留期] 欄位中，輸入天數。 預設存留期為 30 天。
+12. 在 [密碼安全性物件快取存留期] 欄位中，輸入天數。 預設存留期為 30 天。
 
-13.    從 [Kerberos 預先驗證加密類型] 清單中，選取加密類型。 預設值為 [無]。 如果您指定加密類型，則 BIG-IP 系統會在第一個驗證服務要求 (AS-REQ) 封包中包含 Kerberos 預先驗證資料。
+13. 從 [Kerberos 預先驗證加密類型] 清單中，選取加密類型。 預設值為 [無]。 如果您指定加密類型，則 BIG-IP 系統會在第一個驗證服務要求 (AS-REQ) 封包中包含 Kerberos 預先驗證資料。
 
-14.    在 [逾時] 欄位中，輸入 AAA 伺服器的逾時間隔 (以秒為單位)。 (這項設定是選擇性的。)
+14. 在 [逾時] 欄位中，輸入 AAA 伺服器的逾時間隔 (以秒為單位)。 (這項設定是選擇性的。)
 
-15.    按一下 [完成]。 新的伺服器會顯示在清單上。 這會將新的 Active Directory 伺服器新增至 [Active Directory 伺服器] 清單。
+15. 按一下 [完成]。 新的伺服器會顯示在清單上。 這會將新的 Active Directory 伺服器新增至 [Active Directory 伺服器] 清單。
 
     ![F5 (Kerberos) 設定](./media/kerbf5-tutorial/configure17.png)
 

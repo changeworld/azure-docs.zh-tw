@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: 3311a9a92cc5e63a6fa20e4dd0d2af00fdacc95c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ac3e163ffefcb7b164860b0c4fa42edc866227e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194479"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065635"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教學課程：在 Synapse Studio 中建立 Apache Spark 作業定義
 
@@ -24,7 +24,7 @@ ms.locfileid: "85194479"
 
 * 建立適用於 PySpark (Python) 的 Apache Spark 作業定義
 * 建立適用於 Spark (Scala) 的 Apache Spark 作業定義
-* 建立適用於 .NET Spark (C#) 的 Apache Spark 作業定義
+* 建立適用於 .NET Spark (C#/F#) 的 Apache Spark 作業定義
 * 以批次作業的形式提交 Apache Spark 作業定義
 * 將 Apache Spark 作業定義新增至管線
 
@@ -42,7 +42,7 @@ ms.locfileid: "85194479"
 
 1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
 
-2. 您可以移至[用來建立 Apache Spark 作業定義的範例檔案](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)，以下載 **wordcount.jar** 和 **shakespear.txt**。 然後，將這些檔案上傳至 Azure 儲存體：按一下 [資料]、選取 [儲存體帳戶]，然後將相關檔案上傳到您的 ADLS Gen2 檔案系統。 如果您的檔案已在 Azure 儲存體中，請略過此步驟。 
+2. 您可以移至[用來建立 Apache Spark 作業定義的範例檔案](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)，以下載 **wordcount.py** 和 **shakespear.txt**。 然後，將這些檔案上傳至 Azure 儲存體：按一下 [資料]、選取 [儲存體帳戶]，然後將相關檔案上傳到您的 ADLS Gen2 檔案系統。 如果您的檔案已在 Azure 儲存體中，請略過此步驟。 
 
      ![上傳 Python 檔案](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -57,9 +57,9 @@ ms.locfileid: "85194479"
      |  屬性   | 描述   |  
      | ----- | ----- |  
      |作業定義名稱| 輸入 Spark 作業定義的名稱。 此名稱可隨時更新，直到作業定義發佈出去為止。 範例： `job definition sample`|
-     |主要定義檔| 用於作業的主要檔案。 從您的儲存體選取 PY 檔案。 您可以選取 [上傳檔案]，以將檔案上傳至儲存體帳戶。 範例： `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/fileexists.py`|
-     |命令列引數| 作業的選擇性引數。 範例： `shakespeare.txt`|
-     |參考檔案| 主要定義檔中用來作為參考的其他檔案。 您可以選取 [上傳檔案]，以將檔案上傳至儲存體帳戶。 範例： `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/shakespeare.txt`|
+     |主要定義檔| 用於作業的主要檔案。 從您的儲存體選取 PY 檔案。 您可以選取 [上傳檔案]，以將檔案上傳至儲存體帳戶。 範例： `abfss://…/path/to/wordcount.py`|
+     |命令列引數| 作業的選擇性引數。 範例： `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |參考檔案| 主要定義檔中用來作為參考的其他檔案。 您可以選取 [上傳檔案]，以將檔案上傳至儲存體帳戶。 |
      |Spark 集區| 作業將會提交至選取的 Apache Spark 集區。|
      |Spark 版本| Apache Spark 集區正在執行的 Apache Spark 版本。|
      |執行程式| 要在指定 Apache Spark 集區中提供給作業使用的執行程式數目。|
@@ -92,10 +92,10 @@ ms.locfileid: "85194479"
      |  屬性   | 描述   |  
      | ----- | ----- |  
      |作業定義名稱| 輸入 Spark 作業定義的名稱。 此名稱可隨時更新，直到作業定義發佈出去為止。 範例： `job definition sample`|
-     |主要定義檔| 用於作業的主要檔案。 從您的儲存體選取 JAR 檔案。 您可以選取 [上傳檔案]，以將檔案上傳至儲存體帳戶。 範例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/wordcount.jar`|
+     |主要定義檔| 用於作業的主要檔案。 從您的儲存體選取 JAR 檔案。 您可以選取 [上傳檔案]，以將檔案上傳至儲存體帳戶。 範例： `abfss://…/path/to/wordcount.jar`|
      |Main class name (主要類別名稱)| 主要定義檔中的完整識別碼或主要類別。 範例： `WordCount`|
-     |命令列引數| 作業的選擇性引數。 範例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/result`|
-     |參考檔案| 主要定義檔中用來作為參考的其他檔案。 您可以選取 [上傳檔案]，以將檔案上傳至儲存體帳戶。|
+     |命令列引數| 作業的選擇性引數。 範例： `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |參考檔案| 主要定義檔中用來作為參考的其他檔案。 您可以選取 [上傳檔案]  ，以將檔案上傳至儲存體帳戶。|
      |Spark 集區| 作業將會提交至選取的 Apache Spark 集區。|
      |Spark 版本| Apache Spark 集區正在執行的 Apache Spark 版本。|
      |執行程式| 要在指定 Apache Spark 集區中提供給作業使用的執行程式數目。|  
@@ -109,9 +109,9 @@ ms.locfileid: "85194479"
      ![發佈 Scala 定義](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
 
-## <a name="create-an-apache-spark-job-definition-for-net-sparkc"></a>建立適用於 .NET Spark (C#) 的 Apache Spark 作業定義
+## <a name="create-an-apache-spark-job-definition-for-net-sparkcf"></a>建立適用於 .NET Spark (C#/F#) 的 Apache Spark 作業定義
 
-在本節中，您會建立適用於 .NET Spark (C#) 的 Apache Spark 作業定義。
+在本節中，您會建立適用於 .NET Spark (C#/F#) 的 Apache Spark 作業定義。
  1. 開啟 [Azure Synapse Studio](https://web.azuresynapse.net/)。
 
  2. 您可以移至[用來建立 Apache Spark 作業定義的範例檔案](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET)，以下載 **wordcount.zip** 和 **shakespear.txt**。 然後，將這些檔案上傳至 Azure 儲存體：按一下 [資料]、選取 [儲存體帳戶]，然後將相關檔案上傳到您的 ADLS Gen2 檔案系統。 如果您的檔案已在 Azure 儲存體中，請略過此步驟。 
@@ -125,13 +125,14 @@ ms.locfileid: "85194479"
  4. 從 Apache Spark 作業定義主視窗的 [語言] 下拉式清單中，選取 [.NET Spark (C#/F#)]。
 
  5. 填入 Apache Spark 作業定義的資訊。 您可以複製範例資訊。
+    
      |  屬性   | 描述   |  
      | ----- | ----- |  
      |作業定義名稱| 輸入 Spark 作業定義的名稱。 此名稱可隨時更新，直到作業定義發佈出去為止。 範例： `job definition sample`|
-     |主要定義檔| 用於作業的主要檔案。 從儲存體中選取 .NET for Apache Spark 應用程式 (亦即，主要的可執行檔、包含使用者定義函式的 DLL，以及其他必要檔案) 所在的 ZIP 檔案。 您可以選取 [上傳檔案]，以將檔案上傳至儲存體帳戶。 範例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
+     |主要定義檔| 用於作業的主要檔案。 從儲存體中選取 .NET for Apache Spark 應用程式 (亦即，主要的可執行檔、包含使用者定義函式的 DLL，以及其他必要檔案) 所在的 ZIP 檔案。 您可以選取 [上傳檔案]，以將檔案上傳至儲存體帳戶。 範例： `abfss://…/path/to/wordcount.zip`|
      |主要可執行檔| 主要定義 ZIP 檔案中的主要可執行檔。 範例： `WordCount`|
-     |命令列引數| 作業的選擇性引數。 範例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/result`|
-     |參考檔案| 背景工作節點為了執行主要定義 ZIP 檔案中未包含的 .NET for Apache Spark 應用程式所需的其他檔案 (亦即，相依的 jar、其他的使用者定義函式 DLL，以及其他設定檔)。 您可以選取 [上傳檔案]，以將檔案上傳至儲存體帳戶。|
+     |命令列引數| 作業的選擇性引數。 範例： `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |參考檔案| 背景工作節點為了執行主要定義 ZIP 檔案中未包含的 .NET for Apache Spark 應用程式所需的其他檔案 (亦即，相依的 jar、其他的使用者定義函式 DLL，以及其他設定檔)。 您可以選取 [上傳檔案]  ，以將檔案上傳至儲存體帳戶。|
      |Spark 集區| 作業將會提交至選取的 Apache Spark 集區。|
      |Spark 版本| Apache Spark 集區正在執行的 Apache Spark 版本。|
      |執行程式| 要在指定 Apache Spark 集區中提供給作業使用的執行程式數目。|  

@@ -1,5 +1,5 @@
 ---
-title: Synapse Analytics SQL 資源耗用量
+title: Synapse SQL 資源耗用量
 description: 了解 Azure Synapse Analytics 中的 Synapse SQL 耗用量模型。
 services: synapse analytics
 author: vvasic-msft
@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: b81f1e49b2209d0a236f1fb453bb7fe679bb3608
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a358052d5f3959a236f29461890c989e77edb4dc
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112763"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369011"
 ---
-# <a name="azure-synapse-analytics-sql-resource-consumption"></a>Azure Synapse Analytics SQL 資源耗用量
+# <a name="synapse-sql-resource-consumption"></a>Synapse SQL 資源耗用量
 
 本文說明 Synapse SQL (預覽) 的資源耗用量模型。
 
@@ -99,7 +99,7 @@ SQL 集區是一個擴增系統，可以佈建大量的計算以及查詢相當�
 
 變更資料倉儲單位需要 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 中所述的權限。
 
-SQL DB 參與者和 SQL Server 參與者等 Azure 資源內建角色可以變更 DWU 設定。
+Azure 內建角色 (例如 SQL DB Contributor 和 SQL Server Contributor) 可以變更 DWU 設定。
 
 #### <a name="view-current-dwu-settings"></a>檢視目前的 DWU 設定
 

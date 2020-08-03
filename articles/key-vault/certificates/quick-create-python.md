@@ -1,5 +1,5 @@
 ---
-title: 快速入門 - 適用於 Python 的 Azure Key Vault 用戶端程式庫
+title: 快速入門 – Azure Key Vault Python 用戶端程式庫 – 管理憑證
 description: 了解如何使用 Python 用戶端程式庫，從 Azure Key Vault 建立、擷取和刪除憑證
 author: msmbaldwin
 ms.author: mbaldwin
@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 7c67bc77984af8a25c3514931ed0983df1751d5e
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: abbe07d96daf5848d01cd1f4943d4969fe1e59d9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85126122"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043721"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-python"></a>快速入門：適用於 Python 的 Azure Key Vault 用戶端程式庫
+# <a name="quickstart-azure-key-vault-certificates-client-library-for-python"></a>快速入門：適用於 Python 的 Azure Key Vault 憑證用戶端程式庫
 
 開始使用適用於 Python 的 Azure Key Vault 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
 
@@ -33,7 +33,7 @@ Azure 金鑰保存庫可協助保護雲端應用程式和服務所使用的密�
 
 - Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Python 2.7、3.5.3 或更新版本
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)
 
 本快速入門假設您是在 Linux 終端機視窗中執行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 

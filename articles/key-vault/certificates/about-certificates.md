@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5e014634ecb251f05710de16daee30d72dae619e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115670"
 ---
 # <a name="about-azure-key-vault-certificates"></a>關於 Azure Key Vault 憑證
 
@@ -81,16 +81,16 @@ Key Vault 憑證具有下列屬性：
 
 從頭建立 Key Vault 憑證時，必須提供原則。 原則會指定如何建立此 Key Vault 憑證版本，或下一個 Key Vault 憑證版本。 原則建立之後，在後續版本的建立作業中就不需要再次建立原則。 所有 Key Vault 憑證版本只會有一個原則執行個體。  
 
-概括而言，憑證原則包含下列資訊：  
+概括而言，憑證原則包含下列資訊 (其定義可在[這裡](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)找到)：  
 
 -   X509 憑證屬性：包含主體名稱、主體替代名稱，以及其他用來建立 X509 憑證要求的屬性。  
--   金鑰屬性：包含金鑰類型、金鑰長度及可匯出和重複使用的金鑰欄位。 這些欄位會指示金鑰保存庫如何產生金鑰。  
+-   金鑰屬性：包含金鑰類型、金鑰長度、可匯出和 ReuseKeyOnRenewal 欄位。 這些欄位會指示金鑰保存庫如何產生金鑰。  
 -   秘密屬性：包含用來產生秘密值的秘密屬性，例如可定址秘密的內容類型，進而擷取憑證作為秘密。  
 -   存留期動作：包含 KV 憑證的存留期動作。 每個存留期動作包含：  
 
      - 觸發程序：透過到期或存留期範圍百分比前的天數來指定  
 
-     - 動作：指定動作類型 – emailContacts  或 autoRenew   
+     - 動作：指定動作類型 – emailContacts  或 autoRenew  
 
 -   簽發者：要用來簽發 x509 憑證的憑證簽發者相關參數。  
 -   原則屬性：包含與原則相關聯的屬性  

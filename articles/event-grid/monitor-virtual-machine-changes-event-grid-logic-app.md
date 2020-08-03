@@ -6,15 +6,15 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: estfan, LADocs
 ms.topic: tutorial
-ms.date: 07/07/2020
-ms.openlocfilehash: 4edac3237f2eefaa98a6463bb0e720c0d884f0ca
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/20/2020
+ms.openlocfilehash: 91ff67f886dbf54b93e9b91822b5f8535ea77e06
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119407"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079193"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教學課程：使用 Azure 事件方格和 Logic Apps 監視虛擬機器的變更
 
@@ -32,7 +32,7 @@ ms.locfileid: "86119407"
 
 本教學課程會建立邏輯應用程式，可監視虛擬機器的變更，並傳送有關這些變更的電子郵件。 當您建立的邏輯應用程式具有 Azure 資源的事件訂用帳戶時，事件會透過 Event Grid 從該資源流向邏輯應用程式。 本教學課程會引導您建立此邏輯應用程式：
 
-![概觀 - 使用 Event Grid 和邏輯應用程式來監視虛擬機器](./media/monitor-virtual-machine-changes-event-grid-logic-app/monitor-virtual-machine-event-grid-logic-app-overview.png)
+![Logic Apps 設計工具的螢幕擷取畫面，顯示使用事件方格監視 VM 的工作流程。](./media/monitor-virtual-machine-changes-event-grid-logic-app/monitor-virtual-machine-event-grid-logic-app-overview.png)
 
 在本教學課程中，您會了解如何：
 
@@ -60,11 +60,11 @@ ms.locfileid: "86119407"
 
 1. 在主要 Azure 功能表中，選取 [建立資源]   > [整合]   > [邏輯應用程式]  。
 
-   ![建立邏輯應用程式](./media/monitor-virtual-machine-changes-event-grid-logic-app/azure-portal-create-logic-app.png)
+   ![Azure 入口網站的螢幕擷取畫面，顯示用來建立邏輯應用程式資源的按鈕。](./media/monitor-virtual-machine-changes-event-grid-logic-app/azure-portal-create-logic-app.png)
 
 1. 在 [邏輯應用程式]  之下，提供邏輯應用程式資源的相關資訊。 當您完成時，選取 [建立]  。
 
-   ![提供邏輯應用程式詳細資料](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
+   ![邏輯應用程式建立功能表的螢幕擷取畫面，顯示名稱、訂用帳戶、資源群組和位置等詳細資料。](./media/monitor-virtual-machine-changes-event-grid-logic-app/create-logic-app-for-event-grid.png)
 
    | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
@@ -78,7 +78,7 @@ ms.locfileid: "86119407"
 
 1. 在 [範本]  底下，選取 [空白邏輯應用程式]  。
 
-   ![選取邏輯應用程式範本](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-logic-app-template.png)
+   ![Logic Apps 範本的螢幕擷取畫面，顯示用來建立空白邏輯應用程式的選取項目。](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-logic-app-template.png)
 
    Logic Apps 設計工具現在會顯示[*觸發程序*](../logic-apps/logic-apps-overview.md#logic-app-concepts)，您可用於啟動邏輯應用程式。 每個邏輯應用程式都必須使用觸發程序啟動，而該觸發程序會在特定事件發生或符合特定條件時引發。 每次引發觸發程序時，Azure Logic Apps 會建立執行邏輯應用程式的工作流程執行個體。
 
@@ -88,18 +88,18 @@ ms.locfileid: "86119407"
 
 1. 在設計工具的搜尋方塊中，輸入 `event grid` 作為篩選條件。 從觸發程序清單中選取 [當資源事件發生時]  觸發程序。
 
-   ![選取此觸發程序：「在資源事件上」](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示資源事件中事件方格觸發程式的選取項目。](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger.png)
 
 1. 出現提示時，使用您的 Azure 帳戶認證登入 Azure 事件方格。 在 [租用戶]  清單中 (其中顯示與您的 Azure 訂用帳戶相關聯的 Azure Active Directory 租用戶)，檢查正確的租用戶是否出現，例如：
 
-   ![利用您的 Azure 認證登入](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示連線至事件方格的 Azure 登入提示。](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
    > 如果您已使用個人 Microsoft 帳戶登入，例如 @outlook.com 或 @hotmail.com，Event Grid 觸發程序可能無法正確顯示。 如需因應措施，請選取[與服務主體連線](../active-directory/develop/howto-create-service-principal-portal.md)，或以您與 Azure 訂用帳戶相關聯之 Azure Active Directory 的成員身分進行驗證，例如 user-name  @emailoutlook.onmicrosoft.com。
 
 1. 現在以邏輯應用程式訂閱發行者的事件。 提供如下表中所述的事件訂閱詳細資料，例如：
 
-   ![提供事件訂閱的詳細資料](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示發生資源事件時的觸發程式詳細資料編輯器。](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-trigger-details.png)
 
    | 屬性 | 必要 | 值 | 描述 |
    | -------- | -------- | ----- | ----------- |
@@ -112,7 +112,7 @@ ms.locfileid: "86119407"
 
 1. 儲存您的邏輯應用程式。 在設計工具的工具列上，選取 [儲存]  。 若要在邏輯應用程式中摺疊並隱藏動作的詳細資料，請選取動作的標題列。
 
-   ![儲存您的邏輯應用程式](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-save.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示儲存工作流程編輯的 [儲存] 按鈕。](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-event-grid-save.png)
 
    當您儲存應用程式邏輯與 Event Grid 觸發程序時，Azure 會自動針對您的邏輯應用程式建立所選取資源的事件訂用帳戶。 因此當資源將事件發佈到 Event Grid 時，該 Event Grid 會將事件自動推送至邏輯應用程式。 此事件會觸發邏輯應用程式，然後建立並執行您在後續步驟中定義之工作流程的執行個體。
 
@@ -124,25 +124,25 @@ ms.locfileid: "86119407"
 
 1. 在 Logic Apps 設計工具的事件方格觸發程序之下，選取 [新增步驟]  。
 
-   ![選取 [新增步驟]](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示用來將新步驟新增至工作流程的按鈕。](./media/monitor-virtual-machine-changes-event-grid-logic-app/choose-new-step-condition.png)
 
 1. 在 [選擇動作]  底下的搜尋方塊中，輸入 `condition` 作為篩選條件。 從動作清單中，選取 [條件]  動作。
 
-   ![新增條件](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示用來新增條件動作的按鈕。](./media/monitor-virtual-machine-changes-event-grid-logic-app/select-condition.png)
 
    Logic Apps 設計工具會將空白條件新增至您的工作流程，包括根據條件為 true 或 false 所要遵循的動作路徑。
 
-   ![空白的條件隨即出現](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示已新增至工作流程的空白條件。](./media/monitor-virtual-machine-changes-event-grid-logic-app/empty-condition.png)
 
 1. 將條件標題重新命名為 `If a virtual machine in your resource group has changed`。 在條件的標題列上，選取省略符號 ( **...** ) 按鈕，然後選取 [重新命名]  。
 
-   ![將條件重新命名](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示條件編輯器的內容功能表中已選取 [重新命名] 選項。](./media/monitor-virtual-machine-changes-event-grid-logic-app/rename-condition.png)
 
 1. 建立一個條件，以針對 `operationName` 屬性等於 `Microsoft.Compute/virtualMachines/write` 作業的 `data` 物件，檢查事件 `body`。 深入了解 [Event Grid 事件結構描述](../event-grid/event-schema.md)。
 
    1. 在第一個資料列的 [和]  下方，按一下左側方塊內部。 在顯示的動態內容清單中，選取 [運算式]  。
 
-      ![選取 [運算式] 以開啟運算式編輯器](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-choose-expression.png)
+      ![Logic Apps 設計工具的螢幕擷取畫面，顯示已選取運算式編輯器的條件。](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-choose-expression.png)
 
    1. 在運算式編輯器中輸入此運算式，運算式會從觸發程序傳回作業名稱，然後選取 [確定]  ：
 
@@ -150,7 +150,7 @@ ms.locfileid: "86119407"
 
       例如：
 
-      ![輸入運算式以擷取作業名稱](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-add-data-operation-name.png)
+      ![Logic Apps 設計工具的螢幕擷取畫面，顯示使用運算式擷取作業名稱的條件編輯器。](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-add-data-operation-name.png)
 
    1. 在中間的方塊中，將運算子保留為 [等於]  。
 
@@ -160,11 +160,11 @@ ms.locfileid: "86119407"
 
    您完成的條件現在看起來就像下面這個範例︰
 
-   ![比較作業的已完成條件](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示比較作業的條件。](./media/monitor-virtual-machine-changes-event-grid-logic-app/complete-condition.png)
 
    如果您從設計檢視切換為程式碼檢視，而後回到設計檢視，您在條件中指定的運算式會解析為 **data.operationName** 語彙基元：
 
-   ![條件中已解析的權杖](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示具有已解析權杖的條件。](./media/monitor-virtual-machine-changes-event-grid-logic-app/resolved-condition.png)
 
 1. 儲存您的邏輯應用程式。
 
@@ -174,7 +174,7 @@ ms.locfileid: "86119407"
 
 1. 在條件的 [若為 true]  方塊中，選取 [新增動作]  。
 
-   ![新增條件為 true 時的動作](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
+   ![Logic Apps 設計工具條件編輯器的螢幕擷取畫面，顯示當條件為 True 時，用來新增動作的按鈕。](./media/monitor-virtual-machine-changes-event-grid-logic-app/condition-true-add-action.png)
 
 1. 在 [選擇動作]  底下的搜尋方塊中，輸入 `send an email` 作為篩選條件。 根據您的電子郵件提供者，尋找並選取相符的連接器。 然後針對您的連接器選取 [傳送電子郵件] 動作。 例如：
 
@@ -186,7 +186,7 @@ ms.locfileid: "86119407"
 
    本教學課程將使用 Office 365 Outlook 連接器繼續操作。 如果您使用不同的提供者，步驟維持不變，但您的 UI 可能會稍微不同。
 
-   ![選取 [傳送電子郵件] 動作](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-send-email.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示 Office 365 Outlook 連接器中的 [傳送電子郵件] 動作的搜尋。](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-send-email.png)
 
 1. 如果您還沒有電子郵件提供者的連線，請在系統要求您進行驗證時登入您的電子郵件帳戶。
 
@@ -194,7 +194,7 @@ ms.locfileid: "86119407"
 
 1. 如下表中所指定，提供電子郵件的相關資訊：
 
-   ![提供電子郵件動作的相關資訊](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-empty-email-action.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示針對 True 條件而新增至電子郵件主旨列的動態內容。](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-empty-email-action.png)
 
    > [!TIP]
    > 若要從工作流程的先前步驟輸出中選取，請按一下編輯方塊以便顯示動態內容清單，或選取 [新增動態內容]  。 如需更多結果，在清單中的每個區段選取 [更多資訊]  。 若要關閉動態內容清單，請再次選取 [新增動態內容]  。
@@ -211,11 +211,11 @@ ms.locfileid: "86119407"
 
    現在，您的電子郵件動作看起來可能就像下面這個範例︰
 
-   ![選取要納入電子郵件中的輸出](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-send-email-details.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示已選取要在 VM 更新時要在電子郵件中傳送的輸出。](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-send-email-details.png)
 
    完成的邏輯應用程式可能如此範例所示︰
 
-   ![完成的邏輯應用程式](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-completed.png)
+   ![Logic Apps 設計工具的螢幕擷取畫面，顯示已建立的邏輯應用程式，以及觸發程式和動作的詳細資料。](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-completed.png)
 
 1. 儲存您的邏輯應用程式。 若要在邏輯應用程式中摺疊並隱藏每個動作的詳細資料，請選取動作的標題列。
 
@@ -229,15 +229,15 @@ ms.locfileid: "86119407"
 
    一會兒之後，您應可取得電子郵件。 例如：
 
-   ![關於虛擬機器更新的電子郵件](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
+   ![範例 Outlook 電子郵件的螢幕擷取畫面，顯示有關 VM 更新的詳細資料。](./media/monitor-virtual-machine-changes-event-grid-logic-app/email.png)
 
 1. 若要檢閱邏輯應用程式的執行和觸發歷程記錄，請在邏輯應用程式功能表上選取 [概觀]  。 若要檢視執行的更多詳細資料，請選取該執行的資料列。
 
-   ![邏輯應用程式執行記錄](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-run-history.png)
+   ![邏輯應用程式概觀頁面的螢幕擷取畫面，顯示已選取成功的執行。](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-run-history.png)
 
 1. 若要檢視每個步驟的輸入和輸出，請展開您需要檢閱的步驟。 此資訊可協助您診斷和偵錯應用程式邏輯中的問題。
 
-   ![邏輯應用程式執行記錄詳細資料](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-run-history-details.png)
+   ![邏輯應用程式執行歷程記錄的螢幕擷取畫面，顯示每次執行的詳細資料。](./media/monitor-virtual-machine-changes-event-grid-logic-app/logic-app-run-history-details.png)
 
 恭喜，您已建立並執行邏輯應用程式，該邏輯應用程式可透過 Event Grid 監視資源事件，以及在這些事件發生時監視電子郵件。 您也了解如何輕鬆地建立工作流程，以自動執行程序並整合系統與雲端服務。
 
@@ -254,7 +254,7 @@ ms.locfileid: "86119407"
 
 * 若要停止執行邏輯應用程式但是不刪除您的工作，請停用您的應用程式。 在邏輯應用程式功能表上，選取 [概觀]  。 在工具列上，選取 [停用]  。
 
-  ![關閉應用程式邏輯](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
+  ![邏輯應用程式概觀的螢幕擷取畫面，顯示已選取停用按鈕以停用邏輯應用程式。](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
 
   > [!TIP]
   > 如果您沒有看到邏輯應用程式功能表，請嘗試返回 Azure 儀表板，然後重新開啟邏輯應用程式。

@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d56c57a12995e0ea94c10f371bf09a3b3f9733ba
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754291"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278619"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure 內容傳遞網路上的 Azure Web 應用程式防火牆
 
@@ -45,7 +45,7 @@ WAF 原則可輕易地連結至訂用帳戶中的任何 CDN 端點。 新規則�
 
 WAF 原則可以設定為在下列兩種模式中執行︰
 
-- *偵測模式*：在偵測模式中執行時，WAF 不會執行監視以外的其他任何動作，並且會將要求和其相符的 WAF 規則記錄到 WAF 記錄。 您可以為 Front Door 開啟記錄診斷。 當您使用此入口網站時，請移至**診斷**一節。
+- *偵測模式*：在偵測模式中執行時，WAF 不會執行監視以外的其他任何動作，並且會將要求和其相符的 WAF 規則記錄到 WAF 記錄。 您可以為 CDN 開啟記錄診斷。 當您使用此入口網站時，請移至**診斷**一節。
 
 - *預防模式*：在預防模式中，如果要求符合規則，WAF 便會採取指定動作。 如果找到相符的值，就不會再評估優先順序較低的規則。 所有相符的要求也會記錄在 WAF 記錄中。
 

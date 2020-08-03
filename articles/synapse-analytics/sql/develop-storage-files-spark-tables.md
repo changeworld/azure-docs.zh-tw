@@ -1,5 +1,5 @@
 ---
-title: 在 SQL 隨選 (預覽) 中同步處理 Apache Spark for Azure Synapse 外部資料表定義
+title: 在 隨選 SQL (預覽) 中同步處理 Apache Spark 外部資料表定義
 description: 概述如何使用 SQL 隨選 (預覽) 查詢 Spark 資料表
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: db6b2d95bf8f38495296885d14260b9900af1d51
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e9f688a31d2847505e974ab6a1557aa6a7b2047
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046845"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>在 SQL 隨選 (預覽) 中同步處理 Apache Spark for Azure Synapse 外部資料表定義
 
@@ -22,7 +22,7 @@ SQL 隨選 (預覽) 可以自動同步處理來自 Apache Spark for Azure Synaps
 
 針對以 Parquet 為基礎且位於 Azure 儲存體中的每個 Spark 外部資料表，系統會在 SQL 隨選資料庫中建立一個外部資料表。 因此，您可以在關閉 Spark 集區後，繼續從 SQL 隨選查詢 Spark 外部資料表。
 
-在 Spark 中分割資料表時，儲存體中的檔案會依資料夾組織。 SQL 隨選會使用分割區中繼資料，而且只會以相關的資料夾和檔案作為查詢目標。
+在 Spark 中分割資料表時，儲存體中的檔案會依資料夾組織。 隨選 SQL 會使用分割區中繼資料，而且只會以相關的資料夾和檔案作為查詢目標。
 
 系統已針對 Azure Synapse 工作區中佈建的每個 Spark 集區自動設定中繼資料同步。 您可以立即開始查詢 Spark 外部資料表。
 
@@ -35,7 +35,7 @@ SELECT * FROM [db].dbo.[spark_table]
 ```
 
 > [!NOTE]
-> 新增、置放或變更 Spark 外部資料表的資料行都不會在隨選 SQL 的外部資料表中反映。
+> 新增、置放或變更資料行的 Spark 外部資料表命令都不會在隨選 SQL 的外部資料表中反映。
 
 ## <a name="apache-spark-data-types-to-sql-data-types-mapping"></a>Apache Spark 資料類型與 SQL 資料類型的對應
 

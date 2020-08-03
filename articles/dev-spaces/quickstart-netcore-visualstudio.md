@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 909e4638b3b0919919320a09cbfa0e8d9ac92f2e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8279a32ece16209c1dd5bca13d08e22b283677ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006998"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>快速入門：在 Kubernetes 上偵錯和逐一查看：Visual Studio 和 .NET Core - Azure Dev Spaces
 
@@ -84,15 +84,15 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 
 在您的專案中，從啟動設定下拉式清單中選取 [Azure Dev Spaces]，如下所示。
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![反白顯示已選取 IIS Express 選項以及反白顯示 Azure Dev Spaces 選項的 Visual Studio UI 螢幕擷取畫面。](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 在 [Azure Dev Spaces] 對話方塊中，選取您的 [訂用帳戶] 和 [Azure Kubernetes 叢集]。 讓 [空間] 保持設定為 [預設]，然後啟用 [可公開存取] 核取方塊。 按一下 [確定]。
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
+![Azure Dev Spaces 對話方塊的螢幕擷取畫面。](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
 此程序會將您的服務部署至具有可公開存取 URL 的「預設」開發空間。 如果您選擇尚未設定要搭配 Azure Dev Spaces 使用的叢集，您會看到訊息詢問您是否要設定它。 按一下 [確定]。
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![新增 Azure 空間資源對話方塊的螢幕擷取畫面。](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 在「預設」開發人員空間中執行的服務所具有的公用 URL 會顯示在 [輸出] 視窗中：
 

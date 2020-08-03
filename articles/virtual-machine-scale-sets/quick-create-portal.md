@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3a607f03bf238b1b05a91c772a7ac77a79574515
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027217"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077544"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入門：在 Azure 入口網站建立虛擬機器擴展集
 
@@ -44,8 +44,9 @@ Azure [負載平衡器](../load-balancer/load-balancer-overview.md)會在良好�
     | 類型          | 選取 [公用]。       |
     | SKU           | 選取 [標準]。       |
     | 公用 IP 位址 | 選取 [建立新的]。 |
-    | 公用 IP 位址名稱  | *MyPip*   |
+    | 公用 IP 位址名稱  | myPip   |
     | 指派| 靜態 |
+    | 可用性區域 | 選取 [區域備援]。 |
 
 1. 當您完成時，選取 [檢閱 + 建立] 
 1. 通過驗證之後，選取 [建立]。 
@@ -55,11 +56,11 @@ Azure [負載平衡器](../load-balancer/load-balancer-overview.md)會在良好�
 ## <a name="create-virtual-machine-scale-set"></a>建立虛擬機器擴展集
 您可以使用 Windows Server 映像或 Linux 映像 (例如 RHEL、CentOS、Ubuntu 或 SLES) 部署擴展集。
 
-1. 在搜尋方塊中，輸入 **Scale set**。 在結果的 [Marketplace] 下，選取 [虛擬機器擴展集]。 [建立虛擬機器擴展集] 頁面隨即開啟。 
+1. 在搜尋方塊中，輸入 **Scale set**。 在結果的 [Marketplace] 下，選取 [虛擬機器擴展集]。 在 [虛擬機器擴展集] 頁面上選取 [建立]，這會開啟 [建立虛擬機器擴展集] 頁面。 
 1. 在 [基本資料] 索引標籤中的 [專案詳細資料] 底下，確認已選取正確的訂用帳戶，然後選擇 [新建] 資源群組。 為名稱輸入 *myVMSSResourceGroup*，然後選取 [確定]。 
 1. 為您的擴展集名稱輸入 *myScaleSet*。
 1. 在 [區域] 中，選取您附近的區域。
-1. 為 [協調器]保留 [擴展集虛擬機器] 的預設值。
+1. 為 [協調流程模式]保留 [擴展集虛擬機器] 的預設值。
 1. 為 [映像] 選取 Marketplace 映像。 在此範例中，我們已選擇 [Ubuntu Server 18.04 LTS]。
 1. 輸入所需的使用者名稱，然後選取偏好的驗證類型。
    - **密碼**長度必須至少有 12 個字元，且符合下列四個複雜性需求的其中三項：1 個小寫字元、1 個大寫字元、1 個數字和 1 個特殊字元。 如需詳細資訊，請參閱[使用者名稱和密碼需求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。

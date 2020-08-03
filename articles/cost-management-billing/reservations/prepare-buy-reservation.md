@@ -4,15 +4,15 @@ description: 了解相關要點可協助您購買 Azure 保留。
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 05/04/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 68bcf725a6043b8ab19717845fa8005de2f88e35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807776"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287640"
 ---
 # <a name="buy-a-reservation"></a>購買保留項目
 
@@ -34,9 +34,12 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 
 視您的需求而定，您有三個選項可設定保留範圍：
 
-- **單一資源群組範圍** — 只會將保留折扣套用至所選資源群組中的相符資源。
-- **單一訂用帳戶範圍** — 會將保留折扣套用至所選訂用帳戶中的相符資源。
-- **共用範圍** — 會將保留折扣套用至計費內容中合格訂用帳戶的相符資源。 針對 Enterprise 合約客戶，計費內容為註冊。 針對 Microsoft 客戶合約客戶，計費範圍是帳單設定檔。 針對使用隨用隨付費率的個別訂用帳戶，計費範圍是帳戶管理員所建立的所有合格訂用帳戶。
+- **單一資源群組範圍**— 只會將保留折扣套用至所選資源群組中的相符資源。
+- **單一訂用帳戶範圍**— 會將保留折扣套用至所選訂用帳戶中的相符資源。
+- **共用範圍** — 會將保留折扣套用至計費內容中合格訂用帳戶的相符資源。
+    - 針對 Enterprise 合約客戶，計費內容為註冊。 保留共用範圍會在註冊中包含多個 Active Directory 租用戶。
+    - 針對 Microsoft 客戶合約客戶，計費範圍是帳單設定檔。
+    - 針對使用隨用隨付費率的個別訂用帳戶，計費範圍是帳戶管理員所建立的所有合格訂用帳戶。
 
 在您的使用量上套用保留折扣時，Azure 會依照下列順序處理保留：
 

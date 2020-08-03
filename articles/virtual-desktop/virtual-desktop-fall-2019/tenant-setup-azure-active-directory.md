@@ -1,6 +1,6 @@
 ---
-title: 在 Windows 虛擬桌面中建立租用戶 - Azure
-description: 說明如何設定 Azure Active Directory 中的 Windows 虛擬桌面租用戶。
+title: 在 Windows 虛擬桌面 (傳統) 中建立租用戶 - Azure
+description: 說明如何設定 Azure Active Directory 中的 Windows 虛擬桌面 (傳統) 租用戶。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a1e301b63eee348f59a1b9570c2c3ffcd78ecef
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: a1f2dbf1f7cfc8fbb6a29129c7e445ffef87b070
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362385"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286354"
 ---
-# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>教學課程：在 Windows 虛擬桌面中建立租用戶
+# <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>教學課程：在 Windows 虛擬桌面 (傳統) 中建立租用戶
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。
 
 在 Windows 虛擬桌面中建立租用戶是建置桌面虛擬化解決方案的第一個步驟。 租用戶是包含一或多個主機集區的群組。 每個主機集區是由多個工作階段主機所組成，這些主機會在 Azure 中當作虛擬機器執行並向 Windows 虛擬桌面服務註冊。 每個主機集區也是由一或多個應用程式群組所組成，這些群組用來對使用者發佈遠端桌面和遠端應用程式資源。 透過租用戶，您可以建置主機集區、建立應用程式群組、指派給使用者，以及透過服務進行連線。
 

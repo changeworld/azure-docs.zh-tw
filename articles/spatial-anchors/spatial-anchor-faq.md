@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9f6f428a930f03259986373ca70a95d5df1f7dc3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296664"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091482"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors 的相關常見問題集
 
@@ -88,9 +88,9 @@ Azure Spatial Anchors 會遵循 [Azure 服務合約條款](https://go.microsoft.
 
 這表示支援這項服務所需的計算和儲存能力位於這些區域。 不過，用戶端的所在位置並沒有限制。 
 
-**問：使用 Azure Spatial Anchors 需要付費嗎？未來是否會收費？**
+**問：使用 Azure Spatial Anchors 需要付費嗎？**
 
-**答：** 您可以在我們的[定價頁面](https://azure.microsoft.com/pricing/details/spatial-anchors/)找到關於預覽期間定價的詳細資訊。
+**答：** 您可以在我們的[定價頁面](https://azure.microsoft.com/pricing/details/spatial-anchors/)找到關於定價的詳細資訊。
 
 ## <a name="technical-faqs"></a>技術的常見問題集
 

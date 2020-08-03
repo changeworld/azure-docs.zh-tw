@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610678"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290653"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>為內部部署 VMware VM 設定災害復原至 Azure
 
@@ -84,7 +84,7 @@ ms.locfileid: "82610678"
 ## <a name="import-the-template-in-vmware"></a>在 VMware 中匯入範本
 
 
-1. 透過 VMWare vSphere 用戶端，登入 VMware vCenter 伺服器或 vSphere ESXi 主機。
+1. 透過 VMware vSphere 用戶端，登入 VMware vCenter 伺服器或 vSphere ESXi 主機。
 2. 在 [檔案]  功能表上，選取 [部署 OVF 範本]  以啟動 [部署 OVF 範本精靈]  。
 
      ![OVF 範本](./media/vmware-azure-tutorial/vcenter-wizard.png)
@@ -113,7 +113,7 @@ ms.locfileid: "82610678"
 
 設定好組態伺服器後，您可在保存庫中加以註冊。
 
-1. 從 VMWare vSphere 用戶端主控台開啟 VM。
+1. 從 VMware vSphere 用戶端主控台開啟 VM。
 2. VM 會開機進入 Windows Server 2016 安裝體驗。 接受授權合約，並輸入系統管理員密碼。
 3. 在安裝完成之後，以系統管理員身分登入 VM。
 4. 您第一次登入時，Azure Site Recovery 設定工具會在數秒內啟動。
@@ -170,15 +170,17 @@ ms.locfileid: "82610678"
 - 此原則會自動與設定伺服器產生關聯。
 - 依預設會自動建立容錯回復的比對原則。 例如，如果複寫原則是 **rep-policy**，容錯回復原則就會是 **rep-policy-failback**。 從 Azure 起始容錯回復時才會使用此原則。
 
+注意:在 VMware 對 Azure 案例中，系統會每 5 分鐘執行損毀一致的快照集。
+
 ## <a name="enable-replication"></a>啟用複寫
 
 啟用 VM 複寫，如下所示︰
 
 1. 選取 [複寫應用程式]   > [來源]  。
 2. 在 [來源]  中，選取 [內部部署]  ，然後選取 [來源位置]  中的組態伺服器。
-3. 在 [機器類型]  中，選取 [虛擬機器] 
+3. 在 [機器類型]  中，選取 [虛擬機器]
 4. 在 [vCenter/vSphere Hypervisor]  中，選取 vSphere 主機，或可管理該主機的 vCenter 伺服器。
-5. 選取處理序伺服器 (依預設安裝在組態伺服器 VM 上)。 然後選取 [確定]  。 每個處理序伺服器的健康狀態都會根據建議限制和其他參數來指示。 選擇狀況良好的處理序伺服器。 無法選擇狀態為[嚴重](vmware-physical-azure-monitor-process-server.md#process-server-alerts)的處理序伺服器。 您可以對錯誤進行[疑難排解及解決問題](vmware-physical-azure-troubleshoot-process-server.md)，**或是**設定[相應放大的處理序伺服器](vmware-azure-set-up-process-server-scale.md)。
+5. 選取處理序伺服器 (依預設安裝在組態伺服器 VM 上)。 然後選取 [確定]。 每個處理序伺服器的健康狀態都會根據建議限制和其他參數來指示。 選擇狀況良好的處理序伺服器。 無法選擇狀態為[嚴重](vmware-physical-azure-monitor-process-server.md#process-server-alerts)的處理序伺服器。 您可以對錯誤進行[疑難排解及解決問題](vmware-physical-azure-troubleshoot-process-server.md)，**或是**設定[相應放大的處理序伺服器](vmware-azure-set-up-process-server-scale.md)。
 6. 在 [目標]  中，選取您想要在其中建立容錯移轉 VM 的訂用帳戶和資源群組。 我們會使用 Resource Manager 部署模型。
 7. 選取 Azure VM 在容錯移轉後所要連線的 Azure 網路和子網路。
 8. 選取 [立即設定選取的機器]  ，將網路設定套用到您啟用複寫的所有 VM 上。 選取 [稍後設定]  以選取每部機器的 Azure 網路。

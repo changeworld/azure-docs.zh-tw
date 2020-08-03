@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 04/22/2019
+ms.date: 07/24/2020
 ms.author: victorh
-ms.openlocfilehash: 62f5375a0d468f5b137c4628c89c802d83dee102
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: baadd52a931a28e1502fe0da2286d541db9face4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024486"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290132"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站設定包含 TLS 終止的應用程式閘道
 
@@ -158,7 +158,7 @@ Export-PfxCertificate `
 
 5. 針對 [HTTP 設定]  ，選取 [新建]  以建立新的 HTTP 設定。 HTTP 設定將會決定路由規則的行為。 在隨即開啟的 [新增 HTTP 設定]  視窗中，針對 [HTTP 設定名稱]  輸入 *myHTTPSetting*。 接受 [新增 HTTP 設定]  視窗中其餘設定的預設值，然後選取 [新增]  以返回 [新增路由規則]  視窗。 
 
-   ![建立新的應用程式閘道：HTTP 設定](./media/create-ssl-portal/application-gateway-create-httpsetting.png)
+   :::image type="content" source="./media/create-ssl-portal/application-gateway-create-httpsetting.png" alt-text="建立新的應用程式閘道：HTTP 設定":::
 
 6. 在 [新增路由規則]  視窗上，選取 [新增]  以儲存路由規則，並返回 [設定]  索引標籤。
 
@@ -250,7 +250,7 @@ Export-PfxCertificate `
 
     ![記錄應用程式閘道公用 IP 位址](./media/create-ssl-portal/application-gateway-ag-address.png)
 
-2. 在瀏覽器的網址列中，輸入 *https://\<您的應用程式閘道 ip 位址\>* 。
+2. 在瀏覽器的網址列中，輸入 https://\<your application gateway ip address\>。
 
    若要在使用自我簽署憑證時接受安全性警告，請選取 [詳細資料]  (或在 Chrome 上選取 [進階]  )，然後繼續瀏覽網頁：
 

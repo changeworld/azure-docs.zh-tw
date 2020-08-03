@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/26/2019
+ms.date: 07/20/2020
 ms.author: victorh
-ms.openlocfilehash: ca6be666a9b77532b4f1c61f6e3391c239e82c91
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c5302f35665b034bffa343ee90fd4fd609f56e5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74075156"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290143"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立和設定應用程式閘道以裝載多個網站
 
@@ -29,7 +29,7 @@ ms.locfileid: "74075156"
 > * 建立路由規則
 > * 在網域中建立 CNAME 記錄
 
-![多站台路由範例](./media/create-multiple-sites-portal/scenario.png)
+:::image type="content" source="./media/create-multiple-sites-portal/scenario.png" alt-text="多網站應用程式閘道":::
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -50,7 +50,7 @@ ms.locfileid: "74075156"
    - **資源群組**：選取 **myResourceGroupAG** 作為資源群組。 如果資源群組不存在，請選取 [新建]  加以建立。
    - **應用程式閘道名稱**：輸入 myAppGateway  作為應用程式閘道的名稱。
 
-     ![建立新的應用程式閘道：基本概念](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png" alt-text="建立應用程式閘道":::
 
 2.  Azure 需要虛擬網路才能在您所建立的資源之間進行通訊。 您可以建立新的虛擬網路，或使用現有的虛擬網路。 在此範例中，您將會在建立應用程式閘道時，同時建立新的虛擬網路。 在不同的子網路中，建立應用程式閘道執行個體。 在此範例中您會建立兩個子網路：一個用於應用程式閘道，另一個用於後端伺服器。
 
@@ -66,7 +66,7 @@ ms.locfileid: "74075156"
 
     選取 [確定]  以關閉 [建立虛擬網路]  視窗並儲存虛擬網路設定。
 
-     ![建立新的應用程式閘道：虛擬網路](./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-vnet.png" alt-text="建立 VNet":::
     
 3. 在 [基本]  索引標籤上，接受其他設定的預設值，然後選取 [下一步:  前端]。
 
@@ -78,7 +78,7 @@ ms.locfileid: "74075156"
 
 2. 針對 [公用 IP 位址]  選擇 [新建]  ，然後針對公用 IP 位址名稱輸入 *myAGPublicIPAddress*，然後選取 [確定]  。 
 
-     ![建立新的應用程式閘道：前端](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
+     :::image type="content" source="./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png" alt-text="建立 VNet":::
 
 3. 完成時，選取 [下一步:  後端]。
 
@@ -96,7 +96,7 @@ ms.locfileid: "74075156"
 3. 在 [新增後端集區]  視窗中，選取 [新增]  以儲存後端集區設定，並返回 [後端]  索引標籤。
 4. 現在新增另一個名為 *fabrikamPool*的後端集區。
 
-     ![建立新的應用程式閘道：後端](./media/create-multiple-sites-portal/backend-pools.png)
+    :::image type="content" source="./media/create-multiple-sites-portal/backend-pools.png" alt-text="建立後端":::
 
 4. 在 [後端]  索引標籤上，選取 [下一步:  設定]。
 
@@ -119,7 +119,7 @@ ms.locfileid: "74075156"
 
    接受 [接聽程式]  索引標籤上其他設定的預設值，然後選取 [後端目標]  索引標籤以設定其餘的路由規則。
 
-   ![建立新的應用程式閘道：接聽程式](./media/create-multiple-sites-portal/routing-rule.png)
+   :::image type="content" source="./media/create-multiple-sites-portal/routing-rule.png" alt-text="建立路由規則":::
 
 4. 在 [後端目標]  索引標籤上，針對 [後端目標]  選取 [contosoPool]  。
 
@@ -128,7 +128,7 @@ ms.locfileid: "74075156"
 6. 在 [新增路由規則]  視窗上，選取 [新增]  以儲存路由規則，並返回 [設定]  索引標籤。
 7. 選取 [新增規則]  ，然後為 Fabrikam 新增類似的規則、接聽程式、後端目標和 HTTP 設定。
 
-     ![建立新的應用程式閘道：路由規則](./media/create-multiple-sites-portal/fabrikamRule.png)
+     :::image type="content" source="./media/create-multiple-sites-portal/fabrikam-rule.png" alt-text="Fabrikam 規則":::
 
 7. 完成時，選取 [下一步:  標籤]，然後選取 [下一步:  檢閱 + 建立]。
 
@@ -157,7 +157,7 @@ ms.locfileid: "74075156"
     - **資源群組**：選取 **myResourceGroupAG** 作為資源群組名稱。
     - **虛擬機器名稱**：輸入 *contosoVM* 作為虛擬機器的名稱。
     - **使用者名稱**：輸入 azureuser  作為系統管理員使用者名稱。
-    - **密碼**：輸入Azure123456!  作為系統管理員密碼。
+    - **密碼**：輸入Azure123456! 作為系統管理員密碼。
 4. 接受其他預設值，然後選取 [下一步：  磁碟]。  
 5. 接受 [磁碟]  索引標籤的預設值，然後選取 [下一步：  網路功能]。
 6. 在 [網路]  索引標籤上，確認已選取 [myVNet]  作為[虛擬網路]  ，且 [子網路]  設為 [myBackendSubnet]  。 接受其他預設值，然後選取 [下一步：  管理]。<br>「應用程式閘道」可與其虛擬網路外的執行個體進行通訊，但您需要確保具有 IP 連線能力。
@@ -237,7 +237,7 @@ ms.locfileid: "74075156"
 1. 在 Azure 入口網站的左側功能表上，選取 [資源群組]  。
 2. 在 [資源群組]  頁面上，在清單中搜尋 **myResourceGroupAG** 並加以選取。
 3. 在 [資源群組]  頁面上，選取 [刪除資源群組]  。
-4. 針對 [輸入資源群組名稱]  輸入 myResourceGroupAG  ，然後選取 [刪除] 
+4. 針對 [輸入資源群組名稱]  輸入 myResourceGroupAG  ，然後選取 [刪除]
 
 ## <a name="next-steps"></a>後續步驟
 

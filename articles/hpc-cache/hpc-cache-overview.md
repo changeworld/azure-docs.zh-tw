@@ -4,14 +4,15 @@ description: 說明 Azure HPC Cache，這是高效能運算的檔案存取加速
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 05/29/2020
+ms.date: 07/16/2020
 ms.author: v-erkel
-ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: references_regions
+ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433676"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053675"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什麼是 Azure HPC Cache？
 
@@ -53,22 +54,16 @@ Azure HPC Cache 佈署可協助加速量化的分析計算、風險分析工作�
 
 ## <a name="region-availability"></a>區域可用性
 
-Azure HPC Cache 可在下列 Azure 區域使用：
+[依區域造訪 Azure 區域基礎結構產品](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache)頁面，以了解可使用 Azure HPC Cache 的位置。
 
-| 北美洲      | 歐洲         | Asia            | 澳大利亞      |
-|--------------------|----------------|-----------------|----------------|
-| 美國東部            | 北歐   | 南韓中部   | 澳大利亞東部 |
-| 美國東部 2          | 西歐    | 東南亞  |               |
-| 美國中南部 | | | |
-| 美國西部 2        | | | |
-
-只有下列區域支援[客戶管理的金鑰功能](customer-keys.md)：
+只有下列 Azure 區域支援[客戶管理的金鑰功能](customer-keys.md)：
 
 * 美國東部
 * 美國中南部
 * 美國西部 2
-
-如需最新的可用性資訊 ，請查看 [Azure HPC Cache 產品頁面](https://azure.microsoft.com/services/hpc-cache)。
+* 歐洲西部
+* US Gov 亞利桑那州
+* US Gov 維吉尼亞州
 
 ## <a name="service-availability"></a>服務可用性
 
@@ -79,5 +74,5 @@ Azure HPC Cache 可在下列 Azure 區域使用：
 ## <a name="next-steps"></a>後續步驟
 
 * 若要深入了解其功能，請參閱 [Azure HPC Cache 產品頁面](https://azure.microsoft.com/services/hpc-cache)
-* 了解產品[必要條件](hpc-cache-prereqs.md)
+* 了解產品[必要條件](hpc-cache-prerequisites.md)
 * 從 Azure 入口網站[建立 Azure HPC Cache](hpc-cache-create.md)

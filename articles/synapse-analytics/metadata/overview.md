@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c41c3346d04dd1fc00a7ddb9e7fea66f619995e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496040"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387331"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics 共用中繼資料
 
@@ -40,7 +40,7 @@ Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Spark 集區 
 
 物件同步不會即時進行。 物件會稍微延遲幾秒鐘，才會出現在 SQL 內容中。 物件出現之後，即可進行查詢，但無法由有存取權的 SQL 引擎進行更新或變更。
 
-## <a name="which-metadata-objects-are-shared"></a>可共用哪些中繼資料物件
+## <a name="shared-metadata-objects"></a>共用的中繼資料物件
 
 Spark 可讓您建立資料庫、外部資料表、受控資料表和檢視。 由於 Spark 檢視需要 Spark 引擎來處理 Spark SQL 陳述式的定義，無法由 SQL 引擎處理，因此只有資料庫及使用 Parquet 儲存格式的內含外部資料表和受控資料表會與工作區 SQL 引擎共用。 Spark 檢視只會在 Spark 集區執行個體之間共用。
 

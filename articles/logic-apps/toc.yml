@@ -28,6 +28,8 @@
       href: tutorial-process-email-attachments-workflow.md
 - name: 範例
   items:
+    - name: 建立邏輯應用程式 - 範例指令碼
+      href: sample-logic-apps-cli-script.md
     - name: Azure 程式碼範例
       href: /samples/browse/?products=azure-logic-apps
     - name: Resource Manager 快速入門範本

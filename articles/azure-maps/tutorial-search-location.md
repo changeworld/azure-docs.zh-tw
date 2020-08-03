@@ -1,20 +1,20 @@
 ---
 title: 教學課程：在地圖上搜尋附近位置 | Microsoft Azure 地圖服務
 description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務在地圖上搜尋景點。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 0b0cb92cd6b4918e28e143178a5cdbbbb19ac9af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 4e16c4e88d749f6dbc4f6271a7ceaf77661a208c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333624"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281526"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教學課程：使用 Azure 地圖服務來搜尋附近景點
 
@@ -219,7 +219,7 @@ ms.locfileid: "80333624"
 
    ![檢視地圖與搜尋結果](./media/tutorial-search-location/pins-map.png)
 
-4. 您可以在瀏覽器中輸入下列 HTTPRequest，以查看地圖所呈現的原始資料。 將\<您的 Azure 地圖服務金鑰\>取代為主要金鑰。
+4. 您可以在瀏覽器中輸入下列 HTTPRequest，以查看地圖所呈現的原始資料。 使用您的主要金鑰取代 \<Your Azure Maps Key\>。
 
    ```http
    https://atlas.microsoft.com/search/poi/json?api-version=1.0&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000

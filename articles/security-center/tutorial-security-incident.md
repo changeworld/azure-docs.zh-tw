@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: 971b93422e2b3f2053e0c5564c7ba924a631d810
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: dc19d74953db48ccf51d4731e2b9feccb2294041
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585777"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076390"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>教學課程：回應安全性事件
 資訊安全中心會使用進階的分析和威脅情報，持續分析混合式雲端工作負載，提醒您發生惡意活動。 此外，您可以將警示從其他的安全性產品和服務整合到資訊安全中心，並以您自己的指標或情報來源作為基礎建立自訂警示。 一旦有警示產生，您便需要迅速採取行動來進行調查並加以修復。 在本教學課程中，您將學會如何：
@@ -98,12 +98,13 @@ Sam 是安全性分析師，他們的職責包括︰
 若要執行搜尋，請開啟 [資訊安全中心]  儀表板，按一下左側瀏覽窗格中的 [搜尋]  ，選取您要搜尋之實體所在的工作區，輸入搜尋查詢，然後按一下 [搜尋] 按鈕。
 
 ## <a name="clean-up-resources"></a>清除資源
+
 此集合中的其他快速入門和教學課程會以本快速入門為基礎。 如果您打算繼續處理後續的快速入門和教學課程，請繼續執行標準層，並保持將自動佈建維持為啟用狀態。 如果您不打算繼續，或是要返回免費層：
 
 1. 返回 [資訊安全中心] 主功能表，並選取 [安全性原則]  。
 2. 選取您需要返回免費層的訂用帳戶或原則。 [安全性原則]  隨即開啟。
 3. 在 [原則元件]  下，選取 [定價層]  。
-4. 選取 [免費]  以將訂用帳戶從標準層變更為免費層。
+4. 選取 [免費] 以將訂用帳戶從標準層變更為免費層。
 5. 選取 [儲存]  。
 
 如果您需要停用自動佈建：

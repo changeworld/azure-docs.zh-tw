@@ -3,12 +3,12 @@ title: 使用 Azure Migrate 伺服器評定來評定要移轉到 Azure 的實體
 description: 說明如何使用 Azure Migrate 伺服器評定來評定內部部署實體伺服器是否可移轉到 Azure。
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 2c0662c6ccf66f09413891c99da789c50847277e
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 5b4d5241e4236d4c11f2e2a5a8feb7c73258cba0
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85080764"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171385"
 ---
 # <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>使用「Azure Migrate：伺服器評定」來評定實體伺服器
 
@@ -179,13 +179,14 @@ Azure Migrate：伺服器評定會執行輕量型設備。
 現在，從設備連線至要探索的實體伺服器，然後開始探索。
 
 1. 按一下 [新增認證] 以指定設備會用來探索伺服器的帳戶認證。  
-2. 指定 [作業系統]、認證的易記名稱，以及使用者名稱和密碼。 然後按一下 [ **新增**]。
+2. 以使用者名稱和密碼登入。 不支援使用金鑰登入。 此外，使用者必須是根登入或本機管理員群組的一部分。
+3. 指定 [作業系統]、認證的易記名稱，以及使用者名稱和密碼。 然後按一下 [ **新增**]。
 您可以為 Windows 和 Linux 伺服器新增多個認證。
 4. 按一下 [新增伺服器]，然後指定伺服器詳細資料 - FQDN/IP 位址與認證的易記名稱 (每列一筆輸入) 以連線至伺服器。
-3. 按一下 **[驗證]** 。 驗證之後，就會顯示可探索的伺服器清單。
+5. 按一下 **[驗證]** 。 驗證之後，就會顯示可探索的伺服器清單。
     - 如果伺服器驗證失敗，請將滑鼠停留在 [狀態] 欄中的圖示上以檢閱錯誤。 修正問題，然後再次驗證。
     - 若要移除伺服器，請選取 > [刪除]。
-4. 驗證之後，按一下 [儲存並開始探索] 來開始探索程序。
+6. 驗證之後，按一下 [儲存並開始探索] 來開始探索程序。
 
 這會開始探索。 每部伺服器大約耗用 1.5 分鐘，讓所探索到伺服器的中繼資料出現在 Azure 入口網站中。
 

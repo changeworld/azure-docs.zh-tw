@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eb23f1e703c2e447c484ccb366914cb4b23c5bf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536536"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125185"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立負載平衡器以平衡 VM 的負載
 
@@ -111,7 +111,7 @@ ms.locfileid: "86536536"
     | 狀況不良臨界值 | 選取 [2] 作為 [狀況不良閾值] 的數值，或將 VM 視為狀況不良之前，必須達到的連續探查失敗次數。|
     | | |
 
-3. 選取 [確定]。
+3. 保留其餘的預設值，然後選取 [確定]。
 
 ### <a name="create-a-load-balancer-rule"></a>建立負載平衡器規則
 
@@ -140,7 +140,7 @@ ms.locfileid: "86536536"
     | 後端連接埠 | 輸入 **80**。 |
     | 後端集區 | 選取 [myBackendPool]。|
     | 健全狀況探查 | 選取 [myHealthProbe]。 |
-    | 建立隱含輸出規則 | 選取 [是]。 </br> 如需詳細資訊和進階的輸出規則組態，請參閱： </br> [Azure 中的輸出連線](load-balancer-outbound-connections.md) </br> [使用 Azure 入口網站在 Standard Load Balancer 中設定負載平衡和輸出規則](configure-load-balancer-outbound-portal.md)
+    | 建立隱含輸出規則 | 請選取 [否] 。
 
 4. 保留其餘的預設值，然後選取 [確定]。
 
@@ -190,7 +190,7 @@ ms.locfileid: "86536536"
     | 可用性選項 | 選取 [可用性區域] |
     | 可用性區域 | 選取 [1] |
     | 映像 | 選取 [Windows Server 2019 Datacenter] |
-    | Azure Spot 執行個體 | 選取 [否]  |
+    | Azure Spot 執行個體 | 選取 [否] |
     | 大小 | 選擇 VM 大小或接受預設設定 |
     | **系統管理員帳戶** |  |
     | 使用者名稱 | 輸入使用者名稱 |
@@ -237,6 +237,49 @@ ms.locfileid: "86536536"
     | 可用性區域 | **2** |**3**|
     | 網路安全性群組 | 選取現有的 **myNSG**| 選取現有的 **myNSG**|
 
+## <a name="create-outbound-rule-configuration"></a>建立輸出規則設定
+負載平衡器輸出規則會在後端集區中設定 VM 的輸出 SNAT。 
+
+如需輸出連線詳細資訊，請參閱 [Azure 中的輸出連線](load-balancer-outbound-connections.md)。
+
+### <a name="create-outbound-rule"></a>建立輸出規則
+
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer**。
+
+2. 在 [設定] 下選取 [輸出規則]，然後選取 [新增]。
+
+3. 使用這些值來設定輸出規則：
+
+    | 設定 | 值 |
+    | ------- | ----- |
+    | 名稱 | 輸入 **myOutboundRule**。 |
+    | 前端 IP 位址 | 選取 [建立新的]。 </br> 在 [名稱]中，輸入 **LoadBalancerFrontEndOutbound**。 </br> 選取 [IP 位址] 或 [IP 前置詞]。 </br> 選取 [公用 IP 位址] 或 [公用 IP 前置詞] 底下的 [建立新的]。 </br> 針對 [名稱]，輸入 **myPublicIPOutbound** 或 **myPublicIPPrefixOutbound**。 </br> 選取 [確定]。 </br> 選取 [新增]。|
+    | 閒置逾時 (分鐘) | 將滑桿移至 **15 分鐘**。|
+    | TCP 重設 | 選取 [啟用] 。|
+    | 後端集區 | 選取 [建立新的]。 </br> 在 [名稱] 中輸入 **myBackendPoolOutbound**。 </br> 選取 [新增]。 |
+    | 連接埠配置 -> 連接埠配置 | 選取 [手動選擇輸出連接埠數目] |
+    | 輸出連接埠 -> 選擇依據 | 選取 [每個執行個體的連接埠數] |
+    | 輸出連接埠 -> 每個執行個體的連接埠數 | 輸入 **10000**。 |
+
+4. 選取 [新增]。
+
+### <a name="add-virtual-machines-to-outbound-pool"></a>將虛擬機器新增至輸出集區
+
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer**。
+
+2. 在 [設定] 底下選取 [後端集區]。
+
+3. 選取 **myBackendPoolOutbound**。
+
+4. 在 [虛擬網路] 中，選取 [myVNet]。
+
+5. 在 [虛擬機器] 中，選取 [新增]。
+
+6. 勾選 **myVM1**、**myVM2** 和 **myVM3** 旁的方塊。 
+
+7. 選取 [新增]。
+
+8. 選取 [儲存]。
 
 # <a name="option-2-create-a-load-balancer-basic-sku"></a>[選項 2：建立負載平衡器 (基本 SKU)](#tab/option-1-create-load-balancer-basic)
 
@@ -420,7 +463,7 @@ ms.locfileid: "86536536"
     | NIC 網路安全性群組 | 選取 [進階]|
     | 設定網路安全性群組 | 選取 [建立新的]。 </br> 在 [建立網路安全性群組] 的 [名稱] 中，輸入 **myNSG**。 </br> 在 [輸入規則]下，選取 [+新增輸入規則]。 </br> 在 [目的地連接埠範圍] 下，輸入 **80**。 </br> 在 [優先順序] 下，輸入 **100**。 </br> 在 [名稱] 中，輸入 **myHTTPRule** </br> 選取 [新增] </br> 選取 [確定] |
     | **負載平衡**  |
-    | 要將此虛擬機器放在現有負載平衡解決方案後面嗎? | 選取 [否]  |
+    | 要將此虛擬機器放在現有負載平衡解決方案後面嗎? | 選取 [否] |
  
 5. 選取 [管理] 索引標籤，或選取 [下一步] > [管理]。
 
@@ -441,9 +484,10 @@ ms.locfileid: "86536536"
     | 名稱 |  **myVM2** |**myVM3**|
     | 可用性設定組| 選取 [MyAvailabilitySet] | 選取 [MyAvailabilitySet]|
     | 網路安全性群組 | 選取現有的 **myNSG**| 選取現有的 **myNSG**|
+
 ---
 
-### <a name="install-iis"></a>安裝 IIS
+## <a name="install-iis"></a>安裝 IIS
 
 1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單選取 **myResourceGroupLB** 資源群組中的 [myVM1]。
 

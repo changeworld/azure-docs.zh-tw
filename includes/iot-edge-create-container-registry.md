@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: f63510771e4bd71a3ab6cf048bc5fb5296042a4d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f8cb734e8a57e3b0ee114ae20f454d0034e9cdc9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75564691"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387605"
 ---
 ## <a name="create-a-container-registry"></a>建立容器登錄庫
 
@@ -25,17 +25,18 @@ ms.locfileid: "75564691"
 
    | 欄位 | 值 |
    | ----- | ----- |
-   | 登錄名稱 | 提供唯一名稱。 |
    | 訂用帳戶 | 從下拉式清單中選取訂用帳戶。 |
    | 資源群組 | 建議您對於在 IoT Edge 快速入門和教學課程中建立的所有測試資源，使用相同的資源群組。 例如 **IoTEdgeResources**。 |
+   | 登錄名稱 | 提供唯一名稱。 |
    | Location | 選擇接近您的位置。 |
-   | 管理員使用者 | 設定為 [已啟用]  。 |
-   | SKU | 選取 [基本]  。 |
+   | SKU | 選取 [基本]。 |
 
-3. 選取 [建立]  。
+3. 選取 [建立]。
 
 4. 建立容器登錄後請加以瀏覽，並且在左窗格中，從位於 [設定] 下方的功能表中選取 [存取金鑰]。
 
-5. 複製 [登入伺服器]  、[使用者名稱]  及 [密碼]  的值，並將這些值儲存在方便的地方。 在這整個教學課程中，您會使用這些值來提供容器登錄的存取權。
+5. 按一下 [啟用管理使用者] 以檢視容器登錄的**使用者名稱**和**密碼**。
+
+6. 複製 [登入伺服器]、[使用者名稱] 及 [密碼] 的值，並將這些值儲存在方便的地方。 在這整個教學課程中，您會使用這些值來提供容器登錄的存取權。
 
    ![複製容器登錄的登入伺服器、使用者名稱和密碼](./media/iot-edge-create-container-registry/registry-access-key.png)

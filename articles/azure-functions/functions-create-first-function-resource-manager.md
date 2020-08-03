@@ -1,24 +1,28 @@
 ---
 title: 使用 Azure Resource Manager 範本建立您的第一個函式
-description: 使用 Azure Resource Manager 範本來建立簡單的 HTTP 觸發無伺服器函式，並將其部署至 Azure。
+description: 使用 Azure Resource Manager 範本 (ARM 範本) 來建立簡單的 HTTP 觸發無伺服器函式，並將其部署至 Azure。
 ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 403ff6407105574c78b8e600c37efbe61d2f8b79
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e409b3b64ac6bc39ba4cb58397506723a67a0de2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081707"
 ---
-# <a name="quickstart-create-and-deploy-azure-functions-resources-from-a-resource-manager-template"></a>快速入門：從 Resource Manager 範本建立及部署 Azure Functions 資源
+# <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>快速入門：從 ARM 範本建立及部署 Azure Functions 資源
 
-在本文中，您會使用 Azure Resource Manager 範本來建立回應 HTTP 要求的函式。 
+在本文中，您會使用 Azure Resource Manager 範本 (ARM 範本) 來建立回應 HTTP 要求的函式。 
 
 完成本快速入門後，您的 Azure 帳戶中會產生幾美分或更少的少許費用。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-function-app-create-dynamic%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -48,13 +52,11 @@ ms.locfileid: "84740195"
 
 在本機建立專案之後，您會建立在 Azure 中執行新函式所需的資源。 
 
-## <a name="create-a-serverless-function-app-in-azure"></a>在 Azure 中建立無伺服器函式應用程式
+## <a name="review-the-template"></a>檢閱範本
 
-### <a name="review-the-template"></a>檢閱範本
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/)。
 
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic)。
-
-:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" range="1-140" highlight="55-136":::
 
 此範本會建立下列四個 Azure 資源：
 
@@ -63,7 +65,7 @@ ms.locfileid: "84740195"
 + [**Microsoft.Web/sites**](/azure/templates/microsoft.web/sites)：建立函式應用程式。
 + [**microsoft.insights/components**](/azure/templates/microsoft.insights/components)：建立用於監視的 Application Insights 執行個體。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli-interactive
@@ -105,13 +107,13 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 # <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
 
-1. 在 [方案總管]**** 中，以滑鼠右鍵按一下專案並選取 [發佈]****。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下專案並選取 [發佈]。
 
-1. 在 [挑選發佈目標]**** 中，選擇 [Azure Functions 使用量方案]**** 的 [選取現有的]****，然後選取 [建立設定檔]****。
+1. 在 [挑選發佈目標] 中，選擇 [Azure Functions 使用量方案] 的 [選取現有的]，然後選取 [建立設定檔]。
 
     :::image type="content" source="media/functions-create-first-function-arm/choose-publish-target-visual-studio.png" alt-text="選擇現有的發佈目標":::
 
-1. 選擇您的**訂用帳戶**，展開資源群組，選取您的函式應用程式，然後選取 [確定]****。
+1. 選擇您的**訂用帳戶**，展開資源群組，選取您的函式應用程式，然後選取 [確定]。
 
 1. 發佈完成之後，請複製**網站 URL**。
 

@@ -3,17 +3,17 @@ title: 教學課程 - 將一般 Node.js 用戶端應用程式連線至 Azure IoT
 description: 本教學課程說明如何以裝置開發人員身分，將執行 Node.js 用戶端應用程式的裝置與您的 Azure IoT Central 應用程式連線。 您可以匯入裝置功能模型並新增可讓您與連線裝置互動的檢視，來建立裝置範本
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mqtt
-ms.openlocfilehash: 65f441425113d89010cc2d282758c5a042be9300
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: e20ab44f309fd9ff7f2d6d9b1ad2a4ca0bfa3223
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417900"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336084"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>教學課程：建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式 (Node.js)
 
@@ -38,7 +38,7 @@ ms.locfileid: "84417900"
 
 若要完成這篇文章中的步驟，您需要下列項目︰
 
-* 使用 [自訂應用程式] 範本建立的 Azure IoT Central 應用程式。 如需詳細資訊，請參閱[建立應用程式快速入門](quick-deploy-iot-central.md)。
+* 使用 [自訂應用程式] 範本建立的 Azure IoT Central 應用程式。 如需詳細資訊，請參閱[建立應用程式快速入門](quick-deploy-iot-central.md)。 應用程式必須已在 2020 年 7 月 14 日或之後建立。
 * 已安裝 [Node.js](https://nodejs.org/) 10.0.0 版或更新版本的開發電腦。 您可以在命令列執行 `node --version` 來檢查版本。 本教學課程中的指示假設您是在 Windows 命令提示字元中執行 **node** 命令。 不過，您可以在許多其他作業系統上使用 Node.js。
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -121,7 +121,7 @@ ms.locfileid: "84417900"
 
     IoT Central 使用裝置對應項來同步處理裝置與 IoT Central 應用程式之間的屬性值。 裝置屬性值會使用裝置對應項報告屬性。 可寫入屬性同時使用裝置對應項報告和所需屬性。
 
-1. 若要定義及處理您的裝置所回應的可寫入屬性，請新增下列程式碼：
+1. 若要定義及處理您的裝置所回應的可寫入屬性，請新增下列程式碼。 裝置為了回應[可寫入屬性更新](concepts-telemetry-properties-commands.md#writeable-property-types)而傳送的訊息必須包含 `av` 和 `ac` 欄位。 `ad` 欄位是選擇性的：
 
     ```javascript
     // Add any writeable properties your device supports,
@@ -130,12 +130,12 @@ ms.locfileid: "84417900"
     var writeableProperties = {
       'name': (newValue, callback) => {
           setTimeout(() => {
-            callback(newValue, 'completed');
+            callback(newValue, 'completed', 200);
           }, 1000);
       },
       'brightness': (newValue, callback) => {
         setTimeout(() => {
-            callback(newValue, 'completed');
+            callback(newValue, 'completed', 200);
         }, 5000);
       }
     };
@@ -145,13 +145,14 @@ ms.locfileid: "84417900"
       twin.on('properties.desired', function (desiredChange) {
         for (let setting in desiredChange) {
           if (writeableProperties[setting]) {
-            console.log(`Received setting: ${setting}: ${desiredChange[setting].value}`);
-            writeableProperties[setting](desiredChange[setting].value, (newValue, status) => {
+            console.log(`Received setting: ${setting}: ${desiredChange[setting]}`);
+            writeableProperties[setting](desiredChange[setting], (newValue, status, code) => {
               var patch = {
                 [setting]: {
                   value: newValue,
-                  status: status,
-                  desiredVersion: desiredChange.$version
+                  ad: status,
+                  ac: code,
+                  av: desiredChange.$version
                 }
               }
               sendDeviceProperties(twin, patch);
@@ -280,7 +281,9 @@ ms.locfileid: "84417900"
           } else {
             // Send device properties once on device start up.
             var properties = {
-              state: 'true'
+              state: 'true',
+              processorArchitecture: 'ARM',
+              swVersion: '1.0.0'
             };
             sendDeviceProperties(twin, properties);
 
@@ -326,12 +329,15 @@ node environmentalSensor.js
 
 ![觀察用戶端應用程式](media/tutorial-connect-device-nodejs/run-application-2.png)
 
+## <a name="view-raw-data"></a>檢視未經處理資料
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+
 ## <a name="next-steps"></a>後續步驟
 
 身為裝置開發人員，您現在已了解如何使用 Node.js 建立裝置的基本概念，以下是一些建議的後續步驟：
 
-* 若要了解如何將實際裝置連線至 IoT Central，請參閱[將 MXChip IoT DevKit 裝置連線到 Azure IoT Central 應用程式](./howto-connect-devkit.md)。
-* 閱讀[什麼是裝置範本？](./concepts-device-templates.md)，以深入了解您在實作裝置程式碼時的裝置範本角色。
+* 閱讀[什麼是裝置範本？](./concepts-device-templates.md)，以深入了解在您實作裝置程式碼時裝置範本的角色。
 * 如需深入了解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線，請參閱[連線至 Azure IoT Central](./concepts-get-connected.md)。
 
 如果您想要繼續進行這套 IoT Central 教學課程並深入了解如何建置 IoT Central 解決方案，請參閱：

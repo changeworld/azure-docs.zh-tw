@@ -7,22 +7,22 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7c4a148d68de8c57ed9237c05ba11eaf6c5e81e3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103954"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87306106"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用舊版的 Azure Migrate
 
-此文章提供使用舊版 Azure Migrate 的相關資訊。
+此文章提供使用舊版 Azure Migrate 的相關資訊。 
 
 
 Azure Migrate 服務有兩個版本：
 
 - **目前的版本**：使用此版本來建立 Azure Migrate 專案、探索內部部署電腦，以及協調評量與移轉。 [深入了解](whats-new.md)此版本的新功能。
-- **先前版本**：如果您使用的是舊版 Azure Migrate (僅支援內部部署 VMware VM 的評量)，則您現在應該使用目前的版本。 如果您仍然需要使用在舊版中建立的 Azure Migrate 專案，以下是您可以/不可執行的操作：
+- **先前版本**：如果您使用的是舊版 Azure Migrate (僅支援內部部署 VMware VM 的評量)，則您現在應該使用目前的版本。 先前的版本專案在本文中稱為「傳統專案」。 如果您仍然需要使用在舊版中建立的 Azure Migrate 專案，以下是您可以/不可執行的操作：
     - 您無法再建立移轉專案。
     - 我們建議您不要執行新的探索。
     - 您仍然可以存取現有的專案。
@@ -31,15 +31,24 @@ Azure Migrate 服務有兩個版本：
 
 ## <a name="upgrade-between-versions"></a>版本之間的升級
 
-您無法將舊版中的專案或元件升級至新版本。 您需要[建立新的 Azure Migrate 專案](how-to-add-tool-first-time.md)，並將評量與移轉工具新增到其中。
+您無法將舊版中的專案或元件升級至新版本。 您需要[建立新的 Azure Migrate 專案](create-manage-projects.md)，並[將評量與移轉工具新增到其中](how-to-add-tool-first-time.md)。 使用教學課程來了解如何使用可用的評量和移轉工具。 如果您已將 Log Analytics 工作區連結至傳統專案，可以在刪除傳統專案之後，將其連結加至目前版本的專案。
 
 ## <a name="find-projects-from-previous-version"></a>尋找舊版的專案
 
 尋找舊版的專案，如下所示：
 
-1. 在 Azure 入口網站 > [所有服務]  中，搜尋並選取 [Azure Migrate]  。 
+1. 在 Azure 入口網站 > [所有服務] 中，搜尋並選取 [Azure Migrate]。 
 2. 在 Azure Migrate 儀表板上，會有可以存取舊 Azure Migrate 專案的通知與連結。
-3. 按一下連結以開啟 v1 專案。
+3. 按一下連結以開啟傳統專案。
+
+## <a name="delete-projects-from-previous-version"></a>刪除舊版的專案
+
+尋找並刪除舊版的專案，如下所示：
+
+1. 在 Azure 入口網站 > [所有服務] 中，搜尋並選取 [Azure Migrate]。 
+2. 在 Azure Migrate 儀表板上，會有可以存取舊 Azure Migrate 專案的通知與連結。
+3. 按一下連結以開啟傳統專案。
+4. 選取您想要刪除的專案，並將其刪除。 
 
 
 ## <a name="create-an-assessment"></a>建立評估
@@ -51,15 +60,15 @@ Azure Migrate 服務有兩個版本：
 
 建立評量，如下所示：
 
-1. 在專案的 [概觀]  頁面中，按一下 [+建立評估]  。
-2. 按一下 [檢視全部]  來檢閱評估屬性。
+1. 在專案的 [概觀] 頁面中，按一下 [+建立評估]。
+2. 按一下 [檢視全部] 來檢閱評估屬性。
 3. 建立群組，並指定群組名稱。
 4. 選取您想要新增至群組的機器。
-5. 按一下 [建立評估]  以建立群組和評估。
-6. 建立評估之後，在 [概觀]   > [儀表板]  中檢視該評估。
-7. 按一下 [匯出評估]  ，將其下載為 Excel 檔案。
+5. 按一下 [建立評估] 以建立群組和評估。
+6. 建立評估之後，在 [概觀] > [儀表板] 中檢視該評估。
+7. 按一下 [匯出評估]，將其下載為 Excel 檔案。
 
-如果您想要以最新的效能資料更新現有的評量，則可以對評量使用 [重新計算]  命令來更新它。
+如果您想要以最新的效能資料更新現有的評量，則可以對評量使用 [重新計算] 命令來更新它。
 
 ## <a name="review-an-assessment"></a>檢閱評量 
 
@@ -118,7 +127,7 @@ Windows Client 7、8 及 10 | Azure [僅對 Visual Studio 訂用帳戶](../virtu
 Windows 10 專業版桌面 | Azure 對[多租用戶主機權限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)提供支援。 | 可有條件地供 Azure 使用
 Windows Vista、XP Professional | 不支援。 機器可能可以在 Azure 中開機，但 Azure 不會提供 OS 支援。 | 可有條件地供 Azure 使用，建議在移轉到 Azure 之前升級作業系統。
 Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 作業系統可能可以在 Azure 中開機，但我們建議您在移轉至 Azure 之前，將作業系統升級為認可的版本。 | 如果版本受到認同，則可供 Azure 使用。<br/><br/>如果版本未受到認同，則有條件地可供使用。
-其他作業系統<br/><br/> 例如，Oracle Solaris、Apple Mac OS 等、FreeBSD 等。 | Azure 並未認可這些作業系統。 機器可能可以在 Azure 中開機，但 Azure 不會提供作業系統支援。 | 可有條件地供 Azure 使用，建議在移轉到 Azure 之前安裝支援的作業系統。  
+其他作業系統<br/><br/> 例如，Oracle Solaris、Apple macOS 等、FreeBSD 等。 | Azure 並未認可這些作業系統。 機器可能可以在 Azure 中開機，但 Azure 不會提供作業系統支援。 | 可有條件地供 Azure 使用，建議在移轉到 Azure 之前安裝支援的作業系統。  
 在 vCenter Server 中作業系統指定為**其他** | Azure Migrate 無法在此情況下識別作業系統。 | 整備程度未知。 請確保 Azure 支援 VM 內執行的作業系統。
 32 位元作業系統 | 機器可能可以在 Azure 中開機，但 Azure 可能不會提供完整支援。 | 可有條件地供 Azure 使用，在移轉到 Azure 之前，請考慮將機器的作業系統從 32 位元作業系統升級至 64 位元作業系統。
 
@@ -198,10 +207,10 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 
 若要使用相依性視覺效果，請將 Log Analytics 工作區與移轉專案建立關聯。 您只能在建立移轉專案的相同訂用帳戶中，建立或連結工作區。
 
-1. 若要將 Log Analytics 工作區連結至專案，請在 [概觀]  > [基本資訊]  中，按一下 [需要設定]  。
+1. 若要將 Log Analytics 工作區連結至專案，請在 [概觀] > [基本資訊] 中，按一下 [需要設定]。
 2. 您可以建立新的工作區，或是連結現有的工作區：
   - 若要建立新的工作區，請指定名稱。 工作區會在與移轉專案相同之 [Azure 地理區](https://azure.microsoft.com/global-infrastructure/geographies/)的區域中建立。
-  - 當您連結現有的工作區時，您能以和移轉專案相同的方式，從相同訂用帳戶中所有的可用工作區中挑選。 系統只會列出那些在[支援的服務對應區域](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)中建立的工作區。 若要連結工作區，請確定您有該工作區的「讀者」存取權。
+  - 當您連結現有的工作區時，您能以和移轉專案相同的方式，從相同訂用帳戶中所有的可用工作區中挑選。 系統只會列出那些在[支援的服務對應區域](../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)中建立的工作區。 若要連結工作區，請確定您有該工作區的「讀者」存取權。
 
 > [!NOTE]
 > 您無法變更與移轉專案相關聯的工作區。
@@ -210,9 +219,9 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 
 在您設定工作區之後，您要在待評估的每部內部部署機器上下載並安裝代理程式。 此外，如果您的機器沒有網際網路連線，則需要下載並安裝 [Log Analytics 閘道](../azure-monitor/platform/gateway.md)。
 
-1. 在 [概觀]  中，按一下 [管理]   > [機器]  ，並選取所需的機器。
-2. 在 [相依性]  資料行中，按一下 [安裝代理程式]  。
-3. 在 [相依性]  頁面上，在您要進行評量的每部 VM 上下載並安裝 Microsoft Monitoring Agent (MMA) 與相依性代理程式。
+1. 在 [概觀] 中，按一下 [管理] > [機器]，並選取所需的機器。
+2. 在 [相依性] 資料行中，按一下 [安裝代理程式]。
+3. 在 [相依性] 頁面上，在您要進行評量的每部 VM 上下載並安裝 Microsoft Monitoring Agent (MMA) 與相依性代理程式。
 4. 複製工作區識別碼與金鑰。 在內部部署機器上安裝 MMA 時，需要用到這些識別碼與金鑰。
 
 > [!NOTE]
@@ -224,10 +233,10 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 在 Windows 電腦上安裝代理程式：
 
 1. 按兩下下載的代理程式。
-2. 在 [歡迎]  頁面中按 [下一步]  。 在 [授權條款]  頁面上，按一下 [我同意]  以接受授權。
-3. 在 [目的地資料夾]  中，保留或修改預設的安裝資料夾 > [下一步]  。
-4. 在 [代理程式安裝選項]  中，選取 [Azure Log Analytics]   > [下一步]  。
-5. 按一下 [新增]  以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 按 [下一步]  。
+2. 在 [歡迎] 頁面中按 [下一步]。 在 [授權條款] 頁面上，按一下 [我同意] 以接受授權。
+3. 在 [目的地資料夾] 中，保留或修改預設的安裝資料夾 > [下一步]。
+4. 在 [代理程式安裝選項] 中，選取 [Azure Log Analytics] > [下一步]。
+5. 按一下 [新增] 以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 按 [下一步] 。
 
 您可以從命令列或使用自動化方法 ( 例如 Configuration Manager ) 來安裝代理程式。 [了解更多](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)有關如何使用這些方法來安裝 MMA 代理程式。
 
@@ -261,9 +270,9 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 
 ### <a name="create-a-group-with-dependency-mapping"></a>建立具有相依性對應的群組
 
-1. 安裝代理程式之後，請移至入口網站，然後按一下[管理]   > [機器]  。
+1. 安裝代理程式之後，請移至入口網站，然後按一下[管理] > [機器]。
 2. 搜尋安裝代理程式的機器。
-3. 機器的 [相依性]  資料行現在應會顯示為**檢視相依性**。 按一下資料行以檢視機器的相依性。
+3. 機器的 [相依性] 資料行現在應會顯示為**檢視相依性**。 按一下資料行以檢視機器的相依性。
 4. 機器的相依性對應會顯示下列詳細資料：
     - 往返機器的輸入 (用戶端) 和輸出 (伺服器) TCP 連線
         - 未安裝 MMA 與相依性代理程式的相依機器會依連接埠號碼分組。
@@ -276,14 +285,14 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
    > [!NOTE]
    >    支援最多一小時的時間範圍。 使用 Azure 監視器可在較長的持續期間內[查詢相依性資料](./how-to-create-group-machine-dependencies.md) \(部分機器翻譯\)。
 
-5. 找出您需要劃為同一群組的相依機器後，請使用 Ctrl + 按一下來選取對應中的多部機器，然後按一下 [群組機器]  。
+5. 找出您需要劃為同一群組的相依機器後，請使用 Ctrl + 按一下來選取對應中的多部機器，然後按一下 [群組機器]。
 6. 指定群組名稱。 確認 Azure Migrate 已探索到相依機器。
 
     > [!NOTE]
     > 如果 Azure Migrate 未探索到相依機器，您就無法將它新增至群組。 若要將這類機器新增至群組，您必須使用 vCenter Server 中的正確範圍，再次執行探索程序，並確定 Azure Migrate 已探索到機器。  
 
 7. 如果您需要建立此群組的評估，請選取核取方塊來建立新的群組評估。
-8. 按一下 [確定]  以儲存群組。
+8. 按一下 [確定] 以儲存群組。
 
 一旦建立群組之後，建議您在群組的所有機器上安裝代理程式，並將整個群組的相依性視覺化來調整群組。
 
@@ -293,9 +302,9 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
 
 執行 Kusto 查詢：
 
-1. 安裝代理程式之後，請移至入口網站，然後按一下 [概觀]  。
-2. 在 [概觀]  中，移至專案的 [Essentials]  區域，然後按一下 [OMS 工作區]  旁提供的工作區名稱。
-3. 在 Log Analytics 工作區頁面上，按一下 [一般]   > [記錄]  。
+1. 安裝代理程式之後，請移至入口網站，然後按一下 [概觀]。
+2. 在 [概觀] 中，移至專案的 [Essentials] 區域，然後按一下 [OMS 工作區] 旁提供的工作區名稱。
+3. 在 Log Analytics 工作區頁面上，按一下 [一般] > [記錄]。
 4. 撰寫您的查詢以使用 Azure 監視器記錄收集相依性資料。 在下一節中尋找範例查詢。
 5. 按一下 [執行] 以執行查詢。 
 

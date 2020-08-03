@@ -6,14 +6,14 @@ ms.author: banders
 tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.topic: quickstart
-ms.date: 06/10/2020
+ms.date: 07/28/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 5bff8e6057475701a2e78835fb5a950dcb8c8fcb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 984f2d82e21344dd7e3bb8b7267e289832343e1b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252431"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385769"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>快速入門：使用 ARM 範本建立預算
 
@@ -29,13 +29,31 @@ ms.locfileid: "86252431"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-ARM 範本僅支援 Enterprise 合約 (EA) 的 Azure 訂用帳戶。 此範本不支援其他訂用帳戶類型。
-
-若要建立及管理預算，您必須具有參與者權限。 您可以個別為 EA 訂用帳戶和資源群組建立預算。 不過，您無法為 EA 帳單帳戶建立預算。 針對 Azure EA 訂用帳戶，您必須具備檢視預算的讀取存取權。
-
-建立預算之後，您至少需有 Azure 帳戶的讀取權限，才能檢視預算。
-
 如果您有新的訂用帳戶，就無法立即建立預算或使用成本管理功能。 最多可能需要48小時的時間，才能使用所有的成本管理功能。
+
+預算受下列類型的 Azure 帳戶類型和範圍支援：
+
+- Azure 角色型存取控制範圍
+    - 管理群組
+    - 訂用帳戶
+- Enterprise 合約範圍
+    - 計費帳戶
+    - department
+    - 註冊帳戶
+- 個別合約
+    - 計費帳戶
+- Microsoft 客戶合約範圍
+    - 計費帳戶
+    - 帳單設定檔
+    - 發票區段
+    - 客戶
+- AWS 範圍
+    - 外部帳戶
+    - 外部訂用帳戶
+
+若要檢視預算，您至少需要 Azure 帳戶的讀取存取。
+
+針對 Azure EA 訂用帳戶，您必須具備檢視預算的讀取存取權。 若要建立及管理預算，您必須具有參與者權限。
 
 使用者和群組針對預算的每個訂用帳戶支援下列 Azure 權限或範圍。 如需有關範圍的詳細資訊，請參閱[了解並使用範圍](understand-work-scopes.md)。
 
@@ -49,7 +67,7 @@ ARM 範本僅支援 Enterprise 合約 (EA) 的 Azure 訂用帳戶。 此範本�
 
 本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/create-budget)。
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" :::
 
 此範本中已定義一項 Azure 資源：
 
@@ -63,27 +81,29 @@ ARM 範本僅支援 Enterprise 合約 (EA) 的 Azure 訂用帳戶。 此範本�
 
 2. 選取或輸入下列值。
 
-   [![Resource Manager 範本、建立預算、部署入口網站](./media/quick-create-budget-template/create-budget-using-template-portal.png)](./media/quick-create-budget-template/create-budget-using-template-portal.png#lightbox)
-
+   :::image type="content" source="./media/quick-create-budget-template/create-budget-using-template-portal.png" alt-text="Resource Manager 範本、建立預算、部署入口網站" lightbox="./media/quick-create-budget-template/create-budget-using-template-portal.png" :::
+   
     * **訂用帳戶**：選取 Azure 訂用帳戶。
-    * **資源群組**：選取 [新建] 並輸入資源群組的唯一名稱，然後按一下 [確定]，或選取現有的資源群組。
-    * **位置**：選取位置。 例如，**美國中部**。
+    * **資源群組**：如有必要，請選取現有的資源群組或**建立新的資源群組**。
+    * **區域**：選取 Azure 區域。 例如，**美國中部**。
     * **預算名稱**：輸入預算的名稱。 其在資源群組內必須是唯一的。 只允許英數字元、底線及連字號字元。
-    * **金額**：輸入要透過預算追蹤的總成本或使用量。
-    * **預算類別**：選取預算的類別，也就是預算會追蹤 [成本] 或 [使用量]。
+    * **金額**：輸入要透過預算追蹤的成本總金額。
     * **時間粒紋**：輸入預算所涵蓋的時間。 允許的值為 [每月]、[每季] 或 [每年]。 預算會在時間粒紋結束時重設。
     * **開始日期**：輸入月份的第一天作為開始日期 (格式為 YYYY-MM-DD)。 未來開始日期不得超過今天算起的三個月。 您可以使用「時間粒紋」週期來指定過去開始日期。
-    * **結束日期**：以 YYYY-MM-DD 格式輸入預算的結束日期。 如未提供，預設值會設定為開始日期算起的 10 年。
-    * **運算子**：選取比較運算子。 可能的值為 EqualTo、GreaterThan 或 GreaterThanOrEqualTo。
-    * **閾值**：輸入通知的閾值。 當成本超過閾值時，就會傳送通知。 該值一律是百分比，且必須介於 0 到 1000 之間。
-    * **連絡人電子郵件**：輸入超出閾值時，預算通知要傳送至的電子郵件地址清單。 預期的格式為 `["user1@domain.com","user2@domain.com"]`。
+    * **結束日期**：以 YYYY-MM-DD 格式輸入預算的結束日期。 
+    * **第一個閾值**：輸入第一個通知的閾值。 當成本超過閾值時，就會傳送通知。 該值一律是百分比，且必須介於 0 到 1000 之間。
+    * **第二個閾值**：輸入第二個通知的閾值。 當成本超過閾值時，就會傳送通知。 該值一律是百分比，且必須介於 0 到 1000 之間。
     * **連絡人角色**：輸入超出閾值時，預算通知要傳送至的連絡人角色清單。 預設值為「擁有者」、「參與者」和「讀者」。 預期的格式為 `["Owner","Contributor","Reader"]`。
+    * **連絡人電子郵件**：輸入超出閾值時，預算通知要傳送至的電子郵件地址清單。 預期的格式為 `["user1@domain.com","user2@domain.com"]`。
     * **連絡人群組**：輸入在超出閾值時，預算通知要傳送到的動作群組資源識別碼清單 (以完整資源 URI 的形式)。 其接受字串陣列。 預期的格式為 `["action group resource ID1","action group resource ID2"]`。 如果不想要使用動作群組，請輸入 `[]`。
-    * **資源篩選**：輸入資源的篩選條件清單。 預期的格式為 `["Resource Filter Name1","Resource Filter Name2"]`。 如果您不想要套用篩選條件，請輸入 `[]`。 如果您輸入資源篩選條件，您也必須輸入 [計量篩選條件] 值。
-    * **計量篩選條件**：輸入計量的篩選條件清單，這是具有 [使用量] 預算類別的預算所必備。 預期的格式為 `["Meter Filter Name1","Meter Filter Name2"]`。 如果您未輸入**資源篩選條件**，請輸入 `[]`。
-    * **我同意上方所述的條款及條件**：選取。
+    * **資源群組篩選值**：輸入要篩選的資源群組名稱清單。 預期的格式為 `["Resource Group Name1","Resource Group Name2"]`。 如果您不想要套用篩選條件，請輸入 `[]`。 
+    * **計量類別篩選值**：輸入 Azure 服務計量類別的清單。 預期的格式為 `["Meter Category1","Meter Category2"]`。 如果您不想要套用篩選條件，請輸入 `[]`。
+   
+3. 根據您的 Azure 訂用帳戶類型，執行下列其中一個動作：
+   - 選取 [檢閱 + 建立]。
+   - 檢閱條款及條件、選取 [我同意上方所述的條款及條件]，然後選取 [購買]。
 
-3. 選取 [購買]。 成功部署預算之後，您會收到通知：
+4. 如果已選取 [檢閱 + 建立]，則會驗證您的範本。 選取 [建立]。  
 
    ![Resource Manager 範本、預算、部署入口網站通知](./media/quick-create-budget-template/resource-manager-template-portal-deployment-notification.png)
 

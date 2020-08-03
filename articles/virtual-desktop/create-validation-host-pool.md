@@ -8,20 +8,17 @@ ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b74b7f0b79ad4064d7133a19316d6aec6bd5ba3a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 177763e7939de082faa0c83d2ab661292f0758b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611563"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292647"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教學課程：建立主機集區以驗證服務更新
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)。
->
-> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md)。
 
 主機集區是 Windows 虛擬桌面租用戶環境中一或多個相同虛擬機器的集合。 將主機集區部署到生產環境之前，強烈建議您建立驗證主機集區。 更新會先套用到驗證主機集區，讓您先監視服務更新，再將其推展到生產環境。 若沒有驗證主機集區，您可能無法發現引入錯誤的變更，這可能會導致您生產環境中的使用者停機。
 
@@ -33,7 +30,7 @@ ms.locfileid: "82611563"
 > 建議您將驗證主機集區保持原狀，以測試所有未來的更新。
 
 >[!IMPORTANT]
->Windows 虛擬桌面 2020 年春季版目前無法啟用和停用驗證環境。 我們會在解決此問題後更新本文。
+>與 Azure 資源管理整合的 Windows 虛擬桌面目前無法啟用和停用驗證環境。 我們會在解決此問題後更新本文。
 
 ## <a name="prerequisites"></a>Prerequisites
 

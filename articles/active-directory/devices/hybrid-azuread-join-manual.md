@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4bfe55c4ebe722e98f0816078b64c0131a30d03
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778728"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025773"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教學課程：手動設定已加入混合式 Azure Active Directory 的裝置
 
@@ -567,7 +567,7 @@ Azure AD Connect：
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-請使用 **[Get-MsolDevice](/powershell/msonline/v1/get-msoldevice)** 確認 Azure 租用戶中的裝置註冊狀態。 此 Cmdlet 位於 [Azure Active Directory PowerShell 模組](/powershell/azure/install-msonlinev1?view=azureadps-2.0)中。
+請使用 **[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** 確認 Azure 租用戶中的裝置註冊狀態。 此 Cmdlet 位於 [Azure Active Directory PowerShell 模組](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0)中。
 
 使用 **Get-MSolDevice** Cmdlet 來檢查服務詳細資料時：
 

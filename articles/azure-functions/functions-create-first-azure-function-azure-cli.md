@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acfe4695b94fe9337296d70ef4a2864794730ec4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506344"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081724"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入門：在 Azure 中建立可回應 HTTP 要求的函式
 
@@ -111,6 +111,9 @@ Maven 會要求您提供在部署時完成產生專案所需的值。
 輸入 `Y` 或按 Enter 進行確認。
 
 Maven 會以 _artifactId_ 名稱在新資料夾中建立專案檔案，在此例中為 `fabrikam-functions`。 
+
+若要在 Azure 的 Java 11 上執行，您必須修改 pom.xml 檔案中的值。 若要深入了解，請參閱 [Java 版本](functions-reference-java.md#java-versions)。 
+
 ::: zone-end  
 瀏覽至專案資料夾：
 
@@ -157,6 +160,8 @@ Function.java 包含 `run` 方法，會接收 `request` 變數中的要求資料
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 您可以變更這些設定，以控制在 Azure 中建立資源的方式，例如，在初始部署之前將 `runtime.os` 從 `windows` 變更為 `linux`。 如需 Maven 外掛程式支援的設定完整清單，請參閱[組態詳細資料](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)。
+
+如果要在 JAVA 11 (而不是 JAVA 8) 上執行函式應用程式，您必須將 pom.xml 檔案手動更新為 Java 11 的值。 若要深入了解，請參閱 [Java 版本](functions-reference-java.md#java-versions)。 在 Java 11 上執行時，請確定  
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 

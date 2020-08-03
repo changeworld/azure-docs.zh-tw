@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 02ebdfc0fe3fd39f29a64fdb49a3f0d37b007097
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dc4c348315dce59d5eaf58046c9a8d8f7f2e3725
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526957"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313671"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視 Linux 虛擬機器
 
@@ -140,7 +140,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
     清單會預先選取用來在訂用帳戶中部署 VM 的預設工作區和位置。 
 
     >[!NOTE]
-    >若要建立新的 Log Analytics 工作區以儲存來自 VM 的監視資料，請參閱[建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。 您的 Log Analytics 工作區必須屬於其中一個[支援的區域](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)。
+    >若要建立新的 Log Analytics 工作區以儲存來自 VM 的監視資料，請參閱[建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。 工作區必須屬於其中一個[支援的區域](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)。
 
 啟用監視之後，您可能需要等待數分鐘，才能檢視 VM 的效能計量。
 

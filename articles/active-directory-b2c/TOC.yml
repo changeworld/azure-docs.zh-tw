@@ -452,6 +452,8 @@
       displayName: security
     - name: 使用者流程版本
       href: user-flow-versions.md
+    - name: 舊版使用者流程版本
+      href: user-flow-versions-legacy.md
 - name: 資源
   items:
     - name: Azure 藍圖

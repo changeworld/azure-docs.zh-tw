@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 478d9c0485125870f8d5ffb4132f46476b4bb4ef
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 924654dace53b326e3a29bb834f773122b0476ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384359"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081112"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 IoT Edge 模組
 
@@ -134,7 +134,7 @@ Azure IoT Tools 擴充功能會針對 Visual Studio Code 中所有支援的 IoT 
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱或接受預設值 **EdgeSolution**。 |
    | 選取模組範本 | 選擇 [C# 模組]  。 |
    | 提供模組名稱 | 接受預設的 **SampleModule**。 |
-   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<登錄名稱\>.azurecr.io/samplemodule。 |
+   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 您的容器映像會從您在上一個步驟中提供的名稱預先填入。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/samplemodule。 |
 
    ![提供 Docker 映像存放庫](./media/tutorial-develop-for-linux/image-repository.png)
 
@@ -219,6 +219,12 @@ IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將�
    ```
 
    您可能會收到安全性警告，建議您使用 `--password-stdin`。 雖然建議生產案例使用該最佳做法，但是不在本教學課程的討論範圍內。 如需詳細資訊，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 參考。
+   
+3. 登入 Azure Container Registry
+
+   ```cmd/sh
+   az acr login -n <ACR registry name>
+   ```
 
 ### <a name="build-and-push"></a>建置與推送
 
@@ -262,7 +268,7 @@ Visual Studio Code 現在可以存取容器登錄，因此您現在可以將解�
 如果您在建置和推送模組映像時遇到錯誤，原因往往與開發機器上的 Docker 設定有關。 請使用下列檢查來檢閱您的設定：
 
 * 您是否使用從容器登錄複製的認證來執行 `docker login` 命令？ 這些認證與您用來登入 Azure 的認證不同。
-* 您的容器存放庫是否正確？ 其是否有正確的容器登錄名稱和正確的模組名稱？ 開啟 SampleModule 資料夾中的 **module.json** 檔案來進行檢查。 存放庫值看起來類似於： **\<登錄名稱\>.azurecr.io/samplemodule**。
+* 您的容器存放庫是否正確？ 其是否有正確的容器登錄名稱和正確的模組名稱？ 開啟 SampleModule 資料夾中的 **module.json** 檔案來進行檢查。 存放庫值看起來應該類似於： **\<registry name\>.azurecr.io/samplemodule**。
 * 如果您為模組使用不同於 **SampleModule** 的名稱，該名稱在整個解決方案中是否保持一致？
 * 機器所執行的容器類型是否與所建置的容器類型相同？ 本教學課程適用於 Linux 的 IoT Edge 裝置，因此 Visual Studio Code 應該要在提要欄位中顯示 **amd64** 或 **arm32v7**，且 Docker Desktop 應該執行 Linux 容器。  
 

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Private Link 中建立私人端點
-description: 在本快速入門中，您將使用 Azure Resource Manager 範本來建立私人端點。
+description: 在本快速入門中，您會使用 Azure Resource Manager 範本 (ARM 範本) 來建立私人端點。
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,32 +8,34 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 9fde76b86b290e1271f408cb7810e549dd9502a8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817973"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87071501"
 ---
-# <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>快速入門：使用 Azure Resource Manager 範本建立私人端點
+# <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立私人端點
 
-在本快速入門中，您將使用 Azure Resource Manager 範本來建立私人端點。
+在本快速入門中，您會使用 Azure Resource Manager 範本 (ARM 範本) 來建立私人端點。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 您也可以使用 [Azure 入口網站](create-private-endpoint-portal.md)、[Azure PowerShell](create-private-endpoint-powershell.md) 或 [Azure CLI](create-private-endpoint-cli.md) 來完成本快速入門。
 
-## <a name="prerequisite"></a>必要條件
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>必要條件
 
 您需要具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-private-endpoint"></a>建立私人端點
+## <a name="review-the-template"></a>檢閱範本
 
 此範本會建立 Azure SQL Database 執行個體的私人端點。
 
-### <a name="review-the-template"></a>檢閱範本
-
-本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)。
+本快速入門中使用的範本是來自 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/)。
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
@@ -50,9 +52,9 @@ ms.locfileid: "84817973"
 - [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)：虛擬機器的網路介面。
 - [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)：用來測試私人端點與 SQL Database 執行個體之間私人連線的虛擬機器。
 
-### <a name="deploy-the-template"></a>部署範本
+## <a name="deploy-the-template"></a>部署範本
 
-以下是將 Azure Resource Manager 範本部署至 Azure 的方法：
+以下說明如何將 ARM 範本部署至 Azure：
 
 1. 若要登入 Azure 並開啟範本，請選取 [部署至 Azure]。 此範本會建立私人端點、SQL Database 的執行個體、網路基礎結構，以及要驗證的虛擬機器。
 
@@ -66,7 +68,7 @@ ms.locfileid: "84817973"
 ## <a name="validate-the-deployment"></a>驗證部署
 
 > [!NOTE]
-> Azure Resource Manager 範本會為虛擬機器 myVm<b>{uniqueid}</b> 資源以及為 SQL Database sqlserver<b>{uniqueid}</b> 資源產生唯一的名稱。 請以您產生的值替代 **{uniqueid}** 。
+> ARM 範本會為虛擬機器 myVm<b>{uniqueid}</b> 資源以及為 SQL Database sqlserver<b>{uniqueid}</b> 資源產生唯一的名稱。 請以您產生的值替代 **{uniqueid}** 。
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>從網際網路連線至 VM
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 06/30/2020
+ms.date: 07/28/2020
 ms.author: victorh
-ms.openlocfilehash: 90f817ac3bbd475d8a84df44bc284f09fcd19ce3
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565804"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372360"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure 防火牆管理員部署概觀
 
@@ -65,6 +65,13 @@ ms.locfileid: "85565804"
 > - 每個區域的每個虛擬 WAN 上不能有超過一個中樞。 但是，您可以在區域中新增多個虛擬 WAN 來達成此目的。
 > - vWAN 中的中樞不能有重疊的 IP 空間。
 > - 您的中樞 VNet 連線必須與中樞位於相同的區域。
+
+## <a name="convert-virtual-networks"></a>轉換虛擬網路
+
+如果您將現有的虛擬網路轉換為中樞虛擬網路，則適用下列資訊：
+
+- 如果虛擬網路具有現有的 Azure 防火牆，您可以選取要與現有防火牆產生關聯的防火牆原則。 當防火牆原則取代防火牆規則時，防火牆佈建狀態將會更新。 在佈建狀態期間，防火牆會繼續處理流量，且不會有停機時間。 您可以使用防火牆管理員或 Azure PowerShell，將現有的規則匯入防火牆原則。
+- 如果虛擬網路沒有相關聯的 Azure 防火牆，則系統會部署防火牆，且防火牆原則會與新的防火牆相關聯。
 
 ## <a name="next-steps"></a>後續步驟
 

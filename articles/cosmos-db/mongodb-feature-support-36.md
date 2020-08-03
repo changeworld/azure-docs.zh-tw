@@ -4,15 +4,15 @@ description: 了解適用於 MongoDB (3.6 版) 的 Azure Cosmos DB API 支援的
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 07/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 92c94b08602fb32ccebf6115306a5000665affe2
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171696"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076833"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>適用於 MongoDB (3.6 版) 的 Azure Cosmos DB API：支援的功能和語法
 
@@ -542,7 +542,32 @@ $polygon |  是 |
 
 ## <a name="unique-indexes"></a>唯一索引
 
-唯一索引可確保集合中所有文件的特定欄位沒有重複值，類似於預設 "_id" 索引鍵上會保留唯一性的方式。 您可以使用 createIndex 命令 (包括 'unique'限制式) 在 Cosmos DB 中建立自訂索引。
+[唯一索引](mongodb-indexing.md#unique-indexes)可確保集合中所有文件的特定欄位沒有重複值，類似於預設 "_id" 索引鍵上會保留唯一性的方式。 您可以使用 `createIndex` 命令搭配 `unique` 限制式參數，在 Cosmos DB 中建立唯一的索引：
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
+{
+        "_t" : "CreateIndexesResponse",
+        "ok" : 1,
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 4
+}
+```
+
+## <a name="compound-indexes"></a>複合索引
+
+[複合索引](mongodb-indexing.md#compound-indexes-mongodb-server-version-36)提供一種方式，為欄位群組建立最多 8 個欄位的索引。 這種類型的索引與原生 MongoDB 複合索引不同。 在 Azure Cosmos DB 中，複合索引會用於套用至多個欄位作業的排序。 若要建立複合索引，您需要指定一個以上的屬性作為參數：
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
+{
+        "createdCollectionAutomatically" : false, 
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+```
 
 ## <a name="time-to-live-ttl"></a>存留時間 (TTL)
 

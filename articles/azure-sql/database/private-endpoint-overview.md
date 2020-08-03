@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: cd2f88d78a967b46c1983e7eb96328c14d90a81a
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 730109a096b352b6d179693293128b465e0be83f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343994"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87063267"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>適用於 Azure SQL Database 和 Azure Synapse Analytics 的 Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -146,7 +146,7 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 檢查連線能力
 > [!NOTE]
-> 在用戶端的連接字串中，使用伺服器的**完整網域名稱 (FQDN)** 。 任何直接對 IP 位址進行的登入嘗試都會失敗。 這是刻意設計的行為，因為私人端點會將流量路由至區域中的 SQL 閘道，而且必須指定 FQDN，登入才會成功。
+> 在用戶端的連接字串中，使用伺服器的**完整網域名稱 (FQDN)** (`<server>.database.windows.net`)。 任何直接對 IP 位址進行或使用私人連結 FQDN (`<server>.privatelink.database.windows.net`) 的登入嘗試都會失敗。 這是刻意設計的行為，因為私人端點會將流量路由至區域中的 SQL 閘道，而且必須指定正確的 FQDN，登入才會成功。
 
 請遵循此處的步驟來使用 [SSMS 連線到 SQL Database](connect-query-ssms.md)。 使用 SSMS 連線到 SQL Database 之後，請執行下列查詢，以確認您可以從 Azure VM 的私人 IP 位址進行連線：
 

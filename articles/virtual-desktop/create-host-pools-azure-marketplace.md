@@ -8,26 +8,23 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c22ad844f0a543cfbf2e007ab2bfc8f0fe22ef7
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: e27bbdcec9b0c9e2bcabf4228a19d87e263d60f4
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362929"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291443"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教學課程：透過 Azure 入口網站建立主機集區
 
 >[!IMPORTANT]
->此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 2020 年春季更新版。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 2019 年秋季版，請參閱[這篇文章](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)。 您使用 Windows 虛擬桌面 2019 年秋季版建立的任何物件，都無法使用 Azure 入口網站來管理。
->
-> Windows 虛擬桌面 2020 年春季更新版目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議您將其用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md)。 您使用 Windows 虛擬桌面 (傳統版) 建立的任何物件，都無法使用 Azure 入口網站來管理。
 
 主機集區是 Windows 虛擬桌面環境中一個或多個相同虛擬機器 (VM) 的集合。 每個主機集區都可以包含一個應用程式群組，而使用者可如同在實體桌面上與其互動。
 
 本文將逐步引導您完成設定程序，以透過 Azure 入口網站建立 Windows 虛擬桌面環境的主機集區。 此方法提供瀏覽器形式的使用者介面，讓您可以在 Windows 虛擬桌面中建立主機集區、建立內含 Azure 訂用帳戶中 VM 的資源群組、將這些 VM 加入至 Azure Active Directory (AD) 網域，以及向 Windows 虛擬桌面註冊 VM。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須輸入下列參數，才能建立主機集區：
 

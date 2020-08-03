@@ -6,15 +6,15 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 3/20/2020
-ms.openlocfilehash: 50a3eebaa18674a0d0a7e9da88b8d3386e5016c5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 7/15/2020
+ms.openlocfilehash: 61da81dd96078e0577e00be37fe27211a5b62154
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067782"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084398"
 ---
-# <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>使用 Azure 入口網站建立 Azure Database for MySQL 伺服器
+# <a name="quickstart-create-an-azure-database-for-mysql-server-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立適用於 MySQL 的 Azure 資料庫伺服器
 
 適用於 MySQL 的 Azure 資料庫是一個受控服務，您可用來在雲端執行、管理及調整高可用性 MySQL 資料庫。 本快速入門說明如何使用 Azure 入口網站，在大約五分鐘內建立適用於 MySQL 的 Azure 資料庫伺服器。  
 
@@ -32,192 +32,114 @@ ms.locfileid: "80067782"
 
 2. 選取 [資料庫]   > [Azure Database for MySQL]  。 您也可以在搜尋方塊中輸入 **MySQL** 以尋找此服務。
 
-   ![Azure Database for MySQL 選項](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+  
+>[!div class="mx-imgBorder"]
+> ![適用於 MySQL 的 Azure 資料庫 選項](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
 
 3. 在新伺服器詳細資料表單中填寫下列資訊︰
-   
-   ![建立伺服器表單](./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png)
+    
+>[!div class="mx-imgBorder"]
+> ![建立伺服器表單](./media/quickstart-create-mysql-server-database-using-azure-portal/4-create-form.png)
 
-    **設定** | **建議的值** | **欄位描述** 
-    ---|---|---
-    伺服器名稱 | 唯一的伺服器名稱 | 輸入可識別 Azure Database for MySQL 伺服器的唯一名稱。 例如，mydemoserver。 網域名稱 .mysql.database.azure.com  已附加至您提供的伺服器名稱。 伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 此名稱必須包含 3 到 63 個字元。
-    訂用帳戶 | 您的訂用帳戶 | 選取您要用於伺服器的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
-    資源群組 | *myresourcegroup* | 提供新的或現有的資源群組名稱。
-    選取來源 | 空白  | 選取 [空白]  ，從頭開始建立新的伺服器。 (如果您要從現有「適用於 MySQL 的 Azure 資料庫」伺服器的異地備份建立伺服器，請選取 [備份]  )。
-    伺服器管理員登入 | myadmin | 當您連線至伺服器時所要使用的登入帳戶。 系統管理員登入名稱不能是 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
-    密碼 | 您的選擇  | 為伺服器管理帳戶提供新密碼。 此密碼必須包含 8 到 128 個字元。 您的密碼必須包含下列類別中三種類別的字元：英文大寫字母、英文小寫字母、數字 (0-9) 及非英數字元 (!、$、#、% 等等)。
-    確認密碼 | 您的選擇 | 確認管理帳戶密碼。
-    Location | *最接近使用者的區域*| 選擇最靠近您的使用者或其他 Azure 應用程式的位置。
-    版本 | *最新主要版本*| 最新主要版本 (除非您有需要另一個版本的特定需求)。
-    定價層 | **一般用途**、**Gen 5**、**2 個虛擬核心**、**5 GB**、**7 天**、**異地備援** | 新伺服器的計算、儲存體和備份組態。 選取 [定價層]  。 接下來，選取 [一般用途]  索引標籤。Gen 5  、4 個虛擬核心  、100 GB  和 7 天  是 [計算世代]  、[虛擬核心]  、[儲存體]  和 [備份保留期限]  的預設值。 您可以讓這些滑桿保留原狀。 若要啟用異地備援儲存體中的伺服器備份，請從 [備份備援選項]  中選取 [異地備援]  。 若要儲存此定價層選取項目，請選取 [確定]  。 下方螢幕擷取畫面會擷取這些選取項目。
-  
+**設定** | **建議的值** | **欄位描述** 
+---|---|---
+訂用帳戶 | 您的訂用帳戶 | 選取您要用於伺服器的 Azure 訂用帳戶。 如果您有多個訂用帳戶，請選擇資源計費的訂用帳戶。
+資源群組 | *myresourcegroup* | 提供新的或現有的資源群組名稱。 您可以使用資源群組來組織屬於單一專案的相依性。
+伺服器名稱 | 唯一的伺服器名稱 | 輸入可識別 Azure Database for MySQL 伺服器的唯一名稱。 例如 'mysqldbserver'。伺服器名稱只能包含小寫字母、數字及連字號 (-) 字元。 此名稱必須包含 3 到 63 個字元。
+資料來源 |*None* | 選取 [無]  從頭建立新的伺服器。 (如果您要從現有「適用於 MySQL 的 Azure 資料庫」伺服器的異地備份建立伺服器，可以選取 [備份])。
+伺服器管理員登入 | myadmin | 輸入伺服器管理員的使用者名稱。 您不能使用 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public** 作為管理使用者名稱。
+密碼 | 您的選擇 | 為伺服器管理帳戶提供新密碼。 密碼的長度必須為 8 到 128 個字元，且包含大寫或小寫字母、數字和非英數字元 (!、$、#、% 等等) 的組合。
+確認密碼 | 您的選擇| 確認管理帳戶密碼。
+Location | *最接近使用者的區域*| 選擇最靠近您的使用者或其他 Azure 應用程式的位置。
+版本 | *最新主要版本*| 最新主要版本 (除非您有需要另一個版本的特定需求)。
+計算 + 儲存體 | **一般用途**、**Gen 5**、**2 個虛擬核心**、**5 GB**、**7 天**、**異地備援** |新伺服器的計算、儲存體和備份組態。 選取 [設定伺服器]  。 接下來，選取適當的定價層；如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/mysql/)。 若要啟用異地備援儲存體中的伺服器備份，請從 [備份備援選項] 中選取 [異地備援]。 選取 [確定]。
+
    > [!NOTE]
-   > 如果您的工作負載只需要輕量計算和 I/O，請考慮使用基本定價層。 請注意，在基本定價層中建立的伺服器後續無法調整為「一般用途」或「記憶體最佳化」。 如需詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/mysql/)。
-   > 
+   > 如果您的工作負載只需要輕量計算和 I/O，請考慮使用基本定價層。 請注意，在基本定價層中建立的伺服器後續無法調整為「一般用途」或「記憶體最佳化」。 
 
-   ![建立伺服器 - 定價層視窗](./media/quickstart-create-mysql-server-database-using-azure-portal/3-pricing-tier.png)
-
-4. 選取 [檢閱+建立]  以佈建伺服器。 佈建作業可能需要多達 20 分鐘的時間。
+4. 選取 [檢閱+建立] 以佈建伺服器。 佈建作業可能需要多達 20 分鐘的時間。
    
-5. 在工具列上選取 [通知]  \(鈴鐺圖示) 以監視部署程序。
+5. 在工具列上選取 [通知] \(鈴鐺圖示) 以監視部署程序。
    
-   根據預設，您的伺服器底下會建立下列資料庫：**information_schema**、**mysql**、**performance_schema** 和 **sys**。
+根據預設，您的伺服器底下會建立下列資料庫：**information_schema**、**mysql**、**performance_schema** 和 **sys**。
 
 ## <a name="configure-a-server-level-firewall-rule"></a>設定伺服器層級防火牆規則
+根據預設，建立的伺服器受防火牆保護，且不可公開存取。 若要授與 IP 存取權，請移至 Azure 入口網站中的伺服器資源，然後從伺服器資源的左側功能表選取 [連線安全性]。 如果不知道如何尋找資源，請參閱[如何開啟資源](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal#open-resources)。
 
-Azure Database for MySQL 服務會在伺服器層級建立防火牆。 它會防止外部應用程式和工具連線到伺服器及伺服器上的任何資料庫，除非已建立防火牆規則以針對特定的 IP 位址開啟防火牆。 
-
-1. 在部署完成之後，找出您的伺服器。 如有需要，您可以搜尋它。 例如，從左側功能表選取 [所有資源]  。 然後輸入伺服器名稱 (例如 **mydemoserver**) 來搜尋新建立的伺服器。 從搜尋結果清單中選取伺服器名稱。 伺服器的 [概觀]  頁面隨即開啟，並提供可進行進一步設定的選項。
-
-2. 在伺服器頁面上，選取 [連線安全性]  。
-
-3. 在 [防火牆規則]  標題之下，選取 [規則名稱]  欄中的空白文字方塊，開始建立防火牆規則。 輸入將存取此伺服器之用戶端的精確 IP 範圍。
+>[!div class="mx-imgBorder"]
+> ![連線安全性 - 防火牆規則](./media/quickstart-create-mysql-server-database-using-azure-portal/add-current-ip-firewall.png)
    
-   ![連線安全性 - 防火牆規則](./media/quickstart-create-mysql-server-database-using-azure-portal/5-firewall-2.png)
+現在，選取 [新增目前的用戶端 IP 位址]，然後選取 [儲存]。 您可以新增其他 IP 或提供 IP 範圍，以從這些 IP 連線到您的伺服器。 如需詳細資訊，請參閱[如何在適用於 MySQL 的 Azure 資料庫上管理防火牆規則](./concepts-firewall-rules.md)
 
+> [!NOTE]
+> 檢查您的網路是否允許連接埠 3306 的輸出流量，以供適用於 MySQL 的 Azure 資料庫使用以避免連線問題。  
 
+## <a name="connect-to-azure-database-for-mysql-server-using-mysql-command-line-client"></a>使用 MySQL 命令列用戶端連線到適用於 MySQL 的 Azure 資料庫伺服器
+您可以從本機環境中選擇 [mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) 或 [MySQL Workbench](./connect-workbench.md) 來連線到伺服器。 在本快速入門中，我們將在 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中執行 **mysql.exe** 以連線到伺服器。
 
-4. 在 [連線安全性]  頁面的工具列上，選取 [儲存]  。 等到出現已成功更新的通知時，您才能繼續。 
+1. 選取左上方反白顯示的圖示，在入口網站中啟動 Azure Cloud Shell。 請記下**概觀**區段中新建立之伺服器的伺服器名稱、伺服器管理員登入名稱、密碼以及訂用帳戶，如下圖所示。
 
-   > [!NOTE]
-   > Azure Database for MySQL 的連線透過連接埠 3306 進行通訊。 如果您嘗試從公司網路內進行連線，可能不允許透過連接埠 3306 的輸出流量。 若是如此，除非 IT 部門開啟連接埠 3306，否則您無法連線到您的伺服器。
-   > 
+    >[!NOTE]
+    >如果您是第一次啟動 Cloud Shell，會看到建立資源群組、儲存體帳戶的提示。 這是一次性的步驟，而且會針對所有工作階段自動連接。 
 
-## <a name="get-the-connection-information"></a>取得連線資訊
-若要連線到您的資料庫伺服器，您需要完整伺服器名稱和系統管理員登入認證。 您稍早可能已在快速入門文章中記下這些值。 若未這麼做，您可以從 Azure 入口網站的伺服器 [概觀]  或 [屬性]  頁面輕鬆尋找伺服器名稱和登入資訊。
+   >[!div class="mx-imgBorder"]
+   > ![入口網站完整檢視 Cloud Shell](./media/quickstart-create-mysql-server-database-using-azure-portal/use-in-cloud-shell.png)
+2. 在 Azure Cloud Shell 終端機上執行此命令。 將值取代為實際的伺服器名稱和管理員使用者登入名稱。 適用於 MySQL 的 Azure 資料庫管理員使用者名稱需要 '@<servername>，如下所示  
 
-若要尋找這些值，請採取下列步驟： 
+  ```azurecli-interactive
+  mysql --host=mydemoserver.mysql.database.azure.com --user=myadmin@mydemoserver -p 
+  ```
 
-1. 開啟伺服器的 [概觀]  頁面。 記下 [伺服器名稱]  和 [伺服器管理員登入名稱]  。 
+  以下是 Cloud Shell 終端機中體驗顯示的樣子
+  ```
+  Requesting a Cloud Shell.Succeeded.
+  Connecting terminal...
 
-2. 將您的游標停留在每個欄位上，複製圖示就會出現在文字右邊。 視需要選取複製圖示來複製值。
+  Welcome to Azure Cloud Shell
 
-在此範例中，伺服器名稱為 **mydemoserver.mysql.database.azure.com**，而伺服器管理員登入為 **myadmin\@mydemoserver**。
+  Type "az" to use Azure CLI
+  Type "help" to learn about Cloud Shell
 
-## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>使用 mysql 命令列工具連線到 MySQL
-使用 **mysql.exe** 命令列工具連線到伺服器。 您可以從[這裡](https://dev.mysql.com/downloads/)下載 MySQL，再將它安裝於電腦上。 
+  sunitha@Azure:~$mysql -h mydemoserver.mysql.database.azure.com -u admin@wpapp-mysqldbserver -p
+  Enter password:
+  Welcome to the MySQL monitor.  Commands end with ; or \g.
+  Your MySQL connection id is 64796
+  Server version: 5.6.42.0 Source distribution
 
-1. 若要利用 mysql 公用程式連線到 Azure Database for MySQL 伺服器，請使用下列格式：
+  Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
 
-    ```bash
-    mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
-    ```
+  Oracle is a registered trademark of Oracle Corporation and/or its
+  affiliates. Other names may be trademarks of their respective
+  owners.
 
-    例如，下列命令會連線至我們的範例伺服器：
-
-    ```bash
-    mysql --host mydemoserver.mysql.database.azure.com --user myadmin@mydemoserver -p
-    ```
-
-    mysql 參數 |建議的值|描述
-    ---|---|---
-    --host | *伺服器名稱* | 您稍早建立 Azure Database for MySQL 伺服器時所用的伺服器名稱值。 範例伺服器是 **mydemoserver.mysql.database.azure.com**。 使用如範例所示的完整網域名稱 ( **\*.mysql.database.azure.com**)。 如果您不記得您的伺服器名稱，請依照上一節中的步驟執行，以取得連線資訊。 
-    --user | 伺服器管理員登入名稱  |您稍早建立 Azure Database for MySQL 時所提供的伺服器管理員登入使用者名稱。 如果您不記得使用者名稱，請依照上一節中的步驟執行，以取得連線資訊。 格式是 *username\@servername*。
-    -p | 等到出現提示為止  |出現提示時，提供您在建立伺服器時所提供的相同密碼。 請注意，輸入的密碼字元不會顯示在 bash 提示字元上。 您已輸入密碼之後，請選取 **Enter**。
-
-   連線之後，mysql 公用程式會顯示 `mysql>` 提示字元，供您鍵入命令。 
-
-   以下是範例 mysql 輸出：
-
-    ```bash
-    Welcome to the MySQL monitor.  Commands end with ; or \g.
-    Your MySQL connection id is 65505
-    Server version: 5.6.26.0 MySQL Community Server (GPL)
-    
-    Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
-    
-    Oracle is a registered trademark of Oracle Corporation and/or its
-    affiliates. Other names may be trademarks of their respective
-    owners.
-
-    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-    
-    mysql>
-    ```
-    > [!TIP]
-    > 如果未將防火牆設定為允許用戶端的 IP 位址，就會發生下列錯誤：
-    >
-    > 錯誤 2003 (28000)：不允許 IP 位址 123.456.789.0 的用戶端存取伺服器。
-    >
-    > 若要解決此錯誤，請確定伺服器組態符合本文「設定伺服器層級防火牆規則」一節中的步驟。
-
-4. 若要確保連線可運作，請在 mysql > 提示字元鍵入 `status`，以檢視伺服器狀態。
-
-    ```sql
-    status
-    ```
-
-   > [!TIP]
-   > 如需其他命令，請參閱 [MySQL 5.7 參考手冊 -- 第 4.5.1 章](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)。
-
-5.  在 **mysql>** 提示字元輸入下列命令以建立空白的資料庫︰
-    ```sql
-    CREATE DATABASE quickstartdb;
-    ```
-    此命令可能需要一些時間才能完成。 
-
-    在適用於 MySQL Server 的 Azure 資料庫內，您可以建立一個或多個資料庫。 您可以選擇在每個伺服器建立單一資料庫以利用所有資源，或建立多個資料庫來共用資源。 您可以建立的資料庫數目沒有限制，但多個資料庫會共用相同的伺服器資源。 
-
-6. 在 **mysql>** 提示字元輸入下列命令以列出資料庫︰
-
-    ```sql
-    SHOW DATABASES;
-    ```
-
-7.  鍵入 `\q`，然後選取 **Enter** 結束 mysql 工具。 
-
-現在您已連線到 Azure Database for MySQL 伺服器，並已建立空白的使用者資料庫。 繼續下一節，進行類似的練習。 下一個練習會使用其他常見工具 (MySQL Workbench) 連線到相同的伺服器。
-
-## <a name="connect-to-the-server-by-using-the-mysql-workbench-gui-tool"></a>使用 MySQL Workbench GUI 工具連線到伺服器
-若要使用 GUI 工具 MySQL Workbench 來連線到伺服器，請採取下列步驟：
-
-1.    在您的用戶端電腦上開啟 MySQL Workbench 應用程式。 您可以從[下載 MySQL Workbench](https://dev.mysql.com/downloads/workbench/)下載並安裝 MySQL Workbench。
-
-2. 建立新的連線。 選取 [MySQL 連線]  標題旁邊的加號 (+) 圖示。
-
-3. 在 [設定新連線]  對話方塊的 [參數]  索引標籤上，輸入您的伺服器連線資訊。預留位置值會顯示為範例。 以您自己的值來取代 [主機名稱]、[使用者名稱] 和 [密碼]。
-
-   ![設定新連線](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
-
-    |設定 |建議的值|欄位描述|
-    |---|---|---|
-     連接名稱 | 示範連線 | 此連線的標籤。 |
-    連線方法 | 標準 (TCP/IP) | 標準 (TCP/IP) 就足夠了。 |
-    主機名稱 | *伺服器名稱* | 您稍早建立 Azure Database for MySQL 伺服器時所用的伺服器名稱值。 範例伺服器是 **mydemoserver.mysql.database.azure.com**。 使用如範例所示的完整網域名稱 ( **\*.mysql.database.azure.com**)。 如果您不記得您的伺服器名稱，請依照上一節中的步驟執行，以取得連線資訊。|
-     連接埠 | 3306 | 連線至 Azure Database for MySQL 伺服器時所要使用的連接埠。 |
-    使用者名稱 |  伺服器管理員登入名稱  | 您稍早建立 Azure Database for MySQL 時所提供的伺服器管理員登入資訊。 我們的範例使用者名稱為 **myadmin\@mydemoserver**。 如果您不記得使用者名稱，請依照上一節中的步驟執行，以取得連線資訊。 格式是 *username\@servername*。
-    密碼 | *您的密碼* | 選取 [儲存在保存庫]  以儲存密碼。 |
-
-4. 選取 [測試連線]  以測試所有參數是否都已設定正確。 然後選取 [確定]  可儲存連線。 
-
-    > [!NOTE]
-    > 預設會在您的伺服器上強制執行 SSL，該伺服器需要額外的設定才能連線成功。 如需詳細資訊，請參閱[在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MySQL 的 Azure 資料庫](./howto-configure-ssl.md)。 若要在本快速入門中停用 SSL，請前往 Azure 入口網站。 然後選取 [連線安全性] 頁面，以停用 [強制 SSL]  連線切換按鈕。
+  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+  mysql>
+  ```
+3. 在相同的 Azure Cloud Shell 終端機中，建立資料庫**客體** 
+  ```
+  mysql> CREATE DATABASE guest;
+  Query OK, 1 row affected (0.27 sec)
+  ```
+4. 變更為資料庫**來賓**
+  ```
+  mysql> USE guest;
+  Database changed 
+  ```
+5. 輸入 ```quit```，然後選取 Enter 鍵結束 mysql。   
 
 ## <a name="clean-up-resources"></a>清除資源
-您有兩種方式可以清除您在本快速入門中建立的資源。 您可以刪除 [Azure 資源群組](../azure-resource-manager/management/overview.md)，其中包括資源群組中的所有資源。 如果您想要讓其他資源保持不變，只要刪除一個伺服器資源。
+您已成功在資源群組中建立適用於 MySQL 的 Azure 資料庫伺服器。  如果您覺得未來不需要這些資源，可以刪除資源群組，或刪除 MySQL 伺服器。 若要移除資源群組，請依照這些步驟操作：
+1. 在 Azure 入口網站中，搜尋並選取 [資源群組]。 
+2. 在 [資源群組] 清單中，選擇資源群組的名稱。
+3. 在資源群組的 [概觀]頁面中，選取 [刪除資源群組]。
+4. 在確認對話方塊凹輸入您的資源群組名稱，然後選取 [刪除]。
 
-> [!TIP]
-> 此集合中的其他快速入門會以本快速入門為基礎。 如果您打算繼續進行快速入門，請勿清除您在此快速入門中建立的資源。 如果您不打算繼續，請使用下列步驟，刪除您在本快速入門中建立的所有資源。
->
-
-若要刪除整個資源群組 (包括新建立的伺服器)，請採取下列步驟：
-
-1.    在 Azure 入口網站中找出您的資源群組。 在左側的功能表上，選取 [資源群組]  ，然後選取您的資源群組名稱 (例如範例中的 **myresourcegroup**)。
-
-2.    在資源群組頁面上，選取 [刪除]  。 接著在方塊中輸入您的資源群組名稱 (例如 **myresourcegroup**) 以確認刪除，然後選取 [刪除]  。
-
-若只要刪除新建立的伺服器，請採取下列步驟：
-
-1. 在 Azure 入口網站中找出您的伺服器 (如果您尚未將它開啟)。 從 Azure 入口網站左側的功能表中，選取 [所有資源]  。 然後搜尋您所建立的伺服器。
-
-2. 在 [概觀]  頁面上，按一下 [刪除]  。 
-
-   ![Azure Database for MySQL--刪除伺服器](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
-
-3. 確認您要刪除的伺服器名稱，並且會顯示其下受影響的資料庫。 在方塊中輸入您的伺服器名稱 (例如 **mydemoserver**)。 選取 [刪除]  。
+若要刪除伺服器，您可以在伺服器的 [概觀] 頁面上按一下 [刪除] 按鈕，如下所示：
+> [!div class="mx-imgBorder"]
+> ![刪除資源](media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
 
 ## <a name="next-steps"></a>後續步驟
-
 > [!div class="nextstepaction"]
-> [設計您的第一個 Azure Database for MySQL 資料庫](./tutorial-design-database-using-portal.md)
-
+>[使用 MySQL 在 Windows 上建置 PHP 應用程式](../app-service/app-service-web-tutorial-php-mysql.md)
+>[使用 MySQL 在 Linux 上建置 PHP 應用程式](../app-service/containers/tutorial-php-mysql-app.md)
+>[ MySQL 建置以 Java 為基礎的 Spring 應用程式](https://docs.microsoft.com/azure/developer/java/spring-framework/spring-app-service-e2e?tabs=bash)

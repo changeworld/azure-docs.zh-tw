@@ -6,15 +6,16 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
-ms.openlocfilehash: ff38f923f7b33c4bc893246970c1e47d33e59269
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.custom: devx-track-java
+ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780418"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374196"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>將現有的自訂網域對應至 Azure Spring Cloud
-分散式名稱服務 (DNS) 是一種在整個網路中儲存網路節點名稱的技術。 本教學課程會使用 CNAME 記錄來對應網域，例如 www.contoso.com。 其會使用憑證來保護自訂網域，並示範如何強制執行傳輸層安全性 (TLS)，也稱為安全通訊端層 (SSL)。 
+網域名稱服務 (DNS) 是一種在整個網路中儲存網路節點名稱的技術。 本教學課程會使用 CNAME 記錄來對應網域，例如 www.contoso.com。 其會使用憑證來保護自訂網域，並示範如何強制執行傳輸層安全性 (TLS)，也稱為安全通訊端層 (SSL)。 
 
 憑證會將網路流量加密。 這些 TLS/SSL 憑證可以儲存在 Azure Key Vault 中。 
 

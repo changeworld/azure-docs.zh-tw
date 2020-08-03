@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807871"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287491"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (工作區預覽) 常見問題集
 
@@ -32,6 +32,8 @@ A：Azure Synapse 是適用於 BI、AI 和持續型智能的整合式資料平�
 - 輕鬆地進行監視，並快速地對工作區活動在任何層級上發生的事件進行最佳化、反應和偵錯。
 - 跨引擎管理您的中繼資料。 建立 Spark 資料表，這會在您的 Azure Synapse 資料庫中自動提供。
 - 透過統一的使用者體驗與資料互動。 Synapse Studio 會將巨量資料開發人員、資料工程師、DBA、資料分析師和資料科學家帶到相同的平台上。
+
+如需詳細資訊，請參閱[什麼是 Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is)。
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>問：Azure Synapse Analytics 的主要元件有哪些
 

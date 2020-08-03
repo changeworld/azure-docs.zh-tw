@@ -51,7 +51,7 @@
       href: concepts-digital-twin.md
     - name: 模型存放庫
       href: concepts-model-repository.md
-    - name: 模型探索
+    - name: 使用解決方案中的模型
       href: concepts-model-discovery.md
     - name: 模型剖析器
       href: concepts-model-parser.md

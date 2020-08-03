@@ -7,20 +7,22 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 5f4a90859831e6134530b94dfa80c11eb740301a
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 8066ba5c895ec5c3fdbf06ffc0a1f30117dcd4d1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85113308"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076814"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>適用於 MongoDB 的 Azure Cosmos DB API
 
-[Azure Cosmos DB](introduction.md) 是 Microsoft 全域發佈的多模型資料庫服務，適用於任務關鍵性應用程式。 Azure Cosmos DB 提供[一站式全域散發](distribute-data-globally.md)、全球[彈性調整的輸送量和儲存體](partition-data.md)、達到第 99 個百分位數的個位數毫秒延遲，以及保證的高可用性，全部都由[領先業界的 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) \(英文\) 所支援。 Azure Cosmos DB 會[自動編製資料的索引](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)，您不需要處理結構描述和索引管理。 它是多重模型，支援文件、索引鍵/值、圖表和單欄式資料模型。 根據預設，您可以使用 SQL API 與互動 Cosmos DB。 此外，Cosmos DB 服務為 Cassandra、MongoDB、Gremlin 和 Azure 表格儲存體等常見 NoSQL API 實作 Wire Protocol。 這可讓您使用熟悉的 NoSQL 用戶端驅動程式和工具來與您的 Cosmos 資料庫互動。
+[Azure Cosmos DB](introduction.md) 是 Microsoft 全域發佈的多模型資料庫服務，適用於任務關鍵性應用程式。 Azure Cosmos DB 提供[一站式全域散發](distribute-data-globally.md)、全球[彈性調整的輸送量和儲存體](partition-data.md)、達到第 99 個百分位數的個位數毫秒延遲，以及保證的高可用性，全部都由[領先業界的 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) \(英文\) 所支援。 Azure Cosmos DB 會[自動編製資料的索引](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)，您不需要處理結構描述和索引管理。 其為多重模型，且支援文件、索引鍵/值、圖表和單欄式資料模型。Azure Cosmos DB 服務會為常見的 NoSQL API (包括 Cassandra、MongoDB、Gremlin 和 Azure 表格儲存體) 實作連線通訊協定。 這可讓您使用熟悉的 NoSQL 用戶端驅動程式和工具來與您的 Cosmos 資料庫互動。
 
 ## <a name="wire-protocol-compatibility"></a>Wire Protocol 相容性
 
-Azure Cosmos DB 實作 Cassandra、MongoDB、Gremlin 和 Azure 表格儲存體等常見 NoSQL 資料庫的 Wire Protocol。 由於 Cosmos DB 內直接且有效率地提供 Wire Protocol 的原生實作，因此可讓 NoSQL 資料庫的現有用戶端 SDK、驅動程式和工具，明確地與 Cosmos DB 互動。 Cosmos DB 未使用資料庫的任何原始程式碼，來提供任何 NoSQL 資料庫的 Wire 相容 API。
+Azure Cosmos DB 會實作 MongoDB 有線通訊協定。 此實作允許與原生 MongoDB 用戶端 SDK、驅動程式和工具的透明相容性。 Azure Cosmos DB 裝載 MongoDB 資料庫引擎。 您可以在這裡找到 MongoDB 所支援功能的詳細資料： 
+- [適用於 MongoDB 的 Azure Cosmos DB API (引擎版本 3.6)](mongodb-feature-support-36.md)
+- [適用於 MongoDB 的 Azure Cosmos DB API (引擎版本 3.2)](mongodb-feature-support.md)
 
 根據預設，如果新帳戶是使用適用於 MongoDB 的 Azure Cosmos DB API 來建立，則可以與 MongoDB 的 Wire Protocol 3.6 版相容。 任何了解此通訊協定版本的 MongoDB 用戶端驅動程式，應該都能原生地連線到 Cosmos DB。
 
@@ -53,5 +55,7 @@ Cosmos DB 作為完全受控且全域散發之資料庫的主要優點如[這裡
 * 遵循[將 MongoDB 資料匯入到 Azure Cosmos DB](mongodb-migrate.md) 教學課程，以將您的資料匯入 Cosmos 資料庫。
 * 使用 [Robo 3T](mongodb-robomongo.md) 連線到 Cosmos 帳戶。
 * 了解如何[設定全球分散式應用程式的讀取喜好設定](../cosmos-db/tutorial-global-distribution-mongodb.md)。
+* 在我們的 [疑難排解指南](mongodb-troubleshoot.md)中尋找常見錯誤的解決方案
+
 
 <sup>注意：本文描述 Azure Cosmos DB 的功能，該功能提供對 MongoDB 資料庫的 Wire Protocol 相容性。Microsoft 不會執行 MongoDB 資料庫來提供這項服務。Azure Cosmos DB 與 MongoDB, Inc. 沒有附屬關係</sup>

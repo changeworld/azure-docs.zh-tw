@@ -4,12 +4,12 @@ description: 說明如何使用 Azure Migrate 伺服器評量來評估內部部�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 6c395d7e2be151e97808fa9601ff6001801d243b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dd00f800003724b3a5c15d265a5428272e1762fb
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110346"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290211"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>透過伺服器評量評估 VMware
 
@@ -75,7 +75,7 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
 ### <a name="download-the-ova-template"></a>下載 OVA 範本
 
 1. 在 [移轉目標] > [伺服器] >  **[Azure Migrate：伺服器評估]** 中，選取 [探索]。
-2. 在 [探索機器] > [機器是否已虛擬化?] 中，選取 [是，使用 VMWare vSphere Hypervisor]。
+2. 在 [探索機器] > [機器是否已虛擬化?] 中，選取 [是，使用 VMware vSphere Hypervisor]。
 3. 選取 [下載] 以下載 OVA 範本檔案。
 
    ![用於下載 OVA 檔案的選項](./media/tutorial-assess-vmware/download-ova.png)
@@ -146,7 +146,7 @@ Azure Migrate：伺服器評量會使用輕量的 Azure Migrate 設備。 設備
      - 僅支援 HTTP Proxy。
    - **時間同步**：設備上的時間應該與網際網路時間同步，探索才能正常運作。
    - **安裝更新**：設備會確保已安裝最新的更新。
-   - **安裝 VDDK**：設備會檢查是否已安裝 VMWare vSphere 虛擬磁碟開發套件 (VDDK)。 如果未安裝，則會從 VMware 下載 VDDK 6.7，並將下載的 zip 內容解壓縮到設備上的指定位置。
+   - **安裝 VDDK**：設備會檢查是否已安裝 VMware vSphere 虛擬磁碟開發套件 (VDDK)。 如果未安裝，則會從 VMware 下載 VDDK 6.7，並將下載的 zip 內容解壓縮到設備上的指定位置。
 
      在遷移至 Azure 期間，Azure Migrate 伺服器移轉會使用 VDDK 來複寫機器。       
 

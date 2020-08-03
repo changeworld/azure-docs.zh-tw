@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 182ceca11d6e9b9bbebcf2911de1783cef43dd1a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4928938c38df8a1ed0f1e31c73e755a4f7f6c371
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207329"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87367625"
 ---
 # <a name="tutorial-manipulating-models"></a>教學課程：操作模型
 
@@ -185,7 +185,7 @@ ms.locfileid: "86207329"
 
 1. 按住滑鼠左鍵並拖曳模型來移動。
 
-您應該會看到遠端轉譯內容與周框方塊一起移動。 您可能會發現在遠端內容的周框方塊之間出現一些延遲情況。 此延遲將取決於您的網際網路延遲和頻寬。
+您應該會看到遠端轉譯內容與周框方塊一起移動。 您可能會發現在周框方塊和遠端內容之間出現一些延遲情況。 此延遲將取決於您的網際網路延遲和頻寬。
 
 ## <a name="ray-cast-and-spatial-queries-of-remote-models"></a>遠端模型的光線轉換和空間查詢
 

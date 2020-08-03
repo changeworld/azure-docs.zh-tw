@@ -1,5 +1,5 @@
 ---
-title: 教學課程 - 建立及管理 Azure 虛擬機器擴展集
+title: 教學課程：建立與管理 Azure VM 擴展集 - Azure PowerShell
 description: 了解如何使用 Azure PowerShell 建立虛擬機器擴展集，以及一些常見的管理工作，例如如何啟動和停止執行個體，或變更擴展集容量。
 author: ju-shim
 ms.author: jushiman
@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/18/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 43816c815c206da7e3fec197e54e9e7889c6de47
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a657f8a4fd7b92aeb858b919052ca732bf630ae9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84735348"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091329"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 建立及管理虛擬機器擴展集
 
@@ -36,7 +36,7 @@ ms.locfileid: "84735348"
 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。 在此範例中，會在 EastUS** 區域中建立名為 myResourceGroup** 的資源群組。 
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 資源群組必須在虛擬機器擴展集之前建立。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 命令來建立資源群組。 在此範例中，會在 EastUS 區域中建立名為 myResourceGroup 的資源群組。 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
@@ -45,7 +45,7 @@ New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "EastUS"
 
 
 ## <a name="create-a-scale-set"></a>建立擴展集
-首先，使用 [Get-credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 設定虛擬機器執行個體的系統管理員使用者名稱和密碼：
+首先，使用 [Get-credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 設定虛擬機器執行個體的系統管理員使用者名稱和密碼：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -66,6 +66,9 @@ New-AzVmss `
 ```
 
 建立及設定所有擴展集資源和 VM 執行個體需要幾分鐘的時間。
+
+> [!IMPORTANT]
+> 如果您無法連線到擴展集，建議您新增 [-SecurityGroupName "mySecurityGroup"](/powershell/module/az.compute/new-azvmss) 參數來建立網路安全性群組。
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>檢視擴展集中的 VM 執行個體
@@ -192,7 +195,7 @@ New-AzVmss `
 ```
 
 > [!IMPORTANT]
-> 我們建議使用「最新」** 的映像版本。 指定「最新」以使用部署階段可用的最新映像版本。 請注意，即使您使用「最新」辦本，VM 映像也不會在部署階段後自動更新，即使有新版本可供使用也一樣。
+> 我們建議使用「最新」的映像版本。 指定「最新」以使用部署階段可用的最新映像版本。 請注意，即使您使用「最新」辦本，VM 映像也不會在部署階段後自動更新，即使有新版本可供使用也一樣。
 
 ## <a name="understand-vm-instance-sizes"></a>了解 VM 執行個體大小
 VM 執行個體大小 (或 *SKU*) 會決定可供 VM 執行個體使用的計算資源 (例如 CPU、GPU 和記憶體) 數量。 擴展集中的 VM 執行個體必須針對預期的工作負載適當設定大小。
@@ -202,12 +205,12 @@ VM 執行個體大小 (或 *SKU*) 會決定可供 VM 執行個體使用的計算
 
 | 類型                     | 一般大小           |    描述       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [一般用途](../virtual-machines/windows/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
-| [計算最佳化](../virtual-machines/windows/sizes-compute.md)   | Fs、F             | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |
-| [記憶體最佳化](../virtual-machines/windows/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 記憶體與核心的比例高。 適用於關聯式資料庫、中型到大型快取，以及記憶體內分析。                 |
-| [儲存體最佳化](../virtual-machines/windows/sizes-storage.md)      | Ls                | 高磁碟輸送量及 IO。 適用於巨量資料、SQL 及 NoSQL 資料庫。                                                         |
-| [GPU](../virtual-machines/windows/sizes-gpu.md)          | NV、NC            | 以大量圖形轉譯和視訊編輯為目標的特製化 VM。       |
-| [高效能](../virtual-machines/windows/sizes-hpc.md) | H、A8-11          | 我們的最強大 CPU VM，可搭配選用的高輸送量網路介面 (RDMA)。 
+| [一般用途](../virtual-machines/sizes-general.md)         |Dsv3、Dv3、DSv2、Dv2、DS、D、Av2、A0-7| 平衡的 CPU 對記憶體。 適用於開發/測試及小型到中型應用程式和資料解決方案。  |
+| [計算最佳化](../virtual-machines/sizes-compute.md)   | Fs、F             | CPU 與記憶體的比例高。 適用於中流量應用程式、網路設備，以及批次處理。        |
+| [記憶體最佳化](../virtual-machines/sizes-memory.md)    | Esv3、Ev3、M、GS、G、DSv2、DS、Dv2、D   | 記憶體與核心的比例高。 適用於關聯式資料庫、中型到大型快取，以及記憶體內分析。                 |
+| [儲存體最佳化](../virtual-machines/sizes-storage.md)      | Ls                | 高磁碟輸送量及 IO。 適用於巨量資料、SQL 及 NoSQL 資料庫。                                                         |
+| [GPU](../virtual-machines/sizes-gpu.md)          | NV、NC            | 以大量圖形轉譯和視訊編輯為目標的特製化 VM。       |
+| [高效能](../virtual-machines/sizes-hpc.md) | H、A8-11          | 我們的最強大 CPU VM，可搭配選用的高輸送量網路介面 (RDMA)。 
 
 ### <a name="find-available-vm-instance-sizes"></a>尋找可用的 VM 執行個體大小
 若要查看特定區域中可用的 VM 執行個體大小清單，請使用 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 命令。 
@@ -234,7 +237,7 @@ Standard_NV6                       6      57344               24        1047552 
 Standard_NV12                     12     114688               48        1047552               696320
 ```
 
-當您在教學課程一開始建立擴展集時，您為 VM 執行個體提供了預設的 VM SKU Standard_DS1_v2**。 您可以根據 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 的輸出指定不同的 VM 執行個體大小。 下列範例會使用 `-VmSize` 參數指定 VM 執行個體大小 *Standard_F1*，以建立擴展集。 建立及設定所有擴展集資源和 VM 執行個體需要幾分鐘的時間，而您並不需要部署下列擴展集：
+當您在教學課程一開始建立擴展集時，您為 VM 執行個體提供了預設的 VM SKU Standard_DS1_v2。 您可以根據 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 的輸出指定不同的 VM 執行個體大小。 下列範例會使用 `-VmSize` 參數指定 VM 執行個體大小 *Standard_F1*，以建立擴展集。 建立及設定所有擴展集資源和 VM 執行個體需要幾分鐘的時間，而您並不需要部署下列擴展集：
 
 ```azurepowershell-interactive
 New-AzVmss `

@@ -1,35 +1,37 @@
 ---
-title: 新功能-個人化工具
+title: 新功能 - 個人化工具
 titleSuffix: Azure Cognitive Services
-description: 本文包含個人化工具的相關新聞。
-author: diberry
+description: 此文章包含有關個人化工具的相關新聞。
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 06/10/2020
-ms.author: diberry
-ms.openlocfilehash: 973a8b7eb8dad66568a5beb45adea9740dd0402a
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.date: 07/17/2020
+ms.openlocfilehash: 5e3606ac04d5023e28bc2304aba79a8211c58881
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84700629"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133073"
 ---
 # <a name="whats-new-in-personalizer"></a>個人化工具的新功能
 
-了解該服務的新功能。 這些專案可能包括版本資訊、影片、blog 文章和其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。
+了解該服務的新功能。 這些項目可能包含版本資訊、影片、部落格文章與其他類型的資訊。 將此頁面加入書簽，以掌握服務的最新狀態。
 
 ## <a name="release-notes"></a>版本資訊
 
+### <a name="july-2020"></a>2020 年 7 月
+
+* 新教學課程 - [在聊天機器人中使用個人化工具](tutorial-use-personalizer-chat-bot.md)
+
 ### <a name="june-2020"></a>2020 年 6 月
 
-* 新教學課程-[在 web 應用程式中使用個人化工具](tutorial-use-personalizer-web-app.md)
+* 新教學課程 - [在 Web 應用程式中使用個人化工具](tutorial-use-personalizer-web-app.md)
 
-### <a name="may-2020---build-conference"></a>5月 2020-build 會議
+### <a name="may-2020---build-conference"></a>2020 年 5 月- //組建會議
 
-以下提供**公開預覽**：
+下列項目目前處於**公開預覽狀態**：
 
  * [新手模式](concept-apprentice-mode.md)作為學習行為。
 
@@ -39,20 +41,20 @@ ms.locfileid: "84700629"
 
 ### <a name="november-2019---ignite-conference"></a>2019 年 11 月 - Ignite 會議
 
-* 個人化工具已正式推出（GA）
-* 包含整個生命週期的 Azure Notebooks[教學](tutorial-use-azure-notebook-generate-loop-data.md)課程
+* 個人化工具已正式推出 (GA)
+* Azure Notebooks [教學課程](tutorial-use-azure-notebook-generate-loop-data.md) 與整個生命週期
 
-### <a name="may-2019---build-conference"></a>5月 2019-build 會議
+### <a name="may-2019---build-conference"></a>2019 年 5 月- //組建會議
 
-下列預覽功能已于 Build 2019 會議發行：
+組建 2019 會議已發行下列預覽功能：
 
 * [排名和獎勵學習迴圈](what-is-personalizer.md)
 
 ## <a name="videos"></a>影片
 
-### <a name="2019-build-videos"></a>2019組建影片
+### <a name="2019-build-videos"></a>2019 組建影片
 
-* [使用認知服務個人化工具的 Xbox & 內容提供適當的體驗](https://azure.microsoft.com/resources/videos/build-2019-deliver-the-right-experiences-and-content-with-cognitive-services-personalizer/)
+* [使用認知服務個人化工具傳遞類似 Xbox 的適當體驗和內容](https://azure.microsoft.com/resources/videos/build-2019-deliver-the-right-experiences-and-content-with-cognitive-services-personalizer/)
 
 ## <a name="service-updates"></a>服務更新
 
@@ -60,5 +62,5 @@ ms.locfileid: "84700629"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [快速入門：在 C 中建立意見反應迴圈#](csharp-quickstart-commandline-feedback-loop.md)
+* [快速入門：以 C# 建立意見反應迴圈](csharp-quickstart-commandline-feedback-loop.md)
 * [使用互動式示範](https://personalizationdemo.azurewebsites.net/)

@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio Code 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: d4078113f93159ef981a78a9917ed65bd03a304b
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9c73c191054c9eee183a762d0a029d6c8dc431ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80240561"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013635"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio Code 和 .NET Core
 
@@ -20,7 +20,7 @@ ms.locfileid: "80240561"
 - 使用 VS Code 和命令列在容器中反覆開發程式碼。
 - 在小組環境中有效率地開發及測試您的程式碼。
 
-> [!Note]
+> [!NOTE]
 > **如果作業出現停滯的情況**，請參閱[疑難排解](troubleshooting.md)一節。
 
 ## <a name="install-the-azure-cli"></a>安裝 Azure CLI
@@ -33,7 +33,7 @@ Azure 開發人員空間需要基本的本機電腦設定。 大部分開發人�
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>如果您有多個 Azure 訂用帳戶...
@@ -126,7 +126,7 @@ azds up
 - 容器端點的相關資訊隨即顯示。 在我們的案例中，我們預期是公用 HTTP URL。
 - 假設上述階段成功完成，您應該會在容器啟動時開始看到 `stdout` (和 `stderr`) 輸出。
 
-> [!Note]
+> [!NOTE]
 > 這些步驟在 `up` 命令第一次執行時會花費較長的時間，但是後續執行應該會更快。
 
 ### <a name="test-the-web-app"></a>測試 Web 應用程式
@@ -155,10 +155,9 @@ webfrontend-5798f9dc44-99fsd: Application started. Press Ctrl+C to shut down.
 
 若要查看您的 Web 應用程式，請在瀏覽器中開啟公用 URL。 另請注意，當您與 Web 應用程式互動時，`stdout` 和 `stderr` 輸出會串流到 azds trace  終端機視窗。 您也會看到 HTTP 要求通過系統時的追蹤資訊。 這可讓您更輕鬆地在開發期間追蹤複雜的多重服務呼叫。 由 Dev Spaces 新增的檢測會提供此要求追蹤。
 
-![azds trace 終端機視窗](media/get-started-netcore/azds-trace.png)
+![azds 追蹤終端視窗](media/get-started-netcore/azds-trace.png)
 
-
-> [!Note]
+> [!NOTE]
 > 除了公用 URL，您也可以使用主控台輸出中顯示的替代 `http://localhost:<portnumber>` URL。 如果您使用 localhost URL，容器可能看起來像在本機執行，但實際是在 AKS 中執行。 Azure Dev Spaces 會使用 Kubernetes 的「連接埠轉送  功能將 localhost 連接埠對應至 AKS 中執行的容器。 這可促使您從本機電腦與服務互動。
 
 ### <a name="update-a-content-file"></a>更新內容檔案
@@ -191,28 +190,28 @@ Azure 開發人員空間不只讓程式碼中在 Kubernetes 中執行 - 還可�
 
 在本節中，您將使用 VS Code 直接對我們在 Azure 中執行的容器進行偵錯。 您也將了解如何取得更快速的編輯-執行-測試迴圈。
 
-![](media/common/edit-refresh-see.png)
+![此圖顯示具有三個階段的開發迴圈：編輯程式碼、重新整理容器，以及查看更新。](media/common/edit-refresh-see.png)
 
-> [!Note]
+> [!NOTE]
 > **如果作業出現停滯的情況**，請參閱[疑難排解](troubleshooting.md)一節，或在此頁面上張貼留言。
 
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>使用 VS Code 擴充功能初始化偵錯資產
 首先您必須設定您的程式碼專案，讓 VS Code 與我們在 Azure 中的開發人員空間通訊。 適用於 Azure Dev Spaces 的 VS Code 擴充功能提供協助程式命令，可以設定偵錯組態。 
 
-開啟 [命令選擇區]  (使用 [檢視 | 命令選擇區]  功能表)，然後使用自動完成功能以輸入及選取以下命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
+開啟 [命令選擇區] (使用 [檢視 | 命令選擇區] 功能表)，然後使用自動完成功能以輸入及選取以下命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
 
 這樣會為 `.vscode` 資料夾底下的 Azure Dev Spaces 新增偵錯組態。 此命令不應與 `azds prep` 命令混淆；後者會設定要部署的專案。
 
-![](media/common/command-palette.png)
+![此螢幕擷取畫面顯示選取了「Azure Dev Spaces：準備 Azure Dev Spaces 的組態檔」，選項位於命令選擇區視窗。](media/common/command-palette.png)
 
 
 ### <a name="select-the-azds-debug-configuration"></a>選取 AZDS 偵錯組態
-1. 若要開啟 [偵錯] 檢視，請按一下 VS Code 側邊的 [活動列]  中的 [偵錯] 圖示。
-1. 選取 [.NET Core Launch (AZDS)]  作為作用中偵錯組態。
+1. 若要開啟 [偵錯] 檢視，請按一下 VS Code 側邊的 [活動列] 中的 [偵錯] 圖示。
+1. 選取 [.NET Core Launch (AZDS)] 作為作用中偵錯組態。
 
-![](media/get-started-netcore/debug-configuration.png)
+![螢幕擷取畫面出現的是 Visual Studio Code 視窗的左上角。 偵錯圖示會反白顯示，左側面板的標題為「DEBUG」，而標題右側的下拉式清單會顯示「.NET Core Launch (A Z D S)」。](media/get-started-netcore/debug-configuration.png)
 
-> [!Note]
+> [!NOTE]
 > 如果您未在 [命令選擇區] 中看到任何 Azure 開發人員空間命令，請確定您已安裝適用於 Azure 開發人員空間的 VS Code 擴充功能。 請確定您在 VS Code 中開啟的工作區是包含 azds.yaml 的資料夾。
 
 
@@ -221,10 +220,10 @@ Azure 開發人員空間不只讓程式碼中在 Kubernetes 中執行 - 還可�
 
 與 `up` 命令相同，程式碼也會同步到開發人員空間，且容器會建置並部署到 Kubernetes。 此時，偵錯工具當然會連結至遠端容器。
 
-> [!Tip]
+> [!TIP]
 > VS Code 狀態列會變成橘色，指出已連結偵錯工具。 其中也會顯示可點選的 URL，讓您用來開啟您的網站。
 
-![](media/common/vscode-status-bar-url.png)
+![螢幕擷取畫面顯示 Visual Studio Code 視窗的底部。 橘色狀態列是最後一行。 其中包含用來開啟網站的 URL。](media/common/vscode-status-bar-url.png)
 
 在伺服器端程式碼檔案中設定中斷點，例如在 `Controllers/HomeController.cs` 來源檔案的 `About()` 函式內。 重新整理瀏覽器頁面會導致叫用中斷點。
 
@@ -241,9 +240,9 @@ public IActionResult About()
 }
 ```
 
-儲存檔案，然後在 [偵錯動作]  窗格中，按一下 [重新啟動]  按鈕。 
+儲存檔案，然後在 [偵錯動作] 窗格中，按一下 [重新啟動] 按鈕。 
 
-![](media/common/debug-action-refresh.png)
+![偵錯執行窗格是位於頁面頂端中央的小窗格 (在網頁標題正下方)。 重新開機按鈕 (圓形箭號) 會反白顯示。按鈕的暫留影像為「重新開機 (ctrl + shift + F5)」。](media/common/debug-action-refresh.png)
 
 Azure 開發人員空間會以累加方式重新編譯現有容器中的程式碼，以提供更快的編輯/偵錯迴圈，而不是在每次進行程式碼編輯時重新建置及重新部署新的容器映像 (這通常要花費相當長的時間)。
 

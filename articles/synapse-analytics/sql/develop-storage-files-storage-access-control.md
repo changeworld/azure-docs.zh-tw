@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255705"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283447"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 隨選 (預覽版) 的儲存體帳戶存取
 
@@ -87,6 +87,11 @@ SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存�
 | 受控識別 | 支援      | 支援        | 支援     |
 | 使用者身分識別    | 支援      | 支援        | 支援     |
 
+
+> [!IMPORTANT]
+> 存取受防火牆保護的儲存體時，只能使用受控識別。 您必須[允許受信任的 Microsoft 服務... 設定](../../storage/common/storage-network-security.md#trusted-microsoft-services)，並針對該資源執行個體明確[指派 RBAC 角色](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)給[系統指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 RBAC 角色。
+>
+
 ## <a name="credentials"></a>認證
 
 若要查詢 Azure 儲存體中的檔案，您的 SQL 隨選端點需要其中包含驗證資訊的認證。 您可以使用兩種類型的認證：
@@ -109,11 +114,7 @@ GRANT ALTER ANY CREDENTIAL TO [user_name];
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-為確保 Azure AD 傳遞體驗能順利進行，根據預設，所有使用者都有權使用 `UserIdentity` 認證。 這會藉由在 Azure Synapse 工作區佈建時自動執行下列陳述式來達成：
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
-```
+為確保 Azure AD 傳遞體驗能順利進行，根據預設，所有使用者都有權使用 `UserIdentity` 認證。
 
 ## <a name="server-scoped-credential"></a>伺服器範圍的認證
 
@@ -243,7 +244,7 @@ SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
                                 DATA_SOURCE = [mysample],
-                                FORMAT=PARQUET) as rows;
+                                FORMAT='PARQUET') as rows;
 GO
 ```
 
@@ -288,7 +289,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
 GO
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: 快速入門：合成語音，Swift - 語音服務
+title: 快速入門：在 iOS 上以 Swift 合成語音 - 語音服務
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用語音 SDK 在 iOS 上以 Swift 合成語音
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 8ce7d963e1d4a3514a0e60435634ba4f4a9cb009
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: e71717bdacbc3c6eb08fbdc8d56ec19c26a1d114
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391276"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062277"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>快速入門：使用語音 SDK 在 iOS 上以 Swift 合成語音
 
 在本文中，您將了解如何使用認知服務語音 SDK 以 Swift 建立 iOS 應用程式，以從文字合成語音。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，以下為必要條件清單：
 
@@ -39,7 +39,7 @@ ms.locfileid: "85391276"
 
 ## <a name="create-an-xcode-project"></a>建立 Xcode 專案
 
-啟動 Xcode，然後按一下 [檔案]   > [新增]   > [專案]  以啟動新專案。
+啟動 Xcode，然後按一下 [檔案] > [新增] > [專案] 以啟動新專案。
 在範本選取對話方塊中，選擇「iOS 單一檢視應用程式」範本。
 
 在後續的對話方塊中，進行下列選取：
@@ -59,7 +59,7 @@ ms.locfileid: "85391276"
 
 1. 在 helloworld 專案內的 `helloworld` 目錄中放入名為 `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 的新標頭檔，並貼入下列程式碼：  
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/text-to-speech/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
-1. 在 [Objective-C 橋接標頭]  欄位中，將橋接標頭的相對路徑 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 新增至 helloworld 目標的 Swift 的專案設定。![標頭屬性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-ios-bridging-header.png)
+1. 在 [Objective-C 橋接標頭] 欄位中，將橋接標頭的相對路徑 `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` 新增至 helloworld 目標的 Swift 的專案設定。![標頭屬性](~/articles/cognitive-services/Speech-Service/media/sdk/qs-swift-ios-bridging-header.png)
 1. 將自動產生的 `AppDelegate.swift` 檔案內容取代為：  
    [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift/ios/text-to-speech/helloworld/helloworld/AppDelegate.swift#code)]
 1. 將自動產生的 `ViewController.swift` 檔案內容取代為：  
@@ -77,9 +77,9 @@ ms.locfileid: "85391276"
 ## <a name="build-and-run-the-sample"></a>建置並執行範例
 
 1. 在 XCode 中開啟 `helloworld.xcworkspace` 工作區。
-1. 顯示偵錯輸出 ([檢視]   > [偵錯區域]   > [啟動主控台]  )。
-1. 在 [產品]   > [目的地]  功能表中的清單中，選擇 iOS 模擬器或是連接到您開發電腦的 iOS 裝置，當做應用程式的目的地。
-1. 建置範例程式碼，然後從功能表中選取 [產品]   > [執行]  或按一下 [播放]  按鈕，在 iOS 模擬器中加以執行。
+1. 顯示偵錯輸出 ([檢視] > [偵錯區域] > [啟動主控台])。
+1. 在 [產品] > [目的地] 功能表中的清單中，選擇 iOS 模擬器或是連接到您開發電腦的 iOS 裝置，當做應用程式的目的地。
+1. 建置範例程式碼，然後從功能表中選取 [產品] > [執行] 或按一下 [播放] 按鈕，在 iOS 模擬器中加以執行。
 1. 輸入一些文字並按一下應用程式中的按鈕後，您應該會聽到合成音訊的播放。
 
 ## <a name="next-steps"></a>後續步驟

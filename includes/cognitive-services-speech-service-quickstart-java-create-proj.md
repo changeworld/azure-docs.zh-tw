@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 4fa32668faa72973f765a75d4edc3e4598b43652
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: be62cb9cd9f9e603e60006d5482b59ed37a516ff
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609271"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87375289"
 ---
 1. 啟動 Eclipse。
 
@@ -45,7 +45,7 @@ ms.locfileid: "84609271"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * 同時新增 `dependencies` 元素，並以語音 SDK 版本1.12.1 做為相依性：
+   * 同時新增 `dependencies` 元素，並以語音 SDK 版本 1.13.0 作為相依性：
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

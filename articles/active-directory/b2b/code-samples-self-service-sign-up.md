@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0814312bb12582dd9e9ebfafc60fba470f6a9a9
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: a3995395cfd6256689bedc7a4a3c83effc65c0b4
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905152"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313535"
 ---
 # <a name="samples-for-external-identities-self-service-sign-up"></a>適用於外部身分識別自助式註冊的範例
 
@@ -43,5 +43,4 @@ ms.locfileid: "84905152"
 | 範例                                                                                                            | 描述                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | 這個範例示範如何使用 API 連接器與 IDology 整合，在進行自助式註冊時驗證使用者身分識別。 |
-
-<!-- | [Experian](https://github.com/Azure-Samples/) | This sample shows how add identity verification to your self-service sign-up user flow by using an API connector to integrate with Experian. | -->
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | 這個範例示範如何使用 API 連接器與 Experian 整合，在進行自助式註冊時驗證使用者身分識別。 |

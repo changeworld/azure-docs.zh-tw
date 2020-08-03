@@ -1,5 +1,5 @@
 ---
-title: 具有一組驗證認證的資源輪替教學課程
+title: 具有一組驗證認證 (儲存在 Azure Key Vault 中) 的資源輪替教學課程
 description: 使用此教學課程來了解如何針對使用一組驗證認證的資源，自動輪替祕密。
 services: key-vault
 author: msmbaldwin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 9bff8c040f4cfed612278dd83ebb354b31a3a1f3
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 67fe36cf86c886f9d67d98cc8d34a090db4a71cb
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801439"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372981"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>針對使用一組驗證認證的資源，將秘密的輪替自動化
 
@@ -33,20 +33,23 @@ ms.locfileid: "85801439"
 > [!NOTE]
 > 步驟 3 和 4 之間可能會有延遲。 在這段期間內，Key Vault 中的祕密無法向 SQL Server 進行驗證。 若有任何步驟失敗，事件方格會重試 2 小時。
 
-## <a name="create-a-key-vault-and-sql-server-instance"></a>建立金鑰保存庫和 SQL Server 執行個體
+## <a name="prerequisites"></a>Prerequisites
 
-第一個步驟是建立一個金鑰保存庫、 SQL Server 執行個體和資料庫，然後將 SQL Server 管理員密碼儲存在 Key Vault 中。
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* Azure 金鑰保存庫
+* SQL Server
 
-本教學課程使用現有的 Azure Resource Manager 範本來建立元件。 您可以在這裡找到程式碼：[基本祕密輪替範本範例](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/arm-templates)。
+如果您沒有現有的 Key Vault 和 SQL Server，可以使用下列部署連結：
 
-1. 選取 Azure 範本部署連結：
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Finitial-setup%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 在 [資源群組] 下方，選取 [新建]。 將群組命名為 **simplerotation**。
-1. 選取 [購買]。
+<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+1. 在 [資源群組] 下方，選取 [新建]。 將群組命名為 **akvrotation**。
+1. 在 [Sql 管理員登入] 底下，輸入 Sql 管理員登入名稱。 
+1. 選取 [檢閱 + 建立]。
+1. 選取 [建立]
 
     ![建立資源群組](../media/rotate2.png)
 
-您現在會有金鑰保存庫、SQL Server 執行個體，以及 SQL 資料庫。 您可以執行下列命令，在 Azure CLI 中驗證這項設定：
+您現在會有 Key Vault 和 SQL Server 執行個體。 您可以執行下列命令，在 Azure CLI 中驗證這項設定：
 
 ```azurecli
 az resource list -o table
@@ -57,26 +60,34 @@ az resource list -o table
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-simplerotation-kv          simplerotation      eastus      Microsoft.KeyVault/vaults
-simplerotation-sql         simplerotation      eastus      Microsoft.Sql/servers
-simplerotation-sql/master  simplerotation      eastus      Microsoft.Sql/servers/databases
+akvrotation-kv          akvrotation      eastus      Microsoft.KeyVault/vaults
+akvrotation-sql         akvrotation      eastus      Microsoft.Sql/servers
+akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/databases
 ```
 
-## <a name="create-a-function-app"></a>建立函數應用程式
+## <a name="create-and-deploy-sql-server-password-rotation-function"></a>建立及部署 SQL Server 密碼輪替函式
 
-接下來，使用系統管理的身分識別以及其他必要元件建立函式應用程式。
+接下來，使用系統管理的身分識別以及其他必要元件建立函數應用程式，並部署 SQL Server 密碼輪替函式
 
 函式應用程式需要以下元件：
 - Azure App Service 方案
-- 儲存體帳戶
-- 透過函式應用程式受控識別存取 Key Vault 所含秘密的存取原則
+- 具有 Sql 密碼輪替函式 (含事件觸發程序和 http 觸發程序) 的函數應用程式 
+- 函數應用程式觸發程式管理所需的儲存體帳戶
+- 供函數應用程式受控識別存取 Key Vault 中秘密的存取原則
+- **SecretNearExpiry** 事件的 EventGrid 事件訂用帳戶
 
 1. 選取 Azure 範本部署連結：
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Ffunction-app%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 在 [資源群組] 清單中，選取 [simplerotation]。
-1. 選取 [購買]。
+<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+1. 在 [資源群組] 清單中，選取 [akvrotation]。
+1. 在 [Sql Server 名稱] 中，輸入要輪替密碼的 Sql Server 名稱
+1. 在 [Key Vault 名稱] 中，輸入金鑰保存庫名稱
+1. 在 [函數應用程式名稱] 中，輸入函數應用程式名稱
+1. 在 [秘密名稱] 中，輸入要儲存密碼的秘密名稱
+1. 在 [存放庫 URL] 中，輸入函式程式碼 GitHub 位置 ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp.git** )
+1. 選取 [檢閱 + 建立]。
+1. 選取 [建立]。
 
-   ![選取購買](../media/rotate3.png)
+   ![選取 [檢閱 + 建立]](../media/rotate3.png)
 
 完成上述步驟之後，您將會有儲存體帳戶、伺服器陣列和函式應用程式。 您可以執行下列命令，在 Azure CLI 中驗證這項設定：
 
@@ -89,18 +100,19 @@ az resource list -o table
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-simplerotation-kv          simplerotation       eastus      Microsoft.KeyVault/vaults
-simplerotation-sql         simplerotation       eastus      Microsoft.Sql/servers
-simplerotation-sql/master  simplerotation       eastus      Microsoft.Sql/servers/databases
-simplerotationstrg         simplerotation       eastus      Microsoft.Storage/storageAccounts
-simplerotation-plan        simplerotation       eastus      Microsoft.Web/serverFarms
-simplerotation-fn          simplerotation       eastus      Microsoft.Web/sites
+akvrotation-kv           akvrotation       eastus      Microsoft.KeyVault/vaults
+akvrotation-sql          akvrotation       eastus      Microsoft.Sql/servers
+akvrotation-sql/master   akvrotation       eastus      Microsoft.Sql/servers/databases
+cfogyydrufs5wazfunctions akvrotation       eastus      Microsoft.Storage/storageAccounts
+akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/serverFarms
+akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
+akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
 如需如何建立函式應用程式和使用受控識別來存取 Key Vault 的相關資訊，請參閱[從 Azure 入口網站建立函式應用程式](../../azure-functions/functions-create-function-app-portal.md)和[使用受控識別提供金鑰保存庫驗證](../general/managed-identity.md)。
 
 ### <a name="rotation-function"></a>輪替函式
-函式會透過更新 Key Vault 和 SQL 資料庫，使用事件來觸發密碼輪替。
+前一個步驟中部署的函式會透過更新 Key Vault 和 SQL 資料庫，使用事件來觸發密碼輪替。 
 
 #### <a name="function-trigger-event"></a>函式觸發事件
 
@@ -109,19 +121,19 @@ simplerotation-fn          simplerotation       eastus      Microsoft.Web/sites
 ```csharp
 public static class SimpleRotationEventHandler
 {
-    [FunctionName("SimpleRotation")]
-       public static void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-       {
-            log.LogInformation("C# Event trigger function processed a request.");
-            var secretName = eventGridEvent.Subject;
-            var secretVersion = Regex.Match(eventGridEvent.Data.ToString(), "Version\":\"([a-z0-9]*)").Groups[1].ToString();
-            var keyVaultName = Regex.Match(eventGridEvent.Topic, ".vaults.(.*)").Groups[1].ToString();
-            log.LogInformation($"Key Vault Name: {keyVaultName}");
-            log.LogInformation($"Secret Name: {secretName}");
-            log.LogInformation($"Secret Version: {secretVersion}");
+   [FunctionName("AKVSQLRotation")]
+   public static void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
+   {
+      log.LogInformation("C# Event trigger function processed a request.");
+      var secretName = eventGridEvent.Subject;
+      var secretVersion = Regex.Match(eventGridEvent.Data.ToString(), "Version\":\"([a-z0-9]*)").Groups[1].ToString();
+      var keyVaultName = Regex.Match(eventGridEvent.Topic, ".vaults.(.*)").Groups[1].ToString();
+      log.LogInformation($"Key Vault Name: {keyVaultName}");
+      log.LogInformation($"Secret Name: {secretName}");
+      log.LogInformation($"Secret Version: {secretVersion}");
 
-            SeretRotator.RotateSecret(log, secretName, secretVersion, keyVaultName);
-        }
+      SecretRotator.RotateSecret(log, secretName, keyVaultName);
+   }
 }
 ```
 
@@ -129,104 +141,71 @@ public static class SimpleRotationEventHandler
 此輪替方法會從密碼讀取資料庫資訊、建立新的秘密版本，並以新的祕密更新資料庫：
 
 ```csharp
-public class SecretRotator
+    public class SecretRotator
     {
-       private const string UserIdTagName = "UserID";
-       private const string DataSourceTagName = "DataSource";
-       private const int SecretExpirationDays = 31;
+        private const string CredentialIdTag = "CredentialId";
+        private const string ProviderAddressTag = "ProviderAddress";
+        private const string ValidityPeriodDaysTag = "ValidityPeriodDays";
 
-    public static void RotateSecret(ILogger log, string secretName, string secretVersion, string keyVaultName)
-    {
-           //Retrieve current secret
-           var kvUri = "https://" + keyVaultName + ".vault.azure.net";
-           var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
-           KeyVaultSecret secret = client.GetSecret(secretName, secretVersion);
-           log.LogInformation("Secret Info Retrieved");
-        
-           //Retrieve secret info
-           var userId = secret.Properties.Tags.ContainsKey(UserIdTagName) ?  
-                        secret.Properties.Tags[UserIdTagName] : "";
-           var datasource = secret.Properties.Tags.ContainsKey(DataSourceTagName) ? 
-                            secret.Properties.Tags[DataSourceTagName] : "";
-           log.LogInformation($"Data Source Name: {datasource}");
-           log.LogInformation($"User Id Name: {userId}");
-        
-           //Create new password
-           var randomPassword = CreateRandomPassword();
-           log.LogInformation("New Password Generated");
-        
-           //Check DB connection using existing secret
-           CheckServiceConnection(secret);
-           log.LogInformation("Service Connection Validated");
-                    
-           //Create new secret with generated password
-           CreateNewSecretVersion(client, secret, randomPassword);
-           log.LogInformation("New Secret Version Generated");
-        
-           //Update DB password
-           UpdateServicePassword(secret, randomPassword);
-           log.LogInformation("Password Changed");
-           log.LogInformation($"Secret Rotated Succesffuly");
-    }
+        public static void RotateSecret(ILogger log, string secretName, string keyVaultName)
+        {
+            //Retrieve Current Secret
+            var kvUri = "https://" + keyVaultName + ".vault.azure.net";
+            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+            KeyVaultSecret secret = client.GetSecret(secretName);
+            log.LogInformation("Secret Info Retrieved");
+
+            //Retrieve Secret Info
+            var credentialId = secret.Properties.Tags.ContainsKey(CredentialIdTag) ? secret.Properties.Tags[CredentialIdTag] : "";
+            var providerAddress = secret.Properties.Tags.ContainsKey(ProviderAddressTag) ? secret.Properties.Tags[ProviderAddressTag] : "";
+            var validityPeriodDays = secret.Properties.Tags.ContainsKey(ValidityPeriodDaysTag) ? secret.Properties.Tags[ValidityPeriodDaysTag] : "";
+            log.LogInformation($"Provider Address: {providerAddress}");
+            log.LogInformation($"Credential Id: {credentialId}");
+
+            //Check Service Provider connection
+            CheckServiceConnection(secret);
+            log.LogInformation("Service  Connection Validated");
+            
+            //Create new password
+            var randomPassword = CreateRandomPassword();
+            log.LogInformation("New Password Generated");
+
+            //Add secret version with new password to Key Vault
+            CreateNewSecretVersion(client, secret, randomPassword);
+            log.LogInformation("New Secret Version Generated");
+
+            //Update Service Provider with new password
+            UpdateServicePassword(secret, randomPassword);
+            log.LogInformation("Password Changed");
+            log.LogInformation($"Secret Rotated Successfully");
+        }
 }
 ```
-您可以在 [GitHub](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/rotation-function) 上找到完整的程式碼。
-
-#### <a name="function-deployment"></a>函式部署
-
-1. 從 [GitHub](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-fn.zip) 下載函式應用程式 zip 檔案。
-
-1. 將 simplerotationsample-fn.zip 檔案上傳至 Azure Cloud Shell。
-
-   ![上傳檔案](../media/rotate4.png)
-1. 使用此 Azure CLI 命令將 zip 檔案部署至函式應用程式：
-
-   ```azurecli
-   az functionapp deployment source config-zip -g simplerotation -n simplerotation-fn --src /home/{firstname e.g jack}/simplerotationsample-fn.zip
-   ```
-
-部署函式之後，您應該會在 simplerotation-fn 下看到兩個函式：
-
-![SimpleRotation 和 SimpleRotationHttpTest 函式](../media/rotate5.png)
-
-## <a name="add-an-event-subscription-for-the-secretnearexpiry-event"></a>新增 SecretNearExpiry 事件的事件訂閱
-
-複製函式應用程式的 `eventgrid_extension` 金鑰：
-
-   ![選取函數應用程式設定](../media/rotate6.png)
-
-   ![eventgrid_extension 金鑰](../media/rotate7.png)
-
-在下列命令中使用複製的 `eventgrid_extension` 金鑰和您的訂用帳戶識別碼，為 `SecretNearExpiry` 事件建立事件方格訂閱：
-
-```azurecli
-az eventgrid event-subscription create --name simplerotation-eventsubscription --source-resource-id "/subscriptions/<subscription-id>/resourceGroups/simplerotation/providers/Microsoft.KeyVault/vaults/simplerotation-kv" --endpoint "https://simplerotation-fn.azurewebsites.net/runtime/webhooks/EventGrid?functionName=SimpleRotation&code=<extension-key>" --endpoint-type WebHook --included-event-types "Microsoft.KeyVault.SecretNearExpiry"
-```
+您可以在 [GitHub](https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp) 上找到完整的程式碼。
 
 ## <a name="add-the-secret-to-key-vault"></a>將秘密新增至 Key Vault
 設定存取原則，將「管理秘密」權限授與使用者：
 
 ```azurecli
-az keyvault set-policy --upn <email-address-of-user> --name simplerotation-kv --secret-permissions set delete get list
+az keyvault set-policy --upn <email-address-of-user> --name akvrotation-kv --secret-permissions set delete get list
 ```
 
-使用包含 SQL 資料庫資料來源和使用者識別碼的標籤，建立新的秘密。 包含設為明天到期的到期日。
+建立新祕密，其中標籤包含 SQL Server 資源識別碼、SQL Server 登入名稱，以及祕密的有效期間 (以天為單位)。 提供密碼的名稱、SQL 資料庫中的初始密碼 (我們範例中的 "Simple123")，並包含設為明天到期的到期日。
 
 ```azurecli
 $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddThh:mm:ssZ")
-az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Simple123" --tags "UserID=azureuser" "DataSource=simplerotation-sql.database.windows.net" --expires $tomorrowDate
+az keyvault secret set --name sqlPassword --vault-name akvrotation-kv --value "Simple123" --tags "CredentialId=sqlAdmin" "ProviderAddress=<sql-database-resource-id>" "ValidityPeriodDays=90" --expires $tomorrowDate
 ```
 
-建立具有簡短到期日的祕密，系統會立即發佈 `SecretNearExpiry` 事件，進而觸發函式進行秘密輪替。
+建立具有簡短到期日的祕密，系統會在 15 分鐘內發佈 `SecretNearExpiry` 事件，進而觸發函式進行秘密輪替。
 
 ## <a name="test-and-verify"></a>測試和驗證
-幾分鐘後，`sqluser` 秘密應該就會自動輪替。
 
 若要確認密碼是否已輪替，請移至 **Key Vault** > **秘密**：
 
 ![移至秘密](../media/rotate8.png)
 
-開啟 **sqluser** 秘密，並檢視原始和已輪替的版本：
+開啟 **sqlPassword** 秘密，並檢視原始和已輪替的版本：
 
 ![開啟 sqluser 秘密](../media/rotate9.png)
 
@@ -239,34 +218,27 @@ Web 應用程式需要以下元件：
 - 透過 Web 應用程式受控識別存取 Key Vault 所含秘密的存取原則
 
 1. 選取 Azure 範本部署連結：
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Fweb-app%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. 選取 [simplerotation] 資源群組。
-1. 選取 [購買]。
+<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+1. 選取 **akvrotation** 資源群組。
+1. 在 [Sql Server 名稱] 中，輸入要輪替密碼的 Sql Server 名稱
+1. 在 [Key Vault 名稱] 中，輸入金鑰保存庫名稱
+1. 在 [秘密名稱] 中，輸入儲存密碼的秘密名稱
+1. 在 [存放庫 URL] 中，輸入 Web 應用程式碼 GitHub 位置 ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git** )
+1. 選取 [檢閱 + 建立]。
+1. 選取 [建立]。
 
-### <a name="deploy-the-web-app"></a>部署 Web 應用程式
-
-您可以在 [GitHub](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/test-webapp) 上找到 Web 應用程式的原始程式碼。
-
-若要部署 Web 應用程式，請完成下列步驟：
-
-1. 從 [GitHub](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-app.zip) 下載函式應用程式 zip 檔案。
-1. 將 simplerotationsample-app.zip 檔案上傳至 Azure Cloud Shell。
-1. 使用此 Azure CLI 命令將 zip 檔案部署至函式應用程式：
-
-   ```azurecli
-   az webapp deployment source config-zip -g simplerotation -n simplerotation-app --src /home/{firstname e.g jack}/simplerotationsample-app.zip
-   ```
 
 ### <a name="open-the-web-app"></a>開啟 Web 應用程式
 
-移至已部署的應用程式，然後選取 URL：
+移至已部署的應用程式 URL：
  
-![選取 URL](../media/rotate10.png)
+https://akvrotation-app.azurewebsites.net/
 
 當應用程式在瀏覽器中開啟時，您會看到 [產生的密碼值] 以及值為 *true* 的 [資料庫已連線]。
 
 ## <a name="learn-more"></a>深入了解
 
+- 教學課程：[具有兩組認證的資源輪替](tutorial-rotation-dual.md)
 - 概觀：[使用 Azure 事件方格監視 Key Vault (預覽)](../general/event-grid-overview.md)
 - 如何：[在金鑰保存庫祕密變更時收到電子郵件](../general/event-grid-logicapps.md)
 - [Azure Key Vault 的 Azure 事件方格事件結構描述 (預覽)](../../event-grid/event-schema-key-vault.md)

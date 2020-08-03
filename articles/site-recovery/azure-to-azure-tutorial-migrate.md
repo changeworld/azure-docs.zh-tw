@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 198e07b80788629030b621dd3c5e235a91baaba3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076095"
 ---
 # <a name="move-azure-vms-to-another-region"></a>將 Azure VM 移動到另一個區域
 
@@ -82,8 +82,9 @@ ms.locfileid: "86518906"
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>在來源區域以外的任何區域中建立保存庫
 
-1. 登入 [Azure 入口網站](https://portal.azure.com) > [復原服務]  。
-1. 選取 [建立資源]   > [管理工具]   > [備份和 Site Recovery]  。
+1. 登入 [Azure 入口網站](https://portal.azure.com)
+1. 在搜尋中，輸入「復原服務」，然後按一下 [復原服務保存庫]
+1. 在 [復原服務保存庫] 功能表中，按一下 [+新增]。
 1. 在 [名稱]  中，指定易記名稱 [ContosoVMVault]  。 如果您有多個訂用帳戶，請選取適當的一個。
 1. 建立資源群組 **ContosoRG**。
 1. 指定 Azure 區域。 若要查看支援的區域，請參閱 [Azure Site Recovery 定價詳細資料](https://azure.microsoft.com/pricing/details/site-recovery/)。

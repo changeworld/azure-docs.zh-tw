@@ -1,18 +1,18 @@
 ---
-title: 使用 Visual Studio 自動執行工作流程
-description: 使用 Azure Logic Apps 和 Visual Studio 建立、排定及執行用於企業整合的週期性工作流程
+title: 使用 Visual Studio 自動執行工作和工作流程
+description: 使用 Azure Logic Apps 和 Visual Studio 建立、排定及執行用於企業整合的自動化工作流程
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/08/2019
-ms.openlocfilehash: 4416c9f9d1c55a460cb983089706e984d90ba082
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520761"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132359"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入門：使用 Azure Logic Apps 建立自動化工作、程序和工作流程 - Visual Studio
 
@@ -51,9 +51,15 @@ ms.locfileid: "86520761"
   
     您可以直接從 Visual Studio Marketplace 下載並安裝 Azure Logic Apps Tools，或了解[如何從 Visual Studio 內部安裝此擴充功能](/visualstudio/ide/finding-and-using-visual-studio-extensions)。 請務必在完成安裝之後重新啟動 Visual Studio。
 
+  * 若要搭配 Visual Studio 使用 Azure Government 訂用帳戶，請參閱下列主題以進行額外的設定：
+
+    * Visual Studio 2019：[快速入門：使用 Visual Studio 連線到 Azure Government](../azure-government/documentation-government-connect-vs.md)
+
+    * Visual Studio 2017：[介紹 Azure Environment Selector Visual Studio 擴充功能](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/)，您可以從 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) 下載並安裝此功能。
+
 * 使用內嵌的邏輯應用程式設計工具時能夠存取 Web
 
-  設計工具需要網際網路連線才能在 Azure 中建立資源，以及從邏輯應用程式中的連接器讀取屬性和資料。 例如，針對 Dynamics CRM Online 連線，設計工具會檢查 CRM 執行個體的預設和自訂屬性。
+  設計工具需要網際網路連線才能在 Azure 中建立資源，以及從邏輯應用程式中的連接器讀取屬性和資料。
 
 * Logic Apps 支援的電子郵件帳戶 (例如 Office 365 Outlook、Outlook.com 或 Gmail)。 對於其他提供者，請檢閱[這裡的連接器清單](/connectors/)。 此範例使用 Office 365 Outlook。 如果您使用不同的提供者，則整體步驟相同，但您的 UI 可能稍有不同。
 
@@ -68,26 +74,26 @@ ms.locfileid: "86520761"
 
 1. 啟動 Visual Studio。 使用您的 Azure 帳戶進行登入。
 
-1. 在 [檔案]  功能表上，選取 [新增]   > [專案]  。 (鍵盤：Ctrl + Shift + N)
+1. 在 [檔案] 功能表上，選取 [新增] > [專案]。 (鍵盤：Ctrl + Shift + N)
 
    ![在 [檔案] 功能表上，選取 [新增] > [專案]](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
-1. 在 [已安裝]  之下，選取 **Visual C#** 或 **Visual Basic**。 選取 [雲端]   > [Azure 資源群組]  。 替您的專案命名，例如：
+1. 在 [已安裝] 之下，選取 **Visual C#** 或 **Visual Basic**。 選取 [雲端] > [Azure 資源群組]。 替您的專案命名，例如：
 
    ![建立 Azure 資源群組專案](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
    > 資源群組名稱只能包含字母、數字、句點 (`.`)、底線 (`_`)、連字號 (`-`) 和括弧 (`(`、`)`)，但不能以句號 (`.`) *結尾*。
    >
-   > 如果 [雲端]  或 [Azure 資源群組]  未出現，請確定您安裝 Azure SDK for Visual Studio。
+   > 如果 [雲端] 或 [Azure 資源群組] 未出現，請確定您安裝 Azure SDK for Visual Studio。
 
    如果您使用 Visual Studio 2019，請遵循下列步驟：
 
-   1. 在 [建立新專案]  方塊中，選取適用於 Visual C# 或 Visual Basic 的 [Azure 資源群組]  專案。 選取 [下一步]  。
+   1. 在 [建立新專案] 方塊中，選取適用於 Visual C# 或 Visual Basic 的 [Azure 資源群組] 專案。 選取 [下一步] 。
 
-   1. 提供您想要使用的 Azure 資源群組名稱和其他專案資訊。 選取 [建立]  。
+   1. 提供您想要使用的 Azure 資源群組名稱和其他專案資訊。 選取 [建立]。
 
-1. 從範本清單中選取 [邏輯應用程式]  範本。 選取 [確定]  。
+1. 從範本清單中選取 [邏輯應用程式] 範本。 選取 [確定]。
 
    ![選取 [邏輯應用程式] 範本](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
@@ -97,9 +103,9 @@ ms.locfileid: "86520761"
 
 ## <a name="create-blank-logic-app"></a>建立空白邏輯應用程式
 
-當您有 Azure 資源群組專案時，請使用 [空白邏輯應用程式]  範本建立您的邏輯應用程式。
+當您有 Azure 資源群組專案時，請使用 [空白邏輯應用程式] 範本建立您的邏輯應用程式。
 
-1. 在 [方案總管] 中，開啟 **LogicApp.json** 檔案的捷徑功能表。 選取 [以邏輯應用程式設計工具開啟]  。 (鍵盤：Ctrl + L)
+1. 在 [方案總管] 中，開啟 **LogicApp.json** 檔案的捷徑功能表。 選取 [以邏輯應用程式設計工具開啟]。 (鍵盤：Ctrl + L)
 
    ![以邏輯應用程式設計工具開啟邏輯應用程式 .json 檔案](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
@@ -108,7 +114,7 @@ ms.locfileid: "86520761"
 
    Visual Studio 會提示您輸入您的 Azure 訂用帳戶和一個 Azure 資源群組，以便為您的邏輯應用程式和連線建立及部署資源。
 
-1. 針對 [訂用帳戶]  ，選取您的 Azure 訂用帳戶。 針對 [資源群組]  ，選取 [新建]  以建立另一個 Azure 資源群組。
+1. 針對 [訂用帳戶]，選取您的 Azure 訂用帳戶。 針對 [資源群組]，選取 [新建] 以建立另一個 Azure 資源群組。
 
    ![選取 Azure 訂用帳戶、資源群組和資源位置](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
@@ -117,10 +123,10 @@ ms.locfileid: "86520761"
    | 使用者帳戶 | Fabrikam <br> sophia-owen@fabrikam.com | 您登入 Visual Studio 時所使用的帳戶 |
    | **訂用帳戶** | Pay-As-You-Go <br> (sophia-owen@fabrikam.com) | Azure 訂用帳戶的名稱和相關聯的帳戶 |
    | **資源群組** | MyLogicApp-RG <br> (美國西部) | Azure 資源群組和位置，以供儲存及部署邏輯應用程式的資源 |
-   | **位置** | **與資源群組相同** | 用於部署邏輯應用程式的位置類型和特定位置。 位置類型是 Azure 區域或現有的[整合服務環境 (ISE)](connect-virtual-network-vnet-isolated-environment.md)。 <p>在本快速入門中，請將 [位置類型] 設定為 [區域]  ，並將 [位置] 設定為 [與資源群組相同]  。 <p>**注意**：建立資源群組專案之後，您可以[變更位置類型和位置](manage-logic-apps-with-visual-studio.md#change-location)，但不同的位置類型會以各種方式影響您的邏輯應用程式。 |
+   | **位置** | **與資源群組相同** | 用於部署邏輯應用程式的位置類型和特定位置。 位置類型是 Azure 區域或現有的[整合服務環境 (ISE)](connect-virtual-network-vnet-isolated-environment.md)。 <p>在本快速入門中，請將 [位置類型] 設定為 [區域]，並將 [位置] 設定為 [與資源群組相同]。 <p>**注意**：建立資源群組專案之後，您可以[變更位置類型和位置](manage-logic-apps-with-visual-studio.md#change-location)，但不同的位置類型會以各種方式影響您的邏輯應用程式。 |
    ||||
 
-1. Logic Apps 設計工具會開啟一個頁面，其中顯示簡介影片和常用的觸發程序。 向下捲動過影片和觸發程序直至 [範本]  ，然後選取 [空白邏輯應用程式]  。
+1. Logic Apps 設計工具會開啟一個頁面，其中顯示簡介影片和常用的觸發程序。 向下捲動過影片和觸發程序直至 [範本]，然後選取 [空白邏輯應用程式]。
 
    ![選取 [空白邏輯應用程式]](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 
@@ -128,7 +134,7 @@ ms.locfileid: "86520761"
 
 接下來，新增可在新摘要項目出現時引發的 RSS [觸發程序](../logic-apps/logic-apps-overview.md#logic-app-concepts)。 每個邏輯應用程式都會以觸發程序啟動，而該觸發程序會在符合特定條件時引發。 每次引發觸發程序時，Logic Apps 引擎會建立邏輯應用程式執行個體，以執行您的工作流程。
 
-1. 在邏輯應用程式設計工具中的搜尋方塊底下，選取 [全部]  。 在搜尋方塊中，輸入 "rss"。 從觸發程序清單中，選取此觸發程序：**摘要項目發佈時**
+1. 在邏輯應用程式設計工具中的搜尋方塊底下，選取 [全部]。 在搜尋方塊中，輸入 "rss"。 從觸發程序清單中，選取此觸發程序：**摘要項目發佈時**
 
    ![藉由新增觸發程序和動作來建置邏輯應用程式](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 
@@ -144,19 +150,19 @@ ms.locfileid: "86520761"
 
 先從 Visual Studio 將邏輯應用程式部署至 Azure，您才能執行和測試該應用程式。
 
-1. 在 [方案總管] 中，於您的專案捷徑功能表上，選取 [部署]   > [新增]  。 如果出現提示，登入您的 Azure 帳戶。
+1. 在 [方案總管] 中，於您的專案捷徑功能表上，選取 [部署] > [新增]。 如果出現提示，登入您的 Azure 帳戶。
 
    ![建立邏輯應用程式部署](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
-1. 針對此部署，保留預設 Azure 訂用帳戶、源群組和其他設定。 選取 [部署]  。
+1. 針對此部署，保留預設 Azure 訂用帳戶、源群組和其他設定。 選取 [部署]。
 
    ![將邏輯應用程式部署至 Azure 資源群組](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-deployment.png)
 
-1. 如果 [編輯參數]  方塊出現，請提供邏輯應用程式的資源名稱。 儲存您的設定。
+1. 如果 [編輯參數] 方塊出現，請提供邏輯應用程式的資源名稱。 儲存您的設定。
 
    ![提供邏輯應用程式的部署名稱](./media/quickstart-create-logic-apps-with-visual-studio/edit-parameters-deployment.png)
 
-   開始部署時，您應用程式的部署狀態會顯示在 Visual Studio 的 [輸出]  視窗中。 如果狀態並未出現，請開啟 [顯示輸出來源]  清單，然後選取您的 Azure 資源群組。
+   開始部署時，您應用程式的部署狀態會顯示在 Visual Studio 的 [輸出] 視窗中。 如果狀態並未出現，請開啟 [顯示輸出來源] 清單，然後選取您的 Azure 資源群組。
 
    ![部署狀態輸出](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
 
@@ -178,13 +184,13 @@ ms.locfileid: "86520761"
 
 1. 在方案總管中開啟 `<logic-app-name>.json` 檔案。
 
-1. 從 [檢視]  功能表中，選取 [其他視窗]   > [JSON 大綱]  。
+1. 從 [檢視] 功能表中，選取 [其他視窗] > [JSON 大綱]。
 
-1. 若要將資源新增至範本檔案，選取 [JSON 大綱] 視窗頂端的 [新增資源]  。 或在 [JSON 大綱] 視窗中，開啟 [資源]  捷徑功能表，然後選取 [新增資源]  。
+1. 若要將資源新增至範本檔案，選取 [JSON 大綱] 視窗頂端的 [新增資源]。 或在 [JSON 大綱] 視窗中，開啟 [資源] 捷徑功能表，然後選取 [新增資源]。
 
    ![[JSON 大綱] 視窗](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
 
-1. 在 [新增資源]  對話方塊的 [搜尋] 方塊中，尋找 `logic app`，並選取 [邏輯應用程式]  。 為您的邏輯應用程式命名，然後選取 [新增]  。
+1. 在 [新增資源] 對話方塊的 [搜尋] 方塊中，尋找 `logic app`，並選取 [邏輯應用程式]。 為您的邏輯應用程式命名，然後選取 [新增]。
 
    ![新增資源](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 
@@ -194,9 +200,9 @@ ms.locfileid: "86520761"
 
 1. 以用來建立應用程式邏輯的相同帳戶登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在 Azure 入口網站功能表上，選取 [資源群組]  ，或從任何頁面搜尋並選取 [資源群組]  。 選取邏輯應用程式的資源群組。
+1. 在 Azure 入口網站功能表上，選取 [資源群組]，或從任何頁面搜尋並選取 [資源群組]。 選取邏輯應用程式的資源群組。
 
-1. 在 [概觀]  頁面上，選取 [刪除資源群組]  。 輸入資源群組名稱進行確認，然後選取 [刪除]  。
+1. 在 [概觀] 頁面上，選取 [刪除資源群組]。 輸入資源群組名稱進行確認，然後選取 [刪除]。
 
    ![[資源群組] > [概觀] > [刪除資源群組]](./media/quickstart-create-logic-apps-with-visual-studio/clean-up-resources.png)
 

@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: d2e10c2a02bf14f7a01ce03bc70f6e3f43b96385
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7ba6a059a35bee0b122659d8fc70466595112fca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700822"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011025"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教學課程：使用 Azure PowerShell 自動調整虛擬機器擴展集
 
@@ -99,7 +99,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
 ## <a name="create-a-rule-to-autoscale-in"></a>建立自動縮減的規則
 在夜晚或週末，您的應用程式需求可能會減少。 若這樣的負載減少會持續一段時間，您就可以設定自動調整規則來減少擴展集中的 VM 執行個體數目。 這個相應縮小的動作可減少執行擴展集的成本，因為只會執行符合目前需求所需的執行個體數目。
 
-使用 [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) 建立另一個規則，以在平均 CPU 負載於 5 分鐘期間內低於 30% 時，減少擴展集中的 VM 執行個體數目。 觸發規則時，VM 執行個體數目會減少一個。下列範例會建立保存此擴大規則的 *myRuleScaleDown* 物件。 *-MetricResourceId* 使用先前針對訂用帳戶識別碼、資源群組名稱和擴展集名稱所定義的變數：
+使用 [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) 建立另一個規則，以在平均 CPU 負載於 5 分鐘期間內低於 30% 時，減少擴展集中的 VM 執行個體數目。 觸發此規則時，VM 執行個體的數目會減少。 下列範例建立保存此縮小規則的 myRuleScaleDown 物件。 *-MetricResourceId* 使用先前針對訂用帳戶識別碼、資源群組名稱和擴展集名稱所定義的變數：
 
 ```azurepowershell-interactive
 $myRuleScaleIn = New-AzureRmAutoscaleRule `

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401ca1a22b47555f530e1785e25653269403812c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1c16f83be4cd10f53705633b9c4f4eb522c8408e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83662208"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058172"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whimsical"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Whimsical 整合
 
@@ -37,7 +37,7 @@ ms.locfileid: "83662208"
 若要開始，您需要下列項目：
 
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
-* 已啟用 Whimsical 單一登入 (SSO) 的訂用帳戶。
+* Whimsical 小組工作區。
 
 > [!NOTE]
 > 此應用程式的識別碼是固定的字串值，因此一個租用戶中只能設定一個執行個體。
@@ -93,7 +93,7 @@ ms.locfileid: "83662208"
     在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://whimsical.com/@<TENANT_NAME>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的回覆 URL 與登入 URL 更新這些值。 請連絡 [Whimsical 用戶端支援小組](mailto:help@whimsical.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的回覆 URL 與登入 URL 更新這些值。 您的特定值會顯示在 Whimsical 工作區設定內的 SAML 設定畫面上。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. Whimsical 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -110,7 +110,7 @@ ms.locfileid: "83662208"
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Whimsical] 區段上，根據您的需求複製適當的 URL。
+1. 在 [設定 Whimsical] 區段中，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -146,7 +146,11 @@ ms.locfileid: "83662208"
 
 ## <a name="configure-whimsical-sso"></a>設定 Whimsical SSO
 
-若要設定 **Whimsical** 端的單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML] 和複製的適當 URL 傳送給 [Whimsical 支援小組](mailto:help@whimsical.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Whimsical** 端上設定單一登入，您必須將剛下載的**同盟中繼資料 XML** 上傳到您的 [工作區設定](https://whimsical.com/workspace/settings)。
+
+![Whimsical 工作區 SAML 設定](media/whimsical-tutorial/saml-setup.png)
+
+更新**同盟中繼資料 XML** 應該是您在設定 SAML SSO 連線時必須在 Whimsical 中採取的唯一步驟。
 
 ### <a name="create-whimsical-test-user"></a>建立 Whimsical 測試使用者
 

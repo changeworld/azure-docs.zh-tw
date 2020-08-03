@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: c60d27cb75526d801880658846a6b61760f4bf7e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 154e4c9421d1c0a54b3d9b5f53424e7640fe62d8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508078"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323565"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視 Windows 虛擬機器
 
@@ -71,8 +71,8 @@ Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "m
 
 在 Azure 中有 Windows VM 專用的主機 VM 與它互動。 系統會自動收集主機的計量，而且可以在 Azure 入口網站中檢視這些計量。
 
-1. 從 Azure 入口網站中，按一下 [資源群組]  ，選取 [myResourceGroupMonitor]  ，然後選取資源清單中的 [myVM]  。
-2. 按一下 VM 刀鋒視窗上的 [計量]  ，然後選取 [可用的計量]  下的任何 [主機] 計量以查看主機 VM 的執行狀況。
+1. 從 Azure 入口網站中，按一下 [資源群組]，選取 [myResourceGroupMonitor]，然後選取資源清單中的 [myVM]。
+2. 按一下 VM 刀鋒視窗上的 [計量]，然後選取 [可用的計量] 下的任何 [主機] 計量以查看主機 VM 的執行狀況。
 
     ![檢視主機計量](./media/tutorial-monitoring/tutorial-monitor-host-metrics.png)
 
@@ -80,20 +80,20 @@ Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "m
 
 若要使用適用於 VM 的 Azure 監視器對 Azure VM 啟用監視：
 
-1. 從 Azure 入口網站中，按一下 [資源群組]  ，選取 [myResourceGroupMonitor]  ，然後選取資源清單中的 [myVM]  。
+1. 從 Azure 入口網站中，按一下 [資源群組]，選取 [myResourceGroupMonitor]，然後選取資源清單中的 [myVM]。
 
-2. 在 VM 頁面的 [監視]  區段中，選取 [Insights (預覽)]  。
+2. 在 VM 頁面的 [監視] 區段中，選取 [Insights (預覽)]。
 
-3. 在 [Insights (預覽)]  頁面上，選取 [立即試用]  。
+3. 在 [Insights (預覽)] 頁面上，選取 [立即試用]。
 
     ![為 VM 啟用適用於 VM 的 Azure 監視器](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-4. 在 [將 Azure 監視器 Insights 上線]  頁面上，如果您目前在同一個訂用帳戶中有 Log Analytics 工作區，請在下拉式清單中選取它。  
+4. 在 [將 Azure 監視器 Insights 上線] 頁面上，如果您目前在同一個訂用帳戶中有 Log Analytics 工作區，請在下拉式清單中選取它。  
 
     清單會預先選取用來在訂用帳戶中部署 VM 的預設工作區和位置。 
 
     >[!NOTE]
-    >若要建立新的 Log Analytics 工作區以儲存來自 VM 的監視資料，請參閱[建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。 您的 Log Analytics 工作區必須屬於其中一個[支援的區域](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)。
+    >若要建立新的 Log Analytics 工作區以儲存來自 VM 的監視資料，請參閱[建立 Log Analytics 工作區](../../azure-monitor/learn/quick-create-workspace.md)。 工作區必須屬於其中一個[支援的區域](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)。
 
 啟用監視之後，您可能需要等待數分鐘，才能檢視 VM 的效能計量。
 
@@ -103,11 +103,11 @@ Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "m
 
 適用於 VM 的 Azure 監視器包含一組以關鍵效能指標 (KPI) 為目標的效能圖表，可協助您判斷虛擬機器的執行狀況。 若要從 VM 存取，請執行下列步驟。
 
-1. 從 Azure 入口網站中，按一下 [資源群組]  ，選取 [myResourceGroupMonitor]  ，然後選取資源清單中的 [myVM]  。
+1. 從 Azure 入口網站中，按一下 [資源群組]，選取 [myResourceGroupMonitor]，然後選取資源清單中的 [myVM]。
 
-2. 在 VM 頁面的 [監視]  區段中，選取 [Insights (預覽)]  。
+2. 在 VM 頁面的 [監視] 區段中，選取 [Insights (預覽)]。
 
-3. 選取 [效能]  索引標籤。
+3. 選取 [效能] 索引標籤。
 
 此頁面不僅包含效能使用率圖表，也是一個表格，可顯示已找到的每個邏輯磁碟、其容量、使用率，以及每個量值的總平均。
 
@@ -117,17 +117,17 @@ Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "m
 
 以下範例會建立平均 CPU 使用量的警示。
 
-1. 從 Azure 入口網站中，按一下 [資源群組]  ，選取 [myResourceGroupMonitor]  ，然後選取資源清單中的 [myVM]  。
+1. 從 Azure 入口網站中，按一下 [資源群組]，選取 [myResourceGroupMonitor]，然後選取資源清單中的 [myVM]。
 
-2. 按一下VM 刀鋒視窗中的 [警示規則]  ，按一下橫跨在警示刀鋒視窗上方的 [新增計量警示]  。
+2. 按一下VM 刀鋒視窗中的 [警示規則]，按一下橫跨在警示刀鋒視窗上方的 [新增計量警示]。
 
-3. 提供警示的 [名稱]  ，例如 myAlertRule  。
+3. 提供警示的 [名稱]，例如 myAlertRule。
 
 4. 若要在 CPU 百分比連續五分鐘超過 1.0 時觸發警示，保留所有其他已選取的預設值。
 
-5. (選擇性) 選取 [電子郵件的擁有者、參與者及讀者]  核取方塊以傳送電子郵件通知。 預設動作是在入口網站中顯示通知。
+5. (選擇性) 選取 [電子郵件的擁有者、參與者及讀者] 核取方塊以傳送電子郵件通知。 預設動作是在入口網站中顯示通知。
 
-6. 按一下 [確定]  按鈕。
+6. 按一下 [確定] 按鈕。
 
 ## <a name="next-steps"></a>後續步驟
 

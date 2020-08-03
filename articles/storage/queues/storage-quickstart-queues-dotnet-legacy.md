@@ -3,23 +3,26 @@ title: 快速入門：使用適用於 .NET 的 Azure 儲存體 v11 來管理佇�
 description: 在此快速入門中，您將了解如何使用適用於 .NET 的 Azure 儲存體用戶端程式庫，建立佇列及在其中新增訊息。 接下來，您會了解如何讀取和處理佇列中的訊息。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/06/2018
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: 807765aea66561abb5a8764f119d2be4632a56d5
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 71700efecfc173392562327f6d150d79d1a9c84f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84807551"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292676"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>快速入門：使用適用於 .NET 的 Azure 儲存體 SDK v11 來管理佇列
 
 在此快速入門中，您將了解如何使用適用於 .NET 的 Azure 儲存體用戶端程式庫第 11 版，來建立佇列及在其中新增訊息。 接下來，您會了解如何讀取和處理佇列中的訊息。 
 
-## <a name="prerequisites"></a>Prerequisites
+> [!NOTE]
+> 本快速入門會使用舊版的 Azure 佇列儲存體用戶端程式庫。 若要開始使用最新版本，請參閱[快速入門：適用於 .NET 的 Azure 佇列儲存體用戶端程式庫 v12](storage-quickstart-queues-dotnet.md)。
+
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -144,7 +147,7 @@ Press any key to delete the sample queue.
 
 ### <a name="try-parsing-the-connection-string"></a>嘗試剖析連接字串
 
-此範例會先檢查環境變數是否包含可剖析的連接字串，以建立指向儲存體帳戶的 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 物件。 為了檢查連接字串是否有效，此範例會使用 [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) 方法。 如果 **TryParse** 成功，它會初始化 storageAccount  變數並傳回 **true**。
+此範例會先檢查環境變數是否包含可剖析的連接字串，以建立指向儲存體帳戶的 [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) 物件。 為了檢查連接字串是否有效，此範例會使用 [TryParse](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) 方法。 如果 **TryParse** 成功，它會初始化 storageAccount 變數並傳回 **true**。
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored

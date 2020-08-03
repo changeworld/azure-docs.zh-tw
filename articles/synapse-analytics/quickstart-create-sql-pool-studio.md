@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Synapse Studio 建立 Synapse SQL 集區 (預覽)
+title: 快速入門：使用 Synapse Studio 建立 Synapse SQL 集區
 description: 遵循本指南中的步驟，使用 Synapse Studio 建立新的 Synapse SQL 集區。
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 3/19/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4aac32ec69a4572a0988a22f1bc3b7bdf3f947d7
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: f85731a7f3ffef0adf35812ee8da4e0bbd89124f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274266"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036568"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-preview-using-synapse-studio"></a>快速入門：使用 Synapse Studio 建立 Synapse SQL 集區 (預覽)
+# <a name="quickstart-create-a-synapse-sql-pool-using-synapse-studio"></a>快速入門：使用 Synapse Studio 建立 Synapse SQL 集區
 
 Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、模型化及分析您的資料。 SQL 集區提供以 T-SQL 為基礎的計算和儲存功能。 在 Synapse 工作區中建立 SQL 集區後，就可以載入、模型化、處理及提供資料，以提供更快速的分析見解。
 

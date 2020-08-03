@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 03/26/2020
+ms.date: 07/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c25d5ee7ed730747317ea52286174968eb0e2fd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8399f7101697af429b8c073c101dbfea203e98ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103699"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87025586"
 ---
 # <a name="what-is-a-device-identity"></a>什麼是裝置身分識別？
 
@@ -45,9 +45,9 @@ ms.locfileid: "86103699"
 - **已加入 Azure AD**
    - 已加入 Azure AD 的裝置由組織所擁有，且會使用屬於該組織的 Azure AD 帳戶進行登入。 這些裝置僅存在於雲端中。
       - Windows 10 
-      - [在 Azure 中執行的 Windows Server 2019 虛擬機器] (./howto-vm-sign-in-azure-ad-windows.md) (不支援伺服器核心)
+      - [在 Azure 中執行的 Windows Server 2019 虛擬機器](howto-vm-sign-in-azure-ad-windows.md) (不支援伺服器核心)
 - **已加入混合式 Azure AD**
-   - 已加入混合式 Azure AD 的裝置由組織所擁有，且會使用屬於該組織的 Azure AD 帳戶進行登入。 它們存在於雲端和內部部署中。
+   - 已加入混合式 Azure AD 的裝置由組織所擁有，且會使用屬於該組織的 Active Directory Domain Services 帳戶登入。 它們存在於雲端和內部部署中。
       - Windows 7、8.1 或 10
       - Windows Server 2008 或更新版本
 

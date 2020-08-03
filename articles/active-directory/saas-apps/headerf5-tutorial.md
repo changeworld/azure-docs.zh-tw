@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352f52a2a6d84d352bb46e09f104efde303307f5
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 341be30c30f7b4a2a53f70f18e1c2a3a30de1cb4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478045"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034375"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 F5 整合
+# <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>教學課程：設定 Azure Active Directory 與 F5 之間的單一登入 (SSO)
 
 在本教學課程中，您會了解如何整合 F5 與 Azure Active Directory (Azure AD)。 在整合 F5 與 Azure AD 時，您可以︰
 
@@ -256,7 +256,7 @@ ms.locfileid: "80478045"
 
     * **標頭值：%{session.saml.last.attr.name.Identity}**
 
-    * 按一下 [儲存並繼續下一步] 
+    * 按一下 [儲存並繼續下一步]
 
     如需變數和值的完整清單，請參閱附錄。 您可以視需要新增更多標頭。
 
@@ -362,9 +362,9 @@ ms.locfileid: "80478045"
 
     g. **相符的值     = /** *
 
-    h. 按一下 [更新] 
+    h. 按一下 [更新]
 
-    i. 按一下 [檔案] &gt; [新增] &gt; [專案] 
+    i. 按一下 [檔案] &gt; [新增] &gt; [專案]
 
     j. **SAML IDP 設定完成**
     
@@ -424,11 +424,11 @@ ms.locfileid: "80478045"
  
     b. 按一下虛擬伺服器，捲動至 [存取原則]  區段，然後在 [存取設定檔]  下拉式清單中，選取已建立的 SAML 原則 (在此範例中為 HeaderAppAzureSAMLPolicy)
 
-    c. 按一下 [更新] 
+    c. 按一下 [更新]
  
     ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure41.png)
 
-    d. 建立 F5 BIG-IP iRule®，以從傳入的判斷提示中擷取自訂 SAML 屬性，並將其作為 HTTP 標頭傳至後端測試應用程式。 按一下 [主要] > [本機流量] > [iRules] > [iRule 清單]，然後按一下 [建立] 
+    d. 建立 F5 BIG-IP iRule®，以從傳入的判斷提示中擷取自訂 SAML 屬性，並將其作為 HTTP 標頭傳至後端測試應用程式。 按一下 [主要] > [本機流量] > [iRules] > [iRule 清單]，然後按一下 [建立]
 
     ![F5 (標頭式) 設定](./media/headerf5-tutorial/configure42.png)
  

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b5a52d0a54a9671052b9b7d46810cc65c22951f
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 35bd80c2501f9e4c24093f861479f993d85d9c02
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799872"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034147"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Hub Planner 整合
 
@@ -90,7 +90,7 @@ ms.locfileid: "85799872"
     c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://app.hubplanner.com/sso/callback`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Hub Planner 客戶支援小組](mailto:hello@hubplanner.com)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些是您將使用的值。 您唯一需要做的變更，就是將 [登入 URL] 中的 \<SUBDOMAIN\> 取代為您在註冊 Hub Planner 時所收到的子網域。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
@@ -99,6 +99,7 @@ ms.locfileid: "85799872"
 1. 在 [設定 Hub Planner] 區段上，根據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
@@ -131,7 +132,7 @@ ms.locfileid: "85799872"
 
 ## <a name="configure-hub-planner-sso"></a>設定 Hub Planner SSO
 
-若要在 **Hub Planner** 端設定單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)] 和複製的適當 URL 傳送給 [Hub Planner 支援小組](mailto:hello@hubplanner.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Hub Planner** 端上設定單一登入，您必須登入 Hub Planner 帳戶並完成下列工作。 
 
 ### <a name="install-the-extension-in-hub-planner"></a>在 Planner 中樞中安裝擴充功能
 

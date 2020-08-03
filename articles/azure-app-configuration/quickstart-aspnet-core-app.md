@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 2dc2143619594c8fd46fa4e838b97a3ecde95653
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 069bce6f2f8e46679cbc82dd92c9fd73bfecde85
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027710"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373516"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入門：使用 Azure 應用程式設定建立 ASP.NET Core 應用程式
 
@@ -242,6 +242,8 @@ dotnet new mvc --no-https
 ![尋找 Web 預覽按鈕](./media/quickstarts/cloud-shell-web-preview.png)
 
 系統提示您設定預覽的連接埠時，請輸入 '5000'，並選取 [開啟並瀏覽]  。  網頁會顯示「Azure 應用程式組態中的值」。
+
+![啟動快速入門應用程式](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

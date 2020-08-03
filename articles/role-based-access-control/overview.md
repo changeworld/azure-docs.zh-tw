@@ -11,21 +11,25 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 07/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3846a4669cc2a77862e73dbb8e7743b19740e8a4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 45601e820bc03b263fbf664a43ce34266dc4a488
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996500"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171570"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>什麼是 Azure 角色型存取控制 (Azure RBAC)？
 
 對於使用雲端的任何組織而言，雲端資源的存取管理是非常重要的功能。 Azure 角色型存取控制 (Azure RBAC) 可協助您管理可存取 Azure 資源的人員、這些人員如何使用資源，以及他們存取的區域。
 
 Azure RBAC 是建置於 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 上的授權系統，可提供更細緻的 Azure 資源存取管理。
+
+這段影片提供 Azure RBAC 的快速概觀。
+
+>[!VIDEO https://www.youtube.com/embed/Dzhm-garKBM]
 
 ## <a name="what-can-i-do-with-azure-rbac"></a>我能用 Azure RBAC 來做什麼？
 
@@ -65,6 +69,10 @@ Azure 包含數個您可使用的[內建角色](built-in-roles.md)。 以下列�
 - [使用者存取管理員](built-in-roles.md#user-access-administrator) - 讓您管理使用者對 Azure 資源的存取權。
 
 其餘的 RBAC 角色可以管理特定 Azure 資源。 例如，[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)角色可讓使用者建立和管理虛擬機器。 如果內建的角色無法滿足您組織的特定需求，您可以建立自己的 [Azure 自訂角色](custom-roles.md)。
+
+這段影片提供內建角色和自訂角色的快速概觀。
+
+>[!VIDEO https://www.youtube.com/embed/I1mefHptRgo]
 
 Azure 具有可讓您授與物件內資料存取權的資料作業。 例如，如果使用者有儲存體帳戶的讀取資料存取權，則他們可讀取該儲存體帳戶中的 Blob 或訊息。 如需詳細資訊，請參閱[了解 Azure 角色定義](role-definitions.md)。
 

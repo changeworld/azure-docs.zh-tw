@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 35590fd8aefb8b6a90adeef52fabe773663403c2
-ms.sourcegitcommit: 374e47efb65f0ae510ad6c24a82e8abb5b57029e
+ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/28/2020
-ms.locfileid: "85510984"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290685"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>教學課程：診斷、修復及認可技能集的變更
 
@@ -73,7 +73,7 @@ REST 呼叫需要服務 URL 和每個要求的存取金鑰。 建立搜尋服務
 1. 在 [檔案] > [新增] 底下，選取要匯入的集合。
 1. 在匯入集合後，展開動作清單 (...)。
 1. 按一下 **[編輯]** 。
-1. 輸入您的 searchService 名稱 (例如，如果端點為 https://mydemo.search.windows.net ，則服務名稱為 "mydemo")。
+1. 輸入您的 searchService 名稱 (例如，如果端點為 `https://mydemo.search.windows.net`，則服務名稱為 "`mydemo`")。
 1. 輸入 apiKey，其中包含搜尋服務的主要或次要金鑰。
 1. 在 Azure 儲存體帳戶的金鑰頁面中，輸入 storageConnectionString。
 1. 輸入您在儲存體帳戶中建立之容器的 containerName。

@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 1665bc42578c189ed27208eb31cc4bdb2e27bbb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60dd9631df0b997ce39134002bdb6ed9f69336ed
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536159"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319264"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教學課程：建立多類別影像分類的標記專案 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -146,9 +146,7 @@ Azure Machine Learning 資料存放區用來儲存連線資訊，例如您的訂
 
 1. 在 [Machine Learning Studio](https://ml.azure.com) 中，選取左側的 [資料標記] 以尋找您的專案。  
 
-1. 選取清單中的專案名稱。
-
-1. 在專案名稱底下，選取 [標籤資料]。
+1. 選取專案的 [標籤連結]。
 
 1. 閱讀指示，然後選取 [工作]。
 

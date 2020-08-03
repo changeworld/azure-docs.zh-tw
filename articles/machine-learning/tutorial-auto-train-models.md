@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 595440dc727f3faf1fa475266825a671f00d9153
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 2e22ac4601384508869ff43d473dd191f405cd43
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143607"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092264"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教學課程：使用自動化機器學習預測計程車車資
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -863,12 +863,12 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 
 ### <a name="define-training-settings"></a>定義定型設定
 
-定義用於定型的實驗參數與模型設定。 檢視[設定](how-to-configure-auto-train.md)的完整清單。 提交使用這些預設設定的實驗大約需要 5 至 20 分鐘的時間，但如果您想要縮短執行時間，請降低 `experiment_timeout_minutes` 參數。
+定義用於定型的實驗參數與模型設定。 檢視[設定](how-to-configure-auto-train.md)的完整清單。 提交使用這些預設設定的實驗大約需要 5 至 20 分鐘的時間，但如果您想要縮短執行時間，請降低 `experiment_timeout_hours` 參數。
 
 |屬性| 本教學課程中的值 |描述|
 |----|----|---|
 |**iteration_timeout_minutes**|2|每次反覆運算的時間限制 (分鐘)。 降低此值以減少總執行時間。|
-|**experiment_timeout_minutes**|20|在實驗終止之前，所有反覆運算合在一起所花費的時間量上限 (以分鐘為單位)。|
+|**experiment_timeout_hours**|0.3|在實驗終止之前，所有反覆運算合在一起所花費的時間量上限 (以小時為單位)。|
 |**enable_early_stopping**|True|此旗標可在分數未在短期內改善時啟用提早終止。|
 |**primary_metric**| spearman_correlation | 您想要最佳化的度量。 最適化模型將根據此計量來選擇。|
 |**特徵化**| 自動 | 使用 **auto** 時，實驗可以預先處理輸入資料 (處理遺漏的資料、將文字轉換成數值等等)。|
@@ -880,7 +880,7 @@ import logging
 
 automl_settings = {
     "iteration_timeout_minutes": 2,
-    "experiment_timeout_minutes": 20,
+    "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
     "featurization": 'auto',
@@ -984,7 +984,9 @@ print(fitted_model)
 使用最佳模型在測試資料集上執行預測，以預測計程車車資。 函式 `predict` 會使用最佳模型，並從 `x_test` 資料集預測 y 值 (**車程成本**)。 從 `y_predict` 列印前 10 個預測成本值。
 
 ```python
-y_predict = fitted_model.predict(x_test.values)
+y_test = x_test.pop("totalAmount")
+
+y_predict = fitted_model.predict(x_test)
 print(y_predict[:10])
 ```
 

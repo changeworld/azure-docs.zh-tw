@@ -45,7 +45,7 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: 管理 Azure AD 角色
       items:
-        - name: 功能更新
+        - name: 功能概觀
           href: azure-ad-roles-features.md
         - name: 適用於 Azure AD 角色的 PowerShell
           href: powershell-for-azure-ad-roles.md
@@ -87,6 +87,22 @@
           href: azure-pim-resource-rbac.md
         - name: 使用自訂角色
           href: pim-resource-roles-custom-role-policy.md
+    - name: 管理具有特殊存取權的群組 (預覽)
+      items:
+        - name: 特殊權限存取概觀
+          href: groups-features.md
+        - name: 探索群組
+          href: groups-discover-groups.md
+        - name: 指派成員或擁有者
+          href: groups-assign-member-owner.md
+        - name: 核准要求
+          href: groups-approval-workflow.md
+        - name: 延長或更新指派
+          href: groups-renew-extend.md
+        - name: 配置角色設定
+          href: groups-role-settings.md
+        - name: 檢視稽核記錄
+          href: groups-audit.md
     - name: PIM 疑難排解
       href: pim-troubleshoot.md
     - name: 存取權檢閱

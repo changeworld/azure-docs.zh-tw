@@ -3,23 +3,23 @@ title: 教學課程 - 建立和管理 Azure 預算
 description: 此教學課程可協助規劃和說明您取用之 Azure 服務的成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 07/15/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 384be4599abadaada31cfc5b4993fff6705ec71d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 3572cbb3f8c4a4f20c0141ac1fae5f0aa6fbd216
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044983"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
 成本管理中的預算可協助您進行規劃並促進組織責任歸屬。 透過預算，您可以說明您在特定期間所取用或訂閱的 Azure 服務。 它們可協助您通知其他人其費用的相關資訊以主動管理成本，並監視費用在經過一段時間的進展方式。 當超過您所建立的預算閾值時，只會觸發通知。 您的資源都會不受到影響，而您的使用量並不會停止。 當您分析成本時，您可以使用預算來比較及追蹤費用。
 
-成本和使用方式資料通常會在 12-16 小時內提供，而其後將會根據這些成本每四小時評估一次預算。 電子郵件通知通常可在 12-16 小時內收到。
+成本和使用方式資料通常會在 20 小時內提供，而其後將會根據這些成本每 12-14 時評估一次預算。 達到預算閾值時，通常會在評估的一小時內收到電子郵件通知。
 
 當您在未來選取到期日時，預算會在期間 (每月、每季或每年) 結束時自動重設相同的預算金額。 因為它們會使用相同的預算金額重設，所以，在預算的貨幣金額與未來期間不同時您需要另外建立預算。
 
@@ -101,11 +101,13 @@ ms.locfileid: "84559313"
 
 ![此範例顯示以每月成本資料建立的預算 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-設定預算金額之後，請選取 [下一步] 以設定預算警示。 預算需要至少一個成本閾值 (預算的百分比) 與對應的電子郵件地址。 您可以選擇性地在單一預算中最多包含五個閾值與五個電子郵件地址。 達到預算閾值時，通常會在 20 小時內收到電子郵件通知。
+設定預算金額之後，請選取 [下一步] 以設定預算警示。 預算需要至少一個成本閾值 (預算的百分比) 與對應的電子郵件地址。 您可以選擇性地在單一預算中最多包含五個閾值與五個電子郵件地址。 達到預算限額時，通常會在評估的一小時內收到電子郵件通知。
 
 如果您想要接收電子郵件，請將 azure-noreply@microsoft.com 新增至核准的寄件者清單，讓電子郵件不會進入您的垃圾郵件資料夾。 如需有關通知的詳細資訊，請參閱[使用成本警示](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md)。
 
 在下列範例中，達到預算的 90% 時，就會產生電子郵件警示。 如果您使用預算 API 建立預算，您也可以將角色指派給其他人以接收警示。 目前不支援在 Azure 入口網站將角色指派給人員。 如需 Azure 預算 API 的詳細資訊，請參閱[預算 API](/rest/api/consumption/budgets)。
+
+警示限制支援的範圍為您已提供的 0.01 到 1000% 預算限額。
 
 ![顯示警示條件的範例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 

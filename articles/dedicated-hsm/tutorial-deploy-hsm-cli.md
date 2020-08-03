@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 76b7a97a5be5e7952b0ac11d93bd68656ff8f1ec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6c5484c421807f5657fe5fc460342d39d442bcda
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79454307"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048574"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>教學課程：使用 CLI 將 HSM 部署至現有的虛擬網路
 
@@ -63,15 +63,7 @@ az feature show \
    --name AzureDedicatedHSM
 ```
 
-下列命令會驗證專用 HSM 服務所需的網路功能。
-
-```azurecli
-az feature show \
-   --namespace Microsoft.Network \
-   --name AllowBaremetalServers
-```
-
-兩個命令都應該會傳回 "Registered" 狀態 (如下所示)。 如果命令並未傳回 “Registered”，則必須註冊此服務，請連絡您的 Microsoft 帳戶代表。
+這些命令都應該會傳回 "Registered" 狀態 (如下所示)。 如果命令並未傳回 “Registered”，則必須連絡您的 Microsoft 帳戶代表以註冊此服務。
 
 ![訂用帳戶狀態](media/tutorial-deploy-hsm-cli/subscription-status.png)
 

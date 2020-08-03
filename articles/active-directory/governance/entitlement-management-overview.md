@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f05fa9f9f31011f04aee0d2bedbcd4c4dad5d39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 710c81c7b5c6abbf499f2cb43570db94df1a3db5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338192"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034397"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>什麼是 Azure AD 權利管理？
 
@@ -71,9 +71,9 @@ Azure AD 權利管理有助於解決這些挑戰。  若要深入了解客戶一
 - 對象為 Azure AD 企業應用程式的指派，包括 SaaS 應用程式和支援同盟/單一登入和/或佈建的自訂整合應用程式
 - SharePoint Online 網站的成員資格
 
-您也可以控制依賴 Azure AD 安全性群組或 Microsoft 365 群組之其他資源的存取權。  例如：
+您也可以針對依賴 Azure AD 安全性群組或 Microsoft 365 群組的其他資源控制其存取權。  例如：
 
-- 您可以使用存取套件中的 Azure AD 安全性群組，以及為該群組設定以群組為[基礎的授權](../users-groups-roles/licensing-groups-assign.md)，為使用者提供 Microsoft 365 授權
+- 您可以使用存取套件中的 Azure AD 安全性群組，以及為該群組設定[群組型授權](../users-groups-roles/licensing-groups-assign.md)，而為使用者提供 Microsoft 365 的授權
 - 您可以使用存取套件中的 Azure AD 安全性群組，以及為該群組建立 [Azure 角色指派](../../role-based-access-control/role-assignments-portal.md)，而為使用者提供用來管理 Azure 資源的存取權
 
 ## <a name="how-do-i-control-who-gets-access"></a>如何控制誰能夠獲得存取權？

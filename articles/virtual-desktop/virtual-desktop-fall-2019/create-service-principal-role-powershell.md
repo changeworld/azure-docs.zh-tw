@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面服務主體角色指派 - Azure
-description: 如何在 Windows 虛擬桌面中使用 PowerShell 建立服務主體及指派角色。
+title: Windows 虛擬桌面 (傳統) 服務主體角色指派 - Azure
+description: 如何在 Windows 虛擬桌面 (傳統) 中使用 PowerShell 建立服務主體及指派角色。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,17 +8,17 @@ ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad78fe2ce66511cb75e23a28a30c44b173da9020
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 015d0e0208b83cff3db3995383ce93ed6362ee49
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117714"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87270085"
 ---
-# <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>教學課程：使用 PowerShell 建立服務主體和角色指派
+# <a name="tutorial-create-service-principals-and-role-assignments-with-powershell-in-windows-virtual-desktop-classic"></a>教學課程：在 Windows 虛擬桌面 (傳統) 中使用 PowerShell 來建立服務主體和角色指派
 
 >[!IMPORTANT]
->此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 2019 年秋季版本。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。
 
 服務主體是您可以在 Azure Active Directory 中建立的身分識別，用以指派特定用途的角色和權限。 在 Windows 虛擬桌面中，您可以建立服務主體：
 

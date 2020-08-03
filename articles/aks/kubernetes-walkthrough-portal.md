@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 4ed4f69ea3c994d9d1cc71e26e35b8d2b6021982
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0ce291a068a9dbb8f24a5e0a26fbae39cfc3a161
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251414"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056900"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure Kubernetes Service (AKS) 叢集
 
@@ -95,7 +95,7 @@ Kubernetes 資訊清單檔會定義所需的叢集狀態，例如要執行哪些
 > [!TIP]
 > 在本快速入門中，您會以手動方式建立應用程式資訊清單，並將其部署至 AKS 叢集。 在更貼近現實的案例中，您可以使用 [Azure Dev Spaces][azure-dev-spaces] 快速地逐一查看程式碼，並直接在 AKS 叢集中進行偵錯。 您可以跨作業系統平台和開發環境來使用 Dev Spaces，並與小組中的其他人一起工作。
 
-在 Cloud Shell 中，使用 `nano azure-vote.yaml` 或 `vi azure-vote.yaml` 命令建立名為 `azure-vote.yaml` 的檔案。 然後，將下列 YAML 定義複製到其中：
+在 Cloud Shell 中，使用編輯器建立名為 `azure-vote.yaml` 的檔案，例如 `code azure-vote.yaml`、`nano azure-vote.yaml` 或 `vi azure-vote.yaml`。 然後，將下列 YAML 定義複製到其中：
 
 ```yaml
 apiVersion: apps/v1

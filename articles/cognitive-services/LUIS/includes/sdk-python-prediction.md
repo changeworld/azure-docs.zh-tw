@@ -6,23 +6,23 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 8aeb6b964ab38a68a6d8681a4e5c93e1650c6a69
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: db866da43310f5407ce4daae1cade2c7512b91ea
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171260"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369239"
 ---
 使用適用於 Python 的 Language Understanding (LUIS) 預測用戶端程式庫，可以：
 
 * 依位置取得預測
 * 依版本取得預測
 
-[參考文件](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [預測執行階段套件 (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [ 範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS)
+[參考文件](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-luis/azure/cognitiveservices/language/luis) | [預測執行階段套件 (PyPi)](https://pypi.org/project/azure-cognitiveservices-language-luis/) | [ 範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -35,8 +35,6 @@ ms.locfileid: "84171260"
 ### <a name="get-your-language-understanding-luis-runtime-key"></a>取得您的 Language Understanding (LUIS) 執行階段金鑰
 
 藉由建立 LUIS 執行階段資源，取得您的[執行階段金鑰](../luis-how-to-azure-subscription.md)。 請保留您的金鑰和金鑰端點，以進行下一個步驟。
-
-[!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
 ### <a name="create-a-new-python-file"></a>建立新的 Python 檔案
 
@@ -73,20 +71,16 @@ Language Understanding (LUIS) 預測執行階段用戶端是向 Azure 進行驗�
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
 
-1. 為您自己的必要 LUIS 資訊建立變數：
-
-    新增變數以管理從名為 `LUIS_RUNTIME_KEY` 的環境變數中提取的預測金鑰。 如果您在應用程式啟動後才建立環境變數，則執行該應用程式的編輯器、IDE 或殼層必須先關閉再重新載入後，才能存取該變數。 方法會於稍後建立。
-
-    建立用來保存資源名稱的變數 `LUIS_RUNTIME_ENDPOINT`。
+1. 為您自己的必要 LUIS 資訊建立變數：您的預測金鑰和端點。
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=AuthorizationVariables)]
 
-1. 建立應用程式識別碼的變數，作為名為 `LUIS_APP_ID` 的環境變數。 將環境變數設定為公用 IoT 應用程式 **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** 。 建立變數以設定 `production` 發佈的位置。
+1. 針對設定為公用 IoT 應用程式的應用程式識別碼建立變數， **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** 。 建立變數以設定 `production` 發佈的位置。
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=OtherVariables)]
 
 
-1. 使用您的金鑰建立認證物件，並使用該物件與您的端點建立 [LUISRuntimeClientConfiguration]https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python() 物件。
+1. 使用您的金鑰建立認證物件，並使用該物件與您的端點建立 [LUISRuntimeClientConfiguration](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.luisruntimeclientconfiguration?view=azure-python) 物件。
 
     [!code-python[Dependency statements](~/cognitive-services-quickstart-code/python/LUIS/python-sdk-authoring-prediction/prediction_quickstart.py?name=Client)]
 

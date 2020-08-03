@@ -210,8 +210,10 @@
     - name: 範本規格
       items:
         - name: 使用連結的範本來建立
+          displayName: template specs
           href: template-specs-create-linked.md
         - name: 部署為連結的範本
+          displayName: template specs
           href: template-specs-deploy-linked-template.md
     - name: 進階範本
       items:
@@ -366,8 +368,8 @@
           href: deploy-to-management-group.md
         - name: 租用戶
           href: deploy-to-tenant.md
-        - name: 跨資源群組
-          href: cross-resource-group-deployment.md
+        - name: 跨範圍部署
+          href: cross-scope-deployment.md
     - name: 提供參數
       items:
         - name: 建立參數檔案

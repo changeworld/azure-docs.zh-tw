@@ -1,18 +1,18 @@
 ---
-title: 使用 Visual Studio Code 自動執行工作
-description: 使用 Visual Studio Code (VS Code) 建立或編輯邏輯應用程式的基礎 JSON 定義
+title: 使用 Visual Studio Code 自動執行工作和工作流程
+description: 使用 Visual Studio Code (VS Code) 建立或編輯邏輯應用程式工作流程定義
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, deli, logicappspm
+ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: 3dccb596be2d97dd0f38d680537913a76ce09e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147071"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131475"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 來建立及管理邏輯應用程式工作流程定義
 
@@ -50,9 +50,9 @@ ms.locfileid: "82147071"
 
     如需詳細資訊，請參閱[延伸模組市集](https://code.visualstudio.com/docs/editor/extension-gallery) \(英文\)。 若要對此擴充功能的開放原始碼版本做出貢獻，請造訪 [GitHub 上適用於 Visual Studio Code 的 Azure Logic Apps 擴充功能](https://github.com/Microsoft/vscode-azurelogicapps) \(英文\)。
 
-<a name="sign-in-azure"></a>
+<a name="access-azure"></a>
 
-## <a name="sign-in-to-azure"></a>登入 Azure
+## <a name="access-azure-from-visual-studio"></a>從 Visual Studio 存取 Azure
 
 1. 開啟 Visual Studio Code。 在 Visual Studio Code 工具列上，選取 Azure 圖示。
 
@@ -99,7 +99,7 @@ ms.locfileid: "82147071"
 
 ## <a name="create-new-logic-app"></a>建立新的邏輯應用程式
 
-1. 如果您未從 Visual Studio Code 中登入 Azure 帳戶和訂用帳戶，請依照[先前的步驟立即登入](#sign-in-azure)。
+1. 如果您未從 Visual Studio Code 中登入 Azure 帳戶和訂用帳戶，請依照[先前的步驟立即登入](#access-azure)。
 
 1. 在 Visual Studio Code 中的 **Logic Apps** 底下，開啟訂用帳戶的捷徑功能表，然後選取 [建立邏輯應用程式]  。
 
@@ -133,7 +133,7 @@ ms.locfileid: "82147071"
    > 如果您想要重複使用此範例邏輯應用程式定義，您必須要有 Office 365 組織帳戶，例如 @fabrikam.com。 請務必將虛構的電子郵件地址取代為您自己的電子郵件地址。 若要使用不同的電子郵件連接器 (例如 Outlook.com 或 Gmail)，請將 `Send_an_email_action` 動作取代為 [Azure Logic Apps 支援的電子郵件連接器](../connectors/apis-list.md)所提供的類似動作。
    >
    > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 
-   > 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 
+   > 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](/connectors/gmail/#authentication-and-bring-your-own-application)。 
    > 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
    ```json
@@ -226,7 +226,7 @@ ms.locfileid: "82147071"
 
 在 Visual Studio Code 中，如果您編輯已發佈的邏輯應用程式並儲存變更，則會*覆寫*您已部署的應用程式。 若要避免在生產環境中斷邏輯應用程式，並盡可能避免運作中斷，請先停用邏輯應用程式。 之後，您可以在確認邏輯應用程式仍可運作後，再重新啟用邏輯應用程式。
 
-1. 如果您未從 Visual Studio Code 中登入 Azure 帳戶和訂用帳戶，請依照[先前的步驟立即登入](#sign-in-azure)。
+1. 如果您未從 Visual Studio Code 中登入 Azure 帳戶和訂用帳戶，請依照[先前的步驟立即登入](#access-azure)。
 
 1. 在 Azure 視窗中的 [Logic Apps]  底下，展開您的 Azure 訂用帳戶，以便檢視該訂用帳戶中的所有邏輯應用程式。
 
@@ -247,7 +247,7 @@ ms.locfileid: "82147071"
 > [!IMPORTANT] 
 > 在生產環境中編輯正在執行的邏輯應用程式之前，請先[停用邏輯應用程式](#disable-enable-logic-app)，以降低中斷該邏輯應用程式的風險，並盡可能避免運作中斷。
 
-1. 如果您未從 Visual Studio Code 中登入 Azure 帳戶和訂用帳戶，請依照[先前的步驟立即登入](#sign-in-azure)。
+1. 如果您未從 Visual Studio Code 中登入 Azure 帳戶和訂用帳戶，請依照[先前的步驟立即登入](#access-azure)。
 
 1. 在 Azure 視窗的 [Logic Apps]  下，展開 Azure 訂用帳戶，並選取您要的邏輯應用程式。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206569"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131730"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>建置端對端解決方案
 
@@ -26,6 +26,9 @@ ms.locfileid: "86206569"
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="set-up-cloud-shell-session"></a>設定 Cloud Shell 工作階段
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 [!INCLUDE [Azure Digital Twins tutorial: configure the sample project](../../includes/digital-twins-tutorial-sample-configure.md)]
@@ -90,7 +93,7 @@ Query
 * *ProcessHubToDTEvents*：處理傳入的 IoT 中樞資料，並據以更新 Azure Digital Twins
 * *ProcessDTRoutedData*：處理來自數位分身的資料，並據以更新 Azure Digital Twins 中的父系對應項
 
-在本節中，您要發佈預先撰寫的函數應用程式，並確保此函數應用程式可以藉由指派 Azure Active Directory (AAD) 身分識別來存取 Azure Digital Twins。 完成這些步驟，即可讓教學課程的其餘部分使用函數應用程式內的函式。 
+在本節中，您要發佈預先撰寫的函數應用程式，並確保此函數應用程式可以藉由指派 Azure Active Directory (Azure AD) 身分識別來存取 Azure Digital Twins。 完成這些步驟，即可讓教學課程的其餘部分使用函數應用程式內的函式。 
 
 ### <a name="publish-the-app"></a>發佈應用程式
 
@@ -138,7 +141,7 @@ Query
 
 ### <a name="assign-permissions-to-the-function-app"></a>將權限指派給函數應用程式
 
-若要讓函數應用程式能夠存取 Azure Digital Twins，下一個步驟是設定應用程式設定，為應用程式指派系統管理的 AAD 身分識別，並授與此身分識別 Azure Digital Twins 執行個體的「擁有者」權限。
+若要讓函數應用程式能夠存取 Azure Digital Twins，下一個步驟是設定應用程式設定，為應用程式指派系統管理的 Azure AD 身分識別，並授與此身分識別 Azure Digital Twins 執行個體的「擁有者」權限。
 
 在 Azure Cloud Shell 中，使用下列命令，設定函數應用程式將用以參考數位身分執行個體的應用程式設定。
 
@@ -420,7 +423,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 az group delete --name <your-resource-group>
 ```
 
-接下來，使用此命令刪除您為用戶端應用程式所建立的 AAD 應用程式註冊：
+接下來，使用此命令刪除您為用戶端應用程式所建立的 Azure AD 應用程式註冊：
 
 ```azurecli
 az ad app delete --id <your-application-ID>
@@ -436,4 +439,4 @@ az ad app delete --id <your-application-ID>
 * [概念：自訂模型](concepts-models.md)
 
 或者，啟動操作說明文章，更深入了解本教學課程中的過程：
-* [操作說明：使用 Azure Digital Twins CLI](how-to-use-cli.md)
+* [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)

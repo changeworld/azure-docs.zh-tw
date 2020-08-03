@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ff37a3ecb55c6ee034d3fd2558909c3b4ef1d375
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3065cd6f185c0fdfaea1d6c0d02d2fee69bd04c7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116920"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>教學課程：使用通知中樞和 Bing 空間資料傳送以位置為基礎的推播通知
 
@@ -164,7 +164,7 @@ ms.locfileid: "86223426"
     }
     ```
 
-    若要深入了解如何在 UWP 應用程式中取得使用者位置，請參閱[取得使用者的位置](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx)。
+    若要深入了解如何在 UWP 應用程式中取得使用者位置，請參閱[取得使用者的位置](/windows/uwp/maps-and-location/get-location)。
 5. 若要確認實際上是否能取得位置，請開啟主頁面的程式碼端 (`MainPage.xaml.cs`)。 在 `MainPage` 建構函式中為 `Loaded` 事件建立新的事件處理常式。
 
     ```csharp
@@ -393,7 +393,7 @@ ms.locfileid: "86223426"
 
 您可能還需要遵循幾個步驟以確定方案已可用於生產環境。
 
-1. 首先，您需要確保地理柵欄是動態的。 這需要對 Bing API 進行一些額外處理，才能在現有資料來源內上傳新邊界。 如需詳細資訊，請參閱 [Bing 空間資料服務 API 文件](https://msdn.microsoft.com/library/ff701734.aspx)。
+1. 首先，您需要確保地理柵欄是動態的。 這需要對 Bing API 進行一些額外處理，才能在現有資料來源內上傳新邊界。 如需詳細資訊，請參閱 [Bing 空間資料服務 API 文件](/bingmaps/spatial-data-services/)。
 2. 接著，由於您要確保會對正確的參與者進行傳遞，因此您可以透過 [標記](notification-hubs-tags-segment-push-message.md)功能鎖定這些人。
 
-在此教學課程所示解決方案所說明的案例中，您可能會有各種不同目標平台，因此這裡並未限制只有系統特有功能才能使用地理柵欄。 也就是說，通用 Windows 平台內建提供了相關功能來 [偵測地理柵欄](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence)。
+在此教學課程所示解決方案所說明的案例中，您可能會有各種不同目標平台，因此這裡並未限制只有系統特有功能才能使用地理柵欄。 也就是說，通用 Windows 平台內建提供了相關功能來 [偵測地理柵欄](/windows/uwp/maps-and-location/set-up-a-geofence)。

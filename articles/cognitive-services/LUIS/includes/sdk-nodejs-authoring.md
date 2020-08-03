@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 6e240a0c5d5d77489c92862238c2e5041bdeabe3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 6d805dfc15264a34abe1f177f688dae96d4a49f7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171327"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369411"
 ---
 使用適用於 Node.js 的 Language Understanding (LUIS) 撰寫用戶端程式庫可以：
 
@@ -25,7 +25,7 @@ ms.locfileid: "84171327"
 * 定型和發佈應用程式。
 * 刪除應用程式
 
-[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [撰寫套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)、[執行階段套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[參考文件](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [撰寫套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)、[執行階段套件 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [範例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -36,46 +36,7 @@ ms.locfileid: "84171327"
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>取得您的 Language Understanding (LUIS) 入門金鑰
 
-藉由建立 LUIS 撰寫資源，取得您的[入門金鑰](../luis-how-to-azure-subscription.md#starter-key)。 請保留您的金鑰和金鑰端點，以進行下一個步驟。
-
-### <a name="create-an-environment-variable"></a>建立環境變數
-
-使用金鑰和金鑰區域，建立兩個環境變數以進行驗證：
-
-* `LUIS_AUTHORING_KEY` - 用於驗證您要求的資源金鑰。
-* `LUIS_AUTHORING_ENDPOINT` - 與金鑰相關聯的端點。
-
-請使用適合您作業系統的指示。
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
-setx LUIS_AUTHORING_ENDPOINT <replace-with-your-luis-authoring-endpoint>
-```
-
-新增環境變數之後，請重新啟動主控台視窗。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
-```
-
-新增環境變數之後，從主控台視窗執行 `source ~/.bashrc`，讓變更生效。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-編輯 `.bash_profile`，然後新增環境變數：
-
-```bash
-export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
-export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
-```
-
-新增環境變數之後，從主控台視窗執行 `source .bash_profile`，讓變更生效。
-***
+藉由建立 LUIS 撰寫資源，取得您的[撰寫金鑰](../luis-how-to-azure-subscription.md)。 保留金鑰和金鑰端點，您需要在程式碼檔案頂端新增這些字串。
 
 ### <a name="install-the-npm-library-for-luis-authoring"></a>安裝可用來撰寫 LUIS 的 NPM 程式庫
 
@@ -119,8 +80,6 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
 
 [!code-javascript[Create a new application in your preferred editor or IDE.](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=Dependencies)]
 
-為資源的 Azure 端點和金鑰建立變數。 如果您在啟動應用程式後才建立環境變數，則必須先關閉執行該應用程式的編輯器、IDE 或殼層，再重新加以開啟，才能存取該變數。
-
 [!code-javascript[Create variables for your resource's Azure endpoint and key.](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_authoring_quickstart.js?name=Variables)]
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
@@ -139,7 +98,7 @@ Language Understanding (LUIS) 撰寫用戶端是向 Azure 進行驗證的 [LUISA
 
 
 ## <a name="create-intent-for-the-app"></a>建立應用程式的意圖
-LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語句_意圖_的群組相對應。 使用者可以詢問問題，或發出預期會由 Bot (或其他用戶端應用程式) 提供特定回應的陳述。  意圖的範例包括預約航班、詢問目的地城市的天氣，以及詢問客戶服務的連絡人資訊。
+LUIS 應用程式模型中的主要物件為意圖。 意圖會與使用者語句_意圖_的群組相對應。 使用者可以詢問問題，或發出預期會由 Bot (或其他用戶端應用程式) 提供特定回應的陳述。 意圖的範例包括預約航班、詢問目的地城市的天氣，以及詢問客戶服務的連絡人資訊。
 
 使用具有唯一意圖名稱的 [model.add_intent](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/model?view=azure-node-latest#addintent-string--string--modelcreateobject--msrest-requestoptionsbase-)，然後傳遞應用程式識別碼、版本識別碼和新的意圖名稱。
 

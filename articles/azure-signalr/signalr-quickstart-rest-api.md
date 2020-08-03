@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 70053fbc47a5ba85e7bb18ab762868973d014beb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 707547cb39487111e2e9353de7e82c2409638324
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548137"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045001"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>快速入門：從主控台應用程式廣播即時訊息
 
@@ -126,7 +126,7 @@ Azure SignalR 服務可讓第三方服務與系統整合。
 
 下列清單提供每個特定版本的可用 API 清單。
 
-API | `1.0-preview` | `1.0`
+API | 1.0-preview | 1.0
 --- | --- | ---
 [廣播到所有目標](#broadcast) | **&#x2713;** | **&#x2713;**
 [廣播到群組](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -242,7 +242,7 @@ API 版本 | API HTTP 方法 | 要求 URL
 回應狀態碼 | 描述
 ---|---
 `200` | 服務狀態良好
-`503` | 服務無法使用
+`5xx` | 服務錯誤
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 

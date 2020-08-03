@@ -1,5 +1,5 @@
 ---
-title: 快速入門：合成語音，Objective-C - 語音服務
+title: 快速入門：使用語音 SDK 以 Objective-C 合成語音
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用語音 SDK 在 iOS 上以 Objective-C 合成語音
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 7a1cc2c45988e0c5a8c757e4d280b48dbbe56daa
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: fa1b62a987cb6c158c8d7f1fceb57bc47e5800eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084835"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>快速入門：使用語音 SDK 在 iOS 上以 Objective-C 合成語音
 
 在本文中，您將了解如何使用認知服務語音 SDK 以 Objective-C 建立 iOS 應用程式，以從文字合成語音。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，以下為必要條件清單：
 
@@ -40,7 +40,7 @@ ms.locfileid: "85391378"
 
 ## <a name="create-an-xcode-project"></a>建立 Xcode 專案
 
-啟動 Xcode，然後按一下 [檔案]   > [新增]   > [專案]  以啟動新專案。
+啟動 Xcode，然後按一下 [檔案] > [新增] > [專案] 以啟動新專案。
 在範本選取對話方塊中，選擇「iOS 單一檢視應用程式」範本。
 
 在後續的對話方塊中，進行下列選取：
@@ -74,9 +74,9 @@ ms.locfileid: "85391378"
 
 ## <a name="build-and-run-the-sample"></a>建置並執行範例
 
-1. 顯示偵錯輸出 ([檢視]   > [偵錯區域]   > [啟動主控台]  )。
-1. 在 [產品]   > [目的地]  功能表中的清單中，選擇 iOS 模擬器或是連接到您開發電腦的 iOS 裝置，當做應用程式的目的地。
-1. 建置範例程式碼，然後從功能表中選取 [產品]   > [執行]  或按一下 [播放]  按鈕，在 iOS 模擬器中加以執行。
+1. 顯示偵錯輸出 ([檢視] > [偵錯區域] > [啟動主控台])。
+1. 在 [產品] > [目的地] 功能表中的清單中，選擇 iOS 模擬器或是連接到您開發電腦的 iOS 裝置，當做應用程式的目的地。
+1. 建置範例程式碼，然後從功能表中選取 [產品] > [執行] 或按一下 [播放] 按鈕，在 iOS 模擬器中加以執行。
 
    ![模擬的 iOS 應用程式](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-simulated-app-tts.png)
 

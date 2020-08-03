@@ -3,16 +3,16 @@ title: 快速入門：瀏覽器中的 Azure Blob 儲存體程式庫 v12 - JavaSc
 description: 在本快速入門中，您將了解如何在瀏覽器中使用適用於 JavaScript 的 Azure Blob 儲存體用戶端程式庫第 12 版。 您會在 Blob 儲存體中建立容器和物件。 接下來，您會了解如何列出容器中的所有 Blob。 最後，您將了解如何刪除 Blob 和刪除容器。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/18/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: af76025317436f7046b857731e4c8af9b504201f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 039aea76e5e59d43078c2fa884e192922ec50035
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833412"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87276987"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -20,10 +20,12 @@ ms.locfileid: "85833412"
 
 Azure Blob 儲存體經過最佳化，能妥善儲存大量的非結構化資料。 Blob 是可保存文字或二進位資料的物件，包括影像、文件、串流媒體和封存資料。 在本快速入門中，您將了解如何在瀏覽器中使用 JavaScript 來管理 Blob。 您將上傳和列出 Blob，並將建立和刪除容器。
 
-[API 參考文件](/javascript/api/@azure/storage-blob) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [套件 (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+其他資源：
 
-> [!NOTE]
-> 若要開始使用舊版 SDK，請參閱[快速入門：使用 Node.js 中的 JavaScript v10 SDK 來管理 Blob](storage-quickstart-blobs-nodejs-legacy.md)。
+* [API 參考文件](/javascript/api/@azure/storage-blob)
+* [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
+* [套件 (npm)](https://www.npmjs.com/package/@azure/storage-blob)
+* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>必要條件
 

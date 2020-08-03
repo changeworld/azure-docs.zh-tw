@@ -1,30 +1,34 @@
 ---
-title: 建立 SQL Server VM (Azure Resource Manager 範本)
-description: 了解如何使用 Azure Resource Manager 範本在 Azure 虛擬機器 (VM) 上建立 SQL Server。
+title: 使用 ARM 範本建立 SQL Server VM
+description: 了解如何使用 Azure Resource Manager 範本 (ARM 範本) 在 Azure 虛擬機器 (VM) 上建立 SQL Server。
 author: MashaMSFT
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 8b165f640548f28e5d94e5a791c0fe8545df4d78
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1b6f54c823f59bb654ac86f041eefe80af3eb5ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85852473"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003775"
 ---
-# <a name="create-sql-server-vm-azure-resource-manager-template"></a>建立 SQL Server VM (Azure Resource Manager 範本)
+# <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 SQL Server VM
 
-使用此 Azure Resource Manager 範本在 Azure 虛擬機器 (VM) 上部署 SQL Server。 
+使用此 Azure Resource Manager 範本 (ARM 範本) 在 Azure 虛擬機器 (VM) 上部署 SQL Server。 
 
 [!INCLUDE [About Azure Resource Manager](../../../../includes/resource-manager-quickstart-introduction.md)]
+
+如果您的環境符合必要條件，而且您很熟悉 ARM 範本，請選取 [部署至 Azure] 按鈕。 範本會在 Azure 入口網站中開啟。
+
+[![部署至 Azure](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
 ## <a name="prerequisites"></a>必要條件
 
 SQL Server VM 的 ARM 範本需要下列各項：
 
-- 最新版的 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 和/或 [PowerShell](/powershell/scripting/install/installing-powershell?view=powershell-7)。 
+- 最新版的 [Azure CLI](/cli/azure/install-azure-cli) 和/或 [PowerShell](/powershell/scripting/install/installing-powershell)。 
 - 預先設定且備妥[虛擬網路](../../../virtual-network/quick-create-portal.md) 和[子網路](../../../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)的[資源群組](../../../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups)。
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -43,7 +47,7 @@ SQL Server VM 的 ARM 範本需要下列各項：
 - [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)：在 Azure 中建立虛擬機器。 
 - [Microsoft.SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines)：向 SQL VM 資源提供者註冊虛擬機器。 
 
-如需更多「Azure VM 上的 SQL Server」範本，請參閱[快速入門範本資源庫](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine)。
+如需更多「Azure VM 上的 SQL Server」範本，請參閱[快速入門範本資源庫](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular)。
 
 
 ## <a name="deploy-the-template"></a>部署範本
@@ -116,7 +120,7 @@ Write-Host "Press [ENTER] to continue..."
 如需逐步教學課程，以引導您完成建立範本的流程，請參閱：
 
 > [!div class="nextstepaction"]
-> [教學課程：建立及部署第一個 Azure Resource Manager 範本](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [教學課程：建立及部署您的第一個 ARM 範本](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
 
 如需部署 SQL Server VM 的其他方式，請參閱： 
 - [Azure 入口網站](create-sql-vm-portal.md)

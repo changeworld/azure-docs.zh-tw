@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: 75529d03435e92dfff26dac81f4f7e59585b6fe9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 8afa0b1b068aa03bb1add7f029c731b4fc9a4724
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255240"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039688"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure 入口網站中的計費帳戶和範圍
 
@@ -39,7 +39,7 @@ Azure 入口網站支援下列計費帳戶類型：
 
 |影響範圍  |定義  |
 |---------|---------|
-|計費帳戶     | 代表客戶為了使用 Azure 所接受的合約。 此範圍中包含一或多個訂用帳戶。  |
+|計費帳戶     | 代表客戶為了使用 Azure 所接受的合約。 其中包含一或多個訂用帳戶。  |
 |訂用帳戶     |  代表 Azure 資源的群組。 發票會在此範圍產生。 其他計費資訊 (例如，付款方式和使用地址) 會與此範圍相關聯。|
 
 ### <a name="enterprise-agreement"></a>Enterprise 合約

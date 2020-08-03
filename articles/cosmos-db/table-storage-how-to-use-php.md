@@ -7,31 +7,30 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
-ms.date: 04/05/2018
-ms.openlocfilehash: dcea83b9452b33baef8d563c7776aa9bd258a5f4
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.date: 07/23/2020
+ms.openlocfilehash: f0a5c3df2359add9f896e05af6c8c77d9e006a2a
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85389678"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171982"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>如何使用 PHP 的 Azure 儲存體表格服務或 Azure Cosmos DB 資料表 API
+
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-## <a name="overview"></a>概觀
-本指南說明如何使用 Azure 儲存體表格服務和 Azure Cosmos DB 資料表 API 來執行一般案例。 這些範例是以 PHP 撰寫，並且使用 [Azure 儲存體資料表 PHP 用戶端程式庫][download]。 所涵蓋的案例包括**建立和刪除資料表**以及**在資料表中插入、刪除及查詢實體**。 如需有關 Azure 資料表服務的詳細資訊，請參閱 [後續步驟](#next-steps) 一節。
-
+本文說明如何建立資料表、儲存您的資料，以及對資料執行 CRUD 作業。 選擇 Azure 資料表服務或 Azure Cosmos DB 資料表 API。 這些範例是以 PHP 撰寫，並且使用 [Azure 儲存體資料表 PHP 用戶端程式庫][download]。 所涵蓋的案例包括**建立和刪除資料表**以及**在資料表中插入、刪除及查詢實體**。 如需有關 Azure 資料表服務的詳細資訊，請參閱 [後續步驟](#next-steps) 一節。
 
 ## <a name="create-an-azure-service-account"></a>建立 Azure 服務帳戶
 
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
-### <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
+**建立 Azure 儲存體帳戶**
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>建立 Azure Cosmos DB 表格 API 帳戶
+**建立 Azure Cosmos DB 表格 API 帳戶**
 
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
@@ -58,8 +57,8 @@ ms.locfileid: "85389678"
    ```
    或者，移至 GitHub 上的 [Azure 儲存體資料表 PHP 用戶端程式庫](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table)來複製原始程式碼。
 
-
 ## <a name="add-required-references"></a>新增必要的參考
+
 若要使用儲存體表格服務或 Azure Cosmos DB API，您必須：
 
 * 參考使用 [require_once][require_once] 陳述式的自動載入器檔案，以及
@@ -74,25 +73,32 @@ use MicrosoftAzure\Storage\Table\TableRestProxy;
 
 在下列各範例中，一律會顯示 `require_once` 陳述式，但只會參考要執行之範例所需的類別。
 
-## <a name="add-a-storage-table-service-connection"></a>新增儲存體表格服務連線
+## <a name="add-your-connection-string"></a>新增連接字串
+
+您可以連線到 Azure 儲存體帳戶或 Azure Cosmos DB 資料表 API 帳戶。 根據您使用的帳戶類型，取得連接字串。
+
+### <a name="add-a-storage-table-service-connection"></a>新增儲存體表格服務連線
+
 若要具現化儲存體表格服務用戶端，您必須先具備一個有效的連接字串。 儲存體表格服務的連接字串格式為：
 
 ```php
 $connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
 ```
 
-## <a name="add-an-azure-cosmos-db-connection"></a>新增 Azure Cosmos DB 連線
-若要具現化 Azure Cosmos DB 資料表用戶端，您必須先具備一個有效的連接字串。 Azure Cosmos DB 連接字串的格式如下：
+### <a name="add-a-storage-emulator-connection"></a>新增儲存體模擬器連線
 
-```php
-$connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
-```
-
-## <a name="add-a-storage-emulator-connection"></a>新增儲存體模擬器連線
 若要存取模擬器儲存體：
 
 ```php
 UseDevelopmentStorage = true
+```
+
+### <a name="add-an-azure-cosmos-db-connection"></a>新增 Azure Cosmos DB 連線
+
+若要具現化 Azure Cosmos DB 資料表用戶端，您必須先具備一個有效的連接字串。 Azure Cosmos DB 連接字串的格式如下：
+
+```php
+$connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
 ```
 
 若要建立 Azure 表格服務用戶端或 Azure Cosmos DB 用戶端，您必須使用 **TableRestProxy** 類別。 您可以：
@@ -113,6 +119,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>建立資料表
+
 **TableRestProxy** 物件可讓您以 **createTable** 方法建立資料表。 建立資料表時，您可以設定資料表服務逾時值。 (如需有關表格服務逾時值的詳細資訊，請參閱[設定表格服務作業的逾時值][table-service-timeouts]。)
 
 ```php
@@ -140,6 +147,7 @@ catch(ServiceException $e){
 如需有關資料表名稱限制的資訊，請參閱[了解表格服務資料模型][table-data-model]。
 
 ## <a name="add-an-entity-to-a-table"></a>將實體新增至資料表
+
 若要將實體新增至資料表，請建立一個新的 **Entity** 物件，然後將它傳遞給 **TableRestProxy->insertEntity**。 請注意，建立實體時，您必須指定 `PartitionKey` 和 `RowKey`。 這些是實體的唯一識別碼，且其值的查詢速度比其他屬性快上許多。 系統使用 `PartitionKey` 自動將資料表的實體散發在許多儲存體節點上。 具有相同 `PartitionKey` 的實體會儲存在相同節點上。 (對儲存在同一節點上的多個實體執行作業，會比對儲存在不同節點上的實體執行作業有更佳的執行效果。)`RowKey` 是實體在分割內的唯一識別碼。
 
 ```php
@@ -219,6 +227,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="retrieve-a-single-entity"></a>擷取單一實體
+
 **TableRestProxy-&gt;getEntity`RowKey` 方法可讓您透過查詢其** 和 `PartitionKey` 來擷取單一實體。 在以下範例中，會將分割區索引鍵 `tasksSeattle` 和資料列索引鍵 `1` 傳遞給 **getEntity** 方法。
 
 ```php
@@ -248,6 +257,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>擷取資料分割中的所有實體
+
 實體查詢使用篩選條件建構而成 (如需詳細資訊，請參閱[查詢資料表和實體][filters])。 若要擷取資料分割中的所有實體，請使用 "PartitionKey eq *partition_name*" 篩選條件。 下列範例示範如何透過將篩選條件傳遞給 **queryEntities** 方法來擷取 `tasksSeattle` 分割中的所有實體。
 
 ```php
@@ -281,6 +291,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>擷取資料分割中實體的子集
+
 前面範例中所使用的相同模式可用來擷取資料分割中的任何實體子集。 您所擷取的實體子集將取決於您使用的篩選條件 (如需詳細資訊，請參閱[查詢資料表和實體][filters])。下列範例示範如何使用篩選條件擷取位於特定 `Location` 且 `DueDate` 在指定日期之前的所有實體。
 
 ```php
@@ -314,7 +325,8 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>擷取實體屬性的子集
-查詢可以擷取實體屬性的子集。 這項稱為「投射」  的技術可減少頻寬並提高查詢效能 (尤其是對大型實體而言)。 若要指定要擷取的屬性，請將屬性的名稱傳遞給 **Query->addSelectField** 方法。 您可以呼叫此方法許多次以新增其他屬性。 執行 **TableRestProxy->queryEntities** 之後，傳回的實體將只具有選取的屬性。 (如果您想要傳回資料表實體的子集，請使用篩選條件，如上面的查詢所示。)
+
+查詢可以擷取實體屬性的子集。 這項稱為「投射」 的技術可減少頻寬並提高查詢效能 (尤其是對大型實體而言)。 若要指定要擷取的屬性，請將屬性的名稱傳遞給 **Query->addSelectField** 方法。 您可以呼叫此方法許多次以新增其他屬性。 執行 **TableRestProxy->queryEntities** 之後，傳回的實體將只具有選取的屬性。 (如果您想要傳回資料表實體的子集，請使用篩選條件，如上面的查詢所示。)
 
 ```php
 require_once 'vendor/autoload.php';
@@ -353,6 +365,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="update-an-entity"></a>更新實體
+
 您可以藉由對實體使用 **Entity->setProperty** 和 **Entity->addProperty** 方法，然後呼叫 **TableRestProxy->updateEntity**，來更新現有實體。 下列範例會擷取一個實體、修改一個屬性、移除另一個屬性，以及新增一個屬性。 請注意，移除屬性的方式是將它的值設定成 **null**。
 
 ```php
@@ -387,6 +400,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="delete-an-entity"></a>刪除實體
+
 若要刪除實體，請將資料表名稱以及實體的 `PartitionKey` 和 `RowKey` 傳遞給 **TableRestProxy->deleteEntity** 方法。
 
 ```php
@@ -415,6 +429,7 @@ catch(ServiceException $e){
 針對並行檢查，您可以使用 **DeleteEntityOptions->setEtag** 方法為要刪除的實體設定 Etag，並將 **DeleteEntityOptions** 物件傳遞給 **deleteEntity** 作為第四個參數。
 
 ## <a name="batch-table-operations"></a>批次資料表作業
+
 **TableRestProxy->batch** 方法可讓您以單一要求執行多項作業。 這裡的模式涉及將作業新增至 **BatchRequest** 物件，然後將 **BatchRequest** 物件傳遞給 **TableRestProxy->batch** 方法。 若要將作業新增至 **BatchRequest** 物件，您可以呼叫下列任一方法許多次：
 
 * **addInsertEntity** (新增 insertEntity 作業)
@@ -475,6 +490,7 @@ catch(ServiceException $e){
 如需有關批次處理資料表作業的詳細資訊，請參閱[執行實體群組交易][entity-group-transactions]。
 
 ## <a name="delete-a-table"></a>刪除資料表
+
 最後，若要刪除資料表，請將資料表名稱傳遞給 **TableRestProxy->deleteTable** 方法。
 
 ```php
@@ -501,6 +517,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>後續步驟
+
 了解 Azure 表格服務和 Azure Cosmos DB 的基礎概念之後，請依循下列連結以深入了解。
 
 * [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。

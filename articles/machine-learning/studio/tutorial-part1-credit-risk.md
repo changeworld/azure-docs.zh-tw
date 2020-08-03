@@ -1,6 +1,5 @@
 ---
-title: 教學課程 1：預測信用風險
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (傳統版) 教學課程：預測信用風險 - Azure
 description: 一個詳盡的教學課程，說明如何在 Azure Machine Learning (傳統) 中建立適用於信用風險評估的預測性分析解決方案。 本教學課程是三部分教學課程系列的第一部分。  其中說明如何建立工作區、上傳資料及建立實驗。
 keywords: 信用風險, 預測性分析解決方案, 風險評估
 author: sdgilley
@@ -10,14 +9,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 2e2edd7930ba4555748791210ad303c54f93c347
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8e2d0cd0d9aa567cfab9e2fef66ad6363e59d53
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086104"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324891"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>教學課程 1：預測信用風險 - Azure Machine Learning Studio (傳統)
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -38,7 +40,7 @@ ms.locfileid: "86086104"
 
 您隨後可使用此實驗[在第 2 部分中訓練模型](tutorial-part2-credit-risk-train.md)，然後[在第 3 部分中加以部署](tutorial-part3-credit-risk-deploy.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 本教學課程假設您之前已至少使用過一次 Machine Learning Studio (傳統)，且對機器學習概念有一些了解。 但不會假設您對上述任一方面有所專精。
 
@@ -46,7 +48,7 @@ ms.locfileid: "86086104"
 
 
 > [!TIP] 
-> 對於您在本教學課程中開發的實驗，您可以在 [Azure AI 資源庫](https://gallery.azure.ai)中找到其工作複本。 請移至 **[教學課程 - 預測信用風險](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** ，然後按一下 [在 Studio 中開啟]  ，將實驗的複本下載到您的 Machine Learning Studio (傳統) 工作區。
+> 對於您在本教學課程中開發的實驗，您可以在 [Azure AI 資源庫](https://gallery.azure.ai)中找到其工作複本。 請移至 **[教學課程 - 預測信用風險](https://gallery.azure.ai/Experiment/Walkthrough-Credit-risk-prediction-1)** ，然後按一下 [在 Studio 中開啟]，將實驗的複本下載到您的 Machine Learning Studio (傳統) 工作區。
 > 
 
 
@@ -61,9 +63,9 @@ ms.locfileid: "86086104"
 ![在 Studio (傳統) 中選取工作區](./media/tutorial-part1-credit-risk/open-workspace.png)
 
 > [!TIP]
-> 如果您是工作區的擁有者，您可以邀請他人到您的工作區，共用您正在執行的實驗。 您可以在 Machine Learning Studio (傳統) 中的 [設定]  頁面上執行此動作。 您只需要每個使用者的 Microsoft 帳戶或組織帳戶。
+> 如果您是工作區的擁有者，您可以邀請他人到您的工作區，共用您正在執行的實驗。 您可以在 Machine Learning Studio (傳統) 中的 [設定] 頁面上執行此動作。 您只需要每個使用者的 Microsoft 帳戶或組織帳戶。
 > 
-> 在 [設定]  頁面上，按一下 [使用者]  ，然後按一下視窗底部的 [邀請使用者]  。
+> 在 [設定] 頁面上，按一下 [使用者]，然後按一下視窗底部的 [邀請使用者]。
 > 
 
 ## <a name="upload-existing-data"></a><a name="upload"></a>上傳現有資料
@@ -73,7 +75,7 @@ ms.locfileid: "86086104"
 
 您將使用名為 **german.data** 的檔案。 將此檔案下載至您的本機硬碟。  
 
-**german.data** 資料集包含過去 1000 名信用額度申請者的 20 個變數資料列。 這 20 個變數代表資料集的特徵集 (「特徵向量」  )，可分別提供每個信用額度申請者的識別特性。 每個資料列另外會有一個資料行代表申請者計算後的信用風險，其中有 700 名申請者被認定為低信用風險，300 名為高風險。
+**german.data** 資料集包含過去 1000 名信用額度申請者的 20 個變數資料列。 這 20 個變數代表資料集的特徵集 (「特徵向量」)，可分別提供每個信用額度申請者的識別特性。 每個資料列另外會有一個資料行代表申請者計算後的信用風險，其中有 700 名申請者被認定為低信用風險，300 名為高風險。
 
 UCI 網站提供了這項資料的特徵向量的屬性描述。 這項資料包括財務資訊、信用歷史記錄、工作狀態、個人資訊。 每個申請者都會有一個二進位評等，指出他們屬於低信用風險還是高風險。 
 
@@ -117,7 +119,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 開啟 Machine Learning Studio (傳統) 首頁 ([https://studio.azureml.net](https://studio.azureml.net))。 
 
-2. 按一下視窗左上角的功能表![功能表](./media/tutorial-part1-credit-risk/menu.png)，按一下 [Azure Machine Learning]  ，選取 [Studio]  然後登入。
+2. 按一下視窗左上角的功能表![功能表](./media/tutorial-part1-credit-risk/menu.png)，按一下 [Azure Machine Learning]，選取 [Studio] 然後登入。
 
 3. 按一下視窗底部的 [ **+新增** ]。
 
@@ -127,7 +129,7 @@ sed 's/ /,/g' german.data > german.csv
 
     ![從本機檔案新增資料集](./media/tutorial-part1-credit-risk/add-dataset.png)
 
-6. 在 [上傳新的資料集]  對話方塊中按一下 [瀏覽]，然後尋找您已建立的 **german.csv** 檔案。
+6. 在 [上傳新的資料集] 對話方塊中按一下 [瀏覽]，然後尋找您已建立的 **german.csv** 檔案。
 
 7. 輸入資料集的名稱。 在本教學課程中，我們稱之為「UCI 德國信用卡資料」。
 
@@ -141,7 +143,7 @@ sed 's/ /,/g' german.data > german.csv
 
 這會將資料上傳至您可在實驗中使用的資料集模組。
 
-您可以管理您已上傳至 Studio (傳統) 的資料集，方法是按一下 Studio (傳統) 視窗左側的 [資料集]  索引標籤。
+您可以管理您已上傳至 Studio (傳統) 的資料集，方法是按一下 Studio (傳統) 視窗左側的 [資料集] 索引標籤。
 
 ![管理資料集](./media/tutorial-part1-credit-risk/dataset-list.png)
 
@@ -151,8 +153,8 @@ sed 's/ /,/g' german.data > german.csv
 
 本教學課程的下一個步驟，是在 Machine Learning Studio (傳統) 中建立實驗，並在實驗中使用您上傳的資料集。  
 
-1. 在 Studio (傳統) 中，按一下視窗底部的 [+新增]  。
-1. 選取 [實驗]  ，然後選取 [空白實驗]。 
+1. 在 Studio (傳統) 中，按一下視窗底部的 [+新增]。
+1. 選取 [實驗] ，然後選取 [空白實驗]。 
 
     ![建立新實驗](./media/tutorial-part1-credit-risk/create-new-experiment.png)
 
@@ -162,12 +164,12 @@ sed 's/ /,/g' german.data > german.csv
     ![將實驗重新命名](./media/tutorial-part1-credit-risk/rename-experiment.png)
 
    > [!TIP]
-   > 在 [屬性]  窗格中為實驗填入 [摘要]  和 [描述]  是不錯的作法。 這些屬性會提供記錄實驗的機會，以便稍後查看它的人員能了解您的目標和方法。
+   > 在 [屬性] 窗格中為實驗填入 [摘要] 和 [描述] 是不錯的作法。 這些屬性會提供記錄實驗的機會，以便稍後查看它的人員能了解您的目標和方法。
    > 
    > ![實驗屬性](./media/tutorial-part1-credit-risk/experiment-properties.png)
    > 
 
-1. 在實驗畫布左側的模組調色盤中，展開 [Saved Datasets]  。
+1. 在實驗畫布左側的模組調色盤中，展開 [Saved Datasets] 。
 1. 尋找您在 **我的資料集** 下建立的資料集並將它拖曳到畫布上。 您也可以在調色盤上方的 [搜尋]  方塊中輸入名稱，以尋找資料集。  
 
     ![將資料集新增至實驗](./media/tutorial-part1-credit-risk/add-dataset-to-experiment.png)
@@ -175,9 +177,9 @@ sed 's/ /,/g' german.data > german.csv
 
 ### <a name="prepare-the-data"></a>準備資料
 
-您可以檢視前 100 列資料和整個資料集的部分統計資訊：按一下資料集的輸出連接埠 (底部的小圓圈)，然後選取 [視覺化]  。  
+您可以按一下資料集的輸出連接埠 (底部的小圓圈)，然後選取 [視覺化] ，來檢視整個資料集的前 100 列資料和部分統計資訊。  
 
-因為資料檔案並未隨附資料行標題，所以 Studio (傳統) 已提供一般標題 (Col1、Col2 等等  )。 建立模型並不一定要有良好的標題，但良好的標題可讓您更容易使用實驗中的資料。 此外，當您最終在 Web 服務中發佈此模型時，標題有助於服務的使用者識別資料行。  
+因為資料檔案並未隨附資料行標題，所以 Studio (傳統) 已提供一般標題 (Col1、Col2 等等 )。 建立模型並不一定要有良好的標題，但良好的標題可讓您更容易使用實驗中的資料。 此外，當您最終在 Web 服務中發佈此模型時，標題有助於服務的使用者識別資料行。  
 
 您可以使用[編輯中繼資料][edit-metadata]模組來新增資料行標題。
 
@@ -189,7 +191,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 按住[編輯中繼資料][edit-metadata]模組並將其拖曳到畫布上，放在您先前新增的資料集下。
 
-1. 將資料集連線到[編輯中繼資料][edit-metadata]：按一下資料集的輸出連接埠 (資料集底部的小圓圈)、拖曳到[編輯中繼資料][edit-metadata]的輸入連接埠 (模組頂端的小圓圈)，然後放開滑鼠按鍵。 即使您在畫布上移動資料集或模組，這兩者仍會保持連線。
+1. 將資料集連接到 [編輯中繼資料][edit-metadata]：按一下資料集的輸出連接埠 (資料集底部的小圓圈)、拖曳到 [編輯中繼資料][edit-metadata] 的輸入連接埠 (模組頂端的小圓圈)，然後放開滑鼠按鍵。 即使您在畫布上移動資料集或模組，這兩者仍會保持連線。
  
     實驗目前看起來如下：  
 
@@ -203,9 +205,9 @@ sed 's/ /,/g' german.data > german.csv
     > ![編輯中繼資料模組並新增註解](./media/tutorial-part1-credit-risk/edit-metadata-with-comment.png)
     > 
 
-1. 選取[編輯中繼資料][edit-metadata]，然後在畫布右邊的 [屬性]  窗格中，按一下 [啟動資料行選取器]  。
+1. 選取[編輯中繼資料][edit-metadata]，然後在畫布右邊的 [屬性] 窗格中，按一下 [啟動資料行選取器]。
 
-1. 在 [選取資料行]  對話方塊中，選取 [可用的資料行]  中的所有資料列，然後按一下 > 將它們移到 [選取的資料行]  。
+1. 在 [選取資料行] 對話方塊中，選取 [可用的資料行] 中的所有資料列，然後按一下 > 將它們移到 [選取的資料行]。
    對話方塊應該會看起來如下：
 
    ![已選取所有資料行的資料行選取器](./media/tutorial-part1-credit-risk/select-columns.png)
@@ -213,7 +215,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 按一下 **[確定]** \(打勾記號)。
 
-1. 回到 [屬性]  窗格，找到 [新的資料行名稱]  參數。 在這個欄位中，輸入資料集中 21 個資料行的名稱清單，並以逗號加以分隔，且依資料行順序排序。 您可以從 UCI 網站上的資料集文件中取得資料行名稱，或為求簡便，您可以複製並貼上下列清單：  
+1. 回到 [屬性] 窗格，找到 [新的資料行名稱] 參數。 在這個欄位中，輸入資料集中 21 個資料行的名稱清單，並以逗號加以分隔，且依資料行順序排序。 您可以從 UCI 網站上的資料集文件中取得資料行名稱，或為求簡便，您可以複製並貼上下列清單：  
 
    ```   
    Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
@@ -224,7 +226,7 @@ sed 's/ /,/g' german.data > german.csv
    ![編輯中繼資料的屬性](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
    > [!TIP]
-   > 如果您想要確認資料行標題，請執行實驗 (按一下實驗畫布下方的 [執行]  )。 當執行結束時 ([編輯中繼資料][edit-metadata]上會出現綠色的打勾記號)，按一下[編輯中繼資料][edit-metadata]模組的輸出連接埠，然後選取 [視覺化]  。 您可以用相同方式檢視任何模組的輸出，以檢視資料在實驗中的執行進度。
+   > 如果您想要確認資料行標題，請執行實驗 (按一下實驗畫布下方的 [執行])。 當執行結束時 ([編輯中繼資料][edit-metadata] 上會出現綠色的打勾記號)，按一下[編輯中繼資料][edit-metadata] 模組的輸出連接埠，然後選取 [視覺化]。 您可以用相同方式檢視任何模組的輸出，以檢視資料在實驗中的執行進度。
    > 
    > 
 
@@ -237,10 +239,10 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 找到[資料分割][split]模組，將它拖曳到畫布上，然後連線到[編輯中繼資料][edit-metadata]模組。
 
-1. 根據預設，分割率會是 0.5，並且會設定 [Randomized split]  參數。 這表示有一半資料會隨機透過[分割資料][split]模組的一個連接埠輸出，一半透過另一個連接埠輸出。 您可以調整這些參數和 [隨機種子]  參數，以變更訓練與測試資料之間的分割。 在此範例中，您將其保持原狀。
+1. 根據預設，分割率會是 0.5，並且會設定 [Randomized split]  參數。 這表示有一半資料會隨機透過 [分割資料][split] 模組的一個連接埠輸出，一半透過另一個連接埠輸出。 您可以調整這些參數和 [隨機種子] 參數，以變更訓練與測試資料之間的分割。 在此範例中，您將其保持原狀。
    
    > [!TIP]
-   > [第一個輸出資料集內的資料列比例]  屬性會決定要透過「左側」  輸出連接埠輸出多少資料。 例如，如果您將分割率設為 0.7，則會有 70% 的資料透過左側連接埠輸出，30% 透過右側連接埠輸出。  
+   > [第一個輸出資料集內的資料列比例] 屬性會決定要透過「左側」輸出連接埠輸出多少資料。 例如，如果您將分割率設為 0.7，則會有 70% 的資料透過左側連接埠輸出，30% 透過右側連接埠輸出。  
    > 
    > 
 
@@ -258,7 +260,7 @@ sed 's/ /,/g' german.data > german.csv
 
 1. 按兩下[執行 R 指令碼][execute-r-script]模組並輸入註解「設定成本調整」。
 
-1. 在 [屬性]  窗格中，刪除 [R 指令碼]  參數中的預設文字，然後輸入此指令碼：
+1. 在 [屬性] 窗格中，刪除 [R 指令碼] 參數中的預設文字，然後輸入此指令碼：
    
     ```r
     dataset1 <- maml.mapInputPort(1)
@@ -270,15 +272,15 @@ sed 's/ /,/g' german.data > german.csv
 
     ![執行 R 指令碼模組中的 R 指令碼](./media/tutorial-part1-credit-risk/execute-r-script.png)
 
-您必須為[資料分割][split]模組的每個輸出執行此一相同複寫作業，使訓練和測試資料具有相同的成本調整。 要執行此動作，最簡單的方式是複製剛製作的[執行 R 指令碼][execute-r-script]模組，並將其連線到[分割資料][split]模組的其他輸出連接埠。
+您必須為[資料分割][split]模組的每個輸出執行此一相同複寫作業，使訓練和測試資料具有相同的成本調整。 要執行此動作，最簡單的方式是複製剛製作的[執行 R 指令碼][execute-r-script]模組，並將其連線至[分割資料][split]模組的其他輸出連接埠。
 
-1. 以滑鼠右鍵按一下[執行 R 指令碼][execute-r-script]模組，然後選取 [複製]  。
+1. 以滑鼠右鍵按一下[執行 R 指令碼][execute-r-script]模組，然後選取 [複製]。
 
-1. 以滑鼠右鍵按一下實驗畫布，然後選取 [貼上]  。
+1. 以滑鼠右鍵按一下實驗畫布，然後選取 [貼上] 。
 
-1. 將新模組拖曳至畫布中，然後將[資料分割][split]模組的右側輸出連接埠連線到這個新的[執行 R 指令碼][execute-r-script]模組的第一個輸入連接埠。 
+1. 將新模組拖曳至畫布中，然後將 [資料分割][split] 模組的右側輸出連接埠連接到這個新的 [執行 R 指令碼][execute-r-script] 模組的第一個輸入連接埠。 
 
-1. 在實驗畫布底端，按一下 [執行]  。 
+1. 在實驗畫布底端，按一下 [執行]。 
 
 > [!TIP]
 > 「執行 R 指令碼」模組的複本會包含與原始模組相同的指令碼。 當您在畫布上複製並貼上模組時，複本將會保留原本的所有屬性。  
@@ -311,6 +313,6 @@ sed 's/ /,/g' german.data > german.csv
 > [教學課程 2 - 訓練和評估模型](tutorial-part2-credit-risk-train.md)
 
 <!-- Module References -->
-[execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
-[edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
-[split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
+[execute-r-script]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/execute-r-script
+[edit-metadata]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/edit-metadata
+[split]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/split-data

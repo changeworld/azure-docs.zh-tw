@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ac62b1706749c4708d804dd2102ad3f2a7132a16
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ecca67cab486c8f3524c8c8d4c221d52689cf62a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85193646"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87070102"
 ---
 # <a name="synapse-managed-private-endpoints-preview"></a>Synapse 受控私人端點 (預覽)
 
@@ -21,19 +21,19 @@ ms.locfileid: "85193646"
 
 ## <a name="managed-private-endpoints"></a>受控私人端點
 
-受控私人端點是在受控工作區 VNet 中建立的私人端點，其會建立 Azure 資源的私人連結。 Azure Synapse 會代表您管理這些私人端點。
+受控私人端點是在受控工作區 Microsoft Azure 虛擬網路中建立的私人端點，其會建立 Azure 資源的私人連結。 Azure Synapse 會代表您管理這些私人端點。
 
-Azure Synapse 支援私人連結。 私人連結可讓您安全地從 Azure VNet 存取 Azure 服務 (例如 Azure 儲存體、Azure Cosmos DB 和 Azure SQL 資料倉儲) 和 Azure 託管的客戶/合作夥伴服務。
+Azure Synapse 支援私人連結。 私人連結可讓您安全地從 Azure 虛擬網路存取 Azure 服務 (例如 Azure 儲存體、Azure Cosmos DB 和 Azure SQL 資料倉儲) 和 Azure 託管的客戶/合作夥伴服務。
 
-使用私人連結時，您的 VNet 和工作區之間的流量會完全流經 Microsoft 骨幹網路。 Private Link 可保護您免受資料外洩風險。 您可以建立私人端點來建立資源的私人連結。
+使用私人連結時，您的虛擬網路和工作區之間的流量會完全流經 Microsoft 骨幹網路。 Private Link 可保護您免受資料外洩風險。 您可以建立私人端點來建立資源的私人連結。
 
-私人端點會使用您 VNet 中的私人 IP 位址，有效地將服務帶入您的 VNet 中。 私人端點會對應至 Azure 中的特定資源，而不是整個服務。 客戶可以限制其組織所核准之特定資源的連線能力。 深入了解[私人連結和私人端點](https://docs.microsoft.com/azure/private-link/)。
+私人端點會使用您虛擬網路中的私人 IP 位址，有效地將服務帶入您的虛擬網路中。 私人端點會對應至 Azure 中的特定資源，而不是整個服務。 客戶可以限制其組織所核准之特定資源的連線能力。 深入了解[私人連結和私人端點](https://docs.microsoft.com/azure/private-link/)。
 
 >[!IMPORTANT]
->只有在具有受控工作區 VNet 的 Azure Synapse 工作區中，才支援受控私人端點。
+>只有在具有受控工作區虛擬網路的 Azure Synapse 工作區中，才支援受控私人端點。
 
 >[!NOTE]
->來自受控工作區 VNet 的所有輸出流量 (除了透過受控的私人端點以外) 未來都會遭到封鎖。 建議您建立受控私人端點，以連線到工作區外部的所有 Azure 資料來源。 
+>來自受控工作區虛擬網路的所有輸出流量 (除了透過受控的私人端點以外) 未來都會遭到封鎖。 建議您建立受控私人端點，以連線到工作區外部的所有 Azure 資料來源。 
 
 當您在 Azure Synapse 中建立受控私人端點時，會以「擱置」狀態建立私人端點連線。 已起始核准工作流程。 私人連結資源的擁有者會負責核准或拒絕連線。
 
@@ -43,7 +43,7 @@ Azure Synapse 支援私人連結。 私人連結可讓您安全地從 Azure VNet
 
 ## <a name="managed-private-endpoints-for-sql-pool-and-sql-on-demand"></a>適用於 SQL 集區的受控私人端點和 SQL 隨選
 
-SQL 集區和 SQL 隨選是 Azure Synapse 工作區中的分析功能。 這些功能會使用未部署到[受控工作區 VNet](./synapse-workspace-managed-vnet.md) 中的多租用戶基礎結構。
+SQL 集區和 SQL 隨選是 Azure Synapse 工作區中的分析功能。 這些功能會使用未部署到[受控工作區虛擬網路](./synapse-workspace-managed-vnet.md)中的多租用戶基礎結構。
 
 建立工作區時，Azure Synapse 會在該工作區中，在 SQL 集區和 SQL 隨選中建立兩個受控私人端點。 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b19427070d982918584c13c25518cffe55497000
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 2f8f19e6b98143bb48430decdd51f5626e72d422
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223324"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387280"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入門：針對您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定單一登入 (SSO)
 
@@ -55,6 +55,8 @@ ms.locfileid: "86223324"
 
 1. 將應用程式設定為使用 Azure AD 進行 SAML 型 SSO 的程序，會因為應用程式不同而有所差異。 您會看到 GitHub 的指引連結。 若要尋找其他應用程式的指南，請參閱[整合 SaaS 應用程式與 Azure Active Directory 的教學課程](https://docs.microsoft.com/azure/active-directory/saas-apps/)。
 1. 請遵循指南來設定應用程式的 SSO。 許多應用程式在 SSO 功能上都有特定訂用帳戶需求。 例如，GitHub 需要企業訂用帳戶。
+    > [!TIP]
+    > 若要深入了解 SAML 設定選項，請參閱[設定 SAML 型單一登入](configure-saml-single-sign-on.md)。
 
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="顯示 GitHub 定價頁面中企業訂用帳戶單一登入選項的螢幕擷取畫面。":::
 

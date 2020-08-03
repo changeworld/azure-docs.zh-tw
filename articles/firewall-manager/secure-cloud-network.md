@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 07/17/2020
 ms.author: victorh
-ms.openlocfilehash: c44daa67b4029c73c57ca82d72ee0a9759dd4c2d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563656"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084699"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>教學課程：使用 Azure 防火牆管理員來保護您的虛擬中樞
 
@@ -27,41 +27,41 @@ ms.locfileid: "85563656"
 > [!div class="checklist"]
 > * 建立輪輻虛擬網路
 > * 建立安全虛擬中樞
-> * 連接中樞和輪輻 VNet
-> * 建立防火牆原則並保護您的中樞
+> * 連線中樞與輪輻虛擬網路
 > * 將流量路由傳送到您的中樞
+> * 部署伺服器
+> * 建立防火牆原則並保護您的中樞
 > * 測試防火牆
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>建立中樞和輪輻架構
 
 首先，建立可放置伺服器的輪輻虛擬網路。
 
-### <a name="create-a-spoke-virtual-network-and-subnets"></a>建立輪輻虛擬網路和子網路
+### <a name="create-two-spoke-virtual-networks-and-subnets"></a>建立兩個輪輻虛擬網路和子網路
+
+兩個虛擬網路都各自有工作負載伺服器，而且會受到防火牆保護。
 
 1. 從 Azure 入口網站首頁，選取 [建立資源]。
 2. 在 [網路] 底下，選取 [虛擬網路]。
 2. 在 [訂用帳戶] 中，選取您的訂用帳戶。
-1. 針對 [資源群組]，選取 [新建]，並輸入 **FW-Manager** 作為名稱，然後選取 [確定]。
+1. 針對 [資源群組]，選取 [新建]，並輸入 **fw-manager** 作為名稱，然後選取 [確定]。
 2. 針對 [名稱]，輸入 **Spoke-01**。
 3. 針對 [區域]，選取 [(美國) 美國東部]。
 4. 完成時，選取 [下一步:IP 位址]。
-1. 針對 [位址空間]，請接受預設的 **10.0.0.0/16**。
-3. 在 [子網路名稱] 下，選取 [預設]。
-4. 將子網路名稱變更為 **Workload-SN**。
-5. 針對 [子網路位址範圍]，輸入 **10.0.1.0/24**。
-6. 選取 [儲存]。
-
-接下來，建立跳躍伺服器的子網路。
-
-1. 選取 [新增子網路]。
-4. 針對 [子網路名稱]，輸入 **Jump-SN**。
-5. 針對 [子網路位址範圍]，輸入 **10.0.2.0/24**。
+1. 在 [位址空間] 中，輸入 **10.1.0.0/16**。
+3. 選取 [新增子網路]。
+4. 輸入 **Workload-01-SN**。
+5. 針對 [子網路位址範圍]，輸入 **10.1.1.0/24**。
 6. 選取 [新增]。
-
-現在，建立虛擬網路。
-
-1. 選取 [檢閱 + 建立]。
+1. 選取 [檢閱 + 建立]  。
 2. 選取 [建立]。
+
+重複此程序，建立另一部相似的虛擬機器：
+
+名稱：**Spoke-02**<br>
+位址空間：**10.2.0.0/16**<br>
+子網路名稱：**Workload-02-SN**<br>
+子網路位址範圍︰**10.2.1.0/24**
 
 ### <a name="create-the-secured-virtual-hub"></a>建立安全虛擬中樞
 
@@ -71,29 +71,96 @@ ms.locfileid: "85563656"
 2. 在 [搜尋] 方塊中，輸入**防火牆管理員**，然後選取 [防火牆管理員]。
 3. 在 [防火牆管理員] 頁面上，選取 [檢視安全虛擬中樞]。
 4. 在 [防火牆管理員 |安全虛擬中樞] 頁面上，選取 [建立新的安全虛擬中樞]。
-5. 在 [資源群組] 中，選取 **FW-Manager**。
+5. 在 [資源群組] 中，選取 **fw-manager**。
 7. 在 [區域] 中，選取 [美國東部]。
 1. 針對 [安全虛擬中樞名稱]，輸入 **Hub-01**。
-2. 針對 [中樞位址空間]，輸入 **10.1.0.0/16**。
+2. 針對 [中樞位址空間]，輸入 **10.0.0.0/16**。
 3. 針對新的 vWAN 名稱，輸入 **Vwan-01**。
 4. 將 [包含 VPN 閘道以啟用信任的安全性合作夥伴] 核取方塊維持為未選取狀態。
-5. 選取 [下一步: Azure 防火牆]。
+5. 完成時，選取 [下一步:Azure 防火牆]。
 6. 接受預設的 [Azure 防火牆] [已啟用] 設定，然後選取 [下一步: **信任的安全性合作夥伴]** 。
 7. 接受預設的 [信任的安全性合作夥伴] [已停用] 設定，然後選取 [下一步: 檢閱 + 建立]。
-8. 選取 [建立]。 部署需要大約 30 分鐘。
+8. 選取 [建立]  。 部署需要大約 30 分鐘。
 
-### <a name="connect-the-hub-and-spoke-vnets"></a>連接中樞和輪輻 VNet
+現在您可以取得防火牆公用 IP 位址。
 
-現在，您可以對等互連中樞和輪輻 VNet。
+1. 部署完成之後，請在 Azure 入口網站選取 [所有服務]。
+1. 輸入**防火牆管理員**，然後選取 [防火牆管理員]。
+2. 選取 [受保護的虛擬中樞]。
+3. 選取 [hub-01]。
+7. 選取 [公用 IP 設定]。
+8. 記下公用 IP 位址以便稍後使用。
 
-1. 選取 **FW-Manager** 資源群組，然後選取 **Vwan-01** 虛擬 WAN。
+### <a name="connect-the-hub-and-spoke-virtual-networks"></a>連線中樞與輪輻虛擬網路
+
+現在您可以將中樞與輪輻虛擬網路對等互連。
+
+1. 選取 **fw-manager** 資源群組，然後選取 **Vwan-01** 虛擬 WAN。
 2. 在 [連線] 下，選取 [虛擬網路連線]。
 3. 選取 [新增連線]。
-4. 針對 [連線名稱]，輸入 **hub-spoke**。
+4. 針對 [連線名稱]，輸入 **hub-spoke-01**。
 5. 針對 [中樞]，選取 **Hub-01**。
-6. 在 [資源群組] 中，選取 **FW-Manager**。
+6. 在 [資源群組] 中，選取 **fw-manager**。
 7. 針對 [虛擬網路]，選取 **Spoke-01**。
 8. 選取 [建立]。
+
+重複以連線 **Spoke-02** 虛擬網路：連線名稱 - **hub-spoke-02**
+
+### <a name="configure-the-hub-and-spoke-routing"></a>設定中樞和輪輻路由
+
+從 Azure 入口網站開啟 Cloud Shell，然後執行下列 Azure PowerShell 來設定所需的中樞和輪輻路由。
+
+```azurepowershell
+$noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
+                  -HubName hub-01 -Name noneRouteTable
+$vnetConns = Get-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
+             -ParentResourceName hub-01
+
+$vnetConn = $vnetConns[0]
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
+Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
+   -ParentResourceName hub-01 -Name $vnetConn.Name `
+   -RoutingConfiguration $vnetConn.RoutingConfiguration
+
+$vnetConn = $vnetConns[1]
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Ids = @($noneRouteTable)
+$vnetConn.RoutingConfiguration.PropagatedRouteTables.Labels = @("none")
+Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
+   -ParentResourceName hub-01 -Name $vnetConn.Name -RoutingConfiguration $vnetConn.RoutingConfiguration
+```
+
+## <a name="deploy-the-servers"></a>部署伺服器
+
+1. 在 Azure 入口網站中，選取 [建立資源]。
+2. 選取 [熱門] 清單中的 [Windows Server 2016 Datacenter]。
+3. 依虛擬機器輸入這些值：
+
+   |設定  |值  |
+   |---------|---------|
+   |資源群組     |**fw-manager**|
+   |虛擬機器名稱     |**Srv-workload-01**|
+   |區域     |**(美國) 美國東部**|
+   |系統管理員使用者名稱     |輸入使用者名稱|
+   |密碼     |輸入密碼|
+
+4. 在 [輸入連接埠規則] 下，針對 [公用輸入連接埠] 選取 [無]。
+6. 接受其他預設值，然後選取 [下一步：磁碟]。
+7. 接受磁碟預設值，然後選取 [下一步：網路]。
+8. 針對虛擬網路選取 **Spoke-01**，然後針對子網路選取 **Workload-01-SN**。
+9. 在 [公用 IP] 中，選取 [無]。
+11. 接受其他預設值，然後選取 [下一步：管理]。
+12. 選取 [關閉] 來停用開機診斷。 接受其他預設值，然後選取 [檢閱 + 建立]。
+13. 檢閱摘要頁面上的設定，然後選取 [建立]。
+
+使用下表中的資訊來設定另一個名為 **Srv-Workload-02** 的虛擬機器。 其餘的組態與 **Srv-workload-01** 虛擬機器相同。
+
+|設定  |值  |
+|---------|---------|
+|虛擬網路|**Spoke-02**|
+|子網路|**Workload-02-SN**|
+
+部署伺服器後，請選取伺服器資源，並記下**網路**中每部伺服器的私人 IP 位址。
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>建立防火牆原則並保護您的中樞
 
@@ -102,25 +169,58 @@ ms.locfileid: "85563656"
 1. 從 [防火牆管理員] 中，選取 [檢視 Azure 防火牆原則]。
 2. 選取 [建立 Azure 防火牆原則]。
 3. 在 [原則詳細資料] 下，針對 [名稱] 輸入 **Policy-01**，並針對 [區域] 選取 [美國東部]。
-4. 選取 [下一步: 規則]。
-5. 在 [規則] 索引標籤上，選取 [新增規則集合]。
-6. 在 [新增規則集合] 頁面上，為 [名稱] 輸入 **RC-01**。
-7. 針對 [規則集合類型]，選取 [應用程式]。
-8. 在 [優先順序] 中，輸入 **100**。
-9. 確定 [規則集合動作] 為 [允許]。
-10. 針對規則的 [名稱]，輸入 **Allow-msft**。
-11. 針對 [來源類型]，選取 [IP 位址]。
-12. 針對 [來源]，輸入 **\*** 。
-13. 針對 [通訊協定]，輸入 **http,https**。
-14. 確定**目的地類型**為 **FQDN**。
-15. 針對 [目的地]，輸入 **\*.microsoft.com**。
-16. 選取 [新增]。
-17. 選取 [下一步：威脅情報]。
-18. 完成時，選取 [下一步:中樞]。
-19. 在 [中樞] 索引標籤上，選取 [建立虛擬中樞的關聯]。
-20. 選取 **Hub-01**，然後選取 [新增]。
-21. 選取 [檢閱 + 建立]。
-22. 選取 [建立]。
+4. 完成時，選取 下一步:**DNS 設定 (預覽)** 。
+1. 完成時，選取 下一步:**規則**。
+2. 在 [規則] 索引標籤上，選取 [新增規則集合]。
+3. 在 [新增規則集合] 頁面上，為 [名稱] 輸入 **App-RC-01**。
+4. 針對 [規則集合類型]，選取 [應用程式]。
+5. 在 [優先順序] 中，輸入 **100**。
+6. 確定 [規則集合動作] 為 [允許]。
+7. 針對規則的 [名稱]，輸入 **Allow-msft**。
+8. 針對 [來源類型]，選取 [IP 位址]。
+9. 針對 [來源]，輸入 **\*** 。
+10. 針對 [通訊協定]，輸入 **http,https**。
+11. 確定**目的地類型**為 **FQDN**。
+12. 針對 [目的地]，輸入 **\*.microsoft.com**。
+13. 選取 [新增]  。
+
+新增 DNAT 規則，以便將遠端桌面連線至 **Srv-Workload-01** 虛擬機器。
+
+1. 選取 [新增規則集合]。
+2. 針對 [名稱] 輸入 **DNAT-rdp**。
+3. 針對 [規則集合類型]，選取 [DNAT]。
+4. 在 [優先順序] 中，輸入 **100**。
+5. 針對規則的 [名稱]，輸入 **Allow-rdp**。
+6. 針對 [來源類型]，選取 [IP 位址]。
+7. 針對 [來源]，輸入 **\*** 。
+8. 在 [通訊協定] 中，選取 [TCP]。
+9. 在 [目的地連接埠] 中，輸入 **3389**。
+10. 針對 [目的地類型]，選取 [IP 位址]。
+11. 在 [目的地] 中，輸入先前記下的防火牆公用 IP 位址。
+12. 在 [轉譯的位址] 中，輸入先前記下的 **Srv-Workload-01** 私人 IP 位址。
+13. 在 [轉譯的連接埠] 中，輸入 **3389**。
+14. 選取 [新增]。
+
+新增網路規則，以便將遠端桌面從 **Srv-Workload-01** 連線到 **Srv-Workload-02**。
+
+1. 選取 [新增規則集合]。
+2. 在 [名稱] 中，輸入 **vnet-rdp**。
+3. 針對 [規則集合類型]，選取 [網路]。
+4. 在 [優先順序] 中，輸入 **100**。
+5. 針對規則的 [名稱]，輸入 **Allow-vnet**。
+6. 針對 [來源類型]，選取 [IP 位址]。
+7. 針對 [來源]，輸入 **\*** 。
+8. 在 [通訊協定] 中，選取 [TCP]。
+9. 在 [目的地連接埠] 中，輸入 **3389**。
+9. 針對 [目的地類型]，選取 [IP 位址]。
+10. 在 [目的地] 中，輸入先前記下的 **Srv-Workload-02** 私人 IP 位址。
+11. 選取 [新增]。
+1. 完成時，選取 [下一步:威脅情報]。
+2. 完成時，選取 [下一步:中樞]。
+3. 在 [中樞] 索引標籤上，選取 [建立虛擬中樞的關聯]。
+4. 選取 **Hub-01**，然後選取 [新增]。
+5. 選取 [檢閱 + 建立]。
+6. 選取 [建立]。
 
 這可能需要大約 5 分鐘或更久的時間才能完成。
 
@@ -139,67 +239,13 @@ ms.locfileid: "85563656"
 
 ## <a name="test-your-firewall"></a>測試您的防火牆
 
-若要測試您的防火牆規則，您將必須部署幾部伺服器。 您將會在 Workload-SN 子網路中部署 Workload-Srv 以測試防火牆規則，並部署 Jump-Srv，讓您可以使用遠端桌面從網際網路連線，然後連線至 Workload-Srv。
+若要測試防火牆規則，請使用防火牆公用 IP 位址與遠端桌面連線，這會將 NAT 設為 **Srv-Workload-01**。 在這裡，您將使用瀏覽器來測試應用程式規則，並將遠端桌面連線至 **Srv-Workload-02** 以測試網路規則。
 
-### <a name="deploy-the-servers"></a>部署伺服器
-
-1. 在 Azure 入口網站中，選取 [建立資源]。
-2. 選取 [熱門] 清單中的 [Windows Server 2016 Datacenter]。
-3. 依虛擬機器輸入這些值：
-
-   |設定  |值  |
-   |---------|---------|
-   |資源群組     |**FW-Manager**|
-   |虛擬機器名稱     |**Jump-Srv**|
-   |區域     |**(美國) 美國東部**|
-   |系統管理員使用者名稱     |輸入使用者名稱|
-   |密碼     |輸入密碼|
-
-4. 在 [輸入連接埠規則] 底下，針對 [公用輸入連接埠] 選取 [允許選取的連接埠]。
-5. 在 [選取輸入連接埠] 中，選取 [RDP (3389)]。
-6. 接受其他預設值，然後選取 [下一步：磁碟]。
-7. 接受磁碟預設值，然後選取 [下一步：網路]。
-8. 確定您已為虛擬網路選取 **Spoke-01** 作為，而且子網路是 **Jump-SN**。
-9. 針對 [公用 IP]，接受預設新的公用 IP 位址名稱 (Jump-Srv-ip)。
-11. 接受其他預設值，然後選取 [下一步：管理]。
-12. 選取 [關閉] 來停用開機診斷。 接受其他預設值，然後選取 [檢閱 + 建立]。
-13. 檢閱摘要頁面上的設定，然後選取 [建立]。
-
-使用下表中的資訊設定另一部名為 **Workload-Srv** 的虛擬機器。 其餘的組態與 Srv-Jump 虛擬機器相同。
-
-|設定  |值  |
-|---------|---------|
-|子網路|**Workload-SN**|
-|公用 IP|**None**|
-|公用輸入連接埠|**None**|
-
-### <a name="add-a-route-table-and-default-route"></a>新增路由表與預設路由
-
-若要允許透過網際網路連線到 Jump-Srv，您必須建立路由表，以及從 **Jump-SN** 子網路至網際網路的預設閘道路由。
-
-1. 在 Azure 入口網站中，選取 [建立資源]。
-2. 在 [搜尋] 方塊中，輸入**路由表**，然後選取 [路由表]。
-3. 選取 [建立]。
-4. 輸入 **RT-01** 作為 [名稱]。
-5. 選取您的訂用帳戶 **FW-Manager** 作為資源群組，並選取 (美國) 美國東部 作為區域。
-6. 選取 [建立]。
-7. 當部署完成時，請選取 **RT-01** 路由表。
-8. 選取 [路由]，然後選取 [確定]。
-9. 針對 [路由名稱]，輸入 **jump-to-inet**。
-10. 針對 [位址首碼]，輸入 **0.0.0.0/0**。
-11. 針對 [下一個躍點類型]，選取 [網際網路]。
-12. 選取 [確定]。
-13. 當部署完成時，請選取 [子網路]，然後選取 [建立關聯]。
-14. 針對 [虛擬網路]，選取 **Spoke-01**。
-15. 針對 [子網路]，選取 **Jump-SN**。
-16. 選取 [確定]。
-
-### <a name="test-the-rules"></a>測試規則
+### <a name="test-the-application-rule"></a>測試應用程式規則
 
 現在，測試防火牆規則，以確認其運作符合預期。
 
-1. 從 Azure 入口網站中，檢閱 **Workload-Srv** 虛擬機器的網路設定，並記下私人 IP 位址。
-2. 將遠端桌面連線到 **Jump-Srv** 虛擬機器，然後登入。 登入之後，開啟對 **Workload-Srv** 私人 IP 位址的遠端桌面連線。
+1. 將遠端桌面連線至防火牆公用 IP 位址，接著登入。
 
 3. 開啟 Internet Explorer 並瀏覽至 https://www.microsoft.com 。
 4. 在 Internet Explorer 安全性警示上，選取 [確認] > [關閉]。
@@ -210,11 +256,20 @@ ms.locfileid: "85563656"
 
    您應該會遭到防火牆封鎖。
 
-因此，現在您已確認防火牆規則正在運作：
+因此，現在您已確認防火牆應用程式規則正在運作：
 
 * 您可以瀏覽至允許 FQDN 的防火牆規則，但不可瀏覽至任何其他的防火牆規則。
 
+### <a name="test-the-network-rule"></a>測試網路規則
 
+現在測試網路規則。
+
+- 開啟 **Srv-Workload-02** 私人 IP 位址的遠端桌面。
+
+   遠端桌面應連線到 **Srv-Workload-02**。
+
+因此，現在您已確認防火牆網路規則正在運作：
+* 您可以將遠端桌面連線到位於另一個虛擬網路中的伺服器。
 
 ## <a name="next-steps"></a>後續步驟
 

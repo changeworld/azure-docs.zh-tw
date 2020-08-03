@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 722f2f5b86bd67df7c7250cdbfc44ebcc048c773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995899"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090785"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio 和 .NET Core
 
@@ -23,7 +23,7 @@ ms.locfileid: "83995899"
 - 獨立開發兩種不同的服務，並且使用 Kubernetes 的 DNS 服務探索來呼叫另一個服務。
 - 在小組環境中有效率地開發及測試您的程式碼。
 
-> [!Note]
+> [!NOTE]
 > **如果作業出現停滯的情況**，請參閱[疑難排解](troubleshooting.md)一節。
 
 ## <a name="install-the-azure-cli"></a>安裝 Azure CLI
@@ -36,7 +36,7 @@ Azure 開發人員空間需要基本的本機電腦設定。 大部分開發人�
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > 如果您沒有 Azure 訂用帳戶，您可以建立[免費帳戶](https://azure.microsoft.com/free)。
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>如果您有多個 Azure 訂用帳戶...
@@ -91,31 +91,31 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 
 在 Visual Studio 中，建立新的專案。 目前，此專案必須是 **ASP.NET Core Web 應用程式**。 將專案命名為 '**webfrontend**'。
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
+![「新增專案」對話方塊會顯示在位置 C:\Source\Repos 中建立名為 "webfrontend" 的 C sharp Web 應用程式 「解決方案」下拉式清單會顯示「建立新的方案」，並已核取「建立解決方案的目錄」核取方塊。](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
 選取 [Web 應用程式 (Model-View-Controller)] 範本，並確定您的目標是對話方塊頂端的兩個下拉式清單中的 **.NET Core** 和 **ASP.NET Core 2.0**。 按一下 [確定]  以建立專案。
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
+![在「新增 ASP .NET Core Web 應用程式」對話方塊中，兩個下拉式清單方塊會顯示「.NET Core」和「ASP .NET Core 2.0」。 在清單方塊下方的專案範本按鈕陣列中，已選取「Web 應用程式 (Model-View-Controller)」範本。 未勾選「啟用 Docker 支援」核取方塊。](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>針對 AKS 叢集啟用 Dev Spaces
 
 使用您剛建立的專案，然後從啟動設定下拉式清單中選取 [Azure Dev Spaces]，如下所示。
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![下拉式清單方塊位於標示為 Microsoft Visual Studio Int Preview 的視窗頂端。 已選取「Azure Dev Spaces」。](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 在接下來顯示的對話方塊中，請確定您以適當的帳戶登入，然後選取現有的 Kubernetes 叢集。
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
+![Azure Dev Spaces 對話方塊包含這些方塊：「訂用帳戶」、「Azure Kubernetes 服務叢集」和「空間」。](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
 
 現在讓 [空間] 下拉式清單預設為 `default`。 稍後，您將深入了解這個選項。 請核取 [可公開存取] 核取方塊，以便透過公用端點存取 Web 應用程式。 這不是必要的設定，但是對於稍後在本逐步解說中示範一些概念很有幫助。 請別擔心，在任一情況下，您都能夠使用 Visual Studio 進行您的網站偵錯。
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
+![已核取「可公開存取」核取方塊。](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
 按一下 [確定] 以選取或建立叢集。
 
 如果您選擇尚無法與 Azure 開發人員空間搭配使用的叢集，您會看到訊息詢問您是否要加以設定。
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![訊息為：「新增 Azure Dev Spaces 資源？ 選取的 AKS 叢集必須設定為使用 Azure Dev Spaces 之後才能使用。 要進行此作業嗎？」 有「確定」和「取消」按鈕。](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 選擇 [確定]。
 
@@ -124,9 +124,9 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 
  將啟動背景工作，以完成這項作業。 這需要幾分鐘才能完成。 若要查看它是否仍在建立中，請將指標停留在狀態列左下角的 [背景工作] 圖示上，如下圖所示。
 
-![](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
+![滑鼠停留時顯示的快顯視窗會顯示「在資源群組中建立 '我的 AKS'」。](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
 
-> [!Note]
+> [!NOTE]
 > 在成功建立開發人員空間前，您無法進行應用程式偵錯。
 
 ### <a name="look-at-the-files-added-to-project"></a>查看已新增至專案的檔案
@@ -138,7 +138,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 
 最後，您會看見名為 `azds.yaml` 的檔案，其中包含開發人員空間所需的開發階段組態。
 
-![](media/get-started-netcore-visualstudio/ProjectFiles.png)
+![在 [方案總管] 視窗中，"webfrontend" 解決方案中會出現 "azds.yaml" 檔案。](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>在 Kubernetes 中進行容器偵錯
 在成功建立開發人員空間後，您即可進行應用程式偵錯。 在程式碼中設定中斷點，例如在 `Message` 變數設定所在 `HomeController.cs` 檔案中的第 20 行上。 按一下 **F5** 開始偵錯。 

@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248606"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386567"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？ 
+# <a name="what-is-windows-virtual-desktop"></a>什麼是 Windows 虛擬桌面？
 
 Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服務。
 
@@ -78,7 +78,7 @@ Windows 虛擬桌面是可以在雲端執行的桌面與應用程式虛擬化服
   * Azure AD Connect (適用於混合式組織)
   * Azure AD Domain Services (適用於混合式雲端組織)
 * Azure 訂用帳戶，含有包含或已連線到 Windows Server Active Directory 的虛擬網路
-  
+
 您為 Windows 虛擬桌面建立的 Azure 虛擬機器必須：
 
 * [已加入標準網域](../active-directory-domain-services/active-directory-ds-comparison.md)或[已加入混合式 AD](../active-directory/devices/hybrid-azuread-join-plan.md)。 虛擬機器無法加入 Azure AD。
@@ -105,7 +105,7 @@ Windows 虛擬桌面包含您交付給使用者的 Windows 桌面與應用程式
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
-* [Android (預覽)](connect-android.md)
+* [Android](connect-android.md)
 
 > [!IMPORTANT]
 > Windows 虛擬桌面不支援 RemoteApp 和桌面連線 (RADC) 用戶端或遠端桌面連線 (MSTSC) 用戶端。
@@ -128,7 +128,7 @@ Windows 虛擬桌面支援下列 x64 作業系統映像：
 
 Windows 虛擬桌面不支援 x86 (32 位元)、Windows 10 Enterprise N 或 Windows 10 Enterprise KN 作業系統映像。 由於磁區大小的限制，Windows 7 也不支援裝載於受控 Azure 儲存體上的任何 VHD 或 VHDX 型設定檔解決方案。
 
-可用的自動化和部署選項取決於您所選的作業系統和版本，如下表所示： 
+可用的自動化和部署選項取決於您所選的作業系統和版本，如下表所示：
 
 |作業系統|Azure 映像庫|手動 VM 部署|Azure Resource Manager 範本整合|在 Azure Marketplace 上佈建主機集區|
 |--------------------------------------|:------:|:------:|:------:|:------:|
@@ -143,9 +143,9 @@ Windows 虛擬桌面不支援 x86 (32 位元)、Windows 10 Enterprise N 或 Wind
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您使用 Windows 虛擬桌面 2019 年秋季版，您可以從[在 Windows 虛擬桌面中建立租用戶](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)的教學課程開始著手。
+如果您使用 Windows 虛擬桌面 (傳統版)，可以從[在 Windows 虛擬桌面中建立租用戶](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)的教學課程開始著手。
 
-如果您使用的是 Windows 虛擬桌面 2020 年春季版，您必須改為建立主機集區。 請前往下列教學課程以開始著手。
+如果您使用的是與 Azure Resource Manager 整合的 Windows 虛擬桌面，必須改為建立主機集區。 請前往下列教學課程以開始著手。
 
 > [!div class="nextstepaction"]
 > [透過 Azure 入口網站建立主機集區](create-host-pools-azure-marketplace.md)

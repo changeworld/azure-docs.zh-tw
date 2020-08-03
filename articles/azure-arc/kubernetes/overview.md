@@ -9,12 +9,12 @@ ms.author: mlearned
 description: 本文提供已啟用 Azure Arc 的 Kubernetes 概觀。
 keywords: Kubernetes, Arc, Azure, 容器
 ms.custom: references_regions
-ms.openlocfilehash: 3960a0f0b6866a0a5d3476e841d29c6e5a89a238
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309929"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050050"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>什麼是已啟用 Azure Arc 的 Kubernetes 預覽？
 
@@ -24,9 +24,8 @@ ms.locfileid: "84309929"
 
 已啟用 Azure Arc 的 Kubernetes 支援業界標準 SSL 來保護傳輸中的資料。 此外，資料會以待用加密方式儲存在 Azure Cosmos DB 資料庫中，以確保資料機密性。
  
- > [!NOTE]
-> 已啟用 Azure Arc 的 Kubernetes 處於預覽階段。 不建議將其用於生產工作負載。 
-
+> [!NOTE]
+> 已啟用 Azure Arc 的 Kubernetes 處於預覽狀態。 不建議將其用於生產工作負載。
 
 ## <a name="supported-scenarios"></a>支援的案例 
 
@@ -40,7 +39,6 @@ ms.locfileid: "84309929"
 
 * 使用適用於 Kubernetes 的 Azure 原則來套用原則。 
 
- 
 ## <a name="supported-regions"></a>支援區域 
 
 目前支援下列區域中已啟用 Azure Arc 的 Kubernetes： 

@@ -3,20 +3,20 @@ title: Azure PowerShell 指令碼範例 - 設定使用原生 Azure 憑證驗證�
 description: 設定使用原生 Azure 憑證驗證與自我簽署憑證的點對站 VPN。 本文使用 PowerShell。
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/10/2020
 ms.author: alzam
-ms.openlocfilehash: 6a82aedb20adb404cad6a51644b13a59be85ac2e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a76cad8cb89e016d231566089ce30a337ea91d8f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75867212"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086960"
 ---
-# <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>使用 PowerShell 建立 VPN 閘道並新增點對站設定
+# <a name="configure-a-point-to-site-vpn-using-native-azure-certificate-authentication"></a>使用原生 Azure 憑證驗證設定的點對站 VPN
 
 此指令碼會建立路由式 VPN 閘道，並新增使用原生 Azure 憑證驗證的點對站設定
 
@@ -121,4 +121,4 @@ Remove-AzResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。

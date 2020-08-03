@@ -3,17 +3,17 @@ title: 快速入門 - 將模擬裝置新增至 Azure IoT Central
 description: 本快速入門說明如何建立裝置範本，並將模擬裝置新增至 IoT Central 應用程式。
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 07/07/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 25e1742612c6fc8c326f2918a4d69c55a9888c97
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 26aba84fcc38fddf43c04550b1c3d1ce2d70b21f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81001127"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001941"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>快速入門：將模擬裝置新增至 IoT Central 應用程式
 
@@ -64,7 +64,7 @@ ms.locfileid: "81001127"
 
 ### <a name="add-cloud-properties"></a>新增雲端屬性
 
-裝置範本可包含雲端屬性。 雲端屬性僅存在於 IoT Central 應用程式中，且一律不會傳送至或接收自裝置。
+裝置範本可包含雲端屬性。 雲端屬性僅存在於 IoT Central 應用程式中，且一律不會傳送至或接收自裝置。 若要新增雲端屬性：
 
 1. 依序選取 [雲端屬性]  和 [+ 新增雲端屬性]  。 請使用下表中的資訊，將兩個雲端屬性新增至您的裝置範本：
 
@@ -134,17 +134,19 @@ ms.locfileid: "81001127"
 
 現在，您可以與建置者使用模擬資料為裝置範本建立的檢視進行互動：
 
-1. 在 [裝置]  頁面上選取您的模擬裝置。
+1. 在 [裝置] 頁面上選取您的模擬裝置
 
-1. [概觀]  檢視會顯示模擬遙測的繪圖：
+    * [概觀]  檢視會顯示模擬遙測的繪圖：
 
-    ![概觀檢視](./media/quick-create-simulated-device/simulated-telemetry.png)
+        ![概觀檢視](./media/quick-create-simulated-device/simulated-telemetry.png)
 
-1. [關於]  會顯示屬性值，包括您新增到檢視的雲端屬性。
+    * [關於]  會顯示屬性值，包括您新增到檢視的雲端屬性。
 
-1. [命令]  檢視可讓您執行命令，例如在裝置上**閃爍**。
+    * [命令]  檢視可讓您執行命令，例如在裝置上**閃爍**。
 
-1. [管理裝置]  檢視是您為操作員所建立的表單，可用來管理裝置。
+    * [管理裝置]  檢視是您為操作員所建立的表單，可用來管理裝置。
+
+    * [未經處理資料] 檢視可讓您檢視裝置所傳送的原始遙測和屬性值。 此檢視有助於偵錯裝置。
 
 ## <a name="use-a-simulated-device-to-improve-views"></a>使用模擬裝置來改善檢視
 

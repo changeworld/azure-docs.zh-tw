@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d670ee0cb2396858d908ac13f70819efd57d7f63
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: ce3f775b7a72239fba7eb7c1538ec4f0831f1c74
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391820"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124545"
 ---
 # <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>使用範例用戶端應用程式探索 Azure Digital Twins
 
-本教學課程介紹實作命令列用戶端應用程式的範例應用程式，可用於與 Azure Digital Twins 執行個體進行互動。 該用戶端應用程式與[教學課程：撰寫用戶端應用程式](tutorial-code.md)中所介紹的用戶端應用程式相似。
+本教學課程介紹實作命令列用戶端應用程式的範例應用程式，可用於與 Azure Digital Twins 執行個體進行互動。 該用戶端應用程式與[*教學課程：撰寫用戶端應用程式的程式碼*](tutorial-code.md)中撰寫的用戶端應用程式類似。
 
 您可以使用此範例來執行基本的 Azure Digital Twins 動作，例如上傳模型、建立與修改分身，以及建立關聯性。 您也可以查看範例的程式碼以了解 Azure Digital Twins API，並依您想要的方式修改範例專案來練習實作命令。
 
@@ -78,7 +78,7 @@ ms.locfileid: "85391820"
 > 若您想要嘗試建立自己的模型，您可以將 *Room* 模型的程式碼貼到您在 *AdtSampleApp\SampleClientApp\Models* 資料夾中使用 *.json* 副檔名儲存的新檔案。 然後，試著新增屬性和關聯性，以代表您想要的項目。 您也可以查看此資料夾中的其他範例模型來獲得靈感。
 
 > [!TIP] 
-> 有一種適用各種語言的 [DTDL 驗證程式範例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)，可讓您用於檢查模型文件，以確定 DTDL 有效。 其建置基礎為 DTDL 剖析器程式庫，詳細資訊請參閱[操作指南：剖析與驗證模型](how-to-use-parser.md)。
+> 有一種適用各種語言的 [DTDL 驗證程式範例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)，可讓您用於檢查模型文件，以確定 DTDL 有效。 其建置基礎為 DTDL 剖析器程式庫，詳細資訊請參閱[操作說明：剖析與驗證模型](how-to-use-parser.md)。
 
 ### <a name="get-started-with-the-command-line-app"></a>開始使用命令列應用程式
 
@@ -129,7 +129,7 @@ CreateModels Room
 ```
 
 因為模型無法覆寫，這現在會傳回服務錯誤。
-如需如何刪除現有模型的詳細資訊，請參閱[操作說明：管理自訂模型](how-to-manage-model.md)。
+如需如何刪除現有模型的詳細資訊，請參閱[*操作說明：管理自訂模型*](how-to-manage-model.md)。
 ```cmd/sh
 Response 409: Service request failed.
 Status: 409 (Conflict)
@@ -285,7 +285,7 @@ Azure Digital Twins 的主要功能是能夠輕鬆且有效率地[查詢](concep
 
 ## <a name="clean-up-resources"></a>清除資源
 
-本教學課程中的專案形成下一個教學課程：[教學課程：連線端對端解決方案](tutorial-end-to-end.md)的基礎。 若您希望繼續進行下一個教學課程，您可以保留在此處設定的資源，以繼續使用此 Azure Digital Twins 執行個體以及已設定的範例應用程式。
+本教學課程中的專案形成下一個教學課程：[*教學課程：連線端對端解決方案*](tutorial-end-to-end.md)。 若您希望繼續進行下一個教學課程，您可以保留在此處設定的資源，以繼續使用此 Azure Digital Twins 執行個體以及已設定的範例應用程式。
 * 在此情況下，您可以使用範例應用程式的 `DeleteAllTwins` 與 `DeleteAllModels` 命令來分別清除您執行個體中的分身及模型。 如此一來，您就能以全新狀態進行下一個教學課程。
 
 若您不再需要於本教學課程中建立的資源時，請遵循這些步驟將其刪除。
@@ -316,10 +316,10 @@ az ad app delete --id <your-application-ID>
 請繼續下一個教學課程以搭配其他 Azure 服務使用範例命令列應用程式，來完成資料驅動的端對端案例：
 
 > [!div class="nextstepaction"]
-> [教學課程：連線端對端解決方案](tutorial-end-to-end.md)
+> [*教學課程：連線端對端解決方案*](tutorial-end-to-end.md)
 
 或者，開始查看概念文件，以深入了解您在本教學課程中使用過的元素：
 * [概念：自訂模型](concepts-models.md)
 
 您也可以開始閱讀新的操作指南文章，深入了解本教學課程中的流程：
-* [操作說明：使用 Azure Digital Twins CLI](how-to-use-cli.md)
+* [操作說明：*使用 Azure Digital Twins CLI*](how-to-use-cli.md)

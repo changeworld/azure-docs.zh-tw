@@ -1,6 +1,6 @@
 ---
 title: 讓兩個虛擬網路對等互連 - Azure PowerShell 指令碼範例
-description: Azure PowerShell 指令碼範例 - 讓兩個虛擬網路對等互連
+description: 在相同區域中建立和連線兩個虛擬網路。 針對兩個對等虛擬網路使用 Azure 指令碼，以透過 Azure 網路與網路連線。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 4061997aa2efbae250b30fc58cef06b1249c2b8f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7cbcae51228e5bf722f3ea802a322483aed6c225
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74091292"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286116"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>讓兩個虛擬網路對等互連的指令碼範例
 
@@ -54,6 +54,6 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 可以在[虛擬網路 PowerShell 範例](../powershell-samples.md)中找到其他的虛擬網路 PowerShell 指令碼範例。

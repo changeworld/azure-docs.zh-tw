@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 執行 VMware VM 的代理程式�
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: ca06dc9d5de9853915e2aaa0d86c1a444dab415a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 707a74d0e993625d32c60f7120bf69055dc9e885
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119254"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290202"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>將 VMware VM 遷移至 Azure (代理程式型)
 
@@ -177,7 +177,7 @@ Azure Migrate 伺服器移轉需要 VMware 伺服器的存取權，才能探索�
 
     ![探索 VM](./media/tutorial-migrate-vmware-agent/migrate-discover.png)
 
-3. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [是，使用 VMWare vSphere Hypervisor]。
+3. 在 [探索機器] > [機器是否已虛擬化?] 中，按一下 [是，使用 VMware vSphere Hypervisor]。
 4. 在 [您要如何遷移？] 中，選取 [使用代理程式型複寫]。
 5. 在 [目標區域] 中，選取您要將機器遷移到的 Azure 區域。
 6. 選取 [確認移轉的目標區域為 region-name]。
@@ -195,7 +195,7 @@ Azure Migrate 伺服器移轉需要 VMware 伺服器的存取權，才能探索�
 
 下載 OVF 範本之後，您可以將其匯入 VMware，以便在執行 Windows Server 2016 的 VMware VM 上建立複寫應用程式。
 
-1. 透過 VMWare vSphere 用戶端，登入 VMware vCenter 伺服器或 vSphere ESXi 主機。
+1. 透過 VMware vSphere 用戶端，登入 VMware vCenter 伺服器或 vSphere ESXi 主機。
 2. 在 [檔案] 功能表上，選取 [部署 OVF 範本] 以啟動 [部署 OVF 範本精靈]。 
 3. 在 [選取來源] 中，輸入所下載 OVF 的位置。
 4. 在 [檢閱詳細資料] 中，選取 [下一步]。
@@ -209,7 +209,7 @@ Azure Migrate 伺服器移轉需要 VMware 伺服器的存取權，才能探索�
 
 ### <a name="start-appliance-setup"></a>開始設備設定
 
-1. 在 VMWare vSphere 用戶端主控台中開啟 VM。 VM 會開機進入 Windows Server 2016 安裝體驗。
+1. 在 VMware vSphere 用戶端主控台中開啟 VM。 VM 會開機進入 Windows Server 2016 安裝體驗。
 2. 接受授權合約，並輸入系統管理員密碼。
 3. 在安裝完成之後，以系統管理員身分使用系統管理員密碼登入 VM。 您第一次登入時，複寫設備設定工具 (Azure Site Recovery 設定工具) 會在數秒內啟動。
 5. 輸入要用來向伺服器移轉註冊設備的名稱。 然後按一下 [下一步]。

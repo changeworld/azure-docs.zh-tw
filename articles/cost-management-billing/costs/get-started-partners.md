@@ -3,17 +3,17 @@ title: 適用於合作夥伴的 Azure 成本管理入門
 description: 本文說明合作夥伴如何使用 Azure 成本管理功能，以及如何為其客戶啟用成本管理存取權。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849839"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372139"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
@@ -123,9 +123,9 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>啟用檢視 Azure 使用費的原則
 
-合作夥伴可使用下列資訊，啟用讓客戶能檢視 Azure 使用費的原則。
+您必須是 **admin agent** 群組的成員，才能檢視和更新原則。 請使用下列資訊，啟用允許客戶檢視 Azure 使用費的原則。
 
-在 Azure 入口網站中登入合作夥伴租用戶，然後選取 [成本管理 + 計費]。 選取相關的 Microsoft 合作夥伴合約計費帳戶，然後選取 [客戶]。 客戶的清單會與計費帳戶產生關聯。
+在 Azure 入口網站中登入合作夥伴租用戶，然後選取 [成本管理 + 計費]。 在 [計費範圍] 區域中選取相關的計費範圍，然後選取 [客戶]。 客戶的清單會與計費帳戶產生關聯。
 
 在客戶清單中，選取您要允許他們檢視成本的客戶。
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 41482af619ad94ee059fc11a74581fa30c2e7011
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7353366af14ca785c5635e1bde8101c1d71cd47f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190226"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079116"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>教學課程：使用 Azure Data Factory 在 HDInsight 中建立隨選 Apache Hadoop 叢集
 
@@ -37,7 +37,7 @@ ms.locfileid: "82190226"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 安裝 PowerShell [Az 模組](https://docs.microsoft.com/powershell/azure/overview)。
+* 安裝 PowerShell [Az 模組](https://docs.microsoft.com/powershell/azure/)。
 
 * Azure Active Directory 服務主體。 當您建立服務主體之後，請務必使用連結文章中的指示來擷取**應用程式識別碼**和**驗證金鑰**。 在本教學課程後續的內容中，您會需要這些值。 此外，請確定服務主體是訂用帳戶的「參與者」  角色成員，或建立叢集所在的資源群組成員。 如需擷取所需的值並為角色指派權限的指示，請參閱[建立 Azure Active Directory 服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -261,7 +261,7 @@ Write-host "`nScript completed" -ForegroundColor Green
     | 名稱 | 輸入 `HDInsightLinkedService`。|
     | 類型 | 選取 [隨選 HDInsight]  。 |
     | Azure 儲存體連結服務 | 選取 `HDIStorageLinkedService`。 |
-    | 叢集類型 | 選取 [Hadoop]  |
+    | 叢集類型 | 選取 [Hadoop] |
     | 存留時間 | 提供您想要讓 HDInsight 叢集在自動刪除之前可供使用的持續時間。|
     | 服務主體識別碼 | 提供您在必要條件中建立的 Azure Active Directory 服務主體應用程式識別碼。 |
     | 服務主體金鑰 | 提供 Azure Active Directory 服務主體的驗證金鑰。 |

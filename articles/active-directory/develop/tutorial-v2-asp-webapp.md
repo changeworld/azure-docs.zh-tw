@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4b9dac92f0cff213622f0087b281814251f06ffd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181608"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87058285"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
@@ -407,7 +407,7 @@ ms.locfileid: "82181608"
 
 ### <a name="view-application-results"></a>檢視應用程式結果
 
-登入之後，系統會將使用者重新導向至您網站的首頁。 首頁就是您在 Microsoft 應用程式註冊入口網站的應用程式註冊資訊中指定的 HTTPS URL。 首頁包含歡迎訊息「\<使用者>，您好」  、登出連結，以及用來檢視使用者宣告的連結。 使用者宣告的連結會連接至您稍早建立的「宣告」控制器。
+登入之後，系統會將使用者重新導向至您網站的首頁。 首頁就是您在 Microsoft 應用程式註冊入口網站的應用程式註冊資訊中指定的 HTTPS URL。 首頁包含歡迎訊息「\<user>您好」、登出連結，以及用來檢視使用者宣告的連結。 使用者宣告的連結會連接至您稍早建立的「宣告」控制器。
 
 ### <a name="view-the-users-claims"></a>檢視使用者的宣告
 
@@ -468,13 +468,13 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>選項 3：使用自訂方法來驗證簽發者
 
-您可以實作自訂方法，使用 **IssuerValidator** 參數來驗證簽發者。 如需此參數使用方式的詳細資訊，請參閱 [TokenValidationParameters 類別](/previous-versions/visualstudio/dn464192(v=vs.114))。
+您可以實作自訂方法，使用 **IssuerValidator** 參數來驗證簽發者。 如需此參數使用方式的詳細資訊，請參閱 [TokenValidationParameters 類別](/dotnet/api/microsoft.identitymodel.tokens.tokenvalidationparameters)。
 
 ## <a name="next-steps"></a>後續步驟
 
 深入了解 Web 應用程式如何呼叫 Web API。
 
-### <a name="learn-how-to-create-the-application-used-in-this-quickstart-guide"></a>了解如何建立本快速入門指南中所使用的應用程式
+### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>了解如何建立本快速入門中所使用的應用程式
 
 深入了解使用 Microsoft 身分識別平台呼叫 Web API 的 Web 應用程式：
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: a98a06dedf1d0ed9b92cc2028dfc208ff26df056
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6ea0b28f5e0f23e0f8bb30e8fe2b0f792bce0709
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517615"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287446"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure 應用程式閘道的新功能為何？
 
@@ -27,7 +27,7 @@ Azure 應用程式閘道會持續更新。 為了讓您隨時掌握最新的開�
 
 |功能  |描述  |新增日期  |
 |---------|---------|---------|
-| 接聽程式中的萬用字元主機名稱 (預覽) | 您現在可以在多網站接聽程式中定義萬用字元主機名稱，並為每個接聽程式定義最多 5 個主機名稱。 若要深入了解，請參閱[接聽程式中的萬用字元主機名稱 (預覽)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) 和[使用 Azure 入口網站在應用程式閘道中裝載多個網站](create-multiple-sites-portal.md)，以取得逐步指南。 | 2020 年 7 月 |
+| 接聽程式中的萬用字元主機名稱 (預覽) | 您現在可以在多網站接聽程式中定義萬用字元主機名稱，並為每個接聽程式定義最多 5 個主機名稱。 若要深入了解，請參閱[接聽程式中的萬用字元主機名稱 (預覽)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) | 2020 年 7 月 |
 | URL 重寫 (預覽) | 您現在可以使用 URL 重寫來重寫 URL 路徑和查詢字串參數。 如需詳細資訊，請參閱[重寫 HTTP 標頭和 URL](rewrite-http-headers-url.md)，並參閱 [使用 Azure 入口網站在應用程式閘道中重寫 URL](rewrite-url-portal.md)，以取得逐步指南。 | 2020 年 7 月 |
 | 用於健康情況探查的自訂連接埠 | 應用程式閘道 v2 SKU 現在提供在健康情況探查設定中提供自訂連接埠的功能。 如需詳細資訊，請參閱[健康情況探查概觀](application-gateway-probe-overview.md) | 2020 年 7 月 |
 | 應用程式閘道輸入控制器 (AGIC) AKS 附加元件 (預覽) |應用程式閘道輸入控制器現在可以透過 Azure CLI 在一行中部署為原生 AKS 附加元件。 AKS 附加元件可讓 AGIC 成為完全受控的服務，同時仍在客戶的 AKS 叢集中執行。 如需詳細資訊，請參閱 [AGIC 附加元件差異](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)。 |2020 年 6 月 |

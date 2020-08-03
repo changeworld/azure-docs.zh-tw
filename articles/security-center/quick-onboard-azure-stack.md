@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: memildin
-ms.openlocfilehash: 1f0a11616fe996f02d6464d23724156906176041
-ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
+ms.openlocfilehash: 67017bdc98b997c728c4d5dcfab92e0804498060
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84771150"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084002"
 ---
 # <a name="quickstart-onboard-your-azure-stack-virtual-machines-to-security-center"></a>快速入門：將 Azure Stack 虛擬機器登入至資訊安全中心
 將您的 Azure 訂用帳戶登入後，您即可從 Azure Stack Marketplace 新增 **Azure 監視器、更新和組態管理**虛擬機器擴充功能，讓資訊安全中心保護您在 Azure Stack 上執行的虛擬機器。

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b3f337798525860748cf7b535c2bce478dad8e27
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042997"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090581"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 記錄
 
@@ -43,7 +43,7 @@ ms.locfileid: "86042997"
 若要完成本教學課程，必須具備下列項目：
 
 * 所使用的現有金鑰保存庫。  
-* Azure PowerShell，最低版本為 1.0.0。 若要安裝 Azure PowerShell，並將它與 Azure 訂用帳戶建立關聯，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。 如果您已安裝 Azure PowerShell 但不知道版本，請在 Azure PowerShell 主控台中輸入 `$PSVersionTable.PSVersion`。  
+* Azure PowerShell，最低版本為 1.0.0。 若要安裝 Azure PowerShell，並將它與 Azure 訂用帳戶建立關聯，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。 如果您已安裝 Azure PowerShell 但不知道版本，請在 Azure PowerShell 主控台中輸入 `$PSVersionTable.PSVersion`。  
 * 足夠的 Azure 儲存體以儲存金鑰保存庫記錄。
 
 ## <a name="connect-to-your-key-vault-subscription"></a><a id="connect"></a>連線至金鑰保存庫訂用帳戶
@@ -70,7 +70,7 @@ Get-AzSubscription
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-將 PowerShell 指向正確訂用帳戶的步驟很重要，特別是當您有多個與帳戶相關聯的訂用帳戶時。 如需設定 Azure PowerShell 的詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
+將 PowerShell 指向正確訂用帳戶的步驟很重要，特別是當您有多個與帳戶相關聯的訂用帳戶時。 如需設定 Azure PowerShell 的詳細資訊，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/)。
 
 ## <a name="create-a-storage-account-for-your-logs"></a><a id="storage"></a>為您的記錄建立儲存體帳戶
 
@@ -97,7 +97,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a name="enable-logging-using-azure-powershell"></a><a id="enable"></a>使用 Azure PowerShell 啟用記錄
 
-為了啟用 Key Vault 記錄，我們將使用 **Set-AzDiagnosticSetting** Cmdlet，並搭配針對新儲存體帳戶和金鑰保存庫所建立的變數。 我們也會將 **-Enabled** 旗標設定為 **$true**，並將類別設定為 **AuditEvent** (Key Vault 記錄唯一適用的類別)：
+為了啟用 Key Vault 記錄，我們將使用 **Set-AzDiagnosticSetting** Cmdlet，並搭配針對新儲存體帳戶和金鑰保存庫所建立的變數。 我們也會將 **-Enabled** 旗標設定為 **$true**，並將類別設定為 `AuditEvent` (Key Vault 記錄唯一適用的類別)：
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
@@ -271,7 +271,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 | **resourceId** |Azure Resource Manager 資源識別碼。 對於金鑰保存庫記錄來說，這一律是金鑰保存庫的資源識別碼。 |
 | **operationName** |下一份表格所述作業的名稱。 |
 | **operationVersion** |用戶端所要求的 REST API 版本。 |
-| **類別** |結果的類型。 對於 Key Vault 記錄來說，**AuditEvent** 是其唯一可用的值。 |
+| **類別** |結果的類型。 對於 Key Vault 記錄來說，`AuditEvent` 是其唯一可用的值。 |
 | **resultType** |REST API 要求的結果。 |
 | **resultSignature** |HTTP 狀態。 |
 | **resultDescription** |結果的其他描述 (若有提供)。 |
@@ -279,7 +279,7 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 | **callerIpAddress** |提出要求用戶端的 IP 位址。 |
 | **correlationId** |選擇性的 GUID，用戶端可傳遞此 GUID 來讓用戶端記錄與服務端 (金鑰保存庫) 記錄相互關聯。 |
 | **身分識別** |權杖中的身分識別，會在 REST API 要求中提供。 就像從 Azure PowerShell Cmdlet 產生的要求一樣，這通常是「使用者」、「服務主體」或「使用者+appId」的組合。 |
-| **properties** |根據作業 (**operationName**) 而有所不同的資訊。 在大部分情況下，此欄位會包含用戶端資訊 (用戶端傳遞的使用者代理程式字串)、完全符合的 REST API 要求 URI 和 HTTP 狀態碼。 此外，在因為提出要求 (例如，**KeyCreate** 或 **VaultGet**) 而傳回物件時，此欄位也會包含金鑰 URI (形式為 "id")、保存庫 URI 或祕密 URI。 |
+| **properties** |根據作業 (**operationName**) 而有所不同的資訊。 在大部分情況下，此欄位會包含用戶端資訊 (用戶端傳遞的使用者代理程式字串)、完全符合的 REST API 要求 URI 和 HTTP 狀態碼。 此外，在因為提出要求 (例如，**KeyCreate** 或 **VaultGet**) 而傳回物件時，此欄位也會包含金鑰 URI (形式為 `id`)、保存庫 URI 或祕密 URI。 |
 
 **operationName** 欄位值的格式為 *ObjectVerb*。 例如：
 
@@ -321,9 +321,9 @@ $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVault
 
 ## <a name="use-azure-monitor-logs"></a><a id="loganalytics"></a>使用 Azure 監視器記錄
 
-您可以使用 Azure 監視器記錄中的 Key Vault 解決方案來檢閱 Key Vault 的 **AuditEvent** 記錄。 在 Azure 監視器記錄中，您可以使用記錄查詢來分析資料，並取得所需的資訊。 
+您可以使用 Azure 監視器記錄中的 Key Vault 解決方案來檢閱 Key Vault 的 `AuditEvent` 記錄。 在 Azure 監視器記錄中，您可以使用記錄查詢來分析資料，並取得所需的資訊。 
 
-如需詳細資訊 (包括如何進行此設定)，請參閱 [Azure 監視器記錄中的 Azure Key Vault 解決方案](../../azure-monitor/insights/azure-key-vault.md)。 如果您需要從 Azure 監視器記錄預覽版時期所提供的舊 Key Vault 解決方案 (其中您是先將記錄路由遞送至「Azure 儲存體」帳戶，然後將 Azure 監視器記錄設定成從該處讀取) 移轉，本文也包含相關指示。
+如需詳細資訊 (包括如何進行此設定)，請參閱 [Azure 監視器中的 Azure Key Vault](../../azure-monitor/insights/key-vault-insights-overview.md)。
 
 ## <a name="next-steps"></a><a id="next"></a>後續步驟
 

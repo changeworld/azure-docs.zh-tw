@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: 6edc6facc884fc6469b75b63216d6e5036321ea8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277700"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124543"
 ---
 ## <a name="configure-the-sample-project"></a>設定範例專案
 
-接下來，請設定將和您 Azure Digital Twins 執行個體互動的範例用戶端應用程式。 如果您尚未下載範例專案，請立即從 [Azure Digital Twins 範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) 登陸頁面下載該專案，方法是選取標題底下的 [下載 ZIP] 按鈕。
+接下來，請設定將和您 Azure Digital Twins 執行個體互動的範例用戶端應用程式。 如果您尚未下載範例專案，請立即從 [*Azure Digital Twins 範例*](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples) 登陸頁面下載該專案，方法是選取標題底下的 [下載 ZIP] 按鈕。
 
 巡覽至下載到您電腦上的檔案並解壓縮。
 

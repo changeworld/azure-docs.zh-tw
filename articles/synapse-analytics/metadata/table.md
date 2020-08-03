@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9efafdbc3545bebb3b90b3f64c14f45d8be82e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28f666fe295b2b49fb6795306e9fad489c867517
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496021"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387212"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共用中繼資料資料表
 
@@ -24,7 +24,7 @@ Azure Synapse Analytics 可讓不同的工作區計算引擎在其 Apache Spark 
 
 Spark 作業建立資料庫之後，您就可以透過 Spark，在其中建立使用 Parquet 儲存格式的資料表。 這些資料表隨即可供任何 Azure Synapse 工作區 Spark 集區查詢。 若具有適當權限，您也可以從任何 Spark 作業中使用這些資料表。
 
-Spark 所建立和管理的資料表以及外部資料表也會在 SQL 隨選的對應同步資料庫中，以同名的外部資料表形式來提供使用。 [在 SQL 中公開 Spark 資料表](#exposing-a-spark-table-in-sql)會提供資料表同步的更多詳細資料。
+Spark 所建立和管理的資料表以及外部資料表也會在 SQL 隨選的對應同步資料庫中，以同名的外部資料表形式來提供使用。 [在 SQL 中公開 Spark 資料表](#expose-a-spark-table-in-sql)會提供資料表同步的更多詳細資料。
 
 由於資料表不會即時同步至 SQL，因此資料表會延遲顯示。
 
@@ -34,9 +34,9 @@ Spark 所建立和管理的資料表以及外部資料表也會在 SQL 隨選的
 
 如果您透過 SQL 隨選在這類資料庫中建立物件，或嘗試卸載資料庫，雖然此作業將會成功，但不會變更原始的 Spark 資料庫。
 
-## <a name="exposing-a-spark-table-in-sql"></a>在 SQL 中公開 Spark 資料表
+## <a name="expose-a-spark-table-in-sql"></a>在 SQL 中公開 Spark 資料表
 
-### <a name="which-spark-tables-are-shared"></a>共用的 Spark 資料表
+### <a name="shared-spark-tables"></a>共用的 Spark 資料表
 
 Spark 提供兩種可讓 Azure Synapse 自動在 SQL 中公開的資料類型：
 
@@ -50,7 +50,7 @@ Spark 提供兩種可讓 Azure Synapse 自動在 SQL 中公開的資料類型：
 
 Azure Synapse 目前只會共用受控及外部 Spark 資料表，這些資料表會使用 SQL 引擎將其資料儲存為 Parquet 格式。 以其他格式支援的資料表不會自動進行同步。 如果 SQL 引擎支援資料表的基礎格式，您可以自行將這類資料表明確地同步為您自己 SQL 資料庫中的外部資料表。
 
-### <a name="how-are-spark-tables-shared"></a>如何共用 Spark 資料表
+### <a name="share-spark-tables"></a>共用 Spark 資料表
 
 在 SQL 引擎中以外部資料表形式公開的可共用受控資料表和外部 Spark 資料表，具有下列屬性：
 
@@ -96,7 +96,7 @@ Spark 資料庫和資料表，以及其在 SQL 引擎中的同步代表項目，
 
 ### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>在 Spark 中建立由 Parquet 支援的受控資料表，並從 SQL 隨選查詢
 
-在此案例中，您有一個名為 `mytestdb` 的 Spark 資料庫。 請參閱[建立及連線到 Spark 資料庫 - SQL 隨選](database.md#create--connect-to-spark-database---sql-on-demand)。
+在此案例中，您有一個名為 `mytestdb` 的 Spark 資料庫。 請參閱[使用隨選 SQL 建立並連線到 Spark 資料庫](database.md#create-and-connect-to-spark-database-with-sql-on-demand)。
 
 藉由執行下列命令，您可以使用 SparkSQL 建立受控 Spark 資料表：
 
@@ -153,7 +153,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="creating-an-external-table-backed-by-parquet-in-spark-and-querying-it-from-sql-on-demand"></a>在 Spark 中建立由 Parquet 支援的外部資料表，並從 SQL 隨選進行查詢
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>在 Spark 中建立由 Parquet 支援的外部資料表，並從 SQL 隨選查詢
 
 在此範例中，請以先前受控資料表範例中建立的 Parquet 資料檔案建立外部 Spark 資料表。
 

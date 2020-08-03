@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e6257311473987ee053caeade6bfe14533353b73
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134450"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289307"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>在 Azure 區域之間容錯回復 Azure VM
 
@@ -58,7 +58,7 @@ ms.locfileid: "86134450"
     ![主要和次要區域上的 VM](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
-> 對於執行 Site Recovery 延伸模組版本 9.28.x.x 以上的電腦，[更新彙總套件 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery 會在容錯回復完成且 VM 重新受到保護後，清除次要災害復原區域中的電腦。 不需要手動刪除次要區域中的 VM 和 NIC。 如果您在容錯回復之後完全停用複寫，除了 VM 和 NIC 之外，Site Recovery 還會清除災害復原區域中的磁碟。
+> 對於使用受控磁碟並執行 Site Recovery 延伸模組版本 9.28.x.x 以上的電腦，[更新彙總套件 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery 會在容錯回復完成且 VM 重新受到保護後，清除次要災害復原區域中的電腦。 不需要手動刪除次要區域中的 VM 和 NIC。 請注意，不會清除具有非受控磁碟的 VM。 如果您在容錯回復之後完全停用複寫，除了 VM 和 NIC 之外，Site Recovery 還會清除災害復原區域中的磁碟。
 
 ## <a name="next-steps"></a>後續步驟
 

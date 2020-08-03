@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 58f771120c5c81e27751af66b64e146c79bb6508
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 26b3b3bd061d3ec7c3efd5c613c5beec33867022
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81421836"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298738"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -68,6 +68,8 @@ ms.locfileid: "81421836"
 > 如果您在尋找此值時需要協助，請參閱[建立意圖辨識的 LUIS 應用程式](#create-a-luis-app-for-intent-recognition)。
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=33-35)]
+
+這個範例會使用 `addIntent()` 函式來個別新增意圖。 如果要從模型新增所有意圖，請使用 `addAllIntents(model)` 並傳遞模型。
 
 ## <a name="recognize-an-intent"></a>辨識意圖
 

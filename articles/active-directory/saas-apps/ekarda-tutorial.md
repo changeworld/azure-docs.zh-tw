@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3790da8674732c50d55a85c84367f0d2fe3e08f5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: aacaec5ff632385a1f1686610370bb92eb63c349
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255620"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017545"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Ekarda 整合
 
@@ -151,12 +151,12 @@ ms.locfileid: "85255620"
 
 1. 按一下 [系統管理員] -> [我的帳戶]。
 
-    ![Ekarda 設定](./media/ekarda-tutorial/ekarda.PNG)    
+    ![Ekarda 設定](./media/ekarda-tutorial/ekarda.png)    
 
 1. 在頁面底部，您會找到要設定 SAML 整合的 [SAML 設定] 區段。
 1. 在下列頁面上，執行下列步驟：
 
-    ![Ekarda 設定](./media/ekarda-tutorial/ekarda1.PNG)
+    ![Ekarda 設定](./media/ekarda-tutorial/ekarda1.png)
 
     a. 按一下 [服務提供者中繼資料] 連結，並將其儲存為您電腦中的檔案。
 
@@ -194,7 +194,8 @@ ms.locfileid: "85255620"
 
 - [嘗試搭配 Azure AD 使用 Ekarda](https://aad.portal.azure.com/)
 
+- 使用 [Ekarda 的企業 eCard 解決方案](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise)來佈建任何數量的人員，以將加上您公司標誌的 eCard 傳送給用戶端和同事。 深入了解如何將 [Ekarda 佈建為 SSO 解決方案](https://support.ekarda.com/#SSO-Implementation)。
+
 - [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [如何使用進階可見性和控制項保護 Ekarda](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

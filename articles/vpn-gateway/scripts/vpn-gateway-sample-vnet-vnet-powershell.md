@@ -3,20 +3,20 @@ title: Azure PowerShell 指令碼範例 - 設定 VNet 對 VNet VPN | Microsoft D
 description: 設定站對站 VPN。
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: a4d23f34553881b6425514572f9122edf693a57a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a69df3893a3bf32ca2af1be62744991346ee048
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75862198"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068363"
 ---
-# <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 設定 VNet 對 VNet 的 VPN 閘道連線
+# <a name="use-powershell-to-configure-a-vnet-to-vnet-vpn-gateway-connection"></a>使用 PowerShell 設定 VNet 對 VNet 的 VPN 閘道連線
 
 此指令碼會使用 VNet 對 VNet 連線類型來連線兩個虛擬網路。
 
@@ -167,4 +167,4 @@ Remove-AzResourceGroup -Name TestRG2
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
