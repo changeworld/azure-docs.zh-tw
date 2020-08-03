@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: f3eacbe6f93388756ce26324babeb2ca38bd09a5
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: f87e3f4add0cb5949036ec6caca2e361e2e88ea0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438901"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498118"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的存取與身分識別選項
 
@@ -119,7 +119,7 @@ Azure RBAC 是建置於 [Azure Resource Manager](../azure-resource-manager/manag
 
 ### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>適用于 Kubernetes 授權的 Azure RBAC （預覽）
 
-使用 Azure RBAC 整合時，AKS 會使用 Kubernetes 授權 webhook 伺服器，讓您使用 Azure RBAC 角色定義和角色指派來管理 Azure AD 整合式 K8s 叢集資源的許可權和指派。
+使用 Azure RBAC 整合時，AKS 會使用 Kubernetes 授權 webhook 伺服器，讓您使用 Azure 角色定義和角色指派來管理 Azure AD 整合式 K8s 叢集資源的許可權和指派。
 
 ![適用于 Kubernetes 授權流程的 Azure RBAC](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 

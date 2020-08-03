@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca1f535c7f2d949e1f71a06ba9efab2818ee0201
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046768"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490280"
 ---
-# <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>設計 Azure Synapse SQL 集區的 PolyBase 資料載入策略
+# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>設計適用于 Azure Synapse SQL 集區的 PolyBase 資料載入策略
 
 傳統 SMP 資料倉儲會使用「解壓縮」、「轉換」和「載入」（ETL）處理常式來載入資料。 Azure SQL 集區是大規模的平行處理（MPP）架構，可利用計算和儲存體資源的擴充性和彈性。 使用解壓縮、載入和轉換（ELT）程式可以利用 MPP，並排除在載入之前轉換資料所需的資源。
 
@@ -25,7 +25,7 @@ ms.locfileid: "87046768"
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
-## <a name="what-is-elt"></a>什麼是 ELT?
+## <a name="extract-load-and-transform-elt"></a>解壓縮、載入和轉換（ELT）
 
 「解壓縮」、「載入」和「轉換」（ELT）是一種程式，可讓資料從來源系統中解壓縮、載入資料倉儲，然後進行轉換。
 

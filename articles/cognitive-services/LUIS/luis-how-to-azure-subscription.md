@@ -1,15 +1,16 @@
 ---
 title: 如何使用撰寫和執行時間金鑰-LUIS
-description: 當您第一次使用 Language Understanding (LUIS) 時，就不需要建立撰寫金鑰。 當您想要發佈應用程式時，請使用您的執行時間端點，您必須建立執行時間金鑰，並將其指派給應用程式。
+description: 當您第一次使用 Language Understanding （LUIS）時，您不需要建立撰寫金鑰。 當您想要發佈應用程式時，請使用您的執行時間端點，您必須建立執行時間金鑰，並將其指派給應用程式。
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144628"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496894"
 ---
 # <a name="create-luis-resources"></a>建立 LUIS 資源
 
@@ -24,12 +25,12 @@ ms.locfileid: "86144628"
 
 LUIS 允許三種類型的 Azure 資源和一個非 Azure 資源：
 
-|答案|用途|認知服務`kind`|認知服務`type`|
+|Key|目的|認知服務`kind`|認知服務`type`|
 |--|--|--|--|
 |撰寫金鑰|使用撰寫、訓練、發行和測試來存取和管理應用程式的資料。 如果您想要以程式設計方式撰寫 LUIS 應用程式，請建立 LUIS 撰寫金鑰。<br><br>金鑰的目的 `LUIS.Authoring` 是要讓您能夠：<br>* 以程式設計方式管理 Language Understanding 應用程式和模型，包括定型和發佈<br> * 將人員指派給「[參與者」角色](#contributions-from-other-authors)，以控制撰寫資源的許可權。|`LUIS.Authoring`|`Cognitive Services`|
 |查詢預測金鑰| 查詢預測端點要求。 在您的用戶端應用程式要求預測超過起始資源所提供的1000要求之前，請先建立 LUIS 預測金鑰。 |`LUIS`|`Cognitive Services`|
 |[認知服務多服務資源金鑰](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|與 LUIS 和其他支援的認知服務共用的查詢預測端點要求。|`CognitiveServices`|`Cognitive Services`|
-|入門|免費撰寫 (沒有角色型存取控制) 透過 LUIS 入口網站或 Api (包括 Sdk) 、每月免費1000預測端點要求（透過瀏覽器、API 或 Sdk）|-|不是 Azure 資源|
+|入門|透過 LUIS 入口網站或 Api （包括 Sdk）的免費撰寫（不含角色型存取控制），透過瀏覽器、API 或 Sdk 每月免費1000預測端點要求|-|不是 Azure 資源|
 
 Azure 資源建立程式完成時，請在 LUIS 入口網站中[將金鑰指派](#assign-a-resource-to-an-app)給應用程式。
 
@@ -58,7 +59,7 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 
 使用量限制是以定價層為基礎。
 
-如果您超過每秒交易數 (TP) 配額，您會收到 HTTP 429 錯誤。 如果您超過每月筆交易 (TPS) 配額，您會收到 HTTP 403 錯誤。
+如果您超出每秒交易 (TPS) 配額，就會收到 HTTP 429 錯誤。 如果您超出每月交易 (TPS) 配額，就會收到 HTTP 403 錯誤。
 
 
 ### <a name="reset-authoring-key"></a>重設撰寫金鑰
@@ -87,7 +88,7 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 
 ### <a name="contributions-from-other-authors"></a>其他作者的貢獻
 
-針對[撰寫資源遷移](luis-migration-authoring.md)的應用程式：在撰寫資源的 Azure 入口網站中，會使用**存取控制 (IAM) **頁面來管理_參與者_。 瞭解如何使用共同作業者的電子郵件地址和_參與者_角色[來新增使用者](luis-how-to-collaborate.md)。
+針對[撰寫資源遷移](luis-migration-authoring.md)的應用程式：使用 [**存取控制（IAM）** ] 頁面，可在撰寫資源的 Azure 入口網站中管理_參與者_。 瞭解如何使用共同作業者的電子郵件地址和_參與者_角色[來新增使用者](luis-how-to-collaborate.md)。
 
 針對尚未遷移的應用程式 _：所有共同作業者都是_在 LUIS 入口網站中，從 [**管理-> 的共同**作業者] 頁面進行管理。
 
@@ -102,7 +103,7 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 
 擁有者和所有參與者都有權撰寫應用程式。
 
-|撰寫存取權包括|附註|
+|撰寫存取權包括|注意|
 |--|--|
 |新增或移除端點金鑰||
 |匯出版本||
@@ -120,11 +121,11 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 
 查詢預測端點的存取權是由 [**管理**] 區段中 [**應用程式資訊**] 頁面上的設定所控制。
 
-|[私人端點](#runtime-security-for-private-apps)|[公用端點](#runtime-security-for-public-apps)|
+|[私用端點](#runtime-security-for-private-apps)|[公用端點](#runtime-security-for-public-apps)|
 |:--|:--|
 |可供擁有者和參與者使用|適用于擁有者、參與者，以及任何知道應用程式識別碼的其他人|
 
-您可以在伺服器對伺服器的環境中呼叫 LUIS 執行時間金鑰，以控制他們看到的人。 如果您是從 Bot 使用 LUIS，則 Bot 與 LUIS 之間的連線已經是安全連線。 如果您要直接呼叫 LUIS 端點，則應該建立一個具有受控存取權 (例如 [AAD](https://azure.microsoft.com/services/active-directory/)) 的伺服器端 API (例如 Azure [函數](https://azure.microsoft.com/services/functions/))。 當呼叫伺服器端 API 並驗證並驗證授權時，請將上的呼叫傳遞給 LUIS。 雖然此策略不會防止攔截式攻擊，但它會從您的使用者混淆您的金鑰和端點 URL，讓您能夠追蹤存取權，並可讓您新增端點回應記錄 (例如[Application Insights](https://azure.microsoft.com/services/application-insights/)) 。
+您可以在伺服器對伺服器的環境中呼叫 LUIS 執行時間金鑰，以控制他們看到的人。 如果您是從 Bot 使用 LUIS，則 Bot 與 LUIS 之間的連線已經是安全連線。 如果您要直接呼叫 LUIS 端點，則應該建立一個具有受控存取權 (例如 [AAD](https://azure.microsoft.com/services/active-directory/)) 的伺服器端 API (例如 Azure [函數](https://azure.microsoft.com/services/functions/))。 當呼叫伺服器端 API 並驗證並驗證授權時，請將上的呼叫傳遞給 LUIS。 雖然此策略不會防止攔截式攻擊，但它會從您的使用者混淆您的金鑰和端點 URL，讓您能夠追蹤存取權，並可讓您新增端點回應記錄（例如[Application Insights](https://azure.microsoft.com/services/application-insights/)）。
 
 ### <a name="runtime-security-for-private-apps"></a>私用應用程式的執行時間安全性
 
@@ -147,7 +148,7 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 
 ### <a name="securing-the-query-prediction-endpoint"></a>保護查詢預測端點
 
-您可以在伺服器對伺服器的環境中呼叫它，以控制可查看 LUIS 預測執行時間端點金鑰的人員。 如果您是從 Bot 使用 LUIS，則 Bot 與 LUIS 之間的連線已經是安全連線。 如果您要直接呼叫 LUIS 端點，則應該建立一個具有受控存取權 (例如 [AAD](https://azure.microsoft.com/services/active-directory/)) 的伺服器端 API (例如 Azure [函數](https://azure.microsoft.com/services/functions/))。 呼叫伺服器端 API 並確認驗證和授權之後，請將呼叫繼續傳遞給 LUIS。 雖然此策略不會防止攔截式攻擊，但它會從您的使用者混淆您的端點，讓您能夠追蹤存取權，並可讓您新增端點回應記錄 (例如[Application Insights](https://azure.microsoft.com/services/application-insights/)) 。
+您可以在伺服器對伺服器的環境中呼叫它，以控制可查看 LUIS 預測執行時間端點金鑰的人員。 如果您是從 Bot 使用 LUIS，則 Bot 與 LUIS 之間的連線已經是安全連線。 如果您要直接呼叫 LUIS 端點，則應該建立一個具有受控存取權 (例如 [AAD](https://azure.microsoft.com/services/active-directory/)) 的伺服器端 API (例如 Azure [函數](https://azure.microsoft.com/services/functions/))。 呼叫伺服器端 API 並確認驗證和授權之後，請將呼叫繼續傳遞給 LUIS。 雖然此策略不會防止攔截式攻擊，但它會從您的使用者混淆您的端點，讓您能夠追蹤存取權，並可讓您新增端點回應記錄（例如[Application Insights](https://azure.microsoft.com/services/application-insights/)）。
 
 <a name="starter-key"></a>
 
@@ -206,7 +207,7 @@ Azure 資源（例如 LUIS）是由包含資源的訂用帳戶所擁有。
 
 1. 登入 [LUIS 入口網站](https://www.luis.ai)。
 1. 在上方導覽列中，選取最右側的 [使用者帳戶]，然後選取 [**設定**]。
-1. 在 [**使用者設定**] 頁面上，選取 [**新增撰寫資源**]，然後選取現有的撰寫資源。 選取 [Save] \(儲存\)。
+1. 在 [**使用者設定**] 頁面上，選取 [**新增撰寫資源**]，然後選取現有的撰寫資源。 選取 [儲存]  。
 
 ## <a name="assign-a-resource-to-an-app"></a>將資源指派給應用程式
 

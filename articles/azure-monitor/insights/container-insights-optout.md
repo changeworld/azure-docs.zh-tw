@@ -3,12 +3,13 @@ title: 如何停止監視 Azure Kubernetes Service 叢集 | Microsoft Docs
 description: 本文說明如何停止使用容器的 Azure 監視器來監視 Azure AKS 叢集。
 ms.topic: conceptual
 ms.date: 08/19/2019
-ms.openlocfilehash: caa932815ea46da2603c2621bef40e467fdf16c7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: af5f49dfe5e668f39f105a62ad20858e273b34cb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499047"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489481"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>如何停止使用容器的 Azure 監視器來監視 Azure Kubernetes Service (AKS)
 

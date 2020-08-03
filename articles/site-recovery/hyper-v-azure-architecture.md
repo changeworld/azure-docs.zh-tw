@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 6dfa162de02174ac4a1a8251457249bd5ea4d766
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416327"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495721"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 至 Azure 的災害復原架構
 
@@ -36,7 +36,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 **Hyper-V 至 Azure 架構 (不含 VMM)**
 
-![架構](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+![此圖顯示內部部署 Hyper-v 網站至 Azure 架構（不含 VMM）。](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>架構元件 - 包含 VMM 的 Hyper-V
@@ -53,7 +53,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 **Hyper-V 至 Azure 架構 (包含 VMM)**
 
-![元件](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![顯示內部部署 Hyper-v 網站至 Azure 架構與 VMM 的圖表。](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>設定輸出網路連線能力
 
@@ -66,7 +66,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許存取這些 URL：
 
-| **名稱**                  | **商業**                               | **政府**                                 | **說明** |
+| **名稱**                  | **商業**                               | **政府機關**                                 | **說明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
@@ -76,7 +76,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 
 ## <a name="replication-process"></a>複寫程序
 
-![Hyper-V 至 Azure 複寫](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![顯示 Hyper-v 到 Azure 複寫程式的圖表](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **複寫和復原程序**
 
@@ -86,7 +86,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 1. 您在 Azure 入口網站或內部部署針對 Hyper-V VM 啟用保護之後，**啟用保護**隨即啟動。
 2. 作業會檢查符合必要條件的機器，然後叫用 [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) 方法，以使用您進行的設定來設定複寫。
 3. 作業會啟動初始複寫，方法是叫用 [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) 方法，以初始化完整的 VM 複寫，並且將 VM 的虛擬磁碟傳送至 Azure。
-4. 您可以在 [**工作**] 索引標籤中監視作業。     ![作業清單 ](media/hyper-v-azure-architecture/image1.png) ![啟用保護向下切入](media/hyper-v-azure-architecture/image2.png)
+4. 您可以在 [**工作**] 索引標籤中監視作業。     ![[工作] 索引標籤中 [作業] 清單的螢幕擷取畫面。 ](media/hyper-v-azure-architecture/image1.png)![[啟用保護] 畫面的螢幕擷取畫面，其中包含更多詳細資料。](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初始資料複寫
@@ -123,7 +123,7 @@ Hyper-V 主機可選擇性第在 System Center Virtual Machine Manager (VMM) 私
 2. 重新同步處理完成之後，應會繼續進行正常的差異複寫。
 3. 如果您不想等候預設外部重新同步處理時數，您可以手動重新同步處理 VM。 例如，如果發生中斷。 若要這樣做，請在入口網站中選取 VM > [重新同步處理]****。
 
-    ![手動重新同步處理](./media/hyper-v-azure-architecture/image4-site.png)
+    ![顯示重新同步處理選項的螢幕擷取畫面。](./media/hyper-v-azure-architecture/image4-site.png)
 
 
 ### <a name="retry-process"></a>重試程序

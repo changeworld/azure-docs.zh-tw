@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85dd58398021ef61e425eb58797e818b233c491b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ba7875caa6a1db7638bfeafcfea1efa7b2462152
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170117"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489510"
 ---
-# <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 itsme OpenID Connect (OIDC) 
+# <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 設定 itsme OpenID Connect （OIDC）
 
-Itsme 數位識別碼應用程式可讓您安全地登入，而不需要卡片讀取器、密碼、雙因素驗證或多個 PIN 碼。 Itsme 應用程式會使用已驗證的身分識別，提供強大的客戶驗證。 在本文中，您將瞭解如何使用用戶端密碼使用者流程原則，將 Azure AD B2C authentication 與 itsme OpenID Connect (OIDC) 進行整合。
+Itsme 數位識別碼應用程式可讓您安全地登入，而不需要卡片讀取器、密碼、雙因素驗證或多個 PIN 碼。 Itsme 應用程式會使用已驗證的身分識別，提供強大的客戶驗證。 在本文中，您將瞭解如何使用用戶端密碼使用者流程原則，將 Azure AD B2C authentication 與 itsme OpenID Connect （OIDC）進行整合。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用，您需要：
 
@@ -40,7 +40,7 @@ Itsme 數位識別碼應用程式可讓您安全地登入，而不需要卡片�
 Please clarify step 1 in the description below - we don't have steps in this tutorial for "adapting in the Azure AD B2C Custom Policy- User Journeys" - should this be added somewhere?
 -->
 
-| 步驟 | 描述 |
+| 步驟 | 說明 |
 |------|------|
 |1     | 在您的網站或應用程式中，藉由調整 Azure AD B2C 使用者流程來包含 [**以 Itsme 登入**] 按鈕。 互動流程會在使用者按一下此按鈕時啟動。  |
 |2     | Azure AD B2C 將授權要求傳送至 itsme 用戶端密碼 API，以啟動 OpenID connect 流程。 有一個知名/OpenID 設定端點可供使用，其中包含端點的相關資訊。  |
@@ -72,31 +72,31 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 > [!NOTE]
 > 如果您還沒有租用戶，請[建立 Azure AD B2C 租用戶](tutorial-create-tenant.md)並連結到 Azure 訂用帳戶。
 
-1. 請確定您使用的是包含 Azure AD B2C 租使用者的目錄。 在頂端功能表中選取 [目錄 + 訂閱] 篩選，並選擇包含您 Azure AD B2C 租用戶的目錄。
+1. 確定您使用的目錄包含 Azure AD B2C 租用戶。 在頂端功能表中選取 [目錄 + 訂閱] 篩選，並選擇包含您 Azure AD B2C 租用戶的目錄。
 
-2. 在 [ **Azure 服務**] 底下，選取 [ **Azure AD B2C** ] (或選取 [**更多服務**]，然後使用 [**所有服務**] 搜尋方塊來搜尋*Azure AD B2C*) 。
+2. 在 [ **Azure 服務**] 底下，選取 [ **Azure AD B2C** ] （或選取 [**更多服務**]，然後使用 [**所有服務**] 搜尋方塊來搜尋*Azure AD B2C*）。
 
-3. 選取 [**識別提供者**]，然後選取 **[新增 OpenID Connect 提供者]**。
+3. 選取 [識別提供者]，然後選取 [新增 OpenID Connect 提供者]。
 
 4. 在表單中填入下列資訊：
 
    |屬性 | 值 |
    |------------ |------- |
    | 名稱 | itsme |
-   | 中繼資料 URL | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>其中 `<environment>` 可以是 `e2e` (測試環境) 或 `prd` (生產)   |
+   | 中繼資料 URL | `https://oidc.<environment>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration` <br>其中 `<environment>` 是 `e2e` （測試環境）或 `prd` （生產）  |
    | ClientID     | 您的**用戶端識別碼**，也稱為貿易**夥伴代碼**  |
    | 用戶端密碼 | 您的**client_secret** |
-   | 範圍  | openid 服務： YOURSERVICECODE 設定檔電子郵件 [電話] [位址]  |
+   | 影響範圍  | openid 服務： YOURSERVICECODE 設定檔電子郵件 [電話] [位址]  |
    |回應類型 | 代碼 |
    |回應模式 | 查詢 |
    |網域提示 | *您可以將此保留空白* |
    |UserID | sub |
-   |顯示名稱 | name |
+   |顯示名稱 | NAME |
    |指定的名稱 | given_name |
    |Surname | family_name |
    |電子郵件 | 電子郵件|
 
-5. 選取 [儲存]。
+5. 選取 [儲存]  。
 
 ### <a name="configure-a-user-flow"></a>設定使用者流程
 
@@ -104,7 +104,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 2. 選取 [**新增使用者流程**]。
 
-3. 選擇 [**註冊並登入**]。
+3. 選取 [**註冊並登入**]，選取版本，然後選取 [**建立**]。
 
 4. 輸入 [名稱]。
 
@@ -116,7 +116,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 
 8. 選取 [**屬性**] 並調整下列值：
 
-   * 將**存取權 & 識別碼權杖存留期 (分鐘) **變更為**5**。
+   * 將**存取權 & 識別碼權杖存留期（分鐘）** 變更為**5**。
    * 將重新整理**權杖滑動視窗存留期**變更為**不過期**。
 
 ### <a name="register-an-application"></a>註冊應用程式

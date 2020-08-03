@@ -15,19 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb4b9b3b93053756896dc60c61cdb15c7e521f5d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763545"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497234"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>如何為不在資源庫內的應用程式設定同盟單一登入
 
-若要在沒有撰寫程式碼的情況下**，為非資源庫應用程式設定單一登入，您需要具有一個訂用帳戶或 Azure AD Premium，而且應用程式必須支援 SAML 2.0。 如需有關 Azure AD 版本的詳細資訊，請參閱 [Azure AD 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
-
-## <a name="overview-of-steps-required"></a>所需步驟的概觀
-以下是為非資源庫 (例如，自訂) 應用程式設定搭配 SAML 2.0 的同盟單一登入所需步驟的概觀。
+本文提供針對非資源庫（例如，自訂）應用程式設定搭配 SAML 2.0 的同盟單一登入所需步驟的高階總覽。
 
 -   在 Azure AD 中設定應用程式的中繼資料值 (登入 URL、識別碼、回覆 URL)
 

@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 219638f70797fc5ea413e4db72e528262df2fa87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 636efe27ec82fa870267d2cf69d5cdf990fd509a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037044"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501350"
 ---
 # <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
@@ -24,7 +25,7 @@ Azure 儲存體帳戶包含您所有的 Azure 儲存體資料物件：Blob、檔
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -97,7 +98,7 @@ az login
 
 # <a name="template"></a>[範本](#tab/template)
 
-不適用
+N/A
 
 ---
 
@@ -148,7 +149,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 
 |複寫選項  |SkuName 參數  |
 |---------|---------|
-|本地備援儲存體 (LRS)     |Standard_LRS         |
+|本機備援儲存體 (LRS)     |Standard_LRS         |
 |區域備援儲存體 (ZRS)     |Standard_ZRS         |
 |異地備援儲存體 (GRS)     |Standard_GRS         |
 |讀取權限異地備援儲存體 (GRS)     |Standard_RAGRS         |
@@ -191,7 +192,7 @@ az storage account create \
 
 |複寫選項  |sku 參數  |
 |---------|---------|
-|本地備援儲存體 (LRS)     |Standard_LRS         |
+|本機備援儲存體 (LRS)     |Standard_LRS         |
 |區域備援儲存體 (ZRS)     |Standard_ZRS         |
 |異地備援儲存體 (GRS)     |Standard_GRS         |
 |讀取權限異地備援儲存體 (GRS)     |Standard_RAGRS         |

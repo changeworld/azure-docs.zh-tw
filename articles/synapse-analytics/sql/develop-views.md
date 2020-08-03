@@ -9,17 +9,17 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a073c9539f2fb996ae59ef513525c217170f2e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84cd5c2de0b1a6d0909a31071506d98627966775
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81428650"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500737"
 ---
 # <a name="t-sql-views-using-synapse-sql"></a>使用 Synapse SQL 的 t-sql views
 在本文中，您會找到使用 T-sql views 的秘訣，並使用 Synapse SQL 來開發解決方案。 
 
-## <a name="why-use-views"></a>為何要使用檢視？
+## <a name="why-use-views"></a>為何要使用 views
 
 檢視能以許多不同的方式使用，提升您的方案品質。  本文強調幾個範例，說明如何使用 views 豐富您的解決方案，並包含需要考慮的限制。
 

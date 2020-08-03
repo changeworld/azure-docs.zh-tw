@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a3694b08bee732e3e2d3e7c0c339e5e0d94fe418
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: c811240beea896683f891d9513a657b0689b8824
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040022"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488647"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 的虛擬網路設計考慮和設定選項
 
@@ -91,7 +91,7 @@ Azure Active Directory Domain Services （Azure AD DS）提供驗證和管理服
 
 受控網域會在部署期間建立一些網路資源。 需要這些資源才能成功操作和管理受控網域，且不應手動設定。
 
-| Azure 資源                          | Description |
+| Azure 資源                          | 說明 |
 |:----------------------------------------|:---|
 | 網路介面卡                  | 在做為 Azure Vm 的 Windows Server 上執行的兩個網域控制站（Dc）上，Azure AD DS 裝載受控網域。 每個 VM 都有一個虛擬網路介面，可連線到您的虛擬網路子網。 |
 | 動態標準公用 IP 位址      | Azure AD DS 會使用標準 SKU 公用 IP 位址與同步處理和管理服務進行通訊。 如需公用 IP 位址的詳細資訊，請參閱[Azure 中的 IP 位址類型和配置方法](../virtual-network/virtual-network-ip-addresses-overview-arm.md)。 |
@@ -110,9 +110,11 @@ Azure Active Directory Domain Services （Azure AD DS）提供驗證和管理服
 
 | 連接埠號碼 | 通訊協定 | 來源                             | Destination | 動作 | 必要 | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允許  | Yes      | 與您的 Azure AD 租使用者同步處理。 |
-| 3389        | TCP      | CorpNetSaw                         | 任意         | 允許  | Yes      | 管理您的網域。 |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允許  | Yes      | 管理您的網域。 |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允許  | 是      | 與您的 Azure AD 租使用者同步處理。 |
+| 3389        | TCP      | CorpNetSaw                         | 任意         | 允許  | 是      | 管理您的網域。 |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | 任意         | 允許  | 是      | 管理您的網域。 |
+
+已建立的 Azure 標準負載平衡器需要執行這些規則。 此網路安全性群組會保護 Azure AD DS，而且能讓受控網域正確運作。 請勿刪除此網路安全性群組。 負載平衡器不會正常運作。
 
 > [!WARNING]
 > 請勿手動編輯這些網路資源和設定。 當您將設定錯誤的網路安全性群組或使用者定義的路由表與受控網域部署所在的子網產生關聯時，您可能會中斷 Microsoft 服務和管理網域的能力。 您的 Azure AD 租使用者與受控網域之間的同步處理也會中斷。

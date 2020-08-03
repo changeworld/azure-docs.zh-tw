@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 02cb862c5ec6f75d546aabcd6e8ac97a4de961a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05b845f3284ea95dd2be595c4d59767e45149306
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082948"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500459"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 
@@ -121,7 +121,7 @@ Azure Functions 應用程式提供與 [ASP.NET 相依性插入](/aspnet/core/fun
 - **限域**：限域服務存留期符合函式執行存留期。 限域服務會在每次執行後建立。 稍後在執行期間對該服務提出的要求會重複使用現有服務執行個體。
 - **單一**：單一服務存留期符合主機存留期，並會在該執行個體上跨函式執行重複使用。 建議連線和用戶端使用單一存留期服務，例如 `DocumentClient` 或 `HttpClient` 執行個體。
 
-請前往 GitHub 檢視或下載[不同服務存留期的範本](https://aka.ms/functions/di-sample)。
+請前往 GitHub 檢視或下載[不同服務存留期的範本](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes)。
 
 ## <a name="logging-services"></a>記錄服務
 

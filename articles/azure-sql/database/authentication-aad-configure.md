@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 07/27/2020
-ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281152"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499172"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 設定和管理 Azure AD 驗證
 
@@ -216,7 +216,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 您也可以呼叫下列 CLI 命令，為 SQL 受控執行個體布建 Azure AD 管理員：
 
-| 命令 | 說明 |
+| Command | 說明 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 布建 SQL 受控執行個體的 Azure Active Directory 系統管理員（必須來自目前的訂用帳戶）。 |
 |[az sql mi ad-管理員刪除](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 移除 SQL 受控執行個體的 Azure Active Directory 系統管理員。 |
@@ -291,7 +291,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
-**DisplayName** 輸入參數可接受 Azure AD 顯示名稱或「使用者主體名稱」。 例如 ``DisplayName="John Smith"`` 和 ``DisplayName="johns@contoso.com"``。 Azure AD 群組只支援 Azure AD 顯示名稱。
+**DisplayName** 輸入參數可接受 Azure AD 顯示名稱或「使用者主體名稱」。 例如，``DisplayName="John Smith"`` 與 ``DisplayName="johns@contoso.com"``。 Azure AD 群組只支援 Azure AD 顯示名稱。
 
 > [!NOTE]
 > Azure PowerShell 命令 ```Set-AzSqlServerActiveDirectoryAdministrator``` 不會阻止您為不支援的使用者佈建 Azure AD 系統管理員。 您可以佈建不支援的使用者，但是該使用者無法連線到資料庫。
@@ -322,7 +322,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 您可以藉由呼叫下列 CLI 命令來布建 Azure AD 管理員：
 
-| 命令 | 說明 |
+| Command | 說明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 為裝載 SQL Database 或 Azure Synapse 的伺服器布建 Azure Active Directory 系統管理員。 （必須來自目前的訂用帳戶） |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 移除主控 SQL Database 或 Azure Synapse 之伺服器的 Azure Active Directory 系統管理員。 |
@@ -360,7 +360,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 不過，使用 Azure Active Directory 驗證搭配 SQL Database 和 Azure Synapse 需要使用以 Azure AD 身分識別為基礎的自主資料庫使用者。 自主資料庫使用者在 master 資料庫中沒有登入，而且會對應至與資料庫相關聯 Azure AD 中的身分識別。 Azure AD 身分識別可以是個別的使用者帳戶或群組。 如需有關自主資料庫使用者的詳細資訊，請參閱 [自主資料庫使用者 - 使資料庫可攜](https://msdn.microsoft.com/library/ff929188.aspx)。
 
 > [!NOTE]
-> 您無法使用 Azure 入口網站建立資料庫使用者 (系統管理員除外)。 RBAC 角色不會傳播至 SQL Database、SQL 受控執行個體或 Azure Synapse 中的資料庫。 Azure RBAC 角色可用來管理 Azure 資源，並不會套用到資料庫權限。 例如，「 **SQL Server 參與者**」角色不會授與存取權以連接到 SQL DATABASE、SQL 受控執行個體或 Azure Synapse 中的資料庫。 存取權限必須使用 Transact-SQL 陳述式直接在資料庫中授與。
+> 您無法使用 Azure 入口網站建立資料庫使用者 (系統管理員除外)。 Azure 角色不會傳播至 SQL Database、SQL 受控執行個體或 Azure Synapse 中的資料庫。 Azure 角色是用來管理 Azure 資源，不適用資料庫許可權。 例如，「 **SQL Server 參與者**」角色不會授與存取權以連接到 SQL DATABASE、SQL 受控執行個體或 Azure Synapse 中的資料庫。 存取權限必須使用 Transact-SQL 陳述式直接在資料庫中授與。
 
 > [!WARNING]
 > `:` `&` 不支援在 t-sql 和語句中包含做為使用者名稱的特殊字元，例如冒號或 & 符號 `CREATE LOGIN` `CREATE USER` 。
@@ -544,4 +544,3 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png
-

@@ -6,13 +6,13 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
-ms.custom: devx-track-java
-ms.openlocfilehash: efe2a8825e1817a934db7d36edae6feaf820ab79
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: c8d5b983e376243eca83b929f87ff1e44d4b3470
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037180"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500363"
 ---
 # <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>啟動、停止及刪除您的 Azure 春季雲端應用程式
 

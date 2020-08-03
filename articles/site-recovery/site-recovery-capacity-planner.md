@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a622179d1e83b41e906a9d276377f5c9474264b9
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a5764e44db31755110ac99a3e8e8e0984cdf9604
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86129958"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490569"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>規劃 Hyper-V VM 災害復原的容量 
 
@@ -36,7 +36,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 * **快速規劃**：以 VM、磁碟、儲存體及變更率的平均數作為基礎，提供網路與伺服器的預測。
 * **詳細的規劃**：提供在 VM 層級上每個工作負載的詳細資料。 分析 VM 相容性，並取得網路和伺服器預測。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 * 收集您的環境的資訊，包括 VM、每個 VM 的磁碟、每個磁碟的儲存體。
 * 識別複寫資料的每日變更 (流失) 率。 請下載 [Hyper-V 容量規劃工具](https://www.microsoft.com/download/details.aspx?id=39057)來取得變更率。 [深入了解](./hyper-v-deployment-planner-overview.md) 此工具。 我們建議您執行此工具一週以上的時間來擷取平均值。
@@ -47,7 +47,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
 2. 在 [選取規劃類型]**** 清單方塊中，選取 [快速規劃]****。
 
-   ![開始使用](./media/site-recovery-capacity-planner/getting-started.png)
+   ![[選取 planner 類型] 選項的螢幕擷取畫面，其中已選取 [快速規劃]。](./media/site-recovery-capacity-planner/getting-started.png)
 
 3. 在 [Capacity Planner]**** 工作表中，輸入必要資訊。 填妥以下螢幕擷取畫面中以紅色圈出來的所有欄位：
 
@@ -61,7 +61,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
    e. 在 [應該完成虛擬機器批次初始複寫的時數]**** 與 [每一初始複寫批次的虛擬機器數]**** 中，輸入的設定是用於計算初始複寫需求。 部署 Site Recovery 時，應該上傳整個初始資料集。
 
-   ![輸入](./media/site-recovery-capacity-planner/inputs.png)
+   ![Capacity Planner 工作表的螢幕擷取畫面，其中顯示必要的輸入資訊。](./media/site-recovery-capacity-planner/inputs.png)
 
 4. 輸入來源環境的值之後，顯示的輸出會包含：
 
@@ -77,7 +77,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
    * **所需的額外進程伺服器數目**：顯示除了預設在設定伺服器上執行的進程伺服器，是否需要額外的進程伺服器。
    * **來源上的100% 額外儲存體**：顯示來源位置中是否需要額外的儲存體。
 
-      ![輸出](./media/site-recovery-capacity-planner/output.png)
+      ![根據提供的輸入顯示之輸出的螢幕擷取畫面。](./media/site-recovery-capacity-planner/output.png)
 
 ## <a name="run-the-detailed-planner"></a>執行詳細規劃
 
@@ -85,7 +85,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
 2. 在 [選取規劃類型]**** 中，從清單方塊中選取 [詳細規劃]****。
 
-   ![使用者入門指南](./media/site-recovery-capacity-planner/getting-started-2.png)
+   ![[選取 planner 類型] 選項的螢幕擷取畫面，其中已選取詳細的 Planner。](./media/site-recovery-capacity-planner/getting-started-2.png)
 
 3. 在 [工作負載限定性條件]**** 工作表中，輸入必要資訊。 您必須填寫所有標示的欄位。
 
@@ -101,11 +101,11 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
    f. 在 [磁碟容量使用率 (%)]**** 中，指定平均使用率。
 
-   如 在 [每日資料變更率 (%)]**** 中，指定來源伺服器的每日資料變更率。
+   g. 在 [每日資料變更率 (%)]**** 中，指定來源伺服器的每日資料變更率。
 
    h. 在 [對應 Azure VM 大小]**** 中，輸入您想要對應的 Azure VM 大小。 如果您不想要手動執行此動作，則選取 [計算 IaaS VM]****。 如果您輸入手動設定，然後選取 [計算 IaaS VM]****，則手動設定可能會遭到覆寫。 計算程序會自動識別最符合的 Azure VM 大小。
 
-   ![工作負載限定性條件工作表](./media/site-recovery-capacity-planner/workload-qualification.png)
+   ![工作負載限定性工作表的螢幕擷取畫面，其中顯示必要的輸入資訊。](./media/site-recovery-capacity-planner/workload-qualification.png)
 
 4. 如果您選取 [計算 IaaS VM] ****，它會執行動作如下：
 
@@ -117,12 +117,12 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
 資料行 AA 至 AE 為輸出，並提供每部 VM 的資訊。
 
-![輸出資料行 AA 至 AE](./media/site-recovery-capacity-planner/workload-qualification-2.png)
+![螢幕擷取畫面：顯示從 AA 到 AE 的輸出資料行。](./media/site-recovery-capacity-planner/workload-qualification-2.png)
 
 ### <a name="example"></a>範例
 例如，對於具有資料表中顯示之值的六個 VM，此工具會計算並指派最佳的 Azure VM 相符項目，以及 Azure 儲存體需求。
 
-![工作負載限定性條件指派](./media/site-recovery-capacity-planner/workload-qualification-3.png)
+![顯示工作負載限定指派的螢幕擷取畫面。](./media/site-recovery-capacity-planner/workload-qualification-3.png)
 
 * 在範例輸出中，請注意下列項目：
 
@@ -144,7 +144,7 @@ Azure Site Recovery Capacity Planner 可協助您判斷使用 Azure Site Recover
 
 2. 如果您想要進行變更，您必須修改 [工作負載限定性條件]**** 工作表。 然後再次選取 [將資料提交至規劃工具]****。
 
-   ![容量規劃](./media/site-recovery-capacity-planner/capacity-planner.png)
+   ![螢幕擷取畫面，顯示 Capacity Planner 工作表中已修改的輸入和產生的輸出。](./media/site-recovery-capacity-planner/capacity-planner.png)
 
 ## <a name="next-steps"></a>後續步驟
 [了解如何執行](./hyper-v-deployment-planner-overview.md)容量規劃工具。

@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 761789b36e85b16f0b4482cef12645e673c73be7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6e62e307b6c5f5de939505eae8850f0117782a69
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429706"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498356"
 ---
 # <a name="create-an-azure-cosmos-container"></a>建立 Azure Cosmos 容器
 
@@ -119,17 +120,17 @@ ms.locfileid: "87429706"
 * [建立具有 Azure CLI 的 Gremlin 圖形](./scripts/cli/gremlin/create.md)
 * [使用 Azure CLI 建立資料表 API 資料表](./scripts/cli/table/create.md)
 
-## <a name="create-a-container-using-powershella-idps-mongodba-idps-gremlin"></a>使用 PowerShell 建立容器<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
+## <a name="create-a-container-using-powershell"></a>使用 PowerShell 建立容器
 
 下列連結顯示如何使用 PowerShell 建立 Azure Cosmos DB 的容器資源。
 
-如需所有 Azure Cosmos DB Api 中所有 PowerShell 範例的清單，請參閱[SQL API](powershell-samples-sql.md)、 [CASSANDRA API](powershell-samples-cassandra.md)、 [MongoDB api](powershell-samples-mongodb.md)、 [Gremlin API](powershell-samples-gremlin.md)和[資料表 API](powershell-samples-table.md)
+如需所有 Azure Cosmos DB Api 上所有 PowerShell 範例的清單，請參閱[Powershell 範例](powershell-samples.md)
 
 * [使用 PowerShell 建立容器](manage-with-powershell.md#create-container)
-* [使用 PowerShell 建立 MongoDB API Azure Cosmos DB 的集合](./scripts/powershell/mongodb/ps-mongodb-create.md)
-* [使用 PowerShell 建立 Cassandra 資料表](./scripts/powershell/cassandra/ps-cassandra-create.md)
-* [使用 PowerShell 建立 Gremlin 圖形](./scripts/powershell/gremlin/ps-gremlin-create.md)
-* [使用 PowerShell 建立資料表 API 資料表](./scripts/powershell/table/ps-table-create.md)
+* [使用 PowerShell 建立 MongoDB API Azure Cosmos DB 的集合](./scripts/powershell/mongodb/create.md)
+* [使用 PowerShell 建立 Cassandra 資料表](./scripts/powershell/cassandra/create.md)
+* [使用 PowerShell 建立 Gremlin 圖形](./scripts/powershell/gremlin/create.md)
+* [使用 PowerShell 建立資料表 API 資料表](./scripts/powershell/table/create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>使用 .NET SDK 建立容器
 

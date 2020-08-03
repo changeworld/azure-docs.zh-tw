@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: f95c4256f4a0a3fdf410efecf9c22d578d1963a2
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461794"
+ms.locfileid: "87500958"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>使用 Azure Machine Learning 優化資料處理
 
@@ -64,7 +64,6 @@ CSV 檔案通常用來匯入和匯出資料，因為在 Excel 中很容易就能
 * 使用或之類的 `Spark` 架構 `Dask` 來處理資料「記憶體不足」。 在此選項中，資料框架會依分割區載入 RAM 分割區並加以處理，最後的結果會在結尾收集。  
 
 * 使用分散式架構向外擴充至叢集。 在此選項中，資料處理負載會在多個平行處理的 Cpu 上分割和處理，最後在結尾收集最終結果。
-
 
 ### <a name="recommended-distributed-frameworks"></a>建議的分散式架構
 

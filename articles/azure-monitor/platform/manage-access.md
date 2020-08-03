@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: b9ca2dc9d907e65b2679c08d8d2b6482f02ba53d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 630364a95c4ee427b71aa5e8b763b4447a41c962
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327883"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489447"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure 監視器中記錄資料和工作區的存取
 
@@ -20,7 +20,7 @@ Azure 監視器會將[記錄](data-platform-logs.md)資料儲存在 log Analytic
 本文說明如何記錄管理的存取權，以及管理包含它們的工作區，包括如何授與存取權： 
 
 * 使用工作區許可權的工作區。
-* 需要使用 Azure 角色型存取控制（RBAC）從特定資源存取記錄資料的使用者，也稱為[資源內容](design-logs-deployment.md#access-mode)
+* 需要使用 Azure 角色型存取控制（Azure RBAC）從特定資源存取記錄資料的使用者（也稱為[資源內容](design-logs-deployment.md#access-mode)）
 * 需要使用 Azure RBAC 存取工作區中特定資料表之記錄資料的使用者。
 
 若要瞭解有關 RBAC 和存取策略的記錄概念，請參閱[設計您的 Azure 監視器記錄部署](design-logs-deployment.md)
@@ -313,4 +313,3 @@ Log Analytics 參與者角色包含下列 Azure 動作：
 * 請參閱 [Log Analytics 代理程式概觀](./log-analytics-agent.md)，從您資料中心或其他雲端環境中的電腦收集資料。
 
 * 請參閱[收集 azure 虛擬機器的相關資料](../learn/quick-collect-azurevm.md)，以設定從 azure vm 收集資料。
-

@@ -8,17 +8,17 @@ author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 3198160fe443f4650d8c5a880c3538efeb9346a1
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: fcc2a579f2fe9048dd58cd8b52c8c704c894936b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205258"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499342"
 ---
 # <a name="azure-cli-samples-for-load-balancer"></a>適用於負載平衡器的 Azure CLI 範例
 
@@ -28,7 +28,7 @@ ms.locfileid: "86205258"
 
   依據高可用性和負載平衡組態建立數個虛擬機器。
 
-* [跨越多個可用性區域為虛擬機器進行負載平衡](./scripts/load-balancer-linux-cli-sample-zone-redundant-frontend.md)
+* [跨越多個可用性區域為 VM 進行負載平衡](./scripts/load-balancer-linux-cli-sample-zone-redundant-frontend.md)
 
   在某區域的不同可用性區域中建立三個 VM，並建立一個具有區域備援前端 IP 位址的 Standard Load Balancer。 萬一整個資料中心失敗或遺失，這個負載平衡設定有助於保護您的應用程式和資料免於受害。
 

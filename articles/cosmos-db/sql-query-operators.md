@@ -4,14 +4,14 @@ description: 深入瞭解 SQL 運算子，例如 Azure Cosmos DB 支援的等號
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 8ef41edb687a5df39243880c897d12e83c008ec9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80063565"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498832"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB 中的運算子
 
@@ -21,19 +21,27 @@ ms.locfileid: "80063565"
 
 下表顯示 SQL API 中任何兩個 JSON 類型之間的相等比較結果。
 
-| **Op** | **未定義** | **Null** | **True** | **Number** | **String** | **Object** | **數列** |
+| **Op** | **未定義** | **Null** | **布林值** | **Number** | **String** | **Object** | **陣列** |
 |---|---|---|---|---|---|---|---|
 | **未定義** | 未定義 | 未定義 | 未定義 | 未定義 | 未定義 | 未定義 | 未定義 |
 | **Null** | 未定義 | **還行** | 未定義 | 未定義 | 未定義 | 未定義 | 未定義 |
-| **True** | 未定義 | 未定義 | **還行** | 未定義 | 未定義 | 未定義 | 未定義 |
+| **布林值** | 未定義 | 未定義 | **還行** | 未定義 | 未定義 | 未定義 | 未定義 |
 | **Number** | 未定義 | 未定義 | 未定義 | **還行** | 未定義 | 未定義 | 未定義 |
 | **String** | 未定義 | 未定義 | 未定義 | 未定義 | **還行** | 未定義 | 未定義 |
 | **Object** | 未定義 | 未定義 | 未定義 | 未定義 | 未定義 | **還行** | 未定義 |
-| **數列** | 未定義 | 未定義 | 未定義 | 未定義 | 未定義 | 未定義 | **還行** |
+| **陣列** | 未定義 | 未定義 | 未定義 | 未定義 | 未定義 | 未定義 | **還行** |
 
 對於 `>` 、 `>=` 、、和等比較運算子 `!=` ，會 `<` `<=` 產生不同類型之間或兩個物件或陣列之間的比較 `Undefined` 。  
 
 如果純量運算式的結果為 `Undefined` ，則專案不會包含在結果中，因為 `Undefined` 不等於 `true` 。
+
+例如，下列查詢會產生數位和字串值之間的比較 `Undefined` 。 因此，篩選準則不會包含任何結果。
+
+```sql
+SELECT *
+FROM c
+WHERE 7 = 'a'
+```
 
 ## <a name="logical-and-or-and-not-operators"></a>邏輯 (AND、OR 和 NOT) 運算子
 
@@ -46,7 +54,7 @@ ms.locfileid: "80063565"
 |  | **True** | **False** | **未定義** |
 | --- | --- | --- | --- |
 | **True** |True |True |True |
-| **False** |True |False |未定義 |
+| **False** |True |否 |未定義 |
 | **未定義** |True |未定義 |未定義 |
 
 **AND 運算子**
@@ -55,9 +63,9 @@ ms.locfileid: "80063565"
 
 |  | **True** | **False** | **未定義** |
 | --- | --- | --- | --- |
-| **True** |True |False |未定義 |
-| **False** |False |False |False |
-| **未定義** |未定義 |False |未定義 |
+| **True** |True |否 |未定義 |
+| **False** |否 |否 |否 |
+| **未定義** |未定義 |否 |未定義 |
 
 **NOT 運算子**
 
@@ -65,7 +73,7 @@ ms.locfileid: "80063565"
 
 |  | **並非** |
 | --- | --- |
-| **True** |False |
+| **True** |否 |
 | **False** |True |
 | **未定義** |未定義 |
 

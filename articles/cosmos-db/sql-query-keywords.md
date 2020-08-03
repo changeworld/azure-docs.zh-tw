@@ -4,14 +4,14 @@ description: 瞭解 Azure Cosmos DB 的 SQL 關鍵字。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261562"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496676"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的關鍵字
 
@@ -36,9 +36,6 @@ ms.locfileid: "81261562"
 
 在 SQL API 中，與 ANSI SQL 不同的是，您可以針對混合類型的屬性工作表示範圍查詢。 例如， `grade` 可能是像 `5` 在某些專案中的數位，以及如其他的字串 `grade4` 。 在這些情況下，如同在 JavaScript 中，兩個不同類型之間的比較會產生 `Undefined` ，因此會略過專案。
 
-> [!TIP]
-> 如需更快速的查詢執行時間，請建立索引編制原則，針對子句所篩選的任何數值屬性或路徑，使用範圍索引類型 `BETWEEN` 。
-
 ## <a name="distinct"></a>DISTINCT
 
 `DISTINCT`關鍵字會排除查詢投影中的重複專案。
@@ -50,7 +47,7 @@ SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
 
-結果如下：
+結果為：
 
 ```json
 [
@@ -65,7 +62,7 @@ SELECT DISTINCT f.lastName
 FROM Families f
 ```
 
-結果如下：
+結果為：
 
 ```json
 [
@@ -76,7 +73,7 @@ FROM Families f
 ]
 ```
 
-DISTINCT 也可以用於子查詢內的投影：
+`DISTINCT`也可以用於子查詢內的投影：
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
@@ -85,7 +82,7 @@ FROM f
 
 此查詢會投射一個陣列，其中包含每個子系的 givenName，並移除重複的專案。 此陣列的別名為 ChildNames，並預計在外部查詢中。
 
-結果如下：
+結果為：
 
 ```json
 [

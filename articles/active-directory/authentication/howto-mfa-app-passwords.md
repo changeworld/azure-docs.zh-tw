@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b247b64d563bc2b12c5bffff6a460d77cb96207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485481"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489787"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>透過使用應用程式密碼的繼承應用程式來啟用及使用 Azure 多重要素驗證
 
@@ -88,6 +88,12 @@ Azure AD 支援使用內部部署 Active Directory Domain Services （AD DS）�
 5. 在 [服務設定] 頁面上，選取 [允許使用者建立應用程式密碼以登入非瀏覽器應用程式] 選項。
 
     ![Azure 入口網站的螢幕擷取畫面，其中顯示多重要素驗證的服務設定，以允許使用者建立應用程式密碼](media/concept-authentication-methods/app-password-authentication-method.png)
+    
+> [!NOTE]
+>
+> 當您停用使用者建立應用程式密碼的功能時，現有的應用程式密碼會繼續正常執行。 不過，一旦您停用此功能，使用者就無法管理或刪除這些現有的應用程式密碼。
+>
+> 當您停用建立應用程式密碼的功能時，也建議您[建立條件式存取原則，以停用舊版驗證](../conditional-access/block-legacy-authentication.md)。 這種方法可防止現有的應用程式密碼運作，並強制使用新式驗證方法。
 
 ## <a name="create-an-app-password"></a>建立應用程式密碼
 

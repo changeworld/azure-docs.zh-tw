@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421445"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498611"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
 
@@ -34,7 +34,7 @@ ms.locfileid: "87421445"
 **快取儲存體帳戶** | 您必須要有位於來源網路中的快取儲存體帳戶。 在複寫期間，VM 變更會先儲存在快取中，再傳送至目標儲存體。  快取儲存體帳戶必須是標準。<br/><br/> 使用快取可確保在 VM 上執行的生產應用程式所受到的影響會降到最低。<br/><br/> [深入了解](azure-to-azure-support-matrix.md#cache-storage)快取儲存體需求。 
 **目標資源** | 在複寫期間和執行容錯移轉時，都會使用目標資源。 Site Recovery 可依預設進行目標資源設定，您也可自行加以建立/自訂。<br/><br/> 在目標區域中，請確認您能夠建立 VM，且您的訂用帳戶有足夠的資源可支援目標區域中所需的 VM 大小。 
 
-![來源和目標複寫](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
+![顯示來源和目標複寫的圖表。](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>目標資源
 
@@ -116,7 +116,7 @@ Site Recovery 會依照下列方式建立快照集：
 4. Site Recovery 會處理快取中的資料，並將資料傳送到目標儲存體帳戶或複本受控磁碟。
 5. 資料處理完成後，會每五分鐘產生一次絕對一致復原點。 此外匯根據複寫原則中指定的設定產生應用程式一致復原點。
 
-![啟用複寫程序，步驟 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
+![顯示覆寫程式的圖表，步驟2。](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **複寫程序**
 
@@ -128,7 +128,7 @@ Site Recovery 會依照下列方式建立快照集：
 
 如果使用 URL 來控制 VM 的輸出存取，請允許這些 URL。
 
-| **名稱**                  | **商業**                               | **政府**                                 | **說明** |
+| **名稱**                  | **商業**                               | **政府機關**                                 | **說明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
@@ -191,7 +191,7 @@ Site Recovery 會依照下列方式建立快照集：
 
 您起始容錯移轉時，系統會在目標資源群組、目標虛擬網路，目標子網路和目標可用性設定組中建立 VM。 在容錯移轉時，您可以使用任何復原點。
 
-![容錯移轉程序](./media/concepts-azure-to-azure-architecture/failover-v2.png)
+![此圖顯示具有來源和目標環境的容錯移轉程式。](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>後續步驟
 

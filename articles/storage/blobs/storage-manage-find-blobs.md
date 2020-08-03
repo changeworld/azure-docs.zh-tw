@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355653"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499869"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>使用 Blob 索引來管理和尋找 Azure Blob 儲存體上的資料（預覽）
 
@@ -63,7 +63,7 @@ Blob 索引標籤是機碼值屬性，可套用至儲存體帳戶內的新或現
 > 「優先順序」 = ' 01 ' 
 >
 
-若要修改現有的索引標記屬性，您必須先取出現有的標記屬性、修改標記屬性，然後將取代為 SetBlobTags 作業。 若要從 blob 中移除所有索引標籤，請呼叫 SetBlobTags 作業，但不指定任何標記屬性。 Blob 索引標記是 blob 資料內容的子資源，因此 SetBlobTags 不會修改任何基礎內容，也不會變更 blob 的上次修改時間或 ETag （實體標記）。 您可以建立或修改所有目前基底 blob 和舊版的索引標籤;不過，快照集或虛刪除的 blob 上的標記無法修改。 
+若要修改現有的索引標記屬性，您必須先取出現有的標記屬性、修改標記屬性，然後將取代為 SetBlobTags 作業。 若要從 blob 中移除所有索引標籤，請呼叫 SetBlobTags 作業，但不指定任何標記屬性。 Blob 索引標記是 blob 資料內容的子資源，因此 SetBlobTags 不會修改任何基礎內容，也不會變更 blob 的上次修改時間或 eTag （實體標記）。 您可以建立或修改所有目前基底 blob 和舊版的索引標籤;不過，快照集或虛刪除的 blob 上的標記無法修改。 
 
 下列限制適用于 Blob 索引標籤：
 - 每個 blob 最多可以有10個 blob 索引標籤
@@ -293,6 +293,7 @@ az provider register --namespace 'Microsoft.Storage'
 -   目前不支援帳戶容錯移轉。 在容錯移轉之後，blob 索引可能無法正確更新。
 -   生命週期管理目前僅支援 Blob 索引相符的等號檢查。
 -   CopyBlob 不會將 blob 索引標記從來源 blob 複製到新的目的地 blob。 您可以指定要在複製作業期間套用至目的地 blob 的標記。 
+- 在目的地 blob 上已套用標籤的另一個儲存體帳戶 CopyBlob （非同步複製）目前會導致 blob 索引引擎不會在篩選集中傳回 blob 及其標記。 建議您在過渡期間使用 CopyBlob from URL （同步複製）。
 -   標記會在建立快照集時保存;不過，目前不支援升級快照集，而且可能會導致設定空的標記。
 
 ## <a name="faq"></a>常見問題集
@@ -308,5 +309,7 @@ Blob 索引標籤只支援字串資料類型，而且查詢會以字典的順序
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱如何使用 Blob 索引的範例。 請參閱[利用 Blob 索引來管理和尋找資料](storage-blob-index-how-to.md)
+如需如何使用 Blob 索引的範例，請參閱[利用 Blob 索引來管理和尋找資料](storage-blob-index-how-to.md)。
+
+瞭解[生命週期管理](storage-lifecycle-management-concepts.md)，並設定 Blob 索引相符的規則。
 

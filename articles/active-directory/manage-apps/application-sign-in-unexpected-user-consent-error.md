@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a7709cf0522727257025b2dddc495b20fe8448
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0be99a673fe3d062e114f375891f3c821c118d76
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763749"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499495"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>對應用程式執行同意時出現非預期的錯誤
 
@@ -38,6 +38,8 @@ ms.locfileid: "84763749"
 當非公司系統管理員的使用者嘗試使用的應用程式正在要求只有系統管理員能夠授與的權限時，會發生此錯誤。 可代表其組織授與應用程式存取權的系統管理員能夠解決此錯誤。
 
 當使用者因為 Microsoft 偵測到許可權要求有風險而無法同意應用程式時，也可能會發生此錯誤。 在此情況下，也會記錄「ApplicationManagement」類別、「同意應用程式的活動」和「偵測到具風險的應用程式」的狀態原因的「audit 事件」。
+
+另一個可能發生此錯誤的案例是，應用程式需要使用者指派，但未提供系統管理員同意。 在此情況下，系統管理員必須先提供系統管理員同意。   
 
 ## <a name="policy-prevents-granting-permissions-error"></a>原則禁止授與權限錯誤
 * **AADSTS90093：**&lt;tenantDisplayName&gt; 的系統管理員設定了原則，讓您無法將 &lt;應用程式名稱&gt; 正在要求的權限授與該應用程式。 請連絡 &lt;tenantDisplayName&gt; 的系統管理員，其可代表您將權限授與此應用程式。

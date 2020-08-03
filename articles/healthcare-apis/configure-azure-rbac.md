@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: a3cdb5a640e09c0095db79f5e3a43b455a1a5705
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 8e4b5fdecfc5b9fcb2deb68a482b084a6e6ed6d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447157"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496163"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>設定適用于 FHIR 的 Azure RBAC 
 
@@ -30,7 +30,7 @@ ms.locfileid: "87447157"
 
 若要授與使用者、服務主體或群組對 FHIR 資料平面的存取權，請按一下 [**存取控制（IAM）**]，然後按一下 [**角色指派**]，再按一下 [ **+ 新增**]：
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="新增 Azure RBAC 角色指派":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="新增 Azure 角色指派":::
 
 在 [**角色**選取] 中，搜尋 FHIR 資料平面的其中一個內建角色：
 
@@ -53,7 +53,7 @@ Azure API for FHIR 將會快取最多5分鐘的決策。 如果您授與使用�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解如何為 FHIR 資料平面指派 Azure RBAC 角色。 接下來，請瞭解 Azure API for FHIR 的其他設定：
+在本文中，您已瞭解如何為 FHIR 資料平面指派 Azure 角色。 接下來，請瞭解 Azure API for FHIR 的其他設定：
  
 >[!div class="nextstepaction"]
 >[其他設定 Azure API for FHIR](azure-api-for-fhir-additional-settings.md)

@@ -4,12 +4,12 @@ description: 攜帶您自己的金鑰（BYOK）來加密 AKS OS 和資料磁片�
 services: container-service
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: d8443c9c7a0af7bfb7f146904c913663d82786b8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f0b96b3f78adf4a7efb1d43626a5aaf82a5b5d43
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057299"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499614"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中攜帶您自己的金鑰（BYOK）與 Azure 磁片
 
@@ -161,11 +161,10 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>限制
 
-* Kubernetes 1.17 版和更新版本支援的資料磁片加密   
-* 僅適用于支援 BYOK 的區域
+* Kubernetes 1.17 版和更新版本支援的資料磁片加密
 * 使用客戶管理的金鑰加密目前僅適用于新的 AKS 叢集，無法升級現有的叢集
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 審查[AKS 叢集安全性的最佳做法][best-practices-security]
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5f6fca572524d1b0254c777d0820d8781c9f7be8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030040"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496622"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的 Azure 安全性基準-超大規模資料庫
 
@@ -394,7 +394,7 @@ Azure AD 認證也可用於管理平面層級 (例如 Azure 入口網站) 的管
 
 您也可將記錄內嵌到 Azure Sentinel 中，以便進一步調查。
 
-* [Azure AD Identity Protection 總覽](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)
+* [Azure AD Identity Protection 概觀](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection)
 
 * [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
 
@@ -484,7 +484,7 @@ Azure AD 認證也可用於管理平面層級 (例如 Azure 入口網站) 的管
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
 
-**指引**：使用 Azure 角色型存取控制（RBAC）來控制對超大規模資料庫（Citus）控制平面的存取（例如 Azure 入口網站）。 RBAC 不會影響資料庫中的使用者權限。
+**指引**：使用 Azure 角色型存取控制（azure RBAC）來控制超大規模資料庫（Citus）控制平面的存取權（例如 Azure 入口網站）。 RBAC 不會影響資料庫中的使用者權限。
 
 若要在資料庫層級修改使用者權限，請使用 PgAdmin 或 psql 之類的工具來使用標準于 postgresql 命令。
 

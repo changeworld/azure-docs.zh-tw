@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b834dda926b7da1241a325e1453143eccafaf30
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387825"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488766"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>透過使用者流程將存取權杖傳遞到 Azure Active Directory B2C 中的應用程式
 
@@ -24,9 +24,9 @@ Azure Active Directory B2C （Azure AD B2C）中的[使用者流程](user-flow-o
 
 Azure AD B2C 目前僅支援傳遞[OAuth 2.0](authorization-code-flow.md)身分識別提供者（包括[Facebook](identity-provider-facebook.md)和[Google](identity-provider-google.md)）的存取權杖。 對於所有其他識別提供者，宣告會傳回空白。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 您的應用程式必須使用 [v2 使用者流程](user-flow-versions.md)。
+* 您的應用程式必須使用[建議的使用者流程](user-flow-versions.md)。
 * 您的自訂原則是使用 OAuth 2.0 識別提供者設定。
 
 ## <a name="enable-the-claim"></a>啟用宣告

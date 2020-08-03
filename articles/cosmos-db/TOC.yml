@@ -78,7 +78,7 @@
     - name: Python 範例
       href: sql-api-python-samples.md
     - name: PowerShell
-      href: powershell-samples-sql.md
+      href: powershell-samples.md
     - name: Azure CLI
       href: cli-samples.md
     - name: Azure Resource Manager
@@ -458,12 +458,6 @@
         - name: 參數化查詢
           displayName: 'parameterized query, parameterized, parameter, parameters'
           href: sql-query-parameterized-queries.md
-        - name: SQL 查詢執行
-          displayName: 'query performance, query execution'
-          href: sql-query-execution.md
-        - name: 分頁
-          displayName: 'page, paging, continuation, token, pagination'
-          href: sql-query-pagination.md
         - name: LINQ to SQL
           displayName: 'linq, .NET'
           href: sql-query-linq-to-sql.md
@@ -674,7 +668,7 @@
               href: manage-cassandra-with-resource-manager.md
               displayName: ARM
             - name: 使用 Powershell 管理
-              href: powershell-samples-cassandra.md
+              href: powershell-samples.md
             - name: 使用 Azure CLI 管理
               href: cli-samples.md
     - name: MongoDB API
@@ -768,7 +762,7 @@
               href: manage-mongodb-with-resource-manager.md
               displayName: ARM
             - name: 使用 Powershell 管理
-              href: powershell-samples-mongodb.md
+              href: powershell-samples.md
             - name: 使用 Azure CLI 管理
               href: cli-samples.md
             - name: 針對常見問題進行疑難排解
@@ -828,7 +822,7 @@
               href: manage-gremlin-with-resource-manager.md
               displayName: ARM
             - name: 使用 Powershell 管理
-              href: powershell-samples-gremlin.md
+              href: powershell-samples.md
             - name: 使用 Azure CLI 管理
               href: cli-samples.md
         - name: 參考
@@ -899,7 +893,7 @@
               href: manage-table-with-resource-manager.md
               displayName: ARM
             - name: 使用 Powershell 管理
-              href: powershell-samples-table.md
+              href: powershell-samples.md
             - name: 使用 Azure CLI 管理
               href: cli-samples.md
         - name: 參考

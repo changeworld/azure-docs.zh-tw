@@ -10,12 +10,13 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5d047aa3c5c937e3b84b8fa672101bc801221067
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 50745c96f73f4e2d666a82746549ed361502e381
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82871359"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501384"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>變更儲存體帳戶的複寫方式
 
@@ -23,7 +24,7 @@ Azure 儲存體會一律儲存資料的多個複本，以保護該資料不受�
 
 Azure 儲存體提供下列類型的複寫：
 
-- 本機備援儲存體 (LRS)
+- 本地備援儲存體 (LRS)
 - 區域備援儲存體 (ZRS)
 - 異地多餘儲存體（GRS）或讀取權限異地冗余儲存體（RA-GRS）
 - 異地區域-多餘儲存體（切換）或讀取權限異地區域-多餘儲存體（RA-切換）
@@ -122,14 +123,14 @@ ZRS 僅支援一般用途 v2 帳戶，因此請務必先升級您的儲存體帳
 
 1. 選取 [**新增支援要求**]
 2. 根據您的帳戶資訊，完成 [基本]**** 資訊。 在 [服務]**** 區段中，選取 [儲存體帳戶管理]**** 和您想要轉換成 ZRS 的資源。
-3. 選取 [下一步]。
+3. 選取 [下一步] 。
 4. 在 [問題]**** 區段中，指定下列值︰
     - **嚴重性**：將預設值保持不變。
     - **問題類型**：選取 [資料移轉]****。
     - **類別**：選取 [**遷移至 ZRS**]。
     - **標題**：輸入描述性標題，例如 **ZRS 帳戶移轉**。
     - **詳細資料**：在 [**詳細資料**] 方塊中輸入其他詳細資料，例如，我想要從區域中的 [LRS，GRS] 遷移至 ZRS \_ \_ 。
-5. 選取 [下一步]。
+5. 選取 [下一步] 。
 6. 確認 [連絡人資訊]**** 刀鋒視窗上的連絡人資訊正確。
 7. 選取 [建立]。
 

@@ -7,32 +7,32 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 02050745e7c8a9aa05d3f2de63a4bc5f1ebf8318
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e73f53fe983c1ebe77044993a281847ad362a840
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654785"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496768"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫 Azure 安全性基準
 
 適用於 MySQL 的 Azure 資料庫 Azure 安全性基準，會提供有助於改善部署安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性基準測試版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱 [Azure 安全性基準概觀](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) (機器翻譯)。
 
 ## <a name="network-security"></a>網路安全性
 
-如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。
+如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security) (機器翻譯)。
 
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
-**指引**：使用私人端點為適用於 MySQL 的 Azure 資料庫設定 Private Link。 Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務。 Azure Private Link 基本上會將 Azure 服務帶入您的私人虛擬網路 (VNet) 內部。 您的虛擬網路與 MySQL 執行個體之間的流量會經由 Microsoft 骨幹網路傳輸。
+**指引**：使用私人端點為適用於 MySQL 的 Azure 資料庫設定 Private Link。 Private Link 可讓您透過私人端點連線到 Azure 中的各種 PaaS 服務。 Azure Private Link 基本上會將 Azure 服務帶入私人虛擬網路 (VNet) 內部。 您的虛擬網路與 MySQL 執行個體之間的流量會經由 Microsoft 骨幹網路傳輸。
 
 您也可以使用虛擬網路服務端點來保護和限制對適用於 MySQL 的 Azure 資料庫實作的網路存取。 虛擬網路規則是一項防火牆安全性功能，可控制適用於 MySQL 的 Azure 資料庫伺服器是否接受從虛擬網路中特定子網路所傳來的通訊。
 
-您也可以使用防火牆規則保護適用於 MySQL 的 Azure 資料庫伺服器。 伺服器防火牆會防止對您資料庫伺服器的所有存取，直到您指定哪些電腦擁有權限。 若要設定您的防火牆，您可以建立防火牆規則，指定可接受的 IP 位址範圍。 您可以在伺服器層級建立防火牆規則。
+您也可以使用防火牆規則保護適用於 MySQL 的 Azure 資料庫伺服器。 伺服器防火牆會防止對資料庫伺服器的所有存取，直到您指定哪些電腦擁有權限。 若要設定您的防火牆，您可以建立防火牆規則，指定可接受的 IP 位址範圍。 您可以在伺服器層級建立防火牆規則。
 
 如何為適用於 MySQL 的 Azure 資料庫設定 Private Link： https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal
 
@@ -46,7 +46,7 @@ ms.locfileid: "83654785"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：監視和記錄 VNet、子網路與 NIC 的設定和流量
 
-**指引**：當適用於 MySQL 的 Azure 資料庫執行個體固定於私人端點時，您可以在相同的虛擬網路中部署虛擬機器。 您可以使用網路安全性群組 (NSG) 降低資料外洩的風險。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶進行流量稽核。 您也可以將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析提供對 Azure 雲端流量的深入解析。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式，並且找到網路設定的錯誤。
+**指引**：當適用於 MySQL 的 Azure 資料庫執行個體固定於私人端點時，您可以在相同的虛擬網路中部署虛擬機器。 您可使用網路安全性群組 (NSG) 來降低資料外洩的風險。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶進行流量稽核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
 如何為適用於 MySQL 的 Azure 資料庫設定 Private Link： https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal
 
@@ -68,9 +68,9 @@ ms.locfileid: "83654785"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
 
-**指引**：為適用於 MySQL 的 Azure 資料庫使用 Azure 進階威脅防護。 Azure 進階威脅防護偵測到了異常活動，這表示有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
+**指引**：為適用於 MySQL 的 Azure 資料庫使用 Azure 進階威脅防護。 進階威脅防護會偵測異常活動，指出有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
-在與適用於 MySQL 的 Azure 資料庫執行個體相關聯的虛擬網路上，啟用 Azure DDoS 保護標準，以抵禦分散式阻斷服務攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
+在與適用於 MySQL 的 Azure 資料庫執行個體相關聯的虛擬網路上，啟用 Azure DDoS 保護標準，以抵禦分散式阻斷服務攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
 
 如何為適用於 MySQL 的 Azure 資料庫設定 Azure 進階威脅防護： https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
 
@@ -82,7 +82,7 @@ ms.locfileid: "83654785"
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：記錄網路封包和流量記錄
 
-**指引**：當適用於 MySQL 的 Azure 資料庫執行個體固定於私人端點時，您可以在相同的虛擬網路中部署虛擬機器。 然後可以設定網路安全性群組 (NSG)，以降低資料外洩的風險。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶進行流量稽核。 您也可以將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析提供對 Azure 雲端流量的深入解析。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式，並且找到網路設定的錯誤。
+**指引**：當適用於 MySQL 的 Azure 資料庫執行個體固定於私人端點時，您可以在相同的虛擬網路中部署虛擬機器。 然後可設定網路安全性群組 (NSG)，以降低資料外洩的風險。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶進行流量稽核。 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
 如何啟用 NSG 流量記錄： https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
@@ -94,7 +94,7 @@ ms.locfileid: "83654785"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統 (IDS/IPS)
 
-**指引**：為適用於 MySQL 的 Azure 資料庫使用 Azure 進階威脅防護。 Azure 進階威脅防護偵測到了異常活動，這表示有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
+**指引**：為適用於 MySQL 的 Azure 資料庫使用 Azure 進階威脅防護。 進階威脅防護會偵測異常活動，指出有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
 如何為適用於 MySQL 的 Azure 資料庫設定 Azure 進階威脅防護： https://docs.microsoft.com/azure/mysql/howto-database-threat-protection-portal
 
@@ -146,9 +146,9 @@ ms.locfileid: "83654785"
 
 **指引**：針對適用於 MySQL 的 Azure 資料庫，使用網路安全性和流量相關的資源標籤，以提供中繼資料和邏輯組織。
 
-可使用與建立標籤相關的任何內建 Azure 原則定義 (例如「要求標籤及其值」) 以確保建立的所有資源都帶有標籤，並向您通知未加上標籤的現有資源。
+使用與標記相關的任何內建 Azure 原則定義 (例如「需要標籤及其值」)，以確保建立的所有資源都具有標籤，並向您通知未加上標籤的現有資源。
 
-您可以使用 Azure PowerShell 或 Azure CLI，根據資源的標籤對資源進行查詢或執行動作。
+您可使用 Azure PowerShell 或 Azure CLI，根以據資源的標籤對資源進行查詢或執行動作。
 
 如何建立和使用標籤： https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
@@ -170,7 +170,7 @@ ms.locfileid: "83654785"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-如需詳細資訊，請參閱[安全性控制：*記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+如需詳細資訊，請參閱[安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring) (機器翻譯)。
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
@@ -182,7 +182,7 @@ ms.locfileid: "83654785"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指引**：啟用診斷設定和伺服器記錄並內嵌記錄，以彙總適用於 MySQL 的 Azure 資料庫執行個體所產生的安全性資料。 在 Azure 監視器中使用 Log Analytics 工作區執行查詢和分析，並使用 Azure 儲存體帳戶處理長期/封存的儲存作業。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並且讓資料上線。
+**指引**：啟用診斷設定和伺服器記錄並內嵌記錄，以彙總適用於 MySQL 的 Azure 資料庫執行個體所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區來查詢和執行分析，並使用 Azure 儲存體帳戶進行長期/封存儲存。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
 
 了解適用於 MySQL 的 Azure 資料庫的伺服器記錄： https://docs.microsoft.com/azure/mysql/concepts-monitoring#server-logs
 
@@ -230,11 +230,11 @@ ms.locfileid: "83654785"
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：監視和檢閱記錄
 
-**指引**：分析和監視來自適用於 MySQL 的 Azure 資料庫執行個體的記錄，以了解異常行為。 使用 Azure 監視器的 Log Analytics 檢閱記錄，並對記錄資料執行查詢。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並且讓資料上線。
+**指引**：分析和監視來自適用於 MySQL 的 Azure 資料庫執行個體的記錄，以了解異常行為。 使用 Azure 監視器的 Log Analytics 檢閱記錄，並對記錄資料執行查詢。 或者，您也可啟用 Azure Sentinel 或第三方 SIEM，並讓資料上線。
 
 如何讓 Azure Sentinel 上線： https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Log Analytics 的詳細資訊： https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+如需 Log Analytics 的詳細資訊： https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
 如何在 Azure 監視器中執行自訂查詢： https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
@@ -244,7 +244,7 @@ Log Analytics 的詳細資訊： https://docs.microsoft.com/azure/azure-monitor/
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 
-**指引**：為適用於 MySQL 的 Azure 資料庫啟用 Azure 進階威脅防護。 Azure 進階威脅防護偵測到了異常活動，這表示有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
+**指引**：為適用於 MySQL 的 Azure 資料庫啟用 Azure 進階威脅防護。 進階威脅防護會偵測異常活動，指出有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
 此外，您可以啟用 MySQL 的伺服器記錄和診斷設定，並將記錄傳送至 Log Analytics 工作區。 請將您的 Log Analytics 工作區在 Azure Sentinel 上線，因為其可提供安全性協調流程自動化回應 (SOAR) 解決方案。 如此可建立劇本 (自動化解決方案)，並用於修復安全性問題。
 
@@ -290,7 +290,7 @@ Log Analytics 的詳細資訊： https://docs.microsoft.com/azure/azure-monitor/
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。
+如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control) (機器翻譯)。
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
@@ -336,7 +336,7 @@ Log Analytics 的詳細資訊： https://docs.microsoft.com/azure/azure-monitor/
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
-**指引**：可支援透過資料庫中直接設定的使用者名稱/密碼，以及使用 Azure Active Directory (AD) 身分識別並利用 Azure AD 權杖進行連線，來登入適用於 MySQL 的 Azure 資料庫。 使用 Azure AD 權杖時，則可支援不同的方法，例如使用 Azure AD 使用者、Azure AD 群組，或連線至資料庫的 Azure AD 應用程式。
+**指引**：可支援透過資料庫中直接設定的使用者名稱/密碼，以及使用 Azure Active Directory (AD) 身分識別並利用 Azure AD 權杖進行連線，來登入適用於 MySQL 的 Azure 資料庫。 使用 Azure AD 權杖時，則支援不同的方法，例如使用 Azure AD 使用者、Azure AD 群組，或連線至資料庫的 Azure AD 應用程式。
 
 另外可透過 REST API 提供 MySQL 的控制平面存取權，並支援 SSO。 若要驗證，請將授權標頭設為從 Azure Active Directory 取得的 JSON Web 權杖。
 
@@ -352,7 +352,7 @@ Log Analytics 的詳細資訊： https://docs.microsoft.com/azure/azure-monitor/
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**指引**：啟用 Azure Active Directory 多重要素驗證 (MFA)，並遵循 Azure 資訊安全中心的身分識別與存取管理建議。 利用 Azure AD 權杖登入您的資料庫時，您可以要求使用多重要素驗證登入資料庫。
+**指引**：啟用 Azure Active Directory Multi-Factor Authentication (MFA)，並遵循 Azure 資訊安全中心的身分識別與存取管理建議。 利用 Azure AD 權杖登入資料庫時，即可要求使用多重要素驗證登入資料庫。
 
 如何在 Azure 中啟用 MFA： https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
@@ -396,7 +396,7 @@ Log Analytics 的詳細資訊： https://docs.microsoft.com/azure/azure-monitor/
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
-**指引**：請使用條件式存取具名位置，僅允許從 IP 位址範圍或國家/區域的特定邏輯群組存取入口網站和 Azure Resource Manager。
+**指引**：使用條件式存取具名位置，僅允許從 IP 位址範圍或國家/區域的特定邏輯群組存取入口網站和 Azure Resource Manager。
 
 如何在 Azure 中設定具名位置： https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
@@ -406,7 +406,7 @@ Log Analytics 的詳細資訊： https://docs.microsoft.com/azure/azure-monitor/
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指引**：使用 Azure Active Directory (AD) 做為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
+**指引**：使用 Azure Active Directory (AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
 若要登入適用於 MySQL 的 Azure 資料庫，建議使用 Azure AD 並透過 Azure AD 權杖連線。 使用 Azure AD 權杖時，則可支援不同的方法，例如使用 Azure AD 使用者、Azure AD 群組，或連線至資料庫的 Azure AD 應用程式。 
 
@@ -448,7 +448,7 @@ Azure AD 認證也可以用於管理平面層級 (例如，Azure 入口網站) �
 
 **指引**：為適用於 MySQL 的 Azure 資料庫啟用 Azure 進階威脅防護，針對可疑活動產生警示。
 
-請使用 Azure Active Directory Identity Protection 和風險偵測功能，設定針對偵測到的可疑動作的自動化回應。 您可以透過 Azure Sentinel 啟用自動化回應，以實作貴組織的安全性回應。
+使用 Azure Active Directory Identity Protection 和風險偵測功能，設定對所偵測到可疑動作的自動化回應。 您可透過 Azure Sentinel 啟用自動化回應，以實作組織的安全性回應。
 
 您也可將記錄內嵌到 Azure Sentinel 中，以便進一步調查。
 
@@ -476,9 +476,9 @@ Azure AD Identity Protection 概觀： https://docs.microsoft.com/azure/active-d
 
 ## <a name="data-protection"></a>資料保護
 
-如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。
+如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection) (機器翻譯)。
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的清查
 
 **指引**：使用標籤協助追蹤可儲存或處理敏感性資訊的適用於 MySQL 的 Azure 資料庫執行個體或相關資源。
 
@@ -490,9 +490,9 @@ Azure AD Identity Protection 概觀： https://docs.microsoft.com/azure/active-d
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引**：針對開發、測試和生產，實作不同的訂閱和/或管理群組。 請搭配使用 Private Link、服務端點，及/或防火牆規則，隔離並限制對適用於 MySQL 的 Azure 資料庫執行個體的網路存取。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 請搭配使用 Private Link、服務端點，及/或防火牆規則，隔離並限制對適用於 MySQL 的 Azure 資料庫執行個體的網路存取。
 
-如何建立其他 Azure 訂閱： https://docs.microsoft.com/azure/billing/billing-create-subscription
+如何建立其他 Azure 訂用帳戶： https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 如何建立管理群組： https://docs.microsoft.com/azure/governance/management-groups/create
 
@@ -537,7 +537,7 @@ Microsoft 會管理適用於 MySQL 的 Azure 資料庫的基礎結構，並已�
 
 **指引**：適用於 MySQL 的 Azure 資料庫目前無法使用資料識別、分類及外洩防護功能。 若需要達到合規性目標，請實作協力廠商解決方案。
 
-對於 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
+針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制和功能。
 
 了解 Azure 中的客戶資料保護： https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
@@ -547,7 +547,7 @@ Microsoft 會管理適用於 MySQL 的 Azure 資料庫的基礎結構，並已�
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**：使用 Azure 角色型存取控制 (RBAC) 來控制適用於 MySQL 的 Azure 資料庫控制平面 (例如 Azure 入口網站) 的存取權。 對於資料平面存取 (在該資料庫本身內)，請使用 SQL 查詢來建立使用者和設定使用者權限。 RBAC 不會影響資料庫中的使用者權限。
+**指引**：使用 Azure 角色型存取控制（azure RBAC）來控制適用於 MySQL 的 Azure 資料庫控制平面的存取權（例如 Azure 入口網站）。 針對資料平面存取 (在該資料庫本身內)，請使用 SQL 查詢來建立使用者和設定使用者權限。 RBAC 不會影響資料庫中的使用者權限。
 
 如何在 Azure 中設定 RBAC： https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
@@ -573,7 +573,7 @@ Microsoft 會管理適用於 MySQL 的 Azure 資料庫的基礎結構，並已�
 
 **指引**：適用於 MySQL 的 Azure 資料庫服務針對待用資料儲存體加密是使用符合 FIPS 140-2 的加密模組。 資料 (包含備份) 會在磁碟上加密，但不包括執行查詢時所建立的暫存檔案。 該服務使用包含在 Azure 儲存體加密中的 AES 256 位元加密，且金鑰是由系統進行管理。 儲存體加密會一律啟用，且無法停用。
 
-適用於 MySQL 的 Azure 資料庫使用客戶管理金鑰的資料加密，可讓您攜帶自己的金鑰 (BYOK) 來保護待用資料。 此時，您必須要求存取權限，才能使用這項功能。 若要這樣做，請連絡：
+適用於 MySQL 的 Azure 資料庫使用客戶管理金鑰的資料加密，可讓您攜帶自己的金鑰 (BYOK) 來保護待用資料。 此時，您必須要求存取權，才能使用這項功能。 若要這樣做，請連絡：
 
 AskAzureDBforMySQL@service.microsoft.com
 
@@ -597,7 +597,7 @@ AskAzureDBforMySQL@service.microsoft.com
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。
+如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management) (機器翻譯)。
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
@@ -644,7 +644,7 @@ Azure 資訊安全中心中 Azure PaaS 服務的功能涵蓋範圍： https://do
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。
+如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management) (機器翻譯)。
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
 
@@ -652,7 +652,7 @@ Azure 資訊安全中心中 Azure PaaS 服務的功能涵蓋範圍： https://do
 
 如何使用 Azure Resource Graph 建立查詢： https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-如何檢視您的 Azure 訂閱： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+如何檢視 Azure 訂用帳戶： https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
 了解 Azure RBAC： https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -674,7 +674,7 @@ Azure 資訊安全中心中 Azure PaaS 服務的功能涵蓋範圍： https://do
 
 **指引**：在適當情況下，使用建立標籤、管理群組和個別訂閱來組織及追蹤適用於 MySQL 的 Azure 資料庫執行個體及其相關資源。 請定期調節清查，並確保會及時刪除訂閱中未經授權的資源。
 
-如何建立其他 Azure 訂閱： https://docs.microsoft.com/azure/billing/billing-create-subscription
+如何建立其他 Azure 訂用帳戶： https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 如何建立管理群組： https://docs.microsoft.com/azure/governance/management-groups/create
 
@@ -684,7 +684,7 @@ Azure 資訊安全中心中 Azure PaaS 服務的功能涵蓋範圍： https://do
 
 **責任**：客戶
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：維護受核准 Azure 資源和軟體項目的清查
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：維護受核准 Azure 資源和軟體標題的清查
 
 **指引**：不適用，這項建議主要用於計算資源和整體 Azure。
 
@@ -694,13 +694,13 @@ Azure 資訊安全中心中 Azure PaaS 服務的功能涵蓋範圍： https://do
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
-**指引**：使用下列內建原則定義，利用 Azure 原則對可在客戶訂閱中建立的資源類型施加限制：
+**指引**：使用下列內建原則定義，以利用 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制：
 
 - 不允許的資源類型
 
 - 允許的資源類型
 
-此外，使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。
+此外，使用 Azure Resource Graph 來查詢/探索其訂用帳戶內的資源。
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -736,7 +736,7 @@ Azure 資訊安全中心中 Azure PaaS 服務的功能涵蓋範圍： https://do
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
-**指引**：使用下列內建原則定義，利用 Azure 原則對可在客戶訂閱中建立的資源類型施加限制：
+**指引**：使用下列內建原則定義，以利用 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制：
 
 - 不允許的資源類型
 
@@ -786,7 +786,7 @@ Azure 資訊安全中心中 Azure PaaS 服務的功能涵蓋範圍： https://do
 
 ## <a name="secure-configuration"></a>安全設定
 
-如需詳細資訊，請參閱[安全性控制：安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。
+如需詳細資訊，請參閱[安全性控制：安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration) (機器翻譯)。
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
@@ -812,7 +812,7 @@ Azure 資訊安全中心中 Azure PaaS 服務的功能涵蓋範圍： https://do
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
-**指引**：使用 Azure 原則 [拒絕] 和 [在不存在時部署]，對您的 Azure 資源強制使用安全設定。
+**指引**：使用 Azure 原則 [拒絕] 和 [在不存在時部署]，以對 Azure 資源強制使用安全設定。
 
 如何設定和管理 Azure 原則： https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -860,7 +860,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 **責任**：客戶
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的系統組態管理工具
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的系統設定管理工具
 
 **指引**：不適用，這項建議主要用於計算資源。
 
@@ -906,7 +906,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 對於在 Azure App Service 上執行的 Azure 虛擬機器或 Web 應用程式 (用於存取您的適用於 MySQL 的 Azure 資料庫執行個體)，請將受控服務識別與 Azure Key Vault 結合使用，以儲存和擷取適用於 MySQL 的 Azure 資料庫執行個體的認證。 確保已啟用 Key Vault 虛刪除。
 
-使用受控識別，在 Azure Active Directory (AD) 中為 Azure 服務提供自動受控識別。 受控識別可讓您對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要您程式碼中的任何認證。
+使用受控識別，在 Azure Active Directory (AD) 中為 Azure 服務提供自動受控識別。 受控識別可供對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要程式碼中的任何認證。
 
 如何設定受控識別： https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
@@ -928,7 +928,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-如需詳細資訊，請參閱[安全性控制：*惡意程式碼防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
+如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense) (機器翻譯)。
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -962,7 +962,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ## <a name="data-recovery"></a>資料復原
 
-如需詳細資訊，請參閱[安全性控制：資料復原](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。
+如需詳細資訊，請參閱[安全性控制：資料復原](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery) (機器翻譯)。
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
@@ -993,7 +993,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
-**指引**：在適用於 MySQL 的 Azure 資料庫中，還原執行作業會從原始伺服器的備份中建立新的伺服器。 有兩種類型的還原可使用：時間點還原和異地還原。 時間點還原可搭配任一備份備援選項使用，並在您原始伺服器所在區域中建立新的伺服器。 異地還原只能您將伺服器設定為使用異地備援儲存體時使用，這可讓您將伺服器還原至不同的區域。
+**指引**：在適用於 MySQL 的 Azure 資料庫中，還原執行作業會從原始伺服器的備份中建立新的伺服器。 有兩種類型的還原可使用：時間點還原和異地還原。 時間點還原可搭配任一備份備援選項使用，並在原始伺服器所在區域中建立新的伺服器。 異地還原只能在將伺服器設定為使用異地備援儲存體時使用，這可供將伺服器還原至不同的區域。
 
 預估的復原時間取決於數個因素，包括資料庫大小、交易記錄大小、網路頻寬，以及在相同區域中同時進行復原的資料庫總數。 復原時間通常不到 12 小時。
 
@@ -1017,11 +1017,11 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 ## <a name="incident-response"></a>事件回應
 
-如需詳細資訊，請參閱[安全性控制：*事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+如需詳細資訊，請參閱[安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response) (機器翻譯)。
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
-**指引**：為您的組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。
+**指引**：為組織製作事件回應指南。 請確定有書面的事件回應計畫，其中定義人員的所有角色，以及從偵測到事件後檢討的事件處理/管理階段。
 
 如何設定 Azure 資訊安全中心內的工作流程自動化： https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
@@ -1029,7 +1029,7 @@ Azure Repos 文件： https://docs.microsoft.com/azure/devops/repos/index?view=a
 
 Microsoft 安全性回應中心的事件剖析： https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-客戶也可以利用 NIST 的電腦安全性事件處理指南，協助建立自己的事件回應計畫： https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+客戶也可利用 NIST 的電腦安全性事件處理指南，以協助建立自己的事件回應計畫： https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1037,9 +1037,9 @@ Microsoft 安全性回應中心的事件剖析： https://msrc-blog.microsoft.co
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程序
 
-**指引**：資訊安全中心會指派每個警示的嚴重性，協助您設定應優先調查哪些警示。 嚴重性所依據的是資訊安全中心對用於發出警示的發現或分析的信心程度，以及導致警示的活動背後有惡意意圖的信賴等級。
+**指引**：資訊安全中心會指派每個警示的嚴重性，以協助設定應優先調查哪些警示。 嚴重性會依據資訊安全中心對用於發出警示的發現或分析其信心程度，以及信賴等級具有活動背後會導致警示的惡意意圖。
 
-此外，使用標記清楚地標示訂閱 (例如， 生產、非生產) 並建立命名系統，以清楚識別和分類 Azure 資源。
+此外，清楚地標示訂用帳戶 (例如 生產、非生產) 並建立命名系統，以清楚識別和分類 Azure 資源。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1049,7 +1049,7 @@ Microsoft 安全性回應中心的事件剖析： https://msrc-blog.microsoft.co
 
 **指引**：進行練習以定期測試系統的事件回應功能。 找出弱點和落差，並視需要修訂計畫。
 
-請參閱 NIST 的發行集：IT 計畫和能力的測試、訓練和練習方案指南： https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+請參閱 NIST 的出版物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities (IT 計畫和能力的測試、訓練和練習方案指南)： https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1057,7 +1057,7 @@ Microsoft 安全性回應中心的事件剖析： https://msrc-blog.microsoft.co
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現客戶的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。  事後檢討事件，確保問題已解決。
+**指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現客戶的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡人資訊來連絡您。  事後檢事件，以確保問題已解決。
 
 如何設定 Azure 資訊安全中心的安全性連絡人： https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
@@ -1067,7 +1067,7 @@ Microsoft 安全性回應中心的事件剖析： https://msrc-blog.microsoft.co
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示併入事件回應系統
 
-**指引**：使用「連續匯出」功能來匯出 Azure 資訊安全中心的警示和建議。 「連續匯出」可讓您以手動或持續不斷的方式來匯出警示和建議。 您可使用 Azure 資訊安全中心的資料連接器，將警示串流至 Sentinel。
+**指引**：使用「連續匯出」功能來匯出 Azure 資訊安全中心的警示和建議。 「連續匯出」可供以手動或持續不斷的方式來匯出警示和建議。 您可使用 Azure 資訊安全中心的資料連接器，將警示串流至 Sentinel。
 
 如何設定連續匯出： https://docs.microsoft.com/azure/security-center/continuous-export
 
@@ -1079,7 +1079,7 @@ Microsoft 安全性回應中心的事件剖析： https://msrc-blog.microsoft.co
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
-**指引**：利用 Azure 資訊安全中心的工作流程自動化功能，透過「Logic Apps」自動觸發對安全性警示和建議的回應。
+**指引**：使用 Azure 資訊安全中心的工作流程自動化功能，以透過 "Logic Apps" 自動觸發對安全性警示和建議的回應。
 
 如何設定工作流程自動化和 Logic Apps： https://docs.microsoft.com/azure/security-center/workflow-automation
 
@@ -1089,7 +1089,7 @@ Microsoft 安全性回應中心的事件剖析： https://msrc-blog.microsoft.co
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises) (機器翻譯)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：進行 Azure 資源的定期滲透測試，並確保在 60 天內補救所有重大安全性發現
 
@@ -1103,5 +1103,5 @@ Microsoft 安全性回應中心的事件剖析： https://msrc-blog.microsoft.co
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- 深入了解 [Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](https://docs.microsoft.com/azure/security/benchmarks/overview) (機器翻譯)
+- 深入了解 [Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) (機器翻譯)

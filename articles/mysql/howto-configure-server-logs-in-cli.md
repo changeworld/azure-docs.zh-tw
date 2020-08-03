@@ -7,12 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 4/13/2020
-ms.openlocfilehash: 356d4e916695c9ac8bcece2867a23d7f7f53d299
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a662fe9300d78591cc7ae1fcff67f9b3f93ab8c8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101660"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501213"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>使用 Azure CLI 設定和存取緩慢查詢記錄
 您可以使用 Azure 命令列公用程式 Azure CLI 來下載適用於 MySQL 的 Azure 資料庫慢速查詢記錄。

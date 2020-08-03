@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c36df4745e276471e35addf4774470dbaaa9e150
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1099c4e4dd69a8dc8caee96ec5dda633ce8b9d12
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080704"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496197"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Synapse SQL 的資料庫定序支援
 
@@ -23,7 +23,7 @@ ms.locfileid: "87080704"
 
 您可以使用 CREATE DATABASE 語句，在建立時指定預設的 Synapse SQL 隨選資料庫定序。
 
-## <a name="changing-collation"></a>變更定序
+## <a name="change-collation"></a>變更定序
 若要變更 SQL 集區資料庫的預設定序，您可以簡單地更新布建體驗中的定序欄位。 例如，如果您想要將預設定序變更為區分大小寫，您只需要將定序從 SQL_Latin1_General_CP1_CI_AS 重新命名為 SQL_Latin1_General_CP1_CS_AS。 
 
 若要變更 SQL 隨選資料庫的預設定序，您可以使用 ALTER DATABASE 語句。
@@ -104,7 +104,7 @@ ms.locfileid: "87080704"
 *    SQL_EBCDIC277_2_CP1_CS_AS
 *    UTF-8
 
-## <a name="checking-the-current-collation"></a>檢查目前的定序
+## <a name="check-the-current-collation"></a>檢查目前的定序
 若要檢查資料庫的目前定序，您可以執行下列 T-sql 程式碼片段：
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;

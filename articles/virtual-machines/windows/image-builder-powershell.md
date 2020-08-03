@@ -7,12 +7,13 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 5be21eea9dbb9ea0925ac014fce6272ce8c32a0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028136"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499410"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>預覽：使用 PowerShell 建立具有 Azure 映射產生器的 Windows VM
 
@@ -21,7 +22,7 @@ ms.locfileid: "87028136"
 > [!CAUTION]
 > Azure Image Builder 目前處於公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供。 不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -198,7 +199,7 @@ $GalleryParams = @{
 New-AzGalleryImageDefinition @GalleryParams
 ```
 
-## <a name="create-an-image"></a>建立影像
+## <a name="create-an-image"></a>建立映像
 
 建立 Azure 映射產生器來源物件。 如需有效參數值的 Azure PowerShell，請參閱在[Azure Marketplace 中尋找 WINDOWS VM 映射](./cli-ps-findimage.md)。
 
@@ -339,6 +340,6 @@ Remove-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $imag
 Remove-AzResourceGroup -Name $imageResourceGroup
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器[範本參考](../linux/image-builder-json.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。

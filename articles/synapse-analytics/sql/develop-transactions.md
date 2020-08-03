@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d87da234e675059ba2c170f4322d0ba53965dc89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075699"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500754"
 ---
-# <a name="using-transactions-in-sql-pool"></a>在 SQL 集區中使用交易
+# <a name="use-transactions-in-sql-pool"></a>在 SQL 集區中使用交易
 
 在 SQL 集區 (資料倉儲) 中實作交易以便開發解決方案的祕訣。
 
@@ -183,7 +183,7 @@ SELECT @xact_state AS TransactionState;
 
 另外值得注意的是，SQL 集區不會實作或支援 ERROR_LINE() 函式。 如果您的程式碼中有此函式，您必須將其移除才能符合 SQL 集區規範。 在程式碼中使用查詢標籤，而不需實作對等的功能。 如需詳細資訊，請參閱 [LABEL](develop-label.md) 文章。
 
-## <a name="using-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
+## <a name="use-of-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
 
 THROW 是在 SQL 集區中引發例外狀況的新式實作，但也支援 RAISERROR。 不過，有一些值得注意的差異。
 

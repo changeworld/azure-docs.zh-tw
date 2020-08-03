@@ -7,13 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-azurecli
+ms.openlocfilehash: b3a049d76f880f590060a999ddda00e3706bac94
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770070"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500209"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>教學課程：使用 Azure IoT 中樞 message 擴充
 
@@ -36,7 +36,7 @@ ms.locfileid: "81770070"
 > * 執行模擬 IoT 裝置的應用程式，將訊息傳送至中樞。
 > * 查看結果，並確認訊息擴充如預期般運作。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 您必須擁有 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 安裝 [Visual Studio](https://www.visualstudio.com/)。
@@ -259,7 +259,7 @@ az iot hub route create \
 
 2. 將這些值新增至 ContosoStorageEndpointEnriched 端點的清單。
 
-   | 機碼 | 值 | 端點（下拉式清單） |
+   | Key | 值 | 端點（下拉式清單） |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin 標記。位置 | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -310,7 +310,7 @@ az iot hub route create \
    | 路由名稱1 | ContosoStorageRouteOriginal |
    | 路由名稱2 | ContosoStorageRouteEnriched |
 
-1. 選取 [儲存]。 [**自訂部署**] 窗格隨即出現，並顯示範本所使用的所有參數。 唯一需要設定的欄位是 [**資源群組**]。 請建立一個新的，或從下拉式清單中選取一個。
+1. 選取 [儲存]  。 [**自訂部署**] 窗格隨即出現，並顯示範本所使用的所有參數。 唯一需要設定的欄位是 [**資源群組**]。 請建立一個新的，或從下拉式清單中選取一個。
 
    以下是 [**自訂部署**] 窗格的上半部。 您可以看到填入資源群組的位置。
 

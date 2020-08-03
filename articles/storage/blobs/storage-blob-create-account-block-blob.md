@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 31a7048c263d7231fe827ad5a1c927c5cb3e2f6d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6c23c034af40d7db2379f9d02357131a00482bd2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463547"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495738"
 ---
 # <a name="create-a-blockblobstorage-account"></a>建立 BlockBlobStorage 帳戶
 
@@ -24,7 +25,7 @@ BlockBlobStorage 帳戶種類可讓您建立具有 premium 效能特性的區塊
 
 如需 BlockBlobStorage 帳戶的詳細資訊，請參閱[Azure 儲存體帳戶總覽](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 
@@ -40,12 +41,12 @@ BlockBlobStorage 帳戶種類可讓您建立具有 premium 效能特性的區塊
 
 您可以登入 Azure，並且以下列兩種方式之一執行 Azure CLI 命令：
 
-- 您可以從 Azure 入口網站的 Azure Cloud Shell 中執行 CLI 命令。
+- 您可以從 Azure 入口網站，在 Azure Cloud Shell 中執行 CLI 命令。
 - 您可以安裝 CLI，並在本機執行 CLI 命令。
 
 ### <a name="use-azure-cloud-shell"></a>使用 Azure Cloud Shell
 
-Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 Azure CLI 已預先安裝並設定為與您的帳戶搭配使用。 在 Azure 入口網站右上方區段的功能表上，按一下 [ **Cloud Shell** ] 按鈕：
+Azure Cloud Shell 是免費的 Bash Shell，您可以直接在 Azure 入口網站內執行。 Azure CLI 可預先安裝和設定，以便與您的帳戶搭配使用。 在 Azure 入口網站右上方區段的功能表上，按一下 [ **Cloud Shell** ] 按鈕：
 
 [![Cloud Shell](../common/media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
 
@@ -209,4 +210,4 @@ az login
 
 - 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](https://docs.microsoft.com/azure/storage/common/storage-account-overview)。
 
-- 如需資源群組的詳細資訊，請參閱[Azure Resource Manager 總覽](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。
+- 如需有關資源群組的詳細資訊，請參閱 [Azure Resource Manager 概觀](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。

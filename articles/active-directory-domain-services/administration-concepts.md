@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 4f1f6c60ef2e0ccdd3e166e2272fe917ead3ed2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6266248b817485562c7ed2643b3dda5f32cecc53
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735042"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489668"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 中的使用者帳戶、密碼和管理的管理概念
 
@@ -70,7 +70,7 @@ Azure AD DS 包含預設密碼原則，可定義帳戶鎖定、密碼最長使�
 
 根據預設，受控網域會建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 使用者帳戶可以直接對受控網域進行驗證，例如登入已加入網域的 VM。 當可同步處理密碼雜湊，但使用者不使用獨佔式登入方法 (例如智慧卡驗證) 時，使用者樹系即可發揮功能。
 
-在 Azure AD DS 的「資源」樹系中，使用者會透過其內部部署 AD DS 的單向樹系「信任」驗證。 使用此方法，使用者物件和密碼雜湊不會同步處理至 Azure AD DS。 使用者物件和認證僅存在於內部部署 AD DS。 這種方法可讓企業裝載 Azure 中依賴 LDAPS、Kerberos 或 NTLM 等傳統驗證的資源和應用程式平台，但會移除所有驗證問題或顧慮。 Azure AD DS 資源樹系目前為預覽狀態。
+在 Azure AD DS 的「資源」樹系中，使用者會透過其內部部署 AD DS 的單向樹系「信任」驗證。 使用此方法，使用者物件和密碼雜湊不會同步處理至 Azure AD DS。 使用者物件和認證僅存在於內部部署 AD DS。 這種方法可讓企業裝載 Azure 中依賴 LDAPS、Kerberos 或 NTLM 等傳統驗證的資源和應用程式平台，但會移除所有驗證問題或顧慮。
 
 如需有關 Azure AD DS 中樹系類型的詳細資訊，請參閱[什麼是資源][concepts-forest]樹系？和[樹系信任在 Azure AD DS 中如何運作？][concepts-trust]
 
@@ -81,8 +81,8 @@ Azure AD DS 包含預設密碼原則，可定義帳戶鎖定、密碼最長使�
 | SKU 名稱   | 物件計數上限 | 備份頻率 | 輸出樹系信任的最大數目 |
 |------------|----------------------|------------------|----|
 | 標準   | 無限制            | 每7天     | 0  |
-| Enterprise | 無限制            | 每3天     | 5  |
-| Premium    | 無限制            | 每日            | 10 |
+| 企業 | 無限制            | 每3天     | 5  |
+| 進階    | 無限制            | 每日            | 10 |
 
 在這些 Azure AD DS Sku 之前，會使用以受控網域中的物件（使用者和電腦帳戶）數目為基礎的計費模型。 根據受控網域中的物件數目，不再有可變的定價。
 
@@ -102,7 +102,7 @@ Azure AD DS 包含預設密碼原則，可定義帳戶鎖定、密碼最長使�
 
 ### <a name="outbound-forest-trusts"></a>輸出樹系信任
 
-上一節詳述的單向輸出樹系信任從受控網域到內部部署 AD DS 環境（目前處於預覽階段）。 SKU 會決定您可以為受控網域建立的樹系信任數目上限。 請檢查您的商務和應用程式需求，以判斷您實際需要多少信任，並挑選適當的 Azure AD DS SKU。 同樣地，如果您的業務需求變更，而您需要建立額外的樹系信任，您可以切換到不同的 SKU。
+上一節詳述的單向輸出樹系信任從受控網域到內部部署 AD DS 環境。 SKU 會決定您可以為受控網域建立的樹系信任數目上限。 請檢查您的商務和應用程式需求，以判斷您實際需要多少信任，並挑選適當的 Azure AD DS SKU。 同樣地，如果您的業務需求變更，而您需要建立額外的樹系信任，您可以切換到不同的 SKU。
 
 ## <a name="next-steps"></a>後續步驟
 

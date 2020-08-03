@@ -3,12 +3,13 @@ title: 如何更新計量容器的 Azure 監視器 |Microsoft Docs
 description: 本文說明如何更新容器的 Azure 監視器，以啟用支援對匯總計量進行探索和警示的自訂計量功能。
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 78a6612e522accce8c934885a090e66a51850c97
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d56a280bdef2058c28d596f6c259eb319d80b08e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498979"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499954"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新容器的 Azure 監視器以啟用計量
 
@@ -30,7 +31,7 @@ ms.locfileid: "86498979"
 
 任一程式會將**監視計量發行者**角色指派給叢集的服務主體或使用者指派的 MSI，以進行監視附加元件，讓代理程式所收集的資料可以發行至您的叢集資源。 監視計量發行者只有將計量推送至資源的許可權，它無法改變任何狀態、更新資源或讀取任何資料。 如需角色的詳細資訊，請參閱[監視計量發行者角色](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 更新叢集之前，請確認下列事項：
 
