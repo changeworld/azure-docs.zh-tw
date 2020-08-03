@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/12/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389593"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482850"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中設定資源擁有者密碼認證流程
 
@@ -30,13 +30,14 @@ ms.locfileid: "85389593"
 
 1. 以 Azure AD B2C 租用戶的全域管理員身分登入 Azure 入口網站。
 2. 若要切換為您的 Azure AD B2C 租用戶，請選取入口網站右上角的 B2C 租用戶。
-3. 按一下 [使用者流程]，然後選取 [新增使用者流程]。
-4. 按一下 [所有] 索引標籤，然後選取 [使用 ROPC 登入]。
-5. 提供使用者流程的名稱，例如 *ROPC_Auth*。
-6. 在 [應用程式宣告] 底下，按一下 [顯示更多]。
-7. 選取您的應用程式所需的應用程式宣告，例如 [顯示名稱]、[電子郵件地址] 和 [身分識別提供者]。
-8. 選取 [確定]，然後選取 [建立]。
-9. 按一下 [執行使用者流程]。
+3. 選取 [**使用者流程**]，然後選取 [**新增使用者流程**]。
+4. 選取 **[使用資源擁有者密碼認證（ROPC）登入**]。
+5. 在 [**版本**] 底下，確認已選取 [**預覽**]，然後選取 [**建立**]。
+7. 提供使用者流程的名稱，例如 *ROPC_Auth*。
+8. 在 [應用程式宣告] 底下，按一下 [顯示更多]。
+9. 選取您的應用程式所需的應用程式宣告，例如 [顯示名稱]、[電子郵件地址] 和 [身分識別提供者]。
+10. 選取 [確定]，然後選取 [建立]。
+11. 按一下 [執行使用者流程]。
 
    然後，您會看到類似於下列範例的端點：
 
@@ -131,7 +132,3 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 Azure AD B2C 實作符合公用用戶端資源擁有者密碼認證的 OAuth 2.0 標準，且應與大部分的用戶端 SDK 相容。 我們已在生產環境中使用 AppAuth for iOS 和 AppAuth for Android 多方面測試此流程。 如需最新資訊，請參閱[實作現代化最佳做法的 OAuth 2.0 和 OpenID Connect 所適用的原生應用程式 SDK](https://appauth.io/)。
 
 從 GitHub 下載已設定用於 Azure AD B2C 的實用範例 ([Android 版](https://aka.ms/aadb2cappauthropc)和 [iOS 版](https://aka.ms/aadb2ciosappauthropc))。
-
-
-
-

@@ -16,13 +16,13 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: 5d08dd2705c69f3fa8f8e0830e487833f7cf96f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2be9b5e6fd489b331982d31693bf810d488d92b1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689328"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484142"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>透過使用 Azure CLI 的虛擬網路服務端點來限制對 PaaS 資源的網路存取
 
@@ -43,7 +43,7 @@ ms.locfileid: "84689328"
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus** 位置建立名為 myResourceGroup** 的資源群組。
+建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
 
 ```azurecli-interactive
 az group create \

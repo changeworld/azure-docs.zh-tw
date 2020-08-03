@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1380562cfc073d906ea4cfc0d6d849e9ca2a70d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 058058b975116fabcbc242f46afb09dff8df08b6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608410"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480436"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何在 Azure VM 上使用 Azure 資源的受控識別進行登入 
 
@@ -29,7 +30,7 @@ ms.locfileid: "85608410"
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -39,7 +40,7 @@ ms.locfileid: "85608410"
 > - 本文中的所有範例指令碼都假設命令列用戶端在已啟用 Azure 資源受控識別的虛擬機器上執行。 在 Azure 入口網站中使用虛擬機器「連線」功能，從遠端連線到您的虛擬機器。 如需有關在虛擬機器上啟用 Azure 資源受控識別的詳細資訊，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)，或其中一篇變化文章 (使用 PowerShell、CLI、範本或 Azure SDK)。 
 > - 若要避免資源存取期間發生錯誤，虛擬機器的受控識別必須至少取得適當範圍 (該虛擬機器或更高層級) 的「讀者」存取權，以允許在虛擬機器上進行 Azure Resource Manager 作業。 如需詳細資訊，請參閱[使用 Azure 入口網站將 Azure 資源的受控識別指派給資源](howto-assign-access-portal.md)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 適用于 Azure 資源的受控識別會提供[服務主體物件](../develop/developer-glossary.md#service-principal-object)，它是在針對 VM 上的[Azure 資源啟用受控識別時所建立](overview.md)。 服務主體可以獲得 Azure 資源的存取權，並可讓指令碼/命令列用戶端用來作為登入及存取資源時的身分識別。 傳統上，若要以受保護資源本身的身分識別來存取該資源，指令碼用戶端需要：  
 

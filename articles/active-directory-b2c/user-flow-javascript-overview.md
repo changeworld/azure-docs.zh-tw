@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 07/30/2020
 ms.custom: project-no-code, devx-track-javascript
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d85ffca8c72e7a247d5bbd1e593335fd7995b594
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 58ddca6bb7844288aae0370f035bc4dfa2dc942f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170147"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481664"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 JavaScript 和頁面配置版本
 
@@ -41,7 +41,7 @@ Azure AD B2C 為使用者流程和自訂原則中的使用者介面元素，提�
 
 ## <a name="select-a-page-layout-version"></a>選取頁面配置版本
 
-無論您是否在使用者流程的屬性中啟用 JavaScript，都可以為使用者流程頁面指定頁面配置版本。 開啟使用者流程，然後選取 [**頁面配置**]。 在 [**版面配置名稱**] 底下，選取 [使用者流程] 頁面，然後選擇**頁面配置版本**。
+無論您是否在使用者流程的屬性中啟用 JavaScript，都可以為使用者流程頁面指定頁面配置版本。 開啟使用者流程，然後選取 [**頁面配置**]。 在 [**版面配置名稱**] 底下，選取 [使用者流程] 頁面，然後選擇 [**頁面配置版本（預覽）**]。
 
 如需不同頁面配置版本的詳細資訊，請參閱[頁面配置版本變更記錄](page-layout.md)檔。
 

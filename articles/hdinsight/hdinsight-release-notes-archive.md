@@ -7,19 +7,60 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 01/08/2019
-ms.openlocfilehash: b5e26ef72d4be38c021cbedbcaf1fa919d7276d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/31/2020
+ms.openlocfilehash: eb533ef93f012e99d135c49725ef8add77b6f7ec
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511971"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87484193"
 ---
 # <a name="archived-release-notes"></a>封存的版本資訊
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 Azure HDInsight 是最受企業客戶歡迎的其中一項服務，可供 Azure 上的開放原始碼 Apache Hadoop 與 Apache Spark 分析使用。
+
+## <a name="release-date-07132020"></a>發行日期：07/13/2020
+
+此發行適用於 HDInsight 3.6 和 4.0。 在數天內，所有區域都可以使用 HDInsight 發行版本。 此處的發行日期為第一個區域發行日期。 如果您沒有看到下列變更，請在數天內等待發行在您的區域中上線。
+
+### <a name="new-features"></a>新功能
+#### <a name="support-for-customer-lockbox-for-microsoft-azure"></a>支援 Microsoft Azure 的客戶加密箱
+Azure HDInsight 現在支援 Azure 客戶加密箱。 它提供一個介面，讓客戶可以審查及核准或拒絕客戶資料存取要求。 當 Microsoft 工程師需要在支援要求期間存取客戶資料時，會使用此檔案。 如需詳細資訊，請參閱[Microsoft Azure 的客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview)。
+
+#### <a name="service-endpoint-policies-for-storage"></a>儲存體的服務端點原則
+客戶現在可以使用 HDInsight 叢集子網上的服務端點原則（SEP）。 深入瞭解[Azure 服務端點原則](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)。
+
+### <a name="deprecation"></a>淘汰
+#### <a name="deprecation-of-spark-21-and-22-in-hdinsight-36-spark-cluster"></a>淘汰 HDInsight 3.6 Spark 叢集中的 Spark 2.1 和 2.2
+從 1 2020 年7月開始，客戶無法在 HDInsight 3.6 上使用 Spark 2.1 和2.2 建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 3.6 上移至 Spark 2.3，以避免潛在的系統/支援中斷。
+ 
+#### <a name="deprecation-of-spark-23-in-hdinsight-40-spark-cluster"></a>淘汰 HDInsight 4.0 Spark 叢集中的 Spark 2.3
+從 1 2020 年7月開始，客戶將無法使用 Spark 2.3 on HDInsight 4.0 來建立新的 Spark 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Spark 2.4，以避免潛在的系統/支援中斷。
+ 
+#### <a name="deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>淘汰 HDInsight 4.0 Kafka 叢集中的 Kafka 1.1
+自 2020 年 7 月 1 日開始，客戶將無法在 HDInsight 4.0 上使用 Kafka 1.1 建立新的 Kafka 叢集。 現有的叢集將會以現狀執行，不再有 Microsoft 支援。 請考慮在 2020 年 6 月 30 日前於 HDInsight 4.0 上移至 Kafka 2.1，以避免潛在的系統/支援中斷。
+
+### <a name="behavior-changes"></a>行為變更
+您不需要注意任何行為變更。
+
+### <a name="upcoming-changes"></a>即將推出的變更
+即將發行的版本中將會發生下列變更。 
+
+#### <a name="ability-to-select-different-zookeeper-sku-for-spark-hadoop-and-ml-services"></a>能夠為 Spark、Hadoop 和 ML 服務選取不同的 Zookeeper SKU
+目前 HDInsight 不支援變更 Spark、Hadoop 和 ML 服務叢集類型的 Zookeeper SKU。 它會使用適用于 Zookeeper 節點的 A2_v2/A2 SKU，而不會向客戶收取費用。 在即將推出的版本中，客戶將能夠視需要變更 Spark、Hadoop 和 ML 服務的 Zookeeper SKU。 具有 A2_v2/A2 以外 SKU 的 Zookeeper 節點將會收費。 預設 SKU 仍會 A2_V2/A2，而且免費。
+
+### <a name="bug-fixes"></a>錯誤修正
+HDInsight 會持續改善叢集的可靠性和效能。 
+#### <a name="fixed-hive-warehouse-connector-issue"></a>已修正 Hive 倉儲連接器問題
+先前版本中的 Hive 倉儲連接器可用性發生問題。 已修正此問題。 
+
+#### <a name="fixed-zeppelin-notebook-truncates-leading-zeros-issue"></a>已修正 Zeppelin 筆記本截斷前置零問題
+Zeppelin 不正確地截斷資料表輸出中的前置零，以取得字串格式。 我們已在此版本中修正此問題。
+
+### <a name="component-version-change"></a>元件版本變更
+此發行版本沒有任何元件版本變更。 您可以在[本](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions)檔中找到 hdinsight 4.0 和 hdinsight 3.6 的目前元件版本。
 
 ## <a name="release-date-06112020"></a>發行日期：06/11/2020
 
@@ -148,7 +189,7 @@ HDInsight 會持續改善叢集的可靠性和效能。
 服務標籤可讓您輕鬆地限制對 Azure 服務的網路存取，藉此簡化 Azure 虛擬機器和 Azure 虛擬網路的安全性。 您可以使用網路安全性群組（NSG）規則中的服務標籤，以允許或拒絕全域或每個 Azure 區域的特定 Azure 服務流量。 Azure 會提供每個標籤基礎之 IP 位址的維護。 適用于網路安全性群組（Nsg）的 HDInsight 服務標記是健全狀況和管理服務的 IP 位址群組。 這些群組有助於降低建立安全性規則的複雜性。 HDInsight 客戶可以透過 Azure 入口網站、PowerShell 和 REST API 來啟用服務標記。 如需詳細資訊，請參閱 [Azure HDInsight 的網路安全性群組 (NSG) 服務標記](https://docs.microsoft.com/azure/hdinsight/hdinsight-service-tags)。
 
 #### <a name="custom-ambari-db"></a>自訂 Ambari DB
-HDInsight 現在可讓您使用自己的 SQL DB 進行 Apache Ambari。 您可以從 Azure 入口網站或透過 resource manager 範本設定此自訂 Ambari DB。  這項功能可讓您選擇適合您處理和容量需求的 SQL DB。 您也可以輕鬆地升級，以符合業務成長需求。 如需詳細資訊，請參閱[使用自訂 AMBARI DB 設定 HDInsight](hdinsight-custom-ambari-db.md)叢集。
+HDInsight 現在可讓您使用自己的 SQL DB 進行 Apache Ambari。 您可以從 Azure 入口網站或透過 Resource Manager 範本來設定此自訂 Ambari DB。  這項功能可讓您選擇適合您處理和容量需求的 SQL DB。 您也可以輕鬆地升級，以符合業務成長需求。 如需詳細資訊，請參閱[使用自訂 AMBARI DB 設定 HDInsight](hdinsight-custom-ambari-db.md)叢集。
 
 ![自訂 Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
 
@@ -296,7 +337,7 @@ HDInsight 會持續改善叢集的可靠性和效能。
 |---|---|
 | Ambari | [Ambari 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
 | Hadoop | [Hadoop 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
-| HBase | [HBase 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
+| hbase | [HBase 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
 | Hive  | 此版本提供 Hive 3.1.0，沒有其他 Apache 修補程式。  |
 | Kafka | 此版本提供 Kafka 1.1.1，沒有其他 Apache 修補程式。 |
 | Oozie | [Oozie 修補程式資訊](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
@@ -340,7 +381,7 @@ HDInsight 會持續改善叢集的可靠性和效能。
     sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
     ```
 1. 輸入命令 `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`。
-1. 輸入以下命令：
+1. 鍵入下列命令：
 
     ```bash
     sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
@@ -520,7 +561,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 -   [YARN-6805](https://issues.apache.org/jira/browse/YARN-6805)：LinuxContainerExecutor 中的 NPE，因為 PrivilegedOperationException 結束代碼為 Null。
 
-#### <a name="hbase"></a>HBase
+#### <a name="hbase"></a>hbase
 
 此版本提供 HBase 1.1.2 和下列 Apache 修補程式。
 
@@ -1126,7 +1167,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 此版本並未對 Sqoop 1.4.6 提供其他 Apache 修補程式。
 
-#### <a name="storm"></a>Storm
+#### <a name="storm"></a>暴風雨
 
 此版本提供 Storm 1.1.1 和下列 Apache 修補程式：
 
@@ -1160,7 +1201,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 
 此版本提供 ZooKeeper 3.4.6 和下列 Apache 修補程式：
 
--   [ZOOKEEPER-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256)：ClientPortBindTest 在 Mac OS X 上會失敗。
+-   [ZOOKEEPER-1256](https://issues.apache.org/jira/browse/ZOOKEEPER-1256)： macOS X 上的 ClientPortBindTest 失敗。
 
 -   [ZOOKEEPER-1901](https://issues.apache.org/jira/browse/ZOOKEEPER-1901)： \[ JDK8 \] 排序子系以在以 asyncops 測試中進行比較。
 
@@ -1240,7 +1281,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
 | **廠商：** Hortonworks |
 | **受影響的版本：** 所有 HDP 2.3/2.4/2.5 版本，包含 Apache Ranger 0.5.x/0.6.0/0.6.1/0.6.2 版  |
 | **受影響的使用者：** Ranger 原則管理工具的所有使用者。 |
-| **影響：** 在輸入自訂原則條件時，Apache Ranger 很容易受到預存跨網站指令碼的攻擊。 管理使用者可以在一般使用者登入和存取原則時，儲存某些任意的 javascript 程式碼執行。 |
+| **影響：** 在輸入自訂原則條件時，Apache Ranger 很容易受到預存跨網站指令碼的攻擊。 系統管理使用者可以在一般使用者登入和存取原則時，儲存一些任意的 JavaScript 程式碼執行。 |
 | **修正詳細資料：** 已新增邏輯來處理使用者輸入。  |
 | **建議動作：** 使用者應升級至 HDP 2.5.4+ (含 Apache Ranger 0.6.3+) 或 HDP 2.6+ (含 Apache Ranger 0.7.0+)  |
 
@@ -1761,7 +1802,7 @@ HDP 2.6.4 提供了 Hadoop Common 2.7.3 和下列 Apache 修補程式：
         curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'
       ```
         
-  - **選項\#2：套用 Javascript 變更**
+  - **選項 \# 2：套用 JavaScript 變更**
         
       JS 檔案的更新步驟：
         

@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963881"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486811"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>用於載入資料以進行資料倉儲作業的最佳做法
 
 載入資料的建議和效能優化
 
-## <a name="preparing-data-in-azure-storage"></a>在 Azure 儲存體中準備資料
+## <a name="prepare-data-in-azure-storage"></a>準備 Azure 儲存體中的資料
 
 若要將延遲降至最低，請共置您的儲存層與資料倉儲。
 
@@ -34,13 +34,13 @@ PolyBase 無法載入具有超過 1 百萬個位元組之資料的資料列。 �
 
 將大型的壓縮檔案分成較小的壓縮檔案。
 
-## <a name="running-loads-with-enough-compute"></a>使用足夠的計算資源執行載入
+## <a name="run-loads-with-enough-compute"></a>以足夠的計算執行負載
 
 如需最快的載入速度，一次只執行一項載入作業。 如果不可行，請同時執行數量最少的載入。 如果您預期會有大量載入作業，請考慮在負載前相應增加您的 SQL 集區。
 
 若要以適當的計算資源執行載入，請建立為了執行載入而指定的載入使用者。 將每個載入使用者指派給特定的資源類別或工作負載群組。 若要執行負載，請以其中一個載入使用者身分登入，然後執行負載。 載入會利用使用者的資源類別來執行。  相較於嘗試變更使用者的資源類別，以符合目前的資源類別需求，這個方法比較簡單。
 
-### <a name="example-of-creating-a-loading-user"></a>建立載入使用者的範例
+### <a name="create-a-loading-user"></a>建立載入使用者
 
 此範例會為 staticrc20 資源類別建立載入使用者。 第一個步驟是**連線到 主要資料庫**並建立登入。
 
@@ -62,7 +62,7 @@ PolyBase 無法載入具有超過 1 百萬個位元組之資料的資料列。 �
 
 在靜態資源類別，而不是動態資源類別之下執行載入。 不論您的[資料倉儲單位](resource-consumption-models.md)為何，使用靜態資源類別可保證相同的資源。 如果您使用動態資源類別，資源就會根據您的服務層級而有所不同。 對於動態類別，較低服務層級表示您可能需要對您的載入使用者使用較大的資源類別。
 
-## <a name="allowing-multiple-users-to-load"></a>允許多個使用者載入
+## <a name="allow-multiple-users-to-load"></a>允許多個使用者載入
 
 通常需要讓多個使用者將資料載入資料倉儲中。 使用 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) 載入所需資料庫的 CONTROL 權限。  CONTROL 權限可控制所有結構描述的存取。 您可能不希望所有的載入使用者都能控制所有結構描述的存取。 若要限制權限，請使用 DENY CONTROL 陳述式。
 
@@ -75,13 +75,13 @@ PolyBase 無法載入具有超過 1 百萬個位元組之資料的資料列。 �
 
 User_A 和 user_B 現在已從其他部門的架構鎖定。
 
-## <a name="loading-to-a-staging-table"></a>載入至暫存表格
+## <a name="load-to-a-staging-table"></a>載入至暫存表格
 
 若要達到以最快載入速度將資料移入資料倉儲資料表中，請將資料載入暫存資料表中。  將暫存資料表定義為堆積，並使用循環配置資源作為散發選項。
 
 請考慮載入通常為兩個步驟的程序，您會先載入至暫存資料表，然後將資料插入生產資料倉儲資料表中。 如果生產資料表使用雜湊散發，您若定義採用雜湊散發的暫存資料表，則載入和插入的總時間可能比較快。 載入至暫存表格所需的時間比較長，但是將資料列插入生產資料表的第二個步驟不會導致資料四處移動。
 
-## <a name="loading-to-a-columnstore-index"></a>載入至資料行存放區索引
+## <a name="load-to-a-columnstore-index"></a>載入至資料行存放區索引
 
 資料行存放區索引需要大量的記憶體，才能將資料壓縮成高品質的資料列群組。 為了最佳的壓縮和索引效率，資料行存放區索引需要將多達 1,048,576 個資料列壓縮到每個資料列群組中。 當記憶體不足時，資料行存放區索引可能無法達到最大的壓縮率。 這反而會影響查詢效能。 如需深入探討，請參閱[資料行存放區記憶體最佳化](data-load-columnstore-compression.md)。
 
@@ -92,19 +92,19 @@ User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 如先前所述，使用 PolyBase 載入會提供 Synapse SQL 集區的最高輸送量。 如果您無法使用 PolyBase 來載入，且必須使用 SQLBulkCopy API （或 BCP），您應該考慮增加批次大小以獲得更好的輸送量，這是一個很好的經驗法則，這是批次大小介於100K 到1M 個數據列之間。
 
-## <a name="handling-loading-failures"></a>處理載入失敗
+## <a name="manage-loading-failures"></a>管理載入失敗
 
 使用外部資料表的載入可能會失敗，並顯示「查詢已中止 -- 從外部來源讀取時已達最大拒絕閾值」** 錯誤訊息。 此訊息表示您的外部資料包含「錯誤」記錄。 如果資料類型和資料行數不符合外部資料表的資料行定義，或資料不符合指定的外部檔案格式，則會將資料記錄視為「錯誤」。
 
 若要修正「錯誤」記錄，請確定您的外部資料表及外部檔案格式定義皆正確，且這些定義與您的外部資料相符。 萬一外部資料記錄的子集有錯誤，您可以使用 CREATE EXTERNAL TABLE 中的拒絕選項，選擇拒絕這些查詢記錄。
 
-## <a name="inserting-data-into-a-production-table"></a>將資料插入生產資料表中
+## <a name="insert-data-into-a-production-table"></a>將資料插入生產資料表
 
 使用 [INSERT 陳述式](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)單次載入小型資料表，或甚至定期重新載入查閱，可能會與使用 `INSERT INTO MyLookup VALUES (1, 'Type 1')` 之類的陳述式有一樣好的效果。  不過，單一插入的效率不如執行大量載入。
 
 如果您整天有數千個或更多單一插入，請將插入分批，以便進行大量載入。  開發將單一插入附加至檔案的程序，然後建立另一個可定期載入檔案的程序。
 
-## <a name="creating-statistics-after-the-load"></a>建立載入後的統計資料
+## <a name="create-statistics-after-the-load"></a>建立載入後的統計資料
 
 為了改善查詢效能，在首次載入資料或資料發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  這可以手動完成，也可以啟用[自動建立統計資料](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 

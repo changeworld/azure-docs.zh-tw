@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/04/2020
+ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6bcf268ba45ee8fefa027263a25ff411344b4669
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 8c0b6ba4045e1e92d395752f106258d3c0709108
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116432"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486714"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中自訂使用者介面
 
@@ -188,10 +188,10 @@ Azure AD B2C 會使用稱為[跨原始資源分享（CORS）](https://www.w3.org
 
 1. 在 Azure 入口網站的左側功能表中，選取 [ **Azure AD B2C**]。
 1. 在 [原則] 底下，選取 [使用者流程 (原則)]。
-1. 選取您想要啟用公司商標的使用者流程。 「登*入 v1* 」和「*設定檔編輯 v1* 」使用者流程類型**不支援**公司商標。
+1. 選取您想要啟用公司商標的使用者流程。 標準登*入*和標準*設定檔編輯*使用者流程類型**不支援**公司商標。
 1. 在 [**自訂**] 底下，選取 [**頁面配置**]，然後選取您想要品牌的版面配置。 例如，選取 [**統一註冊或登入頁面**]。
 1. 針對 [**頁面配置版本（預覽）**]，選擇 [版本**1.2.0** ] 或 [以上]。
-1. 選取 [儲存]。
+1. 選取 [儲存]  。
 
 如果您想要在使用者流程中建立所有頁面的品牌，請在使用者流程中設定每個頁面配置的頁面配置版本。
 

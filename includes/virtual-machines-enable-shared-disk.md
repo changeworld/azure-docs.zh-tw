@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 62645e6252256079e27792b1905d60a073c1fa3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 77c21dab8c1a4c2643db0a56b5052f33243f2f56
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080214"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460046"
 ---
 ## <a name="limitations"></a>限制
 
@@ -36,63 +36,27 @@ ms.locfileid: "87080214"
 > [!IMPORTANT]
 > `maxShares`只有當磁片從所有 vm 卸載時，才可以設定或變更的值。 如需的允許值，請參閱[磁片大小](#disk-sizes) `maxShares` 。
 
-#### <a name="cli"></a>CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
-
 az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku PremiumSSD_LRS --max-shares 2
-
 ```
 
-#### <a name="powershell"></a>PowerShell
-```azurepowershell-interactive
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
+```azurepowershell-interactive
 $dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType PremiumSSD_LRS -CreateOption Empty -MaxSharesCount 2
 
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
-
 ```
 
-#### <a name="azure-resource-manager"></a>Azure Resource Manager
+# <a name="resource-manager-template"></a>[Resource Manager 範本](#tab/azure-resource-manager)
+
 使用下列範本之前，請 `[parameters('dataDiskName')]` 將、 `[resourceGroup().location]` 、 `[parameters('dataDiskSizeGB')]` 和取代 `[parameters('maxShares')]` 為您自己的值。
 
-```json
-{ 
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "dataDiskName": {
-      "type": "string",
-      "defaultValue": "mySharedDisk"
-    },
-    "dataDiskSizeGB": {
-      "type": "int",
-      "defaultValue": 1024
-    },
-    "maxShares": {
-      "type": "int",
-      "defaultValue": 2
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Compute/disks",
-      "name": "[parameters('dataDiskName')]",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2019-07-01",
-      "sku": {
-        "name": "Premium_LRS"
-      },
-      "properties": {
-        "creationData": {
-          "createOption": "Empty"
-        },
-        "diskSizeGB": "[parameters('dataDiskSizeGB')]",
-        "maxShares": "[parameters('maxShares')]"
-      }
-    }
-  ] 
-}
-```
+[進階 SSD 共用磁片範本](https://aka.ms/SharedPremiumDiskARMtemplate)
+
+---
 
 ### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>將 ultra 磁片部署為共用磁片
 
@@ -101,7 +65,11 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 > [!IMPORTANT]
 > `maxShares`只有當磁片從所有 vm 卸載時，才可以設定或變更的值。 如需的允許值，請參閱[磁片大小](#disk-sizes) `maxShares` 。
 
-#### <a name="cli"></a>CLI
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+##### <a name="regional-disk-example"></a>區域磁片範例
+
 ```azurecli
 #Creating an Ultra shared Disk 
 az disk create -g rg1 -n clidisk --size-gb 1024 -l westus --sku UltraSSD_LRS --max-shares 5 --disk-iops-read-write 2000 --disk-mbps-read-write 200 --disk-iops-read-only 100 --disk-mbps-read-only 1
@@ -113,93 +81,63 @@ az disk update -g rg1 -n clidisk --disk-iops-read-write 3000 --disk-mbps-read-wr
 az disk show -g rg1 -n clidisk
 ```
 
-#### <a name="powershell"></a>PowerShell
-```azurepowershell-interactive
+##### <a name="zonal-disk-example"></a>區域性磁片範例
 
+這個範例幾乎與先前的相同，不同之處在于它會在可用性區域1中建立磁片。
+
+```azurecli
+#Creating an Ultra shared Disk 
+az disk create -g rg1 -n clidisk --size-gb 1024 -l westus --sku UltraSSD_LRS --max-shares 5 --disk-iops-read-write 2000 --disk-mbps-read-write 200 --disk-iops-read-only 100 --disk-mbps-read-only 1 --zone 1
+
+#Updating an Ultra shared Disk 
+az disk update -g rg1 -n clidisk --disk-iops-read-write 3000 --disk-mbps-read-write 300 --set diskIopsReadOnly=100 --set diskMbpsReadOnly=1
+
+#Show shared disk properties:
+az disk show -g rg1 -n clidisk
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+##### <a name="regional-disk-example"></a>區域磁片範例
+
+```azurepowershell-interactive
 $datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1 -MaxSharesCount 5
 
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
-
 ```
 
-#### <a name="azure-resource-manager"></a>Azure Resource Manager
+##### <a name="zonal-disk-example"></a>區域性磁片範例
 
-若要部署已啟用共用磁片功能的受控磁片，請使用屬性 `maxShares` 並定義大於1的值。 這可讓您跨多個 Vm 共用該磁片。
+這個範例幾乎與先前的相同，不同之處在于它會在可用性區域1中建立磁片。
 
-> [!IMPORTANT]
-> `maxShares`只有當磁片從所有 vm 卸載時，才可以設定或變更的值。 如需的允許值，請參閱[磁片大小](#disk-sizes) `maxShares` 。
+```azurepowershell-interactive
+$datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1 -MaxSharesCount 5 -Zone 1
+
+New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $datadiskconfig
+```
+
+# <a name="resource-manager-template"></a>[Resource Manager 範本](#tab/azure-resource-manager)
+
+##### <a name="regional-disk-example"></a>區域磁片範例
 
 使用下列範本之前，請將、、、、、、 `[parameters('dataDiskName')]` `[resourceGroup().location]` 和取代 `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` `[parameters('diskMBpsReadOnly')]` 為您自己的值。
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "diskName": {
-      "type": "string",
-      "defaultValue": "uShared30"
-    },
-    "location": {
-        "type": "string",
-        "defaultValue": "westus",
-        "metadata": {
-                "description": "Location for all resources."
-        }
-    },
-    "dataDiskSizeGB": {
-      "type": "int",
-      "defaultValue": 1024
-    },
-    "maxShares": {
-      "type": "int",
-      "defaultValue": 2
-    },
-    "diskIOPSReadWrite": {
-      "type": "int",
-      "defaultValue": 2048
-    },
-    "diskMBpsReadWrite": {
-      "type": "int",
-      "defaultValue": 20
-    },    
-    "diskIOPSReadOnly": {
-      "type": "int",
-      "defaultValue": 100
-    },
-    "diskMBpsReadOnly": {
-      "type": "int",
-      "defaultValue": 1
-    }    
-  }, 
-  "resources": [
-    {
-        "type": "Microsoft.Compute/disks",
-        "name": "[parameters('diskName')]",
-        "location": "[parameters('location')]",
-        "apiVersion": "2019-07-01",
-        "sku": {
-            "name": "UltraSSD_LRS"
-        },
-        "properties": {
-            "creationData": {
-                "createOption": "Empty"
-            },
-            "diskSizeGB": "[parameters('dataDiskSizeGB')]",
-            "maxShares": "[parameters('maxShares')]",
-            "diskIOPSReadWrite": "[parameters('diskIOPSReadWrite')]",
-            "diskMBpsReadWrite": "[parameters('diskMBpsReadWrite')]",
-            "diskIOPSReadOnly": "[parameters('diskIOPSReadOnly')]",
-            "diskMBpsReadOnly": "[parameters('diskMBpsReadOnly')]"
-        }
-    }
-  ]
-}
-```
+[區域共用的 ultra 磁片範本](https://aka.ms/SharedUltraDiskARMtemplateRegional)
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>將 Azure 共用磁片與您的 Vm 搭配使用
+##### <a name="zonal-disk-example"></a>區域性磁片範例
+
+使用下列範本之前，請將、、、、、、 `[parameters('dataDiskName')]` `[resourceGroup().location]` 和取代 `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]` `[parameters('diskMBpsReadOnly')]` 為您自己的值。
+
+[區域性共用的 ultra 磁片範本](https://aka.ms/SharedUltraDiskARMtemplateZonal)
+
+---
+
+## <a name="using-azure-shared-disks-with-your-vms"></a>將 Azure 共用磁片與您的 Vm 搭配使用
 
 當您使用部署共用磁片之後 `maxShares>1` ，就可以將該磁片掛接到一或多個 vm。
+
+> [!NOTE]
+> 如果您要部署 ultra 磁片，請確定它符合必要的需求。 如需詳細資訊，請參閱 ultra 磁片一文的[PowerShell](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1)或[CLI](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm)一節。
 
 ```azurepowershell-interactive
 
@@ -259,3 +197,8 @@ PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS
 
 
 ## <a name="next-steps"></a>後續步驟
+
+如果您想要使用 Azure Resource Manager 範本來部署您的磁片，則可使用下列範例範本：
+- [進階 SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
+- [區域 ultra 磁片](https://aka.ms/SharedUltraDiskARMtemplateRegional)
+- [區域性 ultra 磁片](https://aka.ms/SharedUltraDiskARMtemplateZonal)

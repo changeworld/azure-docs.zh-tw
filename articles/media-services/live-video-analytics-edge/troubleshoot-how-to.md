@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285453"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486437"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>針對 IoT Edge 上的即時影片分析進行疑難排解
 
@@ -129,7 +129,7 @@ ModuleNotFoundError: No module named 'azure.mgmt.iothub.iot_hub_client'
     
 若要修正此問題：
 
-1. 執行下列命令：
+1. 執行以下命令：
 
     ```
     az --version
@@ -234,7 +234,7 @@ Unhandled exception. Microsoft.Azure.Devices.Common.Exceptions.UnauthorizedExcep
 
     ![在 Azure IoT 中樞中顯示模組執行狀態的螢幕擷取畫面。](./media/troubleshoot-how-to/iot-hub.png)
 
-* 檢查您是否正在將事件傳送至正確的 URL 端點。 外部 AI 容器會公開 URL 和埠，它會透過它接收並傳回 POST 要求中的資料。 此 URL 會指定為 `endpoint: url` HTTP 擴充處理器的屬性。 如[拓撲 URL](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)所示，端點會設定為推斷 URL 參數。 請確定[參數](http://yolov3/score)的預設值或傳入的值是正確的。 您可以使用用戶端 URL （捲曲）來進行測試，以查看其是否正常運作。  
+* 檢查您是否正在將事件傳送至正確的 URL 端點。 外部 AI 容器會公開 URL 和埠，它會透過它接收並傳回 POST 要求中的資料。 此 URL 會指定為 `endpoint: url` HTTP 擴充處理器的屬性。 如[拓撲 URL](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)所示，端點會設定為推斷 URL 參數。 請確定參數的預設值或傳入的值是正確的。 您可以使用用戶端 URL （捲曲）來進行測試，以查看其是否正常運作。  
 
     例如，以下是在本機電腦上執行且 IP 位址為172.17.0.3 的 Yolo v3 容器。 使用 Docker 檢查來尋找 IP 位址。
 
@@ -324,7 +324,7 @@ IoT Edge 上的即時影片分析提供了以方法為基礎的直接程式設�
     > 此命令會系結 Edge 裝置與容器之間的 logs 資料夾。 如果您想要收集不同位置的記錄，請使用下列命令，將 **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE**取代為您要使用的位置：  
     > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE"`  
 
-    d. 選取 [儲存]。
+    d. 選取 [儲存]  。
 
 1. 重現問題。
 1. 從入口網站的 [ **IoT 中樞**] 頁面連線到虛擬機器。

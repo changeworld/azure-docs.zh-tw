@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed10a9258590f8f9037a574bd0322a82dd309a5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c47b0249824a3683b8f24cc01cc5eea5ccf32585
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385241"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482663"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中設定會話行為
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C （Azure AD B2C）中的[單一登入（SSO）會話]
     - 最小值 (含) = 15 分鐘。
     - 最大值 (含) = 1440 分鐘。
 - **Web 應用程式會話超時**-[會話到期類型](session-overview.md#session-expiry-type)、*回復*或*絕對*。 
-- **單一登入**設定-在 Azure AD B2C 租使用者中，跨多個應用程式和使用者流程之單一登入（SSO）行為的[會話範圍](session-overview.md#session-scope)。 
+- **單一登入**設定-在 Azure AD B2C 租使用者中，跨多個應用程式和使用者流程之單一登入（SSO）行為的[會話範圍](session-overview.md#session-scope)。
 
 
 ## <a name="configure-the-properties"></a>設定屬性
@@ -38,7 +38,7 @@ Azure Active Directory B2C （Azure AD B2C）中的[單一登入（SSO）會話]
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 請選取頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您 Azure AD B2C 租使用者的目錄，以確定您使用的是包含 Azure AD B2C 租使用者的目錄。
 3. 選擇 Azure 入口網站左上角的 [所有服務]，然後搜尋並選取 [Azure AD B2C]。
-4. 選取 [使用者流程 (原則)]。
+4. 選取 [使用者流程]****。
 5. 開啟您先前建立的使用者流程。
 6. 選取 [屬性] 。
 7. 設定**web 應用程式會話存留期（分鐘）**、 **web 應用程式會話超時**、**單一登入**設定，並視需要**在登出要求中要求識別碼權杖**。

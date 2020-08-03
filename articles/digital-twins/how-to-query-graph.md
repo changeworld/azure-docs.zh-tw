@@ -7,20 +7,24 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 3e7ee90d75a2ff2b3552992c19f11cc86b6109ca
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337597"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486644"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖形
 
 本文提供使用[Azure 數位 Twins 查詢存放區語言](concepts-query-language.md)查詢對應項[圖形](concepts-twins-graph.md)的範例和詳細資料，以取得相關資訊。 您可以使用 Azure 數位 Twins[**查詢 api**](how-to-use-apis-sdks.md)在圖表上執行查詢。
 
+[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+
+本文的其餘部分提供如何使用這些作業的範例。
+
 ## <a name="query-syntax"></a>查詢語法
 
-以下是一些範例查詢，其中說明查詢語言結構並執行可能的查詢作業。
+本節包含範例查詢，說明查詢語言結構並執行可能的查詢作業。
 
 依屬性取得[數位 twins](concepts-twins-graph.md) （包括識別碼和中繼資料）：
 ```sql
@@ -31,16 +35,55 @@ AND T.$dtId in ['123', '456']
 AND T.Temperature = 70
 ```
 
-依[模型](concepts-models.md)取得數位 twins
-```sql
-SELECT  * 
-FROM DigitalTwins T  
-WHERE IS_OF_MODEL(T , 'dtmi:com:contoso:Space;3')
-AND T.roomSize > 50
-```
-
 > [!TIP]
 > 數位對應項的識別碼是使用 [中繼資料] 欄位進行查詢 `$dtId` 。
+
+您也可以依其*標記*屬性取得 twins，如將標籤[新增至數位 twins](how-to-use-tags.md)中所述：
+```sql
+select * from digitaltwins where is_defined(tags.red) 
+```
+
+### <a name="select-top-items"></a>選取最上層專案
+
+您可以使用子句，在查詢中選取數個「頂端」專案 `Select TOP` 。
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE property = 42
+```
+
+### <a name="query-by-model"></a>依模型查詢
+
+`IS_OF_MODEL`運算子可以用來根據對應項的[模型](concepts-models.md)進行篩選。 它支援繼承，而且有數個多載選項。
+
+最簡單的用法 `IS_OF_MODEL` 只接受 `twinTypeName` 參數： `IS_OF_MODEL(twinTypeName)` 。
+以下是在此參數中傳遞值的查詢範例：
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+```
+
+若要在有多個時指定要搜尋的對應項集合（例如 `JOIN` 使用時），請新增 `twinCollection` 參數： `IS_OF_MODEL(twinCollection, twinTypeName)` 。
+以下是新增此參數值的查詢範例：
+
+```sql
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+```
+
+若要執行完全相符的動作，請新增 `exact` 參數： `IS_OF_MODEL(twinTypeName, exact)` 。
+以下是新增此參數值的查詢範例：
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+```
+
+您也可以將這三個引數一起傳遞給： `IS_OF_MODEL(twinCollection, twinTypeName, exact)` 。
+以下是為所有三個參數指定值的查詢範例：
+
+```sql
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+```
 
 ### <a name="query-based-on-relationships"></a>以關聯性為基礎的查詢
 

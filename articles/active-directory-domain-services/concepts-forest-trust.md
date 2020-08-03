@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: f4bfffe54fb87953ae737ecf83ea898cfe78743c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 424a05d6a096538aa296bb11863702b816410fb9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040328"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480640"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 中資源樹系的信任關係如何運作
 
@@ -280,7 +280,7 @@ LSA 安全性子系統提供核心模式和使用者模式的服務，以驗證�
 
 若要深入瞭解資源樹系，請參閱[樹系信任在 AZURE AD DS 中的運作方式？][concepts-trust]
 
-若要開始建立具有資源樹系的受控網域，請參閱[建立和設定 AZURE AD DS 受控網域][tutorial-create-advanced]。 接著，您可[建立內部部署網域的輸出樹系信任 (預覽)][create-forest-trust]。
+若要開始建立具有資源樹系的受控網域，請參閱[建立和設定 AZURE AD DS 受控網域][tutorial-create-advanced]。 接著，您可以[建立內部部署網域的輸出樹系信任][create-forest-trust]。
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md

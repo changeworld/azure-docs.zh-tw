@@ -3,12 +3,12 @@ title: YAML 參考-ACR 工作
 description: 適用於以 YAML 為「ACR 工作」定義工作的參考，包括工作屬性、步驟類型、步驟屬性及內建變數。
 ms.topic: article
 ms.date: 07/08/2020
-ms.openlocfilehash: 1d680fd8512ec96fa4fb5762e4a3552e5e2e4dd3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4710afe0d10a81f2a84437a335d3a012f3bac326
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446930"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479773"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 工作參考：YAML
 
@@ -81,8 +81,8 @@ az configure --defaults acr=myregistry
 | `stepTimeout` | 整數 (秒) | 是 | 步驟的可執行秒數上限。 如果在工作上指定屬性，則會設定 `timeout` 所有步驟的預設屬性。 如果在 `timeout` 步驟上指定屬性，它會覆寫工作所提供的屬性。 | 是 | 600 (10 分鐘) |
 | `workingDirectory` | 字串 | 是 | 容器在執行時間期間的工作目錄。 如果在工作上指定屬性，則會設定 `workingDirectory` 所有步驟的預設屬性。 如果在步驟上指定，它會覆寫工作所提供的屬性。 | 是 | `/workspace` |
 | `env` | [字串, 字串, ...] | 是 |  格式的字串陣列 `key=value` ，定義工作的環境變數。 如果在工作上指定屬性，則會設定 `env` 所有步驟的預設屬性。 如果在步驟上指定，它會覆寫任何繼承自工作的環境變數。 | 是 | None |
-| `secrets` | [秘密，秘密，...] | 是 | [秘密](#secret)物件的陣列。 否 | None |
-| `networks` | [network，network，...] | 是 | [網路](#network)物件的陣列。 否 | None |
+| `secrets` | [秘密，秘密，...] | 是 | [秘密](#secret)物件的陣列。 | 否 | None |
+| `networks` | [network，network，...] | 是 | [網路](#network)物件的陣列。 | 否 | None |
 | `volumes` | [磁片區，磁片區，...] | 是 | [磁片](#volume)區物件的陣列。 指定要掛接至步驟的來源內容的磁片區。 | 否 | None |
 
 ### <a name="secret"></a>secret
@@ -141,7 +141,7 @@ steps:
 
 `build` 步驟類型支援下表中的參數。 `build` 步驟類型也支援 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令的所有建置選項，例如以 `--build-arg` 設定建置時間變數。
 
-| 參數 | 說明 | 選用 |
+| 參數 | 說明 | 選擇性 |
 | --------- | ----------- | :-------: |
 | `-t` &#124; `--image` | 定義所建置映像的完整 `image:tag`。<br /><br />由於映像可能會用於內部工作驗證 (例如功能測試)，因此並非所有映像都需要 `push` 來推送至登錄。 不過，若要在工作執行內將某個映像執行個體化，則該映像確實需要一個可供參考的名稱。<br /><br />不同于 `az acr build` ，執行 ACR 工作不會提供預設的推送行為。 使用「ACR 工作」時，預設案例會能夠建置、驗證，然後推送映像。 如需了解如何視需要推送所建置的映像，請參閱 [push](#push)。 | 是 |
 | `-f` &#124; `--file` | 指定傳遞給 `docker build` 的 Dockerfile。 如果未指定，則會假設使用內容根目錄中的預設 Dockerfile。 若要指定 Dockerfile，請傳遞相對於內容根目錄的檔案名。 | 是 |
@@ -153,27 +153,27 @@ steps:
 
 | 屬性 | 類型 | 必要 |
 | -------- | ---- | -------- |
-| `detach` | bool | 選用 |
-| `disableWorkingDirectoryOverride` | bool | 選用 |
+| `detach` | bool | 選擇性 |
+| `disableWorkingDirectoryOverride` | bool | 選擇性 |
 | `entryPoint` | 字串 | 選用 |
-| `env` | [字串, 字串, ...] | 選用 |
-| `expose` | [字串, 字串, ...] | 選用 |
-| `id` | 字串 | 選用 |
-| `ignoreErrors` | bool | 選用 |
-| `isolation` | 字串 | 選用 |
-| `keep` | bool | 選用 |
+| `env` | [字串, 字串, ...] | 選擇性 |
+| `expose` | [字串, 字串, ...] | 選擇性 |
+| `id` | 字串 | 選擇性 |
+| `ignoreErrors` | bool | 選擇性 |
+| `isolation` | 字串 | 選擇性 |
+| `keep` | bool | 選擇性 |
 | `network` | 物件 (object) | 選用 |
-| `ports` | [字串, 字串, ...] | 選用 |
-| `pull` | bool | 選用 |
-| `repeat` | int | 選用 |
-| `retries` | int | 選用 |
-| `retryDelay` | 整數 (秒) | 選用 |
+| `ports` | [字串, 字串, ...] | 選擇性 |
+| `pull` | bool | 選擇性 |
+| `repeat` | int | 選擇性 |
+| `retries` | int | 選擇性 |
+| `retryDelay` | 整數 (秒) | 選擇性 |
 | `secret` | 物件 (object) | 選用 |
-| `startDelay` | 整數 (秒) | 選用 |
-| `timeout` | 整數 (秒) | 選用 |
+| `startDelay` | 整數 (秒) | 選擇性 |
+| `timeout` | 整數 (秒) | 選擇性 |
 | `volumeMount` | 物件 (object) | 選用 |
-| `when` | [字串, 字串, ...] | 選用 |
-| `workingDirectory` | 字串 | 選用 |
+| `when` | [字串, 字串, ...] | 選擇性 |
+| `workingDirectory` | 字串 | 選擇性 |
 
 ### <a name="examples-build"></a>範例：build
 
@@ -226,12 +226,12 @@ steps:
 
 | 屬性 | 類型 | 必要 |
 | -------- | ---- | -------- |
-| `env` | [字串, 字串, ...] | 選用 |
-| `id` | 字串 | 選用 |
-| `ignoreErrors` | bool | 選用 |
-| `startDelay` | 整數 (秒) | 選用 |
-| `timeout` | 整數 (秒) | 選用 |
-| `when` | [字串, 字串, ...] | 選用 |
+| `env` | [字串, 字串, ...] | 選擇性 |
+| `id` | 字串 | 選擇性 |
+| `ignoreErrors` | bool | 選擇性 |
+| `startDelay` | 整數 (秒) | 選擇性 |
+| `timeout` | 整數 (秒) | 選擇性 |
+| `when` | [字串, 字串, ...] | 選擇性 |
 
 ### <a name="examples-push"></a>範例：push
 
@@ -271,27 +271,27 @@ steps:
 
 | 屬性 | 類型 | 必要 |
 | -------- | ---- | -------- |
-| `detach` | bool | 選用 |
-| `disableWorkingDirectoryOverride` | bool | 選用 |
-| `entryPoint` | 字串 | 選用 |
-| `env` | [字串, 字串, ...] | 選用 |
-| `expose` | [字串, 字串, ...] | 選用 |
-| `id` | 字串 | 選用 |
-| `ignoreErrors` | bool | 選用 |
-| `isolation` | 字串 | 選用 |
-| `keep` | bool | 選用 |
+| `detach` | bool | 選擇性 |
+| `disableWorkingDirectoryOverride` | bool | 選擇性 |
+| `entryPoint` | 字串 | 選擇性 |
+| `env` | [字串, 字串, ...] | 選擇性 |
+| `expose` | [字串, 字串, ...] | 選擇性 |
+| `id` | 字串 | 選擇性 |
+| `ignoreErrors` | bool | 選擇性 |
+| `isolation` | 字串 | 選擇性 |
+| `keep` | bool | 選擇性 |
 | `network` | 物件 (object) | 選用 |
-| `ports` | [字串, 字串, ...] | 選用 |
-| `pull` | bool | 選用 |
-| `repeat` | int | 選用 |
-| `retries` | int | 選用 |
-| `retryDelay` | 整數 (秒) | 選用 |
+| `ports` | [字串, 字串, ...] | 選擇性 |
+| `pull` | bool | 選擇性 |
+| `repeat` | int | 選擇性 |
+| `retries` | int | 選擇性 |
+| `retryDelay` | 整數 (秒) | 選擇性 |
 | `secret` | 物件 (object) | 選用 |
-| `startDelay` | 整數 (秒) | 選用 |
-| `timeout` | 整數 (秒) | 選用 |
+| `startDelay` | 整數 (秒) | 選擇性 |
+| `timeout` | 整數 (秒) | 選擇性 |
 | `volumeMount` | 物件 (object) | 選用 |
-| `when` | [字串, 字串, ...] | 選用 |
-| `workingDirectory` | 字串 | 選用 |
+| `when` | [字串, 字串, ...] | 選擇性 |
+| `workingDirectory` | 字串 | 選擇性 |
 
 您可以在此文章的[工作步驟屬性](#task-step-properties)一節中，找到這些屬性的詳細資料。
 

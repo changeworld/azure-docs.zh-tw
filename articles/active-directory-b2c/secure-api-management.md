@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385411"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482833"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>使用 Azure AD B2C 保護 Azure API 管理 API
 
@@ -60,7 +60,7 @@ ms.locfileid: "85385411"
 接下來，針對您的一個 Azure AD B2C 使用者流程取得已知的設定 URL。 您還需要您想在 Azure API 管理中支援的權杖簽發者端點 URI。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 Azure AD B2C 租用戶。
-1. 在 [原則] 底下，選取 [使用者流程 (原則)]。
+1. 在 [**原則**] 底下，選取 [**使用者流程**]。
 1. 選取現有的原則 (例如 *B2C_1_signupsignin1*)，然後選取 [執行使用者流程]。
 1. 記錄顯示於頁面頂端附近 [執行使用者流程] 標題底下之超連結中的 URL。 此 URL 是使用者流程的 OpenID Connect 已知探索端點，您會在下一節，於 Azure API 管理中設定輸入原則時使用此端點。
 
@@ -126,7 +126,7 @@ https://<tenant-name>.b2clogin.com/99999999-0000-0000-0000-999999999999/v2.0/
 您首先需要 Azure AD B2C 所簽發的權杖，以在 Postman 的 `Authorization` 標頭中使用。 您可以在您應該已建立來作為先決條件之一的註冊/登入使用者流程中，使用 [立即執行] 功能來取得一個。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至您的 Azure AD B2C 租用戶。
-1. 在 [原則] 底下，選取 [使用者流程 (原則)]。
+1. 在 [**原則**] 底下，選取 [**使用者流程**]。
 1. 選取現有的註冊/登入使用者流程，例如 *B2C_1_signupsignin1*。
 1. 針對 [應用程式] 選取 [webapp1]。
 1. 針對 [回覆 URL] 選擇 `https://jwt.ms`。

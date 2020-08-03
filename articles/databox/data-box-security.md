@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200401"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483824"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure 資料箱安全性和資料保護
 
@@ -68,7 +68,7 @@ Microsoft Azure 資料箱解決方案包含四個彼此互動的主要元件：
 
 - 若要存取資料箱服務，貴組織需有內含資料箱的 Azure 訂用帳戶。 您的訂用帳戶控管您在 Azure 入口網站中可存取的功能。
 - 因為資料箱服務裝載於 Azure 中，所以會受到 Azure 安全性功能的保護。 如需有關 Microsoft Azure 所提供的安全性功能的詳細資訊，請移至 [Microsoft Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。
-- 您可以透過使用角色型存取控制 (RBAC) 角色，控制對資料箱訂單的存取。 如需詳細資訊，請參閱[設定資料箱訂單的存取控制](data-box-logs.md#set-up-access-control-on-the-order)
+- 您可以透過使用 Azure 角色來控制資料箱訂單的存取權。 如需詳細資訊，請參閱[設定資料箱訂單的存取控制](data-box-logs.md#set-up-access-control-on-the-order)
 - 資料箱服務會儲存解除鎖定密碼，用來解鎖服務中的裝置。
 - 資料箱服務會在服務中儲存訂單詳細資料和狀態。 刪除訂單時，會將此資訊刪除。
 
@@ -84,9 +84,9 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
   - 電話號碼
   - 電子郵件
   - 街道地址
-  - City
+  - 城市
   - 郵遞區號
-  - 狀態
+  - State
   - 國家/地區/州/省/區域
   - 貨運公司帳戶號碼
   - 運送追蹤號碼
@@ -102,7 +102,7 @@ Azure 資料箱會在服務中收集並顯示下列金鑰執行個體的個人�
 
 資料箱中會實作下列安全性指導方針： 
 
-|指導方針   |描述   |
+|指導方針   |說明   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | 適用於防水防塵         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 適用於不利的運輸條件耐久性          |

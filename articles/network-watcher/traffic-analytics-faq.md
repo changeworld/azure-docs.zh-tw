@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 84e9dab149cfed265833336577d718e57bd9bc2d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165323"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479841"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常見問題集
 
@@ -36,7 +36,7 @@ ms.locfileid: "86165323"
 
 您的帳戶必須符合下列其中一項才能啟用流量分析：
 
-- 您的帳戶必須擁有訂用帳戶範圍中下列任一個角色型存取控制 (RBAC) 角色：擁有者、參與者、讀者或網路參與者。
+- 您的帳戶必須具有下列訂用帳戶範圍中的任何一個 Azure 角色：擁有者、參與者、讀者或網路參與者。
 - 如果您的帳戶未指派給其中一個之前列出的角色，則必須指派給一個自訂角色，且該角色已獲得下列訂用帳戶層級的動作。
             
     - Microsoft.Network/applicationGateways/read
@@ -254,7 +254,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 ## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何判斷 IP 是惡意的？ 
 
-流量分析會依賴 Microsoft 內部威脅情報系統，將 IP 視為惡意。 這些系統會運用各種遙測來源，例如 Microsoft 產品和服務、Microsoft 數位犯罪單位 (DCU) 、Microsoft 安全性回應中心 (MSRC) 和外部摘要，並在其上建立許多智慧。 這其中一些資料是 Microsoft Internal。 如果已知的 IP 標示為惡意，請提出支援票證以瞭解詳細資料。
+流量分析會依賴 Microsoft 內部威脅情報系統，將 IP 視為惡意。 這些系統會運用各種遙測來源，例如 Microsoft 產品和服務、Microsoft 數位犯罪單位（DCU）、Microsoft Security Response Center （MSRC）和外部摘要，並在其上建立許多智慧。 這其中一些資料是 Microsoft Internal。 如果已知的 IP 標示為惡意，請提出支援票證以瞭解詳細資料。
 
 ## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>如何設定流量分析資料的警示？
 
@@ -316,7 +316,7 @@ AzureNetworkAnalytics_CL
 | summarize deviation = stdev(traffic)  by IP
 ```
 
-## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何? 檢查哪些埠可在 IP 配對之間以 NSG 規則連線 (或封鎖) ？
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何? 檢查 IP 組與 NSG 規則之間可連線（或封鎖）哪些埠？
 
 ```
 AzureNetworkAnalytics_CL
@@ -333,7 +333,7 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
 
 地理地圖頁面包含兩大區段：
     
-- **橫幅**：地理地圖頂端的橫幅會提供按鈕來選取流量發佈篩選器 (例如，部署、來自國家/地區的流量，以及惡意) 。 當您選取按鈕時，個別篩選條件便會套用至地圖。 例如，如果您選取 [使用中] 按鈕，地圖就會將部署中的使用中資料中心醒目提示。
+- **橫幅**：地理地圖頂端的橫幅會提供按鈕來選取流量發佈篩選器（例如，部署、來自國家/地區的流量，以及惡意的流量）。 當您選取按鈕時，個別篩選條件便會套用至地圖。 例如，如果您選取 [使用中] 按鈕，地圖就會將部署中的使用中資料中心醒目提示。
 - **Map**：在橫幅底下，[地圖] 區段會顯示 Azure 資料中心與國家/地區之間的流量分配。
     
 ### <a name="keyboard-navigation-on-the-banner"></a>橫幅上的鍵盤瀏覽
@@ -401,4 +401,3 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
 - 若要移至拓撲檢視上其他醒目提示節點，請使用 `Shift+Right arrow` 鍵順向移動。 
 - 在醒目提示的節點上，焦點就會移至節點的 [資訊工具方塊]****。 根據預設，焦點會移至 [資訊工具方塊]**** 上的 [更多詳細資料]**** 按鈕。 若要進一步地在 [方塊]**** 檢視內移動，請分別使用 `Right arrow` 和 `Left arrow` 鍵來順向和反向移動。 按 `Enter` 的效果等同於在 [資訊工具方塊]**** 內選取焦點按鈕的效果。
 - 選取任何這類節點時，可以按 `Shift+Left arrow` 鍵逐一前往其所有連線。 焦點會移至該連線的 [資訊工具方塊]****。 任何時候只要再按一次 `Shift+Right arrow`，都可以將焦點轉移回該節點。    
-

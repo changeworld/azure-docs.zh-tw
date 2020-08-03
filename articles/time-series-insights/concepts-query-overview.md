@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a4b969ecbc92df45021b4a9ec711960171d77d4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abc1f1de45fe846f9f50a6a7aa3dae2ed837b52b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495290"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486789"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>從 Azure 時間序列深入解析 Gen2 查詢資料
 
@@ -37,7 +37,7 @@ Azure 時間序列深入解析 Gen2 使用以字串為基礎的豐富運算式�
 
 ## <a name="environment-apis"></a>環境 API
 
-* [取得環境 API](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get)：傳回呼叫者有權存取的環境清單。
+* [取得環境 API](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment)：傳回呼叫者有權存取的環境清單。
 * [取得環境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability)：傳回事件時間戳記上事件計數的分佈 `$ts` 。 此 API 會傳回細分為時間間隔的事件計數（如果有的話），以協助判斷環境中是否有任何事件。
 * [取得事件架構 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)：傳回指定搜尋範圍的事件架構中繼資料。 此 API 可協助擷取指定搜尋範圍的結構描述中可用的所有中繼資料和屬性。
 
