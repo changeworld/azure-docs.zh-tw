@@ -4,18 +4,18 @@ description: Azure Service Fabric Reliable State Manager 和 Reliable Collection
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245104"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500277"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collections 中的交易和鎖定模式
 
 ## <a name="transaction"></a>交易
 
-交易就是以單一工作邏輯單元執行的一連串作業。 它會展現資料庫交易的常見[ACID](https://en.wikipedia.org/wiki/ACID) * (不可*部分完成性、*一致性*、*隔離*、*持久性*) 屬性：
+交易就是以單一工作邏輯單元執行的一連串作業。 它會展示資料庫交易的常見[ACID](https://en.wikipedia.org/wiki/ACID) *（不可*部分完成性、*一致性*、*隔離*、*耐久性*）屬性：
 
 * **不可部分完成性**︰交易必須是不可部分完成的工作單位。 換句話說，執行其所有資料修改，或完全不執行。
 * **一致性**︰交易完成時，所有資料必須維持一致的狀態。 所有內部資料結構在交易結束時必須是正確的。
@@ -68,7 +68,7 @@ ms.locfileid: "86245104"
 
 下表中可找到鎖定相容性矩陣：
 
-| 要求 \ 授與 | 無 | 共用 | 更新 | 獨佔 |
+| 要求 \ 授與 | None | 共用 | 更新 | 獨佔 |
 | --- |:--- |:--- |:--- |:--- |
 | 共用 |無衝突 |無衝突 |衝突 |衝突 |
 | 更新 |無衝突 |無衝突 |衝突 |衝突 |
@@ -77,7 +77,7 @@ ms.locfileid: "86245104"
 可靠的集合 Api 中的 timeout 引數會用於偵測鎖死。
 例如，有兩筆交易 (T1 和 T2) 嘗試讀取和更新 K1。
 這樣很可能會形成死結，因為它們最後都會有共用鎖定。
-在此情況下，其中一項或兩項作業將會超時。我在此案例中，更新鎖定可能會阻止這類的鎖死。
+在此情況下，其中一項或兩項作業將會超時。在此案例中，更新鎖定可能會阻止這類的鎖死。
 
 ## <a name="next-steps"></a>後續步驟
 

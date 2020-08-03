@@ -14,19 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: bd28f949d35d38c9e64af7ff4196aa1754fbc37a
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 5097a5dfa6dd9b8fd46e4bcbcee72319af51f86f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172574"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499359"
 ---
-# <a name="dynamically-change-the-service-level-of-a-volume"></a>動態變更磁片區的服務等級
+# <a name="dynamically-change-the-service-level-of-a-volume"></a>動態變更磁碟區的服務等級
 
 您可以藉由將磁片區移到另一個使用您想要用於磁片區之[服務等級](azure-netapp-files-service-levels.md)的容量集區，來變更現有磁片區的服務等級。 此磁片區的就地服務層級變更不需要您遷移資料。 它也不會影響磁片區的存取權。  
-
-> [!IMPORTANT] 
-> 使用這項功能需要允許清單。 使用您的訂閱識別碼傳送電子郵件 anffeedback@microsoft.com，以要求此功能。
 
 此功能可讓您依需求滿足您的工作負載需求。  您可以變更現有的磁片區，以使用較高的服務等級以獲得更好的效能，或使用較低的服務等級來進行成本優化。 例如，如果磁片區目前在使用*標準*服務層級的容量集區中，而您想要讓磁片區使用*premium*服務層級，您可以將磁片區動態移到使用*premium*服務層級的容量集區。  
 
@@ -39,7 +36,24 @@ ms.locfileid: "87172574"
 * 如果您將磁片區移到較高服務層級的容量集區（例如，從*標準*移至*premium*或*Ultra*服務層級），您必須至少等候七天，才能再次將磁片區移至較低服務層級的容量集區（例如，從*Ultra*移至*premium*或*Standard*）。  
 如果您將磁片區移到具有相同服務層級或較低服務層級的容量集區，則不適用此等候期間。
 
-## <a name="steps"></a>步驟
+## <a name="register-the-feature"></a>註冊功能
+
+1. 將磁片區移到另一個容量集區的功能目前為預覽狀態。 如果這是您第一次使用此功能，請在使用此功能之前先進行註冊： 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
+    ```
+
+2. 檢查功能註冊的狀態： 
+
+    > [!NOTE]
+    > 在變更為之前， **RegistrationState**可能處於 `Registering` 數分鐘的狀態 `Registered` 。 等候狀態為 [**已註冊**]，再繼續進行。
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
+    ```
+
+## <a name="move-a-volume-to-another-capacity-pool"></a>將磁片區移到另一個容量集區
 
 1.  在 [磁片區] 頁面上，以滑鼠右鍵按一下您要變更其服務等級的磁片區。 選取 [**變更集**區]。
 

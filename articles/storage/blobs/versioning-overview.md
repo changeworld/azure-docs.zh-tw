@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528395"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498594"
 ---
 # <a name="blob-versioning-preview"></a>Blob 版本設定 (預覽)
 
@@ -176,7 +177,7 @@ Blob 版本設定是為了保護您的資料免于遭到意外或惡意刪除所
 
 下表顯示哪些 RBAC 動作支援刪除 blob 或 blob 版本。
 
-| 描述 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
+| 說明 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | 刪除 blob 的目前版本 | 刪除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 儲存體 Blob 資料參與者 |
 | 刪除版本 | 刪除 Blob | **Microsoft. Storage/storageAccounts/blobServices/container/blob/deleteBlobVersion/action** | 儲存體 Blob 資料擁有者 |

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c3d4a2120f86a03508b91d4b2dea52e629dc0f79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1fdfe57c2995628855ea8e068c4f8eb2f2ac466a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130173"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500417"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>設定內部部署實體伺服器至 Azure 的災害復原
 
@@ -27,7 +27,7 @@ ms.locfileid: "86130173"
 > * 建立複寫原則
 > * 啟用伺服器的複寫
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程：
 
@@ -111,7 +111,7 @@ ms.locfileid: "86130173"
 4. 下載 Site Recovery 統一安裝的安裝檔案。
 5. 下載保存庫註冊金鑰。 您會在執行統一安裝時用到此金鑰。 該金鑰在產生後會維持 5 天有效。
 
-   ![設定來源](./media/physical-azure-disaster-recovery/source-environment.png)
+   ![顯示下載安裝檔案和註冊金鑰之選項的螢幕擷取畫面。](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>在保存庫中註冊設定伺服器
@@ -136,7 +136,6 @@ ms.locfileid: "86130173"
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-註冊完成後，設定伺服器會顯示在保存庫的 [**設定**] [  >  **伺服器**] 頁面上。
 
 ## <a name="set-up-the-target-environment"></a>設定目標環境
 
@@ -146,18 +145,18 @@ ms.locfileid: "86130173"
 2. 指定目標部署模型。
 3. Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶和網路。
 
-   ![目標](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![設定目標環境之選項的螢幕擷取畫面。](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>建立複寫原則
 
-1. 若要建立新的複寫原則，請按一下 [ **Site Recovery 基礎結構**  >  **複寫原則**  >  **+ 複寫原則**]。
-2. 在 [建立複寫原則]**** 中，指定原則名稱。
-3. 在 [RPO 閾值]**** 中，指定復原點目標 (RPO) 限制。 這個值指定資料復原點的建立頻率。 連續複寫超過此限制時會產生警示。
-4. 在 [復原點保留]**** 中，指定每個復原點的保留週期長度 (以小時為單位)。 複寫的 VM 可以還原至一個週期內的任何時間點。 複寫至進階儲存體的電腦支援最長保留 24 小時，標準儲存體則是 72 小時。
-5. 在 [應用程式一致快照頻率] **** 中，指定建立包含應用程式一致快照之復原點的頻率 (以分鐘為單位)。 按一下 [確定] **** 以建立原則。
+1. 若要建立新的複寫原則，請按一下 [Site Recovery 基礎結構] > [複寫原則] > [+複寫原則]。
+2. 在 [建立複寫原則]中，指定原則名稱。
+3. 在 [RPO 閾值] 中，指定復原點目標 (RPO) 限制。 這個值指定資料復原點的建立頻率。 連續複寫超過此限制時會產生警示。
+4. 在 [復原點保留] 中，指定每個復原點的保留週期長度 (以小時為單位)。 複寫的 VM 可以還原至一個週期內的任何時間點。 複寫至進階儲存體的電腦支援最長保留 24 小時，標準儲存體則是 72 小時。
+5. 在 [應用程式一致快照頻率] **** 中，指定建立包含應用程式一致快照之復原點的頻率 (以分鐘為單位)。 按一下 [確定]  以建立原則。
 
-    ![複寫原則](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![建立複寫原則之選項的螢幕擷取畫面。](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 此原則會自動與設定伺服器產生關聯。 依預設會自動建立容錯回復的比對原則。 例如，如果複寫原則是 **rep-policy**，則建立的容錯回復原則是 **rep-policy-failback**。 從 Azure 起始容錯回復時才會使用此原則。
@@ -172,7 +171,7 @@ ms.locfileid: "86130173"
 1. 按一下 [複寫應用程式] > [來源]。
 2. 在 [來源]**** 中，選取設定伺服器。
 3. 在 [**機器類型**] 中，選取 [**實體機器**]。
-4. 選取處理序伺服器 (設定伺服器)。 然後按一下 [確定] 。
+4. 選取處理序伺服器 (設定伺服器)。 然後按一下 [確定]。
 5. 在 [**目標**] 中，選取您要在容錯移轉後建立 Azure vm 的訂用帳戶和資源群組。 選擇您想要在 Azure (傳統或資源管理) 中使用的部署模型。
 6. 選取您要用來複寫資料的 Azure 儲存體帳戶。 
 7. 選取 Azure VM 在容錯移轉後啟動時所要建立的 Azure 網路和子網路。

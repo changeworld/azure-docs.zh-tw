@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 65778d0a6ba3bd5cdc719609ae4c2d18bf05aab9
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4b1b8a0cfa98d48d7cb92474c1572f17c79ffd0d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424404"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498947"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware 至 Azure 災害復原架構
 
@@ -30,9 +30,7 @@ ms.locfileid: "87424404"
 **VMware 伺服器** | VMware VMs 會裝載於內部部署 vSphere ESXi 伺服器。 我們建議以 vCenter 伺服器管理主機。 | 在 Site Recovery 部署期間，您可將 VMware 伺服器新增至復原服務保存庫。
 **複寫的機器** | 行動服務會安裝在您複寫的每個 VMware VM 上。 | 建議您允許從處理序伺服器自動安裝。 或者，您可以手動安裝服務，或使用自動化部署方法，例如 Configuration Manager。
 
-**VMware 至 Azure 架構**
-
-![元件](./media/vmware-azure-architecture/arch-enhanced.png)
+![顯示 VMware 至 Azure 複寫架構關聯性的圖表。](./media/vmware-azure-architecture/arch-enhanced.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>設定輸出網路連線能力
 
@@ -45,7 +43,7 @@ ms.locfileid: "87424404"
 
 如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許存取這些 URL：
 
-| **名稱**                  | **商業**                               | **政府**                                 | **說明** |
+| **名稱**                  | **商業**                               | **政府機關**                                 | **說明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
@@ -71,9 +69,7 @@ ms.locfileid: "87424404"
     - 進程伺服器會接收復寫資料、將其優化並加以加密，並透過埠443輸出將它傳送至 Azure 儲存體。
 5. 複寫資料記錄會先在 Azure 中的快取儲存體帳戶中進行。 系統會處理這些記錄，並將資料儲存在 Azure 受控磁片中（稱為 asr 種子磁片）。 復原點會建立在此磁片上。
 
-**VMware 到 Azure 複寫程序**
-
-![複寫程序](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+![此圖顯示 VMware 到 Azure 的複寫程式。](./media/vmware-azure-architecture/v2a-architecture-henry.png)
 
 ## <a name="resynchronization-process"></a>重新同步處理程序
 
@@ -108,9 +104,8 @@ ms.locfileid: "87424404"
     - 第 3 階段：工作負載進行容錯回復之後，您必須重新啟用內部部署 VM 的複寫。
     
  
-**從 Azure 容錯回復 VMware**
 
-![容錯回復](./media/vmware-azure-architecture/enhanced-failback.png)
+![顯示從 Azure 進行 VMware 容錯回復的圖表。](./media/vmware-azure-architecture/enhanced-failback.png)
 
 
 ## <a name="next-steps"></a>後續步驟

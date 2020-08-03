@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: a3b012d86444ca2bb9b84af37aa17424221457d1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955058"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495687"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>使用具體化檢視進行效能調整
 
@@ -40,7 +40,7 @@ SQL 集區支援標準檢視和具體化檢視。  兩者都是使用 SELECT 運
 |額外儲存空間                   | 否                                           | 是
 |語法                          | CREATE VIEW                                  | CREATE MATERIALIZED VIEW AS SELECT
 
-## <a name="benefits-of-using-materialized-views"></a>使用具體化檢視的優點
+## <a name="benefits-of-materialized-views"></a>具體化視圖的優點
 
 設計正確的具體化檢視有以下優點：
 

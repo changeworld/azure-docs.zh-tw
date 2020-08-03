@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2a534bd0cb89e837ff2315cb3fb9cfe70ad01f5f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ab1cba455f93abe4d603f417f8d0a00dda0e315e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078981"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497642"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2
 
@@ -61,7 +61,7 @@ Data Lake Storage Gen2 可做為幾乎所有 Azure HDInsight 叢集類型的儲�
     1. 按一下 [ **Advanced** ] 索引標籤。
     1. 按一下 [ **Data Lake Storage Gen2**] 底下 [**階層命名空間**] 旁的 [**已啟用**]。
     1. 按一下 [檢閱 + 建立]。
-    1. 按一下 [建立] 
+    1. 按一下 [建立]
 
 如需建立儲存體帳戶期間其他選項的詳細資訊，請參閱[快速入門：建立 Azure Data Lake Storage Gen2 儲存體帳戶](../storage/blobs/data-lake-storage-quickstart-create-account.md)。
 
@@ -72,7 +72,7 @@ Data Lake Storage Gen2 可做為幾乎所有 Azure HDInsight 叢集類型的儲�
 將受控識別指派給儲存體帳戶上的**儲存體 Blob 資料擁有**者角色。
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，移至您的儲存體帳戶。
-1. 選取您的儲存體帳戶，然後選取 [**存取控制（IAM）** ] 以顯示帳戶的存取控制設定。 選取 [角色指派]  索引標籤，以查看角色指派的清單。
+1. 選取您的儲存體帳戶，然後選取 [**存取控制（IAM）** ] 以顯示帳戶的存取控制設定。 選取 [角色指派] 索引標籤，以查看角色指派的清單。
 
     ![顯示儲存體存取控制設定的螢幕擷取畫面](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
 
@@ -81,7 +81,7 @@ Data Lake Storage Gen2 可做為幾乎所有 Azure HDInsight 叢集類型的儲�
 
     ![顯示如何指派 RBAC 角色的螢幕擷取畫面](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
-1. 選取 [儲存]。 您選取的使用者指派身分識別現在會列在選取的角色底下。
+1. 選取 [儲存]  。 您選取的使用者指派身分識別現在會列在選取的角色底下。
 1. 完成此初始設定後，您可以透過入口網站建立叢集。 此叢集必須與儲存體帳戶位在相同的 Azure 區域中。 在 [叢集建立] 功能表的 [**儲存體**] 索引標籤中，選取下列選項：
 
     * 針對 [**主要儲存體類型**]，選取 [ **Azure Data Lake Storage Gen2**]。
@@ -159,7 +159,7 @@ Data Lake Storage Gen2 使用支援角色型存取控制（RBAC）和 POSIX 型�
 
 RBAC 會使用角色指派，有效地將許可權集套用至 Azure 資源的使用者、群組和服務主體。 一般而言，這些 Azure 資源會限定於最上層資源 (例如 Azure 儲存體帳戶)。 針對 Azure 儲存體，而且也 Data Lake Storage Gen2，此機制已擴充至檔案系統資源。
 
- 如需具有 RBAC 之檔案許可權的詳細資訊，請參閱[Azure 角色型存取控制（RBAC）](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)。
+ 如需具有 RBAC 之檔案許可權的詳細資訊，請參閱[Azure 角色型存取控制（AZURE RBAC）](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)。
 
 如需具有 Acl 之檔案許可權的詳細資訊，請參閱檔案[和目錄的存取控制清單](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)。
 
@@ -254,7 +254,7 @@ LOCATION 'abfs:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 * [Azure HDInsight 與 Data Lake Storage Gen2 預覽版的整合 - ACL 和安全性更新](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Azure Data Lake Storage Gen2 簡介](../storage/blobs/data-lake-storage-introduction.md)

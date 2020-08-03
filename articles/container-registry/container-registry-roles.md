@@ -1,14 +1,14 @@
 ---
 title: RBAC 角色和許可權
-description: Azure 角色型存取控制 (RBAC) 以及身分識別和存取管理 (IAM) 可對 Azure Container Registry 中的資源提供精確的權限。
+description: 使用 Azure 角色型存取控制（Azure RBAC）和身分識別和存取管理（IAM），為 Azure container registry 中的資源提供更細緻的許可權。
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 3fb103ac4c4dac736b3c0fc99b2cf49f01e9e005
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bf6059698191c975b212bee7f45d21977478b49
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74893479"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497744"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry 角色和權限
 

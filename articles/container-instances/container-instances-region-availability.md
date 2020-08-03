@@ -4,12 +4,12 @@ description: Azure 容器執行個體服務的計算和記憶體資源在不同 
 ms.topic: article
 ms.date: 04/27/2020
 ms.author: danlep
-ms.openlocfilehash: 119c1202fe59e02a1b6ff802e3dbdc4d52133abe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 591d7dd07ea3717303589cdc070623068c4d3864
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82583889"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500601"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure 容器執行個體在 Azure 區域中的資源可用性
 
@@ -54,9 +54,6 @@ ms.locfileid: "82583889"
 ## <a name="availability---gpu-resources-preview"></a>可用性 - GPU 資源 (預覽)
 
 下欄區域和最大資源可供使用[GPU 資源](container-instances-gpu.md)（預覽）部署的容器群組使用。
-
-> [!IMPORTANT]
-> 只有在要求時，才可以使用 GPU 資源。 若要要求存取 GPU 資源，請提交[Azure 支援要求][azure-support]。
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]

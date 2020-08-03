@@ -8,12 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
-ms.openlocfilehash: 79712c50a5ad46d7d435868606011f458fe48e2e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8fda0384dacaf1183458e90688b1f6b63cc63a35
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370746"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501333"
 ---
 # <a name="manage-storage-account-access-keys"></a>管理儲存體帳戶存取金鑰
 
@@ -65,7 +66,7 @@ az storage account keys list \
 
 您可以使用兩個金鑰的其中一個來存取 Azure 儲存體，但一般來說，使用第一個金鑰是很好的作法，並保留在輪替金鑰時使用第二個金鑰的方式。
 
-若要查看或讀取帳戶的存取金鑰，使用者必須是服務管理員，或必須獲指派包含**storageAccounts/listkeys/action**的 RBAC 角色。 某些包含此動作的 Azure 內建角色是「**擁有**者」、「**參與者**」和「**儲存體帳戶金鑰操作員」服務角色**角色。 如需服務系統管理員角色的詳細資訊，請參閱[傳統訂用帳戶管理員角色、AZURE RBAC 角色和 Azure AD 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。 如需 Azure 儲存體內建角色的詳細資訊，請參閱 azure [RBAC 的 azure 內建角色](../../role-based-access-control/built-in-roles.md#storage)中的**儲存體**一節。
+若要查看或讀取帳戶的存取金鑰，使用者必須是服務管理員，或必須獲指派包含**storageAccounts/listkeys/action**的 Azure 角色。 某些包含此動作的 Azure 內建角色是「**擁有**者」、「**參與者**」和「**儲存體帳戶金鑰操作員」服務角色**角色。 如需服務系統管理員角色的詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。 如需 Azure 儲存體內建角色的詳細資訊，請參閱 azure [RBAC 的 azure 內建角色](../../role-based-access-control/built-in-roles.md#storage)中的**儲存體**一節。
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>使用 Azure Key Vault 來管理您的存取金鑰
 
@@ -132,7 +133,7 @@ Microsoft 建議您定期輪替存取金鑰，以協助保護您的儲存體帳�
 > [!NOTE]
 > Microsoft 建議同一時間在您的所有應用程式中僅使用其中一個金鑰。 如果您在某些地方使用金鑰 1 並在其他地方使用金鑰 2，您就無法在沒有部分應用程式遺失存取的情況下輪換您的金鑰。
 
-若要輪替帳戶的存取金鑰，使用者必須是服務管理員，或必須獲指派包含**storageAccounts/regeneratekey/action**的 RBAC 角色。 某些包含此動作的 Azure 內建角色是「**擁有**者」、「**參與者**」和「**儲存體帳戶金鑰操作員」服務角色**角色。 如需服務系統管理員角色的詳細資訊，請參閱[傳統訂用帳戶管理員角色、AZURE RBAC 角色和 Azure AD 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。 如需有關 Azure 儲存體之 Azure 內建角色的詳細資訊，請參閱 azure [RBAC 的 azure 內建角色](../../role-based-access-control/built-in-roles.md#storage)中的**儲存體**一節。
+若要輪替帳戶的存取金鑰，使用者必須是服務管理員，或必須獲指派包含**storageAccounts/regeneratekey/action**的 Azure 角色。 某些包含此動作的 Azure 內建角色是「**擁有**者」、「**參與者**」和「**儲存體帳戶金鑰操作員」服務角色**角色。 如需服務系統管理員角色的詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)。 如需有關 Azure 儲存體之 Azure 內建角色的詳細資訊，請參閱 azure [RBAC 的 azure 內建角色](../../role-based-access-control/built-in-roles.md#storage)中的**儲存體**一節。
 
 ## <a name="next-steps"></a>後續步驟
 

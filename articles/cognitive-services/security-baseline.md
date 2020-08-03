@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1c5ce50a3736d6e96620e25cf084c5c66c456a5f
-ms.sourcegitcommit: dfa5f7f7d2881a37572160a70bac8ed1e03990ad
+ms.openlocfilehash: bde1ff4003ba69a4c5449996f4e18d646e6ecff6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85375126"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498339"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>適用于認知服務的 Azure 安全性基準
 
@@ -28,7 +28,7 @@ ms.locfileid: "85375126"
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路中的 Azure 資源
 
-**指引**： Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知服務帳戶保護到特定的網路子集。 設定網路規則時，只有透過一組指定網路要求資料的應用程式才能存取該帳戶。 您可以使用要求篩選來限制資源的存取權，只允許來自指定 IP 位址、IP 範圍或 Azure 虛擬網路中子網清單的要求。
+**指引**： Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知服務帳戶固定在特定的網路子集。 設定網路規則時，只有透過一組指定網路要求資料的應用程式才能存取帳戶。 您可以使用要求篩選來限制資源的存取權，只允許來自指定 IP 位址、IP 範圍或 Azure 虛擬網路中子網清單的要求。
 
 認知服務的虛擬網路和服務端點支援僅限於一組特定的區域。
 
@@ -73,7 +73,7 @@ ms.locfileid: "85375126"
 **指引**.. 當虛擬機器部署在與您的 Azure 認知服務容器相同的虛擬網路中時，請使用 Azure 原則定義和執行相關網路資源的標準安全性設定。 使用 "CognitiveServices" 和 "Microsoft" 命名空間中的 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure Cache for Redis 實例的網路設定。 您也可以利用內建的原則定義，例如：
 - 應啟用 DDoS 保護標準
 
-您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝金鑰環境成品（例如 Azure Resource Manager 範本、Azure 角色型存取控制（RBAC）和原則），來簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
+您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝金鑰環境成品（例如 Azure Resource Manager 範本、Azure 角色型存取控制（Azure RBAC）和原則），來簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
 
 如果您在容器內使用認知服務，您可以使用 front web 應用程式防火牆解決方案來擴充容器部署，以篩選惡意流量並支援端對端 TLS 加密，讓容器端點成為私用和安全。
 

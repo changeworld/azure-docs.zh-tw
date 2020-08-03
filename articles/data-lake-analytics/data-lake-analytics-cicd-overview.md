@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 09b4f36a5c97b6bcc0a8d11d2fb1ee0893fae80a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130132"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496112"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何設定 Azure Data Lake Analytics 的 CI/CD 管線  
 
@@ -35,7 +35,7 @@ Azure Data Lake Tools for Visual Studio 提供 U-SQL 專案類型，有助於編
 
 設定 U-SQL 專案的建置工作之前，請確定您擁有最新版本的 U-SQL 專案。 在編輯器中開啟 U-SQL 專案檔，並確認您擁有下列匯入項目：
 
-```   
+```xml
 <!-- check for SDK Build target in current path then in USQLSDKPath-->
 <Import Project="UsqlSDKBuild.targets" Condition="Exists('UsqlSDKBuild.targets')" />
 <Import Project="$(USQLSDKPath)\UsqlSDKBuild.targets" Condition="!Exists('UsqlSDKBuild.targets') And '$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\UsqlSDKBuild.targets')" />
@@ -66,14 +66,14 @@ U-SQL 專案中的 U-SQL 指令碼可能有 U-SQL 資料庫物件的查詢陳述
 深入了解 [U-SQL 資料庫專案](data-lake-analytics-data-lake-tools-develop-usql-database.md)。
 
 >[!NOTE]
->DROP 語句可能會導致意外刪除問題。 若要啟用 DROP 語句，您必須明確指定 MSBuild 引數。 **AllowDropStatement**會啟用非資料相關的 drop 作業，例如 drop assembly 和 drop table 值函式。 **AllowDataDropStatement**會啟用資料相關的 drop 作業，例如 drop table 和 drop schema。 您必須先啟用 AllowDropStatement，才能使用 AllowDataDropStatement。
+> DROP 語句可能會導致意外刪除。 若要啟用 DROP 語句，您必須明確指定 MSBuild 引數。 **AllowDropStatement**會啟用非資料相關的 drop 作業，例如 drop assembly 和 drop table 值函式。 **AllowDataDropStatement**會啟用資料相關的 drop 作業，例如 drop table 和 drop schema。 您必須先啟用 AllowDropStatement，才能使用 AllowDataDropStatement。
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>使用 MSBuild 命令列建置 U-SQL 專案
 
 先遷移專案，並取得 NuGet 套件。 然後，使用以下額外引數呼叫標準的 MSBuild 命令列，以建置 U-SQL 專案： 
 
-``` 
+```console
 msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime;USQLTargetType=SyntaxCheck;DataRoot=datarootfolder;/p:EnableDeployment=true
 ``` 
 
@@ -100,7 +100,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
     ![定義 U-SQL 專案的 CI/CD MSBuild 變數](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
-    ```
+    ```console
     /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
@@ -109,9 +109,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 執行建置後，將會編譯 U-SQL 專案中的所有指令碼，並輸出到名為 `USQLProjectName.usqlpack` 的 ZIP 檔案。 壓縮的建置輸出會保留專案中的資料夾結構。
 
 > [!NOTE]
->
-> 每個 U-SQL 指令碼的程式碼後置檔案會以內嵌陳述式的形式合併為指令碼建置的輸出。
->
+> 每個 U-SQL 腳本的程式碼後置檔案會以內嵌語句的形式合併到腳本組建輸出。
 
 ## <a name="test-u-sql-scripts"></a>測試 U-SQL 指令碼
 
@@ -229,6 +227,10 @@ Function Main()
 
 Main
 ```
+
+>[!NOTE]
+> 命令： `Submit-AzDataLakeAnalyticsJob` 和 `Wait-AzDataLakeAnalyticsJob` 都是 Azure Resource Manager 架構中 Azure Data Lake Analytics 的 Azure PowerShell Cmdlet。 您會必須已安裝 Azure PowerShell 的工作站。 如需更多命令和範例，您可以參考[命令清單](https://docs.microsoft.com/powershell/module/Az.DataLakeAnalytics/?view=azps-4.3.0)。
+>
 
 ### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>透過 Azure Data Factory 部署 U-SQL 作業
 
@@ -455,7 +457,7 @@ U-SQL 資料庫專案的建置輸出，是一個名稱加上 `.usqldbpack` 尾�
 
 | 參數 | 描述 | 預設值 | 必要 |
 |---------|-----------|-------------|--------|
-|封裝|待部署的 U-SQL 資料庫部署套件路徑。|null|true|
+|套件|待部署的 U-SQL 資料庫部署套件路徑。|null|true|
 |資料庫|要作為部署目標或要建立的資料庫名稱。|master|false|
 |LogFile|記錄檔的路徑。 預設為標準輸出 (主控台)。|null|false|
 |LogLevel|記錄層級：詳細資訊、一般、警告或錯誤。|LogLevel.Normal|false|

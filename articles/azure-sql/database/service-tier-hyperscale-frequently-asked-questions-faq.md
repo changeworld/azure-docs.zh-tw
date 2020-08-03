@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 983bf848b3be2501b70ba1c0396207e514b7b8d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 359de25d2bdb57ad5c6386586f987942acc120ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024012"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500141"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database 超大規模資料庫常見問題
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,14 +45,14 @@ ms.locfileid: "87024012"
 | **適用對象** |全部|提供以預算為導向且平衡的計算與儲存體選項。|大部分的商業工作負載。 自動調整儲存體大小，最高可達 100 TB，快速垂直和水準計算縮放，快速資料庫還原。|具有高交易率和低 IO 延遲的 OLTP 應用程式。 為失敗提供最高的復原能力，並使用多個同步更新的複本快速容錯移轉。|
 |  **資源類型** ||SQL Database/SQL 受控執行個體 | 單一資料庫 | SQL Database/SQL 受控執行個體 |
 | **計算大小**|SQL Database * | 1 到 80 個虛擬核心 | 1 到 80 個虛擬核心* | 1 到 80 個虛擬核心 |
-| **計算大小**|SQL 受控執行個體 | 8 個、16 個、24 個、32 個、40 個、64 個、80 個虛擬核心 | 不適用 | 8 個、16 個、24 個、32 個、40 個、64 個、80 個虛擬核心 |
-| **儲存類型** | 全部 |進階遠端儲存體 (每個執行個體) | 與本機 SSD 快取分離的儲存體 (每個執行個體) | 超快速本機 SSD 儲存體 (每個執行個體) |
+| **計算大小**|SQL 受控執行個體 | 8 個、16 個、24 個、32 個、40 個、64 個、80 個虛擬核心 | N/A | 8 個、16 個、24 個、32 個、40 個、64 個、80 個虛擬核心 |
+| **儲存體類型** | 全部 |進階遠端儲存體 (每個執行個體) | 與本機 SSD 快取分離的儲存體 (每個執行個體) | 超快速本機 SSD 儲存體 (每個執行個體) |
 | **儲存體大小** | SQL Database *| 5 GB – 4 TB | 最多 100 TB | 5 GB – 4 TB |
-| **儲存體大小** | SQL 受控執行個體  | 32 GB – 8 TB | 不適用 | 32 GB – 4 TB |
+| **儲存體大小** | SQL 受控執行個體  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
 | **IOPS** | 單一資料庫 | 每個虛擬核心 500 IOPS，且 IOPS 上限為 7000 | 超大規模資料庫是多層式架構，在多個層級進行快取。 有效的 IOPS 將視工作負載而定。 | 5000 IOPS，IOPS 上限為 200,000|
-| **IOPS** | SQL 受控執行個體 | 視檔案大小而定 | 不適用 | 1375 IOPS/vCore |
+| **IOPS** | SQL 受控執行個體 | 視檔案大小而定 | N/A | 1375 IOPS/vCore |
 |**可用性**|全部|1個複本，沒有讀取相應放大，沒有本機快取 | 多個複本，最多4個讀取相應放大，部分本機快取 | 3個複本，1個讀取相應放大，區域-多餘 HA，完整本機儲存體 |
-|**量**|全部|RA-GRS，7-35 天保留（預設為7天）| RA-GRS，7天保留期，固定時間點恢復（PITR） | RA-GRS，7-35 天保留（預設為7天） |
+|**備份**|全部|RA-GRS，7-35 天保留（預設為7天）| RA-GRS，7天保留期，固定時間點恢復（PITR） | RA-GRS，7-35 天保留（預設為7天） |
 
 \*超大規模資料庫服務層級不支援彈性集區
 
@@ -128,11 +128,11 @@ ms.locfileid: "87024012"
 
 ### <a name="can-i-provision-a-compute-replica-with-extra-ram-for-my-memory-intensive-workload"></a>我可以為需要大量記憶體的工作負載布建具有額外 RAM 的計算複本
 
-不可以。 若要有更多的 RAM，您需要升級至更高的計算大小。 如需詳細資訊，請參閱[超大規模資料庫儲存體和計算大小](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)。
+否。 若要有更多的 RAM，您需要升級至更高的計算大小。 如需詳細資訊，請參閱[超大規模資料庫儲存體和計算大小](resource-limits-vcore-single-databases.md#hyperscale---provisioned-compute---gen5)。
 
 ### <a name="can-i-provision-multiple-compute-replicas-of-different-sizes"></a>我可以布建不同大小的多個計算複本
 
-不可以。
+否。
 
 ### <a name="how-many-read-scale-out-replicas-are-supported"></a>支援的讀取相應放大複本數目
 
@@ -178,11 +178,11 @@ ms.locfileid: "87024012"
 
 ### <a name="can-i-manage-or-define-files-or-filegroups-with-hyperscale"></a>我是否可管理或定義「超大規模資料庫」的檔案或檔案群組
 
-不可以。 資料檔案會自動新增。 建立其他檔案群組的常見原因不適用於超大規模資料庫儲存體架構。
+否。 資料檔案會自動新增。 建立其他檔案群組的常見原因不適用於超大規模資料庫儲存體架構。
 
 ### <a name="can-i-provision-a-hard-cap-on-the-data-growth-for-my-database"></a>我是否可為資料庫佈建資料成長的強制上限
 
-不可以。
+否。
 
 ### <a name="how-are-data-files-laid-out-with-hyperscale"></a>如何使用超大規模資料庫配置資料檔案
 
@@ -190,7 +190,7 @@ ms.locfileid: "87024012"
 
 ### <a name="is-database-shrink-supported"></a>是否支援資料庫縮減
 
-不可以。
+否。
 
 ### <a name="is-data-compression-supported"></a>支援資料壓縮
 
@@ -210,7 +210,7 @@ ms.locfileid: "87024012"
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-service-tiers"></a>我可以將超大規模資料庫資料庫移至其他服務層級
 
-不可以。 目前，您無法將超大規模資料庫資料庫移至另一個服務層級。
+否。 目前，您無法將超大規模資料庫資料庫移至另一個服務層級。
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>移轉至超大規模資料庫服務層級之後是否會失去任何運作性或功能
 
@@ -239,7 +239,7 @@ ms.locfileid: "87024012"
 
 ### <a name="does-hyperscale-allow-provisioning-multiple-nodes-for-parallel-ingesting-of-large-amounts-of-data"></a>超大規模資料庫允許布建多個節點，以進行大量資料的平行內嵌
 
-不可以。 超大規模資料庫是對稱式多重處理（SMP）架構，而且不是大量平行處理（MPP）或多宿主架構。 您只能建立多個複本以相應放大唯讀工作負載。
+否。 超大規模資料庫是對稱式多重處理（SMP）架構，而且不是大量平行處理（MPP）或多宿主架構。 您只能建立多個複本以相應放大唯讀工作負載。
 
 ### <a name="what-is-the-oldest-sql-server-version-supported-for-migration-to-hyperscale"></a>最舊的 SQL Server 版本支援遷移至超大規模資料庫
 
@@ -273,7 +273,7 @@ RPO 為0分鐘。RTO 目標小於10分鐘，不論資料庫大小為何。
 
 ### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>資料庫備份是否會影響我的主要或次要複本上的計算效能
 
-不可以。 備份是由儲存子系統所管理，並利用儲存體快照集。 它們不會影響使用者工作負載。
+否。 備份是由儲存子系統所管理，並利用儲存體快照集。 它們不會影響使用者工作負載。
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>我可以使用超大規模資料庫資料庫執行異地還原
 
@@ -285,7 +285,7 @@ RPO 為0分鐘。RTO 目標小於10分鐘，不論資料庫大小為何。
 
 ### <a name="can-i-take-a-hyperscale-database-backup-and-restore-it-to-my-on-premises-server-or-on-sql-server-in-a-vm"></a>我可以進行超大規模資料庫資料庫備份，並將它還原到我的內部部署伺服器，或在 VM 的 SQL Server 上
 
-不可以。 超大規模資料庫資料庫的儲存格式與 SQL Server 的任何發行版本不同，而且您不能控制備份或存取它們。 若要將資料從超大規模資料庫資料庫取出，您可以使用任何資料移動技術（也就是 Azure Data Factory、Azure Databricks、SSIS 等）來解壓縮資料。
+否。 超大規模資料庫資料庫的儲存格式與 SQL Server 的任何發行版本不同，而且您不能控制備份或存取它們。 若要將資料從超大規模資料庫資料庫取出，您可以使用任何資料移動技術（也就是 Azure Data Factory、Azure Databricks、SSIS 等）來解壓縮資料。
 
 ## <a name="cross-feature-questions"></a>跨功能問題
 
@@ -295,7 +295,7 @@ RPO 為0分鐘。RTO 目標小於10分鐘，不論資料庫大小為何。
 
 ### <a name="will-polybase-work-with-hyperscale"></a>Polybase 會與超大規模資料庫搭配使用
 
-不可以。 Azure SQL Database 不支援 Polybase。
+否。 Azure SQL Database 不支援 Polybase。
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>超大規模資料庫是否支援 R 和 Python
 
@@ -303,7 +303,7 @@ RPO 為0分鐘。RTO 目標小於10分鐘，不論資料庫大小為何。
 
 ### <a name="are-compute-nodes-containerized"></a>是容器化的計算節點
 
-不可以。 超大規模資料庫進程會在[Service Fabric](https://azure.microsoft.com/services/service-fabric/)節點（vm）上執行，而不是在容器中執行。
+否。 超大規模資料庫進程會在[Service Fabric](https://azure.microsoft.com/services/service-fabric/)節點（vm）上執行，而不是在容器中執行。
 
 ## <a name="performance-questions"></a>效能問題
 
@@ -317,7 +317,7 @@ IOPS 和 IO 延遲會根據工作負載模式而有所不同。 如果要存取�
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>備份是否會影響到輸送量
 
-不可以。 計算與儲存層分離。 這可消除備份的效能影響。
+否。 計算與儲存層分離。 這可消除備份的效能影響。
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-replicas"></a>當我布建額外的計算複本時，我的輸送量會受到影響
 
@@ -331,11 +331,11 @@ IOPS 和 IO 延遲會根據工作負載模式而有所不同。 如果要存取�
 
 ### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-replica"></a>相應增加和相應減少計算複本需要多久的時間
 
-無論資料大小為何，相應增加或減少計算都應該花費5-10 分鐘的時間。
+無論資料大小為何，相應增加或相應減少計算的時間通常最多需要2分鐘的時間。
 
 ### <a name="is-my-database-offline-while-the-scaling-updown-operation-is-in-progress"></a>我的資料庫在相應增加/減少作業進行時是否會離線
 
-不可以。 相應增加和相應減少會在線上執行。
+否。 相應增加和相應減少會在線上執行。
 
 ### <a name="should-i-expect-connection-drop-when-the-scaling-operations-are-in-progress"></a>進行調整作業時是否可能發生連線中斷
 
@@ -351,7 +351,7 @@ IOPS 和 IO 延遲會根據工作負載模式而有所不同。 如果要存取�
 
 ### <a name="can-i-provision-multiple-primary-compute-replicas-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>我可以布建多個主要計算複本，例如多主機系統，其中多個主要計算標頭可以驅動較高層級的平行存取
 
-不可以。 只有主要計算複本會接受讀取/寫入要求。 次要計算複本只接受唯讀要求。
+否。 只有主要計算複本會接受讀取/寫入要求。 次要計算複本只接受唯讀要求。
 
 ## <a name="read-scale-out-questions"></a>讀取相應放大問題
 
@@ -370,28 +370,28 @@ IOPS 和 IO 延遲會根據工作負載模式而有所不同。 如果要存取�
 
 ### <a name="can-i-create-a-dedicated-endpoint-for-a-read-scale-out-replica"></a>我可以為讀取相應放大複本建立專用端點嗎
 
-不可以。 您只能藉由指定來連接到讀取相應放大複本 `ApplicationIntent=ReadOnly` 。
+否。 您只能藉由指定來連接到讀取相應放大複本 `ApplicationIntent=ReadOnly` 。
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>系統是否會對讀取工作負載進行智慧型負載平衡
 
-不可以。 具有唯讀意圖的新連線會重新導向至任意讀取相應放大複本。
+否。 具有唯讀意圖的新連線會重新導向至任意讀取相應放大複本。
 
 ### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>我可以獨立于主要複本之外相應增加/減少次要計算複本
 
-不可以。 次要計算複本也會用來作為高可用性容錯移轉目標，因此，它們必須具有與主資料庫相同的設定，才能在容錯移轉後提供預期的效能。
+否。 次要計算複本也會用來作為高可用性容錯移轉目標，因此，它們必須具有與主資料庫相同的設定，才能在容錯移轉後提供預期的效能。
 
 ### <a name="do-i-get-different-tempdb-sizing-for-my-primary-compute-and-my-additional-secondary-compute-replicas"></a>我 `tempdb` 的主要計算和其他次要計算複本的大小是否不同
 
-不可以。 您的 `tempdb` 資料庫是根據計算大小布建而設定的，您的次要計算複本與主要計算的大小相同。
+否。 您的 `tempdb` 資料庫是根據計算大小布建而設定的，您的次要計算複本與主要計算的大小相同。
 
 ### <a name="can-i-add-indexes-and-views-on-my-secondary-compute-replicas"></a>我可以在次要計算複本上新增索引和視圖嗎
 
-不可以。 超大規模資料庫資料庫具有共用儲存體，這表示所有計算複本都會看到相同的資料表、索引和 views。 如果您想要針對次要複本上的讀取優化的其他索引，您必須將它們新增至主要複本。
+否。 超大規模資料庫資料庫具有共用儲存體，這表示所有計算複本都會看到相同的資料表、索引和 views。 如果您想要針對次要複本上的讀取優化的其他索引，您必須將它們新增至主要複本。
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>主要和次要計算複本之間有多少延遲
 
 從交易在主要複本上認可的時間開始，到它在次要上可見時的資料延遲取決於目前的記錄產生速率。 一般資料延遲是以低毫秒為單位。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需超大規模資料庫服務層級的詳細資訊，請參閱[超大規模資料庫服務層級](service-tier-hyperscale.md)。

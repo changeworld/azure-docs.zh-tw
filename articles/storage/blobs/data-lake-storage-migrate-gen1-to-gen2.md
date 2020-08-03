@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfe5f763b3dedd68c5180f5a0a3c7a3f4ea3e93
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466012"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496418"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2
 
@@ -81,7 +81,7 @@ Azure Data Lake Storage Gen2 建置於[Azure Blob 儲存體](storage-blobs-intro
    
 6. 在程式碼檔案或 Databricks 筆記本中，搜尋包含字串的 URI 參考， `adl://` APACHE HIVE HQL 檔案或工作負載中使用的任何其他檔案。 以新儲存體帳戶的[Gen2 格式化 URI](data-lake-storage-introduction-abfs-uri.md)取代這些參考。 例如： Gen1 URI： `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` 可能會變成 `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` 。 
 
-7. 在您的帳戶上設定安全性，以包含[角色型存取控制（RBAC）角色](../common/storage-auth-aad-rbac-portal.md)、檔案[和資料夾層級安全性](data-lake-storage-access-control.md)，以及[Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md)。
+7. 在您的帳戶上設定安全性，以包含[Azure 角色](../common/storage-auth-aad-rbac-portal.md)、檔案[和資料夾層級安全性](data-lake-storage-access-control.md)，以及[Azure 儲存體防火牆和虛擬網路](../common/storage-network-security.md)。
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>步驟4：從 Gen1 切換到 Gen2
 
@@ -207,4 +207,3 @@ Azure Data Lake Storage Gen2 建置於[Azure Blob 儲存體](storage-blobs-intro
 - 瞭解為儲存體帳戶設定安全性的各個部分。 請參閱[Azure 儲存體安全性指南](../common/storage-security-guide.md)。
 - 將 Data Lake Store 的效能優化。 [如需效能，請參閱優化 Azure Data Lake Storage Gen2](data-lake-storage-performance-tuning-guidance.md)
 - 請參閱管理 Data Lake Store 的最佳做法。 請參閱[使用 Azure Data Lake Storage Gen2 的最佳做法](data-lake-storage-best-practices.md)
-

@@ -7,18 +7,19 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 10/25/2019
-ms.openlocfilehash: 7df870d76fa62d341821cfc2d7d30b4a7694ad82
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 49acce96012df0a45bc1833ae0397a3d989142ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119764"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500635"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>如何使用 Azure CLI 在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中備份和還原伺服器
 
 為了能使用還原功能，適用於 PostgreSQL 的 Azure 資料庫伺服器會定期備份。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 若要完成本操作說明指南，您需要：
 - [適用於 PostgreSQL 的 Azure 資料庫的伺服器和資料庫](quickstart-create-server-database-azure-cli.md)
 

@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ba6f4bcaffbf9fa11c949853362485d524bec23a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a642aa9735c4360c11d50cf475e5de63259c55df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510011"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495704"
 ---
 # <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
 若要建立 Azure 檔案共用，您需要回答下列三個關於如何使用的問題：
@@ -31,7 +32,7 @@ ms.locfileid: "85510011"
 
 如需這三個選項的詳細資訊，請參閱[規劃 Azure 檔案儲存體部署](storage-files-planning.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 - 本文會假設您已經建立 Azure 訂用帳戶。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
 - 如果您想要使用 Azure PowerShell，請[安裝最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 - 如果您想要使用 Azure CLI，請[安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。

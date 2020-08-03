@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/15/2020
 ms.author: juliako
-ms.openlocfilehash: e32a9053e4ab7cc3618f7b50b7291a660a14e1b1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: b48aa215b621ab617ef3ff99ce66d972059a4ffc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053493"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498750"
 ---
 # <a name="create-a-media-services-account"></a>建立媒體服務帳戶
 
@@ -51,7 +52,7 @@ Azure 入口網站提供快速建立 Azure 媒體服務帳戶的方式。 您可
 1. 按一下 [ **+ 建立資源**  >  **媒體**]  >  **媒體服務**。
 1. 在 [**建立媒體服務帳戶**] 區段中，輸入必要的值。
     
-    | 名稱 | 說明 |
+    | Name | 說明 |
     | ---|---|
     |**帳戶名稱**|輸入新媒體服務帳戶的名稱。 媒體服務帳戶名稱為全部小寫且不含空格的字母或數字，且長度是 3 到 24 個字元。|
     |**訂用帳戶**|如果您有多個訂用帳戶，請從您有權存取的 Azure 訂用帳戶清單中選取一個。|
@@ -114,7 +115,7 @@ az ams account create --name amsaccount \
    -l westus2 
 ```
 
-### <a name="see-also"></a>請參閱
+### <a name="see-also"></a>另請參閱
 
 * [Azure CLI](/cli/azure/ams?view=azure-cli-latest)
 * [將次要儲存體附加至媒體服務帳戶](/cli/azure/ams/account/storage?view=azure-cli-latest#az-ams-account-storage-add)

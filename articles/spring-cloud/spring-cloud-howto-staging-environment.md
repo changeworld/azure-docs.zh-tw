@@ -6,19 +6,19 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
-ms.custom: devx-track-java
-ms.openlocfilehash: 6c7ed01cb0af164531fbee99fe0d71246c47d6f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 5333dd45cee58821d89cd49c44d3c5bba4cd9115
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037231"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500397"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>在 Azure 春季雲端中設定預備環境
 
 本文討論如何使用 Azure 春季雲端中的藍綠部署模式來設定預備環境部署。 藍/綠部署是 Azure DevOps 的持續傳遞模式，此模式仰賴在部署新版本 (綠色) 時，仍讓現有版本 (藍色) 持續運作的方式。 本文說明如何將該預備環境部署放到生產環境中，而不需要直接變更生產部署。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已從我們的教學課程中部署 PiggyMetrics 應用程式，以[瞭解如何啟動 Azure 春季雲端應用程式](spring-cloud-quickstart-launch-app-portal.md)。 PiggyMetrics 包含三個應用程式：「閘道」、「帳戶服務」和「驗證服務」。  
 

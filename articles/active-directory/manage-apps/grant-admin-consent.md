@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c24023bdd3540785dec58ebeaa14d99ab659ab1
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848361"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501009"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>對應用程式授與全租用戶的管理員同意
 
@@ -25,15 +25,22 @@ ms.locfileid: "85848361"
 
 如需同意應用程式的詳細資訊，請參閱 [Azure Active Directory 同意架構](../develop/consent-framework.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 授與整個租使用者的系統管理員同意，需要您以[全域管理員](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[應用程式系統](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)管理員或[雲端應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)的身分登入。
 
 > [!IMPORTANT]
 > 當應用程式被授與租使用者系統管理員同意後，所有使用者都將能夠登入應用程式，除非它已設定為需要使用者指派。 若要限制哪些使用者可以登入應用程式，需要使用者指派，然後將使用者或群組指派給應用程式。 如需詳細資訊，請參閱[指派使用者和群組的方法](methods-for-assigning-users-and-groups.md)。
+>
+> 需要全域管理員角色，才能為 Microsoft Graph API 提供系統管理員同意。
+>
+
 
 > [!WARNING]
 > 將租使用者的系統管理員同意授與應用程式，會將您組織資料的存取權授與應用程式和應用程式的發行者。 在授與同意之前，請仔細檢查應用程式要求的許可權。
+>
+> 需要全域管理員角色，才能為 Microsoft Graph API 提供系統管理員同意。
+>
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>授與系統管理員同意 Azure 入口網站
 

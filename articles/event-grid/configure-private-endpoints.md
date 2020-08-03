@@ -3,12 +3,13 @@ title: 設定 Azure 事件方格主題或網域的私人端點
 description: 本文說明如何設定 Azure 事件方格主題或網域的私人端點。
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: ace3f7f59e4f26388652d7bda1a5ee28800a414b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7796c4160cbf40a241db901e31cc91edc361b00d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115330"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495279"
 ---
 # <a name="configure-private-endpoints-for-azure-event-grid-topics-or-domains"></a>設定 Azure 事件方格主題或網域的私人端點
 您可以使用[私用端點](../private-link/private-endpoint-overview.md)，透過[私人連結](../private-link/private-link-overview.md)，直接從虛擬網路將事件輸入到主題和網域，而不需要經過公用網際網路。 私人端點會針對您的主題或網域使用來自 VNet 位址空間的 IP 位址。 如需詳細概念資訊，請參閱[網路安全性](network-security.md)。
@@ -150,7 +151,7 @@ az network private-endpoint delete --resource-group <RESOURECE GROUP NAME> --nam
 
 
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 執行下列命令來更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive

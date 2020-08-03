@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: b45714489f13d33d90b5694f458e6339e33595f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbcc82d3ec4b50cf51210f8a4319bbf374185a88
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367561"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498084"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL Database 和 Azure Synapse 中的邏輯 SQL server 是什麼？
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -34,7 +34,7 @@ SQL Database 和 Azure Synapse 中的伺服器：
 - 是資料庫的父資源、彈性集區和資料倉儲
 - 提供資料庫、彈性集區和資料倉儲資料庫的命名空間
 - 是具有強式存留期語義的邏輯容器-刪除伺服器，並刪除其資料庫、彈性集區和 SQK 集區
-- 參與[Azure 角色型存取控制（RBAC）](/azure/role-based-access-control/overview) -伺服器內的資料庫、彈性集區和資料倉儲資料庫會繼承伺服器的存取權限
+- 參與[Azure 角色型存取控制（AZURE RBAC）](/azure/role-based-access-control/overview) -伺服器內的資料庫、彈性集區和資料倉儲資料庫會繼承伺服器的存取權限
 - 是資料庫、彈性集區和資料倉儲資料庫的身分識別的高階元素，用於 Azure 資源管理的目的（請參閱資料庫和集區的 URL 配置）
 - 區域中的共置資源
 - 提供用來存取資料庫的連接端點 (`<serverName>`.database.windows.net)

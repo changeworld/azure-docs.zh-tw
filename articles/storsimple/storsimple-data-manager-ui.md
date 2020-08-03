@@ -6,12 +6,12 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 85be49ad88ac62d90235c3da6b89b0da6a11487c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 00748cfa60882e49336c3a0ac3ecfdec389021ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78933747"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496435"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>在 Azure 入口網站中管理 StorSimple 資料管理員服務
 
@@ -42,7 +42,7 @@ ms.locfileid: "78933747"
 
    2. 從下拉式清單中選擇**訂**用帳戶。 訂用帳戶會連結到您的帳單帳戶。 如果您只有一個訂用帳戶，此欄位會自動填入該訂用帳戶 (且無法供您選取)。
 
-   3. 選取現有資源群組或建立新的群組。 如需詳細資訊，請參閱 [Azure 資源群組](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)。
+   3. 選取現有資源群組或建立新的群組。 如需詳細資訊，請參閱 [Azure 資源群組](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
 
    4. 為您的服務指定 [位置]****，以供存放您的儲存體帳戶和 StorSimple 資料管理員服務。 StorSimple 裝置管理員服務、資料管理員服務和相關聯的儲存體帳戶應該全都位於支援的區域內。
     

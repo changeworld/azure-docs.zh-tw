@@ -9,12 +9,13 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: e8f8a333c880850b239fbaba1ea405b94a1460e8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7819b62fb92945a409cab0dff926e281620dd80c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076739"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496639"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理儲存體帳戶金鑰
 
@@ -42,13 +43,13 @@ Azure AD 租使用者會提供每個已註冊的應用程式與[服務主體](/a
 
 Key Vault 是在所有 Azure AD 租使用者中預先註冊的 Microsoft 應用程式。 Key Vault 會在每個 Azure 雲端中的相同應用程式識別碼下註冊。
 
-| 租用戶 | Cloud | 應用程式識別碼 |
+| 租用戶 | 雲端 | 應用程式識別碼 |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Azure 公用 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本指南，您必須先執行下列動作：
 

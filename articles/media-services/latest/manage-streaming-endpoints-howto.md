@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: juliako
-ms.openlocfilehash: cb3b319c583422b32798fce9cef4c73a4aa1f8de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6c88a1f36d4e3405b44f36864262b2ab97517933
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090037"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500550"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>使用媒體服務 v3 管理串流端點
 
@@ -30,7 +31,7 @@ ms.locfileid: "87090037"
 > [!NOTE]
 > 只有當串流端點處於執行中狀態時，才會向您收取費用。
     
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 檢閱： 
 

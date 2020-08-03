@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47f412dae6b467518fb1b51518716625c1395717
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035820"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495653"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
 
@@ -174,7 +174,7 @@ ms.locfileid: "87035820"
    3. 測試備份/還原順序和時機，並視需要進行更正。 請確定備份時間已足夠。 您也需要測試還原和時間還原活動。 請確定在您的 RTO 依賴資料庫或 VM 還原程式的情況下，還原時間都在您的 RTO Sla 內。
    4. 測試跨區域 DR 功能和架構。
 1. 安全性檢查。
-   1. 測試 Azure 角色型存取控制（RBAC）架構的有效性。 其目標是要區分和限制不同小組的存取權與許可權。 例如，SAP 基礎小組成員應該能夠部署 Vm，並將磁片從 Azure 儲存體指派至指定的 Azure 虛擬網路。 但是 SAP 基礎小組不應該能夠建立自己的虛擬網路，也不能變更現有虛擬網路的設定。 網路小組的成員不應該能夠將 Vm 部署到 SAP 應用程式和 DBMS Vm 執行所在的虛擬網路中。 或者，此小組的成員也不能變更 Vm 的屬性，甚至是刪除 Vm 或磁片。  
+   1. 測試 Azure 角色型存取控制（Azure RBAC）架構的有效性。 其目標是要區分和限制不同小組的存取權與許可權。 例如，SAP 基礎小組成員應該能夠部署 Vm，並將磁片從 Azure 儲存體指派至指定的 Azure 虛擬網路。 但是 SAP 基礎小組不應該能夠建立自己的虛擬網路，也不能變更現有虛擬網路的設定。 網路小組的成員不應該能夠將 Vm 部署到 SAP 應用程式和 DBMS Vm 執行所在的虛擬網路中。 或者，此小組的成員也不能變更 Vm 的屬性，甚至是刪除 Vm 或磁片。  
    1.  請確認[網路安全性群組和 ASC](../../../virtual-network/security-overview.md)規則是否如預期般運作，並防護受保護的資源。
    1.  確定所有需要加密的資源都已加密。 定義和執行處理常式以備份憑證、儲存和存取這些憑證，以及還原加密的實體。
    1.  從 OS 支援的觀點來看，盡可能使用 OS 磁片的[Azure 磁碟加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)。

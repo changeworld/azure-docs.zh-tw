@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d1de40944b4ab15268cda576f477c08fc179f1df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a13a8b2eef9fa1bd9c7281ac6b7c7dba40105428
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255763"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497319"
 ---
 # <a name="azure-security-baseline-for-azure-data-box"></a>適用于 Azure 資料箱的 Azure 安全性基準
 
@@ -216,7 +216,7 @@ ms.locfileid: "85255763"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
-**指引**：維護具有 Azure 資料箱系統管理存取權之使用者帳戶的清查。 您可以使用訂用帳戶的 Azure 入口網站中的 [身分識別] 和 [存取控制（IAM）] 窗格來設定角色型存取控制（RBAC）。 這些角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。您可以在第一次建立訂單時，控制誰可以存取您的訂單。 在各種範圍設定以角色為基礎的存取控制（RBAC）角色，以控制資料箱順序的存取權。 RBAC 角色會決定對作業子集的存取類型（讀寫、唯讀、讀寫）。
+**指引**：維護具有 Azure 資料箱系統管理存取權之使用者帳戶的清查。 您可以使用訂用帳戶的 Azure 入口網站中的 [身分識別] 和 [存取控制（IAM）] 窗格來設定角色型存取控制（RBAC）。 這些角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。您可以在第一次建立訂單時，控制誰可以存取您的訂單。 在各種範圍設定 Azure 角色，以控制資料箱順序的存取權。 Azure 角色會決定對作業子集的存取類型（讀寫、唯讀、讀寫）。
 
 * [瞭解自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 

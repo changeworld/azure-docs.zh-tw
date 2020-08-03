@@ -6,12 +6,13 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 1e28ea47f0f99d3690fdfcf8b5d4370fcbb334e0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e9f824a3b7e1e5e482bbc04c448ca4930bf88678
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289813"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500941"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>在 Azure 中開始使用 Docker 和 Compose 定義並執行多容器應用程式
 使用 [[撰寫](https://github.com/docker/compose)] 時，您可以使用簡單的文字檔來定義由多個 Docker 容器所組成的應用程式。 接著，您可以透過單一命令來啟動應用程式，此命令會執行所需的一切準備工作，以部署您的已定義環境。 舉例來說，本文將說明如何藉由 Ubuntu VM 上的後端 MariaDB SQL 資料庫來快速設定 WordPress 部落格。 您也可以使用 Compose 來設定更複雜的應用程式。

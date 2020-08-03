@@ -1,14 +1,14 @@
 ---
 title: 跨租用戶管理體驗
 description: Azure 委派的資源管理能提供跨租用戶管理體驗。
-ms.date: 07/24/2020
+ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a6d5c7e06ed59ab76b15f4f8ae880408dc6f7835
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371032"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500873"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租用戶管理體驗
 
@@ -33,9 +33,7 @@ Azure 燈塔可讓您更有彈性地管理多個客戶的資源，而不需要�
 
 您可以直接在入口網站中，或是使用 API 與管理工具 (例如 Azure CLI 和 Azure PowerShell)，對委派的資源執行管理工作。 所有現有的 API 都可以在使用委派的資源時使用，但前提是，此功能支援跨租用戶管理，且使用者擁有適當的權限。
 
-Azure PowerShell [get-azsubscription 指令程式](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0) `tenantID` 會顯示每個訂用帳戶的，讓您能夠識別傳回的訂用帳戶屬於您的服務提供者租使用者還是受管理的客戶租使用者。
-
-同樣地，[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) 之類的 Azure CLI 命令會顯示 **homeTenantId** 和 **managedByTenants** 屬性。
+Azure CLI 命令（例如[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) ）會顯示每個訂用帳戶的**homeTenantId**和**managedByTenants**屬性，可讓您識別所傳回的訂閱屬於您的服務提供者租使用者還是受管理的客戶租使用者。
 
 > [!TIP]
 > 在使用 Azure CLI 時，如果並未看到這些值，請嘗試執行 `az account clear` 並接著執行 `az login --identity` 清除快取。
@@ -70,7 +68,7 @@ Azure PowerShell [get-azsubscription 指令程式](/powershell/module/Az.Account
 
 [Azure 成本管理 + 帳單](../../cost-management-billing/index.yml)：
 
-- 從管理租使用者，CSP 合作夥伴可以針對 Azure 方案下的客戶，查看、管理及分析預先稅耗用量成本（不包含購買）。 成本將以零售費率和合作夥伴對客戶訂用帳戶所擁有的 Azure 角色型存取控制（RBAC）存取為基礎。
+- 從管理租使用者，CSP 合作夥伴可以針對 Azure 方案下的客戶，查看、管理及分析預先稅耗用量成本（不包含購買）。 成本將以零售費率和合作夥伴對客戶訂用帳戶的 Azure 角色型存取控制（Azure RBAC）存取為基礎。
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml)：
 

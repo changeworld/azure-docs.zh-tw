@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: d0f5f71ed636cc67e742198436b48a09d291e798
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0aba88c10304cf7d87277ad851ae38eae8eb5bf3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120053"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497115"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>在 Azure CLI 中設定及存取適用于 Maria DB audit logs 的 Azure 資料庫
 

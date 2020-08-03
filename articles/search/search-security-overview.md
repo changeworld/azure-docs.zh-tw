@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/30/2020
-ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475425"
+ms.locfileid: "87501486"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 認知搜尋中的安全性-總覽
 
@@ -125,11 +125,13 @@ Azure 認知搜尋的[私用端點](../private-link/private-endpoint-overview.md
 
 Azure 認知搜尋已認證符合適用于公用雲端和 Azure Government 的多個全域、區域和業界特定標準。 如需完整清單，請從官方審查報告頁面下載[ **Microsoft Azure 合規性供應**專案白皮書](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)。
 
-為了符合規範，您可以使用[Azure 原則](../governance/policy/overview.md)來協助您執行[Azure 安全性基準測試](../security/benchmarks/introduction.md)的高安全性最佳作法。 Azure 安全性基準測試是安全性建議的集合，編碼到安全性控制，這些控制項對應至您應採取的重要動作，以減輕對服務和資料的威脅。 目前有11個安全性控制項，包括[網路安全性](../security/benchmarks/security-control-network-security.md)、[記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)，以及[資料保護](../security/benchmarks/security-control-data-protection.md)等等。
+為了符合規範，您可以使用[Azure 原則](../governance/policy/overview.md)來執行[Azure 安全性基準測試](../security/benchmarks/introduction.md)的高安全性最佳作法。 Azure 安全性基準測試是安全性建議的集合，編碼到安全性控制，這些控制項對應至您應採取的重要動作，以減輕對服務和資料的威脅。 目前有11個安全性控制項，包括[網路安全性](../security/benchmarks/security-control-network-security.md)、[記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)，以及[資料保護](../security/benchmarks/security-control-data-protection.md)等等。
 
-Azure 原則是 Azure 內建的功能，可協助您管理多項標準的合規性，包括 Azure 安全性基準測試的規範。 針對已知的基準測試，Azure 原則提供內建定義，讓您可以更輕鬆地建立原則。 針對「Azure 認知搜尋」，目前有一個內建的診斷記錄定義，這表示您可以指派一個原則，以識別並修正任何不符合「記錄和監視」安全性控制規範的搜尋服務。 如需詳細資訊，請參閱[Azure 原則 Azure 認知搜尋的法規合規性控制](security-controls-policy.md)。
+Azure 原則是 Azure 內建的功能，可協助您管理多項標準的合規性，包括 Azure 安全性基準測試的規範。 針對已知的基準測試，Azure 原則提供內建定義，其中提供兩個準則，以及可採取動作的回應來解決不符合規範的狀況。 
 
-## <a name="see-also"></a>請參閱
+針對 Azure 認知搜尋，目前有一個內建定義。 這是用於診斷記錄。 使用此內建，您可以指派一個原則來識別遺失診斷記錄的任何搜尋服務，然後將其開啟。 如需詳細資訊，請參閱[Azure 原則 Azure 認知搜尋的法規合規性控制](security-controls-policy.md)。
+
+## <a name="see-also"></a>另請參閱
 
 + [Azure 安全性基本概念](../security/fundamentals/index.yml)
 + [Azure 安全性](https://azure.microsoft.com/overview/security)

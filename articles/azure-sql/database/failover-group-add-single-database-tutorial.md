@@ -4,19 +4,19 @@ description: 使用 Azure 入口網站、PowerShell 或 Azure CLI，將 Azure SQ
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: ad4ef93b34639abffaf15c806fd86d550e03f0bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4caad36d21d3facb97dc358fdfee61e89c420213
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045268"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496333"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教學課程：將 Azure SQL Database 新增至 autofailover 群組
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "87045268"
 > - 在兩部伺服器之間建立資料庫的容錯移轉群組。
 > - 測試容錯移轉。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 # <a name="the-portal"></a>[入口網站](#tab/azure-portal)
 
@@ -427,7 +427,7 @@ ms.locfileid: "87045268"
 
 您可以在這裡找到其他 Azure SQL Database 腳本： [Azure PowerShell](powershell-script-content-guide.md)和[Azure CLI](az-cli-script-samples-content-guide.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已將 Azure SQL Database 中的資料庫新增到容錯移轉群組，並已測試容錯移轉。 您已了解如何︰
 

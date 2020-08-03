@@ -2,28 +2,34 @@
 title: 範本規格總覽
 description: 描述如何建立範本規格，並與組織中的其他使用者共用。
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/31/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47dcf44b35ad5c0b77dd0b88d683071a7f2f4ecb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 829aaa41bc60b3dcbf78ef6083457fff3b794914
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096143"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497795"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager 範本規格（預覽）
 
-範本規格是一種新的資源類型，可用於將 Azure Resource Manager 範本（ARM 範本）儲存在 Azure 中，供日後部署之用。 此資源類型可讓您與組織中的其他使用者共用 ARM 範本。 就像任何其他 Azure 資源一樣，您可以使用角色型存取控制（RBAC）來共用範本規格。使用者只需要範本規格的 [讀取] 許可權就能部署其範本，因此您可以共用範本，而不允許其他人加以修改。
+範本規格是一種新的資源類型，可用於將 Azure Resource Manager 範本（ARM 範本）儲存在 Azure 中，供日後部署之用。 此資源類型可讓您與組織中的其他使用者共用 ARM 範本。 就像任何其他 Azure 資源一樣，您可以使用角色型存取控制（RBAC）來共用範本規格。
 
 **TemplateSpecs**是範本規格的新資源類型。 其中包含主要範本和任何數目的連結範本。 Azure 會安全地將範本規格儲存在資源群組中。 範本規格支援[版本](#versioning)設定。
 
 若要部署範本規格，您可以使用標準的 Azure 工具，例如 PowerShell、Azure CLI、Azure 入口網站、REST，以及其他支援的 Sdk 和用戶端。 您可以使用相同的命令，並傳入範本的相同參數。
 
-使用範本規格的優點是您組織中的小組不需要重新建立或複製常見案例的範本。 您會建立標準範本並加以共用。 您在範本規格中包含的範本應由組織中的系統管理員驗證，以遵循組織的需求和指導方針。
-
 > [!NOTE]
-> 範本規格目前為預覽狀態。 若要使用它，您必須[註冊等待清單](https://aka.ms/templateSpecOnboarding)。
+> 範本規格目前為預覽狀態。 若要加以使用，您必須[註冊等待清單](https://aka.ms/templateSpecOnboarding)。
+
+## <a name="why-use-template-specs"></a>為何要使用範本規格？
+
+如果您的範本目前位於 GitHub 存放庫或儲存體帳戶中，則在嘗試共用和使用範本時，您會遇到幾項挑戰。 若要讓使用者部署，範本必須是本機或範本的 URL 必須可公開存取。 若要解決這項限制，您可以將範本的複本與需要部署的使用者共用，或開放存取存放庫或儲存體帳戶。 當使用者擁有範本的本機複本時，這些複本最後可能會與原始範本分離。 當您讓存放庫或儲存體帳戶可公開存取時，可能會允許非預期的使用者存取範本。
+
+使用範本規格的優點是，您可以建立標準範本，並與組織中的小組共用。 範本規格是安全的，因為它們可用於部署 Azure Resource Manager，但不能供沒有 RBAC 許可權的使用者存取。 使用者只需要範本規格的 [讀取] 許可權，即可部署其範本，因此您可以共用範本，而不允許其他人加以修改。
+
+您在範本規格中包含的範本應由組織中的系統管理員驗證，以遵循組織的需求和指導方針。
 
 ## <a name="create-template-spec"></a>建立範本規格
 

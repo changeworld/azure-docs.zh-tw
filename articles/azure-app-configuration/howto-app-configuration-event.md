@@ -9,12 +9,13 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 02/25/2020
 ms.author: lcozzens
-ms.openlocfilehash: da64f22981cc33772783093cfe75daa3eac5cef1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: dc816f54a690a4c72c44d70ecbf2cc0156ac84ed
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78672148"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498305"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>使用 Azure CLI 將 Azure 應用程式組態事件路由傳送至 Web 端點
 
@@ -22,7 +23,7 @@ ms.locfileid: "78672148"
 
 ## <a name="prerequisites"></a>必要條件
 
-- Azure 訂用帳戶-[免費建立一個](https://azure.microsoft.com/free/)。 您可以選擇性地使用 Azure Cloud Shell。
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)。 您可以選擇性地使用 Azure Cloud Shell。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
