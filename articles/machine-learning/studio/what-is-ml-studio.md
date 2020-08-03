@@ -1,6 +1,5 @@
 ---
-title: 什麼是 ML Studio (傳統)
-titleSuffix: Azure
+title: 什麼是 ML Studio (傳統) - Azure
 description: Azure Machine Learning Studio (傳統) 是一種拖放工具，用來從已就緒可供使用的演算法與模組程式庫中快速建置模型。
 services: machine-learning
 author: likebupt
@@ -11,14 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 03/24/2020
-ms.openlocfilehash: c1772ceb514e46542129759711f2d45db39abf82
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b0e09cfe855e017c297cbad1667eef81726d3da
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371950"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326200"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>什麼是 Machine Learning Studio (傳統)？
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 

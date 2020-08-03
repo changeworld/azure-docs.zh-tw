@@ -3,19 +3,17 @@ title: QnA Maker 服務有什麼新功能？
 titleSuffix: Azure Cognitive Services
 description: 此文章包含有關 QnA Maker 的新聞。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 06/15/2020
-ms.author: diberry
-ms.openlocfilehash: 285f68b4f0d7284740867f83311135d6c3efa90f
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.date: 07/16/2020
+ms.openlocfilehash: 0337abedbc5b592a0ae48fabd5bc7ecbb484def9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791209"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132784"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker 的新功能
 
@@ -24,6 +22,12 @@ ms.locfileid: "84791209"
 ## <a name="release-notes"></a>版本資訊
 
 了解 QnA Maker 的新功能。
+
+### <a name="july-2020"></a>2020 年 7 月
+
+* [中繼資料：多個中繼資料配對的 `OR` 邏輯組合](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
+* 將認知搜尋端點設定為私人，但仍可供 QnA Maker 存取的[步驟](how-to/set-up-qnamaker-service-azure.md#configuring-cognitive-search-as-a-private-endpoint-inside-a-vnet)。
+* 免費的認知搜尋資源會在[未使用達 90 天](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)後移除。
 
 ### <a name="june-2020"></a>2020 年 6 月
 

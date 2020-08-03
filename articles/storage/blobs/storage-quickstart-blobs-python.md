@@ -3,32 +3,34 @@ title: 快速入門：Azure Blob 儲存體程式庫 v12 - Python
 description: 在本快速入門中，您將了解如何使用適用於 Python 的 Azure Blob 儲存體用戶端程式庫 12 版，在 Blob (物件) 儲存體中建立容器與 Blob。 接下來，您要了解如何將 Blob 下載到本機電腦，以及如何列出容器中的所有 Blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: c24b934af17dab4f263de504da81d5ccd22d7fb9
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 3df76d2ba4f091c1c9f7ac737c2830225b85649c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84975307"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287160"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>快速入門：使用 Python v12 SDK 來管理 Blob
 
 在本快速入門中，您將了解如何使用 Python 來管理 Blob。 Blob 是可保存大量文字或二進位資料的物件，包括影像、文件、串流媒體和封存資料。 您將上傳、下載及列出 Blob，且將建立和刪除容器。
 
-[API 參考文件](/python/api/azure-storage-blob) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [套件 (Python Package Index)](https://pypi.org/project/azure-storage-blob/) | [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+其他資源：
+
+* [API 參考文件](/python/api/azure-storage-blob)
+* [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)
+* [套件 (Python 套件索引)](https://pypi.org/project/azure-storage-blob/) \(英文\)
+* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>必要條件
 
 - 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure 儲存體帳戶。 [建立儲存體帳戶](../common/storage-account-create.md)。
 - [Python](https://www.python.org/downloads/) 2.7、3.5 或更新版本。
-
-> [!NOTE]
-> 若要開始使用舊版 SDK，請參閱[快速入門：使用 Python v2.1 SDK 來管理 Blob](storage-quickstart-blobs-python-legacy.md)。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 

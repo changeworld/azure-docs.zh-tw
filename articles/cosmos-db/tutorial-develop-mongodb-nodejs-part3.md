@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 64085c55376ec85e20244abb452c2e365aa0aeec
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: ed552bfb37f01200a4dba38ea733a1189768d56a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114379"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067166"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式 - 使用 Angular 建置 UI
 
@@ -41,7 +41,7 @@ ms.locfileid: "85114379"
 
 ## <a name="build-the-ui"></a>建置 UI
 
-1. 在 Visual Studio Code 中，按一下 [停止] 按鈕 ![在 Visual Studio Code 中的停止按鈕](./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png) 停止 Node 應用程式。
+1. 在 Visual Studio Code 中，按一下 [停止] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/stop-button.png"::: 以停止 Node 應用程式。 
 
 2. 在 Windows 命令提示字元或 Mac 終端機視窗中，輸入下列命令以產生 Hero 元件。 在此程式碼中，g = 產生、c = 元件、heroes=元件名稱，而且其使用一般檔案結構 (-flat)，所以不會為它建立子資料夾。
 
@@ -486,7 +486,7 @@ ms.locfileid: "85114379"
 
     現在可以執行應用程式。
 
-2. 在 Visual Studio Code 中，按一下左側的 [偵錯] 按鈕![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)，然後按一下 [開始偵錯] 按鈕![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)。
+2. 在 Visual Studio Code 中，按一下左側的 [偵錯] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png":::，然後按一下 [開始偵錯] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png":::。
 
 3. 現在開啟網際網路瀏覽器並瀏覽至 **localhost:3000**，以查看在本機執行的應用程式。
 

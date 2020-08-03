@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5842d21f9fb35cd8fddc5521d630d597aedcc2ba
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0ac13dc669ed20df58f05c672926b7bee55dbc90
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983144"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87035021"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教學課程：讓使用者使用 Azure Active Directory 自助式密碼重設來解除鎖定其帳戶或重設密碼
 
 Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者直接變更或重設其密碼，而無需系統管理員或技術支援中心介入。 如果使用者的帳戶遭到鎖定，或使用者忘記其密碼，他們可以依照提示自行解除封鎖，並繼續工作。 當使用者無法登入其裝置或應用程式時，這項功能將可減少技術服務中心的通話量，並避免失去生產力。
 
 > [!IMPORTANT]
-> 本快速入門將說明系統管理員如何啟用自助式密碼重設。 如果您是已註冊自助式密碼重設的使用者，而且需要取回您的帳戶，請移至 https://aka.ms/sspr 。
+> 此教學課程將說明系統管理員如何啟用自助式密碼重設。 如果您是已註冊自助式密碼重設的使用者，而且需要取回您的帳戶，請移至 https://aka.ms/sspr 。
 >
 > 如果您的 IT 小組尚未啟用重設您密碼的功能，請與您的技術服務人員聯繫以取得其他協助。
 
@@ -41,9 +41,9 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
     * 如有需要，[請建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 具有「全域系統管理員」權限的帳戶。
 * 具有已知密碼的非系統管理員使用者，例如 testuser。 在本教學課程中，您會使用此帳戶來測試終端使用者 SSPR 體驗。
-    * 如果您需要建立使用者，請參閱 [快速入門：將使用者新增至 Azure Active Directory](../add-users-azure-active-directory.md) 中的資訊。
+    * 如果您需要建立使用者，請參閱 [快速入門：將使用者新增至 Azure Active Directory](../fundamentals/add-users-azure-active-directory.md) 中的資訊。
 * 非系統管理員使用者為其成員的群組，例如 SSPR-Test-Group。 您會在本教學課程中為此群組啟用 SSPR。
-    * 如果您需要建立群組，請參閱如何[在 Azure Active Directory 中建立群組和新增成員](../active-directory-groups-create-azure-portal.md)。
+    * 如果您需要建立群組，請參閱如何[在 Azure Active Directory 中建立群組和新增成員](../fundamentals/active-directory-groups-create-azure-portal.md)。
 
 ## <a name="enable-self-service-password-reset"></a>啟用自助式密碼重設
 
@@ -78,8 +78,8 @@ Azure AD 可讓您針對 [無]、[已選取] 或 [所有] 使用者啟用 SSPR�
     * *行動應用程式程式碼*
     * *電子郵件*
     * *行動電話*
-    * *辦公室電話*
-    * *安全性問題*
+
+    您可以視需要啟用其他驗證方法 (例如「辦公室電話」或「安全性問題」)，以符合您的商務需求。
 
 1. 若要套用驗證方法，請選取 [儲存]。
 
@@ -95,7 +95,7 @@ Azure AD 可讓您針對 [無]、[已選取] 或 [所有] 使用者啟用 SSPR�
 
 ## <a name="configure-notifications-and-customizations"></a>設定通知和自訂項目
 
-若要讓使用者得知帳戶活動相關資訊，您可以設定要在 SSPR 事件發生時傳送的電子郵件通知。 這些通知可以涵蓋一般使用者帳戶和系統管理員帳戶。 若為系統管理員帳戶，此通知會在使用 SSPR 重設具有特殊權限的系統管理員帳戶密碼時，提供額外一層感知。
+若要讓使用者得知帳戶活動相關資訊，您可以設定要在 SSPR 事件發生時傳送的電子郵件通知。 這些通知可以涵蓋一般使用者帳戶和系統管理員帳戶。 若為系統管理員帳戶，此通知會在使用 SSPR 重設具有特殊權限的系統管理員帳戶密碼時，提供額外一層感知。 在系統管理員帳戶上使用 SSPR 時，會通知所有全域管理員。
 
 1. 在左側功能表的 [通知] 頁面上，設定下列選項：
 

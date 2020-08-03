@@ -5,38 +5,43 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 20fe29a6588891c35520db01ac0403fb5b3a85d7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c62cb9b64c42446c1f4ba8f6eb496fc792ff59a1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73936147"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281271"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>將執行 Windows Server 2008 的伺服器移轉到 Azure
 
-本教學課程說明如何使用 Azure Site Recovery 將執行 Windows Server 2008 或 2008 R2 的內部部署伺服器遷移至 Azure。 在本教學課程中，您會了解如何：
+此教學課程說明如何使用 Azure Site Recovery，將執行 Windows Server 2008 或 2008 R2 的內部部署伺服器移轉到 Azure。 
+
+在本教學課程中，您會了解如何：
 
 > [!div class="checklist"]
-> * 準備內部部署環境以便進行移轉
-> * 設定目標環境
-> * 設定複寫原則
-> * 啟用複寫
-> * 執行測試移轉，確定一切都沒問題
-> * 容錯移轉至 Azure 並完成移轉
+> * 準備內部部署環境以便進行移轉。
+> * 設定目標環境。
+> * 設定複寫原則。
+> * 啟用複寫。
+> * 執行測試移轉，確定一切都沒問題。
+> * 容錯移轉至 Azure 並完成移轉。
 
-＜限制和已知問題＞一節會列出在將 Windows Server 2008 機器遷移至 Azure 時，所可能遇到的一些限制和已知問題的因應措施。 
+## <a name="migrate-with-azure-migrate"></a>使用 Azure Migrate 移轉
 
-> [!NOTE]
-> 您現在可以使用 Azure Migrate 服務，從內部部署遷移至 Azure。 [深入了解](../migrate/migrate-services-overview.md)。
+建議您使用 [Azure Migrate](../migrate/migrate-services-overview.md) 服務，將機器移轉到 Azure。 Azure Migrate 提供使用 Azure Migrate、其他 Azure 服務及協力廠商工具，來評定內部部署機器並將其移轉到 Azure 的集中式中樞。 Azure Site Recovery 只應用於災害復原，不應用於移轉。
 
-
-## <a name="supported-operating-systems-and-environments"></a>所支援的作業系統和環境
+Azure Migrate 支援移轉執行 Windows Server 2008 的伺服器。
 
 
-|作業系統  | 內部部署環境  |
+## <a name="migrate-with-site-recovery"></a>使用 Site Recovery 移轉
+
+### <a name="supported-operating-systems"></a>支援的作業系統
+
+
+|作業系統  | 環境  |
 |---------|---------|
 |Windows Server 2008 SP2 - 32 位元和 64 位元 (IA-32 和 x86-64)</br>- Standard</br>- Enterprise</br>- Datacenter   |     VMware VM、Hyper-V VM 和實體伺服器    |
 |Windows Server 2008 R2 SP1 - 64 位元</br>- Standard</br>- Enterprise</br>- Datacenter     |     VMware VM、Hyper-V VM 和實體伺服器|
@@ -46,9 +51,9 @@ ms.locfileid: "73936147"
 > - 請先確定您已安裝最新的 Service Pack 和 Windows 更新，再進行遷移。
 
 
-## <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>必要條件
 
-在開始之前，最好先檢閱 [VMware 和實體伺服器移轉](vmware-azure-architecture.md)或 [Hyper-V 虛擬機器移轉](hyper-v-azure-architecture.md)的 Azure Site Recovery 架構 
+開始之前，最好先檢閱 [VMware 和實體伺服器移轉](vmware-azure-architecture.md)或 [Hyper-V 虛擬機器移轉](hyper-v-azure-architecture.md)的 Azure Site Recovery 架構 
 
 若要遷移執行 Windows Server 2008 或 Windows Server 2008 R2 的 Hyper-V 虛擬機器，請遵循[將內部部署機器移轉至 Azure](migrate-tutorial-on-premises-azure.md) 教學課程中的步驟。
 
@@ -57,7 +62,7 @@ ms.locfileid: "73936147"
 > 正在尋找可將 VMware VM 移轉至 Azure 的無代理程式方式嗎？ [按一下這裡](https://aka.ms/migrateVMs-signup)
 
 
-## <a name="limitations-and-known-issues"></a>限制與已知問題
+### <a name="limitations-and-known-issues"></a>限制與已知問題
 
 - 用來移轉 Windows Server 2008 SP2 伺服器的組態伺服器、其他處理序伺服器和行動服務，應該要執行 9.19.0.0 版或更新版本的 Azure Site Recovery 軟體。
 
@@ -79,10 +84,10 @@ ms.locfileid: "73936147"
   >
   >測試容錯移轉作業不會造成系統中斷，可協助您在自選的隔離網路中建立虛擬機器來測試移轉。 不同於容錯移轉作業，在測試容錯移轉作業進行期間，資料複寫會繼續進行。 您可以不限次數地執行測試容錯移轉，直到您準備好遷移。 
   >
-  >
+  
 
 
-## <a name="getting-started"></a>開始使用
+### <a name="get-started"></a>開始使用
 
 執行下列工作以準備 Azure 訂用帳戶和內部部署 VMware/實體環境：
 
@@ -90,26 +95,26 @@ ms.locfileid: "73936147"
 2. 準備內部部署 [VMware](vmware-azure-tutorial-prepare-on-premises.md)
 
 
-## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
+### <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 
-1. 登入 [Azure 入口網站](https://portal.azure.com) > [復原服務]  。
-2. 按一下 [建立資源]   > [管理工具]   > [備份和 Site Recovery]  。
-3. 在 [名稱]  中，指定易記名稱 [W2K8-migration]  。 如果您有多個訂用帳戶，請選取適當的一個。
+1. 登入 [Azure 入口網站](https://portal.azure.com) > [復原服務]。
+2. 按一下 [建立資源] > [管理工具] > [備份和 Site Recovery]。
+3. 在 [名稱] 中，指定易記名稱 [W2K8-migration]。 如果您有多個訂用帳戶，請選取適當的一個。
 4. 建立資源群組 **w2k8migrate**。
 5. 指定 Azure 區域。 若要查看支援的區域，請參閱 [Azure Site Recovery 定價詳細資料](https://azure.microsoft.com/pricing/details/site-recovery/)。
-6. 若要從儀表板快速存取保存庫，請按一下 [釘選到儀表板]  ，然後按一下 [建立]  。
+6. 若要從儀表板快速存取保存庫，請按一下 [釘選到儀表板]，然後按一下 [建立]。
 
    ![新增保存庫](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
 
-新的保存庫會新增到主要 [復原服務保存庫]  頁面上 [所有資源]  之下的 [儀表板]  。
+新的保存庫會新增到主要 [復原服務保存庫] 頁面上 [所有資源] 之下的 [儀表板]。
 
 
-## <a name="prepare-your-on-premises-environment-for-migration"></a>準備內部部署環境以便進行移轉
+### <a name="prepare-your-on-premises-environment-for-migration"></a>準備內部部署環境以便進行移轉
 
 - 若要移轉在 VMware 上執行的 Windows Server 2008 虛擬機器，[在 VMware 上安裝內部部署組態伺服器](vmware-azure-tutorial.md#set-up-the-source-environment)。
 - 如果組態伺服器無法設定為 VMware 虛擬機器，[在內部部署實體伺服器或虛擬機器上安裝組態伺服器](physical-azure-disaster-recovery.md#set-up-the-source-environment)。
 
-## <a name="set-up-the-target-environment"></a>設定目標環境
+### <a name="set-up-the-target-environment"></a>設定目標環境
 
 選取並確認目標資源。
 
@@ -118,22 +123,22 @@ ms.locfileid: "73936147"
 3. Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶和網路。
 
 
-## <a name="set-up-a-replication-policy"></a>設定複寫原則
+### <a name="set-up-a-replication-policy"></a>設定複寫原則
 
-1. 若要建立新的複寫原則，請按一下 [Site Recovery 基礎結構]   > [複寫原則]   > [+複寫原則]  。
-2. 在 [建立複寫原則]  中，指定原則名稱。
-3. 在 [RPO 閾值]  中，指定復原點目標 (RPO) 限制。 如果複寫 RPO 超過此限制，則會產生警示。
-4. 在 [復原點保留]  中，指定每個復原點的保留週期長度 (以小時為單位)。 複寫的 VM 可以還原至此時間範圍內的任何時間點。 複寫至進階儲存體的電腦支援最長保留 24 小時，標準儲存體則是 72 小時。
-5. 在 [應用程式一致的快照頻率]  中，指定 [關閉]  。 按一下 [確定]  以建立原則。
+1. 若要建立新的複寫原則，請按一下 [Site Recovery 基礎結構] > [複寫原則] > [+複寫原則]。
+2. 在 [建立複寫原則]中，指定原則名稱。
+3. 在 [RPO 閾值] 中，指定復原點目標 (RPO) 限制。 如果複寫 RPO 超過此限制，則會產生警示。
+4. 在 [復原點保留] 中，指定每個復原點的保留週期長度 (以小時為單位)。 複寫的 VM 可以還原至此時間範圍內的任何時間點。 複寫至進階儲存體的電腦支援最長保留 24 小時，標準儲存體則是 72 小時。
+5. 在 [應用程式一致的快照頻率] 中，指定 [關閉]。 按一下 [確定]  以建立原則。
 
 此原則會自動與設定伺服器產生關聯。
 
 > [!WARNING]
-> 請務必要在複寫原則的 [應用程式一致的快照頻率] 設定中指定 [關閉]  。 在複寫執行 Windows Server 2008 的伺服器時，只支援「當機時保持一致」復原點。 若為 [應用程式一致的快照頻率] 指定任何其他值，將會由於應用程式一致復原點不足，讓伺服器的複寫健康情況變得嚴重，而產生錯誤警示。
+> 請務必要在複寫原則的 [應用程式一致的快照頻率] 設定中指定 [關閉]。 在複寫執行 Windows Server 2008 的伺服器時，只支援「當機時保持一致」復原點。 若為 [應用程式一致的快照頻率] 指定任何其他值，將會由於應用程式一致復原點不足，讓伺服器的複寫健康情況變得嚴重，而產生錯誤警示。
 
    ![建立複寫原則](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
-## <a name="enable-replication"></a>啟用複寫
+### <a name="enable-replication"></a>啟用複寫
 
 針對要遷移的 Windows Server 2008 SP2/Windows Server 2008 R2 SP1 伺服器[啟用複寫](physical-azure-disaster-recovery.md#enable-replication)。
    
@@ -141,7 +146,7 @@ ms.locfileid: "73936147"
 
    ![啟用複寫](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
-## <a name="run-a-test-migration"></a>執行測試移轉
+### <a name="run-a-test-migration"></a>執行測試移轉
 
 您可以在初始複寫完成且伺服器的狀態變為**受保護**後，對複寫伺服器執行測試容錯移轉。
 
@@ -150,15 +155,15 @@ ms.locfileid: "73936147"
    ![測試容錯移轉](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
-## <a name="migrate-to-azure"></a>移轉至 Azure
+### <a name="migrate-to-azure"></a>移轉至 Azure
 
 針對您要移轉的機器執行容錯移轉。
 
 1. 在 [設定]   > [複寫的項目]  中，按一下機器 > [容錯移轉]  。
 2. 在 [容錯移轉]  中，選取容錯移轉的目標**復原點**。 選取最新的復原點。
-3. 選取 [Shut down machine before beginning failover] \(先將機器關機再開始容錯移轉)  。 Site Recovery 會先嘗試關閉伺服器，再觸發容錯移轉。 即使關機失敗，仍會繼續容錯移轉。 您可以 [作業]  頁面上追蹤容錯移轉進度。
+3. 選取 [Shut down machine before beginning failover] \(先將機器關機再開始容錯移轉)。 Site Recovery 會先嘗試關閉伺服器，再觸發容錯移轉。 即使關機失敗，仍會繼續容錯移轉。 您可以 [作業]  頁面上追蹤容錯移轉進度。
 4. 確認 Azure VM 如預期般出現在 Azure 中。
-5. 在 [複寫的項目]  中，以滑鼠右鍵按一下伺服器 > [完成移轉]  。 這會執行以下動作：
+5. 在 [複寫的項目] 中，以滑鼠右鍵按一下伺服器 > [完成移轉]。 這會執行以下動作：
 
     - 完成移轉程序、停止伺服器的複寫，並停止伺服器的 Site Recovery 計費。
     - 此步驟會清除複寫資料。 但並不會刪除已遷移的 VM。
@@ -168,3 +173,7 @@ ms.locfileid: "73936147"
 
 > [!WARNING]
 > **請勿取消正在進行中的容錯移轉**：在容錯移轉開始之前，伺服器複寫已停止。 如果您取消正在進行的容錯移轉，容錯移轉會停止，但伺服器不會繼續複寫。
+
+## <a name="next-steps"></a>後續步驟
+> [!div class="nextstepaction"]
+> [檢閱關於 Azure Migrate 的常見問題](../migrate/resources-faq.md)。

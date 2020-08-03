@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 53c9931e84a2338af2f51fc3a9937034e7f395a3
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 517b092f933bedae0f254461d9bfee4d4640db8b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609274"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374868"
 ---
 若要建立 C++ 桌面開發的 Visual Studio 專案，您必須設定 Visual Studio 的開發選項、建立專案、選取目標架構，然後安裝語音 SDK。
 
@@ -29,7 +29,7 @@ ms.locfileid: "84609274"
 
 1. 在 [工作負載]  索引標籤的 [Windows]  底下，尋找 [使用 C++ 的桌面開發]  工作負載。 如果尚未選取該工作負載旁的核取方塊，請加以選取。
 
-1. 在 [個別元件]  索引標籤中，尋找 [Nuget 套件管理員]  核取方塊。 如果尚未選取核取方塊，請加以選取。
+1. 在 [個別元件] 索引標籤中，尋找 [NuGet 套件管理員] 核取方塊。 如果尚未選取核取方塊，請加以選取。
 
 1. 選取角落標示為 [關閉]  或 [修改]  的按鈕。 (按鈕名稱會根據您是否選取了任何安裝功能而有所不同。)如果您選取 [修改]  ，則會開始安裝，這可能需要一些時間。
 
@@ -59,9 +59,9 @@ ms.locfileid: "84609274"
 
 最後，安裝[語音 SDK NuGet 套件](https://aka.ms/csspeech/nuget) \(英文\)，並在您的專案中參考語音 SDK：
 
-1. 在 [方案總管]  中，以滑鼠右鍵按一下解決方案，然後選擇 [管理解決方案的 NuGet 套件]  以移至 [NuGet - 解決方案]  視窗。
+1. 在 [方案總管] 中，以滑鼠右鍵按一下您的解決方案，然後選擇 [管理解決方案的 NuGet 套件] 以移至 [NuGet - 解決方案] 視窗。
 
-1. 選取 [瀏覽]。 
+1. 選取 [瀏覽]。
 
    ![[NuGet - 解決方案] 索引標籤，Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
 
@@ -77,4 +77,4 @@ ms.locfileid: "84609274"
 
 1. 在 [預覽變更]  對話方塊中，選取 [確定]  。
 
-1. 在 [接受授權]  對話方塊中，檢視授權，然後選取 [我接受]  。 套件安裝隨即開始，而且當安裝完成時，[輸出]  窗格會顯示類似下列文字的訊息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.1' to helloworld`。
+1. 在 [接受授權]  對話方塊中，檢視授權，然後選取 [我接受]  。 套件安裝隨即開始，而且當安裝完成時，[輸出]  窗格會顯示類似下列文字的訊息：`Successfully installed 'Microsoft.CognitiveServices.Speech 1.13.0' to helloworld`。

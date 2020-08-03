@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259247"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089493"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>快速入門：建置您的第一個靜態 Web 應用程式
 
@@ -20,7 +20,7 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 如果您沒有 Azure 訂用帳戶，請[建立免費試用帳戶](https://azure.microsoft.com/free)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [GitHub](https://github.com) 帳戶
 - [Azure](https://portal.azure.com) 帳戶
@@ -68,9 +68,9 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 
 - 瀏覽至 [Azure 入口網站](https://portal.azure.com)
 - 按一下 [建立資源]
-- 搜尋 [Static Web Apps]
-- 按一下 [Static Web Apps (預覽)]
-- 按一下 [建立] 
+- 搜尋**靜態 Web 應用程式**
+- 按一下 [靜態 Web 應用程式 (預覽)]
+- 按一下 [建立]
 
 ### <a name="basics"></a>基本概念
 
@@ -96,6 +96,9 @@ Azure Static Web Apps 藉由從 GitHub 存放庫建置應用程式，將網站�
 - 按 [下一步：組建 >] 按鈕，以編輯組建組態
 
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="下一個組建按鈕":::
+
+> [!NOTE]
+>  如果您沒有看到任何存放庫，可能需要在 GitHub 中授權 Azure Static Web Apps。 瀏覽至您的 GitHub 存放庫，並移至 [設定] > [應用程式] > [授權的 OAuth 應用程式]、選取 [Azure Static Web Apps]，然後選取 [授與]。 針對組織存放庫，您必須是組織的擁有者，才能授與權限。
 
 ### <a name="build"></a>Build
 

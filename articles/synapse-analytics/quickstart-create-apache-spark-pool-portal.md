@@ -1,5 +1,5 @@
 ---
-title: 快速入門：使用 Azure 入口網站建立 Apache Spark 集區 (預覽)
+title: 快速入門：使用 Azure 入口網站建立 Apache Spark 集區
 description: 遵循本指南中的步驟，使用 Azure 入口網站建立新的 Apache Spark 集區。
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 959ad0413c83389aef6a7607c1239043e242b75b
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 0930b7cb7b98874e20f070763a7ec50a6b4f3ef0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274351"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006070"
 ---
-# <a name="quickstart-create-a-new-apache-spark-pool-preview-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立新的 Apache Spark 集區 (預覽)
+# <a name="quickstart-create-a-new-apache-spark-pool-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立新的 Apache Spark 集區
 
 Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、模型化、分析及散發您的資料。 Apache Spark 集區提供開放原始碼的巨量資料計算功能。 在 Synapse 工作區中建立 Apache Spark 集區後，就可以載入、模型化、處理及散發資料，以取得更快速的分析見解。
 

@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 57468a4b4234809ca6293ca39ed54a3934f9a4fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d5dd74c55f1f355c95da93d8d42e6637f1fa78fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056007"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
@@ -106,6 +106,8 @@ Maven 會要求您提供在部署時完成產生專案所需的值。
 輸入 `Y` 或按 Enter 進行確認。
 
 Maven 會以 _artifactId_ 名稱在新資料夾中建立專案檔案，在此例中為 `fabrikam-functions`。 
+
+若要在 Azure 的 Java 11 上執行，您必須修改 pom.xml 檔案中的值。 若要深入了解，請參閱 [Java 版本](functions-reference-java.md#java-versions)。
 ::: zone-end
 `--docker` 選項會產生專案的 `Dockerfile`，這會定義適合用於 Azure Functions 和所選執行階段的自訂容器。
 
@@ -156,7 +158,15 @@ mvn azure-functions:run
 
 ## <a name="build-the-container-image-and-test-locally"></a>建立容器映像並在本機進行測試
 
-(選用) 檢查專案根資料夾中的 *Dockerfile"。 Dockerfile 描述在 Linux 上執行函式應用程式所需的環境。  在 [Azure Functions 基底映像頁面](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的完整基底映像清單。
+(選用) 檢查專案根資料夾中的 *Dockerfile*。 Dockerfile 描述在 Linux 上執行函式應用程式所需的環境。  在 [Azure Functions 基底映像頁面](https://hub.docker.com/_/microsoft-azure-functions-base)中可找到針對 Azure Functions 支援的完整基底映像清單。
+
+::: zone pivot="programming-language-java"  
+如果您在 Java 11 (預覽) 上執行，請在產生的 Dockerfile 中，將 `JAVA_VERSION` 建置引數變更為下列內容： 
+
+```docker
+ARG JAVA_VERSION=11
+```
+::: zone-end
     
 在根專案資料夾中，執行 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令，然後提供名稱、`azurefunctionsimage` 和標記 (`v1.0.0`)。 將 `<DOCKER_ID>` 取代為 Docker Hub 帳戶識別碼。 此命令會建置容器的 Docker 映像。
 

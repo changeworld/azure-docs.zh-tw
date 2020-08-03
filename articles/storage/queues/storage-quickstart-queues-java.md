@@ -2,17 +2,18 @@
 title: 快速入門：Azure 佇列儲存體程式庫 v12 - Java
 description: 了解如何使用 Azure 佇列 Java v12 程式庫來建立佇列，並將訊息新增至該佇列。 接下來，您會了解如何讀取和刪除佇列中的訊息。 您也將了解如何刪除佇列。
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: a4c873e7ec1867b6ce53cd9f4c3d5c54242a6f16
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 753c245631d2fbdc8122f955c1db6562a1554031
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232333"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319366"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入門：適用於 Java 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -27,9 +28,14 @@ ms.locfileid: "86232333"
 * 接收和刪除佇列中的訊息
 * 刪除佇列
 
-[API 參考文件](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [套件 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+其他資源：
 
-## <a name="prerequisites"></a>Prerequisites
+* [API 參考文件](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html)
+* [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
+* [套件 (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) \(英文\)
+* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+
+## <a name="prerequisites"></a>必要條件
 
 * [Java 開發套件 (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) 8 版或更新版本
 * [Apache Maven](https://maven.apache.org/download.cgi)

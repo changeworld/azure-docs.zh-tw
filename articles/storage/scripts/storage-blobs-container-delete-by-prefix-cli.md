@@ -9,14 +9,14 @@ ms.devlang: cli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: 391cc4c08b7067ef388c2130cb340fb5597c843f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 71bffe004ae8f2ac2060c1bfc12c4fff0be95c34
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067025"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006206"
 ---
-# <a name="delete-containers-based-on-container-name-prefix"></a>根據容器名稱前置詞來刪除容器
+# <a name="use-an-azure-cli-script-to-delete-containers-based-on-container-name-prefix"></a>使用 Azure CLI 指令碼，根據容器名稱前置詞來刪除容器
 
 此指令碼會先在 Azure Blob 儲存體中建立數個範例容器，然後根據容器名稱中的前置詞來刪除部分容器。
 

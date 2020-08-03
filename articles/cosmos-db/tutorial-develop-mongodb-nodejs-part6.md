@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: c4d44b1bf645132f5c2d6e863dbe0c93f024c7ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118962"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066944"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式 - 將 CRUD 函式新增至應用程式
 
@@ -36,7 +36,7 @@ ms.locfileid: "85118962"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>將 Post 函式新增至 Hero 服務
 
-1. 在 Visual Studio Code 中，按 [分割編輯器] 按鈕![Visual Studio 中的分割編輯器按鈕](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)，並排開啟 **routes.js** 和 **hero.service.js**。
+1. 在 Visual Studio Code 中，按 [分割編輯器] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png":::，並排開啟 **routes.js** 和 **hero.service.js**。
 
     您會看到 routes.js 第 7 行正在呼叫 **hero.service.js** 中第 5 行上的 `getHeroes` 函式。  我們需要針對 post、put 和 delete 函式建立此相同配對。 
 
@@ -84,7 +84,7 @@ ms.locfileid: "85118962"
     });
     ```
 
-5. 執行應用程式，檢查一切是否運作正常。 在 Visual Studio Code 中儲存您所有的變更，選取左側的 [偵錯] 按鈕 ![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然後選取 [開始偵錯] 按鈕 ![Visual Studio Code 中的開始偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
+5. 執行應用程式，檢查一切是否運作正常。 在 Visual Studio Code 中，儲存您的所有變更，選取左側的 [偵錯] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png":::，然後選取 [開始偵錯] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png":::。
 
 6. 現在返回您的網際網路瀏覽器，並且按 F12 (在大部分的機器上) 開啟開發人員工具 [網路] 索引標籤。 瀏覽至 `http://localhost:3000` 以監看透過網路撥打的電話。
 
@@ -169,7 +169,7 @@ ms.locfileid: "85118962"
     };
     ```
 
-4. 我們現已更新程式碼，請選取 Visual Studio Code 中的 [重新啟動] 按鈕 ![Visual Studio Code 中的重新啟動按鈕](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)。
+4. 既然我們已更新程式碼，請選取 Visual Studio Code 中的 [重新啟動] 按鈕 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png":::。
 
 5. 重新整理網際網路瀏覽器中的頁面，然後選取 [新增主圖] 按鈕。 新增識別碼為 "9"、名稱為 "Starlord" 的 Hero，且招呼語為 "Hi"。 選取 [儲存] 按鈕以儲存新的主圖。
 

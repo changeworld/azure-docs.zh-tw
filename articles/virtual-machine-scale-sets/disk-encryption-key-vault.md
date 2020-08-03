@@ -9,16 +9,16 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 6350e85552a6c92592dbe2b1a9cf48a35f86a7be
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: acd2ae54d81fb508d5f8c02262cf8c2f0f071fb5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198438"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080602"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>建立及設定適用於 Azure 磁碟加密的金鑰保存庫
+# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>建立及設定適用於 Azure 磁碟加密的金鑰保存庫
 
-Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金鑰與祕密。  如需金鑰保存庫的詳細資訊，請參閱[開始使用 Azure Key Vault](../key-vault/key-vault-get-started.md) 和[保護金鑰保存庫](../key-vault/general/secure-your-key-vault.md)。
+Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金鑰與祕密。  如需金鑰保存庫的詳細資訊，請參閱[開始使用 Azure Key Vault](../key-vault/general/overview.md) 和[保護金鑰保存庫](../key-vault/general/secure-your-key-vault.md)。
 
 建立及設定與 Azure 磁碟加密搭配使用的金鑰保存庫，包含下列步驟：
 
@@ -32,7 +32,7 @@ Azure 磁碟加密會使用 Azure Key Vault，來控制及管理磁碟加密金�
 
 ## <a name="install-tools-and-connect-to-azure"></a>安裝工具並連線至 Azure
 
-您可以使用 [Azure CLI](/cli/azure/)、[Azure PowerShell Az 模組](/powershell/azure/overview)或 [Azure 入口網站](https://portal.azure.com)來完成本文中的步驟。
+您可以使用 [Azure CLI](/cli/azure/)、[Azure PowerShell Az 模組](/powershell/azure/)或 [Azure 入口網站](https://portal.azure.com)來完成本文中的步驟。
 
 ### <a name="connect-to-your-azure-account"></a>連線至您的 Azure 帳戶
 

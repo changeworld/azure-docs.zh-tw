@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/27/2020
+ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147021"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307194"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>標記標籤專案中的影像 
 
@@ -37,11 +37,9 @@ ms.locfileid: "86147021"
 
 1. 選取左側的 [資料標記] 以尋找專案。  
 
-1. 選取清單中的專案名稱。
-
 ## <a name="understand-the-labeling-task"></a>了解標籤工作
 
-選取專案之後，在頁面頂端選取 [標籤資料]。
+在資料標記專案的資料表中，為您的專案選取 [標籤連結]。
 
 您會看到專屬於您專案的指示。 這些指示會說明您將看到的資料類型、您應如何做出決策，以及其他相關資訊。 閱讀這項資訊之後，在頁面頂端選取 [工作]。  或在頁面底部選取 [開始標記]。
 
@@ -65,6 +63,10 @@ ms.locfileid: "86147021"
 在您提交手邊資料的標籤後，Azure 會以工作佇列中的一組新影像來重新整理頁面。
 
 ### <a name="assisted-machine-learning-preview"></a>輔助機器學習 (預覽) 
+
+> [!IMPORTANT]
+> 輔助機器學習目前處於公開預覽狀態。
+> 此預覽版本會在沒有服務等級協定的情況下提供，不建議用於實際執行工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 可能已觸發機器學習演算法。 如果您的專案中已啟用這些演算法，可能會看到下列內容：
 

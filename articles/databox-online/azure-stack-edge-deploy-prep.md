@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: e6b752eab3f6a8f40fad8b2f947a82f86a8ccfe5
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8f64bc81afb941e13dd310a7efd9432639ec281
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652057"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131832"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge"></a>教學課程：準備部署 Azure Stack Edge  
 
@@ -57,32 +57,35 @@ ms.locfileid: "83652057"
 
 * 您在 Azure Stack Edge / 資料箱閘道、IoT 中樞及 Azure 儲存體資源的資源群組層級上，具有擁有者或參與者存取權限。
 
-  * 若要建立任何 Azure Stack Edge/ 資料箱閘道資源，您應該要有以資源群組層級作為範圍的參與者權限 (或更高權限)。 您也需要確定已註冊 `Microsoft.DataBoxEdge` 提供者。 如需有關如何註冊的資訊，請移至[註冊資源提供者](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
+  * 您應該是訂用帳戶層級的**擁有者**，才能授與參與者存取權。 若要將參與者存取權授與其他人，請在 Azure 入口網站中移至 [所有服務] > [訂用帳戶] > [存取控制 (IAM)] > [+ 新增] > [新增角色指派]。 如需詳細資訊，請參閱[教學課程：使用 Azure 入口網站為使用者授與 Azure 資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)。
+
+  * 若要建立任何 Azure Stack Edge/ 資料箱閘道資源，您應該要有以資源群組層級作為範圍的參與者權限 (或更高權限)。 您也需要確定已註冊 `Microsoft.DataBoxEdge` 資源提供者。 如需如何註冊資源提供者的相關資訊，請參閱[註冊資源提供者](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
   * 若要建立任何 IoT 中樞資源，請確定已註冊該 Microsoft.Devices 提供者。 如需有關如何註冊的資訊，請移至[註冊資源提供者](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers)。
   * 同樣的，若要建立儲存體帳戶資源，您需要以資源群組層級作為範圍的參與者存取權限 (或更高權限)。 根據預設，Azure 儲存體是已註冊的資源提供者。
 * 您有 Azure Active Directory 圖形 API 的管理員或使用者存取權。 如需詳細資訊，請參閱 [Azure Active Directory 圖形 API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)。
 * 您擁有的 Microsoft Azure 儲存體帳戶具有存取認證。
+* 您的系統管理員所設定的任何 Azure 原則都不會封鎖您。 如需原則的詳細資訊，請參閱[快速入門：建立原則指派以識別不符合規範的資源](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal)。
 
 ### <a name="for-the-azure-stack-edge-device"></a>針對 Azure Stack Edge 裝置
 
 在您部署實體裝置之前，請確定：
 
-- 您已檢閱出貨套件內含的安全資訊。
-- 您在資料中心的標準 19 吋機架中有 1U 插槽可用來以機架掛接裝置。
-- 您有平穩的工作表面可供安全地放置裝置。
-- 您要安裝裝置的場地具有來自獨立來源或含不斷電供應系統 (UPS) 之機架式配電單元 (PDU) 的標準 AC 電源。
-- 您可以拆裝實體裝置。
+* 您已檢閱出貨套件內含的安全資訊。
+* 您在資料中心的標準 19 吋機架中有 1U 插槽可用來以機架掛接裝置。
+* 您有平穩的工作表面可供安全地放置裝置。
+* 您要安裝裝置的場地具有來自獨立來源或含不斷電供應系統 (UPS) 之機架式配電單元 (PDU) 的標準 AC 電源。
+* 您可以拆裝實體裝置。
 
 ### <a name="for-the-datacenter-network"></a>對於資料中心的網路
 
 在您開始前，請確定：
 
-- 資料中心內的網路是根據 Azure Stack Edge 裝置的網路需求所設定的。 如需詳細資訊，請參閱 [Azure Stack Edge 系統需求](azure-stack-edge-system-requirements.md)。
+* 資料中心內的網路是根據 Azure Stack Edge 裝置的網路需求所設定的。 如需詳細資訊，請參閱 [Azure Stack Edge 系統需求](azure-stack-edge-system-requirements.md)。
 
-- 如需 Azure Stack Edge 的正常運作條件，您具有：
+* 如需 Azure Stack Edge 的正常運作條件，您具有：
 
-    - 最少 10 Mbps 的下載頻寬來確定裝置可維持在更新狀態。
-    - 最少 20 Mbps 的專用上傳與下載頻寬，以傳輸檔案。
+  * 最少 10 Mbps 的下載頻寬來確定裝置可維持在更新狀態。
+  * 最少 20 Mbps 的專用上傳與下載頻寬，以傳輸檔案。
 
 ## <a name="create-a-new-resource"></a>建立新的資源
 
@@ -173,6 +176,3 @@ ms.locfileid: "83652057"
 
 > [!div class="nextstepaction"]
 > [安裝 Azure Stack Edge](./azure-stack-edge-deploy-install.md)
-
-
-

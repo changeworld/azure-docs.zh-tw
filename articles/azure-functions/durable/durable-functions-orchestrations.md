@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 1b349b1e3c4a2fac4cd260dbe83469a776951ab0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84697821"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033637"
 ---
 # <a name="durable-orchestrations"></a>長期協調流程
 
@@ -41,9 +41,9 @@ Durable Functions 是 [Azure Functions](../functions-overview.md) 的擴充功�
 
 ## <a name="reliability"></a>可靠性
 
-協調器函式可藉由使用[事件來源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)設計模式，可靠地維持其執行狀態。 長期工作架構會使用僅限附加的存放區來記錄函式協調流程所採取的一系列完整動作，而不會直接存放協調流程的目前狀態。 相較於「傾印」完整執行階段狀態，僅限附加的存放區有許多優點。 優點包括提升效能、延展性和回應能力。 您也可以取得交易資料的最終一致性，以及完整的稽核和歷程記錄。 稽核線索支援可靠的補償動作。
+協調器函式可藉由使用[事件來源](/azure/architecture/patterns/event-sourcing)設計模式，可靠地維持其執行狀態。 長期工作架構會使用僅限附加的存放區來記錄函式協調流程所採取的一系列完整動作，而不會直接存放協調流程的目前狀態。 相較於「傾印」完整執行階段狀態，僅限附加的存放區有許多優點。 優點包括提升效能、延展性和回應能力。 您也可以取得交易資料的最終一致性，以及完整的稽核和歷程記錄。 稽核線索支援可靠的補償動作。
 
-Durable Functions 會以透明的方式使用事件來源。 實際上，協調器函式中的 `await` (C#) 或 `yield` (JavaScript) 運算子會暫止將協調器執行緒的控制交回給長期工作架構發送器。 發送器接著會將協調器函式所排程的任何新的動作 (例如，呼叫一或多個子函式或排程長期計時器) 認可至儲存體。 此透明認可動作會附加至協調流程執行個體的執行歷程記錄。 歷程記錄會儲存於儲存體資料表。 認可動作接著會將訊息新增至佇列以排程實際的工作。 此時，協調器函式即可從記憶體卸載。
+Durable Functions 會以透明的方式使用事件來源。 實際上，協調器函式中的 `await` (C#) 或 `yield` (JavaScript/Python) 運算子會暫止將協調器執行緒的控制交回給長期工作架構發送器。 發送器接著會將協調器函式所排程的任何新的動作 (例如，呼叫一或多個子函式或排程長期計時器) 認可至儲存體。 此透明認可動作會附加至協調流程執行個體的執行歷程記錄。 歷程記錄會儲存於儲存體資料表。 認可動作接著會將訊息新增至佇列以排程實際的工作。 此時，協調器函式即可從記憶體卸載。
 
 當協調流程函式在收到更多要執行的工作時 (例如，收到回應訊息或長期計時器過期)，協調器會甦醒，並從頭開始重新執行整個函式，以重建本機狀態。 在重新執行期間，如果此程式碼嘗試呼叫函式 (或進行任何其他非同步工作)，長期工作架構便會諮詢目前協調流程的執行歷程記錄。 如果它發現[活動函式](durable-functions-types-features-overview.md#activity-functions)已執行並產生某種結果，便會重新執行該函式的結果，而協調器程式碼則會繼續執行。 重新執行會繼續，直到函式程式碼完成或直到已排程新的非同步工作為止。
 
@@ -91,9 +91,23 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    result1 = yield context.call_activity('SayHello', "Tokyo")
+    result2 = yield context.call_activity('SayHello', "Seattle")
+    result3 = yield context.call_activity('SayHello', "London")
+    return [result1, result2, result3]
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 ---
 
-在每個 `await` (C#) 或 `yield` 陳述式中，長期工作架構會將函式的執行狀態檢查點記入某個長期儲存體後端 (通常為 Azure 資料表儲存體)。 此狀態就是「協調流程歷程記錄」  。
+在每個 `await` (C#) 或 `yield` (JavaScript/Python) 陳述式中，長期工作架構會將函式的執行狀態檢查點記入某個長期儲存體後端 (通常為 Azure 資料表儲存體)。 此狀態就是「協調流程歷程記錄」。
 
 ### <a name="history-table"></a>記錄資料表
 
@@ -106,7 +120,7 @@ module.exports = df.orchestrator(function*(context) {
 一旦檢查點完成，協調器函式就可以安心地從記憶體移除，直到有更多工作要執行。
 
 > [!NOTE]
-> Azure 儲存體不提供將資料儲存至資料表儲存體和佇列之間的任何交易式保證。 為了處理失敗，長期函式儲存體提供者會使用「最終一致性」  模式。 這些模式可確保如果在檢查點中間發生損毀或連線中斷，不會遺失任何資料。
+> Azure 儲存體不提供將資料儲存至資料表儲存體和佇列之間的任何交易式保證。 為了處理失敗，長期函式儲存體提供者會使用「最終一致性」模式。 這些模式可確保如果在檢查點中間發生損毀或連線中斷，不會遺失任何資料。
 
 完成時，稍早顯示的函式歷程記錄在 Azure 資料表儲存體中看起來如下表所示 (針對示範目的縮寫)：
 
@@ -133,7 +147,7 @@ module.exports = df.orchestrator(function*(context) {
 
 * **PartitionKey**：包含協調流程的執行個體識別碼。
 * **EventType**：代表事件的類型。 可以是下列其中一個類型：
-  * **OrchestrationStarted**：協調器函式會從等候繼續運作或是第一次執行。 `Timestamp` 資料行可用來填入 `CurrentUtcDateTime` (.NET) 和 `currentUtcDateTime` (JavaScript) API 的決定性值。
+  * **OrchestrationStarted**：協調器函式會從等候繼續運作或是第一次執行。 `Timestamp` 資料行用來填入 `CurrentUtcDateTime` (.NET)、`currentUtcDateTime` (JavaScript) 和 `current_utc_datetime` (Python) API 的決定性值。
   * **ExecutionStarted**：協調器函式第一次開始執行。 此事件也包含 `Input` 資料行中的函式輸入。
   * **TaskScheduled**：活動函式已排程。 活動函式的名稱是在 `Name` 資料行中擷取。
   * **TaskCompleted**：活動函式已完成。 函式的結果是在 `Result` 資料行中。
@@ -143,15 +157,15 @@ module.exports = df.orchestrator(function*(context) {
   * **OrchestratorCompleted**：協調器函式已等候。
   * **ContinueAsNew**：協調器函式已完成，並且以新的狀態自行重新啟動。 `Result` 資料行包含值，可作為重新啟動執行個體的輸入。
   * **ExecutionCompleted**：協調器函式即將完成 (或失敗)。 函式或錯誤詳細資料的輸出會儲存在 `Result` 資料行。
-* **Timestamp**：歷程記錄事件的 UTC 時間戳記。
+* **時間戳記**：歷程記錄事件的 UTC 時間戳記。
 * **Name**：被叫用之函式的名稱。
-* **Input**：函式的 JSON 格式輸入。
+* **輸入**：函式的 JSON 格式輸入。
 * **Result**：函式的輸出，也就是它的傳回值。
 
 > [!WARNING]
 > 它作為偵錯工具相當有用，請勿在此資料表上採用任何相依性。 當 Durable Functions 擴充功能進化時，此相依性可能會改變。
 
-每次函式從 `await` (C#) 或 `yield` (JavaScript) 繼續時，長期工作架構就會從頭重新執行協調器函式。 在每次重新執行時，它會查詢執行歷程記錄以判斷是否已發生目前的非同步作業。  如果作業已發生，架構會立即重新執行該作業的輸出，並且移至下一個 `await` (C#) 或 `yield` (JavaScript)。 此程序會繼續，直到重新執行整個歷程記錄為止。 重新執行目前的歷程記錄後，本機變數就會還原為其先前的值。
+每次函式從 `await` (C#) 或 `yield` (JavaScript/Python) 繼續時，長期工作架構就會從頭重新執行協調器函式。 在每次重新執行時，它會查詢執行歷程記錄以判斷是否已發生目前的非同步作業。  如果作業已發生，架構會立即重新執行該作業的輸出，而且會移至下一個 `await` (C#) 或 `yield` (JavaScript/Python)。 此程序會繼續，直到重新執行整個歷程記錄為止。 重新執行目前的歷程記錄後，本機變數就會還原為其先前的值。
 
 ## <a name="features-and-patterns"></a>功能與模式
 
@@ -165,7 +179,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="durable-timers"></a>永久性計時器
 
-協調流程可以排程「長期計時器」  來實作延遲，或設定非同步動作的逾時處理。 在協調器函式中使用永久性計時器，以代替 `Thread.Sleep` 和 `Task.Delay` (C#)，或 `setTimeout()` 和 `setInterval()` (JavaScript)。
+協調流程可以排程「長期計時器」來實作延遲，或設定非同步動作的逾時處理。 在協調器函式中使用長期計時器，以代替 `Thread.Sleep` 和 `Task.Delay` (C#)，或 `setTimeout()` 和 `setInterval()` (JavaScript)，或 `time.sleep()` (Python)。
 
 如需詳細資訊和範例，請參閱[長期計時器](durable-functions-timers.md)一文。
 
@@ -188,7 +202,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>重要區段 (Durable Functions 2.x，目前僅限 .NET)
 
-協調流程執行個體為單一執行緒，因此不需要擔心協調流程內  的競爭情況。 不過，當協調流程與外部系統互動時，可能會發生競爭情況。 若要減輕與外部系統互動時的競爭情況，協調器函式可以在 .NET 中使用 `LockAsync` 方法來定義「重要區段」。
+協調流程執行個體為單一執行緒，因此不需要擔心協調流程內的競爭情況。 不過，當協調流程與外部系統互動時，可能會發生競爭情況。 若要減輕與外部系統互動時的競爭情況，協調器函式可以在 .NET 中使用 `LockAsync` 方法來定義「重要區段」。
 
 下列範例程式碼顯示可定義重要區段的協調器函式。 它會使用 `LockAsync` 方法輸入重要區段。 此方法需要將一或多個參考傳遞至[長期實體](durable-functions-entities.md)，其會持久地管理鎖定狀態。 此協調流程一次只有一個執行個體可以在重要區段中執行程式碼。
 
@@ -252,6 +266,18 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    res = yield context.call_http('GET', url)
+    if res.status_code >= 400:
+        # handing of error code goes here
+```
 ---
 
 除了支援基本要求/回應模式之外，此方法還支援一般非同步 HTTP 202 輪詢模式的自動處理，也支援使用[受控身分識別](../../active-directory/managed-identities-azure-resources/overview.md)向外部服務進行驗證。
@@ -267,7 +293,7 @@ module.exports = df.orchestrator(function*(context) {
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-在 .NET 中，您也可以使用 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 物件。 下列範例會使用附加 [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples) 的 [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) 新功能：
+在 .NET 中，您也可以使用 [ValueTuples](/dotnet/csharp/tuples) 物件。 下列範例會使用附加 [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples) 的 [ValueTuples](/dotnet/csharp/tuples) 新功能：
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -322,7 +348,7 @@ module.exports = df.orchestrator(function*(context) {
 };
 ```
 
-#### <a name="activity"></a>活動
+#### <a name="getweather-activity"></a>`GetWeather` 活動
 
 ```javascript
 module.exports = async function (context, location) {
@@ -330,6 +356,36 @@ module.exports = async function (context, location) {
 
     // ...
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+#### <a name="orchestrator"></a>協調器
+
+```python
+from collections import namedtuple
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    Location = namedtuple('Location', ['city', 'state'])
+    location = Location(city='Seattle', state= 'WA')
+
+    weather = yield context.call_activity("GetWeather", location)
+
+    # ...
+
+```
+#### <a name="getweather-activity"></a>`GetWeather` 活動
+
+```python
+from collections import namedtuple
+
+Location = namedtuple('Location', ['city', 'state'])
+
+def main(location: Location) -> str:
+    city, state = location
+    return f"Hello {city}, {state}!"
 ```
 
 ---

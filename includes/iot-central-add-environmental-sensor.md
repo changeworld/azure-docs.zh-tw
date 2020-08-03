@@ -5,15 +5,15 @@ services: iot-central
 author: dominicbetts
 ms.service: iot-central
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 07/07/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0381418f20e126f94060b9f495fe1fe8b54e713b
-ms.sourcegitcommit: bf8c447dada2b4c8af017ba7ca8bfd80f943d508
+ms.openlocfilehash: b32465091f82fec0aeae288ee9bfd5540bfe8b9d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85378409"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002006"
 ---
 ## <a name="create-a-device-template"></a>建立裝置範本
 
@@ -79,12 +79,11 @@ ms.locfileid: "85378409"
 
 1. 在 [裝置] 頁面中，選取 [環境感應器] 裝置範本。
 
-    > [!TIP]
-    > 請務必先選取要使用的範本，再選取 [+ 新增]，否則您將建立沒有關聯的裝置。
-
 1. 選取 [+ 新增]。
 
-1. 請確定 **模擬**狀態為**關閉**。 然後選取 [建立]。
+1. 在 [建立新裝置] 對話方塊中，確定範本類型為 [環境感應器]，而且已將 [要模擬此裝置嗎?] 設定為 [否]。
+
+1. 然後選取 [建立]。
 
 按一下裝置名稱，然後選取 [連線]。 記下 [裝置連線] 頁面上的裝置連線資訊，包括 [識別碼範圍]、[裝置識別碼] 和 [主要金鑰]。 建立裝置程式碼時，您會需要這些值：
 

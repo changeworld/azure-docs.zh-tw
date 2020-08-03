@@ -1,5 +1,5 @@
 ---
-title: 專用硬體安全模組 (HSM) 是什麼？ - Azure 專用硬體安全模組 (HSM) | Microsoft Docs
+title: 針對專用 HSM 進行疑難排解 - Azure 專用 HSM | Microsoft Docs
 description: Azure 專用硬體安全模組 (HSM) 可在 Azure 內提供符合 FIPS 140-2 等級 3 認證的金鑰儲存功能概觀
 services: dedicated-hsm
 author: msmbaldwin
@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 80a215363a319b9ee082bd6c5e5f8004fc5b715b
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c398049cfe1d5ec2ee090d4fabf8008803efecb1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85209567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075004"
 ---
-# <a name="troubleshooting"></a>疑難排解
+# <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>針對 Azure 專用 HSM 服務進行疑難排解
 
 Azure 專用 HSM 服務有兩個不同的 Facet。 首先，在 HSM 裝置的 Azure 中使用其基礎網路元件進行註冊和部署。 接著，在準備使用/整合指定的工作負載或應用程式時，進行 HSM 裝置的設定。 雖然 Azure 中的 Thales Luna Network HSM 裝置與您直接向 Thales 購買的相同，但其為 Azure 中會產生一些獨特考量的資源。 這些考量及任何產生的疑難排解見解或最佳做法都記載於此，以確保關鍵資訊的高可見度和存取權。 一旦服務正在使用中，就可以透過對 Microsoft 或 Thales 的支援要求直接取得決定性資訊。 
 

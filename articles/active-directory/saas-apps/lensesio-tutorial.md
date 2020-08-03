@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa73253c49f49647d3415340b2601f1395f912c
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: c2b630111261be8e3615ab45e95633040e799551
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86172293"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050996"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lensesio"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Lenses.io 整合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-lensesio-dataops-portal"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Lenses.io DataOps 入口網站整合。
 
-在本教學課程中，您將了解如何整合 Lenses.io 與 Azure Active Directory (Azure AD)。 在整合 Lenses.io 與 Azure AD 時，您可以︰
+在此教學課程中，您將了解如何整合 [Lenses.io](https://lenses.io/) DataOps 入口網站與 Azure Active Directory (Azure AD)。 在整合 Lenses.io 與 Azure AD 時，您可以︰
 
-* 在 Azure AD 中控制可存取 Lenses.io 的人員。
-* 讓使用者使用其 Azure AD 帳戶自動登入 Lenses.io。
+* 在 Azure AD 中控制可存取 Lenses.io 入口網站的人員。
+* 讓使用者使用其 Azure AD 帳戶自動登入 Lenses。
 * 在 Azure 入口網站集中管理您的帳戶。
 
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)。
@@ -37,7 +37,8 @@ ms.locfileid: "86172293"
 若要開始，您需要下列項目：
 
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
-* 已啟用 Lenses.io 單一登入 (SSO) 的訂用帳戶。
+* Lenses 入口網站的執行個體。 您可以用[各種方式](https://lenses.io/product/deployment/)部署 Lenses 入口網站。
+* 支援單一登入 (SSO) 的 Lenses.io [授權](https://lenses.io/product/pricing/) \(英文\)。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -61,15 +62,15 @@ ms.locfileid: "86172293"
 
 ## <a name="configure-and-test-azure-ad-sso-for-lensesio"></a>設定和測試 Lenses.io 的 Azure AD SSO
 
-以名為 **B.Simon** 的測試使用者，設定及測試與 Lenses.io 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Lenses.io 中相關使用者之間的連結關聯性。
+以名為 **B.Simon** 的測試使用者，設定及測試與 Lenses.io 入口網站搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Lenses.io 中相關使用者之間的連結關聯性。
 
 若要設定及測試與 Lenses.io 搭配運作的 Azure AD SSO，請完成下列建置組塊：
 
 1. **[設定 Azure AD SSO](#configure-azure-ad-sso)** - 讓您的使用者能夠使用此功能。
-    1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 B.Simon 測試 Azure AD 單一登入。
+    1. **[建立 Azure AD 測試使用者與群組](#create-an-azure-ad-test-user-and-group)** - 使用 B.Simon 測試 Azure AD 單一登入。
     1. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 B.Simon 能夠使用 Azure AD 單一登入。
 1. **[設定 Lenses.io SSO](#configure-lensesio-sso)** - 在應用程式端設定單一登入設定。
-    1. **[建立 Lenses.io 測試使用者](#create-lensesio-test-user)** - 讓 Lenses.io 中對應的 B.Simon 連結到使用者在 Azure AD 中的代表項目。
+    1. **[建立 Lenses.io 測試群組權限](#create-lensesio-test-group-permissions)** - 控制 B.Simon 應該存取 Lenses.io 中哪些內容 (授權)。
 1. **[測試 SSO](#test-sso)** - 驗證組態是否能運作。
 
 ## <a name="configure-azure-ad-sso"></a>設定 Azure AD SSO
@@ -84,26 +85,26 @@ ms.locfileid: "86172293"
 
 1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
 
-    a. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：`https://<CUSTOMER_LENSES_BASE_URL>`
+    a. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：`https://<CUSTOMER_LENSES_BASE_URL>`，例如 `https://lenses.my.company.com`
 
-    b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://<CUSTOMER_LENSES_BASE_URL>`
+    b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://<CUSTOMER_LENSES_BASE_URL>`，例如 `https://lenses.my.company.com`
 
     c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<CUSTOMER_LENSES_BASE_URL>/api/v2/auth/saml/callback?client_name=SAML2Client`
+    例如，`https://lenses.my.company.com/api/v2/auth/saml/callback?client_name=SAML2Client`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的 [登入 URL]、[回覆 URL] 和 [識別碼] 來更新這些值。 請連絡 [Lenses.io 用戶端支援小組](mailto:support@lenses.io)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 根據您 Lenses 入口網站執行個體的基底 URL，使用實際的 [登入 URL]、[回覆 URL] 與 [識別碼] 來更新這些值。 您可以在 [Lenses.io SSO 文件](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0) \(英文\) 中找到詳細資訊。
 
 1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Lenses.io] 區段上，依據您的需求複製適當的 URL。
+1. 在 [設定 Lenses.io] 區段上，使用上述 XML 檔案，針對您的 Azure SSO 設定 Lenses。
 
-    ![複製組態 URL](common/copy-configuration-urls.png)
+### <a name="create-an-azure-ad-test-user-and-group"></a>建立 Azure AD 測試使用者與群組
 
-### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
-
-在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
+在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。 您也會建立 B.Simon 的測試群組，這將用來控制 Simon 在 Lenses 中的存取權。
+您可以在 [Lenses SSO 文件](https://docs.lenses.io/install_setup/configuration/security.html#id3) \(英文\) 中了解 Lenses 如何使用群組成員資格對應進行授權
 
 1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 1. 在畫面頂端選取 [新增使用者]。
@@ -112,6 +113,23 @@ ms.locfileid: "86172293"
    1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
    1. 按一下 [建立]。
+
+建立群組：
+1. 返回 **Azure Active Directory**，然後選取 [群組]
+1. 在畫面頂端選取 [新增群組]。
+1. 在 [群組屬性] 中，遵循這些步驟：
+   1. 在 [群組類型] 欄位中，選取 `Security`。
+   1. 在 [群組名稱] 欄位中，輸入 `LensesUsers`
+   1. 按一下 [建立]。
+1. 選取群組 `LensesUsers`，並記下 [物件識別碼] (例如 `f8b5c1ec-45de-4abd-af5c-e874091fb5f7`)。 此識別碼將會在 Lenses 中用來將該群組的使用者對應至[正確權限](https://docs.lenses.io/install_setup/configuration/security.html#id3) \(英文\)。  
+   
+將群組指派給測試使用者： 
+1. 返回 **Azure Active Directory**，然後選取 [使用者]。
+1. 選取測試使用者 `B.Simon`。
+1. 選取 [群組]。
+1. 選取畫面頂端的 [新增成員資格] 按鈕。
+1. 搜尋並選取 `LensesUsers`。
+1. 按一下 [選取]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -133,19 +151,23 @@ ms.locfileid: "86172293"
 
 ## <a name="configure-lensesio-sso"></a>設定 Lenses.io SSO
 
-若要在 **Lenses.io** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML] 和所複製的適當 URL 傳送給 [Lenses.io 支援小組](mailto:support@lenses.io)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Lenses.io** 入口網站上設定單一登入，您會在 Lenses 執行個體上安裝已下載的**同盟中繼資料 XML**，並[設定 Lenses 以啟用 SSO](https://docs.lenses.io/install_setup/configuration/security.html#configure-lenses) \(英文\)。 
 
-### <a name="create-lensesio-test-user"></a>建立 Lenses.io 測試使用者
+### <a name="create-lensesio-test-group-permissions"></a>建立 Lenses.io 測試群組權限
 
-在本節中，您要在 Lenses.io 中建立名為 Britta Simon 的使用者。 請與  [Lenses.io 支援小組](mailto:support@lenses.io)合作，在 Lenses.io 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在此節中，您會使用我們在使用者[建立](#create-an-azure-ad-test-user-and-group)一節中所記下的 `LensesUsers` 群組**物件識別碼**，在 Lenses 中建立群組。
+您會指派 `B.Simon` 在 Lenses 中應有的所需權限。
+您可以在 [Azure - Lenses 群組對應](https://docs.lenses.io/install_setup/configuration/security.html#azure-groups)中找到詳細資訊。
 
 ## <a name="test-sso"></a>測試 SSO 
 
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
-當您在存取面板中按一下 [Lenses.io] 圖格時，應該會自動登入您設定 SSO 的 Lenses.io。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+當您在存取面板中按一下 [Lenses.io] 圖格時，應該會自動登入您設定 SSO 的 Lenses.io 入口網站。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
 ## <a name="additional-resources"></a>其他資源
+
+- [在您的 Lenses.io 執行個體中設定 SSO](https://docs.lenses.io/install_setup/configuration/security.html#single-sign-on-sso-saml-2-0)
 
 - [如何與 Azure Active Directory 整合 SaaS 應用程式的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

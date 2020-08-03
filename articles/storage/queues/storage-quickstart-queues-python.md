@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.custom: tracking-python
-ms.openlocfilehash: 0ab8cb56b29460911f2cfe8b711a07329ee739d6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: dcefab0466d23713b1a004376395ce4ef6ce3998
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553191"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006257"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>快速入門：適用於 Python 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -29,9 +29,14 @@ ms.locfileid: "84553191"
 * 刪除佇列中的訊息
 * 刪除佇列
 
-[API 參考文件](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [套件 (Python Package Index)](https://pypi.org/project/azure-storage-queue/) | [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+其他資源：
 
-## <a name="prerequisites"></a>Prerequisites
+* [API 參考文件](https://docs.microsoft.com/python/api/azure-storage-queue/index)
+* [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)
+* [套件 (Python 套件索引)](https://pypi.org/project/azure-storage-queue/) \(英文\)
+* [範例](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * Azure 儲存體帳戶 - [建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)

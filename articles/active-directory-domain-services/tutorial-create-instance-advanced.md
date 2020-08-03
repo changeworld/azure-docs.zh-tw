@@ -1,6 +1,6 @@
 ---
-title: 教學課程 - 使用進階設定建立 Azure AD DS 受控網域
-description: 在本教學課程中，您將了解如何使用 Azure 入口網站建立和設定 Azure Active Directory Domain Services 受控網域並指定進階設定選項。
+title: 教學課程 - 建立自訂 Azure Active Directory Domain Services 受控網域 | Microsoft Docs
+description: 在此教學課程中，您將了解如何使用 Azure 入口網站建立和設定自訂 Azure Active Directory Domain Services 受控網域並指定進階設定選項。
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b8eece33e13fca9fdef6b860513368f6c47a4628
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ead20713752b4eb28700541b4314241d86b6cc27
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518516"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278537"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>教學課程：使用進階設定選項建立並設定 Azure Active Directory Domain Services 受控網域
 
@@ -131,7 +131,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
     1. 如果您選擇建立虛擬網路，請輸入虛擬網路的名稱 (例如 myVnet)，然後提供位址範圍，例如 10.0.1.0/24。
     1. 建立具有明確名稱的專用子網路，例如 DomainServices。 提供位址範圍，例如 10.0.1.0/24。
 
-    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
+    [ ![建立要與 Azure AD Domain Services 搭配使用的虛擬網路及子網路](./media/tutorial-create-instance-advanced/create-vnet.png)](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     請務必挑選私人 IP 位址範圍內的位址範圍。 不是您所擁有的 IP 位址範圍位於公用位址空間中會導致 Azure AD DS 內發生錯誤。
 
@@ -159,7 +159,7 @@ Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，
 
 ## <a name="configure-synchronization"></a>設定同步處理
 
-Azure AD DS 可讓您同步 Azure AD 中的「所有」使用者和群組，或僅對特定群組進行「限域」同步。 如果您選擇同步「所有」使用者和群組，您之後就無法選擇只執行限域同步。 如需有關限域同步的詳細資訊，請參閱 [Azure AD Domain Services 的限域同步][scoped-sync]。
+Azure AD DS 可讓您同步 Azure AD 中的「所有」使用者和群組，或僅對特定群組進行「限域」同步。 您可以立即變更同步處理範圍，或在部署受控網域後進行。 如需詳細資訊，請參閱 [Azure AD Domain Services 的限域同步處理][scoped-sync]。
 
 1. 在本教學課程中，請選擇同步「所有」使用者和群組。 此同步選項是預設選項。
 

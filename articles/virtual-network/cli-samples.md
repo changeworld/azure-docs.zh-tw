@@ -1,6 +1,6 @@
 ---
 title: 虛擬網路的 Azure CLI 範例
-description: 虛擬網路的 Azure CLI 範例。
+description: 了解您可用來完成 Azure CLI 中工作的各種範例指令碼，包括為多層式應用程式建立虛擬網路。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 03041f7c0172312828487d934ab540972dc5e2c9
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 6f8d0bf40ac1a9c54796964b186f8871de58f201
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232095"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291953"
 ---
 # <a name="azure-cli-samples-for-virtual-network"></a>虛擬網路的 Azure CLI 範例
 

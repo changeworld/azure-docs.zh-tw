@@ -6,21 +6,24 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 920d3d6c1cfc928efa5daa2d6c0aa3a6b4e81375
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0db110d02211323f64e7ffe795f72e3a5003ec91
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82161120"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282036"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-browser"></a>快速入門：使用瀏覽器中的 JavaScript v10 SDK 來管理 Blob
 
 在本快速入門中，您將了解如何使用完全在瀏覽器中執行的 JavaScript 程式碼來管理 Blob。 Blob 是可保存大量文字或二進位資料的物件，包括影像、文件、串流媒體和封存資料。 您將使用必要的安全措施來確保對 Blob 儲存體帳戶的存取會受到保護。
+
+> [!NOTE]
+> 本快速入門會使用舊版的 Azure Blob 儲存體用戶端程式庫。 若要開始使用最新版本，請參閱[快速入門：在瀏覽器中使用 JavaScript v12 SDK 來管理 Blob](quickstart-blobs-javascript-browser.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -61,7 +64,7 @@ ms.locfileid: "82161120"
 
 您可以透過 Azure Cloud Shell，或是搭配 Azure 入口網站或 Azure 儲存體總管使用 Azure CLI 建立 SAS。 下表說明為使用 CLI 產生 SAS 而需為其提供值的參數。
 
-| 參數      |描述  | 預留位置 |
+| 參數      |說明  | 預留位置 |
 |----------------|-------------|-------------|
 | *expiry*       | 存取權杖到期日 (格式為 YYYY-MM-DD)。 請輸入明天的日期，用於此快速入門。 | *FUTURE_DATE* |
 | *account-name* | 儲存體帳戶名稱。 使用在先前的步驟中設定的名稱。 | *YOUR_STORAGE_ACCOUNT_NAME* |

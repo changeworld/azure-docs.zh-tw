@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: ec6165ba8ab33beba0b50d6b589b3d31269d7b1e
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: e1b67a5fc7b687804eb30c615648ab06bc308ba2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114430"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067286"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>使用適用於 MongoDB 的 Azure Cosmos DB API 建立 Angular 應用程式 - 建立 Cosmos 帳戶
 
@@ -61,7 +61,7 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 
 一旦建立 Azure Cosmos DB 帳戶：
 1. 開啟新的瀏覽器視窗並移至 [https://portal.azure.com](https://portal.azure.com)
-1. 按一下左列上的 Azure Cosmos DB 標誌， ![Azure 入口網站中的 Azure Cosmos DB 圖示](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png) 即可顯示您擁有的所有 Azure Cosmos DB。
+1. 按一下左列上的 Azure Cosmos DB 標誌 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png":::，其會顯示您擁有的所有 Azure Cosmos DB。
 1. 按一下您剛建立的 Azure Cosmos DB 帳戶，請選取 [概觀] 索引標籤並向下捲動以檢視資料庫所在的地圖。 
 
     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Azure 入口網站中的新 Azure Cosmos DB 帳戶":::

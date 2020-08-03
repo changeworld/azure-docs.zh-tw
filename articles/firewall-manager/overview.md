@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 8b457198655af50427545a0e93e2cfe6903131c8
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 37cbc3737b826060e96524528b065bc8d711bd8b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563750"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384764"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什麼是 Azure 防火牆管理員？
 
@@ -81,7 +81,7 @@ Azure 防火牆管理員有下列已知問題：
 |目前不支援流量分割。|目前不支援 Office 365 和 Azure 公用 PaaS 流量分割。 因此，若為 V2I 或 B2I 選取第三方提供者，也會透過合作夥伴服務傳送所有的 Azure 公用 PaaS 和 Office 365 流量。|正在調查中樞的流量分割。
 |每個區域一個安全虛擬中樞。|每個區域不能有超過一個安全虛擬中樞。|在區域中建立多個虛擬 WAN。|
 |基本原則必須位於與本機原則相同的區域中。|在與基底原則相同的區域中建立您所有的本機原則。 您仍可將在某個區域中建立的原則套用到另一個區域的安全中樞上。|正在調查|
-|安全虛擬中樞無法執行中樞間通訊|目前尚不支援安全虛擬中樞對安全虛擬中樞的通訊。|正在調查|
+|中樞間通訊未通過安全虛擬中樞|目前尚不支援安全虛擬中樞對安全虛擬中樞的通訊，但是中樞對中樞的通訊仍將正常運作。|正在調查|
 |所有共用相同虛擬 WAN 的安全虛擬中樞，都必須位於相同的資源群組中。|此行為與現今的虛擬 WAN 中樞一致。|建立多個虛擬 WAN，以允許在不同的資源群組中建立安全虛擬中樞。|
 
 ## <a name="next-steps"></a>後續步驟

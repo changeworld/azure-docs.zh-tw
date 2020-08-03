@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ae2d6259bac6a2034edc98de9b0405f32f17fbc3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 225fb1099c1a095a4ec5bced4acc010d7cec6835
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849490"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043884"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>在 Key Vault 中建立和合併 CSR
 
@@ -80,6 +80,23 @@ Azure Key Vault 支援將您所選任何憑證授權單位發行的數位憑證�
 9.  一旦 CA 簽署要求之後，請將憑證檔案帶回，以在同一個憑證作業畫面中**合併已簽署的要求**。
 
 現在已成功合併憑證要求。
+
+## <a name="adding-more-information-to-csr"></a>在 CSR 中新增更多資訊
+
+如果您想要在建立 CSR 時新增更多資訊，例如： 
+    - 國家/地區：
+    - 城市/地區：
+    - 州/省：
+    - 組織：
+    - 組織單位：您可以在建立 CSR 時，透過在 subjectName 中定義該項目來新增這些所有資訊。
+
+範例
+    ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
+    ```
+
+>[!Note]
+>如果您要求的是具有 CSR 中那些所有詳細資料的 DV 憑證，CA 可能會拒絕要求，因為 CA 可能無法驗證要求中的這些所有資訊。 如果您要求的是 OV 憑證，則更適合在 CSR 中新增這些所有資訊。
+
 
 ## <a name="troubleshoot"></a>疑難排解
 

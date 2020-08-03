@@ -3,23 +3,23 @@ title: Azure IoT Central 中的持續性患者監視架構 |Microsoft Docs
 description: 了解持續性患者監視解決方案架構。
 author: philmea
 ms.author: philmea
-ms.date: 10/24/2019
+ms.date: 7/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 92eb4157abb55b7056952d1fb064c7c7d7500335
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0032f341330ad394241806a4fe61add530253f09
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77021691"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116854"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>持續性患者監視架構
 
 
 
-您可以使用隨附的應用程式範本，並以下列架構作為指引，來建立持續性患者監視解決方案。
+您可以使用隨附的應用程式範本，並以下列架構作為指導方針，來建立持續性患者監視解決方案。
 
 >[!div class="mx-imgBorder"] 
 >![CPM 架構](media/cpm-architecture.png)
@@ -34,13 +34,13 @@ ms.locfileid: "77021691"
 本節將進一步詳述架構圖表的各個部分。
 
 ### <a name="ble-medical-devices"></a>BLE 醫療裝置
-醫療保健 IoT 空間中使用的許多醫療穿戴式裝置都是藍牙低功耗裝置。 其無法直接與雲端通訊，而必須通過閘道來進行。 在此架構中，建議使用行動電話應用程式作為此閘道。
+醫療保健 IoT 空間中使用的許多醫療穿戴式裝置都是藍牙低功耗裝置。 其無法直接與雲端通訊，而必須通過閘道來進行。 在此架構中，建議使用行動電話應用程式作為此閘道。 
 
 ### <a name="mobile-phone-gateway"></a>行動電話閘道
-行動電話應用程式的主要功能是從醫療裝置擷取 BLE 資料，並將其傳輸至 Azure IoT Central。 此外，應用程式可引導患者完成裝置設定和佈建流程，並協助他們查看其個人健康情況資料的檢視。 在醫院的病房內，其他解決方案可能會使用平板電腦閘道或靜態閘道來執行相同的通訊流程。
+行動電話應用程式的主要功能是從醫療裝置擷取 BLE 資料，並將其傳輸至 Azure IoT Central。 此外，應用程式可引導患者完成裝置設定和佈建流程，並協助他們查看其個人健康情況資料的檢視。 在醫院的病房內，其他解決方案可能會使用平板電腦閘道或靜態閘道來執行相同的通訊流程。 我們建立了適用於 Android 和 iOS 的開放原始碼範例行動應用程式，您可以將其當作起點，開始進行應用程式開發工作。 如需有關 IoT Central 持續性患者監視行動應用程式範例的詳細資訊，請參閱 [Azure 範例](https://docs.microsoft.com/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/) \(英文\)。
 
 ### <a name="export-to-azure-api-for-fhirreg"></a>匯出至 Azure API for FHIR&reg;
-Azure IoT Central 符合 HIPAA 規範，且已通過 HITRUST&reg; 認證，但您也可以將患者的健康情況相關資料傳送至 Azure API for FHIR。 [Azure API for FHIR](../../healthcare-apis/overview.md) 專為處理臨床健康情況資料而設計，是完全受控且符合規範的標準 API，可讓您建立新的健康情況資料處理系統。 它可讓您透過 FHIR API 快速交換資料，且在雲端中受到受控平台即服務 (PaaS) 供應項目的支援。 您可以使用 IoT Central 的持續資料匯出功能，將資料傳送至 Azure API for FHIR。
+Azure IoT Central 符合 HIPAA 規範，且已通過 HITRUST&reg; 認證，但您也可以將患者的健康情況相關資料傳送至 Azure API for FHIR。 [Azure API for FHIR](../../healthcare-apis/overview.md) 專為處理臨床健康情況資料而設計，是完全受控且符合規範的標準 API，可讓您建立新的健康情況資料處理系統。 它可讓您透過 FHIR API 快速交換資料，且在雲端中受到受控平台即服務 (PaaS) 供應項目的支援。 您可以使用 IoT Central 的 [連續資料匯出] 功能，透過[適用於 FHIR 的 Azure IoT 連接器](https://docs.microsoft.com/azure/healthcare-apis/iot-fhir-portal-quickstart) \(英文\)，將資料傳送至 Azure API for FHIR。
 
 ### <a name="machine-learning"></a>機器學習服務
 在彙總資料並將其轉譯成 FHIR 格式之後，您可以建置機器學習模型，以擴充深入解析，並協助護理小組做出更明智的決策。 有多種不同的服務都可用來建置、定型和部署機器學習模型。 如需如何使用 Azure 機器學習供應項目的詳細資訊，請參閱我們的[機器學習文件](../../machine-learning/index.yml)。

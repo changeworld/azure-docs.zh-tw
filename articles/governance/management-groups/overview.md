@@ -3,12 +3,12 @@ title: 使用管理群組來組織資源 - Azure Governance
 description: 了解管理群組及權限如何運作，以及如何使用。
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963677"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132920"
 ---
 # <a name="what-are-azure-management-groups"></a>什麼是 Azure 管理群組？
 
@@ -100,9 +100,9 @@ Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角
 \*:MG 參與者和 MG 讀取者僅允許使用者執行管理群組範圍的動作。  
 \*\*：在根管理群組上的角色指派不需要將訂用帳戶或管理群組來回移動。 如需在階層中移動項目的詳細資訊，請參閱[使用管理群組管理您的資源](manage.md)。
 
-## <a name="custom-rbac-role-definition-and-assignment"></a>自訂 RBAC 角色定義和指派
+## <a name="azure-custom-role-definition-and-assignment"></a>Azure 自訂角色定義和指派
 
-管理群組的自訂 RBAC 角色支援目前為預覽版，但有一些 [限制](#limitations)。 您可以在角色定義的可指派範圍中定義管理群組範圍。 接著，該自訂 RBAC 角色即可在該管理群組，以及任何管理群組、訂用帳戶、資源群組或其下的資源上指派。 這個自訂角色會繼承階層，就像任何內建角色一樣。  
+管理群組的 Azure 自訂角色支援目前為預覽版，但有一些[限制](#limitations)。 您可以在角色定義的可指派範圍中定義管理群組範圍。 接著，該 Azure 自訂角色即可在該管理群組，以及任何管理群組、訂用帳戶、資源群組或其下的資源上指派。 這個自訂角色會繼承階層，就像任何內建角色一樣。  
 
 ### <a name="example-definition"></a>範例定義
 

@@ -3,17 +3,17 @@ title: 教學課程 - 將一般 Python 用戶端應用程式連線至 Azure IoT 
 description: 本教學課程說明如何以裝置開發人員身分，將執行 Python 用戶端應用程式的裝置與您的 Azure IoT Central 應用程式連線。 您可以匯入裝置功能模型並新增可讓您與連線裝置互動的檢視，來建立裝置範本
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 98aa452e8b0b5cf04edd319298c2b35e6097148e
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: d7093895392cb26e25e8054f0cdcb6870ce9e18a
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971057"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336097"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>教學課程：建立用戶端應用程式並將其連線到您的 Azure IoT Central 應用程式 (Python)
 
@@ -38,7 +38,7 @@ ms.locfileid: "85971057"
 
 若要完成這篇文章中的步驟，您需要下列項目︰
 
-* 使用 [自訂應用程式] 範本建立的 Azure IoT Central 應用程式。 如需詳細資訊，請參閱[建立應用程式快速入門](quick-deploy-iot-central.md)。
+* 使用 [自訂應用程式] 範本建立的 Azure IoT Central 應用程式。 如需詳細資訊，請參閱[建立應用程式快速入門](quick-deploy-iot-central.md)。 應用程式必須已在 2020/7/14 或之後建立。
 * 已安裝 [Python](https://www.python.org/) 3.7 版或更新版本的開發電腦。 您可以在命令列執行 `python3 --version` 來檢查版本。 Python 適用於多種作業系統。 本教學課程中的指示假設您是在 Windows 命令提示字元中執行 **python3** 命令。
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -214,18 +214,18 @@ ms.locfileid: "85971057"
 
     操作員可以在命令歷程記錄中檢視回應承載。
 
-1. 在 `main` 函式內新增下列函式，以處理從 IoT Central 應用程式傳送的屬性更新：
+1. 在 `main` 函式內新增下列函式，以處理從 IoT Central 應用程式傳送的屬性更新。 裝置為了回應[可寫入屬性更新](concepts-telemetry-properties-commands.md#writeable-property-types)而傳送的訊息必須包含 `av` 和 `ac` 欄位。 `ad` 欄位是選擇性的：
 
     ```python
       async def name_setting(value, version):
         await asyncio.sleep(1)
         print(f'Setting name value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'name' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       async def brightness_setting(value, version):
         await asyncio.sleep(5)
         print(f'Setting brightness value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'brightness' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'brightness' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       settings = {
         'name': name_setting,
@@ -261,7 +261,7 @@ ms.locfileid: "85971057"
 
       if device_client is not None and device_client.connected:
         print('Send reported properties on startup')
-        await device_client.patch_twin_reported_properties({'state': 'true'})
+        await device_client.patch_twin_reported_properties({'state': 'true', 'processorArchitecture': 'ARM', 'swVersion': '1.0.0'})
         tasks = asyncio.gather(
           send_telemetry(),
           command_listener(),
@@ -304,11 +304,14 @@ python3 environmental_sensor.py
 
 ![觀察用戶端應用程式](media/tutorial-connect-device-python/run-application-2.png)
 
+## <a name="view-raw-data"></a>檢視未經處理資料
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+
 ## <a name="next-steps"></a>後續步驟
 
 身為裝置開發人員，您現在已了解如何使用 Python 建立裝置的基本概念，以下是一些建議的後續步驟：
 
-* 若要了解如何將實際裝置連線至 IoT Central，請參閱[將 MXChip IoT DevKit 裝置連線到 Azure IoT Central 應用程式](./howto-connect-devkit.md)。
 * 閱讀[什麼是裝置範本？](./concepts-device-templates.md)，以深入了解在您實作裝置程式碼時裝置範本的角色。
 * 如需深入了解如何向 IoT Central 註冊裝置，以及 IoT Central 如何保護裝置連線，請參閱[連線至 Azure IoT Central](./concepts-get-connected.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: 從快照集建立 VM - PowerShell 範例
+title: 從快照集建立 VM (Linux) - PowerShell 範例
 description: Azure PowerShell 指令碼範例 - 從快照集建立 VM
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 21e31df7552dfe5e6368235173622695078626b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6bf74b9040ec3f677c23c84f8ece22befb35d56
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75463654"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010286"
 ---
-# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>使用 PowerShell 從快照集建立虛擬機器
+# <a name="create-a-virtual-machine-from-a-snapshot-with-powershell-linux"></a>使用 PowerShell 從快照集建立虛擬機器 (Linux)
 
 此指令碼會從 OS 磁碟的快照集建立虛擬機器。
 
@@ -48,18 +48,18 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 | Command | 注意 |
 |---|---|
-| [Get-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/get-azsnapshot) | 使用快照集名稱來取得快照集。 |
-| [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) | 建立磁碟組態。 此組態可使用於磁碟建立程序。 |
-| [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) | 建立受控磁碟。 |
-| [New-AzVMConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azvmconfig) | 建立 VM 組態。 此組態包括 VM 名稱、作業系統和系統管理認證等資訊。 建立 VM 時會使用此組態。 |
-| [Set-AzVMOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) | 將受控磁碟當作 OS 磁碟連結至虛擬機器 |
-| [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) | 建立公用 IP 位址。 |
-| [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) | 建立網路介面。 |
-| [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | 建立虛擬機器。 |
-|[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 移除資源群組及其內含的所有資源。 |
+| [Get-AzSnapshot](/powershell/module/az.compute/get-azsnapshot) | 使用快照集名稱來取得快照集。 |
+| [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) | 建立磁碟組態。 此組態可使用於磁碟建立程序。 |
+| [New-AzDisk](/powershell/module/az.compute/new-azdisk) | 建立受控磁碟。 |
+| [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) | 建立 VM 組態。 此組態包括 VM 名稱、作業系統和系統管理認證等資訊。 建立 VM 時會使用此組態。 |
+| [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk) | 將受控磁碟當作 OS 磁碟連結至虛擬機器 |
+| [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | 建立公用 IP 位址。 |
+| [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | 建立網路介面。 |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | 建立虛擬機器。 |
+|[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 移除資源群組及其內含的所有資源。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/overview)。
+如需有關 Azure PowerShell 模組的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/)。
 
 您可以在 [Azure Linux VM 文件](../linux/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他的虛擬機器 PowerShell 指令碼範例。

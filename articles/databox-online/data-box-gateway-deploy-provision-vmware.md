@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b62441a4b1307a232ad2f592f13253c0759b5431
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 64a33b12da0e9b90eaeb7039f65b2493a839a0c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85564195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054127"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教學課程：在 VMware 中佈建 Azure 資料箱閘道
 
@@ -93,7 +93,7 @@ ms.locfileid: "85564195"
   
 3. 將 VMDK 上傳至 ESXi 伺服器。 在 [導覽] 窗格中，選取 [儲存體]。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
+   ![ESXi 伺服器網站上網頁的螢幕擷取畫面，其中顯示已選取 [儲存區] 選項的 [導覽器] 窗格。](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
 4. 在右窗格的 [資料存放區] 下方，選取您要上傳 VMDK 的資料存放區。 
 

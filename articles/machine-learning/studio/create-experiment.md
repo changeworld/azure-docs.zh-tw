@@ -1,6 +1,5 @@
 ---
-title: 快速入門：建立資料科學實驗
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (傳統版)：快速入門：建立資料科學實驗 - Azure
 description: 此機器學習快速入門會引導您輕鬆進行資料科學實驗。 我們將使用迴歸演算法預測汽車價格。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: f8984b3b712d591b64c383dabb723ba5afc61efc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 99332a8716ae137b8ea5fe69a53c7f8e4c46f095
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965139"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282546"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>快速入門：在 Azure Machine Learning Studio (傳統) 中建立您的第一個資料科學實驗
+# <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>快速入門：在 Machine Learning Studio (傳統) 中建立您的第一個資料科學實驗
+
+**適用於：** ![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-azure-ml.md)![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版) 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -95,7 +97,7 @@ Studio (傳統) 附有多個範例資料集供您使用，或者，您可以從�
 
 1. 按一下[選取資料集中的資料行][select-columns]模組，然後按一下 [屬性] 窗格中的 [啟動資料行選取器]。
 
-   - 在左側按一下 [套用規則] 
+   - 在左側按一下 [套用規則]
    - 在 [開始於] 下，按一下 [所有資料行]。 這些規則會指示[選取資料集中的資料行][select-columns]傳遞所有資料行 (但我們將排除的資料行除外)。
    - 在下拉式清單中，選取 [排除] 和 [資料行名稱]，然後按一下文字方塊內部。 資料行清單隨即顯示。 選取 [自負虧損]，該資料行就會新增到文字方塊中。
    - 按一下核取記號 ([確定]) 按鈕，以關閉資料行選取器 (位於右下方)。

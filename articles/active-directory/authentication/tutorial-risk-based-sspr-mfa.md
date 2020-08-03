@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 05/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a38f4744b6a1f9b4ebd0112be07b2556f1c39
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18b2fb520ecab8b233be3c93ef614a2bce01a75e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116033"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034991"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>教學課程：利用使用者登入的風險偵測來觸發 Azure Multi-Factor Authentication 或密碼變更
 
 若要保護您的使用者，您可以在 Azure Active Directory (Azure AD) 中設定會自動因應風險行為的風險型原則。 Azure AD Identity Protection 原則可以自動封鎖登入嘗試或要求額外的動作，例如，要求變更密碼或提示進行 Azure Multi-Factor Authentication。 這些原則可以與現有的 Azure AD 條件式存取原則搭配使用，為組織提供多一層的保護。 使用者雖然不太可能觸發這類原則中的風險行為，但若有人試圖危害您的安全性，組織將會受到保護。
+
+> [!IMPORTANT]
+> 此教學課程將說明系統管理員如何啟用風險型 Azure Multi-Factor Authentication。
+>
+> 如果您的 IT 小組尚未啟用使用 Azure Multi-Factor Authentication 的功能，或您在進行單一登入時遇到問題，請與您的技術服務人員聯繫以取得其他協助。
 
 在本教學課程中，您會了解如何：
 
