@@ -1,17 +1,17 @@
 ---
 title: 撤銷 Azure 資料共用中的共用訂用帳戶
 description: 瞭解如何使用 Azure 資料共用來撤銷收件者的共用訂用帳戶。
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/10/2019
-ms.openlocfilehash: c1c049d467cdf07962719f0dc257acbf47631aaf
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 102a0099c95073793ba6a1a85f518c7539327bf3
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119679"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511848"
 ---
 # <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share"></a>如何在 Azure 資料共用中撤銷取用者的共用訂用帳戶
 

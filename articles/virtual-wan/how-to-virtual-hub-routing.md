@@ -8,21 +8,21 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6d14094edc7ae21ca0d56b544fb9c2b19f1f0582
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 634967fbe50c74770bdc3b526d68896728e4ee07
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144990"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513055"
 ---
 # <a name="how-to-configure-virtual-hub-routing"></a>如何設定虛擬中樞路由
 
-虛擬中樞可以包含多個閘道，例如站對站 VPN 閘道、ExpressRoute 閘道、點對站閘道和 Azure 防火牆。 虛擬中樞內的路由功能是由使用邊界閘道協定 (BGP) 的閘道管理所有路由的路由器所提供，包括傳輸路由。 此路由器也會在連線到虛擬中樞的虛擬網路之間提供傳輸連線能力，並可支援高達 50 Gbps 的匯總輸送量。 這些路由功能適用于標準虛擬 WAN 客戶。
+虛擬中樞可以包含多個閘道，例如站對站 VPN 閘道、ExpressRoute 閘道、點對站閘道和 Azure 防火牆。 虛擬中樞內的路由功能是由使用邊界閘道協定（BGP）的閘道管理所有路由的路由器（包括傳輸路由）所提供。 此路由器也會在連線到虛擬中樞的虛擬網路之間提供傳輸連線能力，並可支援高達 50 Gbps 的匯總輸送量。 這些路由功能適用于標準虛擬 WAN 客戶。
 
 如需詳細資訊，請參閱[關於虛擬中樞路由](about-virtual-hub-routing.md)。
 
 > [!NOTE]
-> 其中一些功能可能仍在推出。這預計會在8月3日完成。
+> 其中一些功能可能仍在推出。這預計會在8月17日完成。
 >
 
 ## <a name="create-a-route-table"></a><a name="create-table"></a>建立路由表
@@ -36,7 +36,7 @@ ms.locfileid: "86144990"
 
    :::image type="content" source="./media/how-to-virtual-hub-routing/basics.png" alt-text="[基本] 索引標籤":::
 
-   * **名稱**
+   * **Name**
    * **路由**
    * **路由名稱**
    * **目的地類型**
@@ -83,7 +83,7 @@ ms.locfileid: "86144990"
 1. 從下拉式清單中選取虛擬網路。
 1. 設定要與路由表建立關聯的路由設定。 針對 [**關聯路由表**]，選取下拉式清單中的路由表。
 1. 將路由設定設為傳播至一或多個路由表。 在 [**傳播至路由表**] 中，從下拉式清單中選取。
-1. 若為**靜態路由**，請設定網路虛擬裝置的靜態路由， (如果適用) 。 虛擬 WAN 支援單一的下一個躍點 IP，用於虛擬網路連線中的靜態路由。 例如，如果您有用於輸入和輸出流量的個別虛擬裝置，最好讓虛擬裝置位於不同的 Vnet，並將 Vnet 連接至虛擬中樞。
+1. 針對**靜態路由**，設定網路虛擬裝置的靜態路由（如果適用）。 虛擬 WAN 支援單一的下一個躍點 IP，用於虛擬網路連線中的靜態路由。 例如，如果您有用於輸入和輸出流量的個別虛擬裝置，最好讓虛擬裝置位於不同的 Vnet，並將 Vnet 連接至虛擬中樞。
 
 
 :::image type="content" source="./media/how-to-virtual-hub-routing/routing-configuration.png" alt-text="設定路由設定" lightbox="./media/how-to-virtual-hub-routing/routing-configuration-expand.png":::

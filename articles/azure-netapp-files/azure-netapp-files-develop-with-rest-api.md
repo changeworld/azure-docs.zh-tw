@@ -1,6 +1,6 @@
 ---
 title: 使用 REST API 開發 Azure NetApp 檔案 | Microsoft Docs
-description: 描述如何開始使用 Azure NetApp Files REST API。
+description: Azure NetApp Files 服務的 REST API 定義了資源的 HTTP 作業，例如 NetApp 帳戶、容量集區、磁片區和快照。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 35800ef95e78a64d7aced13f496ec35d9fe60320
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 90d3ff807275c74ce4495c5631ab913971ebe3e3
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964595"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513004"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>使用 REST API 為 Azure NetApp Files 進行開發 
 

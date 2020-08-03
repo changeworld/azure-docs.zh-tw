@@ -1,17 +1,17 @@
 ---
 title: Azure Data Share 的角色和需求
 description: 瞭解使用 Azure 資料共用來共用和接收資料所需的許可權。
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110992"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513759"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和需求 
 
@@ -62,7 +62,7 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 1. 選取 [**新增角色指派**]。
 1. 在 [*角色*] 下的 [角色指派] 資料表中選取角色（例如，針對 [儲存體帳戶]，選取 [*儲存體 Blob 資料讀取器*]）。
 1. 在 [*選取*] 底下，輸入您的 Azure 資料共用資源名稱。
-1. 按一下 [檔案] 。
+1. 按一下 [儲存]。
 
 針對以 SQL 為基礎的來源，除了上述步驟以外，您必須從 SQL Database 中的外部提供者建立 SQL 使用者，其名稱與 Azure 資料共用資源相同。 此使用者必須被授與*db_datareader*許可權。 您可以在[共用您的資料](share-your-data.md)教學課程中，找到範例腳本以及 SQL 架構共用的其他必要條件。 
 
@@ -80,7 +80,7 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 1. 選取 [**新增角色指派**]。
 1. 在 [*角色*] 下的 [角色指派] 資料表中選取角色（例如，針對 [儲存體帳戶]，選取 [*儲存體 Blob 資料讀取器*]）。
 1. 在 [*選取*] 底下，輸入您的 Azure 資料共用資源名稱。
-1. 按一下 [檔案] 。
+1. 按一下 [儲存]。
 
 針對以 SQL 為基礎的目標，除了上述步驟以外，您必須從 SQL Database 中的外部提供者建立 SQL 使用者，其名稱與 Azure 資料共用資源相同。 此使用者必須被授與*db_datareader、db_datawriter db_ddladmin*許可權。 您可以在[接受和接收資料](subscribe-to-data-share.md)教學課程中找到範例腳本以及 SQL 架構共用的其他必要條件。 
 
@@ -90,7 +90,13 @@ Azure 資料共用資源的受控識別必須被授與 Azure 資料存放區的�
 
 ## <a name="resource-provider-registration"></a>資源提供者註冊 
 
-若要在您的 Azure 租使用者中第一次查看 Azure 資料共用邀請，您可能需要手動將 DataShare 資源提供者註冊到您的 Azure 訂用帳戶。 請遵循下列步驟，在您的 Azure 訂用帳戶中註冊 DataShare 資源提供者。 您需要 Azure 訂用帳戶的*參與者*存取權，才能註冊資源提供者。
+在下列案例中，您可能需要手動將 DataShare 資源提供者註冊到您的 Azure 訂用帳戶： 
+
+* 第一次在您的 Azure 租使用者中查看 Azure 資料共用邀請
+* 從您的 Azure 資料共用資源，在不同 Azure 訂用帳戶中的 Azure 資料存放區共用資料
+* 從您的 Azure 資料共用資源，將資料接收至不同 Azure 訂用帳戶中的 Azure 資料存放區
+
+請遵循下列步驟，在您的 Azure 訂用帳戶中註冊 DataShare 資源提供者。 您需要 Azure 訂用帳戶的*參與者*存取權，才能註冊資源提供者。
 
 1. 在 [Azure 入口網站中，流覽至 [訂用帳戶 **]。**
 1. 選取您要用於 Azure 資料共用的訂用帳戶。

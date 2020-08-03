@@ -7,19 +7,19 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a7e42ddeb4abacd8707dda4cd558933b0d7a34f4
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037761"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513701"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>檢視虛擬中樞的有效路由
 
 您可以在 Azure 入口網站中查看虛擬 WAN 中樞的所有路由。 本文會逐步引導您查看有效路由的步驟。 如需虛擬中樞路由的詳細資訊，請參閱[關於虛擬中樞路由](about-virtual-hub-routing.md)。
 
 > [!NOTE]
-> 在 Azure 入口網站上，其中有些功能可能仍在推出，而在8月3日的第一周之前無法使用。 
+> 在 Azure 入口網站上，其中有些功能可能仍在推出，而且在8月17日到一周之前都無法使用。 
 >
 
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>選取連接或路由表
@@ -52,11 +52,11 @@ ms.locfileid: "86037761"
 
 使用資料表底部的捲軸來查看 "AS Path"。
 
-| **前置詞** |  **下一個躍點類型** | **下一個躍點** |  **路由來源** |**AS 路徑** |
+| **Prefix** |  **下一個躍點類型** | **下一個躍點** |  **路由來源** |**AS 路徑** |
 | ---        | ---                | ---          | ---               | ---         |
 | 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 
-**考量**
+**考量因素：**
 
 * 如果您在**取得有效路由**輸出中看到 0.0.0.0/0，則表示路由存在於其中一個路由表中。 不過，如果已針對網際網路設定此路由，連接上就需要額外的旗標 **"enableInternetSecurity"： true** 。 如果連線上的 "enableInternetSecurity" 旗標為 "false"，則 VM NIC 上的有效路由不會顯示路由。
 
@@ -64,5 +64,5 @@ ms.locfileid: "86037761"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 Wan 總覽](virtual-wan-about.md)。
+* 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概觀](virtual-wan-about.md)。
 * 如需虛擬中樞路由的詳細資訊，請參閱[關於虛擬中樞路由](about-virtual-hub-routing.md)。

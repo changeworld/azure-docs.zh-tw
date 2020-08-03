@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 4dd6a40ed0fe0c4ec168300b3688fc3ba5cacbb9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bae5770baf8cfad7e5f28d5cc0499949912c1146
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499138"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513123"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>使用 Microsoft Graph API 將 SAML 型 SSO 應用程式設定自動化
 
@@ -113,6 +113,11 @@ Content-type: application/json
 
 > [!NOTE] 
 > 您可以使用 applicationTemplate API 來具現化[非資源庫應用程式](add-non-gallery-app.md)。 使用 applicationTemplateId `8adf8e6e-67b2-4cf2-a259-e3dc5476c621` 。
+
+> [!NOTE]
+> 允許一段時間，將應用程式布建到您的 Azure AD 租使用者中。 不是瞬間。 其中一個策略是在應用程式/服務主體物件上每隔5-10 秒執行一個 GET 查詢，直到查詢成功為止。
+
+
 #### <a name="request"></a>要求
 
 <!-- {
@@ -345,6 +350,9 @@ HTTP/1.1 204
 
 如需詳細資訊，請參閱[自訂權杖中發出的宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping)。
 
+> [!NOTE]
+> 宣告對應原則中的某些金鑰會區分大小寫（例如「版本」）。 如果您收到錯誤訊息，例如「屬性有不正確值」，則可能是區分大小寫的問題。
+
 #### <a name="request"></a>要求
 
 <!-- {
@@ -455,7 +463,7 @@ HTTP/1.1 204
 
 ### <a name="create-a-custom-signing-certificate"></a>建立自訂簽署憑證
 
-若要進行測試，您可以使用下列 PowerShell 命令來取得自我簽署憑證。 使用您公司的最佳安全性做法，建立用於生產的簽署憑證。
+若要進行測試，您可以使用下列 PowerShell 命令來取得自我簽署憑證。 接著，您必須使用其他工具來操作並提取您需要的值。 使用您公司的最佳安全性做法，建立用於生產的簽署憑證。
 
 ```powershell
 Param(
@@ -482,6 +490,99 @@ Export-PfxCertificate -cert $path -FilePath $pfxFile -Password $pwdSecure
 Export-Certificate -cert $path -FilePath $cerFile
 ```
 
+或者，您可以使用下列 c # 主控台應用程式做為概念證明，以瞭解如何取得所需的值。 請注意，此程式碼**僅供學習和參考**之用，不應在生產環境中以實際方式使用。
+
+```csharp
+using System;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
+
+/* CONSOLE APP - PROOF OF CONCEPT CODE ONLY!!
+ * This code uses a self signed certificate and should not be used 
+ * in production. This code is for reference and learning ONLY.
+ */
+namespace Self_signed_cert
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Generate a guid to use as a password and then create the cert.
+            string password = Guid.NewGuid().ToString();
+            var selfsignedCert = buildSelfSignedServerCertificate(password);
+
+            // Print values so we can copy paste into the JSON fields.
+            // Print out the private key in base64 format.
+            Console.WriteLine("Private Key: {0}{1}", Convert.ToBase64String(selfsignedCert.Export(X509ContentType.Pfx, password)), Environment.NewLine);
+
+            // Print out the start date in ISO 8601 format.
+            DateTime startDate = DateTime.Parse(selfsignedCert.GetEffectiveDateString()).ToUniversalTime();
+            Console.WriteLine("For All startDateTime: " + startDate.ToString("o"));
+
+            // Print out the end date in ISO 8601 format.
+            DateTime endDate = DateTime.Parse(selfsignedCert.GetExpirationDateString()).ToUniversalTime();
+            Console.WriteLine("For All endDateTime: " + endDate.ToString("o"));
+
+            // Print the GUID used for keyId
+            string signAndPasswordGuid = Guid.NewGuid().ToString();
+            string verifyGuid = Guid.NewGuid().ToString();
+            Console.WriteLine("GUID to use for keyId for keyCredentials->Usage == Sign and passwordCredentials: " + signAndPasswordGuid);
+            Console.WriteLine("GUID to use for keyId for keyCredentials->Usage == Verify: " + verifyGuid);
+
+            // Print out the password.
+            Console.WriteLine("Password is: {0}", password);
+
+            // Print out a displayName to use as an example.
+            Console.WriteLine("displayName to use: CN=Example");
+            Console.WriteLine();
+
+            // Print out the public key.
+            Console.WriteLine("Public Key: {0}{1}", Convert.ToBase64String(selfsignedCert.Export(X509ContentType.Cert)), Environment.NewLine);
+            Console.WriteLine();
+
+            // Generate the customKeyIdentifier using hash of thumbprint.
+            Console.WriteLine("You can generate the customKeyIdentifier by getting the SHA256 hash of the certs thumprint.\nThe certs thumbprint is: {0}{1}", selfsignedCert.Thumbprint, Environment.NewLine);
+            Console.WriteLine("The hash of the thumbprint that we will use for customeKeyIdentifier is:");
+            string keyIdentifier = GetSha256FromThumbprint(selfsignedCert.Thumbprint);
+            Console.WriteLine(keyIdentifier);
+        }
+
+        // Generate a self-signed certificate.
+        private static X509Certificate2 buildSelfSignedServerCertificate(string password)
+        {
+            const string CertificateName = @"Microsoft Azure Federated SSO Certificate TEST";
+            DateTime certificateStartDate = DateTime.UtcNow;
+            DateTime certificateEndDate = certificateStartDate.AddYears(2).ToUniversalTime();
+
+            X500DistinguishedName distinguishedName = new X500DistinguishedName($"CN={CertificateName}");
+
+            using (RSA rsa = RSA.Create(2048))
+            {
+                var request = new CertificateRequest(distinguishedName, rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+
+                request.CertificateExtensions.Add(
+                    new X509KeyUsageExtension(X509KeyUsageFlags.DataEncipherment | X509KeyUsageFlags.KeyEncipherment | X509KeyUsageFlags.DigitalSignature, false));
+
+                var certificate = request.CreateSelfSigned(new DateTimeOffset(certificateStartDate), new DateTimeOffset(certificateEndDate));
+                certificate.FriendlyName = CertificateName;
+
+                return new X509Certificate2(certificate.Export(X509ContentType.Pfx, password), password, X509KeyStorageFlags.Exportable);
+            }
+        }
+
+        // Generate hash from thumbprint.
+        public static string GetSha256FromThumbprint(string thumbprint)
+        {
+            var message = Encoding.ASCII.GetBytes(thumbprint);
+            SHA256Managed hashString = new SHA256Managed();
+            return Convert.ToBase64String(hashString.ComputeHash(message));
+        }
+    }
+}
+```
+
 ### <a name="add-a-custom-signing-key"></a>新增自訂簽署金鑰
 
 將下列資訊新增至服務主體：
@@ -492,18 +593,7 @@ Export-Certificate -cert $path -FilePath $cerFile
 
 擷取編碼自 PFX 檔案的私密和公開金鑰 Base64 編碼。 若要深入了解屬性，請參閱 [keyCredential 資源類型](https://docs.microsoft.com/graph/api/resources/keycredential?view=graph-rest-1.0) \(英文\)。
 
-請確定 keyCredential 用於 "Sign" 的 keyId 符合 passwordCredential 的 keyId。
-
-您可以藉由取得憑證指紋的雜湊來產生 `customkeyIdentifier`。
-
-```csharp
-  public string GetSha256FromThumbprint(string thumbprint)
-  {
-      var message = Encoding.ASCII.GetBytes(thumbprint);
-      SHA256Managed hashString = new SHA256Managed();
-      return Convert.ToBase64String(hashString.ComputeHash(message));
-  }
-```
+請確定 keyCredential 用於 "Sign" 的 keyId 符合 passwordCredential 的 keyId。 您可以藉由取得憑證指紋的雜湊來產生 `customkeyIdentifier`。 請參閱上述的 c # 參考程式碼。
 
 #### <a name="request"></a>要求
 
@@ -526,7 +616,7 @@ Content-type: servicePrincipals/json
             "endDateTime": "2021-04-22T22:10:13Z",
             "keyId": "4c266507-3e74-4b91-aeba-18a25b450f6e",
             "startDateTime": "2020-04-22T21:50:13Z",
-            "type": "AsymmetricX509Cert",
+            "type": "X509CertAndPassword",
             "usage": "Sign",
             "key":"MIIKIAIBAz.....HBgUrDgMCERE20nuTptI9MEFCh2Ih2jaaLZBZGeZBRFVNXeZmAAgIH0A==",
             "displayName": "CN=awsAPI"

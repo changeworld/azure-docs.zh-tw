@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure NetApp Files 管理磁碟區 | Microsoft Docs
-description: 說明如何使用 Azure NetApp Files 服務來管理磁碟區。
+description: 瞭解如何在 Azure NetApp Files 中查看、更新或刪除磁片區。 若要刪除磁片區，請先刪除磁片區的所有子物件。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 64d83cc88f66eefad8980bead7fe37ad1782873f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50de55846ba22a0be1bb2e9fa5a9224abe87a49
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483545"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513820"
 ---
 # <a name="manage-volumes-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理磁碟區
 您可以藉由檢視、更新或刪除磁碟區來管理磁碟區。 

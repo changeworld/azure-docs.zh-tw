@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2018
-ms.openlocfilehash: 5fb9e48a6d6a0b95b61478a7877e9b46dd8963e9
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 07/31/2020
+ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649388"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511933"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中使用函式
 
@@ -21,7 +21,7 @@ ms.locfileid: "83649388"
 
 按一下 [儲存]，然後提供下表中的資訊，以在 Azure 入口網站中使用記錄分析建立函式。
 
-| 設定 | 描述 |
+| 設定 | 說明 |
 |:---|:---|
 | 名稱           | 在 [查詢總管] 中顯示查詢名稱。 |
 | 另存新檔        | 函式 |
@@ -33,6 +33,9 @@ ms.locfileid: "83649388"
 
 ## <a name="use-a-function"></a>使用函式
 藉由在另一個查詢中包含別名來使用函式。 它可以像任何其他資料表一樣使用。
+
+## <a name="function-parameters"></a>函數參數 
+您可以將參數新增至函式，讓您可以在呼叫時提供特定變數的值。 目前使用參數來建立函式的唯一方式是使用 Resource Manager 範本。 如需範例，請參閱[Azure 監視器中記錄查詢的 Resource Manager 範本範例](../samples/resource-manager-log-queries.md#parameterized-function)。
 
 ## <a name="example"></a>範例
 下列範例查詢會傳回過去一天內所回報的所有遺漏安全性更新。 將此查詢另存為別名為 _security_updates_last_day_ 的函式。 

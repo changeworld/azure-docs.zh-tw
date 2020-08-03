@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 166909f1e048ac54184ef5eee2ecee3bfedcdb02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0707d578f90f70318c2a01f324b50092d9962965
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284127"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513837"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的連接器
 
@@ -79,7 +79,7 @@ ms.locfileid: "87284127"
 
 Logic Apps 提供內建的觸發程式和動作，讓您可以建立以排程為基礎的工作流程、協助您的邏輯應用程式與其他應用程式和服務進行通訊、透過邏輯應用程式控制工作流程，以及管理或運算元據。
 
-| Name | 說明 |
+| 名稱 | 說明 |
 |------|-------------|
 | [![API 圖示 ][schedule-icon]<br> **排程**][schedule-doc] | -在指定的週期執行邏輯應用程式，範圍從基本到先進的排程，以及[**週期**觸發][schedule-recurrence-doc]程式。 <br>-執行需要以[**滑動視窗**觸發][schedule-sliding-window-doc]程式處理連續區塊中資料的邏輯應用程式。 <br>-使用[ **Delay**動作][schedule-delay-doc]暫停邏輯應用程式的指定持續時間。 <br>-暫停您的邏輯應用程式，直到指定的日期和時間具有 [ [**延遲到**] 動作為止][schedule-delay-until-doc]。 |
 | [![API 圖示 ][batch-icon]<br> **批次**][batch-doc] | - 透過 [批次訊息]**** 觸發程序，分批處理訊息。 <br>- 透過 [將訊息傳送至批次]**** 動作，呼叫具有現有批次觸發程序的邏輯應用程式。 |
@@ -94,7 +94,7 @@ Logic Apps 提供內建的觸發程式和動作，讓您可以建立以排程為
 
 Logic Apps 提供在邏輯應用程式的工作流程中執行自己的程式碼的內建動作：
 
-| Name | 說明 |
+| 名稱 | 說明 |
 |------|-------------|
 | [![API 圖示 ][azure-functions-icon]<br> **Azure Functions**][azure-functions-doc] | 呼叫 Azure 函式，以從邏輯應用程式執行自訂程式碼片段 (C# 或 Node.js)。 |
 | [![API 圖示 ][inline-code-icon]<br> **內嵌程式碼**][inline-code-doc] | 從您的邏輯應用程式新增和執行 JavaScript 程式碼片段。 |
@@ -104,7 +104,7 @@ Logic Apps 提供在邏輯應用程式的工作流程中執行自己的程式碼
 
 Logic Apps 提供內建動作，以在邏輯應用程式的工作流程中結構化和控制動作：
 
-| Name | 說明 |
+| 名稱 | 說明 |
 |------|-------------|
 | [![內建圖示 ][condition-icon]<br> **條件**][condition-doc] | 根據條件為 true 或 false，評估條件並執行不同的動作。 |
 | [![內 ][for-each-icon]<br> **For each**建圖示][for-each-doc] | 對陣列中的每個項目執行相同的動作。 |
@@ -118,7 +118,7 @@ Logic Apps 提供內建動作，以在邏輯應用程式的工作流程中結構
 
 Logic Apps 提供使用資料輸出和其格式的內建動作：
 
-| Name | 說明 |
+| 名稱 | 說明 |
 |------|-------------|
 | [![內建圖示 ][data-operations-icon]<br> **資料作業**][data-operations-doc] | 執行資料相關作業： <p>- **撰寫**：從多個輸入與各種類型建立單一輸出。 <br>- **建立 CSV 資料表**：從 JSON 物件陣列建立以逗號分隔 (CSV) 的資料表。 <br>- **建立 HTML 資料表**：從 JSON 物件陣列建立 HTML 資料表。 <br>- **篩選陣列**：從符合您準則的另一個陣列建立陣列。 <br>- **加入**：從陣列中的所有項目建立字串，並使用指定的分隔符號來分隔這些項目。 <br>- **剖析 JSON**：在 json 內容中，從屬性和其值建立易記的權杖，以便您可以在工作流程中使用這些屬性。 <br>- **選取**：轉換另一個陣列中的項目或值，並將這些項目對應至指定的屬性，以建立 JSON 物件陣列。 |
 | ![內建圖示][date-time-icon]<br>**日期時間** | 執行時間戳記相關作業： <p>- **新增至時間**：將指定的單位數新增至時間戳記。 <br>- **轉換時區**：將時間戳記從來源時區轉換為目標時區。 <br>- **目前時間**：傳回目前的時間戳記作為字串。 <br>- **取得未來時間**：傳回目前時間戳記加上指定時間單位的結果。 <br>- **取得過去時間**：傳回目前時間戳記減去指定時間單位的結果。 <br>- **從時間減去**：從時間戳記減去時間單位數字。 |
@@ -131,7 +131,7 @@ Logic Apps 提供使用資料輸出和其格式的內建動作：
 
 Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或系統來自動化工作、進程和工作流程：
 
-| Name | 說明 |
+| 名稱 | 說明 |
 |------|-------------|
 | [![API 圖示 ][azure-service-bus-icon]<br> **Azure 服務匯流排**][azure-service-bus-doc] | 利用 Logic Apps 中最常用的連接器，管理非同步訊息、工作階段和主題訂用帳戶。 |
 | [![API 圖示 ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | 連接到您的 SQL Server 內部部署或雲端中的 Azure SQL Database，讓您可以記錄管理、執行預存程式或執行查詢。 |
@@ -153,11 +153,48 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 
 以下是一些常用的標準連接器，Logic Apps 提供來存取內部部署系統中的資料和資源。 您必須先[下載、安裝及設定內部部署資料閘道][gateway-doc]，才可建立內部部署系統連線。 此閘道會提供安全的通訊通道，而不需設定必要的網路基礎結構。
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![API 圖示 ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc] | [![API 圖示 ][file-system-icon]<br> **檔 <br> 系統**][file-system-doc] | [![API 圖示 ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![API 圖示 ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc] | [![API 圖示 ][mysql-icon]<br> **MySQL**][mysql-doc] |
-| [![API 圖示 ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc] | [![API 圖示 ][postgre-sql-icon]<br> **于 postgresql**][postgre-sql-doc] | [![API 圖示 ][sharepoint-server-icon]<br> **SharePoint <br> Server**][sharepoint-server-doc] | [![API 圖示 ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![API 圖示 ][teradata-icon]<br> **Teradata**][teradata-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![API 圖示 ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][file-system-icon]<br> **檔 <br> 系統**][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API 圖示 ][mysql-icon]<br> **MySQL**][mysql-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][postgre-sql-icon]<br> **于 postgresql**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][sharepoint-server-icon]<br> **SharePoint <br> Server**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API 圖示 ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][teradata-icon]<br> **Teradata**][teradata-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="integration-account-connectors"></a>
 
@@ -165,12 +202,48 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 
 當您建立並支付[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)（可透過 Azure 中的企業整合套件（EIP）取得）時，Logic Apps 提供標準連接器來建立企業對企業（B2B）解決方案與邏輯應用程式。 使用此帳戶，您可以建立並儲存一些 B2B 構件，例如交易夥伴、合約、地圖、結構描述、憑證等等。 若要使用這些構件，請建立您的邏輯應用程式與整合帳戶的關聯。 如果您目前使用 BizTalk Server，可能已經熟悉這些連接器。
 
-|___|___|___|___|
-|---|---|---|---|
-| [![API 圖示 ][as2-icon]<br> **AS2 <br> 解碼**][as2-doc] | [![API 圖示 ][as2-icon]<br> **AS2 <br> 編碼**][as2-doc] | [![API 圖示 ][edifact-icon]<br> **EDIFACT <br> 解碼**][edifact-decode-doc] | [![API 圖示 ][edifact-icon]<br> **EDIFACT <br> 編碼**][edifact-encode-doc] |
-| [![API 圖示一般檔案 ][flat-file-decode-icon]<br> ** <br> 解碼**][flat-file-decode-doc] | [![API 圖示一般檔案 ][flat-file-encode-icon]<br> ** <br> 編碼**][flat-file-encode-doc] | [![API 圖示 ][integration-account-icon]<br> **整合 <br> 帳戶**][integration-account-doc] | [![API 圖示 ][liquid-icon]<br> **液體** <br> **轉換**][json-liquid-transform-doc] |
-| [![API 圖示 ][x12-icon]<br> **X12 <br> 解碼**][x12-decode-doc] | [![API 圖示 ][x12-icon]<br> **X12 <br> 編碼**][x12-encode-doc] | [![API 圖示 ][xml-transform-icon]<br> **XML** <br> **轉換**][xml-transform-doc] | [![API 圖示 ][xml-validate-icon]<br> **XML <br> 驗證**][xml-validate-doc] |
-|||||
+:::row:::
+    :::column:::
+        [![API 圖示 ][as2-icon]<br> **AS2 <br> 解碼**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][as2-icon]<br> **AS2 <br> 編碼**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][edifact-icon]<br> **EDIFACT <br> 解碼**][edifact-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][edifact-icon]<br> **EDIFACT <br> 編碼**][edifact-encode-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API 圖示一般檔案 ][flat-file-decode-icon]<br> ** <br> 解碼**][flat-file-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示一般檔案 ][flat-file-encode-icon]<br> ** <br> 編碼**][flat-file-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][integration-account-icon]<br> **整合 <br> 帳戶**][integration-account-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][liquid-icon]<br> **液體** <br> **轉換**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API 圖示 ][x12-icon]<br> **X12 <br> 解碼**][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][x12-icon]<br> **X12 <br> 編碼**][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][xml-transform-icon]<br> **XML** <br> **轉換**][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][xml-validate-icon]<br> **XML <br> 驗證**][xml-validate-doc]
+    :::column-end:::
+:::row-end:::
 
 <a name="enterprise-connectors"></a>
 
@@ -178,10 +251,20 @@ Logic Apps 提供這些常用的標準連接器，可讓您使用這些服務或
 
 Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM MQ：
 
-|___|___|___|
-|---|---|---|
-| [![API 圖示 ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![API 圖示 ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![API 圖示 ][sap-icon]<br> **SAP**][sap-connector-doc] |
-|||
+:::row:::
+    :::column:::
+        [![API 圖示 ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+    :::column:::
+        
+    :::column-end:::
+:::row-end:::
 
 <a name="ise-connectors"></a>
 
@@ -189,14 +272,90 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 對於您在專用[整合服務環境（ISE）](#integration-service-environment)中建立及執行的邏輯應用程式，邏輯應用程式設計工具會使用**核心**標籤來識別在您 ISE 中執行的內建觸發程式和動作。 在 ISE 中執行的受控連接器會顯示**ISE**標籤，而在全域、多租使用者 Logic Apps 服務中執行的連接器則不會顯示任何一個標籤。 此清單會顯示目前有 ISE 版本的連接器：
 
-|___|___|___|___|___|
-|---|---|---|---|---|
-| [![API 圖示 ][as2-icon]<br> **AS2**][as2-doc] | [![API 圖示 ][azure-automation-icon]<br> **Azure <br> 自動化**][azure-automation-doc] | [![API 圖示 ][azure-blob-storage-icon]<br> **Azure Blob <br> 儲存體**][azure-blob-storage-doc] | [![API 圖示 ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc] | [![API 圖示 ][azure-event-hubs-icon]<br> **Azure 事件 <br> 中樞**][azure-event-hubs-doc] |
-| [![API 圖示 ][azure-event-grid-icon]<br> **Azure 事件 <br> 方格**][azure-event-grid-doc] | [![API 圖示 ][azure-file-storage-icon]<br> **Azure 檔案 <br> 儲存體**][azure-file-storage-doc] | [![API 圖示 ][azure-key-vault-icon]<br> **Azure Key <br> Vault**][azure-key-vault-doc] | [![API 圖示 ][azure-monitor-logs-icon]<br> **Azure 監視器 <br> 記錄**][azure-monitor-logs-doc] | [![API 圖示 ][azure-service-bus-icon]<br> **Azure 服務 <br> 匯流排**][azure-service-bus-doc] |
-| [![API 圖示 ][azure-sql-data-warehouse-icon]<br> **Azure SQL 資料 <br> 倉儲**][azure-sql-data-warehouse-doc] | [![API 圖示 ][azure-table-storage-icon]<br> **Azure 資料表 <br> 儲存體**][azure-table-storage-doc] | [![API 圖示 ][azure-queues-icon]<br> **Azure <br> 佇列**][azure-queues-doc] | [![API 圖示 ][edifact-icon]<br> **EDIFACT**][edifact-doc] | [![API 圖示 ][file-system-icon]<br> **檔 <br> 系統**][file-system-doc] |
-| [![API 圖示 ][ftp-icon]<br> **FTP**][ftp-doc] | [![API 圖示 ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc] | [![API 圖示 ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc] | [![API 圖示 ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc] | [![API 圖示 ][sap-icon]<br> **SAP**][sap-connector-doc] |
-| [![API 圖示 ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc] | [![API 圖示 ][smtp-icon]<br> **SMTP**][smtp-doc] | [![API 圖示 ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc] | [![API 圖示 ][x12-icon]<br> **X12**][x12-doc] |
-||||||
+:::row:::
+    :::column:::
+        [![API 圖示 ][as2-icon]<br> **AS2**][as2-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][azure-automation-icon]<br> **Azure <br> 自動化**][azure-automation-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][azure-blob-storage-icon]<br> **Azure Blob <br> 儲存體**][azure-blob-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API 圖示 ][azure-event-hubs-icon]<br> **Azure 事件 <br> 中樞**][azure-event-hubs-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][azure-event-grid-icon]<br> **Azure 事件 <br> 方格**][azure-event-grid-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][azure-file-storage-icon]<br> **Azure 檔案 <br> 儲存體**][azure-file-storage-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][azure-key-vault-icon]<br> **Azure Key <br> Vault**][azure-key-vault-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API 圖示 ][azure-monitor-logs-icon]<br> **Azure 監視器 <br> 記錄**][azure-monitor-logs-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][azure-service-bus-icon]<br> **Azure 服務 <br> 匯流排**][azure-service-bus-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][azure-sql-data-warehouse-icon]<br> **Azure SQL 資料 <br> 倉儲**][azure-sql-data-warehouse-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][azure-table-storage-icon]<br> **Azure 資料表 <br> 儲存體**][azure-table-storage-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API 圖示 ][azure-queues-icon]<br> **Azure <br> 佇列**][azure-queues-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][edifact-icon]<br> **EDIFACT**][edifact-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][file-system-icon]<br> **檔 <br> 系統**][file-system-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][ftp-icon]<br> **FTP**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API 圖示 ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][sap-icon]<br> **SAP**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![API 圖示 ][sftp-ssh-icon]<br> **SFTP-SSH**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][smtp-icon]<br> **SMTP**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![API 圖示 ][x12-icon]<br> **X12**][x12-doc]
+    :::column-end:::
+:::row-end:::
 
 如需詳細資訊，請參閱下列主題：
 

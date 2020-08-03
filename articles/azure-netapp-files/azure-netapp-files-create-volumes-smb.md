@@ -1,6 +1,6 @@
 ---
 title: 建立適用於 Azure NetApp Files 的 SMB | Microsoft Docs
-description: 說明如何建立適用於 Azure NetApp Files 的 SMB。
+description: 本文說明如何在 Azure NetApp Files 中建立 SMBv3 磁片區。 瞭解 Active Directory 連接和網域服務的需求。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 848a5779538f4754ef038a1e88be63c33177bc82
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 24a5e342c66d8154f4635acc957084d243fbd75e
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169981"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513072"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -163,8 +163,20 @@ Azure NetApp Files 支援 NFS 和 SMBv3 磁碟區。 磁碟區的容量耗用量
      * **備份原則使用者**  
         您可以將需要更高權限的其他帳戶，納入為了使用 Azure NetApp Files 而建立的電腦帳戶。 指定的帳號可允許在檔案或資料夾層級變更 NTFS 權限。 例如，您可以指定非特殊權限服務帳戶，用來將資料移轉至 Azure NetApp Files 中的 SMB 檔案共用。  
 
-        > [!IMPORTANT] 
-        > 使用備份原則使用者功能需要白名單。 使用您的訂閱識別碼傳送電子郵件 anffeedback@microsoft.com，以要求此功能。 
+        「**備份原則使用者**」功能目前為預覽狀態。 如果這是您第一次使用此功能，請在使用此功能之前先進行註冊： 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
+
+        檢查功能註冊的狀態： 
+
+        > [!NOTE]
+        > 在變更為之前， **RegistrationState**可能處於 `Registering` 數分鐘的狀態 `Registered` 。 等候狀態為 [**已註冊**]，再繼續進行。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
 
     * 認證，包括您的**使用者名稱**和**密碼**
 

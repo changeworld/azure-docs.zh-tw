@@ -11,16 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ceb375eb9da853b4c89ffe278d3483f6a4fa72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3a06f01507ad5715d1e8a3f828ab008e1e8ce65
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050964"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512970"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 總覽的結合安全性資訊註冊
 
 在有合併註冊之前，使用者要分開註冊 Azure Multi-Factor Authentication 和自助式密碼重設 (SSPR) 的驗證方法。 人們混淆了類似的方法用於多重要素驗證和 SSPR，但他們必須註冊這兩項功能。 現在，透過合併的註冊，使用者可以註冊一次，並獲得多重要素驗證和 SSPR 的優點。
+
+> [!NOTE]
+> 自2020年8月15日起，所有新的 Azure AD 租使用者都會自動啟用以進行合併註冊。
 
 本文概述安全性註冊的結合。 若要開始使用結合的安全性註冊，請參閱下列文章：
 

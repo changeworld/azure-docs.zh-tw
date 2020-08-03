@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 940a24aedb8592d0e809bc79dc1c8977bc3abd38
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 33ba816227db4cf958fd30c9dac1a0745505c504
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448981"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513684"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>快速步驟：在 Azure 中建立和使用 Linux VM 的 SSH 公開和私密金鑰組
 
-您可以利用安全殼層 (SSH) 金鑰組，在 Azure 上建立使用 SSH 金鑰來進行驗證的虛擬機器 (VM)，進而免除登入密碼的需求。 本文說明如何快速產生和使用 Linux VM 的 SSH 公開和私密金鑰檔案組。 您可以使用 Azure Cloud Shell、macOS 或 Linux 主機、Windows Subsystem for Linux 以及其他支援 OpenSSH 的工具，完成這些步驟。 
+使用安全 shell （SSH）金鑰組，您可以在 Azure 中建立使用 SSH 金鑰進行驗證的虛擬機器（Vm）。 本文說明如何快速產生和使用 Linux VM 的 SSH 公開和私密金鑰檔案組。 您可以使用 Azure Cloud Shell、macOS 或 Linux 主機來完成這些步驟。 
 
 > [!NOTE]
 > 使用 SSH 金鑰建立的 VM 預設會設定為停用密碼，這會大幅增加暴力密碼破解猜測嘗試的困難度。 

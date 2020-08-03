@@ -1,26 +1,26 @@
 ---
-title: 概念：在 Azure API for FHIR 的 IoT 連接器（預覽）功能中對應範本
-description: 瞭解如何在 IoT 連接器中建立兩種類型的對應範本。 裝置對應範本會將裝置資料轉換成正規化架構。 FHIR 對應範本會將正規化的訊息轉換成以 FHIR 為基礎的觀察資源。
+title: 概念：在 Azure API for FHIR 的 Azure IoT Connector for FHIR （預覽）功能中對應範本
+description: 瞭解如何在適用于 FHIR 的 Azure IoT 連接器（預覽）中建立兩種類型的對應範本。 裝置對應範本會將裝置資料轉換成正規化架構。 FHIR 對應範本會將正規化的訊息轉換成以 FHIR 為基礎的觀察資源。
 services: healthcare-apis
 author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: dadd14d4ca28f367eaa7fd07099514bf420af5af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc8b7d46e1018974c6a88cef9e4f4a9f9a09caa7
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097479"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513344"
 ---
-# <a name="iot-connector-preview-mapping-templates"></a>IoT 連接器（預覽）對應範本
-本文詳細說明如何使用對應範本來設定 IoT 連接器。
+# <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>適用于 FHIR （預覽）的 Azure IoT 連接器對應範本
+本文詳細說明如何使用對應範本來設定適用于 FHIR 的 Azure IoT 連接器 *。
 
-IoT 連接器需要兩種類型的 JSON 對應範本。 第一種類型「**裝置對應**」負責對應傳送至 `devicedata` Azure 事件中樞端點的裝置承載。 它會解壓縮類型、裝置識別碼、測量日期時間和測量值。 第二種類型（ **FHIR 對應**）控制 FHIR 資源的對應。 它允許設定觀察期間的長度、用來儲存值的 FHIR 資料類型，以及術語代碼。 
+適用于 FHIR 的 Azure IoT 連接器需要兩種類型的 JSON 型對應範本。 第一種類型「**裝置對應**」負責對應傳送至 `devicedata` Azure 事件中樞端點的裝置承載。 它會解壓縮類型、裝置識別碼、測量日期時間和測量值。 第二種類型（ **FHIR 對應**）控制 FHIR 資源的對應。 它允許設定觀察期間的長度、用來儲存值的 FHIR 資料類型，以及術語代碼。 
 
-對應範本會根據其類型組成 JSON 檔。 然後，這些 JSON 檔會透過 Azure 入口網站新增至您的 IoT 連接器。 裝置對應檔會透過 **[設定]** [對應] 頁面，以及透過 [**設定 FHIR 對應**] 頁面的 FHIR 對應檔來新增。
+對應範本會根據其類型組成 JSON 檔。 然後，這些 JSON 檔會透過 Azure 入口網站新增至您的 Azure IoT 連接器以進行 FHIR。 裝置對應檔會透過 **[設定]** [對應] 頁面，以及透過 [**設定 FHIR 對應**] 頁面的 FHIR 對應檔來新增。
 
 > [!NOTE]
 > 對應範本會儲存在基礎 blob 儲存體中，並在每次計算執行時從 blob 載入。 更新之後，它們應該會立即生效。 
@@ -30,7 +30,7 @@ IoT 連接器需要兩種類型的 JSON 對應範本。 第一種類型「**裝�
 
 | 屬性 | 說明 |
 | - | - |
-|**類型**|用來分類度量的名稱/類型。 這個值是用來系結至所需的 FHIR 對應範本。  多個範本可以輸出到相同的類型，讓您能夠將不同的標記法對應至單一一般輸出。|
+|**型別**|用來分類度量的名稱/類型。 這個值是用來系結至所需的 FHIR 對應範本。  多個範本可以輸出到相同的類型，讓您能夠將不同的標記法對應至單一一般輸出。|
 |**OccurenceTimeUtc**|測量發生的時間。|
 |**DeviceId**|裝置的識別碼。 此值應符合目的地 FHIR 伺服器上存在的裝置資源上的識別碼。|
  |**屬性**|解壓縮至少一個屬性，使值可以儲存在所建立的觀測資源中。  屬性是在正規化期間解壓縮的金鑰值組集合。|
@@ -81,7 +81,7 @@ JsonPathContentTemplate 允許使用 JSON 路徑來比對事件中樞訊息中�
 ---
 **核心速率**
 
-*訊息*
+*Message*
 ```json
 {
     "Body": {
@@ -115,7 +115,7 @@ JsonPathContentTemplate 允許使用 JSON 路徑來比對事件中樞訊息中�
 ---
 **血壓**
 
-*訊息*
+*Message*
 ```json
 {
     "Body": {
@@ -153,7 +153,7 @@ JsonPathContentTemplate 允許使用 JSON 路徑來比對事件中樞訊息中�
 
 **從單一訊息投影多個測量**
 
-*訊息*
+*Message*
 ```json
 {
     "Body": {
@@ -208,7 +208,7 @@ JsonPathContentTemplate 允許使用 JSON 路徑來比對事件中樞訊息中�
 
 **從訊息中的陣列投影多個測量**
 
-*訊息*
+*Message*
 ```json
 {
     "Body": [
@@ -261,7 +261,7 @@ IotJsonPathContentTemplate 與 JsonPathContentTemplate 類似，但不需要 Dev
 ---
 **核心速率**
 
-*訊息*
+*Message*
 ```json
 {
     "Body": {
@@ -297,7 +297,7 @@ IotJsonPathContentTemplate 與 JsonPathContentTemplate 類似，但不需要 Dev
 ---
 **血壓**
 
-*訊息*
+*Message*
 ```json
 {
     "Body": {
@@ -347,7 +347,7 @@ CodeValueFhirTemplate 是目前唯一支援 FHIR 對應中的範本。  它可�
 |**代碼 []。錯誤碼**|[編碼](http://hl7.org/fhir/datatypes-definitions.html#coding)的程式碼。
 |**代碼 []。筆記本電腦**|[編碼](http://hl7.org/fhir/datatypes-definitions.html#coding)的系統。
 |**代碼 []。顯示**|[編碼](http://hl7.org/fhir/datatypes-definitions.html#coding)的顯示。
-|**值**|要在觀察中解壓縮和表示的值。 如需詳細資訊，請參閱實[數值型別範本](#valuetypes)。
+|**ReplTest1**|要在觀察中解壓縮和表示的值。 如需詳細資訊，請參閱實[數值型別範本](#valuetypes)。
 |**元件**|*選擇性：* 要在觀察上建立的一或多個元件。
 |**元件 []。代碼**|要套用至元件的一或多個[Codings](http://hl7.org/fhir/datatypes-definitions.html#coding) 。
 |**元件 []。Value**|要在元件中解壓縮和表示的值。 如需詳細資訊，請參閱實[數值型別範本](#valuetypes)。
@@ -376,7 +376,7 @@ CodeValueFhirTemplate 是目前唯一支援 FHIR 對應中的範本。  它可�
 
 | 屬性 | 說明 
 | --- | --- 
-|**文字**|純文字標記法。 
+|**Text**|純文字標記法。 
 |**代碼**|要套用至所建立之觀察的一或多個[Codings](http://hl7.org/fhir/datatypes-definitions.html#coding) 。
 |**代碼 []。錯誤碼**|[編碼](http://hl7.org/fhir/datatypes-definitions.html#coding)的程式碼。
 |**代碼 []。筆記本電腦**|[編碼](http://hl7.org/fhir/datatypes-definitions.html#coding)的系統。
@@ -562,10 +562,11 @@ CodeValueFhirTemplate 是目前唯一支援 FHIR 對應中的範本。  它可�
 
 ## <a name="next-steps"></a>後續步驟
 
-查看 IoT 連接器的常見問題
+查看 Azure IoT Connector for FHIR （預覽）的常見問題。
 
 >[!div class="nextstepaction"]
->[IoT 連接器常見問題](fhir-faq.md#iot-connector-preview)
+>[適用于 FHIR 的 Azure IoT 連接器常見問題](fhir-faq.md#iot-connector-preview)
 
+* 在 Azure 入口網站中，適用于 FHIR 的 Azure IoT 連接器稱為 IoT 連接器（預覽）。
 
 FHIR 是 HL7 的註冊商標，必須搭配 HL7 權限方可使用。

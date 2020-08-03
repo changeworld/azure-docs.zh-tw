@@ -1,6 +1,6 @@
 ---
 title: 建立適用于 Azure NetApp Files 的 NFS 磁片區 |Microsoft Docs
-description: 說明如何建立適用于 Azure NetApp Files 的 NFS 磁片區。
+description: 本文說明如何在 Azure NetApp Files 中建立 NFS 磁片區。 瞭解考慮，例如要使用的版本，以及最佳作法。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 7f14ac279f14feb3f83490ab96965d4355bed125
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2e1e6ad6625586e882551521111057a2a20f0fff
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169444"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513038"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 NFS 磁碟區
 

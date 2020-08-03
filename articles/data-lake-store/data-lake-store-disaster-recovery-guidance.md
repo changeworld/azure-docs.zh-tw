@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: 4931556aa6948b6b05b2bbbfa62e281e21aa6058
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ebcdeed608a5b9dc6202071869c4df1dcfd327a8
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367464"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512749"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 的高可用性和嚴重損壞修復指引
 
@@ -34,11 +34,11 @@ Data Lake Storage Gen1 提供本機多餘的儲存空間（LRS）。 因此，�
 
 雖然 Data Lake Storage Gen1 可透過自動化複本提供資料復原功能，但這無法防止應用程式 (或開發人員/使用者) 的資料遭到損毀或意外刪除。
 
-### <a name="best-practices"></a>最佳作法
-
 若要防止意外刪除，建議您先為 Data Lake Storage Gen1 帳戶設定正確的存取原則。 這包括套用[Azure 資源鎖定](../azure-resource-manager/management/lock-resources.md)來鎖定重要資源，以及使用可用的[Data Lake Storage Gen1 安全性功能](data-lake-store-security-overview.md)來套用帳戶和檔案層級的存取控制。 此外，我們也建議您使用 [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md) 或 [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)，在另一個 Data Lake Storage Gen1 帳戶、資料夾或 Azure 訂用帳戶定期建立重要資料的複本。 這可用來從資料損毀或刪除事件中復原。 Azure Data Factory 這項服務很適合用來反覆建立和部署資料移動管線。
 
 您也可以啟用 Data Lake Storage Gen1 帳戶的[診斷記錄](data-lake-store-diagnostic-logs.md)，以收集資料存取 audit 線索。 「審核線索」提供可能已刪除或更新檔案之人員的相關資訊。
+
+您可以嘗試使用適用于 Data Lake Storage Gen 1 的[DataLakeStore](https://docs.microsoft.com/powershell/module/az.datalakestore/) Azure PowerShell 模組來還原已刪除的專案。 具體而言，請參閱[Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)命令。 嘗試使用此命令之前，請務必先查看 [[描述](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem#description)] 區段。
 
 ## <a name="next-steps"></a>後續步驟
 
