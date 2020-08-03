@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16b9342f0374377349f338db7ce5c8389c77ea18
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85570199"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425151"
 ---
 在此步驟中，您會評估您需要多少個 Azure 檔案共用。 單一 Windows Server 實例（或叢集）最多可以同步30個 Azure 檔案共用。
 
@@ -68,7 +68,7 @@ Azure 檔案同步支援將最多100000000個專案同步至單一 Azure 檔案�
 
 :::row:::
     :::column:::
-        [![](media/storage-files-migration-namespace-mapping/namespace-mapping.png "An example of a mapping table. Download the file below to experience and use the content of this image.")](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
+        [![對應資料表的範例。下載下列檔以體驗並使用此映射的內容。](media/storage-files-migration-namespace-mapping/namespace-mapping.png)](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
     :::column-end:::
     :::column:::
         使用先前的概念組合，以協助判斷您需要多少個 Azure 檔案共用，而現有資料的哪些部分將會在哪個 Azure 檔案共用中結束。

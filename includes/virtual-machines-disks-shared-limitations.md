@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2cf7dbcd97c8f740447607eaf443bc3ea4a6733
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6175a797b14077cafacaca1f2fd48f36e945d9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500581"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425193"
 ---
 啟用共用磁片僅適用于磁片類型的子集。 目前只有 ultra 磁片和 premium Ssd 可以啟用共用磁片。 已啟用共用磁片的每個受控磁片都受限於下列限制（依磁片類型組織）：
 
@@ -25,6 +25,8 @@ Ultra 磁片有自己各自的限制清單，與共享磁片無關。 如需 ult
 
 - 目前僅限於 Azure Resource Manager 或 SDK 支援。 
 - 只有基本磁碟可以與某些版本的 Windows Server 容錯移轉叢集搭配使用，如需詳細資訊，請參閱[容錯移轉叢集硬體需求和存放裝置選項](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)。
+
+共用的 ultra 磁片預設適用于所有支援 ultra 磁片的區域，而且您不需要註冊即可使用它們。
 
 ### <a name="premium-ssds"></a>進階 SSD
 
@@ -38,4 +40,4 @@ Ultra 磁片有自己各自的限制清單，與共享磁片無關。 如需 ult
 - 只有基本磁碟可以與某些版本的 Windows Server 容錯移轉叢集搭配使用，如需詳細資訊，請參閱[容錯移轉叢集硬體需求和存放裝置選項](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)。
 - Azure 備份和 Azure Site Recovery 支援尚無法使用。
 
-如果您有興趣嘗試共用磁片，請[註冊以取得存取權](https://aka.ms/AzureSharedDiskGASignUp)。
+如果您想要試用共用 premium Ssd，請[註冊以取得存取權](https://aka.ms/AzureSharedDiskGASignUp)。
