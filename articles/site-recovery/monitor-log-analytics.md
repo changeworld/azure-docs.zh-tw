@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 047b689b10d03cf92e5cc744aa707b3f70fe77bd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529024"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495058"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>透過 Azure 監視器記錄監視 Site Recovery
 
@@ -44,14 +44,14 @@ Azure 監視器記錄檔提供的記錄資料平臺會收集活動和資源記�
 
 1. 在保存庫中，按一下 [**診斷設定**] [  >  **新增診斷設定**]。
 
-    ![選取資源記錄](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![顯示 [新增診斷設定] 選項的螢幕擷取畫面。](./media/monitoring-log-analytics/add-diagnostic.png)
 
 2. 在 [**診斷設定**] 中指定名稱，然後選取 [**傳送至 Log Analytics**] 方塊。
 3. 選取 [Azure 監視器記錄] 訂用帳戶和 Log Analytics 工作區。
 4. 在切換中選取 [ **Azure 診斷**]。
 5. 從 [記錄檔] 清單中，選取前置詞為**AzureSiteRecovery**的所有記錄檔。 然後按一下 [確定]。
 
-    ![選取工作區](./media/monitoring-log-analytics/select-workspace.png)
+    ![[診斷設定] 畫面的螢幕擷取畫面。](./media/monitoring-log-analytics/select-workspace.png)
 
 Site Recovery 記錄會開始饋送至所選工作區中的資料表（**AzureDiagnostics**）。
 
@@ -125,7 +125,7 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![查詢 RPO](./media/monitoring-log-analytics/example1.png)
+![螢幕擷取畫面，顯示以 Site Recovery 複寫的 Azure Vm 橫條圖。](./media/monitoring-log-analytics/example1.png)
 
 ### <a name="query-site-recovery-jobs"></a>查詢 Site Recovery 作業
 
@@ -190,7 +190,7 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![查詢機器 RPO](./media/monitoring-log-analytics/example2.png)
+![追蹤特定 Azure VM RPO 的趨勢圖表螢幕擷取畫面。](./media/monitoring-log-analytics/example2.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>查詢 Azure VM 的資料變更率（變換）和上傳速率
 
@@ -207,7 +207,7 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![查詢資料變更](./media/monitoring-log-analytics/example3.png)
+![特定 Azure VM 的趨勢圖表螢幕擷取畫面。](./media/monitoring-log-analytics/example3.png)
 
 ### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>查詢 VMware 或實體機器的資料變更率（變換）和上傳速率
 

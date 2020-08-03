@@ -9,16 +9,17 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
-ms.openlocfilehash: 050631731a04e4c2ea89d8c7792ec093d6ab316e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e70b22b3edaae96e00306d5d0a93d229e11aac41
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85800557"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494072"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虛擬機器上執行 Azure IoT Edge
 
-Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段可以部署在像 Raspberry Pi 一樣小或像工業伺服器一樣大的裝置上。 利用 IoT Edge 執行階段設定裝置之後，您就可以開始從雲端將商務邏輯部署給它。
+Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段可以部署在像 Raspberry Pi 一樣小或像工業伺服器一樣大的裝置上。 在裝置上設定 IoT Edge 執行階段後，就可以開始從雲端將商務邏輯部署到裝置上。
 
 若要深入了解 IoT Edge 執行階段的運作方式，以及會包含哪些元件，請參閱[了解 Azure IoT Edge 執行階段及其架構](iot-edge-runtime.md)。
 
@@ -32,14 +33,14 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 [[部署至 Azure] 按鈕](../azure-resource-manager/templates/deploy-to-azure-button.md)可讓您簡化部署 GitHub 上所維護的[Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)。  本節將示範如何使用[iotedge-vm-部署](https://github.com/Azure/iotedge-vm-deploy)專案存放庫中包含的 [部署至 Azure] 按鈕。  
 
 
-1. 我們會使用 iotedge-VM-部署 Azure Resource Manager 範本來部署已啟用 Azure IoT Edge 的 Linux VM。  若要開始，請按一下下方的按鈕：
+1. 我們會使用 iotedge-VM-部署 Azure Resource Manager 範本來部署已啟用 Azure IoT Edge 的 Linux VM。  若要開始，請按一下以下按鈕：
 
-    [![[部署至 Azure] 按鈕以進行 iotedge-vm-deploy](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+    [![iotedge-vm-deploy 的 [部署至 Azure] 按鈕](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
 
 1. 在新啟動的視窗中，填寫可用的表單欄位：
 
     > [!div class="mx-imgBorder"]
-    > [![顯示 iotedge-vm-部署範本的螢幕擷取畫面](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
+    > [![顯示 iotedge-vm-deploy 範本的螢幕擷取畫面](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
 
     **訂**用帳戶：要將虛擬機器部署到其中的有效 Azure 訂用帳戶。
 
@@ -63,9 +64,9 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 
     填入所有欄位之後，請選取頁面底部的核取方塊以接受條款，然後選取 [**購買**] 以開始部署。
 
-1. 確認部署已順利完成。  虛擬機器資源應該已部署到選取的資源群組中。  記下電腦名稱稱，其格式應為 `vm-0000000000000` 。 此外，請記下相關聯的**DNS 名稱**，其格式應為 `<dnsLabelPrefix>` .。 `<location>`cloudapp.azure.com。
+1. 確認部署已成功完成。  虛擬機器資源應該已部署到選取的資源群組中。  記下電腦名稱稱，其格式應為 `vm-0000000000000` 。 此外，請記下相關聯的 **DNS 名稱**，其格式應該是 `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com。
 
-    您可以從 Azure 入口網站內新部署之虛擬機器的 [**總覽**] 區段取得**DNS 名稱**。
+    **DNS 名稱**可從 Azure 入口網站內新部署虛擬機器的 [概觀] 區段取得。
 
     > [!div class="mx-imgBorder"]
     > [![顯示 iotedge vm dns 名稱的螢幕擷取畫面](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
@@ -138,7 +139,7 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
     ```
 
-1. 確認部署已順利完成。  虛擬機器資源應該已部署到選取的資源群組中。  記下電腦名稱稱，其格式應為 `vm-0000000000000` 。 此外，請記下相關聯的**DNS 名稱**，其格式應為 `<dnsLabelPrefix>` .。 `<location>`cloudapp.azure.com。
+1. 確認部署已成功完成。  虛擬機器資源應該已部署到選取的資源群組中。  記下電腦名稱稱，其格式應為 `vm-0000000000000` 。 此外，請記下相關聯的 **DNS 名稱**，其格式應該是 `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com。
 
     **DNS 名稱**可以從上一個步驟的 JSON 格式輸出中取得，其位於 [**輸出**] 區段內作為 [**公用 SSH** ] 專案的一部分。  此專案的值可以用來透過 SSH 連線到新部署的電腦。
 

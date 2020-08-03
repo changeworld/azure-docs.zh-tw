@@ -7,17 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: reference
 keywords: kinect，azure，感應器，sdk，深度，rgb，記錄，播放，matroska，.mkv
-ms.openlocfilehash: d0f7653afe3cc92e059b2615ebef18312faa716b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85276485"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501775"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>使用 Azure Kinect 感應器 SDK 記錄檔案格式
 
-若要記錄感應器資料，會使用 Matroska （. .mkv）容器格式，讓您可以儲存多個追蹤。
-使用廣泛的編解碼器。 記錄檔包含儲存色彩、深度、IR 影像和 IMU 的追蹤。
+若要記錄感應器資料，會使用 Matroska （. .mkv）容器格式，這可讓您使用各式各樣的編解碼器來儲存多個追蹤。 記錄檔包含儲存色彩、深度、IR 影像和 IMU 的追蹤。
 
 您可以在[Matroska 網站](https://www.matroska.org/index.html)上找到 .mkv 容器格式的低層級詳細資料。
 

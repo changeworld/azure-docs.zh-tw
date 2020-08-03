@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ef87d5da2c2d56a4fdc3873410bb5a6e5c711d01
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0156cfb0720e78b87abc36f0811db69bc8435894
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075720"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503186"
 ---
-# <a name="optimizing-transactions-in-sql-pool"></a>最佳化 SQL 集區中的交易
+# <a name="optimize-transactions-in-sql-pool"></a>優化 SQL 集區中的交易
 
 了解如何將 SQL 集區中的交易程式碼效能最佳化，同時將長時間回復的風險降至最低。
 
@@ -82,7 +82,7 @@ CTAS 和 INSERT...SELECT 都是大量載入作業。 不過，兩者都會受到
 
 利用叢集索引將資料載入非空白資料表中，通常會混合包含完整記錄和最低限度記錄資料列。 叢集索引是頁面的平衡樹狀結構 (b 型樹狀目錄)。 如果寫入的頁面中已包含另一個交易的資料列，則這些寫入將會完整記錄。 不過，如果頁面是空的，則該頁面的寫入將會以最低限度記錄。
 
-## <a name="optimizing-deletes"></a>最佳化刪除
+## <a name="optimize-deletes"></a>優化刪除
 
 DELETE 作業會有完整的記錄。  如果您需要刪除資料表或分割中的大量資料，比較理想的做法通常是 `SELECT` 您想要保留的資料，這可以最低限度記錄作業來執行。  若要選取資料，請使用 [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 建立新的資料表。  建立之後，請使用 [RENAME](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)，以新建立的資料表置換舊資料表。
 
@@ -114,7 +114,7 @@ RENAME OBJECT [dbo].[FactInternetSales]   TO [FactInternetSales_old];
 RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 ```
 
-## <a name="optimizing-updates"></a>最佳化更新
+## <a name="optimize-updates"></a>優化更新
 
 UPDATE 作業會有完整的記錄。  如果您需要更新資料表或分割區中的大量資料列，通常使用只有最少記錄的作業 (例如 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)) 會有效率得多。
 
@@ -179,7 +179,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 > [!NOTE]
 > 使用 SQL 集區工作負載管理功能有助於重新建立大型資料表。 如需詳細資訊，請參閱[適用於工作負載管理的資源類別](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-## <a name="optimizing-with-partition-switching"></a>利用分割切換進行最佳化
+## <a name="optimize-with-partition-switching"></a>使用資料分割切換優化
 
 面臨[資料表分割區](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)內部的大規模修改時，則分割區切換模式會很實用。 如果大量修改資料而且跨越多個分割區，則逐一查看分割區也可達到相同的結果。
 

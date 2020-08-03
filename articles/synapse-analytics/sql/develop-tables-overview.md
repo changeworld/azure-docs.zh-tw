@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f1eec76d92edc97f7e4058d3afe813f0bb2aae47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cb1b4d33a538b48ca1519d66f6602d902033c3e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431874"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494820"
 ---
 # <a name="design-tables-using-synapse-sql"></a>使用 Synapse SQL 設計資料表
 
@@ -45,7 +45,7 @@ ms.locfileid: "81431874"
 | [統計資料](#statistics)                                    | 是                | 是                     |
 | [主要金鑰和唯一索引鍵](#primary-key-and-unique-key)    | 是                | 否                      |
 | [建立資料表的命令](#commands-for-creating-tables) | 是                | 否                      |
-| [找出資料倉儲對應的資料來源](#aligning-source-data-with-the-data-warehouse) | 是                | 否                      |
+| [找出資料倉儲對應的資料來源](#align-source-data-with-the-data-warehouse) | 是                | 否                      |
 | [不支援的資料表功能](#unsupported-table-features)    | 是                | 否                      |
 | [資料表大小查詢](#table-size-queries)                    | 是                | 否                      |
 
@@ -75,7 +75,7 @@ CREATE SCHEMA wwi;
 
 | WideWorldImportersDW 資料表  | 資料表類型 | SQL 集區 |
 |:-----|:-----|:------|:-----|
-| City | 維度 | wwi.DimCity |
+| 城市 | 維度 | wwi.DimCity |
 | 單 | 事實 | wwi.FactOrder |
 
 ## <a name="table-persistence"></a>資料表持續性
@@ -207,14 +207,14 @@ ORDER BY
 
 您可以將資料表建立為新的空資料表。 您也可以在建立資料表後填入 Select 陳述式的結果。 以下是用來建立資料表的 T-SQL 命令。
 
-| T-SQL 陳述式 | 描述 |
+| T-SQL 陳述式 | 說明 |
 |:----------------|:------------|
 | [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | 藉由定義所有的資料表資料行和選項，建立空的資料表。 |
 | [CREATE EXTERNAL TABLE](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | 建立外部資料表。 資料表的定義會儲存在 SQL 集區中。 資料表資料會儲存在 Azure Blob 儲存體或 Azure Data Lake Storage。 |
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | 在新的資料表中填入 Select 陳述式的結果。 資料表資料行和資料類型皆以 Select 陳述式的結果為基礎。 若要匯入資料，此陳述式可從外部資料表進行選取。 |
-| [建立外部資料表做為 SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | 藉由將 Select 陳述式的結果匯出至外部位置，建立新的外部資料表。  位置可以是 Azure Blob 儲存體或 Azure Data Lake Storage。 |
+| [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | 藉由將 Select 陳述式的結果匯出至外部位置，建立新的外部資料表。  位置可以是 Azure Blob 儲存體或 Azure Data Lake Storage。 |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>找出資料倉儲對應的資料來源
+## <a name="align-source-data-with-the-data-warehouse"></a>將來源資料與資料倉儲對齊
 
 資料倉儲資料表會在您從其他資料來源載入資料時填入。 若要成功載入，來源資料中的資料行數目和資料類型必須與資料倉儲中的資料表定義一致。
 
@@ -229,9 +229,9 @@ SQL 集區支援其他資料庫所提供的許多（但非全部）資料表功�
 
 - 外鍵，檢查[資料表條件約束](/sql/t-sql/statements/alter-table-table-constraint-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [計算資料行](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [索引視圖](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [順序](/sql/t-sql/statements/create-sequence-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [疏鬆資料行](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [索引檢視表](/sql/relational-databases/views/create-indexed-views?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [序列](/sql/t-sql/statements/create-sequence-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [稀疏資料行](/sql/relational-databases/tables/use-sparse-columns?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - 代理鍵，以身分[識別](../sql-data-warehouse/sql-data-warehouse-tables-identity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)執行
 - [同義字](/sql/t-sql/statements/create-synonym-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [觸發程序](/sql/t-sql/statements/create-trigger-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)

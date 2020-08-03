@@ -7,18 +7,19 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 427d936353b47e951f8faaf90483691bab856767
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 538cbfea2480573c190a1dd0ee0480e21aecefe2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510738"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502081"
 ---
 # <a name="enable-and-create-large-file-shares"></a>啟用並建立大型檔案共用
 
 當您在儲存體帳戶上啟用大型檔案共用時，您的檔案共用可以相應增加至 100 TiB。 您可以針對現有的檔案共用，在現有的儲存體帳戶上啟用此調整。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 - 如果您想要使用 Azure CLI，請[安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -52,8 +53,8 @@ ms.locfileid: "85510738"
    |---------|---------|
    |部署模型     |Resource Manager         |
    |效能     |標準         |
-   |帳戶類型     |StorageV2 (一般用途 v2)         |
-   |存取層     |經常性存取         |
+   |帳戶種類     |StorageV2 (一般用途 v2)         |
+   |存取層     |經常性存取層         |
 
 1. 選取 [ **Advanced**]，然後選取 [**大型檔案共用**] 右邊的 [**已啟用**] 選項按鈕。
 1. 選取 [檢閱 + 建立]  ，以檢閱您的儲存體帳戶設定並建立帳戶。

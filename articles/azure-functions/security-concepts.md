@@ -3,12 +3,12 @@ title: 保護 Azure Functions
 description: 了解如何讓您的函式程式碼更安全地在 Azure 中執行，以免遭受常見的攻擊。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0c5036681aace103ea69d1e9cc73e96dc30821f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079684"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502676"
 ---
 # <a name="securing-azure-functions"></a>保護 Azure Functions
 
@@ -83,7 +83,7 @@ Functions 也會與 Azure 監視器記錄整合，讓您能夠將函式應用程
 
 #### <a name="user-management-permissions"></a>使用者管理權限
 
-函數支援內建的[Azure 角色型存取控制（RBAC）](../role-based-access-control/overview.md)。 Functions 所支援的 RBAC 角色是[參與者](../role-based-access-control/built-in-roles.md#contributor)、[擁有者](../role-based-access-control/built-in-roles.md#owner)和[讀者](../role-based-access-control/built-in-roles.md#owner)。 
+函數支援內建的[Azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)。 函式支援的 Azure 角色為[參與者](../role-based-access-control/built-in-roles.md#contributor)、[擁有](../role-based-access-control/built-in-roles.md#owner)者和[讀者](../role-based-access-control/built-in-roles.md#owner)。 
 
 權限會在函式應用層級生效。 您必須具備參與者角色，才能執行大部分函式應用程式層級的工作。 只有擁有者角色可以刪除函式應用程式。 
 
@@ -207,4 +207,3 @@ App Service 部署需要一組部署認證。 這些部署認證可用來保護�
 
 + [適用於 Azure Functions 的 Azure 安全性基準](security-baseline.md)
 + [Azure Functions 診斷](functions-diagnostics.md)
-        

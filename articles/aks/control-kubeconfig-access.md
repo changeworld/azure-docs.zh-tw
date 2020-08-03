@@ -4,12 +4,12 @@ description: 了解如何控制叢集管理員和叢集使用者對 Kubernetes �
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 4d25babd13bb8ecdcd8c9eb60a976a05702fb9b6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5ed2f74d9de30b5fbdeaeb38316831db0777a0d6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255263"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501622"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>使用 Azure 角色型存取控制來定義 Azure Kubernetes Service (AKS) 中的 Kubernetes 組態檔存取權
 
@@ -27,7 +27,7 @@ ms.locfileid: "86255263"
 
 當您使用 `kubectl` 工具與 AKS 叢集互動時，組態檔會用來定義叢集連線資訊。 這個設定檔通常會儲存在 *~/.kube/config*中。可以在此*kubeconfig*檔中定義多個叢集。 您可以使用 [kubectl config use-context][kubectl-config-use-context] 命令在叢集間進行切換。
 
-[az aks get-credentials][az-aks-get-credentials] 命令可讓您取得 AKS 叢集的存取認證，並將其合併至 kubeconfig** 檔案。 您可以使用 Azure 角色型存取控制 (RBAC) 來控制這些認證的存取權。 這些 Azure RBAC 角色可讓您定義誰可以擷取 kubeconfig** 檔案，以及他們在叢集內具有的權限。
+[az aks get-credentials][az-aks-get-credentials] 命令可讓您取得 AKS 叢集的存取認證，並將其合併至 kubeconfig** 檔案。 您可以使用 Azure 角色型存取控制 (RBAC) 來控制這些認證的存取權。 這些 Azure 角色可讓您定義誰可以抓取*kubeconfig*檔，以及它們在叢集內的許可權。
 
 兩個內建角色如下：
 
@@ -38,7 +38,7 @@ ms.locfileid: "86255263"
   * 允許存取 Microsoft.ContainerService/managedClusters/listClusterUserCredential/action** API 呼叫。 此 API 呼叫會[列出叢集使用者認證][api-cluster-user]。
   * 下載 clusterUser** 角色的 kubeconfig**。
 
-這些 RBAC 角色可以套用至 Azure Active Directory (AD) 使用者或群組。
+這些 RBAC 角色可以套用至 Azure Active Directory （AD）使用者或群組。
 
 > [!NOTE]
 > 在使用 Azure AD 的叢集上，具有*clusterUser*角色的使用者會有空白的*kubeconfig*檔案，以提示登入。 登入之後，使用者可以根據其 Azure AD 使用者或群組設定來取得存取權。 具有*clusterAdmin*角色的使用者具有系統管理員存取權。

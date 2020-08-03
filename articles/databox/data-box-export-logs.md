@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 0ef3135f572b00176ff2a114fd02db82c7a05bca
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1d924e96cfc287060107f541e44980295eb24745
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258396"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494480"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>追蹤和記錄 Azure 資料箱和 Azure Data Box Heavy 匯出訂單的事件
 
@@ -34,11 +34,11 @@ ms.locfileid: "86258396"
 
 ## <a name="set-up-access-control-on-the-order"></a>設定順序的存取控制
 
-您可以在第一次建立訂單時，控制誰可以存取您的訂單。 在不同範圍設定以角色為基礎的存取控制 (RBAC) 角色，以控制資料箱順序的存取權。 RBAC 角色會決定對作業子集的存取類型（讀寫、唯讀、讀寫）。
+您可以在第一次建立訂單時，控制誰可以存取您的訂單。 在各種範圍設定 Azure 角色，以控制資料箱順序的存取權。 Azure 角色會決定對作業子集的存取類型（讀寫、唯讀、讀寫）。
 
 可以為 Azure 資料箱服務定義的兩個角色如下：
 
-- **資料箱讀取器**-具有依範圍定義之 order (s) 的唯讀存取權。 他們只能查看訂單的詳細資料。 他們無法存取與儲存體帳戶相關的任何其他詳細資料，或編輯訂單詳細資料（例如位址等等）。
+- **資料箱讀取器**-具有範圍所定義之訂單的唯讀存取權。 他們只能查看訂單的詳細資料。 他們無法存取與儲存體帳戶相關的任何其他詳細資料，或編輯訂單詳細資料（例如位址等等）。
 - **資料箱參與者**-只有在*已有儲存體帳戶的寫入存取權時*，才能建立訂單來將資料傳送至指定的儲存體帳戶。 如果他們沒有儲存體帳戶的存取權，他們甚至無法建立資料箱順序，將資料複製到帳戶。 此角色不會定義任何儲存體帳戶的相關許可權，也不會授與對儲存體帳戶的存取權。  
 
 若要限制訂單的存取權，您可以：
@@ -124,12 +124,12 @@ ms.locfileid: "86258396"
 
 您可以使用下列選項來匯出這些檔案： 
 
-- 您可以傳送無法透過網路複製的檔案。 
-- 如果您的資料大小大於可用的裝置容量，則會進行部分複製，而且所有未複製的檔案都會列在此記錄中。 您可以使用此記錄檔做為輸入 XML，以建立新的資料箱順序，然後將這些檔案複製到其中。
+- 您可以傳輸無法透過網路來複製的檔案。 
+- 如果您的資料大小大於可用的裝置容量，則會發生部分複製，且所有未複製的檔案都會列在此記錄中。 您可以使用此記錄作為輸入 XML 來建立新的資料箱順序，然後複製這些檔案。
 
 ### <a name="verbose-log"></a>詳細資訊記錄檔
 
-*詳細資訊記錄*檔包含已從 Azure 儲存體帳戶成功匯出的所有檔案清單。 記錄檔也包含檔案大小和總和檢查碼計算。
+*詳細資訊記錄*包含已從 Azure 儲存體帳戶成功匯出的所有檔案清單。 記錄中也包含檔案大小和總和檢查碼計算。
 
 詳細資訊記錄檔的格式如下：
 
@@ -181,7 +181,7 @@ ms.locfileid: "86258396"
 
 - 以驗證從資料箱複製的實際名稱和檔案數目。
 - 以確認檔案的實際大小。
-- 若要確認*crc64*是否對應至非零的字串。 迴圈冗余檢查 (CRC) 計算會在從 Azure 匯出期間完成。 從 [匯出] 和 [將資料從資料箱複製到內部部署伺服器] 的 CRCs，都可以進行比較。 CRC 不相符表示對應的檔案無法正確複製。
+- 若要確認*crc64*是否對應至非零的字串。 迴圈冗余檢查（CRC）計算會在從 Azure 匯出期間完成。 從 [匯出] 和 [將資料從資料箱複製到內部部署伺服器] 的 CRCs，都可以進行比較。 CRC 不相符表示對應的檔案無法正確複製。
 
 
 ## <a name="get-chain-of-custody-logs-after-data-erasure"></a>在資料抹除之後取得監管記錄鏈
@@ -246,7 +246,7 @@ The authentication information fields provide detailed information about this sp
 
 ## <a name="download-order-history"></a>下載訂單記錄
 
-Azure 入口網站提供訂單歷程記錄。 如果訂單已完成，且裝置清理 (磁片) 的資料抹除已完成，請移至您的裝置訂單，然後流覽至 [**訂單詳細**資料]。 [下載訂單記錄]**** 選項可供使用。 如需詳細資訊，請參閱[下載訂單歷程記錄](data-box-portal-admin.md#download-order-history)。
+Azure 入口網站提供訂單歷程記錄。 如果訂單已完成，且裝置清除（從磁片抹除資料）已完成，請移至您的裝置訂單，然後流覽至 [**訂單詳細**資料]。 [下載訂單記錄]**** 選項可供使用。 如需詳細資訊，請參閱[下載訂單歷程記錄](data-box-portal-admin.md#download-order-history)。
 
 如果您流覽訂單歷程記錄，您會看到：
 
@@ -306,7 +306,3 @@ BOM Files Path       : azuredatabox-chainofcustodylogs\<GUID>\<Device-serial-no>
 ## <a name="next-steps"></a>後續步驟
 
 - 瞭解如何[針對資料箱和 Data Box Heavy 上的問題進行疑難排解](data-box-troubleshoot.md)。
-
-
-
-

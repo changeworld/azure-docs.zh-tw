@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4233df62de48dd7a7253c488b0cd69c38cd8d445
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699051"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503492"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>執行測試容錯移轉（嚴重損壞修復演練）至 Azure 
 
@@ -25,7 +25,7 @@ ms.locfileid: "84699051"
 ## <a name="run-a-test-failover"></a>執行測試容錯移轉
 此程序說明如何針對復原方案執行測試容錯移轉。 如果想要執行單一 VM 的測試容錯移轉，請依照[這裡](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm)所述的步驟進行
 
-![Test Failover](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Azure 入口網站中 [測試容錯移轉] 頁面的螢幕擷取畫面。](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. 在 Azure 入口網站的 Site Recovery 中，按一下 [復原**計畫**]  >  *recoveryplan_name*[  >  **測試容錯移轉**]。
@@ -48,7 +48,7 @@ ms.locfileid: "84699051"
 8. 在 [記事] 中，記錄並儲存關於測試容錯移轉的任何觀察。
 
 
-![Test Failover](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+![[測試容錯移轉工作] 索引標籤的螢幕擷取畫面。](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 觸發測試容錯移轉時，會發生下列情況︰
 

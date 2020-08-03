@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 3578710bf066e7745215d8efacafd2cf6c005eac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30b3832dfe3e1c4564d1d89b5c318421e48f554f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81640503"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501690"
 ---
 # <a name="summary-of-customer-data-request-features"></a>客戶資料要求功能的摘要
 
@@ -36,7 +36,7 @@ Azure 時間序列深入解析會將個人資料視為與時間序列深入解�
 
 不過，在您透過入口網站刪除客戶資料之前，應該在 Azure 入口網站中從時間序列深入解析環境移除使用者的存取原則。 如需詳細資訊，請參閱[使用 Azure 入口網站授與時間序列深入解析環境的資料存取權](time-series-insights-data-access.md)。
 
-您也可以使用 REST API，在存取原則上執行刪除作業。 如需詳細資訊，請參閱[存取原則-刪除](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete)。
+您也可以使用 REST API，在存取原則上執行刪除作業。 如需詳細資訊，請參閱[存取原則-刪除](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/delete)。
 
 時間序列深入解析與 Azure 入口網站中的 [原則] 刀鋒視窗整合。 時間序列深入解析和 [原則] 刀鋒視窗兩者都可讓您檢視、匯出及刪除服務內儲存的使用者資料。 在 Azure 入口網站的 [原則] 刀鋒視窗內採取的任何刪除動作，也會刪除時間序列深入解析內的使用者資料。 例如，如果使用者有儲存的個人查詢，該查詢會從時間序列深入解析總管中永久刪除。 如果使用者有儲存的共用查詢，該查詢仍會存在，但是會永久刪除使用者資訊。 下列附註包含如何完成這些工作的指示。
 
@@ -48,7 +48,7 @@ Azure 時間序列深入解析會將個人資料視為與時間序列深入解�
 
 如果您是租用戶系統管理員，便可以在 Azure 入口網站中檢視時間序列深入解析環境內的資料存取原則。 如需詳細資訊，請參閱[使用 Azure 入口網站授與時間序列深入解析環境的資料存取權](time-series-insights-data-access.md)。
 
-您也可以在提供的 REST API 中使用「依環境列出」作業，在存取原則上執行匯出作業。 如需詳細資訊，請參閱[存取原則-依環境列出](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment)。
+您也可以在提供的 REST API 中使用「依環境列出」作業，在存取原則上執行匯出作業。 如需詳細資訊，請參閱[存取原則-依環境列出](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment)。
 
 ## <a name="to-delete-data-stored-within-time-series-insights"></a>刪除儲存在時間序列深入解析內的資料
 

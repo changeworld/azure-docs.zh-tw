@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b11f11ac8a0d4f3a0623c2903dfc9355e875d14
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089442"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501928"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>將許可權授與工作區受控識別（預覽）
 
@@ -22,7 +22,7 @@ ms.locfileid: "87089442"
 >[!NOTE]
 >本文件的其餘部分會將此工作區受控識別稱為受控識別。
 
-## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>將受控識別許可權授與 SQL 集區
+## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>授與受控識別許可權給 SQL 集區
 
 受控識別會授與許可權給工作區中的 SQL 集區。 授與許可權之後，您可以協調執行 SQL 集區相關活動的管線。 當您使用 Azure 入口網站建立 Azure Synapse 工作區時，您可以授與受控識別的控制許可權給 SQL 集區。
 

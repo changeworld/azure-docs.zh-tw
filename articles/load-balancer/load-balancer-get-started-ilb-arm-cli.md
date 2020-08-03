@@ -1,5 +1,5 @@
 ---
-title: 建立內部 Load Balancer-Azure CLI
+title: 建立內部 Load Balancer - Azure CLI
 titleSuffix: Azure Load Balancer
 description: 在本文中，您將瞭解如何使用 Azure CLI 來建立內部負載平衡器
 services: load-balancer
@@ -8,17 +8,17 @@ author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/02/2020
 ms.author: allensu
-ms.openlocfilehash: 2557ac6f3fb8e9091faad5c9c219db529838495d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 9a1587efc07cf852fe9389cc9bf39e693373ef89
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921722"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502319"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>使用 Azure CLI 來建立內部負載平衡器以平衡 VM 的負載
 

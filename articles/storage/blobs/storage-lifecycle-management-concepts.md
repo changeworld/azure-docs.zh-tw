@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 624b8e18f8c0fb523c27c41ce9c10af93c8b6190
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 865263d22d6f92dec74ef2820e80481e1a308804
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446670"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494548"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 儲存體生命週期
 
@@ -30,17 +30,11 @@ ms.locfileid: "87446670"
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="storage-account-support"></a>儲存體帳戶支援
+## <a name="availability-and-pricing"></a>可用性和價格
 
-生命週期管理原則適用于一般用途 v2 （GPv2）帳戶、Blob 儲存體帳戶，以及 Premium 區塊 Blob 儲存體帳戶。 在 Azure 入口網站中，您可以將現有的一般用途（GPv1）帳戶升級至 GPv2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。  
-
-## <a name="pricing"></a>定價
+生命週期管理功能適用于所有 Azure 區域，適用于一般用途 v2 （GPv2）帳戶、Blob 儲存體帳戶和 Premium 區塊 Blob 儲存體帳戶。 在 Azure 入口網站中，您可以將現有的一般用途（GPv1）帳戶升級至 GPv2 帳戶。 如需有關儲存體帳戶的詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。  
 
 生命週期管理功能是免費的。 客戶需支付[設定 Blob 層](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)API 呼叫的一般作業成本。 刪除作業是免費的。 如需定價的詳細資訊，請參閱[區塊 Blob 價格](https://azure.microsoft.com/pricing/details/storage/blobs/)。
-
-## <a name="regional-availability"></a>區域可用性
-
-生命週期管理功能適用于所有 Azure 區域。
 
 ## <a name="add-or-remove-a-policy"></a>新增或移除原則
 
@@ -226,18 +220,18 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 原則是一組規則：
 
-| 參數名稱 | 參數類型 | 備忘稿 |
+| 參數名稱 | 參數類型 | 注意 |
 |----------------|----------------|-------|
 | `rules`        | 規則物件的陣列 | 原則中至少需要一個規則。 您最多可以在原則中定義100個規則。|
 
 原則中的每個規則都有數個參數：
 
-| 參數名稱 | 參數類型 | 備忘稿 | 必要 |
+| 參數名稱 | 參數類型 | 注意 | 必要 |
 |----------------|----------------|-------|----------|
-| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | 是 |
+| `name`         | String |規則名稱最多可包含256個英數位元。 規則名稱會區分大小寫。  它在原則內必須是唯一的。 | True |
 | `enabled`      | Boolean | 選擇性布林值，允許暫時停用規則。 如果未設定，預設值為 true。 | 否 | 
-| `type`         | 列舉值 | 目前的有效類型為 `Lifecycle` 。 | 是 |
-| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | 是 |
+| `type`         | 列舉值 | 目前的有效類型為 `Lifecycle` 。 | True |
+| `definition`   | 定義生命週期規則的物件 | 每個定義是由篩選集和動作集組成。 | True |
 
 ## <a name="rules"></a>規則
 
@@ -290,14 +284,14 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 篩選器包括：
 
-| 篩選名稱 | 篩選類型 | 備忘稿 | 必要 |
+| 篩選名稱 | 篩選類型 | 注意 | 必要 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 預先定義的列舉值陣列。 | 目前的版本支援 `blockBlob` 。 | 是 |
 | prefixMatch | 要比對之前置詞的字串陣列。 每個規則最多可以定義10個首碼。 前置詞字串必須以容器名稱開頭。 例如，如果您想要比對底下的所有 blob `https://myaccount.blob.core.windows.net/container1/foo/...` ，則 prefixMatch 為 `container1/foo` 。 | 如果您未定義 prefixMatch，此規則會套用至儲存體帳戶內的所有 blob。  | 否 |
 | blobIndexMatch | 包含要比對之 Blob 索引標記索引鍵和值條件的字典值陣列。 每個規則最多可以定義10個 Blob 索引標記條件。 例如，如果您想要將規則的所有 blob 與 `Project = Contoso` 下的 `https://myaccount.blob.core.windows.net/` 進行比對，則 blobIndexMatch 為 `{"name": "Project","op": "==","value": "Contoso"}` 。 | 如果您未定義 blobIndexMatch，此規則會套用至儲存體帳戶內的所有 blob。 | 否 |
 
 > [!NOTE]
-> Blob 索引處於公開預覽狀態，並適用於**法國中部**和**法國南部**區域。 若要深入了解這項功能以及已知的問題和限制，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
+> Blob 索引處於公開預覽狀態，並可在**加拿大中部**、**加拿大東部**、**法國中部**和**法國南部**區域中取得。 若要深入了解這項功能以及已知的問題和限制，請參閱[使用 Blob 索引 (預覽) 來管理和尋找 Azure Blob 儲存體上的資料](storage-manage-find-blobs.md)。
 
 ### <a name="rule-actions"></a>規則動作
 

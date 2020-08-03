@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: c2a25632942c0c39a20fa0c7f51a1e8937bdd873
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059390"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491964"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 時間序列深入解析 Gen2 事件來源
 
@@ -27,7 +27,7 @@ ms.locfileid: "87059390"
 
 ## <a name="create-or-edit-event-sources"></a>建立或編輯事件來源
 
-您的事件來源資源可以與您的 Azure 時間序列深入解析 Gen2 環境或不同的訂用帳戶存在於相同的 Azure 訂用帳戶中。您可以使用 [ [Azure 入口網站](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)]、[ [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)]、[ [ARM 範本](time-series-insights-manage-resources-using-azure-resource-manager-template.md)] 和 [ [REST API](https://docs.microsoft.com/rest/api/time-series-insights/management/eventsources) ] 來建立、編輯或移除環境的事件來源。
+您的事件來源資源可以與您的 Azure 時間序列深入解析 Gen2 環境或不同的訂用帳戶存在於相同的 Azure 訂用帳戶中。您可以使用 [ [Azure 入口網站](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)]、[ [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)]、[ [ARM 範本](time-series-insights-manage-resources-using-azure-resource-manager-template.md)] 和 [ [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) ] 來建立、編輯或移除環境的事件來源。
 
 當您連線到事件來源時，您的 Azure 時間序列深入解析 Gen2 環境將會從最舊的事件開始，讀取目前儲存在您的 Iot 或事件中樞中的所有事件。
 
@@ -80,7 +80,7 @@ Azure 時間序列深入解析 Gen2 目前不支援使用串流管線匯入歷�
 ± HH： MM</br>
 ± HH： MMZ</br>
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 閱讀 JSON 簡維[和「轉義規則](./concepts-json-flattening-escaping-rules.md)」，以瞭解事件的儲存方式。 
 

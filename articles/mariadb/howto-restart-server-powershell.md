@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 5/26/2020
-ms.openlocfilehash: 1cf5cf3f34f2986bbc18b5293dad4862c24f47a2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 37fb724b83e80c1265755e6440f152143d419051
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121073"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503067"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-powershell"></a>使用 PowerShell 重新開機適用於 MariaDB 的 Azure 資料庫 server
 
@@ -21,7 +22,7 @@ ms.locfileid: "86121073"
 
 完成重新開機所需的時間量取決於適用于 mariadb 復原程式。 若要縮短重新開機時間，建議您在重新開機之前，將伺服器上發生的活動量降到最低。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作說明指南，您需要：
 

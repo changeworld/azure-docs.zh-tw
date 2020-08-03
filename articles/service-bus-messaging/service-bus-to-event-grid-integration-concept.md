@@ -6,12 +6,13 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 009e6a1b98e72d9618dc8ed3437d7ea90ab4afac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0d9c9c061e31ac4d3eba8d31352253bb25b62a9b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340575"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503288"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服務匯流排與 Event Grid 的整合概觀
 
@@ -110,7 +111,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 
 為服務匯流排命名空間建立 Event Grid 訂用帳戶的方式有三種：
 
-* 在 Azure 入口網站
+* 在 Azure 入口網站中
 * 在[Azure CLI](#azure-cli-instructions)
 * 在[PowerShell](#powershell-instructions)中
 

@@ -6,12 +6,13 @@ ms.topic: conceptual
 ms.date: 07/09/2020
 ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 20175e252d009620585e20cf76cdb634549b4f1d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 3097dcb0444bc8b73d89b42d73ad1f5b9306ab09
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323905"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502812"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>以程式設計方式建立 Azure 訂用帳戶（預覽）
 
@@ -26,7 +27,7 @@ ms.locfileid: "87323905"
 
 使用下列各節中的資訊來建立 EA 訂閱。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 您必須擁有註冊帳戶的「擁有者」角色，才能建立訂閱。 有兩種方式可以取得角色：
 
@@ -213,7 +214,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 
 ## <a name="create-subscriptions-for-an-mca-account"></a>建立 MCA 帳戶的訂閱
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 您必須在帳單設定檔或帳單帳戶的發票區段或擁有者或參與者角色上擁有「擁有者」、「參與者」或「Azure 訂閱使用者」角色，才能建立訂閱。 如需詳細資訊，請參閱[訂用帳戶計費角色和工作](../../cost-management-billing/manage/understand-mca-roles.md#subscription-billing-roles-and-tasks)。
 
@@ -354,7 +355,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ## <a name="create-subscriptions-for-an-mpa-billing-account"></a>建立 MPA 帳單帳戶的訂閱
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 您在組織的雲端解決方案提供者帳戶中必須擁有全域系統管理員或系統管理員代理程式角色，才能建立帳單帳戶的訂用帳戶。 如需詳細資訊，請參閱[合作夥伴中心-指派使用者角色和許可權](/partner-center/permissions-overview)。
 

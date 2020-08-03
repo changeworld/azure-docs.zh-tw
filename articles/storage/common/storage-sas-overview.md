@@ -10,12 +10,12 @@ ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077869"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502166"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權
 
@@ -58,7 +58,7 @@ Azure 儲存體支援三種類型的共用存取簽章：
 
 - 使用以 Azure Active Directory （Azure AD）認證建立的*使用者委派金鑰*。 使用者委派 SAS 會使用使用者委派金鑰進行簽署。
 
-    若要取得使用者委派金鑰並建立 SAS，必須將包含**storageAccounts/blobServices/generateUserDelegationKey**動作的角色型存取控制（RBAC）角色指派給 Azure AD 的安全性主體。 如需具有取得使用者委派金鑰許可權之 RBAC 角色的詳細資訊，請參閱[建立使用者委派 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)。
+    若要取得使用者委派金鑰並建立 SAS，必須將包含**storageAccounts/blobServices/generateUserDelegationKey**動作的 Azure 角色指派給 Azure AD 的安全性主體。 如需具有取得使用者委派金鑰許可權之 Azure 角色的詳細資訊，請參閱[建立使用者委派 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)。
 
 - 使用儲存體帳戶金鑰。 服務 SAS 和帳戶 SAS 都會使用儲存體帳戶金鑰進行簽署。 若要建立以帳戶金鑰簽署的 SAS，應用程式必須具有帳戶金鑰的存取權。
 

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958373"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494990"
 ---
 # <a name="use-stored-procedures-in-sql-pool"></a>在 SQL 集區中使用預存程式
 
@@ -27,7 +27,7 @@ SQL 集區支援 SQL Server 中使用的許多 T-sql 功能。 更重要的是�
 
 不過，為了維護 SQL 集區的規模和效能，也有一些特性和功能的行為差異，而其他則不受支援。
 
-## <a name="introducing-stored-procedures"></a>預存程序簡介
+## <a name="stored-procedures-in-sql-pool"></a>SQL 集區中的預存程式
 
 預存程序很適合用來封裝您的 SQL 程式碼；將它儲存在資料倉儲中您的資料附近。 藉由將程式碼封裝成可管理的單位，預存程序協助開發人員將其解決方案模組化；促使程式碼有更大的可重複使用性。 每個預存程序也可接受參數，使其更具彈性。
 

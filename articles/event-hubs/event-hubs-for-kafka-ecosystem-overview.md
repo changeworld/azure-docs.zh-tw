@@ -3,12 +3,12 @@ title: 從 Apache Kafka 應用程式使用事件中樞 - Azure 事件中樞 | Mi
 description: 本文提供與 Azure 事件中樞所支援的 Apache Kafka 有關的資訊。
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 6dad797f6769e9804cce7d47ed74794fdddcfb0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 94e0993c192cb735d6a4f0f3f7ec484c830902e9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002473"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501588"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>從 Apache Kafka 應用程式使用 Azure 事件中樞
 事件中樞提供的 Kafka 端點可讓您現有的 Kafka 型應用程式使用，作為執行您本身的 Kafka 叢集以外的另一項選擇。 事件中樞支援 [Apache Kafka 通訊協定 1.0 和更新版本](https://kafka.apache.org/documentation/)，並且可與您現有的 Kafka 應用程式搭配使用，包括 MirrorMaker。  
@@ -66,6 +66,9 @@ sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
+> [!NOTE]
+> 使用 SAS 驗證搭配 Kafka 用戶端時，重新產生 SAS 金鑰時，已建立的連線不會中斷連線。 
+
 #### <a name="samples"></a>範例 
 如需**教學**課程和使用 SAS 或 OAuth 來建立事件中樞並加以存取的逐步指示，請參閱[快速入門：使用 Kafka 通訊協定事件中樞串流處理](event-hubs-quickstart-kafka-enabled-event-hubs.md)。
 
@@ -86,7 +89,7 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
 *   HTTP Kafka API 支援
 *   Kafka Streams
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 本文概略介紹了適用於 Kafka 的事件中樞。 若要深入了解，請參閱[適用於 Azure 事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)。
 
 

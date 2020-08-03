@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 980cbe17e982edb3aa72c3b58908f13a3d63a639
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88f275016bad72122ebd195449b9af88086bdc7b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76021291"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507270"
 ---
 #### <a name="to-create-a-new-service"></a>建立新服務
 
@@ -29,7 +29,7 @@ ms.locfileid: "76021291"
 
    2. 從下拉式清單中選擇 [訂閱]****。 訂用帳戶會連結到您的帳單帳戶。 如果您只擁有一個訂用帳戶，則此欄位不存在。
 
-   3. 針對**資源群組**，**使用現有群組**或**建立新的群組**。 如需詳細資訊，請參閱 [Azure 資源群組](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)。
+   3. 針對**資源群組**，**使用現有群組**或**建立新的群組**。 如需詳細資訊，請參閱 [Azure 資源群組](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
 
    4. 提供服務的 [位置]****。 一般而言，請選擇最接近您想要部署裝置之地理區域的位置。 您可能也需要計入下列考量因素：
 

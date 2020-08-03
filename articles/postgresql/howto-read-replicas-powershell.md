@@ -6,12 +6,13 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 45876c8e176a4f81abfd927b0e2a8df8fc26ac25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0caa8e2911046e18e63748fe5bde4b4c965eb965
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106795"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502526"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>如何使用 PowerShell 建立和管理適用於 PostgreSQL 的 Azure 資料庫中的讀取複本
 
@@ -21,7 +22,7 @@ ms.locfileid: "86106795"
 
 您可以使用 PowerShell 來建立及管理讀取複本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作說明指南，您需要：
 
@@ -53,7 +54,7 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resourceGroupName |  myresourcegroup |  建立複本伺服器所在的資源群組。  |
-| 名稱 | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
+| Name | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 
 若要建立跨區域讀取複本，請使用**Location**參數。 下列範例會在**美國西部**區域建立複本。
 

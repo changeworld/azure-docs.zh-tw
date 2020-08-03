@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
-ms.openlocfilehash: d035ef4bc90410cbf0899c038047dd5e6a001f10
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 3e38fae84f63f4867befbc3695242dc62dc8dbe8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87462313"
+ms.locfileid: "87502642"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>從 Express.js 轉移至 Azure Functions
 
@@ -24,7 +24,7 @@ Express.js 是適用于 網頁程式開發人員的其中一個最受歡迎的 N
 
 - **預設路由**：根據預設，Azure Functions 端點會在路由下公開 `api` 。 路由規則可透過[ `routePrefix` _host.json_ ](./functions-bindings-http-webhook-output.md#hostjson-settings)檔案來設定。
 
-- 設定**和慣例**：函式應用程式會使用檔案_上的function.js_來定義 HTTP 動詞命令、定義安全性原則，以及設定函數的[輸入和輸出](./functions-triggers-bindings.md)。 根據預設，包含函式檔案的資料夾名稱會定義端點名稱，但是您可以透過檔案中[function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint)的 route 屬性來變更名稱。
+- 設定**和慣例**：函式應用程式會使用檔案_上的function.js_來定義 HTTP 動詞命令、定義安全性原則，以及設定函數的[輸入和輸出](./functions-triggers-bindings.md)。 根據預設，包含函式檔案的資料夾名稱會定義端點名稱，但是您可以透過檔案中function.js的屬性來變更名稱 `route` 。 [function.json](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint)
 
 > [!TIP]
 > 若要深入瞭解，請透過互動式教學課程將[Node.js 和 Express Api 重構至具有 Azure Functions 的無伺服器 api](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/)。

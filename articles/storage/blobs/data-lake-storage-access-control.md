@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4b52fe22e455f5b0ebce6960b40bcc80c46079c3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: eab2beecc4153bdb2b74ca81bb43f86e2e29a778
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421343"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504138"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的存取控制
 
-Azure Data Lake Storage Gen2 會實作用於支援 Azure 角色型存取控制（RBAC）和 POSIX 型存取控制清單（Acl）的存取控制模型。 本文摘要說明 Data Lake Storage Gen2 存取控制模型的基本概念。
+Azure Data Lake Storage Gen2 會執行可同時支援 Azure 角色型存取控制（Azure RBAC）和 POSIX 型存取控制清單（Acl）的存取控制模型。 本文摘要說明 Data Lake Storage Gen2 存取控制模型的基本概念。
 
 <a id="azure-role-based-access-control-rbac"></a>
 
@@ -281,7 +281,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-不可以。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
+否。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
 
 如果 HNS 關閉，Azure RBAC 授權規則仍適用。
 

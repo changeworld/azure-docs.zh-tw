@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 907258dbce9b4f942601935df472e3515ed2d956
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a92d73941aac045534b6708c4b92d741c39ff781
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020629"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494962"
 ---
 # <a name="table-data-types-in-synapse-sql"></a>Synapse SQL 中的資料表資料類型
 
 在 Synapse SQL 中定義資料表資料類型的建議。 
 
-## <a name="what-are-the-data-types"></a>資料類型是什麼？
+## <a name="data-types"></a>資料類型
 
 Synapse SQL 支援最常使用的資料類型。 如需支援的資料類型清單，請參閱 CREATE TABLE 陳述式中的[資料類型](/sql/t-sql/statements/create-table-azure-sql-data-warehouse#DataTypes)。 
 
@@ -69,6 +69,6 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 | [使用者定義型別](/sql/relational-databases/native-client/features/using-user-defined-types) |可能時，請轉換回原生資料類型。 |
 | 預設值 | 預設值僅支援常值和常數。 |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需開發資料表的詳細資訊，請參閱[資料表概觀](develop-overview.md)。

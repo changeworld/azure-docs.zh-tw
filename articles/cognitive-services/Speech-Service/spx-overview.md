@@ -10,14 +10,15 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: trbye
-ms.openlocfilehash: 3fb0b71cbb82b3b9acad1d1ce093baa86c700a51
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: ab019250e03feb9a776d628c06e792b884252260
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800344"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501809"
 ---
-# <a name="what-is-the-speech-cli"></a>什麼是語音 CLI？
+# <a name="what-is-the-speech-cli"></a>什麼是 Speech CLI？
 
 語音 CLI 是一種命令列工具，可用於使用語音服務，而不需要撰寫任何程式碼。 語音 CLI 需要最少的設定，而且可以輕鬆地立即開始實驗語音服務的主要功能，以查看是否能符合您的使用案例。 在幾分鐘內，您就可以從檔案目錄執行簡單的測試工作流程，例如 batch 語音辨識，或從檔案的字串集合上文字轉換語音。 除了簡單的工作流程之外，語音 CLI 也可供生產環境使用，而且可以相應增加，以使用自動化或 shell 腳本執行較大的進程 `.bat` 。
 

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 3035bd71a91f7cad6fb951d74081b77d8445a81f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 64b3bf87df7d0b10f8a69e8303010f64b3e68f79
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133788"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507603"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -19,7 +19,9 @@ ms.locfileid: "87133788"
 | 區域 | 功能 | 預設限制 | 可? |
 | --- | --- | --- | --- |
 | Azure 資源 | 區域中每個訂用帳戶的 Azure 數位 Twins 實例數目 | 10 | 是 |
-| 數位 twins | Azure 數位 Twins 實例中的 twins 數目 | 200,000 | 是 |
+| Digital Twins | Azure 數位 Twins 實例中的 twins 數目 | 200,000 | 是 |
+| Digital Twins | 單一對應項的連入關聯性數目 | 5,000 | 否 |
+| Digital Twins | 來自單一對應項的傳出關聯性數目 | 5,000 | 否 |
 | 路由 | 單一 Azure 數位 Twins 實例的端點數目 | 6 | 否 |
 | 路由 | 單一 Azure 數位 Twins 實例的路由數目 | 6 | 是 |
 | 模型 | 單一 Azure 數位 Twins 實例內的模型數目 | 10,000 | 是 |

@@ -6,12 +6,13 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/13/2020
-ms.openlocfilehash: 1cff2b56e529e0f52b23f225f7eb492300447ea1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 831c50fe608e3f7de18b4d8917bb2f98a0e78308
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387926"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501996"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>使用 Azure 入口網站適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 
@@ -49,7 +50,7 @@ ms.locfileid: "87387926"
 
    ![存取原則總覽](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. 選取 [儲存]。
+3. 選取 [儲存]  。
 
 ## <a name="set-data-encryption-for-azure-database-for-postgresql-single-server"></a>設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 
@@ -61,7 +62,7 @@ ms.locfileid: "87387926"
 
    ![適用於 PostgreSQL 的 Azure 資料庫的螢幕擷取畫面，其中已反白顯示資料加密選項](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. 選取 [儲存]。
+3. 選取 [儲存]  。
 
 4. 若要確保所有檔案（包括暫存檔案）都已完全加密，請重新開機伺服器。
 

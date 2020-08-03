@@ -7,13 +7,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: fc32dd5c477a76a20bc3a641ec8761e95c129554
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805896"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502693"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 根據 URL 路由傳送網路流量
 
@@ -43,7 +43,7 @@ ms.locfileid: "84805896"
 
 資源群組是一種邏輯容器，您會在其中部署與管理 Azure 資源。 使用 `az group create` 建立資源群組。
 
-下列範例會在 eastus** 位置建立名為 myResourceGroupAG** 的資源群組。
+下列範例會在 eastus 位置建立名為 myResourceGroupAG 的資源群組。
 
 ```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus

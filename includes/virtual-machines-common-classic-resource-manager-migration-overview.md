@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77192765"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507628"
 ---
 本文會說明如何將 IaaS 資源從傳統部署模型遷移至 Resource Manager 部署模型，並詳述如何使用虛擬網路站對站閘道，從並存於訂用帳戶中的兩個部署模型連線到資源。 您可以深入瞭解[Azure Resource Manager 功能和優點](../articles/azure-resource-manager/management/overview.md)。 
 
@@ -22,9 +22,9 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 
 在 Azure Resource Manager 之下，針對來自傳統部署模型的幾乎所有功能，都有提供計算、網路及儲存體支援。 若要享有 Azure Resource Manager 新功能的好處，您可以從「傳統」部署模型移轉現有的部署。
 
-## <a name="supported-resources-for-migration"></a>支援移轉的資源
-移轉期間支援這些傳統 IaaS 資源
+## <a name="supported-resources--configurations-for-migration"></a>支援的資源 & 設定以進行遷移
 
+### <a name="supported-resources-for-migration"></a>支援移轉的資源
 * 虛擬機器
 * 可用性設定組 (Availability Sets)
 * 儲存體帳戶
@@ -34,6 +34,13 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 * 網路安全性群組
 * 路由表
 * 保留的 IP
+
+## <a name="supported-configurations-for-migration"></a>支援的遷移設定
+移轉期間支援這些傳統 IaaS 資源
+
+| 服務 | 組態 |
+| --- | --- |
+| Azure AD 網域服務 | [包含 Azure AD 網域服務的虛擬網路](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
 
 ## <a name="supported-scopes-of-migration"></a>支援的移轉範圍
 有 4 種不同方式可完成計算、網路和儲存體資源移轉：
@@ -129,5 +136,4 @@ Resource Manager 除了可讓您透過範本部署複雜的應用程式之外，
 | Azure App Service |包含 App Service 環境的虛擬網路 |目前不支援。 |
 | Azure HDInsight |包含 HDInsight 服務的虛擬網路 |目前不支援。 |
 | Microsoft Dynamics 週期服務 |包含「Dynamics 週期服務」所管理之虛擬機器的虛擬網路 |目前不支援。 |
-| Azure AD 網域服務 |包含 Azure AD 網域服務的虛擬網路 |目前不支援。 |
 | Azure API 管理 |包含 Azure API 管理部署的虛擬網路 |目前不支援。 若要移轉 IaaS VNET，請變更屬於無停機作業的 API 管理部署的 VNET。 |
