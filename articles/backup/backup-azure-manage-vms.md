@@ -1,15 +1,14 @@
 ---
 title: 管理和監視 Azure VM 備份
 description: 瞭解如何使用 Azure 備份服務來管理和監視 Azure VM 備份。
-ms.reviewer: sogup
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 4e3fb05b054ea682c315654e6df262e49d592597
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/02/2020
+ms.openlocfilehash: cbe0ccef9df27af032cf849b302f6a6211383fe8
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054758"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531968"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>使用 Azure 備份服務管理 Azure VM 備份
 
@@ -31,24 +30,30 @@ ms.locfileid: "87054758"
 若要在保存庫儀表板上查看 Vm：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 在 [中樞] 功能表上，選取 **[流覽]**。 在資源清單中輸入 **復原服務**。 當您輸入時，系統會根據您的輸入來篩選清單。 選取 [復原**服務保存庫**]。
+1. 在左側功能表上，選取 [所有服務]  。
 
-    ![建立復原服務保存庫](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
+    ![選取所有服務](./media/backup-azure-manage-vms/select-all-services.png)
 
-3. 為了方便使用，請以滑鼠右鍵按一下保存庫，然後選取 [**釘選到儀表板**]。
-4. 開啟保存庫儀表板。
+1. 在 [所有服務]  對話方塊中，輸入 *Recovery Services*。 資源清單會根據您的輸入進行篩選。 在資源清單中，選取 [復原服務保存庫]  。
+
+    ![輸入並選擇復原服務保存庫](./media/backup-azure-manage-vms/all-services.png)
+
+    隨即會在訂用帳戶中出現 [復原服務保存庫] 清單。
+
+1. 為了方便使用，請選取保存庫名稱旁邊的釘選圖示，然後選取 [**釘選到儀表板**]。
+1. 開啟保存庫儀表板。
 
     ![開啟保存庫儀表板和設定窗格](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-5. 在 [**備份專案**] 圖格上，選取 [ **Azure 虛擬機器**]。
+1. 在 [**備份專案**] 圖格上，選取 [ **Azure 虛擬機器**]。
 
-    ![開啟 [備份專案] 圖格](./media/backup-azure-manage-vms/contoso-vault-1606.png)
+    ![開啟 [備份專案] 圖格](./media/backup-azure-manage-vms/azure-virtual-machine.png)
 
-6. 在 [**備份專案**] 窗格中，您可以查看受保護 vm 的清單。 在此範例中，保存庫會保護一部虛擬機器： demobackup。  
+1. 在 [**備份專案**] 窗格中，您可以查看受保護 vm 的清單。 在此範例中，保存庫會保護一部虛擬機器： *myVMR1*。  
 
     ![查看 [備份專案] 窗格](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
-7. 從保存庫專案的儀表板，修改備份原則、執行隨選備份、停止或繼續保護 Vm、刪除備份資料、查看還原點，以及執行還原。
+1. 從保存庫專案的儀表板，您可以修改備份原則、執行隨選備份、停止或繼續保護 Vm、刪除備份資料、查看還原點，以及執行還原。
 
     ![[備份專案] 儀表板和 [設定] 窗格](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
@@ -59,18 +64,17 @@ ms.locfileid: "87054758"
 若要修改現有的備份原則：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。 開啟保存庫儀表板。
-2. 從 [**管理 > 備份原則**] 中，選取 [Azure 虛擬機器] 類型的備份原則。
-3.  按一下 [修改] 並變更設定。
+2. 從 [**管理 > 備份原則**] 中，選取 [ **Azure 虛擬機器**] 類型的備份原則。
+3. 選取 [**修改**] 並變更設定。
 
-
-### <a name="switch-backup-policy"></a>切換備份原則 
+### <a name="switch-backup-policy"></a>切換備份原則
 
 若要管理備份原則：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。 開啟保存庫儀表板。
 2. 在 [**備份專案**] 圖格上，選取 [ **Azure 虛擬機器**]。
 
-    ![開啟 [備份專案] 圖格](./media/backup-azure-manage-vms/contoso-vault-1606.png)
+    ![開啟 [備份專案] 圖格](./media/backup-azure-manage-vms/azure-virtual-machine.png)
 
 3. 在 [**備份專案**] 窗格中，您可以使用最新的還原點時間來查看受保護的 vm 清單和上次備份狀態。
 
@@ -113,7 +117,7 @@ ms.locfileid: "87054758"
 
 有兩種方式可停止保護 VM：
 
-* **停止保護並保留備份資料**。 此選項會阻止所有未來的備份工作保護您的 VM;不過，Azure 備份服務會保留已備份的復原點。  您必須付費以將復原點保留在保存庫中（如需詳細資訊，請參閱[Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)）。 如有需要，您將能夠還原 VM。 如果您決定繼續 VM 保護，則可以使用 [*繼續備份*] 選項。
+* **停止保護並保留備份資料**。 此選項會停止所有未來的備份工作，使其無法保護您的 VM。 不過，Azure 備份服務會保留已備份的復原點。  您必須付費以將復原點保留在保存庫中（如需詳細資訊，請參閱[Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)）。 如有需要，您將能夠還原 VM。 如果您決定繼續 VM 保護，則可以使用 [*繼續備份*] 選項。
 * **停止保護並刪除備份資料**。 此選項會阻止所有未來的備份工作保護您的 VM，並刪除所有復原點。 您將無法還原 VM，也無法使用 [*繼續備份*] 選項。
 
 >[!NOTE]
@@ -162,11 +166,11 @@ ms.locfileid: "87054758"
 
 * 從保存庫專案儀表板中，選取 [停止備份]，然後依照 [[停止保護和刪除備份資料](#stop-protection-and-delete-backup-data)] 選項的指示進行。
 
-  ![選取 [停止備份]](./media/backup-azure-manage-vms/stop-backup-buttom.png)
+  ![選取 [停止備份]](./media/backup-azure-manage-vms/stop-backup-button.png)
 
 * 從保存庫專案儀表板中，選取 [刪除備份資料]。 如果您已在停止 VM 保護期間選擇[停止保護並保留備份資料](#stop-protection-and-retain-backup-data)選項，則會啟用此選項。
 
-  ![選取 [刪除備份]](./media/backup-azure-manage-vms/delete-backup-buttom.png)
+  ![選取 [刪除備份]](./media/backup-azure-manage-vms/delete-backup-button.png)
 
   * 在保存[庫專案儀表板](#view-vms-on-the-dashboard)上，選取 [**刪除備份資料**]。
   * 輸入備份專案的名稱，以確認您想要刪除復原點。

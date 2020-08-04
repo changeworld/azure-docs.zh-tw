@@ -7,12 +7,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 07/30/2020
-ms.openlocfilehash: 2c67e2b72b7d35f5f7c8e9ccd136d7c10329f531
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 0fb2f9dd156d18705308b41ef8d6b015b3b6d71b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513599"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534442"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>針對 Azure 資料共用中的常見問題進行疑難排解 
 
@@ -34,7 +34,7 @@ ms.locfileid: "87513599"
     1. 搜尋**DataShare**
     1. 按一下 [註冊] 
 
-    您必須擁有 [Azure 參與者 RBAC 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)才能完成這些步驟。 
+    您必須具有[參與者 Azure 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)，才能完成這些步驟。 
 
 * **邀請會傳送至您的電子郵件別名，而不是您的 Azure 登入電子郵件。** 如果您已註冊 Azure 資料共用服務，或已在 Azure 租使用者中建立資料共用資源，但仍無法看到邀請，可能是因為提供者已將您的電子郵件別名輸入為收件者，而不是您的 Azure 登入電子郵件地址。 請洽詢您的資料提供者，並確定他們已將邀請傳送至您的 Azure 登入電子郵件地址，而不是您的電子郵件別名。
 

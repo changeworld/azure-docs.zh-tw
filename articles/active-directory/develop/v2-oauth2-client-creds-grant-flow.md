@@ -12,12 +12,12 @@ ms.date: 7/27/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bd641b57cfdd7f9481e17a90dbbd81d5e43f8ad2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9bd34831beea4ce20f7abffb2eaac70e08decfd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311104"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529220"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 用戶端認證流程
 
@@ -53,7 +53,7 @@ OAuth 2.0 用戶端認證授與流程可允許 Web 服務 (機密用戶端) 在�
 對於需要存取具有個人 Microsoft 帳戶之取用者使用者所擁有資料的精靈和服務帳戶來說，這種授權相當常見。 對於組織所擁有的資料，建議您透過應用程式權限取得必要的授權。
 
 > [!NOTE]
-> 為了啟用此以 ACL 為基礎的授權模式，Azure AD 不需要授權應用程式取得另一個應用程式的權杖-因此，只有在沒有宣告的情況下，才能發出僅限應用程式的權杖 `rules` 。 公開 Api 的應用程式必須執行許可權檢查，才能接受權杖。
+> 為了啟用此以 ACL 為基礎的授權模式，Azure AD 不需要授權應用程式取得另一個應用程式的權杖-因此，只有在沒有宣告的情況下，才能發出僅限應用程式的權杖 `roles` 。 公開 Api 的應用程式必須執行許可權檢查，才能接受權杖。
 
 ### <a name="application-permissions"></a>應用程式權限
 

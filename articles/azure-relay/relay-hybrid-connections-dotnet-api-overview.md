@@ -3,12 +3,12 @@ title: Azure 轉送 .NET Standard API 概觀 | Microsoft Docs
 description: 本文摘要說明 Azure 轉送混合式連線 .NET Standard API 的一些重要概述。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 578d0fd2bbf8b9bb897a79e88399dee3711f5990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d5aeed2ea76f47608ef03103b11fa236ec0362e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316846"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532895"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure 轉送混合式連線 .NET Standard API 概觀
 
@@ -82,7 +82,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>接收資料
 
-[HybridConnectionStream][HCStream] 類別允許雙向通訊。 在大部分的案例中，您會持續接收來自串流的資料。 如果您從串流讀取文字，建議您使用 [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) 物件，這可讓您更容易剖析資料。 例如，您可以讀取文字 (而非`byte[]`) 格式的資料。
+[HybridConnectionStream][HCStream] 類別允許雙向通訊。 在大部分的案例中，您會持續接收來自串流的資料。 如果您從串流讀取文字，建議您使用 [StreamReader](/dotnet/api/system.io.streamreader?view=netcore-3.1) 物件，這可讓您更容易剖析資料。 例如，您可以讀取文字 (而非`byte[]`) 格式的資料。
 
 下列程式碼會從串流讀取個別的文字行，直到要求取消：
 
@@ -109,14 +109,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>傳送資料
 
-一旦建立連線，您可以傳送訊息到轉送端點。 因為連線物件會繼承[串流](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx)，請傳送 `byte[]` 格式的資料。 下列範例示範如何執行：
+一旦建立連線，您可以傳送訊息到轉送端點。 因為連線物件會繼承[串流](/dotnet/api/system.io.stream?view=netcore-3.1)，請傳送 `byte[]` 格式的資料。 下列範例示範如何執行：
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-不過，如果您想要直接傳送文字，不需每次都將字串編碼，您可以使用 [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) 物件來包裝 `hybridConnectionStream` 物件。
+不過，如果您想要直接傳送文字，不需每次都將字串編碼，您可以使用 [StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1) 物件來包裝 `hybridConnectionStream` 物件。
 
 ```csharp
 // The StreamWriter object only needs to be created once
@@ -129,7 +129,7 @@ await textWriter.WriteLineAsync("hello");
 若要深入了解 Azure 轉送，請造訪下列連結：
 
 * [Microsoft.Azure.Relay reference](/dotnet/api/microsoft.azure.relay)
-* [什麼是 Azure 轉送？](relay-what-is-it.md)
+* [什麼是 Azure 轉送？](relay-what-is-it.md)(機器翻譯)
 * [可用的轉送 API](relay-api-overview.md)
 
 [RelayConnectionStringBuilder]: /dotnet/api/microsoft.azure.relay.relayconnectionstringbuilder

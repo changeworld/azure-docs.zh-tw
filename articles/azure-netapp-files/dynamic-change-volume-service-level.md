@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 5097a5dfa6dd9b8fd46e4bcbcee72319af51f86f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e19db61efbf93e3191d5780d07952f3d195c7a59
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499359"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533034"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>動態變更磁碟區的服務等級
 
@@ -38,7 +38,9 @@ ms.locfileid: "87499359"
 
 ## <a name="register-the-feature"></a>註冊功能
 
-1. 將磁片區移到另一個容量集區的功能目前為預覽狀態。 如果這是您第一次使用此功能，請在使用此功能之前先進行註冊： 
+將磁片區移到另一個容量集區的功能目前為預覽狀態。 如果您是第一次使用這項功能，您必須先註冊此功能。
+
+1. 註冊功能： 
 
     ```azurepowershell-interactive
     Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange

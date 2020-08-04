@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 36f3c4192f43e323df2aaf9397364dfd1b4da731
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a9c3264a9a9d6ae27eee6da4338fa6fd401da461
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501367"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534051"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>適用于 Azure 儲存體的 Azure 安全性基準
 
@@ -536,7 +536,7 @@ ms.locfileid: "87501367"
 
 **指導**方針： Azure Active Directory （Azure AD）透過角色型存取控制（RBAC）來授權受保護資源的存取權限。 Azure 儲存體定義一組 Azure 內建角色，其中包含用來存取 blob 或佇列資料的常用許可權集。 
 
-- [如何為 Azure 儲存體帳戶指派 RBAC 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)
+- [如何為 Azure 儲存體帳戶指派 Azure 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [使用 Azure 儲存體資源提供者來存取管理資源](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 

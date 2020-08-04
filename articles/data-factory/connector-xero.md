@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: ba5105c6183c88ca7e5641cdacaa5d80ea529bc6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14b3857211eca39ebe09a3a0752ca1d8eee17bc0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84263885"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529988"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>使用 Azure Data Factory 從 Xero 複製資料
 
@@ -36,7 +36,8 @@ ms.locfileid: "84263885"
 具體而言，這個 Xero 連接器支援：
 
 - Xero [私人應用程式](https://developer.xero.com/documentation/getting-started/getting-started-guide)，但不支援公用應用程式。
-- 所有 Xero 資料表 (API 端點)，但「報告」除外。 
+- 所有 Xero 資料表 (API 端點)，但「報告」除外。
+- OAuth 1.0 和 OAuth 2.0 驗證。
 
 Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此連接器您不需要手動安裝任何驅動程式。
 
@@ -52,15 +53,20 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | Type 屬性必須設定為：**Xero** | Yes |
-| 主機 | Xero 伺服器的端點 (`api.xero.com`)。  | Yes |
+| type | Type 屬性必須設定為：**Xero** | 是 |
+| connectionProperties | 定義如何連接到 Xero 的一組屬性。 | 是 |
+| ***在 `connectionProperties` 下列底下：*** | | |
+| 主機 | Xero 伺服器的端點 (`api.xero.com`)。  | 是 |
+| authenticationType | 允許的值為 `OAuth_2.0` 和 `OAuth_1.0` 。 | 是 |
 | consumerKey | 與 Xero 應用程式相關聯的取用者金鑰。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
-| privateKey | 從您 Xero 私人應用程式產生之 .pem 檔案的私密金鑰，請參閱[建立公開/私密金鑰組](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)。 使用 `openssl genrsa -out privatekey.pem 512`**產生 numbit 為 512 的 privatekey.pem** 備註；不支援 1024。 包含 .pem 檔案的所有文字，包括 Unix 行尾結束符號 (\n)，請參閱以下範例。<br/><br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
-| useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | No |
-| useHostVerification | 指定在透過 TLS 連接時，伺服器的憑證中是否需要主機名稱，以符合伺服器的主機名稱。 預設值為 true。  | No |
+| privateKey | 從您 Xero 私人應用程式產生之 .pem 檔案的私密金鑰，請參閱[建立公開/私密金鑰組](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key)。 請注意，若要使用**numbits 512 來產生 privatekey** `openssl genrsa -out privatekey.pem 512` ，則不支援1024。 包含 .pem 檔案的所有文字，包括 Unix 行尾結束符號 (\n)，請參閱以下範例。<br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
+| tenantId | 與您的 Xero 應用程式相關聯的租使用者識別碼。 適用于 OAuth 2.0 驗證。<br>瞭解如何從[檢查您已獲授權存取的租使用者一節](https://developer.xero.com/documentation/oauth2/auth-flow)中取得租使用者識別碼。 | 是，適用于 OAuth 2.0 驗證 |
+| refreshToken | 與 Xero 應用程式相關聯的 OAuth 2.0 重新整理權杖，用於在存取權杖過期時重新整理存取權杖。 適用于 OAuth 2.0 驗證。 瞭解[如何從本文](https://developer.xero.com/documentation/oauth2/auth-flow)取得重新整理權杖。<br>重新整理權杖永遠不會過期。 若要取得重新整理權杖，您必須要求[offline_access 範圍](https://developer.xero.com/documentation/oauth2/scopes)。<br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是，適用于 OAuth 2.0 驗證 |
+| useEncryptedEndpoints | 指定是否使用 HTTPS 來加密資料來源端點。 預設值為 true。  | 否 |
+| useHostVerification | 指定在透過 TLS 連接時，伺服器的憑證中是否需要主機名稱，以符合伺服器的主機名稱。 預設值為 true。  | 否 |
 | usePeerVerification | 指定在透過 TLS 連接時，是否要確認伺服器的身分識別。 預設值為 true。  | 否 |
 
-**範例︰**
+**範例： OAuth 2.0 驗證**
 
 ```json
 {
@@ -68,15 +74,54 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
     "properties": {
         "type": "Xero",
         "typeProperties": {
-            "host" : "api.xero.com",
-            "consumerKey": {
-                 "type": "SecureString",
-                 "value": "<consumerKey>"
-            },
-            "privateKey": {
-                 "type": "SecureString",
-                 "value": "<privateKey>"
-            }
+            "connectionProperties": { 
+                "host": "api.xero.com",
+                "authenticationType":"OAuth_2.0", 
+                "consumerKey": {
+                    "type": "SecureString",
+                    "value": "<consumer key>"
+                },
+                "privateKey": {
+                    "type": "SecureString",
+                    "value": "<private key>"
+                },
+                "tenantId": "<tenant ID>", 
+                "refreshToken": {
+                    "type": "SecureString",
+                    "value": "<refresh token>"
+                }, 
+                "useEncryptedEndpoints": true, 
+                "useHostVerification": true, 
+                "usePeerVerification": true
+            }            
+        }
+    }
+}
+```
+
+**範例： OAuth 1.0 驗證**
+
+```json
+{
+    "name": "XeroLinkedService",
+    "properties": {
+        "type": "Xero",
+        "typeProperties": {
+            "connectionProperties": {
+                "host": "api.xero.com", 
+                "authenticationType":"OAuth_1.0", 
+                "consumerKey": {
+                    "type": "SecureString",
+                    "value": "<consumer key>"
+                },
+                "privateKey": {
+                    "type": "SecureString",
+                    "value": "<private key>"
+                }, 
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
         }
     }
 }
@@ -128,7 +173,7 @@ Azure Data Factory 提供的內建驅動程式可啟用連線，因此使用此�
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 複製活動來源的 type 屬性必須設定為：**XeroSource** | Yes |
+| type | 複製活動來源的 type 屬性必須設定為：**XeroSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM Contacts"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
 **範例︰**

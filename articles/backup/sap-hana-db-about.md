@@ -3,12 +3,12 @@ title: 關於 Azure Vm 中的 SAP Hana 資料庫備份
 description: 在本文中，您將瞭解如何備份在 Azure 虛擬機器上執行的 SAP Hana 資料庫。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 980278b3cdb9c97a5a483354a004a8278a745b3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a6c4f627059a8d536e1d006103650dca5d2f5109
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503501"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533439"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>關於 Azure Vm 中的 SAP Hana 資料庫備份
 
@@ -60,7 +60,7 @@ Azure 備份是由 SAP[認證的 Backint](https://www.sap.com/dmc/exp/2013_09_ad
 
 已[認證的 Backint Azure SAP Hana 備份解決方案](#backup-architecture)可用於資料庫備份和復原。
 
-您可以使用[AZURE VM 備份](backup-azure-vms-introduction.md)來備份 OS 和其他非資料庫磁片。 每天會執行一次 VM 備份，並備份所有磁片（**寫入加速器（WA）磁片**和**UltraDisks**除外）。 由於使用 Azure SAP Hana 備份解決方案來備份資料庫，因此您可以使用 [排除磁片] 功能（目前處於預覽狀態），只針對 OS 和非資料庫磁片進行檔案一致備份。
+您可以使用[AZURE VM 備份](backup-azure-vms-introduction.md)來備份 OS 和其他非資料庫磁片。 每天會執行一次 VM 備份，並備份所有磁片（**寫入加速器（WA）磁片**和**ultra 磁片**除外）。 由於正在使用 Azure SAP Hana 備份解決方案來備份資料庫，因此您可以使用適用于[Azure vm 的選擇性磁片備份和還原](selective-disk-backup-restore.md)功能，針對 OS 和非資料庫磁片進行檔案一致備份。
 
 >[!NOTE]
 > 使用預先張貼的腳本搭配 Azure VM 備份，可讓資料庫的資料磁片區進行應用程式一致備份。 不過，如果記錄區域位於 WA 磁片上，取得這些磁片的快照集可能無法保證記錄區域的一致性。 HANA 有明確的方式可產生記錄備份，因為這是確切的原因。 在您的 SAP Hana 中啟用相同的功能，並可使用 Azure SAP Hana 備份進行備份。

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/16/2020
+ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 54b4292c74f7737f1c392d601627eb3e0ff48812
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: d523aeff87b95aaea91df9ad5d3f44c73c871b71
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116201"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528594"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶
 
@@ -117,7 +117,7 @@ Azure AD B2C 密碼原則（針對本機帳戶）是以 Azure Active Directory[�
 
 每個面向客戶的應用程式對於要收集的資訊都有獨特的需求。 您的 Azure AD B2C 租使用者隨附一組儲存在屬性中的內建資訊，例如指定的名稱、姓氏、城市和郵遞區號。 使用 Azure AD B2C，您可以擴充儲存在每個客戶帳戶中的屬性集合。 如需定義自訂屬性的詳細資訊，請參閱[自訂屬性（使用者流程）](user-flow-custom-attributes.md)和[自訂屬性（自訂原則）](custom-policy-custom-attributes.md)。
 
-Microsoft Graph API 支援以擴充屬性建立和更新使用者。 圖形 API 中的擴充屬性會使用 `extension_ApplicationObjectID_attributename` 慣例來命名。 例如：
+Microsoft Graph API 支援以擴充屬性建立和更新使用者。 圖形 API 中的擴充屬性會使用慣例來命名 `extension_ApplicationClientID_attributename` ，其中 `ApplicationClientID` 是應用程式的**應用程式（用戶端）識別碼** `b2c-extensions-app` （可在**應用程式註冊**  >  Azure 入口網站中的**所有應用**程式）中找到。 請注意，以延伸模組屬性名稱表示的**應用程式（用戶端）識別碼**不包含連字號。 例如：
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"

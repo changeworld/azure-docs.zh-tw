@@ -1,5 +1,5 @@
 ---
-title: 設定 Azure 系統管理存取權的 RBAC 角色
+title: 設定 azure 系統管理存取的 Azure 角色
 titleSuffix: Azure Cognitive Search
 description: Azure 入口網站中以角色為基礎的系統管理控制（RBAC），用於控制和委派 Azure 認知搜尋管理的系統管理工作。
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1b2576eb42cbe25919eb77fc30e2720ed812ca4
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84462833"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534425"
 ---
-# <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>設定 Azure 認知搜尋的系統管理存取權的 RBAC 角色
+# <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>設定 Azure 角色以取得 Azure 認知搜尋的系統管理存取權
 
 Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務提供[全域角色型授權模型](../role-based-access-control/role-assignments-portal.md)。 「擁有者」、「參與者」和「讀取者」角色可針對指派給各角色的 Active Directory 使用者、群組和安全性主體，決定*服務管理*層級。 
 
@@ -29,7 +29,7 @@ Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務�
 | 角色 | Task |
 | --- | --- |
 | 擁有者 |建立或刪除服務或服務上的任何物件，包括 api 索引鍵、索引、索引子、索引子資料來源和索引子排程。<p>檢視服務狀態，包括計數和儲存體大小。<p>新增或刪除角色成員資格 (只有「擁有者」可以管理角色成員資格)。<p>訂用帳戶管理員和服務擁有者在擁有者角色具有自動成員資格。 |
-| 參與者 |與「擁有者」相同層級的存取權，減去 RBAC 角色管理。 例如，參與者可以建立或刪除物件，或檢視和重新產生 [API 金鑰](search-security-api-keys.md)，但不能修改角色成員資格。 |
+| 參與者 |與擁有者相同的存取層級，減去 Azure 角色管理。 例如，參與者可以建立或刪除物件，或檢視和重新產生 [API 金鑰](search-security-api-keys.md)，但不能修改角色成員資格。 |
 | [搜尋服務參與者內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#search-service-contributor) | 等同於參與者角色。 |
 | 讀取者 |檢視服務的基本資訊和計量。 此角色的成員無法檢視索引、索引子、資料來源，或索引鍵資訊。  |
 
@@ -39,7 +39,7 @@ Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務�
 
 下表摘要說明 Azure 認知搜尋中允許的作業，以及哪些金鑰可解除鎖定特定操作。
 
-| 操作 | 權限 |
+| 作業 | 權限 |
 |-----------|-------------------------|
 | 建立服務 | Azure 訂用帳戶持有者 |
 | 調整服務規模 | 資源上的系統管理金鑰、RBAC 擁有者或參與者  |

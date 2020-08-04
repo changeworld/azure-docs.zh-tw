@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 06c10cffcfa5c68b1da8ba366ca270f1c2fa6ea4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de6311e786065bebe7399ccb3625798866e864df
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060977"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533337"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的受控識別驗證及存取 Azure 資源
 
@@ -325,7 +325,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
 
 1. 在 [新增角色指派] 中，選取能為您的身分識別提供目標資源必要存取權的**角色**。
 
-   在本主題的範例中，您的身分識別需要[存取 Azure 儲存體容器中的 Blob 所用的角色](../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)。
+   在本主題的範例中，您的身分識別需要[存取 Azure 儲存體容器中的 Blob 所用的角色](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)。
 
    ![選取「儲存體 Blob 資料參與者」角色](./media/create-managed-service-identity/select-role-for-identity.png)
 

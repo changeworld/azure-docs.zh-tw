@@ -92,7 +92,7 @@
     - name: 常見問題集
       href: relay-faq.md
     - name: 部落格
-      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+      href: /archive/blogs/servicebus/
     - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: 定價計算機

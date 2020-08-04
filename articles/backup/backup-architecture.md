@@ -3,12 +3,12 @@ title: 架構概觀
 description: 概略說明 Azure 備份服務所使用的架構、元件和程序。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 45e5634188b675198e0fc4c07a8a43964217f91a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514300"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532487"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份架構和元件
 
@@ -120,16 +120,15 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 - 建立保存庫時，也會建立 "DefaultPolicy"，並可用來備份資源。
 - 對備份原則的保留期間所做的任何變更，將會追溯到除了新的復原點之外。
 
-### <a name="additional-reference"></a>其他參考資料 
+### <a name="additional-reference"></a>其他參考資料
 
--   Azure VM 電腦：如何[建立](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings)和[修改](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm)原則？ 
--   在 Azure VM 電腦中 SQL Server 資料庫：如何[建立](./backup-sql-server-database-azure-vms.md#create-a-backup-policy)和[修改](./manage-monitor-sql-database-backup.md#modify-policy)原則？ 
--   Azure 檔案共用：如何[建立](./backup-afs.md#discover-file-shares-and-configure-backup)和[修改](./manage-afs-backup.md#modify-policy)原則？ 
--   SAP Hana：如何[建立](./backup-azure-sap-hana-database.md#create-a-backup-policy)和[修改](./sap-hana-db-manage.md#change-policy)原則？ 
--   MARS：如何[建立](./backup-windows-with-mars-agent.md#create-a-backup-policy)和[修改](./backup-azure-manage-mars.md#modify-a-backup-policy)原則？ 
--   [根據工作負載類型排程備份是否有任何限制？](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- Azure VM 電腦：如何[建立](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings)和[修改](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm)原則。
+- 在 Azure VM 電腦中 SQL Server 資料庫：如何[建立](./backup-sql-server-database-azure-vms.md#create-a-backup-policy)和[修改](./manage-monitor-sql-database-backup.md#modify-policy)原則。
+- Azure 檔案共用：如何[建立](./backup-afs.md)和[修改](./manage-afs-backup.md#modify-policy)原則。
+- SAP Hana：如何[建立](./backup-azure-sap-hana-database.md#create-a-backup-policy)和[修改](./sap-hana-db-manage.md#change-policy)原則。
+- MARS：如何[建立](./backup-windows-with-mars-agent.md#create-a-backup-policy)和[修改](./backup-azure-manage-mars.md#modify-a-backup-policy)原則。
+- [根據工作負載類型排程備份是否有任何限制？](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
 - [如果我變更保留原則，現有的復原點會發生什麼事？](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
-
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>架構：內建的 Azure VM 備份
 

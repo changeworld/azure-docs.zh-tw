@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/14/2020
-ms.openlocfilehash: 713ac569acb7866b4c7431b80e2afb1e7953ce08
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4da2572e453339baa3f5e2663a7965fff2035e40
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087345"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531297"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL Database 長期備份保留
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -80,7 +80,7 @@ ms.locfileid: "86087345"
 
 下列各節說明如何使用 PowerShell 來設定長期備份保留、在 Azure 儲存體中查看備份，以及從 Azure 儲存體中的備份進行還原。
 
-### <a name="rbac-roles-to-manage-long-term-retention"></a>管理長期保留的 RBAC 角色
+### <a name="azure-roles-to-manage-long-term-retention"></a>用來管理長期保留的 Azure 角色
 
 針對**AzSqlDatabaseLongTermRetentionBackup**和**還原 set-azsqldatabase 搭配**，您必須具有下列其中一個角色：
 
@@ -201,7 +201,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 > [!NOTE]
 > 從這裡開始，您可以使用 SQL Server Management Studio 連線到已還原的資料庫來執行所需的工作，例如從還原的資料庫擷取一堆資料來複製到現有的資料庫，或刪除現有的資料庫，並將還原的資料庫重新命名為現有的資料庫名稱。 請參閱[還原時間點](recovery-using-backups.md#point-in-time-restore)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 - 若要深入了解服務產生的自動備份，請參閱[自動備份](automated-backups-overview.md)
 - 若要深入了解長期備份保留，請參閱[長期備份保留](long-term-retention-overview.md)

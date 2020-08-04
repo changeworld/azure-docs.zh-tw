@@ -3,12 +3,12 @@ title: 備份復原服務保存庫中的 Azure VM
 description: 說明如何使用 Azure 備份將 Azure VM 備份到備份復原服務保存庫
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 91fca2eef21a817c0f78b826e507901d94156dcd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439712"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533592"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>備份復原服務保存庫中的 Azure VM
 
@@ -51,7 +51,8 @@ ms.locfileid: "87439712"
 1. 在新的保存庫中，選取 [**設定**] 區段中的 [**屬性**]。
 2. 在 [**屬性**] 的 [**備份**設定] 底下，選取 [**更新**]。
 3. 選取儲存體複寫類型，然後選取 [**儲存]。**
-s ![ 設定新保存庫的存放裝置配置](./media/backup-azure-arm-vms-prepare/full-blade.png)
+
+      ![為新保存庫設定儲存體組態](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
 > [!NOTE]
    > 當保存庫設定完成且包含備份項目之後，您就無法修改儲存體複寫類型。 如果想要修改，則必須重新建立保存庫。
@@ -75,11 +76,11 @@ s ![ 設定新保存庫的存放裝置配置](./media/backup-azure-arm-vms-prepa
 
     * 如果您不要使用預設原則，請選取 [建立新項目]，然後建立自訂原則，如下一個程序所述。
 
-1. 在 [**虛擬機器**] 底下，選取 [**新增**]。
+1. 在 [虛擬機器] 下，選取 [新增]。
 
       ![新增虛擬機器](./media/backup-azure-arm-vms-prepare/add-virtual-machines.png)
 
-1. [**選取虛擬機器**] 窗格隨即開啟。 使用原則來選取您想要備份的 Vm。 然後選取 [確定]。
+1. [選取虛擬機器] 窗格隨即開啟。 使用原則來選取您想要備份的 Vm。 然後選取 [確定]。
 
    * 選取的 VM 會經過驗證。
    * 您只能選取與保存庫位於相同區域中的 VM。
@@ -166,13 +167,6 @@ Completed | 失敗 | 已完成但有警告
 --- | ---
 **Windows** | 1.[下載並安裝](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)代理程式 MSI 檔案。<br/><br/> 2.以機器的系統管理員權限安裝。<br/><br/> 3.驗證安裝。 在 VM 的 *C:\WindowsAzure\Packages* 中，以滑鼠右鍵按一下 **WaAppAgent.exe** > [內容]。 在 [詳細資料] 索引標籤上，[產品版本] 應該為 2.6.1198.718 或更高版本。<br/><br/> 如果您要更新代理程式，請確定沒有任何備份作業正在執行，然後[重新安裝代理程式](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。
 **Linux** | 從散發套件中存放庫，使用 RPM 或 DEB 套件進行安裝。 這是安裝和升級 Azure Linux 代理程式的慣用方法。 所有[認可的散發套件提供者](../virtual-machines/linux/endorsed-distros.md)都會將 Azure Linux 代理程式套件整合於本身的映像和儲存機制中。 代理程式可從 [GitHub](https://github.com/Azure/WALinuxAgent) 取得，但不建議從該處安裝。<br/><br/> 如果您要更新代理程式，請確定沒有任何備份作業正在執行，然後更新二進位檔。
-
->[!NOTE]
-> **Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁碟備份和還原。**
->
->目前，Azure 備份支援使用虛擬機器備份解決方案來同時備份 VM 中的所有磁碟 (作業系統與資料)。 使用排除磁碟功能時，您可以從 VM 的諸多資料磁碟中，選擇備份一個或多個磁碟。 如此可提供有效率且符合成本效益的解決方案，以滿足您的備份和還原需求。 每個復原點都有備份作業所含磁碟的資料，這進一步可讓您在還原作業期間，從給定的復原點還原磁碟子集。 從快照集和保存庫還原時都是如此。
->
->若要註冊預覽版，請透過此位址發送電子郵件給我們：AskAzureBackupTeam@microsoft.com
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 61a281e5fa9e8d360b9b6e52cda9c54db49d93d0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: b57a57f05853b9f8c291dc2ac352db7b1e679260
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406736"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534850"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure 儲存體總管疑難排解指南
 
@@ -48,7 +48,7 @@ Microsoft Azure 儲存體總管是一個獨立應用程式，可讓您在 Window
 
 Azure 儲存體有兩個層級的存取權：_管理_和_資料_。 訂閱和儲存體帳戶可透過管理層存取。 容器、blob 和其他資料資源都是透過資料層來存取。 例如，如果您想要從 Azure 取得儲存體帳戶的清單，請將要求傳送至管理端點。 如果您想要帳戶中的 blob 容器清單，請將要求傳送至適當的服務端點。
 
-RBAC 角色可以授與您管理或資料層存取權的許可權。 例如，「讀取者」角色會授與管理層資源的唯讀存取權。
+Azure 角色可以授與您管理或資料層存取權的許可權。 例如，「讀取者」角色會授與管理層資源的唯讀存取權。
 
 嚴格來說，「讀取者」角色不會提供資料層許可權，也不需要存取資料層。
 

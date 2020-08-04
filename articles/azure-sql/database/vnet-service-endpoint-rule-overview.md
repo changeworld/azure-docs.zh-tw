@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: c1ac3c1e312704f8a0afa751d0efc6d0cef897f9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 65ec92aeca44a514467a642de1dab06f06c220e9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371765"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533847"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>在 Azure SQL Database 中，使用伺服器的虛擬網路服務端點和規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,13 +104,13 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>使用 VNet 服務端點搭配 Azure 儲存體的影響
 
-Azure 儲存體已實作功能，可讓您限制連線至 Azure 儲存體帳戶的連線。 如果您選擇使用此功能搭配 Azure SQL Database 所使用的 Azure 儲存體帳戶，您可能會遇到問題。 接下來是受此影響的 Azure SQL Database 和 Azure SQL 資料倉儲功能清單和討論。
+Azure 儲存體已實作功能，可讓您限制連線至 Azure 儲存體帳戶的連線。 如果您選擇使用這項功能，並使用 Azure SQL Database 正在使用的 Azure 儲存體帳戶，可能會遇到問題。 接下來是受此影響的 Azure SQL Database 和 Azure SQL 資料倉儲功能清單和討論。
 
 ### <a name="azure-synapse-polybase"></a>Azure Synapse PolyBase
 
 PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure Synapse Analytics。 如果您正在載入資料的來源 Azure 儲存體帳戶限制只能存取一組 VNet 子網路，從 PolyBase 到帳戶的連線會中斷。 若要同時使用 Azure Synapse Analytics 來啟用 PolyBase 匯入和匯出案例，以連線至受保護至 VNet 的 Azure 儲存體，請遵循下列所示的步驟：
 
-#### <a name="prerequisites"></a>必要條件
+#### <a name="prerequisites"></a>Prerequisites
 
 - 使用此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安裝 Azure PowerShell。
 - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)先升級至一般用途 v2。
@@ -136,10 +136,10 @@ PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure Synapse Anal
    > - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)**升級至 v2**。
    > - 關於 Azure Data Lake Storage Gen2 的已知問題，請參閱此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
 
-1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料參與者**RBAC 角色指派給裝載您已在 AZURE ACTIVE DIRECTORY （AAD）中註冊之 Azure Synapse Analytics 的伺服器，如步驟 #1 所示。
+1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料參與者**Azure 角色指派給裝載您已在 AZURE ACTIVE DIRECTORY （AAD）中註冊之 Azure Synapse Analytics 的伺服器，如步驟 #1 所示。
 
    > [!NOTE]
-   > 只有在儲存體帳戶上具有擁有者許可權的成員，才能夠執行此步驟。 如需各種 Azure 內建角色，請參閱本[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+   > 只有在儲存體帳戶上具有擁有者許可權的成員，才能夠執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
   
 1. **Polybase 連線至 Azure 儲存體帳戶：**
 

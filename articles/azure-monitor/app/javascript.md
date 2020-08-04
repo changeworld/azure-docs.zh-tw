@@ -4,12 +4,12 @@ description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 063d648c68431dd84fd1aeb88b85bc68f2acbe62
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: e0545660cbca68d41bc24b7266496b7912d408bc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475748"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531314"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -39,7 +39,8 @@ Application Insights 可以使用於任何網頁 - 您剛剛新增 JavaScript �
 npm i --save @microsoft/applicationinsights-web
 ```
 
-> *注意：* **Typings 隨附于此封裝**，因此您**不**需要安裝個別的 Typings 套件。
+> [!Note]
+> **Typings 隨附于此封裝**，因此您**不**需要安裝個別的 Typings 套件。
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -114,7 +115,7 @@ SDK 載入失敗的報告在 IE 8 （或更少）上特別不受支援。 這有
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>將遙測傳送至 Azure 入口網站
 
-根據預設，Application Insights JavaScript SDK 會 autocollects 一些遙測專案，這有助於判斷應用程式的健康情況和基礎使用者體驗。 它們包括：
+根據預設，Application Insights JavaScript SDK 會 autocollects 一些遙測專案，這有助於判斷應用程式的健康情況和基礎使用者體驗。 其中包括：
 
 - 應用程式中未攔截到的**例外**狀況，包括的相關資訊
     - 堆疊追蹤

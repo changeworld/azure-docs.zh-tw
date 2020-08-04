@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: 7761da75c16e2f89ae145bad3b04cc179f415751
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127531"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531204"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -58,7 +58,7 @@ Data Lake Analytics 支援下列資料來源：
 
 您可以使用 [資料總管] 來瀏覽資料來源和執行基本檔案管理作業。 
 
-### <a name="add-a-data-source"></a>建立資料來源
+### <a name="add-a-data-source"></a>加入資料來源
 
 1. 在 Azure 入口網站中，移至您的 Data Lake Analytics 帳戶。
 2. 按一下 **[資料來源]**。
@@ -95,7 +95,7 @@ Data Lake Analytics 支援下列資料來源：
 
 如同其他 Azure 服務，您可以使用角色型存取控制 (RBAC) 來控制使用者與服務互動的方式。
 
-標準 RBAC 角色具有下列功能：
+標準 Azure 角色具有下列功能：
 * **擁有者**：可以提交、監視、取消任何使用者的作業，以及設定帳戶。
 * **參與者**：可以提交、監視、取消任何使用者的作業，以及設定帳戶。
 * **讀取者**：可以監視作業。
@@ -112,7 +112,7 @@ Data Lake Analytics 支援下列資料來源：
 2. 按一下 **[存取控制（IAM）] [**  >  **新增角色指派**]。
 3. 選取角色。
 4. 新增使用者。
-5. 按一下 [確定]  。
+5. 按一下 [確定]。
 
 >[!NOTE]
 >如果使用者或安全性群組需要提交作業，他們也需要有存放區帳戶的權限。 如需詳細資訊，請參閱[保護儲存在 Data Lake Store 中的資料](../data-lake-store/data-lake-store-secure-data.md)。

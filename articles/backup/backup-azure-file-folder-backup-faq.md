@@ -3,12 +3,12 @@ title: Microsoft Azure 復原服務（MARS）代理程式–常見問題
 description: 解決有關使用 Azure 備份來備份檔案和資料夾的常見問題。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a4560499c56e4dcdf41c2e5c7920b415ceab6c5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514062"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533575"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常見問題-Microsoft Azure 復原服務（MARS）代理程式
 
@@ -23,6 +23,10 @@ ms.locfileid: "86514062"
 ### <a name="how-long-are-vault-credentials-valid"></a>保存庫認證有效多久？
 
 保存庫認證會在10天后過期。 如果認證檔案過期，請從 Azure 入口網站重新下載檔案。
+
+### <a name="what-characters-are-allowed-for-the-passphrase"></a>複雜密碼允許哪些字元？
+
+複雜密碼應使用 ASCII 字元集中的字元，且 ASCII 值小於或等於127。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>我可以從哪些磁片磁碟機備份檔案和資料夾？
 

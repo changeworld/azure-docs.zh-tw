@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2fcd1c3a9fd3e4be22e4057eb2cfc9a71d09d558
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419779"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529104"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication （預覽）登入 Azure 中的 Windows 虛擬機器
 
@@ -144,7 +144,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>設定 VM 的角色指派
 
-既然您已建立 VM，您必須設定 Azure RBAC 原則來決定誰可以登入 VM。 有兩個 RBAC 角色可用來授權 VM 登入：
+既然您已建立 VM，您必須設定 Azure RBAC 原則來決定誰可以登入 VM。 有兩個 Azure 角色可用來授權 VM 登入：
 
 - **虛擬機器系統管理員登**入：已指派此角色的使用者可以使用系統管理員許可權登入 Azure 虛擬機器。
 - **虛擬機器使用者登入**：被指派此角色的使用者能夠以一般使用者權限登入 Azure 虛擬機器。
@@ -208,7 +208,7 @@ az role assignment create \
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Azure AD 認證登入 Windows VM
 
 > [!IMPORTANT]
-> 只有 Azure AD 已註冊的 Windows 10 電腦（20H1 的最小組建），或加入至與 VM**相同**目錄的 Azure AD 加入或混合式 Azure AD，才可從遠端連線至已加入 Azure AD 的 vm。 此外，若要使用 Azure AD 認證的 RDP，使用者必須屬於下列其中一個 RBAC 角色： [虛擬機器系統管理員登入] 或 [虛擬機器使用者登入]。 如果使用 Azure AD 已註冊的 Windows 10 電腦，您必須以 AzureAD\UPN 格式輸入認證（例如 AzureAD\john@contoso.com ）。 目前，您無法使用 Azure 防禦來登入 AADLoginForWindows 擴充功能的 Azure Active Directory authentication;僅支援直接 RDP。
+> 只有 Azure AD 已註冊的 Windows 10 電腦（20H1 的最小組建），或加入至與 VM**相同**目錄的 Azure AD 加入或混合式 Azure AD，才可從遠端連線至已加入 Azure AD 的 vm。 此外，若要使用 Azure AD 認證的 RDP，使用者必須屬於這兩個 Azure 角色之一： [虛擬機器系統管理員登入] 或 [虛擬機器使用者登入]。 如果使用 Azure AD 已註冊的 Windows 10 電腦，您必須以 AzureAD\UPN 格式輸入認證（例如 AzureAD\john@contoso.com ）。 目前，您無法使用 Azure 防禦來登入 AADLoginForWindows 擴充功能的 Azure Active Directory authentication;僅支援直接 RDP。
 
 若要使用 Azure AD 登入您的 Windows Server 2019 虛擬機器： 
 
@@ -315,13 +315,13 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 ### <a name="troubleshoot-sign-in-issues"></a>對登入問題進行疑難排解
 
-當您嘗試使用 Azure AD 認證來進行 RDP 時，有一些常見的錯誤包括不會指派任何 RBAC 角色、未授權的用戶端或2FA 登入方法。 請使用下列資訊來更正這些問題。
+當您嘗試使用 Azure AD 認證的 RDP 時，會發生一些常見的錯誤，包括未指派任何 Azure 角色、未授權的用戶端或2FA 登入方法。 請使用下列資訊來更正這些問題。
 
 您可以執行來查看裝置和 SSO 狀態 `dsregcmd /status` 。 目標是讓裝置狀態顯示為 `AzureAdJoined : YES` ，並 `SSO State` 顯示 `AzureAdPrt : YES` 。
 
 此外，使用 Azure AD 帳戶的 RDP 登入會在事件檢視器中的 AAD\Operational 事件記錄下加以捕捉。
 
-#### <a name="rbac-role-not-assigned"></a>未指派 RBAC 角色
+#### <a name="azure-role-not-assigned"></a>未指派 Azure 角色
 
 當您對 VM 起始遠端桌面連線時，如果看到下列錯誤訊息： 
 

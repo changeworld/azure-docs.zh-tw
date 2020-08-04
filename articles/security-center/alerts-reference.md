@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 33f31c3f4c24d3b52766131ba163f09adfc8eeec
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 4ac335a4539da9cbcdc4d9a80b3c1e0d1f03f810
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439208"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534714"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全性警示 - 參考指南
 
@@ -296,7 +296,7 @@ ms.locfileid: "87439208"
 | **從 Tor 結束節點存取儲存體帳戶**          | 表示已成功從稱為 Tor 的作用中結束節點 (匿名 Proxy) 的 IP 位址存取此帳戶。 此警示的嚴重性會將所使用的驗證類型 (如果有)，以及這是否為這類存取的第一個案例等情況納入考慮。 可能的原因攻擊者使用了 Tor 存取您的儲存體帳戶，或合法使用者使用了 Tor 存取您的儲存體帳戶。                                                                                                     | 探查/惡意探索             | 高     |
 | **從不尋常的位置存取儲存體帳戶**      | 表示 Azure 儲存體帳戶的存取模式有所變更。 相較於最近的活動，有人從不熟悉的 IP 位址存取了此帳戶。 可能是攻擊者取得了帳戶存取權，或合法的使用者從新的或不尋常的地理位置進行存取。 後者的範例是從新的應用程式，或由新的開發人員進行遠端維護。                                                                                                                            | 惡意探索                       | 低      |
 | **匿名存取儲存體帳戶**                     | 表示儲存體帳戶的存取模式有所變更。 例如，此帳戶已遭匿名存取 (未使用任何驗證)，這相較於此帳戶最近的存取模式是未預期的行為。 可能的原因是攻擊者已從存放 Blob 儲存體的容器中惡意探索公開的讀取存取。                                                                                                                                                                                           | 惡意探索                       | 高     |
-| **可能已有惡意程式碼上傳至儲存體帳戶**           | 指出包含潛在惡意程式碼的 Blob 已上傳至儲存體帳戶。 這項警示是以「雜湊信譽分析」為基礎，利用 Microsoft 威脅情報的強大功能，其中包括病毒、特洛伊程式、間諜軟體和勒索軟體的雜湊。 可能的原因包括攻擊者刻意上傳惡意程式碼，或合法的使用者意外上傳潛在的惡意 Blob。<br>深入瞭解[適用于惡意程式碼的 Azure 雜湊信譽分析](https://docs.microsoft.com/azure/security-center/threat-protection#what-is-hash-reputation-analysis-for-malware)。<br>深入瞭解[Microsoft 的威脅情報功能](https://go.microsoft.com/fwlink/?linkid=2128684)。| LateralMovement                    | 高     |
+| **可能已有惡意程式碼上傳至儲存體帳戶**           | 指出包含潛在惡意程式碼的 blob 已上傳至儲存體帳戶中的 blob 容器或檔案共用。 這項警示是以「雜湊信譽分析」為基礎，利用 Microsoft 威脅情報的強大功能，其中包括病毒、特洛伊程式、間諜軟體和勒索軟體的雜湊。 可能的原因包括攻擊者刻意上傳惡意程式碼，或合法的使用者意外上傳潛在的惡意 Blob。<br>深入瞭解[適用于惡意程式碼的 Azure 雜湊信譽分析](https://docs.microsoft.com/azure/security-center/threat-protection#what-is-hash-reputation-analysis-for-malware)。<br>深入瞭解[Microsoft 的威脅情報功能](https://go.microsoft.com/fwlink/?linkid=2128684)。| LateralMovement                    | 高     |
 | **儲存體帳戶中的異常存取檢查**            | 表示相較於此帳戶的最近活動，發現了有人使用不尋常的方式檢查儲存體帳戶的存取權限。 可能的原因是攻擊者已針對未來的攻擊執行偵察。                                                                                                                                                                                                                                                                                                                | 集合                         | 中   |
 | **從儲存體帳戶擷取了異常的資料量**   | 表示相較於此儲存體容器上最近的活動，已擷取的資料量異常龐大。 可能的原因是攻擊者已從存放 Blob 儲存體的容器中擷取大量資料。                                                                                                                                                                                                                                                                                                       | 外流                       | 中   |
 | **不尋常的應用程式存取了儲存體帳戶**            | 指出不尋常的應用程式存取了此儲存體帳戶。 可能的原因是攻擊者使用新的應用程式存取了您的儲存體帳戶。                                                                                                                                                                                                                                                                                                                                                                          | 惡意探索                       | 中   |

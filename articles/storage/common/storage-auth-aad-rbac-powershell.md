@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 來指派用於資料存取的 RBAC 角色
+title: 使用 PowerShell 指派 Azure 角色以進行資料存取
 titleSuffix: Azure Storage
 description: 瞭解如何使用 PowerShell，透過角色型存取控制（RBAC）將許可權指派給 Azure Active Directory 的安全性主體。 Azure 儲存體支援內建和 Azure 自訂角色，以透過 Azure AD 進行驗證。
 services: storage
@@ -10,24 +10,24 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c090343e6f63a71b639e5c2f0e9c9fbd0f3e0c2d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 9c13662bd49de2a04e11eeb90910e4d8d0429921
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370473"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534121"
 ---
-# <a name="use-powershell-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 來指派用於存取 blob 和佇列資料的 RBAC 角色
+# <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 PowerShell 來指派 Azure 角色以存取 blob 和佇列資料
 
 Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../role-based-access-control/overview.md)，來授與存取受保護資源的權限。 Azure 儲存體定義一組 Azure 內建角色，其中包含用來存取容器或佇列的常用許可權集。
 
-當 RBAC 角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以包括訂用帳戶、資源群組、儲存體帳戶或個別的容器或佇列層級。 Azure AD 的安全性主體可以是使用者、群組、應用程式服務主體，或[適用于 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
+將 Azure 角色指派給 Azure AD 的安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以包括訂用帳戶、資源群組、儲存體帳戶或個別的容器或佇列層級。 Azure AD 的安全性主體可以是使用者、群組、應用程式服務主體，或[適用于 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 本文說明如何使用 Azure PowerShell 來列出 Azure 內建角色，並將其指派給使用者。 如需使用 Azure PowerShell 的詳細資訊，請參閱[Azure PowerShell 的總覽](https://docs.microsoft.com/powershell/azure/)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="rbac-roles-for-blobs-and-queues"></a>適用於 Blob 和佇列的 RBAC 角色
+## <a name="azure-roles-for-blobs-and-queues"></a>適用于 blob 和佇列的 Azure 角色
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
-## <a name="list-available-rbac-roles"></a>列出可用的 RBAC 角色
+## <a name="list-available-azure-roles"></a>列出可用的 Azure 角色
 
 若要以 Azure PowerShell 列出可用的 Azure 內建角色，請使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)命令：
 
@@ -55,9 +55,9 @@ Storage Queue Data Message Sender         Allows for sending of Azure Storage qu
 Storage Queue Data Reader                 Allows for read access to Azure Storage queues and queue messages
 ```
 
-## <a name="assign-an-rbac-role-to-a-security-principal"></a>將 RBAC 角色指派給安全性主體
+## <a name="assign-an-azure-role-to-a-security-principal"></a>將 Azure 角色指派給安全性主體
 
-若要將 RBAC 角色指派給安全性主體，請使用[new-azroleassignment](/powershell/module/az.resources/new-azroleassignment)命令。 命令的格式可能會根據指派的範圍而有所不同。 若要執行命令，您必須在對應的範圍中指派擁有者或參與者角色。 下列範例示範如何將角色指派給不同範圍的使用者，但您可以使用相同的命令，將角色指派給任何安全性主體。
+若要將 Azure 角色指派給安全性主體，請使用[new-azroleassignment](/powershell/module/az.resources/new-azroleassignment)命令。 命令的格式可能會根據指派的範圍而有所不同。 若要執行命令，您必須在對應的範圍中指派擁有者或參與者角色。 下列範例示範如何將角色指派給不同範圍的使用者，但您可以使用相同的命令，將角色指派給任何安全性主體。
 
 ### <a name="container-scope"></a>容器範圍
 

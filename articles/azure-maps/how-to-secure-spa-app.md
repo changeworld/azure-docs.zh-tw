@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 5b7f26a03c117620be7c16abaf689763e370e5ba
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0aa688d6e56629ca376844ce2d0669197b1bb2b7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285691"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531340"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>如何使用非互動式登入來保護單一頁面應用程式
 
@@ -102,14 +102,14 @@ ms.locfileid: "87285691"
 
 ## <a name="grant-role-based-access"></a>授與以角色為基礎的存取權
 
-您可將系統指派的身分識別指派給一或多個 Azure 角色定義，以授與*角色型存取控制*（RBAC）。 若要查看可用於 Azure 地圖服務的 RBAC 角色定義，請移至 **[存取控制（IAM）**]。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。
+您可將系統指派的身分識別指派給一或多個 Azure 角色定義，以授與*角色型存取控制*（RBAC）。 若要查看可用於 Azure 地圖服務的 Azure 角色定義，請移至 **[存取控制（IAM）**]。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。
 
 1. 移至您的**Azure 地圖服務帳戶**。 選取 **[存取控制（IAM）**  >  **角色指派**]。
 
     > [!div class="mx-imgBorder"]
     > ![授與 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. 在 [**角色指派**] 索引標籤的 [**角色**] 底下，選取內建 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [**指派存取**權] 底下，選取 [**函數應用程式**]。 依名稱選取 [主體]。 然後選取 [儲存]。
+2. 在 [**角色指派**] 索引標籤的 [**角色**] 底下，選取內建 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [**指派存取**權] 底下，選取 [**函數應用程式**]。 依名稱選取 [主體]。 然後選取 [儲存]  。
 
    * 請參閱[新增或移除角色指派](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)的詳細資料。
 

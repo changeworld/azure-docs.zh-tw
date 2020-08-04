@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 07/29/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: eaa00716e8f86552a077fb527993f619fc9756b5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e7bb996b3d42e2db2b4fa65d050ec1cb6a935bc6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275774"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533371"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>針對儲存體帳戶的要求強制執行傳輸層安全性（TLS）的最低必要版本
 
@@ -116,12 +116,20 @@ $accountName = "<storage-account>"
 $location = "<location>"
 
 # Create a storage account with MinimumTlsVersion set to TLS 1.1.
-New-AzStorageAccount -ResourceGroupName $rgName -AccountName $accountName -Location $location -SkuName Standard_GRS -MinimumTlsVersion TLS1_1
+New-AzStorageAccount -ResourceGroupName $rgName \
+    -AccountName $accountName \
+    -Location $location \
+    -SkuName Standard_GRS \
+    -MinimumTlsVersion TLS1_1
+
 # Read the MinimumTlsVersion property.
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 
 # Update the MinimumTlsVersion version for the storage account to TLS 1.2.
-Set-AzStorageAccount -ResourceGroupName $rgName -AccountName $accountName -MinimumTlsVersion TLS1_2
+Set-AzStorageAccount -ResourceGroupName $rgName \
+    -AccountName $accountName \
+    -MinimumTlsVersion TLS1_2
+
 # Read the MinimumTlsVersion property.
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 ```
@@ -140,11 +148,10 @@ az storage account create \
     --location <location> \
     --min-tls-version TLS1_1
 
-az resource show \
+az storage account show \
     --name <storage-account> \
     --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.minimumTlsVersion \
+    --query minimumTlsVersion \
     --output tsv
 
 az storage account update \
@@ -152,11 +159,10 @@ az storage account update \
     --resource-group <resource-group> \
     --min-tls-version TLS1_2
 
-az resource show \
+az storage account show \
     --name <storage-account> \
     --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.minimumTlsVersion \
+    --query minimumTlsVersion \
     --output tsv
 ```
 
@@ -166,7 +172,7 @@ az resource show \
 
 1. 在 [Azure 入口網站中，選擇 [**建立資源**]。
 1. 在 **[搜尋 Marketplace**] 中，輸入**範本部署**，然後按**enter**。
-1. 選擇 [**範本部署（使用自訂範本部署）**]，選擇 [**建立**]，然後**在編輯器中選擇 [建立您自己的範本**]。
+1. 選擇 [**範本部署（使用自訂範本部署）（預覽）**]，選擇 [**建立**]，然後**在編輯器中選擇 [建立您自己的範本**]。
 1. 在範本編輯器中，貼上下列 JSON 以建立新的帳戶，並將最低的 TLS 版本設定為 TLS 1.2。 請記得以您自己的值取代角括弧中的預留位置。
 
     ```json
@@ -175,7 +181,7 @@ az resource show \
         "contentVersion": "1.0.0.0",
         "parameters": {},
         "variables": {
-            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'tls')]"
         },
         "resources": [
             {
@@ -187,6 +193,10 @@ az resource show \
                 "minimumTlsVersion": "TLS1_2"
             },
             "dependsOn": [],
+            "sku": {
+              "name": "Standard_GRS"
+            },
+            "kind": "StorageV2",
             "tags": {}
             }
         ]
@@ -215,8 +225,6 @@ resources
 | extend minimumTlsVersion = parse_json(properties).minimumTlsVersion
 | project subscriptionId, resourceGroup, name, minimumTlsVersion
 ```
-
----
 
 ### <a name="test-the-minimum-tls-version-from-a-client"></a>從用戶端測試最低的 TLS 版本
 

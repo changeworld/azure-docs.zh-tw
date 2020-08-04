@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7bc8427a51a9931ca82155232569767f12a8e266
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201211"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534017"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常見問題：Azure 至 Azure 災害復原
 
@@ -70,6 +70,10 @@ Site Recovery 小組和 Azure 容量管理小組會規劃足夠的基礎結構�
 ### <a name="can-i-replicate-zone-pinned-azure-vms-to-another-region"></a>我是否可以將區域固定的 Azure VM 複寫到另一個區域？
 
 是的，您可以[將區域固定的 VM 複寫到另一個區域](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region)。
+
+### <a name="can-i-replicate-vms-in-a-region-that-has-zones-from-non-zone-to-zonal-configuration"></a>我是否可以將區域中的 Vm 從非區域複寫到區域性設定？
+
+否，目前不支援這種情況。 因應措施是，您可以使用 ASR 將 VM 複寫至另一個區域中的區域性設定，然後停用複寫。 接下來，重新啟用從該區域到原始區域的複寫，然後選擇要進行容錯移轉的區域性設定。
 
 ### <a name="can-i-exclude-disks"></a>是否可排除磁碟嗎？
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887903"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530260"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性一般資訊和指導方針
 
@@ -62,7 +62,7 @@ ms.locfileid: "84887903"
 未啟用階層式命名空間時：
 
 * 沒有繼承的許可權。
-* 只有作用中的 filesystem 許可權是**儲存體資料 XXXX** RBAC 角色，才能直接在 Azure 入口網站中指派給使用者。
+* 只有作用中的 filesystem 許可權是**儲存體資料 XXXX** Azure 角色，才會直接指派給使用者 Azure 入口網站。
 
 ### <a name="default-hdfs-permissions"></a>預設 HDFS 許可權
 

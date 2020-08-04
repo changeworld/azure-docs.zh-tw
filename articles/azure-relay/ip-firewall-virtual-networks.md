@@ -3,12 +3,12 @@ title: 為 Azure 轉送命名空間設定 IP 防火牆
 description: 本文說明如何使用防火牆規則，允許從特定 IP 位址連線至 Azure 轉送命名空間。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: f5fca44c56982e368b762a0b9b3418f1175f7de0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8cd788475ebe54c0316b8c37bd00aa186123fbf1
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314850"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533037"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>為 Azure 轉送命名空間設定 IP 防火牆
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取轉送命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
@@ -129,4 +129,4 @@ IP 防火牆規則會在命名空間層級套用。 因此，規則會套用至�
 
 <!-- Links -->
 
-[express-route]:  /azure/expressroute/expressroute-faqs#supported-services
+[express-route]:  ../expressroute/expressroute-faqs.md#supported-services

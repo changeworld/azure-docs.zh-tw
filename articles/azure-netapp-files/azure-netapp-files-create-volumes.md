@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: 2e1e6ad6625586e882551521111057a2a20f0fff
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: f176e8fceb4d3e2e07398e6cb878180c8fe2321b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513038"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533150"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 NFS 磁碟區
 
-Azure NetApp Files 支援 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 磁片區。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 NFS 磁片區。 如果您想要建立 SMB 磁片區，請參閱[建立適用于 Azure NetApp Files 的 smb 磁片](azure-netapp-files-create-volumes-smb.md)區。 
+Azure NetApp Files 支援使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或雙重通訊協定（NFSv3 和 SMB）來建立磁片區。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 NFS 磁片區。 
 
 ## <a name="before-you-begin"></a>開始之前 
-您必須已經設定容量集區。   
-[設定容量集區](azure-netapp-files-set-up-capacity-pool.md)   
-子網路必須委派至 Azure NetApp Files。  
-[將子網路委派至 Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+* 您必須已經設定容量集區。  
+    請參閱[設定容量](azure-netapp-files-set-up-capacity-pool.md)集區。   
+* 子網路必須委派至 Azure NetApp Files。  
+    請參閱[將子網委派給 Azure NetApp Files](azure-netapp-files-delegate-subnet.md)。
 
 ## <a name="considerations"></a>考量 
 
@@ -44,22 +44,19 @@ Azure NetApp Files 支援 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 磁片區。 磁
 
 ## <a name="best-practice"></a>最佳做法
 
-* 您應該確定您使用的是適當的磁片區掛接指示。  請參閱[掛接或卸載 Windows 或 Linux 虛擬機器的磁片](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)區。
+* 請確定您使用的是適當的磁片區掛接指示。  請參閱[掛接或卸載 Windows 或 Linux 虛擬機器的磁片](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)區。
 
 * NFS 用戶端應該位於與 Azure NetApp Files 磁片區相同的 VNet 或對等互連 VNet 中。 支援從 VNet 外部連接;不過，它會引進額外的延遲並降低整體效能。
 
-* 您應該確定 NFS 用戶端是最新狀態，並執行作業系統的最新更新。
+* 請確定 NFS 用戶端為最新狀態，並執行作業系統的最新更新。
 
 ## <a name="create-an-nfs-volume"></a>建立 NFS 磁片區
 
-1.  從 [容量集區] 刀鋒視窗按一下 [磁碟區] 刀鋒視窗。 
+1.  從 [容量集區] 刀鋒視窗按一下 [磁碟區] 刀鋒視窗。 按一下 [+ 新增磁碟區] 以建立磁碟區。 
 
-    ![導覽至磁碟區](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
+    ![導覽至磁碟區](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png) 
 
-2.  按一下 [+ 新增磁碟區] 以建立磁碟區。  
-    隨即顯示 [建立磁碟區] 視窗。
-
-3.  在 [建立磁碟區] 視窗中，按一下 [建立]，並提供下列欄位的資訊：   
+2.  在 [建立磁片區] 視窗中，按一下 [**建立**]，然後在 [基本] 索引標籤下提供下欄欄位的資訊：   
     * **磁碟區名稱**      
         為您要建立的磁碟區指定名稱。   
 
@@ -92,11 +89,11 @@ Azure NetApp Files 支援 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 磁片區。 磁
 
     * 如果您想要將現有的快照集原則套用到磁片區，請按一下 [**顯示 advanced] 區段**將它展開，然後選取下拉式功能表中的快照集原則。 
 
-        如需建立快照集原則的相關資訊，請參閱[管理快照](azure-netapp-files-manage-snapshots.md)集。
+        如需建立快照集原則的相關資訊，請參閱[管理快照集原則](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
 
         ![顯示先進的選擇](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-4. 按一下 [通訊協定]****，然後完成下列動作：  
+3. 按一下 [通訊協定]****，然後完成下列動作：  
     * 選取 [NFS]**** 作為磁碟區的通訊協定類型。   
     * 指定將用來建立新磁片區匯出路徑的檔案**路徑**。 匯出路徑會用來掛接和存取磁碟區。
 
@@ -105,11 +102,16 @@ Azure NetApp Files 支援 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 磁片區。 磁
         檔案路徑在每個訂用帳戶和每個區域中必須是唯一的。 
 
     * 選取磁碟區的 NFS 版本 (**NFSv3** 或 **NFSv4.1**)。  
+
+    * 如果您使用 NFSv 4.1，請指出您是否要啟用磁片區的**Kerberos**加密。  
+
+        如果您使用 Kerberos 搭配 NFSv 4.1，則需要其他設定。 依照[設定 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md)中的指示進行。
+
     * （選擇性）[設定 NFS 磁片區的匯出原則](azure-netapp-files-configure-export-policy.md)。
 
     ![指定 NFS 通訊協定](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
 
-5. 按一下 [檢閱 + 建立]，以檢閱磁碟區詳細資料。  然後按一下 [**建立**] 以建立 NFS 磁片區。
+4. 按一下 [檢閱 + 建立]，以檢閱磁碟區詳細資料。  然後按一下 [**建立**] 以建立磁片區。
 
     建立的磁碟區會出現在 [磁碟區] 頁面中。 
  
@@ -119,6 +121,7 @@ Azure NetApp Files 支援 NFS （NFSv3 和 NFSv 4.1）和 SMBv3 磁片區。 磁
 ## <a name="next-steps"></a>後續步驟  
 
 * [針對 Azure NetApp Files 設定 NFSv4.1 預設網域](azure-netapp-files-configure-nfsv41-domain.md)
+* [設定 NFSv 4.1 Kerberos 加密](configure-kerberos-encryption.md)
 * [對 Windows 或 Linux 虛擬機器掛接或取消掛接磁碟區](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [設定 NFS 磁碟區的匯出原則](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp Files 的資源限制](azure-netapp-files-resource-limits.md)

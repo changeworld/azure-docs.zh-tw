@@ -3,12 +3,12 @@ title: 將特定實驗室原則的權限授與使用者 | Microsoft Docs
 description: 了解如何根據每個使用者的需求將使用者權限授與研發/測試實驗室中的特定實驗室原則
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: cfacba2a7cdba20bd5a05c9ca5898194c31c2e68
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 1a0f46ed64bf360ceb990f1e91cb65ace76b5a9a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855779"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534544"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>將特定實驗室原則的權限授與使用者
 ## <a name="overview"></a>概觀
@@ -17,7 +17,7 @@ ms.locfileid: "85855779"
 ## <a name="policies-as-resources"></a>原則即資源
 如 [Azure 角色型存取控制](../role-based-access-control/role-assignments-portal.md) 中所討論，RBAC 可讓您對 Azure 的資源進行更細緻的存取管理。 您可以使用 RBAC 來區隔開發小組的職責，僅授與使用者作業所需的存取權。
 
-在研發/測試實驗室中，原則是一種可啟用 RBAC 動作 **Microsoft.DevTestLab/labs/policySets/policies/** 的資源類型。 每個實驗室原則都是「原則」資源類型中的資源，並且可被指派成某個 RBAC 角色的範圍。
+在研發/測試實驗室中，原則是一種可啟用 RBAC 動作 **Microsoft.DevTestLab/labs/policySets/policies/** 的資源類型。 每個實驗室原則都是原則資源類型中的資源，可指派為 Azure 角色的範圍。
 
 例如，為了將**允許的 VM 大小**原則的讀取/寫入權限授與使用者，您可以建立與**microsoft.devtestlab/labs/policySets/原則/** 動作搭配運作的自訂角色，然後將適當的使用者指派給**microsoft.devtestlab/labs/policySets/policy/AllowedVmSizesInLab**範圍內的這個自訂角色。
 

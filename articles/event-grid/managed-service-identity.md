@@ -3,12 +3,12 @@ title: 使用受管理的服務識別進行事件傳遞
 description: 本文說明如何為 Azure 事件方格主題啟用受管理的服務識別。 使用它來將事件轉送到支援的目的地。
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: b437d519a076104b64fb2df5cba1cd61a865b1fc
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7eaa3ddd43cc68a99ad7c2bab66630f30d4960c9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499818"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534238"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>使用受控識別傳遞事件
 本文說明如何啟用 Azure 事件方格主題或網域的[受控服務識別](../active-directory/managed-identities-azure-resources/overview.md)。 使用此功能將事件轉送到支援的目的地，例如，服務匯流排佇列和主題、事件中樞，以及儲存體帳戶。
@@ -63,20 +63,20 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 
 更新現有網域的命令是類似的 (`az eventgrid domain update`)。
 
-## <a name="supported-destinations-and-rbac-roles"></a>支援的目的地和 RBAC 角色
+## <a name="supported-destinations-and-azure-roles"></a>支援的目的地和 Azure 角色
 啟用事件方格主題或網域的身分識別之後，Azure 會在 Azure Active Directory 中自動建立身分識別。 將此身分識別新增至適當的 Azure 角色，讓主題或網域可以將事件轉送至支援的目的地。 例如，將身分識別新增至 Azure 事件中樞命名空間的**Azure 事件中樞資料**傳送者角色，讓事件方格主題可以將事件轉送至該命名空間中的事件中樞。 
 
 目前，Azure 事件方格支援使用系統指派的受控識別設定的主題或網域，將事件轉寄至下列目的地。 此表也提供您身分識別應該處於何種角色，讓主題可以轉送事件。
 
-| Destination | RBAC 角色 | 
+| Destination | Azure 角色 | 
 | ----------- | --------- | 
 | 服務匯流排佇列與主題 | [Azure 服務匯流排資料傳送者](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
 | Azure 事件中心 | [Azure 事件中樞資料傳送者](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
-| Azure Blob 儲存體 | [儲存體 Blob 資料參與者](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
-| Azure 佇列儲存體 |[儲存體佇列資料訊息傳送者](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
+| Azure Blob 儲存體 | [儲存體 Blob 資料參與者](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
+| Azure 佇列儲存體 |[儲存體佇列資料訊息傳送者](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
-## <a name="add-an-identity-to-rbac-roles-on-destinations"></a>將身分識別新增至目的地上的 RBAC 角色
-本節描述如何為您的主題或網域，將身分識別新增至 RBAC 角色。 
+## <a name="add-an-identity-to-azure-roles-on-destinations"></a>將身分識別新增至目的地上的 Azure 角色
+本節說明如何將您的主題或網域的身分識別新增至 Azure 角色。 
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 您可以使用 Azure 入口網站將主題或網域身分識別指派給適當的角色，讓主題或網域可以將事件轉送至目的地。 
@@ -94,7 +94,7 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 這些步驟類似於將身分識別新增至表格中所述的其他角色。 
 
 ### <a name="use-the-azure-cli"></a>使用 Azure CLI
-本節中的範例將說明如何使用 Azure CLI 將身分識別新增至 RBAC 角色。 此範例命令適用於事件方格主題。 事件方格網域的命令是類似的。 
+本節中的範例說明如何使用 Azure CLI 將身分識別新增至 Azure 角色。 此範例命令適用於事件方格主題。 事件方格網域的命令是類似的。 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>取得主題系統身分識別的主體識別碼 
 首先，取得主題的系統管理身分識別的主體識別碼，並將身分識別指派給適當的角色。

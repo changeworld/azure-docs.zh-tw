@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f6a64cf30ecc684e05675d366ff5c9fc6642126
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6ba0a599bcb0b058ce4902882df9459b177fb6b5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372156"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530367"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>將 audit 寫入 VNet 和防火牆後方的儲存體帳戶
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "87372156"
 > * 一般用途 v2 儲存體帳戶。 如果您有一般用途 v1 或 blob 儲存體帳戶，請[升級至一般用途 v2 儲存體帳戶](../../storage/common/storage-account-upgrade.md)。 如需詳細資訊，請參閱[儲存體帳戶類型](../../storage/common/storage-account-overview.md#types-of-storage-accounts)。
 > * 儲存體帳戶必須位於與[邏輯 SQL server](logical-servers.md)相同的訂用帳戶和相同的位置。
 > * Azure 儲存體帳戶需要 `Allow trusted Microsoft services to access this storage account` 。 在儲存體帳戶的**防火牆和虛擬網路**上設定此資訊。
-> * 您必須具有 `Microsoft.Authorization/roleAssignments/write` 所選儲存體帳戶的許可權。 如需詳細資訊，請參閱[Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
+> * 您必須具有 `Microsoft.Authorization/roleAssignments/write` 所選儲存體帳戶的許可權。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。
 
 ## <a name="configure-in-azure-portal"></a>在 Azure 入口網站中設定
 
@@ -117,7 +117,7 @@ ms.locfileid: "87372156"
    }
    ```
 
-2. 開啟 [Azure 入口網站](https://portal.azure.com)。 瀏覽至儲存體帳戶。 找出 **[存取控制（IAM）**]，然後按一下 [**新增角色指派**]。 將**儲存體 Blob 資料參與者**RBAC 角色指派給裝載您向 Azure Active Directory （Azure AD）註冊之資料庫的伺服器，如同上一個步驟所示。
+2. 開啟 [Azure 入口網站](https://portal.azure.com)。 瀏覽至儲存體帳戶。 找出 **[存取控制（IAM）**]，然後按一下 [**新增角色指派**]。 將**儲存體 Blob 資料參與者**Azure 角色指派給裝載您向 Azure Active Directory （Azure AD）註冊之資料庫的伺服器，如同上一個步驟所示。
 
    > [!NOTE]
    > 僅有具備「擁有者」權限的成員才能執行此步驟。 針對各種 Azure 內建角色，請參閱[Azure 內建角色](../../role-based-access-control/built-in-roles.md)。

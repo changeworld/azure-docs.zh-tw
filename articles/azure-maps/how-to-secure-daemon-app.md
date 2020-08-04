@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126766"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531366"
 ---
 # <a name="secure-a-daemon-application"></a>保護 daemon 應用程式
 
@@ -109,7 +109,7 @@ Daemon 應用程式會負責從安全的儲存區中抓取共用金鑰。 具有
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>將 daemon 應用程式的角色型存取權授與 Azure 地圖服務
 
-您可以將建立的受控識別或服務主體指派給一或多個 Azure 地圖服務存取控制角色定義，以授與*角色型存取控制*（RBAC）。 若要查看可用於 Azure 地圖服務的 RBAC 角色定義，請移至 **[存取控制（IAM）**]。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。 這些 Azure 地圖服務角色是您可以授與存取權的角色。
+您可以將建立的受控識別或服務主體指派給一或多個 Azure 地圖服務存取控制角色定義，以授與*角色型存取控制*（RBAC）。 若要查看可用於 Azure 地圖服務的 Azure 角色定義，請移至 **[存取控制（IAM）**]。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。 這些 Azure 地圖服務角色是您可以授與存取權的角色。
 
 > [!div class="mx-imgBorder"]
 > ![檢視可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
@@ -124,7 +124,7 @@ Daemon 應用程式會負責從安全的儲存區中抓取共用金鑰。 具有
     > [!div class="mx-imgBorder"]
     > ![新增角色指派](./media/how-to-manage-authentication/add-role-assignment.png)
 
-3. 選取內建的 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [**指派存取**權] 底下，選取 [使用者**指派的受控識別**系統指派的受控識別] **Azure AD 使用者、群組或服務主體**或受控識別  /  ** **。 選取 [主體]。 然後選取 [儲存]。
+3. 選取內建的 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [**指派存取**權] 底下，選取 [使用者**指派的受控識別**系統指派的受控識別] **Azure AD 使用者、群組或服務主體**或受控識別  /  ** **。 選取 [主體]。 然後選取 [儲存]  。
 
     > [!div class="mx-imgBorder"]
     > ![新增角色指派](./media/how-to-manage-authentication/how-to-add-role-assignment.png)

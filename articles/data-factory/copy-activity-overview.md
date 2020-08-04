@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: a6092395929f4990010e2212f28a5962cfe1c7e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087830"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534340"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory 中的複製活動
 
@@ -61,7 +61,7 @@ ms.locfileid: "87087830"
 * 從 Azure Blob 儲存體複製 Gzip 壓縮文字（CSV）格式的資料，並將其寫入 Azure SQL Database。
 * 許多需要序列化/還原序列化或壓縮/解壓縮的活動。
 
-## <a name="supported-regions"></a>支援的區域
+## <a name="supported-regions"></a>支援區域
 
 啟用複製活動的服務可在[Azure 整合執行時間位置](concepts-integration-runtime.md#integration-runtime-location)所列的區域和地理區域中全域取得。 全域可用的拓撲可確保進行有效率的資料移動，通常可避免發生跨區域躍點的情況。 請參閱[依區域的產品](https://azure.microsoft.com/regions/#services)，以檢查特定區域中 Data Factory 和資料移動的可用性。
 
@@ -127,7 +127,7 @@ ms.locfileid: "87087830"
 
 #### <a name="syntax-details"></a>語法詳細資料
 
-| 屬性 | 描述 | 必要？ |
+| 屬性 | 說明 | 必要？ |
 |:--- |:--- |:--- |
 | 類型 | 若為複製活動，請將設定為`Copy` | 是 |
 | 輸入 | 指定您所建立的資料集，以指向來源資料。 複製活動僅支援單一輸入。 | 是 |
@@ -183,7 +183,7 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 ## <a name="add-additional-columns-during-copy"></a>複製期間新增其他資料行
 
-除了將資料從來源資料存放區複製到接收以外，您也可以將設定為新增其他要複製到接收的資料行。 例如:
+除了將資料從來源資料存放區複製到接收以外，您也可以將設定為新增其他要複製到接收的資料行。 例如：
 
 - 從以檔案為基礎的來源複製時，請將相對檔案路徑儲存為額外的資料行，以追蹤資料來自哪個檔案。
 - 新增具有 ADF 運算式的資料行，以附加 ADF 系統變數（例如管線名稱/管線識別碼），或從上游活動的輸出儲存其他動態值。
@@ -198,7 +198,7 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 
 若要以程式設計方式設定它，請 `additionalColumns` 在複製活動來源中新增屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | additionalColumns | 新增要複製到接收的其他資料行。<br><br>陣列底下的每個物件都 `additionalColumns` 代表一個額外的資料行。 `name`會定義資料行名稱，而則 `value` 表示該資料行的資料值。<br><br>允許的資料值為：<br>- **`$$FILEPATH`**-保留的變數表示要將來源檔案的相對路徑儲存在 dataset 中指定的資料夾路徑。 適用于以檔案為基礎的來源。<br>- **運算式**<br>- **靜態值** | 否 |
 
@@ -253,9 +253,6 @@ Data Factory 可讓您以累加方式將差異資料從來源資料存放區複�
 - [SQL Server](connector-sql-server.md)
 
 ![建立接收資料表](media/copy-activity-overview/create-sink-table.png)
-
-> [!NOTE]
-> 啟用[分段複製](copy-activity-performance-features.md#staged-copy)時，目前不支援自動建立資料表。
 
 ## <a name="fault-tolerance"></a>容錯
 

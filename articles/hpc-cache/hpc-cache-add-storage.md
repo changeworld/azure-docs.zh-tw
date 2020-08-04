@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 6923bb31e53493dd01f41cb0b0449f2093bc7e91
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092468"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532589"
 ---
 # <a name="add-storage-targets"></a>新增儲存體目標
 
@@ -118,7 +118,7 @@ Azure HPC 快取會使用[角色型存取控制（RBAC）](https://docs.microsof
 
 您可以提早執行此動作，或按一下頁面上的連結來新增 Blob 儲存體目標。 請記住，角色設定可能需要五分鐘的時間才能透過 Azure 環境傳播，因此在建立儲存體目標之前，您應該先等候幾分鐘後再新增角色。
 
-新增 RBAC 角色的步驟：
+新增 Azure 角色的步驟：
 
 1. 開啟儲存體帳戶的 [**存取控制（IAM）** ] 頁面。 （[**新增儲存體目標**] 頁面中的連結會自動為選取的帳戶開啟此頁面）。
 
@@ -220,9 +220,9 @@ NFS 儲存體目標的欄位多於 Blob 儲存體目標。 這些欄位會指定
 
 | 使用方式模型                   | 快取模式 | 後端驗證 | 最大回寫延遲 |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| 讀取大量、不頻繁的寫入 | 讀取         | 永不                 | 無                     |
+| 讀取大量、不頻繁的寫入 | 讀取         | 永不                 | None                     |
 | 超過15% 寫入       | 讀取/寫入   | 永不                 | 1 小時                   |
-| 用戶端略過快取      | 讀取         | 30 秒            | 無                     |
+| 用戶端略過快取      | 讀取         | 30 秒            | None                     |
 
 ### <a name="create-an-nfs-storage-target"></a>建立 NFS 儲存體目標
 

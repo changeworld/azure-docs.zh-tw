@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 661d3845365778f7ef23cdd05b81b98c3bf84259
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519268"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534629"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>設定安全性警示的電子郵件通知 
 
 為了確保您組織中的適當人員會收到有關您環境中安全性警示的通知，請在 [**電子郵件通知**設定] 頁面中輸入他們的電子郵件地址。
 
-設定通知時，您可以設定要傳送給特定個人的電子郵件，或針對訂用帳戶具有特定 RBAC 角色的任何人。 
+設定通知時，您可以設定要傳送給特定個人的電子郵件，或針對訂用帳戶具有特定 Azure 角色的任何人。 
 
 為避免警示疲勞，資訊安全中心限制傳出郵件的數量。 針對每個訂用帳戶，資訊安全中心傳送：
 
@@ -41,7 +41,7 @@ ms.locfileid: "86519268"
 
 ## <a name="set-up-email-notifications-for-alerts"></a>設定警示的電子郵件通知<a name="email"></a>
 
-您可以將電子郵件通知傳送給個人或具有特定 RBAC 角色的所有使用者。
+您可以將電子郵件通知傳送給個人或具有特定 Azure 角色的所有使用者。
 
 1. 從資訊安全中心的**定價 & 設定**] 區域、相關的訂用帳戶，然後選取 [**電子郵件通知**]。
 

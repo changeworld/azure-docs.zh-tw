@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 4de585a965cfefa6399b0c0929a8f732d0712617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0945f89e3c18ab20ece0b493a49ec9f7f31e4e13
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76939430"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529189"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 私人 DNS 常見問題集
 
@@ -38,7 +38,7 @@ ms.locfileid: "76939430"
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>屬於不同訂用帳戶的虛擬網路是否可以連結至私人區域？
 
-是。 您必須在虛擬網路及私人 DNS 區域上皆擁有寫入作業權限。 寫入權限可授與給數個 RBAC 角色。 例如，傳統網路參與者 RBAC 角色具有虛擬網路的寫入權限，而私人 DNS 區域參與者角色具有私人 DNS 區域的寫入權限。 如需 RBAC 角色的詳細資訊，請參閱[角色型存取控制](../role-based-access-control/overview.md)。
+是。 您必須在虛擬網路及私人 DNS 區域上皆擁有寫入作業權限。 寫入權限可以授與數個 Azure 角色。 例如，傳統網路參與者 Azure 角色具有虛擬網路的寫入權限，而私人 DNS 區域參與者角色具有私人 DNS 區域的寫入權限。 如需 Azure 角色的詳細資訊，請參閱[角色型存取控制](../role-based-access-control/overview.md)。
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>當您刪除虛擬機器時，會自動刪除私人區域中自動註冊的虛擬機器 DNS 記錄嗎？
 

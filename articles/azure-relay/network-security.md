@@ -3,12 +3,12 @@ title: Azure 轉送的網路安全性
 description: 本文說明如何設定來自私人端點的存取權
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: a1ade21df39890b7f1c31a81fca1fffafe2acaa0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf49eff29385b5b72639420416df87b9187845e8
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322152"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532980"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure 轉送的網路安全性 
 本文說明如何搭配 Azure 轉送使用下列安全性功能： 
@@ -23,7 +23,7 @@ ms.locfileid: "85322152"
 ## <a name="ip-firewall"></a>IP 防火牆 
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取轉送命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
 
-此功能在只應該從特定知名網站存取 Azure 轉送的情況下會很有幫助。 防火牆規則可讓您設定規則以接受源自特定 IPv4 位址的流量。 例如，如果您搭配 [Azure Express Route](/azure/expressroute/expressroute-faqs#supported-services) 使用轉送，您可以建立**防火牆規則**以僅允許來自您內部部署基礎結構 IP 位址的流量。 
+此功能在只應該從特定知名網站存取 Azure 轉送的情況下會很有幫助。 防火牆規則可讓您設定規則以接受源自特定 IPv4 位址的流量。 例如，如果您搭配 [Azure Express Route](../expressroute/expressroute-faqs.md#supported-services) 使用轉送，您可以建立**防火牆規則**以僅允許來自您內部部署基礎結構 IP 位址的流量。 
 
 IP 防火牆規則會在轉送命名空間層級套用。 因此，規則會套用至來自用戶端的所有連接 (使用任何受支援的通訊協定)。 從不符合轉送命名空間上允許之 IP 規則的 IP 位址進行的任何連線嘗試都會被視為未經授權而遭到拒絕。 回應則不涉及 IP 規則。 IP 篩選器規則會依序套用，而且第一個符合 IP 位址的規則會決定接受或拒絕動作。
 

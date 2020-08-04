@@ -3,12 +3,12 @@ title: 驗證應用程式以存取 Azure 事件中樞資源
 description: 本文提供的資訊說明如何使用 Azure Active Directory 來驗證應用程式，以存取 Azure 事件中樞資源
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 37f76d99ac7f676b260b8a0e23f8a6e31792e835
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2b4456f63ce6d50ab1187f65deb1ee3280487580
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413862"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531518"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證應用程式，以存取事件中樞資源
 Microsoft Azure 針對以 Azure Active Directory (Azure AD) 為基礎的資源和應用程式提供了整合式的存取控制管理功能。 搭配 Azure 事件中樞使用 Azure AD 的主要優點是您不再需要將認證儲存在程式碼中。 相反地，您可以從 Microsoft 身分識別平臺要求 OAuth 2.0 存取權杖。 要求權杖的資源名稱是 `https://eventhubs.azure.net/` （針對 Kafka 用戶端，要求權杖的資源是 `https://<namespace>.servicebus.windows.net` ）。 Azure AD 會驗證執行應用程式的安全性主體（使用者、群組或服務主體）。 如果驗證成功，Azure AD 會將存取權杖傳回給應用程式，然後應用程式就可以使用存取權杖來授權 Azure 事件中樞資源的要求。
@@ -28,7 +28,7 @@ Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權�
 > [!IMPORTANT]
 > 我們的預覽版本支援將事件中樞資料存取權限新增至擁有者或參與者角色。 不過，「擁有者」和「參與者」角色的資料存取權限已不再遵守。 如果您使用的是「擁有者」或「參與者」角色，請切換到使用 Azure 事件中樞資料擁有者角色。
 
-## <a name="assign-rbac-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 RBAC 角色  
+## <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 Azure 角色  
 若要深入瞭解如何使用 RBAC 和 Azure 入口網站來管理 Azure 資源的存取權，請參閱[這篇文章](..//role-based-access-control/role-assignments-portal.md)。 
 
 在決定角色指派的適當範圍之後，請流覽至 Azure 入口網站中的該資源。 顯示資源的 [存取控制（IAM）] 設定，並遵循下列指示來管理角色指派：

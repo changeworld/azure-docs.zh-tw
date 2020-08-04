@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f46a7927c149009eaf5baddbad2758732d4da758
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133158"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534259"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>防止對容器和 blob 的匿名公用讀取權限
 
@@ -24,7 +24,7 @@ Azure 儲存體中容器和 blob 的匿名公用讀取權限，是共用資料�
 
 當您不允許儲存體帳戶的公用 blob 存取時，Azure 儲存體會拒絕該帳戶的所有匿名要求。 當帳戶不允許公用存取之後，該帳戶中的容器將無法後續設定為公開存取。 任何已設定為公開存取的容器將不再接受匿名要求。 如需詳細資訊，請參閱[設定容器和 blob 的匿名公用讀取權限](anonymous-read-access-configure.md)。
 
-本文說明如何針對儲存體帳戶分析匿名要求，以及如何防止整個儲存體帳戶或個別容器的匿名存取。
+本文說明如何使用拖曳（偵測-補救-Audit-治理）架構，持續管理儲存體帳戶的公用存取。
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>從用戶端應用程式偵測匿名要求
 
@@ -157,6 +157,126 @@ $ctx = $storageAccount.Context
 
 New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 ```
+
+### <a name="check-the-public-access-setting-for-multiple-accounts"></a>檢查多個帳戶的公用存取設定
+
+若要在具有最佳效能的一組儲存體帳戶上檢查公用存取設定，您可以使用 Azure 入口網站中的 [Azure Resource Graph Explorer]。 若要深入瞭解如何使用 Resource Graph Explorer，請參閱[快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢](/azure/governance/resource-graph/first-query-portal)。
+
+在 Resource Graph Explorer 中執行下列查詢，會傳回儲存體帳戶的清單，並顯示每個帳戶的公用存取設定：
+
+```kusto
+resources
+| where type =~ 'Microsoft.Storage/storageAccounts'
+| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
+| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
+```
+
+## <a name="use-azure-policy-to-audit-for-compliance"></a>使用 Azure 原則來審查合規性
+
+如果您有大量的儲存體帳戶，您可能會想要執行審核，以確保這些帳戶已設定為防止公用存取。 若要針對其合規性來審核一組儲存體帳戶，請使用 Azure 原則。 Azure 原則是一種服務，可讓您用來建立、指派和管理將規則套用至 Azure 資源的原則。 Azure 原則可協助您保留符合公司標準和服務等級協定規範的資源。 如需詳細資訊，請參閱 [Azure 原則概觀](../../governance/policy/overview.md)。
+
+### <a name="create-a-policy-with-an-audit-effect"></a>建立具有 Audit 效果的原則
+
+Azure 原則支援決定針對資源評估原則規則時所發生狀況的效果。 當資源不符合規範時，此審核效果會建立警告，但不會停止要求。 如需效果的詳細資訊，請參閱[瞭解 Azure 原則效果](../../governance/policy/concepts/effects.md)。
+
+若要針對具有 Azure 入口網站之儲存體帳戶的 [公用存取] 設定，建立具有 Audit 效果的原則，請遵循下列步驟：
+
+1. 在 [Azure 入口網站中，流覽至 [Azure 原則] 服務。
+1. 在 [**撰寫**中] 區段底下，選取 [**定義**]。
+1. 選取 [**新增原則定義**] 以建立新的原則定義。
+1. 在 [**定義位置**] 欄位中，選取 [**更多**] 按鈕以指定稽核原則資源的所在位置。
+1. 指定原則的名稱。 您可以選擇性地指定 [描述] 和 [類別]。
+1. 在 [**原則規則**] 底下，將下列原則定義新增至 [ **policyRule** ] 區段。
+
+    ```json
+    {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "not": {
+              "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+              "equals": "false"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }
+    ```
+
+1. 儲存原則。
+
+### <a name="assign-the-policy"></a>指派原則
+
+接下來，將原則指派給資源。 原則的範圍會對應到該資源和其下的所有資源。 如需原則指派的詳細資訊，請參閱[Azure 原則指派結構](../../governance/policy/concepts/assignment-structure.md)。
+
+若要使用 Azure 入口網站指派原則，請遵循下列步驟：
+
+1. 在 [Azure 入口網站中，流覽至 [Azure 原則] 服務。
+1. 在 [**撰寫**中] 區段下，選取 [**指派**]。
+1. 選取 [**指派原則**] 以建立新的原則指派。
+1. 在 [**範圍**] 欄位中，選取原則指派的範圍。
+1. 針對 [**原則定義**] 欄位，選取 [**更多**] 按鈕，然後從清單中選取您在上一節中定義的原則。
+1. 提供原則指派的名稱。 描述是選擇性的。
+1. 將 [**強制執行原則**] 設為 [*已啟用*]。 此設定不會影響稽核原則。
+1. 選取 [**審核] + [建立**] 以建立指派。
+
+### <a name="view-compliance-report"></a>查看合規性報告
+
+指派原則之後，您就可以查看合規性報告。 稽核原則的合規性報告提供有關哪些儲存體帳戶不符合原則的資訊。 如需詳細資訊，請參閱[取得原則合規性資料](../../governance/policy/how-to/get-compliance-data.md)。
+
+建立原則指派之後，可能需要幾分鐘的時間才能讓合規性報告變成可用狀態。
+
+若要在 Azure 入口網站中查看合規性報告，請遵循下列步驟：
+
+1. 在 [Azure 入口網站中，流覽至 [Azure 原則] 服務。
+1. 選取 [**相容性**]。
+1. 針對您在上一個步驟中建立的原則指派名稱，篩選其結果。 此報告會顯示有多少資源不符合原則。
+1. 您可以向下切入報表以取得其他詳細資料，包括不符合規範的儲存體帳戶清單。
+
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="顯示 blob 公用存取的稽核原則合規性報告的螢幕擷取畫面":::
+
+## <a name="use-azure-policy-to-enforce-authorized-access"></a>使用 Azure 原則強制執行授權的存取
+
+Azure 原則藉由確保 Azure 資源符合需求和標準，來支援雲端治理。 若要確保貴組織中的儲存體帳戶只允許已獲得授權的要求，您可以建立原則，以防止使用允許匿名要求的公用存取設定來建立新的儲存體帳戶。 如果該帳戶的公用存取設定與原則不相容，此原則也會防止現有帳戶的所有設定變更。
+
+強制原則會使用拒絕效果，以防止會建立或修改儲存體帳戶以允許公用存取的要求。 如需效果的詳細資訊，請參閱[瞭解 Azure 原則效果](../../governance/policy/concepts/effects.md)。
+
+若要針對允許匿名要求的公用存取設定，建立具有拒絕效果的原則，請遵循[使用 Azure 原則來審查合規性](#use-azure-policy-to-audit-for-compliance)中所述的相同步驟，但在原則定義的**policyRule**區段中提供下列 JSON：
+
+```json
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "not": {
+          "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+          "equals": "false"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+建立具有 [拒絕] 效果的原則並將它指派給範圍之後，使用者將無法建立允許公用存取的儲存體帳戶。 使用者也不能對目前允許公用存取的現有儲存體帳戶進行任何設定變更。 嘗試這麼做會導致錯誤。 儲存體帳戶的公用存取設定必須設為**false** ，才能繼續建立或設定帳戶。
+
+下圖顯示當您嘗試在具有拒絕效果的原則需要公用存取權時，建立允許公用存取（新帳戶的預設值）的儲存體帳戶時所發生的錯誤。
+
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="螢幕擷取畫面，顯示在違反原則時建立儲存體帳戶時所發生的錯誤":::
 
 ## <a name="next-steps"></a>後續步驟
 

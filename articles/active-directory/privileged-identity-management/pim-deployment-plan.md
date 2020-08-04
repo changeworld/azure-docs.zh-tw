@@ -14,12 +14,12 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3f9adbb3b83345fe14df39014c6119e97ba7f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6597c268a2a017280d00f73366562de61b4781e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886112"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529784"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -115,7 +115,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 | 名稱和電子郵件 | **訂用帳戶/資源擁有者**<br/>您想要部署的每個訂用帳戶或資源的 IT 擁有者的代表，Privileged Identity Management | SO/R/I |
 | 名稱和電子郵件 | **安全性擁有者**<br/>安全性團隊所推派的代表人員，可簽字同意該規劃符合組織的安全性需求。 | SO/R |
 | 名稱和電子郵件 | **IT 支援管理員/技術服務人員**<br/>IT 支援組織所推派的代表人員，可從技術服務人員的觀點就是否能支援這項變更來提出看法。 | R/I |
-| 試驗使用者的名稱和電子郵件 | **RBAC 角色使用者**<br/>作為特殊權限身分識別管理機制實作對象的一群使用者。 一旦 Privileged Identity Management 執行之後，他們就必須知道如何啟動其角色。 | I |
+| 試驗使用者的名稱和電子郵件 | **Azure 角色使用者**<br/>作為特殊權限身分識別管理機制實作對象的一群使用者。 一旦 Privileged Identity Management 執行之後，他們就必須知道如何啟動其角色。 | I |
 
 ### <a name="enable-privileged-identity-management"></a>啟用 Privileged Identity Management
 

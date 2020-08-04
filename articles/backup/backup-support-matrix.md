@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f84be4082eb6bc845459b6d88cb3157b2330f23d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091006"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531875"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -106,10 +106,7 @@ Azure 備份支援傳輸中和待用資料的加密。
 ### <a name="data-security"></a>資料安全性
 
 - 備份資料會在復原服務保存庫中以加密格式儲存。
-- 只有您持有可將此資料解除鎖定的複雜密碼。 Microsoft 無法解密在任何時間點備份的資料。
-
-    > [!WARNING]
-    > 設定保存庫後，只有您能夠存取加密金鑰。 Microsoft 絕不會持有金鑰複本，也沒有存取金鑰的權限。 如果金鑰遺失，Microsoft 將無法復原備份資料。
+- 當使用 MARS 代理程式從內部部署伺服器備份資料時，會先使用複雜密碼加密資料，然後再上傳至 Azure 備份，而且只有在從 Azure 備份下載之後才會解密。
 - 備份 Azure VM 時，您必須在虛擬機器*內*設定加密。
 - Azure 備份支援 Azure 磁碟加密，其會在 Windows 虛擬機器上使用 BitLocker，而在 Linux 虛擬機器上使用 **dm-crypt**。
 - 在後端，Azure 備份會使用 [Azure 儲存體服務加密](../storage/common/storage-service-encryption.md)，保護待用資料。

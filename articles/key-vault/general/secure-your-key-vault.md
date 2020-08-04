@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 17482a5924d0bc8be531fe48aa34a2d32acff3e5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 26dba14baa95a91c12e9ccd277731b91207b4a4c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503101"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533252"
 ---
 # <a name="secure-access-to-a-key-vault"></a>針對金鑰保存庫的存取進行保護
 
@@ -61,11 +61,11 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 
 在管理平面中，您可以使用 Azure 角色型存取控制（Azure RBAC）來授權呼叫者可以執行的作業。 在 RBAC 模型中，每個 Azure 訂用帳戶都會有一個 Azure AD 執行個體。 您可以對來自該目錄的使用者、群組和應用程式授與存取權。 授與存取權即可在 Azure 訂用帳戶中管理使用 Azure Resource Manager 部署模型的資源。 若要授與存取權，請使用 [Azure 入口網站](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/) 或 [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
 
-您可以使用 Azure AD 在資源群組中建立金鑰保存庫和管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 RBAC 角色，來授與特定範圍層級的存取權。 若要對使用者授與管理金鑰保存庫的權限，您可以在特定範圍對使用者指派預先定義的 `key vault Contributor` 角色。 您可以對 RBAC 角色指派下列範圍層級：
+您可以使用 Azure AD 在資源群組中建立金鑰保存庫和管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 Azure 角色，授與特定範圍層級的存取權。 若要對使用者授與管理金鑰保存庫的權限，您可以在特定範圍對使用者指派預先定義的 `key vault Contributor` 角色。 您可以將下列範圍層級指派給 Azure 角色：
 
-- 訂用帳戶：在訂用帳戶層級指派的 RBAC 角色，會套用至該訂用帳戶內的所有資源群組和資源。
-- **資源群組**：在資源群組層級指派的 RBAC 角色，會套用至該資源群組內的所有資源。
-- **特定資源**：針對特定資源指派的 RBAC 角色，則會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
+- **訂**用帳戶：指派在訂用帳戶層級的 Azure 角色會套用至該訂用帳戶內的所有資源群組和資源。
+- **資源群組**：在資源群組層級指派的 Azure 角色會套用至該資源群組中的所有資源。
+- **特定資源**：指派給特定資源的 Azure 角色會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
 
 有數個預先定義的角色。 如果預先定義的角色不符合您的需求，您可以定義您自己的角色。 如需詳細資訊，請參閱[RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。
 
@@ -130,7 +130,7 @@ Azure Key Vault 是用來保護加密金鑰和祕密 (例如憑證、連接字�
 | --- | --- | --- |
 | 安全性小組 | Key Vault 參與者 | 金鑰︰備份、建立、刪除、取得、匯入、列出、還原<br>祕密：所有作業 |
 | 開發人員和&nbsp;操作員 | Key Vault 部署權限<br><br> **注意**：此權限可讓已部署的 VM 從金鑰保存庫擷取祕密。 | None |
-| 稽核員 | 無 | 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此權限可讓稽核員檢查未在記錄中顯現的金鑰和密碼所具有的屬性 (標籤、啟用日和到期日)。 |
+| 稽核員 | None | 金鑰︰列出<br>密碼︰列出<br><br> **注意**：此權限可讓稽核員檢查未在記錄中顯現的金鑰和密碼所具有的屬性 (標籤、啟用日和到期日)。 |
 | Application | None | 金鑰︰簽署<br>密碼︰取得 |
 
 這三個小組角色需要其他資源的存取權以及 Key Vault 權限。 若要部署 VM (或 Azure App Service 的 Web Apps 功能)，開發人員和操作員需要這些資源類型的 `Contributor` 存取權。 稽核員需要儲存 Key Vault 記錄所在儲存體帳戶的讀取權限。

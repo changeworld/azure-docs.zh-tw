@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 95a966799b4cb66b74d998df9c58958b9b89ecdb
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b907fead145847d54b8b1de196586b65101b22ed
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374213"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534000"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的許可權
 
 Azure Sentinel 使用以 [角色為基礎的存取控制（RBAC）](../role-based-access-control/role-assignments-portal.md)來提供可指派給 Azure 中的使用者、群組和服務的 [內建角色](../role-based-access-control/built-in-roles.md)   。
 
-使用 RBAC 來建立及指派安全性作業小組中的角色，以授與 Azure Sentinel 適當的存取權。 不同的角色可讓您更精細地控制 Azure Sentinel 的使用者可以看到和執行哪些動作。 RBAC 角色可以直接在 Azure Sentinel 工作區中指派（請參閱下面的附注），或在工作區所屬的訂用帳戶或資源群組中，Azure Sentinel 將會繼承。
+使用 RBAC 來建立及指派安全性作業小組中的角色，以授與 Azure Sentinel 適當的存取權。 不同的角色可讓您更精細地控制 Azure Sentinel 的使用者可以看到和執行哪些動作。 您可以直接在 Azure Sentinel 工作區中指派 Azure 角色（請參閱下面的附注），或在工作區所屬的訂用帳戶或資源群組中，Azure Sentinel 將會繼承。
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Azure Sentinel 中工作的角色
 
@@ -64,7 +64,7 @@ Azure Sentinel 使用以 [角色為基礎的存取控制（RBAC）](../role-bas
 
 ### <a name="other-roles-you-might-see-assigned"></a>您可能會看到指派的其他角色
 
-在指派 Azure Sentinel 特定的 RBAC 角色時，您可能會遇到其他已指派給使用者的其他 Azure 和 Log Analytics RBAC 角色，以供其他用途使用。 請注意，這些角色會授與更多的許可權集，包括 Azure Sentinel 工作區和其他資源的存取權：
+在指派 Azure Sentinel 特定的 Azure 角色時，您可能會遇到其他可能指派給使用者的其他 Azure 和 Log Analytics Azure 角色，以供其他用途使用。 請注意，這些角色會授與更多的許可權集，包括 Azure Sentinel 工作區和其他資源的存取權：
 
 - **Azure 角色：** [擁有](../role-based-access-control/built-in-roles.md#owner)者、[參與者](../role-based-access-control/built-in-roles.md#contributor)和[讀者](../role-based-access-control/built-in-roles.md#reader)。 Azure 角色會授與所有 Azure 資源（包括 Log Analytics 工作區和 Azure Sentinel 資源）的存取權。
 

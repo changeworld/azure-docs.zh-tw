@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 24a5e342c66d8154f4635acc957084d243fbd75e
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: ba66716abe80a1b12bc64b739f498a0a01d54fe3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513072"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533167"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
-Azure NetApp Files 支援 NFS 和 SMBv3 磁碟區。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 SMBv3 磁碟區。 如果您想要建立 NFS 磁碟區，請參閱[建立適用於 Azure NetApp Files 的 NFS 磁碟區](azure-netapp-files-create-volumes.md)。 
+Azure NetApp Files 支援使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或雙重通訊協定（NFSv3 和 SMB）來建立磁片區。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 SMBv3 磁碟區。
 
 ## <a name="before-you-begin"></a>開始之前 
 您必須已經設定容量集區。   
@@ -197,7 +197,7 @@ Azure NetApp Files 支援 NFS 和 SMBv3 磁碟區。 磁碟區的容量耗用量
 2. 按一下 [+ 新增磁碟區] 以建立磁碟區。  
     隨即顯示 [建立磁碟區] 視窗。
 
-3. 在 [建立磁碟區] 視窗中，按一下 [建立]，並提供下列欄位的資訊：   
+3. 在 [建立磁片區] 視窗中，按一下 [**建立**]，然後在 [基本] 索引標籤下提供下欄欄位的資訊：   
     * **磁碟區名稱**      
         為您要建立的磁碟區指定名稱。   
 
@@ -230,7 +230,7 @@ Azure NetApp Files 支援 NFS 和 SMBv3 磁碟區。 磁碟區的容量耗用量
 
     * 如果您想要將現有的快照集原則套用到磁片區，請按一下 [**顯示 advanced] 區段**將它展開，然後選取下拉式功能表中的快照集原則。 
 
-        如需建立快照集原則的相關資訊，請參閱[管理快照](azure-netapp-files-manage-snapshots.md)集。
+        如需建立快照集原則的相關資訊，請參閱[管理快照集原則](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
 
         ![顯示先進的選擇](../media/azure-netapp-files/volume-create-advanced-selection.png)
 

@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解在啟用和使用 Azure Dev Spaces 時，如何針對常見問題進行疑難排解並加以解決
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: 7b97bab7182e382801a57bcf7dd6f325e665438b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: cd242dc56e4a3215954fbe6703f47e29bd417ea8
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232486"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534391"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -442,7 +442,7 @@ spec:
 
 如果未安裝或正確設定 `azds.exe`，會出現此錯誤。
 
-解決此問題：
+若要修正此問題：
 
 1. 請檢查位置 %ProgramFiles%/Microsoft SDKs\Azure\Azure Dev Spaces CLI 中是否有 `azds.exe`。 如果有的話，請將該位置新增至 PATH 環境變數中。
 2. 如果未安裝 `azds.exe`，請執行下列命令：
@@ -498,9 +498,9 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 ### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>呼叫 Dev Spaces 控制器和 API 的 RBAC 權限不正確
 
-存取 Azure Dev Spaces 控制器的使用者必須擁有讀取 AKS 叢集上的系統管理員 kubeconfig 所需的存取權。 例如，[內建 Azure Kubernetes Service 叢集系統管理員角色](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)提供此權限。 存取 Azure Dev Spaces 控制器的使用者也必須擁有該控制器的「參與者」或「擁有者」 RBAC 角色。 如需更新 AKS 叢集使用者權限的詳細資訊，請參閱[這裡](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)。
+存取 Azure Dev Spaces 控制器的使用者必須擁有讀取 AKS 叢集上的系統管理員 kubeconfig 所需的存取權。 例如，[內建 Azure Kubernetes Service 叢集系統管理員角色](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)提供此權限。 存取 Azure Dev Spaces 控制器的使用者也必須擁有該控制器的「*參與者*」或「*擁有*者」 Azure 角色。 如需更新 AKS 叢集使用者權限的詳細資訊，請參閱[這裡](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)。
 
-若要更新該控制器的使用者 RBAC 角色：
+若要更新該控制器的使用者 Azure 角色：
 
 1. 在 https://portal.azure.com 登入 Azure 入口網站。
 1. 瀏覽至包含控制器的資源群組，這通常與您的 AKS 叢集相同。
@@ -518,7 +518,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 您可以藉由對 `azds prep` 命令指定 `--enable-ingress` 參數，或藉由在 Visual Studio 中選取 `Publicly Accessible` 核取方塊，來為服務設定公用 URL 端點。 當您在 Dev Spaces 中執行服務時，公用 DNS 名稱會自動完成註冊。 如果此 DNS 名稱未完成註冊，您就會在連線至公用 URL 時，於網頁瀏覽器中看到「頁面無法顯示」或「網站無法連線」的錯誤。
 
-解決此問題：
+若要修正此問題：
 
 * 檢查與您的開發空間服務相關聯的所有 URL 狀態：
 
@@ -540,7 +540,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 * 容器仍處於建置和部署程序。 如果您執行 `azds up` 或啟動偵錯工具，然後在容器成功部署之前嘗試存取容器，就有可能發生這個問題。
 * 您的 _Dockerfile_、Helm 圖表及開啟連接埠的任何伺服器代碼之間的連接埠組態不一致。
 
-解決此問題：
+若要修正此問題：
 
 1. 如果容器處於建置/部署程序，您可以等待 2-3 秒，然後再次嘗試存取服務。 
 1. 檢查下列資產中的連接埠設定：

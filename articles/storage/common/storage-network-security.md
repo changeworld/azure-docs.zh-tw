@@ -9,12 +9,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: d45b792c655820b771ba956721e9169750c39fbd
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: a6f59fff351ecdae82ef7175d54e3b2ab1b7d30b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475408"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534102"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -365,7 +365,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 某些 Microsoft 服務是從無法包含在網路規則中的網路進行操作。 您可以將這類受信任的 Microsoft 服務子集存取權授與儲存體帳戶，同時維護其他應用程式的網路規則。 這些受信任的服務接著會使用增強式驗證來安全地連線到您的儲存體帳戶。 我們已為 Microsoft 服務啟用兩種受信任的存取模式。
 
 - 某些服務的資源**在訂用帳戶**中註冊時，可以在**相同的訂用帳戶**中存取您的儲存體帳戶，以進行選取作業，例如寫入記錄或備份。
-- 某些服務的資源可以藉由**將 RBAC 角色**指派給其系統指派的受控識別，來授與對您儲存體帳戶的明確存取權。
+- 某些服務的資源可以藉由將**Azure 角色指派**給其系統指派的受控識別，來授與對您儲存體帳戶的明確存取權。
 
 
 當您啟用 [允許受信任的 Microsoft 服務...] 設定時，與您儲存體帳戶註冊在相同訂用帳戶中的下列服務資源，其存取權會授與一組有限的作業，如下所述：
@@ -384,7 +384,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 | Azure 網路         | Microsoft.Network          | 儲存和分析網路流量記錄，包括透過網路監看員和流量分析服務。 [深入了解](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 當使用已啟用防火牆的快取、來源或目標儲存體帳戶時，啟用複寫以進行 Azure IaaS 虛擬機器的災害復原。  [深入了解](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
-如果您為該資源執行個體明確地[指派 RBAC 角色](storage-auth-aad.md#assign-rbac-roles-for-access-rights)給[系統指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，則 [允許受信任的 Microsoft 服務] 設定也會允許下列服務的特定執行個體存取儲存體帳戶。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 RBAC 角色。
+如果您明確地[將 Azure 角色指派](storage-auth-aad.md#assign-azure-roles-for-access-rights)給該資源實例的[系統指派受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，[**允許受信任的 Microsoft 服務**] 設定也會允許下列服務的特定實例存取儲存體帳戶。 在此情況下，實例的存取範圍會對應至指派給受控識別的 Azure 角色。
 
 | 服務                        | 資源提供者名稱                 | 目的            |
 | :----------------------------- | :------------------------------------- | :----------------- |

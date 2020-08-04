@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/09/2020
-ms.openlocfilehash: d96b2b1f8465132549c59ac5555adf99e7758a3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/03/2020
+ms.openlocfilehash: a6eaa5519607d5d5e9a49851e1c55f9b60b554ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415225"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529716"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP 資料表複製資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "81415225"
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 SAP 資料表複製資料。 如需詳細資訊，請參閱[複製活動概觀](copy-activity-overview.md)。
 
 >[!TIP]
->若要了解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 的 SAP 資料整合技術白皮書](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) (英文)，其中提供詳細的簡介、比較和指導。
+>若要瞭解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 白皮書的 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，以及每個 sap 連接器、comparsion 和指引的詳細介紹。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
@@ -47,8 +47,9 @@ ms.locfileid: "81415225"
 - 從 SAP 透明資料表、集區資料表、叢集資料表和視圖複製資料。
 - 若已設定 SNC，則使用基本驗證或安全網路通訊（SNC）來複製資料。
 - 連接到 SAP 應用程式伺服器或 SAP 訊息伺服器。
+- 透過預設或自訂 RFC 來抓取資料。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要使用此 SAP 資料表連接器，您需要：
 
@@ -73,7 +74,7 @@ ms.locfileid: "81415225"
 
 以下是針對 SAP BW 開放式中樞連結服務支援的屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | `type` | `type` 屬性必須設定為 `SapTable`。 | 是 |
 | `server` | SAP 實例所在的伺服器名稱。<br/>用來連接到 SAP 應用程式伺服器。 | 否 |
@@ -181,7 +182,7 @@ ms.locfileid: "81415225"
 
 若要將資料從和複製到 SAP BW 開放式中樞連結服務，支援下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | `type` | `type` 屬性必須設定為 `SapTableResource`。 | 是 |
 | `tableName` | 要從中複製資料的 SAP 資料表名稱。 | 是 |
@@ -213,18 +214,19 @@ ms.locfileid: "81415225"
 
 若要從 SAP 資料表複製資料，支援下列屬性：
 
-| 屬性                         | 描述                                                  | 必要 |
+| 屬性                         | 說明                                                  | 必要 |
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type` 屬性必須設定為 `SapTableSource`。         | 是      |
 | `rowCount`                         | 要抓取的資料列數目。                              | 否       |
-| `rfcTableFields`                   | 要從 SAP 資料表複製的欄位（資料行）。 例如： `column0, column1` 。 | 否       |
-| `rfcTableOptions`                  | 用來篩選 SAP 資料表中之資料列的選項。 例如： `COLUMN0 EQ 'SOMEVALUE'` 。 另請參閱本文稍後的 SAP 查詢運算子資料表。 | 否       |
-| `customRfcReadTableFunctionModule` | 自訂 RFC 函數模組，可用來從 SAP 資料表讀取資料。<br>您可以使用自訂 RFC 函式模組來定義從 SAP 系統抓取資料並傳回 Data Factory 的方式。 自訂函式模組必須具有類似于的介面（匯入、匯出、資料表） `/SAPDS/RFC_READ_TABLE2` ，這是 Data Factory 所使用的預設介面。 | 否       |
+| `rfcTableFields`                 | 要從 SAP 資料表複製的欄位（資料行）。 例如： `column0, column1` 。 | 否       |
+| `rfcTableOptions`                | 用來篩選 SAP 資料表中之資料列的選項。 例如： `COLUMN0 EQ 'SOMEVALUE'` 。 另請參閱本文稍後的 SAP 查詢運算子資料表。 | 否       |
+| `customRfcReadTableFunctionModule` | 自訂 RFC 函數模組，可用來從 SAP 資料表讀取資料。<br>您可以使用自訂 RFC 函式模組來定義從 SAP 系統抓取資料並傳回 Data Factory 的方式。 自訂函式模組必須具有類似于的介面（匯入、匯出、資料表） `/SAPDS/RFC_READ_TABLE2` ，這是 Data Factory 所使用的預設介面。<br>Data Factory | 否       |
 | `partitionOption`                  | 要從 SAP 資料表讀取的資料分割機制。 支援的選項包括： <ul><li>`None`</li><li>`PartitionOnInt`（左邊有零填補的一般整數或整數值，例如 `0000012345` ）</li><li>`PartitionOnCalendarYear`（4個格式為 "YYYY" 的數位）</li><li>`PartitionOnCalendarMonth`（6位數的格式為 "YYYYMM"）</li><li>`PartitionOnCalendarDate`（格式為 "YYYYMMDD" 的8位數）</li></ul> | 否       |
 | `partitionColumnName`              | 用來分割資料的資料行名稱。                | 否       |
 | `partitionUpperBound`              | 中所指定之資料行的最大值 `partitionColumnName` ，將用來繼續進行資料分割。 | 否       |
 | `partitionLowerBound`              | 中所指定之資料行的最小值 `partitionColumnName` ，將用來繼續進行資料分割。 （注意： `partitionLowerBound` 當分割區選項為時，不可為 "0" `PartitionOnInt` ） | 否       |
 | `maxPartitionsNumber`              | 資料分割的最大數目。     | 否       |
+| `sapDataColumnDelimiter` | 用來當做分隔符號的單一字元，會傳遞給 SAP RFC 以分割輸出資料。 | 否 |
 
 >[!TIP]
 >如果您的 SAP 資料表有大量資料（例如，數億個數據列），請使用 `partitionOption` 和 `partitionSetting` 將資料分割成較小的磁碟分割。 在此情況下，每個分割區都會讀取資料，而且每個資料分割都會透過單一 RFC 呼叫從您的 SAP 伺服器抓取。<br/>
@@ -235,7 +237,7 @@ ms.locfileid: "81415225"
 
 在中 `rfcTableOptions` ，您可以使用下列常用的 SAP 查詢運算子來篩選資料列：
 
-| 運算子 | 描述 |
+| 運算子 | 說明 |
 | :------- | :------- |
 | `EQ` | 等於 |
 | `NE` | 不等於 |

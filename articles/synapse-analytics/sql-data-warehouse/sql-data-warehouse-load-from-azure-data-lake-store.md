@@ -11,12 +11,12 @@ ms.date: 06/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fcebf66dba2fc13457ca359b81565fc5870032c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c634b4f7ac3aa1fe83e6ab3f863e998b8d25232c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213290"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533932"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>針對 Synapse SQL 從 Azure Data Lake Storage 載入資料
 
@@ -39,7 +39,7 @@ ms.locfileid: "85213290"
 若要執行此教學課程，您需要：
 
 * SQL 集區。 請參閱[建立 SQL 集區及查詢資料](create-data-warehouse-portal.md)。
-* Data Lake Storage 帳戶。 請參閱[開始使用 Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 針對此儲存體帳戶，您必須設定或指定下列其中一個要載入的認證：儲存體帳戶金鑰、共用存取簽章（SAS）金鑰、Azure 目錄應用程式使用者，或對儲存體帳戶具有適當 RBAC 角色的 AAD 使用者。
+* Data Lake Storage 帳戶。 請參閱[開始使用 Azure Data Lake Storage](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。 針對此儲存體帳戶，您將需要設定或指定下列其中一個要載入的認證：儲存體帳戶金鑰、共用存取簽章（SAS）金鑰、Azure 目錄應用程式使用者，或具有儲存體帳戶適當 Azure 角色的 AAD 使用者。
 
 ## <a name="create-the-target-table"></a>建立目標資料表
 

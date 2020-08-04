@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 639f1e09fdb5603965209e5b5ee6c224ad238b76
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832588"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533116"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files 的服務等級
 服務層級是容量集區的屬性。 服務層級是根據指派給磁片區的配額，以容量集區中的磁片區所允許的最大輸送量來定義和區分。
@@ -56,7 +56,8 @@ Azure NetApp Files 支援三種服務層級： *Ultra*、 *Premium*和*Standard*
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需不同服務層級的價格，請參閱 [Azure NetApp Files 定價頁面](https://azure.microsoft.com/pricing/details/storage/netapp/)
-- 如需容量集區中容量耗用量的計算，請參閱[Azure NetApp Files 的成本模型](azure-netapp-files-cost-model.md) 
+- [Azure NetApp Files 定價頁面](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [適用於Azure NetApp Files 的成本模型](azure-netapp-files-cost-model.md) 
 - [設定容量集區](azure-netapp-files-set-up-capacity-pool.md)
-- 請參閱[適用于 Azure NetApp Files 的服務等級協定（SLA）](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [適用于 Azure NetApp Files 的服務等級協定（SLA）](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [動態變更磁碟區的服務等級](dynamic-change-volume-service-level.md) 

@@ -4,12 +4,12 @@ description: Batch 支援 Azure AD 從 Batch 服務進行驗證。 了解兩種�
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7daf26d7c52e07be999bb93edd6fe694f79d1be2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032454"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533507"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch 服務解決方案
 
@@ -130,9 +130,9 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD) 進行�
 1. 從 [角色] 下拉式清單中，選擇應用程式的 [參與者] 或 [讀者] 角色。 如需這些角色的詳細資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../role-based-access-control/overview.md)。
 1. 在 [選取] 欄位中，輸入應用程式的名稱。 從清單中選取您的應用程式，然後選取 [儲存]。
 
-您的應用程式現在應該會以您指派的 RBAC 角色，出現在您的存取控制設定中。
+您的應用程式現在應該會出現在您的存取控制設定中，並已指派 Azure 角色。
 
-![將 RBAC 角色指派給應用程式](./media/batch-aad-auth/app-rbac-role.png)
+![將 Azure 角色指派給您的應用程式](./media/batch-aad-auth/app-rbac-role.png)
 
 ### <a name="assign-a-custom-role"></a>指派自訂角色
 

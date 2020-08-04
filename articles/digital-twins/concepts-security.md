@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d29bccdadeef44f1ae4cdae5875257f95395b96f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373278"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534034"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>使用以角色為基礎的存取控制來保護 Azure 數位 Twins
 
@@ -24,7 +24,7 @@ RBAC 會透過與[Azure Active Directory](../active-directory/fundamentals/activ
 
 您可以使用 RBAC 將許可權授與*安全性主體*，這可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，並接收傳回的 OAuth 2.0 權杖。 此權杖可用來授權對 Azure 數位 Twins 實例的存取要求。
 
-## <a name="authentication-and-authorization"></a>驗證與授權
+## <a name="authentication-and-authorization"></a>驗證和授權
 
 有了 Azure AD，存取是兩個步驟的程式。 當安全性主體（使用者、群組或應用程式）嘗試存取 Azure 數位 Twins 時，要求必須*經過驗證*和*授權*。 
 
@@ -33,7 +33,7 @@ RBAC 會透過與[Azure Active Directory](../active-directory/fundamentals/activ
 
 驗證步驟需要在執行時間包含 OAuth 2.0 存取權杖的任何應用程式要求。 如果應用程式在 Azure 實體（例如[Azure Functions](../azure-functions/functions-overview.md)應用程式）內執行，它可以使用**受控識別**來存取資源。 在下一節中閱讀更多關於受控識別的資訊。
 
-授權步驟需要將 RBAC 角色指派給安全性主體。 指派給安全性主體的角色會決定主體將擁有的許可權。 Azure 數位 Twins 提供 RBAC 角色，其中包含 Azure 數位 Twins 資源的許可權集。 本文稍後將說明這些角色。
+授權步驟會要求將 Azure 角色指派給安全性主體。 指派給安全性主體的角色會決定主體將擁有的許可權。 Azure 數位 Twins 所提供的 Azure 角色包含 Azure 數位 Twins 資源的許可權集。 本文稍後將說明這些角色。
 
 若要深入瞭解 Azure 中支援的角色和角色指派，請參閱瞭解 Azure RBAC 檔中[*的不同角色*](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
@@ -41,9 +41,9 @@ RBAC 會透過與[Azure Active Directory](../active-directory/fundamentals/activ
 
 [適用于 azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別是一個跨 Azure 功能，可讓您建立與應用程式程式碼執行所在之部署相關聯的安全身分識別。 接著，您可以將該身分識別與存取控制角色建立關聯，以授與自訂許可權以存取您的應用程式所需的特定 Azure 資源。
 
-使用受控識別，Azure 平台就能管理此執行階段識別。 您不需要為了識別本身或您需要存取的資源，在應用程式程式碼或設定中儲存及保護存取金鑰。 在 Azure App Service 應用程式中執行的 Azure 數位 Twins 用戶端應用程式不需要處理 SAS 規則和金鑰，或任何其他存取權杖。 用戶端應用程式只需要 Azure 數位 Twins 命名空間的端點位址。 當應用程式連接時，Azure 數位 Twins 會將受管理的實體內容系結至用戶端。 一旦與受控識別相關聯，您的 Azure 數位 Twins 用戶端就可以執行所有授權的作業。 然後藉由將受管理的實體與 Azure 數位 Twins RBAC 角色產生關聯來授與授權（如下所述）。
+使用受控識別，Azure 平台就能管理此執行階段識別。 您不需要為了識別本身或您需要存取的資源，在應用程式程式碼或設定中儲存及保護存取金鑰。 在 Azure App Service 應用程式中執行的 Azure 數位 Twins 用戶端應用程式不需要處理 SAS 規則和金鑰，或任何其他存取權杖。 用戶端應用程式只需要 Azure 數位 Twins 命名空間的端點位址。 當應用程式連接時，Azure 數位 Twins 會將受管理的實體內容系結至用戶端。 一旦與受控識別相關聯，您的 Azure 數位 Twins 用戶端就可以執行所有授權的作業。 然後藉由將受管理的實體與 Azure 數位 Twins Azure 角色產生關聯來授與授權（如下所述）。
 
-### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>授權： Azure 數位 Twins 的 RBAC 角色
+### <a name="authorization-azure-roles-for-azure-digital-twins"></a>授權： azure 數位 Twins 的 Azure 角色
 
 Azure 提供下列 Azure 內建角色，以授權 Azure 數位 Twins 資源的存取權：
 * *Azure 數位 Twins 擁有者（預覽）* -使用此角色可透過 Azure 數位 Twins 資源提供完整存取權。
@@ -62,7 +62,7 @@ Azure 提供下列 Azure 內建角色，以授權 Azure 數位 Twins 資源的�
 
 ## <a name="permission-scopes"></a>權限範圍
 
-將 RBAC 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法規定最好只授與最少的可能範圍。
+將 Azure 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法規定最好只授與最少的可能範圍。
 
 下列清單說明您可以將 Azure 數位 Twins 資源的存取範圍限定于哪些層級。
 * 模型：此資源的動作會指示對 Azure 數位 Twins 中上傳的[模型](concepts-models.md)進行控制。

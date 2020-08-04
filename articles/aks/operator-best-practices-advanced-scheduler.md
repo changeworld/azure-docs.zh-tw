@@ -5,12 +5,12 @@ description: 了解叢集運算子在 Azure Kubernetes Service (AKS) 中使用�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077842"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530056"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中進階排程器功能的最佳做法
 
@@ -71,8 +71,6 @@ spec:
 
 套用污點時，請與應用程式開發人員和擁有者合作，以允許他們在部署中定義必要的容差。
 
-如需污點和容差的相關詳細資訊，請參閱[套用污點和容差][k8s-taints-tolerations]。
-
 如需有關如何在 AKS 中使用多個節點集區的詳細資訊，請參閱[在 AKS 中建立和管理叢集的多個節點][use-multiple-node-pools]集區。
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>AKS 中污點和容差的行為
@@ -80,6 +78,7 @@ spec:
 當您升級 AKS 中的節點集區時，污點和容差會遵循套用至新節點的設定模式：
 
 - **使用虛擬機器擴展集的預設叢集**
+  - 您可以從 AKS API[污點 nodepool][taint-node-pool] ，讓新擴充的節點接收 API 指定的節點污點。
   - 假設您有兩個節點的叢集-節點*1*和*節點 2*。 您會升級節點集區。
   - 會建立兩個額外的節點： *node3*和*node4*，並分別傳遞污點。
   - 系統會刪除原始的*節點 1*和*節點 2* 。
@@ -185,7 +184,7 @@ Kubernetes 排程器以邏輯方式隔離工作負載的最後一種方法，是
 
 * [多租用戶和叢集隔離][aks-best-practices-scheduler]
 * [基本的 Kubernetes 排程器功能][aks-best-practices-scheduler]
-* [驗證與授權][aks-best-practices-identity]
+* [驗證和授權][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-taints-tolerations]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
@@ -198,3 +197,4 @@ Kubernetes 排程器以邏輯方式隔離工作負載的最後一種方法，是
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[taint-node-pool]: use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool

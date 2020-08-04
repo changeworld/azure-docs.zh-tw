@@ -4,12 +4,12 @@ description: 使用角色型存取控制來管理復原服務保存庫中的備�
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 4c5a0a43efe7bda5fdc4b60d13b97f61565809bd
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445315"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533456"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用角色型存取控制來管理 Azure 備份復原點
 
@@ -28,9 +28,9 @@ Azure 備份提供三個內建角色來控制備份管理作業。 深入瞭解[
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>將備份的內建角色對應至備份管理動作
 
-下表會擷取備份管理動作與執行該作業所需的最小對應 RBAC 角色。
+下表會捕捉執行該作業所需的備份管理動作和對應的最低 Azure 角色。
 
-| 管理作業 | 所需的最小 RBAC 角色 | 所需的範圍 |
+| 管理作業 | 需要的最低 Azure 角色 | 所需的範圍 |
 | --- | --- | --- |
 | 建立復原服務保存庫 | 備份參與者 | 包含保存庫的資源群組 |
 | 啟用 Azure VM 的備份 | 備份操作員 | 包含保存庫的資源群組 |

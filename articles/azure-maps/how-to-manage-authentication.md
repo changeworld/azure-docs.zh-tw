@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 69dda537beda1d1bec4f019e1d5cadd16bdd5b39
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 870ecb8bda9f07c9270724002d381a4f58bc4d13
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126851"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531722"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>管理 Azure 地圖服務中的驗證
 
@@ -43,9 +43,9 @@ ms.locfileid: "87126851"
 > [!IMPORTANT]
 > Microsoft 建議使用生產應用程式的角色型存取控制（RBAC），來執行 Azure Active Directory （Azure AD）。
 
-| 案例                                                                                    | 驗證 | 授權 | 開發成果 | 營運工作 |
+| 狀況                                                                                    | 驗證 | 授權 | 開發成果 | 營運工作 |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
-| [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | 共用金鑰     | 不適用           | 中             | 高               |
+| [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | 共用金鑰     | N/A           | 中             | 高               |
 | [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低度                | 中             |
 | [具有互動式單一登入的 Web 單一頁面應用程式](./how-to-secure-spa-users.md) | Azure AD       | 高          | 中             | 適中             |
 | [具有非互動式登入的 Web 單一頁面應用程式](./how-to-secure-spa-app.md)      | Azure AD       | 高          | 中             | 適中             |
@@ -56,7 +56,7 @@ ms.locfileid: "87126851"
 
 ## <a name="view-role-definitions"></a>查看角色定義
 
-若要查看可用於 Azure 地圖服務的 RBAC 角色，請移至 **[存取控制（IAM）**]。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。 這些 Azure 地圖服務角色是您可以授與存取權的角色。
+若要查看可用於 Azure 地圖服務的 Azure 角色，請移至 **[存取控制（IAM）**]。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。 這些 Azure 地圖服務角色是您可以授與存取權的角色。
 
 > [!div class="mx-imgBorder"]
 > ![檢視可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)

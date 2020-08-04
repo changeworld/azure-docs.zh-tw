@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f29ed1ad7ba0215e9b4193fd56dd3a32f3e9a2
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 68d40e9dbc2c4da6b298f7245318c95de983edcc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476059"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530141"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>在 Azure Active Directory 中使用雲端群組來管理角色指派（預覽）
 
@@ -59,12 +59,13 @@ Azure AD 可讓您使用名為 isAssignableToRole 的新屬性來保護指派給
 ## <a name="known-issues"></a>已知問題
 
 - 透過群組指派角色時，您無法建立或修改動態群組。
-- Azure 資訊保護無法透過群組辨識角色成員資格。 直接角色指派仍然有效。 Azure 資訊保護入口網站（傳統入口網站）尚未透過群組辨識角色成員資格。 直接角色指派仍然有效。 您可以[遷移至統一的敏感度標籤平臺](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels)，然後使用 Office 365 安全性 & 合規性中心來使用群組指派來管理角色。
 - 「**啟用受控使用者登入的分段推出**」功能不支援透過群組進行指派。
 - *僅 Azure AD P2 授權客戶*：不要透過 Azure AD 和 Privileged Identity Management，將群組指派為作用中的角色。 這會導致使用者無法在 PIM 中看到其作用中角色指派，以及無法移除該 PIM 指派的問題。 符合資格的指派在此案例中不會受到影響。 如果您嘗試進行這種指派，可能會看到非預期的行為，例如：
   - 角色指派的結束時間可能會不正確地顯示。
   - 在 PIM 入口網站中，**我的角色**只會顯示一個角色指派，而不論授與指派的方法有多少（透過一或多個群組，以及直接執行）。
-- *僅 Azure AD P2 授權客戶*即使在刪除群組之後，仍會在 PIM UI 中顯示為該角色的合格成員。 功能沒問題，這只是 Azure 入口網站中的快取問題。
+- *僅 Azure AD P2 授權客戶*即使在刪除群組之後，仍會在 PIM UI 中顯示為該角色的合格成員。 功能沒問題，這只是 Azure 入口網站中的快取問題。  
+- Exchange 系統管理中心尚未透過群組辨識角色成員資格，但 PowerShell Cmdlet 會正常執行。
+- Azure 資訊保護入口網站（傳統入口網站）尚未透過群組辨識角色成員資格。 您可以[遷移至統一的敏感度標籤平臺](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels)，然後使用 Office 365 安全性 & 合規性中心來使用群組指派來管理角色。
 
 我們正在修正這些問題。
 

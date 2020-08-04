@@ -4,12 +4,12 @@ description: 在本文中，您會找到有關使用 Azure 備份服務來備份
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 68f85b3d5da811f78ba398093db5a65ee5c49ab1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bf09c4e56c3881987e14d27d5f2166c68e311ab3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538763"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533490"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
@@ -99,11 +99,7 @@ Azure 虛擬機器備份原則支援最小保留範圍，最多7天到9999天。
 
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>我可以備份或還原附加至 VM 的選擇性磁片嗎？
 
-Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁碟備份和還原。
-
-目前，Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的所有磁片（作業系統和資料）。 使用 [排除磁片] 功能時，您可以選擇從 VM 中的多個資料磁片備份一或數個。 如此可提供有效率且符合成本效益的解決方案，以滿足您的備份和還原需求。 每個復原點都有備份作業所含磁碟的資料，這進一步可讓您在還原作業期間，從給定的復原點還原磁碟子集。 從快照集和保存庫還原時都是如此。
-
-若要註冊預覽版，請透過此位址發送電子郵件給我們：AskAzureBackupTeam@microsoft.com
+Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁碟備份和還原。 如需詳細資訊，請參閱[適用于 Azure vm 的選擇性磁片備份與還原](selective-disk-backup-restore.md)。
 
 ## <a name="restore"></a>還原
 

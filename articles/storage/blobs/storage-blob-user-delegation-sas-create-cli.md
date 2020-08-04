@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e3ba428c0e3564f724f02652fc77c6ce84947bd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ddfa12bd758ffc362c51e10f63800665109d54a6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494565"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534068"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>使用 Azure CLI 建立容器或 blob 的使用者委派 SAS
 
@@ -40,7 +40,7 @@ ms.locfileid: "87494565"
 
 若要從 Azure PowerShell 建立使用者委派 SAS，用來登入 Azure CLI 的 Azure AD 帳戶必須獲指派包含**storageAccounts/blobServices/generateUserDelegationKey**動作的角色。 此許可權可讓 Azure AD 帳戶要求*使用者委派金鑰*。 使用者委派金鑰是用來簽署使用者委派 SAS。 提供**Microsoft 儲存體/storageAccounts/blobServices/generateUserDelegationKey**動作的角色，必須在儲存體帳戶、資源群組或訂用帳戶的層級指派。
 
-如果您沒有足夠的許可權可將 RBAC 角色指派給 Azure AD 的安全性主體，您可能需要要求帳戶擁有者或系統管理員指派必要的許可權。
+如果您沒有足夠的許可權可將 Azure 角色指派給 Azure AD 的安全性主體，您可能需要要求帳戶擁有者或系統管理員指派必要的許可權。
 
 下列範例會指派**儲存體 Blob 資料參與者**角色，其中包括**Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey**動作。 角色的範圍設定為儲存體帳戶的層級。
 

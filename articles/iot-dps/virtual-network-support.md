@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 97168c95893ffdea99180c997265f259176ed07f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531213"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534595"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>虛擬網路的 Azure IoT 中樞裝置布建服務（DPS）支援
 
@@ -59,7 +59,7 @@ ms.locfileid: "86531213"
 
 * 當 DPS 資源和連結的中樞位於不同的雲端時，私人端點將無法與 DPS 搭配使用。 例如， [Azure Government 和全域 Azure](../azure-government/documentation-government-welcome.md)。
 
-* 目前，[使用 DPS Azure Functions 的自訂配置原則](how-to-use-custom-allocation-policies.md)不會使用 VNET 和私人端點。 
+* 目前，當 Azure 函式鎖定至 VNET 和私人端點時，使用 Azure Functions for DPS 的[自訂配置原則](how-to-use-custom-allocation-policies.md)將無法運作。 
 
 * 目前的 DPS VNET 支援僅適用于將資料輸入至 DPS。 資料輸出（從 DPS 到 IoT 中樞的流量）會使用內部服務對服務機制，而不是專用的 VNET。 DPS 和 IoT 中樞之間的完整 VNET 型輸出鎖定支援目前無法使用。
 
@@ -129,7 +129,7 @@ ms.locfileid: "86531213"
     | :---- | :-----|
     | **資源識別碼或別名** | 輸入 DPS 資源的資源識別碼。 |
     | **目標子資源** | 輸入**iotDps** |
-    | **要求訊息** | 輸入 DPS 資源擁有者的要求訊息。<br>例如 <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
+    | **要求訊息** | 輸入 DPS 資源擁有者的要求訊息。<br>例如， <br>`Please approve this new private endpoint`<br>`for IoT devices in site 23 to access this DPS instance`  |
 
     按 **[下一步：設定]** 以設定私人端點的 VNET。
 

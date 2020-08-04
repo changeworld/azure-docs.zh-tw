@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 2ef2cc86b3e12149977fa819a7e54ee9a1c0d7ac
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 43a6c10c8c73e8fb5189b6f085a6969c0d776593
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423978"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534901"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>取得 Azure 資訊安全中心的全租用戶可見性
 本文說明如何藉由將安全性原則套用至連結至 Azure Active Directory 租使用者的所有 Azure 訂用帳戶，大規模管理您組織的安全性狀態。
@@ -60,10 +60,10 @@ Azure 管理群組可讓您有效管理訂用帳戶群組的存取、原則和�
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>授與租用戶層級的可見性和指派原則的能力
 
-若要能夠檢視所有在 Azure AD 租用戶中註冊的訂用帳戶安全性狀態，必須在根管理群組上指派具有足夠讀權限的 RBAC 角色。
+若要查看 Azure AD 租使用者中註冊之所有訂用帳戶的安全性狀態，必須在根管理群組上指派具有足夠讀取權限的 Azure 角色。
 
 ### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>提高 Azure Active Directory 中全域管理員的存取權
-Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接存取權。 但身為目錄管理員，他們有權將自身提高為具有存取權的角色。 Azure AD 租用戶管理員必須將自身提高為根管理群組層級的使用者存取管理員，才能指派 RBAC 角色。 如需 PowerShell 指示和相關資訊，請參閱[提高 Azure Active Directory 中全域管理員的存取權](../role-based-access-control/elevate-access-global-admin.md)。 
+Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接存取權。 但身為目錄管理員，他們有權將自身提高為具有存取權的角色。 Azure AD 租使用者系統管理員必須將其本身提升為根管理群組層級的「使用者存取系統管理員」，才能指派 Azure 角色。 如需 PowerShell 指示和相關資訊，請參閱[提高 Azure Active Directory 中全域管理員的存取權](../role-based-access-control/elevate-access-global-admin.md)。 
 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)或 [Azure Active Directory 系統管理中心](https://aad.portal.azure.com)。
@@ -87,11 +87,11 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
 5. 執行您需要以更高存取權完成的工作。 當您完成時，請將開關設回 [否]****。
 
 
-### <a name="assign-rbac-roles-to-users"></a>將 RBAC 角色指派給使用者
-若要取得所有訂用帳戶的可見性，租用戶系統管理員必須在根管理群組層級，將適當的 RBAC 角色指派給他們想要授與整個租用戶可見性的任何使用者 (包括本身)。 建議指派的角色為 [安全性管理員]**** 或 [安全性讀取者]****。 一般而言，需具備安全性管理員角色，才能在根層級套用原則，而安全性讀取者就足以提供租用戶層級的可見性。 如需有關這些角色所授與權限的詳細資訊，請參閱[安全性管理員內建角色描述](../role-based-access-control/built-in-roles.md#security-admin)或[安全性讀取者內建角色描述](../role-based-access-control/built-in-roles.md#security-reader)。
+### <a name="assign-azure-roles-to-users"></a>將 Azure 角色指派給使用者
+若要取得所有訂用帳戶的可見度，租使用者系統管理員必須將適當的 Azure 角色指派給他們想要在根管理群組層級授與全租使用者可見度（包括本身）的任何使用者。 建議指派的角色為 [安全性管理員]**** 或 [安全性讀取者]****。 一般而言，需具備安全性管理員角色，才能在根層級套用原則，而安全性讀取者就足以提供租用戶層級的可見性。 如需有關這些角色所授與權限的詳細資訊，請參閱[安全性管理員內建角色描述](../role-based-access-control/built-in-roles.md#security-admin)或[安全性讀取者內建角色描述](../role-based-access-control/built-in-roles.md#security-reader)。
 
 
-#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>透過 Azure 入口網站將 RBAC 角色指派給使用者： 
+#### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>透過 Azure 入口網站將 Azure 角色指派給使用者： 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 1. 若要檢視管理群組，請在 Azure 主功能表下選取 [所有服務]****，然後選取 [管理群組]****。
@@ -108,7 +108,7 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
    ![新增安全性讀取者角色螢幕擷取畫面](./media/security-center-management-groups/asc-security-reader.png)
 
 
-#### <a name="assign-rbac-roles-to-users-with-powershell"></a>使用 PowerShell 將 RBAC 角色指派給使用者： 
+#### <a name="assign-azure-roles-to-users-with-powershell"></a>使用 PowerShell 將 Azure 角色指派給使用者： 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -155,7 +155,7 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
     ![訂用帳戶涵蓋範圍清單螢幕擷取畫面](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>移除已提高的存取權 
-在 RBAC 角色指派給使用者後，租用戶管理員應將本身從使用者存取管理員角色中移除。
+將 Azure 角色指派給使用者之後，租使用者系統管理員應該將其本身從「使用者存取系統管理員」角色中移除。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)或 [Azure Active Directory 系統管理中心](https://aad.portal.azure.com)。
 
@@ -183,7 +183,7 @@ Azure Active Directory 租用戶管理員並沒有 Azure 訂用帳戶的直接�
 4. 重複步驟 1 到 3，直到您已新增範圍內的所有訂用帳戶為止。
 
    > [!NOTE]
-   > 管理群組可同時包含訂用帳戶和子管理群組。 當您將使用者的 RBAC 角色指派給父管理群組時，子管理群組的訂用帳戶即會繼承存取權。 子系也會繼承在父管理群組上設定的原則。 
+   > 管理群組可同時包含訂用帳戶和子管理群組。 當您將 Azure 角色指派給父管理群組時，子管理群組的訂用帳戶會繼承該存取權。 子系也會繼承在父管理群組上設定的原則。 
 
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已了解如何取得 Azure 資訊安全中心的全租用戶可見性。 如要深入了解資訊安全中心，請參閱下列文章：

@@ -3,13 +3,13 @@ title: 使用 Azure 入口網站還原 Vm
 description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
-ms.date: 09/17/2019
-ms.openlocfilehash: e717a1c514e9ddc8a8c03dbf8d662ffb2f61eb61
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/02/2020
+ms.openlocfilehash: 600979e56ac3e88b6530d833e930a9700fad2d9a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514251"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533630"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -51,37 +51,37 @@ Azure 備份提供數種方法來還原 VM。
 
 ## <a name="select-a-restore-point"></a>選取還原點
 
-1. 在與您想要還原的 VM 相關聯的保存庫中，按一下 [**備份專案**] [  >  **Azure 虛擬機器**]。
-2. 建立 VM。 根據預設，VM 儀表板上會顯示過去 30 天內的復原點。 您可以根據日期、時間範圍和不同類型的快照集一致性來顯示或篩選出超過 30 天的復原點。
-3. 若要還原 VM，請按一下 [還原 VM]****。
+1. 在與您想要還原的 VM 相關聯的保存庫中，選取 [**備份專案**] [  >  **Azure 虛擬機器**]。
+1. 選取 VM。 根據預設，VM 儀表板上會顯示過去 30 天內的復原點。 您可以根據日期、時間範圍和不同類型的快照集一致性來顯示或篩選出超過 30 天的復原點。
+1. 若要還原 VM，請按一下 [還原 VM]****。
 
     ![還原點](./media/backup-azure-arm-restore-vms/restore-point.png)
 
-4. 選取要用於復原的還原點。
+1. 選取要用於復原的還原點。
 
 ## <a name="choose-a-vm-restore-configuration"></a>選擇 VM 還原組態
 
-1. 在 [還原設定]**** 中，選取還原選項：
+1. 在 [**還原虛擬機器**] 中，選取還原選項：
     - **建立新**的：如果您想要建立新的 VM，請使用此選項。 您可以使用簡單的設定來建立 VM，或還原磁碟並建立自訂 VM。
     - **取代現有**的：如果您想要取代現有 VM 上的磁片，請使用此選項。
 
         ![還原組態精靈](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
-2. 為您所選的還原選項指定設定。
+1. 為您所選的還原選項指定設定。
 
 ## <a name="create-a-vm"></a>建立 VM
 
 其中一個[還原選項](#restore-options)可讓您從還原點快速建立具有基本設定的 VM。
 
-1. 在 [**還原**設定] [  >  **建立新**  >  的**還原類型**] 中，選取 [**建立虛擬機器**]。
-2. 在 [**虛擬機器名稱**] 中，指定訂用帳戶中不存在的 VM。
-3. 在 [資源群組]**** 中，選取新 VM 的現有資源群組，或使用全域的唯一名稱來建立新的資源群組。 如果您指派已經存在的名稱，Azure 就會為群組指派與 VM 相同的名稱。
-4. 在 [虛擬網路]**** 中，選取將放置 VM 的 VNet。 與訂用帳戶相關聯的所有 VNet 均會顯示。 選取子網路。 預設會選取第一個子網路。
-5. 在 [**儲存位置**] 中，指定 VM 的儲存體帳戶。 [深入了解](#storage-accounts)。
+1. 在 [**還原虛擬機器**] [  >  **建立新**  >  的**還原類型**] 中，選取 [**建立虛擬機器**]。
+1. 在 [**虛擬機器名稱**] 中，指定訂用帳戶中不存在的 VM。
+1. 在 [資源群組]**** 中，選取新 VM 的現有資源群組，或使用全域的唯一名稱來建立新的資源群組。 如果您指派已經存在的名稱，Azure 就會為群組指派與 VM 相同的名稱。
+1. 在 [虛擬網路]**** 中，選取將放置 VM 的 VNet。 與訂用帳戶相關聯的所有 VNet 均會顯示。 選取子網路。 預設會選取第一個子網路。
+1. 在 [**預備位置**] 中，指定 VM 的儲存體帳戶。 [深入了解](#storage-accounts)。
 
     ![還原組態精靈](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
-6. 在 [還原設定]**** 中，選取 [確定]****。 在 [還原]**** 中，按一下 [還原]**** 以觸發還原作業。
+1. 選取 [**還原**] 以觸發還原作業。
 
 ## <a name="restore-disks"></a>還原磁碟
 
@@ -92,12 +92,12 @@ Azure 備份提供數種方法來還原 VM。
 - 使用 PowerShell 從還原的磁片[建立新的 VM](./backup-azure-vms-automation.md#create-a-vm-from-restored-disks) 。
 
 1. 在 [**還原**設定] [  >  **建立新**  >  的**還原類型**] 中，選取 [**復原磁碟**]。
-2. 在 [資源群組]**** 中，選取已還原磁碟的現有資源群組，或使用全域的唯一名稱來建立新的資源群組。
-3. 在 [儲存體帳戶]**** 中，指定要將 VHD 複製到其中的帳戶。 [深入了解](#storage-accounts)。
+1. 在 [資源群組]**** 中，選取已還原磁碟的現有資源群組，或使用全域的唯一名稱來建立新的資源群組。
+1. 在 [**預備位置**] 中，指定要將 vhd 複製到其中的儲存體帳戶。 [深入了解](#storage-accounts)。
 
     ![已完成復原設定](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
-4. 在 [還原設定]**** 中，選取 [確定]****。 在 [還原]**** 中，按一下 [還原]**** 以觸發還原作業。
+1. 選取 [**還原**] 以觸發還原作業。
 
 當您的虛擬機器使用受控磁片，並選取 [**建立虛擬機器**] 選項時，Azure 備份不會使用指定的儲存體帳戶。 在**復原磁碟**和**立即還原**的案例中，儲存體帳戶僅用於儲存範本。 受控磁片會建立在指定的資源群組中。
 當您的虛擬機器使用非受控磁片時，它們會以 blob 的形式還原至儲存體帳戶。
@@ -106,19 +106,19 @@ Azure 備份提供數種方法來還原 VM。
 
 還原磁碟後，使用還原作業期間所產生的範本來自訂和建立新 VM：
 
-1. 開啟相關作業的**還原作業詳細資料**。
+1. 在 [**備份作業**] 中，選取相關的還原作業。
 
-2. 在 [還原作業詳細資料]**** 中，選取 [部署範本]**** 來起始範本部署。
+1. 在 [**還原**] 中，選取 [**部署範本**] 以起始範本部署。
 
     ![還原作業向下鑽研](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
 
-3. 若要自訂範本中提供的 VM 設定，請按一下 [編輯範本]****。 如果您想要新增更多自訂，請按一下 [編輯參數]****。
+1. 若要自訂範本中提供的 VM 設定，請選取 [**編輯範本**]。 如果您想要新增更多自訂，請選取 [**編輯參數**]。
     - [深入了解](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)自訂範本中的部署資源。
     - [深入了解](../azure-resource-manager/templates/template-syntax.md)編寫範本。
 
    ![載入範本部署](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
-4. 輸入 VM 的自訂值，接受 [條款和條件]****，然後按一下 [購買]****。
+1. 輸入 VM 的自訂值，接受**條款及條件**，然後選取 [**購買**]。
 
    ![提交範本部署](./media/backup-azure-arm-restore-vms/submitting-template1.png)
 
@@ -126,9 +126,9 @@ Azure 備份提供數種方法來還原 VM。
 
 其中一個[還原選項](#restore-options)可讓您使用選取的還原點取代現有 VM 磁碟。 [檢閱](#restore-options)所有還原選項。
 
-1. 在 [還原設定]**** 中，按一下 [取代現有的]****。
-2. 在 [還原類型]**** 中，選取 [取代磁碟]****。 這是將用來取代現有 VM 磁碟的還原點。
-3. 在 [**預備位置**] 中，指定在還原過程中應該儲存目前受控磁片的快照集。 [深入了解](#storage-accounts)。
+1. 在 [**還原**設定] 中，選取 [**取代現有**的]。
+1. 在 [還原類型]**** 中，選取 [取代磁碟]****。 這是將用來取代現有 VM 磁碟的還原點。
+1. 在 [**預備位置**] 中，指定在還原過程中應該儲存目前受控磁片的快照集。 [深入了解](#storage-accounts)。
 
    ![還原組態精靈取代現有的](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
@@ -145,11 +145,11 @@ Azure 備份提供數種方法來還原 VM。
 如果已啟用 [CRR]，您可以在次要區域中查看備份專案。
 
 1. 在入口網站中，移至 [復原**服務保存庫**] [  >  **備份專案**]
-2. 按一下 [**次要地區**] 以查看次要地區中的專案。
+1. 選取 [**次要地區**] 以查看次要地區中的專案。
 
-![次要區域中的虛擬機器](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
+    ![次要區域中的虛擬機器](./media/backup-azure-arm-restore-vms/secbackedupitem.png)
 
-![選取次要地區](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
+    ![選取次要地區](./media/backup-azure-arm-restore-vms/backupitems-sec.png)
 
 ### <a name="restore-in-secondary-region"></a>在次要區域中還原
 
@@ -173,13 +173,14 @@ Azure 備份提供數種方法來還原 VM。
 >
 >- 在觸發還原並于資料傳輸階段之後，就無法取消還原作業。
 >- 跨區域還原功能會還原已啟用 CMK （客戶管理的金鑰）的 Azure Vm，這些 Vm 不會在已啟用 CMK 的復原服務保存庫中進行備份，因為次要區域中已啟用非 CMK 的 Vm。
+>- 在次要區域中還原所需的 RBAC （角色型存取控制）角色與主要區域中的角色相同。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>監視次要區域還原作業
 
 1. 在入口網站中，移至 [復原**服務保存庫**] [  >  **備份作業**]
-2. 按一下 [**次要地區**] 以查看次要地區中的專案。
+1. 選取 [**次要地區**] 以查看次要地區中的專案。
 
-![已篩選的備份作業](./media/backup-azure-arm-restore-vms/secbackupjobs.png)
+    ![已篩選的備份作業](./media/backup-azure-arm-restore-vms/secbackupjobs.png)
 
 ## <a name="restoring-unmanaged-vms-and-disks-as-managed"></a>將非受控 Vm 和磁片還原為受管理
 
@@ -207,17 +208,17 @@ Azure 備份提供數種方法來還原 VM。
 
 ## <a name="track-the-restore-operation"></a>追蹤還原作業
 
-在觸發還原作業之後，備份服務會建立用於追蹤的作業。 Azure 備份會在入口網站中顯示作業的相關通知。 如果看不到它們，請選取 [**通知**] 符號，然後選取 [**查看所有作業**] 以查看還原程式狀態。
+在觸發還原作業之後，備份服務會建立用於追蹤的作業。 Azure 備份會在入口網站中顯示作業的相關通知。 如果看不到，請選取 [**通知**] 符號，然後在 **[活動記錄檔] 中選取 [更多事件**]，以查看還原處理狀態。
 
 ![已觸發還原](./media/backup-azure-arm-restore-vms/restore-notification1.png)
 
  透過以下方式來追蹤還原：
 
-1. 若要檢視作業的運作，請按一下 [通知] 超連結。 或者，在保存庫中按一下 [備份作業]****，然後按一下相關的 VM。
+1. 若要查看作業的操作，請選取 [通知] 超連結。 或者，在保存庫中選取 [**備份作業**]，然後選取相關的 VM。
 
     ![保存庫中的 VM 清單](./media/backup-azure-arm-restore-vms/restore-job-in-progress1.png)
 
-2. 若要監視還原進度，請按一下狀態為 [進行中]**** 的任何還原作業。 這會顯示進度列，其中顯示還原進度的相關資訊：
+1. 若要監視還原進度，請選取狀態為 [**進行中**] 的任何還原作業。 這會顯示進度列，其中顯示還原進度的相關資訊：
 
     - **預估的還原時間：一**開始會提供完成還原作業所花費的時間。 作業進行時，所花費的時間會減少，並在還原作業完成時到達零。
     - **還原的百分比**。 顯示已完成的還原作業百分比。

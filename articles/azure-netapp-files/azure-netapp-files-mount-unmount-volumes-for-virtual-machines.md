@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.openlocfilehash: 4bfd90be2a469c5ab94172769729095069f53cd7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4ad3800748330d5c3a6a32c6c0824bc72a05d0ef
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045649"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533082"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>對 Windows 或 Linux 虛擬機器掛接或取消掛接磁碟區 
 
@@ -43,9 +43,12 @@ ms.locfileid: "86045649"
     a. 請先將磁片區掛接到 Unix 或 Linux VM。  
     b. `chmod 777`針對磁片區執行或 `chmod 775` 命令。  
     c. 透過 Windows 上的 NFS 用戶端掛接磁片區。
+    
+5. 如果您想要掛接 NFS Kerberos 磁片區，請參閱[Configure nfsv 4.1 kerberos encryption](configure-kerberos-encryption.md)以取得其他詳細資料。 
 
 ## <a name="next-steps"></a>後續步驟
 
 * [針對 Azure NetApp Files 設定 NFSv4.1 預設網域](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS 常見問題集](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [網路檔案系統概觀](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [掛接 NFS Kerberos 磁片區](configure-kerberos-encryption.md#kerberos_mount)

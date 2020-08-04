@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f9552b82dc79e1edafb13fead5a07df3ecf1be3b
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512953"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533133"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
@@ -97,11 +97,15 @@ Azure NetApp Files 的金鑰管理是由服務所處理。 會針對每個磁片
 
 ### <a name="how-do-i-change-the-service-level-of-a-volume"></a>如何? 變更磁片區的服務等級？
 
-目前不支援變更磁片區的服務等級。
+您可以藉由將磁片區移到另一個使用您想要用於磁片區之[服務等級](azure-netapp-files-service-levels.md)的容量集區，來變更現有磁片區的服務等級。 請參閱[動態變更磁片區的服務等級](dynamic-change-volume-service-level.md)。 
 
 ### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>如何? 監視 Azure NetApp Files 效能？
 
 Azure NetApp Files 提供磁片區效能計量。 您也可以使用 Azure 監視器來監視 Azure NetApp Files 的使用計量。  如需 Azure NetApp Files 的效能計量清單，請參閱[Azure Netapp files 的計量](azure-netapp-files-metrics.md)。
+
+### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>Kerberos 在 NFSv 4.1 上的效能影響為何？
+
+如需 NFSv 4.1 的安全性選項、已測試的效能向量和預期的效能影響的相關資訊，請參閱[Kerberos On nfsv 4.1 的效能影響](configure-kerberos-encryption.md#kerberos_performance)。 
 
 ## <a name="nfs-faqs"></a>NFS 常見問題集
 
@@ -164,6 +168,15 @@ Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption
 
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
+
+## <a name="dual-protocol-faqs"></a>雙重通訊協定常見問題
+
+### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>我嘗試使用「根」和「本機使用者」，在 UNIX 系統上存取具有 NTFS 安全性樣式的雙重通訊協定磁片區。 為什麼我遇到「許可權被拒」錯誤？   
+
+雙重通訊協定磁片區支援 NFS 和 SMB 通訊協定。  當您嘗試存取 UNIX 系統上裝載的磁片區時，系統會嘗試將您使用的 UNIX 使用者對應到 Windows 使用者。 如果找不到對應，就會發生「許可權被拒」錯誤。  當您使用「根」使用者存取時，這種情況也適用。    
+
+若要避免「許可權被拒」的問題，請在 `pcuser` 存取掛接點之前，先確定 Windows Active Directory 包含。 如果您在 `pcuser` 遇到「許可權被拒」的問題之後加入，請等候24小時讓快取專案清除，然後再次嘗試存取。
+
 
 ## <a name="capacity-management-faqs"></a>容量管理常見問題
 

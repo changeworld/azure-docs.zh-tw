@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291144"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534731"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>預覽：使用 Azure Active Directory authentication 登入 Azure 中的 Linux 虛擬機器
 
@@ -113,7 +113,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>設定 VM 的角色指派
 
-Azure 角色型存取控制（Azure RBAC）原則會決定誰可以登入 VM。 有兩個 RBAC 角色可用來授權 VM 登入：
+Azure 角色型存取控制（Azure RBAC）原則會決定誰可以登入 VM。 有兩個 Azure 角色可用來授權 VM 登入：
 
 - **虛擬機器系統管理員登入**：被指派此角色的使用者能夠以 Windows 系統管理員或 Linux 根使用者權限登入 Azure 虛擬機器。
 - **虛擬機器使用者登入**：被指派此角色的使用者能夠以一般使用者權限登入 Azure 虛擬機器。
@@ -181,9 +181,9 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 ## <a name="troubleshoot-sign-in-issues"></a>對登入問題進行疑難排解
 
-您在嘗試使用 Azure AD 認證進行 SSH 連線的一些常見錯誤，包括未指派 RBAC 角色，以及重複出現登入提示。 請參考下列各節，以修正這些問題。
+當您嘗試使用 Azure AD 認證來執行 SSH 時，會發生一些常見的錯誤，包括未指派任何 Azure 角色，以及重複的提示登入。 請參考下列各節，以修正這些問題。
 
-### <a name="access-denied-rbac-role-not-assigned"></a>拒絕存取：未指派 RBAC 角色
+### <a name="access-denied-azure-role-not-assigned"></a>拒絕存取：未指派 Azure 角色
 
 如果您在 SSH 提示字元中看到下列錯誤，請確認您已為 VM 設定 RBAC 原則，而可為使用者授與 [虛擬機器系統管理員登入]** 或 [虛擬機器使用者登入]** 角色：
 

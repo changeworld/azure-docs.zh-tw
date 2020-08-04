@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0a1083c1889fbd83a1b8bd119a71013b738d7f74
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: fa4a649115f8e89c27f435888b682b7de36e9894
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499529"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533915"
 ---
 # <a name="create-an-image-version-from-a-vm-in-azure-using-the-azure-cli"></a>使用 Azure CLI 在 Azure 中的 VM 建立映射版本
 
@@ -100,7 +100,7 @@ az sig image-version create \
 > [!NOTE]
 > 您必須等候映像版本完全完成建立和複寫後，才能使用相同的受控映像來建立另一個映像版本。
 >
-> 建立映像版本時，您也可以藉由新增 `--storage-account-type  premium_lrs`，將映像儲存在「進階」儲存體，或新增 `--storage-account-type  standard_zrs`，將映像儲存在[區域備援儲存體](../storage/common/storage-redundancy.md)。
+> 您也可以藉由新增 `--storage-account-type  premium_lrs` ，或在[Zone Redundant Storage](../storage/common/storage-redundancy.md) `--storage-account-type  standard_zrs` 建立映射版本時新增，以將映射儲存在 Premium 儲存體中。
 >
 
 ## <a name="next-steps"></a>後續步驟

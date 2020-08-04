@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 7d583172fe4021a2709a4d58b5488e9bc3898919
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 271c3c9f63ee3f761826e214f3bf32a8df5f1cbe
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497591"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533286"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
 
@@ -49,7 +49,9 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 ### <a name="register-the-feature"></a>註冊功能
 
-1. **快照集原則**功能目前為預覽狀態。 如果這是您第一次使用此功能，請在使用此功能之前先進行註冊： 
+**快照集原則**功能目前為預覽狀態。 如果您是第一次使用這項功能，您必須先註冊此功能。 
+
+1. 註冊功能： 
 
     ```azurepowershell-interactive
     Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
@@ -94,7 +96,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![每月快照集原則](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  按一下 [儲存]。  
+4.  按一下 [檔案] 。  
 
 如果您需要建立其他快照集原則，請重複步驟3。
 您所建立的原則會顯示在 [快照集原則] 頁面中。
@@ -158,7 +160,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![還原到新的磁片區](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. 按一下 [**檢查 + 建立**]。  按一下 [建立]  。   
+4. 按一下 [**檢查 + 建立**]。  按一下 [建立]。   
     新的磁片區會使用快照集所使用的相同通訊協定。   
     快照集還原到的新磁碟區會出現在 [磁碟區] 刀鋒視窗中。
 

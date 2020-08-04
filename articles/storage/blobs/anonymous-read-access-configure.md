@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: daf4eb4492f723b049dc62a16351e04ffc252337
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3a45f185a20345dac00bd459789afc9d53bd48f7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289254"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534306"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>設定容器和 blob 的匿名公用讀取權限
 
@@ -50,7 +50,9 @@ Azure 儲存體支援容器和 blob 的選擇性匿名公用讀取權限。 根�
 > [!IMPORTANT]
 > 不允許儲存體帳戶的公用存取會覆寫該儲存體帳戶中所有容器的公用存取設定。 當儲存體帳戶不允許公用存取時，任何未來對該帳戶的匿名要求都會失敗。 變更此設定之前，請務必瞭解可能會以匿名方式存取儲存體帳戶中資料的用戶端應用程式的影響。 如需詳細資訊，請參閱[防止對容器和 blob 的匿名公用讀取權限](anonymous-read-access-prevent.md)。
 
-若要允許或禁止儲存體帳戶的公用存取，請使用 Azure 入口網站或 Azure CLI 設定帳戶的**blobPublicAccess**屬性。 此屬性適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 如需詳細資訊，請參閱[儲存體帳戶總覽](../common/storage-account-overview.md)。
+若要允許或禁止儲存體帳戶的公用存取，請設定帳戶的**AllowBlobPublicAccess**屬性。 此屬性適用于使用 Azure Resource Manager 部署模型建立的所有儲存體帳戶。 如需詳細資訊，請參閱[儲存體帳戶總覽](../common/storage-account-overview.md)。
+
+預設不會設定**AllowBlobPublicAccess**屬性，而且在您明確設定之前不會傳回值。 當屬性值為**null**或為**true**時，儲存體帳戶會允許公用存取。
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
@@ -62,64 +64,118 @@ Azure 儲存體支援容器和 blob 的選擇性匿名公用讀取權限。 根�
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="螢幕擷取畫面，顯示如何允許或禁止帳戶的 blob 公用存取":::
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+若要使用 PowerShell 來允許或禁止儲存體帳戶的公用存取，請安裝[Azure PowerShell 版本 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0)或更新版本。 接下來，設定新的或現有儲存體帳戶的**AllowBlobPublicAccess**屬性。
+
+下列範例會建立儲存體帳戶，並將**AllowBlobPublicAccess**屬性明確設定為**true**。 然後，它會更新儲存體帳戶，以將**AllowBlobPublicAccess**屬性設定為**false**。 此範例也會抓取每個案例中的屬性值。 請記得以您自己的值取代括弧中的預留位置值：
+
+```powershell
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+$location = "<location>"
+
+# Create a storage account with AllowBlobPublicAccess set to true (or null).
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS
+    -AllowBlobPublicAccess $false
+
+# Read the AllowBlobPublicAccess property for the newly created storage account.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).AllowBlobPublicAccess
+
+# Set AllowBlobPublicAccess set to false
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -AllowBlobPublicAccess $false
+
+# Read the AllowBlobPublicAccess property.
+(Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).AllowBlobPublicAccess
+```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要允許或禁止具有 Azure CLI 之儲存體帳戶的公用存取，請先呼叫[az resource show](/cli/azure/resource#az-resource-show)命令，以取得儲存體帳戶的資源識別碼。 接下來，呼叫[az resource update](/cli/azure/resource#az-resource-update)命令來設定儲存體帳戶的**allowBlobPublicAccess**屬性。 若要允許公用存取，請將**allowBlobPublicAccess**屬性設定為 true;若不允許，請將它設定為**false**。
+若要允許或禁止具有 Azure CLI 之儲存體帳戶的公用存取，請安裝 Azure CLI 版本2.9.0 版或更新版本。 如需詳細資訊，請參閱 [安裝 Azure CLI](/cli/azure/install-azure-cli)。 接下來，設定新的或現有儲存體帳戶的**allowBlobPublicAccess**屬性。
 
-下列範例不允許儲存體帳戶的公用 blob 存取。 請記得以您自己的值取代括弧中的預留位置值：
+下列範例會建立儲存體帳戶，並將**allowBlobPublicAccess**屬性明確設定為**true**。 然後，它會更新儲存體帳戶，以將**allowBlobPublicAccess**屬性設定為**false**。 此範例也會抓取每個案例中的屬性值。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```azurecli-interactive
-storage_account_id=$(az resource show \
-    --name anonpublicaccess \
-    --resource-group storagesamples-rg \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query id \
-    --output tsv)
+az storage account create \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --kind StorageV2 \
+    --location <location> \
+    --allow-blob-public-access true
 
-az resource update \
-    --ids $storage_account_id \
-    --set properties.allowBlobPublicAccess=false
-    ```
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query allowBlobPublicAccess \
+    --output tsv
+
+az storage account update \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --allow-blob-public-access false
+
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource-group> \
+    --query allowBlobPublicAccess \
+    --output tsv
 ```
+
+# <a name="template"></a>[範本](#tab/template)
+
+若要允許或禁止具有範本之儲存體帳戶的公用存取，請建立範本，並將**AllowBlobPublicAccess**屬性設定為**true**或**false**。 下列步驟說明如何在 Azure 入口網站中建立範本。
+
+1. 在 [Azure 入口網站中，選擇 [**建立資源**]。
+1. 在 **[搜尋 Marketplace**] 中，輸入**範本部署**，然後按**enter**。
+1. 選擇 [**範本部署（使用自訂範本部署）（預覽）**]，選擇 [**建立**]，然後**在編輯器中選擇 [建立您自己的範本**]。
+1. 在 [範本編輯器] 中，貼上下列 JSON 以建立新的帳戶，並將**AllowBlobPublicAccess**屬性設定為**true**或**false**。 請記得以您自己的值取代角括弧中的預留位置。
+
+    ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {
+            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'template')]"
+        },
+        "resources": [
+            {
+            "name": "[variables('storageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "location": "<location>",
+            "properties": {
+                "allowBlobPublicAccess": false
+            },
+            "dependsOn": [],
+            "sku": {
+              "name": "Standard_GRS"
+            },
+            "kind": "StorageV2",
+            "tags": {}
+            }
+        ]
+    }
+    ```
+
+1. 儲存範本。
+1. 指定資源群組參數，然後選擇 [**審核**] 和 [建立] 按鈕來部署範本，並建立已設定**allowBlobPublicAccess**屬性的儲存體帳戶。
 
 ---
 
 > [!NOTE]
 > 不允許儲存體帳戶的公用存取不會影響任何裝載于該儲存體帳戶中的靜態網站。 **$Web**容器一律可公開存取。
+>
+> 在您更新儲存體帳戶的公用存取設定之後，最多可能需要30秒的時間，才能完全傳播變更。
 
-## <a name="check-whether-public-access-is-allowed-for-a-storage-account"></a>檢查儲存體帳戶是否允許公用存取
+允許或禁止 blob 公用存取需要2019-04-01 版或更新版本的 Azure 儲存體資源提供者。 如需詳細資訊，請參閱[Azure 儲存體資源提供者 REST API](/rest/api/storagerp/)。
 
-若要檢查儲存體帳戶是否允許公用存取，請取得**allowBlobPublicAccess**屬性的值。 若要一次檢查一個大型儲存體帳戶的這個屬性，請使用 [Azure Resource Graph Explorer]。
-
-> [!IMPORTANT]
-> 預設不會設定**allowBlobPublicAccess**屬性，而且在您明確設定之前不會傳回值。 當屬性值為**null**或為**true**時，儲存體帳戶允許公用存取。
-
-### <a name="check-whether-public-access-is-allowed-for-a-single-storage-account"></a>檢查單一儲存體帳戶是否允許公用存取
-
-若要使用 Azure CLI 來檢查單一儲存體帳戶是否允許公用存取，請呼叫[az resource show](/cli/azure/resource#az-resource-show)命令，並查詢**allowBlobPublicAccess**屬性：
-
-```azurecli-interactive
-az resource show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --resource-type Microsoft.Storage/storageAccounts \
-    --query properties.allowBlobPublicAccess \
-    --output tsv
-```
-
-### <a name="check-whether-public-access-is-allowed-for-a-set-of-storage-accounts"></a>檢查一組儲存體帳戶是否允許公用存取
-
-若要檢查是否允許跨一組具有最佳效能的儲存體帳戶進行公用存取，您可以使用 Azure 入口網站中的 [Azure Resource Graph Explorer]。 若要深入瞭解如何使用 Resource Graph Explorer，請參閱[快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢](/azure/governance/resource-graph/first-query-portal)。
-
-在 Resource Graph Explorer 中執行下列查詢，會傳回儲存體帳戶的清單，並顯示每個帳戶的**allowBlobPublicAccess**屬性值：
-
-```kusto
-resources
-| where type =~ 'Microsoft.Storage/storageAccounts'
-| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
-| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
-| order by subscriptionId, resourceGroup, name asc
-```
+本節中的範例示範如何讀取儲存體帳戶的**AllowBlobPublicAccess**屬性，以判斷目前是否允許或不允許公用存取。 若要深入瞭解如何驗證帳戶的公用存取設定是否已設定為防止匿名存取，請參閱[補救匿名公用存取](anonymous-read-access-prevent.md#remediate-anonymous-public-access)。
 
 ## <a name="set-the-public-access-level-for-a-container"></a>設定容器的公用存取層級
 
@@ -131,9 +187,7 @@ resources
 - **僅適用于 blob 的公用讀取權限：** 匿名要求可以讀取容器內的 blob，但容器資料無法以匿名方式使用。 匿名用戶端無法列舉容器內的 Blob。
 - **容器和其 blob 的公用讀取權限：** 除了容器許可權設定和容器中繼資料以外，匿名要求可以讀取容器和 blob 資料。 用戶端可以透過匿名要求列舉容器內的 Blob，但無法列舉儲存體帳戶內的容器。
 
-您無法變更個別 blob 的公用存取層級。 公用存取層級只會在容器層級設定。
-
-若要設定容器的公用存取層級，請使用 Azure 入口網站或 Azure CLI。 您可以在建立容器時設定容器的公用存取層級，或在現有的容器上更新此設定。
+您無法變更個別 blob 的公用存取層級。 公用存取層級只會在容器層級設定。 您可以在建立容器時設定容器的公用存取層級，也可以在現有的容器上更新設定。
 
 # <a name="azure-portal"></a>[Azure 入口網站](#tab/portal)
 
@@ -151,44 +205,81 @@ resources
 
 :::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="螢幕擷取畫面，顯示在不允許公用存取時，會封鎖設定容器公用存取層級":::
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+若要使用 PowerShell 更新一或多個容器的公用存取層級，請呼叫[AzStorageContainerAcl](/powershell/module/az.storage/set-azstoragecontaineracl)命令。 藉由傳入您的帳戶金鑰、連接字串或共用存取簽章（SAS）來授權此操作。 設定容器的公用存取層級的[Set CONTAINER ACL](/rest/api/storageservices/set-container-acl)作業不支援使用 Azure AD 進行授權。 如需詳細資訊，請參閱[呼叫 blob 和佇列資料作業的許可權](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
+
+下列範例會建立已停用公用存取的容器，然後更新容器的公用存取設定，以允許匿名存取容器和其 blob。 請記得以您自己的值取代括弧中的預留位置值：
+
+```powershell
+# Set variables.
+$rgName = "<resource-group>"
+$accountName = "<storage-account>"
+
+# Get context object.
+$storageAccount = Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName
+$ctx = $storageAccount.Context
+
+# Create a new container with public access setting set to Off.
+$containerName = "<container>"
+New-AzStorageContainer -Name $containerName -Permission Off -Context $ctx
+
+# Read the container's public access setting.
+Get-AzStorageContainerAcl -Container $containerName -Context $ctx
+
+# Update the container's public access setting to Container.
+Set-AzStorageContainerAcl -Container $containerName -Permission Container -Context $ctx
+
+# Read the container's public access setting.
+Get-AzStorageContainerAcl -Container $containerName -Context $ctx
+```
+
+當儲存體帳戶不允許公用存取時，就無法設定容器的公用存取層級。 如果您嘗試設定容器的公用存取層級，Azure 儲存體會傳回錯誤，指出儲存體帳戶上不允許公用存取。
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 若要使用 Azure CLI 來更新一或多個容器的公用存取層級，請呼叫[az storage container set 許可權](/cli/azure/storage/container#az-storage-container-set-permission)命令。 藉由傳入您的帳戶金鑰、連接字串或共用存取簽章（SAS）來授權此操作。 設定容器的公用存取層級的[Set CONTAINER ACL](/rest/api/storageservices/set-container-acl)作業不支援使用 Azure AD 進行授權。 如需詳細資訊，請參閱[呼叫 blob 和佇列資料作業的許可權](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
 
-下列範例會設定容器的公用存取設定，以啟用容器和其 blob 的匿名存取。 請記得以您自己的值取代括弧中的預留位置值：
+下列範例會建立已停用公用存取的容器，然後更新容器的公用存取設定，以允許匿名存取容器和其 blob。 請記得以您自己的值取代括弧中的預留位置值：
 
 ```azurecli-interactive
+az storage container create \
+    --name <container-name> \
+    --account-name <account-name> \
+    --resource-group <resource-group>
+    --public-access off \
+    --account-key <account-key> \
+    --auth-mode key
+
+az storage container show-permission \
+    --name <container-name> \
+    --account-name <account-name> \
+    --account-key <account-key> \
+    --auth-mode key
+
 az storage container set-permission \
     --name <container-name> \
     --account-name <account-name> \
     --public-access container \
     --account-key <account-key> \
     --auth-mode key
-```
 
-當儲存體帳戶不允許公用存取時，就無法設定容器的公用存取層級。 如果您嘗試設定容器的公用存取層級，就會發生錯誤，指出儲存體帳戶上不允許公用存取。
-
----
-
-## <a name="check-the-container-public-access-setting"></a>檢查容器的公用存取設定
-
-若要檢查一或多個容器的公用存取設定，您可以使用 Azure 入口網站、PowerShell、Azure CLI、其中一個 Azure 儲存體用戶端程式庫，或 Azure 儲存體資源提供者。 下列各節提供一些範例。  
-
-### <a name="check-the-public-access-setting-for-a-single-container"></a>檢查單一容器的公用存取設定
-
-若要使用 Azure CLI 取得一或多個容器的公用存取層級，請呼叫[az storage container show 許可權](/cli/azure/storage/container#az-storage-container-show-permission)命令。 藉由傳入您的帳戶金鑰、連接字串或共用存取簽章（SAS）來授權此操作。 傳回容器的公用存取層級的「[取得容器 ACL](/rest/api/storageservices/get-container-acl) 」作業不支援使用 Azure AD 進行授權。 如需詳細資訊，請參閱[呼叫 blob 和佇列資料作業的許可權](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
-
-下列範例會讀取容器的公用存取設定。 請記得以您自己的值取代括弧中的預留位置值：
-
-```azurecli-interactive
 az storage container show-permission \
     --name <container-name> \
     --account-name <account-name> \
-    --account-key <account-key>
+    --account-key <account-key> \
     --auth-mode key
 ```
 
-### <a name="check-the-public-access-setting-for-a-set-of-containers"></a>檢查一組容器的公用存取設定
+當儲存體帳戶不允許公用存取時，就無法設定容器的公用存取層級。 如果您嘗試設定容器的公用存取層級，Azure 儲存體會傳回錯誤，指出儲存體帳戶上不允許公用存取。
+
+# <a name="template"></a>[範本](#tab/template)
+
+N/A。
+
+---
+
+## <a name="check-the-public-access-setting-for-a-set-of-containers"></a>檢查一組容器的公用存取設定
 
 藉由列出容器並檢查公用存取設定，可以檢查一或多個儲存體帳戶中的哪些容器已設定為公開存取。 當儲存體帳戶不包含大量的容器，或當您在少數儲存體帳戶之間檢查設定時，此方法是一個實用的選項。 不過，如果您嘗試列舉大量的容器，效能可能會受到影響。
 

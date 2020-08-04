@@ -3,12 +3,12 @@ title: 驗證應用程式以存取 Azure 服務匯流排實體
 description: 本文提供的資訊說明如何使用 Azure Active Directory 來驗證應用程式，以存取 Azure 服務匯流排實體（佇列、主題等）
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 6191534bbc7cad6815072099b8c7a847a712365d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a22645e7442641c00de0b1e7e501b02944d6b1ad
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423162"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532470"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 來驗證和授權應用程式，以存取 Azure 服務匯流排實體
 Azure 服務匯流排支援使用 Azure Active Directory （Azure AD）來授權服務匯流排實體（佇列、主題、訂用帳戶或篩選器）的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者、群組或應用程式服務主體。 若要深入瞭解角色和角色指派，請參閱[瞭解不同的角色](../role-based-access-control/overview.md)。
@@ -21,15 +21,15 @@ Azure 服務匯流排支援使用 Azure Active Directory （Azure AD）來授權
 
 驗證步驟要求應用程式要求在執行階段包含 OAuth 2.0 存取權杖。 如果應用程式是在 azure 實體（例如 Azure VM、虛擬機器擴展集或 Azure 函式應用程式）內執行，它可以使用受控識別來存取資源。 若要瞭解如何驗證受控識別對服務匯流排服務所提出的要求，請參閱[使用 Azure 資源的 Azure Active Directory 和受控識別來驗證 Azure 服務匯流排資源的存取權](service-bus-managed-service-identity.md)。 
 
-授權步驟需要將一或多個 RBAC 角色指派給安全性主體。 Azure 服務匯流排提供 RBAC 角色，其中包含服務匯流排資源的許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 若要深入瞭解如何將 RBAC 角色指派給 Azure 服務匯流排，請參閱[適用于 Azure 服務匯流排的 Azure 內建角色](#azure-built-in-roles-for-azure-service-bus)。 
+授權步驟要求將一或多個 Azure 角色指派給安全性主體。 Azure 服務匯流排提供的 Azure 角色包含服務匯流排資源的許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 若要深入瞭解如何將 Azure 角色指派給 Azure 服務匯流排，請參閱[適用于 Azure 服務匯流排的 azure 內建角色](#azure-built-in-roles-for-azure-service-bus)。 
 
 向服務匯流排提出要求的原生應用程式和 web 應用程式也可以使用 Azure AD 進行授權。 本文說明如何要求存取權杖，並使用它來授權服務匯流排資源的要求。 
 
 
-## <a name="assigning-rbac-roles-for-access-rights"></a>指派存取權限的 RBAC 角色
+## <a name="assigning-azure-roles-for-access-rights"></a>指派 Azure 角色以取得存取權限
 Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../role-based-access-control/overview.md)，來授與存取受保護資源的權限。 Azure 服務匯流排定義一組 Azure 內建角色，其中包含用來存取服務匯流排實體的常用許可權集，而且您也可以定義自訂角色來存取資料。
 
-當 RBAC 角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以是訂用帳戶、資源群組或服務匯流排命名空間的層級。 Azure AD 的安全性主體可以是使用者、群組、應用程式服務主體，或[適用于 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。
+將 Azure 角色指派給 Azure AD 的安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以是訂用帳戶、資源群組或服務匯流排命名空間的層級。 Azure AD 的安全性主體可以是使用者、群組、應用程式服務主體，或[適用于 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ## <a name="azure-built-in-roles-for-azure-service-bus"></a>適用于 Azure 服務匯流排的 Azure 內建角色
 對於 Azure 服務匯流排來說，透過 Azure 入口網站和 Azure 資源管理 API 來的管理命名空間和所有相關資源的作業，已使用「角色型存取控制** (RBAC)」模型來加以保護。 Azure 提供下列 Azure 內建角色，以授權存取服務匯流排命名空間：
@@ -39,11 +39,11 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 - [Azure 服務匯流排資料接收器](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)：使用此角色可授與服務匯流排命名空間及其實體的接收存取權。 
 
 ## <a name="resource-scope"></a>資源範圍 
-將 RBAC 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法規定，最好只授與最少的可能範圍。
+將 Azure 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法規定，最好只授與最少的可能範圍。
 
 下列清單說明您可以將存取範圍限定為服務匯流排資源的層級，從最窄的範圍開始：
 
-- **佇列**、**主題**或**訂**用帳戶：角色指派會套用至特定的服務匯流排實體。 目前，Azure 入口網站不支援在訂用帳戶層級將使用者/群組/受控識別指派給服務匯流排 RBAC 角色。 
+- **佇列**、**主題**或**訂**用帳戶：角色指派會套用至特定的服務匯流排實體。 目前，Azure 入口網站不支援指派使用者/群組/受控識別，以在訂用帳戶層級服務匯流排 Azure 角色。 
 - **服務匯流排命名空間**：角色指派會跨越命名空間下服務匯流排的整個拓撲，以及與其相關聯的取用者群組。
 - **資源群組**：角色指派會套用至資源群組下的所有服務匯流排資源。
 - **訂**用帳戶：角色指派會套用至訂用帳戶中所有資源群組內的所有服務匯流排資源。
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
 如需如何定義內建角色的詳細資訊，請參閱[瞭解角色定義](../role-based-access-control/role-definitions.md#management-and-data-operations)。 如需建立 Azure 自訂角色的詳細資訊，請參閱[azure 自訂角色](../role-based-access-control/custom-roles.md)。
 
 
-## <a name="assign-rbac-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 RBAC 角色  
+## <a name="assign-azure-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 Azure 角色  
 若要深入瞭解如何使用 RBAC 和 Azure 入口網站來管理 Azure 資源的存取權，請參閱[這篇文章](..//role-based-access-control/role-assignments-portal.md)。 
 
 在決定角色指派的適當範圍之後，請流覽至 Azure 入口網站中的該資源。 顯示資源的 [存取控制（IAM）] 設定，並遵循下列指示來管理角色指派：

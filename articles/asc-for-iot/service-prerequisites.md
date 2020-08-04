@@ -16,21 +16,21 @@ ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
 ms.custom: references_regions
-ms.openlocfilehash: 19e4ea37aa10c90d15a2b7dcdf962c131c8e473d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ce903271accd3f63df7634dc5045932655ac2a7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84193220"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531144"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>適用于 IoT 必要條件的 Azure 資訊安全中心
 
 本文說明 IoT 服務的 Azure 資訊安全中心的不同元件、您需要開始的事項，並說明可協助您瞭解服務的基本概念。
 
-## <a name="minimum-requirements"></a>最低要求條件
+## <a name="minimum-requirements"></a>最低需求
 
 - IoT 中樞標準層
-  - RBAC 角色**擁有**者層級許可權
+  - Azure 角色**擁有**者層級許可權
 - [Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 - Azure 資訊安全中心（建議）
   - Azure 資訊安全中心的使用是建議事項，而不是必要條件。 若沒有 Azure 資訊安全中心，您將無法在 IoT 中樞內查看其他 Azure 資源。

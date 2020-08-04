@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 7e987c56c3a125a03e3a90540313ace1f8adf47a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6a6b0b15b8d2dc08f1581cb2ea0ea4c7e8036ca
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82086567"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529971"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 安全性
 
@@ -46,7 +46,7 @@ ms.locfileid: "82086567"
 
 預設會為 Data Lake Storage Gen1 定義四種基本角色。 這些角色允許透過 Azure 入口網站、PowerShell Cmdlet 和 REST API，在 Data Lake Storage Gen1 帳戶上執行不同的作業。 [擁有者] 和 [參與者] 角色可在帳戶上執行各種管理功能。 您可以將「讀取者」角色指派給只檢視帳戶管理資料的使用者。
 
-![RBAC 角色](./media/data-lake-store-security-overview/rbac-roles.png "RBAC 角色")
+![Azure 角色](./media/data-lake-store-security-overview/rbac-roles.png "Azure 角色")
 
 請注意，雖然指派角色是為了管理帳戶，但某些角色會影響資料的存取權。 您必須使用 ACL 來控制使用者可在檔案系統上執行之作業的存取權。 下表顯示預設角色的管理權限和資料存取權限摘要。
 
@@ -99,7 +99,7 @@ Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 �
 
 如需帳戶管理稽核線索，請檢視並選擇您想要記錄的資料行。 您也可以將活動記錄匯出至 Azure 儲存體。
 
-![活動記錄檔](./media/data-lake-store-security-overview/activity-logs.png "活動記錄檔")
+![活動記錄](./media/data-lake-store-security-overview/activity-logs.png "活動記錄檔")
 
 如需使用活動記錄的詳細資訊，請參閱[檢視活動記錄以稽核對資源的動作](../azure-resource-manager/management/view-activity-logs.md)。
 
@@ -111,7 +111,7 @@ Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 �
 
 如需搭配 Data Lake Storage Gen1 使用診斷記錄的詳細資訊，請參閱[存取 Data Lake Storage Gen1 的診斷記錄](data-lake-store-diagnostic-logs.md)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 企業客戶要求安全且容易使用的資料分析雲端平台。 Data Lake Storage Gen1 的設計目的是要透過藉由 Azure Active Directory 整合的身分識別管理和驗證、以 ACL 為基礎的授權、網路隔離、傳輸中和待用資料加密以及稽核，來協助滿足這些需求。
 

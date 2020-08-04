@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c1a5d302f63f57a142d014c8ef66d02405e119ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386209"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531161"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
@@ -38,16 +38,37 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 
 在您的金鑰保存庫中使用金鑰、密碼或憑證之前，要先透過 CLI、PowerShell、Resource Manager 範本或 REST 建立及管理金鑰保存庫，如以下文章所述︰
 
-- [使用 CLI 建立和管理金鑰保存庫](../secrets/quick-create-cli.md)
-- [使用 PowerShell 建立和管理金鑰保存庫](../secrets/quick-create-powershell.md)
-- [使用 Azure 入口網站建立及管理金鑰保存庫](../secrets/quick-create-portal.md)
-- [使用 Python 建立和管理金鑰保存庫](../secrets/quick-create-python.md)
-- [使用 JAVA 建立和管理金鑰保存庫](../secrets/quick-create-java.md)
-- [使用 Node.js建立及管理金鑰保存庫](../secrets/quick-create-node.md)
-- [使用 .NET 建立和管理金鑰保存庫（v4 SDK）](../secrets/quick-create-net.md)
-- [透過 Azure Resource Manager 範本建立金鑰保存庫和新增祕密](../secrets/quick-create-template.md)
-- [使用 REST 建立和管理金鑰保存庫](/rest/api/keyvault/)
+- [使用 CLI 建立和管理金鑰保存庫](quick-create-cli.md)
+- [使用 PowerShell 建立和管理金鑰保存庫](quick-create-powershell.md)
+- [使用 Azure 入口網站建立及管理金鑰保存庫](quick-create-portal.md)
+- [使用 REST 建立和管理金鑰保存庫](/rest/api/keyvault/vaults/createorupdate)
 
+### <a name="set-and-retrieve-secrets"></a>設定和取出秘密
+
+- [使用 CLI 設定和取出秘密](../secrets/quick-create-cli.md)
+- [使用 PowerShell 設定和取出秘密](../secrets/quick-create-powershell.md)
+- [使用 Azure 入口網站設定和取出秘密](../secrets/quick-create-portal.md)
+- [使用 REST 的秘密作業](/rest/api/keyvault/#secret-operations)
+- [使用 Python 設定和取出秘密](../secrets/quick-create-python.md)
+- [使用 JAVA 設定和取出秘密](../secrets/quick-create-java.md)
+- [使用 Node.js設定和取出秘密](../secrets/quick-create-node.md)
+- [使用 .NET 設定和取出秘密（v4 SDK）](../secrets/quick-create-net.md)
+- [透過 Azure Resource Manager 範本建立金鑰保存庫和新增祕密](../secrets/quick-create-template.md)
+
+### <a name="set-and-retrieve-keys"></a>設定和取出金鑰
+
+- [使用 CLI 設定和取出金鑰](../keys/quick-create-cli.md)
+- [使用 PowerShell 設定和取出金鑰](../keys/quick-create-powershell.md)
+- [使用 Azure 入口網站設定和取出金鑰](../keys/quick-create-portal.md)
+- [使用 REST 的金鑰作業](/rest/api/keyvault/#key-operations)
+- [使用 Python 設定和取出金鑰](../secrets/quick-create-python.md)
+
+### <a name="set-and-retrieve-certificates"></a>設定和取出憑證
+- [使用 CLI 設定和取出憑證](../certificates/quick-create-cli.md)
+- [使用 PowerShell 設定和取出憑證](../certificates/quick-create-powershell.md)
+- [使用 Azure 入口網站設定和取出憑證](../certificates/quick-create-portal.md)
+- [使用 REST 的金鑰作業](/rest/api/keyvault/#certificate-operations)
+- [使用 Python 設定和取出憑證](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>撰寫金鑰保存庫的程式碼
 
@@ -64,8 +85,6 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 #### <a name="net"></a>.NET
 
 [Key Vault 的 .NET API 參考](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)。
-
-如需 .NET SDK 2.x 版的詳細資訊，請參閱[版本資訊](dotnet2api-release-notes.md)。
 
 #### <a name="java"></a>Java
 
@@ -94,7 +113,6 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 如需搭配使用金鑰保存庫和應用程式的完整範例，請參閱︰
 
 - [Azure Key Vault 程式碼範例](https://azure.microsoft.com/resources/samples/?service=key-vault) - Azure Key Vault 的程式碼範例。 
-- [從 Web 應用程式使用 Azure Key Vault ](../secrets/quick-create-net.md) - 此教學課程可幫助您了解如何從 Azure 中的 Web 應用程式使用 Azure Key Vault。 
 
 ## <a name="how-tos"></a>做法
 
@@ -124,7 +142,6 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 
 - [Key Vault 虛刪除行為](soft-delete-overview.md)）描述一項功能，可讓您復原已刪除的物件，不論是意外或故意刪除。
 - [Key Vault 用戶端節流](overview-throttling.md)可讓您了解節流的基本概念，並提供適用於您應用程式的方法。
-- [Key Vault 儲存體帳戶金鑰總覽](../secrets/overview-storage-keys.md)）描述 Key Vault 整合 Azure 儲存體帳戶金鑰。
 - [Key Vault 安全世界](overview-security-worlds.md)描述地區和安全區域之間的關聯性。
 
 ## <a name="social"></a>社交

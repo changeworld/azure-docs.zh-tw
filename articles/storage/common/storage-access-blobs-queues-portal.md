@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9d4097e847417f56c9881a3e18237e97dfee465e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501401"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534170"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 入口網站來存取 blob 或佇列資料
 
@@ -29,7 +29,7 @@ ms.locfileid: "87501401"
 
 ### <a name="use-the-account-access-key"></a>使用帳戶存取金鑰
 
-若要使用帳戶存取金鑰來存取 blob 和佇列資料，您必須擁有指派給您的 RBAC 角色，其中包含 RBAC action **storageAccounts/listkeys/action**。 此 RBAC 角色可能是內建或自訂角色。 支援**Microsoft 儲存體/storageAccounts/listkeys/action**的內建角色包括：
+若要使用帳戶存取金鑰來存取 blob 和佇列資料，您必須具有指派給您的 Azure 角色，其中包含 RBAC action **storageAccounts/listkeys/action**。 此 Azure 角色可能是內建或自訂角色。 支援**Microsoft 儲存體/storageAccounts/listkeys/action**的內建角色包括：
 
 - Azure Resource Manager[擁有](../../role-based-access-control/built-in-roles.md#owner)者角色
 - Azure Resource Manager[參與者](../../role-based-access-control/built-in-roles.md#contributor)角色
@@ -47,7 +47,7 @@ ms.locfileid: "87501401"
 - 您已獲指派「Azure Resource Manager[讀取](../../role-based-access-control/built-in-roles.md#reader)者」角色，其範圍至少限於儲存體帳戶層級或更高的等級。 「**讀取**者」角色會授與最受限制的許可權，但也可接受另一個授與存取儲存體帳戶管理資源的 Azure Resource Manager 角色。
 - 您已獲指派可存取 blob 或佇列資料的內建或自訂角色。
 
-需要**讀取器**角色指派或另一個 Azure Resource Manager 角色指派，才能讓使用者在 Azure 入口網站中查看和流覽儲存體帳戶管理資源。 授與 blob 或佇列資料存取權的 RBAC 角色並不會授與對儲存體帳戶管理資源的存取權。 若要在入口網站中存取 blob 或佇列資料，使用者需要有許可權才能流覽儲存體帳戶資源。 如需這項需求的詳細資訊，請參閱[指派入口網站存取的讀者角色](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)。
+需要**讀取器**角色指派或另一個 Azure Resource Manager 角色指派，才能讓使用者在 Azure 入口網站中查看和流覽儲存體帳戶管理資源。 授與 blob 或佇列資料存取權的 Azure 角色並不會授與對儲存體帳戶管理資源的存取權。 若要在入口網站中存取 blob 或佇列資料，使用者需要有許可權才能流覽儲存體帳戶資源。 如需這項需求的詳細資訊，請參閱[指派入口網站存取的讀者角色](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)。
 
 支援 blob 或佇列資料存取的內建角色包括：
 
@@ -82,7 +82,7 @@ ms.locfileid: "87501401"
 
 ![目前正在使用帳戶金鑰存取容器資料](media/storage-access-blobs-queues-portal/auth-method-access-key.png)
 
-若要切換為使用 Azure AD 帳戶，請按一下影像中反白顯示的連結。 如果您透過指派給您的 RBAC 角色擁有適當的許可權，就能夠繼續進行。 不過，如果您沒有正確的許可權，您會看到類似下面的錯誤訊息：
+若要切換為使用 Azure AD 帳戶，請按一下影像中反白顯示的連結。 如果您透過指派給您的 Azure 角色擁有適當的許可權，您就可以繼續進行。 不過，如果您沒有正確的許可權，您會看到類似下面的錯誤訊息：
 
 ![如果 Azure AD 帳戶不支援存取，則會顯示錯誤](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 

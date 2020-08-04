@@ -3,12 +3,12 @@ title: 安裝 Microsoft Azure 復原服務（MARS）代理程式
 description: 瞭解如何安裝 Microsoft Azure 復原服務（MARS）代理程式來備份 Windows 電腦。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079361"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533473"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安裝 Azure 備份 MARS 代理程式
 
@@ -131,7 +131,7 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 
     ![下載保存庫認證](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-1. 選取 [儲存]。 檔案會下載到您的 [下載] 資料夾。 您無法開啟保存庫認證檔案。
+1. 選取 [儲存]  。 檔案會下載到您的 [下載] 資料夾。 您無法開啟保存庫認證檔案。
 
 ## <a name="install-and-register-the-agent"></a>安裝和註冊代理程式
 
@@ -155,12 +155,12 @@ Azure 備份使用 MARS 代理程式，從內部部署機器和 Azure Vm 備份�
 
     ![使用註冊伺服器嚮導來新增保存庫認證](./media/backup-configure-vault/register1.png)
 
-1. 在 [**加密設定**] 頁面上，指定將用來加密和解密電腦備份的複雜密碼。
+1. 在 [**加密設定**] 頁面上，指定將用來加密和解密電腦備份的複雜密碼。 如需允許的複雜密碼字元的詳細資訊，[請參閱這裡](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase)。
 
     * 將複雜密碼儲存在安全的位置。 您需要它來還原備份。
     * 如果您遺失或忘記複雜密碼，Microsoft 將無法協助您復原備份資料。
 
-1. 選取 [完成] 。 現在已安裝代理程式，且您的電腦已註冊到保存庫。 您已準備好可以設定及排程備份。
+1. 選取 [完成]。 現在已安裝代理程式，且您的電腦已註冊到保存庫。 您已準備好可以設定及排程備份。
 
 ## <a name="next-steps"></a>後續步驟
 

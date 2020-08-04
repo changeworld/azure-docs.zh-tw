@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/22/2020
-ms.openlocfilehash: ac351e688eba274c989b4b475c6d61607b9ea5c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 92cc94170a01aceaa3e6bd058f4ae6628db04f18
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84219295"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529580"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>使用 Azure Data Factory 從 SAP HANA 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -27,7 +27,7 @@ ms.locfileid: "84219295"
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 SAP HANA 資料庫複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 >[!TIP]
->若要了解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 的 SAP 資料整合技術白皮書](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，其中提供詳細的簡介、比較和指導。
+>若要瞭解 ADF 對於 SAP 資料整合案例的整體支援，請參閱[使用 Azure Data Factory 白皮書的 SAP 資料整合](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)，以及每個 sap 連接器、comparsion 和指引的詳細介紹。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
@@ -48,7 +48,7 @@ ms.locfileid: "84219295"
 > [!TIP]
 > 若要將資料複製**到** SAP HANA 資料存放區，請使用一般 ODBC 連接器。 請參閱[SAP Hana 接收](#sap-hana-sink)一節中的詳細資料。 請注意，SAP HANA 連接器和 ODBC 連接器的已連接服務具有不同的類型，因此無法重複使用。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要使用這個 SAP HANA 接收器，您必須：
 
@@ -67,11 +67,11 @@ ms.locfileid: "84219295"
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設定為：**SapHana** | Yes |
-| connectionString | 指定使用**基本驗證**或**Windows 驗證**連接到 SAP Hana 所需的資訊。 請參考下列範例。<br>在 [連接字串] 中，伺服器/埠是強制的（預設通訊埠是30015），而使用者名稱和密碼則是在使用基本驗證時的必要項。 如需其他 advanced 設定，請參閱[SAP HANA ODBC 連接屬性](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取密碼設定。 如需詳細資訊，請參閱[將認證儲存在 Azure Key Vault](store-credentials-in-key-vault.md)一文。 | Yes |
-| userName | 使用 Windows 驗證時，請指定使用者名稱。 範例：`user@domain.com` | No |
+| type | 類型屬性必須設定為：**SapHana** | 是 |
+| connectionString | 指定使用**基本驗證**或**Windows 驗證**連接到 SAP Hana 所需的資訊。 請參考下列範例。<br>在 [連接字串] 中，伺服器/埠是強制的（預設通訊埠是30015），而使用者名稱和密碼則是在使用基本驗證時的必要項。 如需其他 advanced 設定，請參閱[SAP HANA ODBC 連接屬性](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取密碼設定。 如需詳細資訊，請參閱[將認證儲存在 Azure Key Vault](store-credentials-in-key-vault.md)一文。 | 是 |
+| userName | 使用 Windows 驗證時，請指定使用者名稱。 範例： `user@domain.com` | 否 |
 | 密碼 | 指定使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 否 |
-| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如[必要條件](#prerequisites)所述，必須要有一個「自我裝載 Integration Runtime」。 |Yes |
+| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如[必要條件](#prerequisites)所述，必須要有一個「自我裝載 Integration Runtime」。 |是 |
 
 **範例：使用基本驗證**
 
@@ -148,7 +148,7 @@ ms.locfileid: "84219295"
 
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為： **SapHanaTable** | Yes |
+| type | 資料集的類型屬性必須設定為： **SapHanaTable** | 是 |
 | 結構描述 | SAP Hana 資料庫中的架構名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 | 資料表 | SAP Hana 資料庫中的資料表名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 
@@ -188,9 +188,9 @@ ms.locfileid: "84219295"
 | 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為： **SapHanaSource** | 是 |
-| 查詢 | 指定 SQL 查詢從 SAP HANA 執行個體讀取資料。 | Yes |
-| partitionOptions | 指定用來從 SAP Hana 內嵌資料的資料分割選項。 若要深入瞭解，請從[SAP Hana 的平行複製](#parallel-copy-from-sap-hana)一節。<br>允許值為： **None**   （預設值）、 **PhysicalPartitionsOfTable**、 **SapHanaDynamicRange**。 若要深入瞭解，請從[SAP Hana 的平行複製](#parallel-copy-from-sap-hana)一節。 `PhysicalPartitionsOfTable`只能在從資料表複製資料時使用，但不能用於查詢。 <br>當分割區選項已啟用（也就是不是 `None` ）時，要從 SAP Hana 並行載入資料的平行處理原則程度，是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | False |
-| partitionSettings | 指定資料分割的設定群組。<br>當分割選項是 `SapHanaDynamicRange` 時套用。 | False |
+| 查詢 | 指定 SQL 查詢從 SAP HANA 執行個體讀取資料。 | 是 |
+| partitionOptions | 指定用來從 SAP Hana 內嵌資料的資料分割選項。 若要深入瞭解，請從[SAP Hana 的平行複製](#parallel-copy-from-sap-hana)一節。<br>允許值為： **None**   （預設值）、 **PhysicalPartitionsOfTable**、 **SapHanaDynamicRange**。 若要深入瞭解，請從[SAP Hana 的平行複製](#parallel-copy-from-sap-hana)一節。 `PhysicalPartitionsOfTable`只能在從資料表複製資料時使用，但不能用於查詢。 <br>當分割區選項已啟用（也就是不是 `None` ）時，要從 SAP Hana 並行載入資料的平行處理原則程度，是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
+| partitionSettings | 指定資料分割的設定群組。<br>當分割選項是 `SapHanaDynamicRange` 時套用。 | 否 |
 | partitionColumnName | 指定資料分割將用於平行複製的來源資料行名稱。 如果未指定，則會自動偵測資料表的索引或主鍵，並當做資料分割資料行使用。<br>適用于資料分割選項為時  `SapHanaDynamicRange` 。 如果您使用查詢來抓取來源資料，請  `?AdfHanaDynamicRangePartitionCondition` 在 WHERE 子句中掛上。 請參閱[從 SAP Hana 進行平行複製](#parallel-copy-from-sap-hana)一節中的範例。 | 使用資料分割時為是 `SapHanaDynamicRange` 。 |
 | packetSize | 指定將資料分割成多個區塊的網路封包大小（以 Kb 為單位）。 如果您要複製大量資料，增加封包大小可能會在大部分情況下從 SAP Hana 增加讀取速度。 調整封包大小時，建議執行效能測試。 | 否。<br>預設值為2048（2MB）。 |
 

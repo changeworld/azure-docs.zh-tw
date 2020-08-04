@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 04/29/2020
-ms.openlocfilehash: b628ca7f676c3eab80e11da124f4d6aa7ebd52a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ab4eaf5ad40b5ef8bee68ef0e56ab8f53db8a8a2
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708785"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533830"
 ---
 # <a name="manage-azure-sql-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 受控執行個體長期備份保留（PowerShell）
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "84708785"
 
 下列各節說明如何使用 PowerShell 來設定長期備份保留、檢視 Azure SQL 儲存體中的備份，以及從 Azure SQL 儲存體中的備份還原。
 
-## <a name="rbac-roles-to-manage-long-term-retention"></a>管理長期保留的 RBAC 角色
+## <a name="azure-roles-to-manage-long-term-retention"></a>用來管理長期保留的 Azure 角色
 
 針對**AzSqlInstanceDatabaseLongTermRetentionBackup**和**還原 AzSqlInstanceDatabase**，您必須具有下列其中一個角色：
 

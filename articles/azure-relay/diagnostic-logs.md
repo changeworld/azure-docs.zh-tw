@@ -3,12 +3,12 @@ title: 混合式連線的診斷記錄
 description: 本文概述可用於 Azure 轉送的所有活動和診斷記錄。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314897"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532997"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>啟用 Azure 轉送混合式連線的診斷記錄
 當您開始使用 Azure 轉送混合式連線時，可能會想要監視接聽程式和傳送者的開啟和關閉方式，以及混合式連線的建立和傳送訊息的方式。 本文提供 Azure 轉送服務所提供之活動和診斷記錄的總覽。 
@@ -46,7 +46,7 @@ ms.locfileid: "85314897"
         ![診斷設定範例](./media/diagnostic-logs/sample-diagnostic-settings.png)
 1. 選取工具列上的 [儲存] 來儲存設定。
 
-新的設定會在大約10分鐘內生效。 記錄會顯示在 [**診斷記錄**] 窗格中設定的封存目標中。 如需有關設定診斷設定的詳細資訊，請參閱[Azure 診斷記錄的總覽](../azure-monitor/platform/diagnostic-logs-overview.md)。
+新的設定會在大約10分鐘內生效。 記錄會顯示在 [**診斷記錄**] 窗格中設定的封存目標中。 如需有關設定診斷設定的詳細資訊，請參閱[Azure 診斷記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)。
 
 
 ## <a name="schema-for-hybrid-connections-events"></a>混合式連接事件的架構

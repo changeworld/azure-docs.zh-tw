@@ -3,12 +3,12 @@ title: 使用 Azure Active Directory 驗證受控識別
 description: 本文提供的資訊說明如何使用 Azure Active Directory 來驗證受控識別，以存取 Azure 事件中樞資源
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 4e3460fa4fc3807cda23d6e3835a9f0b843eb36d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 707c93d1f104dcc2982999c4e7461947280918ef
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537270"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534408"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取事件中樞資源
 Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-directory/managed-identities-azure-resources/overview.md)Azure Active Directory （Azure AD）驗證。 適用于 Azure 資源的受控識別可以使用在 Azure 虛擬機器（Vm）、函式應用程式、虛擬機器擴展集及其他服務中執行的應用程式 Azure AD 認證，來授權事件中樞資源的存取權。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。
@@ -25,9 +25,9 @@ Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-dire
 - [Azure Resource Manager 用戶端程式庫](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>在 Azure AD 中將許可權授與受控識別
-若要授權要求從應用程式中的受控識別事件中樞服務，請先為該受控識別設定角色型存取控制（RBAC）設定。 Azure 事件中樞定義的 RBAC 角色包含從事件中樞傳送和讀取的許可權。 當 RBAC 角色指派給受控識別時，受控識別會被授與適當範圍內事件中樞資料的存取權。
+若要授權要求從應用程式中的受控識別事件中樞服務，請先為該受控識別設定角色型存取控制（RBAC）設定。 Azure 事件中樞定義的 Azure 角色包含從事件中樞傳送和讀取的許可權。 將 Azure 角色指派給受控識別時，受控識別會被授與適當範圍內事件中樞資料的存取權。
 
-如需指派 RBAC 角色的詳細資訊，請參閱[使用 Azure Active Directory 進行驗證以存取事件中樞資源](authorize-access-azure-active-directory.md)。
+如需指派 Azure 角色的詳細資訊，請參閱[使用 Azure Active Directory 進行驗證以存取事件中樞資源](authorize-access-azure-active-directory.md)。
 
 ## <a name="use-event-hubs-with-managed-identities"></a>搭配使用事件中樞與受控識別
 若要搭配使用事件中樞與受控識別，您必須為身分指派角色和適當的範圍。 本節中的程式會使用以受控識別執行的簡單應用程式，並存取事件中樞資源。
@@ -46,7 +46,7 @@ Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-dire
 
 現在，將此服務識別指派給事件中樞資源中所需範圍內的角色。
 
-### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 RBAC 角色
+### <a name="to-assign-azure-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 Azure 角色
 若要將角色指派給事件中樞資源，請在 Azure 入口網站中流覽至該資源。 顯示資源的 [存取控制（IAM）] 設定，並遵循下列指示來管理角色指派：
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Azure 事件中樞支援使用[Azure 資源的受控識別進行](../active-dire
 4.  在 [**新增角色指派**] 頁面上，選取您要指派的事件中樞角色。 然後搜尋以找出您已註冊來指派角色的服務身分識別。
     
     ![[新增角色指派] 頁面](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  選取 [儲存]。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別具有事件中樞資料擁有者。
+5.  選取 [儲存]  。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別具有事件中樞資料擁有者。
     
     ![指派給角色的身分識別](./media/authenticate-managed-identity/role-assigned.png)
 

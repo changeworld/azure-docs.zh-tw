@@ -1,14 +1,14 @@
 ---
-title: RBAC 角色和許可權
+title: Azure 角色和許可權
 description: 使用 Azure 角色型存取控制（Azure RBAC）和身分識別和存取管理（IAM），為 Azure container registry 中的資源提供更細緻的許可權。
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 0bf6059698191c975b212bee7f45d21977478b49
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 90546b96f081893d312e66aae04e2125c1c210e5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497744"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533303"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry 角色和權限
 
@@ -85,7 +85,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解使用[Azure 入口網站](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md) 或其他 Azure 工具將 RBAC 角色指派至 Azure 的身分識別。
+* 深入瞭解如何使用[Azure 入口網站](../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../role-based-access-control/role-assignments-cli.md)或其他 Azure 工具，將 Azure 角色指派給 azure 身分識別。
 
 * 深入了解 Azure Container Registry 的[驗證選項](container-registry-authentication.md)。
 

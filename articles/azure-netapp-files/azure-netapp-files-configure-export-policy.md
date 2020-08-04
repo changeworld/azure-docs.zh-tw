@@ -7,13 +7,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 07/24/2020
-ms.openlocfilehash: 6d990b94210383ba4b30569693f4471f43306ed2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 07/27/2020
+ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169813"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533189"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>設定 NFS 磁碟區的匯出原則
 
@@ -43,14 +43,18 @@ ms.locfileid: "87169813"
         * 讀取和寫入
         * 唯讀
 
+    * **唯讀**和**讀取/寫入**  
+        如果您使用 Kerberos 加密搭配 NFSv 4.1，請依照[設定 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md)中的指示進行。  如需 Kerberos 的效能影響，請參閱[nfsv 4.1 上 kerberos 的效能影響](configure-kerberos-encryption.md#kerberos_performance)。 
+
+        ![Kerberos 安全性選項](../media/azure-netapp-files/kerberos-security-options.png) 
+
     * **根存取**  
         指定帳戶是否 `root` 可以存取磁片區。  根據預設，[根存取] 設定為 [**開啟**]，且 `root` 帳戶具有磁片區的存取權。
 
-        ![匯出原則](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+![匯出原則](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 
 
 ## <a name="next-steps"></a>後續步驟 
-* [管理磁碟區](azure-netapp-files-manage-volumes.md)
 * [裝載或取消裝載虛擬機器磁碟區](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [管理快照集](azure-netapp-files-manage-snapshots.md)

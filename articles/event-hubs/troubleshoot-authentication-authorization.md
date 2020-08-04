@@ -3,12 +3,12 @@ title: 針對驗證和授權問題進行疑難排解-Azure 事件中樞
 description: 本文提供有關使用 Azure 事件中樞進行驗證和授權問題疑難排解的資訊。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6fca0c29c20e2bfe0c3ec64e3068b61bd5147bdb
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bed415c6180953b5a5728032a50d51618c084343
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502098"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533881"
 ---
 # <a name="troubleshoot-authentication-and-authorization-issues---azure-event-hubs"></a>針對驗證和授權問題進行疑難排解-Azure 事件中樞
 針對連線[問題進行疑難排解](troubleshooting-guide.md)一文提供針對 Azure 事件中樞的連線問題進行疑難排解的秘訣。 本文提供針對 Azure 事件中樞的驗證和授權問題進行疑難排解的秘訣和建議。 
@@ -16,13 +16,13 @@ ms.locfileid: "87502098"
 ## <a name="if-you-are-using-azure-active-directory"></a>如果您使用 Azure Active Directory
 如果您使用 Azure Active Directory （Azure AD）來驗證和授權 Azure 事件中樞，請確認存取事件中樞的身分識別是正確的**資源範圍**（取用者群組、事件中樞、命名空間、資源群組或訂用帳戶）的正確**Azure 角色**的成員。
 
-### <a name="rbac-roles"></a>RBAC 角色
+### <a name="azure-roles"></a>Azure 角色
 - [Azure 事件中樞資料擁有](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)者，以完整存取事件中樞資源。
 - Azure 事件中樞傳送存取的[資料寄件者](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver)。
 - 接收存取的[Azure 事件中樞資料接收器](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender)。
 
 ### <a name="resource-scopes"></a>資源範圍
-- 取用**者群組**：在此範圍中，角色指派只會套用至此實體。 目前，Azure 入口網站不支援將 RBAC 角色指派給此層級的安全性主體。 
+- 取用**者群組**：在此範圍中，角色指派只會套用至此實體。 目前，Azure 入口網站不支援將 Azure 角色指派給此層級的安全性主體。 
 - **事件中樞**：角色指派會套用到事件中樞實體和其下的取用者群組。
 - **命名空間**：角色指派會跨越命名空間下的整個事件中樞拓撲，以及與其相關聯的取用者群組。
 - **資源群組**：角色指派會套用至資源群組下的所有事件中樞資源。

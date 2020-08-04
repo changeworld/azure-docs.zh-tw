@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 8d6dd38c3d1802c3b5bec82edbda4f9d344fa28b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3170b51b8e580a625b2dbb4d83229c59bafa900e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090513"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534799"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -46,11 +46,11 @@ ms.locfileid: "87090513"
 
 ### <a name="managing-administrative-access-to-key-vault"></a>管理 Key Vault 的系統管理存取權
 
-當您在資源群組中建立金鑰保存庫時，可以使用 Azure AD 管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 RBAC 角色，授與特定範圍層級的存取權。 若要對使用者授與管理金鑰保存庫的權限，您可以在特定範圍對使用者指派預先定義的 `key vault Contributor` 角色。 您可以對 RBAC 角色指派下列範圍層級：
+當您在資源群組中建立金鑰保存庫時，可以使用 Azure AD 管理存取權。 您可以對使用者或群組授與在資源群組中管理金鑰保存庫的能力。 您可以藉由指派適當的 Azure 角色，在特定範圍層級授與存取權。 若要對使用者授與管理金鑰保存庫的權限，您可以在特定範圍對使用者指派預先定義的 `key vault Contributor` 角色。 您可以將下列範圍層級指派給 Azure 角色：
 
-- 訂用帳戶：在訂用帳戶層級指派的 RBAC 角色，會套用至該訂用帳戶內的所有資源群組和資源。
-- **資源群組**：在資源群組層級指派的 RBAC 角色，會套用至該資源群組內的所有資源。
-- **特定資源**：針對特定資源指派的 RBAC 角色，則會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
+- **訂**用帳戶：指派在訂用帳戶層級的 Azure 角色會套用至該訂用帳戶內的所有資源群組和資源。
+- **資源群組**：在資源群組層級指派的 Azure 角色會套用至該資源群組中的所有資源。
+- **特定資源**：指派給特定資源的 Azure 角色會套用至該資源。 在此情況下，資源會是特定的金鑰保存庫。
 
 有數個預先定義的角色。 如果預先定義的角色不符合您的需求，您可以定義您自己的角色。 如需詳細資訊，請參閱[RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。
 

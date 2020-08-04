@@ -4,12 +4,12 @@ description: 如何在 Azure Kubernetes Service 上部署和設定 Hyperledger F
 ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286048"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533422"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service （AKS）上的 Hyperledger 網狀架構聯盟
 
@@ -300,17 +300,17 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
 ```
 
-`<anchorPeersList>`這是要設定為錨點對等節點的空格分隔清單。 例如
+`<anchorPeersList>`這是要設定為錨點對等節點的空格分隔清單。 例如，
 
   - `<anchorPeersList>`如果您只想要將 peer1 節點設定為錨點對等，請設定為 "peer1"。
   - `<anchorPeersList>`如果您想要將 peer1 和 peer3 節點設定為錨點對等，請設定為 "peer1" "peer3"。
 
-### <a name="chaincode-management-commands"></a>鏈碼管理命令
+## <a name="chaincode-management-commands"></a>鏈碼管理命令
 
 >[!NOTE]
 > 開始進行任何鏈碼作業之前，請確定已完成用戶端應用程式的初始設定。  
 
-**設定下列鏈碼特定環境變數**
+### <a name="set-the-below-chaincode-specific-environment-variables"></a>設定下列鏈碼特定環境變數
 
 ```bash
 # peer organization name where chaincode operation is to be performed
@@ -329,14 +329,6 @@ CC_PATH=<chaincodePath>
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  
 ```
-
-以下是可執行檔鏈碼作業：  
-
-- [安裝鏈碼](#install-chaincode)  
-- [具現化鏈碼](#instantiate-chaincode)  
-- [叫用鏈碼](#invoke-chaincode)
-- [查詢鏈碼](#query-chaincode)
-
 
 ### <a name="install-chaincode"></a>安裝鏈碼  
 
@@ -358,13 +350,13 @@ CHANNEL_NAME=<channelName>
 從對等用戶端應用程式，執行下列命令以在通道上具現化鏈碼。  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
+
 將具現化函數名稱和以空格分隔的引數清單 `<instantiateFunc>` 分別傳入和 `<instantiateFuncArgs>` 。 例如，在 chaincode_example02. go 鏈碼中，將鏈碼設定為，並將其具現化為 " `<instantiateFunc>` `init` `<instantiateFuncArgs>` a" "2000" "b" "1000"。
 
 > [!NOTE]
 > 從通道中的任何一個對等組織執行一次命令。 交易成功提交至排序者後，排序者會將此交易散發給通道中的所有對等組織。 因此，鏈碼會在通道中的所有對等組織的所有對等節點上具現化。  
-
 
 ### <a name="invoke-chaincode"></a>叫用鏈碼  
 

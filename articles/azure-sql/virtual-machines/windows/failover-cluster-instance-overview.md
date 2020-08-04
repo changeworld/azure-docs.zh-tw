@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a5374bf15798fd7e53f0d93e69f2f40a2d57b94
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287362"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533813"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure 虛擬機器上具有 SQL Server 的容錯移轉叢集實例
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -40,7 +40,7 @@ Azure Vm 上的 SQL Server 會使用 Windows Server 容錯移轉叢集（WSFC）
 若要深入瞭解，請參閱[Azure 中 SQL Server vm 的仲裁最佳做法](hadr-cluster-best-practices.md#quorum)。 
 
 
-## <a name="storage"></a>儲存體
+## <a name="storage"></a>存放裝置
 
 在傳統的內部部署叢集環境中，Windows 容錯移轉叢集會使用兩個節點都可存取的存放區域網路（SAN）做為共用存放裝置。 SQL Server 檔案是裝載在共用存放裝置上，而且只有使用中的節點可以一次存取檔案。 
 
@@ -98,7 +98,7 @@ Azure Vm 上的 SQL Server 提供各種選項，作為部署 SQL Server 容錯�
 - 由於進行中的磁片複寫，因此需要高網路頻寬才能達到高效能。 
 - 需要較大的 VM 大小，並針對儲存體付費，因為儲存體已附加至每個 VM。 
 
-若要開始使用，請參閱[SQL Server 具有儲存空間直接存取的容錯移轉叢集實例](failover-cluster-instance-azure-shared-disks-manually-configure.md)。 
+若要開始使用，請參閱[SQL Server 具有儲存空間直接存取的容錯移轉叢集實例](failover-cluster-instance-storage-spaces-direct-manually-configure.md)。 
 
 ### <a name="premium-file-share"></a>Premium 檔案共用
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 07/29/2020
-ms.openlocfilehash: 968fe5a0f4999c25486189384186c23d1fcd5509
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430253"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530365"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>在 Azure SQL Database 中複製資料庫的交易一致性複本
 
@@ -133,7 +133,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 > [!IMPORTANT]
 > 如果您需要建立的複本與來源的服務目標明顯較小，則目標資料庫可能沒有足夠的資源來完成植入程式，而且可能會導致複製 operaion 失敗。 在此案例中，請使用異地還原要求，在不同的伺服器和/或不同的區域中建立複本。 如需詳細資訊，請參閱[使用資料庫備份來復原 Azure SQL Database](recovery-using-backups.md#geo-restore) 。
 
-## <a name="rbac-roles-to-manage-database-copy"></a>用來管理資料庫複製的 RBAC 角色
+## <a name="azure-roles-to-manage-database-copy"></a>用來管理資料庫複本的 Azure 角色
 
 若要建立資料庫複本，您必須在下列角色中
 
@@ -155,7 +155,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
    Microsoft .Resources/訂用帳戶/資源/讀取 Microsoft .resources/訂用帳戶/資源/撰寫 Microsoft .Resources/部署/讀取 microsoft .resources/部署/撰寫 microsoft .resources/部署/operationstatuses/讀取
 
-如果您想要查看入口網站上資源群組中的 [部署] 底下的作業，跨多個資源提供者的作業（包括 SQL 作業），您將需要這些額外的 RBAC 角色：
+如果您想要查看入口網站上資源群組中的 [部署] 底下的作業，跨多個資源提供者的作業（包括 SQL 作業），您將需要這些額外的 Azure 角色：
 
    Microsoft .Resources/訂用帳戶/resourcegroups/部署/作業/讀取 Microsoft .Resources/訂用帳戶/resourcegroups/部署/operationstatuses/讀取
 
@@ -171,7 +171,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 在 Azure SQL Database 中複製資料庫時，可能會發生下列錯誤。 如需詳細資訊，請參閱 [複製 Azure SQL Database](database-copy.md)。
 
-| 錯誤碼 | 嚴重性 | 描述 |
+| 錯誤碼 | 嚴重性 | 說明 |
 | ---:| ---:|:--- |
 | 40635 |16 |IP 位址 '%.&#x2a;ls' 的用戶端已暫時停用。 |
 | 40637 |16 |建立資料庫副本目前已停用。 |

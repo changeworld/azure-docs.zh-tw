@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4257b2fab5e0cca0cb016794673ed39ae4973895
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: af19b72846c78ef80ba170b6d6e0cec97fa2b96e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067418"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533354"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體有哪些新功能？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 |**Azure SQL Database**|Azure SQL Database*單一資料庫*| 除非另有明確指定，否則產品名稱 Azure SQL Database 包括部署到彈性集區的單一資料庫和資料庫。 |
 |**Azure SQL Database**|Azure SQL Database*彈性集*區| 除非另有明確指定，否則產品名稱 Azure SQL Database 包括部署到彈性集區的單一資料庫和資料庫。  |
 |**Azure SQL Database** |Azure SQL Database | 雖然這一詞維持不變，但現在僅適用于單一資料庫和彈性集區部署，而且不包含受控實例。 |
-| **Azure SQL**| 不適用 | 這是指 Azure 中可用的 SQL Server 資料庫引擎產品系列： Azure SQL Database、Azure SQL 受控執行個體，以及 Azure Vm 上的 SQL Server。 | 
+| **Azure SQL**| N/A | 這是指 Azure 中可用的 SQL Server 資料庫引擎產品系列： Azure SQL Database、Azure SQL 受控執行個體，以及 Azure Vm 上的 SQL Server。 | 
 
 ## <a name="features-in-public-preview"></a>公開預覽中的功能
 
@@ -137,7 +137,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 
 ### <a name="permissions-on-resource-group-not-applied-to-sql-managed-instance"></a>資源群組的許可權未套用至 SQL 受控執行個體
 
-當 SQL 受控執行個體參與者 RBAC 角色套用至資源群組（RG）時，它不會套用至 SQL 受控執行個體且不會有任何作用。
+當 SQL 受控執行個體參與者 Azure 角色套用至資源群組（RG）時，它不會套用至 SQL 受控執行個體且不會有任何作用。
 
 因應**措施：為**訂用帳戶層級的使用者設定 SQL 受控執行個體參與者角色。
 
