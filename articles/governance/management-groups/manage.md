@@ -3,12 +3,12 @@ title: 如何使用您的管理群組 - Azure 治理
 description: 了解如何檢視、維護、更新及刪除您的管理群組階層。
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: b60adbdf404f40739d6bcab7a0a3ceaf24c0b59f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5a0269935daedb3be478cc27d5ecaf87f3c97f7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259400"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535003"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>利用管理群組來管理您的資源
 
@@ -69,7 +69,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
    - 若要將訂用帳戶或管理群組移至另一個管理群組，請參閱[在階層中移動管理群組和訂用帳戶](#moving-management-groups-and-subscriptions)。
 
-1. 您必須具備管理群組上的寫入權限 (「擁有者」、「參與者」或「管理群組參與者」)。 若要查看您有哪些權限，請選取管理群組，然後選取 **IAM**。 若要深入了解 RBAC 角色，請參閱  
+1. 您必須具備管理群組上的寫入權限 (「擁有者」、「參與者」或「管理群組參與者」)。 若要查看您有哪些權限，請選取管理群組，然後選取 **IAM**。 若要深入瞭解 Azure 角色，請參閱  
    [使用 RBAC 管理存取權與權限](../../role-based-access-control/overview.md)。
 
 ### <a name="delete-in-the-portal"></a>在入口網站中刪除
@@ -113,7 +113,7 @@ az account management-group delete --name 'Contoso'
 
 ## <a name="view-management-groups"></a>檢視管理群組
 
-只您在管理群組中具有直接或繼承的 RBAC 角色，您就可以檢視該管理群組。  
+您可以在上查看您具有直接或繼承之 Azure 角色的任何管理群組。  
 
 ### <a name="view-in-the-portal"></a>在入口網站中檢視
 
@@ -215,7 +215,7 @@ az account management-group show --name 'Contoso' -e -r
 
 如果訂用帳戶上的擁有者角色繼承自目前的管理群組，則您的移動目標會受到限制。 您只能將訂用帳戶移至具有擁有者角色的另一個管理群組。 因為您會失去訂用帳戶的擁有權，所以無法將其移至您是參與者的管理群組。 如果是直接為您指派訂用帳戶的擁有者角色 (而不是繼承自管理群組)，您可以將其移至您是參與者的任何管理群組。
 
-若要在 Azure 入口網站中查看您有哪些權限，請選取管理群組，然後選取 [IAM]。 若要深入了解 RBAC 角色，請參閱[使用 RBAC 管理存取權與權限](../../role-based-access-control/overview.md)。
+若要在 Azure 入口網站中查看您有哪些權限，請選取管理群組，然後選取 [IAM]。 若要深入瞭解 Azure 角色，請參閱[使用 RBAC 管理存取權和許可權](../../role-based-access-control/overview.md)。
 
 ## <a name="move-subscriptions"></a>移動訂用帳戶 
 

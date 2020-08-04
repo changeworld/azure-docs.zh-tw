@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4f04671283a4888770e29606b6869c832b22e6a3
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a656ccc56d198943c8631077466115eb6411a64a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499155"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534884"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>使用 Azure CLI 授權 blob 或佇列資料的存取權
 
@@ -43,7 +43,7 @@ Azure 儲存體提供 Azure CLI 的延伸模組，可讓您指定您想要如何
 
 當您使用 Azure AD 認證登入 Azure CLI 時，會傳回 OAuth 2.0 存取權杖。 Azure CLI 會自動使用該權杖來對 Blob 或佇列儲存體授權後續的資料作業。 針對支援的作業，您不需要再使用命令傳遞帳戶金鑰或 SAS 權杖。
 
-您可以透過角色型存取控制（RBAC），將 blob 和佇列資料的許可權指派給 Azure AD 的安全性主體。 如需 Azure 儲存體中 RBAC 角色的詳細資訊，請參閱[使用 rbac 來管理 Azure 儲存體資料的存取權限](storage-auth-aad-rbac.md)。
+您可以透過角色型存取控制（RBAC），將 blob 和佇列資料的許可權指派給 Azure AD 的安全性主體。 如需 Azure 儲存體中 Azure 角色的詳細資訊，請參閱[使用 RBAC 來管理 Azure 儲存體資料的存取權限](storage-auth-aad-rbac.md)。
 
 ### <a name="permissions-for-calling-data-operations"></a>呼叫資料作業的許可權
 
@@ -55,7 +55,7 @@ Azure 儲存體提供 Azure CLI 的延伸模組，可讓您指定您想要如何
 
 下列範例顯示如何使用您的 Azure AD 認證，從 Azure CLI 建立容器。 若要建立容器，您必須登入 Azure CLI，而且您需要一個資源群組和一個儲存體帳戶。 若要瞭解如何建立這些資源，請參閱[快速入門：使用 Azure CLI 建立、下載及列出 blob](../blobs/storage-quickstart-blobs-cli.md)。
 
-1. 建立容器之前，請將 [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的許可權，才能對儲存體帳戶執行資料作業。 如需指派 RBAC 角色的詳細資訊，請參閱[在 Azure 入口網站中使用 RBAC 授與 Azure blob 和佇列資料的存取權](storage-auth-aad-rbac.md)。
+1. 建立容器之前，請將 [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的許可權，才能對儲存體帳戶執行資料作業。 如需指派 Azure 角色的詳細資訊，請參閱[在 Azure 入口網站中使用 RBAC 授與 azure blob 和佇列資料的存取權](storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
     > Azure 角色指派可能需要幾分鐘的時間才能傳播。
@@ -108,5 +108,5 @@ az storage container create \
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure CLI 來指派用於存取 blob 和佇列資料的 RBAC 角色](storage-auth-aad-rbac-cli.md)
+- [使用 Azure CLI 來指派 Azure 角色以存取 blob 和佇列資料](storage-auth-aad-rbac-cli.md)
 - [使用 Azure 資源的受控識別來授權 blob 和佇列資料的存取](storage-auth-aad-msi.md)

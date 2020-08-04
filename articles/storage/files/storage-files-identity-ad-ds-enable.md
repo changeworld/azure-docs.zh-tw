@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: e2f38daea40f89e73422ca8115f2425758be81a4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413097"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535071"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一部：為您的 Azure 檔案共用啟用 AD DS 驗證 
 
@@ -30,7 +30,7 @@ AzFilesHybrid PowerShell 模組中的 Cmdlet 會進行必要的修改，並為�
 
 - [下載並解壓縮 AzFilesHybrid 模組](https://github.com/Azure-Samples/azure-files-samples/releases)（GA 模組： v 0.2.0 +）
 - 在已加入內部部署 AD DS 的裝置中安裝並執行模組，其 AD DS 認證具有在目標 AD 中建立服務登入帳戶或電腦帳戶的許可權。
--  使用同步處理至您 Azure AD 的內部部署 AD DS 認證來執行腳本。 內部部署 AD DS 認證必須具有儲存體帳戶擁有者或參與者 RBAC 角色許可權。
+-  使用同步處理至您 Azure AD 的內部部署 AD DS 認證來執行腳本。 內部部署 AD DS 認證必須具有儲存體帳戶擁有者或參與者 Azure 角色許可權。
 
 ### <a name="run-join-azstorageaccountforauth"></a>執行聯結-AzStorageAccountForAuth
 

@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7819b62fb92945a409cab0dff926e281620dd80c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 727a5052b0531cc0a37cc631e11bc498498be5b3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496639"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534969"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>使用 Key Vault 和 Azure CLI 管理儲存體帳戶金鑰
 
@@ -49,7 +49,7 @@ Key Vault 是在所有 Azure AD 租使用者中預先註冊的 Microsoft 應用�
 | Azure AD | Azure 公用 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | 其他  | 任意 | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要完成本指南，您必須先執行下列動作：
 
@@ -71,7 +71,7 @@ az login
 
 使用 Azure CLI [az role 指派 create](/cli/azure/role/assignment?view=azure-cli-latest)命令，讓 Key Vault 存取您的儲存體帳戶。 提供命令下列參數值：
 
-- `--role`：傳遞「儲存體帳戶金鑰操作員服務角色」 RBAC 角色。 此角色會將存取範圍限制為您的儲存體帳戶。 若為傳統儲存體帳戶，請改為傳遞「傳統儲存體帳戶金鑰操作員服務角色」。
+- `--role`：傳遞「儲存體帳戶金鑰操作員服務角色」 Azure 角色。 此角色會將存取範圍限制為您的儲存體帳戶。 若為傳統儲存體帳戶，請改為傳遞「傳統儲存體帳戶金鑰操作員服務角色」。
 - `--assignee`：傳遞值 " https://vault.azure.net "，這是 Azure 公用雲端中 Key Vault 的 url。 （針對 Azure Goverment 雲端，請改用 [--asingee-物件識別碼]，請參閱[服務主體應用程式識別碼](#service-principal-application-id)）。
 - `--scope`：傳遞您的儲存體帳戶資源識別碼，其格式為 `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` 。 若要尋找您的訂用帳戶識別碼，請使用 Azure CLI [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list)命令;若要尋找您的儲存體帳戶名稱和儲存體帳戶資源群組，請使用 Azure CLI [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list)命令。
 

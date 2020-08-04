@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 34cfafadabd9a6328cbe85a5444211828df9db6d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5fa591530e92682c582b5929240e74a5430fb559
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133715"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534986"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>設定 SQL Server 的災害復原
 
@@ -47,6 +47,8 @@ SQL 做為 Azure 上的平臺即服務（PaaS）。<br/><br/>此部署類型包�
 > * 您可以選擇在 Azure、Hyper-v、VMware 或實體基礎結構的任何部署中使用 Site Recovery。 請遵循本文結尾的指導方針，[以瞭解如何使用 Site Recovery 協助保護 SQL Server](#how-to-help-protect-a-sql-server-cluster)叢集。
 > * 請確定電腦上觀察到的資料變更率在[Site Recovery 限制](vmware-physical-azure-support-matrix.md#churn-limits)內。 變更率是以每秒寫入位元組數來測量。 對於執行 Windows 的電腦，您可以選取 [工作管理員] 中的 [**效能**] 索引標籤，以查看此變更率。 觀察每個磁片的寫入速度。
 > * Site Recovery 支援儲存空間直接存取上的容錯移轉叢集實例複寫。 若要深入瞭解，請參閱[如何啟用儲存空間直接存取](azure-to-azure-how-to-enable-replication-s2d-vms.md)複寫。
+> 
+> 當您將 SQL 工作負載遷移至 Azure 時，建議您在[azure 虛擬機器上套用 SQL Server 的效能指導方針](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)。
 
 ## <a name="disaster-recovery-of-an-application"></a>應用程式的損毀修復
 

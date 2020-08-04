@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 3335bfbed592c9e13d5be437e8013a89ae86e970
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16c8058da30821a53a20cf3ea6afdb0e4dbfcb77
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510627"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535088"
 ---
 # <a name="part-two-assign-share-level-permissions-to-an-identity"></a>第二部分：將共用層級許可權指派給身分識別
 
@@ -38,11 +38,11 @@ ms.locfileid: "85510627"
 
 您可以使用 [Azure 入口網站]、[Azure PowerShell] 或 [Azure CLI]，將內建角色指派給使用者的 Azure AD 身分識別，以授與共享層級許可權。
 
-## <a name="assign-an-rbac-role"></a>指派 RBAC 角色
+## <a name="assign-an-azure-role"></a>指派 Azure 角色
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-若要使用[Azure 入口網站](https://portal.azure.com)將 RBAC 角色指派給 Azure AD 身分識別，請依照下列步驟執行：
+若要使用[Azure 入口網站](https://portal.azure.com)將 Azure 角色指派給 Azure AD 身分識別，請依照下列步驟執行：
 
 1. 在 Azure 入口網站中，移至您的檔案共用，或[建立檔案共用](storage-how-to-create-file-share.md)。
 1. 選取 [存取控制 (IAM)]。
@@ -52,7 +52,7 @@ ms.locfileid: "85510627"
 
 ### <a name="powershell"></a>PowerShell
 
-下列 PowerShell 範例說明如何根據登入名稱，將 RBAC 角色指派給 Azure AD 身分識別。 如需使用 PowerShell 指派 RBAC 角色的詳細資訊，請參閱[使用 RBAC 和 Azure PowerShell 管理存取](../../role-based-access-control/role-assignments-powershell.md)。
+下列 PowerShell 範例說明如何根據登入名稱，將 Azure 角色指派給 Azure AD 身分識別。 如需使用 PowerShell 指派 Azure 角色的詳細資訊，請參閱[使用 RBAC 和 Azure PowerShell 來管理存取權](../../role-based-access-control/role-assignments-powershell.md)。
 
 執行下列範例腳本之前，請以您的值取代預留位置值（包括括弧）。
 
@@ -67,7 +67,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 ### <a name="cli"></a>CLI
   
-下列 CLI 2.0 命令會根據登入名稱，將 RBAC 角色指派給 Azure AD 身分識別。 如需有關使用 Azure CLI 指派 RBAC 角色的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 來管理存取權](../../role-based-access-control/role-assignments-cli.md)。 
+下列 CLI 2.0 命令會根據登入名稱，將 Azure 角色指派給 Azure AD 身分識別。 如需有關使用 Azure CLI 指派 Azure 角色的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 來管理存取權](../../role-based-access-control/role-assignments-cli.md)。 
 
 執行下列範例腳本之前，請記得使用您自己的值來取代預留位置值（包括括弧）。
 
