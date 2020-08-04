@@ -3,17 +3,17 @@ title: 建立 Azure Image Builder 範本 (預覽)
 description: 了解如何建立範本以搭配 Azure Image Builder 使用。
 author: danielsollondon
 ms.author: danis
-ms.date: 07/09/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: fe4ddeaadedc14e7e3d92a8b185920bf18bd142b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283294"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543600"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
 
@@ -142,12 +142,13 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="properties-source"></a>屬性：source
 
-`source` 區段包含 Image Builder 所要使用的來源映像相關資訊。
+影像產生器目前僅支援 HyperV 第1代映射和 Vm， `source` 區段包含映射產生器將使用之來源映射的相關資訊。
 
 API 需要可定義映像建置來源的 'SourceType'，目前有三種類型：
 - PlatformImage - 指出來源映像是 Marketplace 映像。
 - ManagedImage - 從一般受控映像啟動時，使用此類型。
 - SharedImageVersion - 當您使用共用映像庫中的映像版本作為來源時，使用此類型。
+
 
 > [!NOTE]
 > 使用現有的 Windows 自訂映射時，您可以在單一 Windows 映像上執行 Sysprep 命令最多8次，如需詳細資訊，請參閱[Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)檔。
@@ -191,7 +192,10 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 ```
 ### <a name="managedimage-source"></a>ManagedImage 來源
 
-將來源映像設定為一般化 VHD 或 VM 的現有受控映像。 來源受控映像必須屬於受支援的 OS，且位於與 Azure Image Builder 範本相同的區域中。 
+將來源映像設定為一般化 VHD 或 VM 的現有受控映像。
+
+> [!NOTE]
+> 來源受控映射必須是受支援的 OS，且映射必須與您的 Azure 映射產生器範本具有相同的區域。 
 
 ```json
         "source": { 
@@ -204,7 +208,11 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion 來源
-將來源映像設定為共用映像庫中的現有映像版本。 映像版本必須屬於受支援的 OS，且必須將映像複寫到與 Azure Image Builder 範本相同的區域。 
+將來源映像設定為共用映像庫中的現有映像版本。
+
+> [!NOTE]
+> 來源受控映射必須是受支援的 OS，且映射必須與您的 Azure 映射產生器範本具有相同的區域，否則請將映射版本複寫至映射產生器範本區域。
+
 
 ```json
         "source": { 

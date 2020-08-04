@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a9def93e6eb337300d3c166532a9415f02b825b7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2a4ba5494cb65738f5443915c013571b98854a91
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286388"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543413"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 建立 Windows 虛擬桌面主機集區
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統版)，請參閱[這篇文章](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)。
 
 主機集區是 Windows 虛擬桌面租用戶環境中一或多個相同虛擬機器的集合。 每個主機集區都可與多個 RemoteApp 群組、一個桌面應用程式群組及多個工作階段主機建立關聯。
 
@@ -60,7 +60,7 @@ New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtuali
 執行此下一個 Cmdlet，以將 Azure Active Directory 使用者新增至主機集區的預設桌面應用程式群組：
 
 ```powershell
-New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+“-DAG”> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 執行下列 Cmdlet，以將註冊權杖匯出為變數，稍後用以[將虛擬機器註冊至 Windows 虛擬桌面主機集區](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)。

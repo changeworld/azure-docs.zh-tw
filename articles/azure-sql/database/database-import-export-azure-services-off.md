@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: ea6aec9ffcaf01c0db5b297d40783ce4690a8f0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5f2d5838c926fa8ee7b92278b0854264346a7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84031479"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543753"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>匯入或匯出 Azure SQL Database，而不允許 Azure 服務存取伺服器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,9 +34,7 @@ ms.locfileid: "84031479"
 此範本可讓您使用最新修補版本的 Windows 版本，來部署簡單的 Windows 虛擬機器。 這會在資源群組位置中部署 A2 大小 VM，並傳回 VM 的完整功能變數名稱。
 <br><br>
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![顯示標示為「部署至 Azure」之按鈕的影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 如需詳細資訊，請參閱[非常簡單的 WINDOWS VM 部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)。
 
@@ -91,7 +89,7 @@ ms.locfileid: "84031479"
 
 4. 選擇工具列上的 [**新增用戶端 IP** ]，將虛擬機器的公用 IP 位址新增至新的伺服器層級 IP 防火牆規則。 伺服器層級 IP 防火牆規則可以針對單一 IP 位址或 IP 位址範圍開啟連接埠 1433。
 
-5. 選取 [儲存]。 系統會針對虛擬機器的公用 IP 位址建立伺服器層級 IP 防火牆規則，以在伺服器上開啟埠1433。
+5. 選取 [儲存]  。 系統會針對虛擬機器的公用 IP 位址建立伺服器層級 IP 防火牆規則，以在伺服器上開啟埠1433。
 
 6. 關閉 [防火牆設定] 頁面。
 

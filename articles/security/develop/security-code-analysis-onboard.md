@@ -1,6 +1,6 @@
 ---
 title: Microsoft 安全性程式碼分析上架指南
-description: 本文說明如何安裝 Microsoft 安全性程式碼分析延伸模組
+description: 瞭解如何上架及安裝 Microsoft 安全性程式碼分析延伸模組。 請參閱必要條件並查看其他資源。
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: fd0057c5f5e365d6c91ae221a7add813855bb1ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323582"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543022"
 ---
 # <a name="onboarding-and-installing"></a>上線和安裝
 
@@ -63,7 +63,7 @@ Microsoft 安全性程式碼分析小組想要為合作夥伴上架合約頂級�
 1. 選取 [**共用**]。
 1. 選取 [Microsoft 安全性程式碼分析] 延伸模組，選取 [**安裝**]。
 1. 從下拉式清單中，選擇要在其中安裝擴充功能的 Azure DevOps 組織。
-1. 選取 [安裝]。 安裝完成之後，您就可以開始使用延伸模組。
+1. 選取 [安裝]  。 安裝完成之後，您就可以開始使用延伸模組。
 
 >[!NOTE]
 > 即使您沒有安裝延伸模組的存取權，仍請繼續執行安裝步驟。 在安裝過程中，您可以要求 Azure DevOps 組織系統管理員的存取權。

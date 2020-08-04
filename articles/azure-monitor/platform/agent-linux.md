@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: accd7c3ad82853c1f2af0b632326b2798f85b36b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 965d5dd558d0da7a758db77330c9129ea0e8247c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073663"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543855"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>將 Linux 電腦連線至 Azure 監視器
 
@@ -31,7 +31,7 @@ ms.locfileid: "87073663"
 
 適用于 Linux 的 Log Analytics 代理套裝程式含多個套件。 發行檔案包含下列套件，可以藉由使用參數執行 shell 組合來取得 `--extract` ：
 
-**套件** | **版本** | **描述**
+**套件** | **版本** | **說明**
 ----------- | ----------- | --------------
 omsagent | 1.12.15 | 適用于 Linux 的 Log Analytics 代理程式
 omsconfig | 1.1.1 | Log Analytics 代理程式的設定代理程式
@@ -93,7 +93,7 @@ docker-cimprov | 1.0.0 | OMI 的 Docker 提供者。 僅在偵測到 Docker 時�
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    如果需要驗證，您必須指定使用者名稱和密碼。 例如: 
+    如果需要驗證，您必須指定使用者名稱和密碼。 例如： 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
@@ -163,7 +163,8 @@ OMS 代理程式對 Linux 具有有限的自訂支援。
 - FIPs
 
 已規劃但尚未支援下列各項：
-- CIS-SELINUX
+- CIS
+- SELINUX
 
 其他強化和自訂方法不受支援，也不會針對 OMS 代理程式進行規劃。  
 

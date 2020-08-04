@@ -1,6 +1,6 @@
 ---
 title: Azure 加密概觀 | Microsoft Docs
-description: 了解 Azure 中的各種加密選項
+description: 瞭解 Azure 中的加密選項。 請參閱待用加密、傳輸中加密和金鑰管理的資訊 Azure Key Vault。
 services: security
 author: msmbaldwin
 ms.assetid: ''
@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 14808016b627bc593d90ff88fc9bddf2449f6ee5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083951"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542954"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概觀
 
@@ -113,7 +113,7 @@ Azure 提供許多機制，可在將資料從一個位置移至另一個位置�
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Azure 中的資料連結層加密
 
-每當 Azure 客戶流量在資料中心之間移動時--不是由 Microsoft （或代表 Microsoft）控制的外部實體界限--使用[IEEE 802.1 AE MAC 安全性標準](https://1.ieee802.org/security/802-1ae/)（也稱為 MACsec）的資料連結層加密方法，會在基礎網路硬體的點對點應用程式上套用。  封包在傳送之前會先在裝置上加密和解密，以防止實體「中間人」或窺探/wiretapping 攻擊。  由於這項技術是與網路硬體本身整合，因此在網路硬體上提供線路速率加密，而不會增加任何可測量的連結延遲。  針對某個區域內或區域間的所有 Azure 流量，此 MACsec 加密預設為開啟，而且客戶不需要採取任何動作即可啟用。 
+每當 Azure 客戶流量在資料中心之間移動時--不是由 Microsoft （或代表 Microsoft）控制的外部實體界限--使用[IEEE 802.1 AE MAC 安全性標準](https://1.ieee802.org/security/802-1ae/)（也稱為 MACsec）的資料連結層加密方法，會在基礎網路硬體的點對點應用程式上套用。 封包在傳送之前會先在裝置上加密和解密，以防止實體「中間人」或窺探/wiretapping 攻擊。 由於這項技術是與網路硬體本身整合，因此在網路硬體上提供線路速率加密，而不會增加任何可測量的連結延遲。 針對某個區域內或區域間的所有 Azure 流量，此 MACsec 加密預設為開啟，而且客戶不需要採取任何動作即可啟用。 
 
 ### <a name="tls-encryption-in-azure"></a>Azure 中的 TLS 加密
 

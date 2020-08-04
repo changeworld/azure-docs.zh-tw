@@ -1,6 +1,6 @@
 ---
 title: Azure 安全性簡介 |Microsoft Docs
-description: 了解 Azure 安全性、它的服務及運作方式。
+description: 閱讀此總覽，為您介紹 Azure 安全性、其各種服務，以及其運作方式。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 9c107789fe4a88b3cd73a2f290871016b95cae19
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7f78b5d0baff149fc687d2b4bb71d70186315def
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371391"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543821"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性簡介
 ## <a name="overview"></a>概觀
@@ -138,11 +138,11 @@ App Service Web 應用程式會針對來自 Web 伺服器和 Web 應用程式的
 -   應用程式錯誤 (顯示例外狀況事件)
 -   效能 (顯示效能事件)
 
-## <a name="storage"></a>儲存體
+## <a name="storage"></a>存放裝置
 本節提供關於 Azure 儲存體安全性中主要功能的其他資訊，以及這些功能的摘要資訊。
 
 ### <a name="role-based-access-control-rbac"></a>角色型存取控制 (RBAC)
-您可以使用角色型存取控制 (RBAC) 來保護儲存體帳戶。 對於想要強制執行資料存取安全性原則的組織而言，根據[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低許可權](https://en.wikipedia.org/wiki/Principle_of_least_privilege)的安全性原則來限制存取是必要的。 在特定範圍將適當的 RBAC 角色指派給群組和應用程式，即可授與這些存取權限。 您可以使用[Azure 內建角色](../../role-based-access-control/built-in-roles.md)（例如儲存體帳戶參與者）將許可權指派給使用者。 使用 [Azure Resource Manager](../../storage/blobs/security-recommendations.md) 模型來存取儲存體帳戶的儲存體金鑰，可以透過角色型存取控制 (RBAC) 來控制。
+您可以使用角色型存取控制 (RBAC) 來保護儲存體帳戶。 對於想要強制執行資料存取安全性原則的組織而言，根據[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低許可權](https://en.wikipedia.org/wiki/Principle_of_least_privilege)的安全性原則來限制存取是必要的。 將適當的 Azure 角色指派給特定範圍的群組和應用程式，即可授與這些存取權限。 您可以使用[Azure 內建角色](../../role-based-access-control/built-in-roles.md)（例如儲存體帳戶參與者）將許可權指派給使用者。 使用 [Azure Resource Manager](../../storage/blobs/security-recommendations.md) 模型來存取儲存體帳戶的儲存體金鑰，可以透過角色型存取控制 (RBAC) 來控制。
 
 ### <a name="shared-access-signature"></a>共用存取簽章
 [共用存取簽章 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 可提供您儲存體帳戶中資源的委派存取。 SAS 意謂著您可以將儲存體帳戶中物件的有限權限授與用戶端，讓該用戶端可以在一段指定期間內使用一組指定的權限進行存取。 您可以在不須分享您帳戶存取金鑰的情況下，授與這些有限的權限。
@@ -288,7 +288,7 @@ Microsoft [Azure 流量管理員](../../traffic-manager/traffic-manager-overview
 ### <a name="security-center"></a>資訊安全中心
 [Azure 資訊安全中心](../../security-center/security-center-intro.md)會持續分析 Azure 資源的安全性狀態，以取得網路安全性的最佳作法。 當資訊安全中心識別潛在的安全性弱點時，它會建立[建議](../../security-center/security-center-recommendations.md)，引導您完成設定所需控制項來強化和保護資源的程式。
 
-## <a name="compute"></a>計算
+## <a name="compute"></a>運算
 本節提供關於這個領域中主要功能的其他資訊，以及這些功能的摘要資訊。
 
 ### <a name="antimalware--antivirus"></a>反惡意程式碼與防毒軟體
@@ -322,7 +322,7 @@ Azure 金鑰保存庫 (AKV) 服務是設計來改善這些金鑰在安全且高�
 ### <a name="security-policy-management-and-reporting"></a>安全性原則管理和報告
 [資訊安全中心](../../security-center/security-center-intro.md)可協助您預防、偵測及回應威脅，並讓您更深入瞭解 Azure 資源的安全性並對其進行控制。 它提供您 Azure 訂用帳戶之間的整合式安全性監視和原則管理、協助偵測可能忽略的威脅，並適用於廣泛的安全性解決方案生態系統。
 
-## <a name="identity-and-access-management"></a>識別身分和存取管理
+## <a name="identity-and-access-management"></a>身分識別和存取管理
 保護系統、應用程式及資料是從以身分識別為基礎的存取控制開始。 內建於 Microsoft 商務產品和服務的身分識別與存取管理功能，可協助保護您的組織和個人資訊免於遭受未經授權的存取，同時讓合法的使用者隨時隨地都能視需要來使用它。
 
 ### <a name="secure-identity"></a>安全的身分識別

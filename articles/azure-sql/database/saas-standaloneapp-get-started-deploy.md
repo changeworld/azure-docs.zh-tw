@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 11/07/2018
-ms.openlocfilehash: fd4b94f6a99241ffddd7ae359059c3a4a918934a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52dfc285deaa84792e37d0f012abd7702d856113
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026939"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544076"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署及探索使用 Azure SQL Database 的獨立單一租用戶應用程式
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,13 +43,17 @@ ms.locfileid: "84026939"
 
 部署三個所提供之租用戶的應用程式：
 
-1. 按一下每個藍色的 [部署至 Azure]**** 按鈕可在 [Azure 入口網站](https://portal.azure.com)中開啟部署範本。 每個範本需要兩個參數值：新資源群組的名稱，以及區分此部署與應用程式中其他部署的使用者名稱。 下一個步驟將詳細說明如何設定這些值。<br><br>
-    <a href="https://aka.ms/deploywingtipsa-contoso" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Contoso Concert Hall**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-dogwood" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Dogwood Dojo**
-<br><br>
-    <a href="https://aka.ms/deploywingtipsa-fabrikam" target="_blank"><img style="vertical-align:middle" src="media/saas-standaloneapp-get-started-deploy/deploy.png"/></a> &nbsp; **Fabrikam Jazz Club**
+1. 按一下每個藍色的 [部署至 Azure]**** 按鈕可在 [Azure 入口網站](https://portal.azure.com)中開啟部署範本。 每個範本需要兩個參數值：新資源群組的名稱，以及區分此部署與應用程式中其他部署的使用者名稱。 下一個步驟將詳細說明如何設定這些值。
 
+   **Contoso Concert Hall**   
+   [![顯示標示為「部署至 Azure」之按鈕的影像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-contoso)
+
+   **Dogwood Dojo**   
+   [![顯示標示為「部署至 Azure」之按鈕的影像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-dogwood)
+
+   **Fabrikam 爵士樂俱樂部**   
+   [![顯示標示為「部署至 Azure」之按鈕的影像。](media/saas-standaloneapp-get-started-deploy/deploy.png)](https://aka.ms/deploywingtipsa-fabrikam)
+ 
 2. 輸入每個部署所需的參數值。
 
     > [!IMPORTANT]

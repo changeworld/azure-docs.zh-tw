@@ -1,6 +1,6 @@
 ---
 title: Microsoft 安全性程式碼分析檔總覽
-description: 本文概述 Microsoft 安全性程式碼分析延伸模組
+description: 深入瞭解 Microsoft 安全性程式碼分析延伸模組。 使用此延伸模組，您可以將安全性程式碼分析新增至 Azure DevOps CI/識別碼管線。
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e42ea5c6863e769f6d2664b3bcd48d15f00b6b5e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d9caabe3dfde34964f662dbf01316b2cbb0bcab
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361314"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543005"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>關於 Microsoft 安全性程式碼分析
 

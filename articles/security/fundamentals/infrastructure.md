@@ -1,6 +1,6 @@
 ---
 title: Azure 基礎結構安全性 | Microsoft Docs
-description: 本文描述 Microsoft 如何保護 Azure 資料中心的安全性。
+description: 瞭解 Microsoft 如何保護 Azure 資料中心的運作。 這些資料中心是由 Microsoft 作業人員管理、監視及進行系統管理。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 10aecff797effb5abebea16a18dd4e02f40de326
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a9e61ec850d20ab9b630036cd265fbb7f3801ae
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "72595397"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543923"
 ---
 # <a name="azure-infrastructure-security"></a>Azure 基礎結構安全性
 Microsoft Azure 是在 Microsoft 管理並操作的資料中心執行。 這些分散各地的資料中心在安全性與可靠性方面皆符合主要的業界標準，例如 ISO/IEC 27001:2013 和 NIST SP 800-53。 這些資料中心是由 Microsoft 作業人員管理、監視及進行系統管理。 這些作業人員在全天候持續提供世界上最大型線上服務方面擁有多年的經驗。

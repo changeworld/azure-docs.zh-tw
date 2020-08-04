@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: 1e3d855d0860d8d9875e4a93091653cab18965f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6bcbe2bd038a3e27df86b281c51cf0a151c5b5af
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738527"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542903"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>建立和修改 ExpressRoute 線路的對等互連
 
@@ -60,11 +60,13 @@ ms.locfileid: "84738527"
 
    **線路-提供者狀態：未布建**
 
-    [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png "Provider status: Not provisioned")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+   [![螢幕擷取畫面：顯示 ExpressRoute 示範線路的 [總覽] 頁面，並以紅色方塊反白顯示設定為 [未布建] 的提供者狀態。](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+
 
    **線路-提供者狀態：已布建**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png "Provider status = Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+   [![螢幕擷取畫面：顯示 ExpressRoute 示範線路的 [總覽] 頁面，並以紅色方塊反白顯示設定為 [已布建] 的提供者狀態。](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+
 2. 設定線路的 Microsoft 對等。 繼續之前，請確定您擁有下列資訊。
 
    * 主要連結的 /30 子網路。 這必須是您所擁有且註冊在 RIR / IRR 中的有效公用 IPv4 首碼。 您會從這個子網路將第一個可用 IP 位址指派給路由器，因為 Microsoft 會將第二個可用 IP 用於其路由器。
@@ -113,7 +115,7 @@ ms.locfileid: "84738527"
 
 ![刪除對等互連](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
 
-## <a name="azure-private-peering"></a><a name="private"></a>Azure 私用對等
+## <a name="azure-private-peering"></a><a name="private"></a>Azure 私用對等互連
 
 本節將協助您為 ExpressRoute 線路建立、取得、更新和刪除 Azure 私用對等互連設定。
 
@@ -125,11 +127,11 @@ ms.locfileid: "84738527"
 
    **線路-提供者狀態：未布建**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png "Provider status = Not Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
+   [![螢幕擷取畫面：顯示 ExpressRoute 示範線路的 [總覽] 頁面，並以紅色方塊反白顯示設定為 [未布建] 的提供者狀態。](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png)](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
 
    **線路-提供者狀態：已布建**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png "Provider Status = Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
+   [![螢幕擷取畫面：顯示 ExpressRoute 示範線路的 [總覽] 頁面，並以紅色方塊反白顯示設定為 [已布建] 的提供者狀態。](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
 
 2. 設定線路的 Azure 私用對等。 繼續執行接下來的步驟之前，請確定您有下列項目：
 

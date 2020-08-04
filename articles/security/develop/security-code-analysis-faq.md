@@ -1,6 +1,6 @@
 ---
 title: Microsoft 安全性程式碼分析檔常見問題
-description: 本文包含關於 Microsoft 安全性程式碼分析延伸模組的常見問題
+description: 如需瞭解 Microsoft 安全性程式碼分析延伸模組，請查看常見問題（Faq）。
 author: sukhans
 manager: sukhans
 ms.author: terrylan
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: df995f60867cb2062330e19a2ccfb8c29f173653
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071444"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543039"
 ---
 # <a name="frequently-asked-questions"></a>常見問題集
 有任何問題嗎？ 如需詳細資訊，請參閱下列常見問題。
@@ -26,7 +26,7 @@ ms.locfileid: "87071444"
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>我可以在 Visual Studio Team Foundation Server 實例上（而不是在 Azure DevOps 實例上安裝此擴充功能）嗎？
 
-不可以。 延伸模組無法供下載及安裝 Visual Studio Team Foundation Server。
+否。 延伸模組無法供下載及安裝 Visual Studio Team Foundation Server。
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>我是否必須使用我的組建來執行 Microsoft 安全性程式碼分析？ 
 
@@ -55,7 +55,7 @@ ms.locfileid: "87071444"
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>我可以在 Azure DevOps 組建中跨多個存放庫執行認證掃描器之類的組建工作嗎？
 
-不可以。 不支援在單一管線中跨多個存放庫執行安全的開發工具。
+否。 不支援在單一管線中跨多個存放庫執行安全的開發工具。
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>未建立我指定的輸出檔，或找不到我指定的輸出檔
 
@@ -90,7 +90,7 @@ ms.locfileid: "87071444"
 
 ### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>安裝延伸模組會修改我現有的 Azure Pipelines 嗎？ 
 
-不可以。 安裝此延伸模組可讓您的管線加入安全性組建工作。 您仍然需要新增或更新組建定義，如此一來，工具就可以與您的組建流程搭配使用。
+否。 安裝此延伸模組可讓您的管線加入安全性組建工作。 您仍然需要新增或更新組建定義，如此一來，工具就可以與您的組建流程搭配使用。
 
 ## <a name="task-specific-faq"></a>工作特定的常見問題
 

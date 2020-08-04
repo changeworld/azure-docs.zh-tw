@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82929752"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543379"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 進行模型管理、部署和監視
 
@@ -74,7 +74,7 @@ Azure Machine Learning 的環境可讓您追蹤和重現專案的軟體相依性
 ### <a name="profile-models"></a>設定檔模型
 
 Azure Machine Learning 可以協助您瞭解當您部署模型時，將會建立之服務的 CPU 和記憶體需求。 分析會測試執行模型的服務，並傳回如 CPU 使用量、記憶體使用量和回應延遲的資訊。 它也會根據資源使用量提供 CPU 和記憶體建議。
-如需詳細資訊，請參閱[部署模型](how-to-deploy-and-where.md#profilemodel)的分析一節。
+如需詳細資訊，請參閱[部署模型](how-to-deploy-profile-model.md)的分析一節。
 
 ### <a name="package-and-debug-models"></a>封裝和調試模型
 
@@ -94,16 +94,16 @@ Azure Machine Learning 可以協助您瞭解當您部署模型時，將會建立
 
 定型的機器學習模型會部署為雲端或本機的 web 服務。 您也可以將模型部署到 Azure IoT Edge 裝置。 部署會使用 CPU、GPU 或可現場程式化閘道陣列（FPGA）來進行推斷。 您也可以使用 Power BI 的模型。
 
-使用模型做為 web 服務或 IoT Edge 裝置時，您會提供下列專案：
+使用模型作為 Web 服務或 IoT Edge 裝置時，您會提供下列項目：
 
 * 用來對提交給服務/裝置的資料進行評分的模型。
 * 輸入指令碼。 此腳本會接受要求，使用模型來對資料進行評分，並傳迴響應。
 * Azure Machine Learning 環境，描述模型和專案腳本所需的 pip 和 Conda 相依性。
 * 模型和專案腳本所需的任何其他資產，例如文字、資料等等。
 
-您也會提供目標部署平臺的設定。 例如，VM 系列類型、可用記憶體，以及部署到 Azure Kubernetes Service 時的核心數目。
+您也會提供目標部署平台的設定。 例如，VM 系列類型、可用記憶體，以及部署到 Azure Kubernetes Service 時的核心數目。
 
-建立映射時，也會新增 Azure Machine Learning 所需的元件。 例如，執行 web 服務和與 IoT Edge 互動所需的資產。
+建立映像時，也會新增 Azure Machine Learning 所需的元件。 例如，執行 Web 服務及與 IoT Edge 互動時所需的資產。
 
 #### <a name="batch-scoring"></a>批次評分
 透過 ML 管線支援批次評分。 如需詳細資訊，請參閱[海量資料的批次預測](how-to-use-parallel-run-step.md)。

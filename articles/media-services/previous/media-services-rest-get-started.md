@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 45a8a2e4df35b0ddbf3fe3e42308a3361e1c912e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c15883f4e2a515e8c6015a39951a8729cf77274
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000134"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543991"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>使用 REST 傳遞點播內容入門  
 
@@ -34,7 +34,7 @@ ms.locfileid: "87000134"
 
 按一下影像可以完整大小檢視。  
 
-<a href="./media/media-services-rest-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-rest-get-started/media-services-overview-object-model-small.png"></a> 
+[![此圖顯示 Azure 媒體服務物件資料模型中一些最常使用的物件，以便開發隨選影片的應用程式。](./media/media-services-rest-get-started/media-services-overview-object-model-small.png)](./media/media-services-rest-get-started/media-services-overview-object-model.png#lightbox)
 
 ## <a name="prerequisites"></a>Prerequisites
 需要下列必要條件，才能開始使用 REST API 用媒體服務進行開發。
@@ -867,7 +867,7 @@ Date: Mon, 14 May 2012 21:41:32 GMT
 設定 AccessPolicy 與 Locator 之後，您可以使用 Azure 儲存體 REST API 下載檔案。  
 
 > [!NOTE]
-> 您必須將要下載的檔案名稱新增到前一節中所收到的 Locator **Path** 值。 例如，`https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`？ 。 。 。
+> 您必須將要下載的檔案名稱新增到前一節中所收到的 Locator **Path** 值。 例如，`https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4`？ 。 。 .
 
 如需使用 Azure 儲存體 blob 的詳細資訊，請參閱 [Blob 服務 REST API](/rest/api/storageservices/blob-service-rest-api)。
 

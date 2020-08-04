@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: 277bdc19635231628cea8c308b30c57b129dc364
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8748e4f78582ab133d7e527daba1c126dcb7e7e2
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250697"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543702"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>在 Azure 入口網站中建立和設定 Azure Kubernetes Service (AKS) 叢集以使用虛擬節點
 
@@ -68,6 +68,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * 適用於 ACI 中 exec 的[引數](../container-instances/container-instances-exec.md#restrictions)
 * [DaemonSet](concepts-clusters-workloads.md#statefulsets-and-daemonsets) 不會將 Pod 部署至虛擬節點
 * 虛擬節點支援對 Linux Pod 進行排程。 您可以手動安裝開放原始碼 [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) \(英文\) 提供者，以針對 ACI 對 Windows Server 容器進行排程。
+* 虛擬節點需要具有 Azure CNI 網路的 AKS 叢集
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 

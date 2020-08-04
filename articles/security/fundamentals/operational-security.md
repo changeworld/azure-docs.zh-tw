@@ -1,6 +1,6 @@
 ---
 title: Azure 作業安全性 | Microsoft Docs
-description: 瞭解 Microsoft Azure 監視器記錄、其服務及運作方式。
+description: 藉由閱讀此總覽，為您介紹 Microsoft Azure 監視記錄、其服務，以及其運作方式。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c2a49c76e6fdb7f957c026e8f8220cd29a7b35d8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448368"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543328"
 ---
 # <a name="azure-operational-security"></a>Azure 作業安全性
 ## <a name="introduction"></a>簡介
@@ -308,7 +308,7 @@ Azure AD 稽核報告中的事件會保留 180 天。
 
 若是對於儲存其[稽核事件](../../active-directory/active-directory-reporting-activity-audit-logs.md)較長的保留時間感興趣的客戶，報告 API 可用來定期將稽核事件提取至不同的資料存放區。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 本文摘要說明保護您的隱私權和保護資料安全，同時提供軟體和服務，幫助您管理組織的 IT 基礎結構。 Microsoft 了解當他們將資料委託給他人管理時，該信任需要嚴格的安全性。 Microsoft 從撰寫程式碼到運作服務均遵守嚴格的規範與安全性指導方針。 保全和保護資料在 Microsoft 是第一要務。
 

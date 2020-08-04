@@ -11,12 +11,12 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 9d680283250cc323c833f388f6b20d7fe6fa132d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60e79ecd4148829c38b237c0e28d60796e84ac01
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211046"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543651"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 來管理 Azure Synapse Analytics SQL 集區中的計算資源
 
@@ -38,9 +38,7 @@ ms.locfileid: "85211046"
 
 一旦取得前述資訊，即可部署此範本：
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+[![顯示標示為「部署至 Azure」之按鈕的影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json)
 
 部署此範本後，您應會發現三項新資源：免費的 Azure App Service 方案、以耗用量為基礎的函式應用程式方案，以及處理記錄和作業佇列的儲存體帳戶。 繼續閱讀其他各節，以了解如何修改已部署的函式來符合您的需求。
 
@@ -141,7 +139,7 @@ ms.locfileid: "85211046"
 
 每天上午 8 點相應增加至 DW600，在下午 8 點相應減少至 DW200。
 
-| 函式  | 排程     | 操作                                |
+| 函式  | 排程     | 作業                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW600"}` |
 | Function2 | 0 0 20 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW200"}` |
@@ -150,7 +148,7 @@ ms.locfileid: "85211046"
 
 每天上午 8 點相應增加至 DW1000、在下午 4 點一度相應減少至 DW600，並在下午 10 點相應減少至 DW200。
 
-| 函式  | 排程     | 操作                                |
+| 函式  | 排程     | 作業                                |
 | :-------- | :----------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * *  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * * | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |
@@ -160,7 +158,7 @@ ms.locfileid: "85211046"
 
 在工作日的上午 8 點相應增加至 DW1000，在下午 4 點一度相應減少至 DW600。 在星期五晚上 11 點暫停，在星期一上午 7 點繼續。
 
-| 函式  | 排程       | 操作                                |
+| 函式  | 排程       | 作業                                |
 | :-------- | :------------- | :--------------------------------------- |
 | Function1 | 0 0 8 * * 1-5  | `var operation = {"operationType": "ScaleDw",    "ServiceLevelObjective": "DW1000"}` |
 | Function2 | 0 0 16 * * 1-5 | `var operation = {"operationType": "ScaleDw", "ServiceLevelObjective": "DW600"}` |

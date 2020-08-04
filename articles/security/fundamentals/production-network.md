@@ -1,6 +1,6 @@
 ---
 title: Azure 生產網路
-description: 本文提供 Azure 生產網路的一般描述。
+description: 瞭解 Azure 生產網路。 請參閱用來建立網路連線的安全性存取方法和保護機制。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 7c0748e4ff1531649274834cb1e602c228f102e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 724c2ee2d74ca9cab11280e92faac71c2cb2218e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68726698"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543804"
 ---
 # <a name="the-azure-production-network"></a>Azure 生產網路
 Azure 生產網路的使用者同時包括存取自有 Azure 應用程式的外部客戶，以及管理生產網路的內部 Azure 支援人員。 本文會討論用於建立 Azure 生產網路連線的安全性存取方法和保護機制。

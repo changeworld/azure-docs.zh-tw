@@ -1,6 +1,6 @@
 ---
 title: Azure 資料庫安全性檢查清單 | Microsoft Docs
-description: 本文提供一組 Azure 資料庫安全性的檢查清單。
+description: 使用 Azure 資料庫安全性檢查清單，以確保您能解決重要的雲端運算安全性問題。
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: fc79d7204ba360696b8d9411cd56efd09d1678dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8f15f7d1cf69824bfb9298d7ccf097e4893ea8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021835"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542971"
 ---
 # <a name="azure-database-security-checklist"></a>Azure 資料庫安全性檢查清單
 
 為了協助改善安全性，Azure 資料庫包含數個內建安全性控制項，您可用來限制和控制存取。
 
-這些包括：
+其中包括：
 
 -    防火牆，可讓您建立依 IP 位址限制連線能力的[防火牆規則](../../azure-sql/database/firewall-configure.md)
 -    可從 Azure 入口網站存取的伺服器層級防火牆
@@ -44,7 +44,7 @@ ms.locfileid: "84021835"
 我們建議您先閱讀 [Azure 資料庫安全性最佳做法](database-best-practices.md)一文，再檢閱這份檢查清單。 在您了解最佳做法之後，您就能夠充分利用這份檢查清單。 接著，您可以使用此檢查清單，確定您已解決 Azure 資料庫安全性中的重要問題。
 
 
-|檢查清單類別| Description|
+|檢查清單類別| 說明|
 | ------------ | -------- |
 |**保護資料**||
 | <br> 移動/傳輸中加密| <ul><li>[傳輸層安全性](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol)，用於在資料移至網路時進行資料加密。</li><li>資料庫要求來自用戶端的安全通訊以透過 TLS (傳輸層安全性) 的 [TDS (表格式資料流)](https://msdn.microsoft.com/library/dd357628.aspx) 通訊協定為基礎。</li></ul> |

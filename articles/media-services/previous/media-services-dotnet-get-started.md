@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 19b8e91ce85bb80f78ec75ab14332464d6331904
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2c79566f51647492118f307e1c9737b98b1be484
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078138"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543583"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 傳遞點播內容入門  
 
@@ -27,7 +27,7 @@ ms.locfileid: "86078138"
 
 本教學課程會逐步引導您使用 Azure 媒體服務 .NET SDK 實作含 Azure 媒體服務 (AMS) 應用程式的基本點播視訊 (VoD) 內容傳遞服務。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 需要有下列項目，才能完成教學課程：
 
@@ -57,7 +57,7 @@ ms.locfileid: "86078138"
 
 按一下影像可以完整大小檢視。  
 
-<a href="./media/media-services-dotnet-get-started/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png"></a> 
+[![此圖顯示 Azure 媒體服務物件資料模型中一些最常使用的物件，以便開發隨選影片的應用程式。](./media/media-services-dotnet-get-started/media-services-overview-object-model-small.png)](./media/media-services-dotnet-get-started/media-services-overview-object-model.png#lightbox)
 
 您可以[在此](https://media.windows.net/API/$metadata?api-version=2.15)檢視整個模型。  
 

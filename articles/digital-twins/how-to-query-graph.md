@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3e7ee90d75a2ff2b3552992c19f11cc86b6109ca
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d9d7c59244474c76e63271c0be92f835c2ed087
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486644"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543345"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖形
 
-本文提供使用[Azure 數位 Twins 查詢存放區語言](concepts-query-language.md)查詢對應項[圖形](concepts-twins-graph.md)的範例和詳細資料，以取得相關資訊。 您可以使用 Azure 數位 Twins[**查詢 api**](how-to-use-apis-sdks.md)在圖表上執行查詢。
+本文提供使用[Azure 數位 Twins 查詢語言](concepts-query-language.md)查詢對應項[圖形](concepts-twins-graph.md)的範例和詳細資料，以取得相關資訊。 您可以使用 Azure 數位 Twins[**查詢 api**](how-to-use-apis-sdks.md)在圖表上執行查詢。
 
 [!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 
@@ -87,11 +87,11 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 ### <a name="query-based-on-relationships"></a>以關聯性為基礎的查詢
 
-根據數位 twins 的關聯性進行查詢時，Azure 數位 Twins 查詢存放區語言會有特殊的語法。
+根據數位 twins 的關聯性進行查詢時，Azure 數位 Twins 查詢語言會有特殊的語法。
 
 關聯性會提取至子句中的查詢範圍 `FROM` 。 與「傳統」 SQL 類型語言的差異在於，這個子句中的每個運算式 `FROM` 都不是資料表，而是由 `FROM` 子句來表示跨實體的關聯性，並使用的 Azure 數位 Twins 版本來撰寫 `JOIN` 。 
 
-回想一下，使用 Azure 數位 Twins[模型](concepts-models.md)功能時，關聯性不會與 Twins 分開存在。 這表示 Azure 數位 Twins 查詢存放區語言與 `JOIN` 一般 SQL 有點不同 `JOIN` ，因為此處的關聯性無法獨立查詢，且必須系結至對應項。
+回想一下，使用 Azure 數位 Twins[模型](concepts-models.md)功能時，關聯性不會與 Twins 分開存在。 這表示 Azure 數位 Twins 查詢語言與 `JOIN` 一般 SQL 有點不同 `JOIN` ，因為此處的關聯性無法獨立查詢，且必須系結至對應項。
 為了併入這項差異， `RELATED` 子句中使用關鍵字 `JOIN` 來參考對應項的關聯性集合。 
 
 下一節提供幾個範例，說明這看起來的樣子。
@@ -117,7 +117,7 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>查詢關聯性的屬性
 
-類似于數位 twins 具有透過 DTDL 描述之屬性的方式，關聯性也可以具有屬性。 Azure 數位 Twins 查詢存放區語言會藉由將別名指派給子句內的關聯性，來篩選和投射關聯性 `JOIN` 。 
+類似于數位 twins 具有透過 DTDL 描述之屬性的方式，關聯性也可以具有屬性。 Azure 數位 Twins 查詢語言會藉由指派別名給子句內的關聯性，來篩選和投射關聯性 `JOIN` 。 
 
 例如，假設有一個具有*reportedCondition*屬性的*servicedBy*關聯性。 在下列查詢中，會為此關聯性提供 ' R ' 的別名，以便參考其屬性。
 

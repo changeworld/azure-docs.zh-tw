@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: d61527a7a57c82c0e1485ef249306618def9a57c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1566de36d6176568b148fde965bb7d3051e6b500
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077944"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543464"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私人端點？
 
@@ -22,7 +22,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  私人端點指定了下列屬性： 
 
 
-|屬性  |描述 |
+|屬性  |說明 |
 |---------|---------|
 |名稱    |    資源群組內的唯一名稱。      |
 |子網路    |  要從虛擬網路部署和配置私人 IP 位址的子網路。 如需子網路需求，請參閱此文章的＜限制＞一節。         |
@@ -66,13 +66,13 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |**適用於 MariaDB 的 Azure 資料庫** | Microsoft.DBforMariaDB/servers    | mariadbServer |
 |**Azure IoT 中心** | Microsoft.Devices/IotHubs    | iotHub |
 |**Azure 金鑰保存庫** | Microsoft.KeyVault/vaults    | 保存庫 |
-|**Azure Kubernetes Service - Kubernetes API** | Microsoft.ContainerService/managedClusters    | managedCluster |
+|**Azure Kubernetes Service - Kubernetes API** | Microsoft.ContainerService/managedClusters    | 管理 |
 |**Azure 搜尋服務** | Microsoft.Search/searchService| searchService|  
 |**Azure Container Registry** | Microsoft.ContainerRegistry/registries    | 登錄 |
 |**Azure 應用程式組態** | Microsoft.Appconfiguration/configurationStores    | configurationStores |
 |**Azure 備份** | Microsoft.RecoveryServices/vaults    | 保存庫 |
-|**Azure 事件中樞** | Microsoft.EventHub/namespaces    | 命名空間 |
-|**Azure 服務匯流排** | Microsoft.ServiceBus/namespaces | 命名空間 |
+|**Azure 事件中樞** | Microsoft.EventHub/namespaces    | namespace |
+|**Azure 服務匯流排** | Microsoft.ServiceBus/namespaces | namespace |
 |**Azure 轉送** | Microsoft.Relay/namespaces | 命名空間 |
 |**事件格線** | Microsoft.EventGrid/topics    | 主題 |
 |**事件格線** | Microsoft.EventGrid/domains    | 網域 |

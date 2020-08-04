@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55e5290630185466ea0801b06ece71069fc94d89
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544150"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545270"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2指派身分識別的存取權限
 
@@ -28,7 +28,7 @@ ms.locfileid: "86544150"
 > [!IMPORTANT]
 > 檔案共用的完整系統管理控制權，包括取得檔案擁有權的能力，需要使用儲存體帳戶金鑰。 Azure AD 認證不支援管理控制。
 
-您可以使用 Azure 入口網站、PowerShell 或 Azure CLI，將內建角色指派給使用者的 Azure AD 身分識別，以授與共享層級許可權。 請注意，共用層級 RBAC 角色指派可能需要一些時間才會生效。 
+您可以使用 Azure 入口網站、PowerShell 或 Azure CLI，將內建角色指派給使用者的 Azure AD 身分識別，以授與共享層級許可權。 請注意，共用層級的 Azure 角色指派可能需要一些時間才會生效。 
 
 > [!NOTE]
 > 如果您打算使用內部部署 AD DS 進行驗證，請記得將[AD DS 認證同步到 Azure AD](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) 。 從 AD DS 到 Azure AD 的密碼雜湊同步處理是選擇性的。 系統會將共用層級許可權授與從內部部署 AD DS 同步的 Azure AD 身分識別。
@@ -36,7 +36,7 @@ ms.locfileid: "86544150"
 一般建議是針對代表使用者和身分識別群組的 AD 群組使用「高層級存取管理」的「共用層級」許可權，然後利用 NTFS 許可權在目錄/檔案層級進行細微的存取控制。 
 
 #### <a name="azure-portal"></a>Azure 入口網站
-若要使用[Azure 入口網站](https://portal.azure.com)將 RBAC 角色指派給 Azure AD 身分識別，請依照下列步驟執行：
+若要使用[Azure 入口網站](https://portal.azure.com)將 Azure 角色指派給 Azure AD 身分識別，請依照下列步驟執行：
 
 1. 在 Azure 入口網站中，移至您的檔案共用，或[建立檔案共用](../articles/storage/files/storage-how-to-create-file-share.md)。
 2. 選取 [存取控制 (IAM)]。
@@ -46,7 +46,7 @@ ms.locfileid: "86544150"
 
 #### <a name="powershell"></a>PowerShell
 
-下列 PowerShell 範例說明如何根據登入名稱，將 RBAC 角色指派給 Azure AD 身分識別。 如需使用 PowerShell 指派 RBAC 角色的詳細資訊，請參閱[使用 RBAC 和 Azure PowerShell 管理存取](../articles/role-based-access-control/role-assignments-powershell.md)。
+下列 PowerShell 範例說明如何根據登入名稱，將 Azure 角色指派給 Azure AD 身分識別。 如需使用 PowerShell 指派 Azure 角色的詳細資訊，請參閱[使用 RBAC 和 Azure PowerShell 來管理存取權](../articles/role-based-access-control/role-assignments-powershell.md)。
 
 執行下列範例腳本之前，請記得使用您自己的值來取代預留位置值（包括括弧）。
 
@@ -61,7 +61,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 
 #### <a name="cli"></a>CLI
   
-下列 CLI 2.0 命令說明如何根據登入名稱，將 RBAC 角色指派給 Azure AD 身分識別。 如需有關使用 Azure CLI 指派 RBAC 角色的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 來管理存取權](../articles/role-based-access-control/role-assignments-cli.md)。 
+下列 CLI 2.0 命令說明如何根據登入名稱，將 Azure 角色指派給 Azure AD 身分識別。 如需有關使用 Azure CLI 指派 Azure 角色的詳細資訊，請參閱[使用 RBAC 和 Azure CLI 來管理存取權](../articles/role-based-access-control/role-assignments-cli.md)。 
 
 執行下列範例腳本之前，請記得使用您自己的值來取代預留位置值（包括括弧）。
 
@@ -130,7 +130,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4從已加入網域的 VM 掛接檔案共用
 
-下列程式會確認您的檔案共用和存取權限已正確設定，而且您可以從已加入網域的 VM 存取 Azure 檔案共用。 請注意，共用層級 RBAC 角色指派可能需要一些時間才會生效。 
+下列程式會確認您的檔案共用和存取權限已正確設定，而且您可以從已加入網域的 VM 存取 Azure 檔案共用。 請注意，共用層級的 Azure 角色指派可能需要一些時間才會生效。 
 
 使用您已授與許可權的 Azure AD 身分識別來登入 VM，如下圖所示。 如果您已針對 Azure 檔案儲存體啟用內部部署 AD DS 驗證，請使用您的 AD DS 認證。 針對 Azure AD DS 驗證，請使用 Azure AD 認證登入。
 

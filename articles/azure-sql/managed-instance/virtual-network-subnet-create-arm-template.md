@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: d6458794b8d3c5ba68109dbc90a075d6a2a577b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ec6b7747ad22df96fd8ab5f9b5b5bc1e27b0993
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711318"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543736"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-managed-instance"></a>建立 Azure SQL 受控執行個體的虛擬網路
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -47,7 +47,7 @@ Azure SQL 受控執行個體必須部署在 Azure[虛擬網路](../../virtual-ne
 
 2. 選取 [部署至 Azure]**** 按鈕：
 
-   <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="https://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
+   [![顯示標示為「部署至 Azure」之按鈕的影像。](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json)
 
    此按鈕會開啟一個表單，您可以用來設定可在其中部署 SQL 受控執行個體的網路環境。
 

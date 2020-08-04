@@ -1,6 +1,6 @@
 ---
 title: 稽核和記錄 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: 降低威脅模型化工具所暴露的威脅
+description: 瞭解 Threat Modeling Tool 中的審核和記錄功能降低。 請參閱風險降低資訊和查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: c9d20b3259cf4ea7af263d5e31145ad372db0c77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bac17073650736df9ec48e951290852e082e9417
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68728420"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542988"
 ---
 # <a name="security-frame-auditing-and-logging--mitigations"></a>安全框架︰稽核和記錄 | 緩和措施 
 

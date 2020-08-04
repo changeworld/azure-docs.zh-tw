@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool 的通訊安全性
 titleSuffix: Azure
-description: 降低威脅模型化工具所暴露的威脅
+description: 瞭解 Threat Modeling Tool 中公開的通訊安全性威脅的緩和措施。 請參閱風險降低資訊和查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 8cb74a020590fc55dcd1f046ba667be3d6640b3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73210da43c9919af1d92d0e8c354e1d7f9c77bed
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82203738"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543940"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全性架構︰通訊安全性 | 風險降低 
 | 產品/服務 | 發行項 |
@@ -47,7 +47,7 @@ ms.locfileid: "82203738"
 | **元件**               | Azure 事件中樞 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
-| **屬性**              | 不適用  |
+| **屬性**              | N/A  |
 | **參考**              | [事件中樞驗證和安全性模型概觀](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **步驟** | 使用 SSL/TLS 保護事件中樞的 AMQP 或 HTTP 連線 |
 
@@ -58,7 +58,7 @@ ms.locfileid: "82203738"
 | **元件**               | Dynamics CRM | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
-| **屬性**              | 不適用  |
+| **屬性**              | N/A  |
 | **參考**              | N/A  |
 | **步驟** | 檢查服務帳戶權限，並確認自訂服務或 ASP.NET 網頁採用 CRM 的安全性 |
 
@@ -80,7 +80,7 @@ ms.locfileid: "82203738"
 | **元件**               | 身分識別伺服器 | 
 | **SDL 階段**               | 部署 |  
 | **適用的技術** | 泛型 |
-| **屬性**              | 不適用  |
+| **屬性**              | N/A  |
 | **參考**              | [IdentityServer3 - 金鑰、簽章和密碼編譯](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html)、[IdentityServer3 - 部署](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
 | **步驟** | 根據預設，IdentityServer 要求所有連入連線必須透過 HTTPS 傳輸過來。 與 IdentityServer 的通訊絕對必須只透過安全的傳輸來進行。 某些部署案例（例如 TLS 卸載）可能會放寬這項需求。 如需詳細資訊，請參閱 [參考] 中的 Identity Server 部署頁面。 |
 
@@ -91,7 +91,7 @@ ms.locfileid: "82203738"
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
-| **屬性**              | 不適用  |
+| **屬性**              | N/A  |
 | **參考**              | N/A  |
 | **步驟** | <p>使用 SSL、TLS 或 DTLS 的應用程式必須完全驗證其所連線到之實體的 X.509 憑證。 這包括驗證憑證的下列項目︰</p><ul><li>網域名稱</li><li>有效日期 (開始日期和到期日期)</li><li>撤銷狀態</li><li>使用方式 (例如，伺服器使用伺服器驗證、用戶端使用用戶端驗證)</li><li>信任鏈結。 憑證必須鏈結至平台所信任或系統管理員所明確設定的根憑證授權單位 (CA)</li><li>憑證的公開金鑰長度必須 > 2048 位元</li><li>雜湊演算法必須是 SHA256 或以上版本 |
 
@@ -146,7 +146,7 @@ ms.locfileid: "82203738"
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
-| **屬性**              | 不適用  |
+| **屬性**              | N/A  |
 | **參考**              | [OWASP HTTP Strict Transport Security 功能提要](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html) |
 | **步驟** | <p>HTTP Strict Transport Security (HSTS) 是可供選擇加入的安全性增強功能，可由 Web 應用程式透過使用特殊的回應標頭來指定。 支援的瀏覽器在收到此標頭之後，該瀏覽器會防止任何通訊透過 HTTP 傳送到指定網域，並改為透過 HTTPS 傳送所有通訊。 它也可以防止瀏覽器上出現 HTTPS 點選提示。</p><p>若要執行 HSTS，必須在程式碼或 config 中，全域為網站設定下列回應標頭。Strict-傳輸-安全性：最大-age = 300;includeSubDomains HSTS 會解決下列威脅：</p><ul><li>使用者手動輸入 `https://example.com` 或將其設定為書籤，而且容易受到攔截式攻擊者的危害︰HSTS 會自動將目標網域的 HTTP 要求重新導向至 HTTPS</li><li>預計只能使用 HTTPS 的 Web 應用程式不慎包含 HTTP 連結或透過 HTTP 提供內容︰HSTS 會自動將目標網域的 HTTP 要求重新導向至 HTTPS</li><li>攔截式攻擊者嘗試使用無效憑證攔截受害使用者的流量，並希望使用者會接受不正確的憑證︰HSTS 不允許使用者覆寫無效的憑證訊息</li></ul>|
 
@@ -381,7 +381,7 @@ public class ValuesController : ApiController
 | **元件**               | Azure Cache for Redis | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
-| **屬性**              | 不適用  |
+| **屬性**              | N/A  |
 | **參考**              | [Azure Redis TLS 支援](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
 | **步驟** | Redis 伺服器不支援現成的 TLS，但 Azure Cache for Redis 會執行。 如果您是連線至 Azure Cache for Redis，且您的用戶端支援 TLS (例如 StackExchange.Redis)，則應該使用 TLS。 針對新的 Azure Cache for Redis 實例，預設會停用非 TLS 埠。 除非有 redis 用戶端的 TLS 支援相依性，否則請確定安全的預設值不會變更。 |
 
@@ -394,7 +394,7 @@ public class ValuesController : ApiController
 | **元件**               | IoT 現場閘道 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
-| **屬性**              | 不適用  |
+| **屬性**              | N/A  |
 | **參考**              | N/A  |
 | **步驟** | 對於 IP 型裝置，通訊協定通常可以封裝在 SSL/TLS 通道來保護傳輸中的資料。 對於其他不支援 SSL/TLS 的通訊協定，請調查是否有安全版本的通訊協定可在傳輸層或訊息層提供安全性。 |
 
@@ -405,6 +405,6 @@ public class ValuesController : ApiController
 | **元件**               | IoT 雲端閘道 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
-| **屬性**              | 不適用  |
+| **屬性**              | N/A  |
 | **參考**              | [選擇您的通訊協定](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
 | **步驟** | 使用 SSL/TLS 的安全 HTTP/AMQP 或 MQTT 通訊協定。 |

@@ -1,6 +1,6 @@
 ---
 title: 驗證 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: 降低威脅模型化工具所暴露的威脅
+description: 深入瞭解 Threat Modeling Tool 中的驗證緩和。 請參閱風險降低資訊和查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 6e29388595a53923e4899b319b94c87bae5cf941
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 11158749f3cae222c0948286e7365b1629cebbf2
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424200"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543974"
 ---
 # <a name="security-frame-authentication--mitigations"></a>安全框架︰驗證 | 緩和措施
 

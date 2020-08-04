@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c5369d63c0937605cc288e3a90466e723e69d163
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255433"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543362"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用 kubenet 網路與您自己的 IP 位址範圍
 
@@ -20,7 +20,7 @@ ms.locfileid: "86255433"
 
 本文將說明如何使用 *kubenet* 網路來建立虛擬網路子網路，並將其與 AKS 叢集搭配使用。 如需網路選項與考量的詳細資訊，請參閱 [Kubernetes 和 AKS 的網路概念][aks-network-concepts]。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 適用於 AKS 叢集的虛擬網路必須允許輸出網際網路連線.
 * 請勿在相同子網路中建立多個 AKS 叢集。
@@ -46,7 +46,18 @@ ms.locfileid: "86255433"
 
 Azure 在 UDR 中最多支援 400 條路由，因此您不能擁有超過 400 個節點的 AKS 叢集。 *Kubenet*不支援 AKS[虛擬節點][virtual-nodes]和 Azure 網路原則。  您可以使用[Calico 網路原則][calico-network-policies]，因為它們受到 kubenet 的支援。
 
-使用 *Azure CNI*，每個 Pod 都會接收 IP 子網路中的 IP 位址，並可以直接與其他 Pod 和服務進行通訊。 您的叢集可以與您指定的 IP 位址範圍一樣大。 不過，必須事先規劃 IP 位址範圍，並且 AKS 節點根據它們可以支援的最大 Pod 數目來使用所有 IP 位址。 *AZURE CNI*支援 (Azure 或 Calico) 這類先進的網路功能和案例，例如[虛擬節點][virtual-nodes]或網路原則。
+使用 *Azure CNI*，每個 Pod 都會接收 IP 子網路中的 IP 位址，並可以直接與其他 Pod 和服務進行通訊。 您的叢集可以與您指定的 IP 位址範圍一樣大。 不過，必須事先規劃 IP 位址範圍，並且 AKS 節點根據它們可以支援的最大 Pod 數目來使用所有 IP 位址。 *AZURE CNI*支援先進的網路功能和案例，例如[虛擬節點][virtual-nodes]或網路原則（azure 或 Calico）。
+
+### <a name="limitations--considerations-for-kubenet"></a>Kubenet 的限制 & 考慮
+
+* Kubenet 的設計中需要額外的躍點，這會增加 pod 通訊的次要延遲。
+* 使用 kubenet 需要路由表和使用者定義的路由，這會增加作業的複雜度。
+* 由於 kubenet 設計的緣故，不支援直接 pod 定址進行 kubenet。
+* 不同于 Azure CNI 叢集，多個 kubenet 叢集無法共用子網。
+* **Kubenet 上不支援的**功能包括：
+   * [Azure 網路原則](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)，但 Kubenet 支援 Calico 網路原則
+   * [Windows 節點集區](windows-node-limitations.md)
+   * [虛擬節點附加元件](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP 位址可用性與耗盡
 
@@ -199,7 +210,7 @@ az aks create \
 
 ## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>使用 kubenet 攜帶您自己的子網和路由表
 
-在 kubenet 中，路由表必須存在於 (s) 的叢集子網中。 AKS 支援攜帶您自己現有的子網和路由表。
+使用 kubenet 時，路由表必須存在於您的叢集子網中。 AKS 支援攜帶您自己現有的子網和路由表。
 
 如果您的自訂子網不包含路由表，AKS 會為您建立一個，並在整個叢集生命週期中為其新增規則。 當您建立叢集時，如果您的自訂子網包含路由表，AKS 會在叢集作業期間認可現有的路由表，並據此新增/更新規則以用於雲端提供者作業。
 

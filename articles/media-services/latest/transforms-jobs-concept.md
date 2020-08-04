@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3e01d5c8d57752c11b2890c1d109b58a223d260f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d45d802456345eab857f571d2d52793c8be691eb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091923"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543056"
 ---
 # <a name="transforms-and-jobs-in-media-services"></a>媒體服務中的轉換和作業
 
 本主題提供有關[轉換](/rest/api/media/transforms)和[作業](/rest/api/media/jobs)的詳細資料，並說明這些實體之間的關聯性。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 ### <a name="transformsjobs-workflow"></a>轉換/作業工作流程
 
@@ -74,7 +74,7 @@ ms.locfileid: "87091923"
 
 選取影像以查看其完整大小。  
 
-<a href="./media/api-diagrams/transform-large.png" target="_blank"><img src="./media/api-diagrams/transform-small.png"></a>
+[![顯示轉換物件及其參考物件的圖表，包括物件之間的類別衍生關聯性。](./media/api-diagrams/transform-small.png)](./media/api-diagrams/transform-large.png#lightbox)
 
 ## <a name="jobs"></a>工作
 
@@ -102,7 +102,7 @@ ms.locfileid: "87091923"
 
 按一下影像可以完整大小檢視。  
 
-<a href="./media/api-diagrams/job-large.png" target="_blank"><img src="./media/api-diagrams/job-small.png"></a>
+[![此圖顯示工作物件和它所參考的物件，包括物件之間的類別衍生關聯性。](./media/api-diagrams/job-small.png)](./media/api-diagrams/job-large.png#lightbox)
 
 ## <a name="configure-media-reserved-units"></a>設定媒體保留單位
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 作業安全性檢查清單 | Microsoft Docs
-description: 本文提供一組 Azure 作業安全性的檢查清單。
+description: 請參閱這份檢查清單，以協助您的企業考慮 Azure 作業安全性考慮。
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: c7c44018bb1a010298738d3e46b7b9e7b6c04292
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 656459c4a29a73732b8825e735719731a0979a0e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448303"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542920"
 ---
 # <a name="azure-operational-security-checklist"></a>Azure 作業安全性檢查清單
 在 Azure 上部署應用程式很快速、輕鬆且符合成本效益。 在生產環境中部署雲端應用程式之前，針對您需要考慮的重要和建議作業安全性動作清單，取得檢查清單以協助評估應用程式是很有幫助的。

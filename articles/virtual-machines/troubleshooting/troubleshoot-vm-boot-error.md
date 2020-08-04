@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 5353bad3ff631fd7baa5d9892d38449ba622ea46
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5a2fd7fcfdae8559bfb39bffff7c73c7082a86aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284671"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543277"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM 開機至 Grub 修復
 
@@ -35,7 +35,7 @@ ms.locfileid: "87284671"
 * 如果您收到錯誤不明的**檔案系統**，此錯誤可能是由於開機磁碟分割上的檔案系統損毀或不正確的核心設定所造成。
 
    * 針對檔案系統問題，請遵循[Linux 復原：由於檔案系統錯誤（fsck、inode）](/archive/blogs/linuxonazure/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes)一文中的步驟，而無法透過 SSH 連線到 linux VM。
-   * 針對核心問題，請遵循[Linux 復原：手動修正與核心問題相關的非開機問題](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)一文中的步驟，或[linux 修復：使用 Chroot 修正與核心問題相關的非開機問題](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)。
+   * 針對核心問題，請遵循[如何從核心相關的開機問題復原 Azure Linux 虛擬機器一](https://support.microsoft.com/help/4091524/how-recover-azure-linux-vm-from-kernel-related-boot-related-issues)文中的步驟，或[Linux 修復：使用 Chroot 修正與核心問題相關的非開機問題](http://linuxonazure.azurewebsites.net/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)。
    
 ### <a name="error---file-not-found"></a>錯誤-找不到檔案
 

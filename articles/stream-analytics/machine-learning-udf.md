@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 30e70e56eb54815c26521829e4baf82dce574e43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432593"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543430"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>整合 Azure 串流分析與 Azure Machine Learning (預覽)
 
@@ -25,7 +25,7 @@ ms.locfileid: "87432593"
 
 1. 使用 Azure Machine Learning [將您的模型部署為 Web 服務](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)。
 
-2. 您的評分指令碼應該會有[範例輸入和輸出](../machine-learning/how-to-deploy-and-where.md#example-entry-script)，由 Azure Machine Learning 用來產生結構描述規格。 串流分析會使用結構描述來了解 Web 服務的函式簽章。 您可以使用此[範例 swagger 定義](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)做為參考，以確保您已正確設定它。
+2. 您的評分指令碼應該會有[範例輸入和輸出](../machine-learning/how-to-deploy-and-where.md)，由 Azure Machine Learning 用來產生結構描述規格。 串流分析會使用結構描述來了解 Web 服務的函式簽章。 您可以使用此[範例 swagger 定義](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)做為參考，以確保您已正確設定它。
 
 3. 請確定您的 Web 服務接受並傳回 JSON 序列化資料。
 
@@ -147,7 +147,7 @@ FROM input
 
 ## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>將 Azure Machine Learning UDF 的效能最佳化
 
-當您將模型部署到 Azure Kubernetes Service 時，您可以[分析模型以判斷資源使用率](../machine-learning/how-to-deploy-and-where.md#profilemodel)。 您也可以[為您的部署啟用 App Insights](../machine-learning/how-to-enable-app-insights.md)，以了解要求速率、回應時間和失敗率。
+當您將模型部署到 Azure Kubernetes Service 時，您可以[分析模型以判斷資源使用率](../machine-learning/how-to-deploy-profile-model.md)。 您也可以[為您的部署啟用 App Insights](../machine-learning/how-to-enable-app-insights.md)，以了解要求速率、回應時間和失敗率。
 
 如果您有高事件輸送量的案例，您可能需要變更串流分析中的下列參數，才能以較低的端對端延遲來達到最佳效能：
 

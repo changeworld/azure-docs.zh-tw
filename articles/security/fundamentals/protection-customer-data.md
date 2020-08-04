@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 中保護客戶資料
-description: 本文說明 Azure 如何保護客戶資料。
+description: 瞭解 Azure 如何透過資料隔離、資料冗余和資料損毀來保護客戶資料。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: 4f3b4b5e26c8feab44a01d3714c194eee0fc98e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076290"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543787"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客戶資料保護   
 預設會拒絕 Microsoft 運作與支援人員對於客戶資料的存取。 授與與支援案例相關之資料的存取權時，只會使用即時（JIT）模型來授與對符合性和隱私權原則進行審核及通過的原則。  存取控制需求是由下列 Azure 安全性原則所建立：

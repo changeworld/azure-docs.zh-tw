@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 58a8bd6b8e5594f36bf27a3ad76bee137fdd1160
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bc53a243a58522a76be63536aa721f269ed4759a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433226"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544042"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -65,7 +65,7 @@ AKS 叢集和 AML 工作區可以位於不同的資源群組中。
 
 - 如果您需要部署在叢集中的 Standard Load Balancer （SLB），而不是基本 Load Balancer （BLB），請在 AKS portal/CLI/SDK 中建立叢集，然後將它連結到 AML 工作區。
 
-- 如果您附加的 AKS 叢集已[啟用授權的 IP 範圍來存取 API 伺服器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，請啟用 AKS 叢集的 AML 主平面 ip 範圍。 AML 控制平面會部署在配對的區域中，並將推斷 pod 部署在 AKS 叢集上。 如果沒有 API 伺服器的存取權，就無法部署推斷 pod。 在 AKS 叢集中啟用 IP 範圍時，請使用兩個[配對區域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 範圍](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)。
+- 如果您附加的 AKS 叢集已[啟用授權的 IP 範圍來存取 API 伺服器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，請啟用 AKS 叢集的 AML 控制平面 ip 範圍。 AML 控制平面會部署在配對的區域中，並將推斷 pod 部署在 AKS 叢集上。 如果沒有 API 伺服器的存取權，就無法部署推斷 pod。 在 AKS 叢集中啟用 IP 範圍時，請使用兩個[配對區域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 範圍](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)。
 
 __Authroized IP 範圍僅適用于 Standard Load Balancer。__
  
@@ -423,15 +423,12 @@ print(token)
 >
 > 若要取得權杖，您必須使用 Azure Machine Learning SDK 或[az ml 服務的「取得存取權杖](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token)」命令。
 
-## <a name="update-the-web-service"></a>更新 Web 服務
-
-[!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
-
 ## <a name="next-steps"></a>後續步驟
 
 * [保護虛擬網路中的實驗和推斷](how-to-enable-virtual-network.md)
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑難排解](how-to-troubleshoot-deployment.md)
+* [更新 web 服務](how-to-deploy-update-web-service.md)
 * [使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](how-to-secure-web-service.md)
 * [取用部署為 Web 服務的 ML 模型](how-to-consume-web-service.md)
 * [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)

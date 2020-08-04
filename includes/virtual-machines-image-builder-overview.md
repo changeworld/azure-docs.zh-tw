@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/15/2020
+ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 8ad191ca0d31abf317bab521dfbbc7c2567c3450
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83821495"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545313"
 ---
 標準化虛擬機器 (VM) 映像可讓組織遷移至雲端，並確保部署的一致性。 映像通常包含預先定義的安全性和組態設定，以及必要的軟體。 設定您自己的映像處理管線需要一些時間、基礎結構和設定，但透過 Azure VM Image Builder，只要提供簡單的組態來描述您的映像、將其提交至服務，然後就會建立映像並加以散發。
  
@@ -70,9 +70,9 @@ Azure Image Builder 是完全受控的 Azure 服務，可供 Azure 資源提供�
 ![Azure Image Builder 程序的概念圖](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. 以 .json 檔案形式建立映像範本。 此 .json 檔案包含映像來源、自訂和散發相關資訊。 [Azure Image Builder GitHub 存放庫](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)中有多個範例。
-1. 將其提交給服務，將會在您指定的資源群組中建立映像範本成品。 在背景中，Image Builder 會下載來源映像或 ISO，並視需要下載指令碼。 這些會儲存在您的訂用帳戶中自動建立的個別資源群組中，格式如下：IT_\<DestinationResourceGroup>_\<TemplateName>。 
-1. 建立映像範本後，您就可以建置映像。 在背景中，Image Builder 會使用範本和來源檔案，在 IT_\<DestinationResourceGroup>_\<TemplateName> 資源群組中建立 VM (預設大小：Standard_D1_v2)、網路、公用 IP、NSG 和儲存體。
-1. 在映像建立過程中，Image Builder 會根據範本散發映像，然後刪除為此程序建立的 IT_\<DestinationResourceGroup>_\<TemplateName> 資源群組中的其他資源。
+1. 將其提交給服務，將會在您指定的資源群組中建立映像範本成品。 在背景中，Image Builder 會下載來源映像或 ISO，並視需要下載指令碼。 這些會儲存在您的訂用帳戶中自動建立的個別資源群組中，格式為： IT_ \<DestinationResourceGroup> _ \<TemplateName> 。 
+1. 建立映像範本後，您就可以建置映像。 在背景影像產生器中，會使用範本和來源檔案來建立 VM （預設大小： Standard_D1_v2）、網路、公用 IP、NSG，以及 IT_ \<DestinationResourceGroup> _ 資源群組中的儲存體 \<TemplateName> 。
+1. 作為映射建立的一部分，映射產生器會根據範本散發映射，然後刪除 \<DestinationResourceGroup> 針對該進程所建立的 IT_ _ 資源群組中的其他資源 \<TemplateName> 。
 
 
 ## <a name="permissions"></a>權限
@@ -97,6 +97,9 @@ Azure Image Builder 是完全受控的 Azure 服務，可供 Azure 資源提供�
 Image Builder 會建立使用 D1v2 VM 大小的 VM，以及該 VM 所需的儲存體和網路功能。 這些資源將會在建置期間持續存在，而一旦 Image Builder 完成映像建立，就會遭到刪除。 
  
 Azure Image Builder 會將映像散發至您選擇的區域，這可能會產生網路輸出費用。
+
+## <a name="hyper-v-generation"></a>Hyper-v 產生
+映射產生器目前支援 Hyper-v 第1代映射和 Vm。
  
 ## <a name="next-steps"></a>後續步驟 
  

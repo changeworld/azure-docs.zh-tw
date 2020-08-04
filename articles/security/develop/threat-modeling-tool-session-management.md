@@ -1,6 +1,6 @@
 ---
 title: 工作階段管理 - Microsoft 威脅模型化工具 - Azure | Microsoft Docs
-description: 降低威脅模型化工具所暴露的威脅
+description: 瞭解 Threat Modeling Tool 中公開之威脅的會話管理緩和措施。 請參閱風險降低資訊和查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,18 +16,18 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 7f9eb18e72c12a8585ea8bcd42d8d720af43dbaf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 6a40d89db3e81721ec8a35973b79a558c17caee4
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420544"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543685"
 ---
 # <a name="security-frame-session-management"></a>安全性架構︰工作階段管理
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[在使用 Azure AD 時以 ADAL 方法實作適當的登出](#logout-adal)</li></ul> |
-| IoT 裝置 | <ul><li>[為產生的 SaS 權杖使用有限的存留期](#finite-tokens)</li></ul> |
+| **IoT 裝置** | <ul><li>[為產生的 SaS 權杖使用有限的存留期](#finite-tokens)</li></ul> |
 | **Azure Document DB** | <ul><li>[為產生的資源權杖使用最短的權杖存留期](#resource-tokens)</li></ul> |
 | **ADFS** | <ul><li>[在使用 ADFS 時以 WsFederation 方法實作適當的登出](#wsfederation-logout)</li></ul> |
 | **身分識別伺服器** | <ul><li>[在使用 Identity Server 時執行適當的登出](#proper-logout)</li></ul> |

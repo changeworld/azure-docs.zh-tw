@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 01972ab02aa901af6144c02171efd36314e2f514
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30164e1af1948f86c68e102f4d348674ea931e7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091941"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544008"
 ---
 # <a name="streaming-policies"></a>串流原則
 
@@ -40,7 +40,7 @@ Azure 媒體服務 v3 中，[串流原則](/rest/api/media/streamingpolicies)可
 
 按一下影像可以完整大小檢視。  
 
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+[![此圖顯示一個決策樹，其設計目的是協助您為您的案例選擇預先定義的串流原則。](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
 若要加密您的內容，您需要建立[內容金鑰原則](content-key-policy-concept.md)，而不需要**內容金鑰原則**來進行清除串流或下載。 
 
@@ -48,7 +48,7 @@ Azure 媒體服務 v3 中，[串流原則](/rest/api/media/streamingpolicies)可
 
 ## <a name="get-a-streaming-policy-definition"></a>取得串流原則定義  
 
-如果您想要查看串流原則的定義，請使用[Get](/rest/api/media/streamingpolicies/get)並指定原則名稱。 例如:
+如果您想要查看串流原則的定義，請使用[Get](/rest/api/media/streamingpolicies/get)並指定原則名稱。 例如：
 
 ### <a name="rest"></a>REST
 

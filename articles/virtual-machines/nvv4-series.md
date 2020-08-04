@@ -8,18 +8,20 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 3eaaad036403cf8e5285f3345b52be976e381dd6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9b841b6422a4314b43a594cb0b22040f884228eb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284739"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543889"
 ---
 # <a name="nvv4-series"></a>NVv4 系列 
 
 NVv4 系列虛擬機器是由[Amd Radeon 直覺 MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU 和 Amd EPYC 7V12 （羅馬） cpu 提供技術支援。 在 NVv4 系列中，Azure 引進了具有部分 Gpu 的虛擬機器。 針對 GPU 加速圖形應用程式和虛擬桌面，從具有2個 GiB 畫面格緩衝區的 GPU 1/第8部，挑選正確大小的虛擬機器，並使用16個 GiB 框架緩衝區的完整 GPU。 NVv4 虛擬機器目前僅支援 Windows 客體作業系統。
 
 <br>
+
+ACU：230-260
 
 進階儲存體：支援
 
