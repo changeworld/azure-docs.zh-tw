@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254305"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542241"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署及探索使用每一租使用者一個資料庫模式的多租使用者 SaaS 應用程式與 Azure SQL Database
 
@@ -38,7 +38,7 @@ ms.locfileid: "85254305"
 
 我們提供了[一系列的相關教學課程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)，帶領您探索各式各樣的 SaaS 設計和管理模式。 這些教學課程所涵蓋的內容，超出本文的初始部署程序。 閱讀教學課程時，您可以檢查我們提供的指令碼，了解各個 SaaS 模式的實作方式。 指令碼示範 SQL Database 的功能如何簡化 SaaS 應用程式的開發過程。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成本教學課程，請確定您已安裝 Azure PowerShell。 如需詳細資訊，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -57,7 +57,7 @@ ms.locfileid: "85254305"
 
 1. 若要在 Azure 入口網站中開啟 Wingtip Tickets SaaS 每一租用戶一個資料庫的部署範本，請選取 [部署至 Azure]****。
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![顯示標示為「部署至 Azure」之按鈕的影像。](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
 1. 在範本中，為必要參數輸入值。
 
@@ -128,7 +128,7 @@ Wingtip 應用程式使用  [*Azure 流量管理員*](../../traffic-manager/tra
 
     下表有前述格式各部分的解說。
 
-    | URL 部分        | Description       |
+    | URL 部分        | 說明       |
     | :-------------- | :---------------- |
     | wingtip-tenants1-dpt user | Wingtip 應用程式的事件部分。<br /><br /> -dpt** 能將 Wingtip Tickets 的「每一租用戶一個資料庫」** 實作與其他實作進行區分。 例如，「單一」** 每一租用戶一個應用程式 (-sa**)，或「多租用戶資料庫」** (-mt**) 實作。 |
     | .* &lt; 使用者 &gt; * | 範例中的 af1**。 |

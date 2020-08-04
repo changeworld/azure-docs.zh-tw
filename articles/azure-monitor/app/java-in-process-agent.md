@@ -3,12 +3,12 @@ title: 監視任何環境上的 JAVA 應用程式-Azure 監視器 Application In
 description: 應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，不需檢測應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f35d661761f1bea4dbd6b691fb0667c6dad3e72e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014332"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541850"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights-公開預覽
 
@@ -126,7 +126,22 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 我們支援 Micrometer、OpenTelemetry API 和熱門的記錄架構。 Application Insights JAVA 3.0 會自動捕捉遙測，並使其與所有實驗自動收集的遙測相互關聯。
 
-基於這個理由，我們目前不打算發行具有 Application Insights 3.0 的 SDK。
+### <a name="supported-custom-telemetry"></a>支援的自訂遙測
+
+下表代表目前支援的自訂遙測類型，可讓您用來補充 JAVA 3.0 代理程式。 總而言之，自訂計量是透過 micrometer 來支援、自訂例外狀況和追蹤可以透過記錄架構來啟用，而且任何類型的自訂遙測都可透過[Application Insights JAVA 2.X SDK](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#sending-custom-telemetry-using-application-insights-java-sdk-2x)來支援。 
+
+
+|                 | Micrometer | Log4j，logback，七月 | 2.x SDK |
+|-----------------|------------|---------------------|---------|
+| 自訂事件   |            |                     |  是    |
+| 自訂計量  |  是       |                     |  是    |
+| 相依性    |            |                     |  是    |
+| 例外狀況      |            |  是                |  是    |   
+| 頁面檢視      |            |                     |  是    |
+| Requests        |            |                     |  是    |
+| 追蹤          |            |  是                |  是    |
+
+我們目前不打算發行具有 Application Insights 3.0 的 SDK。
 
 Application Insights JAVA 3.0 已在接聽傳送至 Application Insights JAVA SDK 2.x 的遙測。 這項功能是現有2.x 使用者升級案例的重要部分，而且在 OpenTelemetry API 正式運作之前，會在自訂遙測支援中填滿一個重要的差距。
 

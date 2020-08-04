@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: d3abd6411197c9e7994e9ae642b07e72a0a24735
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ab3d0a4b33bd2e424141adc9f6b8739380c2947b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496282"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542003"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database 和 SQL 受控執行個體的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -95,19 +95,18 @@ SQL Database 和 SQL 受控執行個體都是在最新穩定版本的 SQL Server
 
 ## <a name="testing-application-fault-resiliency"></a>測試應用程式錯誤復原
 
-高可用性是 SQL Database 和 SQL 受控執行個體平臺的基本部分，可為您的資料庫應用程式提供透明的運作。 不過，我們瞭解您可能會想要測試在計畫或未規劃的事件期間起始的自動容錯移轉作業如何影響應用程式，然後再將它部署到生產環境。 您可以藉由呼叫特殊 API 重新開機資料庫或彈性集區，以手動方式觸發容錯移轉。 在區域冗余資料庫或彈性集區的情況下，API 呼叫會導致將用戶端連線重新導向至可用性區域中與舊主要複本可用性區域不同的新主要複本。 因此，除了測試容錯移轉如何影響現有的資料庫會話以外，您也可以確認它是否會因為網路延遲的變更而變更端對端效能。 因為重新開機作業是侵入式的，而且有大量的使用者可能會造成平臺壓力，每個資料庫或彈性集區只允許一個容錯移轉呼叫每30分鐘一次。
+高可用性是 SQL Database 和 SQL 受控執行個體平臺的基本部分，可為您的資料庫應用程式提供透明的運作。 不過，我們瞭解您可能會想要測試在計畫或未規劃的事件期間起始的自動容錯移轉作業如何影響應用程式，然後再將它部署到生產環境。 您可以藉由呼叫特殊 API 來重新開機資料庫、彈性集區或受控實例，以手動觸發容錯移轉。 在區域冗余資料庫或彈性集區的情況下，API 呼叫會導致將用戶端連線重新導向至可用性區域中與舊主要複本可用性區域不同的新主要複本。 因此，除了測試容錯移轉如何影響現有的資料庫會話以外，您也可以確認它是否會因為網路延遲的變更而變更端對端效能。 因為重新開機作業是侵入式的，而且有大量的使用者可能會造成平臺壓力，每個資料庫、彈性集區或受控實例每隔30分鐘只允許一個容錯移轉呼叫。
 
 您可以使用 PowerShell、REST API 或 Azure CLI 來起始容錯移轉：
 
 |部署類型|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|資料庫|[叫用-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[資料庫容錯移轉](/rest/api/sql/databases(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)|
-|彈性集區|[叫用-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[彈性集區容錯移轉](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)|
+|資料庫|[叫用-AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[資料庫容錯移轉](/rest/api/sql/databases(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)可用來叫用來自 Azure CLI 的 REST API 呼叫|
+|彈性集區|[叫用-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[彈性集區容錯移轉](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)可用來叫用來自 Azure CLI 的 REST API 呼叫|
 |受控執行個體|[叫用-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[受控實例-容錯移轉](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[az sql mi 容錯移轉](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
-
 > [!IMPORTANT]
-> 超大規模資料庫服務層級目前無法使用容錯移轉命令。
+> 容錯移轉命令不適用於超大規模資料庫資料庫的可讀取次要複本。
 
 ## <a name="conclusion"></a>結論
 

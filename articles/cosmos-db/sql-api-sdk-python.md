@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d68fc7b01e6204cb9ad00ea60e413c73856d758e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247059"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542441"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Python SDK：版本資訊和資源
 
@@ -301,10 +301,8 @@ ms.locfileid: "86247059"
 
 Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。 新的功能與最佳化項目只會新增至目前的 SDK，因此建議您一律盡早升級至最新的 SDK 版本。
 
-服務會拒絕使用已停用 SDK 的任何 Azure Cosmos DB 要求。
-
 > [!WARNING]
-> 所有 **1.0.0** 版之前的 Python SDK for SQL API 版本都於 **2016 年 2 月 29 日**淘汰。 而且，所有 1.x 版和 2.x 版的 Python SDK for SQL API 將於 **2020 年 8 月 30 日**淘汰。
+> 2022年8月31日之後，Azure Cosmos DB 將不會再進行錯誤修正、新增功能，以及提供1.x 或2.x 版的支援（適用于 SQL API 的 Azure Cosmos DB Python SDK）。 如果您不想要升級，從版本1.x 和2.x （SDK）傳送的要求將會繼續由 Azure Cosmos DB 服務提供服務。
 
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |

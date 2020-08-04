@@ -7,16 +7,16 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect，azure，取得，感應器，相機，sdk，深度，rgb，影像，色彩，捕捉，解析度，緩衝區
-ms.openlocfilehash: 84e678993f94c17bf58fb134234afaee4139aad5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fed5c7340d287d9103ba35f0fd3d80c0fff6e3ec
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85276393"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538909"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>取出 Azure Kinect 影像資料
 
-此頁面提供如何從 Azure Kinect 取得影像的詳細資料。 本文示範如何在裝置的色彩與深度攝影機之間，捕捉和存取協調的影像。 若要存取映射，您必須先開啟並設定裝置，然後才能捕獲映射。
+此頁面提供如何從 Azure Kinect 取得影像的詳細資料。 本文示範如何在裝置的色彩與深度之間，捕捉和存取協調的影像。 若要存取映射，您必須先開啟並設定裝置，然後才能捕獲映射。
 設定和抓取映射之前，您必須先[尋找並開啟 [裝置](find-then-open-device.md)]。
 
 您也可以參考[SDK 串流範例](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/streaming)，它會示範如何使用本文中的函式。

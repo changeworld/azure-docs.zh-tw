@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: na
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a2f8b69c8ef75be4f9190933969ed20404b5da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5f6e44aa89c1e2815d70bb4ba2ae5f5680252ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252996"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541884"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中啟用企業狀態漫遊
 
@@ -31,7 +31,7 @@ ms.locfileid: "85252996"
 ## <a name="to-enable-enterprise-state-roaming"></a>啟用企業狀態漫遊
 
 1. 登入 [Azure AD 系統管理中心](https://aad.portal.azure.com/)。
-1. 選取 [Azure Active Directory]** [裝置]** &gt; ** [企業狀態漫遊]** &gt; ****。
+1. 選取 [ **Azure Active Directory**  >  **裝置**  >  **企業狀態漫遊**]。
 1. 選取 [使用者可以在裝置間同步設定及應用程式資料]****。 如需詳細資訊，請參閱[如何進行裝置設定](/azure/active-directory/device-management-azure-portal)。
   
    ![標示為 [使用者可以在裝置間同步設定及應用程式資料] 的裝置設定影像](./media/enterprise-state-roaming-enable/device-settings.png)
@@ -56,7 +56,7 @@ ms.locfileid: "85252996"
 請遵循下列步驟來檢視每個使用者裝置同步處理狀態報告。
 
 1. 登入 [Azure AD 系統管理中心](https://aad.portal.azure.com/)。
-1. 選取 [Azure Active Directory]** [使用者]** &gt; ** [所有使用者]** &gt; ****。
+1. 選取 [ **Azure Active Directory**  >  **使用者**] [  >  **所有使用者**]。
 1. 選取使用者，然後選取 [裝置]****。
 1. 在 [顯示]**** 底下，選取 [裝置同步設定和應用程式資料]****，以顯示同步處理狀態。
   
@@ -78,7 +78,7 @@ ms.locfileid: "85252996"
 * **目錄刪除**：在 Azure AD 中刪除整個目錄是即時作業。 與該目錄相關聯的所有設定資料會在 90 至 180 天後刪除。 
 * **依要求刪除**：如果 Azure AD 管理員想要手動刪除特定使用者的資料或設定資料，管理員可以向 [Azure 支援](https://azure.microsoft.com/support/)提出票證。 
 
-### <a name="stale-data-deletion"></a>刪除過時資料
+### <a name="stale-data-deletion"></a>過時資料刪除
 
 一年 (「保留期限」) 未存取的資料將視為過時，可能會從 Microsoft 雲端中刪除。 保留期限可能有所變更，但不會小於 90 天。 過時的資料可能是一組特定的 Windows/應用程式設定或使用者的所有設定。 例如：
 
@@ -86,7 +86,7 @@ ms.locfileid: "85252996"
 * 如果使用者已關閉所有裝置上的設定同步處理，則不會存取任何設定資料，而且該使用者的所有設定資料都會變成過時，而且可能會在保留期限後刪除。 
 * 如果 Azure AD 目錄管理員針對整個目錄關閉企業狀態漫遊，則該目錄中的所有使用者會停止同步處理設定，且所有使用者的所有設定資料會變成過時，並且可能在保留期限之後刪除。 
 
-### <a name="deleted-data-recovery"></a>復原已刪除的資料
+### <a name="deleted-data-recovery"></a>已刪除的資料復原
 
 無法設定資料保留期原則。 一旦永久刪除資料，就無法復原。 但系統只會從 Microsoft 雲端刪除設定資料，而不會從使用者裝置中刪除。 如果任何裝置後來又重新連線至企業狀態漫遊服務，設定就會再次同步處理並儲存在 Microsoft 雲端中。
 

@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b33b3e406e21f5bc2a4128fdd7dc9930fa3e0c32
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 83a05636f8e673e08bfd390aa10069da0abd561d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447007"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542054"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的必要條件
 本文說明 Azure Active Directory （Azure AD） Connect 的必要條件和硬體需求。
@@ -125,6 +125,7 @@ Azure AD Connect 伺服器必須視為第0層元件，如[Active Directory 管�
         </system.net>
     ```
 
+* 如果在現有的安裝程式中完成 proxy 設定，則必須重新開機**Microsoft Azure AD 同步處理服務**一次，Azure AD Connect 才能讀取 proxy 設定並更新 behviour。 
 * 當 Azure AD Connect 在同步處理目錄的過程中對 Azure AD 傳送了 Web 要求，Azure AD 最多可能需要 5 分鐘的時間才會回應。 Proxy 伺服器通常會有連接閒置超時設定。 請確定設定為至少6分鐘以上。
 
 如需詳細資訊，請參閱 MSDN 上的[預設 proxy 元素](https://msdn.microsoft.com/library/kd3cf2ex.aspx)。

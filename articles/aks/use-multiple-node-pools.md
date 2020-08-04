@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service （AKS）中建立及管�
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d007ec18a982d5327aa2ea0871bbe88f64786fce
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133090"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542020"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立和管理叢集的多個節點集區 \(部分機器翻譯\)
 
@@ -489,6 +489,8 @@ Events:
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>指定節點集區的污點、標籤或標記
 
+### <a name="setting-nodepool-taints"></a>設定 nodepool 污點
+
 建立節點集區時，您可以將污點、標籤或標記新增至該節點集區。 當您新增污點、標籤或標記時，該節點集區中的所有節點也會取得該污點、標籤或標記。
 
 若要建立具有污點的節點集區，請使用[az aks nodepool add][az-aks-nodepool-add]。 指定名稱*taintnp* ，並使用 `--node-taints` 參數指定污點的*Sku = gpu： NoSchedule* 。
@@ -532,6 +534,8 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 在處理節點排程規則的 Kubernetes 中，會顯示污點資訊。
 
+### <a name="setting-nodepool-labels"></a>設定 nodepool 標籤
+
 您也可以在建立節點集區時，將標籤新增至節點集區。 在節點集區設定的標籤會新增至節點集區中的每個節點。 這些[標籤會顯示在 Kubernetes 中][kubernetes-labels]，以處理節點的排程規則。
 
 若要建立具有標籤的節點集區，請使用[az aks nodepool add][az-aks-nodepool-add]。 指定名稱*labelnp* ，並使用 `--labels` 參數來指定適用于標籤的*部門 = IT*和*costcenter = 9999* 。
@@ -574,7 +578,13 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+### <a name="setting-nodepool-azure-tags"></a>設定 nodepool Azure 標記
+
 您可以將 Azure 標記套用至 AKS 叢集中的節點集區。 套用至節點集區的標記會套用至節點集區中的每個節點，並透過升級來保存。 標籤也會套用至向外延展作業期間新增至節點集區的新節點。 新增標籤可協助進行原則追蹤或成本預估之類的工作。
+
+Azure 標記具有不區分大小寫作業的索引鍵，例如藉由搜尋金鑰來抓取標記時。 在此情況下，不論大小寫為何，將會更新或抓取具有指定之索引鍵的標記。 標記值會區分大小寫。
+
+在 AKS 中，如果使用相同的索引鍵來設定多個標記，但大小寫不同，則使用的標記是以字母順序排列的第一個。 例如，會 `{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` 導致 `Key1` 和 `val1` 設定。
 
 使用[az aks nodepool add][az-aks-nodepool-add]建立節點集區。 指定名稱*tagnodepool* ，並使用 `--tag` 參數來指定適用于標記的*部門 = IT*和*costcenter = 9999* 。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0eec42c0703e7158b478b8297848dc2ee6735cb8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 81d1c86bc5130d616712d022efd4b111b8b939dd
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047553"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542373"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>跨資料中心的媒體服務功能情節和可用性
 
@@ -33,7 +33,7 @@ AMS 在世界各地多個資料中心運作。 這些資料中心會依據地理
 
 ## <a name="overview"></a>概觀
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要開始使用 Azure 媒體服務，您應該具備下列項目：
 
@@ -49,7 +49,7 @@ AMS 在世界各地多個資料中心運作。 這些資料中心會依據地理
 
 按一下影像可以完整大小檢視。  
 
-<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
+[![在針對 Azure 媒體服務物件資料模型進行開發時，顯示一些最常使用物件的圖表。](./media/media-services-overview/media-services-overview-object-model-small.png)](./media/media-services-overview/media-services-overview-object-model.png#lightbox)
 
 您可以[在此](https://media.windows.net/API/$metadata?api-version=2.15)檢視整個模型。  
 
@@ -177,7 +177,7 @@ AMS 客戶可以使用其 AMS 帳戶來調整串流端點、媒體處理和儲�
 
 #### <a name="availability"></a>可用性
 
-|名稱|狀態|資料中心
+|Name|狀態|資料中心
 |---|---|---|
 |標準|GA|全部|
 |Premium|GA|全部|
@@ -225,7 +225,7 @@ Microsoft Azure 媒體服務可讓您保護媒體從離開電腦到進行儲存�
 
 |加密|狀態|資料中心|
 |---|---|---| 
-|儲存體|GA|全部|
+|存放裝置|GA|全部|
 |AES-128 金鑰|GA|全部|
 |Fairplay|GA|全部|
 |PlayReady|GA|全部|

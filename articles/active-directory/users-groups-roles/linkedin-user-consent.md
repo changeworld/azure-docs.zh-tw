@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01ec7f8210df9e41b2620e639eddbc98d4bcb73d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448674"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542356"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn 帳戶連線資料共用與同意
 
@@ -41,7 +41,7 @@ ms.locfileid: "87448674"
 1. 若要啟用或停用整合，請依照[同意 Azure AD 組織的 LinkedIn 整合](linkedin-integration.md)中的步驟進行。
 2. 您在組織中宣佈整合 LinkedIn 時，請告知使用者參閱 [Microsoft 應用程式和服務中的 LinkedIn 資訊](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381) (英文) 的常見問題集。 本文提供 LinkedIn 資訊的顯示位置、[資料共用和隱私權](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)、[如何連接帳戶](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772)等相關資訊。
 
-您必須向使用者公告 Linkedin 整合，為他們提供與 Linkedin 整合相關的資料共用和隱私權相關資訊。 若要讓使用您授權的使用者能夠連接中的帳戶 
+您必須向使用者公告 Linkedin 整合，為他們提供與[Linkedin 整合資料共用和隱私權](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)相關的所有資訊。 
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>使用者同意 Microsoft 與 LinkedIn 的資料存取
 

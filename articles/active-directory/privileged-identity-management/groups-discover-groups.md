@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中探索要管理的角色可指派群組-Azure AD |Microsoft Docs
-description: 瞭解如何在 Privileged Identity Management （PIM）中探索要管理為特殊許可權存取群組的角色可指派群組。
+title: 在 Privileged Identity Management Azure AD 中識別要管理的群組 |Microsoft Docs
+description: 瞭解如何在 Privileged Identity Management （PIM）中，將可指派角色的群組上線，以作為特殊許可權存取群組來管理。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -11,39 +11,39 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 07/27/2020
+ms.date: 08/03/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b66a41f0f1aa48433dac77fca56d5e2877989a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 76f7b61b6fb065409a2fe4b2ed8f599f321cd1db
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87506000"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542264"
 ---
-# <a name="discover-privileged-access-groups-preview-to-manage-in-privileged-identity-management"></a>探索要在 Privileged Identity Management 中管理的特殊許可權存取群組（預覽）
+# <a name="bring-a-privileged-access-groups-preview-into-privileged-identity-management"></a>將特殊許可權存取群組（預覽）帶入 Privileged Identity Management
 
-在 Azure Active Directory （Azure AD）中，您可以將 Azure AD 內建角色指派給雲端群組，以簡化角色指派的管理。 現在您可以使用 Privileged Identity Management （PIM）來指派這些群組的成員資格或擁有權，以保護 Azure AD 角色及保護存取安全。 在 Privileged Identity Management 中管理 Azure AD 角色可指派的群組做為特殊許可權存取群組之前，您必須先探索它，並將它帶入 PIM 中的管理。
+在 Azure Active Directory （Azure AD）中，您可以將 Azure AD 內建角色指派給雲端群組，以簡化您管理角色指派的方式。 若要保護 Azure AD 角色並保護存取安全，您現在可以使用 Privileged Identity Management （PIM）來管理這些群組成員或擁有者的即時存取權。 若要在 Privileged Identity Management 中管理 Azure AD 角色可指派的群組做為特殊許可權存取群組，您必須在 PIM 中將其納入管理。
 
-## <a name="discover-resources"></a>探索資源
+## <a name="identify-groups-to-manage"></a>識別要管理的群組
+
+如在[Azure Active Directory 中建立角色可指派的群組](../users-groups-roles/roles-groups-create-eligible.md)中所述，您可以在 Azure AD 中建立可指派角色的群組。 您是群組的擁有者，可使用 Privileged Identity Management 將其納入管理。
 
 1. 使用特殊許可權角色管理員角色許可權登[入 Azure AD](https://aad.portal.azure.com) 。
-1. 在 Azure AD 中建立可指派角色的群組。 您必須是群組的擁有者，才能使用 Privileged Identity Management 來探索及管理它。
-1. 開啟**Privileged Identity Management**。
-1. 選取 **[特殊許可權存取（預覽）**]。
+1. 選取 [**群組**]，然後選取您想要在 PIM 中管理的角色可指派群組。 您可以搜尋和篩選清單。
 
-    ![探索第一次體驗的群組命令](./media/groups-discover-groups/groups-discover-groups.png)
+    ![在 PIM 中尋找要管理的可指派角色群組](./media/groups-discover-groups/groups-list-in-azure-ad.png)
 
-1. 選取 [**探索群組**]。
-1. 依組名搜尋。
-1. 選取您的群組，然後選取 [**管理群組**]，將其帶入 PIM 管理。
+1. 開啟群組，然後選取 [特殊許可權**存取（預覽）**]。
 
-    ![探索第一次使用時未列出任何資源的群組](./media/groups-discover-groups/groups-bring-under-management.png)
+    ![開啟 Privileged Identity Management 體驗](./media/groups-discover-groups/groups-discover-groups.png)
 
-    > [!NOTE]
-    > 一旦特殊許可權存取群組受到管理，就無法進行管理。 這可防止其他資源管理員移除 Privileged Identity Management 設定。
+1. 開始管理 PIM 中的指派。
 
-1. 如果您看到一則訊息，確認已選取要管理之資源的上架，請選取 **[是]**。
+    ![管理 Privileged Identity Management 中的指派](./media/groups-discover-groups/groups-bring-under-management.png)
+
+> [!NOTE]
+> 一旦特殊許可權存取群組受到管理，就無法進行管理。 這可防止其他資源管理員移除 Privileged Identity Management 設定。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 06/03/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 2de46f050d17049848024d70f43bd23621b43b13
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: b8cc0d44c654bd7047bac462ce98126fb4a27334
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461029"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541663"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Java SDK：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -260,11 +260,10 @@ ms.locfileid: "87461029"
 Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。 新的功能與最佳化項目只會新增至目前的 SDK，因此建議您一律盡早升級至最新的 SDK 版本。
 
 > [!WARNING]
-> SQL SDK for Java 的所有版本 **1.x** 將於 **2020 年 5 月 30 日**淘汰。 所有 **1.0.0** 版之前的 SQL SDK 版本都將於「2016 年 2 月 29 日」淘汰。
-> 
-> 
+> 2020 5 月30日之後，Azure Cosmos DB 將不再進行 bug 修正、新增功能，並提供支援給1.x 版的 Azure Cosmos DB JAVA SDK for SQL API。 如果您不想升級，從版本 1.x SDK 傳送的要求將會繼續由 Azure Cosmos DB 服務提供服務。
+>
+> 2016年2月29日之後，Azure Cosmos DB 不會再進行 bug 修正、新增功能，以及為 SQL API 的 Azure Cosmos DB JAVA SDK 版本提供支援。 如果您不想升級，從版本 0. x SDK 傳送的要求將會繼續由 Azure Cosmos DB 服務提供服務。
 
-<br/>
 
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |

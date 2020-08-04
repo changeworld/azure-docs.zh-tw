@@ -1,6 +1,6 @@
 ---
-title: 使用 SR-IOV 啟用 InifinBand-Azure 虛擬機器 |Microsoft Docs
-description: 瞭解如何使用 SR-IOV 來啟用不限。
+title: 啟用 HPC Vm 上的 InifinBand-Azure 虛擬機器 |Microsoft Docs
+description: 瞭解如何在 Azure HPC Vm 上啟用 [未使用]。
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -10,54 +10,59 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 08/01/2020
 ms.author: amverma
-ms.openlocfilehash: de61403b62f80bea7872d5ab3561567ae2109590
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.reviewer: cynthn
+ms.openlocfilehash: 88f1c120ac4578e077e1c51f59bcaf53b1de2083
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500063"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538892"
 ---
-# <a name="enable-infiniband-with-sr-iov"></a>使用 SR-IOV 啟用不限
+# <a name="enable-infiniband"></a>啟用 InfiniBand
 
-Azure NC、ND 和 H 系列的 Vm 都是由專用的「未受使用網路」所支援。 所有啟用 RDMA 的大小都能夠使用 Intel MPI 來運用該網路。 有些 VM 系列透過 SR-IOV 擴充了所有 MPI 執行和 RDMA 動詞的支援。 支援 RDMA 的 Vm 包括[GPU 優化](../../sizes-gpu.md)和[高效能計算（HPC）](../../sizes-hpc.md) vm。
+[支援 RDMA](../../sizes-hpc.md#rdma-capable-instances)的[H 系列](../../sizes-hpc.md)和[N 系列](../../sizes-gpu.md)vm 會透過低延遲和高頻寬的網路來進行通訊。 這類互連的 RDMA 功能對於提升分散式節點 HPC 和 AI 工作負載的擴充性和效能非常重要。 未啟用的 H 系列和 N 系列 Vm 會在非封鎖的 fat 樹狀結構中連接，並具有適用于優化和一致 RDMA 效能的低直徑設計。
 
-## <a name="choose-your-installation-path"></a>選擇您的安裝路徑
+有各種不同的方式可讓您在支援的 VM 大小上進行未使用。
 
-若要開始使用，最簡單的選項是使用預先設定的平臺映射來進行不限，其中提供：
+## <a name="vm-images-with-infiniband-drivers"></a>具有不會駕駛之驅動程式的 VM 映射
+請參閱[VM 映射](configure.md#vm-images)以取得 Marketplace 上支援的 vm 映射清單，其預先載入了不限時的驅動程式（適用于 sr-iov 或非 sr-iov vm），或可以使用適當的驅動程式進行設定。
+對於支援 SR-IOV 的[RDMA vm](../../sizes-hpc.md#rdma-capable-instances)，在 Marketplace 中[CentOS-HPC 7.6 版或更新](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)版本的 vm 映射是開始使用的最簡單方式。
+您可以使用[這裡的指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用適用于 sr-iov 和非 sr-iov 功能的 vm 的正確驅動程式來設定 Ubuntu VM 映射。
 
-- **Hpc IaaS vm** -若要開始使用適用于 HPC 的 IaaS vm，最簡單的解決方案是使用[CentOS-HPC 7.6 VM OS 映射](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)，其已設定為 [未使用]。 因為此映射已設定為不使用，所以您不需要手動進行設定。 如需相容的 Windows 版本，請參閱[支援 WINDOWS RDMA 的實例](../../sizes-hpc.md#rdma-capable-instances)。
+## <a name="infiniband-driver-vm-extensions"></a>不駕駛的驅動程式 VM 延伸模組
+在 Linux 上，您可以使用[INFINIBANDDRIVERLINUX VM 擴充](../../extensions/hpc-compute-infiniband-linux.md)功能來安裝 Mellanox OFED 驅動程式，並在啟用 Sr-iov 的 H 和 N 系列 vm 上啟用「自動」。
 
-- **Gpu IaaS vm** -目前尚未針對 GPU 優化 vm 預先設定任何平臺映射，但[CentOS-HPC 7.6 VM OS 映射](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)除外。 若要設定具有「不確定」的自訂映射，請參閱[手動安裝 MELLANOX OFED](#manually-install-mellanox-ofed)。
+在 Windows 上， [INFINIBANDDRIVERWINDOWS VM 擴充](../../extensions/hpc-compute-infiniband-windows.md)功能會安裝 Windows 網路直接驅動程式（在非 sr-iov vm 上）或 Mellanox OFED 驅動程式（在 sr-iov vm 上）以進行 RDMA 連線。 在 A8 和 A9 實例的某些部署中，會自動新增 HpcVmDrivers 擴充功能。 請注意，HpcVmDrivers VM 擴充功能即將淘汰;它將不會更新。
 
-如果您使用自訂 VM 映射或[GPU 優化](../../sizes-gpu.md)vm，您應該將 InfiniBandDriverLinux 或 InfiniBandDriverWindows VM 擴充功能新增至您的部署，以讓它以不受歡迎的方式進行設定。 瞭解如何搭配[Linux](../../sizes-hpc.md#rdma-capable-instances)和[WINDOWS](../../sizes-hpc.md#rdma-capable-instances)使用這些 VM 擴充功能。
+若要將 VM 擴充功能新增至 VM，您可以使用 [Azure PowerShell](/powershell/azure/) Cmdlet。 如需詳細資訊，請參閱[虛擬機器擴充功能和功能](../../extensions/overview.md)。 您也可以針對已在[傳統部署模型](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)中部署的 VM 使用擴充功能。
 
-## <a name="manually-install-mellanox-ofed"></a>手動安裝 Mellanox OFED
+## <a name="manual-installation"></a>手動安裝
+[Mellanox OpenFabrics 驅動程式（OFED）](https://www.mellanox.com/products/InfiniBand-VPI-Software)可以手動安裝在[支援 sr-iov](../../sizes-hpc.md#rdma-capable-instances)的[H 系列](../../sizes-hpc.md)和[N 系列](../../sizes-gpu.md)vm 上。
 
-若要以 SR-IOV 手動設定「未使用」，請使用下列步驟。 這些步驟中的範例會顯示 RHEL/CentOS 的語法，但這些步驟是一般的，而且可以用於任何相容的作業系統，例如 Ubuntu （16.04、18.04 19.04）和 SLES （12 SP4 和15）。 收件匣驅動程式也能正常運作，但 Mellanox OpenFabrics 驅動程式提供更多功能。
-
-如需有關支援的 Mellanox 驅動程式發行版本的詳細資訊，請參閱最新的[Mellanox OpenFabrics 驅動程式](https://www.mellanox.com/page/products_dyn?product_family=26)。 如需有關 Mellanox OpenFabrics 驅動程式的詳細資訊，請參閱《 [mellanox 使用者指南》](https://docs.mellanox.com/category/mlnxofedib)。
-
-請參閱下列範例，以瞭解如何在 Linux 上設定「未執行」：
+### <a name="linux"></a>Linux
+您可以使用下列範例來安裝[適用于 Linux 的 OFED 驅動程式](https://www.mellanox.com/products/infiniband-drivers/linux/mlnx_ofed)。 雖然這裡的範例適用于 RHEL/CentOS，但這些步驟是一般的，而且可以用於任何相容的 Linux 作業系統，例如 Ubuntu （16.04、18.04 19.04、20.04）和 SLES （12 SP4 和15）。 收件匣驅動程式也能正常運作，但 Mellanox OFED 驅動程式提供更多功能。
 
 ```bash
-# Modify the variable to desired Mellanox OFED version
-MOFED_VERSION=#4.7-1.0.0.1
-# Modify the variable to desired OS
-MOFED_OS=#rhel7.6
-pushd /tmp
-curl -fSsL https://www.mellanox.com/downloads/ofed/MLNX_OFED-${MOFED_VERSION}/MLNX_OFED_LINUX-${MOFED_VERSION}-${MOFED_OS}-x86_64.tgz | tar -zxpf -
-cd MLNX_OFED_LINUX-*
-sudo ./mlnxofedinstall
-popd
+MLNX_OFED_DOWNLOAD_URL=http://content.mellanox.com/ofed/MLNX_OFED-5.0-2.1.8.0/MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz
+# Optinally verify checksum
+tar zxvf MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64.tgz
+
+KERNEL=( $(rpm -q kernel | sed 's/kernel\-//g') )
+KERNEL=${KERNEL[-1]}
+# Uncomment the lines below if you are running this on a VM
+#RELEASE=( $(cat /etc/centos-release | awk '{print $4}') )
+#yum -y install http://olcentgbl.trafficmanager.net/centos/${RELEASE}/updates/x86_64/kernel-devel-${KERNEL}.rpm
+yum install -y kernel-devel-${KERNEL}
+./MLNX_OFED_LINUX-5.0-2.1.8.0-rhel7.7-x86_64/mlnxofedinstall --kernel $KERNEL --kernel-sources /usr/src/kernels/${KERNEL} --add-kernel-support --skip-repo
 ```
 
-針對 Windows，請下載並安裝[適用于 windows 驅動程式的 MELLANOX OFED](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)。
+### <a name="windows"></a>Windows
+針對 Windows，請下載並安裝[適用于 windows 驅動程式的 MELLANOX OFED](https://www.mellanox.com/products/adapter-software/ethernet/windows/winof-2)。
 
-## <a name="enable-ip-over-infiniband"></a>啟用透過未通過的 IP
-
-使用下列命令來啟用透過未通過的 IP。
+## <a name="enable-ip-over-infiniband-ib"></a>啟用 IP over 不會（IB）
+如果您打算執行 MPI 作業，通常不需要 IPoIB。 MPI 程式庫會使用適用于 IB 通訊的動詞介面（除非您明確地使用 MPI 程式庫的 TCP/IP 通道）。 但是，如果您的應用程式使用 TCP/IP 進行通訊，而您想要透過 IB 執行，則可以透過 IB 介面使用 IPoIB。 使用下列命令（適用于 RHEL/CentOS）來啟用透過不通過的 IP。
 
 ```bash
 sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
@@ -66,4 +71,7 @@ sudo systemctl restart waagent
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 Azure 上的[HPC](/azure/architecture/topics/high-performance-computing/) 。
+- 深入瞭解如何在 Vm 上安裝各種[支援的 MPI 程式庫](setup-mpi.md)及其最佳設定。
+- 請參閱[HB 系列總覽](hb-series-overview.md)和[HC 系列總覽](hc-series-overview.md)，以瞭解如何針對效能和擴充性，以最佳方式設定工作負載。
+- 閱讀[Azure 計算技術小組的 blog](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)，瞭解最新的公告和一些 HPC 範例和結果。
+- 如需執行 HPC 工作負載的較高層級架構視圖，請參閱[Azure 上的高效能運算（HPC）](/azure/architecture/topics/high-performance-computing/)。

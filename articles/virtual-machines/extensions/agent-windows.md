@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 6ff5825f3272f0dadc74147d36e8c5fd8e7838d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 100e75520d1165d4772579ba9b179cd350d6df18
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010949"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542614"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虛擬機器代理程式概觀
 Microsoft Azure 虛擬機器代理程式 (VM 代理程式) 是一個安全的輕量型處理程序，可管理虛擬機器 (VM) 與 Azure 網狀架構控制器的互動。 VM 代理程式已啟用主要角色並執行 Azure 虛擬機器擴充功能。 VM 擴充功能可啟用 VM 的部署後組態，例如安裝和設定軟體。 VM 擴充功能也會啟用復原功能，例如重設 VM 的系統管理密碼。 若沒有 Azure VM 代理程式，便無法執行 VM 擴充功能。
@@ -111,10 +111,10 @@ foreach ($vm in $vms) {
 
 
 ## <a name="upgrade-the-vm-agent"></a>升級 VM 代理程式
-適用於 Windows 的 Azure VM 代理程式會自動升級。 當新的 VM 部署至 Azure 時，這些 VM 在 VM 佈建時，會收到最新的 VM 代理程式。 自訂 VM 映像應進行手動更新，以便在映像建立時，納入新的 VM 代理程式。
+適用于 Windows 的 Azure VM 代理程式會在從 Azure marketplace 部署的映射上自動升級。 當新的 VM 部署至 Azure 時，這些 VM 在 VM 佈建時，會收到最新的 VM 代理程式。 如果您已手動安裝代理程式，或正在部署自訂 VM 映射，您必須手動更新以在映射建立時包含新的 VM 代理程式。
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows 來賓代理程式自動記錄收集
 Windows 來賓代理程式具有自動收集一些記錄檔的功能。 這項功能是由 CollectGuestLogs.exe 程式所控制。 PaaS 雲端服務和 IaaS 虛擬機器都有其用途，其目標是要快速 & 從 VM 自動收集一些診斷記錄，讓它們可用於離線分析。 收集的記錄檔包括事件記錄檔、OS 記錄檔、Azure 記錄檔和一些登錄機碼。 它會產生轉送至 VM 主機的 ZIP 檔案。 然後，工程小組和支援專業人員可以查看此 ZIP 檔案，以調查擁有該 VM 之客戶要求的問題。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需關於虛擬機器擴充功能的詳細資訊，請參閱 [Azure 虛擬機器擴充功能和功能概觀](overview.md)。

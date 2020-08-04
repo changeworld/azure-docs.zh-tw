@@ -1,14 +1,14 @@
 ---
 title: 了解查詢語言
 description: 描述 Resource Graph 資料表，以及可與 Azure Resource Graph 搭配使用的可用 Kusto 資料類型、運算子和函式。
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: b59811ecd877b9b2e22a43c00329ed7d02dfb97d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970445"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541816"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查詢語言
 
@@ -19,6 +19,7 @@ Azure Resource Graph 查詢語言支援多個運算子與函式。 每個都是�
 - [Resource Graph 資料表](#resource-graph-tables)
 - [Resource Graph 自訂語言元素](#resource-graph-custom-language-elements)
 - [支援的 KQL 語言元素](#supported-kql-language-elements)
+- [查詢的範圍](#query-scope)
 - [逸出字元](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Resource Graph 資料表
@@ -116,6 +117,31 @@ Resource Graph 支援所有 KQL [資料類型](/azure/kusto/query/scalar-data-ty
 |[top](/azure/kusto/query/topoperator) |[依名稱顯示前五個虛擬機器及其作業系統類型](../samples/starter.md#show-sorted) | |
 |[union](/azure/kusto/query/unionoperator) |[將兩個查詢的結果合併成單一結果](../samples/advanced.md#unionresults) |允許的單一資料表：_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _資料表_。 單一查詢中限制 3 個 `union` 支線。 不允許 `union` 支線資料表的模糊解析。 可以在單一資料表內或在 _Resources_ 和 _ResourceContainers_ 資料表之間使用。 |
 |[where](/azure/kusto/query/whereoperator) |[顯示包含儲存體的資源](../samples/starter.md#show-storage) | |
+
+## <a name="query-scope"></a>查詢範圍
+
+查詢傳回資源的訂閱範圍取決於存取 Resource Graph 的方法。 Azure CLI 和 Azure PowerShell 會根據授權使用者的內容，填入要包含在要求中的訂用帳戶清單。 您可以分別針對每個訂閱和**訂**用帳戶參數手動**定義訂閱清單**。
+在 REST API 和所有其他 Sdk 中，包含資源的訂閱清單必須明確定義為要求的一部分。
+
+做為**預覽**，REST API 版本會 `2020-04-01-preview` 新增屬性，以將查詢範圍限定于[管理群組](../../management-groups/overview.md)。 此預覽 API 也會讓訂用帳戶屬性成為選擇性。 如果管理群組或訂用帳戶清單都未定義，則查詢範圍就是已驗證使用者可以存取的所有資源。 新的 `managementGroupId` 屬性會採用管理群組識別碼，這與管理群組的名稱不同。
+當 `managementGroupId` 指定時，會包含或指定之管理群組階層的前5000訂用帳戶中的資源。 `managementGroupId`不能與同時使用 `subscriptions` 。
+
+範例：查詢名為「我的管理群組」（識別碼為 ' myMG '）之管理群組階層內的所有資源。
+
+- REST API URI
+
+  ```http
+  POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2020-04-01-preview
+  ```
+
+- 要求本文
+
+  ```json
+  {
+      "query": "Resources | summarize count()",
+      "managementGroupId": "myMG"
+  }
+  ```
 
 ## <a name="escape-characters"></a>逸出字元
 

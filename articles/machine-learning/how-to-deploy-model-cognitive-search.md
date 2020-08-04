@@ -10,12 +10,12 @@ ms.author: larryfr
 author: larryfr
 ms.reviewer: larryfr
 ms.date: 06/11/2020
-ms.openlocfilehash: c8b25e1d3ef2d2b780d88fbf2ba6c6568b4a804d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59671a0520d665d594356a2e6aee46116a8de5d3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744700"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541765"
 ---
 # <a name="deploy-a-model-for-use-with-cognitive-search"></a>部署用於認知搜尋的模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -216,7 +216,7 @@ myenv.python.conda_dependencies = conda_deps
 部署設定會定義用來執行 web 服務的 Azure Kubernetes Service 主控環境。
 
 > [!TIP]
-> 如果您不確定部署的記憶體、CPU 或 GPU 需求，可以流量分析來瞭解這些。 如需詳細資訊，請參閱[如何和在何處部署模型](how-to-deploy-and-where.md#prepare-to-deploy)。
+> 如果您不確定部署的記憶體、CPU 或 GPU 需求，可以流量分析來瞭解這些。 如需詳細資訊，請參閱[如何和在何處部署模型](how-to-deploy-and-where.md)。
 
 ```python
 from azureml.core.model import Model

@@ -1,7 +1,7 @@
 ---
 title: 解決常見安全性需求的腳本
 titleSuffix: Azure SQL Database & Azure SQL Managed Instance
-description: 本文提供 Azure SQL Database 和 Azure SQL 受控執行個體中的常見安全性需求和最佳作法
+description: 本文提供 Azure SQL Database 和 Azure SQL 受控執行個體中的常見安全性需求和最佳作法。
 ms.service: sql-db-mi
 ms.subservice: security
 ms.custom: sqldbrb=2
@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 6a3a52c90187920be13628a6d2fa44159e1109d7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6630b924decacc5ff59611c657e1d7e38b1813a7
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371782"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541714"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>使用 Azure SQL Database 和 Azure SQL 受控執行個體解決常見安全性需求的腳本
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -241,7 +241,7 @@ SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database �
 
 - 在 Azure Resource Manager：
   - 使用內建角色（如果可用）或 Azure 自訂角色，並指派必要的許可權。
-    - [Azure 內建角色](../../role-based-access-control/built-in-roles.md) (機器翻譯)
+    - [Azure 內建角色](../../role-based-access-control/built-in-roles.md)
     - [Azure 自訂角色](../../role-based-access-control/custom-roles.md) (機器翻譯)
 
 **最佳做法**：
@@ -255,7 +255,7 @@ SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database �
 - 以所需的確切許可權建立和使用自訂角色。 實務中使用的一般角色：
   - 安全性部署
   - 系統管理員
-  - 開發人員
+  - Developer
   - 支援人員
   - 稽核員
   - 自動化進程
@@ -291,7 +291,7 @@ SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database �
 - 識別存取系統的完整使用者（和自動化進程）階層。
 
 - 根據所需的使用者群組建立角色，並將許可權指派給角色。
-  - 針對 Azure 入口網站中的管理層級工作，或透過 PowerShell-自動化會使用 RBAC 角色。 尋找符合需求的內建角色，或使用可用的許可權建立 Azure 自訂角色
+  - 如需 Azure 入口網站或透過 PowerShell 自動化中的管理層級工作，請使用 Azure 角色。 尋找符合需求的內建角色，或使用可用的許可權建立 Azure 自訂角色
   - 在受控實例中建立伺服器範圍工作（建立新的登入、資料庫）的伺服器角色。
   - 建立資料庫層級工作的資料庫角色。
 
@@ -318,7 +318,7 @@ SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database �
 
 - 當內建角色授與太多許可權或許可權不足時，建立和使用使用者定義的角色。
 
-- 角色指派也可以暫時完成，也就是在 T-sql 的 SQL 代理程式作業步驟中，或使用適用于 RBAC 角色的 Azure PIM，以動態方式區分責任（DSD）。
+- 角色指派也可以暫時完成，也就是在 T-sql 的 SQL 代理程式作業步驟中，或使用 azure 角色的 Azure PIM，以動態方式區分責任（DSD）。
 
 - 請確定 Dba 沒有加密金鑰或金鑰存放區的存取權，而且有權存取金鑰的安全性系統管理員又無法再存取該資料庫。 使用可延伸[金鑰管理（EKM）](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm)可以更輕鬆地完成這項分割。 [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)可以用來執行 EKM。
 
@@ -342,7 +342,7 @@ SQL 驗證指的是使用使用者名稱和密碼連接到 Azure SQL Database �
   - [簽署預存程式](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)
 
 - 針對 Azure 資源管理：
-  - [Azure 內建角色](../../role-based-access-control/built-in-roles.md) (機器翻譯)
+  - [Azure 內建角色](../../role-based-access-control/built-in-roles.md)
   - [Azure 自訂角色](../../role-based-access-control/custom-roles.md) (機器翻譯)
   - [使用 Azure AD Privileged Identity Management 提升存取權](https://www.microsoft.com/itshowcase/using-azure-ad-privileged-identity-management-for-elevated-access)
 

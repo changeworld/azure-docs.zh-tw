@@ -7,12 +7,12 @@ ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c5c86f89882654e44f924ce0a19d4d71713144d
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 2bc129fc37347bd108ad62409490c5ce31b7728f
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431698"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538926"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>取得 VM 映像的共用存取簽章 URI
 
@@ -31,10 +31,10 @@ ms.locfileid: "87431698"
 
 有兩個常用的工具可用來建立 SAS 位址 (URL)：
 
-* **Microsoft 儲存體總管**– Azure 入口網站中提供的圖形化工具。
+* **Microsoft Azure 儲存體總管**– Azure 入口網站中提供的圖形化工具。
 * **Microsoft Azure CLI** – 建議用於非 Windows 作業系統和自動化或持續整合環境。
 
-### <a name="use-microsoft-storage-explorer"></a>使用 Microsoft 儲存體總管
+### <a name="use-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 儲存體總管
 
 1. 在 Azure 入口網站中，移至您的儲存體帳戶。
 2. 在左側的 [Explorer] 窗格中，開啟 [**儲存體總管**（預覽）] 工具。

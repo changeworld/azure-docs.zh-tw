@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 3a5e2c368fd956abb98b2b4c9ccd1060677f3e06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085753"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542733"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>尋找及刪除未連結的 Azure 受控和非受控磁碟 - Azure 入口網站
 
@@ -27,7 +27,7 @@ ms.locfileid: "87085753"
 
     在 [磁碟] 刀鋒視窗中，您會看到所有磁碟清單。 [擁有者] 資料行中含有「 **-** 」的磁碟都是未連結的磁碟。
 
-    [![](media/disks-find-unattached-portal/managed-disk-unattached-owner.png "Screenshot of the managed disks blade, if a disk has - in the Owner column, it is an unattached disk")](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
+    [![[受控磁片] 分頁的螢幕擷取畫面，如果磁片具有 [擁有者] 資料行，則它是未連接的磁片。](media/disks-find-unattached-portal/managed-disk-unattached-owner.png)](media/disks-find-unattached-portal/managed-disk-owner-unattached.png#lightbox)
 
 1. 選取要刪除的未連結磁碟，即可開啟磁碟的刀鋒視窗。
 1. 在磁碟的刀鋒視窗上，確認磁碟狀態為未連結，然後選取 [刪除]。

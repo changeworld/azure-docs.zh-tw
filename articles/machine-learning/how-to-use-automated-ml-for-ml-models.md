@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1e87eec4384887ebd82d5f70c0897add250f31fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6e4ed8514cd99d42790296a58296a73696989b69
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320794"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539130"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "87320794"
 在本文中，您將瞭解如何在 Azure Machine Learning studio 中不使用一行程式碼，建立、探索及部署自動化機器學習模型。
 
 >[!IMPORTANT]
-> Azure Machine learning studio 中的自動化 ML 體驗處於預覽狀態。 某些功能可能不受支援或功能有限。
+> Azure Machine Learning Studio 中的自動化 ML 體驗目前處於預覽狀態。 可能不支援特定功能，或功能受到限制。
 
  自動化機器學習是針對特定資料來選取最佳機器學習服務演算法的流程。 此流程可讓您快速產生機器學習模型。 [深入了解自動化機器學習](concept-automated-ml.md)。
  
@@ -108,7 +108,7 @@ ms.locfileid: "87320794"
     虛擬機器優先順序| 低優先順序虛擬機器較便宜，但不保證計算節點。 
     虛擬機器類型| 選取 [虛擬機器類型的 CPU 或 GPU]。
     虛擬機器大小| 為您的計算選取虛擬機器大小。
-    最小/最大節點| 若要分析資料，您必須指定一個或多個節點。 輸入所計算的節點數上限。 AML Compute 的預設為 6 個節點。
+    最小/最大節點數| 若要分析資料，您必須指定一個或多個節點。 輸入所計算的節點數上限。 AML Compute 的預設為 6 個節點。
     進階設定 | 這些設定可讓您為您的實驗設定使用者帳戶和現有的虛擬網路。 
     
     選取 [建立]。 建立新的計算可能會需要數分鐘。
@@ -229,7 +229,7 @@ Variance| 此資料行資料從其平均值分散程度的量值。
     計算類型| 選取想要部署的端點類型：*Azure Kubernetes Service (AKS)* 或 *Azure 容器執行個體 (ACI)* 。
     計算名稱| 僅適用於 AKS：選取想要部署的目標 AKS 叢集名稱。
     啟用驗證 | 選取允許以權杖為基礎或以金鑰為基礎的驗證。
-    使用自訂部署資產| 若想要上傳自己的評分指令碼和環境檔案，請啟用此功能。 [深入了解評分指令碼](how-to-deploy-and-where.md#script)。
+    使用自訂部署資產| 若想要上傳自己的評分指令碼和環境檔案，請啟用此功能。 [深入了解評分指令碼](how-to-deploy-and-where.md)。
 
     >[!Important]
     > 檔案名稱必須少於 32 個字元，且必須以英數字元開始及結束。 其中可包含虛線、底線、點和英數字元。 不允許空格。

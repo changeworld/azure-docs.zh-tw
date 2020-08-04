@@ -1,6 +1,6 @@
 ---
 title: 例外狀況管理 - Microsoft 威脅模型化工具 - Azure | Microsoft Docs
-description: 降低威脅模型化工具所暴露的威脅
+description: 深入瞭解 Threat Modeling Tool 中的例外狀況管理。 請參閱風險降低資訊和查看程式碼範例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 05e9e627afecfc95e03eae39eed1183857df8b4b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650096"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539929"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>安全框架︰例外狀況管理 | 緩和措施 
 | 產品/服務 | 發行項 |

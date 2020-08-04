@@ -5,12 +5,12 @@ description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中使用�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc839fd69e3b574c47aa7bb712583dfc0b9c711d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208052"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542699"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路連線和安全性最佳做法
 
@@ -37,7 +37,9 @@ ms.locfileid: "82208052"
 
 ![此圖表顯示兩個節點，且各有橋接器將其連線至單一 Azure VNet](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-您應對大部分的生產環境部署使用 Azure CNI 網路功能。 此網路模型可用來區隔資源的控制和管理。 從安全性觀點來看，您通常會想讓不同小組來管理及保護這些資源。 Azure CNI 網路功能可讓您透過指派給每個 Pod 的 IP 位址，直接連線到現有的 Azure 資源、內部部署資源或其他服務。
+針對生產環境部署，kubenet 和 Azure CNI 都是有效的選項。
+
+適用于生產環境的 Azure CNI 網路有一個值得注意的優點，就是網路模型可讓您區隔資源的控制和管理。 從安全性觀點來看，您通常會想讓不同小組來管理及保護這些資源。 Azure CNI 網路功能可讓您透過指派給每個 Pod 的 IP 位址，直接連線到現有的 Azure 資源、內部部署資源或其他服務。
 
 當您使用 Azure CNI 網路功能時，虛擬網路資源會在 AKS 叢集的不同資源群組中。 您可以將存取和管理這些資源的權限委派給 AKS 服務主體。 AKS 叢集所使用的服務主體在您虛擬網路內的子網路上必須至少具有[網路參與者](../role-based-access-control/built-in-roles.md#network-contributor)權限。 如果您想要定義[自訂角色](../role-based-access-control/custom-roles.md)，而不使用內建的網路參與者角色，則需要下列權限：
   * `Microsoft.Network/virtualNetworks/subnets/join/action`

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: b7a05f33c199ab46508fa2b9bc0ef576f888ef27
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e7c0a4cd6e44994c4b002fcc2e5fde441cf22283
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537709"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541646"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory Unpivot 轉換
 
@@ -46,7 +46,7 @@ ms.locfileid: "86537709"
 
 比方說，根據 "Region" 對 "Sales" 進行樞紐處理，就會得到來自每個銷售值的新資料行值。 例如： "25"、"50"、"1000"、.。。不過，如果您設定「銷售」的前置詞值，則「銷售」會在值前面加上。
 
-<img src="media/data-flow/unpivot3.png" width="400">
+![此圖顯示使用水果資料行作為 unipivot 金鑰的 unipivot 轉換前後的 PO、廠商和水果資料行。](media/data-flow/unpivot3.png)
 
 設定為「一般」資料行的排列方式，會使用彙總值將已樞紐的資料行分組在一起。 將資料行排列方式設定為「橫向」會在資料行和值之間交替。
 

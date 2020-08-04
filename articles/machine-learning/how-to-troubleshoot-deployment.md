@@ -11,18 +11,18 @@ ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, tracking-python
-ms.openlocfilehash: dcb2a50a91bec70dfe5d9adda7518f3510a8c973
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4741c6348c2a4077776d2d79bee56de26f62e2d1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373193"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540932"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>針對使用 Azure Kubernetes Service 和 Azure 容器實例的模型進行 Docker 部署進行疑難排解 
 
 瞭解如何使用 Azure Machine Learning，針對 Azure 容器實例（ACI）和 Azure Kubernetes Service （AKS）的常見 Docker 部署錯誤進行疑難排解和解決或解決。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂用帳戶**。 如果您沒有訂用帳戶，則可[試用免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
@@ -153,7 +153,7 @@ print(prediction)
 在本機測試期間，您可能需要更新 `score.py` 檔案，以新增記錄或嘗試解決您發現的任何問題。 若要重新載入 `score.py` 檔案的變更，請使用 `reload()`。 例如，下列程式碼會重新載入服務的指令碼，然後將資料過去。 資料會使用更新後的 `score.py` 檔案進行評分：
 
 > [!IMPORTANT]
-> `reload` 方法僅可用於本機部署。 如需將部署更新至另一個計算目標的詳細資訊，請參閱[部署模型](how-to-deploy-and-where.md#update)的更新一節。
+> `reload` 方法僅可用於本機部署。 如需將部署更新至另一個計算目標的詳細資訊，請參閱[如何更新您的 webservice](how-to-deploy-update-web-service.md)。
 
 ```python
 service.reload()

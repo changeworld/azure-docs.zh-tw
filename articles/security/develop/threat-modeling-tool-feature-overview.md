@@ -1,18 +1,18 @@
 ---
 title: Microsoft Threat Modeling Tool 功能總覽-Azure
-description: 深入了解威脅模型化工具中可用的所有功能
+description: 深入瞭解 Threat Modeling Tool 中可用的所有功能，例如分析視圖和報表。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
-ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e405ea35dcaa33ac7c8227385e4aaff86d9244cb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75552112"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539997"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威脅模型化工具功能概觀
 
@@ -29,7 +29,7 @@ ms.locfileid: "75552112"
 
 ![基本威脅模型](./media/threat-modeling-tool-feature-overview/basictmt.png)
 
-## <a name="navigation"></a>瀏覽
+## <a name="navigation"></a>導覽
 
 在探討內建功能之前，我們先來看一下工具的主要元件。
 
@@ -160,7 +160,7 @@ ms.locfileid: "75552112"
 
 ![訊息](./media/threat-modeling-tool-feature-overview/messages.png)
 
-### <a name="notes"></a>備註
+### <a name="notes"></a>注意
 
 若要在圖表中加入附註，請從 [訊息]**** 索引標籤切換到 [附註]****。
 
@@ -196,7 +196,7 @@ ms.locfileid: "75552112"
 
 完成優先順序的變更及更新每個產生之威脅的狀態後，您可以儲存檔案和/或列印報告。 移至 [**報表**] [  >  **建立完整報表**]。 為報告命名，接著您應該會看到類似下圖的內容：
 
-![報表](./media/threat-modeling-tool-feature-overview/report.png)
+![報告](./media/threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>後續步驟
 

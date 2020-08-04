@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a329ec32e241d88a56fc7031904777888ac194ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7bc39e409d0ac10e41fae58c5e5216f386427e30
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356401"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541731"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 連線能力疑難排解
 這篇文章說明 Azure AD Connect 與 Azure AD 之間的連線的運作方式，以及如何疑難排解連線問題。 這些問題最有可能出現在具有 Proxy 伺服器的環境中。
@@ -32,7 +32,7 @@ Azure AD Connect 使用「新式驗證」(使用 ADAL 程式庫) 來進行驗證
 
 在本文中，我們將說明 Fabrikam 如何透過其 Proxy 連接至 Azure AD。 Proxy 伺服器名為 fabrikamproxy，並且正在使用連接埠 8080。
 
-首先，我們必須確定已正確設定 [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) 。
+首先，我們必須確定已正確設定[**machine.config**](how-to-connect-install-prerequisites.md#connectivity) ，且**Microsoft Azure AD 同步處理服務**在 machine.config 檔案更新後重新開機一次。
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -122,7 +122,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 | 1/11/2016 8:33 |connect://provisioningapi.microsoftonline.com:443 |
 | 1/11/2016 8:33 |connect://*bwsc02-relay*.microsoftonline.com:443 |
 
-**設定**
+**設定 [報告]**
 
 | Time | URL |
 | --- | --- |

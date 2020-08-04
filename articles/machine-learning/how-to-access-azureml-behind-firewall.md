@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 27b625dfa31b366d95922e1dd0bad7fda6e86ed4
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407025"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540065"
 ---
-# <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>使用適用于 Azure Machine Learning 的 Azure 防火牆後方的工作區
+# <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>針對 Azure Machine Learning 使用防火牆後方的工作區
 
 在本文中，您將瞭解如何設定 Azure 防火牆以搭配 Azure Machine Learning 工作區使用。
+
+> [!IMPORTANT]
+> 雖然本檔中的資訊是以 Azure 防火牆為基礎，但您應該能夠將它與其他防火牆產品搭配使用。 如果您有關于如何允許透過防火牆進行通訊的問題，請參閱您所使用之防火牆的檔。
 
 您可以使用 Azure 防火牆來控制 Azure Machine Learning 工作區和公用網際網路的存取權。 如果未正確設定，防火牆可能會在使用您的工作區時發生問題。 Azure Machine Learning 工作區會使用各種主機名稱，如本文中所述。
 
@@ -53,6 +56,7 @@ ms.locfileid: "87407025"
 | **vault.azure.net** | Azure 金鑰保存庫 |
 | **azurecr.io** | Azure Container Registry |
 | **mcr.microsoft.com** | 適用于基底 docker 映射的 Microsoft Container Registry |
+| **your-acr-server-name.azurecr.io** | 只有當您的 Azure Container Registry 位於虛擬網路後方時才需要。 在此設定中，會從 Microsoft 環境建立私人連結至您訂用帳戶中的 ACR 實例。 針對您的 Azure Machine Learning 工作區使用 ACR 伺服器名稱。 |
 
 ## <a name="python-hosts"></a>Python 主機
 

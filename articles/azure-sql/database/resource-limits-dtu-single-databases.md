@@ -4,19 +4,19 @@ description: 此頁面說明 Azure SQL Database 中單一資料庫的一些常�
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: references_regions
+ms.custom: references_regions, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: fa8901f2a219b0693cee17bc4d0ab78da615c415
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fa15a5f95c2163309ecfd9cc0130d1860eb3b634
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325095"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542682"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>使用 DTU 購買模型的單一資料庫資源限制-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "87325095"
 | 最大 DTU | 5 |
 | 內含儲存體 (GB) | 2 |
 | 儲存體上限（GB） | 2 |
-| OLTP 記憶體內部儲存體上限 (GB) |不適用 |
+| OLTP 記憶體內部儲存體上限 (GB) |N/A |
 | 並行背景工作 (要求) 數上限 | 30 |
 | 並行工作階段數上限 | 300 |
 |||
@@ -57,7 +57,7 @@ ms.locfileid: "87325095"
 | 最大 DTU | 10 | 20 | 50 | 100 |
 | 內含存放裝置（GB） <sup>1</sup> | 250 | 250 | 250 | 250 |
 | 儲存體上限（GB） | 250 | 250 | 250 | 1024 |
-| OLTP 記憶體內部儲存體上限 (GB) | N/A | N/A | 不適用 | 不適用 |
+| OLTP 記憶體內部儲存體上限 (GB) | N/A | N/A | N/A | N/A |
 | 並行背景工作 (要求) 數上限| 60 | 90 | 120 | 200 |
 | 並行工作階段數上限 |600 | 900 | 1200 | 2400 |
 ||||||
@@ -77,7 +77,7 @@ ms.locfileid: "87325095"
 | 最大 DTU | 200 | 400 | 800 | 1600 | 3000 |
 | 內含存放裝置（GB） <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
 | 儲存體上限（GB） | 1024 | 1024 | 1024 | 1024 | 1024 |
-| OLTP 記憶體內部儲存體上限 (GB) | 不適用 | N/A | 不適用 | 不適用 |不適用 |
+| OLTP 記憶體內部儲存體上限 (GB) | N/A | N/A | N/A | N/A |N/A |
 | 並行背景工作 (要求) 數上限| 400 | 800 | 1600 | 3200 |6000 |
 | 並行工作階段數上限 |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
@@ -101,7 +101,7 @@ ms.locfileid: "87325095"
 <sup>2</sup>從 1024 gb 到 4096 gb，以 256 GB 為單位遞增。
 
 > [!IMPORTANT]
-> 所有區域目前均可使用進階層中超過 1 TB 的儲存體，但下列地區除外：中國東部、中國北部、德國中部、德國東北部、美國中西部、美國 DoD 地區和美國政府中部。 在這些區域中，進階層中的儲存空間上限為 1 TB。  如需詳細資訊，請參閱 [P11-P15 目前的限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
+> 所有區域目前均可取得進階層中超過 1 TB 的儲存空間，但不包括：中國東部、中國北部、德國中部和德國東北部。 在這些區域中，進階層中的儲存空間上限為 1 TB。  如需詳細資訊，請參閱 [P11-P15 目前的限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
 > [!NOTE]
 > 如需 `tempdb` 限制，請參閱[tempdb 限制](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)。
 

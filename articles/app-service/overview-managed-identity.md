@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f3ec80b5d71bbdbf0f1b89606859dcc734d037e5
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415035"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542207"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用 App Service 和 Azure Functions 的受控身分識別
 
@@ -314,6 +314,9 @@ principalId 是身分識別的唯一識別碼，而此身分識別用於 Azure A
 
 ### <a name="using-the-rest-protocol"></a>使用 REST 通訊協定
 
+> [!NOTE]
+> 此舊版通訊協定 (使用 "2017-09-01" API 版本) 使用的是 `secret` 標頭，而不是 `X-IDENTITY-HEADER`，而且只接受使用者指派的 `clientid` 屬性。 其也會以時間戳記格式傳回 `expires_on`。 MSI_ENDPOINT 可用來做為 IDENTITY_ENDPOINT 的別名，而 MSI_SECRET 則可用來做為 IDENTITY_HEADER 的別名。 Linux 使用量主控方案目前需要此版本的通訊協定。
+
 採用受控身分識別的應用程式有兩個已定義的環境變數：
 
 - IDENTITY_ENDPOINT - 本機權杖服務的 URL。
@@ -324,7 +327,7 @@ principalId 是身分識別的唯一識別碼，而此身分識別用於 Azure A
 > | 參數名稱    | 在     | 描述                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | resource          | 查詢  | 資源的 Azure AD 資源 URI，也就是要取得權杖的目標資源。 這可能是其中一個[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)，或任何其他資源 URI。    |
-> | api-version       | 查詢  | 要使用的權杖 API 版本。 請使用 "2019-08-01" 或更新版本。                                                                                                                                                                                                                                                                 |
+> | api-version       | 查詢  | 要使用的權杖 API 版本。 請使用 "2019-08-01" 或更新版本（除非使用目前僅提供「2017-09-01」的 Linux 使用量，請參閱上面的注意事項）。                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY-HEADER | 頁首 | IDENTITY_HEADER 環境變數的值。 此標頭用來協助減輕伺服器端要求偽造 (SSRF) 攻擊。                                                                                                                                                                                                    |
 > | client_id         | 查詢  | (選擇性) 要使用的使用者指派身分識別，其用戶端識別碼。 不能用於包含 `principal_id`、`mi_res_id` 或 `object_id` 的要求。 如果省略所有識別碼參數 (`client_id`、`principal_id`、`object_id` 和 `mi_res_id`)，則會使用系統指派的身分識別。                                             |
 > | principal_id      | 查詢  | (選擇性) 要使用的使用者指派身分識別，其主體識別碼。 `object_id` 是可代替使用的別名。 不能用於包含 client_id、mi_res_id 或 object_id 的要求。 如果省略所有識別碼參數 (`client_id`、`principal_id`、`object_id` 和 `mi_res_id`)，則會使用系統指派的身分識別。 |
@@ -335,7 +338,7 @@ principalId 是身分識別的唯一識別碼，而此身分識別用於 Azure A
 
 成功的 200 OK 回應包括含以下屬性的 JSON 本文：
 
-> | 屬性名稱 | 描述                                                                                                                                                                                                                                        |
+> | 屬性名稱 | 說明                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | 所要求的存取權杖。 呼叫端 Web 服務可以使用此權杖來向接收端 Web 服務進行驗證。                                                                                                                               |
 > | client_id     | 所使用身分識別的用戶端識別碼。                                                                                                                                                                                                       |
@@ -345,9 +348,6 @@ principalId 是身分識別的唯一識別碼，而此身分識別用於 Azure A
 > | token_type    | 表示權杖類型值。 Azure AD 唯一支援的類型是 FBearer。 如需有關持有人權杖的詳細資訊，請參閱 [OAuth 2.0 授權架構︰持有人權杖使用方式 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) \(英文\)。 |
 
 該回應與 [ AD 服務對服務存取權杖要求的回應](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。
-
-> [!NOTE]
-> 此舊版通訊協定 (使用 "2017-09-01" API 版本) 使用的是 `secret` 標頭，而不是 `X-IDENTITY-HEADER`，而且只接受使用者指派的 `clientid` 屬性。 其也會以時間戳記格式傳回 `expires_on`。 MSI_ENDPOINT 可用來做為 IDENTITY_ENDPOINT 的別名，而 MSI_SECRET 則可用來做為 IDENTITY_HEADER 的別名。
 
 ### <a name="rest-protocol-examples"></a>REST 通訊協定範例
 

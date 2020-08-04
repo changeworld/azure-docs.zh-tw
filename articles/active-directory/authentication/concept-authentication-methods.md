@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 4c224f40996625ead4592a3bf50e02f0877c76db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051322"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540830"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的驗證方法？
 
@@ -74,7 +74,7 @@ Authenticator 應用程式可協助防止未經授權即存取帳戶，並藉由
 ![範例網頁瀏覽器提示的螢幕擷取畫面，其中顯示用以完成登入程序的 Authenticator 應用程式通知](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> 如果您的組織有員工在中國工作或旅行，在 Android 裝置上*透過行動應用程式通知*的方法無法在該國家/區域中使用。 請為這些使用者提供替代驗證方法。
+> 如果您的組織有員工參與或前往中國，透過 Android 裝置上的行動裝置*應用程式*方法的通知將無法在該國家/地區運作，因為 Google play 服務（包括推播通知）會在區域中遭到封鎖。 不過，iOS 通知會正常執行。 針對 Android 裝置，應讓這些使用者使用替代的驗證方法。
 
 ### <a name="verification-code-from-mobile-app"></a>行動應用程式傳回的驗證碼
 

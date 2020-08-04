@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695a63705cce90bb0bf6b3cf787d9e6481b888
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 121bf7ef05c2a5bee621ecddcb40033d54194fac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603888"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542105"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 入口網站中指派或移除授權
 
@@ -35,7 +35,7 @@ Azure AD 服務有數個可用的授權方案，包括：
 
 - Azure AD Premium P2
 
-如需有關每個授權方案和相關聯授權詳細資料的特定資訊，請參閱[我需要什麼授權？](https://azure.microsoft.com/pricing/details/active-directory/)。
+如需有關每個授權方案和相關聯授權詳細資料的特定資訊，請參閱[我需要什麼授權？](https://azure.microsoft.com/pricing/details/active-directory/)。 若要註冊 Azure AD premium 授權方案，請參閱[這裡](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)。
 
 某些位置無法使用部分 Microsoft 服務。 必須先為所有成員指定 [使用位置]，才可以將授權指派給群組。**** 您可以在 Azure AD 中的 [Azure Active Directory]&gt;[使用者]&gt;[設定檔]&gt;[設定] 區域中設定此值。**** 未指定其使用位置的任何使用者都會繼承 Azure AD 組織的位置。
 
@@ -84,7 +84,7 @@ Azure AD 服務有數個可用的授權方案，包括：
     > [!NOTE]
     > 某些位置無法使用部分 Microsoft 服務。 必須先指定 [使用位置]，才可以將授權指派給使用者。**** 您可以在 Azure AD 中的 [Azure Active Directory]&gt;[使用者]&gt;[設定檔]&gt;[設定] 區域中設定此值。**** 未指定其使用位置的任何使用者都會繼承 Azure AD 組織的位置。
 
-1. 選取 [**指派**]。
+1. 選取 [指派]。
 
     系統會將使用者新增至授權使用者清單中，且該使用者擁有隨附 Azure AD 服務的存取權。
     > [!NOTE]
@@ -110,7 +110,7 @@ Azure AD 服務有數個可用的授權方案，包括：
 
     [指派授權] 頁面隨即更新，顯示已選取一名使用者且已設定指派。****
 
-1. 選取 [**指派**]。
+1. 選取 [指派]。
 
     系統會將群組新增至授權群組清單中，且所有成員均擁有隨附 Azure AD 服務的存取權。
 

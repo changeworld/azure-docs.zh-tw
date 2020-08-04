@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 2be074c457eaadd1fb6467cbcfdd45a2e7745613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 499b7348c645f4792332769ac598ffcea07ea102
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098895"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541901"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>為呼叫 web Api 的行動應用程式取得權杖
 
@@ -221,7 +221,7 @@ catch(MsalUiRequiredException)
 
 參數會藉 `WithPrompt()` 由指定提示來控制與使用者的互動。
 
-<img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
+![顯示提示結構中欄位的影像。 這些常數值會藉由定義 WithPrompt （）參數所顯示的提示類型，以控制與使用者的互動。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 類別會定義下列常數：
 
