@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4ad0cdedfa28e5b46f77d5e87f5bd48e25f11cc4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f1517fd577c5e6bd7341e5dde0204456524ba976
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292392"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545294"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重新開機 - 維護與停機時間
 有三種情況可能會導致 Azure 中的虛擬機器受到影響：未規劃的硬體維護、未預期的停機時間以及規劃的維護。
@@ -53,7 +53,9 @@ Azure 區域中的可用性區域是由**容錯網域**和**更新網域**組成
 可用性設定組是另一個資料中心設定，用於提供 VM 備援和可用性。 資料中心內的這項組態可以確保在規劃或未規劃的維護事件發生期間，至少有一部虛擬機器可以使用，且符合 99.95% 的 Azure SLA。 如需相關資訊，請參閱 [虛擬機器的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。
 
 > [!IMPORTANT]
-> 可用性設定組中的單一執行個體虛擬機器本身應該針對所有作業系統磁碟和資料磁碟使用進階 SSD 或 Ultra 磁碟，以符合虛擬機器連線能力至少 99.9% 的 SLA 資格。
+> 可用性設定組中的單一執行個體虛擬機器本身應該針對所有作業系統磁碟和資料磁碟使用進階 SSD 或 Ultra 磁碟，以符合虛擬機器連線能力至少 99.9% 的 SLA 資格。 
+> 
+> 具有標準 SSD 的單一執行個體虛擬機器的 SLA 至少為 99.5%，而具有標準 HDD 的單一執行個體虛擬機器的 SLA 至少為 95%。  請查看[虛擬機器的 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)
 
 基礎 Azure 平台會為可用性集合中的每部虛擬機器指派一個**更新網域**和一個**容錯網域**。 在指定的可用性設定組中，預設指派五個非使用者可設定的更新網域 (接著可以增加 Resource Manager 部署，以提供最多 20 個更新網域)，表示虛擬機器群組和可同時重新啟動的基礎實體硬體。 當一個可用性設定組中設定了超過五部虛擬機器，會將第六部虛擬機器放入與第一部虛擬機器相同的更新網域中，而第七部則會放入與第二部相同的更新網域中，以此類推。 重新啟動的更新網域順序可能不會在規劃的維護事件期間循序進行，而只會一次重新啟動一個更新網域。 在不同的更新網域上起始維護之前，重新啟動的更新網域有 30 分鐘的復原時間。
 
