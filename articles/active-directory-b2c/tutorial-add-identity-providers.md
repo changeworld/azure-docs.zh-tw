@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 746c406c4e6d458f699eb844156190e47d5c7a26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bdb7637624a1da5270eb1cba49e9f66e5042ccf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384901"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482000"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中將識別提供者新增至您的應用程式
 
@@ -133,7 +133,7 @@ ms.locfileid: "85384901"
 
 在教學課程中，您已完成必要條件的部分，建立了名為 *B2C_1_signupsignin1* 的註冊和登入使用者流程。 在本節中，您會將識別提供者新增至 *B2C_1_signupsignin1* 使用者流程。
 
-1. 選取 [使用者流程 (原則)]，然後選取 *B2C_1_signupsignin1* 使用者流程。
+1. 選取 [使用者流程]，然後選取 *B2C_1_signupsignin1* 使用者流程。
 2. 選取 [識別提供者]，然後選取您新增的 **Facebook** 和 **Contoso Azure AD** 識別提供者。
 3. 選取 [儲存]。
 

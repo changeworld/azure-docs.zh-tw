@@ -171,10 +171,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: 診斷記錄結構描述
           href: media-services-diagnostic-logs-schema.md
-    - name: 播放程式用戶端
+    - name: Azure 媒體播放器
       items:
-        - name: Azure 媒體播放器
-          href: use-azure-media-player.md
+        - name: Azure 媒體播放器概觀
+          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
     - name: 使用 v3 API 開發
       items:
         - name: 概觀
@@ -285,7 +285,11 @@
           items:
             - name: 透過 .NET
               displayName: 'encode, encoding, custom, transform'
-              href: customize-encoder-presets-how-to.md
+              items:
+                - name: 自訂編碼器預設值
+                  href: customize-encoder-presets-how-to.md
+                - name: 建立重疊轉換
+                  href: how-to-create-overlay.md
             - name: 透過 CLI
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
@@ -355,6 +359,14 @@
           href: download-results-howto.md
         - name: 訊號描述性音訊
           href: signal-descriptive-audio-howto.md
+    - name: 使用媒體播放器
+      items:
+        - name: Azure 媒體播放器完整安裝
+          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+        - name: 使用 Video.js 播放器
+          href: how-to-video-js-player.md
+        - name: 使用 Shaka 影片播放器
+          href: how-to-shaka-player.md
 - name: 參考
   items:
     - name: OpenAPI 規格 (Swagger)

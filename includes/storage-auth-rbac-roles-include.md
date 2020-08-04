@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: c0ca96d1829a73f856de021d1286e53007b03219
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: bc5d4e5a8a9607f74eb8733855a216b83520ff11
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368963"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503698"
 ---
 Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權 Blob 和佇列資料的存取權：
 
@@ -28,7 +28,7 @@ Azure 提供下列 Azure 內建角色，以使用 Azure AD 和 OAuth 來授權 B
 
 只有針對資料存取明確定義的角色，才能允許安全性主體存取 Blob 或佇列資料。 內建角色 (例如 **擁有者**、**參與者**和**儲存體帳戶參與者**) 允許安全性主體管理儲存體帳戶，但是不會透過 Azure AD 提供該帳戶內 Blob 或佇列資料的存取權。 不過，如果角色包含 **Microsoft.Storage/storageAccounts/listKeys/action**，則獲指派該角色的使用者可以透過具有帳戶存取金鑰的共用金鑰授權來存取儲存體帳戶中的資料。 如需詳細資訊，請參閱[使用 Azure 入口網站來存取 Blob 或佇列資料](../articles/storage/common/storage-access-blobs-queues-portal.md)。
 
-如需有關適用於資料服務和管理服務的 Azure 儲存體 Azure 內建角色的詳細資訊，請參閱 [Azure RBAC 的 Azure 內建角色](../articles/role-based-access-control/built-in-roles.md#storage)中的**儲存體**一節。 此外，如需在 Azure 中提供權限的不同類型角色詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure RBAC 角色和 Azure AD 角色](../articles/role-based-access-control/rbac-and-directory-admin-roles.md)。
+如需有關適用於資料服務和管理服務的 Azure 儲存體 Azure 內建角色的詳細資訊，請參閱 [Azure RBAC 的 Azure 內建角色](../articles/role-based-access-control/built-in-roles.md#storage)中的**儲存體**一節。 此外，如需在 Azure 中提供權限的不同類型角色詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色](../articles/role-based-access-control/rbac-and-directory-admin-roles.md)。
 
 > [!IMPORTANT]
-> RBAC 角色指派可能需要五分鐘的時間傳播。
+> Azure 角色指派可能需要五分鐘的時間傳播。

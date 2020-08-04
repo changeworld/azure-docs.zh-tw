@@ -55,22 +55,30 @@
       href: azure-netapp-files-set-up-capacity-pool.md
     - name: 將子網路委派至 Azure NetApp Files
       href: azure-netapp-files-delegate-subnet.md
-    - name: 建立適用於 Azure NetApp Files 的 SMB 磁碟區
+    - name: 建立及管理 NFS 磁碟區
+      items:
+        - name: 建立 NFS 磁碟區
+          href: azure-netapp-files-create-volumes.md
+        - name: 設定 NFSv4.1 預設網域
+          href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: 設定 NFSv4.1 Kerberos 加密
+          href: configure-kerberos-encryption.md
+        - name: 設定 Azure NetApp Files 的 NFS 用戶端
+          href: configure-nfs-clients.md
+        - name: 設定 NFS 磁碟區的匯出原則
+          href: azure-netapp-files-configure-export-policy.md
+    - name: 建立 SMB 磁碟區
       href: azure-netapp-files-create-volumes-smb.md
-    - name: 建立適用於 Azure NetApp Files 的 NFS 磁碟區
-      href: azure-netapp-files-create-volumes.md
-    - name: 針對 Azure NetApp Files 設定 NFSv4.1 預設網域
-      href: azure-netapp-files-configure-nfsv41-domain.md
-    - name: 設定 NFS 磁碟區的匯出原則
-      href: azure-netapp-files-configure-export-policy.md
-    - name: 管理磁碟區
-      href: azure-netapp-files-manage-volumes.md
+    - name: 建立雙重通訊協定磁碟區
+      href: create-volumes-dual-protocol.md
     - name: 對 Windows 或 Linux 虛擬機器掛接或取消掛接磁碟區
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: 管理快照集
       href: azure-netapp-files-manage-snapshots.md
     - name: 調整容量集區或磁碟區的大小
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: 動態變更磁碟區的服務等級
+      href: dynamic-change-volume-service-level.md
     - name: 開發
       items:
         - name: REST API

@@ -37,6 +37,8 @@
       href: tutorial-multiple-components-node.md
     - name: 連接多個元件裝置 (Python)
       href: tutorial-multiple-components-python.md
+    - name: 使用 MQTT 來連接裝置
+      href: tutorial-use-mqtt.md
 - name: 概念
   items:
     - name: 架構
