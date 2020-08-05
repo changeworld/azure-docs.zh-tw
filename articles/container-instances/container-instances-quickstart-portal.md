@@ -3,13 +3,13 @@ title: 快速入門 - 將 Docker 容器部署至容器執行個體 - 入口網�
 description: 在本快速入門中，您可以使用 Azure 入口網站快速地部署在隔離式 Azure 容器執行個體中執行的容器化的 Web 應用程式
 ms.topic: quickstart
 ms.date: 03/09/2020
-ms.custom: seodec18, mvc
-ms.openlocfilehash: 7a872e955db46b76d3b12f8ffc38d4a8e497ea63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom: seodec18, mvc, devx-track-javascript
+ms.openlocfilehash: 5f36c81abd462f6dfd59c42da71e096e07206cae
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79087990"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408062"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站部署容器執行個體
 

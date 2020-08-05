@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 7aa0889ab95cdac37f9fe0735c7ad58569621059
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: bf9e403fb8691f378558ef5f0403d132214ed187
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205401"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421768"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer 元件
 
@@ -75,7 +75,7 @@ Load Balancer 規則可用來定義要如何將傳入流量散發給後端集區
 例如，使用連接埠 80 的負載平衡規則，會將來自前端 IP 的流量路由傳送至後端執行個體的連接埠 80。
 
 <p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="負載平衡規則">
+  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="負載平衡規則">
 </p>
 
 *圖：負載平衡規則*
@@ -97,7 +97,7 @@ Load Balancer 規則可用來定義要如何將傳入流量散發給後端集區
 HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如虛擬網路中網路虛擬裝置 (NVA) 的高可用性和規模調整。 此功能可以在必須對大量連接埠進行負載平衡時提供協助。
 
 <p align="center">
-  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA 連接埠規則">
+  <img src="./media/load-balancer-components/harules.svg" alt="Figure depicts how Azure Load Balancer directs all frontend ports to three instances of all backend ports" width="512" title="HA 連接埠規則">
 </p>
 
 *圖：HA 連接埠規則*
@@ -111,7 +111,7 @@ HA 連接埠負載平衡規則可協助您處理重要的使用案例，例如�
 例如，如果您想要讓遠端桌面通訊協定 (RDP) 或安全殼層 (SSH) 工作階段分隔後端集區中的 VM 執行個體。 您可以將多個內部端點對應至相同前端 IP 位址的連接埠。 前端 IP 位址可以從遠端管理 VM，而不需要額外的 jumpbox。
 
 <p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="傳入的 NAT 規則">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="傳入的 NAT 規則">
 </p>
 
 *圖：輸入 NAT 規則*

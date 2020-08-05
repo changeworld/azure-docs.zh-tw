@@ -6,12 +6,13 @@ ms.topic: quickstart
 description: 本快速入門說明如何使用 Azure Dev Spaces 和命令列，在 Azure Kubernetes Service 上使用現有的 Helm 圖表開發應用程式
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: c37ea0b04e99cf1bba555e098bdf33b8a8558cfa
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7d1d782203401607d3909d79d1f0f3a499712c32
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996686"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414304"
 ---
 # <a name="quickstart-develop-an-application-with-an-existing-helm-chart-on-kubernetes---azure-dev-spaces"></a>快速入門：在 Kubernetes 上使用現有的 Helm 圖表開發應用程式 - Azure Dev Spaces
 在本指南中，您將了解如何：

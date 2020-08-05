@@ -9,12 +9,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: 2092ccbedd95ee13ac4ad929f052afd1d85729ec
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d0d5c77fde24b705dbfa7ac44b0d32f0967d1526
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268690"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425041"
 ---
 [沈浸式閱讀程式](https://www.onenote.com/learningtools)是經過全面設計的工具，可實作經實證的技術以改善閱讀理解程度。
 

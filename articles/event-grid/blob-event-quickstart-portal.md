@@ -3,12 +3,12 @@ title: 快速入門：將 Blob 儲存體事件傳送至 Web 端點 - 入口網�
 description: 快速入門：使用 Azure Event Grid 和 Azure 入口網站來建立 Blob 儲存體帳戶，並訂閱其事件。 將事件傳送到 Webhook。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fe942a4daa877088bd354352aa994e4e283f9be5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103614"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421598"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站將 Blob 儲存體事件路由傳送至 Web 端點
 
@@ -50,7 +50,7 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您會使用 Azur
 
 1. 選取 [部署至 Azure]，將解決方案部署至您的訂用帳戶。 
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. 在 [自訂部署] 頁面上，執行下列步驟： 
     1. [資源群組] 請選取您在建立儲存體帳戶時所建立的資源群組。 當您完成本教學課程之後，您可以藉由刪除資源群組，更輕鬆地進行清除。  
     2. 在 [網站名稱] 輸入 Web 應用程式的名稱。

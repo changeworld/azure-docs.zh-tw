@@ -9,15 +9,16 @@ ms.custom:
 - devcenter
 - seo-javascript-september2019
 - seo-javascript-october2019
+- devx-track-javascript
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 1d48fc818ca32b6168b0986ddb6453fe66fc8341
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c3157bb3e643c8aea4653f7cf12390938ae44d5a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80062250"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423247"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入門：使用 Node.js 來連線和查詢適用於 PostgreSQL 的 Azure 資料庫中的資料 - 單一伺服器
 
@@ -49,7 +50,7 @@ npm list
 
 1. 在 **Azure 入口網站**中，搜尋並選取您所建立的伺服器 (例如 [mydemoserver](https://portal.azure.com/))。
 
-1. 從伺服器的 [概觀]  面板，記下 [伺服器名稱]  和 [管理員使用者名稱]  。 如果您忘記密碼，您也可以從此面板重設密碼。
+1. 從伺服器的 [概觀] 面板，記下 [伺服器名稱] 和 [管理員使用者名稱]。 如果您忘記密碼，您也可以從此面板重設密碼。
 
    ![適用於 PostgreSQL 的 Azure 資料庫連接字串](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 

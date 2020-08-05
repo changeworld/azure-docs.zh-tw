@@ -3,12 +3,12 @@ title: 快速入門：將自訂事件傳送至 Web 端點 - 事件方格、Azure
 description: 快速入門：使用 Azure 事件方格和 Azure 入口網站發佈自訂主題，以及訂閱該主題的事件。 事件是由 Web 應用程式處理。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 21c3d043925d328c671de19444b0fed1c6950bf1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 592e2d6b7393da8cb55a457b022d6c2358048cfe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115225"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421037"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>快速入門：使用 Azure 入口網站和事件方格，將自訂事件路由傳送至 Web 端點
 
@@ -44,7 +44,8 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
 5. 部署成功之後，請在搜尋列中再次輸入**事件方格主題**，然後如同之前一樣，從下拉式清單中選取 [事件方格主題]。 
 6. 從清單中選取您建立的主題。 
 
-    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="從清單中選取您的主題":::  
+    :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topic.png" alt-text="從清單中選取您的主題":::
+
 7. 您會看到您主題的 [事件方格主題] 頁面。 讓此頁面保持開啟。 您稍後會在快速入門中使用此值。 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/event-grid-topic-home-page.png" alt-text="事件方格主題首頁":::
@@ -54,7 +55,7 @@ Event Grid 主題會提供使用者定義的端點，作為您發佈事件的目
 
 1. 在文章頁面中，選取 [部署至 Azure]，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"  alt="Button to Deploy to Aquent." /></a>
 1. 部署需要幾分鐘的時間才能完成。 成功部署之後，檢視 Web 應用程式，確定它正在執行。 在網頁瀏覽器中，瀏覽至：`https://<your-site-name>.azurewebsites.net`
 
     如果部署失敗，請檢查錯誤訊息。 這可能是因為已經採用網站名稱。 再次部署範本，並為網站選擇不同的名稱。 

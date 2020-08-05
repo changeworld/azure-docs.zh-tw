@@ -11,12 +11,13 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
-ms.openlocfilehash: 45e6fac971d7ccf57d6f9bae96a08ccaee023df3
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+- devx-track-javascript
+ms.openlocfilehash: 58adb3e8216fdda1f276760b103e02bf7de6e12e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687251"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422125"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>快速入門：使用適用於 IoT 中樞裝置佈建服務的 Node.js 裝置 SDK 來建立及佈建模擬 TPM 裝置
 
