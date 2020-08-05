@@ -91,7 +91,7 @@
       items:
         - name: 特殊權限存取概觀
           href: groups-features.md
-        - name: 探索群組
+        - name: 將群組帶進管理
           href: groups-discover-groups.md
         - name: 指派成員或擁有者
           href: groups-assign-member-owner.md

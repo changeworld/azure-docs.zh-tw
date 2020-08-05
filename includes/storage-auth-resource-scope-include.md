@@ -6,14 +6,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: tamram
-ms.openlocfilehash: 644d58c3d1c60611b0d22d2757da089313fa12b6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 96d8100f2cffcfb001a693575128ce19e742225d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423694"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534122"
 ---
-將 RBAC 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法的要求是，最好只授與最小的可能範圍。
+將 Azure 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法的要求是，最好只授與最小的可能範圍。
 
 下列清單說明您可以將 Azure Blob 和佇列資源的存取範圍設定在什麼層級 (從最小的範圍開始)：
 

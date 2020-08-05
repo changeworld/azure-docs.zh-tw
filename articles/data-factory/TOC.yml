@@ -726,6 +726,8 @@
           href: pricing-concepts.md
     - name: 疑難排解指南
       items:
+        - name: Data Factory UX
+          href: data-factory-ux-troubleshoot-guide.md
         - name: 活動
           href: data-factory-troubleshoot-guide.md
         - name: 連接器

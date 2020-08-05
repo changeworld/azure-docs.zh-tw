@@ -51,6 +51,12 @@
   items:
     - name: 設定網路監看員
       href: network-watcher-create.md
+    - name: 建立連線監視器 (預覽)
+      items:
+        - name: 使用 Azure 入口網站
+          href: connection-monitor-preview-create-using-portal.md
+        - name: 使用 ARMClient
+          href: connection-monitor-preview-create-using-arm-client.md
     - name: 診斷 VM 網路問題
       items:
         - name: 安裝 VM 擴充功能

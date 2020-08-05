@@ -4,7 +4,7 @@ summary: Azure 將資訊安全納入了各個層面。 Azure 提供獨特的資�
 brand: azure
 metadata:
   title: Azure 安全性文件
-  description: Azure 將資訊安全納入了各個層面。 Azure 提供獨特的資訊安全優勢，這些優勢衍生自全域安全性智慧、複雜的客戶型控制項以及安全強化基礎結構。 這項功能強大的組合能協助您保護應用程式和資料、支援您的合規性用途，並為各種規模的組織提供符合成本效益的安全性。
+  description: 深入了解 Azure 安全性。 請參閱安全性基礎、最佳做法和模式的相關資訊，以及 Azure 資訊安全中心。
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: b3c5fb0dd15c1211132e627b507aa20a043f09ba
-  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.openlocfilehash: de2b3baae0ab999c0e3eb8ed76194632e7b066e6
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/10/2020
-  ms.locfileid: "81115372"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87540847"
 highlightedContent:
   items:
   - title: Azure 安全性簡介

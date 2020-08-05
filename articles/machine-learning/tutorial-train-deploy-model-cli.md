@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: f3603bf8afdcd990144897113f4e8506629f60a3
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: b4167f8958f7a1613c4d48625f7a79a02c7588d0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429745"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543396"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>教學課程：透過 CLI 訓練和部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -383,7 +383,7 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.json --dc ac
 
 `inferenceConfig.yml` 檔案提供如何使用模型進行推斷的資訊。 舉例來說，其會參考輸入腳本 (`score.py`) 和軟體相依性。
 
-如需此檔案結構的詳細資訊，請參閱[推斷設定結構描述](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 如需輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md#prepare-to-deploy) (機器翻譯)。
+如需此檔案結構的詳細資訊，請參閱[推斷設定結構描述](reference-azure-machine-learning-cli.md#inference-configuration-schema)。 如需輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
 `aciDeploymentConfig.yml` 描述用來裝載服務的部署環境。 部署設定僅供您用於部署的計算類型使用。 在此案例中，會使用 Azure 容器執行個體。 如需詳細資訊，請參閱[部署設定結構描述](reference-azure-machine-learning-cli.md#deployment-configuration-schema)。
 

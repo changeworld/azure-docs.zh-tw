@@ -8,6 +8,8 @@
       href: features.md
     - name: 版本資訊
       href: release-notes.md
+    - name: 使用方式和診斷資料集合
+      href: usage-and-diagnostics-data-configuration.md
 - name: 快速入門
   expanded: true
   items:

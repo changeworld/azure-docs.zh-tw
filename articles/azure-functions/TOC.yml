@@ -345,8 +345,8 @@
       items:
         - name: 針對儲存體進行疑難排解
           href: functions-recover-storage-account.md
-        - name: 針對 Python 相依性進行疑難排解
-          href: recover-module-not-found.md
+        - name: 針對 Python 函式進行疑難排解
+          href: recover-python-functions.md
 - name: 參考
   items:
     - name: API 參考
