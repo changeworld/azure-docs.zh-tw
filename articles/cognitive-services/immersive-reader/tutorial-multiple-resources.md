@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 214d6d614fcc54a532766854f2e72ac45dbfa8ad
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267200"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407195"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>教學課程：整合多個沈浸式閱讀程式資源
 

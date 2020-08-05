@@ -4,15 +4,15 @@ description: 教學課程 - 了解如何使用 Azure Batch 透過 Azure Data Fac
 author: mammask
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 07/29/2020
 ms.author: komammas
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: a8f6fe49faf0624f6ef6d4fa8a346e22c69da599
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 165f688233ef03a390e8e1d5cccf2b2e45218c43
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851742"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407452"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教學課程：使用 Azure Batch 透過 Azure Data Factory 執行 Python 指令碼
 
@@ -99,7 +99,7 @@ df = df[df['Species'] == "setosa"]
 df.to_csv("iris_setosa.csv", index = False)
 
 # Upload iris dataset
-blobService.create_blob_from_text(containerName, "iris_setosa.csv", "iris_setosa.csv")
+blobService.create_blob_from_path(containerName, "iris_setosa.csv", "iris_setosa.csv")
 ```
 
 將指令碼儲存為 `main.py`，並將其上傳至 [Azure 儲存體] 容器。 請務必先在本機測試並驗證其功能，再將其上傳至您的 Blob 容器：

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a019ee6b0df52de70dfedca94feaede90e1f0d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 46d3ac6947293529308ad0abba9cd175d6b4dd6c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293341"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407331"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smarthr"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SmartHR 整合
 
@@ -90,7 +90,7 @@ ms.locfileid: "87293341"
     c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<SUBDOMAIN>.smarthr.jp/external_saml/acs`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的 [登入 URL]、[回覆 URL] 和 [識別碼] 來更新這些值。 請連絡 [SmartHR 用戶端支援小組](mailto:info@smarhr.jp)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的 [登入 URL]、[回覆 URL] 和 [識別碼] 來更新這些值。 請連絡 [SmartHR 用戶端支援小組](mailto:info@smarthr.jp)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
 
@@ -132,11 +132,11 @@ ms.locfileid: "87293341"
 
 ## <a name="configure-smarthr-sso"></a>設定 SmartHR SSO
 
-若要在 **SmartHR** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML] 和所複製的適當 URL 傳送給 [SmartHR 支援小組](mailto:info@smarhr.jp)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **SmartHR** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML] 和所複製的適當 URL 傳送給 [SmartHR 支援小組](mailto:info@smarthr.jp)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-smarthr-test-user"></a>建立 SmartHR 測試使用者
 
-在本節中，您會在 SmartHR 中建立名為 B.Simon 的使用者。 請與  [SmartHR 支援小組](mailto:info@smarhr.jp)合作，在 SmartHR 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您會在 SmartHR 中建立名為 B.Simon 的使用者。 請與  [SmartHR 支援小組](mailto:info@smarthr.jp)合作，在 SmartHR 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO 
 

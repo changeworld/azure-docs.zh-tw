@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: a4e8fc18ab7abfee483f36adef083bfb08a4a27f
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-javascript
+ms.openlocfilehash: cb9a674890330ba83b6e7fe754ecd83eda4031bb
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986092"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405991"
 ---
 開始使用適用於 JavaScript 的 Anomaly Detector 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 Anomaly Detector 服務可藉由自動對時間序列資料使用最適合的模型，而讓您找出其中的異常狀況，不論是什麼產業、情境或資料量都沒問題。
 
@@ -94,8 +95,8 @@ Anomaly Detector 回應是 [LastDetectResponse](https://docs.microsoft.com/javas
 ## <a name="load-time-series-data-from-a-file"></a>從檔案載入時間序列資料集
 
 從 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/AnomalyDetector/request-data.csv) 下載此快速入門的資料範例：
-1. 在瀏覽器中以滑鼠右鍵按一下 [原始]  。
-2. 按一下 [另存連結]  。
+1. 在瀏覽器中以滑鼠右鍵按一下 [原始]。
+2. 按一下 [另存連結]。
 3. 以 .csv 檔案的形式將該檔案另儲到應用程式目錄中。
 
 此時間序列資料會格式化為 .csv 檔案，且會傳送至 Anomaly Detector API。

@@ -3,12 +3,13 @@ title: 快速入門：適用於 Node.js 的 QnA Maker 用戶端程式庫
 description: 本快速入門示範如何開始使用適用於 Node.js 的 QnA Maker 用戶端程式庫。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 7b3c5e69e820951896cb00b82295dc07ba698c94
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 76d0587c68ac46253dbd937c661b06bdb8c495c8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114508"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404070"
 ---
 使用適用於 Node.js 的 QnA Maker 用戶端程式庫來：
 

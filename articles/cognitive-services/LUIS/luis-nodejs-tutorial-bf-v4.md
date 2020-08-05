@@ -3,12 +3,13 @@ title: 教學課程：Language Understanding Bot Node.js v4
 description: 使用 Node.js，在本教學課程中建置與 Language Understanding (LUIS) 整合的聊天機器人。 此聊天機器人會使用人力資源應用程式來快速實作聊天機器人解決方案。 此 Bot 是使用 Bot Framework 第 4 版和 Azure Web 應用程式 Bot 所建置的。
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f726034f18f834dcaf9b202ffbf03a45e5b6ce7
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 522502a043778d6f482c1756506063dfa6515ca3
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85443533"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405019"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>教學課程：使用以 Node.js 中 Language Understanding 啟用的 Web 應用程式 Bot
 

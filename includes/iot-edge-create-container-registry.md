@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: f8cb734e8a57e3b0ee114ae20f454d0034e9cdc9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0c43c6dcced94225e9ab9ae903535ce74286ad9a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387605"
+ms.locfileid: "87406704"
 ---
 ## <a name="create-a-container-registry"></a>建立容器登錄庫
 
@@ -33,7 +33,7 @@ ms.locfileid: "87387605"
 
 3. 選取 [建立]。
 
-4. 建立容器登錄後請加以瀏覽，並且在左窗格中，從位於 [設定] 下方的功能表中選取 [存取金鑰]。
+4. 建立容器登錄後請加以瀏覽，並且在左窗格中，從位於 [設定] 下方的功能表中選取 [存取金鑰]。 
 
 5. 按一下 [啟用管理使用者] 以檢視容器登錄的**使用者名稱**和**密碼**。
 

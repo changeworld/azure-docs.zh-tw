@@ -9,13 +9,14 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/28/2020
 ms.author: pafarley
+ms.custom: devx-track-javascript
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: c00a30dd10abd58e488a11b2ff79161695789e33
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: ee798ba765346d701851d6873f75c0e572ba7d04
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997561"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405446"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>快速入門：使用表單辨識器用戶端程式庫
 
@@ -24,8 +25,8 @@ ms.locfileid: "83997561"
 使用表單辨識器用戶端程式庫執行下列動作：
 
 * [辨識表單內容](#recognize-form-content)
-* [辨識回條](#recognize-receipts)
-* [定型自訂模型](#train-a-custom-model)
+* [辨識收據](#recognize-receipts)
+* [訓練自訂模型](#train-a-custom-model)
 * [使用自訂模型分析表單](#analyze-forms-with-a-custom-model)
 * [管理您的自訂模型](#manage-your-custom-models)
 
