@@ -20,14 +20,14 @@ ms.locfileid: "87544539"
 
 本文說明如何使用 Docker 封裝已註冊的 Azure Machine Learning 模型。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已在機器學習服務工作區中訓練並註冊模型。 若要瞭解如何訓練和註冊 scikit-learn 學習模型，請[遵循此教學](how-to-train-scikit-learn.md)課程。
 
 
 ## <a name="package-models"></a>封裝模型
 
-在某些情況下，您可能會想要建立 Docker 映射，而不部署模型（例如，您打算[部署至 Azure App Service](how-to-deploy-app-service.md)）。 或者，您可能會想要下載映射，並在本機 Docker 安裝上加以執行。 您甚至可能會想要下載用來建立映射、加以檢查、修改，以及手動建立映射的檔案。
+在某些情況下，您可能會想要建立 Docker 映射而不部署模型 (如果您打算[部署至 Azure App Service](how-to-deploy-app-service.md)) 。 或者，您可能會想要下載映射，並在本機 Docker 安裝上加以執行。 您甚至可能會想要下載用來建立映射、加以檢查、修改，以及手動建立映射的檔案。
 
 模型封裝可讓您執行這些動作。 它會封裝裝載模型做為 web 服務所需的所有資產，並可讓您下載完全建立的 Docker 映射或建立元件所需的檔案。 有兩種方式可以使用模型封裝：
 
@@ -69,7 +69,7 @@ myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd       
 docker run -p 6789:5001 --name mycontainer <imageid>
 ```
 
-此命令會啟動名為的最新映射版本 `myimage` 。 它會將本機埠6789對應至 web 服務所接聽之容器中的埠（5001）。 它也會將名稱指派 `mycontainer` 給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至 `http://localhost:6789/score` 。
+此命令會啟動名為的最新映射版本 `myimage` 。 它會將本機埠6789對應至 web 服務接聽的容器中的埠 (5001) 。 它也會將名稱指派 `mycontainer` 給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至 `http://localhost:6789/score` 。
 
 ### <a name="generate-a-dockerfile-and-dependencies"></a>產生 Dockerfile 和相依性
 
@@ -117,7 +117,7 @@ myimage         latest              739f22498d64        3 minutes ago       1.43
 docker run -p 6789:5001 --name mycontainer myimage:latest
 ```
 
-此命令會啟動名為的最新映射版本 `myimage` 。 它會將本機埠6789對應至 web 服務所接聽之容器中的埠（5001）。 它也會將名稱指派 `mycontainer` 給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至 `http://localhost:6789/score` 。
+此命令會啟動名為的最新映射版本 `myimage` 。 它會將本機埠6789對應至 web 服務接聽的容器中的埠 (5001) 。 它也會將名稱指派 `mycontainer` 給容器，讓容器更容易停止。 啟動容器之後，您可以將要求提交至 `http://localhost:6789/score` 。
 
 ### <a name="example-client-to-test-the-local-container"></a>測試本機容器的範例用戶端
 

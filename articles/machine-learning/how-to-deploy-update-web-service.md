@@ -16,7 +16,7 @@ ms.locfileid: "87544538"
 
 本文說明如何部署以 Azure Machine Learning 部署的 web 服務。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本教學課程假設您已使用 Azure Machine Learning 部署 web 服務。 如果您需要瞭解如何部署 web 服務，請遵循下列[步驟](how-to-deploy-and-where.md)。
 

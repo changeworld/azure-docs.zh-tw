@@ -26,7 +26,7 @@ ms.locfileid: "87543345"
 
 本節包含範例查詢，說明查詢語言結構並執行可能的查詢作業。
 
-依屬性取得[數位 twins](concepts-twins-graph.md) （包括識別碼和中繼資料）：
+依屬性取得[數位 twins](concepts-twins-graph.md) (包括識別碼和中繼資料) ：
 ```sql
 SELECT  * 
 FROM DigitalTwins T  
@@ -64,7 +64,7 @@ WHERE property = 42
 SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
 ```
 
-若要在有多個時指定要搜尋的對應項集合（例如 `JOIN` 使用時），請新增 `twinCollection` 參數： `IS_OF_MODEL(twinCollection, twinTypeName)` 。
+若要在有多個 (時指定要搜尋的對應項集合（例如 `JOIN`) 使用時），請新增 `twinCollection` 參數： `IS_OF_MODEL(twinCollection, twinTypeName)` 。
 以下是新增此參數值的查詢範例：
 
 ```sql
@@ -113,7 +113,7 @@ WHERE T.$dtId = 'ABC'
 ```
 
 >[!NOTE] 
-> 開發人員不需要將此 `JOIN` 值與子句中的索引鍵值相互關聯 `WHERE` （或指定以內嵌方式定義的索引鍵值 `JOIN` ）。 此相互關聯是由系統自動計算，因為關聯性屬性本身會識別目標實體。
+> 開發人員不需要將這個 `JOIN` 與子句中的索引鍵值相互關聯 `WHERE` (或指定以內嵌定義) 的索引鍵值 `JOIN` 。 此相互關聯是由系統自動計算，因為關聯性屬性本身會識別目標實體。
 
 #### <a name="query-the-properties-of-a-relationship"></a>查詢關聯性的屬性
 
@@ -129,7 +129,7 @@ WHERE T.$dtId = 'ABC'
 AND R.reportedCondition = 'clean'
 ```
 
-在上述範例中，請注意*reportedCondition*是*servicedBy*關聯性本身的屬性（而不是具有*servicedBy*關聯性的數位對應項）。
+在上述範例中，請注意*reportedCondition*是*servicedBy*關聯性本身的屬性， (不是具有*servicedBy*關聯性) 的數位對應項。
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 呼叫執行查詢
 
@@ -190,7 +190,7 @@ catch (RequestFailedException e)
         JOIN Floor RELATED Building.contains
         WHERE Building.$dtId = @buildingId
         ``` 
-    2. 若要找出房間，而不是逐一考慮樓層並執行 `JOIN` 查詢來尋找每個室內的房間，您可以使用建築物中的樓層集合（以下查詢中的命名*樓層*）進行查詢。
+    2. 若要找出房間，而不是逐一考慮樓層並執行 `JOIN` 查詢來尋找每個室內的房間，您可以在下面的查詢中，使用大樓 (中名為*Floor*的樓層集合進行查詢) 。
 
         在用戶端應用程式中：
         ```csharp

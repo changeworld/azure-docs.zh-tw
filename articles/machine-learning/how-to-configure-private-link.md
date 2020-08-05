@@ -1,5 +1,5 @@
 ---
-title: 設定私人端點（預覽）
+title: " (預覽設定私人端點) "
 titleSuffix: Azure Machine Learning
 description: 使用 Azure 私人連結，從虛擬網路安全地存取您的 Azure Machine Learning 工作區。
 services: machine-learning
@@ -18,7 +18,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 08/03/2020
 ms.locfileid: "87542173"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>設定 Azure Machine Learning 工作區的 Azure 私人連結（預覽）
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>為 Azure Machine Learning 工作區設定 Azure 私人連結 (預覽) 
 
 在本檔中，您將瞭解如何搭配使用 Azure 私用連結與您的 Azure Machine Learning 工作區。 
 
@@ -28,7 +28,7 @@ ms.locfileid: "87542173"
 Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人端點是虛擬網路內的一組私人 IP 位址。 接著，您可以將工作區的存取限制為只在私人 IP 位址上進行。 私用連結有助於降低資料外泄的風險。 若要深入了解私人端點，請參閱 [Azure Private Link](/azure/private-link/private-link-overview) 一文。
 
 > [!IMPORTANT]
-> Azure 私用連結不會影響 Azure 控制平面（管理作業），例如刪除工作區或管理計算資源。 例如，建立、更新或刪除計算目標。 這些作業會在公用網際網路上正常執行。
+> Azure 私用連結不會影響 Azure 控制平面 (管理作業) 例如刪除工作區或管理計算資源。 例如，建立、更新或刪除計算目標。 這些作業會在公用網際網路上正常執行。
 >
 > 已啟用 Private Link 的工作區不支援 Azure Machine Learning 計算執行個體預覽。
 >

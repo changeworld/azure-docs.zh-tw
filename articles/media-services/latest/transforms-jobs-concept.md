@@ -58,7 +58,7 @@ ms.locfileid: "87543056"
 
 ### <a name="viewing-schema"></a>正在查看架構
 
-在媒體服務 v3 中，預設為 API 本身的強型別實體。 您可以在[OPEN API 規格（或 Swagger）](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)中找到這些物件的「架構」定義。 您也可以在[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、 [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)或其他媒體服務 v3 SDK 參考檔中，查看預設的定義（例如**StandardEncoderPreset**）。
+在媒體服務 v3 中，預設為 API 本身的強型別實體。 您可以在 Open API 規格中找到這些物件的「架構」定義[ (或 Swagger) ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)。 您也可以在 [ [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)]、[ [.net SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)] 或其他媒體服務 v3 SDK 參考檔中，查看預設定義 (例如**StandardEncoderPreset**) 。
 
 ### <a name="creating-transforms"></a>建立轉換
 
@@ -82,11 +82,11 @@ ms.locfileid: "87543056"
 
 ### <a name="job-input-from-https"></a>來自 HTTPS 的作業輸入
 
-如果您的內容已透過 URL 存取，而且您不需要將來源檔案儲存在 Azure 中（例如，從 S3 匯入），請使用[來自 HTTPS 的作業輸入](job-input-from-http-how-to.md)。 如果您有 Azure Blob 儲存體中的內容，但不需要將檔案儲存在資產中，則此方法也適用。 目前，這個方法僅支援輸入的單一檔案。
+如果您的內容已可透過 URL 存取，而且您不需要將來源檔案儲存在 (Azure 中，請使用[來自 HTTPS 的作業輸入](job-input-from-http-how-to.md)（例如，從 S3) 匯入）。 如果您有 Azure Blob 儲存體中的內容，但不需要將檔案儲存在資產中，則此方法也適用。 目前，這個方法僅支援輸入的單一檔案。
 
 ### <a name="asset-as-job-input"></a>資產作為工作輸入
 
-如果輸入內容已在資產中，或內容儲存在本機檔案中，請使用[資產做為工作輸入](job-input-from-local-file-how-to.md)。 如果您打算發佈輸入資產進行串流處理或下載，這也是個不錯的選項（假設您想要發佈可供下載的的，但也想要進行語音轉換文字或臉部偵測）。 這個方法支援多檔案資產（例如，在本機編碼的 MBR 串流集）。
+如果輸入內容已在資產中，或內容儲存在本機檔案中，請使用[資產做為工作輸入](job-input-from-local-file-how-to.md)。 如果您打算發佈輸入資產以進行串流處理或下載，這也是個不錯的選擇， (假設您想要發佈可供下載的 [有]，但也想要執行 [語音轉換文字] 或 [臉部偵測]) 。 這個方法支援多檔案資產 (例如，在本機編碼) 的 MBR 串流集。
 
 ### <a name="checking-job-progress"></a>正在檢查工作進度
 
@@ -106,7 +106,7 @@ ms.locfileid: "87543056"
 
 ## <a name="configure-media-reserved-units"></a>設定媒體保留單位
 
-針對媒體服務 v3 或影片索引子所觸發的音訊分析和影片分析作業，強烈建議以10個 S3 媒體保留單元（Mru）布建您的帳戶。 如果您需要 10 個以上的 S3 MRU，請使用 [Azure 入口網站](https://portal.azure.com/)開立支援票證。
+針對媒體服務 v3 或影片索引子所觸發的音訊分析和影片分析作業，強烈建議以10個 S3 媒體保留單元布建您的帳戶， (Mru) 。 如果您需要 10 個以上的 S3 MRU，請使用 [Azure 入口網站](https://portal.azure.com/)開立支援票證。
 
 如需詳細資訊，請參閱[使用 CLI 調整媒體處理的規模](media-reserved-units-cli-how-to.md)。
 
@@ -121,7 +121,7 @@ ms.locfileid: "87543056"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在您開始開發之前，請先參閱[使用媒體服務 V3 api 進行開發](media-services-apis-overview.md)（包含存取 api、命名慣例等的資訊）。
+- 在您開始開發之前，請先參閱[使用媒體服務 V3 api 進行開發](media-services-apis-overview.md) (包含存取 api、命名慣例等的資訊 ) 
 - 查看下列教學課程：
 
     - [教學課程：根據 URL 編碼遠端檔案並串流影片](stream-files-tutorial-with-rest.md)

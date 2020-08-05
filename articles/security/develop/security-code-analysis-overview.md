@@ -21,7 +21,7 @@ ms.locfileid: "87543005"
 ---
 # <a name="about-microsoft-security-code-analysis"></a>關於 Microsoft 安全性程式碼分析
 
-透過 Microsoft 安全性程式碼分析延伸模組，小組可以將安全性程式碼分析加入其 Azure DevOps 的持續整合與傳遞（CI/CD）管線中。 Microsoft 的[安全開發生命週期（SDL）](https://www.microsoft.com/securityengineering/sdl/practices)專家建議您進行這項分析。
+透過 Microsoft 安全性程式碼分析延伸模組，小組可以在 Azure DevOps 持續整合和傳遞 (CI/CD) 管線中，新增安全性程式碼分析。 這項分析是由 Microsoft 的[SDL) 專家 (的安全開發生命週期](https://www.microsoft.com/securityengineering/sdl/practices)所建議。
 
 一致的 UX 藉由隱藏執行工具的複雜性來簡化安全性。 有了以 NuGet 為基礎的工具傳遞，小組就不再需要管理安裝或更新工具。 有了組建工作的命令列和基本介面，所有使用者都可以視需要對工具有很大的控制權。
 
@@ -65,7 +65,7 @@ Microsoft 安全性程式碼分析延伸模組讓您隨時都能使用最新版�
 
 ### <a name="binskim"></a>BinSkim
 
-BinSkim 是可移植的執行檔（PE）輕量掃描器，可驗證編譯器設定、連結器設定，以及二進位檔案的其他安全性相關特性。 此組建工作會在 binskim.exe 主控台應用程式周圍提供命令列包裝函式。 BinSkim 是一個開放原始碼工具。 如需詳細資訊，請參閱[GitHub 上的 BinSkim](https://github.com/Microsoft/binskim)。
+BinSkim 是可移植的可執行檔 (PE) 輕量掃描器，可驗證編譯器設定、連結器設定，以及二進位檔案的其他安全性相關特性。 此組建工作會在 binskim.exe 主控台應用程式周圍提供命令列包裝函式。 BinSkim 是一個開放原始碼工具。 如需詳細資訊，請參閱[GitHub 上的 BinSkim](https://github.com/Microsoft/binskim)。
 
 ### <a name="credential-scanner"></a>認證掃描器
 
@@ -95,7 +95,7 @@ Microsoft 安全性程式碼分析延伸模組也有三個後處理工作。 這
 
 您可以設定此工作來報告特定工具或所有工具的結果。 您也可以選擇要報告的問題層級，例如僅限錯誤或錯誤和警告。
 
-### <a name="post-analysis-build-break"></a>後續分析（組建中斷）
+### <a name="post-analysis-build-break"></a>後續分析 (組建中斷) 
 
 使用 [後期分析組建] 工作，您可以插入刻意導致組建失敗的組建中斷。 如果程式碼中有一或多個分析工具回報問題，您會插入組建中斷。
 

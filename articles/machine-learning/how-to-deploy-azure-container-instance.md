@@ -21,7 +21,7 @@ ms.locfileid: "87541119"
 # <a name="deploy-a-model-to-azure-container-instances"></a>將模型部署到 Azure 容器執行個體
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-瞭解如何使用 Azure Machine Learning 將模型部署為 Azure 容器實例（ACI）上的 web 服務。 如果下列其中一個條件成立，請使用 Azure 容器實例：
+瞭解如何使用 Azure Machine Learning 將模型部署為 Azure 容器實例上的 web 服務， (ACI) 。 如果下列其中一個條件成立，請使用 Azure 容器實例：
 
 - 您需要快速部署及驗證模型。 您不需要在一段時間之前建立 ACI 容器。 它們會在部署程式中建立。
 - 您正在測試處於開發狀態的模型。 

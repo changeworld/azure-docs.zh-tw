@@ -21,7 +21,7 @@ ms.locfileid: "87544569"
 
 本文說明如何在 Azure DevOps 中使用持續部署，以自動檢查已註冊模型的新版本，並將這些新模型推送至生產環境。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已在 Azure Machine Learning 工作區中註冊模型。 如需定型和註冊 scikit-learn 學習模型的範例，請參閱[本教學](how-to-train-scikit-learn.md)課程。
 
@@ -29,7 +29,7 @@ ms.locfileid: "87544569"
 
 您可以使用[Azure DevOps](https://azure.microsoft.com/services/devops/)的 Machine Learning 延伸模組，持續部署模型。 在 Azure Machine Learning 工作區中註冊新的機器學習模型時，您可以使用 Azure DevOps 的 Machine Learning 擴充功能來觸發部署管線。
 
-1. 註冊[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)，讓您的應用程式持續整合並傳遞至任何平臺或雲端。 （請注意，Azure Pipelines 與[Machine Learning 管線](concept-ml-pipelines.md#compare)不同）。
+1. 註冊[Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops)，讓您的應用程式持續整合並傳遞至任何平臺或雲端。  (請注意，Azure Pipelines 與[Machine Learning 管線](concept-ml-pipelines.md#compare)不同。 ) 
 
 1. [建立 Azure DevOps 專案。](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
 
@@ -47,7 +47,7 @@ ms.locfileid: "87544569"
 
     [![選取 AzureML 模型](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
-1. 在您的模型成品上啟用模型觸發程式。 當您開啟觸發程式時，每次在工作區中註冊該模型的指定版本（也就是最新版本）時，就會觸發 Azure DevOps 發行管線。
+1. 在您的模型成品上啟用模型觸發程式。 當您開啟觸發程式時，每次指定的版本 (時，就會在您的工作區中註冊該模型的最新版本) ，並觸發 Azure DevOps 發行管線。
 
     [![啟用模型觸發程式](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
