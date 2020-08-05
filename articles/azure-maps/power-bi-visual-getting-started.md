@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: e840517934e77c96f1c19c3243ad2884d7ccce66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261660"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551994"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>開始使用 Azure 地圖服務 Power BI 視覺效果
 
@@ -25,9 +25,9 @@ ms.locfileid: "86261660"
 > [!NOTE]
 > 您可以在 Power BI Desktop 和 Power BI 服務中建立和查看此視覺效果。 本文中的步驟和圖例來自 Power BI Desktop。
 
-Power BI 的 [Azure 地圖服務] 視覺效果會針對地圖上的空間資料提供一組豐富的資料視覺化。 估計超過80% 的商務資料有位置內容。 Azure 地圖服務視覺效果可用來深入瞭解此位置內容與您的商務資料有何關聯和影響。
+Power BI 的 Azure 地圖服務視覺效果會針對地圖頂端的空間資料提供一組豐富的資料視覺效果。 估計超過 80% 的商務資料有位置內容。 Azure 地圖服務視覺效果可用來深入瞭解此位置內容與您的商務資料有何關聯和影響。
 
-![具有顯示商務資料之 Azure 地圖服務視覺效果的 Power BI 桌面](media/power-bi-visual/azure-maps-visual-hero.png)
+![Power BI 桌面和顯示商務資料的 Azure 地圖服務視覺效果](media/power-bi-visual/azure-maps-visual-hero.png)
 
 ## <a name="what-is-sent-to-azure"></a>傳送至 Azure 的內容為何？
 
@@ -35,6 +35,9 @@ Azure 地圖服務視覺效果會連接到裝載于 Azure 中的雲端服務，�
 
 -   地圖的焦點區域詳細資料會傳送至 Azure，以抓取轉譯地圖畫布所需的影像， (也稱為地圖底圖) 。 
 -   [位置]、[緯度] 和 [經度] 值區中的資料可能會傳送至 Azure，以 (稱為地理編碼) 的進程來抓取地圖座標。 
+-   如果 Power BI 中的遙測選項已啟用，則可能會在視覺效果 (的健全狀況（例如當機報告) ）上收集遙測資料。
+
+除了以上所述的案例之外，對應上的其他資料也不會傳送至 Azure 地圖服務伺服器。 所有的資料呈現都會在用戶端的本機發生。
 
 您或您的系統管理員可能需要更新防火牆，以允許存取使用下列 URL 的 Azure 地圖服務平臺。
 

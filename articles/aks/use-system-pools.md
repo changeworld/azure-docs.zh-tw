@@ -1,20 +1,20 @@
 ---
-title: 在 Azure Kubernetes Service 中使用系統節點集區（AKS）
-description: 瞭解如何在 Azure Kubernetes Service （AKS）中建立和管理系統節點集區
+title: '在 Azure Kubernetes Service (AKS 中使用系統節點集區) '
+description: '瞭解如何在 Azure Kubernetes Service (AKS 中建立和管理系統節點集區) '
 services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.openlocfilehash: 2994a616d60258e81cbd5a409690abc18538183a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c808bda624cca3bd7bd28c6adfbdfb52fa2c068
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015522"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562815"
 ---
-# <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>管理 Azure Kubernetes Service 中的系統節點集區（AKS）
+# <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS 中管理系統節點集區) 
 
-在 Azure Kubernetes Service （AKS）中，相同設定的節點會群組在一起成為*節點*集區。 節點集區包含執行應用程式的基礎 Vm。 針對您的 AKS 叢集，系統節點集區和使用者節點集區是兩個不同的節點集區模式。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要目的。 使用者節點集區提供裝載應用程式 pod 的主要目的。 不過，如果您想要在 AKS 叢集中只有一個集區，可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
+在 Azure Kubernetes Service (AKS) 中，相同設定的節點會群組在一起成為*節點*集區。 節點集區包含執行應用程式的基礎 Vm。 針對您的 AKS 叢集，系統節點集區和使用者節點集區是兩個不同的節點集區模式。 系統節點集區提供裝載重要系統 pod （例如 CoreDNS 和 tunnelfront）的主要目的。 使用者節點集區提供裝載應用程式 pod 的主要目的。 不過，如果您想要在 AKS 叢集中只有一個集區，可以在系統節點集區上排程應用程式 pod。 每個 AKS 叢集至少必須包含一個具有至少一個節點的系統節點集區。
 
 > [!Important]
 > 如果您在生產環境中針對 AKS 叢集執行單一系統節點集區，建議您針對節點集區使用至少三個節點。
@@ -27,7 +27,7 @@ ms.locfileid: "87015522"
 
 當您建立和管理支援系統節點集區的 AKS 叢集時，適用下列限制。
 
-* 請參閱[配額、虛擬機器大小限制，以及 Azure Kubernetes Service 中的區域可用性（AKS）][quotas-skus-regions]。
+* 請參閱[Azure Kubernetes Service (AKS) 中的配額、虛擬機器大小限制和區域可用性][quotas-skus-regions]。
 * AKS 叢集必須以虛擬機器擴展集作為 VM 類型和*標準*SKU 負載平衡器來建立。
 * 節點集區的名稱只可包含小寫英數位元，且必須以小寫字母開頭。 針對 Linux 節點集區，長度必須介於1到12個字元之間。 對於 Windows 節點集區，長度必須介於1到6個字元之間。
 * 必須使用2020-03-01 或更高的 API 版本來設定節點集區模式。 在2020-03-01 之前的 API 版本上建立的叢集只會包含使用者節點集區，但可以遵循[更新集區模式步驟](#update-existing-cluster-system-and-user-node-pools)來遷移以包含系統節點集區。
@@ -48,7 +48,7 @@ ms.locfileid: "87015522"
 
 您可以使用節點集區執行下列作業：
 
-* 建立專用的系統節點集區（偏好將系統 pod 排程到的節點集區 `mode:system` ）
+* 建立專用的系統節點集區 (偏好將系統 pod 排程至) 的節點集區 `mode:system`
 * 將系統節點集區變更為使用者節點集區，前提是您有另一個系統節點集區，以便在 AKS 叢集中使用它。
 * 將使用者節點集區變更為系統節點集區。
 * 刪除使用者節點集區。
@@ -178,7 +178,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何在 AKS 叢集中建立和管理系統節點集區。 如需有關如何使用多個節點集區的詳細資訊，請參閱[使用多個節點][use-multiple-node-pools]集區。
 
@@ -213,6 +213,6 @@ az group delete --name myResourceGroup --yes --no-wait
 [supported-versions]: supported-kubernetes-versions.md
 [tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [maximum-pods]: configure-azure-cni.md#maximum-pods-per-node

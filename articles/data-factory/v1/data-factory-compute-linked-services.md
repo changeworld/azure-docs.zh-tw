@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 16e390f2c206cb1f81914bc02e15818282a54a5b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ac92e45e69522fe3de8abdb3afcf6049e5f07ac8
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537559"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563495"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory 版本1支援的計算環境
 > [!NOTE]
@@ -49,7 +49,7 @@ Microsoft 會更新具有最新 Hadoop 生態系統元件和修正程式的 HDIn
 在 2017 年 12 月 15 日之後：
 
 - 您無法再使用 Data Factory 第 1 版中的隨選 HDInsight 連結服務，建立以 Linux 為基礎的 HDInsight 3.3 版 (或較舊版本) 叢集。 
-- 如果現有 Data Factory 版本1隨選 HDInsight 連結服務的 JSON 定義中未明確指定[ **OsType**和**version**屬性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，預設值會從**version = 3.1，osType = Windows**變更為**version = \<latest HDI default version\> （ https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) ，osType = Linux**。
+- 如果現有 Data Factory 版本1隨選 HDInsight 連結服務的 JSON 定義中未明確指定[ **OsType**和**version**屬性](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service)，預設值會從**Version = 3.1，osType = Windows**變更為**version = \<latest HDI default version\> (https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) ，osType = Linux**。
 
 在 2018 年 7 月 31 日之後：
 
@@ -114,7 +114,7 @@ Data Factory 可自動建立以 Windows 為基礎或以 Linux 為基礎的隨選
 > [!IMPORTANT]
 > HDInsight 叢集會在您於 JSON **linkedServiceName** 屬性中指定的 Azure Blob 儲存體內建立「預設容器」**。 根據設計，HDInsight 不會在刪除叢集時刪除此容器。 除非隨選 HDInsight 連結服務中有現有的即時叢集 (**timeToLive**)，否則每當有需要處理的配量時，系統就會建立 HDInsight 叢集。 當處理完成時，系統就會刪除此叢集。 
 >
-> 隨著處理的配量越來越多，您會在 Blob 儲存體中看到許多容器。 如果在對作業進行疑難排解時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱會遵循模式︰`adf<your Data Factory name>-<linked service name>-<date and time>`。 您可以使用 [Microsoft 儲存體總管](https://storageexplorer.com/) 之類的工具來刪除 Blob 儲存體中的容器。
+> 隨著處理的配量越來越多，您會在 Blob 儲存體中看到許多容器。 如果在對作業進行疑難排解時不需要這些容器，建議您加以刪除以降低儲存成本。 這些容器的名稱會遵循模式︰`adf<your Data Factory name>-<linked service name>-<date and time>`。 您可以使用[Microsoft Azure 儲存體總管](https://storageexplorer.com/)之類的工具來刪除 Blob 儲存體中的容器。
 >
 > 
 

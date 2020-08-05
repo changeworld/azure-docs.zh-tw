@@ -6,16 +6,16 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073621"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564090"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>了解移轉工具的運作方式
 
-如[先前所宣佈](monitoring-classic-retirement.md)，Azure 監視器中的傳統警示將于2019年8月31日淘汰（原本為2019年6月30日）。 Azure 入口網站提供遷移工具給使用傳統警示規則的客戶，以及想要自行觸發遷移的使用者。
+如[先前所宣佈](monitoring-classic-retirement.md)，Azure 監視器中的傳統警示將于2019年8月31日淘汰， (最初是 2019) 。 Azure 入口網站提供遷移工具給使用傳統警示規則的客戶，以及想要自行觸發遷移的使用者。
 
 本文說明自發遷移工具的運作方式。 它也會說明一些常見問題的解決辦法。
 
@@ -25,15 +25,15 @@ ms.locfileid: "87073621"
 ## <a name="classic-alert-rules-that-will-not-be-migrated"></a>不會遷移的傳統警示規則
 
 > [!IMPORTANT]
-> 活動記錄警示（包括服務健康情況警示）和記錄警示不會受到遷移的影響。 遷移僅適用于[這裡](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)所述的傳統警示規則。
+> 活動記錄警示 (包括服務健康情況警示) 和記錄警示不會受到遷移的影響。 遷移僅適用于[這裡](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)所述的傳統警示規則。
 
-雖然此工具幾乎可以遷移所有[傳統的警示規則](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)，但還是有一些例外狀況。 下列警示規則不會使用工具（或從2019年9月開始自動遷移期間）進行遷移：
+雖然此工具幾乎可以遷移所有[傳統的警示規則](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)，但還是有一些例外狀況。 下列警示規則不會使用工具進行遷移 (或在2019年9月) 開始自動遷移期間：
 
-- 虛擬機器來賓計量（Windows 和 Linux）的傳統警示規則。 請參閱本文稍後的在新的計量[警示中重新建立這類警示規則的指引](#guest-metrics-on-virtual-machines)。
+- 傳統警示規則用於虛擬機器的來賓計量， (Windows 和 Linux) 。 請參閱本文稍後的在新的計量[警示中重新建立這類警示規則的指引](#guest-metrics-on-virtual-machines)。
 - 傳統的儲存體計量的傳統警示規則。 請參閱[監視傳統儲存體帳戶的指導](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/)方針。
 - 某些儲存體帳戶計量的傳統警示規則。 請參閱本文稍後的[詳細資料](#storage-account-metrics)。
 - 某些 Cosmos DB 計量的傳統警示規則。 請參閱本文稍後的[詳細資料](#cosmos-db-metrics)。
-- 傳統的警示規則會用於所有傳統虛擬機器和雲端服務計量（Microsoft.classiccompute/virtualMachines 和 Microsoft.classiccompute/domainNames/個位置/角色）。 請參閱本文稍後的[詳細資料](#classic-compute-metrics)。
+- 所有傳統虛擬機器和雲端服務計量上的傳統警示規則 (Microsoft.classiccompute/virtualMachines 和 Microsoft.classiccompute/domainNames/) /個位置/角色。 請參閱本文稍後的[詳細資料](#classic-compute-metrics)。
 
 如果您的訂用帳戶有任何這類傳統規則，您必須手動進行遷移。 因為我們無法提供自動遷移，所以這些類型的任何現有、傳統計量警示都將繼續工作，直到2020年6月為止。 此延伸模組可讓您將時間移至新的警示。 您也可以在2020年6月之前，繼續針對上述例外狀況建立新的傳統警示。 不過，針對其他所有專案，2019年8月之後就無法建立新的傳統警示。
 
@@ -104,13 +104,13 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 
 ### <a name="classic-compute-metrics"></a>傳統計算計量
 
-傳統計算計量上的任何警示都不會使用遷移工具來遷移，因為新的警示尚未支援傳統計算資源。 未來將會新增對這些資源類型的新警示的支援。 一旦可供使用之後，客戶必須根據其傳統警示規則，在2020年6月前重新建立新的對等警示規則。
+傳統計算計量上的任何警示都不會使用遷移工具來遷移，因為新的警示尚未支援傳統計算資源。 支援這些資源類型的新警示目前處於公開預覽狀態，而且客戶可以根據其傳統警示規則重新建立新的對等警示規則。
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>已淘汰計量的傳統警示規則
 
 這些是先前支援但最終已淘汰之計量的傳統警示規則。 一小部分的客戶可能會對這類計量具有不正確傳統警示規則。 由於這些警示規則無效，因此不會進行遷移。
 
-| 資源類型| 已淘汰的度量 |
+| 資源類型| 已淘汰的計量 (s)  |
 |-------------|----------------- |
 | Microsoft.DBforMySQL/servers | compute_consumption_percent，compute_limit |
 | Microsoft.DBforPostgreSQL/servers | compute_consumption_percent，compute_limit |
@@ -161,11 +161,11 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 | SASSuccess | 維度為 "ResponseType" = "Success" 和 "Authentication" = "SAS" 的交易度量 | |
 | ServerOtherError | 維度為 "ResponseType" = "ServerOtherError" 的交易度量 | |
 | ServerTimeOutError | 維度為 "ResponseType" = "ServerTimeOutError" 的交易度量  | |
-| 成功 | 維度為 "ResponseType" = "Success" 的交易度量 | |
-| TotalBillableRequests| 交易 | |
+| Success | 維度為 "ResponseType" = "Success" 的交易度量 | |
+| TotalBillableRequests| 異動 | |
 | TotalEgress | 輸出 | |
 | TotalIngress | 輸入 | |
-| TotalRequests | 交易 | |
+| TotalRequests | 異動 | |
 
 ### <a name="microsoftinsightscomponents"></a>Microsoft insights/元件
 
@@ -268,7 +268,7 @@ Mongo 失敗要求的警示必須分割成多個警示，因為沒有提供相�
 在遷移過程中，將會建立新的計量警示和新的動作群組，然後將會刪除傳統警示規則。 不過，原則可能會讓我們無法建立資源。 根據原則，部分或所有規則無法遷移。 封鎖進程的原則會列在 [[遷移] 工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中。 解決此問題的方法是：
 
 - 從原則指派中排除訂用帳戶或資源群組，以進行遷移程式的持續時間。 [深入瞭解管理原則排除範圍](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion)。
-- 移除或變更「audit」或「append」的效果（例如，可以解決與遺漏標記相關的問題）。 [深入瞭解管理原則效果](../../governance/policy/concepts/definition-structure.md#policy-rule)。
+- 移除或變更對「audit」或「附加」 (的效果，例如，可以解決與遺漏標記) 相關的問題。 [深入瞭解管理原則效果](../../governance/policy/concepts/definition-structure.md#policy-rule)。
 
 ## <a name="next-steps"></a>後續步驟
 

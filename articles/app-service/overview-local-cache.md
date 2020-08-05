@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628788"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562441"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service 本機快取概觀
 
@@ -24,7 +24,7 @@ Azure App Service 內容會儲存在 Azure 儲存體上，並以持久的方式�
 * 內容會由應用程式的多個虛擬機器 (VM) 執行個體共用。
 * 內容具有持久性，且可透過執行應用程式來修改。
 * 記錄檔和診斷資料檔案會在相同的共用內容資料夾底下提供使用。
-* 發佈新內容時會直接更新內容資料夾。 您可以透過 SCM 網站和執行中應用程式立即查看相同的內容（通常某些技術（例如 ASP.NET）會在某些檔案變更時起始應用程式重新開機以取得最新內容）。
+* 發佈新內容時會直接更新內容資料夾。 您可以透過 SCM 網站和執行中的應用程式立即查看相同的內容 (通常某些技術（例如 ASP.NET）會在某些檔案變更時起始應用程式重新開機，以取得最新的內容) 。
 
 雖然許多應用程式會使用上述其中一項功能或所有功能，但某些應用程式只需要可從中執行的內容存放區，而且此存放區具備高效能、唯讀和高可用性。 這些應用程式可以受益於特定本機快取的 VM 執行個體。
 
@@ -102,8 +102,11 @@ Azure App Service 本機快取功能可讓您以 Web 角色檢視您的內容。
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>如何知道我的網站是否已切換成使用本機快取？
 如果搭配預備環境使用「本機快取」功能，在本機快取準備就緒之前將無法完成交換作業。 若要檢查您的網站是否正在執行本機快取，您可以檢查工作者處理序環境變數 `WEBSITE_LOCALCACHE_READY`。 使用 [背景工作角色處理序環境變數](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) 頁面中的指示，存取多個執行個體上的工作者處理序環境變數。  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>我剛剛發佈了新的變更，但我的應用程式似乎沒有變更。 為什麼？
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>我剛剛發佈了新的變更，但我的應用程式似乎沒有變更。 原因為何？
 如果您的應用程式使用「本機快取」，則您需要重新啟動您的網站，以取得最新的變更。 不想對生產網站發佈變更嗎？ 請參閱前面的最佳作法一節中的位置選項。
+
+> [!NOTE]
+> [[從封裝執行](deploy-run-package.md)] 部署選項與本機快取不相容。
 
 ### <a name="where-are-my-logs"></a>我的記錄在哪裡？
 使用本機快取，您的記錄和資料的資料夾看起來會有點不同。 不過，子資料夾的結構會保持相同，不同之處在於這些子資料夾會位在格式為「唯一 VM 識別碼」+ 時間戳記的子資料夾底下。

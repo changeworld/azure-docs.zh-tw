@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88e30e85402f60489839b0a34b5a793fd7192df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0ae598fb9e4018369230de5fadcf173a3df9fb4c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502472"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551688"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -44,7 +44,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 若要了解如何將系統管理角色指派給 Azure Active Directory 中的使用者，請參閱[在 Azure Active Directory 中檢視和指派系統管理員角色](directory-manage-roles-portal.md)。
 
 > [!Note]
-> 如果您有 Azure AD premium P2 授權，而且您已經是 Privileged Identity Management （PIM）使用者，則所有角色管理工作都是在許可權身分識別管理中執行，而不是在 Azure AD 中執行。
+> 如果您有 Azure AD premium P2 授權，而且您已經是 Privileged Identity Management (PIM) 使用者，則所有角色管理工作都是在許可權身分識別管理中執行，而不是在 Azure AD 中執行。
 >
 > ![在 PIM 中為已經使用 PIM 並具有 Premium P2 授權的使用者，Azure AD 管理的角色](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
@@ -195,8 +195,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 請勿使用。 此角色會自動指派給 Azure AD Connect 服務，不適用於也不支援任何其他用途。
 
 ### <a name="directory-writers"></a>[目錄寫入者](#directory-writers-permissions)
-
-這是舊版角色，用來指派給不支援[同意架構](../develop/quickstart-register-app.md)的應用程式。 不應將它指派給任何使用者。
+此角色的使用者可以讀取和更新使用者、群組和服務主體的基本資訊。 僅將此角色指派給不支援[同意架構](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的應用程式。 不應將它指派給任何使用者。
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365 管理員/CRM 管理員](#crm-service-administrator-permissions)
 
@@ -215,7 +214,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="external-id-user-flow-administrator"></a>[外部識別碼使用者流程管理員](#external-id-user-flow-administrator-permissions)
 
-具有此角色的使用者可以建立和管理 Azure 入口網站中的使用者流程（也稱為「內建」原則）。 這些使用者可以自訂 HTML/CSS/JavaScript 內容、變更 MFA 需求、選取權杖中的宣告、管理 API 連接器，以及為 Azure AD 組織中的所有使用者流程設定會話設定。 另一方面，此角色並不包括檢查使用者資料的能力，或對組織架構中包含的屬性進行變更。 Identity Experience Framework 原則的變更（也稱為自訂原則）也不在此角色的範圍內。
+具有此角色的使用者可以建立和管理使用者流程， (也稱為 Azure 入口網站中) 的「內建」原則。 這些使用者可以自訂 HTML/CSS/JavaScript 內容、變更 MFA 需求、選取權杖中的宣告、管理 API 連接器，以及為 Azure AD 組織中的所有使用者流程設定會話設定。 另一方面，此角色並不包括檢查使用者資料的能力，或對組織架構中包含的屬性進行變更。 Identity Experience Framework 原則的變更 (也稱為自訂原則) 也在此角色的範圍外。
 
 ### <a name="external-id-user-flow-attribute-administrator"></a>[外部識別碼使用者流程屬性管理員](#external-id-user-flow-attribute-administrator-permissions)
 
@@ -501,7 +500,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 ### <a name="user-administrator"></a>[使用者管理員](#user-administrator-permissions)
 
-具有此角色的使用者可以建立使用者，以及管理使用者的所有層面，但有一些限制（請參閱表格），而且可以更新密碼到期原則。 此外，具有此角色的使用者可以建立與管理所有群組。 此角色也包含建立和管理使用者檢視、管理支援票證，以及監視服務健康情況的能力。 對於具有大部分系統管理員角色的使用者，使用者管理員沒有權限可管理其某些使用者屬性。 具有此角色的使用者沒有管理 MFA 的權限。 下表列出此限制的例外角色。
+具有此角色的使用者可以建立使用者，並以一些限制管理使用者的所有層面 (查看資料表) ，並可更新密碼到期原則。 此外，具有此角色的使用者可以建立與管理所有群組。 此角色也包含建立和管理使用者檢視、管理支援票證，以及監視服務健康情況的能力。 對於具有大部分系統管理員角色的使用者，使用者管理員沒有權限可管理其某些使用者屬性。 具有此角色的使用者沒有管理 MFA 的權限。 下表列出此限制的例外角色。
 
 | **權限** | **可以執行** |
 | --- | --- |
@@ -1001,22 +1000,36 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
-| microsoft.directory/groups/create | 在 Azure Active Directory 中建立 groups。 |
-| microsoft.directory/groups/createAsOwner | 在 Azure Active Directory 中建立 groups。 建立者會新增為第一個擁有者，而建立的物件會算在建立者的 250 個建立物件配額中。 |
 | microsoft.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 屬性。 |
-| microsoft.directory/groups/basic/update | 更新 Azure Active Directory 中 groups 的基本屬性。 |
+| microsoft 目錄/群組/assignLicense | 管理 Azure Active Directory 中群組的授權。 |
+| microsoft.directory/groups/basic/update | 更新 Azure Active Directory 中 groups 的基本屬性。  |
+| microsoft. 目錄/群組/分類/更新 | Azure Active Directory 中群組的 [更新分類] 屬性。 |
+| microsoft.directory/groups/create | 在 Azure Active Directory 中建立 groups。 |
+| microsoft 目錄/群組/groupType/更新 | 更新 Azure Active Directory 中群組的 groupType 屬性。 |
 | microsoft.directory/groups/members/update | 更新 Azure Active Directory 中的 groups.members 屬性。 |
 | microsoft.directory/groups/owners/update | 更新 Azure Active Directory 中的 groups.owners 屬性。 |
+| microsoft 目錄/群組/reprocessLicenseAssignment | 重新處理 Azure Active Directory 中群組的授權指派。 |
+| microsoft 目錄/群組/securityEnabled/更新 | 更新 Azure Active Directory 中群組的 secutiryEnabled 屬性。 |
 | microsoft.directory/groups/settings/update | 更新 Azure Active Directory 中的 groups.settings 屬性。 |
+| microsoft 目錄/群組/可見度/更新 | 群組的更新可見度屬性 |
 | microsoft.directory/groupSettings/basic/update | 更新 Azure Active Directory 中 groupSettings 的基本屬性。 |
 | microsoft.directory/groupSettings/create | 在 Azure Active Directory 中建立 groupSettings。 |
 | microsoft.directory/groupSettings/delete | 在 Azure Active Directory 中刪除 groupSettings。 |
+| microsoft 目錄/oAuth2PermissionGrants/基本/更新 | 更新 Azure Active Directory 中 oAuth2PermissionGrants 的基本屬性。 |
+| microsoft 目錄/oAuth2PermissionGrants/建立 | 在 Azure Active Directory 中建立 oAuth2PermissionGrants。 |
+| microsoft.directory/servicePrincipals/synchronizationCredentials/manage | 管理應用程式布建密碼和認證。 |
+| microsoft.directory/servicePrincipals/synchronizationJobs/manage | 啟動、重新開機和暫停應用程式布建同步處理工作。 |
+| microsoft.directory/servicePrincipals/synchronizationSchema/manage | 建立和管理應用程式布建同步處理作業和架構。 |
 | microsoft.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 屬性。 |
 | microsoft.directory/users/assignLicense | 管理 Azure Active Directory 中的使用者授權。 |
 | microsoft.directory/users/basic/update | 更新 Azure Active Directory 中 users 的基本屬性。 |
-| microsoft.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有使用者重新整理權杖失效。 |
+| microsoft 目錄/使用者/停用 | 停用 Azure Active Directory 中的使用者帳戶。 |
+| microsoft 目錄/使用者/啟用 | 在 Azure Active Directory 中啟用使用者帳戶 |
+| microsoft.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有使用者重新整理權杖失效，要求使用者在下次登入時重新驗證 |
 | microsoft.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 屬性。 |
-| microsoft.directory/users/userPrincipalName/update | 更新 Azure Active Directory 中的 users.userPrincipalName 屬性。 |
+| microsoft 目錄/使用者/reprocessLicenseAssignment | 在 Azure Active Directory 中重新處理使用者的授權指派。 |
+| microsoft 目錄/使用者/userPrincipalName/update | 更新 Azure Active Directory 中的 [使用者. userPrincipalName] 屬性。 |
+
 
 ### <a name="exchange-service-administrator-permissions"></a>Exchange 服務管理員權限
 
@@ -1899,7 +1912,7 @@ CRM 服務管理員 | Dynamics 365 管理員 | 44367163-eba1-44c3-98af-f5787879f
 裝置使用者 | 已被取代 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 目錄讀取器 | 目錄讀取器 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
 目錄同步處理帳戶 | 未顯示，因為不得使用 | d29b2b05-8046-44ba-8758-1e26182fcf32
-目錄撰寫者 | 未顯示，因為不得使用 | 9360feb5-f418-4baa-8175-e2a00bac4301
+目錄撰寫者 | 目錄撰寫者 | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange 服務管理員 | Exchange 系統管理員 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部識別碼使用者流程管理員 | 外部識別碼使用者流程管理員 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 外部識別碼使用者流程屬性管理員 | 外部識別碼使用者流程屬性管理員 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-ms.date: 07/20/2020
-ms.openlocfilehash: ed3f23b13920a9c3220a030059fdc8471f350d28
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 08/04/2020
+ms.openlocfilehash: c24a78413b09de04a10266f883e11617bb7a2f27
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428225"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554034"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -34,14 +34,14 @@ SQL Database 和 SQL 受控執行個體都使用 SQL Server 技術來建立每�
 
 這些備份可讓您在設定的保留期間內，將資料庫還原到某個時間點。 備份會儲存為[GRS 儲存體 blob](../../storage/common/storage-redundancy.md) ，並複寫到[配對的區域](../../best-practices-availability-paired-regions.md)，以防止中斷影響主要區域中的備份儲存體。 
 
-如果您的資料保護規則要求您的備份可延長時間（最多10年），您可以為單一和集區資料庫設定[長期保留](long-term-retention-overview.md)。
+如果您的資料保護規則要求您的備份可延長時間 (最多10年) ，您可以為單一和集區資料庫設定[長期保留](long-term-retention-overview.md)。
 
 您可以使用這些備份來︰
 
 - 使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API，將[現有的資料庫還原至](recovery-using-backups.md#point-in-time-restore)保留期限內過去的時間點。 針對單一和集區資料庫，此作業會在與原始資料庫相同的伺服器上建立新的資料庫，但在不同的名稱下，以避免覆寫原始資料庫。 還原完成之後，您可以刪除或[重新命名](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database)原始資料庫，並重新命名已還原的資料庫，使其具有原始資料庫名稱。 在受控實例上，這項作業可以同樣地在相同的訂用帳戶和相同的區域中，于相同或不同的受控實例上建立資料庫複本。
 - 將[已刪除的資料庫還原至刪除的時間](recovery-using-backups.md#deleted-database-restore)或保留期間內的任何時間點。 已刪除的資料庫只能在原始資料庫建立所在的相同伺服器或受控實例上還原。 刪除資料庫時，服務會在刪除之前先取得最後的交易記錄備份，以避免任何資料遺失。
 - [將資料庫還原到另一個地理區域](recovery-using-backups.md#geo-restore)。 異地還原可讓您在無法存取您的資料庫或主要區域中的備份時，從地理災難中復原。 它會在任何 Azure 區域中的任何現有伺服器或受控實例上建立新的資料庫。
-- 如果資料庫已設定長期保留原則（LTR），請從單一資料庫或集區資料庫[的特定長期備份還原資料庫](long-term-retention-overview.md)。 LTR 可讓您使用[Azure 入口網站](long-term-backup-retention-configure.md#using-the-azure-portal)或[Azure PowerShell](long-term-backup-retention-configure.md#using-powershell)來還原舊版本的資料庫，以滿足合規性要求或執行舊版的應用程式。 如需詳細資訊，請參閱[長期保留](long-term-retention-overview.md)。
+- 如果資料庫已設定長期保留原則 (LTR) ，請從單一資料庫或集區資料庫[的特定長期備份還原資料庫](long-term-retention-overview.md)。 LTR 可讓您使用[Azure 入口網站](long-term-backup-retention-configure.md#using-the-azure-portal)或[Azure PowerShell](long-term-backup-retention-configure.md#using-powershell)來還原舊版本的資料庫，以滿足合規性要求或執行舊版的應用程式。 如需詳細資訊，請參閱[長期保留](long-term-retention-overview.md)。
 
 若要執行還原，請參閱[從備份還原資料庫](recovery-using-backups.md)。
 
@@ -85,7 +85,7 @@ SQL Database 和 SQL 受控執行個體會計算已使用的備份儲存體總�
 
 ### <a name="monitor-consumption"></a>監視耗用量
 
-針對 vCore 資料庫，每個備份類型（完整、差異和記錄）所耗用的儲存體會在 [資料庫監視] 分頁上報告為個別的計量。 下圖顯示如何監視單一資料庫的備份儲存體耗用量。 此功能目前無法供受控實例使用。
+針對 vCore 資料庫，每個備份類型所使用的儲存體 (完整、差異和記錄) 會在 [資料庫監視] 分頁上報告為個別的計量。 下圖顯示如何監視單一資料庫的備份儲存體耗用量。 此功能目前無法供受控實例使用。
 
 ![監視 Azure 入口網站中的資料庫備份耗用量](./media/automated-backups-overview/backup-metrics.png)
 
@@ -106,13 +106,13 @@ SQL Database 和 SQL 受控執行個體會計算已使用的備份儲存體總�
 如果您刪除資料庫，系統會以與線上資料庫的特定保留期限相同的方式來保留備份。 您無法變更已刪除之資料庫的備份保留期限。
 
 > [!IMPORTANT]
-> 如果您刪除伺服器或受控實例，則該伺服器或受控實例上的所有資料庫也會一併刪除且無法復原。 您無法還原已刪除的伺服器或受控實例。 但是，如果您已針對資料庫或受控實例設定長期保留（LTR），則不會刪除長期保留備份，而且可以用來將相同訂用帳戶中不同伺服器或受控實例上的資料庫還原到進行長期保留備份的時間點。
+> 如果您刪除伺服器或受控實例，則該伺服器或受控實例上的所有資料庫也會一併刪除且無法復原。 您無法還原已刪除的伺服器或受控實例。 但是，如果您已為資料庫或受控實例設定了長期保留 (LTR) ，就不會刪除長期保留備份，而且可以用來將不同伺服器或相同訂用帳戶中的受控實例上的資料庫還原到進行長期保留備份的時間點。
 
 過去1-35 天內 PITR 的用途備份保留期有時稱為短期備份保留。 如果您需要保留備份的時間超過35天的最短短期保留期限，您可以啟用[長期保留](long-term-retention-overview.md)。
 
 ### <a name="long-term-retention"></a>長期保留
 
-針對單一和集區資料庫和受控實例，您可以在 Azure Blob 儲存體中設定完整備份的長期保留（LTR），最長可達10年。 如果您啟用 LTR 原則，每週完整備份會自動複製到不同的 GRS 儲存體容器。 若要符合各種合規性需求，您可以針對每週、每月和/或每年完整備份選取不同的保留週期。 儲存體耗用量取決於選取的 LTR 備份頻率，以及保留期間或期間。 您可以使用[ltr 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=sql-database)來預估 LTR 儲存體的成本。
+針對單一和集區資料庫和受控實例，您可以在 Azure Blob 儲存體中設定長期保留 (LTR) 的完整備份（最多10年）。 如果您啟用 LTR 原則，每週完整備份會自動複製到不同的 GRS 儲存體容器。 若要符合各種合規性需求，您可以針對每週、每月和/或每年完整備份選取不同的保留週期。 儲存體耗用量取決於選取的 LTR 備份頻率，以及保留期間或期間。 您可以使用[ltr 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=sql-database)來預估 LTR 儲存體的成本。
 
 就像 PITR 備份，LTR 備份會以異地多餘儲存體來保護。 如需詳細資訊，請參閱 [Azure 儲存體備援](../../storage/common/storage-redundancy.md) \(部分機器翻譯\)。
 
@@ -120,7 +120,7 @@ SQL Database 和 SQL 受控執行個體會計算已使用的備份儲存體總�
 
 ## <a name="storage-costs"></a>儲存體費用
 
-儲存體的價格會根據您使用的是 DTU 模型還是 vCore 模型而有所不同。
+備份儲存體的價格會因您使用的是 DTU 模型或 vCore 模型，也會根據您的區域而有所不同。 備份儲存體是依取用的每 GB/月計費，如需定價，請參閱[Azure SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database/single/)頁面和[Azure SQL 受控執行個體定價](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)頁面。
 
 ### <a name="dtu-model"></a>DTU 模型
 
@@ -146,13 +146,13 @@ SQL Database 和 SQL 受控執行個體會計算已使用的備份儲存體總�
 
 SQL Database 和 SQL 受控執行個體會在所有備份檔案中，以累計值來計算您的計費備份儲存體總計。 此值每小時會回報給 Azure 計費管線，這會匯總此每小時使用量，以在每個月結束時取得您的備份儲存體耗用量。 如果刪除資料庫，備份儲存體的耗用量會隨著較舊的備份存留期而逐漸降低，並予以刪除。 由於差異備份和記錄備份需要較舊的完整備份才能還原，因此所有三種備份類型都會在每週集合中一起清除。 刪除所有備份之後，就會停止計費。 
 
-簡單的例子是，假設資料庫已累積 744 GB 的備份儲存體，而此數量在整個月內都維持不變，因為資料庫已完全閒置。 若要將此累計儲存體耗用量轉換成每小時使用量，請將它除以744.0 （每月31天 * 每日24小時）。 SQL Database 會向 Azure 計費管線報告資料庫每小時耗用 1 GB 的 PITR 備份（以固定費率計算）。 Azure 計費會匯總此耗用量，並顯示整個月 744 GB 的使用量。 成本會以您的區域中的金額/GB/月費率為基礎。
+簡單的例子是，假設資料庫已累積 744 GB 的備份儲存體，而此數量在整個月內都維持不變，因為資料庫已完全閒置。 若要將此累計儲存體耗用量轉換成每小時使用量，請將它除以 744.0 (每月31天 * 每日24小時) 。 SQL Database 會向 Azure 計費管線報告資料庫每小時耗用 1 GB 的 PITR 備份（以固定費率計算）。 Azure 計費會匯總此耗用量，並顯示整個月 744 GB 的使用量。 成本會以您的區域中的金額/GB/月費率為基礎。
 
-現在是更複雜的範例。 假設相同的閒置資料庫在該月的中間，將其保留時間增加7天到14天。 這項增加會導致備份儲存體總計加倍到 1488 GB。 SQL Database 會報告 1 GB 的使用量，小時1到372（當月的前半部）。 它會將時數373到744（當月的後半部）的使用量報告為 2 GB。 此使用量會匯總為每月 1116 GB 的最終帳單。
+現在是更複雜的範例。 假設相同的閒置資料庫在該月的中間，將其保留時間增加7天到14天。 這項增加會導致備份儲存體總計加倍到 1488 GB。 SQL Database 會報告 1 GB 的使用量，小時1到 372 () 的前半個月。 它會將時數373到744的使用量報告為 2 GB， () 的後半個月。 此使用量會匯總為每月 1116 GB 的最終帳單。
 
 實際的備份計費案例較複雜。 因為資料庫中的變更速率取決於工作負載，且在一段時間內是可變的，所以每個差異和記錄備份的大小也會不同，導致每小時備份儲存體耗用量有相應的波動。 此外，每個差異備份都會包含自上次完整備份之後，資料庫中所做的所有變更，因此，所有差異備份的總大小會逐漸增加一周的時間，然後在一組較舊的完整、差異和記錄備份過期之後，變得非常顯著。例如，如果在完整備份完成後才執行大量寫入活動（例如索引重建），則索引重建所做的修改將會包含在重建期間所建立的交易記錄備份中、下一次的差異備份中，以及在下一次完整備份之前所進行的每個差異備份。 對於較大資料庫中的第二個案例，服務中的優化會建立完整備份，而不是差異備份（如果差異備份會過度大）。 這會減少所有差異備份的大小，直到下列完整備份為止。
 
-您可以監視每個備份類型（完整、差異、交易記錄）一段時間的備份儲存體總耗用量，如[監視耗用量](#monitor-consumption)中所述。
+您可以依照[監視耗用量](#monitor-consumption)中所述，監視每個備份類型的備份儲存體總耗用量 (完整、差異、交易記錄) 一段時間。
 
 ### <a name="monitor-costs"></a>監視成本
 
@@ -171,7 +171,7 @@ SQL Database 和 SQL 受控執行個體會在所有備份檔案中，以累計�
 
 ## <a name="backup-integrity"></a>備份完整性
 
-Azure SQL 工程小組會持續不斷地測試自動資料庫備份的還原。 （SQL 受控執行個體目前無法使用這項測試）。在還原時間點時，資料庫也會收到 DBCC CHECKDB 完整性檢查。
+Azure SQL 工程小組會持續不斷地測試自動資料庫備份的還原。  (SQL 受控執行個體目前無法使用這項測試。 ) 在還原時間點時，資料庫也會收到 DBCC CHECKDB 完整性檢查。
 
 在完整性檢查期間找到的任何問題都會對工程小組發出警示。 如需詳細資訊，請參閱[SQL Database 中的資料完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。
 
@@ -261,7 +261,7 @@ Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -Instanc
 Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
 ```
 
-零（0）天保留期表示備份會立即刪除，而且不會再保留給已刪除的資料庫。
+零 (0) 天保留期表示備份會立即刪除，而且不會再保留給已刪除的資料庫。
 一旦刪除的資料庫的 PITR 備份保留已縮減，就不再可以增加。
 
 ---

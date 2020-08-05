@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447714"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562679"
 ---
 # <a name="azure-security-baseline-for-automation"></a>自動化的 Azure 安全性基準
 
@@ -30,11 +30,11 @@ ms.locfileid: "87447714"
 
 **指導**方針： Azure 自動化帳戶尚未支援 Azure 私用連結，以透過私人端點來限制服務的存取權。 針對 Azure 中的資源進行驗證並執行的 runbook 會在 Azure 沙箱上執行，並利用共用的後端資源，Microsoft 會負責彼此隔離;其網路功能不受限制，而且可以存取公用資源。 除了支援混合式 Runbook 背景工作角色以外，Azure 自動化目前沒有私人網路的虛擬網路整合。 如果您使用的是不含混合式 Runbook 背景工作角色的全新服務，則不適用此控制項。
 
-若要進一步隔離您的 runbook，您可以使用在 Azure 虛擬機器上執行的混合式 Runbook 背景工作角色。 當您建立 Azure 虛擬機器時，您必須建立虛擬網路（VNet），或使用現有的 VNet，並使用子網來設定您的 Vm。 請確定所有已部署的子網都已套用網路安全性群組，且該群組適用于應用程式信任的埠和來源的特定網路存取控制。 如需服務特有的需求，請參閱該特定服務的安全性建議。
+若要進一步隔離您的 runbook，您可以使用在 Azure 虛擬機器上執行的混合式 Runbook 背景工作角色。 當您建立 Azure 虛擬機器時，您必須建立虛擬網路 (VNet) 或使用現有的 VNet，並將您的 Vm 設定為使用子網。 請確定所有已部署的子網都已套用網路安全性群組，且該群組適用于應用程式信任的埠和來源的特定網路存取控制。 如需服務特有的需求，請參閱該特定服務的安全性建議。
 
 或者，如果您有特定的需求，也可能會使用 Azure 防火牆來符合它。
 
-* [Azure 中的虛擬網路和虛擬機器](../virtual-machines/windows/network-overview.md)
+* [Azure 中的虛擬網路和虛擬機器](../virtual-machines/network-overview.md)
 
 * [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
@@ -52,7 +52,7 @@ ms.locfileid: "87447714"
 
 **指導**方針： Azure 自動化目前與混合式 Runbook 背景工作角色支援以外的私人網路沒有虛擬網路整合。 如果您使用的是不含混合式 Runbook 背景工作角色的全新服務，則不適用此控制項。
 
-如果您使用的是 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，請確定包含這些背景工作角色的子網已透過網路安全性群組（NSG）啟用，並設定流量記錄以將記錄轉送至儲存體帳戶以進行流量審核。 您也可以將 NSG 流量記錄轉送到 Log Analytics 工作區，並使用流量分析來提供 Azure 雲端中流量的深入解析。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
+如果您使用的是 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，請確定包含這些背景工作角色的子網已使用網路安全性群組來啟用 (NSG) 並設定流量記錄，以將記錄轉送至儲存體帳戶以進行流量審核。 您也可以將 NSG 流量記錄轉送到 Log Analytics 工作區，並使用流量分析來提供 Azure 雲端中流量的深入解析。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
 雖然 NSG 規則和使用者定義的路由不適用於私人端點，但仍支援輸出連線的 NSG 流量記錄和監視資訊，並可加以使用。
 
@@ -76,7 +76,7 @@ ms.locfileid: "87447714"
 
 **指導**方針：除了支援混合式 Runbook 背景工作角色以外，Azure 自動化目前沒有私人網路的虛擬網路整合。 如果您使用的是不含混合式 Runbook 背景工作角色的全新服務，則不適用此控制項。
 
-如果您使用的是 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，請在裝載混合式 Runbook 背景工作角色的虛擬網路上啟用分散式阻絕服務（DDoS）標準保護，以防範 DDoS 攻擊。 藉由使用 Azure 資訊安全中心整合式威脅情報，您可以拒絕與已知惡意 IP 位址的通訊。 在每個虛擬網路區段上設定 Azure 防火牆，並啟用威脅情報，並設定**警示和拒絕**惡意網路流量。
+如果您使用的是 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，請在裝載混合式 Runbook 背景工作角色的虛擬網路上啟用分散式阻斷服務 (DDoS) 標準保護，以防範 DDoS 攻擊。 藉由使用 Azure 資訊安全中心整合式威脅情報，您可以拒絕與已知惡意 IP 位址的通訊。 在每個虛擬網路區段上設定 Azure 防火牆，並啟用威脅情報，並設定**警示和拒絕**惡意網路流量。
 
 您可以使用 Azure 資訊安全中心的即時網路存取，將 Windows 虛擬機器的暴露時間限制為已核准的 IP 位址（限時）。 此外，針對 NSG 設定使用 Azure 資訊安全中心彈性網路強化建議，以根據實際的流量和威脅情報來限制埠和來源 Ip。
 
@@ -108,7 +108,7 @@ ms.locfileid: "87447714"
 
 **責任**：客戶
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統（IDS/IPS）
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統 (IDS/IPS) 
 
 **指導**方針：除了支援混合式 Runbook 背景工作角色以外，Azure 自動化目前沒有私人網路的虛擬網路整合。 如果您使用的是不含混合式 Runbook 背景工作角色的全新服務，則不適用此控制項。
 
@@ -134,7 +134,7 @@ ms.locfileid: "87447714"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負荷降至最低
 
-**指引**：使用虛擬網路服務標籤，在 azure 中設定的網路安全性群組或 azure 防火牆上定義網路存取控制，這需要存取您的自動化資源。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標籤名稱（例如，GuestAndHybridManagement），您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
+**指引**：使用虛擬網路服務標籤，在 azure 中設定的網路安全性群組或 azure 防火牆上定義網路存取控制，這需要存取您的自動化資源。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由指定服務標記名稱 (例如，在規則適當的 [來源] 或 [目的地] 欄位中 GuestAndHybridManagement) ，您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
 * [瞭解和使用服務標記](../virtual-network/service-tags-overview.md)
 
@@ -388,7 +388,7 @@ ms.locfileid: "87447714"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**指引**：啟用 Azure AD 多重要素驗證（MFA），並遵循 Azure 資訊安全中心身分識別和存取管理建議。
+**指引**： (MFA) 啟用 Azure AD 多重要素驗證，並遵循 Azure 資訊安全中心身分識別和存取管理建議。
 
 * [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -414,7 +414,7 @@ ms.locfileid: "87447714"
 
 **指引**：利用 Azure AD 風險偵測來查看警示和報告有風險的使用者行為。 客戶可以選擇性地將 Azure 資訊安全中心風險偵測警示轉寄到 Azure 監視器，並使用動作群組來設定自訂警示/通知。
 
-* [瞭解 Azure 資訊安全中心風險偵測（可疑活動）](../active-directory/identity-protection/overview-identity-protection.md)
+* [瞭解 Azure 資訊安全中心 (可疑活動的風險偵測) ](../active-directory/identity-protection/overview-identity-protection.md)
 
 * [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -492,7 +492,7 @@ ms.locfileid: "87447714"
 
 **指引**：對於 Azure 自動化帳戶，Microsoft 支援服務可以在開啟的支援案例期間存取平臺資源中繼資料，而不需要使用另一個工具。
 
-不過，使用 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，以及存取客戶資料（例如在支援要求期間）的協力廠商需求時，請使用 Azure 虛擬機器的客戶加密箱（預覽）來審查及核准或拒絕客戶資料存取要求。
+不過，使用 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，以及需要存取客戶資料的協力廠商 (（例如在支援要求) 期間），請使用 Azure 虛擬機器的客戶加密箱 (Preview) 來審查及核准或拒絕客戶資料存取要求。
 
 * [瞭解客戶加密箱](../security/fundamentals/customer-lockbox-overview.md)
 
@@ -516,7 +516,7 @@ ms.locfileid: "87447714"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 使用個別的自動化帳戶資源來隔離環境。 混合式 Runbook 背景工作角色等資源應該以虛擬網路/子網分隔、在網路安全性群組（NSG）或 Azure 防火牆內以適當的方式標記並受到保護。 若為儲存或處理敏感性資料的虛擬機器，請在不使用時，執行原則和程式將其關閉。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 使用個別的自動化帳戶資源來隔離環境。 混合式 Runbook 背景工作角色等資源應該以虛擬網路/子網分隔、在網路安全性群組內以適當的方式加以標記，並在 (NSG) 或 Azure 防火牆中受到保護。 若為儲存或處理敏感性資料的虛擬機器，請執行原則和程式 (s) 在不使用時將其關閉。
 
 * [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
@@ -550,7 +550,7 @@ ms.locfileid: "87447714"
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指引**：加密傳輸中的所有機密資訊。 請確定任何連線到 Azure 虛擬網路中 Azure 資源的用戶端，都能協商 TLS 1.2 或更高版本。 Azure 自動化完全支援並強制執行傳輸層（TLS）1.2 和所有外部 HTPS 端點（透過 webhook、DSC 節點、混合式 runbook 背景工作角色）的所有用戶端呼叫或更新版本。
+**指引**：加密傳輸中的所有機密資訊。 請確定任何連線到 Azure 虛擬網路中 Azure 資源的用戶端，都能協商 TLS 1.2 或更高版本。 Azure 自動化完全支援並強制執行傳輸層 (TLS) 1.2 和所有外部 HTPS 端點的所有用戶端呼叫或更新版本， (透過 webhook、DSC 節點、混合式 runbook 背景工作角色) 。
 
 遵循 Azure 資訊安全中心的待用加密建議和傳輸中的加密（如果適用）。
 
@@ -598,7 +598,7 @@ ms.locfileid: "87447714"
 
 **指導**方針：搭配 Azure 自動化使用客戶管理的金鑰。 Azure 自動化支援使用客戶管理的金鑰來加密所有使用的「安全資產」，例如：認證、憑證、連線和加密的變數。 將加密變數與您的 runbook 搭配使用，以因應您所有的持續性變數查閱需求，以避免意外的暴露。
 
-使用混合式 Runbook 背景工作角色時，虛擬機器上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密（ADE）在待用時加密。 Azure 磁片加密利用 Windows 的 BitLocker 功能，在來賓 VM 內使用客戶管理的金鑰來加密受控磁片。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
+使用混合式 Runbook 背景工作角色時，虛擬機器上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密 (ADE) 進行待用加密。 Azure 磁片加密利用 Windows 的 BitLocker 功能，在來賓 VM 內使用客戶管理的金鑰來加密受控磁片。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
 
 * [Azure 受控磁片的伺服器端加密](../virtual-machines/windows/disk-encryption.md)
 
@@ -644,7 +644,7 @@ ms.locfileid: "87447714"
 
 **指導**方針： Azure 自動化目前不會公開基礎多租使用者 runbook 背景工作角色的虛擬機器，而這是由平臺處理。 如果您使用的是不含混合式 Runbook 背景工作角色的全新服務，則不適用此控制項。
 
-如果您使用的是 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，請使用 Azure 更新管理來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher （Updates Publisher）之類的工具可讓您將自訂更新發佈至 Windows Server Update Services （WSUS）。 此案例可讓更新管理利用協力廠商軟體，修補使用 Configuration Manager 作為其更新存放庫的機器。
+如果您使用的是 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，請使用 Azure 更新管理來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 如 System Center Updates Publisher (Updates Publisher) 的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理利用協力廠商軟體，修補使用 Configuration Manager 作為其更新存放庫的機器。
 
 * [Azure 中的更新管理](./update-management/update-mgmt-overview.md)
 
@@ -658,7 +658,7 @@ ms.locfileid: "87447714"
 
 **指導**方針： Azure 自動化目前不會公開基礎多租使用者 runbook 背景工作角色的虛擬機器，而這是由平臺處理。 如果您使用的是不含混合式 Runbook 背景工作角色的全新服務，則不適用此控制項。
 
-如果您使用的是 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，則您可以使用 Azure 更新管理來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher （Updates Publisher）之類的工具可讓您將自訂更新發佈至 Windows Server Update Services （WSUS）。 此案例可讓更新管理將使用 Configuration Manager 作為其更新存放庫的機器修補為協力廠商軟體。
+如果您使用的是 Azure 虛擬機器所支援的混合式 Runbook 背景工作角色，則您可以使用 Azure 更新管理來管理虛擬機器的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 System Center Updates Publisher (Updates Publisher) 之類的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理將使用 Configuration Manager 作為其更新存放庫的機器修補為協力廠商軟體。
 
 * [Azure 中的更新管理解決方案](./update-management/update-mgmt-overview.md)
 
@@ -678,7 +678,7 @@ ms.locfileid: "87447714"
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指導**方針：使用 Azure 資訊安全中心所提供的預設風險評等（安全分數），協助設定所發現弱點的補救優先順序。
+**指導**方針：使用預設風險評等 (安全分數) 由 Azure 資訊安全中心提供，協助您排定所發現弱點的補救優先順序。
 
 * [瞭解 Azure 資訊安全中心安全分數](../security-center/secure-score-security-controls.md)
 
@@ -814,7 +814,7 @@ ms.locfileid: "87447714"
 
 **指引**：使用混合式 Runbook 背景工作角色功能時，您可以搭配混合式背景工作角色虛擬機器使用 Azure 資訊安全中心的彈性應用程式控制功能。
 
-彈性應用程式控制是來自 Azure 資訊安全中心的智慧型、自動化、端對端解決方案，可協助您控制哪些應用程式可在您的 Azure 和非 Azure 機器（Windows 和 Linux）上執行。 如果這不符合您組織的需求，請執行協力廠商解決方案。
+彈性應用程式控制是來自 Azure 資訊安全中心的智慧型、自動化、端對端解決方案，可協助您控制哪些應用程式可在您的 Azure 和非 Azure 機器上執行， (Windows 和 Linux) 。 如果這不符合您組織的需求，請執行協力廠商解決方案。
 
 * [如何使用 Azure 資訊安全中心適應性應用程式控制](../security-center/security-center-adaptive-application.md)
 
@@ -846,9 +846,9 @@ ms.locfileid: "87447714"
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
-**指引**：使用虛擬網路、子網、訂用帳戶、管理群組之類的結構來隔離部署在您 Azure 環境中的高風險應用程式，可以使用 Azure 防火牆、Web 應用程式防火牆（WAF）或網路安全性群組（NSG）進行充分的保護。
+**指導**方針：您可以使用虛擬網路、子網、訂用帳戶、管理群組等結構來隔離部署在您 Azure 環境中的高風險應用程式，使用 azure 防火牆、Web 應用程式防火牆 (WAF) 或網路安全性群組 (NSG) 來進行充分的保護。
 
-* [Azure 中的虛擬網路和虛擬機器](../virtual-machines/windows/network-overview.md)
+* [Azure 中的虛擬網路和虛擬機器](../virtual-machines/network-overview.md)
 
 * [Azure 防火牆總覽](../firewall/overview.md)
 
@@ -874,7 +874,7 @@ ms.locfileid: "87447714"
 
 **指引**：使用 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure 自動化和相關資源的設定。 您也可以使用內建的 Azure 原則定義。
 
-此外，Azure Resource Manager 能夠在 JavaScript 物件標記法（JSON）中匯出範本，這應該進行檢查以確保設定符合/超過組織的安全性需求。
+此外，Azure Resource Manager 能夠在 JavaScript 物件標記法 (JSON) 中匯出範本，這應該進行檢查，以確保設定符合/超過貴組織的安全性需求。
 
 您也可以使用來自 Azure 資訊安全中心的建議，做為 Azure 資源的安全設定基準。
 
@@ -933,7 +933,7 @@ ms.locfileid: "87447714"
 使用混合式 Runbook 背景工作角色功能時，有數個選項可維護 Azure 虛擬機器的安全設定以進行部署：
 
 - Azure Resource Manager 範本：這些是用來從 Azure 入口網站部署 VM 的 JSON 型檔案，而自訂範本則需要維護。 Microsoft 會在基底範本上執行維護。
-- 自訂虛擬硬碟（VHD）：在某些情況下，可能需要使用自訂 VHD 檔案，例如處理無法透過其他方式管理的複雜環境。
+- 自訂虛擬硬碟 (VHD) ：在某些情況下，可能需要使用自訂 VHD 檔案，例如處理無法透過其他方式管理的複雜環境。
 - Azure 自動化狀態設定：部署基本 OS 之後，這可以用來更精細地控制設定，並透過自動化架構強制執行。
 
 在大部分的情況下，與 Azure 自動化狀態設定結合的 Microsoft 基底 VM 範本，可以協助滿足和維護安全性需求。
@@ -994,7 +994,7 @@ ms.locfileid: "87447714"
 
 **指導**方針： Azure 自動化目前不會公開基礎多租使用者 runbook 背景工作角色的虛擬機器或作業系統，而這是由平臺處理。 如果您使用的是不含混合式 Runbook 背景工作角色的全新服務，則不適用此控制項。
 
-使用混合式 Runbook 背景工作角色功能時，請使用 Runbook worker 上的 Azure 自動化狀態設定，這是任何雲端或內部部署資料中心內 Desired State Configuration （DSC）節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
+使用混合式 Runbook 背景工作角色功能時，請使用 Runbook worker 上的 Azure 自動化狀態設定，這是在任何雲端或內部部署資料中心 Desired State Configuration (DSC) 節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
 
 * [將機器上架交由 Azure Automation State Configuration 管理](./automation-dsc-onboarding.md)
 
@@ -1024,7 +1024,7 @@ ms.locfileid: "87447714"
 
 **指導**方針： Azure 自動化供應專案目前不會公開基礎多租使用者 runbook 背景工作角色的虛擬機器或作業系統，而這是由平臺處理。 如果您使用的是不含混合式背景工作角色的現成服務，則不適用此控制項。
 
-使用混合式 Runbook 背景工作角色功能時，請使用 Runbook worker 的 Azure 自動化狀態設定，這是任何雲端或內部部署資料中心內 Desired State Configuration （DSC）節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
+使用混合式 Runbook 背景工作角色功能時，請使用 Runbook worker 的 Azure 自動化狀態設定，這是適用于任何雲端或內部部署資料中心內 Desired State Configuration (DSC) 節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
 
 * [將機器上架交由 Azure Automation State Configuration 管理](./automation-dsc-onboarding.md)
 
@@ -1088,7 +1088,7 @@ ms.locfileid: "87447714"
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指導**方針：不適用;做為服務的 Azure 自動化不會儲存檔案。 支援 Azure 服務的基礎主機（例如 Azure 自動化）上已啟用 Microsoft Antimalware，但它不會在您的內容上執行。
+**指導**方針：不適用;做為服務的 Azure 自動化不會儲存檔案。 Microsoft Antimalware 在支援 Azure 服務的基礎主機上啟用 (例如 Azure 自動化) ，但不會在您的內容上執行。
 
 * [瞭解 Azure 雲端服務和虛擬機器的 Microsoft Antimalware](../security/fundamentals/antimalware.md)
 

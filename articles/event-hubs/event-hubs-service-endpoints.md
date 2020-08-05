@@ -3,12 +3,12 @@ title: 虛擬網路服務端點 - Azure 事件中樞 | Microsoft Docs
 description: 本文提供有關如何將 Microsoft EventHub 服務端點新增至虛擬網路的資訊。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 15778c85f28300df3d5af34e2940b3854d814c66
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8c798efc21f5b846965f2247d7e76249177ef946
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420444"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554068"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>允許從特定虛擬網路存取 Azure 事件中樞命名空間 
 
@@ -31,6 +31,7 @@ ms.locfileid: "87420444"
 > 虛擬網路上必須有下列 Microsoft 服務
 > - Azure Web Apps
 > - Azure Functions
+> - Azure 監視器 (診斷設定)
 
 
 > [!IMPORTANT]
@@ -61,11 +62,11 @@ ms.locfileid: "87420444"
     > [!NOTE]
     > 您只會看到**標準**或**專用**命名空間的 [**網路**功能] 索引標籤。 
 
-    預設會選取 [**選取的網路**] 選項。 如果您未指定 IP 防火牆規則或在此頁面上新增虛擬網路，則可以從所有網路（包括公用網際網路（使用存取金鑰））存取命名空間。 
+    預設會選取 [**選取的網路**] 選項。 如果您未指定 IP 防火牆規則或在此頁面上新增虛擬網路，則可以從所有網路（包括公用網際網路 (，使用存取金鑰) 來存取命名空間。 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="網路索引標籤-選取的網路選項" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
-    如果您選取 [**所有網路**] 選項，事件中樞會接受來自任何 IP 位址的連接（使用存取金鑰）。 此設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
+    如果您選取 [**所有網路**] 選項，事件中樞會接受來自任何 IP 位址的連接， (使用存取金鑰) 。 此設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
 
     ![防火牆 - 已選取 [所有網路] 選項](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. 若要限制對特定網路的存取，請選取頁面頂端的 [**選取的網路**] 選項（如果尚未選取）。

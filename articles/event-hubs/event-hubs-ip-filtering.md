@@ -3,12 +3,12 @@ title: Azure 事件中樞防火牆規則 | Microsoft Docs
 description: 使用「防火牆規則」以允許從特定 IP 位址連線至「Azure 事件中樞」。
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: a27c5981bb14c2ff98dfcb74692cf9db19a55137
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8ba327c78888d9e5f38693ae08a2022b2d1543a4
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421496"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553116"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>允許從特定 IP 位址或範圍存取 Azure 事件中樞命名空間
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取事件中樞命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
@@ -28,6 +28,7 @@ ms.locfileid: "87421496"
 > 虛擬網路上必須有下列 Microsoft 服務
 > - Azure Web Apps
 > - Azure Functions
+> - Azure 監視器 (診斷設定)
 
 
 ## <a name="ip-firewall-rules"></a>IP 防火牆規則
@@ -42,11 +43,11 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則�
     > [!NOTE]
     > 您只會看到**標準**或**專用**命名空間的 [**網路**功能] 索引標籤。 
 
-    預設會選取 [**選取的網路**] 選項。 如果您未指定 IP 防火牆規則或在此頁面上新增虛擬網路，則可以透過公用網際網路（使用存取金鑰）來存取命名空間。 
+    預設會選取 [**選取的網路**] 選項。 如果您未指定 IP 防火牆規則或在此頁面上新增虛擬網路，可以使用存取金鑰) ，透過公用網際網路 (來存取命名空間。 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="網路索引標籤-選取的網路選項" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
-    如果您選取 [**所有網路**] 選項，事件中樞會接受來自任何 IP 位址的連接（使用存取金鑰）。 此設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
+    如果您選取 [**所有網路**] 選項，事件中樞會接受來自任何 IP 位址的連接， (使用存取金鑰) 。 此設定等同於可接受 0.0.0.0/0 IP 位址範圍的規則。 
 
     ![防火牆 - 已選取 [所有網路] 選項](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. 若要限制對特定 IP 位址的存取，請確認已選取 [**選取的網路**] 選項。 在 [防火牆] 區段中，依照下列步驟：

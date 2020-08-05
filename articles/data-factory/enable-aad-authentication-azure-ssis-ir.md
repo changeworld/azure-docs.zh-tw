@@ -11,12 +11,12 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: fd9433c2482c4ddd907f7e30c0028dc2a15faed2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ffbb81fa56b87281199309d61ab3e2e59c1a5acd
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187671"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563988"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>啟用適用於 Azure-SSIS Integration Runtime 的 Azure Active Directory 驗證
 
@@ -128,7 +128,7 @@ SQL Database 支援使用 Azure AD 使用者來建立資料庫。 首先，您�
 
    命令應該會順利完成，將建立資料庫 (SSISDB) 的能力授與內含的使用者。
 
-10. 如果您的 SSISDB 是使用 SQL 驗證建立的，而您想要切換為使用 Azure AD authentication 來讓您的 Azure SSIS IR 存取它，請以滑鼠右鍵按一下**ssisdb**資料庫，然後選取 [追加**查詢**]。
+10. 如果您的 SSISDB 是使用 SQL 驗證建立的，而您想要切換為使用 Azure AD authentication 來讓您的 Azure SSIS IR 存取它，請先確定將許可權授與**master**資料庫的步驟已順利完成。 然後，以滑鼠右鍵按一下**SSISDB**資料庫，然後選取 [追加**查詢**]。
 
 11. 在查詢視窗中，輸入下列 T-sql 命令，然後在工具列上選取 [**執行**]。
 
@@ -176,7 +176,7 @@ SQL 受控執行個體支援直接使用 ADF 的受控識別來建立資料庫�
     
     命令應該會順利完成，將建立資料庫 (SSISDB) 的能力授與 ADF 的受控識別。
 
-6.  如果您的 SSISDB 是使用 SQL 驗證建立的，而您想要切換為使用 Azure AD authentication 來讓您的 Azure SSIS IR 存取它，請以滑鼠右鍵按一下**ssisdb**資料庫，然後選取 [追加**查詢**]。
+6.  如果您的 SSISDB 是使用 SQL 驗證建立的，而您想要切換為使用 Azure AD authentication 來讓您的 Azure SSIS IR 存取它，請先確定將許可權授與**master**資料庫的步驟已順利完成。 然後，以滑鼠右鍵按一下**SSISDB**資料庫，然後選取 [追加**查詢**]。
 
 7.  在查詢視窗中，輸入下列 T-sql 命令，然後在工具列上選取 [**執行**]。
 
@@ -226,7 +226,7 @@ SQL 受控執行個體支援直接使用 ADF 的受控識別來建立資料庫�
 
 當您在 Azure SSIS IR 上執行 SSIS 套件時，您可以使用受控識別驗證來連接到各種 Azure 資源。 目前我們已支援下列連線管理員中的受控識別驗證。
 
-- [OLE DB 連接管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+- [OLE DB 連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
 
 - [ADO.NET 連線管理員](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
 

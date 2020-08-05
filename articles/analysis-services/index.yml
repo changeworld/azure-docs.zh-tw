@@ -4,19 +4,19 @@ summary: 了解如何在雲端使用 Analysis Services 設定資料模型。 文
 metadata:
   title: Azure Analysis Services 文件 | Microsoft Docs
   description: Azure Analysis Services 是完全受控的平台即服務 (PaaS)，可在雲端提供企業級資料模型。
-  ms.service: analysis-services
+  ms.service: azure-analysis-services
   ms.topic: landing-page
   ms.collection: 
   author: minewiskan
   ms.author: owend
   manager: mtillman
   ms.date: 10/30/2019
-  ms.openlocfilehash: 8c0d92cc7f50ec72b33d86335291580a477db056
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: a41f34134e25941d89c5dcd8b1f2a2ec5884df94
+  ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78273658"
+  ms.lasthandoff: 08/04/2020
+  ms.locfileid: "87553728"
 landingContent:
 - title: 關於 Azure Analysis Services
   linkLists:

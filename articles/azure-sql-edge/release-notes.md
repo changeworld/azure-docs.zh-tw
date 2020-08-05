@@ -9,17 +9,28 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 06/05/2020
-ms.openlocfilehash: d5d60db2cc0c35b908454be3f00716db6d2da945
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361637"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553405"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge 版本資訊 
 
 本文說明新功能，以及每個 Azure SQL Edge 新組建的變更內容。
+
+## <a name="ctp-22"></a>CTP 2.2
+### <a name="sql-engine-build-number---15020001546"></a>SQL 引擎組建編號-15.0.2000.1546
+### <a name="fixes"></a>修正
+1. 支援非根容器 
+2. 支援使用方式和診斷資料收集 
+3. T-sql 串流更新
+   - 資料流程物件名稱的 Unicode 字元支援
+   - 進程清除改善
+   - 記錄和診斷改善
+4. 資料內嵌的效能改進
 
 ## <a name="ctp-21"></a>CTP 2.1 
 ### <a name="sql-engine-build-number---15020001545"></a>SQL 引擎組建編號-15.0.2000.1545
@@ -40,7 +51,7 @@ ms.locfileid: "85361637"
     
     i.  ONNX 需要執行時間參數 
     
-4.  TSQL 串流支援（有限預覽） 
+4.  TSQL 串流支援 (有限的預覽)  
  
 ### <a name="known-issues"></a>已知問題
 

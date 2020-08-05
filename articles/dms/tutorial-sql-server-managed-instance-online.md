@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/10/2020
-ms.openlocfilehash: 4bd6c3dc1f3cd1ef553efc6ac3cd3c4e558afc97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/04/2020
+ms.openlocfilehash: 5bd78f2db8ea1f2a26d26269822ec78978a3cfde
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087657"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553302"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>教學課程：使用 DMS 在線上將 SQL Server 遷移至 Azure SQL 受控執行個體
 
@@ -177,7 +177,7 @@ ms.locfileid: "87087657"
    ![選取來源資料庫](media/tutorial-sql-server-to-managed-instance-online/dms-source-database1.png)
 
     > [!IMPORTANT]
-    > 如果您使用 SQL Server Integration Services （SSIS），DMS 目前不支援將 SSIS 專案/套件（SSISDB）的目錄資料庫從 SQL Server 遷移至 SQL 受控執行個體。 不過，您可以在 Azure Data Factory （ADF）中布建 SSIS，並將 SSIS 專案/套件重新部署至 SQL 受控執行個體所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) 一文。
+    > 如果您使用 SQL Server Integration Services (SSIS) ，DMS 目前不支援將 SSIS 專案/套件的類別目錄資料庫（從) 到 SQL SQL Server）遷移 (SSISDB。 不過，您可以在 Azure Data Factory (ADF) 中布建 SSIS，並將 SSIS 專案/套件重新部署至 SQL 受控執行個體所裝載的目的地 SSISDB。 如需有關遷移 SSIS 套件的詳細資訊，請參閱[將 SQL Server Integration Services 套件遷移到 Azure](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages) 一文。
 
 5. 選取 [儲存]。
 
@@ -262,6 +262,9 @@ ms.locfileid: "87087657"
 4. 選取 [確認]****，然後選取 [套用]****。
 
     ![準備完成完全移轉](media/tutorial-sql-server-to-managed-instance-online/dms-complete-cutover.png)
+
+    > [!IMPORTANT]
+    > 在轉換之後，SQL 受控執行個體與業務關鍵服務層級的可用性，只會比一般用途長得多，因為必須為 AlwaysOn 高可用性群組植入三個次要複本。 此作業持續時間取決於資料大小，如需詳細資訊，請參閱[管理作業持續時間](../azure-sql/managed-instance/management-operations-overview.md#management-operations-duration)。
 
 5. 當資料庫移轉狀態顯示為 [**已完成**] 時，將您的應用程式連接到 SQL 受控執行個體的新目標實例。
 

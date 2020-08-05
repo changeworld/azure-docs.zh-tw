@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960294"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563341"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 靜態 Web Apps 預覽中設定自訂網域
 
@@ -37,7 +37,7 @@ ms.locfileid: "85960294"
 
 ## <a name="map-a-cname-record"></a>對應 CNAME 記錄
 
-CNAME 記錄會將一個網域對應到另一個網域。 您可以使用 CNAME 記錄，將 `www.example.com` 對應至 Azure 靜態 Web Apps 所提供的自動產生網域。
+CNAME 記錄會將一個網域對應到另一個網域。 您可以使用 CNAME 記錄 `www.example.com` ，將、 `blog.example.com` 或任何其他子域對應至 Azure 靜態 Web Apps 所提供的自動產生網域。
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)並使用您的 Azure 帳戶登入。
 

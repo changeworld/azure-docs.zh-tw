@@ -1,22 +1,22 @@
 ---
 title: 資源、Sku、區域的限制
 titleSuffix: Azure Kubernetes Service
-description: 瞭解預設配額、受限制的節點 VM SKU 大小，以及 Azure Kubernetes Service 的區域可用性（AKS）。
+description: 瞭解 Azure Kubernetes Service (AKS) 的預設配額、受限制節點 VM SKU 大小和區域可用性。
 services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.openlocfilehash: e3edbcf9603657ce0c747b01b3c59c2923bc0181
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9592b03f5bd9e9436db5665e040b4afd3b68b764
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208018"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562730"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 中的配額、虛擬機器大小限制和區域可用性 (AKS)
 
-所有 Azure 服務都會設定資源和功能的預設限制和配額。 某些虛擬機器（VM） Sku 也會受到限制，可供使用。
+所有 Azure 服務都會設定資源和功能的預設限制和配額。 某些虛擬機器 (VM) Sku 也會受到限制，可供使用。
 
-本文詳細說明 Azure Kubernetes Service （AKS）資源的預設資源限制，以及 Azure 區域中 AKS 的可用性。
+本文詳細說明 Azure Kubernetes Service (AKS) 資源的預設資源限制，以及 Azure 區域中的 AKS 可用性。
 
 ## <a name="service-quotas-and-limits"></a>服務配額和限制
 
@@ -49,12 +49,12 @@ AKS 叢集中的每個節點都包含固定的計算資源量，例如 vCPU 和 
 
 ## <a name="next-steps"></a>後續步驟
 
-某些預設限制和配額可以增加。 如果您的資源支援增加，請要求透過[Azure 支援要求][azure-support]增加（針對 [**問題類型**]，選取 [**配額**]）。
+某些預設限制和配額可以增加。 如果您的資源支援增加，請 Azure 支援 [**問題類型**] 的 [[要求][azure-support]增加] (中，選取 [**配額**]) 。
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 
 <!-- LINKS - Internal -->
-[vm-skus]: ../virtual-machines/linux/sizes.md
+[vm-skus]: ../virtual-machines/sizes.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 5520072ba16b117c33c2ad172030807e51c7cf7a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 8/3/2020
+ms.openlocfilehash: 9d4d862389a607b18ee5f2440069fa2eb6cf7bc4
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203885"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553031"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫的連線庫
 本文將列出用戶端程式在連接到適用於 MySQL 的 Azure 資料庫時可使用的每個程式庫或驅動程式。
@@ -28,7 +28,7 @@ MySQL 提供標準的資料庫驅動程式連線，以搭配應用程式和工�
 | Node.js | Windows、Linux、Mac OS X | [sidorares/node-mysql2 (英文)](https://github.com/sidorares/node-mysql2/tree/master/documentation) | [下載](https://github.com/sidorares/node-mysql2) |
 | Python | Windows、Linux、Mac OS X | [MySQL 連接器/Python 開發人員指南 (英文)](https://dev.mysql.com/doc/connector-python/en/) | [下載](https://dev.mysql.com/downloads/connector/python/) |
 | C++ | Windows、Linux、Mac OS X | [MySQL 連接器/C++ 開發人員指南 (英文)](https://dev.mysql.com/doc/connector-cpp/en/) | [下載](https://dev.mysql.com/downloads/connector/python/) |
-| C | Windows、Linux、Mac OS X | [MySQL Connector/C 開發人員指南](https://dev.mysql.com/doc/refman/8.0/en/c-api.html) | [下載](https://dev.mysql.com/downloads/connector/c/)
+| C | Windows、Linux、Mac OS X | [MySQL Connector/C 開發人員指南](https://dev.mysql.com/doc/c-api/8.0/en/) | [下載](https://dev.mysql.com/downloads/connector/c/)
 | Perl | Windows、Linux、Mac OS X 和 Unix 平台 | [DBD::MySQL](https://metacpan.org/pod/DBD::mysql) | [下載](https://metacpan.org/pod/DBD::mysql) |
 
 
@@ -37,7 +37,7 @@ MySQL 提供標準的資料庫驅動程式連線，以搭配應用程式和工�
 
 - [PHP](./connect-php.md)
 - [Java](./connect-java.md)
-- [.NET (C # ) ](./connect-csharp.md)
+- [.NET (C#)](./connect-csharp.md)
 - [Python](./connect-python.md)
 - [Node.JS](./connect-nodejs.md)
 - [Ruby](./connect-ruby.md)

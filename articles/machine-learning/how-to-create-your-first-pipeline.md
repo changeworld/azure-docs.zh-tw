@@ -1,7 +1,7 @@
 ---
 title: 建立、 執行及追蹤 ML 管線
 titleSuffix: Azure Machine Learning
-description: 使用適用於 Python 的 Azure Machine Learning SDK 來建立及執行機器學習管線。 使用 ML 管線來建立和管理結合機器學習（ML）階段的工作流程。 這些階段包括資料準備、模型定型、模型部署，以及推斷/計分。
+description: 使用適用於 Python 的 Azure Machine Learning SDK 來建立及執行機器學習管線。 使用 ML 管線來建立和管理結合機器學習服務 (ML) 階段的工作流程。 這些階段包括資料準備、模型定型、模型部署，以及推斷/計分。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 12/05/2019
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: dff86176bac56063c9b588fb27e3549069ed380e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3c247e5aebde7bd10be092c358320348645e2172
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326353"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564056"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>使用 Azure Machine Learning SDK 來建立及執行機器學習管線
 
@@ -92,9 +92,9 @@ def_blob_store.upload_files(
 
 ### <a name="configure-data-using-dataset-and-pipelinedata-objects"></a>使用 `Dataset` 和物件設定 `PipelineData` 資料
 
-您剛建立一個可在管線中當作某個步驟的輸出來參考的資料來源。 將資料提供給管線的慣用方式是[Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset)物件。 `Dataset`物件會指向位於或可從資料存放區或 WEB URL 存取的資料。 `Dataset`類別是抽象的，因此您將會建立一個 `FileDataset` （參考一或多個檔案）或 `TabularDataset` 從一個或多個檔案中，以分隔資料行建立的實例。
+您剛建立一個可在管線中當作某個步驟的輸出來參考的資料來源。 將資料提供給管線的慣用方式是[Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset)物件。 `Dataset`物件會指向位於或可從資料存放區或 WEB URL 存取的資料。 此 `Dataset` 類別是抽象的，因此您將建立一個 (的實例，而這些檔案會 `FileDataset` 參考一個或多個檔案) 或 `TabularDataset` 從一或多個檔案中以資料行分隔的檔案所建立的。
 
-`Dataset`物件支援版本控制、差異和摘要統計資料。 `Dataset`會延遲地進行評估（例如 Python 產生器），並藉由分割或篩選來將其子集化。 
+`Dataset`物件支援版本控制、差異和摘要統計資料。 `Dataset`會延遲評估 (像是 Python 產生器) ，而藉由分割或篩選來將它們子集化是很有效率的。 
 
 您可以 `Dataset` 使用[from_file](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)或[from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-)等方法來建立。
 
@@ -115,7 +115,7 @@ output_data1 = PipelineData(
     output_name="output_data1")
 ```
 
-如需有關使用資料集和管線資料的詳細資訊和範例程式碼，請參閱在[ML 管線步驟（Python）之間移動資料](how-to-move-data-in-out-of-pipelines.md)。
+如需有關使用資料集和管線資料的詳細資訊和範例程式碼，請參閱將[資料移入和 (Python) 中的 ML 管線步驟](how-to-move-data-in-out-of-pipelines.md)。
 
 ## <a name="set-up-a-compute-target"></a>設定計算目標
 
@@ -175,7 +175,7 @@ Azure Databricks 是 Azure 雲端中的 Apache Spark 型環境。 它可與 Azur
 * __Databricks 工作區名稱__： Azure Databricks 工作區的名稱。
 * __Databricks 存取權杖__：用來驗證 Azure Databricks 的存取權杖。 若要產生存取權杖，請參閱[驗證](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html)文件。
 
-下列程式碼示範如何使用 Azure Machine Learning SDK 連結 Azure Databricks 做為計算目標（__Databricks 工作區必須存在於與 AML 工作區相同的訂__用帳戶中）：
+下列程式碼示範如何使用 Azure Machine Learning SDK 來附加 Azure Databricks 做為計算目標 (__Databricks 工作區必須存在於與 AML 工作區相同的訂用帳戶中__) ：
 
 ```python
 import os
@@ -289,7 +289,7 @@ trainStep = PythonScriptStep(
 )
 ```
 
-在共同作業 `allow_reuse` 環境中使用管線時，重複使用先前的結果（）是重要的，因為排除不必要的重新執行時間可提供靈活性。 當 script_name、輸入和步驟的參數保持不變時，重複使用是預設行為。 重複使用步驟的輸出時，不會將作業提交至計算，而是從上一次執行的結果立即提供給下一個步驟的執行。 如果 `allow_reuse` 設定為 false，則會在管線執行期間，針對此步驟一律會產生新的執行。 
+在共同作業 `allow_reuse` 環境中使用管線時，重複使用先前的結果 () 是關鍵，因為排除不必要的重新執行時間提供了靈活性。 當 script_name、輸入和步驟的參數保持不變時，重複使用是預設行為。 重複使用步驟的輸出時，不會將作業提交至計算，而是從上一次執行的結果立即提供給下一個步驟的執行。 如果 `allow_reuse` 設定為 false，則會在管線執行期間，針對此步驟一律會產生新的執行。 
 
 定義步驟之後，您必須使用這些步驟中的部分或全部步驟來建置管線。
 
@@ -364,7 +364,7 @@ dataframe = iris_dataset.to_pandas_dataframe()
 ws = Run.get_context().experiment.workspace
 ```
 
-如需更多詳細資訊，包括傳遞和存取資料的替代方式，請參閱[在 ML 管線步驟（Python）之間移動資料](how-to-move-data-in-out-of-pipelines.md)。
+如需更多詳細資訊，包括傳遞和存取資料的替代方式，請參閱將[資料移入和 (Python) 中的 ML 管線步驟](how-to-move-data-in-out-of-pipelines.md)。
 
 ## <a name="submit-the-pipeline"></a>提交管線
 
@@ -471,7 +471,7 @@ response = requests.post(published_pipeline1.endpoint,
 ```python
 from azureml.pipeline.core import PipelineEndpoint
 
-published_pipeline = PublishedPipeline.get(workspace="ws", name="My_Published_Pipeline")
+published_pipeline = PipelineEndpoint.get(workspace=ws, name="My_Published_Pipeline")
 pipeline_endpoint = PipelineEndpoint.publish(workspace=ws, name="PipelineEndpointTest",
                                             pipeline=published_pipeline, description="Test description Notebook")
 ```
@@ -537,7 +537,7 @@ p.disable()
 + 在步驟定義期間設定，以關閉**步驟執行輸出的預設重複使用** `allow_reuse=False` 。 [step definition](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) 在共同作業環境中使用管線時，重複使用是關鍵，因為排除不必要的執行可提供靈活性。 不過，您可以選擇不重複使用。
 + **針對執行中的所有步驟強制輸出**重新產生`pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`
 
-根據預設， `allow_reuse` 會啟用步驟，並 `source_directory` 雜湊步驟定義中指定的。 因此，如果指定步驟的腳本維持不變（ `script_name` 、輸入和參數），而中沒有任何其他 ` source_directory` 變更，則會重複使用上一個步驟執行的輸出，而不會將作業提交至計算，而先前執行的結果會立即可供下一個步驟使用。
+根據預設， `allow_reuse` 會啟用步驟，並 `source_directory` 雜湊步驟定義中指定的。 因此，如果指定步驟的腳本維持不變 (`script_name` 、輸入和參數) ，而中沒有任何其他 ` source_directory` 變更，則會重複使用上一個步驟執行的輸出，而不會將作業提交至計算，而先前執行的結果會立即可供下一個步驟使用。
 
 ```python
 step = PythonScriptStep(name="Hello World",

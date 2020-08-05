@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 8e3f33e8f453ffd6eedaeb75a041af7ec11b4e39
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 3b70590002e9c49f2f8711bb7fe90de79e1d2a73
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87457799"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554051"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -56,7 +56,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `en-AU` | 英文 (澳大利亞)               | 原音模型<br>語言模型                  |
 | `en-CA` | 英文 (加拿大)                  | 原音模型<br>語言模型                  |
 | `en-GB` | 英文 (英國)          | 原音模型<br>語言模型<br>發音 |
-| `en-HK` | 英文（香港特別行政區）               | 語言模型                                    | 
+| `en-HK` | 英文 (香港特別行政區)                | 語言模型                                    | 
 | `en-IE` | 英文 (愛爾蘭)                 | 語言模型                                    | 
 | `en-IN` | 英文 (印度)                   | 原音模型<br>語言模型                  |
 | `en-NZ` | 英文 (紐西蘭)             | 原音模型<br>語言模型                  |
@@ -69,7 +69,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `es-CL` | 西班牙文 (智利)                   | 語言模型                                    | 
 | `es-CO` | 西班牙文 (哥倫比亞)                | 語言模型                                    | 
 | `es-CR` | 西班牙文 (哥斯大黎加)              | 語言模型                                    | 
-| `es-CU` | 西班牙文（古巴）                    | 語言模型                                    | 
+| `es-CU` | 西班牙文 (古巴)                     | 語言模型                                    | 
 | `es-DO` | 西班牙文 (多明尼加)      | 語言模型                                    | 
 | `es-EC` | 西班牙文 (厄瓜多)                 | 語言模型                                    | 
 | `es-ES` | 西班牙文 (西班牙)                   | 原音模型<br>語言模型                  |
@@ -82,7 +82,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `es-PR` | 西班牙文 (波多黎各)             | 語言模型                                    | 
 | `es-PY` | 西班牙文 (巴拉圭)                | 語言模型                                    | 
 | `es-SV` | 西班牙文 (薩爾瓦多)             | 語言模型                                    | 
-| `es-US` | 西班牙文（美國）                     | 語言模型                                    | 
+| `es-US` | 美國西班牙文 ()                      | 語言模型                                    | 
 | `es-UY` | 西班牙文 (烏拉圭)                 | 語言模型                                    | 
 | `es-VE` | 西班牙文 (委內瑞拉)               | 語言模型                                    | 
 | `fi-FI` | 芬蘭文 (芬蘭)                 | 語言模型                                    |
@@ -106,7 +106,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `te-IN` | 特拉古文 (印度)                    | 語言模型                                    |
 | `th-TH` | 泰文 (泰國)                   | 否                                                |
 | `tr-TR` | 土耳其文 (土耳其)                  | 語言模型                                    |
-| `zh-CN` | 中文 (普通話，簡體)    | 原音模型<br>語言模型                  |
+| `zh-CN` | 中文 (普通話，簡化的)     | 原音模型<br>語言模型                  |
 | `zh-HK` | 中文 (廣東話，繁體)  | 語言模型                                    |
 | `zh-TW` | 中文 (繁體，國語)      | 語言模型                                    |
 
@@ -149,7 +149,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 | `ja-JP` | 日文                        | Female | `ja-JP-NanamiNeural`     | 一般 |
 | `ko-KR` | 韓文                          | Female | `ko-KR-SunHiNeural`      | 一般 |
 | `nb-NO` | 挪威文                       | Female | `nb-NO-IselinNeural`     | 一般 |
-| `nl-NL` | 荷蘭文（Netherland）              | Female | `nl-NL-ColetteNeural`    | 一般 |
+| `nl-NL` | 荷蘭文 (Netherland)               | Female | `nl-NL-ColetteNeural`    | 一般 |
 | `pl-PL` | 波蘭文 (波蘭)                 | Female | `pl-PL-ZofiaNeural`      | 一般 |
 | `pt-BR` | 葡萄牙文 (巴西)             | Female | `pt-BR-FranciscaNeural`  | 一般，提供多種語音樣式 |
 | `tr-TR` | 土耳其文                         | Female | `tr-TR-EmelNeural`       | 一般 |
@@ -157,11 +157,11 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 | `ru-RU` | 俄文 (俄羅斯)                | Female | `ru-RU-DariyaNeural`     | 一般 |
 | `sv-SE` | 瑞典文 (瑞典)                | Female | `sv-SE-HilleviNeural`    | 一般 |
 | `th-TH` | 泰文 (泰國)                 | Female | `th-TH-AcharaNeural`     | 一般 |
-| `zh-CN` | 中文 (普通話，簡體)  | Female | `zh-CN-XiaoxiaoNeural`   | 一般，提供多種語音樣式 |
+| `zh-CN` | 中文 (普通話，簡化的)   | Female | `zh-CN-XiaoxiaoNeural`   | 一般，提供多種語音樣式 |
 |         |                                 | Female | `zh-CN-XiaoyouNeural`    | 兒童語音，針對故事敘述進行最佳化 |
 |         |                                 | Male   | `zh-CN-YunyangNeural`    | 針對新聞閱讀進行最佳化，提供多種語音樣式 |
 |         |                                 | Male   | `zh-CN-YunyeNeural`      | 針對故事敘述進行最佳化 |
-| `zh-HK` | 中文（廣東話，tranditional）   | Female | `zh-HK-HiuGaaiNeural`| 一般 |
+| `zh-HK` | 中文 (廣東話，繁體)   | Female | `zh-HK-HiuGaaiNeural`| 一般 |
 | `zh-TW` | 中文 (繁體，國語)   | Female | `zh-TW-HsiaoYuNeural`    | 一般 |
 
 > [!IMPORTANT]
@@ -249,7 +249,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 | `th-TH` | 泰文 | Male |  "th-TH-Pattara" |
 | `tr-TR` | 土耳其文 (土耳其) | Female | "tr-TR-SedaRUS" |
 | `vi-VN` | 越南文 | Male |  "vi-VN-An" |
-| `zh-CN` | 中文 (普通話，簡體) | Female |  "zh-CN-HuihuiRUS" |
+| `zh-CN` | 中文 (普通話，簡化的)  | Female |  "zh-CN-HuihuiRUS" |
 |  |  | Female | "zh-CN-Yaoyao-Apollo" |
 |  |  | Male | "zh-CN-Kangkang-Apollo" |
 | `zh-HK` | 中文 (廣東話，繁體) | Female |  "zh-HK-Tracy-Apollo" |

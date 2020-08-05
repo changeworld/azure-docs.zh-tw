@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 4a6de0b2067cdc847b830fba7607be8cb8f265ab
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 14ae9103571d72b0a48ee8e1a9c9dc6bb008373b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981382"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552122"
 ---
 # <a name="dynamic-data-masking"></a>動態資料遮罩 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -30,7 +30,7 @@ Azure SQL Database、Azure SQL 受控執行個體和 Azure Synapse 分析支援�
 
 ## <a name="dynamic-data-masking-basics"></a>動態資料遮罩基本概念
 
-您可以在 [SQL Database 設定] 窗格中的 [**安全性**] 底下選取 [**動態資料遮罩**] 分頁，以在 Azure 入口網站中設定動態資料遮罩原則。 您無法使用 Azure Synapse （使用 PowerShell 或 REST API）或 SQL 受控執行個體的入口網站來設定這項功能。 如需相關資訊，請參閱 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)。
+您可以在 [SQL Database 設定] 窗格中的 [**安全性**] 底下選取 [**動態資料遮罩**] 分頁，以在 Azure 入口網站中設定動態資料遮罩原則。 您無法使用 Azure Synapse 的入口網站來設定此功能， (使用 PowerShell 或 REST API) 或 SQL 受控執行個體。 如需相關資訊，請參閱 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)。
 
 ### <a name="dynamic-data-masking-permissions"></a>動態資料遮罩權限
 
@@ -76,7 +76,7 @@ DDM 建議引擎會將您資料庫中的特定欄位標示為潛在敏感性欄�
 
 ### <a name="data-masking-policies"></a>資料遮罩原則
 
-- [建立或更新](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate)：建立或更新指定資料行的敏感度標籤。
+- [建立或更新](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate)：建立或更新資料庫資料遮罩原則。
 - [Get：取得](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get)資料庫資料遮罩原則。 
 
 ### <a name="data-masking-rules"></a>資料遮罩規則

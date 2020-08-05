@@ -1,5 +1,5 @@
 ---
-title: Azure AD 中的簽署金鑰變換
+title: Microsoft 身分識別平臺中的簽署金鑰變換
 description: 本文討論 Azure Active directory 的簽署金鑰變換最佳做法
 services: active-directory
 author: rwike77
@@ -12,20 +12,20 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f9fd27515e9ecda6e78ae16528a4956d3bf607
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537231"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552759"
 ---
-# <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 中的簽署金鑰變換
-本文討論 Azure Active Directory (Azure AD) 中用來簽署安全性權杖的公開金鑰須知事項。 請務必注意，這些金鑰會定期變換，且在緊急情況下可以立即變換。 所有使用 Azure AD 的應用程式都應該能夠以程式設計方式處理金鑰變換程序或建立定期手動變換程序。 請繼續閱讀以了解金鑰的運作方式、如何評估變換對應用程式的影響，以及必要時如何更新應用程式或建立定期手動變換程序來處理金鑰變換。
+# <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft 身分識別平臺中的簽署金鑰變換
+本文討論 Microsoft 身分識別平臺用來簽署安全性權杖的公開金鑰須知事項。 請務必注意，這些金鑰會定期變換，且在緊急情況下可以立即變換。 所有使用 Microsoft 身分識別平臺的應用程式，都應該能夠以程式設計方式處理金鑰變換程式，或建立定期手動變換程式。 請繼續閱讀以了解金鑰的運作方式、如何評估變換對應用程式的影響，以及必要時如何更新應用程式或建立定期手動變換程序來處理金鑰變換。
 
-## <a name="overview-of-signing-keys-in-azure-ad"></a>Azure AD 中簽署金鑰的概觀
-Azure AD 會使用根據業界標準所建置的公開金鑰加密技術，建立 Azure AD 本身和使用 Azure AD 的應用程式之間的信任。 實際上，其運作方式如下：Azure AD 使用由公開和私密金鑰組所組成的簽署金鑰。 當使用者登入使用 Azure AD 來進行驗證的應用程式時，Azure AD 會建立包含使用者相關資訊的安全性權杖。 此權杖會先由 Azure AD 使用其私密金鑰進行簽署，再傳送回到應用程式。 若要確認該權杖有效且來自 Azure AD，應用程式必須使用由 Azure AD 公開且包含在租用戶的 [OpenID Connect 探索文件](https://openid.net/specs/openid-connect-discovery-1_0.html) \(英文\) 或 SAML/WS-Fed [同盟中繼資料文件](../azuread-dev/azure-ad-federation-metadata.md)中的公開金鑰來驗證權杖的簽章。
+## <a name="overview-of-signing-keys-in-microsoft-identity-platform"></a>Microsoft 身分識別平臺中的簽署金鑰總覽
+Microsoft 身分識別平臺會使用建基於業界標準的公開金鑰加密，在本身和使用它的應用程式之間建立信任關係。 實際上，這會以下列方式運作： Microsoft 身分識別平臺會使用由公開和私密金鑰組所組成的簽署金鑰。 當使用者登入使用 Microsoft 身分識別平臺進行驗證的應用程式時，Microsoft 身分識別平臺會建立包含使用者相關資訊的安全性權杖。 此權杖是由 Microsoft 身分識別平臺在傳送回應用程式之前，使用其私密金鑰來簽署。 若要驗證權杖是否有效且來自 Microsoft 身分識別平臺，應用程式必須使用租使用者的[OpenID connect 探索檔](https://openid.net/specs/openid-connect-discovery-1_0.html)或 SAML/WS-饋送[同盟元資料檔案](../azuread-dev/azure-ad-federation-metadata.md)中所包含的 Microsoft 身分識別平臺所公開的公開金鑰來驗證權杖的簽章。
 
-基於安全考量，Azure AD 的簽署金鑰會定期變換，且在緊急情況下可以立即變換。 任何與 Azure AD 整合的應用程式均應準備好處理金鑰變換事件，不論其可能發生頻率為何。 如果沒有，應用程式又嘗試使用過期的金鑰來驗證權杖上的簽章，登入要求便會失敗。
+基於安全考慮，Microsoft 身分識別平臺的簽署金鑰會定期進行匯總，而在緊急情況下，可以立即變換。 任何與 Microsoft 身分識別平臺整合的應用程式都應該準備好處理金鑰變換事件，而不論可能發生的頻率為何。 如果沒有，應用程式又嘗試使用過期的金鑰來驗證權杖上的簽章，登入要求便會失敗。
 
 OpenID Connect 探索文件和同盟中繼資料文件中永遠有一個以上的有效金鑰可用。 應用程式應該要已準備好使用文件中指定的任何金鑰，因為某個金鑰可能很快就得要替換，而另一個可能會取代它，依此類推。
 
@@ -51,12 +51,12 @@ OpenID Connect 探索文件和同盟中繼資料文件中永遠有一個以上�
 * 透過應用程式 proxy 發佈的內部部署應用程式不需要擔心簽署金鑰。
 
 ### <a name="native-client-applications-accessing-resources"></a><a name="nativeclient"></a>存取資源的原生用戶端應用程式
-只存取資源 (亦即 Microsoft Graph、KeyVault、Outlook API 和其他 Microsoft Api）通常只會取得權杖，並將它傳遞給資源擁有者。 假設它們並未保護任何資源，它們就不會檢查權杖，因此不需要確定已正確簽署。
+只存取資源 (亦即 Microsoft Graph、KeyVault、Outlook API 和其他 Microsoft Api) 通常只會取得權杖，並將它傳遞給資源擁有者。 假設它們並未保護任何資源，它們就不會檢查權杖，因此不需要確定已正確簽署。
 
 原生用戶端應用程式 (不論是桌上型或行動) 屬於此分類，因此不受變換影響。
 
 ### <a name="web-applications--apis-accessing-resources"></a><a name="webclient"></a>存取資源的 Web 應用程式 / API
-只存取資源 (亦即 Microsoft Graph、KeyVault、Outlook API 和其他 Microsoft Api）通常只會取得權杖，並將它傳遞給資源擁有者。 假設它們並未保護任何資源，它們就不會檢查權杖，因此不需要確定已正確簽署。
+只存取資源 (亦即 Microsoft Graph、KeyVault、Outlook API 和其他 Microsoft Api) 通常只會取得權杖，並將它傳遞給資源擁有者。 假設它們並未保護任何資源，它們就不會檢查權杖，因此不需要確定已正確簽署。
 
 使用應用程式專用流程 (用戶端認證 / 用戶端憑證) 的 Web 應用程式和 web API 屬於此類型，因此不受變換影響。
 
@@ -148,7 +148,7 @@ passport.use(new OIDCStrategy({
 
 如果您手動設定驗證，請遵循下列指示，以瞭解如何設定您的 Web API 以自動更新其金鑰資訊。
 
-下列程式碼片段示範如何從同盟中繼資料文件取得最新的金鑰，然後使用 [JWT 權杖處理常式](https://msdn.microsoft.com/library/dn205065.aspx) 來驗證權杖。 此程式碼片段假設您將會使用自己的快取機制來保留金鑰，以驗證日後來自 Azure AD 的權杖，不論它位於資料庫、組態檔或其他位置。
+下列程式碼片段示範如何從同盟中繼資料文件取得最新的金鑰，然後使用 [JWT 權杖處理常式](https://msdn.microsoft.com/library/dn205065.aspx) 來驗證權杖。 此程式碼片段假設您將使用自己的快取機制來保存金鑰，以驗證來自 Microsoft 身分識別平臺的未來權杖，不論其位於資料庫、設定檔或其他位置。
 
 ```
 using System;
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>保護資源且使用 Visual Studio 2012 建立的 Web 應用程式
-如果應用程式是在 Visual Studio 2012 中建置的，您大概是使用身分識別與存取工具來設定應用程式。 您也可能是使用 [驗證簽發者名稱登錄 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)。 VINR 負責維護信任的識別提供者 (Azure AD) 的相關資訊以及用來驗證其所簽發之權杖的金鑰。 VINR 也可透過下載與目錄相關聯的最新同盟中繼資料文件、使用最新文件檢查組態是否過期，以及視需要讓應用程式更新為使用新金鑰，讓您輕鬆地自動更新 Web.config 檔案中儲存的金鑰資訊。
+如果應用程式是在 Visual Studio 2012 中建置的，您大概是使用身分識別與存取工具來設定應用程式。 您也可能是使用 [驗證簽發者名稱登錄 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)。 VINR 會負責維護 (Microsoft 身分識別平臺) 的受信任身分識別提供者的相關資訊，以及用來驗證它們所簽發權杖的金鑰。 VINR 也可透過下載與目錄相關聯的最新同盟中繼資料文件、使用最新文件檢查組態是否過期，以及視需要讓應用程式更新為使用新金鑰，讓您輕鬆地自動更新 Web.config 檔案中儲存的金鑰資訊。
 
 如果您是使用 Microsoft 所提供的任何程式碼範例或逐步解說文件建立應用程式，則專案中已含有金鑰變換邏輯。 您會發現專案中已存在下列程式碼。 如果應用程式還沒有此邏輯，請遵循下列步驟，以新增此邏輯並確認它能正常運作。
 
@@ -282,7 +282,7 @@ namespace JWTValidation
           </keys>
    ```
 2. 在 **\<add thumbprint="">** 設定中，以不同的字元取代，以變更憑證指紋值。 儲存 **Web.config** 檔案。
-3. 建置應用程式，然後加以執行。 如果您可以完成登入程序，則應用程式已從目錄的同盟中繼資料文件下載所需資訊，而成功地更新金鑰。 如果您在登入時發生問題，請閱讀[使用 Azure AD 為 Web 應用程式新增登入](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) \(英文\) 一文，或是下載並檢查下列程式碼範例︰[Azure Active Directory 的多租用戶雲端應用程式](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)，以確定應用程式中的變更是否正確。
+3. 建置應用程式，然後加以執行。 如果您可以完成登入程序，則應用程式已從目錄的同盟中繼資料文件下載所需資訊，而成功地更新金鑰。 如果您在登入時遇到問題，請閱讀[使用 Microsoft 身分識別平臺將登入新增至您的 Web 應用程式](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)一文，或下載並檢查下列程式碼範例： [Azure Active Directory 的多租使用者雲端應用程式](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)，以確保應用程式中的變更是正確的。
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>保護資源且使用 Visual Studio 2008 或 2010 和 Windows Identity Foundation (WIF) v1.0 for .NET 3.5 建立的 Web 應用程式
 如果您在 WIF v1.0 上建置應用程式，則沒有提供相關機制來將應用程式的組態自動重新整理為使用新的金鑰。
@@ -301,10 +301,10 @@ namespace JWTValidation
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>保護資源且使用任何其他程式庫或手動實作任何支援的通訊協定的 Web 應用程式 / API
 如果您使用其他程式庫，或手動實作任何支援的通訊協定，您必須檢閱文件庫或您的實作，以確保從 OpenID Connect 探索文件或同盟中繼資料文件擷取金鑰。 檢查的方法之一是在您的程式碼或程式庫的程式碼中，搜尋是否有任何呼叫 OpenID 探索文件或同盟中繼資料文件的情況。
 
-如果金鑰儲存在某處或硬式編碼在您的應用程式中，您可以手動擷取金鑰並根據本指導文件結尾的指示執行手動變換來更新金鑰。 **強烈建議您增強應用程式以支援自動變換**，使用本文所述的任何方法，以避免在 Azure AD 增加其變換頻率或有緊急頻外變換時的未來中斷和額外負荷。
+如果金鑰儲存在某處或硬式編碼在您的應用程式中，您可以手動擷取金鑰並根據本指導文件結尾的指示執行手動變換來更新金鑰。 **強烈建議您增強應用程式以支援自動變換**，使用本文所述的任何方法，以避免因 Microsoft 身分識別平臺增加其變換頻率或有緊急頻外變換時的未來中斷和額外負荷。
 
 ## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>如何測試您的應用程式，以判斷其是否會受影響
 下載指令碼並依照 [此 GitHub 儲存機制](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>如果應用程式不支援自動變換，如何執行手動變換
-如果您的應用程式 **不** 支援自動變換，您必須先建立程序，該程序會定期監視 Azure AD 的簽署金鑰，並據此執行手動變換。 [此 GitHub 儲存機制](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) 包含指令碼和如何執行這項操作的指示。
+如果您的應用程式**不**支援自動變換，您將需要建立一個進程，定期監視 Microsoft 身分識別平臺的簽署金鑰，並據此執行手動變換。 [此 GitHub 儲存機制](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) 包含指令碼和如何執行這項操作的指示。

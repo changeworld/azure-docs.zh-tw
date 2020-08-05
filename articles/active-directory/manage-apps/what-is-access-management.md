@@ -1,25 +1,21 @@
 ---
-title: 使用 Azure AD 管理對應用程式的存取 | Microsoft Docs
+title: 使用 Azure AD 管理應用程式的存取
 description: 描述 Azure Active Directory 如何讓組織可以指定每個使用者擁有存取權的應用程式。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f49db0455af02449c3bd087d323d9972d18d96f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 1b19f4aae7bf7477dbe5950f2d4df31e2de81372
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85479720"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562560"
 ---
 # <a name="managing-access-to-apps"></a>管理應用程式的存取
 

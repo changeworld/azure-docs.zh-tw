@@ -5,12 +5,12 @@ description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中進行�
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80877893"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562833"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中進行儲存和備份的最佳做法
 
@@ -34,9 +34,9 @@ ms.locfileid: "80877893"
 
 | 使用案例 | 磁碟區外掛程式 | 單次讀取/寫入 | 多次唯讀 | 多次讀取/寫入 | Windows Server 容器支援 |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| 共用設定       | Azure 檔案   | Yes | Yes | Yes | Yes |
+| 共用設定       | Azure 檔案   | 是 | 是 | 是 | 是 |
 | 結構化應用程式資料        | Azure 磁碟   | 是 | 否  | 否  | 是 |
-| 非結構化資料、檔案系統作業 | [BlobFuse][blobfuse] | Yes | Yes | 是 | 否 |
+| 非結構化資料、檔案系統作業 | [BlobFuse][blobfuse] | 是 | 是 | 是 | 否 |
 
 AKS 中針對磁碟區所提供的兩個主要儲存體類型，是由 Azure 磁碟或 Azure 檔案所支援。 為了提升安全性，這兩種儲存體預設都會使用 Azure 儲存體服務加密 (SSE) 來對待用資料進行加密。 目前磁碟無法在 AKS 節點層級使用 Azure 磁碟加密進行加密。
 
@@ -104,7 +104,7 @@ AKS 節點會以 Azure VM 的形式執行。 有不同類型和大小的 VM 可�
 
 <!-- LINKS - Internal -->
 [aks-concepts-storage]: concepts-storage.md
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [dynamic-disks]: azure-disks-dynamic-pv.md
 [dynamic-files]: azure-files-dynamic-pv.md
 [reclaim-policy]: concepts-storage.md#storage-classes

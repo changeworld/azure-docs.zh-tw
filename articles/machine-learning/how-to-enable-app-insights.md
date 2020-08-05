@@ -11,17 +11,17 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e12c22d56399ce1690bee678623c58288cf0163b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423808"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552198"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>從 ML Web 服務端點監視及收集資料
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何藉由啟用 Azure 應用程式的深入解析，從部署到 Azure Kubernetes Service （AKS）或 Azure 容器實例（ACI）中 web 服務端點的資料，以及監視這些模型。 
+在本文中，您將瞭解如何透過查詢記錄並透過下列方式，在 Azure Kubernetes Service (AKS) 或 Azure 容器實例 (ACI) 中，從部署至 web 服務端點的模型收集資料並加以監視 
 * [Azure Machine Learning Python SDK](#python)
 * [Azure Machine Learning studio](#studio)https://ml.azure.com
 
@@ -42,6 +42,18 @@ ms.locfileid: "87423808"
 
 * 要部署至 Azure Kubernetes Service (AKS) 或 Azure Container 執行個體 (ACI) 的已訓練機器學習模型。 如果您沒有，請參閱[訓練影像分類模型](tutorial-train-models-with-aml.md)教學課程
 
+## <a name="query-logs-for-deployed-models"></a>已部署模型的查詢記錄
+
+若要從先前部署的 Web 服務擷取記錄，請載入服務並使用 `get_logs()` 函式。 記錄可能包含部署期間發生之任何錯誤的相關詳細資訊。
+
+```python
+from azureml.core.webservice import Webservice
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+
 ## <a name="web-service-metadata-and-response-data"></a>Web 服務中繼資料和回應資料
 
 > [!IMPORTANT]
@@ -50,6 +62,7 @@ ms.locfileid: "87423808"
 若要記錄 web 服務要求的資訊，請將 `print` 語句加入至 score.py 檔案。 每個語句都會在 `print` 訊息底下 Application Insights 的追蹤資料表中產生一個專案 `STDOUT` 。 語句的內容 `print` 將包含在 `customDimensions` `Contents` 追蹤資料表中的底下。 如果您列印 JSON 字串，它會在底下的追蹤輸出中產生階層式資料結構 `Contents` 。
 
 您可以直接查詢 Azure 應用程式深入解析以存取此資料，或設定[連續匯出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)至儲存體帳戶，以延長保留期或進一步處理。 然後，可以在 Azure Machine Learning 中使用模型資料來設定標籤、重新定型、可解釋性、資料分析或其他用途。 
+
 
 <a name="python"></a>
 
@@ -164,7 +177,7 @@ ms.locfileid: "87423808"
 1. 移至您在[studio](https://ml.azure.com/)中的 Azure Machine Learning 工作區。
 1. 選取 [端點]  。
 1. 選取您已部署的服務。
-1. 向下滾動以尋找**Application Insights url** ，然後按一下連結。
+1. 向下滾動以尋找**Application Insights url** ，然後選取連結。
 
     [![找出 Application Insights url](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 

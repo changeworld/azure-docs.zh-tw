@@ -1,24 +1,30 @@
 ---
-title: Microsoft Azure 復原服務（MARS）代理程式–常見問題
+title: Microsoft Azure 復原服務 (MARS) 代理程式–常見問題
 description: 解決有關使用 Azure 備份來備份檔案和資料夾的常見問題。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 5a4560499c56e4dcdf41c2e5c7920b415ceab6c5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533575"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563089"
 ---
-# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常見問題-Microsoft Azure 復原服務（MARS）代理程式
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常見問題-Microsoft Azure 復原服務 (MARS) 代理程式
 
-本文會回答有關使用[Azure 備份](backup-overview.md)服務中的 MICROSOFT AZURE 復原服務（MARS）代理程式來備份資料的常見問題。
+本文會回答有關使用[Azure 備份](backup-overview.md)服務中的 MICROSOFT AZURE 復原服務 (MARS) 代理程式來備份資料的常見問題。
 
 ## <a name="configure-backups"></a>設定備份
 
 ### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>哪裡可以下載最新版的 MARS 代理程式？
 
 備份 Windows Server 電腦、System Center DPM 和 Microsoft Azure 備份 Server 時所使用的最新 MARS 代理程式已可供[下載](https://aka.ms/azurebackup_agent)。
+
+### <a name="where-can-i-download-the-vault-credentials-file"></a>哪裡可以下載保存庫認證檔案？
+
+在 [Azure 入口網站中，流覽至您保存庫的 [**屬性**]。 在 [**備份認證**] 底下，選取**已使用最新復原服務代理程式**的核取方塊。 選取 [下載]。
+
+![下載認證](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
 ### <a name="how-long-are-vault-credentials-valid"></a>保存庫認證有效多久？
 
@@ -33,7 +39,7 @@ ms.locfileid: "87533575"
 您無法備份下列類型的磁片磁碟機和磁片區：
 
 * 卸載式媒體：所有備份專案來源必須報告為固定。
-* 唯讀磁片區：磁片區必須為可寫入，磁片區陰影複製服務（VSS）才能正常運作。
+* 唯讀磁片區：磁片區必須是可寫入的磁片區陰影複製服務， (VSS) 才能運作。
 * 離線磁片區：磁片區必須在線上，VSS 才能運作。
 * 網路共用：磁片區必須是本機伺服器，才能使用線上備份進行備份。
 * 受 BitLocker 保護的磁片區：必須先解除鎖定磁片區，才能進行備份。
@@ -116,7 +122,7 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中[支援的字元](/wi
 1. 在提高許可權的命令提示字元中執行此命令，以停止備份引擎：
 
     ```Net stop obengine```
-2. 如果您已設定系統狀態備份，請開啟 [磁片管理]，並將名稱為的磁片卸載，格式為 `"CBSSBVol_<ID>"` 。
+2. 如果您已設定系統狀態備份，請開啟 [磁片管理]，然後將磁片 (s) ，並將其名稱設定為格式 `"CBSSBVol_<ID>"` 。
 3. 根據預設，暫存檔案夾位於`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 4. 將整個 `\Scratch` 資料夾複製到具有足夠空間的其他磁片磁碟機。 請確定已複製內容，而不是移動。
 5. 以新移動的暫存檔案夾路徑更新下列登錄專案。
@@ -165,26 +171,26 @@ MARS 代理程式依賴 NTFS，並允許檔案名/路徑中[支援的字元](/wi
 
 #### <a name="can-i-recover-if-i-forgot-my-passphrase"></a>如果我忘記複雜密碼，可以復原嗎？
 
-Azure 備份代理程式需要複雜密碼（在註冊期間提供）來解密還原期間的備份資料。 請參閱下列案例，以瞭解處理遺失複雜密碼的選項：
+Azure 備份代理程式需要您在註冊期間提供的複雜密碼 (，) 在還原期間解密備份的資料。 請參閱下列案例，以瞭解處理遺失複雜密碼的選項：
 
-| 原始電腦 <br> *（執行備份的來源機器）* | 複雜密碼 | 可用的選項 |
+| 原始電腦 <br> *執行備份的 (來源機器) * | 複雜密碼 | 可用的選項 |
 | --- | --- | --- |
-| 可用 |未能拿下 |如果您的原始電腦（已建立備份的位置）可供使用，而且仍使用相同的復原服務保存庫註冊，則您可以遵循下列[步驟](./backup-azure-manage-mars.md#re-generate-passphrase)來重新產生複雜密碼。  |
+| 可用 |未能拿下 |如果您的原始電腦 (建立備份的位置) 可供使用，而且仍使用相同的復原服務保存庫註冊，則您可以遵循下列[步驟](./backup-azure-manage-mars.md#re-generate-passphrase)來重新產生複雜密碼。  |
 | 未能拿下 |未能拿下 |無法復原資料或資料無法使用 |
 
 請考慮下列情況：
 
-* 如果您使用三個在相同的原始電腦上卸載並重新註冊代理程式
+* 如果您在相同的原始電腦上卸載代理程式並重新註冊，請使用
   * *相同*的複雜密碼，然後您就可以還原已備份的資料。
   * *不同*的複雜密碼，那麼您就無法還原已備份的資料。
 * 如果您將代理程式安裝在*不同的電腦*上，請使用
-  * *相同*的複雜密碼（用於原始電腦中），然後您就可以還原已備份的資料。
+  * 原始電腦) 中 (使用相同的複雜*密碼*，然後您就可以還原已備份的資料。
   * *不同*的複雜密碼，您無法還原已備份的資料。
-* 如果您的原始電腦已損毀（導致無法透過 MARS 主控台重新產生複雜密碼），但您可以還原或存取 MARS 代理程式所使用的原始暫存檔案夾，則您可能可以還原（如果忘記密碼）。 如需更多協助，請聯絡客戶支援。
+* 如果您的原始電腦損毀 (防止您透過 MARS 主控台重新產生複雜密碼) ，但您可以還原或存取 MARS 代理程式所使用的原始暫存資料夾，如果您忘記密碼) ，可能就能夠還原 (。 如需更多協助，請聯絡客戶支援。
 
-#### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>如果我遺失原始電腦（備份的位置），如何? 復原？
+#### <a name="how-do-i-recover-if-i-lost-my-original-machine-where-backups-were-taken"></a>如果我遺失原始機器 (備份) 的位置，如何? 復原？
 
-如果您的原始電腦具有相同的複雜密碼（在註冊期間提供），則可以將備份的資料還原至其他電腦。 請參閱下列案例，以瞭解您的還原選項。
+如果您有在原始電腦的註冊) 期間所提供的相同複雜密碼 (，則可以將已備份的資料還原至其他電腦。 請參閱下列案例，以瞭解您的還原選項。
 
 | 原始電腦 | 複雜密碼 | 可用的選項 |
 | --- | --- | --- |
@@ -197,13 +203,13 @@ Azure 備份會保留最後一個復原點（即使超過保留期限），做�
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果我取消進行中的還原作業，會發生什麼事？
 
-如果已取消進行中的還原作業，還原程式就會停止。 在取消之前還原的所有檔案都會保留在設定的目的地（原始或替代位置），而不會有任何復原。
+如果已取消進行中的還原作業，還原程式就會停止。 在取消之前還原的所有檔案都會保留在設定的目的地 (原始或替代位置) ，而不會有任何復原。
 
 ### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>MARS 代理程式會備份和還原在檔案、資料夾和磁片區上設定的 Acl 嗎？
 
 * MARS 代理程式會備份在檔案、資料夾和磁片區上設定的 Acl
 * 針對磁片區還原復原選項，MARS 代理程式會提供一個選項，以略過將 ACL 許可權還原至要復原的檔案或資料夾
-* 針對 [個別檔案及資料夾] 復原選項，MARS 代理程式會以 ACL 許可權進行還原（不會有略過 ACL 還原的選項）。
+* 針對 [個別檔案及資料夾] 復原選項，MARS 代理程式會以 ACL 許可權進行還原 (沒有任何選項可略過 ACL 還原) 。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: a92aa304d605242063e0d0484317bc8c051959e5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a41fe159f3ac7ef91ba943534aaa6baeeab83001
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317836"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552402"
 ---
 # <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 為您的模型微調超參數
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -173,7 +173,7 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 ### <a name="log-metrics-for-hyperparameter-tuning"></a>記錄用於超參數微調的計量
 
-您模型的定型指令碼必須在模型定型期間記錄相關計量。 設定超參數微調時，您會指定用於評估執行效能的主要計量。 （請參閱[指定要優化的主要度量](#specify-primary-metric-to-optimize)）。 在您的定型腳本中，您必須記錄此計量，才可供超參數微調程式使用。
+您模型的定型指令碼必須在模型定型期間記錄相關計量。 設定超參數微調時，您會指定用於評估執行效能的主要計量。  (請參閱[指定要優化的主要](#specify-primary-metric-to-optimize)計量。 ) 在定型腳本中，您必須記錄此計量，超參數微調程式才可使用此度量。
 
 使用下列範例程式碼片段，將此計量記錄在定型指令碼中：
 
@@ -261,7 +261,7 @@ policy=None
 ### <a name="picking-an-early-termination-policy"></a>挑選提早終止原則
 
 * 如果您在尋求可節省成本，但不會終止大有可為作業的保守原則，您可以使用「中位數停止原則」搭配 `evaluation_interval` 1 和 `delay_evaluation` 5。 這些是保守的設定，可在不遺失主要計量的情況下省下約 25%-35% (取決於我們的評估資料)。
-* 如果您想要更積極地節省成本，您可以使用 Bandit 原則搭配更嚴格的（較小）允許的時差或截斷選取原則，而截斷百分比較大。
+* 如果您想要更積極地節省成本，您可以使用 Bandit 原則搭配更嚴格的 (較小的) 允許的時差，或截斷選取原則較大的截斷百分比。
 
 ## <a name="allocate-resources"></a>配置資源
 
@@ -316,9 +316,9 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name`是您要指派給超參數微調實驗的名稱，而 `workspace` 是您要在其中建立實驗的工作區（如需實驗的詳細資訊，請參閱[Azure Machine Learning 如何運作？](concept-azure-machine-learning-architecture.md)）
+`experiment_name`是您指派給超參數微調實驗的名稱，而 `workspace` 是您要在其中建立實驗的工作區 (如需實驗的詳細資訊，請參閱[Azure Machine Learning 如何運作？](concept-azure-machine-learning-architecture.md)) 
 
-## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>暖啟動您的超參數微調實驗（選擇性）
+## <a name="warm-start-your-hyperparameter-tuning-experiment-optional"></a>暖啟動您的超參數微調實驗 (選擇性) 
 
 通常，為您的模型尋找最佳的超參數值可以是反復的程式，需要多個微調執行，以從先前的超參數微調執行學習。 重複使用這些先前執行的知識，將可加速超參數微調程式，進而降低調整模型的成本，並可能改善產生之模型的主要度量。 當暖開始使用貝氏取樣進行超參數微調實驗時，先前執行的試用將會作為先前的知識，以智慧方式挑選新的範例，以改善主要計量。 此外，使用隨機或格線取樣時，任何早期終止決策都會利用先前執行的計量，來判斷效能不佳的定型執行。 
 
@@ -332,7 +332,7 @@ warmstart_parent_2 = HyperDriveRun(experiment, "warmstart_parent_run_ID_2")
 warmstart_parents_to_resume_from = [warmstart_parent_1, warmstart_parent_2]
 ```
 
-此外，在某些情況下，可能會因為預算條件約束而取消了超參數微調實驗的個別定型執行，或因其他原因而失敗。 現在可以從最後一個檢查點繼續進行這類個別的定型執行（假設您的定型腳本會處理檢查點）。 繼續個別的定型回合將會使用相同的超參數設定，並裝載該執行所使用的輸出檔案夾。 定型腳本應該接受 `resume-from` 引數，其中包含要從中繼續定型執行的檢查點或模型檔案。 您可以使用下列程式碼片段繼續個別的定型回合：
+此外，在某些情況下，可能會因為預算條件約束而取消了超參數微調實驗的個別定型執行，或因其他原因而失敗。 您現在可以從最後一個檢查點繼續進行這類個別的定型執行 (假設您的定型腳本會處理檢查點) 。 繼續個別的定型回合將會使用相同的超參數設定，並裝載該執行所使用的輸出檔案夾。 定型腳本應該接受 `resume-from` 引數，其中包含要從中繼續定型執行的檢查點或模型檔案。 您可以使用下列程式碼片段繼續個別的定型回合：
 
 ```Python
 from azureml.core.run import Run
@@ -379,7 +379,7 @@ RunDetails(hyperdrive_run).show()
 
 [![超參數微調平行座標](./media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
 
-您也可以在 Azure 入口網站中，視覺化您所有的超參數微調執行。 如需如何在入口網站中檢視實驗的詳細資訊，請參閱[如何追蹤實驗](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)。
+您也可以在 Azure 入口網站中，視覺化您所有的超參數微調執行。 如需如何在入口網站中檢視實驗的詳細資訊，請參閱[如何追蹤實驗](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)。
 
 ## <a name="find-the-best-model"></a>尋找最佳模型
 

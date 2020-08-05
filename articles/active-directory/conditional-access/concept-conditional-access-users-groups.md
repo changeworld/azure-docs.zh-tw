@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 08/03/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 127d76bedafd4c857686e93f21d3cccdc36b98dd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274658"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552895"
 ---
 # <a name="conditional-access-users-and-groups"></a>條件式存取：使用者和群組
 
@@ -36,7 +36,7 @@ ms.locfileid: "87274658"
    - 存在於目錄中的所有使用者，包括 B2B 來賓。
 - 選取使用者和群組
    - 所有來賓和外部使用者
-      - 此選項包括任何 B2B 來賓和外部使用者，包括將 `user type` 屬性設定為的任何使用者 `guest` 。 此選項也適用于從不同組織（例如雲端解決方案提供者（CSP））登入的任何外部使用者。 
+      - 此選項包括任何 B2B 來賓和外部使用者，包括將 `user type` 屬性設定為的任何使用者 `guest` 。 此選項也適用于從不同組織登入的任何外部使用者，例如雲端解決方案提供者 (CSP) 。 
    - 目錄角色
       - 可讓系統管理員選取用來判斷指派的特定 Azure AD 目錄角色。 例如，組織可能會在指派全域管理員角色的使用者上建立限制更嚴格的原則。
    - 使用者和群組
@@ -44,6 +44,9 @@ ms.locfileid: "87274658"
 
 > [!WARNING]
 > 如果使用者或群組是超過2048個群組的成員，其存取權可能會被封鎖。 這項限制同時適用于直接和嵌套群組成員資格。
+
+> [!WARNING]
+> 條件式存取原則不支援使用者指派的目錄角色，範圍限於直接設定為物件範圍的系統[管理單位](../users-groups-roles/roles-admin-units-assign-roles.md)或目錄角色，例如透過[自訂角色](../users-groups-roles/roles-create-custom.md)。
 
 ## <a name="exclude-users"></a>排除使用者
 
@@ -55,7 +58,7 @@ ms.locfileid: "87274658"
 建立條件式存取原則時，有下列選項可供排除。
 
 - 所有來賓和外部使用者
-   - 此選項包括任何 B2B 來賓和外部使用者，包括將 `user type` 屬性設定為的任何使用者 `guest` 。 此選項也適用于從不同組織（例如雲端解決方案提供者（CSP））登入的任何外部使用者。 
+   - 此選項包括任何 B2B 來賓和外部使用者，包括將 `user type` 屬性設定為的任何使用者 `guest` 。 此選項也適用于從不同組織登入的任何外部使用者，例如雲端解決方案提供者 (CSP) 。 
 - 目錄角色
    - 可讓系統管理員選取用來判斷指派的特定 Azure AD 目錄角色。 例如，組織可能會在指派全域管理員角色的使用者上建立限制更嚴格的原則。
 - 使用者和群組

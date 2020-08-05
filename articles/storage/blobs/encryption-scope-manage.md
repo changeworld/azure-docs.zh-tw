@@ -1,30 +1,30 @@
 ---
-title: 建立及管理加密範圍（預覽）
-description: ''
+title: 建立和管理 (預覽) 的加密範圍
+description: 瞭解如何建立加密範圍，以隔離容器或 blob 層級的 blob 資料。
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f589f0108cf21e77be5103afcaa0242c6f191ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d4dd3f3ced8aac6852fe8516a4a5cadca2ebdc49
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531384"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564141"
 ---
-# <a name="create-and-manage-encryption-scopes-preview"></a>建立及管理加密範圍（預覽）
+# <a name="create-and-manage-encryption-scopes-preview"></a>建立和管理 (預覽) 的加密範圍
 
-加密範圍（預覽）可讓您管理個別 blob 或容器層級的加密。 加密範圍會隔離儲存體帳戶內安全記憶體保護區中的 blob 資料。 您可以使用加密範圍，在位於相同儲存體帳戶但屬於不同客戶的資料之間建立安全界限。 如需加密範圍的詳細資訊，請參閱[Blob 儲存體的加密範圍（預覽）](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview)。
+ (預覽的加密範圍) 可讓您管理個別 blob 或容器層級的加密。 加密範圍會隔離儲存體帳戶內安全記憶體保護區中的 blob 資料。 您可以使用加密範圍，在位於相同儲存體帳戶但屬於不同客戶的資料之間建立安全界限。 如需有關加密範圍的詳細資訊，請參閱[Blob 儲存體 (預覽) 的加密範圍](../common/storage-service-encryption.md#encryption-scopes-for-blob-storage-preview)。
 
 本文說明如何建立加密範圍。 它也會說明如何在建立 blob 或容器時指定加密範圍。
 
 ## <a name="create-an-encryption-scope"></a>建立加密範圍
 
-若要建立加密範圍，您必須先建立 Azure 金鑰保存庫，並新增您想要用於此範圍的金鑰。 金鑰保存庫必須同時啟用虛**刪除**和**清除保護**屬性，而且必須位於與儲存體帳戶相同的區域中。 如需詳細資訊，請參閱[使用客戶管理的金鑰搭配 Azure Key Vault 來管理 Azure 儲存體加密](../common/encryption-customer-managed-keys.md)。
+您可以使用 Microsoft 管理的金鑰或儲存在 Azure Key Vault 中客戶管理的金鑰來建立加密範圍。 若要使用客戶管理的金鑰建立加密範圍，您必須先建立 Azure 金鑰保存庫，並新增您想要用於此範圍的金鑰。 金鑰保存庫必須同時啟用虛**刪除**和**清除保護**屬性，而且必須位於與儲存體帳戶相同的區域中。 如需詳細資訊，請參閱[使用客戶管理的金鑰搭配 Azure Key Vault 來管理 Azure 儲存體加密](../common/encryption-customer-managed-keys.md)。
 
 加密範圍會在您建立時自動啟用。 建立加密範圍之後，您可以在建立 blob 時加以指定。 當您建立容器時，您也可以指定預設的加密範圍，這會自動套用至容器中的所有 blob。
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: ac083f842bf10adcbb23e3e1c1157383e11f3af9
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432432"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563546"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>使用 Azure 監視器監視和警示 Data Factory
 
@@ -24,7 +24,7 @@ ms.locfileid: "87432432"
 
 雲端應用程式很複雜，而且有許多移動元件。 監視器會提供資料，協助確保您的應用程式保持正常運作狀態。 監視也可以協助您避免潛在的問題，並針對過去的問題進行疑難排解。 您可以使用監視資料來取得應用程式的深入見解。 此知識可協助您改善應用程式效能和可維護性。 它也可協助您將需要手動介入的動作自動化。
 
-Azure 監視器提供適用于大部分 Azure 服務的基本層級基礎結構計量和記錄。 Azure 診斷記錄是由資源發出，並提供關於該資源作業的豐富、經常性資料。 Azure Data Factory （ADF）可以在 Azure 監視器中寫入診斷記錄。 如需此功能的 7 分鐘簡介與示範，請觀看下列影片：
+Azure 監視器提供適用于大部分 Azure 服務的基本層級基礎結構計量和記錄。 Azure 診斷記錄是由資源發出，並提供關於該資源作業的豐富、經常性資料。 Azure Data Factory (ADF) 可以在 Azure 監視器中寫入診斷記錄。 如需此功能的 7 分鐘簡介與示範，請觀看下列影片：
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Monitor-Data-Factory-pipelines-using-Operations-Management-Suite-OMS/player]
 
@@ -40,7 +40,7 @@ Data Factory 只會儲存45天的管線執行資料。 如果您想要將該資�
   * 您想要在一組豐富的計量上撰寫複雜的查詢，這些度量是由 Data Factory 所發行，以進行監視。 您可以透過 [監視] 來建立這些查詢的自訂警示。
   * 您想要監視所有資料處理站。 您可以將多個資料處理站的資料路由傳送到單一監視工作區。
 
-您也可以使用不在發出記錄的資源訂用帳戶中的儲存體帳戶或事件中樞命名空間。 設定此設定的使用者必須具有這兩個訂用帳戶的適當角色型存取控制（RBAC）存取權。
+您也可以使用不在發出記錄的資源訂用帳戶中的儲存體帳戶或事件中樞命名空間。 設定此設定的使用者必須具有適當的角色型存取控制 (RBAC) 存取這兩個訂用帳戶。
 
 ## <a name="configure-diagnostic-settings-and-workspace"></a>設定診斷設定和工作區
 
@@ -73,7 +73,7 @@ Data Factory 只會儲存45天的管線執行資料。 如果您想要將該資�
       - _ADFSSISPackageExecutionComponentPhases_
       - _ADFSSISPackageExecutionDataStatistics_
 
-      您可以選取與您的工作負載相關的各種記錄，以傳送至 Log Analytics 資料表。 例如，如果您根本不使用 SQL Server Integration Services （SSIS），就不需要選取任何 SSIS 記錄。 如果您想要記錄 SSIS Integration Runtime （IR）啟動/停止/維護作業，您可以選取 [SSIS IR 記錄檔]。 如果您在 SQL Server Management Studio （SSMS）、SQL Server Agent 或其他指定的工具上透過 T-sql 叫用 SSIS 套件執行，則可以選取 [SSIS 封裝記錄檔]。 如果您透過 ADF 管線中的 [執行 SSIS 套件] 活動叫用 SSIS 套件執行，則可以選取 [所有記錄]。
+      您可以選取與您的工作負載相關的各種記錄，以傳送至 Log Analytics 資料表。 例如，如果您根本不使用 SQL Server Integration Services (SSIS) ，則不需要選取任何 SSIS 記錄。 如果您想要記錄 SSIS Integration Runtime (IR) 啟動/停止/維護作業，您可以選取 [SSIS IR 記錄檔]。 如果您在 SQL Server Management Studio 上透過 T-sql 叫用 SSIS 套件執行 (SSMS) 、SQL Server Agent 或其他指定的工具，則可以選取 [SSIS 封裝記錄檔]。 如果您透過 ADF 管線中的 [執行 SSIS 套件] 活動叫用 SSIS 套件執行，則可以選取 [所有記錄]。
 
     * 如果您選取 [ _AllMetrics_]，將會提供各種 adf 計量讓您監視或引發警示，包括 ADF 活動、管線和觸發程式執行的計量，以及 ssis IR 作業和 ssis 封裝執行。
 
@@ -94,13 +94,13 @@ Data Factory 只會儲存45天的管線執行資料。 如果您想要將該資�
 * 依類型深入探索 data factory 活動執行的能力
 * Data factory 最上層管線的摘要，活動錯誤
 
-1. 移至**Azure Marketplace**，選擇 [**分析**] [篩選]，然後搜尋**Azure Data Factory 分析（預覽）**
+1. 移至**Azure Marketplace**，選擇 [**分析**] [篩選]，然後搜尋**Azure Data Factory 分析 (預覽) **
 
-   ![移至 [Azure Marketplace]，輸入 [分析篩選器]，然後選取 [Azure Data Factory 分析（預覽）]](media/data-factory-monitor-oms/monitor-oms-image3.png)
+   ![移至 [Azure Marketplace]，輸入 [分析篩選器]，然後選取 [Azure Data Factory 分析 (預覽] ) ](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
-1. Azure Data Factory 分析的詳細資料 **（預覽）**
+1. **Azure Data Factory 分析 (預覽**的詳細資料) 
 
-   ![「Azure Data Factory 分析（預覽）」的詳細資料](media/data-factory-monitor-oms/monitor-oms-image4.png)
+   ![有關「Azure Data Factory 分析 (Preview) 」的詳細資訊](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
 1. 選取 [**建立**]，然後建立或選取**Log Analytics 工作區**。
 
@@ -110,24 +110,24 @@ Data Factory 只會儲存45天的管線執行資料。 如果您想要將該資�
 
 安裝此解決方案會在所選 Log Analytics 工作區的 [活頁簿] 區段內，建立一組預設的視圖。 因此，會啟用下列計量：
 
-* ADF 執行-1）依 Data Factory 的管線執行
-* ADF 執行-2）活動執行（依 Data Factory）
-* ADF 執行-3）依 Data Factory 的觸發程式執行
-* ADF 錯誤-1）依 Data Factory 的前10個管線錯誤
-* ADF 錯誤-2） Data Factory 前10個活動執行
-* ADF 錯誤-3） Data Factory 前10個觸發程式錯誤
-* ADF 統計資料-1）活動執行（依類型）
-* ADF 統計資料-2）依類型的觸發程式執行
-* ADF 統計資料-3）管線執行持續時間上限
+* ADF 執行-1) 管線執行 Data Factory
+* ADF 執行-2) 活動執行 Data Factory
+* ADF 執行-3) 觸發程式執行 Data Factory
+* ADF 錯誤-1) 前10個管線錯誤，Data Factory
+* ADF 錯誤-2) 前10個活動執行 Data Factory
+* ADF 錯誤-3) 前10個觸發程式錯誤，Data Factory
+* ADF 統計資料-1) 依類型的活動執行
+* ADF 統計資料-2) 依類型的觸發程式執行
+* ADF 統計資料-3) 管線執行持續時間上限
 
-![已反白顯示 [活頁簿（預覽）] 和 [AzureDataFactoryAnalytics] 的視窗](media/data-factory-monitor-oms/monitor-oms-image6.png)
+![已反白顯示「活頁簿 (預覽) 」和「AzureDataFactoryAnalytics」的視窗](media/data-factory-monitor-oms/monitor-oms-image6.png)
 
 您可以將上述計量視覺化、查看這些計量背後的查詢、編輯查詢、建立警示，以及採取其他動作。
 
 ![依 data factory 的管線執行圖形標記法](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 > [!NOTE]
-> Azure Data Factory 分析（預覽）會將診斷記錄傳送至_資源特定的_目的地資料表。 您可以針對下列資料表撰寫查詢： _ADFPipelineRun_、 _ADFTriggerRun_和_ADFActivityRun_。
+> Azure Data Factory 分析 (預覽) 會將診斷記錄傳送至_資源特定的_目的地資料表。 您可以針對下列資料表撰寫查詢： _ADFPipelineRun_、 _ADFTriggerRun_和_ADFActivityRun_。
 
 ## <a name="data-factory-metrics"></a>Data Factory 計量
 
@@ -146,11 +146,11 @@ Data Factory 只會儲存45天的管線執行資料。 如果您想要將該資�
 | TriggerCancelledRuns                  | 已取消的觸發程序執行計量            | Count    | 總計                | 在一分鐘時間範圍內取消的觸發程式執行總數。 |
 | TriggerFailedRuns                    | 失敗的觸發程序執行計量              | Count    | 總計                | 在一分鐘時間範圍內失敗的觸發程式執行總數。 |
 | TriggerSucceededRuns                 | 成功的觸發程序執行計量           | Count    | 總計                | 在一分鐘時間範圍內成功的觸發程式執行總數。 |
-| SSISIntegrationRuntimeStartCancelled  | 已取消 SSIS IR 啟動計量           | Count    | 總計                | 在一分鐘時間範圍內取消的 SSIS IR 開始總數。 |
-| SSISIntegrationRuntimeStartFailed    | 失敗的 SSIS IR 啟動計量             | Count    | 總計                | 在一分鐘時間範圍內失敗的 SSIS IR 開始總數。 |
-| SSISIntegrationRuntimeStartSucceeded | 成功的 SSIS IR 啟動計量          | Count    | 總計                | 在一分鐘時間範圍內成功啟動的 SSIS IR 總數。 |
-| SSISIntegrationRuntimeStopStuck      | 停滯 SSIS IR 停止計量               | Count    | 總計                | 在一分鐘時間範圍內停滯的 SSIS IR 停止總數。 |
-| SSISIntegrationRuntimeStopSucceeded  | 成功的 SSIS IR 停止計量           | Count    | 總計                | 在一分鐘時間範圍內成功的 SSIS IR 停止總數。 |
+| SSISIntegrationRuntimeStartCancelled  | 已取消 SSIS integration runtime 啟動計量           | Count    | 總計                | 在一分鐘時間範圍內取消的 SSIS integration runtime 啟動總數。 |
+| SSISIntegrationRuntimeStartFailed    | 失敗的 SSIS integration runtime 啟動計量             | Count    | 總計                | 在一分鐘時間範圍內失敗的 SSIS integration runtime 啟動總數。 |
+| SSISIntegrationRuntimeStartSucceeded | 成功的 SSIS 整合執行時間啟動計量          | Count    | 總計                | 在一分鐘時間範圍內成功啟動的 SSIS 整合執行時間總數。 |
+| SSISIntegrationRuntimeStopStuck      | 停滯 SSIS integration runtime 停止計量               | Count    | 總計                | 在一分鐘時間範圍內停滯的 SSIS integration runtime 停止總數。 |
+| SSISIntegrationRuntimeStopSucceeded  | 成功的 SSIS 整合執行時間停止計量           | Count    | 總計                | SSIS 整合執行時間的總次數會在一分鐘的時間範圍內停止。 |
 | SSISPackageExecutionCancelled         | 已取消 SSIS 封裝執行計量  | Count    | 總計                | 在一分鐘時間範圍內取消的 SSIS 封裝執行總數。 |
 | SSISPackageExecutionFailed           | 失敗的 SSIS 封裝執行計量    | Count    | 總計                | 在一分鐘時間範圍內失敗的 SSIS 封裝執行總數。 |
 | SSISPackageExecutionSucceeded        | 成功的 SSIS 封裝執行計量 | Count    | 總計                | 在一分鐘時間範圍內成功執行的 SSIS 封裝執行總數。 |
@@ -158,7 +158,7 @@ Data Factory 只會儲存45天的管線執行資料。 如果您想要將該資�
 若要存取計量，請完成[Azure 監視器資料平臺](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)中的指示。
 
 > [!NOTE]
-> 只有來自已完成、觸發的活動和管線執行的事件才會發出。 進行中和**不**會發出 debug 執行。 另一方面，**所有**SSIS 封裝執行的事件都會發出，包括已完成和進行中的事件（不論其調用方法為何）。 例如，您可以在啟用 Azure 的 SQL Server Data Tools （SSDT）上叫用封裝，透過 SSMS 上的 T-sql、SQL Server Agent 或其他指定的工具，以及在 ADF 管線中執行 SSIS 套件活動的觸發或 debug 回合。
+> 只有來自已完成、觸發的活動和管線執行的事件才會發出。 進行中和**不**會發出 debug 執行。 另一方面，**所有**SSIS 封裝執行的事件都會發出，包括已完成和進行中的事件（不論其調用方法為何）。 例如，您可以透過 SSMS 上的 T-sql、SQL Server Agent 或其他指定的工具，在已啟用 Azure 的)  (SQL Server Data Tools 上叫用封裝，以及在 ADF 管線中執行 SSIS 套件活動的觸發或偵錯工具。
 
 ## <a name="data-factory-alerts"></a>Data Factory 警示
 
@@ -208,7 +208,7 @@ Data Factory 只會儲存45天的管線執行資料。 如果您想要將該資�
 * 它們會指定每個記錄類別應該保留在儲存體帳戶中的時間長度。
 * 保留期為 0 天表示會永遠保留記錄。 否則，此值可以是從1到2147483647的任何天數。
 * 如果已設定保留原則，但已停用儲存體帳戶中的記錄，保留原則不會有任何作用。 例如，只有選取事件中樞或監視記錄檔選項時，才會發生這種狀況。
-* 保留原則會每天套用。 日期之間的界限會在國際標準時間（UTC）午夜發生。 一天結束時，會刪除保留原則以外的天數記錄。 例如，如果您的保留原則是一天，則在今天的一開始，會刪除昨天之前的記錄。
+* 保留原則會每天套用。 日期之間的界限會在國際標準時間 (UTC) 的午夜發生。 一天結束時，會刪除保留原則以外的天數記錄。 例如，如果您的保留原則是一天，則在今天的一開始，會刪除昨天之前的記錄。
 
 ### <a name="enable-diagnostic-logs-via-the-azure-monitor-rest-api"></a>透過 Azure 監視器 REST API 啟用診斷記錄
 
@@ -221,12 +221,12 @@ PUT
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>headers
+##### <a name="headers"></a>標題
 
 * 將 `{api-version}` 取代為 `2016-09-01`。
 * 將取代為 `{resource-id}` 您要編輯診斷設定的資源識別碼。 如需詳細資訊，請參閱[使用資源群組來管理您的 Azure 資源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
 * 將 `Content-Type` 標頭設定為 `application/json`。
-* 將授權標頭設定為您從 Azure Active Directory （Azure AD）所獲得的 JSON web 權杖。 如需詳細資訊，請參閱[驗證要求](../active-directory/develop/authentication-scenarios.md)。
+* 將授權標頭設定為您從 Azure Active Directory (Azure AD) 中所獲得的 JSON web 權杖。 如需詳細資訊，請參閱[驗證要求](../active-directory/develop/authentication-scenarios.md)。
 
 ##### <a name="body"></a>主體
 
@@ -341,7 +341,7 @@ GET
 https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnosticSettings/service?api-version={api-version}
 ```
 
-##### <a name="headers"></a>headers
+##### <a name="headers"></a>標題
 
 * 將 `{api-version}` 取代為 `2016-09-01`。
 * 將取代為 `{resource-id}` 您要編輯診斷設定的資源識別碼。 如需詳細資訊，請參閱[使用資源群組來管理您的 Azure 資源](../azure-resource-manager/management/manage-resource-groups-portal.md)。
@@ -451,7 +451,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |**pipelineRunId**| String| 管線執行的識別碼。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**resourceId**| String | 與資料處理站資源相關聯的識別碼。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**類別**| String | 診斷記錄的類別。 將屬性 (Property) 值設定為 `ActivityRuns`。 | `ActivityRuns` |
-|**二級**| String | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
+|**等級**| String | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
 |**operationName**| String | 活動的名稱及其狀態。 如果活動是啟動信號，則屬性值為 `MyActivity -` 。 如果活動是結束的信號，則屬性值為 `MyActivity - Succeeded` 。 | `MyActivity - Succeeded` |
 |**pipelineName**| String | 管線名稱。 | `MyPipeline` |
 |**activityName**| String | 活動名稱。 | `MyActivity` |
@@ -496,7 +496,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |**runId**| String| 管線執行的識別碼。 | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**resourceId**| String | 與資料處理站資源相關聯的識別碼。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**類別**| String | 診斷記錄的類別。 將屬性 (Property) 值設定為 `PipelineRuns`。 | `PipelineRuns` |
-|**二級**| String | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
+|**等級**| String | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
 |**operationName**| String | 管線的名稱及其狀態。 管線執行完成之後，屬性值為 `Pipeline - Succeeded` 。 | `MyPipeline - Succeeded`. |
 |**pipelineName**| String | 管線名稱。 | `MyPipeline` |
 |**開始**| String | 活動的開始時間是以 timespan UTC 格式執行。 | `2017-06-26T20:55:29.5007959Z`. |
@@ -539,7 +539,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |**triggerId**| String| 觸發程式執行的識別碼。 | `08587023010602533858661257311` |
 |**resourceId**| String | 與資料處理站資源相關聯的識別碼。 | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**類別**| String | 診斷記錄的類別。 將屬性 (Property) 值設定為 `PipelineRuns`。 | `PipelineRuns` |
-|**二級**| String | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
+|**等級**| String | 診斷記錄的層級。 將屬性 (Property) 值設定為 `Informational`。 | `Informational` |
 |**operationName**| String | 觸發程式的名稱，其最終狀態為，指出是否已成功引發觸發程式。 如果信號成功，則屬性值為 `MyTrigger - Succeeded` 。 | `MyTrigger - Succeeded` |
 |**triggerName**| String | 觸發程序的名稱。 | `MyTrigger` |
 |**triggerType**| String | 觸發程序的類型。 可能的屬性值為 `Manual Trigger` 和 `Schedule Trigger` 。 | `ScheduleTrigger` |
@@ -576,14 +576,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **correlationId**          | String | 用於追蹤特定作業的唯一識別碼             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
 | **dataFactoryName**        | String | ADF 的名稱                                          | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名稱                                      | `MySSISIR` |
-| **二級**                  | String | 診斷記錄的層級                                  | `Informational` |
+| **等級**                  | String | 診斷記錄的層級                                  | `Informational` |
 | **resultType**             | String | SSIS IR 作業的結果                          | `Started/InProgress/Succeeded/Failed` |
 | **message**                | String | SSIS IR 作業的輸出訊息                  | `The stopping of your SSIS integration runtime has succeeded.` |
 | **resourceId**             | String | ADF 資源的唯一識別碼                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
 #### <a name="ssis-event-message-context-log-attributes"></a>SSIS 事件訊息內容記錄檔屬性
 
-以下是與 SSIS IR 上 SSIS 封裝執行所產生之事件訊息相關的條件記錄屬性。 它們會傳達與[ssis 目錄（SSISDB）事件訊息內容資料表或視圖](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15)類似的資訊，顯示許多 ssis 封裝屬性的運行時間值。 當您選取 `Basic/Verbose` 記錄層級，並適用于檢查/合規性檢查時，就會產生它們。
+以下是與 SSIS IR 上 SSIS 封裝執行所產生之事件訊息相關的條件記錄屬性。 它們會將類似的資訊傳達為[ssis 目錄 (SSISDB) 事件訊息內容資料表或查看](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15)，其中顯示許多 SSIS 封裝屬性的運行時間值。 當您選取 `Basic/Verbose` 記錄層級，並適用于檢查/合規性檢查時，就會產生它們。
 
 ```json
 {
@@ -616,11 +616,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **correlationId**          | String | 用於追蹤特定作業的唯一識別碼                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | String | ADF 的名稱                                                 | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名稱                                             | `MySSISIR` |
-| **二級**                  | String | 診斷記錄的層級                                         | `Informational` |
-| **operationId**            | String | 在 SSISDB 中用來追蹤特定作業的唯一識別碼          | `1`（1表示與**未**儲存于 SSISDB/透過 t-sql 叫用之套件相關的作業 |
-| **coNtextDepth**           | String | 事件訊息內容的深度                              | `0`（0表示在封裝執行開始之前的內容，1表示發生錯誤時的內容，而且隨著內容的進一步而增加） |
+| **等級**                  | String | 診斷記錄的層級                                         | `Informational` |
+| **operationId**            | String | 在 SSISDB 中用來追蹤特定作業的唯一識別碼          | `1` (1 表示與**未**儲存于 SSISDB/透過 t-sql 叫用之套件相關的作業)  |
+| **coNtextDepth**           | String | 事件訊息內容的深度                              | `0` (0 表示封裝執行開始之前的內容，1表示發生錯誤時的內容，而且會隨著內容從錯誤而增加)  |
 | **packagePath**            | String | 封裝物件的路徑，做為您的事件訊息內容來源      | `\Package` |
-| **coNtextType**            | String | 封裝物件的類型，做為您的事件訊息內容來源      | `60`（請參閱[更多內容類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)） |
+| **coNtextType**            | String | 封裝物件的類型，做為您的事件訊息內容來源      | `60` (看到[更多內容類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks))  |
 | **coNtextSourceName**      | String | 封裝物件的名稱，做為您的事件訊息內容來源      | `MyPackage` |
 | **coNtextSourceId**        | String | 封裝物件的唯一識別碼，做為您的事件訊息內容來源 | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **propertyName**           | String | 事件訊息內容來源的封裝屬性名稱   | `DelayValidation` |
@@ -666,11 +666,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **correlationId**          | String | 用於追蹤特定作業的唯一識別碼                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | String | ADF 的名稱                                               | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名稱                                           | `MySSISIR` |
-| **二級**                  | String | 診斷記錄的層級                                       | `Informational` |
-| **operationId**            | String | 在 SSISDB 中用來追蹤特定作業的唯一識別碼        | `1`（1表示與**未**儲存于 SSISDB/透過 t-sql 叫用之套件相關的作業 |
+| **等級**                  | String | 診斷記錄的層級                                       | `Informational` |
+| **operationId**            | String | 在 SSISDB 中用來追蹤特定作業的唯一識別碼        | `1` (1 表示與**未**儲存于 SSISDB/透過 t-sql 叫用之套件相關的作業)  |
 | **messageTime**            | String | 以 UTC 格式建立事件訊息的時間          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | String | 事件訊息的類型                                     | `70`（請參閱[其他訊息類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)） |
-| **messageSourceType**      | String | 事件訊息來源的類型                              | `20`（請參閱[其他訊息來源類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)） |
+| **messageType**            | String | 事件訊息的類型                                     | `70` (看到[更多訊息類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
+| **messageSourceType**      | String | 事件訊息來源的類型                              | `20` (看到[更多訊息來源類型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks))  |
 | **message**                | String | 事件訊息的文字                                     | `MyPackage:Validation has started.` |
 | **packageName**            | String | 已執行封裝檔案的名稱                             | `MyPackage.dtsx` |
 | **eventName**              | String | 相關運行時間事件的名稱                                 | `OnPreValidate` |
@@ -678,7 +678,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **messageSourceId**        | String | 封裝元件的唯一識別碼，做為您的事件訊息來源    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 | **subcomponentName**       | String | 資料流程元件的名稱，做為您的事件訊息來源       | `SSIS.Pipeline` |
 | **packagePath**            | String | 封裝物件的路徑，做為您的事件訊息來源            | `\Package\Data Flow Task` |
-| **executionPath**          | String | 從父封裝到執行元件的完整路徑            | `\Transformation\Data Flow Task`（此路徑也會捕捉元件反復專案） |
+| **executionPath**          | String | 從父封裝到執行元件的完整路徑            | `\Transformation\Data Flow Task` (此路徑也會捕捉元件反覆運算)  |
 | **threadId**               | String | 記錄事件訊息時執行之執行緒的唯一識別碼 | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS 可執行檔統計資料記錄屬性
@@ -715,13 +715,13 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **correlationId**          | String | 用於追蹤特定作業的唯一識別碼                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | String | ADF 的名稱                                             | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名稱                                         | `MySSISIR` |
-| **二級**                  | String | 診斷記錄的層級                                     | `Informational` |
-| **executionId**            | String | 在 SSISDB 中用來追蹤特定執行的唯一識別碼      | `1`（1表示與**未**儲存于 SSISDB/透過 t-sql 叫用的封裝相關的執行） |
-| **executionPath**          | String | 從父封裝到執行元件的完整路徑          | `\Transformation\Data Flow Task`（此路徑也會捕捉元件反復專案） |
+| **等級**                  | String | 診斷記錄的層級                                     | `Informational` |
+| **executionId**            | String | 在 SSISDB 中用來追蹤特定執行的唯一識別碼      | `1` (1 表示與**未**儲存于 SSISDB/透過 t-sql 叫用之套件相關的執行作業)  |
+| **executionPath**          | String | 從父封裝到執行元件的完整路徑          | `\Transformation\Data Flow Task` (此路徑也會捕捉元件反覆運算)  |
 | **時間**              | String | 可執行檔以 UTC 格式進入執行前階段的時間  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | String | 可執行檔以 UTC 格式進入執行後階段的時間 | `2017-06-28T21:00:27.3534352Z` |
 | **executionDuration**      | String | 執行檔的執行時間（以毫秒為單位）                   | `1,125` |
-| **executionResult**        | String | 執行可執行檔的結果                                 | `0`（0表示成功，1表示失敗，2表示完成，3表示取消） |
+| **executionResult**        | String | 執行可執行檔的結果                                 | `0` (0 表示成功，1表示失敗，2表示完成，3表示取消)  |
 | **之 executionvalue**         | String | 執行可執行檔所傳回的使用者定義值            | `1` |
 | **resourceId**             | String | ADF 資源的唯一識別碼                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
@@ -760,8 +760,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **correlationId**          | String | 用於追蹤特定作業的唯一識別碼                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | String | ADF 的名稱                                                | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR 的名稱                                            | `MySSISIR` |
-| **二級**                  | String | 診斷記錄的層級                                        | `Informational` |
-| **executionId**            | String | 在 SSISDB 中用來追蹤特定執行的唯一識別碼         | `1`（1表示與**未**儲存于 SSISDB/透過 t-sql 叫用的封裝相關的執行） |
+| **等級**                  | String | 診斷記錄的層級                                        | `Informational` |
+| **executionId**            | String | 在 SSISDB 中用來追蹤特定執行的唯一識別碼         | `1` (1 表示與**未**儲存于 SSISDB/透過 t-sql 叫用之套件相關的執行作業)  |
 | **packageName**            | String | 已執行封裝檔案的名稱                              | `MyPackage.dtsx` |
 | **taskName**               | String | 已執行之資料流程工作的名稱                                 | `Data Flow Task` |
 | **subcomponentName**       | String | 資料流程元件的名稱                                     | `Derived Column` |
@@ -808,8 +808,8 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **correlationId**            | String | 用於追蹤特定作業的唯一識別碼                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**          | String | ADF 的名稱                                               | `MyADFv2` |
 | **integrationRuntimeName**   | String | SSIS IR 的名稱                                           | `MySSISIR` |
-| **二級**                    | String | 診斷記錄的層級                                       | `Informational` |
-| **executionId**              | String | 在 SSISDB 中用來追蹤特定執行的唯一識別碼        | `1`（1表示與**未**儲存于 SSISDB/透過 t-sql 叫用的封裝相關的執行） |
+| **等級**                    | String | 診斷記錄的層級                                       | `Informational` |
+| **executionId**              | String | 在 SSISDB 中用來追蹤特定執行的唯一識別碼        | `1` (1 表示與**未**儲存于 SSISDB/透過 t-sql 叫用之套件相關的執行作業)  |
 | **packageName**              | String | 已執行封裝檔案的名稱                             | `MyPackage.dtsx` |
 | **taskName**                 | String | 已執行之資料流程工作的名稱                                | `Data Flow Task` |
 | **dataflowPathIdString**     | String | 用於追蹤資料流程路徑的唯一識別碼                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
@@ -841,7 +841,7 @@ Log Analytics 會從 [監視] 繼承架構，但有下列例外狀況：
     | $. 屬性。父 | 父 | 動態 |
     | $. 屬性。參數 | 參數 | 動態 |
     | $.properties.SystemParameters | SystemParameters | 動態 |
-    | $. 屬性。標記 | Tags | 動態 |
+    | $. 屬性。標記 | 標籤 | 動態 |
 
 ## <a name="monitor-ssis-operations-with-azure-monitor"></a>使用 Azure 監視器監視 SSIS 作業
 

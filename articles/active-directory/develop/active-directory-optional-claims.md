@@ -1,7 +1,7 @@
 ---
 title: 提供選擇性宣告給 Azure AD 應用程式
 titleSuffix: Microsoft identity platform
-description: 將自訂或額外宣告新增至 Azure Active Directory 所簽發的 SAML 2.0 和 JSON Web Tokens (JWT) 權杖。
+description: 如何將自訂或額外的宣告新增至 SAML 2.0 和 JSON Web 權杖， (由 Microsoft 身分識別平臺發出的 JWT) 權杖。
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.date: 07/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: dd181e87305f3d32fb301c8b563b7330e09b43d6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f93e2b34c64ce4bd8cec7182c3e990f0e675dc11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445584"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552861"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：提供選擇性宣告給 Azure AD 應用程式
+# <a name="how-to-provide-optional-claims-to-your-app"></a>如何：為您的應用程式提供選擇性宣告
 
 應用程式開發人員可以在其 Azure AD 應用程式中使用選擇性宣告，以指定將哪些宣告放入傳送至應用程式的權杖中。
 
 您可以使用選擇性宣告來：
 
 - 選取要包含在應用程式之權杖中的額外宣告。
-- 變更 Azure AD 在權杖中傳回之特定宣告的行為。
+- 變更 Microsoft 身分識別平臺在權杖中傳回之特定宣告的行為。
 - 新增和存取應用程式的自訂宣告。
 
 如需標準宣告的清單，請參閱[存取權杖](access-tokens.md)和 [id_token](id-tokens.md) 宣告文件。

@@ -4,12 +4,12 @@ description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6be225c1384892dfdb94da3375707351887c8344
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170372"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564005"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -434,8 +434,8 @@ pip install -r requirements.txt
 
 ### <a name="remote-build"></a>遠端組建
 
-使用遠端組建時，在伺服器上還原的相依性和原生相依性會符合生產環境。 這會導致較小的部署套件上傳。 在 Windows 上開發 Python 應用程式時使用遠端組建。 如果您的專案有自訂相依性，您可以[使用遠端組建搭配額外的索引 URL](#remote-build-with-extra-index-url)。 
- 
+使用遠端組建時，在伺服器上還原的相依性和原生相依性會符合生產環境。 這會導致較小的部署套件上傳。 在 Windows 上開發 Python 應用程式時使用遠端組建。 如果您的專案有自訂相依性，您可以[使用遠端組建搭配額外的索引 URL](#remote-build-with-extra-index-url)。
+
 系統會根據 requirements.txt 檔案的內容，從遠端取得相依性。 [遠端組建](functions-deployment-technologies.md#remote-build)是建議的組建方法。 根據預設，當您使用下列 [func Azure functionapp publish](functions-run-local.md#publish) 命令，將 Python 專案發佈至 Azure 時，Azure Functions Core Tools 會要求遠端組建。
 
 ```bash
@@ -456,7 +456,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 在 Azure 中，請記得以您的函式應用程式名稱取代 `<APP_NAME>`。
 
-使用 `--build local` 選項時，會從 requirements.txt 檔案讀取專案相依性，以及在本機下載並安裝這些相依套件。 專案檔案和相依性會從您的本機電腦部署至 Azure。 這會導致更大的部署套件上傳至 Azure。 如果基於某些原因，Core Tools 無法取得 requirements.txt 檔案中的相依性，則您必須使用自訂相依性選項來進行發佈。 
+使用 `--build local` 選項時，會從 requirements.txt 檔案讀取專案相依性，以及在本機下載並安裝這些相依套件。 專案檔案和相依性會從您的本機電腦部署至 Azure。 這會導致更大的部署套件上傳至 Azure。 如果基於某些原因，Core Tools 無法取得 requirements.txt 檔案中的相依性，則您必須使用自訂相依性選項來進行發佈。
 
 在 Windows 本機開發時，不建議使用本機組建。
 
@@ -466,7 +466,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 #### <a name="remote-build-with-extra-index-url"></a>具有額外索引 URL 的遠端組建
 
-當您的套件可從可存取的自訂套件索引取得時，請使用遠端組建。 發行之前，請務必先建立名為的[應用程式設定](functions-how-to-use-azure-function-app-settings.md#settings) `PIP_EXTRA_INDEX_URL` 。 此設定的值是自訂封裝索引的 URL。 使用此設定時，會使用選項來指示遠端組建執行 `pip install` `--extra-index-url` 。 若要深入瞭解，請參閱[Python pip 安裝檔](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)。 
+當您的套件可從可存取的自訂套件索引取得時，請使用遠端組建。 發行之前，請務必先建立名為的[應用程式設定](functions-how-to-use-azure-function-app-settings.md#settings) `PIP_EXTRA_INDEX_URL` 。 此設定的值是自訂封裝索引的 URL。 使用此設定時，會使用選項來指示遠端組建執行 `pip install` `--extra-index-url` 。 若要深入瞭解，請參閱[Python pip 安裝檔](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)。
 
 您也可以搭配使用基本驗證認證與額外的套件索引 Url。 若要深入瞭解，請參閱 Python 檔中的[基本驗證認證](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials)。
 
@@ -658,11 +658,14 @@ Python 標準程式庫包含每個 Python 散發套件隨附的內建 Python 模
 
 功能 Python 背景工作角色需要一組特定的程式庫。 您也可以在函式中使用這些程式庫，但它們不是 Python 標準的一部分。 如果您的函式依賴這些程式庫，則在 Azure Functions 外部執行時，您的程式碼可能無法使用它們。 您可以在[setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282)檔案中的 [**安裝 \_ 需要**] 區段中找到相依性的詳細清單。
 
+> [!NOTE]
+> 如果函數應用程式的 requirements.txt 包含 `azure-functions-worker` 專案，請將它移除。 函式背景工作會由 Azure Functions 平臺自動管理，而我們會定期使用新功能和錯誤修正來進行更新。 以手動方式在 requirements.txt 中安裝舊版本的背景工作角色可能會造成未預期的問題。
+
 ### <a name="azure-functions-python-library"></a>Azure Functions Python 程式庫
 
 每個 Python 背景工作角色更新都包含新版的[Azure Functions Python 程式庫， (Azure. 函數) ](https://github.com/Azure/azure-functions-python-library)。 這種方法可讓您更輕鬆地持續更新 Python 函式應用程式，因為每個更新都有回溯相容性。 此程式庫的版本清單可在[azure 函式 PyPi](https://pypi.org/project/azure-functions/#history)中找到。
 
-執行時間程式庫版本由 Azure 修正，而且無法由 requirements.txt 覆寫。 `azure-functions`requirements.txt 中的專案僅適用于 linting 和客戶認知。 
+執行時間程式庫版本由 Azure 修正，而且無法由 requirements.txt 覆寫。 `azure-functions`requirements.txt 中的專案僅適用于 linting 和客戶認知。
 
 使用下列程式碼，在您的執行時間中追蹤 Python 函式程式庫的實際版本：
 
@@ -689,7 +692,8 @@ Python 函式應用程式完全支援 CORS。
 
 以下是常見問題的疑難排解指南清單：
 
-* [ModuleNotFoundError 和 ImportError](recover-module-not-found.md)
+* [ModuleNotFoundError 和 ImportError](recover-python-functions.md#troubleshoot-modulenotfounderror)
+* [無法匯入 ' cygrpc '](recover-python-functions.md#troubleshoot-cannot-import-cygrpc)
 
 所有已知問題和功能要求則會使用 [GitHub 問題](https://github.com/Azure/azure-functions-python-worker/issues)清單追蹤。 如果您遇到問題，但在 GitHub 中卻找不到此問題，請開啟新的問題，並包含問題的詳細說明。
 

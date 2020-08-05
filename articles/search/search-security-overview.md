@@ -7,19 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 9e4181956d81ddbe0a385987689a8cb0248ac535
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501486"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553949"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 認知搜尋中的安全性-總覽
 
-本文說明 Azure 認知搜尋中可保護內容和作業的主要安全性功能。 
+本文說明 Azure 認知搜尋中可保護內容和作業的主要安全性功能。
 
-+ 在儲存層中，待用加密是在平台層級提供的，但認知搜尋也會透過 Azure Key Vault 來提供客戶管理的金鑰，以供額外的加密層使用。
++ 在儲存層中，會針對儲存到磁片的所有服務管理內容內建待用加密，包括索引、同義字對應，以及索引子、資料來源和技能集的定義。 Azure 認知搜尋也支援加入客戶管理的金鑰， (CMK) 以進行索引內容的補充加密。 針對 1 2020 年8月之後所建立的服務，CMK 加密會延伸到暫存磁片上的資料，以進行索引內容的完整雙重加密。
 
 + 輸入安全性可保護搜尋服務端點的安全性層級：從要求的 API 金鑰，到防火牆中的輸入規則，到從公用網際網路完全防護服務的私人端點。
 
@@ -29,29 +30,41 @@ ms.locfileid: "87501486"
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
+<a name="encryption"></a>
+
 ## <a name="encrypted-transmissions-and-storage"></a>加密的傳輸和儲存
 
-加密在 Azure 認知搜尋中很普遍，從連線和傳輸開始，延伸至儲存在磁片上的內容。 針對公用網際網路上的搜尋服務，Azure 認知搜尋會接聽 HTTPS 埠443。 所有用戶端對服務連線都會使用 TLS 1.2 加密。 不支援舊版（1.0 或1.1）。
+在 Azure 認知搜尋中，加密會從連線和傳輸開始，並延伸至儲存在磁片上的內容。 針對公用網際網路上的搜尋服務，Azure 認知搜尋會接聽 HTTPS 埠443。 所有用戶端對服務連線都會使用 TLS 1.2 加密。 不支援舊版 (1.0 或 1.1) 。
 
-### <a name="data-encryption-at-rest"></a>資料靜態加密
+針對搜尋服務內部處理的資料，下表描述[資料加密模型](../security/fundamentals/encryption-atrest.md#data-encryption-models)。 某些功能（例如知識存放區、累加擴充和以索引子為基礎的索引、讀取或寫入其他 Azure 服務中的資料結構）。 這些服務有自己的加密支援層級，與 Azure 認知搜尋不同。
 
-Azure 認知搜尋會儲存索引定義和內容、資料來源定義、索引子定義、技能集定義和同義字對應。
+| 模型 | 快速鍵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 滿足&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 限制 | 適用於 |
+|------------------|-------|-------------|--------------|------------|
+| 伺服器端加密 | Microsoft 管理的金鑰 | 無 (內建)  | 無（適用于所有區域中的所有層），適用于 24 2018 年1月之後建立的內容。 | 內容 (索引和同義字對應) 和定義 (索引子、資料來源、技能集)  |
+| 伺服器端加密 | 客戶管理的金鑰 | Azure 金鑰保存庫 | 適用于在2019年1月之後建立的可計費層（所有區域）。 | 資料磁片上) 的內容 (索引和同義字對應 |
+| 伺服器端雙重加密 | 客戶管理的金鑰 | Azure 金鑰保存庫 | 適用于 1 2020 年8月之後搜尋服務的計費層，在所選區域中。 | 資料磁片和暫存磁片上) 的內容 (索引和同義字對應 |
 
-在儲存層中，資料會使用由 Microsoft 管理的金鑰在磁片上加密。 您無法開啟或關閉加密，或在入口網站中或以程式設計方式來查看加密設定。 加密完全初始化，不會對完成編制索引的時間或索引大小造成任何影響。 它會自動針對所有索引編製程序進行，包括針對未完全加密 (建立時間在 2018 年 1 月以前) 之索引的增量更新進行。
+### <a name="service-managed-keys"></a>服務管理的金鑰
 
-就內部而言，加密會根據 [Azure 儲存體服務加密](../storage/common/storage-service-encryption.md) \(機器翻譯\)，使用的是 256 位元的 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) \(英文\)。
+服務管理的加密是一種 Microsoft 內部作業，根據[Azure 儲存體服務加密](../storage/common/storage-service-encryption.md)，使用256位的[AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)。 它會自動出現在所有索引上，包括未完全加密 (在2018年1月) 之前建立之索引的累加式更新。
 
-> [!NOTE]
-> 待用加密是在2018年1月24日宣佈，適用于所有區域中的所有服務層級，包括免費層。 若要達到完整加密的目的，針對在該日期之前建立的索引，您必須先捨棄再重新建置，才能進行加密。 否則，系統只會加密 1 月 24 日之後新增的新資料。
+### <a name="customer-managed-keys-cmk"></a>客戶管理的金鑰 (CMK) 
 
-### <a name="customer-managed-key-cmk-encryption"></a>客戶管理的金鑰（CMK）加密
+客戶管理的金鑰需要額外的計費服務，Azure Key Vault，它可以在不同的區域，但在相同的訂用帳戶下，做為 Azure 認知搜尋。 啟用 CMK 加密將會增加索引大小，並降低查詢效能。 根據 date 的觀察值，您可以預期在查詢時間中會看到 30%-60% 的增加，雖然實際的效能會隨著索引定義和查詢類型而有所不同。 基於此效能的影響，建議您只在真正需要的索引上啟用這項功能。 如需詳細資訊，請參閱[在 Azure 認知搜尋中設定客戶管理的加密金鑰](search-security-manage-encryption-keys.md)。
 
-需要額外存放裝置保護的客戶可以在資料和物件儲存在磁片上並進行加密之前，先將其加密。 這種方法是以使用者擁有的金鑰為基礎，透過 Azure Key Vault 獨立于 Microsoft 來管理和儲存。 在磁片上加密之前加密內容稱為「雙重加密」。 目前，您可以選擇性地雙重加密索引和同義字對應。 如需詳細資訊，請參閱[Azure 認知搜尋中客戶管理的加密金鑰](search-security-manage-encryption-keys.md)。
+<a name="double-encryption"></a>
 
-> [!NOTE]
-> CMK 加密一般適用于2019年1月之後建立的搜尋服務。 免費（共用）服務不支援。 
->
->啟用這項功能將會增加索引大小，並降低查詢效能。 根據 date 的觀察值，您可以預期在查詢時間中會看到 30%-60% 的增加，雖然實際的效能會隨著索引定義和查詢類型而有所不同。 基於此效能的影響，建議您只在真正需要的索引上啟用這項功能。
+### <a name="double-encryption"></a>雙重加密 
+
+在 Azure 認知搜尋中，雙重加密是 CMK 的延伸模組。 它被視為兩個折迭的加密 (一次 CMK，再次由服務管理的金鑰) ，以及完整的範圍，包含寫入資料磁片的長期儲存體，以及寫入暫存磁片的短期儲存體。 1 2020 年8月之前和之後的 CMK，以及在 Azure 認知搜尋中讓 CMK 成為雙重加密功能的差異，是在暫存磁片上進行待用資料的額外加密。
+
+目前在8月1日之後，于這些區域中建立的新服務提供雙重加密：
+
++ 美國西部 2
++ 美國東部
++ 美國中南部
++ US Gov 維吉尼亞州
++ US Gov 亞利桑那州
 
 <a name="service-access-and-authentication"></a>
 
@@ -65,9 +78,9 @@ Azure 認知搜尋會儲存索引定義和內容、資料來源定義、索引�
 
 您的搜尋服務有兩個存取層級，由下列 API 金鑰啟用：
 
-+ 管理金鑰（允許在搜尋服務上進行[建立-讀取-更新-刪除](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)作業的讀寫存取）
++ 系統管理金鑰 (允許在搜尋服務上進行[建立-讀取-更新-刪除](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)作業的讀寫存取權) 
 
-+ 查詢金鑰（允許對索引的檔集合進行唯讀存取）
++ 查詢金鑰 (允許對索引的檔集合進行唯讀存取) 
 
 系統*管理金鑰*是在布建服務時建立的。 有兩個管理員金鑰，指定為主要** 和次要** 以將它們保持在各自的位置，但事實上，它們是可互換。 每個服務有兩個管理員金鑰，以便您在轉換其中一個時不會無法存取您的服務。 您可以根據 Azure 安全性最佳作法定期重新產生系統[管理金鑰](search-security-api-keys.md#regenerate-admin-keys)，但無法新增到總管理金鑰計數。 每個搜尋服務最多可有兩個系統管理金鑰。
 
@@ -83,7 +96,7 @@ Azure 認知搜尋會儲存索引定義和內容、資料來源定義、索引�
 
 或者，您可以使用管理 REST Api。 API 版本2020-03-13，使用[IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule)參數，可讓您藉由識別您想要授與搜尋服務存取權的 IP 位址，以限制對服務的存取。 
 
-### <a name="private-endpoint-no-internet-traffic"></a>私人端點（沒有網際網路流量）
+### <a name="private-endpoint-no-internet-traffic"></a>私人端點 (沒有網際網路流量) 
 
 Azure 認知搜尋的[私用端點](../private-link/private-endpoint-overview.md)可讓[虛擬網路](../virtual-network/virtual-networks-overview.md)上的用戶端透過[私人連結](../private-link/private-link-overview.md)，安全地存取搜尋索引中的資料。 
 
@@ -93,7 +106,7 @@ Azure 認知搜尋的[私用端點](../private-link/private-endpoint-overview.md
 
 ## <a name="index-access"></a>索引存取權
 
-在 Azure 認知搜尋中，個別索引不是安全物件。 相反地，索引的存取權是在服務層（服務的讀取或寫入權限），以及作業的內容來決定。
+在 Azure 認知搜尋中，個別索引不是安全物件。 相反地，索引的存取權是在服務層級決定， (服務) 的讀取或寫入存取權，以及作業的內容。
 
 就使用者存取來說，您可以將查詢要求建構成使用查詢金鑰來進行連線 (這可讓所有查詢都變成唯讀)，並且包含應用程式所使用的特定索引。 在查詢要求中，並沒有聯結索引或同時存取多個索引的概念，所以所有要求都會依據定義以單一索引為目標。 因此，查詢要求本身的結構 (一個金鑰加上單一目標索引) 即可定義安全性界限。
 
@@ -107,14 +120,14 @@ Azure 認知搜尋的[私用端點](../private-link/private-endpoint-overview.md
 
 如果您需要細微的每一使用者控制搜尋結果，您可以在查詢上建立安全性篩選，並傳回與指定的安全性識別相關聯的檔。 以身分識別為基礎的存取控制，而不是預先定義的角色和角色指派，會實作為*篩選*條件，以根據識別來修剪檔和內容的搜尋結果。 下表說明兩個針對未經授權的內容縮減搜尋結果的方法。
 
-| 方法 | 說明 |
+| 方法 | 描述 |
 |----------|-------------|
 |[根據身分識別篩選進行安全性範圍縮減](search-security-trimming-for-azure-search.md)  | 記載實作使用者身分識別存取控制的基本工作流程。 其中涵蓋在索引中新增安全性識別碼，然後說明如何針對該欄位進行篩選來縮減所禁止內容的結果。 |
 |[根據 Azure Active Directory 身分識別進行安全性範圍縮減](search-security-trimming-for-azure-search-with-aad.md)  | 本文是上一篇文章的延伸，提供從 Azure Active Directory (AAD) (Azure 雲端平台上的其中一項[免費服務](https://azure.microsoft.com/free/)) 擷取身分識別的步驟。 |
 
 ## <a name="administrative-rights"></a>系統管理許可權
 
-[角色型存取（RBAC）](../role-based-access-control/overview.md)是根據布建 Azure 資源[Azure Resource Manager](../azure-resource-manager/management/overview.md)建立的授權系統。 在 Azure 認知搜尋中，會使用 Resource Manager 來建立或刪除服務、管理 API 金鑰，以及調整服務規模。 因此，不論是使用[入口網站](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)或[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)，Azure 角色指派都會決定誰可以執行這些工作。
+以[角色為基礎的存取 (RBAC) ](../role-based-access-control/overview.md)是以布建為[Azure Resource Manager](../azure-resource-manager/management/overview.md)的授權系統，可提供 Azure 資源。 在 Azure 認知搜尋中，會使用 Resource Manager 來建立或刪除服務、管理 API 金鑰，以及調整服務規模。 因此，不論是使用[入口網站](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)或[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)，Azure 角色指派都會決定誰可以執行這些工作。
 
 相反地，在服務上裝載之內容的系統管理許可權（例如建立或刪除索引的能力）是透過 API 金鑰來授予，如[前一節](#index-access)中所述。
 

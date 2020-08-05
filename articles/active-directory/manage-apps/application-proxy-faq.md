@@ -1,6 +1,6 @@
 ---
 title: Azure AD 應用程式 Proxy 的常見問題 |Microsoft Docs
-description: 瞭解有關使用 Azure AD 應用程式 Proxy 將內部部署應用程式發佈至遠端使用者的常見問題（FAQ）的解答。
+description: 瞭解常見問題的解答 (常見問題) 關於使用 Azure AD 應用程式 Proxy 將內部部署應用程式發佈給遠端使用者。
 services: active-directory
 documentationcenter: ''
 author: kenwith
@@ -15,16 +15,16 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5b95ae3c7fcf52a732304bb835f91c52b015801e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128925"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562407"
 ---
-# <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory （Azure AD）應用程式 Proxy 的常見問題
+# <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 應用程式 Proxy 的常見問題
 
-此頁面會回答有關 Azure Active Directory （Azure AD）應用程式 Proxy 的常見問題。
+此頁面會回答有關 Azure Active Directory (Azure AD) 應用程式 Proxy 的常見問題。
 
 ## <a name="enabling-azure-ad-application-proxy"></a>啟用 Azure AD 應用程式 Proxy
 
@@ -45,18 +45,22 @@ ms.locfileid: "87128925"
 - Microsoft AAD 應用程式 Proxy 連接器-WAPCSvc-網路服務
 - Microsoft AAD 應用程式 Proxy 連接器更新程式-WAPCUpdaterSvc-NT Authority\System
 
-### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>我的後端應用程式裝載于多部 web 伺服器上，而且需要使用者會話持續性（未完成）。 如何達到會話持續性？ 
+### <a name="can-a-guest-user-with-the-global-administrator-or-the-application-administrator-role-register-the-connector-for-the-guest-tenant"></a>具有全域管理員或應用程式系統管理員角色的來賓使用者可以為 (來賓) 租使用者註冊連接器嗎？
+
+否，目前無法這麼做。 註冊嘗試一律會在使用者的主租使用者上進行。
+
+### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>我的後端應用程式裝載于多部 web 伺服器上，而且需要使用者會話持續性 (的) 。 如何達到會話持續性？ 
 
 如需建議，請參閱[應用程式 Proxy 連接器和應用程式的高可用性和負載平衡](application-proxy-high-availability-load-balancing.md)。
 
-### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>支援從連接器伺服器到 Azure 的流量進行 TLS 終止（TLS/HTTPS 檢查或加速）嗎？
+### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>TLS 終止是否 (TLS/HTTPS 檢查或加速) 從連接器伺服器到 Azure 支援的流量？
 
-應用程式 Proxy 連接器會對 Azure 執行以憑證為基礎的驗證。 TLS 終止（TLS/HTTPS 檢查或加速）會中斷此驗證方法，且不受支援。 從連接器到 Azure 的流量必須略過任何正在執行 TLS 終止的裝置。  
+應用程式 Proxy 連接器會對 Azure 執行以憑證為基礎的驗證。  (TLS/HTTPS 檢查或加速) 的 TLS 終止會中斷此驗證方法，而且不受支援。 從連接器到 Azure 的流量必須略過任何正在執行 TLS 終止的裝置。  
 
 ### <a name="is-tls-12-required-for-all-connections"></a>所有連接都需要 TLS 1.2 嗎？
 是。 為了將頂級的加密提供給客戶，應用程式 Proxy 服務會限制僅接受 TLS 1.2 通訊協定的存取。 這些變更已逐漸推出，並於 2019 年 8 月 31 日起生效。 請確定所有用戶端-伺服器和瀏覽器-伺服器組合都已更新為使用 TLS 1.2，以保持與應用程式 Proxy 服務的連線。 其中包括使用者存取透過應用程式 Proxy 發佈的應用程式時，所使用的用戶端。 請參閱準備 [Office 365 中的 TLS 1.2](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365)，以取得實用的參考和資源。
 
-### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>我可以在連接器伺服器和後端應用程式伺服器之間放置正向 proxy 裝置嗎？
+### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>我可以在連接器伺服器 (s) 和後端應用程式伺服器之間放置正向 proxy 裝置嗎？
 是，從連接器版本1.5.1526.0 開始支援此案例。 請參閱使用[現有的內部部署 proxy 伺服器](application-proxy-configure-connectors-with-proxy-servers.md)。
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>我是否應該建立專用帳戶以向 Azure AD 應用程式 Proxy 註冊連接器？
@@ -73,7 +77,7 @@ ms.locfileid: "87128925"
 
 ### <a name="does-the-azure-ad-application-proxy-connector-have-to-be-on-the-same-subnet-as-the-resource"></a>Azure AD 應用程式 Proxy 連接器是否必須與資源位於相同的子網？
 
-連接器不一定要位於相同的子網上。 不過，它需要資源的名稱解析（DNS、主機檔案）和必要的網路連線（路由傳送至資源、在資源上開啟埠等等）。 如需建議，請參閱[使用 Azure Active Directory 應用程式 Proxy 時的網路拓撲考慮](application-proxy-network-topology.md)。
+連接器不一定要位於相同的子網上。 不過，它需要 (DNS 的名稱解析、主機檔案) 至資源，以及 (路由傳送至資源的必要網路連線、資源上開啟的埠等等 ) 。 如需建議，請參閱[使用 Azure Active Directory 應用程式 Proxy 時的網路拓撲考慮](application-proxy-network-topology.md)。
 
 ### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>我可以在哪些版本的 Windows Server 上安裝連接器？
 應用程式 Proxy 需要 Windows Server 2012 R2 或更新版本。 Windows Server 2019 目前有 HTTP2 的限制。 若要在 Windows Server 2019 上成功使用連接器，您必須新增下列登錄機碼，然後重新開機伺服器：
@@ -94,19 +98,19 @@ ms.locfileid: "87128925"
 
 ### <a name="can-only-iis-based-applications-be-published-what-about-web-applications-running-on-non-windows-web-servers-does-the-connector-have-to-be-installed-on-a-server-with-iis-installed"></a>只能發行以 IIS 為基礎的應用程式嗎？ 在非 Windows web 伺服器上執行的 web 應用程式呢？ 連接器必須安裝在已安裝 IIS 的伺服器上嗎？
 
-否，發行的應用程式不需要 IIS。 您可以發行在 Windows Server 以外的伺服器上執行的 web 應用程式。 不過，視 web 伺服器是否支援 Negotiate （Kerberos 驗證）而定，您可能無法使用非 Windows 伺服器的預先驗證。 在安裝連接器的伺服器上，不需要 IIS。
+否，發行的應用程式不需要 IIS。 您可以發行在 Windows Server 以外的伺服器上執行的 web 應用程式。 不過，您可能無法使用非 Windows 伺服器的預先驗證，視 web 伺服器是否支援 Negotiate (Kerberos 驗證) 而定。 在安裝連接器的伺服器上，不需要 IIS。
 
 ### <a name="can-i-configure-application-proxy-to-add-the-hsts-header"></a>我可以設定應用程式 Proxy 來新增 HSTS 標頭嗎？
 應用程式 Proxy 不會自動將 HTTP 嚴格傳輸安全性標頭新增至 HTTPS 回應，但如果它是在已發行應用程式所傳送的原始回應中，就會保留標頭。 證明啟用此功能的設定已在藍圖中。 如果您對可將此新增至回應的預覽感興趣，請前往以 aadapfeedback@microsoft.com 取得詳細資料。
 
 ## <a name="integrated-windows-authentication"></a>整合式 Windows 驗證
 
-### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>何時應該在設定 Kerberos 限制委派（KCD）時使用 PrincipalsAllowedToDelegateToAccount 方法？
+### <a name="when-should-i-use-the-principalsallowedtodelegatetoaccount-method-when-setting-up-kerberos-constrained-delegation-kcd"></a>在設定 Kerberos 限制委派時，我應該使用 PrincipalsAllowedToDelegateToAccount 方法 (KCD) 嗎？
 
 當連接器伺服器與 web 應用程式服務帳戶位於不同的網域時，會使用 PrincipalsAllowedToDelegateToAccount 方法。 它需要使用以資源為基礎的限制委派。
 如果連接器伺服器和 web 應用程式服務帳戶位於相同的網域中，您可以使用 Active Directory 的使用者和電腦來設定每個連接器電腦帳戶上的委派設定，讓它們可以委派給目標 SPN。
 
-如果連接器伺服器和 web 應用程式服務帳戶位於不同的網域，則會使用以資源為基礎的委派。 委派許可權是在目標 web 伺服器和 web 應用程式服務帳戶上設定。 這種限制委派的方法相當新。 這個方法是在 Windows Server 2012 中引進，它可讓資源（web 服務）擁有者控制哪些機器和服務帳戶可以委派給它，藉此支援跨網域委派。 沒有任何 UI 可協助此設定，因此您必須使用 PowerShell。
+如果連接器伺服器和 web 應用程式服務帳戶位於不同的網域，則會使用以資源為基礎的委派。 委派許可權是在目標 web 伺服器和 web 應用程式服務帳戶上設定。 這種限制委派的方法相當新。 這個方法是在 Windows Server 2012 中引進，它可讓資源 (web 服務) 擁有者控制哪些機器和服務帳戶可以委派給它，藉此支援跨網域委派。 沒有任何 UI 可協助此設定，因此您必須使用 PowerShell。
 如需詳細資訊，請參閱白皮書[瞭解使用應用程式 Proxy 的 Kerberos 限制委派](https://aka.ms/kcdpaper)。
 
 ### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>NTLM 驗證是否可與 Azure AD 應用程式 Proxy 搭配使用？
@@ -129,7 +133,7 @@ NTLM 驗證無法用來做為預先驗證或單一登入方法。 NTLM 驗證只
 
 請參閱[使用 Azure AD 應用程式 Proxy 發佈遠端桌面](application-proxy-integrate-with-remote-desktop-services.md)。
 
-### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>我可以在遠端桌面閘道發佈案例中使用 Kerberos 限制委派（單一登入-Windows 整合式驗證）嗎？
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>在遠端桌面閘道發佈案例中，我可以使用 Kerberos 限制委派 (單一登入-Windows 整合式驗證) 嗎？
 
 否，不支援此案例。  
 
@@ -137,7 +141,7 @@ NTLM 驗證無法用來做為預先驗證或單一登入方法。 NTLM 驗證只
 
 是，這是預期的。 預先驗證案例需要 ActiveX 控制項，這在協力廠商瀏覽器中不受支援。
 
-### <a name="is-the-remote-desktop-web-client-html5-supported"></a>是否支援遠端桌面 Web 用戶端（HTML5）？
+### <a name="is-the-remote-desktop-web-client-html5-supported"></a> (HTML5) 支援遠端桌面 Web 用戶端嗎？
 
 是，此案例目前處於公開預覽狀態。 請參閱[使用 Azure AD 應用程式 Proxy 發佈遠端桌面](application-proxy-integrate-with-remote-desktop-services.md)。
 
@@ -151,15 +155,15 @@ NTLM 驗證無法用來做為預先驗證或單一登入方法。 NTLM 驗證只
 
 請參閱[使用 Azure AD 應用程式 Proxy 啟用 SharePoint 的遠端存取](application-proxy-integrate-with-sharepoint-server.md)。
 
-### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>我可以使用 SharePoint 行動應用程式（iOS/Android）來存取已發行的 SharePoint 伺服器嗎？
+### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>我可以使用 SharePoint 行動裝置應用程式 (iOS/Android) 存取已發佈的 SharePoint 伺服器嗎？
 
 SharePoint 行動裝置[應用程式](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises)目前不支援 Azure Active Directory 預先驗證。
 
-## <a name="active-directory-federation-services-ad-fs-publishing"></a>Active Directory 同盟服務（AD FS）發佈 
+## <a name="active-directory-federation-services-ad-fs-publishing"></a>Active Directory 同盟服務 (AD FS) 發佈 
 
-### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>我可以使用 Azure AD 應用程式 Proxy 做為 AD FS Proxy （例如 Web 應用程式 Proxy）嗎？
+### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>我可以使用 Azure AD 應用程式 Proxy 作為 AD FS Proxy (，例如 Web 應用程式 Proxy) 嗎？
 
-不可以。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配運作，並不符合作為 AD FS Proxy 的需求。
+否。 Azure AD 應用程式 Proxy 是設計用來與 Azure AD 搭配運作，並不符合作為 AD FS Proxy 的需求。
 
 ## <a name="websocket"></a>WebSocket
 
@@ -167,7 +171,7 @@ SharePoint 行動裝置[應用程式](https://docs.microsoft.com/sharepoint/admi
 
 目前，WebSocket 通訊協定支援仍處於公開預覽狀態，對其他應用程式可能無法使用。 有些客戶使用 WebSocket 通訊協定與其他應用程式的混合成功。 如果您測試過這類案例，我們很樂意聽到您的結果。 請將您的意見反應傳送給我們 aadapfeedback@microsoft.com 。
 
-Windows Admin Center （WAC）或遠端桌面 Web 用戶端（HTML5）中的功能（檢視、PowerShell 和遠端桌面服務）目前無法透過 Azure AD 應用程式 Proxy 來處理。
+Windows 管理中心 (WAC) 或遠端桌面 Web 用戶端 (HTML5) 中 (檢視、PowerShell 和遠端桌面服務) 的功能，目前無法透過 Azure AD 應用程式 Proxy 來處理。
 
 ## <a name="link-translation"></a>連結轉譯
 

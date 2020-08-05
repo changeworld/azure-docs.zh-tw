@@ -3,12 +3,12 @@ title: 常見問題的解答
 description: '有關以下常見問題的解答：包括復原服務保存庫、可以備份的項目、其運作方式、加密和限制等 Azure 備份功能。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4273d93e36dd8d956246811dd3f1d71d96ddcb68
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 95d515e65e31304dd4839f851736be6926a5a29f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532453"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553082"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 備份 - 常見問題集
 
@@ -47,7 +47,7 @@ ms.locfileid: "87532453"
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>是否可以在備份之後從 GRS 變更為 LRS？
 
-儲存體複寫類型預設會設定為 [異地冗余儲存體（GRS）]。 一旦您設定備份之後，[修改] 選項就會停用，而且無法變更。
+根據預設，儲存體複寫類型會設定為 [異地冗余儲存體] (GRS) 。 一旦您設定備份之後，[修改] 選項就會停用，而且無法變更。
 
 ![儲存體複寫類型](./media/backup-azure-backup-faq/storage-replication-type.png)
 
@@ -127,7 +127,7 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>使用「復原服務保存庫」來備份的資料量是否有限制？
 
-您可以使用復原服務保存庫來備份的總數據量沒有限制。 個別資料來源（不是 Azure Vm）的大小上限可以是 54400 GB。 如需有關限制的詳細資訊，請參閱[支援矩陣中的保存庫限制一節](./backup-support-matrix.md#vault-support)。
+您可以使用復原服務保存庫來備份的總數據量沒有限制。 除了 Azure Vm) 以外的個別資料來源 (，大小上限為 54400 GB。 如需有關限制的詳細資訊，請參閱[支援矩陣中的保存庫限制一節](./backup-support-matrix.md#vault-support)。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>為何傳輸到「復原服務保存庫」的資料大小會小於所選取要備份的資料？
 
@@ -197,6 +197,10 @@ Azure 備份的儲存體架構透過最佳化儲存資料以進行快速還原�
 - 如果延長保留期，則會標示現有的復原點，以根據新的原則加以保留。
 - 如果縮短保留期，則會標示現有的復原點，以便在下次清除作業中剪除然後刪除。
 
+### <a name="how-long-is-data-retained-when-stopping-backups-but-selecting-the-option-to-retain-backup-data"></a>停止備份時，資料會保留多久，但選取保留備份資料的選項？
+
+當備份停止並保留資料時，資料剪除的現有原則規則將會停止，且資料將會無限期保留，直到系統管理員進行刪除為止。
+
 ## <a name="encryption"></a>加密
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>傳送至 Azure 的資料會經過加密嗎？
@@ -214,7 +218,7 @@ Microsoft 不會解密在任何時間點所備份的資料。
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>用來加密備份資料的加密金鑰長度下限為何？
 
-Microsoft Azure 復原服務（MARS）代理程式所使用的加密金鑰是衍生自長度至少為16個字元的複雜密碼。 針對 Azure Vm，Azure KeyVault 所使用的金鑰長度沒有限制。
+Microsoft Azure 復原服務 (MARS) 代理程式所使用的加密金鑰，是衍生自長度至少為16個字元的複雜密碼。 針對 Azure Vm，Azure KeyVault 所使用的金鑰長度沒有限制。
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>如果我錯置加密金鑰，則會發生什麼情況？ 我是否可以復原資料？ Microsoft 是否可以復原資料？
 

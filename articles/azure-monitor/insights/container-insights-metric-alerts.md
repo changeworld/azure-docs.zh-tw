@@ -2,15 +2,15 @@
 title: 來自容器 Azure 監視器的計量警示 |Microsoft Docs
 description: 本文會從適用于容器的 Azure 監視器（公開預覽）中，檢查建議的計量警示。
 ms.topic: conceptual
-ms.date: 07/21/2020
-ms.openlocfilehash: c8b75b0d9b22658253c4637bd6507144575934de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/04/2020
+ms.openlocfilehash: 1826896ad2d5c64d389219018f51238826c840d0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096158"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563359"
 ---
-# <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>來自容器 Azure 監視器的建議計量警示（預覽）
+# <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>從容器 Azure 監視器 (預覽) 的建議計量警示
 
 若要在發生尖峰需求並執行接近容量的系統資源問題時發出警示，您可以使用容器的 Azure 監視器，根據儲存在 Azure 監視器記錄中的效能資料來建立記錄警示。 Azure 監視器容器現在包含預先設定的計量警示規則，適用于您的 AKS 叢集（目前處於公開預覽狀態）。
 
@@ -18,7 +18,7 @@ ms.locfileid: "87096158"
 
 如果您不熟悉 Azure 監視器警示，請先參閱[Microsoft Azure 中的警示總覽](../platform/alerts-overview.md)，再開始進行。 若要深入瞭解計量警示，請參閱[Azure 監視器中的計量警示](../platform/alerts-metric-overview.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確認下列事項：
 
@@ -33,13 +33,13 @@ ms.locfileid: "87096158"
 
     所顯示的值應該是晚于**ciprod05262020**的版本。 如果您的叢集有較舊的版本，請遵循[AKS 叢集上的升級代理程式](container-insights-manage-agent.md#upgrade-agent-on-aks-cluster)步驟來取得最新版本。
     
-    如需代理程式版本的相關詳細資訊，請參閱[代理程式發行歷程記錄](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)。 若要確認收集計量，您可以使用 Azure 監視器計量瀏覽器，並從列出**深入**解析的**度量命名空間**進行驗證。 如果是，您可以繼續並開始設定警示。
+    如需代理程式版本的相關詳細資訊，請參閱[代理程式發行歷程記錄](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)。 若要確認收集計量，您可以使用 Azure 監視器計量瀏覽器，並從列出**深入**解析的**度量命名空間**進行驗證。 如果是，您可以繼續並開始設定警示。 如果您看不到任何收集到的計量，則叢集服務主體或 MSI 缺少必要的許可權。 若要確認 SPN 或 MSI 是**監視計量發行者**角色的成員，請遵循[使用 Azure CLI 升級每個](container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli)叢集一節中所述的步驟，以確認和設定角色指派。
 
 ## <a name="alert-rules-overview"></a>警示規則總覽
 
 若要對重要事項發出警示，Azure 監視器容器包含下列 AKS 叢集的計量警示：
 
-|名稱| 說明 |預設閾值 |
+|Name| 說明 |預設閾值 |
 |----|-------------|------------------|
 |平均容器 CPU% |計算每個容器所使用的平均 CPU。|當每個容器的平均 CPU 使用量大於95% 時。| 
 |平均容器工作集記憶體% |計算每個容器所使用的平均工作集記憶體。|當每個容器的平均工作集記憶體使用量大於95% 時。 |
@@ -73,7 +73,7 @@ ms.locfileid: "87096158"
 
 * 只有在有 OOM 的已終止容器時，才會傳送*oomKilledContainerCount*度量。
 
-* 當 CPU、記憶體 Rss 和記憶體工作集值超過設定的閾值（預設閾值為95%）時，就會傳送*cpuExceededPercentage*、 *memoryRssExceededPercentage*和*memoryWorkingSetExceededPercentage*計量。 這些閾值是針對對應的警示規則所指定的警示條件閾值所排除的。 也就是說，如果您想要收集這些計量並從[計量瀏覽器](../platform/metrics-getting-started.md)進行分析，建議您將閾值設定為低於警示閾值的值。 在 ConfigMaps 檔案的區段下，可以覆寫與容器資源使用量閾值的集合設定相關的設定 `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` 。 如需設定 ConfigMap 設定檔的相關詳細資料，請參閱[設定打斷計量 ConfigMaps](#configure-alertable-metrics-in-configmaps)一節。
+* 當 CPU、記憶體 Rss 和記憶體工作集值超過設定的閾值時，就會傳送*cpuExceededPercentage*、 *memoryRssExceededPercentage*和*memoryWorkingSetExceededPercentage*計量 (預設閾值為 95% ) 。 這些閾值是針對對應的警示規則所指定的警示條件閾值所排除的。 也就是說，如果您想要收集這些計量並從[計量瀏覽器](../platform/metrics-getting-started.md)進行分析，建議您將閾值設定為低於警示閾值的值。 在 ConfigMaps 檔案的區段下，可以覆寫與容器資源使用量閾值的集合設定相關的設定 `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` 。 如需設定 ConfigMap 設定檔的相關詳細資料，請參閱[設定打斷計量 ConfigMaps](#configure-alertable-metrics-in-configmaps)一節。
 
 ## <a name="metrics-collected"></a>收集的計量
 
@@ -90,13 +90,13 @@ ms.locfileid: "87096158"
 |深入解析。容器/節點 |nodesCount |節點計數（依狀態）。|
 |深入解析。容器/節點 |diskUsedPercentage |節點上由裝置使用的磁片百分比。|
 |深入解析。容器/pod |podCount |依控制器、命名空間、節點和階段的 pod 計數。|
-|深入解析。容器/pod |completedJobsCount |已完成的工作會計算舊版的使用者可設定閾值（預設為六小時），由 controller，Kubernetes 命名空間。 |
+|深入解析。容器/pod |completedJobsCount |已完成的工作計數較舊的使用者可設定閾值 (預設為6小時，由控制器 Kubernetes 命名空間) 。 |
 |深入解析。容器/pod |restartingContainerCount |依控制器、Kubernetes 命名空間的容器重新開機計數。|
 |深入解析。容器/pod |oomKilledContainerCount |OOMkilled 容器的計數（依控制器、Kubernetes 命名空間）。|
 |深入解析。容器/pod |podReadyPercentage |由控制器、Kubernetes 命名空間之就緒狀態的 pod 百分比。|
-|深入解析。容器/容器 |cpuExceededPercentage |容器名稱、控制器名稱、Kubernetes 命名空間、pod 名稱，超過使用者可設定閾值（預設值為95.0）之容器的 CPU 使用率百分比。<br> 徵收  |
-|深入解析。容器/容器 |memoryRssExceededPercentage |容器名稱、控制器名稱、Kubernetes 命名空間、pod 名稱，超過使用者可設定閾值（預設值為95.0）之容器的記憶體 RSS 百分比。|
-|深入解析。容器/容器 |memoryWorkingSetExceededPercentage |容器名稱、控制器名稱、Kubernetes 命名空間、pod 名稱，超過使用者可設定閾值（預設值為95.0）之容器的記憶體工作集百分比。|
+|深入解析。容器/容器 |cpuExceededPercentage |超過使用者可設定閾值之容器的 CPU 使用率百分比 (預設為 95.0) 依據容器名稱、控制器名稱、Kubernetes 命名空間、pod 名稱。<br> 徵收  |
+|深入解析。容器/容器 |memoryRssExceededPercentage |超過使用者可設定閾值之容器的記憶體 RSS 百分比 (預設為 95.0) 依據容器名稱、控制器名稱、Kubernetes 命名空間、pod 名稱。|
+|深入解析。容器/容器 |memoryWorkingSetExceededPercentage |超過使用者可設定閾值的容器記憶體工作集百分比 (預設值是 95.0) 依據容器名稱、控制器名稱、Kubernetes 命名空間、pod 名稱。|
 
 ## <a name="enable-alert-rules"></a>啟用警示規則
 
@@ -104,11 +104,11 @@ ms.locfileid: "87096158"
 
 ### <a name="from-the-azure-portal"></a>從 Azure 入口網站
 
-本節將逐步解說如何從 Azure 入口網站啟用容器計量警示（預覽）的 Azure 監視器。
+本節將逐步解說如何從 Azure 入口網站啟用容器計量警示 (預覽) 的 Azure 監視器。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-2. 從 Azure 入口網站的左窗格中選取 [**見解**]，即可直接從 AKS 叢集存取容器的 Azure 監視器計量警示（預覽）功能。
+2. Azure 監視器容器計量警示 (預覽) 功能可直接從 AKS 叢集存取，方法是從 [Azure 入口網站] 的左窗格中選取 [**深入**解析]。
 
 3. 從命令列中，選取 [**建議的警示**]。
 

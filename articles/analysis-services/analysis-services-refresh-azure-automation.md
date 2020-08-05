@@ -2,16 +2,16 @@
 title: 使用 Azure 自動化重新整理 Azure Analysis Services 模型 |Microsoft Docs
 description: 本文說明如何使用 Azure 自動化，針對 Azure Analysis Services 的程式碼模型重新整理。
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025399"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553898"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自動化重新整理
 
@@ -21,9 +21,9 @@ ms.locfileid: "87025399"
 
 ## <a name="authentication"></a>驗證
 
-所有呼叫都必須使用有效的 Azure Active Directory （OAuth 2）權杖進行驗證。  本文中的範例會使用服務主體（SPN）向 Azure Analysis Services 進行驗證。 若要深入瞭解，請參閱[使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
+所有呼叫都必須使用有效的 Azure Active Directory (OAuth 2) token 進行驗證。  本文中的範例會使用 (SPN) 的服務主體來向 Azure Analysis Services 進行驗證。 若要深入瞭解，請參閱[使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 > [!IMPORTANT]
 > 下列範例假設 Azure Analysis Services 防火牆已停用。 如果已啟用防火牆，則必須在防火牆規則中包含要求啟動器的公用 IP 位址。
@@ -40,9 +40,9 @@ ms.locfileid: "87025399"
  
     ![匯入模組](./media/analysis-services-refresh-azure-automation/2.png)
 
-4. 按一下 [確定]  。
+4. 按一下 [確定]。
  
-### <a name="create-a-service-principal-spn"></a>建立服務主體（SPN）
+### <a name="create-a-service-principal-spn"></a> (SPN 建立服務主體) 
 
 若要瞭解如何建立服務主體，請參閱[使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -56,7 +56,7 @@ ms.locfileid: "87025399"
 
     ![建立認證](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. 輸入認證的詳細資料。 在 [**使用者名稱**] 中，輸入服務主體應用程式識別碼（appid），然後在 [**密碼**] 中輸入服務主體密碼。
+2. 輸入認證的詳細資料。 在 [**使用者名稱**] 中，輸入服務主體應用程式識別碼 (appid) ，然後在 [**密碼**] 中輸入服務主體密碼。
 
     ![建立認證](./media/analysis-services-refresh-azure-automation/7.png)
 
@@ -110,7 +110,7 @@ Runbook 可以設定為根據排程觸發 Azure Analysis Services 模型重新�
 
     ![設定參數](./media/analysis-services-refresh-azure-automation/16.png)
 
-5. 按一下 [確定]  。
+5. 按一下 [確定]。
 
 ## <a name="consume-with-data-factory"></a>使用 Data Factory
 

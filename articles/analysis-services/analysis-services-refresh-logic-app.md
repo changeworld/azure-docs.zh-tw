@@ -2,17 +2,17 @@
 title: 使用 Azure Analysis Services 模型的 Logic Apps 進行重新整理 |Microsoft Docs
 description: 本文說明如何使用 Azure Logic Apps 為 Azure Analysis Services 進行非同步重新整理程式碼。
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 9d8c3c7668da939227b3e8aaef002b4292c7d962
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025314"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552232"
 ---
 # <a name="refresh-with-logic-apps"></a>使用 Logic Apps 重新整理
 
@@ -22,16 +22,16 @@ ms.locfileid: "87025314"
 
 ## <a name="authentication"></a>驗證
 
-所有呼叫都必須使用有效的 Azure Active Directory （OAuth 2）權杖進行驗證。  本文中的範例將使用服務主體（SPN）向 Azure Analysis Services 進行驗證。 若要深入瞭解，請參閱[使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
+所有呼叫都必須使用有效的 Azure Active Directory (OAuth 2) token 進行驗證。  本文中的範例將使用服務主體 (SPN) 向 Azure Analysis Services 進行驗證。 若要深入瞭解，請參閱[使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ## <a name="design-the-logic-app"></a>設計邏輯應用程式
 
 > [!IMPORTANT]
 > 下列範例假設 Azure Analysis Services 防火牆已停用。 如果已啟用防火牆，則必須在 Azure Analysis Services 防火牆中將要求啟動器的公用 IP 位址列入允許清單。 若要深入瞭解每個區域 Azure Logic Apps IP 範圍，請參閱[Azure Logic Apps 的限制和設定資訊](../logic-apps/logic-apps-limits-and-config.md#configuration)。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
-#### <a name="create-a-service-principal-spn"></a>建立服務主體（SPN）
+#### <a name="create-a-service-principal-spn"></a> (SPN 建立服務主體) 
 
 若要瞭解如何建立服務主體，請參閱[使用 Azure 入口網站建立服務主體](../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -114,7 +114,7 @@ ms.locfileid: "87025314"
 
 儲存邏輯應用程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [範例](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)

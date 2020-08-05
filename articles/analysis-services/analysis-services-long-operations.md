@@ -2,23 +2,23 @@
 title: Azure Analysis Services 中長時間執行作業的最佳作法 |Microsoft Docs
 description: 本文描述長時間執行作業的最佳作法。
 author: minewiskan
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
-ms.openlocfilehash: 3f6b2194cc422a827bbc7a15c012173b3f814b52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5195d63180d45ad408256264e3cf10174e55cd96
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81428104"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551943"
 ---
 # <a name="best-practices-for-long-running-operations"></a>長時間執行作業的最佳做法
 
 在 Azure Analysis Services 中，*節點*代表執行伺服器資源的主機虛擬機器。 如果伺服器資源移至不同的節點，某些作業（例如長時間執行的查詢、重新整理作業和查詢向外延展同步處理）可能會失敗。 此案例中的常見錯誤訊息包括：
 
 - 「嘗試找出長時間執行的 XMLA 要求時發生錯誤。 要求可能已因服務升級或伺服器重新開機而中斷。」
-- 「 <guid> 模型 ' ' 的 ID 為的作業 <database> 已取消，因為發生服務錯誤（非使用中），訊息為「正在取消重新整理要求，因為它已停滯而沒有任何更新。」 這是內部服務的問題。 如果此問題重複發生，請重新提交作業或提出票證以取得協助。」
+- 「 <guid> 模型 ' ' 的 ID 為 ' 的作業 <database> 已取消，因為服務錯誤 (非使用中的) 訊息 ' 正在取消重新整理要求，因為它已停滯而沒有任何更新。 這是內部服務的問題。 如果此問題重複發生，請重新提交作業或提出票證以取得協助。」
 
 有許多原因會造成長時間執行的作業中斷。 例如，Azure 中的更新，例如： 
 - 作業系統修補程式 

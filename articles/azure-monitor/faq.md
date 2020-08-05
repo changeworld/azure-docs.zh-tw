@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318108"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563835"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -121,7 +121,7 @@ Azure 監視器收集的所有記錄資料都會儲存於 Log Analytics 工作�
 
 
 ### <a name="what-is-an-action-rule"></a>什麼是動作規則？
-動作規則可讓您修改一組符合特定準則的警示行為。 這讓您能夠在維護時段執行停用警示動作之類的需求。 您也可以將動作群組套用至一組警示，而不是直接將其套用至警示規則。 請參閱[動作規則](platform/alerts-action-rules.md)。
+動作規則可讓您修改一組符合特定準則的警示行為。 這可讓您在維護期間停用警示動作，以執行這類需求。 您也可以將動作群組套用至一組警示，而不是直接將其套用至警示規則。 請參閱[動作規則](platform/alerts-action-rules.md)。
 
 ## <a name="agents"></a>代理程式
 
@@ -137,7 +137,7 @@ Azure 診斷延伸模組適用於 Azure 虛擬機器，並會將資料收集到 
 流到 Azure 監視器的流量會使用 Microsoft 對等互連 ExpressRoute 線路。 如需不同類型 ExpressRoute 流量的描述，請參閱 [ExpressRoute 文件](../expressroute/expressroute-faqs.md#supported-services)。 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>如何確認 Log Analytics 代理程式能夠與 Azure 監視器通訊？
-從代理程式電腦上的 [控制台] 中，選取 [安全性 & 設定] 和 [Microsoft Monitoring Agent]。 在 [Azure Log Analytics (OMS)] 索引標籤底下，綠色核取記號圖示可確認代理程式能夠與 Azure 監視器通訊。 黃色警告圖示表示代理程式發生問題。 一個常見原因是 **Microsoft Monitoring Agent** 服務已停止。 使用服務控制管理員來重新啟動服務。
+從代理程式電腦上的 [控制台] 中，選取 [**安全性] & 設定**]，[Microsoft Monitoring Agent]。 在 [Azure Log Analytics (OMS)] 索引標籤底下，綠色核取記號圖示可確認代理程式能夠與 Azure 監視器通訊。 黃色警告圖示表示代理程式發生問題。 一個常見原因是 **Microsoft Monitoring Agent** 服務已停止。 使用服務控制管理員來重新啟動服務。
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>如何阻止 Log Analytics 代理程式與 Azure 監視器通訊？
 針對直接連線到 Log Analytics 的代理程式，開啟 [控制台]，然後選取 [安全性和設定] 和 [Microsoft Monitoring Agent]。 在 [Azure Log Analytics (OMS)] 索引標籤底下，移除所有列出的工作區。 在 System Center Operations Manager 中，從 Log Analytics 管理的電腦清單中移除該電腦。 Operations Manager 會將代理程式的設定更新為不再向 Log Analytics 回報。 
@@ -207,7 +207,7 @@ WireData
 * [設定 ASP.NET 伺服器](app/monitor-performance-live-website-now.md)
 * [設定 Java 伺服器](app/java-agent.md)
 
-我應該部署多少個 Application Insights？：
+*我應該部署多少 Application Insights 資源：*
 
 * [如何設計 Application Insights 部署：一或多個 Application Insights 資源？](app/separate-resources.md)
 
@@ -315,7 +315,7 @@ WireData
 
 * 瀏覽器遙測：我們會收集傳送者的 IP 位址。
 * 伺服器遙測：Application Insights 模組會收集用戶端 IP 位址。 如果已設定 `X-Forwarded-For`，則不會收集該位址。
-* 若要深入了解如何在 Application Insights 中收集 IP 位址和地理位置資料，請參閱這篇[文章](./app/ip-collection.md) \(部分機器翻譯\)。
+* 若要深入瞭解如何在 Application Insights 中收集 IP 位址和地理位置資料，請參閱這[篇文章](./app/ip-collection.md)。
 
 
 您可以設定 `ClientIpHeaderTelemetryInitializer` 以從不同的標頭取得 IP 位址。 例如，在某些系統中，Proxy、負載平衡器或 CDN 會將它移至 `X-Originating-IP`。 [深入了解](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
@@ -509,6 +509,15 @@ Azure 警示僅針對計量。 請建立一個會在每次事件發生時超出�
 [start]: app/app-insights-overview.md
 [windows]: app/app-insights-windows-get-started.md
 
+### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>HTTP 502 和503回應不一定會由 Application Insights 來捕捉
+
+Application Insights 不一定會捕捉「502不正確的閘道」和「503服務無法使用」錯誤。 如果只使用用戶端 JavaScript 來進行監視，這會是預期的行為，因為在包含 HTML 標頭的頁面之前，會傳回錯誤回應，並呈現監視 JavaScript 程式碼片段。 
+
+如果502或503回應是從伺服器傳送，且已啟用伺服器端監視，則 Application Insights SDK 會收集錯誤。 
+
+不過，在某些情況下，即使在應用程式的 web 伺服器上啟用伺服器端監視時，Application Insights 不會捕捉502或503錯誤。 許多新式 web 伺服器不允許用戶端直接通訊，而是使用反向 proxy 之類的解決方案，在用戶端與前端 web 伺服器之間來回傳遞資訊。 
+
+在此案例中，502或503回應可能會因為反向 proxy 層發生問題而傳回給用戶端，而這不會由 Application Insights 來捕捉。 為了協助偵測此層的問題，您可能需要將記錄從反向 proxy 轉送到 Log Analytics，並建立自訂規則來檢查502/503 回應。 若要深入瞭解502和503錯誤的常見原因，請參閱 Azure App Service[疑難排解文章中的「502不正確的閘道」和「503服務無法使用](../app-service/troubleshoot-http-502-http-503.md)」。     
 
 ## <a name="azure-monitor-for-containers"></a>適用於容器的 Azure 監視器
 

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 06fe0cf14346b9a1a5a1f3c093abeec1d1be159a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ef6751d3e7745b47b3a801cefb0bcd2db4f64ffa
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292495"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553626"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 和 Dasv4 系列
 
@@ -32,7 +32,7 @@ ACU：230-260
 
 Dav4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達到最高的 3.35 ghz 的提升頻率。 Dav4 系列大小提供 vCPU、記憶體和暫存儲存體的組合，可用於大部分的生產環境工作負載。 資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium SSD，請使用 Dasv4 大小。 Dasv4 大小的定價和計費方式與 Dav4 系列相同。
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大 NIC | 預期的網路頻寬（MBps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 |-----|-----|-----|-----|-----|-----|-----|-----|
 | Standard_D2a_v4 |  2  | 8  | 50  | 4  | 3000 / 46 / 23   | 2 | 1000 |
 | Standard_D4a_v4 |  4  | 16 | 100 | 8  | 6000 / 93 / 46   | 2 | 2000 |
@@ -57,16 +57,16 @@ ACU：230-260
 
 Dasv4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達成 3.35 ghz 的提升頻率，並使用 premium SSD。 Dasv4 系列大小提供 vCPU、記憶體和暫存儲存體的組合，可用於大部分的生產環境工作負載。
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC | 預期的網路頻寬（MBps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| Standard_D2as_v4|2|8|16|4|4000/32 （50）|3200/48|2 | 1000 |
-| Standard_D4as_v4|4|16|32|8|8000/64 （100）|6400/96|2 | 2000 |
-| Standard_D8as_v4|8|32|64|16|16000/128 （200）|12800/192|4 | 4000 |
-| Standard_D16as_v4|16|64|128|32|32000/255 （400）|25600/384|8 | 8000 |
-| Standard_D32as_v4|32|128|256|32|64000/510 （800）|51200/768|8 | 16000 |
-| Standard_D48as_v4|48|192|384|32|96000/1020 （1200）|76800/1148|8 | 24000 |
-| Standard_D64as_v4|64|256|512|32|128000/1020 （1600）|80000/1200|8 | 30000 | 
-| Standard_D96as_v4|96|384|768|32|192000/1020 （2400）|80000/1200|8 | 30000 |
+| Standard_D2as_v4|2|8|16|4|4000/32 (50) |3200/48|2 | 1000 |
+| Standard_D4as_v4|4|16|32|8|8000/64 (100) |6400/96|2 | 2000 |
+| Standard_D8as_v4|8|32|64|16|16000/128 (200) |12800/192|4 | 4000 |
+| Standard_D16as_v4|16|64|128|32|32000/255 (400) |25600/384|8 | 8000 |
+| Standard_D32as_v4|32|128|256|32|64000/510 (800) |51200/768|8 | 16000 |
+| Standard_D48as_v4|48|192|384|32|96000/1020 (1200) |76800/1148|8 | 24000 |
+| Standard_D64as_v4|64|256|512|32|128000/1020 (1600) |80000/1200|8 | 30000 | 
+| Standard_D96as_v4|96|384|768|32|192000/1020 (2400) |80000/1200|8 | 30000 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

@@ -9,18 +9,21 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 57589552af3b93d98733d4872b43a719703d501a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4f51afbcf50939d762b1b5d32d6204ccfbb9a62d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285725"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551671"
 ---
 # <a name="create-a-data-source"></a>建立資料來源
 
 Azure 地圖服務 Web SDK 會將資料儲存在資料來源中。 使用資料來源可將資料作業優化以進行查詢和呈現。 目前有兩種類型的資料來源：
 
-**GeoJSON 資料來源**
+- **GeoJSON 來源**：在本機管理 GeoJSON 格式的原始位置資料。 適用于小型至中型資料集， () 的數十萬個圖形。
+- **向量圖格來源**：根據地圖並排顯示系統，載入目前地圖視圖的向量圖格格式的資料。 適用于大型到大規模的資料集， (數百萬或數十億個圖形) 。
+
+## <a name="geojson-data-source"></a>GeoJSON 資料來源
 
 以 GeoJSON 為基礎的資料來源會載入，並使用類別在本機儲存資料 `DataSource` 。 您可以使用 GeoJSON 資料，以[資料](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data)命名空間中的 helper 類別手動建立或建立。 `DataSource`類別會提供用來匯入本機或遠端 GeoJSON 檔案的函式。 遠端 GeoJSON 檔必須裝載在啟用 CORs 的端點上。 `DataSource`類別會提供群集點資料的功能。 而且，您可以使用類別輕鬆地新增、移除和更新資料 `DataSource` 。 下列程式碼會示範如何在 Azure 地圖服務中建立 GeoJSON 資料。
 
@@ -37,7 +40,7 @@ var rawGeoJson = {
      }
 };
 
-//Create GeoJSON using helper classes (less error prone).
+//Create GeoJSON using helper classes (less error prone and less typing).
 var geoJsonClass = new atlas.data.Feature(new atlas.data.Point([-100, 45]), {
     "custom-property": "value"
 }); 
@@ -69,7 +72,7 @@ dataSource.setShapes(geoJsonData);
 > [!TIP]
 > 讓我們假設您想要覆寫中的所有資料 `DataSource` 。 如果您對 then 函式進行呼叫 `clear` `add` ，對應可能會重新轉譯兩次，這可能會造成一些延遲。 請改用函式，此函式 `setShapes` 會移除並取代資料來源中的所有資料，而且只會觸發地圖的單一重新呈現。
 
-**向量圖格來源**
+## <a name="vector-tile-source"></a>向量圖格來源
 
 向量圖格來源會說明如何存取向量磚圖層。 使用[VectorTileSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.vectortilesource)類別來具現化向量圖格來源。 向量圖格圖層與磚圖層相似，但它們並不相同。 圖格圖層是一個點陣影像。 向量圖格圖層是壓縮檔案，格式為**PBF** 。 此壓縮檔案包含向量對應資料，以及一或多個圖層。 檔案可以根據每個圖層的樣式，在用戶端上呈現和樣式化。 [向量] 磚中的資料會以點、線條和多邊形的形式包含地理特徵。 使用向量圖格圖層，而不是點陣磚圖層有數個優點：
 
@@ -88,7 +91,7 @@ Azure 地圖服務遵守[Mapbox Vector 磚規格](https://github.com/mapbox/vect
 > [!TIP]
 > 使用來自 Azure 地圖服務轉譯服務的向量或點陣影像磚搭配 web SDK 時，您可以將取代 `atlas.microsoft.com` 為預留位置 `{azMapsDomain}` 。 此預留位置將會取代為對應所使用的相同網域，而且也會自動附加相同的驗證詳細資料。 這可大幅簡化使用 Azure Active Directory 驗證時，轉譯服務的驗證。
 
-若要在地圖上顯示向量磚來源的資料，請將來源連接至其中一個資料轉譯層。 所有使用向量來源的圖層都必須 `sourceLayer` 在選項中指定值。 定下列程式碼會將 Azure 地圖服務流量向量圖格服務載入為向量磚來源，然後使用線條圖層將它顯示在地圖上。 這個向量磚來源在來源層中有一個稱為「流量流程」的單一資料集。 此資料集內的行資料具有名為 `traffic_level` 的屬性，在此程式碼中會用來選取色彩並調整線條大小。
+若要在地圖上顯示向量磚來源的資料，請將來源連接至其中一個資料轉譯層。 所有使用向量來源的圖層都必須 `sourceLayer` 在選項中指定值。 下列程式碼會將 Azure 地圖服務流量向量圖格服務載入為向量磚來源，然後使用線條圖層將它顯示在地圖上。 這個向量磚來源在來源層中有一個稱為「流量流程」的單一資料集。 此資料集內的行資料具有名為 `traffic_level` 的屬性，在此程式碼中會用來選取色彩並調整線條大小。
 
 ```javascript
 //Create a vector tile source and add it to the map.
@@ -130,7 +133,7 @@ map.layers.add(flowLayer, 'labels');
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="向量磚線圖層" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱 CodePen 上 Azure 地圖服務（）的畫筆<a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>向量磚線圖層</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+在 CodePen 上 Azure 地圖服務 () ，請參閱「畫筆<a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>向量圖層</a>」 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
 </iframe>
 
 <br/>

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
-ms.openlocfilehash: 70ff1847548c1328a709cf17c02bba3dd25ba213
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 82639a19ef728c22a74381d24754992e0f647976
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486643"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562460"
 ---
 ## <a name="query-language-features"></a>查詢語言功能
 
@@ -19,20 +19,20 @@ Azure 數位 Twins 會針對對應項圖形提供廣泛的查詢功能。 查詢
 > [!NOTE]
 > 所有 Azure 數位 Twins 查詢作業都區分大小寫。
 
-以下是 Azure 數位 Twins 查詢存放區語言提供的作業。
+以下是 Azure 數位 Twins 查詢語言中可用的作業。
 
 以自己的方式取得數位 twins .。。
-* model （使用 `IS_OF_MODEL` 運算子）
-* 屬性（包括[標記屬性](../articles/digital-twins/how-to-use-tags.md)）
+* 使用運算子) 的模型 (`IS_OF_MODEL`
+*  (包含[標記屬性](../articles/digital-twins/how-to-use-tags.md)的屬性) 
 * interfaces
 * 關聯性
   - 關聯性的屬性
 
 您可以使用下列作業進一步增強您的查詢：
-* 取得多個關聯性類型（ `JOIN` 查詢）的 twins。 
-  - 允許的數目有所限制 `JOIN` （一層公開預覽）。
-* 只選取最上方的查詢結果（ `Select TOP` 運算子）
+*  (查詢) 取得多個關聯性類型 `JOIN` 的 twins。 
+  - `JOIN`公開預覽)  (一層級的數目有所限制。
+* 僅選取最上方的查詢結果 (`Select TOP` 運算子) 
 * 使用純量函數： `IS_BOOL` 、 `IS_DEFINED` 、 `IS_NULL` 、 `IS_NUMBER` 、 `IS_OBJECT` `IS_PRIMITIVE` `IS_STRING` `STARTSWITH` `ENDSWITH` 、、、、。
 * 使用查詢比較運算子： `IN` / `NIN` 、 `=` 、 `!=` 、 `<` 、 `>` 、 `<=` 、 `>=` 。
-* 使用 `AND` `OR` 、純 `NOT` 量 `IS_OF_MODEL` 函數和比較運算子的任何組合（、、運算子）。
-* 使用接續：查詢物件會具現化頁面大小（最多100）。 您可以在後續的 API 呼叫中提供接續 token，一次取出數位 twins 一頁。
+* 使用任何組合， (`AND` 、 `OR` 、 `NOT` 運算子) `IS_OF_MODEL` 、純量函數和比較運算子。
+* 使用接續：查詢物件是以頁面大小具現化， (最多 100) 。 您可以在後續的 API 呼叫中提供接續 token，一次取出數位 twins 一頁。

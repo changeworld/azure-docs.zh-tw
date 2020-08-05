@@ -3,12 +3,12 @@ title: 設定 Azure 服務匯流排的 IP 防火牆規則
 description: 如何使用「防火牆規則」允許從特定 IP 位址連線至「Azure 服務匯流排」。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 378f8a6331c18b2c99e3e08e83021878f7384c2b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e9b39f1b163a894bf4831662ac050463086133d5
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418505"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552912"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>允許從特定 IP 位址或範圍存取 Azure 服務匯流排命名空間
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取服務匯流排命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
@@ -34,6 +34,7 @@ IP 防火牆規則會套用在服務匯流排命名空間層級上。 因此，�
 > 虛擬網路上必須有下列 Microsoft 服務
 > - Azure App Service
 > - Azure Functions
+> - Azure 監視器 (診斷設定)
 
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站
 本節說明如何使用 Azure 入口網站為服務匯流排命名空間建立 IP 防火牆規則。 
@@ -44,7 +45,7 @@ IP 防火牆規則會套用在服務匯流排命名空間層級上。 因此，�
     > [!NOTE]
     > 您只會看到**premium**命名空間的 [**網路**功能] 索引標籤。  
     
-    預設會選取 [**選取的網路**] 選項。 如果您未在此頁面上新增至少一個 IP 防火牆規則或虛擬網路，則可透過公用網際網路存取命名空間（使用存取金鑰）。
+    預設會選取 [**選取的網路**] 選項。 如果您未在此頁面上新增至少一個 IP 防火牆規則或虛擬網路，您可以使用存取金鑰) ，透過公用網際網路 (來存取命名空間。
 
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="網路頁面-預設" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     

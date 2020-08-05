@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/03/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a2830db6132e665d3f876a535fb645e936971b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cc38e576f53c3623bacc374a00adcb4cced01517
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283056"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552878"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>條件式存取：系統管理員需要 MFA
 
-指派系統管理許可權的帳戶是攻擊者的目標。 在這些帳戶上要求多重要素驗證（MFA），是降低那些帳戶遭到入侵風險的簡單方法。
+指派系統管理許可權的帳戶是攻擊者的目標。 要求多重要素驗證 (MFA) 對這些帳戶而言，是降低那些帳戶遭到入侵風險的簡單方法。
 
 Microsoft 建議您至少要求下列角色的 MFA：
 
@@ -28,7 +28,7 @@ Microsoft 建議您至少要求下列角色的 MFA：
 * 條件式存取系統管理員
 * Exchange 系統管理員
 * 全域管理員
-* 技術服務人員（密碼）系統管理員
+* 技術服務人員 (密碼) 系統管理員
 * 密碼管理員
 * 安全性系統管理員
 * SharePoint 管理員
@@ -54,7 +54,7 @@ Microsoft 建議您至少要求下列角色的 MFA：
 1. 選取 [新增原則]。
 1. 為您的原則命名。 我們建議組織針對其原則的名稱建立有意義的標準。
 1. 在 [指派] 底下，選取 [使用者和群組]
-   1. 在 [**包含**] 底下，選取 [**目錄角色（預覽）** ]，然後至少選擇下列角色：
+   1. 在 [**包含**] 底下，選取 [**目錄角色] (預覽) **並至少選擇下列角色：
       * 驗證系統管理員
       * 計費管理員
       * 條件式存取系統管理員
@@ -65,10 +65,14 @@ Microsoft 建議您至少要求下列角色的 MFA：
       * 安全性系統管理員
       * SharePoint 管理員
       * 使用者管理員
+   
+      > [!WARNING]
+      > 條件式存取原則不支援使用者指派的目錄角色，範圍限於直接設定為物件範圍的系統[管理單位](../users-groups-roles/roles-admin-units-assign-roles.md)或目錄角色，例如透過[自訂角色](../users-groups-roles/roles-create-custom.md)。
+
    1. 在 [排除] 底下選取 [使用者和群組]，然後選擇組織的緊急存取或急用帳戶。 
    1. 選取 [完成] 。
 1. 在 [雲端應用程式或動作] > [包含] 下，選取 [所有雲端應用程式]，然後選取 [完成]。
-1. 在**Conditions**  >  **[條件用戶端應用程式（預覽）**] 底下**的 [選取用戶端應用程式] 下，將套用此原則以**保留所有預設值並選取 [**完成**]。
+1. 在 [**條件**  >  **用戶端應用程式 (預覽) **] 底下**的 [選取用戶端應用程式**] 下，將套用此原則，保留所有預設值並選取 [**完成**]。
 1. 在 [存取控制] > [授與] 底下選取 [授與存取權] 和 [需要多重要素驗證]，然後選取 [選取]。
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [建立] 以建立以啟用您的原則。

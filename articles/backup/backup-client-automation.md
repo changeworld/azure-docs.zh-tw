@@ -3,12 +3,12 @@ title: 使用 PowerShell 將 Windows Server 備份至 Azure
 description: 在本文中，您將瞭解如何使用 PowerShell 來設定 Windows Server 或 Windows 用戶端上的 Azure 備份，以及管理備份和復原。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 116bdd6b5f48a9d5abc0f9f0d9ce61f857196fd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513722"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564022"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 用戶端的 Azure 備份
 
@@ -42,7 +42,7 @@ ms.locfileid: "86513722"
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 
-4. 指定要使用的儲存體多餘類型;您可以使用[本機多餘的儲存體（LRS）](../storage/common/storage-redundancy.md)或[異地多餘儲存體（GRS）](../storage/common/storage-redundancy.md)。 下列範例顯示*testVault*的 **-BackupStorageRedundancy**選項設定為**異地備援**。
+4. 指定要使用的儲存體多餘類型;您可以使用[本機的多餘儲存體 (LRS) ](../storage/common/storage-redundancy.md)或[異地多餘儲存體 (GRS) ](../storage/common/storage-redundancy.md)。 下列範例顯示*testVault*的 **-BackupStorageRedundancy**選項設定為**異地備援**。
 
    > [!TIP]
    > 許多 Azure 備份 Cmdlet 都需要將復原服務保存庫物件當做輸入。 基於這個理由，將備份復原服務保存庫物件儲存在變數中會是方便的做法。
@@ -148,7 +148,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 在 Windows Server 或 Windows 用戶端電腦上，執行 [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) Cmdlet 向保存庫註冊電腦。
-此 Cmdlet 和其他用來進行備份的 Cmdlet 皆來自 MSONLINE 模組，Mars AgentInstaller 會在安裝程序中新增此模組。
+這也是用於備份的其他 Cmdlet，是來自 MSONLINE 模組，MARS AgentInstaller 會在安裝過程中新增此模組。
 
 代理程式安裝程式不會更新 $Env:P SModulePath 變數。 這表示模組自動載入會失敗。 若要解決此問題，您可以執行下列命令：
 

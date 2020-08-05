@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 920f53fa962cc30f2068d78c9d1907b93019fe34
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc560f6a0048377f2174805d7e015b55240d7a71
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055850"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564039"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體觸發程式
 
@@ -163,7 +163,7 @@ module.exports = async function (context, message) {
 }
 ```
 
-程式碼* _ \_ _ \_ .py*會將參數宣告為 `func.ServiceBusMessage` ，這可讓您讀取函數中的佇列訊息。
+程式碼* _ \_ _ \_ .py*會將參數宣告為 `func.QueueMessage` ，這可讓您讀取函數中的佇列訊息。
 
 ```python
 import logging
@@ -317,7 +317,7 @@ public class QueueTriggerDemo {
 |**direction**| n/a | 僅限在 *function.json* 檔案中。 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
 |**name** | n/a |在函式程式碼中包含佇列項目承載的變數名稱。  |
 |**queueName** | **QueueName**| 要輪詢的佇列名稱。 |
-|**connection** | **連線** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
+|**connection** | **[連接]** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -363,7 +363,7 @@ public class QueueTriggerDemo {
 
 佇列觸發程序提供數個[中繼資料屬性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 屬性是[CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)類別的成員。
 
-|屬性|類型|說明|
+|屬性|類型|描述|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|佇列承載 (如果為有效字串)。 如果佇列訊息裝載是字串， `QueueTrigger` 其值與中的屬性所命名的變數相同， `name` *function.js開啟*。|
 |`DequeueCount`|`int`|此訊息已從佇列清除的次數。|
@@ -408,7 +408,7 @@ public class QueueTriggerDemo {
 
 ## <a name="next-steps"></a>後續步驟
 
-- [寫入佇列儲存體訊息（輸出系結）](./functions-bindings-storage-blob-output.md)
+- [ (輸出系結寫入佇列儲存體訊息) ](./functions-bindings-storage-blob-output.md)
 
 <!-- LINKS -->
 

@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/19/2020
-ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/04/2020
+ms.openlocfilehash: 94a2c9bf3f65897809edaf94fc01b442e02b46d9
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77921159"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552997"
 ---
 # <a name="module-k-means-clustering"></a>模組： K-表示群集
 
-本文說明如何在 Azure Machine Learning 設計工具（預覽）中使用*K 意指*叢集模組，以建立未定型的 k 意義群集模型。 
+本文說明如何在 Azure Machine Learning 設計工具中使用*K 意指*叢集模組 (預覽) 來建立未定型的 K 表示叢集模型。 
  
 K-表示是其中一個最簡單且最知名的*不受監督*學習演算法。 您可以使用演算法來進行各種機器學習工作，例如： 
 
@@ -62,7 +62,7 @@ K-表示是其中一個最簡單且最知名的*不受監督*學習演算法。 
   
 3.  針對 [**距心數目**]，輸入您想要開始使用演算法的叢集數目。  
   
-     模型不保證會產生確切的叢集數目。 此演算法會以此數目的資料點開始，並逐一查看以尋找最佳設定。  
+     模型不保證會產生確切的叢集數目。 此演算法會以此數目的資料點開始，並逐一查看以尋找最佳設定。 您可以參考 sklearn 的[原始程式碼](https://github.com/scikit-learn/scikit-learn/blob/fd237278e/sklearn/cluster/_kmeans.py#L1069)。
   
 4.  屬性**初始化**是用來指定用來定義初始叢集設定的演算法。  
   

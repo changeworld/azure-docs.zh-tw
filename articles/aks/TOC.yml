@@ -301,7 +301,7 @@
     - name: 開發及執行應用程式
       items:
         - name: 將 Visual Studio Code 和 Kubernetes 與本機處理序搭配使用 (預覽)
-          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: 使用 Helm 安裝現有的應用程式
           href: kubernetes-helm.md
         - name: 使用 OpenFaaS
