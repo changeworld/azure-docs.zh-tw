@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 79674b359bc2058f11895b3291c0ce16ef5b1a16
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8457925479e3c28e062f87dbb830969d66523ec7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326829"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827071"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Resource Manager 資源群組
 
@@ -119,7 +119,7 @@ Get-AzResourceLock -ResourceGroupName $resourceGroupName
 設定資源群組之後，您可以查看資源群組的 Resource Manager 範本。 匯出此範本有兩個優點︰
 
 - 將解決方案的未來部署自動化，因為範本包含完整的基礎結構。
-- 查看代表您的解決方案的 JavaScript 物件標記法（JSON）來瞭解範本語法。
+- 查看代表您的解決方案的 JavaScript 物件標記法 (JSON) 來瞭解範本語法。
 
 若要匯出資源群組中的所有資源，請使用[remove-azresourcegroup](/powershell/module/az.resources/Export-AzResourceGroup) Cmdlet，並提供資源組名。
 
@@ -217,7 +217,7 @@ Export-AzResourceGroup `
 
 ## <a name="manage-access-to-resource-groups"></a>管理資源群組的存取權
 
-[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)是您在 Azure 中管理資源存取權的方式。 如需詳細資訊，請參閱[使用 RBAC 和 Azure PowerShell 來管理存取權](../../role-based-access-control/role-assignments-powershell.md)。
+Azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)是您在 azure 中管理資源存取權的方式。 如需詳細資訊，請參閱[使用 RBAC 和 Azure PowerShell 來管理存取權](../../role-based-access-control/role-assignments-powershell.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

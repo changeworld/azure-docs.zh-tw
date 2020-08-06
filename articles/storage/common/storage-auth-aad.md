@@ -10,30 +10,30 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 76b9b965ab7fb5ffda66bd77dba6d9ab5381e6fd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3b29c5b4b1bf682e0f43a0bf9b0c8fcb40d70433
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534357"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827872"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授權存取 blob 和佇列
 
-Azure 儲存體支援使用 Azure Active Directory （Azure AD）來授權對 Blob 和佇列儲存體的要求。 使用 Azure AD，您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，以傳回 OAuth 2.0 權杖。 然後，您可以使用此權杖來授權對 Blob 或佇列儲存體的要求。
+Azure 儲存體支援使用 Azure Active Directory (Azure AD) 來授權對 Blob 和佇列儲存體的要求。 使用 Azure AD，您可以使用角色型存取控制 (RBAC) ，將許可權授與安全性主體，這可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，以傳回 OAuth 2.0 權杖。 然後，您可以使用此權杖來授權對 Blob 或佇列儲存體的要求。
 
 使用 Azure AD 對 Azure 儲存體授權要求，可透過共用金鑰授權提供更優異的安全性和易用性。 Microsoft 建議您盡可能在 blob 和佇列應用程式中使用 Azure AD 授權，以將共用金鑰中固有的潛在安全性弱點降至最低。
 
 具有 Azure AD 的授權適用于所有公用區域和國家雲端中的所有一般用途和 Blob 儲存體帳戶。 只有使用 Azure Resource Manager 部署模型所建立的儲存體帳戶才支援 Azure AD 授權。
 
-Blob 儲存體額外支援建立以 Azure AD 認證簽署的共用存取簽章（SAS）。 如需詳細資訊，請參閱[使用共用存取簽章授與資料的有限存取權](storage-sas-overview.md)。
+Blob 儲存體還支援建立共用存取簽章， (以 Azure AD 認證簽署的 SAS) 。 如需詳細資訊，請參閱[使用共用存取簽章授與資料的有限存取權](storage-sas-overview.md)。
 
-Azure 檔案儲存體針對已加入網域的 Vm，透過 SMB 支援 AD （預覽）或 Azure AD DS （GA）的授權。 若要瞭解如何使用 AD （預覽）或透過 SMB 的 Azure AD DS （GA）來 Azure 檔案儲存體，請參閱[Azure 檔案儲存體以身分識別為基礎的驗證支援 smb 存取](../files/storage-files-active-directory-overview.md)。
+Azure 檔案儲存體支援 AD (preview) 的授權，或透過 SMB 僅針對已加入網域的 Vm Azure AD DS (GA) 。 若要瞭解如何使用 AD (preview) 或 Azure AD DS (GA) 透過 SMB 進行 Azure 檔案儲存體，請參閱[針對 smb 存取 Azure 檔案儲存體以身分識別為基礎的驗證支援的總覽](../files/storage-files-active-directory-overview.md)。
 
 Azure 資料表儲存體不支援具有 Azure AD 的授權。 使用共用金鑰來授權對資料表儲存體的要求。
 
 ## <a name="overview-of-azure-ad-for-blobs-and-queues"></a>Blob 和佇列的 Azure AD 總覽
 
-當安全性主體（使用者、群組或應用程式）嘗試存取 blob 或佇列資源時，必須授權要求，除非它是可供匿名存取的 blob。 使用 Azure AD，對資源的存取是兩個步驟的程序。 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 接下來，權杖會當做要求的一部分傳遞至 Blob 或佇列服務，並由服務用來授權存取指定的資源。
+當 (使用者、群組或應用程式的安全性主體) 嘗試存取 blob 或佇列資源時，必須授權要求，除非它是可供匿名存取的 blob。 使用 Azure AD，對資源的存取是兩個步驟的程序。 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 接下來，權杖會當做要求的一部分傳遞至 Blob 或佇列服務，並由服務用來授權存取指定的資源。
 
 驗證步驟要求應用程式在執行時間要求 OAuth 2.0 存取權杖。 如果應用程式是從 azure 實體（例如 Azure VM、虛擬機器擴展集或 Azure Functions 應用程式）中執行，它可以使用[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)來存取 blob 或佇列。 若要瞭解如何授權受控識別對 Azure Blob 或佇列服務提出的要求，請參閱[使用適用于 Azure 資源的 Azure Active Directory 和受控識別來授權對 blob 和佇列的存取](storage-auth-aad-msi.md)。
 
@@ -43,7 +43,7 @@ Azure 資料表儲存體不支援具有 Azure AD 的授權。 使用共用金鑰
 
 ## <a name="assign-azure-roles-for-access-rights"></a>指派存取權限的 Azure 角色
 
-Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../role-based-access-control/overview.md)，來授與存取受保護資源的權限。 Azure 儲存體定義一組 Azure 內建角色，其中包含用來存取 blob 和佇列資料的常用許可權集。 您也可以定義自訂角色以存取 blob 和佇列資料。
+Azure Active Directory (Azure AD) 會透過 azure [RBAC () 以角色為基礎的存取控制](../../role-based-access-control/overview.md)，授權保護資源的存取權限。 Azure 儲存體定義一組 Azure 內建角色，其中包含用來存取 blob 和佇列資料的常用許可權集。 您也可以定義自訂角色以存取 blob 和佇列資料。
 
 將 Azure 角色指派給 Azure AD 的安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以包括訂用帳戶、資源群組、儲存體帳戶或個別的容器或佇列層級。 Azure AD 的安全性主體可以是使用者、群組、應用程式服務主體，或[適用于 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -69,7 +69,7 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../../
 
 ## <a name="access-data-with-an-azure-ad-account"></a>使用 Azure AD 帳戶存取資料
 
-透過 Azure 入口網站、PowerShell 或 Azure CLI 存取 blob 或佇列資料，可以使用使用者的 Azure AD 帳戶，或使用帳戶存取金鑰（共用金鑰授權）來授權。
+透過 Azure 入口網站、PowerShell 或 Azure CLI 存取 blob 或佇列資料，可以使用使用者的 Azure AD 帳戶或 (共用金鑰授權) 的帳戶存取金鑰進行授權。
 
 ### <a name="data-access-from-the-azure-portal"></a>從 Azure 入口網站存取資料
 

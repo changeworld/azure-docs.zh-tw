@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc7c256ca6866e5b981f8740c9953534d830316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359155"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828790"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 作業
 本主題說明您可以使用 Azure Active Directory (Azure AD) Connect Health 來執行的各種作業。
@@ -43,7 +43,7 @@ ms.locfileid: "85359155"
 6. 若要完成變更，請按一下 [儲存]****。 只有在您儲存之後，變更才會生效。
 
 >[!NOTE] 
-> 當在後端服務中處理同步要求時發生問題時，此服務會將錯誤詳細資料的通知電子郵件傳送至您租使用者的系統管理連絡人電子郵件地址。 我們聽到客戶的意見反應，在某些情況下，這些訊息的數量很大，所以我們會改變傳送這些訊息的方式。 
+> 當在後端服務中處理同步要求時發生問題時，此服務會將錯誤詳細資料的通知電子郵件傳送至您租使用者的系統管理連絡人電子郵件地址 (es) 。 我們聽到客戶的意見反應，在某些情況下，這些訊息的數量很大，所以我們會改變傳送這些訊息的方式。 
 >
 > 每次發生同步處理錯誤時，我們會傳送後端服務傳回的所有錯誤摘要 這可讓客戶以更有效率的方式處理這些錯誤，並減少重複的錯誤訊息數目。
 >
@@ -104,7 +104,7 @@ Azure AD Connect Health for Azure Active Directory Domain Services：
 
 [//]: # (Start of RBAC section)
 ## <a name="manage-access-with-role-based-access-control"></a>使用角色型存取控制來管理存取
-Azure AD Connect Health 的[角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 提供存取權給全域管理員以外的使用者和群組。 RBAC 會指派角色給目標使用者和群組，並提供機制來限制您目錄內的全域管理員。
+[Azure 角色型存取控制 (](../../role-based-access-control/role-assignments-portal.md)適用于 Azure AD Connect Health 的 azure RBAC) 提供全域管理員以外的使用者和群組的存取權。 RBAC 會指派角色給目標使用者和群組，並提供機制來限制您目錄內的全域管理員。
 
 ### <a name="roles"></a>角色
 Azure AD Connect Health 支援下列內建角色：
@@ -138,7 +138,7 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
    ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_add.png)
 4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]。
    ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. 選取 [確定]。<br>
+5. 選取 [確定]  。<br>
 6. 完成角色指派之後，使用者和群組就會出現在清單中。<br>
    ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面，其中已醒目提示新使用者](./media/how-to-connect-health-operations/RBAC_user_list.png)
 

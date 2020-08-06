@@ -8,16 +8,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5fa591530e92682c582b5929240e74a5430fb559
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534986"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824523"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>設定 SQL Server 的災害復原
 
-本文說明如何協助保護應用程式的 SQL Server 後端。 您可以使用 SQL Server 商務持續性和嚴重損壞修復（BCDR）技術和[Azure Site Recovery](site-recovery-overview.md)的組合來達到此目的。
+本文說明如何協助保護應用程式的 SQL Server 後端。 您可以使用 SQL Server 商務持續性和嚴重損壞修復的組合， (BCDR) 技術和[Azure Site Recovery](site-recovery-overview.md)。
 
 開始之前，請確定您瞭解 SQL Server 的嚴重損壞修復功能。 這些功能包括：
 
@@ -30,14 +30,14 @@ ms.locfileid: "87534986"
 
 ## <a name="combining-bcdr-technologies-with-site-recovery"></a>結合 BCDR 技術與 Site Recovery
 
-您選擇用來復原 SQL Server 實例的 BCDR 技術應該根據您的復原時間目標（RTO）和復原點目標（RPO）需求，如下表所述。 結合 Site Recovery 與您所選技術的容錯移轉作業，來協調整個應用程式的復原。
+您選擇用來復原 SQL Server 實例的 BCDR 技術應該根據您的復原時間目標 (RTO) 和復原點目標 (RPO) 需求，如下表所述。 結合 Site Recovery 與您所選技術的容錯移轉作業，來協調整個應用程式的復原。
 
 部署類型 | BCDR 技術 | SQL Server 的預期 RTO | SQL Server 的預期 RPO |
 --- | --- | --- | ---
-在 Azure 基礎結構即服務（IaaS）虛擬機器（VM）或內部部署環境中 SQL Server。| [Always On 可用性群組](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | 將次要複本設為主要複本所花費的時間。 | 因為複寫到次要複本是非同步，所以會發生資料遺失的情況。
+SQL Server 在 Azure 基礎結構即服務 (IaaS) 虛擬機器 (VM) 或內部部署。| [Always On 可用性群組](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017) | 將次要複本設為主要複本所花費的時間。 | 因為複寫到次要複本是非同步，所以會發生資料遺失的情況。
 在 Azure IaaS VM 或內部部署環境中 SQL Server。| [容錯移轉叢集 (Always On FCI)](/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server?view=sql-server-2017) | 在節點之間進行故障切換所花費的時間。 | 由於 Always On FCI 會使用共用存放裝置，因此在容錯移轉時，會有相同的儲存體實例視圖。
-在 Azure IaaS VM 或內部部署環境中 SQL Server。| [資料庫鏡像（高效能模式）](/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | 強制服務所花費的時間，使用鏡像伺服器做為暖待命伺服器。 | 複寫不是同步進行。 鏡像資料庫可能會稍微落後主體資料庫。 延遲通常很小。 但如果主體或鏡像伺服器的系統負載過重，可能會變得很大。<br/><br/>記錄傳送可以是資料庫鏡像的補充。 這是非同步資料庫鏡像的理想替代方法。
-SQL 做為 Azure 上的平臺即服務（PaaS）。<br/><br/>此部署類型包含單一資料庫和彈性集區。 | 使用中的地理複寫 | 觸發容錯移轉後的30秒。<br/><br/>針對其中一個次要資料庫啟用容錯移轉時，所有其他的次要複本都會自動連結至新的主要複本。 | 五秒的 RPO。<br/><br/>主動式異地複寫使用 SQL Server 的 Always On 技術。 它會使用快照集隔離，以非同步方式將主資料庫上認可的交易複寫到次要資料庫。<br/><br/>次要資料保證永遠不會有部分交易。
+在 Azure IaaS VM 或內部部署環境中 SQL Server。| [資料庫鏡像 (高效能模式) ](/sql/database-engine/database-mirroring/database-mirroring-sql-server?view=sql-server-2017) | 強制服務所花費的時間，使用鏡像伺服器做為暖待命伺服器。 | 複寫不是同步進行。 鏡像資料庫可能會稍微落後主體資料庫。 延遲通常很小。 但如果主體或鏡像伺服器的系統負載過重，可能會變得很大。<br/><br/>記錄傳送可以是資料庫鏡像的補充。 這是非同步資料庫鏡像的理想替代方法。
+SQL 做為平臺即服務 (PaaS) 在 Azure 上。<br/><br/>此部署類型包含單一資料庫和彈性集區。 | 使用中的地理複寫 | 觸發容錯移轉後的30秒。<br/><br/>針對其中一個次要資料庫啟用容錯移轉時，所有其他的次要複本都會自動連結至新的主要複本。 | 五秒的 RPO。<br/><br/>主動式異地複寫使用 SQL Server 的 Always On 技術。 它會使用快照集隔離，以非同步方式將主資料庫上認可的交易複寫到次要資料庫。<br/><br/>次要資料保證永遠不會有部分交易。
 使用 Azure 上的主動式異地複寫設定的 SQL 做為 PaaS。<br/><br/>此部署類型包含受控實例、彈性集區和單一資料庫。 | 自動容錯移轉群組 | 一小時的 RTO。 | 五秒的 RPO。<br/><br/>自動容錯移轉群組在主動式異地複寫之上提供群組語義。 但使用相同的非同步複寫機制。
 在 Azure IaaS VM 或內部部署環境中 SQL Server。| 使用 Azure Site Recovery 進行複寫 | RTO 通常少於15分鐘。 若要深入瞭解，請參閱[Site Recovery 所提供的 RTO SLA](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)。 | 應用程式一致性的一小時，以及5分鐘的損毀一致性。 如果您要尋找較低的 RPO，請使用其他 BCDR 技術。
 
@@ -48,7 +48,7 @@ SQL 做為 Azure 上的平臺即服務（PaaS）。<br/><br/>此部署類型包�
 > * 請確定電腦上觀察到的資料變更率在[Site Recovery 限制](vmware-physical-azure-support-matrix.md#churn-limits)內。 變更率是以每秒寫入位元組數來測量。 對於執行 Windows 的電腦，您可以選取 [工作管理員] 中的 [**效能**] 索引標籤，以查看此變更率。 觀察每個磁片的寫入速度。
 > * Site Recovery 支援儲存空間直接存取上的容錯移轉叢集實例複寫。 若要深入瞭解，請參閱[如何啟用儲存空間直接存取](azure-to-azure-how-to-enable-replication-s2d-vms.md)複寫。
 > 
-> 當您將 SQL 工作負載遷移至 Azure 時，建議您在[azure 虛擬機器上套用 SQL Server 的效能指導方針](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)。
+> 當您將 SQL 工作負載遷移至 Azure 時，建議您在[azure 虛擬機器上套用 SQL Server 的效能指導方針](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)。
 
 ## <a name="disaster-recovery-of-an-application"></a>應用程式的損毀修復
 

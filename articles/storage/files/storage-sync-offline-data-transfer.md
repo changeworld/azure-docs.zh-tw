@@ -7,31 +7,31 @@ ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dda05331163d071a9a47c6f6af8c758a11ec7dd8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514388"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827889"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>使用 Azure DataBox 將大量資料遷移至 Azure 檔案同步
 您可以透過兩種方式將大量資料移轉至 Azure 檔案同步：
 
-* **使用 Azure 檔案同步上傳您的檔案。** 這是最簡單的方法。 將檔案從本機移至 Windows Server 2012 R2 或更新版本，並安裝 Azure 檔案同步代理程式。 設定同步處理之後，就會從伺服器上傳您的檔案。 （我們的客戶目前每兩天都會經歷 1 TiB 的平均上傳速度）。為了確保您的伺服器不會使用太多頻寬來處理資料中心，您可能會想要設定[頻寬節流排程](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)。
+* **使用 Azure 檔案同步上傳您的檔案。** 這是最簡單的方法。 將檔案從本機移至 Windows Server 2012 R2 或更新版本，並安裝 Azure 檔案同步代理程式。 設定同步處理之後，就會從伺服器上傳您的檔案。  (我們的客戶目前每兩天都會經歷 1 TiB 的平均上傳速度。 ) 以確保您的伺服器不會使用太多的頻寬來處理資料中心，您可能會想要設定[頻寬節流排程](storage-sync-files-server-registration.md#ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter)。
 * **離線傳輸您的檔案。** 如果您沒有足夠的頻寬，您可能無法在合理的時間內將檔案上傳至 Azure。 挑戰是整個檔案集的初始同步處理。 若要克服這項挑戰，請使用離線大量遷移工具，例如[Azure 資料箱系列](https://azure.microsoft.com/services/storage/databox)。 
 
-本文說明如何以與 Azure 檔案同步相容的方式，離線遷移檔案。請遵循這些指示來避免檔案衝突，並在啟用同步處理之後，保留您的檔案和資料夾存取控制清單（Acl）和時間戳記。
+本文說明如何以與 Azure 檔案同步相容的方式，離線遷移檔案。請遵循這些指示來避免檔案衝突，並在啟用同步處理之後， (Acl) 和時間戳記中，保留您的檔案和資料夾存取控制清單。
 
 ## <a name="migration-tools"></a>移轉工具
 本文中所述的程式不僅適用于資料箱，也適用于其他離線遷移工具。 它也適用于透過網際網路直接運作的 AzCopy、Robocopy 或合作夥伴工具和服務等工具。 不過，若要克服最初的上傳挑戰，請遵循本文中的步驟，以與 Azure 檔案同步相容的方式來使用這些工具。
 
-在某些情況下，您必須先從一部 Windows 伺服器移至另一部 Windows Server，再採用 Azure 檔案同步。[儲存體遷移服務](https://aka.ms/storagemigrationservice)（SMS）可以提供協助。 無論您是否需要遷移至 Azure 檔案同步（Windows Server 2012R2 和更新版本）支援的伺服器作業系統版本，或只需要遷移，因為您要為 Azure 檔案同步購買新系統，SMS 有許多功能和優點，可協助您順利完成遷移。
+在某些情況下，您必須先從一部 Windows 伺服器移至另一部 Windows Server，再採用 Azure 檔案同步。[儲存體遷移服務](https://aka.ms/storagemigrationservice) (SMS) 有助於解決此情況。 無論您是否需要遷移至 Azure 檔案同步所支援的伺服器作業系統版本 (Windows Server 2012R2 和 up) ，或只是因為您要為 Azure 檔案同步購買新系統而需要遷移，SMS 有許多功能和優點，可協助您順利完成遷移。
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>使用工具離線傳輸資料的優點
 以下是使用傳輸工具（如資料箱進行離線遷移）的主要優點：
 
 - 您不需要透過網路上傳所有檔案。 對於大型命名空間，此工具可以節省大量的網路頻寬和時間。
-- 當您使用 Azure 檔案同步時，無論您使用哪一種傳輸工具（資料箱、Azure 匯入/匯出服務等等），您的即時伺服器只會上傳在將資料移至 Azure 之後所變更的檔案。
+- 當您使用 Azure 檔案同步時，無論您使用哪一種傳輸工具 (資料箱、Azure 匯入/匯出服務等) ，您的即時伺服器只會上傳在將資料移至 Azure 之後所變更的檔案。
 - 即使離線大量遷移工具不會傳輸 Acl，Azure 檔案同步也會同步處理您的檔案和資料夾 Acl。
 - 資料箱和 Azure 檔案同步不需要停機。 當您使用資料箱將資料傳輸到 Azure 時，您會有效率地使用網路頻寬並保留檔案精確度。 您也可以只上傳在將資料移至 Azure 之後變更的檔案，讓命名空間保持在最新狀態。
 
@@ -88,6 +88,13 @@ Azure 檔案同步可確保即使您使用的大量遷移工具最初並未傳�
 
 > [!IMPORTANT]
 > 停用離線資料傳輸模式之後，即使大量遷移的暫存共用仍然可用，您也無法再次啟用它。
+
+## <a name="azure-file-sync-and-pre-seeded-files-in-the-cloud"></a>在雲端中 Azure 檔案同步和預先植入的檔案
+
+如果您已透過其他方式（例如透過 AzCopy、來自雲端備份的 RoboCopy 或任何其他方法）來植入 Azure 檔案共用中的檔案，則您仍應遵循本文中所述的[離線資料傳輸](#process-for-offline-data-transfer)程式。 您只需要忽略 DataBox，做為您的檔案移至雲端的方法。 不過，請務必確保您仍在遵循將檔案植入*預備共用*的程式，而不是最終的 Azure 檔案同步連線共用。
+
+> [!WARNING]
+> **遵循將檔案植入預備共用**的程式，而不是最終的 Azure 檔案同步連線共用。 如果您不這麼做，可能會發生檔案衝突 (這兩個檔案版本都會儲存) 而且在即時伺服器上刪除的檔案若仍然存在於較舊的一組已植入的檔案中，則會傳回該檔案。 此外，資料夾變更會彼此合併，使命名空間在這類錯誤之後非常難以區分。
 
 ## <a name="next-steps"></a>後續步驟
 - [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)

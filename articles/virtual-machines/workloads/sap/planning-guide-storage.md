@@ -16,21 +16,21 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65fbd84a6fa4b03db9f5dfce81eeba23aceebbc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042305"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824999"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP 工作負載的 Azure 儲存體類型
 Azure 有許多不同的儲存體類型，在功能、輸送量、延遲和價格方面都有很大的差異。 某些儲存體類型不是，或不適用於 SAP 案例。 不過，有數個 Azure 儲存體類型很適合或已針對特定的 SAP 工作負載案例進行優化。 特別針對 SAP Hana，某些 Azure 儲存體類型已通過 SAP Hana 使用認證。 在本檔中，我們將逐步解說不同類型的儲存體，並說明其與 SAP 工作負載和 SAP 元件的功能和可用性。
 
-這篇文章中所使用之單位的相關批註。 公用雲端廠商已移至使用 GiB （[gib](https://en.wikipedia.org/wiki/Gibibyte)）或 TiB （[個](https://en.wikipedia.org/wiki/Tebibyte)做為大小單位，而不是 gb 或 tb。 因此，所有 Azure 檔和獎項都會使用這些單位。  在整份檔中，我們會以獨佔方式參考 MiB、GiB 和 TiB 單位的這些大小單位。 您可能需要使用 MB、GB 和 TB 進行規劃。 因此，如果您需要使用 400 MiB/秒輸送量的大小，而不是 250 MiB/秒的輸送量，請留意計算的一些小差異。
+這篇文章中所使用之單位的相關批註。 公用雲端廠商已移至使用 GiB ([gib](https://en.wikipedia.org/wiki/Gibibyte)) 或 TiB ([個](https://en.wikipedia.org/wiki/Tebibyte)做為大小單位，而不是 gb 或 tb。 因此，所有 Azure 檔和獎項都會使用這些單位。  在整份檔中，我們會以獨佔方式參考 MiB、GiB 和 TiB 單位的這些大小單位。 您可能需要使用 MB、GB 和 TB 進行規劃。 因此，如果您需要使用 400 MiB/秒輸送量的大小，而不是 250 MiB/秒的輸送量，請留意計算的一些小差異。
 
 ## <a name="microsoft-azure-storage-resiliency"></a>Microsoft Azure 儲存體復原
 
-Microsoft Azure 標準 HDD、標準 SSD、Azure premium 儲存體和 Ultra 磁片的儲存體，會將基底 VHD （含 OS）和 VM 連接的資料磁片或 Vhd，在三個不同的儲存體節點上保留三個複本。 在儲存節點失敗時，容錯移轉至另一個複本並植入新複本，是透明的。 由於此重複，**不**需要在多個 Azure 磁片上使用任何類型的儲存體冗余層。 這項事實稱為「本機備援儲存體 (LRS)」。 在 Azure 中，這些儲存體類型的 LRS 是預設值。 [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)提供足夠的冗余，以達成與其他原生 Azure 儲存體相同的 sla。
+Microsoft Azure 標準 HDD、標準 SSD、Azure premium storage 和 Ultra 磁片的儲存體，會將基底 VHD (的 OS) 和 VM 連接的資料磁片或 Vhd，在三個不同儲存體節點的三個複本中保留。 在儲存節點失敗時，容錯移轉至另一個複本並植入新複本，是透明的。 由於此重複，**不**需要在多個 Azure 磁片上使用任何類型的儲存體冗余層。 這項事實稱為「本機備援儲存體 (LRS)」。 在 Azure 中，這些儲存體類型的 LRS 是預設值。 [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)提供足夠的冗余，以達成與其他原生 Azure 儲存體相同的 sla。
 
 另外還有幾個多餘的方法，它們都在適用于 Azure 必須提供的各種不同儲存體類型的[Azure 儲存體](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)複寫一文中說明。 
 
@@ -47,10 +47,10 @@ Microsoft Azure 標準 HDD、標準 SSD、Azure premium 儲存體和 Ultra 磁�
 在客戶定義的儲存體帳戶中不使用受控磁片進行部署，磁片配置是任意的，而且不知道 Vm 是在 A v 內部署，以供復原之用。
 
 > [!NOTE]
-> 基於此原因和其他透過受控磁片提供的其他改良功能，我們需要針對其磁片使用 Azure 區塊儲存體的 Vm 新部署（Azure NetApp Files 除外的所有 Azure 儲存體）必須針對基底 VHD/OS 磁片使用 Azure 受控磁片，也就是包含 SAP 資料庫檔案的資料磁片。 獨立于您是否透過可用性設定組部署 Vm，跨可用性區域或獨立于集合和區域。 用於儲存備份的磁片不一定要是受控磁片。
+> 基於此原因，以及其他透過受控磁片提供的其他改良功能，我們需要針對其磁片使用 Azure 區塊儲存體的 Vm 的新部署 (所有 Azure 儲存體（Azure NetApp Files 除外）) 必須針對基底 VHD/OS 磁片使用 Azure 受控磁片，其中包含 SAP 資料庫檔案的資料磁片。 獨立于您是否透過可用性設定組部署 Vm，跨可用性區域或獨立于集合和區域。 用於儲存備份的磁片不一定要是受控磁片。
 
 > [!NOTE]
-> Azure 受控磁片只提供本機冗余（LRS）。 
+> Azure 受控磁片僅 (LRS) 提供本機冗余。 
 
 
 ## <a name="storage-scenarios-with-sap-workloads"></a>SAP 工作負載的儲存案例
@@ -72,16 +72,16 @@ Microsoft Azure 標準 HDD、標準 SSD、Azure premium 儲存體和 Ultra 磁�
 
 | 使用方式情節 | 標準 HDD | 標準 SSD | 進階儲存體 | Ultra 磁碟 | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
-| OS 磁碟 | 不適用 |  受限制的適當（非生產） | 建議使用 | 不可能 | 不可能 |
+| 作業系統磁碟 | 不適用 |  適用 (非生產) 的限制 | 建議使用 | 不可能 | 不可能 |
 | 全域傳輸目錄 | 不支援 | 不支援 | 建議使用 | 建議使用 | 建議使用 |
-| /sapmnt | 不適用 | 受限制的適當（非生產） | 建議使用 | 建議使用 | 建議使用 |
+| /sapmnt | 不適用 | 適用 (非生產) 的限制 | 建議使用 | 建議使用 | 建議使用 |
 | DBMS 資料量 SAP Hana M/Mv2 VM 系列 | 不支援 | 不支援 | 建議使用 | 建議使用 | 建議<sup>2</sup> |
 | DBMS 記錄磁片區 SAP Hana M/Mv2 VM 系列 | 不支援 | 不支援 | 建議<sup>1</sup> | 建議使用 | 建議<sup>2</sup> | 
 | DBMS 資料量 SAP Hana Esv3/Edsv4 VM 系列 | 不支援 | 不支援 | 建議使用 | 建議使用 | 建議<sup>2</sup> |
 | DBMS 記錄磁片區 SAP Hana Esv3/Edsv4 VM 系列 | 不支援 | 不支援 | 不支援 | 建議使用 | 建議<sup>2</sup> | 
-| DBMS 資料磁片區非 HANA | 不支援 | 受限制的適當（非生產） | 建議使用 | 建議使用 | 不支援 |
-| DBMS 記錄磁片區非 HANA M/Mv2 VM 系列 | 不支援 | 受限制的適當（非生產） | 建議<sup>1</sup> | 建議使用 | 不支援 |
-| DBMS 記錄磁片區非 HANA 非 M/Mv2 VM 系列 | 不支援 | 受限制的適當（非生產） | 適用于最多中型工作負載 | 建議使用 | 不支援 |
+| DBMS 資料磁片區非 HANA | 不支援 | 適用 (非生產) 的限制 | 建議使用 | 建議使用 | 不支援 |
+| DBMS 記錄磁片區非 HANA M/Mv2 VM 系列 | 不支援 | 適用 (非生產) 的限制 | 建議<sup>1</sup> | 建議使用 | 不支援 |
+| DBMS 記錄磁片區非 HANA 非 M/Mv2 VM 系列 | 不支援 | 適用 (非生產) 的限制 | 適用于最多中型工作負載 | 建議使用 | 不支援 |
 
 
 <sup>1</sup>使用[Azure 寫入加速器](../../windows/how-to-enable-write-accelerator.md)FOR M/Mv2 VM 系列進行記錄/重做記錄磁片區<sup>2</sup>使用及時，需要/HANA/DATA 和/hana/log 才會位於及 
@@ -90,13 +90,13 @@ Microsoft Azure 標準 HDD、標準 SSD、Azure premium 儲存體和 Ultra 磁�
 
 | 使用方式情節 | 標準 HDD | 標準 SSD | 進階儲存體 | Ultra 磁碟 | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
-| 輸送量/IOPS SLA | 否 | 否 | 是 | 可以 | 是 |
+| 輸送量/IOPS SLA | 否 | 否 | 是 | 是 | 是 |
 | 延遲讀取 | high | 中到高 | low | 子毫秒 | 子毫秒 |
-| 延遲寫入 | high | 中到高  | 低（子毫秒<sup>1</sup>） | 子毫秒 | 子毫秒 |
-| 支援 HANA | 否 | 否 | 是<sup>1</sup> | 可以 | 是 |
-| 可能的磁片快照集 | 可以 | 可以 | 是 | 不可以 | 是 |
+| 延遲寫入 | high | 中到高  | 低 (子毫秒<sup>1</sup>)  | 子毫秒 | 子毫秒 |
+| 支援 HANA | 否 | 否 | 是<sup>1</sup> | 是 | 是 |
+| 可能的磁片快照集 | 是 | 是 | 是 | 否 | 是 |
 | 使用可用性設定組時，在不同的存放裝置叢集上配置磁片 | 透過受控磁片 | 透過受控磁片 | 透過受控磁片 | 透過可用性設定組部署的 Vm 不支援的磁片類型 | 否<sup>3</sup> |
-| 與可用性區域對齊 | 可以 | 可以 | 可以 | 是 | 需要 Microsoft 的參與 |
+| 與可用性區域對齊 | 是 | 是 | 是 | 是 | 需要 Microsoft 的參與 |
 | 區域性冗余 | 不適用於受控磁片 | 不適用於受控磁片 | 不適用於受控磁片 | 否 | 否 |
 | 異地冗余 | 不適用於受控磁片 | 不適用於受控磁片 | 否 | 否 | 否 |
 
@@ -109,7 +109,7 @@ Microsoft Azure 標準 HDD、標準 SSD、Azure premium 儲存體和 Ultra 磁�
 
 
 > [!IMPORTANT]
-> 若要使用 Azure NetApp Files （及）達到小於1毫秒的 i/o 延遲，您必須與 Microsoft 合作，根據及安排 Vm 與 NFS 共用之間的正確位置。 到目前為止，沒有任何機制可在部署的 VM 與及上裝載的 NFS 磁片區之間自動進行鄰近性。 假設不同的 Azure 區域有不同的設定，則新增的網路延遲可能會將 i/o 延遲推送至超過1毫秒，如果 VM 和 NFS 共用未配置於鄰近性中。
+> 若要使用 Azure NetApp Files 達到小於1毫秒的 i/o 延遲 (及) ，您必須與 Microsoft 合作，根據及安排 Vm 與 NFS 共用之間的正確位置。 到目前為止，沒有任何機制可在部署的 VM 與及上裝載的 NFS 磁片區之間自動進行鄰近性。 假設不同的 Azure 區域有不同的設定，則新增的網路延遲可能會將 i/o 延遲推送至超過1毫秒，如果 VM 和 NFS 共用未配置於鄰近性中。
 
 
 > [!IMPORTANT]
@@ -142,11 +142,11 @@ SAP 工作負載的功能矩陣看起來像這樣：
 | SAP sapmnt | 適宜 | 所有系統 |
 | 備份儲存體 | 適宜 | 適用于備份的短期儲存 |
 | 共用/共用磁片 | 無法使用 | 需要 Azure Premium 檔案或協力廠商 |
-| 復原 | LRS | 磁片沒有可用的 GRS 或 ZRS |
+| 災害復原 | LRS | 磁片沒有可用的 GRS 或 ZRS |
 | Latency | 低至中 | - |
 | IOPS SLA | YES | - |
 | 從線性到容量的 IOPS | 以方括弧括住的半線性  | [受控磁片價格](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| 每一磁片的 IOPS 上限 | 20000[相依于磁片大小](https://azure.microsoft.com/pricing/details/managed-disks/) | 也請考慮[VM 限制](../../linux/sizes.md) |
+| 每一磁片的 IOPS 上限 | 20000[相依于磁片大小](https://azure.microsoft.com/pricing/details/managed-disks/) | 也請考慮[VM 限制](../../sizes.md) |
 | 輸送量 SLA | YES | - |
 | 線性到容量的輸送量 | 以方括弧括住的半線性 | [受控磁片價格](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | HANA 認證 | YES | [特別針對 SAP Hana](../../windows/how-to-enable-write-accelerator.md) |
@@ -162,7 +162,7 @@ Azure premium 儲存體不會使用 Azure premium 儲存體所提供的通用快
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Premium 儲存體的 Azure 高載功能
-針對容量較小或等於 512 GiB 的 Azure premium 儲存體磁片，會提供高載功能。 磁片高載運作方式的確切方式如下所[述。](../../linux/disk-bursting.md) 當您閱讀文章時，您瞭解當 i/o 工作負載低於磁片的名義 IOPS 和輸送量時，產生 IOPS 和輸送量的概念（如需有關名義輸送量的詳細資訊，請參閱[受控磁片定價](https://azure.microsoft.com/pricing/details/managed-disks/)）。 您將會在目前的使用量和磁片的名義值之間，累積 IOPS 和輸送量的差異。 高載限制為30分鐘。
+針對容量較小或等於 512 GiB 的 Azure premium 儲存體磁片，會提供高載功能。 磁片高載運作方式的確切方式如下所[述。](../../linux/disk-bursting.md) 當您閱讀文章時，您瞭解當 i/o 工作負載低於磁片的名義 IOPS 和輸送量時，產生 IOPS 和輸送量的概念 (如需有關名義輸送量的詳細資訊，請參閱[受控磁片定價](https://azure.microsoft.com/pricing/details/managed-disks/)) 。 您將會在目前的使用量和磁片的名義值之間，累積 IOPS 和輸送量的差異。 高載限制為30分鐘。
 
 在中，可規劃此高載功能的理想情況可能是包含不同 DBMS 資料檔案的磁片區。 對這些磁片區預期的 i/o 工作負載，特別是小型到中型的系統，應該看起來像這樣：
 
@@ -179,7 +179,7 @@ Azure premium 儲存體不會使用 Azure premium 儲存體所提供的通用快
 
 
 ## <a name="azure-ultra-disk"></a>Azure Ultra 磁片
-Azure Ultra 磁碟可為 Azure IaaS VM 提供高輸送量、高 IOPS 以及一致的低延遲磁碟儲存體。 Ultra 磁片的一些額外優點包括能夠以動態方式變更磁片的 IOPS 和輸送量，以及您的工作負載，而不需要重新開機您的虛擬機器（VM）。 Ultra 磁片適用于資料密集的工作負載，例如 SAP DBMS 工作負載。 Ultra 磁片只能做為資料磁片使用，無法做為儲存作業系統的基礎 VHD 磁片。 我們建議使用 Azure premium 儲存體作為基礎的 VHD 磁片。
+Azure Ultra 磁碟可為 Azure IaaS VM 提供高輸送量、高 IOPS 以及一致的低延遲磁碟儲存體。 Ultra 磁片的一些額外優點包括能夠以動態方式變更磁片的 IOPS 和輸送量，以及您的工作負載，而不需要重新開機 (VM) 的虛擬機器。 Ultra 磁片適用于資料密集的工作負載，例如 SAP DBMS 工作負載。 Ultra 磁片只能做為資料磁片使用，無法做為儲存作業系統的基礎 VHD 磁片。 我們建議使用 Azure premium 儲存體作為基礎的 VHD 磁片。
 
 當您建立 ultra 磁片時，您有三個可定義的維度：
 
@@ -200,7 +200,7 @@ SAP 工作負載的功能矩陣看起來像這樣：
 | SAP sapmnt | 適宜 | 所有系統 |
 | 備份儲存體 | 適宜 | 適用于備份的短期儲存 |
 | 共用/共用磁片 | 無法使用 | 需要協力廠商 |
-| 復原 | LRS | 磁片沒有可用的 GRS 或 ZRS |
+| 災害復原 | LRS | 磁片沒有可用的 GRS 或 ZRS |
 | Latency | 非常低 | - |
 | IOPS SLA | YES | - |
 | 從線性到容量的 IOPS | 以方括弧括住的半線性  | [受控磁片價格](https://azure.microsoft.com/pricing/details/managed-disks/) |
@@ -214,10 +214,10 @@ SAP 工作負載的功能矩陣看起來像這樣：
 
 
 
-**摘要：** Azure ultra 磁片是適合各種 SAP 工作負載的低延遲儲存體。 到目前為止，Ultra 磁片只能搭配已透過可用性區域（區域性部署）部署的 Vm 使用。 Ultra 磁片在此時間點不支援儲存體快照集。 與其他所有存放裝置相反，Ultra 磁片無法用於基底 VHD 磁片。 Ultra 磁片適用于 i/o 工作負載不斷波動的情況，而您想要調整已部署的儲存體輸送量或 IOPS 以儲存工作負載模式，而不是調整頻寬和 IOPS 的最大使用量。
+**摘要：** Azure ultra 磁片是適合各種 SAP 工作負載的低延遲儲存體。 到目前為止，Ultra 磁片只能搭配已透過可用性區域 (區域部署) 部署的 Vm 使用。 Ultra 磁片在此時間點不支援儲存體快照集。 與其他所有存放裝置相反，Ultra 磁片無法用於基底 VHD 磁片。 Ultra 磁片適用于 i/o 工作負載不斷波動的情況，而您想要調整已部署的儲存體輸送量或 IOPS 以儲存工作負載模式，而不是調整頻寬和 IOPS 的最大使用量。
 
 
-## <a name="azure-netapp-files-anf"></a>Azure NetApp files （及）
+## <a name="azure-netapp-files-anf"></a>Azure NetApp files (及) 
 [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)是 Microsoft 與 NetApp 之間的一項合作結果，其目標是要提供高效能的 Azure 原生 NFS 和 SMB 共用。 重點在於提供高頻寬和低延遲的儲存體，以啟用 DBMS 部署案例，並在一段時間後透過 Azure 啟用 NetApp storage 的一般操作功能。 NFS/SMB 共用提供三種不同的服務層級，可區分儲存體輸送量和價格。 服務層級記載于[Azure NetApp Files 的服務層級](../../../azure-netapp-files/azure-netapp-files-service-levels.md)一文。 針對不同類型的 SAP 工作負載，強烈建議使用下列服務等級：
 
 - SAP DBMS 工作負載：效能，理想的超級
@@ -231,7 +231,7 @@ SAP 工作負載的功能矩陣看起來像這樣：
 
 - 為 SAP 的全域傳輸目錄提供 SMB 或 NFS 共用
 - 在高可用性案例中的共用 sapmnt，如中所述：
-    - [使用適用于 SAP 應用程式的 Azure NetApp Files （SMB）在 Windows 上的 Azure Vm 上進行 SAP NetWeaver 的高可用性](./high-availability-guide-windows-netapp-files-smb.md)
+    - [使用 Azure NetApp Files 在 Windows 上的 Azure Vm 上進行 SAP NetWeaver 的高可用性，適用于 SAP 應用程式 (SMB) ](./high-availability-guide-windows-netapp-files-smb.md)
     - [針對 SAP 應用程式使用 Azure NetApp Files 在 SUSE Linux Enterprise Server 上的 Azure VM 達到 SAP NetWeaver 高可用性](./high-availability-guide-suse-netapp-files.md)
     - [Azure 虛擬機器高可用性，適用于 Red Hat Enterprise Linux 上的 SAP NetWeaver，以及適用于 SAP 應用程式的 Azure NetApp Files](./high-availability-guide-rhel-netapp-files.md)
 - 使用適用于/hana/data 和/hana/log 磁片區及/或 NFS 4.1 或/hana/shared 磁片區的 nfs v3 磁片區（如[SAP Hana Azure 虛擬機器儲存體](./hana-vm-operations-storage.md)設定一文所述），來 SAP Hana 部署
@@ -243,7 +243,7 @@ SAP 工作負載的功能矩陣看起來像這樣：
 
 - 例如，若要在裝載于及的 NFS 磁片區上達到 250 MiB/秒的輸送量，您必須部署 Ultra 服務層級的 1.95 TiB 容量。 
 - 若要達到 400 MiB/秒，您必須部署 3.125 TiB 容量。 但您可能需要過度布建容量，以達到您的磁片區所需的輸送量。 這項過度布建的容量會影響較小 HANA 實例的價格。 
-- 在 SAP/sapmnt 目錄的及上使用 NFS 的空間中，通常會有 Azure NetApp Files 強制執行的最小容量 100 GiB 至 150 GiB。 不過，客戶經驗顯示 12.8 MiB/秒的相關輸送量（使用 Ultra 服務層級）可能不夠，而且可能會對 SAP 系統的穩定性造成負面影響。 在這種情況下，客戶可以藉由增加/sapmnt 磁片區的數量來避免問題，因此會提供更多的輸送量給該磁片區。
+- 在 SAP/sapmnt 目錄的及上使用 NFS 的空間中，通常會有 Azure NetApp Files 強制執行的最小容量 100 GiB 至 150 GiB。 不過，客戶經驗顯示，使用 Ultra 服務層級) 的相關輸送量 12.8 MiB/秒 (可能不夠，而且可能會對 SAP 系統的穩定性造成負面影響。 在這種情況下，客戶可以藉由增加/sapmnt 磁片區的數量來避免問題，因此會提供更多的輸送量給該磁片區。
 
 SAP 工作負載的功能矩陣看起來像這樣：
 
@@ -252,10 +252,10 @@ SAP 工作負載的功能矩陣看起來像這樣：
 | OS 基底 VHD | 無法運作 | - |
 | 資料磁碟 | 適宜 | 僅 SAP Hana  |
 | SAP 全域傳輸目錄 | YES | SMB 和 NFS |
-| SAP sapmnt | 適宜 | 所有系統 SMB （僅限 Windows）或 NFS （僅限 Linux） |
+| SAP sapmnt | 適宜 | 所有系統 SMB (Windows 僅) 或 NFS (Linux)  |
 | 備份儲存體 | 適宜 | - |
 | 共用/共用磁片 | YES | SMB 3.0、NFS v3 和 NFS 4。1 |
-| 復原 | LRS | 磁片沒有可用的 GRS 或 ZRS |
+| 災害復原 | LRS | 磁片沒有可用的 GRS 或 ZRS |
 | Latency | 非常低 | - |
 | IOPS SLA | YES | - |
 | 從線性到容量的 IOPS | 嚴格的線性  | 相依于[服務層級](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
@@ -271,7 +271,7 @@ SAP 工作負載的功能矩陣看起來像這樣：
 
 - 執行磁片區快照集的功能
 - 從快照集複製及的磁片區
-- 從快照集復原磁碟區（貼齊-還原）
+- 從快照集復原磁碟區 (貼齊還原) 
 
 **摘要**： Azure NetApp FILES 是 HANA 認證的低延遲儲存體，可讓您部署 NFS 和 SMB 磁片區或共用。 儲存體隨附三個不同的服務層級，每個 GiB 的磁片區容量以線性方式提供不同的輸送量和 IOPS。 及儲存體可讓您部署具有待命節點 SAP Hana 相應放大案例。 儲存體適合提供/sapmnt 或 SAP 全域傳輸目錄所需的檔案共用。 及儲存體隨附功能可用性，以原生 NetApp 功能的形式提供。  
 
@@ -288,7 +288,7 @@ SAP 工作負載的功能矩陣看起來像這樣：
 | SAP sapmnt | 適用限制 | 非生產系統 |
 | 備份儲存體 | 適宜 | - |
 | 共用/共用磁片 | 無法使用 | 需要協力廠商 |
-| 復原 | LRS、GRS | 磁片沒有可用的 ZRS |
+| 災害復原 | LRS、GRS | 磁片沒有可用的 ZRS |
 | Latency | high | 對於 SAP 全域傳輸目錄或生產系統而言太高 |
 | IOPS SLA | 否 | - |
 | 每一磁片的 IOPS 上限 | 500 | 與磁片大小無關 |
@@ -315,7 +315,7 @@ SAP 工作負載的功能矩陣看起來像這樣：
 | SAP sapmnt | 否 | 不支援 |
 | 備份儲存體 | 適宜 | - |
 | 共用/共用磁片 | 無法使用 | Azure 檔案儲存體或協力廠商的需求 |
-| 復原 | LRS、GRS | 磁片沒有可用的 ZRS |
+| 災害復原 | LRS、GRS | 磁片沒有可用的 ZRS |
 | Latency | high | 對 DBMS 使用、SAP 全域傳輸目錄或 sapmnt/saploc 而言太高 |
 | IOPS SLA | 否 | - |
 | 每一磁片的 IOPS 上限 | 500 | 與磁片大小無關 |
@@ -335,11 +335,11 @@ SAP 工作負載的功能矩陣看起來像這樣：
 
 | 儲存體類型| Linux | Windows | 註解 |
 | --- | --- | --- | --- |
-| 標準 HDD | [Azure 中 Linux Vm 的大小](../../linux/sizes.md) | [Azure 中的 Windows Vm 大小](../../windows/sizes.md) | 很難觸及中型或大型 Vm 的儲存體限制 |
-| 標準 SSD | [Azure 中 Linux Vm 的大小](../../linux/sizes.md) | [Azure 中的 Windows Vm 大小](../../windows/sizes.md) | 很難觸及中型或大型 Vm 的儲存體限制 |
-| 進階儲存體 | [Azure 中 Linux Vm 的大小](../../linux/sizes.md) | [Azure 中的 Windows Vm 大小](../../windows/sizes.md) | 使用儲存體設定輕鬆地叫用 IOPS 或儲存體輸送量 VM 限制 |
-| Ultra 磁片儲存體 | [Azure 中 Linux Vm 的大小](../../linux/sizes.md) | [Azure 中的 Windows Vm 大小](../../windows/sizes.md) | 使用儲存體設定輕鬆地叫用 IOPS 或儲存體輸送量 VM 限制 |
-| Azure NetApp Files | [Azure 中 Linux Vm 的大小](../../linux/sizes.md) | [Azure 中的 Windows Vm 大小](../../windows/sizes.md) | 儲存體流量會使用網路輸送量頻寬，而不是儲存體頻寬！ |
+| 標準 HDD | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中的 Windows Vm 大小](../../sizes.md) | 很難觸及中型或大型 Vm 的儲存體限制 |
+| 標準 SSD | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中的 Windows Vm 大小](../../sizes.md) | 很難觸及中型或大型 Vm 的儲存體限制 |
+| 進階儲存體 | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中的 Windows Vm 大小](../../sizes.md) | 使用儲存體設定輕鬆地叫用 IOPS 或儲存體輸送量 VM 限制 |
+| Ultra 磁片儲存體 | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中的 Windows Vm 大小](../../sizes.md) | 使用儲存體設定輕鬆地叫用 IOPS 或儲存體輸送量 VM 限制 |
+| Azure NetApp Files | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中的 Windows Vm 大小](../../sizes.md) | 儲存體流量會使用網路輸送量頻寬，而不是儲存體頻寬！ |
 
 如有任何限制，您可以注意：
 
@@ -352,7 +352,7 @@ SAP 工作負載的功能矩陣看起來像這樣：
 
 
 ## <a name="striping-or-not-striping"></a>等量或不等量分割
-將多個 Azure 磁片中的等量集建立到一個較大的磁片區，可讓您將個別磁片的 IOPS 和輸送量累積成一個磁片區。 僅供 Azure 標準儲存體和 Azure premium 儲存體使用。 Azure Ultra 磁片，您可以在其中設定與磁片容量無關的輸送量和 IOPS，而不需要使用等量集合。 以 NFS 或 SMB 為基礎的共用磁片區不可以是等量。 由於 Azure premium 儲存體輸送量和 IOPS 的非線性本質，您可以使用與大型單一 Azure premium 儲存體磁片相同的 IOPS 和輸送量來布建較小的容量。 這是使用 Azure premium 儲存體以較低成本達到較高輸送量或 IOPS 的方法。 例如:
+將多個 Azure 磁片中的等量集建立到一個較大的磁片區，可讓您將個別磁片的 IOPS 和輸送量累積成一個磁片區。 僅供 Azure 標準儲存體和 Azure premium 儲存體使用。 Azure Ultra 磁片，您可以在其中設定與磁片容量無關的輸送量和 IOPS，而不需要使用等量集合。 以 NFS 或 SMB 為基礎的共用磁片區不可以是等量。 由於 Azure premium 儲存體輸送量和 IOPS 的非線性本質，您可以使用與大型單一 Azure premium 儲存體磁片相同的 IOPS 和輸送量來布建較小的容量。 這是使用 Azure premium 儲存體以較低成本達到較高輸送量或 IOPS 的方法。 例如：
 
 - 跨兩個 P15 premium 儲存體磁片的等量，可讓您獲得輸送量 
 - 250 MiB/秒。這類磁片區會有 512 GiB 的容量。 如果您想要讓單一磁片每秒提供 250 MiB 輸送量，您必須挑選具有2個 TiB 容量的 P40 磁片。 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a696827cefca53586f14d4ea118094a4718212f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8ecaf7a7df80cbb62bcb27373c47e26c70108d1e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491539"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827005"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>使用 Azure CLI 來管理 Azure 資源
 
@@ -137,7 +137,7 @@ az lock delete --ids $lockId
 
 ## <a name="manage-access-to-resources"></a>管理對資源的存取
 
-[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)是您在 Azure 中管理資源存取權的方式。 如需詳細資訊，請參閱[使用 RBAC 和 Azure CLI 來管理存取權](../../role-based-access-control/role-assignments-cli.md)。
+Azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)是您在 azure 中管理資源存取權的方式。 如需詳細資訊，請參閱[使用 RBAC 和 Azure CLI 來管理存取權](../../role-based-access-control/role-assignments-cli.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

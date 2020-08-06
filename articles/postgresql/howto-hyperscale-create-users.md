@@ -1,27 +1,27 @@
 ---
-title: 建立使用者-超大規模資料庫（Citus）-適用於 PostgreSQL 的 Azure 資料庫
-description: 本文說明如何建立新的使用者帳戶，以便與適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫（Citus）互動。
+title: 建立使用者-超大規模資料庫 (Citus) -適用於 PostgreSQL 的 Azure 資料庫
+description: 本文說明如何建立新的使用者帳戶，以便與適用於 PostgreSQL 的 Azure 資料庫超大規模資料庫 (Citus) 互動。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 85366b8b3e3ba7d612373e6b754aa9805d00f8f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8a1b38b9f673669adb0b5fcf67d9d560c24d5c2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116959"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825951"
 ---
-# <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>在適用於 PostgreSQL 的 Azure 資料庫中建立使用者超大規模資料庫（Citus）
+# <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>在適用於 PostgreSQL 的 Azure 資料庫中建立使用者-超大規模資料庫 (Citus) 
 
 > [!NOTE]
-> 「使用者」一詞指的是超大規模資料庫（Citus）伺服器群組中的使用者。 若要深入瞭解 Azure 訂用帳戶使用者及其許可權，請造訪[azure 角色型存取控制（RBAC）一文](../role-based-access-control/built-in-roles.md)，或參閱[如何自訂角色](../role-based-access-control/custom-roles.md)。
+> 「使用者」一詞指的是超大規模資料庫 (Citus) 伺服器群組中的使用者。 若要深入瞭解 Azure 訂用帳戶使用者及其許可權，請造訪 azure[角色型存取控制 (AZURE RBAC) 一文](../role-based-access-control/built-in-roles.md)，或參閱[如何自訂角色](../role-based-access-control/custom-roles.md)。
 
 ## <a name="the-server-admin-account"></a>伺服器系統管理員帳戶
 
-于 postgresql 引擎會使用[角色](https://www.postgresql.org/docs/current/sql-createrole.html)來控制資料庫物件的存取權，而新建立的超大規模資料庫（Citus）伺服器群組則隨附數個預先定義的角色：
+于 postgresql 引擎會使用[角色](https://www.postgresql.org/docs/current/sql-createrole.html)來控制資料庫物件的存取權，而新建立的超大規模資料庫 (Citus) 伺服器群組會隨附數個預先定義的角色：
 
 * [預設于 postgresql 角色](https://www.postgresql.org/docs/current/default-roles.html)
 * `azure_pg_admin`
@@ -35,7 +35,7 @@ ms.locfileid: "86116959"
 * 讀取所有設定變數，甚至是只有超級人員才看得見的變數。
 * 讀取所有 pg 的 \_ stat \_ \* views，並使用各種統計資料相關的擴充功能，甚至只有超級型的流覽或延伸模組通常是可見的。
 * 執行可能會在資料表上取得存取共用鎖定的監視功能，可能會很長一段時間。
-* [建立于 postgresql 延伸](concepts-hyperscale-extensions.md)模組（因為角色是的成員 `azure_pg_admin` ）。
+*  ([建立于 postgresql 延伸](concepts-hyperscale-extensions.md)模組，因為角色是) 的成員 `azure_pg_admin` 。
 
 值得注意的是，此 `citus` 角色有一些限制：
 
@@ -50,7 +50,7 @@ ms.locfileid: "86116959"
 
    ![[角色] 頁面](media/howto-hyperscale-create-users/1-role-page.png)
 
-2. 輸入 [角色名稱] 和 [密碼]。 按一下 [檔案] 。
+2. 輸入 [角色名稱] 和 [密碼]。 按一下 [儲存]。
 
    ![新增角色](media/howto-hyperscale-create-users/2-add-user-fields.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "86116959"
 
 ## <a name="how-to-modify-privileges-for-user-role"></a>如何修改使用者角色的許可權
 
-新的使用者角色通常用來以限制許可權提供資料庫存取權。 若要修改使用者權限，請使用 PgAdmin 或 psql 這類工具的標準于 postgresql 命令。 （請參閱超大規模資料庫（Citus）快速入門中的[連接 psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) 。）
+新的使用者角色通常用來以限制許可權提供資料庫存取權。 若要修改使用者權限，請使用 PgAdmin 或 psql 這類工具的標準于 postgresql 命令。  (參閱超大規模資料庫 (Citus) 快速入門中的[連接 psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) 。 ) 
 
 例如，若要允許 `db_user` 讀取 `mytable` ，請授與許可權：
 
@@ -66,7 +66,7 @@ ms.locfileid: "86116959"
 GRANT SELECT ON mytable TO db_user;
 ```
 
-超大規模資料庫（Citus）會透過整個叢集傳播單一資料表授與語句，並將其套用至所有背景工作節點。 它也會傳播全系統的授與（例如，針對架構中的所有資料表）：
+超大規模資料庫 (Citus) 會透過整個叢集傳播單一資料表授與語句，並將其套用至所有背景工作節點。 它也會傳播屬於全系統 (的授與，例如針對架構中的所有資料表) ：
 
 ```sql
 -- applies to the coordinator node and propagates to workers
@@ -83,10 +83,10 @@ GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
 
 ## <a name="next-steps"></a>後續步驟
 
-針對新使用者電腦的 IP 位址開啟防火牆，讓他們能夠連線：[使用 Azure 入口網站建立和管理超大規模資料庫（Citus）防火牆規則](howto-hyperscale-manage-firewall-using-portal.md)。
+針對新使用者電腦的 IP 位址開啟防火牆，讓他們能夠連線：[使用 Azure 入口網站來建立和管理超大規模資料庫 (Citus) 防火牆規則](howto-hyperscale-manage-firewall-using-portal.md)。
 
 如需有關資料庫使用者帳戶管理的詳細資訊，請參閱于 postgresql 產品檔：
 
 * [資料庫角色和許可權](https://www.postgresql.org/docs/current/static/user-manag.html)
 * [GRANT 語法](https://www.postgresql.org/docs/current/static/sql-grant.html)
-* [權限](https://www.postgresql.org/docs/current/static/ddl-priv.html)
+* [權](https://www.postgresql.org/docs/current/static/ddl-priv.html)

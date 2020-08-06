@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 58f77eaba7cd0c29899a81352f5550becb0e4128
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 95d97605f00a3a80c097eb16695c9d296e17c33d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508588"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825237"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>使用 PowerShell 在可用性區域中建立 Windows 虛擬機器
 
@@ -32,7 +32,7 @@ Connect-AzAccount
 ```
 
 ## <a name="check-vm-sku-availability"></a>檢查 VM SKU 可用性
-VM 大小或 SKU 的可用性可能因地區和區域而有所不同。 為了協助您規劃如何利用可用性區域，您可以依照 Azure 地區和區域列出可用的 VM SKU。 這項功能可確保您選擇適當的 VM 大小，並取得所需的跨區域復原功能。 如需有關不同 VM 類型和大小的詳細資訊，請參閱 [VM 大小概觀](sizes.md)。
+VM 大小或 SKU 的可用性可能因地區和區域而有所不同。 為了協助您規劃如何利用可用性區域，您可以依照 Azure 地區和區域列出可用的 VM SKU。 這項功能可確保您選擇適當的 VM 大小，並取得所需的跨區域復原功能。 如需有關不同 VM 類型和大小的詳細資訊，請參閱 [VM 大小概觀](../sizes.md)。
 
 您可以使用 [Get-AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku) 命令來檢視可用的 VM SKU。 下列範例會列出 eastus2** 地區中可用的 VM SKU：
 
@@ -170,4 +170,4 @@ Tags               : {}
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已學到如何在可用性區域中建立 VM。 深入瞭解 Azure Vm 的[可用性](availability.md)。
+在本文中，您已學到如何在可用性區域中建立 VM。 深入瞭解 Azure Vm 的[可用性](../availability.md)。

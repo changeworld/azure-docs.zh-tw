@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: 5e3cd30f2ed523584ae827f51d19c6acebf72abf
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 051361860a6a2d9ad70aa81e313857ec86cacfb4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055506"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827040"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure 資源
 
@@ -63,7 +63,7 @@ Azure 資源是依 Azure 服務和資源群組來組織。 下列程式說明如
 ## <a name="delete-resources"></a>刪除資源
 
 1. 在入口網站中開啟資源。 如需相關步驟，請參閱[開啟資源](#open-resources)。
-2. 選取 [刪除] 。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
+2. 選取 [刪除]。 下列螢幕擷取畫面顯示虛擬機器的管理選項。
 
     ![刪除 azure 資源](./media/manage-resources-portal/manage-azure-resources-portal-delete-resource.png)
 3. 輸入資源的名稱以確認刪除，然後選取 [**刪除**]。
@@ -114,7 +114,7 @@ Azure 資源是依 Azure 服務和資源群組來組織。 下列程式說明如
 
 ## <a name="manage-access-to-resources"></a>管理對資源的存取
 
-[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)是您在 Azure 中管理資源存取權的方式。 如需詳細資料，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
+Azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)是您在 azure 中管理資源存取權的方式。 如需詳細資料，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

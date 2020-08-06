@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: cd96fe550a508e54c467ca52cd36322581029654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283226"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827447"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 範本中的虛擬機器
 
@@ -274,7 +274,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 定義虛擬機器資源時，會使用數個設定檔項目。 某些是必要的而有些則是選擇性。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必要的，但 diagnosticsProfile 為選擇性。 這些設定檔會定義設定，例如︰
    
-- [size](sizes.md)
+- [size](../sizes.md)
 - [名稱](/azure/architecture/best-practices/resource-naming)和認證
 - 磁碟和[作業系統設定](cli-ps-findimage.md)
 - [網路介面](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
@@ -353,7 +353,7 @@ Resource Manager 會以平行方式部署任何不依存於另一個要部署資
 
 ### <a name="attach-data-disks"></a>連接資料磁碟
 
-您可以選擇性地將資料磁碟新增至 VM。 [磁碟數量](sizes.md)取決於您使用的作業系統磁碟大小。 將 VM 大小設定為 Standard_DS1_v2，則可以新增到它們的資料磁碟數目上限為 2。 在範例中，有一個受控資料磁碟會新增至每部 VM：
+您可以選擇性地將資料磁碟新增至 VM。 [磁碟數量](../sizes.md)取決於您使用的作業系統磁碟大小。 將 VM 大小設定為 Standard_DS1_v2，則可以新增到它們的資料磁碟數目上限為 2。 在範例中，有一個受控資料磁碟會新增至每部 VM：
 
 ```json
 "dataDisks": [

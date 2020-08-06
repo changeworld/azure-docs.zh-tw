@@ -1,5 +1,5 @@
 ---
-title: 使用 chroot 復原 Linux Vm，其中使用 LVM （邏輯磁片區管理員）-Azure Vm
+title: 使用 chroot 復原 Linux Vm，其中會使用 LVM (邏輯磁片區管理員) -Azure Vm
 description: 使用 LVMs 復原 Linux Vm。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: c0041a835c02263f23c5cdc6f839756edfb070c1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 03e6f51d2ab7138675f7d79c04faa2e4dffec60c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526872"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825679"
 ---
-# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>當沒有 Azure 序列主控台的存取權，且磁片配置使用 LVM （邏輯磁片區管理員）時，針對 Linux VM 進行疑難排解
+# <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>當沒有 Azure 序列主控台的存取權，且磁片配置使用 LVM (邏輯磁片區管理員時，針對 Linux VM 進行疑難排解) 
 
-這份疑難排解指南適用于 Linux VM 不開機的案例，不可能使用 ssh，而且基礎檔案系統配置已設定 LVM （邏輯磁片區管理員）。
+這份疑難排解指南適用于 Linux VM 不開機的案例，不可能使用 ssh，而且基礎檔案系統配置是以 LVM 設定 (邏輯磁片區管理員) 。
 
 ## <a name="take-snapshot-of-the-failing-vm"></a>製作失敗 VM 的快照集
 
@@ -86,7 +86,7 @@ mount –a
 lsblk
 ```
 
-找出裝載包含/（根）磁碟分割之邏輯磁片區的路徑。 它具有設定檔，例如/etc/default/grub
+找出裝載包含/ (根) 磁碟分割之邏輯磁片區的路徑。 它具有設定檔，例如/etc/default/grub
 
 在此範例中，接受先前**lsblk**命令的輸出**rootvg-rootlv**是要掛接的正確**根**LV，而且可以在下一個命令中使用。
 
@@ -186,7 +186,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 失敗的核心升級可能會導致無法啟動 VM。
 掛接所有邏輯磁片區，以允許移除或重新安裝套件
 
-執行**如 lvs)** 命令來確認哪些**如 lvs)** 可供掛接，每個已遷移或來自另一個雲端提供者的 VM，設定會有所不同。
+執行**如 lvs) **命令來確認哪些**如 lvs) **可供掛接，每個已遷移或來自另一個雲端提供者的 VM，設定會有所不同。
 
 結束**chroot**環境掛接必要的**LV**
 
@@ -272,6 +272,6 @@ umount /rescue
 ## <a name="next-steps"></a>後續步驟
 深入了解
 
- [Azure 序列主控台]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+ [Azure 序列主控台]( ./serial-console-linux.md)
 
 [單一使用者模式](./serial-console-grub-single-user-mode.md)

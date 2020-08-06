@@ -6,16 +6,16 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 585ea3b5ddd16acb9af83c1c1e0e4aa6ca9e631a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532589"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826699"
 ---
 # <a name="add-storage-targets"></a>新增儲存體目標
 
-*儲存體目標*是透過 Azure HPC 快取存取之檔案的後端儲存體。 您可以新增 NFS 儲存體（例如內部部署硬體系統），或將資料儲存在 Azure Blob 中。
+*儲存體目標*是透過 Azure HPC 快取存取之檔案的後端儲存體。 您可以新增 NFS 儲存體 (，例如內部部署硬體系統) ，或將資料儲存在 Azure Blob 中。
 
 您最多可以為一個快取定義10個不同的儲存體目標。 快取會將所有儲存體目標呈現在一個匯總的命名空間中。
 
@@ -25,7 +25,7 @@ ms.locfileid: "87532589"
 
 按一下下方影像以觀看[示範](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)如何建立快取，以及如何從 Azure 入口網站新增儲存體目標。
 
-[![影片縮圖： Azure HPC 快取：安裝（按一下以流覽影片頁面）](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
+[![影片縮圖： Azure HPC Cache：安裝 (按一下以流覽影片頁面) ](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="view-storage-targets"></a>查看儲存體目標
 
@@ -39,13 +39,13 @@ ms.locfileid: "87532589"
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
-使用[az hpc-cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list)選項來顯示快取的現有儲存體目標。 提供快取名稱和資源群組（除非您已將它設定為全域）。
+使用[az hpc-cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list)選項來顯示快取的現有儲存體目標。 提供快取名稱和資源群組 (，除非您已將它設為全域) 。
 
 ```azurecli
 az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
 ```
 
-使用[az hpc-cache storage-target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list)查看特定儲存體目標的詳細資料。 （依名稱指定儲存體目標）。
+使用[az hpc-cache storage-target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list)查看特定儲存體目標的詳細資料。  (依名稱指定儲存體目標。 ) 
 
 範例：
 
@@ -101,7 +101,7 @@ Azure 入口網站的 [**新增儲存體**] [目標] 頁面中，包含在新增
 
 * **儲存體容器**-選取此目標的 Blob 容器，**或按一下 [新建]**。
 
-  ![對話方塊的螢幕擷取畫面，用來指定新容器的名稱和存取層級（私用）](media/add-blob-new-container.png)
+  ![對話方塊的螢幕擷取畫面，用來指定新容器 (私人) 的名稱和存取層級](media/add-blob-new-container.png)
 
 * **虛擬命名空間路徑**-設定此儲存體目標的面向用戶端檔案路徑。 請參閱[設定匯總命名空間](hpc-cache-namespace.md)，以深入瞭解虛擬命名空間功能。
 
@@ -112,7 +112,7 @@ Azure 入口網站的 [**新增儲存體**] [目標] 頁面中，包含在新增
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>將存取控制角色新增至您的帳戶
 
-Azure HPC 快取會使用[角色型存取控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/index)來授權快取服務，以存取您的 Azure Blob 儲存體目標儲存體帳戶。
+Azure HPC 快取會使用 azure[角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/index)來授權快取服務存取 Azure Blob 儲存體目標的儲存體帳戶。
 
 儲存體帳戶擁有者必須明確地為使用者「HPC 快取資源提供者」新增角色[儲存體帳戶參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)和[儲存體 Blob 資料參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)。
 
@@ -120,18 +120,18 @@ Azure HPC 快取會使用[角色型存取控制（RBAC）](https://docs.microsof
 
 新增 Azure 角色的步驟：
 
-1. 開啟儲存體帳戶的 [**存取控制（IAM）** ] 頁面。 （[**新增儲存體目標**] 頁面中的連結會自動為選取的帳戶開啟此頁面）。
+1. 開啟儲存體帳戶的**存取控制 (IAM) **頁面。  ([**新增儲存體目標**] 頁面中的連結，會自動為選取的帳戶開啟此頁面。 ) 
 
 1. 按一下 **+** 頁面頂端的，然後選擇 [**新增角色指派**]。
 
 1. 從清單中選取 [儲存體帳戶參與者] 角色。
 
-1. 在 [**指派存取權給**] 欄位中，保留選取預設值（「Azure AD 使用者、群組或服務主體」）。  
+1. 在 [**指派存取權給**] 欄位中，保留選取的預設值 ( [Azure AD 使用者、群組或服務主體] ) 。  
 
 1. 在 [**選取**] 欄位中，搜尋 "hpc"。  此字串應符合一個名為「HPC 快取資源提供者」的服務主體。 按一下該主體來選取它。
 
    > [!NOTE]
-   > 如果 "hpc" 的搜尋無法正常執行，請嘗試改為使用字串 "storagecache"。 參與預覽（在 GA 之前）的使用者可能需要使用較舊的服務主體名稱。
+   > 如果 "hpc" 的搜尋無法正常執行，請嘗試改為使用字串 "storagecache"。 在 GA) 之前參與預覽 (的使用者，可能需要使用較舊的服務主體名稱。
 
 1. 按一下底部的 [**儲存**] 按鈕。
 
@@ -147,7 +147,7 @@ Azure HPC 快取會使用[角色型存取控制（RBAC）](https://docs.microsof
 
 在您新增 blob 儲存體目標之前，請先檢查快取是否具有正確的角色來存取儲存體帳戶，以及防火牆設定是否允許建立儲存體目標。
 
-Azure HPC 快取會使用[角色型存取控制（RBAC）](../role-based-access-control/index.yml)來授權快取服務，以存取您的 Azure Blob 儲存體目標儲存體帳戶。
+Azure HPC 快取會使用 azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/index.yml)來授權快取服務存取 Azure Blob 儲存體目標的儲存體帳戶。
 
 儲存體帳戶擁有者必須明確地為使用者「HPC 快取資源提供者」新增角色[儲存體帳戶參與者](../role-based-access-control/built-in-roles.md#storage-account-contributor)和[儲存體 Blob 資料參與者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)。
 
@@ -220,9 +220,9 @@ NFS 儲存體目標的欄位多於 Blob 儲存體目標。 這些欄位會指定
 
 | 使用方式模型                   | 快取模式 | 後端驗證 | 最大回寫延遲 |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| 讀取大量、不頻繁的寫入 | 讀取         | 永不                 | None                     |
+| 讀取大量、不頻繁的寫入 | 讀取         | 永不                 | 無                     |
 | 超過15% 寫入       | 讀取/寫入   | 永不                 | 1 小時                   |
-| 用戶端略過快取      | 讀取         | 30 秒            | None                     |
+| 用戶端略過快取      | 讀取         | 30 秒            | 無                     |
 
 ### <a name="create-an-nfs-storage-target"></a>建立 NFS 儲存體目標
 
@@ -236,7 +236,7 @@ NFS 儲存體目標的欄位多於 Blob 儲存體目標。 這些欄位會指定
 
 * **目標型別**-選擇 [ **NFS**]。
 
-* **主機名稱**-輸入 NFS 儲存體系統的 IP 位址或完整功能變數名稱。 （只有當您的快取可以存取可解析名稱的 DNS 伺服器時，才使用功能變數名稱）。
+* **主機名稱**-輸入 NFS 儲存體系統的 IP 位址或完整功能變數名稱。 只有當您的快取可以存取可解析名稱的 DNS 伺服器時， (才使用功能變數名稱。 ) 
 
 * **使用方式模型**-根據您的工作流程選擇其中一個資料快取設定檔，如[選擇上述使用方式模型](#choose-a-usage-model)中所述。
 
@@ -265,7 +265,7 @@ NFS 儲存體目標可以有多個虛擬路徑，前提是每個路徑都代表�
 使用 Azure CLI 命令[az hpc-cache nfs-儲存體-目標新增](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add)來建立儲存體目標。 除了快取名稱和快取資源群組之外，請提供這些值：
 
 * ``--name``-設定在 Azure HPC 快取中識別此儲存體目標的名稱。
-* ``--nfs3-target``-NFS 儲存體系統的 IP 位址。 （如果您的快取有權存取可解析名稱的 DNS 伺服器，您可以在這裡使用完整功能變數名稱）。
+* ``--nfs3-target``-NFS 儲存體系統的 IP 位址。  (如果您的快取有權存取可解析名稱的 DNS 伺服器，您可以在這裡使用完整功能變數名稱。 ) 
 * ``--nfs3-usage-model``-其中一個資料快取設定檔，如上方的[選擇使用方式模型](#choose-a-usage-model)中所述。
 
   使用命令[az hpc-cache usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list)來驗證使用模式的名稱。
@@ -280,7 +280,7 @@ NFS 儲存體目標可以有多個虛擬路徑，前提是每個路徑都代表�
 
   * ``namespace-path``-用戶端面向的虛擬檔案路徑
   * ``nfs-export``-要與用戶端對向路徑產生關聯的儲存體系統匯出
-  * ``target-path``（選擇性）-匯出的子目錄（如有需要）
+  * ``target-path`` (選擇性) -匯出的子目錄（如有需要）
 
   範例： ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f71e52fd1fd40015ff93e189495daef0e2c333e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328166"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824574"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>使用 PowerShell 啟用適用於 VM 的 Azure 監視器
 本文說明如何使用 PowerShell 在 Azure 虛擬機器上啟用適用於 VM 的 Azure 監視器。 此程式可用於下列各項：
@@ -19,7 +19,7 @@ ms.locfileid: "87328166"
 - Azure 虛擬機器
 - Azure 虛擬機器擴展集
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [建立和設定 Log Analytics 工作區](vminsights-configure-workspace.md)。
 - 請參閱[支援的作業系統](vminsights-enable-overview.md#supported-operating-systems)，以確保支援您要啟用之虛擬機器或虛擬機器擴展集的作業系統。 
@@ -35,7 +35,7 @@ ms.locfileid: "87328166"
 
 針對每個虛擬機器或虛擬機器擴展集，腳本會確認是否已安裝 Log Analytics 代理程式和相依性代理程式的 VM 擴充功能。 如果同時安裝這兩個延伸模組，腳本會嘗試重新安裝它。 如果未安裝這兩個延伸模組，腳本就會進行安裝。
 
-確認您使用的是 `Enable-AzureRM` 已啟用相容性別名的 Azure PowerShell 模組 Az 1.0.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
+確認您使用的是 `Enable-AzureRM` 已啟用相容性別名的 Azure PowerShell 模組 Az 1.0.0 版或更新版本。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
 若要取得指令碼引數詳細資料及使用方式範例的清單，請執行 `Get-Help`。
 

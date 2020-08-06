@@ -6,16 +6,16 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 6a03d5e67e859a29cb18e29223fe74134aef75fb
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057614"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824472"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授與建立 Azure 企業版訂用帳戶的權限 (預覽)
 
-因為您是 [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 上的 Azure 客戶，所以可以授與另一位使用者或服務主體建立由您帳戶付費的訂用帳戶。 在本文中，您將了解如何使用[角色型存取控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md)來共用建立訂用帳戶的能力，以及稽核訂用帳戶建立的方法。 您對於要共用的帳戶必須具有「擁有者」角色。
+因為您是 [Enterprise 合約 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 上的 Azure 客戶，所以可以授與另一位使用者或服務主體建立由您帳戶付費的訂用帳戶。 在本文中，您將瞭解如何使用[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)來分享建立訂用帳戶的能力，以及如何審查訂閱的建立。 您對於要共用的帳戶必須具有「擁有者」角色。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -124,7 +124,7 @@ ms.locfileid: "86057614"
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
-    執行下列命令，將取代 ```<enrollmentAccountObjectId>``` 為 `name` 您在第一個步驟中複製的（ ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ）。 將取代 ```<userObjectId>``` 為您從第二個步驟複製的物件識別碼。
+    執行下列命令，並將取代 ```<enrollmentAccountObjectId>``` 為 `name` 您在第一個步驟中複製的 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) 。 將取代 ```<userObjectId>``` 為您從第二個步驟複製的物件識別碼。
 
     ```json
     PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
@@ -158,7 +158,7 @@ ms.locfileid: "86057614"
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell-2)
 
-    執行下列[new-azroleassignment](../../role-based-access-control/role-assignments-powershell.md)命令，並將取代 ```<enrollmentAccountObjectId>``` 為 `ObjectId` 第一個步驟中所收集的（ ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ）。 取代為 ```<userObjectId>``` 第二個步驟中所收集的物件識別碼。
+    執行下列[new-azroleassignment](../../role-based-access-control/role-assignments-powershell.md)命令，並將取代 ```<enrollmentAccountObjectId>``` 為 `ObjectId` 第一個步驟中所收集的 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) 。 取代為 ```<userObjectId>``` 第二個步驟中所收集的物件識別碼。
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -166,7 +166,7 @@ ms.locfileid: "86057614"
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli-2)
 
-    執行下列[az role 指派 create](../../role-based-access-control/role-assignments-cli.md)命令，並將取代 ```<enrollmentAccountObjectId>``` 為 `name` 您在第一個步驟中複製的（ ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ）。 取代為 ```<userObjectId>``` 第二個步驟中所收集的物件識別碼。
+    執行下列[az role 指派 create](../../role-based-access-control/role-assignments-cli.md)命令，並將取代 ```<enrollmentAccountObjectId>``` 為 `name` 您在第一個步驟中複製的 (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) 。 取代為 ```<userObjectId>``` 第二個步驟中所收集的物件識別碼。
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>

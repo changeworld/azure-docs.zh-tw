@@ -7,22 +7,22 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: b1dae05987c067ec3c724f60985e7ead84be817f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e4d5f2527c0ab8ff4026b93fd2250e324244634e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291184"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829232"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 和 Dsv3 系列
 
-Dv3 系列是在 Intel®®白金8272CL （Cascade Lake）、Intel®的® 8171M 2.1 GHz （Skylake）、Intel®以® E5-2673 v4 2.3 g h z （Broadwell）或 Intel®的® E5-2673 v3 2.4 GHz （Haswell）處理器上執行，為大多數一般用途的工作負載提供更好的價值主張。 除了記憶體已擴充 (從 ~3.5 GiB/vCPU 到 4 GiB/vCPU)，磁碟和網路限制也已就個別核心進行調整，以符合移轉至超執行緒的需求。 Dv3 系列不再擁有 D/Dv2 系列的高記憶體 VM，這些都已移至記憶體最佳化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
+Dv3 系列是在 Intel®（r）®白金 8272CL (串聯 Lake) 、Intel®的 8171M 2.1 GHz® Skylake (、Intel) 的® E5-2673 v4 2.3 g h z® Broadwell (或 Intel) 的® E5-2673 v3 2.4 g h z，針對大部分的一般用途工作負載提供更好的價值主張。 除了記憶體已擴充 (從 ~3.5 GiB/vCPU 到 4 GiB/vCPU)，磁碟和網路限制也已就個別核心進行調整，以符合移轉至超執行緒的需求。 Dv3 系列不再擁有 D/Dv2 系列的高記憶體 VM，這些都已移至記憶體最佳化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
 
 D 系列使用案例的範例包括企業級應用程式、關係資料庫、記憶體內部快取及分析。
 
 ## <a name="dv3-series"></a>Dv3 系列
 
-Dv3 系列大小執行于 Intel®，®白金8272CL （串聯 Lake）、Intel®的® 8171M 2.1 g h z （Skylake）、Intel®® E5-2673 v4 2.3 g h z （Broadwell），或 Intel®的® E5-2673 v3 2.4 GHz （Haswell）處理器，搭配 Intel Turbo 加速技術2.0。 Dv3 系列大小提供 CPU、記憶體與暫存儲存體組合，適用於大多數生產環境工作負載。
+Dv3 系列大小是在 Intel®的®白金 8272CL (Cascade Lake) 、Intel®的8171M，® Skylake (、Intel) 的® E5-2673 v4 2.3 GHz® Broadwell (或 Intel) 的® E5-2673 v3 2.4 g h z® Haswell (處理器與 Intel Turbo 加速技術2.0。 Dv3 系列大小提供 CPU、記憶體與暫存儲存體組合，適用於大多數生產環境工作負載。
 
 資料磁碟儲存體與虛擬機器分開計費。 若要使用進階儲存體磁碟，請使用 Dsv3 大小。 Dsv3 大小的定價和計費方式與 Dv3 系列相同。
 
@@ -50,7 +50,7 @@ ACU：160-190
 
 ## <a name="dsv3-series"></a>Dsv3 系列
 
-Dsv3 系列大小執行于 Intel®，®白金8272CL （級聯的 Lake）、Intel®的® 8171M 2.1 GHz （Skylake）、Intel®® E5-2673 v4 2.3 g h z （Broadwell），或 Intel®的® E5-2673 v3 2.4 GHz （Haswell）處理器，搭配 Intel Turbo 加速技術2.0 並使用 premium 儲存體。 Dsv3 系列大小提供 CPU、記憶體與暫存儲存憶體組合，適用於大多數生產環境工作負載。
+Dsv3 系列大小執行于 Intel®，®白金 8272CL (Cascade Lake) 、Intel®的8171M，® 2.1 GHz (Skylake) 、Intel®的® E5-2673 v4 2.3 GHz (Broadwell) ，或 Intel®的® E5-2673 v3 2.4 g h z (Haswell) 處理器與 Intel Turbo 加速技術2.0，並使用 premium storage。 Dsv3 系列大小提供 CPU、記憶體與暫存儲存憶體組合，適用於大多數生產環境工作負載。
 
 Dsv3 系列 Vm 功能 Intel®超執行緒技術。
 
@@ -64,15 +64,15 @@ ACU：160-190
 
 記憶體保留更新：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
-| Standard_D2s_v3  | 2  | 8   | 16  | 4  | 4000/32 （50）       | 3200/48    | 2|1000  |
-| Standard_D4s_v3  | 4  | 16  | 32  | 8  | 8000/64 （100）      | 6400/96    | 2|2000  |
-| Standard_D8s_v3  | 8  | 32  | 64  | 16 | 16000/128 （200）    | 12800/192  | 4|4000  |
-| Standard_D16s_v3 | 16 | 64  | 128 | 32 | 32000/256 （400）    | 25600/384  | 8|8000  |
-| Standard_D32s_v3 | 32 | 128 | 256 | 32 | 64000/512 （800）    | 51200/768  | 8|16000 |
-| Standard_D48s_v3 | 48 | 192 | 384 | 32 | 96000/768 （1200）   | 76800/1152 | 8|24000 |
-| Standard_D64s_v3 | 64 | 256 | 512 | 32 | 128000/1024 （1600） | 80000/1200 | 8|30000 |
+| Standard_D2s_v3  | 2  | 8   | 16  | 4  | 4000/32 (50)        | 3200/48    | 2|1000  |
+| Standard_D4s_v3  | 4  | 16  | 32  | 8  | 8000/64 (100)       | 6400/96    | 2|2000  |
+| Standard_D8s_v3  | 8  | 32  | 64  | 16 | 16000/128 (200)     | 12800/192  | 4|4000  |
+| Standard_D16s_v3 | 16 | 64  | 128 | 32 | 32000/256 (400)     | 25600/384  | 8|8000  |
+| Standard_D32s_v3 | 32 | 128 | 256 | 32 | 64000/512 (800)     | 51200/768  | 8|16000 |
+| Standard_D48s_v3 | 48 | 192 | 384 | 32 | 96000/768 (1200)    | 76800/1152 | 8|24000 |
+| Standard_D64s_v3 | 64 | 256 | 512 | 32 | 128000/1024 (1600)  | 80000/1200 | 8|30000 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -87,7 +87,7 @@ ACU：160-190
 
 定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>後續步驟
 

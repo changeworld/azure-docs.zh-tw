@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9e4181956d81ddbe0a385987689a8cb0248ac535
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fb265f8a8ab34972dac8529d267e41edaf0acb4c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553949"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829283"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 認知搜尋中的安全性-總覽
 
@@ -127,7 +127,7 @@ Azure 認知搜尋的[私用端點](../private-link/private-endpoint-overview.md
 
 ## <a name="administrative-rights"></a>系統管理許可權
 
-以[角色為基礎的存取 (RBAC) ](../role-based-access-control/overview.md)是以布建為[Azure Resource Manager](../azure-resource-manager/management/overview.md)的授權系統，可提供 Azure 資源。 在 Azure 認知搜尋中，會使用 Resource Manager 來建立或刪除服務、管理 API 金鑰，以及調整服務規模。 因此，不論是使用[入口網站](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)或[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)，Azure 角色指派都會決定誰可以執行這些工作。
+Azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)是建置於[Azure Resource Manager](../azure-resource-manager/management/overview.md)上的授權系統，可布建 Azure 資源。 在 Azure 認知搜尋中，會使用 Resource Manager 來建立或刪除服務、管理 API 金鑰，以及調整服務規模。 因此，不論是使用[入口網站](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)或[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)，Azure 角色指派都會決定誰可以執行這些工作。
 
 相反地，在服務上裝載之內容的系統管理許可權（例如建立或刪除索引的能力）是透過 API 金鑰來授予，如[前一節](#index-access)中所述。
 

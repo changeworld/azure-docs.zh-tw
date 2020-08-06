@@ -1,6 +1,6 @@
 ---
 title: 回應 Azure Blob 儲存體事件 | Microsoft Docs
-description: 使用 Azure Event Grid 以訂閱 Blob 儲存體事件。
+description: 使用 Azure 事件方格來訂閱和回應 Blob 儲存體事件。 瞭解事件模型、篩選事件，以及取用事件的實務。
 author: normesta
 ms.author: normesta
 ms.date: 04/06/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: 8f51b6f94ae8a245471757d256a923570582bb12
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62cd31ab6f63aec5ddeb675bca3621a329ab1f2b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809078"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826563"
 ---
 # <a name="reacting-to-blob-storage-events"></a>回應 Blob 儲存體事件
 
@@ -39,7 +39,7 @@ Blob 儲存體事件會使用[Azure 事件方格](https://azure.microsoft.com/se
 - [教學課程：使用 Event Grid 自動調整已上傳映像的大小](https://docs.microsoft.com/azure/event-grid/resize-images-on-storage-blob-upload-event?tabs=dotnet)
 
 >[!NOTE]
-> 只有種類為 StorageV2 的儲存體帳戶 **（一般用途 v2）**、 **BlockBlobStorage**和**BlobStorage**支援事件整合。 **儲存體（一般用途 v1）** 不*支援與*事件方格整合。
+> 只有種類為 StorageV2 的儲存體帳戶** (一般用途 v2) **、 **BlockBlobStorage**和**BlobStorage**支援事件整合。 **儲存體 (一般用途 v1) **不*支援與*事件方格整合。
 
 ## <a name="the-event-model"></a>事件模型
 

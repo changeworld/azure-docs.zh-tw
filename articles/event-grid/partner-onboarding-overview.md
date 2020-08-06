@@ -3,12 +3,12 @@ title: 作為 Azure 事件方格合作夥伴上線
 description: 以 Azure 事件方格合作夥伴主題類型上架。 瞭解合作夥伴主題的資源模型和發佈流程。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: bf4534849ae29d89524a877ca410d25c74637c94
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461250"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826784"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>作為 Azure 事件方格合作夥伴上線
 
@@ -34,7 +34,7 @@ ms.locfileid: "87461250"
 
     ![建立夥伴主題](./media/partner-onboarding-how-to/create-partner-registration.png)
 
-1. 在您要發佈事件的每個區域中建立一或多個夥伴命名空間。 事件方格服務會布建發佈端點（例如 `https://contoso.westus-1.eventgrid.azure.net/api/events` ）和存取金鑰。
+1. 在您要發佈事件的每個區域中建立一或多個夥伴命名空間。 事件方格服務會布建發佈端點 (例如， `https://contoso.westus-1.eventgrid.azure.net/api/events`) 和存取金鑰。
 
     ![建立夥伴命名空間](./media/partner-onboarding-how-to/create-partner-namespace.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "87461250"
 ### <a name="partner-registrations"></a>合作夥伴註冊
 * 資源：`partnerRegistrations`
 * 使用者：合作夥伴
-* 描述：捕捉軟體即服務（SaaS）合作夥伴的全域中繼資料（例如，名稱、顯示名稱、描述、安裝 URI）。
+* 描述：取得軟體即服務的全域中繼資料 (SaaS) 合作夥伴 (例如名稱、顯示名稱、描述、安裝程式 URI) 。
     
     建立或更新夥伴註冊是合作夥伴的自我服務作業。 此自助功能可讓合作夥伴建立並測試完整的端對端流程。
     
@@ -83,7 +83,7 @@ ms.locfileid: "87461250"
 ### <a name="partner-topics"></a>合作夥伴主題
 * 資源：`partnerTopics`
 * 使用者：客戶
-* 描述：合作夥伴主題類似于事件方格中的自訂主題和系統主題。 每個夥伴主題都會與特定來源（例如 `Contoso:myaccount` ）和特定的合作夥伴主題類型（例如 Contoso）相關聯。 客戶會在合作夥伴主題上建立事件訂閱，以將事件路由至各種事件處理常式。
+* 描述：合作夥伴主題類似于事件方格中的自訂主題和系統主題。 每個夥伴主題都會與特定的來源 (相關聯，例如， `Contoso:myaccount`) 和特定的夥伴主題類型 (例如 Contoso) 。 客戶會在合作夥伴主題上建立事件訂閱，以將事件路由至各種事件處理常式。
 
     客戶無法直接建立此資源。 建立夥伴主題的唯一方式是透過建立事件通道的夥伴作業。
 * 範圍：存在於客戶的訂用帳戶中。
@@ -91,7 +91,7 @@ ms.locfileid: "87461250"
 ### <a name="partner-topic-types"></a>合作夥伴主題類型
 * 資源：`partnerTopicTypes`
 * 使用者：客戶
-* 描述：合作夥伴主題類型為 tenantwide 的資源類型，可讓客戶探索已核准的合作夥伴主題類型清單。 URL 看起來像這樣https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* 描述：合作夥伴主題類型是租使用者範圍的資源類型，可讓客戶探索已核准的合作夥伴主題類型清單。 URL 看起來像這樣https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * 範圍：全域
 
 ## <a name="publish-events-to-event-grid"></a>將事件發佈至事件方格
@@ -150,10 +150,10 @@ ms.locfileid: "87461250"
 | 端點不正確                 | 404 找不到         |
 | 陣列或事件超過大小限制 | 413 承載太大 |
 
-## <a name="references"></a>參考資料
+## <a name="references"></a>參考
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
-  * [ARM 範本](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
+  * [ARM 範本](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM 範本架構](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [REST API](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
   * [CLI 擴充功能](/cli/azure/ext/eventgrid/?view=azure-cli-latest)

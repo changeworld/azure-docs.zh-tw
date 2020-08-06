@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 0e68dbbf86c5bda1758a6331f4c6fc0797df4557
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368348"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828994"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>使用 Azure CLI 在可用性區域中建立 Linux 虛擬機器
 
@@ -23,7 +23,7 @@ ms.locfileid: "87368348"
 
 
 ## <a name="check-vm-sku-availability"></a>檢查 VM SKU 可用性
-VM 大小或 SKU 的可用性可能因地區和區域而有所不同。 為了協助您規劃如何利用可用性區域，您可以依照 Azure 地區和區域列出可用的 VM SKU。 這項功能可確保您選擇適當的 VM 大小，並取得所需的跨區域復原功能。 如需有關不同 VM 類型和大小的詳細資訊，請參閱 [VM 大小概觀](sizes.md)。
+VM 大小或 SKU 的可用性可能因地區和區域而有所不同。 為了協助您規劃如何利用可用性區域，您可以依照 Azure 地區和區域列出可用的 VM SKU。 這項功能可確保您選擇適當的 VM 大小，並取得所需的跨區域復原功能。 如需有關不同 VM 類型和大小的詳細資訊，請參閱 [VM 大小概觀](../sizes.md)。
 
 您可以使用 [az vm list-skus](/cli/azure/vm) 命令檢視可用的 VM SKU。 下列範例會列出 eastus2** 地區中可用的 VM SKU：
 
@@ -189,7 +189,3 @@ az network public-ip show --resource-group myResourceGroupVM --name $ipaddressna
 ## <a name="next-steps"></a>後續步驟
 
 在本文中，您已學到如何在可用性區域中建立 VM。 深入瞭解 Azure Vm 的[可用性](../availability.md)。
-
-
-
-

@@ -12,22 +12,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: 9085549486333968b98b4d34679c8616282d960f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097454"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829045"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>適用于 Linux 的不駕駛驅動程式擴充功能
 
-此延伸模組會在執行 Linux 的不限時和啟用 SR-IOV 的（' r ' 大小） [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)VM 上安裝無 OFED 驅動程式。 視 VM 系列而定，延伸模組會安裝適用于 Connect X NIC 的適當驅動程式。
+此延伸模組會在執行 Linux) [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm 上，安裝不支援的 OFED 驅動程式，並將其設定為已啟用 sr-iov 的 ( ' r ' 大小。 視 VM 系列而定，延伸模組會安裝適用于 Connect X NIC 的適當驅動程式。
 
-如需手動安裝 OFED 驅動程式的指示，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband#manually-install-mellanox-ofed)。
+如需手動安裝 OFED 驅動程式的指示，請參閱[這裡](../workloads/hpc/enable-infiniband.md#manual-installation)。
 
 延伸模組也可用來安裝適用于[Windows vm](hpc-compute-infiniband-windows.md)的無動機驅動程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 ### <a name="operating-system"></a>作業系統
 
@@ -178,7 +178,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 10 | 適用於 Hyper-V 和 Azure 的 Linux Integration Services 無法使用或未安裝 | 檢查 lspci 輸出 |
 | 11 | 在此 VM 大小上找不到 Mellanox | 使用[支援的 VM 大小和 OS](../sizes-hpc.md) |
 | 12 | 不支援的映像供應項目 |
-| 13 | 不支援的 VM 大小 | 使用已啟用的不允許功能（' r ' 大小） [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)n 系列 VM 進行部署 |
+| 13 | 不支援的 VM 大小 | 使用已啟用的 ( ' r ' 大小) [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)n 系列 VM 進行部署 |
 | 14 | 作業失敗 | 檢查執行輸出記錄 |
 
 
@@ -187,7 +187,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 Azure 專家。 或者，您可以透過[Azure 支援網站](https://azure.microsoft.com/support/options/)提出支援事件。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>後續步驟
-如需已啟用無功能的（' r ' 大小）詳細資訊，請參閱[H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm。
+如需已啟用無功能之 ( ' r ' 大小) 的詳細資訊，請參閱[H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm。
 
 > [!div class="nextstepaction"]
 > [深入瞭解 Linux Vm 延伸模組和功能](features-linux.md)

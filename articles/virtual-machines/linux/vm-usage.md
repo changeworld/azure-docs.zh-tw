@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 07/28/2020
-ms.openlocfilehash: 30d665cc1d573ec47681599f2bde6a40864796c9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04536836c4d061249201c82f738aa41501f0847e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387705"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828858"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>了解 Azure 虛擬機器使用情況
 分析您的 Azure 使用情況資料，可以深入了解使用量，以在整個組織內實現更妥善的成本管理與配置。 本文件會針對您的 Azure 計算使用量詳細資料，提供深入探討。 如需有關一般 Azure 使用情況的詳細資訊，請瀏覽至[了解您的帳單](../../cost-management-billing/understand/review-individual-bill.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "87387705"
 | 已耗用| 當日已耗用的資源量。 對於計算，我們會針對 VM 在指定時間內運作的每一分鐘計費 (精確度高達 6 個小數位數)。| `1, 0.5`|
 | 資源位置  | 識別正在執行資源的資料中心。| `JA East`|
 | 已耗用的服務 | 您所使用的 Azure 平台服務。| `Microsoft.Compute`|
-| 資源群組 | 部署的資源正在其中執行的資源群組。 如需詳細資訊，請參閱 [Azure Resource Manager 概觀](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)。|`MyRG`|
+| 資源群組 | 部署的資源正在其中執行的資源群組。 如需詳細資訊，請參閱 [Azure Resource Manager 概觀](../../azure-resource-manager/management/overview.md)。|`MyRG`|
 | 執行個體識別碼 | 資源的識別碼。 識別碼包含在建立時為資源指定的名稱。 針對 VM，執行個體識別碼將會包含 SubscriptionId、ResourceGroupName 和 VMName (或用於擴展集的擴展集名稱)。| `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachines/MyVM1`<br><br>或<br><br>`/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/ resourceGroups/MyRG/providers/Microsoft.Compute/virtualMachineScaleSets/MyVMSS1`|
 | Tags| 您指派給資源的標記。 使用標記為帳單記錄分組。 深入了解如何[標記虛擬機器](tag.md)。 這僅適用於 Resource Manager VM。| `{"myDepartment":"RD","myUser":"myName"}`|
 | 其他資訊 | 服務專屬的中繼資料。 針對 VM，我們會在其他資訊欄位中填入下列資料： <br><br> 您所執行之映像類型專屬的映像。 在 [映像類型] 底下，尋找以下支援字串的完整清單。<br><br> 服務類型：您部署的大小。<br><br> VMName：您 VM 的名稱。 只會針對擴展集 VM 填入此欄位。 如果您需要您擴展集 VM 的 VM 名稱，可以在上面的執行個體識別碼字串中找到。<br><br> UsageType：這會指定此項目代表的使用方式類型。<br><br> ComputeHR 是底層 VM 的「計算時數」使用情況，例如 Standard_D1_v2。<br><br> 如果 VM 使用的是進階軟體 (如 Microsoft R Server)，則 ComputeHR_SW 將是進階軟體費用。 | 虛擬機器<br>`{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR"}`<br><br>虛擬機器擴展集<br> `{"ImageType":"Canonical","ServiceType":"Standard_DS1_v2","VMName":"myVM1", "UsageType":"ComputeHR"}`<br><br>Premium 軟體<br> `{"ImageType":"","ServiceType":"Standard_DS1_v2","VMName":"", "UsageType":"ComputeHR_SW"}` |
@@ -59,7 +59,7 @@ ms.locfileid: "87387705"
 - Windows Server Preview 
 
 ## <a name="service-type"></a>服務類型
-[其他資訊] 欄位中的 [服務類型] 欄位會對應至您所部署的確切 VM 大小。 進階儲存體 VM (SSD 型) 和非進階儲存體 VM (HDD 型) 的價格相同。 如果您部署以 SSD 為基礎的大小（例如標準 \_ DS2 \_ v2），您會在 [計量子類別] 資料行中看到非 ssd 大小（ `Standard\_D2\_v2 VM` ），並在 `Standard\_DS2\_v2` [其他資訊] 欄位中查看 ssd 大小（）。
+[其他資訊] 欄位中的 [服務類型] 欄位會對應至您所部署的確切 VM 大小。 進階儲存體 VM (SSD 型) 和非進階儲存體 VM (HDD 型) 的價格相同。 如果您部署以 SSD 為基礎的大小（例如標準 \_ DS2 \_ v2），您會在 [計量子類別] 資料行中看到非 SSD 大小 (`Standard\_D2\_v2 VM`) 和 [其他資訊] 欄位中的 [SSD 大小] (`Standard\_DS2\_v2`) 。
 
 ## <a name="region-names"></a>區域名稱
 在使用情況詳細資料中，[資源位置] 欄位內填入的區域名稱不同於 Azure Resource Manager 中使用的區域名稱。 以下是區域值之間的對應：

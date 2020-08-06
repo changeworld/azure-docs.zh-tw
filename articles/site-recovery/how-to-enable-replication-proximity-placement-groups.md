@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: bd7619f000d16a55e1cfb31cc3b9cfb3b6d33502
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432615"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827668"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>將在鄰近放置群組中執行的 Azure 虛擬機器複寫至另一個區域
 
@@ -42,7 +42,7 @@ ms.locfileid: "87432615"
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>為鄰近放置群組中的虛擬機器設定 Site Recovery
 
 > [!NOTE]
-> 請確定您有目標鄰近放置群組的唯一識別碼方便使用。 如果您要建立新的鄰近放置群組，請在[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group)檢查命令，如果您使用的是現有的鄰近放置群組，請在[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)使用命令。
+> 請確定您有目標鄰近放置群組的唯一識別碼方便使用。 如果您要建立新的鄰近放置群組，請在[這裡](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group)檢查命令，如果您使用的是現有的鄰近放置群組，請在[這裡](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)使用命令。
 
 ### <a name="azure-to-azure"></a>Azure 至 Azure
 

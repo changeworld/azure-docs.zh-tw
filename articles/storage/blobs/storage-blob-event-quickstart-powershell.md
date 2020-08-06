@@ -1,6 +1,6 @@
 ---
-title: 將 Azure Blob 儲存體事件傳送至 Web 端點 - Powershell | Microsoft Docs
-description: 使用 Azure Event Grid 以訂閱 Blob 儲存體事件。
+title: 將 Azure Blob 儲存體事件傳送至 web 端點-PowerShell |Microsoft Docs
+description: 使用 Azure 事件方格來訂閱 Blob 儲存體事件、觸發事件，並查看結果。 使用 Azure PowerShell，將儲存體事件路由至 web 端點。
 author: normesta
 ms.author: normesta
 ms.reviewer: dastanfo
@@ -8,12 +8,12 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 809ab593d4d3f58fa3c91b896e5df3a0db7865f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68847165"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824506"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>快速入門：使用 PowerShell 將儲存體事件路由至 web 端點
 
@@ -60,7 +60,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-您可以在一般用途 v2 儲存體帳戶與 Blob 儲存體帳戶中找到 Blob 儲存體事件。 **一般用途 v2** 儲存體帳戶支援所有儲存體服務 (包括 Blob、檔案、佇列和表格) 的所有功能。 **Blob 儲存體帳戶**是特殊的儲存體帳戶，可將非結構化資料儲存為 Azure 儲存體中的 blob （物件）。 Blob 儲存體帳戶類似於一般用途儲存體帳戶，可共用所有強大的持續性、可用性、延展性以及您現今使用的效能功能，包括區塊 Blob 和附加 Blob 的 100% API 一致性。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
+您可以在一般用途 v2 儲存體帳戶與 Blob 儲存體帳戶中找到 Blob 儲存體事件。 **一般用途 v2** 儲存體帳戶支援所有儲存體服務 (包括 Blob、檔案、佇列和表格) 的所有功能。 **Blob 儲存體帳戶**是特殊的儲存體帳戶，可將非結構化資料儲存為 blob， (物件) 在 Azure 儲存體中。 Blob 儲存體帳戶類似於一般用途儲存體帳戶，可共用所有強大的持續性、可用性、延展性以及您現今使用的效能功能，包括區塊 Blob 和附加 Blob 的 100% API 一致性。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../common/storage-account-overview.md)。
 
 使用 [New-AzStorageAccount](/powershell/module/az.storage/New-azStorageAccount) 以 LRS 複寫建立 Blob 儲存體帳戶，然後擷取儲存體帳戶內容，此內容定義要使用的儲存體帳戶。 使用儲存體帳戶時，會參考內容而非重複提供認證。 這個範例會建立名為 **gridstorage** 的儲存體帳戶，並含有本機備援儲存體 (LRS)。 
 

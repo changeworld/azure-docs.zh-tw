@@ -1,17 +1,17 @@
 ---
 title: 跨訂用帳戶、資源群組或區域移動邏輯應用程式
-description: 將邏輯應用程式或整合帳戶遷移至其他 Azure 訂用帳戶、資源群組或位置（區域）
+description: '將邏輯應用程式或整合帳戶遷移至其他 Azure 訂用帳戶、資源群組或 (區域的位置) '
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 1e844934852f3eb45f665a67bbdb7087a8ba0202
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039154"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826206"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>將邏輯應用程式資源移到其他 Azure 資源群組、區域或訂用帳戶
 
@@ -23,15 +23,15 @@ ms.locfileid: "87039154"
 
 * 當您移動資源時，Azure 會建立新的資源識別碼。 因此，請務必改為使用新的識別碼，並更新與已移動資源相關聯的任何腳本或工具。
 
-* 在訂用帳戶、資源群組或區域之間遷移邏輯應用程式之後，您必須重新建立或重新授權任何需要開放驗證（OAuth）的連線。
+* 在訂用帳戶、資源群組或區域之間遷移邏輯應用程式之後，您必須重新建立或重新授權任何需要開放驗證 (OAuth) 的連線。
 
-* 您只能將[整合服務環境（ISE）](connect-virtual-network-vnet-isolated-environment-overview.md)移至存在於相同 Azure 區域或 Azure 訂用帳戶中的另一個資源群組。 您無法將 ISE 移至位於不同 Azure 區域或 Azure 訂用帳戶中的資源群組。 此外，在這類移動之後，您必須在邏輯應用程式工作流程、整合帳戶、連接等中更新 ISE 的所有參考。
+* 您只能將[整合服務環境 (ISE) ](connect-virtual-network-vnet-isolated-environment-overview.md)移至存在於相同 azure 區域或 Azure 訂用帳戶中的另一個資源群組。 您無法將 ISE 移至位於不同 Azure 區域或 Azure 訂用帳戶中的資源群組。 此外，在這類移動之後，您必須在邏輯應用程式工作流程、整合帳戶、連接等中更新 ISE 的所有參考。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 相同的 Azure 訂用帳戶，用來建立您要移動的邏輯應用程式或整合帳戶
 
-* 資源擁有者許可權，可移動和設定您想要的資源。 深入瞭解[角色型存取控制（RBAC）](../role-based-access-control/built-in-roles.md#owner)。
+* 資源擁有者許可權，可移動和設定您想要的資源。 深入瞭解[azure (AZURE RBAC) 的角色型存取控制](../role-based-access-control/built-in-roles.md#owner)。
 
 <a name="move-subscription"></a>
 
@@ -55,7 +55,7 @@ ms.locfileid: "87039154"
 
 ## <a name="move-resources-between-resource-groups"></a>在資源群組之間移動資源
 
-若要將資源（例如邏輯應用程式、整合帳戶或[整合服務環境（ISE））](connect-virtual-network-vnet-isolated-environment-overview.md)移至另一個 Azure 資源群組，您可以使用 [Azure 入口網站]、[Azure PowerShell]、[Azure CLI] 或 [REST API]。 這些步驟涵蓋 Azure 入口網站，您可以在資源的區域保持不變時使用。 如需其他步驟和一般準備，請參閱[將資源移至新的資源群組或訂用](../azure-resource-manager/management/move-resource-group-and-subscription.md)帳戶。
+若要將資源（例如邏輯應用程式、整合帳戶或[整合服務環境 (ISE) ](connect-virtual-network-vnet-isolated-environment-overview.md)）移至另一個 Azure 資源群組，您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API。 這些步驟涵蓋 Azure 入口網站，您可以在資源的區域保持不變時使用。 如需其他步驟和一般準備，請參閱[將資源移至新的資源群組或訂用](../azure-resource-manager/management/move-resource-group-and-subscription.md)帳戶。
 
 在實際移動群組之間的資源之前，您可以測試是否可以成功地將資源移至另一個群組。 如需詳細資訊，請參閱[驗證您的移動](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "87039154"
 
 * 藉由使用 Visual Studio 和適用于 Visual Studio 的 Azure Logic Apps 工具，您可以從 Azure 入口網站中[開啟並下載邏輯應用程式](../logic-apps/manage-logic-apps-with-visual-studio.md)，以作為[Azure Resource Manager 範本](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。 此範本大多準備好進行部署，並包含邏輯應用程式的資源定義，包括工作流程本身和連線。 此範本也會針對要在部署時使用的值宣告參數。 如此一來，您就可以根據自己的需求，更輕鬆地變更部署邏輯應用程式的位置和方式。 若要指定部署的位置和其他必要資訊，您可以使用不同的參數檔案。
 
-* 如果您使用持續整合（CI）和持續傳遞（CD）工具（例如 Azure DevOps 中的 Azure Pipelines）來建立和部署邏輯應用程式，您可以使用這些工具將應用程式部署到另一個區域。
+* 如果您使用持續整合 (CI 來建立和部署邏輯應用程式) 和持續傳遞 (CD) 工具（例如 Azure Pipelines 中的 Azure DevOps），您可以使用這些工具將應用程式部署到另一個區域。
 
 如需邏輯應用程式部署範本的詳細資訊，請參閱下列主題：
 
@@ -108,6 +108,6 @@ ms.locfileid: "87039154"
 
 1. 開啟並編輯範本，將部署的必要值參數化。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [將 Azure 資源移至新的資源群組或訂用帳戶](../azure-resource-manager/management/move-resource-group-and-subscription.md)

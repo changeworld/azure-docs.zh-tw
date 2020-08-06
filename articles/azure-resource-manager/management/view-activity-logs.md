@@ -3,12 +3,12 @@ title: 查看 Azure 活動記錄以監視資源
 description: 使用活動記錄檢閱使用者動作和錯誤。 顯示 Azure 入口網站 PowerShell、Azure CLI 和 REST。
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9511090099894fad6708843f106570ed029f0c1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b02865e4487a187d1296b2971918aa101d711b5b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75478132"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827056"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>查看活動記錄以監視資源上的動作
 
@@ -66,7 +66,7 @@ ms.locfileid: "75478132"
 
     ![名稱篩選](./media/view-activity-logs/name-filters.png)
 
-1. 可在儀表板中使用篩選。 在 Azure 入口網站功能表上，選取 [儀表板]****。
+1. 可在儀表板中使用篩選。 在 Azure 入口網站功能表上，選取 [儀表板]。
 
     ![在儀表板上顯示篩選](./media/view-activity-logs/activity-log-on-dashboard.png)
 
@@ -74,7 +74,7 @@ ms.locfileid: "75478132"
 
     ![選取作業](./media/view-activity-logs/select-operation.png)
 
-1. 選取 [**變更歷程記錄（預覽）** ]，然後挑選其中一個可用的作業。
+1. 選取 [**變更歷程記錄] (預覽) **並挑選其中一個可用的作業。
 
     ![選取變更歷程記錄](./media/view-activity-logs/select-change-history.png)
 
@@ -191,7 +191,7 @@ az monitor activity-log list -g ExampleGroup --offset 1d --query "[?operationNam
 ## <a name="next-steps"></a>後續步驟
 
 * Azure 活動記錄可以搭配 Power BI 用來更深入了解訂用帳戶中的動作。 請參閱 [在 Power BI 和其他工具中檢視和分析 Azure 活動記錄](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)。
-* 如要了解如何設定安全性原則，請參閱 [Azure 角色型存取控制](../../role-based-access-control/role-assignments-portal.md)。
+* 若要瞭解如何設定安全性原則，請參閱[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)。
 * 若要深入瞭解從基礎結構層到應用程式部署的應用程式變更的詳細資料，請參閱[在 Azure 監視器中使用應用程式變更分析](../../azure-monitor/app/change-analysis.md)。
 * 若要深入了解檢視部署作業的命令，請參閱[檢視部署作業](../templates/deployment-history.md)。
 * 若要了解如何防止刪除所有使用者的資源，請參閱 [使用 Azure Resource Manager 鎖定資源](lock-resources.md)。

@@ -1,7 +1,7 @@
 ---
 title: 資料備援
 titleSuffix: Azure Storage
-description: 系統會 複製Microsoft Azure 儲存體帳戶中的資料，以維持持久性和高可用性。 備援設定包含本地備援儲存體 (LRS)、區域備援儲存體 (ZRS)、異地備援儲存體 (GRS)、讀取權限異地備援儲存體 (RA-GRS)、異地區域備援儲存體 (GZRS)，以及讀取權限異地區域備援儲存體 (RA-GZRS)。
+description: 瞭解 Azure 儲存體中的資料冗余。 系統會 複製Microsoft Azure 儲存體帳戶中的資料，以維持持久性和高可用性。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 07/21/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e4ec4925da40cf6051b88d77fbbc35d93ececf87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8fa775ab4d183d75fef41529a95555fe3bcdc91c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036721"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827838"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 儲存體備援
 
@@ -123,7 +123,7 @@ GRS 和 GZRS 之間主要差異是資料在主要區域中複寫的方式。 在
 異地備援儲存體 (使用 GRS 或 GZRS) 會將資料複寫到次要區域中的另一個實體位置，以保護其不受區域性中斷影響。 但是，該資料只有在客戶或 Microsoft 起始從主要區域容錯移轉至次要區域時，才能提供存取。 當您啟用次要區域的讀取權限時，您的資料隨時都可供讀取，包括主要區域變成無法使用的情況。 如需次要區域的讀取存取，請啟用讀取存取異地備援儲存體 (RA-GRS) 或讀取存取異地區域備援儲存體 (RA-GZRS)。
 
 > [!NOTE]
-> Azure 檔案儲存體不支援讀取權限異地冗余儲存體（RA-GRS）和讀取權限異地區域冗余儲存體（RA-切換）。
+> Azure 檔案儲存體不支援讀取權限異地冗余儲存體 (RA GRS) 和讀取權限異地區域冗余儲存體 (RA 切換) 。
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>針對次要區域的讀取存取設計應用程式
 

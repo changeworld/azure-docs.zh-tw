@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: cdefca11131a16630e600385bf350465fccc228f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 37c5a0fb1addf9f84c8a237b4d185d140553535e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206668"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825968"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>使用入口網站建立和管理適用於 MySQL 的 Azure 資料庫的私用連結
 
@@ -20,7 +20,7 @@ ms.locfileid: "86206668"
 如果您沒有 Azure 訂用帳戶，請在開始前建立一個[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 這項功能適用于所有 Azure 區域，其中適用於 MySQL 的 Azure 資料庫支援一般用途和記憶體優化定價層。
+> 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MySQL 的 Azure 資料庫伺服器。 請確定資料庫伺服器屬於其中一種定價層。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 登入 [Azure 入口網站](https://portal.azure.com)。
@@ -41,7 +41,7 @@ ms.locfileid: "86206668"
     | 位址空間 | 輸入 *10.1.0.0/16*。 |
     | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
-    | 位置 | 選取 [西歐]。|
+    | Location | 選取 [西歐]。|
     | 子網路 - 名稱 | 輸入 mySubnet**。 |
     | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
     |||
@@ -117,7 +117,7 @@ ms.locfileid: "86206668"
     | 計算 + 儲存體| 根據工作負載選取伺服器所需的定價層。 |
     |||
  
-7. 選取 [確定]。 
+7. 選取 [確定]  。 
 8. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。 
 9. 當您看到 [通過驗證] 訊息時，請選取 [**建立**]。 
 10. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
@@ -203,7 +203,7 @@ ms.locfileid: "86206668"
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -237,7 +237,7 @@ ms.locfileid: "86206668"
     |SSL|選取 [**必要**]。|
     ||
 
-5. 選取 [連接]。
+5. 選取 [連線]。
 
 6. 瀏覽左側功能表中的資料庫。
 

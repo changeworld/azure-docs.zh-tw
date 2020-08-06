@@ -1,5 +1,5 @@
 ---
-title: 部署 Privileged Identity Management （PIM）-Azure AD |Microsoft Docs
+title: 部署 Privileged Identity Management (PIM) -Azure AD |Microsoft Docs
 description: 說明如何規劃 Azure AD Privileged Identity Management (PIM) 的部署。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6597c268a2a017280d00f73366562de61b4781e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 82c0fbb62f411ccc3056d782518c6c3b570106d2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529784"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828620"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
-此逐步指南說明如何規劃 Azure Active Directory （Azure AD）組織中的 Privileged Identity Management （PIM）部署。
+此逐步指南說明如何在 Azure Active Directory (Azure AD 組織中規劃 Privileged Identity Management (PIM) 的部署。
 
 > [!TIP]
 > 在本文中，您會看到標示為的專案：
@@ -72,7 +72,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 1. 已設定 Privileged Identity Management，讓使用者符合特殊許可權角色的資格。
 1. 當符合資格的使用者需要使用其特殊許可權角色時，他們會在 Privileged Identity Management 中啟用角色。
-1. 視角色所設定的 Privileged Identity Management 設定而定，使用者必須完成特定步驟（例如執行多重要素驗證、取得核准，或指定原因）。
+1. 視角色設定的 Privileged Identity Management 設定而定，使用者必須完成特定步驟 (例如執行多重要素驗證、取得核准，或指定原因。 ) 
 1. 使用者成功啟動其角色後，便可在預先設定好的期間內獲得該角色。
 1. 系統管理員可以在 audit 記錄檔中查看所有 Privileged Identity Management 活動的歷程記錄。 他們也可以進一步保護其 Azure AD 組織，並使用 Privileged Identity Management 的功能（例如存取評論和警示）來符合合規性。
 
@@ -80,9 +80,9 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 ### <a name="roles-that-can-be-managed-by-privileged-identity-management"></a>可由 Privileged Identity Management 管理的角色
 
-**Azure AD 角色**–這些角色全都在 Azure Active Directory 中（例如全域管理員、Exchange 系統管理員和安全性系統管理員）。 您可以在 [Azure Active Directory 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)中深入了解這些角色及其功能。 如需協助以便判斷要對系統管理員指派哪些角色，請參閱[依工作區分的最低特殊權限角色](../users-groups-roles/roles-delegate-by-task.md)。
+**Azure AD 角色**–這些角色全都在 Azure Active Directory (，例如全域管理員、Exchange 系統管理員和安全性系統管理員) 。 您可以在 [Azure Active Directory 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)中深入了解這些角色及其功能。 如需協助以便判斷要對系統管理員指派哪些角色，請參閱[依工作區分的最低特殊權限角色](../users-groups-roles/roles-delegate-by-task.md)。
 
-**Azure 資源角色** - 這些角色會連結至 Azure 資源、資源群組、訂用帳戶或管理群組。 Privileged Identity Management 可以即時存取內建角色，例如擁有者、使用者存取系統管理員和參與者，以及[自訂角色](../../role-based-access-control/custom-roles.md)。 如需 Azure 資源角色的詳細資訊，請參閱[角色型存取控制 (RBAC)](../../role-based-access-control/overview.md)。
+**Azure 資源角色** - 這些角色會連結至 Azure 資源、資源群組、訂用帳戶或管理群組。 Privileged Identity Management 可以即時存取內建角色，例如擁有者、使用者存取系統管理員和參與者，以及[自訂角色](../../role-based-access-control/custom-roles.md)。 如需 Azure 資源角色的詳細資訊，請參閱 azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 
 如需詳細資訊，請參閱[您無法在 Privileged Identity Management 中管理的角色](pim-roles.md)。
 
@@ -100,7 +100,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>專案關係人： Azure AD 角色的 Privileged Identity Management
 
-| Name | 角色 | 動作 |
+| 名稱 | 角色 | 動作 |
 | --- | --- | --- |
 | 名稱和電子郵件 | **身分識別架構設計師或 Azure 全域系統管理員**<br/>身分識別管理小組所推派的代表人員，負責定義這項變更要如何與組織的核心身分識別管理基礎結構相配合。 | SO/R/I |
 | 名稱和電子郵件 | **服務擁有者/部門經理**<br/>單一或一組服務的 IT 擁有者所推派的代表人員。 它們是做出決策並協助為其小組推出 Privileged Identity Management 的關鍵。 | SO/R/I |
@@ -110,7 +110,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>專案關係人：適用于 Azure 資源角色的 Privileged Identity Management
 
-| Name | 角色 | 動作 |
+| 名稱 | 角色 | 動作 |
 | --- | --- | --- |
 | 名稱和電子郵件 | **訂用帳戶/資源擁有者**<br/>您想要部署的每個訂用帳戶或資源的 IT 擁有者的代表，Privileged Identity Management | SO/R/I |
 | 名稱和電子郵件 | **安全性擁有者**<br/>安全性團隊所推派的代表人員，可簽字同意該規劃符合組織的安全性需求。 | SO/R |
@@ -146,7 +146,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
     ![[探索特殊許可權角色] 窗格，其中顯示具有特殊許可權角色的人員](./media/pim-deployment-plan/discover-privileged-roles-users.png)
 
-1. 針對組織中的所有全域系統管理員，了解其為何需要該角色。 根據閱讀先前的檔，如果使用者的作業可以由一或多個細微的系統管理員角色執行，您應該將其從全域管理員角色中移除，並在 Azure Active Directory 內做出適當的指派（做為參考： Microsoft 目前只有約10個系統管理員具有全域管理員角色。 深入瞭解[Microsoft 如何使用 Privileged Identity Management](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)）。
+1. 針對組織中的所有全域系統管理員，了解其為何需要該角色。 根據閱讀先前的檔，如果該人員的作業可以由一或多個細微的系統管理員角色執行，您應該將其從全域管理員角色中移除，並在 Azure Active Directory (內適當地進行指派，以做為參考： Microsoft 目前只有大約10個系統管理員具有全域管理員角色。 深入瞭解[Microsoft 如何使用 Privileged Identity Management](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)) 。
 
 1. 對於其他所有 Azure AD 角色，請檢閱指派清單、識別不再需要該角色的系統管理員，並從其指派中將其移除。
 
@@ -233,31 +233,31 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 - 組織特有情況 - 如果獲得合格角色的人員來自位處遠方的小組或其身分是高階主管，而讓溝通和強制執行提高權限的程序變得困難，則可以考慮讓其擁有永久性角色。
 
 > [!TIP]
-> ： heavy_check_mark： **Microsoft 建議**您針對具有永久角色指派的使用者（如果您有的話），設定週期性的存取權審查。 請至本部署規劃的最後一節來深入了解週期性的存取權檢閱
+> ： heavy_check_mark： **Microsoft 建議**您為具有永久角色指派的使用者設定週期性的存取權審查 (您是否有任何) 。 請至本部署規劃的最後一節來深入了解週期性的存取權檢閱
 
 ### <a name="draft-your-privileged-identity-management-settings"></a>草擬您的 Privileged Identity Management 設定
 
-在您執行 Privileged Identity Management 解決方案之前，最好先草擬您的組織所使用的每個特殊許可權角色的 Privileged Identity Management 設定。 本節提供特定角色 Privileged Identity Management 設定的一些範例（僅供參考，而且可能會與您的組織不同）。 在資料表後面，會有這些設定各自的詳細說明和 Microsoft 的建議。
+在您執行 Privileged Identity Management 解決方案之前，最好先草擬您的組織所使用的每個特殊許可權角色的 Privileged Identity Management 設定。 本節提供特定角色 Privileged Identity Management 設定的一些範例， (它們僅供參考，而且可能會因您的組織) 而有所不同。 在資料表後面，會有這些設定各自的詳細說明和 Microsoft 的建議。
 
 #### <a name="privileged-identity-management-settings-for-azure-ad-roles"></a>Azure AD 角色的 Privileged Identity Management 設定
 
 | 角色 | 需要 MFA | 通知 | 事件票證 | 需要核准 | 核准者 | 啟動持續時間 | 永久性系統管理員 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 全域管理員 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 其他全域系統管理員 | 1 小時 | 緊急存取帳戶 |
-| Exchange 系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | None | 2 小時 | None |
-| 服務台系統管理員 | :x: | :x: | :heavy_check_mark: | :x: | None | 8 小時 | None |
+| Exchange 系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | 無 | 2 小時 | 無 |
+| 服務台系統管理員 | :x: | :x: | :heavy_check_mark: | :x: | 無 | 8 小時 | 無 |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>適用于 Azure 資源角色的 Privileged Identity Management 設定
 
 | 角色 | 需要 MFA | 通知 | 需要核准 | 核准者 | 啟動持續時間 | 有效系統管理員 | 有效到期日 | 合格到期日 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 重要訂用帳戶的擁有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 訂用帳戶的其他擁有者 | 1 小時 | None | n/a | 3 個月 |
-| 較不重要訂用帳戶的使用者存取系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | None | 1 小時 | None | n/a | 3 個月 |
-| 虛擬機器參與者 | :x: | :heavy_check_mark: | :x: | None | 3 小時 | None | n/a | 6 個月 |
+| 重要訂用帳戶的擁有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 訂用帳戶的其他擁有者 | 1 小時 | 無 | n/a | 3 個月 |
+| 較不重要訂用帳戶的使用者存取系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | 無 | 1 小時 | 無 | n/a | 3 個月 |
+| 虛擬機器參與者 | :x: | :heavy_check_mark: | :x: | 無 | 3 小時 | 無 | n/a | 6 個月 |
 
 下表說明每個設定。
 
-| 設定 | 說明 |
+| 設定 | 描述 |
 | --- | --- |
 | 角色 | 要為其定義設定的角色名稱。 |
 | 需要 MFA | 符合資格的使用者是否必須先執行 MFA 才能啟動該角色。<br/><br/> ： heavy_check_mark： **Microsoft 建議**您針對所有系統管理員角色強制執行 MFA，特別是當角色具有來賓使用者時。 |
@@ -339,7 +339,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 - 可供解決 PIM 相關問題的連絡資訊或技術服務人員連結
 
 > [!TIP]
-> ： heavy_check_mark： **Microsoft 建議**您設定技術服務人員/支援小組的時間，以引導他們完成 Privileged Identity Management 工作流程（如果您的組織有內部的 IT 支援小組）。 請向這些人提供適當的文件以及您的連絡資訊。
+> ： heavy_check_mark： **Microsoft 建議**您設定技術服務人員/支援小組的時間，以引導他們完成 Privileged Identity Management 工作流程 (如果您的組織有內部 IT 支援小組) 。 請向這些人提供適當的文件以及您的連絡資訊。
 
 ### <a name="move-to-production"></a>移動至生產環境
 

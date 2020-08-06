@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d41a71ff5f97449968d82812119cfdfd4bc2ef44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 09c56646ffa9bcadcec821bcd83411077d6a55ae
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261169"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824591"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量規劃和調整
 
@@ -19,7 +19,7 @@ ms.locfileid: "86261169"
 除了考慮節點類型和叢集特性，您應該預期調整作業需要超過一小時才能完成生產環境。 不論您要新增的 Vm 數目為何，這項考慮都是如此。
 
 ## <a name="autoscaling"></a>自動調整
-您應該透過 Azure Resource Manager 範本執行調整作業，因為這是將資源設定視為程式[代碼]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)的最佳作法。 
+您應該透過 Azure Resource Manager 範本執行調整作業，因為這是將資源設定視為程式[代碼](./service-fabric-best-practices-infrastructure-as-code.md)的最佳作法。 
 
 透過虛擬機器擴展集使用自動調整，可讓您的版本設定 Resource Manager 範本不正確地定義虛擬機器擴展集的實例計數。 不正確的定義會增加未來部署造成非預期調整作業的風險。 一般來說，您應該在下列情況使用自動調整：
 
@@ -38,7 +38,7 @@ ms.locfileid: "86261169"
 
 ## <a name="vertical-scaling-considerations"></a>垂直調整考量
 
-[垂直調整](./virtual-machine-scale-set-scale-node-type-scale-out.md)Azure Service Fabric 中的節點類型需要一些步驟和考慮。 例如︰
+[垂直調整](./virtual-machine-scale-set-scale-node-type-scale-out.md)Azure Service Fabric 中的節點類型需要一些步驟和考慮。 例如：
 
 * 在調整之前，叢集必須處於良好狀態。 否則，您將會進一步使叢集變得不穩定。
 * 裝載具狀態服務的所有 Service Fabric 叢集節點類型都需要銀級耐久性等級或更大。
@@ -72,7 +72,7 @@ Resource Manager 範本的下列程式碼片段顯示您將宣告的屬性。 �
 5. 一旦所有 Vm 都 (以「關閉」表示 ) fabric：/System/InfrastructureService/[node name] 就會顯示錯誤狀態。 然後，您可以更新叢集資源來移除節點類型。 您可以使用 ARM 範本部署，或透過[Azure resource manager](https://resources.azure.com)來編輯叢集資源。 這會啟動叢集升級，這會移除處於錯誤狀態的 fabric：/System/InfrastructureService/[node type] 服務。
  6. 在這之後，您可以選擇性地刪除 VMScaleSet，但您仍會看到 Service Fabric Explorer view 中的節點為「關閉」。 最後一個步驟是使用命令來清除它們 `Remove-ServiceFabricNodeState` 。
 
-## <a name="horizontal-scaling"></a>水平調整
+## <a name="horizontal-scaling"></a>水平調整規模
 
 您可以[手動](./service-fabric-cluster-scale-in-out.md)或透過程式設計[方式](./service-fabric-cluster-programmatic-scaling.md)進行水準調整。
 
@@ -123,7 +123,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 }
 ```
 
-您必須準備節點，以透過程式設計的方式進行關閉。 尋找要移除的節點， (最高實例節點) 。 例如︰
+您必須準備節點，以透過程式設計的方式進行關閉。 尋找要移除的節點， (最高實例節點) 。 例如：
 
 ```csharp
 using (var client = new FabricClient())

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 96783955eac6ade90a155236891307720616ed20
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323939"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824761"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>啟用適用於 VM 的 Azure 監視器總覽
 
@@ -30,7 +30,7 @@ ms.locfileid: "87323939"
 * 使用 PowerShell，在指定的訂用帳戶或資源群組上啟用多個 Azure Vm、Azure Arc Vm、Azure VMSS 或 Azure Arc 機器。
 * 啟用適用於 VM 的 Azure 監視器來監視在公司網路或其他雲端環境中裝載的 Vm 或實體電腦。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您了解下列各節中的資訊。 
 
@@ -92,7 +92,7 @@ ms.locfileid: "87323939"
 |Windows 8.1 | X | X |
 |Windows 8 | X | X |
 |Windows 7 SP1 | X | X |
-|Red Hat Enterprise Linux （RHEL）6、7| X | X| 
+|Red Hat Enterprise Linux (RHEL) 6、7| X | X| 
 |Ubuntu 18.04、16.04 | X | X |
 |CentOS Linux 7、6 | X | X |
 |SUSE Linux Enterprise Server (SLES) 12 | X | X |
@@ -134,7 +134,7 @@ ms.locfileid: "87323939"
 
 | OS 版本 | 核心版本 |
 |:--|:--|
-| 18.04 | 5.3.0-1020<br>5.0 （包含 Azure 微調的核心）<br>4.18* <br> 4.15* |
+| 18.04 | 5.3.0-1020<br>5.0 (包含 Azure 微調的核心) <br>4.18* <br> 4.15* |
 | 16.04.3 | 4.15. * |
 | 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
 
@@ -142,7 +142,7 @@ ms.locfileid: "87323939"
 
 | OS 版本 | 核心版本 |
 |:--|:--|
-|12 SP4 | 4.12. * （包含 Azure 微調的核心） |
+|12 SP4 | 4.12. * (包含 Azure 微調的核心)  |
 |12 SP3 | 4.4.* |
 |12 SP2 | 4.4.* |
 
@@ -172,12 +172,12 @@ ms.locfileid: "87323939"
 
 以下是部署這些代理程式的多個方法。 
 
-| 方法 | 說明 |
+| 方法 | 描述 |
 |:---|:---|
-| [Azure 入口網站](vminsights-enable-single-vm.md) | 在單一虛擬機器、虛擬機器擴展集或與 Azure Arc 連線的混合式虛擬機器上，安裝這兩個代理程式。 |
+| [Azure 入口網站](./vminsights-enable-portal.md) | 在單一虛擬機器、虛擬機器擴展集或與 Azure Arc 連線的混合式虛擬機器上，安裝這兩個代理程式。 |
 | [Resource Manager 範本](vminsights-enable-powershell.md) | 使用任何一種支援的方法來安裝這兩個代理程式，以部署包含 CLI 和 PowerShell 的 Resource Manager 範本。 |
-| [Azure 原則](vminsights-enable-at-scale-policy.md) | 指派 Azure 原則計畫，以便在建立虛擬機器或虛擬機器擴展集時，自動安裝代理程式。 |
-| [手動安裝](vminsights-enable-hybrid-cloud.md) | 將代理程式安裝在 Azure 外部託管的電腦（包括您的資料中心或其他雲端環境）中的客體作業系統。 |
+| [Azure 原則](./vminsights-enable-policy.md) | 指派 Azure 原則計畫，以便在建立虛擬機器或虛擬機器擴展集時，自動安裝代理程式。 |
+| [手動安裝](./vminsights-enable-hybrid.md) | 將代理程式安裝在 Azure 外部託管的電腦（包括您的資料中心或其他雲端環境）中的客體作業系統。 |
 
 
 
@@ -200,4 +200,3 @@ ms.locfileid: "87323939"
 ## <a name="next-steps"></a>後續步驟
 
 若要瞭解如何使用效能監視功能，請參閱[View 適用於 VM 的 Azure 監視器 performance](vminsights-performance.md)。 若要檢視探索到的應用程式相依性，請參閱[檢視適用於 VM 的 Azure 監視器對應](vminsights-maps.md)。
-

@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.date: 07/09/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: dcb5277773be1fc45a3d2b0901cf9fda177b7054
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512647"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825560"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上搭配 Windows 使用 SSH 金鑰
 
-本文適用于想要[建立](#create-an-ssh-key-pair)及使用*安全 shell* （SSH）金鑰的 Windows[使用者，以連線到 Azure](#connect-to-your-vm)中的 Linux 虛擬機器（vm）。 在入口網站中建立 Vm 時，您也可以[在 Azure 入口網站中產生並儲存 SSH 金鑰](../ssh-keys-portal.md)。
+本文適用于想要[建立](#create-an-ssh-key-pair)及使用*安全 shell*的 Windows 使用者 (SSH) 金鑰，以[連線到 Azure](#connect-to-your-vm)中 (vm) 的 Linux 虛擬機器。 在入口網站中建立 Vm 時，您也可以[在 Azure 入口網站中產生並儲存 SSH 金鑰](../ssh-keys-portal.md)。
 
 
 若要從 Linux 或 macOS 用戶端使用 SSH 金鑰，請參閱[快速](mac-create-ssh-keys.md)。 如需 SSH 的詳細總覽，請參閱[詳細步驟：建立和管理 ssh 金鑰以在 Azure 中對 LINUX VM 進行驗證](create-ssh-keys-detailed.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "87512647"
 
 視您組織的安全性原則而定，您可以重複使用單一金鑰組來存取多個 Azure Vm 和服務。 您不需要為每個 VM 使用個別的金鑰組。 
 
-您的公開金鑰可以與任何人共用，但只有您（或您的本機安全性基礎結構）才能存取您的私密金鑰。
+您的公開金鑰可以與任何人共用，但只有您 (或您的本機安全性基礎結構) 應該能夠存取您的私密金鑰。
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -45,11 +45,11 @@ ms.locfileid: "87512647"
 
 您也可以使用[Azure Cloud Shell](../../cloud-shell/overview.md)中的 Bash 來連接到您的 VM。 您可以使用[網頁瀏覽器](https://shell.azure.com/bash)中的 Cloud Shell、 [Azure 入口網站](https://portal.azure.com)，或在使用[Azure 帳戶延伸](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)模組的 Visual Studio Code 中作為終端機。
 
-您也可以安裝[適用于 Linux 的 Windows 子系統](https://docs.microsoft.com/windows/wsl/about)，以透過 SSH 連線至您的 VM，並在 Bash shell 中使用其他原生 Linux 工具。
+您也可以安裝[適用于 Linux 的 Windows 子系統](/windows/wsl/about)，以透過 SSH 連線至您的 VM，並在 Bash shell 中使用其他原生 Linux 工具。
 
 ## <a name="create-an-ssh-key-pair"></a>建立 SSH 金鑰組
 
-使用命令建立 SSH 金鑰組 `ssh-keygen` 。 輸入檔案名，或使用括弧中所顯示的預設值（例如 `C:\Users\username/.ssh/id_rsa` ）。  輸入檔案的複雜密碼，如果您不想要使用複雜密碼，請將複雜密碼保留空白。 
+使用命令建立 SSH 金鑰組 `ssh-keygen` 。 輸入檔案名，或使用括弧中所顯示的預設值 (例如 `C:\Users\username/.ssh/id_rsa`) 。  輸入檔案的複雜密碼，如果您不想要使用複雜密碼，請將複雜密碼保留空白。 
 
 ```powershell
 ssh-keygen -m PEM -t rsa -b 4096
@@ -77,7 +77,7 @@ az vm create \
 
 ## <a name="connect-to-your-vm"></a>連接到您的 VM
 
-公開金鑰已部署到您的 Azure VM 且私密金鑰儲存在本機系統中，此時可以使用 VM 的 IP 位址或 DNS 名稱，透過 SSH 連線到您的 VM。 將下列命令中的*azureuser*和*10.111.12.123*取代為系統管理員使用者名稱、IP 位址（或完整功能變數名稱），以及您的私密金鑰的路徑：
+公開金鑰已部署到您的 Azure VM 且私密金鑰儲存在本機系統中，此時可以使用 VM 的 IP 位址或 DNS 名稱，透過 SSH 連線到您的 VM。 將下列命令中的*azureuser*和*10.111.12.123*取代為系統管理員使用者名稱、IP 位址 (或完整功能變數名稱) ，以及您的私密金鑰的路徑：
 
 ```bash
 ssh -i ~/.ssh/id_rsa.pub azureuser@10.111.12.123

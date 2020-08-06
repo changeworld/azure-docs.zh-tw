@@ -7,19 +7,19 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 105cb38ccb65c96e2a1177e09839fc9d295c2b80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8948ed51a9cda3d308046f3b85b6ce338462e82c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489940"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826155"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>使用 CLI 建立和管理適用於 MySQL 的 Azure 資料庫的私用連結
 
 私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。 在本文中，您將瞭解如何使用 Azure CLI 來建立 Azure 虛擬網路中的 VM，以及具有 Azure 私用端點的適用於 MySQL 的 Azure 資料庫伺服器。
 
 > [!NOTE]
-> 這項功能適用于所有 Azure 區域，其中適用於 MySQL 的 Azure 資料庫支援一般用途和記憶體優化定價層。
+> 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MySQL 的 Azure 資料庫伺服器。 請確定資料庫伺服器屬於其中一種定價層。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -143,7 +143,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -181,7 +181,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 6. 瀏覽左側功能表中的資料庫。
 
-7. 也從 MySQL 資料庫建立或查詢資訊。
+7.  (選擇性地) 從 MySQL 資料庫建立或查詢資訊。
 
 8. 關閉對 myVm 的遠端桌面連線。
 

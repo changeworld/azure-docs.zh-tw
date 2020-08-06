@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563835"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828501"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題集
 
@@ -670,7 +670,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 ### <a name="can-i-onboard-to-a-new-workspace"></a>我可以上線到新的工作區嗎？ 
 如果您的 VM 目前並未連線到現有的 Log Analytics 工作區，您需要建立新的工作區來儲存資料。 如果您透過 Azure 入口網站為適用於 VM 的 Azure 監視器設定單一 Azure VM，建立新的預設工作區即會自動完成。
 
-如果您選擇使用以指令碼為基礎的方法，則[使用 Azure PowerShell 或 Resource Manager 範本來啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-at-scale-powershell.md)一文中會說明這些步驟。 
+如果您選擇使用以指令碼為基礎的方法，則[使用 Azure PowerShell 或 Resource Manager 範本來啟用適用於 VM 的 Azure 監視器](./insights/vminsights-enable-powershell.md)一文中會說明這些步驟。 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>如果我的 VM 已經向現有的工作區回報，我該怎麼做？
 如果您已經從虛擬機器收集資料，則您可能已經將它設為向現有的 Log Analytics 工作區回報資料。  只要該工作區位於我們支援的其中一個區域，您就可以針對該預先存在的工作區啟用適用於 VM 的 Azure 監視器。  如果您已經使用的工作區不在我們支援的其中一個區域，則您目前將無法上線到適用於 VM 的 Azure 監視器。  我們正積極努力地支援更多區域。
@@ -691,7 +691,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>我在適用於 VM 的效能圖表中看不到部分或任何資料
 我們的效能圖表已更新為使用儲存在 *InsightsMetrics* 資料表中的資料。  若要查看這些圖表中的資料，您將必須升級以使用新的 VM Insights 解決方案。  如需其他資訊，請參閱我們的 [GA FAQ](insights/vminsights-ga-release-faq.md)。
 
-如果您在磁碟表格中或在某些效能圖表中看不到效能資料，則您可能未在工作區中設定效能計數器。 若要解決此問題，請執行下列 [PowerShell 指令碼](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)。
+如果您在磁碟表格中或在某些效能圖表中看不到效能資料，則您可能未在工作區中設定效能計數器。 若要解決此問題，請執行下列 [PowerShell 指令碼](./insights/vminsights-enable-powershell.md)。
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>適用於 VM 的 Azure 監視器對應功能與服務對應有何不同？

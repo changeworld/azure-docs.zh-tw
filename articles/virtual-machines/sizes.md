@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 99419a73386f39492d78ee93aeb61f432ac9c690
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 65b4bf5e8a681bea36ab381771a2843ac1d1fbe4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421054"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827617"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Azure 中的虛擬機器大小
 
@@ -31,7 +31,7 @@ ms.locfileid: "87421054"
 - 如需各種大小的價格資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)或[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)的定價頁面。
 - 如需了解 Azure 區域中的 VM 大小可用性，請參閱 [依區域提供的產品](https://azure.microsoft.com/regions/services/)。
 - 若要查看 Azure VM 的一般限制，請參閱 [Azure 訂用帳戶和服務限制、配額及條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md)。
-- 如需 Azure 如何為其 Vm 命名的詳細資訊，請參閱[azure 虛擬機器大小命名慣例](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions)。
+- 如需 Azure 如何為其 Vm 命名的詳細資訊，請參閱[azure 虛擬機器大小命名慣例](./vm-naming-conventions.md)。
 
 ## <a name="rest-api"></a>REST API
 

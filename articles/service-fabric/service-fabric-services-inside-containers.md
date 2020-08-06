@@ -4,12 +4,12 @@ description: 了解如何在 Windows 上將 Service Fabric Reliable Services 和
 ms.topic: conceptual
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 186afb87b4668ad575208beeeb19643e6a11cedd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75466180"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824540"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>將 Windows 上的 Service Fabric Reliable Services 和 Reliable Actors 容器化
 
@@ -93,7 +93,7 @@ Service Fabric 支援將 Service Fabric 微服務 (Reliable Services 和 Reliabl
    </Policies>
    ```
 
-9. 若要設定容器隔離模式，請參閱[設定隔離模式]( https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)。 Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 下列程式碼片段顯示如何在應用程式資訊清單檔中指定隔離模式。
+9. 若要設定容器隔離模式，請參閱[設定隔離模式]( ./service-fabric-get-started-containers.md#configure-isolation-mode)。 Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 下列程式碼片段顯示如何在應用程式資訊清單檔中指定隔離模式。
 
    ```xml
    <Policies>

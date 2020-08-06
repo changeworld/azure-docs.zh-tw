@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325996"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824778"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的監視解決方案
 
@@ -192,7 +192,6 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>後續步驟
 
-* 取得[來自 Microsoft 的監視解決方案清單](/azure/azure-monitor/monitor-reference)。
+* 取得[來自 Microsoft 的監視解決方案清單](../monitor-reference.md)。
 * 了解如何[建立查詢](../log-query/log-query-overview.md)，以分析監視解決方案所收集的資料。
 * 查看[Azure 監視器的所有 Azure CLI 命令](/cli/azure/azure-cli-reference-for-monitor)。
-

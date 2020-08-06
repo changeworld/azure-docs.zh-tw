@@ -12,16 +12,16 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 479222cc9b67775d359182740dc78865da8cee38
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 06e1abc4f863674cc67c1a78a9f2f626565d296f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115925"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828926"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體
 
-本文說明如何建立可與角色型存取控制搭配使用的新 Azure Active Directory （Azure AD）應用程式和服務主體。 當您擁有需要存取或修改資源的應用程式、託管服務或自動化工具時，您可以建立應用程式的身分識別。 此身分識別就是所謂的服務主體。 資源的存取權受限於指派給服務主體的角色，讓您控制可存取的資源和層級。 基於安全理由，我們建議您一律搭配自動化工具使用服務主體，而不是讓服務主體透過使用者身分識別來登入。 
+本文說明如何建立新的 Azure Active Directory (Azure AD) 應用程式和服務主體，以用於以角色為基礎的存取控制。 當您擁有需要存取或修改資源的應用程式、託管服務或自動化工具時，您可以建立應用程式的身分識別。 此身分識別就是所謂的服務主體。 資源的存取權受限於指派給服務主體的角色，讓您控制可存取的資源和層級。 基於安全理由，我們建議您一律搭配自動化工具使用服務主體，而不是讓服務主體透過使用者身分識別來登入。 
 
 本文說明如何使用入口網站，在 Azure 入口網站中建立服務主體。 其中著重在說明單一租用戶應用程式，此應用程式的目的是只在一個組織內執行。 您通常會將單一租用戶應用程式用在組織內執行的企業營運系統應用程式。  您也可以[使用 Azure PowerShell 來建立服務主體](howto-authenticate-service-principal-powershell.md)。
 
@@ -101,7 +101,7 @@ ms.locfileid: "87115925"
 
    如果您未看見所尋找的訂用帳戶，請選取 [全域訂閱篩選]****。 確定您想要的訂用帳戶已針對入口網站選取。
 
-1. 選取 [存取控制 (IAM)]。
+1. 選取 [存取控制 (IAM)]  。
 1. 選取 [新增角色指派]。
 1. 選取您想要將應用程式指派給哪個角色。 例如，若要允許應用程式執行諸如**重新開機**、**啟動**和**停止**實例等動作，請選取 [**參與者**] 角色。  根據預設，請閱讀更多[可用角色](../../role-based-access-control/built-in-roles.md)的相關資訊，Azure AD 應用程式不會顯示在可用的選項中。 若要尋找您的應用程式，請搜尋名稱並加以選取。
 
@@ -109,28 +109,28 @@ ms.locfileid: "87115925"
 
 1. 選取 [儲存] 以完成角色指派。 您會在具有該範圍之角色的使用者清單中看到您的應用程式。
 
-您的服務主體已設定。 您可以開始使用它來執行指令碼或應用程式。 若要管理您的服務主體（許可權、使用者同意的許可權，請參閱哪些使用者已同意、查看許可權、登入資訊等），請移至**企業應用程式**。
+您的服務主體已設定。 您可以開始使用它來執行指令碼或應用程式。 若要管理您的服務主體 (許可權、使用者同意的許可權、查看哪些使用者已同意、審查許可權、查看登入資訊，以及更多) ，請前往**企業應用程式**。
 
 下節說明如何取得以程式設計方式登入時所需的值。
 
 ## <a name="get-tenant-and-app-id-values-for-signing-in"></a>取得用於登入的租使用者和應用程式識別碼值
 
-以程式設計方式登入時，您必須將租使用者識別碼與您的驗證要求和應用程式識別碼一起傳遞。  您也需要憑證或驗證金鑰（如下一節所述）。 若要取得這些值，請使用下列步驟︰
+以程式設計方式登入時，您必須將租使用者識別碼與您的驗證要求和應用程式識別碼一起傳遞。  您也需要憑證或驗證金鑰， () 下一節中所述。 若要取得這些值，請使用下列步驟︰
 
 1. 選取 **Azure Active Directory**。
 1. 在 Azure AD 中，從 [應用程式註冊]**** 選取您的應用程式。
-1. 複製目錄（租使用者）識別碼，並將它儲存在您的應用程式代碼中。
+1. 複製 (租使用者) 識別碼的目錄，並將它儲存在您的應用程式程式碼中。
 
     ![複製目錄 (租用戶) 識別碼並將它儲存在您的應用程式程式碼中。](./media/howto-create-service-principal-portal/copy-tenant-id.png)
 
-    目錄（租使用者）識別碼也可以在預設目錄的 [總覽] 頁面中找到。
+     (租使用者) 識別碼的目錄也可以在預設目錄的 [總覽] 頁面中找到。
 
 1. 複製 [應用程式識別碼]**** 並儲存在您的應用程式碼中。
 
    ![複製應用程式 (用戶端) 識別碼](./media/howto-create-service-principal-portal/copy-app-id.png)
 
 ## <a name="upload-a-certificate-or-create-a-secret-for-signing-in"></a>上傳憑證或建立密碼以進行登入
-服務主體有兩種可用的驗證類型：密碼型驗證（應用程式密碼）和以憑證為基礎的驗證。  我們建議使用憑證，但您也可以建立新的應用程式密碼。
+服務主體有兩種可用的驗證類型：以密碼為基礎的驗證 (應用程式密碼) 和以憑證為基礎的驗證。  我們建議使用憑證，但您也可以建立新的應用程式密碼。
 
 ### <a name="upload-a-certificate"></a>上傳憑證
 
@@ -155,7 +155,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 1. 選取 **Azure Active Directory**。
 1. 在 Azure AD 中，從 [應用程式註冊]**** 選取您的應用程式。
 1. 選取 [憑證和秘密]。
-1. 選取 [**上傳憑證**]，然後選取憑證（現有的憑證或您匯出的自我簽署憑證）。
+1. 選取 [**上傳憑證**]，然後選取憑證 (現有憑證或您匯出) 的自我簽署憑證。
 
     ![選取 [上傳憑證]，然後選取您想要新增的憑證](./media/howto-create-service-principal-portal/upload-cert.png)
 
@@ -187,5 +187,5 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 ## <a name="next-steps"></a>後續步驟
 * 瞭解如何[使用 Azure PowerShell 來建立服務主體](howto-authenticate-service-principal-powershell.md)。
-* 若要了解如何指定安全性原則，請參閱 [Azure 角色型存取控制](../../role-based-access-control/role-assignments-portal.md)。  
+* 若要瞭解如何指定安全性原則，請參閱[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)。  
 * 如需可授與或拒絕使用者的可用動作清單，請參閱 [Azure Resource Manager 資源提供者作業](../../role-based-access-control/resource-provider-operations.md)。

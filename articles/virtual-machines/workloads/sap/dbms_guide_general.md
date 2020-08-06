@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525461"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827413"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -174,7 +174,7 @@ Azure 儲存體帳戶是系統管理建構，也是限制的緣由。 標準儲�
 
 請記住標準儲存體對每個儲存體帳戶都有 IOPS 限制。 請參閱 [Azure 儲存體的可擴縮性和效能目標](../../../storage/common/scalability-targets-standard-account.md) (機器翻譯) 一文中包含**總要求率**的資料列。 每個 Azure 訂閱也有儲存體帳戶數目的初始限制。 將較大 SAP 環境的 VHD 平均分散到不同儲存體帳戶，可避免達到這些儲存體帳戶的限制。 討論包含上千個 VHD 的數百部虛擬機器，是很乏味的工作。
 
-因為不建議使用 DBMS 部署的標準儲存體搭配 SAP 工作負載，所以標準儲存體的參考和建議僅限於此簡短[文章](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)
+因為不建議使用 DBMS 部署的標準儲存體搭配 SAP 工作負載，所以標準儲存體的參考和建議僅限於此簡短[文章](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance)
 
 為避免跨不同 Azure 儲存體帳戶的 VHD 規劃及部署系統管理工作，Microsoft 在 2017 年引進了 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)。 標準儲存體和進階儲存體皆可使用受控磁碟。 相較於非受控磁碟，受控磁碟的主要優點如下：
 
@@ -327,7 +327,7 @@ DBMS VM 與 SAP 應用程式層之間的流量一律透過負載平衡器路由�
 
 建議搭配位於 SAP 應用程式層與 DBMS 層之間的負載平衡器設定 DirectServerReturn。 此設定可減少兩層之間的網路延遲。
 
-如需如何使用 SQL Server Always On 設定此設定的範例，請參閱[在 Azure 中設定 Always On 可用性群組的 ILB 接聽程式](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener) (機器翻譯)。
+如需如何使用 SQL Server Always On 設定此設定的範例，請參閱[在 Azure 中設定 Always On 可用性群組的 ILB 接聽程式](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener) (機器翻譯)。
 
 如果使用已發佈 GitHub JSON 範本作為 Azure 中 SAP 基礎結構部署的參考，請研讀 [SAP 3 層系統範本](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md)。 您也可以在此範本中，了解負載平衡器的正確設定。
 

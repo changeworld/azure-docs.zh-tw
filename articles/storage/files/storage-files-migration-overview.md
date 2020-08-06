@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660750"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827855"
 ---
 # <a name="migrate-to-azure-file-shares"></a>遷移至 Azure 檔案共用
 
 本文涵蓋遷移至 Azure 檔案共用的基本層面。
 
-本文包含遷移的基本概念，以及一份遷移指南的表格。 這些指南可協助您將檔案移至 Azure 檔案共用。 這些指南會根據您的資料所在位置，以及您要移至哪一個部署模型（僅限雲端或混合式）來進行組織。
+本文包含遷移的基本概念，以及一份遷移指南的表格。 這些指南可協助您將檔案移至 Azure 檔案共用。 這些指南會根據您的資料所在位置，以及您要移至哪一個部署模型 (僅限雲端或混合式) 來進行組織。
 
 ## <a name="migration-basics"></a>遷移基本概念
 
@@ -53,7 +53,7 @@ Azure 有多種可用的雲端儲存體類型。 將檔案遷移至 Azure 的基
 
 不同于 Azure blob 中的物件儲存體，Azure 檔案共用可以原生方式儲存檔案中繼資料。 Azure 檔案共用也會保留檔案和資料夾階層、屬性和許可權。 NTFS 許可權可以儲存在檔案和資料夾中，因為它們是在內部部署。
 
-Active Directory 的使用者，也就是其內部部署網域控制站，可以原生方式存取 Azure 檔案共用。 因此，使用者可以 Azure Active Directory Domain Services （Azure AD DS）。 每個都會使用其目前的身分識別，根據共用許可權以及檔案和資料夾 Acl 來取得存取權。 此行為類似于連接到內部部署檔案共用的使用者。
+Active Directory 的使用者，也就是其內部部署網域控制站，可以原生方式存取 Azure 檔案共用。 因此，Azure Active Directory Domain Services (Azure AD DS) 的使用者。 每個都會使用其目前的身分識別，根據共用許可權以及檔案和資料夾 Acl 來取得存取權。 此行為類似于連接到內部部署檔案共用的使用者。
 
 替代資料流程是檔案精確度的主要層面，目前無法儲存在 Azure 檔案共用中的檔案。 使用 Azure 檔案同步時，它會保留在內部部署。
 
@@ -81,9 +81,9 @@ Active Directory 的使用者，也就是其內部部署網域控制站，可以
 | 來源 | 目標： </br>混合式部署 | 目標： </br>僅限雲端部署 |
 |:---|:--|:--|
 | | 工具組合：| 工具組合： |
-| Windows Server 2012 R2 和更新版本 | <ul><li>[Azure 檔案同步](storage-sync-files-deployment-guide.md)</li><li>[Azure 檔案同步和 Azure 資料箱](storage-sync-offline-data-transfer.md)</li><li>Azure 檔案同步和儲存體遷移服務</li></ul> | <ul><li>Azure 檔案同步</li><li>Azure 檔案同步和資料箱</li><li>Azure 檔案同步和儲存體遷移服務</li><li>RoboCopy</li></ul> |
+| Windows Server 2012 R2 和更新版本 | <ul><li>[Azure 檔案同步](storage-sync-files-deployment-guide.md)</li><li>[Azure 檔案同步和 Azure 資料箱](storage-sync-offline-data-transfer.md)</li><li>[在雲端中 Azure 檔案同步和預先植入的檔案](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure 檔案同步和儲存體遷移服務</li></ul> | <ul><li>Azure 檔案同步</li><li>Azure 檔案同步和資料箱</li><li>Azure 檔案同步和儲存體遷移服務</li><li>RoboCopy</li></ul> |
 | Windows Server 2012 和更早版本 | <ul><li>Azure 檔案同步和資料箱</li><li>Azure 檔案同步和儲存體遷移服務</li></ul> | <ul><li>Azure 檔案同步和儲存體遷移服務</li><li>RoboCopy</li></ul> |
-| 網路連接存放裝置（NAS） | <ul><li>[Azure 檔案同步和 RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
+|  (NAS) 的網路連接存放裝置 | <ul><li>[Azure 檔案同步和 RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
 | Linux 或 Samba | <ul><li>[Azure 檔案同步和 RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
 | Microsoft Azure StorSimple 雲端設備8100或 StorSimple 雲端設備8600 | <ul><li>[Azure 檔案同步和 StorSimple 雲端設備8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
 | StorSimple 雲端設備1200 | <ul><li>[Azure 檔案同步](storage-files-migration-storsimple-1200.md)</li></ul> | |
@@ -97,7 +97,7 @@ Active Directory 的使用者，也就是其內部部署網域控制站，可以
 
 * 此工具是否支援檔案複製的來源和目標位置？
 
-* 此工具支援來源與目標儲存位置之間的網路路徑或可用的通訊協定（例如 REST、SMB 或 NFS）嗎？
+* 此工具是否支援您的網路路徑或可用的通訊協定 (例如來源和目標儲存位置之間的 REST、SMB 或 NFS) ？
 
 * 此工具會保留來源和目標位置所支援的必要檔案精確度嗎？
 
@@ -111,7 +111,7 @@ Active Directory 的使用者，也就是其內部部署網域控制站，可以
 
     第一次執行此工具時，它會複製大量資料。 這個初始執行可能會持續一段時間。 這通常會持續比您想要讓商務程式的資料來源離線。
 
-    藉由將來源鏡像至目標（如同**robocopy/MIR**），您可以在該相同的來源和目標上再次執行此工具。 執行速度會更快，因為它只需要傳輸在上一次執行之後發生的來源變更。 以這種方式重新執行複製工具可以大幅減少停機時間。
+    藉由使用**robocopy/MIR**) 將來源鏡像至目標 (，您可以在該相同的來源和目標上再次執行此工具。 執行速度會更快，因為它只需要傳輸在上一次執行之後發生的來源變更。 以這種方式重新執行複製工具可以大幅減少停機時間。
 
 下表將分類 Microsoft 工具及其目前適用于 Azure 檔案共用的適用性：
 
@@ -138,7 +138,7 @@ RoboCopy 是最適用于檔案遷移的其中一項工具。 它是 Windows 的�
 
 #### <a name="treesize-from-jam-software-gmbh"></a>從卡紙軟體 GmbH TreeSize
 
-Azure 檔案同步主要是以專案（檔案和資料夾）的數目，而不是總儲存體數量來調整。 TreeSize 工具可讓您判斷 Windows Server 磁片區上的專案數。
+Azure 檔案同步會 (檔案和資料夾) 的專案數，而不是總儲存體數量。 TreeSize 工具可讓您判斷 Windows Server 磁片區上的專案數。
 
 您可以使用工具來建立[Azure 檔案同步部署](storage-sync-files-deployment-guide.md)之前的觀點。 當雲端階層處理部署之後，您也可以使用它。 在這種情況下，您會看到專案數目，以及哪些目錄最常使用您的伺服器快取。
 
@@ -146,11 +146,11 @@ Azure 檔案同步主要是以專案（檔案和資料夾）的數目，而不�
 
 ## <a name="next-steps"></a>後續步驟
 
-1. 建立您想要部署 Azure 檔案共用（僅限雲端或混合式）的方案。
+1. 建立一個方案，以將 Azure 檔案共用部署 (您想要的僅限雲端或混合式) 。
 1. 請參閱可用的遷移指南清單，尋找符合 Azure 檔案共用來源和部署的詳細指南。
 
 以下是本文中所述 Azure 檔案儲存體技術的詳細資訊：
 
 * [Azure 檔案共用總覽](storage-files-introduction.md)
-* [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
+* [針對 Azure 檔案同步部署進行規劃](storage-sync-files-planning.md) \(部分機器翻譯\)
 * [Azure 檔案同步：雲端階層處理](storage-sync-cloud-tiering.md)

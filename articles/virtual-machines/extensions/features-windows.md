@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c28fe96fe88a3b0744aaad72d49e8e2f52912fb6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082625"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829079"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>適用於 Windows 的虛擬機器擴充功能和功能
 
@@ -36,13 +36,13 @@ Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛�
 
 - 使用適用於 Windows 的 DSC 擴充功能將 PowerShell 預期狀態設定套用至 VM。 如需詳細資訊，請參閱 [Azure 期望狀態組態擴充功能簡介](dsc-overview.md)。
 - 設定監視具有 Log Analytics 代理程式 VM 擴充功能的 VM。 如需詳細資訊，請參閱[將 Azure vm 連線至 Azure 監視器記錄](../../azure-monitor/learn/quick-collect-azurevm.md)。
-- 使用 Chef 設定 Azure VM。 如需詳細資訊，請參閱[使用 Chef 自動化 Azure VM 部署](../../chef/chef-automation.md)。
+- 使用 Chef 設定 Azure VM。 如需詳細資訊，請參閱[使用 Chef 自動化 Azure VM 部署](/azure/developer/chef/windows-vm-configure)。
 - 使用 Datadog 副檔名設定 Azure 基礎結構的監視。 如需詳細資訊，請參閱 [Datadog 部落格](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 
 
 除了處理序特定擴充功能，自訂指令碼延伸模組適用於 Windows 和 Linux 虛擬機器。 適用於 Windows 的自訂指令碼擴充功能允許在 VM 上執行任何 PowerShell 指令碼。 自訂指令碼對於設計需要超過原生 Azure 工具可提供之設定的 Azure 部署很有用。 如需詳細資訊，請參閱 [Windows VM 自訂指令碼擴充功能](custom-script-windows.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要處理虛擬機器上的擴充功能，您必須安裝 Azure Windows 代理程式。 某些個別的擴充會有先決條件，例如可存取資源或相依性。
 
@@ -65,14 +65,14 @@ Windows 客體代理程式可在多種 OS 上執行，但具有擴充功能的 O
 
 #### <a name="network-access"></a>網路存取
 
-擴充功能套件可從 Azure 儲存體擴充功能存放庫下載，且擴充功能狀態上傳會發佈至 Azure 儲存體。 如果您使用[支援](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)的代理程式版本，則不需要允許存取 VM 區域中的 Azure 儲存體，因為可以使用代理程式將通訊重新導向至 Azure 網狀架構控制器以進行代理程式通訊（透過私人 IP [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)上的特殊許可權通道 HostGAPlugin 功能）。 如果您使用不受支援的代理程式版本，則必須允許從虛擬機器對該區域中的 Azure 儲存體進行存取。
+擴充功能套件可從 Azure 儲存體擴充功能存放庫下載，且擴充功能狀態上傳會發佈至 Azure 儲存體。 如果您使用[支援](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)的代理程式版本，則不需要允許存取 VM 區域中的 Azure 儲存體，因為可以透過私人 IP [168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)) 上的特殊許可權通道，使用代理程式將通訊重新導向至 Azure 網狀架構控制器以進行代理程式通訊 (HostGAPlugin 功能。 如果您使用不受支援的代理程式版本，則必須允許從虛擬機器對該區域中的 Azure 儲存體進行存取。
 
 > [!IMPORTANT]
 > 如果您已使用來賓防火牆或 proxy 來封鎖對*168.63.129.16*的存取，則無論上述情況，延伸模組都會失敗。 需要端口80、443和32526。
 
 代理程式只能用來下載擴充功能套件和報告狀態。 例如，如果需要從 GitHub 下載指令碼 (自訂指令碼)，或需要存取 Azure 儲存體 (Azure 備份) 才能安裝擴充功能，則必須開啟其他防火牆/網路安全性群組連接埠。 不同的擴充功能有不同需求，因為它們是自成一格的應用程式。 對於需要存取 Azure 儲存體或 Azure Active Directory 的延伸模組，您可以允許使用[AZURE NSG 服務](../../virtual-network/security-overview.md#service-tags)標籤來存取儲存體或 AzureActiveDirectory。
 
-Windows 來賓代理程式沒有 proxy 伺服器支援，可讓您透過重新導向代理程式流量要求，這表示 Windows 來賓代理程式會依賴您的自訂 proxy （如果有的話），以透過 IP 168.63.129.16 存取網際網路或主機上的資源。
+Windows 來賓代理程式沒有 proxy 伺服器支援，可讓您透過重新導向代理程式流量要求，這表示如果您有一個) 可透過 IP 168.63.129.16 存取網際網路上的資源或主機上的資源，Windows 來賓代理程式會依賴您的自訂 proxy (。
 
 ## <a name="discover-vm-extensions"></a>探索 VM 擴充功能
 
@@ -254,7 +254,7 @@ VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本�
 
 在使用擴充功能的 Azure IaaS VM 上，您可能會在 [憑證] 主控台中看到具有「 **_Windows AZURE CRP 憑證_** 產生器」主體的憑證。 在傳統的 RDFE VM 上，這些憑證的主體名稱**_為 [Windows Azure 服務管理_**] [擴充功能]。
 
-這些憑證會在擴充功能所使用的受保護設定（密碼、其他認證）傳輸期間，保護 VM 和其主機之間的通訊。 憑證是由 Azure 網狀架構控制器所建立，並會傳遞至 VM 代理程式。 如果您每天停止並啟動 VM，網狀架構控制器可能會建立新的憑證。 憑證會儲存在電腦的「個人」憑證存放區中。 您可以刪除這些憑證。 VM 代理程式會視需要重新建立憑證。
+這些憑證會在傳輸受保護的設定時，保護 VM 與其主機之間的通訊 (密碼、其他) 延伸模組使用的認證。 憑證是由 Azure 網狀架構控制器所建立，並會傳遞至 VM 代理程式。 如果您每天停止並啟動 VM，網狀架構控制器可能會建立新的憑證。 憑證會儲存在電腦的「個人」憑證存放區中。 您可以刪除這些憑證。 VM 代理程式會視需要重新建立憑證。
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>如何更新代理程式和擴充功能？
 

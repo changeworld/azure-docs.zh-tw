@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ef3c2161e5a032983a2cbc9e4ccdf60af6920a7d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323106"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824982"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>工作區型 Application Insights 資源 (預覽)
 
@@ -19,7 +19,7 @@ ms.locfileid: "87323106"
 這麼做也能夠在您的各資源上進行一般角色型存取控制 (RBAC)，而不需要跨應用程式/工作區查詢。
 
 > [!NOTE]
-> 工作區型 Application Insights 資源的資料內嵌和保留會透過資料所在的 Log Analytics 工作區來計費。 [深入瞭解]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights)工作區型 Application Insights 資源的計費。
+> 工作區型 Application Insights 資源的資料內嵌和保留會透過資料所在的 Log Analytics 工作區來計費。 [深入瞭解]( ./pricing.md#workspace-based-application-insights)工作區型 Application Insights 資源的計費。
 
 若要測試新的體驗，請登入 [Azure 入口網站](https://portal.azure.com)，並建立 Application Insights 資源：
 
@@ -204,4 +204,3 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../platform/metrics-charts.md
 [start]: ./app-insights-overview.md
-

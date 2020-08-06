@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326064"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825356"
 ---
 # <a name="using-service-map-solution-in-azure"></a>在 Azure 中使用服務對應解決方案
 
@@ -35,7 +35,7 @@ ms.locfileid: "87326064"
 ## <a name="enable-service-map"></a>啟用服務對應
 
 1. 從[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)啟用服務對應解決方案，或使用[從方案庫新增監視解決方案](solutions.md)中所述的程式。
-1. 在[Windows 上安裝 dependency agent，](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows)或在您要取得資料的每部電腦上安裝相依性[代理程式](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)。 相依性代理程式可以監視緊接鄰近點的連線，因此您可能不需要在每部電腦上都有代理程式。
+1. 在[Windows 上安裝 dependency agent，](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-windows)或在您要取得資料的每部電腦上安裝相依性[代理程式](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-linux)。 相依性代理程式可以監視緊接鄰近點的連線，因此您可能不需要在每部電腦上都有代理程式。
 
 您可以在 Azure 入口網站中從 Log Analytics 工作區存取服務對應，然後從左窗格選取 [解決方案]**** 選項。<br><br> ![在工作區中選取 [解決方案] 選項](./media/service-map/select-solution-from-workspace.png)。<br> 從解決方案清單中，選取 [ServiceMap(workspaceName)]****，然後在 [服務對應解決方案概觀] 頁面中，按一下 [服務對應摘要] 圖格。<br><br> ![[服務對應摘要] 圖格](./media/service-map/service-map-summary-tile.png)。
 
@@ -154,7 +154,7 @@ ms.locfileid: "87326064"
 
 某些處理序在機器上扮演特殊角色︰Web 伺服器、應用程式伺服器及資料庫等。 服務對應會為程序和機器方塊加上角色圖示註解，以協助您一下就識別出程序或伺服器所扮演的角色。
 
-| 角色圖示 | 說明 |
+| 角色圖示 | 描述 |
 |:--|:--|
 | ![網頁伺服器](media/service-map/role-web-server.png) | 網頁伺服器 |
 | ![應用程式伺服器](media/service-map/role-application-server.png) | 應用程式伺服器 |
@@ -189,7 +189,7 @@ ms.locfileid: "87326064"
 
 ![伺服器連接埠群組](media/service-map/server-port-groups.png)
 
-## <a name="context-menu"></a>操作功能表
+## <a name="context-menu"></a>捷徑功能表
 
 按一下任何伺服器右上角的省略符號 (...)，會顯示該伺服器的內容功能表。
 
@@ -326,7 +326,7 @@ Linux：
 
 為了管理成本和複雜度，連線記錄不代表個別的實體網路連線。 將多個實體網路連線群組為一個邏輯連線，其接著會反映於各自的資料表中。  這表示，*VMConnection* 資料表中的記錄代表一個邏輯群組，而非觀測到的個別實體連線。 在指定的一分鐘時間間隔內，共用下列屬性相同值的實體網路連線會彙總為 *VMConnection* 中的單一邏輯記錄。 
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `Direction` |連線的方向，值為 *inbound* 或 *outbound* |
 | `Machine` |電腦 FQDN |
@@ -338,7 +338,7 @@ Linux：
 
 為了說明群組的影響，會在記錄的下列屬性中提供群組實體連線數目的相關資訊：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `LinksEstablished` |已在報告時間範圍內建立的實體網路連線數目 |
 | `LinksTerminated` |已在報告時間範圍內終止的實體網路連線數目 |
@@ -349,7 +349,7 @@ Linux：
 
 除了連線計數計量，在指定邏輯連線或網路連接埠上傳送與接收的資料量相關資訊也會包含於記錄的下列屬性中：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `BytesSent` |已在報告時間範圍內傳送的位元組總數 |
 | `BytesReceived` |已在報告時間範圍內接收的位元組總數 |
@@ -377,7 +377,7 @@ Linux：
 
 *VMConnection* 也會在記錄的下列屬性中，包含每個連線記錄遠端的地理位置資訊： 
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `RemoteCountry` |主控 RemoteIp 的國家/地區名稱。  例如，*美國* |
 | `RemoteLatitude` |地理位置緯度。  例如，*47.68* |
@@ -387,7 +387,7 @@ Linux：
 
 *VMConnection* 資料表中的每個 RemoteIp 屬性均會根據一組具有已知惡意活動的 IP 進行檢查。 如果 RemoteIp 被識別為惡意的，將在記錄的下列屬性中填入下列屬性 (如果 IP 被視為不是惡意的，則它們是空的)：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 位址 |
 | `IndicatorThreadType` |偵測到的威脅指標是下列值之一：*殭屍網路*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*惡意程式碼*、*網路釣魚*、*Proxy*、*PUA*、*關注清單*。   |
@@ -405,7 +405,7 @@ Linux：
 
 類型為 *ServiceMapComputer_CL* 的記錄會有伺服器 (具有服務對應代理程式) 的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -431,7 +431,7 @@ Linux：
 
 類型為 *ServiceMapProcess_CL* 的記錄會有伺服器 (具有服務對應代理程式) 上 TCP 連線處理程序的清查資料。 這些記錄具有下表中的屬性：
 
-| 屬性 | 說明 |
+| 屬性 | 描述 |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -565,13 +565,13 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 Microsoft Dependency Agent 建置於 Microsoft Visual Studio 執行階段程式庫之上。 如果程式庫安裝期間發生問題，就會出現訊息。 
 
-執行階段程式庫安裝程式會在 %LOCALAPPDATA%\temp 資料夾中建立記錄。 檔案是 `dd_vcredist_arch_yyyymmddhhmmss.log` ，其中的*架構*是 `x86` 或， `amd64` 而*yyyymmddhhmmss.ffffff*是建立記錄時的日期和時間（24小時制）。 記錄會提供導致無法安裝之問題的詳細資料。
+執行階段程式庫安裝程式會在 %LOCALAPPDATA%\temp 資料夾中建立記錄。 檔案是 `dd_vcredist_arch_yyyymmddhhmmss.log` ，其中的*架構*是 `x86` 或， `amd64` 而*yyyymmddhhmmss.ffffff*是記錄建立時 (24 小時制的日期和時間) 。 記錄會提供導致無法安裝之問題的詳細資料。
 
 如果可以先行安裝[最新的執行階段程式庫](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)，將會十分有用。
 
 下表列出代碼和建議的解決方式。
 
-| 程式碼 | 說明 | 解決方案 |
+| 程式碼 | 描述 | 解決方案 |
 |:--|:--|:--|
 | 0x17 | 程式庫安裝程式會要求尚未安裝的 Windows 更新。 | 查看最新的程式庫安裝程式記錄。<br><br>如果的參考 `Windows8.1-KB2999226-x64.msu` 後面接著一行 `Error 0x80240017: Failed to execute MSU package,` ，表示您沒有安裝 KB2999226 的必要條件。 請依照 [Windows 中的通用 C 執行階段](https://support.microsoft.com/kb/2999226)一文中必要條件一節的指示進行。 您可能需要執行 Windows Update 並重新開機多次，才能安裝必要條件。<br><br>再次執行 Microsoft Dependency Agent 安裝程式。 |
 
@@ -598,9 +598,8 @@ Microsoft Dependency Agent 建置於 Microsoft Visual Studio 執行階段程式�
 
 如果您在服務對應中看到電腦，但它沒有進程或連接資料，表示相依性代理程式已安裝且正在執行，但未載入核心驅動程式。 
 
-檢查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或 `/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
+檢查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) 或 `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) 。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
 
 ## <a name="suggestions"></a>建議
 
 您對「服務對應」或這份文件有任何意見反應要提供給我們嗎？  請瀏覽我們的[使用者意見頁面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map) \(英文\)，您可以在此頁面提出功能建議或對現有的建議進行投票。
-

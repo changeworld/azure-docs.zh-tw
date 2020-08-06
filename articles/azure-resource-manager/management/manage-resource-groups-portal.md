@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: a6788651928b631d9298867a140f29b273f14734
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: feee3a0d6de97ac6aaa1f9a92f20860f3f461ae3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057546"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827226"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>使用 Azure 入口網站來管理 Azure Resource Manager 資源群組
 
@@ -46,7 +46,7 @@ ms.locfileid: "86057546"
      ![建立資源群組](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. 選取 [檢閱+建立]
 6. 選取 [建立]。 建立資源群組需要幾秒鐘的時間。
-7. 從頂端功能表選取 [重新整理] 以重新整理資源群組清單，**然後選取新**建立的資源群組以開啟它。 或從頂端選取 [**通知**] （鐘圖示），然後選取 [**移至資源群組**] 以開啟新建立的資源群組
+7. 從頂端功能表選取 [重新整理] 以重新整理資源群組清單，**然後選取新**建立的資源群組以開啟它。 或選取 [**通知**] (頂端的鐘圖示) ，然後選取 [**移至資源群組**] 以開啟新建立的資源群組
 
     ![前往資源群組](./media/manage-resource-groups-portal/manage-resource-groups-add-group-go-to-resource-group.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "86057546"
 
 ## <a name="manage-access-to-resource-groups"></a>管理資源群組的存取權
 
-[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)是您在 Azure 中管理資源存取權的方式。 如需詳細資料，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
+Azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)是您在 azure 中管理資源存取權的方式。 如需詳細資料，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

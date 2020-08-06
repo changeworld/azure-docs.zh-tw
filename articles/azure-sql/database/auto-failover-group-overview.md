@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: 00b7f675e7dd8fb347399ee7740318e129f12746
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504172"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826529"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "87504172"
 
 ## <a name="terminology-and-capabilities"></a>術語和功能
 
-- **容錯移轉群組（霧化）**
+- **容錯移轉群組 (霧化) **
 
   容錯移轉群組是由單一伺服器或受管理的實例所管理的一組資料庫，可以在所有或部分主資料庫因為主要區域中斷而變成無法使用時，以一個單位容錯移轉至另一個區域。 當它針對 SQL 受控執行個體建立時，容錯移轉群組會包含實例中的所有使用者資料庫，因此實例上只能設定一個容錯移轉群組。
   
@@ -82,7 +82,7 @@ ms.locfileid: "87504172"
 
 - **DNS 區域**
 
-  建立新的 SQL 受控執行個體時，自動產生的唯一識別碼。 已布建此實例的多網域（SAN）憑證，以驗證相同 DNS 區域中任何實例的用戶端連接。 相同容錯移轉群組中的兩個受控實例必須共用 DNS 區域。
+  建立新的 SQL 受控執行個體時，自動產生的唯一識別碼。 已布建此實例的多網域 (SAN) 憑證，以驗證相同 DNS 區域中任何實例的用戶端連線。 相同容錯移轉群組中的兩個受控實例必須共用 DNS 區域。
   
   > [!NOTE]
   > 針對 SQL Database 所建立的容錯移轉群組不需要 DNS 區域識別碼。
@@ -135,7 +135,7 @@ ms.locfileid: "87504172"
   
 ## <a name="permissions"></a>權限
 
-容錯移轉群組的許可權是透過[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)來管理。 [ [SQL Server 參與者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)] 角色具有管理容錯移轉群組的所有必要許可權。
+容錯移轉群組的許可權是透過[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)進行管理。 [ [SQL Server 參與者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)] 角色具有管理容錯移轉群組的所有必要許可權。
 
 ### <a name="create-failover-group"></a>建立容錯移轉群組
 
@@ -226,7 +226,7 @@ ms.locfileid: "87504172"
 
 ### <a name="creating-the-secondary-instance"></a>建立次要實例
 
-為確保在容錯移轉後，主要和次要實例都必須位於相同的 DNS 區域中，而無法中斷連接到主要 SQL 受控執行個體。 它會保證相同的多網域（SAN）憑證可用於驗證容錯移轉群組中兩個實例之一的用戶端連接。 當您的應用程式準備好進行生產環境部署時，請在不同的區域中建立次要 SQL 受控執行個體，並確定它與主要 SQL 受控執行個體共用 DNS 區域。 若要這麼做，您可以 `DNS Zone Partner` 使用 Azure 入口網站、PowerShell 或 REST API 來指定選擇性參數。
+為確保在容錯移轉後，主要和次要實例都必須位於相同的 DNS 區域中，而無法中斷連接到主要 SQL 受控執行個體。 它會保證相同的多網域 (SAN) 憑證可以用來驗證容錯移轉群組中兩個實例之一的用戶端連線。 當您的應用程式準備好進行生產環境部署時，請在不同的區域中建立次要 SQL 受控執行個體，並確定它與主要 SQL 受控執行個體共用 DNS 區域。 若要這麼做，您可以 `DNS Zone Partner` 使用 Azure 入口網站、PowerShell 或 REST API 來指定選擇性參數。
 
 > [!IMPORTANT]
 > 在子網中建立的第一個受控實例會針對相同子網中的所有後續實例決定 DNS 區域。 這表示來自相同子網的兩個實例不能屬於不同的 DNS 區域。
@@ -320,7 +320,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ### <a name="using-failover-groups-and-virtual-network-rules"></a>使用容錯移轉群組和虛擬網路規則
 
-如果您使用[虛擬網路服務端點和規則](vnet-service-endpoint-rule-overview.md)來限制 SQL DATABASE 或 SQL 受控執行個體中的資料庫存取，請注意每個虛擬網路服務端點只適用于一個 Azure 區域。 端點無法讓其他區域接受來自子網路的通訊。 因此，只有部署到相同區域中的用戶端應用程式可以連線到主要資料庫。 因為容錯移轉會導致 SQL Database 的用戶端會話重新路由至不同（次要）區域中的伺服器，所以如果源自該區域外的用戶端，這些會話將會失敗。 基於這個理由，如果參與的伺服器或實例包含在虛擬網路規則中，就無法啟用自動容錯移轉原則。 若要支援手動容錯移轉，請遵循下列步驟：
+如果您使用[虛擬網路服務端點和規則](vnet-service-endpoint-rule-overview.md)來限制 SQL DATABASE 或 SQL 受控執行個體中的資料庫存取，請注意每個虛擬網路服務端點只適用于一個 Azure 區域。 端點無法讓其他區域接受來自子網路的通訊。 因此，只有部署到相同區域中的用戶端應用程式可以連線到主要資料庫。 因為容錯移轉會導致 SQL Database 的用戶端會話重新路由至不同 (次要) 區域中的伺服器，所以如果來自該區域外的用戶端，這些會話將會失敗。 基於這個理由，如果參與的伺服器或實例包含在虛擬網路規則中，就無法啟用自動容錯移轉原則。 若要支援手動容錯移轉，請遵循下列步驟：
 
 1. 在次要地區中佈建您應用程式 (Web 服務、虛擬機器等) 前端元件的備援副本
 2. 分別設定主要和次要伺服器的[虛擬網路規則](vnet-service-endpoint-rule-overview.md)
@@ -354,10 +354,10 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 - SQL 受控執行個體的兩個實例必須位於不同的 Azure 區域中。
 - 兩個 SQL 受控執行個體實例必須是相同的服務層級，而且具有相同的儲存體大小。
-- 您的 SQL 受控執行個體的次要實例必須是空的（沒有使用者資料庫）。
+- 您的 SQL 受控執行個體的次要實例必須是空的， (沒有任何使用者資料庫) 。
 - SQL 受控執行個體實例所使用的虛擬網路必須透過[VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)或[Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)來連接。 當兩個虛擬網路透過內部部署網路連線時，請確定沒有防火牆規則封鎖埠5022和11000-11999。 目前不支援轉移的全域 VNet 對等互連。
 - 這兩個 SQL 受控執行個體 Vnet 不能有重迭的 IP 位址。
-- 您必須設定網路安全性群組（NSG），讓埠5022和範圍 11000 ~ 12000 針對來自其他受控實例之子網的連線開啟輸入和輸出。 這是為了允許實例之間的複寫流量。
+- 您必須設定網路安全性群組 (NSG) 讓埠5022，而 11000 ~ 12000 的範圍會針對來自其他受控實例之子網的連線開啟輸入和輸出。 這是為了允許實例之間的複寫流量。
 
    > [!IMPORTANT]
    > 設定錯誤的 NSG 安全性規則會導致資料庫複製作業停滯。
@@ -398,7 +398,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>以程式設計方式管理容錯移轉群組
 
-如前所述，自動容錯移轉群組和主動式異地複寫也可以使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需如何執行存取角色的詳細資訊，請參閱[azure 角色型存取控制（AZURE RBAC）](../../role-based-access-control/overview.md)。
+如前所述，自動容錯移轉群組和主動式異地複寫也可以使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需如何執行存取角色的詳細資訊，請參閱[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 
 ### <a name="manage-sql-database-failover"></a>管理 SQL Database 容錯移轉
 
@@ -415,7 +415,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Command | 說明 |
+| Command | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
@@ -442,7 +442,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-| Cmdlet | 說明 |
+| Cmdlet | 描述 |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |此命令會建立容錯移轉群組，並同時在主要和次要實例上註冊|
 | [設定-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |修改容錯移轉群組的設定|
@@ -453,7 +453,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-| Command | 說明 |
+| Command | 描述 |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |此命令會建立容錯移轉群組，並同時在主要和次要伺服器上註冊|
 | [az sql 容錯移轉-群組刪除](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | 從伺服器移除容錯移轉群組 |
