@@ -3,12 +3,13 @@ title: Azure CLI 指令碼範例 - 建立 Batch 帳戶 - Batch 服務
 description: 此指令碼會在 Batch 服務模式中建立 Azure Batch 帳戶，並顯示如何查詢或更新帳戶的各種屬性。
 ms.topic: sample
 ms.date: 01/29/2018
-ms.openlocfilehash: 5fce745340c583b902c98716678a9b7afcfc002c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 42f2766130c9809fe2e05d9ce82bf8a78fc712f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681916"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494412"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI 範例 - 在 Batch 服務模式中建立 Batch 帳戶
 

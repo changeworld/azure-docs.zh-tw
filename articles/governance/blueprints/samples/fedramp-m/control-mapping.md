@@ -1,14 +1,14 @@
 ---
 title: FedRAMP Moderate 藍圖範例控制項
 description: FedRAMP Moderate 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 05/14/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: c95b47034fbf18f2588e2c4134729162c9bb7cc5
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 0115e3018b0e2510625f4eea6e163b51e1beb6d7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816262"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495840"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate 藍圖範例的控制項對應
 

@@ -4,19 +4,19 @@ description: 在 Azure SQL 受控執行個體中建立受控執行個體的 Azur
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/25/2019
-ms.openlocfilehash: 9d0058fd90590b10a0d5745bce1875db9ad35745
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 54e1aa993f177a4d3bc255287ae8c2fb14cf65af
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518889"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497268"
 ---
 # <a name="use-cli-to-create-an-azure-sql-managed-instance"></a>使用 CLI 建立 Azure SQL 受控執行個體
 

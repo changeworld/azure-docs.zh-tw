@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 11/28/2018
-ms.openlocfilehash: 3e0c17bbb413c2036ad1a3794dc029aaef0fe68c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3a646e7f59f4002892edf9210658a966cbc051f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74771710"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498645"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>使用 Azure CLI 建立 MariaDB 伺服器並設定防火牆規則
 此範例 CLI 指令碼會建立「適用於 MariaDB 的 Azure 資料庫」伺服器，並設定伺服器等級防火牆規則。 成功執行指令碼後，即可從所有 Azure 服務和已設定的 IP 位址存取 MariaDB 伺服器。
@@ -33,7 +33,7 @@ ms.locfileid: "74771710"
 ## <a name="script-explanation"></a>指令碼說明
 此指令碼會使用下表中簡述的命令：
 
-| **命令** | **注意** |
+| **命令** | **注意事項** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 建立用來存放所有資源的資源群組。 |
 | [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) | 建立託管資料庫的 MariaDB 伺服器。 |
@@ -42,4 +42,4 @@ ms.locfileid: "74771710"
 
 ## <a name="next-steps"></a>後續步驟
 - 了解 Azure CLI 的詳細資訊：[Azure CLI 文件](/cli/azure)。
-- 嘗試其他指令碼：[「適用於 MariaDB 的 Azure 資料庫」的 Azure CLI 範例](../sample-scripts-azure-cli.md)
+- 嘗試額外的指令碼：[「適用於 MariaDB 的 Azure 資料庫」的 Azure CLI 範例](../sample-scripts-azure-cli.md)

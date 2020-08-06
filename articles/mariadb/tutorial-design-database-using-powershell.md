@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.custom: mvc
-ms.openlocfilehash: 6af5fa85306db885359d3de66a9a50f187015b75
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 6c17c746dfe0ce81da4cfe486b830837c37cdda4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023951"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496027"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-powershell"></a>教學課程：使用 PowerShell 來設計適用於 MariaDB 的 Azure 資料庫
 
@@ -56,7 +56,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) Cmdlet 來建立 [Azure 資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 資源群組是一個邏輯容器，Azure 資源會在其中以群組方式部署及管理。
 
-下列範例會在 [美國西部] 區域中建立名為 myresourcegroup 的資源群組。
+下列範例會在 [美國西部]**** 區域中建立名為 myresourcegroup**** 的資源群組。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myresourcegroup -Location westus
@@ -204,7 +204,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 已還原伺服器的位置與定價層值與原始伺服器相同。
 
-完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，與還原啟動時有效的現有伺服器相同。 您可以從新伺服器的 [概觀] 頁面變更密碼。
+完成還原程序後，找出新的伺服器，確認資料如預期般還原。 新伺服器的伺服器管理員登入名稱和密碼，與還原啟動時有效的現有伺服器相同。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
 在還原期間建立的新伺服器不會有原始伺服器中的 VNet 服務端點。 您必須為新伺服器分別設定這些規則。 系統會還原原始伺服器的防火牆規則。
 

@@ -3,12 +3,13 @@ title: 快速入門：使用 Azure CLI 進行新原則指派
 description: 在本快速入門中，使用 Azure 入口網站建立 Azure 原則指派，以識別不符合規範的資源。
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: 33db6b4098dc0a69f4dabbea62fc9627cdc948eb
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2c289aa01362fcf0ede24bc1da7e8aef9e9be072
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85558925"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496673"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>快速入門：建立原則指派，以便使用 Azure CLI 識別不相容資源
 

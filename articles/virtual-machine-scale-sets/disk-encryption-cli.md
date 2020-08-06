@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
-ms.custom: mimckitt
-ms.openlocfilehash: fa86773f52c05818f4abea2b7a8b5347e1778274
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurecli
+ms.openlocfilehash: dfb8a0dc6c27b042319f43bc5970dd8d1bc2b094
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046314"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496945"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 加密虛擬機器擴展集中的 OS 與連結的資料磁碟
 

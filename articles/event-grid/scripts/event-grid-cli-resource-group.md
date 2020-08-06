@@ -4,12 +4,13 @@ description: 本文提供範例 Azure CLI 指令碼，示範如何訂閱資源�
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 33f377fc4101aaba34629d94b7bcb2bc9a53f0c3
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: f655ed3f2b6a3cef89c493137bd34732a60e414a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171273"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494089"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-with-azure-cli"></a>使用 Azure CLI 訂閱資源群組的事件
 
@@ -35,10 +36,10 @@ ms.locfileid: "86171273"
 
 | Command | 注意 |
 |---|---|
-| [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | 建立事件格線訂用帳戶。 |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az-eventgrid-event-subscription-create) | 建立事件格線訂用帳戶。 |
 | [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) - 延伸模組版本 | 建立事件格線訂用帳戶。 |
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需查詢訂用帳戶的相關資訊，請參閱[查詢 Event Grid 訂用帳戶](../query-event-subscriptions.md)。
-* 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+* 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。

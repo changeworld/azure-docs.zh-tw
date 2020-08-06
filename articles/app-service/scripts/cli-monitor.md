@@ -8,13 +8,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 60abd47eaf176b6c802ebb8a20f74b5c1eb68f0a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: b817f3d903970f32bf5ceca466aca9f619a0c1d3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80057787"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495466"
 ---
 # <a name="monitor-an-app-service-appwith-web-server-logs-using-azure-cli"></a>使用 Azure CLI 透過 Web 伺服器記錄監視 App Service 應用程式
 

@@ -4,12 +4,12 @@ description: 比較已針對整合工作最佳化的 Microsoft 雲端服務：Po
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 1e6d1462a4f94db424081ea1567e5926806d3e81
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2e0d8f356ec8da900b4a38399ba94434c3b1b93d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082999"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809964"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>在 Azure 中選擇正確的整合和自動化服務
 
@@ -57,7 +57,7 @@ Functions 和 Logic Apps 都是可啟用無伺服器工作負載的 Azure 服務
 | **連線能力** | [約有十幾個內建繫結類型](functions-triggers-bindings.md#supported-bindings)、撰寫自訂繫結的程式碼 | [連接器的大型集合](../connectors/apis-list.md)、[適用於 B2B 的企業整合套件案例](../logic-apps/logic-apps-enterprise-integration-overview.md)、[建置自訂連接器](../logic-apps/custom-connector-overview.md) |
 | **動作** | 每個活動都是 Azure 函式；撰寫活動函式的程式碼 |[現成動作的大型集合](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | **監視** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure 入口網站](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Azure 監視器記錄](../logic-apps/monitor-logic-apps.md)|
-| **管理** | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure 入口網站](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](/rest/api/logic/)[PowerShell](/powershell/module/az.logicapp)[Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
+| **管理** | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2019) | [Azure 入口網站](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](/rest/api/logic/)[PowerShell](/powershell/module/az.logicapp)[Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
 | **執行內容** | 可以在[本機](functions-runtime-overview.md)或雲端中執行 | 只可在雲端中執行|
 
 <a name="function"></a>

@@ -7,13 +7,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/12/2017
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: ccef4443661f9227163b2bbe9cd8a6475f856caa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, seodec18, devx-track-azurecli
+ms.openlocfilehash: b4575c3227eefbb2a6bad3a8ba3c60bb9195b248
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80044888"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495568"
 ---
 # <a name="create-an-app-service-app-and-deploy-files-with-ftp-using-azure-cli"></a>使用 Azure CLI 建立 App Service 應用程式並以 FTP 部署檔案
 

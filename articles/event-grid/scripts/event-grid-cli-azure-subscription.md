@@ -4,12 +4,13 @@ description: 本文提供範例 Azure CLI 指令碼，示範如何使用 Azure C
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 04d69d440dc971908b1fe2931721c50e671cd7d9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: fe81be64ea4672d233564726cfdae5b60951057d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171392"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494327"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-azure-cli"></a>使用 Azure CLI 訂閱 Azure 訂用帳戶的事件
 
@@ -41,4 +42,4 @@ ms.locfileid: "86171392"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需查詢訂用帳戶的相關資訊，請參閱[查詢 Event Grid 訂用帳戶](../query-event-subscriptions.md)。
-* 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+* 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。

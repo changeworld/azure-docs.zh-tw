@@ -3,12 +3,13 @@ title: 將檔案共用掛接至 Python 函式應用程式 - Azure CLI
 description: 建立無伺服器 Python 函式應用程式，並使用 Azure CLI 掛接現有的檔案共用。
 ms.topic: sample
 ms.date: 03/01/2020
-ms.openlocfilehash: 3d66f84d124b36f1be335c3a2204f21690510ee8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 63ab9ba3219dc600187e73bbf124d62d3f51317a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79086285"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498203"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>使用 Azure CLI 將檔案共用掛接至 Python 函式應用程式
 

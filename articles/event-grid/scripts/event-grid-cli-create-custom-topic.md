@@ -4,12 +4,13 @@ description: 本文提供範例 Azure CLl 指令碼，示範如何建立 Azure �
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 951008a2bf3919f69429ca15382334a9618b912f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d61dac0e76fc7b7006fa36f1cb96965ccee3d863
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171307"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494123"
 ---
 # <a name="create-event-grid-custom-topic-with-azure-cli"></a>使用 Azure CLI 建立 Event Grid 自訂主題
 
@@ -29,10 +30,10 @@ ms.locfileid: "86171307"
 
 | Command | 注意 |
 |---|---|
-| [az eventgrid topic create](https://docs.microsoft.com/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | 建立 Event Grid 自訂主題。 |
+| [az eventgrid topic create](/cli/azure/eventgrid/topic#az-eventgrid-topic-create) | 建立 Event Grid 自訂主題。 |
 
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需查詢訂用帳戶的相關資訊，請參閱[查詢 Event Grid 訂用帳戶](../query-event-subscriptions.md)。
-* 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](https://docs.microsoft.com/cli/azure)。
+* 如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure)。

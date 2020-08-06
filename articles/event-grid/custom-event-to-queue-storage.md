@@ -3,12 +3,13 @@ title: 快速入門：將自訂事件傳送至儲存體佇列 - 事件方格、A
 description: 快速入門：使用 Azure 事件格線和 Azure CLI 來發佈主題，以及訂閱該事件。 儲存體佇列會用於端點。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 18f2bf42941ddd8f71f70b132ad52a47a62fc854
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e2c017b95493000b3c206aa7b2398bbf7ef464ee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86112097"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497336"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>快速入門：使用 Azure CLI 和事件方格將自訂事件路由至 Azure 佇列
 

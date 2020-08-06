@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: c233ef9cfb6ded6f3d4e96b893970d4282dfc22e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 6e4f71be1dc3cdaeb01069f234531da29a7b4977
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526974"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498696"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>教學課程：使用 Azure CLI 來建立和管理 Linux VM
 
@@ -32,7 +32,7 @@ Azure 虛擬機器提供完全可設定且彈性的計算環境。 本教學課�
 > * 調整 VM 的大小
 > * 檢視及了解 VM 狀態
 
-本教學課程會使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]  。
+本教學課程會使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
@@ -52,7 +52,7 @@ az group create --name myResourceGroupVM --location eastus
 
 使用 [az vm create](/cli/azure/vm) 命令建立虛擬機器。 
 
-建立虛擬機器時，有數個可用的選項，例如作業系統映像、磁碟大小及系統管理認證。 下列範例會建立名為 myVM  的 VM，而該 VM 執行 Ubuntu Server。 VM 上會建立名為 azureuser  的使用者帳戶，而如果預設金鑰位置 (~/.ssh  ) 沒有 SSH 金鑰，則會加以產生：
+建立虛擬機器時，有數個可用的選項，例如作業系統映像、磁碟大小及系統管理認證。 下列範例會建立名為 myVM 的 VM，而該 VM 執行 Ubuntu Server。 VM 上會建立名為 azureuser 的使用者帳戶，而如果預設金鑰位置 (~/.ssh) 沒有 SSH 金鑰，則會加以產生：
 
 ```azurecli-interactive
 az vm create \
@@ -120,7 +120,7 @@ Debian         credativ                8                   credativ:Debian:8:lat
 CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
 ```
 
-新增 `--all` 引數即可查看完整的清單。 您也可以依 `--publisher` 或 `–-offer` 來篩選此映像清單。 在此範例中，是以符合 CentOS  的供應項目作為條件來篩選此清單的所有映像。 
+新增 `--all` 引數即可查看完整的清單。 您也可以依 `--publisher` 或 `–-offer` 來篩選此映像清單。 在此範例中，是以符合 CentOS 的供應項目作為條件來篩選此清單的所有映像。 
 
 ```azurecli-interactive 
 az vm image list --offer CentOS --all --output table
@@ -139,7 +139,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309     
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-若要使用特定映像部署 VM，請記下 Urn  資料行中的值，其中包含可用來[識別](cli-ps-findimage.md#terminology)映像的發行者、供應項目、SKU 和版本號碼 (選擇性)。 指定映像時，可以使用 “latest” 來取代映像版本號碼，這會選取最新的散發版本。 在此範例中，是使用 `--image` 引數來指定最新版的 CentOS 6.5 映像。  
+若要使用特定映像部署 VM，請記下 Urn 資料行中的值，其中包含可用來[識別](cli-ps-findimage.md#terminology)映像的發行者、供應項目、SKU 和版本號碼 (選擇性)。 指定映像時，可以使用 “latest” 來取代映像版本號碼，這會選取最新的散發版本。 在此範例中，是使用 `--image` 引數來指定最新版的 CentOS 6.5 映像。  
 
 ```azurecli-interactive
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
