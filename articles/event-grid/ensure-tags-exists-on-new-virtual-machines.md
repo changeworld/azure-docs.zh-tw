@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 79f3d83417a99d40ea0d4bd101a89300bc85a393
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114511"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461998"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>教學課程：將 Azure 自動化與事件格線和 Microsoft Teams 整合
 
@@ -33,7 +33,7 @@ ms.locfileid: "86114511"
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-若要完成本教學課程，需要有 [Azure 自動化帳戶](../automation/automation-offering-get-started.md)，才能保留從 Azure 事件格線訂用帳戶觸發的 Runbook。
+若要完成本教學課程，需要有 [Azure 自動化帳戶](../automation/index.yml)，才能保留從 Azure 事件格線訂用帳戶觸發的 Runbook。
 
 * 需將 `AzureRM.Tags` 模組載入自動化帳戶中，請參閱[如何將模組匯入 Azure 自動化](../automation/automation-update-azure-modules.md)，了解如何將模組匯入 Azure 自動化。
 

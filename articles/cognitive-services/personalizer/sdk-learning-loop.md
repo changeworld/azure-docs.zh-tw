@@ -2,15 +2,15 @@
 title: 快速入門：使用 SDK 建立和使用學習迴圈 - 個人化工具
 description: 本快速入門將說明如何使用用戶端 SDK 來建立和管理您的知識庫。
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.custom: tracking-python
+ms.date: 07/30/2020
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: d4706e93470134751ade5f16e46a4323fd690f94
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 05657d350616502c3d32b500a32b394a748ab2f6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608633"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461088"
 ---
 # <a name="quickstart-personalizer-client-library"></a>快速入門：個人化工具用戶端程式庫
 

@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 91ff67f886dbf54b93e9b91822b5f8535ea77e06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079193"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461267"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教學課程：使用 Azure 事件方格和 Logic Apps 監視虛擬機器的變更
 
-若要監視及回應發生在 Azure 資源或第三方資源中的特定事件，您可以建立程式碼使用量最低的[邏輯應用程式](../logic-apps/logic-apps-overview.md)，以工作流程的形式自動化及執行工作。 這些資源可以將事件發佈至 [Azure 事件方格](../event-grid/overview.md)。 接著，Event Grid 會將這些事件發送給以佇列、Webhook 或[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)作為端點的訂閱者。 身為訂閱者，邏輯應用程式可以先等待來自 Event Grid 的這些事件，再執行自動化工作流程來執行工作。
+若要監視及回應發生在 Azure 資源或第三方資源中的特定事件，您可以建立程式碼使用量最低的[邏輯應用程式](../logic-apps/logic-apps-overview.md)，以工作流程的形式自動化及執行工作。 這些資源可以將事件發佈至 [Azure 事件方格](../event-grid/overview.md)。 接著，Event Grid 會將這些事件發送給以佇列、Webhook 或[事件中心](../event-hubs/event-hubs-about.md)作為端點的訂閱者。 身為訂閱者，邏輯應用程式可以先等待來自 Event Grid 的這些事件，再執行自動化工作流程來執行工作。
 
 例如，以下是發行者可以透過 Azure Event Grid 服務傳送給訂閱者的一些事件：
 
@@ -50,7 +50,7 @@ ms.locfileid: "87079193"
   本教學課程會使用 Office 365 Outlook 帳戶。 如果您使用不同的電子郵件帳戶，整體步驟將維持不變，但您的 UI 外觀可能會略有不同。
 
   > [!IMPORTANT]
-  > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 * 獨立於自己 Azure 資源群組中的[虛擬機器](https://azure.microsoft.com/services/virtual-machines)。 如果您尚未這樣做，請透過[建立 VM 教學課程](../virtual-machines/windows/quick-create-portal.md)來建立虛擬機器。 若要讓虛擬機器發佈事件，您[不需要執行任何其他作業](../event-grid/overview.md)。
 

@@ -3,12 +3,12 @@ title: 事件方格中自訂主題的災害復原
 description: 本教學課程將逐步說明如何設定您的事件架構，以便在某個區域中的事件方格服務狀況不良時進行復原。
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dc893973fe1f6367cd9b95de2014d92c045056f4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115075"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461675"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>為事件方格中的自訂主題建置您自己的災害復原
 災害復原著重在從應用程式功能的嚴重損失中復原。 本教學課程將逐步說明如何設定您的事件架構，以便在特定區域中的事件方格服務狀況不良時進行復原。
@@ -26,7 +26,7 @@ ms.locfileid: "86115075"
 
 1. 選取 [部署至 Azure]  ，將解決方案部署至您的訂用帳戶。 在 Azure 入口網站中，提供參數的值。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. 部署需要幾分鐘的時間才能完成。 成功部署之後，檢視 Web 應用程式，確定它正在執行。 在網頁瀏覽器中，瀏覽至：`https://<your-site-name>.azurewebsites.net`
 請確實記下此 URL，稍後您將會用到此資訊。
@@ -207,4 +207,4 @@ namespace EventGridFailoverPublisher
 
 - 了解如何[在 HTTP 端點接收事件](./receive-events.md)
 - 探索如何[將事件路由至混合式連線](./custom-event-to-hybrid-connection.md)
-- 了解如何[使用 Azure DNS 和流量管理員進行災害復原](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)
+- 了解如何[使用 Azure DNS 和流量管理員進行災害復原](../networking/disaster-recovery-dns-traffic-manager.md)
