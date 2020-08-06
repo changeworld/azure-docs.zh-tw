@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: df2a7d7de236d4a2f7a93b92d7c0ac984de6f010
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30eaa9b9f8700877607af047e5e64eca65471545
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097382"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759592"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure 儲存體總管支援週期和原則
 
@@ -41,6 +41,7 @@ Azure 儲存體總管每年發行四到六次。 Microsoft 也可能會略過此
 
 | 儲存體總管版本  | 發行日期       | 結束支援日期 |
 |:-------------------------:|:------------------:|:-------------------:|
+| v 1.14。2                   | 2020 年 7 月 16 日      | 2021年7月16日       |
 | v 1.14。1                   | 2020 年 7 月 14 日      | 2021 年 7 月 14 日       |
 | v 1.14。0                   | 2020年6月24日      | 2021 年 7 月 14 日       |
 | v 1.13。1                   | 2020年5月18日       | 2021 年 7 月 14 日       |
@@ -65,4 +66,4 @@ Azure 儲存體總管每年發行四到六次。 Microsoft 也可能會略過此
 | v 1.3。1                    | 2018年7月11日      | 2021 年 7 月 14 日       |
 | v 1.2。0                    | 2018 年 6 月 12 日      | 2021 年 7 月 14 日       |
 | v 1.1。0                    | 2018 年 5 月 9 日        | 2021 年 7 月 14 日       |
-| 1.0.0 版（及更舊版本）        | 2018 年 4 月 16 日     | 2021 年 7 月 14 日       |
+| 1.0.0 版 (和較舊的)         | 2018 年 4 月 16 日     | 2021 年 7 月 14 日       |

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 328f7bb8c03cb78f4b5375eb4f6e3d9891b83942
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291517"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760663"
 ---
 # <a name="set-up-msix-app-attach"></a>設定 MSIX 應用程式附加
 
@@ -29,7 +29,7 @@ ms.locfileid: "87291517"
 在您開始之前，設定 MSIX 應用程式附加會需要下列項目：
 
 - 存取 Windows 測試人員入口網站以取得支援 MSIX 應用程式附加 API 的 Windows 10 版本。
-- 運作中的 Windows 虛擬桌面部署。 若要瞭解如何部署 Windows 虛擬桌面（傳統），請參閱[在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。 若要瞭解如何使用 Azure Resource Manager 整合來部署 Windows 虛擬桌面，請參閱[使用 Azure 入口網站建立主機集](./create-host-pools-azure-marketplace.md)區。
+- 運作中的 Windows 虛擬桌面部署。 若要瞭解如何部署 Windows 虛擬桌面 (傳統) ，請參閱[在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。 若要瞭解如何使用 Azure Resource Manager 整合來部署 Windows 虛擬桌面，請參閱[使用 Azure 入口網站建立主機集](./create-host-pools-azure-marketplace.md)區。
 - MSIX 封裝工具。
 - Windows 虛擬桌面部署中將儲存 MSIX 套件的網路共用。
 
@@ -202,12 +202,12 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 1. 以滑鼠右鍵按一下套件並選取 [屬性]。
 2. 在出現的視窗中，選取 [數位簽章] 索引標籤。索引標籤上的清單中應該只有一個項目，如下圖所示。 選取該項目使其反白顯示，然後選取 [詳細資料]。
-3. 當數位簽章詳細資料視窗出現時，請選取 [一般] 索引標籤，然後選取 [安裝憑證]。
+3. 當 [數位簽章詳細資料] 視窗出現時，選取 [**一般**] 索引標籤，然後選取 [**查看憑證**]，再選取 [**安裝憑證**]。
 4. 當安裝程式開啟時，請選取 [本機電腦] 作為您的儲存位置，然後選取 [下一步]。
 5. 如果安裝程式詢問您是否要允許應用程式對您的裝置進行變更，請選取 [是]。
 6. 選取 [將所有憑證放入以下的存放區]，然後選取 [瀏覽]。
 7. 當選取憑證存放區視窗出現時，選取 [受信任的人]，然後選取 [確定]。
-8. 選取 [完成]。
+8. 選取 **[下一步** **] 和 [完成]**。
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>準備 PowerShell 指令碼以進行 MSIX 應用程式附加
 

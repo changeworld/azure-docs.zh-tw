@@ -4,39 +4,38 @@ description: 瞭解如何設定 Azure 通知中樞的 Windows 推播通知服務
 services: notification-hubs
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/04/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
-ms.openlocfilehash: 73304e191242725c80204efb132c26aede9ce7e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 62d73a23fff3bd15d873a579d451b2f91509b7fe
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80127316"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87758725"
 ---
 # <a name="configure-windows-push-notification-service-settings-in-the-azure-portal"></a>在 Azure 入口網站中設定 Windows 推播通知服務設定
 
-本文說明如何使用 Azure 入口網站來設定 Azure 通知中樞的 Windows 通知服務（WNS）設定。  
+本文說明如何使用 Azure 入口網站，為 Azure 通知中樞設定 Windows 通知服務 (WNS) 設定。  
 
-## <a name="prerequisites"></a>必要條件
-如果您尚未建立通知中樞，立即建立一個。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Azure 通知中樞](create-notification-hub-portal.md)。 
+## <a name="prerequisites"></a>Prerequisites
 
-## <a name="configure-windows-push-notification-service-wns"></a>設定 Windows 推播通知服務（WNS）
+如果您尚未建立通知中樞，立即建立一個。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Azure 通知中樞](create-notification-hub-portal.md)。
 
-下列程式提供設定通知中樞之 Windows 推播通知服務（WNS）設定的步驟： 
+## <a name="configure-windows-push-notification-service-wns"></a>設定 Windows 推播通知服務 (WNS) 
 
-1. 在 Azure 入口網站的 [**通知中樞**] 頁面上，選取左側功能表上的 [ **Windows （WNS）** ]。
+下列程式說明為通知中樞設定 Windows 推播通知服務 (WNS) 設定的步驟：
+
+1. 在 Azure 入口網站的 [**通知中樞**] 頁面上，選取左側功能表上的 [ **Windows (WNS) ** ]。
 2. 輸入 [套件 SID] 和 [安全性金鑰] 的值。
 3. 選取 [儲存]。
 
    ![顯示套件 SID 和安全性金鑰方塊的螢幕擷取畫面](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
 ## <a name="next-steps"></a>後續步驟
-如需教學課程，其中包含使用 Azure 通知中樞和 Windows 推播通知服務（WNS）將通知推送至通用 Windows 平臺應用程式的逐步指示，請參閱[使用 azure 通知中樞將通知傳送至 UWP 應用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)程式。
 
-
+如需教學課程，其中包含使用 Azure 通知中樞和 Windows 推播通知服務將推播通知傳送至通用 Windows 平臺應用程式的逐步指示 (WNS) ，請參閱[使用 azure 通知中樞將通知傳送至 UWP 應用](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)程式。

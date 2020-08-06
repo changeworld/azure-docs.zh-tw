@@ -494,10 +494,8 @@
       items:
         - name: 自訂關鍵字概觀
           href: custom-keyword-overview.md
-        - name: 自訂關鍵字命名方針
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: 自訂關鍵字辨識
-          href: speech-devices-sdk-create-kws.md
+        - name: 自訂關鍵字基本概念
+          href: custom-keyword-basics.md
 - name: 說話者辨識
   items:
     - name: 概觀

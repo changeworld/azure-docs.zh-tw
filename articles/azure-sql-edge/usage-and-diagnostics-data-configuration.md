@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 1f6624c454364ca19c8ce112cb1cbbef134f162d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/04/2020
-ms.locfileid: "87567917"
+ms.locfileid: "87759609"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Azure SQL Edge 使用量和診斷資料設定
 
@@ -87,7 +87,7 @@ Azure SQL Edge 使用量和診斷資料收集的本機 Audit 元件可以將服�
 
 啟用 Azure SQL Edge 上的本機審核使用方式和診斷資料
 
-1. 為新的本機 Audit 記錄儲存體建立目標目錄。 此目標目錄必須在對應至 SQL Edge 上/var/opt/mssql/路徑的相同裝入磁片區中建立。
+1. 為新的本機 Audit 記錄儲存體建立目標目錄。 此目標目錄可以在主機上或在容器內。 在下列範例中，會在與 SQL Edge 上對應至/var/opt/mssql/路徑的相同裝入磁片區中建立目標目錄。
 
    ```bash
    sudo mkdir <host mount path>/audit
@@ -95,14 +95,14 @@ Azure SQL Edge 使用量和診斷資料收集的本機 Audit 元件可以將服�
 
 2. 使用環境變數或 mssql. 檢測檔案來設定使用狀況和診斷資料的審核。
 
-   - 使用環境變數-將下列環境變數新增至您的 SQL Edge 部署。
+   - 使用環境變數-將下列環境變數新增至您的 SQL Edge 部署，並指定 audit 檔案的目標目錄。
    
-     `*MSSQL_TELEMETRY_DIR = /var/opt/mssql/audit*`
+     `*MSSQL_TELEMETRY_DIR = <host mount path>/audit*`
    
-   - 使用 mssql 檔案-在 mssql 檔案中新增下列幾行。
+   - 使用 mssql 檔案-在 mssql 檔案中新增下列幾行，並指定 audit 檔案的目標目錄。
        ```ini
        [telemetry]
-       userrequestedlocalauditdirectory  = /var/opt/mssql/audit
+       userrequestedlocalauditdirectory  = <host mount path>/audit
        ```  
 
 ## <a name="next-steps"></a>後續步驟

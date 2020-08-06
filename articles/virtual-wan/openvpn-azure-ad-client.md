@@ -5,14 +5,14 @@ services: vpn-gateway
 author: kumudD
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 08/04/2020
 ms.author: alzam
-ms.openlocfilehash: cf978f9551e5b2db885ca28d14f66586c029d913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97620192fb645dd453d1479d1e755e87cf9afd5c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082217"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761173"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>設定 P2S OpenVPN 通訊協定連線的 VPN 用戶端：Azure AD 驗證
 
@@ -122,19 +122,19 @@ ms.locfileid: "87082217"
 
 1. 在 VPN 用戶端的首頁上，選取 [ **VPN 設定**]。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto1.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto1.jpg)
 
 2. 在 [切換應用程式] 對話方塊上選取 **[是]** 。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto2.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto2.jpg)
 
 3. 請確定您要設定的連線尚未連接，然後將設定檔反白顯示，並勾選 [**自動連接]** 核取方塊。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto3.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto3.jpg)
 
 4. 選取 **[連線]** 以起始 VPN 連線。
 
-    ![自動](./media/openvpn-azure-ad-client/auto/auto4.jpg)
+    ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>診斷連線問題
 
@@ -192,7 +192,7 @@ ms.locfileid: "87082217"
 ```
 
 > [!NOTE]
-> OpenVPN Azure AD 用戶端會利用 DNS 名稱解析原則表格（NRPT）專案，這表示 DNS 伺服器不會列在的輸出底下 `ipconfig /all` 。 若要確認您的使用中 DNS 設定，請參閱 PowerShell 中[的 get-dnsclientnrptpolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) 。
+> OpenVPN Azure AD 用戶端會利用 DNS 名稱解析原則資料表 (NRPT) 專案，這表示 DNS 伺服器不會列在的輸出底下 `ipconfig /all` 。 若要確認您的使用中 DNS 設定，請參閱 PowerShell 中[的 get-dnsclientnrptpolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) 。
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>如何? 將自訂路由新增至 VPN 用戶端？
@@ -212,7 +212,7 @@ ms.locfileid: "87082217"
 </clientconfig>
 </azvpnprofile>
 ```
-### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>如何? 將所有流量導向 VPN 通道（強制通道）嗎？
+### <a name="how-do-i-direct-all-traffic-to-the-vpn-tunnel-force-tunnel"></a>如何? 將所有流量導向 VPN 通道 (強制通道) ？
 
 您可以修改已下載的設定檔 XML 檔案， ** \<includeroutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</includeroutes> **並新增標記
 
@@ -233,7 +233,7 @@ ms.locfileid: "87082217"
 </azvpnprofile>
 ```
 
-### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>如何? 封鎖（排除）來自 VPN 用戶端的路由嗎？
+### <a name="how-do-i-block-exclude-routes-from-the-vpn-client"></a>如何? 封鎖 (排除來自 VPN 用戶端的) 路由嗎？
 
 您可以修改已下載的設定檔 XML 檔案， ** \<excluderoutes> \<route> \<destination> \<mask> \</destination> \</mask> \</route> \</excluderoutes> **並新增標記
 
@@ -250,6 +250,15 @@ ms.locfileid: "87082217"
 </clientconfig>
 </azvpnprofile>
 ```
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>我可以從命令列提示字元匯入設定檔嗎？
+
+您可以從命令列提示字元匯入設定檔，方法是將下載的**azurevpnconfig.xml**檔案放在 **%userprofile%\appdata\local\packages\microsoft. AzureVpn_8wekyb3d8bbwe \localstate**資料夾中，然後執行下列命令：
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+若要強制匯入也請使用 **-f**參數
+
 
 ## <a name="next-steps"></a>後續步驟
 

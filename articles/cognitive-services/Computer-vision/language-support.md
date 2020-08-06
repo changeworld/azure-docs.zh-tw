@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 16bb5fa41389dcf1ddd8ee2e3434e15755bb0d8d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 649f1e6cf79aa17d053cc547debf5232120bb4fe
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290925"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760629"
 ---
 # <a name="language-support-for-computer-vision"></a>電腦視覺的語言支援
 
@@ -23,9 +23,9 @@ ms.locfileid: "87290925"
 
 ## <a name="optical-character-recognition-ocr"></a>光學字元辨識 (OCR)
 
-電腦視覺的 OCR Api 支援數種語言。 您不需要指定語言代碼。 如需詳細資訊，請參閱[光學字元辨識（OCR）](concept-recognizing-text.md) 。
+電腦視覺的 OCR Api 支援數種語言。 您不需要指定語言代碼。 如需詳細資訊，請參閱[光學字元辨識 (OCR) ](concept-recognizing-text.md) 。
 
-|Language| 語言代碼 | OCR API | 閱讀 v3。0 | 閱讀 3.1-preview。1 |
+|Language| 語言代碼 | OCR API | 閱讀 v3。0 | 閱讀3.1 版公開預覽 |
 |:-----|:----:|:-----:|:---:|:---:|
 |阿拉伯文 | `ar`|✔ | | |
 |簡體中文 | `zh-Hans`|✔ | |✔ |
@@ -58,7 +58,7 @@ ms.locfileid: "87290925"
 
 [分析影像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的某些動作可以傳回其他語言的結果，並以 `language` 查詢參數指定。 無論指定何種語言，其他動作都會傳回英文的結果，而其他動作則會擲回不支援語言的例外狀況。 動作是使用 `visualFeatures` 和 `details` 查詢參數所指定; 請參閱[總覽](home.md)，以取得您可以使用影像分析執行的所有動作清單。
 
-|Language | 語言代碼 | 類別 | Tags | 說明 | 成人 | 品牌 | Color | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
+|Language | 語言代碼 | 類別 | 標籤 | 描述 | 成人 | 品牌 | Color | 笑臉 | ImageType | 物件 | 名人 | 特徵點 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英文 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|
@@ -70,5 +70,5 @@ ms.locfileid: "87290925"
 
 開始使用本指南中所述的電腦視覺功能。
 
-* [分析本機影像（REST）](./quickstarts/csharp-analyze.md)
-* [解壓縮列印的文字（REST）](./quickstarts/csharp-print-text.md)
+* [ (REST) 分析本機影像](./quickstarts/csharp-analyze.md)
+* [將列印的文字解壓縮 (REST) ](./quickstarts/csharp-print-text.md)

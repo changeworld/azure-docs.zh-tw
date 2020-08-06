@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: de6311e786065bebe7399ccb3625798866e864df
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f9c5de4fb4e38d3f9ccb79c89be988fe0bbebc3c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533337"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760289"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的受控識別驗證及存取 Azure 資源
 
@@ -197,7 +197,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
 
 * `type` 屬性設定為 `UserAssigned` 的 `identity` 物件
 
-* 子 `userAssignedIdentities` 物件，指定身分識別的資源識別碼，也就是具有 `principalId` 和 `clientId` 屬性的另一個子物件
+* 子 `userAssignedIdentities` 物件，指定使用者指派的資源和名稱。
 
 這個範例會顯示 HTTP PUT 要求的邏輯應用程式資源定義，並包含非參數化的 `identity` 物件。 PUT 要求和後續 GET 作業的回應也會有此 `identity` 物件：
 
@@ -215,10 +215,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
          "identity": {
             "type": "UserAssigned",
             "userAssignedIdentities": {
-               "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user-assigned-identity-name>": {
-                  "principalId": "<principal-ID>",
-                  "clientId": "<client-ID>"
-               }
+               "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user-assigned-identity-name>": {}
             }
          },
          "properties": {
@@ -231,12 +228,6 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
    "outputs": {}
 }
 ```
-
-| 屬性 (JSON) | 值 | 描述 |
-|-----------------|-------|-------------|
-| `principalId` | <*principal-ID*> | Azure AD 租用戶中使用者指派受控識別的全域唯一識別碼 (GUID) |
-| `clientId` | <*client-ID*> | 邏輯應用程式新身分識別的全域唯一識別碼 (GUID)，用於執行階段期間的呼叫 |
-||||
 
 如果您的範本也包含受控識別的資源定義，您可以將 `identity` 物件參數化。 這個範例會顯示子 `userAssignedIdentities` 物件如何參考您在範本的 `variables` 區段中定義的 `userAssignedIdentity` 變數。 此變數會參考使用者指派的身分識別所用的資源識別碼。
 
@@ -281,22 +272,11 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
          "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
          "name": "[parameters('Template_UserAssignedIdentityName')]",
          "location": "[resourceGroup().location]",
-         "properties": {
-            "tenantId": "<tenant-ID>",
-            "principalId": "<principal-ID>",
-            "clientId": "<client-ID>"
-         }
+         "properties": {}
       }
   ]
 }
 ```
-
-| 屬性 (JSON) | 值 | 描述 |
-|-----------------|-------|-------------|
-| `tenantId` | <*Azure-AD-tenant-ID*> | 代表使用者指派的身分識別現在已是其成員的 Azure AD 租用戶的全域唯一識別碼 (GUID)。 在 Azure AD 租用戶中，服務主體會有與使用者指派的身分識別相同的名稱。 |
-| `principalId` | <*principal-ID*> | Azure AD 租用戶中使用者指派受控識別的全域唯一識別碼 (GUID) |
-| `clientId` | <*client-ID*> | 邏輯應用程式新身分識別的全域唯一識別碼 (GUID)，用於執行階段期間的呼叫 |
-||||
 
 <a name="access-other-resources"></a>
 
@@ -508,7 +488,7 @@ Azure Logic Apps 支援[*系統指派的*](../active-directory/managed-identitie
 
 ### <a name="disable-managed-identity-in-azure-resource-manager-template"></a>停用 Azure Resource Manager 範本中的受控識別
 
-如果您是使用 Azure Resource Manager 範本建立邏輯應用程式的受控識別，請將 `identity` 物件的 `type` 子屬性設定為 `None`。 對於系統受控識別，這個動作也會將主體識別碼從 Azure AD 刪除。
+如果您是使用 Azure Resource Manager 範本建立邏輯應用程式的受控識別，請將 `identity` 物件的 `type` 子屬性設定為 `None`。
 
 ```json
 "identity": {

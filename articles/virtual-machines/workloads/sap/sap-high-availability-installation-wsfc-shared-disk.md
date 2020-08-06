@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97da7428090935daf95ae28a54b8ff10bca2e546
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688886"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760901"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中的 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和共用磁碟上安裝 SAP NetWeaver HA
 
@@ -148,7 +148,7 @@ ms.locfileid: "84688886"
 
 本文說明針對為 SAP ASCS/SCS 執行個體進行叢集處理，如何使用 Windows Server 容錯移轉和叢集共用磁碟在 Azure 中安裝及設定高可用性 SAP 系統。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始安裝之前，請檢閱這些文章：
 
@@ -185,7 +185,7 @@ ms.locfileid: "84688886"
 1. 在「Windows DNS 管理員」中，為 ASCS/SCS 執行個體的虛擬主機名稱建立 DNS 項目。
 
    > [!IMPORTANT]
-   > 您指派給 ASCS/SCS 實例之虛擬主機名稱的 IP 位址，必須與您指派給 Azure Load Balancer （ \<SID\> -lb-ASCS）的 ip 位址相同。  
+   > 您指派給 ASCS/SCS 實例之虛擬主機名稱的 IP 位址，必須與您指派給 Azure Load Balancer (\<SID\> -lb-ASCS) 的 ip 位址相同。  
    >
    >
 
@@ -225,7 +225,7 @@ ms.locfileid: "84688886"
 
 若要修改 ASCS/SCS 執行個體的 SAP 設定檔：
 
-1. 將此設定檔參數新增至 SAP ASCS/SCS 執行個體設定檔：
+1. 如果使用 ENSA1，請將此設定檔參數新增至 SAP ASCS/SCS 實例設定檔。
 
    ```
    enque/encni/set_so_keepalive = true
@@ -237,6 +237,8 @@ ms.locfileid: "84688886"
    例如，新增到 SAP SCS 執行個體設定檔和對應的路徑：
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+   
+   針對 ENSA1 和 ENSA2，請確定 `keepalive` OS 參數設定如 SAP 附注[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述。   
 
 2. 若要套用變更，請重新啟動 SAP ASCS/SCS 執行個體。
 
@@ -370,7 +372,7 @@ _**圖 5：** 將 SAP ERS 執行個體的服務類型變更為延遲的自動類
 
 ## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> 安裝 SAP 主要應用程式伺服器
 
-\<SID\>在您指定用來裝載 PAS 的虛擬機器上，安裝主要應用程式伺服器（PAS）實例-0。 在 Azure 上沒有相依性。 沒有 DataKeeper 特定設定。
+\<SID\>在您指定用來裝載 PAS 的虛擬機器上，安裝主要應用程式伺服器 (PAS) 實例-0。 在 Azure 上沒有相依性。 沒有 DataKeeper 特定設定。
 
 ## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> 安裝 SAP 其他應用程式伺服器
 

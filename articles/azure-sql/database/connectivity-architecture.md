@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 06/26/2020
-ms.openlocfilehash: dc96cc704533c2b4fb5dc25b41a2440c66849b53
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1676815e1b5614a1e9aa33a1dc5ce471601bde76
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289081"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759320"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database 和 Azure Synapse 分析連線架構
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -43,15 +43,15 @@ ms.locfileid: "87289081"
 
 SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定的下列三個選項：
 
-- 重新**導向（建議）：** 用戶端會直接與裝載資料庫的節點建立連線，進而降低延遲並改善輸送量。 若要讓連接使用此模式，用戶端必須：
+- ** (建議) 重新導向：** 用戶端會直接與裝載資料庫的節點建立連線，進而降低延遲並改善輸送量。 若要讓連接使用此模式，用戶端必須：
   - 允許從用戶端到位於 11000 11999 範圍中埠上所有 Azure SQL IP 位址的輸出通訊。 使用 SQL 的服務標籤可讓您更容易管理。  
   - 允許來自用戶端的輸出通訊，以 Azure SQL Database 埠1433上的閘道 IP 位址。
 
 - **Proxy：** 在此模式中，所有連線都會透過 Azure SQL Database 閘道進行 proxy，進而增加延遲和降低輸送量。 若要讓連線使用此模式，用戶端必須允許來自用戶端的輸出通訊，以在埠1433上 Azure SQL Database 閘道 IP 位址。
 
-- **預設：** 這是在建立之後所有伺服器上生效的連線原則，除非您明確地將連線原則變更為 `Proxy` 或 `Redirect` 。 預設原則 `Redirect` 適用于來自 azure 內部的所有用戶端連線（例如，從 Azure 虛擬機器），以及 `Proxy` 源自外部的所有用戶端連線（例如，來自您的本機工作站的連線）。
+- **預設：** 這是在建立之後所有伺服器上生效的連線原則，除非您明確地將連線原則變更為 `Proxy` 或 `Redirect` 。 預設原則 `Redirect` 適用于來自 azure (的所有用戶端連線，例如，從 Azure 虛擬機器) 和源自于 `Proxy` (的所有用戶端連線，例如，來自您本機工作站) 的連接。
 
-為了將延遲降到最低及將輸送量提升到最高，強烈建議您採用 `Redirect` 連線原則，而不要採用 `Proxy` 連線原則。 不過，您必須符合如上面所述允許網路流量的額外需求。 如果用戶端是 Azure 虛擬機器，您可以使用具有[服務](../../virtual-network/security-overview.md#service-tags)標籤的網路安全性群組（NSG）來完成此動作。 如果用戶端是從內部部署工作站進行連線，則您可能需要與網路系統管理員合作，以允許網路流量通過您的公司防火牆。
+為了將延遲降到最低及將輸送量提升到最高，強烈建議您採用 `Redirect` 連線原則，而不要採用 `Proxy` 連線原則。 不過，您必須符合如上面所述允許網路流量的額外需求。 如果用戶端是 Azure 虛擬機器，您可以使用網路安全性群組來完成此操作， (NSG) 與[服務](../../virtual-network/security-overview.md#service-tags)標籤。 如果用戶端是從內部部署工作站進行連線，則您可能需要與網路系統管理員合作，以允許網路流量通過您的公司防火牆。
 
 ## <a name="connectivity-from-within-azure"></a>從 Azure 內部連線
 
@@ -105,7 +105,7 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 | 歐洲北部         | 40.113.93.91, 191.235.193.75, 52.138.224.1, 13.74.104.113 |
 | 挪威東部          | 51.120.96.0        |
 | 挪威西部          | 51.120.216.0       |
-| 南非北部   | 102.133.152.0      |
+| 南非北部   | 102.133.152.0, 102.133.120.2       |
 | 南非西部    | 102.133.24.0       |
 | 美國中南部     | 13.66.62.124, 23.98.162.75, 104.214.16.32, 20.45.121.1, 20.49.88.1   |
 | 東南亞      | 104.43.15.0, 23.100.117.95, 40.78.232.3   |
@@ -115,7 +115,7 @@ SQL Database 和 Azure Synapse 中的伺服器支援伺服器連線原則設定�
 | 阿拉伯聯合大公國北部            | 65.52.248.0        |
 | 英國南部             | 51.140.184.11      |
 | 英國西部              | 51.141.8.11        |
-| 美國中西部      | 13.78.145.25       |
+| 美國中西部      | 13.78.145.25, 13.78.248.43        |
 | 西歐          | 40.68.37.158, 191.237.232.75, 104.40.168.105, 52.236.184.163  |
 | 美國西部              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
 | 美國西部 2            | 13.66.226.202, 40.78.240.8, 40.78.248.10  |
