@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2020
 ms.author: tomfitz
-ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 915b8e13adaa440063f5db62b72fa39e1035d576
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76719937"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460774"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>使用 PowerShell 建立 Event Grid 自訂主題
 
@@ -36,9 +36,9 @@ ms.locfileid: "76719937"
 
 | Command | 注意 |
 |---|---|
-| [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | 建立 Event Grid 自訂主題。 |
+| [New-AzEventGridTopic](/powershell/module/az.eventgrid/new-azeventgridtopic) | 建立 Event Grid 自訂主題。 |
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需受控應用程式的簡介，請參閱 [Azure 受控應用程式概觀](../overview.md)。
-* 如需 PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 如需 PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](/powershell/azure/get-started-azureps)。

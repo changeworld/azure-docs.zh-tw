@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: fe53f400c1e03f0f3bb9d5e85891769d58320d84
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 31a8457b4b1ac069cafbfd9713f15fdad7142d10
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501937"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445800"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視變更及更新 Linux 虛擬機器
 
-Azure [變更追蹤](../../automation/change-tracking.md)可讓您輕鬆識別變更，而[更新管理](../../automation/automation-update-management.md)則可讓您管理 Azure Linux VM 的作業系統更新。
+Azure [變更追蹤](../../automation/change-tracking.md)可讓您輕鬆識別變更，而[更新管理](../../automation/update-management/update-mgmt-overview.md)則可讓您管理 Azure Linux VM 的作業系統更新。
 
 在本教學課程中，您會了解如何：
 
@@ -115,10 +115,10 @@ az vm create \
 | --- | --- |
 | 名稱 |用以識別更新部署的唯一名稱。 |
 |作業系統| Linux 或 Windows|
-| 要更新的群組 |對於 Azure 機器，根據訂用帳戶、資源群組、位置及標記的組合來定義查詢，以建置要包含在您部署中的動態 Azure VM 群組。 </br></br>對於非 Azure 機器，選取現有的已儲存搜尋，以選取要包含在部署中的非 Azure 機器群組。 </br></br>若要深入了解，請參閱[動態群組](../../automation/automation-update-management-groups.md)|
+| 要更新的群組 |對於 Azure 機器，根據訂用帳戶、資源群組、位置及標記的組合來定義查詢，以建置要包含在您部署中的動態 Azure VM 群組。 </br></br>對於非 Azure 機器，選取現有的已儲存搜尋，以選取要包含在部署中的非 Azure 機器群組。 </br></br>若要深入了解，請參閱[動態群組](../../automation/update-management/update-mgmt-groups.md)|
 | 要更新的機器 |選取已儲存的搜尋、已匯入的群組，或從下拉式清單中選擇 [機器]，然後選取個別的機器。 如果您選擇 [機器]，機器的整備程度會顯示於 [更新代理程式整備程度] 欄中。</br> 若要深入了解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱 [Azure 監視器記錄中的電腦群組](../../azure-monitor/platform/computer-groups.md) |
 |更新分類|選取您需要的所有更新分類|
-|包含/排除更新|這會開啟 [包含]/[排除] 頁面。 要包含或排除的更新會在個別的索引標籤上。 如需如何處理包含的詳細資訊，請參閱[排定更新部署](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment) |
+|包含/排除更新|這會開啟 [包含]/[排除] 頁面。 要包含或排除的更新會在個別的索引標籤上。 如需如何處理包含的詳細資訊，請參閱[排定更新部署](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment) |
 |排程設定|選取開始時間，並選取 [一次] 或 [週期性] 以定期執行|
 | 前置指令碼 + 後置指令碼|選取要在部署前和部署後執行的指令碼|
 | 維護時間範圍 |為更新設定的分鐘數。 此值不可小於 30 分鐘，且不可超過 6 小時 |

@@ -3,12 +3,12 @@ title: 將 Blob 儲存體事件傳送至 Web 端點 - 範本
 description: 使用 Azure 事件方格和 Azure Resource Manager 範本來建立 Blob 儲存體帳戶，並訂閱其事件。 將事件傳送到 Webhook。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 603d6bf11f2ec6988d52e69817bddf2fd3ccf3b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1d266f747671542059e0610cfcdd8cd12594e51
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103308"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460434"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>使用 ARM 範本將 Blob 儲存體事件路由至 Web 端點
 
@@ -86,7 +86,7 @@ Azure Event Grid 是一項雲端事件服務。 在本文中，您會使用 Azur
 
 如需 Azure Resource Manager 範本的詳細資訊，請參閱下列文章：
 
-* [Azure Resource Manager 文件](/azure/azure-resource-manager)
+* [Azure Resource Manager 文件](../azure-resource-manager/index.yml)
 * [定義 Azure Resource Manager 範本中的資源](/azure/templates/)
 * [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)
 * [Azure 事件方格範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)。

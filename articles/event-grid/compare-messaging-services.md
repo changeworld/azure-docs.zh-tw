@@ -3,20 +3,20 @@ title: 比較 Azure 傳訊服務
 description: 描述三個 Azure 訊息服務 - Azure 事件方格、事件中樞和服務匯流排。 建議針對不同案例挑選服務。
 ms.topic: overview
 ms.date: 07/07/2020
-ms.openlocfilehash: 9c539accbc41f56e4421b9e793c25496987363aa
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7a3a0cd7f63a67206053ae55f33bd71aee2c19c6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101370"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460400"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>選擇 Azure 訊息服務 - 事件方格、事件中樞和服務匯流排
 
 Azure 提供三種服務，協助在整個解決方案中傳遞事件訊息。 這些服務為：
 
-* [Event Grid](/azure/event-grid/)
-* [事件中樞](/azure/event-hubs/)
-* [服務匯流排](/azure/service-bus-messaging/)
+* [Event Grid](./index.yml)
+* [事件中樞](../event-hubs/index.yml)
+* [服務匯流排](../service-bus-messaging/index.yml)
 
 雖然彼此有一些相似之處，但每個服務皆針對特殊情況所設計。 本文說明這些服務之間的差異，並協助您了解應當為您的應用程式選擇哪一個服務。 在許多情況下，傳訊服務是互補的，而且可以共同使用。
 

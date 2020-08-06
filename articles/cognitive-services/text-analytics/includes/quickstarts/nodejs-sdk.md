@@ -9,12 +9,13 @@ ms.topic: include
 ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: cc5db825771369d35b447232b58a9e42b14efb4f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-javascript
+ms.openlocfilehash: b1a0425fba7dc8c6fb87f03305062f61fc431ca9
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375573"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451187"
 ---
 <a name="HOLTop"></a>
 
@@ -265,7 +266,7 @@ Document ID: 3 , Language: Chinese_Simplified
 #### <a name="version-30"></a>[3.0 版](#tab/version-3)
 
 > [!NOTE]
-> 在 `3.0-preview` 版中：
+> 在 `3.0` 版中：
 > * 實體連結是不同於 NER 的要求。
 
 建立所要分析文件所在字串的陣列。 呼叫用戶端的 `recognizeEntities()` 方法，並取得 `RecognizeEntitiesResult` 物件。 逐一查看結果清單，並印出實體名稱、類型、子類型、位移、長度和分數。

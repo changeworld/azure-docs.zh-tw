@@ -10,16 +10,16 @@ ms.date: 07/27/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: 6e8e00d7f9f529010cf99ae5a180c1ecb0a74177
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e0edd688fa34033209798603ef15352b42cd9497
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375354"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451303"
 ---
 <a name="HOLTop"></a>
 
-[參考文件](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [套件](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0) | [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[參考文件](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [程式庫原始程式碼](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [套件](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) | [範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -33,7 +33,7 @@ ms.locfileid: "87375354"
 
 ### <a name="add-the-client-library"></a>新增用戶端程式庫
 
-在您慣用的 IDE 或開發環境中建立 Maven 專案。 然後，在專案的 *pom.xml* 檔案中新增下列相依性。 您可以在線上找到[其他建置工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0)的實作語法。
+在您慣用的 IDE 或開發環境中建立 Maven 專案。 然後，在專案的 *pom.xml* 檔案中新增下列相依性。 您可以在線上找到[其他建置工具](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0)的實作語法。
 
 ```xml
 <dependencies>

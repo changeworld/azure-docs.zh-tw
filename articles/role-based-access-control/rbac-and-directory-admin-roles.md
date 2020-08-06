@@ -15,12 +15,12 @@ ms.date: 07/07/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 64b4b0bd8c1e387229144e02293b573062ab196c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 4c501368dfbeb95be1c5d2af9ff7aae3850257b3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087821"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761139"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 角色
 
@@ -131,4 +131,3 @@ Azure AD 角色會用來管理目錄中的 Azure AD 資源，例如建立或編�
 - [什麼是 Azure 角色型存取控制 (Azure RBAC)？](overview.md)
 - [Azure Active Directory 中的系統管理員角色權限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Azure 傳統訂用帳戶管理員](classic-administrators.md)
-- [雲端採用架構：Azure 中的資源存取管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

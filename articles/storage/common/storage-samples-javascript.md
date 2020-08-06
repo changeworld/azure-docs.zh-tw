@@ -7,12 +7,13 @@ ms.date: 02/19/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 1d6b4d37a3d7c4accc3e407fb6cf841600ac1c16
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 466a1318dbe0a9299eebb9259ef8e0fe9bbbc0e7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77485840"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433088"
 ---
 # <a name="azure-storage-samples-using-v12-javascript-client-libraries"></a>使用 v12 JavaScript 用戶端程式庫的 Azure 儲存體範例
 
