@@ -6,13 +6,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: devx-track-java
-ms.openlocfilehash: 26748b6847ab7061b0038ef9ca18f1b721d320e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: e962047c08dec336ba293aee96eadc0c96d1fc0f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320760"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504461"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>快速入門：使用 Azure CLI 建立服務匯流排佇列
 本快速入門說明如何使用 Azure CLI 和服務匯流排 Java 程式庫，透過服務匯流排傳送和接收訊息。 最後，如果您想要取得更多技術性的細節，您可以針對範例程式碼的關鍵元素[閱讀說明](#understand-the-sample-code)。

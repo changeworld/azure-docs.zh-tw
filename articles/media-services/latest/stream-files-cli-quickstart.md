@@ -10,15 +10,15 @@ keywords: Azure 媒體服務, 串流
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 5a90e1fdc50a6e2b1544a06f587362bf43b80369
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382778"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504444"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教學課程：編碼以 URL 為基礎的遠端檔案及串流處理影片 - Azure CLI
 

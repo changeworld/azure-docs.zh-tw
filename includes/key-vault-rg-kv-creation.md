@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 07/20/2020
 ms.author: msmbaldwin
-ms.openlocfilehash: 2b5533da1e81cf37dfba47bf84bd05f083d62dea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2917854da679816796a7f7748c3877c062995168
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013082"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512787"
 ---
 本快速入門會使用預先建立的 Azure 金鑰保存庫。 您可以遵循 [Azure CLI 快速入門](/azure/key-vault/general/quick-create-cli)、[Azure PowerShell 快速入門](/azure/key-vault/general/quick-create-powershell)或 [Azure 入口網站快速入門](/azure/key-vault/general/quick-create-portal)中的步驟來建立金鑰保存庫。 
 
@@ -21,11 +21,11 @@ ms.locfileid: "87013082"
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
 
-az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
+az keyvault create --name "<your-unique-keyvault-name>" -g "myResourceGroup"
 ```
 
 ```azurepowershell
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
-New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName "myResourceGroup" -Location "EastUS"
+New-AzKeyVault -Name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location "EastUS"
 ```

@@ -4,19 +4,19 @@ description: 將 BACPAC 檔案匯入 Azure SQL Database 中資料庫的 Azure CL
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: load & move data
+ms.custom: load & move data, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 6477d8f59d66c053ced4ceebed98082d51f92c2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a8c544f1d3b7d1255cf5a0e6d05975ea5f5ec203
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075993"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503798"
 ---
 # <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>使用 CLI 將 BACPAC 檔案匯入 SQL Database 中的資料庫
 

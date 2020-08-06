@@ -5,12 +5,13 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio Code 對 Azure Kubernetes Service 上的 Node.js 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: 286f4f37b0f34614b560c9a1758c18f5f7c586bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: a351ab92b01ac1a9cfe2834f6019bbb947751d35
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044330"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504342"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio Code 和 Node.js
 

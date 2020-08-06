@@ -4,19 +4,19 @@ description: 可將 Azure SQL Database 中的資料庫還原到自動備份中�
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: a03dd719dfeebfaf76a3f33748715d8c31df8ff5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 363278e0b9969dad652dd00debe4ffc0138e9a97
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070839"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503781"
 ---
 # <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>使用 CLI 將 Azure SQL Database 中的單一資料庫還原到較早的時間點
 
@@ -52,7 +52,7 @@ az group delete --name $resource
 
 此指令碼會使用下列命令。 下表中的每個命令都會連結至命令特定的文件。
 
-| Command | 說明 |
+| Command | 描述 |
 |---|---|
 | [az sql db restore](/cli/azure/sql/db#az-sql-db-restore) | 還原資料庫命令。 |
 

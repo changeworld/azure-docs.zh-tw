@@ -3,13 +3,13 @@ title: Azure 快速入門 - 執行 Batch 作業 - CLI
 description: 快速了解如何使用 Azure CLI 執行 Batch 作業。 從命令列或在指令碼中建立和管理 Azure 資源。
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.custom: mvc
-ms.openlocfilehash: 3ec3ab6cc988ba1d11231a1bda1eec15d6e811c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 4c56695180f8f07384f31b750cec03f9d14fb9da
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82116327"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504155"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入門：使用 Azure CLI 執行您的第一個 Batch 作業
 
@@ -70,7 +70,7 @@ az batch account login \
 
 ## <a name="create-a-pool-of-compute-nodes"></a>建立計算節點的集區
 
-您現在已有一個 Batch 帳戶，請使用 [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) 命令建立 Linux 計算節點的範例集區。 下列範例會建立名為 mypool  的集區，其中包含 2 個大小為 Standard_A1_v2  並執行 Ubuntu 16.04 LTS 的節點。 建議的節點大小可為此快速範例提供良好的效能與成本平衡。
+您現在已有一個 Batch 帳戶，請使用 [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) 命令建立 Linux 計算節點的範例集區。 下列範例會建立名為 mypool 的集區，其中包含 2 個大小為 Standard_A1_v2 並執行 Ubuntu 16.04 LTS 的節點。 建議的節點大小可為此快速範例提供良好的效能與成本平衡。
  
 ```azurecli-interactive
 az batch pool create \
@@ -103,7 +103,7 @@ az batch job create \
 
 現在使用 [az batch task create](/cli/azure/batch/task#az-batch-task-create) 命令來建立要在作業中執行的一些工作。 在此範例中，您可建立四個完全相同的工作。 每個工作都會執行 `command-line`，以顯示計算節點上的 Batch 環境變數，然後等候 90 秒。 當您使用 Batch 時，您會在此命令列中指定您的應用程式或指令碼。 Batch 提供數種方法來將應用程式和指令碼部署至計算節點。
 
-下列 Bash 指令碼會建立 4 個平行工作 (mytask1  至 mytask4  )。
+下列 Bash 指令碼會建立 4 個平行工作 (mytask1 至 mytask4)。
 
 ```azurecli-interactive 
 for i in {1..4}
@@ -121,7 +121,7 @@ done
 
 建立工作之後，Batch 會將它排入佇列以在集區上執行。 一旦節點可用來執行工作，此工作就會執行。
 
-使用 [az batch task show](/cli/azure/batch/task#az-batch-task-show) 命令來檢視 Batch 工作的狀態。 下列範例顯示其中一個集區節點上執行的 mytask1  詳細資料。
+使用 [az batch task show](/cli/azure/batch/task#az-batch-task-show) 命令來檢視 Batch 工作的狀態。 下列範例顯示其中一個集區節點上執行的 mytask1 詳細資料。
 
 ```azurecli-interactive 
 az batch task show \
@@ -133,7 +133,7 @@ az batch task show \
 
 ## <a name="view-task-output"></a>檢視工作輸出
 
-若要列出計算節點上某個工作所建立的檔案，請使用 [az batch task file list](/cli/azure/batch/task) 命令。 下列命令會列出 mytask1  所建立的檔案： 
+若要列出計算節點上某個工作所建立的檔案，請使用 [az batch task file list](/cli/azure/batch/task) 命令。 下列命令會列出 mytask1 所建立的檔案： 
 
 ```azurecli-interactive 
 az batch task file list \
