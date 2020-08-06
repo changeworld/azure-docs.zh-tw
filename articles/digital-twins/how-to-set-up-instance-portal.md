@@ -1,5 +1,5 @@
 ---
-title: 設定實例和驗證（入口網站）
+title: 設定執行個體和驗證 (入口網站)
 titleSuffix: Azure Digital Twins
 description: 請參閱如何使用 Azure 入口網站設定 Azure 數位 Twins 服務的實例
 author: baanders
@@ -7,22 +7,22 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 73b7171b89b26926992e95f77e376e7bb7731eff
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408266"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836933"
 ---
-# <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證（入口網站）
+# <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證 (入口網站) 
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
 本文涵蓋**設定新的 Azure 數位 Twins 實例**的步驟，包括建立實例和設定驗證。 完成本文之後，您將擁有可開始進行程式設計的 Azure 數位 Twins 實例。
 
 這一版的文章會使用 Azure 入口網站手動逐一執行這些步驟。 Azure 入口網站是統一的 Web 式主控台，提供有別於命令列工具的替代方案。
-* 若要使用 CLI 手動執行這些步驟，請參閱這篇文章的 CLI 版本：[*如何：設定實例和驗證（CLI）*](how-to-set-up-instance-cli.md)。
-* 若要使用部署腳本範例執行自動安裝，請參閱本文的腳本版本：[*如何：設定實例和驗證（已編寫腳本）*](how-to-set-up-instance-scripted.md)。
+* 若要使用 CLI 手動執行這些步驟，請參閱本文的 CLI 版本：[*如何：設定實例和驗證 (CLI) *](how-to-set-up-instance-cli.md)。
+* 若要使用部署腳本範例執行自動安裝，請參閱本文的腳本版本：[*如何：設定實例和驗證 (腳本) *](how-to-set-up-instance-scripted.md)。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
  
@@ -32,7 +32,7 @@ ms.locfileid: "87408266"
 
 若要能夠完成本文中的所有步驟，您必須將其分類為 Azure 訂用帳戶中的擁有者。 
 
-您可以在 Azure 入口網站的 [訂用帳戶][頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中檢查許可權等級（您可以使用此連結，或使用入口網站搜尋*列來尋找*訂用帳戶）。 尋找您所使用的訂用帳戶名稱，並在 [*我的角色*] 資料行中查看其角色。 如果您是擁有者，此值為*owner*：
+您可以在 [Azure 入口網站的 [訂用帳戶][頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中檢查許可權等級 (您可以使用此連結 *，或*使用入口網站搜尋列) 尋找訂用帳戶。 尋找您所使用的訂用帳戶名稱，並在 [*我的角色*] 資料行中查看其角色。 如果您是擁有者，此值為*owner*：
 
 :::image type="content" source="media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="Azure 入口網站中的 [訂閱] 頁面，以擁有者身分顯示使用者" lightbox="media/how-to-set-up-instance/portal/subscriptions-role.png":::
 
@@ -48,21 +48,21 @@ ms.locfileid: "87408266"
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="從 Azure 入口網站的首頁選取 [建立資源]":::
 
-在搜尋方塊中搜尋*Azure 數位 Twins* ，然後從結果中選擇 [ **azure 數位 Twins （預覽）** ] 服務。 選取 [_建立_] 按鈕，以建立服務的新實例。
+在搜尋方塊中搜尋*Azure 數位 Twins* ，然後從結果中選擇**azure 數位 Twins (預覽) **服務。 選取 [_建立_] 按鈕，以建立服務的新實例。
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="從 [Azure 數位 Twins 服務] 頁面選取 [建立]":::
 
 在下列 [*建立資源*] 頁面上，填入下列指定的值：
 * **訂**用帳戶：您所使用的 Azure 訂用帳戶
   - **資源群組**：要在其中部署實例的資源群組。 如果您還沒有考慮到現有的資源群組，您可以選取 [*建立新*的] 連結並輸入新資源群組的名稱，在這裡建立一個。
-* **位置**：部署的 Azure 數位 Twins 啟用區域。 如需區域支援的詳細資訊，請造訪[*依區域提供的 azure 產品（Azure 數位 Twins）*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
-* **資源名稱**：您的 Azure 數位 Twins 實例的名稱。 新實例的名稱在您訂用帳戶的區域中必須是唯一的（也就是說，如果您的訂用帳戶在已使用所選名稱的區域中有另一個 Azure 數位 Twins 實例，系統會要求您挑選不同的名稱）。
+* **位置**：部署的 Azure 數位 Twins 啟用區域。 如需區域支援的詳細資訊，請造訪[*依區域提供的 azure 產品 (Azure 數位 Twins) *](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
+* **資源名稱**：您的 Azure 數位 Twins 實例的名稱。 新實例的名稱在您的 (訂用帳戶區域內必須是唯一的，這表示如果您的訂用帳戶在已使用所選名稱的區域中有另一個 Azure 數位 Twins 實例，系統會要求您挑選不同的名稱) 。
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="填入描述的值，以建立 Azure 數位 Twins 資源":::
 
 完成後，選取 [審核] [ _+ 建立_]。 這會帶您前往 [摘要] 頁面，您可以在其中查看您輸入的實例詳細資料，然後按 [_建立_]。 
 
-### <a name="verify-success"></a>確認是否成功
+### <a name="verify-success-and-collect-important-values"></a>確認成功並收集重要的值
 
 推送*Create*之後，您可以在入口網站圖示列的 Azure 通知中，查看實例部署的狀態。 通知會指出部署成功的時間，而您將能夠選取 [_移至資源_] 按鈕來查看您建立的實例。
 
@@ -83,12 +83,12 @@ ms.locfileid: "87408266"
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-首先，在 Azure 入口網站中開啟 Azure 數位 Twins 實例的頁面。 從實例的功能表中，選取 [*存取控制（IAM）*]。 選取 [*新增角色指派*] 底下的 [*新增*] 按鈕。
+首先，在 Azure 入口網站中開啟 Azure 數位 Twins 實例的頁面。 從實例的功能表中，選取 [*存取控制] (IAM) *。 選取 [*新增角色指派*] 底下的 [*新增*] 按鈕。
 
-:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="從 [存取控制（IAM）] 頁面選取要新增角色指派":::
+:::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="從 [存取控制 (IAM) ] 頁面中選取 [新增角色指派]":::
 
-在下列 [*新增角色指派*] 頁面上，填入值（必須由 Azure 訂用帳戶的擁有者完成）：
-* **角色**：從下拉式功能表中選取 [ *Azure 數位 Twins 擁有者（預覽）* ]
+在下列 [*新增角色指派*] 頁面上，填入值 (必須由 Azure 訂用帳戶) 的擁有者完成：
+* **角色**：從下拉式功能表中選取 [ *Azure 數位 Twins 擁有者] (預覽) *
 * **指派存取**權：從下拉式功能表中選取 [ *Azure AD 使用者、群組或服務主體*]
 * **選取**：搜尋要指派的使用者名稱或電子郵件地址。 當您選取結果時，使用者會顯示在 [選取的*成員*] 區段中。
 
@@ -104,7 +104,7 @@ ms.locfileid: "87408266"
 
 ### <a name="verify-success"></a>確認是否成功
 
-您可以在 [*存取控制（IAM）] > [角色指派*] 下，查看您所設定的角色指派。 使用者應該會顯示在清單中，其中包含*Azure 數位 Twins 擁有者（預覽）* 的角色。 
+您可以在 [*存取控制] ([IAM) > 角色指派*] 下，查看您所設定的角色指派。 使用者應該會顯示在清單中，其中包含*Azure 數位 Twins 擁有者 (預覽) *的角色。 
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="在 Azure 入口網站中查看 Azure 數位 Twins 實例的角色指派":::
 
@@ -114,13 +114,13 @@ ms.locfileid: "87408266"
 
 [!INCLUDE [digital-twins-setup-app-registration.md](../../includes/digital-twins-setup-app-registration.md)]
 
-一開始先流覽至 Azure 入口網站中的[Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) （您可以使用此連結，或使用入口網站搜尋列來尋找）。 從 [服務] 功能表中選取 [*應用程式註冊*]，然後選取 [ *+ 新增註冊*]。
+一開始請流覽至 Azure 入口網站中的[Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) (您可以使用此連結，或使用入口網站的搜尋列) 來尋找它。 從 [服務] 功能表中選取 [*應用程式註冊*]，然後選取 [ *+ 新增註冊*]。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/new-registration.png" alt-text="Azure 入口網站中 Azure AD 服務頁面的視圖，反白顯示 [應用程式註冊] 功能表選項和 [+ 新增註冊] 按鈕":::
 
 在接下來的 [*註冊應用程式*] 頁面中，填入要求的值：
 * **名稱**：要與註冊建立關聯的 Azure AD 應用程式顯示名稱
-* **支援的帳戶類型**：選取 *[僅限此組織目錄中的帳戶] （僅限預設目錄-單一租使用者）*
+* **支援的帳戶類型**：選取 [*此組織目錄中的帳戶僅 (預設目錄-單一租使用者) *
 * 重新**導向 URI**： Azure AD 應用程式的*Azure AD 應用程式回復 URL* 。 您可以使用 `http://localhost` 。
 
 當您完成時，請按 [*註冊*] 按鈕。
@@ -141,7 +141,7 @@ ms.locfileid: "87408266"
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="顯示 Azure 數位 Twins 的 [要求 API 許可權] 頁面搜尋結果的視圖":::
 
-接下來，您將選取要授與這些 Api 的許可權。 展開 [**讀取] （1）** 許可權並核取 [*讀取*] 核取方塊，以授與此應用程式註冊讀取器和寫入器許可權。
+接下來，您將選取要授與這些 Api 的許可權。 展開 [**讀取 (1) ** ] 許可權，然後選取顯示為 [*讀取*] 的方塊，以授與此應用程式註冊讀取器和寫入器許可權。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="[要求 API 許可權] 頁面的視圖選取 Azure 數位 Twins Api 的 [讀取] 許可權":::
 
@@ -165,7 +165,7 @@ ms.locfileid: "87408266"
 
 :::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="應用程式註冊重要值的入口網站視圖":::
 
-記**下頁面上**顯示的 [*應用程式（用戶端）識別碼*] 和 [*目錄（租使用者）] 識別碼*。 稍後會需要這些值，以對[Azure 數位 Twins api 驗證用戶端應用程式](how-to-authenticate-client.md)。 如果您不是要為這類應用程式撰寫程式碼的人員，您應該將這些值與將成為的人員共用。
+請記下**您**頁面上顯示的*應用程式 (用戶端) id*和*目錄 (租使用者) 識別碼*。 稍後會需要這些值，以對[Azure 數位 Twins api 驗證用戶端應用程式](how-to-authenticate-client.md)。 如果您不是要為這類應用程式撰寫程式碼的人員，您應該將這些值與將成為的人員共用。
 
 ### <a name="other-possible-steps-for-your-organization"></a>貴組織的其他可能步驟
 

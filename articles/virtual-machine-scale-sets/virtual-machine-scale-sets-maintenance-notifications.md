@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080432"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837171"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>虛擬機器擴展集的計劃性維護通知
 
@@ -181,7 +181,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **答：** 部署在可用性設定組或虛擬機器擴展集內的虛擬機器會使用更新網域。 執行維護時，Azure 會遵守更新網域條件約束，而不會重新啟動來自不同更新網域 (在相同的可用性設定組內) 的 VM。 Azure 也會至少等候 30 分鐘，然後才移至下一個 VM 群組。 
 
-如需有關高可用性的詳細資訊，請參閱 [Azure 中虛擬機器的區域和可用性](../virtual-machines/windows/availability.md)。
+如需有關高可用性的詳細資訊，請參閱 [Azure 中虛擬機器的區域和可用性](../virtual-machines/availability.md)。
 
 **問：我如何收到計劃性維護的相關通知？**
 

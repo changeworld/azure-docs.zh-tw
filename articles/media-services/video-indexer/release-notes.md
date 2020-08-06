@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 08/05/2020
 ms.author: juliako
-ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042628"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837304"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒體服務影片索引子版本資訊
 
@@ -30,13 +30,35 @@ ms.locfileid: "87042628"
 * 錯誤修正
 * 已被取代的功能
 
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="ga-for-multi-language-identification"></a>適用于多語言識別的 GA
+
+多語言識別會從預覽移至 GA，並可供生產力使用。
+
+「預覽至 GA」轉換沒有任何相關的定價影響。
+
+### <a name="video-indexer-website-improvements"></a>影片索引子網站改良功能
+
+#### <a name="adjustments-in-the-video-gallery"></a>影片庫中的調整
+
+新增了新的搜尋列，以進行深度深入解析搜尋，並加入其他篩選功能。 也增強了搜尋結果。
+
+新的清單視圖，能夠使用多個檔案來排序和管理影片封存。
+
+#### <a name="new-panel-for-easy-selection-and-configuration"></a>用於輕鬆選取和設定的新面板
+
+已新增用於輕鬆選取和使用者設定的側邊面板，可讓您進行簡單且快速的帳戶建立和共用，以及設定設定。
+
+側邊面板也會用於使用者喜好設定和說明。
+
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="search-by-topics"></a>依主題搜尋
 
-您現在可以使用搜尋 API 來搜尋包含特定主題的影片（僅限 API）。
+您現在可以使用搜尋 API，以僅)  (API 的特定主題來搜尋影片。
 
-主題會加入做為 `textScope` （選擇性參數）的一部分。 如需詳細資訊，請參閱[API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) 。  
+主題會加入做為 `textScope` (選擇性參數) 的一部分。 如需詳細資訊，請參閱[API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) 。  
 
 ### <a name="labels-enhancement"></a>標籤增強功能
 
@@ -81,14 +103,14 @@ ms.locfileid: "87042628"
  
     帳戶物件的 `Url` 欄位指向[影片索引子網站](https://www.videoindexer.ai/)的位置。
 針對付費帳戶， `Url` 欄位目前指向內部 URL，而不是公用網站。
-在接下來的幾周，我們將變更它，並傳回所有帳戶的[影片索引子網站](https://www.videoindexer.ai/)URL （試用版和付費）。
+在接下來的幾周，我們將變更它，並傳回所有帳戶的[影片索引子網站](https://www.videoindexer.ai/)URL， (試用版和付費) 。
 
     請勿使用內部 Url，您應該使用[影片索引子公用 api](https://api-portal.videoindexer.ai/)。
-* 如果您要在應用程式中內嵌影片索引子 Url，且 Url 未指向[影片索引子網站](https://www.videoindexer.ai/)或影片索引子 API 端點（），而不是指向 `https://api.videoindexer.ai` 區域端點（例如 `https://wus2.videoindexer.ai` ），請重新產生 url。
+* 如果您要在應用程式中內嵌影片索引子 Url，且 Url 未指向[影片索引子網站](https://www.videoindexer.ai/)或影片索引子 API 端點 (`https://api.videoindexer.ai`) 但改為區域端點 (例如 `https://wus2.videoindexer.ai`) ，請重新產生 url。
 
    您可以透過下列方式來執行此動作：
 
-    * 以指向影片索引子 widget Api 的 URL 取代 URL （例如，[深入解析 widget](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)）
+    * 以指向影片索引子 widget Api 的 URL 取代 URL (例如，[深入解析小工具](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)) 
     * 使用影片索引子網站來產生新的內嵌 URL：
          
          按下 [**播放**] 以前往您的影片頁面-> 按一下 [ ** &lt; / &gt; 內嵌**] 按鈕-> 將 URL 複製到您的應用程式中：
@@ -99,7 +121,7 @@ ms.locfileid: "87042628"
  
 ### <a name="custom-language-support-for-additional-languages"></a>其他語言的自訂語言支援
 
-影片索引子現在支援、和的自訂語言模型 `ar-SY` `en-UK` `en-AU` （僅限 API）。
+影片索引子現在支援、和的自訂語言模型 `ar-SY` ， `en-UK` `en-AU` 僅)  (API。
  
 ### <a name="delete-account-timeframe-action-update"></a>刪除帳戶時間範圍動作更新
 
@@ -111,7 +133,7 @@ ms.locfileid: "87042628"
  
 ### <a name="swagger-update"></a>Swagger 更新
 
-影片索引子會將**驗證**和**作業**整合成單一[影片索引子 OpenAPI 規格（swagger）](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 開發人員可以在[影片索引子開發人員入口網站](https://api-portal.videoindexer.ai/)中找到 api。
+影片索引子會將**驗證**和**作業**整合到單一[影片索引子 OpenAPI 規格中， (swagger) ](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 開發人員可以在[影片索引子開發人員入口網站](https://api-portal.videoindexer.ai/)中找到 api。
 
 ## <a name="december-2019"></a>2019 年 12 月
 
@@ -127,11 +149,11 @@ ms.locfileid: "87042628"
 * 密碼變更
 * 已在訂用帳戶之間移動媒體服務資源  
 
-若要修正帳戶設定，請在影片索引子入口網站中流覽至 [設定] > [帳戶] 索引標籤（以擁有者身分）
+若要修正帳戶設定，請在影片索引子入口網站中流覽至 [設定] > [帳戶] 索引標籤 (作為擁有者) 。
 
 ### <a name="configure-the-custom-vision-account"></a>設定自訂視覺帳戶
 
-使用影片索引子入口網站在付費帳戶上設定自訂視覺帳戶（先前只有 API 支援）。 若要這麼做，請登入影片索引子入口網站，選擇 [模型自訂 > 動畫字元 > 設定]。 
+使用影片索引子入口網站 (之前在付費帳戶上設定自訂視覺帳戶，這僅供 API) 支援。 若要這麼做，請登入影片索引子入口網站，選擇 [模型自訂 > 動畫字元 > 設定]。 
 
 ### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>場景、照片和主要畫面格–現在位於一個深入解析窗格
 
@@ -153,10 +175,10 @@ ms.locfileid: "87042628"
  
 * 韓文自訂語言模型支援
 
-    影片索引子現在支援 `ko-KR` API 和入口網站中韓文（）的自訂語言模型。 
-* 語音轉換文字（STT）支援的新語言
+    影片索引子現在支援在 `ko-KR` API 和入口網站中) 韓文 (的自訂語言模型。 
+* 支援語音轉換文字的新語言 (STT) 
 
-    影片索引子 Api 現在支援阿拉伯文 Levantine （ar-SY）、英文英國方言（en-GB）和英文澳大利亞方言（en-us）中的 STT。
+    影片索引子 Api 現在支援阿拉伯文 Levantine 中的 STT (ar-SY) 、英文英國方言 (en-us) 和英文澳大利亞方言 (en-us) 。
     
     針對影片上傳，我們將 zh-HANS 取代為 zh-CN，這兩者都受到支援，但 zh-CN 是建議且更精確的做法。
     
@@ -170,15 +192,15 @@ ms.locfileid: "87042628"
  
 在 IBC 2019 宣佈多項改進：
  
-* 動畫字元識別（公開預覽）
+*  (公開預覽的動畫字元識別) 
 
     能夠透過與自訂視覺整合，偵測動畫內容中的群組廣告辨識字元。 如需詳細資訊，請參閱[動畫角色偵測](animated-characters-recognition.md)。
-* 多重語言識別（公開預覽）
+* 多語言識別 (公開預覽) 
 
     在音訊播放軌中偵測多種語言的區段，並根據它們建立多語系文字記錄。 初始支援：英文、西班牙文、德文和法文。 如需詳細資訊，請參閱[自動識別並轉譯多語言內容](multi-language-identification-transcription.md)。
 * 人員和位置的命名實體解壓縮
 
-    透過自然語言處理（NLP），從語音和視覺文字中解壓縮品牌、位置和人員。
+    透過自然語言處理 (NLP) ，從語音和視覺文字中解壓縮品牌、位置和人員。
 * 編輯照片類型分類
 
     以編輯類型（如近條、中度、兩次、室內、戶外等等）標記拍照。如需詳細資訊，請參閱[編輯快照類型偵測](scenes-shots-keyframes.md#editorial-shot-type-detection)。
@@ -194,11 +216,11 @@ ms.locfileid: "87042628"
 
 ### <a name="new-editorial-shot-type-insights-available"></a>提供新的編輯快照類型深入解析
 
-新增至影片快照的新標籤會提供編輯「拍攝類型」，以使用內容建立工作流程中常用的編輯片語來識別它們，例如：極端特寫、特寫、寬、中、兩次拍照、戶外、室內、左側臉部和右方臉部（可在 JSON 中取得）。
+新增至影片快照的新標籤會提供編輯「拍攝類型」，以使用內容建立工作流程中常用的編輯片語來識別它們，例如：極端特寫、特寫、寬、中、兩次拍照、戶外、室內、左側臉部和右側臉部 (可在 JSON) 中取得。
 
 ### <a name="new-people-and-locations-entities-extraction-available"></a>新的人員和位置實體可供提取
 
-影片索引子會從影片的 OCR 和轉譯中，透過自然語言處理（NLP）識別命名位置和人員。 影片索引子會使用機器學習演算法來辨識特定位置（例如，Eiffel 塔式）或人員（例如，John Doe）在影片中被呼叫的時間。
+影片索引子會透過自然語言處理來識別已命名的位置和人員， (NLP 從影片的 OCR 和轉譯) 。 影片索引子會使用機器學習演算法來辨識特定位置 (例如，Eiffel 塔式) 或人員 (例如，在影片中呼叫 John Doe) 。
 
 ### <a name="keyframes-extraction-in-native-resolution"></a>以原生解析度解壓縮的主要畫面格
 
@@ -206,22 +228,22 @@ ms.locfileid: "87042628"
  
 ### <a name="ga-for-training-custom-face-models-from-images"></a>針對從影像定型自訂臉部模型的 GA
 
-從預覽模式移至 GA （可透過 API 和在入口網站中取得）的影像定型臉部。
+從預覽模式移至 GA (可透過 API 和入口網站) 中的影像來定型臉部。
 
 > [!NOTE]
 > 「預覽至 GA」轉換沒有任何相關的定價影響。
 
 ### <a name="hide-gallery-toggle-option"></a>隱藏圖庫切換選項
 
-使用者可以選擇隱藏入口網站中的 [圖庫] 索引標籤（類似于隱藏 [範例] 索引標籤）。
+使用者可以選擇隱藏入口網站中的 [圖庫] 索引標籤 (類似于隱藏 [範例] 索引標籤) 。
  
 ### <a name="maximum-url-size-increased"></a>增加的 URL 大小上限
 
-在編制影片索引時，支援 URL 查詢字串4096（而不是2048）。
+支援 URL 查詢字串 4096 (，而不是2048，) 編制影片索引。
  
 ### <a name="support-for-multi-lingual-projects"></a>支援多語言專案
 
-現在可以根據以不同語言編制索引的影片建立專案（僅限 API）。
+現在可以根據以不同語言編制索引的影片建立專案， (僅) API。
 
 ## <a name="july-2019"></a>2019 年 7 月
 
@@ -239,7 +261,7 @@ ms.locfileid: "87042628"
 
 您現在可以在日本東部地區建立影片索引子付費帳戶。
 
-### <a name="create-and-repair-account-api-preview"></a>建立和修復帳戶 API （預覽）
+### <a name="create-and-repair-account-api-preview"></a>建立和修復帳戶 API (預覽) 
 
 已加入新的 API，可讓您[更新 Azure 媒體服務連線端點或金鑰](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag)。
 
@@ -265,7 +287,7 @@ ms.locfileid: "87042628"
 
 ### <a name="new-download-transcript-formats--txt-and-csv"></a>新的下載文字記錄格式– TXT 和 CSV
 
-除了已支援的隱藏式字幕格式（SRT、VTT 和 TTML）之外，影片索引子現在支援以 TXT 和 CSV 格式下載文字記錄。
+除了已支援 (SRT、VTT 和 TTML) 的隱藏式字幕格式之外，影片索引子現在支援以 TXT 和 CSV 格式下載文字記錄。
 
 ## <a name="next-steps"></a>後續步驟
 

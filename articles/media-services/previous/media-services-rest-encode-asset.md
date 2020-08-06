@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9320677e970d9194e2cccad07522d7a63b6353d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9cf5a65c664df321e8cee1c867e637a4718c9ee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999967"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837324"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>如何使用媒體編碼器標準為資產編碼
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "86999967"
 
 若要透過網際網路傳遞數位視訊，您必須壓縮媒體。 數位視訊檔案十分龐大，而且可能太大而無法透過網際網路傳遞，或是太大而使您客戶的裝置無法正確顯示。 編碼是壓縮視訊和音訊，好讓客戶能檢視您的媒體的程序。
 
-編碼作業是 Azure 媒體服務中最常見的處理作業之一。 您建立編碼工作以將媒體檔案從一種編碼轉換成另一種編碼。 編碼時，您可以使用媒體服務內建的編碼器 (媒體編碼器標準)。 您也可以使用媒體服務合作夥伴所提供的編碼器。 第三方編碼器可透過 Azure Marketplace 取得。 您可以使用針對您的編碼器定義的預設字串，或使用預設組態檔，指定編碼工作的詳細資料。 若要查看可用的預設類型，請參閱 [媒體編碼器標準的工作預設](/azure/media-services/previous/media-services-mes-presets-overview)。
+編碼作業是 Azure 媒體服務中最常見的處理作業之一。 您建立編碼工作以將媒體檔案從一種編碼轉換成另一種編碼。 編碼時，您可以使用媒體服務內建的編碼器 (媒體編碼器標準)。 您也可以使用媒體服務合作夥伴所提供的編碼器。 第三方編碼器可透過 Azure Marketplace 取得。 您可以使用針對您的編碼器定義的預設字串，或使用預設組態檔，指定編碼工作的詳細資料。 若要查看可用的預設類型，請參閱 [媒體編碼器標準的工作預設](./media-services-mes-presets-overview.md)。
 
 視您想要完成的處理類型而定。每個作業可以有一或多個工作。 透過 REST API，您可以用下列其中一種方式來建立作業及其相關的工作：
 
@@ -65,7 +65,7 @@ ms.locfileid: "86999967"
 >
 >
 
-下列範例示範如何建立和張貼含有一個工作的作業，並將該工作設定為以特定的解析度與品質來為視訊編碼。 透過媒體編碼器標準進行編碼時，您可以使用 [這裡](/azure/media-services/previous/media-services-mes-presets-overview)指定的工作組態預設。
+下列範例示範如何建立和張貼含有一個工作的作業，並將該工作設定為以特定的解析度與品質來為視訊編碼。 透過媒體編碼器標準進行編碼時，您可以使用 [這裡](./media-services-mes-presets-overview.md)指定的工作組態預設。
 
 要求：
 
@@ -289,7 +289,7 @@ HTTP/1.1 201 Created
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 現在您已了解如何建立作業來為資產編碼，請參閱[如何使用媒體服務檢查作業進度](media-services-rest-check-job-progress.md)。
 
 ## <a name="see-also"></a>另請參閱

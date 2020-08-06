@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 8c6b6dcf748b0c6ef6162e9f20726123673abb33
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283260"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836916"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中建立有多個網路介面卡的 Linux 虛擬機器
 
@@ -79,7 +79,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>建立 VM 並附加 NIC
-當您建立 VM 時，指定您使用 `--nics` 建立的 NIC。 當您選取 VM 大小時也需多加注意。 您可以新增至 VM 的 NIC 總數是有限制的。 深入了解 [Linux VM 大小](sizes.md)。
+當您建立 VM 時，指定您使用 `--nics` 建立的 NIC。 當您選取 VM 大小時也需多加注意。 您可以新增至 VM 的 NIC 總數是有限制的。 深入了解 [Linux VM 大小](../sizes.md)。
 
 使用 [az vm create](/cli/azure/vm) 建立 VM。 下列範例會建立名為*myVM*的 VM：
 
@@ -97,7 +97,7 @@ az vm create \
 完成[針對多個 NIC 設定客體作業系統](#configure-guest-os-for-multiple-nics)中的步驟，將路由資料表新增至客體作業系統。
 
 ## <a name="add-a-nic-to-a-vm"></a>將 NIC 新增至 VM
-先前的步驟建立了一個有多個 NIC 的 VM。 您也可以使用 Azure CLI 將 NIC 新增至現有的 VM。 不同的 [VM 大小](sizes.md) 支援不同數量的 NIC，因此可據以調整您的 VM。 如有需要，您可以[調整 VM 的大小](change-vm-size.md)。
+先前的步驟建立了一個有多個 NIC 的 VM。 您也可以使用 Azure CLI 將 NIC 新增至現有的 VM。 不同的 [VM 大小](../sizes.md) 支援不同數量的 NIC，因此可據以調整您的 VM。 如有需要，您可以[調整 VM 的大小](change-vm-size.md)。
 
 使用 [az network nic create](/cli/azure/network/nic) 建立另一個 NIC。 下列範例會建立一個名為 myNic3** 的 NIC，此 NIC會連線到後端子網路與在先前步驟中建立的網路安全性群組：
 
@@ -242,6 +242,6 @@ ping bing.com -c 4 -I eth1
 ```
 
 ## <a name="next-steps"></a>後續步驟
-當您嘗試建立一個有多個 NIC 的 VM 時，請檢閱 [Linux VM 大小](sizes.md)。 注意每個 VM 大小所支援的 NIC 數目上限。
+當您嘗試建立一個有多個 NIC 的 VM 時，請檢閱 [Linux VM 大小](../sizes.md)。 注意每個 VM 大小所支援的 NIC 數目上限。
 
 若要進一步保護您的 VM，請使用 Just-In-Time 虛擬機器存取。 這項功能會視需要開啟 SSH 流量的網路安全性群組規則，並持續一段定義的期間。 如需詳細資訊，請參閱[使用 Just-In-Time 管理虛擬機器存取](../../security-center/security-center-just-in-time.md)。

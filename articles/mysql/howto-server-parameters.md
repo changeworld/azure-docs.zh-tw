@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/11/2020
-ms.openlocfilehash: ce8a651fcdda657a1fffa523837181031e0bbc75
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f592d6fb8fed3f15bd11d5e6ebe6ee358953748c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119798"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837223"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中設定伺服器參數
 
@@ -33,12 +33,12 @@ MySQL 的 Azure 資料庫支援某些伺服器參數的組態。 本文說明如
 
 如果 Azure 入口網站中未列出您要更新的伺服器參數，您可以選擇性地使用，在連接層級設定參數 `init_connect` 。 這會為每個連接到伺服器的用戶端設定伺服器參數。 
 
-1. 在 [設定]**** 區段下方，按一下 [伺服器參數]**** 以開啟適用於 MariaDB 的 Azure 資料庫伺服器的 [伺服器參數] 頁面。
+1. 在 [設定]**** 區段下方，按一下 [伺服器參數]**** 以開啟適用於 MySQL 伺服器的 Azure 資料庫的 [伺服器參數] 頁面。
 2. 搜尋`init_connect`
 3. 以下列格式加入伺服器參數：中的 [值] 資料 `SET parameter_name=YOUR_DESIRED_VALUE` 行。
 
     例如，您可以將設定為，以變更伺服器的字元集。 `init_connect``SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
-4. 按一下 [確定] 儲存變更。
+4. 按一下 [儲存] 以儲存變更。
 
 ## <a name="working-with-the-time-zone-parameter"></a>使用時區參數
 

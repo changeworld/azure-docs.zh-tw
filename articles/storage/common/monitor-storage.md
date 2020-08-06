@@ -1,6 +1,6 @@
 ---
 title: 監視 Azure 儲存體 | Microsoft Docs
-description: 了解如何監視 Azure 儲存體的效能和可用性。
+description: 了解如何監視 Azure 儲存體的效能和可用性。 監視 Azure 儲存體資料、瞭解設定，以及分析計量和記錄資料。
 author: normesta
 services: storage
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e1be9a7e543f8513f3b30182dfbc421dc38bdbce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182707"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836661"
 ---
 # <a name="monitor-azure-storage"></a>監視 Azure 儲存體
 
@@ -27,7 +27,7 @@ ms.locfileid: "86182707"
 
 在 Azure 入口網站中每個儲存體資源的 [概觀] 頁面包含資源使用量的簡要檢視，例如要求和每小時計費。 此資訊很實用，但只有少量的監視資料可供使用。 其中有些資料會自動進行收集，並可在您建立儲存體資源時立即進行分析。 您可使用一些設定來啟用其他類型的資料收集。
 
-## <a name="what-is-azure-monitor"></a>什麼是 Azure 監視器？
+## <a name="what-is-azure-monitor"></a>Azure 監視器是什麼？
 Azure 儲存體會使用 [Azure 監視器](../../azure-monitor/overview.md) (這是 Azure 中的完整堆疊監視服務) 來建立監視資料。 Azure 監視器提供一組完整的功能，可監視您的 Azure 資源以及其他雲端和內部部署環境中的資源。 
 
 若要深入了解 Azure 監視器，請參閱[使用 Azure 監視器來監視 Azure 資源](../../azure-monitor/insights/monitor-azure-resource.md)。 本文說明下列主題：
@@ -86,9 +86,9 @@ Azure 監視器中的計量和記錄只支援 Azure Resource Manager 儲存體�
 
 | 類別 | 描述 |
 |:---|:---|
-| StorageRead | 讀取 Blob 上的作業。 |
-| StorageWrite | 寫入 Blob 上的作業。 |
-| StorageDelete | 刪除 Blob 上的作業。 |
+| StorageRead | 讀取物件的作業。 |
+| StorageWrite | 物件的寫入作業。 |
+| StorageDelete | 刪除物件上的作業。 |
 
 ## <a name="analyze-metric-data"></a>分析計量資料
 

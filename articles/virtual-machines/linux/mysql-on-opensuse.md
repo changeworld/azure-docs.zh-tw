@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 07fde5a8e7e3d542ed3fa3bc54b761d5434ac710
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284858"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836872"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>在 Azure 中執行 OpenSUSE Linux 的虛擬機器上安裝 MySQL
 
@@ -32,7 +32,7 @@ ms.locfileid: "87284858"
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-建立 VM。 在此範例中，VM 的名稱為 myVM**，而 VM 的大小為 Standard_D2s_v3**，但您應該選擇您認為最適合您工作負載的 [VM 大小](sizes.md)。
+建立 VM。 在此範例中，VM 的名稱為 myVM**，而 VM 的大小為 Standard_D2s_v3**，但您應該選擇您認為最適合您工作負載的 [VM 大小](../sizes.md)。
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -157,7 +157,3 @@ quit
 
 ## <a name="next-steps"></a>後續步驟
 如需 MySQL 的詳細資訊，請參閱 [MySQL 文件](https://dev.mysql.com/doc)。
-
-
-
-

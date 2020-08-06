@@ -4,12 +4,12 @@ description: 提供一些關於 Azure VMware 解決方案 (AVS) 常見問題的�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003418"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836576"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware 解決方案 (AVS) 預覽的常見問題
 
@@ -25,7 +25,7 @@ ms.locfileid: "87003418"
 
 **目前可使用的 AVS 在哪裡？**
 
-在預覽期間，在北美洲的美國東部和西歐的阿姆斯特丹提供。
+服務會持續新增至新的區域，因此如需詳細資訊，請參閱[最新的服務可用性資訊](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)。 
 
 **在 Azure VMware 解決方案 (AVS) 執行個體中執行的工作負載是否可以使用或與 Azure 服務整合？**
 
@@ -57,7 +57,7 @@ ms.locfileid: "87003418"
 
 **這與 Azure VMware Solution by CloudSimple 有何不同？**
 
-透過新的 Azure VMware 解決方案，Microsoft 和 VMware 具有直接的雲端提供者合作關係。 新解決方案完全是由 Microsoft 所設計、建立及支援，並由 VMware 背書。 在架構上，解決方案是一致的，而且 VMware 技術堆疊會在 Azure 專用基礎結構上執行。
+透過新的 Azure VMware 解決方案，Microsoft 和 VMware 具有直接的雲端提供者合作關係。 新解決方案完全是由 Microsoft 設計、建立及支援，並由 VMware 背書。 在架構上，解決方案是一致的，而且 VMware 技術堆疊會在 Azure 專用基礎結構上執行。
 
 **如果我是現有的 Azure VMware 解決方案客戶，此預覽對我有何意義？**
 
@@ -65,7 +65,7 @@ CloudSimple 不會對現有的 Azure VMware 解決方案進行任何變更。 �
 
 **我是否可以透過 CloudSimple 將 Azure VMware 解決方案遷移到這個新解決方案？**
 
-是，Azure VMware 解決方案支援使用熟悉的 VMware 工具 (例如 HCX) 來進行移轉。 對於想要移轉至新解決方案的客戶，請與您的 Microsoft 帳戶小組合作，以探索選項和可用的支援。
+是，Azure VMware 解決方案支援使用熟悉的 VMware 工具 (例如 HCX) 來進行移轉。 對於想要遷移至新解決方案的客戶，請與您的 Microsoft 帳戶小組合作，以探索選項和可用的支援。
 
 
 
@@ -85,11 +85,11 @@ CloudSimple 不會對現有的 Azure VMware 解決方案進行任何變更。 �
 
 **每台主機的儲存容量是多少？**
 
-每個 ESXi 主機有兩個 vSAN diskgroups，其容量層級為 15.2 TB，而 3.2 TB NVMe 快取層（每個 diskgroup 中 1.6 TB）。
+每個 ESXi 主機有兩個 vSAN diskgroups，其容量層級為 15.2 TB，而 3.2 TB NVMe 快取層則在每個 diskgroup) 中 (1.6 TB。
 
 **每部 ESXi 主機有多少網路頻寬可用？**
 
-ESXi 主機支援最多 25 Gbps 的連線頻寬。
+每個 ESXi 主機都是使用 4 25 Gbps Nic 來設定，其中有兩個 Nic 布建供 ESXi 系統流量使用，以及針對工作負載流量布建兩個 Nic。 
 
 **資料是否儲存在待用時加密的 vSAN 資料存放區上？**
 
@@ -115,7 +115,7 @@ ESXi 主機支援最多 25 Gbps 的連線頻寬。
 
 **我是否可以針對試用叢集使用高階主機？**
 
-不可以。 高階 ESXi 主機已保留供生產叢集使用。
+否。 高階 ESXi 主機已保留供生產叢集使用。
 
 ## <a name="avs-and-vmware-software"></a>AVS 和 VMware 軟體
 
@@ -137,7 +137,7 @@ ESXi 主機支援最多 25 Gbps 的連線頻寬。
 
 **在私人雲端中，VMware 軟體的升級和更新排程為何？**
 
-私用雲端軟體配套升級的目的，是為了將軟體保留在 VMware 的最新版本軟體組合的一版中。 私人雲端軟體版本可能與個別軟體元件的最新版本（ESXi、NSX-T、vCenter、vSAN）不同。
+私用雲端軟體配套升級的目的，是為了將軟體保留在 VMware 的最新版本軟體組合的一版中。 私人雲端軟體版本可能與個別軟體元件的最新版本 (ESXi、NSX-T、vCenter、vSAN) 不同。
 
 **私人雲端軟體堆疊的更新頻率為何？**
 
@@ -197,11 +197,11 @@ ESXi 主機支援最多 25 Gbps 的連線頻寬。
 
 **如何在 AVS 預覽期間將價格結構化？**
 
-如需有關價格的一般問題，請參閱 Azure VMware 解決方案[價格](https://azure.microsoft.com/pricing/details/azure-vmware)頁面。 提出要求即可預覽價格，請洽詢您的帳戶小組，或遵循價格頁面上的連結來聯絡銷售人員。
+如需有關價格的一般問題，請參閱 Azure VMware 解決方案[價格](https://azure.microsoft.com/pricing/details/azure-vmware)頁面。 預覽定價適用于要求，請聯絡您的帳戶小組，或遵循定價頁面上的連結來聯絡銷售。
 
 **什麼單位負責支援 AVS？**
 
-對於 AVS 的支援是由 Microsoft 提供。 請注意，根據我們的預覽方針，我們將在太平洋標準時間星期一到星期五上午 9 點到下午 5 點的上班時間提供支援。 您可以從[此連結](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)提出支援票證
+對於 AVS 的支援是由 Microsoft 提供。 請注意，根據我們的預覽方針，我們將在星期一到星期五的上午9點到下午5點的 PST 上班時間提供支援。 您可以從[此連結](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)提出支援票證
 
 **我需要哪些帳戶才能建立 AVS 私人雲端？**
 

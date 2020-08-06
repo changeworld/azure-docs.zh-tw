@@ -9,12 +9,12 @@ ms.subservice: networking
 ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: f63bcbb26752dc787d508260cce0b0518cdc7c38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6113ee61d4949649b65607c0f1bd606be4edb2ac
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080398"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837154"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的網路
 
@@ -23,7 +23,7 @@ ms.locfileid: "87080398"
 本文所討論的所有概念都可以使用 Azure Resource Manager 範本來設定。 選取的功能也會包含 Azure CLI 和 PowerShell 範例。
 
 ## <a name="accelerated-networking"></a>加速網路
-Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR-IOV)，大幅提升網路效能。 若要深入了解如何使用加速網路，請參閱 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) 或 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 虛擬機器的加速網路。 若要搭配擴展集使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將 enableAcceleratedNetworking 設為 **true**。 例如:
+Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR-IOV)，大幅提升網路效能。 若要深入了解如何使用加速網路，請參閱 [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) 或 [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 虛擬機器的加速網路。 若要搭配擴展集使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將 enableAcceleratedNetworking 設為 **true**。 例如：
 
 ```json
 "networkProfile": {
@@ -90,13 +90,13 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 根據預設，擴展集會採取 VNET 和它們建立於該子網路的特定 DNS 設定。 不過，您可以直接設定擴展集的 DNS 設定。
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>使用可設定的 DNS 伺服器建立擴展集
-若要使用 Azure CLI 搭配自訂的 DNS 設定建立擴展集，將 **--dns-servers** 引數新增至 **vmss create** 命令，後面接以空格分隔的伺服器 IP 位址。 例如:
+若要使用 Azure CLI 搭配自訂的 DNS 設定建立擴展集，將 **--dns-servers** 引數新增至 **vmss create** 命令，後面接以空格分隔的伺服器 IP 位址。 例如：
 
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
 
-若要在 Azure 範本中設定自訂的 DNS 伺服器，請將 dnsSettings 屬性新增至擴展集 networkInterfaceConfigurations 區段。 例如:
+若要在 Azure 範本中設定自訂的 DNS 伺服器，請將 dnsSettings 屬性新增至擴展集 networkInterfaceConfigurations 區段。 例如：
 
 ```json
 "dnsSettings":{
@@ -107,7 +107,7 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>使用可設定的虛擬機器網域名稱建立擴展集
 若要使用 CLI 搭配自訂的虛擬機器 DNS 名稱建立擴展集，將 **--vm-domain-name** 引數新增至 **virtual machine scale set create** 命令，後面接著代表網域名稱的字串。
 
-若要在 Azure 範本中設定網域名稱，請將 **dnsSettings** 屬性新增至擴展集 **networkInterfaceConfigurations** 區段。 例如:
+若要在 Azure 範本中設定網域名稱，請將 **dnsSettings** 屬性新增至擴展集 **networkInterfaceConfigurations** 區段。 例如：
 
 ```json
 "networkProfile": {
@@ -146,14 +146,14 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 ```
 
 ## <a name="public-ipv4-per-virtual-machine"></a>每個虛擬機器的公用 IPv4
-一般情況下，Azure 擴展集虛擬機器不需要自己的公用 IP 位址。 在大部分情況下，將公用 IP 位址與負載平衡器或個別虛擬機器（也稱為 jumpbox）建立關聯，然後視需要將連入連線路由至擴展集虛擬機器（例如，透過輸入 NAT 規則），會比較經濟且安全。
+一般情況下，Azure 擴展集虛擬機器不需要自己的公用 IP 位址。 在大部分的情況下，將公用 IP 位址與負載平衡器或個別虛擬機器建立關聯 (也稱為 jumpbox) ，然後視需要將連入連線路由至擴展集虛擬機器 (例如，透過) 的輸入 NAT 規則，會比較經濟且安全。
 
 但是，某些情況會要求擴展集虛擬機器具備自己的公用 IP 位址。 例如遊戲，其中主控台需要直接連線至雲端虛擬機器，進而執行遊戲實體流程。 另一個範例是虛擬機器需要對另一個分散式資料庫中跨區域的虛擬機器進行外部連線。
 
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>使用公用 IP 每虛擬機器建立擴展集
 若要使用 CLI 建立將公用 IP 位址指派給每個虛擬機器的擴展集，請將 **--public-ip-per-vm** 參數新增至 **vmss create** 命令。 
 
-若要使用 Azure 範本建立擴展集，請確定 Microsoft.Compute/virtualMachineScaleSets 資源的 API 版本至少為 **2017-03-30**，並將 **publicIpAddressConfiguration** JSON 屬性新增至擴展集 ipConfigurations 區段。 例如:
+若要使用 Azure 範本建立擴展集，請確定 Microsoft.Compute/virtualMachineScaleSets 資源的 API 版本至少為 **2017-03-30**，並將 **publicIpAddressConfiguration** JSON 屬性新增至擴展集 ipConfigurations 區段。 例如：
 
 ```json
 "publicIpAddressConfiguration": {
@@ -169,13 +169,13 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>查詢擴展集中虛擬機器的公用 IP 位址
 若要列出使用 CLI 指派給擴展集虛擬機器的公用 IP 位址，請使用 **az vmss list-instance-public-ips** 命令。
 
-若要使用 PowerShell 列出擴展集公用 IP 位址，請使用 _Get-AzPublicIpAddress_ 命令。 例如:
+若要使用 PowerShell 列出擴展集公用 IP 位址，請使用 _Get-AzPublicIpAddress_ 命令。 例如：
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
-您也可以直接參考公用 IP 位址組態的資源識別碼，以查詢公用 IP 位址。 例如:
+您也可以直接參考公用 IP 位址組態的資源識別碼，以查詢公用 IP 位址。 例如：
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
@@ -244,7 +244,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 擴展集中連接到 VM 的每個 NIC 皆有一或多個 IP 組態與其相關聯。 每個組態會獲派一個私人 IP 位址。 每個組態可能也會有一個關聯的公用 IP 位址資源。 若要了解多少個 IP 位址可以指派到 NIC，和您可以在 Azure 訂用帳戶中使用多少個公用 IP 位址，請參閱 [Azure 限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。
 
 ## <a name="multiple-nics-per-virtual-machine"></a>每個虛擬機器的多個 NIC
-每個虛擬機器可擁有最多 8 個 NIC，根據機器大小而定。 每部電腦的 NIC 最大數目可在[VM 大小文章](../virtual-machines/windows/sizes.md)中找到。 連線至 VM 執行個體的 NIC 全都必須連線至相同的虛擬網路。 NIC 可以連線至不同子網路，但子網路必須全都屬於相同的虛擬網路。
+每個虛擬機器可擁有最多 8 個 NIC，根據機器大小而定。 每部電腦的 NIC 最大數目可在[VM 大小文章](../virtual-machines/sizes.md)中找到。 連線至 VM 執行個體的 NIC 全都必須連線至相同的虛擬網路。 NIC 可以連線至不同子網路，但子網路必須全都屬於相同的虛擬網路。
 
 下列範例是顯示多個 NIC 項目的擴展集網路設定檔，以及每個虛擬機器的多個公用 IP：
 
@@ -326,7 +326,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 
 「應用程式安全性群組」也可以直接指定至擴展集，方法是將參考新增至擴展集虛擬機器屬性的網路介面 IP 組態區段。
 
-例如:
+例如：
 
 ```json
 "networkProfile": {

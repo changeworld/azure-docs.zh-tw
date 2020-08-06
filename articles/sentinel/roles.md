@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b907fead145847d54b8b1de196586b65101b22ed
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7dded3b938444198e72d6eb87476f571dd3f4d78
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534000"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836763"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的許可權
 
-Azure Sentinel 使用以 [角色為基礎的存取控制（RBAC）](../role-based-access-control/role-assignments-portal.md)來提供可指派給 Azure 中的使用者、群組和服務的 [內建角色](../role-based-access-control/built-in-roles.md)   。
+Azure Sentinel 使用 [azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)來提供可指派給 Azure 中的使用者、群組和服務的 [內建角色](../role-based-access-control/built-in-roles.md)   。
 
-使用 RBAC 來建立及指派安全性作業小組中的角色，以授與 Azure Sentinel 適當的存取權。 不同的角色可讓您更精細地控制 Azure Sentinel 的使用者可以看到和執行哪些動作。 您可以直接在 Azure Sentinel 工作區中指派 Azure 角色（請參閱下面的附注），或在工作區所屬的訂用帳戶或資源群組中，Azure Sentinel 將會繼承。
+使用 RBAC 來建立及指派安全性作業小組中的角色，以授與 Azure Sentinel 適當的存取權。 不同的角色可讓您更精細地控制 Azure Sentinel 的使用者可以看到和執行哪些動作。 您可以直接在 [Azure Sentinel] 工作區中指派 Azure 角色 (請參閱下列) 或工作區所屬的訂用帳戶或資源群組中的附注，Azure Sentinel 將會繼承。
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Azure Sentinel 中工作的角色
 
@@ -38,7 +38,7 @@ Azure Sentinel 使用以 [角色為基礎的存取控制（RBAC）](../role-bas
 
 - [Azure Sentinel 讀取器](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)可以查看資料、事件、活頁簿和其他 Azure Sentinel 資源。
 
-- [Azure Sentinel 回應](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)程式除了上述之外，也可以管理事件（指派、解除等）
+- [Azure Sentinel 回應](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)程式除了上述以外，還可以管理事件 (指派、解除等 ) 
 
 - 除了上述， [Azure Sentinel 參與者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)可以建立和編輯活頁簿、分析規則和其他 Azure Sentinel 資源。
 
@@ -54,7 +54,7 @@ Azure Sentinel 使用以 [角色為基礎的存取控制（RBAC）](../role-bas
 
 - 使用操作手冊將威脅的回應自動化
 
-    Azure Sentinel 會**使用自動化**威脅回應的腳本。 腳本是以**Azure Logic Apps**為基礎，而且是個別的 Azure 資源。 您可能想要指派給安全性作業小組的特定成員，讓他們能夠使用 Logic Apps 進行安全性協調流程、自動化和回應（攀升情況）作業。 您可以使用[邏輯應用程式參與者](../role-based-access-control/built-in-roles.md#logic-app-contributor)角色或[邏輯應用程式操作員](../role-based-access-control/built-in-roles.md#logic-app-operator)角色來指派明確的許可權，以使用操作手冊。
+    Azure Sentinel 會**使用自動化**威脅回應的腳本。 腳本是以**Azure Logic Apps**為基礎，而且是個別的 Azure 資源。 您可能想要指派給安全性作業小組的特定成員，以使用 Logic Apps 進行安全性協調流程、自動化和回應 (攀升情況) 作業。 您可以使用[邏輯應用程式參與者](../role-based-access-control/built-in-roles.md#logic-app-contributor)角色或[邏輯應用程式操作員](../role-based-access-control/built-in-roles.md#logic-app-operator)角色來指派明確的許可權，以使用操作手冊。
 
 - 將資料來源連接到 Azure Sentinel
 
@@ -76,7 +76,7 @@ Azure Sentinel 使用以 [角色為基礎的存取控制（RBAC）](../role-bas
 
 下表摘要說明 Azure Sentinel 中的角色和允許的動作。 
 
-| 角色 | 建立及執行腳本| 建立和編輯活頁簿、分析規則和其他 Azure Sentinel 資源 | 管理事件（關閉、指派等等） | 查看資料、事件、活頁簿和其他 Azure Sentinel 資源 |
+| 角色 | 建立及執行腳本| 建立和編輯活頁簿、分析規則和其他 Azure Sentinel 資源 | 管理事件 (關閉、指派等等 )  | 查看資料、事件、活頁簿和其他 Azure Sentinel 資源 |
 |---|---|---|---|---|
 | Azure Sentinel 讀者 | -- | -- | -- | &#10003; |
 | Azure Sentinel 回應者 | -- | -- | &#10003; | &#10003; |

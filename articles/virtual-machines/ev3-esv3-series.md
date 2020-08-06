@@ -7,20 +7,20 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 334c8128ab7869d38700668b6f46a6b2a6f96d28
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 86de6f94dc5bf44836fad37680a439d26d66ce6d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269354"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837069"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
-Ev3 and Esv3 系列是在 Intel®的®白金8272CL （Cascade Lake）上執行，或 Intel®的2673® 8171M 2.1 GHz （Skylake），或 Intel®的® E5-v4 2.3 g h z （Broadwell）處理器，在超執行緒設定中，為大部分的一般用途工作負載提供更好的價值主張，並讓 Ev3 與大多數其他雲端的一般用途 Vm 保持一致。  除了記憶體已擴充 (從 7 GiB/vCPU 到 8 GiB/vCPU)，磁碟和網路限制也已就個別核心進行調整，以符合移轉至超執行緒的需求。 Ev3 承襲了 D/Dv2 系列的高記憶體 VM 大小。
+Ev3 和 Esv3 系列是在 Intel®的®白金 8272CL (Cascade Lake) 上執行。或 Intel®的2673® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-v4 2.3 g h z (Broadwell 在超執行緒設定中) 處理器，為大多數一般用途的工作負載提供更好的價值主張，並使 Ev3 與大部分其他雲端的一般用途 Vm 保持一致。  除了記憶體已擴充 (從 7 GiB/vCPU 到 8 GiB/vCPU)，磁碟和網路限制也已就個別核心進行調整，以符合移轉至超執行緒的需求。 Ev3 承襲了 D/Dv2 系列的高記憶體 VM 大小。
 
 ## <a name="ev3-series"></a>Ev3 系列
 
-Ev3 系列實例是在 Intel®（r）®白金8272CL （Cascade Lake）、Intel®的® 8171M 2.1 g h z （Skylake）或 Intel®以® E5-2673 v4 2.3 GHz （Broadwell）處理器上執行，並具備 Intel Turbo 加速技術2.0 的功能。 Ev3 系列執行個體很適合記憶體密集型的企業應用程式。
+Ev3 系列實例是在 Intel®（r）®白金 8272CL (Cascade Lake) 、Intel®（r）® 8171M 2.1 g h z (Skylake) 或 Intel®® E5-2673 v4 2.3 GHz (Broadwell) 處理器和功能 Intel Turbo 加速技術2.0 上執行。 Ev3 系列執行個體很適合記憶體密集型的企業應用程式。
 
 資料磁碟儲存體與虛擬機器分開計費。 若要使用進階儲存體磁碟，請使用 ESv3 大小。 ESv3 大小的定價及計費方式與 Ev3 系列相同。
 
@@ -54,7 +54,7 @@ ACU：160 - 190
 
 ## <a name="esv3-series"></a>Esv3 系列
 
-Esv3 系列實例是在 Intel®，®白金8272CL （串聯 Lake）、Intel®的® 8171M 2.1 GHz （Skylake），或 Intel®以® E5-2673 v4 2.3 g h z （Broadwell）處理器上執行，而 Intel Turbo 加速技術2.0 和使用 premium storage。 Esv3 系列實例很適合記憶體密集型的企業應用程式。
+Esv3 系列實例是在 Intel®（r）®白金 8272CL (Cascade Lake) 、Intel®高達® 8171M 2.1 GHz (Skylake) ，或 Intel®的® E5-2673 v4 2.3 g h z (Broadwell) 處理器、功能 Intel Turbo 加速技術2.0 和使用 premium storage。 Esv3 系列實例很適合記憶體密集型的企業應用程式。
 
 Esv3 系列 VM 的功能 Intel®超執行緒技術。
 
@@ -68,17 +68,17 @@ ACU：160-190
 
 記憶體保留更新：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
-| Standard_E2s_v3 | 2 | 16 | 32 | 4 | 4000/32 （50） | 3200/48 | 2/1000 |
-| Standard_E4s_v3 <sup>1</sup>  | 4  | 32  | 64  | 8  | 8000/64 （100）   | 6400/96   | 2|2000 |
-| Standard_E8s_v3 <sup>1</sup>  | 8  | 64  | 128 | 16 | 16000/128 （200） | 12800/192 | 4|4000 |
-| Standard_E16s_v3 <sup>1</sup> | 16 | 128 | 256 | 32 | 32000/256 （400） | 25600/384 | 8|8000 |
-| Standard_E20s_v3 | 20 | 160 | 320 | 32 | 40000/320 （400） | 32000/480 | 8/10000 |
-| Standard_E32s_v3 <sup>1</sup>  | 32 | 256 | 512 | 32 | 64000/512 （800）    | 51200/768  | 8|16000 |
-| Standard_E48s_v3 <sup>1</sup>  | 48 | 384 | 768 | 32 | 96000/768 （1200）   | 76800/1152 | 8|24000 |
-| Standard_E64s_v3 <sup>1</sup>  | 64 | 432 | 864 | 32 | 128000/1024 （1600） | 80000/1200 | 8|30000 |
-| Standard_E64is_v3 <sup>2</sup> | 64 | 432 | 864 | 32 | 128000/1024 （1600） | 80000/1200 | 8|30000 |
+| Standard_E2s_v3 | 2 | 16 | 32 | 4 | 4000/32 (50)  | 3200/48 | 2/1000 |
+| Standard_E4s_v3 <sup>1</sup>  | 4  | 32  | 64  | 8  | 8000/64 (100)    | 6400/96   | 2|2000 |
+| Standard_E8s_v3 <sup>1</sup>  | 8  | 64  | 128 | 16 | 16000/128 (200)  | 12800/192 | 4|4000 |
+| Standard_E16s_v3 <sup>1</sup> | 16 | 128 | 256 | 32 | 32000/256 (400)  | 25600/384 | 8|8000 |
+| Standard_E20s_v3 | 20 | 160 | 320 | 32 | 40000/320 (400)  | 32000/480 | 8/10000 |
+| Standard_E32s_v3 <sup>1</sup>  | 32 | 256 | 512 | 32 | 64000/512 (800)     | 51200/768  | 8|16000 |
+| Standard_E48s_v3 <sup>1</sup>  | 48 | 384 | 768 | 32 | 96000/768 (1200)    | 76800/1152 | 8|24000 |
+| Standard_E64s_v3 <sup>1</sup>  | 64 | 432 | 864 | 32 | 128000/1024 (1600)  | 80000/1200 | 8|30000 |
+| Standard_E64is_v3 <sup>2</sup> | 64 | 432 | 864 | 32 | 128000/1024 (1600)  | 80000/1200 | 8|30000 |
 
 <sup>1</sup>可用的限制核心大小。
 
@@ -97,7 +97,7 @@ ACU：160-190
 
 定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,6 +1,6 @@
 ---
 title: 選擇適合資料轉送的 Azure 解決方案 | Microsoft Docs
-description: 了解如何選擇根據資料大小和環境中可用的網路頻寬，選擇適合資料轉送的 Azure 解決方案
+description: 瞭解如何根據您環境中的資料大小和可用的網路頻寬，選擇用於資料傳輸的 Azure 解決方案。
 services: storage
 author: alkohli
 ms.service: storage
@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 7094fffa1ea8ca2c2557e75fcb31b700abc43da5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 123fa86714ae3cefe7de5bebda9e0fccd385ecb4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514435"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836593"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>選擇適合資料轉送的 Azure 解決方案
 
@@ -74,7 +74,7 @@ ms.locfileid: "85514435"
 - [閱讀 AzCopy 的概觀](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)。
 - [快速入門：使用 PowerShell 上傳、下載及列出 Blob](../blobs/storage-quickstart-blobs-powershell.md)
 - [快速入門：使用 Azure CLI 建立、下載及列出 Blob](../blobs/storage-quickstart-blobs-cli.md)
-- 了解：
+- 深入了解：
 
     - [適用於離線轉送的 Azure 資料箱、Azure 資料箱磁碟和 Azure Data Box Heavy ](https://docs.microsoft.com/azure/databox/)。
     - [Azure 資料箱閘道和 Azure Stack Edge 進行線上傳輸](https://docs.microsoft.com/azure/databox-online/)。

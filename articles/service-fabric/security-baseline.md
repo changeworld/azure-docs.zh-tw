@@ -7,36 +7,36 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 108882fd9e585fadc98436c3404bd8945e80080f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460672"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836712"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>適用于 Service Fabric 的 Azure 安全性基準
 
 適用于 Service Fabric 的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 
-此服務的基準取自 [Azure 安全性效能評定 1.0 版](https://docs.microsoft.com/azure/security/benchmarks/overview)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性效能評定 1.0 版](../security/benchmarks/overview.md)，其會提供如何在 Azure 上使用最佳做法指引來保護雲端解決方案的建議。
 
-如需詳細資訊，請參閱 [Azure 安全性基準概觀](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) (機器翻譯)。
+如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md) (機器翻譯)。
 
 
 
 ## <a name="network-security"></a>網路安全性
 
-*如需詳細資訊，請參閱[安全性控制：網路安全性](/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱[安全性控制：網路安全性](../security/benchmarks/security-control-network-security.md)。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路中的 Azure 資源
 
 **指導**方針：確定所有虛擬網路子網部署都有一個網路安全性群組套用至應用程式受信任埠和來源的特定網路存取控制。
 
-* [使用範本來部署 Azure 防火牆](https://docs.microsoft.com/azure/firewall/deploy-template)
+* [使用範本來部署 Azure 防火牆](../firewall/deploy-template.md)
 
-* [使用 Azure 網路安全性群組（Nsg）建立周邊網路](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices#use-network-isolation-and-security-with-azure-service-fabric)
+* [使用 Azure 網路安全性群組 (Nsg) 建立周邊網路](../security/fundamentals/service-fabric-best-practices.md#use-network-isolation-and-security-with-azure-service-fabric)
 
-* [如何整合您的 Azure Service Fabric 叢集與現有的虛擬網路](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)
+* [如何整合您的 Azure Service Fabric 叢集與現有的虛擬網路](./service-fabric-patterns-networking.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -44,13 +44,13 @@ ms.locfileid: "87460672"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2：監視和記錄虛擬網路、子網和 Nic 的設定和流量
 
-**指引**：使用 Azure 資訊安全中心並補救用於保護 Azure Service Fabric 叢集的虛擬網路、子網和網路安全性群組的網路保護建議。 啟用網路安全性群組（NSG）流量記錄，並將記錄傳送到 Azure 儲存體帳戶以進行流量審核。 您也可以將 NSG 流量記錄傳送到 Azure Log Analytics 工作區，並使用 Azure 流量分析來提供 Azure 雲端中流量的深入解析。 Azure 流量分析的一些優點是能夠將網路活動視覺化，並識別作用點、識別安全性威脅、瞭解流量模式，以及找出網路錯誤配置。
+**指引**：使用 Azure 資訊安全中心並補救用於保護 Azure Service Fabric 叢集的虛擬網路、子網和網路安全性群組的網路保護建議。 啟用網路安全性群組 (NSG) 流量記錄，並將記錄傳送到 Azure 儲存體帳戶以進行流量審核。 您也可以將 NSG 流量記錄傳送到 Azure Log Analytics 工作區，並使用 Azure 流量分析來提供 Azure 雲端中流量的深入解析。 Azure 流量分析的一些優點是能夠將網路活動視覺化，並識別作用點、識別安全性威脅、瞭解流量模式，以及找出網路錯誤配置。
 
-* [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [如何啟用 NSG 流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [如何啟用及使用 Azure 流量分析](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [如何啟用及使用 Azure 流量分析](../network-watcher/traffic-analytics.md)
 
-* [瞭解 Azure 資訊安全中心所提供的網路安全性](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [瞭解 Azure 資訊安全中心所提供的網路安全性](../security-center/security-center-network-recommendations.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -60,13 +60,13 @@ ms.locfileid: "87460672"
 
 **指引**：提供前端閘道，為使用者、裝置或其他應用程式提供單一輸入點。 Azure API 管理與 Service Fabric 直接整合，可讓您安全地存取後端服務、使用節流來防止 DOS 攻擊，以及驗證 API 金鑰、JWT 權杖、憑證和其他認證。
 
-請考慮在重要 Web 應用程式前方部署 Azure Web 應用程式防火牆（WAF），以進行連入流量的額外檢查。 啟用診斷設定以進行 WAF，並將記錄內嵌至儲存體帳戶、事件中樞或 Log Analytics 工作區。
+請考慮將 Azure Web 應用程式防火牆 (WAF) 部署到重要 Web 應用程式之前，以進行連入流量的額外檢查。 啟用診斷設定以進行 WAF，並將記錄內嵌至儲存體帳戶、事件中樞或 Log Analytics 工作區。
 
-* [Service Fabric 搭配 Azure API 管理概觀](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview)
+* [Service Fabric 搭配 Azure API 管理概觀](./service-fabric-api-management-overview.md)
 
-* [整合內部 VNET 中的 API 管理與應用程式閘道](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [整合內部 VNET 中的 API 管理與應用程式閘道](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [如何部署 Azure WAF](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [如何部署 Azure WAF](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -76,9 +76,9 @@ ms.locfileid: "87460672"
 
 **指導**方針 .. 針對 DDoS 攻擊的保護，在部署 azure Service Fabric 叢集所在的虛擬網路上啟用 Azure DDoS 標準保護。 使用 Azure 資訊安全中心整合式威脅情報來拒絕與已知惡意或未使用的網際網路 IP 位址的通訊。
 
-* [如何設定 DDoS 保護](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [如何設定 DDoS 保護](../virtual-network/manage-ddos-protection.md)
 
-* [了解 Azure 資訊安全中心的整合式威脅情報](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [了解 Azure 資訊安全中心的整合式威脅情報](../security-center/threat-protection.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -86,19 +86,19 @@ ms.locfileid: "87460672"
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
-**指導**方針：針對連結至用來保護 Azure Service Fabric 叢集之子網的 NSG，啟用網路安全性群組（NSG）流量記錄。 將 NSG 流量記錄錄製到 Azure 儲存體帳戶以產生流量記錄。 如果需要調查異常活動，請啟用 Azure 網路監看員封包捕獲。
+**指導**方針：針對連結至用來保護 Azure Service Fabric 叢集之子網的 NSG，啟用網路安全性群組 (NSG) 流量記錄。 將 NSG 流量記錄錄製到 Azure 儲存體帳戶以產生流量記錄。 如果需要調查異常活動，請啟用 Azure 網路監看員封包捕獲。
 
-* [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [如何啟用 NSG 流量記錄](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [如何啟用網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [如何啟用網路監看員](../network-watcher/network-watcher-create.md)
 
-* [使用流量分析將 NSG 流量記錄視覺化](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [使用流量分析將 NSG 流量記錄視覺化](../network-watcher/traffic-analytics.md)
 
 **Azure 資訊安全中心監視**：是
 
 **責任**：客戶
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統（IDS/IPS）
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統 (IDS/IPS) 
 
 **指引**：從支援具有承載檢查功能之 IDS/IPS 功能的 Azure Marketplace 中選取供應專案。 如果基於酬載檢查的入侵偵測和/或預防不是必要條件，則可以使用具有威脅情報的 Azure 防火牆。 Azure 防火牆威脅情報型篩選可以警示並拒絕傳向和來自已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。
 
@@ -106,9 +106,9 @@ ms.locfileid: "87460672"
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [如何部署 Azure 防火牆](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [如何使用 Azure 防火牆設定警示](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [如何使用 Azure 防火牆設定警示](../firewall/threat-intel.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -118,11 +118,11 @@ ms.locfileid: "87460672"
 
 **指導**方針：為已啟用受信任憑證的 HTTPS/SSL 的 web 應用程式部署 Azure 應用程式閘道。
 
-* [如何部署應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [如何部署應用程式閘道](../application-gateway/quick-create-portal.md)
 
-* [如何設定應用程式閘道使用 HTTPS](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [如何設定應用程式閘道使用 HTTPS](../application-gateway/create-ssl-portal.md)
 
-* [瞭解 Azure web 應用程式閘道的第7層負載平衡](https://docs.microsoft.com/azure/application-gateway/overview)
+* [瞭解 Azure web 應用程式閘道的第7層負載平衡](../application-gateway/overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -130,11 +130,11 @@ ms.locfileid: "87460672"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負荷降至最低
 
-**指導**方針：使用虛擬網路服務標籤來定義網路安全性群組（NSG）上的網路存取控制，這些群組會附加至您的 Azure Service Fabric 叢集部署所在的子網。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 在規則的適當來源或目的地欄位中指定服務標籤名稱 (例如 ApiManagement)，即可允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
+**指導**方針：使用虛擬網路服務標籤來定義網路安全性群組的網路存取控制， (NSG) 連接到您的 Azure Service Fabric 叢集部署所在的子網。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 在規則的適當來源或目的地欄位中指定服務標籤名稱 (例如 ApiManagement)，即可允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
-* [虛擬網路服務標籤](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [虛擬網路服務標籤](../virtual-network/service-tags-overview.md)
 
-* [Service Fabric 的網路最佳做法](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-networking)
+* [Service Fabric 的網路最佳做法](./service-fabric-best-practices-networking.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -146,11 +146,11 @@ ms.locfileid: "87460672"
 
 您也可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝金鑰環境成品（例如 Azure Resource Manager 範本、RBAC 控制項和原則），以簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
 
-* [如何查看可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何查看可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何建立 Azure 藍圖](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [如何建立 Azure 藍圖](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -158,17 +158,17 @@ ms.locfileid: "87460672"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指導**方針：使用網路安全性群組（nsg）的標籤，以及與您的 Azure Service Fabric 叢集相關聯的網路安全性和流量相關的其他資源。 對於個別的 NSG 規則，使用 [描述] 欄位，針對允許進出網路流量的任何規則指定商務需求和/或持續時間 (等等)。
+**指導**方針：使用網路安全性群組的標籤 (nsg) 以及與您的 Azure Service Fabric 叢集相關聯的網路安全性和流量的其他相關資源。 對於個別的 NSG 規則，使用 [描述] 欄位，針對允許進出網路流量的任何規則指定商務需求和/或持續時間 (等等)。
 
 使用與標記相關的任何內建 Azure 原則定義（例如「需要標記和其值」），以確保所有資源都是以標籤建立，並通知您現有的未標記資源。
 
-您可以使用 Azure PowerShell 或 Azure 命令列介面（CLI），根據其標記來查閱或執行資源的動作。
+您可以使用 Azure PowerShell 或 Azure 命令列介面 (CLI) ，根據其標記來查閱或執行資源的動作。
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-* [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
-* [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何建立具有安全性設定的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -178,9 +178,9 @@ ms.locfileid: "87460672"
 
 **指引**：使用 Azure 活動記錄來監視網路資源設定，並偵測與您的 Azure Service Fabric 部署相關之網路資源的變更。 在 Azure 監視器中建立警示，以在重要網路資源發生變更時觸發。
 
-* [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [如何檢視及擷取 Azure 活動記錄事件](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [如何在 Azure 監視器中建立警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -188,13 +188,13 @@ ms.locfileid: "87460672"
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*如需詳細資訊，請參閱[安全性控制：記錄和監視](/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱[安全性控制：記錄和監視](../security/benchmarks/security-control-logging-monitoring.md)。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
 **指引**： Microsoft 會維護 Azure Service Fabric 叢集元件的時間來源，您可以更新計算部署的時間同步處理。
 
-* [如何設定 Azure 計算資源的時間同步處理](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [如何設定 Azure 計算資源的時間同步處理](../virtual-machines/windows/time-sync.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -204,11 +204,11 @@ ms.locfileid: "87460672"
 
 **指引**：您可以將 Azure Service Fabric 叢集上線，以 Azure 監視器匯總叢集所產生的安全性資料。 請參閱 Service Fabric 的診斷問題和解決方案範例。
 
-* [設定 Azure 監視器記錄與 Service Fabric 整合](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [設定 Azure 監視器記錄與 Service Fabric 整合](./service-fabric-diagnostics-oms-setup.md)
 
-* [設定在 Azure 中監視容器的 Azure 監視器記錄 Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [設定在 Azure 中監視容器的 Azure 監視器記錄 Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [診斷常見的 Service Fabric 案例](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-common-scenarios)
+* [診斷常見的 Service Fabric 案例](./service-fabric-diagnostics-common-scenarios.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -218,13 +218,13 @@ ms.locfileid: "87460672"
 
 **指引**：啟用 Service Fabric 叢集的 Azure 監視器，並將其導向至 Log Analytics 工作區。 這會記錄所有 Azure Service Fabric 叢集節點的相關叢集資訊和 OS 計量。
 
-* [設定 Azure 監視器記錄與 Service Fabric 整合](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [設定 Azure 監視器記錄與 Service Fabric 整合](./service-fabric-diagnostics-oms-setup.md)
 
-* [設定在 Azure 中監視容器的 Azure 監視器記錄 Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [設定在 Azure 中監視容器的 Azure 監視器記錄 Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [如何將 Log Analytics 代理程式部署至您的節點](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [如何將 Log Analytics 代理程式部署至您的節點](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics 記錄搜尋](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Log Analytics 記錄搜尋](../azure-monitor/log-query/log-query-overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -234,13 +234,13 @@ ms.locfileid: "87460672"
 
 **指引**：讓 Azure Service Fabric 叢集上線以 Azure 監視器。 請確定所使用的 Log Analytics 工作區已根據貴組織的合規性法規設定記錄保留期限。
 
-* [設定 Azure 監視器記錄與 Service Fabric 整合](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [設定 Azure 監視器記錄與 Service Fabric 整合](./service-fabric-diagnostics-oms-setup.md)
 
-* [設定在 Azure 中監視容器的 Azure 監視器記錄 Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [設定在 Azure 中監視容器的 Azure 監視器記錄 Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [如何將 Log Analytics 代理程式部署至您的節點](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [如何將 Log Analytics 代理程式部署至您的節點](./service-fabric-diagnostics-oms-agent.md)
 
-* [如何設定 Log Analytics 工作區保留期限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [如何設定 Log Analytics 工作區保留期限](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -250,13 +250,13 @@ ms.locfileid: "87460672"
 
 **指引**：讓 Azure Service Fabric 叢集上線以 Azure 監視器。 請確定所使用的 Log Analytics 工作區已根據貴組織的合規性法規設定記錄保留期限。
 
-* [設定 Azure 監視器記錄與 Service Fabric 整合](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [設定 Azure 監視器記錄與 Service Fabric 整合](./service-fabric-diagnostics-oms-setup.md)
 
-* [設定在 Azure 中監視容器的 Azure 監視器記錄 Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [設定在 Azure 中監視容器的 Azure 監視器記錄 Service Fabric](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [如何將 Log Analytics 代理程式部署至您的節點](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [如何將 Log Analytics 代理程式部署至您的節點](./service-fabric-diagnostics-oms-agent.md)
 
-* [如何設定 Log Analytics 工作區保留期限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [如何設定 Log Analytics 工作區保留期限](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -266,7 +266,7 @@ ms.locfileid: "87460672"
 
 **指引**：使用 Azure Log Analytics 工作區查詢來查詢 azure Service Fabric 記錄。
 
-* [Log Analytics 記錄搜尋](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Log Analytics 記錄搜尋](../azure-monitor/log-query/log-query-overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -276,9 +276,9 @@ ms.locfileid: "87460672"
 
 **指引**：使用 Azure Log Analytics 工作區來監視和警示有關安全性記錄檔中的異常活動，以及與 Azure Service Fabric 叢集相關的事件。
 
-* [如何管理 Azure 資訊安全中心中的警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [如何管理 Azure 資訊安全中心中的警示](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [如何對 log analytics 記錄資料發出警示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [如何對 log analytics 記錄資料發出警示](../azure-monitor/learn/tutorial-response.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -288,7 +288,7 @@ ms.locfileid: "87460672"
 
 **指引**：根據預設，windows Defender 會安裝在 windows Server 2016 上。 如果您不是使用 Windows Defender，請參閱 Antimaleware 檔中的設定規則。 Linux 不支援 Windows Defender。
 
-* [如需詳細資訊，請參閱 windows Server 2016 上的 Windows Defender 防毒軟體](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [如需詳細資訊，請參閱 windows Server 2016 上的 Windows Defender 防毒軟體](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -312,7 +312,7 @@ ms.locfileid: "87460672"
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱[安全性控制：身分識別與存取控制](../security/benchmarks/security-control-identity-access-control.md)。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
@@ -320,11 +320,11 @@ ms.locfileid: "87460672"
 
 此外，您可以使用 Azure 資訊安全中心身分識別和存取管理建議。
 
-* [如何使用 PowerShell 取得 Azure AD 中的目錄角色](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [如何使用 PowerShell 取得 Azure AD 中的目錄角色](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [如何使用 Azure 資訊安全中心監視身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何使用 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -334,7 +334,7 @@ ms.locfileid: "87460672"
 
 **指引**：布建叢集時，Azure 會要求您建立 web 入口網站的新密碼。 沒有要變更的預設密碼，不過您可以指定不同的密碼來存取入口網站。
 
-* [在 Azure 入口網站中建立](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
+* [在 Azure 入口網站中建立](./service-fabric-cluster-creation-via-portal.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -346,9 +346,9 @@ ms.locfileid: "87460672"
 
 此外，您可以使用 Azure 資訊安全中心身分識別和存取管理建議。
 
-* [設定 Azure Active Directory 用戶端驗證](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-windows-cluster#set-up-azure-active-directory-client-authentication)
+* [設定 Azure Active Directory 用戶端驗證](./service-fabric-tutorial-create-vnet-and-windows-cluster.md#set-up-azure-active-directory-client-authentication)
 
-* [如何使用 Azure 資訊安全中心監視身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何使用 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -358,7 +358,7 @@ ms.locfileid: "87460672"
 
 **指導**方針：盡可能使用 Azure Active Directory SSO，而不是設定個別服務的獨立認證。 使用 Azure 資訊安全中心身分識別和存取管理建議。
 
-* [瞭解使用 Azure AD 的 SSO](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [瞭解使用 Azure AD 的 SSO](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -368,9 +368,9 @@ ms.locfileid: "87460672"
 
 **指引**：啟用 Azure AD MFA，並遵循 Azure 資訊安全中心的身分識別與存取管理建議。
 
-* [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [如何在 Azure 資訊安全中心監視身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 資訊安全中心監視身分識別和存取](../security-center/security-center-identity-access.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -378,11 +378,11 @@ ms.locfileid: "87460672"
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
-**指導**方針：使用 paw （特殊許可權存取工作站）並設定多重要素驗證（MFA），以登入及設定您的 Azure Service Fabric 叢集和相關資源。
+**指導**方針：使用 paw (特殊許可權存取工作站) 搭配多重要素驗證 (MFA) 設定為登入及設定您的 Azure Service Fabric 叢集和相關資源。
 
-* [瞭解特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [瞭解特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [如何在 Azure 中啟用 MFA](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -392,9 +392,9 @@ ms.locfileid: "87460672"
 
 **指引**：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory (AD) 的 Privileged Identity Management (PIM) 來產生記錄和警示。 此外，使用 Azure AD 風險偵測來檢視有風險的使用者行為相關警示和報告。
 
-* [如何部署 Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [如何部署 Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [了解 Azure AD 風險偵測](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [了解 Azure AD 風險偵測](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -404,7 +404,7 @@ ms.locfileid: "87460672"
 
 **指引**：使用條件式存取具名位置，只允許從 IP 位址範圍或國家/區域的特定邏輯群組存取。
 
-* [如何在 Azure 中設定具名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [如何在 Azure 中設定具名位置](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -412,11 +412,11 @@ ms.locfileid: "87460672"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY （AAD）做為中央驗證和授權系統，以安全地存取 Azure Service Fabric 叢集的管理端點。 AAD 會對待用和傳輸中資料使用強式加密以保護資料。 AAD 也會 salts、雜湊並安全地儲存使用者認證。
+**指導**方針：使用 AZURE ACTIVE DIRECTORY (AAD) 作為中央驗證和授權系統，以安全地存取 Azure Service Fabric 叢集的管理端點。 AAD 會對待用和傳輸中資料使用強式加密以保護資料。 AAD 也會 salts、雜湊並安全地儲存使用者認證。
 
-* [如何建立和設定 AAD 執行個體](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [如何建立和設定 AAD 執行個體](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* [Service Fabric 用戶端驗證的安裝 Azure Active Directory](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-setup-aad)
+* [Service Fabric 用戶端驗證的安裝 Azure Active Directory](./service-fabric-cluster-creation-setup-aad.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -424,9 +424,9 @@ ms.locfileid: "87460672"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY （AAD）驗證搭配 Azure Service Fabric 叢集。 AAD 提供記錄來協助探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者的存取權，以確保只有適當的使用者可以繼續存取。
+**指導**方針：搭配 Azure Service Fabric 叢集使用 AZURE ACTIVE DIRECTORY (AAD) 驗證。 AAD 提供記錄來協助探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者的存取權，以確保只有適當的使用者可以繼續存取。
 
-* [如何使用 Azure 身分識別存取權檢閱](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [如何使用 Azure 身分識別存取權檢閱](../active-directory/governance/access-reviews-overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -434,11 +434,11 @@ ms.locfileid: "87460672"
 
 ### <a name="311-alert-on-account-login-behavior-deviation"></a>3.11：帳戶登入行為偏差的警示
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY （AAD）登入和審核記錄來監視是否嘗試存取停用的帳戶;這些記錄可以整合至任何協力廠商 SIEM/監視工具。
+**指導**方針：使用 AZURE ACTIVE DIRECTORY (AAD) 登入和 Audit 記錄來監視是否有存取停用的帳戶的嘗試;這些記錄可以整合至任何協力廠商 SIEM/監視工具。
 
 您可以藉由建立 AAD 使用者帳戶的診斷設定、將 audit 記錄和登入記錄傳送到 Azure Log Analytics 工作區，來簡化此程式。 在 Azure Log Analytics 工作區中設定所需的警示。
 
-* [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [如何將 Azure 活動記錄整合到 Azure 監視器中](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -448,11 +448,11 @@ ms.locfileid: "87460672"
 
 **指引**：使用 Azure AD 風險和身分識別保護功能設定自動回應，以偵測與使用者身分識別相關的可疑動作。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
-* [如何檢視有風險的 Azure AD 登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [如何檢視有風險的 Azure AD 登入](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [如何設定和啟用身分識別保護風險原則](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [如何設定和啟用身分識別保護風險原則](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [如何使 Azure Sentinel 上線](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [如何使 Azure Sentinel 上線](../sentinel/quickstart-onboard.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -462,7 +462,7 @@ ms.locfileid: "87460672"
 
 **指導**方針：無法使用;Azure Service Fabric 尚不支援客戶加密箱。
 
-* [客戶加密箱支援的服務清單](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [客戶加密箱支援的服務清單](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -470,13 +470,13 @@ ms.locfileid: "87460672"
 
 ## <a name="data-protection"></a>資料保護
 
-*如需詳細資訊，請參閱[安全性控制：資料保護](/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱[安全性控制：資料保護](../security/benchmarks/security-control-data-protection.md)。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護敏感性資訊的詳細目錄
 
 **指引**：在與您的 Azure Service Fabric 叢集部署相關的資源上使用標記，以協助追蹤儲存或處理敏感資訊的 azure 資源。
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -484,21 +484,21 @@ ms.locfileid: "87460672"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 資源應該以 VNet/子網分隔，並以適當的方式標記，並由 NSG 或 Azure 防火牆保護。 儲存或處理敏感性資料的資源應該充分地隔離。 針對虛擬機器儲存或處理敏感性資料，請在不使用時，執行原則和程式將其關閉。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 資源應該以 VNet/子網分隔，並以適當的方式標記，並由 NSG 或 Azure 防火牆保護。 儲存或處理敏感性資料的資源應該充分地隔離。 針對虛擬機器儲存或處理敏感性資料，請在不使用時，執行原則和程式 (s) 將它們關閉。
 
-* [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何建立管理群組](../governance/management-groups/create.md)
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
-* [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
-* [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何建立具有安全性設定的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [如何部署 Azure 防火牆](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [如何部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [如何使用 Azure 防火牆來設定警示或警示和拒絕](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [如何使用 Azure 防火牆來設定警示或警示和拒絕](../firewall/threat-intel.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -512,7 +512,7 @@ ms.locfileid: "87460672"
 
 功能.
 
-* [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -524,9 +524,9 @@ ms.locfileid: "87460672"
 
 遵循 Azure 資訊安全中心的待用加密建議和傳輸中的加密（如果適用）。
 
-* [瞭解使用 Azure 傳輸加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [瞭解使用 Azure 傳輸加密](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Service Fabric 叢集安全性案例](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)
+* [Service Fabric 叢集安全性案例](./service-fabric-cluster-security.md)
 
 * [適用于 TLS 設定的 Service Fabric 疑難排解指南](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
@@ -540,7 +540,7 @@ ms.locfileid: "87460672"
 
 針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
 
-* [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -560,7 +560,7 @@ ms.locfileid: "87460672"
 
 針對 Microsoft 管理的基礎平台，Microsoft 會將所有客戶內容視為敏感性資訊，並竭盡全力防範客戶資料外洩和暴露。 為了確保 Azure 中的客戶資料安全無虞，Microsoft 已實作並維護一套強大的資料保護控制項和功能。
 
-* [瞭解 Azure 中的客戶資料保護](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [瞭解 Azure 中的客戶資料保護](../security/fundamentals/protection-customer-data.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -570,13 +570,13 @@ ms.locfileid: "87460672"
 
 **指引**：在所有 Azure 資源上使用靜態加密。 Microsoft 建議讓 Azure 管理您的加密金鑰，但在某些情況下，您可以選擇管理您自己的金鑰。
 
-* [瞭解 Azure 中的待用加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [瞭解 Azure 中的待用加密](../security/fundamentals/encryption-atrest.md)
 
-* [如何設定客戶管理的加密金鑰](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+* [如何設定客戶管理的加密金鑰](../storage/common/storage-encryption-keys-portal.md)
 
-* [針對 Windows 中的 Azure Service Fabric 叢集節點啟用磁片加密](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-windows)
+* [針對 Windows 中的 Azure Service Fabric 叢集節點啟用磁片加密](./service-fabric-enable-azure-disk-encryption-windows.md)
 
-* [針對 Linux 中的 Azure Service Fabric 叢集節點啟用磁片加密](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-linux)
+* [針對 Linux 中的 Azure Service Fabric 叢集節點啟用磁片加密](./service-fabric-enable-azure-disk-encryption-linux.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -586,7 +586,7 @@ ms.locfileid: "87460672"
 
 **指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，以針對重要的 Azure 資源進行變更時，建立警示。
 
-* [如何建立 Azure 活動記錄事件的警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [如何建立 Azure 活動記錄事件的警示](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -594,7 +594,7 @@ ms.locfileid: "87460672"
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*如需詳細資訊，請參閱[安全性控制：弱點管理](/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱[安全性控制：弱點管理](../security/benchmarks/security-control-vulnerability-management.md)。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
@@ -604,11 +604,11 @@ ms.locfileid: "87460672"
 
 使用協力廠商解決方案，在網路裝置和 web 應用程式上執行弱點評量。 執行遠端掃描時，請勿使用單一、永久的系統管理帳戶。 請考慮執行掃描帳戶的 JIT 布建方法。 掃描帳戶的認證應該受到保護、受監視，而且僅用於弱點掃描。
 
-* [Service Fabric 錯誤分析服務簡介](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview)
+* [Service Fabric 錯誤分析服務簡介](./service-fabric-testability-overview.md)
 
-* [在 Service Fabric 叢集中引發受控制的混亂](https://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)
+* [在 Service Fabric 叢集中引發受控制的混亂](./service-fabric-controlled-chaos.md)
 
-* [如何實行 Azure 資訊安全中心弱點評估建議](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [如何實行 Azure 資訊安全中心弱點評估建議](../security-center/security-center-vulnerability-assessment-recommendations.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -620,13 +620,13 @@ ms.locfileid: "87460672"
 
 或者，若要在進入生產環境之前先測試 OS 修補程式，請針對擴展集的 OS 映射升級使用手動觸發程式。 請注意，[手動觸發程式] 選項不會提供內建的復原。 使用 Azure 自動化的更新管理監視 OS 修補程式。
 
-* [Service Fabric 叢集節點的修補程式管理](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [Service Fabric 叢集節點的修補程式管理](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [使用 Azure 虛擬機器擴展集自動升級 OS 映射](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [使用 Azure 虛擬機器擴展集自動升級 OS 映射](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [如何藉由最新的擴展集模型將 VM 更新至最新狀態](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
+* [如何藉由最新的擴展集模型將 VM 更新至最新狀態](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Azure 自動化更新管理概觀](https://docs.microsoft.com/azure/automation/update-management/update-mgmt-overview)
+* [Azure 自動化更新管理概觀](../automation/update-management/update-mgmt-overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -634,13 +634,13 @@ ms.locfileid: "87460672"
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體標題部署自動修補程式管理解決方案
 
-**指引**：在 Azure Service Fabric 叢集的虛擬機器擴展集上啟用自動 OS 映射升級。 修補程式協調流程應用程式（POA）是一種替代方案，適用于在 Azure 外部託管的 Service Fabric 叢集。 POA 可與 Azure 叢集搭配使用，但有一些額外的裝載負荷。
+**指引**：在 Azure Service Fabric 叢集的虛擬機器擴展集上啟用自動 OS 映射升級。 修補協調流程應用程式 (POA) 是一種替代方案，適用于在 Azure 外部託管的 Service Fabric 叢集。 POA 可與 Azure 叢集搭配使用，但有一些額外的裝載負荷。
 
-* [Service Fabric 叢集節點的修補程式管理](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [Service Fabric 叢集節點的修補程式管理](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [使用 Azure 虛擬機器擴展集自動升級 OS 映射](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [使用 Azure 虛擬機器擴展集自動升級 OS 映射](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [如何設定 Service Fabric 叢集的 OS 修補排程](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)
+* [如何設定 Service Fabric 叢集的 OS 修補排程](./service-fabric-patch-orchestration-application.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -664,7 +664,7 @@ ms.locfileid: "87460672"
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*如需詳細資訊，請參閱[安全性控制：清查和資產管理](/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱[安全性控制：清查和資產管理](../security/benchmarks/security-control-inventory-asset-management.md)。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
@@ -672,11 +672,11 @@ ms.locfileid: "87460672"
 
 雖然可透過 Resource Graph 探索傳統 Azure 資源，但強烈建議您從現在開始建立並使用 Azure Resource Manager 資源。
 
-* [如何使用 Azure Resource Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Resource Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
-* [如何檢視您的 Azure 訂用帳戶](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [如何檢視您的 Azure 訂用帳戶](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [了解 Azure RBAC](../role-based-access-control/overview.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -686,7 +686,7 @@ ms.locfileid: "87460672"
 
 **指引**：將標籤套用至提供中繼資料的 Azure 資源，以邏輯方式依分類組織這些資源。
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -696,11 +696,11 @@ ms.locfileid: "87460672"
 
 **指引**：使用標記、管理群組，以及個別的訂用帳戶（適當時）來組織和追蹤資產。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-* [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
-* [如何建立管理群組](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [如何建立管理群組](../governance/management-groups/create.md)
 
-* [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [如何建立和使用標籤](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -722,11 +722,11 @@ ms.locfileid: "87460672"
 
 允許的資源類型
 
-使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。 確保已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 來查詢/探索訂用帳戶 (s) 內的資源。 確保已核准環境中的所有 Azure 資源。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -742,9 +742,9 @@ ms.locfileid: "87460672"
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未經核准的 Azure 資源和軟體應用程式
 
-**指引**：使用 Azure Resource Graph 來查詢/探索訂用帳戶內的所有資源（例如計算、儲存體、網路、埠和通訊協定等），包括 Azure Service Fabric 叢集。 移除您探索到的任何未經核准 Azure 資源。 針對 Azure Service Fabric 叢集節點，請執行協力廠商解決方案，以移除或警示未核准的軟體。
+**指引**：使用 Azure Resource Graph 在訂用帳戶 () 中查詢/探索所有資源 (例如計算、儲存體、網路、埠及通訊協定等 ) ，包括 Azure Service Fabric 叢集。 移除您探索到的任何未經核准 Azure 資源。 針對 Azure Service Fabric 叢集節點，請執行協力廠商解決方案，以移除或警示未核准的軟體。
 
-* [如何使用 Azure Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [如何使用 Azure Graph 建立查詢](../governance/resource-graph/first-query-portal.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -762,9 +762,9 @@ ms.locfileid: "87460672"
 
 **指導**方針：使用 Azure 原則來限制您可以在環境中布建的服務。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [如何使用 Azure 原則拒絕特定的資源類型](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -782,7 +782,7 @@ ms.locfileid: "87460672"
 
 **指引**：使用 azure 條件式存取，藉由設定「Microsoft Azure 管理」應用程式的「封鎖存取」，限制使用者與「Azure 資源管理員」互動的能力。
 
-* [如何設定條件式存取以封鎖對 Azure 資源管理員的存取](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [如何設定條件式存取以封鎖對 Azure 資源管理員的存取](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -792,7 +792,7 @@ ms.locfileid: "87460672"
 
 **指導**方針：使用作業系統特定設定或協力廠商資源，限制使用者在 Azure 計算資源內執行腳本的能力。
 
-* [例如，如何控制 Windows 環境中的 PowerShell 腳本執行](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [例如，如何控制 Windows 環境中的 PowerShell 腳本執行](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -802,9 +802,9 @@ ms.locfileid: "87460672"
 
 **指導**方針：商務營運所需但可能對組織產生較高風險的軟體，應該隔離在自己的虛擬機器和/或虛擬網路中，並使用 Azure 防火牆或網路安全性群組進行充分的保護。
 
-* [如何建立虛擬網路](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [如何建立虛擬網路](../virtual-network/quick-create-portal.md)
 
-* [如何建立具有安全性設定的 NSG](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [如何建立具有安全性設定的 NSG](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -812,15 +812,15 @@ ms.locfileid: "87460672"
 
 ## <a name="secure-configuration"></a>安全設定
 
-*如需詳細資訊，請參閱[安全性控制：安全設定](/azure/security/benchmarks/security-control-secure-configuration)。*
+*如需詳細資訊，請參閱[安全性控制：安全設定](../security/benchmarks/security-control-secure-configuration.md)。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
 **指引**：在 "ServiceFabric" 命名空間中使用 Azure 原則別名來建立自訂原則，以審核或強制執行 Service Fabric 叢集的網路設定。
 
-* [如何查看可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何查看可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -838,9 +838,9 @@ ms.locfileid: "87460672"
 
 **指導**方針：使用 Azure 原則 [拒絕] 和 [不存在時部署]，為您的 Azure Service Fabric 叢集和相關資源強制執行安全設定。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-* [瞭解 Azure 原則效果](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -858,9 +858,9 @@ ms.locfileid: "87460672"
 
 **指導**方針：如果使用自訂 Azure 原則定義，請使用 Azure DevOps 或 Azure Repos 安全地儲存和管理您的程式碼。
 
-* [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [如何在 Azure DevOps 中儲存程式碼](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos 文件](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos 文件](/azure/devops/repos/index?view=azure-devops)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -870,11 +870,11 @@ ms.locfileid: "87460672"
 
 **指導**方針：如果使用自訂映射，請使用 RBAC 來確保只有授權的使用者可以存取影像。 針對容器映射，請將其儲存在 Azure Container Registry 中，並利用 RBAC 來確保只有授權的使用者可以存取影像。
 
-* [瞭解 Azure 中的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [瞭解 Azure 中的 RBAC](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [瞭解 Container Registry 的 RBAC](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [瞭解 Container Registry 的 RBAC](../container-registry/container-registry-roles.md)
 
-* [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [如何在 Azure 中設定 RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -884,7 +884,7 @@ ms.locfileid: "87460672"
 
 **指導**方針：使用 "ServiceFabric" 命名空間中的 Azure 原則別名來建立自訂原則，以警示、審查和強制執行系統組態。 此外，開發流程和管線以管理原則例外狀況。
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -902,9 +902,9 @@ ms.locfileid: "87460672"
 
 **指引**：在 "ServiceFabric" 命名空間中使用 Azure 原則別名來建立自訂原則，以審核或強制執行 Service Fabric 叢集的設定。
 
-* [如何查看可用的 Azure 原則別名](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [如何查看可用的 Azure 原則別名](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -914,7 +914,7 @@ ms.locfileid: "87460672"
 
 **指導**方針：使用 Azure 資訊安全中心來執行適用于容器的 OS 和 Docker 設定的基準掃描。
 
-* [了解 Azure 資訊安全中心容器建議](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+* [了解 Azure 資訊安全中心容器建議](../security-center/container-security.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -924,13 +924,13 @@ ms.locfileid: "87460672"
 
 **指導**方針：搭配 Azure Key Vault 使用受控服務識別，以簡化及保護雲端應用程式的秘密管理。
 
-* [使用適用于 Azure 的受控識別搭配 Service Fabric](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [使用適用于 Azure 的受控識別搭配 Service Fabric](./concepts-managed-identity.md)
 
-* [設定新 Service Fabric 叢集的受控識別支援](https://docs.microsoft.com/azure/service-fabric/configure-new-azure-service-fabric-enable-managed-identity)
+* [設定新 Service Fabric 叢集的受控識別支援](./configure-new-azure-service-fabric-enable-managed-identity.md)
 
-* [搭配 Service Fabric 應用程式使用受控識別](https://docs.microsoft.com/azure/service-fabric/how-to-managed-identity-service-fabric-app-code)
+* [搭配 Service Fabric 應用程式使用受控識別](./how-to-managed-identity-service-fabric-app-code.md)
 
-* [Service Fabric 應用程式的 KeyVaultReference 支援](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
+* [Service Fabric 應用程式的 KeyVaultReference 支援](./service-fabric-keyvault-references.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -940,7 +940,7 @@ ms.locfileid: "87460672"
 
 **指引**：受控識別可用於 Azure 部署的 Service Fabric 叢集，以及部署為 azure 資源的應用程式。 受控識別可供對支援 Azure AD 驗證的任何服務進行驗證 (包括 Key Vault)，不需要程式碼中的任何認證。
 
-* [使用適用于 Azure 的受控識別搭配 Service Fabric](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [使用適用于 Azure 的受控識別搭配 Service Fabric](./concepts-managed-identity.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -954,7 +954,7 @@ ms.locfileid: "87460672"
 
 * [如何設定認證掃描器](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-* [Service Fabric 叢集中的憑證管理](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#certificate-rotation)
+* [Service Fabric 叢集中的憑證管理](./cluster-security-certificate-management.md#certificate-rotation)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -962,7 +962,7 @@ ms.locfileid: "87460672"
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱[安全性控制：惡意程式碼防禦](../security/benchmarks/security-control-malware-defense.md)。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
@@ -970,7 +970,7 @@ ms.locfileid: "87460672"
 
 如果您沒有使用 Windows Defender，請參閱您的反惡意程式碼文件，以了解設定規則。 Linux 不支援 Windows Defender。
 
-* [瞭解 Windows Server 2016 上的 Windows Defender 防毒軟體](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [瞭解 Windows Server 2016 上的 Windows Defender 防毒軟體](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -978,7 +978,7 @@ ms.locfileid: "87460672"
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指引**：不適用，這項建議主要用於設計用來儲存資料的非計算資源。 支援 Azure 服務的基礎主機（例如 Service Fabric）會啟用 Microsoft 反惡意程式碼，但不會在客戶內容上執行。
+**指引**：不適用，這項建議主要用於設計用來儲存資料的非計算資源。 支援 Azure 服務的基礎主機上已啟用 Microsoft 反惡意程式碼 (例如 Service Fabric) ，但不會對客戶內容執行。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -986,7 +986,7 @@ ms.locfileid: "87460672"
 
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3：確保會更新反惡意程式碼軟體和簽章
 
-**指引**：不適用，這項建議主要用於設計用來儲存資料的非計算資源。 支援 Azure 服務的基礎主機（例如 Service Fabric）會啟用 Microsoft 反惡意程式碼，但不會在客戶內容上執行。
+**指引**：不適用，這項建議主要用於設計用來儲存資料的非計算資源。 支援 Azure 服務的基礎主機上已啟用 Microsoft 反惡意程式碼 (例如 Service Fabric) ，但不會對客戶內容執行。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -994,13 +994,13 @@ ms.locfileid: "87460672"
 
 ## <a name="data-recovery"></a>資料復原
 
-*如需詳細資訊，請參閱[安全性控制：資料復原](/azure/security/benchmarks/security-control-data-recovery)。*
+*如需詳細資訊，請參閱[安全性控制：資料復原](../security/benchmarks/security-control-data-recovery.md)。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保會定期自動備份
 
 **指引**： Service Fabric 中的備份和還原服務可讓您輕鬆且自動備份儲存在具狀態服務中的資訊。 定期備份應用程式資料是防止資料遺失和服務無法使用的基本原則。 Service Fabric 提供一項選用的備份與還原服務，可讓您無須撰寫任何額外的程式碼，即可設定具狀態 Reliable Services (包括「動作項目服務」) 的定期備份。 它也可以協助還原先前建立的備份。
 
-* [Azure Service Fabric 叢集中的定期備份與還原](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Azure Service Fabric 叢集中的定期備份與還原](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1010,11 +1010,11 @@ ms.locfileid: "87460672"
 
 **指引**：在您的 Service Fabric 叢集中啟用備份還原服務，並建立備份原則，定期及隨選備份具狀態服務。 備份 Azure Key Vault 中客戶管理的金鑰。
 
-* [Azure Service Fabric 叢集中的定期備份與還原](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Azure Service Fabric 叢集中的定期備份與還原](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
-* [在 Azure Service Fabric 中了解定期備份設定](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [在 Azure Service Fabric 中了解定期備份設定](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [如何在 Azure 中備份金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中備份金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1024,11 +1024,11 @@ ms.locfileid: "87460672"
 
 **指導**方針：定期檢查備份設定資訊和可用的備份，以確保能夠從備份還原服務執行還原。 已備份客戶管理金鑰的測試還原。
 
-* [在 Azure Service Fabric 中了解定期備份設定](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [在 Azure Service Fabric 中了解定期備份設定](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [在 Azure Service Fabric 中還原備份](https://docs.microsoft.com/azure/service-fabric/service-fabric-backup-restore-service-trigger-restore)
+* [在 Azure Service Fabric 中還原備份](./service-fabric-backup-restore-service-trigger-restore.md)
 
-* [如何在 Azure 中還原金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [如何在 Azure 中還原金鑰保存庫金鑰](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1040,9 +1040,9 @@ ms.locfileid: "87460672"
 
 如果您使用客戶管理的金鑰，請確定已啟用 Key Vault 中的虛刪除，以防止意外或惡意刪除的金鑰。
 
-* [Azure 儲存體待用加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [Azure 儲存體待用加密](../storage/common/storage-service-encryption.md)
 
-* [如何金鑰保存庫中啟用虛刪除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [如何金鑰保存庫中啟用虛刪除](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1050,7 +1050,7 @@ ms.locfileid: "87460672"
 
 ## <a name="incident-response"></a>事件回應
 
-*如需詳細資訊，請參閱[安全性控制：事件回應](/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱[安全性控制：事件回應](../security/benchmarks/security-control-incident-response.md)。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
@@ -1072,9 +1072,9 @@ ms.locfileid: "87460672"
 
 此外，使用標記來標示訂用帳戶，並建立命名系統來識別和分類 Azure 資源，特別是那些處理敏感性資料的帳戶。 您必須負責根據發生事件的 Azure 資源和環境的重要性排定警示補救的優先順序。
 
-* [Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Azure 資訊安全中心的安全性警示](../security-center/security-center-alerts-overview.md)
 
-* [使用標記來組織 Azure 資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [使用標記來組織 Azure 資源](../azure-resource-manager/management/tag-resources.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1094,7 +1094,7 @@ ms.locfileid: "87460672"
 
 **指引**：如果 Microsoft 安全性回應中心 (MSRC) 發現您的資料遭到非法或未經授權的對象存取，Microsoft 將使用安全性事件連絡資訊來連絡您。 事後檢討事件，確保問題已解決。
 
-* [如何設定 Azure 資訊安全中心安全性連絡人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [如何設定 Azure 資訊安全中心安全性連絡人](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -1104,9 +1104,9 @@ ms.locfileid: "87460672"
 
 **指引**：使用「連續匯出」功能來匯出 Azure 資訊安全中心的警示和建議。 「連續匯出」可供以手動或持續不斷的方式來匯出警示和建議。 您可使用 Azure 資訊安全中心的資料連接器，將警示串流至 Sentinel。
 
-* [如何設定連續匯出](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [如何設定連續匯出](../security-center/continuous-export.md)
 
-* [如何將警示串流至 Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [如何將警示串流至 Azure Sentinel](../sentinel/connect-azure-security-center.md)
 
 **Azure 資訊安全中心監視**：是
 
@@ -1116,7 +1116,7 @@ ms.locfileid: "87460672"
 
 **指引**：利用 Azure 資訊安全中心的工作流程自動化功能，透過「Logic Apps」自動觸發對安全性警示和建議的回應。
 
-* [如何設定工作流程自動化和 Logic Apps](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [如何設定工作流程自動化和 Logic Apps](../security-center/workflow-automation.md)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -1124,7 +1124,7 @@ ms.locfileid: "87460672"
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1：定期滲透測試您的 Azure 資源，並確保修復所有重要的安全性結果
 
@@ -1140,5 +1140,5 @@ ms.locfileid: "87460672"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱 [Azure 安全性效能評定](/azure/security/benchmarks/overview)
-- 深入了解 [Azure 資訊安全性基準](/azure/security/benchmarks/security-baselines-overview)
+- 請參閱 [Azure 安全性效能評定](../security/benchmarks/overview.md)
+- 深入了解 [Azure 資訊安全性基準](../security/benchmarks/security-baselines-overview.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: d9b4766b42704da8c81704822f263a6ddf46ce5a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2f7ba4c1e4fdfad33a74fcb159fbb9efca3b5271
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052848"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836440"
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>如何搭配 .NET 使用 Media Encoder Standard 產生縮圖 
 
@@ -282,7 +282,7 @@ ms.locfileid: "87052848"
 上述範例已討論如何提交產生影像的編碼工作，但您也可以在縮圖產生時結合視訊/音訊編碼。 下列 JSON 和 XML 預設值會告知**媒體編碼器標準**在編碼期間產生縮圖。
 
 ### <a name="json-preset"></a><a id="json"></a>JSON 預設值
-如需結構描述的資訊，請參閱[這個](/azure/media-services/previous/media-services-mes-schema)文章。
+如需結構描述的資訊，請參閱[這個](./media-services-mes-schema.md)文章。
 
 ```json
     {
@@ -347,7 +347,7 @@ ms.locfileid: "87052848"
 ```
 
 ### <a name="xml-preset"></a><a id="xml"></a>XML 預設值
-如需結構描述的資訊，請參閱[這個](/azure/media-services/previous/media-services-mes-schema)文章。
+如需結構描述的資訊，請參閱[這個](./media-services-mes-schema.md)文章。
 
 ```csharp
     <?xml version="1.0" encoding="utf-16"?>

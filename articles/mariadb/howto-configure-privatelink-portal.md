@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 08e146ebde34c6d85e258c93a1ed1780bb97727b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206444"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836474"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>使用入口網站建立和管理適用於 MariaDB 的 Azure 資料庫的私用連結
 
@@ -20,7 +20,7 @@ ms.locfileid: "86206444"
 如果您沒有 Azure 訂用帳戶，請在開始前建立一個[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 這項功能適用于所有 Azure 區域，其中適用於 MariaDB 的 Azure 資料庫支援一般用途和記憶體優化定價層。
+> 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MariaDB 的 Azure 資料庫伺服器。 請確定資料庫伺服器屬於其中一種定價層。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 登入 [Azure 入口網站](https://portal.azure.com)。
@@ -41,7 +41,7 @@ ms.locfileid: "86206444"
     | 位址空間 | 輸入 *10.1.0.0/16*。 |
     | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]，輸入 *myResourceGroup*，然後選取 [確定]。 |
-    | 位置 | 選取 [西歐]。|
+    | Location | 選取 [西歐]。|
     | 子網路 - 名稱 | 輸入 mySubnet**。 |
     | 子網路 - 位址範圍 | 輸入 *10.1.0.0/24*。 |
     |||
@@ -117,7 +117,7 @@ ms.locfileid: "86206444"
     | 計算 + 儲存體| 根據工作負載選取伺服器所需的定價層。 |
     |||
 
-7. 選取 [確定]。 
+7. 選取 [確定]  。 
 8. 選取 [檢閱 + 建立]。 您會移至 [檢閱 + 建立] 頁面，其中 Azure 會驗證您的設定。 
 9. 當您看到 [通過驗證] 訊息時，請選取 [**建立**]。 
 10. 當您看到 [驗證成功] 訊息時，請選取 [建立]。 
@@ -201,7 +201,7 @@ ms.locfileid: "86206444"
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 

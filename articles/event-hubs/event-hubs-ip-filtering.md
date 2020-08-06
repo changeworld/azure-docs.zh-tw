@@ -3,12 +3,12 @@ title: Azure 事件中樞防火牆規則 | Microsoft Docs
 description: 使用「防火牆規則」以允許從特定 IP 位址連線至「Azure 事件中樞」。
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 8ba327c78888d9e5f38693ae08a2022b2d1543a4
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: b59c34e80fb08e35a9ed8b1b3e406e2e63517877
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553116"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836814"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>允許從特定 IP 位址或範圍存取 Azure 事件中樞命名空間
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取事件中樞命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
@@ -158,6 +158,6 @@ IP 防火牆規則會在事件中樞命名空間層級套用。 因此，規則�
 
 <!-- Links -->
 
-[express-route]:  /azure/expressroute/expressroute-faqs#supported-services
+[express-route]:  ../expressroute/expressroute-faqs.md#supported-services
 [lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [lnk-vnet]: event-hubs-service-endpoints.md

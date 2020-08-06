@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: mimckitt
-ms.openlocfilehash: 9bb9b993b88b8f4b31bc56c6bb3fc16972bb6e41
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3b46ae07d4bbbcd02b9880a394b72c790553f95c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069808"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837018"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>使用 PowerShell 在執行 Windows 的虛擬機器中啟用 Azure 診斷
 
@@ -212,4 +212,4 @@ Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
 
 ## <a name="next-steps"></a>後續步驟
 * 如需使用 Azure 診斷功能和其他技術疑難排解問題的詳細指引，請參閱 [在 Azure 雲端服務和虛擬機器中啟用診斷](../../cloud-services/cloud-services-dotnet-diagnostics.md)。
-* [診斷組態結構描述](/azure/azure-monitor/platform/diagnostics-extension-versions) 說明診斷擴充功能的各種 XML 組態選項。
+* [診斷組態結構描述](../../azure-monitor/platform/diagnostics-extension-versions.md) 說明診斷擴充功能的各種 XML 組態選項。

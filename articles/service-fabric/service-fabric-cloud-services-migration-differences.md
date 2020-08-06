@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 47c3d1b4d603e2dde2de8d4a95fb953744d71409
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259008"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836729"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>移轉應用程式之前，先了解「雲端服務」與 Service Fabric 之間的差異。
 Microsoft Azure Service Fabric 為次世代雲端應用程式平台，適用於高度可調整且高度可靠的分散式應用程式。 其中導入了許多封裝、部署、更新及管理分散式雲端應用程式的新功能。 
@@ -81,7 +81,7 @@ Service Fabric 提供服務探索機制 (稱為「名稱服務」)，可用來�
 ![Service Fabric 直接通訊][8]
 
 ## <a name="parity"></a>Parity
-[雲端服務類似于 Service Fabric 的控制程度和易用性，但它現在是舊版服務，建議您在進行新的開發時使用 Service Fabric](/azure/app-service/overview-compare)。以下是 API 比較：
+[雲端服務類似于 Service Fabric 的控制程度和易用性，但它現在是舊版服務，建議您在進行新的開發時使用 Service Fabric](/azure/architecture/guide/technology-choices/compute-decision-tree)。以下是 API 比較：
 
 
 | **雲端服務 API** | **Service Fabric API** | **注意事項** |

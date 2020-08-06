@@ -8,18 +8,18 @@ ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0f85283ad90f219dfbf404c437a843e1191b19fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498730"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837269"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>如何使用 PowerShell 備份和還原適用於 MySQL 的 Azure 資料庫伺服器
 
 適用於 MySQL 的 Azure 資料庫伺服器會定期備份，以啟用還原功能。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作說明指南，您需要：
 
@@ -133,4 +133,4 @@ Cmdlet 的**dr**參數集 `Restore-AzMySqlServer` 需要下列參數：
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 PowerShell 自訂適用於 MySQL 的 Azure 資料庫伺服器參數](howto-configure-server-parameters-using-powershell.md)
+> [如何使用 PowerShell 產生適用於 MySQL 的 Azure 資料庫連接字串](howto-connection-string-powershell.md)

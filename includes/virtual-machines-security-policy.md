@@ -4,14 +4,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9310fd5c9a66fbd39e32c4756c5037567963912d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458656"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87841848"
 ---
-請務必讓您的虛擬機器（VM）在您執行的應用程式中保持安全。 保護 VM 可包含一或多項 Azure 服務和功能，其中涵蓋保護 VM 的存取權及保護資料的儲存體。 本文提供可讓您保護 VM 和應用程式的資訊。
+請務必讓虛擬機器 (VM) 保護您執行的應用程式。 保護 VM 可包含一或多項 Azure 服務和功能，其中涵蓋保護 VM 的存取權及保護資料的儲存體。 本文提供可讓您保護 VM 和應用程式的資訊。
 
 ## <a name="antimalware"></a>反惡意程式碼
 
@@ -63,8 +63,8 @@ Azure Active Directory (Azure AD) 中適用於 Azure 資源的受控識別功能
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-使用[角色型存取控制 (RBAC)](../articles/role-based-access-control/overview.md)，可讓您區隔小組內的職責，而僅授予使用者在 VM 上執行作業所需的存取權。 您不需為每個人授與 VM 的權限，而是只允許執行特定的動作。 您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/role) 或 [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md)，在 [Azure 入口網站](../articles/role-based-access-control/role-assignments-portal.md)中設定 VM 的存取控制。
+使用[azure 角色型存取控制 (AZURE RBAC) ](../articles/role-based-access-control/overview.md)，您可以將小組內的職責區隔，並僅授與使用者執行其工作所需的存取權數量。 您不需為每個人授與 VM 的權限，而是只允許執行特定的動作。 您可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/role) 或 [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md)，在 [Azure 入口網站](../articles/role-based-access-control/role-assignments-portal.md)中設定 VM 的存取控制。
 
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 - 逐步執行步驟，以使用 Azure 資訊安全中心來監視 [Linux](../articles/security/fundamentals/overview.md) 或 [Windows](../articles/virtual-machines/windows/tutorial-azure-security.md) 虛擬機器安全性。

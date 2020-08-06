@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 65ec92aeca44a514467a642de1dab06f06c220e9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 880ec24c377091173202098a3c54b5776bf69a98
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533847"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836610"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>在 Azure SQL Database 中，使用伺服器的虛擬網路服務端點和規則
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -53,13 +53,13 @@ ms.locfileid: "87533847"
 有一組獨立的安全性角色負責管理虛擬網路服務端點。 下列每個角色都需要採取動作：
 
 - **網路管理員：** &nbsp;開啟端點。
-- **資料庫管理員：** &nbsp;更新存取控制清單（ACL），以將指定的子網新增至伺服器。
+- **資料庫管理員：** &nbsp;更新存取控制清單 (ACL) ，以將指定的子網新增至伺服器。
 
 RBAC 替代方案：**
 
 「網路管理員」和「資料庫管理員」角色的能力已超過管理虛擬網路規則所需。 只需要其中一部分能力。
 
-在 Azure 中，您可以選擇使用[角色型存取控制 (RBAC)][rbac-what-is-813s] 來建立單一自訂安全性角色，而且只給予一部分必要的能力。 您可以使用自訂角色，而不是涉及網路系統管理員或資料庫管理員。如果您將使用者新增至自訂角色，而不是將使用者新增至其他兩個主要系統管理員角色，則安全性暴露的介面區會較低。
+您可以選擇在 Azure 中使用 azure[角色型存取控制 (AZURE RBAC) ][rbac-what-is-813s]建立僅具有必要功能子集的單一自訂角色。 您可以使用自訂角色，而不是涉及網路系統管理員或資料庫管理員。如果您將使用者新增至自訂角色，而不是將使用者新增至其他兩個主要系統管理員角色，則安全性暴露的介面區會較低。
 
 > [!NOTE]
 > 在某些情況下，Azure SQL Database 和 VNet 子網中的資料庫位於不同的訂用帳戶中。 在這些情況下，您必須確保下列設定：
@@ -121,7 +121,7 @@ PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure Synapse Anal
 
 #### <a name="steps"></a>步驟
 
-1. 在 PowerShell 中，向 Azure Active Directory （AAD）註冊裝載 Azure Synapse 的**伺服器**：
+1. 在 PowerShell 中，使用 Azure Active Directory (AAD) 來註冊裝載 Azure Synapse 的**伺服器**：
 
    ```powershell
    Connect-AzAccount
@@ -136,7 +136,7 @@ PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure Synapse Anal
    > - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)**升級至 v2**。
    > - 關於 Azure Data Lake Storage Gen2 的已知問題，請參閱此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
 
-1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料參與者**Azure 角色指派給裝載您已在 AZURE ACTIVE DIRECTORY （AAD）中註冊之 Azure Synapse Analytics 的伺服器，如步驟 #1 所示。
+1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料參與者**Azure 角色指派給裝載您已向其註冊之 Azure Synapse 分析的伺服器，如步驟 #1 中所述 AZURE ACTIVE DIRECTORY (AAD) 。
 
    > [!NOTE]
    > 只有在儲存體帳戶上具有擁有者許可權的成員，才能夠執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
@@ -227,7 +227,7 @@ SQL VNet 動作的 PowerShell cmdlet 會在內部呼叫 REST API。 您可以直
 
 - [虛擬網路規則：作業][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須已有一個子網路是以 Azure SQL Database 相關的特定虛擬網路服務端點「類型名稱」** 所標記。
 

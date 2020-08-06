@@ -1,17 +1,17 @@
 ---
 title: 虛擬網路規則-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 瞭解如何使用虛擬網路（vnet）服務端點連接到適用於 PostgreSQL 的 Azure 資料庫單一伺服器。
+description: 瞭解如何使用虛擬網路 (vnet) 服務端點連接到適用於 PostgreSQL 的 Azure 資料庫單一伺服器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: f473a4621c6b2214717b5036eae5abeaa564fb72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 544fabf9a32eaa7ef7457fc26ae9212b9fce9872
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076616"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837205"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>使用適用於 PostgreSQL 的 Azure 資料庫單一伺服器虛擬網路服務端點和規則
 
@@ -86,7 +86,7 @@ RBAC 替代方案：**
 
 「網路管理員」和「資料庫管理員」角色的能力已超過管理虛擬網路規則所需。 只需要其中一部分能力。
 
-在 Azure 中，您可以選擇使用[角色型存取控制 (RBAC)][rbac-what-is-813s] 來建立單一自訂安全性角色，而且只給予一部分必要的能力。 您可以使用自訂角色，而不是涉及網路系統管理員或資料庫管理員。如果您將使用者新增至自訂角色，而不是將使用者新增至其他兩個主要系統管理員角色，則安全性暴露的介面區會較低。
+您可以選擇在 Azure 中使用 azure[角色型存取控制 (AZURE RBAC) ][rbac-what-is-813s]建立僅具有必要功能子集的單一自訂角色。 您可以使用自訂角色，而不是涉及網路系統管理員或資料庫管理員。如果您將使用者新增至自訂角色，而不是將使用者新增至其他兩個主要系統管理員角色，則安全性暴露的介面區會較低。
 
 > [!NOTE]
 > 某些案例中，適用於 PostgreSQL 的 Azure 資料庫和 VNet 子網路是在不同的訂用帳戶。 在這些情況下，您必須確保下列設定：

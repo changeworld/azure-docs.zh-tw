@@ -1,7 +1,7 @@
 ---
 title: 管理您工作區中的角色
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用角色型存取控制（RBAC）存取 Azure Machine Learning 工作區。
+description: 瞭解如何使用角色型存取控制 (RBAC) 來存取 Azure Machine Learning 工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,17 +11,17 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 6a49497cbe71dddb8ab6e76be9b3679dd62b0cee
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 8cff5ec6886c0aceff5270418f9feeb145f6fd17
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449033"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836542"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理 Azure Machine Learning 工作區的存取權
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何管理 Azure Machine Learning 工作區的存取權。 [角色型存取控制（RBAC）](/azure/role-based-access-control/overview)是用來管理 Azure 資源的存取權。 Azure Active Directory 中的使用者會被指派特定角色，以授與資源的存取權。 Azure 提供內建角色，以及建立自訂角色的能力。
+在本文中，您將瞭解如何管理 Azure Machine Learning 工作區的存取權。 Azure[角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/overview)用來管理 azure 資源的存取權。 Azure Active Directory 中的使用者會被指派特定角色，以授與資源的存取權。 Azure 提供內建角色，以及建立自訂角色的能力。
 
 ## <a name="default-roles"></a>預設角色
 
@@ -30,8 +30,8 @@ Azure Machine Learning 工作區是一項 Azure 資源。 就像其他 Azure 資
 | 角色 | 存取層級 |
 | --- | --- |
 | **讀取者** | 工作區中的唯讀動作。 讀者可以在工作區中列出及查看資產，包括[資料](how-to-access-data.md)存放區認證。 讀者無法建立或更新這些資產。 |
-| **參與者** | 在工作區中查看、建立、編輯或刪除（如果適用）資產。 例如，參與者可以建立實驗、建立或連結計算叢集、提交執行，以及部署 Web 服務。 |
-| **擁有者** | 工作區的完整存取權，包括能夠在工作區中查看、建立、編輯或刪除（如果適用）資產。 此外，您可以變更角色指派。 |
+| **參與者** | 查看、建立、編輯或刪除 (，其中適用于工作區中的) 資產。 例如，參與者可以建立實驗、建立或連結計算叢集、提交執行，以及部署 Web 服務。 |
+| **擁有者** | 工作區的完整存取權，包括能夠查看、建立、編輯或刪除工作區中適用) 資產的 (。 此外，您可以變更角色指派。 |
 | **自訂角色** | 可讓您自訂工作區內特定控制或資料平面作業的存取權。 例如，提交執行、建立計算、部署模型或註冊資料集。 |
 
 > [!IMPORTANT]
@@ -120,21 +120,21 @@ az role definition create --role-definition data_scientist_role.json
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-如需自訂角色的詳細資訊，請參閱[Azure 自訂角色](/azure/role-based-access-control/custom-roles)。 如需可與自訂角色搭配使用之作業（動作和非動作）的詳細資訊，請參閱[資源提供者作業](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
+如需自訂角色的詳細資訊，請參閱[Azure 自訂角色](/azure/role-based-access-control/custom-roles)。 如需有關作業的詳細資訊 (動作，而不是動作) 可與自訂角色搭配使用，請參閱[資源提供者作業](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service"></a>Q. 在 Azure Machine Learning 服務中執行一些常見案例所需的許可權為何？
 
-下表是 Azure Machine Learning 活動的摘要，以及在最少範圍執行它們所需的許可權。 例如，如果可以使用工作區範圍（第4欄）來執行活動，則具有該許可權的所有更高範圍也會自動生效：
+下表是 Azure Machine Learning 活動的摘要，以及在最少範圍執行它們所需的許可權。 例如，如果您可以使用工作區範圍來執行活動 (資料行 4) ，則具有該許可權的所有更高範圍也會自動生效：
 
 > [!IMPORTANT]
 > 此資料表中開頭為的所有路徑 `/` 都是的**相對路徑** `Microsoft.MachineLearningServices/` ：
 
 | 活動 | 訂用帳戶層級範圍 | 資源群組層級範圍 | 工作區層級範圍 |
 | ----- | ----- | ----- | ----- |
-| 建立新的工作區 | 不需要 | 擁有者或參與者 | N/A （成為擁有者，或在建立後繼承較高範圍角色） |
+| 建立新的工作區 | 不需要 | 擁有者或參與者 | 在建立後，N/A (成為擁有者，或繼承較高的範圍角色)  |
 | 更新工作區的版本 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許：`/workspaces/write` |
 | 要求訂用帳戶層級 Amlcompute 配額或設定工作區層級配額 | 擁有者、參與者或自訂角色 </br>便`/locations/updateQuotas/action`</br> 在訂用帳戶範圍 | 未獲授權 | 未獲授權 |
 | 建立新的計算叢集 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許：`/workspaces/computes/write` |
@@ -142,7 +142,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | 正在提交任何類型的執行 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許：`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
 | 發行管線端點 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許：`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | 在 AKS/ACI 資源上部署已註冊的模型 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許：`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
-| 針對已部署的 AKS 端點進行評分 | 不需要 | 不需要 | 允許的擁有者、參與者或自訂角色： `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` （當您未使用 AAD 驗證時）或 `"/workspaces/read"` （當您使用權杖驗證時） |
+| 針對已部署的 AKS 端點進行評分 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許： `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` (當您未使用 AAD 驗證時) 或 `"/workspaces/read"` (當您使用權杖驗證時)  |
 | 使用互動式筆記本存取儲存體 | 不需要 | 不需要 | 擁有者、參與者或自訂角色允許：`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
 | 建立新的自訂角色 | 允許的擁有者、參與者或自訂角色`Microsoft.Authorization/roleDefinitions/write` | 不需要 | 擁有者、參與者或自訂角色允許：`/workspaces/computes/write` |
 
@@ -369,7 +369,7 @@ az provider operation show –n Microsoft.MachineLearningServices
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>Q. 使用 Azure RBAC 時有哪些常見的問題？
 
-當您使用 Azure 角色型存取控制（Azure RBAC）時，以下是一些要注意的事項：
+當您使用 Azure 角色型存取控制 (Azure RBAC) 時，以下是一些要注意的事項：
 
 - 當您在 Azure 中建立資源（例如工作區）時，您不是直接擁有工作區的擁有者。 您的角色會繼承自您在該訂用帳戶中授權的最高範圍角色。 舉例來說，如果您是網路系統管理員，而且擁有建立 Machine Learning 工作區的許可權，則會針對該工作區指派網路管理員角色，而不是擁有者角色。
 - 若有兩個角色指派給相同的 AAD 使用者，且動作/NotActions 有衝突的區段，則如果您在另一個角色中也將這些作業列為動作，則從某個角色 NotActions 列出的作業可能不會生效。 若要深入瞭解 Azure 如何剖析角色指派，請參閱[AZURE RBAC 如何判斷使用者是否有資源的存取權](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
@@ -387,7 +387,7 @@ az provider operation show –n Microsoft.MachineLearningServices
 Azure Machine Learning Studio 支援以角色為基礎的存取控制。 
 
 > [!IMPORTANT]
-> 一旦您將具有特定許可權的自訂角色指派給工作區中的資料科學家，使用者就會自動隱藏對應的動作（例如 [新增計算] 按鈕）。 隱藏這些專案可避免在使用時看到從服務傳回未經授權存取通知的控制項。
+> 一旦您將具有特定許可權的自訂角色指派給工作區中的資料科學家，使用者就會自動隱藏對應的動作 (例如新增計算按鈕) 。 隱藏這些專案可避免在使用時看到從服務傳回未經授權存取通知的控制項。
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Q. 如何? 在我的訂用帳戶中尋找角色的角色定義嗎？
 

@@ -8,28 +8,28 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065646"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837339"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>虛擬機器供應專案發佈指南
 
-發佈虛擬機器（VM）映射是將解決方案發佈至 Azure Marketplace 的主要方式之一。 使用本指南來瞭解這類供應專案的需求。 
+發佈虛擬機器 (VM) 映射是將解決方案發佈至 Azure Marketplace 的主要方式之一。 使用本指南來瞭解這類供應專案的需求。 
 
 虛擬機器供應專案是透過 Azure Marketplace 部署和計費的交易供應專案。 使用者所看到的動作呼叫會*立即取得*。
 
 ## <a name="free-trial"></a>免費試用 
 
-若要安排使用者測試您的供應專案，請在使用自備授權（BYOL）計費模型時存取有限期限的軟體授權。 
+若要安排使用者測試您的供應專案，請在使用自備授權 (BYOL) 計費模型時存取有限期限的軟體授權。 
 
 ## <a name="test-drive"></a>試用產品
 
-您可以透過基礎結構即服務（IaaS）或軟體即服務（SaaS）應用程式來部署一或多個虛擬機器。 *試用*產品發佈選項的優點是自動設定虛擬機器或整個解決方案，並由合作夥伴主控的導覽。 試用產品可讓您的客戶評估 Vm，而不需要額外付費。 客戶不需要是現有的 Azure 客戶，即可與試用版體驗互動。 
+您可以透過基礎結構即服務來部署一或多個虛擬機器， (IaaS) 或 (SaaS) 應用程式的軟體即服務。 *試用*產品發佈選項的優點是自動設定虛擬機器或整個解決方案，並由合作夥伴主控的導覽。 試用產品可讓您的客戶評估 Vm，而不需要額外付費。 客戶不需要是現有的 Azure 客戶，即可與試用版體驗互動。 
 
-若要開始使用，請在[試用](mailto:amp-testdrive@microsoft.com)時透過電子郵件與我們聯繫。 
+如需有關試用產品的詳細資訊，請參閱[什麼是試用產品？](what-is-test-drive.md)
 
 |需求  |詳細資料 |
 |---------|---------|
@@ -41,7 +41,7 @@ ms.locfileid: "87065646"
 
 ## <a name="virtual-machine-offer"></a>虛擬機器供應項目
 
-當您將虛擬裝置部署到與客戶相關聯的訂用帳戶時，請使用*虛擬機器*供應專案類型。 Vm 具備全商務功能，使用隨用隨付或自備授權（BYOL）授權模型。 Microsoft 會主控商務交易，並代表您向客戶收費。 您獲得的好處是，可以使用客戶與 Microsoft 之間慣用的付款關係，包括任何 Enterprise 合約。
+當您將虛擬裝置部署到與客戶相關聯的訂用帳戶時，請使用*虛擬機器*供應專案類型。 Vm 具備全商務功能，使用隨用隨付或自備授權 (BYOL) 授權模型。 Microsoft 會主控商務交易，並代表您向客戶收費。 您獲得的好處是，可以使用客戶與 Microsoft 之間慣用的付款關係，包括任何 Enterprise 合約。
 
 > [!NOTE]
 > 此時，與 Enterprise 合約相關聯的承諾用量可用於您 VM 的 Azure 使用量，但不能用於您的軟體授權費用。  
@@ -54,10 +54,10 @@ ms.locfileid: "87065646"
 | 需求 | 詳細資料 |  
 |:--- |:--- | 
 | 計費和計量 | 您的 VM 必須支援 BYOL 或隨用隨付每月計費。 |  
-| Azure 相容的虛擬硬碟 (VHD) | VM 必須建置在 Windows 或 Linux 上。 如需建立 VHD 的詳細資訊，請參閱： <ul> <li>[Azure 上背書的 linux](../virtual-machines/linux/endorsed-distros.md)散發套件（適用于 linux vhd）。</li> <li>[建立與 Azure 相容的 vhd](./partner-center-portal/azure-vm-create-offer.md) （適用于 Windows vhd）。</li> </ul> |  
+| Azure 相容的虛擬硬碟 (VHD) | VM 必須建置在 Windows 或 Linux 上。 如需建立 VHD 的詳細資訊，請參閱： <ul> <li>Linux 散發套件已背書適用于 Linux Vhd) 的[Azure](../virtual-machines/linux/endorsed-distros.md) (。</li> <li>建立適用于 Windows Vhd) 的[Azure 相容 VHD](./partner-center-portal/azure-vm-create-offer.md) (。</li> </ul> |  
 
 >[!Note]
->雲端解決方案提供者（CSP）合作夥伴頻道加入宣告現已推出。 如需透過 Microsoft CSP 合作夥伴頻道行銷供應專案的詳細資訊，請參閱[雲端解決方案提供者](./cloud-solution-providers.md)。
+>雲端解決方案提供者 (CSP) 合作夥伴頻道加入宣告現已推出。 如需透過 Microsoft CSP 合作夥伴頻道行銷供應專案的詳細資訊，請參閱[雲端解決方案提供者](./cloud-solution-providers.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

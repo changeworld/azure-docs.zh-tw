@@ -1,6 +1,6 @@
 ---
 title: 將應用程式從 BizTalk 服務遷移至 Azure Logic Apps
-description: 如何將您的應用程式和解決方案從 Microsoft Azure BizTalk 服務（MABS）移至 Azure Logic Apps
+description: 如何將您的應用程式和解決方案從 Microsoft Azure BizTalk 服務 (MABS) 移至 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 975dcc357e244469f33385f84f2e15a89997597b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078210"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837375"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>將您的應用程式和解決方案從 BizTalk 服務遷移至 Azure Logic Apps
 
@@ -103,7 +103,7 @@ Logic Apps 提供複雜的邏輯功能，以及具有[條件式陳述式](../log
 
 ### <a name="run-custom-code"></a>執行自訂程式碼
 
-BizTalk 服務讓您能夠在自己的組件中[執行上傳的自訂程式碼](/previous-versions/azure/dn232389(v=azure.100))。 此功能會由 [IMessageInspector](/azure/logic-apps/logic-apps-move-from-mabs) 介面來實作。 橋接器中的每個階段包含兩個屬性 (On Enter Inspector 和 On Exit Inspector)，提供您建立來實作此介面的 .NET 類型。 自訂程式碼可讓您對資料執行更複雜的處理，以及在執行通用商務邏輯的組件中重複使用現有的程式碼。 
+BizTalk 服務讓您能夠在自己的組件中[執行上傳的自訂程式碼](/previous-versions/azure/dn232389(v=azure.100))。 此功能會由 [IMessageInspector]() 介面來實作。 橋接器中的每個階段包含兩個屬性 (On Enter Inspector 和 On Exit Inspector)，提供您建立來實作此介面的 .NET 類型。 自訂程式碼可讓您對資料執行更複雜的處理，以及在執行通用商務邏輯的組件中重複使用現有的程式碼。 
 
 Logic Apps 提供兩個執行自訂程式碼的主要方法：Azure Functions 和 API Apps。 您可以建立 Azure Functions，並從 Logic Apps 呼叫。 請參閱[透過 Azure Functions 新增並執行適用於 Logic Apps 的自訂程式碼](../logic-apps/logic-apps-azure-functions.md)。 使用 Azure App Service 一部分的 API Apps，可建立您自己的觸發程序和動作。 深入了解[建立自訂 API 來與 Logic Apps 搭配使用](../logic-apps/logic-apps-create-api-app.md)。 
 

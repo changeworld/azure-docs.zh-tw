@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 06/07/2019
 ms.author: rogarana
-ms.openlocfilehash: b28427b3ede0cfaeb9e08d3c73b15ea7f2961f1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2bd10ab4c98fe2e77332c3cc2566ab2f0c7ad42
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71180037"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87841891"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>其他 premium 檔案共用層級限制
 
@@ -25,9 +25,9 @@ ms.locfileid: "71180037"
 
 |區域  |Premium 檔案  |標準檔案 |
 |---------|---------|---------|
-|大小                  |1 TiB         |1 TiB|
+|大小                  |4 TiB         |1 TiB|
 |每個檔案的最大 IOPS     |5,000         |1,000|
 |並行控制碼    |2,000         |2,000|
 |輸出  |300 MiB/秒|      請參閱標準檔案輸送量值|
 |輸入  |200 MiB/秒| 請參閱標準檔案輸送量值|
-|Throughput| 請參閱 premium 檔案輸入/輸出值| 最高 60 MiB/秒|
+|輸送量| 請參閱 premium 檔案輸入/輸出值| 最高 60 MiB/秒|

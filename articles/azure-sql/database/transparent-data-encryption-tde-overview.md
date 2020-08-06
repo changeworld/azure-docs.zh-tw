@@ -12,21 +12,21 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 06/15/2020
-ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986969"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836678"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL 受控執行個體和 Azure Synapse 分析的透明資料加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-[透明資料加密（TDE）可透過](/sql/relational-databases/security/encryption/transparent-data-encryption)加密待用資料，協助保護 Azure SQL Database、azure SQL 受控執行個體和 Azure Synapse 分析免于惡意離線活動的威脅。 它會對資料庫、相關聯的備份和待用的交易記錄檔執行即時加密和解密，而不需變更應用程式。 根據預設，TDE 會針對所有新部署的 SQL 資料庫啟用，而且必須針對 Azure SQL Database、Azure SQL 受控執行個體的舊版資料庫手動啟用。 必須手動啟用 TDE，才能進行 Azure Synapse 分析。
+[ (TDE) 的透明資料加密](/sql/relational-databases/security/encryption/transparent-data-encryption)，可協助保護 Azure SQL Database、azure SQL 受控執行個體和 Azure Synapse 分析，以防止惡意離線活動的威脅，方法是加密待用資料。 它會對資料庫、相關聯的備份和待用的交易記錄檔執行即時加密和解密，而不需變更應用程式。 根據預設，TDE 會針對所有新部署的 SQL 資料庫啟用，而且必須針對 Azure SQL Database、Azure SQL 受控執行個體的舊版資料庫手動啟用。 必須手動啟用 TDE，才能進行 Azure Synapse 分析。
 
-TDE 會在分頁層次上執行資料的即時 I/O 加密和解密。 每個頁面在讀取到記憶體時都會進行解密，然後再重新加密並寫入至磁碟。 TDE 會使用稱為資料庫加密金鑰（DEK）的對稱金鑰來加密整個資料庫的儲存體。 在資料庫啟動時，加密的 DEK 會解密，然後用於解密和重新加密 SQL Server 資料庫引擎進程中的資料庫檔案。 DEK 會受到 TDE 保護裝置的保護。 TDE 保護裝置可以是服務管理的憑證（服務管理的透明資料加密）或儲存在[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault)中的非對稱金鑰（客戶管理的透明資料加密）。
+TDE 會在分頁層次上執行資料的即時 I/O 加密和解密。 系統會在將每個頁面讀取至記憶體時對它進行解密，然後在將頁面寫入至磁碟之前對它進行加密。 TDE 會使用稱為資料庫加密金鑰的對稱金鑰來加密整個資料庫的儲存體， (DEK) 。 在資料庫啟動時，加密的 DEK 會解密，然後用於解密和重新加密 SQL Server 資料庫引擎進程中的資料庫檔案。 DEK 會受到 TDE 保護裝置的保護。 TDE 保護裝置是服務管理的憑證 (服務管理的透明資料加密) 或儲存在[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (客戶管理的透明資料加密) 中的非對稱金鑰。
 
-針對 Azure SQL Database 和 Azure Synapse，TDE 保護裝置會在[伺服器](logical-servers.md)層級設定，並由與該伺服器相關聯的所有資料庫繼承。 針對 Azure SQL 受控執行個體（預覽中的 BYOK 功能），TDE 保護裝置會在實例層級設定，並由該實例上所有已加密的資料庫繼承。 除非另有說明，「伺服器」** 字詞在本文件中指的是伺服器和執行個體兩者。
+針對 Azure SQL Database 和 Azure Synapse，TDE 保護裝置會在[伺服器](logical-servers.md)層級設定，並由與該伺服器相關聯的所有資料庫繼承。 針對 Azure SQL 受控執行個體，系統會將 TDE 保護裝置設定於執行個體層級，並由該執行個體上的所有「加密」資料庫繼承。 除非另有說明，「伺服器」** 字詞在本文件中指的是伺服器和執行個體兩者。
 
 > [!IMPORTANT]
 > 根據預設，SQL Database 中所有新建立的資料庫都會使用服務管理的透明資料加密進行加密。 在2017年5月之前建立的現有 SQL 資料庫，以及透過還原、異地複寫和資料庫複本建立的 SQL 資料庫，預設都不會加密。 根據預設，在2019年2月之前建立的現有 SQL 受控執行個體資料庫不會加密。 透過 restore 建立的 SQL 受控執行個體資料庫會從來源繼承加密狀態。
@@ -42,7 +42,7 @@ Microsoft 也會視異地複寫和還原的需要順暢地移動和管理金鑰�
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>由客戶管理的透明資料加密：攜帶您自己的金鑰
 
-客戶管理的 TDE 也稱為 TDE 的攜帶您自己的金鑰（BYOK）支援。 在此案例中，加密 DEK 的 TDE 保護裝置是客戶管理的非對稱金鑰，它會儲存在客戶擁有和受控 Azure Key Vault （Azure 的雲端式外部金鑰管理系統）中，而且永遠不會離開金鑰保存庫。 TDE 保護裝置可[由金鑰保存庫產生，或](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)從內部部署硬體安全模組（HSM）裝置傳輸至金鑰保存庫。 SQL Database、SQL 受控執行個體和 Azure Synapse 必須被授與客戶擁有之金鑰保存庫的許可權，才能解密和加密 DEK。 如果撤銷了伺服器對金鑰保存庫的許可權，將無法存取資料庫，而且所有資料都會加密
+客戶管理的 TDE 也稱為攜帶您自己的金鑰 (BYOK) TDE 支援。 在此案例中，加密 DEK 的 TDE 保護裝置是客戶管理的非對稱金鑰，它會儲存在客戶擁有和受控 Azure Key Vault (Azure 的雲端式外部金鑰管理系統) 且永遠不會離開金鑰保存庫。 TDE 保護裝置可[由金鑰保存庫產生，或](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)從內部部署硬體安全模組傳輸到金鑰保存庫 (HSM) 裝置。 SQL Database、SQL 受控執行個體和 Azure Synapse 必須被授與客戶擁有之金鑰保存庫的許可權，才能解密和加密 DEK。 如果撤銷了伺服器對金鑰保存庫的許可權，將無法存取資料庫，而且所有資料都會加密
 
 透過與 Azure Key Vault 整合的 TDE，使用者可以使用 Azure Key Vault 功能來控制金鑰管理工作，包括金鑰輪替、金鑰保存庫權限、金鑰備份，以及啟用所有 TDE 保護裝置的稽核/報告功能。 Key Vault 提供集中式的金鑰管理、利用嚴密監控的 Hsm，並能夠區分金鑰與資料管理之間的責任，以協助符合安全性原則的合規性。
 若要深入瞭解 Azure SQL Database 和 Azure Synapse 的 BYOK，請參閱[使用 Azure Key Vault 整合的透明資料加密](transparent-data-encryption-byok-overview.md)。
@@ -77,7 +77,7 @@ Microsoft 也會視異地複寫和還原的需要順暢地移動和管理金鑰�
 
 若要透過 Azure 入口網站設定 TDE，您必須以 Azure 擁有者、參與者或 SQL 安全性管理員的身分連線。
 
-在資料庫層級上啟用和停用 TDE。 針對 Azure SQL 受控執行個體使用 Transact-sql （T-sql），在資料庫上開啟和關閉 TDE。 針對 Azure SQL Database 和 Azure Synapse，您可以在使用 Azure 系統管理員或參與者帳戶登入之後，為[Azure 入口網站](https://portal.azure.com)中的資料庫管理 TDE。 在您的使用者資料庫下方，找到 TDE 設定。 依預設會使用服務管理的透明資料加密。 系統會針對包含資料庫的伺服器自動產生 TDE 憑證。
+在資料庫層級上啟用和停用 TDE。 針對 Azure SQL 受控執行個體使用 Transact-sql (T-sql) 開啟和關閉資料庫的 TDE。 針對 Azure SQL Database 和 Azure Synapse，您可以在使用 Azure 系統管理員或參與者帳戶登入之後，為[Azure 入口網站](https://portal.azure.com)中的資料庫管理 TDE。 在您的使用者資料庫下方，找到 TDE 設定。 依預設會使用服務管理的透明資料加密。 系統會針對包含資料庫的伺服器自動產生 TDE 憑證。
 
 ![服務管理的透明資料加密](./media/transparent-data-encryption-tde-overview/service-managed-transparent-data-encryption.png)  
 
@@ -138,7 +138,7 @@ Microsoft 也會視異地複寫和還原的需要順暢地移動和管理金鑰�
 
 | Command | 描述 |
 | --- | --- |
-|[建立或更新伺服器](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|將 Azure Active Directory 身分識別加入至伺服器。 （用來授與 Key Vault 的存取權）|
+|[建立或更新伺服器](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|將 Azure Active Directory 身分識別加入至伺服器。 用來將存取權授與 Key Vault 的 () |
 |[建立或更新伺服器金鑰](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|將 Key Vault 鍵加入至伺服器。|
 |[刪除伺服器金鑰](https://docs.microsoft.com/rest/api/sql/serverkeys/delete)|從伺服器中移除 Key Vault 的索引鍵。 |
 |[取得伺服器金鑰](https://docs.microsoft.com/rest/api/sql/serverkeys/get)|從伺服器取得特定的 Key Vault 索引鍵。|

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037183"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836797"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 資訊安全中心內的威脅防護
 
@@ -54,11 +54,15 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 
     Microsoft Defender ATP 在偵測到威脅時，會觸發警示。 警示會顯示在 [資訊安全中心] 儀表板上。 在儀表板中，您可以切換至 Microsoft Defender ATP 主控台並執行詳細的調查，以找出攻擊的範圍。 如需 Microsoft Defender ATP 的詳細資訊，請參閱[將伺服器上線至 Microsoft Defender ATP 服務](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)。
 
-* **無檔案攻擊偵測** <a name="windows-fileless"></a> - 以您的端點為目標的無檔案攻擊，是很常見的。 為了規避偵測，無檔案攻擊會將惡意承載插入記憶體中。 攻擊者承載會保存在遭入侵之程序的記憶體中，並執行各式各樣的惡意活動。
+* **Fileless 攻擊偵測** <a name="windows-fileless"></a>-Fileless 攻擊會將惡意承載插入記憶體中，以避免以磁片為基礎的掃描技術來偵測。 然後，攻擊者的承載會保存在遭入侵的進程記憶體中，並執行各式各樣的惡意活動。
 
-    透過無檔案攻擊偵測，自動化記憶體鑑識技術可識別無檔案攻擊的工具組、技術和行為。 此解決方案會在執行階段定期掃描您的機器，並直接從安全性關鍵程序的記憶體中擷取深入解析。
+    透過無檔案攻擊偵測，自動化記憶體鑑識技術可識別無檔案攻擊的工具組、技術和行為。 此解決方案會在執行時間定期掃描您的電腦，並直接從處理常式的記憶體中提取見解。 Linux 的特定深入解析包括下列各項的識別： 
 
-    其會尋找惡意探索、程式碼插入和執行惡意承載的證據。 無檔案攻擊偵測會產生詳細的安全性警示，以加速警示分級、相互關聯和下游回應時間。 此方法可補強以事件為基礎的 EDR 解決方案，以提供更大的偵測涵蓋範圍。
+    - 知名的工具組和加密軟體 
+    - 腳本，這是一小段程式碼，通常用來做為惡意探索軟體弱點的承載。
+    - 進程記憶體中插入的惡意可執行檔
+
+    Fileless 攻擊偵測會產生包含其他進程中繼資料（例如網路活動）描述的詳細安全性警示。 這會加速警示分級、相互關聯和下游回應時間。 這種方法可補充以事件為基礎的 EDR 解決方案，並提供更高的偵測涵蓋範圍。
 
     如需無檔案攻擊偵測警示的詳細資訊，請參閱[警示的參考資料表](alerts-reference.md#alerts-windows)。
 
@@ -132,9 +136,9 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 
 有可疑的資料庫活動、潛在弱點或 SQL 插入式攻擊，以及異常的資料庫存取和查詢模式時，您將會看到警示。
 
-適用于 Azure SQL Database 和 SQL 的先進威脅防護屬於先進 SQL 安全性功能的[先進資料安全性（ADS）](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)整合套件，涵蓋 Azure SQL Database、Azure SQL 受控實例、Azure SQL 資料倉儲資料庫和 azure 虛擬機器上的 SQL server。
+適用于 Azure SQL Database 和 SQL 的先進威脅防護屬於先進的[資料安全性 (ADS) ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)整合套件，適用于高階 SQL 安全性功能，涵蓋 Azure SQL Database、Azure SQL 受控實例、Azure SQL 資料倉儲資料庫和 azure 虛擬機器上的 SQL server。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [如何啟用 Azure SQL 資料庫的進階威脅防護](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [如何為 Azure 虛擬機器上的 SQL 伺服器啟用進階威脅防護](security-center-iaas-advanced-data.md)
@@ -147,9 +151,9 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 ### <a name="availability"></a>可用性
 
 - 發行狀態：
-    - [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)（公開上市）
-    - [Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)（預覽）
-    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) （預覽）
+    - [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) (公開上市) 
+    - [Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (預覽) 
+    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (預覽) 
 - 雲端：<br>
     ✔ 商用雲端<br>
     ✔ US Gov<br>
@@ -185,7 +189,7 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 
 如需定價詳細資料 (包含 30 天免費試用)，請參閱 [Azure 資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [如何啟用 Azure 儲存體的進階威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure 儲存體的威脅防護警示清單](alerts-reference.md#alerts-azurestorage)

@@ -11,20 +11,20 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 0d31d982e7788970cbf7aad7dd64db9e6d4b9b10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f0e9d057c92f1907bb77ee0767c7bb07f0f4c62
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502192"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836984"
 ---
-# <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service （IMDS）
+# <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS) 
 
 Azure Instance Metadata Service (IMDS) 提供目前執行中虛擬機器執行個體的相關資訊，而且可用來管理和設定您的虛擬機器。
 此資訊包括 SKU、儲存體、網路設定和即將進行的維護事件。 如需可用資料的完整清單，請參閱[中繼資料 API](#metadata-apis)。
 Instance Metadata Service 適用於 VM 和虛擬機器擴展集執行個體。 其僅適用於使用 [Azure Resource Manager](/rest/api/resources/) 建立/管理的執行中 VM。
 
-Azure 的 IMDS 是可在已知的非可路由 IP 位址（）上取得的 REST 端點 `169.254.169.254` ，它只能從 VM 內進行存取。 VM 和 IMDS 之間的通訊永遠不會離開主機。
+Azure 的 IMDS 是一種 REST 端點，可在已知的非可路由 IP 位址 (`169.254.169.254`) 中取得，它只能從 VM 內進行存取。 VM 和 IMDS 之間的通訊永遠不會離開主機。
 最佳作法是讓您的 HTTP 用戶端在查詢 IMDS 時略過 VM 中的 web proxy，並 `169.254.169.254` 將相同的視為 [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) 。
 
 ## <a name="security"></a>安全性
@@ -261,7 +261,7 @@ tagsList | 格式化為 JSON 陣列以方便透過程式設計剖析的標籤  |
 version | VM 映像的版本 | 2017-04-02
 vmId | VM 的[唯一識別碼](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | 虛擬機器擴展集的[虛擬機器擴展集名稱](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
-vmSize | [VM 大小](sizes.md) | 2017-04-02
+vmSize | [VM 大小](../sizes.md) | 2017-04-02
 區域 | 您虛擬機器的[可用性區域](../../availability-zones/az-overview.md) | 2017-12-01
 
 ### <a name="sample-1-tracking-vm-running-on-azure"></a>範例 1：追蹤在 Azure 上執行的 VM
@@ -685,7 +685,7 @@ Nonce 是選用的 10 位數字串。 如果未提供，IMDS 會在其位置傳�
 資料 | 描述
 -----|------------
 nonce | 可選擇性地隨要求提供的字串。 如果未提供 nonce，則會使用目前的 UTC 時間戳記
-計劃 | [Azure Marketplace 的影像計畫](/rest/api/compute/virtualmachines/createorupdate#plan)。 包含方案識別碼（名稱）、產品影像或供應專案（產品）和發行者識別碼（發行者）。
+計劃 | [Azure Marketplace 的影像計畫](/rest/api/compute/virtualmachines/createorupdate#plan)。 包含方案識別碼 (名稱) 、產品影像或供應專案 (產品) 和發行者識別碼 (發行者) 。
 timestamp/createdOn | 建立已簽署檔時的 UTC 時間戳記
 timestamp/expiresOn | 簽署的檔過期時的 UTC 時間戳記
 vmId |  VM 的[唯一識別碼](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
@@ -831,9 +831,9 @@ HTTP 狀態碼 | 原因
 1. 為什麼我沒有收到我的 VM 計算資訊？
    * 目前執行個體中繼資料服務僅支援使用 Azure Resource Manager 建立的執行個體。 未來可能會新增雲端服務 VM 的支援。
 1. 我在一陣子之後回過頭來透過 Azure Resource Manager 建立我的虛擬機器。 為什麼我看不到計算中繼資料資訊？
-   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對較舊的 Vm （在 Sep 2016 之前建立），請在 VM 實例中新增/移除擴充功能或資料磁片，以重新整理中繼資料。
+   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對較舊的 Vm (在 Sep 2016) 之前建立，請將擴充功能或資料磁片新增至 VM 實例 (s) 以重新整理中繼資料。
 1. 我看不到為新版本填入的所有資料
-   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對較舊的 Vm （在 Sep 2016 之前建立），請在 VM 實例中新增/移除擴充功能或資料磁片，以重新整理中繼資料。
+   * 針對在 2016 年 9 月之後建立的 VM，新增[標記](../../azure-resource-manager/management/tag-resources.md)才會開始看到計算中繼資料。 針對較舊的 Vm (在 Sep 2016) 之前建立，請將擴充功能或資料磁片新增至 VM 實例 (s) 以重新整理中繼資料。
 1. 為什麼會收到錯誤 `500 Internal Server Error` 或 `410 Resource Gone` ？
    * 以指數後置關閉系統或[暫時性錯誤處理](/azure/architecture/best-practices/transient-faults)中所述的其他方法，重試您的要求。 如果問題持續發生，請在 VM 的 Azure 入口網站中建立支援問題。
 1. 這適用于虛擬機器擴展集實例嗎？
@@ -845,7 +845,7 @@ HTTP 狀態碼 | 原因
    * <details>
         <summary>正在驗證您的路由表</summary>
 
-        1. 使用類似的命令傾印您的本機路由表 `netstat -r` ，並尋找 IMDS 專案（例如）：
+        1. 使用類似的命令傾印您的本機路由表 `netstat -r` ，並尋找 IMDS 專案 (例如 ) ：
             ```console
             ~$ netstat -r
             Kernel IP routing table
@@ -855,8 +855,8 @@ HTTP 狀態碼 | 原因
             169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
             172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
             ```
-        1. 確認的路由存在 `169.254.169.254` ，並記下對應的網路介面（例如 `eth0` ）。
-        1. 傾印路由表中對應介面的介面設定（請注意，設定檔的確切名稱可能會不同）
+        1. 確認的路由存在 `169.254.169.254` ，並記下對應的網路介面 (例如 `eth0`) 。
+        1. 傾印路由表中對應介面的介面設定 (請注意，設定檔的確切名稱可能會有所不同) 
             ```console
             ~$ cat /etc/netplan/50-cloud-init.yaml
             network:
@@ -871,8 +871,8 @@ HTTP 狀態碼 | 原因
                     set-name: eth0
             version: 2
             ```
-        1. 如果您使用動態 IP，請記下 MAC 位址。 如果您使用靜態 IP，您可能會注意到列出的 IP 和（或） MAC 位址。
-        1. 確認介面對應至 VM 的主要 NIC 和主要 IP。 您可以藉由查看 Azure 入口網站中的網路設定，或藉由查詢[Azure CLI](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)，來尋找主要 NIC/IP。 請注意公用和私人 Ip （如果使用 cli，則為 MAC 位址）。 PowerShell CLI 範例：
+        1. 如果您使用動態 IP，請記下 MAC 位址。 如果您使用靜態 IP，您可能會注意到列出的 IP (s) 和（或） MAC 位址。
+        1. 確認介面對應至 VM 的主要 NIC 和主要 IP。 您可以藉由查看 Azure 入口網站中的網路設定，或藉由查詢[Azure CLI](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)，來尋找主要 NIC/IP。 請注意，如果使用 cli) ，公用和私人 Ip (和 MAC 位址。 PowerShell CLI 範例：
             ```powershell
             $ResourceGroup = '<Resource_Group>'
             $VmName = '<VM_Name>'
