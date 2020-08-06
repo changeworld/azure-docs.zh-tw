@@ -7,12 +7,12 @@ ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cf2662bef194bc2b7afdb07f55809ba63f40fd6e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 67b71399332fb29a277381a8c2806dbe7fb31d85
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351787"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552098"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>教學課程：將在 Windows 上執行的 IoT 隨插即用多個元件裝置應用程式連線至 IoT 中樞 (C#)
 
@@ -60,7 +60,7 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 在您選擇的目錄中開啟命令提示字元。 執行下列命令，將 [Azure IoT C# SDK 和程式庫](https://github.com/Azure/azure-iot-sdk-csharp) \(英文\) GitHub 存放庫複製到下列位置：
 
 ```cmd
-git clone https://github.com/Azure/azure-iot-sdk-c.git
+git clone https://github.com/Azure/azure-iot-sdk-csharp.git
 ```
 
 ## <a name="build-the-code"></a>建置程式碼

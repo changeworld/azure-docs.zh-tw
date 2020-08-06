@@ -3,12 +3,12 @@ title: Azure 藍圖概觀
 description: 了解 Azure 藍圖服務如何讓您在 Azure 環境中建立、定義及部署成品。
 ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 3a7cece81027bd8ac79250f2f2cd08da637b5f0b
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: a8cec34bb5bdd52b22063a4109153c7f455aaa65
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970921"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530384"
 ---
 # <a name="what-is-azure-blueprints"></a>什麼是 Azure 藍圖？
 
@@ -39,7 +39,7 @@ Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/
 
 [原則](../policy/overview.md)是預設允許和明確拒絕的系統，在部署期間專注在資源屬性，並適用於既有資源。 它可確保訂用帳戶內的資源遵循需求和標準，進而支援雲端控管。
 
-在藍圖中納入原則，可讓您在指派藍圖期間建立正確的模式或設計。 納入原則可確保只能對環境進行經核准或符合預期的變更，以確保持續符合藍圖的目的。
+在藍圖中包含原則可讓您在指派藍圖期間建立正確的模式或設計。 納入原則可確保只能對環境進行經核准或符合預期的變更，以確保持續符合藍圖的目的。
 
 原則可以作為許多「成品」之一，包含在藍圖定義中。 藍圖也支援使用參數搭配原則和方案。
 
@@ -103,7 +103,7 @@ Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/
 
 可用的內建角色如下：
 
-|RBAC 角色 | 描述 |
+|Azure 角色 | 描述 |
 |-|-|
 |[擁有者](../../role-based-access-control/built-in-roles.md#owner) | 除了其他權限之外，還包含所有與 Azure 藍圖相關的權限。 |
 |[參與者](../../role-based-access-control/built-in-roles.md#contributor) | 除了其他權限之外，還可以建立和刪除藍圖定義，但不具有藍圖指派權限。 |
