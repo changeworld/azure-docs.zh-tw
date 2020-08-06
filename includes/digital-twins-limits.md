@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 64b3bf87df7d0b10f8a69e8303010f64b3e68f79
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 22b00b41c7fce0af57fd9f92b0f42bbd9412afda
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507603"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87771114"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -31,7 +31,7 @@ ms.locfileid: "87507603"
 | 查詢 | `AND`  /  `OR` 查詢中的運算式數目 | 50 | 是 |
 | 查詢 | 子句中的陣列專案數目 `IN`  /  `NOT IN` | 50 | 是 |
 | 查詢 | 查詢中的字元數 | 8,000 | 是 |
-| 查詢 | `JOINS`查詢中的數目 | 1 | 是 |
+| 查詢 | `JOINS`查詢中的數目 | 5 | 是 |
 
 ### <a name="rate-limits"></a>速率限制
 
@@ -47,6 +47,6 @@ ms.locfileid: "87507603"
 
 ### <a name="other-limits"></a>其他限制
 
-適用于 Azure 數位 Twins 模型之 DTDL 檔中的資料類型和欄位限制，可以在其 GitHub 中的規格檔中找到：[*數位 Twins 定義語言（DTDL）-第2版*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+適用于 Azure 數位 Twins 模型之 DTDL 檔中的資料類型和欄位限制，可以在其 GitHub 中的規格檔中找到：[*數位 Twins 定義語言 (DTDL) -第2版*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
  
 如需在預覽期間撰寫查詢的查詢延遲詳細資料和其他指導方針，請參閱[*如何：查詢*](../articles/digital-twins/how-to-query-graph.md)對應項圖形。

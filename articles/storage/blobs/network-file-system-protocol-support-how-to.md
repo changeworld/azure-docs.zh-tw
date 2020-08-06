@@ -1,24 +1,24 @@
 ---
-title: 使用 NFS 3.0 通訊協定（預覽）在 Linux 上掛接 Azure Blob 儲存體 |Microsoft Docs
-description: 瞭解如何使用 NFS 3.0 通訊協定，從以 Linux 為基礎的 Azure 虛擬機器（VM）或在內部部署環境中執行的 Linux 系統掛接 Blob 儲存體中的容器。
+title: 使用 NFS 3.0 通訊協定 (預覽) 來掛接 Azure Blob 儲存體 |Microsoft Docs
+description: 瞭解如何使用 NFS 3.0 通訊協定，從 Azure 虛擬機器 (VM) 或在內部部署環境中執行的用戶端，在 Blob 儲存體中掛接容器。
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372904"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760784"
 ---
-# <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>使用網路檔案系統（NFS）3.0 通訊協定（預覽）在 Linux 上掛接 Blob 儲存體
+# <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用網路檔案系統 (NFS) 3.0 通訊協定 (preview 來掛接 Blob 儲存體) 
 
-您可以使用 NFS 3.0 通訊協定，從以 Linux 為基礎的 Azure 虛擬機器（VM）或在內部部署環境中執行的 Linux 系統，掛接 Blob 儲存體中的容器。 本文提供逐步指引。 若要深入瞭解 Blob 儲存體中的 NFS 3.0 通訊協定支援，請參閱[Azure blob 儲存體（預覽）中的網路檔案系統（NFS）3.0 通訊協定支援](network-file-system-protocol-support.md)。
+您可以從以 Windows 或 Linux 為基礎的 Azure 虛擬機器 (VM) 或在內部部署執行的 Windows 或 Linux 系統，使用 NFS 3.0 通訊協定，從 Blob 儲存體掛接容器。 本文提供逐步指引。 若要深入瞭解 Blob 儲存體中的 NFS 3.0 通訊協定支援，請參閱[Azure blob 儲存體 (預覽) 中的網路檔案系統 (nfs) 3.0 通訊協定支援](network-file-system-protocol-support.md)。
 
 > [!NOTE]
 > Azure Blob 儲存體中的 NFS 3.0 通訊協定支援處於公開預覽狀態，並可在下欄區域使用：美國東部、美國中部和加拿大中部。
@@ -69,7 +69,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumHns  
 ```
 
-## <a name="step-3-create-an-azure-virtual-network-vnet"></a>步驟3：建立 Azure 虛擬網路（VNet）
+## <a name="step-3-create-an-azure-virtual-network-vnet"></a>步驟3：建立 Azure 虛擬網路 (VNet) 
 
 您的儲存體帳戶必須包含在 VNet 中。 VNet 可讓用戶端安全地連接到您的儲存體帳戶。 若要深入瞭解 VNet，以及如何建立它，請參閱[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)。
 
@@ -78,7 +78,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="step-4-configure-network-security"></a>步驟4：設定網路安全性
 
-保護帳戶中資料的唯一方法是使用 VNet 和其他網路安全性設定。 在已啟用 NFS 3.0 通訊協定支援的帳戶中，還不支援用來保護資料的任何其他工具，包括帳戶金鑰授權、Azure Active Directory （AD）安全性和存取控制清單（Acl）。 
+保護帳戶中資料的唯一方法是使用 VNet 和其他網路安全性設定。 任何其他用來保護資料的工具，包括帳戶金鑰授權、Azure Active Directory (AD) 安全性和存取控制清單 (Acl) 尚未在啟用 NFS 3.0 通訊協定支援的帳戶中受到支援。 
 
 若要保護您帳戶中的資料，請參閱下列建議：[適用于 Blob 儲存體的網路安全性建議](security-recommendations.md#networking)。
 
@@ -92,12 +92,12 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 |設定 | 值|
 |----|---|
-|位置|下列其中一個區域：美國東部、美國中部和加拿大中部 |
+|Location|下列其中一個區域：美國東部、美國中部和加拿大中部 |
 |效能|Premium|
 |帳戶種類|BlockBlobStorage|
 |複寫|本地備援儲存體 (LRS)|
-|連線方法|公用端點（選取的網路）或私人端點|
-|需要安全傳輸|停用|
+|連線方法| (選取的網路) 或私人端點的公用端點|
+|需要安全傳輸|已停用|
 |階層式命名空間|啟用|
 |NFS V3|啟用|
 
@@ -117,6 +117,10 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="step-7-mount-the-container"></a>步驟7：掛接容器
 
+在您的 Windows 或 Linux 系統上建立目錄，然後在儲存體帳戶中掛接容器。
+
+### <a name="linux"></a>[Linux](#tab/linux)
+
 1. 在 Linux 系統上，建立目錄。
 
    ```
@@ -133,16 +137,35 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
    - `<container-name>`以您的容器名稱取代預留位置。
 
+
+### <a name="windows"></a>[Windows](#tab/windows)
+
+1. 開啟 [ **Windows 功能**] 對話方塊，然後開啟 [ **NFS 用戶端**] 功能。 
+
+   ![網路檔案系統的用戶端功能](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
+
+2. 使用[mount](https://docs.microsoft.com/windows-server/administration/windows-commands/mount)命令掛接容器。
+
+   ```
+   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
+   ```
+
+   - 將 `<storage-account-name>` 出現在此命令中的預留位置取代為您的儲存體帳戶名稱。  
+
+   - `<container-name>`以您的容器名稱取代預留位置。
+
+---
+
 ## <a name="resolve-common-issues"></a>解決常見的問題
 
-|問題/錯誤 | 解決方案|
+|問題/錯誤 | 解決方法|
 |---|---|
-|`Access denied by server while mounting`|確定您的用戶端是在支援的子網內執行。 請參閱[支援的網路位置](network-file-system-protocol-support.md#supported-network-connections)。|
-|`No such file or directory`| 確認您要掛接的容器是在您確認該功能已註冊之後所建立。 請參閱[步驟2：確認已註冊此功能](#step-2-verify-that-the-feature-is-registered)。此外，請務必在終端機中直接輸入 mount 命令和它的參數。 如果您將此命令的任何部分複製並貼到另一個應用程式的終端機中，則貼上資訊中的隱藏字元可能會導致此錯誤出現。|
+|`Access denied by server while mounting`|確定您的用戶端是在支援的子網路內執行。 請參閱[支援的網路位置](network-file-system-protocol-support.md#supported-network-connections)。|
+|`No such file or directory`| 確認您要掛接的容器是在確認該功能已註冊之後所建立。 請參閱[步驟2：確認已註冊此功能](#step-2-verify-that-the-feature-is-registered)。此外，請務必在終端機中直接輸入 mount 命令和它的參數。 如果您將此命令的任何部分複製並貼到另一個應用程式的終端機中，則貼上資訊中的隱藏字元可能會導致此錯誤出現。|
 
 ## <a name="see-also"></a>另請參閱
 
-[Azure Blob 儲存體中的網路檔案系統（NFS）3.0 通訊協定支援（預覽）](network-file-system-protocol-support.md)
+[Azure Blob 儲存體中的網路檔案系統 (NFS) 3.0 通訊協定支援 (預覽) ](network-file-system-protocol-support.md)
 
 
 

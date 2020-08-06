@@ -5,26 +5,17 @@ author: austonli
 ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 977dcc71fd25b19e09cfa9126bf01d380f581aca
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/04/2020
+ms.openlocfilehash: 19fd1d064a3f106d7b770481d1e456c51cf1e166
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289116"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759422"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure 監視器視圖設計工具至活頁簿轉換指南
-「[視圖設計](view-designer.md)工具」是 Azure 監視器的功能，可讓您建立自訂的視圖，以協助您將 Log Analytics 工作區中的資料視覺化，其中包含圖表、清單和時間軸。 它們會被淘汰，並取代為提供額外功能的活頁簿。 本文概要說明將現有的視圖轉換成活頁簿的程式。
+「[視圖設計](view-designer.md)工具」是 Azure 監視器的功能，可讓您建立自訂的視圖，以協助您將 Log Analytics 工作區中的資料視覺化，其中包含圖表、清單和時間軸。 它們已轉換成活頁簿，以提供彈性的畫布來進行資料分析，並在 Azure 入口網站中建立豐富的視覺效果報表。 這篇文章可協助您從 View designer 轉換成活頁簿。 
 
-## <a name="retirement-schedule"></a>淘汰排程
-
-| 變更 | 這表示 | 預期的日期 |
-|:---|:---|:---|
-| 停用透過視圖設計工具建立的新 views。 | 您將無法再于 Azure 入口網站中建立新的自訂視圖並加以儲存。| 2020年11月 |
-| 使用 [視圖設計工具] 停用現有視圖的編輯功能。 | 您將無法再修改並儲存現有自訂視圖的變更。 | 2020年11月 |
-| 停用 Log Analytics 工作區的視圖部署 | 您將無法再使用 ARM 將自訂視圖部署到 Log Analytics 工作區。 | 2021年3月 |
-| Azure 入口網站中不再提供視圖設計工具 | 入口網站體驗將不再支援 View Designer。 | 2021年6月 |
-| 自訂視圖已從工作區摘要中移除 | 您將無法再存取您的自訂視圖資料。 | 2021年12月 |
 
 ## <a name="workbooks-overview"></a>活頁簿總覽
 活頁[簿](../insights/vminsights-workbooks.md)將文字、 [記錄查詢](../log-query/query-language.md)、計量和參數結合成豐富的互動式報表。 具有相同 Azure 資源存取權的小組成員也能夠編輯活頁簿。

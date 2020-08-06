@@ -2,7 +2,7 @@
 title: 新增您的自訂網域 - Azure Active Directory | Microsoft Docs
 description: 關於如何使用 Azure Active Directory 新增自訂網域的指示。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cfa00cceac6c30219d4577cc4ba29c84cb1a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8035744cd7ff7bb3d8347a7d26796531a666bbd
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603955"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796806"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>使用 Azure Active Directory 入口網站新增自訂網域名稱
 
@@ -54,7 +54,7 @@ ms.locfileid: "85603955"
 
     ![[自訂功能變數名稱] 頁面，顯示 [新增自訂網域]](media/add-custom-domain/add-custom-domain.png)
 
-1. 在 [**自訂功能變數名稱**] 中，輸入您組織的新名稱，在此範例中為*contoso.com*。 選取 [新增網域]****。
+1. 在 [**自訂功能變數名稱**] 中，輸入您組織的新名稱，在此範例中為*contoso.com*。 選取 [新增網域]。
 
     ![[自訂功能變數名稱] 頁面，使用 [新增自訂網域] 頁面](media/add-custom-domain/add-custom-domain-blade.png)
 
@@ -65,14 +65,14 @@ ms.locfileid: "85603955"
 
     ![包含 DNS 項目資訊的 Contoso 頁面](media/add-custom-domain/contoso-blade-with-dns-info.png)
 
-## <a name="add-your-dns-information-to-the-domain-registrar"></a>將您的 DNS 資訊新增至網域註冊機構
+## <a name="add-your-dns-information-to-the-domain-registrar"></a>將 DNS 資訊新增至網域註冊機構
 
 將自訂網域名稱新增至 Azure AD 之後，您必須回到您的網域註冊機構，並新增從您複製的 TXT 檔案中的 Azure AD DNS 資訊。 為您的網域建立此 TXT 記錄會驗證您的功能變數名稱擁有權。
 
-回到您的網域註冊機構，根據您複製的 DNS 資訊，為您的網域建立新的 TXT 記錄。 將 [存留時間（TTL）] 設定為3600秒（60分鐘），然後儲存記錄。
+回到您的網域註冊機構，根據您複製的 DNS 資訊，為您的網域建立新的 TXT 記錄。 將 [存留時間 (TTL) 設定為3600秒 (60 分鐘) ，然後儲存記錄。
 
 >[!IMPORTANT]
->您可以註冊您想要的多個網域名稱。 不過，每個網域會從 Azure AD 取得自己的 TXT 記錄。 當您在網域註冊機構輸入 TXT 檔案資訊時，請務必小心。 如果您不小心輸入錯誤或重複的資訊，則必須等到 TTL 超時（60分鐘），然後再試一次。
+>您可以註冊您想要的多個網域名稱。 不過，每個網域會從 Azure AD 取得自己的 TXT 記錄。 當您在網域註冊機構輸入 TXT 檔案資訊時，請務必小心。 如果您不小心輸入錯誤或重複的資訊，則必須等到 TTL)  (60 分鐘後再試一次。
 
 ## <a name="verify-your-custom-domain-name"></a>驗證自訂網域名稱
 

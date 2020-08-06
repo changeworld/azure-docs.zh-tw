@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 44a51972e459f64f44a791ef1cf40825dddedf91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7417515d6f3c293368868e380ac53f0c524b872d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85798148"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760867"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>在 Azure Cosmos DB 中編製索引 - 概觀
 
@@ -173,7 +173,6 @@ Azure Cosmos DB 目前支援三種索引。
 * 上述查詢會先使用索引篩選出 firstName = "Andrew" 的項目。 接著會透過後續管道傳遞所有 firstName = "Andrew" 項目，以評估 CONTAINS 篩選器述詞。
 
 * 藉由新增其他會使用索引的篩選器述詞，您可以加速查詢，並避免在使用未使用索引的函式時進行完整的容器掃描 (例如 CONTAINS)。 篩選子句的順序並不重要。 查詢引擎會找出哪些述詞篩選條件更嚴格，並據以執行查詢。
-
 
 ## <a name="querying-with-indexes"></a>使用索引進行查詢
 

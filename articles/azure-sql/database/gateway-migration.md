@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373482"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759694"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database 流量遷移至較新的閘道
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,22 +26,25 @@ ms.locfileid: "87373482"
 
 ## <a name="status-updates"></a>狀態更新
 
-# <a name="in-progress"></a>[進行中](#tab/in-progress-ip)
+# <a name="in-progress"></a>[正在進行](#tab/in-progress-ip)
 ### <a name="september-2020"></a>2020 年 9 月
 
-新的 SQL 閘道將會新增至下欄區域：
+新的 SQL 閘道將會新增至下欄區域。 這些 SQL 閘道應于2020年9月10日開始接受客戶流量：
+
+- 美國中西部：13.78.248.43 
+- 南非北部：102.133.120。2  
+
+新的 SQL 閘道將會新增至下欄區域。 這些 SQL 閘道應于2020年9月1日開始接受客戶流量：
 
 - 北歐：13.74.104.113 
 - West 美國2：40.78.248.10 
 - 西歐：52.236.184.163 
 - 美國中南部：20.45.121.1、20.49.88。1 
 
-現有的 SQL 閘道將會開始接受下欄區域中的流量：
+現有的 SQL 閘道將會開始接受下欄區域中的流量。 這些 SQL 閘道應于2020年9月1日開始接受客戶流量。 :
 - 日本東部：40.79.184.8、40.79.192。5
 
-這些 SQL 閘道應于2020年9月1日開始接受客戶流量。 
-
-### <a name="august-2020"></a>2020年8月
+### <a name="august-2020"></a>2020 年 8 月
 
 新的 SQL 閘道將會新增至下欄區域：
 
@@ -82,7 +85,7 @@ ms.locfileid: "87373482"
 - 針對您的資料庫使用[區域多餘](high-availability-sla.md#zone-redundant-configuration)設定
 
 如果您有下列情況，將不會受到影響：
-
+ 
 - 重新導向作為連線原則
 - 從 Azure 內部和使用服務標籤的 SQL Database 連線
 - 使用支援的 JDBC Driver for SQL Server 版本所建立的連接將不會有任何影響。 如需支援的 JDBC 版本，請參閱[下載適用于 SQL Server 的 MICROSOFT JDBC Driver](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)。
@@ -91,7 +94,7 @@ ms.locfileid: "87373482"
 
 我們建議您針對 TCP 通訊埠1433上的區域中的所有[閘道 ip 位址](connectivity-architecture.md#gateway-ip-addresses)，以及埠範圍11000-11999，允許對 ip 位址的輸出流量。 這項建議適用于從內部部署連線，以及透過服務端點連線的用戶端。 如需埠範圍的詳細資訊，請參閱連線[原則](connectivity-architecture.md#connection-policy)。
 
-使用 Microsoft JDBC Driver 4.0 版的應用程式所進行的連接可能會使憑證驗證失敗。 較低版本的 Microsoft JDBC 會依賴憑證的 [主旨] 欄位中的一般名稱（CN）。 緩和措施是確保 hostNameInCertificate 屬性設定為 *. database.windows.net。 如需有關如何設定 hostNameInCertificate 屬性的詳細資訊，請參閱[使用加密連接](/sql/connect/jdbc/connecting-with-ssl-encryption)。
+使用 Microsoft JDBC Driver 4.0 版的應用程式所進行的連接可能會使憑證驗證失敗。 較低版本的 Microsoft JDBC 依賴憑證的 [主旨] 欄位中的一般名稱 (CN) 。 緩和措施是確保 hostNameInCertificate 屬性設定為 *. database.windows.net。 如需有關如何設定 hostNameInCertificate 屬性的詳細資訊，請參閱[使用加密連接](/sql/connect/jdbc/connecting-with-ssl-encryption)。
 
 如果上述緩和措施無法解決問題，請使用下列 URL 提出 SQL Database 或 SQL 受控執行個體的支援要求：https://aka.ms/getazuresupport
 

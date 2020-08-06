@@ -3,7 +3,7 @@ title: 尋求協助及開立支援票證 - Azure Active Directory | Microsoft Do
 description: 以下相關指示說明如何取得 Azure Active Directory 方面的協助及開立支援票證。
 services: active-directory
 documentationcenter: na
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4d1490c4900c957a7dce7e632415823723f81b
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799357"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797282"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>尋求 Azure Active Directory 方面的協助及開立支援票證
 Microsoft 對 Azure Active Directory (Azure AD) 提供全球性的技術、售前、帳單和訂用帳戶支援。 Microsoft Azure 付費訂用帳戶與試用訂用帳戶則提供線上和電話支援 。 電話支援與線上帳單支援提供其他語言服務。 
@@ -31,7 +31,7 @@ Microsoft 對 Azure Active Directory (Azure AD) 提供全球性的技術、售�
 
 * 如需 IT 專業人員和開發人員所適用的操作說明資訊或程式碼範例等內容，請參閱 [docs.microsoft.com 上的技術文件](https://docs.microsoft.com/azure/active-directory/)。
 
-* [Microsoft 技術小組](https://techcommunity.microsoft.com/)是讓 IT 專業人員和客戶共同作業、分享及學習的地方。 [Microsoft 技術小組資訊中心](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center)用於公告、blog 文章、向我的任何內容（AMA）與專家互動等等。 您也可以[加入社群以提交意見](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)。
+* [Microsoft 技術小組](https://techcommunity.microsoft.com/)是讓 IT 專業人員和客戶共同作業、分享及學習的地方。 [Microsoft 技術小組資訊中心](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center)用於公告、blog 文章、問我-任何 (AMA 與專家互動) 的內容等等。 您也可以[加入社群以提交意見](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)。
 
 
 ## <a name="open-a-support-ticket"></a>開啟支援票證
@@ -76,7 +76,7 @@ Microsoft 對 Azure Active Directory (Azure AD) 提供全球性的技術、售�
 > [!NOTE]
 > 只有系統管理員才提供[Microsoft 365 管理中心](https://admin.microsoft.com)的 Azure AD 支援。 
 
-1. 使用具有 Enterprise Mobility + Security （EMS）授權的帳戶登入[Microsoft 365 系統管理中心](https://admin.microsoft.com)。
+1. 使用具有 Enterprise Mobility + Security (EMS) 授權的帳戶來登入[Microsoft 365 admin center](https://admin.microsoft.com) 。
 
 1. 在 [支援]**** 圖格中，選取 [新增服務要求]****：
 

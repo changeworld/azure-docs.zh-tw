@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 07/28/2020
-ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0adffbb9058141ea89daefc292b937841659c879
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386430"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798064"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
@@ -122,7 +122,7 @@ ms.locfileid: "87386430"
 
 選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
 - 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
 
 請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。 虛擬機器供應專案一律會出現在 Azure Marketplace 上的 [**計算**] 類別之下。
@@ -245,16 +245,17 @@ ms.locfileid: "87386430"
 >[!NOTE]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
-#### <a name="azure-marketplace-logos"></a>Azure Marketplace 標誌
+#### <a name="store-logos"></a>儲存標誌
 
-請以下列四個影像尺寸，提供供應項目標誌的 PNG 檔案：
+在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 和**中等** (90 x 90 圖元) 大小標誌。 您可以選擇性地將這些取代為不同的影像。
 
-- **小** (48 &times; 48 像素)
-- **中** (90 &times; 90 像素)
-- **大** (216 &times; 216 像素)
-- **寬** (255 &times; 115 像素)
+在清單中的不同位置，必須使用所有三種標誌大小：
 
-全部四個標誌都是必要的，而且會顯示在各種 Azure Marketplace 清單中。
+- **小型** (48 x 48)
+- **中型** (90 x 90)
+- 216 x 216 與 350 x 350) 之間的**大型** (
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
@@ -286,7 +287,7 @@ ms.locfileid: "87386430"
 
 ## <a name="plan-overview"></a>方案概觀
 
-您可以在合作夥伴中心的相同供應項目中提供各種方案選項。 供應專案至少需要一個方案（先前稱為 SKU），這可能會因營收物件、Azure 區域、功能或 VM 映射而異。
+您可以在合作夥伴中心的相同供應項目中提供各種方案選項。 供應專案至少需要一個方案 (先前稱為 SKU) ，這可能會因營收物件、Azure 區域、功能或 VM 映射而異。
 
 建立方案之後，選取 [方案概觀] 索引標籤以顯示：
 
@@ -411,7 +412,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 **有限對象 (Azure 訂用帳戶識別碼)** ：使用 Azure 訂用帳戶識別碼指派可存取此私人方案的對象。 選擇性地加上您已指派的每個 Azure 訂用帳戶識別碼的描述。 如果您要匯入 CSV 試算表，請手動新增最多 10 個訂用帳戶識別碼，或最多 20,000 個識別碼。 Azure 訂用帳戶識別碼會以 GUID 表示，而且所有字母都必須是小寫。
 
 >[!Note]
->透過雲端解決方案提供者方案（CSP）的轉銷商所建立的 Azure 訂用帳戶，不支援私用供應專案。
+>透過雲端解決方案提供者方案的轉銷商所建立的 Azure 訂用帳戶，不支援私用供應專案 (CSP) 。
 
 #### <a name="hide-a-plan"></a>隱藏方案
 
@@ -530,9 +531,9 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 1. 大型標誌
 2. 價格
-3. 類別
+3. Categories
 4. 條款及條件
-5. 隱私權原則位址（連結）
+5. 隱私權原則位址 (連結) 
 6. 供應項目名稱
 7. 描述
 8. 實用的連結

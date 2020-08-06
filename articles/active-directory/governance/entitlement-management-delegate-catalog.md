@@ -3,7 +3,7 @@ title: 將存取管理委派給 Azure AD 權利管理中的目錄建立者-Azure
 description: 瞭解如何將 IT 系統管理員的存取管理委派給目錄建立者和專案管理人員，讓他們可以自行管理存取權。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02f44543f78789284e7b8d39471d1346ca7b8e74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e41f372cd0105896765d5a267456b6bda767dd4d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078368"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798421"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中將存取管理委派給目錄建立者
 
@@ -47,7 +47,7 @@ ms.locfileid: "85078368"
 
 1. 按一下 [選取]。
 
-1. 按一下 [檔案] 。
+1. 按一下 [儲存]。
 
 ## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>允許委派的角色存取 Azure 入口網站
 

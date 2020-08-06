@@ -4,15 +4,15 @@ description: 瞭解如何管理索引編制原則、包含或排除索引中的�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/28/2020
+ms.date: 08/04/2020
 ms.author: tisande
 ms.custom: tracking-python, devx-track-javascript, devx-track-azurecli
-ms.openlocfilehash: ccee172f4b8df8d930bc06faca929e5206f8765e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b3234d524adc8256373acce7480319a8fd4b76ac
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498441"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761101"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引編製原則
 
@@ -43,7 +43,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
     }
 ```
 
-此編制索引原則等同于以下的設定，其會以手動方式將 ```kind``` 、 ```dataType``` 和設 ```precision``` 為其預設值。 這些屬性不再需要明確設定，而且您可以完全從索引編制原則中省略它們（如上述範例所示）。
+此編制索引原則等同于以下的設定，其會以手動方式將 ```kind``` 、 ```dataType``` 和設 ```precision``` 為其預設值。 這些屬性不再需要明確設定，而且您可以完全從索引編制原則中省略它們 (如上述範例) 所示。
 
 ```json
     {
@@ -97,7 +97,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
     }
 ```
 
-此編制索引原則等同于以下的設定，其會以手動方式將 ```kind``` 、 ```dataType``` 和設 ```precision``` 為其預設值。 這些屬性不再需要明確設定，而且您可以完全從索引編制原則中省略它們（如上述範例所示）。
+此編制索引原則等同于以下的設定，其會以手動方式將 ```kind``` 、 ```dataType``` 和設 ```precision``` 為其預設值。 這些屬性不再需要明確設定，而且您可以完全從索引編制原則中省略它們 (如上述範例) 所示。
 
 ```json
     {
@@ -242,7 +242,7 @@ FROM c
 WHERE c.name = "Tim" AND c.age > 18
 ```
 
-### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>針對（name ASC，age ASC）和（name ASC，age DESC）定義的複合索引：
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>為 (名稱 ASC、年齡 ASC) 和 (名稱 ASC、age DESC) 定義的複合索引：
 
 您可以在相同的索引編製原則內定義多個不同的複合式索引。
 
@@ -281,7 +281,7 @@ WHERE c.name = "Tim" AND c.age > 18
     }
 ```
 
-### <a name="composite-index-defined-for-name-asc-age-asc"></a>針對（name ASC，age ASC）定義的複合索引：
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>為 (名稱 ASC、年齡 ASC) 定義的複合索引：
 
 指定順序是選擇性動作。 若未指定，將採用遞增順序。
 
@@ -344,7 +344,7 @@ WHERE c.name = "Tim" AND c.age > 18
 [更新索引編製原則](index-policy.md#modifying-the-indexing-policy)將會觸發索引的轉換。 您也可以從 SDK 追蹤此轉換的進度。
 
 > [!NOTE]
-> 更新索引編制原則時，寫入 Azure Cosmos DB 將會中斷。 在重新編制索引期間，查詢可能會在索引更新時傳回部分結果。
+> 更新索引編制原則時，寫入 Azure Cosmos DB 將會中斷。 深入瞭解[索引轉換](indexing-policy.md#modifying-the-indexing-policy)
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
@@ -406,7 +406,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 # <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
-`ContainerProperties`來自[.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的物件（請參閱[本快速入門](create-sql-api-dotnet.md)中有關其使用方式的資訊）會公開一個 `IndexingPolicy` 屬性，讓您變更 `IndexingMode` 和新增或移除 `IncludedPaths` 和 `ExcludedPaths` 。
+`ContainerProperties` [.Net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)中的物件 (參閱[此快速入門](create-sql-api-dotnet.md)中有關其使用方式) 會公開可 `IndexingPolicy` 讓您變更 `IndexingMode` 和新增或移除 `IncludedPaths` 和的屬性 `ExcludedPaths` 。
 
 ```csharp
 // Retrieve the container's details
@@ -618,7 +618,7 @@ const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-col
 
 # <a name="python-sdk-v3"></a>[Python SDK V3](#tab/pythonv3)
 
-使用[PYTHON SDK V3](https://pypi.org/project/azure-cosmos/)時（請參閱[本快速入門](create-sql-api-python.md)中有關其使用方式的資訊），容器設定會當做字典來管理。 您可以從這個字典存取索引編製原則和其所有屬性。
+使用[PYTHON SDK V3](https://pypi.org/project/azure-cosmos/)時 (請參閱[本快速入門](create-sql-api-python.md)中有關其使用方式) ，容器設定會當做字典來管理。 您可以從這個字典存取索引編製原則和其所有屬性。
 
 取得容器的詳細資料
 

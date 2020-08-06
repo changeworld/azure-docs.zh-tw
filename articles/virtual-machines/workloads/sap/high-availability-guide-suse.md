@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/26/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 3188900ed04b4ea771e4aaeb5d2b8e3f32863bf4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 01a450c045c996cdcb49b8fbfdf1ce572ee2d1df
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088235"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760595"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>SAP NetWeaver 在適用於 SAP 應用程式之 SUSE Linux Enterprise Server 上的 Azure VM 高可用性
 
@@ -78,7 +78,7 @@ ms.locfileid: "87088235"
 * [SUSE SAP HA 最佳做法指南][suse-ha-guide]此指南包含設定內部部署 Netweaver HA 和 SAP HANA 系統複寫的所有必要資訊。 請使用這些指南作為一般基準。 它們提供更詳細的資訊。
 * [SUSE 高可用性延伸模組 12 SP3 版本資訊][suse-ha-12sp3-relnotes]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 為了實現高可用性，SAP NetWeaver 需要使用 NFS 伺服器。 NFS 伺服器會設定於不同叢集中，並可供多個 SAP 系統使用。
 
@@ -137,7 +137,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 您可以使用 GitHub 上的其中一個快速入門範本來部署所有必要資源。 此範本會部署虛擬機器、負載平衡器、可用性設定組等。請遵循下列步驟來部署範本：
 
 1. 在 Azure 入口網站上開啟 [ [ASCS/SCS 多重 SID] 範本][template-multisid-xscs]或 [交集][範本][template-converged]。 
-   ASCS/SCS 範本只會建立 SAP NetWeaver ASCS/SCS 和 ERS （僅限 Linux）實例的負載平衡規則，而交集範本也會建立資料庫的負載平衡規則（例如 Microsoft SQL Server 或 SAP Hana）。 如果您打算安裝 SAP NetWeaver 架構的系統，而且也想要在同一部電腦上安裝資料庫，請使用[交集範本][template-converged]。
+   ASCS/SCS 範本只會建立 SAP NetWeaver ASCS/SCS 和 ERS (Linux) 實例的負載平衡規則，而交集範本也會建立資料庫 (的負載平衡規則，例如 Microsoft SQL Server 或 SAP Hana) 。 如果您打算安裝 SAP NetWeaver 架構的系統，而且也想要在同一部電腦上安裝資料庫，請使用[交集範本][template-converged]。
 1. 輸入下列參數
    1. 資源前置詞 (僅限 ASCS/SCS 多重 SID 範本)  
       輸入您想要使用的前置詞。 該值會作為所部署之資源的前置詞。
@@ -197,19 +197,19 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康情況探查的名稱 (例如 **nw1-ascs-hp**)
          1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
-         1. 按一下 [確定]
+         1. Click OK
       1. 針對 ASCS ERS 是連接埠 621**02**
          * 重複上述步驟以建立 ERS 的健康情況探查 (例如 621**02** 和 **nw1-aers-hp**)
    1. 負載平衡規則
       1. ASCS 的負載平衡規則
          1. 開啟負載平衡器，選取 [負載平衡規則]，然後按一下 [新增]
-         1. 輸入新負載平衡器規則的名稱（例如**nw1-lb-ascs**）
-         1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查（例如**nw1-ascs-前端**、 **nw1-後端**和**nw1-ascs-hp**）
+         1. 輸入新負載平衡器規則 (的名稱，例如**nw1-lb-ascs**) 
+         1. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查 (例如**nw1-ascs-前端**、 **nw1-後端**和**nw1-ascs-hp**) 
          1. 選取 [HA 連接埠]
          1. 將閒置逾時增加為 30 分鐘
          1. **務必啟用浮動 IP**
-         1. 按一下 [確定]
-         * 重複上述步驟以建立 ERS 的負載平衡規則（例如**nw1-lb-ERS**）
+         1. Click OK
+         * 重複上述步驟以建立 ERS (的負載平衡規則，例如**nw1-lb-ERS**) 
 1. 或者，若案例需要基本負載平衡器 (內部)，請遵循這些步驟：  
    1. 建立前端 IP 位址
       1. 針對 ASCS 是 IP 位址 10.0.0.7
@@ -218,7 +218,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 將 [指派] 設定為 [靜態]，然後輸入 IP 位址 (例如 **10.0.0.7**)
          1. 按一下 [確定]
       1. 針對 ASCS ERS 是 IP 位址 10.0.0.8
-         * 重複上述步驟以建立 ERS 的 IP 位址（例如**10.0.0.8**和**nw1-nw1-aers-backend-前端**）
+         * 重複上述步驟來建立 ERS (的 IP 位址，例如**10.0.0.8**和**nw1-nw1-aers-backend-前端**) 
    1. 建立後端集區
       1. 開啟負載平衡器，選取後端集區，然後按一下 [新增]
       1. 輸入新後端集區的名稱 (例如 **nw1-backend**)
@@ -231,7 +231,7 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
          1. 開啟負載平衡器，選取健康情況探查，然後按一下 [新增]
          1. 輸入新健康情況探查的名稱 (例如 **nw1-ascs-hp**)
          1. 選取 [TCP] 作為通訊協定、連接埠 620**00**，保留 [間隔] 5 和 [狀況不良閾值] 2
-         1. 按一下 [確定]
+         1. Click OK
       1. 針對 ASCS ERS 是連接埠 621**02**
          * 重複上述步驟以建立 ERS 的健康情況探查 (例如 621**02** 和 **nw1-aers-hp**)
    1. 負載平衡規則
@@ -525,9 +525,11 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
    service/halib = $(DIR_CT_RUN)/saphascriptco.so
    service/halib_cluster_connector = /usr/bin/sap_suse_cluster_connector
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    </code></pre>
+
+   針對 ENSA1 和 ENSA2，請確定 `keepalive` OS 參數設定如 SAP 附注[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述。    
 
    * ERS 設定檔
 
@@ -548,8 +550,6 @@ Azure Marketplace 包含 SUSE Linux Enterprise Server for SAP Applications 12 �
 1. **[A]** 設定保持運作
 
    SAP NetWeaver 應用程式伺服器和 ASCS/SCS 之間的通訊是透過軟體負載平衡器來路由傳送。 在逾時時間 (可設定) 過後，負載平衡器就會將非作用中的連線中斷。 為防止這個情況，您需要在 SAP NetWeaver ASCS/SCS 設定檔中設定參數，並變更 Linux 系統設定。 如需詳細資訊，請閱讀 [SAP Note 1410736][1410736]。
-
-   ASCS/SCS 設定檔參數 enque/encni/set_so_keepalive 已在最後一個步驟中新增。
 
    <pre><code># Change the Linux system configuration
    sudo sysctl net.ipv4.tcp_keepalive_time=120

@@ -1,5 +1,5 @@
 ---
-title: 搜尋 Azure Data Lake Storage Gen2 （預覽）
+title: '搜尋 Azure Data Lake Storage Gen2 (preview) '
 titleSuffix: Azure Cognitive Search
 description: 瞭解如何在 Azure Data Lake Storage Gen2 中編制內容和中繼資料的索引。 這項功能目前為公開預覽狀態
 manager: nitinme
@@ -9,17 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: fe05a474f4f6ee70c07e0e19621487d51d92966d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5862654dac99bea7755eab41cf3c1bd6cdd84526
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87490621"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760306"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>在 Azure Data Lake Storage Gen2 中編制檔的索引
 
 > [!IMPORTANT] 
-> Azure Data Lake Storage Gen2 支援目前處於公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 您可以填寫[此表單](https://aka.ms/azure-cognitive-search/indexer-preview)來要求預覽的存取權。 [REST API 版本 2020-06-30-Preview](search-api-preview.md)提供這項功能。 目前沒有入口網站或 .NET SDK 支援。
+> Azure Data Lake Storage Gen2 支援目前處於公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 您可以填寫[此表單](https://aka.ms/azure-cognitive-search/indexer-preview)來要求預覽的存取權。 [REST API 版本 2020-06-30-Preview](search-api-preview.md)和入口網站提供這項功能。 目前沒有 .NET SDK 支援。
 
 
 設定 Azure 儲存體帳戶時，您可以選擇啟用[階層式命名空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)。 這可讓您將帳戶中的內容集合組織成目錄和嵌套子目錄的階層結構。 藉由啟用階層命名空間，您就可以啟用[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)。
@@ -38,13 +38,13 @@ ms.locfileid: "87490621"
 
 一旦收到確認您的預覽註冊成功之後，您就可以開始建立索引管線。
 
-您可以使用[REST API 版本 2020-06-30-Preview](search-api-preview.md)，從 Data Lake Storage Gen2 編制內容和中繼資料的索引。 目前沒有入口網站或 .NET SDK 支援。
+您可以使用[REST API 版本 2020-06-30-Preview](search-api-preview.md)或入口網站，從 Data Lake Storage Gen2 編制內容和中繼資料的索引。 目前沒有 .NET SDK 支援。
 
 在 Data Lake Storage Gen2 中編制內容的索引，等同于在 Azure Blob 儲存體中編制內容的索引。 因此，若要瞭解如何設定 Data Lake Storage Gen2 資料來源、索引和索引子，請參閱[如何使用 Azure 認知搜尋在 Azure Blob 儲存體中編制檔索引](search-howto-indexing-azure-blob-storage.md)。 Blob 儲存體一文也提供支援哪些檔案格式、哪些 Blob 中繼資料屬性已解壓縮、累加編制索引等等的相關資訊。 Data Lake Storage Gen2 的此資訊將會相同。
 
 ## <a name="access-control"></a>存取控制
 
-Azure Data Lake Storage Gen2 會執行可同時支援 Azure 角色型存取控制（Azure RBAC）和 POSIX 型存取控制清單（Acl）的[存取控制模型](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 從 Data Lake Storage Gen2 編制內容的索引時，Azure 認知搜尋不會從內容中解壓縮 RBAC 和 ACL 資訊。 因此，此資訊不會包含在您的 Azure 認知搜尋索引中。
+Azure Data Lake Storage Gen2 會執行一個[存取控制模型](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)，以支援 azure 角色型存取控制， (azure RBAC) 和類似 POSIX 的存取控制清單 (acl) 。 從 Data Lake Storage Gen2 編制內容的索引時，Azure 認知搜尋不會從內容中解壓縮 RBAC 和 ACL 資訊。 因此，此資訊不會包含在您的 Azure 認知搜尋索引中。
 
 如果在索引中維護每份檔的存取控制十分重要，則由應用程式開發人員負責執行[安全性](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)調整。
 

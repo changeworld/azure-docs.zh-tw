@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 94c5ee53b48aa1e373099614d1637d4b6da0088b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7494135cd4912ec8e59a32592ebcca0e0a6813b0
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502013"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797809"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-cli"></a>使用 Azure CLI 適用於 PostgreSQL 的 Azure 資料庫單一伺服器的資料加密
 
@@ -67,7 +67,7 @@ ms.locfileid: "87502013"
     az postgres server update --resource-group <resource_group> --name <server_name> --assign-identity
     ```
 
-2. 設定**主體**的**金鑰許可權**（**Get**、Wrap、解除**包裝** **），** 這是于 postgresql 單一伺服器伺服器的名稱。
+2. 設定**主體**的**金鑰許可權** (**取得**、包裝 **、解除****封裝**) ，這是于 postgresql 單一伺服器伺服器的名稱。
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
@@ -85,7 +85,7 @@ ms.locfileid: "87502013"
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>針對還原或複本伺服器使用資料加密
 
-在「適用於 PostgreSQL 單一伺服器的 Azure 資料庫」使用儲存於 Key Vault 的客戶管理金鑰加密之後，任何新建立的伺服器複本也會一併加密。 您可以透過本機或異地還原作業，或透過複本（本機/跨區域）作業來建立此新複本。 因此，如果是加密的于 postgresql 單一伺服器伺服器，您可以使用下列步驟來建立加密的已還原伺服器。
+在「適用於 PostgreSQL 單一伺服器的 Azure 資料庫」使用儲存於 Key Vault 的客戶管理金鑰加密之後，任何新建立的伺服器複本也會一併加密。 您可以透過本機或異地還原作業，或透過複本 (本機/跨區域) 作業來建立此新複本。 因此，如果是加密的于 postgresql 單一伺服器伺服器，您可以使用下列步驟來建立加密的已還原伺服器。
 
 ### <a name="creating-a-restoredreplica-server"></a>建立還原/複本伺服器
 
@@ -93,6 +93,25 @@ ms.locfileid: "87502013"
 * [建立讀取複本伺服器](howto-read-replicas-cli.md)
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>伺服器一旦還原，就會將還原的伺服器重新驗證資料加密
+
+*   指派複本伺服器的身分識別
+```azurecli-interactive
+az postgres server update --name  <server name>  -g <resoure_group> --assign-identity
+```
+
+*   取得必須用於已還原/複本伺服器的現有金鑰
+
+```azurecli-interactive
+az postgres server key list --name  '<server_name>'  -g '<resource_group_name>'
+```
+
+*   為已還原/複本伺服器的新識別設定原則
+
+```azurecli-interactive
+az keyvault set-policy --name <keyvault> -g <resoure_group> --key-permissions get unwrapKey wrapKey --object-id <principl id of the server returned by the step 1>
+```
+
+* 使用加密金鑰重新驗證還原/複本伺服器
 
 ```azurecli-interactive
 az postgres server key create –name  <server name> -g <resource_group> --kid <key url>

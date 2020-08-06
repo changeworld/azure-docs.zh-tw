@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 2c6c6b3fb4f863840b39de6f56fe473be693fe87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 657c41fbcda30ffb5af4c5a27d58ef17c02a46bc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001429"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798251"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>建立 Dynamics 365 for Operations 供應項目
 
@@ -60,7 +60,7 @@ ms.locfileid: "87001429"
 
 #### <a name="free-trial-listing"></a>免費試用版 (清單)
 
-提供有效的 URL （開頭為或），以向客戶列出您的供應專案，以 `http` `https` 取得試用版的連結。 例如： `https://contoso.com/trial/my-app` 。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
+藉由提供有效的 URL (開始， `http` 或 `https`) 可以在何處取得試用版，將您的供應專案向客戶列出免費試用的連結。 例如： `https://contoso.com/trial/my-app` 。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
 
 > [!NOTE]
 > 您的應用程式透過試用連結所接收的權杖，只能經由 Azure Active Directory (Azure AD) 取得使用者資訊，以便在應用程式中自動建立帳戶。 Microsoft 帳戶不支援使用此權杖進行驗證。
@@ -91,7 +91,7 @@ ms.locfileid: "87001429"
 
 選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
 - 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
 
 請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
@@ -129,12 +129,12 @@ ms.locfileid: "87001429"
 2. 產品
 3. Categories
 4. 產業
-5. 支援位址（連結）
+5. 支援位址 (連結) 
 6. 使用規定
 7. 隱私權原則
 8. 供應項目名稱
 9. 螢幕擷取畫面/影片
-10. 說明
+10. 描述
 
 ### <a name="name"></a>名稱
 
@@ -191,11 +191,14 @@ ms.locfileid: "87001429"
 
 #### <a name="store-logos"></a>儲存標誌
 
-提供兩個像素大小的供應項目標誌：
+在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 大小標誌。 您可以選擇性地將此取代為不同的影像。
+
+需要兩種標誌大小，才能在清單中的不同位置使用：
 
 - **小型** (48 x 48)
-- **大型** (216 x 216)
+- 216 x 216 與 350 x 350) 之間的**大型** (
 
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
@@ -253,7 +256,7 @@ ms.locfileid: "87001429"
 
 選取此解決方案要使用的 Dynamics 365 for Finance and Operations 版本。
 
-選取 [儲存草稿] 後再繼續。
+選取 **[儲存草稿]** 後再繼續。
 
 ## <a name="test-drive-technical-configuration"></a>試用產品技術設定
 

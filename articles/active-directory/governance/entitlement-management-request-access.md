@@ -3,7 +3,7 @@ title: 要求存取套件-Azure AD 的權利管理
 description: 瞭解如何在 Azure Active Directory 的權利管理中，使用我的存取權入口網站來要求存取套件的存取權。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: mamtakumar
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e744adeae55252ec70c8f766db1e29a3898886c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 527255653bf2779b36e0e463cd32a0b334c00f96
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078107"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798489"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>要求存取 Azure AD 權利管理中的存取套件
 
@@ -35,7 +35,7 @@ ms.locfileid: "85078107"
 
 **先決條件角色：** 申請者
 
-1. 從您正在使用的專案或商務經理尋找電子郵件或訊息。 電子郵件應該包含您需要存取的存取套件連結。 此連結會以開頭 `myaccess` ，包括目錄提示，並以存取套件識別碼結尾。  （對於美國政府而言，網域可能 `https://myaccess.microsoft.us` 改為）。
+1. 從您正在使用的專案或商務經理尋找電子郵件或訊息。 電子郵件應該包含您需要存取的存取套件連結。 此連結會以開頭 `myaccess` ，包括目錄提示，並以存取套件識別碼結尾。   (為美國政府，網域可能改為 `https://myaccess.microsoft.us` 。 ) 
  
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 
@@ -43,7 +43,7 @@ ms.locfileid: "85078107"
 
 1. 登入我的存取權入口網站。
 
-    請務必使用您的組織（公司或學校）帳戶。 如果您不確定，請洽詢您的專案或商務經理。
+    請務必使用您的組織 (公司或學校) 帳戶。 如果您不確定，請洽詢您的專案或商務經理。
 
 ## <a name="request-an-access-package"></a>要求存取套件
 

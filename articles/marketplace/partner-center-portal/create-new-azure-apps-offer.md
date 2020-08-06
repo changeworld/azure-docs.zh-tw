@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326662"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797880"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -157,7 +157,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
 - 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
 
 請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
@@ -175,20 +175,20 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 > [!NOTE]
 > 供應項目清單內容 (例如描述、文件、螢幕擷取畫面與使用規定) 不一定要使用英文，只要供應項目用以下句子描述開頭即可：「此應用程式僅適用於 [非英文語言]」。 也可利用不同於供應項目清單內容中所使用的語言，來提供供應項目內容的*有用連結 URL*。
 
-以下範例說明如何在 Azure Marketplace 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+以下範例說明如何在 Azure Marketplace 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
 
 :::image type="content" source="media/example-azure-marketplace-app.png" alt-text="說明此供應專案在 Azure Marketplace 中的顯示方式。":::
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 標誌
-2. 類別
-3. 支援位址（連結）
+2. Categories
+3. 支援位址 (連結) 
 4. 使用規定
-5. 隱私權原則位址（連結）
+5. 隱私權原則位址 (連結) 
 6. 供應項目名稱
 7. 總結
-8. 說明
+8. 描述
 9. 螢幕擷取畫面/影片
 
 <br>以下是如何在 Azure 入口網站中顯示供應專案資訊的範例：
@@ -197,8 +197,8 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. 標題
-2. 說明
+1. Title
+2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
 
@@ -247,14 +247,15 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="store-logos"></a>儲存標誌
 
-請以下列三個像素大小提供供應項目標誌的 PNG 檔案：
+在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 和**中等** (90 x 90 圖元) 大小標誌。 您可以選擇性地將這些取代為不同的影像。
+
+在清單中的不同位置，必須使用這三個標誌大小：
 
 - **小型** (48 x 48)
 - **中型** (90 x 90)
-- **大型** (216 x 216)
-- **寬型** (255 x 115)
+- 216 x 216 與 350 x 350) 之間的**大型** (
 
-全部三個標誌都是必要的，且在清單中會用於不同位置。
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
@@ -268,7 +269,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 - [市集供應項目清單的最佳做法](../gtm-offer-listing-best-practices.md)
 
-選取 **[儲存草稿]** 後再繼續。
+選取 [儲存草稿] 後再繼續。
 
 ## <a name="preview-audience"></a>預覽對象
 
@@ -284,7 +285,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 > [!NOTE]
 > 預覽對象與私人對象不同。 預覽對象可以在供應項目即時發佈到 Marketplace 上_之前_先存取。 預覽對象可以查看並驗證所有方案，包括只有在您的供應項目完全發佈到 Marketplace 之後，才供私人對象使用的方案。 私人對象 (在方案的 [定價和可用性] 索引標籤中定義) 對特定方案具有獨佔式存取權。
 
-選取 **[儲存草稿]** 後再繼續。
+選取 [儲存草稿] 後再繼續。
 
 ## <a name="technical-configuration"></a>技術設定
 
@@ -299,18 +300,18 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 技術設定會定義用來識別服務的詳細資料 (租用戶識別碼和應用程式識別碼)，這將使用 [Marketplace 計量服務 API](./marketplace-metering-service-apis.md) 發出受控應用程式的計量事件。  輸入您的服務將在發出計量事件時使用的身分識別。
 
-* **Azure AD 租使用者識別碼**（必要）：在 Azure 入口網站內部，您必須[建立 Azure Active Directory （AD）應用程式](../../active-directory/develop/howto-create-service-principal-portal.md)，以便驗證這兩個服務之間的連線是在驗證通訊之後。 若要尋找[租使用者識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)），請移至您的 Azure Active Directory 並選取 [**屬性**]，然後尋找列出的**目錄識別碼**（例如50c464d3-4930-494c-963c-1e951d15360e）。
-* **Azure AD 應用程式識別碼**（必要）：您也需要[應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)）和驗證金鑰。 若要取得那些值，請前往 Azure Active Directory，並選取 [應用程式註冊]，然後尋找列出的 [應用程式識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 若要尋找驗證金鑰，請移至 [設定] 並選取 [金鑰]。 您將必須提供描述與持續時間，然後才會提供數值。
+* **Azure AD 租使用者識別碼** (必要) ：在 Azure 入口網站內，您必須[建立 Azure Active Directory (AD) 應用程式](../../active-directory/develop/howto-create-service-principal-portal.md)，以便驗證這兩個服務之間的連線是在驗證通訊之後。 若要尋找) 的[租使用者識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，請移至您的 Azure Active Directory 並選取 [**屬性**]，然後尋找列出的**目錄識別碼** (例如 50c464d3-4930-494c-963c-1e951d15360e) 。
+* **Azure AD 應用程式識別碼** (必要) ：您也需要[應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 和驗證金鑰。 若要取得那些值，請前往 Azure Active Directory，並選取 [應用程式註冊]，然後尋找列出的 [應用程式識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 若要尋找驗證金鑰，請移至 [設定] 並選取 [金鑰]。 您將必須提供描述與持續時間，然後才會提供數值。
 
 >[!Note]
 >Azure 應用程式識別碼將與您的發行者識別碼相關聯，而且只能在此發行者帳戶內重複使用。
 
 >[!Note]
->如果您想要使用[批次使用事件](marketplace-metering-service-apis.md#metered-billing-batch-usage-event)，則需要此設定。  如果您想要提交[使用事件](marketplace-metering-service-apis.md#metered-billing-single-usage-event)），您也可以使用[實例中繼資料服務](../../active-directory/managed-identities-azure-resources/overview.md)來取得[JSON web 權杖（JWT）持有人權杖](pc-saas-registration.md#how-to-get-the-publishers-authorization-token)。
+>如果您想要使用[批次使用事件](marketplace-metering-service-apis.md#metered-billing-batch-usage-event)) ，則需要進行此設定。  如果您想要提交[使用事件](marketplace-metering-service-apis.md#metered-billing-single-usage-event)) ，您也可以使用[實例中繼資料服務](../../active-directory/managed-identities-azure-resources/overview.md)來取得[JSON web 權杖 (JWT) 持有人權杖](pc-saas-registration.md#how-to-get-the-publishers-authorization-token)) 。
 
 ## <a name="plan-overview"></a>方案概觀
 
-此索引標籤可讓您在相同供應項目中提供不同的方案選項。 這些方案（先前稱為 Sku）在計畫類型（解決方案範本與受控應用程式）、營收或物件方面可能有所不同。 請至少設定一個方案，才能在 Marketplace 中列出您的供應項目。
+此索引標籤可讓您在相同供應項目中提供不同的方案選項。 這些方案 (先前稱為 Sku) 在方案類型 (解決方案範本與受控應用程式) 、營收或物件方面可能有所不同。 請至少設定一個方案，才能在 Marketplace 中列出您的供應項目。
 
 建立之後，您將會在此索引標籤上看到您的方案名稱、識別碼、方案類型、可用性 (公用或私人)、目前發佈狀態，以及任何可用的動作。
 
@@ -439,7 +440,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 如果您將方案設定為私人，請輸入 **Azure 訂用帳戶識別碼**及其描述。 每個都是可以存取此私人方案的對象。 存取權是使用 Azure 訂用帳戶識別碼指派的，而且可以選擇包含指派給每個 Azure 訂用帳戶識別碼的描述。 個別新增最多 10 個客戶訂用帳戶識別碼；透過匯入 CSV 檔案，則最多可新增 20,000 個客戶訂用帳戶識別碼。 Azure 訂用帳戶識別碼會以 GUID 表示，而且字母必須是小寫。
 
 >[!Note]
->透過雲端解決方案提供者方案（CSP）的轉銷商所建立的 Azure 訂用帳戶，不支援私用供應專案。
+>透過雲端解決方案提供者方案的轉銷商所建立的 Azure 訂用帳戶，不支援私用供應專案 (CSP) 。
 
 
 ### <a name="technical-configuration"></a>技術設定 
@@ -512,7 +513,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **授權** – 針對您要對其授與權限的使用者、群組或應用程式，將其 Azure Active Directory 物件識別碼新增至受控資源群組。 依使用者的主體識別碼 (可在 [Azure 入口網站上的 Azure Active Directory 使用者刀鋒視窗](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)中找到) 識別使用者。
 
-針對每個主體，從清單中選取其中一個 Azure AD 內建角色 ([擁有者] 或 [參與者])。 您選取的角色將會描述主體對客戶訂用帳戶中的資源所擁有的權限。 如需詳細資訊，請參閱[Azure 內建角色](../../role-based-access-control/built-in-roles.md)。 如需有關角色型存取控制 (RBAC) 的詳細資訊，請參閱[在 Azure 入口網站中開始使用 RBAC](../../role-based-access-control/overview.md)。
+針對每個主體，從清單中選取其中一個 Azure AD 內建角色 ([擁有者] 或 [參與者])。 您選取的角色將會描述主體對客戶訂用帳戶中的資源所擁有的權限。 如需詳細資訊，請參閱 [Azure 內建角色](../../role-based-access-control/built-in-roles.md)。 如需有關角色型存取控制 (RBAC) 的詳細資訊，請參閱[在 Azure 入口網站中開始使用 RBAC](../../role-based-access-control/overview.md)。
 
 >[!Note]
 >雖然您最多可以在每個雲端新增 100 個授權，但建立 Active Directory 使用者群組並在「主體識別碼」中指定其識別碼通常會比較容易。 這可讓您在部署方案之後，將更多使用者新增至管理群組，並減少更新方案的需求，僅新增更多授權。
@@ -543,17 +544,17 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 ### <a name="test-drive-technical-configuration"></a>試用產品技術設定
 
-- **Azure AD 應用程式識別碼**（必要）：輸入您的 AZURE ACTIVE DIRECTORY （AD）[應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)）。 若要尋找此識別碼，請登入[Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [**應用程式註冊**]，然後尋找所列的**應用程式識別碼**編號（例如50c464d3-4930-494c-963c-1e951d15360e）。
+- **Azure AD 應用程式識別碼** (必要) ：輸入您的 AZURE ACTIVE DIRECTORY (AD) [應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入[Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [**應用程式註冊**]，然後尋找列出的**應用程式識別碼** (如 [50c464d3-4930-494c-963c-1e951d15360e) ]。
 
 #### <a name="deployment-subscription-details"></a>部署訂用帳戶詳細資料
 
 若要允許代表您部署試用產品，請建立並提供另一個唯一的 Azure 訂用帳戶 (Power BI 試用產品則不需要)。
 
-* **Azure 訂用帳戶識別碼** (Azure Resource Manager 和邏輯應用程式為必要) – 輸入訂用帳戶識別碼以授與您的 Azure 帳戶服務存取權，並用於資源使用量報告和計費。 建議您考慮[建立個別的 Azure 訂閱](../../billing/billing-create-subscription.md)，以便用於試用產品 (如果您沒有訂閱的話)。 您可以透過登入 [Azure 入口網站](https://portal.azure.com/)並瀏覽到左側功能表的 [訂用帳戶] 索引標籤，以尋找 Azure 訂用帳戶識別碼。 選取此索引標籤會顯示您的訂用帳戶識別碼（例如 "a83645ac-1234-5ab6-6789-1h234g764ghty"）。
-* **Azure AD 租使用者識別碼**（必要）–輸入您的 AZURE ACTIVE DIRECTORY （AD）[租使用者識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)）。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [內容]，然後尋找列出的 [目錄識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 您也可以在 [https://www.whatismytenantid.com](https://www.whatismytenantid.com) 中，使用網域名稱 URL 來查閱組織的租用戶識別碼。
+* **Azure 訂用帳戶識別碼** (Azure Resource Manager 和邏輯應用程式為必要) – 輸入訂用帳戶識別碼以授與您的 Azure 帳戶服務存取權，並用於資源使用量報告和計費。 建議您考慮[建立個別的 Azure 訂閱](../../billing/billing-create-subscription.md)，以便用於試用產品 (如果您沒有訂閱的話)。 您可以透過登入 [Azure 入口網站](https://portal.azure.com/)並瀏覽到左側功能表的 [訂用帳戶] 索引標籤，以尋找 Azure 訂用帳戶識別碼。 選取 [] 索引標籤會顯示您的訂用帳戶識別碼 (例如 "a83645ac-1234-5ab6-6789-1h234g764ghty" ) 。
+* **Azure AD 租使用者識別碼** (必要) –請輸入您的 AZURE ACTIVE DIRECTORY (AD) [租使用者識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [內容]，然後尋找列出的 [目錄識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。 您也可以在 [https://www.whatismytenantid.com](https://www.whatismytenantid.com) 中，使用網域名稱 URL 來查閱組織的租用戶識別碼。
 * **Azure AD 租用戶名稱** (Dynamic 365 為必要) – 輸入您的 Azure Active Directory (AD) 名稱。 若要尋找此名稱，請登入 [Azure 入口網站](https://portal.azure.com/)，位於右上角的租用戶名稱會列在您的帳戶名稱底下。
-* **Azure AD 應用程式識別碼**（必要）–輸入您的 AZURE ACTIVE DIRECTORY （AD）[應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)）。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側導覽功能表中的 [Active Directory] 索引標籤，選取 [應用程式註冊]，然後尋找列出的 [應用程式識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。
-* **Azure Active Directory 應用程式用戶端密碼**（必要）–輸入您的 Azure AD 應用程式[用戶端密碼](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)）。 若要尋找此值，請登入 [Azure 入口網站](https://portal.azure.com/)。 在左側導覽功能表中，選取 [Azure Active Directory] 索引標籤，選取 [應用程式註冊]，然後選取您的試用產品應用程式。 接下來，選取 [憑證及祕密]、選取 [新增用戶端密碼]、輸入描述、選取 [到期] 底下的 [永不]，然後選擇 [新增]。 離開此頁面之前，請務必複製此值。
+* **Azure AD 應用程式識別碼** (必要) –輸入您的 AZURE ACTIVE DIRECTORY (AD) [應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要尋找此識別碼，請登入 [Azure 入口網站](https://portal.azure.com/)，選取左側導覽功能表中的 [Active Directory] 索引標籤，選取 [應用程式註冊]，然後尋找列出的 [應用程式識別碼] 號碼 (例如 50c464d3-4930-494c-963c-1e951d15360e)。
+* **Azure Active Directory 應用程式用戶端密碼** (必要) –請輸入您的 Azure AD 應用程式[用戶端秘密](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)) 。 若要尋找此值，請登入 [Azure 入口網站](https://portal.azure.com/)。 在左側導覽功能表中，選取 [Azure Active Directory] 索引標籤，選取 [應用程式註冊]，然後選取您的試用產品應用程式。 接下來，選取 [憑證及祕密]、選取 [新增用戶端密碼]、輸入描述、選取 [到期] 底下的 [永不]，然後選擇 [新增]。 離開此頁面之前，請務必複製此值。
 
 選取 [儲存草稿] 後再繼續。
 
@@ -569,9 +570,9 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 * **影片：新增影片** (選用) – 您可以將影片上傳到 YouTube 或 Vimeo，並在這裡提供參考連結和縮圖影像 (533 x 324 像素)，讓客戶可以檢視協助他們更加了解試用產品的逐步解說資訊，包括如何順利使用供應項目的功能，並了解強調其優點的案例。
   * **名稱** (必要)
   * **網址** (僅限 YouTube 或 Vimeo，必要)
-  * **縮圖**（影像檔案必須是 PNG 格式，而 533 x 324 圖元）。
+  * **縮圖** (影像檔案必須是 PNG 格式，而 533 x 324 圖元則) 。
 
-選取 **[儲存草稿]** 後再繼續。
+選取 [儲存草稿] 後再繼續。
 
 ## <a name="publish"></a>發佈
 

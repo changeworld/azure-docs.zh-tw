@@ -1,24 +1,24 @@
 ---
-title: Azure Blob 儲存體中的網路檔案系統3.0 支援（預覽） |Microsoft Docs
-description: Blob 儲存體現在支援 Network File System （NFS）3.0 通訊協定。 這項支援可讓 Linux 用戶端在 Blob 儲存體中，從 Azure 虛擬機器（VM）或內部部署電腦掛接容器。
+title: Azure Blob 儲存體中的網路檔案系統3.0 支援 (預覽) |Microsoft Docs
+description: Blob 儲存體現在支援網路檔案系統 (NFS) 3.0 通訊協定。 這項支援可讓 Windows 和 Linux 用戶端在 Blob 儲存體中，從 Azure 虛擬機器 (VM) 或在內部部署環境中執行的電腦掛接容器。
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 32eafc41451c42a9c929e94d30450b923e7eae83
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372887"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760918"
 ---
-# <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的網路檔案系統（NFS）3.0 通訊協定支援（預覽）
+# <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的網路檔案系統 (NFS) 3.0 通訊協定支援 (預覽) 
 
-Blob 儲存體現在支援 Network File System （NFS）3.0 通訊協定。 這項支援可讓 Linux 用戶端在 Blob 儲存體中，從 Azure 虛擬機器（VM）或內部部署電腦掛接容器。 
+Blob 儲存體現在支援網路檔案系統 (NFS) 3.0 通訊協定。 這項支援可讓 Windows 或 Linux 用戶端在 Blob 儲存體中，從 Azure 虛擬機器 (VM) 或內部部署電腦掛接容器。 
 
 > [!NOTE]
 > Azure Blob 儲存體中的 NFS 3.0 通訊協定支援處於公開預覽狀態，並可在下欄區域使用：美國東部、美國中部和加拿大中部。
@@ -31,7 +31,7 @@ Blob 儲存體現在支援 Network File System （NFS）3.0 通訊協定。 這�
 
 2. 確認已註冊此功能。
 
-3. 建立 Azure 虛擬網路（VNet）。
+3. 建立 Azure 虛擬網路 (VNet) 。
 
 4. 設定網路安全性。
 
@@ -41,14 +41,14 @@ Blob 儲存體現在支援 Network File System （NFS）3.0 通訊協定。 這�
 
 7. 裝載容器。
 
-如需逐步指引，請參閱[使用網路檔案系統（NFS）3.0 通訊協定（預覽）在 Linux 上掛接 Blob 儲存體](network-file-system-protocol-support-how-to.md)。
+如需逐步指引，請參閱[使用網路檔案系統掛接 Blob 儲存體 (NFS) 3.0 通訊協定 (preview) ](network-file-system-protocol-support-how-to.md)。
 
 > [!IMPORTANT]
 > 請務必依序完成這些工作。 在您的帳戶上啟用 NFS 3.0 通訊協定之前，無法掛接您所建立的容器。 此外，在您的帳戶上啟用 NFS 3.0 通訊協定之後，就無法將它停用。
 
 ## <a name="network-security"></a>網路安全性
 
-您的儲存體帳戶必須包含在 VNet 中。 VNet 可讓用戶端安全地連接到您的儲存體帳戶。 保護帳戶中資料的唯一方法是使用 VNet 和其他網路安全性設定。 在已啟用 NFS 3.0 通訊協定支援的帳戶中，還不支援用來保護資料的任何其他工具，包括帳戶金鑰授權、Azure Active Directory （AD）安全性和存取控制清單（Acl）。 
+您的儲存體帳戶必須包含在 VNet 中。 VNet 可讓用戶端安全地連接到您的儲存體帳戶。 保護帳戶中資料的唯一方法是使用 VNet 和其他網路安全性設定。 任何其他用來保護資料的工具，包括帳戶金鑰授權、Azure Active Directory (AD) 安全性和存取控制清單 (Acl) 尚未在啟用 NFS 3.0 通訊協定支援的帳戶中受到支援。 
 
 若要深入瞭解，請參閱[Blob 儲存體的網路安全性建議](security-recommendations.md#networking)。
 
@@ -79,13 +79,13 @@ Blob 儲存體現在支援 Network File System （NFS）3.0 通訊協定。 這�
 
 當您在帳戶上啟用 NFS 3.0 通訊協定時，不支援下列 Azure 儲存體功能。 
 
-- Azure Active Directory （AD）安全性
+- Azure Active Directory (AD) 安全性
 
-- POSIX like 存取控制清單（Acl）
+- 類似 POSIX 的存取控制清單 (Acl) 
 
 - 能夠在現有的儲存體帳戶上啟用 NFS 3.0 支援
 
-- 在儲存體帳戶中停用 NFS 3.0 支援的功能（啟用之後）
+- 在儲存體帳戶中停用 NFS 3.0 支援的功能 (啟用之後) 
 
 - 能夠使用 REST Api 或 Sdk 寫入 blob。 
   
@@ -95,13 +95,13 @@ Azure Data Lake Storage Gen2 尚不支援下列 NFS 3.0 功能。
 
 - 透過 UDP 的 NFS 3.0。 僅支援透過 TCP 的 NFS 3.0。
 
-- 使用網路鎖定管理員（NLM）鎖定檔案。 掛接命令必須包含 `-o nolock` 參數。
+- 使用網路鎖定管理員鎖定檔案 (NLM) 。 掛接命令必須包含 `-o nolock` 參數。
 
-- 裝載子目錄。 您只能掛接根目錄（容器）。
+- 裝載子目錄。 您只能將根目錄掛接 (容器) 。
 
-- 列出裝載（例如：使用命令 `showmount -a` ）
+- 列出裝載 (例如：使用命令 `showmount -a`) 
 
-- 列出匯出（例如：使用命令 `showmount -e` ）
+- 列出匯出 (例如：使用命令 `showmount -e`) 
 
 - 將容器匯出為唯讀
 
@@ -113,7 +113,7 @@ Azure Data Lake Storage Gen2 尚不支援下列 NFS 3.0 功能。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始，請參閱[使用網路檔案系統（NFS）3.0 通訊協定（預覽）在 Linux 上掛接 Blob 儲存體](network-file-system-protocol-support-how-to.md)。
+若要開始，請參閱[使用網路檔案系統掛接 Blob 儲存體 (NFS) 3.0 通訊協定 (preview) ](network-file-system-protocol-support-how-to.md)。
 
 
 

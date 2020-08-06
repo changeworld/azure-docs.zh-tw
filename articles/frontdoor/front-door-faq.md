@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: a0946da7ff516aa241a0c6d845723c43618ce70e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e1b8c432673712b637d51a64ce87b4eb2131be7d
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809487"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760408"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front 的常見問題
 
@@ -30,23 +30,23 @@ ms.locfileid: "84809487"
 
 ### <a name="what-is-azure-front-door"></a>Azure Front Door 是什麼？
 
-Azure Front 門板是應用程式傳遞網路（ADN）即服務，為您的應用程式提供各種第7層負載平衡功能。 它提供動態的網站加速（DSA）以及具有近乎即時容錯移轉的全域負載平衡。 這是高可用性且可調整的服務，完全由 Azure 管理。
+Azure Front 大門是應用程式傳遞網路 (ADN) 即服務，為您的應用程式提供各種第7層負載平衡功能。 可提供動態網站加速 (DSA) 以及具有近乎即時容錯移轉的全域負載平衡。 這是高度可用且可調整的服務，其完全由 Azure 管理。
 
 ### <a name="what-features-does-azure-front-door-support"></a>Azure 前端支援哪些功能？
 
-Azure Front 門板支援動態網站加速（DSA）、TLS/SSL 卸載和端對端 TLS、Web 應用程式防火牆、以 cookie 為基礎的會話親和性、url 路徑型路由、免費憑證和多網域管理等。 如需支援功能的完整清單，請參閱[Azure Front 門板的總覽](front-door-overview.md)。
+Azure Front 門板支援動態的網站加速 (DSA) 、TLS/SSL 卸載和端對端 TLS、Web 應用程式防火牆、以 cookie 為基礎的會話親和性、url 路徑型路由、免費憑證和多個網域管理，以及其他專案。 如需支援功能的完整清單，請參閱[Azure Front 門板的總覽](front-door-overview.md)。
 
 ### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Azure 前端和 Azure 應用程式閘道之間有何差異？
 
-雖然 Front 和應用程式閘道都是第7層（HTTP/HTTPS）負載平衡器，但主要的差異在於前端是一個全域服務，而應用程式閘道是區域服務。 雖然 Front 門板可以在不同的縮放單位/叢集/戳記單位之間進行負載平衡，但應用程式閘道可讓您在您的 Vm/容器和縮放單位內進行負載平衡。
+雖然 Front 門和應用程式閘道都是第7層 (HTTP/HTTPS) 負載平衡器，但主要的差異在於前端是一個全域服務，而應用程式閘道是區域服務。 雖然 Front 門板可以在不同的縮放單位/叢集/戳記單位之間進行負載平衡，但應用程式閘道可讓您在您的 Vm/容器和縮放單位內進行負載平衡。
 
 ### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>我們何時應該將應用程式閘道部署在 Front 後方？
 
 主要案例為何應該使用前端應用程式閘道：
 
-- Front 門板只能在全域層級執行路徑型負載平衡，但如果您想要在其虛擬網路（VNET）內進一步平衡流量負載，則應該使用應用程式閘道。
+- Front 門板只能在全域層級執行路徑型負載平衡，但如果您想要在其虛擬網路內進一步平衡流量負載， (VNET) 則應該使用應用程式閘道。
 - 因為 Front 門無法在 VM/容器層級運作，所以無法進行連線清空。 不過，應用程式閘道可讓您清空連接。 
-- 使用前方的應用程式閘道，可以達到100% 的 TLS/SSL 卸載，並只在其虛擬網路（VNET）內路由傳送 HTTP 要求。
+- 使用前方的應用程式閘道，可以達到100% 的 TLS/SSL 卸載，並只在其虛擬網路內路由傳送 HTTP 要求 (VNET) 。
 - Front 和應用程式閘道都支援會話親和性。 雖然 Front 門可以將使用者會話的後續流量導向至指定區域中的相同叢集或後端，應用程式閘道可以將流量導向到叢集中的相同伺服器。  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>我們可以在前門後方部署 Azure Load Balancer 嗎？
@@ -67,11 +67,11 @@ Azure Front 門板支援 HTTP、HTTPS 和 HTTP/2。
 
 ### <a name="what-regions-is-the-service-available-in"></a>哪些區域提供此服務？
 
-Azure Front 大門是一種全域服務，並不會系結至任何特定的 Azure 區域。 在建立 Front 門時，您唯一需要指定的位置是資源群組位置，基本上是指定將儲存資源群組中繼資料的位置。 Front 門板資源本身會建立為全域資源，而且設定會全域部署到所有 Pop （目前狀態點）。 
+Azure Front 大門是一種全域服務，並不會系結至任何特定的 Azure 區域。 在建立 Front 門時，您唯一需要指定的位置是資源群組位置，基本上是指定將儲存資源群組中繼資料的位置。 Front 門板資源本身會建立為全域資源，而且設定會全域部署到所有 Pop (點目前狀態) 。 
 
 ### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure Front 門板的 POP 位置為何？
 
-Azure Front 門板具有與來自 Microsoft 的 Azure CDN 相同的 POP （存在點）位置清單。 如需 Pop 的完整清單，請參閱[Microsoft 的 AZURE CDN POP 位置](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)。
+Azure Front 門板具有與 Azure CDN （來自 Microsoft）相同的 POP (點清單) 位置。 如需 Pop 的完整清單，請參閱[Microsoft 的 AZURE CDN POP 位置](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)。
 
 ### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure Front 大門是我的應用程式專用的部署，還是跨客戶共用？
 
@@ -120,14 +120,14 @@ Azure Front 大門是全域散發的多租使用者服務。 因此，Front 的�
 
 注意-自訂 TLS/SSL 憑證更新需要大約30分鐘的時間來進行全域部署。
 
-對路由或後端集區進行的任何更新等都是順暢的，而且會導致零停機（如果新的設定是正確的）。 憑證更新也不可部分完成，而且不會造成任何中斷，除非從「AFD 受控」切換到「使用您自己的憑證」，反之亦然。
+對路由或後端集區進行的任何更新等都是順暢的，如果新的設定是正確的) ，將會導致零停機 (。 憑證更新也不可部分完成，而且不會造成任何中斷，除非從「AFD 受控」切換到「使用您自己的憑證」，反之亦然。
 
 
 ## <a name="configuration"></a>組態
 
 ### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure Front 門板是否可以在虛擬網路內進行負載平衡或路由流量？
 
-Azure Front 門板（AFD）需要公用 IP 或可公開解析的 DNS 名稱來路由傳送流量。 因此，答案無法直接在虛擬網路內進行路由傳送，但是在其間使用應用程式閘道或 Azure Load Balancer 會解決此案例。
+Azure Front (AFD) 需要公用 IP 或可公開解析的 DNS 名稱來路由傳送流量。 因此，答案無法直接在虛擬網路內進行路由傳送，但是在其間使用應用程式閘道或 Azure Load Balancer 會解決此案例。
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure Front 的各種不同的超時和限制為何？
 
@@ -159,9 +159,12 @@ Front 門板支援 TLS 版本1.0、1.1 和1.2。 尚不支援 TLS 1.3。
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure Front？目前支援哪些加密套件？
 
-TLS 1.2 支援下列加密套件
+TLS 1.2 支援下列加密套件： 
 
-TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
 使用已啟用 TLS 1.0/1.1 的自訂網域時，支援下列加密套件：
 
@@ -192,7 +195,7 @@ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>我可以將 Front 門板設定為僅支援特定的加密套件嗎？
 
-否，不支援為特定的加密套件設定 Front 門。 不過，您可以從憑證授權單位單位（例如 Verisign、Entrust 或 Digicert）取得您自己的自訂 TLS/SSL 憑證，並在產生憑證時，將特定的加密套件標示在憑證上。 
+否，不支援為特定的加密套件設定 Front 門。 不過，您可以從憑證授權單位單位取得您自己的自訂 TLS/SSL 憑證 (例如 Verisign、Entrust 或 Digicert) ，並在產生憑證時，將特定的加密套件標示在憑證上。 
 
 ### <a name="does-front-door-support-ocsp-stapling"></a>Front 門板是否支援 OCSP 裝訂？
 
@@ -213,7 +216,7 @@ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_
 
 若要讓您的後端能夠順利進行 HTTPS 連線，不論是針對健康情況探查或轉送要求，HTTPS 流量可能會失敗的原因有兩個：
 
-1. **憑證主體名稱不符**：若為 HTTPS 連線，Front 門會預期您的後端會從有效的 CA 出示符合後端主機名稱的憑證。 例如，如果您的後端主機名稱設定為 `myapp-centralus.contosonews.net` ，而您的後端在 TLS 交握期間所提供的憑證沒有 `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` 主體名稱，則前端會拒絕連線並產生錯誤。 
+1. **憑證主體名稱不符**：若為 HTTPS 連線，Front 門會預期您的後端會從有效的 CA 出示憑證，而主體名稱 (s) 符合後端主機名稱。 例如，如果您的後端主機名稱設定為 `myapp-centralus.contosonews.net` ，而您的後端在 TLS 交握期間所提供的憑證沒有 `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` 主體名稱，則前端會拒絕連線並產生錯誤。 
     1. **解決方案**：雖然不建議從合規性的觀點來看，您可以藉由停用 Front 的憑證主體名稱檢查來解決此錯誤。 這會出現在 Azure 入口網站的 [設定] 和 API 的 [BackendPoolsSettings] 底下。
 2. **來自無效 ca 的後端裝載憑證**：只有來自[有效 ca](/azure/frontdoor/front-door-troubleshoot-allowed-ca)的憑證可以在後端使用 Front。 不允許來自內部 Ca 或自我簽署憑證的憑證。
 

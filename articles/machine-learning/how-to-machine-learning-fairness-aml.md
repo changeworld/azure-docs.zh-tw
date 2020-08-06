@@ -1,5 +1,5 @@
 ---
-title: 在 Python 中評估 ML 模型的公平（預覽）
+title: '在 Python 中評估 ML 模型的公平 (預覽) '
 titleSuffix: Azure Machine Learning
 description: 瞭解如何在 Azure Machine Learning 中評估模型的公平
 services: machine-learning
@@ -11,14 +11,14 @@ ms.reviewer: luquinta
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 5e6f241fcf30d4090a1af9a26441a5a10b939972
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 107b1103b5662decd8da0937ac84e0e8bab3f8eb
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307058"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760765"
 ---
-# <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>使用 Azure Machine Learning 搭配 Fairlearn 開放原始碼套件，以評估 ML 模型的公平（預覽）
+# <a name="use-azure-machine-learning-with-the-fairlearn-open-source-package-to-assess-the-fairness-of-ml-models-preview"></a>使用 Azure Machine Learning 搭配 Fairlearn 開放原始碼套件，以評估 ML 模型的公平 (預覽) 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "87307058"
 
 * 評估模型預測的公平。 若要深入瞭解機器學習服務中的公平，請參閱[機器學習服務中的公平一文](concept-fairness-ml.md)。
 * 上傳、列出及下載 Azure Machine Learning studio 的公平評量深入解析。
-* 請參閱 Azure Machine Learning studio 中的公平評量儀表板，與您的模型公平深入解析互動。
+* 請參閱 Azure Machine Learning studio 中的公平評量儀表板，與您的模型 () 的公平深入解析互動。
 
 >[!NOTE]
 > 公平評估並非純粹的技術練習。 **此套件可協助您評估機器學習模型的公平，但只有您可以設定和做出模型執行方式的決策。**  雖然此封裝有助於識別量化計量以評估公平，但機器學習模型的開發人員也必須執行定性分析，以評估其專屬模型的公平。
@@ -49,7 +49,7 @@ pip install fairlearn==0.4.6
 
 1. 訓練 Jupyter 筆記本中的範例模型。 
 
-    針對資料集，我們會使用我們用來載入的知名成人人口普查資料集 `shap` （為了方便起見）。 基於此範例的目的，我們會將此資料集視為貸款決策問題，並假設該標籤指出每個個體是否重金換回過去的貸款。 我們將使用資料來定型預測，以預測先前看不見的個人是否會 repay 貸款。 假設模型預測是用來決定是否要為個人提供貸款。
+    針對資料集，我們使用已知的成人人口普查資料集，我們會使用 `shap` (來為便利性) 載入。 基於此範例的目的，我們會將此資料集視為貸款決策問題，並假設該標籤指出每個個體是否重金換回過去的貸款。 我們將使用資料來定型預測，以預測先前看不見的個人是否會 repay 貸款。 假設模型預測是用來決定是否要為個人提供貸款。
 
     ```python
     from sklearn.model_selection import train_test_split
@@ -142,17 +142,17 @@ pip install fairlearn==0.4.6
         return registered_model.id
 
     # Call the register_model function 
-    lr_reg_id = register_model("fairness_linear_regression", unmitigated_predictor)
+    lr_reg_id = register_model("fairness_linear_regression", lr_predictor)
     ```
 
 3. 預先計算的公平計量。
 
-    使用 Fairlearn 的套件建立儀表板字典 `metrics` 。 `_create_group_metric_set`方法的引數與儀表板的函式相似，不同之處在于機密功能會當做字典傳遞（以確保名稱可供使用）。 呼叫這個方法時，也必須指定預測的類型（在此案例中為二元分類）。
+    使用 Fairlearn 的套件建立儀表板字典 `metrics` 。 `_create_group_metric_set`方法的引數與儀表板的函式相似，不同之處在于機密功能會當做字典傳遞 (以確保名稱可) 使用。 呼叫這個方法時，我們也必須指定 (二元分類的預測類型) 。
 
     ```python
     #  Create a dictionary of model(s) you want to assess for fairness 
     sf = { 'Race': A_test.Race, 'Sex': A_test.Sex}
-    ys_pred = unmitigated_predictor.predict(X_test)
+    ys_pred = { lr_reg_id:lr_predictor.predict(X_test) }
     from fairlearn.metrics._group_metric_set import _create_group_metric_set
 
     dash_dict = _create_group_metric_set(y_true=Y_test,
@@ -190,10 +190,10 @@ pip install fairlearn==0.4.6
     ```
 5. 從 Azure Machine Learning studio 檢查公平儀表板
 
-    如果您完成先前的步驟（將產生的公平見解上傳至 Azure Machine Learning），您可以在[Azure Machine Learning studio](https://ml.azure.com)中查看公平儀表板。 此儀表板是 Fairlearn 中提供的相同視覺效果儀表板，可讓您分析敏感性功能的子群組（例如男性與女性）之間的 disparities。
+    如果您已完成先前的步驟 (將產生的公平深入解析上傳至 Azure Machine Learning) ，您可以在[Azure Machine Learning studio](https://ml.azure.com)中查看公平儀表板。 此儀表板是 Fairlearn 中提供的相同視覺效果儀表板，可讓您分析敏感性功能的子群組之間的 disparities， (例如男性與女性) 。
     遵循下列其中一個路徑來存取 Azure Machine Learning studio 中的視覺效果儀表板：
 
-    * **實驗窗格（預覽）**
+    * ** (預覽) 的實驗窗格**
     1. 在左窗格中選取 [**實驗**]，以查看您在 Azure Machine Learning 上執行的實驗清單。
     1. 選取特定的實驗，以在該實驗中查看所有執行。
     1. 選取 [執行]，然後在 [說明視覺效果儀表板] 的 [**公平**] 索引標籤。
@@ -207,7 +207,7 @@ pip install fairlearn==0.4.6
 
     若要深入瞭解視覺效果儀表板及其包含的內容，請查看 Fairlearn 的[使用者指南](https://fairlearn.github.io/user_guide/assessment.html#fairlearn-dashboard)。
 
-s # # 上傳多個模型的公平深入解析
+## <a name="upload-fairness-insights-for-multiple-models"></a>上傳多個模型的公平深入解析
 
 如果您想要比較多個模型，並查看其公平評量有何不同，您可以將多個模型傳遞至視覺效果儀表板，並流覽其效能公平取捨。
 
@@ -230,7 +230,7 @@ s # # 上傳多個模型的公平深入解析
 
 2. 註冊您的模型
 
-    接下來，在 Azure Machine Learning 中註冊這兩個模型。 為了方便在後續的方法呼叫中，將結果儲存在字典中，將 `id` 已註冊模型的（格式為字串 `name:version` ）對應到預測器本身：
+    接下來，在 Azure Machine Learning 中註冊這兩個模型。 為了方便您在後續的方法呼叫中，請將結果儲存在字典中，這會將 `id` 已註冊模型的 `name:version` 設定 (格式) 的字串對應到預測器本身：
 
     ```python
     model_dict = {}
@@ -306,14 +306,14 @@ s # # 上傳多個模型的公平深入解析
     ```
 
 
-    類似上一節，您可以遵循 Azure Machine Learning studio 中所述的其中一個路徑（透過**實驗**或**模型**）來存取視覺效果儀表板，並根據公平和效能來比較這兩個模型。
+    與上一節類似，您可以遵循上述其中一個路徑 (透過 Azure Machine Learning studio 中的**實驗**或**模型**) 來存取視覺效果儀表板，並根據公平和效能來比較這兩個模型。
 
 
 ## <a name="upload-unmitigated-and-mitigated-fairness-insights"></a>上傳 unmitigated 並降低公平深入解析
 
-您可以使用 Fairlearn 的[緩和演算法](https://fairlearn.github.io/user_guide/mitigation.html)，比較其產生的降低模型與原始 unmitigated 模型，並在比較的模型之間流覽效能/公平取捨。
+您可以使用 Fairlearn 的[風險降低演算法](https://fairlearn.github.io/user_guide/mitigation.html)，將其產生的緩和模型 (s) 與原始的 unmitigated 模型比較，並在比較的模型之間流覽效能/公平取捨。
 
-若要查看示範如何使用[格線搜尋](https://fairlearn.github.io/user_guide/mitigation.html#grid-search)風險降低演算法的範例（這會建立具有不同公平和效能取捨的緩和模型集合），請參閱此[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
+為了查看示範如何使用[格線搜尋](https://fairlearn.github.io/user_guide/mitigation.html#grid-search)緩和演算法的範例 (這會建立一組具有不同公平和效能取捨的緩和模型集合) 查看此[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/contrib/fairness/fairlearn-azureml-mitigation.ipynb)。 
 
 在單一回合中上傳多個模型的公平深入解析，可讓您根據公平和效能來比較模型。 您可以進一步按一下模型比較圖表中顯示的任何模型，以便查看特定模型的詳細公平深入解析。
 

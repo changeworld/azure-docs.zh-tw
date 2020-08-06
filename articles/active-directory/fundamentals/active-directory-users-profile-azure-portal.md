@@ -2,7 +2,7 @@
 title: 新增或更新使用者設定檔資訊-Azure AD
 description: 有關如何向 Azure Active Directory 中的使用者設定檔新增資訊的指示，包括圖片和作業的詳細資料。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 277f4c7016849fbdbac4b5070c2a4db681cc66a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604007"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797232"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 新增或更新使用者的設定檔資訊
 使用 Azure Active Directory (Azure AD) 新增使用者設定檔資訊，包括個人資料圖片、工作特定資訊，以及一些設定。 如需新增使用者的詳細資訊，請參閱[如何在 Azure Active Directory 中新增或刪除使用者](add-users-azure-active-directory.md)。
@@ -40,13 +40,13 @@ ms.locfileid: "85604007"
 
     - **個人資料圖片。** 選取使用者帳戶的縮圖影像。 此圖會出現在 Azure Active Directory 和使用者的個人頁面上，例如 myapps.microsoft.com 頁面。
 
-    - **2x2.** 新增或更新使用者的其他識別值，例如「結婚的姓氏」。 您可以從 [名字] 和 [姓氏] 的值獨立設定此名稱。 例如，您可以使用它來包含姓名縮寫、公司名稱，或變更所顯示的名稱順序。 在另一個範例中，對於名稱為「Chris 綠色」的兩位使用者，您可以使用身分識別字串將其名稱設定為「Chris B」。綠色（Contoso）。
+    - **2x2.** 新增或更新使用者的其他識別值，例如「結婚的姓氏」。 您可以從 [名字] 和 [姓氏] 的值獨立設定此名稱。 例如，您可以使用它來包含姓名縮寫、公司名稱，或變更所顯示的名稱順序。 在另一個範例中，對於名稱為「Chris 綠色」的兩位使用者，您可以使用身分識別字串將其名稱設定為「Chris B」。綠色的 (Contoso) 。
 
     - **工作資訊。** 新增任何工作相關資訊，例如使用者的職稱、部門或經理。
 
     - **設置。** 決定使用者是否可以登入 Azure Active Directory 租用戶。 您也可以指定使用者的全域位置。
 
-    - **連絡人資訊。** 新增使用者的任何相關連絡人資訊，但不包括某些使用者的電話或行動連絡人資訊（只有全域管理員可以為系統管理員角色的使用者進行更新）。
+    - **連絡人資訊。** 新增使用者的任何相關連絡人資訊，但某些使用者的電話或行動連絡人資訊 (只有全域管理員可以) 的系統管理員角色中的使用者更新。
 
     - **驗證連絡資訊。** 驗證這項資訊，以確定具有使用者的有效電話號碼和電子郵件地址。 Azure Active Directory 會使用這項資訊，在登入期間確定使用者是真正的使用者。 只有全域系統管理員才能更新驗證連絡資訊。
 

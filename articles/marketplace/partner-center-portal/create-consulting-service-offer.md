@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317768"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798217"
 ---
 # <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應項目
 
@@ -77,8 +77,8 @@ ms.locfileid: "87317768"
 以下是一些額外的潛在客戶管理資源：
 
 - [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
-- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
-- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
+- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
+- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
 - [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (請確定您已關閉快顯封鎖程式)
 
 選取 [儲存草稿] 後再繼續。
@@ -120,7 +120,7 @@ ms.locfileid: "87317768"
 1. 如果您選取了 Azure*以外*的主要產品，則可以選擇為每個產業選取最多兩個**產業**和兩個**縱向**。 這些可讓 AppSource 的客戶更輕鬆地找到您的供應項目。 請參閱[供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的產業和縱向完整清單。
 1. 新增最多三個貴公司已取得的 [專長認證]，以顯示在您的諮詢服務供應項目清單中。 除了 Azure Expert MSP 和 Azure 網路 MSP 以外，至少需要一個專長認證。
 
-選取 **[儲存草稿]** 後再繼續。
+選取 [儲存草稿] 後再繼續。
 
 ## <a name="offer-listing"></a>供應項目清單
 
@@ -129,7 +129,7 @@ ms.locfileid: "87317768"
 > [!NOTE]
 > 如果供應項目描述開頭為以下詞句：&quot;此應用程式僅適用於 [非英文語言]。&quot;，則供應項目詳細資料不需要為英文。也可利用不同於供應項目清單詳細資料中所使用的語言，來提供供應項目內容的有用連結。
 
-以下範例說明如何在 Azure Marketplace 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+以下範例說明如何在 Azure Marketplace 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
 
 :::image type="content" source="media/example-consulting-service-offer.png" alt-text="說明此供應專案在 Azure Marketplace 中的顯示方式。":::
 
@@ -141,10 +141,10 @@ ms.locfileid: "87317768"
 4. 產業
 5. 供應項目名稱
 6. 總結
-7. 說明
+7. 描述
 8. 螢幕擷取畫面/影片
 
-<br>以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+<br>以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
 
 :::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="說明此供應專案在 Microsoft AppSource 中的顯示方式。":::
 
@@ -156,7 +156,7 @@ ms.locfileid: "87317768"
 4. 產業
 5. 供應項目名稱
 6. 總結
-7. 說明
+7. 描述
 8. 螢幕擷取畫面/影片
 9. 文件
 
@@ -207,12 +207,14 @@ ms.locfileid: "87317768"
 
 #### <a name="store-logos"></a>儲存標誌
 
-請以下列每個像素大小提供供應項目標誌的 PNG 檔案：
+在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 大小標誌。 您可以選擇性地將此取代為不同的影像。
 
-- **小型 (48 x 48)**
-- **大型 (216 x 216)**
+需要兩種標誌大小，才能在清單中的不同位置使用：
 
-所有標誌都是必要的，且在市集清單中會用於不同位置。
+- **小型** (48 x 48)
+- 216 x 216 與 350 x 350) 之間的**大型** (
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>螢幕擷取畫面 (選擇性)
 

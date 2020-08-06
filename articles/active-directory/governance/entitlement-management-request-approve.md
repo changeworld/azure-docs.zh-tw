@@ -3,7 +3,7 @@ title: 核准或拒絕存取要求-Azure AD 的權利管理
 description: 瞭解如何使用我的存取權入口網站，在 Azure Active Directory 的權利管理中核准或拒絕存取套件的要求。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: mamtakumar
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78c3c177bfcd5ee969e1430306c7294f0a14b658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4703a7d1928415d78eae63c42051542b035d3b1a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078096"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798353"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>核准或拒絕 Azure AD 權利管理中的存取要求
 
@@ -43,7 +43,7 @@ ms.locfileid: "85078096"
 
 如果您沒有電子郵件，您可以遵循下列步驟來尋找待核准的存取要求。
 
-1. 登入我的存取權入口網站，網址為 [https://myaccess.microsoft.com](https://myaccess.microsoft.com) 。  （針對美國政府，我的存取權入口網站中的網域連結會是 `myaccess.microsoft.us` ）。
+1. 登入我的存取權入口網站，網址為 [https://myaccess.microsoft.com](https://myaccess.microsoft.com) 。   (為美國政府，我的存取權入口網站連結中的網域將會是 `myaccess.microsoft.us` 。 ) 
 
 1. 在左側功能表中，按一下 [**核准**] 以查看待核准的存取要求清單。
 

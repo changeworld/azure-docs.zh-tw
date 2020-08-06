@@ -2,7 +2,7 @@
 title: 新增或刪除使用者 - Azure Active Directory | Microsoft Docs
 description: 關於如何使用 Azure Active Directory 新增使用者或刪除現有使用者的指示。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,16 +13,16 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30730f685945d129ababb27040f34bf8ab2f790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b6d8e6ed412a0e71e8c85827cfc8fc05cd744e3d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603854"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797095"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>使用 Azure Active Directory 新增或刪除使用者
 
-從您的 Azure Active Directory （Azure AD）組織新增使用者或刪除現有的使用者。 若要新增或刪除使用者，您必須是使用者系統管理員或全域管理員。
+從您的 Azure Active Directory (Azure AD) 組織新增使用者或刪除現有的使用者。 若要新增或刪除使用者，您必須是使用者系統管理員或全域管理員。
 
 ## <a name="add-a-new-user"></a>新增使用者
 
@@ -40,7 +40,7 @@ ms.locfileid: "85603854"
 
 1. 在 [**使用者**] 頁面上，輸入此使用者的資訊：
 
-   - [名稱]。 必要。 新使用者的姓氏與名字。 例如， *Mary Parker*。
+   - **名稱**。 必要。 新使用者的姓氏與名字。 例如， *Mary Parker*。
 
    - [使用者名稱]****。 必要。 新使用者的使用者名稱。 例如： `mary@contoso.com` 。
 
@@ -64,7 +64,7 @@ ms.locfileid: "85603854"
 
 ## <a name="add-a-consumer-user"></a>新增取用者使用者
 
-在某些情況下，您可能會想要在您的 Azure Active Directory B2C （Azure AD B2C）目錄中手動建立取用者帳戶。 如需建立取用者帳戶的詳細資訊，請參閱[在 Azure AD B2C 中建立和刪除取用者使用者](../../active-directory-b2c/manage-users-portal.md)。
+在某些情況下，您可能會想要在 Azure Active Directory B2C (Azure AD B2C) 目錄中手動建立取用者帳戶。 如需建立取用者帳戶的詳細資訊，請參閱[在 Azure AD B2C 中建立和刪除取用者使用者](../../active-directory-b2c/manage-users-portal.md)。
 
 ## <a name="add-a-new-user-within-a-hybrid-environment"></a>在混合式環境內新增使用者
 
@@ -82,7 +82,7 @@ ms.locfileid: "85603854"
 
 1. 搜尋並選取您想要從 Azure AD 租使用者中刪除的使用者。 例如， _Mary Parker_。
 
-1. 選取 [刪除使用者]****。
+1. 選取 [刪除使用者]。
 
     ![使用者 - 已反白顯示 [刪除使用者] 的 [所有使用者] 頁面](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 

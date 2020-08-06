@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 06/11/2020
-ms.openlocfilehash: 85d8d288a8b2d0f256294b0c8975afc367e6e381
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5ddcd083dfae1d0d4b79cd534b6ae4d034903b9
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736045"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759303"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 超過 1433 以外的連接埠
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ ms.locfileid: "84736045"
 * ADO.NET 4.5 於 2012 年 8 月 15 日發行。 您可以在 [這裡](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/)查看 .NET 小組的部落格公告。
   * 您可以在 [這裡](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/)查看有關 ADO.NET 4.5.1 的部落格文章。
 
-* Microsoft® ODBC Driver 17 for SQL Server® - Windows、Linux 和 macOS https://www.microsoft.com/download/details.aspx?id=56567
+* 適用于 SQL Server 的 Microsoft ODBC Driver 17https://aka.ms/downloadmsodbcsql
 
 * 透過重新導向連線到 Azure SQL Database V12 https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 

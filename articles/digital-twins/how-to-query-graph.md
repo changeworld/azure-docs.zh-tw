@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5d9d7c59244474c76e63271c0be92f835c2ed087
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543345"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760391"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖形
 
@@ -172,7 +172,7 @@ catch (RequestFailedException e)
 在預覽期間使用有其他限制 `JOIN` 。
 * 語句內不支援任何子查詢 `FROM` 。
 * `OUTER JOIN`不支援語義，也就是說，如果關聯性的次序為零，則會從輸出結果集中刪除整個「資料列」。
-* 在公開預覽期間，graph 遍歷深度會受到限制： `JOIN` 每個查詢只允許一個。
+* 在預覽期間，每個查詢的圖表遍歷深度限制為五個 `JOIN` 層級。
 * 作業的來源 `JOIN` 受到限制：查詢必須宣告開始查詢的 twins。
 
 ## <a name="query-best-practices"></a>查詢最佳做法

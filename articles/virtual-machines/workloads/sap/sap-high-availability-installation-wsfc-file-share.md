@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a393c1ac09283f1570908cea72750ed5ae28f81e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a6d3d4c791cebdee02d7d2c739be3b32b8086ec
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77617322"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760884"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>在 Azure 之 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用上安裝 SAP NetWeaver 高可用性
 
@@ -199,7 +199,7 @@ ms.locfileid: "77617322"
 
 本文說明如何在 Azure 上透過 Windows 容錯移轉叢集 (WSFC) 和向外延展檔案共用作為叢集 SAP ASCS/SCS 執行個體的選項，以安裝並設定高可用的 SAP 系統。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 在開始安裝之前，請檢閱下列文章：
 
@@ -210,7 +210,7 @@ ms.locfileid: "77617322"
 * [Azure VM 上的 SAP NetWeaver 高可用性][high-availability-guide]
 
 需要來自 SAP 的下列可執行檔和 DLL：
-* SAP 軟體布建管理員（SWPM）安裝工具版本 SPS25 或更新版本。
+* SAP 軟體布建管理員 (SWPM) 安裝工具版本 SPS25 或更新版本。
 * SAP 核心7.49 或更新版本
 
 > [!IMPORTANT]
@@ -231,7 +231,7 @@ ms.locfileid: "77617322"
 
 在 SOFS 叢集上建立下列磁碟區和檔案共用：
 
-* `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\`SOFS 叢集共用磁片區（CSV）上的 SAP GLOBALHOST 檔案結構
+* `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\`SOFS 叢集共用磁片區上的 SAP GLOBALHOST 檔案結構 (CSV) 
 
 * SAPMNT 檔案共用
 
@@ -299,7 +299,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第一個叢集節點上安裝 SAP ASCS/SCS 實例。 若要安裝執行個體，在 SAP SWPM 安裝工具中，移至：
 
-**\<Product>** > **\<DBMS>** > **安裝**  > **應用程式伺服器 ABAP** （或**JAVA**） >**高可用性系統**  >  **ASCS/SCS 實例**  >  的**第一個叢集節點**。
+**\<Product>** > **\<DBMS>** > **安裝**  > **應用程式伺服器 ABAP** (或**JAVA**) >**高可用性系統**  >  **ASCS/SCS 實例**  >  的**第一個叢集節點**。
 
 ### <a name="add-a-probe-port"></a>新增探查連接埠
 
@@ -309,7 +309,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 在第二個叢集節點上安裝 SAP ASCS/SCS 實例。 若要安裝執行個體，在 SAP SWPM 安裝工具中，移至：
 
-**\<Product>** > **\<DBMS>** > **安裝**  > **應用程式伺服器 ABAP** （或**JAVA**） >**高可用性系統**  >  **ASCS/SCS 實例**  >  **其他叢集節點**。
+**\<Product>** > **\<DBMS>** > **安裝**  > **應用程式伺服器 ABAP** (或**JAVA**) >**高可用性系統**  >  **ASCS/SCS 實例**  >  **額外**的叢集節點。
 
 
 ## <a name="update-the-sap-ascsscs-instance-profile"></a>更新 SAP ASCS/SCS 執行個體設定檔
@@ -323,6 +323,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 | enque/encni/set_so_keepalive  | **true** |
 | service/ha_check_node | **1** |
 
+`enque/encni/set_so_keepalive`只有在使用 ENSA1 時，才需要參數。  
 重新開機 SAP ASCS/SCS 實例。 `KeepAlive`在 SAP ASCS/scs 叢集節點上設定參數遵循指示，在[sap ASCS/scs 實例的叢集節點上設定登錄專案][high-availability-guide]。 
 
 ## <a name="install-a-dbms-instance-and-sap-application-servers"></a>安裝 DBMS 執行個體和 SAP 應用程式伺服器

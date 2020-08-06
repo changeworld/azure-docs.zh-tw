@@ -3,7 +3,7 @@ title: 委派存取治理以存取 Azure AD 權利管理中的套件管理員-Az
 description: 瞭解如何將存取管理委派給 IT 系統管理員，以存取封裝管理員和專案管理人員，讓他們可以自行管理存取權。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acea7503e5cdde9ff55c27f16351b21453fe521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e81389ec953829115062a31a019caf040850cbea
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078328"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798627"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>委派存取治理以存取 Azure AD 權利管理中的套件管理員
 

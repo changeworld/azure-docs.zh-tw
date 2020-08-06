@@ -2,7 +2,7 @@
 title: 架構概觀 - Azure Active Directory | Microsoft Docs
 description: 了解什麼是 Azure Active Directory 租用戶，以及如何使用 Azure Active Directory 管理 Azure。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5599ce6f086ca9c3dcbf7ac406306b6198d3080a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77368059"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797609"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>什麼是 Azure Active Directory 架構？
 
@@ -79,7 +79,7 @@ Azure AD 架構的元件包括主要複本和次要複本。
 
 寫入的永久在認可前至少有兩個資料中心。 發生這種情況的方式是先在主要複本上認可寫入，然後立即將寫入複寫到至少一個其他資料中心。 此寫入動作可確保裝載主要複本的資料中心可能會嚴重遺失，而不會導致資料遺失。
 
-Azure AD 會將[復原時間目標 (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) 維持為零，因此在容錯移轉時不會遺失資料。 其中包括：
+Azure AD 會將[復原時間目標 (RTO)](https://en.wikipedia.org/wiki/Recovery_time_objective) 維持為零，因此在容錯移轉時不會遺失資料。 這包括：
 
 * 權杖發行和目錄讀取
 * 目錄寫入只允許約 5 分鐘的 RTO
@@ -92,7 +92,7 @@ Azure AD 會在具有下列特性的資料中心之間運作：
 
 * 驗證、圖表和其他 AD 服務位於閘道服務後方。 閘道會管理這些服務的負載平衡。 如果使用交易健康狀態探查偵測到任何狀況不良的伺服器，它就會自動進行容錯移轉。 根據這些健康情況探查，閘道會以動態方式將流量路由傳送至狀況良好的資料中心。
 * 針對*讀取*，目錄具有次要複本，以及在多個資料中心運作的主動-主動設定中對應的前端服務。 萬一整個資料中心失敗，流量會自動路由傳送至不同的資料中心。
- * 對於*寫入*，目錄會透過規劃（新的主要複本會同步處理至舊的主要複本）或緊急容錯移轉程式，在資料中心之間容錯移轉主要（master）複本。 將任何認可複寫到至少兩個資料中心，即可達到資料耐久性。
+ * 對於*寫入*，目錄會透過規劃的 (新的主要複本同步處理至舊的主要) 或緊急容錯移轉程式，來容錯移轉跨資料中心的主要 (master) 複本。 將任何認可複寫到至少兩個資料中心，即可達到資料耐久性。
 
 #### <a name="data-consistency"></a>資料一致性
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 5cea220b44618787e34ce2297921d715476b7f14
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280948"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797860"
 ---
 # <a name="consulting-service-offers"></a>諮詢服務供應項目
 
@@ -72,7 +72,7 @@ ms.locfileid: "87280948"
 
 系統整合者合作夥伴可以提交適用于下列20個國家/地區的諮詢服務供應專案：
 
-| 國家/地區  | （續）   | （續）  | （續）  |
+| 國家/地區  |  (繼續。)    |  (繼續。)   |  (繼續。)   |
 |---------|----------|----------|----------|
 | 澳大利亞 | 比利時 | Canada | 丹麥 |
 | 芬蘭  | 法國 | 德國  | 印度   |
@@ -86,12 +86,12 @@ ms.locfileid: "87280948"
 首先，在市集中[註冊](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)您的公司資訊。 如需註冊需求的完整檢查清單，請參閱[成為市集中的發行者](become-publisher.md)。 
 
 ## <a name="prepare-your-publishing-artifacts"></a>準備您的發佈成品
-註冊前，您可以開始收集及準備相關內容，幫助您向目標客戶闡述您的服務和解決方案的價值。 
+註冊前，您可以開始收集及準備相關內容，幫助您向目標客戶闡述您的服務和解決方案的價值。
 
 |新發行者的設定  |
 |---------|
 |MPN 識別碼     |
-|公司標誌 (48 x 48、216 x 216 像素)     |
+|公司標誌： 48 x 48 圖元 (選擇性) 、216 x 216 圖元– 350 x 350 圖元 (必要)   |
 |潛在客戶目的地     |
 ||
 

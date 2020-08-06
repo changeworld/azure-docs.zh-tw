@@ -2,7 +2,7 @@
 title: 將商標新增至組織的登入頁面-Azure AD
 description: 以下相關指示說明如何將組織的商標新增至 Azure Active Directory 登入頁面。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e1e84fa96b1e6b686d039abedd38e080b5720e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f664f55f2870f4f0e06f3a96a3f2b7ae91e7a378
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603905"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87796789"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>將商標新增至組織的 Azure Active Directory 登入頁面
 使用您組織的標誌和自訂色彩配置，在 Azure Active Directory (Azure AD) 登入頁面上展現一致的外觀與風格。 當使用者登入貴組織的 Web 應用程式 (如 Office 365)，且該應用程式使用 Azure AD 做為識別提供者時，即會顯示您的登入頁面。
@@ -74,13 +74,13 @@ ms.locfileid: "85603905"
           
           > 線``` ++text++ ``` 
 
-    - **Advanced 設定**
+    - **進階設定**
             
         ![設定公司商標頁面，進階設定已完成](media/customize-branding/configure-company-branding-advanced-settings.png)   
 
         - **登入頁面背景色彩。** 請指定十六進位色彩 (例如，白色是 #FFFFFF)，此色彩會在低頻寬連線的情況下代替背景影像。 建議使用橫幅標誌的主要顏色或貴組織的代表顏色。
 
-        - **方形標誌影像。** 針對新的 Windows 10 企業版裝置，選取要在安裝過程中對使用者顯示之組織標誌的 .png （慣用）或 .jpg 影像。 此影像只會用於 Windows 驗證，而且只有在租用戶使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 部署或做為其他 Windows 10 使用體驗的密碼輸入頁面時，才會向此租用戶顯示。 在某些情況下，它可能也會出現在同意對話方塊中。
+        - **方形標誌影像。** 針對新的 Windows 10 企業版裝置，選取要在安裝過程中對使用者顯示的 .png (慣用的) 或您組織標誌的 .jpg 影像。 此影像只會用於 Windows 驗證，而且只有在租用戶使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 部署或做為其他 Windows 10 使用體驗的密碼輸入頁面時，才會向此租用戶顯示。 在某些情況下，它可能也會出現在同意對話方塊中。
         
             影像的大小不能大於240x240 圖元，而且檔案大小必須小於 10 KB。 建議使用透明影像，因為背景可能會不符合您標誌的背景。 也建議不要在影像周圍加入邊框間距，否則會讓標誌看起來變小。
     
