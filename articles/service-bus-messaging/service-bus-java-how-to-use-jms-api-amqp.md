@@ -4,15 +4,22 @@ description: 如何搭配 Azure 服務匯流排和 Advanced Message Queuing Prot
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 95558f973041a086dc66d2bebb1ce54ee58c952a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 935579bdcb142969d9baf7ca24cf03268620bf46
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320777"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799679"
 ---
-# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>搭配 Azure 服務匯流排和 AMQP 1.0 使用 JAVA 訊息服務（JMS）
-本文說明如何使用常用的 JAVA 訊息服務（JMS） API 標準，從 JAVA 應用程式使用 Azure 服務匯流排訊息功能（佇列和發佈/訂閱主題）。 其中有一個[隨附文章](service-bus-amqp-dotnet.md)，說明如何使用 AZURE 服務匯流排 .net API 來執行相同的動作。 您可以同時使用這兩個指南了解使用 AMQP 1.0 的跨平台訊息。
+# <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>搭配 Azure 服務匯流排和 AMQP 1.0 使用 JAVA 訊息服務 (JMS) 
+
+> [!WARNING]
+> 下列指南會已經考慮對 JAVA Message Service (JMS) 1.1 API 的**有限支援**，而且僅適用于 Azure 服務匯流排標準層。
+>
+> JAVA 訊息服務 (JMS) 2.0 API 的完整支援僅適用于預覽中的[Azure 服務匯流排 Premium 層](how-to-use-java-message-service-20.md)，這是強烈建議的做法。
+>
+
+本文說明如何使用受歡迎的 JAVA 訊息服務 (JMS) API 標準，從 JAVA 應用程式 (佇列和發佈/訂閱主題) Azure 服務匯流排訊息功能。 其中有一個[隨附文章](service-bus-amqp-dotnet.md)，說明如何使用 AZURE 服務匯流排 .net API 來執行相同的動作。 您可以同時使用這兩個指南了解使用 AMQP 1.0 的跨平台訊息。
 
 進階訊息佇列通訊協定 (AMQP) 1.0 是一個有效率且可靠的有線等級訊息通訊協定，可以用來建置強大的跨平台訊息應用程式。
 
@@ -29,7 +36,7 @@ Azure 服務匯流排中支援 AMQP 1.0，表示您可以使用有效率的二�
 ## <a name="downloading-the-amqp-10-jms-client-library"></a>下載 AMQP 1.0 JMS 用戶端程式庫
 如需有關下載最新版 Apache Qpid JMS AMQP 1.0 用戶端程式庫之位置的詳細資訊，請造訪 [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html) 。
 
-您使用服務匯流排建立和執行 JMS 應用程式時，必須從 Apache Qpid JMS AMQP 1.0 散發封裝將下列 4 個 JAR 檔加入 Java CLASSPATH：
+使用服務匯流排建立及執行 JMS 應用程式時，您必須將下列 JAR 檔案從 Apache Qpid JMS AMQP 1.0 發佈封存新增至 JAVA 類路徑：
 
 * geronimo-jms\_1.1\_spec-1.0.jar
 * qpid-jms-client-[版本].jar
@@ -332,7 +339,7 @@ MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
 ## <a name="jms-topics-vs-service-bus-topics"></a>JMS 主題與服務匯流排主題的比較
-透過 JAVA 訊息服務（JMS） API 使用 Azure 服務匯流排主題和訂用帳戶，可提供基本的傳送和接收功能。 當使用 JMS 相容的 Api 從其他訊息代理程式移植應用程式時，這是一個方便的選擇，即使服務匯流排主題與 JMS 主題不同，而且需要進行一些調整。 
+透過 JAVA 訊息服務使用 Azure 服務匯流排主題和訂用帳戶 (JMS) API 提供基本的傳送和接收功能。 當使用 JMS 相容的 Api 從其他訊息代理程式移植應用程式時，這是一個方便的選擇，即使服務匯流排主題與 JMS 主題不同，而且需要進行一些調整。 
 
 Azure 服務匯流排主題會將訊息路由至透過 Azure 資源管理介面、Azure 命令列工具或 Azure 入口網站所管理的已命名、共用、持久訂閱。 每個訂用帳戶最多可有2000個選取規則，其中每一個都可能有篩選準則，而針對 SQL 篩選也是中繼資料轉換動作。 每個篩選準則符合都會選取要複製到訂用帳戶中的輸入訊息。  
 
@@ -348,7 +355,7 @@ JMS 主題發行者端與服務匯流排相容，如這個範例所示，但動�
 * 對於各個**工作階段**僅允許一個 **MessageProducer** 或 **MessageConsumer**。 如果您需要在應用程式中建立多個 **MessageProducers** 或 **MessageConsumers**，請分別建立專用的**工作階段**。
 * 目前不支援 Volatile 主題訂用帳戶。
 * 目前不支援**MessageSelectors** 。
-* 不支援分散式交易（但支援交易的會話）。
+*  (不支援分散式交易，但) 支援交易會話。
 
 此外，Azure 服務匯流排會分割控制層與資料層，並因此不支援數個 JMS 的動態拓撲函式：
 
@@ -364,7 +371,7 @@ JMS 主題發行者端與服務匯流排相容，如這個範例所示，但動�
 | createBrowser               | 不支援。 使用服務匯流排 API 的 Peek() 功能                         |
 | createQueue                 | 透過管理 API/工具/入口網站建立佇列                                           | 
 | createTemporaryQueue        | 透過管理 API/工具/入口網站建立佇列，且 *AutoDeleteOnIdle* 設為到期時間 |
-| receiveNoWait               | 使用服務匯流排 SDK 所提供的 receive （）方法，並指定非常低或零的超時 |
+| receiveNoWait               | 使用服務匯流排 SDK 提供的接收 ( # A1 方法，並指定非常低或零的超時 |
 
 ## <a name="summary"></a>總結
 本作法指南說明如何以常用的 JMS API 和 AMQP 1.0 從 Java 使用服務匯流排代理訊息功能 (佇列和發佈/訂閱主題)。
@@ -377,4 +384,3 @@ JMS 主題發行者端與服務匯流排相容，如這個範例所示，但動�
 * [服務匯流排 AMQP 1.0 開發人員指南](service-bus-amqp-dotnet.md)
 * [開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)
 * [JAVA 開發人員中心](https://azure.microsoft.com/develop/java/)
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: e90e45a0c96d8bbd2806a0ab6df70ef83e0cc9f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 650210ab965936de6e48b2ace3f2042857760053
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121923"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800002"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
 
@@ -60,7 +60,7 @@ ms.locfileid: "86121923"
 
 #### <a name="free-trial-listing"></a>免費試用版 (清單)
 
-提供有效的 URL （開頭為或），以向客戶列出您的供應專案，以 `http` `https` 取得試用版的連結。  例如： `https://contoso.com/trial/my-app` 。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
+藉由提供有效的 URL (開始， `http` 或 `https`) 可以在何處取得試用版，將您的供應專案向客戶列出免費試用的連結。  例如： `https://contoso.com/trial/my-app` 。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
 
 > [!NOTE]
 > 您的應用程式透過試用連結所接收的權杖，只能經由 Azure Active Directory (Azure AD) 取得使用者資訊，以便在應用程式中自動建立帳戶。 Microsoft 帳戶不支援使用此權杖進行驗證。
@@ -93,7 +93,7 @@ ms.locfileid: "86121923"
 
 選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
 - 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
 
 請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
@@ -125,7 +125,7 @@ ms.locfileid: "86121923"
 > [!NOTE]
 > 供應項目清單內容 (例如描述、文件、螢幕擷取畫面和使用規定) 不一定要使用英文，供應項目只需用以下句子描述開頭即可：「此應用程式僅適用於 [非英文語言]」。 也可利用不同於供應項目清單內容中所使用的語言，來提供供應項目內容的*有用連結 URL*。
 
-以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
 
 :::image type="content" source="media/example-azure-marketplace-d365-customer-engagement.png" alt-text="說明此供應專案在 Microsoft AppSource 中的顯示方式。":::
 
@@ -133,9 +133,9 @@ ms.locfileid: "86121923"
 
 1. 標誌
 2. 產品
-3. 類別
-4. 支援位址（連結）
-5. 使用規定位址（連結）
+3. Categories
+4. 支援位址 (連結) 
+5. 使用規定位址 (連結) 
 6. 供應項目名稱
 7. 描述
 8. 螢幕擷取畫面/影片
@@ -195,10 +195,14 @@ ms.locfileid: "86121923"
 
 #### <a name="store-logos"></a>儲存標誌
 
-請提供三種像素大小的供應項目標誌：
-- **小型** (必要；48 x 48)
-- **大型** (必要；216 x 216)
-- **寬型** (選擇性；255 x 115)
+在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 大小標誌。 您可以選擇性地將此取代為不同的影像。
+
+需要兩種標誌大小，才能在清單中的不同位置使用：
+
+- **小型** (48 x 48)
+- 216 x 216 與 350 x 350) 之間的**大型** (
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
@@ -235,7 +239,7 @@ ms.locfileid: "86121923"
 
 然後，當準備好讓供應項目可供使用並移除預覽限制時，您將需要移除 [隱藏金鑰] 並重新發佈。
 
-選取 **[儲存草稿]** 後再繼續。
+選取 [儲存草稿] 後再繼續。
 
 ## <a name="technical-configuration"></a>技術設定
 

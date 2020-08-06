@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077081"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800495"
 ---
 # <a name="azure-resource-logs"></a>Azure 資源記錄
 Azure 資源記錄是[平臺記錄](platform-logs-overview.md)，可讓您深入瞭解在 Azure 資源內執行的作業。 資源記錄的內容會因 Azure 服務和資源類型而異。 預設不會收集資源記錄。 您必須為每個 Azure 資源建立診斷設定，以將其資源記錄傳送到 Log Analytics 工作區，以搭配[Azure 監視器記錄](data-platform-logs.md)、Azure 事件中樞在 Azure 外部轉送，或 Azure 儲存體進行封存。
 
-如需有關如何使用 Azure 原則自動為您所建立的每個 Azure 資源建立診斷設定的詳細資訊，請參閱建立診斷設定[以將平臺記錄和計量傳送至不同的目的地](diagnostic-settings.md)，以取得有關建立診斷設定和[Azure 原則大規模部署 Azure 監視器](deploy-scale.md)的詳細資訊。
+如需有關如何使用 Azure 原則自動為您所建立的每個 Azure 資源建立診斷設定的詳細資訊，請參閱建立診斷設定[以將平臺記錄和計量傳送至不同的目的地](diagnostic-settings.md)，以取得有關建立診斷設定和[Azure 原則大規模部署 Azure 監視器](../deploy-scale.md)的詳細資訊。
 
 ## <a name="send-to-log-analytics-workspace"></a>傳送至 Log Analytics 工作區
  將資源記錄傳送到 Log Analytics 工作區，以啟用[Azure 監視器記錄](data-platform-logs.md)的功能，包括下列各項：
@@ -37,9 +37,9 @@ Azure 資源記錄是[平臺記錄](platform-logs-overview.md)，可讓您深入
 
 請考慮下列範例，其中會針對下列資料類型，在相同的工作區中收集診斷設定：
 
-- 服務1的審核記錄（具有包含 A、B 和 C 資料行的架構）  
-- 服務1的錯誤記錄檔（具有由 D、E 和 F 資料行組成的架構）  
-- 服務2的審核記錄（具有包含 G、H 和 I 資料行的架構）  
+- 服務1的 Audit 記錄 (具有由 A、B 和 C 資料行組成的架構)   
+- 服務1的錯誤記錄 (具有由資料行 D、E 和 F 組成的架構)   
+- 「服務2」的審核記錄 (具有包含 G、H 和 I 等資料行的架構)   
 
 AzureDiagnostics 資料表看起來會像這樣：  
 
@@ -187,7 +187,7 @@ insights-logs-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/RE
 insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUP/TESTNSG/y=2016/m=08/d=22/h=18/m=00/PT1H.json
 ```
 
-每個 PT1H.json blob 有一個 JSON blob，包含在 blob URL 指定時數內 (例如 h = 12) 發生的事件。 在目前這一小時，事件一發生就會附加到 PT1H.json 檔案。 分鐘值（m = 00）一定是00，因為資源記錄事件會分成每小時的個別 blob。
+每個 PT1H.json blob 有一個 JSON blob，包含在 blob URL 指定時數內 (例如 h = 12) 發生的事件。 在目前這一小時，事件一發生就會附加到 PT1H.json 檔案。  (m = 00) 的分鐘值一律是00，因為資源記錄事件會分成每小時的個別 blob。
 
 在 PT1H.js的檔案中，每個事件都會以下列格式儲存。 這會使用通用的最上層架構，但每個 Azure 服務都是唯一的，如[資源記錄架構](./resource-logs-schema.md)中所述。
 

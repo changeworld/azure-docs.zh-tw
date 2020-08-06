@@ -3,7 +3,7 @@ title: 變更 Azure AD 權利管理中存取套件的資源角色-Azure Active D
 description: 瞭解如何在 Azure Active Directory 權利管理中變更現有存取套件的資源角色。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550311"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798628"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中變更存取套件的資源角色
 
@@ -90,10 +90,10 @@ ms.locfileid: "85550311"
 
     一旦您選取群組或小組之後，[**子類型**] 欄將會列出下列其中一個子類型：
 
-    | 子類型 | Description |
+    | 子類型 | 描述 |
     | --- | --- |
     | 安全性 | 用來授與資源的存取權。 |
-    | 散發 | 用來傳送通知給一群人。 |
+    | 發行版本 | 用來傳送通知給一群人。 |
     | O365 | 未啟用小組的 Office 365 群組。 用於在公司內部和外部的使用者之間共同作業。 |
     | 小組 | 已啟用小組的 Office 365 群組。 用於在公司內部和外部的使用者之間共同作業。 |
 
@@ -103,7 +103,7 @@ ms.locfileid: "85550311"
 
     ![存取套件-新增群組或小組的資源角色](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. 按一下 **[新增]** 。
+1. 按一下 [新增] 。
 
     具有存取封裝之現有指派的任何使用者，在新增時，都會自動成為此群組或小組的成員。
 
@@ -134,7 +134,7 @@ ms.locfileid: "85550311"
 
     ![存取套件-新增應用程式的資源角色](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. 按一下 **[新增]** 。
+1. 按一下 [新增] 。
 
     在新增此應用程式時，任何具有存取封裝之現有指派的使用者都會自動獲得存取權。
 
@@ -154,7 +154,7 @@ ms.locfileid: "85550311"
 
     ![存取套件-新增 SharePoint Online 網站的資源角色](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. 按一下 **[新增]** 。
+1. 按一下 [新增] 。
 
     新增存取套件的任何使用者，將會自動獲得此 SharePoint Online 網站的存取權。
 
@@ -170,7 +170,7 @@ ms.locfileid: "85550311"
 
 1. 在資源角色清單中，尋找您想要移除的資源角色。
 
-1. 按一下省略號（**...**），然後按一下 [**移除資源角色**]。
+1. 按一下省略號 (**...**) 然後按一下 [**移除資源角色**]。
 
     已移除存取套件之現有指派的任何使用者，將會自動在此資源角色中撤銷其存取權。
 

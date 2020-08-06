@@ -1,9 +1,9 @@
 ---
 title: Azure AD 權利管理中的存取套件的自我審查
-description: 瞭解如何在 Azure Active Directory 存取評論（預覽）中，檢查權利管理存取套件的使用者存取權。
+description: 瞭解如何在 Azure Active Directory 存取權審查 (預覽) 中，檢查權利管理存取套件的使用者存取權。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,16 +16,16 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f8037ef1324cb10777511c4c363a62a2edab438
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31c44f2423cdc5c43638fe2515757bcb11a9814c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078417"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798438"
 ---
 # <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的存取套件的自我審查
 
-Azure AD 權利管理可簡化企業管理群組、應用程式和 SharePoint 網站存取的方式。 本文說明使用者如何對其指派的存取套件進行自我審查。
+Azure AD 權利管理可簡化企業管理群組、應用程式和 SharePoint 網站存取的方式。 本文說明使用者如何 (s) ，自行審查其指派的存取套件。
 
 ## <a name="open-the-access-review"></a>開啟存取權審查
 
@@ -37,7 +37,7 @@ Azure AD 權利管理可簡化企業管理群組、應用程式和 SharePoint �
 
 1. 按一下 [**審查存取**] 連結。
 
-1. https://myaccess.microsoft.com如果您未收到電子郵件，您也可以直接前往來尋找您的暫止存取審查。  （針對美國政府，請改用 `https://myaccess.microsoft.us` ）。
+1. https://myaccess.microsoft.com如果您未收到電子郵件，您也可以直接前往來尋找您的暫止存取審查。   (美國政府，請改用 `https://myaccess.microsoft.us` 。 ) 
 
 1. 按一下左側導覽列上的 [**存取評論**]，以查看指派給您的暫止存取評論清單。
 

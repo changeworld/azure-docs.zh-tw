@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f1871871fa3a191c636a965977dba485d2c77f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037503"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800364"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季雲端常見問題
 
@@ -22,7 +22,7 @@ ms.locfileid: "87037503"
 
 ### <a name="why-azure-spring-cloud"></a>為何選擇 Azure Spring Cloud？
 
-Azure 春季雲端為雲端開發人員提供了平臺即服務（PaaS）。 Azure 春季雲端會管理您的應用程式基礎結構，讓您可以專注于應用程式的程式碼和商務邏輯。 Azure 春季雲端內建的核心功能包括 Eureka、設定伺服器、服務登錄伺服器、Pivotal 組建服務、藍綠部署等等。 此服務也可讓開發人員將其應用程式與其他 Azure 服務（例如 Azure Cosmos DB、適用於 MySQL 的 Azure 資料庫和 Azure Cache for Redis）系結。
+Azure 春季雲端為雲端開發人員提供一種平臺即服務， (PaaS) 。 Azure 春季雲端會管理您的應用程式基礎結構，讓您可以專注于應用程式的程式碼和商務邏輯。 Azure 春季雲端內建的核心功能包括 Eureka、設定伺服器、服務登錄伺服器、Pivotal 組建服務、藍綠部署等等。 此服務也可讓開發人員將其應用程式與其他 Azure 服務（例如 Azure Cosmos DB、適用於 MySQL 的 Azure 資料庫和 Azure Cache for Redis）系結。
 
 Azure 春季雲端藉由整合 Azure 監視器、Application Insights 和 Log Analytics，為開發人員和操作員增強應用程式診斷體驗。
 
@@ -54,7 +54,7 @@ Azure 春季雲端藉由整合 Azure 監視器、Application Insights 和 Log An
 
 如果您遇到 Azure 春季雲端的任何問題，請建立[Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 若要提交功能要求或提供意見反應，請前往[Azure 意見](https://feedback.azure.com/forums/34192--general-feedback)反應。
 
-## <a name="development"></a>部署
+## <a name="development"></a>開發
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>我是雲端開發人員，而不是 Azure 的新手。 若要瞭解如何開發 Azure 春季雲端應用程式，最快的方式是？
 
@@ -127,12 +127,12 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>執行我的應用程式的作業系統是什麼？
 
-會使用最新的 Ubuntu LTS 版本，目前的[ubuntu 20.04 LTS （焦點 Fossa）](https://releases.ubuntu.com/focal/)是預設的作業系統。
+會使用最新的 Ubuntu LTS 版本，目前的[ubuntu 20.04 LTS (焦點 Fossa) ](https://releases.ubuntu.com/focal/)是預設的作業系統。
 
 ### <a name="how-often-will-os-security-patches-be-applied"></a>OS 安全性修補程式的套用頻率為何？
 
 適用于 Azure 春季雲端的安全性修補程式將以每月的方式推出至生產環境。
-適用于 Azure 春季雲端的重大安全性修補程式（CVE 分數 >= 9）將會儘快推出。
+重大安全性修補程式 (CVE 分數 >= 9) 適用于 Azure 春季雲端，將儘快推出。
 
 ## <a name="deployment"></a>部署
 
@@ -141,7 +141,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>我是否可以存取 Kubernetes 來操作我的應用程式容器？
 
-不可以。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
+否。  Azure Spring Cloud 將基礎架構對開發人員抽象化，讓您能夠專注於應用程式程式碼和商務邏輯。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支援從來源建立容器？
 
@@ -149,7 +149,7 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支援應用程式執行個體自動調整？
 
-不可以。
+否。
 
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>將現有的春季 Cloud 微服務遷移至 Azure 春季雲端的最佳作法為何？
 
@@ -158,9 +158,24 @@ LTS 和 MTS JDK 版本會有每季的安全性更新和錯誤修正，並視需�
 * 準備您的設定專案、環境變數及 JVM 參數，讓您可以將它們與 Azure 春季雲端中的部署進行比較。
 * 如果您想要使用服務系結，請流覽您的 Azure 服務，並確定您已設定適當的存取權限。
 * 建議您移除或停用任何可能與 Azure 春季雲端所管理的服務發生衝突的內嵌服務，例如我們的服務探索服務、設定伺服器等等。
-* 建議您使用官方、穩定的 Pivotal 彈簧程式庫。 非官方、搶鮮版（Beta）或分支版的 Pivotal 春季程式庫沒有服務等級協定（SLA）支援。
+* 建議您使用官方、穩定的 Pivotal 彈簧程式庫。 非官方、搶鮮版（Beta）或分支版的 Pivotal 春季程式庫沒有服務等級協定 (SLA) 支援。
 
 在遷移之後，請監視 CPU/RAM 計量和網路流量，以確保應用程式實例會適當地調整。
+
+## <a name="trouble-shooting"></a>疑難排解
+
+### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>服務登錄很少無法使用的影響為何？
+
+在少數情況下，您可能會看到一些錯誤，例如 
+```
+RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
+```
+從您的應用程式記錄檔。 此問題是因為網路不穩定或其他網路問題而以極低的速率由春季架構引進。 
+
+對於使用者體驗，應該不會有任何影響，eureka 用戶端都有可處理這種情況的「心跳」和「重試」原則。 您可以將它視為一個暫時性錯誤，並將它安全地略過。
+
+我們將增強此元件，並在不久的將來避免使用者應用程式發生此錯誤。
+
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 使用 Azure Site Recovery 進行 Hyper-v 嚴重損壞修復的常見問�
 description: 本文摘要說明使用 Azure Site Recovery 網站來設定「內部部署 Hyper-V VM 至Azure 的災害復原」時的常見問題。
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132669"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799883"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常見問題 - 從 Hyper-V 至 Azure 的災害復原
 
@@ -46,7 +46,7 @@ ms.locfileid: "86132669"
 
 
 ### <a name="can-i-replicate-hyper-v-generation-2-virtual-machines-to-azure"></a>我可以將 Hyper-V 第 2 代虛擬機器複寫至 Azure 嗎？
-是。 Site Recovery 會在容錯移轉時從第 2 代轉換成第 1 代。 在容錯回復時，機器會轉換回第 2 代。 [閱讀更多](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。
+是。 Site Recovery 會在容錯移轉時從第 2 代轉換成第 1 代。 在容錯回復時，機器會轉換回第 2 代。 [閱讀其他資訊](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/)。
 
 
 ### <a name="can-i-deploy-site-recovery-with-vmm-if-i-only-have-one-vmm-server"></a>如果我只有一部 VMM 伺服器，可以部署 Site Recovery 搭配 VMM 嗎？
@@ -151,15 +151,19 @@ Site Recovery 會透過公用端點或使用 ExpressRoute Microsoft 對等互連
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>為何我無法透過 VPN 進行複寫？
 
-當您複寫至 Azure 時，複寫流量會到達 Azure 儲存體帳戶的公用端點。 因此，您只能使用 ExpressRoute （Microsoft 對等互連）透過公用網際網路進行複寫，且 VPN 無法使用。 
+當您複寫至 Azure 時，複寫流量會到達 Azure 儲存體帳戶的公用端點。 因此，您只能使用 ExpressRoute (Microsoft 對等互連) ，透過公用網際網路進行複寫，且 VPN 無法正常執行。 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>複寫的 VM 有何需求？
 
 若要進行複寫，Hyper-V VM 必須執行支援的作業系統。 此外，VM 必須符合 Azure VM 的需求。 請在[支援矩陣](hyper-v-azure-support-matrix.md#replicated-vms)中深入了解相關資訊。
 
+### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>如果我將虛擬機器磁片複寫至 premium 儲存體，為什麼需要額外的標準儲存體帳戶？
+
+當您將內部部署虛擬機器/實體伺服器複寫至高階儲存體時，位於受保護機器磁片上的所有資料都會複寫到 premium 儲存體帳戶。 儲存複寫記錄檔需要額外的標準儲存體帳戶。 完成複寫磁片資料的初始階段之後，對內部部署磁片資料所做的所有變更都會持續追蹤，並在此額外的標準儲存體帳戶中儲存為複寫記錄。
+
 ### <a name="how-often-can-i-replicate-to-azure"></a>複寫到 Azure 的頻率為何？
 
-Hyper-v Vm 可以每隔30秒複寫一次（premium 儲存體除外）或5分鐘。
+Hyper-v Vm 可以每隔30秒進行複寫 (但 premium storage) 或5分鐘除外。
 
 ### <a name="can-i-extend-replication"></a>我可以延伸複寫嗎？
 不支援延伸的或鏈結的複寫。 請在 [意見反應論壇](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中提出這項功能的要求。

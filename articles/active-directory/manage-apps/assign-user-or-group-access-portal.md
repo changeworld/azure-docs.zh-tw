@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763732"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799497"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中將使用者或群組指派給企業應用程式
 
@@ -26,6 +26,9 @@ ms.locfileid: "84763732"
 若要進行更好的控制，可以將特定類型的企業應用程式設為[需要使用者指派](#configure-an-application-to-require-user-assignment)。 
 
 若要[將使用者或群組指派給企業應用程式](#assign-users-or-groups-to-an-app-via-the-azure-portal)，您必須以全域管理員、應用程式管理員、雲端應用程式管理員或企業應用程式的指派擁有者身分登入。
+
+> [!IMPORTANT]
+> 當您將群組指派給應用程式時，只有群組中的使用者才有存取權。 指派不會串聯成嵌套的群組。
 
 > [!NOTE]
 > 以群組為基礎的指派需要 Azure Active Directory Premium P1 或 P2 版本。 以群組為基礎的指派僅支援安全性群組。 目前不支援巢狀群組成員資格和 Office 365 群組。 如需本文所討論功能的詳細授權需求，請參閱 [Azure Active Directory 定價頁面](https://azure.microsoft.com/pricing/details/active-directory)。 

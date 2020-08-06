@@ -263,7 +263,7 @@
         - name: 內部部署函式
           href: functions-runtime-install.md
         - name: 使用 Jenkins 外掛程式進行部署
-          href: /azure/jenkins/jenkins-azure-functions-deploy
+          href: /azure/developer/jenkins/deploy-to-azure-functions
           maintainContext: true
     - name: 設定
       items:

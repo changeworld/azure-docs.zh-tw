@@ -2,7 +2,7 @@
 title: 歐洲客戶的身分識別資料儲存-Azure AD
 description: 了解 Azure Active Directory 將其歐洲客戶的身分識別相關資料儲存於何處。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d8ae8c5e3218959a483e78f70a6502bf7a5a47
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75422991"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799094"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中歐洲客戶的身分識別資料儲存體
 識別資料是根據貴組織在訂閱 Microsoft 線上服務（例如 Office 365 和 Azure）時所提供的位址，在地理位置中 Azure AD 儲存。 如需您的身分識別資料儲存位置的資訊，您可以使用 Microsoft 信任中心的[資料所在位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)一節。
 
 對於在歐洲提供位址的客戶，Azure AD 會在歐洲資料中心內保留大部分的身分識別資料。 本檔提供 Azure AD services 在歐洲以外儲存之任何資料的相關資訊。
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多重要素驗證（MFA）
+## <a name="microsoft-azure-multi-factor-authentication-mfa"></a> (MFA) Microsoft Azure 多重要素驗證
     
 - 使用電話或 SMS 的所有雙因素驗證都是來自美國資料中心，而且也會由全域提供者路由傳送。
 - 使用 Microsoft Authenticator 應用程式的推播通知源自美國資料中心。 此外，裝置廠商特定服務也可能會在歐洲以外的地方播放及這些服務。
 - OATH 代碼一律會在美國進行驗證。 
 
-如需有關 Azure 多因素驗證服務器（MFA Server）和雲端式 Azure MFA 所收集哪些使用者資訊的詳細資訊，請參閱[Azure 多重要素驗證使用者資料收集](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection)。
+如需 Azure 多因素驗證服務器 (MFA Server) 和雲端式 Azure MFA 所收集哪些使用者資訊的詳細資訊，請參閱[Azure 多重要素驗證使用者資料收集](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection)。
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
@@ -46,7 +46,7 @@ Azure AD DS 會將使用者資料儲存在與客戶選取的 Azure 虛擬網路�
 
 ## <a name="federation-in-microsoft-exchange-server-2013"></a>Microsoft Exchange Server 2013 中的同盟
     
-- 應用程式識別碼（AppID）-Azure Active Directory 驗證系統產生的唯一數位，用以識別 Exchange 組織。
+- 應用程式識別碼 (AppID) -Azure Active Directory 驗證系統產生的唯一數位，用以識別 Exchange 組織。
 - 應用程式的已核准同盟網域清單
 - 應用程式的權杖簽署公用金鑰 
 

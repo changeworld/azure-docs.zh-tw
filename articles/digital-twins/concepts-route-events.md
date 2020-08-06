@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537490"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800461"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 數位 Twins 內外路由事件
 
@@ -20,8 +20,8 @@ Azure 數位 twins 會使用**事件路由**，將資料傳送給服務以外的
 
 在預覽期間，傳送 Azure 數位 Twins 資料有兩個主要案例：
 * 將資料從 Azure 數位 Twins 圖形中的一個對應項傳送至另一個。 例如，當某個數位對應項上的屬性變更時，您可能會想要據此通知並更新另一個數位對應項。
-* 將資料傳送到下游資料服務，以進行額外的儲存或處理（也稱為*資料*輸出）。 例如，
-  - 醫院可能會想要將 Azure 數位 Twins 事件資料傳送至[時間序列深入解析（TSI）](../time-series-insights/time-series-insights-update-overview.md)，以記錄大量分析之 handwashing 相關事件的時間序列資料。
+* 將資料傳送到下游資料服務以進行額外的儲存或處理 (也稱為*資料*輸出) 。 例如，
+  - 醫院可能會想要將 Azure 數位 Twins 事件資料傳送至[時間序列深入解析 (TSI) ](../time-series-insights/time-series-insights-update-overview.md)，以記錄大量分析之 handwashing 相關事件的時間序列資料。
   - 已在使用[Azure 地圖服務](../azure-maps/about-azure-maps.md)的企業可能會想要使用 Azure 數位 Twins 來增強其解決方案。 在設定 Azure 數位 Twins 之後，他們可以快速啟用 Azure 地圖、將 Azure 地圖實體帶入 Azure 數位 Twins 作為對應項圖形中的[數位 Twins](concepts-twins-graph.md) ，或利用其 Azure 地圖服務和 Azure 數位 Twins 資料一起執行強大的查詢。
 
 這兩種案例都使用事件路由。
@@ -55,9 +55,9 @@ Azure 數位 twins 會使用**事件路由**，將資料傳送給服務以外的
 * 事件中樞
 * 服務匯流排
 
-端點會使用控制平面 Api （ [Azure 數位 TWINS CLI](how-to-use-cli.md)所支援，或透過 Azure 入口網站來設定）。 端點定義提供：
+端點會使用[Azure 數位 TWINS CLI](how-to-use-cli.md)所支援的控制平面 api (，或透過 Azure 入口網站進行設定。 端點定義提供：
 * 端點的名稱
-* 端點類型（事件方格、事件中樞或服務匯流排）
+* 端點類型 (事件方格、事件中樞或服務匯流排) 
 * 要驗證的主要連接字串和次要連接字串 
 * 端點的主題路徑，例如*your-topic.westus2.eventgrid.azure.net*
 
@@ -69,7 +69,7 @@ Azure 數位 twins 會使用**事件路由**，將資料傳送給服務以外的
 
 ## <a name="create-an-event-route"></a>建立事件路由
  
-事件路由是在用戶端應用程式中使用下列[.net （c #） SDK](how-to-use-apis-sdks.md)呼叫所建立： 
+事件路由是在使用下列[.net (c # ) SDK](how-to-use-apis-sdks.md)呼叫的用戶端應用程式中建立： 
 
 ```csharp
 await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
@@ -77,7 +77,7 @@ await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<e
 
 * 會 `endpoint-name` 識別端點，例如事件中樞、事件方格或服務匯流排。 在進行此註冊呼叫之前，必須先在您的訂用帳戶中建立這些端點，並使用控制平面 Api 附加至 Azure 數位 Twins。
 
-傳遞給的事件路由物件 `EventRoutes.Add` 也會接受[**篩選**參數](./how-to-manage-routes.md#filter-events)，這可以用來限制遵循此路由的事件種類。
+傳遞給的事件路由物件 `EventRoutes.Add` 也會接受[**篩選**參數](./how-to-manage-routes-apis-cli.md#filter-events)，這可以用來限制遵循此路由的事件種類。
 
 您也可以使用[Azure 數位 TWINS CLI](how-to-use-cli.md)來建立路由。
 
@@ -90,7 +90,7 @@ IoT 中樞和 Azure 數位 Twins 中不同類型的事件會產生不同類型�
 ## <a name="next-steps"></a>後續步驟
 
 請參閱如何設定和管理事件路由：
-* [*如何：管理端點和路由*](how-to-manage-routes.md)
+* [*如何：管理端點和路由*](how-to-manage-routes-apis-cli.md)
 
 或者，請參閱如何使用 Azure Functions 來路由傳送 Azure 數位 Twins 內的事件：
 * [*如何：設定用來處理資料的 Azure 函數*](how-to-create-azure-function.md)

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 27b625dfa31b366d95922e1dd0bad7fda6e86ed4
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 23ec12daa2e5c236da482615228b7c44037282fb
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540065"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808111"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>針對 Azure Machine Learning 使用防火牆後方的工作區
 
@@ -34,7 +34,7 @@ ms.locfileid: "87540065"
 > [!TIP]
 > 新增網路規則時，請將__通訊協定__設定為 [任何]，並將埠設為 `*` 。
 >
-> 如需設定 Azure 防火牆的詳細資訊，請參閱[部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)。
+> 如需設定 Azure 防火牆的詳細資訊，請參閱[部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)。
 
 ## <a name="microsoft-hosts"></a>Microsoft 主機
 
@@ -57,7 +57,7 @@ ms.locfileid: "87540065"
 | **azurecr.io** | Azure Container Registry |
 | **mcr.microsoft.com** | 適用于基底 docker 映射的 Microsoft Container Registry |
 | **your-acr-server-name.azurecr.io** | 只有當您的 Azure Container Registry 位於虛擬網路後方時才需要。 在此設定中，會從 Microsoft 環境建立私人連結至您訂用帳戶中的 ACR 實例。 針對您的 Azure Machine Learning 工作區使用 ACR 伺服器名稱。 |
-
+| **\*. notebooks.azure.net** | Azure Machine Learning studio 中的筆記本所需。 |
 ## <a name="python-hosts"></a>Python 主機
 
 本節中的主機是用來安裝 Python 套件。 開發、訓練和部署期間都需要它們。 

@@ -2,7 +2,7 @@
 title: 預設使用者權限 - Azure Active Directory | Microsoft Docs
 description: 深入了解 Azure Active Directory 中可用的不同使用者權限。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 227230f2d6f46fae27e2cec69d99390f5054c7db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bae802d8aa9378155bcca0713992a8cc041ea1a9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80366256"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799016"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory 中的預設使用者權限是什麼？
 在 Azure Active Directory (Azure AD) 中，所有使用者都會獲得一組預設權限。 使用者的存取權包含使用者類型、其[角色指派](active-directory-users-assign-role-azure-portal.md)，以及個別物件的擁有權。 本文說明這些預設權限，並包含成員與來賓使用者預設值的比較。 只能在 Azure AD 中的使用者設定中變更預設使用者權限。
@@ -53,7 +53,7 @@ ms.locfileid: "80366256"
 允許使用者使用 LinkedIn 連接公司或學校帳戶 | 將此選項設定為 [否] 可防止使用者使用其 LinkedIn 帳戶連接其公司或學校帳戶。 如需詳細資訊，請參閱[LinkedIn 帳戶連接資料共用和同意](https://docs.microsoft.com/azure/active-directory/users-groups-roles/linkedin-user-consent)。
 建立安全性群組的能力 | 將此選項設定為 [否] 可防止使用者建立安全性群組。 全域管理員和使用者系統管理員仍然可以建立安全性群組。 請參閱[用於進行群組設定的 Azure Active Directory Cmdlet](../users-groups-roles/groups-settings-cmdlets.md) 以了解詳情。
 建立 Office 365 群組的能力 | 將此選項設定為 [否] 可防止使用者建立 Office 365 群組。 將此選項設定為 [部分] 可允許一組特定使用者建立 Office 365 群組。 全域管理員和使用者系統管理員仍然可以建立 Office 365 群組。 請參閱[用於進行群組設定的 Azure Active Directory Cmdlet](../users-groups-roles/groups-settings-cmdlets.md) 以了解詳情。
-限制 Azure AD 系統管理入口網站的存取 | 將此選項設定為 [否] 可讓非系統管理員使用 Azure AD 系統管理入口網站來讀取和管理 Azure AD 資源。 [是] 會限制所有非系統管理員存取系統管理入口網站中的任何 Azure AD 資料。 重要事項：此設定不會使用 PowerShell 或其他用戶端（例如 Visual Studio）來限制 Azure AD 資料的存取。 設定為 [是] 時，若要授與特定非系統管理員使用者使用 Azure AD 系統管理入口網站的能力，請指派任何系統管理角色，例如目錄讀取者角色。 此角色可讓您讀取基本目錄資訊，成員使用者預設會有此資訊（來賓和服務主體不會這麼做）。
+限制 Azure AD 系統管理入口網站的存取 | 將此選項設定為 [否] 可讓非系統管理員使用 Azure AD 系統管理入口網站來讀取和管理 Azure AD 資源。 [是] 會限制所有非系統管理員存取系統管理入口網站中的任何 Azure AD 資料。 重要事項：此設定不會使用 PowerShell 或其他用戶端（例如 Visual Studio）來限制 Azure AD 資料的存取。 設定為 [是] 時，若要授與特定非系統管理員使用者使用 Azure AD 系統管理入口網站的能力，請指派任何系統管理角色，例如目錄讀取者角色。 此角色可讓您讀取基本目錄資訊，成員使用者預設具有 (來賓和服務主體不會) 。
 讀取其他使用者的能力 | 此設定僅在 PowerShell 中可用。 將此旗標設定為 $false 可防止所有的非系統管理員讀取目錄中的使用者資訊。 此旗標不會防止讀取其他 Microsoft 服務（例如 Exchange Online）中的使用者資訊。 這種設定適用于特殊情況，不建議將此旗標設定為 $false。
 
 ## <a name="object-ownership"></a>物件擁有權

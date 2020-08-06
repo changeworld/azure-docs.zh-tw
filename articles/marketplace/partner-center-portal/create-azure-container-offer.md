@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 8148163dc969920b473f12a7162c6f317d85b3c8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ff2745a636d25c429a1a40644757c00b28e2668c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503220"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799169"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 容器供應專案
 
@@ -95,7 +95,7 @@ ms.locfileid: "87503220"
 
 選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
 - 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
 
 請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。 容器一律會出現在 [**容器**] 和 [**容器映射**] 類別之下。
@@ -113,7 +113,7 @@ ms.locfileid: "87503220"
 
 若要深入了解標準合約，請參閱 [Microsoft 商業市集的標準合約](../standard-contract.md)。 您也可以下載[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF (請確定您的快顯封鎖程式已關閉)。
 
-若要使用標準合約，請選取 [使用 Microsoft 商用 marketplace 的標準合約] （.。/standard-contract.md）
+若要使用標準合約，請選取 [使用 Microsoft 商用 marketplace 的標準合約] (]。/standard-contract.md) 
 
 > [!NOTE]
 > 當您使用 Microsoft 商業市集的標準合約發佈供應項目之後，就無法使用自己的自訂條款及條件。 請根據標準合約或您自己的條款及條件來提供您的解決方案。
@@ -195,14 +195,15 @@ ms.locfileid: "87503220"
 
 #### <a name="store-logos"></a>儲存標誌
 
- 請以下列四個像素的個別大小提供供應項目標誌的 PNG 檔案：
+在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 和**中等** (90 x 90 圖元) 大小標誌。 您可以選擇性地將這些取代為不同的影像。
+
+在清單中的不同位置，必須使用所有三種標誌大小：
 
 - **小型** (48 x 48)
 - **中型** (90 x 90)
-- **大型** (216 x 216)
-- **寬** (255 x 115)
+- 216 x 216 與 350 x 350) 之間的**大型** (
 
-這四個標誌都是必要的，且在市集清單中會用於不同位置。
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>螢幕擷取畫面 (選擇性)
 
@@ -250,13 +251,13 @@ ms.locfileid: "87503220"
 
 ### <a name="plan-overview"></a>方案概觀
 
-此索引標籤可讓您在相同供應項目中提供不同的方案選項。 方案（先前稱為 Sku）的不同之處在于有哪些雲端可供使用，例如全域雲端、政府雲端，以及方案所參考的映射。 若要在商業市集中列出您的供應項目，至少必須設定一個方案。
+此索引標籤可讓您在相同供應項目中提供不同的方案選項。 方案 (先前稱為 Sku) 在可用的雲端（例如全域雲端、政府雲端，以及方案所參考的影像）方面可能有所不同。 若要在商業市集中列出您的供應項目，至少必須設定一個方案。
 
 建立方案之後，隨即顯示 [方案概觀] 索引標籤：
 
 - 方案名稱
 - 定價模式
-- Azure 區域（全球或政府）
+-  (全域或政府) 的 Azure 區域
 - 目前的發佈狀態
 - 任何可用的動作
 
@@ -354,7 +355,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **Azure Container Registry 名稱** - 提供具有您容器映像的 [Azure Container Registry](../../container-registry/container-registry-intro.md) 名稱。 容器登錄必須位於您稍早提供的 Azure 資源群組中。 僅包括登錄名稱，而非完整登入伺服器名稱。 請務必從名稱中省略 **azurecr.io**。 您可以在 Azure 入口網站的[容器登錄頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到登錄名稱。
 
-**Azure Container Registry**的系統管理員使用者名稱–提供系統[管理員使用者名稱](../../container-registry/container-registry-authentication.md#admin-account)），並連結至具有您容器映射的 Azure Container Registry。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True**。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
+**Azure Container Registry 的系統管理員使用者名稱**–提供系統[管理員使用者名稱](../../container-registry/container-registry-authentication.md#admin-account)) 與具有容器映射的 Azure Container Registry 連結。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True**。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="說明 [更新容器登錄] 對話方塊。":::
 

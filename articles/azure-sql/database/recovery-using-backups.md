@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: e12d5d7e9cfc6cfa80de1032e3d4d5659c44c0a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6b07b6c3e54f4aebcda6c2e84047ecd1a27b3d5b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075875"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809455"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>使用自動資料庫備份進行復原-Azure SQL Database & SQL 受控執行個體
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-根據預設，Azure SQL Database 和 Azure SQL 受控執行個體備份會儲存在異地複寫的 blob 儲存體（GRS 儲存體類型）中。 下列選項適用于使用[自動資料庫備份](automated-backups-overview.md)進行資料庫復原。 您可以：
+下列選項適用于使用[自動資料庫備份](automated-backups-overview.md)進行資料庫復原。 您可以：
 
 - 在同一部伺服器上建立新的資料庫，並復原到保留期限內的指定時間點。
 - 在同一部伺服器上建立資料庫，並復原到已刪除資料庫的刪除時間。
@@ -33,6 +33,11 @@ ms.locfileid: "86075875"
 
 > [!IMPORTANT]
 > 在還原期間，您無法覆寫現有的資料庫。
+
+根據預設，Azure SQL Database 和 Azure SQL 受控執行個體備份會儲存在異地複寫的 blob 儲存體中， (GRS 儲存體類型) 。 此外，SQL 受控執行個體也支援本機冗余 (LRS) 和區域冗余 (ZRS) 備份儲存體。 「冗余」可確保您的資料免于受到規劃和未計畫的事件的保護，包括暫時性硬體故障、網路或電源中斷，以及大規模的自然災害。 區域冗余儲存體 (ZRS) 僅適用于[特定區域](../../storage/common/storage-redundancy.md#zone-redundant-storage)。
+
+> [!IMPORTANT]
+> 設定備份的儲存體冗余僅適用于受控實例，而且會在建立程式期間允許。 布建資源之後，您就無法變更備份儲存體的冗余選項。
 
 當您使用 Standard 或 Premium 服務層級時，您的資料庫還原可能會產生額外的儲存成本。 當還原資料庫的大小上限大於目標資料庫的服務層級和效能等級所包含的儲存量時，就會產生額外的成本。 如需有關額外儲存體的價格詳細資訊，請參閱 [SQL Database 價格頁面](https://azure.microsoft.com/pricing/details/sql-database/)。 如果實際的已使用空間量小於內含的儲存體數量，您可以將資料庫大小上限設定為包含的數量，以避免此額外成本。
 
@@ -51,7 +56,7 @@ ms.locfileid: "86075875"
 
 對於單一訂用帳戶，並行還原要求數目有一些限制。 這些限制適用于時間點還原、異地還原和從長期保留備份還原的任何組合。
 
-|| **正在處理的並行要求的最大數目** | **正在提交的並行要求的最大數目** |
+| **部署選項** | **正在處理的並行要求的最大數目** | **正在提交的並行要求的最大數目** |
 | :--- | --: | --: |
 |**單一資料庫 (每個訂閱)**|10|60|
 |**彈性集區 (每個集區)**|4|200|
@@ -60,7 +65,7 @@ ms.locfileid: "86075875"
 沒有內建方法可還原整部伺服器。 如需如何完成這項工作的範例，請參閱[Azure SQL Database：完整伺服器](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)復原。
 
 > [!IMPORTANT]
-> 若要使用自動備份進行復原，您必須是訂用帳戶中「SQL Server 參與者」角色或「SQL 受控執行個體參與者」角色的成員（視復原目的地而定），或者您必須是訂用帳戶擁有者。 如需詳細資訊，請參閱[RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。 您可以使用 Azure 入口網站、PowerShell 或 REST API 來進行復原。 您無法使用 Transact-sql。
+> 若要使用自動備份進行復原，您必須是 [SQL Server 參與者] 角色或 [SQL 受控執行個體參與者] 角色的成員 (視訂用帳戶中的復原目的地) 而定，或者您必須是訂用帳戶擁有者。 如需詳細資訊，請參閱[RBAC：內建角色](../../role-based-access-control/built-in-roles.md)。 您可以使用 Azure 入口網站、PowerShell 或 REST API 來進行復原。 您無法使用 Transact-sql。
 
 ## <a name="point-in-time-restore"></a>時間點還原
 
@@ -99,7 +104,7 @@ ms.locfileid: "86075875"
 
 ## <a name="deleted-database-restore"></a>還原已刪除的資料庫
 
-您可以將已刪除的資料庫還原到相同伺服器或相同受控實例上的刪除時間或較早的時間點。 您可以透過 Azure 入口網站、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)或[REST （createMode = Restore）](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)來完成此動作。 您可以從備份建立新的資料庫，以還原已刪除的資料庫。
+您可以將已刪除的資料庫還原到相同伺服器或相同受控實例上的刪除時間或較早的時間點。 您可以透過 Azure 入口網站、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)或[REST (createMode = Restore) ](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)來完成此動作。 您可以從備份建立新的資料庫，以還原已刪除的資料庫。
 
 > [!IMPORTANT]
 > 如果您刪除伺服器或受控實例，其所有資料庫也會一併刪除且無法復原。 您無法還原已刪除的伺服器或受控實例。
@@ -136,6 +141,9 @@ ms.locfileid: "86075875"
 > 若要以程式設計方式還原已刪除的資料庫，請參閱[使用自動備份以程式設計方式執行](recovery-using-backups.md)復原
 
 ## <a name="geo-restore"></a>異地還原
+
+> [!IMPORTANT]
+> 異地還原僅適用于使用異地冗余 (GRS) 備份儲存體類型設定的受控實例。 使用本機-多餘或區域冗余備份儲存體類型設定的受控實例不支援異地還原。
 
 您可以從最近的異地複寫備份，在任何 Azure 區域中的任何受管理的實例上，還原任何 SQL Database 伺服器或實例資料庫上的資料庫。 異地還原使用異地複寫備份作為其來源。 即使因為中斷而無法存取資料庫或資料中心，也可以要求異地還原。
 
@@ -188,7 +196,7 @@ ms.locfileid: "86075875"
 您無法在異地次要資料庫上執行還原時間點。 您只可以在主資料庫上這麼做。 如需使用異地還原從中斷復原的詳細資訊，請參閱[從中斷復原](../../key-vault/general/disaster-recovery-guidance.md)。
 
 > [!IMPORTANT]
-> 異地還原是 SQL Database 和 SQL 受控執行個體中最基本的嚴重損壞修復解決方案。 它依賴自動建立的異地複寫備份，其復原點目標（RPO）等於1小時，且預估復原時間最多可達12小時。 它不保證在區域中斷之後，目的地區域將會擁有還原資料庫的容量，因為需求可能會明顯增加。 如果您的應用程式使用相對較小的資料庫，而且對企業而言並不重要，則異地還原是適當的嚴重損壞修復解決方案。 
+> 異地還原是 SQL Database 和 SQL 受控執行個體中最基本的嚴重損壞修復解決方案。 它依賴自動建立的異地複寫備份，復原點目標 (RPO) 等於1小時，預估復原時間最多12小時。 它不保證在區域中斷之後，目的地區域將會擁有還原資料庫的容量，因為需求可能會明顯增加。 如果您的應用程式使用相對較小的資料庫，而且對企業而言並不重要，則異地還原是適當的嚴重損壞修復解決方案。 
 >
 > 對於需要大型資料庫且必須確保商務持續性的商務關鍵應用程式，請使用[自動容錯移轉群組](auto-failover-group-overview.md)。 它提供較低的 RPO 和復原時間目標，而且一律保證容量。 
 >
@@ -232,7 +240,7 @@ ms.locfileid: "86075875"
 
 若要使用 REST API 來還原資料庫：
 
-| API | 說明 |
+| API | 描述 |
 | --- | --- |
 | [REST (createMode=Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |還原資料庫。 |
 | [取得建立或更新資料庫狀態](https://docs.microsoft.com/rest/api/sql/operations) |傳回還原作業期間的狀態。 |
@@ -247,7 +255,7 @@ ms.locfileid: "86075875"
 
 若要使用 Azure CLI 來還原受控實例資料庫，請參閱[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 自動備份可在發生使用者和應用程式錯誤、意外刪除資料庫和長時間中斷時保護您的資料庫。 所有服務層級和計算大小都可以取得此內建功能。
 

@@ -1,25 +1,25 @@
 ---
 title: 建立 SaaS 供應專案、Azure Marketplace 和 Microsoft AppSource
-description: 如何使用 Microsoft 合作夥伴中心的 Microsoft 商業 Marketplace 方案，建立軟體即服務（SaaS）供應專案，以在 Microsoft AppSource、Azure Marketplace 或雲端解決方案提供者（CSP）方案中進行列出或銷售。
+description: 如何使用 Microsoft 合作夥伴中心的 Microsoft 商業 Marketplace 方案，在 Microsoft AppSource、Azure Marketplace 或透過雲端解決方案提供者 (CSP) 方案中，建立軟體即服務 (SaaS) 供應專案來進行清單或銷售。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 61592ee8ad5991c9540f5b418cafe2441ab4d3ea
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317706"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800331"
 ---
 # <a name="create-a-saas-offer"></a>建立 SaaS 供應項目
 
 若要開始在商業市集中建立軟體即服務 (SaaS) 供應項目，請務必先[建立合作夥伴中心帳戶](./create-account.md)，開啟 [[商業市集儀表板]](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) 並選取 [概觀] 索引標籤。
 
 > [!NOTE]
-> 如果您要建立 transactable SaaS 供應專案，請確定您已實施與[SaaS 履行 api](./pc-saas-fulfillment-apis.md)的整合。  與 Api 整合是 Marketplace 中銷售正常運作的唯一方式。 您也必須確定您的應用程式使用 Azure AD 驗證與單一登入（SSO）。 請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](../azure-ad-saas.md)供應專案。
+> 如果您要建立 transactable SaaS 供應專案，請確定您已實施與[SaaS 履行 api](./pc-saas-fulfillment-apis.md)的整合。  與 Api 整合是 Marketplace 中銷售正常運作的唯一方式。 您也必須確定您的應用程式使用 Azure AD 驗證搭配單一登入 (SSO) 。 請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](../azure-ad-saas.md)供應專案。
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
@@ -83,7 +83,7 @@ ms.locfileid: "87317706"
 
 SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用者或使用量計費的按月或按年收費方式。 Microsoft 的商業市集會依代理商模型上運作，藉由這種模型，發行者可設定價格、Microsoft 可向客戶收費，而且 Microsoft 可將收益支付給發行者，同時扣除代理商費用。
 
-這是成本和支出的範例細目，用以示範代理程式模型（任何列出的價格僅供範例之用，而不是為了反映實際成本）：
+這是成本和支出的範例細目，用來示範代理程式模型 (任何列出的價格僅供範例之用，而不是為了反映實際成本) ：
 
 |**授權成本**|**每月 $100**|
 |:---|:---|
@@ -97,7 +97,7 @@ SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用
 - 在此範例中，Microsoft 會向客戶收取 $100.00 的軟體授權費用，並支付 $80.00 給發行者。
 
 > [!NOTE]
-> **降低 Marketplace 服務費用**–針對您已在商業 Marketplace 上發佈的特定 SaaS 供應專案，microsoft 會將其 Marketplace 服務費用從20% （如 Microsoft 發行者合約中所述）降到10%。 若您的供應專案符合資格，Microsoft 必須將您的供應專案指定為 Azure IP 共同銷售受到激勵。 在每個日曆月份結束前，至少必須符合五（5）個工作天的資格，才能收到該月份的縮減 Marketplace 服務費用。 降低的 Marketplace 服務費用也適用于 Azure IP 共同銷售受到激勵 Vm、受管理的應用程式，以及透過商業 Marketplace 提供的任何其他合格 transactable IaaS 供應專案。
+> **降低 Marketplace 服務費用**–針對您已在商業 Marketplace 上發佈的特定 SaaS 供應專案，microsoft 會將其 Marketplace 服務費用從 20% (減少，如 Microsoft 發行者合約) 到10% 所述。 為了讓您的供應專案 () 符合資格，您的供應專案 (s) 必須已由 Microsoft 指定為 Azure IP 共同銷售受到激勵。 在每個日曆月份結束前，至少必須符合五個 (5) 的工作天，才能收到該月份的縮減 Marketplace 服務費用。 降低的 Marketplace 服務費用也適用于 Azure IP 共同銷售受到激勵 Vm、受管理的應用程式，以及透過商業 Marketplace 提供的任何其他合格 transactable IaaS 供應專案。
 
 ### <a name="list-through-microsoft"></a>透過 Microsoft 列出清單
 
@@ -105,11 +105,11 @@ SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用
 
 #### <a name="get-it-now-free"></a>立即取得 (免費)
 
-提供有效的位址（從*HTTP*或*HTTPs*開始），即可免費向客戶列出您的供應專案，其可透過[使用 Azure Active Directory （Azure AD）](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)）來取得試用版的單一按一下驗證。 例如： `https://contoso.com/saas-app` 。
+藉由提供有效的位址 (從*HTTP*或*HTTPs*開始，將您的供應專案列出給客戶，只要[使用 Azure Active Directory (Azure AD](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)) ) ，就可以透過單鍵驗證取得試用版的) 。 例如： `https://contoso.com/saas-app` 。
 
 #### <a name="free-trial-listing"></a>免費試用 (清單)
 
-藉由提供有效的位址（從*HTTP*或*HTTPs*開始），向客戶列出您的供應專案，其可透過[使用 Azure Active Directory （Azure AD）](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)）來取得試用版的單一按一下驗證。 例如： `https://contoso.com/trial/saas-app` 。 供應項目清單免費試用是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
+藉由提供有效的位址 (以*HTTP*或*HTTPs*) 的方式，向客戶列出您的供應專案，其可透過[使用 Azure Active Directory (Azure AD](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)) ) ，以單鍵驗證的方式來取得試用版。 例如： `https://contoso.com/trial/saas-app` 。 供應項目清單免費試用是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
 
 > [!NOTE]
 > 您的應用程式透過試用連結所接收的權杖，只能經由 AD 取得使用者資訊，以便在應用程式中自動建立帳戶。 Microsoft 帳戶 (MSA) 不支援使用此權杖進行驗證。
@@ -127,14 +127,14 @@ SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 大型標誌
-2. 類別
+2. Categories
 3. 產業
-4. 支援位址（連結）
+4. 支援位址 (連結) 
 5. 使用規定
 6. 隱私權原則
 7. 供應項目名稱
 8. 總結
-9. 說明
+9. 描述
 10. 螢幕擷取畫面/影片
 11. 文件
 
@@ -144,8 +144,8 @@ SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. 標題
-2. 說明
+1. Title
+2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
 
@@ -168,8 +168,8 @@ SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用
 [!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
 #### <a name="additional-lead-management-resources"></a>額外的潛在客戶管理資源
-- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
-- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
+- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
+- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
 - [潛在客戶管理概觀一頁式巡覽區](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 選取 [儲存草稿] 後再繼續。
@@ -182,7 +182,7 @@ SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用
 
 您的供應專案將會發佈至 AppSource 或 Azure Marketplace，視與您的供應專案相關聯的交易功能和您的類別選擇而定。 如需詳細資訊，請參閱[比較 Microsoft AppSource 和 Azure Marketplace](../comparing-appsource-azure-marketplace.md) 。 選取最符合您供應專案和預期物件的分類和子類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
 - 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
 
 請參閱[供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中每個店面適用的類別和子類別的完整清單。
@@ -281,15 +281,19 @@ Microsoft 提供標準合約範本。
 
 #### <a name="files-and-images"></a>檔案和影像
 
-- **檔**（必要）-為您的供應專案新增相關的行銷檔（PDF 格式），且每個供應專案至少須有三份檔。
-- **影像** (選用) - 您供應項目的標誌影像可能會出現在市集各處，需提供以下像素大小的 PNG 格式影像：
+- **檔** (必要) –為您的供應專案新增相關的行銷檔（PDF 格式），且每個供應專案至少須有三份檔。
+-  (需要) 的**影像**–有多個地方的供應專案標誌影像可能會出現在整個 marketplace () 。 在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 和**中等** (90 x 90 圖元) 大小標誌。 您可以選擇性地將這些取代為不同的影像。 新增**寬**標誌是選擇性的。
 
-  - **小** (48 x 48，必要)
-  - **中** (90 x 90，必要)
-  - **大** (216 x 216，必要)
-  - **寬** (255 x 115)
+    在清單中的不同位置必須使用三種標誌大小;其中一個是選擇性的：
 
-- **螢幕擷取畫面**（必要）-新增最多五個螢幕擷取畫面，示範您的供應專案，大小為 1280 x 720 圖元。 所有影像都必須是 .PNG 格式。
+    - **小型** (48 x 48)
+    - **中型** (90 x 90)
+    - 216 x 216 與 350 x 350) 之間的**大型** (
+    - **寬** (255 x 115) ，*選擇性*
+
+    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+
+- 需要) 的**螢幕擷取畫面** (-新增最多五個螢幕擷取畫面，示範您的供應專案，大小為 1280 x 720 圖元。 所有影像都必須是 .PNG 格式。
 - **影片** (選用) - 新增用於呈現供應項目的影片連結。 您可以使用 YouTube 和/或 Vimeo 影片的連結，這會隨著您的供應項目顯示給客戶。 您也需要輸入影片的縮圖影像，必須為 1280 x 720 像素的 PNG 格式影像。 每個供應項目最多可以顯示四支影片。
 
 >[!NOTE]
@@ -315,24 +319,24 @@ Microsoft 提供標準合約範本。
 > [!NOTE]
 > 預覽對象與私人對象不同。 您的供應項目上線發佈到市集之前，預覽對象就能取得您的供應項目。 您也可以選擇建立方案，僅供應給私人對象。 在 [方案清單] 索引標籤中，可使用 [這是私人方案] 核取方塊來定義私人對象。 接著可使用 Azure 租用戶識別碼，定義多達 20,000 位客戶的私人對象。
 
-選取 **[儲存草稿]** 後再繼續。
+選取 [儲存草稿] 後再繼續。
 
 ## <a name="technical-configuration"></a>技術設定
 
 [**技術**設定] 索引標籤會定義 marketplace 用來與您的 SaaS 服務通訊的技術詳細資料。 如果客戶選擇取得和管理您的供應專案，則此連線可讓我們為終端客戶布建供應專案。
 
 >[!NOTE]
->在供應專案的詳細資料中設定這些詳細資料之前，您必須先執行與[SaaS 履行 api](./pc-saas-fulfillment-api-v2.md)的整合。 您也必須建立登陸頁面，而且您的應用程式必須使用 Azure AD 驗證搭配單一登入（SSO）。 如需詳細資訊，請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](../azure-ad-saas.md)供應專案。
+>在供應專案的詳細資料中設定這些詳細資料之前，您必須先執行與[SaaS 履行 api](./pc-saas-fulfillment-api-v2.md)的整合。 您也必須建立登陸頁面，而且您的應用程式必須使用 Azure AD 驗證搭配單一登入 (SSO) 。 如需詳細資訊，請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](../azure-ad-saas.md)供應專案。
 
 說明收集欄位使用方式的圖表和詳細說明可在[api](./pc-saas-fulfillment-api-v2.md)的檔中取得。
 
-- **登陸頁面 URL** （必要）–定義 SAAS 網站 url （例如： `https://contoso.com/signup` ），客戶會在從 marketplace 取得您的供應專案，並從新建立的 SaaS 訂用帳戶觸發設定程式後，將會居住在那裡。  將會使用 marketplace 購買識別權杖參數來呼叫此 URL，以唯一識別特定終端客戶的 SaaS 購買。  針對對應的 SaaS 訂用帳戶詳細資料，您必須使用[解析](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)API 來交換此權杖。  這些詳細資料和您想要收集的任何其他資訊，都應該用來作為您的體驗內建的客戶互動網頁，以完成終端客戶註冊並啟用其購買。  在此頁面上，使用者應該使用 Azure Active Directory （Azure AD），透過單鍵驗證來註冊。 <br> <br> 當終端客戶從 Azure 入口網站或 M365 系統管理中心啟動受控 SaaS 體驗時，也會呼叫具有 marketplace 購買識別權杖參數的 URL。 當您第一次購買新客戶之後，以及針對管理其 SaaS 的現有客戶提供的權杖時，您應該處理這兩個流程。 <br> <br> 您在此設定的登陸頁面應該啟動並執行24/7。 這是您在 marketplace 中進行新購買的 SaaS 供應專案，或提供之有效訂用帳戶的設定要求時，將會收到通知的唯一方法。
+- **登陸頁面 URL** (必要) –定義 SAAS 網站 url (例如：在 `https://contoso.com/signup` 從 marketplace 取得您的供應專案，並從新建立的 SaaS 訂用帳戶觸發設定程式後，終端客戶將居住的) 。  將會使用 marketplace 購買識別權杖參數來呼叫此 URL，以唯一識別特定終端客戶的 SaaS 購買。  針對對應的 SaaS 訂用帳戶詳細資料，您必須使用[解析](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)API 來交換此權杖。  這些詳細資料和您想要收集的任何其他資訊，都應該用來作為您的體驗內建的客戶互動網頁，以完成終端客戶註冊並啟用其購買。  在此頁面上，使用者應該使用 Azure Active Directory (Azure AD) 來註冊一次驗證。 <br> <br> 當終端客戶從 Azure 入口網站或 M365 系統管理中心啟動受控 SaaS 體驗時，也會呼叫具有 marketplace 購買識別權杖參數的 URL。 當您第一次購買新客戶之後，以及針對管理其 SaaS 的現有客戶提供的權杖時，您應該處理這兩個流程。 <br> <br> 您在此設定的登陸頁面應該啟動並執行24/7。 這是您在 marketplace 中進行新購買的 SaaS 供應專案，或提供之有效訂用帳戶的設定要求時，將會收到通知的唯一方法。
 
-- 連線**webhook** （必要）–針對 Microsoft 需要傳送給您的所有非同步事件（例如，SaaS 訂用帳戶已取消），我們會要求您提供連線 webhook URL。 我們會呼叫此 URL，以在事件時通知您。 <br> <br> 您提供的 webhook 應該啟動並執行24/7，因為這是您將透過 marketplace 購買的客戶 SaaS 訂閱的相關更新通知的唯一方法。  如果您還沒有 webhook 系統，最簡單的設定就是讓 HTTP 端點邏輯應用程式接聽要張貼的任何事件，然後適當地處理（例如， `https://prod-1westus.logic.azure.com:443/work` ）。 如需詳細資訊，請參閱[在邏輯應用程式中透過 HTTP 端點呼叫、觸發或巢狀處理工作流程](../../logic-apps/logic-apps-http-endpoint.md)。
+- **連接 webhook** (必要) –針對 Microsoft 需要傳送給您的所有非同步事件 (例如，已取消 SaaS 訂用帳戶) ，我們會要求您提供連線 webhook URL。 我們會呼叫此 URL，以在事件時通知您。 <br> <br> 您提供的 webhook 應該啟動並執行24/7，因為這是您將透過 marketplace 購買的客戶 SaaS 訂閱的相關更新通知的唯一方法。  如果您還沒有 webhook 系統，最簡單的設定就是讓 HTTP 端點邏輯應用程式接聽張貼的任何事件，然後適當地處理 (例如 `https://prod-1westus.logic.azure.com:443/work`) 。 如需詳細資訊，請參閱[在邏輯應用程式中透過 HTTP 端點呼叫、觸發或巢狀處理工作流程](../../logic-apps/logic-apps-http-endpoint.md)。
 
-- **Azure AD 租使用者識別碼**（必要）–在 Azure 入口網站內，我們會要求您[建立 Azure Active Directory （AD）應用程式](../../active-directory/develop/howto-create-service-principal-portal.md)，以便驗證這兩個服務之間的連線是在經過驗證的通訊之後。 若要尋找[租使用者識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)），請移至您的 Azure Active Directory 並選取 [**屬性**]，然後尋找列出的**目錄識別碼**（例如50c464d3-4930-494c-963c-1e951d15360e）。
+- **Azure AD 租使用者識別碼** (必要) –在 Azure 入口網站中，我們要求您[建立 Azure Active Directory (AD) 應用程式](../../active-directory/develop/howto-create-service-principal-portal.md)，讓我們可以驗證這兩個服務之間的連線是在驗證通訊之後。 若要尋找) 的[租使用者識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，請移至您的 Azure Active Directory 並選取 [**屬性**]，然後尋找 (列出的**目錄識別碼**，例如 50c464d3-4930-494c-963c-1e951d15360e) 。
 
-- **Azure AD 應用程式識別碼**（必要）–您也需要[應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)）。 若要取得其值，請移至您的 Azure Active Directory 並選取 [**應用程式註冊**]，然後尋找列出的**應用程式識別碼**（例如， `50c464d3-4930-494c-963c-1e951d15360e` ）。
+- **Azure AD 應用程式識別碼** (需要) –您也需要[應用程式識別碼](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要取得其值，請移至您的 Azure Active Directory 並選取 [**應用程式註冊**]，然後尋找列出的**應用程式識別碼** (例如 [ `50c464d3-4930-494c-963c-1e951d15360e`) ]。
 
 >[!NOTE]
 >Azure AD 應用程式識別碼會與您的合作夥伴中心帳戶中的發行者識別碼相關聯。  請確定您的所有供應專案都使用相同的應用程式識別碼。
@@ -476,7 +480,7 @@ Microsoft 提供標準合約範本。
   - **不完整** – 此區段中有需要修正的錯誤，或是需要您提供更多詳細資訊。 您將需要回到上一區段並加以更新。
   - **完成** – 此區段已完成，並已提供所有必要的資料且沒有任何錯誤。 供應項目的所有區段皆需要處於完成狀態，您才能提交供應項目。
 - 將測試指示提供給認證小組，確保您的應用程式能夠正確地測試，以及有助於瞭解應用程式的任何補充注意事項。
-- 若要提交供應項目以進行發佈，請選取 [提交]。 我們會向您傳送一封電子郵件，讓您知道供應項目的預覽版本何時可供檢閱及核准。 返回 [合作夥伴中心]，然後選取 [**上線**]，將您的供應專案發佈到公開（或私人供應專案給私人物件）。
+- 若要提交供應項目以進行發佈，請選取 [提交]。 我們會向您傳送一封電子郵件，讓您知道供應項目的預覽版本何時可供檢閱及核准。 返回 [合作夥伴中心]，然後選取 [**上線**]，將您的供應專案發佈至公用 (或私人供應專案，) 的私人物件。
 
 ## <a name="next-steps"></a>後續步驟
 

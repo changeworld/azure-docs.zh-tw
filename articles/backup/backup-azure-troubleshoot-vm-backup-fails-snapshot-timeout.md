@@ -4,12 +4,12 @@ description: 與代理程式、延伸模組及磁碟相關之 Azure 備份失敗
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 5bf52606e6fa5de6a122a65432da87de1491e17f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324738"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809760"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -23,7 +23,7 @@ ms.locfileid: "87324738"
 
 ### <a name="step-1-check-azure-vm-health"></a>步驟1：檢查 Azure VM 健康情況
 
-- **請確認 AZURE vm 布建狀態為**「執行中」：如果 VM 布建[狀態](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)為「**已停止/已解除配置/正在更新**」狀態，則會干擾備份作業。 開啟*Azure 入口網站 > vm > 總覽 >* 並檢查 vm 狀態以確定其**正在**執行，然後重試備份作業。
+- **請確認 AZURE vm 布建狀態為**「執行中」：如果 VM 布建[狀態](../virtual-machines/windows/states-lifecycle.md#provisioning-states)為「**已停止/已解除配置/正在更新**」狀態，則會干擾備份作業。 開啟*Azure 入口網站 > vm > 總覽 >* 並檢查 vm 狀態以確定其**正在**執行，然後重試備份作業。
 - **查看擱置中的 os 更新或重新開機**：確定 VM 上沒有擱置中的 os 更新或擱置中的重新開機。
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>步驟2：檢查 Azure VM 來賓代理程式服務健全狀況
@@ -31,18 +31,18 @@ ms.locfileid: "87324738"
 - **請確定 AZURE VM 來賓代理程式服務已啟動並處於最新狀態**：
   - 在 Windows VM 上：
     - 流覽至**services.msc** ，並確定**Windows Azure VM 來賓代理程式服務**已啟動並在執行中。 此外，請確定已安裝[最新版本](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 若要深入瞭解，請參閱[WINDOWS VM 來賓代理程式問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)。
-    - 根據預設，Azure VM 代理程式會安裝在從入口網站、PowerShell、命令列介面或 Azure Resource Manager 範本 Azure Marketplace 映射部署的任何 Windows VM 上。 當您建立部署至 Azure 的自訂 VM 映射時，可能需要[手動安裝代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation)。
+    - 根據預設，Azure VM 代理程式會安裝在從入口網站、PowerShell、命令列介面或 Azure Resource Manager 範本 Azure Marketplace 映射部署的任何 Windows VM 上。 當您建立部署至 Azure 的自訂 VM 映射時，可能需要[手動安裝代理程式](../virtual-machines/extensions/agent-windows.md#manual-installation)。
     - 請參閱支援矩陣，以檢查 VM 是否在[支援的 Windows 作業系統](backup-support-matrix-iaas.md#operating-system-support-windows)上執行。
   - 在 Linux VM 上，
-    - 執行命令，以確定 Azure VM 來賓代理程式服務正在執行 `ps-e` 。 此外，請確定已安裝[最新版本](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent)。 若要深入瞭解，請參閱[LINUX VM 來賓代理程式問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)。
-    - 請確定[LINUX VM 代理程式與系統套件](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)的相依性具有支援的設定。 例如：支援的 Python 版本是2.6 和更新版本。
+    - 執行命令，以確定 Azure VM 來賓代理程式服務正在執行 `ps-e` 。 此外，請確定已安裝[最新版本](../virtual-machines/extensions/update-linux-agent.md)。 若要深入瞭解，請參閱[LINUX VM 來賓代理程式問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)。
+    - 請確定[LINUX VM 代理程式與系統套件](../virtual-machines/extensions/agent-linux.md#requirements)的相依性具有支援的設定。 例如：支援的 Python 版本是2.6 和更新版本。
     - 請參閱支援矩陣，以檢查 VM 是否在[支援的 Linux 作業系統](backup-support-matrix-iaas.md#operating-system-support-linux)上執行。
 
 ### <a name="step-3-check-azure-vm-extension-health"></a>步驟3：檢查 Azure VM 擴充功能健全狀況
 
 - **請確認所有 AZURE VM 延伸模組都**處於「布建成功」狀態：如果有任何延伸模組處於失敗狀態，則可能會干擾備份。
 - *開啟 Azure 入口網站 > VM > 設定 > >* 延伸模組的狀態，並檢查所有延伸模組是否處於布建**成功**狀態。
-- 請確定已解決所有[延伸模組問題](https://docs.microsoft.com/azure/virtual-machines/extensions/overview#troubleshoot-extensions)，然後重試備份操作。
+- 請確定已解決所有[延伸模組問題](../virtual-machines/extensions/overview.md#troubleshoot-extensions)，然後重試備份操作。
 - **確定 COM + 系統應用程式**已啟動且正在執行。 此外，**分散式交易協調器服務**應該以**Network service 帳戶**的身分執行。 請遵循這篇文章中的步驟，針對[COM + 和 MSDTC 問題進行疑難排解](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error)。
 
 ### <a name="step-4-check-azure-backup-vm-extension-health"></a>步驟4：檢查 Azure 備份的 VM 擴充功能健全狀況
@@ -57,9 +57,9 @@ Azure 備份會使用 VM 快照集擴充功能來進行 Azure 虛擬機器的應
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- **檢查是否需要網路存取**：擴充套件會從 Azure 儲存體延伸模組存放庫下載，而擴充功能狀態會上傳會張貼至 Azure 儲存體。 [深入了解](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access)。
+- **檢查是否需要網路存取**：擴充套件會從 Azure 儲存體延伸模組存放庫下載，而擴充功能狀態會上傳會張貼至 Azure 儲存體。 [深入了解](../virtual-machines/extensions/features-windows.md#network-access)。
   - 如果您使用不受支援的代理程式版本，則必須允許從虛擬機器對該區域中的 Azure 儲存體進行存取。
-  - 如果您已封鎖 `168.63.129.16` 使用來賓防火牆或 proxy 的存取，延伸模組將會失敗，而不受上述限制。 需要端口80、443和32526，[深入瞭解](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access)。
+  - 如果您已封鎖 `168.63.129.16` 使用來賓防火牆或 proxy 的存取，延伸模組將會失敗，而不受上述限制。 需要端口80、443和32526，[深入瞭解](../virtual-machines/extensions/features-windows.md#network-access)。
 
 - **請確認來賓 vm 內已啟用 dhcp**：這是從 DHCP 取得主機或網狀架構位址以供 IaaS vm 備份使用的必要條件。 如果您需要靜態私人 IP，則應透過 Azure 入口網站或 PowerShell 加以設定，並確定已啟用 VM 內的 DHCP 選項，[深入瞭解](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)。
 
@@ -92,7 +92,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 
 **原因 3︰[無法擷取快照集狀態或無法取得快照集](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
-**原因4：[未設定 VM 代理程式設定選項（適用于 Linux vm）](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
+**原因4：[未針對 Linux vm (設定 VM 代理程式設定選項) ](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
 
 **原因5：[應用程式控制解決方案正在封鎖 IaaSBcdrExtension.exe](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
@@ -161,12 +161,12 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **原因 3︰[無法擷取快照集狀態或無法取得快照集](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因4：[備份服務因為資源群組鎖定而沒有刪除舊還原點的許可權](#remove_lock_from_the_recovery_point_resource_group)**<br>
 
-## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize-目前不支援設定的磁片大小 Azure 備份
+## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize-目前不支援設定的磁片大小 (s) Azure 備份
 
 **錯誤碼**：UserErrorUnsupportedDiskSize <br>
-**錯誤訊息**： Azure 備份目前不支援已設定的磁片大小。 <br>
+**錯誤訊息**： Azure 備份目前不支援設定的磁片大小 (s) 。 <br>
 
-當備份磁片大小大於 32 TB 的 VM 時，您的備份操作可能會失敗。 此外，目前不支援大小大於 4 TB 的加密磁片備份。 藉由分割磁片，確定磁片大小小於或等於支援的限制值。
+當備份磁片大小大於 32 TB 的 VM 時，您的備份操作可能會失敗。 此外，目前不支援大小大於 4 TB 的加密磁片備份。 分割磁片 (s) ，確保磁片大小 (s) 小於或等於支援的限制。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 無法起始備份，因為另一個備份作業正在進行中
 
@@ -193,12 +193,12 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 
 此錯誤是從 IaaS VM 回報。 若要找出問題的根本原因，請移至復原服務保存庫設定。 在 [**監視**] 區段下，選取 [**備份作業**] 以篩選並查看狀態。 按一下 [**失敗**]，以查看基礎錯誤訊息詳細資料。 根據 [錯誤詳細資料] 頁面中的建議採取進一步的動作。
 
-## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent-備份失敗：這部虛擬機器不受 Azure 備份保護（主動）
+## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent-備份失敗：這部虛擬機器不 (主動) 受到 Azure 備份保護
 
 **錯誤碼**： UserErrorBcmDatasourceNotPresent <br>
-**錯誤訊息**：備份失敗：此虛擬機器不是（主動）受到 Azure 備份保護。
+**錯誤訊息**：備份失敗：此虛擬機器不 (主動) 受到 Azure 備份保護。
 
-請檢查指定的虛擬機器是否已受到 Azure 備份保護（不在暫停狀態）。 若要解決此問題，請確定虛擬機器正在使用中，然後再次嘗試操作。
+請檢查指定的虛擬機器是否主動 (不是處於暫停狀態) 受到 Azure 備份保護。 若要解決此問題，請確定虛擬機器正在使用中，然後再次嘗試操作。
 
 ## <a name="causes-and-solutions"></a>原因和解決方案
 
@@ -249,18 +249,18 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 2. 將 **Logs.Verbose** 值從 *n* 變更為 *y*。
 3. 儲存變更，然後完成本節前面所述的步驟來重新啟動 waagent。
 
-### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>未設定 VM 代理程式設定選項（適用于 Linux Vm）
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM 代理程式設定選項不會針對 Linux Vm (設定) 
 
 組態檔 (/etc/waagent.conf) 控制 waagent 的動作。 設定檔案選項**延伸。 [啟用**] 應設定為 [ **y** ] 和 [布建] **。代理程式**應設定為 [**自動**]，備份才能正常執行。
 如需 VM 代理程式設定檔案選項的完整清單，請參閱<https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>應用程式控制解決方案正在封鎖 IaaSBcdrExtension.exe
 
-如果您執行的是[AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) （或另一個應用程式控制方案），而規則是發行者或路徑型，則可能會封鎖**IaaSBcdrExtension.exe**可執行檔。
+如果您執行的是[AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (或另一個應用程式控制方案) ，而規則是發行者或路徑型，則可能會封鎖**IaaSBcdrExtension.exe**可執行檔。
 
 #### <a name="solution"></a>解決方法
 
-將 `/var/lib` 路徑或**IaaSBcdrExtension.exe**可執行檔從 AppLocker （或其他應用程式控制軟體）中排除。
+`/var/lib`從 AppLocker (或其他應用程式控制軟體排除路徑或**IaaSBcdrExtension.exe**可執行檔。 ) 
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>無法擷取快照集狀態或無法取得快照集
 
@@ -288,7 +288,7 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 
 移除鎖定之後，必須清除還原點。
 
-如果您刪除 VM 的資源群組或 VM 本身，受控磁片的立即還原快照集會維持作用中狀態，並會根據保留集而過期。 若要刪除儲存在還原點集合中的立即還原快照集（如果不需要的話），請根據以下所述的步驟來清除還原點集合。
+如果您刪除 VM 的資源群組或 VM 本身，受控磁片的立即還原快照集會維持作用中狀態，並會根據保留集而過期。 若要刪除立即還原快照集 (如果您不再需要它們，) 儲存在還原點集合中，請根據以下所述的步驟來清除還原點集合。
 
 若要清除還原點，請遵循下列任一方法：<br>
 
@@ -320,4 +320,4 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 6. 重試備份作業。
 
 > [!NOTE]
- >如果資源（RP 集合）有大量的還原點，則從入口網站刪除它們可能會超時並失敗。 這是已知的 CRP 問題，其中所有還原點不會在規定的時間刪除而作業會逾時；不過，刪除作業通常在 2 或 3 次重試之後就會成功。
+ >如果資源 (RP 集合) 有大量的還原點，則從入口網站刪除它們可能會超時並失敗。 這是已知的 CRP 問題，其中所有還原點不會在規定的時間刪除而作業會逾時；不過，刪除作業通常在 2 或 3 次重試之後就會成功。

@@ -3,14 +3,14 @@ title: Azure 服務的資源提供者
 description: 列出 Azure Resource Manager 的所有資源提供者命名空間，並顯示該命名空間的 Azure 服務。
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 1f57f5cd5822e9acf59462c9ecd6d0fda359b5a0
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 6c57f3523ca8f3f4ad1565d18791d24c0e698ad6
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054367"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808332"
 ---
-# <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者
+# <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者 \(部分機器翻譯\)
 
 本文說明資源提供者命名空間如何對應至 Azure 服務。
 
@@ -57,7 +57,7 @@ ms.locfileid: "86054367"
 | Microsoft Commerce<sup>1</sup> | core |
 | Microsoft.Compute | [虛擬機器](../../virtual-machines/index.yml)<br />[虛擬機器擴展集](../../virtual-machine-scale-sets/index.yml) |
 | Microsoft。耗用量<sup>1</sup> | [成本管理](/azure/cost-management/) |
-| Microsoft.ContainerInstance | [容器執行個體](../../container-instances/index.yml) |
+| Microsoft.ContainerInstance | [Container Instances](../../container-instances/index.yml) |
 | Microsoft.ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft.ContainerService | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
 | CostManagement<sup>1</sup> | [成本管理](/azure/cost-management/) |
@@ -85,9 +85,9 @@ ms.locfileid: "86054367"
 | Microsoft.DevTestLab | [Azure 實驗室服務](../../lab-services/index.yml) |
 | Microsoft.DigitalTwins | [Azure Digital Twins](../../digital-twins/overview.md) |
 | Microsoft.DocumentDB | [Azure Cosmos DB](../../cosmos-db/index.yml) |
-| Microsoft.DomainRegistration | [App Service](../../app-service/index.yml) |
+| Microsoft.DomainRegistration | [App Service 方案](../../app-service/index.yml) |
 | Microsoft.EnterpriseKnowledgeGraph | 企業知識圖表 |
-| Microsoft.EventGrid | [事件方格](../../event-grid/index.yml) |
+| Microsoft.EventGrid | [Event Grid](../../event-grid/index.yml) |
 | Microsoft.EventHub | [事件中樞](../../event-hubs/index.yml) |
 | Microsoft。功能<sup>1</sup> | [Azure Resource Manager](../index.yml) |
 | Microsoft.GuestConfiguration | [Azure 原則](../../governance/policy/index.yml) |
@@ -167,7 +167,7 @@ ms.locfileid: "86054367"
 | Microsoft.VirtualMachineImages | [Azure Image Builder](../../virtual-machines/linux/image-builder-overview.md) |
 | microsoft.visualstudio | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft.VMware | [Azure VMware 解決方案](../../azure-vmware/index.yml) |
-| Microsoft.VMwareCloudSimple | [由 CloudSimple 提供的 Azure VMware 解決方案](/azure/vmware-cloudsimple/) |
+| Microsoft.VMwareCloudSimple | [由 CloudSimple 提供的 Azure VMware 解決方案](../../vmware-cloudsimple/index.md) |
 | Microsoft.VSOnline | [Azure DevOps](/azure/devops/?view=azure-devops) |
 | Microsoft.Web | [App Service](../../app-service/index.yml)<br />[Azure Functions](../../azure-functions/index.yml) |
 | Microsoft.WindowsESU | 擴充的安全性更新 |

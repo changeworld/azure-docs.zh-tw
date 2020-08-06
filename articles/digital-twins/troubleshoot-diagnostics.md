@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 1a349883c8144aaff4aed70ba46ad0eaab04fe69
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 402eda92d5cc8e5c2566345d31c9ae625b82695c
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388366"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809388"
 ---
-# <a name="troubleshooting-azure-digital-twins-with-diagnostics-logging"></a>使用診斷記錄針對 Azure 數位 Twins 進行疑難排解
+# <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>針對 Azure 數位 Twins 進行疑難排解：診斷記錄
 
-Azure 數位 Twins 會收集您的服務實例的[計量](how-to-view-metrics.md)，以提供資源狀態的相關資訊。 您可以使用這些計量來評估 Azure 數位 Twins 服務及其連線資源的整體健全狀況。 這些使用者對應的統計資料可協助您瞭解 Azure 數位 Twins 的情況，並協助對問題執行根本原因分析，而不需要聯絡 Azure 支援。
+Azure 數位 Twins 會收集您的服務實例的[計量](troubleshoot-metrics.md)，以提供資源狀態的相關資訊。 您可以使用這些計量來評估 Azure 數位 Twins 服務及其連線資源的整體健全狀況。 這些使用者對應的統計資料可協助您瞭解 Azure 數位 Twins 的情況，並協助對問題執行根本原因分析，而不需要聯絡 Azure 支援。
 
 本文說明如何針對您的 Azure 數位 Twins 實例中的計量資料開啟**診斷記錄**。 您可以使用這些記錄來協助您針對服務問題進行疑難排解。
 
@@ -26,7 +26,7 @@ Azure 數位 Twins 會收集您的服務實例的[計量](how-to-view-metrics.md
 
 2. 從功能表中選取 [**診斷設定**]，然後按一下 [**新增診斷設定**]。
 
-    :::image type="content" source="media/how-to-view-metrics/diagnostic-settings.png" alt-text="顯示 [診斷設定] 頁面和要新增之按鈕的螢幕擷取畫面":::
+    :::image type="content" source="media/troubleshoot-metrics/diagnostic-settings.png" alt-text="顯示 [診斷設定] 頁面和要新增之按鈕的螢幕擷取畫面":::
 
 3. 在接下來的頁面中，填入下列值：
      * **診斷設定名稱**：提供診斷設定的名稱。
@@ -52,4 +52,4 @@ Azure 數位 Twins 會收集您的服務實例的[計量](how-to-view-metrics.md
 ## <a name="next-steps"></a>後續步驟
 
 * 如需設定診斷的詳細資訊，請參閱[*收集並取用來自 Azure 資源的記錄資料*](../azure-monitor/platform/platform-logs-overview.md)。
-* 如需 Azure 數位 Twins 計量的詳細資訊，請參閱[*如何：使用 Azure 監視器來查看計量*](how-to-view-metrics.md)。
+* 如需 Azure 數位 Twins 計量的詳細資訊，請參閱[*疑難排解：使用 Azure 監視器來查看計量*](troubleshoot-metrics.md)。

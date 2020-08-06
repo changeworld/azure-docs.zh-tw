@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1687224e796043af1f7c3d1ee6f0417465fb4959
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c464e26419648d396b39718f357bcef7e4fa5552
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317627"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800292"
 ---
 # <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應專案
 
@@ -55,10 +55,10 @@ ms.locfileid: "87317627"
 
 其包含根據您所做的選擇，在此供應項目上執行作業的連結。 例如：
 
-- 如果供應專案為草稿-[刪除草稿供應](update-existing-offer.md#delete-a-draft-offer)專案）
-- 如果供應專案上線，則會[停止銷售供應](update-existing-offer.md#stop-selling-an-offer-or-plan)專案）
-- 如果供應專案處於預覽狀態，即[上線](publishing-status.md#publisher-approval)）
-- 如果您尚未完成發行者登出，請[取消發佈](update-existing-offer.md#cancel-publishing)）
+- 如果供應專案為草稿-[刪除草稿供應](update-existing-offer.md#delete-a-draft-offer)專案) 
+- 如果供應專案是 live-[停止銷售供應](update-existing-offer.md#stop-selling-an-offer-or-plan)專案) 
+- 如果供應專案處於預覽階段，[請](publishing-status.md#publisher-approval)) 
+- 如果您尚未完成發行者登出，請[取消發佈](update-existing-offer.md#cancel-publishing)) 
 
 ## <a name="offer-setup"></a>供應項目設定
 
@@ -82,8 +82,8 @@ ms.locfileid: "87317627"
 以下是一些額外的潛在客戶管理資源：
 
 - [潛在客戶管理概觀](commercial-marketplace-get-customer-leads.md)
-- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
-- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
+- [潛在客戶管理常見問題](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
+- [常見的潛在客戶設定錯誤](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
 - [潛在客戶管理概觀](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) \(英文\) PDF (請確定您已關閉快顯封鎖程式)
 
 選取 [儲存草稿] 後再繼續。
@@ -96,7 +96,7 @@ ms.locfileid: "87317627"
 
 選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
 - 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
 
 請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
@@ -128,7 +128,7 @@ ms.locfileid: "87317627"
 > [!NOTE]
 > 如果供應項目描述開頭為以下詞句：「此應用程式僅適用於 [非英文語言]。」，則供應項目詳細資料不需要為英文。 也可利用不同於供應項目清單中所使用的語言，來提供供應項目內容的有用連結。
 
-以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
 
 :::image type="content" source="media/example-power-bi-app.png" alt-text="說明此供應專案在 Microsoft AppSource 中的顯示方式。":::
 
@@ -136,14 +136,14 @@ ms.locfileid: "87317627"
 
 1. 標誌
 2. 產品
-3. 類別
+3. Categories
 4. 產業
-5. 支援位址（連結）
+5. 支援位址 (連結) 
 6. 使用規定
 7. 隱私權原則
 8. 供應項目名稱
 9. 總結
-10. 說明
+10. 描述
 11. 螢幕擷取畫面/影片
 
 ### <a name="name"></a>名稱
@@ -207,11 +207,14 @@ ms.locfileid: "87317627"
 
 #### <a name="store-logos"></a>儲存標誌
 
-以兩個圖元大小提供供應專案標誌的 PNG 檔案：
-- **小型** (48 x 48)
-- **大型** (216 x 216)
+在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 大小標誌。 您可以選擇性地將此取代為不同的影像。
 
-這兩種標誌都是必要的，且會在市集清單中用於不同位置。
+需要兩種標誌大小，才能在清單中的不同位置使用：
+
+- **小型** (48 x 48)
+- 216 x 216 與 350 x 350) 之間的**大型** (
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 

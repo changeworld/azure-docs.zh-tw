@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 600979e56ac3e88b6530d833e930a9700fad2d9a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: a43e7d1d97196afdad0a1e451b0c1618f0ea3a16
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533630"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809178"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -38,14 +38,14 @@ Azure 備份提供數種方法來還原 VM。
 - **取代磁片**：當您更換現有 vm 中的磁片時，Azure 備份會在更換磁片之前取得現有 vm 的快照集。 快照集也會透過資料傳輸來複製到復原服務保存庫，做為背景進程。 不過，快照集階段完成後，就會觸發「取代磁片」作業。 在更換磁片作業之後，來源 Azure VM 的磁片會保留在您的作業所指定的資源群組中，而 Vhd 會儲存在指定的儲存體帳戶中。 您可以選擇刪除或保留這些 Vhd 和磁片。
 - **儲存體帳戶位置**：儲存體帳戶必須位於與保存庫相同的區域中。 只會顯示這些帳戶。 如果位置中沒有儲存體帳戶，您必須建立一個。
 - **儲存體類型**：不支援 Blob 儲存體。
-- **儲存體冗余**：不支援區域冗余儲存體（ZRS）。 帳戶名稱後面會以括弧括住帳戶的複寫和重複資訊。
+- **儲存體冗余**：不支援區域冗余儲存體 (ZRS) 。 帳戶名稱後面會以括弧括住帳戶的複寫和重複資訊。
 - **Premium 儲存體**：
   - 還原非 premium Vm 時，不支援 premium 儲存體帳戶。
   - 還原受控 Vm 時，不支援使用網路規則設定的 premium 儲存體帳戶。
 
 ## <a name="before-you-start"></a>開始之前
 
-若要還原 VM （建立新的 VM），請確定您具有還原 VM 作業的正確角色型存取控制（RBAC）[許可權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)。
+若要 (建立新的 VM) 來還原 VM，請確定您有正確的角色型存取控制 (RBAC) 的[許可權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)，才能執行還原 vm 操作。
 
 如果您沒有許可權，您可以[復原磁碟](#restore-disks)，然後在復原磁碟之後，使用在還原作業中產生的[範本](#use-templates-to-customize-a-restored-vm)來建立新的 VM。
 
@@ -134,7 +134,7 @@ Azure 備份提供數種方法來還原 VM。
 
 ## <a name="cross-region-restore"></a>跨區域還原
 
-做為其中一個[還原選項](#restore-options)，跨區域還原（CRR）可讓您在次要區域（也就是 azure 配對的區域）中還原 azure vm。
+做為其中一個[還原選項](#restore-options)，跨區域還原 (的 CRR) 可讓您在次要區域（也就是 azure 配對的區域）中還原 azure vm。
 
 若要在預覽期間上架功能，請閱讀[開始之前一節](./backup-create-rs-vault.md#set-cross-region-restore)。
 
@@ -172,8 +172,8 @@ Azure 備份提供數種方法來還原 VM。
 >[!NOTE]
 >
 >- 在觸發還原並于資料傳輸階段之後，就無法取消還原作業。
->- 跨區域還原功能會還原已啟用 CMK （客戶管理的金鑰）的 Azure Vm，這些 Vm 不會在已啟用 CMK 的復原服務保存庫中進行備份，因為次要區域中已啟用非 CMK 的 Vm。
->- 在次要區域中還原所需的 RBAC （角色型存取控制）角色與主要區域中的角色相同。
+>- 跨區域還原功能會將 CMK (客戶管理的金鑰還原) 已啟用的 Azure Vm （不會在已啟用 CMK 的復原服務保存庫中備份），做為次要區域中已啟用非 CMK 的 Vm。
+>- RBAC (以角色為基礎的存取控制) 在次要區域中還原所需的角色，與主要區域中的相同。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>監視次要區域還原作業
 
@@ -192,17 +192,17 @@ Azure 備份提供數種方法來還原 VM。
 
 有幾個可能需要還原 VM 的常見案例。
 
-**案例** | **指引**
+**案例** | **指導方針**
 --- | ---
 **使用 Hybrid Use Benefit 還原 VM** | 如果 Windows VM 使用 [Hybrid Use Benefit (HUB) 授權](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，請使用提供的範本 (將**授權類型**設定為 **Windows_Server**) 或 PowerShell 來還原磁碟並建立新 VM。  此設定也可以在建立 VM 之後套用。
-**在 Azure 資料中心發生災害時還原 VM** | 如果保存庫使用 GRS 和主要資料中心來因應 VM 的停機狀況，則 Azure 備份可支援將備份的 VM 還原至配對的資料中心。 您可以在配對的資料中心內選取儲存體帳戶，然後依正常程序進行還原。 Azure 備份會使用配對區域中的計算服務來建立還原的 VM。 [深入了解](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)資料中心復原。<br><br> 如果保存庫使用 GRS，您可以選擇 [[跨區域還原](#cross-region-restore)] 這項新功能。 這可讓您在完整或部分中斷的情況下還原到第二個區域，甚至完全沒有中斷的情況。
+**在 Azure 資料中心發生災害時還原 VM** | 如果保存庫使用 GRS 和主要資料中心來因應 VM 的停機狀況，則 Azure 備份可支援將備份的 VM 還原至配對的資料中心。 您可以在配對的資料中心內選取儲存體帳戶，然後依正常程序進行還原。 Azure 備份會使用配對區域中的計算服務來建立還原的 VM。 [深入了解](/azure/architecture/resiliency/recovery-loss-azure-region)資料中心復原。<br><br> 如果保存庫使用 GRS，您可以選擇 [[跨區域還原](#cross-region-restore)] 這項新功能。 這可讓您在完整或部分中斷的情況下還原到第二個區域，甚至完全沒有中斷的情況。
 **還原單一網域中的單一網域控制站 VM** | 像任何其他 VM 一樣地還原 VM。 請注意：<br/><br/> 從 Active Directory 的觀點來看，Azure VM 就像任何其他 VM 一樣。<br/><br/> 我們也提供了目錄服務還原模式 (DSRM)，因此，您可以進行所有的 Active Directory 復原案例。 [深入了解](#post-restore-steps)虛擬化網域控制站的備份與還原考量。
 **還原單一網域中的多個網域控制站 VM** | 如果可以透過網路連線到相同網域中的其他網域控制站，則可以像任何 VM 一樣還原網域控制站。 如果該網域控制站是網域內剩餘的最後一個網域控制站，或者您是在隔離的網路中進行復原，請使用[樹系復原](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **還原單一樹系中的多個網域** | 我們建議使用[樹系復原](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **裸機還原** | Azure VM 與內部部署 Hypervisor 的主要差異是，Azure 沒有提供 VM 主控台。 在某些情況下，您必須使用主控台，例如使用裸機復原 (BMR) 類型的備份進行復原。 不過，從保存庫來還原 VM 可完整取代 BMR。
 **還原具有特殊網路組態的 VM** | 特殊網路組態包含使用內部或外部負載平衡、使用多個 NIC 或多個保留 IP 位址的 VM。 您可以使用[還原磁碟選項](#restore-disks)來還原這些 VM。 此選項會將 Vhd 複製到指定的儲存體帳戶，然後您可以根據您的設定，建立具有[內部](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)或[外部](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)負載平衡器、[多個 NIC](../virtual-machines/windows/multiple-nics.md)或[多個保留 IP 位址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)的 VM。
-**NIC/子網上的網路安全性群組（NSG）** | Azure VM 備份支援在 vnet、子網和 NIC 層級備份和還原 NSG 資訊。
-**區域釘選的 Vm** | 如果您備份的 Azure VM 已釘選到區域（使用 Azure 備份），則您可以在其釘選所在的相同區域中進行還原。 [深入了解](../availability-zones/az-overview.md)
+**NIC/子網上的網路安全性群組 (NSG) ** | Azure VM 備份支援在 vnet、子網和 NIC 層級備份和還原 NSG 資訊。
+**區域釘選的 Vm** | 如果您備份的 Azure VM 已釘選到具有 Azure 備份) 的區域 (，則您可以在其釘選所在的相同區域中進行還原。 [深入了解](../availability-zones/az-overview.md)
 **還原任何可用性設定組中的 VM** | 從入口網站還原 VM 時，沒有選擇可用性設定組的選項。 還原的 VM 不會有可用性設定值組。 如果您使用 [復原磁碟] 選項，則當您使用提供的範本或 PowerShell 從磁片建立 VM 時，可以[指定可用性設定組](../virtual-machines/windows/tutorial-availability-sets.md)。
 **還原特殊的 Vm，例如 SQL Vm** | 如果您使用 Azure VM 備份來備份 SQL VM，然後使用 [還原 VM] 選項或在復原磁碟後建立 VM，則必須向 SQL 提供者註冊新建立的 VM，如[這裡](../azure-sql/virtual-machines/windows/sql-vm-resource-provider-register.md?tabs=azure-cli%2Cbash)所述。 這會將已還原的 VM 轉換成 SQL VM。
 

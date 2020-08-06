@@ -10,12 +10,12 @@ ms.topic: reference
 ms.workload: identity
 ms.date: 07/20/2020
 ms.author: chmutali
-ms.openlocfilehash: 4aac13bf34394c359837ecd7a85abd78495bc4b4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ea47f8a6fc29571a27f8976bd0ad9bbd30ed0ad9
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283107"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808451"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Azure Active Directory 布建如何與 SAP SuccessFactors 整合 
 
@@ -33,7 +33,7 @@ Azure AD 布建服務會使用基本驗證來連接到員工的中央 OData API 
 若要進一步保護 Azure AD 布建服務與 SuccessFactors 之間的連線，您可以使用以下所述的步驟，在 SuccessFactors IP 允許清單中新增 Azure AD IP 範圍：
 
 1. 下載 Azure 公用雲端的[最新 IP 範圍](https://www.microsoft.com/download/details.aspx?id=56519) 
-1. 開啟檔案，並搜尋標記**AzureActiveDirectory**和**AzureActiveDirectoryDomainServices** 
+1. 開啟檔案，並搜尋標記**AzureActiveDirectory** 
 
    >[!div class="mx-imgBorder"] 
    >![Azure AD IP 範圍](media/sap-successfactors-integration-reference/azure-active-directory-ip-range.png)
@@ -75,7 +75,7 @@ Azure AD 布建服務會使用基本驗證來連接到員工的中央 OData API 
 根據屬性對應，在完整同步處理期間，Azure AD 布建服務會傳送下列「取得」 OData API 查詢，以提取所有作用中使用者的有效資料。 
 
 > [!div class="mx-tdCol2BreakAll"]
->| 參數 | 說明 |
+>| 參數 | 描述 |
 >| ----------|-------------|
 >| OData API 主機 | 將 HTTPs 附加至*租使用者 URL*。 範例： `https://api4.successfactors.com` |
 >| OData API 端點 | `/odata/v2/PerPerson` |
@@ -87,7 +87,7 @@ Azure AD 布建服務會使用基本驗證來連接到員工的中央 OData API 
 > [!NOTE]
 > 在第一次初始完整同步處理期間，Azure AD 布建服務不會提取非使用中/已終止的背景工作資料。
 
-針對每個 SuccessFactors 使用者，布建服務會使用對應中定義的比對屬性，尋找目標（Azure AD/內部部署 Active Directory）中的帳戶。 例如：如果*personIdExternal*對應至 [*員工*]，並設定為 [比對] 屬性，則布建服務會使用*personIdExternal*值來搜尋具有「*員工 id* 」篩選準則的使用者。 如果找到相符的使用者，則會更新目標屬性。 如果找不到相符專案，則會在目標中建立新的專案。 
+針對每個 SuccessFactors 使用者，布建服務會使用對應中定義的比對屬性，尋找目標 (Azure AD/內部部署 Active Directory) 中的帳戶。 例如：如果*personIdExternal*對應至 [*員工*]，並設定為 [比對] 屬性，則布建服務會使用*personIdExternal*值來搜尋具有「*員工 id* 」篩選準則的使用者。 如果找到相符的使用者，則會更新目標屬性。 如果找不到相符專案，則會在目標中建立新的專案。 
 
 若要驗證您的 OData API 端點針對特定所傳回的資料 `personIdExternal` ，請 `SuccessFactorsAPIEndpoint` 使用您的 api 資料中心伺服器 URL 更新下列 api 查詢中的，並使用[Postman](https://www.postman.com/downloads/)之類的工具來叫用查詢。 
 
@@ -175,9 +175,9 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 如同 XPath，JS
 ### <a name="retrieving-custom-attributes"></a>正在抓取自訂屬性
 
 根據預設，下列自訂屬性會在 Azure AD SuccessFactors 布建應用程式中預先定義： 
-* *custom01-* 從使用者（userNav）實體 custom15
-* *customString1-customString15*自 EmpEmployment （employmentNav）實體，稱為*empNavCustomString1-empNavCustomString15*
-* *customString1-customString15*自 EmpJobInfo （jobInfoNav）實體，稱為*empJobNavCustomString1-empNavJobCustomString15*
+* *custom01-* 從使用者 (userNav) 實體進行 custom15
+* *customString1-customString15*自 EmpEmployment (employmentNav) 實體，稱為*empNavCustomString1-empNavCustomString15*
+* *customString1-customString15*自 EmpJobInfo (jobInfoNav) 實體，稱為*empJobNavCustomString1-empNavJobCustomString15*
 
 假設在您的員工中央實例中， *EmpJobInfo*中的*customString35*屬性會儲存位置的描述。 您想要將此值傳送至 Active Directory *physicalDeliveryOfficeName*屬性。 若要設定此案例的屬性對應，請使用以下提供的步驟： 
 
@@ -223,7 +223,7 @@ JSONPath 是 JSON 的查詢語言，類似于 XML 的 XPath。 如同 XPath，JS
 
 如果您的 HR 進程使用選項1，則不需要對布建架構進行任何變更。 如果您的 HR 進程使用選項2，則 Employee Central 會針對相同*Person*實體加入新的*EmpEmployment*實體以及新的*使用者*實體。 不同于轉換案例，先前*EmpEmployment*實體中的*使用者*實體不會設定為 null。 
 
-若要處理此 rehire 案例（選項2），使最新的雇用資料顯示在 rehire 設定檔中，您可以使用下列步驟大量更新布建應用程式架構：  
+若要處理此 rehire 案例 (選項 2) ，讓最新的雇用資料顯示在 rehire 設定檔中，您可以使用下列步驟大量更新布建應用程式架構：  
 
 1. 開啟 SuccessFactors 布建應用程式的 [屬性對應] 分頁。 
 1. 向下滾動，然後按一下 [**顯示先進的選項**]。

@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e17edacf45583283d53c5484417f6a2dd7c6e012
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327390"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799917"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>合作夥伴中心的 SaaS 供應專案建立檢查清單
 
 SaaS 供應專案的建立程式會帶您流覽多個頁面。  本文說明您可以在每個頁面上提供的詳細資料，以及可深入瞭解每個專案的連結。
 
 > [!NOTE]
-> 如果您要建立 transactable SaaS 供應專案，請確定您已實施與[SaaS 履行 api](./pc-saas-fulfillment-apis.md)的整合。  與 Api 整合是 Marketplace 中銷售正常運作的唯一方式。 您也必須確定您的應用程式使用 Azure AD 驗證與單一登入（SSO）。 請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](../azure-ad-saas.md)供應專案。
+> 如果您要建立 transactable SaaS 供應專案，請確定您已實施與[SaaS 履行 api](./pc-saas-fulfillment-apis.md)的整合。  與 Api 整合是 Marketplace 中銷售正常運作的唯一方式。 您也必須確定您的應用程式使用 Azure AD 驗證搭配單一登入 (SSO) 。 請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](../azure-ad-saas.md)供應專案。
 
 您需要提供或指定的專案如下所示。  某些區域屬於選擇性，或有提供預設值，可視需要加以變更。  並不需要按照此處所列的順序來處理這些區段。
 
@@ -30,7 +30,7 @@ SaaS 供應專案的建立程式會帶您流覽多個頁面。  本文說明您�
 | [屬性頁面](#properties-page) | 定義用來在市集上將供應項目分組的類別和產業、支援供應項目的法律合約，以及應用程式版本。 |
 | [供應項目清單頁面](#offer-listing-page) | 定義要在市集中顯示的供應項目詳細資料，包括供應項目和行銷資產的說明。|
 | [預覽頁面](#preview-page) | 定義受限的預覽對象，以便在將供應項目即時發行給範圍更廣的市集對象之前，先發行您的供應項目。|
-| [技術設定頁面](#technical-configuration-page)  |  只有在您選擇透過 Microsoft 銷售供應項目時才可使用。  定義 marketplace 用來連線到您的供應專案的技術詳細資料（登陸頁面 URL、連接 webhook URL、Azure AD 租使用者識別碼，以及 Azure AD 應用程式識別碼）。  需要這些參數，才能正確地與 SaaS 履行和 Marketplace 計量付費計費 Api 進行整合。|
+| [技術設定頁面](#technical-configuration-page)  |  只有在您選擇透過 Microsoft 銷售供應項目時才可使用。  定義 (登陸頁面 URL、連接 webhook URL、Azure AD 租使用者識別碼，以及 marketplace 用來連線到您的供應專案的 Azure AD 應用程式識別碼) 的技術詳細資料。  需要這些參數，才能正確地與 SaaS 履行和 Marketplace 計量付費計費 Api 進行整合。|
 | [**新的方案強制回應**](#plan-identity-modal) | 收集方案身分識別資訊。  |
 | [方案清單頁面](#plan-listing-page)  | 只有在您選擇透過 Microsoft 銷售供應項目時才可使用。 定義用來在市集中列出方案的詳細資料。  |
 | [方案定價和可用性頁面](#plan-pricing--availability-page)  | 只有在您選擇透過 Microsoft 銷售供應項目時才可使用。  對於您供應項目的每個方案 (版本) 收集商務特性 (計價模式)、對象和市場可用性。  |
@@ -79,9 +79,9 @@ SaaS 供應專案的建立程式會帶您流覽多個頁面。  本文說明您�
 您可在清單頁面提供文字和影像，客戶在市集中檢視您的供應項目時即可看到。 
 
 | **欄位名稱**    | **注意事項**   |
-| :---------------- | :-----------| 
+| :---------------- | :-----------|
 | 名稱  | 必要，最多 50 個字元。 |
-| 摘要  | 必要，最多 100 個字元。 | 
+| 摘要  | 必要，最多 100 個字元。 |
 | 描述  | 必要，最多3000 個字元。 |
 | 開始使用指示  | 必要，最多3000 個字元。 |
 | 開始使用指示  | 必要，最多3000 個字元。 |
@@ -91,7 +91,7 @@ SaaS 供應專案的建立程式會帶您流覽多個頁面。  本文說明您�
 | 有用的連結標題 + URL  | 選擇性。 |
 | 支援文件標題 + 檔案  | 必要，最小值為 1、最大值為 3。 必須是 PDF 檔案格式。 |
 | 螢幕擷取畫面  | 必要，最少 1 個、最多 5 個螢幕擷取畫面；建議使用 4 個以上。 必須是 1280 X 720 的 PNG 格式。 |
-| 商店標誌（小型、中型、大型、寬）  | 需要小型（48 X 48）和大型（216 X 216）;其他是選擇性的，但建議使用：中（90 x 90）、寬（255 x 115）。 必須在中。PNG 格式。 |
+| 將標誌儲存 (小型、中型、大型)   | 需要大型標誌 (216 x 216) 。 合作夥伴中心會使用此來建立小型 (48 x 48 圖元) 和中等 (90 x 90 圖元) 大小標誌。 您可以選擇性地將這些取代為不同的影像。 標誌必須是 PNG 格式。 |
 | 影片名稱 + URL + 縮圖  | 選用，建議，最多 4 個影片。 縮圖必須是 1280 X 720 的 PNG 格式。 影片必須裝載於 YouTube 或 Vimeo。 |
 | 連絡人 (CSP 方案、工程、支援)  | 需要工程和支援連絡人 (名稱、電子郵件和電話號碼)；CSP 方案連絡人為選用，但建議使用。 |
 | 支援 URL  | 必要。 |
@@ -100,16 +100,16 @@ SaaS 供應專案的建立程式會帶您流覽多個頁面。  本文說明您�
 
 [預覽] 頁面可讓您指定可存取供應項目預覽的對象，以確認供應項目是否符合您所有的需求，然後再讓供應項目上線。 
 
-| **欄位名稱**    | **注意事項**   | 
-| :---------------- | :-----------| 
+| **欄位名稱**    | **注意事項**   |
+| :---------------- | :-----------|
 | AAD/MSA 電子郵件 + 描述 | 必要，最小值為 1、最大值為 10 (如果手動輸入)，在上傳 CSV 檔案時則為 20。 |
 
-## <a name="technical-configuration-page"></a>技術設定頁面 
+## <a name="technical-configuration-page"></a>技術設定頁面
 
 [技術設定] 頁面可讓您指定 Microsoft 用來連接供應項目的技術詳細資料。 如果您決定不透過 Microsoft 銷售，則不會看到此頁面。
 
 > [!NOTE]
-> 針對 transactable 供應專案，您必須建立登陸頁面，而且您的應用程式必須使用 Azure AD 驗證與單一登入（SSO）。 如需詳細資訊，請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](../azure-ad-saas.md)供應專案。
+> 針對 transactable 供應專案，您必須建立登陸頁面，而且您的應用程式必須使用單一登入 (SSO) 的 Azure AD 驗證。 如需詳細資訊，請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](../azure-ad-saas.md)供應專案。
 
 | **欄位名稱**    | **注意事項**   |  
 | :---------------- | :-----------| 

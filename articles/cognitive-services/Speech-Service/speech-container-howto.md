@@ -10,32 +10,32 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: e120eb20d247ce2def7f7c322ead3066c1d4386e
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: 4f14a5cf21a372c66378521fd293b7569b181653
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974648"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808655"
 ---
-# <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器（預覽）
+# <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器 (預覽) 
 
 容器可讓您在自己的環境中執行某些語音服務 Api。 容器非常適合用於特定的安全性和資料控管需求。 在本文中，您將瞭解如何下載、安裝及執行語音容器。
 
 語音容器可讓客戶建立已針對健全的雲端功能和邊緣位置優化的語音應用程式架構。 有四個不同的容器可供使用。 這兩個標準容器是**語音轉換文字**和**文字轉換語音**。 這兩個自訂容器是**自訂的語音轉換文字**和**自訂文字轉換語音**。 語音容器與雲端式 Azure 語音服務具有相同的[定價](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 > [!IMPORTANT]
-> 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)的一部分。 當語音容器進行公開上市（GA）時，將會發出公告。
+> 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services)的一部分。 當語音容器進行正式運作 (GA) 時，將會發出公告。
 
-| 函式 | 特性 | Latest |
+| 函式 | 特性 | 最新 |
 |--|--|--|
 | 語音轉文字 | 使用中繼結果分析情感和可將連續即時語音或批次音訊錄製。  | 2.3.1 |
 | 自訂語音轉換文字 | 使用自[定義語音入口網站](https://speech.microsoft.com/customspeech)中的自訂模型，將連續即時語音或批次錄音可將為具有中繼結果的文字。 | 2.3.1 |
-| 文字轉換語音 | 使用純文字輸入或語音合成標記語言（SSML），將文字轉換成自然發音的語音。 | 1.5.0 |
-| 自訂文字轉換語音 | 使用自[定義語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，以純文字輸入或語音合成標記語言（SSML）將文字轉換成自然發音的語音。 | 1.5.0 |
+| 文字轉換語音 | 使用純文字輸入或語音合成標記語言 (SSML) ，將文字轉換成自然發音的語音。 | 1.5.0 |
+| 自訂文字轉換語音 | 使用[自訂語音入口網站](https://aka.ms/custom-voice-portal)中的自訂模型，以純文字輸入或語音合成標記語言 (SSML) ，將文字轉換成自然發音的語音。 | 1.5.0 |
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 使用語音容器之前的必要條件如下：
 
@@ -62,7 +62,7 @@ ms.locfileid: "84974648"
 
 ### <a name="advanced-vector-extension-support"></a>Advanced Vector Extension 支援
 
-**主機**是執行 Docker 容器的電腦。 主機*必須支援*「[先進向量延伸](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2)」（AVX2）。 您可以使用下列命令來檢查 Linux 主機上的 AVX2 支援：
+**主機**是執行 Docker 容器的電腦。 主機*必須支援*AVX2)  (的[先進向量延伸](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2)模組。 您可以使用下列命令來檢查 Linux 主機上的 AVX2 支援：
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
@@ -213,7 +213,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 如需所有支援的地區設定和**文字轉換語音**容器的對應語音，請參閱[文字轉換語音影像標記](../containers/container-image-tags.md#text-to-speech)。
 
 > [!IMPORTANT]
-> 當您建立*標準的文字轉換語音*HTTP POST 時，[語音合成標記語言（SSML）](speech-synthesis-markup.md)訊息需要 `voice` 具有屬性的元素 `name` 。 值是對應的容器地區設定和語音，也稱為「[簡短名稱](language-support.md#standard-voices)」。 例如，標記的 `latest` 語音名稱會是 `en-US-AriaRUS` 。
+> 當您建立*標準的文字轉換語音*HTTP POST 時，[語音合成標記語言 (SSML) ](speech-synthesis-markup.md)訊息需要 `voice` 具有屬性的元素 `name` 。 值是對應的容器地區設定和語音，也稱為「[簡短名稱](language-support.md#standard-voices)」。 例如，標記的 `latest` 語音名稱會是 `en-US-AriaRUS` 。
 
 # <a name="custom-text-to-speech"></a>[自訂文字轉換語音](#tab/ctts)
 
@@ -256,7 +256,7 @@ ApiKey={API_KEY}
 此命令：
 
 * 從容器映射執行*語音轉換文字*容器。
-* 配置4個 CPU 核心和 4 gb 的記憶體。
+* 配置4個 CPU 核心和 4 gb (GB 的記憶體) 。
 * 公開 TCP 埠5000，並為容器配置虛擬 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
@@ -293,9 +293,9 @@ CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
 
 > [!IMPORTANT]
 > 自訂語音模型必須從下列其中一個模型版本進行定型：
-> * **20181201（3.3 版整合）**
-> * **20190520（v 4.14 整合）**
-> * **20190701（v 4.17 整合）**<br>
+> * **20181201 (3.3 版整合) **
+> * **20190520 (v 4.14 整合) **
+> * **20190701 (v 4.17 整合) **<br>
 > ![自訂語音訓練容器模型](media/custom-speech/custom-speech-train-model-container-scoped.png)
 
 需要有自訂語音**模型識別碼**，才能執行容器。 您可以在自訂語音入口網站的 [**訓練**] 頁面上找到此資訊。 從自訂語音入口網站，流覽至 [**定型**] 頁面，然後選取模型。
@@ -332,10 +332,10 @@ ApiKey={API_KEY}
 此命令：
 
 * 從容器映射執行*自訂的語音轉換文字*容器。
-* 配置4個 CPU 核心和 4 gb 的記憶體。
+* 配置4個 CPU 核心和 4 gb (GB 的記憶體) 。
 * 從磁片區輸入裝載載入*自訂語音轉換文字*模型，例如*C:\CustomSpeech*。
 * 公開 TCP 埠5000，並為容器配置虛擬 TTY。
-* 下載指定的模型 `ModelId` （如果在磁片區掛接上找不到的話）。
+* `ModelId`如果在磁片區掛接) 上找不到，則會下載指定 (的模型。
 * 如果先前已下載自訂模型，則 `ModelId` 會忽略。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
@@ -354,7 +354,7 @@ ApiKey={API_KEY}
 此命令：
 
 * 從容器映射執行*文字轉換語音*容器。
-* 配置2個 CPU 核心和 1 gb 的記憶體。
+* 配置1個 CPU 核心和 2 gb (GB 的記憶體) 。
 * 公開 TCP 埠5000，並為容器配置虛擬 TTY。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
@@ -394,10 +394,10 @@ ApiKey={API_KEY}
 此命令：
 
 * 從容器映射執行*自訂的文字轉換語音*容器。
-* 配置2個 CPU 核心和 1 gb 的記憶體。
+* 配置1個 CPU 核心和 2 gb (GB 的記憶體) 。
 * 從磁片區輸入裝載載入*自訂文字轉換語音*模型，例如*C:\CustomVoice*。
 * 公開 TCP 埠5000，並為容器配置虛擬 TTY。
-* 下載指定的模型 `ModelId` （如果在磁片區掛接上找不到的話）。
+* `ModelId`如果在磁片區掛接) 上找不到，則會下載指定 (的模型。
 * 如果先前已下載自訂模型，則 `ModelId` 會忽略。
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
@@ -569,7 +569,7 @@ speech_config.set_service_property(
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 
 在本文中，您已瞭解下載、安裝及執行語音容器的概念和工作流程。 摘要說明：
 
@@ -580,7 +580,7 @@ speech_config.set_service_property(
   * *自訂文字轉換語音*
 * 容器映射是從 Azure 中的 container registry 下載。
 * 容器映像是在 Docker 中執行。
-* 不論是使用 REST API （僅限文字轉換語音）或是 SDK （語音轉換文字或文字轉換語音），您都要指定容器的主機 URI。 
+* 不論是使用 REST API (文字轉換語音) 或 SDK (語音轉換文字或文字轉換語音，) 您指定容器的主機 URI。 
 * 當具現化容器時，您必須提供帳單資訊。
 
 > [!IMPORTANT]

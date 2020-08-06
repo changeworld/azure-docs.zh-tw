@@ -1,14 +1,14 @@
 ---
 title: Azure 服務匯流排訊息-佇列、主題和訂用帳戶
-description: 本文提供 Azure 服務匯流排訊息實體（佇列、主題和訂閱）的總覽。
+description: 本文提供 Azure 服務匯流排訊息實體的總覽， (佇列、主題和訂用帳戶) 。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: deeebf56d6e2f4ccfac37c70170a0d1cb4d272a9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3ee03fe5219736a1b1ca66c652fe6ac410cb40cb
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119168"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799611"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服務匯流排佇列、主題和訂用帳戶
 
@@ -56,153 +56,24 @@ Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的�
 
 ### <a name="rules-and-actions"></a>執行和動作
 
-在許多情況下，必須以不同的方式處理具有特定特性的訊息。 若要啟用這項處理，您可以設定訂用帳戶以尋找具有所需屬性的訊息，然後對這些屬性進行一些修改。 雖然服務匯流排訂用帳戶可看見所有傳送至主題的訊息，但您只可以將部分的訊息複製到虛擬訂用帳戶佇列。 使用訂用帳戶篩選器即可完成這個篩選。 這類修改稱之為「篩選器動作」**。 建立訂用帳戶時，您可以提供在訊息屬性上運作的篩選運算式，包括系統屬性（例如**標籤**）和自訂應用程式屬性（例如**StoreName**）。在此情況下，SQL 篩選運算式是選擇性的：如果沒有 SQL 篩選條件運算式，就會在訂用帳戶的所有訊息上執行任何定義于訂閱上的篩選器動作。
+在許多情況下，必須以不同的方式處理具有特定特性的訊息。 若要啟用這項處理，您可以設定訂用帳戶以尋找具有所需屬性的訊息，然後對這些屬性進行一些修改。 雖然服務匯流排訂用帳戶可看見所有傳送至主題的訊息，但您只可以將部分的訊息複製到虛擬訂用帳戶佇列。 使用訂用帳戶篩選器即可完成這個篩選。 這類修改稱之為「篩選器動作」**。 建立訂用帳戶時，您可以提供可在訊息屬性上運作的篩選運算式，例如，系統屬性 (例如， **Label**) 和自訂應用程式屬性 (例如， **STORENAME**。 ) SQL 篩選運算式在此情況下是選擇性的：如果沒有 SQL 篩選條件運算式，就會在訂用帳戶的所有訊息上執行任何定義于訂閱上的篩選器動作。
 
 如需完整的實用範例，請參閱 GitHub 上的 [TopicSubscriptionWithRuleOperationsSample 範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample)。
 
 如需可能篩選值的詳細資訊，請參閱 [SqlFilter](/dotnet/api/microsoft.azure.servicebus.sqlfilter) 和 [SqlRuleAction](/dotnet/api/microsoft.azure.servicebus.sqlruleaction) 類別的文件。
 
-## <a name="java-message-service-jms-20-entities-preview"></a>JAVA message service （JMS）2.0 實體（預覽）
+## <a name="java-message-service-jms-20-entities-preview"></a>JAVA 訊息服務 (JMS) 2.0 實體 (預覽) 
 
-連接到 Azure 服務匯流排 Premium 並利用[AZURE 服務匯流排 JMS 程式庫](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms)的用戶端應用程式，可以利用以下的實體。
+下列實體可透過 JAVA 訊息服務 (JMS) 2.0 API 來存取。
 
-### <a name="queues"></a>佇列
+  * 暫存佇列
+  * 暫存主題
+  * 共用的持久訂閱
+  * 未共用的持久訂閱
+  * 共用的非持久訂閱
+  * 不共用的非持久性訂閱
 
-JMS 中的佇列在語義上相當於先前所討論的傳統服務匯流排佇列。
-
-若要建立佇列，請利用類別中的下列方法 `JMSContext` -
-
-```java
-Queue createQueue(String queueName)
-```
-
-### <a name="topics"></a>主題
-
-JMS 中的主題在語義上與先前討論的傳統服務匯流排主題相當類似。
-
-若要建立主題，請利用類別中的下列方法 `JMSContext` -
-
-```java
-Topic createTopic(String topicName)
-```
-
-### <a name="temporary-queues"></a>暫存佇列
-
-當用戶端應用程式需要存在於應用程式存留期的暫存實體時，它可以使用暫存佇列。 這些是在[要求-回復](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html)模式中使用。
-
-若要建立暫存佇列，請利用類別中的下列方法 `JMSContext` -
-
-```java
-TemporaryQueue createTemporaryQueue()
-```
-
-### <a name="temporary-topics"></a>暫存主題
-
-就像暫存佇列一樣，有暫時的主題可透過存在於應用程式存留期的暫存實體來啟用發佈/訂閱。
-
-若要建立暫存主題，請利用類別中的下列方法 `JMSContext` -
-
-```java
-TemporaryTopic createTemporaryTopic()
-```
-
-### <a name="java-message-service-jms-subscriptions"></a>JAVA 訊息服務（JMS）訂閱
-
-雖然這些程式在語義上類似于上述的訂閱（也就是存在於主題上並啟用發行/訂閱語義），但 JAVA 訊息服務規格會針對指定的訂用帳戶，引進**共用**、未**共用**、**持久**和**非持久性**屬性的概念。
-
-> [!NOTE]
-> 下列訂用帳戶適用于預覽的 Azure 服務匯流排進階層，適用于使用[AZURE 服務匯流排 JMS 程式庫](https://search.maven.org/artifact/com.microsoft.azure/azure-servicebus-jms)連接到 Azure 服務匯流排的用戶端應用程式。
->
-> 在公開預覽版本中，無法使用 Azure 入口網站建立這些訂用帳戶。
->
-
-#### <a name="shared-durable-subscriptions"></a>共用的持久訂閱
-
-當主題上發佈的所有訊息都是由應用程式接收和處理時，不論應用程式是否隨時從訂閱主動取用，都可以使用共用長期訂閱。
-
-由於這是共用的訂用帳戶，已驗證要從服務匯流排接收的任何應用程式都可以從訂用帳戶接收。
-
-若要建立共用的長期訂用帳戶，請在類別上使用下列方法 `JMSContext` ：
-
-```java
-JMSConsumer createSharedDurableConsumer(Topic topic, String name)
-
-JMSConsumer createSharedDurableConsumer(Topic topic, String name, String messageSelector)
-```
-
-除非使用類別上的方法刪除，否則共用長期訂閱會繼續存在 `unsubscribe` `JMSContext` 。
-
-```java
-void unsubscribe(String name)
-```
-
-#### <a name="unshared-durable-subscriptions"></a>未共用的持久訂閱
-
-就像共用長期訂用帳戶一樣，當所有發行于主題的訊息都是由應用程式接收和處理時，會使用非共用的長期訂閱，而不論應用程式是否隨時從訂用帳戶主動取用。
-
-不過，由於這是不共用的訂用帳戶，因此只有建立訂閱的應用程式可以從它接收。
-
-若要建立非共用的長期訂閱，請從類別使用下列方法 `JMSContext` - 
-
-```java
-JMSConsumer createDurableConsumer(Topic topic, String name)
-
-JMSConsumer createDurableConsumer(Topic topic, String name, String messageSelector, boolean noLocal)
-```
-
-> [!NOTE]
-> 此 `noLocal` 功能目前不受支援且已忽略。
->
-
-除非使用類別上的方法刪除，否則不共用的長期訂閱會繼續存在 `unsubscribe` `JMSContext` 。
-
-```java
-void unsubscribe(String name)
-```
-
-#### <a name="shared-non-durable-subscriptions"></a>共用的非持久訂閱
-
-當多個用戶端應用程式需要接收和處理來自單一訂用帳戶的訊息時，才會使用共用的非持久性訂用帳戶，但必須等到它們主動取用/接收它為止。
-
-由於訂用帳戶不是持久的，因此不會保存。 當此訂用帳戶沒有作用中的取用者時，不會收到訊息。
-
-若要建立共用的非持久性訂用帳戶，請 `JmsConsumer` 從類別建立如下列方法所示的 `JMSContext` ：
-
-```java
-JMSConsumer createSharedConsumer(Topic topic, String sharedSubscriptionName)
-
-JMSConsumer createSharedConsumer(Topic topic, String sharedSubscriptionName, String messageSelector)
-```
-
-共用的非長期訂用帳戶會持續存在，直到有作用中的取用者從它接收為止。
-
-#### <a name="unshared-non-durable-subscriptions"></a>不共用的非持久性訂閱
-
-當用戶端應用程式需要接收和處理來自訂用帳戶的訊息時，才會使用不共用的非持久性訂閱，只有在它主動取用它的情況下。 此訂用帳戶上只能存在一個取用者，也就是建立訂用帳戶的用戶端。
-
-由於訂用帳戶不是持久的，因此不會保存。 當此訂用帳戶沒有作用中的取用者時，不會收到訊息。
-
-若要建立不共用的非持久性訂用帳戶，請 `JMSConsumer` 從 ' JMSCoNtext 類別建立如下列方法所示的： 
-
-```java
-JMSConsumer createConsumer(Destination destination)
-
-JMSConsumer createConsumer(Destination destination, String messageSelector)
-
-JMSConsumer createConsumer(Destination destination, String messageSelector, boolean noLocal)
-```
-
-> [!NOTE]
-> 此 `noLocal` 功能目前不受支援且已忽略。
->
-
-未共用的非持久性訂用帳戶會持續存在，直到有作用中的取用者從它接收為止。
-
-#### <a name="message-selectors"></a>訊息選取器
-
-就像一般服務匯流排訂用帳戶的**篩選和動作**一樣，JMS 訂閱的**訊息選取器**也存在。
-
-您可以在每個 JMS 訂閱上設定訊息選取器，並在訊息標頭屬性上以篩選準則的形式存在。 只會傳遞標頭屬性符合訊息選取器運算式的訊息。 Null 或空字串的值表示 JMS 訂閱/取用者沒有訊息選取器。
+深入瞭解[JMS 2.0 實體](java-message-service-20-entities.md)，以及如何[使用它們](how-to-use-java-message-service-20.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

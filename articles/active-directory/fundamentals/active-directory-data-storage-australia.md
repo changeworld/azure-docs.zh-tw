@@ -2,7 +2,7 @@
 title: 適用于澳大利亞和紐西蘭客戶的身分識別資料儲存-Azure AD
 description: 瞭解 Azure Active Directory 在何處儲存其澳大利亞客戶的身分識別相關資料。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 850298719d5636e964b0c338d7a2a4cc9bb8aece
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d651a1a6ce8ef412c148f16d0aa4412df94cb0
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77370303"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799543"
 ---
 # <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 中澳大利亞和紐西蘭客戶的身分識別資料存放區
 
@@ -32,7 +32,7 @@ ms.locfileid: "77370303"
 
 所有其他 Azure AD 服務會將客戶資料儲存在全球資料中心。 若要找出服務的資料中心，請參閱[Azure Active Directory –您的資料位於何處？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多重要素驗證（MFA）
+## <a name="microsoft-azure-multi-factor-authentication-mfa"></a> (MFA) Microsoft Azure 多重要素驗證
 
 MFA 會將身分識別客戶資料儲存在全球資料中心。 若要深入瞭解以雲端為基礎的 Azure MFA 和 Azure MFA Server 所收集和儲存的使用者資訊，請參閱[Azure 多重要素驗證使用者資料收集](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency)。
 

@@ -1,28 +1,28 @@
 ---
 title: 使用適用于伺服器的 Azure Arc 進行 VM 擴充功能管理
-description: 適用于伺服器的 Azure Arc （預覽）可管理虛擬機器擴充功能的部署，以使用非 Azure Vm 來提供部署後設定和自動化工作。
+description: 適用于伺服器 (預覽) 的 Azure Arc 可以管理虛擬機器擴充功能的部署，以使用非 Azure Vm 來提供部署後設定和自動化工作。
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: e04b2c63f782a4fcbb64273c08511ecb0bbc2bc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb1de0c2a5b995231c2972fca7279195cbaea9e7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84977516"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809624"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>使用適用于伺服器的 Azure Arc 管理虛擬機器擴充功能（預覽）
+# <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>使用適用于伺服器的 Azure Arc 管理虛擬機器擴充功能 (預覽) 
 
-虛擬機器（VM）擴充功能是小型的應用程式，可在 Azure Vm 上提供部署後設定和自動化工作。 例如，如果虛擬機器要求安裝軟體、防毒保護，或要求執行其中的指令碼，便可使用虛擬機器擴充功能。
+虛擬機器 (VM) 延伸模組是小型應用程式，可在 Azure Vm 上提供部署後設定和自動化工作。 例如，如果虛擬機器需要軟體安裝、防毒保護，或是要在其中執行指令碼，您可以使用 VM 延伸模組。
 
-適用于伺服器的 azure Arc （預覽）可讓您將 Azure VM 擴充功能部署到非 Azure Windows 和 Linux Vm，並透過其生命週期簡化混合式機器內部部署、邊緣和其他雲端環境的管理。
+適用于伺服器的 azure Arc (預覽) 可讓您將 Azure VM 擴充功能部署到非 Azure Windows 和 Linux Vm，並透過其生命週期簡化混合式機器內部部署、邊緣和其他雲端環境的管理。
 
 ## <a name="key-benefits"></a>主要權益
 
-適用于伺服器的 Azure Arc （預覽） VM 延伸模組支援提供下列主要優點：
+適用于伺服器 (預覽的 Azure Arc) VM 擴充功能支援提供下列主要優點：
 
 * 使用[Azure 自動化狀態設定](../../automation/automation-dsc-overview.md)集中儲存設定，並維護透過 DSC VM 擴充功能啟用的混合式連線機器所需的狀態。
 
@@ -40,7 +40,7 @@ VM 擴充功能僅適用于[支援的區域](overview.md#supported-regions)清�
 
 在此預覽中，我們支援 Windows 和 Linux 電腦上的下列 VM 擴充功能。
 
-|分機 |OS |Publisher |其他資訊 |
+|延伸模組 |OS |發行者 |其他資訊 |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Windows 自訂腳本擴充功能](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Microsoft PowerShell|[Windows PowerShell DSC 延伸模組](../../virtual-machines/extensions/dsc-windows.md)|
@@ -51,11 +51,11 @@ VM 擴充功能僅適用于[支援的區域](overview.md#supported-regions)清�
 |Log Analytics 代理程式 |Linux |Microsoft.EnterpriseCloud.Monitoring |[適用于 Linux 的 Log Analytics VM 擴充功能](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft Dependency Agent | Linux |Microsoft.Compute | [適用于 Linux 的相依性代理程式虛擬機器擴充功能](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM 擴充功能可以搭配 Azure Resource Manager 範本、Azure 入口網站，或在由 Arc 針對伺服器（預覽）所管理的混合式伺服器上 Azure PowerShell 執行。
+VM 擴充功能可以搭配 Azure Resource Manager 範本、Azure 入口網站或 Azure PowerShell 在以 Arc 管理的混合式伺服器上執行， (preview) 。
 
 若要深入瞭解 Azure 已連線的機器代理程式套件，以及有關延伸模組代理程式元件的詳細資料，請參閱[代理程式總覽](agent-overview.md#agent-component-details)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 這項功能取決於您訂用帳戶中的下列 Azure 資源提供者：
 
@@ -79,7 +79,7 @@ VM 擴充功能可以搭配 Azure Resource Manager 範本、Azure 入口網站�
 
 ## <a name="enable-extensions-from-the-portal"></a>從入口網站啟用擴充功能
 
-您可以透過 Azure 入口網站，對伺服器（預覽）管理的機器套用您的 Arc。
+您可以透過 Azure 入口網站，將您的 Arc 用於伺服器 (預覽) 受管理的機器。
 
 1. 在瀏覽器中，移至 [Azure 入口網站](https://aka.ms/arcserver-preview)。
 
@@ -102,7 +102,7 @@ VM 擴充功能可以搭配 Azure Resource Manager 範本、Azure 入口網站�
 
 ## <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
 
-VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本的部署執行。 使用伺服器的 Arc 支援的 VM 擴充功能（預覽），您可以使用 Azure PowerShell，在 Linux 或 Windows 電腦上部署支援的 VM 擴充功能。 下列每個範例都包含範本檔案和參數檔案，其中包含要提供給範本的範例值。
+VM 擴充功能可以新增至 Azure Resource Manager 範本，並使用範本的部署執行。 使用 (preview) 伺服器的 Arc 支援的 VM 擴充功能，您可以使用 Azure PowerShell 在 Linux 或 Windows 電腦上部署支援的 VM 擴充功能。 下列每個範例都包含範本檔案和參數檔案，其中包含要提供給範本的範例值。
 
 >[!NOTE]
 >雖然多個擴充功能可以一起批次處理並加以處理，但它們會以序列方式進行安裝。 第一個延伸模組安裝完成後，會嘗試安裝下一個延伸模組。
@@ -727,6 +727,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) 啟用監視等等項目，管理您的機器。
+- 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-policy.md) 啟用監視等等項目，管理您的機器。
 
 - 深入了解 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。

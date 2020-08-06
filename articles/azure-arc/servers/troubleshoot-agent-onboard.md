@@ -1,6 +1,6 @@
 ---
 title: 針對伺服器的 Azure Arc 代理程式連線問題進行疑難排解
-description: 本文說明如何針對在嘗試連線到服務時，由 Azure Arc 伺服器（預覽）所引發的連線機器代理程式，進行疑難排解並解決問題。
+description: 本文說明在嘗試連線到服務時，如何針對伺服器 (預覽) 的 Azure Arc 所引發的連線機器代理程式進行疑難排解及解決問題。
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -8,20 +8,20 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46096e1f3f4266e9c070bd1d67f328241163126b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a6f51f1c6901eaa18c1de9c1fc788ed583b7394
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004540"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809437"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>針對連線的機器代理程式連接問題進行疑難排解
 
-本文提供有關在嘗試為 Windows 或 Linux 設定適用于伺服器（預覽）的已連線機器代理程式時，疑難排解和解決可能發生之問題的資訊。 包括設定與服務的連線時的互動式和大規模安裝方法。 如需一般資訊，請參閱[伺服器的 Arc 總覽](./overview.md)。
+本文提供有關在嘗試為 Windows 或 Linux 的已連線機器代理程式) 設定適用于 (伺服器的 Azure Arc 時，可能發生之問題的疑難排解和解決的資訊。 包括設定與服務的連線時的互動式和大規模安裝方法。 如需一般資訊，請參閱[伺服器的 Arc 總覽](./overview.md)。
 
 ## <a name="agent-verbose-log"></a>代理程式詳細資訊記錄檔
 
-在遵循本文稍後所述的疑難排解步驟之前，您所需的最少資訊就是詳細記錄。 當使用 verbose （-v）引數時，它會包含**azcmagent**工具命令的輸出。 記錄檔會 `%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log` 針對 Windows 和 Linux 寫入至 `/var/opt/azcmagent/log/azcmagent.log` 。
+在遵循本文稍後所述的疑難排解步驟之前，您所需的最少資訊就是詳細記錄。 當使用 verbose (-v) 引數時，它會包含**azcmagent**工具命令的輸出。 記錄檔會 `%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log` 針對 Windows 和 Linux 寫入至 `/var/opt/azcmagent/log/azcmagent.log` 。
 
 ### <a name="windows"></a>Windows
 
@@ -72,7 +72,7 @@ azcmagent connect \
 
 下表列出一些已知的錯誤，以及有關如何疑難排解和解決問題的建議。
 
-|訊息 |錯誤 |可能的原因 |解決方案 |
+|訊息 |錯誤 |可能的原因 |解決方法 |
 |--------|------|---------------|---------|
 |無法取得授權權杖裝置流程 |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is unreachable.` |無法連線到 `login.windows.net` 端點 | 確認端點的連線能力。 |
 |無法取得授權權杖裝置流程 |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is Forbidden`. |Proxy 或防火牆封鎖了對 `login.windows.net` 端點的存取。 | 驗證端點的連線能力，且防火牆或 proxy 伺服器不會封鎖它。 |
@@ -90,7 +90,7 @@ azcmagent connect \
 
 如果在這裡沒有看到問題或無法解決問題，請嘗試下列其中一個管道以取得其他支援：
 
-* 透過[Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-arc.html)取得 Azure 專家的解答。
+* 透過[Microsoft Q&A](/answers/topics/azure-arc.html)取得 Azure 專家的解答。
 
 * 連線至 [@AzureSupport](https://twitter.com/azuresupport)，這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 Azure 支援會將 Azure 社群連線到解答、支援及專家。
 

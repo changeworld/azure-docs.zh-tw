@@ -1,31 +1,31 @@
 ---
-title: 範本部署假設（預覽）
+title: '範本部署假設 (預覽) '
 description: 在部署 Azure Resource Manager 範本之前，請先判斷您的資源會發生哪些變更。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/16/2020
+ms.date: 08/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888743"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810066"
 ---
-# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 範本部署假設作業（預覽）
+# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 範本部署假設作業 (預覽) 
 
-部署 Azure Resource Manager （ARM）範本之前，您可以預覽將會發生的變更。 Azure Resource Manager 提供「假設」作業，讓您在部署範本時查看資源的變更方式。 「假設」作業不會對現有的資源進行任何變更。 相反地，它會在部署指定的範本時預測變更。
+將 Azure Resource Manager 範本部署 (ARM 範本) 之前，您可以預覽將會發生的變更。 Azure Resource Manager 提供「假設」作業，讓您在部署範本時查看資源的變更方式。 「假設」作業不會對現有的資源進行任何變更。 相反地，它會在部署指定的範本時預測變更。
 
 > [!NOTE]
 > 「假設」作業目前為預覽狀態。 作為預覽版本，結果有時可能會顯示資源將會變更，但實際上不會發生任何變更。 我們正努力減少這些問題，但我們需要您的協助。 請在報告這些問題 [https://aka.ms/whatifissues](https://aka.ms/whatifissues) 。
 
-您可以使用 Azure PowerShell、Azure CLI 或 REST API 作業的「假設」操作。 資源群組和訂用帳戶層級部署支援的假設。
+您可以使用 Azure PowerShell、Azure CLI 或 REST API 作業的「假設」操作。 資源群組、訂用帳戶、管理群組和租使用者層級部署支援的假設。
 
 ## <a name="install-azure-powershell-module"></a>安裝 Azure PowerShell 模組
 
 若要在 PowerShell 中使用「假設」，您必須具有**4.2 或更新版本的 Az 模組**。
 
-但是，在安裝所需的模組之前，請確定您有 PowerShell Core （6.x 或7.x）。 如果您有 PowerShell 5.x 或更早版本，請[更新您的 powershell 版本](/powershell/scripting/install/installing-powershell)。 您無法在 PowerShell 5.x 或更早版本上安裝所需的模組。
+但是，在安裝所需的模組之前，請確定您有 PowerShell Core (6.x 或 7.x) 。 如果您有 PowerShell 5.x 或更早版本，請[更新您的 powershell 版本](/powershell/scripting/install/installing-powershell)。 您無法在 PowerShell 5.x 或更早版本上安裝所需的模組。
 
 ### <a name="install-latest-version"></a>安裝最新版本
 
@@ -102,7 +102,7 @@ Resource changes: 1 to modify.
 ```
 
 > [!NOTE]
-> 「假設」作業無法解析[reference 函數](template-functions-resource.md#reference)。 每次您將屬性設定為包含參考函數的範本運算式時，屬性將會變更的假設報表。 發生此行為的原因是，假設會將屬性的目前值（例如 `true` `false` 布林值的或）與未解析的範本運算式進行比較。 很明顯地，這些值不會相符。 當您部署範本時，只有在範本運算式解析成不同的值時，屬性才會變更。
+> 「假設」作業無法解析[reference 函數](template-functions-resource.md#reference)。 每次您將屬性設定為包含參考函數的範本運算式時，屬性將會變更的假設報表。 發生此行為的原因是，假設會將屬性 (的目前值（例如 `true` 或） `false` 與未解析的範本運算式) 的布林值進行比較。 很明顯地，這些值不會相符。 當您部署範本時，只有在範本運算式解析成不同的值時，屬性才會變更。
 
 ## <a name="what-if-commands"></a>假設命令
 
@@ -125,20 +125,23 @@ Resource changes: 1 to modify.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要在部署範本之前預覽變更，請使用[az deployment group what if](/cli/azure/deployment/group#az-deployment-group-what-if)或[az deployment sub what if](/cli/azure/deployment/sub#az-deployment-sub-what-if)。
+若要在部署範本之前預覽變更，請使用：
 
-* `az deployment group what-if`針對資源群組部署
-* `az deployment sub what-if`針對訂用帳戶層級部署
+* [az deployment group](/cli/azure/deployment/group#az-deployment-group-what-if)適用于資源群組部署的假設
+* 適用于訂用帳戶層級部署的[az deployment sub what if](/cli/azure/deployment/sub#az-deployment-sub-what-if)
+* [az deployment mg](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if)適用于管理群組部署的假設
+* 適用于租使用者部署的[az deployment tenant if](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if)
 
-您可以使用 `--confirm-with-what-if` 參數（或其簡短形式 `-c` ）來預覽變更，並提示您繼續進行部署。 將此參數新增至[az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)或[az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)。
+您可以使用 `--confirm-with-what-if` 參數 (或其簡短形式 `-c`) 來預覽變更，並提示您是否要繼續進行部署。 將下列參數新增至：
 
-* `az deployment group create --confirm-with-what-if`或 `-c` 用於資源群組部署
-* `az deployment sub create --confirm-with-what-if`或 `-c` 適用于訂用帳戶層級部署
+* [az deployment group create](/cli/azure/deployment/group#az-deployment-group-create)
+* [az deployment sub create](/cli/azure/deployment/sub#az-deployment-sub-create)。
+* [az deployment mg create](/cli/azure/deployment/mg#az-deployment-mg-create)
+* [az deployment tenant create](/cli/azure/deployment/tenant#az-deployment-tenant-create)
 
-上述命令會傳回您可以手動檢查的文字摘要。 若要取得可透過程式設計方式檢查是否有變更的 JSON 物件，請使用：
+例如，使用 `az deployment group create --confirm-with-what-if` 或做 `-c` 為資源群組部署。
 
-* `az deployment group what-if --no-pretty-print`針對資源群組部署
-* `az deployment sub what-if --no-pretty-print`針對訂用帳戶層級部署
+上述命令會傳回您可以手動檢查的文字摘要。 若要取得可透過程式設計方式檢查是否有變更的 JSON 物件，請使用 `--no-pretty-print` 參數。 例如，用於 `az deployment group what-if --no-pretty-print` 資源群組部署。
 
 如果您想要傳回沒有色彩的結果，請開啟您的[Azure CLI 配置](/cli/azure/azure-cli-configuration)檔。 將**no_color**設定為 **[是]**。
 
@@ -147,7 +150,9 @@ Resource changes: 1 to modify.
 針對 REST API，請使用：
 
 * [部署-](/rest/api/resources/deployments/whatif)資源群組部署的 What If
-* [部署-](/rest/api/resources/deployments/whatifatsubscriptionscope)訂用帳戶層級部署的訂用帳戶範圍 What If
+* [部署-](/rest/api/resources/deployments/whatifatsubscriptionscope)訂用帳戶部署的訂用帳戶範圍 What If
+* 部署-管理群組部署的[管理群組範圍 What If](/rest/api/resources/deployments/whatifatmanagementgroupscope)
+* [部署-](/rest/api/resources/deployments/whatifattenantscope)租使用者部署的租使用者範圍 What If。
 
 ## <a name="change-types"></a>變更類型
 
@@ -312,7 +317,7 @@ Resource changes: 1 to modify.
 
 請注意，輸出的頂端會定義色彩來指出變更的類型。
 
-在輸出的底部，它會顯示已刪除標記擁有者。 位址前置詞已從 10.0.0.0/16 變更為 10.0.0.0/15。 已刪除名為 subnet001 的子網。 請記住，這些變更並未實際部署。 您會看到當您部署範本時，將會發生變更的預覽。
+在輸出的底部，它會顯示已刪除標記擁有者。 位址前置詞已從 10.0.0.0/16 變更為 10.0.0.0/15。 已刪除名為 subnet001 的子網。 請記住，這些變更並未部署。 您會看到當您部署範本時，將會發生變更的預覽。
 
 列為 deleted 的部分屬性實際上不會變更。 當屬性不在範本中時，可能會錯誤地回報為已刪除，但會在部署期間自動設定為預設值。 此結果會被視為「假設」回應中的「雜訊」。 最後部署的資源將會有為屬性設定的值。 當假設作業成熟時，這些屬性將會從結果中篩選掉。
 

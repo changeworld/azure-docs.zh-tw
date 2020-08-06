@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506565"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809998"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>應用程式閘道相關的常見問題集
 
@@ -339,12 +339,12 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="my-ev-certificate-is-issued-by-digicert-and-my-intermediate-certificate-has-been-revoked-how-do-i-renew-my-certificate-on-application-gateway"></a>我的 EV 憑證是由 DigiCert 發行，而我的中繼憑證已被撤銷。 如何? 在應用程式閘道上更新我的憑證？
 
-憑證授權單位單位（CA）瀏覽器成員最近發佈的報表，詳述由我們的客戶、Microsoft 和較大的技術人員所使用的多個 CA 所發行的憑證，而這些認證不符合公開信任 Ca 的業界標準。與不相容的 Ca 相關的報告可在這裡找到：  
+憑證授權單位單位 (CA) 瀏覽器成員最近發佈的報表，詳述由我們的客戶、Microsoft 及不符合公開信任的 Ca 之業界標準而提供的多個 CA 所發行的憑證。與不相容的 Ca 相關的報告可在這裡找到：  
 
 * [Bug 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [Bug 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-根據產業的合規性需求，CA 廠商開始撤銷不符合規範的 Ca，併發行符合規範的 Ca，要求客戶重新發行其憑證。Microsoft 與這些廠商密切合作，以將 Azure 服務的潛在影響降至最低，**不過，您自行發行的憑證或「自備憑證」（BYOC）案例中使用的憑證仍然有意外撤銷的風險**。
+根據產業的合規性需求，CA 廠商開始撤銷不符合規範的 Ca，併發行符合規範的 Ca，要求客戶重新發行其憑證。Microsoft 與這些廠商密切合作，以將 Azure 服務的潛在影響降至最低，**但您自行發行的憑證或用於「自備憑證」 (BYOC) 案例的憑證，仍有意外撤銷的風險**。
 
 若要檢查您的應用程式所使用的憑證是否已被撤銷，請參考[DigiCert 的公告](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement)和[憑證撤銷追蹤](https://misissued.com/#revoked)器。 如果您的憑證已撤銷或將被撤銷，您就必須向應用程式中使用的 CA 廠商要求新憑證。 若要避免因為憑證意外撤銷而中斷應用程式的可用性，或要更新已撤銷的憑證，請參閱我們的 Azure 更新文章，以取得支援 BYOC 之各種 Azure 服務的補救連結：https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
@@ -353,13 +353,13 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 如果您使用的是其中一個撤銷的 ICAs 所發行的憑證，您的應用程式可用性可能會中斷，並視您的應用程式而定，您可能會收到各種錯誤訊息，包括但不限於： 
 
 1.  憑證/已撤銷的憑證無效
-2.  連接逾時
+2.  連線逾時
 3.  HTTP 502
 
 若要避免因為此問題而造成應用程式中斷，或重新發行已被撤銷的 CA，您必須採取下列動作： 
 
 1.  請洽詢您的憑證提供者，以瞭解如何重新發行您的憑證
-2.  一旦重新發出，請使用完整[的信任鏈](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains)（分葉、中繼、根憑證），在 Azure 應用程式 GATEWAY/WAF 上更新您的憑證。 根據您使用憑證的位置，在應用程式閘道的接聽程式或 HTTP 設定中，遵循下列步驟來更新憑證，並查看所述的檔連結以取得詳細資訊。
+2.  一旦重新發出，請使用完整[的信任鏈](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (分葉、中繼、根憑證) ，更新 Azure 應用程式 GATEWAY/WAF 上的憑證。 根據您使用憑證的位置，在應用程式閘道的接聽程式或 HTTP 設定中，遵循下列步驟來更新憑證，並查看所述的檔連結以取得詳細資訊。
 3.  更新您的後端應用程式伺服器，以使用重新發行的憑證。 根據您使用的後端伺服器，您的憑證更新步驟可能會有所不同。 請查看廠商提供的檔。
 
 若要更新接聽程式中的憑證：
@@ -396,7 +396,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 Kubernetes 可讓您建立 `deployment` 和 `service` 資源，以在叢集內部公開一組 Pod。 為了對外公開同樣的服務，已定義一項 [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) 資源，可提供負載平衡、TLS 終止和以名稱為基礎的虛擬裝載。
 為了滿足此 `Ingress` 資源，需要輸入控制器，以接聽 `Ingress` 資源的任何變更，並設定負載平衡器原則。
 
-應用程式閘道輸入控制器（AGIC）可讓[Azure 應用程式閘道](https://azure.microsoft.com/services/application-gateway/)當做[Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) （也稱為 AKS 叢集）的輸入使用。
+應用程式閘道輸入控制器 (AGIC) 允許使用[Azure 應用程式閘道](https://azure.microsoft.com/services/application-gateway/)作為[Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/)的輸入，也稱為 AKS 叢集。
 
 ### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>單一輸入控制器執行個體可以管理多個應用程式閘道嗎？
 
@@ -416,7 +416,7 @@ AGIC 會嘗試自動建立路由表資源與應用程式閘道子網的關聯，
 
 ### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>何時應該使用附加元件與 Helm 部署？ 
 
-請參閱這裡透過 Helm 部署的 AGIC 與在[這裡](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)部署為 AKS 附加元件的差異，特別是記載由 Helm 部署的 AGIC 所支援之案例的資料表，而不是 AKS 附加元件。 一般來說，透過 Helm 進行部署，可讓您在正式發行之前，先測試搶鮮版（Beta）功能和發行候選版本。 
+請參閱這裡透過 Helm 部署的 AGIC 與在[這裡](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)部署為 AKS 附加元件的差異，特別是記載 (s) 的案例是透過 Helm 部署的 AGIC 所支援，而不是 AKS 附加元件。 一般來說，透過 Helm 進行部署，可讓您在正式發行之前，先測試搶鮮版（Beta）功能和發行候選版本。 
 
 ### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>我可以控制要將哪個版本的 AGIC 與附加元件一起部署？
 
@@ -466,30 +466,6 @@ AGIC 會嘗試自動建立路由表資源與應用程式閘道子網的關聯，
 - 您已部署應用程式閘道 v2
 - 您在應用程式閘道子網路上有 NSG
 - 您已在該 NSG 上啟用 NSG 流量記錄
-
-### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>如何使用只有私人前端 IP 位址的應用程式閘道 V2？
-
-應用程式閘道 V2 目前不支援私人 IP 模式。 支援下列組合
-* 私人 IP 和公用 IP
-* 僅限公用 IP
-
-但是，如果想要使用只有私人 IP 的應用程式閘道 V2，您可以遵循下列程序：
-1. 建立具有公用和私人前端 IP 位址的應用程式閘道
-2. 請不要為公用前端 IP 位址建立任何接聽程式。 如果沒有為公用 IP 位址建立接聽程式，應用程式閘道就不會此位址上接聽任何流量。
-3. 依優先順序使用下列設定，針對應用程式閘道子網路建立並附加[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview)：
-    
-    a. 允許來源為 **GatewayManager** 服務標記、目的地為 **Any**、目的地連接埠為 **65200-65535** 的流量。 Azure 基礎結構通訊需要此連接埠範圍。 這些連接埠由憑證驗證保護 (鎖定)。 如果沒有適當的憑證，外部實體 (包括閘道使用者管理員) 無法變更這些端點
-    
-    b. 允許來源為 **AzureLoadBalancer** 服務標記、目的地連接埠為 **Any** 的流量
-    
-    c. 拒絕來源為 **Internet** 服務標記、目的地連接埠為 **Any** 的所有輸入流量。 在輸入規則中，將此規則設定為「最低優先順序」
-    
-    d. 保留預設規則，例如允許 VirtualNetwork 輸入，以免封鎖私人 IP 位址的存取
-    
-    e. 無法封鎖輸出網際網路連線。 否則，您會遇到記錄、計量等問題。
-
-僅限私人 IP 存取的 NSG 設定範例：![僅限私人 IP 存取的應用程式閘道 V2 NSG 設定](./media/application-gateway-faq/appgw-privip-nsg.png)
-
 
 ## <a name="next-steps"></a>後續步驟
 

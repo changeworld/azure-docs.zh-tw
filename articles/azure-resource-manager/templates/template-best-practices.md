@@ -3,12 +3,12 @@ title: 範本的最佳做法
 description: 說明用於製作 Azure Resource Manager 範本的建議方法。 提供建議來避免使用範本時的常見問題。
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248912"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809250"
 ---
 # <a name="arm-template-best-practices"></a>ARM 範本最佳做法
 
@@ -226,7 +226,7 @@ ms.locfileid: "86248912"
    
      如需有關如何連線至虛擬機器的詳細資訊，請參閱︰
    
-   * [在 Azure 中執行多層式架構的 VM](../../guidance/guidance-compute-n-tier-vm.md)
+   * [在 Azure 中執行多層式架構的 VM](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [在 Azure Resource Manager 中設定 VM 的 WinRM 存取](../../virtual-machines/windows/winrm.md)
    * [允許使用 Azure 入口網站從外部存取您的 VM](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [允許使用 PowerShell 從外部存取您的 VM](../../virtual-machines/windows/nsg-quickstart-powershell.md)

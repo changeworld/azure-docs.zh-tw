@@ -3,12 +3,12 @@ title: 使用 Azure 備份將 SAP Hana 資料庫備份至 Azure
 description: 在本文中，您將了解如何使用 Azure 備份服務，將 SAP Hana 資料庫備份至 Azure 虛擬機器。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 2f42b119c361eaddcb84dda738b50c8accc84f9c
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 0efd26272bbfc4c8f63f7f02a605d48e53577390
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439745"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809131"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>將 SAP Hana 資料庫備份到 Azure VM
 
@@ -25,7 +25,7 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
 > * 執行隨選備份作業
 
 >[!NOTE]
->從2020年8月1日起，RHEL （7.4，7.6，7.7 & 8.1） SAP Hana 備份已正式推出。
+>從2020年8月1日起，RHEL (7.4、7.6、7.7 & 8.1) 的 SAP Hana 備份已正式推出。
 
 >[!NOTE]
 >**Azure VM 中的 SQL server 虛刪除和 Azure VM 工作負載中的 SAP Hana 虛刪除**現在已有預覽版。<br>
@@ -67,7 +67,7 @@ SAP Hana 資料庫是需要低復原點目標 (RPO) 和長期保留的重要工�
 
 1. 按一下 [新增] 以儲存新建立的輸出安全性規則。
 
-同樣地，您也可以建立 Azure 儲存體和 Azure AD 的 NSG 輸出安全性規則。 如需服務標記的詳細資訊，請參閱[這篇文章](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+同樣地，您也可以建立 Azure 儲存體和 Azure AD 的 NSG 輸出安全性規則。 如需服務標記的詳細資訊，請參閱[這篇文章](../virtual-network/service-tags-overview.md)。
 
 #### <a name="azure-firewall-tags"></a>Azure 防火牆標籤
 

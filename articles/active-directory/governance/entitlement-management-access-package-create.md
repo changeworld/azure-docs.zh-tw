@@ -3,7 +3,7 @@ title: 在 [權利管理] 中建立新的存取套件-Azure AD
 description: 瞭解如何在 Azure Active Directory 權利管理中，建立您想要共用之資源的新存取封裝。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,18 +16,18 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d54c4e5980383c721629143910eafbd5ae6a527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f5c88de72bcd241f0cd42d338acbe707de6f34
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078946"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798778"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中建立新的存取套件
 
 存取封裝可讓您進行一次性的資源和原則設定，以自動管理存取套件的存取權。 本文說明如何建立新的存取封裝。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 所有存取封裝都必須放在稱為「目錄」的容器中。 目錄會定義您可以新增至存取套件的資源。 如果您未指定目錄，則會將存取套件放入一般目錄。 目前，您無法將現有的存取套件移至不同的目錄。
 
@@ -89,7 +89,7 @@ ms.locfileid: "85078946"
 
 在 [**資源角色**] 索引標籤上，您可以選取要包含在存取套件中的資源。 要求和接收存取套件的使用者將會收到存取套件中的所有資源角色。
 
-1. 按一下您要新增的資源類型（**群組和小組**、**應用程式**或**SharePoint 網站**）。
+1. 按一下您要加入 (**群組和小組**、**應用程式**或**SharePoint 網站**) 的資源類型。
 
 1. 在出現的 [選取] 窗格中，從清單中選取一或多個資源。
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Windows PowerShell DSC 安裝連線的電腦代理程式
-description: 在本文中，您將瞭解如何使用 Windows PowerShell DSC，將機器連接到 Azure 的 Azure Arc （預覽）。
+description: 在本文中，您將瞭解如何使用適用于伺服器的 Azure Arc，將機器連接到 Azure (preview) 使用 Windows PowerShell DSC。
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -8,18 +8,18 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: f3dee468764f27d930081b5a3cd415c48bb79c0d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 02661ff3c21fa27367cc9f2c399341ed2b86db3f
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104005"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809607"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>如何使用 Windows PowerShell DSC 安裝連線的電腦代理程式
 
-使用[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) （DSC），您可以將 windows 電腦的軟體安裝和設定自動化。 本文說明如何使用 DSC，為混合式 Windows 電腦上已連線的電腦代理程式安裝 Azure Arc。
+使用[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) ，您可以將 windows 電腦的軟體安裝和設定自動化。 本文說明如何使用 DSC，為混合式 Windows 電腦上已連線的電腦代理程式安裝 Azure Arc。
 
-## <a name="requirements"></a>規格需求
+## <a name="requirements"></a>需求
 
 - Windows PowerShell 4.0 版或更新版本
 
@@ -29,7 +29,7 @@ ms.locfileid: "86104005"
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>安裝 ConnectedMachine DSC 模組
 
-1. 若要手動安裝模組，請下載原始程式碼，並將專案目錄的內容解壓縮至 `$env:ProgramFiles\WindowsPowerShell\Modules folder` 。 或者，執行下列命令，使用 PowerShellGet 從 PowerShell 資源庫進行安裝（在 PowerShell 5.0 中）：
+1. 若要手動安裝模組，請下載原始程式碼，並將專案目錄的內容解壓縮至 `$env:ProgramFiles\WindowsPowerShell\Modules folder` 。 或者，使用在 PowerShell 5.0) 中的 PowerShellGet (，執行下列命令從 PowerShell 資源庫安裝：
 
     ```powershell
     Find-Module -Name AzureConnectedMachineDsc -Repository PSGallery | Install-Module
@@ -55,13 +55,13 @@ ms.locfileid: "86104005"
 >為了讓 DSC 能夠執行，Windows 必須設定為接收 PowerShell 遠端命令，即使您是在執行 localhost 設定時也一樣。 若要輕鬆正確地設定您的環境，只要在已提高權限的 PowerShell 終端機中執行 `Set-WsManQuickConfig -Force` 即可。
 >
 
-您可以使用 Cmdlet 將設定檔（MOF 檔案）套用至電腦 `Start-DscConfiguration` 。
+您可以使用 Cmdlet 將設定檔 (MOF 檔案) 套用至電腦 `Start-DscConfiguration` 。
 
 以下是您傳遞給 PowerShell 腳本以使用的參數。
 
-- `TenantId`：唯一識別碼（GUID），代表 Azure AD 的專用實例。
+- `TenantId`：唯一識別碼 (GUID) ，代表您 Azure AD 的專用實例。
 
-- `SubscriptionId`：您要讓機器在其中的 Azure 訂用帳戶的訂用帳戶識別碼（GUID）。
+- `SubscriptionId`：訂用帳戶識別碼 (您的 Azure 訂用帳戶的 GUID) 您想要讓機器在其中。
 
 - `ResourceGroup`：您要讓連線電腦所屬的資源組名。
 
@@ -91,6 +91,6 @@ PowerShell 資源庫中的[CompsiteResource](https://www.powershellgallery.com/p
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) 啟用監視等等項目，管理您的機器。
+- 了解如何使用 [Azure 原則](../../governance/policy/overview.md)，針對例如 VM [來賓設定](../../governance/policy/concepts/guest-configuration.md)、確認機器回報至預期的 Log Analytics 工作區、使用 [Azure 監視器與 VM](../../azure-monitor/insights/vminsights-enable-policy.md) 啟用監視等等項目，管理您的機器。
 
 - 深入了解 [Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。

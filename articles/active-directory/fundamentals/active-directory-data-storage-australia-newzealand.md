@@ -2,7 +2,7 @@
 title: 適用于澳大利亞客戶的身分識別資料儲存-Azure AD
 description: 瞭解 Azure Active Directory 在何處儲存其澳大利亞客戶的身分識別相關資料。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 7/21/2020
 ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749ee479f19b0855700cf1ca15aefd9b983dd7f7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 494b949594574a55df405ec0447fa6c59f386f7d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129537"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799032"
 ---
 # <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory 中澳大利亞和紐西蘭客戶的客戶資料儲存體
 
-Azure Active Directory （Azure AD）會根據您註冊 Microsoft 線上服務時所提供的國家/地區，將其客戶資料儲存在地理位置。 Microsoft Online services 包含 Office 365 和 Azure。 
+Azure Active Directory (Azure AD) 會根據您註冊 Microsoft 線上服務時所提供的國家/地區，將其客戶資料儲存在地理位置。 Microsoft Online services 包含 Office 365 和 Azure。 
 
 如需 Azure AD 和其他 Microsoft 服務資料所在位置的相關資訊，請參閱 Microsoft 信任中心的[您的資料所在位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)一節。
 

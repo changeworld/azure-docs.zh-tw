@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367430"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800478"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>將 Azure 數位 Twins 與其他服務整合
 
@@ -33,7 +33,7 @@ Azure 數位 Twins 可將資料傳送至已連線的**端點**。 支援的端�
 * [Event Grid](../event-grid/overview.md)
 * [服務匯流排](../service-bus-messaging/service-bus-messaging-overview.md)
 
-端點會使用管理 Api 或 Azure 入口網站附加至 Azure 數位 Twins。 若要深入瞭解如何將端點連結至 Azure 數位 Twins，請前往[*如何：管理端點和路由*](how-to-manage-routes.md)。
+端點會使用管理 Api 或 Azure 入口網站附加至 Azure 數位 Twins。 若要深入瞭解如何將端點連結至 Azure 數位 Twins，請前往[*如何：管理端點和路由*](how-to-manage-routes-apis-cli.md)。
 
 還有許多其他的服務，您可能會想要將資料導向其中，例如[Azure 儲存體](../storage/common/storage-introduction.md)或[時間序列深入解析](../time-series-insights/time-series-insights-update-overview.md)。 若要將您的資料傳送到這類服務，請將目的地服務附加至端點。
 
