@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 999c443a63ceb2ebb59fc0de72ecb09d1ccc3905
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d0a6b6561b5d0995d7794993608a4991b1da2718
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062620"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810134"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
@@ -52,7 +52,7 @@ ms.locfileid: "87062620"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址通訊
 
-**指引**： Azure 備份（包括 Microsoft Azure 復原服務代理程式）所使用的端點都是由 Microsoft 管理。 您必須負責任何想要部署到內部部署系統的其他控制項。
+**指導**方針： Azure 備份 (（包括 Microsoft Azure 復原服務代理程式) ）所使用的端點全都由 Microsoft 管理。 您必須負責任何想要部署到內部部署系統的其他控制項。
 
 - [瞭解 MARS 代理程式的網路和存取支援](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
@@ -70,7 +70,7 @@ ms.locfileid: "87062620"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統 (IDS/IPS)
 
-**指引**： Azure 備份（包括 Microsoft Azure 復原服務代理程式）所使用的端點都是由 Microsoft 管理。 您必須負責任何想要部署到內部部署系統的其他控制項。
+**指導**方針： Azure 備份 (（包括 Microsoft Azure 復原服務代理程式) ）所使用的端點全都由 Microsoft 管理。 您必須負責任何想要部署到內部部署系統的其他控制項。
 
 - [瞭解 MARS 代理程式的網路和存取支援](./backup-support-matrix-mars-agent.md#networking-and-access-support)
 
@@ -98,7 +98,7 @@ ms.locfileid: "87062620"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指導**方針：不適用;Azure 備份（包括 Microsoft Azure 復原服務代理程式）所使用的端點都是由 Microsoft 管理。
+**指導**方針：不適用;Azure 備份 (（包括 Microsoft Azure 復原服務代理程式) ）所使用的端點全都由 Microsoft 管理。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -140,7 +140,7 @@ ms.locfileid: "87062620"
 
 **指引**.. 針對控制平面的審核記錄，啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、azure 事件中樞或 azure 儲存體帳戶進行封存。 使用 Azure 活動記錄資料，您可判斷在 Azure 資源的控制平面層級執行任何寫入作業 (PUT、POST、DELETE) 的「內容 (What)、人員 (Who) 和時間 (When)」。
 
-此外，透過 Azure 監視器內嵌記錄，以匯總 Azure 備份所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區來查詢和執行分析，並使用儲存體帳戶進行長期/封存儲存體。 或者，您可以啟用 Azure Sentinel 或第三方安全性事件和事件管理 (SIEM)，然後使資料上線。
+此外，透過 Azure 監視器內嵌記錄，以匯總 Azure 備份所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區 (s) 來查詢和執行分析，並使用儲存體帳戶來進行長期/封存儲存體。 或者，您可以啟用 Azure Sentinel 或第三方安全性事件和事件管理 (SIEM)，然後使資料上線。
 
 - [如何啟用 Azure 活動記錄的診斷設定](../azure-monitor/platform/activity-log.md)
 
@@ -206,7 +206,7 @@ ms.locfileid: "87062620"
 
 警示主要是通知使用者，讓他們可以採取相關動作的情況。 [備份警示] 區段會顯示 Azure 備份服務所產生的警示。 這些警示是由服務所定義，而且您無法自訂建立任何警示。
 
-您也可以將 Log Analytics 工作區上架到 Azure Sentinel，因為它提供安全性協調流程自動化回應（攀升情況）解決方案。 如此可建立劇本 (自動化解決方案)，並用於修復安全性問題。 此外，您可以使用 Azure 監視器，在 Log Analytics 工作區中建立自訂記錄警示。
+您也可以將 Log Analytics 工作區上架到 Azure Sentinel，因為它會提供安全性協調流程的自動化回應 (攀升情況) 解決方案。 如此可建立劇本 (自動化解決方案)，並用於修復安全性問題。 此外，您可以使用 Azure 監視器，在 Log Analytics 工作區中建立自訂記錄警示。
 
 - [監視 Azure 備份工作負載](./backup-azure-monitoring-built-in-monitor.md)
 
@@ -248,7 +248,7 @@ ms.locfileid: "87062620"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**方針： AZURE ACTIVE DIRECTORY （AD）具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
+**指導**方針： AZURE ACTIVE DIRECTORY (AD) 具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
 支援檔：
 
@@ -284,11 +284,11 @@ ms.locfileid: "87062620"
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：使用單一登入 (SSO) 搭配 Azure Active Directory
 
-**指引**：使用 Azure 應用程式註冊（服務主體）來抓取權杖，其可透過 API 呼叫來與您的復原服務保存庫進行互動。
+**指引**：使用 Azure 應用程式註冊 (服務主體) 來抓取權杖，以透過 API 呼叫來與復原服務保存庫進行互動。
 
 - [如何呼叫 Azure REST Api](/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-- [如何向 Azure AD 註冊您的用戶端應用程式（服務主體）](/rest/api/azure/#register-your-client-application-with-azure-ad)
+- [如何向 Azure AD 註冊用戶端應用程式 (服務主體) ](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
 - [Azure 復原服務 API 資訊](/rest/api/recoveryservices/)
 
@@ -310,7 +310,7 @@ ms.locfileid: "87062620"
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
-**指引**：搭配使用特殊許可權存取工作站（PAW）與 Azure 多重要素驗證（MFA），並將其設定為登入並設定您的 Azure 備份啟用資源。
+**指導**方針：使用特殊許可權存取工作站 (PAW) 搭配 Azure 多重要素驗證 (MFA) 設定為登入並設定已啟用 Azure 備份的資源。
 
 - [特殊權限存取工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -346,7 +346,7 @@ ms.locfileid: "87062620"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指引**：使用 AZURE ACTIVE DIRECTORY （AD）做為 Azure 備份實例的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
+**指導**方針：使用 AZURE ACTIVE DIRECTORY (AD) 作為 Azure 備份實例的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
 - [如何設定 Azure 備份以使用 Azure AD 登入](../app-service/configure-authentication-provider-aad.md)
 
@@ -358,7 +358,7 @@ ms.locfileid: "87062620"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指引**： AZURE ACTIVE DIRECTORY （AD）提供可協助您探索過時帳戶的記錄檔。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
+**指導**方針： AZURE ACTIVE DIRECTORY (AD) 會提供記錄，協助您探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢閱使用者的存取權，以確定只有適當的使用者具有持續存取權。
 
 - [瞭解 Azure AD 報告](../active-directory/reports-monitoring/index.yml)
 
@@ -370,7 +370,7 @@ ms.locfileid: "87062620"
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：監視對已停用帳戶的存取嘗試
 
-**指引**：使用 AZURE ACTIVE DIRECTORY （AD）做為 Azure 備份實例的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
+**指導**方針：使用 AZURE ACTIVE DIRECTORY (AD) 作為 Azure 備份實例的中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。
 
 您可以存取 Azure AD 登入活動、audit 和風險事件記錄檔來源，讓您能夠與 Azure Sentinel 或協力廠商 SIEM 整合。
 
@@ -386,7 +386,7 @@ ms.locfileid: "87062620"
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
-**指導**方針：使用 AZURE ACTIVE DIRECTORY （AD）作為復原服務保存庫的中央驗證和授權系統。 如需控制平面（Azure 入口網站）上的帳戶登入行為偏差，請使用 Azure AD Identity Protection 和風險偵測功能來設定對偵測到與使用者身分識別相關之可疑動作的自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
+**指導**方針：使用 AZURE ACTIVE DIRECTORY (AD) 作為復原服務保存庫的中央驗證和授權系統。 如需控制平面上的帳戶登入行為偏差 (Azure 入口網站) ，請使用 Azure AD Identity Protection 和風險偵測功能，針對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
 - [如何設定 Azure 備份以使用 Azure AD 登入](../app-service/configure-authentication-provider-aad.md)
 
@@ -428,7 +428,7 @@ ms.locfileid: "87062620"
 
 **指引**：備份 Azure IaaS vm 時，Azure 備份提供獨立和隔離的備份，以防止意外損毀原始資料。 備份會儲存在復原服務保存庫中，並進行內建的復原點管理。
 
-針對開發、測試和生產復原服務保存庫，執行不同的訂用帳戶和/或管理群組。 資源應該以 VNet/子網分隔，並以適當的方式標記，並由 NSG 或 Azure 防火牆保護。 儲存或處理敏感性資料的資源應該充分地隔離。 針對虛擬機器儲存或處理敏感性資料，請在不使用時，執行原則和程式將其關閉。
+針對開發、測試和生產復原服務保存庫，執行不同的訂用帳戶和/或管理群組。 資源應該以 VNet/子網分隔，並以適當的方式標記，並由 NSG 或 Azure 防火牆保護。 儲存或處理敏感性資料的資源應該充分地隔離。 針對虛擬機器儲存或處理敏感性資料，請在不使用時，執行原則和程式 (s) 將它們關閉。
 
 支援檔：
 
@@ -458,7 +458,7 @@ Microsoft 會管理 Azure 備份的基礎結構，並已實行嚴格的控制，
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指引**：從伺服器到復原服務保存庫的備份流量會透過安全的 HTTPS 連結傳輸，並在儲存于保存庫時使用進階加密標準（AES）256加密。
+**指引**：從伺服器到復原服務保存庫的備份流量會透過安全的 HTTPS 連結傳輸，並使用進階加密標準 (AES) 256 （當儲存在保存庫時）進行加密。
 
 - [瞭解 Azure 備份中的待用加密](./backup-encryption.md)
 
@@ -480,7 +480,7 @@ Microsoft 會管理 Azure 備份的基礎結構，並已實行嚴格的控制，
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**： azure 角色型存取控制（azure RBAC）可為 azure 提供更細緻的存取權管理。 RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
+**指引**： azure RBAC) 的 azure 角色型存取控制 (可為 azure 提供更細緻的存取管理。 RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
 
 Azure 備份提供三個內建角色來控制備份管理作業：「備份參與者」、「備份操作員」和「備份讀取器」。 您可以將備份內建角色對應到各種備份管理動作。
 
@@ -504,7 +504,7 @@ Azure 備份提供三個內建角色來控制備份管理作業：「備份參�
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指導**方針： Azure 備份支援待用資料的加密。 針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。 針對雲端工作負載，資料會使用儲存體服務加密（SSE）進行靜態加密。 Microsoft 不會解密在任何時間點所備份的資料。
+**指導**方針： Azure 備份支援待用資料的加密。 針對內部部署備份，會使用您在備份至 Azure 時所提供的複雜密碼來提供靜態加密。 針對雲端工作負載，資料會使用儲存體服務加密 (SSE) 進行待用加密。 Microsoft 不會解密在任何時間點所備份的資料。
 
 當使用 MARS 代理程式進行備份，或使用以客戶管理的金鑰加密的復原服務保存庫時，只有您可以存取加密金鑰。 Microsoft 絕不會持有金鑰複本，也沒有存取金鑰的權限。 如果金鑰遺失，Microsoft 將無法復原備份資料。
 
@@ -608,7 +608,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 **指引**：在適當的情況下，使用標籤、管理群組和個別訂閱來組織及追蹤 Azure 資源。 請定期調節清查，並確保會及時刪除訂閱中未經授權的資源。
 
-此外，使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型施加限制：不允許的資源類型允許的資源類型
+此外，使用 Azure 原則來對可以在客戶)  (訂用帳戶中建立的資源類型（使用下列內建原則定義）進行限制：不允許的資源類型允許的資源類型
 
 - [如何建立額外的 Azure 訂閱](../cost-management-billing/manage/create-subscription.md)
 
@@ -630,7 +630,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
-**指引**：使用 Azure 原則來限制可在您的訂用帳戶中建立的資源類型。
+**指導**方針：使用 Azure 原則來對可在訂用帳戶 (s) 中建立的資源類型施加限制。
 
 使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。  確保已核准環境中的所有 Azure 資源。
 
@@ -668,11 +668,11 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
-**指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型施加限制：不允許的資源類型允許的資源類型
+**指引**：使用 Azure 原則來對可在客戶)  (訂用帳戶中建立的資源類型（使用下列內建原則定義）進行限制：不允許的資源類型允許的資源類型
 
 - [如何設定和管理 Azure 原則](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure 原則拒絕特定的資源類型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure 原則拒絕特定的資源類型](../governance/policy/samples/index.md)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -850,7 +850,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
-**指導**方針：不適用;這項建議適用于計算資源。支援 Azure 服務的基礎主機（例如 Azure 備份）會啟用 Microsoft 反惡意程式碼，但不會在客戶內容上執行。
+**指導**方針：不適用;這項建議適用于計算資源。支援 Azure 服務的基礎主機上已啟用 Microsoft 反惡意程式碼 (例如 Azure 備份) ，但不會對客戶內容執行。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -858,7 +858,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指引**：在支援 Azure 服務的基礎主機（例如 Azure 備份）上啟用 Microsoft Antimalware，但不會在您的內容上執行。
+**指引**：在支援 Azure 服務的基礎主機上啟用 Microsoft Antimalware (例如 Azure 備份) ，但不會在您的內容上執行。
 
 預先掃描任何正在上傳到非計算 Azure 資源的檔案，例如 App Service、Data Lake Storage、Blob 儲存體等等。
 
@@ -894,7 +894,7 @@ Microsoft 所掃描和修補的基礎平台。 查看可供 Azure 備份的安�
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份任何客戶管理的金鑰
 
-**指引**：本機多餘儲存體（LRS）會在資料中心的儲存體縮放單位中，複寫您的資料三次（它會建立三個數據複本）。 此資料的所有複本都存在於相同的區域內。 LRS 是保護您的資料免于本機硬體失敗的低成本選項。異地冗余儲存體（GRS）是預設和建議的複寫選項。 GRS 會將資料複寫到次要地區 (與來源資料主要位置距離數百英哩)。 GRS 的價格高於 LRS，但可為您的資料提供更高層級的持久性，即使遭受區域性中斷也不影響。
+**指導**方針：本機的冗余儲存體 (LRS) 會將您的資料複寫三次， (它會在資料中心的儲存體縮放單位中建立三份資料) 。 此資料的所有複本都存在於相同的區域內。 LRS 是保護您的資料免于本機硬體失敗的低成本選項。異地冗余儲存體 (GRS) 是預設和建議的複寫選項。 GRS 會將資料複寫到次要地區 (與來源資料主要位置距離數百英哩)。 GRS 的價格高於 LRS，但可為您的資料提供更高層級的持久性，即使遭受區域性中斷也不影響。
 
 在 Azure Key Vault 內備份客戶管理的金鑰。
 

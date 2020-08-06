@@ -4,12 +4,12 @@ description: 了解如何使用 Java 開發函式。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 121a3263a28da5e17b1ab918529aa9f285089687
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372411"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810083"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 開發人員指南
 
@@ -19,7 +19,7 @@ ms.locfileid: "87372411"
 
 | 開始使用 | 概念| 
 | -- | -- |  
-| <ul><li>[使用 Visual Studio Code 的 JAVA 函式](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[使用終端機/命令提示字元的 JAVA/Maven 函式](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[使用 Gradle 的 JAVA 函式](functions-create-first-java-gradle.md)</li><li>[使用 Eclipse 的 JAVA 函式](functions-create-maven-eclipse.md)</li><li>[使用 IntelliJ 的 JAVA 函數概念](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> |
+| <ul><li>[使用 Visual Studio Code 的 JAVA 函式](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[使用終端機/命令提示字元的 JAVA/Maven 函式](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[使用 Gradle 的 JAVA 函式](functions-create-first-java-gradle.md)</li><li>[使用 Eclipse 的 JAVA 函式](functions-create-maven-eclipse.md)</li><li>[使用 IntelliJ 的 JAVA 函數概念](functions-create-maven-intellij.md)</li></ul> | <ul><li>[開發人員指南](functions-reference.md)</li><li>[主機選項](functions-scale.md)</li><li>[效能 &nbsp; 考慮](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>JAVA 函數基本概念
 
@@ -142,9 +142,9 @@ _JAVA 11 的支援目前為預覽狀態_
 
 下錶針對每個主要版本的函式執行時間，依作業系統顯示目前支援的 JAVA 版本：
 
-| Functions 版本 | JAVA 版本（Windows） | JAVA 版本（Linux） |
+| Functions 版本 | JAVA 版本 (Windows)  | JAVA 版本 (Linux)  |
 | ----- | ----- | --- |
-| 3.x | 11（預覽）<br/>8<sup>\*</sup> | 11（預覽）<br/>8 |
+| 3.x | 11 (preview) <br/>8<sup>\*</sup> | 11 (preview) <br/>8 |
 | 2.x | 8 | n/a |
 
 <sup>\*</sup>這是 Maven 原型所產生之 pom.xml 的目前預設值。
@@ -153,7 +153,7 @@ _JAVA 11 的支援目前為預覽狀態_
 
 目前，Maven 原型會產生以 JAVA 8 為目標的 pom.xml。 pom.xml 中的下列元素需要更新，才能建立執行 JAVA 11 的函式應用程式。
 
-| 元素 |  JAVA 8 值 | JAVA 11 值 | 說明 |
+| 項目 |  JAVA 8 值 | JAVA 11 值 | 描述 |
 | ---- | ---- | ---- | --- |
 | **`Java.version`** | 1.8 | 11 | Maven 所使用的 JAVA 版本。 |
 | **`JavaVersion`** | 8 | 11 | Azure 中的函數應用程式所裝載的 JAVA 版本。 |
@@ -173,7 +173,7 @@ _JAVA 11 的支援目前為預覽狀態_
 
 Maven 也可讓您指定函數應用程式在 Azure 中執行的作業系統。 使用 `os` 元素來選擇作業系統。 
 
-| 元素 |  Windows | Linux | Docker |
+| 項目 |  Windows | Linux | Docker |
 | ---- | ---- | ---- | --- |
 | **`os`** | windows | 廠商 | docker |
 

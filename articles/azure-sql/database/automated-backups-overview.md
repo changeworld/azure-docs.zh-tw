@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: c24a78413b09de04a10266f883e11617bb7a2f27
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554034"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810257"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -26,22 +26,38 @@ ms.locfileid: "87554034"
 
 ## <a name="what-is-a-database-backup"></a>什麼是資料庫備份？
 
-資料庫備份是任何商務持續性和嚴重損壞修復策略不可或缺的一部分，因為它們會保護您的資料免于損毀或刪除。
+資料庫備份是任何商務持續性和嚴重損壞修復策略不可或缺的一部分，因為它們會保護您的資料免于損毀或刪除。 這些備份可讓您在設定的保留期間內，將資料庫還原到某個時間點。 如果您的資料保護規則要求您的備份可延長時間 (最多10年) ，您可以為單一和集區資料庫設定[長期保留](long-term-retention-overview.md)。
+
+### <a name="backup-frequency"></a>備份頻率
 
 SQL Database 和 SQL 受控執行個體都使用 SQL Server 技術來建立每週的[完整備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server)、每隔12-24 小時的[差異備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)，以及每隔5到10分鐘的[交易記錄備份](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server)。 交易記錄備份的頻率是以計算大小和資料庫活動量為基礎。
 
 當您還原資料庫時，服務會判斷需要還原的完整、差異和交易記錄備份。
 
-這些備份可讓您在設定的保留期間內，將資料庫還原到某個時間點。 備份會儲存為[GRS 儲存體 blob](../../storage/common/storage-redundancy.md) ，並複寫到[配對的區域](../../best-practices-availability-paired-regions.md)，以防止中斷影響主要區域中的備份儲存體。 
+### <a name="backup-storage-redundancy"></a>備份儲存體冗余
 
-如果您的資料保護規則要求您的備份可延長時間 (最多10年) ，您可以為單一和集區資料庫設定[長期保留](long-term-retention-overview.md)。
+> [!IMPORTANT]
+> 備份的可設定儲存體冗余目前僅適用于 SQL 受控執行個體，而且只能在建立受控實例進程期間指定。 布建資源之後，您就無法變更備份儲存體的冗余選項。
+
+設定備份儲存體冗余的選項可讓您彈性地在本機-多餘的 (LRS) 、區域冗余 (ZRS) 或異地冗余 (RA-GRS) [儲存體 blob](../../storage/common/storage-redundancy.md)之間進行選擇。 儲存體冗余機制會儲存資料的多個複本，以防止計畫和未規劃的事件，包括暫時性硬體故障、網路或電源中斷，或大規模的嚴重災難。 這項功能目前僅適用于 SQL 受控執行個體。
+
+GRS 儲存體 blob 會複寫到[配對的區域](../../best-practices-availability-paired-regions.md)，以防止中斷影響主要區域中的備份儲存體，並可讓您在發生嚴重損壞的情況時，將伺服器還原到不同的區域。 
+
+相反地，LRS 和 ZRS 儲存體 blob 可確保您的資料會保留在 SQL Database 或 SQL 受控執行個體部署所在的相同區域中。 區域冗余儲存體 (ZRS) 目前僅適用于) 的[特定區域](../../storage/common/storage-redundancy.md#zone-redundant-storage)。
+
+> [!IMPORTANT]
+> 在 SQL 受控執行個體中，設定的備份冗余會套用到短期備份保留設定，以用於時間點還原 (PITR) 以及長期備份所使用的長期保留備份 (LTR) 。
+
+### <a name="backup-usage"></a>備份使用量
 
 您可以使用這些備份來︰
 
-- 使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API，將[現有的資料庫還原至](recovery-using-backups.md#point-in-time-restore)保留期限內過去的時間點。 針對單一和集區資料庫，此作業會在與原始資料庫相同的伺服器上建立新的資料庫，但在不同的名稱下，以避免覆寫原始資料庫。 還原完成之後，您可以刪除或[重新命名](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database)原始資料庫，並重新命名已還原的資料庫，使其具有原始資料庫名稱。 在受控實例上，這項作業可以同樣地在相同的訂用帳戶和相同的區域中，于相同或不同的受控實例上建立資料庫複本。
-- 將[已刪除的資料庫還原至刪除的時間](recovery-using-backups.md#deleted-database-restore)或保留期間內的任何時間點。 已刪除的資料庫只能在原始資料庫建立所在的相同伺服器或受控實例上還原。 刪除資料庫時，服務會在刪除之前先取得最後的交易記錄備份，以避免任何資料遺失。
-- [將資料庫還原到另一個地理區域](recovery-using-backups.md#geo-restore)。 異地還原可讓您在無法存取您的資料庫或主要區域中的備份時，從地理災難中復原。 它會在任何 Azure 區域中的任何現有伺服器或受控實例上建立新的資料庫。
-- 如果資料庫已設定長期保留原則 (LTR) ，請從單一資料庫或集區資料庫[的特定長期備份還原資料庫](long-term-retention-overview.md)。 LTR 可讓您使用[Azure 入口網站](long-term-backup-retention-configure.md#using-the-azure-portal)或[Azure PowerShell](long-term-backup-retention-configure.md#using-powershell)來還原舊版本的資料庫，以滿足合規性要求或執行舊版的應用程式。 如需詳細資訊，請參閱[長期保留](long-term-retention-overview.md)。
+- **現有資料庫**  -  的時間點還原使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API，將[現有的資料庫還原至](recovery-using-backups.md#point-in-time-restore)保留期限內過去的時間點。 針對 SQL Database，此作業會在與原始資料庫相同的伺服器上建立新的資料庫，但會使用不同的名稱來避免覆寫原始資料庫。 還原完成之後，您可以刪除原始資料庫。 或者，您可以[重新命名](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database)原始資料庫，然後將還原的資料庫重新命名為原始的資料庫名稱。 同樣地，針對 SQL 受控執行個體，此作業會在相同的訂用帳戶和相同的區域中，于相同或不同的受控實例上建立資料庫複本。
+- **已刪除資料庫**  -  的時間點還原將[已刪除的資料庫還原至刪除的時間](recovery-using-backups.md#deleted-database-restore)或保留期間內的任何時間點。 已刪除的資料庫只能在原始資料庫建立所在的相同伺服器或受控實例上還原。 刪除資料庫時，服務會在刪除之前先取得最後的交易記錄備份，以避免任何資料遺失。
+- **異地還原**  - [將資料庫還原到另一個地理區域](recovery-using-backups.md#geo-restore)。 異地還原可讓您在無法存取您的資料庫或主要區域中的備份時，從地理災難中復原。 它會在任何 Azure 區域中的任何現有伺服器或受控實例上建立新的資料庫。
+   > [!IMPORTANT]
+   > 異地還原僅適用于已設定異地冗余 (RA GRS) 備份儲存體的受控實例。
+- **從長期備份還原**  - 如果資料庫已設定長期保留原則 (LTR) ，請從單一資料庫或集區資料庫[的特定長期備份還原資料庫](long-term-retention-overview.md)。 LTR 可讓您使用[Azure 入口網站](long-term-backup-retention-configure.md#using-the-azure-portal)或[Azure PowerShell](long-term-backup-retention-configure.md#using-powershell)來還原舊版本的資料庫，以滿足合規性要求或執行舊版的應用程式。 如需詳細資訊，請參閱[長期保留](long-term-retention-overview.md)。
 
 若要執行還原，請參閱[從備份還原資料庫](recovery-using-backups.md)。
 
@@ -50,13 +66,13 @@ SQL Database 和 SQL 受控執行個體都使用 SQL Server 技術來建立每�
 
 您可以使用下列範例來嘗試備份設定和還原作業：
 
-| | Azure 入口網站 | Azure PowerShell |
+| 作業 | Azure 入口網站 | Azure PowerShell |
 |---|---|---|
-| **變更備份保留期** | [單一資料庫](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [受控實例](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [單一資料庫](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[受控實例](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| **變更長期備份保留期** | [單一資料庫](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>受控實例-N/A  | [單一資料庫](long-term-backup-retention-configure.md)<br/>受控實例-N/A  |
-| **從某個時間點還原資料庫** | [單一資料庫](recovery-using-backups.md#point-in-time-restore) | [單一資料庫](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [受控實例](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| **還原已刪除的資料庫** | [單一資料庫](recovery-using-backups.md) | [單一資料庫](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [受控實例](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| **從 Azure Blob 儲存體還原資料庫** | 單一資料庫-N/A <br/>受控實例-N/A  | 單一資料庫-N/A <br/>[受控實例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| **變更備份保留期** | [SQL Database](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL 受控執行個體](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL 受控執行個體](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| **變更長期備份保留期** | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL 受控執行個體-N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>[SQL 受控執行個體](../managed-instance/long-term-backup-retention-configure.md)  |
+| **從某個時間點還原資料庫** | [SQL Database](recovery-using-backups.md#point-in-time-restore)<br>[SQL 受控執行個體](../managed-instance/point-in-time-restore.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [SQL 受控執行個體](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| **還原已刪除的資料庫** | [SQL Database](recovery-using-backups.md)<br>[SQL 受控執行個體](../managed-instance/point-in-time-restore.md#restore-a-deleted-database) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [SQL 受控執行個體](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| **從 Azure Blob 儲存體還原資料庫** | SQL Database-N/A <br/>SQL 受控執行個體-N/A  | SQL Database-N/A <br/>[SQL 受控執行個體](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="backup-scheduling"></a>備份排程
 
@@ -98,6 +114,7 @@ SQL Database 和 SQL 受控執行個體會計算已使用的備份儲存體總�
 - 對於大型資料載入作業，請考慮使用叢集資料行存放區[索引](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes)，並遵循相關的[最佳作法](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)，並（或）減少非叢集索引的數目。
 - 在一般用途服務層級中，布建的資料儲存體會比備份儲存體的價格便宜。 如果您持續過高的備份儲存體成本，您可以考慮增加資料儲存空間，以儲存在備份儲存體上。
 - 在應用程式邏輯中使用 TempDB，而不是永久資料表來儲存暫存結果和/或暫時性資料。
+- 盡可能使用本機-多餘的備份儲存體 (例如開發/測試環境) 
 
 ## <a name="backup-retention"></a>備份保留期
 
@@ -112,15 +129,13 @@ SQL Database 和 SQL 受控執行個體會計算已使用的備份儲存體總�
 
 ### <a name="long-term-retention"></a>長期保留
 
-針對單一和集區資料庫和受控實例，您可以在 Azure Blob 儲存體中設定長期保留 (LTR) 的完整備份（最多10年）。 如果您啟用 LTR 原則，每週完整備份會自動複製到不同的 GRS 儲存體容器。 若要符合各種合規性需求，您可以針對每週、每月和/或每年完整備份選取不同的保留週期。 儲存體耗用量取決於選取的 LTR 備份頻率，以及保留期間或期間。 您可以使用[ltr 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=sql-database)來預估 LTR 儲存體的成本。
-
-就像 PITR 備份，LTR 備份會以異地多餘儲存體來保護。 如需詳細資訊，請參閱 [Azure 儲存體備援](../../storage/common/storage-redundancy.md) \(部分機器翻譯\)。
+對於 SQL Database 和 SQL 受控執行個體，您可以在 Azure Blob 儲存體中設定完整備份長期保留 (LTR) 最多10年。 設定 LTR 原則之後，會每週自動將完整備份複製到不同的儲存體容器。 若要符合各種合規性需求，您可以針對每週、每月和/或每年完整備份選取不同的保留週期。 儲存體耗用量取決於選取的頻率和 LTR 備份的保留期間。 您可以使用[ltr 定價計算機](https://azure.microsoft.com/pricing/calculator/?service=sql-database)來預估 LTR 儲存體的成本。
 
 如需 LTR 的詳細資訊，請參閱[長期備份保留](long-term-retention-overview.md)。
 
 ## <a name="storage-costs"></a>儲存體費用
 
-備份儲存體的價格會因您使用的是 DTU 模型或 vCore 模型，也會根據您的區域而有所不同。 備份儲存體是依取用的每 GB/月計費，如需定價，請參閱[Azure SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database/single/)頁面和[Azure SQL 受控執行個體定價](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)頁面。
+備份儲存體的價格會有所不同，並取決於您的購買模型 (DTU 或 vCore) 、選擇的備份儲存體冗余選項，以及您的區域。 備份儲存體是依取用的每 GB/月計費，如需定價，請參閱[Azure SQL Database 定價](https://azure.microsoft.com/pricing/details/sql-database/single/)頁面和[Azure SQL 受控執行個體定價](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)頁面。
 
 ### <a name="dtu-model"></a>DTU 模型
 
@@ -153,6 +168,18 @@ SQL Database 和 SQL 受控執行個體會在所有備份檔案中，以累計�
 實際的備份計費案例較複雜。 因為資料庫中的變更速率取決於工作負載，且在一段時間內是可變的，所以每個差異和記錄備份的大小也會不同，導致每小時備份儲存體耗用量有相應的波動。 此外，每個差異備份都會包含自上次完整備份之後，資料庫中所做的所有變更，因此，所有差異備份的總大小會逐漸增加一周的時間，然後在一組較舊的完整、差異和記錄備份過期之後，變得非常顯著。例如，如果在完整備份完成後才執行大量寫入活動（例如索引重建），則索引重建所做的修改將會包含在重建期間所建立的交易記錄備份中、下一次的差異備份中，以及在下一次完整備份之前所進行的每個差異備份。 對於較大資料庫中的第二個案例，服務中的優化會建立完整備份，而不是差異備份（如果差異備份會過度大）。 這會減少所有差異備份的大小，直到下列完整備份為止。
 
 您可以依照[監視耗用量](#monitor-consumption)中所述，監視每個備份類型的備份儲存體總耗用量 (完整、差異、交易記錄) 一段時間。
+
+### <a name="backup-storage-redundancy"></a>備份儲存體冗余
+
+備份儲存體冗余會以下列方式影響備份成本：
+- LRS price = x
+- ZRS price = 1.25 x
+- RA-GRS price = 2x
+
+如需備份儲存體定價的詳細資訊，請參閱[Azure SQL Database 定價頁面](https://azure.microsoft.com/pricing/details/sql-database/single/)和[Azure SQL 受控執行個體定價頁面](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
+
+> [!IMPORTANT]
+> 備份的可設定儲存體冗余目前僅適用于 SQL 受控執行個體，而且只能在建立受控實例進程期間指定。 布建資源之後，您就無法變更備份儲存體的冗余選項。
 
 ### <a name="monitor-costs"></a>監視成本
 
@@ -300,6 +327,54 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 ```
 
 如需詳細資訊，請參閱[備份保留 REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)。
+
+#### <a name="sample-request"></a>範例要求
+
+```http
+PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview
+```
+
+#### <a name="request-body"></a>Request body
+
+```json
+{
+  "properties":{
+    "retentionDays":28
+  }
+}
+```
+
+#### <a name="sample-response"></a>範例回應
+
+狀態碼：200
+
+```json
+{
+  "id": "/subscriptions/00000000-1111-2222-3333-444444444444/providers/Microsoft.Sql/resourceGroups/resourceGroup/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default",
+  "name": "default",
+  "type": "Microsoft.Sql/resourceGroups/servers/databases/backupShortTermRetentionPolicies",
+  "properties": {
+    "retentionDays": 28
+  }
+}
+```
+
+如需詳細資訊，請參閱[備份保留 REST API](https://docs.microsoft.com/rest/api/sql/backupshorttermretentionpolicies)。
+
+## <a name="configure-backup-storage-redundancy"></a>設定備份儲存體冗余
+
+> [!NOTE]
+> 備份的可設定儲存體冗余目前僅適用于 SQL 受控執行個體，而且只能在建立受控實例進程期間指定。 布建資源之後，您就無法變更備份儲存體的冗余選項。
+
+受控實例的備份儲存體冗余只能在實例建立期間設定。 預設值為 [異地冗余儲存體] (GRS) 。 如需當地 (LRS) 之間的定價差異，區域冗余 (ZRS) 和異地冗余 (RA-GRS) 備份儲存體，請造訪[受控實例定價頁面](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
+
+### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>使用 Azure 入口網站設定備份儲存體冗余
+
+在 Azure 入口網站中，當您建立 SQL 受控執行個體時，[**基本**] 索引標籤上的 [**設定受控執行個體**] 選項可**存取 [變更**備份儲存體冗余] 的選項。
+![開啟計算 + 儲存設定-分頁](./media/automated-backups-overview/open-configuration-blade-mi.png)
+
+在 [**計算 + 儲存體**] 分頁上尋找選取備份儲存體冗余的選項。
+![設定備份儲存體冗余](./media/automated-backups-overview/select-backup-storage-redundancy-mi.png)
 
 ## <a name="next-steps"></a>後續步驟
 

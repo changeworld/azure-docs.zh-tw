@@ -4,12 +4,12 @@ description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件
 ms.topic: conceptual
 author: davidsmatlak
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79aaa594a708fe775a2cdcc6e15b7c7f880f9f50
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515841"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810474"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -258,7 +258,7 @@ ms.locfileid: "86515841"
 
 ### <a name="media-services-v2-legacy"></a>媒體服務 v2 (舊版)
 
-如需媒體服務 v2 （舊版）特定的限制，請參閱[媒體服務 v2 （舊版）](../../media-services/previous/media-services-quotas-and-limitations.md)
+如需媒體服務 v2 (舊版) 特有的限制，請參閱[媒體服務 v2 (舊版) ](../../media-services/previous/media-services-quotas-and-limitations.md)
 
 ## <a name="mobile-services-limits"></a>行動服務限制
 
@@ -375,11 +375,11 @@ ms.locfileid: "86515841"
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-如需詳細資訊，請參閱[虛擬機器大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如需詳細資訊，請參閱[虛擬機器大小](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 #### <a name="disk-encryption-sets"></a>磁片加密集
 
-每個訂用帳戶的每個區域都有50個磁片加密集的限制。 如需詳細資訊，請參閱[Linux](/azure/virtual-machines/linux/disk-encryption#restrictions)或[Windows](/azure/virtual-machines/windows/disk-encryption#restrictions)虛擬機器的加密檔。 如果您需要增加配額，請聯絡 Azure 支援。
+每個訂用帳戶的每個區域都有50個磁片加密集的限制。 如需詳細資訊，請參閱[Linux](../../virtual-machines/linux/disk-encryption.md#restrictions)或[Windows](../../virtual-machines/windows/disk-encryption.md#restrictions)虛擬機器的加密檔。 如果您需要增加配額，請聯絡 Azure 支援。
 
 ### <a name="managed-virtual-machine-disks"></a>受控虛擬機器磁碟
 
@@ -426,6 +426,6 @@ ms.locfileid: "86515841"
 ## <a name="see-also"></a>另請參閱
 
 * [瞭解 Azure 限制和增加](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-* [Azure 的虛擬機器和雲端服務大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure 的虛擬機器和雲端服務大小](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure 雲端服務的大小](../../cloud-services/cloud-services-sizes-specs.md)
 * [Azure 資源的命名規則和限制](resource-name-rules.md)

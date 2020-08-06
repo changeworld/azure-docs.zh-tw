@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
-ms.openlocfilehash: 3e38fae84f63f4867befbc3695242dc62dc8dbe8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502642"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810219"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>從 Express.js 轉移至 Azure Functions
 
@@ -27,7 +27,7 @@ Express.js 是適用于 網頁程式開發人員的其中一個最受歡迎的 N
 - 設定**和慣例**：函式應用程式會使用檔案_上的function.js_來定義 HTTP 動詞命令、定義安全性原則，以及設定函數的[輸入和輸出](./functions-triggers-bindings.md)。 根據預設，包含函式檔案的資料夾名稱會定義端點名稱，但是您可以透過檔案中function.js的屬性來變更名稱 `route` 。 [function.json](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint)
 
 > [!TIP]
-> 若要深入瞭解，請透過互動式教學課程將[Node.js 和 Express Api 重構至具有 Azure Functions 的無伺服器 api](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/)。
+> 若要深入瞭解，請透過互動式教學課程將[Node.js 和 Express Api 重構至具有 Azure Functions 的無伺服器 api](/learn/modules/shift-nodejs-express-apis-serverless/)。
 
 ## <a name="example"></a>範例
 
@@ -109,7 +109,7 @@ export default httpTrigger;
 
 - **CoNtext 和 response 物件**：可 [`context`](./functions-reference-node.md#context-object) 讓您與函數的執行時間通訊。 從內容中，您可以讀取要求資料並設定函數的回應。 同步程式碼會要求您呼叫 `context.done()` 以完成執行，而函式會以 `asyc` 隱含方式解析要求。
 
-- **命名慣例**：根據預設，用來包含 Azure Functions 檔案的資料夾名稱會作為端點名稱（這可以在的[function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint)中覆寫）。
+- **命名慣例**：根據預設，用來包含 Azure Functions 檔案的資料夾名稱會作為端點名稱 (這可以在) 的[function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint)中覆寫。
 
 - 設定 **：您**可以在檔案（例如或）[上定義function.js](./functions-bindings-http-webhook-trigger.md#customize-the-http-endpoint)中的 HTTP 指令動詞 `POST` `PUT` 。
 
@@ -138,4 +138,4 @@ export default httpTrigger;
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要深入瞭解，請前往互動式教學課程使用[Azure Functions 將 Node.js 和 Express Api 重構至無伺服器 api](https://docs.microsoft.com/learn/modules/shift-nodejs-express-apis-serverless/)
+- 若要深入瞭解，請前往互動式教學課程使用[Azure Functions 將 Node.js 和 Express Api 重構至無伺服器 api](/learn/modules/shift-nodejs-express-apis-serverless/)

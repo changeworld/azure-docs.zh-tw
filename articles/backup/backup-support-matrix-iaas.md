@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3be5bdffd999907234fff64f8f88459d9c9b18b6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9d7e3b4f565fac42d0a91d155846e672c7437f2d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531858"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810457"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -18,7 +18,7 @@ ms.locfileid: "87531858"
 其他支援矩陣：
 
 - Azure 備份的[一般支援矩陣](backup-support-matrix.md)
-- Azure 備份 server/System Center Data Protection Manager （DPM）備份的[支援矩陣](backup-support-matrix-mabs-dpm.md)
+- Azure 備份 server/System Center Data Protection Manager (DPM) 備份的[支援矩陣](backup-support-matrix-mabs-dpm.md)
 - 使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的[支援矩陣](backup-support-matrix-mars-agent.md)
 
 ## <a name="supported-scenarios"></a>支援的案例
@@ -58,7 +58,7 @@ ms.locfileid: "87531858"
 
 **案例** | **OS 支援**
 --- | ---
-使用 Azure VM 代理程式擴充功能進行備份 | - Windows 10 用戶端 (僅限 64 位元) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2012 （Datacenter/Standard） <br/><br/> - Windows Server 2008 R2 (RTM 及 SP1 Standard)  <br/><br/> - Windows Server 2008 (僅限 64 位元)
+使用 Azure VM 代理程式擴充功能進行備份 | - Windows 10 用戶端 (僅限 64 位元) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2012 (Datacenter/Standard)  <br/><br/> - Windows Server 2008 R2 (RTM 及 SP1 Standard)  <br/><br/> - Windows Server 2008 (僅限 64 位元)
 使用 MARS 代理程式進行備份 | [支援的](backup-support-matrix-mars-agent.md#supported-operating-systems)作業系統。
 使用 DPM/MABS 備份 | 使用 [MABS](backup-mabs-protection-matrix.md) 和 [DPM](/system-center/dpm/dpm-protection-matrix) 進行備份時支援的作業系統。
 
@@ -137,7 +137,7 @@ DPM/MABS 磁碟上的復原點 | 64 個 (檔案伺服器) 及 448 個 (應用程
 
 **計算** | **支援**
 --- | ---
-VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<br/><br/> [深入了解。](../virtual-machines/windows/sizes.md)
+VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<br/><br/> [深入了解。](../virtual-machines/sizes.md)
 備份[可用性設定組](../virtual-machines/availability.md#availability-sets)中的 VM | 支援。<br/><br/> 您無法使用快速建立 VM 的選項來還原可用性設定組中 VM。 在還原 VM 時，您必須還原磁碟並將其用來部署 VM，或還原磁碟並將其用來取代現有的磁碟。
 備份使用 [Hybrid Use Benefit (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) (機器翻譯) 部署的 VM | 支援。
 備份在[擴展集](../virtual-machine-scale-sets/overview.md)中部署的 VM |支援。 容錯網域的[協調流程模式](../virtual-machine-scale-sets/orchestration-modes.md)應設定為2。 不支援可用性設定組。
@@ -155,7 +155,7 @@ VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<b
 
 **元件** | **支援**
 --- | ---
-Azure VM 資料磁碟 | 除了國家雲端（Azure Government、Azure 中國世紀和 Azure 德國）以外的所有區域，支援最多32個磁片的 Azure Vm 備份均處於公開預覽狀態。<br><br> 使用非受控磁碟的 Azure VM 或傳統 VM 僅支援備份最多 16 個磁碟。
+Azure VM 資料磁碟 | 除了國家雲端 (Azure Government、Azure 中國的世紀和 Azure 德國) 以外，所有區域中的 Azure Vm 備份（最多32個磁片）都處於公開預覽狀態。<br><br> 使用非受控磁碟的 Azure VM 或傳統 VM 僅支援備份最多 16 個磁碟。
 資料磁碟大小 | 個別磁碟大小最高可達 32 TB，單一 VM 中所有磁碟大小最高可達 256 TB。
 儲存體類型 | 標準 HDD、標準 SSD、進階 SSD。
 受控磁碟 | 支援。
@@ -164,7 +164,7 @@ Azure VM 資料磁碟 | 除了國家雲端（Azure Government、Azure 中國世�
 備份和還原已刪除重複資料的 VM/磁碟 | Azure 備份不支援重復資料刪除。 如需詳細資訊，請參閱這篇[文章](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  -Azure 備份不會在復原服務保存庫中的 Vm 之間刪除重複 <br/> <br/>  -如果還原期間有 Vm 處於重復資料刪除狀態，則無法還原檔案，因為保存庫不會瞭解格式。 不過，您可以成功執行完整的 VM 還原。
 將磁碟新增至受保護的 VM | 支援。
 在受保護的 VM 上調整磁碟大小 | 支援。
-共用存放裝置| 不支援使用叢集共用磁碟區（CSV）或向外延展檔案伺服器備份 Vm。 CSV 寫入器可能會在備份期間失敗。 還原時，包含 CSV 磁碟區的磁碟可能無法執行。
+共用存放裝置| 不支援使用叢集共用磁碟區 (CSV) 或向外延展檔案伺服器備份 Vm。 CSV 寫入器可能會在備份期間失敗。 還原時，包含 CSV 磁碟區的磁碟可能無法執行。
 [共用磁碟](../virtual-machines/windows/disks-shared-enable.md) | 不支援。
 
 ## <a name="vm-network-support"></a>VM 網路支援
