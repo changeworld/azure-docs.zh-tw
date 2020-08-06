@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 46ea77b26bb0c31a10cfac11c389ea5a21a8f4ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a3870ae192955df11107f0ebb5c618b90a0cc799
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502525"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833244"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>如何使用 PowerShell 備份和還原適用於 MariaDB 的 Azure 資料庫伺服器
 
@@ -78,7 +78,7 @@ Cmdlet 的**PointInTimeRestore**參數集 `Restore-AzMariaDbServer` 需要下列
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 | resourceGroupName |  myresourcegroup |  來源伺服器所在的資源群組。  |
-| Name | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
+| 名稱 | mydemoserver-restored | 還原命令所建立之新伺服器的名稱。 |
 | RestorePointInTime | 2020-03-13T13：59：00Z | 選取要還原的時間點。 這個日期和時間必須在來源伺服器的備份保留期限內。 請使用 ISO8601 日期和時間格式。 例如，您可以使用自己的當地時區，例如**2020-03-13T05：59： 00-08： 00**。 您也可以使用 UTC 祖魯文格式，例如**2018-03-13T13：59： 00Z**。 |
 | UsePointInTimeRestore | `<SwitchParameter>` | 使用還原時間點模式。 |
 
@@ -120,7 +120,7 @@ Cmdlet 的**dr**參數集 `Restore-AzMariaDbServer` 需要下列參數：
 | 設定 | 建議的值 | 描述  |
 | --- | --- | --- |
 |resourceGroupName | myresourcegroup | 新伺服器所屬的資源組名。|
-|Name | mydemoserver-georestored | 新伺服器的名稱。 |
+|名稱 | mydemoserver-georestored | 新伺服器的名稱。 |
 |Location | eastus | 新伺服器的位置。 |
 |UseGeoRestore | `<SwitchParameter>` | 使用異地模式來進行還原。 |
 
@@ -133,4 +133,4 @@ Cmdlet 的**dr**參數集 `Restore-AzMariaDbServer` 需要下列參數：
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [使用 PowerShell 自訂適用於 MariaDB 的 Azure 資料庫伺服器參數](howto-configure-server-parameters-using-powershell.md)
+> [如何使用 PowerShell 產生適用於 MariaDB 的 Azure 資料庫連接字串](howto-connection-string-powershell.md)

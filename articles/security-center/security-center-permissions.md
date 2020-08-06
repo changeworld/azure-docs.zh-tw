@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: 953881b0c576ad6ce12a4dc44bb0980edd7bcd50
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 3f7d08e2290291dfcd931ed5609e30d5fec9f973
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970547"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835641"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 資訊安全中心的權限
 
-Azure 資訊安全中心會使用[角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)，以提供可在 Azure 中指派給使用者、群組與服務的[內建角色](../role-based-access-control/built-in-roles.md)。
+Azure 資訊安全中心使用[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)，它會提供可在 azure 中指派給使用者、群組和服務的[內建角色](../role-based-access-control/built-in-roles.md)。
 
 資訊安全中心會評估資源的組態，以識別安全性問題與弱點。 在「資訊安全中心」中，當您獲指派為資源所屬的訂用帳戶或資源群組「擁有者」、「參與者」或「讀取者」角色時，您只會看到與資源相關的項目。
 
@@ -43,10 +43,10 @@ Azure 資訊安全中心會使用[角色型存取控制 (RBAC)](../role-based-ac
 |動作|安全性讀取者/ <br> 讀取者 |安全性系統管理員  |資源群組參與者/ <br> 資源群組擁有者  |訂用帳戶參與者  |訂用帳戶擁有者  |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |編輯安全性原則|-|✔|-|-|✔|
-|新增/指派計畫（包括）法規合規性標準）|-|-|-|-|✔|
+|新增/指派方案 (包括) 法規合規性標準) |-|-|-|-|✔|
 |變更訂用帳戶定價層|-|✔|-|-|✔|
 |啟用/停用自動布建|-|✔|✔|-|✔|
-|針對資源套用安全性建議</br> （並使用[快速修正！](security-center-remediate-recommendations.md#quick-fix-remediation)）|-|-|✔|✔|✔|
+|針對資源套用安全性建議</br>  (並使用[快速修正！](security-center-remediate-recommendations.md#quick-fix-remediation)) |-|-|✔|✔|✔|
 |關閉警示|-|✔|-|✔|✔|
 |檢視警示和建議|✔|✔|✔|✔|✔|
 

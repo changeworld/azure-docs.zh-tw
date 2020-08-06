@@ -3,12 +3,12 @@ title: 如何設定 Azure Functions 執行階段目標版本
 description: Azure Functions 支援多個執行階段版本。 了解如何指定 Azure 中裝載之函式應用程式的執行階段版本。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 3d4e40af1ba1e28bc9e9a433872e1315ffbe7747
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 74ee0d382dcd468aed118a7de330eef95b329402
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079650"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830864"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>如何設定 Azure Functions 執行階段目標版本
 
@@ -16,12 +16,12 @@ ms.locfileid: "87079650"
 
 ## <a name="automatic-and-manual-version-updates"></a>自動和手動版本更新
 
-Azure Functions 可讓您使用 `FUNCTIONS_EXTENSION_VERSION` 函數應用程式中的應用程式設定，以特定版本的執行時間為目標。 函式應用程式會保留在指定的主要版本上，直到您明確選擇移至新版本為止。
+Azure Functions 可讓您使用 `FUNCTIONS_EXTENSION_VERSION` 函數應用程式中的應用程式設定，以特定版本的執行時間為目標。 函式應用程式會保留在指定的主要版本上，直到您明確選擇移至新版本為止。 如果您只指定主要版本，則函式應用程式會在執行時間可供使用時，自動更新為新的次要版本。 新的次要版本不應引進重大變更。 
 
-如果您只指定主要版本，則函式應用程式會在執行時間可供使用時，自動更新為新的次要版本。 新的次要版本不應引進重大變更。 如果您指定次要版本 (例如 "2.0.12345")，則函式應用程式會釘選到該特定版本，直到您明確地變更它。
+如果您指定次要版本 (例如 "2.0.12345")，則函式應用程式會釘選到該特定版本，直到您明確地變更它。 較舊的次要版本會定期從生產環境中移除。 發生這種情況之後，您的函數應用程式會在最新版本上執行，而不是在中設定的版本 `FUNCTIONS_EXTENSION_VERSION` 。 因此，您應該快速解決需要特定次要版本的函式應用程式問題，讓您可以改為以主要版本為目標。 次要版本的移除會在[App Service 宣告](https://github.com/Azure/app-service-announcements/issues)中宣佈。
 
 > [!NOTE]
-> 如果您釘選到特定版本的 Azure Functions，然後嘗試使用 Visual Studio 來發行至 Azure，則會顯示對話方塊視窗，提示您更新至最新版本或取消發行。 若要避免這個情況，請 `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` 在您的檔案中新增屬性 `.csproj` 。
+> 如果您釘選到特定主要版本的 Azure Functions，然後嘗試使用 Visual Studio 發佈至 Azure，則會顯示對話方塊視窗，提示您更新至最新版本或取消發行。 若要避免這個情況，請 `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` 在您的檔案中新增屬性 `.csproj` 。
 
 有新版本公開發行時，入口網站會提示您向上移至該版本。 移至新版本之後，您隨時可以使用 `FUNCTIONS_EXTENSION_VERSION` 應用程式設定移回舊版。
 

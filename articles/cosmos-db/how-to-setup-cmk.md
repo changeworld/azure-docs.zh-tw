@@ -4,14 +4,14 @@ description: 了解如何使用 Azure Key Vault 為您的 Azure Cosmos DB 帳戶
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 989fbb123e39f85aeeb8eba9961f9aeab1e76c84
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092592"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836504"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>使用 Azure Key Vault 為您的 Azure Cosmos 帳戶設定客戶管理的金鑰
 
@@ -64,6 +64,8 @@ ms.locfileid: "87092592"
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="選取 Azure Cosmos DB 主體":::
 
 1. 選取 [新增] 以新增存取原則。
+
+1. 選取 [Key Vault 實例上的 [**儲存**]，以儲存所有變更。
 
 ## <a name="generate-a-key-in-azure-key-vault"></a>在 Azure Key Vault 中產生金鑰
 
@@ -255,7 +257,7 @@ az cosmosdb show \
     
 ## <a name="error-handling"></a>錯誤處理
 
-在 Azure Cosmos DB 中使用客戶管理的金鑰（CMK）時，如果發生任何錯誤，Azure Cosmos DB 會在回應中傳回錯誤詳細資料以及 HTTP 子狀態碼。 您可以使用這個子狀態碼來偵測問題的根本原因。 請參閱[Azure Cosmos DB 的 Http 狀態碼](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)文章，以取得支援的 HTTP 子狀態代碼清單。
+使用客戶管理的金鑰 (在 Azure Cosmos DB 中的 CMK) 時，如果發生任何錯誤，Azure Cosmos DB 會在回應中傳回錯誤詳細資料以及 HTTP 子狀態碼。 您可以使用這個子狀態碼來偵測問題的根本原因。 請參閱[Azure Cosmos DB 的 Http 狀態碼](/rest/api/cosmos-db/http-status-codes-for-cosmosdb)文章，以取得支援的 HTTP 子狀態代碼清單。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 

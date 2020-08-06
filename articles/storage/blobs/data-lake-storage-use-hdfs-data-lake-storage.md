@@ -1,6 +1,6 @@
 ---
 title: 使用 HDFS CLI 搭配 Azure Data Lake Storage Gen2
-description: 適用於 Data Lake Storage Gen2 的 HDFS CLI 簡介
+description: 針對 Azure Data Lake Storage Gen2 使用 Hadoop 分散式檔案系統 (HDFS) CLI。 建立容器、取得檔案或目錄的清單，以及其他資訊。
 services: storage
 author: normesta
 ms.service: storage
@@ -9,16 +9,16 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109445"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836304"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>使用 HDFS CLI 搭配 Data Lake Storage Gen2
 
-您可以使用命令列介面來存取和管理儲存體帳戶中的資料，就像使用[Hadoop 分散式檔案系統（HDFS）](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)一樣。 本文提供一些可協助您開始使用的範例。
+您可以使用命令列介面來存取和管理儲存體帳戶中的資料，就像使用[Hadoop 分散式檔案系統 (HDFS) ](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)一樣。 本文提供一些可協助您開始使用的範例。
 
 HDInsight 提供本機連接至計算節點之分散式容器的存取權。 您可以使用直接與 HDFS 和 Hadoop 支援的其他檔案系統互動的 shell 來存取此容器。
 

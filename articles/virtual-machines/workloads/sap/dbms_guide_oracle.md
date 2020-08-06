@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3301667c0ee6ad739b6fb734c2cea3aef4889bd9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051848"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832258"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署
 
@@ -359,9 +359,9 @@ Windows 和 Oracle Linux 是 Oracle 和 Azure 上的 SAP 唯一支援的作業�
 
 Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔案服務)。 如需詳細資訊，請參閱
 
-- [Microsoft Azure 檔案服務簡介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Microsoft Azure 檔案服務簡介](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [保留與 Microsoft Azure 檔案的連線](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [保留與 Microsoft Azure 檔案的連線](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 
 如果您是使用以 Azure 分頁 Blob 儲存體或受控磁碟為基礎的磁碟，在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中所述的內容同樣適用於搭配 Oracle Database 所做的部署。
@@ -450,9 +450,9 @@ Oracle 支援 Oracle 軟體在以 Oracle Linux 為客體 OS 的 Microsoft Azure 
 
 Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔案服務)。 如需詳細資訊，請參閱下列： 
 
-- [Microsoft Azure 檔案服務簡介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Microsoft Azure 檔案服務簡介](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [保留與 Microsoft Azure 檔案的連線](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [保留與 Microsoft Azure 檔案的連線](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 如果您是使用以 Azure 分頁 Blob 儲存體或受控磁碟為基礎的磁碟，在[適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](dbms_guide_general.md)中所述的內容同樣適用於搭配 Oracle Database 所做的部署。
 

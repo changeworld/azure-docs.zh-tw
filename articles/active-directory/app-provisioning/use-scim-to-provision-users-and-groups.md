@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8138f125c55e3b2d76cb680ea48366c5a3e05fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051527"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829691"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -745,7 +745,7 @@ TLS 1.2 加密套件的最低標準：
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 範圍
-Azure AD 布建服務目前可在任何 Azure IP 範圍下運作。 工作正在進行中，以合併服務操作所在的一組 IP 範圍。 一旦合併 IP 範圍清單之後，就會更新此檔。 
+Azure AD 布建服務目前會在 AzureActiveDirectory 和 AzureActiveDirectoryDomainServices 的 IP 範圍下運作，如[這裡](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)所列。 工作正在進行中，只會合並到 AzureActiveDirectory 下的 IP 範圍。 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>步驟 3：建置 SCIM 端點
 
@@ -918,7 +918,7 @@ https://docs.microsoft.com/aspnet/core/fundamentals/environments)
 Azure Active Directory 查詢服務的使用者，其 `externalId` 屬性值符合 Azure AD 中使用者的 mailNickname 屬性值。 查詢會以類似於此範例的超文字傳輸通訊協定 (HTTP) 要求表示，其中，jyoung 是 Azure Active Directory 中使用者的 mailNickname 範例。
 
 >[!NOTE]
-> 這只是範例。 並非所有使用者都有 mailNickname 屬性，且使用者的值在目錄中可能不是唯一的。 此外，用於比對的屬性（在此案例中為 `externalId` ）可在[Azure AD 屬性](customize-application-attributes.md)對應中進行設定。
+> 這只是範例。 並非所有使用者都有 mailNickname 屬性，且使用者的值在目錄中可能不是唯一的。 此外，用於比對 (的屬性（在此案例中為 `externalId`) 可在[Azure AD 屬性](customize-application-attributes.md)對應中設定）。
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1

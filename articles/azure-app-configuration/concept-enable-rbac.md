@@ -6,15 +6,15 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: d399a9f51eca6298cc829001a2da3b85ba001f27
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8889e7270127aa3991adb3c0575a4bce96090db2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528981"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830066"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>使用 Azure Active Directory 來授權 Azure 應用程式組態的存取權
-除了使用雜湊型訊息驗證碼（HMAC），Azure 應用程式組態支援使用 Azure Active Directory （Azure AD）來授權應用程式組態實例的要求。  Azure AD 可讓您使用角色型存取控制 (RBAC) 將權限授與安全性主體。  安全性主體可以是使用者、[受控識別](../active-directory/managed-identities-azure-resources/overview.md)或[應用程式服務主體](../active-directory/develop/app-objects-and-service-principals.md)。  若要深入了解角色和角色指派，請參閱[了解不同的角色](../role-based-access-control/overview.md)。
+除了使用雜湊型訊息驗證碼 (HMAC) ，Azure 應用程式組態支援使用 Azure Active Directory (Azure AD) 來授權應用程式組態實例的要求。  Azure AD 可讓您使用角色型存取控制 (RBAC) 將權限授與安全性主體。  安全性主體可以是使用者、[受控識別](../active-directory/managed-identities-azure-resources/overview.md)或[應用程式服務主體](../active-directory/develop/app-objects-and-service-principals.md)。  若要深入了解角色和角色指派，請參閱[了解不同的角色](../role-based-access-control/overview.md)。
 
 ## <a name="overview"></a>概觀
 安全性主體為了存取應用程式組態資源所提出的要求必須獲得授權。 有了 Azure AD，對資源的存取是兩個步驟的程式：
@@ -26,7 +26,7 @@ ms.locfileid: "87528981"
 授權步驟要求將一或多個 Azure 角色指派給安全性主體。 Azure 應用程式組態提供的 Azure 角色包含應用程式組態資源的許可權集。 指派給安全性主體的角色會決定提供給主體的權限。 如需 Azure 角色的詳細資訊，請參閱[適用于 Azure 應用程式組態的 azure 內建角色](#azure-built-in-roles-for-azure-app-configuration)。 
 
 ## <a name="assign-azure-roles-for-access-rights"></a>指派存取權限的 Azure 角色
-Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../role-based-access-control/overview.md)，來授與存取受保護資源的權限。
+Azure Active Directory (Azure AD) 會透過 azure [RBAC () 以角色為基礎的存取控制](../role-based-access-control/overview.md)，授權保護資源的存取權限。
 
 將 Azure 角色指派給 Azure AD 的安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取範圍限定為應用程式組態資源。 Azure AD 安全性主體可以是使用者或應用程式服務主體，或是 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)。
 

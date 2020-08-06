@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 7f78b5d0baff149fc687d2b4bb71d70186315def
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d00b897f41ab00f0e3c23292eeb5f431bf5c070c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543821"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835930"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性簡介
 ## <a name="overview"></a>概觀
@@ -74,7 +74,7 @@ Azure 的基礎結構設計涵蓋設備與應用程式，可同時裝載數以�
 以 Azure Resource Manager 範本為基礎的部署，有助於提升部署於 Azure 中之解決方案的安全性 (因為標準的安全性控制設定)，並且可整合至以標準化範本為基礎的部署中。 這會降低可能需要在手動部署期間執行的安全性設定錯誤風險。
 
 ### <a name="application-insights"></a>Application Insights
-[Application Insights](https://docs.microsoft.com/azure/application-insights/)是適用于 網頁程式開發人員的可擴充應用程式效能管理（APM）服務。 使用 Application Insights，您可以即時監視 Web 應用程式，並自動偵測效能異常。 其中包括強大的分析工具可協助您診斷問題，並了解使用者實際如何運用您的應用程式。 它會在您的應用程式執行時全程加以監視，包括測試期間，以及您加以發佈或部署之後。
+[Application Insights](https://docs.microsoft.com/azure/application-insights/)是適用于 網頁程式開發人員的可延伸應用程式效能管理 (APM) 服務。 使用 Application Insights，您可以即時監視 Web 應用程式，並自動偵測效能異常。 其中包括強大的分析工具可協助您診斷問題，並了解使用者實際如何運用您的應用程式。 它會在您的應用程式執行時全程加以監視，包括測試期間，以及您加以發佈或部署之後。
 
 Application Insights 會建立圖表和資料表為您顯示多種資訊，例如，您在一天中的哪些時間有最多使用者、應用程式的回應性如何，以及它所依存的任何外部服務是否順暢地為其提供服務。
 
@@ -84,7 +84,7 @@ Application Insights 會建立圖表和資料表為您顯示多種資訊，例�
 [Azure 監視器](https://docs.microsoft.com/azure/monitoring-and-diagnostics/)針對來自 Azure 基礎結構 ([活動記錄](../../azure-monitor/platform/platform-logs-overview.md)) 及每個個別的 Azure 資源 ([診斷記錄](../../azure-monitor/platform/platform-logs-overview.md)) 的資料，提供視覺效果、查詢、路由、警示、自動調整及自動化功能。 您可以使用 Azure 監視器，在 Azure 記錄中產生安全性相關事件時接收警示通知。
 
 ### <a name="azure-monitor-logs"></a>Azure 監視器記錄
-[Azure 監視器記錄](https://azure.microsoft.com/documentation/services/log-analytics/)–除了 Azure 資源之外，還會為內部部署和協力廠商雲端式基礎結構（例如 AWS）提供 IT 管理解決方案。 來自 Azure 監視器的資料可以直接路由至 Azure 監視器記錄，讓您可以在一處查看整個環境的計量和記錄。
+[Azure 監視器記錄](https://azure.microsoft.com/documentation/services/log-analytics/)–為內部部署和協力廠商雲端式基礎結構 (提供 IT 管理解決方案，例如 Azure 資源以外的 AWS) 。 來自 Azure 監視器的資料可以直接路由至 Azure 監視器記錄，讓您可以在一處查看整個環境的計量和記錄。
 
 Azure 監視器記錄在法庭和其他安全性分析中是很有用的工具，因為此工具可讓您透過彈性的查詢方法，快速搜尋大量的安全性相關專案。 此外，您[可以將內部部署防火牆和 proxy 記錄匯出至 Azure，並可使用 Azure 監視器記錄進行分析。](../../log-analytics/log-analytics-agent-windows.md)
 
@@ -138,7 +138,7 @@ App Service Web 應用程式會針對來自 Web 伺服器和 Web 應用程式的
 -   應用程式錯誤 (顯示例外狀況事件)
 -   效能 (顯示效能事件)
 
-## <a name="storage"></a>存放裝置
+## <a name="storage"></a>儲存體
 本節提供關於 Azure 儲存體安全性中主要功能的其他資訊，以及這些功能的摘要資訊。
 
 ### <a name="role-based-access-control-rbac"></a>角色型存取控制 (RBAC)
@@ -186,7 +186,7 @@ Azure 儲存體服務目前支援 CORS，因此，一旦您設定服務的 CORS 
 網路存取控制是指限制與特定裝置或子網路間之連線的動作，並代表網路安全性的核心。 網路存取控制的目的是確定只有您想要它們存取的使用者和裝置，才能存取您的虛擬機器和服務。
 
 #### <a name="network-security-groups"></a>網路安全性群組
-「[網路安全性群組」（NSG）](../../virtual-network/virtual-network-vnet-plan-design-arm.md)是一種基本的具狀態封包篩選防火牆，可讓您根據[5 個元組](https://www.techopedia.com/definition/28190/5-tuple)來控制存取。 NSG 未提供應用程式層級檢查或已驗證的存取控制。 它們可用來控制在 Azure 虛擬網路內子網路之間移動的流量，以及在 Azure 虛擬網路與網際網路之間的流量。
+[ (NSG) 的網路安全性群組](../../virtual-network/virtual-network-vnet-plan-design-arm.md)是基本的具狀態封包篩選防火牆，可讓您根據[5 個元組](https://www.techopedia.com/definition/28190/5-tuple)來控制存取。 NSG 未提供應用程式層級檢查或已驗證的存取控制。 它們可用來控制在 Azure 虛擬網路內子網路之間移動的流量，以及在 Azure 虛擬網路與網際網路之間的流量。
 
 #### <a name="route-control-and-forced-tunneling"></a>路由控制和強制通道
 控制您 Azure 虛擬網路上路由行為的能力是重大網路安全性和存取控制功能。 例如，如果您想要確定進出 Azure 虛擬網路的所有流量都會經過該虛擬安全性設備，您需要能夠控制和自訂路由行為。 做法是在 Azure 中設定使用者定義的路由。
@@ -233,11 +233,11 @@ Microsoft [Azure 應用程式閘道](../../application-gateway/overview.md)會�
 
 ![應用程式閘道](./media/overview/azure-security-fig2.png)
 
-它可讓您將 CPU 密集的 TLS 終止卸載至應用程式閘道（也稱為「TLS 卸載」或「TLS 橋接」），藉此優化 web 伺服陣列的生產力。 它也提供其他第 7 層路由功能，包括循環配置傳入流量、以 Cookie 為基礎的工作階段同質性、URL 路徑型路由，以及在單一應用程式閘道背後代管多個網站的能力。 Azure 應用程式閘道是第 7 層負載平衡器。
+它可讓您將 CPU 密集的 TLS 終止卸載至應用程式閘道 (也稱為「TLS 卸載」或「TLS 橋接」 ) ，藉此優化 web 伺服陣列的生產力。 它也提供其他第 7 層路由功能，包括循環配置傳入流量、以 Cookie 為基礎的工作階段同質性、URL 路徑型路由，以及在單一應用程式閘道背後代管多個網站的能力。 Azure 應用程式閘道是第 7 層負載平衡器。
 
 不論是在雲端或內部部署中，此閘道均提供在不同伺服器之間進行容錯移轉及效能路由傳送 HTTP 要求。
 
-應用程式提供許多應用程式傳遞控制器（ADC）功能，包括 HTTP 負載平衡、以 cookie 為基礎的會話親和性、 [TLS](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)卸載、自訂健康情況探查、多網站支援，以及許多其他專案。
+應用程式提供許多應用程式傳遞控制器 (ADC) 功能，包括 HTTP 負載平衡、以 cookie 為基礎的會話親和性、 [TLS](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)卸載、自訂健康情況探查、多網站支援，以及許多其他專案。
 
 ### <a name="web-application-firewall"></a>Web 應用程式防火牆
 Web 應用程式防火牆是 [Azure 應用程式閘道](../../application-gateway/overview.md)的一項功能，可保護使用應用程式閘道執行標準應用程式傳遞控制 (ADC) 功能的 Web 應用程式。 Web 應用程式防火牆的做法是保護應用程式以防範 OWASP 前 10 個最常見的 Web 弱點。
@@ -276,7 +276,7 @@ Microsoft [Azure 流量管理員](../../traffic-manager/traffic-manager-overview
 您可以在管理入口網站或網路組態檔中，管理用於 VNet 的 DNS 伺服器清單。 客戶可以為每個 VNet 新增最多 12 部 DNS 伺服器。 指定 DNS 伺服器時，請務必確認您會針對客戶環境以正確順序列出客戶的 DNS 伺服器。 DNS 伺服器清單不會使用循環配置資源， 而會依其指定的順序來使用。 如果可以連接至清單上的第一部 DNS 伺服器，用戶端就會使用該 DNS 伺服器，而無論該 DNS 伺服器是否運作正常。 若要變更客戶虛擬網路的 DNS 伺服器順序，請從清單中移除 DNS 伺服器，然後以客戶想要的順序將其重新加入。 DNS 支援 “CIA” 安全性三部曲的可用性層面。
 
 ### <a name="azure-dns"></a>Azure DNS
-[網域名稱系統](https://technet.microsoft.com/library/bb629410.aspx)（或 DNS）負責將網站或服務名稱轉譯（或解析）為其 IP 位址。 [Azure DNS](../../dns/dns-overview.md) 是 DNS 網域的主機服務，採用 Microsoft Azure 基礎結構提供名稱解析。 只要將您的網域裝載於 Azure，就可以像管理其他 Azure 服務一樣，使用相同的認證、API、工具和計費方式來管理 DNS 記錄。 DNS 支援 “CIA” 安全性三部曲的可用性層面。
+[網域名稱系統](https://technet.microsoft.com/library/bb629410.aspx)（或 DNS）負責將網站或服務名稱)  (或解析為其 IP 位址。 [Azure DNS](../../dns/dns-overview.md) 是 DNS 網域的主機服務，採用 Microsoft Azure 基礎結構提供名稱解析。 只要將您的網域裝載於 Azure，就可以像管理其他 Azure 服務一樣，使用相同的認證、API、工具和計費方式來管理 DNS 記錄。 DNS 支援 “CIA” 安全性三部曲的可用性層面。
 
 ### <a name="azure-monitor-logs-nsgs"></a>Azure 監視器記錄 Nsg
 您可以啟用下列 NSG 的診斷記錄類別︰
@@ -288,7 +288,7 @@ Microsoft [Azure 流量管理員](../../traffic-manager/traffic-manager-overview
 ### <a name="security-center"></a>資訊安全中心
 [Azure 資訊安全中心](../../security-center/security-center-intro.md)會持續分析 Azure 資源的安全性狀態，以取得網路安全性的最佳作法。 當資訊安全中心識別潛在的安全性弱點時，它會建立[建議](../../security-center/security-center-recommendations.md)，引導您完成設定所需控制項來強化和保護資源的程式。
 
-## <a name="compute"></a>運算
+## <a name="compute"></a>計算
 本節提供關於這個領域中主要功能的其他資訊，以及這些功能的摘要資訊。
 
 ### <a name="antimalware--antivirus"></a>反惡意程式碼與防毒軟體
@@ -336,7 +336,7 @@ Microsoft 在其產品與服務上使用多個安全性作法與技術來管理�
 
 -   [權杖型驗證](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)可透過 Azure Active Directory 啟用驗證。
 
--   [角色型存取控制 (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) 可讓您根據使用者指派的角色來授與存取權限，以便輕鬆地只為使用者提供執行其作業內容所需的存取權限。 您可以針對每個組織的商務模型和風險承受度自訂 RBAC。
+-   Azure[角色型存取控制 (AZURE RBAC) ](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/)可讓您根據使用者獲指派的角色授與存取權，讓使用者能夠輕鬆地僅提供執行其工作職責所需的存取權。 您可以針對每個組織的商務模型和風險承受度自訂 RBAC。
 
 -   [整合式身分識別管理 (混合式身分識別)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) 可讓您維持控制使用者在內部資料中心和雲端平台上的存取權，建立單一使用者身分識別，以便對所有資源進行驗證與授權。
 
@@ -345,7 +345,7 @@ Microsoft 在其產品與服務上使用多個安全性作法與技術來管理�
 
 | 免費/常用功能     | 基本功能    |Premium P1 功能 |Premium P2 功能 | Azure Active Directory Join – 僅適用於 Windows 10 的相關功能|
 | :------------- | :------------- |:------------- |:------------- |:------------- |
-|   [目錄物件](../../active-directory/active-directory-whatis.md)、[使用者/群組管理（新增/更新/刪除）/以使用者為基礎的布建、裝置註冊](../../active-directory/active-directory-whatis.md)、[單一登入（SSO）](../../active-directory/active-directory-whatis.md)、[雲端使用者的自助式密碼變更](../../active-directory/active-directory-whatis.md)、連線[（將內部部署目錄延伸至 Azure Active Directory 的同步處理引擎）](../../active-directory/active-directory-whatis.md)、[安全性/使用量報告](../../active-directory/active-directory-whatis.md)       |   以[群組為基礎的存取管理/](../../active-directory/active-directory-whatis.md)布建、[雲端使用者的自助式密碼重設](../../active-directory/active-directory-whatis.md)、[公司商標（登入頁面/存取面板自訂）](../../active-directory/active-directory-whatis.md)、[應用程式 Proxy](../../active-directory/active-directory-whatis.md)、 [SLA 99.9%](../../active-directory/active-directory-whatis.md) |  [自助式群組和應用程式管理/自助式應用程式新增/動態群組](../../active-directory/active-directory-whatis.md)、[使用內部部署回寫的自助式密碼重設/變更/解除鎖定](../../active-directory/active-directory-whatis.md)、[多重要素驗證（雲端與內部部署（MFA SERVER））](../../active-directory/active-directory-whatis.md)、 [MIM CAL + MIM 伺服器](../../active-directory/active-directory-whatis.md)、 [Cloud App Discovery](../../active-directory/active-directory-whatis.md)、 [Connect Health](../../active-directory/active-directory-whatis.md)、[群組帳戶的自動密碼變換](../../active-directory/active-directory-whatis.md)|    身分[識別保護](../../active-directory/identity-protection/overview.md)， [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   將[裝置加入 Azure AD、桌面 SSO、Azure AD 的 Microsoft Passport、系統管理員 bitlocker](../../active-directory/active-directory-whatis.md)復原、 [MDM 自動註冊、自助式 BitLocker 復原、透過 Azure AD 加入的 Windows 10 裝置的其他本機系統管理員](../../active-directory/active-directory-whatis.md)|
+|   [目錄物件](../../active-directory/active-directory-whatis.md)、[使用者/群組管理 (新增/更新/刪除) /以使用者為基礎的布建、裝置註冊](../../active-directory/active-directory-whatis.md)、[單一登入 (SSO) ](../../active-directory/active-directory-whatis.md)、[雲端使用者的自助式密碼變更](../../active-directory/active-directory-whatis.md)、連線[ (同步處理引擎，將內部部署目錄延伸至 Azure Active Directory) ](../../active-directory/active-directory-whatis.md)、[安全性/使用量報告](../../active-directory/active-directory-whatis.md)       |   以[群組為基礎的存取管理/](../../active-directory/active-directory-whatis.md)布建、[雲端使用者的自助式密碼重設](../../active-directory/active-directory-whatis.md)、[公司商標 (登入頁面/存取面板自訂) ](../../active-directory/active-directory-whatis.md)、[應用程式 Proxy](../../active-directory/active-directory-whatis.md)、 [SLA 99.9%](../../active-directory/active-directory-whatis.md) |  [自助式群組和應用程式管理/自助式應用程式新增/動態群組](../../active-directory/active-directory-whatis.md)、[使用內部部署回寫的自助式密碼重設/變更/解除鎖定](../../active-directory/active-directory-whatis.md)、[多重要素驗證 (雲端和內部部署 (MFA server) # B3 ](../../active-directory/active-directory-whatis.md)、 [MIM CAL + MIM 伺服器](../../active-directory/active-directory-whatis.md)、 [Cloud App Discovery](../../active-directory/active-directory-whatis.md)、 [Connect Health](../../active-directory/active-directory-whatis.md)、[群組帳戶的自動密碼變換](../../active-directory/active-directory-whatis.md)|    身分[識別保護](../../active-directory/identity-protection/overview.md)， [Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md)|   將[裝置加入 Azure AD、桌面 SSO、Azure AD 的 Microsoft Passport、系統管理員 bitlocker](../../active-directory/active-directory-whatis.md)復原、 [MDM 自動註冊、自助式 BitLocker 復原、透過 Azure AD 加入的 Windows 10 裝置的其他本機系統管理員](../../active-directory/active-directory-whatis.md)|
 
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) 是 Azure Active Directory 的一個高階功能，可讓您識別組織中的員工所使用的雲端應用程式。

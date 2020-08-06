@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 4ca6d6647882e81dbf20a0dd39b1ae659b6a6ab6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 64f1de178e2b1e1692ddad316e6c1c1d20517b78
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432994"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835828"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -37,7 +37,7 @@ ACU：150-175
 
 記憶體保留更新：不支援
 
-| 大小 | vCPU | 記憶體 (GiB) | 暫存磁碟<sup>1</sup> (GiB) | NVMe 磁碟<sup>2</sup> | NVMe 磁片輸送量<sup>3</sup> （讀取 IOPS/MBps） | 未快取的資料磁片輸送量（IOPs/MBps）<sup>4</sup> | 最大高載未快取資料磁片輸送量（IOPs/MBps）<sup>5</sup>| 資料磁碟數上限 | 最大 NIC | 預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體 (GiB) | 暫存磁碟<sup>1</sup> (GiB) | NVMe 磁碟<sup>2</sup> | NVMe 磁片輸送量<sup>3</sup> (讀取 IOPS/MBps)  | 未快取的資料磁片輸送量 (IOPs/MBps) <sup>4</sup> | 最大高載未快取的資料磁片輸送量 (IOPs/MBps) <sup>5</sup>| 資料磁碟數上限 | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 | 3200   |
 | Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 | 6400   |
@@ -59,10 +59,10 @@ ACU：150-175
 <sup>6</sup>個 vcpu 超過64的 vm 需要下列其中一種支援的客體作業系統：
 
 - Windows Server 2016 或更新版本
-- Ubuntu 16.04 LTS 或更新版本，並搭配 Azure 微調核心（4.15 核心或更新版本）
+- Ubuntu 16.04 LTS 或更新版本，其中包含 Azure 微調的核心 (4.15 核心或更新版本) 
 - SLES 12 SP2 或更新版本
-- RHEL 或 CentOS 版本6.7 至6.10，並已安裝 Microsoft 提供的 .LIS 封裝4.3.1 （或更新版本）
-- RHEL 或 CentOS 7.3 版，並已安裝 Microsoft 提供的 .LIS 封裝4.2.1 （或更新版本）
+- RHEL 或 CentOS 版本6.7 至6.10，並已安裝 Microsoft 提供的 .LIS 套件 4.3.1 (或更新版本) 
+- RHEL 或 CentOS 7.3 版，並已安裝 Microsoft 提供的 .LIS 套件 4.2.1 (或更新版本) 
 - RHEL 或 CentOS 7.6 版或更新版本
 - 使用 UEK4 或更新版本的 Oracle Linux
 - 具有反向移植核心 Debian 10 或更新版本的 Debian 9
@@ -87,7 +87,7 @@ ACU：150-175
 
 定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>後續步驟

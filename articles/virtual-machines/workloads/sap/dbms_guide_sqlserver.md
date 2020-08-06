@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1771b0b55301fe4beaf2049859ebf3b9642fdd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077350"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831051"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>適用於 SAP NetWeaver 的 SQL Server Azure 虛擬機器 DBMS 部署
 
@@ -336,7 +336,7 @@ ms.locfileid: "87077350"
 
 
 * 排除 A 系列 VM 之外，所有 SAP 認證的 VM 類型 (請參閱 SAP 附註 [1928533])、tempdb 資料和記錄檔都可以儲存至非持續性 D:\ 磁碟機上。 
-* 不過，建議使用多個 tempdb 資料檔。 請注意，D:\ 磁碟機磁碟區會根據 VM 類型而不同。 如需不同 VM 的 D:\ 磁碟機正確大小，請參閱 [Azure 中 Windows 虛擬機器的大小](../../windows/sizes.md)文章 \(機器翻譯\)。
+* 不過，建議使用多個 tempdb 資料檔。 請注意，D:\ 磁碟機磁碟區會根據 VM 類型而不同。 如需不同 VM 的 D:\ 磁碟機正確大小，請參閱 [Azure 中 Windows 虛擬機器的大小](../../sizes.md)文章 \(機器翻譯\)。
 
 這些組態讓 tempdb 所耗用的空間比系統磁碟機能夠提供的還多。 非持續性 D:\ 磁碟機也會提供更好的 I/O 延遲和輸送量 (但 A 系列 VM 除外)。 若要判斷正確的 tempdb 大小，您可以在現有的系統上檢查 tempdb 大小。 
 
@@ -379,7 +379,7 @@ SQL Server 2014 及更新版本可以直接在 Azure Blob Store上儲存資料�
 
 * 所使用之儲存體帳戶所在的 Azure 區域必須與用來部署 SQL Server 執行所在之 VM 的相同。
 * 稍早列出有關將 VHD 分散到不同 Azure 儲存體帳戶的考量，也適用於這種部署方法。 表示對 Azure 儲存體帳戶限制的 I/O 作業計數。
-* 不要針對 VM 的儲存體 I/O 配額來結算，那些針對儲存體 blob (代表 SQL Server 資料和記錄檔) 所產生的流量，都將計入特定 VM 類型的 VM 網路頻寬。 針對特定的 VM 類型的網路和儲存頻寬，請參閱 [Azure 中 Windows 虛擬機器的大小](../../windows/sizes.md)一文。
+* 不要針對 VM 的儲存體 I/O 配額來結算，那些針對儲存體 blob (代表 SQL Server 資料和記錄檔) 所產生的流量，都將計入特定 VM 類型的 VM 網路頻寬。 針對特定的 VM 類型的網路和儲存頻寬，請參閱 [Azure 中 Windows 虛擬機器的大小](../../sizes.md)一文。
 * 由於透過網路配額推送檔案 I/O 的關係，您大部分的儲存體配額都已耗損，因此 VM 的整體頻寬僅部分使用。
 * Azure 進階儲存體針對不同磁碟大小所設定的 IOPS 和 I/O 輸送量效能目標，不會再套用。 即便您建立的 blob 是位於「Azure 進階儲存體」也是如此。 [VM 高效能進階儲存體與受控磁碟](../../windows/disks-types.md#premium-ssd) \(機器翻譯\) 文章有相關目標的記載。 由於將 SQL Server 資料檔案和記錄檔直接放在 Azure 進階儲存體所儲存的 blob 上，因此相較於 Azure 進階儲存體上的 VHD，效能特性會不一樣。
 * 將 SQL Server 資料檔案直接放置在 Azure Blob 上時，適用於 Azure 進階儲存體磁碟的主機型快取將無法使用。

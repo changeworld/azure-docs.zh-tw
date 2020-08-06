@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: ad6761466cc958235557609e929e641a0311ee43
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fdf3dc56575a45ad0c9e716054184ba2691133ba
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999157"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831697"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>分析 Azure Synapse 分析中的複雜資料類型
 
-本文與 Parquet 檔案和[Synapse 連結中的](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md)容器有關 Azure Cosmos DB。 它會說明使用者如何使用 Spark 或 SQL 來讀取或轉換具有複雜架構（例如陣列或嵌套結構）的資料。 下列範例是以單一檔完成，但可以使用 Spark 或 SQL 輕鬆地調整成數十億份檔。 本文中所包含的程式碼會使用 PySpark （Python）。
+本文與 Parquet 檔案和[Synapse 連結中的](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md)容器有關 Azure Cosmos DB。 它會說明使用者如何使用 Spark 或 SQL 來讀取或轉換具有複雜架構（例如陣列或嵌套結構）的資料。 下列範例是以單一檔完成，但可以使用 Spark 或 SQL 輕鬆地調整成數十億份檔。 本文中所包含的程式碼會使用 PySpark (Python) 。
 
 ## <a name="use-case"></a>使用案例
 
@@ -70,7 +70,7 @@ ms.locfileid: "86999157"
 ```
 
 ### <a name="schema-example-of-arrays-and-nested-structures"></a>陣列和嵌套結構的架構範例
-使用命令列印物件的資料框架（稱為**df**）的架構時 `df.printschema` ，我們會看到下列標記法：
+列印物件之資料框架的架構時 (以命令) 的**df** `df.printschema` ，我們看到下列標記法：
 
 * 黃色色彩代表嵌套結構
 * 綠色色彩代表具有兩個元素的陣列
@@ -120,7 +120,7 @@ def flatten_df(nested_df):
     return nested_df.select(columns)
 ```
 
-**步驟 2**：使用函式將資料框架（**df**）的嵌套架構壓平合併為新的資料框架 `df_flat` ：
+**步驟 2**：使用函式將資料框架的嵌套架構 (**df**) 壓平合併到新的資料框架 `df_flat` ：
 
 ```python
 from pyspark.sql.types import StringType, StructField, StructType
@@ -164,8 +164,8 @@ Display 函數應該會顯示13個數據行和2個數據列。
 
 | BULK              | FORMAT |
 | -------------------- | --- |
-| 'https://ACCOUNTNAME.dfs.core.windows.net/FILESYSTEM/PATH/FINENAME.parquet' |' Parquet ' （ADLSg2）|
-| N'endpoint = https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/ ; account = ACCOUNTNAME; database = DATABASENAME; collection = COLLECTIONNAME; region = REGIONTOQUERY，SECRET = ' YOURSECRET ' |' CosmosDB ' （Synapse 連結）|
+| 'https://ACCOUNTNAME.dfs.core.windows.net/FILESYSTEM/PATH/FINENAME.parquet' |' Parquet ' (ADLSg2) |
+| N'endpoint = https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/ ; account = ACCOUNTNAME; database = DATABASENAME; collection = COLLECTIONNAME; region = REGIONTOQUERY '，SECRET = ' YOURSECRET ' |' CosmosDB ' (Synapse 連結) |
 
 
 > [!NOTE]
@@ -179,8 +179,8 @@ Display 函數應該會顯示13個數據行和2個數據列。
 select *
 FROM
 openrowset(
-BULK 'YOUR BULK ABOVE',
-            FORMAT='YOUR TYPE ABOVE'
+    BULK 'YOUR BULK ABOVE',
+    FORMAT='YOUR TYPE ABOVE'
 )
 with (id varchar(50),
         contextdataeventTime varchar(50) '$.context.data.eventTime',
@@ -215,7 +215,7 @@ with ( ProfileType varchar(50) '$.customerInfo.ProfileType',
 
 如果陣列有5個具有4個嵌套結構的元素，SQL 無伺服器會傳回5個數據列和4個數據行。 SQL 無伺服器可以就地查詢，將陣列對應到2個數據列，並將所有的嵌套結構顯示在資料行中。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [瞭解如何使用 Spark 查詢 Azure Cosmos DB 的 Synapse 連結](./synapse-link/how-to-query-analytical-store-spark.md)
 * [查詢 parquet 的巢狀型別](./sql/query-parquet-nested-types.md) 

@@ -4,15 +4,15 @@ description: 如何監視 Azure 檔案同步。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/28/2019
+ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0232a0c6526d6dcdfec86dedec437c71e7e21080
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81224e0c055ad4a94bd57ebb3aa7c8a3b30c2dd7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515210"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832615"
 ---
 # <a name="monitor-azure-file-sync"></a>監視 Azure 檔案同步
 
@@ -20,7 +20,11 @@ ms.locfileid: "85515210"
 
 本文說明如何使用 Azure 監視器、儲存體同步服務和 Windows Server 監視您的 Azure 檔案同步部署。
 
-目前可使用下列監視選項。
+本指南涵蓋下列案例： 
+- 在 Azure 監視器中查看 Azure 檔案同步計量。
+- 在 Azure 監視器中建立警示，以主動通知您重大狀況。
+- 使用 Azure 入口網站監視 Azure 檔案同步部署的健康情況。
+- 如何使用 Windows 伺服器上的事件記錄檔和效能計數器來監視 Azure 檔案同步部署的健全狀況。 
 
 ## <a name="azure-monitor"></a>Azure 監視器
 
@@ -34,7 +38,7 @@ ms.locfileid: "85515210"
 
 以下是 Azure 監視器中提供的 Azure 檔案同步計量：
 
-| 度量名稱 | Description |
+| 度量名稱 | 描述 |
 |-|-|
 | 同步的位元組 | 傳輸的資料大小 (上傳和下載)。<br><br>單位：位元組<br>匯總類型：總和<br>適用的維度：伺服器端點名稱、同步方向、同步組名 |
 | 雲端階層處理重新叫用 | 重新叫用的資料大小。<br><br>**注意**：未來將會移除此度量。 使用 [雲端階層處理重新叫用大小] 計量來監視重新叫用的資料大小。<br><br>單位：位元組<br>匯總類型：總和<br>適用的維度：伺服器名稱 |
@@ -48,18 +52,28 @@ ms.locfileid: "85515210"
 
 ### <a name="alerts"></a>警示
 
-若要在 Azure 監視器中設定警示，請選取儲存體同步服務，然後選取要用於警示的[Azure 檔案同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics)計量。  
+當您的監視資料中發現重要條件時，警示會主動通知您。 若要深入瞭解如何在 Azure 監視器中設定警示，請參閱[Microsoft Azure 中的警示總覽](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
+
+**如何建立 Azure 檔案同步的警示**
+
+- 在**Azure 入口網站**中，移至您的**儲存體同步服務**。 
+- 按一下 [監視] 區段中的 [**警示**]，然後按一下 [ **+ 新增警示規則**]。
+- 按一下 [**選取條件**]，並提供警示的下列資訊： 
+    - **計量**
+    - **維度名稱**
+    - **警示邏輯**
+- 按一下 [**選取動作群組**]，然後 (電子郵件、SMS 等 ) 新增動作群組，方法是選取現有的動作群組或建立新的動作群組。
+- 填寫**警示詳細資料**，例如**警示規則名稱**、**描述**和**嚴重性**。
+- 按一下 [**建立警示規則**] 來建立警示。  
 
 下表列出一些要監視的範例案例，以及要用於警示的適當計量：
 
-| 狀況 | 用於警示的度量 |
+| 案例 | 用於警示的度量 |
 |-|-|
 | 入口網站中的伺服器端點健康情況 = 錯誤 | 同步工作階段結果 |
 | 檔案無法同步處理到伺服器或雲端端點 | 檔案無法同步 |
 | 已註冊的伺服器無法與儲存體同步服務進行通訊 | 伺服器線上狀態 |
 | 雲端階層處理重新叫用大小已超過一天的500GiB  | 雲端階層處理重新叫用大小 |
-
-若要深入瞭解如何在 Azure 監視器中設定警示，請參閱[Microsoft Azure 中的警示總覽]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
 
 ## <a name="storage-sync-service"></a>儲存體同步服務
 
@@ -68,7 +82,7 @@ ms.locfileid: "85515210"
 ### <a name="registered-server-health"></a>已註冊的伺服器健全狀況
 
 - 如果**已註冊的伺服器**狀態為 [**線上**]，伺服器就會成功與服務進行通訊。
-- 如果 [**已註冊的伺服器**] 狀態顯示為 [**離線**]，請確認伺服器上的儲存體同步監視器（AzureStorageSyncMonitor.exe）進程正在執行。 如果伺服器位於防火牆或 proxy 後方，請參閱[這篇文章](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)以設定防火牆和 proxy。
+- 如果 [**已註冊的伺服器**] 狀態顯示為 [**離線**]，請確認伺服器上的儲存體同步監視器 ( # A0) 進程是否正在執行。 如果伺服器位於防火牆或 proxy 後方，請參閱[這篇文章](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)以設定防火牆和 proxy。
 
 ### <a name="server-endpoint-health"></a>伺服器端點健全狀況
 
@@ -79,7 +93,7 @@ ms.locfileid: "85515210"
 
 - 下列計量圖表可在儲存體同步服務入口網站中看到：
 
-  | 度量名稱 | Description | 分頁名稱 |
+  | 度量名稱 | 描述 | 分頁名稱 |
   |-|-|-|
   | 同步的位元組 | 傳輸的資料大小 (上傳和下載) | 同步群組、伺服器端點 |
   | 雲端階層處理重新叫用 | 重新叫用的資料大小 | 已註冊的伺服器 |
@@ -102,12 +116,12 @@ ms.locfileid: "85515210"
 
 同步健全狀況：
 
-- 同步會話完成後，會記錄事件識別碼9102。 使用此事件判斷同步會話是否成功（**HResult = 0**），以及是否有每個專案的同步錯誤。 如需詳細資訊，請參閱[同步處理健康](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)情況和[每個專案的錯誤](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)檔。
+- 同步會話完成後，會記錄事件識別碼9102。 使用此事件判斷同步會話是否成功 (**HResult = 0**) 以及是否有每個專案的同步錯誤。 如需詳細資訊，請參閱[同步處理健康](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)情況和[每個專案的錯誤](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)檔。
 
   > [!Note]  
   > 有時候同步會話會整體失敗，或具有非零的 PerItemErrorCount。 不過，它們仍會繼續進行，而某些檔案也會順利同步。 您可以在套用的欄位（例如看出 appliedfilecount、AppliedDirCount、AppliedTombstoneCount 和 AppliedSizeBytes）中看到此功能。 這些欄位會告訴您會話成功的程度。 如果您在某個資料列中看到多個同步會話失敗，而且其已套用計數增加，請在開啟支援票證之前，提供同步處理時間再試一次。
 
-- 如果有使用中的同步工作階段，則會每隔 5 到 10 分鐘記錄事件識別碼 9302 一次。 使用此事件判斷目前的同步會話是否正在進行中（**AppliedItemCount > 0**）。 如果同步處理未進行進度，同步會話最後應該會失敗，而且會記錄事件識別碼9102並產生錯誤。 如需詳細資訊，請參閱[同步處理進度檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。
+- 如果有使用中的同步工作階段，則會每隔 5 到 10 分鐘記錄事件識別碼 9302 一次。 使用此事件來判斷目前的同步會話是否正在進行 (**AppliedItemCount > 0**) 的進度。 如果同步處理未進行進度，同步會話最後應該會失敗，而且會記錄事件識別碼9102並產生錯誤。 如需詳細資訊，請參閱[同步處理進度檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。
 
 已註冊的伺服器健全狀況：
 
@@ -132,11 +146,11 @@ ms.locfileid: "85515210"
 
 使用伺服器上的 Azure 檔案同步效能計數器，可監視同步活動。
 
-若要在伺服器上查看 Azure 檔案同步效能計數器，請開啟 [效能監視器（Perfmon.exe）]。 您可以在 [已傳送的**Afs 位元組**] 和 [ **afs 同步作業**] 物件底下找到計數器。
+若要在伺服器上查看 Azure 檔案同步效能計數器，請開啟效能監視器 ( # A0) 。 您可以在 [已傳送的**Afs 位元組**] 和 [ **afs 同步作業**] 物件底下找到計數器。
 
 以下是效能監視器中為 Azure 檔案同步提供的效能計數器：
 
-| 效能物件\計數器名稱 | Description |
+| 效能物件\計數器名稱 | 描述 |
 |-|-|
 | 傳輸的 AFS 位元組\每秒下載的位元組 | 每秒下載的位元組數。 |
 | 傳輸的 AFS 位元組\每秒上傳的位元組 | 每秒上傳的位元組數。 |
@@ -146,8 +160,8 @@ ms.locfileid: "85515210"
 | AFS 同步作業\每秒的同步檔案作業總數 | 同步的檔案總數 (上傳和下載)。 |
 
 ## <a name="next-steps"></a>後續步驟
-- [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
+- [針對 Azure 檔案同步部署進行規劃](storage-sync-files-planning.md) \(部分機器翻譯\)
 - [考量防火牆和 Proxy 設定](storage-sync-files-firewall-and-proxy.md)
-- [部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)
-- [針對 Azure 檔案同步進行移難排解](storage-sync-files-troubleshoot.md)
+- [部署 Azure 檔案同步](storage-sync-files-deployment-guide.md) \(部分機器翻譯\)
+- [針對 Azure 檔案同步問題進行疑難排解](storage-sync-files-troubleshoot.md) \(部分機器翻譯\)
 - [Azure 檔案服務常見問題集](storage-files-faq.md)

@@ -6,16 +6,16 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: d26e1edb53f963d591b1ee1fba58b87fd454e898
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 18d7755bf6bf9d09a8da30cb5c2892af6ed90c7d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288572"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830643"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure 中虛擬機器的可用性選項
 
-本文提供 Azure 虛擬機器（Vm）可用性功能的總覽。
+本文提供 Azure 虛擬機器 (Vm) 的可用性功能總覽。
 
 ## <a name="high-availability"></a>高可用性
 
@@ -47,11 +47,11 @@ Azure 提供幾個選項來達到高可用性。 首先，讓我們來討論一�
 
 ## <a name="virtual-machines-scale-sets"></a>虛擬機器擴展集 
 
-Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡的 VM。 VM 執行個體的數目可以自動增加或減少，以因應需求或已定義的排程。 擴展集可為您的應用程式提供高可用性，並可讓您集中管理、設定及更新許多 Vm。 我們建議您在擴展集內建立兩個或多個 Vm，以提供高可用性應用程式，並符合[99.95% 的 AZURE SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。 擴展集本身不會產生任何費用，您只需支付您所建立的每個 VM 實例。 當單一 VM 是使用 [Azure 進階 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) 時，非計劃性的維護事件適用 Azure SLA。 擴展集中的虛擬機器可以跨多個更新網域和容錯網域部署，以最大化可用性和因資料中心中斷而中斷的復原，以及已規劃或未計畫的維護事件。 擴展集中的虛擬機器也可以部署到單一可用性區域，或區域內。 可用性區域部署選項可能會根據協調流程模式而有所不同。
+Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡的 VM。 VM 執行個體的數目可以自動增加或減少，以因應需求或已定義的排程。 擴展集可為您的應用程式提供高可用性，並可讓您集中管理、設定及更新許多 Vm。 我們建議您在擴展集內建立兩個或多個 Vm，以提供高可用性應用程式，並符合[99.95% 的 AZURE SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)。 擴展集本身不會產生任何費用，您只需支付您所建立的每個 VM 實例。 當單一 VM 是使用 [Azure 進階 SSD](./windows/disks-types.md#premium-ssd) 時，非計劃性的維護事件適用 Azure SLA。 擴展集中的虛擬機器可以跨多個更新網域和容錯網域部署，以最大化可用性和因資料中心中斷而中斷的復原，以及已規劃或未計畫的維護事件。 擴展集中的虛擬機器也可以部署到單一可用性區域，或區域內。 可用性區域部署選項可能會根據協調流程模式而有所不同。
 
 **容錯網域和更新網域**
 
-虛擬機器擴展集會藉由調整容錯網域和更新網域，來簡化高可用性的設計。 您只需要定義擴展集的容錯網域計數。 擴展集可用的容錯網域數目可能會因區域而異。 請參閱[管理 Azure 中的虛擬機器可用性](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)。
+虛擬機器擴展集會藉由調整容錯網域和更新網域，來簡化高可用性的設計。 您只需要定義擴展集的容錯網域計數。 擴展集可用的容錯網域數目可能會因區域而異。 請參閱[管理 Azure 中的虛擬機器可用性](./windows/manage-availability.md)。
 
 
 ## <a name="availability-sets"></a>可用性設定組
@@ -72,4 +72,3 @@ Azure 虛擬機器擴展集可讓您建立和管理一組負載平衡的 VM。 V
 
 ## <a name="next-steps"></a>後續步驟
 您現在可以開始使用這些可用性和備援功能來建置 Azure 環境。 如需最佳作法資訊，請參閱 [Azure 可用性最佳作法](/azure/architecture/checklist/resiliency-per-service)。
-

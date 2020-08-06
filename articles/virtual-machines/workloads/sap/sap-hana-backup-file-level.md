@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: b9d66dc4f0e2e637ac8512022336f257f5d585a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 183273e6f93bbfda8ed4e5fe913192994a0b6ce2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035735"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833380"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>檔案層級的 SAP HANA Azure 備份
 
@@ -25,7 +25,7 @@ ms.locfileid: "87035735"
 
 本文是[Azure 虛擬機器上 SAP Hana 備份指南](./sap-hana-backup-guide.md)的相關文章，其中提供有關「開始使用」的總覽和詳細資訊，以及有關 Azure 備份服務與儲存體快照集的更多詳細資料。 
 
-Azure 中的不同 VM 類型允許連接不同數目的 VHD。 確切的詳細資料記載於 [Azure 中的 Linux 虛擬機器大小](../../linux/sizes.md)。 針對本檔中所參考的測試，我們使用了 GS5 Azure VM，可允許64連結的資料磁片。 在較大型的 SAP HANA 系統中，資料和記錄檔可能已佔據大量磁碟，可能還加上用於最佳磁碟 IO 輸送量的軟體等量。 如需有關 Azure Vm 上 SAP Hana 部署的建議磁片設定的詳細資訊，請參閱[SAP Hana azure 虛擬機器儲存體](./hana-vm-operations-storage.md)設定一文。 所提供的建議也包括本機備份的磁碟空間建議。
+Azure 中的不同 VM 類型允許連接不同數目的 VHD。 確切的詳細資料記載於 [Azure 中的 Linux 虛擬機器大小](../../sizes.md)。 針對本檔中所參考的測試，我們使用了 GS5 Azure VM，可允許64連結的資料磁片。 在較大型的 SAP HANA 系統中，資料和記錄檔可能已佔據大量磁碟，可能還加上用於最佳磁碟 IO 輸送量的軟體等量。 如需有關 Azure Vm 上 SAP Hana 部署的建議磁片設定的詳細資訊，請參閱[SAP Hana azure 虛擬機器儲存體](./hana-vm-operations-storage.md)設定一文。 所提供的建議也包括本機備份的磁碟空間建議。
 
 在檔案層級管理備份/還原的標準方式，是透過 SAP HANA Studio 或 SAP HANA SQL 陳述式使用以檔案為基礎的備份。 如需詳細資訊，請參閱[SAP HANA SQL 和 System Views 參考](https://help.sap.com/hana/SAP_HANA_SQL_and_System_Views_Reference_en.pdf)一文。
 
@@ -43,7 +43,7 @@ Azure 中的不同 VM 類型允許連接不同數目的 VHD。 確切的詳細�
 
 ## <a name="azure-blobxfer-utility-details"></a>Azure blobxfer 公用程式詳細資料
 
-為了在 Azure 儲存體上儲存目錄和檔案，可以使用 CLI 或 PowerShell，或開發使用其中一種 [Azure SDK](https://azure.microsoft.com/downloads/) 的工具。 此外，也有一個可供使用的公用程式 AzCopy，可將資料複製到 Azure 儲存體。 （請參閱[使用 AzCopy 命令列公用程式傳輸資料](../../../storage/common/storage-use-azcopy-v10.md)）。
+為了在 Azure 儲存體上儲存目錄和檔案，可以使用 CLI 或 PowerShell，或開發使用其中一種 [Azure SDK](https://azure.microsoft.com/downloads/) 的工具。 此外，也有一個可供使用的公用程式 AzCopy，可將資料複製到 Azure 儲存體。  (參閱[使用 AzCopy 命令列公用程式傳輸資料](../../../storage/common/storage-use-azcopy-v10.md)) 。
 
 因此，使用 Blobxfer 來複製 SAP HANA 備份檔案。 blobxfer 是開放原始碼，可從 [GitHub](https://github.com/Azure/blobxfer) 取得，許多客戶在生產環境中使用它。 此工具不允許將資料直接複製到 Azure blob 儲存體或 Azure 檔案共用。 它也會在複製具有多個檔案的目錄時，提供一系列有用的功能，例如 md5 雜湊或自動平行處理原則。
 
@@ -65,7 +65,7 @@ Azure 中的不同 VM 類型允許連接不同數目的 VHD。 確切的詳細�
 ## <a name="copy-sap-hana-backup-files-to-azure-blob-storage"></a>將 SAP HANA 備份檔案複製到 Azure Blob 儲存體
 所提及的效能數位、備份持續時間數目和複製持續時間數目，可能不代表 Azure 技術的最新狀態。 Microsoft 會穩定地改善 Azure 儲存體，以提供更多的輸送量和較低的延遲。 因此，數位僅供示範之用。 您需要在您選擇的 Azure 區域中測試您個人的需求，才能使用方法來進行判斷。
 
-快速儲存 SAP HANA 備份檔案的另一個選項是 Azure Blob 儲存體。 一個單一 blob 容器的限制為大約 500 TB，對於 SAP Hana 系統而言，使用 M32ts、M32ls、M64ls 和 GS5 VM 類型的 Azure，以保留足夠的 SAP Hana 備份。 客戶可以選擇經常性 &quot; 和非 &quot; 經常性 &quot; &quot; blob 儲存體（請參閱[Azure blob 儲存體：經常性存取、非經常性存取和封存存取層](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)）。
+快速儲存 SAP HANA 備份檔案的另一個選項是 Azure Blob 儲存體。 一個單一 blob 容器的限制為大約 500 TB，對於 SAP Hana 系統而言，使用 M32ts、M32ls、M64ls 和 GS5 VM 類型的 Azure，以保留足夠的 SAP Hana 備份。 客戶可以選擇經常性和非經常性 &quot; &quot; &quot; &quot; blob 儲存體 (請參閱[Azure blob 儲存體：經常性存取、非經常性存取層和封存存取層](../../../storage/blobs/storage-blob-storage-tiers.md?tabs=azure-portal)) 。
 
 使用 blobxfer 工具，將 SAP HANA 備份檔案直接複製到 Azure Blob 儲存體很容易。
 
@@ -90,7 +90,7 @@ HANA Studio 備份主控台可讓您限制 HANA 備份檔案的檔案大小上�
 
 ## <a name="copy-sap-hana-backup-files-to-nfs-share"></a>將 SAP HANA 備份檔案複製到 NFS 共用
 
-Microsoft Azure 透過[Azure NetApp Files](https://azure.microsoft.com/services/netapp/)提供原生 NFS 共用。 您可以在容量中建立數十個 Tb 的不同磁片區，以儲存及管理備份。 您也可以根據 NetApp 的技術來建立這些磁片區的快照集。 Azure NetApp Files （及）提供三種不同的服務層級，提供不同的儲存體輸送量。 如需詳細資訊，請參閱[Azure NetApp Files 的服務層級](../../../azure-netapp-files/azure-netapp-files-service-levels.md)一文。 您可以從及建立和掛接 NFS 磁片區，如[快速入門：設定 Azure NetApp Files 和建立 nfs 磁片](../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal)區一文所述。
+Microsoft Azure 透過[Azure NetApp Files](https://azure.microsoft.com/services/netapp/)提供原生 NFS 共用。 您可以在容量中建立數十個 Tb 的不同磁片區，以儲存及管理備份。 您也可以根據 NetApp 的技術來建立這些磁片區的快照集。 Azure NetApp Files (及) 提供三種不同的服務層級，以提供不同的儲存體輸送量。 如需詳細資訊，請參閱[Azure NetApp Files 的服務層級](../../../azure-netapp-files/azure-netapp-files-service-levels.md)一文。 您可以從及建立和掛接 NFS 磁片區，如[快速入門：設定 Azure NetApp Files 和建立 nfs 磁片](../../../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md?tabs=azure-portal)區一文所述。
 
 除了透過及使用 Azure 的原生 NFS 磁片區之外，在 Azure 上建立可提供 NFS 共用的專屬部署也有許多不同的可能性。 全都是您需要自行部署和管理這些解決方案的缺點。 這些可能的部分會記載于下列文章中：
 
@@ -119,4 +119,4 @@ Microsoft Azure 透過[Azure NetApp Files](https://azure.microsoft.com/services/
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure 虛擬機器上 SAP HANA 的備份指南](sap-hana-backup-guide.md)提供快速入門的概觀和詳細資訊。
-* 若要瞭解如何建立高可用性，並規劃 Azure （大型實例）上 SAP Hana 的嚴重損壞修復，請參閱[azure 上的 SAP Hana （大型實例）高可用性和嚴重損壞修復](hana-overview-high-availability-disaster-recovery.md)。
+* 若要瞭解如何建立高可用性，並規劃 Azure (大型實例) 上 SAP Hana 的嚴重損壞修復，請參閱[SAP Hana (大型實例) azure 上的高可用性和嚴重損壞修復](hana-overview-high-availability-disaster-recovery.md)。

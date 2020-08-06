@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a79db217c5444e59e35d4dfad9fbb98bbccbd251
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1945dc3b9fa03354ef447f813d95b6040a4b7b91
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079803"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833329"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 虛擬機器支援案例上的 SAP 工作負載
 在 Azure 中設計 SAP NetWeaver、Business one `Hybris` 或 S/4HANA 系統架構，可為各種架構和工具開啟許多不同的機會，讓您能夠使用可調整、有效率且高可用性的部署。 雖然相依于使用的作業系統或 DBMS，但還是有一些限制。 此外，在 Azure 中，不支援在內部部署支援的所有案例。 本檔將會以獨佔方式使用 Azure Vm，以提供支援的非高可用性設定和高可用性設定和架構。 針對[Hana 大型實例](./hana-overview-architecture.md)支援的案例，請參閱[Hana 大型實例支援的案例](./hana-supported-scenario.md)一文。 
@@ -64,10 +64,10 @@ SAP 2 層設定會被視為在相同伺服器或 VM 單位上執行的 SAP DBMS 
 支援這種類型的 DBMS 部署：
 
 - Windows 上的 SQL Server
-- IBM Db2。 在[多個實例（Linux、UNIX）](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)一文中尋找詳細資料
+- IBM Db2。 在[Linux、UNIX (的多個實例](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.dbobj.doc/doc/c0004904.html)一文中尋找詳細資料) 
 - 針對 Oracle。 如需詳細資訊，請參閱[sap 支援附注 #1778431](https://launchpad.support.sap.com/#/notes/1778431)和相關的 sap 附注
-- 針對 SAP Hana，支援在一個 VM 上有多個實例，SAP 會呼叫這個部署方法 MCOS。 如需詳細資訊，請參閱 SAP 文章 [一部主機上的多個 SAP Hana 系統（MCOS）] （https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
-- /b2751fd43bec41a9a14e01913f1edf18.html）
+- 針對 SAP Hana，支援在一個 VM 上有多個實例，SAP 會呼叫這個部署方法 MCOS。 如需詳細資訊，請參閱 SAP 文章 [一部主機上的多個 SAP Hana 系統 (MCOS) ] (https://help.sap.com/viewer/eb3777d5495d46c5b2fa773206bbfb46/2.0.02/
+- /b2751fd43bec41a9a14e01913f1edf18.html) 
 
 在一部主機上執行多個資料庫實例，您必須確定不同的實例不會競爭資源，因而超出 VM 的實體資源限制。 特別是當您需要將記憶體上限為共用 VM 所能配置之實例的任何人時，就會發生這種情況。 這也可能適用于不同資料庫實例可以利用的 CPU 資源。 所有提及的 DBMS 都有設定，可限制實例層級的記憶體配置和 CPU 資源。
 為了支援 Azure Vm 的這類設定，預期用於不同實例所管理之資料庫的資料和記錄/重做記錄檔的磁片或磁片區是分開的。 換句話說，其他 DBMS 實例所管理之資料庫的資料或記錄/重做記錄檔，不應該共用相同的磁片或磁片區。 
@@ -118,12 +118,12 @@ HANA 大型實例的磁片設定已進行傳遞，並會在[Hana 大型實例的
     - [Azure VM 上的 SAP MaxDB、liveCache 與內容伺服器部署](./dbms_guide_maxdb.md)
 - HANA 大型實例高可用性案例詳述于：
     - [適用于 HANA 大型實例的支援案例-使用 STONITH HSR 以提供高可用性](./hana-supported-scenario.md#hsr-with-stonith-for-high-availability)
-    - [適用于 HANA 大型實例的支援案例-主機自動容錯移轉（1 + 1）](./hana-supported-scenario.md#host-auto-failover-11)
+    - [適用于 HANA 大型實例的支援案例-主機自動容錯移轉 (1 + 1) ](./hana-supported-scenario.md#host-auto-failover-11)
 
 > [!IMPORTANT]
 > 針對上述所有案例，我們都支援在一個 VM 中設定多個 DBMS 實例。 表示在每個案例中，每個 VM 只能部署一個資料庫實例，並使用所述的高可用性方法進行保護。 目前**不**支援在相同的 Windows 或 Pacemaker 容錯移轉叢集下保護多個 DBMS 實例。 而且僅針對每個 VM 部署案例的單一實例支援 Oracle Data Guard。 
 
-各種資料庫系統允許在一個 DBMS 實例下裝載多個資料庫。 就 SAP Hana 而言，多個資料庫可以裝載在多個資料庫容器（MDC）中。 針對這些多資料庫設定在一個容錯移轉叢集資源內運作的情況，支援這些設定。 不支援的設定是需要多個叢集資源的情況。 針對您要在一個 SQL Server 實例下定義多個 SQL Server 可用性群組的設定。
+各種資料庫系統允許在一個 DBMS 實例下裝載多個資料庫。 就 SAP Hana 而言，多個資料庫可以裝載在多個資料庫容器中， (MDC) 。 針對這些多資料庫設定在一個容錯移轉叢集資源內運作的情況，支援這些設定。 不支援的設定是需要多個叢集資源的情況。 針對您要在一個 SQL Server 實例下定義多個 SQL Server 可用性群組的設定。
 
 
 ![DBMS HA 設定](./media/sap-planning-supported-configurations/database-high-availability-configuration.png)
@@ -149,7 +149,7 @@ SAP 中央服務是 SAP 設定的第二次失敗點。 因此，您也必須保�
     - [在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-file-share.md)
     - [使用 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用，為 SAP 高可用性準備 Azure 基礎結構](./sap-high-availability-infrastructure-wsfc-file-share.md)
 - Windows 容錯移轉叢集伺服器使用以適用于 sapmnt 和全域傳輸目錄的[Azure NetApp Files](https://azure.microsoft.com/services/netapp/)為基礎的 SMB 共用。 詳細資料列于下列文章中：
-    - [使用適用于 SAP 應用程式的 Azure NetApp Files （SMB）在 Windows 上的 Azure Vm 上進行 SAP NetWeaver 的高可用性](./high-availability-guide-windows-netapp-files-smb.md)
+    - [使用 Azure NetApp Files 在 Windows 上的 Azure Vm 上進行 SAP NetWeaver 的高可用性，適用于 SAP 應用程式 (SMB) ](./high-availability-guide-windows-netapp-files-smb.md)
 - 以 SIOS 為基礎的 Windows 容錯移轉叢集伺服器 `Datakeeper` 。 雖然 Microsoft 已記載，但您需要 SIOS 的支援關聯性，因此您可以在使用此解決方案時，與 SIOS 支援互動。 詳細資料請參閱下列文章：
     - [在 Azure 中使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-shared-disk.md)
     - [使用 SAP ASCS/SCS 的 Windows 容錯移轉叢集和共用磁碟，為 SAP HA 準備 Azure 基礎結構](./sap-high-availability-infrastructure-wsfc-shared-disk.md)
@@ -193,7 +193,7 @@ SAP 中央服務是 SAP 設定的第二次失敗點。 因此，您也必須保�
 ## <a name="multi-sid-sap-central-services-failover-clusters"></a>多 SID SAP 中央服務容錯移轉叢集
 為了減少大型 SAP 環境中所需的 Vm 數目，SAP 允許在容錯移轉叢集設定中執行多個不同 SAP 系統的 SAP 中央服務實例。 想像您有30個以上的 NetWeaver 或 S/4HANA 生產系統的情況。 如果沒有多重 SID 叢集，這些設定需要30個或更多的 Windows 或 Pacemaker 容錯移轉叢集設定中的60或更多 Vm。 除了所需的 DBMS 容錯移轉叢集。 在容錯移轉叢集設定中跨兩個節點部署多個 SAP 中央服務，可大幅減少 Vm 數目。 不過，在單一雙節點叢集設定上部署多個 SAP 中央服務實例也有一些缺點。 叢集設定中單一 VM 的問題適用于多個 SAP 系統。 在叢集設定中執行的客體作業系統上的維護需要更多的協調，因為多個生產環境 SAP 系統會受到影響。 SAP LaMa 之類的工具在其系統複製程式中不支援多重 SID 叢集。
 
-在 Azure 上，具有 ENSA1 和 ENSA2 的 Windows 作業系統支援多重 SID 叢集設定。 建議不要將舊版的「排入佇列複寫服務架構」（ENSA1）與一個多重 SID 叢集上的新架構（ENSA2）結合。 如需這類架構的詳細資料，請閱讀文章
+在 Azure 上，具有 ENSA1 和 ENSA2 的 Windows 作業系統支援多重 SID 叢集設定。 建議您不要將舊版的「佇列複寫服務」架構 (ENSA1) 與一個多 SID 叢集上 (ENSA2) 的新架構結合。 如需這類架構的詳細資料，請閱讀文章
 
 - [在 Azure 上搭配 Windows Server 容錯移轉叢集和共用磁碟的 SAP ASCS/SCS 執行個體多重 SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) 
 - [在 Azure 上搭配 Windows Server 容錯移轉叢集和檔案共用的 SAP ASCS/SCS 執行個體多重 SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-file-share.md) 
@@ -201,7 +201,7 @@ SAP 中央服務是 SAP 設定的第二次失敗點。 因此，您也必須保�
 針對 SUSE，也支援以 Pacemaker 為基礎的多 SID 叢集。 到目前為止，支援設定：
 
 - 最多五個 SAP ASCS/SCS 實例
-- 舊的排入佇列複寫伺服器 ice 架構（ENSA1）
+- 舊的排入佇列複寫伺服器 ice 架構 (ENSA1) 
 - 兩個節點 Pacemaker 叢集設定
 
 在[適用于 sap 應用程式的 SUSE Linux Enterprise Server 上，Azure vm 上的 Sap NetWeaver 的高可用性記載了多 SID 指南](./high-availability-guide-suse-multi-sid.md)
@@ -218,7 +218,7 @@ SAP Hana 向外延展案例支援 HANA 認證的 Azure Vm 子集，如[SAP Hana 
 - [Ultra 磁碟](../../linux/disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-具有待命節點之 OLAP 或 S/4HANA 的 SAP Hana 向外延展設定，僅支援裝載于 Azure NetApp Files 的 NFS 共用。
+具有待命節點 () s/4HANA 的 SAP Hana 向外延展設定，僅支援裝載于 Azure NetApp Files 的 NFS 共用。
 
 如需具有或不含待命節點之確切儲存體設定的詳細資訊，請參閱下列文章：
 
@@ -246,21 +246,21 @@ SAP Hana 向外延展案例支援 HANA 認證的 Azure Vm 子集，如[SAP Hana 
 - 在一個 Azure 可用性設定組中收集到不同的 Vm 時，或在 M 系列系列和 Mv2 系列的 Vm 之間進行調整大小的情況時，重新調整 VM 系列的大小可能會造成問題
 - 資料庫實例的 CPU 和記憶體耗用量，能夠以最少的延遲和足夠的 CPU 和記憶體資源來接收變更的資料流程，並以最少的延遲將這些變更套用至資料  
 
-如需不同 VM 大小限制的詳細資訊，請參閱[這裡](../../linux/sizes.md) 
+如需不同 VM 大小限制的詳細資訊，請參閱[這裡](../../sizes.md) 
 
 另一個部署 DR 目標的支援方法，是在執行非生產環境 SAP 實例之非生產 DBMS 實例的 VM 上安裝第二個 DBMS 實例。 這可能會更具挑戰性，因為您需要瞭解在 DR 案例中，應該做為主要實例的特定目標實例，所需的記憶體、CPU 資源、網路頻寬和儲存體頻寬。 特別是在 HANA 中，強烈建議您將在共用主機上做為 DR 目標的實例設定為，讓資料不會預先載入至 DR 目標實例。
 
 對於 HANA 大型實例 DR 案例，請檢查下列檔：
 
 - [具有使用儲存體複寫之 DR 的單一節點](./hana-supported-scenario.md#single-node-with-dr-using-storage-replication)
-- [具有 DR （多用途）的單一節點（使用儲存體複寫）](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication)
-- [具有 DR （多用途）的單一節點（使用儲存體複寫）](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication)
+- [具有 DR (多用途) 使用儲存體複寫的單一節點](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication)
+- [具有 DR (多用途) 使用儲存體複寫的單一節點](./hana-supported-scenario.md#single-node-with-dr-multipurpose-using-storage-replication)
 - [具有儲存體複寫的 HSR 和 DR 高可用性](./hana-supported-scenario.md#high-availability-with-hsr-and-dr-with-storage-replication)
 - [使用儲存體複寫以 DR 進行相應放大](./hana-supported-scenario.md#scale-out-with-dr-using-storage-replication)
 - [具有使用 HSR 之 DR 的單一節點](./hana-supported-scenario.md#single-node-with-dr-using-hsr)
-- [單一節點 HSR 至 DR （成本優化）](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized)
+- [單一節點 HSR 至 DR (成本優化) ](./hana-supported-scenario.md#single-node-hsr-to-dr-cost-optimized)
 - [使用 HSR 的高可用性和嚴重損壞修復](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr)
-- [使用 HSR 進行高可用性和嚴重損壞修復（成本優化）](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr-cost-optimized)
+- [使用 HSR (成本優化) 的高可用性和嚴重損壞修復](./hana-supported-scenario.md#high-availability-and-disaster-recovery-with-hsr-cost-optimized)
 - [使用 HSR 相應放大 DR](./hana-supported-scenario.md#scale-out-with-dr-using-hsr)
 
 > [!NOTE]
@@ -270,10 +270,10 @@ SAP Hana 向外延展案例支援 HANA 認證的 Azure Vm 子集，如[SAP Hana 
 針對 SAP 應用層和所需的最終共用或儲存位置，客戶會利用兩個主要案例：
 
 - 第二個 Azure 區域中的災難復原目標並非用於任何生產或非生產用途。 在此案例中，做為災難復原目標的 Vm 在理想情況下不會部署，而且生產 SAP 應用層的映射和變更會複寫到嚴重損壞修復區域。 [Azure Site Recovery](../../../site-recovery/azure-to-azure-move-overview.md)可以執行這類工作的功能。 Azure Site Recovery 支援 Azure 到 Azure 的複寫案例，如下所示。 
-- 損毀修復目標是非生產系統實際使用的 Vm。 整個 SAP 環境會散佈到兩個不同的 Azure 區域，而生產系統通常位於一個區域，而非生產系統則位於另一個區域。 在許多客戶部署中，客戶會有相當於生產系統的非生產系統。 客戶已在應用層非生產系統上預先安裝生產應用程式實例。 在容錯移轉的情況下，非生產環境實例會關閉，生產 Vm 的虛擬名稱會移至非生產 Vm （在 DNS 中指派新的 IP 位址之後），而且預先安裝的生產實例會開始使用
+- 損毀修復目標是非生產系統實際使用的 Vm。 整個 SAP 環境會散佈到兩個不同的 Azure 區域，而生產系統通常位於一個區域，而非生產系統則位於另一個區域。 在許多客戶部署中，客戶會有相當於生產系統的非生產系統。 客戶已在應用層非生產系統上預先安裝生產應用程式實例。 在容錯移轉的情況下，非生產環境實例會關閉，而生產 Vm 的虛擬名稱則會移至非生產 Vm， (在 DNS) 中指派新的 IP 位址，以及預先安裝的生產實例開始使用
 
 ### <a name="sap-central-services-clusters"></a>SAP 中央服務叢集
-使用共用磁片（Windows）、SMB 共用（Windows）或 NFS 共用的 SAP 中央服務叢集，比較難進行複寫。 在 Windows 端，Windows Storage Replication 是可行的解決方案。 在 Linux 上，rsync 是可行的解決方案。
+使用共用磁片 (Windows) 的 SAP 中央服務叢集， (Windows) 或 NFS 共用的 SMB 共用，比較難進行複寫。 在 Windows 端，Windows Storage Replication 是可行的解決方案。 在 Linux 上，rsync 是可行的解決方案。
 
 
 
@@ -298,7 +298,7 @@ Azure 架構上的 SAP 工作負載不支援案例清單。 「**不支援**」�
 - 在 Linux 上部署支援的 SAP 資料庫，其中的資料庫檔案位於及之上的 NFS 共用中，但 SAP Hana 除外
 - 在任何其他客體作業系統上部署 Oracle DBMS，而非 Windows 和 Oracle Linux。 另請參閱[SAP 支援附注 #2039619](https://launchpad.support.sap.com/#/notes/2039619)
 
-我們並未測試的案例，因此不會有像這樣的清單：
+案例 (s) 我們並未測試，因此不會有像這樣的清單：
 
 - Azure Site Recovery 複寫 DBMS 層 Vm。 因此，我們建議利用資料庫原生非同步複寫功能，以進行潛在的嚴重損壞修復設定。
  

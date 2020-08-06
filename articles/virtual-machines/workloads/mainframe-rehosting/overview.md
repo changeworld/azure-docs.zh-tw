@@ -1,6 +1,6 @@
 ---
 title: Azure 虛擬機器上的大型主機重新裝載
-description: 使用 Microsoft Azure 上的虛擬機器（Vm），重新裝載您的大型主機工作負載，例如以 IBM Z 為基礎的系統。
+description: 使用 Microsoft Azure 上)  (Vm 的虛擬機器，來重新裝載您的大型主機工作負載，例如 IBM Z 型系統。
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d1ab9834d4bf25c7c18171ecb271f18b213d15b0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507874"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835522"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 虛擬機器上的大型主機重新裝載
 
@@ -23,9 +23,9 @@ ms.locfileid: "86507874"
 
 一般來說，「大型*主機*」一詞是指大型電腦系統。 具體而言，大部分使用中的大部分都是 IBM System Z 伺服器或 IBM 外掛程式相容系統，其執行 MVS、DOS、VSE、OS/390 或 Z/OS。
 
-Azure 虛擬機器（VM）用來隔離和管理單一實例上特定應用程式的資源。 IBM z/OS 這類大型主機會使用邏輯分割區（LPAR）來實現此目的。 大型主機可能會針對具有相關聯 COBOL 程式的 CICS 區域使用一個 LPAR，並針對 IBM Db2 資料庫使用個別的 LPAR。 Azure 上的一般多[層式應用程式](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)會將 azure vm 部署到虛擬網路中，以分割成每個層的子網。
+Azure 虛擬機器 (VM) 可用來隔離及管理單一實例上特定應用程式的資源。 IBM z/OS 之類的大型主機會使用邏輯分割 (LPAR) 以用於此用途。 大型主機可能會針對具有相關聯 COBOL 程式的 CICS 區域使用一個 LPAR，並針對 IBM Db2 資料庫使用個別的 LPAR。 Azure 上的一般多[層式應用程式](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)會將 azure vm 部署到虛擬網路中，以分割成每個層的子網。
 
-Azure Vm 可以執行支援隨即轉移案例的大型主機模擬環境和編譯器。 開發和測試通常是從大型主機遷移至 Azure 開發/測試環境的第一個工作負載。 您可以模擬的一般伺服器元件包括線上交易處理（OLTP）、批次和資料內嵌系統，如下圖所示。
+Azure Vm 可以執行支援隨即轉移案例的大型主機模擬環境和編譯器。 開發和測試通常是從大型主機遷移至 Azure 開發/測試環境的第一個工作負載。 您可以模擬的一般伺服器元件包括線上交易處理 (OLTP) 、批次和資料內嵌系統，如下圖所示。
 
 ![Azure 上的模擬環境可讓您執行以 z/OS 為基礎的系統。](media/01-overview.png)
 
@@ -57,9 +57,9 @@ TmaxSoft OpenFrame 是一種熱門的大型主機重新裝載解決方案，用�
 
 ## <a name="ibm-zdt-120"></a>IBM zD&T 12。0
 
-IBM Z 開發和測試環境（IBM zD&T）會在 Azure 上設定非生產環境，您可以用於以 Z/OS 為基礎的應用程式進行開發、測試和示範。
+Ibm Z 開發和測試環境 (IBM zD&T) 會在 Azure 上設定非生產環境，您可以用於以 Z/OS 為基礎的應用程式進行開發、測試和示範。
 
-Azure 上的模擬環境可以透過應用程式開發人員控制的散發套件（ADCDs）來裝載不同類型的 Z 實例。 您可以在 Azure 和 Azure Stack 上執行 zD&T Personal Edition、zD&T Parallel Sysplex 和 zD&T Enterprise Edition。
+Azure 上的模擬環境可以透過應用程式開發人員控制散發 (ADCDs) ，來裝載不同類型的 Z 實例。 您可以在 Azure 和 Azure Stack 上執行 zD&T Personal Edition、zD&T Parallel Sysplex 和 zD&T Enterprise Edition。
 
 開始進行之前：
 
@@ -74,25 +74,25 @@ IBM DB2 pureScale 環境提供適用于 Azure 的資料庫叢集。 它與原始
 
 ## <a name="considerations"></a>考量
 
-當您將大型主機工作負載遷移至 Azure 基礎結構即服務（IaaS）時，您可以選擇數種類型的隨選、可調整的運算資源，包括 Azure Vm。 Azure 提供一系列的[Linux](../../linux/overview.md)和[Windows](../../windows/overview.md) vm。
+當您將大型主機工作負載遷移至 Azure 基礎結構即服務 (IaaS) 時，您可以選擇數種類型的隨選、可調整的計算資源，包括 Azure Vm。 Azure 提供一系列的[Linux](../../linux/overview.md)和[Windows](../../windows/overview.md) vm。
 
 ### <a name="compute"></a>計算
 
-Azure 計算能力與大型主機的容量比較。 如果您想要將大型主機工作負載移至 Azure，請將每秒1000000指令（MIPS）的大型主機計量與虛擬 Cpu 做比較。 
+Azure 計算能力與大型主機的容量比較。 如果您想要將大型主機工作負載移至 Azure，請將每秒1000000指示 (MIPS) 的大型主機計量與虛擬 Cpu 做比較。 
 
 瞭解如何[將大型主機計算移至 Azure](./concepts/mainframe-compute-azure.md)。
 
 ### <a name="high-availability-and-failover"></a>高可用性和容錯移轉
 
-Azure 提供以承諾用量為基礎的服務等級協定（Sla）。 預設會有多個9的可用性，而且可以使用服務的本機或異地複寫來優化 Sla。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 說明保證的 Azure 整體可用性。
+Azure 提供以承諾用量為基礎的服務層級協定， (Sla) 。 預設會有多個9的可用性，而且可以使用服務的本機或異地複寫來優化 Sla。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 說明保證的 Azure 整體可用性。
 
-使用 Azure IaaS （例如 VM）時，特定系統函數會提供容錯移轉支援，例如容錯移轉叢集實例和可用性設定組。 當您使用 Azure 平臺即服務（PaaS）資源時，平臺會自動處理容錯移轉。 範例包括[Azure SQL Database](../../../azure-sql/database/sql-database-paas-overview.md)和[Azure Cosmos DB](../../../cosmos-db/introduction.md)。
+使用 Azure IaaS （例如 VM）時，特定系統函數會提供容錯移轉支援，例如容錯移轉叢集實例和可用性設定組。 當您使用 Azure 平臺即服務 (PaaS) 資源時，平臺會自動處理容錯移轉。 範例包括[Azure SQL Database](../../../azure-sql/database/sql-database-paas-overview.md)和[Azure Cosmos DB](../../../cosmos-db/introduction.md)。
 
 ### <a name="scalability"></a>延展性
 
-大型主機通常會相應增加，而雲端環境則會向外延展。Azure 提供各種[Linux](../../linux/sizes.md)和[Windows](../../windows/sizes.md)大小以符合您的需求。 雲端也會相應增加或減少，以符合確切的使用者規格。 計算能力、儲存體和服務會依需求以使用量為基礎的計費模型進行[調整](/azure/architecture/best-practices/auto-scaling)。
+大型主機通常會相應增加，而雲端環境則會向外延展。Azure 提供各種[Linux](../../sizes.md)和[Windows](../../sizes.md)大小以符合您的需求。 雲端也會相應增加或減少，以符合確切的使用者規格。 計算能力、儲存體和服務會依需求以使用量為基礎的計費模型進行[調整](/azure/architecture/best-practices/auto-scaling)。
 
-### <a name="storage"></a>存放裝置
+### <a name="storage"></a>儲存體
 
 在雲端中，您有一系列具有彈性、可擴充的儲存體選項，而且只需支付您需要的部分。 [Azure 儲存體](../../../storage/common/storage-introduction.md)提供可大幅調整的資料物件存放區、雲端檔案系統服務、可靠的訊息存放區，以及 NoSQL 存放區。 針對 VM，受控和非受控磁碟可提供安全的永續性磁碟儲存體。
 
@@ -106,7 +106,7 @@ Azure 提供以承諾用量為基礎的服務等級協定（Sla）。 預設會�
 
 許多公用部門實體都很樂意將其大型主機應用程式移至更現代化、更具彈性的平臺。 Microsoft Azure Government 是全域 Microsoft Azure 平臺的實體分隔實例，已針對聯邦、州和地方政府系統進行封裝。 它為美國政府機構及其合作夥伴提供了世界級的安全性、保護及合規性服務。
 
-Azure Government 獲得要操作的臨時授權單位（P-ATO），以 FedRAMP 對需要此類環境之系統的高影響力。
+Azure Government 獲得 (P-ATO) 操作的暫時性授權，以 FedRAMP 對需要這種環境的系統產生高影響力。
 
 若要開始使用，請下載[適用于大型主機應用程式的 Microsoft Azure Government 雲端](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/)。
 

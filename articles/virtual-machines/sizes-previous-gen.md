@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: d6fb5c384d5e9489c4213277a43d5be0ed14afb6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289712"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831289"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前幾代的虛擬機器大小
 
@@ -31,7 +31,7 @@ ACU：210 - 250
 
 進階儲存體快取：不支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|
 | Standard_F1  | 1  | 2  | 16  | 3000/46/23    | 4/4x500   | 2/750   |
 | Standard_F2  | 2  | 4  | 32  | 6000/93/46    | 8/8x500   | 2/1500  |
@@ -49,13 +49,13 @@ ACU：210 - 250
 
 進階儲存體快取：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
-| Standard_F1s  | 1  | 2  | 4  | 4  | 4000/32 （12）    | 3200/48   | 2/750   |
-| Standard_F2s  | 2  | 4  | 8  | 8  | 8000/64 （24）    | 6400/96   | 2/1500  |
-| Standard_F4s  | 4  | 8  | 16 | 16 | 16000/128 （48）  | 12800/192 | 4/3000  |
-| Standard_F8s  | 8  | 16 | 32 | 32 | 32000/256 （96）  | 25600/384 | 8/6000  |
-| Standard_F16s | 16 | 32 | 64 | 64 | 64000/512 （192） | 51200/768 | 8/12000 |
+| Standard_F1s  | 1  | 2  | 4  | 4  | 4000/32 (12)     | 3200/48   | 2/750   |
+| Standard_F2s  | 2  | 4  | 8  | 8  | 8000/64 (24)     | 6400/96   | 2/1500  |
+| Standard_F4s  | 4  | 8  | 16 | 16 | 16000/128 (48)   | 12800/192 | 4/3000  |
+| Standard_F8s  | 8  | 16 | 32 | 32 | 32000/256 (96)   | 25600/384 | 8/6000  |
+| Standard_F16s | 16 | 32 | 64 | 64 | 64000/512 (192)  | 51200/768 | 8/12000 |
 
 MBps = 每秒 10^6 位元組，而 GiB = 1024^3 位元組。
 
@@ -80,7 +80,7 @@ NVv2 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈
 
 ## <a name="older-generations-of-virtual-machine-sizes"></a>較舊的虛擬機器大小層代
 
-本節提供舊版虛擬機器大小的相關資訊。 這些大小仍然受支援，但不會收到額外的容量。 有較新或替代的大小已正式推出。 請參閱[Azure 中的 Linux 虛擬機器大小](linux/sizes.md)，以選擇最適合您需求的 VM 大小。  
+本節提供舊版虛擬機器大小的相關資訊。 這些大小仍然受支援，但不會收到額外的容量。 有較新或替代的大小已正式推出。 請參閱[Azure 中的 Linux 虛擬機器大小](./sizes.md)，以選擇最適合您需求的 VM 大小。  
 
 如需調整 Linux VM 大小的詳細資訊，請參閱[調整 LINUX vm 的大小](linux/change-vm-size.md)。  
 
@@ -126,7 +126,7 @@ ACU：50 - 100
 
 進階儲存體快取：不支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (HDD)：GiB | 最大資料磁碟 | 最大資料磁碟輸送量︰IOPS | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (HDD)：GiB | 最大資料磁碟 | 最大資料磁碟輸送量︰IOPS | 最大 Nic/預期的網路頻寬 (Mbps)  |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A0 &nbsp; <sup>1</sup> | 1 | 0.768 | 20 | 1 | 1x500 | 2/100 |
 | Standard_A1 | 1 | 1.75 | 70  | 2  | 2x500  | 2/500  |
@@ -177,14 +177,14 @@ ACU： 160-250 <sup>1</sup>
 
 進階儲存體快取：不支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|
 | 標準_D1  | 1 | 3.5 | 50  | 3000/46/23    | 4/4x500   | 2/500  |
 | 標準_D2  | 2 | 7   | 100 | 6000/93/46    | 8/8x500   | 2/1000 |
 | Standard_D3  | 4 | 14  | 200 | 12000/187/93  | 16/16x500 | 4/2000 |
 | 標準_D4  | 8 | 28  | 400 | 24000/375/187 | 32/32x500 | 8/4000 |
 
-<sup>1</sup>個 VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz intel Haswell® e5-2673 V3 （）或 2.3 GHz intel® E5-2673 V4 （Broadwell）  
+<sup>1</sup> VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel Haswell® e5-2673 V3 () 或 2.3 GHz Intel® E5-2673 V4 (Broadwell)   
 
 <br>
 
@@ -198,14 +198,14 @@ ACU： 160-250 <sup>1</sup>
 
 進階儲存體快取：不支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|
 | 標準_D11 | 2  | 14  | 100 | 6000/93/46    | 8/8x500   | 2/1000 |
 | 標準_D12 | 4  | 28  | 200 | 12000/187/93  | 16/16x500 | 4/2000 |
 | 標準_D13 | 8  | 56  | 400 | 24000/375/187 | 32/32x500 | 8/4000 |
 | 標準_D14 | 16 | 112 | 800 | 48000/750/375 | 64/64x500 | 8/8000 |
 
-<sup>1</sup>個 VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz intel Haswell® e5-2673 V3 （）或 2.3 GHz intel® E5-2673 V4 （Broadwell）  
+<sup>1</sup> VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel Haswell® e5-2673 V3 () 或 2.3 GHz Intel® E5-2673 V4 (Broadwell)   
 
 <br>
 
@@ -239,14 +239,14 @@ ACU： 160-250 <sup>1</sup>
 
 進階儲存體快取：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
-| Standard_DS1 | 1 | 3.5 | 7  | 4  | 4000/32 （43）    | 3200/32   | 2/500  |
-| Standard_DS2 | 2 | 7   | 14 | 8  | 8000/64 （86）    | 6400/64   | 2/1000 |
-| Standard_DS3 | 4 | 14  | 28 | 16 | 16000/128 （172） | 12800/128 | 4/2000 |
-| Standard_DS4 | 8 | 28  | 56 | 32 | 32000/256 （344） | 25600/256 | 8/4000 |
+| Standard_DS1 | 1 | 3.5 | 7  | 4  | 4000/32 (43)     | 3200/32   | 2/500  |
+| Standard_DS2 | 2 | 7   | 14 | 8  | 8000/64 (86)     | 6400/64   | 2/1000 |
+| Standard_DS3 | 4 | 14  | 28 | 16 | 16000/128 (172)  | 12800/128 | 4/2000 |
+| Standard_DS4 | 8 | 28  | 56 | 32 | 32000/256 (344)  | 25600/256 | 8/4000 |
 
-<sup>1</sup>個 VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz intel Haswell® e5-2673 V3 （）或 2.3 GHz intel® E5-2673 V4 （Broadwell）  
+<sup>1</sup> VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel Haswell® e5-2673 V3 () 或 2.3 GHz Intel® E5-2673 V4 (Broadwell)   
 
 <br>
 
@@ -260,15 +260,15 @@ ACU： 160-250 <sup>1、2</sup>
 
 進階儲存體快取：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
-| Standard_DS11 | 2  | 14  | 28  | 8  | 8000/64 （72）    | 6400/64   | 2/1000 |
-| Standard_DS12 | 4  | 28  | 56  | 16 | 16000/128 （144） | 12800/128 | 4/2000 |
-| Standard_DS13 | 8  | 56  | 112 | 32 | 32000/256 （288） | 25600/256 | 8/4000 |
-| Standard_DS14 | 16 | 112 | 224 | 64 | 64000/512 （576） | 51200/512 | 8/8000 |
+| Standard_DS11 | 2  | 14  | 28  | 8  | 8000/64 (72)     | 6400/64   | 2/1000 |
+| Standard_DS12 | 4  | 28  | 56  | 16 | 16000/128 (144)  | 12800/128 | 4/2000 |
+| Standard_DS13 | 8  | 56  | 112 | 32 | 32000/256 (288)  | 25600/256 | 8/4000 |
+| Standard_DS14 | 16 | 112 | 224 | 64 | 64000/512 (576)  | 51200/512 | 8/8000 |
 
 <sup>1</sup> DS 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱[Windows](windows/premium-storage-performance.md)或[Linux](linux/premium-storage-performance.md)的高效能設計。
-<sup>2</sup> VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz intel Haswell® e5-2673 V3 （）或 2.3 GHz intel® E5-2673 V4 （Broadwell）  
+<sup>2</sup> VM 系列可以在下列其中一個 CPU 上執行： 2.2 GHz Intel® E5-2660 v2、2.4 GHz Intel Haswell® e5-2673 V3 () 或 2.3 GHz Intel® E5-2673 V4 (Broadwell)   
 
 <br>
 
@@ -286,7 +286,7 @@ ACU：180 - 240
 
 進階儲存體快取：不支援
 
-| 大小 | vCPU | 記憶體 (GiB) | 暫存儲存體 (GiB) | 最大資料磁碟 | 最大暫存儲存體輸送量（IOPS/MBps） | 最大未快取磁片輸送量（IOPS/MBps） | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體 (GiB) | 暫存儲存體 (GiB) | 最大資料磁碟 | 最大暫存儲存體輸送量 (IOPS/MBps)  |  (IOPS/MBps) 的最大未快取磁片輸送量 | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
 | Standard_L4s   | 4  | 32  | 678  | 16 | 20000/200 | 5000/125  | 2/4000  |
 | Standard_L8s   | 8  | 64  | 1388 | 32 | 40000/400 | 10000/250 | 4/8000  |
@@ -307,13 +307,13 @@ ACU：180 - 240 <sup>1</sup>
 
 進階儲存體快取：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|
-| Standard_GS1 | 2 | 28  | 56  | 8  | 10000/100 （264）  | 5000/ 125  | 2/2000 |
-| Standard_GS2 | 4 | 56  | 112 | 16 | 20000/200 （528）  | 10000/ 250 | 2/4000 |
-| Standard_GS3 | 8 | 112 | 224 | 32 | 40000/400 （1056） | 20000/ 500 | 4/8000 |
-| Standard_GS4&nbsp;<sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 （2112） | 40000/1000 | 8/16000 |
-| Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> | 32 | 448 |896 | 64 |160000/1600 （4224） | 80000/2000 | 8/20000 |
+| Standard_GS1 | 2 | 28  | 56  | 8  | 10000/100 (264)   | 5000/ 125  | 2/2000 |
+| Standard_GS2 | 4 | 56  | 112 | 16 | 20000/200 (528)   | 10000/ 250 | 2/4000 |
+| Standard_GS3 | 8 | 112 | 224 | 32 | 40000/400 (1056)  | 20000/ 500 | 4/8000 |
+| Standard_GS4&nbsp;<sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112)  | 40000/1000 | 8/16000 |
+| Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224)  | 80000/2000 | 8/20000 |
 
 <sup>1</sup> GS 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。 如需詳細資訊，請參閱[Windows](windows/premium-storage-performance.md)或[Linux](linux/premium-storage-performance.md)的高效能設計。
 
@@ -333,7 +333,7 @@ ACU：180 - 240
 
 進階儲存體快取：不支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大暫存儲存體輸送量： IOPS/讀取 MBps/寫入 MBps | 最大資料磁片/輸送量： IOPS | 最大 Nic/預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|
 | Standard_G1  | 2  | 28  | 384  | 6000/93/46    | 8/8x500   | 2/2000  |
 | Standard_G2  | 4  | 56  | 768  | 12000/187/93  | 16/16x500 | 2/4000  |
@@ -347,7 +347,7 @@ ACU：180 - 240
 ## <a name="nv-series"></a>NV 系列
 **較新的大小建議**： [NVv3 系列](nvv3-series.md)和[NVv4 系列](nvv4-series.md)
 
-NV 系列虛擬機器是由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) \(英文\) GPU 和 NVIDIA GRID 技術提供技術支援，適用於桌面加速應用程式和虛擬桌面，可供客戶將其資料或模擬視覺化。 使用者能夠在 NV 執行個體上，將其圖形密集型工作流程視覺化以獲得較佳的圖形功能，此外還能夠執行單精確度工作負載，例如編碼和轉譯。 NV 系列 Vm 也是由 Intel 2690 v3 （Haswell） Cpu 提供技術支援。
+NV 系列虛擬機器是由 [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) \(英文\) GPU 和 NVIDIA GRID 技術提供技術支援，適用於桌面加速應用程式和虛擬桌面，可供客戶將其資料或模擬視覺化。 使用者能夠在 NV 執行個體上，將其圖形密集型工作流程視覺化以獲得較佳的圖形功能，此外還能夠執行單精確度工作負載，例如編碼和轉譯。 NV 系列 Vm 也支援 Intel 2690 v3 (Haswell) Cpu。
 
 NV 執行個體中的每個 GPU 均隨附 GRID 授權。 此授權可讓您彈性地使用 NV 執行個體作為單一使用者的虛擬工作站，或讓 25 位並行使用者可以針對某個虛擬應用程式案例連線至 VM。
 

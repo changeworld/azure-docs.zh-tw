@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 5567274fd9ee2cfaf41f9ff4c6e71bb2faab7b1d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292373"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830541"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中使用基礎結構自動化工具搭配虛擬機器
 
@@ -34,9 +34,9 @@ ms.locfileid: "87292373"
 
 了解如何：
 
-- [在 Linux 上安裝及設定 Ansible 來與 Azure 搭配使用](../ansible/ansible-install-configure.md)。
-- [建立 Linux 虛擬機器](../ansible/ansible-create-vm.md)。
-- [管理 Linux 虛擬機器](../ansible/ansible-manage-linux-vm.md)。
+- [在 Linux 上安裝及設定 Ansible 來與 Azure 搭配使用](/azure/developer/ansible/install-on-linux-vm)。
+- [建立 Linux 虛擬機器](/azure/developer/ansible/vm-configure)。
+- [管理 Linux 虛擬機器](/azure/developer/ansible/vm-manage)。
 
 
 ## <a name="chef"></a>Chef
@@ -45,7 +45,7 @@ ms.locfileid: "87292373"
 了解如何：
 
 - [從 Azure Marketplace 中部署 Chef 自動化](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview)。
-- [在 Windows 上安裝 Chef 並建立 Azure VM](../chef/chef-automation.md)。
+- [在 Windows 上安裝 Chef 並建立 Azure VM](/azure/developer/chef/windows-vm-configure)。
 
 
 ## <a name="puppet"></a>Puppet
@@ -81,7 +81,7 @@ DSC 設定會定義要在電腦上安裝的項目，以及設定主機的方式�
 
 
 ## <a name="azure-custom-script-extension"></a>Azure 自訂指令碼擴充功能
-適用於 [Linux](./linux/extensions-customscript.md) 或 [Windows](./windows/extensions-customscript.md) 的 Azure 自訂指令碼擴充功能會在 Azure VM 上下載並執行指令碼。 當您建立 VM 時，或在 VM 為使用中狀態之後，可以使用擴充功能。
+適用於 [Linux](./extensions/custom-script-linux.md) 或 [Windows](./extensions/custom-script-windows.md) 的 Azure 自訂指令碼擴充功能會在 Azure VM 上下載並執行指令碼。 當您建立 VM 時，或在 VM 為使用中狀態之後，可以使用擴充功能。
 
 您可以從 Azure 儲存體或 GitHub 存放庫等任何公用位置下載指令碼。 您可以透過自訂指令碼擴充功能，以來源 VM 上執行的任何語言撰寫指令碼。 這些指令碼可用來安裝應用程式，或視需要設定 VM。 若要保護認證，可將密碼等機密資訊儲存在受保護的設定中。 這些認證只會在 VM 內進行解密。
 
@@ -116,7 +116,7 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 
 了解如何：
 
-- [建立 PowerShell runbook](../automation/automation-first-runbook-textual-powershell.md)。
+- [建立 PowerShell runbook](../automation/learn/automation-tutorial-runbook-textual-powershell.md)。
 - [使用混合式 Runbook 背景工作角色來管理內部部署資源](../automation/automation-hybrid-runbook-worker.md)。
 - [使用 Azure Automation DSC](../automation/automation-dsc-getting-started.md)。
 
@@ -126,7 +126,7 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 
 深入了解：
 
-- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts) \(英文\)。
+- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts) \(英文\)。
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -134,7 +134,7 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 
 了解如何：
 
-- [在 Azure 中的 Linux VM 上以 Jenkins、GitHub 及 Docker 建立開發基礎結構](../jenkins/tutorial-jenkins-github-docker-cicd.md)。
+- [在 Azure 中的 Linux VM 上以 Jenkins、GitHub 及 Docker 建立開發基礎結構](/azure/developer/jenkins/pipeline-with-github-and-docker)。
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
@@ -149,4 +149,3 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 
 ## <a name="next-steps"></a>後續步驟
 有許多不同的選項可供您在 Azure 中使用基礎結構自動化工具。 您可以自由使用最適合您需求和環境的解決方案。 若要開始使用並嘗試一些內建於 Azure 的工具，請參閱如何將自訂 [Linux](./linux/tutorial-automate-vm-deployment.md) 或 [Windows](./windows/tutorial-automate-vm-deployment.md) VM 自動化。
-

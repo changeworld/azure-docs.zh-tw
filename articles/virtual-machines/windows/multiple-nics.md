@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 2667ff571070b2e62dcfa4af6e202f1851aa3e80
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ed1c5b749b778ef8334ea3b31ef17d3bf106484f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525767"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835539"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>建立及管理具有多個 NIC 的 Windows 虛擬機器
-Azure 中的虛擬機器 (VM) 可以連結多個虛擬網路介面卡 (NIC)。 常見案例是有不同的子網路可用於前端和後端連線。 您可以將 VM 上的多個 NIC 關聯至多個子網路，但這些子網路必須位於相同虛擬網路 (VNet) 中。 本文詳述如何建立已連結多個 NIC 的 VM。 您也了解如何新增或移除現有 VM 中的 NIC。 不同的 [VM 大小](sizes.md) 支援不同數量的 NIC，因此可據以調整您的 VM。
+Azure 中的虛擬機器 (VM) 可以連結多個虛擬網路介面卡 (NIC)。 常見案例是有不同的子網路可用於前端和後端連線。 您可以將 VM 上的多個 NIC 關聯至多個子網路，但這些子網路必須位於相同虛擬網路 (VNet) 中。 本文詳述如何建立已連結多個 NIC 的 VM。 您也了解如何新增或移除現有 VM 中的 NIC。 不同的 [VM 大小](../sizes.md) 支援不同數量的 NIC，因此可據以調整您的 VM。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在下列範例中，請以您自己的值取代範例參數名稱。 範例參數名稱包含 *myResourceGroup*、*myVnet* 和 *myVM*。
 
@@ -73,7 +73,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 通常您也會建立[網路安全性群組](../../virtual-network/security-overview.md)來篩選至 VM 的網路流量，和建立[負載平衡器](../../load-balancer/load-balancer-overview.md)以跨多個 VM 分散流量。
 
 ### <a name="create-the-virtual-machine"></a>建立虛擬機器
-現在開始建置您的 VM 組態。 在每個 VM 大小中，您可以新增至 VM 的 NIC 總數是有限制的。 如需詳細資訊，請參閱 [Windows VM 大小](sizes.md)。
+現在開始建置您的 VM 組態。 在每個 VM 大小中，您可以新增至 VM 的 NIC 總數是有限制的。 如需詳細資訊，請參閱 [Windows VM 大小](../sizes.md)。
 
 1. 將您的 VM 認證設定為 `$cred` 變數，如下所示︰
 
@@ -119,7 +119,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
 6. 完成[針對多個 NIC 設定作業系統](#configure-guest-os-for-multiple-nics)中的步驟，以將次要 NIC 的路由新增至作業系統。
 
 ## <a name="add-a-nic-to-an-existing-vm"></a>將 NIC 新增至現有的 VM
-若要將虛擬 NIC 新增至現有 VM，請解除配置 VM、新增虛擬 NIC，然後啟動 VM。 不同的 [VM 大小](sizes.md) 支援不同數量的 NIC，因此可據以調整您的 VM。 如有需要，您可以[調整 VM 的大小](resize-vm.md)。
+若要將虛擬 NIC 新增至現有 VM，請解除配置 VM、新增虛擬 NIC，然後啟動 VM。 不同的 [VM 大小](../sizes.md) 支援不同數量的 NIC，因此可據以調整您的 VM。 如有需要，您可以[調整 VM 的大小](resize-vm.md)。
 
 1. 使用 [Stop-AzVM](/powershell/module/az.compute/stop-azvm) 來解除配置 VM。 下列範例會解除配置 myResourceGroup** 中名為 myVM** 的 VM：
 
@@ -288,4 +288,4 @@ Azure 將預設閘道指派給連接至虛擬機器的第一個 (主要) 網路�
     **閘道**下使用 *192.168.1.1* 列出的路由，是根據主要網路介面預設會在該處的路由。 **閘道**下包含 *192.168.2.1* 的路由是您新增的路由。
 
 ## <a name="next-steps"></a>後續步驟
-嘗試建立具有多個 NIC 的 VM 時，請檢閱 [Windows VM 大小](sizes.md)。 請注意每個 VM 大小所支援的 NIC 數目上限。 
+嘗試建立具有多個 NIC 的 VM 時，請檢閱 [Windows VM 大小](../sizes.md)。 請注意每個 VM 大小所支援的 NIC 數目上限。 

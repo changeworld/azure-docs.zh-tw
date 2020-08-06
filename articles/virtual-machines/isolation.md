@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: ayshak
-ms.openlocfilehash: 7732f83dfd44cbf686e2d076c665c980962b19d5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 58b3f9c3655a2e15842f7fa28ad3e6921395beba
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292362"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831442"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Azure 中的虛擬機器隔離
 
@@ -59,18 +59,18 @@ Azure 計算服務所提供的虛擬機器大小不受特定硬體類型限制�
 **答**：我們會在實際取代隔離大小的前12個月提供提醒。
 
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>問：我是依賴銀級或金級耐久性層的 Azure Service Fabric 客戶。 這種變更會對我造成影響嗎？
-**答**：否。 即使在這項變更之後，Service Fabric 的[持久性層](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)所提供的保證仍會繼續運作。 如果您因為其他原因而需要實體硬體隔離，您可能還是需要採取上述其中一項動作。 
+**答**：否。 即使在這項變更之後，Service Fabric 的[持久性層](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)所提供的保證仍會繼續運作。 如果您因為其他原因而需要實體硬體隔離，您可能還是需要採取上述其中一項動作。 
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>問： D15_v2 或 DS15_v2 隔離淘汰的里程碑為何？ 
 **A**： 
  
-| Date | 動作 |
+| 日期 | 動作 |
 |---|---| 
-| 2019 年 11 月 18 日 | D/DS15i_v2 的可用性（PAYG，1年 RI） | 
+| 2019 年 11 月 18 日 | D/DS15i_v2 (PAYG，1年 RI) 的可用性 | 
 | 2020 5 月14日 | 購買的最後一天 D/DS15i_v2 1 年 RI | 
 | 2020 5 月15日 | 已移除 D/DS15_v2 隔離保證 | 
-| 2021 5 月15日 | 淘汰 D/DS15i_v2 （除了在2019年11月18日前購買3年 RI of D/DS15_v2 的所有客戶）| 
-| 2022年11月17日 | 當您完成3年後，淘汰 D/DS15i_v2 （適用于在2019年11月18日前購買3年 RI of D/DS15_v2 的客戶） |
+| 2021 5 月15日 | 淘汰 D/DS15i_v2 (所有客戶，但在2019年11月18日前購買了3年 RI 的 D/DS15_v2) | 
+| 2022年11月17日 | 當您在2019年11月18日之前購買了3年 RI of D/DS15_v2 的客戶完成時，淘汰 D/DS15i_v2 ()  |
 
 ## <a name="next-steps"></a>後續步驟
 

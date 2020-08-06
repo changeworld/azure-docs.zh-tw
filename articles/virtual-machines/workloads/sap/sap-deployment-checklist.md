@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495653"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836338"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
 
@@ -37,7 +37,7 @@ ms.locfileid: "87495653"
 
 1. 高階設計檔。 本檔應包含：
     - SAP 元件和應用程式的目前清查，以及 Azure 的目標應用程式清查。
-    - 負責定義相關合作物件之責任和指派的責任指派矩陣（RACI）。 從高階開始，並在整個規劃和第一個部署中處理更細微的層級。
+    - 責任指派矩陣 (RACI) ，定義相關合作物件的責任和指派。 從高階開始，並在整個規劃和第一個部署中處理更細微的層級。
     - 高階解決方案架構。
     - 決定要部署到哪些 Azure 區域。 請參閱[Azure 區域清單](https://azure.microsoft.com/global-infrastructure/regions/)。 若要瞭解每個區域中可用的服務，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
     - 從內部部署連線至 Azure 的網路架構。 開始熟悉[Azure 的虛擬資料中心藍圖](/azure/architecture/vdc/)。
@@ -63,14 +63,14 @@ ms.locfileid: "87495653"
         - 根據 RTO 和 RPO，定義高可用性和嚴重損壞修復架構所需的外觀。
         - 針對區域內的高可用性，請檢查所需的 DBMS 在 Azure 中提供的功能。 大部分的 DBMS 封裝都會提供同步熱待命的同步方法，我們建議用於生產系統。 另請參閱 SAP 相關檔中的不同資料庫，從適用于[sap 工作負載的 Azure 虛擬機器 DBMS 部署考慮](./dbms_guide_general.md)和相關檔開始。
            不支援使用 Windows Server 容錯移轉叢集搭配 DBMS 層的共用磁片設定（例如，[針對 SQL Server 所述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)）。 請改用下列解決方案：
-           - [SQL Server AlwaysOn](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
+           - [SQL Server AlwaysOn](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle 資料保護](../oracle/configure-oracle-dataguard.md)
            - [HANA 系統複寫](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         - 針對跨 Azure 區域的嚴重損壞修復，請參閱不同 DBMS 廠商所提供的解決方案。 其中大部分支援非同步複寫或記錄傳送。
         - 針對 SAP 應用層，請判斷您是否要執行商務迴歸測試系統，這在理想情況下是生產部署的複本，位於相同的 Azure 區域或 DR 區域中。 在第二個案例中，您可以將該商務回歸系統的目標設為生產部署的 DR 目標。
         - 如果您決定不要在 DR 網站中放置非生產系統，請參閱 Azure Site Recovery 做為將 SAP 應用層複寫至 Azure DR 區域的方法。 如需詳細資訊，請參閱[設定多層式 SAP NetWeaver 應用程式部署](../../../site-recovery/site-recovery-sap.md)的嚴重損壞修復。
         - 如果您決定使用[Azure 可用性區域](../../../availability-zones/az-overview.md)結合 HADR 設定，請熟悉可用可用性區域的 Azure 區域。 此外，也請考慮增加兩個可用性區域之間的網路延遲，可能會產生的限制。  
-3.  所有 SAP 介面（SAP 和非 SAP）的清查。
+3.  所有 SAP 介面的清查 (SAP 和非 SAP) 。
 4.  基礎服務的設計。 這項設計應該包含下列專案：
     - Active Directory 和 DNS 設計。
     - Azure 內的網路拓撲和不同 SAP 系統的指派。
@@ -78,7 +78,7 @@ ms.locfileid: "87495653"
     - 資源群組拓撲。
     - [標記策略](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing)。
     - Vm 和其他基礎結構元件和（或）邏輯名稱的命名慣例。
-5.  Microsoft 頂級支援合約。 識別您的 Microsoft 技術客戶經理（TAM）。 如需 SAP 支援需求，請參閱[sap 支援附注 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。
+5.  Microsoft 頂級支援合約。 識別您的 Microsoft 技術客戶經理 (TAM) 。 如需 SAP 支援需求，請參閱[sap 支援附注 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。
 6.  訂用帳戶的 Azure 訂用帳戶和核心配額數目。 [開啟支援要求，視需要增加 Azure](../../../azure-portal/supportability/resource-manager-core-quotas-request.md)訂用帳戶的配額。
 7.  將 SAP 資料移轉至 Azure 的資料縮減和資料移轉計畫。 針對 SAP NetWeaver 系統，SAP 具有如何限制大量資料量的指導方針。 請參閱這份有關 SAP ERP 系統中資料管理的[sap 指南](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2)。 部分內容也適用于一般的 NetWeaver 和 S/4HANA 系統。
 8.  自動化部署方法。 Azure 上的基礎結構部署自動化目標是以具決定性的方式進行部署，並取得具決定性的結果。 許多客戶使用 PowerShell 或 CLI 架構的腳本。 但有各種開放原始碼技術可供您用來部署適用于 SAP 的 Azure 基礎結構，甚至是安裝 SAP 軟體。 您可以在 GitHub 上找到範例：
@@ -87,14 +87,14 @@ ms.locfileid: "87495653"
 9.  定義您身為客戶、系統整合者、Microsoft 和其他相關合作物件的一般設計和部署審查步調。
 
 
-## <a name="pilot-phase-strongly-recommended"></a>試驗階段（強烈建議）
+## <a name="pilot-phase-strongly-recommended"></a>試驗階段 (強烈建議) 
  
 您可以在專案規劃和準備的前後執行試驗。 您也可以使用試驗階段來測試在規劃和準備階段期間所做的方法和設計。 而且您可以擴充試驗階段，使其成為真正的概念證明。
 
 我們建議您在試驗部署期間，設定並驗證完整的 HADR 解決方案和安全性設計。 有些客戶會在此階段執行擴充性測試。 其他客戶會使用 SAP 沙箱系統的部署做為試驗階段。 我們假設您已找出您想要遷移至 Azure 進行試驗的系統。
 
 1. 將資料傳輸優化至 Azure。 最佳選擇非常依賴特定案例。 如果 ExpressRoute 線路有足夠的頻寬，從內部部署到[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)的傳送速率最快。 在其他情況下，透過網際網路傳輸的速度會更快。
-2. 針對涉及匯出和匯入資料的異類 SAP 平臺遷移，請測試並優化匯出和匯入階段。 對於 SQL Server 是目的地平臺的大型遷移，您可以找到[建議](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070)。 如果您不需要合併的發行升級，您可以使用 [遷移監視器]/[SWPM]。 當您結合了遷移與 SAP 版本升級時，可以使用[SAP sql-dmo](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)進程。 若要這樣做，您必須符合來源和目標 DBMS 平臺組合的特定需求。 此程式記載于[SUM 2.0 SP03 的資料庫移轉選項（sql-dmo）](https://launchpad.support.sap.com/#/notes/2631152)中。
+2. 針對涉及匯出和匯入資料的異類 SAP 平臺遷移，請測試並優化匯出和匯入階段。 對於 SQL Server 是目的地平臺的大型遷移，您可以找到[建議](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070)。 如果您不需要合併的發行升級，您可以使用 [遷移監視器]/[SWPM]。 當您結合了遷移與 SAP 版本升級時，可以使用[SAP sql-dmo](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)進程。 若要這樣做，您必須符合來源和目標 DBMS 平臺組合的特定需求。 此程式記載于[SUM 2.0 SP03 的資料庫移轉選項 (的) ](https://launchpad.support.sap.com/#/notes/2631152)。
    1.  匯出至來源、匯出檔案上傳至 Azure，以及匯入效能。 最大化匯出和匯入之間的重迭。
    2.  基於基礎結構大小的目的，評估目標和目的地平臺上的資料庫數量。
    3.  驗證並優化計時。
@@ -103,8 +103,8 @@ ms.locfileid: "87495653"
         - 請參閱 SAP 支援附注、SAP Hana 硬體目錄，以及 SAP PAM 中的資源。 請確定不會變更 Azure 支援的 Vm、這些 VM 類型支援的作業系統版本，以及支援的 SAP 和 DBMS 版本。
         - 再次驗證您在 Azure 上部署之應用程式和基礎結構的大小。 如果您要移動現有的應用程式，您通常可以從所使用的基礎結構和[sap 基準測試網頁](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)衍生所需的 sap，並將其與[sap 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)中列出的 sap 數位進行比較。 也請記住[這篇關於 sap 評等的文章](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208)。
         - 針對您在規劃階段中所選擇 VM 類型的最大儲存體輸送量和網路輸送量，評估及測試您的 Azure Vm 大小。 您可以在這裡找到資料：
-           -  [Azure 中的 Windows 虛擬機器大小](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
-           -  [Azure 中 Linux 虛擬機器的大小](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
+           -  [Azure 中的 Windows 虛擬機器大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
+           -  [Azure 中 Linux 虛擬機器的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
    2. [儲存空間]。
         - 針對代表 SAP 應用層的 Vm，以及針對不區分效能的 Dbms 部署，請至少使用[Azure 標準 SSD 儲存體](../../windows/disks-types.md#standard-ssd)。
         - 一般而言，我們不建議使用[Azure 標準 HDD 磁片](../../windows/disks-types.md#standard-hdd)。
@@ -167,18 +167,18 @@ ms.locfileid: "87495653"
             -   [SAP 支援附注 #2455582-Linux：執行以 GCC 6.x 編譯的 SAP 應用程式](https://launchpad.support.sap.com/#/notes/0002455582)
             -    [SAP 支援附注 #2729475-HWCCT 失敗，錯誤為「不支援「虛擬機器」，因為 Azure Vm 已通過 SAP Hana 認證](https://launchpad.support.sap.com/#/notes/2729475)
 1. 測試您的高可用性和嚴重損壞修復程式。
-   1. 藉由關閉 Vm （Windows 客體作業系統）或將作業系統置於緊急模式（Linux 客體作業系統）來模擬容錯移轉情況。 此步驟將協助您找出您的容錯移轉設定是否如設計正常。
+   1. 藉由關閉 Vm (Windows 客體作業系統) 或將作業系統置於緊急模式 (Linux 客體作業系統) 來模擬容錯移轉情況。 此步驟將協助您找出您的容錯移轉設定是否如設計正常。
    1. 測量執行容錯移轉所花費的時間。 如果時間太長，請考慮：
         - 針對 SUSE Linux，請使用 SBD 裝置，而不是 Azure 隔離代理程式來加速容錯移轉。
         - 針對 SAP Hana，如果重載資料花費的時間太長，請考慮布建更多儲存空間頻寬。
    3. 測試備份/還原順序和時機，並視需要進行更正。 請確定備份時間已足夠。 您也需要測試還原和時間還原活動。 請確定在您的 RTO 依賴資料庫或 VM 還原程式的情況下，還原時間都在您的 RTO Sla 內。
    4. 測試跨區域 DR 功能和架構。
 1. 安全性檢查。
-   1. 測試 Azure 角色型存取控制（Azure RBAC）架構的有效性。 其目標是要區分和限制不同小組的存取權與許可權。 例如，SAP 基礎小組成員應該能夠部署 Vm，並將磁片從 Azure 儲存體指派至指定的 Azure 虛擬網路。 但是 SAP 基礎小組不應該能夠建立自己的虛擬網路，也不能變更現有虛擬網路的設定。 網路小組的成員不應該能夠將 Vm 部署到 SAP 應用程式和 DBMS Vm 執行所在的虛擬網路中。 或者，此小組的成員也不能變更 Vm 的屬性，甚至是刪除 Vm 或磁片。  
+   1.  (Azure RBAC) 架構，測試 Azure 角色型存取控制的有效性。 其目標是要區分和限制不同小組的存取權與許可權。 例如，SAP 基礎小組成員應該能夠部署 Vm，並將磁片從 Azure 儲存體指派至指定的 Azure 虛擬網路。 但是 SAP 基礎小組不應該能夠建立自己的虛擬網路，也不能變更現有虛擬網路的設定。 網路小組的成員不應該能夠將 Vm 部署到 SAP 應用程式和 DBMS Vm 執行所在的虛擬網路中。 或者，此小組的成員也不能變更 Vm 的屬性，甚至是刪除 Vm 或磁片。  
    1.  請確認[網路安全性群組和 ASC](../../../virtual-network/security-overview.md)規則是否如預期般運作，並防護受保護的資源。
    1.  確定所有需要加密的資源都已加密。 定義和執行處理常式以備份憑證、儲存和存取這些憑證，以及還原加密的實體。
    1.  從 OS 支援的觀點來看，盡可能使用 OS 磁片的[Azure 磁碟加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)。
-   1.  請確定您不是使用太多層的加密。 在某些情況下，使用 Azure 磁碟加密搭配其中一種 DBMS 透明資料加密方法來保護相同伺服器上的不同磁片或元件是合理的。  例如，在 SAP DBMS 伺服器上，可以在作業系統開機磁片（如果 OS 支援 ADE）和 DBMS 資料持續性檔案未使用的資料磁片上啟用 Azure 磁碟加密（ADE）。  例如，在保留 DBMS TDE 加密金鑰的磁片上使用 ADE。
+   1.  請確定您不是使用太多層的加密。 在某些情況下，使用 Azure 磁碟加密搭配其中一種 DBMS 透明資料加密方法來保護相同伺服器上的不同磁片或元件是合理的。  例如，在 SAP DBMS 伺服器上，您可以在作業系統開機磁片上啟用 Azure 磁碟加密 (ADE)  (如果 OS 支援 ADE) ，而那些資料磁片 (不是 DBMS 資料持續性檔案所使用的) 。  例如，在保留 DBMS TDE 加密金鑰的磁片上使用 ADE。
 1. 效能測試。 在 SAP 中，根據 SAP 追蹤和度量，進行這些比較：
    - 適用時，請將前10個線上報表與您目前的執行方式進行比較。
    - 若適用，請將前10個批次作業與您目前的執行方式進行比較。
@@ -186,7 +186,7 @@ ms.locfileid: "87495653"
 
 
 ## <a name="non-production-phase"></a>非生產階段 
-在這個階段中，我們假設在成功試驗或概念證明（POC）之後，您就開始將非生產環境的 SAP 系統部署到 Azure。 將您在 POC 期間所學到的所有內容，納入此部署中。 針對 Poc 列出的所有準則和步驟也適用于此部署。
+在這個階段中，我們假設在成功試驗或概念證明 (POC) 之後，您就開始將非生產環境的 SAP 系統部署到 Azure。 將您在 POC 期間所學到的所有內容，納入此部署中。 針對 Poc 列出的所有準則和步驟也適用于此部署。
 
 在此階段中，您通常會將開發系統、單元測試系統和商務迴歸測試系統部署至 Azure。 我們建議一個 SAP 應用程式行中至少有一個非生產系統，其具有未來生產系統所將擁有的完整高可用性設定。 以下是您需要在此階段完成的一些額外步驟：  
 
@@ -207,8 +207,8 @@ ms.locfileid: "87495653"
 11. 請確定您的 Vm 已部署至正確的[azure 鄰近放置群組](../../linux/co-location.md)（如 Azure 鄰近放置群組中所述），[以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
 11. 在套用工作負載之前，請先執行針對概念證明階段列出的其他所有檢查。
 12. 當工作負載適用時，記錄 Azure 中系統的資源耗用量。 比較此耗用量與舊版平臺的記錄。 如果您發現有很大的差異，請調整未來部署的 VM 大小。 請記住，當您縮減時，Vm 的儲存體和網路頻寬也會減少。
-    - [Azure 中的 Windows 虛擬機器大小](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    - [Azure 中的 Linux 虛擬機器大小](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+    - [Azure 中的 Windows 虛擬機器大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    - [Azure 中的 Linux 虛擬機器大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. 使用系統複製功能和程式進行實驗。 目標是讓您輕鬆複製開發系統或測試系統，讓專案小組可以快速地取得新的系統。 請考慮使用[SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance)來進行這些工作。
 14. 優化並調整小組的 Azure 角色型存取、許可權和流程，以確保您有責任區隔。 同時，請確定所有小組都可以在 Azure 基礎結構中執行其工作。
 15. 練習、測試及記錄高可用性和嚴重損壞修復程式，讓您的員工能夠執行這些工作。 找出缺點，並調整您要整合到部署中的新 Azure 功能。
@@ -224,7 +224,7 @@ ms.locfileid: "87495653"
     - 使用 DBMS 方法（例如備份/還原）搭配 SQL Server Always On、HANA 系統複寫或記錄傳送，來植入 Azure 中的資料庫內容並加以同步處理。
     - 針對較小的資料庫，請使用備份/還原。
     - 使用整合到 SAP SWPM 的 SAP 遷移監視器來執行異類遷移。
-    - 如果您需要將您的遷移與 SAP 版本升級結合，請使用[SAP sql-dmo](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)進程。 請記住，並非所有來源 DBMS 和目標 DBMS 的組合都受到支援。 您可以在不同的 SQL-DMO 版本的特定 SAP 支援附注中找到詳細資訊。 例如， [SUM 2.0 SP04 的資料庫移轉選項（sql-dmo）](https://launchpad.support.sap.com/#/notes/2644872)。
+    - 如果您需要將您的遷移與 SAP 版本升級結合，請使用[SAP sql-dmo](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)進程。 請記住，並非所有來源 DBMS 和目標 DBMS 的組合都受到支援。 您可以在不同的 SQL-DMO 版本的特定 SAP 支援附注中找到詳細資訊。 例如，[資料庫移轉選項 (為 SUM 2.0 SP04 的) ](https://launchpad.support.sap.com/#/notes/2644872)。
     - 透過網際網路或透過 ExpressRoute 測試資料傳輸輸送量是否較佳，以防您需要移動備份或 SAP 匯出檔案。 如果您要透過網際網路移動資料，您可能需要變更某些您必須為未來生產系統準備的網路安全性群組/應用程式安全性群組規則。
 1.  將系統從舊平臺移至 Azure 之前，請先收集資源耗用量資料。 有用的資料包含 CPU 使用量、儲存體輸送量和 IOPS 資料。 特別是從 DBMS 層單位收集此資料，但也從應用層單位收集。 此外，也請測量網路和儲存體延遲。
 1.  重新檢查 SAP 支援附注和所需的 OS 設定、SAP Hana 硬體目錄，以及 SAP PAM。 請確定在 Azure 支援的 Vm、這些 Vm 中支援的 OS 版本，以及支援的 SAP 和 DBMS 版本中，沒有任何變更。
@@ -256,10 +256,10 @@ ms.locfileid: "87495653"
 ## <a name="go-live-phase"></a>上線階段
 在上線階段，請務必遵循您在先前階段開發的操作手冊。 執行您已測試和練習的步驟。 不接受設定和處理常式中的最後一分鐘變更。 也請完成下列步驟：
 
-1. 確認 Azure 入口網站監視功能及其他監視工具正常運作。 我們建議適用于 Windows 的 Windows 效能監視器（perfmon）和適用于 Linux 的 SAR。
+1. 確認 Azure 入口網站監視功能及其他監視工具正常運作。 建議您使用 Windows 效能監視器 (perfmon) for Windows 和 SAR for Linux。
     - CPU 計數器。
-        - 平均 CPU 時間，總計（所有 Cpu）
-        - 平均 CPU 時間，每個個別處理器（M128 Vm 上的128處理器）
+        - 平均 CPU 時間， (所有 Cpu 的總計) 
+        - 平均 CPU 時間，M128 Vm 上的每個個別處理器 (128 處理器) 
         - CPU 核心時間，每個個別處理器
         - CPU 使用者時間，每個個別處理器
     - 記憶體。

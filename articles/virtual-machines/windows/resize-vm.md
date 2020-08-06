@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 31979854ad3f6bd6d1cf4e73fc3c993520ac423d
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 4860422fefb5a95fe41912b4898f02867f7b3aeb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432680"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832241"
 ---
 # <a name="resize-a-windows-vm"></a>調整 Windows VM 大小
 
-本文說明如何將 VM 移至不同的[vm 大小](sizes.md)。
+本文說明如何將 VM 移至不同的[vm 大小](../sizes.md)。
 
 建立虛擬機器 (VM) 後，您可以透過變更 VM 的大小來放大或縮小 VM。 在某些情況下，您必須先解除配置 VM。 如果新的大小不適用於目前裝載 VM 的硬體叢集上，就會發生此情況。
 

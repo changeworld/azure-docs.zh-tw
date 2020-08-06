@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baa15b656f061d812b29ded99d55da13294f9800
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73622439"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835845"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>加速網路與 Azure 虛擬機器災害復原
 
@@ -24,7 +24,7 @@ ms.locfileid: "73622439"
 
 Azure Site Recovery 可讓您針對容錯移轉至不同 Azure 區域的 Azure 虛擬機器，利用加速網路的優點。 本文說明如何針對使用 Azure Site Recovery 所複寫的 Azure 虛擬機器，啟用加速網路。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您了解：
 -   Azure 虛擬機器[複寫架構](azure-to-azure-architecture.md)
@@ -45,7 +45,7 @@ Azure Site Recovery 只有在來源虛擬機器已啟用加速網路時，才支
 
 在支援超執行緒的執行個體中，加速網路可在具有 4 個以上 vCPU 的 VM 執行個體上進行支援作業。 支援的系列為：D/DSv3、E/ESv3、Fsv2 和 Ms/Mms
 
-如需 VM 執行個體的詳細資訊，請參閱 [Windows VM 大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+如需 VM 執行個體的詳細資訊，請參閱 [Windows VM 大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="accelerated-networking-with-linux-vms"></a>使用 Linux VM 的加速網路
 
@@ -66,7 +66,7 @@ Azure Site Recovery 只有在來源虛擬機器已啟用加速網路時，才支
 
 在支援超執行緒的執行個體中，加速網路可在具有 4 個以上 vCPU 的 VM 執行個體上進行支援作業。 支援的系列為：D/DSv3、E/ESv3、Fsv2 和 Ms/Mms。
 
-如需 VM 執行個體的詳細資訊，請參閱 [Linux VM 大小](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+如需 VM 執行個體的詳細資訊，請參閱 [Linux VM 大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="enabling-accelerated-networking-for-replicated-vms"></a>針對已複寫 VM 啟用加速網路
 

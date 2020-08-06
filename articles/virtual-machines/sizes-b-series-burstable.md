@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: d8ac2a8317343b1bc172eefa17c6eb0074c5c21f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 81bfde964fa993b69bc464214dab0810a8f2bfe5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432624"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832581"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
@@ -58,9 +58,9 @@ B16 特性：
 
 ![每小時流量資料的圖表](./media/b-series-burstable/office-workload.png)
 
-| 狀況 | Time | CPU 使用量（%） | 累積的信用額度<sup>1</sup> | 可用點數 |
+| 案例 | Time | CPU 使用量 (% )  | 累積的信用額度<sup>1</sup> | 可用點數 |
 | --- | --- | --- | --- | --- |
-| B16ms 部署 | 部署 | 部署  | 480（初始信用額度） | 480 |
+| B16ms 部署 | 部署 | 部署  | 480 (初始信用額度)  | 480 |
 | 沒有流量 | 0:00 | 0 | 162 | 642 |
 | 沒有流量 | 1:00 | 0 | 162 | 804 |
 | 沒有流量 | 2:00 | 0 | 162 | 966 |
@@ -68,8 +68,8 @@ B16 特性：
 | 沒有流量 | 4:00 | 0 | 162 | 1290 |
 | 沒有流量 | 5:00 | 0 | 162 | 1452 |
 | 低流量 | 6:00 | 270 | 0 | 1452 |
-| 員工進入 office （應用程式需求 80% vCPU） | 7:00 | 1280 | -606 | 846 |
-| 員工繼續進入 office （應用程式需求 80% vCPU） | 8:00 | 1280 | -606 | 240 |
+| 員工進入 office (應用程式需要 80% vCPU)  | 7:00 | 1280 | -606 | 846 |
+| 員工繼續進入 office (應用程式需要 80% vCPU)  | 8:00 | 1280 | -606 | 240 |
 | 低流量 | 9:00 | 270 | 0 | 240 |
 | 低流量 | 10:00 | 100 | 102 | 342 |
 | 低流量 | 11:00 | 50 | 132 | 474 |
@@ -78,7 +78,7 @@ B16 特性：
 | 低流量 | 14:00 | 50 | 132 | 810 |
 | 低流量 | 15:00 | 100 | 102 | 912 |
 | 低流量 | 16:00 | 100 | 102 | 1014 |
-| 員工簽出（應用程式需要 100% vCPU） | 17:00 | 1600 | -798 | 216 |
+| 員工簽出 (應用程式需要 100% vCPU)  | 17:00 | 1600 | -798 | 216 |
 | 低流量 | 18:00 | 270 | 0 | 216 |
 | 低流量 | 19:00 | 270 | 0 | 216 |
 | 低流量 | 20:00 | 50 | 132 | 348 |
@@ -88,7 +88,7 @@ B16 特性：
 
 <sup>1</sup>小時內累積的信用額度/信用額度相當於： `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` 。  
 
-針對具有16個 vcpu 和 64 GiB 記憶體的 D16s_v3，每小時速率為 $0.936 （每月 $673.92），而針對具有16個 vcpu 和 64 GiB 記憶體的 B16ms，速率為每小時 $0.794 （每月 $547.86）。 <b>這會導致15% 的節約！</b>
+針對具有16個 vcpu 和 64 GiB 記憶體的 D16s_v3，每小時速率為 $0.936 (每月 $673.92) ，而 B16ms 具有16個 vcpu 和 64 GiB 記憶體時，速率為每小時 $0.794 (每個月 $547.86) 。 <b>這會導致15% 的節約！</b>
 
 ## <a name="q--a"></a>問答集
 
@@ -122,9 +122,9 @@ B16 特性：
 
 **答**：您可以使用下列公式：
 
-（VM 的基礎 CPU 效能-CPU 使用量）/100 = 信用額度 bank 或每分鐘使用量
+ (VM 的基礎 CPU 效能-CPU 使用量) /100 = 信用額度 bank 或每分鐘使用量
 
-例如，在上述情況中，您的基準為20%，如果您使用10% 的 CPU，則會累積（20%-10%/100 = 每分鐘0.1 點數）。
+例如，在上述情況中，您的基準為20%，如果您使用10% 的 CPU，則會累積 (20%-10% ) /100 = 每分鐘0.1 個點數。
 
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>問：B 系列是否支援進階儲存體資料磁碟？
 
@@ -149,7 +149,7 @@ B16 特性：
 
 定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>後續步驟
 

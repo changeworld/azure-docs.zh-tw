@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 4c6f4bbae180184c13041863a85e2a7025f06a6e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 826f47115d15b9c46476af711eddc5499afab419
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250440"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830252"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何在 Azure API 管理中使用服務備份和還原實作災害復原
 
@@ -73,7 +73,7 @@ ms.locfileid: "86250440"
 ### <a name="add-an-application"></a>新增應用程式
 
 1. 建立應用程式之後，按一下 [ **API 許可權**]。
-2. 按一下 [+ 新增權限]****。
+2. 按一下 [+ 新增權限]。
 4. 按 [**選取 Microsoft api**]。
 5. 選擇 [ **Azure 服務管理**]。
 6. 按 [選取]****。
@@ -169,19 +169,24 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 備份作業的執行時間較長，因此可能需要數分鐘的時間才能完成。 如果要求成功並已開始備份程序，您就會收到含有 `Location` 標頭的 `202 Accepted` 回應狀態碼。 請向 `Location` 標頭中的 URL 發出 'GET' 要求，以查明作業的狀態。 在備份進行時，您會持續收到「202 已接受」狀態碼。 回應碼 `200 OK` 代表備份作業已成功完成。
 
-建立備份或還原要求時，請注意下列條件約束：
+#### <a name="constraints-when-making-backup-or-restore-request"></a>建立備份或還原要求時的條件約束
 
 -   在要求本文中指定的**容器****必須存在**。
 -   當備份正在進行時，**避免服務中的管理變更**，例如 SKU 升級或降級、功能變數名稱變更等等。
 -   備份還原的**保證僅限建立後的 30 天內**。
--   備份**不包含**用來建立分析報告的**使用量資料**。 請使用 [Azure API 管理 REST API][azure api management rest api] 來定期擷取分析報告，以利妥善保存。
--   此外，下列專案不是備份資料的一部分：自訂網域 TLS/SSL 憑證，以及客戶所上傳的任何中繼或根憑證、開發人員入口網站內容和虛擬網路整合設定。
--   執行服務備份的頻率會影響您的復原點目標。 為了盡可能縮小，建議您實作定期備份，並在針對 API 管理服務進行變更後執行隨選備份。
 -   在備份作業進行時針對服務組態 (例如 API、原則及開發人員入口網站外觀) 所做的**變更****可能會從備份中排除，因此可能會遺失**。
--   如果已啟用[防火牆][azure-storage-ip-firewall]，**允許**從控制平面存取 Azure 儲存體帳戶。 客戶應該在其儲存體帳戶上開啟一組[AZURE API 管理控制平面 IP 位址][control-plane-ip-address]，以便進行備份或還原。 
+-   如果已啟用[防火牆][azure-storage-ip-firewall]，**允許**從控制平面存取 Azure 儲存體帳戶。 客戶應該在其儲存體帳戶上開啟一組[AZURE API 管理控制平面 IP 位址][control-plane-ip-address]，以便進行備份或還原。 這是因為 Azure 儲存體的要求不會從計算 > (Azure Api 管理控制平面) 中 Snat 轉譯至公用 IP。 跨區域儲存體要求將會 Snat 轉譯。
 
-> [!NOTE]
-> 如果您嘗試使用已啟用[防火牆][azure-storage-ip-firewall]的儲存體帳戶來進行備份/還原至 API 管理服務，則在相同的 Azure 區域中，這將無法正常執行。 這是因為 Azure 儲存體的要求不會從計算 > (Azure Api 管理控制平面) 中 Snat 轉譯至公用 IP。 跨區域儲存體要求將會 Snat 轉譯。
+#### <a name="what-is-not-backed-up"></a>未備份的內容
+-   備份**不包含**用來建立分析報告的**使用量資料**。 請使用 [Azure API 管理 REST API][azure api management rest api] 來定期擷取分析報告，以利妥善保存。
+-   [自訂網域 TLS/SSL](configure-custom-domain.md)憑證
+-   [自訂 CA 憑證](api-management-howto-ca-certificates.md)，包括客戶所上傳的中繼或根憑證
+-   [虛擬網路](api-management-using-with-vnet.md)整合設定。
+-   [受控識別](api-management-howto-use-managed-service-identity.md)設定。
+-   [Azure 監視器診斷](api-management-howto-use-azure-monitor.md)配置.
+-   [通訊協定和加密](api-management-howto-manage-protocols-ciphers.md)設定。
+
+執行服務備份的頻率會影響您的復原點目標。 為了盡可能縮小，建議您實作定期備份，並在針對 API 管理服務進行變更後執行隨選備份。
 
 ### <a name="restore-an-api-management-service"></a><a name="step2"> </a>還原 API 管理服務
 

@@ -7,21 +7,21 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8553a809173d955a21e6730de35c70de5b69e81b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: e3316b4a2255652972a0b9deef813f894f993589
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136149"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836066"
 ---
-# <a name="azure-monitor-insights-for-virtual-wan-preview"></a>適用于虛擬 WAN 的 Azure 監視器深入解析（預覽）
+# <a name="azure-monitor-insights-for-virtual-wan-preview"></a>適用于虛擬 WAN (Preview 的 Azure 監視器深入解析) 
 
 虛擬 WAN 的[Azure 監視器深入](../azure-monitor/insights/network-insights-overview.md)解析可讓使用者和操作員能夠查看虛擬 WAN 的狀態和狀態，並透過 autodiscovered 拓撲對應來呈現。 資源狀態和狀態會在地圖上重迭，以提供您虛擬 WAN 整體健全狀況的快照集。 透過單鍵存取虛擬 WAN 入口網站的 [資源設定] 頁面，即可在地圖上啟用資源流覽。
 
 虛擬 WAN 資源層級計量是透過預先封裝的虛擬 WAN 計量活頁簿來收集和呈現，其中顯示虛擬 WAN、中樞、閘道和連線層級的計量。 這篇文章會逐步引導您使用虛擬 WAN Azure 監視器深入解析，以單一位置來查看您的虛擬 WAN 拓朴和計量。
 
 > [!NOTE]
-> [深入解析] 功能表正在推出此預覽階段。
+> 虛擬 WAN 入口網站中的 [深入解析] 功能表選項正在推出。當虛擬 WAN 的 [深入解析] 功能表推出時，可以使用 Azure 監控 for Networks 直接存取虛擬 WAN 拓朴和計量活頁簿。 如需詳細資訊，請參閱[Azure 監視器深入](../azure-monitor/insights/network-insights-overview.md)解析。 
 >
 
 ## <a name="before-you-begin"></a>開始之前
@@ -33,7 +33,7 @@ ms.locfileid: "87136149"
 
 ## <a name="view-vwan-topology"></a><a name="topology"></a>View VWAN 拓撲
 
-在**Azure 入口網站 >的虛擬 WAN**中，從左側的 [**監視**] 功能表中，選取 [ **Insights （預覽）**]。 這會開啟 [**深入**解析] 視圖，其中顯示虛擬 WAN 相依性對應和高階計量迷你活頁簿。
+在**Azure 入口網站 >的虛擬 WAN**中，從左側的 [**監視**] 功能表中，選取 [ **Insights (預覽**] [) ]。 這會開啟 [**深入**解析] 視圖，其中顯示虛擬 WAN 相依性對應和高階計量迷你活頁簿。
 
 **圖1：監視器-深入解析功能表**
 
@@ -60,10 +60,10 @@ ms.locfileid: "87136149"
 * 跨不同 Azure 區域的虛擬 WAN 中樞。
 * 直接連線到中樞的輪輻 Vnet。
 * VPN 和 ExpressRoute 分支網站，以及透過其各自的 ExpressRoute、S2S 和 P2S 連線，以及虛擬網路閘道連接到每個中樞的 P2S 使用者。
-* 部署在中樞（受保護的中樞）中的 Azure 防火牆（包括協力廠商防火牆 proxy）。
-* 部署在輪輻 Vnet 中的協力廠商 NVA （網路虛擬裝置）。
+* Azure 防火牆 (包括協力廠商防火牆 proxy) 部署在中樞 (安全中樞) 。
+* 協力廠商 NVA (在輪輻 Vnet 中部署的網路虛擬裝置) 。
 
-相依性對應也會顯示間接連線的 Vnet （VNet 是以虛擬 WAN 輪輻 Vnet 對等互連）。
+相依性對應也會顯示以虛擬 WAN 輪輻 Vnet) 對等互連的間接連線 Vnet (VNet。
 
 相依性對應可讓您輕鬆流覽到每個資源的設定。 例如，您可以將滑鼠停留在中樞資源上，以查看基本資源設定，例如中樞區域和中樞首碼。 以滑鼠右鍵按一下以存取中樞資源的 [Azure 入口網站] 頁面。
 

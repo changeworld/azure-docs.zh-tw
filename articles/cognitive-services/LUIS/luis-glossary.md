@@ -3,15 +3,15 @@ title: 詞彙-LUIS
 description: 此詞彙說明使用 LUIS API Service 時可能遇到的字詞。
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056373"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836406"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>常用詞彙和概念的語言理解詞彙
-Language Understanding （LUIS）詞彙說明當您使用 LUIS 服務時可能會遇到的詞彙。
+Language Understanding (LUIS) 詞彙說明當您使用 LUIS 服務時可能會遇到的詞彙。
 
 ## <a name="active-version"></a>作用中版本
 
@@ -26,7 +26,7 @@ Language Understanding （LUIS）詞彙說明當您使用 LUIS 服務時可能�
 * [查看端點語句的教學課程](luis-tutorial-review-endpoint-utterances.md)
 * 如何藉由[審查端點語句](luis-how-to-review-endpoint-utterances.md)來改善 LUIS 應用程式
 
-## <a name="application-app"></a>應用程式（App）
+## <a name="application-app"></a>應用程式 (應用程式) 
 
 在 LUIS 中，您的應用程式（或應用程式）是機器學習模型的集合，建置於相同的資料集上，可一起運作以預測特定案例的意圖和實體。 每個應用程式都有個別的預測端點。
 
@@ -59,18 +59,18 @@ Language Understanding （LUIS）詞彙說明當您使用 LUIS 服務時可能�
 
 在批次測試中，是指測試精確度的量值。
 
-### <a name="false-negative-fn"></a>誤否定（FN）
+### <a name="false-negative-fn"></a>假否定 (FN) 
 
 在批次測試中，資料點代表您的應用程式不正確預測了不存在目標意圖/實體的語句。
 
-### <a name="false-positive-fp"></a>錯誤正面（FP）
+### <a name="false-positive-fp"></a>假正數 (FP) 
 
 在批次測試中，資料點代表您的應用程式不正確預測了存在目標意圖/實體的語句。
 
-### <a name="precision"></a>準確率
+### <a name="precision"></a>精確度
 在批次測試中，精確度 (也稱為陽性預測值) 是相關語句在所擷取語句之間的比例。
 
-動物批次測試的範例是預測的為伍數目除以動物總數（為伍和非為伍）。
+動物批次測試的範例是預測的為伍數目除以動物總數 (為伍和非為伍的) 。
 
 ### <a name="recall"></a>召回
 
@@ -84,7 +84,7 @@ Language Understanding （LUIS）詞彙說明當您使用 LUIS 服務時可能�
 
 ### <a name="true-positive-tp"></a>真肯定 (TP)
 
-真肯定（TP）：當您的應用程式正確預測相符項時，即為真肯定。 在批次測試中，當您的應用程式針對已使用該意圖或實體標記的範例，預測意圖或實體時，就會發生真肯定。
+真肯定 (TP) 真肯定是您的應用程式正確預測相符的時機。 在批次測試中，當您的應用程式針對已使用該意圖或實體標記的範例，預測意圖或實體時，就會發生真肯定。
 
 ## <a name="classifier"></a>分類器
 
@@ -94,11 +94,11 @@ Language Understanding （LUIS）詞彙說明當您使用 LUIS 服務時可能�
 
 ## <a name="collaborator"></a>共同作業者
 
-共同作業者在概念上與[參與者](#contributor)的做法相同。 當擁有者將共同作業者的電子郵件地址新增至不是以角色為基礎的存取（RBAC）控制的應用程式時，會授與共同作業者的存取權。 如果您仍在使用共同作業者，您應該遷移 LUIS 帳戶，並使用 LUIS 撰寫資源來管理具有 RBAC 的參與者。
+共同作業者在概念上與[參與者](#contributor)的做法相同。 當擁有者將共同作業者的電子郵件地址新增至未使用 Azure 角色型存取控制 (Azure RBAC) 控制的應用程式時，會授與共同作業者的存取權。 如果您仍在使用共同作業者，您應該遷移 LUIS 帳戶，並使用 LUIS 撰寫資源來管理具有 RBAC 的參與者。
 
 ## <a name="contributor"></a>參與者
 
-參與者不是應用程式的[擁有](#owner)者，但具備新增、編輯和刪除意圖、實體、語句的相同許可權。 參與者會針對 LUIS 應用程式提供以角色為基礎的存取（RBAC）。
+參與者不是應用程式的[擁有](#owner)者，但具備新增、編輯和刪除意圖、實體、語句的相同許可權。 參與者會 (Azure RBAC) 提供給 LUIS 應用程式的 Azure 角色型存取控制。
 
 另請參閱：
 * [如何](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)新增參與者
@@ -190,11 +190,11 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 ## <a name="luis-app"></a>LUIS 應用程式
 
-請參閱[應用程式的定義（app）](#application-app)。
+請參閱[應用程式的定義 (應用程式) ](#application-app)。
 
-## <a name="model"></a>型號
+## <a name="model"></a>模型
 
-（機器學習）模型是對輸入資料進行預測的函數。 在 LUIS 中，我們會將意圖分類器和實體擷取器視為「模型」，而我們會將一組定型、發佈及查詢的模型當做「應用程式」來參考。
+) 模型所學習到的 (機器是對輸入資料進行預測的函式。 在 LUIS 中，我們會將意圖分類器和實體擷取器視為「模型」，而我們會將一組定型、發佈及查詢的模型當做「應用程式」來參考。
 
 ## <a name="normalized-value"></a>標準化值
 
@@ -210,7 +210,7 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 ## <a name="phrase-list"></a>片語清單
 
-[片語清單](luis-concept-feature.md)是特定類型的機器學習功能，其中包含屬於相同類別的一組值（單字或片語），而且必須以類似的方式處理（例如，城市或產品的名稱）。
+[片語清單](luis-concept-feature.md)是一種特定類型的機器學習服務功能，其中包含一組值 (屬於相同類別的單字或片語) ，而且必須以類似的方式處理 (例如，城市或產品的名稱) 。
 
 ## <a name="prebuilt-model"></a>預先建立的模型
 
@@ -230,11 +230,11 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 ## <a name="prediction"></a>預測
 
-預測是 Azure LUIS 預測服務的 REST 要求，會採用新的資料（使用者語句），並將定型和發行的應用程式套用至該資料，以判斷要找到哪些意圖和實體。
+預測是 Azure LUIS 預測服務的 REST 要求，會採用新的資料 (使用者語句) ，並將定型和發行的應用程式套用至該資料，以判斷要找到哪些意圖和實體。
 
 ### <a name="prediction-key"></a>預測金鑰
 
-[預測金鑰](luis-how-to-azure-subscription.md)（之前稱為「訂用帳戶金鑰」）是與您在 Azure 中建立的 LUIS 服務相關聯的金鑰，可授權您使用預測端點。
+[預測金鑰](luis-how-to-azure-subscription.md) (之前稱為「訂用帳戶金鑰」) 是與您在 Azure 中建立的 LUIS 服務相關聯的金鑰，可授權您使用預測端點。
 
 這個金鑰不是編寫金鑰。 如果您有預測端點金鑰，則應該將它用於任何端點要求，而不是撰寫金鑰。 您可以在 LUIS 網站中 Azure 資源頁面底部的端點 URL 內，查看您目前的預測金鑰。 這是訂用帳戶金鑰名稱/值組的值。
 
@@ -248,7 +248,7 @@ LUIS 預測端點 URL 是您在撰寫和發佈[LUIS 應用程式](#application-a
 
 [分數](luis-concept-prediction-score.md)是介於0和1之間的數位，這是一種測量系統如何確信特定輸入語句符合特定意圖的方式。 接近1的分數表示系統對其輸出非常自信，而接近0的分數表示系統確信輸入不符合特定輸出。 中間的分數表示系統不確定如何做出決定。
 
-例如，取得用來識別某個客戶文字是否包含食物訂單的模型。 它的分數可能會是「我想要訂購一咖啡」（系統相信這是訂單），而「我的小組贏得遊戲的最後夜晚」的分數為0（系統相信這不是訂單）。 「讓我們有一些茶」的分數可能是0.5 （不確定這是否為訂單）。
+例如，取得用來識別某個客戶文字是否包含食物訂單的模型。 「我想要訂購一咖啡」的分數可能是1， (系統非常確信這是訂單) 而且「我的團隊在最後一夜贏得遊戲」的分數為0， (系統非常確信這不是訂單) 。 「讓我們有一些茶」的分數可能是0.5， (不確定這是否為訂單) 。
 
 ## <a name="programmatic-key"></a>程式設計金鑰
 
@@ -303,7 +303,7 @@ LUIS 配額是 Azure 訂用帳戶層的限制。 LUIS 配額會受到每秒要�
 ## <a name="token"></a>Token
 [Token](luis-language-support.md#tokenization)是 LUIS 可以辨識之文字的最小單位。 這在不同的語言之間有些微。
 
-若為**英文**，則 token 為字母和數位的連續範圍（不含空格或標點符號）。 空格不是 token。
+針對**英文**，權杖是連續的範圍， (不含空格或標點符號) 字母和數位。 空格不是 token。
 
 |片語|權杖計數|說明|
 |--|--|--|

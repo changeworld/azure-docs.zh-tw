@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1551bd3a6caedb61750b28120c222a57b491640e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372615"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830439"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>適用於 Linux VM 的 Azure 磁碟加密 
 
@@ -34,7 +34,7 @@ Azure 磁碟加密可協助保護資料安全，以符合貴組織安全性和�
 
 ### <a name="supported-vms"></a>支援的 VM
 
-Linux VM 有[各種大小](sizes.md)。 [基本、A 系列 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)，或在不符合下列最低記憶體需求的虛擬機器上，無法使用 Azure 磁碟加密：
+Linux VM 有[各種大小](../sizes.md)。 [基本、A 系列 VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/)，或在不符合下列最低記憶體需求的虛擬機器上，無法使用 Azure 磁碟加密：
 
 | 虛擬機器 | 最低記憶體需求 |
 |--|--|

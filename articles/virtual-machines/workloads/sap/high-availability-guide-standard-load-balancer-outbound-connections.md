@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: eca36a2c13fcdc232d4d06ca6e59598fe9a611f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082132"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836117"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>適用於 SAP 高可用性案例中使用 Azure Standard Load Balancer 之虛擬機器的公用端點連線能力
 
@@ -100,7 +100,7 @@ SAP 系統通常會包含敏感性的商務資料。 此情況通常無法讓裝
 2. 建立後端集區 **MyBackendPoolOfPublicILB** 並新增 VM。  
    1. 選取虛擬網路  
    1. 選取 VM 及其 IP 位址，並將其新增至後端集區  
-3. [建立連出規則](../../../load-balancer/configure-load-balancer-outbound-cli.md#create-outbound-rule) \(部分機器翻譯\)。 目前並無法從 Azure 入口網站建立連出規則。 您可以使用 [Azure CLI](../../../cloud-shell/overview.md?view=azure-cli-latest) \(部分機器翻譯\) 來建立連出規則。  
+3. [建立連出規則](../../../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard%3ftabs%3doption-1-create-load-balancer-standard#create-outbound-rule-configuration) \(部分機器翻譯\)。 目前並無法從 Azure 入口網站建立連出規則。 您可以使用 [Azure CLI](../../../cloud-shell/overview.md?view=azure-cli-latest) \(部分機器翻譯\) 來建立連出規則。  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: b360e58c9349bf98e8c89fcb75a46eedea1bb8fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5348b4cfb1961bdada7c32f3c437cdb2819ef6d0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000494"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833023"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒體服務版本資訊
 
@@ -580,8 +580,8 @@ Azure Media Services Packager 和 Encryptor 完成了下列錯誤修正：
 [Microsoft Q&A question page for Azure Media Services]: /answers/topics/azure-media-services.html
 [Azure 媒體服務 REST API 參考]: /rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
-[輸入中繼資料]: /azure/media-services/previous/media-services-input-metadata-schema
-[輸出中繼資料]: /azure/media-services/previous/media-services-output-metadata-schema
+[輸入中繼資料]: ./media-services-input-metadata-schema.md
+[輸出中繼資料]: ./media-services-output-metadata-schema.md
 [Deliver content]: /previous-versions/azure/hh973618(v=azure.100)
 [Index media files with the Azure Media Indexer]: /previous-versions/azure/dn783455(v=azure.100)
 [StreamingEndpoint]: /rest/api/media/operations/streamingendpoint
@@ -595,7 +595,7 @@ Azure Media Services Packager 和 Encryptor 完成了下列錯誤修正：
 [動態封裝]: /previous-versions/azure/jj889436(v=azure.100)
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: /previous-versions/azure/dn189154(v=azure.100)
-[Media Services SDK for .NET 中的重試邏輯]: /azure/media-services/previous/media-services-retry-logic-in-dotnet-sdk
+[Media Services SDK for .NET 中的重試邏輯]: ./media-services-retry-logic-in-dotnet-sdk.md
 [Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: /previous-versions/azure/dn303341(v=azure.100)
 [Create overlays]: /previous-versions/azure/dn640496(v=azure.100)

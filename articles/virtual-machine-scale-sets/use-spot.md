@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli
-ms.openlocfilehash: 2898364811616c16a0c33ea26dcaacace9c2c4ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de8cfa66d6d52fe16cc40c5df0f41a39fff134fd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491794"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832632"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>適用于虛擬機器擴展集的 Azure 位置 Vm 
 
@@ -28,11 +28,11 @@ ms.locfileid: "87491794"
 「點」實例的定價是以區域和 SKU 為依據的變數。 如需詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)的定價。 
 
 
-有了可變的定價，您可以選擇使用最多5個小數位數來設定最大價格（以美元（美元）為單位）。 例如，此值 `0.98765` 是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為 `-1` ，則不會根據價格來收回實例。 實例的價格將會是標準實例的目前價格或價格（這種情況較少），只要有可用的容量和配額即可。
+有了可變的定價，您可以選擇設定最大價格，以美元為單位， (美元) ，最多可使用5個小數位數。 例如，此值 `0.98765` 是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為 `-1` ，則不會根據價格來收回實例。 實例的價格將會是標準實例的目前價格或價格（這種情況較少），只要有可用的容量和配額即可。
 
 ## <a name="eviction-policy"></a>收回原則
 
-建立「點」擴展集時，您可以將收回原則設定為*解除配置*（預設值）或*刪除*。 
+建立「位置」擴展集時，您可以將收回原則設定為*解除配置* (預設) 或「*刪除*」。 
 
 *解除配置*原則會將您收回的實例移至已停止（已解除配置）狀態，讓您重新部署已收回的實例。 不過，不保證配置會成功。 已解除配置的 VM 會依擴展集執行個體配額計算，您將需要支付您的基礎磁碟費用。 
 
@@ -40,6 +40,11 @@ ms.locfileid: "87491794"
 
 使用者可以選擇透過[Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md)接收 VM 內通知。 這會在您的 Vm 被收回時通知您，而且您將有30秒的時間完成任何作業，並在收回前執行關閉工作。 
 
+## <a name="placement-groups"></a>放置群組
+放置群組是類似于 Azure 可用性設定組的結構，其具有自己的容錯網域和升級網域。 根據預設，擴展集包含一個大小上限為 100 個 VM 的位置群組。 如果呼叫的擴展集屬性 `singlePlacementGroup` 設定為*false*，擴展集可以由多個放置群組組成，且範圍為 0-1000 部 vm。 
+
+> [!IMPORTANT]
+> 除非您使用的是與 HPC 搭配，否則強烈建議您將擴展集屬性設定 `singlePlacementGroup` 為*false* ，以啟用多個放置群組，以便在整個區域或區域中進行更佳的調整。 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>在擴展集中部署點 Vm
 
@@ -64,6 +69,7 @@ az vmss create \
     --name myScaleSet \
     --image UbuntuLTS \
     --upgrade-policy-mode automatic \
+    --single-placement-group false \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
@@ -89,14 +95,26 @@ $vmssConfig = New-AzVmssConfig `
 
 建立使用點 Vm 之擴展集的程式，與適用于[Linux](quick-create-template-linux.md)或[Windows](quick-create-template-windows.md)的使用者入門文章中所述的流程相同。 
 
-針對點範本部署，請使用 `"apiVersion": "2019-03-01"` 或更新版本。 將 `priority` 、 `evictionPolicy` 和屬性新增 `billingProfile` 至 `"virtualMachineProfile":` 範本中的區段： 
+針對點範本部署，請使用 `"apiVersion": "2019-03-01"` 或更新版本。 
+
+將 `priority` 、 `evictionPolicy` 和屬性加入 `billingProfile` 至區段，並將屬性新增 `"virtualMachineProfile":` `"singlePlacementGroup": false,` 至 `"Microsoft.Compute/virtualMachineScaleSets"` 範本中的區段：
 
 ```json
-                "priority": "Spot",
+
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  },
+  "properties": {
+    "singlePlacementGroup": false,
+    }
+
+        "virtualMachineProfile": {
+              "priority": "Spot",
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
                 }
+            },
 ```
 
 若要在收回實例之後將它刪除，請將 `evictionPolicy` 參數變更為 `Delete` 。
@@ -143,7 +161,7 @@ $vmssConfig = New-AzVmssConfig `
 **答：** 是，您可以在您的位置擴展集上設定自動調整規則。 如果您的 Vm 已收回，自動調整可以嘗試建立新的點 Vm。 請記住，不保證容量足夠。 
 
 
-**問：** 自動調整會同時使用收回原則（解除配置和刪除）嗎？
+**問：** 自動調整會同時使用收回原則 (解除配置和刪除) 嗎？
 
 **答：** 建議您在使用自動調整時，將收回原則設定為 [刪除]。 這是因為解除配置執行個體是按照擴展集的容量計數進行計算。 使用自動調整時，由於已解除配置收回的執行個體，可能會很快達到目標執行個體計數。 
 

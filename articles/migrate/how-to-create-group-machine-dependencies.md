@@ -3,12 +3,12 @@ title: 在 Azure Migrate Server 評估中設定以代理程式為基礎的相依
 description: 本文說明如何在 Azure Migrate Server 評估中設定以代理程式為基礎的相依性分析。
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 50061bead9b00ade0defba45691ea8a7c84625dd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c41f8eb82cf912fc566975f833fc73589f17be98
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321202"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829912"
 ---
 # <a name="set-up-dependency-visualization"></a>設定相依性視覺效果
 
@@ -76,10 +76,10 @@ ms.locfileid: "87321202"
 在 Windows 電腦上安裝代理程式：
 
 1. 按兩下下載的代理程式。
-2. 在 [歡迎] 頁面中按 [下一步]。 在 [**授權條款**] 頁面上，按一下 [**我同意**接受授權]。
-3. 在 [目的地資料夾]**** 中，保留或修改預設的安裝資料夾 > [下一步]****。
-4. 在 [代理程式安裝選項]**** 中，選取 [Azure Log Analytics]**** > [下一步]****。
-5. 按一下 [新增]**** 以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 按 [下一步]  。
+2. 在 [歡迎] 頁面中按 [下一步]。 在 [授權條款] 頁面上，按一下 [我同意] 以接受授權。
+3. 在 [目的地資料夾] 中，保留或修改預設的安裝資料夾 > [下一步]。
+4. 在 [代理程式安裝選項] 中，選取 [Azure Log Analytics] > [下一步]。
+5. 按一下 [新增] 以新增 Log Analytics 工作區。 貼上您從入口網站複製的工作區識別碼和金鑰。 按 [下一步] 。
 
 您可以從命令列或使用自動化方法（例如 Configuration Manager 或[Intigua](https://www.intigua.com/intigua-for-azure-migration)）來安裝代理程式。
 - [了解更多](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)有關如何使用這些方法來安裝 MMA 代理程式。
@@ -104,7 +104,7 @@ ms.locfileid: "87321202"
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- [深入了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)如何使用指令碼安裝 Dependency 代理程式。
+- [深入了解](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)如何使用指令碼安裝 Dependency 代理程式。
 - [深入瞭解](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)Dependency agent 所支援的作業系統。
 
 
@@ -119,11 +119,11 @@ ms.locfileid: "87321202"
 1. 在 [ **Azure Migrate：伺服器評定**] 中，按一下 [探索到的**伺服器**]。
 2. 在 [相依性 **]** 資料行中，按一下您想要檢查之每部機器的 [查看相依性 **]** 。
 3. 在 [相依性對應] 上，您可以看到下列各項：
-    - 電腦的輸入（用戶端）和輸出（伺服器） TCP 連線。
+    - 輸入 (用戶端) 和輸出 (伺服器會) TCP 連線到電腦之間。
     - 未安裝相依性代理程式的相依機器會依埠號碼分組。
     - 已安裝 dependency agent 的相依機器會顯示為不同的方塊。
     - 在機器內執行的進程。 展開每個電腦方塊以查看處理常式。
-    - 電腦屬性（包括 FQDN、作業系統、MAC 位址）。 按一下每個機器方塊以查看詳細資料。
+    - 電腦屬性 (包括 FQDN、作業系統、MAC 位址) 。 按一下每個機器方塊以查看詳細資料。
 
 4. 您可以按一下時間範圍標籤中的持續時間，以查看不同持續時間的相依性。
     - 根據預設，範圍是一小時。 
@@ -138,7 +138,7 @@ ms.locfileid: "87321202"
     - 若要新增電腦，請再次執行探索，並確認已探索到機器。
 
 8. 如果您需要建立此群組的評估，請選取核取方塊來建立新的群組評估。
-8. 按一下 [確定]**** 以儲存群組。
+8. 按一下 [確定] 以儲存群組。
 
 建立群組之後，建議您在群組中的所有機器上安裝代理程式，然後將整個群組的相依性視覺化。
 
@@ -151,7 +151,7 @@ ms.locfileid: "87321202"
 
 執行相依性資料的查詢，如下所示：
 
-1. 安裝代理程式之後，請移至入口網站，然後按一下 [概觀]****。
+1. 安裝代理程式之後，請移至入口網站，然後按一下 [概觀]。
 2. 在 [ **Azure Migrate：伺服器評估**] 中，按一下 **[總覽**]。 按一下向下箭號以展開 [**基本**]。
 3. 在 [ **OMS 工作區**] 中，按一下工作區名稱。
 3. 在 [Log Analytics 工作區] 頁面上 > **[一般**]，按一下 [**記錄**]。
@@ -169,7 +169,7 @@ ms.locfileid: "87321202"
 
 檢查一組 Vm 的輸入連線。
 
-- 連接計量（VMConnection）資料表中的記錄不代表個別的實體網路連線。
+- 連接計量的資料表中的記錄 (VMConnection) 不代表個別的實體網路連接。
 - 將多個實體網路連線分組為一個邏輯連線。
 - [深入瞭解](../azure-monitor/insights/service-map.md#connections)如何在 VMConnection 中匯總實體網路連接資料。
 
@@ -208,5 +208,3 @@ VMConnection
 ## <a name="next-steps"></a>後續步驟
 
 [建立](how-to-create-assessment.md)群組的評量。
-
-

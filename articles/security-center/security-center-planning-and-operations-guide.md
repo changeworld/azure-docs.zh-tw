@@ -8,15 +8,15 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e33cd64da32dcb918d30cd44f413748f719023b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9e67dc0da7f81f73d8237769e7aea90f9bc1585
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771286"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833414"
 ---
 # <a name="planning-and-operations-guide"></a>規劃與操作指南
-本指南適用于規劃使用 Azure 資訊安全中心的資訊技術（IT）專業人員、IT 架構設計師、資訊安全分析師和雲端系統管理員。
+本指南適用于資訊技術 (IT) 專業人員、IT 架構設計師、資訊安全分析師和規劃使用 Azure 資訊安全中心的雲端系統管理員。
 
 
 ## <a name="planning-guide"></a>規劃指南
@@ -69,7 +69,7 @@ ms.locfileid: "84771286"
 * 調查攻擊
 * 與雲端工作負載擁有者合作以套用補救方法
 
-資訊安全中心使用以[角色為基礎的存取控制（RBAC）](../role-based-access-control/role-assignments-portal.md)，它會提供可在 Azure 中指派給使用者、群組和服務的[內建角色](../role-based-access-control/built-in-roles.md)。 當使用者開啟資訊安全中心時，他們只能看到與自己能夠存取的資源相關的資訊。 這表示會為使用者指派資源所屬訂用帳戶或資源群組的「擁有者」、「參與者」或「讀者」角色。 除了這些角色，有兩個特定的資訊安全中心角色：
+資訊安全中心使用[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)，它會提供可在 azure 中指派給使用者、群組和服務的[內建角色](../role-based-access-control/built-in-roles.md)。 當使用者開啟資訊安全中心時，他們只能看到與自己能夠存取的資源相關的資訊。 這表示會為使用者指派資源所屬訂用帳戶或資源群組的「擁有者」、「參與者」或「讀者」角色。 除了這些角色，有兩個特定的資訊安全中心角色：
 
 - **安全性讀取者**：屬於此角色的使用者僅能檢視資訊安全中心設定 (包括建議、警示、原則和健康情況)，但是無法進行變更。
 - **安全性管理員**：與安全性讀取者相同，但它也可以更新安全性原則，解除建議和警示。
@@ -135,20 +135,20 @@ Azure 資訊安全中心使用 Log Analytics 代理程式–這是 Azure 監視�
 
 ### <a name="agent"></a>代理程式
 
-在安全性原則中啟用自動布建時，Log Analytics 代理程式（適用于[Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)或[Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)）會安裝在所有支援的 Azure vm 和任何新建立的虛擬機器上。 如果 VM 或電腦已經安裝 Log Analytics 代理程式，Azure 資訊安全中心將會利用目前安裝的代理程式。 代理程式的進程設計為不具侵入性，而且對 VM 效能的影響極小。
+在安全性原則中啟用自動布建時，適用于[Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)或[Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)的 Log Analytics 代理程式 () 會安裝在所有支援的 Azure vm 和任何新建立的虛擬機器上。 如果 VM 或電腦已經安裝 Log Analytics 代理程式，Azure 資訊安全中心將會利用目前安裝的代理程式。 代理程式的進程設計為不具侵入性，而且對 VM 效能的影響極小。
 
 適用于 Windows 的 Log Analytics 代理程式需要使用 TCP 通訊埠443。 如需詳細資訊，請參閱[疑難排解文章](security-center-troubleshooting-guide.md)。
 
 如果您想在某個時間點停用資料收集，您可以在安全性原則中將它關閉。 不過，因為其他 Azure 管理和監視服務可能會使用 Log Analytics 代理程式，所以當您在資訊安全中心中關閉資料收集時，不會自動卸載代理程式。 您可以視需要手動解除安裝代理程式。
 
 > [!NOTE]
-> 若要尋找支援的 Vm 清單，請閱讀[Azure 資訊安全中心常見問題（FAQ）](faq-vms.md)。
+> 若要尋找支援的 Vm 清單，請閱讀[Azure 資訊安全中心常見問題 (常見問題) ](faq-vms.md)。
 
 ### <a name="workspace"></a>工作區
 
 工作區是一項 Azure 資源，作為資料的容器。 您或組織的其他成員可能會使用多個工作區來管理從所有或部分 IT 基礎結構收集而來的不同資料。
 
-從 Log Analytics 代理程式（代表 Azure 資訊安全中心）收集的資料會儲存在與您的 Azure 訂用帳戶相關聯的現有 Log Analytics 工作區或新的工作區中（將 VM 的地理位置納入考慮）。
+從 Log Analytics 代理程式收集 (代表 Azure 資訊安全中心) 的資料會儲存在與您的 Azure 訂用帳戶相關聯的現有 Log Analytics 工作區 (s) 中，或 () 的新工作區，並將 VM 的地理位置納入考慮。
 
 在 Azure 入口網站中，您可以瀏覽以查看 Log Analytics 工作區清單，包括 Azure 資訊安全中心所建立的任何工作區。 將會針對新的工作區建立相關的資源群組。 兩者都會遵照此命名慣例：
 

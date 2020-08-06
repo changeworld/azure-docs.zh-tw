@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077476"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832513"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>設定使用者 VPN 的 Azure Active Directory 驗證
 
@@ -23,14 +23,14 @@ ms.locfileid: "87077476"
 在本文中，您將學會如何：
 
 > [!div class="checklist"]
-> * 建立 WAN
-> * 建立中樞
-> * 建立 P2S 設定
-> * 下載 VPN 用戶端設定檔
-> * 將 P2S 設定套用到中樞
-> * 將 VNet 連線至中樞
-> * 下載並套用 VPN 用戶端設定
-> * 檢視您的虛擬 WAN
+> * 建立虛擬 WAN
+> * 建立虛擬中樞
+> * 建立使用者 VPN 設定
+> * 下載虛擬 WAN 使用者 VPN 設定檔
+> * 將使用者 VPN 設定套用至虛擬中樞
+> * 將 VNet 連線至虛擬中樞
+> * 下載並套用使用者 VPN 用戶端設定
+> * 查看您的虛擬 WAN
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -81,9 +81,9 @@ ms.locfileid: "87077476"
 3. 按一下 [檢閱 + 建立]。
 4. 在 [**通過驗證**] 頁面上，按一下 [**建立**]。
 
-## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>建立新的 P2S 設定
+## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>建立新的使用者 VPN 設定
 
-P2S 設定會定義用於連線遠端用戶端的參數。
+使用者 VPN 設定會定義連接遠端用戶端的參數。
 
 1. 在您的虛擬 WAN 底下，選取 [使用者 VPN 設定]****。
 
@@ -93,7 +93,16 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 
    ![新增設定](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. 輸入資訊，然後按一下 [建立]****
+3. 輸入資訊，然後按一下 [**建立**]。
+
+   * 設定**名稱**-輸入您想要用來呼叫使用者 VPN 設定的名稱。
+   * 通道**類型**-選取 [OpenVPN]。
+   * **驗證方法**-選取 [Azure Active Directory]。
+   * **物件**-輸入在您的 Azure AD 租使用者中註冊之[Azure VPN](openvpn-azure-ad-tenant.md)企業應用程式的 [應用程式識別碼]。 
+   * **簽發** - `https://sts.windows.net/<your Directory ID>/`
+   * **AAD 租使用者** - `https://login.microsoftonline.com/<your Directory ID>`
+  
+
 
    ![新增設定](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
@@ -111,11 +120,11 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 6. 按一下 [確認]。
 7. 此作業最多可能需要 30 分鐘的時間才能完成。
 
-## <a name="download-vpn-profile"></a><a name="device"></a>下載 VPN 設定檔
+## <a name="download-user-vpn-profile"></a><a name="device"></a>下載使用者 VPN 設定檔
 
 使用 VPN 設定檔來設定用戶端。
 
-1. 在虛擬 WAN 的頁面上，按一下 [使用者 VPN 設定]  。
+1. 在您的虛擬 WAN 頁面上，按一下 [**使用者 VPN**設定]。
 2. 在頁面頂端，按一下 [下載使用者 VPN 設定]  。
 3. 檔案建立完成之後，您可以按一下連結來下載。
 4. 使用設定檔檔案來設定 VPN 用戶端。
@@ -188,13 +197,12 @@ P2S 設定會定義用於連線遠端用戶端的參數。
 2. 在 [概觀] 頁面中，地圖上的每個點都代表著中樞。
 3. 在 [中樞與連線] 區段中，您可以檢視中樞狀態、網站、區域、VPN 連線狀態和輸入與輸出位元組。
 
-
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清除資源
 
-您可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 來移除不再需要的資源群組，以及其所包含的所有資源。 將 "myResourceGroup" 取代為您的資源群組名稱，然後執行下列 PowerShell 命令：
+您可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 來移除不再需要的資源群組，以及其所包含的所有資源。 將 "myResourceGroup" 取代為您的資源群組名稱，然後執行下列 PowerShell 命令：
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>後續步驟

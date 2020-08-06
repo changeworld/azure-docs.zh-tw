@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解在啟用和使用 Azure Dev Spaces 時，如何針對常見問題進行疑難排解並加以解決
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: cd242dc56e4a3215954fbe6703f47e29bd417ea8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1efaa178c2abda316cfad3e375dfdd38b41d75e0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534391"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835692"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -267,7 +267,7 @@ Service cannot be started.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>連線到您的開發機器時，網路流量不會轉送到您的 AKS 叢集
 
-使用 [Azure Dev Spaces 將 AKS 叢集連線到您的開發機器](how-to/local-process-kubernetes-vs-code.md)時，可能會遇到無法在您的開發機器和 AKS 叢集之間轉送網路流量的問題。
+使用 [Azure Dev Spaces 將 AKS 叢集連線到您的開發機器](https://code.visualstudio.com/docs/containers/local-process-kubernetes)時，可能會遇到無法在您的開發機器和 AKS 叢集之間轉送網路流量的問題。
 
 將您的開發機器連接到 AKS 叢集時，Azure Dev Spaces 藉由修改開發機器的 `hosts` 檔案，來轉送 AKS 叢集與開發機器之間的網路流量。 Azure Dev Spaces 會在 `hosts` 中建立一個項目，其中包含您要取代為主機名稱的 Kubernetes 服務位址。 此項目會與埠轉送搭配使用，以引導您的開發機器與 AKS 叢集之間的網路流量。 如果開發機器上的服務與您要取代的 Kubernetes 服務連接埠發生衝突，Azure Dev Spaces 無法轉送 Kubernetes 服務的網路流量。 例如，*Windows BranchCache* 服務通常會繫結至 *0.0.0.0:80*，而衝突會導致所有本機 IP 上的連接埠 80 發生衝突。
 

@@ -3,12 +3,12 @@ title: 架構概觀
 description: 概略說明 Azure 備份服務所使用的架構、元件和程序。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 45e5634188b675198e0fc4c07a8a43964217f91a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532487"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835726"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 備份架構和元件
 
@@ -16,15 +16,15 @@ ms.locfileid: "87532487"
 
 ## <a name="what-does-azure-backup-do"></a>Azure 備份有何功能？
 
-Azure 備份會備份在內部部署機器和 Azure 虛擬機器（VM）實例上執行的資料、機器狀態和工作負載。 Azure 備份有多種案例。
+Azure 備份會備份內部部署機器和 Azure 虛擬機器上執行的資料、機器狀態和工作負載 (VM) 實例。 Azure 備份有多種案例。
 
 ## <a name="how-does-azure-backup-work"></a>Azure 備份如何運作？
 
 您可以使用數種方法來備份機器和資料：
 
 - **備份內部部署機器**：
-  - 您可以使用 Azure 備份 Microsoft Azure 復原服務（MARS）代理程式，將內部部署 Windows 機器直接備份至 Azure。 不支援 Linux 機器。
-  - 您可以將內部部署機器備份至備份伺服器，也就是 System Center Data Protection Manager （DPM）或 Microsoft Azure 備份 Server （MABS）。 然後，您可以將備份伺服器備份至 Azure 中的復原服務保存庫。
+  - 您可以使用 Azure 備份 Microsoft Azure 復原服務 (MARS) 代理程式，將內部部署 Windows 機器直接備份至 Azure。 不支援 Linux 機器。
+  - 您可以將內部部署機器備份至備份伺服器，也就是 System Center Data Protection Manager (DPM) 或 Microsoft Azure 備份 Server (MABS) 。 然後，您可以將備份伺服器備份至 Azure 中的復原服務保存庫。
 
 - **備份 Azure vm**：
   - 您可以直接備份 Azure VM。 Azure 備份會將備份擴充功能安裝到 VM 上執行的 Azure VM 代理程式。 此擴充功能會備份整個 VM。
@@ -42,10 +42,10 @@ Azure 備份會將已備份的資料儲存在復原服務保存庫中。 保存�
 - 保存庫可輕鬆地組織您的備份資料，同時可減輕管理負擔。
 - 在一個 Azure 訂用帳戶中，您最多可以建立 500 個保存庫。
 - 您可以在保存庫中監視已備份的專案，包括 Azure Vm 和內部部署機器。
-- 您可以使用 Azure [角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 來管理保存庫存取。
+- 您可以[ (AZURE RBAC) ，透過 azure 角色型存取控制](../role-based-access-control/role-assignments-portal.md)來管理保存庫存取。
 - 您可以指定如何複寫保存庫中的資料以提供備援性：
-  - **本機多餘儲存體（LRS）**：若要防止資料中心發生失敗，您可以使用 LRS。 LRS 會將資料複寫至儲存體縮放單位。 [深入了解](../storage/common/storage-redundancy.md)。
-  - **異地多餘儲存體（GRS）**：若要防止全區域中斷，您可以使用 GRS。 GRS 會將您的資料複寫至次要區域。 [深入了解](../storage/common/storage-redundancy.md)。
+  - **本機冗余儲存體 (LRS) **：若要防止資料中心發生失敗，您可以使用 LRS。 LRS 會將資料複寫至儲存體縮放單位。 [深入了解](../storage/common/storage-redundancy.md)。
+  - **異地冗余儲存體 (GRS) **：若要防止全區域中斷，您可以使用 GRS。 GRS 會將您的資料複寫至次要區域。 [深入了解](../storage/common/storage-redundancy.md)。
   - 根據預設，復原服務保存庫會使用 GRS。
 
 ## <a name="backup-agents"></a>備份代理程式
@@ -92,7 +92,7 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 
 下表摘要說明不同備份類型的支援功能：
 
-**功能** | **直接備份檔案和資料夾（使用 MARS 代理程式）** | **Azure VM 備份** | **具有 DPM/MABS 的機器或應用程式**
+**功能** | ** (使用 MARS 代理程式直接備份檔案和資料夾) ** | **Azure VM 備份** | **具有 DPM/MABS 的機器或應用程式**
 --- | --- | --- | ---
 備份至保存庫 | ![是][green] | ![是][green] | ![是][green]
 備份至 DPM/MABS 磁片，到 Azure | | | ![是][green]
@@ -116,7 +116,7 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
   - 「每週」指的是一周的某一天的備份
   - 「每月」指的是當月某一天的備份
   - 「每年」指的是一年中某一天的備份
-- 「每月」、「每年」備份點的保留期稱為長期保留（LTR）
+- 「每月」、「每年」備份點的保留期稱為長期保留 (LTR) 
 - 建立保存庫時，也會建立 "DefaultPolicy"，並可用來備份資源。
 - 對備份原則的保留期間所做的任何變更，將會追溯到除了新的復原點之外。
 
@@ -137,7 +137,7 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
     - 針對 Windows Vm，會安裝 VMSnapshot 擴充功能。
     - 針對 Linux Vm，會安裝 VMSnapshot Linux 擴充功能。
 1. 延伸模組會採用儲存體層級的快照集。
-    - 針對執行的 Windows Vm，備份會與 Windows 磁碟區陰影複製服務（VSS）協調，以取得 VM 的應用程式一致快照集。 根據預設，備份會進行完整的 VSS 備份。 如果「備份」無法建立應用程式一致快照集，則會建立檔案一致快照集。
+    - 針對執行的 Windows Vm，備份會與 Windows 磁碟區陰影複製服務 (VSS) ，以取得 VM 的應用程式一致快照集。 根據預設，備份會進行完整的 VSS 備份。 如果「備份」無法建立應用程式一致快照集，則會建立檔案一致快照集。
     - 針對 Linux Vm，備份會採用檔案一致的快照集。 針對應用程式一致快照集，您必須手動自訂前置/後置腳本。
     - 藉由平行備份每個 VM 磁碟，可將備份作業最佳化。 對於每個要備份的磁碟，Azure 備份會讀取磁碟上的區塊，並僅儲存已變更的資料。
 1. 建立快照集之後，資料會傳輸至保存庫。
@@ -157,7 +157,7 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 1. MARS 代理程式會使用 VSS 來取得所選備份磁片區的時間點快照集。
     - MARS 代理程式只會使用 Windows 系統寫入作業來捕捉快照集。
     - 由於代理程式不會使用任何應用程式 VSS 寫入器，因此它不會捕捉應用程式一致的快照集。
-1. 使用 VSS 建立快照集之後，MARS 代理程式會在您設定備份時所指定的快取資料夾中建立虛擬硬碟（VHD）。 代理程式也會儲存每個資料區塊的總和檢查碼。
+1. 使用 VSS 建立快照集之後，MARS 代理程式會在您設定備份時所指定的快取資料夾中， (VHD) 建立虛擬硬碟。 代理程式也會儲存每個資料區塊的總和檢查碼。
 1. 增量備份會根據您指定的排程執行，除非您執行隨選備份。
 1. 執行增量備份時，會識別已變更的檔案，並建立新的 VHD。 VHD 會經過壓縮和加密，然後傳送到保存庫。
 1. 增量備份完成之後，新的 VHD 會與初始複寫後建立的 VHD 合併。 這個合併的 VHD 會提供最新的狀態，以用於進行中的備份比較。
@@ -169,7 +169,7 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 1. 您會在想要保護的電腦上安裝 DPM 或 MABS 保護代理程式。 然後將機器新增至 DPM 保護群組。
     - 若要保護內部部署機器，DPM 或 MABS 伺服器必須位於內部部署環境。
     - 若要保護 Azure VM，MABS 伺服器必須位於 Azure 中，以 Azure VM 的形式執行。
-    - 使用 DPM/MABS 時，您可以保護備份磁片區、共用、檔案和資料夾。 您也可以保護電腦的系統狀態（裸機），而且您可以使用應用程式感知備份設定來保護特定應用程式。
+    - 使用 DPM/MABS 時，您可以保護備份磁片區、共用、檔案和資料夾。 您也可以 (裸機) 保護電腦的系統狀態，也可以使用應用程式感知備份設定來保護特定應用程式。
 1. 當您在 DPM/MABS 中設定機器或應用程式的保護時，您選擇備份至 MABS/DPM 本機磁片以進行短期儲存，並針對線上保護使用 Azure。 您也可以指定備份至本機 DPM/MABS 儲存體的時間，以及執行線上備份至 Azure 的時機。
 1. 受保護工作負載的磁片會根據您指定的排程備份至本機 MABS/DPM 磁片。
 1. Dpm/MABS 磁片會由在 DPM/MABS 伺服器上執行的 MARS 代理程式備份到保存庫。
@@ -181,7 +181,7 @@ Azure 備份提供不同的備份代理程式，視要備份的機器類型而�
 Azure VM 會使用磁碟來儲存其作業系統、應用程式和資料。 每個 Azure VM 至少有兩個磁片：作業系統的磁片和暫存磁片。 Azure Vm 也可以有適用于應用程式資料的資料磁片。 磁碟會儲存為 VHD。
 
 - Vhd 會以分頁 blob 的形式儲存在 Azure 中的標準或 premium 儲存體帳戶中：
-  - **標準儲存體：** 針對執行不區分延遲之工作負載的 Vm，提供可靠、低成本的磁片支援。 標準儲存體可以使用標準固態硬碟（SSD）磁片或標準硬碟（HDD）磁片。
+  - **標準儲存體：** 針對執行不區分延遲之工作負載的 Vm，提供可靠、低成本的磁片支援。 標準儲存體可以使用標準固態硬碟 (SSD) 磁片或標準硬碟磁片磁碟機 (HDD) 磁片。
   - **Premium 儲存體：** 高效能磁片支援。 使用進階 SSD 磁碟。
 - 磁碟有不同的效能層級：
   - **標準 HDD 磁片：** 受到 Hdd 的支援，並用於符合成本效益的儲存體。

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f119acc06883dc077218c56accd31c805092db85
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088286"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831102"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SAP Business One
 本文提供在 Azure 虛擬機器上部署 SAP Business One 的指引。 本文無法取代 SAP Business One 的安裝文件。 本文應涵蓋在 Azure 基礎結構上執行 Business One 應用程式的基本規劃與部署指引。
@@ -149,7 +149,7 @@ SQL Server 的 DBMS 端粗略估算如下：
 ### <a name="business-one-client-server"></a>Business One 用戶端伺服器
 對於這些元件而言，儲存體考量並非其主要的考量。 不過，您仍然需要可靠的平台。 因此，即使是基底 VHD，此 VM 也應使用 Azure 進階儲存體。 使用 [SAP Business One 硬體需求指南](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf) \(英文\) 中所提供的資料來調整 VM 大小。 對於 Azure，您必須著重於計算文件的第 2.4 章中所述的需求。 計算需求時，您必須對照下列文件，以找出理想的 VM：
 
-- [Azure 中的 Windows 虛擬機器大小](../../windows/sizes.md)
+- [Azure 中的 Windows 虛擬機器大小](../../sizes.md)
 - [SAP 附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 針對 CPU 與記憶體，比較所需的數量與 Microsoft 記載的數量。 在選擇 VM 時，也請記得考量網路輸送量。

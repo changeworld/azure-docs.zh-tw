@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc283d1845926b79fb541d8ccb011fe853f50484
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f363b8fc2fec659ee1b101c13d1ba6ac629f29d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870287"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835474"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>從 Amazon Web Services (AWS) 和其他平台移轉至 Azure 中的受控磁碟
 
@@ -31,7 +31,7 @@ ms.locfileid: "81870287"
 >
 
 
-| 狀況                                                                                                                         | 文件                                                                                                                       |
+| 案例                                                                                                                         | 文件                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | 您具有想要使用受控磁碟移轉至 Azure VM 的 AWS EC2 執行個體                              | [從 Amazon Web Services (AWS) 將 VM 移至 Azure](aws-to-azure.md)                           |
 | 您具有來自其他虛擬化平台的 VM，且想要將它作為映像使用，來建立多個 Azure VM。 | [將一般化 VHD 上傳，並使用它在 Azure 中建立新的 VM](upload-generalized-managed.md) |
@@ -49,13 +49,13 @@ Azure 受控磁碟可免除管理儲存體帳戶的需求，進而簡化 VM 管�
 
 如果您打算從非受控磁碟移轉至受控磁碟，您應注意到具有[虛擬機器參與者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色的使用者將無法變更 VM 大小 (因為它們可能為轉換前)。 這是因為具有受控磁碟的 VM 需要使用者具有 OS 磁碟上的 Microsoft.Compute/disks/write 權限。
 
-### <a name="location"></a>位置
+### <a name="location"></a>Location
 
 挑選 Azure 受控磁碟可用的位置。 如果您要移轉至進階受控磁碟，也請確保進階儲存體可用於您打算移轉至的區域。 如需可使用 Azure 服務之地點的最新資訊，請參閱[依區域提供的 Azure 服務](https://azure.microsoft.com/regions/#services)。
 
 ### <a name="vm-sizes"></a>VM 大小
 
-如果您要移轉至進階受控磁碟，您必須將 VM 大小更新為 VM 所在區域中進階儲存體可支援的大小。 檢閱進階儲存體可支援的 VM 大小。 Azure VM 大小的規格已列在 [虛擬機器的大小](sizes.md)一文中。
+如果您要移轉至進階受控磁碟，您必須將 VM 大小更新為 VM 所在區域中進階儲存體可支援的大小。 檢閱進階儲存體可支援的 VM 大小。 Azure VM 大小的規格已列在 [虛擬機器的大小](../sizes.md)一文中。
 請檢閱使用於進階儲存體的虛擬機器效能特性，然後選擇最適合您的工作負載的 VM 大小。 確定 VM 上有足夠的磁碟流量頻寬。
 
 ### <a name="disk-sizes"></a>磁碟大小

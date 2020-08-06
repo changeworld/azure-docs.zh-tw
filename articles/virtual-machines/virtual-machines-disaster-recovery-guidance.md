@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 43e7cb0906fc6008e8bdbfafec84ecfd8e8be6b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3c87c234e376cc8380afbb26edf63e1969243475
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289672"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831136"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>如果 Azure 服務中斷影響 Azure Vm，該怎麼辦？
 Microsoft 的同仁一向努力確保提供您需要的服務。 有時候因為不可抗力之影響，造成服務意外中斷。
 
 Microsoft 為其服務提供服務等級協定 (SLA)，作為執行時間和連接承諾。 個別的 Azure 服務 SLA 位於 [Azure 服務等級協定](https://azure.microsoft.com/support/legal/sla/)。
 
-Azure 已經有許多支援高可用性應用程式的內建平台功能。 如需這些服務的詳細資訊，請參閱 [Azure 應用程式的災害復原與高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)。
+Azure 已經有許多支援高可用性應用程式的內建平台功能。 如需這些服務的詳細資訊，請參閱 [Azure 應用程式的災害復原與高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)。
 
 本文內含當整個地區因重大天災或大規模服務中斷而發生中斷的真實災害復原案例。 這些都是極其罕見的情況，但您還是必須對整個區域發生中斷的可能性有所準備。 如果整個區域的服務中斷，會暫時無法使用本機的備援資料複本。 如果已啟用異地複寫，會在不同的區域儲存額外三份 Azure 儲存體 Blob 和資料表。 如果發生全面性區域中斷或嚴重損壞，且主要區域無法復原時，Azure 會重新對應異地複寫區域的所有 DNS 項目。
 
@@ -43,7 +43,7 @@ Azure 已經有許多支援高可用性應用程式的內建平台功能。 如�
 
 - 使用 Azure Site Recovery 開始[保護在 Azure 虛擬機器上執行的應用程式](https://aka.ms/a2a-getting-started)
 
-- 若要深入了解如何實作災害復原和高可用性策略，請參閱 [Azure 應用程式的災害復原和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)。
+- 若要深入了解如何實作災害復原和高可用性策略，請參閱 [Azure 應用程式的災害復原和高可用性](/azure/architecture/framework/resiliency/backup-and-recovery)。
 
 - 若要開發雲端平台功能的詳細技術知識，請參閱 [Azure 復原技術指導](../data-lake-store/data-lake-store-disaster-recovery-guidance.md)。
 

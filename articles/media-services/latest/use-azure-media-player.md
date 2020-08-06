@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: bfc22862bc40679644d7dc9eddedf45fbacccab1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ca2da842d9a2d529cf5ea01211efaff2047a9e9a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292884"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836015"
 ---
 # <a name="playback-with-azure-media-player"></a>使用 Azure 媒體播放機播放
 
@@ -47,7 +47,7 @@ Azure 媒體播放器是一款網頁視訊播放器，可以在各種瀏覽器�
 
 ## <a name="set-up-azure-media-player-in-your-html"></a>設定您 HTML 中的 Azure 媒體播放器
 
-Azure 媒體播放器很容易設定。 只需要一些時間從媒體服務帳戶取得基本的媒體內容播放。 請參閱 [Azure 媒體播放器文件](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)，了解如何安裝和設定 Azure 媒體播放器。
+Azure 媒體播放器很容易設定。 只需要一些時間從媒體服務帳戶取得基本的媒體內容播放。 請參閱 [Azure 媒體播放器文件](../azure-media-player/azure-media-player-overview.md)，了解如何安裝和設定 Azure 媒體播放器。
 
 ## <a name="additional-notes"></a>其他注意事項
 
@@ -55,5 +55,5 @@ Azure 媒體播放器很容易設定。 只需要一些時間從媒體服務帳�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure 媒體播放機檔](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)
+* [Azure 媒體播放機檔](../azure-media-player/azure-media-player-overview.md)
 * [Azure 媒體播放機範例](https://github.com/Azure-Samples/azure-media-player-samples)

@@ -7,29 +7,29 @@ ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 4d43311ece7cb72e9f4abb3f8a18f3550fe48f71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 797580e00c1ec36a2ed79d1b3a6fc73da1322aed
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660686"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831119"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>更新受控磁碟的儲存體類型
 
-Azure 受控磁片有四種磁片類型： Azure ultra Ssd （預覽）、premium SSD、標準 SSD 和標準 HDD。 根據您的效能需求，您可以在三種 GA 磁片類型（premium SSD、標準 SSD 和標準 HDD）之間切換。 您還無法從或到 ultra SSD 進行切換，您必須部署一個新的。
+Azure 受控磁片有四種磁片類型： Azure ultra Ssd (preview) 、premium SSD、標準 SSD 和標準 HDD。 根據您的效能需求，您可以在三種 GA 磁片類型 (premium SSD、標準 SSD 和標準 HDD) 之間切換。 您還無法從或到 ultra SSD 進行切換，您必須部署一個新的。
 
 非受控磁片不支援此功能。 但是，您可以輕鬆地[將非受控磁片轉換為受控磁片](convert-unmanaged-to-managed-disks.md)，以便在磁片類型之間切換。
 
  
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* 因為轉換需要重新開機虛擬機器（VM），所以您應該在預先存在的維護期間排程磁片儲存體的遷移。
+* 因為轉換需要重新開機虛擬機器 (VM) ，所以您應該在預先存在的維護期間排程磁片儲存體的遷移。
 * 如果您的磁片未受管理，請先[將它轉換為受控磁片](convert-unmanaged-to-managed-disks.md)，以便在儲存體選項之間切換。
 
 ## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>在 Premium 與 Standard 之間切換 VM 的所有受控磁片
 
-此範例示範如何將 VM 的所有磁片從標準轉換至高階儲存體，或從 Premium 轉換至標準儲存體。 若要使用進階受控磁碟，VM 必須使用可支援進階儲存體的 [VM 大小](sizes.md)。 此範例也會切換成可支援進階儲存體的大小：
+此範例示範如何將 VM 的所有磁片從標準轉換至高階儲存體，或從 Premium 轉換至標準儲存體。 若要使用進階受控磁碟，VM 必須使用可支援進階儲存體的 [VM 大小](../sizes.md)。 此範例也會切換成可支援進階儲存體的大小：
 
 ```azurepowershell-interactive
 # Name of the resource group that contains the VM
@@ -73,7 +73,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>在 Standard 和 Premium 之間切換個別受控磁片
 
-針對您的開發/測試工作負載，您可能會想要混合使用標準和 Premium 磁片，以降低成本。 您可以選擇只升級需要較佳效能的磁片。 此範例示範如何將單一 VM 磁片從標準轉換成 Premium 儲存體，或從 Premium 轉換成標準儲存體。 若要使用進階受控磁碟，VM 必須使用可支援進階儲存體的 [VM 大小](sizes.md)。 此範例也會示範如何切換至支援高階儲存體的大小：
+針對您的開發/測試工作負載，您可能會想要混合使用標準和 Premium 磁片，以降低成本。 您可以選擇只升級需要較佳效能的磁片。 此範例示範如何將單一 VM 磁片從標準轉換成 Premium 儲存體，或從 Premium 轉換成標準儲存體。 若要使用進階受控磁碟，VM 必須使用可支援進階儲存體的 [VM 大小](../sizes.md)。 此範例也會示範如何切換至支援高階儲存體的大小：
 
 ```azurepowershell-interactive
 
@@ -109,7 +109,7 @@ Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 
 ## <a name="convert-managed-disks-from-standard-to-premium-in-the-azure-portal"></a>在 Azure 入口網站中將受控磁片從標準轉換成 Premium
 
-請遵循下列步驟：
+請遵循這些步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 在入口網站中的**虛擬機器**清單中選取 VM。

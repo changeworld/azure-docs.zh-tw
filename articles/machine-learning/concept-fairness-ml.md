@@ -1,5 +1,5 @@
 ---
-title: " (預覽) 評估和緩和機器學習模型中的公平問題"
+title: '降低機器學習模型中的公平 (預覽) '
 titleSuffix: Azure Machine Learning
 description: 了解機器學習模型中的公平性，以及 Fairlearn Python 套件如何協助您建置更公平的模型。
 services: machine-learning
@@ -8,22 +8,22 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 07/09/2020
-ms.openlocfilehash: 2cc3228c20fba322ec804a3bcc9ee322c7d37907
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/05/2020
+ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207290"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829368"
 ---
-# <a name="build-fairer-machine-learning-models-preview"></a> (預覽) 組建 fairer 機器學習模型
+# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>降低機器學習模型中的公平 (預覽) 
 
-瞭解機器學習服務的公平，以及[Fairlearn](https://fairlearn.github.io/)開放原始碼 Python 套件如何協助您建立更公平的模型。 如果您不想花時間瞭解公平問題，並在建立機器學習模型時評估公平，您可以建立產生不公平結果的模型。 
+瞭解機器學習服務的公平，以及[Fairlearn](https://fairlearn.github.io/)開放原始碼 Python 套件如何協助您減輕機器學習模型中的公平問題。 如果您不想花時間瞭解公平問題，並在建立機器學習模型時評估公平，您可以建立產生不公平結果的模型。
 
 下列 Fairlearn 開放原始碼套件[使用者指南](https://fairlearn.github.io/user_guide/index.html)的摘要，說明如何使用它來評估您所建立之 AI 系統的公平。  Fairlearn 開放原始碼套件也可以提供選項，以協助降低或減少您所觀察到的任何公平問題。  請參閱操作[說明](how-to-machine-learning-fairness-aml.md)和[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)，以在 AZURE MACHINE LEARNING 訓練期間啟用 AI 系統的公平評量。
 
 
-## <a name="what-is-fairness-in-machine-learning-systems"></a>機器學習系統中的公平性是什麼？
+## <a name="what-is-fairness-in-machine-learning-models"></a>機器學習模型中的公平是什麼？
 
 >[!NOTE]
 > 公平性是一個社會技術課題。 公平性的許多層面 (例如司法和正當程序)，都是無法從量化的公平性計量反映的。 此外，許多量化的公平性計量無法同時令人滿意。 Fairlearn 開放原始碼套件的目標是讓人類能夠評估不同的影響和緩和策略。 最後，使用者必須負責建立人工智慧和機器學習模型，以進行其案例所適用的利弊取捨。
@@ -38,7 +38,6 @@ AI 造成的損害有兩種常見的類型：
 
 若要減少 AI 系統中不公平的行為，您必須評估並緩解這些損害。
 
-
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>Fairlearn 的公平性評量和緩解
 
 Fairlearn 是一個開放原始碼 Python 套件，可讓機器學習系統開發人員評估其系統的公平性，並緩解觀察到的公平性問題。
@@ -50,7 +49,8 @@ Fairlearn 開放原始碼套件有兩個元件：
 
 在這些元件的搭配運作下，資料科學家和企業領導者將可掌控公平性與效能之間的任何取捨，並選取最符合其需求的緩解策略。
 
-## <a name="fairness-assessment"></a>公平性評量
+## <a name="assess-fairness-in-machine-learning-models"></a>評估機器學習模型中的公平
+
 在 Fairlearn 開放原始碼套件中，公平是以**群組公平**的方式進行概念處理，而這種方法會詢問：哪些個人群組會面臨不確定的風險？ 相關群體 (也稱為子總體) 會透過**敏感性特徵**或敏感性屬性來定義。 敏感性功能會傳遞至 Fairlearn 開放原始碼套件中的估計工具，做為向量或稱為的矩陣 `sensitive_features` 。 顧名思義，系統設計工具在評估群體公平性時應對這些特徵特別敏感。 
 
 有一點要注意的是，這些功能是否包含私用資料所造成的隱私權含意。 但「敏感性」一詞並不表示這些特徵不應用來進行預測。
@@ -72,7 +72,7 @@ Fairlearn 開放原始碼套件有兩個元件：
 
 - 選取率的差異：此計量包含不同子群體間的選取率差異。 舉例來說，貸款核准率即為此類差異。 選取率是指每個類別中歸類為 1 的資料點所佔的比例 (在二元分類中)，或預測值的分佈 (在迴歸中)。
 
-## <a name="unfairness-mitigation"></a>緩解不公平性
+## <a name="mitigate-unfairness-in-machine-learning-models"></a>緩和機器學習模型中的 unfairness
 
 ### <a name="parity-constraints"></a>同位檢查條件約束
 

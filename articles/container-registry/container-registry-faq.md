@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247025"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836389"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題集
 
@@ -254,7 +254,9 @@ ACR 支援提供不同權限層級的[自訂角色](container-registry-roles.md)
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>如何啟用匿名提取存取？
 
-設定匿名 (公用) 提取存取的 Azure 容器登錄目前為預覽功能。 若要啟用公用存取，請在 https://aka.ms/acr/support/create-ticket 開啟支援票證。 如需詳細資訊，請參閱 [Azure 意見反應論壇](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+設定匿名 (公用) 提取存取的 Azure 容器登錄目前為預覽功能。 如果您的登錄中有任何[範圍對應 (使用者) 或權杖資源](https://aka.ms/acr/repo-permissions)，請先將其刪除，再提出支援票證 (系統範圍對應可以忽略) 。 若要啟用公用存取，請在 https://aka.ms/acr/support/create-ticket 開啟支援票證。 如需詳細資訊，請參閱 [Azure 意見反應論壇](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+
+
 
 
 ## <a name="diagnostics-and-health-checks"></a>診斷和健康情況檢查
@@ -501,9 +503,9 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 | Git 服務 | 來源內容 | 手動組建 | 透過認可觸發自動建立 |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | Yes |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 是 |
 | Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | 是 | 是 |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | 否 |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 否 |
 | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | 是 | 否 |
 
 ## <a name="run-error-message-troubleshooting"></a>執行錯誤訊息的疑難排解

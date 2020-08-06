@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367396"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835896"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 身分識別管理和存取控制安全性最佳作法
 
@@ -195,7 +195,7 @@ ms.locfileid: "87367396"
 
 ## <a name="use-role-based-access-control"></a>使用角色型存取控制
 
-對於使用雲端的任何組織而言，管理雲端資源的存取是一件非常重要的事。 [角色型存取控制 (RBAC)](/azure/role-based-access-control/overview) 可協助您管理可存取 Azure 資源的人員、這些人員如何使用資源，以及其可存取的區域。
+對於使用雲端的任何組織而言，管理雲端資源的存取是一件非常重要的事。 Azure[角色型存取控制 (AZURE RBAC) ](/azure/role-based-access-control/overview)可協助您管理可存取 azure 資源的人員、如何使用這些資源，以及他們有權存取的區域。
 
 指定群組或個別角色來負責處理 Azure 中的特定功能，可避免因為責任混亂而導致會產生安全性風險的人為和自動化錯誤。 對於想要強制執行資料存取安全性原則的組織，根據[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低權限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全性原則限制存取權限是必須做的事。
 

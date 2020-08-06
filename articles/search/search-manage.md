@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421887"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835947"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 入口網站中的 Azure 認知搜尋服務管理
 
@@ -35,15 +35,15 @@ Azure 認知搜尋是完全受控的雲端式搜尋服務，用來在自訂應�
 
 在入口網站中執行的相同工作也可以透過[管理 api](https://docs.microsoft.com/rest/api/searchmanagement/)和[Az. Search PowerShell 模組](search-manage-powershell.md)以程式設計方式處理。 系統管理工作會在入口網站和程式設計介面之間完整呈現。 沒有特定的系統管理工作只能在一個樣式中使用。
 
-Azure 認知搜尋會運用其他 Azure 服務，以進行更深入的監視和管理。 唯一的是，使用搜尋服務儲存的資料就是內容（索引、索引子和資料來源定義，以及其他物件）。 向入口網站頁面回報的計量會在變換30天的週期內從內部記錄提取。 針對使用者控制的記錄保留和其他事件，您將需要[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)。 
+Azure 認知搜尋會運用其他 Azure 服務，以進行更深入的監視和管理。 唯一的是，使用搜尋服務儲存的資料就是 (索引、索引子和資料來源定義的內容，以及) 的其他物件。 向入口網站頁面回報的計量會在變換30天的週期內從內部記錄提取。 針對使用者控制的記錄保留和其他事件，您將需要[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)。 
 
 ## <a name="fixed-service-properties"></a>已修正服務屬性
 
 搜尋服務的幾個層面會在服務布建時決定，而且之後無法變更：
 
-* 服務名稱（您無法重新命名服務）
-* 服務位置（您目前無法將完整的服務移至另一個區域）
-* 複本和分割區計數上限（由層、基本或標準決定）
+* 服務名稱 (您無法重新命名服務) 
+* 服務位置 (您目前無法將完整的服務移至另一個區域) 
+* 最大複本和分割區計數 (由層、基本或標準所決定) 
 
 如果您使用基本的來啟動，且其最大值為1個數據分割，而您現在需要更多磁碟分割，您將需要在較高的層級[建立新的服務](search-create-service-portal.md)，並在新的服務上重新建立內容。 
 
@@ -56,24 +56,24 @@ Azure 訂用帳戶管理員或共同管理員可以佈建或解除委任服務�
 * 服務的唯讀存取是查詢許可權，通常是透過提供 URL 和查詢 api 金鑰，授與用戶端應用程式。
 * 讀寫存取提供新增、刪除或修改伺服器物件的功能，包括 api 金鑰、索引、索引子、資料來源和排程。藉由提供 URL 和系統管理員 API 金鑰，即可授與讀寫存取權。
 
-服務布建儀器的許可權是透過角色指派來授與。 [角色型存取（RBAC）](../role-based-access-control/overview.md)是根據布建 Azure 資源[Azure Resource Manager](../azure-resource-manager/management/overview.md)建立的授權系統。 
+服務布建儀器的許可權是透過角色指派來授與。 Azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)是建置於[Azure Resource Manager](../azure-resource-manager/management/overview.md)上的授權系統，可布建 Azure 資源。 
 
 在 Azure 認知搜尋的內容中， [azure 角色指派](search-security-rbac.md)會決定誰可以執行工作，不論他們使用的是[入口網站](search-manage.md)、 [PowerShell](search-manage-powershell.md)或[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)：
 
 * 建立或刪除服務
 * 調整服務規模
 * 刪除或重新產生 API 金鑰
-* 啟用診斷記錄（建立服務）
-* 啟用流量分析（建立服務）
+* 啟用診斷記錄 (建立服務) 
+* 啟用流量分析 (建立服務) 
 
 > [!TIP]
 > 使用 Azure 範圍的機制，您可以鎖定訂用帳戶或資源，以防止使用者具有系統管理員許可權的意外或未經授權刪除您的搜尋服務。 如需詳細資訊，請參閱[鎖定資源以防止非預期的刪除](../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="logging-and-system-information"></a>記錄與系統資訊
 
-在基本層和以上版本中，Microsoft 會針對每個服務等級協定（SLA）監視所有 Azure 認知搜尋服務是否有99.9% 可用性。 如果服務很慢或要求輸送量低於 SLA 閾值，支援團隊會檢閱他們可用的記錄檔並解決問題。
+在基本層和以上版本中，Microsoft 會根據服務等級協定，監視所有 Azure 認知搜尋服務的99.9% 可用性， (SLA) 。 如果服務很慢或要求輸送量低於 SLA 閾值，支援團隊會檢閱他們可用的記錄檔並解決問題。
 
-Azure 認知搜尋會利用[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)來收集和儲存索引和查詢活動。 搜尋服務本身只會儲存其內容（索引、索引子定義、資料來源定義、技能集定義、同義字對應）。 快取和記錄的資訊會以非服務的方式儲存，通常會在 Azure 儲存體帳戶中。 如需記錄索引和查詢工作負載的詳細資訊，請參閱[收集和分析記錄資料](search-monitor-logs.md)。
+Azure 認知搜尋會利用[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/)來收集和儲存索引和查詢活動。 搜尋服務本身只會儲存其內容 (索引、索引子定義、資料來源定義、技能集定義、同義字對應) 。 快取和記錄的資訊會以非服務的方式儲存，通常會在 Azure 儲存體帳戶中。 如需記錄索引和查詢工作負載的詳細資訊，請參閱[收集和分析記錄資料](search-monitor-logs.md)。
 
 就服務的一般資訊而言，僅使用 Azure 認知搜尋本身內建的功能，您可以透過下列方式取得資訊：
 
@@ -95,7 +95,7 @@ Azure 認知搜尋會利用[Azure 監視器](https://docs.microsoft.com/azure/az
 
 如果在遇到 Microsoft 控制之外的災難性失敗時，需要持續的服務，您可以在不同區域[佈建額外的服務](search-create-service-portal.md)並實作異地複寫策略，以確保索引在所有服務之間皆具有完整備援。
 
-使用[索引子](search-indexer-overview.md)來填入及重新整理索引的客戶，可以透過使用相同資料來源的地理特定索引子來處理災害復原。 在不同區域中的兩個服務 (每個都執行一個索引子)，可以從相同相同的資料來源建立索引，以達到異地備援的目的。 如果您是從也是異地多餘的資料來源編制索引，請注意 Azure 認知搜尋索引子只能執行累加式編制索引（從新的、已修改或已刪除的檔合併更新）與主要複本。 在容錯移轉事件中，請務必將索引子重新指向新的主要複本。 
+使用[索引子](search-indexer-overview.md)來填入及重新整理索引的客戶，可以透過使用相同資料來源的地理特定索引子來處理災害復原。 在不同區域中的兩個服務 (每個都執行一個索引子)，可以從相同相同的資料來源建立索引，以達到異地備援的目的。 如果您是從也是異地多餘的資料來源編制索引，請注意 Azure 認知搜尋索引子只能執行累加式編制索引， (從主要複本) 合併新增、修改或刪除的檔更新。 在容錯移轉事件中，請務必將索引子重新指向新的主要複本。 
 
 若不使用索引子，您可以使用應用程式程式碼將物件和資料平行推送到不同的搜尋服務。 如需詳細資訊，請參閱[Azure 認知搜尋中的效能和優化](search-performance-optimization.md)。
 
@@ -113,7 +113,7 @@ Azure 認知搜尋會利用[Azure 監視器](https://docs.microsoft.com/azure/az
 
 ### <a name="add-replicas"></a>新增複本
 
-系統會藉由新增複本來增加每秒查詢 (QPS) 數量或達到高可用性。 每個複本都有一個索引的副本，因此再新增一個複本就會轉譯出可用來處理服務查詢要求的索引。 高可用性至少需要3個複本（如需詳細資訊，請參閱[調整容量](search-capacity-planning.md)）。
+系統會藉由新增複本來增加每秒查詢 (QPS) 數量或達到高可用性。 每個複本都有一個索引的副本，因此再新增一個複本就會轉譯出可用來處理服務查詢要求的索引。 高可用性至少需要3個複本， (參閱[調整容量](search-capacity-planning.md)以取得詳細資料) 。
 
 有許多複本的搜尋服務可透過大量索引來達到查詢要求的負載平衡。 假設有一定等級的查詢量，當有愈多服務要求可用的索引副本時，查詢輸送量的速度就會愈快。 如果您有查詢延遲的經驗，可以期待線上有其他複本時，對效能所造成的正面影響。
 
@@ -123,7 +123,7 @@ Azure 認知搜尋會利用[Azure 監視器](https://docs.microsoft.com/azure/az
 
 新增複本較常見，但當儲存體受到限制時，您可以新增分割區以取得更多容量。 您布建服務的層級會決定是否可以新增資料分割。 基本層已鎖定于一個分割區。 標準層和更新版本支援額外的資料分割。
 
-資料分割是以12的除數（特別是1、2、3、4、6或12）新增。 這是分區化的構件。 索引會建立在 12 個分區中，並且可以全部儲存在 1 個資料分割中，或平均分配在 2、3、4、6 或 12 個資料分割中 (每個資料分割分配一個分區)。
+分割區會在除數中加入 12 (特別是1、2、3、4、6或 12) 。 這是分區化的構件。 索引會建立在 12 個分區中，並且可以全部儲存在 1 個資料分割中，或平均分配在 2、3、4、6 或 12 個資料分割中 (每個資料分割分配一個分區)。
 
 ### <a name="remove-replicas"></a>移除複本
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543600"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830337"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
 
@@ -87,7 +87,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-根據預設，Image Builder 不會變更映像的大小，其會使用來源映像的大小。 您**只能**增加 OS 磁片（Win 和 Linux）的大小，這是選擇性的，值為0表示保留與來源映射相同的大小。 您無法將 OS 磁片大小減少為小於來源映射的大小。
+根據預設，Image Builder 不會變更映像的大小，其會使用來源映像的大小。 您**只能**增加 OS 磁片的大小 (Win 和 Linux) ，這是選擇性的，值為0表示保留與來源映射相同的大小。 您無法將 OS 磁片大小減少為小於來源映射的大小。
 
 ```json
  {
@@ -116,7 +116,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
     "dependsOn": [],
 ```
 
-如需詳細資訊，請參閱[定義資源相依性](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)。
+如需詳細資訊，請參閱[定義資源相依性](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)。
 
 ## <a name="identity"></a>身分識別
 
@@ -137,8 +137,8 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 * 僅支援單一身分識別
 * 不支援自訂功能變數名稱
 
-若要深入了解，請參閱[什麼是 Azure 資源的受控識別？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
-如需部署此功能的詳細資訊，請參閱[使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)。
+若要深入了解，請參閱[什麼是 Azure 資源的受控識別？](../../active-directory/managed-identities-azure-resources/overview.md)。
+如需部署此功能的詳細資訊，請參閱[使用 Azure CLI 在 Azure VM 上設定 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)。
 
 ## <a name="properties-source"></a>屬性：source
 
@@ -151,10 +151,10 @@ API 需要可定義映像建置來源的 'SourceType'，目前有三種類型：
 
 
 > [!NOTE]
-> 使用現有的 Windows 自訂映射時，您可以在單一 Windows 映像上執行 Sysprep 命令最多8次，如需詳細資訊，請參閱[Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)檔。
+> 使用現有的 Windows 自訂映射時，您可以在單一 Windows 映像上執行 Sysprep 命令最多8次，如需詳細資訊，請參閱[Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)檔。
 
 ### <a name="platformimage-source"></a>PlatformImage 來源 
-Azure Image Builder 支援 Windows Server 和用戶端，以及 Linux Azure Marketplace 映像，請參閱[這裡](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)以取得完整清單。 
+Azure Image Builder 支援 Windows Server 和用戶端，以及 Linux Azure Marketplace 映像，請參閱[這裡](../windows/image-builder-overview.md#os-support)以取得完整清單。 
 
 ```json
         "source": {
@@ -373,7 +373,7 @@ Customize 屬性：
 - **validExitCodes** – 選擇性，可從指令碼/內嵌命令傳回的有效程式碼，這會避免指令碼/內嵌命令的回報失敗。
 - **runElevated** – 選擇性布林值，支援以較高的權限執行命令和指令碼。
 - **sha256Checksum** - 檔案的 sha256 總和檢查碼值，您會在本機產生此值，然後 Image Builder 會進行總和檢查和驗證。
-    * 若要產生 sha256Checksum，請在 Windows [Get-Hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)上使用 PowerShell
+    * 若要產生 sha256Checksum，請在 Windows [Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)上使用 PowerShell
 
 
 ### <a name="file-customizer"></a>檔案自訂工具
@@ -567,7 +567,7 @@ Azure 共用映像庫是新的映像管理服務，可讓您管理映像區域�
 - 映像定義 - 映像的概念性群組。 
 - 映像版本 - 這是用於部署 VM 或擴展集的映像類型。 映像版本可複寫到其他需要部署 VM 的區域。
  
-您必須先建立資源庫和映像定義，才能散發至映像庫，請參閱[共用映像](shared-images.md)。 
+您必須先建立資源庫和映像定義，才能散發至映像庫，請參閱[共用映像](../shared-images-cli.md)。 
 
 ```json
 {
@@ -595,8 +595,8 @@ Azure 共用映像庫是新的映像管理服務，可讓您管理映像區域�
 - **runOutputName**– 用於識別散發的唯一名稱。  
 - **artifactTags** - 選擇性使用者指定的索引鍵/值組標記。
 - **replicationRegions** - 用於複寫的區域陣列。 其中一個區域必須是映像庫部署所在的區域。 新增區域將會增加組建時間，因為在複寫完成之前，組建不會完成。
-- **excludeFromLatest** （選擇性）：這可讓您將所建立的映射版本標示為 SIG 定義中的最新版本，預設值為 ' false '。
-- **storageAccountType** （選擇性） AIB 支援針對要建立的映射版本指定這些類型的儲存體：
+- **excludeFromLatest** (選擇性) 這可讓您將所建立的映射版本標示為 SIG 定義中未使用的最新版本，預設值為 ' false '。
+- **storageAccountType** (選擇性) AIB 支援針對要建立的映射版本指定這些類型的儲存體：
     * "Standard_LRS"
     * "Standard_ZRS"
 

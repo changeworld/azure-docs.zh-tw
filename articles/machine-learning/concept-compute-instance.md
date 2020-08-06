@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: 4ac95fa81fdbee237cacaa1541e333bb70c370fa
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f4938d517d9a5c244045798a79f31b96bacd03f5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323293"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829436"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什麼是 Azure Machine Learning 計算執行個體？
 
@@ -30,18 +30,18 @@ Azure Machine Learning 計算實例是適用于資料科學家的受控雲端式
 
 計算執行個體是完全受控的雲端式工作站，並已針對機器學習開發環境予以最佳化。 其提供下列優點：
 
-|主要權益|說明|
+|主要權益|描述|
 |----|----|
-|生產力|您可以在 Azure Machine Learning studio 中使用整合式筆記本和下列工具來建立和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-RStudio （預覽）<br/>計算實例已與 Azure Machine Learning 工作區和 studio 完全整合。 您可以與工作區中的其他資料科學家共用筆記本和資料。 您也可以使用[SSH](how-to-set-up-vs-code-remote.md)來設定 VS Code 遠端開發 |
-|受控且安全|降低您的安全性磁碟使用量，並提升與企業安全性需求的合規性。 計算執行個體會提供健全的管理原則和安全的網路設定，例如：<br/><br/>- 從 Resource Manager 範本或 Azure Machine Learning SDK 自動佈建<br/>- [角色型存取控制 (RBAC)](/azure/role-based-access-control/overview)<br/>- [虛擬網路支援](how-to-enable-virtual-network.md#compute-instance)<br/>- 用以啟用/停用 SSH 存取的 SSH 原則<br/>已啟用 TLS 1。2 |
+|生產力|您可以在 Azure Machine Learning studio 中使用整合式筆記本和下列工具來建立和部署模型：<br/>-  Jupyter<br/>-  JupyterLab<br/>-RStudio (預覽) <br/>計算實例已與 Azure Machine Learning 工作區和 studio 完全整合。 您可以與工作區中的其他資料科學家共用筆記本和資料。 您也可以使用[SSH](how-to-set-up-vs-code-remote.md)來設定 VS Code 遠端開發 |
+|受控且安全|降低您的安全性磁碟使用量，並提升與企業安全性需求的合規性。 計算執行個體會提供健全的管理原則和安全的網路設定，例如：<br/><br/>- 從 Resource Manager 範本或 Azure Machine Learning SDK 自動佈建<br/>- [Azure 角色型存取控制 (Azure RBAC) ](/azure/role-based-access-control/overview)<br/>- [虛擬網路支援](how-to-enable-virtual-network.md#compute-instance)<br/>- 用以啟用/停用 SSH 存取的 SSH 原則<br/>已啟用 TLS 1。2 |
 |預先設定 &nbsp; 的 &nbsp; ML|使用已預先設定好的最新 ML 套件、深度學習架構、GPU 驅動程式，節省設定工作的時間。|
 |可完全自訂|廣泛支援各種 Azure VM 類型 (包括 GPU) 和持續性的低層級自訂，例如安裝套件和驅動程式可讓您輕鬆地建置進階案例。 |
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>工具和環境
 
 > [!IMPORTANT]
-> 下列已標記的工具（預覽）目前為公開預覽狀態。
-> 預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 標記為 (預覽) 的工具目前處於公開預覽狀態。
+> 此預覽版本會在沒有服務等級協定的情況下提供，不建議用於實際執行工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Machine Learning 計算執行個體可讓您在工作區中以完全整合的筆記本體驗來撰寫、定型和部署模型。
 
@@ -60,7 +60,7 @@ Azure Machine Learning 計算執行個體可讓您在工作區中以完全整合
 
 |**R** 工具和環境|詳細資料|
 |----|:----:|
-|RStudio 伺服器開放原始碼版本（預覽）||
+|RStudio Server 開放原始碼版本 (預覽) ||
 |R 核心||
 |適用於 R 的 Azure Machine Learning SDK|[azuremlsdk](https://azure.github.io/azureml-sdk-for-r/reference/index.html)</br>SDK 範例|
 
@@ -149,7 +149,7 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 |虛擬機器類型 |  選擇 [CPU] 或 [GPU]。 建立之後，就無法變更此類型     |
 |虛擬機器大小     |  您的區域可能會限制支援的虛擬機器大小。 檢查[可用性清單](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)     |
 |啟用/停用 SSH 存取     |   預設會停用 SSH 存取。  SSH 存取不能是。 建立後變更。 如果您打算以互動方式使用[VS Code 遠端](how-to-set-up-vs-code-remote.md)進行調試，請務必啟用存取   |
-|進階設定     |  選擇性。 設定虛擬網路。 指定**資源群組**、**虛擬網路**和**子網**，以在 Azure 虛擬網路（vnet）內建立計算實例。 如需詳細資訊，請參閱 vnet 的這些[網路需求](how-to-enable-virtual-network.md#compute-instance)。        |
+|進階設定     |  選擇性。 設定虛擬網路。 指定**資源群組**、**虛擬網路**和**子網**，以在 Azure 虛擬網路 (vnet) 內建立計算實例。 如需詳細資訊，請參閱 vnet 的這些[網路需求](how-to-enable-virtual-network.md#compute-instance)。        |
 
 您也可以透過下列方式建立執行個體：
 * 直接從[整合式筆記本體驗](tutorial-1st-experiment-sdk-setup.md#azure)
@@ -167,12 +167,12 @@ Python 套件全都安裝在 **Python 3.6 - AzureML** 環境中。
 計算實例：
 * 具有作業佇列。
 * 在虛擬網路環境中安全地執行工作，而不需要企業開啟 SSH 埠。 作業會在容器化環境中執行，並將您的模型相依性封裝在 Docker 容器中。
-* 可以平行執行多個小型作業（預覽）。  每個核心的兩個作業可以平行執行，而其餘的作業則會排入佇列。
+* 可以平行執行多個小型作業 (預覽) 。  每個核心的兩個作業可以平行執行，而其餘的作業則會排入佇列。
 
 您可以使用計算實例作為測試/偵錯工具案例的本機推斷部署目標。
 
 > [!NOTE]
-> 計算實例不支援分散式定型作業。  針對分散式訓練，請使用（計算叢集] （作法-設定-訓練-目標 md # amlcompute）。
+> 計算實例不支援分散式定型作業。  使用 (計算叢集] (如何設定分散式訓練的「操作說明」的教學課程 # amlcompute) 。
 
 如需詳細資訊，請參閱[computeinstance 上](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)的筆記本訓練。 此筆記本也適用于*computeinstance 訓練/訓練*中的 studio **Samples**資料夾。
 

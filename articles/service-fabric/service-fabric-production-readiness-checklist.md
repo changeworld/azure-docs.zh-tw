@@ -3,12 +3,12 @@ title: Azure Service Fabric 生產整備度檢查清單
 description: 遵循最佳做法來使您的 Service Fabric 應用程式和叢集生產環境準備就緒。
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: cf5245b4b97706703d9f96e047ecb49786ff6266
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282053"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835862"
 ---
 # <a name="production-readiness-checklist"></a>實際執行整備檢查清單
 
@@ -26,8 +26,8 @@ ms.locfileid: "87282053"
 1. 了解並挑選節點類型的[可靠性層級](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)。 建議採用銀級或更高層級的可靠性。
 1. 載入您的工作負載並進行調整測試，以識別叢集的[容量需求](service-fabric-cluster-capacity.md)。 
 1. 您的服務和應用程式會受到監視，並產生及儲存應用程式記錄，而且會發出警示。 例如，請參閱[將記錄新增至您的 Service Fabric 應用程式](service-fabric-how-to-diagnostics-log.md)和[使用 Azure 監視器記錄監視容器](service-fabric-diagnostics-oms-containers.md)。
-1. 叢集會受到警示監視（例如，使用[Azure 監視器記錄](service-fabric-diagnostics-event-analysis-oms.md)）。 
-1. 基礎虛擬機器擴展集基礎結構會受到警示監視（例如，使用[Azure 監視器記錄](service-fabric-diagnostics-oms-agent.md)）。
+1. 叢集會受到警示 (例如， [Azure 監視器記錄](service-fabric-diagnostics-event-analysis-oms.md)) 。 
+1. 基礎虛擬機器擴展集基礎結構會透過警示 (進行監視，例如， [Azure 監視器記錄](service-fabric-diagnostics-oms-agent.md)。
 1. 叢集一律具有[主要和次要憑證](service-fabric-cluster-security-update-certs-azure.md) (讓您不會遭到鎖定)。
 1. 分別維護適用於開發、預備及生產環境的叢集。 
 1. [應用程式升級](service-fabric-application-upgrade.md)和[叢集升級](service-fabric-tutorial-upgrade-cluster.md)均會先在開發和預備叢集中進行測試。 
@@ -35,7 +35,7 @@ ms.locfileid: "87282053"
 1. 為您的服務建立復原點目標 (RPO)，以及設定[災害復原程序](service-fabric-disaster-recovery.md)並加以測試。
 1. 規劃以手動方式或以程式設計方式[調整](service-fabric-cluster-scaling.md)您的叢集。
 1. 規劃[修補](service-fabric-patch-orchestration-application.md)您的叢集節點。 
-1. 建立 CI/CD 管線，以持續測試您的最新變更。 例如，使用 [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md)
+1. 建立 CI/CD 管線，以持續測試您的最新變更。 例如，使用 [Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) 或 [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster)
 1. 使用[錯誤分析服務](service-fabric-testability-overview.md)在低於負載的情況下測試您的開發與預備叢集，並引發受控制的[混亂](service-fabric-controlled-chaos.md)。 
 1. 規劃[調整](service-fabric-concepts-scalability.md)您的應用程式。 
 

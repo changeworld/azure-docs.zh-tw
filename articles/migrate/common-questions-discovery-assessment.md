@@ -3,12 +3,12 @@ title: Azure Migrate 中的探索、評估和相依性分析的相關問題
 description: 取得 Azure Migrate 中探索、評估和相依性分析的常見問題解答。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: e2aa0f5c2dae33cd995b30d84e7406da9b501e8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8db9103494c0006127c45c0ae5f9672d3bd2bbb1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385716"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829878"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>探索、評估和相依性分析-常見問題
 
@@ -33,11 +33,11 @@ ms.locfileid: "87385716"
 
 - 當您想要評估您的內部部署[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[實體伺服器](how-to-set-up-appliance-physical.md)以遷移至 Azure VM 時，請使用**Azure VM 評**量。 [深入了解](concepts-assessment-calculation.md)
 
-- 當您想要使用此評量類型來評估內部部署[Vmware vm](how-to-set-up-appliance-vmware.md)以遷移至[Azure VMWARE 解決方案（avs）](../azure-vmware/introduction.md)時，請使用**Azure VMware 解決方案（avs）** 評量。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
+- 當您想要使用此評量類型來評估內部部署[Vmware vm](how-to-set-up-appliance-vmware.md)以遷移至[azure VMWARE 解決方案 (avs) ](../azure-vmware/introduction.md)時，請使用**Azure VMware 解決方案 (AVS) **評量。 [深入了解](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - 您只能使用與 VMware 機器相同的通用群組來執行這兩種類型的評量。 請注意，如果您是第一次在 Azure Migrate 中執行 AVS 評量，建議您建立新的 VMware 機器群組。
 
-## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>當我在建立 Azure VMware 解決方案（AVS）評估時，看不到某些群組
+## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>當我在建立 Azure VMware 解決方案 (AVS) 評估時，看不到某些群組
 
 - 您可以在只有 VMware 電腦的群組上進行 AVS 評估。 如果要執行 AVS 評估，請從群組中移除所有非 VMware 機器。
 - 如果您是第一次在 Azure Migrate 中執行 AVS 評量，建議您建立新的 VMware 機器群組。
@@ -80,7 +80,7 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 - 以效能為基礎的大小調整將會建議有兩個核心和 4 GB 記憶體的 VM SKU，因為會考慮使用率百分比。
 
 同樣地，磁片大小調整取決於調整大小準則和儲存體類型：
-- 如果調整大小準則是以效能為基礎，且儲存體類型是自動的，Azure Migrate 會在識別目標磁片類型（標準或高階）時，將磁片的 IOPS 和輸送量值納入考慮。
+- 如果調整大小準則是以效能為基礎，且儲存體類型是自動的，Azure Migrate 會在識別 (Standard 或 Premium) 的目標磁片類型時，將磁片的 IOPS 和輸送量值納入考慮。
 - 如果調整大小準則是以效能為基礎，且儲存體類型為 Premium，Azure Migrate 會根據內部部署磁片的大小來建議 Premium 磁片 SKU。 當調整大小為 [內部部署] 且儲存體類型為 [標準] 或 [Premium] 時，會將相同的邏輯套用至磁片大小調整。
 
 ## <a name="does-performance-history-and-utilization-affect-sizing-in-an-azure-vm-assessment"></a>效能歷程記錄和使用量是否會影響 Azure VM 評估中的大小？
@@ -113,7 +113,7 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>為什麼匯入型 AVS 評估中的建議遷移工具標示為未知？
 
-對於透過 CSV 檔案匯入的機器，AVS 評估中的預設遷移工具是未知的。 不過，對於 VMware 機器，建議使用 VMware 混合式雲端擴充功能（HCX）解決方案。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
+對於透過 CSV 檔案匯入的機器，AVS 評估中的預設遷移工具是未知的。 不過，對於 VMware 機器，建議使用 VMware 混合式雲端擴充功能 (HCX) 解決方案。 [深入了解](../azure-vmware/hybrid-cloud-extension-installation.md)。
 
 
 ## <a name="what-is-dependency-visualization"></a>什麼是相依性視覺效果？
@@ -129,9 +129,9 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 
 **需求** | **無代理程式** | **以代理程式為基礎**
 --- | --- | ---
-支援 | 此選項目前為預覽狀態，且僅適用于 VMware Vm。 [檢查](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支援的作業系統。 | 正式運作（GA）。
-代理程式 | 不需要在您要交叉檢查的電腦上安裝代理程式。 | 要在每個您想要分析的內部部署機器上安裝的代理[程式： Microsoft Monitoring agent （MMA）](../azure-monitor/platform/agent-windows.md)和[Dependency agent](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
-必要條件 | 請[參閱](concepts-dependency-visualization.md#agentless-analysis)必要條件和部署需求。 | 請[參閱](concepts-dependency-visualization.md#agent-based-analysis)必要條件和部署需求。
+支援 | 此選項目前為預覽狀態，且僅適用于 VMware Vm。 [檢查](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支援的作業系統。 | 公開上市 (GA) 。
+代理程式 | 不需要在您要交叉檢查的電腦上安裝代理程式。 | 要在每個您想要分析的內部部署機器上安裝的代理[程式： Microsoft Monitoring agent (MMA) ](../azure-monitor/platform/agent-windows.md)和[Dependency agent](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
+Prerequisites | 請[參閱](concepts-dependency-visualization.md#agentless-analysis)必要條件和部署需求。 | 請[參閱](concepts-dependency-visualization.md#agent-based-analysis)必要條件和部署需求。
 Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)中的[服務對應](../azure-monitor/insights/service-map.md)解決方案來實現相依性視覺效果。 [深入了解](concepts-dependency-visualization.md#agent-based-analysis)。
 運作方式 | 會在啟用相依性視覺效果的電腦上，捕獲 TCP 連線資料。 探索之後，它會以五分鐘的間隔收集資料。 | 安裝在電腦上的服務對應代理程式會收集有關 TCP 進程的資料，以及每個進程的輸入/輸出連接。
 資料 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集連線、延遲和資料傳輸資訊的數目，並可供 Log Analytics 查詢使用。 
@@ -145,13 +145,13 @@ Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](.
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>我要支付相依性視覺效果嗎？
 
-不可以。 深入瞭解[Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
+否。 深入瞭解[Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>針對代理程式相依性視覺效果，我要安裝什麼？
 
 若要使用以代理程式為基礎的相依性視覺效果，請在您想要評估的每部內部部署機器上，下載並安裝代理程式：
 
-- [Microsoft Monitoring Agent （MMA）](../azure-monitor/platform/agent-windows.md)
+- [Microsoft Monitoring Agent (MMA) ](../azure-monitor/platform/agent-windows.md)
 - [相依性代理程式](../azure-monitor/platform/agents-overview.md#dependency-agent)
 - 如果您的電腦沒有網際網路連線能力，請下載並安裝 Log Analytics 閘道。
 
@@ -169,7 +169,7 @@ Log Analytics | 不需要。 | Azure Migrate 會使用 [Azure 監視器記錄](.
 
 針對以代理程式為基礎的相依性視覺效果：
 
-- 使用[腳本來安裝 Dependency agent](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)。
+- 使用[腳本來安裝 Dependency agent](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)。
 - 針對 MMA，請[使用命令列或自動化](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)，或使用[腳本](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)。
 - 除了腳本以外，您還可以使用 Microsoft Endpoint Configuration Manager 和[Intigua](https://www.intigua.com/intigua-for-azure-migration)等部署工具來部署代理程式。
 

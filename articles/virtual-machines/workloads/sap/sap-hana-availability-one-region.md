@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27b6e2e3cedcc8eca84644562639e0436e48245d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035854"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833312"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>單一 Azure 區域中的 SAP HANA 可用性
 本文說明單一 Azure 區域中的幾種可用性案例。 Azure 有許多分散在世界各地的區域。 如需 Azure 區域的清單，請參閱 [Azure 區域](https://azure.microsoft.com/regions/)。 為了讓您能夠在單一 Azure 區域內的 VM 上部署 SAP HANA，Microsoft 提供了含一個 HANA 執行個體的單一 VM 部署。 如需提升可用性，您可以在 [Azure 可用性設定組](../../windows/tutorial-availability-sets.md)中部署含兩個 HANA 執行個體的兩個 VM，以便使用 HANA 系統複寫來獲得可用性。 
@@ -82,7 +82,7 @@ Azure VM 有 Azure 提供的主機和 VM 監視功能，因此在遇到主機問
 
 此設定不適合用來實現絕佳的復原點目標 (RPO) 和復原時間目標 (RTO) 時間。 特別是 RTO 時間會因為需使用複製的備份來完整還原整個資料庫而受到影響。 不過，此設定適合用來復原不小心從主要執行個體上刪除的資料。 透過此設定，您可以隨時還原至特定時間點、擷取資料，以及將已刪除的資料匯入至您的主要執行個體。 因此，將備份複製方法與其他高可用性功能結合是很合理的行為。 
 
-在複製備份時，您可以使用比 SAP HANA 執行個體執行所在的主要 VM 還要小的 VM。 請注意，您可以將更少量的 VHD 連結至較小的 VM。 如需個別 VM 類型限制的相關資訊，請參閱 [Azure 中的 Linux 虛擬機器大小](../../linux/sizes.md)。
+在複製備份時，您可以使用比 SAP HANA 執行個體執行所在的主要 VM 還要小的 VM。 請注意，您可以將更少量的 VHD 連結至較小的 VM。 如需個別 VM 類型限制的相關資訊，請參閱 [Azure 中的 Linux 虛擬機器大小](../../sizes.md)。
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>不含自動容錯移轉的 SAP HANA 系統複寫
 

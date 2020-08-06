@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: ad4c60d6a3facd49f08749b2b3f4b01242d3844c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce2fbe8c706870250973974c7a73a3964dedd04a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091772"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831884"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系統的混合式設計 
 
 本主題討論使用 Azure 媒體服務的 DRM 子系統混合式設計。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 媒體服務提供下列三個 DRM 系統支援：
 
@@ -93,7 +93,7 @@ Azure 媒體服務 DRM 是全面雲端視訊平台的一部分，設計富彈性
 
 ## <a name="scenarios-and-samples"></a>案例與範例
 
-根據上一節中的說明，下列五個混合式案例會使用個別的**內容金鑰** - **資產傳遞原則**設定組合（最後一個資料行中所述的範例會遵循資料表）：
+根據上一節中的說明，下列五個混合式案例會使用個別的**內容金鑰** - **資產傳遞原則**設定組合， (最後一個資料行中所述的範例會遵循資料表) ：
 
 |**內容裝載與來源**|**DRM 加密**|**DRM 授權傳遞**|**設定內容金鑰**|**設定資產傳遞原則**|**範例**|
 |---|---|---|---|---|---|
@@ -103,7 +103,7 @@ Azure 媒體服務 DRM 是全面雲端視訊平台的一部分，設計富彈性
 |AMS|協力廠商|外部|否|否|範例 4|
 |協力廠商|協力廠商|AMS|是|否|    
 
-在範例中，PlayReady 保護對 DASH 和 Smooth Streaming 都有效。 下列的影片 URL 是 Smooth Streaming URL。 若要取得對應的 DASH URL，只要加上 "(format=mpd-time-csf)" 即可。 您可以使用 [Azure 媒體測試播放器](https://aka.ms/amtest)在瀏覽器中測試。 它可讓您設定要在哪些技術之下使用哪一個串流處理通訊協定。 Windows 10 的 IE11 和 Microsoft Edge 都透過 EME 支援 PlayReady。 如需詳細資訊，請參閱[測試工具的詳細資料](/azure/media-services/previous/offline-playready-streaming-windows-10)。
+在範例中，PlayReady 保護對 DASH 和 Smooth Streaming 都有效。 下列的影片 URL 是 Smooth Streaming URL。 若要取得對應的 DASH URL，只要加上 "(format=mpd-time-csf)" 即可。 您可以使用 [Azure 媒體測試播放器](https://aka.ms/amtest)在瀏覽器中測試。 它可讓您設定要在哪些技術之下使用哪一個串流處理通訊協定。 Windows 10 的 IE11 和 Microsoft Edge 都透過 EME 支援 PlayReady。 如需詳細資訊，請參閱[測試工具的詳細資料](./offline-playready-streaming-windows-10.md)。
 
 ### <a name="sample-1"></a>範例 1
 

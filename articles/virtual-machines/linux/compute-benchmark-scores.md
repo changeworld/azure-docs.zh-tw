@@ -5,18 +5,18 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: 61deac4c94902dc392a23f05674e2b1fb3f3cf87
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: efbd90eee8d072c1979565209c8c04a4ee5c55f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373414"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830524"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM 的計算基準測試分數
 下列 CoreMark 基準測試分數顯示執行 Ubuntu 的 Azure 高效能 VM 產品陣容的計算效能。 也有 [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)的計算基準測試分數。
 
 ## <a name="standard_das_v4"></a>Standard_Das_v4
-（12/11/2019 2:28:52 AM pbi 5851281）
+ (12/11/2019 2:28:52 AM pbi 5851281) 
 
 |VM 大小| CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 |---| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -27,7 +27,7 @@ ms.locfileid: "87373414"
 |Standard_D32as_v4| AMD EPYC 7452 32-核心處理器 | 32 | 4 | 125.9 | 461916 | 6746 | 1.46% | 35 |
 
 ## <a name="standard_da_v4"></a>Standard_Da_v4
-（12/12/2019 12:01:48 AM pbi 5851281）
+ (12/12/2019 12:01:48 AM pbi 5851281) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -41,7 +41,7 @@ ms.locfileid: "87373414"
 | Standard_D96a_v4 | AMD EPYC 7452 32-核心處理器 | 96 | 12 | 377.9 | 1290455 | 13640 | 1.06% | 35 |
 
 ## <a name="standard_eas_v4"></a>Standard_Eas_v4
-（12/11/2019 2:28:50 AM pbi 5851281）
+ (12/11/2019 2:28:50 AM pbi 5851281) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -55,7 +55,7 @@ ms.locfileid: "87373414"
 | Standard_E96as_v4 | AMD EPYC 7452 32-核心處理器 | 96 | 12 | 661.4 | 1299233 | 14997 | 1.15% | 70 |
 
 ##  <a name="standard_ea_v4"></a>Standard_Ea_v4
-（12/11/2019 2:29:06 AM pbi 5851281）
+ (12/11/2019 2:29:06 AM pbi 5851281) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -69,7 +69,7 @@ ms.locfileid: "87373414"
 | Standard_E96a_v4 | AMD EPYC 7452 32-核心處理器 | 96 | 12 | 661.4 | 1298074 | 15948 | 1.23% | 35 |
 
 ## <a name="av2---general-compute"></a>Av2 - 一般計算
-（3/15/2019 12:06:55 AM pbi 3897709）
+ (3/15/2019 12:06:55 AM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -96,10 +96,10 @@ ms.locfileid: "87373414"
 | Standard_A8m_v2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 8 | 1 | 62.9 | 49123 | 2483 | 5.05% | 259 |
 
 > [!NOTE]
-> Av2 系列 Vm 可以部署在各種不同的硬體類型和處理器上（如上所示）。 Av2 系列 Vm 的 CPU 效能和記憶體設定最適合用於進入層級的工作負載，例如開發和測試。 大小會進行節流，為執行中的實例提供相對一致的處理器效能，而不論其部署所在的硬體為何;不過，利用特定較新處理器優化的軟體，可能會在處理器類型上看到更顯著的變化。
+> Av2 系列 Vm 可以部署在各種不同的硬體類型和處理器上， (如上) 所示。 Av2 系列 Vm 的 CPU 效能和記憶體設定最適合用於進入層級的工作負載，例如開發和測試。 大小會進行節流，為執行中的實例提供相對一致的處理器效能，而不論其部署所在的硬體為何;不過，利用特定較新處理器優化的軟體，可能會在處理器類型上看到更顯著的變化。
 
 ## <a name="b---burstable"></a>B-高載
-（3/15/2019 12:27:08 AM pbi 3897709）（已更新 6/14/2019 7:09:29 AM pbi 4777081）
+ (3/15/2019 12:27:08 AM pbi 3897709)  (更新 6/14/2019 7:09:29 AM pbi 4777081) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -126,10 +126,10 @@ ms.locfileid: "87373414"
 > [!NOTE]
 > B 系列 Vm 適用于具有高載效能需求的工作負載。 VM 實例使用低於其基準時，會累積點數。 當 VM 累積點數時，VM 可以使用最多100% 來達到較短的 CPU 高載需求，高載高於基準。 高載時間取決於可用的點數，也就是 VM 大小和時間的功能。  
 >
-> CoreMark 是短期執行的測試，通常會在可用的高載點數內完成。  因此，上述數位通常代表 VM 的高載效能，反映出短期、暴增、工作負載（一般是 B 系列）效能通常會看到的內容。
+> CoreMark 是短期執行的測試，通常會在可用的高載點數內完成。  因此，上述數位通常代表 VM 的高載效能，反映在 B 系列上 (一般的 short、暴增、工作負載，) 效能通常會顯示。
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - 一般計算 + 進階儲存體
-（3/12/2019 6:52:03 PM pbi 3897709）
+ (3/12/2019 6:52:03 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -146,7 +146,7 @@ ms.locfileid: "87373414"
 | Standard_D64s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 251.9 | 627378 | 4447 | 0.71% | 700 |
 
 ## <a name="dv3---general-compute"></a>Dv3 - 一般計算
-（3/12/2019 6:54:27 PM pbi 3897709）
+ (3/12/2019 6:54:27 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -163,7 +163,7 @@ ms.locfileid: "87373414"
 | Standard_D64_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 251.9 | 627470 | 9651 | 1.54% | 700 |
 
 ## <a name="dsv2---storage-optimized"></a>DSv2 - 儲存體最佳化
-（3/15/2019 12:53:13 AM pbi 3897709）
+ (3/15/2019 12:53:13 AM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -203,7 +203,7 @@ ms.locfileid: "87373414"
 | Standard_DS15_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 20 | 2 | 137.7 | 279359 | 4032 | 1.44% | 665 |
 
 ## <a name="dv2---general-compute"></a>Dv2 - 一般計算
-（3/12/2019 6:53:48 PM pbi 3897709）
+ (3/12/2019 6:53:48 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -229,7 +229,7 @@ ms.locfileid: "87373414"
 | Standard_D15_v2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 20 | 2 | 137.7 | 281494 | 7976 | 2.83% | 672 |
 
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 - 記憶體最佳化 + 進階儲存體
-（3/12/2019 7:17:33 PM pbi 3897709）
+ (3/12/2019 7:17:33 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -250,15 +250,15 @@ ms.locfileid: "87373414"
 | Standard_E64-16s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 16 | 2 | 425.2 | 169611 | 3265 | 1.92% | 42 |
 | Standard_E64-32s_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 2 | 425.2 | 307584 | 3569 | 1.16% | 56 |
 
-## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3-記憶體選擇 + 進階儲存體（獨立模式）
-（4/11/2019 10:07:29 PM pbi 3897709）
+## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3-Memory Opt + 進階儲存體 (隔離) 
+ (4/11/2019 10:07:29 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64is_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 425.2 | 627745 | 4062 | 0.65% | 196 |
 
 ## <a name="ev3---memory-optimized"></a>Ev3 - 記憶體最佳化
-（3/12/2019 6:52:13 PM pbi 3897709）
+ (3/12/2019 6:52:13 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -270,8 +270,8 @@ ms.locfileid: "87373414"
 | Standard_E32_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 2 | 251.9 | 307286 | 8353 | 2.72% | 700 |
 | Standard_E64_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 425.2 | 628451 | 9235 | 1.47% | 707 |
 
-## <a name="eiv3---memory-optimized-isolated"></a>Eiv3-記憶體優化（獨立模式）
-（3/12/2019 6:57:51 PM pbi 3897709）
+## <a name="eiv3---memory-optimized-isolated"></a>Eiv3-記憶體優化 (隔離的) 
+ (3/12/2019 6:57:51 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -279,7 +279,7 @@ ms.locfileid: "87373414"
 | Standard_E64i_v3 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 64 | 2 | 425.2 | 629151 | 9756 | 1.55% | 217 |
 
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2 - 計算 + 儲存體最佳化
-（3/12/2019 6:51:35 PM pbi 3897709）
+ (3/12/2019 6:51:35 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -292,7 +292,7 @@ ms.locfileid: "87373414"
 | Standard_F72s_v2 | Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz | 72 | 2 | 141.7 | 933800 | 26783 | 2.87% | 707 |
 
 ## <a name="fs---compute-and-storage-optimized"></a>Fs - 計算與儲存體最佳化
-（3/15/2019 12:12:51 AM pbi 3897709）
+ (3/15/2019 12:12:51 AM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -309,7 +309,7 @@ ms.locfileid: "87373414"
 | Standard_F16s | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 16 | 1 | 31.4 | 227015 | 1543 | 0.68% | 462 |
 
 ## <a name="f---compute-optimized"></a>F - 計算最佳化
-（3/12/2019 6:53:59 PM pbi 3897709）
+ (3/12/2019 6:53:59 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -326,7 +326,7 @@ ms.locfileid: "87373414"
 | Standard_F16 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 16 | 1 | 31.4 | 228592 | 2371 | 1.04% | 392 |
 
 ## <a name="gs---storage-optimized"></a>GS - 儲存體最佳化
-（3/12/2019 10:22:33 PM pbi 3897709）
+ (3/12/2019 10:22:33 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -341,7 +341,7 @@ ms.locfileid: "87373414"
 | Standard_GS5-16 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 16 | 2 | 440.9 | 210984 | 2995 | 1.42% | 287 |
 
 ## <a name="g---compute-optimized"></a>G - 計算最佳化
-（3/12/2019 10:23:51 PM pbi 3897709）
+ (3/12/2019 10:23:51 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -352,7 +352,7 @@ ms.locfileid: "87373414"
 | Standard_G5 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 32 | 2 | 440.9 | 403315 | 6947 | 1.72% | 273 |
 
 ## <a name="h---high-performance-compute-hpc"></a>H - 高效能計算 (HPC)
-（3/12/2019 10:50:51 PM pbi 3897709）
+ (3/12/2019 10:50:51 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -364,7 +364,7 @@ ms.locfileid: "87373414"
 | Standard_H16r | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 16 | 2 | 110.2 | 280837 | 6587 | 2.35% | 84 |
 
 ## <a name="lv2---storage-optimized"></a>Lv2-儲存體優化
-（3/14/2019 5:49:04 PM pbi 3897709）
+ (3/14/2019 5:49:04 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -375,7 +375,7 @@ ms.locfileid: "87373414"
 | Standard_L80s_v2 | AMD EPYC 7551 32-核心處理器 | 80 | 10 | 629.9 | 773171 | 19559 | 2.53% | 119 |
 
 ## <a name="ls---storage-optimized"></a>Ls - 儲存體最佳化
-（3/12/2019 10:22:29 PM pbi 3897709）
+ (3/12/2019 10:22:29 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -385,7 +385,7 @@ ms.locfileid: "87373414"
 | Standard_L32s | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 32 | 2 | 251.9 | 399963 | 9254 | 2.31% | 287 |
 
 ## <a name="m---memory-optimized"></a>M - 記憶體最佳化
-（4/11/2019 7:30:39 PM pbi 3897709）
+ (4/11/2019 7:30:39 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -416,59 +416,58 @@ ms.locfileid: "87373414"
 | Standard_M8ms | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 8 | 1 | 215.2 | 88066 | 1391 | 1.58% | 42 |
 
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3-已啟用 GPU
-（3/21/2019 5:48:37 PM pbi 3897709）
+ (3/21/2019 5:48:37 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_NC6s_v3 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 6 | 1 | 110.2 | 106929 | 353 | 0.33% | 49 |
-| Standard_NC12s_v3 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 12 | 1 | 220.4 | 213585 | 875 | 0.41% | 42 |
-| Standard_NC24rs_v3 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 403554 | 6705 | 1.66% | 42 |
-| Standard_NC24s_v3 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 403874 | 7603 | 1.88% | 42 |
+| Standard_NC6s_v3 | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 6 | 1 | 110.2 | 106929 | 353 | 0.33% | 49 |
+| Standard_NC12s_v3 | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 12 | 1 | 220.4 | 213585 | 875 | 0.41% | 42 |
+| Standard_NC24rs_v3 | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 403554 | 6705 | 1.66% | 42 |
+| Standard_NC24s_v3 | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 403874 | 7603 | 1.88% | 42 |
 
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2-已啟用 GPU
-（3/12/2019 11:19:19 PM pbi 3897709）
+ (3/12/2019 11:19:19 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_NC6s_v2 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 6 | 1 | 110.2 | 107115 | 321 | 0.30% | 63 |
-| Standard_NC12s_v2 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 12 | 1 | 220.4 | 213814 | 656 | 0.31% | 63 |
-| Standard_NC24rs_v2 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 401728 | 6995 | 1.74% | 63 |
-| Standard_NC24s_v2 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 402808 | 7923 | 1.97% | 63 |
+| Standard_NC6s_v2 | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 6 | 1 | 110.2 | 107115 | 321 | 0.30% | 63 |
+| Standard_NC12s_v2 | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 12 | 1 | 220.4 | 213814 | 656 | 0.31% | 63 |
+| Standard_NC24rs_v2 | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 401728 | 6995 | 1.74% | 63 |
+| Standard_NC24s_v2 | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 402808 | 7923 | 1.97% | 63 |
 
 ## <a name="nc---gpu-enabled"></a>NC-已啟用 GPU
-（3/12/2019 11:08:03 PM pbi 3897709）
+ (3/12/2019 11:08:03 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_NC6 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55.0 | 102211 | 658 | 0.64% | 259 |
-| Standard_NC12 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110.2 | 203523 | 2293 | 1.13% | 259 |
-| Standard_NC24 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 382897 | 8712 | 2.28% | 259 |
-| Standard_NC24r | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 383171 | 9166 | 2.39% | 259 |
+| Standard_NC6 | Intel (R) )  (R CPU E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55.0 | 102211 | 658 | 0.64% | 259 |
+| Standard_NC12 | Intel (R) )  (R CPU E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110.2 | 203523 | 2293 | 1.13% | 259 |
+| Standard_NC24 | Intel (R) )  (R CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 382897 | 8712 | 2.28% | 259 |
+| Standard_NC24r | Intel (R) )  (R CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 383171 | 9166 | 2.39% | 259 |
 
 ## <a name="nds--gpu-enabled"></a>NDs-已啟用 GPU
-（3/12/2019 11:19:10 PM pbi 3897709）
+ (3/12/2019 11:19:10 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_ND6s | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 6 | 1 | 110.2 | 107095 | 353 | 0.33% | 63 |
-| Standard_ND12s | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 12 | 1 | 220.4 | 212298 | 3457 | 1.63% | 63 |
-| Standard_ND24rs | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 402749 | 7838 | 1.95% | 56 |
-| Standard_ND24s | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 401822 | 7776 | 1.94% | 63 |
+| Standard_ND6s | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 6 | 1 | 110.2 | 107095 | 353 | 0.33% | 63 |
+| Standard_ND12s | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 12 | 1 | 220.4 | 212298 | 3457 | 1.63% | 63 |
+| Standard_ND24rs | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 402749 | 7838 | 1.95% | 56 |
+| Standard_ND24s | Intel (R)  (R) CPU E5-2690 v4 @ 2.60 GHz | 24 | 2 | 440.9 | 401822 | 7776 | 1.94% | 63 |
 
 ## <a name="nv---gpu-enabled"></a>NV-已啟用 GPU
-（3/12/2019 11:08:13 PM pbi 3897709）
+ (3/12/2019 11:08:13 PM pbi 3897709) 
 
 | VM 大小 | CPU | vCPU | NUMA 節點 | 記憶體 (GiB) | 平均分數 | 標準差 | Std Dev% | 執行數 |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Standard_NV6 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55.0 | 101728 | 2094 | 2.06% | 259 |
-| Standard_NV12 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110.2 | 203903 | 1724 | 0.85% | 252 |
-| Standard_NV24 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 379879 | 8737 | 2.30% | 259 |
+| Standard_NV6 | Intel (R) )  (R CPU E5-2690 v3 @ 2.60 GHz | 6 | 1 | 55.0 | 101728 | 2094 | 2.06% | 259 |
+| Standard_NV12 | Intel (R) )  (R CPU E5-2690 v3 @ 2.60 GHz | 12 | 1 | 110.2 | 203903 | 1724 | 0.85% | 252 |
+| Standard_NV24 | Intel (R) )  (R CPU E5-2690 v3 @ 2.60 GHz | 24 | 2 | 220.4 | 379879 | 8737 | 2.30% | 259 |
 
 
 ## <a name="about-coremark"></a>關於 CoreMark
 Linux 數字是藉由在 Ubuntu 上執行 [CoreMark](https://www.eembc.org/coremark/faq.php) 來計算出。 在 CoreMark 的設定中，執行緒的數目是設定為虛擬 CPU 的數目，而並行處理則是設定為 PThreads。 目標反覆運算次數已根據預期的效能進行調整，以提供一個至少 20 秒 (通常會更長) 的執行階段。 最終分數代表的是已完成的反覆運算次數除以執行測試所花費秒數後得出的值。 每個測試在每個 VM 上至少執行了七次。 測試執行日期如上方所示。 測試會於 VM 可支援的日期，在各 Azure 公用區域的多個 VM 上執行。 由於效能是變數，因此未顯示基本 A 和 B (Burstable) 數列。 N 數列不會顯示，因為他們以 GPU 為中心，且 Coremark 不會測量 GPU 效能。
 
 ## <a name="next-steps"></a>後續步驟
-* 如需了解儲存體容量、磁碟詳細資料及其他選擇 VM 大小的考量，請參閱 [虛擬機器的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+* 如需了解儲存體容量、磁碟詳細資料及其他選擇 VM 大小的考量，請參閱 [虛擬機器的大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 * 若要在 Linux VM 上執行 CoreMark 指令碼，請下載 [CoreMark 指令碼套件](https://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip)。
-

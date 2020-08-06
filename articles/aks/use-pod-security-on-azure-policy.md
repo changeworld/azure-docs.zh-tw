@@ -1,18 +1,18 @@
 ---
-title: 在 Azure Kubernetes Service 中使用 Azure 原則保護 pod （AKS）
-description: 瞭解如何在 Azure Kubernetes Service （AKS）上使用 Azure 原則保護 pod
+title: 'Azure Kubernetes Service (AKS 中的 Azure 原則保護 pod) '
+description: '瞭解如何使用 Azure Kubernetes Service (AKS 上的 Azure 原則保護 pod) '
 services: container-service
 ms.topic: article
 ms.date: 07/06/2020
 author: jluk
-ms.openlocfilehash: 8be0b05c260037bbe8afc92726d81668e1391d4a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5677cb3d240381e06c76ed73354981f782bdb0dd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050463"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830218"
 ---
-# <a name="secure-pods-with-azure-policy-preview"></a>使用 Azure 原則保護 pod （預覽）
+# <a name="secure-pods-with-azure-policy-preview"></a>使用 Azure 原則 (Preview) 保護 pod
 
 若要改善 AKS 叢集的安全性，您可以控制要授與哪些函式 pod，以及是否有任何專案正在針對公司原則執行。 這項存取是透過[AKS 的 Azure 原則附加][kubernetes-policy-reference]元件所提供的內建原則來定義。 藉由對 pod 規格的安全性層面提供額外的控制（例如根許可權），可以更嚴格的安全性遵循，並瞭解叢集中部署的內容。 如果 pod 不符合原則中指定的條件，Azure 原則可以不允許 pod 啟動或標示違規。 本文說明如何使用 Azure 原則來限制 AKS 中的 pod 部署。
 
@@ -37,21 +37,21 @@ ms.locfileid: "87050463"
 * 安裝 `aks-preview` 0.4.53 或更新版本的擴充功能 Azure CLI
 * 受支援1.15 版或更新版本的 AKS 叢集與 Azure 原則附加元件一起安裝
 
-## <a name="overview-of-securing-pods-with-azure-policy-for-aks-preview"></a>使用適用于 AKS 的 Azure 原則來保護 pod 的總覽（預覽）
+## <a name="overview-of-securing-pods-with-azure-policy-for-aks-preview"></a>使用適用于 AKS (Preview 的 Azure 原則來保護 pod 的總覽) 
 
 >[!NOTE]
 > 本檔詳細說明如何使用 Azure 原則來保護 pod，這是[預覽中 Kubernetes pod 安全性原則功能](use-pod-security-policies.md)的後繼版本。
-> **AKS 的 pod 安全性原則（預覽）和 Azure 原則附加元件都無法同時啟用。**
+> **Pod 安全性原則 (預覽) 和適用于 AKS 的 Azure 原則附加元件無法同時啟用。**
 > 
 > 如果將 Azure 原則附加元件安裝到已啟用 pod 安全性原則的叢集中，請[遵循下列步驟來停用 pod 安全性原則](use-pod-security-policies.md#enable-pod-security-policy-on-an-aks-cluster)。
 
 在 AKS 叢集中，當建立和更新資源時，會使用「許可控制站」攔截對 API 伺服器的要求。 然後，「許可控制」可以針對一組規則*驗證*資源要求是否應該建立。
 
-先前已透過 Kubernetes 專案啟用功能[pod 安全性原則（預覽）](use-pod-security-policies.md) ，以限制可以部署的 pod。 從 Kubernetes 專案開始，這項功能已不再有效開發。
+先前已透過 Kubernetes 專案啟用功能[pod 安全性原則 (預覽) ](use-pod-security-policies.md) ，以限制可以部署的 pod。
 
 藉由使用 Azure 原則附加元件，AKS 叢集可以使用內建的 Azure 原則來保護 pod 和其他 Kubernetes 資源（類似于先前的 pod 安全性原則）。 AKS 的 Azure 原則附加元件會安裝[閘道管理員](https://github.com/open-policy-agent/gatekeeper)的受管理的實例，這是一種驗證許可控制站。 Kubernetes 的 Azure 原則是以依賴[Rego 原則語言](../governance/policy/concepts/policy-for-kubernetes.md#policy-language)的開放原始碼開放原則代理程式為基礎。
 
-本檔詳細說明如何使用 Azure 原則來保護 AKS 叢集中的 pod，並指示如何從 pod 安全性原則（預覽）進行遷移。
+本檔將詳細說明如何使用 Azure 原則來保護 AKS 叢集中的 pod，並指示如何 (preview) 從 pod 安全性原則進行遷移。
 
 ## <a name="limitations"></a>限制
 
@@ -64,12 +64,12 @@ ms.locfileid: "87050463"
 
 安裝 Azure 原則附加元件之後，預設不會套用任何原則。
 
-有11（11）個內建的個別 Azure 原則和兩個（2）個內建計畫，專門保護 AKS 叢集中的 pod。
+有11個 (11) 內建的個別 Azure 原則和兩個 (2) 內建的計畫，專門保護 AKS 叢集中的 pod。
 每個原則都可以自訂效果。 [這裡列出 AKS 原則及其支援的效果][policy-samples]的完整清單。 閱讀更多[Azure 原則效果](../governance/policy/concepts/effects.md)的相關資訊。
 
 Azure 原則可以套用於管理群組、訂用帳戶或資源群組層級。 在資源群組層級指派原則時，請確定已在原則的範圍內選取目標 AKS 叢集的資源群組。 已安裝 Azure 原則附加元件之已指派範圍中的每個叢集都會在原則的範圍內。
 
-如果使用[pod 安全性原則（預覽）](use-pod-security-policies.md)，請瞭解如何[遷移至 Azure 原則以及其他行為差異](#migrate-from-kubernetes-pod-security-policy-to-azure-policy)。
+如果使用[pod 安全性原則 (預覽) ](use-pod-security-policies.md)，請瞭解如何[遷移至 Azure 原則以及其他行為差異](#migrate-from-kubernetes-pod-security-policy-to-azure-policy)。
 
 ### <a name="built-in-policy-initiatives"></a>內建原則計畫
 
@@ -285,7 +285,7 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 | 預設原則 | 在 AKS 中啟用 pod 安全性原則時，會套用預設的特殊許可權和不受限制的原則。 | 藉由啟用 Azure 原則附加元件，不會套用任何預設原則。 您必須在 Azure 原則中明確啟用原則。
 | 誰可以建立和指派原則 | 叢集系統管理員建立 pod 安全性原則資源 | 使用者必須擁有 AKS 叢集資源群組的「擁有者」或「資源原則參與者」許可權的最低角色。 -透過 API，使用者可以在 AKS 叢集資源範圍指派原則。 使用者應該在 AKS 叢集資源上至少具有「擁有者」或「資源原則參與者」許可權。 -在 Azure 入口網站中，可以在管理群組/訂用帳戶/資源群組層級指派原則。
 | 授權原則| 使用者和服務帳戶需要明確的許可權，才能使用 pod 安全性原則。 | 不需要額外的指派即可授權原則。 一旦在 Azure 中指派原則，所有叢集使用者都可以使用這些原則。
-| 原則適用性 | 系統管理員使用者略過 pod 安全性原則的強制執行。 | 所有使用者（系統管理 & 非系統管理員）都會看到相同的原則。 沒有以使用者為基礎的特殊大小寫。 原則應用程式可以在命名空間層級排除。
+| 原則適用性 | 系統管理員使用者略過 pod 安全性原則的強制執行。 |  (admin & 非系統管理員) 的所有使用者都會看到相同的原則。 沒有以使用者為基礎的特殊大小寫。 原則應用程式可以在命名空間層級排除。
 | 原則範圍 | Pod 安全性原則未命名空間 | Azure 原則所使用的條件約束範本不會命名空間。
 | 拒絕/審核/變化動作 | Pod 安全性原則僅支援拒絕動作。 您可以使用 create 要求上的預設值來完成 Mutatation。 驗證可以在更新要求期間完成。| Azure 原則同時支援 audit & 拒絕動作。 尚未支援變化，但已計畫。
 | Pod 安全性原則合規性 | 啟用 pod 安全性原則之前，不會顯示已存在的 pod 合規性。 在啟用 pod 安全性原則之後建立的不相容 pod 會遭到拒絕。 | 套用 Azure 原則之前存在的不相容 pod 會顯示在原則違規中。 如果原則設定為拒絕效果，則在啟用 Azure 原則之後建立的不相容 pod 會遭到拒絕。

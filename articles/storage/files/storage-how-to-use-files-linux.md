@@ -1,18 +1,18 @@
 ---
 title: 搭配 Linux 使用 Azure 檔案 | Microsoft Docs
-description: 了解如何透過 Linux 上的 SMB 掛接 Azure 檔案共用。
+description: 了解如何透過 Linux 上的 SMB 掛接 Azure 檔案共用。 請參閱必要條件清單。 審查 Linux 用戶端上的 SMB 安全性考慮。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0270cebec21ca10327a86ea5efebef9a52455930
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc0390ba9bf8d0f80d1533fe6e40b42df0cb5359
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089340"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835709"
 ---
 # <a name="use-azure-files-with-linux"></a>搭配 Linux 使用 Azure 檔案
 [Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 可以使用 [SMB 核心用戶端](https://wiki.samba.org/index.php/LinuxCIFS)將 Azure 檔案共用裝載在 Linux 發行版本中。 本文將說明掛接 Azure 檔案共用的兩種方式：使用 `mount` 命令的隨選掛接，以及建立項目 `/etc/fstab` 的開機掛接。
@@ -34,7 +34,7 @@ ms.locfileid: "87089340"
 uname -r
 ```
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**確定已安裝 cifs utils 套件。**  
@@ -67,7 +67,7 @@ uname -r
 
     在其他發行版本上，請使用適當的封裝管理員或[從來源編譯](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **最新版本的 Azure 命令列介面（CLI）。** 如需有關如何安裝 Azure CLI 的詳細資訊，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)並選取您的作業系統。 如果您想要使用 PowerShell 6 + 中的 Azure PowerShell 模組，您可能會看到下列適用于 Azure CLI 的指示。
+* **最新版本的 Azure 命令列介面 (CLI) 。** 如需有關如何安裝 Azure CLI 的詳細資訊，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)並選取您的作業系統。 如果您想要使用 PowerShell 6 + 中的 Azure PowerShell 模組，您可能會看到下列適用于 Azure CLI 的指示。
 
 * **請確定已開啟連接埠 445**：SMB 透過 TCP 通訊埠 445 進行通訊 - 請檢查您的防火牆不會將 TCP 通訊埠 445 從用戶端電腦封鎖。  取代**資源群組><** ，並 **<儲存體帳戶>**
     ```bash
@@ -111,7 +111,7 @@ uname -r
     sudo mkdir -p $mntPath
     ```
 
-1. **使用 mount 命令來掛接 Azure 檔案共用**。 在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示擁有者（根據檔案/目錄 Linux 擁有者）的讀取、寫入和執行、對擁有者群組中的使用者進行讀取和執行，以及為系統上的其他人讀取和執行。 您可以使用 `uid` 和 `gid` 掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用 `dir_mode` 和 `file_mode` 來設定所需的自訂許可權。 如需如何設定許可權的詳細資訊，請參閱維琪百科上的[UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。 
+1. **使用 mount 命令來掛接 Azure 檔案共用**。 在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示擁有者 (根據檔案/目錄 Linux 擁有者) 進行讀取、寫入和執行，以及為擁有者群組中的使用者讀取和執行，以及對系統上的其他人進行讀取和執行。 您可以使用 `uid` 和 `gid` 掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用 `dir_mode` 和 `file_mode` 來設定所需的自訂許可權。 如需如何設定許可權的詳細資訊，請參閱維琪百科上的[UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。 
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -173,7 +173,7 @@ uname -r
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **使用下列命令將下面這一行附加至 `/etc/fstab` **：在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示擁有者（根據檔案/目錄 Linux 擁有者）的讀取、寫入和執行、對擁有者群組中的使用者進行讀取和執行，以及對系統上的其他人進行讀取和執行。 您可以使用 `uid` 和 `gid` 掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用 `dir_mode` 和 `file_mode` 來設定所需的自訂許可權。 如需如何設定許可權的詳細資訊，請參閱維琪百科上的[UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
+1. **使用下列命令將下面這一行附加至 `/etc/fstab` **：在下列範例中，本機 Linux 檔案和資料夾許可權預設為0755，這表示擁有者 (根據檔案/目錄 Linux 擁有者) 、針對擁有者群組中的使用者讀取和執行，以及讀取和執行系統上的其他專案。 您可以使用 `uid` 和 `gid` 掛接選項來設定掛接的使用者識別碼和群組識別碼。 您也可以使用 `dir_mode` 和 `file_mode` 來設定所需的自訂許可權。 如需如何設定許可權的詳細資訊，請參閱維琪百科上的[UNIX 數值標記法](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation)。
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -194,7 +194,7 @@ uname -r
     > [!Note]  
     > 上述掛接命令會裝載 SMB 3.0。 如果您的 Linux 散發套件不支援使用加密的 SMB 3.0，或僅支援 SMB 2.1，您只能從與儲存體帳戶位於相同區域內的 Azure VM 進行掛接。 若要在不支援使用加密的 SMB 3.0 的 Linux 散發套件上掛接 Azure 檔案共用，您必須在[儲存體帳戶的傳輸中停用加密](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
-### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>使用 autofs 自動掛接 Azure 檔案共用
+### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>使用 autofs 自動掛接 Azure 檔案共用 () 
 
 1. **請確定已安裝 autofs 套件。**  
 
@@ -217,7 +217,7 @@ uname -r
     ```bash
     sudo zypper install autofs
     ```
-2. **建立共用的掛接點**：
+2. **建立共用 (的掛接點) **：
    ```bash
     sudo mkdir /fileshares
     ```
@@ -242,9 +242,9 @@ uname -r
     cd /fileshares/$filesharename
     ```
 ## <a name="securing-linux"></a>保護 Linux
-若要在 Linux 上掛接 Azure 檔案共用，必須能夠存取埠445。 許多組織會封鎖連接埠 445，因為 SMB 1 固有的安全性風險。 SMB 1 （也稱為 CIFS （通用網際網路檔案系統））是許多 Linux 發行版本隨附的舊版檔案系統協定。 SMB 1 已過期、沒有效率，而且最重要的是不安全的通訊協定。 好消息是，Azure 檔案儲存體不支援 SMB 1，從 Linux 核心版本4.18 開始，Linux 讓您可以停用 SMB 1。 我們一律[強烈建議](https://aka.ms/stopusingsmb1)您先停用 Linux 用戶端上的 smb 1，再于生產環境中使用 smb 檔案共用。
+若要在 Linux 上掛接 Azure 檔案共用，必須能夠存取埠445。 許多組織會封鎖連接埠 445，因為 SMB 1 固有的安全性風險。 SMB 1 （也稱為 CIFS (通用網際網路檔案系統) ）是許多 Linux 散發套件所包含的舊版檔案系統協定。 SMB 1 已過期、沒有效率，而且最重要的是不安全的通訊協定。 好消息是，Azure 檔案儲存體不支援 SMB 1，從 Linux 核心版本4.18 開始，Linux 讓您可以停用 SMB 1。 我們一律[強烈建議](https://aka.ms/stopusingsmb1)您先停用 Linux 用戶端上的 smb 1，再于生產環境中使用 smb 檔案共用。
 
-從 Linux 核心4.18 開始，SMB 核心模組（稱為 `cifs` 舊版原因）會公開新的模組參數（通常稱為由各種外部檔所*parm* ），稱為 `disable_legacy_dialects` 。 雖然是在 Linux 核心4.18 中引進，但部分廠商已將這項變更 backport 到其支援的舊版核心。 為了方便起見，下表詳細說明通用 Linux 散發套件上此模組參數的可用性。
+從 Linux 核心4.18 開始，SMB 核心模組（ `cifs` 因傳統原因而呼叫）會公開新的模組參數， (通常稱為的各種外部檔) 的*parm* `disable_legacy_dialects` 。 雖然是在 Linux 核心4.18 中引進，但部分廠商已將這項變更 backport 到其支援的舊版核心。 為了方便起見，下表詳細說明通用 Linux 散發套件上此模組參數的可用性。
 
 | 發行版本 | 可以停用 SMB 1 |
 |--------------|-------------------|
@@ -277,13 +277,13 @@ sudo modinfo -p cifs | grep disable_legacy_dialects
 disable_legacy_dialects: To improve security it may be helpful to restrict the ability to override the default dialects (SMB2.1, SMB3 and SMB3.02) on mount with old dialects (CIFS/SMB1 and SMB2) since vers=1.0 (CIFS/SMB1) and vers=2.0 are weaker and less secure. Default: n/N/0 (bool)
 ```
 
-停用 SMB 1 之前，您必須檢查並確定您的系統上目前未載入 SMB 模組（這會在您已掛接 SMB 共用時自動執行）。 您可以使用下列命令來執行這項操作，如果未載入 SMB，則不會輸出任何內容：
+停用 SMB 1 之前，您必須檢查並確定您的系統上目前未載入 SMB 模組 (這會在您已掛接 SMB 共用) 時自動進行。 您可以使用下列命令來執行這項操作，如果未載入 SMB，則不會輸出任何內容：
 
 ```bash
 lsmod | grep cifs
 ```
 
-若要卸載模組，請先取消掛接所有 SMB 共用（ `umount` 如上所述使用命令）。 您可以使用下列命令來識別系統上所有裝載的 SMB 共用：
+若要卸載模組，請先使用上述) 的命令，將所有 SMB 共用取消掛接 (`umount` 。 您可以使用下列命令來識別系統上所有裝載的 SMB 共用：
 
 ```bash
 mount | grep cifs
@@ -307,7 +307,7 @@ sudo modprobe cifs disable_legacy_dialects=Y
 cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
 
-若要在 Ubuntu 和 Debian 為基礎的散發套件上持續停用 SMB 1，您必須建立以設定呼叫的新檔案（如果您還沒有其他模組的自訂選項） `/etc/modprobe.d/local.conf` 。 您可以使用下列命令來執行這項操作：
+若要在 Ubuntu 和 Debian 為基礎的散發套件上持續停用 SMB 1，您必須建立新的檔案 (如果您還沒有其他模組的自訂選項，) `/etc/modprobe.d/local.conf` 使用設定進行呼叫。 您可以使用下列命令來執行這項操作：
 
 ```bash
 echo "options cifs disable_legacy_dialects=Y" | sudo tee -a /etc/modprobe.d/local.conf > /dev/null

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963201"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835981"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的伺服器參數
 
@@ -61,7 +61,7 @@ MySQL 傳統上會為每個用戶端連接指派一個執行緒。 當並行使�
 
 #### <a name="servers-supporting-up-to-4-tb-storage"></a>最多可支援 4 TB 儲存空間的伺服器
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
 |基本|1|872415232|134217728|872415232|
 |基本|2|2684354560|134217728|2684354560|
@@ -79,7 +79,7 @@ MySQL 傳統上會為每個用戶端連接指派一個執行緒。 當並行使�
 
 #### <a name="servers-support-up-to-16-tb-storage"></a>伺服器最多支援 16 TB 的儲存體
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
 |基本|1|872415232|134217728|872415232|
 |基本|2|2684354560|134217728|2684354560|
@@ -108,9 +108,9 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_join_buffer_size) \(英文\)，以深入了解此參數。
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|不適用|
+|基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
 |一般用途|2|262144|128|268435455|
 |一般用途|4|262144|128|536870912|
@@ -157,9 +157,9 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_max_heap_table_size) \(英文\)，以深入了解此參數。
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|不適用|
+|基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
 |一般用途|2|16777216|16384|268435455|
 |一般用途|4|16777216|16384|536870912|
@@ -182,9 +182,9 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 > [!NOTE]
 > 查詢快取從 MySQL 5.7.20 開始就已過時，而且已在 MySQL 8.0 中移除
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|* * 最大值 * *|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|* * 最大值 * *|
 |---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|不適用|
+|基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
 |一般用途|2|0|0|16777216|
 |一般用途|4|0|0|33554432|
@@ -198,13 +198,28 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 |記憶體最佳化|16|0|0|134217728|
 |記憶體最佳化|32|0|0|134217728|
 
+### <a name="lower_case_table_names"></a>lower_case_table_names
+
+根據預設，lower_case_table_name 會設定為1，而您可以在 MySQL 5.6 和 MySQL 5.7 中更新此參數
+
+請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names) \(英文\)，以深入了解此參數。
+
+> [!NOTE]
+> 在 MySQL 8.0 中，lower_case_table_name 預設會設定為1，而且您無法變更它。
+
+### <a name="innodb_strict_mode"></a>innodb_strict_mode
+
+如果您收到類似「資料列大小過大 ( # A0 8126) 」的錯誤，您可能會想要關閉參數**innodb_strict_mode**。 不允許在伺服器層級全域修改伺服器參數**innodb_strict_mode** ，因為如果資料列資料大小大於8k，資料將會被截斷，而不會造成資料遺失的錯誤。 我們建議您修改架構，使其符合頁面大小限制。 
+
+您可以使用，在工作階段層級設定這個參數 `init_connect` 。 若要設定工作階段層級的**innodb_strict_mode** ，請參閱[未列出的設定參數](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)。
+
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_sort_buffer_size) \(英文\)，以深入了解此參數。
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|不適用|
+|基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
 |一般用途|2|524288|32768|4194304|
 |一般用途|4|524288|32768|8388608|
@@ -222,9 +237,9 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_tmp_table_size) \(英文\)，以深入了解此參數。
 
-|定價層|**vCore(s)**|**預設值（位元組）**|**最小值（位元組）**|**最大值（位元組）**|
+|定價層|**vCore(s)**|**預設值 (位元組) **|**最小值 (位元組) **|**最大值 (位元組) **|
 |---|---|---|---|---|
-|基本|1|無法在基本層中設定|N/A|不適用|
+|基本|1|無法在基本層中設定|N/A|N/A|
 |基本|2|無法在基本層中設定|N/A|N/A|
 |一般用途|2|16777216|1024|67108864|
 |一般用途|4|16777216|1024|134217728|

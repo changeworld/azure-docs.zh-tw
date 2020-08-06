@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 10c9e2c3ecefedded393d6949be1480f2f02973b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: aae0ed4efa7f96ab6258dbf0ce4c34a6879ecbc2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131050"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832802"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開發人員開始使用指南
 
@@ -45,7 +45,7 @@ Azure 是一個完整的雲端平臺，可以裝載您現有的應用程式，�
 
 Azure 提供數個雲端式運算供應項目來執行您的應用程式，讓您不需要擔心基礎結構詳細資料。 隨著您應用程式使用的成長，您可以輕鬆地向上延展或向外延展資源。
 
-Azure 提供可支援應用程式開發和裝載需求的服務。 Azure 提供基礎結構即服務 (IaaS)，讓您完全控制應用程式裝載。 Azure 的平臺即服務（PaaS）供應專案提供管理應用程式所需的完全受控服務。 在 Azure 中，甚至是真正的無伺服器裝載，您只需要撰寫程式碼即可。
+Azure 提供可支援應用程式開發和裝載需求的服務。 Azure 提供基礎結構即服務 (IaaS)，讓您完全控制應用程式裝載。 Azure 的平臺即服務 (PaaS) 供應專案提供讓您的應用程式強大所需的完全受控服務。 在 Azure 中，甚至是真正的無伺服器裝載，您只需要撰寫程式碼即可。
 
 ![Azure 應用程式裝載選項](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
@@ -92,7 +92,7 @@ Azure 提供可支援應用程式開發和裝載需求的服務。 Azure 提供�
 
 Azure Service Fabric 是分散式系統平臺。 此平臺可讓您輕鬆地建立、封裝、部署及管理可調整和可靠的微服務。 它也提供完整的應用程式管理功能，例如：
 
-* 正在佈建
+* 佈建
 * 正在部署
 * 監視
 * 升級/修補
@@ -285,7 +285,7 @@ Azure 是以支援 Azure 入口網站 UI 的一組 REST API 所建置。 也支�
 
 ### <a name="manage-your-subscriptions"></a>管理您的訂閱
 
-訂用帳戶是連結至 Azure 帳戶之 Azure 服務的邏輯分組。 單一 Azure 帳戶可以包含多個訂用帳戶。 Azure 服務是根據訂用帳戶計費。 如需依類型的可用訂用帳戶供應項目清單，請參閱 [Microsoft Azure 供應項目詳細資料](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 訂用帳戶擁有可完全控制訂閱的帳戶管理員。 他們也有服務系統管理員，可以控制訂用帳戶中的所有服務。 如需有關傳統訂用帳戶管理員的資訊，請參閱[新增或變更 Azure 訂用帳戶管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 您可以使用[角色型存取控制（RBAC）](../../role-based-access-control/overview.md)，將個別帳戶授與 Azure 資源的詳細控制。
+訂用帳戶是連結至 Azure 帳戶之 Azure 服務的邏輯分組。 單一 Azure 帳戶可以包含多個訂用帳戶。 Azure 服務是根據訂用帳戶計費。 如需依類型的可用訂用帳戶供應項目清單，請參閱 [Microsoft Azure 供應項目詳細資料](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 訂用帳戶擁有可完全控制訂閱的帳戶管理員。 他們也有服務系統管理員，可以控制訂用帳戶中的所有服務。 如需有關傳統訂用帳戶管理員的資訊，請參閱[新增或變更 Azure 訂用帳戶管理員](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 使用 azure[角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)，可以將個別帳戶授與 azure 資源的詳細控制。
 
 #### <a name="resource-groups"></a>資源群組
 
@@ -297,7 +297,7 @@ Azure 資源總管是很棒的工具，可用來以視覺化方式檢視您已�
 
 當您允許存取 Azure 資源時，最佳做法是為使用者提供執行指定工作所需的最低許可權。
 
-- **角色型存取控制 (RBAC)**：在 Azure 中，您可以授與指定範圍的使用者帳戶 (主體) 存取權：訂用帳戶、資源群組或個別資源。 RBAC 可讓您將資源部署至資源群組，並將許可權授與特定使用者或群組。 它也可讓您限制只能存取屬於目標資源群組的資源。 您也可以授與對單一資源的存取，例如虛擬機器或虛擬網路。 若要授與存取權，請將角色指派給使用者、群組或服務主體。 有許多預先定義的角色，而且您也可以定義自己的自訂角色。 若要深入瞭解，請參閱[什麼是 Azure 角色型存取控制（AZURE RBAC）？](../../role-based-access-control/overview.md)。
+- **角色型存取控制 (RBAC)**：在 Azure 中，您可以授與指定範圍的使用者帳戶 (主體) 存取權：訂用帳戶、資源群組或個別資源。 RBAC 可讓您將資源部署至資源群組，並將許可權授與特定使用者或群組。 它也可讓您限制只能存取屬於目標資源群組的資源。 您也可以授與對單一資源的存取，例如虛擬機器或虛擬網路。 若要授與存取權，請將角色指派給使用者、群組或服務主體。 有許多預先定義的角色，而且您也可以定義自己的自訂角色。 若要深入瞭解，請參閱[何謂 azure 角色型存取控制 (AZURE RBAC) ？](../../role-based-access-control/overview.md)。
 
   > **使用時機**：當您需要使用者和群組的更細緻存取管理時，或當您需要將使用者設定為訂用帳戶的擁有者時。
   >
@@ -307,7 +307,7 @@ Azure 資源總管是很棒的工具，可用來以視覺化方式檢視您已�
 
   > **使用時機**：當您以程式設計方式管理 Azure 資源或授與應用程式存取權時。 如需詳細資訊，請參閱[建立 Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-#### <a name="tags"></a>標籤
+#### <a name="tags"></a>標記
 
 Azure Resource Manager 可讓您將自訂標記指派給個別資源。 當您需要組織資源以進行計費或監視時，標記 (即鍵值組) 可能特別有用。 標記提供一種方法來追蹤多個資源群組的資源。 您可以透過下列方式指派標籤：
 

@@ -13,28 +13,28 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 763dd82c8263a5e180468f9fbd7f86526295a80d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
-ms.translationtype: HT
+ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279282"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830745"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>如何使用 Azure 入口網站叫用直接方法
 
-「IoT 中樞」能讓您從雲端在邊緣裝置上叫用[直接方法](/azure/iot-hub/iot-hub-devguide-direct-methods#method-invocation-for-iot-edge-modules)。 IoT Edge 上的即時影片分析 (LVA) 模組會公開數個[直接方法](/azure/media-services/live-video-analytics-edge/direct-methods)，可以用來定義、部署及具現化不同的工作流程，以便分析即時影片。
+「IoT 中樞」能讓您從雲端在邊緣裝置上叫用[直接方法](../../iot-hub/iot-hub-devguide-direct-methods.md#method-invocation-for-iot-edge-modules)。 IoT Edge 上的即時影片分析 (LVA) 模組會公開數個[直接方法](./direct-methods.md)，可以用來定義、部署及具現化不同的工作流程，以便分析即時影片。
 
 在本文中，您將了解如何透過 Azure 入口網站在 IoT Edge 模組的即時影片分析上叫用直接方法呼叫。
 
 ## <a name="prerequisites"></a>必要條件
 
-* 您可以使用以下位置所述的方法，在您的邊緣裝置上執行 IoT Edge 模組上的即時影片分析：[快速入門：IoT Edge 上的即時影片分析](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart)或使用[入口網站](/azure/media-services/live-video-analytics-edge/deploy-iot-edge-device)。
+* 您可以使用以下位置所述的方法，在您的邊緣裝置上執行 IoT Edge 模組上的即時影片分析：[快速入門：IoT Edge 上的即時影片分析](./get-started-detect-motion-emit-events-quickstart.md)或使用[入口網站](./deploy-iot-edge-device.md)。
 
-* 您了解[即時影片分析](/azure/media-services/live-video-analytics-edge/overview)和[媒體圖表概念](/azure/media-services/live-video-analytics-edge/media-graph-concept)。
+* 您了解[即時影片分析](./overview.md)和[媒體圖表概念](./media-graph-concept.md)。
 
 ## <a name="invoking-direct-methods-via-azure-portal"></a>透過 Azure 入口網站叫用直接方法
 
-LVA 模組所公開的每個[直接方法](/azure/media-services/live-video-analytics-edge/direct-methods)都可以透過 Azure 入口網站叫用。 下列步驟提供一個直接方法的詳細資料。 您可以使用類似的步驟來叫用其他直接方法。 不過，每個直接方法都需要特定的 JSON 主體。
+LVA 模組所公開的每個[直接方法](./direct-methods.md)都可以透過 Azure 入口網站叫用。 下列步驟提供一個直接方法的詳細資料。 您可以使用類似的步驟來叫用其他直接方法。 不過，每個直接方法都需要特定的 JSON 主體。
 
 使用 `GraphTopologyList` 方法呼叫來取出目前部署於 IoT Edge 模組上即時影片分析的所有圖表拓撲清單。 使用下列步驟來叫用此直接方法：
 
@@ -72,9 +72,9 @@ LVA 模組所公開的每個[直接方法](/azure/media-services/live-video-anal
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以在[直接方法](/azure/media-services/live-video-analytics-edge/direct-methods)頁面上找到更多的直接方法。
+您可以在[直接方法](./direct-methods.md)頁面上找到更多的直接方法。
 
 > [!NOTE]
 > 圖表執行個體會具現化特定拓撲，因此請先確定您已設定正確的拓撲，再建立圖表執行個體。
 
-[快速入門：偵測動作發出事件](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart)是了解直接方法呼叫確切順序的良好參考。
+[快速入門：偵測動作發出事件](./get-started-detect-motion-emit-events-quickstart.md)是了解直接方法呼叫確切順序的良好參考。

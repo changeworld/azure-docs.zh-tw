@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688276"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836100"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>針對 Azure 虛擬網路 NAT 連線進行疑難排解
 
@@ -195,6 +195,14 @@ _**解決方案：**_
 您不需要重新啟動虛擬機器來設定 NAT 閘道資源的子網路。  不過，如果重新啟動虛擬機器，則連線狀態會是已排清。  將連線狀態排清後，所有連線都會開始使用 NAT 閘道資源的 IP 位址。  不過，這是重新啟動虛擬機器的副作用，而不是需要重新啟動的指標。
 
 如果您仍然遇到問題，請開啟支援案例以取得進一步的疑難排解。
+
+### <a name="connection-setup-time"></a>連接設定時間
+
+由於 Load Balancer 輸出規則會以靜態方式將 SNAT 埠的集區指派給特定的虛擬機器，因此建立新的輸出流程比使用虛擬網路 NAT 更快。 因此，當您從 Load Balancer 輸出規則切換時，您可能會在建立新的輸出連線時看到增加的延遲。 如先前所述，若要將應用程式的效能最大化，您應該使用長時間執行的流程 (例如，重複使用的 TCP 連線) 。
+
+_**解決方案：**_
+
+如果您主要對最小的連出設定延遲感興趣，請使用 Load Balancer 輸出規則。
 
 ## <a name="next-steps"></a>後續步驟
 

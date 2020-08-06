@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029428"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830677"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>針對使用虛擬機器擴展集的自動調整進行疑難排解
 **問題** - 您已使用虛擬機器擴展集在 Azure Resource Manager 中建立自動調整基礎結構，例如藉由部署範本，如下所示︰ https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale - 您有已定義的調整規則，並且運作良好，美中不足的是無論您在 VM 上放置多少負載，它都不會自動調整。
@@ -23,7 +23,7 @@ ms.locfileid: "87029428"
 要考量的事項包括：
 
 * 每個 VM 擁有多少 vCPU，以及您是否讓每個 vCPU 都有負載？
-  上述的範例 Azure 快速入門範本具有 do_work.php 指令碼，它會載入單一 vCPU。 如果您使用大於單一 vCPU 大小類似 Standard_A1 或 D1 的 VM，則您需要多次執行此負載。 藉由檢閱 [Azure 中 Windows 虛擬機器的大小](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，檢查您的 VM 有多少 vCPU
+  上述的範例 Azure 快速入門範本具有 do_work.php 指令碼，它會載入單一 vCPU。 如果您使用大於單一 vCPU 大小類似 Standard_A1 或 D1 的 VM，則您需要多次執行此負載。 藉由檢閱 [Azure 中 Windows 虛擬機器的大小](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)，檢查您的 VM 有多少 vCPU
 * 虛擬機器擴展集中有多少 VM，您是否在每一個 VM 上執行工作？
   
     相應放大只會在擴展集中**所有** VM 的平均 CPU，經過自動調整規則中定義的內部時間之後超過臨界值時發生。

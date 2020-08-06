@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 04/26/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6f47e07dcffd977121b4142924a77bdb93de3fc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55c826b4baf38732684aaa0465aeaab6a45564db
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503042"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831493"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>了解虛擬機器擴展集範本
 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md#template-deployment-process)是部署相關資源群組的絕佳方式。 本教學課程系列說明如何建立基本的擴展集範本，以及如何修改此範本以符合各種案例。 所有範例皆來自這個 [GitHub 存放庫](https://github.com/gatneil/mvss)。
@@ -115,7 +115,7 @@ Resource Manager 範本也可讓您定義以後要在範本中使用的變數。
 ## <a name="specify-scale-set-properties"></a>指定擴展集屬性
 擴展集有許多屬性，可以在擴展集中自訂 VM。 如需這些屬性的完整清單，請參閱[範本參考](/azure/templates/microsoft.compute/virtualmachinescalesets)。 本教學課程只會設定一些常用的屬性。
 ### <a name="supply-vm-size-and-capacity"></a>提供 VM 大小和容量
-擴展集需要知道要建立的 VM 大小 (即「SKU 名稱」)，以及要建立多少個這類 VM (即「SKU 容量」)。 若要查看有哪些可用的 VM 大小，請參閱 [VM 大小文件](../virtual-machines/windows/sizes.md)。
+擴展集需要知道要建立的 VM 大小 (即「SKU 名稱」)，以及要建立多少個這類 VM (即「SKU 容量」)。 若要查看有哪些可用的 VM 大小，請參閱 [VM 大小文件](../virtual-machines/sizes.md)。
 
 ```json
        "sku": {

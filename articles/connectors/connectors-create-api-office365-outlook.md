@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: aa5be3d58ee1a0a40d0b817e1f5999ccd4bc423d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319230"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832972"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 在 Office 365 Outlook 中管理電子郵件、連絡人和行事曆
 
@@ -27,7 +27,7 @@ ms.locfileid: "87319230"
 > [!NOTE]
 > 若要自動執行 @outlook.com 或帳戶的工作 @hotmail.com ，請使用[Outlook.com 連接器](../connectors/connectors-create-api-outlook.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
@@ -48,7 +48,7 @@ ms.locfileid: "87319230"
 1. 如果系統提示您登入，請提供您的 Office 365 認證，讓您的邏輯應用程式可以連線到您的帳戶。 否則，如果您的連接已經存在，請提供觸發程式屬性的資訊。
 
    > [!NOTE]
-   > 即使您變更了登入認證，您的連線仍會在撤銷前過期。 如需詳細資訊，請參閱 [Azure Active Directory 中可設定的權杖存留期](../active-directory/active-directory-configurable-token-lifetimes.md)。
+   > 即使您變更了登入認證，您的連線仍會在撤銷前過期。 如需詳細資訊，請參閱 [Azure Active Directory 中可設定的權杖存留期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
 
    這個範例會選取觸發程式檢查的行事曆，例如：
 
@@ -60,7 +60,7 @@ ms.locfileid: "87319230"
 
    ![設定觸發程式的頻率和間隔](./media/connectors-create-api-office365-outlook/calendar-settings.png)
 
-1. 在設計工具的工具列上，選取 [儲存]。
+1. 在設計工具的工具列上，選取 [儲存]  。
 
 現在，新增在觸發程式引發之後執行的動作。 例如，您可以新增 Twilio**傳送訊息**動作，這會在行事曆事件于15分鐘內開始時傳送文字。
 
@@ -81,7 +81,7 @@ ms.locfileid: "87319230"
 1. 如果系統提示您登入，請提供您的 Office 365 認證，讓您的邏輯應用程式可以連線到您的帳戶。 否則，如果您的連線已存在，請提供動作屬性的資訊。
 
    > [!NOTE]
-   > 即使您變更了登入認證，您的連線仍會在撤銷前過期。 如需詳細資訊，請參閱 [Azure Active Directory 中可設定的權杖存留期](../active-directory/active-directory-configurable-token-lifetimes.md)。
+   > 即使您變更了登入認證，您的連線仍會在撤銷前過期。 如需詳細資訊，請參閱 [Azure Active Directory 中可設定的權杖存留期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
 
    這個範例會選取動作建立新連絡人的 [連絡人] 資料夾，例如：
 
@@ -89,7 +89,7 @@ ms.locfileid: "87319230"
 
    若要新增其他可用的動作內容，請從 [**加入新的參數**] 清單中選取這些屬性。
 
-1. 在設計工具的工具列上，選取 [儲存]。
+1. 在設計工具的工具列上，選取 [儲存]  。
 
 ## <a name="connector-reference"></a>連接器參考
 

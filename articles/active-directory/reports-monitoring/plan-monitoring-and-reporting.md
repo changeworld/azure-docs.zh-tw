@@ -12,16 +12,16 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 870027637d9c45d0d5150db12046e454146ff169
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74232113"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829624"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>規劃 Azure Active Directory 報告和監視部署
 
-您的 Azure Active Directory （Azure AD）報告和監視解決方案取決於您的法律、安全性和營運需求，以及現有的環境和程式。 本文提供各種不同的設計選項，並引導您進行適當的部署策略。
+您的 Azure Active Directory (Azure AD) 報告和監視解決方案取決於您的法律、安全性和營運需求，以及現有的環境和程式。 本文提供各種不同的設計選項，並引導您進行適當的部署策略。
 
 ### <a name="benefits-of-azure-ad-reporting-and-monitoring"></a>Azure AD 報告和監視的優點
 
@@ -99,7 +99,7 @@ Azure AD 報告提供環境中 Azure AD 活動的完整視圖和記錄，包括�
 * 符合業務需求的絕佳想法
 * 不適用
 
-|區域 |說明 |
+|區域 |描述 |
 |-|-|
 |保留| **記錄保留期限超過30天**。 由於法律或商務需求，因此必須儲存 audit 記錄和登入 Azure AD 超過30天的記錄。 |
 |分析| **記錄必須可**供搜尋。 儲存的記錄檔必須可流量分析工具進行搜尋。 |
@@ -193,6 +193,4 @@ Azure AD 角色可讓您根據您的角色，委派設定及查看 Azure AD 報�
 
 請考慮執行[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) 
 
-請考慮執行[角色型存取控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/overview)
-
- 
+請考慮[ (AZURE RBAC 中執行 azure 角色型存取控制) ](https://docs.microsoft.com/azure/role-based-access-control/overview)

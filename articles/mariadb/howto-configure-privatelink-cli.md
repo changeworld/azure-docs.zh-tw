@@ -7,19 +7,19 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 794f9feaaa201ade6c824852e3609be6489a8513
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a8f94c34281adbe274ad70425850e2ade4dc94ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504631"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833176"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>使用 CLI 建立和管理適用於 MariaDB 的 Azure 資料庫的私用連結
 
 私人端點是 Azure 中私人連結的基本要素。 其可讓 Azure 資源 (例如虛擬機器 (VM)) 與私人連結資源進行私密通訊。 在本文中，您將瞭解如何使用 Azure CLI 來建立 Azure 虛擬網路中的 VM，以及具有 Azure 私用端點的適用於 MariaDB 的 Azure 資料庫伺服器。
 
 > [!NOTE]
-> 這項功能適用于所有 Azure 區域，其中適用於 MariaDB 的 Azure 資料庫支援一般用途和記憶體優化定價層。
+> 私人連結功能僅適用于一般用途或記憶體優化定價層中的適用於 MariaDB 的 Azure 資料庫伺服器。 請確定資料庫伺服器屬於其中一種定價層。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -148,7 +148,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
         > [!NOTE]
         > 您可能需要選取 [其他選擇] > [使用不同的帳戶]，以指定您在建立 VM 時輸入的認證。
 
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 1. 您可能會在登入過程中收到憑證警告。 如果您收到憑證警告，請選取 [是] 或 [繼續]。
 
@@ -183,7 +183,7 @@ az network private-dns record-set a add-record --record-set-name mydemoserver --
 
 5. 選取 [**測試連接** **] 或 [確定]**。
 
-6. 也從左側功能表流覽資料庫，並從適用于 mariadb 資料庫建立或查詢資訊
+6.  (選擇性地) 從左側功能表流覽資料庫，並從適用于 mariadb 資料庫建立或查詢資訊
 
 8. 關閉對 myVm 的遠端桌面連線。
 

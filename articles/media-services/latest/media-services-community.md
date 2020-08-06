@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: juliako
-ms.openlocfilehash: ab775e8d93111f7494d2bf321216e2725c438fc8
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9c47488915997f054487d8343c7c3c032135dcdb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828487"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833058"
 ---
 # <a name="azure-media-services-v3-community"></a>Azure 媒體服務 v3 社群  
 
@@ -40,7 +40,7 @@ ms.locfileid: "83828487"
 
 目前，MSDN 是媒體服務小組的主要社群論壇。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
+[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 小組也會監視 Stack Overflow 上標記 'azure-media-services' 的問題。
 
