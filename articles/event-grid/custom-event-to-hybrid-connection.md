@@ -3,12 +3,13 @@ title: 教學課程：將自訂事件傳送至混合式連線 - 事件方格
 description: 教學課程：使用 Azure 事件格線和 Azure CLI 來發佈主題，以及訂閱該事件。 混合式連線用於端點。
 ms.date: 07/07/2020
 ms.topic: tutorial
-ms.openlocfilehash: 208d8584736a0d7ff591c3a8ed7a08bcbf6dcba4
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 679cccf892d7b30964881d9a6146e02f3ee5dc90
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114868"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503169"
 ---
 # <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>教學課程：使用 Azure CLI 和事件方格將自訂事件路由至 Azure 轉送混合式連線
 
@@ -16,7 +17,7 @@ Azure Event Grid 是一項雲端事件服務。 Azure 轉送混合式連線是�
 
 ## <a name="prerequisites"></a>Prerequisites
 
-本文假設您已經有混合式連線和接聽項應用程式。 若要開始使用混合式連線，請參閱[開始使用轉送混合式連線 - .NET](../service-bus-relay/relay-hybrid-connections-dotnet-get-started.md) (英文)，或[開始使用轉送混合式連線 - 節點](../service-bus-relay/relay-hybrid-connections-node-get-started.md) (英文)。
+本文假設您已經有混合式連線和接聽項應用程式。 若要開始使用混合式連線，請參閱[開始使用轉送混合式連線 - .NET](/azure/azure-relay/relay-hybrid-connections-dotnet-get-started) (英文)，或[開始使用轉送混合式連線 - 節點](/azure/azure-relay/relay-hybrid-connections-node-get-started) (英文)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

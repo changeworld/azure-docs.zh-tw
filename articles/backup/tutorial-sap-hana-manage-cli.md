@@ -3,12 +3,13 @@ title: 教學課程：使用 CLI 管理備份的 SAP Hana DB
 description: 在本教學課程中，您將了解如何使用 Azure CLI 來管理在 Azure VM 上執行的已備份 SAP Hana 資料庫。
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 40cfb46faf993a995248d79d60c62de912bd88ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c47f03b2ac1640c12a833f8bdb53b5d6493d7eb6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538134"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489430"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教學課程：使用 Azure CLI 在 Azure VM 中管理 SAP Hana 資料庫
 

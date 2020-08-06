@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: sample
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 9a9518eb4c8635275b9cbf0467f3091eca10f647
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 880ccf9a69d5898da98aeabcfd89d05ff94e3b43
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223001"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489804"
 ---
 # <a name="create-an-azure-active-directory-domain-services-managed-domain-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立 Azure Active Directory Domain Services 受控網域
 
@@ -126,7 +126,7 @@ New-AzResourceGroup `
 | domainName              | 受控網域的 DNS 網域名稱，請將前面幾項命名前置碼和衝突情況列入考慮。 |
 | filteredSync            | Azure AD DS 可讓您同步 Azure AD 中的「所有」使用者和群組，或僅對特定群組進行「限域」同步。<br /><br /> 如需有關限域同步的詳細資訊，請參閱 [Azure AD Domain Services 的限域同步][scoped-sync]。|
 | notificationSettings    | 如果受控網域中產生任何警示，則會送出電子郵件通知。 <br /><br />您可以「啟用」Azure 租用戶的「全域管理員」和「AAD DC 管理員」 群組的成員，以便他們可以收到通知。<br /><br /> 如有需要，請變新增其他收件者，以便他們在有警示且需要注意時可收到通知。|
-| domainConfigurationType | 根據預設，受控網域會建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 您不需要指定 domainConfiguration 值來建立使用者樹系。<br /><br /> *資源*樹系只會同步直接在 Azure AD 中建立的使用者和群組。 資源樹系目前為預覽狀態。 將值設定為 ResourceTrusting 以建立資源樹系。<br /><br />如需*資源*樹系的詳細資訊，包括您使用某一樹系的原因，以及如何建立與內部部署 AD DS 網域之間的樹系信任，請參閱 [Azure AD DS 資源樹系概觀][resource-forests]。|
+| domainConfigurationType | 根據預設，受控網域會建立為*使用者*樹系。 這種類型的樹系會同步 Azure AD 中的所有物件，包括在內部部署 AD DS 環境中建立的任何使用者帳戶。 您不需要指定 domainConfiguration 值來建立使用者樹系。<br /><br /> *資源*樹系只會同步直接在 Azure AD 中建立的使用者和群組。 將值設定為 ResourceTrusting 以建立資源樹系。<br /><br />如需*資源*樹系的詳細資訊，包括您使用某一樹系的原因，以及如何建立與內部部署 AD DS 網域之間的樹系信任，請參閱 [Azure AD DS 資源樹系概觀][resource-forests]。|
 
 下列壓縮的參數定義會顯示這些值的宣告方式。 系統會建立名為 aaddscontoso.com 的使用者樹系，並將所有使用者從 Azure AD 同步至受控網域：
 

@@ -7,12 +7,13 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: b9c2fc636b08e872b9ea5288eb6205d905885f0e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 35359c63b79d9eea6f8f6ad688bd040428a39eb8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120478"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503441"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教學課程：使用 Logic Apps 和 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知
 
@@ -24,12 +25,12 @@ Azure Event Grid 可讓您在下游商務應用程式中觸發動作，進而回
 
 * 有效的 Azure 訂用帳戶。 如果您沒有訂用帳戶，則可以建立[免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
-* Azure Logic Apps 支援的任何電子郵件提供者 (如 Office 365 Outlook、Outlook.com 或 Gmail) 所提供的電子郵件帳戶。 這個電子郵件帳戶用來傳送事件通知。 如需支援的完整邏輯應用程式連接器清單，請參閱[連接器概觀](https://docs.microsoft.com/connectors/)。
+* Azure Logic Apps 支援的任何電子郵件提供者 (如 Office 365 Outlook、Outlook.com 或 Gmail) 所提供的電子郵件帳戶。 這個電子郵件帳戶用來傳送事件通知。 如需支援的完整邏輯應用程式連接器清單，請參閱[連接器概觀](/connectors/)。
 
   > [!IMPORTANT]
-  > 使用 Gmail 之前，請先檢查您是否擁有 G-Suite 商務帳戶 (搭配自訂網域的電子郵件地址) 或 Gmail 取用者帳戶 (搭配 @gmail.com 或 @googlemail.com 的電子郵件地址)。 只有 G-Suite 商務帳戶可以在邏輯應用程式中搭配其他連接器使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用 Gmail 連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 使用 Gmail 之前，請先檢查您是否擁有 G-Suite 商務帳戶 (搭配自訂網域的電子郵件地址) 或 Gmail 取用者帳戶 (搭配 @gmail.com 或 @googlemail.com 的電子郵件地址)。 只有 G-Suite 商務帳戶可以在邏輯應用程式中搭配其他連接器使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用 Gmail 連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來進行驗證](/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
-* Azure 中的 IoT 中樞。 若尚未建立，請參閱[開始使用 IoT 中樞](../iot-hub/iot-hub-csharp-csharp-getstarted.md)的逐步解說。
+* Azure 中的 IoT 中樞。 若尚未建立，請參閱[開始使用 IoT 中樞](../iot-hub/quickstart-send-telemetry-dotnet.md)的逐步解說。
 
 ## <a name="create-a-logic-app"></a>建立邏輯應用程式
 
@@ -247,7 +248,7 @@ Azure Event Grid 可讓您在下游商務應用程式中觸發動作，進而回
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-您不必使用 Azure 入口網站，可改用 Azure CLI 來完成 IoT 中樞步驟。 如需詳細資訊，請參閱 Azure CLI 頁面：[建立事件訂用帳戶](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)和[建立 IoT 裝置](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity)。
+您不必使用 Azure 入口網站，可改用 Azure CLI 來完成 IoT 中樞步驟。 如需詳細資訊，請參閱 Azure CLI 頁面：[建立事件訂用帳戶](/cli/azure/eventgrid/event-subscription)和[建立 IoT 裝置](/cli/azure/ext/azure-iot/iot/hub/device-identity)。
 
 ## <a name="clean-up-resources"></a>清除資源
 

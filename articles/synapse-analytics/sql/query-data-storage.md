@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 93e6b373aa125facb3a3eddecc926438c919b335
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386651"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489736"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>在 Synapse SQL 中使用 SQL 隨選 (預覽) 資源來查詢儲存體檔案
 
@@ -90,7 +90,7 @@ WITH (
 ```
 
 針對每個資料行，您都必須在 `WITH` 子句中指定資料行名稱和類型。
-如需範例，請參閱[在不指定所有資料行的情況下讀取 CSV 檔案](query-single-csv-file.md#returning-subset-of-columns)。
+如需範例，請參閱[在不指定所有資料行的情況下讀取 CSV 檔案](query-single-csv-file.md#return-a-subset-of-columns)。
 
 ## <a name="schema-inference"></a>結構描述推斷
 
