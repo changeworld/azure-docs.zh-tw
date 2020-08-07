@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 8aebcfc2a46de3922dbc41942e63e71844de6e83
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: d5343e6c21da4c30dc18c8692b41dd66eb9566a4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319740"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846695"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>使用 REST 建立、執行及刪除 Azure ML 資源
 
@@ -33,7 +33,7 @@ ms.locfileid: "87319740"
 > * 使用刪除要求來清除資源 
 > * 使用以金鑰為基礎的授權來評分已部署的模型
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 您具有系統管理許可權的**Azure 訂**用帳戶。 如果您沒有這類訂用帳戶，請試用[免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶
 - [Azure Machine Learning 工作區](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
@@ -44,9 +44,9 @@ ms.locfileid: "87319740"
 
 系統管理 REST 要求會使用 OAuth2 隱含流程進行驗證。 此驗證流程會使用您訂用帳戶的服務主體所提供的權杖。 若要取得此權杖，您將需要：
 
-- 您的租使用者識別碼（識別您的訂用帳戶所屬的組織）
-- 您的用戶端識別碼（將與建立的權杖相關聯）
-- 您的用戶端密碼（您應加以保護）
+- 您的租使用者識別碼 (識別您的訂用帳戶所屬的組織) 
+- 您的用戶端識別碼 (將與建立的權杖相關聯) 
+- 您的用戶端密碼 (您應該保護) 
 
 您應該將這些值從回應中提供給服務主體的建立。 [設定 Azure Machine Learning 資源和工作流程的驗證](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication)中會討論取得這些值。 如果您使用的是公司訂用帳戶，您可能沒有建立服務主體的許可權。 在此情況下，您應該使用[免費或付費的個人訂](https://aka.ms/AMLFree)用帳戶。
 
@@ -184,7 +184,7 @@ curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceG
 }
 ```
 
-回應的值 `api` 是您將用於其他要求之伺服器的 URL。 例如，若要列出實驗，請傳送下列命令。 取代 `regional-api-server` 為回應的值 `api` （例如， `centralus.api.azureml.ms` ）。 同時也 `your-subscription-id` `your-resource-group` 以平常的方式取代、、 `your-workspace-name` 和 `your-access-token` ：
+回應的值 `api` 是您將用於其他要求之伺服器的 URL。 例如，若要列出實驗，請傳送下列命令。 取代 `regional-api-server` `api` 為實例的回應 (值， `centralus.api.azureml.ms`) 。 同時也 `your-subscription-id` `your-resource-group` 以平常的方式取代、、 `your-workspace-name` 和 `your-access-token` ：
 
 ```bash
 curl https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -236,7 +236,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-若要建立或覆寫已命名的計算資源，您將使用 PUT 要求。 在下列中，除了、、和的現在熟悉的替代 `your-subscription-id` ， `your-resource-group` 替代、、、 `your-workspace-name` `your-access-token` `your-compute-name` `location` `vmSize` `vmPriority` `scaleSettings` 、 `adminUserName` 和 `adminUserPassword` 的值。 如[Machine Learning Compute-建立或更新 SDK 參考](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)的參考中所指定，下列命令會建立專用的單一節點 Standard_D1 （基本的 CPU 計算資源），在30分鐘後相應減少：
+若要建立或覆寫已命名的計算資源，您將使用 PUT 要求。 在下列中，除了、、和的現在熟悉的替代 `your-subscription-id` ， `your-resource-group` 替代、、、 `your-workspace-name` `your-access-token` `your-compute-name` `location` `vmSize` `vmPriority` `scaleSettings` 、 `adminUserName` 和 `adminUserPassword` 的值。 如[Machine Learning Compute-建立或更新 SDK 參考](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate)的參考中所指定，下列命令會建立專用的單一節點 Standard_D1 (基本 CPU 計算資源) ，在30分鐘後相應減少：
 
 ```bash
 curl -X PUT \
@@ -267,7 +267,7 @@ curl -X PUT \
 > [!Note]
 > 在 Windows 終端機中，您可能必須在傳送 JSON 資料時，將雙引號符號換成引號。 也就是說，之類的文字 `"location"` 就會變成 `\"location\"` 。 
 
-成功的要求會得到 `201 Created` 回應，但請注意，此回應只是表示布建程式已開始。 您必須輪詢（或使用入口網站）以確認其成功完成。
+成功的要求會得到 `201 Created` 回應，但請注意，此回應只是表示布建程式已開始。 您將需要輪詢 (，或使用入口網站) 確認其是否成功完成。
 
 ### <a name="create-an-experimental-run"></a>建立實驗性執行
 
@@ -401,7 +401,7 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 }'
 ```
 
-您應該會 `202 Accepted` 在傳回的標頭中收到一個回應，以及一個 `Location` URI。 您可以取得此 URI 以取得部署的相關資訊，包括有用的偵錯工具資訊（如果您的其中一個相依資源有問題的話）（例如，如果您忘記在容器登錄上啟用系統管理員存取）。 
+您應該會 `202 Accepted` 在傳回的標頭中收到一個回應，以及一個 `Location` URI。 您可以取得此 URI 以取得部署的相關資訊，包括有用的偵錯工具資訊如果其中一個相依資源發生問題 (例如，如果您忘記在容器登錄) 上啟用系統管理存取權。 
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -423,5 +423,5 @@ Azure Machine Learning 工作區會使用 Azure Container Registry (ACR) 進行�
 ## <a name="next-steps"></a>後續步驟
 
 - 探索完整的[AzureML REST API 參考](https://docs.microsoft.com/rest/api/azureml/)。
-- 瞭解如何使用 Studio & 設計工具，透過[設計工具（預覽）預測汽車價格](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)。
+- 瞭解如何使用 Studio & 設計工具，透過[設計工具 (預覽) 來預測汽車價格](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-train-score)。
 - 探索[Jupyter 筆記本的 Azure Machine Learning](https://docs.microsoft.com/azure//machine-learning/samples-notebooks)。

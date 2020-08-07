@@ -13,41 +13,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: a33d74c01771c2b60ac8667a1494ebe80271a8ac
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1a166d12ef753a7a6fc7225d0467ead08514f99
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86494780"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876711"
 ---
-# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>適用于 Linux 的 DSC 擴充功能（Microsoft.ostcextensions.customscriptforlinux. DSCForLinux）
+# <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>適用于 Linux 的 DSC 擴充功能 (Microsoft.ostcextensions.customscriptforlinux. DSCForLinux) 
 
-Desired State Configuration （DSC）是一個管理平臺，可讓您使用設定即程式碼來管理 IT 和開發基礎結構。
+Desired State Configuration (DSC) 是一個管理平臺，可讓您使用設定即程式碼來管理 IT 和開發基礎結構。
 
 > [!NOTE]
 > 適用于 linux 的 DSC 擴充功能和[linux 的 Azure 監視器虛擬機器擴充](./oms-linux.md)功能目前有衝突，且在並存設定中不受支援。 請勿在相同的 VM 上一起使用這兩個解決方案。
 
 DSCForLinux 延伸模組是由 Microsoft 發行並受到支援。 此擴充功能可在 Azure 虛擬機器上安裝 OMI 和 DSC 代理程式。 DSC 延伸模組也可以執行下列動作：
 
-
-- 向 Azure 自動化帳戶註冊 Linux VM，以從 Azure 自動化服務（Register ExtensionAction）提取設定。
-- 將 MOF 設定推送至 Linux VM （Push ExtensionAction）。
-- 將中繼 MOF 設定套用至 Linux VM 以設定提取伺服器，以便提取節點設定（提取 ExtensionAction）。
-- 將自訂 DSC 模組安裝到 Linux VM （安裝 ExtensionAction）。
-- 從 Linux VM 移除自訂 DSC 模組（移除 ExtensionAction）。
-
- 
+- 向 Azure 自動化帳戶註冊 Linux VM，以從 Azure 自動化服務提取設定， (註冊 ExtensionAction) 。
+- 將 MOF 設定推送至 Linux VM (Push ExtensionAction) 。
+- 將中繼 MOF 設定套用至 Linux VM 以設定提取伺服器，以 (提取 ExtensionAction) 提取節點設定。
+- 將自訂 DSC 模組安裝到 Linux VM (安裝 ExtensionAction) 。
+- 從 Linux VM 移除自訂 DSC 模組 (移除 ExtensionAction) 。
 
 ## <a name="prerequisites"></a>必要條件
 
 ### <a name="operating-system"></a>作業系統
 
-DSC Linux 延伸模組可支援所有 [Azure 背書的 Linux 散發套件](../linux/endorsed-distros.md)，但下列項目除外：
-
-| 散發 | 版本 |
-|---|---|
-| Debian | 所有版本 |
-| Ubuntu| 18.04 |
+針對執行 Linux 的節點，DSC Linux 擴充功能支援[POWERSHELL DSC 檔](/powershell/scripting/dsc/getting-started/lnxgettingstarted)中列出的所有 Linux 發行版本。
  
 ### <a name="internet-connectivity"></a>網際網路連線
 
@@ -59,11 +51,11 @@ DSCForLinux 擴充功能會要求目標虛擬機器連線到網際網路。 例�
 
 以下是所有受支援的公用組態參數：
 
-* `FileUri`：（選擇性，字串） MOF 檔案、中繼 MOF 檔案或自訂資源 zip 檔案的 uri。
-* `ResourceName`：（選擇性，字串）自訂資源模組的名稱。
+* `FileUri`： (選擇性的字串) MOF 檔案、中繼 MOF 檔案或自訂資源 zip 檔案的 uri。
+* `ResourceName`： (選擇性的 string) 自訂資源模組的名稱。
 * `ExtensionAction`：(選擇性，字串) 指定擴充功能的作用。 有效的值為 Register、Push、Pull、Install 和 Remove。 如果未指定，預設會將其視為推送動作。
-* `NodeConfigurationName`：（選擇性，字串）要套用的節點設定名稱。
-* `RefreshFrequencyMins`：（選擇性，int）指定 DSC 嘗試從提取伺服器取得設定的頻率（以分鐘為單位）。 
+* `NodeConfigurationName`： (選擇性的 string) 要套用的節點設定名稱。
+* `RefreshFrequencyMins`： (選擇性，int) 會指定 DSC 嘗試從提取伺服器取得設定的頻率 (以分鐘為) 單位。 
        如果提取伺服器上的設定與目標節點上的配置不同，則會將它複製到擱置的存放區並套用。
 * `ConfigurationMode`：(選擇性，字串) 指定 DSC 套用組態的方式。 有效值為 ApplyOnly、ApplyAndMonitor 和 ApplyAndAutoCorrect。
 * `ConfigurationModeFrequencyMins`：(選擇性，int) 指定 DSC 確認組態處於適當狀態的頻率 (以分鐘為單位)。
@@ -76,10 +68,10 @@ DSCForLinux 擴充功能會要求目標虛擬機器連線到網際網路。 例�
 
 以下是所有受支援和保護的組態參數：
 
-* `StorageAccountName`：（選擇性，字串）包含檔案的儲存體帳戶名稱
-* `StorageAccountKey`：（選擇性，字串）包含檔案之儲存體帳戶的金鑰
-* `RegistrationUrl`：（選擇性，字串） Azure 自動化帳戶的 URL
-* `RegistrationKey`：（選擇性，字串） Azure 自動化帳戶的存取金鑰
+* `StorageAccountName`： (選擇性的 string) 包含檔案之儲存體帳戶的名稱
+* `StorageAccountKey`： (選擇性的字串) 包含檔案之儲存體帳戶的金鑰
+* `RegistrationUrl`： (選擇性的 string) Azure 自動化帳戶的 URL
+* `RegistrationKey`： (選擇性的 string) Azure 自動化帳戶的存取金鑰
 
 
 ## <a name="scenarios"></a>案例
@@ -119,7 +111,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>將 MOF 設定檔（在 Azure 儲存體帳戶中）套用至 VM
+### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>將 Azure 儲存體帳戶中 (的 MOF 設定檔) 套用至 VM
 
 protected.json
 ```json
@@ -151,7 +143,7 @@ $publicConfig = '{
 ```
 
 
-### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>將 MOF 設定檔（在公用儲存體中）套用至 VM
+### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>將 (在公用儲存體) 中的 MOF 設定檔套用至 VM
 
 public.json
 ```json
@@ -167,7 +159,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>將中繼 MOF 設定檔（在 Azure 儲存體帳戶中）套用至 VM
+### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>將中繼 MOF 設定檔 (在 Azure 儲存體帳戶) 套用至 VM
 
 protected.json
 ```json
@@ -214,7 +206,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>將自訂資源模組（Azure 儲存體帳戶中的 zip 檔案）安裝到 VM
+### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>將自訂資源模組安裝 (Azure 儲存體帳戶中的 zip 檔案) 至 VM
 protected.json
 ```json
 {
@@ -243,7 +235,7 @@ $publicConfig = '{
 }'
 ```
 
-### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>將自訂資源模組（公用存放裝置中的 zip 檔案）安裝到 VM
+### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>將自訂資源模組 (公用儲存體) 中的 zip 檔案安裝到 VM
 public.json
 ```json
 {

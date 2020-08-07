@@ -1,6 +1,6 @@
 ---
 title: Azure 儲存體分析記錄
-description: 了解如何記錄對 Azure 儲存體所發出要求的詳細資料。
+description: 使用儲存體分析來記錄有關 Azure 儲存體要求的詳細資料。 查看記錄了哪些要求、如何儲存記錄檔、如何啟用儲存體記錄等等。
 author: normesta
 ms.service: storage
 ms.subservice: common
@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 061c7f6a45b8667b7fd03d62bee67c695bec5e68
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 98c8bc07e1f5bb790c2f907bbc3c2125cae383a5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87276783"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903216"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 儲存體分析記錄
 

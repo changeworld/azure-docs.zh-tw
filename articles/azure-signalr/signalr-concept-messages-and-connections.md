@@ -4,14 +4,14 @@ description: 概略說明與 Azure SignalR Service 中的訊息和連線有關�
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 08/05/2020
 ms.author: zhshang
-ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5483e10e817ce8a0a7e7c82d817b7bdbbdd9176b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75392819"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853444"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR Service 中的訊息和連線
 
@@ -36,7 +36,13 @@ Azure SignalR Service 沒有訊息大小限制。
 
 系統會將大於 2 KB 的訊息計算為多則 2 KB 的訊息。 Azure 入口網站中的訊息計數圖表會在每個中樞達到 100 則訊息時更新一次。
 
-例如，假設您有三個用戶端和一個應用程式伺服器。 一個用戶端傳送了一則 4 KB 的訊息，讓伺服器廣播到所有用戶端。 訊息計數為 8：有一則訊息從服務傳送至應用程式伺服器，三則訊息從服務傳送至用戶端。 每則訊息分別計為兩則 2 KB 的訊息。
+例如，假設您有一個應用程式伺服器和三個用戶端：
+
+應用程式伺服器會將 1 KB 的訊息廣播給所有已連線的用戶端，從應用程式伺服器到服務的訊息會被視為免費的輸入訊息。 只有三個從服務傳送到每個用戶端的訊息，才會以輸出訊息的形式計費。
+
+用戶端 A 會傳送 1 KB 的訊息給另一個用戶端 B，而不會通過應用程式伺服器。 從用戶端 A 到服務的訊息是免費的輸入訊息。 從服務到用戶端 B 的訊息會以輸出訊息的形式計費。
+
+如果您有三個用戶端和一個應用程式伺服器。 一個用戶端傳送了一則 4 KB 的訊息，讓伺服器廣播到所有用戶端。 計費的訊息計數為8：從服務到應用程式伺服器的一則訊息，以及從服務到用戶端的三個訊息。 每則訊息分別計為兩則 2 KB 的訊息。
 
 ## <a name="how-connections-are-counted"></a>如何計算連線
 
@@ -44,15 +50,15 @@ Azure SignalR Service 沒有訊息大小限制。
 
 Azure 入口網站中顯示的連線計數包括伺服器連線和用戶端連線。
 
-例如，假設您有兩個應用程式伺服器，並且在程式碼中定義了五個中樞。 伺服器連接計數將是50：2個應用程式伺服器 * 5 個中樞 * 5 個連線。
+例如，假設您有兩個應用程式伺服器，而且您在程式碼中定義了五個中樞。 伺服器連接計數將是50：2個應用程式伺服器 * 5 個中樞 * 5 個連線。
 
-ASP.NET SignalR 會以不同的方式計算伺服器連線。 除了您定義的中樞以外，它還包含一個預設中樞。 根據預設，每個應用程式伺服器需要5個以上的初始伺服器連接。 預設中樞的初始連線計數會與其他中樞保持一致。
+ASP.NET SignalR 會以不同的方式計算伺服器連線。 除了您定義的中樞以外，它還包含一個預設中樞。 根據預設，每個應用程式伺服器需要5個以上的初始伺服器連接。 預設中樞的初始連接計數會與其他中樞保持一致。
 
-在應用程式伺服器的存留期內，服務和應用程式伺服器會保留同步線上狀態，並調整伺服器連接，以獲得更佳的效能和服務穩定性。 因此，您可能會看到伺服器連接編號變更的時間。
+服務和應用程式伺服器會持續同步線上狀態，並調整伺服器連接，以取得更佳的效能和服務穩定性。  因此，您可能會看到伺服器連接編號變更的時間。
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>如何計算輸入/輸出流量
 
-輸入流量與輸出流量之間的差別是從 Azure SignalR Service 的觀點來看。 流量會以位元組為單位計算。
+傳送至服務的訊息是輸入訊息。 從服務送出的訊息是輸出訊息。 流量會以位元組為單位計算。
 
 ## <a name="related-resources"></a>相關資源
 

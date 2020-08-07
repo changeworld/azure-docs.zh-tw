@@ -8,12 +8,12 @@ ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9b6265bed138960a3839091ed1593413fc85710a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e4ec7127df288ec1818df307da1ea9824141309
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82858588"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902451"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>針對您的 IoT Edge 裝置進行疑難排解
 
@@ -44,7 +44,7 @@ iotedge check
 
 * 設定*檢查*會檢查可能導致 IoT Edge 裝置無法連線到雲端的詳細資料，包括*yaml*和容器引擎的問題。
 * 連線*檢查*會確認 IoT Edge 執行時間可以存取主機裝置上的埠，而且所有 IoT Edge 元件都可以連接到 IoT 中樞。 如果 IoT Edge 裝置位於 proxy 後方，這組檢查會傳回錯誤。
-* *生產環境就緒性檢查*會尋找建議的生產最佳做法，例如裝置憑證授權單位單位（CA）憑證和模組記錄檔設定的狀態。
+* *生產環境就緒性檢查*會尋找建議的生產最佳做法，例如裝置憑證授權單位單位的狀態 (CA) 憑證和模組記錄檔設定。
 
 如需此工具執行之每項診斷檢查的相關資訊，包括當您收到錯誤或警告時該怎麼辦，請參閱[IoT Edge 疑難排解檢查](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)。
 
@@ -141,7 +141,7 @@ iotedge support-bundle --since 6h
   * 新增系統層級環境變數：
 
       ```powershell
-      [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "edgelet=debug", [EnvironmentVariableTarget]::Machine)
+      [Environment]::SetEnvironmentVariable("IOTEDGE_LOG", "debug", [EnvironmentVariableTarget]::Machine)
       ```
 
   * 重新啟動 IoT Edge 安全性精靈：
@@ -255,7 +255,7 @@ Azure IoT Edge 允許使用支援的 IoT 中樞通訊協定，從內部部署伺
 
 雖然 IoT Edge 提供增強的設定來保護 Azure IoT Edge 執行階段和已部署的模組，但它仍然倚賴基礎的機器和網路設定。 因此，請務必確定已設定適當的網路和防火牆規則，以提供安全的邊緣對雲端通訊。 當裝載 Azure IoT Edge 執行時間的基礎伺服器設定防火牆規則時，可以使用下表做為指導方針：
 
-|通訊協定|Port|傳入|傳出|指引|
+|通訊協定|連接埠|傳入|傳出|指導方針|
 |--|--|--|--|--|
 |MQTT|8883|已封鎖 (預設值)|已封鎖 (預設值)|<ul> <li>使用 MQTT 作為通訊協定時，請將「傳出」(輸出) 設定為「開放」。<li>IoT Edge 不支援適用於 MQTT 的 1883。 <li>應該將傳入 (輸入) 連線封鎖。</ul>|
 |AMQP|5671|已封鎖 (預設值)|開放 (預設值)|<ul> <li>IoT Edge 的預設通訊協定。 <li> 如果未設定 Azure IoT Edge 使用其他支援的通訊協定，或 AMQP 是所需的通訊協定，則必須設定為「開放」。<li>IoT Edge 不支援適用於 AMQP 的 5672。<li>當 Azure IoT Edge 使用不同的 IoT Hub 已支援通訊協定時，請封鎖此連接埠。<li>應該將傳入 (輸入) 連線封鎖。</ul></ul>|

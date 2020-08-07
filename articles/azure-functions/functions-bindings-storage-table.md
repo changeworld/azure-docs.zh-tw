@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: b6d8ca41c56239bc994b34119600dfa9db60ada6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 7616f6c502f0b5402aa784f707d0dafa31268d78
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083084"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853053"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 資料表儲存體繫結
 
@@ -249,7 +249,7 @@ public class Person : TableEntity
 
 ### <a name="cloudtable"></a>CloudTable
 
-`IQueryable`在 2.x[版和更高版本](functions-versions.md)的函數執行時間中不支援。 替代方式是使用 Azure 儲存體 SDK，藉此利用 `CloudTable` 方法參數來讀取資料表。 以下是查詢 Azure Functions 記錄資料表的函數範例：
+`IQueryable`在 2.x[版和更高版本](functions-versions.md)的函數執行時間中不支援) 。 替代方式是使用 Azure 儲存體 SDK，藉此利用 `CloudTable` 方法參數來讀取資料表。 以下是查詢 Azure Functions 記錄資料表的函數範例：
 
 ```json
 {
@@ -565,7 +565,7 @@ Python 指令碼不支援屬性。
 |**rowKey** |**RowKey** | 選擇性。 要讀取之資料表實體的資料列索引鍵。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
 |**take** |**Take** | 選擇性。 要在 JavaScript 中讀取的實體數目上限。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
 |**出** |**Filter** | 選擇性。 用於在 JavaScript 中輸入資料表的 OData 篩選運算式。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
-|**connection** |**連線** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 此設定可以是「AzureWebJobs」的名稱，前面加上應用程式設定或連接字串名稱。 例如，如果您的設定名稱是 "AzureWebJobsMyStorage"，您可以在這裡指定 "MyStorage"。 函數執行時間會自動尋找名為 "AzureWebJobsMyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
+|**connection** |**[連接]** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 此設定可以是「AzureWebJobs」的名稱，前面加上應用程式設定或連接字串名稱。 例如，如果您的設定名稱是 "AzureWebJobsMyStorage"，您可以在這裡指定 "MyStorage"。 函數執行時間會自動尋找名為 "AzureWebJobsMyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -950,7 +950,7 @@ Python 指令碼不支援屬性。
 |**tableName** |**TableName** | 資料表的名稱。| 
 |**partitionKey** |**PartitionKey** | 要寫入之資料表實體的分割區索引鍵。 如需如何使用此屬性的指引，請參閱[使用方式一節](#output---usage)。| 
 |**rowKey** |**RowKey** | 要寫入之資料表實體的資料列索引鍵。 如需如何使用此屬性的指引，請參閱[使用方式一節](#output---usage)。| 
-|**connection** |**連線** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
+|**connection** |**[連接]** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -994,7 +994,7 @@ Python 指令碼不支援屬性。
 
 | 繫結 | 參考 |
 |---|---|
-| Table | [資料表錯誤碼](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| 資料表 | [資料表錯誤碼](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Bob、資料表、佇列 | [儲存體錯誤碼](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Bob、資料表、佇列 | [疑難排解](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 

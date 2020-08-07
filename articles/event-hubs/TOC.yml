@@ -75,7 +75,7 @@
     - name: 使用串流分析處理適用於事件中樞的 Apache Kafka
       href: event-hubs-kafka-stream-analytics.md
     - name: 使用事件中樞將資料串流至 Azure Databricks
-      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+      href: /azure/databricks/scenarios/databricks-stream-from-eventhubs
       maintainContext: true
 - name: 範例
   items:

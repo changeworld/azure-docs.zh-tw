@@ -1,19 +1,19 @@
 ---
 title: Visual Studio Code 的 Azure HDInsight
-description: 瞭解如何使用 Spark & Hive 工具（Azure HDInsight）來進行 Visual Studio Code。 使用工具來建立和提交查詢和腳本。
+description: 瞭解如何使用 Spark & Hive 工具 (Azure HDInsight) 以進行 Visual Studio Code。 使用工具來建立和提交查詢和腳本。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 04/07/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d00e4ad8b0a9f1f50c30144867babcd8c782734d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-python
+ms.openlocfilehash: bf31ad3311d6cbfd82ad1071d28bb7fee1bb9d2b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087124"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876779"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>使用 Spark & Hive 工具進行 Visual Studio Code
 
@@ -57,7 +57,7 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 支援的平臺上。 請�
 
    ![visual studio code 新增檔案圖示](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
-3. 使用 `.hql` （Hive 查詢）或 `.py` （Spark 腳本）副檔名，將新檔案命名為。 這個範例使用 **HelloWorld.hql**。
+3. 使用 `.hql` (Hive 查詢) 或 `.py` (Spark 腳本) 副檔名，將新檔案命名為。 這個範例使用 **HelloWorld.hql**。
 
 ## <a name="set-the-azure-environment"></a>設定 Azure 環境
 
@@ -69,7 +69,7 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 支援的平臺上。 請�
 
    ![設定預設的登入項目組態](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
 
-## <a name="connect-to-an-azure-account"></a>連接到 Azure 帳戶
+## <a name="connect-to-an-azure-account"></a>連線到 Azure 帳戶
 
 您必須先登入 Azure 訂用帳戶，或[連結 HDInsight](#link-a-cluster)叢集，才能從 Visual Studio Code 將腳本提交至您的叢集。 針對 ESP 叢集使用 Ambari 使用者名稱/密碼或加入網域的認證，以連線到您的 HDInsight 叢集。 請遵循下列步驟來連接到 Azure：
 
@@ -83,7 +83,7 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 支援的平臺上。 請�
 
 ### <a name="link-azure-hdinsight"></a>連結： Azure HDInsight
 
-您可以使用[Apache Ambari](https://ambari.apache.org/)管理的使用者名稱來連結正常的叢集，也可以使用網域使用者名稱（例如：）來連結企業安全性套件安全的 Hadoop 叢集 `user1@contoso.com` 。
+您可以使用[Apache Ambari](https://ambari.apache.org/)管理的使用者名稱來連結正常的叢集，也可以使用網域使用者 (名稱（例如：) ）連結企業安全性套件保護 Hadoop 叢集 `user1@contoso.com` 。
 
 1. 從功能表列，**流覽至 [流覽]**[命令選擇區  >  **...**]，然後輸入**Spark/Hive： Link a Cluster**。
 
@@ -99,7 +99,7 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 支援的平臺上。 請�
 
 6. 選取叢集類型。
 
-7. 設定叢集的顯示名稱（選擇性）。
+7. 設定叢集的顯示名稱 (選擇性) 。
 
 8. 檢閱 [輸出]**** 檢視以確認。
 
@@ -126,7 +126,7 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 支援的平臺上。 請�
 
 2. 選取您想要的訂用帳戶。
 
-3. 檢閱 [輸出]**** 檢視。 此視圖會顯示您的 Azure 訂用帳戶下連結的叢集（或叢集）和所有叢集：
+3. 檢閱 [輸出]**** 檢視。 此視圖會顯示您的連結叢集 (或叢集) 以及您的 Azure 訂用帳戶下的所有叢集：
 
     ![設定預設叢集設定](./media/hdinsight-for-vscode/list-cluster-result1.png)
 
@@ -218,7 +218,7 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 支援的平臺上。 請�
 
    ![PySpark 互動式 Python 互動式視窗](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-10. 輸入 **%% info**，然後按 Shift + enter 以查看作業資訊（選擇性）：
+10. 輸入 **%% info**，然後按 Shift + enter 以查看作業資訊 (選擇性) ：
 
     ![pyspark 互動式視圖工作資訊](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -294,17 +294,17 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 支援的平臺上。 請�
 
 ## <a name="integrate-with-hdinsight-identity-broker-hib"></a>與 HDInsight Identity Broker (HIB) 整合
 
-### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>使用識別碼代理程式（HIB 表示）連接到您的 HDInsight ESP 叢集
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>使用識別碼代理程式連線到您的 HDInsight ESP 叢集 (HIB 表示) 
 
-您可以遵循一般步驟來登入 Azure 訂用帳戶，以連線到您具有識別碼代理人（HIB 表示）的 HDInsight ESP 叢集。 登入之後，您會在 Azure Explorer 中看到叢集清單。 如需詳細，請參閱[連線至 HDInsight 叢集](#connect-to-an-azure-account)。
+您可以遵循一般步驟來登入 Azure 訂用帳戶，以連線至識別碼為 Broker (HIB 表示) 的 HDInsight ESP 叢集。 登入之後，您會在 Azure Explorer 中看到叢集清單。 如需詳細，請參閱[連線至 HDInsight 叢集](#connect-to-an-azure-account)。
 
-### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>在識別碼為 Broker （HIB 表示）的 HDInsight ESP 叢集上執行 Hive/PySpark 作業
+### <a name="run-a-hivepyspark-job-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>在識別碼為 Broker (HIB 表示的 HDInsight ESP 叢集上執行 Hive/PySpark 作業) 
 
-針對執行 hive 作業，您可以遵循一般步驟，將作業提交至具有識別碼代理人的 HDInsight ESP 叢集（HIB 表示）。 如需詳細指示，請參閱[提交互動式 Hive 查詢和 Hive 批次腳本](#submit-interactive-hive-queries-and-hive-batch-scripts)。
+針對執行 hive 作業，您可以遵循一般步驟，將作業提交至識別碼為 Broker (HIB 表示) 的 HDInsight ESP 叢集。 如需詳細指示，請參閱[提交互動式 Hive 查詢和 Hive 批次腳本](#submit-interactive-hive-queries-and-hive-batch-scripts)。
 
-若要執行互動式 PySpark 作業，您可以遵循一般步驟，將作業提交至具有識別碼 Broker （HIB 表示）的 HDInsight ESP 叢集。 如需詳細指示，請參閱[提交互動式 PySpark 查詢](#submit-interactive-pyspark-queries)。
+若要執行互動式 PySpark 作業，您可以遵循一般步驟，將作業提交至識別碼為 Broker (HIB 表示) 的 HDInsight ESP 叢集。 如需詳細指示，請參閱[提交互動式 PySpark 查詢](#submit-interactive-pyspark-queries)。
 
-針對執行 PySpark batch 作業，您可以遵循一般步驟，將作業提交至具有識別碼 Broker （HIB 表示）的 HDInsight ESP 叢集。 如需詳細指示，請參閱[提交 PySpark 批次作業](#submit-pyspark-batch-job)。
+針對執行 PySpark batch 作業，您可以遵循一般步驟，將作業提交至識別碼為 Broker (HIB 表示) 的 HDInsight ESP 叢集。 如需詳細指示，請參閱[提交 PySpark 批次作業](#submit-pyspark-batch-job)。
 
 
 ## <a name="apache-livy-configuration"></a>Apache Livy 設定
@@ -331,9 +331,9 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 支援的平臺上。 請�
 
     **張貼/batches**要求本文
 
-    | NAME | description | 類型 |
+    | NAME | description | type |
     | --- | --- | --- |
-    | 檔案 | 包含要執行之應用程式的檔案 | 路徑（必要） |
+    | 檔案 | 包含要執行之應用程式的檔案 | 需要 (路徑)  |
     | proxyUser | 執行作業時要模擬的使用者 | String |
     | className | 應用程式 Java/Spark 主要類別 | String |
     | args | 應用程式的命令列引數 | 字串清單 |
@@ -352,7 +352,7 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 支援的平臺上。 請�
 
     已建立之批次物件的回應主體。
 
-    | NAME | description | 類型 |
+    | NAME | description | type |
     | --- | ---| --- |
     | 識別碼 | 工作階段識別碼 | Int |
     | appId | 此會話的應用程式識別碼 | String |
@@ -473,6 +473,6 @@ Spark & Hive 工具可以安裝在 Visual Studio Code 支援的平臺上。 請�
 
 ![已知問題](./media/hdinsight-for-vscode/known-issue.png)
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 如需示範使用 Spark & Hive 進行 Visual Studio Code 的影片，請參閱[適用于 Visual Studio Code 的 spark & hive](https://go.microsoft.com/fwlink/?linkid=858706)。

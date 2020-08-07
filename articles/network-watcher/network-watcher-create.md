@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03fe71855c43ba831f4b7a4ab746f05bd3bbb4a3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737541"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846848"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>建立 Azure 網路監看員執行個體
 
@@ -57,7 +57,7 @@ az provider register -n Microsoft.Network
 
 網路監看員執行個體會自動在名為 NetworkWatcherRG** 的資源群組中建立。 如果該資源群組尚未存在，系統就會加以建立。
 
-如果您要自訂網路監看員執行個體的名稱，以及放置該執行個體的資源群組名稱，可以使用後續章節中所述的 Powershell、Azure CLI、REST API 或 ARMClient 方法。 在每個選項中，都必須先有資源群組，才能在其中建立網路監看員。  
+如果您想要自訂網路監看員實例的名稱，以及它放入其中的資源群組，您可以使用 PowerShell、Azure CLI、REST API 或 ARMClient 方法，如下節所述。 在每個選項中，都必須先有資源群組，才能在其中建立網路監看員。  
 
 ## <a name="create-a-network-watcher-with-powershell"></a>使用 PowerShell 建立網路監看員
 
@@ -101,6 +101,10 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
+## <a name="create-a-network-watcher-using-azure-quickstart-template"></a>使用 Azure 快速入門範本建立網路監看員
+
+若要建立網路監看員的實例，請參閱此[快速入門範本](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/)
+
 ## <a name="delete-a-network-watcher-in-the-portal"></a>在入口網站中刪除網路監看員
 
 流覽至 [**所有服務**] [網路] [  >  **Networking**  >  **網路監看員**]。
@@ -127,8 +131,8 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 
 * [拓撲](network-watcher-topology-overview.md)
 * [封包擷取](network-watcher-packet-capture-overview.md)
-* [IP 流量驗證](network-watcher-ip-flow-verify-overview.md)
+* [IP 流程驗證](network-watcher-ip-flow-verify-overview.md)
 * [下一個躍點](network-watcher-next-hop-overview.md)
-* [安全性群組視圖](network-watcher-security-group-view-overview.md)
+* [安全性群組檢視](network-watcher-security-group-view-overview.md)
 * [NSG 流量記錄](network-watcher-nsg-flow-logging-overview.md)
 * [虛擬網路閘道疑難排解](network-watcher-troubleshoot-overview.md)

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: df4d1b98eac782641fb36c614d2df9508c6131ad
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4e63ec864da9a6e7ce5448b322e0452503e2493c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498662"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853427"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虛擬桌面中委派的存取權
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/delegated-access-virtual-desktop-2019.md)。
 
 Windows 虛擬桌面具有委派的存取模型，可讓您藉由指派角色給使用者，來定義允許特定使用者擁有的存取權數量。 角色指派有三個元件：安全性主體、角色定義和範圍。 Windows 虛擬桌面委派的存取模型是以 Azure RBAC 模型為基礎。 若要深入瞭解特定角色指派及其元件，請參閱[Azure 角色型存取控制總覽](../role-based-access-control/built-in-roles.md)。
 
@@ -31,7 +31,7 @@ Windows 虛擬桌面委派存取針對角色指派的每個元素支援下列值
 * 角色定義
     * 內建角色
     * 自訂角色
-* 影響範圍
+* 範圍
     * 主機集區
     * 應用程式群組
     * 工作區
@@ -40,18 +40,18 @@ Windows 虛擬桌面委派存取針對角色指派的每個元素支援下列值
 
 開始之前，請務必遵循[設定 powershell 模組](powershell-module.md)中的指示來設定 Windows 虛擬桌面 powershell 模組（如果尚未安裝的話）。
 
-Windows 虛擬桌面會在將應用程式群組發佈至使用者或使用者群組時，使用 Azure 角色型存取控制（Azure RBAC）。 「桌面虛擬化」使用者角色會指派給使用者或使用者群組，而範圍則是「應用程式群組」。 此角色可讓使用者在應用程式群組上進行特殊資料存取。  
+Windows 虛擬桌面會在將應用程式群組發佈至使用者或使用者群組時，使用 Azure 角色型存取控制 (Azure RBAC) 。 「桌面虛擬化」使用者角色會指派給使用者或使用者群組，而範圍則是「應用程式群組」。 此角色可讓使用者在應用程式群組上進行特殊資料存取。  
 
 執行下列 Cmdlet，將 Azure Active Directory 使用者新增至應用程式群組：
 
 ```powershell
-New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
 ```
 
 執行下列 Cmdlet，將 Azure Active Directory 使用者群組新增至應用程式群組：
 
 ```powershell
-New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
 ## <a name="next-steps"></a>後續步驟

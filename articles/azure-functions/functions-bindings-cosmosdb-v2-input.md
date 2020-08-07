@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 2c3e872dee06ac4fa0c8c37ce8fb77bd34dc78bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 896ffb148ec781280d103b27a4dddddb1f9ef4b0
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041860"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874651"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更高版本的 Azure Cosmos DB 輸入系結
 
@@ -43,8 +43,12 @@ namespace CosmosDBSamplesV2
 {
     public class ToDoItem
     {
+        [JsonProperty("id")]
         public string Id { get; set; }
+        
+        [JsonProperty("partitionKey")]
         public string PartitionKey { get; set; }
+        
         public string Description { get; set; }
     }
 }
@@ -208,7 +212,7 @@ namespace CosmosDBSamplesV2
 範例會顯示如何在 `SqlQuery` 參數中使用繫結運算式。 您可以如範例所示，將路由資料傳遞至 `SqlQuery` 參數，但目前[您無法傳遞查詢字串值](https://github.com/Azure/azure-functions-host/issues/2554#issuecomment-392084583)。
 
 > [!NOTE]
-> 如果您只需要根據識別碼來查詢，建議使用查閱，如同[先前的範例](#http-trigger-look-up-id-from-query-string-c)，因為它會耗用較少的[要求單位](../cosmos-db/request-units.md)。 點讀取作業（GET）比依識別碼查詢[更有效率](../cosmos-db/optimize-cost-queries.md)。
+> 如果您只需要根據識別碼來查詢，建議使用查閱，如同[先前的範例](#http-trigger-look-up-id-from-query-string-c)，因為它會耗用較少的[要求單位](../cosmos-db/request-units.md)。  (GET) 的點讀取作業，會比依識別碼的查詢[更有效率](../cosmos-db/optimize-cost-queries.md)。
 >
 
 ```cs
@@ -1311,7 +1315,7 @@ public class DocByIdFromRoute {
 下列範例示範會擷取單一文件的 Java 函式。 此函式是由 HTTP 要求所觸發，該 HTTP 要求會使用路由參數來指定要查閱的識別碼。 該識別碼會用來從指定的資料庫和集合中擷取文件，並將結果集轉換為 ```ToDoItem[]```，因為根據查詢準則而定，可能會傳回許多文件。
 
 > [!NOTE]
-> 如果您只需要根據識別碼來查詢，建議使用查閱，如同[先前的範例](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)，因為它會耗用較少的[要求單位](../cosmos-db/request-units.md)。 點讀取作業（GET）比依識別碼查詢[更有效率](../cosmos-db/optimize-cost-queries.md)。
+> 如果您只需要根據識別碼來查詢，建議使用查閱，如同[先前的範例](#http-trigger-look-up-id-from-query-string---pojo-parameter-java)，因為它會耗用較少的[要求單位](../cosmos-db/request-units.md)。  (GET) 的點讀取作業，會比依識別碼的查詢[更有效率](../cosmos-db/optimize-cost-queries.md)。
 >
 
 ```java
@@ -1439,7 +1443,7 @@ Python 指令碼不支援屬性。
 |**sqlQuery**  |**SqlQuery**  | 用來擷取多份文件的 Azure Cosmos DB SQL 查詢。 屬性會支援執行階段繫結，如此範例所示：`SELECT * FROM c where c.departmentId = {departmentId}`。 請勿同時設定 `id` 和 `sqlQuery` 屬性。 如果您未設定其中一個，就會擷取整個集合。|
 |**connectionStringSetting**     |**ConnectionStringSetting**|包含 Azure Cosmos DB 連接字串的應用程式設定名稱。 |
 |**partitionKey**|**PartitionKey**|指定分割區索引鍵值進行查閱。 可能包含繫結參數。 這是在資料[分割](../cosmos-db/partition-data.md#logical-partitions)的集合中查閱的必要項。|
-|**preferredLocations**| **PreferredLocations**| 選擇性定義 Azure Cosmos DB 服務中異地複寫資料庫帳戶的慣用位置（區域）。 值應該以逗號分隔。 例如，「美國東部、美國中南部、北歐」。 |
+|**preferredLocations**| **PreferredLocations**|  (選擇性) 會針對 Azure Cosmos DB 服務中異地複寫的資料庫帳戶定義慣用位置 (區域) 。 值應該以逗號分隔。 例如，「美國東部、美國中南部、北歐」。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -1467,7 +1471,7 @@ Python 指令碼不支援屬性。
 
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-- [建立或修改 Azure Cosmos DB 檔時執行函數（觸發程式）](./functions-bindings-cosmosdb-v2-trigger.md)
-- [儲存 Azure Cosmos DB 檔的變更（輸出系結）](./functions-bindings-cosmosdb-v2-output.md)
+- [ (觸發程式建立或修改 Azure Cosmos DB 檔時執行函式) ](./functions-bindings-cosmosdb-v2-trigger.md)
+- [將變更儲存至 Azure Cosmos DB 檔 (輸出系結) ](./functions-bindings-cosmosdb-v2-output.md)

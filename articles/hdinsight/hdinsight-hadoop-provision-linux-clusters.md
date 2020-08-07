@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 04/30/2020
-ms.openlocfilehash: 4eaa9c4e3d200eedd57c468639c1af3830911d1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/06/2020
+ms.openlocfilehash: 1d11318d2af640a0cf417286ee777ce833297a4f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82889265"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873597"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他工具在 HDInsight 中設定叢集
 
@@ -32,7 +32,7 @@ Hadoop 叢集由數個虛擬機器 (節點) 組成，可用於分散處理作業
 
 下表顯示可用來設定 HDInsight 叢集的不同方法。
 
-| 叢集建立方法 | Web 瀏覽器 | 命令列 | REST API | SDK |
+| 叢集建立方法 | 網頁瀏覽器 | 命令列 | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
 | [Azure 入口網站](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
@@ -72,7 +72,7 @@ HDInsight 叢集名稱具有下列限制：
 Azure HDInsight 目前提供下列的叢集類型，每種都有一組提供特定功能的元件。
 
 > [!IMPORTANT]  
-> HDInsight 叢集有多種類型，每種類型各適合單一工作負載或技術。 沒有任何支援方法可建立結合多個類型的叢集，例如在一個叢集上並存 Storm 和 HBase。 如果您的解決方案需要會分散到多個 HDInsight 叢集類型的技術，[Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network)可以連接必要的叢集類型。
+> HDInsight 叢集有多種類型，每種類型均適用於單一工作負載或技術。 沒有任何支援方法可建立結合多個類型的叢集，例如在一個叢集上並存 Storm 和 HBase。 如果您的解決方案需要分散到多個 HDInsight 叢集類型的技術， [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network)可以連接所需的叢集類型。
 
 | 叢集類型 | 功能 |
 | --- | --- |
@@ -82,7 +82,7 @@ Azure HDInsight 目前提供下列的叢集類型，每種都有一組提供特�
 | [Kafka](kafka/apache-kafka-introduction.md) | 可用來建置即時串流資料管線和應用程式的分散式串流平台 |
 | [ML 服務](r-server/r-server-overview.md) |各種巨量資料統計資料、預測模型和機器學習功能 |
 | [Spark](spark/apache-spark-overview.md) |記憶體內處理、互動式查詢、微批次串流處理 |
-| [Storm](storm/apache-storm-overview.md) |即時事件處理 |
+| [暴風雨](storm/apache-storm-overview.md) |即時事件處理 |
 
 #### <a name="version"></a>版本
 
@@ -93,18 +93,18 @@ Azure HDInsight 目前提供下列的叢集類型，每種都有一組提供特�
 使用 HDInsight 叢集，您可以在建立叢集期間設定兩個使用者帳戶：
 
 * 叢集登入使用者名稱：預設使用者名稱為*admin*。它會使用 Azure 入口網站上的基本設定。 有時稱為「叢集使用者」或「HTTP 使用者」。
-* 安全殼層（SSH）使用者名稱：用來透過 SSH 連接到叢集。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)。
+* 安全殼層 (SSH) 使用者名稱：用來透過 SSH 連線到叢集。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 HTTP 使用者名稱具有下列限制：
 
 * 允許的特殊字元： `_` 和`@`
-* 不允許的字元： #;。 "'， \/ ： '！ *？ $ （） {} [] <>|&--= +% ~ ^ space
+* 不允許的字元： #;。 "'， \/ ： '！ *？ $ ( # B1 {} [] <>|&--= +% ~ ^ space
 * 最大長度：20
 
 SSH 使用者名稱具有下列限制：
 
 * 允許的特殊字元： `_` 和`@`
-* 不允許的字元： #;。 "'， \/ ： '！ *？ $ （） {} [] <>|&--= +% ~ ^ space
+* 不允許的字元： #;。 "'， \/ ： '！ *？ $ ( # B1 {} [] <>|&--= +% ~ ^ space
 * 最大長度：64
 * 保留名稱： hadoop、使用者、oozie、hive、mapred.max.split.size、ambari-qa、zookeeper、tez、hdfs、sqoop，yarn，hcat，ams，hbase，風暴，管理員，管理員，使用者，user1，測試，使用者2，test1，user3，admin1，1，123，a，actuser，adm，admin2，aspnet，備份，主控台，david，來賓，john，，support_388945a0，sys，test2，test3，user4，user5，spark
 
@@ -120,7 +120,7 @@ HDInsight 叢集可以使用下列儲存體選項：
 * Azure Data Lake Storage Gen1
 * Azure 儲存體一般用途 v2
 * Azure 儲存體一般用途 v1
-* Azure 儲存體區塊 blob （**僅支援做為次要儲存體**）
+* Azure 儲存體區塊 blob (**僅支援作為次要儲存體**) 
 
 如需 HDInsight 儲存選項的詳細資訊，請參閱[比較與 Azure HDInsight 叢集搭配使用的儲存體選項](hdinsight-hadoop-compare-storage-options.md)。
 
@@ -149,6 +149,9 @@ HDInsight 叢集可以使用下列儲存體選項：
 
 針對某個 HDInsight 叢集版本建立的 HDInsight 中繼存放區，不能在不同的 HDInsight 叢集版本之間共用。 如需 HDInsight 版本清單，請參閱[支援的 HDInsight 版本](hdinsight-component-versioning.md#supported-hdinsight-versions)。
 
+> [!IMPORTANT]
+> 預設中繼存放區會提供具有**基本第5層 DTU 限制的 Azure SQL Database， (無法升級) **！ 適用于基本測試用途。 針對大型或生產工作負載，我們建議您遷移至外部中繼存放區。
+
 #### <a name="sql-database-for-oozie"></a>適用于 Oozie 的 SQL database
 
 為提升使用 Oozie 時的效能，請使用自訂的中繼存放區。 在您刪除叢集後，中繼存放區也可提供 Oozie 作業資料的存取。
@@ -166,7 +169,7 @@ Ambari 是用來監視 HDInsight 叢集、進行設定變更，以及儲存叢�
 
 ### <a name="enterprise-security-package"></a>企業安全性套件
 
-對於 Hadoop、Spark、HBase、Kafka 互動式查詢叢集類型，您可以選擇啟用 [企業安全性套件]****。 此套件使用 Apache Ranger 並與 Azure Active Directory 整合，讓您可選擇更安全的叢集設定。 如需詳細資訊，請參閱[Azure HDInsight 中的企業安全性總覽](./domain-joined/hdinsight-security-overview.md)。
+對於 Hadoop、Spark、HBase、Kafka 互動式查詢叢集類型，您可以選擇啟用 [企業安全性套件]。 此套件能透過使用 Apache Ranger 並與 Azure Active Directory 整合，讓您可選擇更安全的叢集設定。 如需詳細資訊，請參閱[Azure HDInsight 中的企業安全性總覽](./domain-joined/hdinsight-security-overview.md)。
 
 企業安全性套件可讓您整合 HDInsight 與 Active Directory 及 Apache Ranger。 使用企業安全性套件可以建立多個使用者。
 
@@ -178,7 +181,7 @@ Ambari 是用來監視 HDInsight 叢集、進行設定變更，以及儲存叢�
 
 ### <a name="virtual-network"></a>虛擬網路
 
-如果您的解決方案需要會分散到多個 HDInsight 叢集類型的技術，[Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network)可以連接必要的叢集類型。 此組態可讓叢集以及其中部署的任何程式碼直接彼此通訊。
+如果您的解決方案需要分散到多個 HDInsight 叢集類型的技術， [Azure 虛擬網路](https://docs.microsoft.com/azure/virtual-network)可以連接所需的叢集類型。 此設定可讓叢集 (以及您對它們部署的任何程式碼) 直接彼此通訊。
 
 如需搭配 HDInsight 使用 Azure 虛擬網路的詳細資訊，請參閱[規劃 hdinsight 的虛擬網路](hdinsight-plan-virtual-network-deployment.md)。
 
@@ -208,10 +211,10 @@ Ambari 是用來監視 HDInsight 叢集、進行設定變更，以及儲存叢�
 
 | 類型 | 節點 | 圖表 |
 | --- | --- | --- |
-| Hadoop |前端節點（2）、背景工作節點（1 +） |![HDInsight Hadoop 叢集節點](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
+| Hadoop |前端節點 (2) 、背景工作節點 (1 +)  |![HDInsight Hadoop 叢集節點](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hadoop-cluster-type-nodes.png) |
 | hbase |前端伺服器 (2)、區域伺服器 (1+)、主要/Zookeeper 節點 (3) |![HDInsight HBase 叢集類型設定](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-hbase-cluster-type-setup.png) |
-| Storm |Nimbus 節點 (2)、監督員伺服器 (1+)、Zookeeper 節點 (3) |![HDInsight 風暴叢集類型設定](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
-| Spark |前端節點（2）、背景工作節點（1 +）、ZooKeeper 節點（3）（A1 ZooKeeper VM 大小免費） |![HDInsight spark 叢集類型設定](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
+| 暴風雨 |Nimbus 節點 (2)、監督員伺服器 (1+)、Zookeeper 節點 (3) |![HDInsight 風暴叢集類型設定](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-storm-cluster-type-setup.png) |
+| Spark |前端節點 (2) 、背景工作節點 (1 +) 、ZooKeeper 節點 (3) 免費用於 A1 ZooKeeper VM 大小 ( |![HDInsight spark 叢集類型設定](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-spark-cluster-type-setup.png) |
 
 如需詳細資訊，請參閱＜HDInsight 中的 Hadoop 元件和版本是什麼？＞中的[叢集的預設節點設定和虛擬機器大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)。
 

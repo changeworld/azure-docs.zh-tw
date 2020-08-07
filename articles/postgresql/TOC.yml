@@ -255,6 +255,8 @@
           items:
             - name: 設定 TLS
               href: howto-tls-configurations.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: 設定伺服器參數
           items:
             - name: Azure 入口網站

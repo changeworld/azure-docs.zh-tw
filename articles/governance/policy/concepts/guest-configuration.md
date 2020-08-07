@@ -3,12 +3,12 @@ title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072827"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901975"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -74,7 +74,26 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 
 只要自訂虛擬機器映像是上表中的其中一個作業系統，「來賓設定」原則就會提供支援。
 
-## <a name="guest-configuration-extension-network-requirements"></a>「來賓設定」擴充功能網路需求
+## <a name="network-requirements"></a>網路需求
+
+Azure 中的虛擬機器可以使用其局域網路介面卡或私人連結，與來賓設定服務進行通訊。
+
+Azure Arc 機器會使用內部部署網路基礎結構進行連線，以連線到 Azure 服務並報告合規性狀態。
+
+### <a name="communicate-over-virtual-networks-in-azure"></a>透過 Azure 中的虛擬網路進行通訊
+
+使用虛擬網路進行通訊的虛擬機器將需要在埠上對 Azure 資料中心進行輸出存取 `443` 。 如果您使用 Azure 中不允許輸出流量的私人虛擬網路，請使用網路安全性群組規則來設定例外狀況。 服務標籤 "GuestAndHybridManagement" 可用於參照「來賓設定」服務。
+
+### <a name="communicate-over-private-link-in-azure"></a>透過 Azure 中的私人連結進行通訊
+
+虛擬機器可以使用[私人連結](../../../private-link/private-link-overview.md)來與來賓設定服務通訊。 將標記套用至名稱 `EnablePrivateNeworkGC` 和值， `TRUE` 以啟用此功能。 您可以在將來賓設定原則套用至電腦之前或之後套用此標記。
+
+流量會使用 Azure[虛擬公用 IP 位址](../../../virtual-network/what-is-ip-address-168-63-129-16.md)來路由傳送，以使用 azure 平臺資源建立安全且已驗證的通道。
+
+### <a name="azure-arc-connected-machines"></a>Azure Arc 連線的機器
+
+Azure Arc 所連接的 Azure 外部節點需要與來賓設定服務的連線。
+有關[Azure Arc 檔](../../../azure-arc/servers/overview.md)中所提供的網路和 proxy 需求的詳細資料。
 
 若要與 Azure 中的「來賓設定」資源提供者通訊，機器需要在連接埠 **443** 上對 Azure 資料中心進行輸出存取。 如果 Azure 中的網路不允許輸出流量，請使用[網路安全性群組](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)規則來設定例外狀況。 [服務標籤](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" 可用於參照「來賓設定」服務。
 
@@ -117,7 +136,7 @@ Azure 原則中的一項計畫可讓您依照「基準」來稽核作業系統�
 
 有些參數支援整數值範圍。 例如，[密碼存留期上限] 設定可能會稽核有效的群組原則設定。 「1,70」範圍會確認使用者至少每隔 70 天 (但不能少於一天) 就需要變更其密碼。
 
-如果您使用 Azure Resource Manager 範本（ARM 範本）指派原則，請使用參數檔案來管理例外狀況。 將檔案簽入至版本控制系統，例如 Git。 檔案變更的相關註解會提供證明，說明為何指派是預期值的例外狀況。
+如果您使用 Azure Resource Manager 範本 (ARM 範本) 指派原則，請使用參數檔案來管理例外狀況。 將檔案簽入至版本控制系統，例如 Git。 檔案變更的相關註解會提供證明，說明為何指派是預期值的例外狀況。
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用「來賓設定」套用設定
 

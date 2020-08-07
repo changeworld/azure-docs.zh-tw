@@ -1,18 +1,18 @@
 ---
 title: 搭配 Windows 使用 Azure 檔案共用 | Microsoft Docs
-description: 了解如何搭配 Windows 和 Windows Server 使用 Azure 檔案共用。
+description: 瞭解如何搭配 Windows 和 Windows Server 使用 Azure 檔案共用。 在內部部署或 Azure Vm 上執行的 Windows 安裝上，使用 SMB 3.0 的 Azure 檔案共用。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcc79a0763d7441a8a3c04723578ccc27cf5fe4e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509773"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905749"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>搭配 Windows 使用 Azure 檔案共用
 [Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 Azure 檔案共用可在 Windows 和 Windows Server 中順暢地使用。 本文討論搭配 Windows 和 Windows Server 使用 Azure 檔案共用的考量。
@@ -59,7 +59,7 @@ Azure 入口網站提供您可以用來直接將檔案共用掛接至主機的�
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 流覽至包含您想要掛接之檔案共用的儲存體帳戶。
-1. 選取 [檔案**共用**]。
+1. 選取 [檔案共用]。
 1. 選取您想要掛接的檔案共用。
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="實例":::
@@ -132,10 +132,10 @@ Azure 入口網站提供您可以用來直接將檔案共用掛接至主機的�
 | Windows Server 2019                       | 已停用             | 利用 Windows 功能移除 |
 | Windows Server 版本 1709+            | 已停用             | 利用 Windows 功能移除 |
 | Windows 10 版本 1709+                | 已停用             | 利用 Windows 功能移除 |
-| Windows Server 2016                       | 已啟用              | 利用 Windows 功能移除 |
-| Windows 10 版本 1507、1607 和 1703 | 已啟用              | 利用 Windows 功能移除 |
-| Windows Server 2012 R2                    | 已啟用              | 利用 Windows 功能移除 | 
-| Windows 8.1                               | 已啟用              | 利用 Windows 功能移除 | 
+| Windows Server 2016                       | 啟用              | 利用 Windows 功能移除 |
+| Windows 10 版本 1507、1607 和 1703 | 啟用              | 利用 Windows 功能移除 |
+| Windows Server 2012 R2                    | 啟用              | 利用 Windows 功能移除 | 
+| Windows 8.1                               | 啟用              | 利用 Windows 功能移除 | 
 | Windows Server 2012                       | 啟用              | 利用登錄停用       | 
 | Windows Server 2008 R2                    | 啟用              | 利用登錄停用       |
 | Windows 7                                 | 啟用              | 利用登錄停用       | 

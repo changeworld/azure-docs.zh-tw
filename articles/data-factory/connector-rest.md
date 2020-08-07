@@ -9,24 +9,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 2657f1998e3ca908bc52166154ac3353e1e5a66b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c0a64c0a9653bd274e9298401163ad7abc1af99f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81415035"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852288"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 REST 端點複製資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 REST 端點複製資料。 本文是以 [Azure Data Factory 中的複製活動](copy-activity-overview.md)為基礎，該文提供複製活動的一般概觀。
 
-此 REST 連接器、[HTTP 連接器](connector-http.md)和 [Web 資料表連接器](connector-web-table.md)之間的差異是：
+此 REST 連接器、 [HTTP 連接器](connector-http.md)和[Web 資料表連接器](connector-web-table.md)之間的差異如下：
 
 - **REST 連接器**專門支援從 RESTful api 複製資料; 
-- **HTTP 連接器**一般用來從任何 HTTP 端點擷取資料，例如下載檔案。 在此 REST 連接器可供使用之前，您可能會使用 HTTP 連接器從 RESTful API 複製資料，這是可支援的方式，但功能性比 REST 連接器低。
+- **Http 連接器**是用來從任何 HTTP 端點抓取資料的一般，例如，用來下載檔案。 在此 REST 連接器可供使用之前，您可能會使用 HTTP 連接器從 RESTful API 複製資料，這是可支援的方式，但功能性比 REST 連接器低。
 - **Web 資料表連接器**會從 HTML 網頁擷取資料表內容。
 
 ## <a name="supported-capabilities"></a>支援的功能
@@ -61,8 +61,8 @@ ms.locfileid: "81415035"
 |:--- |:--- |:--- |
 | type | **Type**屬性必須設定為**RestService**。 | 是 |
 | url | REST 服務的基底 URL。 | 是 |
-| enableServerCertificateValidation | 連接到端點時，是否要驗證服務器端的 TLS/SSL 憑證。 | 否<br /> （預設值為**true**） |
-| authenticationType | 用來連線到 REST 服務的驗證類型。 允許的值為 **Anonymous**、**Basic**、**AadServicePrincipal** 和 **ManagedServiceIdentity**。 請分別參閱下列有關更多屬性和範例的對應區段。 | 是 |
+| enableServerCertificateValidation | 連接到端點時，是否要驗證服務器端的 TLS/SSL 憑證。 | 否<br />  (預設值為**true**)  |
+| authenticationType | 用來連線到 REST 服務的驗證類型。 允許的值為**Anonymous**、 **Basic**、 **AadServicePrincipal**和**ManagedServiceIdentity**。 請分別參閱下列有關更多屬性和範例的對應區段。 | 是 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 從[必要條件](#prerequisites)一節深入了解。 如果未指定，此屬性會使用預設的 Azure Integration Runtime。 |否 |
 
 ### <a name="use-basic-authentication"></a>使用基本驗證
@@ -107,7 +107,8 @@ ms.locfileid: "81415035"
 | servicePrincipalId | 指定 Azure Active Directory 應用程式的用戶端識別碼。 | 是 |
 | servicePrincipalKey | 指定 Azure Active Directory 應用程式的金鑰。 將此欄位標記為 **SecureString**，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
-| aadResourceId | 指定您要求授權的 AAD 資源，例如 `https://management.core.windows.net`。| 是 |
+| aadResourceId | 指定您要求授權的 AAD 資源，例如 `https://management.core.windows.net` 。| 是 |
+| azureCloudType | 針對 [服務主體驗證]，指定您的 AAD 應用程式所註冊的 Azure 雲端環境類型。 <br/> 允許的值為**AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和**AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 
 **範例**
 
@@ -141,7 +142,7 @@ ms.locfileid: "81415035"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| aadResourceId | 指定您要求授權的 AAD 資源，例如 `https://management.core.windows.net`。| 是 |
+| aadResourceId | 指定您要求授權的 AAD 資源，例如 `https://management.core.windows.net` 。| 是 |
 
 **範例**
 
@@ -171,7 +172,7 @@ ms.locfileid: "81415035"
 
 若要從 REST 複製資料，以下是支援的屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 **type** 屬性必須設定為 [RestResource]****。 | 是 |
 | relativeUrl | 包含資料之資源的相對 URL。 若未指定此屬性，則只會使用在連結服務定義中指定的 URL。 HTTP 連接器會從合併的 URL 複製資料： `[URL specified in linked service]/[relative URL specified in dataset]` 。 | 否 |
@@ -207,7 +208,7 @@ ms.locfileid: "81415035"
 
 複製活動的 **source** 區段支援下列屬性：
 
-| 屬性 | 說明 | 必要 |
+| 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的 **type** 屬性必須設定為 [RestSource]****。 | 是 |
 | requestMethod | HTTP 方法。 允許的值為 **Get** (預設值) 和 **Post**。 | 否 |
@@ -305,21 +306,21 @@ ms.locfileid: "81415035"
 * 下一個要求的標頭 = 目前回應本文中的屬性值
 * 下一個要求的標頭 = 目前回應標頭中的標頭值
 
-**分頁規則**會定義為資料集內的字典，其中包含一或多個區分大小寫的索引鍵/值組。 此設定將用來產生從第二個頁面開始的要求。 連接器會在取得 HTTP 狀態碼204（沒有內容），或 "paginationRules" 中的任何 JSONPath 運算式傳回 null 時，停止逐一查看。
+**分頁規則**會定義為資料集內的字典，其中包含一或多個區分大小寫的索引鍵/值組。 此設定將用來產生從第二個頁面開始的要求。 連接器會在收到 HTTP 狀態碼204時停止逐一查看 (沒有內容) ，或 "paginationRules" 中的任何 JSONPath 運算式傳回 null。
 
 分頁規則中的**支援金鑰**：
 
 | Key | 描述 |
 |:--- |:--- |
 | AbsoluteUrl | 指示 URL 發出下一個要求。 它可以是**絕對 url 或相對 url**。 |
-| QueryParameters.*request_query_parameter* 或 QueryParameters['request_query_parameter'] | 使用者定義的 "request_query_parameter" 會參考下一個 HTTP 要求 URL 中的一個查詢參數名稱。 |
-| Headers.*request_header* 或 Headers['request_header'] | 使用者定義的 "request_header" 會參考下一個 HTTP 要求中的一個標頭名稱。 |
+| QueryParameters.*request_query_parameter* 或 QueryParameters['request_query_parameter'] | 「request_query_parameter」是使用者定義的，它會參考下一個 HTTP 要求 URL 中的一個查詢參數名稱。 |
+| Headers.*request_header* 或 Headers['request_header'] | 「request_header」是使用者定義的，它會參考下一個 HTTP 要求中的一個標頭名稱。 |
 
 分頁規則中的**支援值**：
 
 | 值 | 描述 |
 |:--- |:--- |
-| Headers.*response_header* 或 Headers['response_header'] | 使用者定義的 "response_header" 會參考目前 HTTP 回應中的一個標頭名稱，其值會用來發出下一個要求。 |
+| Headers.*response_header* 或 Headers['response_header'] | 「response_header」是使用者定義的，它會參考目前 HTTP 回應中的一個標頭名稱，這是用來發出下一個要求的值。 |
 | JSONPath 運算式會以 "$" 開頭 (代表回應本文的根) | 回應本文應只包含一個 JSON 物件。 JSONPath 運算式應會傳回單一基本值，而這會用來發出下一個要求。 |
 
 **範例︰**
@@ -391,7 +392,7 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
 1. 移至**從 REST 複製或使用 OAuth**範本的 HTTP。 建立來源連線的新連接。 
     ![建立新的連接](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
 
-    以下是新的連結服務（REST）設定的重要步驟：
+    以下是新連結服務 (REST) 設定的主要步驟：
     
      1. 在 [**基底 URL**] 底下，指定您自己的來源 REST 服務的 URL 參數。 
      2. 在 [**驗證類型**] 中，選擇 [*匿名*]。
@@ -405,18 +406,18 @@ Facebook 圖形 API 會傳回採用下列結構的回應，在該案例中，下
 
 4. 您會看到建立的管線，如下列範例所示： ![ 管線](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
 
-5. 選取 [ **Web**活動]。 在 [**設定**] 中，指定對應的**URL**、**方法**、**標頭**和**主體**，以從您要從中複製資料之服務的登入 API 取得 OAuth 持有人權杖。 範本中的預留位置會展示 Azure Active Directory （AAD） OAuth 的範例。 注意 AAD 驗證原本就由 REST 連接器支援，以下是 OAuth 流程的範例。 
+5. 選取 [ **Web**活動]。 在 [**設定**] 中，指定對應的**URL**、**方法**、**標頭**和**主體**，以從您要從中複製資料之服務的登入 API 取得 OAuth 持有人權杖。 範本中的預留位置會展示 Azure Active Directory (AAD) OAuth 的範例。 注意 AAD 驗證原本就由 REST 連接器支援，以下是 OAuth 流程的範例。 
 
     | 屬性 | 描述 |
     |:--- |:--- |:--- |
     | URL |指定要從中取出 OAuth 持有人權杖的 url。 例如，在範例中，它是https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
     | 方法 | HTTP 方法。 允許的值為**Post**和**Get**。 | 
-    | 標頭 | 標頭是使用者定義的，它會參考 HTTP 要求中的一個標頭名稱。 | 
+    | 標題 | 標頭是使用者定義的，它會參考 HTTP 要求中的一個標頭名稱。 | 
     | 主體 | HTTP 要求的主體。 | 
 
     ![管線](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
 
-6. 在 [**複製資料**] 活動中，選取 [*來源*] 索引標籤，您會看到從上一個步驟抓取的持有人權杖（access_token）將會傳遞至 [複製資料] 活動，以在其他標頭下進行**授權** 開始執行管線之前，請先確認下列屬性的設定。
+6. 在 [**複製資料**] 活動中，選取 [*來源*] 索引標籤，您會看到在上一個步驟中抓取的持有人權杖 (access_token) 會傳遞至 [複製資料] 活動，做為其他標頭底下的**授權** 開始執行管線之前，請先確認下列屬性的設定。
 
     | 屬性 | 描述 |
     |:--- |:--- |:--- | 

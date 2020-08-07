@@ -11,13 +11,13 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: caaf1a2622d4642850d0d981e813ee438eb4eca8
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: acd030d8108ef3983be29fe85de6d7b3caf620af
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513752"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849330"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>使用 Azure Machine Learning 中的資料集進行定型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,7 +46,7 @@ Azure Machine Learning 資料集提供與 Azure Machine Learning 訓練產品（
 下列程式碼會使用 [`get_context()`]() 類別中的方法， [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) 來存取 `titanic` 定型腳本中現有的輸入 TabularDataset。 接著會使用 [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) 方法，將該資料集載入至 pandas 資料框架，以便在定型之前進一步進行資料探索和準備。
 
 > [!Note]
-> 當您使用 to_pandas_dataframe （）時，如果原始資料來源包含 NaN、空字串或空白值，則會將這些值取代為*Null*值。 
+> 如果您的原始資料來源包含 NaN、空字串或空白值，則當您使用 to_pandas_dataframe ( # A1 時，這些值會被取代為*Null*值。 
 
 ```Python
 %%writefile $script_folder/train_titanic.py
@@ -131,7 +131,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>設定估計工具
 
-建議您在裝載時，將資料集當做引數傳遞。 除了透過估計工具中的參數傳遞資料集之外 `inputs` ，您也可以透過引數傳遞資料集， `script_params` 並取得定型腳本中的資料路徑（掛接點）。 如此一來，您就可以在任何雲端平臺上使用相同的訓練腳本進行本機的偵錯工具和遠端訓練。
+建議您在裝載時，將資料集當做引數傳遞。 除了透過估計工具中的參數傳遞資料集之外 `inputs` ，您也可以透過引數，將資料集傳遞至， `script_params` 並在定型腳本中取得資料路徑 (掛接點) 。 如此一來，您就可以在任何雲端平臺上使用相同的訓練腳本進行本機的偵錯工具和遠端訓練。
 
 [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)估計工具物件是用來提交 scikit-learn-學習實驗的執行。 提交執行之後，資料集所參考的資料檔案 `mnist` 將會掛接至計算目標。 深入瞭解如何使用[SKlearn 估計工具](how-to-train-scikit-learn.md)進行訓練。
 
@@ -195,7 +195,7 @@ y_test = load_data(y_test, True).reshape(-1)
 
 針對從 Azure Blob 儲存體、Azure 檔案儲存體、Azure Data Lake Storage Gen1、Azure Data Lake Storage Gen2、Azure SQL Database 和適用於 PostgreSQL 的 Azure 資料庫所建立的資料集，支援裝載或下載任何格式的檔案。 
 
-當您**掛接**資料集時，您會將資料集所參考的檔案附加至目錄（掛接點），並將它提供給計算目標。 針對以 Linux 為基礎的計算支援掛接，包括 Azure Machine Learning 計算、虛擬機器和 HDInsight。 
+當您**掛接**資料集時，您會將資料集所參考的檔案附加至目錄 (掛接點) 並使其可在計算目標上使用。 針對以 Linux 為基礎的計算支援掛接，包括 Azure Machine Learning 計算、虛擬機器和 HDInsight。 
 
 當您**下載**資料集時，資料集所參考的所有檔案都會下載到計算目標。 所有計算類型都支援下載。 
 

@@ -3,22 +3,22 @@ title: 連線到 Azure 事件中樞
 description: 使用 Azure 事件中樞和 Azure Logic Apps 建立自動化的工作和工作流程，以監視和管理事件
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 7dab9753334a1f071d85d0d2bccbd88340e37634
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9e3bc4cdab62dd304c5266ff6c9cccf66600fb7b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284093"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848837"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中樞與 Azure Logic Apps 監視、接收和傳送事件
 
 本文說明如何使用 Azure 事件中樞連接器，從邏輯應用程式內部監視和管理傳送至 [Azure 事件中樞](../event-hubs/event-hubs-about.md)的事件。 這樣一來，您就可以建立邏輯應用程式，來自動執行從事件中樞檢查、傳送和接收事件的工作和工作流程。 如需連接器特定的技術資訊，請參閱[Azure 事件中樞連接器參考](/connectors/eventhubs/) </a> 。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
@@ -62,6 +62,9 @@ ms.locfileid: "87284093"
 
 此範例會示範當新的事件傳送到事件中樞時，如何啟動邏輯應用程式工作流程。 
 
+> [!NOTE]
+> 所有事件中樞觸發程式都是*長時間輪詢*觸發程式，這表示觸發程式會處理所有事件，然後在每個分割區等候30秒，以讓事件中樞出現更多事件。 因此，如果觸發程式是以四個分割區設定，此延遲可能需要最多兩分鐘的時間，觸發程式才能完成所有分割區的輪詢。 如果在此延遲內未收到任何事件，則會略過觸發程式執行。 否則，觸發程序會繼續讀取事件，直到事件中樞沒有任何事件為止。 下一次發生觸發程序輪詢的時間，會根據您在觸發程序屬性中指定的循環間隔而定。
+
 1. 在 Azure 入口網站或 Visual Studio 中，建立空白的邏輯應用程式，以開啟 Logic Apps 設計工具。 這個範例會使用 Azure 入口網站。
 
 1. 在搜尋方塊中，輸入「事件中樞」作為篩選條件。 從觸發程式清單中，選取此觸發**程式：事件中樞內可用的事件-事件中樞**
@@ -74,7 +77,7 @@ ms.locfileid: "87284093"
 
    ![觸發程序屬性](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **事件中樞名稱** | 是 | 您想要監視的事件中樞名稱 |
    | **內容類型** | 否 | 事件的內容類型。 預設為 `application/octet-stream`。 |
@@ -86,7 +89,7 @@ ms.locfileid: "87284093"
 
    **其他屬性**
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **內容結構描述** | 否 | 要從事件中樞讀取之事件的 JSON 內容架構。 例如，如果您指定內容架構，則只能針對符合架構的事件觸發邏輯應用程式。 |
    | **最小分割區索引鍵** | 否 | 輸入要讀取的最小[分割區](../event-hubs/event-hubs-features.md#partitions)識別碼。 預設會讀取所有分割區。 |
@@ -100,11 +103,6 @@ ms.locfileid: "87284093"
 1. 現在，繼續針對您想要使用觸發程序結果來執行的工作，於邏輯應用程式中新增一或多個動作。 
 
    例如，若要根據特定值（例如類別）來篩選事件，您可以新增條件，讓 [**傳送事件**] 動作只會傳送符合您條件的事件。 
-
-> [!NOTE]
-> 所有事件中樞觸發程序都是*長時間輪詢*觸發程序；這表示當引發觸發程序時，觸發程序會處理所有事件，然後等候 30 秒等事件中樞中出現更多事件。
-> 如果在 30 秒內沒收到任何事件，就會略過觸發程序執行。 否則，觸發程序會繼續讀取事件，直到事件中樞沒有任何事件為止。
-> 下一次發生觸發程序輪詢的時間，會根據您在觸發程序屬性中指定的循環間隔而定。
 
 <a name="add-action"></a>
 
@@ -130,7 +128,7 @@ ms.locfileid: "87284093"
 
    ![選取事件中樞名稱，並提供事件內容](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | 屬性 | 必要 | 說明 |
+   | 屬性 | 必要 | 描述 |
    |----------|----------|-------------|
    | **事件中樞名稱** | 是 | 您要傳送事件的事件中樞 |
    | **內容** | 否 | 您要傳送事件的內容 |
@@ -176,7 +174,7 @@ ms.locfileid: "87284093"
 如需連接器的 Swagger 檔案所敘述的技術詳細資料 (例如，觸發程序、動作和限制)，請參閱[連接器的參考頁面](/connectors/eventhubs/)。
 
 > [!NOTE]
-> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 對於[整合服務環境中 (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

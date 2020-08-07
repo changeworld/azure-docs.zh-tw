@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: 5244d9711886376fe9502e31c227d8d74de4c21a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: b06a01bf280d6d12e2df122d411e15e3432e61c7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800321"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847055"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure SQL 受控執行個體複製資料
 
@@ -37,13 +37,13 @@ ms.locfileid: "87800321"
 具體而言，此 SQL 受控執行個體連接器支援：
 
 - 使用 SQL 驗證和 Azure Active Directory 來複製資料 (Azure AD) 使用服務主體的應用程式權杖驗證，或 Azure 資源的受控識別。
-- 作為來源，使用 SQL 查詢或預存程式來抓取資料。
+- 作為來源，使用 SQL 查詢或預存程式來抓取資料。 您也可以選擇從 SQL MI 來源進行平行複製，如需詳細資訊，請參閱[從 SQL Mi 平行複製](#parallel-copy-from-sql-mi)一節。
 - 作為接收，會根據來源架構，自動建立目的地資料表（如果不存在的話）。在複製期間，將資料附加至資料表，或使用自訂邏輯叫用預存程式。
 
 >[!NOTE]
 > 此連接器目前不支援 SQL 受控執行個體[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-mi-current) 。 若要解決此情況，您可以透過自我裝載整合執行時間使用[一般 odbc 連接器](connector-odbc.md)和 SQL Server ODBC 驅動程式。 若要深入瞭解，請[使用 Always Encrypted](#using-always-encrypted)一節。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要存取 SQL 受控執行個體[公用端點](../azure-sql/managed-instance/public-endpoint-overview.md)，您可以使用 Azure Data Factory 受控 Azure 整合執行時間。 請確定您已啟用公用端點，而且也允許網路安全性群組上的公用端點流量，讓 Azure Data Factory 可以連接到您的資料庫。 如需詳細資訊，請參閱[本指引](../azure-sql/managed-instance/public-endpoint-configure.md)。
 
@@ -66,6 +66,7 @@ ms.locfileid: "87800321"
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是，當您搭配服務主體使用 Azure AD 驗證時 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為**SecureString** ，將它安全地儲存在 Azure Data Factory 中，或[參考儲存在 Azure Key Vault 中的秘密](store-credentials-in-key-vault.md)。 | 是，當您搭配服務主體使用 Azure AD 驗證時 |
 | tenant | 指定租使用者資訊，例如您的應用程式所在的功能變數名稱或租使用者識別碼。 將滑鼠游標暫留在 Azure 入口網站右上角，即可加以擷取。 | 是，當您搭配服務主體使用 Azure AD 驗證時 |
+| azureCloudType | 針對 [服務主體驗證]，指定您的 AAD 應用程式所註冊的 Azure 雲端環境類型。 <br/> 允許的值為**AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和**AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的受控實例具有公用端點，並允許 Azure Data Factory 存取它，您可以使用自我裝載整合執行時間或 Azure 整合執行時間。 若未指定，則會使用預設 Azure Integration Runtime。 |是 |
 
 針對不同的驗證類型，請分別參閱下列有關先決條件和 JSON 範例的章節：
@@ -262,6 +263,9 @@ ms.locfileid: "87800321"
 
 ### <a name="sql-managed-instance-as-a-source"></a>SQL 受控執行個體做為來源
 
+>[!TIP]
+>若要使用資料分割有效率地從 SQL MI 載入資料，請深入瞭解[SQL mi 的平行複製](#parallel-copy-from-sql-mi)。
+
 若要從 SQL 受控執行個體複製資料，複製活動的 [來源] 區段中支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
@@ -271,6 +275,12 @@ ms.locfileid: "87800321"
 | sqlReaderStoredProcedureName |此屬性是從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 |否 |
 | storedProcedureParameters |這些是預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 |否 |
 | isolationLevel | 指定 SQL 來源的異動鎖定行為。 允許的值為： **ReadCommitted**、 **ReadUncommitted**、 **RepeatableRead**、 **Serializable**、 **Snapshot**。 如果未指定，則會使用資料庫的預設隔離等級。 如需詳細資訊，請參閱[這篇文件](https://docs.microsoft.com/dotnet/api/system.data.isolationlevel)。 | 否 |
+| partitionOptions | 指定用來從 SQL MI 載入資料的資料分割選項。 <br>允許的值為： **None** (預設) 、 **PhysicalPartitionsOfTable**和**DynamicRange**。<br>當分割區選項已啟用 (也就是不 `None`) 時，從 SQL MI 並行載入資料的平行處理原則程度是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
+| partitionSettings | 指定資料分割的設定群組。 <br>當分割區選項不適用時套用 `None` 。 | 否 |
+| ***在 `partitionSettings` 下列底下：*** | | |
+| partitionColumnName | **以 integer 或 date/datetime 類型**指定來源資料行的名稱，以供範圍分割用於平行複製。 如果未指定，則會自動偵測資料表的索引或主鍵，並當做資料分割資料行使用。<br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來抓取來源資料，請 `?AdfDynamicRangePartitionCondition ` 在 WHERE 子句中掛上。 如需範例，請參閱[從 SQL Database 平行複製](#parallel-copy-from-sql-mi)一節。 | 否 |
+| partitionUpperBound | 資料分割範圍分割的資料分割資料行的最大值。 這個值是用來決定資料分割的 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測值。  <br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱[從 SQL Database 平行複製](#parallel-copy-from-sql-mi)一節。 | 否 |
+| partitionLowerBound | 資料分割範圍分割的資料分割資料行的最小值。 這個值是用來決定資料分割的 stride，而不是用來篩選資料表中的資料列。 資料表或查詢結果中的所有資料列都會進行分割和複製。 如果未指定，複製活動會自動偵測值。<br>當分割選項是 `DynamicRange` 時套用。 如需範例，請參閱[從 SQL Database 平行複製](#parallel-copy-from-sql-mi)一節。 | 否 |
 
 **請注意下列幾點：**
 
@@ -454,6 +464,53 @@ GO
         }
     }
 ]
+```
+
+## <a name="parallel-copy-from-sql-mi"></a>從 SQL MI 進行平行複製
+
+複製活動中的 Azure SQL 受控執行個體連接器會提供內建的資料分割，以平行方式複製資料。 您可以在複製活動的 [**來源**] 索引標籤上找到資料分割選項。
+
+![分割選項的螢幕擷取畫面](./media/connector-sql-server/connector-sql-partition-options.png)
+
+當您啟用資料分割複本時，複製活動會針對您的 SQL MI 來源執行平行查詢，以依據分割區來載入資料。 平行程度由複製活動的 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定所控制。 例如，如果您將設定 `parallelCopies` 為四，Data Factory 會同時產生並根據您指定的資料分割選項和設定執行四個查詢，而且每個查詢都會從您的 SQL MI 抓取部分資料。
+
+建議您啟用具有資料分割的平行複製，特別是當您從 SQL MI 載入大量資料時。 以下針對各種情節的建議設定。 將資料複製到以檔案為基礎的資料存放區時，建議您以多個檔案的形式寫入資料夾， (只需指定資料夾名稱) ，在此情況下，效能會比寫入單一檔案更好。
+
+| 狀況                                                     | 建議的設定                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 具有實體分割區的大型資料表完整載入。        | 資料**分割選項**：資料表的實體分割區。 <br><br/>在執行期間，Data Factory 會自動偵測實體分割區，並依分割區複製資料。 |
+| 從大型資料表（不含實體分割區）進行完整載入，而使用整數或日期時間資料行來進行資料磁碟分割。 | **分割選項**：動態範圍分割。<br>**分割**區資料行 (選擇性) ：指定用來分割資料的資料行。 如果未指定，則會使用索引或主鍵資料行。<br/>**分割區上限**和 * * 分割區下限 * * (選擇性) ：指定是否要判斷資料分割的 stride。 這不是用來篩選資料表中的資料列，而是會分割和複製資料表中的所有資料列。 如果未指定，複製活動會自動偵測這些值。<br><br>例如，如果您的分割區資料行 "ID" 的值範圍是1到100，而您將下限設定為20，而將上限設為80，而平行複製為4，則 Data Factory 會將資料依4個分割區的識別碼，分別 <= 20、[21，50]、[51、80] 和 >= 81。 |
+| 使用自訂查詢（不含實體分割區）載入大量資料，並使用整數或日期/日期時間資料行來進行資料磁碟分割。 | **分割選項**：動態範圍分割。<br>**查詢**：`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`。<br>**分割資料行**：指定用來分割資料的資料行。<br>**分割區上限**和資料**分割下限** (選擇性) ：指定您是否想要判斷資料分割的 stride。 這不是用來篩選資料表中的資料列，而是會分割和複製查詢結果中的所有資料列。 如果未指定，複製活動會自動偵測值。<br><br>在執行期間，Data Factory 會將取代為 `?AdfRangePartitionColumnName` 每個資料分割的實際資料行名稱和值範圍，並傳送至 SQL MI。 <br>例如，如果您的分割區資料行 "ID" 的值範圍是1到100，而您將下限設定為20，而將上限設為80，而平行複製為4，則 Data Factory 會將資料依4個分割區的識別碼，分別 <= 20、[21，50]、[51、80] 和 >= 81。 |
+
+使用分割區選項載入資料的最佳做法：
+
+1. 選擇 [特殊資料行] 做為分割區資料行 (，例如主鍵或唯一索引鍵) ，以避免資料扭曲。 
+2. 如果資料表有內建的資料分割，請使用資料分割選項「資料表的實體分割區」來取得更好的效能。  
+3. 如果您使用 Azure Integration Runtime 來複製資料，您可以將較大的「[資料整合單位 (DIU) ](copy-activity-performance-features.md#data-integration-units)」 ( # B0 4) 以使用更多計算資源。 查看適用的案例。
+4. 「[複製平行](copy-activity-performance-features.md#parallel-copy)處理原則的程度」控制資料分割編號，設定此數值太大，有時會影響效能，建議您將此數目設定為 (DIU 或) * (2 到 4) 的自我裝載 IR 節點數目。
+
+**範例：具有實體分割區的大型資料表的完整載入**
+
+```json
+"source": {
+    "type": "SqlMISource",
+    "partitionOption": "PhysicalPartitionsOfTable"
+}
+```
+
+**範例：使用動態範圍分割進行查詢**
+
+```json
+"source": {
+    "type": "SqlMISource",
+    "query": "SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>",
+    "partitionOption": "DynamicRange",
+    "partitionSettings": {
+        "partitionColumnName": "<partition_column_name>",
+        "partitionUpperBound": "<upper_value_of_partition_column (optional) to decide the partition stride, not as data filter>",
+        "partitionLowerBound": "<lower_value_of_partition_column (optional) to decide the partition stride, not as data filter>"
+    }
+}
 ```
 
 ## <a name="best-practice-for-loading-data-into-sql-managed-instance"></a>將資料載入 SQL 受控執行個體的最佳做法

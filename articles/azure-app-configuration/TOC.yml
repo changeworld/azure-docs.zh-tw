@@ -75,7 +75,7 @@
       href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 索引鍵-值存放區
+    - name: 索引鍵和值
       href: concept-key-value.md
     - name: 時間點快照集
       href: concept-point-time-snapshot.md

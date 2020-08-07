@@ -1,6 +1,6 @@
 ---
 title: 上傳 Azure 服務管理憑證 | Microsoft Docs
-description: 了解如何針對 Azure 入口網站上傳服務管理憑證。
+description: 了解如何針對 Azure 入口網站上傳服務管理憑證。 管理憑證可讓您使用傳統部署模型進行驗證。
 services: cloud-services
 documentationcenter: .net
 author: georgewallace
@@ -10,15 +10,15 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d2436b524ba6df68b12206bcb545e54a405b731
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78329114"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848548"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>上傳 Azure 服務管理憑證
-管理憑證可讓您使用 Azure 所提供的傳統部署模型進行驗證。 許多程式和工具 (例如 Visual Studio 或 Azure SDK) 會使用這些憑證，將各種 Azure 服務的設定與部署自動化。 
+管理憑證可讓您使用 Azure 所提供的傳統部署模型進行驗證。 許多程式和工具 (例如 Visual Studio 或 Azure SDK) 都會使用這些憑證，將各種 Azure 服務的設定與部署自動化。 
 
 > [!WARNING]
 > 請務必小心！ 這些憑證類型允許使用它們進行驗證的任何人管理與他們相關聯的訂用帳戶。

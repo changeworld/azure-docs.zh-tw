@@ -8,15 +8,15 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
-ms.custom: mqtt, tracking-python
-ms.openlocfilehash: 9a3782c0d5791f20f14aabb53d486fc012518c1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-python
+ms.openlocfilehash: 7ac634944c9df479617af4c9171faf0f99df4b1b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608497"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876643"
 ---
-# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中樞（Python）將檔案從裝置上傳至雲端
+# <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>使用 IoT 中樞 (Python，將檔案從裝置上傳至雲端) 
 
 [!INCLUDE [iot-hub-file-upload-language-selector](../../includes/iot-hub-file-upload-language-selector.md)]
 
@@ -171,7 +171,7 @@ ms.locfileid: "84608497"
 
     此程式碼會建立異步**IoTHubDeviceClient** ，並使用下列 api 來管理使用您的 IoT 中樞的檔案上傳：
 
-    * **get_storage_info_for_blob**會從您的 IoT 中樞取得您先前建立之連結儲存體帳戶的相關資訊。 此資訊包括主機名稱、容器名稱、blob 名稱和 SAS 權杖。 儲存體資訊會傳遞至**store_blob**函式（在上一個步驟中建立），因此該函式中的**BlobClient**可以向 Azure 儲存體進行驗證。 **Get_storage_info_for_blob**方法也會傳回 correlation_id，用於**notify_blob_upload_status**方法中。 Correlation_id 是用來標記您正在處理之 blob 的 IoT 中樞方式。
+    * **get_storage_info_for_blob**會從您的 IoT 中樞取得您先前建立之連結儲存體帳戶的相關資訊。 此資訊包括主機名稱、容器名稱、blob 名稱和 SAS 權杖。 儲存體資訊會傳遞至 (在上一個步驟) 中建立的**store_blob**函式，因此該函式中的**BlobClient**可以向 Azure 儲存體進行驗證。 **Get_storage_info_for_blob**方法也會傳回 correlation_id，用於**notify_blob_upload_status**方法中。 Correlation_id 是用來標記您正在處理之 blob 的 IoT 中樞方式。
 
     * **notify_blob_upload_status**會通知 IoT 中樞 blob 儲存體作業的狀態。 您會將**get_storage_info_for_blob**方法取得的 correlation_id 傳遞給它。 IoT 中樞會使用它來通知任何可能接聽檔案上傳工作狀態通知的服務。
 

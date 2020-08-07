@@ -2,18 +2,18 @@
 title: 在 Azure AD Azure API for FHIR 中註冊機密用戶端應用程式
 description: 在 Azure Active Directory 中註冊機密用戶端應用程式，以代表使用者進行驗證，並要求存取資源應用程式。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 6642adf5f51be1f4f54c538624829fe9004d3907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: 756645d2df22f1222c3004a44e5a46c7a3bc1a2f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871118"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852543"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中註冊機密用戶端應用程式
 
@@ -53,17 +53,17 @@ ms.locfileid: "84871118"
 
 3. 選取適當的資源 API：
 
-    針對 Azure API for FHIR （受控服務），按一下 [**我的組織使用的 api** ]，並搜尋「Azure 醫療保健 api」。 針對 Azure 的開放原始碼 FHIR 伺服器，請選取您的[FHIR API 資源應用程式註冊](register-resource-azure-ad-client-app.md)：
+    針對 Azure API for FHIR (受控服務) ，按一下 [**我的組織使用的 api** ]，並搜尋「Azure 醫療保健 api」。 針對 Azure 的開放原始碼 FHIR 伺服器，請選取您的[FHIR API 資源應用程式註冊](register-resource-azure-ad-client-app.md)：
 
     ![機密用戶端。 我的 Api](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-MyApis.png)
 
-4. 選取機密應用程式應該能夠代表使用者要求的範圍（許可權）：
+4. 選取 [範圍] ([許可權]) 機密應用程式應該能夠代表使用者要求：
 
     ![機密用戶端。 委派的權限](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-DelegatedPermissions.png)
 
 ## <a name="application-secret"></a>應用程式祕密
 
-1. 建立應用程式密碼（用戶端密碼）：
+1.  (用戶端密碼) 建立應用程式密碼：
 
     ![機密用戶端。 應用程式密碼](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
 
