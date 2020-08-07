@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 338fdcb6ee2ebad98972bead7e16c9bc5944f2b3
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117071"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927312"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>如何針對 Log Analytics Windows 代理程式的問題進行疑難排解 
 
@@ -39,7 +39,7 @@ ms.locfileid: "87117071"
 |*.blob.core.windows.net |連接埠 443 |輸出|是 |  
 |*. agentsvc.azure-automation.net |連接埠 443 |輸出|是 |  
 
-如需 Azure Government 所需的防火牆資訊，請參閱 [Azure Government 管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)。 如果您打算使用 Azure 自動化混合式 Runbook 背景工作角色連線到自動化服務並向其註冊，以便在您的環境中使用 Runbook 或管理解決方案，其必須具有[設定適用於混合式 Runbook 背景工作角色的網路](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的連接埠號碼和 URL 存取權。 
+如需 Azure Government 所需的防火牆資訊，請參閱 [Azure Government 管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)。 如果您打算使用 Azure 自動化混合式 Runbook 背景工作角色連線到自動化服務並向其註冊，以便在您的環境中使用 Runbook 或管理解決方案，其必須具有[設定適用於混合式 Runbook 背景工作角色的網路](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的連接埠號碼和 URL 存取權。 
 
 有數種方式可供您確認代理程式是否成功與 Azure 監視器通訊。
 
@@ -55,13 +55,13 @@ ms.locfileid: "87117071"
 
     如果電腦已成功與服務通訊，則查詢應該會傳回結果。 如果查詢未傳回結果，請先確認代理程式已設定為向正確的工作區報告。 如果設定正確，請繼續進行步驟3並搜尋 Windows 事件記錄檔，以找出代理程式是否正在記錄哪個問題可能導致它無法與 Azure 監視器進行通訊。
 
-- 另一個識別連接問題的方法是執行**TestCloudConnectivity**工具。 此工具預設會安裝在 *%SystemRoot%\Program Files\Microsoft Monitoring Agent\Agent*資料夾中的代理程式。 從提高許可權的命令提示字元中，流覽至資料夾，然後執行工具。 此工具會傳回結果，並反白顯示測試失敗的位置（例如，如果它與已封鎖的特定埠/URL 相關）。 
+- 另一個識別連接問題的方法是執行**TestCloudConnectivity**工具。 此工具預設會安裝在 *%SystemRoot%\Program Files\Microsoft Monitoring Agent\Agent*資料夾中的代理程式。 從提高許可權的命令提示字元中，流覽至資料夾，然後執行工具。 此工具會傳回結果，並反白顯示測試失敗 (例如，如果與已封鎖) 的特定埠/URL 相關。 
 
     ![TestCloudConnection 工具執行結果](./media/agent-windows-troubleshoot/output-testcloudconnection-tool-01.png)
 
 - 依**事件來源**健全狀況服務模組]、[HealthService] 和 [服務連接器] 篩選*Operations Manager*事件記錄檔，  -  *Health Service Modules*並依**事件層級***警告*和*錯誤*篩選，以確認它是否已寫入下表中的事件。 *HealthService* *Service Connector* 如果是，請檢查每個可能事件所包含的解決步驟。
 
-    |事件識別碼 |來源 |說明 |解決方案 |
+    |事件識別碼 |來源 |描述 |解決方法 |
     |---------|-------|------------|-----------|
     |2133 & 2129 |健全狀況服務 |從代理程式到服務的連接失敗 |當代理程式無法直接或透過防火牆/proxy 伺服器與 Azure 監視器服務通訊時，就會發生此錯誤。 確認代理程式 proxy 設定，或網路防火牆/proxy 允許從電腦到服務的 TCP 流量。|
     |2138 |健全狀況服務模組 |Proxy 需要驗證 |設定代理程式 proxy 設定，並指定用來向 proxy 伺服器進行驗證所需的使用者名稱/密碼。 |
@@ -99,7 +99,7 @@ Heartbeat
 
 3. 在幾分鐘之後，如果您在查詢結果或視覺效果中看不到預期的資料，請根據您是從 [ *Operations Manager* ] 事件記錄檔中查看資料，搜尋 [**事件來源**] *HealthService*並*健全狀況服務模組*，並依**事件層級***警告*和*錯誤*進行篩選，確認它是否已寫入下表中的事件。
 
-    |事件識別碼 |來源 |說明 |解決方案 |
+    |事件識別碼 |來源 |描述 |解決方法 |
     |---------|-------|------------|
     |8000 |HealthService |這個事件會指定與所收集的效能、事件或其他資料類型相關的工作流程是否無法轉寄至服務，以供內嵌至工作區。 | 來源 HealthService 的事件識別碼2136會與此事件一併撰寫，而且可能會指出代理程式無法與服務通訊，可能是因為 proxy 和驗證設定不正確、網路中斷，或網路防火牆/proxy 不允許從電腦到服務的 TCP 流量。| 
     |10102和10103 |健全狀況服務模組 |工作流程無法解析資料來源。 |如果指定的效能計數器或實例不存在於電腦上，或工作區的資料設定不正確地定義，就可能發生這種情況。 如果這是使用者指定的[效能計數器](data-sources-performance-counters.md#configuring-performance-counters)，請確認指定的資訊是否遵循正確的格式，並存在於目的電腦上。 |

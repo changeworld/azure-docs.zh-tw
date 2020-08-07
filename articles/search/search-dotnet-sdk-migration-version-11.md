@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 644184f5bb51d049d890655ada5be5ebd4c11bf7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908896"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926666"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升級至 Azure 認知搜尋 .NET SDK 第11版
 
@@ -48,7 +48,7 @@ ms.locfileid: "87908896"
 | 用於索引子、資料來源、技能集的用戶端 | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**新**) ](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
-> 版本11會將第 10 `SearchIndexClient` 版 `SearchClient` 重新命名為，然後重複使用與索引、分析器和同義字地圖物件搭配運作的用戶端名稱。 更新用戶端參考時，請依照步驟中的步驟順序[進行升級](#UpgradeSteps)，以避免在搜尋和取代期間產生混淆。
+> `SearchIndexClient`同時存在於這兩個版本中，但支援不同的專案。 在第10版中， `SearchIndexClient` 建立索引和其他物件。 在第11版中， `SearchIndexClient` 適用于現有的索引。 為了避免在更新程式碼時產生混淆，請留意用戶端參考更新的順序。 遵循[升級步驟](#UpgradeSteps)中的順序，應該有助於減輕任何字串取代問題。
 
 <a name="naming-differences"></a>
 
@@ -85,7 +85,7 @@ ms.locfileid: "87908896"
 
 | 第10版 | 版本11對等 |
 |------------|-----------------------|
-| [索引子](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
+| [索引編製程式](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) | [SearchIndexer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexer) |
 | [源](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) | [SearchIndexerDataSourceConnection](https://docs.microsoft.com//dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection) |
 | [技能](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skill) | [SearchIndexerSkill](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskill) |
 | [技能集](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.skillset) | [SearchIndexerSkillset](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexerskillse) |
@@ -125,7 +125,7 @@ Azure 認知搜尋用戶端程式庫的每個版本都是以對應的 REST API �
 
 版本11中尚未提供下列版本10功能。 如果您使用這些功能，請按住遷移，直到支援為止。
 
-+ [地理空間類型](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.serialization.geojsonextensions)
++ 地理空間類型
 + [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) (，雖然您可以使用[這個](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)因應措施) 。
 + [知識存放區](knowledge-store-concept-intro.md)
 

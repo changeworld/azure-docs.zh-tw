@@ -4,12 +4,12 @@ description: 提供使用 Azure 備份服務備份 Azure Vm 中的 SQL Server �
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513178"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926445"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure Vm 中 SQL Server 備份的支援矩陣
 
@@ -25,30 +25,35 @@ ms.locfileid: "86513178"
 **支援的 SQL Server 版本** | SQL Server 2019、SQL Server 2017 (如 [搜尋產品生命週期](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017) 頁面所述)、SQL Server 2016 and SPs (如 [搜尋產品生命週期](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack) 頁面所述)、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。
 **支援的 .NET 版本** | 安裝在 VM 上的 .NET Framework 4.5.2 或更新版本
 
-## <a name="feature-consideration-and-limitations"></a>功能考量和限制
+## <a name="feature-considerations-and-limitations"></a>功能考慮和限制
 
-* 您可以透過 Azure 入口網站或 **PowerShell** 來設定 SQL Server 備份。 我們不支援 CLI。
+|設定  |上限 |
+|---------|---------|
+|可以在伺服器 (和保存庫中受到保護的資料庫數目)     |   2000      |
+|支援的資料庫大小 (超過此值，可能會導致效能問題)    |   2 TB      |
+|資料庫中支援的檔案數目    |   1000      |
+
+>[!NOTE]
+> [下載詳細的資源規劃](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)工具，根據 VM 資源、頻寬和備份原則來計算每個伺服器建議的大約受保護資料庫數目。
+
+* 您可以透過 Azure 入口網站或 **PowerShell** 來設定 SQL Server 備份。 不支援 CLI。
 * 有兩種[部署](../azure-resource-manager/management/deployment-models.md)支援此解決方案 - Azure Resource Manager VM 和傳統 VM。
-* 執行 SQL Server 的 VM 需要有網際網路連線能力，才能存取 Azure 公用 IP 位址。
-* 不支援 SQL Server**容錯移轉叢集實例（FCI）** 。
+* 所有備份類型 (完整/差異/記錄) 和復原模式， (簡單/完整/大容量日誌) 。
+* **唯讀**資料庫支援完整和只複製完整備份類型。
+* 如果使用者在備份原則中明確啟用，則支援 SQL 原生壓縮。 Azure 備份會使用壓縮/NO_COMPRESSION 子句來覆寫實例層級預設值，這取決於使用者所設定的這個控制項的值。
+* 支援啟用 TDE 的資料庫備份。 若要將 TDE 加密的資料庫還原到另一個 SQL Server，您必須先將[憑證還原至目的地伺服器](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)。 SQL Server 2016 和更新版本的已啟用 TDE 資料庫的備份壓縮可供使用，但傳輸大小較低，如[這裡](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)所述。
 * 不支援鏡像資料庫和資料庫快照集的備份和還原作業。
-* 使用多個備份解決方案來備份獨立 SQL Server 執行個體或 SQL Always On 可用性群組可能會導致備份失敗；請避免這麼做。
-* 使用相同或不同的解決方案來備份可用性群組的兩個節點，也可能導致備份失敗。
-* 「Azure 備份」針對**唯讀**資料庫僅支援「完整」和「只複製完整」備份
-* 無法保護含有大量檔案的資料庫。 支援的檔案數目上限為 **1000** 個。  
-* 您最多可以在保存庫中備份至 **~ 2000** SQL Server 資料庫。 如果您有更多資料庫，則可以建立多個保存庫。
-* 您最多可以一次設定 **50** 個資料庫的備份；此限制有助於將備份負載最佳化。
-* 我們支援的資料庫大小上限為**2 TB** ;對於大於該效能問題的大小，可能會出現。
-* 若要瞭解每個伺服器可以保護多少個資料庫，請考慮頻寬、VM 大小、備份頻率、資料庫大小等因素。 [下載](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)資源規劃工具，根據 VM 資源和備份原則來計算每個伺服器可以擁有的大約資料庫數目。
+* 不支援 SQL Server**容錯移轉叢集實例 (FCI) ** 。
+* 使用一個以上的備份解決方案來備份獨立 SQL Server 實例或 SQL Always on 可用性群組，可能會導致備份失敗。 請避免這麼做。 使用相同或不同的解決方案來備份可用性群組的兩個節點，也可能導致備份失敗。
 * 設定可用性群組時，會根據幾個因素從不同的節點取得備份。 可用性群組的備份行為摘述於下方。
 
 ### <a name="back-up-behavior-with-always-on-availability-groups"></a>Alaways On 可用性群組的備份行為
 
-我們建議您只在可用性群組（AG）的一個節點上設定備份。 一律在與主要節點相同的區域中設定備份。 換句話說，您一律需要主要節點存在於您要設定備份的區域中。 如果 AG 的所有節點都位於已設定備份的相同區域中，就不會有任何顧慮。
+我們建議您只在可用性群組的一個節點上設定備份， (AG) 。 一律在與主要節點相同的區域中設定備份。 換句話說，您一律需要主要節點存在於您要設定備份的區域中。 如果 AG 的所有節點都位於已設定備份的相同區域中，就不會有任何顧慮。
 
 #### <a name="for-cross-region-ag"></a>若為跨區域 AG
 
-* 不論備份喜好設定為何，備份只會從已設定備份的相同區域中的節點執行。 這是因為不支援跨區域備份。 如果您只有兩個節點，而次要節點是在另一個區域中，則備份將會繼續從主要節點執行（除非您的備份喜好設定是「僅次要」）。
+* 不論備份喜好設定為何，備份只會從已設定備份的相同區域中的節點執行。 這是因為不支援跨區域備份。 如果您只有兩個節點，而次要節點位於另一個區域，除非您的備份喜好設定為「僅次要」 ) ，否則備份將會繼續從主要節點 (執行。
 * 如果節點故障切換到不同于設定備份的區域，備份將會在故障後的區域中的節點上失敗。
 
 視備份喜好設定和備份類型 (完整/差異/記錄/只複製完整) 而定，會從特定節點 (主要/次要) 進行備份。

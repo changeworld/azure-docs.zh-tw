@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3197ac3033c6550b72bdfdf39fd23c55dda20d90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da260221f42bb7e191040857abe4222f449257f5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82134230"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926836"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的新 New relic by 組織
 
-本教學課程說明您必須在新的 New relic 中，由組織和 Azure Active Directory （Azure AD）執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，將使用者和群組自動布建和取消布建至[組織的新 new relic](https://newrelic.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教學課程說明您需要在組織的新 New relic 中執行的步驟，以及 Azure Active Directory (Azure AD) 來設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，將使用者和群組自動布建和取消布建至[組織的新 new relic](https://newrelic.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支援的功能
@@ -33,7 +33,7 @@ ms.locfileid: "82134230"
 > * 當新 New relic 中的使用者不再需要存取權時，將其移除
 > * 保持組織 Azure AD 與新 New relic 之間的使用者屬性同步
 > * 依組織在新 New relic 中布建群組和群組成員資格
-> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial)（依組織）的新 new relic （建議使用）
+> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial)（依組織） (建議) 的新 new relic
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -59,8 +59,8 @@ ms.locfileid: "82134230"
 
 您的帳戶代表會提供下列資訊，您必須為身分識別提供者設定新的 New relic SCIM/SSO 應用程式：
 
-- SCIM 端點（租使用者 URL）
-- SCIM 持有人權杖（秘密權杖）
+- SCIM 端點 (租使用者 URL) 
+- SCIM 持有人權杖 (秘密權杖) 
 
 SCIM 持有人權杖可讓您在新的 New relic 布建您的使用者，因此請保持安全的值。 您的帳戶代表會以安全的方式將 SCIM 持有人權杖傳送給您。
 
@@ -153,7 +153,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 設定佈建後，請使用下列資源來監視您的部署：
 
 * 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-* 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+* 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
 * 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 

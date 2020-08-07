@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 可用性區域中建立區域備援虛擬網路閘道
-description: 在可用性區域中部署 VPN 閘道和 ExpressRoute 閘道
+description: 瞭解如何在 Azure 可用性區域中部署 VPN 和 ExpressRoute 閘道，為 VNet 閘道新增復原、擴充性和更高的可用性。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6cd0b2f31af187d881fe650c0829bb28e353dcbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccb6050ae4d56d2f8e57b4a590d01fb6acd9bd8a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987627"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925151"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>在 Azure 可用性區域中建立區域備援虛擬網路閘道
 

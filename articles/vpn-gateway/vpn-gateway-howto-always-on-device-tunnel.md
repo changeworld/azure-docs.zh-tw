@@ -1,19 +1,19 @@
 ---
 title: 設定 Always On VPN 通道
 titleSuffix: Azure VPN Gateway
-description: 設定 VPN 閘道 Always On VPN 通道的步驟
+description: 瞭解如何設定 Always On，以根據觸發程式來維護 VPN 連線，例如使用者登入、網路狀態變更或裝置螢幕作用中。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6db48928ebac115c42c643d669f6541a3654a53a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24043576fca4910631ccddb3924303dd642c6842
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84983116"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927040"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>設定 Always On VPN 裝置通道
 
@@ -31,7 +31,7 @@ ms.locfileid: "84983116"
 
 若要移除設定檔，請執行下列命令：
 
-![清理](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
+![清除](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>後續步驟
 

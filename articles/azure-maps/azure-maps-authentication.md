@@ -10,19 +10,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4aaa729ffd272c886bf5c545574d99c9de5842f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285827"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922246"
 ---
 # <a name="authentication-with-azure-maps"></a>向 Azure 地圖服務驗證
 
-Azure 地圖服務支援兩種驗證要求的方式：共用金鑰驗證和[Azure Active Directory （Azure AD）](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)驗證。 本文說明這兩種驗證方法，可協助引導您執行 Azure 地圖服務服務。
+Azure 地圖服務支援兩種驗證要求的方式：共用金鑰驗證和[Azure Active Directory (Azure AD) ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) authentication。 本文說明這兩種驗證方法，可協助引導您執行 Azure 地圖服務服務。
 
 > [!NOTE]
-> 為了改善與 Azure 地圖服務的安全通訊，我們現在支援傳輸層安全性（TLS）1.2，而且我們即將淘汰對 TLS 1.0 和1.1 的支援。 如果您目前使用 TLS 1.x，請評估您的 TLS 1.2 就緒程度，並使用[解決 TLS 1.0 問題](https://docs.microsoft.com/security/solving-tls1-problem)中所述的測試來開發遷移計畫。
+> 為了改善與 Azure 地圖服務的安全通訊，我們現在支援傳輸層安全性 (TLS) 1.2，而且我們即將淘汰 TLS 1.0 和1.1 的支援。 如果您目前使用 TLS 1.x，請評估您的 TLS 1.2 就緒程度，並使用[解決 TLS 1.0 問題](https://docs.microsoft.com/security/solving-tls1-problem)中所述的測試來開發遷移計畫。
 
 ## <a name="shared-key-authentication"></a>共用金鑰驗證
 
@@ -51,7 +51,7 @@ Azure 地圖服務會為每個 Azure 地圖服務帳戶產生「唯一識別碼 
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure 資源和 Azure 地圖服務的受控識別
 
-[適用于 azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別可為 azure 服務提供自動受控的以應用程式為基礎的安全性主體，以 Azure AD 進行驗證。 透過角色型存取控制（RBAC），受控識別安全性主體可以獲得授權來存取 Azure 地圖服務服務。 受控識別的一些範例包括： Azure App Service、Azure Functions 和 Azure 虛擬機器。 如需受控識別的清單，請參閱[適用于 Azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)識別。
+[適用于 azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別可為 azure 服務提供自動受控的以應用程式為基礎的安全性主體，以 Azure AD 進行驗證。 透過以角色為基礎的存取控制 (RBAC) ，受控識別安全性主體可以獲得授權來存取 Azure 地圖服務服務。 受控識別的一些範例包括： Azure App Service、Azure Functions 和 Azure 虛擬機器。 如需受控識別的清單，請參閱[適用于 Azure 資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)識別。
 
 ### <a name="configuring-application-azure-ad-authentication"></a>設定應用程式 Azure AD 驗證
 
@@ -80,7 +80,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="authorization-with-role-based-access-control"></a>使用角色型存取控制進行授權
 
-Azure 地圖服務支援存取 Azure[角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview)的所有主體類型，包括：個別 Azure AD 使用者、群組、應用程式、azure 資源和 azure 受控識別。 主體類型會被授與一組許可權，也稱為角色定義。 角色定義提供 REST API 動作的許可權。 將存取權套用至一或多個 Azure 地圖服務帳戶稱為「範圍」。 套用主體、角色定義和範圍時，會建立角色指派。 
+Azure 地圖服務支援存取[azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview)的所有主體類型，包括：個別 Azure AD 使用者、群組、應用程式、azure 資源和 azure 受控識別。 主體類型會被授與一組許可權，也稱為角色定義。 角色定義提供 REST API 動作的許可權。 將存取權套用至一或多個 Azure 地圖服務帳戶稱為「範圍」。 套用主體、角色定義和範圍時，會建立角色指派。 
 
 下一節將討論 Azure 地圖服務與 Azure AD 角色型存取控制整合的概念和元件。 在設定 Azure 地圖服務帳戶的過程中，Azure AD 目錄會與 Azure 地圖服務帳戶所在的 Azure 訂用帳戶相關聯。 
 
@@ -90,7 +90,7 @@ Azure 地圖服務支援存取 Azure[角色型存取控制](https://docs.microso
 
 有下列角色定義類型可支援應用程式案例。
 
-| Azure 角色定義       | 說明                                                                                              |
+| Azure 角色定義       | 描述                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Azure 地圖服務資料讀者      | 提供不可變 Azure 地圖服務 REST Api 的存取。                                                       |
 | Azure 地圖服務資料參與者 | 提供可變 Azure 地圖服務 REST Api 的存取權。 可變動性是由 [動作] 所定義： [寫入] 和 [刪除]。 |
@@ -114,7 +114,7 @@ Azure 地圖服務支援存取 Azure[角色型存取控制](https://docs.microso
 
 以下是一些範例案例，其中的自訂角色可以改善應用程式安全性。
 
-| 狀況                                                                                                                                                                                                                 | 自訂角色資料動作                                                                                                                  |
+| 狀況                                                                                                                                                                                                                 | 自訂角色資料動作 (s)                                                                                                                   |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | 具有基本地圖磚和沒有其他 REST Api 的公開或互動式登入網頁。                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | 只需要反向地理編碼和其他 REST Api 的應用程式。                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |

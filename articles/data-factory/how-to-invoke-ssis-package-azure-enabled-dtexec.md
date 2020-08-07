@@ -1,6 +1,6 @@
 ---
-title: 使用啟用 Azure 的 dtexec 公用程式來執行 SQL Server Integration Services （SSIS）套件
-description: 瞭解如何使用已啟用 Azure 的 dtexec 公用程式來執行 SQL Server Integration Services （SSIS）套件。
+title: 使用具備 Azure 功能的 dtexec 公用程式來執行 SQL Server Integration Services (SSIS) 套件
+description: 瞭解如何使用支援 Azure 的 dtexec 公用程式來執行 SQL Server Integration Services (SSIS) 套件。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,26 +11,26 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94b581f677e370911a60db08276ff7dd0eb45486
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414333"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927074"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>使用啟用 Azure 的 dtexec 公用程式來執行 SQL Server Integration Services 套件
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本文說明啟用 Azure 的 dtexec （AzureDTExec）命令提示字元公用程式。 它可用來在 Azure Data Factory 中的 Azure SSIS Integration Runtime （IR）上執行 SQL Server Integration Services （SSIS）套件。
+本文說明 (AzureDTExec) 命令提示字元公用程式中啟用 Azure 的 dtexec。 它可用來在 (的 Azure SSIS Integration Runtime) IR Azure Data Factory 上執行 SQL Server Integration Services (SSIS) 套件。
 
 傳統的 dtexec 公用程式隨附 SQL Server。 如需詳細資訊，請參閱[dtexec 公用程式](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)。 它通常是由協力廠商協調器或排程器叫用，例如 ActiveBatch 和 Control-M，以在內部部署環境中執行 SSIS 套件。 
 
-新式 AzureDTExec 公用程式隨附 SQL Server Management Studio （SSMS）工具。 它也可以由協力廠商協調器或排程器叫用，以便在 Azure 中執行 SSIS 套件。 它可協助將您的 SSIS 套件隨即轉移或遷移至雲端。 在遷移之後，如果您想要在日常作業中繼續使用協力廠商協調器或排程器，他們現在可以叫用 AzureDTExec，而不是 dtexec。
+新式 AzureDTExec 公用程式隨附 SQL Server Management Studio (SSMS) 工具。 它也可以由協力廠商協調器或排程器叫用，以便在 Azure 中執行 SSIS 套件。 它可協助將您的 SSIS 套件隨即轉移或遷移至雲端。 在遷移之後，如果您想要在日常作業中繼續使用協力廠商協調器或排程器，他們現在可以叫用 AzureDTExec，而不是 dtexec。
 
 AzureDTExec 會以 Data Factory 管線中的執行 SSIS 套件活動來執行您的封裝。 如需詳細資訊，請參閱將[SSIS 套件當做 Azure Data Factory 活動執行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)。 
 
-AzureDTExec 可以透過 SSMS 設定，以使用在您的 data factory 中產生管線的 Azure Active Directory （Azure AD）應用程式。 您也可以將它設定為存取檔案系統、檔案共用，或 Azure 檔案儲存體儲存封裝的位置。 根據您為其叫用選項提供的值，AzureDTExec 會產生並執行唯一 Data Factory 管線，並在其中執行 SSIS 套件活動。 以相同的選項值叫用 AzureDTExec 時，會重新叫用現有的管線。
+AzureDTExec 可以透過 SSMS 設定，以使用 Azure Active Directory (Azure AD) 應用程式，以在您的 data factory 中產生管線。 您也可以將它設定為存取檔案系統、檔案共用，或 Azure 檔案儲存體儲存封裝的位置。 根據您為其叫用選項提供的值，AzureDTExec 會產生並執行唯一 Data Factory 管線，並在其中執行 SSIS 套件活動。 以相同的選項值叫用 AzureDTExec 時，會重新叫用現有的管線。
 
 ## <a name="prerequisites"></a>必要條件
 若要使用 AzureDTExec，請下載並安裝最新版本的 SSMS，也就是18.3 版或更新版本。 請從[此網站](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)下載。
@@ -40,7 +40,7 @@ AzureDTExec 可以透過 SSMS 設定，以使用在您的 data factory 中產生
 
 ![設定啟用 Azure 的 dtexec 功能表](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-menu.png)
 
-此動作會開啟一個**AzureDTExecConfig**視窗，必須以系統管理許可權開啟，才能寫入*AzureDTExec 配置*檔案。 如果您尚未以系統管理員身分執行 SSMS，則會開啟 [使用者帳戶控制（UAC）] 視窗。 輸入您的系統管理員密碼以提升您的許可權。
+此動作會開啟一個**AzureDTExecConfig**視窗，必須以系統管理許可權開啟，才能寫入*AzureDTExec 配置*檔案。 如果您尚未以系統管理員身分執行 SSMS，則會開啟 [ (UAC) ] 視窗的 [使用者帳戶控制]。 輸入您的系統管理員密碼以提升您的許可權。
 
 ![設定啟用 Azure 的 dtexec 設定](media/how-to-invoke-ssis-package-azure-enabled-dtexec/ssms-azure-enabled-dtexec-settings.png)
 
@@ -50,7 +50,7 @@ AzureDTExec 可以透過 SSMS 設定，以使用在您的 data factory 中產生
 - **AuthenticationKey**：輸入 Azure AD 應用程式的驗證金鑰。
 - **TenantId**：輸入 Azure AD 租使用者的唯一識別碼，用來建立您的 Azure AD 應用程式。
 - **DataFactory**：輸入您的資料處理站名稱，其中會根據您叫用 AzureDTExec 時所提供的選項值，產生其中具有 Execute SSIS 套件活動的唯一管線。
-- **IRName**：在您的 data factory 中輸入 AZURE SSIS IR 的名稱，當您叫用 AzureDTExec 時，其通用命名慣例（UNC）路徑中所指定的套件會在其上執行。
+- **IRName**：輸入您的 data factory 中的 AZURE SSIS IR 名稱，其通用命名慣例中所指定的套件 (UNC) 路徑會在您叫用 AzureDTExec 時執行。
 - **PipelineNameHashStrLen**：輸入當您叫用 AzureDTExec 時，要從您提供的選項值產生的雜湊字串長度。 這些字串是用來針對在 Azure SSIS IR 上執行封裝的 Data Factory 管線，形成唯一的名稱。 通常長度為32個字元就已足夠。
 - **ResourceGroup**：輸入您的 data factory 建立所在的 Azure 資源組名。
 - **SubscriptionId**：輸入 Azure 訂用帳戶的唯一識別碼，以在其下建立您的 data factory。
@@ -87,7 +87,7 @@ AzureDTExec 可以透過 SSMS 設定，以使用在您的 data factory 中產生
 - **/F [ile]**：載入儲存在檔案系統、檔案共用或 Azure 檔案儲存體中的封裝。 作為此選項的值，您可以在 [檔案系統]、[檔案共用] 或 [Azure 檔案儲存體] 中，指定封裝檔案的 UNC 路徑，其副檔名為 .dtsx。 如果指定的 UNC 路徑包含任何空格，請在整個路徑前後加上引號。
 - **/Conf [igFile]**：指定要從中解壓縮值的設定檔。 使用此選項，您可以針對封裝設定與設計階段所指定不同的執行時間設定。 您可以將不同的設定儲存在 XML 設定檔中，然後在封裝執行之前載入它們。 如需詳細資訊，請參閱[SSIS 封裝](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017)設定。 若要指定此選項的值，請在檔案系統、檔案共用或 Azure 檔案儲存體的設定檔案中使用 UNC 路徑，其副檔名為 Ssistutorial.dtsconfig。 如果指定的 UNC 路徑包含任何空格，請在整個路徑前後加上引號。
 - **/Conn [ection]**：指定封裝中現有連接管理員的連接字串。 使用此選項，您可以針對封裝中現有的連線管理員，設定與設計階段所指定不同的執行時間連接字串。 指定此選項的值，如下所示： `connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]` 。
-- **/Set**：覆寫封裝中參數、變數、屬性、容器、記錄提供者、Foreach 列舉值或連接的設定。 可以多次指定這個選項。 指定此選項的值，如下所示： `property_path;value` 。 例如，會 `\package.variables[counter].Value;1` 將變數的值覆寫 `counter` 為1。 您可以使用 [**套件**設定] wizard 來尋找、複製和貼上您的 `property_path` 封裝中要覆寫其值之專案的值。 如需詳細資訊，請參閱[Package Configuration wizard](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014)。
+- **/Set**：覆寫封裝中參數、變數、屬性、容器、記錄提供者、Foreach 列舉值或連接的設定。 可以多次指定這個選項。 指定此選項的值，如下所示： `property_path;value` 。 例如，會 `\package.variables[counter].Value;1` 將變數的值覆寫 `counter` 為1。 您可以使用 [**套件**設定] wizard 來尋找、複製和貼上您的 `property_path` 封裝中要覆寫其值之專案的值。 如需詳細資訊，請參閱[Package Configuration wizard](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis)。
 - **/De [crypt]**：設定以**EncryptAllWithPassword** / **EncryptSensitiveWithPassword**保護等級設定之套件的解密密碼。
 
 > [!NOTE]

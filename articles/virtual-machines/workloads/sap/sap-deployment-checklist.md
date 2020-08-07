@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9f517eb5bd113d8d54714b75bea4c8436882d0f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836338"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924422"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
 
@@ -74,7 +74,7 @@ ms.locfileid: "87836338"
 4.  基礎服務的設計。 這項設計應該包含下列專案：
     - Active Directory 和 DNS 設計。
     - Azure 內的網路拓撲和不同 SAP 系統的指派。
-    - [角色型存取](../../../role-based-access-control/overview.md)結構，適用于在 Azure 中管理基礎結構和 SAP 應用程式的小組。
+    - Azure[角色型存取控制 (AZURE RBAC) ](../../../role-based-access-control/overview.md)結構，適用于在 azure 中管理基礎結構和 SAP 應用程式的小組。
     - 資源群組拓撲。
     - [標記策略](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing)。
     - Vm 和其他基礎結構元件和（或）邏輯名稱的命名慣例。

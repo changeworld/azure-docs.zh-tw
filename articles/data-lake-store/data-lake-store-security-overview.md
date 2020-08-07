@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: a6a6b0b15b8d2dc08f1581cb2ea0ea4c7e8036ca
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 4992be004a4b60b7b5fb591d834e8938cf03f34f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529971"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926275"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 安全性
 
@@ -39,7 +39,7 @@ ms.locfileid: "87529971"
 
 在使用者通過 Azure Active Directory 驗證因而可以存取 Data Lake Storage Gen1 之後，授權便會控制 Data Lake Storage Gen1 的存取權限。 Data Lake Storage Gen1 會以下列方式分隔授權的帳戶以及資料相關的活動：
 
-* [角色型存取控制](../role-based-access-control/overview.md) (RBAC)
+* Azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)進行帳戶管理
 * 適用於存取存放區資料的 POSIX ACL
 
 ### <a name="rbac-for-account-management"></a>用於帳戶管理的 RBAC
@@ -74,7 +74,7 @@ Data Lake Storage Gen1 是 Hadoop 分散式檔案系統 (HDFS) 之類的階層�
 
 ![防火牆設定和 IP 存取](./media/data-lake-store-security-overview/firewall-ip-access.png "防火牆設定和 IP 位址")
 
-Azure 虛擬網路（VNet）支援 Data Lake Gen 1 的服務標記。 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。 如需詳細資訊，請參閱[Azure 服務標記總覽](../virtual-network/service-tags-overview.md)。
+Azure 虛擬網路 (VNet) 支援 Data Lake Gen 1 的服務標記。 服務標籤代表來自指定 Azure 服務的一組 IP 位址前置詞。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。 如需詳細資訊，請參閱[Azure 服務標記總覽](../virtual-network/service-tags-overview.md)。
 
 ## <a name="data-protection"></a>資料保護
 
@@ -99,7 +99,7 @@ Data Lake Storage Gen1 也會為帳戶中儲存的資料提供加密功能。 �
 
 如需帳戶管理稽核線索，請檢視並選擇您想要記錄的資料行。 您也可以將活動記錄匯出至 Azure 儲存體。
 
-![活動記錄](./media/data-lake-store-security-overview/activity-logs.png "活動記錄檔")
+![活動記錄檔](./media/data-lake-store-security-overview/activity-logs.png "活動記錄檔")
 
 如需使用活動記錄的詳細資訊，請參閱[檢視活動記錄以稽核對資源的動作](../azure-resource-manager/management/view-activity-logs.md)。
 

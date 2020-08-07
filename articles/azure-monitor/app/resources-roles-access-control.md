@@ -3,16 +3,16 @@ title: Azure Application Insights 中的資源、角色及存取控制 | Microso
 description: 您的組織詳細資料的擁有者、參與者及讀者。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 38c7d7bcbcf193149fd8ab5e632674b6f8530a44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325690"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926496"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的資源、角色及存取控制
 
-您可以使用 [Microsoft Azure 中的角色型存取控制](../../role-based-access-control/role-assignments-portal.md) ，控制誰對您在 Azure [Application Insights][start] 中的資料具有讀取和更新存取權。
+您可以使用[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)，控制誰具有 azure [Application Insights][start]中資料的讀取和更新存取權。
 
 > [!IMPORTANT]
 > 指派存取權給您的應用程式資源所屬之 **資源群組或訂用帳戶** 中的使用者 - 不在資源本身。 指派 **Application Insights 元件參與者** 角色。 這可確保 Web 測試和警示以及您的應用程式資源的統一存取控制。 [深入了解](#access)。
@@ -101,7 +101,7 @@ ms.locfileid: "87325690"
 
 ## <a name="related-content"></a>相關內容
 
-* [Azure 中的角色型存取控制](../../role-based-access-control/role-assignments-portal.md)
+* [Azure 角色型存取控制 (Azure RBAC) ](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>用於判斷角色成員資格的 PowerShell 查詢
 
@@ -135,4 +135,3 @@ $resourceGroup = "RGNAME"
 [group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
-

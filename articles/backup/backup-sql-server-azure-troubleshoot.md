@@ -3,18 +3,18 @@ title: 針對 SQL Server 資料庫備份進行疑難排解
 description: 適用於在 Azure VM 上執行並使用 Azure 備份進行備份之 SQL Server 資料庫的疑難排解資訊。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 879a7edab77bad9671bea51e0e496f3eca96ee81
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4049cca317d254bd5ee120e47cedc4cd42300e8
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538712"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926479"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>使用 Azure 備份對 SQL Server 資料庫備份進行疑難排解
 
 本文提供在 Azure 虛擬機器上執行之 SQL Server 資料庫的疑難排解資訊。
 
-如需備份程式和限制的詳細資訊，請參閱[關於 Azure vm 中的 SQL Server 備份](sql-support-matrix.md#feature-consideration-and-limitations)。
+如需備份程式和限制的詳細資訊，請參閱[關於 Azure vm 中的 SQL Server 備份](sql-support-matrix.md#feature-considerations-and-limitations)。
 
 ## <a name="sql-server-permissions"></a>SQL Server 權限
 
@@ -26,7 +26,7 @@ ms.locfileid: "86538712"
 
 ![sql](./media/backup-azure-sql-database/sql.png)
 
-在備份設定期間，如果在**vm 的探索 db**中看不到 SQL VM 及其實例，並**設定備份**（請參閱上面的影像），請確定：
+在備份設定期間，如果在**vm 的探索 db**中看不到 SQL VM 及其實例，並**設定備份** (請參閱上述映射) 確定：
 
 ### <a name="step-1-discovery-dbs-in-vms"></a>步驟1： Vm 中的探索 Db
 
@@ -69,7 +69,7 @@ ms.locfileid: "86538712"
 | 錯誤訊息 | 可能的原因 | 建議的動作 |
 |---|---|---|
 | 此 SQL 資料庫不支援所要求的備份類型。 | 當資料庫復原模式不允許所要求的備份類型時便會發生。 此錯誤會於下列情況時發生： <br/><ul><li>使用簡單復原模式的資料庫不允許記錄備份。</li><li>Master 資料庫不允許差異和記錄備份。</li></ul>如需詳細資訊，請參閱[SQL Server 復原模式](/sql/relational-databases/backup-restore/recovery-models-sql-server)檔。 | 如果簡單復原模式中的資料庫記錄備份失敗，請嘗試下列其中一個選項：<ul><li>如果資料庫處於簡單復原模式，請停用記錄備份。</li><li>使用[SQL Server 檔](/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)，將資料庫復原模式變更為完整或大量記錄。 </li><li> 如果您不想變更復原模式，而且所用來備份多個資料庫的標準原則無法變更，則請忽略此錯誤。 完整和差異備份會依排程運作。 記錄備份則會略過，這符合此案例的預期。</li></ul>如果它是 master 資料庫，而且您已設定差異或記錄備份，請使用下列其中一個步驟：<ul><li>使用入口網站將 master 資料庫的備份原則排程變更為 [完整]。</li><li>如果所用來備份多個資料庫的標準原則無法變更，則請忽略此錯誤。 完整備份會依排程運作。 差異或記錄備份則不會進行，這符合此案例的預期。</li></ul> |
-| 作業遭到取消，原因是同一個資料庫上已在執行衝突的作業。 | 請參閱[有關同時執行之備份和還原限制的 blog 專案](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/)。| [使用 SQL Server Management Studio （SSMS）來監視備份作業](manage-monitor-sql-database-backup.md)。 衝突的作業失敗之後，請重新開機作業。|
+| 作業遭到取消，原因是同一個資料庫上已在執行衝突的作業。 | 請參閱[有關同時執行之備份和還原限制的 blog 專案](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/)。| [使用 SQL Server Management Studio (SSMS) 來監視備份作業](manage-monitor-sql-database-backup.md)。 衝突的作業失敗之後，請重新開機作業。|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
@@ -171,7 +171,7 @@ ms.locfileid: "86538712"
 
 在觸發重新註冊作業之前，請先檢查下列一個或多個徵兆：
 
-- 所有作業（例如備份、還原和設定備份）在 VM 上失敗，發生下列其中一個錯誤代碼： **WorkloadExtensionNotReachable**、 **UserErrorWorkloadExtensionNotInstalled**、 **WorkloadExtensionNotPresent**、 **WorkloadExtensionDidntDequeueMsg**。
+- 在 VM 上的所有作業 (例如備份、還原和設定備份) 都失敗，並出現下列其中一個錯誤代碼： **WorkloadExtensionNotReachable**、 **UserErrorWorkloadExtensionNotInstalled**、 **WorkloadExtensionNotPresent**、 **WorkloadExtensionDidntDequeueMsg**。
 - 如果備份項目的 [備份狀態] 區域顯示 [無法連線]，請排除可能會導致相同狀態的所有其他原因：
 
   - 缺少在 VM 上執行備份相關作業的許可權。
@@ -267,4 +267,4 @@ SELECT mf.name AS LogicalName FROM sys.master_files mf
 
 ## <a name="next-steps"></a>後續步驟
 
-如需 SQL Server Vm Azure 備份的詳細資訊（公開預覽），請參閱[適用于 SQL vm 的 Azure 備份](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup)。
+如需 SQL Server Vm (公開預覽) Azure 備份的詳細資訊，請參閱[SQL vm 的 Azure 備份](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup)。

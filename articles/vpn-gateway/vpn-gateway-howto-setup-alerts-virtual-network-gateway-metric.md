@@ -1,25 +1,25 @@
 ---
 title: 在 Azure VPN 閘道計量上設定警示
-description: 設定 VPN 閘道計量警示的步驟
+description: 瞭解如何在 Azure VPN 閘道計量上設定警示。 使用 Azure 監視器來設定 VPN 類型之虛擬網路閘道的警示。
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: c2c44720853500ad6a9a4af1c8d93d6c8bc3eea2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3819f653cba80854a65a08f92a10f82057abb0fd
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075533"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923062"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>設定 VPN 閘道計量的警示
 
 本文可協助您設定 Azure VPN 閘道計量的警示。 Azure 監視器提供設定 Azure 資源警示的功能。 您可以為「VPN」類型的虛擬網路閘道設定警示。
 
 
-|**計量**   | **單位** | **細微度** | **描述** | 
+|**計量**   | **單位** | **細微度** | **說明** | 
 |---       | ---        | ---       | ---            | ---       |
 |**AverageBandwidth**| 位元組/秒  | 5 分鐘| 閘道上所有站對站連線的平均結合頻寬使用量。     |
 |**P2SBandwidth**| 位元組/秒  | 1 分鐘  | 閘道上所有點對站連線的平均結合頻寬使用量。    |

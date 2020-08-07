@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d523aeff87b95aaea91df9ad5d3f44c73c871b71
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8132eb72b3e448d7ae830b29ccb7dc51528c1250
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528594"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921396"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶
 
@@ -60,11 +60,11 @@ Microsoft Graph 可讓您在 Microsoft Graph API 中提供 create、read、updat
 
 在 Microsoft Graph API 中，本機和同盟身分識別都會儲存在 user `identities` 屬性中，這是[objectIdentity][graph-objectIdentity]類型。 `identities`集合代表一組用來登入使用者帳戶的身分識別。 此集合可讓使用者使用其任何相關聯的身分識別登入使用者帳戶。
 
-| 屬性   | 類型 |說明|
+| 屬性   | 類型 |描述|
 |:---------------|:--------|:----------|
-|signInType|字串| 在您的目錄中指定使用者登入類型。 針對本機帳戶： `emailAddress` 、 `emailAddress1` 、 `emailAddress2` 、 `emailAddress3` 、 `userName` 或您喜歡的任何其他類型。 社交帳戶必須設定為 `federated` 。|
-|簽發者|字串|指定身分識別的簽發者。 若為本機帳戶（其中**signInType**不是 `federated` ），這個屬性就是本機 B2C 租使用者的預設功能變數名稱，例如 `contoso.onmicrosoft.com` 。 針對社交身分識別（其中**signInType**為 `federated` ），值為簽發者的名稱，例如`facebook.com`|
-|issuerAssignedId|字串|指定簽發者指派給使用者的唯一識別碼。 **簽發者**和**issuerAssignedId**的組合在您的租使用者中必須是唯一的。 若為本機帳戶，當**signInType**設定為 `emailAddress` 或時 `userName` ，它代表使用者的登入名稱。<br>當**signInType**設定為時： <ul><li>`emailAddress`（或開頭為 `emailAddress` like `emailAddress1` ） **issuerAssignedId**必須是有效的電子郵件地址</li><li>`userName`（或任何其他值）， **issuerAssignedId**必須是[電子郵件地址的有效本機部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`， **issuerAssignedId**代表同盟帳戶的唯一識別碼</li></ul>|
+|signInType|string| 在您的目錄中指定使用者登入類型。 針對本機帳戶： `emailAddress` 、 `emailAddress1` 、 `emailAddress2` 、 `emailAddress3` 、 `userName` 或您喜歡的任何其他類型。 社交帳戶必須設定為 `federated` 。|
+|簽發者|string|指定身分識別的簽發者。 對於未) **signInType**的本機帳戶 (`federated` ，此屬性是本機 B2C 租使用者的預設功能變數名稱，例如 `contoso.onmicrosoft.com` 。 針對 [社交識別 (]，其中**signInType**為 `federated`) 值是簽發者的名稱，例如`facebook.com`|
+|issuerAssignedId|string|指定簽發者指派給使用者的唯一識別碼。 **簽發者**和**issuerAssignedId**的組合在您的租使用者中必須是唯一的。 若為本機帳戶，當**signInType**設定為 `emailAddress` 或時 `userName` ，它代表使用者的登入名稱。<br>當**signInType**設定為時： <ul><li>`emailAddress` (或開頭， `emailAddress` 如 `emailAddress1`) **issuerAssignedId**必須是有效的電子郵件地址</li><li>`userName` (或任何其他) 的值， **issuerAssignedId**必須是[電子郵件地址的有效本機部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`， **issuerAssignedId**代表同盟帳戶的唯一識別碼</li></ul>|
 
 **下列 identity**屬性，具有具有登入名稱的本機帳戶身分識別、電子郵件地址，以及使用社交身分識別。 
 
@@ -94,7 +94,7 @@ Microsoft Graph 可讓您在 Microsoft Graph API 中提供 create、read、updat
 
 若為本機身分識別，則需要**passwordProfile**屬性，並包含使用者的密碼。 `forceChangePasswordNextSignIn`屬性必須設定為 `false` 。
 
-若為同盟（社交）身分識別，則不需要**passwordProfile**屬性。
+若為同盟 (社交) 身分識別，則不需要**passwordProfile**屬性。
 
 ```json
 "passwordProfile" : {
@@ -105,7 +105,7 @@ Microsoft Graph 可讓您在 Microsoft Graph API 中提供 create、read、updat
 
 ### <a name="password-policy-property"></a>密碼原則屬性
 
-Azure AD B2C 密碼原則（針對本機帳戶）是以 Azure Active Directory[強式密碼強度](../active-directory/authentication/concept-sspr-policy.md)原則為基礎。 Azure AD B2C 註冊或登入和密碼重設原則需要此強式密碼強度，而且不會讓密碼過期。
+本機帳戶) 的 Azure AD B2C 密碼原則 (是以 Azure Active Directory[強式密碼強度](../active-directory/authentication/concept-sspr-policy.md)原則為基礎。 Azure AD B2C 註冊或登入和密碼重設原則需要此強式密碼強度，而且不會讓密碼過期。
 
 在使用者遷移案例中，如果您想要遷移的帳戶密碼強度比 Azure AD B2C 強制執行的[強式密碼強度](../active-directory/authentication/concept-sspr-policy.md)還弱，您可以停用強式密碼需求。 若要變更預設密碼原則，請將 `passwordPolicies` 屬性設定為 `DisableStrongPassword`。 例如，您可以修改「建立使用者要求」，如下所示：
 
@@ -115,18 +115,18 @@ Azure AD B2C 密碼原則（針對本機帳戶）是以 Azure Active Directory[�
 
 ### <a name="extension-properties"></a>延伸模組屬性
 
-每個面向客戶的應用程式對於要收集的資訊都有獨特的需求。 您的 Azure AD B2C 租使用者隨附一組儲存在屬性中的內建資訊，例如指定的名稱、姓氏、城市和郵遞區號。 使用 Azure AD B2C，您可以擴充儲存在每個客戶帳戶中的屬性集合。 如需定義自訂屬性的詳細資訊，請參閱[自訂屬性（使用者流程）](user-flow-custom-attributes.md)和[自訂屬性（自訂原則）](custom-policy-custom-attributes.md)。
+每個面向客戶的應用程式對於要收集的資訊都有獨特的需求。 您的 Azure AD B2C 租使用者隨附一組儲存在屬性中的內建資訊，例如指定的名稱、姓氏、城市和郵遞區號。 使用 Azure AD B2C，您可以擴充儲存在每個客戶帳戶中的屬性集合。 如需定義自訂屬性的詳細資訊，請參閱[自訂屬性 (使用者流程) ](user-flow-custom-attributes.md)和[自訂屬性 (自訂原則) ](custom-policy-custom-attributes.md)。
 
-Microsoft Graph API 支援以擴充屬性建立和更新使用者。 圖形 API 中的擴充屬性會使用慣例來命名 `extension_ApplicationClientID_attributename` ，其中 `ApplicationClientID` 是應用程式的**應用程式（用戶端）識別碼** `b2c-extensions-app` （可在**應用程式註冊**  >  Azure 入口網站中的**所有應用**程式）中找到。 請注意，以延伸模組屬性名稱表示的**應用程式（用戶端）識別碼**不包含連字號。 例如：
+Microsoft Graph API 支援以擴充屬性建立和更新使用者。 圖形 API 中的擴充屬性會使用慣例來命名 `extension_ApplicationClientID_attributename` ，其中是應用程式 `ApplicationClientID` ** (用戶端) 識別碼**， (在應用程式註冊 Azure 入口網站中的 `b2c-extensions-app` **App registrations**  >  **所有應用**程式中找到。 請注意，**應用程式 (用戶端) 識別碼**，因為它是在延伸模組屬性名稱中表示，不包含連字號。 例如：
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-## <a name="code-sample"></a>程式碼範例
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>程式碼範例：如何以程式設計方式管理使用者帳戶
 
 此程式碼範例是一個 .NET Core 主控台應用程式，它會使用[MICROSOFT GRAPH SDK](https://docs.microsoft.com/graph/sdks/sdks-overview)來與 Microsoft Graph API 互動。 其程式碼示範如何呼叫 API，以程式設計方式管理 Azure AD B2C 租使用者中的使用者。
-您可以[下載範例](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip)封存（* .zip）、流覽 GitHub 上[的存放庫](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management)，或複製存放庫：
+您可以[下載範例](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip)封存 ( * .zip) 、流覽 GitHub 上[的存放庫](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management)，或複製存放庫：
 
 ```cmd
 git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
@@ -136,7 +136,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 1. 在[Visual Studio](https://visualstudio.microsoft.com)或[Visual Studio Code](https://code.visualstudio.com)中開啟專案。
 1. 開啟 `src/appsettings.json`。
-1. 在 `appSettings` 區段中，將取代 `your-b2c-tenant` 為您的租使用者名稱，並以 `Application (client) ID` 您的 `Client secret` 管理應用程式註冊值取代（請參閱本文的[註冊管理應用程式](#register-a-management-application)一節）。
+1. 在 `appSettings` 區段中，將取代 `your-b2c-tenant` 為您的租使用者名稱， `Application (client) ID` 並 `Client secret` 使用管理應用程式註冊的值 (，請參閱本文) 的[註冊管理應用程式](#register-a-management-application)一節。
 1. 在存放庫的本機複本中開啟主控台視窗，切換至 `src` 目錄，然後建立專案：
     ```console
     cd src
@@ -154,7 +154,7 @@ git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-ma
 
 範例程式碼會使用[MICROSOFT GRAPH SDK](https://docs.microsoft.com/graph/sdks/sdks-overview)，其設計目的是為了簡化可存取 Microsoft Graph 的高品質、有效率且可復原的應用程式。
 
-Microsoft Graph API 的任何要求都需要存取權杖以進行驗證。 此解決方案會使用[microsoft. Graph. Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet 封裝，它會提供 microsoft 驗證程式庫（MSAL）的驗證案例型包裝函式，以與 Microsoft Graph SDK 搭配使用。
+Microsoft Graph API 的任何要求都需要存取權杖以進行驗證。 此解決方案會利用 MSAL) 的 Microsoft 驗證連結 (庫的驗證案例型包裝函式，來使用 Microsoft Graph SDK，以提供以驗證為基礎的[授權](https://www.nuget.org/packages/Microsoft.Graph.Auth/)NuGet 套件。
 
 `RunAsync` _Program.cs_檔案中的方法：
 

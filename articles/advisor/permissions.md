@@ -3,16 +3,16 @@ title: Azure Advisor 中的許可權
 description: Advisor 許可權，以及它們如何封鎖您設定訂閱或延期或解除建議的能力。
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 6b5dfdeb888b0577a40562536bd7a6dfc271cb19
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057596"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927380"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure Advisor 中的許可權
 
-Azure Advisor 會根據您的 Azure 資源和訂用帳戶的使用方式和設定提供建議。 Advisor 會使用[角色型存取控制](../role-based-access-control/overview.md)（RBAC）提供的[內建角色](../role-based-access-control/built-in-roles.md)來管理對建議和 Advisor 功能的存取。 
+Azure Advisor 會根據您的 Azure 資源和訂用帳戶的使用方式和設定提供建議。 Advisor 會使用[azure 角色型存取控制](../role-based-access-control/overview.md)所提供的[內建角色](../role-based-access-control/built-in-roles.md) (azure RBAC) 來管理對建議和 Advisor 功能的存取。 
 
 ## <a name="roles-and-their-access"></a>角色及其存取權
 
@@ -45,7 +45,7 @@ Azure Advisor 會根據您的 Azure 資源和訂用帳戶的使用方式和設�
 
 如果您在嘗試延後或解除建議時收到錯誤，可能是您沒有足夠的許可權。 請確定您至少具有要延遲或關閉之建議的受影響資源的參與者存取權。 若要解決此問題，請瞭解如何[授與使用者存取權](../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文概述 Advisor 如何使用 RBAC 來控制使用者權限，以及如何解決常見的問題。 若要深入了解 Advisor，請參閱︰
 

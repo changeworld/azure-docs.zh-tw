@@ -11,20 +11,20 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: dd152bd3a1f3e550b5e0b87e6d9c9784e5853aa3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e6e1c6a02979ff6621961e17378c7fe2c9a1592b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830762"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926343"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
 > [!NOTE]
-> 本文說明如何了解和控制 Azure 監視器記錄的成本。 [監視使用量和估計成本](./usage-estimated-costs.md)這篇相關文章會說明如何針對不同的定價模型，檢視多項 Azure 監視功能的使用量和估計成本。 本文所顯示的價格和成本全都只是作為範例。 
+> 本文說明如何了解和控制 Azure 監視器記錄的成本。 [監視使用量和估計成本](usage-estimated-costs.md)這篇相關文章會說明如何針對不同的定價模型，檢視多項 Azure 監視功能的使用量和估計成本。 本文所顯示的價格和成本全都只是作為範例。 
 
 Azure 監視器記錄是為縮放及支援每日大量資料的收集、索引編製和儲存而設計，這些資料來源可能位於您企業內部或部署於 Azure 中。  雖然這可能是您組織的主要推動力，但成本效率終究是最基本的推動力。 為此，務必了解 Log Analytics 工作區的成本不只是以收集的資料量為基礎，也取決於選取的方案，以及您為連線來源所產生的資料選擇了多長的儲存時間。  
 
@@ -40,21 +40,21 @@ Log Analytics 的預設定價是**隨用隨付**模型 (會以所擷取的資料
   
 除了隨用隨付模型外，Log Analytics 還有**容量保留**層，相較於隨用隨付價格，可讓您省下 25% 的費用。 容量保留定價可讓您從「100 GB/天」起購買保留。 高於保留層級的使用量則會以隨用隨付費率計費。 容量保留層有 31 天的承諾用量期間。 在承諾用量期間，您可以變更為較高層級的容量保留層 (這麼做會重新開始計算 31 天的承諾用量期間)，但在承諾用量期間結束之前，您都無法重新回到隨用隨付定價或較低的容量保留層。 容量保留層會每日計費。 [深入了解](https://azure.microsoft.com/pricing/details/monitor/) Log Analytics 的隨用隨付定價和容量保留定價。 
 
-在所有定價層中，事件的資料大小是從針對此事件儲存在 Log Analytics 中的屬性字串表示來計算，不論是從代理程式傳送資料，或在內嵌進程期間加入。 這包括在收集資料時新增的任何[自訂欄位](./custom-fields.md)，然後儲存在 Log Analytics 中。 所有資料類型通用的數個屬性（包括某些[Log Analytics 標準屬性](./log-standard-properties.md)）都會在事件大小的計算中排除。 這包括 `_ResourceId` 、 `_ItemId` 、 `_IsBillable` `_BilledSize` 和 `Type` 。 儲存在 Log Analytics 中的所有其他屬性都會包含在事件大小的計算中。 部分資料類型是完全免費的資料內嵌費用，例如 AzureActivity、心跳和使用類型。 若要判斷是否已從資料內嵌的計費中排除事件，您可以使用 `_IsBillable` 屬性[，如下](#data-volume-for-specific-events)所示。 使用量以 GB (1.0 E 9 bytes) 的方式回報。 
+在所有定價層中，事件的資料大小是從針對此事件儲存在 Log Analytics 中的屬性字串表示來計算，不論是從代理程式傳送資料，或在內嵌進程期間加入。 這包括在收集資料時新增的任何[自訂欄位](custom-fields.md)，然後儲存在 Log Analytics 中。 所有資料類型通用的數個屬性（包括某些[Log Analytics 標準屬性](log-standard-properties.md)）都會在事件大小的計算中排除。 這包括 `_ResourceId` 、 `_ItemId` 、 `_IsBillable` `_BilledSize` 和 `Type` 。 儲存在 Log Analytics 中的所有其他屬性都會包含在事件大小的計算中。 部分資料類型是完全免費的資料內嵌費用，例如 AzureActivity、心跳和使用類型。 若要判斷是否已從資料內嵌的計費中排除事件，您可以使用 `_IsBillable` 屬性[，如下](#data-volume-for-specific-events)所示。 使用量以 GB (1.0 E 9 bytes) 的方式回報。 
 
 另請注意，某些解決方案 (例如 [Azure 資訊安全中心](https://azure.microsoft.com/pricing/details/security-center/)、[Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) 和[設定管理](https://azure.microsoft.com/pricing/details/automation/)) 有自己的定價模型。 
 
 ### <a name="log-analytics-dedicated-clusters"></a>Log Analytics 專用叢集
 
-Log Analytics 專用叢集會將各工作區集合到單一的受控 Azure 資料總管叢集，以支援[客戶管理的金鑰](./customer-managed-keys.md)等進階案例。  Log Analytics 專用叢集僅支援從「1000 GB/天」起的容量保留定價模型，且價格比隨用隨付定價低 25%。 高於保留層級的使用量則會以隨用隨付費率計費。 在保留層級提高後，叢集的容量保留會有 31 天的承諾用量期間。 在承諾用量期間，您無法降低容量保留層級，但可以隨時提高。 深入了解如何[建立 Log Analytics 叢集](./customer-managed-keys.md#create-cluster-resource)並[將工作區與其關聯](./customer-managed-keys.md#workspace-association-to-cluster-resource)。  
+Log Analytics 專用叢集會將各工作區集合到單一的受控 Azure 資料總管叢集，以支援[客戶管理的金鑰](customer-managed-keys.md)等進階案例。  Log Analytics 專用叢集僅支援從「1000 GB/天」起的容量保留定價模型，且價格比隨用隨付定價低 25%。 高於保留層級的使用量則會以隨用隨付費率計費。 在保留層級提高後，叢集的容量保留會有 31 天的承諾用量期間。 在承諾用量期間，您無法降低容量保留層級，但可以隨時提高。 深入了解如何[建立 Log Analytics 叢集](customer-managed-keys.md#create-cluster-resource)並[將工作區與其關聯](customer-managed-keys.md#workspace-association-to-cluster-resource)。  
 
-叢集容量的保留層級可透過程式設計方式，使用 Azure Resource Manager 並於 `Sku` 下使用 `Capacity` 參數來加以設定。 `Capacity` 會以 GB 為單位來指定，而且可以有「1000 GB/天」以上、增量單位為「100 GB/天」的值。 [這裡](./customer-managed-keys.md#create-cluster-resource)有詳細說明。 如果您的叢集需要「2000 GB/天」以上的保留量，請透過以下信箱與我們連絡：[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)。
+叢集容量的保留層級可透過程式設計方式，使用 Azure Resource Manager 並於 `Sku` 下使用 `Capacity` 參數來加以設定。 `Capacity` 會以 GB 為單位來指定，而且可以有「1000 GB/天」以上、增量單位為「100 GB/天」的值。 這詳述于[Azure 監視器客戶管理的金鑰](customer-managed-keys.md#create-cluster-resource)。 如果您的叢集需要「2000 GB/天」以上的保留量，請透過以下信箱與我們連絡：[LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)。
 
-在叢集上使用的計費模式有兩種。 設定叢集時，參數可以指定這些設定 `billingType` 。 [configuring your cluster](./customer-managed-keys.md#cmk-management) 兩種模式為： 
+在叢集上使用的計費模式有兩種。 設定叢集時，參數可以指定這些設定 `billingType` 。 [configuring your cluster](customer-managed-keys.md#cmk-management) 兩種模式為： 
 
-1. 叢集 **：在**此案例中 (預設) ，內嵌資料的計費會在叢集層級完成。 與叢集相關聯的每個工作區所擷取的資料數量會彙總起來，以計算叢集的每日帳單。 請注意，系統會先在工作區層級套用來自 [Azure 資訊安全中心](../../security-center/index.yml)的每一節點配置，然後才針對叢集中所有工作區的彙總資料進行此彙總。 
+1. 叢集 **：在**此案例中 (預設) ，內嵌資料的計費會在叢集層級完成。 與叢集相關聯的每個工作區所擷取的資料數量會彙總起來，以計算叢集的每日帳單。 請注意，系統會先在工作區層級套用來自 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/)的每一節點配置，然後才針對叢集中所有工作區的彙總資料進行此彙總。 
 
-2. **工作區**：您叢集的容量保留成本會根據每個工作區的[Azure 資訊安全中心](../../security-center/index.yml)，在會計入每個節點的配置 (之後，依照叢集中的工作區進行屬性的分類。 ) 如果每天的工作區中內嵌的總數據量小於容量保留，則每個工作區的內嵌資料會以有效的每 GB 容量保留費率計費，方法是以容量保留的分數來計費，而容量保留的未使用部分則會以叢集資源計費。 如果一天內的工作區內嵌總數據量超過容量保留，則每個工作區的費用會根據該日的內嵌資料部分，以及每個工作區的一小部分內嵌資料超過容量保留。 如果當天工作區中內嵌的總數據量已超過容量保留，叢集資源就不會有任何費用。
+2. **工作區**：您叢集的容量保留成本會根據每個工作區的[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/)，在會計入每個節點的配置 (之後，依照叢集中的工作區進行屬性的分類。 ) 如果每天的工作區中內嵌的總數據量小於容量保留，則每個工作區的內嵌資料會以有效的每 GB 容量保留費率計費，方法是以容量保留的分數來計費，而容量保留的未使用部分則會以叢集資源計費。 如果一天內的工作區內嵌總數據量超過容量保留，則每個工作區的費用會根據該日的內嵌資料部分，以及每個工作區的一小部分內嵌資料超過容量保留。 如果當天工作區中內嵌的總數據量已超過容量保留，叢集資源就不會有任何費用。
 
 在叢集計費選項中，資料保留會依工作區層級計費。 請注意，當叢集建立好時，無論是否已有工作區與叢集關聯，叢集都會開始計費。 另請注意，與叢集相關聯的工作區不再具有定價層。
 
@@ -72,15 +72,15 @@ Log Analytics 專用叢集會將各工作區集合到單一的受控 Azure 資�
 
 ![記錄檢視](media/manage-cost-storage/logs.png)
 
-您可以從 [使用量和估計成本] 頁面檢閱當月的資料量。 這之中包括 Log Analytics 工作區中接收和保留的所有資料。  按一下頁面頂端的 [使用量詳細資料]可檢視使用量儀表板，其中的資訊包含以來源、電腦及供應項目為依據的資料量趨勢。 若要檢視和設定每日上限或修改保留期限，請按一下 [資料量管理]。
+您可以從 [使用量和估計成本] 頁面檢閱當月的資料量。 這包括您的 Log Analytics 工作區中所有已接收和保留的計費資料。  
  
 Log Analytics 費用會新增到您的 Azure 帳單中。 您可以在 Azure 入口網站中的 [帳務] 區段下，或在 [Azure 計費入口網站](https://account.windowsazure.com/Subscriptions)中，查看 Azure 帳單的詳細資料。  
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>在 Azure 帳單上檢視 Log Analytics 使用量 
 
-Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json)中樞內提供了大量實用功能。 例如，「成本分析」功能可讓您檢視 Azure 資源的花費。 首先，新增依「資源類型」的篩選器 (新增到 microsoft.operationalinsights/workspace for Log Analytics 和 microsoft.operationalinsights/workspace for Log Analytics Clusters) 可讓您追蹤 Log Analytics 的支出。 然後在 [群組依據] 中選取 [計量類別] 或 [計量]。  請注意，Azure 資訊安全中心和 Azure Sentinel 等其他服務也會對 Log Analytics 工作區資源收取使用費用。 若要查看服務名稱的對應，您可以選取 [資料表] 檢視而非圖表。 
+Azure 在 [Azure 成本管理 + 計費](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json)中樞內提供了大量實用功能。 例如，「成本分析」功能可讓您檢視 Azure 資源的花費。 首先，新增依「資源類型」的篩選器 (新增到 microsoft.operationalinsights/workspace for Log Analytics 和 microsoft.operationalinsights/workspace for Log Analytics Clusters) 可讓您追蹤 Log Analytics 的支出。 然後在 [群組依據] 中選取 [計量類別] 或 [計量]。  請注意，Azure 資訊安全中心和 Azure Sentinel 等其他服務也會對 Log Analytics 工作區資源收取使用費用。 若要查看服務名稱的對應，您可以選取 [資料表] 檢視而非圖表。 
 
-若要更加了解您的使用量，請[從 Azure 入口網站下載使用量](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)。 在下載的試算表中，您可以看到每天每一 Azure 資源 (例如 Log Analytics 工作區) 的使用量。 在此 Excel 試算表中，您可以先在 [計量類別] 資料行進行篩選以顯示「Log Analytics」、「深入解析與分析」(某些舊版定價層會使用) 和「Azure 監視器」(容量保留定價層會使用)，然後在 [執行個體識別碼] 資料行上新增篩選 (「包含工作區」或「包含叢集」，後者可包含 Log Analytics 叢集使用量)，藉此找到 Log Analytics 工作區的使用量。 使用量會顯示在 [已取用的數量] 資料行，每個項目的單位則會顯示在 [測量單位] 資料行。  有更多詳細資料可協助您[了解 Microsoft Azure 帳單](../../cost-management-billing/understand/review-individual-bill.md)。 
+若要更加了解您的使用量，請[從 Azure 入口網站下載使用量](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)。 在下載的試算表中，您可以看到每天每一 Azure 資源 (例如 Log Analytics 工作區) 的使用量。 在此 Excel 試算表中，您可以先在 [計量類別] 資料行進行篩選以顯示「Log Analytics」、「深入解析與分析」(某些舊版定價層會使用) 和「Azure 監視器」(容量保留定價層會使用)，然後在 [執行個體識別碼] 資料行上新增篩選 (「包含工作區」或「包含叢集」，後者可包含 Log Analytics 叢集使用量)，藉此找到 Log Analytics 工作區的使用量。 使用量會顯示在 [已取用的數量] 資料行，每個項目的單位則會顯示在 [測量單位] 資料行。  有更多詳細資料可協助您[了解 Microsoft Azure 帳單](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)。 
 
 ## <a name="changing-pricing-tier"></a>正在變更定價層
 
@@ -94,11 +94,11 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 3. 在檢閱以過去 31 天的使用量為基礎的估計成本後，如果您決定變更定價層，請按一下 [選取]。  
 
-您也可以使用 `sku` 參數 (若在 Azure Resource Manager 範本中則使用 `pricingTier`)，[透過 Azure Resource Manager 來設定定價層](./template-workspace-configuration.md#configure-a-log-analytics-workspace)。 
+您也可以使用 `sku` 參數 (若在 Azure Resource Manager 範本中則使用 `pricingTier`)，[透過 Azure Resource Manager 來設定定價層](template-workspace-configuration.md#configure-a-log-analytics-workspace)。 
 
 ## <a name="legacy-pricing-tiers"></a>舊版定價層
 
-在 2018 年 4 月 2 日之前擁有 Log Analytics 工作區或 Application Insights 資源的訂用帳戶，或所連結的 Enterprise 合約已在 2019 年 2 月 1 日之前啟動的訂用帳戶，將會繼續擁有使用舊版定價層的存取權：**免費**、**獨立 (每 GB)** 和**每一節點 (OMS)** 。  免費定價層中的工作區會將每日資料擷取量限制在 500 MB 內 ([Azure 資訊安全中心](../../security-center/index.yml)所收集的安全性資料類型除外)，而且資料會限制為保留 7 天。 免費定價層僅供評估之用。 「獨立」或「每一節點」定價層中的工作區則會擁有 30 到 730 天的保留時間，此值可由使用者加以設定。
+在 2018 年 4 月 2 日之前擁有 Log Analytics 工作區或 Application Insights 資源的訂用帳戶，或所連結的 Enterprise 合約已在 2019 年 2 月 1 日之前啟動的訂用帳戶，將會繼續擁有使用舊版定價層的存取權：**免費**、**獨立 (每 GB)** 和**每一節點 (OMS)** 。  免費定價層中的工作區會將每日資料擷取量限制在 500 MB 內 ([Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/)所收集的安全性資料類型除外)，而且資料會限制為保留 7 天。 免費定價層僅供評估之用。 「獨立」或「每一節點」定價層中的工作區則會擁有 30 到 730 天的保留時間，此值可由使用者加以設定。
 
 獨立定價層上的使用量是依內嵌資料量計費。 它會在**Log Analytics**服務中回報，而計量會命名為「分析的資料」。 
 
@@ -113,13 +113,15 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 在 2016 年 4 月前建立的工作區也可以存取原始的**標準**和**進階**定價層，兩者分別會固定保留資料 30 天和 365 天。 新的工作區則無法建立在**標準**或**進階**定價層，而且如果將工作區移出這兩層，就無法再將其移回。 這些舊版層的資料內嵌計量稱為「分析的資料」。
 
-舊版 Log Analytics 層的使用以及 [Azure 資訊安全中心](../../security-center/index.yml)的使用量計費方式之間還有一些行為。 
+舊版 Log Analytics 層的使用以及 [Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/)的使用量計費方式之間還有一些行為。 
 
 1. 如果工作區位於舊版的標準或進階層，Azure 資訊安全中心只會針對 Log Analytics 資料擷取來計費，而不會針對每一節點計費。
 2. 如果工作區位於舊版的每一節點層，Azure 資訊安全中心將會使用目前的 [Azure 資訊安全中心節點型定價模型](https://azure.microsoft.com/pricing/details/security-center/)來計費。 
 3. 在其他定價層 (包括容量保留) 中，如果 Azure 資訊安全中心是在 2017 年 6 月 19 日前啟用的，則 Azure 資訊安全中心只會針對 Log Analytics 的資料擷取量來計費。 否則，Azure 資訊安全中心會使用目前的 Azure 資訊安全中心節點型定價模型來計費。
 
-定價層限制的詳細資料可於[這裡](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)取得。
+如需定價層限制的詳細資料[，請查看 Azure 訂用帳戶和服務限制、配額和條件約束](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)。
+
+舊版定價層都沒有以區域為基礎的定價。  
 
 > [!NOTE]
 > 若要使用來自購買 OMS E1套件、OMS E2 套件或 OMS Add-On for System Center 的權利，請選擇 Log Analytics [每個節點] 定價層。
@@ -133,14 +135,14 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 若要設定工作區的預設保留期， 
  
 1. 在 Azure 入口網站中，從工作區的左側窗格中選取 [使用量和估計成本]。
-2. 在 [使用量和估計成本] 頁面上，按一下頁面頂端的 [資料量管理]。
+2. 在 [**使用量和估計成本**] 頁面上，按一下頁面頂端的 [**資料保留期**]。
 3. 在窗格上，移動滑桿來增加或減少天數，然後按一下 [確定]。  如果您位於「免費」層，將無法修改資料保留期，必須升級至付費層，才能控制此設定。
 
     ![變更工作區資料保留期設定](media/manage-cost-storage/manage-cost-change-retention-01.png)
 
 當保留期降低時，會有幾天的寬限期，超過新保留設定的資料才會被移除。 
 
-您也可以使用 `retentionInDays` 參數，[透過 Azure Resource Manager 設定](./template-workspace-configuration.md#configure-a-log-analytics-workspace)保留期。 當您將資料保留設定為30天時，您可以使用參數來觸發立即清除較舊的資料， `immediatePurgeDataOn30Days` (排除) 的數天寬限期。 這可能適用于立即移除資料的合規性相關案例。 這種立即清除功能只會透過 Azure Resource Manager 公開。 
+您也可以使用 `retentionInDays` 參數，[透過 Azure Resource Manager 設定](template-workspace-configuration.md#configure-a-log-analytics-workspace)保留期。 當您將資料保留設定為30天時，您可以使用參數來觸發立即清除較舊的資料， `immediatePurgeDataOn30Days` (排除) 的數天寬限期。 這可能適用于立即移除資料的合規性相關案例。 這種立即清除功能只會透過 Azure Resource Manager 公開。 
 
 保留30天的工作區，實際上可能會保留31天的資料。 如果您必須只保留30天的資料，請使用 Azure Resource Manager 將保留期設定為30天，並以 `immediatePurgeDataOn30Days` 參數。  
 
@@ -148,9 +150,11 @@ Azure 在 [Azure 成本管理 + 計費](../../cost-management-billing/costs/quic
 
 根據預設，工作區型 Application Insights 資源 (`AppAvailabilityResults`、`AppBrowserTimings`、`AppDependencies`、`AppExceptions`、`AppEvents`、`AppMetrics`、`AppPageViews`、`AppPerformanceCounters`、`AppRequests`、`AppSystemEvents` 和 `AppTraces`) 的資料類型也會保留 90 天，且這 90 天保留期內不會有任何費用。 您可以使用「依資料類型的保留期」功能來調整其保留期。 
 
+請注意，Log Analytics[清除 API](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/purge)不會影響保留計費，而且適用于非常有限的案例。 若要減少保留費用，您必須針對工作區或特定資料類型，縮減保留期限。 
+
 ### <a name="retention-by-data-type"></a>依資料類型的保留期
 
-您也可以為個別資料類型指定 30 天到 730 天不等的保留期設定 (舊版免費定價層中的工作區除外)。 每種資料類型都是工作區的子資源。 例如，SecurityEvent 資料表在 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) 中可以稱為：
+您也可以為個別資料類型指定 30 天到 730 天不等的保留期設定 (舊版免費定價層中的工作區除外)。 每種資料類型都是工作區的子資源。 例如，SecurityEvent 資料表在 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 中可以稱為：
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -221,7 +225,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
     ![Log Analytics 設定資料限制](media/manage-cost-storage/set-daily-volume-cap-01.png)
     
-`dailyQuotaGb` `WorkspaceCapping` 如[這裡](/rest/api/loganalytics/workspaces/createorupdate#workspacecapping)所述，您可以在底下設定參數，以透過 ARM 來設定每日上限。 
+`dailyQuotaGb` `WorkspaceCapping` 如[工作區-建立或更新](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate#workspacecapping)所述，設定底下的參數，即可透過 ARM 來設定每日上限。 
 
 ### <a name="alert-when-daily-cap-reached"></a>已達每日上限時發出警示
 
@@ -280,7 +284,7 @@ union *
 ```
 
 > [!TIP]
-> 請謹慎使用這些 `union *` 查詢，因為執行跨資料類型掃描會[耗用大量資源](../log-query/query-optimization.md#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型 (請參閱下文)。
+> 請謹慎使用這些 `union *` 查詢，因為執行跨資料類型掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型 (請參閱下文)。
 
 ## <a name="understanding-ingested-data-volume"></a>了解已擷取的資料量
 
@@ -364,7 +368,7 @@ union *
 ```
 
 > [!TIP]
-> 請謹慎使用這些 `union  *` 查詢，因為執行跨資料類型掃描會[耗用大量資源](../log-query/query-optimization.md#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型。
+> 請謹慎使用這些 `union  *` 查詢，因為執行跨資料類型掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型。
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>資料量 (依 Azure 資源、資源群組或訂用帳戶)
 
@@ -407,7 +411,7 @@ union *
 ```
 
 > [!TIP]
-> 請謹慎使用這些 `union  *` 查詢，因為執行跨資料類型掃描會[耗用大量資源](../log-query/query-optimization.md#query-performance-pane)。 如果您不需要每一訂用帳戶、資源群組或資源名稱的結果，請查詢 Usage 資料類型。
+> 請謹慎使用這些 `union  *` 查詢，因為執行跨資料類型掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)。 如果您不需要每一訂用帳戶、資源群組或資源名稱的結果，請查詢 Usage 資料類型。
 
 > [!WARNING]
 > [使用量] 資料類型的部分欄位雖然仍位於結構描述中，但皆已過時，且系統將不再填入其值。 這包括 [Computer]，以及其他與擷取相關的欄位 ([TotalBatches]、[BatchesWithinSla]、[BatchesOutsideSla]、[BatchesCapped]，以及 [AverageProcessingTimeMs])。
@@ -418,7 +422,7 @@ union *
 若要更深入挖掘特定資料類型的資料來源，以下是一些實用的範例查詢：
 
 + **工作區型 Application Insights** 資源
-  - 在[這裡](../app/pricing.md#data-volume-for-workspace-based-application-insights-resources)深入了解
+  - 若要深入瞭解，請到[管理 Application Insights 的使用量和成本](../app/pricing.md#data-volume-for-workspace-based-application-insights-resources)
 + **安全性**解決方案
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
 + **記錄管理**解決方案
@@ -441,8 +445,8 @@ union *
 
 | 高資料量的來源 | 如何縮減資料量 |
 | -------------------------- | ------------------------- |
-| 容器深入解析         | [設定容器深入](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost)解析，只收集您需要的資料。 |
-| 安全性事件            | 選取[一般或最小安全性事件](../../security-center/security-center-enable-data-collection.md#data-collection-tier) <br> 變更安全性稽核原則為只收集所需事件。 特別檢閱下列原則是否需要收集事件： <br> - [a稽核篩選平台](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [稽核登錄](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v=ws.10))<br> - [稽核檔案系統](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v=ws.10))<br> - [稽核核心物件](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v=ws.10))<br> - [稽核控制代碼操作](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v=ws.10))<br> - 稽核抽取式存放裝置 |
+| 容器深入解析         | [設定容器深入](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-cost#controlling-ingestion-to-reduce-cost)解析，只收集您需要的資料。 |
+| 安全性事件            | 選取[一般或最小安全性事件](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier) <br> 變更安全性稽核原則為只收集所需事件。 特別檢閱下列原則是否需要收集事件： <br> - [a稽核篩選平台](https://technet.microsoft.com/library/dd772749(WS.10).aspx) <br> - [稽核登錄](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [稽核檔案系統](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [稽核核心物件](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [稽核控制代碼操作](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - 稽核抽取式存放裝置 |
 | 效能計數器       | 變更[效能計數器組態](data-sources-performance-counters.md)以： <br> - 減少收集頻率 <br> - 減少效能計數器的數目 |
 | 事件記錄                 | 變更[事件記錄組態](data-sources-windows-events.md)以： <br> - 減少所收集的事件記錄數目 <br> - 只收集必要的事件層級。 例如，不要收集「資訊」層級事件 |
 | syslog                     | 變更 [Syslog 組態](data-sources-syslog.md)以： <br> - 減少所收集的設施數目 <br> - 只收集必要的事件層級。 例如，不要收集「資訊」和「偵錯」層級事件 |
@@ -572,16 +576,16 @@ union *
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>在資料收集量很高時建立警示
 
-本節說明如何使用 Azure 監視器[記錄警示](./alerts-unified-log.md)，在過去24小時內建立資料磁片區的警示超過指定的數量。 
+本節說明如何使用 Azure 監視器[記錄警示](alerts-unified-log.md)，在過去24小時內建立資料磁片區的警示超過指定的數量。 
 
 若要在過去24小時內的可計費資料量內嵌大於 50 GB 時發出警示，請遵循下列步驟： 
 
 - **定義警示條件**：將您的 Log Analytics 工作區指定為資源目標。
 - **警示準則**：指定下列項目：
    - **訊號名稱**：選取 [自訂記錄搜尋]
-   - **搜尋查詢**至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 
+   - **搜尋查詢**至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 如果您想要不同 
    - [警示邏輯] 為 [根據結果數目]，而 [條件] 為 [大於臨界值 0]
-   - 每天執行一次的*1440*分鐘**時間**和**警示頻率**（每*1440*分鐘）。
+   - 每個 1440 minutesto 一天執行一次的**時間週期**為*1440*分鐘，而每個*1440*的**警示頻率**為。
 - **定義警示詳細資料**：指定下列項目：
    - **Name** *在24小時內，可計費資料磁片區的名稱大於 50 GB*
    - 將 [嚴重性] 設定為「警告」
@@ -592,7 +596,7 @@ union *
 
 ## <a name="data-transfer-charges-using-log-analytics"></a>使用 Log Analytics 的資料傳輸費用
 
-將資料傳送至 Log Analytics 可能會產生資料頻寬費用。 如 [Azure 頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)所述，在位於兩個區域的 Azure 服務之間資料傳輸時，會依正常費率向輸出資料傳輸收費。 輸入資料傳輸則是免費的。 不過，相較於 Log Analytics 的資料擷取成本，這項費用很低 (幾 %)。 因此，若要控制 Log Analytics 的成本就必須專注在已擷取的資料量上，為了協助您了解這方面的內容，[這裡](#understanding-ingested-data-volume)有指導方針。   
+將資料傳送至 Log Analytics 可能會產生資料頻寬費用。 如 [Azure 頻寬定價頁面](https://azure.microsoft.com/pricing/details/bandwidth/)所述，在位於兩個區域的 Azure 服務之間資料傳輸時，會依正常費率向輸出資料傳輸收費。 輸入資料傳輸則是免費的。 不過，相較於 Log Analytics 的資料擷取成本，這項費用很低 (幾 %)。 因此，控制 Log Analytics 的成本需要專注于您的[內嵌資料量](#understanding-ingested-data-volume)。 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>針對 Log Analytics 為什麼不再收集資料的問題進行疑難排解
@@ -607,15 +611,16 @@ Operation | where OperationCategory == 'Data Collection Status'
 
 |收集停止的原因| 解決方法| 
 |-----------------------|---------|
+|已達您工作區的每日上限|等到自動重新開始收集或提高每日資料量限制，如「管理每日資料量上限」中所述。 每日上限重設時間會顯示在**每日上限**頁面上。 |
+| 您的工作區已達到[資料內嵌量的速率](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | 使用診斷設定從 Azure 資源傳送之資料的預設內嵌磁片區速率限制約為每個工作區 6 GB/分鐘。 這是估計值，因為根據記錄長度和其壓縮比率，實際大小可能會在資料類型之間有所不同。 此限制不適用於從代理程式或資料收集器 API 傳送的資料。 如果您以較高的速率將資料傳送至單一工作區，則會卸載某些資料，並每隔6小時將事件傳送至工作區中的作業資料表，而臨界值會繼續超過閾值。 如果您的內嵌磁片區持續超過速率限制，或您希望很快就會到達，您可以傳送電子郵件至 LAIngestionRate@microsoft.com 或開啟支援要求，以要求增加您的工作區。 要尋找的事件表示查詢可以找到資料的內嵌速率限制 `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"` 。 |
 |已達舊版免費定價層的每日限制 |請等到隔天自動重新開始收集，或變更為付費定價層。|
-|已達您工作區的每日上限|等到自動重新開始收集或提高每日資料量限制，如「管理每日資料量上限」中所述。 每日上限重設時間會顯示於 [資料量管理] 頁面上。 |
 |Azure 訂用帳戶處於暫停狀態，原因如下：<br> 免費試用已結束<br> Azure Pass 已過期<br> 已達每月消費限制 (例如 MSDN 或 Visual Studio 訂閱)|轉換成付費訂閱<br> 移除限制，或等到限制重設|
 
 若要在資料收集停止時收到通知，請使用*建立每日資料上限*警示中所述的步驟，以在資料收集停止時收到通知。 使用[建立動作群組](action-groups.md)中所述的步驟來設定警示規則的電子郵件、Webhook 或 Runbook 動作。 
 
 ## <a name="limits-summary"></a>限制摘要
 
-Log Analytics 還有一些限制，其中的某些限制取決於 Log Analytics 定價層。 [這裡](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)記載了這些限制。
+Log Analytics 還有一些限制，其中的某些限制取決於 Log Analytics 定價層。 這些檔記載于[Azure 訂用帳戶和服務限制、配額和條件約束](../../azure-resource-manager/management/azure-subscription-service-limits.md#log-analytics-workspaces)。
 
 
 ## <a name="next-steps"></a>後續步驟

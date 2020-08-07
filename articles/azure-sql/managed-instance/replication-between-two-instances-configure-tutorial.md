@@ -12,29 +12,37 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: cd476d3210263268627541eb40c50048f0eddd1b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 114d4f41ad48af3d1e585fcb01eb0794a8e349b5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422907"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920104"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>教學課程：設定兩個受控實例之間的複寫
 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-異動複寫可讓您將資料從某個資料庫複寫至裝載于 SQL Server 或[AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)（公開預覽）上的另一個資料庫。 SQL 受控執行個體可以是複寫拓撲中的「發行者」、「散發者」或「訂閱者」。 如需可用的設定，請參閱[異動複寫](replication-transactional-overview.md#common-configurations)設定。
+異動複寫可讓您將資料從某個資料庫複寫到裝載于 SQL Server 或[AZURE SQL 受控執行個體](sql-managed-instance-paas-overview.md)上的另一個資料庫。 SQL 受控執行個體可以是複寫拓撲中的「發行者」、「散發者」或「訂閱者」。 如需可用的設定，請參閱[異動複寫](replication-transactional-overview.md#common-configurations)設定。 
 
-> [!NOTE]
-> 本文說明如何在 Azure SQL 受控執行個體中使用[異動複寫](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它與[容錯移轉群組](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)無關，這是一項 Azure SQL 受控執行個體功能，可讓您建立個別實例的完整可讀取複本。 [使用容錯移轉群組設定異動複寫](replication-transactional-overview.md#with-failover-groups)時，還有其他考慮。
+異動複寫目前處於 SQL 受控執行個體的公開預覽狀態。 
 
-本教學課程會教您將一個受控實例設定為「發行者」和「散發者」，然後將第二個受控實例設為「訂閱者」。  
+在本教學課程中，您會了解如何：
+
+> [!div class="checklist"]
+>
+> - 將受控實例設定為複寫發行者和散發者。
+> - 將受控執行個體設定為複寫散發者。
 
 ![在兩個受控實例之間複寫](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
-  > [!NOTE]
-  > - 本文旨在引導使用 SQL 受控執行個體從端對端設定複寫的先進使用者，從建立資源群組開始。 如果您已經部署受控實例，請直接跳到[步驟 4](#4---create-a-publisher-database)來建立發行者資料庫，如果您已經有發行者和訂閱者資料庫，而且準備好開始設定複寫，請略過步驟[6](#6---configure-distribution) 。  
-  > - 這篇文章會在同一個受控實例上設定您的發行者和散發者。 若要將「散發者」放在個別的受控實例上，請參閱[設定 AZURE SQL 受控執行個體與 SQL Server 之間的異動複寫](replication-two-instances-and-sql-server-configure-tutorial.md)教學課程。 
+本教學課程適用於有經驗的對象，並假設使用者熟知如何部署和連線至受控執行個體和 Azure 中的 SQL Server VM。 
+
+
+> [!NOTE]
+> - 本文說明如何在 Azure SQL 受控執行個體中使用[異動複寫](/sql/relational-databases/replication/transactional/transactional-replication)。 它與[容錯移轉群組](../database/auto-failover-group-overview.md)無關，這是一項 Azure SQL 受控執行個體功能，可讓您建立個別實例的完整可讀取複本。 [使用容錯移轉群組設定異動複寫](replication-transactional-overview.md#with-failover-groups)時，還有其他考慮。
+
+
 
 ## <a name="requirements"></a>需求
 
@@ -43,7 +51,7 @@ ms.locfileid: "87422907"
 - 發行者受控實例位於與散發者和訂閱者相同的虛擬網路上，或[虛擬網路對等互連](../../virtual-network/tutorial-connect-virtual-networks-powershell.md)已設定于這三個實體的虛擬網路之間。 
 - 連線會在複寫參與者之間使用 SQL 驗證。
 - 複寫工作目錄的 Azure 儲存體帳戶共用。
-- 埠445（TCP 輸出）已在 NSG 的安全性規則中開啟，以供受控實例存取 Azure 檔案共用。  如果您遇到錯誤 `failed to connect to azure storage \<storage account name> with os error 53` ，您必須將輸出規則新增至適當 SQL 受控執行個體子網的 NSG。
+- 埠 445 (TCP 輸出) 會在 NSG 的安全性規則中開啟，以供受控實例存取 Azure 檔案共用。  如果您遇到錯誤 `failed to connect to azure storage \<storage account name> with os error 53` ，您必須將輸出規則新增至適當 SQL 受控執行個體子網的 NSG。
 
 ## <a name="1---create-a-resource-group"></a>1-建立資源群組
 
@@ -53,8 +61,8 @@ ms.locfileid: "87422907"
 
 使用[Azure 入口網站](https://portal.azure.com)在相同的虛擬網路和子網上建立兩個[SQL 受控實例](instance-create-quickstart.md)。 例如，將兩個受控實例命名為：
 
-- `sql-mi-pub`（加上一些隨機的字元）
-- `sql-mi-sub`（加上一些隨機的字元）
+- `sql-mi-pub` (和一些隨機的字元) 
+- `sql-mi-sub` (和一些隨機的字元) 
 
 您也必須[設定 AZURE VM 以](connect-vm-instance-configure.md)連線到您的受控實例。 
 
@@ -74,7 +82,7 @@ ms.locfileid: "87422907"
 
 ## <a name="4---create-a-publisher-database"></a>4-建立發行者資料庫
 
-使用 SQL Server Management Studio 連接到您的 `sql-mi-pub` 受控實例，並執行下列 transact-sql （t-sql）程式碼，以建立發行者資料庫：
+使用 SQL Server Management Studio 連接到您的 `sql-mi-pub` 受控實例，並執行下列 transact-sql (t-sql) 程式碼，以建立發行者資料庫：
 
 ```sql
 USE [master]
@@ -164,7 +172,7 @@ EXEC sp_adddistpublisher
 ```
 
    > [!NOTE]
-   > 請務必只針對 file_storage 參數使用反斜線（ `\` ）。 若使用正斜線 (`/`)，在連線至檔案共用時可能會導致錯誤。
+   > 請務必只針對 file_storage 參數使用反斜線 (`\`) 。 若使用正斜線 (`/`)，在連線至檔案共用時可能會導致錯誤。
 
 此腳本會在受控實例上設定本機發行者、加入連結的伺服器，並為 SQL Server 代理程式建立一組作業。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 資料箱磁碟入口網站管理員指南 | Microsoft Docs
-description: 描述如何使用 Azure 入口網站來管理您的 Azure 資料箱。
+description: 瞭解如何使用 Azure 入口網站管理資料箱磁碟。 管理訂單、管理磁片，以及追蹤訂單的狀態。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707730"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924748"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 入口網站來管理資料箱磁碟
 
@@ -119,7 +119,7 @@ ms.locfileid: "84707730"
 
 ## <a name="view-order-status"></a>檢視訂單狀態
 
-|訂單狀態 |Description |
+|訂單狀態 |描述 |
 |---------|---------|
 |訂購時間     | 已成功下單。 <br> 如果磁碟無法使用，您會收到通知。 <br>如果可使用磁碟，Microsoft 會識別要寄送的磁碟，並準備磁碟包裹。        |
 |已處理     | 訂單處理已完成。 <br> 在訂單處理期間，會發生下列動作：<li>使用 AES-128 BitLocker 加密將磁碟加密。 </li> <li>鎖定資料箱磁碟，以防止未經授權的存取。</li><li>在此程序期間，會產生解除鎖定磁碟的通行金鑰。</li>        |
@@ -128,7 +128,7 @@ ms.locfileid: "84707730"
 |已取貨     |您的退貨已取貨。 <br> 一旦 Azure 資料中心收到出貨時，資料會自動上傳至 Azure。         |
 |已收到     | Azure 資料中心已收到您的磁碟。 複製資料即將開始。        |
 |已複製資料     |資料複製進行中。<br> 等候資料複製完成。         |
-|已完成       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
+|Completed       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
 |已完成，但發生錯誤| 資料複製已完成，但收到錯誤。 <br> 使用 [概觀]**** 中提供的路徑，檢閱上傳的錯誤記錄。 如需詳細資訊，請移至[下載上傳錯誤記錄](data-box-disk-troubleshoot-upload.md#download-logs)。   |
 |已取消            |訂單便會取消。 <br> 可能是您取消訂單或發現錯誤，而服務將訂單取消。     |
 

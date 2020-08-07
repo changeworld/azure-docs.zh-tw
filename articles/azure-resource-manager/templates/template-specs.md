@@ -2,23 +2,23 @@
 title: 範本規格總覽
 description: 描述如何建立範本規格，並與組織中的其他使用者共用。
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/06/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 829aaa41bc60b3dcbf78ef6083457fff3b794914
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f5151550b9f23ba63380688f53325f8976f14a51
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497795"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921873"
 ---
-# <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager 範本規格（預覽）
+# <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager 範本規格 (預覽) 
 
-範本規格是一種新的資源類型，可用於將 Azure Resource Manager 範本（ARM 範本）儲存在 Azure 中，供日後部署之用。 此資源類型可讓您與組織中的其他使用者共用 ARM 範本。 就像任何其他 Azure 資源一樣，您可以使用角色型存取控制（RBAC）來共用範本規格。
+範本規格是一種新的資源類型，可將 Azure Resource Manager 範本儲存 (ARM 範本) 在 Azure 中供日後部署。 此資源類型可讓您與組織中的其他使用者共用 ARM 範本。 就像任何其他 Azure 資源一樣，您可以使用角色型存取控制 (RBAC) 來共用範本規格。
 
 **TemplateSpecs**是範本規格的新資源類型。 其中包含主要範本和任何數目的連結範本。 Azure 會安全地將範本規格儲存在資源群組中。 範本規格支援[版本](#versioning)設定。
 
-若要部署範本規格，您可以使用標準的 Azure 工具，例如 PowerShell、Azure CLI、Azure 入口網站、REST，以及其他支援的 Sdk 和用戶端。 您可以使用相同的命令，並傳入範本的相同參數。
+若要部署範本規格，您可以使用標準的 Azure 工具，例如 PowerShell、Azure CLI、Azure 入口網站、REST，以及其他支援的 Sdk 和用戶端。 您可以使用與範本相同的命令。
 
 > [!NOTE]
 > 範本規格目前為預覽狀態。 若要加以使用，您必須[註冊等待清單](https://aka.ms/templateSpecOnboarding)。
@@ -37,21 +37,32 @@ ms.locfileid: "87497795"
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "resources": [
-    {
-      "name": "[concat('storage', uniqueString(resourceGroup().id))]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-06-01",
-      "location": "[resourceGroup().location]",
-      "kind": "StorageV2",
-      "sku": {
-        "name": "Premium_LRS",
-        "tier": "Premium"
-      }
-    }
-  ]
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccountType": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+                "Standard_LRS",
+                "Standard_GRS",
+                "Standard_ZRS",
+                "Premium_LRS"
+            ]
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-06-01",
+            "name": "[concat('store', uniquestring(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "[parameters('storageAccountType')]"
+            }
+        }
+    ]
 }
 ```
 
@@ -79,7 +90,7 @@ Get-AzTemplateSpec -ResourceGroupName templateSpecsRG -Name storageSpec
 
 建立範本規格之後，具有範本規格之**讀取**許可權的使用者可以部署它。 如需授與存取權的詳細資訊，請參閱[教學課程：使用 Azure PowerShell 將 Azure 資源的存取權授與群組](../../role-based-access-control/tutorial-role-assignments-group-powershell.md)。
 
-範本規格可以透過入口網站、PowerShell、Azure CLI 或較大範本部署中的連結範本來部署。 組織中的使用者可以將範本規格部署到 Azure 中的任何範圍（資源群組、訂用帳戶、管理群組或租使用者）。
+範本規格可以透過入口網站、PowerShell、Azure CLI 或較大範本部署中的連結範本來部署。 組織中的使用者可以將範本規格部署至 Azure (資源群組、訂用帳戶、管理群組或租使用者) 中的任何範圍。
 
 您可以藉由提供資源識別碼來部署範本規格，而不是傳入範本的路徑或 URI。 資源識別碼的格式如下：
 
@@ -105,6 +116,42 @@ $id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName demoRG
+```
+
+## <a name="parameters"></a>參數
+
+將參數傳入範本規格與將參數傳遞至 ARM 範本完全一樣。 將參數值加入內嵌或參數檔案中。
+
+若要傳遞內嵌參數，請使用：
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -TemplateSpecId $id `
+  -ResourceGroupName demoRG `
+  -StorageAccountType Standard_GRS
+```
+
+若要建立本機參數檔案，請使用：
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "StorageAccountType": {
+      "value": "Standard_GRS"
+    }
+  }
+}
+```
+
+然後，傳遞該參數檔案和：
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -TemplateSpecId $id `
+  -ResourceGroupName demoRG `
+  -TemplateParameterFile ./mainTemplate.parameters.json
 ```
 
 ## <a name="create-a-template-spec-with-linked-templates"></a>使用連結的範本建立範本規格
@@ -146,7 +193,7 @@ New-AzResourceGroupDeployment `
 
 ```
 
-針對上述範例執行用來建立範本規格的 PowerShell 或 CLI 命令時，此命令會尋找三個檔案-主要範本、web 應用程式範本（ `webapp.json` ）和資料庫範本（ `database.json` ），並將它們封裝到範本規格中。
+針對上述範例執行用來建立範本規格的 PowerShell 或 CLI 命令時，此命令會尋找三個檔案-主要範本、web 應用程式範本 (`webapp.json`) 和資料庫範本 (`database.json`) ，並將它們封裝到範本規格中。
 
 如需詳細資訊，請參閱[教學課程：使用連結的範本建立範本規格](template-specs-create-linked.md)。
 
@@ -196,7 +243,7 @@ New-AzResourceGroupDeployment `
 
 ## <a name="versioning"></a>版本控制
 
-當您建立範本規格時，您會提供它的版本號碼。 當您逐一查看範本程式碼時，您可以更新現有的版本（適用于修補程式）或發行新版本。 版本是文字字串。 您可以選擇遵循任何版本設定系統，包括語義版本設定。 範本規格的使用者可以在部署時提供他們想要使用的版本號碼。
+當您建立範本規格時，您會提供它的版本號碼。 當您逐一查看範本程式碼時，您可以更新現有的 (版本，) 或發行新版本。 版本是文字字串。 您可以選擇遵循任何版本設定系統，包括語義版本設定。 範本規格的使用者可以在部署時提供他們想要使用的版本號碼。
 
 ## <a name="next-steps"></a>後續步驟
 

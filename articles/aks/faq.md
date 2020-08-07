@@ -2,13 +2,13 @@
 title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service (AKS) 的常見問題解答。
 ms.topic: conceptual
-ms.date: 07/31/2020
-ms.openlocfilehash: 6d30bc1faa6a896233d09f9247fe8c56f82371fa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/06/2020
+ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87485621"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927142"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -81,7 +81,7 @@ AKS 會根據一些 Azure 基礎結構資源來建置，包括虛擬機器擴展
 
 如果您修改或刪除節點資源群組中 Azure 所建立的標記和其他資源屬性，可能就會得到非預期的結果，例如，調整和升級錯誤。 AKS 可讓您建立和修改使用者所建立的自訂標記，而且您可以在[建立節點集](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)區時新增這些標記。 例如，您可以建立或修改自訂標記，以指派業務單位或成本中心。 這也可以透過在受控資源群組上建立具有範圍的 Azure 原則來達成。
 
-不過，在 AKS 叢集中的節點資源群組下，修改資源的任何**Azure 建立的標記**都是不支援的動作，這會中斷服務層級目標（SLO）。 如需詳細資訊，請參閱 [AKS 是否提供服務等級協定？](#does-aks-offer-a-service-level-agreement)
+不過，在 AKS 叢集中，針對節點資源群組下的資源修改任何**Azure 建立的標記**是不支援的動作，這會中斷服務層級目標 (SLO) 。 如需詳細資訊，請參閱 [AKS 是否提供服務等級協定？](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>AKS 支援哪些 Kubernetes 許可控制器？ 是否可以新增或移除許可控制器？
 
@@ -193,7 +193,7 @@ AKS 不是受控服務，且不支援操作 IaaS 資源。 若要安裝自訂元
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS 是否將任何客戶資料儲存在叢集的區域之外？
 
-否。 在 AKS 叢集中建立的所有資料都會保留在叢集的區域內。
+在單一區域中啟用儲存客戶資料的功能目前僅適用于東南亞地區， (新加坡) 的亞太地區地區。 針對所有其他區域，客戶資料會儲存在異地。
 
 <!-- LINKS - internal -->
 

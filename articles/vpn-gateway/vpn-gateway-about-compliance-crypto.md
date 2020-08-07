@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 閘道：密碼編譯需求
-description: 本文說明密碼編譯需求與 Azure VPN 閘道。
+description: 瞭解如何設定 Azure VPN 閘道，以滿足跨內部部署 S2S VPN 通道的密碼編譯需求，以及 Azure 內的 VNet 對 VNet 連線。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b591baa3fd942eb46cc7351a15c8849c44fe0d12
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75902831"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926956"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>關於密碼編譯需求和 Azure VPN 閘道
 
@@ -36,7 +36,7 @@ IPsec 和 IKE 通訊協定標準支援各種不同的密碼編譯演算法的各
 
 針對需要特定密碼編譯演算法或參數的通訊（通常是由於合規性或安全性需求），您現在可以將其 Azure VPN 閘道設定為使用具有特定密碼編譯演算法和金鑰強度的自訂 IPsec/IKE 原則，而不是 Azure 預設原則集。
 
-例如，適用于 Azure VPN 閘道的 IKEv2 主要模式原則僅使用 Diffie-hellman 群組2（1024位），而您可能需要指定更強的群組以用於 IKE，例如群組14（2048-bit）、群組24（2048位 MODP 群組）或 ECP （橢圓曲線群組）256或384位（分別為群組19和群組20）。 類似的需求亦適用於 IPsec 快速模式原則。
+例如，適用于 Azure VPN 閘道的 IKEv2 主要模式原則僅使用 Diffie-hellman 群組 2 (1024 bits) ，而您可能需要指定更強的群組以用於 IKE，例如群組 14 (2048 位) 、群組 24 (2048 位 MODP 群組) 或 ECP (橢圓曲線群組) 256 或384位 (群組19和群組20，分別) 。 類似的需求亦適用於 IPsec 快速模式原則。
 
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>自訂的 IPsec/IKE 原則與 Azure VPN 閘道
 

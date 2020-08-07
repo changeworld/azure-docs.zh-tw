@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: df6de62eefc0971ece0e0035299425689af5f784
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c11de5daacfd0d0b3d12c38064dac704c98ce60b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307619"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924184"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定來與 IoT 中樞通訊
 
@@ -310,13 +310,13 @@ IoT 中樞會附上**主題名稱**`devices/{device_id}/messages/devicebound/` �
 
 在雲端到裝置的訊息中，屬性包中的值表示如下表所示：
 
-| 屬性值 | 表示法 | 說明 |
+| 屬性值 | 表示法 | 描述 |
 |----|----|----|
 | `null` | `key` | 只有金鑰會出現在屬性包中 |
 | 空字串 | `key=` | 後面接著等號且不含值的索引鍵 |
 | 非 null、非空白值 | `key=value` | 後面接著等號和值的索引鍵 |
 
-下列範例顯示包含三個應用程式屬性的屬性包： **prop1** ，其值 `null` 為。**this.prop2**，空字串（""）;和**prop3** ，其值為 "a string"。
+下列範例顯示包含三個應用程式屬性的屬性包： **prop1** ，其值 `null` 為。**this.prop2**， ( "" 的空字串 ) ;和**prop3** ，其值為 "a string"。
 
 ```mqtt
 /?prop1&prop2=&prop3=a%20string
@@ -437,7 +437,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解 MQTT 通訊協定，請參閱 [MQTT 文件](https://mqtt.org/documentation)。
+若要深入了解 MQTT 通訊協定，請參閱 [MQTT 文件](https://mqtt.org/)。
 
 若要深入了解如何規劃 IoT 中樞部署，請參閱：
 

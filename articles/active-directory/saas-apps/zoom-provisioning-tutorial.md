@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: fb5e51503fa20cd3ace6070cb1b51f5bf32d0e13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a2e4bbff1274a2473ac961b8355ca4193dcc69f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016252"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924898"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Zoom
 
-本教學課程說明您需要在 Zoom 和 Azure Active Directory （Azure AD）中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會自動布建及取消布建使用者和群組，以使用 Azure AD 布建服務進行[縮放](https://zoom.us/pricing/)。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教學課程說明您必須在 Zoom 和 Azure Active Directory (Azure AD) 中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會自動布建及取消布建使用者和群組，以使用 Azure AD 布建服務進行[縮放](https://zoom.us/pricing/)。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支援的功能
@@ -32,7 +32,7 @@ ms.locfileid: "87016252"
 > * 以 Zoom 建立使用者
 > * 當使用者不再需要存取權時，移除 Zoom 中的使用者
 > * 讓使用者屬性在 Azure AD 和 Zoom 之間保持同步
-> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial)以進行縮放（建議）
+> *  (建議使用[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial)來進行 Zoom) 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -48,7 +48,7 @@ ms.locfileid: "87016252"
 2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
 3. 判斷要[在 Azure AD 和 Zoom 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。 
 
-## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步驟 2. 設定 Zoom 以支援以 Azure AD 布建
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Zoom 以支援以 Azure AD 布建
 
 1. 登入您的[Zoom 管理主控台](https://zoom.us/signin)。 在左側流覽窗格中，流覽至 [**適用于開發人員的 Advanced > Zoom** ]。
 
@@ -70,7 +70,7 @@ ms.locfileid: "87016252"
 
     ![縮放安裝](media/zoom-provisioning-tutorial/zoom05.png)
 
-## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步驟 3. 從 Azure AD 應用程式庫新增 Zoom
+## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Zoom
 
 從 Azure AD 應用程式庫新增 Zoom，開始管理布建到縮放。 如果您先前已設定 [縮放為 SSO]，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
 
@@ -103,7 +103,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[佈建] 索引標籤](common/provisioning-automatic.png)
+    ![佈建索引標籤](common/provisioning-automatic.png)
 
 5. 在 [**管理員認證**] 區段下，輸入 `https://api.zoom.us/scim` **租使用者 URL**。 輸入稍早在**秘密權杖**中所取得的**JWT 權杖**值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Zoom。 如果連線失敗，請確定您的縮放帳戶具有系統管理員許可權，然後再試一次。
 
@@ -121,11 +121,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
    |屬性|類型|
    |---|---|
-   |userName|字串|
+   |userName|String|
    |作用中|Boolean|
-   |name.givenName|字串|
-   |name.familyName|字串|
-   |電子郵件 [type eq "work"]|字串|
+   |name.givenName|String|
+   |name.familyName|String|
+   |電子郵件 [type eq "work"]|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
@@ -148,7 +148,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 設定佈建後，請使用下列資源來監視您的部署：
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 ## <a name="connector-limitations"></a>連接器限制

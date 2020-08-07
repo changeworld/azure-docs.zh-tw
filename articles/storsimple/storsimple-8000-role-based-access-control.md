@@ -1,6 +1,6 @@
 ---
 title: 使用適用於 StorSimple 的角色型存取控制 | Microsoft Docs
-description: 說明如何在 StorSimple 的內容中使用 Azure 角色型存取控制（Azure RBAC）。
+description: 說明如何在 StorSimple 的內容中，使用 Azure 角色型存取控制 (Azure RBAC) 。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 04993d36689c917db05a1b5f2132b107c7c9b412
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535105"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920394"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>適用於 StorSimple 的角色型存取控制
 
-本文提供 Azure 角色型存取控制（Azure RBAC）如何用於您的 StorSimple 裝置的簡短描述。 RBAC 可提供細部的 Azure 存取管理能力。 使用 RBAC 授與 StorSimple 使用者適量的存取權以執行其工作，而非讓所有人不受限制地存取。 如需有關 Azure 存取權管理的基本資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../role-based-access-control/overview.md)。
+本文提供如何將 Azure 角色型存取控制 (Azure RBAC) 用於 StorSimple 裝置的簡短描述。 RBAC 可提供細部的 Azure 存取管理能力。 使用 RBAC 授與 StorSimple 使用者適量的存取權以執行其工作，而非讓所有人不受限制地存取。 如需有關 Azure 存取權管理的基本資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../role-based-access-control/overview.md)。
 
 本文僅適用於 Azure 入口網站中執行 3.0 更新版本或以上版本的 StorSimple 8000 系列裝置。
 
@@ -163,9 +163,9 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 ## <a name="add-users-to-the-custom-role"></a>將使用者新增至自訂角色
 
-您可從角色指派範圍內的資源、資源群組或訂用帳戶授與存取權。 提供存取權時，請記住子節點將繼承授與父節點的存取權。 如需詳細資訊，請移至[角色型存取控制](../role-based-access-control/overview.md)。
+您可從角色指派範圍內的資源、資源群組或訂用帳戶授與存取權。 提供存取權時，請記住子節點將繼承授與父節點的存取權。 如需詳細資訊，請移至[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)。
 
-1. 移至 **[存取控制（IAM）**]。 在 [存取控制] 刀鋒視窗上，按一下 [+ 新增]****。
+1. 移至 [**存取控制] (IAM) **。 在 [存取控制] 刀鋒視窗上，按一下 [+ 新增]****。
 
     ![新增 Azure 角色的存取權](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
@@ -183,7 +183,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 建立此角色後，您可以在 Azure 入口網站中檢視與此角色相關聯的權限。
 
-1. 若要查看與此角色相關聯的許可權，請移至 [**存取控制（IAM）] > [> StorSimple 基礎結構系統管理員的角色**]。隨即顯示此角色中的使用者清單。
+1. 若要查看與此角色相關聯的許可權，請移至**存取控制 (IAM) > 角色 > StorSimple 基礎結構系統管理員**。隨即顯示此角色中的使用者清單。
 
 2. 選取 [StorSimple 基礎結構管理員使用者]，並按一下 [權限]****。
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 入口網站對 Azure Stack Edge 進行疑難排解 |Microsoft Docs
-description: 說明如何針對 Azure Stack Edge 問題進行疑難排解。
+description: 瞭解如何針對 Azure Stack 邊緣的問題進行疑難排解。 您可以執行診斷、收集支援的資訊，以及使用記錄進行疑難排解。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 03/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 00aae3386b3f648eafdef31dccb640d8120f7ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b80b47a1be67a9771d138c43178d50156a6f1a95
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563999"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926428"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-issues"></a>針對您的 Azure Stack Edge 問題進行疑難排解
 

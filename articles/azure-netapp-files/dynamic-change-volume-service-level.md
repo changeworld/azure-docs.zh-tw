@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/06/2020
 ms.author: b-juche
-ms.openlocfilehash: e19db61efbf93e3191d5780d07952f3d195c7a59
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e974fb51ac36083e6ed8934afaa7a3e36ab8c08e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533034"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923861"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>動態變更磁碟區的服務等級
 
@@ -33,8 +33,7 @@ ms.locfileid: "87533034"
 
 * 將磁片區移到另一個容量集區之後，您將無法再存取先前的大量活動記錄和磁片區計量。 磁片區會以新的容量集區下的新活動記錄和計量作為開頭。
 
-* 如果您將磁片區移到較高服務層級的容量集區（例如，從*標準*移至*premium*或*Ultra*服務層級），您必須至少等候七天，才能再次將磁片區移至較低服務層級的容量集區（例如，從*Ultra*移至*premium*或*Standard*）。  
-如果您將磁片區移到具有相同服務層級或較低服務層級的容量集區，則不適用此等候期間。
+* 如果您將磁片區移到較高服務層級的容量集區 (例如，從*標準*移至*Premium*或*Ultra*服務等級) ，您必須至少等候七天，才能將該磁片區*再次*移至較低服務層級的容量集區 (例如，從*Ultra*移至*premium*或*標準*) 。  
 
 ## <a name="register-the-feature"></a>註冊功能
 
@@ -65,7 +64,7 @@ ms.locfileid: "87533034"
 
     ![變更集區](../media/azure-netapp-files/change-pool.png)
 
-3.  按一下 [確定]。
+3.  按一下 [確定]  。
 
 
 ## <a name="next-steps"></a>後續步驟  

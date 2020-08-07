@@ -1,6 +1,6 @@
 ---
 title: 瞭解 Azure IoT 裝置布建服務 MQTT 支援 |Microsoft Docs
-description: 開發人員指南-使用 MQTT 通訊協定連接到 Azure IoT 裝置布建服務（DPS）裝置面向端點的裝置支援。
+description: 開發人員指南-支援使用 MQTT 通訊協定連線到 Azure IoT 裝置布建服務 (DPS) 裝置面向端點的裝置。
 author: rajeevmv
 ms.service: iot-dps
 services: iot-dps
@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680681"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924201"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 通訊協定與您的 DPS 通訊
 
@@ -82,7 +82,7 @@ DPS 不是功能完整的 MQTT 訊息代理程式，而且不支援 MQTT v 3.1.1
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解 MQTT 通訊協定，請參閱 [MQTT 文件](https://mqtt.org/documentation)。
+若要深入了解 MQTT 通訊協定，請參閱 [MQTT 文件](https://mqtt.org/)。
 
 若要進一步探索 DPS 的功能，請參閱：
 

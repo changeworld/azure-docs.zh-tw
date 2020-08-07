@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 1fdfe57c2995628855ea8e068c4f8eb2f2ac466a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500417"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927278"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>設定內部部署實體伺服器至 Azure 的災害復原
 
@@ -27,7 +27,7 @@ ms.locfileid: "87500417"
 > * 建立複寫原則
 > * 啟用伺服器的複寫
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本教學課程：
 
@@ -59,7 +59,7 @@ ms.locfileid: "87500417"
 請確定您的 Azure 帳戶具有權限將 VM 複寫至 Azure。
 
 - 檢查將機器複寫至 Azure 所需的[許可權](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
-- 驗證並修改[角色型存取](../role-based-access-control/role-assignments-portal.md)權限。 
+- 確認及修改[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)許可權。 
 
 
 

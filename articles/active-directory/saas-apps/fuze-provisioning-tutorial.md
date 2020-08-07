@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: aacaa8ca7e0cd15b34f29479d38d7bc8d95001de
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b552b175074262d961e455a2b46727d0fa656b45
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253693"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920461"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>教學課程：設定 Fuze 來自動布建使用者
 
-本教學課程的目的是要示範要在 Fuze 和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至[Fuze](https://www.fuze.com/)。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
+本教學課程的目的是要示範在 Fuze 和 Azure Active Directory 中執行的步驟 (Azure AD) 設定 Azure AD 自動布建和取消布建使用者和/或群組至[Fuze](https://www.fuze.com/)。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
 > [!NOTE]
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -35,7 +35,7 @@ ms.locfileid: "85253693"
 > * 在 Fuze 中建立使用者
 > * 當使用者不再需要存取權時，移除 Fuze 中的使用者
 > * 在 Azure AD 和 Fuze 之間保持使用者屬性同步
-> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/fuze-tutorial)Fuze （建議選項）
+> * Fuze (的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/fuze-tutorial)建議) 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -98,7 +98,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[佈建] 索引標籤](common/provisioning-automatic.png)
+    ![佈建索引標籤](common/provisioning-automatic.png)
 
 5. 在 [**管理員認證**] 區段下，從 [**租使用者 url** ] 和 [**秘密權杖**] 中的 Fuze 代表處，輸入先前抓取的**SCIM 2.0 基底 url 和 SCIM Authentication Token**值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Fuze。 如果連線失敗，請確定您的 Fuze 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -108,7 +108,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 **[儲存]** 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Fuze**]。
 
@@ -142,7 +142,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 設定佈建後，請使用下列資源來監視您的部署：
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。
 
 ## <a name="connector-limitations"></a>連接器限制

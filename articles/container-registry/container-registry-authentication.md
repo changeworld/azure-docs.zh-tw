@@ -3,12 +3,12 @@ title: 登錄驗證選項
 description: 私人 Azure container registry 的驗證選項，包括以 Azure Active Directory 身分識別登入、使用服務主體，以及使用選擇性的系統管理認證。
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 0d44a97e01eef709dff47342e4503d1e0263a225
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 3d2379b2b2384342fb84ba1b610caa609300aa0c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760578"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926315"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>向 Azure Container Registry 進行驗證 | Microsoft Docs
 
@@ -44,7 +44,7 @@ az acr login --name <acrName>
 
 針對登錄存取，所使用的權杖 `az acr login` 有效期限為**3 小時**，因此建議您在執行命令之前，一律先登入登錄 `docker` 。 如果您的權杖過期，您可以再次使用 `az acr login` 命令進行重新驗證來重新整理該權杖。 
 
-使用 `az acr login` 搭配 Azure 身分識別可提供[角色型存取](../role-based-access-control/role-assignments-portal.md)功能。 在某些案例中，您可能會想要在 Azure AD 中使用自己的個別身分識別登入登錄，或使用特定的[RBAC 角色和許可權](container-registry-roles.md)來設定其他 Azure 使用者。 針對跨服務案例，或處理您不想要管理個別存取權的工作組或開發工作流程的需求，您也可以使用[Azure 資源的受控識別](container-registry-authentication-managed-identity.md)來登入。
+搭配 Azure 身分識別使用 `az acr login` 可提供[azure 角色型存取控制 (azure RBAC) ](../role-based-access-control/role-assignments-portal.md)。 在某些案例中，您可能會想要在 Azure AD 中使用自己的個別身分識別登入登錄，或使用特定的[azure 角色和許可權](container-registry-roles.md)來設定其他 azure 使用者。 針對跨服務案例，或處理您不想要管理個別存取權的工作組或開發工作流程的需求，您也可以使用[Azure 資源的受控識別](container-registry-authentication-managed-identity.md)來登入。
 
 ### <a name="az-acr-login-with---expose-token"></a>az acr login with--公開-token
 
@@ -73,7 +73,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 ## <a name="service-principal"></a>服務主體
 
-如果您將[服務主體](../active-directory/develop/app-objects-and-service-principals.md)指派給登錄，應用程式或服務便可以使用它來進行遠端控制驗證。 服務主體可允許對登錄進行[角色型存取](../role-based-access-control/role-assignments-portal.md)，而您可以將多個服務主體指派給登錄。 多個服務主體可讓您為不同的應用程式定義不同的存取權。
+如果您將[服務主體](../active-directory/develop/app-objects-and-service-principals.md)指派給登錄，應用程式或服務便可以使用它來進行遠端控制驗證。 服務主體允許[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)至登錄，而且您可以將多個服務主體指派給登錄。 多個服務主體可讓您為不同的應用程式定義不同的存取權。
 
 容器登錄的可用角色包括：
 

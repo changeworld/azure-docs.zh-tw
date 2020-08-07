@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 211dce8a2810d9eb07bf0f388753afd50add4945
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263556"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919951"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>搭配 Gremlin SDK 使用 Azure Cosmos DB 資源權杖
 
@@ -102,5 +102,5 @@ builder.authProperties(authenticationProperties);
 應用程式在使用資源權杖時常遇到的錯誤是：「未在對應要求的授權標頭中提供足夠的權限。 請使用另一個授權標頭並重試。」 當 Gremlin 周遊嘗試寫入邊線或頂點，但資源權杖僅授與「讀取」** 權限時，就會傳回此錯誤。 檢查您的周遊是否包含下列任一步驟：.addV()**、.addE()**、.drop()** 或 .property()**。
 
 ## <a name="next-steps"></a>後續步驟
-* Azure Cosmos DB 中的[角色型存取控制](role-based-access-control.md)
+* [Azure 角色型存取控制 (AZURE RBAC) ](role-based-access-control.md)的 Azure Cosmos DB
 * [了解如何保護對 Azure Cosmos DB 中資料的存取](secure-access-to-data.md)

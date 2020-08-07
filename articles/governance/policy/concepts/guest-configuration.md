@@ -3,12 +3,12 @@ title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8c0f5d4df640fa29f88b3c4c6c0403ad9de97dea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901975"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921685"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -69,7 +69,7 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 |Microsoft|Windows Server|2012 和更新版本|
 |Microsoft|Windows 用戶端|Windows 10|
 |OpenLogic|CentOS|7.3 和更新版本|
-|Red Hat|Red Hat Enterprise Linux|7.4-7.8、9.0 和更新版本|
+|Red Hat|Red Hat Enterprise Linux|7.4-7。8|
 |Suse|SLES|12 SP3 和更新版本|
 
 只要自訂虛擬機器映像是上表中的其中一個作業系統，「來賓設定」原則就會提供支援。

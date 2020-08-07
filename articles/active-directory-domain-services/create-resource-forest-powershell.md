@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: d5eef553d0d3bf5acbcb61ef8f2dcfab88a53266
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505766"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921991"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 建立內部部署網域的 Azure Active Directory Domain Services 資源樹系和輸出樹系信任
 
@@ -36,7 +36,7 @@ ms.locfileid: "87505766"
 > [!IMPORTANT]
 > 受控網域資源樹系目前不支援 Azure HDInsight 或 Azure 檔案儲存體。 預設的受控網域使用者樹系支援這兩個額外的服務。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 若要完成本文章，您需要下列資源和權限：
 
@@ -102,7 +102,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 1. 請檢查腳本所需的下列參數 `New-AzureAaddsForest` 。 請確定您也有必要的**Azure PowerShell**和**Azure AD PowerShell**模組。 請確定您已規劃虛擬網路需求，以提供應用程式和內部部署連線能力。
 
-    | Name                         | 腳本參數          | 描述 |
+    | 名稱                         | 腳本參數          | 描述 |
     |:-----------------------------|---------------------------|:------------|
     | 訂用帳戶                 | *-azureSubscriptionId*    | 用於 Azure AD DS 帳單的訂用帳戶識別碼。 您可以使用[AzureRMSubscription][Get-AzureRMSubscription] Cmdlet 來取得訂用帳戶的清單。 |
     | 資源群組               | *-aaddsResourceGroupName* | 受控網域和相關聯資源的資源組名。 |
@@ -112,14 +112,14 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
     `New-AzureAaddsForest`如果這些資源尚未存在，腳本可以建立 Azure 虛擬網路和 AZURE AD DS 子網。 當指定時，腳本可以選擇性地建立工作負載子網：
 
-    | Name                              | 腳本參數                  | 說明 |
+    | 名稱                              | 腳本參數                  | 描述 |
     |:----------------------------------|:----------------------------------|:------------|
     | 虛擬網路名稱              | *-aaddsVnetName*                  | 受控網域的虛擬網路名稱。|
-    | 位址空間                     | *-aaddsVnetCIDRAddressSpace*      | 以 CIDR 標記法表示的虛擬網路位址範圍（如果建立虛擬網路）。|
+    | 位址空間                     | *-aaddsVnetCIDRAddressSpace*      | 如果建立虛擬網路) ， (CIDR 標記法中的虛擬網路位址範圍。|
     | Azure AD DS 子網名稱           | *-aaddsSubnetName*                | 裝載受控網域之*aaddsVnetName*虛擬網路的子網名稱。 請勿將您自己的 Vm 和工作負載部署到此子網。 |
     | Azure AD DS 位址範圍         | *-aaddsSubnetCIDRAddressRange*    | AAD DS 實例的子網位址範圍（採用 CIDR 標記法），例如*192.168.1.0/24*。 位址範圍必須包含在虛擬網路的位址範圍內，而且與其他子網不同。 |
-    | 工作負載子網名稱（選擇性）   | *-workloadSubnetName*             | 在*aaddsVnetName*虛擬網路中，為您自己的應用程式工作負載建立的選擇性子網名稱。 Vm 和應用程式，也會改為連線至對等互連 Azure 虛擬網路。 |
-    | 工作負載位址範圍（選擇性） | *-workloadSubnetCIDRAddressRange* | 應用程式工作負載的選擇性子網位址範圍（CIDR 標記法），例如*192.168.2.0/24*。 位址範圍必須包含在虛擬網路的位址範圍內，而且與其他子網不同。|
+    | 工作負載子網名稱 (選擇性)    | *-workloadSubnetName*             | 在*aaddsVnetName*虛擬網路中，為您自己的應用程式工作負載建立的選擇性子網名稱。 Vm 和應用程式，也會改為連線至對等互連 Azure 虛擬網路。 |
+    | 工作負載位址範圍 (選擇性)  | *-workloadSubnetCIDRAddressRange* | 應用程式工作負載的選擇性子網位址範圍（CIDR 標記法），例如*192.168.2.0/24*。 位址範圍必須包含在虛擬網路的位址範圍內，而且與其他子網不同。|
 
 1. 現在，使用腳本建立受控網域資源樹系 `New-AzureAaaddsForest` 。 下列範例會建立名為*addscontoso.com*的樹系，並建立工作負載子網。 提供您自己的參數名稱和 IP 位址範圍，或現有的虛擬網路。
 
@@ -148,8 +148,8 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 1. 使用 Azure VPN 或 Azure ExpressRoute 連線，建立與內部部署網路到 Azure 的混合式連線。 混合式網路設定已超出本檔的範圍，而且可能已存在於您的環境中。 如需特定案例的詳細資訊，請參閱下列文章：
 
-    * [Azure 站對站 VPN](/vpn-gateway/vpn-gateway-about-vpngateways)。
-    * [Azure ExpressRoute 總覽](/vpn-gateway/vpn-gateway-about-vpngateways)。
+    * [Azure 站對站 VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
+    * [Azure ExpressRoute 總覽](/azure/expressroute/expressroute-introduction)。
 
     > [!IMPORTANT]
     > 如果您直接對受控網域的虛擬網路建立連線，請使用個別的閘道子網。 請勿在受控網域的子網中建立閘道。
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 現在提供下列資訊給腳本：
 
-| Name                               | 腳本參數     | 說明 |
+| 名稱                               | 腳本參數     | 描述 |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS 功能變數名稱            | *-ManagedDomainFqdn* | 受控網域的 FQDN，例如*aaddscontoso.com* |
 | 內部部署 AD DS 功能變數名稱      | *-TrustFqdn*         | 受信任樹系的 FQDN，例如*onprem.contoso.com* |
@@ -257,7 +257,7 @@ Add-AaddsResourceForestTrust `
 
 您應該將 Windows Server 虛擬機器加入受控網域資源網域。 使用這部虛擬機器來測試您的內部部署使用者是否可以在虛擬機器上進行驗證。
 
-1. 使用遠端桌面和您的受控網域系統管理員認證，連接到已加入受控網域資源樹系的 Windows Server VM。 如果您收到網路層級驗證（NLA）錯誤，請檢查您所使用的使用者帳戶不是網域使用者帳戶。
+1. 使用遠端桌面和您的受控網域系統管理員認證，連接到已加入受控網域資源樹系的 Windows Server VM。 如果您收到網路層級驗證 (NLA) 錯誤，請檢查您所使用的使用者帳戶不是網域使用者帳戶。
 
     > [!TIP]
     > 若要安全地連接到已加入 Azure AD Domain Services 的 Vm，您可以在支援的 Azure 區域中使用[azure 防禦主機服務](https://docs.microsoft.com/azure/bastion/bastion-overview)。
@@ -283,7 +283,7 @@ Add-AaddsResourceForestTrust `
 
 #### <a name="enable-file-and-printer-sharing"></a>啟用檔案及印表機共用
 
-1. 使用遠端桌面和您的受控網域系統管理員認證，連接到已加入受控網域資源樹系的 Windows Server VM。 如果您收到網路層級驗證（NLA）錯誤，請檢查您所使用的使用者帳戶不是網域使用者帳戶。
+1. 使用遠端桌面和您的受控網域系統管理員認證，連接到已加入受控網域資源樹系的 Windows Server VM。 如果您收到網路層級驗證 (NLA) 錯誤，請檢查您所使用的使用者帳戶不是網域使用者帳戶。
 
     > [!TIP]
     > 若要安全地連接到已加入 Azure AD Domain Services 的 Vm，您可以在支援的 Azure 區域中使用[azure 防禦主機服務](https://docs.microsoft.com/azure/bastion/bastion-overview)。
@@ -305,7 +305,7 @@ Add-AaddsResourceForestTrust `
 1. 在 [輸入要選取的物件名稱] 方塊中輸入「網域使用者」。 選取 [檢查名稱]並提供內部部署 Active Directory 的認證，然後選取 [確定]。
 
     > [!NOTE]
-    > 您必須提供認證，因為信任關係只有單向。 這表示來自受控網域的使用者無法存取資源，或搜尋受信任（內部部署）網域中的使用者或群組。
+    > 您必須提供認證，因為信任關係只有單向。 這表示來自受控網域的使用者無法存取資源，或在受信任的 (內部部署) 網域中搜尋使用者或群組。
 
 1. 來自內部部署 Active Directory 的**網域使用者**群組應該是 **FileServerAccess** 群組的成員。 選取 [確定] 儲存群組並關閉視窗。
 

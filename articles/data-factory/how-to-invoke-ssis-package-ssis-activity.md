@@ -1,6 +1,6 @@
 ---
 title: 使用執行 SSIS 套件活動執行 SSIS 套件
-description: 本文說明如何使用執行 SSIS 套件活動，在 Azure Data Factory 管線中執行 SQL Server Integration Services （SSIS）套件。
+description: 本文說明如何使用執行 SSIS 套件活動，在 Azure Data Factory 管線中執行 SQL Server Integration Services (SSIS) 套件。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -14,27 +14,27 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/20/2020
-ms.openlocfilehash: 2f8706fa8b272075ec64e2d36475509732914acf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0b6aba2b857a16631871d13f4a0fc14b682393e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003173"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926690"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>在 Azure Data Factory 中使用 Execute SSIS 套件活動執行 SSIS 套件
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本文說明如何使用執行 SSIS 套件活動，在 Azure Data Factory 管線中執行 SQL Server Integration Services （SSIS）套件。 
+本文說明如何使用執行 SSIS 套件活動，在 Azure Data Factory 管線中執行 SQL Server Integration Services (SSIS) 套件。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-建立 Azure SSIS integration runtime （IR），如果您還沒有遵循[教學課程：布建 AZURE SSIS IR](tutorial-create-azure-ssis-runtime-portal.md)中的逐步指示。
+如果您還沒有遵循[教學課程：布建 AZURE SSIS IR](tutorial-create-azure-ssis-runtime-portal.md)中的逐步指示，請 (IR) 建立 azure SSIS 整合執行時間。
 
 ## <a name="run-a-package-in-the-azure-portal"></a>在 Azure 入口網站中執行套件
-在本節中，您會使用 Data Factory 的使用者介面（UI）或應用程式，以執行 SSIS 套件的 Execute SSIS 套件活動來建立 Data Factory 管線。
+在本節中，您會使用 Data Factory 使用者介面 (UI) 或應用程式，以執行 SSIS 套件的 Execute SSIS 套件活動來建立 Data Factory 管線。
 
 ### <a name="create-a-pipeline-with-an-execute-ssis-package-activity"></a>使用 Execute SSIS 套件活動建立管線
 在此步驟中，您會使用 Data Factory UI 或應用程式來建立管線。 您要將 Execute SSIS 套件活動新增至管線，並設定它來執行 SSIS 套件。 
@@ -91,13 +91,13 @@ ms.locfileid: "87003173"
       
    1. 選取 [ **32 位運行**時間] 核取方塊，選擇您的套件是否需要執行32位執行時間。
 
-   1. 針對 [**封裝位置**]，選取 [ **SSISDB**]、 **[檔案系統（封裝）**]、 **[檔案系統（專案）**]、[**內嵌封裝**] 或 [**封裝存放區**] 
+   1. 針對 [**封裝位置**]，選取 [ **SSISDB**]、[**檔案系統] (封裝) **、**檔案系統 (專案) **、**內嵌封裝**或**封裝存放區**。 
 
 ##### <a name="package-location-ssisdb"></a>套件位置： SSISDB
 
-如果您的 Azure SSIS IR 是以 Azure SQL Database server/受控執行個體所裝載的 SSIS 目錄（SSISDB）布建，則會自動選取**SSISDB**作為您的套件位置，或者您可以自行選取。 如果已選取，請完成下列步驟。
+如果您的 Azure SSIS IR 是使用 SSIS 目錄布建 (SSISDB) 裝載 Azure SQL Database server/受控執行個體，或者您可以自行選取，則會自動選取**ssisdb**作為套件位置。 如果已選取，請完成下列步驟。
 
-   1. 如果您的 Azure SSIS IR 正在執行，且已清除 [**手動輸入**] 核取方塊，請從 SSISDB 流覽並選取現有的資料夾、專案、封裝和環境。 選取 [重新整理 **]，從**SSISDB 提取新加入的資料夾、專案、套件或環境，讓它們可供流覽和選取。 若要流覽並選取封裝執行的環境，您必須事先設定專案，將這些環境新增為 SSISDB 底下相同資料夾中的參考。 如需詳細資訊，請參閱[建立和對應 SSIS 環境](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)。
+   1. 如果您的 Azure SSIS IR 正在執行，且已清除 [**手動輸入**] 核取方塊，請從 SSISDB 流覽並選取現有的資料夾、專案、封裝和環境。 選取 [重新整理 **]，從**SSISDB 提取新加入的資料夾、專案、套件或環境，讓它們可供流覽和選取。 若要流覽並選取封裝執行的環境，您必須事先設定專案，將這些環境新增為 SSISDB 底下相同資料夾中的參考。 如需詳細資訊，請參閱[建立和對應 SSIS 環境](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages)。
 
    1. 針對 [記錄層級]****，針對您的套件執行選取預先定義的記錄範圍。 如果您想要改為輸入自訂的記錄名稱，請選取 [**自訂**] 核取方塊。 
 
@@ -105,25 +105,25 @@ ms.locfileid: "87003173"
 
       ![在 [設定] 索引標籤上設定屬性 - 手動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
-##### <a name="package-location-file-system-package"></a>封裝位置：檔案系統（套件）
+##### <a name="package-location-file-system-package"></a>封裝位置：檔案系統 (封裝) 
 
-如果您的 Azure SSIS IR 是在沒有 SSISDB 的情況下布建，則會自動選取**檔案系統（套件）** ，而您可以自行選取此套件位置。 如果已選取，請完成下列步驟。
+如果您的 Azure SSIS IR 已布建但沒有 SSISDB，則會自動選取**檔案系統 (套件) ** ，而您可以自行加以選取。 如果已選取，請完成下列步驟。
 
-![在 [設定] 索引標籤上設定屬性-檔案系統（套件）](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+![在 [設定] 索引標籤上設定屬性-[檔案系統] (封裝) ](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
    
-   1. 藉由 `.dtsx` 在 [**封裝路徑**] 方塊中提供封裝檔案（使用）的通用命名慣例（UNC）路徑，指定要執行的封裝。 您可以藉由選取 **[流覽檔案] [儲存體]** 或 [手動輸入路徑]，來流覽並選取您的套件。 例如，如果您將封裝儲存在 Azure 檔案儲存體中，其路徑為 `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx` 。 
+   1. 藉由提供通用命名慣例 (UNC) 路徑來指定要執行的封裝， (使用 `.dtsx` [**封裝路徑**] 方塊中的) 。 您可以藉由選取 **[流覽檔案] [儲存體]** 或 [手動輸入路徑]，來流覽並選取您的套件。 例如，如果您將封裝儲存在 Azure 檔案儲存體中，其路徑為 `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx` 。 
    
-   1. 如果您在不同的檔案中設定您的封裝，您也必須在 [設定路徑] 方塊中，提供您的設定檔（使用）的 UNC 路徑 `.dtsConfig` 。 **Configuration path** 您可以流覽並選取您的設定，方法是選取 **[流覽檔案] [儲存體]** ，或手動輸入其路徑。 例如，如果您將設定儲存在 Azure 檔案儲存體中，其路徑為 `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` 。
+   1. 如果您在不同的檔案中設定封裝，您也必須在 [設定路徑] 方塊中使用) ，提供設定檔的 UNC 路徑 (`.dtsConfig` 。 **Configuration path** 您可以流覽並選取您的設定，方法是選取 **[流覽檔案] [儲存體]** ，或手動輸入其路徑。 例如，如果您將設定儲存在 Azure 檔案儲存體中，其路徑為 `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` 。
 
-   1. 指定用來存取封裝和設定檔的認證。 如果您先前已輸入封裝執行認證的值（ **Windows 驗證**），您可以選取 [與**封裝執行認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入套件存取認證的值。 例如，如果您將封裝和設定儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 
+   1. 指定用來存取封裝和設定檔的認證。 如果您先前已輸入 (**Windows 驗證**) 的封裝執行認證值，您可以選取 [與**封裝執行認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入套件存取認證的值。 例如，如果您將封裝和設定儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 
 
       或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值。 若要這麼做，請選取其旁邊的 [ **AZURE 金鑰保存庫**] 核取方塊。 選取或編輯現有的金鑰保存庫連結服務，或建立一個新的。 然後選取您的值的密碼名稱和版本。 當您建立或編輯金鑰保存庫連結服務時，您可以選取或編輯現有的金鑰保存庫，或建立一個新的。 如果您尚未這麼做，請務必將您的金鑰保存庫存取權授與 Data Factory 受控識別。 您也可以直接以下列格式輸入您的密碼： `<key vault linked service name>/<secret name>/<secret version>` 。 
 
       這些認證也會用來存取「執行封裝」工作中的子封裝，這些是由自己的路徑和封裝中指定的其他設定所參考。 
 
-   1. 如果您在透過 SQL Server Data Tools （SSDT）建立套件時使用了**EncryptAllWithPassword**或**EncryptSensitiveWithPassword**保護層級，請在 [**加密密碼**] 方塊中輸入密碼的值。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值（請參閱上文）。
+   1. 如果您在透過 SQL Server Data Tools (SSDT) 建立套件時使用了**EncryptAllWithPassword**或**EncryptSensitiveWithPassword**保護層級，請在 [**加密密碼**] 方塊中輸入密碼的值。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值 (查看上述) 。
       
-      如果您使用**EncryptSensitiveWithUserKey**保護層級，請在設定檔中或在 [ **SSIS 參數**]、[**連線管理員**] 或 [**屬性覆寫**] 索引標籤上重新輸入敏感性值（請參閱下文）。
+      如果您使用**EncryptSensitiveWithUserKey**保護層級，請在設定檔中重新輸入敏感性值，或在 [ **SSIS 參數**]、[**連接管理員**] 或 [**屬性覆寫**] 索引標籤上， (看到下列) 。
       
       如果您使用**EncryptAllWithUserKey**保護層級，則不受支援。 您需要重新設定您的套件，以透過 SSDT 或 `dtutil` 命令列公用程式使用另一個保護層級。 
 
@@ -131,27 +131,27 @@ ms.locfileid: "87003173"
    
    1. 如果您想要使用可在套件中指定的標準記錄提供者來記錄封裝執行，請在 [**記錄路徑**] 方塊中提供其 UNC 路徑來指定記錄檔資料夾。 您可以選取 **[流覽檔案] [儲存體**]，或手動輸入其路徑，以流覽並選取您的記錄檔資料夾。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，您的記錄路徑會是 `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` 。 在此路徑中，會為每個個別的封裝執行建立子資料夾，並在執行 SSIS 套件活動執行識別碼之後，以及每五分鐘產生一次記錄檔。 
    
-   1. 指定認證以存取您的記錄檔資料夾。 如果您先前已輸入套件存取認證的值（請參閱上述），您可以選取 [與**封裝存取認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入記錄存取認證的值。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值（請參閱上文）。
+   1. 指定認證以存取您的記錄檔資料夾。 如果您先前已輸入套件存取認證的值 (參閱上述) ，您可以選取 [與**封裝存取認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入記錄存取認證的值。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值 (查看上述) 。
    
 針對先前提到的所有 UNC 路徑，完整檔案名必須少於260個字元。 目錄名稱必須少於248個字元。
 
-##### <a name="package-location-file-system-project"></a>封裝位置：檔案系統（專案）
+##### <a name="package-location-file-system-project"></a>封裝位置：檔案系統 (專案) 
 
-如果您選取 **[檔案系統（專案）** ] 做為封裝位置，請完成下列步驟。
+如果您選取 [**檔案系統] (專案) **做為封裝位置，請完成下列步驟。
 
-![設定 [設定] 索引標籤上的屬性-檔案系統（專案）](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+![在 [設定] 索引標籤上設定屬性-[檔案系統] (專案) ](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
-   1. 指定要執行的封裝，方法是在 [專案路徑] 方塊中提供專案檔的 UNC 路徑（使用 `.ispac` ），並在**Project path** `.dtsx` [**封裝名稱**] 方塊中，從專案中提供封裝檔案（使用）。 您可以流覽並選取您的專案，方法是選取 **[流覽檔案] [儲存體]** ，或手動輸入其路徑。 例如，如果您將專案儲存在 Azure 檔案儲存體中，其路徑為 `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac` 。
+   1. 指定要執行的封裝，方法是提供專案檔的 UNC 路徑 (`.ispac` 並在 [**專案路徑**] 方塊中使用) ，並在 [ `.dtsx` **封裝名稱**] 方塊中，使用您專案的)  (封裝檔案。 您可以流覽並選取您的專案，方法是選取 **[流覽檔案] [儲存體]** ，或手動輸入其路徑。 例如，如果您將專案儲存在 Azure 檔案儲存體中，其路徑為 `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac` 。
 
-   1. 指定用來存取專案和封裝檔案的認證。 如果您先前已輸入封裝執行認證的值（ **Windows 驗證**），您可以選取 [與**封裝執行認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入套件存取認證的值。 例如，如果您將專案和封裝儲存在 Azure 檔案儲存體中，則網域會是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 
+   1. 指定用來存取專案和封裝檔案的認證。 如果您先前已輸入 (**Windows 驗證**) 的封裝執行認證值，您可以選取 [與**封裝執行認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入套件存取認證的值。 例如，如果您將專案和封裝儲存在 Azure 檔案儲存體中，則網域會是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 
 
       或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值。 若要這麼做，請選取其旁邊的 [ **AZURE 金鑰保存庫**] 核取方塊。 選取或編輯現有的金鑰保存庫連結服務，或建立一個新的。 然後選取您的值的密碼名稱和版本。 當您建立或編輯金鑰保存庫連結服務時，您可以選取或編輯現有的金鑰保存庫，或建立一個新的。 如果您尚未這麼做，請務必將您的金鑰保存庫存取權授與 Data Factory 受控識別。 您也可以直接以下列格式輸入您的密碼： `<key vault linked service name>/<secret name>/<secret version>` 。 
 
       這些認證也會用來存取相同專案所參考之「執行封裝」工作中的子封裝。 
 
-   1. 如果您在透過 SSDT 建立套件時使用了**EncryptAllWithPassword**或**EncryptSensitiveWithPassword**保護層級，請在 [**加密密碼**] 方塊中輸入密碼的值。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值（請參閱上文）。
+   1. 如果您在透過 SSDT 建立套件時使用了**EncryptAllWithPassword**或**EncryptSensitiveWithPassword**保護層級，請在 [**加密密碼**] 方塊中輸入密碼的值。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值 (查看上述) 。
       
-      如果您使用**EncryptSensitiveWithUserKey**保護層級，請在 [ **SSIS 參數**]、[**連線管理員**] 或 [**屬性覆寫**] 索引標籤上重新輸入敏感性值（請參閱下文）。
+      如果您使用**EncryptSensitiveWithUserKey**保護層級，請在 [ **SSIS 參數**]、[**連線管理員**] 或 [**屬性覆寫**] 索引標籤上重新輸入您的機密值 () 下方查看。
       
       如果您使用**EncryptAllWithUserKey**保護層級，則不受支援。 您需要重新設定您的套件，以透過 SSDT 或 `dtutil` 命令列公用程式使用另一個保護層級。 
 
@@ -159,7 +159,7 @@ ms.locfileid: "87003173"
    
    1. 如果您想要使用可在套件中指定的標準記錄提供者來記錄封裝執行，請在 [**記錄路徑**] 方塊中提供其 UNC 路徑來指定記錄檔資料夾。 您可以選取 **[流覽檔案] [儲存體**]，或手動輸入其路徑，以流覽並選取您的記錄檔資料夾。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，您的記錄路徑會是 `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` 。 在此路徑中，會為每個個別的封裝執行建立子資料夾，並在執行 SSIS 套件活動執行識別碼之後，以及每五分鐘產生一次記錄檔。 
    
-   1. 指定認證以存取您的記錄檔資料夾。 如果您先前已輸入套件存取認證的值（請參閱上述），您可以選取 [與**封裝存取認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入記錄存取認證的值。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值（請參閱上文）。
+   1. 指定認證以存取您的記錄檔資料夾。 如果您先前已輸入套件存取認證的值 (參閱上述) ，您可以選取 [與**封裝存取認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入記錄存取認證的值。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值 (查看上述) 。
    
 針對先前提到的所有 UNC 路徑，完整檔案名必須少於260個字元。 目錄名稱必須少於248個字元。
 
@@ -169,17 +169,17 @@ ms.locfileid: "87003173"
 
 ![設定 [設定] 索引標籤上的屬性-內嵌套件](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
 
-   1. 拖放套件檔案（使用）， `.dtsx` 或從檔案資料夾將它**上傳**到提供的方塊中。 您的套件會自動壓縮並內嵌在活動裝載中。 內嵌之後，您可以稍後**下載**您的套件以進行編輯。 您也可以將內嵌套件**參數**化，方法是將它指派給可用於多個活動的管線參數，進而優化管線裝載的大小。 `.ispac`目前不支援內嵌專案檔（含），因此您不能將 SSIS 參數/連線管理員與內嵌封裝中的專案層級範圍搭配使用。
+   1. 將套件檔案 (拖放) ， `.dtsx` 或從檔案資料夾將它**上傳**到提供的方塊中。 您的套件會自動壓縮並內嵌在活動裝載中。 內嵌之後，您可以稍後**下載**您的套件以進行編輯。 您也可以將內嵌套件**參數**化，方法是將它指派給可用於多個活動的管線參數，進而優化管線裝載的大小。 目前不支援使用) 來內嵌專案檔 (`.ispac` ，因此您無法在內嵌封裝中使用 SSIS 參數/連接管理員與專案層級的範圍。
    
-   1. 如果您的內嵌封裝並非全部加密，而且我們偵測到在其中使用「執行封裝工作」（EPT），則會自動選取 [**執行封裝**工作] 核取方塊，並自動新增其檔案系統路徑所參考的子封裝，因此您也可以將它們內嵌。
+   1. 如果您的內嵌封裝並未全部加密，而且我們偵測到 (EPT) 使用「執行封裝工作」，則會自動選取 [**執行封裝**工作] 核取方塊，而且系統會自動新增其檔案系統路徑所參考的子封裝，因此您也可以將其內嵌。
    
-      如果無法偵測到 EPT 的使用，您需要手動選取 [**執行封裝**工作] 核取方塊，並新增其檔案系統路徑所參照的子封裝，以便您也可以內嵌它們。 如果您的子封裝儲存在 SQL Server 資料庫（MSDB）中，您就無法將其內嵌，因此您必須確定您的 Azure SSIS IR 可以存取 MSDB，以使用其 SQL Server 參考進行提取。 目前不支援內嵌專案檔（含 `.ispac` ），因此您無法針對子封裝使用專案型參考。
+      如果無法偵測到 EPT 的使用，您需要手動選取 [**執行封裝**工作] 核取方塊，並新增其檔案系統路徑所參照的子封裝，以便您也可以內嵌它們。 如果您的子封裝儲存在 SQL Server 資料庫 (MSDB) 中，您就無法將其內嵌，因此您必須確定您的 Azure SSIS IR 可以存取 MSDB，以使用其 SQL Server 參考來提取它們。 目前不支援使用) 內嵌專案檔 (`.ispac` ，因此您無法針對子封裝使用專案型參考。
    
    1. 如果您在透過 SSDT 建立套件時使用了**EncryptAllWithPassword**或**EncryptSensitiveWithPassword**保護層級，請在 [**加密密碼**] 方塊中輸入密碼的值。 
    
       或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值。 若要這麼做，請選取旁邊的 [ **AZURE 金鑰保存庫**] 核取方塊。 選取或編輯現有的金鑰保存庫連結服務，或建立一個新的。 然後選取您的值的密碼名稱和版本。 當您建立或編輯金鑰保存庫連結服務時，您可以選取或編輯現有的金鑰保存庫，或建立一個新的。 如果您尚未這麼做，請務必將您的金鑰保存庫存取權授與 Data Factory 受控識別。 您也可以直接以下列格式輸入您的密碼： `<key vault linked service name>/<secret name>/<secret version>` 。
       
-      如果您使用**EncryptSensitiveWithUserKey**保護層級，請在設定檔中或在 [ **SSIS 參數**]、[**連線管理員**] 或 [**屬性覆寫**] 索引標籤上重新輸入敏感性值（請參閱下文）。
+      如果您使用**EncryptSensitiveWithUserKey**保護層級，請在設定檔中重新輸入敏感性值，或在 [ **SSIS 參數**]、[**連接管理員**] 或 [**屬性覆寫**] 索引標籤上， (看到下列) 。
       
       如果您使用**EncryptAllWithUserKey**保護層級，則不受支援。 您需要重新設定您的套件，以透過 SSDT 或 `dtutil` 命令列公用程式使用另一個保護層級。
 
@@ -187,7 +187,7 @@ ms.locfileid: "87003173"
    
    1. 如果您想要使用可在套件中指定的標準記錄提供者來記錄封裝執行，請在 [**記錄路徑**] 方塊中提供其 UNC 路徑來指定記錄檔資料夾。 您可以選取 **[流覽檔案] [儲存體**]，或手動輸入其路徑，以流覽並選取您的記錄檔資料夾。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，您的記錄路徑會是 `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` 。 在此路徑中，會為每個個別的封裝執行建立子資料夾，並在執行 SSIS 套件活動執行識別碼之後，以及每五分鐘產生一次記錄檔。 
    
-   1. 在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入其值，以指定要存取記錄檔資料夾的認證。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值（請參閱上文）。
+   1. 在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入其值，以指定要存取記錄檔資料夾的認證。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值 (查看上述) 。
    
 針對先前提到的所有 UNC 路徑，完整檔案名必須少於260個字元。 目錄名稱必須少於248個字元。
 
@@ -199,19 +199,19 @@ ms.locfileid: "87003173"
    
    1. 針對 [**套件存放區名稱**]，選取附加至您的 AZURE SSIS IR 的現有套件存放區。
 
-   1. `.dtsx`在 [**封裝路徑**] 方塊中，從選取的封裝存放區提供路徑（不含），以指定要執行的封裝。 如果選取的封裝存放區位於檔案系統/Azure 檔案儲存體的頂端，您可以藉由選取 **[流覽檔案儲存體**] 來流覽並選取您的套件，否則您可以使用的格式輸入其路徑 `<folder name>\<package name>` 。 您也可以透過類似[舊版 SSIS 套件存放區](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)的 SQL SERVER MANAGEMENT STUDIO （SSMS），將新封裝匯入到選取的封裝存放區。 如需詳細資訊，請參閱[使用 Azure-SSIS IR 套件存放區管理 SSIS 套件](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store) \(英文\)。
+   1. 藉由在 `.dtsx` [**封裝路徑**] 方塊中，從選取的封裝存放區提供路徑 (，指定要執行的封裝，而不) 。 如果選取的封裝存放區位於檔案系統/Azure 檔案儲存體的頂端，您可以藉由選取 **[流覽檔案儲存體**] 來流覽並選取您的套件，否則您可以使用的格式輸入其路徑 `<folder name>\<package name>` 。 您也可以透過 SQL Server Management Studio (SSMS) 類似[舊版 SSIS 封裝存放區](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)，將新封裝匯入到選取的封裝存放區。 如需詳細資訊，請參閱[使用 Azure-SSIS IR 套件存放區管理 SSIS 套件](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store) \(英文\)。
 
-   1. 如果您在不同的檔案中設定您的套件，您需要在 [設定路徑] 方塊中提供設定檔案的 UNC 路徑（使用 `.dtsConfig` ）。 **Configuration path** 您可以流覽並選取您的設定，方法是選取 **[流覽檔案] [儲存體]** ，或手動輸入其路徑。 例如，如果您將設定儲存在 Azure 檔案儲存體中，其路徑為 `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` 。
+   1. 如果您在不同的檔案中設定您的套件，您需要在 [設定路徑] 方塊中，提供設定檔的 UNC 路徑 (與 `.dtsConfig`) 。 **Configuration path** 您可以流覽並選取您的設定，方法是選取 **[流覽檔案] [儲存體]** ，或手動輸入其路徑。 例如，如果您將設定儲存在 Azure 檔案儲存體中，其路徑為 `\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig` 。
 
-   1. 選取 [設定**存取認證**] 核取方塊，選擇是否要分別指定要存取設定檔的認證。 當選取的封裝存放區位於 Azure SQL 受控執行個體所裝載的 SQL Server 資料庫（MSDB）上方，或也不會儲存您的設定檔時，就需要進行這項操作。
+   1. 選取 [設定**存取認證**] 核取方塊，選擇是否要分別指定要存取設定檔的認證。 當選取的封裝存放區位於 Azure SQL 受控執行個體所裝載的 SQL Server 資料庫 (MSDB) 上，或者也不會儲存您的設定檔時，就需要進行這項操作。
    
-      如果您先前已輸入封裝執行認證的值（ **Windows 驗證**），您可以選取 [與**封裝執行認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入設定存取認證的值。 例如，如果您將設定儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 
+      如果您先前已輸入 (**Windows 驗證**) 的封裝執行認證值，您可以選取 [與**封裝執行認證相同**] 核取方塊來重複使用它們。 否則，請在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入設定存取認證的值。 例如，如果您將設定儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 
 
       或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值。 若要這麼做，請選取其旁邊的 [ **AZURE 金鑰保存庫**] 核取方塊。 選取或編輯現有的金鑰保存庫連結服務，或建立一個新的。 然後選取您的值的密碼名稱和版本。 當您建立或編輯金鑰保存庫連結服務時，您可以選取或編輯現有的金鑰保存庫，或建立一個新的。 如果您尚未這麼做，請務必將您的金鑰保存庫存取權授與 Data Factory 受控識別。 您也可以直接以下列格式輸入您的密碼： `<key vault linked service name>/<secret name>/<secret version>` 。
 
-   1. 如果您在透過 SSDT 建立套件時使用了**EncryptAllWithPassword**或**EncryptSensitiveWithPassword**保護層級，請在 [**加密密碼**] 方塊中輸入密碼的值。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值（請參閱上文）。
+   1. 如果您在透過 SSDT 建立套件時使用了**EncryptAllWithPassword**或**EncryptSensitiveWithPassword**保護層級，請在 [**加密密碼**] 方塊中輸入密碼的值。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值 (查看上述) 。
       
-      如果您使用**EncryptSensitiveWithUserKey**保護層級，請在設定檔中或在 [ **SSIS 參數**]、[**連線管理員**] 或 [**屬性覆寫**] 索引標籤上重新輸入敏感性值（請參閱下文）。
+      如果您使用**EncryptSensitiveWithUserKey**保護層級，請在設定檔中重新輸入敏感性值，或在 [ **SSIS 參數**]、[**連接管理員**] 或 [**屬性覆寫**] 索引標籤上， (看到下列) 。
       
       如果您使用**EncryptAllWithUserKey**保護層級，則不受支援。 您需要重新設定您的套件，以透過 SSDT 或 `dtutil` 命令列公用程式使用另一個保護層級。 
 
@@ -219,7 +219,7 @@ ms.locfileid: "87003173"
    
    1. 如果您想要使用可在套件中指定的標準記錄提供者來記錄封裝執行，請在 [**記錄路徑**] 方塊中提供其 UNC 路徑來指定記錄檔資料夾。 您可以選取 **[流覽檔案] [儲存體**]，或手動輸入其路徑，以流覽並選取您的記錄檔資料夾。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，您的記錄路徑會是 `\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>` 。 在此路徑中，會為每個個別的封裝執行建立子資料夾，並在執行 SSIS 套件活動執行識別碼之後，以及每五分鐘產生一次記錄檔。 
    
-   1. 在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入其值，以指定要存取記錄檔資料夾的認證。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值（請參閱上文）。
+   1. 在 [**網域**]、[使用者**名稱**] 和 [**密碼**] 方塊中輸入其值，以指定要存取記錄檔資料夾的認證。 例如，如果您將記錄儲存在 Azure 檔案儲存體中，則網域是 `Azure` 、使用者名稱是 `<storage account name>` ，而密碼是 `<storage account key>` 。 或者，您可以使用儲存在 Azure Key Vault 中的秘密作為其值 (查看上述) 。
    
 針對先前提到的所有 UNC 路徑，完整檔案名必須少於260個字元。 目錄名稱必須少於248個字元。
 
@@ -231,7 +231,7 @@ ms.locfileid: "87003173"
 
    1. 如果您的 Azure SSIS IR 正在執行，則會選取**SSISDB**作為您的封裝位置，並清除 [**設定**] 索引標籤上的 [**手動專案**] 核取方塊，並顯示您所選取專案中的現有 SSIS 參數和 SSISDB 中的封裝，讓您為其指派值。 否則，您可以逐一輸入它們，以手動為其指派值。 請確定它們存在且已正確輸入，您的套件執行才會成功。 
    
-   1. 如果您在透過 SSDT 和**檔案系統（套件）** 建立套件時使用了**EncryptSensitiveWithUserKey**保護層級、**檔案系統（專案）**、**內嵌封裝**或**封裝存放區**做為封裝位置，則也需要重新輸入您的敏感性參數，以在此索引標籤上指派值給它們。 
+   1. 如果您在透過 SSDT 和檔案系統建立封裝時使用了**EncryptSensitiveWithUserKey**保護層級** (封裝) **、**檔案系統 (專案) **、**內嵌封裝**或**封裝存放區**已選取為封裝位置，則您也需要重新輸入您的敏感性參數，以便在此索引標籤上指派值給它們。 
    
 當您將值指派給參數時，您可以使用運算式、函式、Data Factory 系統變數，以及 Data Factory 管線參數或變數來加入動態內容。
 
@@ -251,11 +251,11 @@ ms.locfileid: "87003173"
 
       例如，如果不修改 SSDT 上的原始套件，您可以在執行時間覆寫現有連線管理員中的**ConnectByProxy**、 **ConnectionString**和**ConnectUsingManagedIdentity**屬性值，將在 SQL Server 上執行的內部部署對內部部署資料流程轉換為在 ADF 中的 SSIS IR 上執行的內部部署對雲端資料流程程。
       
-      這些執行時間覆寫可以在存取內部部署資料時，啟用自我裝載 IR （SHIR）作為 SSIS IR 的 proxy，請參閱設定[SHIR 作為 SSIS ir 的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)，以及使用最新的內含 msoledbsql.h 驅動程式 Azure SQL Database/受控執行個體連線，進而啟用使用 adf 受控識別的 AZURE ACTIVE DIRECTORY （AAD）驗證，請參閱[針對 OLEDB 連接使用 adf 受控識別設定 AAD 驗證](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
+      這些執行時間覆寫可以在存取內部部署的資料時，啟用自我裝載 IR (SHIR) 作為 SSIS IR 的 proxy，請參閱設定[SHIR 作為 SSIS ir 的 proxy](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)，並使用最新的內含 msoledbsql.h 驅動程式 Azure SQL Database/受控執行個體連線，進而啟用使用 adf 受控識別的 AZURE ACTIVE DIRECTORY (aad) 驗證，請參閱[針對 OLEDB 連接使用 adf 受控識別設定 aad 驗證](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)。
 
       ![在 [連線管理員] 索引標籤上設定 SSDT 的屬性](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
    
-   1. 如果您在透過 SSDT 和**檔案系統（套件）** 建立套件時使用了**EncryptSensitiveWithUserKey**保護層級、**檔案系統（專案）**、**內嵌封裝**或**封裝存放區**做為封裝位置，則也需要重新輸入您的敏感性連線管理員屬性，以便在此索引標籤上指派值給它們。 
+   1. 如果您在透過 SSDT 和檔案系統建立封裝時使用了**EncryptSensitiveWithUserKey**保護層級** (封裝) **、**檔案系統 (專案) **、**內嵌封裝**或**封裝存放區**已選取為封裝位置，則您也需要重新輸入您的敏感性連線管理員屬性，以便在此索引標籤上指派值給它們。 
 
 當您將值指派給連接管理員屬性時，您可以使用運算式、函式、Data Factory 系統變數，以及 Data Factory 管線參數或變數來加入動態內容。 
 
@@ -269,7 +269,7 @@ ms.locfileid: "87003173"
 
    1. 逐一輸入所選封裝中現有屬性的路徑，以手動為其指派值。 請確定它們存在且已正確輸入，您的套件執行才會成功。 例如，若要覆寫使用者變數的值，請以下列格式輸入其路徑： `\Package.Variables[User::<variable name>].Value` 。 
 
-      您可以在 SSDT 上開啟包含它的封裝，以取得任何封裝屬性的正確**屬性路徑**。 開啟封裝之後，請在 SSDT 的 [**屬性**] 視窗中選取其 [控制**流程和設定**] 屬性。 接下來，選取 [設定 **] 屬性旁**的省略號（**...**）按鈕，開啟 [**套件設定召集人**]，這通常是用來[在封裝部署模型中建立封裝](https://docs.microsoft.com/sql/integration-services/create-package-configurations?view=sql-server-2014)設定。 
+      您可以在 SSDT 上開啟包含它的封裝，以取得任何封裝屬性的正確**屬性路徑**。 開啟封裝之後，請在 SSDT 的 [**屬性**] 視窗中選取其 [控制**流程和設定**] 屬性。 接下來，選取 [設定 **] 屬性旁邊**的省略號 (**...**) ] 按鈕，開啟 [**套件設定召集人**]，這通常是用來[在封裝部署模型中建立封裝](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations)設定。 
 
       ![從 SSDT 取得封裝屬性-設定屬性](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
 
@@ -283,7 +283,7 @@ ms.locfileid: "87003173"
 
       ![從 SSDT 取得封裝屬性-設定向導](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
    
-   1. 如果您在透過 SSDT 和**檔案系統（套件）** 建立套件時使用了**EncryptSensitiveWithUserKey**保護層級、**檔案系統（專案）**、**內嵌封裝**或**封裝存放區**做為封裝位置，您也必須重新輸入您的敏感性封裝內容，以便在此索引標籤上指派值給它們。 
+   1. 如果您在透過 SSDT 和檔案系統建立封裝時使用了**EncryptSensitiveWithUserKey**保護層級** (封裝) **、**檔案系統 (專案) **、**內嵌封裝**或**封裝存放區**已選取為封裝位置，則您也需要重新輸入您的敏感性封裝內容，以便在此索引標籤上指派值給這些屬性。 
    
 當您將值指派給封裝屬性時，您可以使用運算式、函式、Data Factory 系統變數，以及 Data Factory 管線參數或變數來加入動態內容。
 
@@ -720,6 +720,6 @@ while ($True) {
    select * from catalog.executions
    ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 請參閱下列部落格文章：
 - [使用 Azure Data Factory 管線中的 SSIS 活動，現代化和擴充您的 ETL/ELT 工作流程](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)

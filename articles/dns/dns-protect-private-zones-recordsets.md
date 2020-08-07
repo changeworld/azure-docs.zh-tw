@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 550ed5791df821b1793755f5046da92adf6e3f3a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1bbb410b3aac7d1e30db075003eb30ec27b11a38
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131543"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926581"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>如何保護私人 DNS 區域和記錄
 
@@ -20,11 +20,11 @@ ms.locfileid: "87131543"
 
 私人 DNS 區域和記錄是重要的資源。 刪除 DNS 區域或單一 DNS 記錄可能會導致服務中斷。 請務必保護 DNS 區域和記錄，避免未經授權或意外的變更。
 
-本文說明 Azure DNS 如何讓您根據這類變更來保護私人 DNS 區域和記錄。  我們會套用 Azure Resource Manager 所提供的兩個強大的安全性功能：[角色型存取控制](../role-based-access-control/overview.md)和[資源鎖定](../azure-resource-manager/management/lock-resources.md)。
+本文說明 Azure DNS 如何讓您根據這類變更來保護私人 DNS 區域和記錄。  我們會套用 Azure Resource Manager 所提供的兩個強大的安全性功能： azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)和[資源鎖定](../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-Azure 角色型存取控制（Azure RBAC）可讓您對 Azure 使用者、群組和資源進行更細緻的存取管理。 使用 RBAC，您可以授與使用者所需的存取層級。 如需有關 RBAC 如何協助您管理存取權的詳細資訊，請參閱[什麼是 azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)。
+Azure 角色型存取控制 (Azure RBAC) 可針對 Azure 使用者、群組和資源進行更細緻的存取權管理。 使用 RBAC，您可以授與使用者所需的存取層級。 如需 RBAC 如何協助您管理存取權的詳細資訊，請參閱[什麼是 azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)。
 
 ### <a name="the-private-dns-zone-contributor-role"></a>私人 DNS 區域參與者角色
 
@@ -34,7 +34,7 @@ Azure 角色型存取控制（Azure RBAC）可讓您對 Azure 使用者、群組
 
 指派 RBAC 權限的最簡單方式是[透過 Azure 入口網站](../role-based-access-control/role-assignments-portal.md)。  
 
-開啟資源群組的 **[存取控制（IAM）** ]，選取 [**新增**]，然後選取 [**私人 DNS 區域參與者**] 角色。 選取必要的使用者或群組以授與許可權。
+開啟資源群組的 [**存取控制] (IAM) ** ，選取 [**新增**]，然後選取 [**私人 DNS 區域參與者**] 角色。 選取必要的使用者或群組以授與許可權。
 
 ![透過 Azure 入口網站的資源群組層級 RBAC](./media/dns-protect-private-zones-recordsets/rbac1.png)
 
@@ -67,7 +67,7 @@ Azure RBAC 規則可以套用至訂用帳戶、資源群組或個別資源。 �
 
 例如，資源群組*myPrivateDNS*包含區域*private.contoso.com*和子領域*customers.private.contoso.com*。 系統會為每個客戶帳戶建立 CNAME 記錄。 用來管理 CNAME 記錄的系統管理員帳戶會被指派許可權，以在*customers.private.contoso.com*區域中建立記錄。 帳戶只能管理*customers.private.contoso.com* 。
 
-區域層級 RBAC 權限可以透過 Azure 入口網站授與。  開啟區域的 **[存取控制（IAM）** ]，選取 [**新增**]，然後選取 [**私人 DNS 區域參與者**] 角色。 選取必要的使用者或群組以授與許可權。
+區域層級 RBAC 權限可以透過 Azure 入口網站授與。  開啟 [**存取控制] (區域的 IAM) ** ，選取 [**新增**]，然後選取 [**私人 DNS 區域參與者**] 角色。 選取必要的使用者或群組以授與許可權。
 
 ![透過 Azure 入口網站的 DNS 區域層級 RBAC](./media/dns-protect-private-zones-recordsets/rbac2.png)
 
@@ -100,7 +100,7 @@ az role assignment create \
 
 許可權會套用於記錄集層級。  使用者會被授與所需專案的控制權，而且無法進行任何其他變更。
 
-記錄集層級 RBAC 許可權可透過 Azure 入口網站來設定，使用 [記錄集] 頁面中的 [**存取控制（IAM）** ] 按鈕：
+記錄集層級 RBAC 許可權可以透過 Azure 入口網站，使用 [記錄集] 頁面中的 [**存取控制 (IAM) ** ] 按鈕來設定：
 
 ![透過 Azure 入口網站的記錄集層級 RBAC](./media/dns-protect-private-zones-recordsets/rbac3.png)
 

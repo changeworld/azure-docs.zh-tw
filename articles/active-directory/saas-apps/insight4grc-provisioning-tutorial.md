@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5d5676009e0545ce6245d81e843b53e6f41979a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77621521"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925187"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>教學課程：設定 Insight4GRC 來自動布建使用者
 
-本教學課程說明您需要在 Insight4GRC 和 Azure Active Directory （Azure AD）中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，將使用者和群組自動布建和取消布建至[Insight4GRC](https://www.rsmuk.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教學課程說明您需要在 Insight4GRC 和 Azure Active Directory (Azure AD) 中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，將使用者和群組自動布建和取消布建至[Insight4GRC](https://www.rsmuk.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支援的功能
@@ -33,7 +33,7 @@ ms.locfileid: "77621521"
 > * 當使用者不再需要存取權時，移除 Insight4GRC 中的使用者
 > * 在 Azure AD 和 Insight4GRC 之間保持使用者屬性同步
 > * 在 Insight4GRC 中布建群組和群組成員資格
-> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)Insight4GRC （建議選項）
+> * Insight4GRC (的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)建議) 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -88,7 +88,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[佈建] 索引標籤](common/provisioning-automatic.png)
+    ![佈建索引標籤](common/provisioning-automatic.png)
 
 5. 在 [**管理員認證**] 區段下，于 [租使用者**url**] 中輸入 SCIM 端點 url。 端點 URL 的格式應該是 `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 ` ，其中**Insight4GRC 功能變數名稱**是先前步驟中所抓取的值。 輸入稍早在**秘密權杖**中所取得的持有人權杖值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Insight4GRC。 如果連線失敗，請確定您的 Insight4GRC 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -145,7 +145,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 設定佈建後，請使用下列資源來監視您的部署：
 
 * 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)來判斷哪些使用者已佈建成功或失敗。
-* 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)來查看佈建週期的狀態，以及其接近完成的程度。
+* 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)來查看佈建週期的狀態，以及其接近完成的程度。
 * 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。
 
 ## <a name="additional-resources"></a>其他資源

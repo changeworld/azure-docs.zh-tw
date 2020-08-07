@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 閘道：設定診斷資源記錄檔事件的警示
-description: 在 VPN 閘道診斷資源記錄檔事件上設定警示的步驟
+description: 瞭解如何使用 Azure 監視器 Log Analytics 和 Azure 中可用的資源記錄，根據 Azure VPN 閘道的資源記錄事件設定警示。
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 21fcebf6667eb1bc7741dfb4ba268af42567d58e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d79bdc669ab2c3785b1cde569cfce3021e4d924f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075595"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923181"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>從 VPN 閘道設定資源記錄檔事件的警示
 
@@ -20,7 +20,7 @@ ms.locfileid: "87075595"
 
 以下是 Azure 中可用的資源記錄：
 
-|***名稱*** | ***描述*** |
+|***名稱*** | ***說明*** |
 |---        | ---               |
 |GatewayDiagnosticLog | 包含閘道設定事件、主要變更和維護事件的資源記錄 |
 |TunnelDiagnosticLog | 包含通道狀態變更事件。 通道連接/中斷線上活動具有狀態變更的摘要原因（如果適用） |

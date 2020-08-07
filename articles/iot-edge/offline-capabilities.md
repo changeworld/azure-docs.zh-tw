@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef6ed74149f106b801049da429dfe7b79b984a70
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: e929463c33603c650bec2e9a49a13dde6965e39f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725239"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926649"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>了解 IoT Edge 裝置、模組及子裝置的延伸離線功能
 
@@ -95,7 +95,7 @@ az iot hub device-identity add-children \
 
 #### <a name="option-3-use-iot-hub-service-sdk"></a>選項 3：使用 IoT 中樞服務 SDK
 
-最後，您可以使用 C#、Java 或 Node.js IoT 中樞服務 SDK，以程式設計方式管理父子關聯性。 以下是使用 C# SDK [指派子裝置的範例](https://aka.ms/set-child-iot-device-c-sharp)。
+最後，您可以使用 C#、Java 或 Node.js IoT 中樞服務 SDK，以程式設計方式管理父子關聯性。 以下是使用 C# SDK [指派子裝置的範例](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs)。
 
 ### <a name="set-up-the-parent-device-as-a-gateway"></a>將父裝置設定為閘道
 

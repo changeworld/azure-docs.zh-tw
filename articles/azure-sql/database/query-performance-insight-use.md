@@ -11,20 +11,20 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 01287f344d77dedade30892d76f5fdbd54481df1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 76be966d8202bb56a6762a261be5adeaf2d58d6b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042878"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926394"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database 的查詢效能深入解析
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 查詢效能深入解析提供單一和集區資料庫的智慧型查詢分析。 它有助於識別您的工作負載中最常見的資源取用和長時間執行的查詢。 這可協助您找到要優化的查詢，以改善整體工作負載效能，並有效率地使用您要支付的資源。 查詢效能深入解析藉由提供下列功能，協助您花更少的時間針對資料庫效能進行疑難排解：
 
-* 深入瞭解您的資料庫資源（DTU）耗用量
-* 依 CPU、持續時間和執行計數列出最上層資料庫查詢的詳細資料（效能改進的可能調整候選項目）
+* 深入瞭解您的資料庫資源 (DTU) 耗用量
+* 依 CPU、持續時間和執行計數的前幾個資料庫查詢的詳細資料 (可能的微調候選項目以改善效能) 
 * 能夠向下切入查詢的詳細資料，以查看查詢文字和資源使用率的歷程記錄
 * 顯示來自[資料庫顧問](database-advisor-implement-performance-recommendations.md)之效能建議的批註
 
@@ -39,7 +39,7 @@ ms.locfileid: "86042878"
 
 ## <a name="permissions"></a>權限
 
-必須要有下列[角色型存取控制](../../role-based-access-control/overview.md)權限，才能使用「查詢效能深入解析」︰
+您需要下列[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)許可權，才能使用查詢效能深入解析：
 
 * 檢視最耗用資源的查詢和圖表時，需具備**讀取者**、**擁有者**、**參與者**、**SQL DB 參與者** 或 **SQL Server 參與者**權限。
 * 檢視查詢文字時，需具備**擁有者**、**參與者**、**SQL DB 參與者**或 **SQL Server 參與者**權限。
@@ -86,7 +86,7 @@ ms.locfileid: "86042878"
    > 如需更精細的比較 (最精細為一分鐘)，請考慮建立自訂 DTU 使用率圖表：
    >
    > 1. 在 [Azure 入口網站中，選取 [ **Azure SQL Database**  >  **監視**]。
-   > 2. 選取 [**計量**]。
+   > 2. 選取 [計量]。
    > 3. 選取 [+新增圖表]****。
    > 4. 選取圖表上的 DTU 百分比。
    > 5. 此外，在左上方的功能表上選取 [過去 24 小時]****，並將其變更為一分鐘。
@@ -178,7 +178,7 @@ ms.locfileid: "86042878"
    > 若要更詳盡地了解資料庫的 DTU 耗用量 (最詳細為一分鐘)，請考慮在 Azure 入口網站中建立自訂圖表：
    >
    > 1. 選取 [ **Azure SQL Database**  >  **監視**]。
-   > 2. 選取 [**計量**]。
+   > 2. 選取 [計量]。
    > 3. 選取 [+新增圖表]****。
    > 4. 選取圖表上的 DTU 百分比。
    > 5. 此外，在左上方的功能表上選取 [過去 24 小時]****，並將其變更為一分鐘。
@@ -194,7 +194,7 @@ ms.locfileid: "86042878"
 
 例如，許多資料導向的網站會針對每個使用者要求大量存取資料庫。 雖然連接共用有助於，伺服器上增加的網路流量和處理負載可能會使效能變慢。 一般情況下，應盡可能壓低往返次數。
 
-若要識別經常執行的（「多對話」）查詢：
+若要識別經常執行的 ( 「多對話」 ) 查詢：
 
 1. 針對選取的資料庫，在 [查詢效能深入解析] 中開啟 [自訂]**** 索引標籤。
 2. 將計量變更為 [執行計數]****。

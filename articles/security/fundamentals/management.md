@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224701"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921923"
 ---
 # <a name="security-management-in-azure"></a>Azure 的安全性管理
 Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管理工作站、開發人員的電腦，甚至是具有工作專用權限的特殊權限使用者裝置。 在某些情況下，系統管理功能是透過 web 型主控台（例如[Azure 入口網站](https://azure.microsoft.com/features/azure-portal/)）來執行。 至於其他時候，則可能會從內部部署系統，透過虛擬私人網路 (VPN)、終端機服務、用戶端應用程式通訊協定或 Azure 服務管理 API (SMAPI) (以程式設計方式) 直接連線至 Azure。 此外，用戶端端點也可以加入網域或是遭到隔離且非受控，例如平板電腦或智慧型手機。
@@ -66,7 +66,7 @@ Azure 訂閱者可從多種裝置管理其雲端環境，這些裝置包括管�
 ### <a name="providing-security-for-azure-remote-management"></a>為 Azure 的遠端管理提供安全性
 Azure 提供了安全性機制來協助系統管理員管理 Azure 雲端服務和虛擬機器。 這些機制包括︰
 
-* 驗證和[角色型存取控制](../../role-based-access-control/role-assignments-portal.md)。
+* [ (AZURE RBAC) 的驗證和 azure 角色型存取控制](../../role-based-access-control/role-assignments-portal.md)。
 * 監視、記錄和稽核。
 * 憑證和加密通訊。
 * Web 管理入口網站。
@@ -123,7 +123,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 
 您部署至 Azure 的某些應用程式或服務可能會針對使用者和系統管理員存取擁有自己的驗證機制，而其他應用程式或服務則會充分利用 Azure AD。 根據您是透過 Active Directory Federation Services (AD FS)、使用目錄同步作業或僅在雲端中維護使用者帳戶來同盟認證，使用 [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Azure AD Premium 的一部分) 可協助您管理資源之間的身分識別生命週期。
 
-### <a name="connectivity"></a>連接性
+### <a name="connectivity"></a>連線能力
 有數種機制可供協助保護用戶端與 Azure 虛擬網路的連線。 這些機制的其中兩個 ([網站間 VPN](https://channel9.msdn.com/series/Azure-Site-to-Site-VPN) (S2S) 和[點對站 VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create) (P2S)) 可使用業界標準 IPsec (S2S) 或[安全通訊端通道通訊協定](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) (SSTP) (P2S) 來進行加密和通道傳輸。 當 Azure 連接至公開的 Azure 服務管理 (例如 Azure 入口網站) 時，Azure 需要超文字安全傳輸通訊協定 (HTTPS)。
 
 未透過 RD 閘道連線至 Azure 的獨立強化後工作站應該使用 SSTP 架構的點對站 VPN 來建立與 Azure 虛擬網路的初始連線，然後再從 VPN 通道建立與個別虛擬機器的 RDP 連線。
@@ -138,7 +138,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 ## <a name="client-configuration"></a>用戶端組態
 針對強化後的工作站，我們有三種主要組態建議。 這三者之間最大的差異在於成本、可用性和存取性，但它們提供的所有選項都有類似的安全性設定檔。 下表扼要分析其各自的優點與風險。 (請注意，「公司電腦」指的是將為所有網域使用者 (不論角色為何) 部署的標準桌面電腦組態)。
 
-| 設定 | 優點 | 缺點 |
+| 組態 | 優點 | 缺點 |
 | --- | --- | --- |
 | 獨立的強化後工作站 |受到嚴格控制的工作站 |專用桌上型電腦的成本較高 |
 | - | 降低應用程式入侵風險 |增加管理工作 |
@@ -168,7 +168,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 
 公司電腦虛擬機器會在受保護的空間內執行，並提供使用者應用程式。 主機仍是「乾淨來源」，並且會在根作業系統中強制執行嚴格的網路原則 (例如，封鎖來自虛擬機器的 RDP 存取)。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳作法
 當您管理 Azure 中的應用程式和資料時，請考慮下列額外的方針。
 
 ### <a name="dos-and-donts"></a>可行與禁止事項
@@ -206,7 +206,7 @@ Azure 雲端服務組態是透過 Azure 入口網站或 SMAPI，經由 Windows P
 * 加密。 確定管理工作站有 TPM 以便能夠更安全地啟用[加密檔案系統](https://technet.microsoft.com/library/cc700811.aspx) (EFS) 和 BitLocker。
 * 控管。 使用 AD DS GPO 來控制所有系統管理員的 Windows 介面，例如檔案共用。 將管理工作站納入稽核、監視和記錄程序內。 追蹤所有系統管理員和開發人員的存取和使用活動。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>總結
 使用強化後的工作站組態來管理 Azure 雲端服務、虛擬機器和應用程式，可協助您避免遠端管理重要 IT 基礎結構所產生的眾多風險和威脅。 Azure 和 Windows 皆可提供相關機制供您保護和控制通訊、驗證和用戶端行為。
 
 ## <a name="next-steps"></a>後續步驟
