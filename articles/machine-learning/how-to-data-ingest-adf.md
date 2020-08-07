@@ -11,17 +11,17 @@ manager: davete
 ms.reviewer: larryfr
 ms.date: 03/01/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 80e912cb5d4cf428c406242b06c30ccf56ccd6ca
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: b756e83f1d810007e9e9ef6cf2987c3cf60b7f7d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326319"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852849"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>使用 Azure Data Factory 進行資料擷取
 
-在本文中，您將瞭解如何使用 Azure Data Factory （ADF）來建立資料內嵌管線。 此管線是用來內嵌要與 Azure Machine Learning 搭配使用的資料。 Azure Data Factory 可讓您輕鬆地解壓縮、轉換和載入（ETL）資料。 一旦資料轉換並載入到儲存體之後，就可以用來定型您的機器學習模型。
+在本文中，您將瞭解如何使用 Azure Data Factory (ADF) 來建立資料內嵌管線。 此管線是用來內嵌要與 Azure Machine Learning 搭配使用的資料。 Azure Data Factory 可讓您輕鬆地將 (ETL) 資料解壓縮、轉換和載入。 一旦資料轉換並載入到儲存體之後，就可以用來定型您的機器學習模型。
 
 簡單的資料轉換可以使用原生 ADF 活動和檢測（如[資料流程](https://docs.microsoft.com/azure/data-factory/control-flow-execute-data-flow-activity)）來處理。 至於更複雜的案例，可以使用一些自訂程式碼來處理資料。 例如，Python 或 R 程式碼。
 
@@ -37,7 +37,7 @@ ms.locfileid: "87326319"
 
 ![adf-函式](media/how-to-data-ingest-adf/adf-function.png)
 
-Azure Functions 可讓您執行一小段程式碼（函式），而不需擔心應用程式基礎結構。 在此選項中，會使用包裝在 Azure 函式中的自訂 Python 程式碼來處理資料。 
+Azure Functions 可讓您在不需擔心應用程式基礎結構的情況下，)  (函式中執行少段程式碼。 在此選項中，會使用包裝在 Azure 函式中的自訂 Python 程式碼來處理資料。 
 
 函式會使用[ADF Azure function 活動](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)叫用。 這種方法是輕量資料轉換的理想選項。 
 
@@ -84,7 +84,7 @@ Azure Functions 可讓您執行一小段程式碼（函式），而不需擔心�
 
 ![aml-資料集](media/how-to-data-ingest-adf/aml-dataset.png)
 
-來自 ADF 管線的已轉換資料會儲存到資料儲存體（例如 Azure Blob）。 Azure Machine Learning 可以使用[資料存放區](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)和[資料集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)來存取此資料。
+從 ADF 管線轉換的資料會儲存到資料儲存體 (例如 Azure Blob) 。 Azure Machine Learning 可以使用[資料存放區](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)和[資料集](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets)來存取此資料。
 
 每次執行 ADF 管線時，資料都會儲存到儲存體中的不同位置。 為了將位置傳遞給 Azure Machine Learning，ADF 管線會呼叫 Azure Machine Learning 管線。 呼叫 ML 管線時，會以參數的形式傳送資料位置和執行識別碼。 然後，ML 管線就可以使用資料位置來建立資料存放區/資料集。 
 

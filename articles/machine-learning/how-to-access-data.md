@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
-ms.custom: how-to, seodec18, tracking-python
-ms.openlocfilehash: f30f2b45944281ed74da2026eb14e8938260b259
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: how-to, seodec18, devx-track-python
+ms.openlocfilehash: 90de785d56e50885a13d43faa77f087d1235ea18
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496095"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852526"
 ---
 # <a name="connect-to-azure-storage-services"></a>連線至 Azure 儲存體服務
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,11 +92,11 @@ ms.locfileid: "87496095"
 
 ### <a name="access-validation"></a>存取驗證
 
-**在初始資料存放區建立和註冊程式的過程**中，Azure Machine Learning 會自動驗證基礎儲存體服務是否存在，以及使用者提供的主體（使用者名稱、服務主體或 SAS 權杖）是否有指定存放裝置的存取權。
+**在初始資料存放區建立和註冊程式的過程**中，Azure Machine Learning 會自動驗證基礎儲存體服務是否存在，以及使用者是否提供主體 (username、服務主體或 SAS 權杖) 具有指定存放裝置的存取權。
 
 **建立資料**存放區之後，只會針對需要存取基礎儲存體容器的方法執行這項驗證，而**不**是每次抓取資料存放區物件。 例如，如果您想要從資料存放區下載檔案，則會進行驗證；如果您只是要變更預設資料存放區，則不會進行驗證。
 
-若要驗證您對基礎儲存體服務的存取權，您可以在 `register_azure_*()` 想要建立的資料存放區類型的對應方法中，提供您的帳戶金鑰、共用存取簽章（SAS）權杖或服務主體。 [儲存類型矩陣](#matrix)會列出對應至每個資料存放區類型的支援驗證類型。
+若要驗證您對基礎儲存體服務的存取權，您可以在 `register_azure_*()` 想要建立的資料存放區類型的對應方法中，提供您的帳戶金鑰、共用存取簽章 (SAS) 權杖或服務主體。 [儲存類型矩陣](#matrix)會列出對應至每個資料存放區類型的支援驗證類型。
 
 您可以在[Azure 入口網站](https://portal.azure.com)上找到帳戶金鑰、SAS 權杖和服務主體資訊。
 
@@ -109,7 +109,7 @@ ms.locfileid: "87496095"
     * 其對應的 **[總覽**] 頁面將包含 [租使用者識別碼] 和 [用戶端識別碼] 等必要資訊
 
 > [!IMPORTANT]
-> 基於安全性理由，您可能需要變更 Azure 儲存體帳戶（帳戶金鑰或 SAS 權杖）的存取金鑰。 當您這麼做時，請務必將新認證與您的工作區和連線的資料存放區同步。 瞭解如何使用[這些步驟](how-to-change-storage-access-key.md)同步已更新的認證。 
+> 基於安全性理由，您可能需要變更 Azure 儲存體帳戶的存取金鑰， (帳戶金鑰或 SAS 權杖) 。 當您這麼做時，請務必將新認證與您的工作區和連線的資料存放區同步。 瞭解如何使用[這些步驟](how-to-change-storage-access-key.md)同步已更新的認證。 
 
 ### <a name="permissions"></a>權限
 

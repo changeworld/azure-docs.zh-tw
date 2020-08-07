@@ -9,19 +9,19 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: bfbe67c20fdec292dca0d6e07a05f2ff27637396
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6edb6f026f3062dfb2beafd863cf090519f6b66a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87427966"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875978"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
 > [!NOTE]
-> **AppAuthentication**已被取代。 它會取代 wit 新的 Azure 身分識別程式庫**DefaultAzureCredentials** ，適用于 .Net、JAVA、TypeScript 和 Python，並應用於所有新的開發。 如需詳細資訊，請參閱：[驗證和 AZURE SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html)。
+> **AppAuthentication**不再建議與新的 Key Vault SDK 搭配使用。 它會取代 wit 新的 Azure 身分識別程式庫**DefaultAzureCredentials** ，適用于 .Net、JAVA、TypeScript 和 Python，並應用於所有新的開發。 如需詳細資訊，請參閱：[驗證和 AZURE SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html)。
 
-若要驗證 Azure Key Vault，您需要一個 Azure Active Directory （Azure AD）認證，也就是共用密碼或憑證。
+若要驗證 Azure Key Vault，您需要 Azure Active Directory (Azure AD) 認證，也就是共用密碼或憑證。
 
 管理這類認證可能很棘手。 藉由將認證納入來源或設定檔案，很容易就能將其組合到應用程式中。 .NET 程式庫的 `Microsoft.Azure.Services.AppAuthentication` 可簡化此問題。 它會使用開發人員的認證，在本機開發期間進行驗證。 當解決方案在稍後部署至 Azure 時，程式庫會自動切換至應用程式認證。 在本機開發期間使用開發人員認證會更安全，因為您不需要建立 Azure AD 認證，或在開發人員之間共用認證。
 
@@ -156,7 +156,7 @@ ms.locfileid: "87427966"
     az ad sp create-for-rbac --create-cert
     ```
 
-    此命令會建立儲存在主目錄中的 pem 檔案（私密金鑰）。 請將此憑證部署至*LocalMachine*或*CurrentUser*存放區。
+    此命令會建立儲存在主目錄中 (私密金鑰) 的 pem 檔案。 請將此憑證部署至*LocalMachine*或*CurrentUser*存放區。
 
     > [!Important]
     > CLI 命令會產生一個 pem 檔案，但 Windows 只會提供 PFX 憑證的原生支援。 若要改為產生 PFX 憑證，請使用此處所示的 PowerShell 命令： [[使用自我簽署憑證建立服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)]。 這些命令也會自動部署憑證。
@@ -235,7 +235,7 @@ ms.locfileid: "87427966"
 
 若要控制處理程序，請使用傳遞至 `AzureServiceTokenProvider` 建構函式或 *AzureServicesAuthConnectionString* 環境變數中指定的連接字串。  支援下列選項：
 
-| 連接字串選項 | 狀況 | 註解|
+| 連接字串選項 | 案例 | 註解|
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | 本機開發 | `AzureServiceTokenProvider`會使用 AzureCli 來取得權杖。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | 本機開發 | `AzureServiceTokenProvider`會使用 Visual Studio 來取得權杖。 |
@@ -294,7 +294,7 @@ Azureservicetokenprovider 會會在其預設安裝位置尋找 Azure CLI。 如�
 - 將 "setProfileEnvironment" 設定為 "True"。 請參閱[這裡](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)的詳細資訊。 
 
     - 前往% windir% \System32\inetsrv\config\applicationHost.config
-    - 搜尋 "setProfileEnvironment"。 如果設定為 "False"，請將它變更為 "True"。 如果不存在，請將它新增為 processModel 元素的屬性（ /configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment ），並將它設定為 "True"。
+    - 搜尋 "setProfileEnvironment"。 如果設定為 "False"，請將它變更為 "True"。 如果不存在，請將它新增為 processModel 元素的屬性 (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) ，並將它設定為 "True"。
 
 - 深入瞭解[適用于 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/index.yml)識別。
 - 深入了解 [Azure AD 驗證案例](../../active-directory/develop/active-directory-authentication-scenarios.md)。
