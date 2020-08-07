@@ -4,16 +4,30 @@ description: 瞭解您可以將程式碼部署到 Azure Functions 的不同方�
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562934"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905120"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技術
 
-您可以使用幾種不同的技術，將您的 Azure Functions 專案程式碼部署至 Azure。 本文提供這些技術的詳盡清單，說明哪些技術適用于哪些類別的函式、說明當您使用每個方法時所發生的情況，以及提供在各種情況下使用最佳方法的建議。 支援部署至 Azure Functions 的各種工具，會根據其內容調整為正確的技術。 一般來說，zip 部署是建議的 Azure Functions 部署技術。
+您可以使用幾種不同的技術，將您的 Azure Functions 專案程式碼部署至 Azure。 本文概述您可用的部署方法，以及在各種案例中使用最佳方法的建議。 它也提供有關 underlyng 部署技術的詳盡清單和重要詳細資料。 
+
+## <a name="deployment-methods"></a>部署方法
+
+您用來將程式碼發佈至 Azure 的部署技術，通常是由您發佈應用程式的方式決定。 適當的部署方法取決於特定需求和開發週期中的時間點。 例如，在開發和測試期間，您可以直接從您的開發工具（例如 Visual Studio Code）進行部署。 當您的應用程式在生產環境中時，您更有可能會從原始檔控制發佈持續，或使用自動化發行管線（其中包含額外的驗證和測試）。  
+
+下表描述函數專案的可用部署方法。
+
+| 部署 &nbsp; 類型 | 方法 | 適用于 .。。 |
+| -- | -- | -- |
+| 以工具為基礎 | &bull;&nbsp;[Visual &nbsp; Studio &nbsp; Code &nbsp; 發佈](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio 發佈](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[核心工具發佈](functions-run-local.md#publish) | 在開發期間部署和其他 ad hock 部署。 部署是由工具在本機管理。 | 
+| App Service 管理| &bull;&nbsp;[部署 &nbsp; 中心 &nbsp; (CI/CD) ](functions-continuous-deployment.md)<br/>&bull;&nbsp;[容器 &nbsp; 部署](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  從原始檔控制或從容器登錄 (CI/CD) 進行持續部署。 部署是由 App Service 平臺 (Kudu) 來管理。|
+| 外部管線|&bull;&nbsp;[DevOps 管線](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub 動作](functions-how-to-github-actions.md) | 包含額外驗證、測試和其他動作的生產和 DevOps 管線，會當做自動化部署的一部分來執行。 部署是由管線管理。 |
+
+雖然特定函數部署會根據其內容使用最佳技術，但大部分的部署方法都是以[zip 部署](#zip-deploy)為基礎。
 
 ## <a name="deployment-technology-availability"></a>部署技術可用性
 

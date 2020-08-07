@@ -635,7 +635,7 @@
             - name: 透過 Azure Pipelines 設定連續整合
               href: ./service-fabric-tutorial-deploy-app-with-cicd-vsts.md
             - name: 使用 Jenkins 部署您的 Linux 應用程式
-              href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+              href: /azure/developer/jenkins/deploy-to-service-fabric-cluster
     - name: 設定反向 Proxy
       items:
         - name: 設定反向 Proxy

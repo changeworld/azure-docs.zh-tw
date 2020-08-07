@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3c5a8980877541d51eff2dc7ad6d7793aad38415
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7f805a702e85b897f9807eb2294e4263a0ea2d8c
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320896"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876320"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>使用 Azure Machine Learning 以大規模訓練 Pytorch 深度學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -185,7 +185,7 @@ model = run.register_model(model_name='pt-dnn', model_path='outputs/')
 > [!TIP]
 > 您剛註冊的模型部署的方式與 Azure Machine Learning 中任何其他已註冊的模型完全相同，不論您使用哪一個估計工具來進行定型。 部署如何包含註冊模型的區段，但您可以直接跳到建立部署的[計算目標](how-to-deploy-and-where.md#choose-a-compute-target)，因為您已經有已註冊的模型。
 
-您也可以使用執行物件來下載模型的本機複本。 在定型腳本中 `pytorch_train.py` ，PyTorch 儲存物件會將模型保存到本機資料夾（計算目標的本機）。 您可以使用執行物件來下載複本。
+您也可以使用執行物件來下載模型的本機複本。 在定型腳本中 `pytorch_train.py` ，PyTorch 儲存物件會將模型保存至計算目標)  (本機的本機資料夾。 您可以使用執行物件來下載複本。
 
 ```Python
 # Create a model folder in the current directory
@@ -218,7 +218,7 @@ estimator= PyTorch(source_directory=project_folder,
                       node_count=2,
                       process_count_per_node=1,
                       distributed_training=MpiConfiguration(),
-                      framework_version='1.13',
+                      framework_version='1.6',
                       use_gpu=True)
 ```
 系統會為您安裝 Horovod 及其相依性，因此您可以在定型腳本中匯入它，如下所示 `train.py` ：

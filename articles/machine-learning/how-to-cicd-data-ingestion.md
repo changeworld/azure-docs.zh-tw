@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
+ms.custom: how-to, devx-track-python
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 2f101226040c6266a53e8c15697dccb7554e70a7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e78044faabfd5ff3dccb1e7ea04149fbef212c01
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321525"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843703"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>資料內嵌管線的 DevOps
 
@@ -31,7 +31,7 @@ ms.locfileid: "87321525"
 
 資料內嵌管線會執行下列工作流程：
 
-1. 原始資料會讀入 Azure Data Factory （ADF）管線中。
+1. 原始資料會讀入 Azure Data Factory (ADF) 管線中。
 1. ADF 管線會將資料傳送至 Azure Databricks 叢集，此叢集會執行 Python 筆記本以轉換資料。
 1. 資料會儲存至 blob 容器，可供 Azure Machine Learning 用來將模型定型。
 
@@ -39,16 +39,16 @@ ms.locfileid: "87321525"
 
 ## <a name="continuous-integration-and-delivery-overview"></a>持續整合與傳遞總覽
 
-就像許多軟體解決方案一樣，小組（例如，資料工程師）也在合作。 它們會共同作業和共用相同的 Azure 資源，例如 Azure Data Factory、Azure Databricks 和 Azure 儲存體帳戶。 這些資源的集合是一個開發環境。 資料工程師會參與相同的原始程式碼基底。
+就像許多軟體解決方案一樣，還有一個小組 (，例如，資料工程師) 處理。 它們會共同作業和共用相同的 Azure 資源，例如 Azure Data Factory、Azure Databricks 和 Azure 儲存體帳戶。 這些資源的集合是一個開發環境。 資料工程師會參與相同的原始程式碼基底。
 
-持續整合與傳遞系統會將建立、測試及傳遞（部署）解決方案的流程自動化。 持續整合（CI）程式會執行下列工作：
+持續整合與傳遞系統會將建立、測試及提供 (部署) 解決方案的程式自動化。 持續整合 (CI) 程式會執行下列工作：
 
 * 組裝程式碼
 * 使用程式碼品質測試來檢查
 * 執行單元測試
 * 產生測試程式碼和 Azure Resource Manager 範本之類的成品
 
-持續傳遞（CD）程式會將構件部署至下游環境。
+持續傳遞 (CD) 程式會將構件部署至下游環境。
 
 ![cicd 資料內嵌圖表](media/how-to-cicd-data-ingestion/cicd-data-ingestion.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "87321525"
 
 ### <a name="python-notebook-source-code"></a>Python 筆記本原始程式碼
 
-資料工程師會在 IDE 中的本機（例如[Visual Studio Code](https://code.visualstudio.com)），或直接在 Databricks 工作區中使用 Python 筆記本原始碼。 程式碼變更完成後，就會依照分支原則，將它們合併到存放庫。
+資料工程師會在 IDE 本機使用 Python 筆記本原始程式碼 (例如， [Visual Studio Code](https://code.visualstudio.com)) 或直接在 Databricks 工作區中。 程式碼變更完成後，就會依照分支原則，將它們合併到存放庫。
 
 > [!TIP] 
 > 我們建議您將程式碼儲存在檔案中， `.py` 而不是 `.ipynb` Jupyter 筆記本格式。 它可以改善程式碼的可讀性，並在 CI 進程中啟用自動程式碼品質檢查。
@@ -72,13 +72,13 @@ Azure Data Factory 管線的原始程式碼是由 Azure Data Factory 工作區�
 
 若要將工作區設定為使用原始檔控制存放庫，請參閱[使用 Azure Repos Git 整合的作者](../data-factory/source-control.md#author-with-azure-repos-git-integration)。   
 
-## <a name="continuous-integration-ci"></a>持續整合（CI）
+## <a name="continuous-integration-ci"></a> (CI) 的持續整合
 
 持續整合程式的最終目標，是要收集來自原始程式碼的聯合小組工作，並準備將它部署到下游環境。 如同原始程式碼管理，Python 筆記本和 Azure Data Factory 管線的此程式不同。 
 
 ### <a name="python-notebook-ci"></a>Python 筆記本 CI
 
-Python 筆記本的 CI 程式會從共同作業分支（例如，***主要***或***開發***）取得程式碼，並執行下列活動：
+Python 筆記本的 CI 程式會從共同作業分支取得程式碼 (例如， ***master***或***開發***) 並執行下列活動：
 * 程式碼 linting
 * 單元測試
 * 將程式碼儲存為成品
@@ -120,7 +120,7 @@ Azure Data Factory 管線的 CI 進程是資料內嵌管線的瓶頸。 沒有�
 
 1. 資料工程師會將原始程式碼從其功能分支合併到共同作業分支中，例如***master***或***開發***。 
 1. 具有授與許可權的人按一下 [***發佈***] 按鈕，從共同作業分支中的原始程式碼產生 Azure Resource Manager 範本。 
-1. 工作區會驗證管線（從 linting 和單元測試的角度來看），產生 Azure Resource Manager 範本（將其視為大樓），並將產生的範本儲存至相同程式碼存放庫中的技術分支***adf_publish*** （將其視為發佈成品）。 Azure Data Factory 工作區會自動建立此分支。 
+1. 工作區會驗證管線 (將其視為 linting 和單元測試) 、產生 Azure Resource Manager 範本 (將其視為建立) ，並將產生的範本儲存至相同程式碼存放庫中的技術分支***adf_publish*** (將其視為發佈成品) 。 Azure Data Factory 工作區會自動建立此分支。 
 
 如需此程式的詳細資訊，請參閱[Azure Data Factory 中的持續整合與傳遞](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment)。
 
@@ -208,7 +208,7 @@ Azure Data Factory 工作區預設***不會***將管線變數公開為 Azure Res
 
 JSON 檔案中的值是在管線定義中設定的預設值。 部署 Azure Resource Manager 範本時，應該會使用目標環境值來覆寫它們。
 
-## <a name="continuous-delivery-cd"></a>持續傳遞（CD）
+## <a name="continuous-delivery-cd"></a>持續傳遞 (CD) 
 
 持續傳遞程式會接受成品，並將它們部署到第一個目標環境。 它會藉由執行測試，確保解決方案運作正常。 如果成功，它會繼續到下一個環境。 
 
@@ -261,7 +261,7 @@ CD Azure 管線包含代表環境的多個階段。 每個階段都包含執行�
 
 CI 所產生的成品會自動複製到部署代理程式，並可在資料夾中使用 `$(Pipeline.Workspace)` 。 在此情況下，部署工作會參考 `di-notebooks` 包含 Python 筆記本的成品。 此[部署](https://docs.microsoft.com/azure/devops/pipelines/process/deployment-jobs?view=azure-devops)會使用[Databricks Azure DevOps 擴充](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks)功能，將筆記本檔案複製到 Databricks 工作區。
 
-`Deploy_to_QA`階段包含 `devops-ds-qa-vg` Azure DevOps 專案中所定義之變數群組的參考。 此階段中的步驟會參考此變數群組中的變數（例如 `$(DATABRICKS_URL)` 和 `$(DATABRICKS_TOKEN)` ）。 其概念是，下一個階段（例如 `Deploy_to_UAT` ）會使用它自己的 UAT 範圍變數群組中所定義的相同變數名稱來運作。
+`Deploy_to_QA`階段包含 `devops-ds-qa-vg` Azure DevOps 專案中所定義之變數群組的參考。 此階段中的步驟會參考此變數群組中的變數 (例如， `$(DATABRICKS_URL)` 和 `$(DATABRICKS_TOKEN)`) 。 其概念是，下一個階段 (例如， `Deploy_to_UAT`) 會使用它自己的 UAT 範圍變數群組中所定義的相同變數名稱來運作。
 
 ### <a name="deploy-an-azure-data-factory-pipeline"></a>部署 Azure Data Factory 管線
 

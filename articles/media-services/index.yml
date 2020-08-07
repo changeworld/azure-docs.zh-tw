@@ -13,12 +13,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 07//2020
-  ms.openlocfilehash: da549a54773365d39e3a19179acd6495a6ac1ce5
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: d6f78b4494a16a0522f93658b063d157819c519e
+  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87023359"
+  ms.lasthandoff: 08/06/2020
+  ms.locfileid: "87826138"
 highlightedContent:
   items:
   - title: 關於 Azure 媒體服務 v3
@@ -38,7 +38,7 @@ highlightedContent:
     url: ./live-video-analytics-edge/overview.md
   - title: Azure 媒體播放器
     itemType: overview
-    url: https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview
+    url: ./azure-media-player/azure-media-player-overview.md
   - title: 關於 Azure 媒體服務 v2 (舊版)
     itemType: overview
     url: ./previous/media-services-overview.md
@@ -126,10 +126,10 @@ additionalContent:
   - items:
     - title: Azure 儲存體
       summary: 了解區塊 Blob 和容器
-      url: https://docs.microsoft.com/azure/storage/
+      url: ../storage/index.yml
     - title: CDN
       summary: 使用 Azure CDN 的強大功能，透過 Akamai 和 Verizon 的各項服務來大規模串流內容，或跨多個內容傳遞網路進行負載平衡
-      url: https://docs.microsoft.com/azure/cdn
+      url: ../cdn/index.yml
     - title: 事件方格
       summary: 了解如何使用 Azure 事件方格來回應相關事件
       url: ../event-grid/index.yml

@@ -117,7 +117,7 @@
     - name: 影像
       href: shared-image-galleries.md
     - name: VM 類型和大小
-      href: ../virtual-machines/windows/sizes.md
+      href: ../virtual-machines/sizes.md
       items:
         - name: 一般用途
           href: ../virtual-machines/sizes-general.md
@@ -193,10 +193,10 @@
           href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
           maintainContext: true
     - name: 網路功能
-      href: ../virtual-machines/windows/network-overview.md
+      href: ../virtual-machines/network-overview.md
       maintainContext: true
     - name: 基礎結構自動化
-      href: ../virtual-machines/windows/infrastructure-automation.md
+      href: ../virtual-machines/infrastructure-automation.md
       maintainContext: true
     - name: 安全性
       items:
@@ -378,13 +378,13 @@
     - name: 使用 Ansible
       items:
         - name: 建立和管理擴展集
-          href: /azure/ansible/ansible-create-configure-vmss
+          href: /azure/developer/ansible/vm-scale-set-configure
           maintainContext: true
         - name: 將應用程式部署到擴展集
-          href: /azure/ansible/ansible-deploy-app-vmss
+          href: /azure/developer/ansible/vm-scale-set-deploy-app
           maintainContext: true
         - name: 自動調整擴展集
-          href: /azure/ansible/ansible-auto-scale-vmss
+          href: /azure/developer/ansible/vm-scale-set-auto-scale
           maintainContext: true
 - name: 參考
   items:

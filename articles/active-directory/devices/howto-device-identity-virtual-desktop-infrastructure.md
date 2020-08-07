@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0dde9d8b50233c3c4033daf618e0e626c0174b0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419796"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903148"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>裝置身分識別與桌面虛擬化
 
-系統管理員通常會部署在其組織中裝載 Windows 作業系統的虛擬桌面基礎結構（VDI）平臺。 系統管理員將 VDI 部署到：
+系統管理員通常會部署虛擬桌面基礎結構， (在其組織中裝載 Windows 作業系統的 VDI) 平臺。 系統管理員將 VDI 部署到：
 
 - 簡化管理。
 - 透過匯總和集中化資源來降低成本。
@@ -60,7 +60,7 @@ ms.locfileid: "87419796"
 
 \*同盟**身分識別基礎**結構環境代表具有身分識別提供者（例如 AD FS 或其他協力廠商 IDP）的環境。
 
-\*\***受控**識別基礎結構環境代表的環境具有 Azure AD，做為使用[密碼雜湊同步處理（PHS）](../hybrid/whatis-phs.md)或具有[無縫單一登入](../hybrid/how-to-connect-sso.md)的[傳遞驗證（PTA）](../hybrid/how-to-connect-pta.md)部署的身分識別提供者。
+\*\***受控**識別基礎結構環境代表一個環境，其 Azure AD 身分識別提供者是使用[密碼雜湊同步 (PHS) ](../hybrid/whatis-phs.md)或[傳遞驗證 (PTA) ](../hybrid/how-to-connect-pta.md)搭配[無縫單一登入](../hybrid/how-to-connect-sso.md)來部署。
 
 \*\*\***Windows 目前**的裝置代表 windows 10、windows server 2016 和 windows server 2019。
 
@@ -73,11 +73,11 @@ ms.locfileid: "87419796"
 - [設定聯合環境的混合式 Azure Active Directory 聯結](hybrid-azuread-join-federated-domains.md)
 - [設定受管理環境的混合式 Azure Active Directory 聯結](hybrid-azuread-join-managed-domains.md)
 
-如果您依賴系統準備工具（sysprep.exe），而且您使用 Windows 前 10 1809 映射來進行安裝，請確定映射不是來自已向 Azure AD 註冊的裝置，因為已加入混合式 Azure AD。
+如果您依賴系統準備工具 ( # A0) ，而且如果您使用 Windows 前 10 1809 映射來進行安裝，請確定映射不是來自已註冊 Azure AD 的裝置（已加入混合式 Azure AD）。
 
-如果您依賴虛擬機器（VM）快照集來建立其他 Vm，請確定快照集不是來自已向 Azure AD 註冊的 VM，因為混合式 Azure AD 聯結。
+如果您依賴虛擬機器 (VM) 快照集來建立其他 Vm，請確定該快照集不是來自已向 Azure AD 註冊混合式 Azure AD 聯結的 VM。
 
-部署非持續性的 VDI 時，IT 系統管理員應該特別注意管理 Azure AD 中的過時裝置。 Microsoft 建議 IT 系統管理員執行下列指導方針。 如果無法這麼做，將會導致您的目錄中有許多已從您的非持續性 VDI 平臺註冊的過時混合式 Azure AD 聯結裝置。
+Windows 目前的版本不支援非持續性 VDI 的混合式 Azure AD 聯結。 部署舊版 Windows 的非持續性 VDI 時，IT 系統管理員應該特別注意在 Azure AD 中管理過時的裝置。 Microsoft 建議 IT 系統管理員執行下列指導方針。 如果無法這麼做，將會導致您的目錄中有許多已從您的非持續性 VDI 平臺註冊的過時混合式 Azure AD 聯結裝置。
 
 - 建立並使用電腦顯示名稱的前置詞，以 VDI 為基礎來表示桌面。
 - 在登出腳本中執行下列命令。 此命令將會觸發 Azure AD 的最佳呼叫，以刪除裝置。

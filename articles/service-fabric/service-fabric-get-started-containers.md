@@ -3,13 +3,13 @@ title: 建立 Azure Service Fabric 容器應用程式
 description: 在 Azure Service Fabric 上建立第一個 Windows 容器應用程式。 使用 Python 應用程式建立 Docker 映射、將映射推送至容器登錄，然後建立容器並將其部署至 Azure Service Fabric。
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.custom: tracking-python
-ms.openlocfilehash: c0baad5d2596de04b629c4cf9eb86c51b37b8cdc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-python
+ms.openlocfilehash: 6303e37eaa8fa7ad45677d551b89337d20b1b604
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247399"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844434"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>在 Windows 建立第一個 Service Fabric 容器應用程式
 
@@ -321,7 +321,7 @@ Windows 支援兩種容器隔離模式：分別為處理序和 Hyper-V。 在處
 ## <a name="deploy-the-container-application"></a>部署容器應用程式
 儲存所有變更，並建置應用程式。 若要發佈您的應用程式，以滑鼠右鍵按一下 [方案總管] 中的 **MyFirstContainer**，然後選取 [發佈]****。
 
-在 [連線端點]**** 中，輸入叢集的管理端點。 例如，`containercluster.westus2.cloudapp.azure.com:19000`。 在 [Azure 入口網站](https://portal.azure.com)中，您可以在叢集的 [概觀] 索引標籤中找到用戶端連線端點。
+在 [連線端點]**** 中，輸入叢集的管理端點。 例如： `containercluster.westus2.cloudapp.azure.com:19000` 。 在 [Azure 入口網站](https://portal.azure.com)中，您可以在叢集的 [概觀] 索引標籤中找到用戶端連線端點。
 
 按一下 [發佈]。
 
@@ -344,7 +344,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server 容器作業系統和主機作業系統的相容性
 
-Windows Server 容器在主機 OS 的所有版本之間不相容。 例如︰
+Windows Server 容器在主機 OS 的所有版本之間不相容。 例如：
  
 - 使用 Windows Server 1709 版本所建置的 Windows Server 容器無法在執行 Windows Server 2016 版本的主機上運作。 
 - 使用 Windows Server 2016 所建立的 windows Server 容器，只能在執行 Windows Server 1709 版的主機上使用 Hyper-v 隔離模式。 
@@ -352,7 +352,7 @@ Windows Server 容器在主機 OS 的所有版本之間不相容。 例如︰
  
 若要深入了解，請參閱 [Windows 容器版本相容性](/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
-在建置容器並部署到 Service Fabric 叢集時，請考慮主機 OS 和容器 OS 的相容性。 例如︰
+在建置容器並部署到 Service Fabric 叢集時，請考慮主機 OS 和容器 OS 的相容性。 例如：
 
 - 請確定您部署的容器具有的 OS 與您叢集節點上的 OS 相容。
 - 請確定為容器應用程式所指定的隔離模式，與其部署所在節點上的容器 OS 支援一致。

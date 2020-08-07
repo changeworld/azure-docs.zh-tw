@@ -10,18 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: how-to, contperfq4, devx-track-python
+ms.openlocfilehash: 9d49ea99b97411e15d3f264057c865219e4d63c4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420527"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853495"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>使用私人虛擬網路進行定型 & 推斷期間的網路隔離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將瞭解如何藉由隔離 Azure 虛擬網路（vnet）中的 Azure Machine Learning 訓練和推斷作業，來保護您的機器學習服務生命週期。 Azure Machine Learning 依賴其他 Azure 服務來取得計算資源（也稱為[計算目標](concept-compute-target.md)），以定型和部署模型。 目標可以建立在虛擬網路內。 例如，您可以使用 Azure Machine Learning 計算來將模型定型，然後將模型部署至 Azure Kubernetes Service (AKS)。 
+在本文中，您將瞭解如何藉由隔離 Azure 虛擬網路 (vnet) 中的 Azure Machine Learning 訓練和推斷作業，來保護您的機器學習服務生命週期。 Azure Machine Learning 依賴其他 Azure 服務來取得計算資源（也稱為[計算目標](concept-compute-target.md)），以定型和部署模型。 目標可以建立在虛擬網路內。 例如，您可以使用 Azure Machine Learning 計算來將模型定型，然後將模型部署至 Azure Kubernetes Service (AKS)。 
 
 __虛擬網路__可充當安全邊界，將 Azure 資源與公用網際網路隔離。 您也可以將 Azure 虛擬網路加入到您的內部部署網路， 藉由加入網路，您可以安全地將模型定型，並可存取所部署的模型以進行推斷。
 
@@ -91,7 +91,7 @@ Studio 支援從虛擬網路中的下列資料存放區類型讀取資料：
 
 ### <a name="configure-a-datastore-to-use-managed-identity"></a>設定資料存放區以使用受控識別
 
-將您的工作區和儲存體服務帳戶新增至虛擬網路之後，您必須將資料存放區設定為使用受控識別來存取您的資料。 這些步驟會使用 Azure 資源型存取控制（RBAC），將工作區受控識別新增為儲存體服務的__讀取器__。 __讀者__存取可讓工作區取得防火牆設定，並確保資料不會離開虛擬網路。
+將您的工作區和儲存體服務帳戶新增至虛擬網路之後，您必須將資料存放區設定為使用受控識別來存取您的資料。 這些步驟會使用 Azure 資源型存取控制 (RBAC) ，將工作區受控識別新增為儲存體服務的__讀取器__。 __讀者__存取可讓工作區取得防火牆設定，並確保資料不會離開虛擬網路。
 
 1. 在 studio 中，選取 [__資料存放區__]。
 
@@ -127,7 +127,7 @@ Studio 支援從虛擬網路中的下列資料存放區類型讀取資料：
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 存取控制
 
-您可以使用 RBAC 和 POSIX 樣式的存取控制清單（Acl）來控制虛擬網路內的資料存取。
+您可以使用 RBAC 和 POSIX 樣式的存取控制清單 (Acl) 來控制虛擬網路內的資料存取。
 
 若要使用 RBAC，請將工作區受控識別新增至[Blob 資料讀取器](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)角色。 如需詳細資訊，請參閱[角色型存取控制](../storage/blobs/data-lake-storage-access-control.md#role-based-access-control)。
 
@@ -147,9 +147,9 @@ Azure Data Lake Storage Gen1 只支援 POSIX 樣式的存取控制清單。 您�
 
 ### <a name="connect-to-the-studio"></a>連接至 studio
 
-如果您是從虛擬網路內部的資源（例如，計算實例或虛擬機器）存取 studio，則必須允許從虛擬網路到 studio 的輸出流量。 
+如果您是從虛擬網路內部的資源存取 studio (例如，計算實例或虛擬機器) ，您必須允許從虛擬網路到 studio 的輸出流量。 
 
-例如，如果您使用網路安全性群組（NSG）來限制輸出流量，請將規則新增至__AzureFrontDoor__的__服務標記__目的地。
+例如，如果您使用網路安全性群組 (NSG) 來限制輸出流量，請將規則新增至__AzureFrontDoor__的__服務標記__目的地。
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>針對工作區使用儲存體帳戶
 
@@ -176,7 +176,7 @@ Azure Data Lake Storage Gen1 只支援 POSIX 樣式的存取控制清單。 您�
 
 1. 在 [防火牆和虛擬網路] 頁面上，執行下列動作：
     - 選取 [選取的網路]。
-    - 在 [虛擬網路] 底下，選取 [新增現有虛擬網路] 連結。 此動作會新增您的計算所在的虛擬網路（請參閱步驟1）。
+    - 在 [虛擬網路] 底下，選取 [新增現有虛擬網路] 連結。 此動作會新增您的計算所在的虛擬網路 (請參閱步驟 1) 。
 
         > [!IMPORTANT]
         > 儲存體帳戶必須與用於定型或推斷的計算執行個體或叢集位於相同的虛擬網路和子網路中。
@@ -349,7 +349,7 @@ Batch 服務會在連結至 VM 的網路介面 (NIC) 層級新增網路安全性
 
 * 使用[虛擬網路 NAT](../virtual-network/nat-overview.md)。 NAT 閘道會為您虛擬網路中的一或多個子網提供輸出網際網路連線能力。 如需相關資訊，請參閱[使用 NAT 閘道資源設計虛擬網路](../virtual-network/nat-gateway-resource.md)。
 
-* 將[使用者定義的路由（udr）](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)新增至包含計算資源的子網。 在資源所在的區域中，為 Azure Batch 服務所使用的每個 IP 位址建立一個 UDR。 這些 UDR 可讓 Batch 服務與計算節點通訊，以排程工作。 此外，也請為資源所在的 Azure Machine Learning 服務新增 IP 位址，必須有此 IP 位址才能存取計算執行個體。 若要取得 Batch 服務和 Azure Machine Learning 服務的 IP 位址清單，請使用下列其中一種方法：
+* 將[使用者定義的路由 (udr) ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)新增至包含計算資源的子網。 在資源所在的區域中，為 Azure Batch 服務所使用的每個 IP 位址建立一個 UDR。 這些 UDR 可讓 Batch 服務與計算節點通訊，以排程工作。 此外，也請為資源所在的 Azure Machine Learning 服務新增 IP 位址，必須有此 IP 位址才能存取計算執行個體。 若要取得 Batch 服務和 Azure Machine Learning 服務的 IP 位址清單，請使用下列其中一種方法：
 
     * 下載 [Azure IP 範圍和服務標籤](https://www.microsoft.com/download/details.aspx?id=56519)並搜尋檔案中的 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`，其中 `<region>` 是您的 Azure 區域。
 
@@ -502,7 +502,7 @@ aks_target = ComputeTarget.create(workspace=ws,
 #### <a name="network-contributor-role"></a>網路參與者角色
 
 > [!IMPORTANT]
-> 如果您藉由提供您先前建立的虛擬網路來建立或連結 AKS 叢集，您必須將_網路參與者_角色授與包含虛擬網路的資源群組，以取得 AKS 叢集的服務主體（SP）或受控識別。 這必須在您嘗試將內部負載平衡器變更為私人 IP 之前完成。
+> 如果您藉由提供您先前建立的虛擬網路來建立或連結 AKS 叢集，您必須將「_網路參與者_」角色授與 AKS 叢集的服務主體 (SP) 或受控識別，以包含虛擬網路的資源群組。 這必須在您嘗試將內部負載平衡器變更為私人 IP 之前完成。
 >
 > 若要將身分識別新增為網路參與者，請使用下列步驟：
 
@@ -630,7 +630,7 @@ aks_target.wait_for_completion(show_output = True)
 > [!WARNING]
 > 在虛擬網路中使用 Azure 容器實例時，虛擬網路必須位於與您 Azure Machine Learning 工作區相同的資源群組中。
 >
-> 在虛擬網路內使用 Azure 容器實例時，您工作區的 Azure Container Registry （ACR）也不能在虛擬網路中。
+> 在虛擬網路內使用 Azure 容器實例時，您工作區的 Azure Container Registry (ACR) 也不能同時位於虛擬網路中。
 
 若要在工作區的虛擬網路中使用 ACI，請使用下列步驟：
 

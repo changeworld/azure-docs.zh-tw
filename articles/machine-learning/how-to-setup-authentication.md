@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 4061d7a3d21b8c2db2bf161c422994cb2742b0b4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9d73492110703e64df5f948ad8a2a1ed8d2c63b9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489872"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904533"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,10 +25,10 @@ ms.locfileid: "87489872"
 
 一般來說，您可以搭配 Azure Machine Learning 使用兩種類型的驗證：
 
-* __互動式__：您可以在 Azure Active Directory 中使用您的帳戶直接進行驗證，或取得用於驗證的權杖。 在實驗和反復開發期間，會使用互動式驗證。 或者，您想要以每個使用者為基礎來控制資源（例如 web 服務）的存取權。
+* __互動式__：您可以在 Azure Active Directory 中使用您的帳戶直接進行驗證，或取得用於驗證的權杖。 在實驗和反復開發期間，會使用互動式驗證。 或是您想要控制資源存取的位置 (例如 web 服務) 以每個使用者為基礎。
 * __服務主體__：您會在 Azure Active Directory 中建立服務主體帳戶，並使用它來驗證或取得權杖。 當您需要自動化程式來向服務進行驗證，而不需要使用者互動時，會使用服務主體。 例如，持續整合和部署腳本，會在每次定型程式碼變更時，訓練並測試模型。 如果您不想要要求服務的終端使用者進行驗證，您也可以使用服務主體來抓取權杖，以驗證 web 服務。 或者，不會使用 Azure Active Directory 直接執行使用者驗證。
 
-不論使用何種驗證類型，都會使用角色型存取控制（RBAC）來界定資源允許的存取層級範圍。 例如，用來取得已部署模型之存取權杖的帳戶，只需要工作區的讀取權限。 如需 RBAC 的詳細資訊，請參閱[管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
+不論使用何種驗證類型， (RBAC) 的角色型存取控制，都是用來限定資源允許的存取層級。 例如，用來取得已部署模型之存取權杖的帳戶，只需要工作區的讀取權限。 如需 RBAC 的詳細資訊，請參閱[管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -36,6 +36,9 @@ ms.locfileid: "87489872"
 * [設定開發環境](how-to-configure-environment.md)以安裝 Azure Machine Learning SDK，或使用已安裝 SDK 的 [Azure Machine Learning Notebook VM](concept-azure-machine-learning-architecture.md#compute-instance)。
 
 ## <a name="interactive-authentication"></a>互動式驗證
+
+> [!IMPORTANT]
+> 互動式驗證會使用您的瀏覽器，而且需要 cookie (包括協力廠商 cookie) 。 如果您已停用 cookie，可能會收到錯誤，例如「我們無法將您登入。」 如果您已啟用[Azure 多重要素驗證](/azure/active-directory/authentication/concept-mfa-howitworks)，也可能會發生此錯誤。
 
 檔和範例中的大部分範例都會使用互動式驗證。 例如，使用 SDK 時，會有兩個函式呼叫，會自動提示您使用以 UI 為基礎的驗證流程：
 
@@ -67,7 +70,7 @@ ms.locfileid: "87489872"
 
 ## <a name="service-principal-authentication"></a>服務主體驗證
 
-若要使用服務主體（SP）驗證，您必須先建立 SP 並授與它對您工作區的存取權。 如先前所述，Azure 角色型存取控制（Azure RBAC）是用來控制存取權，因此您也必須決定要授與 SP 的存取權。
+若要使用服務主體 (SP) 驗證，您必須先建立 SP 並授與它對您工作區的存取權。 如先前所述，azure RBAC)  (的 Azure 角色型存取控制可用來控制存取，因此您也必須決定要授與 SP 的存取權。
 
 > [!IMPORTANT]
 > 使用服務主體時，請授與它用於__的工作所需的最小存取權__。 例如，如果用來讀取 web 部署的存取權杖，您就不會授與服務主體擁有者或參與者存取權。
@@ -189,9 +192,9 @@ ws.get_details()
 
 您可以使用服務主體來執行 Azure CLI 命令。 如需詳細資訊，請參閱[使用服務主體登入](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#sign-in-using-a-service-principal)。
 
-### <a name="use-a-service-principal-with-the-rest-api-preview"></a>搭配 REST API 使用服務主體（預覽）
+### <a name="use-a-service-principal-with-the-rest-api-preview"></a>使用 REST API (preview 的服務主體) 
 
-服務主體也可以用來驗證 Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) （預覽）。 您可使用 Azure Active Directory [用戶端認證授與流程](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，其允許在自動工作流程中進行無周邊驗證的服務對服務呼叫。 這些範例是使用 Python 和 Node.js 中的 [ADAL 程式庫](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)所實作，但您也可以使用任何支援 OpenID Connect 1.0 的開放原始碼程式庫。
+服務主體也可以用來向 Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/) (preview) 進行驗證。 您可使用 Azure Active Directory [用戶端認證授與流程](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，其允許在自動工作流程中進行無周邊驗證的服務對服務呼叫。 這些範例是使用 Python 和 Node.js 中的 [ADAL 程式庫](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)所實作，但您也可以使用任何支援 OpenID Connect 1.0 的開放原始碼程式庫。
 
 > [!NOTE]
 > MSAL.js 是比 ADAL 更新的程式庫，但無法使用 MSAL.js 的用戶端認證來進行服務對服務驗證，因為該認證主要適用於與特定使用者繫結的互動式/UI 驗證用戶端程式庫。 我們建議使用如下所示的 ADAL，以透過 REST API 建置自動工作流程。
@@ -290,7 +293,7 @@ Azure Machine Learning 所建立的模型部署提供兩種驗證方法：
 
 ### <a name="key-based-web-service-authentication"></a>以金鑰為基礎的 web 服務驗證
 
-Azure Kubernetes Service （AKS）上部署的 Web 服務預設會*啟用*以金鑰為基礎的驗證。 Azure 容器實例（ACI）部署的服務預設會*停用*金鑰型驗證，但是您可以藉由 `auth_enabled=True` 在建立 ACI web 服務時設定來啟用它。 下列程式碼範例會建立以金鑰為基礎的驗證所啟用的 ACI 部署設定。
+Azure Kubernetes Service (AKS) 上部署的 Web 服務，預設會*啟用*以金鑰為基礎的驗證。 Azure 容器實例 (ACI) 部署的服務預設會*停用*金鑰型驗證，但是您可以藉由 `auth_enabled=True` 在建立 ACI web 服務時加以啟用。 下列程式碼範例會建立以金鑰為基礎的驗證所啟用的 ACI 部署設定。
 
 ```python
 from azureml.core.webservice import AciWebservice

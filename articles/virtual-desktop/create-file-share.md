@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c9636a08b896cefdbec825e4979ad1ec89f8847b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027387"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842904"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>建立具有 Azure 檔案儲存體和 AD DS 的設定檔容器
 
 在本文中，您將瞭解如何在現有的 Windows 虛擬桌面主機集區上，建立由網域控制站驗證的 Azure 檔案共用。 您可以使用此檔案共用來儲存儲存設定檔。
 
-此程式會使用 Active Directory Domain Services （AD DS），這是內部部署目錄服務。 如果您要尋找如何使用 Azure AD DS 建立 FSLogix 設定檔容器的相關資訊，請參閱[使用 Azure 檔案儲存體建立 FSLogix 設定檔容器](create-profile-container-adds.md)。
+此程式會使用 Active Directory Domain Services (AD DS) ，這是內部部署目錄服務。 如果您要尋找如何使用 Azure AD DS 建立 FSLogix 設定檔容器的相關資訊，請參閱[使用 Azure 檔案儲存體建立 FSLogix 設定檔容器](create-profile-container-adds.md)。
 
 ## <a name="prerequisites"></a>必要條件
 
-開始之前，請確定您的網域控制站已同步處理至 Azure，並可從您的工作階段主機所連線的 Azure 虛擬網路（VNET）解析。
+開始之前，請確定您的網域控制站已同步處理至 Azure，並可從您工作階段主機連線的 Azure 虛擬網路 (VNET) 進行解析。
 
 ## <a name="set-up-a-storage-account"></a>設定儲存體帳戶
 
@@ -42,9 +42,9 @@ ms.locfileid: "86027387"
     - 建立新的資源群組。
     - 輸入儲存體帳戶的唯一名稱。
     - 針對 [**位置**]，建議您選擇與 Windows 虛擬桌面主機集區相同的位置。
-    - 針對 [效能]****，請選取 [標準]****。 （視您的 IOPS 需求而定。 如需詳細資訊，請參閱[Windows 虛擬桌面中的 FSLogix 設定檔容器的儲存體選項](store-fslogix-profile.md)）。
-    - 針對 [**帳戶類型**]，選取 [ **StorageV2** ] 或 [ **FileStorage** ] （僅適用于 [效能層] 為 [Premium] 時
-    - 針對 **[** 複寫]，選取 **[本地-多餘儲存體（LRS）**]。
+    - 針對 [效能]，請選取 [標準]。  (取決於您的 IOPS 需求。 如需詳細資訊，請參閱[Windows 虛擬桌面中的 FSLogix 設定檔容器的儲存體選項](store-fslogix-profile.md)。 ) 
+    - 針對 [**帳戶類型**]，選取 [ **StorageV2** ] 或 [ **FileStorage** ] (只有在 [效能層級]) 
+    - 針對**複寫**，請選取 [**本機-多餘的儲存體] (LRS) **。
 
 5. 當您完成時，請選取 [**審查 + 建立**]，然後選取 [**建立**]。
 
@@ -66,16 +66,16 @@ ms.locfileid: "86027387"
 
 ## <a name="enable-active-directory-authentication"></a>啟用 Active Directory 驗證
 
-接下來，您必須啟用 Active Directory （AD）驗證。 若要啟用此原則，您必須在已加入網域的電腦上遵循本節的指示。 若要啟用驗證，請遵循執行網域控制站的 VM 上的下列指示：
+接下來，您必須啟用 Active Directory (AD) 驗證。 若要啟用此原則，您必須在已加入網域的電腦上遵循本節的指示。 若要啟用驗證，請遵循執行網域控制站的 VM 上的下列指示：
 
 1. 遠端桌面通訊協定到已加入網域的 VM。
 
 2. 請遵循[為您的 Azure 檔案共用啟用 AZURE AD DS 驗證](../storage/files/storage-files-identity-ad-ds-enable.md)中的指示，安裝 AzFilesHybrid 模組並啟用驗證。
 
-3.  開啟 Azure 入口網站，開啟您的儲存體帳戶 **，選取 [** 設定]，然後確認 **[Active Directory （AD）** ] 設為 [**已啟用**]。
+3.  開啟 Azure 入口網站，開啟您的儲存體帳戶 **，選取 [** 設定]，然後確認**Active Directory (AD) **已設定為 [**啟用**]。
 
      > [!div class="mx-imgBorder"]
-     > ![已啟用 Azure Active Directory （AD）之設定頁面的螢幕擷取畫面。](media/active-directory-enabled.png)
+     > ![[設定] 頁面的螢幕擷取畫面，其中已啟用 Azure Active Directory (AD) 。](media/active-directory-enabled.png)
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>將 Azure RBAC 許可權指派給 Windows 虛擬桌面的使用者
 
@@ -88,7 +88,7 @@ ms.locfileid: "86027387"
 >[!NOTE]
 >您為其指派權限的帳戶或群組應已建立在網域中，並且與 Azure AD 同步。 在 Azure AD 中建立的帳戶將無法運作。
 
-若要指派角色型存取控制（RBAC）許可權：
+若要將角色型存取控制指派 (RBAC) 許可權：
 
 1. 開啟 Azure 入口網站。
 
@@ -133,7 +133,7 @@ ms.locfileid: "86027387"
     - `/`以反斜線取代正斜線 `\` 。
     - 將您在[建立 Azure 檔案共用](#create-an-azure-file-share)中建立的檔案共用名稱新增到 UNC 結尾。
 
-        例如：`\\customdomain.file.core.windows.net\<fileshare-name>`
+        例如： `\\customdomain.file.core.windows.net\<fileshare-name>`
 
 ### <a name="get-the-storage-account-key"></a>取得儲存體帳戶金鑰
 
@@ -189,8 +189,6 @@ ms.locfileid: "86027387"
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
-
-5. 選取 [套用]。
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>在工作階段主機 Vm 上設定 FSLogix
 

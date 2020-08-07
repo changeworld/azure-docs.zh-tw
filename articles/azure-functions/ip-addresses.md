@@ -3,12 +3,12 @@ title: Azure 中的 IP 位址 中的 IP 位址
 description: 了解如何尋找函式應用程式的輸入和輸出 IP 位址，以及造成其變更的原因。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b99855d8cc28a41d9eb91bdcf691747910ed4a1
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80656775"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874073"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure 中的 IP 位址 中的 IP 位址
 
@@ -49,12 +49,13 @@ IP 位址與函式應用程式相關聯，而非與個別函式相關聯。 傳�
 az webapp show --resource-group <group_name> --name <app_name> --query outboundIpAddresses --output tsv
 az webapp show --resource-group <group_name> --name <app_name> --query possibleOutboundIpAddresses --output tsv
 ```
+
 > [!NOTE]
-> 當執行[耗用量計劃](functions-scale.md#consumption-plan)的函式應用程式進行調整時，可能會指派新的輸出 IP 位址範圍。 在執行耗用量計劃時，您可能需要整個資料中心列入允許清單。
+> 當執行[耗用量計劃](functions-scale.md#consumption-plan)的函式應用程式進行調整時，可能會指派新的輸出 IP 位址範圍。 在取用方案上執行時，您可能需要將整個資料中心新增至允許清單。
 
 ## <a name="data-center-outbound-ip-addresses"></a>資料中心輸出 IP 位址
 
-如果您需要將函式應用程式所用的輸出 IP 位址列入允許清單，另一個選項是將函式應用程式的資料中心 (Azure 區域) 列入允許清單。 您可以[下載 JSON 檔案，其中列出所有 Azure 資料中心的 IP 位址](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然後尋找適用於函數應用程式執行所在區域的 JSON 片段。
+如果您需要將函式應用程式所使用的輸出 IP 位址新增至允許清單，另一個選項是將函式應用程式的資料中心 (Azure 區域) 新增至允許清單。 您可以[下載 JSON 檔案，其中列出所有 Azure 資料中心的 IP 位址](https://www.microsoft.com/en-us/download/details.aspx?id=56519)。 然後尋找適用於函數應用程式執行所在區域的 JSON 片段。
 
 例如，西歐 JSON 片段可能如下所示：
 

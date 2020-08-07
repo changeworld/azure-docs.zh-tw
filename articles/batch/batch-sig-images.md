@@ -3,13 +3,13 @@ title: 使用共用映射資源庫來建立自訂映射集區
 description: 自訂映射集區是設定計算節點來執行 Batch 工作負載的有效方式。
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 38233bc5d279c1c0ae7789dd06acff78ea26fb89
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-python
+ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147280"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852407"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>使用共用映射資源庫來建立自訂映射集區
 

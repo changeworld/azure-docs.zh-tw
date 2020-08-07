@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 7a17e9b0de3e77b2f6b8bf3c6eb55503d34c359c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 08/05/2020
+ms.openlocfilehash: 8a6d0a24ef7252e40bb170bd63a76e2bfce8caef
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223715"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852271"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Data Lake Storage Gen2 中複製和轉換資料
 
@@ -133,6 +133,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為 `SecureString`，將其安全地儲存在 Data Factory 中。 或者，可以[參考 Azure Key Vault 中儲存的認證](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可加以擷取。 | 是 |
+| azureCloudType | 針對 [服務主體驗證]，指定您的 AAD 應用程式所註冊的 Azure 雲端環境類型。 <br/> 允許的值為**AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和**AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 | connectVia | 用來連線到資料存放區的[整合執行階段](concepts-integration-runtime.md)。 如果您的資料存放區位於私人網路中，則可使用 Azure Integration Runtime 或自我裝載整合執行階段。 若未指定，則會使用預設 Azure Integration Runtime。 |否 |
 
 **範例︰**
@@ -265,17 +266,17 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 | 屬性                 | 描述                                                  | 必要                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureBlobFSReadSettings**。 | 是                                           |
-| 找到要複製的檔案： |  |  |
+| 尋找要複製的檔案： |  |  |
 | 選項 1：靜態路徑<br> | 從在資料集內指定的檔案系統或資料夾/檔案路徑複製。 如果您想要複製檔案系統/資料夾中的所有檔案，請另外將 `wildcardFileName` 指定為 `*`。 |  |
 | 選項 2：萬用字元<br>- wildcardFolderPath | 在資料集內設定的指定檔案系統底下，具有萬用字元的資料夾路徑，用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
 | 選項 2：萬用字元<br>- wildcardFileName | 在指定 file system + folderPath/wildcardFolderPath 之下，含有萬用字元的檔案名稱，可用來篩選來源檔案。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
-| 選項 3：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向包含您要複製之檔案清單的文字檔，每行一個檔案，這是在資料集中設定之路徑的相對路徑。<br/>使用此選項時，請勿指定資料集中的檔案名稱。 [檔案清單範例](#file-list-examples)有更多範例可供參閱。 |否 |
-| ***其他設定：*** |  | |
-| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，此屬性不適用。 |否 |
+| 選項 3：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向包含您要複製之檔案清單的文字檔，每行一個檔案，這是在資料集中設定之路徑的相對路徑。<br/>使用此選項時，請勿指定資料集中的檔案名稱。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
+| 其他設定： |  | |
+| 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
 | deleteFilesAfterCompletion | 指出在成功移至目的地存放區之後，是否會從來源存放區刪除二進位檔案。 檔案刪除是每個檔案，因此當複製活動失敗時，您會看到某些檔案已複製到目的地，並從來源刪除，而其他檔案仍在來源存放區上剩餘。 <br/>此屬性只在二進位複製案例中有效，其中資料來源存放區為 Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、File、Azure 檔案、SFTP 或 FTP。 預設值： false。 |否 |
 | modifiedDatetimeStart    | 檔案篩選會根據以下屬性：上次修改時間。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 Null，這表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                            |
-| maxConcurrentConnections | 可同時連線到儲存體存放區的連線數目。 只有想要限制對資料存放區的並行連線數目時，才須指定此項。 | 否                                            |
+| maxConcurrentConnections | 可同時連線到儲存體存放區的連線數目。 只有當您想要限制同時連線到資料存放區的連線數目時才指定。 | 否                                            |
 
 **範例︰**
 
@@ -418,7 +419,7 @@ Azure Data Lake Storage Gen2 連接器支援下列驗證類型。 如需詳細�
 * [Avro](format-avro.md#mapping-data-flow-properties)
 * [Common Data Model (預覽) ](format-common-data-model.md#mapping-data-flow-properties)
 * [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties)
-* [差異](format-delta.md#mapping-data-flow-properties)
+* [Delta](format-delta.md#mapping-data-flow-properties)
 * [Excel](format-excel.md#mapping-data-flow-properties)
 * [JSON](format-json.md#mapping-data-flow-properties)
 * [Parquet](format-parquet.md#mapping-data-flow-properties)

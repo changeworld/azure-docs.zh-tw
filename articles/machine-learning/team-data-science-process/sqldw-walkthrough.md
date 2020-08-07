@@ -10,21 +10,21 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d5a332acbf6550fcc3a4256e1bc0531b31dd6c6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012249"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845692"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team 資料科學程式實務：使用 Azure Synapse 分析
-在本教學課程中，我們會逐步引導您使用 Azure Synapse 分析，為公開可用的資料集（ [NYC 計程車旅程](https://www.andresmh.com/nyctaxitrips/)資料集）建立和部署機器學習模型。 「二元分類模型」會預測是否要針對旅程來支付提示。  模型包含多元分類（不論是否有秘訣）和回歸（已支付的 tip 金額分佈）。
+在本教學課程中，我們會逐步引導您使用 Azure Synapse 分析，為公開可用的資料集（ [NYC 計程車旅程](https://www.andresmh.com/nyctaxitrips/)資料集）建立和部署機器學習模型。 「二元分類模型」會預測是否要針對旅程來支付提示。  模型包括多元分類 (是否有 tip) 和回歸 (所付費) 的 [分佈]。
 
 此程序會遵循 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 工作流程。 我們會示範如何設定資料科學環境、如何將資料載入 Azure Synapse 分析，以及如何使用 Azure Synapse 分析或 IPython 筆記本來探索要建立模型的資料和工程功能。 然後，我們會示範如何使用 Azure Machine Learning 建置和部署模型。
 
 ## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>NYC 計程車車程資料集
-「NYC 計程車車程」資料是由約 20GB 的 CSV 壓縮檔 (未壓縮時可達 48GB) 所組成，裡面記錄了超過 1 億 7300 萬筆個別車程及針對每趟車程所支付的費用。 每一筆旅程記錄都包含取貨和下車的位置和時間、匿名的駭客許可證號碼，以及 medallion （計程車的唯一識別碼）號碼。 資料涵蓋 2013 年的所有車程，並且每月會在下列兩個資料集中加以提供：
+「NYC 計程車車程」資料是由約 20GB 的 CSV 壓縮檔 (未壓縮時可達 48GB) 所組成，裡面記錄了超過 1 億 7300 萬筆個別車程及針對每趟車程所支付的費用。 每一筆旅程記錄都包含取貨和下車地點和時間、匿名駭客 (駕駛的) 授權號碼，以及 medallion (計程車的唯一識別碼) 號碼。 資料涵蓋 2013 年的所有車程，並且每月會在下列兩個資料集中加以提供：
 
 1. **trip_data.csv** 檔案包含車程的詳細資訊，例如，乘客數、上車和下車地點、車程持續時間，以及車程長度。 以下是一些範例記錄：
 
@@ -103,7 +103,7 @@ ms.locfileid: "87012249"
 **使用 Visual Studio 連接到您的 Azure Synapse 分析。** 如需指示，請參閱[連接到 Azure Synapse 分析中的 SQL 分析](../../synapse-analytics/sql/connect-overview.md)中的步驟 1 & 2。
 
 > [!NOTE]
-> 在您于 Azure Synapse 分析中建立的資料庫上執行下列 SQL 查詢（而不是連接主題的步驟3中所提供的查詢），以**建立主要金鑰**。
+> 在您于 Azure Synapse (分析中建立的資料庫上執行下列 SQL 查詢，而不是連接主題的步驟3中所提供的查詢，) 來**建立主要金鑰**。
 >
 >
 
@@ -191,7 +191,7 @@ $wc.DownloadFile($source, $ps1_dest)
   Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
   ```
 
-* 使用 Polybase 將資料從您的私用 blob 儲存體帳戶**載入至您的 Azure Synapse Analytics** ，並使用下列命令。
+* 透過使用下列命令，從您的私用 blob 儲存體帳戶，**執行 loaddatatosqldw.sql) 至您的 Azure Synapse Analytics，以使用 (Polybase 載入資料**。
 
   * 建立結構描述
 
@@ -322,7 +322,7 @@ $wc.DownloadFile($source, $ps1_dest)
       ;
       ```
 
-    - 建立範例資料的資料表 (NYCTaxi_Sample)，並透過選取 trip 和 fare 資料表上的 SQL 查詢對範例資料表插入資料。 （本逐步解說的某些步驟需要使用此範例資料表）。
+    - 建立範例資料的資料表 (NYCTaxi_Sample)，並透過選取 trip 和 fare 資料表上的 SQL 查詢對範例資料表插入資料。  (此逐步解說的某些步驟需要使用此範例資料表。 ) 
 
       ```sql
       CREATE TABLE {schemaname}.{nyctaxi_sample}
@@ -428,7 +428,7 @@ GROUP BY medallion
 HAVING COUNT(*) > 100
 ```
 
-**輸出：** 查詢應該會傳回一個資料表，其中包含指定13369牌照（計程車）的資料列，以及在2013中完成的行程數。 最後一個資料行包含所完成之車程數的計數。
+**輸出：** 查詢應該會傳回一個資料表，其中包含指定13369牌照的資料列 (計程車) 和在2013中完成的行程數目。 最後一個資料行包含所完成之車程數的計數。
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>探索：依據 medallion 和 hack_license 的車程分佈
 此範例可找出在指定期間內完成超過 100 趟車程的圓形徽章 (計程車號碼) 和計程車駕照號碼 (司機)。
@@ -602,14 +602,14 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
 **輸出：** 此查詢會產生包含上下車的經緯度及所對應之直接距離 (英里)的資料表 (包含 2,803,538 個資料列) 。 以下是前三個數據列的結果：
 
-| （資料列編號） | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
+|  (的資料列編號)  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
 | 1 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
 | 2 |40.715794 |-74,010635 |40.725338 |-74.00399 |.7448343721 |
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>準備資料以進行模型建置
-下列查詢可聯結 **nyctaxi\_trip** 和 **nyctaxi\_fare** 資料表、產生二進位分類標籤 **tipped**、多類別分類標籤 **tip\_class**，以及從完整聯結的資料集中擷取樣本。 根據上車時間擷取車程子集即可完成取樣。  您可以複製此查詢，然後直接貼到[Azure Machine Learning Studio （傳統）](https://studio.azureml.net)匯[入資料]匯[入]資料模組中，以便從 Azure 中的 SQL Database 實例直接內嵌資料。 查詢會排除含有不正確 (0, 0) 座標的記錄。
+下列查詢可聯結 **nyctaxi\_trip** 和 **nyctaxi\_fare** 資料表、產生二進位分類標籤 **tipped**、多類別分類標籤 **tip\_class**，以及從完整聯結的資料集中擷取樣本。 根據上車時間擷取車程子集即可完成取樣。  您可以複製此查詢，然後直接貼到[Azure Machine Learning Studio 中 (傳統) ](https://studio.azureml.net)匯[入]資料匯[入資料]模組，以便從 Azure 中的 SQL Database 實例直接內嵌資料。 查詢會排除含有不正確 (0, 0) 座標的記錄。
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
@@ -941,16 +941,16 @@ pd.read_sql(query,conn)
 2. **多元分類**：根據先前定義的類別，預測所支付的 tip 範圍。
 3. **回歸**工作：預測針對行程付費的秘訣數量。
 
-若要開始進行模型化練習，請登入您的**Azure Machine Learning （傳統）** 工作區。 如果您尚未建立機器學習服務工作區，請參閱[建立 Azure Machine Learning Studio （傳統）工作區](../studio/create-workspace.md)。
+若要開始進行模型化練習，請登入您的**Azure Machine Learning (傳統) **工作區。 如果您尚未建立機器學習服務工作區，請參閱[建立 Azure Machine Learning Studio (傳統) 工作區](../studio/create-workspace.md)。
 
-1. 若要開始使用 Azure Machine Learning，請參閱[什麼是 Azure Machine Learning Studio （傳統）？](../studio/what-is-ml-studio.md)
-2. 登入[Azure Machine Learning Studio （傳統）](https://studio.azureml.net)。
-3. [Machine Learning Studio （傳統）] 首頁提供豐富的資訊、影片、教學課程、模組參考的連結，以及其他資源。 如需 Azure Machine Learning 的詳細資訊，請參閱[Azure Machine Learning 檔中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
+1. 若要開始使用 Azure Machine Learning，請參閱[什麼是 Azure Machine Learning Studio (傳統) ？](../studio/what-is-ml-studio.md)
+2. [ (傳統) ](https://studio.azureml.net)登入 Azure Machine Learning Studio。
+3. Machine Learning Studio (傳統) 首頁提供豐富的資訊、影片、教學課程、模組參考的連結，以及其他資源。 如需 Azure Machine Learning 的詳細資訊，請參閱[Azure Machine Learning 檔中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
 典型的訓練實驗包含下列步驟：
 
 1. 建立 **+ 新**的實驗。
-2. 將資料放入 Azure Machine Learning Studio （傳統）。
+2. Azure Machine Learning Studio (傳統) 中取得資料。
 3. 視需要預先處理、轉換和運算元據。
 4. 視需要產生功能。
 5. 將資料分割為訓練/驗證/測試資料集 (或讓每一個擁有個別的資料集)。
@@ -958,20 +958,20 @@ pd.read_sql(query,conn)
 7. 使用訓練資料集來訓練一或多個模型。
 8. 使用訓練的模型，為驗證資料集計分。
 9. 評估模型來計算適用於學習問題的相關度量。
-10. 調整模型，然後選取要部署的最佳模型。
+10. 微調模型 (s) 並選取要部署的最佳模型。
 
-在此練習中，我們已在 Azure Synapse 分析中探索並設計資料，並決定要在 Azure Machine Learning Studio （傳統）中內嵌的樣本大小。 以下是建置一或多個預測模型的程序：
+在此練習中，我們已在 Azure Synapse 分析中探索並設計資料，並決定要在 Azure Machine Learning Studio (傳統) 中內嵌的樣本大小。 以下是建置一或多個預測模型的程序：
 
-1. 使用**資料輸入和輸出**一節中提供的匯[入資料]匯[入資料]模組，將資料匯入 Azure Machine Learning Studio （傳統）。 如需詳細資訊，請參閱[匯入資料][import-data]模組參考頁面。
+1. 使用**資料輸入和輸出**一節中提供的匯[入資料]匯[入資料]模組，將資料匯入 Azure Machine Learning Studio (傳統) 。 如需詳細資訊，請參閱[匯入資料][import-data]模組參考頁面。
 
     ![Azure ML 匯入資料][17]
 2. 在 [屬性]**** 面板中，選取 [Azure SQL Database]**** 做為 [資料來源]****。
 3. 在 [ **資料庫伺服器名稱** ] 欄位中輸入資料庫的 DNS 名稱。 格式： `tcp:<your_virtual_machine_DNS_name>,1433`
 4. 在對應欄位中輸入 **資料庫名稱** 。
 5. 在 [伺服器使用者帳戶名稱]**** 中輸入「SQL 使用者名稱」**，並在 [伺服器使用者帳戶密碼]**** 中輸入「密碼」**。
-7. 在 [**資料庫查詢**] [編輯文字] 區域中，貼上用來解壓縮必要資料庫欄位的查詢（包括任何計算欄位，例如標籤），然後向下取樣資料到所需的樣本大小。
+7. 在 [**資料庫查詢**] [編輯文字] 區域中，貼上用來解壓縮必要資料庫欄位的查詢 (包括任何計算欄位（例如標籤) ），然後將資料取樣成所需的樣本大小。
 
-下圖是直接從 Azure Synapse 分析資料庫讀取資料的二元分類實驗範例，請記得以架構名稱和您在逐步解說中使用的資料表名稱來取代資料表 nyctaxi_trip 名稱，然後 nyctaxi_fare。 您可以針對多類別分類和迴歸問題建構類似的實驗。
+從 Azure Synapse 分析資料庫直接讀取資料的二元分類實驗範例如下圖所示 (記得以架構名稱取代資料表 nyctaxi_trip 名稱，並以您在逐步解說) 中使用的資料表名稱來 nyctaxi_fare。 您可以針對多類別分類和迴歸問題建構類似的實驗。
 
 ![Azure ML 訓練][10]
 
@@ -1012,7 +1012,7 @@ Azure Machine Learning 將根據訓練實驗的元件來建立計分實驗。 �
 ### <a name="license-information"></a>授權資訊
 此逐步解說範例及其隨附的指令碼和 IPython Notebook 是在 MIT 授權下由 Microsoft 所共用。 如需詳細資訊，請查看 GitHub 上範例程式碼目錄中的 LICENSE.txt 檔案。
 
-## <a name="references"></a>參考資料
+## <a name="references"></a>參考
 - [Andrés Monroy NYC 計程車旅程下載頁面](https://www.andresmh.com/nyctaxitrips/)
 - [FOILing NYC 的計程車資料，由 Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [NYC 計程車和禮車委員會研究和統計資料](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

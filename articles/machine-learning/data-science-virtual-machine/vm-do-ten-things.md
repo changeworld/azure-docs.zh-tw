@@ -5,28 +5,28 @@ description: 在 Windows 資料科學虛擬機器上執行資料探索和模型�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.custom: tracking-python
+ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 7d9aced42efefc8651605be44f0091b2f4f2815e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 82e7cd67da6b64788d597e84c723d797138ac608
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959274"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848498"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>您可以在 Windows Data Science Virtual Machine 上做的十件事
 
-Windows 資料科學虛擬機器（DSVM）是一個功能強大的資料科學開發環境，您可以在其中執行資料探索和模型化工作。 環境已建立並與數個熱門的資料分析工具配套，可讓您輕鬆地開始進行內部部署、雲端或混合式部署的分析。 
+Windows 資料科學虛擬機器 (DSVM) 是功能強大的資料科學開發環境，您可以在其中執行資料探索和模型化工作。 環境已建立並與數個熱門的資料分析工具配套，可讓您輕鬆地開始進行內部部署、雲端或混合式部署的分析。 
 
 DSVM 與 Azure 服務密切合作。 它可以讀取及處理已儲存在 Azure 上的資料，Azure SQL 資料倉儲、Azure Data Lake、Azure 儲存體或 Azure Cosmos DB。 它也可以利用其他分析工具，例如 Azure Machine Learning 和 Azure Data Factory。
 
 在本文中，您將瞭解如何使用您的 DSVM 來執行資料科學工作，並與其他 Azure 服務互動。 以下是您可以在 DSVM 上做的一些事：
 
 - 使用 Microsoft Machine Learning Server 和 Python，探索資料並在 DSVM 本機開發模型。
-- 使用 Jupyter 筆記本，在瀏覽器中使用 Python 2、Python 3 和 Microsoft R 來試驗您的資料（Microsoft R 是專為效能而設計的適用于企業的 R 版本）。
+- 使用 Jupyter 筆記本，在瀏覽器中使用 Python 2、Python 3 和 Microsoft R 來試驗您的資料。 (Microsoft R 是專為效能而設計的企業級 R 版本。 ) 
 - 在 Azure Machine Learning 上部署透過 R 和 Python 建立的模型，讓用戶端應用程式可以使用簡單的 web 服務介面來存取您的模型。
 - 使用 Azure 入口網站或 PowerShell 來管理您的 Azure 資源。
 - 藉由在 DSVM 上建立 Azure 檔案儲存體共用作為可掛接的磁片磁碟機，以擴充您的儲存空間，並在整個小組共用大規模的資料集/程式碼。
@@ -62,10 +62,10 @@ DSVM 與 Azure 服務密切合作。 它可以讀取及處理已儲存在 Azure 
 
 如需有關如何建立 Python 環境的詳細資訊，請參閱[PTVS 檔](https://aka.ms/ptvsdocs)。
 
-現在您已設定建立新的 Python 專案。 移至**File**  >  [檔案] [**新增**]  >  [**專案**]  >  [**python** ]，然後選取您要建立的 Python 應用程式類型。 您可以在 [ **python 環境**] 上按一下滑鼠右鍵，然後選取 [**新增/移除 python 環境**]，將目前專案的 Python 環境設定為所需的版本（python 2.7 或3.6）。 您可以在[產品檔](https://aka.ms/ptvsdocs)中找到有關使用 PTVS 的詳細資訊。
+現在您已設定建立新的 Python 專案。 移至**File**  >  [檔案] [**新增**]  >  [**專案**]  >  [**python** ]，然後選取您要建立的 Python 應用程式類型。 您可以用滑鼠右鍵按一下 [ **python 環境**]，然後選取 [**新增/移除 python 環境**]，將目前專案的 python 環境設定為所需的版本 (python 2.7 或 3.6) 。 您可以在[產品檔](https://aka.ms/ptvsdocs)中找到有關使用 PTVS 的詳細資訊。
 
 ## <a name="use-jupyter-notebooks"></a>使用 Jupyter Notebook
-Jupyter Notebook 提供以瀏覽器為基礎的 IDE，以進行資料探索和模型化。 您可以在 Jupyter 筆記本中使用 Python 2、Python 3 或 R （開放原始碼和 Microsoft R Server）。
+Jupyter Notebook 提供以瀏覽器為基礎的 IDE，以進行資料探索和模型化。 您可以在 Jupyter 筆記本中使用 Python 2、Python 3 或 R (開放原始碼和 Microsoft R Server) 。
 
 若要啟動 Jupyter Notebook，請選取 [**開始**] 功能表或桌面上的 [ **Jupyter Notebook** ] 圖示。 在 DSVM 命令提示字元中，您也可以 ```jupyter notebook``` 從現有的筆記本所在的目錄或您想要建立新筆記本的位置執行命令。  
 
@@ -74,7 +74,7 @@ Jupyter Notebook 提供以瀏覽器為基礎的 IDE，以進行資料探索和�
 * 選取筆記本以查看程式碼。
 * 選取 Shift + Enter 來執行每個儲存格。
 * 選取 [**儲存格**] [執行] 以執行整個筆記本  >  ** **。
-* 選取 Jupyter 圖示（左上角），選取右側的 [**新增**] 按鈕，然後選擇筆記本語言（也稱為核心），以建立新的筆記本。   
+* 選取 Jupyter 圖示 (左上角) ，選取右側的 [**新增**] 按鈕，然後選擇 [筆記本語言] (也稱為 [核心) ]，以建立新的筆記本。   
 
 > [!NOTE]
 > 目前支援 Jupyter 中的 Python 2.7、Python 3.6、R、Julia 和 PySpark 核心。 R 核心支援在開放原始碼 R 和 Microsoft R 中進行程式設計。   
@@ -304,7 +304,7 @@ AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.ne
 您也可以使用 Azure 儲存體總管，從 VM 中的本機檔案上傳資料：
 
 * 若要將資料上傳至容器，請選取目標容器，然後選取 [**上傳**] 按鈕。 ![Azure 儲存體總管中 [上傳] 按鈕的螢幕擷取畫面](./media/vm-do-ten-things/storage-accounts.png)
-* 選取 **[檔案**] 方塊右邊的省略號（**...**），從檔案系統中選取一或多個要上傳的檔案，然後選取 [**上傳**] 以開始上傳檔案。 ![[上傳檔案] 對話方塊的螢幕擷取畫面](./media/vm-do-ten-things/upload-files-to-blob.png)
+* 選取 **[檔案**] 方塊右邊的省略號 (**...**) ，從檔案系統中選取一或多個要上傳的檔案，然後選取 [**上傳**] 以開始上傳檔案。 ![[上傳檔案] 對話方塊的螢幕擷取畫面](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>從 Azure blob 讀取資料： Machine Learning 讀取器模組
 
@@ -365,7 +365,7 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 ![前 10 個資料列的螢幕擷取畫面](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
-Azure Data Lake Storage 是海量資料分析工作負載的超大規模資料庫存放庫，而且與 Hadoop 分散式檔案系統（HDFS）相容。 它可以與 Hadoop、Spark 及 Azure Data Lake Analytics 搭配運作。 在本節中，您將瞭解如何使用 Azure Data Lake Analytics 將資料移至 Azure Data Lake Storage 並執行分析。
+Azure Data Lake Storage 是海量資料分析工作負載的超大規模資料庫存放庫，與 Hadoop 分散式檔案系統 (HDFS) 相容。 它可以與 Hadoop、Spark 及 Azure Data Lake Analytics 搭配運作。 在本節中，您將瞭解如何使用 Azure Data Lake Analytics 將資料移至 Azure Data Lake Storage 並執行分析。
 
 #### <a name="prerequisites"></a>必要條件
 
@@ -462,7 +462,7 @@ Azure Cosmos DB 是雲端中的一種 NoSQL 資料庫。 您可以使用它來�
 1. Azure Cosmos DB Python SDK 已安裝在 DSVM 上。 若要更新它，請 ```pip install pydocumentdb --upgrade``` 從命令提示字元執行。
 2. 從[Azure 入口網站](https://portal.azure.com)建立 Azure Cosmos DB 帳戶和資料庫。
 3. 從[Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=53595)下載 Azure Cosmos DB 資料移轉工具，並將其解壓縮至您選擇的目錄。
-4. 使用下列命令參數將儲存在[公用 blob](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json)中的 JSON 資料（火山資料）匯入到 Azure Cosmos DB 遷移工具。 （使用 dtui.exe，從您安裝 Azure Cosmos DB 資料移轉工具的目錄）。輸入具有下列參數的來源和目標位置：
+4. 使用遷移工具的下列命令參數，將儲存在[公用 blob](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json)中的 JSON 資料 (火山資料) 匯入 Azure Cosmos DB。  (從安裝 Azure Cosmos DB 資料移轉工具的目錄使用 dtui.exe。 ) 使用下列參數輸入來源和目標位置：
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
@@ -473,7 +473,7 @@ Azure Cosmos DB 是雲端中的一種 NoSQL 資料庫。 您可以使用它來�
 
 1. 開啟 Power BI Desktop 並選取 [取得資料]****。 將 URL 指定為： `https://cahandson.blob.core.windows.net/samples/volcano.json` 。
 2. 您應該會看到 JSON 記錄已匯入為清單。 將清單轉換成資料表，讓 Power BI 可以使用它。
-4. 選取 [展開] （箭號）圖示來展開資料行。
+4. 選取 [展開] (箭號) 圖示來展開資料行。
 5. 請注意，位置是 [**記錄**] 欄位。 展開記錄，然後只選取座標。 **座標**是清單資料行。
 6. 加入新的資料行，以將清單座標資料行轉換成逗號分隔的**LatLong**資料行。 使用公式來串連座標清單欄位中的兩個元素 ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` 。
 7. 將 [提高**許可權**] 資料行轉換為 [十進位 **]，然後**選取 [**關閉**並套用] 按鈕。
@@ -506,9 +506,9 @@ in
 > 
 > 
 
-您可能需要處理一些大規模的分析，而且需要更多的 CPU、記憶體或磁片容量。 若是如此，您可以根據 CPU 核心、深度學習的 GPU 型實例、記憶體容量和磁片類型（包括固態硬碟機），找到符合您計算和預算需求的 VM 大小選擇。 您可以在[Azure 虛擬機器定價](https://azure.microsoft.com/pricing/details/virtual-machines/)頁面上取得 vm 的完整清單及其每小時計算定價。
+您可能需要處理一些大規模的分析，而且需要更多的 CPU、記憶體或磁片容量。 若是如此，您可以在 CPU 核心、深度學習的 GPU 型實例、記憶體容量和磁片類型中找到 VM 大小的選擇， (包括符合您的計算和預算需求的固態硬碟) 。 您可以在[Azure 虛擬機器定價](https://azure.microsoft.com/pricing/details/virtual-machines/)頁面上取得 vm 的完整清單及其每小時計算定價。
 
-同樣地，您的 VM 處理容量需求可能會降低。 （例如：您已將主要工作負載移至 Hadoop 或 Spark 叢集）。然後，您可以從[Azure 入口網站](https://portal.azure.com)相應減少叢集，並移至 VM 實例的設定。 
+同樣地，您的 VM 處理容量需求可能會降低。  (例如：您已將主要工作負載移至 Hadoop 或 Spark 叢集。 ) 您可以從[Azure 入口網站](https://portal.azure.com)相應減少叢集，並移至 VM 實例的設定。 
 
 ## <a name="add-more-tools"></a>新增更多工具
 預先建立至 DSVM 的工具可解決許多常見的資料分析需求。 這可節省您的時間，因為您不需要逐一安裝和設定您的環境。 它也會為您節省成本，因為您只需支付所使用的資源。
@@ -526,7 +526,7 @@ in
 
 - [適用于音訊的深度學習](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/)：本教學課程示範如何在「市內音效」[資料集](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)上訓練適用于音訊事件偵測的深度學習模型。 它也提供如何使用音訊資料的總覽。
 
-- [文字檔分類](https://github.com/anargyri/lstm_han)：本逐步解說示範如何建立和定型兩個類神經網路架構：階層式注意網路和長短期記憶體（LSTM）網路。 這些類神經網路會使用深入學習的 Keras API 將文字文件分類。 Keras 是三個最受歡迎的深度學習架構的前端： Microsoft Cognitive Toolkit、TensorFlow 和 Theano。
+- [文字檔分類](https://github.com/anargyri/lstm_han)：本逐步解說示範如何建立和定型兩個類神經網路架構：階層式注意網路和長期記憶體 (LSTM) 網路。 這些類神經網路會使用深入學習的 Keras API 將文字文件分類。 Keras 是三個最受歡迎的深度學習架構的前端： Microsoft Cognitive Toolkit、TensorFlow 和 Theano。
 
 ## <a name="summary"></a>摘要
 本文說明您可以在 Microsoft 資料科學虛擬機器上執行的一些事項。 您還可以做更多工作，讓 DSVM 成為有效的分析環境。

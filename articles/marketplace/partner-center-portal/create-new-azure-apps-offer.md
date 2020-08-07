@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 425ed63238c07ffcf53df10eeddfa0ac95679a2c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797880"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904508"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -56,12 +56,12 @@ ms.locfileid: "87797880"
 
 [為 Azure Marketplace 建置解決方案範本和受控應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603) \(英文\) 這部影片可針對 Azure 應用程式供應項目類型提供完整的介紹：
 
-* 有哪些可用的供應項目類型；
-* 需要哪些技術資產；
-* 如何撰寫 Azure Resource Manager 範本；
-* 開發與測試應用程式 UI；
-* 如何發佈應用程式供應項目；
-* 應用程式檢閱程序。
+* 有哪些供應專案類型可供使用
+* 需要哪些技術資產
+* 如何撰寫 Azure Resource Manager 範本
+* 開發和測試應用程式 UI
+* 如何發佈應用程式供應專案
+* 應用程式審查流程
 
 ### <a name="suggested-tools"></a>建議的工具
 
@@ -182,12 +182,12 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 標誌
-2. Categories
+2. 類別
 3. 支援位址 (連結) 
 4. 使用規定
 5. 隱私權原則位址 (連結) 
 6. 供應項目名稱
-7. 總結
+7. 摘要
 8. 描述
 9. 螢幕擷取畫面/影片
 
@@ -247,15 +247,14 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="store-logos"></a>儲存標誌
 
-在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 和**中等** (90 x 90 圖元) 大小標誌。 您可以選擇性地將這些取代為不同的影像。
-
-在清單中的不同位置，必須使用這三個標誌大小：
+請以下列三個像素大小提供供應項目標誌的 PNG 檔案：
 
 - **小型** (48 x 48)
 - **中型** (90 x 90)
-- 216 x 216 與 350 x 350) 之間的**大型** (
+- **大型** (216 x 216)
+- **寬型** (255 x 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+全部三個標誌都是必要的，且在清單中會用於不同位置。
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
@@ -283,7 +282,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 藉由分別 (最多 10 個) 或上傳 CSV 檔案 (最多 100 個)，新增至少一個 Azure 訂用帳戶識別碼。 您可以藉由新增這些訂用帳戶識別碼，定義哪些人員可以在即時發佈之前預覽您的供應項目。 如果您的供應項目已上線，您仍然可以定義預覽對象，以測試您供應項目的變更或更新。
 
 > [!NOTE]
-> 預覽對象與私人對象不同。 預覽對象可以在供應項目即時發佈到 Marketplace 上_之前_先存取。 預覽對象可以查看並驗證所有方案，包括只有在您的供應項目完全發佈到 Marketplace 之後，才供私人對象使用的方案。 私人對象 (在方案的 [定價和可用性] 索引標籤中定義) 對特定方案具有獨佔式存取權。
+> 預覽對象與私人對象不同。 預覽對象可以在供應項目即時發佈到 Marketplace 上*之前*先存取。 預覽對象可以查看並驗證所有方案，包括只有在您的供應項目完全發佈到 Marketplace 之後，才供私人對象使用的方案。 私人對象 (在方案的 [定價和可用性] 索引標籤中定義) 對特定方案具有獨佔式存取權。
 
 選取 [儲存草稿] 後再繼續。
 
@@ -324,7 +323,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 ***方案識別碼*** – 為此供應項目中的每個方案建立唯一的方案識別碼。 客戶將可在產品 URL 中看到此識別碼。  只能使用小寫英數字元、連字號或底線。 針對此方案識別碼，最多允許 50 個字元。 選取 [建立] 之後，就無法修改此識別碼。
 
-***方案名稱*** - 當客戶決定要在您的供應項目內選取哪一個方案時，會看到此名稱。 為此供應項目中的每個方案建立唯一的供應項目名稱。 方案名稱是用來區分可能屬於相同供應項目的軟體方案 (例如，供應項目名稱：Windows 伺服器；方案：Windows Server 2016、Windows Server 2019)。
+***方案名稱***-客戶在決定要在您的供應專案內選取哪一個方案時，會看到此名稱。 為此供應項目中的每個方案建立唯一的供應項目名稱。 方案名稱是用來區分可能屬於相同供應項目的軟體方案 (例如，供應項目名稱：Windows 伺服器；方案：Windows Server 2016、Windows Server 2019)。
 
 ### <a name="plan-setup"></a>方案設定
 
@@ -335,7 +334,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="re-use-technical-configuration"></a>重複使用技術設定
 
-如果您有多個相同類型的方案，而且這些方案之間的套件相同，則可以選取 [此方案重複使用另一個方案的套件]。  當您選取此選項時，將能夠選取其中一個相同類型的其他方案，讓此供應項目重複使用其中的套件。 
+如果您有多個相同類型的方案，而且這些方案之間的套件相同，則可以選取 [此方案重複使用另一個方案的套件]。  當您選取此選項時，將能夠選取其中一個相同類型的其他方案，讓此供應項目重複使用其中的套件。
 
 >[!Note]
 >當您重複使用另一個方案的套件時，整個 [技術設定] 索引標籤都會從此方案中消失。 另一個方案中的技術設定詳細資料 (包括您在之後所做的任何更新) 也會用於此方案。<br><br>這個方案發佈之後即無法變更此設定。
@@ -416,9 +415,9 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 提供此方案的每月價格。  此價格不包括此解決方案所部署資源所產生的任何 Azure 基礎結構或隨用隨付軟體成本。
 
-除了每月價格之外，您也可以使用[計量付費計費](./azure-app-metered-billing.md)，設定非標準單位耗用量的價格。  如有需要，您可以將每月價格設定為零，並只使用計量付費計費。 
+除了每月價格之外，您也可以使用[計量付費計費](./azure-app-metered-billing.md)，設定非標準單位耗用量的價格。  如有需要，您可以將每月價格設定為零，並只使用計量付費計費。
 
-以 USD (USD = 美元) 設定的價格會在儲存時使用目前的匯率，轉換為所有選定市場的當地貨幣。 在發佈之前，請先匯出價格試算表，並檢閱每個市場的價格，以驗證這些價格。 如果您想要在個別市場中設定自訂價格，請修改並匯入價格試算表。 
+以 USD (USD = 美元) 設定的價格會在儲存時使用目前的匯率，轉換為所有選定市場的當地貨幣。 在發佈之前，請先匯出價格試算表，並檢閱每個市場的價格，以驗證這些價格。 如果您想要在個別市場中設定自訂價格，請修改並匯入價格試算表。
 
 >[!Note]
 >您必須先儲存您的價格變更，才能匯出價格資料。
@@ -442,8 +441,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 >[!Note]
 >透過雲端解決方案提供者方案的轉銷商所建立的 Azure 訂用帳戶，不支援私用供應專案 (CSP) 。
 
-
-### <a name="technical-configuration"></a>技術設定 
+### <a name="technical-configuration"></a>技術設定
 
 此索引標籤可讓您上傳允許客戶部署您方案的部署套件。
 
@@ -501,15 +499,15 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 #### <a name="customize-allowed-customer-actions"></a>自訂允許的客戶動作
 
-選取此選項可指定客戶除了預設可用的 `*/read` 動作以外，還可以對受控資源執行哪些動作。 
+選取此選項可指定客戶除了預設可用的 `*/read` 動作以外，還可以對受控資源執行哪些動作。
 
-列出您想要讓客戶在此處執行的其他動作，並以分號分隔。  如需詳細資訊，請參閱[了解 Azure 資源的拒絕指派](../../role-based-access-control/deny-assignments.md) \(部分機器翻譯\)。  如需可用動作的清單，請參閱 [Azure Resource Manager 資源提供者作業](../../role-based-access-control/resource-provider-operations.md)。 例如，若要允許取用者重新啟動虛擬機器，可將 `Microsoft.Compute/virtualMachines/restart/action` 新增至允許的動作。
+列出您想要讓客戶在此處執行的其他動作，並以分號分隔。  如需詳細資訊，請參閱[了解 Azure 資源的拒絕指派](../../role-based-access-control/deny-assignments.md) \(部分機器翻譯\)。 如需可用動作的清單，請參閱 [Azure Resource Manager 資源提供者作業](../../role-based-access-control/resource-provider-operations.md)。 例如，若要允許取用者重新啟動虛擬機器，可將 `Microsoft.Compute/virtualMachines/restart/action` 新增至允許的動作。
 
 #### <a name="global-azure--azure-government-cloud"></a>Global Azure / Azure Government 雲端
 
-指出在每個支援的雲端中，誰應該具備此受控應用程式的管理存取權。 您想要對其授與受控資源群組權限的使用者、群組或應用程式，都是使用 Azure Active Directory (AAD) 身分識別來識別的。
+指出在每個支援的雲端中，誰應該具備此受控應用程式的管理存取權。 您想要授與受控資源群組之許可權的使用者、群組或應用程式，都是使用 Azure Active Directory (AD) 身分識別來識別。
 
-**Azure Active Directory 租用戶識別碼** – AAD 租用戶識別碼 (亦稱為目錄識別碼)，其中包含您想要對其授與權限之使用者、群組或應用程式的身分識別。 您可以在 Azure 入口網站上的 [Azure Active Directory 內容](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)中找到您的 AAD 租用戶識別碼。
+**Azure Active Directory 租使用者識別碼**– Azure AD 的租使用者識別碼 (也稱為目錄識別碼) ，其中包含您想要授與許可權的使用者、群組或應用程式的身分識別。 您可以在 Azure 入口網站的 [屬性] 中找到您的 Azure AD 租使用者識別碼， [Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)。
 
 **授權** – 針對您要對其授與權限的使用者、群組或應用程式，將其 Azure Active Directory 物件識別碼新增至受控資源群組。 依使用者的主體識別碼 (可在 [Azure 入口網站上的 Azure Active Directory 使用者刀鋒視窗](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)中找到) 識別使用者。
 
@@ -579,9 +577,9 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 當您完成供應項目的所有必要區段之後，請選取入口網站右上角的 [檢閱並發佈]。
 
 檢閱供應項目每個區段的完成狀態。
-    - *尚未開始* - 表示此區段必須已完成卻尚未觸及。
-    - *不完整* – 表示此區段中有需要修正的錯誤，或是需要您提供更多詳細資訊。 回到上一個區段並加以更新。
-    - *完成* – 表示此區段已完成，並已提供所有必要的資料且沒有任何錯誤。 供應項目的所有區段皆需要處於完成狀態，您才能提交供應項目。
+    - *未啟動*–表示區段尚未觸及，需要完成。
+    - *不完整*–表示區段中有需要修正的錯誤，或需要提供更多資訊的詳細資訊。 回到上一個區段並加以更新。
+    - *Complete* –表示區段已完成，所有必要的資料都已提供，而且沒有任何錯誤。 供應項目的所有區段皆需要處於完成狀態，您才能提交供應項目。
 
 如果這是您第一次發佈此供應項目，請將測試指示提供給認證小組，以確保您的應用程式已經過正確測試，並加上有助於了解您應用程式的任何補充注意事項。
 

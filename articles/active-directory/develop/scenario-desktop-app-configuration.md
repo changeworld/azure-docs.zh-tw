@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 9388ef4aa320147815bec79c2fa4b90bce3cdac1
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558836"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846134"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的桌面應用程式：程式碼設定
 
@@ -24,7 +24,7 @@ ms.locfileid: "84558836"
 
 ## <a name="microsoft-authentication-libraries"></a>Microsoft 驗證程式庫
 
-下列 Microsoft 驗證程式庫（MSALs）支援桌面應用程式。
+下列 Microsoft 驗證程式庫 (MSALs) 支援桌面應用程式。
 
   Microsoft 驗證程式庫 | 描述
   ------------ | ----------
@@ -94,7 +94,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-最後，如果您想要取得 Azure Active Directory （Azure AD） B2C 租使用者的權杖，請指定您的租使用者，如下列程式碼片段所示：
+最後，如果您想要取得 Azure Active Directory (Azure AD) B2C 租使用者的權杖，請指定您的租使用者，如下列程式碼片段所示：
 
 ```csharp
 IPublicClientApplication app;

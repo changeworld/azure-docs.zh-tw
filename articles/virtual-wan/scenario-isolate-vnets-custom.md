@@ -8,18 +8,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4443c92fad2510b6bc4bc1214840aca5553556a5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553456"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831017"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>案例： Vnet 的自訂隔離
 
 使用虛擬 WAN 虛擬中樞路由時，有很多可用的案例。 在 Vnet 的自訂隔離案例中，目標是要防止特定 Vnet 集能夠連線到其他特定的 Vnet 集。 不過，Vnet 必須達到 (VPN/ER/使用者 VPN) 的所有分支。 如需虛擬中樞路由的詳細資訊，請參閱[關於虛擬中樞路由](about-virtual-hub-routing.md)。
 
-## <a name="scenario-design"></a><a name="design"></a>案例設計
+## <a name="design"></a><a name="design"></a>設計
 
 為了找出需要多少個路由表，您可以建立連接矩陣。 在此案例中，其外觀如下所示，其中每個資料格都代表來源 (資料列) 是否可以與目的地 (資料行通訊) ：
 
@@ -53,7 +53,7 @@ ms.locfileid: "87553456"
 
 如需虛擬中樞路由的詳細資訊，請參閱[關於虛擬中樞路由](about-virtual-hub-routing.md)。
 
-## <a name="scenario-workflow"></a><a name="architecture"></a>案例工作流程
+## <a name="workflow"></a><a name="architecture"></a>工作流程
 
 在 [**圖 1**] 中，有藍色和紅色的 VNet 連接。
 

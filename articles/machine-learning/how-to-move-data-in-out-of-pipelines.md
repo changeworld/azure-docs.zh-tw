@@ -9,13 +9,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 3fe49215055b5b090c9d8e4e25a832544c5c88ce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, contperfq4, devx-track-python
+ms.openlocfilehash: 740ca2d991f9447e8a3a04c7795c8a6f3011fd39
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319638"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843023"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>將資料匯入 ML 管線步驟並在其中來回移動 (Python)
 
@@ -59,7 +59,7 @@ ms.locfileid: "87319638"
 
 將資料內嵌至管線的慣用方法是使用[Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)物件。 `Dataset`物件代表整個工作區中可用的持續性資料。
 
-建立和註冊物件的方法有很多種 `Dataset` 。 表格式資料集適用于一個或多個檔案中可用的分隔資料。 檔案資料集適用于二進位資料（例如影像）或您將剖析的資料。 建立物件最簡單的程式設計方式， `Dataset` 是在工作區儲存體或公用 url 中使用現有的 blob：
+建立和註冊物件的方法有很多種 `Dataset` 。 表格式資料集適用于一個或多個檔案中可用的分隔資料。 檔案資料集適用于二進位資料 (例如影像) 或您要剖析的資料。 建立物件最簡單的程式設計方式， `Dataset` 是在工作區儲存體或公用 url 中使用現有的 blob：
 
 ```python
 datastore = Datastore.get(workspace, 'training_data')
@@ -81,7 +81,7 @@ cats_dogs_dataset = Dataset.File.from_files(
 
 若要將資料集傳遞至管線步驟：
 
-1. 使用 `TabularDataset.as_named_inputs()` 或 `FileDataset.as_named_input()` （不是 ' s '）來建立 `DatasetConsumptionConfig` 物件
+1. 使用 `TabularDataset.as_named_inputs()` 或 `FileDataset.as_named_input()` (沒有 ' s ') 來建立 `DatasetConsumptionConfig` 物件
 1. 使用 `as_mount()` 或 `as_download()` 設定存取模式
 1. 使用 `arguments` 或引數將資料集傳遞至您的管線 `inputs` 步驟
 
@@ -136,7 +136,7 @@ training_data_folder = args.train_folder
 testing_data_folder = Run.get_context().input_datasets['test']
 ```
 
-傳遞的值將是資料集檔案的路徑。
+傳遞的值將是資料集檔案 (s) 的路徑。
 
 您也可以直接存取已註冊的 `Dataset` 。 由於註冊的資料集是持續性的，而且會在工作區之間共用，因此您可以直接抓取它們：
 
@@ -148,7 +148,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>用於 `PipelineData` 中繼資料
 
-當 `Dataset` 物件代表持續性資料時， [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)物件會用於從管線步驟輸出的暫存資料。 因為物件的存留期 `PipelineData` 超過單一管線步驟，所以您可以在管線定義腳本中定義它們。 當您建立 `PipelineData` 物件時，您必須提供資料所在的名稱和資料存放區。 `PipelineData` `PythonScriptStep` 使用_both_ `arguments` 和引數，將您的物件傳遞給您的 `outputs` ：
+當 `Dataset` 物件代表持續性資料時， [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)物件會用於從管線步驟輸出的暫存資料。 因為物件的存留期 `PipelineData` 超過單一管線步驟，所以您可以在管線定義腳本中定義它們。 當您建立 `PipelineData` 物件時，您必須提供資料所在的名稱和資料存放區。 `PipelineData` `PythonScriptStep` 使用_both_ `arguments` 和引數，將您的物件 (s) 傳遞給您的 `outputs` ：
 
 ```python
 default_datastore = workspace.get_default_datastore()
