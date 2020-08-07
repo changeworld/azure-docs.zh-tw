@@ -6,12 +6,12 @@ ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9bf04ae6985ac2ce0e20bf70b3d7c003bbddca69
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337291"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904797"
 ---
 # <a name="troubleshoot-runbook-issues"></a>針對 Runbook 問題進行疑難排解
 
@@ -413,13 +413,13 @@ $job = Start-AzAutomationRunbook -AutomationAccountName $automationAccountName -
 $pollingSeconds = 5
 $maxTimeout = 10800
 $waitTime = 0
-while((IsJobTerminalState $job.Status) -eq $false -and $waitTime -lt $maxTimeout) {
+while($false -eq (IsJobTerminalState $job.Status) -and $waitTime -lt $maxTimeout) {
    Start-Sleep -Seconds $pollingSeconds
    $waitTime += $pollingSeconds
-   $jobResults = $job | Get-AzAutomationJob
+   $job = $job | Get-AzAutomationJob
 }
 
-$jobResults | Get-AzAutomationJobOutput | Get-AzAutomationJobOutputRecord | Select-Object -ExpandProperty Value
+$job | Get-AzAutomationJobOutput | Get-AzAutomationJobOutputRecord | Select-Object -ExpandProperty Value
 ```
 
 ## <a name="scenario-runbook-fails-because-of-deserialized-object"></a><a name="fails-deserialized-object"></a>案例：Runbook 因還原序列化物件而失敗
@@ -522,7 +522,7 @@ The runbook job failed due to a job stream being larger than 1MB, this is the li
 
 發生此錯誤的原因是您的 runbook 嘗試將太多例外狀況資料寫入輸出資料流程。
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 
 作業輸出資料流程有 1 MB 的限制。 確定您的 Runbook 會使用 `try` 和 `catch` 區塊，來括住對可執行檔或子處理序的呼叫。 如果作業擲回例外狀況，則讓程式碼將來自例外狀況的訊息寫入到自動化變數中。 此技術可避免將訊息寫入到作業輸出資料流。 針對執行的混合式 Runbook 背景工作角色作業，會顯示截斷為 1 MB 的輸出資料流程，而不會出現錯誤訊息。
 

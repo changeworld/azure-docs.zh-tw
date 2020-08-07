@@ -1,22 +1,23 @@
 ---
-title: 設定適用于 Azure API for FHIR 的 Azure 角色型存取控制（Azure RBAC）
+title: 為 Azure API for FHIR (Azure RBAC) 設定 Azure 角色型存取控制
 description: 本文說明如何為 Azure API for FHIR 資料平面設定 Azure RBAC
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
-ms.author: mihansen
-ms.openlocfilehash: 8e4b5fdecfc5b9fcb2deb68a482b084a6e6ed6d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: matjazl
+ms.reviewer: dseven
+ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496163"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845932"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>設定適用于 FHIR 的 Azure RBAC 
 
-在本文中，您將瞭解如何使用[azure 角色型存取控制（AZURE RBAC）](https://docs.microsoft.com/azure/role-based-access-control/)來指派 Azure API for FHIR 資料平面的存取權。 在與您的 Azure 訂用帳戶相關聯的 Azure Active Directory 租使用者中管理資料平面的使用者時，Azure RBAC 是指派資料平面存取權的慣用方法。 如果您使用外部 Azure Active Directory 租使用者，請參閱[本機 RBAC 指派參考](configure-local-rbac.md)。
+在本文中，您將瞭解如何使用[azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/)指派 Azure API for FHIR 資料平面的存取權。 在與您的 Azure 訂用帳戶相關聯的 Azure Active Directory 租使用者中管理資料平面的使用者時，Azure RBAC 是指派資料平面存取權的慣用方法。 如果您使用外部 Azure Active Directory 租使用者，請參閱[本機 RBAC 指派參考](configure-local-rbac.md)。
 
 ## <a name="confirm-azure-rbac-mode"></a>確認 Azure RBAC 模式
 
@@ -28,7 +29,7 @@ ms.locfileid: "87496163"
 
 ## <a name="assign-roles"></a>指派角色
 
-若要授與使用者、服務主體或群組對 FHIR 資料平面的存取權，請按一下 [**存取控制（IAM）**]，然後按一下 [**角色指派**]，再按一下 [ **+ 新增**]：
+若要授與使用者、服務主體或群組對 FHIR 資料平面的存取權，請按一下 [**存取控制] (IAM) **，然後按一下 [**角色指派**]，再按一下 [ **+ 新增**]：
 
 :::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="新增 Azure 角色指派":::
 
@@ -38,9 +39,9 @@ ms.locfileid: "87496163"
 
 您可以選擇：
 
-* FHIR 資料讀取器：可以讀取（和搜尋） FHIR 資料。
+* FHIR 資料讀取器：可以讀取 (和搜尋) FHIR 資料。
 * FHIR 資料寫入器外掛程式：可以讀取、寫入和虛刪除 FHIR 資料。
-* FHIR 資料匯出工具：可以讀取和匯出（ `$export` operator）資料。
+* FHIR 資料匯出工具：可以讀取和匯出 (`$export` 運算子) 資料。
 * FHIR 資料參與者：可以執行所有資料平面作業。
 
 如果這些角色不足以滿足您的需求，您也可以[建立自訂角色](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-powershell)。

@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/05/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 68e6ec0af0b24771b21dac35c944fc7fa098b404
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 333e48ff963ec42dd2ee00956fa046a5a038c099
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203103"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903777"
 ---
 # <a name="odata-orderby-syntax-in-azure-cognitive-search"></a>Azure 認知搜尋中的 OData $orderby 語法
 
@@ -50,7 +50,9 @@ sortable_function ::= geo_distance_call | 'search.score()'
 > [!NOTE]
 > 如需完整的 EBNF，請參閱[Azure 認知搜尋的 OData 運算式語法參考](search-query-odata-syntax-reference.md)。
 
-每個子句都有排序準則，並選擇性地後面加上 (`asc` 遞增或遞減) 的排序方向 `desc` 。 如果您未指定方向，預設值為 [遞增]。 排序準則可以是欄位的路徑，或是呼叫或函式的方法 `sortable` [`geo.distance`](search-query-odata-geo-spatial-functions.md) [`search.score`](search-query-odata-search-score-function.md) 。
+每個子句都有排序準則，並選擇性地後面加上 (`asc` 遞增或遞減) 的排序方向 `desc` 。 如果您未指定方向，預設值為 [遞增]。 如果欄位中有 null 值，則如果排序是，則會先出現 null 值，如果排序是，則為 `asc` last `desc` 。
+
+排序準則可以是欄位的路徑，或是呼叫或函式的方法 `sortable` [`geo.distance`](search-query-odata-geo-spatial-functions.md) [`search.score`](search-query-odata-search-score-function.md) 。
 
 如果多個檔具有相同的排序準則，但未使用此函式 `search.score` (例如，如果您依數值 `Rating` 欄位排序，而三個檔的評等為 4) ，則系結將會依檔分數遞減順序中斷。 當檔分數是相同的 (例如，未在要求) 中指定全文檢索搜尋查詢時，系結檔的相對順序就是不確定的。
 

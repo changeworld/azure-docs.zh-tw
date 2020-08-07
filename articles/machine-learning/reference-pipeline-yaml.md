@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: nilsp
 author: NilsPohlmann
 ms.date: 07/31/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 4fc28ca533c6670263c8d559f4d6dd3e21671881
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.custom: devx-track-python
+ms.openlocfilehash: 079341fe1b22db83ded4b11941d8bdf809adfb8d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513157"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845530"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>在 YAML 中定義機器學習管線
 
@@ -42,10 +42,10 @@ ms.locfileid: "87513157"
 
 管線定義會使用對應至[管線](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py)類別的下列索引鍵：
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
 | `name` | 管線的描述。 |
-| `parameters` | 管線的參數。 |
+| `parameters` | 參數 (s) 至管線。 |
 | `data_reference` | 定義執行時應該如何使用資料。 |
 | `default_compute` | 執行管線中所有步驟的預設計算目標。 |
 | `steps` | 管線中使用的步驟。 |
@@ -54,7 +54,7 @@ ms.locfileid: "87513157"
 
 `parameters`區段使用下列索引鍵，其對應至[PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py)類別：
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ---- | ---- |
 | `type` | 參數的值類型。 有效的類型為 `string` 、 `int` 、 `float` 、 `bool` 或 `datapath` 。 |
 | `default` | 預設值。 |
@@ -82,7 +82,7 @@ pipeline:
 
 `data_references`區段使用下列索引鍵，其對應至[DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)：
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
 | `datastore` | 要參考的資料存放區。 |
 | `path_on_datastore` | 資料參考的支援儲存體中的相對路徑。 |
@@ -106,7 +106,7 @@ pipeline:
 
 步驟會定義計算環境，以及要在環境上執行的檔案。 若要定義步驟的類型，請使用 `type` 下列索引鍵：
 
-| 步驟類型 | 說明 |
+| 步驟類型 | 描述 |
 | ----- | ----- |
 | `AdlaStep` | 使用 Azure Data Lake Analytics 執行 U-SQL 腳本。 對應至[AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py)類別。 |
 | `AzureBatchStep` | 使用 Azure Batch 執行作業。 對應至[」已 azurebatchstep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py)類別。 |
@@ -117,9 +117,9 @@ pipeline:
 
 ### <a name="adla-step"></a>ADLA 步驟
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
-| `script_name` | U-SQL 腳本的名稱（相對於 `source_directory` ）。 |
+| `script_name` |  (相對於) 的 U-SQL 腳本名稱 `source_directory` 。 |
 | `compute_target` | 要用於此步驟的 Azure Data Lake 計算目標。 |
 | `parameters` | 管線的[參數](#parameters)。 |
 | `inputs` | 輸入可以是[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、 [DataReference](#data-reference)、 [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、 [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)或[PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
@@ -168,7 +168,7 @@ pipeline:
 
 ### <a name="azure-batch-step"></a>Azure Batch 步驟
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
 | `compute_target` | 要用於此步驟的 Azure Batch 計算目標。 |
 | `inputs` | 輸入可以是[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、 [DataReference](#data-reference)、 [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、 [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)或[PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
@@ -222,7 +222,7 @@ pipeline:
 
 ### <a name="databricks-step"></a>Databricks 步驟
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
 | `compute_target` | 要用於此步驟的 Azure Databricks 計算目標。 |
 | `inputs` | 輸入可以是[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、 [DataReference](#data-reference)、 [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、 [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)或[PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
@@ -276,7 +276,7 @@ pipeline:
 
 ### <a name="data-transfer-step"></a>資料傳輸步驟
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
 | `compute_target` | 要用於此步驟的 Azure Data Factory 計算目標。 |
 | `source_data_reference` | 作為資料傳輸作業來源的輸入連接。 支援的值為[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、 [DataReference](#data-reference)、 [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、 [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)或[PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
@@ -320,11 +320,11 @@ pipeline:
 
 ### <a name="python-script-step"></a>Python 腳本步驟
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
 | `inputs` | 輸入可以是[InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py)、 [DataReference](#data-reference)、 [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py)、 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)、 [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、 [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)或[PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
 | `outputs` | 輸出可以是[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)或[OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)。 |
-| `script_name` | Python 腳本的名稱（相對於 `source_directory` ）。 |
+| `script_name` | Python 腳本的名稱， (相對於 `source_directory`) 。 |
 | `source_directory` | 包含腳本、Conda 環境等的目錄。 |
 | `runconfig` | 檔案的路徑 `.runconfig` 。 此檔案是[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)類別的 YAML 標記法。 如需此檔案結構的詳細資訊，請參閱[上的runconfig.js](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)。 |
 | `allow_reuse` | 判斷當使用相同的設定再次執行時，步驟是否應重複使用先前的結果。 |
@@ -367,11 +367,11 @@ pipeline:
 
 ### <a name="parallel-run-step"></a>平行執行步驟
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
 | `inputs` | 輸入可以是[資料集](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py)、 [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)或[PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py)。 |
 | `outputs` | 輸出可以是[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)或[OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py)。 |
-| `script_name` | Python 腳本的名稱（相對於 `source_directory` ）。 |
+| `script_name` | Python 腳本的名稱， (相對於 `source_directory`) 。 |
 | `source_directory` | 包含腳本、Conda 環境等的目錄。 |
 | `parallel_run_config` | 檔案的路徑 `parallel_run_config.yml` 。 此檔案是[ParallelRunConfig](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?view=azure-ml-py)類別的 YAML 標記法。 |
 | `allow_reuse` | 判斷當使用相同的設定再次執行時，步驟是否應重複使用先前的結果。 |
@@ -419,7 +419,7 @@ pipeline:
 
 ### <a name="pipeline-with-multiple-steps"></a>具有多個步驟的管線 
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
 | `steps` | 一或多個 PipelineStep 定義的順序。 請注意， `destination` 某個步驟的索引鍵 `outputs` 會成為下一個步驟之的索引 `source` 鍵 `inputs` 。| 
 
@@ -480,7 +480,7 @@ pipeline:
 
 定義管線的排程時，它可以是根據時間間隔觸發或週期性的資料存放區。 以下是用來定義排程的索引鍵：
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
 | `description` | 排程的描述。 |
 | `recurrence` | 包含週期設定（如果排程為週期性）。 |
@@ -511,7 +511,7 @@ Schedule:
 
 定義**週期性排程**時，請使用下列索引鍵 `recurrence` ：
 
-| YAML 索引鍵 | 說明 |
+| YAML 索引鍵 | 描述 |
 | ----- | ----- |
 | `frequency` | 排程重複出現的頻率。 有效的值為 `"Minute"` 、 `"Hour"` 、 `"Day"` 、 `"Week"` 或 `"Month"` 。 |
 | `interval` | 排程的引發頻率。 整數值是要等到排程再次引發為止的時間單位數。 |

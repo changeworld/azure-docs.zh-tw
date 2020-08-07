@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: fc5b4843d54c4edd8f0a29393fb6b41468d6a595
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 2ab996c3f3310656e7b85dded8e57a129b901660
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084591"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873801"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>使用 Apache Spark MLlib 建置機器學習應用程式及分析資料集
 
@@ -38,7 +38,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>食品檢查資料的預測分析範例
 
-在此範例中，您會使用 Spark 來對食物檢查資料（**Food_Inspections1.csv**）進行一些預測性分析。 透過[芝加哥資料入口網站的城市取得的](https://data.cityofchicago.org/)資料。 此資料集包含在芝加哥進行的食物建立檢查的相關資訊。 包括每個建立的相關資訊、找到的違規（如果有的話），以及檢查結果。 與叢集相關聯的儲存體帳戶已有 CSV 資料檔，此叢集位於 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**。
+在此範例中，您會使用 Spark 對食物檢查資料執行一些預測性分析 (**Food_Inspections1.csv**) 。 透過[芝加哥資料入口網站的城市取得的](https://data.cityofchicago.org/)資料。 此資料集包含在芝加哥進行的食物建立檢查的相關資訊。 包含有關每個建立的資訊，如果有任何) ，則 (找到的違規，以及檢查的結果。 與叢集相關聯的儲存體帳戶已有 CSV 資料檔，此叢集位於 **/HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv**。
 
 在下列步驟中，您會開發一個模型來觀察能否通過食品檢查的標準為何。
 
@@ -205,7 +205,7 @@ MLlib 是核心 Spark 程式庫，提供許多適用于機器學習工作的公�
        - 找不到該業者
        - 已結束營業
 
-     具有其他結果（「商務不存在」或「企業營運」）的資料並不實用，而且仍然會產生一小部分的結果。
+     具有其他結果的資料 ( 「商務不存在」或「企業營運中」 ) 並不實用，而是會產生一小部分的結果。
 
 4. 執行下列程式碼，可將現有資料框架 (`df`) 轉換為新的資料框架，其中每項檢查都以一組「標籤-違規」來表示。 在此情況下，的標籤 `0.0` 代表失敗，標籤 `1.0` 代表成功，而標籤則代表這 `-1.0` 兩個結果以外的某些結果。
 

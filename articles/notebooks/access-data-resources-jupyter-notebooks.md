@@ -3,13 +3,13 @@ title: 存取 Jupyter 筆記本中的資料-Azure Notebooks 預覽
 description: 瞭解如何從 Jupyter 筆記本存取檔案、REST Api、資料庫和不同的 Azure 儲存體資源。
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.custom: tracking-python
-ms.openlocfilehash: e0473a885860fad71c066f9d129f859528fa16e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: b2254e6d966ca3281cd9c8b0771cb77fb6dede33
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833480"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846610"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在 Notebook 中存取雲端資料
 

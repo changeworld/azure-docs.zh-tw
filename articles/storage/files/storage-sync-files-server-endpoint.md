@@ -1,18 +1,18 @@
 ---
 title: 新增/移除 Azure 檔案同步伺服器端點 | Microsoft Docs
-description: 了解規劃 Azure 檔案服務部署時的考量事項。
+description: 瞭解如何新增或移除具有 Azure 檔案同步的伺服器端點。伺服器端點是已註冊伺服器上的特定位置，例如伺服器磁片區上的資料夾。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70cdf01cb327d1be6b2ac4b9cae414f87e27964f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9273ca66c0304afc5df58ace5dd584c20c90abfd
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509467"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905052"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>新增/移除 Azure 檔案同步伺服器端點
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 它會將您的 Windows Server 轉換成 Azure 檔案共用的快速快取來達到這個目的。 您可以使用 Windows Server 上可用的任何通訊協定來存取本機資料 (包括 SMB、NFS 和 FTPS)，並且可以在世界各地擁有任何所需數量的快取。
@@ -73,5 +73,5 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order Clou
 
 ## <a name="next-steps"></a>後續步驟
 - [向 Azure 檔案同步註冊/取消註冊伺服器](storage-sync-files-server-registration.md)
-- [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
+- [針對 Azure 檔案同步部署進行規劃](storage-sync-files-planning.md) \(部分機器翻譯\)
 - [監視 Azure 檔案同步](storage-sync-files-monitoring.md)

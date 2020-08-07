@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760391"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905582"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查詢 Azure 數位 Twins 對應項圖形
 
@@ -130,6 +130,22 @@ AND R.reportedCondition = 'clean'
 ```
 
 在上述範例中，請注意*reportedCondition*是*servicedBy*關聯性本身的屬性， (不是具有*servicedBy*關聯性) 的數位對應項。
+
+### <a name="query-with-multiple-joins"></a>使用多個聯結進行查詢
+
+目前在預覽中，單一查詢支援最多五個 `JOIN` 。 這可讓您一次跨越多個層級的關聯性。
+
+以下是多重聯結查詢的範例，它會取得房間1和2中的淺色面板所包含的所有光線燈泡。
+
+```sql
+SELECT LightBulb 
+FROM DIGITALTWINS Room 
+JOIN LightPanel RELATED Room.contains 
+JOIN LightBulb RELATED LightPanel.contains 
+WHERE IS_OF_MODEL(LightPanel, ‘dtmi:contoso:com:lightpanel;1’) 
+AND IS_OF_MODEL(LightBulb, ‘dtmi:contoso:com:lightbulb ;1’) 
+AND Room.$dtId IN [‘room1’, ‘room2’] 
+```
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 呼叫執行查詢
 

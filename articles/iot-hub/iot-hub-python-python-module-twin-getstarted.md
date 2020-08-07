@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中樞模組身分識別和模組對應項（Python）
+title: 'Azure IoT 中樞模組身分識別和模組對應項 (Python) '
 description: 了解如何使用適用於 Python 的 IoT SDK，建立模組身分識別及更新模組對應項。
 author: chrissie926
 ms.service: iot-hub
@@ -8,15 +8,15 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: menchi
-ms.custom: tracking-python
-ms.openlocfilehash: f324b04dd87f84a07c07394f2ee7c3efdc30c3e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 6ed0290abe91453058589b032fb5ed2dd71fe98a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84607069"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872560"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>開始使用 IoT 中樞模組身分識別和模組對應項（Python）
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>開始使用 IoT 中樞模組身分識別和模組對應項 (Python) 
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
@@ -44,7 +44,7 @@ ms.locfileid: "84607069"
 
 ## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
 
-在本文中，您會建立後端服務，以在身分識別登錄中新增裝置，然後將模組新增至該裝置。 此服務需要登錄**寫入**許可權（也包括**讀取**登錄）。 您也會建立服務，將所需的屬性新增至新建立之模組的模組對應項。 此服務需要**服務連接**許可權。 雖然有預設的共用存取原則會個別授與這些許可權，但在本節中，您會建立自訂的共用存取原則，其中同時包含這兩個許可權。
+在本文中，您會建立後端服務，以在身分識別登錄中新增裝置，然後將模組新增至該裝置。 此服務需要登錄**寫入**許可權 (也包括登錄**讀取**) 。 您也會建立服務，將所需的屬性新增至新建立之模組的模組對應項。 此服務需要**服務連接**許可權。 雖然有預設的共用存取原則會個別授與這些許可權，但在本節中，您會建立自訂的共用存取原則，其中同時包含這兩個許可權。
 
 [!INCLUDE [iot-hub-include-find-service-regrw-connection-string](../../includes/iot-hub-include-find-service-regrw-connection-string.md)]
 
@@ -129,7 +129,7 @@ ms.locfileid: "84607069"
     python CreateModule.py
     ```
 
-此應用程式會在 **myFirstDevice** 裝置下方建立識別碼為 **myFirstDevice** 的裝置身分識別，以及識別碼為 **myFirstModule** 的模組身分識別。 （如果裝置或模組識別碼已存在身分識別登錄中，程式碼就會直接抓取現有的裝置或模組資訊）。應用程式會顯示每個身分識別的識別碼和主要金鑰。
+此應用程式會在 **myFirstDevice** 裝置下方建立識別碼為 **myFirstDevice** 的裝置身分識別，以及識別碼為 **myFirstModule** 的模組身分識別。  (如果裝置或模組識別碼已存在身分識別登錄中，程式碼就會直接抓取現有的裝置或模組資訊。 ) 應用程式會顯示每個身分識別的識別碼和主要金鑰。
 
 > [!NOTE]
 > IoT 中樞身分識別登錄只會儲存裝置和模組身分識別，以啟用對 IoT 中樞的安全存取。 身分識別登錄會儲存裝置識別碼和金鑰，以作為安全性認證使用。 身分識別登錄也會儲存每個裝置的已啟用/已停用旗標，以便您用來停用該裝置的存取權。 如果您的應用程式需要儲存其他裝置特定的中繼資料，它應該使用應用程式專用的存放區。 模組身分識別沒有啟用/停用旗標。 如需詳細資訊，請參閱[瞭解 IoT 中樞的身分識別登錄](iot-hub-devguide-identity-registry.md)。

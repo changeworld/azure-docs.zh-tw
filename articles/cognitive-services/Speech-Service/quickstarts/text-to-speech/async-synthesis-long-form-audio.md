@@ -1,5 +1,5 @@
 ---
-title: 快速入門：適用于長格式音訊的非同步合成（預覽）-語音服務
+title: 快速入門：適用于長格式音訊 (Preview) -語音服務的非同步合成
 titleSuffix: Azure Cognitive Services
 description: 使用長音訊 API 以非同步方式將文字轉換成語音，並從服務所提供的 URI 中取出音訊輸出。 此 REST API 適用于需要將大於10000個字元或50個段落的文字檔轉換成合成語音的內容提供者。
 services: cognitive-services
@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.custom: tracking-python
-ms.openlocfilehash: 95959ceceb9ebcc0b9ec2b4613e6ffd086f9c11e
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: devx-track-python
+ms.openlocfilehash: 330bd3593ea10e4a4a03e430025b8acf1f7ab21a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609211"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875382"
 ---
-# <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入門：在 Python 中針對長格式音訊進行非同步合成（預覽）
+# <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>快速入門： Python 中適用于長格式音訊的非同步合成 (Preview) 
 
-在本快速入門中，您將使用長音訊 API 以非同步方式將文字轉換成語音，並從服務所提供的 URI 中取出音訊輸出。 此 REST API 適用于需要從超過5000個字元的文字合成音訊的內容提供者（或長度超過10分鐘）。 如需詳細資訊，請參閱[長音訊 API](../../long-audio-api.md)。
+在本快速入門中，您將使用長音訊 API 以非同步方式將文字轉換成語音，並從服務所提供的 URI 中取出音訊輸出。 此 REST API 適用于需要從超過5000個 (字元的文字合成音訊，或長度超過10分鐘的內容提供者) 。 如需詳細資訊，請參閱[長音訊 API](../../long-audio-api.md)。
 
 適用于長格式音訊的非同步合成可以搭配[公用類神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#neural-voices)和[自訂類神經語音](../../how-to-custom-voice.md#custom-neural-voices)使用，每個都支援特定語言和方言。 
 
@@ -78,14 +78,14 @@ if args.voices:
         print ("Name: %s, Description: %s, Id: %s, Locale: %s, Gender: %s, PublicVoice: %s, Created: %s" % (voice['name'], voice['description'], voice['id'], voice['locale'], voice['gender'], voice['isPublicVoice'], voice['created']))
 ```
 
-### <a name="test-your-code"></a>測試程式碼
+### <a name="test-your-code"></a>測試您的程式碼
 
 讓我們來測試到目前為止所做的工作。 您必須更新下列要求中的一些事項：
 
 * 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
-* 將取代 `<region>` 為您的語音資源建立所在的區域（例如： `eastus` 或 `westus` ）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
+* 將取代為 `<region>` 您的語音資源建立所在的區域 (例如： `eastus` 或 `westus`) 。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
 
-請執行這個命令：
+執行此命令：
 
 ```console
 python voice_synthesis_client.py --voices -key <your_key> -region <Region>
@@ -172,12 +172,12 @@ if args.submit:
         time.sleep(10)
 ```
 
-### <a name="test-your-code"></a>測試程式碼
+### <a name="test-your-code"></a>測試您的程式碼
 
 讓我們使用您的輸入檔做為來源，來提出合成文字的要求。 您必須更新下列要求中的一些事項：
 
 * 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
-* 將取代 `<region>` 為您的語音資源建立所在的區域（例如： `eastus` 或 `westus` ）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
+* 將取代為 `<region>` 您的語音資源建立所在的區域 (例如： `eastus` 或 `westus`) 。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
 * 取代為 `<input>` 您已準備文字轉換語音的文字檔路徑。
 * 取代 `<locale>` 為想要的輸出地區設定。 如需詳細資訊，請參閱[語言支援](../../language-support.md#neural-voices)。
 * 取代 `<voice_guid>` 為所需的輸出聲音。 使用其中一個所傳回的語音，[取得支援的語音清單](#get-a-list-of-supported-voices)。
@@ -190,8 +190,8 @@ python voice_synthesis_client.py --submit -key <your_key> -region <Region> -file
 
 > [!NOTE]
 > 如果您有1個以上的輸入檔案，就必須提交多個要求。 有一些需要注意的限制。 
-> * 針對每個 Azure 訂用帳戶，允許用戶端每秒提交最多**5**個對伺服器的要求。 如果超過限制，用戶端會收到429錯誤碼（太多要求）。 請減少每秒的要求數量
-> * 允許伺服器執行，並將每個 Azure 訂用帳戶的**120**要求排入佇列。 如果超過限制，伺服器會傳回429錯誤碼（太多要求）。 請等候並避免提交新的要求，直到部分要求完成
+> * 針對每個 Azure 訂用帳戶，允許用戶端每秒提交最多**5**個對伺服器的要求。 如果超過限制，用戶端會收到429錯誤碼， () 的要求過多。 請減少每秒的要求數量
+> * 允許伺服器執行，並將每個 Azure 訂用帳戶的**120**要求排入佇列。 如果超過限制，伺服器將會傳回429錯誤碼， () 的要求過多。 請等候並避免提交新的要求，直到部分要求完成
 
 您會看到如下所示的輸出：
 
@@ -248,14 +248,14 @@ if args.delete:
     deleteSynthesis(args.synthesisId)
 ```
 
-### <a name="test-your-code"></a>測試程式碼
+### <a name="test-your-code"></a>測試您的程式碼
 
 現在，讓我們檢查以查看您先前提交的要求。 在繼續之前，您必須先更新此要求中的一些事項：
 
 * 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
-* 將取代 `<region>` 為您的語音資源建立所在的區域（例如： `eastus` 或 `westus` ）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
+* 將取代為 `<region>` 您的語音資源建立所在的區域 (例如： `eastus` 或 `westus`) 。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
 
-請執行這個命令：
+執行此命令：
 
 ```console
 python voice_synthesis_client.py --syntheses -key <your_key> -region <Region>
@@ -273,13 +273,13 @@ ID : xxx , Name : xxx : Succeeded
 現在，讓我們移除先前提交的要求。 您必須更新下列程式碼中的幾個專案：
 
 * 以您的語音服務訂用帳戶金鑰取代 `<your_key>`。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
-* 將取代 `<region>` 為您的語音資源建立所在的區域（例如： `eastus` 或 `westus` ）。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
+* 將取代為 `<region>` 您的語音資源建立所在的區域 (例如： `eastus` 或 `westus`) 。 您可以在[Azure 入口網站](https://aka.ms/azureportal)資源的 [**總覽**] 索引標籤中取得這項資訊。
 * 取代 `<synthesis_id>` 為前一個要求中傳回的值。
 
 > [!NOTE]
 > 狀態為「執行中」/「正在等候」的要求無法移除或刪除。
 
-請執行這個命令：
+執行此命令：
 
 ```console
 python voice_synthesis_client.py --delete -key <your_key> -region <Region> -synthesisId <synthesis_id>

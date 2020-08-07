@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 03/31/2020
-ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 08/06/2020
+ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373686"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905491"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 中的已知問題和疑難排解
 
@@ -83,7 +83,7 @@ ms.locfileid: "87373686"
     
 * **Panda 錯誤：通常會在 AutoML 實驗期間看到：**
    
-   使用 pip 手動設定您的環境時，您可能會注意到屬性錯誤（特別是來自 pandas），因為安裝的套件版本不受支援。 為了避免這類錯誤，[請使用 automl_setup 安裝 AUTOML SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)：
+   使用 pip 手動設定您的環境時，您可能會注意到屬性錯誤 (特別是 pandas) ，因為安裝了不支援的套件版本。 為了避免這類錯誤，[請使用 automl_setup 安裝 AUTOML SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)：
    
     1. 開啟 Anaconda 提示，並複製一組範例筆記本的 GitHub 存放庫。
 
@@ -99,9 +99,9 @@ ms.locfileid: "87373686"
     
 * **KeyError：在本機計算或 Azure Databricks 叢集上執行 AutoML 時的「品牌」**
 
-    如果新環境是在2020年6月10日之後建立，使用 SDK 1.7.0 或更早版本，由於 .py-cpuinfo 套件中的更新，訓練可能會因此錯誤而失敗。 （在2020年6月10日或之前建立的環境不會受到影響，因為會使用快取的定型影像，而是在遠端計算上執行的實驗）。若要解決此問題，請採取下列兩個步驟之一：
+    如果新環境是在2020年6月10日之後建立，使用 SDK 1.7.0 或更早版本，由於 .py-cpuinfo 套件中的更新，訓練可能會因此錯誤而失敗。 在2020年6月10日或之前建立的 (環境不會受到影響，因為在遠端計算上執行的是實驗，因為已使用快取的定型影像。 ) 若要解決此問題，請採取下列兩個步驟之一：
     
-    * 將 SDK 版本更新為1.8.0 或更新版本（這也會將 .py-cpuinfo 降級為5.0.0）：
+    * 將 SDK 版本更新為1.8.0 或更新版本 (這也會將 .py-cpuinfo 降級為 5.0.0) ：
     
       ```bash
       pip install --upgrade azureml-sdk[automl]
@@ -131,7 +131,7 @@ ms.locfileid: "87373686"
 
     或者，如果您持續遇到 Python 程式庫的安裝問題，則可以使用 init 腳本。 這種方法並不正式支援。 如需詳細資訊，請參閱叢集[範圍的初始化腳本](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
 
-* **Databricks 匯入錯誤：無法從 ' _libs pandas ' 匯入名稱 ' Timedelta '**：如果您在使用自動化機器學習時看到此錯誤，請在您的筆記本中執行下列兩行：
+* **Databricks 匯入錯誤：無法 `Timedelta` `pandas._libs.tslibs` 從匯入名稱**：如果您在使用自動化機器學習時看到此錯誤，請在您的筆記本中執行下列兩行：
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
@@ -164,7 +164,7 @@ ms.locfileid: "87373686"
 * **Azure 入口網站**：如果您直接從 SDK 或入口網站的共用連結查看您的工作區，您將無法在此延伸模組中使用訂用帳戶資訊來查看一般的 **[總覽**] 頁面。 您也無法切換至另一個工作區。 如果您需要查看另一個工作區，請直接移至[Azure Machine Learning studio](https://ml.azure.com)並搜尋工作區名稱。
 
 * **Azure Machine Learning studio 入口網站中支援的瀏覽器**：建議您使用與作業系統相容的最新瀏覽器。 支援下列瀏覽器：
-  * Microsoft Edge （新的 Microsoft Edge 最新版本。 不是 Microsoft Edge 舊版）
+  * Microsoft Edge (新的 Microsoft Edge 最新版本。 不是 Microsoft Edge 舊版) 
   * Safari (最新版本，僅限 Mac)
   * Chrome (最新版本)
   * Firefox (最新版本)
@@ -208,7 +208,7 @@ ms.locfileid: "87373686"
 資料漂移監視的限制和已知問題：
 
 * 分析歷程記錄資料的時間範圍限制為監視頻率設定的31個間隔。 
-* 200功能的限制，除非未指定功能清單（所有使用的功能）。
+* 200功能的限制，除非未指定功能清單 () 使用的所有功能。
 * 計算大小必須夠大，才能處理資料。
 * 請確定您的資料集在指定的監視執行的開始和結束日期內有資料。
 * 資料集監視器僅適用于包含50個或更多資料列的資料集。
@@ -219,7 +219,7 @@ ms.locfileid: "87373686"
     | 類別 | string、bool、int、float | 此功能中的唯一值數目小於100，且小於5% 的資料列數目。 | Null 會被視為它自己的類別。 | 
     | 數值 | int、float | 功能中的值是數值資料類型，而且不符合類別功能的條件。 | 如果 >的15% 值為 null，則會卸載功能。 | 
 
-* 當您已[建立 datadrift 監視器](how-to-monitor-datasets.md)，但在 Azure Machine Learning studio 中的 [**資料集監視器**] 頁面上看不到資料時，請嘗試下列操作。
+* 當您已[建立資料漂移監視器](how-to-monitor-datasets.md)，但在 Azure Machine Learning studio 中的 [**資料集監視器**] 頁面上看不到資料時，請嘗試下列操作。
 
     1. 檢查您是否已在頁面頂端選取正確的日期範圍。  
     1. 在 [**資料集監視器**] 索引標籤上，選取 [實驗] 連結以檢查執行狀態。  此連結位於資料表的最右邊。
@@ -243,7 +243,7 @@ ms.locfileid: "87373686"
 
 當您第一次連接或建立計算目標時，可能需要幾分鐘或更久的時間。 
 
-從模型資料收集器中，最多可能需要10分鐘的時間，資料才會抵達您的 blob 儲存體帳戶。 請等候10分鐘，以確保底下的儲存格會執行。
+從模型資料收集器中，最多可能需要 (，但通常小於) 10 分鐘，資料才會到達您的 blob 儲存體帳戶。 請等候10分鐘，以確保底下的儲存格會執行。
 
 ```python
 import time
@@ -252,7 +252,7 @@ time.sleep(600)
 
 ## <a name="train-models"></a>將模型定型
 
-* **ModuleErrors （沒有名為的模組）**：如果您在 Azure ML 中提交實驗時遇到 ModuleErrors，這表示訓練腳本預期會安裝套件，但不會新增。 當您提供套件名稱之後，Azure ML 會在用於定型執行的環境中安裝套件。 
+* **ModuleErrors (沒有名為) 的模組**：如果您在 Azure ML 中提交實驗時遇到 ModuleErrors，這表示訓練腳本預期會安裝套件，但不會新增。 當您提供套件名稱之後，Azure ML 會在用於定型執行的環境中安裝套件。 
 
     如果您使用[估算器](concept-azure-machine-learning-architecture.md#estimators)來提交實驗，您可以 `pip_packages` `conda_packages` 根據要安裝封裝的來源，透過或估計工具中的參數來指定封裝名稱。 您也可以使用來指定具有所有相依性的 yml 檔案， `conda_dependencies_file` 或使用參數列出 txt 檔案中所有的 pip 需求 `pip_requirements_file` 。 如果您有自己的 Azure ML 環境物件，而您想要覆寫估計工具所使用的預設映射，您可以透過估計工具函數的參數來指定該環境 `environment` 。
 
@@ -264,7 +264,7 @@ time.sleep(600)
     > [!Note]
     > 如果您認為特定套件很常見，可以在 Azure ML 維護的映射和環境中新增，請在[AzureML 容器](https://github.com/Azure/AzureML-Containers)中提出 GitHub 問題。 
  
-* **NameError （名稱未定義）、AttributeError （物件沒有屬性）**：這個例外狀況應該來自您的定型腳本。 您可以從 Azure 入口網站查看記錄檔，以取得有關未定義的特定名稱或屬性錯誤的詳細資訊。 從 SDK 中，您可以使用 `run.get_details()` 來查看錯誤訊息。 這也會列出針對您的執行所產生的所有記錄檔。 請務必先查看您的訓練腳本並修正錯誤，再重新提交執行。 
+* **未定義 NameError (名稱) ，AttributeError (物件沒有任何屬性) **：此例外狀況應該來自您的定型腳本。 您可以從 Azure 入口網站查看記錄檔，以取得有關未定義的特定名稱或屬性錯誤的詳細資訊。 從 SDK 中，您可以使用 `run.get_details()` 來查看錯誤訊息。 這也會列出針對您的執行所產生的所有記錄檔。 請務必先查看您的訓練腳本並修正錯誤，再重新提交執行。 
 
 * **Horovod 已關閉**：在大多數情況下，如果您遇到「AbortedError： Horovod 已關閉」，此例外狀況表示其中一個處理常式發生基礎例外狀況，導致 Horovod 關閉。 MPI 作業中的每個排名都會在 Azure ML 中取得專屬的專用記錄檔。 這些記錄檔的名稱為 `70_driver_logs` 。 如果是分散式訓練，記錄檔名稱的後面會加上， `_rank` 讓您更輕鬆地區分記錄檔。 若要找出造成 Horovod 關閉的確切錯誤，請流覽所有的記錄檔，然後在 `Traceback` driver_log 檔案的結尾尋找。 其中一個檔案會提供您實際的基礎例外狀況。 
 
@@ -283,7 +283,7 @@ time.sleep(600)
 
 ## <a name="automated-machine-learning"></a>自動化機器學習
 
-* **TensorFlow**：從版本1.5.0 版的 SDK，自動化機器學習服務預設不會安裝 TensorFlow 模型。 若要安裝 tensorflow 並搭配您的自動化 ML 實驗使用，請透過 CondaDependecies 安裝 tensorflow = = 1.12.0。 
+* **TensorFlow**：從版本1.5.0 版的 SDK，自動化機器學習服務預設不會安裝 TensorFlow 模型。 若要安裝 TensorFlow 並搭配您的自動化 ML 實驗使用，請透過 CondaDependecies 安裝 TensorFlow = = 1.12.0。 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -291,7 +291,7 @@ time.sleep(600)
    run_config = RunConfiguration()
    run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
   ```
-* **實驗圖表**：自4/12 起，自動化 ML 實驗反復專案中顯示的二元分類圖表（精確度-召回、ROC、增益曲線等）無法正確轉譯在使用者介面中。 圖表繪圖目前顯示的是反向結果，其中較佳的執行模型會以較低的結果顯示。 解決方案正在進行調查。
+* **實驗圖表**：二元分類圖表 (精確度-召回、ROC、增益曲線等等。自動化 ML 實驗反復專案中顯示的 ) ，在使用者介面中無法正確轉譯，自4/12 起。 圖表繪圖目前顯示的是反向結果，其中較佳的執行模型會以較低的結果顯示。 解決方案正在進行調查。
 
 * **Databricks 取消自動化機器學習服務執行**：當您在 Azure Databricks 上使用自動化機器學習功能時，若要取消執行並開始新的實驗執行，請重新開機您的 Azure Databricks 叢集。
 
@@ -307,7 +307,7 @@ time.sleep(600)
 
 針對下列錯誤，請採取下列動作：
 
-|錯誤  | 解決方案  |
+|錯誤  | 解決方法  |
 |---------|---------|
 |部署 web 服務時映射建立失敗     |  將 "pynacl = = 1.2.1" 新增為 Conda 檔案的 pip 相依性以進行映射設定       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   將部署中所使用 Vm 的 SKU 變更為具有更多記憶體的 SKU。 |
@@ -382,5 +382,5 @@ Azure 角色型存取控制可用來限制您可以使用 Azure Machine Learning
 * [使用 Azure Machine Learning 進行 Docker 部署疑難排解](how-to-troubleshoot-deployment.md)
 * [調試機器學習管線](how-to-debug-pipelines.md)
 * [從 Azure Machine Learning SDK 進行 ParallelRunStep 類別的調試](how-to-debug-parallel-run-step.md)
-* [使用 VS Code 進行機器學習計算實例的互動式調試](how-to-set-up-vs-code-remote.md)
+* [使用 VS Code 進行機器學習計算實例的互動式調試](how-to-debug-visual-studio-code.md)
 * [使用 Application Insights 來對機器學習管線進行 debug](how-to-debug-pipelines-application-insights.md)

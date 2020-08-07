@@ -11,13 +11,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
-ms.custom: tracking-python
-ms.openlocfilehash: 6ae42c9cb68b28e5d2f0b5a2ba3cf7eab74a74b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: a42c7d911793e1b4ef4183c5d1f02f8be7d4ded3
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84561114"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872288"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>在 Azure Databricks 中執行 Python 活動來轉換資料
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -64,15 +64,15 @@ ms.locfileid: "84561114"
 
 下表說明 JSON 定義中使用的 JSON 屬性：
 
-|屬性|說明|必要|
+|屬性|描述|必要|
 |---|---|---|
 |NAME|管線中的活動名稱。|是|
 |description|說明活動用途的文字。|否|
 |type|若是 Databricks Python 活動，則活動類型是 DatabricksSparkPython。|是|
-|linkedServiceName|Python 活動執行所在之 Databricks 連結服務的名稱。 若要深入瞭解此連結服務，請參閱 [計算連結服務](compute-linked-services.md)一   文。|Yes|
-|pythonFile|要執行之 Python 檔案的 URI。 只支援 DBFS 路徑。|Yes|
-|參數|將傳遞至 Python 檔案的命令列參數。 這是字串陣列。|No|
-|程式庫|要在負責執行工作的叢集上，即將安裝的程式庫清單。 可以是 < 字串, 物件 > 陣列|No|
+|linkedServiceName|Python 活動執行所在之 Databricks 連結服務的名稱。 若要深入瞭解此連結服務，請參閱 [計算連結服務](compute-linked-services.md)一   文。|是|
+|pythonFile|要執行之 Python 檔案的 URI。 只支援 DBFS 路徑。|是|
+|參數|將傳遞至 Python 檔案的命令列參數。 這是字串陣列。|否|
+|程式庫|要在負責執行工作的叢集上，即將安裝的程式庫清單。 可以是 < 字串, 物件 > 陣列|否|
 
 ## <a name="supported-libraries-for-databricks-activities"></a>Databricks 活動支援的程式庫
 

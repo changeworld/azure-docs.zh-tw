@@ -10,22 +10,19 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 23ec12daa2e5c236da482615228b7c44037282fb
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808111"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873631"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>針對 Azure Machine Learning 使用防火牆後方的工作區
 
-在本文中，您將瞭解如何設定 Azure 防火牆以搭配 Azure Machine Learning 工作區使用。
+在本文中，您將瞭解如何設定 Azure 防火牆，以控制 Azure Machine Learning 工作區和公用網際網路的存取權。   若要深入瞭解如何保護 Azure Machine Learning，請參閱[Azure Machine Learning 的企業安全性](concept-enterprise-security.md)
 
-> [!IMPORTANT]
-> 雖然本檔中的資訊是以 Azure 防火牆為基礎，但您應該能夠將它與其他防火牆產品搭配使用。 如果您有關于如何允許透過防火牆進行通訊的問題，請參閱您所使用之防火牆的檔。
-
-您可以使用 Azure 防火牆來控制 Azure Machine Learning 工作區和公用網際網路的存取權。 如果未正確設定，防火牆可能會在使用您的工作區時發生問題。 Azure Machine Learning 工作區會使用各種主機名稱，如本文中所述。
+雖然本檔中的資訊是以[Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)為基礎，但您應該能夠將它與其他防火牆產品搭配使用。 如果您有關于如何允許透過防火牆進行通訊的問題，請參閱您所使用之防火牆的檔。
 
 ## <a name="network-rules"></a>網路規則
 
@@ -37,6 +34,8 @@ ms.locfileid: "87808111"
 > 如需設定 Azure 防火牆的詳細資訊，請參閱[部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)。
 
 ## <a name="microsoft-hosts"></a>Microsoft 主機
+
+如果未正確設定，防火牆可能會在使用您的工作區時發生問題。 Azure Machine Learning 工作區會使用各種主機名稱。
 
 本節中的主機是由 Microsoft 所擁有，並提供工作區正常運作所需的服務。
 
@@ -58,6 +57,7 @@ ms.locfileid: "87808111"
 | **mcr.microsoft.com** | 適用于基底 docker 映射的 Microsoft Container Registry |
 | **your-acr-server-name.azurecr.io** | 只有當您的 Azure Container Registry 位於虛擬網路後方時才需要。 在此設定中，會從 Microsoft 環境建立私人連結至您訂用帳戶中的 ACR 實例。 針對您的 Azure Machine Learning 工作區使用 ACR 伺服器名稱。 |
 | **\*. notebooks.azure.net** | Azure Machine Learning studio 中的筆記本所需。 |
+
 ## <a name="python-hosts"></a>Python 主機
 
 本節中的主機是用來安裝 Python 套件。 開發、訓練和部署期間都需要它們。 
@@ -79,7 +79,7 @@ ms.locfileid: "87808111"
 | ---- | ---- |
 | **cloud.r-project.org** | 在安裝 CRAN 套件時使用。 |
 
-後續步驟
+## <a name="next-steps"></a>後續步驟
 
-* [[部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)]
+* [教學課程：使用 Azure 入口網站部署和設定 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)
 * [在 Azure 虛擬網路中保護 Azure ML 實驗和推斷作業](how-to-enable-virtual-network.md)

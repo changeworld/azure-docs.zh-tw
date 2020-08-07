@@ -8,16 +8,20 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 044786d6a6aa4f9f3d163090c0edfa3832023b10
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116947"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799560"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure 監視器活頁簿
 
 活頁簿提供彈性的畫布來進行資料分析，並在 Azure 入口網站中建立豐富的視覺效果報表。 它們可讓您從 Azure 中深入瞭解多個資料來源，並將它們結合成整合的互動體驗。 
+
+以下是建立活頁簿的影片逐步解說。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
 
 ## <a name="data-sources"></a>資料來源
 
@@ -39,10 +43,10 @@ ms.locfileid: "87116947"
 
 活頁簿提供了一組豐富的功能，可將您的資料視覺化。 如需每個視覺效果類型的詳細範例，您可以查閱下列範例連結：
 
-* [文字](workbooks-visualizations.md#text)
+* [Text](workbooks-visualizations.md#text)
 * [圖表](workbooks-visualizations.md#charts)
 * [表格](workbooks-visualizations.md#grids)
-* [瓷磚](workbooks-visualizations.md#tiles)
+* [磚](workbooks-visualizations.md#tiles)
 * [樹木](workbooks-visualizations.md#trees)
 * [Graphs](workbooks-visualizations.md#graphs)
 
@@ -115,7 +119,7 @@ ms.locfileid: "87116947"
 
 此外，使用時間範圍參數釘選的活頁簿元件，將會以儀表板的時間範圍所決定的速率自動重新整理。 上次執行查詢的時間會出現在釘選部分的子標題中。
 
-如果釘選的步驟已明確設定時間範圍（不使用時間範圍參數），則不論儀表板的設定為何，該時間範圍一律會用於儀表板。 釘選的部分的子標題不會顯示儀表板的時間範圍，而且查詢不會在儀表板上自動重新整理。 子標題會顯示上次執行查詢的時間。
+如果釘選的步驟已明確設定時間範圍 (不使用時間範圍參數) ，則不論儀表板的設定為何，該時間範圍一律會用於儀表板。 釘選的部分的子標題不會顯示儀表板的時間範圍，而且查詢不會在儀表板上自動重新整理。 子標題會顯示上次執行查詢的時間。
 
 > [!NOTE]
 > 釘選到儀表板時，目前不支援使用*合併*資料來源的查詢。

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999265"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903318"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 串流分析解決方案模式
 
@@ -86,17 +86,12 @@ Azure 串流分析的內建[異常偵測模型](stream-analytics-machine-learnin
 
 ![ASA Machine Learning 應用程式](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
-## <a name="near-real-time-data-warehousing"></a>近乎即時的資料倉儲
+## <a name="real-time-data-warehousing"></a>即時資料倉儲
 
-另一個常見的模式是即時資料倉儲，也稱為「串流資料倉儲」。 除了抵達應用程式事件中樞和 IoT 中樞的事件之外，在[IoT Edge 上執行的 Azure 串流分析](stream-analytics-edge.md)可以用來滿足資料清理、資料縮減，以及資料存放區和轉送需求。 IoT Edge 上執行的串流分析可以適當地處理系統中的頻寬限制和連線問題。 SQL 輸出介面卡可以用來輸出至 SQL 資料倉儲;不過，最大輸送量限制為 10 MB/s。
+另一個常見的模式是即時資料倉儲，也稱為「串流資料倉儲」。 除了抵達應用程式事件中樞和 IoT 中樞的事件之外，在[IoT Edge 上執行的 Azure 串流分析](stream-analytics-edge.md)可以用來滿足資料清理、資料縮減，以及資料存放區和轉送需求。 IoT Edge 上執行的串流分析可以適當地處理系統中的頻寬限制和連線問題。 在寫入 Azure Synapse Analytics 時，串流分析可以支援最多 200 MB/秒的輸送量速率。
 
 ![ASA 資料倉儲](media/stream-analytics-solution-patterns/data-warehousing.png)
 
-有一些延遲取捨來改善輸送量的其中一個方法，就是將事件封存到 Azure Blob 儲存體，然後[使用 Polybase 將它們匯入 SQL 資料倉儲](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)。 您必須手動將串流分析的輸出結合到 blob 儲存體，並透過[時間戳記](stream-analytics-custom-path-patterns-blob-storage-output.md)和定期匯入來封存資料，從 blob 儲存體輸入到 SQL 資料倉儲。
-
-在此使用模式中，Azure 串流分析是用來做為近乎即時的 ETL 引擎。 針對下游分析服務的耗用量，會持續轉換並儲存新抵達的事件。
-
-![ASA 高輸送量資料倉儲](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>封存即時資料以進行分析
 
@@ -128,11 +123,11 @@ Azure 串流分析作業可以執行24/7，即時處理傳入事件。 其執行
 
 - [作業失敗狀態](job-states.md)
 
-    首先和最重要的是，您必須確定作業正在執行。 如果沒有處於執行中狀態的作業，就不會產生任何新的計量或記錄。 作業可能會因為各種原因而變更為失敗狀態，包括具有高 SU 使用率層級（亦即，資源不足）。
+    首先和最重要的是，您必須確定作業正在執行。 如果沒有處於執行中狀態的作業，就不會產生任何新的計量或記錄。 作業可能會因為各種原因而變更為失敗狀態，包括具有高 SU 使用率層級 (也就是) 的資源不足。
 
 - [浮水印延遲計量](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)
 
-    此計量會反映處理管線落後時鐘時間（秒）的進度。 部分延遲是以固有的處理邏輯為屬性。 因此，監視增加的趨勢比監視絕對值更重要。 穩定狀態延遲應由您的應用程式設計來處理，而不是透過監視或警示來解決。
+    此計量會反映處理管線落後時鐘時間 (秒) 的進度。 部分延遲是以固有的處理邏輯為屬性。 因此，監視增加的趨勢比監視絕對值更重要。 穩定狀態延遲應由您的應用程式設計來處理，而不是透過監視或警示來解決。
 
 失敗時，[活動記錄] 和 [[診斷記錄](stream-analytics-job-diagnostic-logs.md)] 是開始尋找錯誤的最佳位置。
 
@@ -144,7 +139,7 @@ Azure 串流分析作業可以執行24/7，即時處理傳入事件。 其執行
 
 您也可以選擇從過去一段時間開始輸出。 事件中樞和 IoT 中樞的保留原則都會保留合理的資料量，以允許過去的處理。 其取捨是您最多可以趕上目前的時間，並開始產生及時的新警示。 資料會在一段時間內快速失去其價值，因此請務必快速趕上目前的時間。 有兩種方式可以快速趕上：
 
-- 在趕上時布建更多資源（SU）。
+- 在趕上時， (SU) 布建更多資源。
 - 從目前的時間重新開機。
 
 從目前的時間重新開機是很簡單的作法，因為這是在處理期間保持間隙的取捨。 以這種方式重新開機對於警示案例可能會是正常的，但對於儀表板案例會有問題，而且是封存和資料倉儲案例的非入門。
@@ -153,9 +148,9 @@ Azure 串流分析作業可以執行24/7，即時處理傳入事件。 其執行
 
 - 測試您的作業是否可調整為更多的 su。 並非所有查詢都可調整。 您必須確定[您的查詢已平行](stream-analytics-parallelization.md)處理。
 
-- 請確定上游事件中樞或 IoT 中樞中有足夠的磁碟分割，您可以新增更多的輸送量單位（Tu）來調整輸入輸送量。 請記住，每個事件中樞的 TU 都會以 2 MB/s 的輸出速率到超出。
+- 請確定上游事件中樞或 IoT 中樞中有足夠的磁碟分割，您可以新增更多的輸送量單位 (Tu) 來調整輸入輸送量。 請記住，每個事件中樞的 TU 都會以 2 MB/s 的輸出速率到超出。
 
-- 請確定您已在輸出接收器（也就是 SQL Database、Cosmos DB）中布建足夠的資源，因此它們不會在輸出中調節激增，這有時候會導致系統鎖定。
+- 請確定您已在輸出接收中布建足夠的資源 (例如 SQL Database Cosmos DB) ，因此它們不會在輸出中調節激增，這有時候會導致系統鎖定。
 
 最重要的是，在進入生產環境之前先測試這些案例，並準備好在失敗復原期間正確調整處理。
 
@@ -185,7 +180,7 @@ Azure 串流分析作業可以執行24/7，即時處理傳入事件。 其執行
 
 關鍵在於將您的系統設計成可組合的模式，以便每個子系統可以獨立建立、測試、升級和復原。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 您現在已看到使用 Azure 串流分析的各種解決方案模式。 接下來，您可以深入了解並建立您的第一個串流分析作業：
 

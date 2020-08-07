@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 0a9eaeb9b77c7b4dd7e0b2347c66de3a325a66ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff0df654650bb1c32d5c3e9833ebde2a81e3d65c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505171"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799951"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平台記錄和計量傳送至不同目的地
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄檔和資源記錄，可針對 Azure 資源和其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，而且通常會儲存在 Azure 監視器計量資料庫中。 本文提供有關建立及設定診斷設定的詳細資料，以將平臺計量和平臺記錄檔傳送至不同的目的地。
@@ -40,7 +40,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 > 若要解決特定計量的這些限制，建議您使用 [[計量 REST API](/rest/api/monitor/metrics/list)手動將其解壓縮，並使用[Azure 監視器資料收集器 API](data-collector-api.md)將它們匯入 Azure 監視器記錄。  
 
 
-## <a name="destinations"></a>目的地
+## <a name="destinations"></a>Destinations
 
 平臺記錄和計量可以傳送至下表中的目的地。 請遵循下表中的每個連結，以取得將資料傳送至該目的地的詳細資訊。
 
@@ -51,14 +51,14 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 | [Azure 儲存體帳戶](#azure-storage) | 將記錄和計量封存到 Azure 儲存體帳戶適用于 audit、靜態分析或備份。 相較于 Azure 監視器記錄和 Log Analytics 工作區，Azure 儲存體的成本較低，而且記錄可以無限期保存。 |
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 您必須使用必要的許可權來建立診斷設定的任何目的地。 請參閱下列各節，以瞭解每個目的地的必要條件需求。
 
 ### <a name="log-analytics-workspace"></a>Log Analytics 工作區
 [建立新的工作區](../learn/quick-create-workspace.md)（如果您還沒有的話）。 工作區不一定要與資源傳送記錄位於相同的訂用帳戶中，前提是設定此設定的使用者具有這兩個訂用帳戶的適當 RBAC 存取權。
 
 ### <a name="event-hub"></a>事件中樞
-[建立事件中樞](../../event-hubs/event-hubs-create.md)（如果您還沒有的話）。 事件中樞命名空間不一定要和發出記錄的訂用帳戶屬於相同的訂用帳戶，只要進行設定的使用者有這兩個訂用帳戶的適當 RBAC 存取權，而且這兩個訂用帳戶都屬於同一個 ADD 租用戶。
+[建立事件中樞](../../event-hubs/event-hubs-create.md)（如果您還沒有的話）。 事件中樞命名空間不一定要與發出記錄的訂用帳戶位於相同的訂用帳戶中，只要設定此設定的使用者具有這兩個訂用帳戶的適當 RBAC 存取權，而且兩個訂用帳戶都位於相同的租使用者中即可。
 
 命名空間的共用存取原則會定義串流機制擁有的許可權。 串流至事件中樞需要 [管理]、[傳送] 和 [接聽] 許可權。 您可以在事件中樞命名空間的 [設定] 索引標籤下的 Azure 入口網站中，建立或修改共用存取原則。 若要更新診斷設定以包含串流，您必須具有該事件中樞授權規則的 ListKey 許可權。 
 
@@ -105,9 +105,9 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
     ![新增診斷設定](media/diagnostic-settings/setting-new-blank.png)
 
-4. **類別目錄詳細資料（要路由**的目標）-核取您要傳送到稍後指定之目的地的每個類別的方塊。 每個 Azure 服務的類別清單會有所不同。
+4. [**類別目錄詳細資料] (要路由的) ** -核取您要傳送到稍後指定之目的地的每個類別的方塊。 每個 Azure 服務的類別清單會有所不同。
 
-     - **AllMetrics**會將資源的平臺計量路由至 Azure 記錄存放區，但會以記錄形式傳送。 這些計量通常只會傳送至 Azure 監視器計量時間序列資料庫。 將它們傳送至 Azure 監視器記錄存放區（可透過 Log Analytics 搜尋），您就可以將它們整合到查詢中，以在其他記錄中進行搜尋。 並非所有資源類型都可以使用此選項。 支援時， [Azure 監視器支援的計量](metrics-supported.md)會列出針對哪些資源類型所收集的計量。
+     - **AllMetrics**會將資源的平臺計量路由至 Azure 記錄存放區，但會以記錄形式傳送。 這些計量通常只會傳送至 Azure 監視器計量時間序列資料庫。 將它們傳送至 Azure 監視器記錄存放區 (可透過 Log Analytics 進行搜尋) 您將它們整合到查詢中，以便在其他記錄中進行搜尋。 並非所有資源類型都可以使用此選項。 支援時， [Azure 監視器支援的計量](metrics-supported.md)會列出針對哪些資源類型所收集的計量。
 
        > [!NOTE]
        > 請參閱本文稍早 Azure 監視器記錄的路由計量 limitatation。  
@@ -124,8 +124,8 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
     1. **事件中樞**-指定下列準則：
        - 事件中樞所屬的訂用帳戶
        - 事件中樞命名空間-如果您還沒有帳戶，則必須[建立一個](../../event-hubs/event-hubs-create.md)
-       - 要將所有資料傳送至其中的事件中樞名稱（選擇性）。 如果您未指定名稱，則會為每個記錄類別建立一個事件中樞。 如果您要傳送多個類別，您可能會想要指定名稱，以限制所建立的事件中樞數目。 如需詳細資訊，請參閱[Azure 事件中樞配額和限制](../../event-hubs/event-hubs-quotas.md)。
-       - 事件中樞原則（選擇性）：原則會定義串流機制擁有的許可權。 如需詳細資訊，請參閱[事件中樞-功能](../../event-hubs/event-hubs-features.md#publisher-policy)。
+       - 事件中樞名稱 (要將所有資料傳送至其中的選擇性) 。 如果您未指定名稱，則會為每個記錄類別建立一個事件中樞。 如果您要傳送多個類別，您可能會想要指定名稱，以限制所建立的事件中樞數目。 如需詳細資訊，請參閱[Azure 事件中樞配額和限制](../../event-hubs/event-hubs-quotas.md)。
+       - 事件中樞原則 (選擇性) 原則會定義串流機制擁有的許可權。 如需詳細資訊，請參閱[事件中樞-功能](../../event-hubs/event-hubs-features.md#publisher-policy)。
 
     1. **儲存體**-選擇 [訂用帳戶]、[儲存體帳戶] 和 [保留原則]。
 
@@ -138,7 +138,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
         >
         > 例如，如果您將*WorkflowRuntime*的保留原則設定為180天，並在24小時後將它設定為365天，則前24小時內儲存的記錄將會在180天后自動刪除，而該類型的所有後續記錄檔將會在365天后自動刪除。 稍後變更保留原則並不會讓前24小時的記錄持續365天。
 
-6. 按一下 [檔案] 。
+6. 按一下 [儲存]。
 
 幾分鐘之後，新的設定就會出現在此資源的設定清單中，而且記錄會在產生新的事件資料時串流處理至指定的目的地。 在事件發出和[記錄分析工作區中顯示](data-ingestion-time.md)時，可能需要15分鐘的時間。
 
@@ -182,7 +182,7 @@ az monitor diagnostic-settings create  \
 請參閱[診斷設定](/rest/api/monitor/diagnosticsettings)，以使用[Azure 監視器 REST API](/rest/api/monitor/)來建立或更新診斷設定。
 
 ## <a name="create-using-azure-policy"></a>使用 Azure 原則建立
-因為需要為每個 Azure 資源建立診斷設定，所以 Azure 原則可以用來在每個資源建立時自動建立診斷設定。 如需詳細資訊，請參閱[使用 Azure 原則大規模部署 Azure 監視器](deploy-scale.md)。
+因為需要為每個 Azure 資源建立診斷設定，所以 Azure 原則可以用來在每個資源建立時自動建立診斷設定。 如需詳細資訊，請參閱[使用 Azure 原則大規模部署 Azure 監視器](../deploy-scale.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

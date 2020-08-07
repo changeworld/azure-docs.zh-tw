@@ -10,13 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 6234e9efe4f6dd122a22ee834ef9c35269eea95f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-python
+ms.openlocfilehash: ff335cd6276083eb76efd74a4921d2bae96cd7c9
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500975"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875297"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 中的安全資料存取
 
@@ -33,14 +33,14 @@ Azure Machine Learning 可讓您輕鬆地連接到雲端中的資料。  它提�
 
 1. 建立[Azure Machine Learning 資料](#datastores)存放區，以將連線資訊儲存到您的 Azure 儲存體。
 
-2. 從該資料存放區，建立[Azure Machine Learning 資料集](#datasets)以指向基礎儲存體中的特定檔案。 
+2. 從該資料存放區，建立[Azure Machine Learning 資料集](#datasets)，以指向基礎儲存體中 (s) 的特定檔案。 
 
 3. 若要在您的機器學習實驗中使用該資料集，您可以
     1. 將它掛接到實驗的計算目標，以進行模型定型。
 
         **OR** 
 
-    1. 直接在 Azure Machine Learning 解決方案（例如自動化機器學習（自動化 ML）實驗執行、機器學習管線或[Azure Machine Learning 設計](concept-designer.md)工具）中取用。
+    1. 直接在 Azure Machine Learning 解決方案中取用，例如自動化機器學習服務 (自動化 ML) 實驗執行、機器學習管線或[Azure Machine Learning 設計](concept-designer.md)工具。
 
 4. 針對您的模型輸出資料集建立[資料集監視器](#data-drift)，以偵測資料漂移。 
 
