@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: c1ae7f0aff06f269d4e4949eb5a8bed0e3371684
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: 7e8cb6dfd2a1983ac4a98f0be0af1fd92c902fc4
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540242"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843142"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體輸入系結
 
@@ -308,7 +308,7 @@ Python 指令碼不支援屬性。
 |**direction** | n/a | 必須設為 `in`。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
 |**name** | n/a | 表示函式程式碼中 Blob 的變數名稱。|
 |**path** |**BlobPath** | blob 的路徑。 |
-|**connection** |**連線**| 應用程式設定的名稱，其中包含要用於此系結的[儲存體連接字串](../storage/common/storage-configure-connection-string.md)。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "AzureWebJobsMyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|**connection** |**[連接]**| 應用程式設定的名稱，其中包含要用於此系結的[儲存體連接字串](../storage/common/storage-configure-connection-string.md)。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "AzureWebJobsMyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |n/a | **存取** | 指出您是否將讀取或寫入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

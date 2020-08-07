@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: 011f94cf24c6148ee01275541b090ba28d697018
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6f8181568e5996bfb3c99ae25fb801fa62f3af1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052480"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904253"
 ---
 # <a name="upload-and-index-your-videos"></a>上傳影片及編製影片索引  
 
@@ -25,7 +25,7 @@ ms.locfileid: "87052480"
 * 將影片檔案當作要求本文中的位元組陣列傳送、
 * 藉由提供[資產識別碼](../latest/assets-concept.md)來使用現有的 Azure 媒體服務資產 (僅支援付費帳戶)。
 
-當您的影片上傳之後，影片索引子（選擇性）會對影片進行編碼（在本文中討論）。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，以及媒體帳戶相關費用。 
+當您的影片上傳之後，影片索引子 (選擇性地) 編碼 (文章) 中所討論的影片。 建立影片索引器帳戶時，您可以選擇免費試用帳戶 (您可取得特定的免費編製索引分鐘數) 或付費選項 (您不會受限於配額)。 使用免費試用時，影片索引器最多可為網站使用者提供 600 分鐘的免費編製索引，以及為 API 使用者提供 2400 分鐘的免費索引編製。 使用付費選項時，您建立的影片索引器帳戶會[連線到您的 Azure 訂用帳戶和 Azure 媒體服務帳戶](connect-to-azure.md)。 您需支付已編製索引的分鐘數，以及媒體帳戶相關費用。 
 
 本文說明如何使用下列選項來上傳和編制影片的索引：
 
@@ -58,6 +58,13 @@ ms.locfileid: "87052480"
 
 如需可與影片索引子搭配使用的檔案格式清單，請參閱[輸入容器/檔案格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
 
+## <a name="video-files-storage"></a>影片檔案存放區
+
+- 有了付費的影片索引子帳戶，您可以建立連接到您的 Azure 訂用帳戶的影片索引子帳戶和 Azure 媒體服務帳戶。 如需詳細資訊，請參閱[建立連線到 Azure 的影片索引子帳戶](connect-to-azure.md)。
+- 影片檔案會藉由 Azure 媒體服務儲存在 Azure 儲存體中。 沒有時間限制。
+- 您隨時可以使用影片索引子來刪除您的影片和音訊檔案，以及從這些檔案中解壓縮的任何中繼資料和深入解析。 當您從影片索引器刪除檔案時，該檔案和其中繼資料與見解都會從影片索引器中永久移除。 不過，如果您已在 Azure 儲存體中實作屬於自己的備份解決方案，那些檔案將會保留在您的 Azure 儲存體中。
+- 影片的持續性完全相同，不論上傳是以影片索引子網站或使用上傳 API 來完成。
+   
 ## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>使用影片索引子網站上傳影片並為其編制索引
 
 > [!NOTE]
@@ -99,7 +106,7 @@ ms.locfileid: "87052480"
         |state|影片狀態|  
     - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&狀態 = 已處理
 - 在影片中識別到的人員：
-  - [內容]
+  - 屬性
     
       |名稱|描述|
       |---|---|
@@ -110,7 +117,7 @@ ms.locfileid: "87052480"
         
     - 範例： HTTPs： \/ /test.com/notifyme?projectName=MyProject&識別碼 = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>附註
+##### <a name="notes"></a>注意
 
 - 影片索引器會傳回原始 URL 中提供的任何現有參數。
 - 提供的 URL 必須進行編碼。
@@ -120,7 +127,7 @@ ms.locfileid: "87052480"
 如果原始或外部錄影包含背景雜訊，請使用此參數。 此參數會用來設定索引編製程序。 您可以指定下列值：
 
 - `AudioOnly` – 只使用音訊 (忽略視訊) 來編製索引及擷取深入解析
-- `VideoOnly`-僅使用影片來編制索引並將深入解析解壓縮（忽略音訊）
+- `VideoOnly`-僅使用影片來編制索引並將見解解壓縮 (忽略音訊) 
 - `Default` – 使用音訊和視訊來編製索引及擷取深入解析
 - `DefaultWithNoiseReduction` – 從音訊及視訊編製索引及擷取深入解析的同時，在音訊串流上套用減少雜訊演算法
 
@@ -141,6 +148,9 @@ ms.locfileid: "87052480"
 上傳您的影片後，影片索引器會選擇性地對影片進行編碼。 然後，繼續進行索引編製並分析影片。 當影片索引器完成分析時，您會收到包含影片識別碼的通知。  
 
 使用[上傳影片](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新編製影片索引](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 時，其中一個選擇性參數為 `streamingPreset`。 如果您將 `streamingPreset` 設定為 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，就會觸發編碼程序。 完成編製索引及編碼工作後，影片就會發佈，因此您也可以對影片進行串流處理。 您想要串流影片的串流端點必須處於 [執行中]**** 狀態。
+
+針對 SingleBitrate，標準編碼器成本會依輸出套用。 如果影片高度大於或等於720，影片索引子會將其編碼為1280x720。 否則，為640x468。
+預設設定為 [[內容感知編碼](../latest/content-aware-encoding.md)]。
 
 若要執行編製索引及編碼工作，[連線至您影片索引器帳戶的 Azure 媒體服務帳戶](connect-to-azure.md)需要保留單元。 如需詳細資訊，請參閱[調整媒體處理](../previous/media-services-scale-media-processing-overview.md)。 由於這些都是計算密集的作業，強烈建議使用 S3 單元類型。 RU 數量會定義可以平行執行的作業數目上限。 基準建議是 10 個 S3 RU。 
 
@@ -348,7 +358,7 @@ public class AccountContractSlim
 
 下表列出上傳作業可能會傳回的狀態碼。
 
-|狀態碼|ErrorType (在回應本文中)|說明|
+|狀態碼|ErrorType (在回應本文中)|描述|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|指定帳戶中已有正在處理的相同影片。|
 |400|VIDEO_ALREADY_FAILED|不到 2 小時前，指定帳戶中有相同的影片處理失敗。 API 用戶端應該等待至少 2 小時，才能重新上傳影片。|

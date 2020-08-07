@@ -2,7 +2,7 @@
 title: 將現有的 Azure 訂用帳戶新增至您的租使用者-Azure AD
 description: 以下相關指示說明如何將現有的 Azure 訂用帳戶新增至您的 Azure Active Directory 租用戶。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,16 +13,16 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86223c35118c9c54be49fa830a264a0059ef3937
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 95c3ad5fa66e1327c1fe646303f268ae4e84bd89
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494429"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825016"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租用戶
 
-Azure 訂用帳戶與 Azure Active Directory （Azure AD）之間具有信任關係。 訂用帳戶信任 Azure AD 來驗證使用者、服務和裝置。
+Azure 訂用帳戶與 Azure Active Directory (Azure AD) 之間具有信任關係。 訂用帳戶信任 Azure AD 來驗證使用者、服務和裝置。
 
 多個訂用帳戶可以信任相同的 Azure AD 目錄。 每個訂用帳戶只能信任一個目錄。
 
@@ -31,11 +31,11 @@ Azure 訂用帳戶與 Azure Active Directory （Azure AD）之間具有信任關
 您的所有使用者都有單一的*主*目錄可供驗證。 您的使用者也可以是其他目錄中的來賓。 您可以同時為 Azure AD 中的每個使用者使用主目錄與來賓目錄。
 
 > [!Important]
-> 當您將訂用帳戶與不同的目錄建立關聯時，具有使用[角色型存取控制（RBAC）](../../role-based-access-control/role-assignments-portal.md)指派之角色的使用者會失去其存取權。 傳統訂用帳戶管理員 (包括服務管理員和共同管理員) 也會失去存取權。
+> 當您將訂用帳戶與不同的目錄建立關聯時，具有使用[azure 角色型存取控制](../../role-based-access-control/role-assignments-portal.md)來指派角色的使用者 (azure RBAC) 會失去其存取權。 傳統訂用帳戶管理員 (包括服務管理員和共同管理員) 也會失去存取權。
 >
 > 當訂用帳戶與不同目錄建立關聯時，也會從訂用帳戶移除原則指派。
 >
-> 將您的 Azure Kubernetes Service （AKS）叢集移至不同的訂用帳戶，或將叢集擁有的訂用帳戶移至新的租使用者，會導致叢集因為遺失角色指派和服務主體的許可權而失去功能。 如需 AKS 的詳細資訊，請參閱[Azure Kubernetes Service （AKS）](https://docs.microsoft.com/azure/aks/)。
+> 將您的 Azure Kubernetes Service (AKS) 叢集移至不同的訂用帳戶，或將叢集擁有的訂用帳戶移至新的租使用者，會導致叢集因為遺失角色指派和服務主體的許可權而失去功能。 如需有關 AKS 的詳細資訊，請參閱[Azure Kubernetes Service (AKS) ](https://docs.microsoft.com/azure/aks/)。
 
 
 ## <a name="before-you-begin"></a>開始之前

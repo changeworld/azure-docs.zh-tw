@@ -4,12 +4,12 @@ description: 提供一些關於 Azure VMware 解決方案 (AVS) 常見問題的�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836576"
+ms.locfileid: "87872322"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware 解決方案 (AVS) 預覽的常見問題
 
@@ -45,7 +45,7 @@ ms.locfileid: "87836576"
 
 **我是否可以將 vSphere VM 從內部部署環境遷移至 AVS 私人雲端？**
 
-是。 如果符合跨 vCenter [VMotion 需求][https://kb.vmware.com/s/article/210695 ] 的標準，則可以使用 VM 移轉和 VMotion 將 VM 移至私人雲端。
+是。 如果符合標準跨 vCenter [vMotion 需求](https://kb.vmware.com/s/article/210695)，可以使用 VM 遷移和 VMotion 將 vm 移至私人雲端。
 
 **內部部署環境中是否需要特定版本的 vSphere？**
 

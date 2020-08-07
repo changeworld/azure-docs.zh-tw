@@ -10,13 +10,13 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: e9177fdbac6173040145ff6d84dda8a579ee1d9e
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: fc3c03fa3368d87857ed91c720a92aacecf6eb89
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429424"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843159"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署現有的模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "87429424"
 
 * 已定型的模型。 模型必須保存到開發環境中的一個或多個檔案。 <br><br>為了示範註冊已定型的模型，本文中的範例程式碼會使用[Paolo Ripamonti 的 Twitter 情感分析專案](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)中的模型。
 
-## <a name="register-the-models"></a>註冊模型
+## <a name="register-the-models"></a> (s 註冊模型) 
 
 註冊模型可讓您儲存、版本和追蹤工作區中有關模型的中繼資料。 在下列 Python 和 CLI 範例中， `models` 目錄包含 `model.h5` 、 `model.w2v` 、和檔案 `encoder.pkl` `tokenizer.pkl` 。 這個範例會將目錄中包含的檔案上傳 `models` 為新的模型註冊，名為 `sentiment` ：
 
@@ -52,7 +52,7 @@ model = Model.register(model_path = "./models",
                        workspace = ws)
 ```
 
-如需詳細資訊，請參閱[Model. register （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-)參考。
+如需詳細資訊，請參閱[模型。註冊 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-)參考。
 
 ```azurecli
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
@@ -133,14 +133,14 @@ dependencies:
 
 如需有關推斷設定的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
-### <a name="entry-script-scorepy"></a>專案腳本（score.py）
+### <a name="entry-script-scorepy"></a> (score.py) 的專案腳本
 
-專案腳本只有兩個必要函式： `init()` 和 `run(data)` 。 這些函式是用來在啟動時初始化服務，並使用用戶端傳入的要求資料來執行模型。 腳本的其餘部分會處理模型的載入和執行。
+專案腳本只有兩個必要函式： `init()` 和 `run(data)` 。 這些函式是用來在啟動時初始化服務，並使用用戶端傳入的要求資料來執行模型。 腳本的其餘部分會處理 (s) 載入和執行模型。
 
 > [!IMPORTANT]
 > 沒有適用于所有模型的泛型專案腳本。 它一定是所使用的模型特有的。 它必須瞭解如何載入模型、模型所預期的資料格式，以及如何使用模型來評分資料。
 
-下列 Python 程式碼是一個範例專案腳本（ `score.py` ）：
+下列 Python 程式碼是 () 的範例專案腳本 `score.py` ：
 
 ```python
 import os
@@ -216,11 +216,11 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-如需有關輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
+如需輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
 ## <a name="define-deployment"></a>定義部署
 
-[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py)套件包含用於部署的類別。 您使用的類別會決定模型的部署位置。 例如，若要在 Azure Kubernetes Service 上部署為 web 服務，請使用[AksWebService. deploy_configuration （）](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-)來建立部署設定。
+[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice?view=azure-ml-py)套件包含用於部署的類別。 您使用的類別會決定模型的部署位置。 例如，若要在 Azure Kubernetes Service 上部署為 web 服務，請使用[AksWebService，deploy_configuration ( # B1](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-)來建立部署設定。
 
 下列 Python 程式碼會定義本機部署的部署設定。 此設定會將模型當做 web 服務部署到您的本機電腦。
 
@@ -233,7 +233,7 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-如需詳細資訊，請參閱[Deploy_configuration LocalWebservice （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py#deploy-configuration-port-none-)參考。
+如需詳細資訊，請參閱[Deploy_configuration LocalWebservice ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.localwebservice?view=azure-ml-py#deploy-configuration-port-none-)參考資料。
 
 CLI 會從 YAML 檔案載入部署設定：
 
@@ -260,9 +260,9 @@ print(service.state)
 print("scoring URI: " + service.scoring_uri)
 ```
 
-如需詳細資訊，請參閱[Model. deploy （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)參考。
+如需詳細資訊，請參閱[模型。部署 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)參考。
 
-若要從 CLI 部署模型，請使用下列命令。 此命令會 `sentiment:1` 使用儲存在和檔案中的推斷和部署設定，來部署第1版的已註冊模型（） `inferenceConfig.json` `deploymentConfig.json` ：
+若要從 CLI 部署模型，請使用下列命令。 此命令會 `sentiment:1` 使用儲存在和檔案中的推斷和部署設定，來部署第1版的已註冊模型 () `inferenceConfig.json` `deploymentConfig.json` ：
 
 ```azurecli
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json

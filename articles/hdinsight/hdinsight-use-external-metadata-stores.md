@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 04/30/2020
-ms.openlocfilehash: 2d6ebcd720a5cea8d41bf3c05f753f2e9d4775d1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085900"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873087"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>在 Azure HDInsight 中使用外部中繼資料存放區
 
 HDInsight 可讓您利用外部資料存放區來控制您的資料和中繼資料。 這項功能適用于[Apache Hive 中繼存放區](#custom-metastore)、 [apache Oozie 中繼存放區](#apache-oozie-metastore)和[apache Ambari 資料庫](#custom-ambari-db)。
 
-HDInsight 中的 Apache Hive 中繼存放區是 Apache Hadoop 架構不可或缺的一部分。 中繼存放區是中央架構存放庫。 中繼存放區是由其他海量資料存取工具（例如 Apache Spark、互動式查詢（LLAP）、Presto 或 Apache Pig）使用。 HDInsight 使用 Azure SQL Database 作為 Hive 中繼存放區。
+HDInsight 中的 Apache Hive 中繼存放區是 Apache Hadoop 架構不可或缺的一部分。 中繼存放區是中央架構存放庫。 中繼存放區是由其他海量資料存取工具（例如 Apache Spark、互動式查詢 (LLAP) 、Presto 或 Apache Pig）所使用。 HDInsight 使用 Azure SQL Database 作為 Hive 中繼存放區。
 
 ![HDInsight Hive 中繼資料存放區架構](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
@@ -38,10 +38,10 @@ HDInsight 中的 Apache Hive 中繼存放區是 Apache Hadoop 架構不可或缺
 
 * 您無法與其他叢集共用預設中繼存放區。
 
-* 預設中繼存放區會使用基本 Azure SQL Database，其具有五個 DTU （資料庫交易單位）限制。
-此預設中繼存放區通常用於相對簡單的工作負載。 不需要多個叢集，且不需要保留超過叢集生命週期的中繼資料的工作負載。
+* 建議僅針對簡單的工作負載使用預設中繼存放區。 不需要多個叢集，且不需要保留超過叢集生命週期的中繼資料的工作負載。
 
-* 對於生產工作負載，我們建議您遷移至外部中繼存放區。 如需詳細資訊，請參閱下一節。
+> [!IMPORTANT]
+> 預設中繼存放區會提供具有**基本第5層 DTU 限制的 Azure SQL Database， (無法升級) **！ 適用于基本測試用途。 針對大型或生產工作負載，我們建議您遷移至外部中繼存放區。
 
 ## <a name="custom-metastore"></a>自訂中繼存放區
 
@@ -53,7 +53,7 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 * 自訂中繼存放區可讓您將多個叢集與叢集類型連結至該中繼存放區。 例如，單一中繼存放區可以在 HDInsight 中的互動式查詢、Hive 和 Spark 叢集之間共用。
 
-* 根據您選擇的效能層級，您需支付中繼存放區（Azure SQL Database）成本的費用。
+* 根據您選擇的效能層級，您需要支付中繼存放區 (Azure SQL Database) 費用。
 
 * 您可以視需要相應增加中繼存放區。
 
@@ -81,9 +81,8 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 ## <a name="hive-metastore-guidelines"></a>Hive 中繼存放區方針
 
-* 盡可能使用自訂中繼存放區，這樣有助於個別計算資源 (您的執行中叢集) 和中繼資料 (儲存在中繼存放區)。
-
-* 從 S2 層開始，該層提供 50 個 DTU 和 250 GB 的儲存體。 如果您看到瓶頸，您可以相應增加資料庫。
+> [!NOTE]
+> 盡可能使用自訂中繼存放區，這樣有助於個別計算資源 (您的執行中叢集) 和中繼資料 (儲存在中繼存放區)。 從 S2 層開始，它會提供 50 DTU 和 250 GB 的儲存空間。 如果您看到瓶頸，您可以相應增加資料庫。
 
 * 如果您想要讓多個 HDInsight 叢集存取不同的資料，請針對每個叢集上的中繼存放區使用不同資料庫。 如果您在多個 HDInsight 叢集間共用中繼存放區，則表示這些叢集會使用相同的中繼資料和基礎使用者資料檔案。
 

@@ -60,7 +60,7 @@
           href: how-tos/create-locate-anchors-cpp-winrt.md
     - name: 使用粗略重新定位來探索附近的錨點
       items:
-        - name: '使用 C#/Unity'
+        - name: 使用 C#/Unity
           href: how-tos/set-up-coarse-reloc-unity.md
         - name: 使用 Objective-C
           href: how-tos/set-up-coarse-reloc-objc.md
@@ -72,6 +72,12 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: 使用 C++/WinRT
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: 專案設定
+      items:
+        - name: C++ WinRT
+          href: how-tos/setup-cpp-winrt-project.md
+        - name: Unity
+          href: how-tos/setup-unity-project.md
 - name: 範例
   items:
     - name: Azure Spatial Anchors 範例 (GitHub)

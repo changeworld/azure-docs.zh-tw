@@ -9,18 +9,18 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 90aa2b9504008783649662019179a5998d534746
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 75b464c140bfda6c3f3559d3bfdbe1e6bc2e7f24
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543090"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760731"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>規劃和管理 Azure Blob 儲存體的成本
 
 本文可協助您規劃和管理 Azure Blob 儲存體的成本。 首先，使用 Azure 定價計算機來預估成本。 建立儲存體帳戶之後，請將帳戶優化，讓您只需支付需要的部分。 使用成本管理功能來設定預算和監視成本。 您也可以查看預測的成本，並監視支出趨勢，以識別您可能想要採取行動的區域。
 
-請記住，Azure 儲存體的成本只是 Azure 帳單中每月成本的一部分。 雖然本文說明如何預估和管理 Azure 儲存體的成本，您仍需支付 Azure 訂用帳戶所使用的所有 Azure 服務和資源，包括協力廠商服務。 在您熟悉如何管理 Azure 儲存體的成本之後，您可以套用類似的方法來管理您的訂用帳戶中所使用之所有 Azure 服務的成本。
+請記住，Blob 儲存體的成本只是 Azure 帳單中每月成本的一部分。 雖然本文說明如何預估和管理 Blob 儲存體的成本，但您會針對 Azure 訂用帳戶所使用的所有 Azure 服務和資源（包括協力廠商服務）支付費用。 在您熟悉如何管理 Blob 儲存體的成本之後，您可以套用類似的方法來管理您的訂用帳戶中所使用之所有 Azure 服務的成本。
 
 ## <a name="estimate-costs"></a>預估成本
 
@@ -76,7 +76,7 @@ ms.locfileid: "87543090"
 
 ## <a name="monitor-costs"></a>監視成本
 
-當您搭配 Azure 儲存體使用 Azure 資源時，會產生成本。 資源使用量單位成本會因時間間隔（秒、分鐘、小時、天）或單位使用量（位元組、mb 等等）而異。當 Azure 儲存體開始使用時，就會產生成本。 您可以在 [[成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md)] 窗格的 [Azure 入口網站] 中查看成本。
+當您搭配 Azure 儲存體使用 Azure 資源時，會產生成本。 資源使用量單位成本會因時間間隔而異 (秒、分鐘、小時、天) 或單位使用量 (位元組、mb 等等。 ) 成本會在 Azure 儲存體開始使用時產生。 您可以在 [[成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md)] 窗格的 [Azure 入口網站] 中查看成本。
 
 當您使用成本分析時，可以針對不同的時間間隔，在圖表和資料表中查看 Azure 儲存體成本。 某些範例是依日期、目前和上個月和年。 您也可以根據預算和預測成本來查看成本。 隨著時間切換到較長的視圖，可協助您找出支出趨勢，並查看超支可能發生的位置。 如果您已建立預算，您也可以輕鬆地查看其超出的位置。
 
@@ -97,7 +97,7 @@ ms.locfileid: "87543090"
 
    ![使用成本分析窗格監視儲存成本](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
-在上述範例中，您會看到服務的目前成本。 Azure 區域（位置）和資源群組的成本也會一併顯示。 您也可以新增其他篩選準則（例如：篩選，以查看特定儲存體帳戶的成本）。
+在上述範例中，您會看到服務的目前成本。 Azure 區域的成本會 (位置) 和資源群組也會出現。 您也可以新增其他篩選 (例如：查看特定儲存體帳戶的成本) 的篩選準則。
 
 ## <a name="next-steps"></a>後續步驟
 

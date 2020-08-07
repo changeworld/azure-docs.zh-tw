@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET 建立預存存取原則
 titleSuffix: Azure Storage
-description: 瞭解如何使用 .NET 用戶端程式庫來建立預存存取原則。
+description: 使用 Azure 儲存體和 .NET 來建立預存的存取原則。 針對伺服器上的服務層級共用存取簽章，執行其他層級的控制。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,16 +10,16 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f4a0d69f3687f0dcc174a2d8a1275a2bf55d9ecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a08929c4affbd6eeb4d66a82d787ec5eba122e5b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504384"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903760"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>使用 .NET 建立預存存取原則
 
-儲存的存取原則可對伺服器端上的服務層級共用存取簽章（SAS）提供額外層級的控制。 定義儲存的存取原則可將共用存取簽章分組，並針對原則所系結的共用存取簽章提供額外的限制。 您可以使用預存存取原則來變更 SAS 的開始時間、到期時間或許可權，或在發行之後將其撤銷。
+儲存的存取原則可讓您在伺服器端 (SAS) ，對服務層級的共用存取簽章提供額外的控制層級。 定義儲存的存取原則可將共用存取簽章分組，並針對原則所系結的共用存取簽章提供額外的限制。 您可以使用預存存取原則來變更 SAS 的開始時間、到期時間或許可權，或在發行之後將其撤銷。
   
 下列 Azure 儲存體資源支援儲存的存取原則：  
   
@@ -127,6 +127,6 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ## <a name="see-also"></a>另請參閱
 
-- [使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權](storage-sas-overview.md)
+- [使用 (SAS 的共用存取簽章，授與 Azure 儲存體資源的有限存取權) ](storage-sas-overview.md)
 - [定義預存的存取原則](/rest/api/storageservices/define-stored-access-policy)
 - [設定 Azure 儲存體連接字串](storage-configure-connection-string.md)

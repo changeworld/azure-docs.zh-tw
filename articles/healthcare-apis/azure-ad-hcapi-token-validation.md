@@ -3,18 +3,18 @@ title: Azure API for FHIR 存取權杖驗證
 description: 逐步解說權杖驗證，並提供如何針對存取問題進行疑難排解的秘訣
 services: healthcare-apis
 author: caitlinv39
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
-ms.openlocfilehash: 672acd4f68acd4998fd7631240c2f998299def11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 426ec0c2d6cc274aa0b6829eb4a30fd29b9ba8e2
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871228"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844655"
 ---
 # <a name="azure-api-for-fhir-access-token-validation"></a>Azure API for FHIR 存取權杖驗證
 
@@ -28,7 +28,7 @@ Azure API for FHIR 如何驗證存取權杖將取決於執行和設定。 在本
 GET https://login.microsoftonline.com/<TENANT-ID>/.well-known/openid-configuration
 ```
 
-其中 `<TENANT-ID>` 是特定的 Azure AD 租使用者（租使用者識別碼或功能變數名稱）。
+其中 `<TENANT-ID>` 是特定的 Azure AD 租使用者 (租使用者識別碼或功能變數名稱) 。
 
 Azure AD 會將如下所示的檔傳回至 FHIR 伺服器。
 
@@ -96,7 +96,7 @@ Azure AD 會將如下所示的檔傳回至 FHIR 伺服器。
     "rbac_url": "https://pas.windows.net"
 }
 ``` 
-FHIR 伺服器的重要屬性是 `jwks_uri` ，它會告訴伺服器要在何處提取驗證權杖簽章所需的加密金鑰，以及 `issuer` 告訴伺服器該伺服器所簽發之權杖的簽發者宣告（）中的內容 `iss` 。 FHIR 伺服器可以用它來驗證它是否正在接收真實的權杖。
+FHIR 伺服器的重要屬性是 `jwks_uri` ，它會告訴伺服器要在何處提取驗證權杖簽章所需的加密金鑰，而 `issuer` 這會告訴伺服器簽發者宣告中的內容 (`iss` 此伺服器發出的權杖) 。 FHIR 伺服器可以用它來驗證它是否正在接收真實的權杖。
 
 ## <a name="validate-claims-of-the-token"></a>驗證權杖的宣告
 
@@ -104,19 +104,19 @@ FHIR 伺服器的重要屬性是 `jwks_uri` ，它會告訴伺服器要在何處
 
 使用 Azure API for FHIR 時，伺服器將會驗證：
 
-1. Token 具有正確的 `Audience` （宣告 `aud` ）。
+1. Token 具有正確的 `Audience` (宣告 `aud`) 。
 1. 為其發出權杖的使用者或主體，可以存取 FHIR 伺服器資料平面。 Token 的宣告包含身分識別 `oid` 物件識別碼，可唯一識別使用者或主體。
 
 我們建議您將 FHIR 服務[設定為使用 AZURE RBAC](configure-azure-rbac.md)來管理資料平面角色指派。 但是，如果您的 FHIR 服務使用外部或次要 Azure Active Directory 租使用者，您也可以[設定本機 RBAC](configure-local-rbac.md) 。 
 
 使用適用于 Azure 的 OSS Microsoft FHIR server 時，伺服器將會驗證：
 
-1. Token 具有正確的 `Audience` （宣告 `aud` ）。
+1. Token 具有正確的 `Audience` (宣告 `aud`) 。
 1. 權杖在宣告中具有角色 `roles` ，允許存取 FHIR 伺服器。
 
 如需如何[在 FHIR 伺服器上定義角色](https://github.com/microsoft/fhir-server/blob/master/docs/Roles.md)的詳細資訊，請參閱。
 
-FHIR 伺服器也會驗證存取權杖是否具有範圍（在權杖宣告中）， `scp` 以存取用戶端嘗試存取的 FHIR API 部分。 目前，Azure API for FHIR 和適用于 Azure 的 FHIR 伺服器不會驗證權杖範圍。
+FHIR 伺服器也可能會驗證存取權杖具有權杖宣告中 (的範圍， `scp`) 存取用戶端嘗試存取的 FHIR API 部分。 目前，Azure API for FHIR 和適用于 Azure 的 FHIR 伺服器不會驗證權杖範圍。
 
 ## <a name="next-steps"></a>後續步驟
 現在您已瞭解如何逐步進行權杖驗證，您可以完成建立 JavaScript 應用程式和讀取 FHIR 資料的教學課程。
