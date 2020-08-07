@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: d7ba52c34c376139538a5d0bf7747cceb6b46cb2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: d089cb1844356032b956110a7475d839031ef006
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056127"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849823"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體輸出系結
 
@@ -356,7 +356,7 @@ Python 指令碼不支援屬性。
 |**direction** | n/a | 必須針對輸出繫結設定為 `out`。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
 |**name** | n/a | 表示函式程式碼中 Blob 的變數名稱。  設為 `$return` 以參考函式傳回值。|
 |**path** |**BlobPath** | Blob 容器的路徑。 |
-|**connection** |**連線**| 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將 `connection` 設定為「MyStorage」，則函式執行階段會尋找名稱為「AzureWebJobsMyStorage」的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|**connection** |**[連接]**| 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將 `connection` 設定為「MyStorage」，則函式執行階段會尋找名稱為「AzureWebJobsMyStorage」的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |n/a | **存取** | 指出您是否將讀取或寫入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -392,7 +392,7 @@ Python 指令碼不支援屬性。
 
 ## <a name="exceptions-and-return-codes"></a>例外狀況和傳回碼
 
-| 繫結 |  參考資料 |
+| 繫結 |  參考 |
 |---|---|
 | Blob | [Blob 錯誤碼](/rest/api/storageservices/fileservices/blob-service-error-codes) |
 | Bob、資料表、佇列 |  [儲存體錯誤碼](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

@@ -1,6 +1,6 @@
 ---
 title: 新增自訂 CA 憑證 - Azure API 管理 | Microsoft Docs
-description: 了解如何在 Azure API 管理中新增自訂 CA 憑證。
+description: 了解如何在 Azure API 管理中新增自訂 CA 憑證。 您也可以查看刪除憑證的指示。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 21d5869f2bcdfb6383b6ef89869d8098135ea7ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e42e976e57dd69ffcbd9065cfb3aaf3af9c4b972
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70073596"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852067"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>如何在 Azure API 管理中新增自訂 CA 憑證
 
@@ -47,7 +47,7 @@ Azure API 管理可允許在信任根存放區和中繼憑證存放區內的機�
 
     ![新增 CA 憑證](media/api-management-howto-ca-certificates/02.png)  
 
-5. 按一下 **[儲存]** 。 這項作業可能需要幾分鐘的時間。
+5. 按一下 [儲存]。 這項作業可能需要幾分鐘的時間。
 
     ![新增 CA 憑證](media/api-management-howto-ca-certificates/03.png)  
 

@@ -10,25 +10,25 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.custom: tracking-python, devx-track-javascript
-ms.openlocfilehash: dc0097396bbd3d624fd043c54f2f37e434ad5b50
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: 49daf816c4075820c9efc93611f33c4854a6042d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87403978"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849568"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用見解權杖取得影像的深入解析
 
 Bing 圖像式搜尋 API 會傳回您所提供影像的相關資訊。 您可以使用影像的 URL、見解權杖，或上傳影像來提供影像。 如需這些選項的資訊，請參閱[什麼是 Bing 圖像式搜尋 API？](overview.md) 本文將示範如何使用見解權杖。 如需示範如何上傳影像以取得見解的範例，請參閱快速入門：
 
-* （[C #](quickstarts/csharp.md)
+*  ([c #](quickstarts/csharp.md)
 
 * [Java](quickstarts/java.md)
 
 * [Node.js](quickstarts/nodejs.md)
 
-* [Python](quickstarts/python.md)）。
+* [Python](quickstarts/python.md)) 。
 
 如果您將影像權杖或 URL 傳送 Bing 圖像式搜尋，以下會顯示您必須包含在 POST 本文中的表單資料。 表單資料必須包含 `Content-Disposition` 標頭，而且您必須將其 `name` 參數設為 "knowledgeRequest"。 如需物件的詳細資訊 `imageInfo` ，請參閱要求：
 
@@ -93,7 +93,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 2. 以本快速入門中顯示的程式碼取代 Program.cs 的內容。
 3. 以您的訂用帳戶金鑰取代 `accessKey` 值。
 4. 以 /images/search 回應中的見解權杖取代 `insightsToken` 值。
-5. 執行該程式。
+5. 執行程式。
 
 ```csharp
 using System;
@@ -268,7 +268,7 @@ namespace VisualSearchInsightsToken
 2. 在您最愛的 IDE 或編輯器中建立新的 Java 專案。
 3. 在名為 `VisualSearch.java` 的檔案中新增提供的程式碼。
 4. 以您的訂用帳戶金鑰取代 `subscriptionKey` 值。
-5. 執行該程式。
+5. 執行程式。
 
 ```java
 package insightstoken;
@@ -392,7 +392,7 @@ public class InsightsToken {
    ```
 1. 建立名為 GetVisualInsights.js 的檔案，並在其中新增下列程式碼。
 1. 以您的訂用帳戶金鑰取代 `subscriptionKey` 值。
-1. 執行該程式。  
+1. 執行程式。  
    ```
    node GetVisualInsights.js
    ```

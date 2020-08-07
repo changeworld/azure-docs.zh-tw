@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: 308d19fde78edacebb168b8d4e459169338acc41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345939"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851975"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure Data Factory 中的管理中樞
 
@@ -57,6 +57,12 @@ ms.locfileid: "84345939"
 觸發程式會決定何時應開始執行管線。 目前觸發程式可以是時鐘排程、以定期間隔運作，或視事件而定。 如需詳細資訊，請瞭解[觸發程式執行](concepts-pipeline-execution-triggers.md#trigger-execution)。 在管理中樞中，您可以建立、編輯、刪除或查看觸發程式的目前狀態。
 
 ![管理自訂參數](media/author-management-hub/management-hub-triggers.png)
+
+### <a name="global-parameters"></a>全域參數
+
+全域參數是跨資料處理站的常數，可由任何運算式中的管線使用。 如需詳細資訊，請瞭解[全域參數](author-global-parameters.md)。
+
+![建立全域參數](media/author-global-parameters/create-global-parameter-3.png)
 
 ## <a name="next-steps"></a>後續步驟
 

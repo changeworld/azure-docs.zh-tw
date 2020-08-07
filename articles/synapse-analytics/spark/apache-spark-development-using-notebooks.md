@@ -9,17 +9,17 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.custom: tracking-python
-ms.openlocfilehash: a7dc0fcae9a6fea789d30bac10511007454ecc5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-python
+ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503972"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849093"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio （預覽）筆記本
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中建立、開發及維護 Synapse Studio (preview) 筆記本
 
-Synapse Studio （預覽）筆記本是一個 web 介面，可讓您建立檔案，其中包含即時程式碼、視覺效果和敘述文字。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 筆記本也廣泛用於資料準備、資料視覺效果、機器學習和其他巨量資料案例。
+Synapse Studio (preview) 筆記本是一個 web 介面，可讓您建立檔案，其中包含即時程式碼、視覺效果和敘述文字。 筆記本是驗證想法和使用快速實驗從您的資料取得見解的絕佳位置。 筆記本也廣泛用於資料準備、資料視覺效果、機器學習和其他巨量資料案例。
 
 使用 Azure Synapse Studio 筆記本，您可以：
 
@@ -204,7 +204,7 @@ IntelliSense 功能在不同語言的成熟度層級不同。 使用下表來檢
 ### <a name="spark-progress-indicator"></a>Spark 進度指示器
 
 Azure Synapse Studio 筆記本純粹是以 Spark 為基礎。 程式碼儲存格會從遠端在 Spark 集區上執行。 系統隨即會提供具有即時進度列的 Spark 作業進度列指示器，以協助您瞭解作業執行狀態。
-每個作業或階段的工作數可協助您識別 spark 作業的平行層級。 您也可以按一下作業（或階段）名稱上的連結，以深入瞭解特定作業（或階段）的 Spark UI。
+每個作業或階段的工作數可協助您識別 spark 作業的平行層級。 您也可以透過按一下作業 (或階段) 名稱的連結，深入瞭解特定作業的 Spark UI， (或階段) 。
 
 
 ![spark-progress-indicator](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -277,7 +277,7 @@ df = spark.read.option("header", "true") \
 
 表格式結果檢視會提供選項，以建立橫條圖、折線圖、圓形圖、散佈圖和區域圖。 您可以將資料視覺化，而不需要撰寫程式碼。 您可以在 [圖表選項] 中自訂圖表。 
 
-預設會在轉譯的資料表檢視中顯示 **%%sql** magic 命令的輸出。 您可以 <code>display(df)</code> 在 Spark 資料框架或復原分散式資料集（RDD）函數上呼叫，以產生轉譯的資料表視圖。
+預設會在轉譯的資料表檢視中顯示 **%%sql** magic 命令的輸出。 您可以 <code>display(df)</code> 在 Spark 資料框架或復原的分散式資料集上呼叫， (RDD) 函數來產生轉譯的資料表視圖。
 
    [![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
@@ -366,7 +366,7 @@ displayHTML(html)
 
 ### <a name="designate-a-parameters-cell"></a>指定參數資料格
 
-若要將您的筆記本參數化，請選取省略號（...），以存取最右側的其他 [資料格動作] 功能表。 然後選取 [**切換參數資料格**]，將儲存格指定為 [參數] 資料格。
+若要參數化您的筆記本，請選取省略號 ( ... ) 以存取最右側的其他 [資料格動作] 功能表。 然後選取 [**切換參數資料格**]，將儲存格指定為 [參數] 資料格。
 
 ![切換參數](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
@@ -402,8 +402,8 @@ Azure Data Factory 會尋找 [參數] 資料格，並將此資料格視為在執
 |--|--|
 |執行目前的儲存格並在下方選取 | Shift+Enter |
 |執行目前的儲存格並在下方插入 | Alt+Enter |
-|選取上方儲存格| Up |
-|選取下方儲存格| Down |
+|選取上方儲存格| 上移 |
+|選取下方儲存格| 向下 |
 |在上方插入儲存格| A |
 |在下方插入儲存格| B |
 |展開上方選取的儲存格| Shift+Up |

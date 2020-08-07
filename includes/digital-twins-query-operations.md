@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
-ms.openlocfilehash: 82639a19ef728c22a74381d24754992e0f647976
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6dfddd9179569075abdbd94b6c1afa719db9ba1e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562460"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905581"
 ---
 ## <a name="query-language-features"></a>查詢語言功能
 
@@ -30,7 +30,7 @@ Azure 數位 Twins 會針對對應項圖形提供廣泛的查詢功能。 查詢
 
 您可以使用下列作業進一步增強您的查詢：
 *  (查詢) 取得多個關聯性類型 `JOIN` 的 twins。 
-  - `JOIN`公開預覽)  (一層級的數目有所限制。
+  - 在預覽期間，最多允許五個層級 `JOIN` 。
 * 僅選取最上方的查詢結果 (`Select TOP` 運算子) 
 * 使用純量函數： `IS_BOOL` 、 `IS_DEFINED` 、 `IS_NULL` 、 `IS_NUMBER` 、 `IS_OBJECT` `IS_PRIMITIVE` `IS_STRING` `STARTSWITH` `ENDSWITH` 、、、、。
 * 使用查詢比較運算子： `IN` / `NIN` 、 `=` 、 `!=` 、 `<` 、 `>` 、 `<=` 、 `>=` 。

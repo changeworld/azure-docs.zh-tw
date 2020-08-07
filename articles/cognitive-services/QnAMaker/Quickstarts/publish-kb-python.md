@@ -3,14 +3,14 @@ title: 快速入門：發佈知識庫、REST、Python-QnA Maker
 description: 這個以 Python REST 為基礎的快速入門會發佈您的知識庫，並建立可在您應用程式或聊天機器人中呼叫的端點。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
-ms.custom: RESTCURL2020FEB27, tracking-python
+ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: a5aa5a313a96c12adccf0a1c198dce69661935d6
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 12290303a4c1759b8633617ac99942060ece88d0
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608650"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874923"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>快速入門：使用 Python 在 QnA Maker 中發佈知識庫
 

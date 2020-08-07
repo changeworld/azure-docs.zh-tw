@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 484539a9c41f055d2b215e6f5a1326d06faca82d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 31bc9a5f38d50318f858a4d7169391e9d2e5e610
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829215"
+ms.locfileid: "87848725"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 和 Easv4 系列
 
@@ -32,7 +32,7 @@ ACU： 230-260
 
 Eav4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達成 3.35 ghz 的提升頻率，並使用 premium SSD。 Eav4 系列大小非常適合記憶體密集型的企業應用程式。 資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium SSD，請使用 Easv4 系列大小。 Easv4 大小的定價和計費方式與 Eav3 系列相同。
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大 NIC | 預期的網路頻寬 (MBps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 | -----|-----|-----|-----|-----|-----|-----|-----|
 | 標準 \_ E2a \_ v4|2|16|50|4|3000 / 46 / 23|2 | 1000 |
 | 標準 \_ E4a \_ v4|4|32|100|8|6000 / 93 / 46|2 | 2000 |

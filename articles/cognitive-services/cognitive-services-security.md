@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: erhopf
-ms.custom: tracking-python, devx-track-javascript
-ms.openlocfilehash: 48e5f6d453e69dcbafd9aefe283eb2c880d4b48e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: 2b3f7934a24f67992d6b80ac359c29ebe2a40b09
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406634"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849551"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 認知服務安全性
 
@@ -25,17 +25,17 @@ ms.locfileid: "87406634"
 
 所有透過 HTTP 公開的認知服務端點都會強制使用 TLS 1.2。 透過強制執行的安全性通訊協定，嘗試呼叫認知服務端點的取用者應遵循下列指導方針：
 
-* 用戶端作業系統（OS）必須支援 TLS 1。2
-* 用來進行 HTTP 呼叫的語言（和平臺）必須指定 TLS 1.2 做為要求的一部分。
+* 用戶端作業系統 (OS) 必須支援 TLS 1。2
+* 用來進行 HTTP 呼叫的語言 (和平臺) 必須指定 TLS 1.2 做為要求的一部分
   * 視語言和平臺而定，指定 TLS 是隱含或明確地完成
 
 針對 .NET 使用者，請考慮<a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">傳輸層安全性最佳做法 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 
 ## <a name="authentication"></a>驗證
 
-在討論驗證時，有幾個常見的誤解。 驗證和授權通常會相互混淆。 身分識別也是安全性的主要元件。 身分識別是<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">主體 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>相關資訊的集合。 身分識別提供者（IdP）提供驗證服務的身分識別。 驗證是確認使用者身分識別的動作。 授權是指定身分識別之資源的存取權和許可權的規格。 其中幾項認知服務供應專案包含角色型存取控制（RBAC）。 RBAC 可用來簡化與手動管理主體有關的部分儀式。 如需詳細資訊，請參閱[適用于 Azure 資源的角色型存取控制](../role-based-access-control/overview.md)。
+在討論驗證時，有幾個常見的誤解。 驗證和授權通常會相互混淆。 身分識別也是安全性的主要元件。 身分識別是<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">主體 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>相關資訊的集合。 識別提供者 (IdP) 提供身分識別給驗證服務。 驗證是確認使用者身分識別的動作。 授權是指定身分識別之資源的存取權和許可權的規格。 認知服務的幾項供應專案中，包含角色型存取控制 (RBAC) 。 RBAC 可用來簡化與手動管理主體有關的部分儀式。 如需詳細資訊，請參閱[適用于 Azure 資源的角色型存取控制](../role-based-access-control/overview.md)。
 
-如需使用訂用帳戶金鑰、存取權杖和 Azure Active Directory （AAD）進行驗證的詳細資訊，請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">向 Azure 認知服務 <span class="docon docon-navigate-external x-hidden-focus"></span> 驗證要求</a>。
+如需使用訂用帳戶金鑰、存取權杖和 Azure Active Directory (AAD) 的詳細資訊，請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">向 Azure <span class="docon docon-navigate-external x-hidden-focus"></span> 認知服務驗證要求</a>。
 
 ## <a name="environment-variables-and-application-configuration"></a>環境變數和應用程式設定
 
@@ -105,7 +105,7 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 ---
 
 > [!TIP]
-> 設定環境變數之後，請重新開機您的整合式開發環境（IDE），以確保可以使用新加入的環境變數。
+> 設定環境變數之後，請 (IDE) 重新開機整合式開發環境，以確保可以使用新加入的環境變數。
 
 ### <a name="get-environment-variable"></a>取得環境變數
 
@@ -215,7 +215,7 @@ NSString* value =
 
 若要要求能夠使用 E0 SKU，請填寫並提交此 [要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會放在佇列中，並已核准為可用空間。 一旦核准搭配 LUIS 使用 E0 SKU，您就必須從 Azure 入口網站建立新的資源，然後選取 [E0] 作為 [定價層]。 使用者將無法從 F0 升級至新的 E0 SKU。
 
-語音服務目前不支援客戶加密箱。 不過，您可以使用「攜帶您自己的儲存體」（BYOS）來儲存客戶資料，讓您可以達到類似的資料控制客戶加密箱。 請記住，語音服務資料會保留，並在語音資源建立所在的區域中進行處理。 這適用于待用資料和傳輸中的資料。 當您使用自訂功能（例如自訂語音和自訂語音）時，所有客戶資料都會在您的 BYOS （如果使用）和語音服務資源所在的相同區域中進行傳輸、儲存及處理。
+語音服務目前不支援客戶加密箱。 不過，您可以使用 [自備儲存體] (BYOS) 來儲存客戶資料，讓您可以達成類似的資料控制客戶加密箱。 請記住，語音服務資料會保留，並在語音資源建立所在的區域中進行處理。 這適用于待用資料和傳輸中的資料。 當您使用自訂功能（例如自訂語音和自訂語音）時，所有客戶資料都會在您的 BYOS (（如果使用) 和語音服務資源）的相同區域中進行傳輸、儲存及處理。
 
 > [!IMPORTANT]
 > Microsoft 不**會**使用客戶資料來改善其語音模型。 此外，如果已停用端點記錄且未使用任何自訂專案，則不會儲存任何客戶資料。 

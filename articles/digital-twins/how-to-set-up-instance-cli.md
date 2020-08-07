@@ -1,5 +1,5 @@
 ---
-title: 設定實例和驗證（CLI）
+title: 設定執行個體和驗證 (CLI)
 titleSuffix: Azure Digital Twins
 description: 請參閱如何使用 CLI 設定 Azure 數位 Twins 服務的實例
 author: baanders
@@ -7,22 +7,22 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 287ee62acf3a078c4b47803060f61c9dd4134ab7
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: ba03acabb3325045a71d55f583343a26b4d121ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408255"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832314"
 ---
-# <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>設定 Azure 數位 Twins 實例和驗證（CLI）
+# <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>設定 Azure 數位 Twins 實例和 (CLI 的驗證) 
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
 本文涵蓋**設定新的 Azure 數位 Twins 實例**的步驟，包括建立實例和設定驗證。 完成本文之後，您將擁有可開始進行程式設計的 Azure 數位 Twins 實例。
 
 這一版的文章會使用 CLI 手動逐一執行這些步驟。
-* 若要使用 Azure 入口網站手動執行這些步驟，請參閱本文的入口網站版本：[*如何：設定實例和驗證（入口網站）*](how-to-set-up-instance-portal.md)。
-* 若要使用部署腳本範例執行自動安裝，請參閱本文的腳本版本：[*如何：設定實例和驗證（已編寫腳本）*](how-to-set-up-instance-scripted.md)。
+* 若要使用 Azure 入口網站手動執行這些步驟，請參閱本文的入口網站版本：[*如何：設定實例和驗證 (入口網站) *](how-to-set-up-instance-portal.md)。
+* 若要使用部署腳本範例執行自動安裝，請參閱本文的腳本版本：[*如何：設定實例和驗證 (腳本) *](how-to-set-up-instance-scripted.md)。
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 [!INCLUDE [digital-twins-setup-role-cli.md](../../includes/digital-twins-setup-role-cli.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "87408255"
     az group create --location <region> --name <name-for-your-resource-group>
     ```
 * 部署的區域。 若要查看哪些區域支援 Azure 數位 Twins，請造訪[*依區域提供的 azure 產品*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)。
-* 實例的名稱。 新實例的名稱在您訂用帳戶的區域中必須是唯一的（也就是說，如果您的訂用帳戶在已使用所選名稱的區域中有另一個 Azure 數位 Twins 實例，系統會要求您挑選不同的名稱）。
+* 實例的名稱。 新實例的名稱在您的 (訂用帳戶區域內必須是唯一的，這表示如果您的訂用帳戶在已使用所選名稱的區域中有另一個 Azure 數位 Twins 實例，系統會要求您挑選不同的名稱) 。
 
 在下列命令中使用這些值來建立實例：
 
@@ -46,7 +46,7 @@ ms.locfileid: "87408255"
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
-### <a name="verify-success"></a>確認是否成功
+### <a name="verify-success-and-collect-important-values"></a>確認成功並收集重要的值
 
 如果成功建立實例，Cloud Shell 中的結果會看起來像這樣，輸出您所建立之資源的相關資訊：
 
@@ -63,7 +63,7 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-res
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-使用下列命令來指派角色（必須由 Azure 訂用帳戶的擁有者執行）：
+使用下列命令來指派角色 (必須由 Azure 訂用帳戶的擁有者執行) ：
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-email-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
@@ -71,12 +71,16 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 此命令的結果會輸出已建立之角色指派的相關資訊。
 
-> [!TIP]
-> 如果您改為取得*400： BadRequest*錯誤，請執行下列命令來取得使用者的*ObjectID* ：
-> ```azurecli
-> az ad user show --id <Azure-AD-email-of-user-to-assign> --query objectId
-> ```
-> 然後，使用使用者的*物件識別碼*來取代其電子郵件，以重複 [角色指派] 命令。
+> [!NOTE]
+> 如果此命令傳回錯誤，指出 CLI**在圖形資料庫中找不到使用者或服務主體**：
+>
+> 使用使用者的*物件識別碼*，而不是其電子郵件。 個人[Microsoft 帳戶 (msa) ](https://account.microsoft.com/account)的使用者可能會發生這種情況。 
+>
+> 使用[Azure Active Directory 使用者](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)的 [Azure 入口網站] 頁面來選取使用者帳戶，並開啟其詳細資料。 複製使用者的*ObjectID*：
+>
+> :::image type="content" source="media/includes/user-id.png" alt-text="[物件識別碼] 欄位中顯示 GUID 的 Azure 入口網站中的使用者網頁檢視" lightbox="media/includes/user-id.png":::
+>
+> 然後，使用使用者的*物件識別碼*來取代電子郵件，以重複 [角色指派清單] 命令。
 
 ### <a name="verify-success"></a>確認是否成功
 
@@ -114,10 +118,10 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="顯示上傳選項選取範圍的 Cloud Shell 視窗":::
 流覽至您剛建立的*manifest.js* ，然後按 [開啟]。
 
-接下來，執行下列命令以建立應用程式註冊（視需要取代預留位置）：
+接下來，執行下列命令來建立應用程式註冊 (視需要取代預留位置) ：
 
 ```azurecli
-az ad app create --display-name <name-for-your-app> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
+az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
 ```
 
 以下是此命令的輸出摘要，其中顯示您已建立之註冊的相關資訊：
@@ -138,7 +142,7 @@ az ad app create --display-name <name-for-your-app> --native-app --required-reso
 
 :::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="應用程式註冊重要值的入口網站視圖":::
 
-記**下頁面上**顯示的 [*應用程式（用戶端）識別碼*] 和 [*目錄（租使用者）] 識別碼*。 稍後會需要這些值，以對[Azure 數位 Twins api 驗證用戶端應用程式](how-to-authenticate-client.md)。 如果您不是要為這類應用程式撰寫程式碼的人員，您將需要與即將擁有的人員共用這些值。
+請記下**您**頁面上顯示的*應用程式 (用戶端) id*和*目錄 (租使用者) 識別碼*。 稍後會需要這些值，以對[Azure 數位 Twins api 驗證用戶端應用程式](how-to-authenticate-client.md)。 如果您不是要為這類應用程式撰寫程式碼的人員，您將需要與即將擁有的人員共用這些值。
 
 ### <a name="other-possible-steps-for-your-organization"></a>貴組織的其他可能步驟
 

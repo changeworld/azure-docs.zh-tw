@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.custom: tracking-python
-ms.openlocfilehash: 6eae11e2157904b47582f78a601c8d2900e61247
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-python
+ms.openlocfilehash: c94bc949f13ee19a9d2150c9d3c1b6a2bdb959b2
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324585"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850061"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 追蹤連入要求
 
@@ -122,6 +122,6 @@ ms.locfileid: "87324585"
 * [應用程式對應](./app-map.md)
 * [可用性](./monitor-web-app-availability.md)
 * [搜尋](./diagnostic-search.md)
-* [記錄（分析）查詢](../log-query/log-query-overview.md)
+* [記錄 (分析) 查詢](../log-query/log-query-overview.md)
 * [交易診斷](./transaction-diagnostics.md)
 

@@ -209,14 +209,14 @@
       items:
         - name: 以視覺化方式撰寫的資料處理站
           href: author-visually.md
+        - name: 反覆式開發法與偵錯
+          href: iterative-development-debugging.md
         - name: 管理中樞
           href: author-management-hub.md
         - name: 原始檔控制
           href: source-control.md
         - name: 持續整合和傳遞
           href: continuous-integration-deployment.md
-        - name: 反覆式開發法與偵錯
-          href: iterative-development-debugging.md
     - name: 連接器
       items:
         - name: 連接器概觀
@@ -562,6 +562,8 @@
       items:
         - name: 將已連結的服務參數化
           href: parameterize-linked-services.md
+        - name: 全域參數
+          href: author-global-parameters.md
         - name: 運算式語言
           href: control-flow-expression-language-functions.md
         - name: 系統變數

@@ -1,7 +1,7 @@
 ---
 title: 在 Azure API 管理中使用群組來管理開發人員帳戶
 titleSuffix: Azure API Management
-description: 了解如何在 Azure API 管理中使用群組來管理管理開發人員帳戶。
+description: 瞭解如何在 Azure API 管理中使用群組來管理開發人員帳戶。 建立群組，然後將它們與產品或開發人員建立關聯。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 16ab72a67a021338bd8e186c32015c271240d224
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250527"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851217"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>如何在 Azure API 管理中建立和使用群組來管理開發人員帳戶
 

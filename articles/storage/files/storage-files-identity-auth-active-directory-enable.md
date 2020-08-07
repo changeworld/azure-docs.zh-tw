@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: d7aab7f5db6256d2f2525ff4a58c10ff5aa517f7
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c3e8299a5acd7cbd3a6fd3cd76af33f4a798ad12
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553167"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832989"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>總覽-適用于 Azure 檔案共用的內部部署 Active Directory Domain Services 透過 SMB 進行驗證
 
@@ -83,7 +83,7 @@ ms.locfileid: "87553167"
 
 ![檔案 AD workflow 圖表](media/storage-files-active-directory-domain-services-enable/diagram-files-ad.png)
 
-用來存取 Azure 檔案共用的身分識別必須同步至 Azure AD，才能透過[角色型存取控制 (RBAC) ](../../role-based-access-control/overview.md)模型來強制執行共用層級的檔案許可權。 在從現有檔案伺服器上執行的檔案/目錄上， [Windows 樣式的 dacl](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN)將會保留並強制執行。 這可與您的企業 AD DS 環境緊密整合。 當您使用 Azure 檔案共用來取代內部部署檔案伺服器時，現有的使用者可以透過單一登入體驗，從其目前的用戶端存取 Azure 檔案共用，而不需要變更使用中的認證。  
+用來存取 Azure 檔案共用的身分識別必須同步至 Azure AD，才能透過[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)模型來強制執行共用層級檔案許可權。 在從現有檔案伺服器上執行的檔案/目錄上， [Windows 樣式的 dacl](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN)將會保留並強制執行。 這可與您的企業 AD DS 環境緊密整合。 當您使用 Azure 檔案共用來取代內部部署檔案伺服器時，現有的使用者可以透過單一登入體驗，從其目前的用戶端存取 Azure 檔案共用，而不需要變更使用中的認證。  
 
 ## <a name="next-steps"></a>後續步驟
 

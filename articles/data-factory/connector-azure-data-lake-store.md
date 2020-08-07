@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: dbfd90c760f4f5f9f6cf1bac8c7d75f474f6827b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 08/06/2020
+ms.openlocfilehash: 25378cc0510260a6ccd0a0bdb162b145cbae5c8e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223664"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847834"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製至或複製自 Azure Data Lake Storage Gen1
 
@@ -91,6 +91,7 @@ ms.locfileid: "86223664"
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為 `SecureString`，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定您的應用程式所在租用戶的資訊，例如網域名稱或租用戶識別碼。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
+| azureCloudType | 針對 [服務主體驗證]，指定您的 AAD 應用程式所註冊的 Azure 雲端環境類型。 <br/> 允許的值為**AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和**AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 
 **範例︰**
 
@@ -206,8 +207,8 @@ ms.locfileid: "86223664"
 | 屬性                 | 描述                                                  | 必要                                     |
 | ------------------------ | ------------------------------------------------------------ | -------------------------------------------- |
 | type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureDataLakeStoreReadSettings**。 | 是                                          |
-| ***找到要複製的檔案：*** |  |  |
-| 選項 1：靜態路徑<br> | 從在資料集內指定的資料夾/檔案路徑複製。 如果您想要複製資料夾中的所有檔案，請額外將 `wildcardFileName` 指定為 `*`。 |  |
+| 尋找要複製的檔案： |  |  |
+| 選項 1：靜態路徑<br> | 請從資料集內的指定資料夾/檔案路徑複製。 若您想要複製資料夾中的所有檔案，請另外將 `wildcardFileName` 指定為 `*`。 |  |
 | 選項2：名稱範圍<br>- listAfter | 抓取資料夾/檔案，其名稱在此值之後會以字母 (獨佔) 。 它會利用 ADLS Gen1 的服務端篩選，提供比萬用字元篩選更好的效能。 <br/>Data factory 會將此篩選套用至資料集內所定義的路徑，而且只支援一個實體層級。 如需更多範例，請參閱[名稱範圍篩選器範例](#name-range-filter-examples)。 | 否 |
 | 選項2：名稱範圍<br/>- listBefore | 抓取資料夾/檔案，其名稱在此值之前會以字母順序 (包含) 。 它會利用 ADLS Gen1 的服務端篩選，提供比萬用字元篩選更好的效能。<br>Data factory 會將此篩選套用至資料集內所定義的路徑，而且只支援一個實體層級。 如需更多範例，請參閱[名稱範圍篩選器範例](#name-range-filter-examples)。 | 否 |
 | 選項 3：萬用字元<br>- wildcardFolderPath | 含有萬用字元的資料夾路徑，可用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
@@ -218,7 +219,7 @@ ms.locfileid: "86223664"
 | deleteFilesAfterCompletion | 指出在成功移至目的地存放區之後，是否會從來源存放區刪除二進位檔案。 檔案刪除是每個檔案，因此當複製活動失敗時，您會看到某些檔案已複製到目的地，並從來源刪除，而其他檔案仍在來源存放區上剩餘。 <br/>此屬性只在二進位複製案例中有效，其中資料來源存放區為 Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、File、Azure 檔案、SFTP 或 FTP。 預設值： false。 |否 |
 | modifiedDatetimeStart    | 檔案篩選會根據以下屬性：上次修改時間。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 Null，這表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                           |
-| maxConcurrentConnections | 可同時連線到儲存體存放區的連線數目。 只有想要限制對資料存放區的並行連線數目時，才須指定此項。 | 否                                           |
+| maxConcurrentConnections | 可同時連線到儲存體存放區的連線數目。 只有當您想要限制同時連線到資料存放區的連線數目時才指定。 | 否                                           |
 
 **範例︰**
 

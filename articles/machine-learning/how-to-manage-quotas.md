@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a75a5942ad0aac39f2fe6afb9c62a254c4645d0a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4bd13adb9bb431749f1d0f52781ce22c832fc090
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372938"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846729"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理及增加 Azure Machine Learning 資源的配額
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,13 +46,9 @@ ms.locfileid: "87372938"
 > 限制日後有可能會變更。 最新的限制隨時可在適用於全 Azure 的服務層級配額[文件](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/)中找到。
 
 ### <a name="virtual-machines"></a>虛擬機器
-在每個 Azure 訂用帳戶上，都有可跨服務佈建，或以獨立方式佈建的虛擬機器數目限制。 此限制是區域層級限制，並同時針對總核心數量以及每個系列進行限制。
-
-虛擬機器核心具有個別強制執行的區域總數限制，以及區域的每個大小系列 (Dv2、F 等等) 限制。 例如，請考慮美國東部訂用帳戶的總計 VM 核心限制為 30、A 系列核心限制為 30，和 D 系列核心限制為 30。 此訂用帳戶會允許部署 30 個 A1 VM、30 個 D1 VM，或是兩個的組合，總計不超過 30 個核心 (例如 10 個 A1 VM 和 20 個 D1 VM)。
+針對每個 Azure 訂用帳戶，您的服務或獨立的虛擬機器數目會受到限制。 虛擬機器核心具有個別強制執行的區域總數限制，以及區域的每個大小系列 (Dv2、F 等等) 限制。 例如，請考慮美國東部訂用帳戶的總計 VM 核心限制為 30、A 系列核心限制為 30，和 D 系列核心限制為 30。 此訂用帳戶會允許部署 30 個 A1 VM、30 個 D1 VM，或是兩個的組合，總計不超過 30 個核心 (例如 10 個 A1 VM 和 20 個 D1 VM)。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-如需配額限制的詳細資訊與最新清單，請查看[全 Azure 配額文章](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
 就 [Azure Machine Learning Compute](concept-compute-target.md#azure-machine-learning-compute-managed) 而言，對於訂用帳戶中的每個區域允許的核心數目與特有計算資源數目，均有預設的配額限制。 此配額與上述 VM 核心配額不同，而且這兩個資源類型之間不會共用核心限制，因為 AmlCompute 是一種受控服務，其會將資源部署在託管的代理模型中。
@@ -84,16 +80,10 @@ ms.locfileid: "87372938"
 - 管線中允許的步驟數目上限是 30,000 個
 - 在每個訂用帳戶上，已發佈管線的排程型執行數目和用於 Blob 觸發排程的 Blob 提取數目的總和上限為每月 100,000 個
 
-> [!NOTE]
-> 如果您想要上調此限制，請連絡 [Microsoft 支援服務](https://azure.microsoft.com/support/options/)。
-
 ### <a name="container-instances"></a>容器執行個體
 
 針對您在指定期間 (以每小時為範圍) 或整個訂用帳戶中可以啟動的容器執行個體數目也有限制。
-
-[!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
-
-如需配額限制的詳細資訊與最新清單，請查看[這裡](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)的全 Azure 配額文章。
+如需限制，請參閱[容器實例限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)。
 
 ### <a name="storage"></a>儲存體
 針對每個區域以及指定的訂用帳戶中的儲存體帳戶數目有限制。 預設限制為 250 個，包括標準與進階儲存體帳戶兩者。 如果您在指定區域需要超過 250 個儲存體帳戶，請透過 [Azure 支援](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)提出要求。 Azure 儲存體小組將會檢閱您的商務案例，而且可以針對指定區域核准多達 250 個儲存體帳戶。
@@ -126,7 +116,7 @@ Azure Machine Learning Compute 會與您訂用帳戶中的其他 Azure 資源配
 1. 選取訂用帳戶以檢視配額限制。 請記得篩選出您感興趣的區域。
 
 1. 您現在可以在訂用帳戶層級檢視和工作區層級檢視之間切換：
-    + **訂用帳戶檢視：** 這可讓您依據 VM 系列來查看核心配額的使用量，然後依工作區來將其展開，並依據實際的叢集名稱進一步展開內容。 此檢視可讓您快速取得特定 VM 系列的核心使用量詳細資料，以查看各工作區的分類項目，以及這每個工作區的基礎叢集細項。 此檢視中的一般慣例是 (使用量/配額)，其中使用量是目前已擴增的核心數目，而配額是資源可調整的核心數目邏輯上限。 針對每個**工作區**，配額都是工作區層級配額 (如上面所述)，代表您可以針對特定 VM 系列擴充的核心數目上限。 同樣地，針對**叢集**，配額實際上就是核心，與叢集可調整的節點數目上限相對應，如 max_nodes 屬性所定義。
+    + **訂用帳戶視圖：** 顯示 VM 系列的核心配額使用量，依工作區展開，並以實際的叢集名稱進一步擴充。 快速進入特定 VM 系列之核心使用量的詳細資料，以查看工作區的分解，以及每個工作區的基礎叢集。 此檢視中的一般慣例是 (使用量/配額)，其中使用量是目前已擴增的核心數目，而配額是資源可調整的核心數目邏輯上限。 針對每個**工作區**，配額都是工作區層級配額 (如上面所述)，代表您可以針對特定 VM 系列擴充的核心數目上限。 同樣地，針對**叢集**，配額實際上就是核心，與叢集可調整的節點數目上限相對應，如 max_nodes 屬性所定義。
 
     + **工作區檢視：** 這可讓您依據工作區來查看核心配額的使用量，然後依 VM 系列來將其展開，並依據實際的叢集名稱進一步展開內容。 此檢視可讓您快速取得特定工作區的核心使用量詳細資料，以查看各 VM 系列的分類項目，以及這每個 VM 系列的基礎叢集細項。
 
@@ -149,8 +139,4 @@ Azure Machine Learning Compute 會與您訂用帳戶中的其他 Azure 資源配
 
 ## <a name="next-steps"></a>後續步驟
 
-請透過下列文章來深入了解：
-
 + [規劃與管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)
-
-+ [如何增加您的配額](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。

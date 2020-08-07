@@ -1,5 +1,5 @@
 ---
-title: 將 ml 模型部署至 Azure App Service （預覽）
+title: '將 ml 模型部署至 Azure App Service (preview) '
 titleSuffix: Azure Machine Learning
 description: 瞭解如何使用 Azure Machine Learning，在 Azure App Service 中將模型部署至 Web 應用程式。
 services: machine-learning
@@ -10,15 +10,15 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: faa2945b27e083865acb506f30c4d79ef65f3ca0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 04ae1788dfd3050fdd2042f88a8e1829e9063ad3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317853"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851353"
 ---
-# <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>將機器學習模型部署到 Azure App Service （預覽）
+# <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>將機器學習模型部署至 Azure App Service (preview) 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 瞭解如何在 Azure App Service 中將模型從 Azure Machine Learning 部署為 web 應用程式。
@@ -68,7 +68,7 @@ ms.locfileid: "87317853"
     >
     > 另一個適用于您案例的替代方法是[批次預測](how-to-use-parallel-run-step.md)，這可在計分時提供對資料存放區的存取。
 
-    如需有關輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
+    如需輸入腳本的詳細資訊，請參閱[使用 Azure Machine Learning 部署模型](how-to-deploy-and-where.md)。
 
 * 執行專案腳本或模型所**需的相依性，例如**helper 腳本或 Python/Conda 套件
 
@@ -155,7 +155,7 @@ print(package.location)
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    在此範例中，會使用__基本__定價層（ `--sku B1` ）。
+    在此範例中，會使用 () 的__基本__定價層 `--sku B1` 。
 
     > [!IMPORTANT]
     > Azure Machine Learning 所建立的映射會使用 Linux，因此您必須使用 `--is-linux` 參數。

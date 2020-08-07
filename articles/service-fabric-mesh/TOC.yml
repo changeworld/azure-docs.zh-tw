@@ -82,11 +82,9 @@
     - name: Service Fabric Mesh CLI 參考
       href: /cli/azure/ext/mesh
     - name: Service Fabric 用戶端資源 REST API
-      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
+      href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
     - name: Service Fabric Maven CLI 參考
       href: service-fabric-mesh-reference-maven.md
-    - name: Resource Manager 範本
-      href: /azure/templates/microsoft.servicefabricmesh/allversions
 - name: 資源
   items:
     - name: 常見問題
@@ -95,7 +93,7 @@
       href: 'https://github.com/Azure-Samples/service-fabric-mesh'
     - name: Azure 藍圖
       href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

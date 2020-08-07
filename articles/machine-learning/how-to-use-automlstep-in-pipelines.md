@@ -10,20 +10,20 @@ author: lobrien
 manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 698fdf1295ec38fc7eca9a58e681d7fe13ec32fc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 3973e94c9d3add25dba0af7a6b0c0deb18b77440
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319502"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850435"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 中的 Azure Machine Learning 管線中使用自動化 ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning 的自動化 ML 功能可協助您探索高效能的模型，而不需要重新實作不免每個可能的方法。 結合 Azure Machine Learning 管線，您可以建立可部署的工作流程，快速找出最適合您資料的演算法。 本文將說明如何有效率地將資料準備步驟加入自動化 ML 步驟。 自動化 ML 可以快速找出最適合您資料的演算法，同時讓您使用管線 MLOps 和模型生命週期運算化。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
@@ -69,7 +69,7 @@ if not 'titanic_ds' in ws.datasets.keys() :
 titanic_ds = Dataset.get_by_name(ws, 'titanic_ds')
 ```
 
-程式碼會先登入**config.js**中定義的 Azure Machine Learning 工作區（如需說明，請參閱[教學課程：開始使用 Python SDK 建立您的第一個 ML 實驗](tutorial-1st-experiment-sdk-setup.md)）。 如果沒有名為「已註冊」的資料集 `'titanic_ds'` ，則會建立一個。 程式碼會從 Web 下載 CSV 資料，並使用它們來具現化， `TabularDataset` 然後向工作區註冊資料集。 最後，函式會將 `Dataset.get_by_name()` 指派 `Dataset` 給 `titanic_ds` 。 
+程式碼會先登入在 (**上config.js**中定義的 Azure Machine Learning 工作區以取得說明，請參閱[教學課程：開始使用 Python SDK 建立您的第一個 ML 實驗](tutorial-1st-experiment-sdk-setup.md)) 。 如果沒有名為「已註冊」的資料集 `'titanic_ds'` ，則會建立一個。 程式碼會從 Web 下載 CSV 資料，並使用它們來具現化， `TabularDataset` 然後向工作區註冊資料集。 最後，函式會將 `Dataset.get_by_name()` 指派 `Dataset` 給 `titanic_ds` 。 
 
 ### <a name="configure-your-storage-and-compute-target"></a>設定您的儲存體和計算目標
 
@@ -102,7 +102,7 @@ compute_target = ws.compute_targets[compute_name]
 
 資料準備和自動化 ML 步驟之間的中繼資料可以儲存在工作區的預設資料存放區中，因此我們不需要 `get_default_datastore()` 在物件上進行多次呼叫 `Workspace` 。 
 
-之後，程式碼會檢查 AML 計算目標是否 `'cpu-cluster'` 已存在。 如果不是，我們會指定我們想要以小型 CPU 為基礎的計算目標。 如果您打算使用自動化 ML 的深度學習功能（例如，具有 DNN 支援的文字特徵化），您應該選擇具有強式 GPU 支援的計算，如[GPU 優化的虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)中所述。 
+之後，程式碼會檢查 AML 計算目標是否 `'cpu-cluster'` 已存在。 如果不是，我們會指定我們想要以小型 CPU 為基礎的計算目標。 如果您打算使用自動化 ML 的深度學習功能 (例如，具有 DNN 支援的文字特徵化) 您應該選擇具有強式 GPU 支援的計算，如[GPU 優化的虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/sizes-gpu)中所述。 
 
 程式碼會封鎖直到目標布建完成，然後再列印剛建立之計算目標的一些詳細資料。 最後，會從工作區抓取已命名的計算目標，並將其指派給 `compute_target` 。 
 
@@ -133,7 +133,7 @@ else:
         pin_sdk_version=False)
 ```
 
-上述程式碼顯示兩個處理相依性的選項。 如所示，使用 `USE_CURATED_ENV = True` ，設定是以策劃環境為基礎。 策劃環境是「prebaked」，其中包含常見的相依程式庫，並可大幅加快上線的速度。 策劃環境已在[Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner)中預先建立 Docker 映射。 當您變更為時，所採用的路徑會 `USE_CURATED_ENV` `False` 顯示明確設定相依性的模式。 在該案例中，將會在資源群組內的 Azure Container Registry 中建立並註冊新的自訂 Docker 映射（請參閱[Azure 中的私用 Docker 容器登錄簡介](https://docs.microsoft.com/azure/container-registry/container-registry-intro)）。 建立和註冊此映射可能需要相當長的時間。 
+上述程式碼顯示兩個處理相依性的選項。 如所示，使用 `USE_CURATED_ENV = True` ，設定是以策劃環境為基礎。 策劃環境是「prebaked」，其中包含常見的相依程式庫，並可大幅加快上線的速度。 策劃環境已在[Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner)中預先建立 Docker 映射。 當您變更為時，所採用的路徑會 `USE_CURATED_ENV` `False` 顯示明確設定相依性的模式。 在該案例中，將會在資源群組內的 Azure Container Registry 中建立並註冊新的自訂 Docker 映射 (請參閱[Azure) 中的私用 Docker 容器登錄簡介](https://docs.microsoft.com/azure/container-registry/container-registry-intro)。 建立和註冊此映射可能需要相當長的時間。 
 
 ## <a name="prepare-data-for-automated-machine-learning"></a>準備自動化機器學習的資料
 
@@ -215,13 +215,13 @@ print(f"Wrote test to {args.output_path} and train to {args.output_path}")
 
 `prepare_`上述程式碼片段中的各種函數會修改輸入資料集中的相關資料行。 當資料變更為 Pandas 物件之後，這些函式會對其運作 `DataFrame` 。 在每個案例中，遺失的資料可能會以代表「不明」的代表性亂數據或類別資料填入。 以文字為基礎的類別資料會對應至整數。 不再需要的資料行會遭到覆寫或捨棄。 
 
-在程式碼定義資料準備函數之後，程式碼會剖析輸入引數，這是我們想要寫入資料的路徑。 （這些值將由 `PipelineData` 下一個步驟中將討論的物件決定）。程式碼會抓取已註冊的 `'titanic_cs'` `Dataset` ，將它轉換成 Pandas `DataFrame` ，並呼叫各種資料準備函數。 
+在程式碼定義資料準備函數之後，程式碼會剖析輸入引數，這是我們想要寫入資料的路徑。  (這些值將取決於 `PipelineData` 下一個步驟中將討論的物件。 ) 程式碼會抓取已註冊的 `'titanic_cs'` `Dataset` 、將它轉換成 Pandas `DataFrame` ，並呼叫各種資料準備功能。 
 
 由於 `output_path` 是完整的，因此 `os.makedirs()` 會使用函數來準備目錄結構。 此時，您可以使用 `DataFrame.to_csv()` 來寫入輸出資料，但 Parquet 檔案會更有效率。 這種效率可能與這類小型資料集無關，但使用**PyArrow**套件的和函式， `from_pandas()` 只需要 `write_table()` 比更多的按鍵 `to_csv()` 。
 
 Parquet 檔案原本就受到下列所討論的自動化 ML 步驟所支援，因此不需要特殊處理就能使用它們。 
 
-### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>撰寫資料準備管線步驟（ `PythonScriptStep` ）
+### <a name="write-the-data-preparation-pipeline-step-pythonscriptstep"></a>撰寫資料準備管線步驟 (`PythonScriptStep`) 
 
 以上所述的資料準備程式碼必須與 `PythonScripStep` 要與管線搭配使用的物件相關聯。 寫入 Parquet 資料準備輸出的路徑是由物件所產生 `PipelineData` 。 先前準備的資源（例如、 `ComputeTarget` `RunConfig` 、和） `'titanic_ds' Dataset` 會用來完成規格。
 
@@ -332,7 +332,7 @@ train_step = AutoMLStep(name='AutoML_Classification',
     outputs=[metrics_data,model_data],
     allow_reuse=True)
 ```
-此程式碼片段會顯示常用於的用法 `AutoMLConfig` 。 較流暢的引數（超參數-ish）會在個別的字典中指定，而較不可能變更的值則直接在此函式中指定 `AutoMLConfig` 。 在此情況下， `automl_settings` 指定 brief 執行：執行只會在2個反復專案或15分鐘後停止，視何者先發生。
+此程式碼片段會顯示常用於的用法 `AutoMLConfig` 。  (超參數-ish) 更流暢的引數會在個別的字典中指定，而較不可能變更的值則直接在此函式中指定 `AutoMLConfig` 。 在此情況下， `automl_settings` 指定 brief 執行：執行只會在2個反復專案或15分鐘後停止，視何者先發生。
 
 `automl_settings`字典會以 kwargs 的形式傳遞至函式 `AutoMLConfig` 。 其他參數並不複雜：
 

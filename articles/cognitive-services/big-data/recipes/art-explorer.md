@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.custom: tracking-python
-ms.openlocfilehash: e1f17cad784137af927b9ec80d07bd3be092b82d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-python
+ms.openlocfilehash: 0a94c66eb51298db226ceec5da5c86666576052a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189389"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850486"
 ---
 # <a name="recipe-intelligent-art-exploration-with-the-cognitive-services-for-big-data"></a>配方：利用適用于大型資料的認知服務進行智慧型美工探索
 
 在此範例中，我們將使用大型資料的認知服務，從符合) 的圖片 (的大都市博物館中，將智慧型注釋新增至 Open Access 集合。 如此一來，即使沒有手動注釋，我們也可以使用 Azure 搜尋服務來建立智慧型搜尋引擎。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * 您必須有電腦視覺和認知搜尋的訂用帳戶金鑰。 依照[建立認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的指示訂閱電腦視覺並取得您的金鑰。
   > [!NOTE]

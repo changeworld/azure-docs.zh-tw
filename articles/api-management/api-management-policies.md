@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理原則 | Microsoft Docs
-description: 了解可在「Azure API 管理」中使用的原則。
+description: 了解可在「Azure API 管理」中使用的原則。 原則可讓發行者透過設定來變更 API 行為。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 069fc95d226e4417bb650b6092a7d00953f69e8d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4cdd9b7ace107d09ec14b23e02c56d2b13f264e6
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252839"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905664"
 ---
 # <a name="api-management-policies"></a>API 管理原則
 本節提供下列「API 管理」原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](api-management-howto-policies.md)。  

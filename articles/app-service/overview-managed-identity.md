@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: tracking-python
-ms.openlocfilehash: f3ec80b5d71bbdbf0f1b89606859dcc734d037e5
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: devx-track-python
+ms.openlocfilehash: a33a739014b33303389b4f880da3687db852633e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542207"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850265"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用 App Service 和 Azure Functions 的受控身分識別
 
@@ -327,7 +327,7 @@ principalId 是身分識別的唯一識別碼，而此身分識別用於 Azure A
 > | 參數名稱    | 在     | 描述                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | resource          | 查詢  | 資源的 Azure AD 資源 URI，也就是要取得權杖的目標資源。 這可能是其中一個[支援 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)，或任何其他資源 URI。    |
-> | api-version       | 查詢  | 要使用的權杖 API 版本。 請使用 "2019-08-01" 或更新版本（除非使用目前僅提供「2017-09-01」的 Linux 使用量，請參閱上面的注意事項）。                                                                                                                                                                                                                                                                 |
+> | api-version       | 查詢  | 要使用的權杖 API 版本。 請使用 "2019-08-01" 或更新版本 (除非使用 Linux 使用量（目前僅提供 "2017-09-01"），請參閱上述) 的附注。                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY-HEADER | 頁首 | IDENTITY_HEADER 環境變數的值。 此標頭用來協助減輕伺服器端要求偽造 (SSRF) 攻擊。                                                                                                                                                                                                    |
 > | client_id         | 查詢  | (選擇性) 要使用的使用者指派身分識別，其用戶端識別碼。 不能用於包含 `principal_id`、`mi_res_id` 或 `object_id` 的要求。 如果省略所有識別碼參數 (`client_id`、`principal_id`、`object_id` 和 `mi_res_id`)，則會使用系統指派的身分識別。                                             |
 > | principal_id      | 查詢  | (選擇性) 要使用的使用者指派身分識別，其主體識別碼。 `object_id` 是可代替使用的別名。 不能用於包含 client_id、mi_res_id 或 object_id 的要求。 如果省略所有識別碼參數 (`client_id`、`principal_id`、`object_id` 和 `mi_res_id`)，則會使用系統指派的身分識別。 |
@@ -338,7 +338,7 @@ principalId 是身分識別的唯一識別碼，而此身分識別用於 Azure A
 
 成功的 200 OK 回應包括含以下屬性的 JSON 本文：
 
-> | 屬性名稱 | 說明                                                                                                                                                                                                                                        |
+> | 屬性名稱 | 描述                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | 所要求的存取權杖。 呼叫端 Web 服務可以使用此權杖來向接收端 Web 服務進行驗證。                                                                                                                               |
 > | client_id     | 所使用身分識別的用戶端識別碼。                                                                                                                                                                                                       |
@@ -510,7 +510,7 @@ $accessToken = $tokenResponse.access_token
 }
 ```
 
-若要移除 Azure PowerShell 中的所有身分識別（僅 Azure Functions）：
+若要移除 Azure PowerShell 中的所有身分識別 (僅 Azure Functions) ：
 
 ```azurepowershell-interactive
 # Update an existing function app to have IdentityType "None".

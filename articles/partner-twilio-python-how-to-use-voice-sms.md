@@ -12,13 +12,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
-ms.custom: tracking-python
-ms.openlocfilehash: 3a5fa4f07a0df64e5271ec1255112e97cf8846a6
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-python
+ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170712"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850146"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>如何在 Python 中透過 Twilio 使用語音和簡訊功能
 本指南示範如何在 Azure 上透過 Twilio API 服務執行常見的程式設計工作。 涵蓋的案例包括打電話和傳送簡訊 (SMS)。 如需有關在應用程式中 Twilio 及使用語音和 SMS 的詳細資訊，請參閱[後續步驟](#NextSteps)一節。

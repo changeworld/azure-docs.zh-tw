@@ -6,14 +6,18 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
-ms.openlocfilehash: 5561dfee3ede72f9cd28adbd47caf2db4e634360
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073593"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852101"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>在 Azure 監視器中呼叫具有傳統計量警示的 Webhook
+
+> [!WARNING]
+> 本文說明如何使用較舊的傳統計量警示。 Azure 監視器現在支援[較新的近乎即時計量警示和新的警示體驗](./alerts-overview.md)。 傳統警示已[淘汰](./monitoring-classic-retirement.md)，但仍受限於僅適用于尚未支援新警示的資源。
+>
 
 您可以使用 Webhook 將 Azure 警示通知路由到其他系統以進行後處理或自訂動作。 您可以針對警示使用 Webhook，以將警示路由到會傳送簡訊、記錄錯誤、透過聊天或傳訊服務通知小組，或進行其他許多動作的服務。 
 

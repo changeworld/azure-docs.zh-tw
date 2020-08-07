@@ -1,6 +1,6 @@
 ---
 title: 什麼是 Azure Machine Learning 管線
-description: 瞭解機器學習（ML）管線如何協助您建立、優化及管理機器學習工作流程。
+description: 瞭解機器學習服務 (ML) 管線如何協助您建立、優化及管理機器學習工作流程。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 7d34b54349a681061f80798a19ce65d2266f589d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 441575a33e7c3d54de7b25c06f7a839805f8ac1b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559476"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875280"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>什麼是 Azure Machine Learning 管線？
 
@@ -40,11 +40,11 @@ ms.locfileid: "84559476"
 
 Azure 雲端提供數個其他管線，各有不同的用途。 下表列出不同的管線和它們的用途：
 
-| 狀況 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
+| 案例 | 主要角色 | Azure 供應專案 | OSS 供應專案 | 標準管道 | 優勢 | 
 | -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
-| 模型協調流程（機器學習服務） | 資料科學家 | Azure Machine Learning 管線 | Kubeflow 管線 | 資料 > 模型 | 散發，快取，程式碼優先，重複使用 | 
-| 資料協調流程（資料準備） | 資料工程師 | [Azure Data Factory 管線](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | 資料 > 資料 | 強型別移動。 以資料為中心的活動。 |
-| 程式碼 & 應用程式協調流程（CI/CD） | 應用程式開發人員/Ops | [Azure DevOps 管線](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + 模型-> 應用程式/服務 | 最開放且彈性的活動支援、核准佇列、具有管制的階段 | 
+|  (機器學習服務的模型協調流程)  | 資料科學家 | Azure Machine Learning 管線 | Kubeflow 管線 | 資料 > 模型 | 散發，快取，程式碼優先，重複使用 | 
+| 資料協調 (資料準備)  | 資料工程師 | [Azure Data Factory 管線](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | 資料 > 資料 | 強型別移動。 以資料為中心的活動。 |
+| & app 協調流程的程式碼 (CI/CD)  | 應用程式開發人員/Ops | [Azure DevOps 管線](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + 模型-> 應用程式/服務 | 最開放且彈性的活動支援、核准佇列、具有管制的階段 | 
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Azure ML 管線有哪些功能？
 
@@ -61,7 +61,7 @@ Azure Machine Learning 管線是一項完整機器學習工作的獨立可執行
 
 使用 Azure Machine Learning，您可以針對管線中的每個步驟使用各種工具組和架構，例如 PyTorch 或 TensorFlow。 Azure 會協調您使用的各種[計算目標](concept-azure-machine-learning-architecture.md)，因此您的中繼資料可以與下游計算目標共用。
 
-您可以直接在 Azure 入口網站或您的[工作區登陸頁面（預覽）](https://ml.azure.com)中[追蹤管線實驗的計量](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)。 發佈管線之後，您可以設定 REST 端點，讓您可以從任何平臺或堆疊重新執行管線。
+您可以直接在 Azure 入口網站或[ (預覽) 的工作區登陸頁面](https://ml.azure.com)中[追蹤管線實驗的計量](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)。 發佈管線之後，您可以設定 REST 端點，讓您可以從任何平臺或堆疊重新執行管線。
 
 簡單地說，機器學習服務週期的所有複雜工作都可以透過管線協助。 其他 Azure 管線技術有自己的優勢。 使用資料和[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)擅長的[Azure Data Factory 管線](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities)，是持續整合和部署的正確工具。 但是，如果您的焦點是機器學習服務，Azure Machine Learning 管線可能是您工作流程需求的最佳選擇。 
 
@@ -71,11 +71,11 @@ Azure ML 管線會以已排序的步驟順序來執行完整的邏輯工作流�
 
 在 ML 專案的早期階段中，您可以使用單一 Jupyter 筆記本或 Python 腳本來執行 Azure 工作區和資源設定、資料準備、執行設定、訓練和驗證的所有工作。 但是如同函式和類別很快就會成為單一命令式程式碼的偏好，ML 工作流程很快就會成為整合型筆記本或腳本。 
 
-藉由模組化 ML 工作，管線可支援元件應該「執行（僅）一件事」的電腦科學。 在小組中進行程式設計時，模組化對於專案的成功非常重要，但即使單獨運作，即使是小型 ML 專案也牽涉到不同的工作，每個都有很大的複雜度。 作業包括：工作區設定和資料存取、資料準備、模型定義和設定，以及部署。 當一或多個工作的輸出會形成另一個工作的輸入時，任何一項工作的確切實作為詳細資料，就是下一個工作中的最佳、不相關的分散注意力。 在最糟的情況下，一個工作的計算狀態可能會造成另一個工作的錯誤。 
+藉由模組化 ML 工作，管線可支援電腦科學，而元件應該「執行 (只能) 一件事」。 在小組中進行程式設計時，模組化對於專案的成功非常重要，但即使單獨運作，即使是小型 ML 專案也牽涉到不同的工作，每個都有很大的複雜度。 作業包括：工作區設定和資料存取、資料準備、模型定義和設定，以及部署。 當一或多個工作的輸出會形成另一個工作的輸入時，任何一項工作的確切實作為詳細資料，就是下一個工作中的最佳、不相關的分散注意力。 在最糟的情況下，一個工作的計算狀態可能會造成另一個工作的錯誤。 
 
 ### <a name="analyzing-dependencies"></a>分析相依性
 
-許多程式設計生態系統都有工具可協調資源、程式庫或編譯相依性。 一般而言，這些工具會使用檔案時間戳記來計算相依性。 當檔案變更時，只會更新（下載、重新編譯或封裝）檔案及其相依性。 Azure ML 管線會大幅擴充此概念。 如同傳統的組建工具，管線會計算步驟之間的相依性，而且只會執行必要的重新計算。 
+許多程式設計生態系統都有工具可協調資源、程式庫或編譯相依性。 一般而言，這些工具會使用檔案時間戳記來計算相依性。 當檔案變更時，只會更新該檔案及其相依項， (下載、重新編譯或封裝) 。 Azure ML 管線會大幅擴充此概念。 如同傳統的組建工具，管線會計算步驟之間的相依性，而且只會執行必要的重新計算。 
 
 不過，Azure ML 管線中的相依性分析比簡單的時間戳記更為複雜。 每個步驟都可以在不同的硬體和軟體環境中執行。 資料準備可能是耗時的程式，但不需要在具有強大 Gpu 的硬體上執行，某些步驟可能需要 OS 特定軟體，您可能會想要使用分散式訓練等等。 雖然優化資源的節省成本可能很重要，但手動操控硬體和軟體資源中的各種不同變化可能會很困難。 更難執行所有動作，而不會對您在步驟之間傳輸的資料造成錯誤。 
 
@@ -93,12 +93,12 @@ Azure ML 管線會以已排序的步驟順序來執行完整的邏輯工作流�
 
 + 針對每個步驟，服務會計算的需求：
     + 硬體計算資源
-    + OS 資源（Docker 映射）
-    + 軟體資源（Conda/virtualenv 相依性）
+    +  (Docker 映射 (s 的 OS 資源) # A3
+    + 軟體資源 (Conda/virtualenv 相依性) 
     + 資料輸入 
 + 服務會判斷步驟之間的相依性，產生動態執行圖形
 + 執行圖形中的每個節點執行時：
-    + 此服務會設定必要的硬體和軟體環境（可能重複使用現有的資源）
+    + 服務會設定必要的硬體和軟體環境， (可能會重複使用現有的資源) 
     + 此步驟會執行，並將記錄和監視資訊提供給其包含的 `Experiment` 物件
     + 當步驟完成時，會將其輸出準備做為下一個步驟和/或寫入儲存體的輸入
     + 不再需要的資源已完成和卸離
@@ -125,7 +125,7 @@ Azure ML 管線會與 Azure Machine Learning 工作區相關聯，而管線步�
 
 管線內的步驟可能會相依于其他步驟。 Azure ML 管線服務會執行分析和協調這些相依性的工作。 產生的「執行圖形」中的節點是處理步驟。 每個步驟都可能牽涉到建立或重複使用硬體和軟體的特定組合，重複使用快取的結果等等。 此執行圖形的服務協調流程和優化，可以大幅加速 ML 階段並降低成本。 
 
-因為步驟會獨立執行，所以必須在外部定義物件，以保存在步驟之間流動的輸入和輸出資料。 這是[DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)和[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)物件的角色。 這些資料物件會與封裝其儲存體設定[的資料存放區物件相關](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py)聯。 `PipelineStep`基類一律會使用 `name` 字串、清單 `inputs` 和清單來建立 `outputs` 。 通常，它也會有一份清單 `arguments` ，而且通常會有一份清單 `resource_inputs` 。 子類別通常也會有額外的引數（例如， `PythonScriptStep` 需要執行腳本的檔案名和路徑）。 
+因為步驟會獨立執行，所以必須在外部定義物件，以保存在步驟之間流動的輸入和輸出資料。 這是[DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)和[PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)物件的角色。 這些資料物件會與封裝其儲存體設定[的資料存放區物件相關](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py)聯。 `PipelineStep`基類一律會使用 `name` 字串、清單 `inputs` 和清單來建立 `outputs` 。 通常，它也會有一份清單 `arguments` ，而且通常會有一份清單 `resource_inputs` 。 子類別通常也會有額外的引數 (例如， `PythonScriptStep` 需要腳本的檔案名和路徑，才能) 執行。 
 
 執行圖形是非迴圈的，但是管線可以按照週期性排程執行，而且可以執行可將狀態資訊寫入檔案系統的 Python 腳本，讓您能夠建立複雜的設定檔。 如果您設計管線，讓某些步驟可以平行或非同步方式執行，Azure Machine Learning 會以透明的方式處理展開與傳出的相依性分析和協調。 您通常不需要擔心執行圖形的詳細資料，但可透過 [[管線]](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes)屬性取得。 
 
@@ -164,7 +164,7 @@ pipeline_run.wait_for_completion()
 
 此程式碼片段的開頭為一般 Azure Machine Learning 物件、a、 `Workspace` `Datastore` 、 [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py)和 `Experiment` 。 然後，程式碼會建立物件來保存 `input_data` 和 `output_data` 。 陣列 `steps` 會保存單一專案， `PythonScriptStep` 這會使用資料物件並在上執行 `compute_target` 。 然後，程式碼會具現化 `Pipeline` 物件本身，傳入工作區和步驟陣列。 對的呼叫會 `experiment.submit(pipeline)` 開始執行 AZURE ML 管線。 對的呼叫 `wait_for_completion()` 會封鎖，直到管線完成為止。 
 
-若要深入瞭解如何將您的管線連線到您的資料，請參閱[Azure Machine Learning 中的資料存取和在](concept-data.md) [ML 管線步驟之間移動資料的文章（Python）](how-to-move-data-in-out-of-pipelines.md)。 
+若要深入瞭解如何將管線連線至您的資料，請參閱[Azure Machine Learning 中的資料存取](concept-data.md)和將[資料移入和移出 ML 管線步驟 (Python) ](how-to-move-data-in-out-of-pipelines.md)。 
 
 ## <a name="best-practices-when-using-pipelines"></a>使用管線時的最佳作法
 
@@ -192,7 +192,7 @@ pipeline_run.wait_for_completion()
 
 針對您的機器學習工作流程使用管線的主要優點如下：
 
-|主要優點|Description|
+|主要優點|描述|
 |:-------:|-----------|
 |**自動&nbsp;執行**|以可靠且自動的方式，以平行或依序執行排程步驟。 資料準備和模型化可以過去數天或數周，而管線可讓您在進程執行時，將焦點放在其他工作上。 |
 |**異構計算**|使用多個在異類和可擴充的計算資源和儲存位置之間可靠地協調的管線。 在不同的計算目標（例如 HDInsight、GPU 資料科學 Vm 和 Databricks）上執行個別的管線步驟，以有效率地使用可用的計算資源。|
@@ -207,7 +207,7 @@ pipeline_run.wait_for_completion()
 
 `DataTransferStep`可讓您輕鬆地在資料來源與接收之間移動資料。 以手動方式執行此傳輸的程式碼很簡單，但卻是重複的。 相反地，您可以只 `DataTransferStep` 使用名稱、資料來源的參考和資料接收，以及計算目標來建立。 [具有 DataTransferStep 的筆記本 Azure Machine Learning 管線](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb)會示範這種彈性。
 
-## <a name="modules"></a>單元
+## <a name="modules"></a>模組
 
 雖然管線步驟允許重複使用上一次執行的結果，但在許多情況下，此步驟的結構會假設必須在本機提供必要的腳本和相依檔案。 如果資料科學家想要以現有的程式碼為基礎，腳本和相依性通常必須從個別的存放庫複製。
 

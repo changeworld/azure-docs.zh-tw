@@ -1,6 +1,6 @@
 ---
 title: 適用于 blob 的經常性、非經常性和封存存取層-Azure 儲存體
-description: 閱讀 Azure Blob 儲存體的經常性、非經常性和封存存取層。 審查支援階層式儲存體帳戶。 比較區塊的 blog 儲存選項。
+description: 閱讀 Azure Blob 儲存體的經常性、非經常性和封存存取層。 審查支援階層式儲存體帳戶。 比較區塊 blob 儲存體選項。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/23/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 17df78f846d8422c0200ce5fc75b4722d21d35df
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a46597087a3eee03f7c5b8d1c9746f968ea1980d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828267"
+ms.locfileid: "87849721"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 儲存體︰經常性存取、非經常性存取和封存存取層
 
@@ -238,7 +238,7 @@ GPv1 與 GPv2 帳戶之間的價格結構不同，客戶在決定使用 GPv2 帳
 
 **我可以將我的預設帳戶存取層設定為封存嗎？**
 
-否。 只有經常性存取和非經常性存取層可以設定為預設帳戶存取層。 封存只能設定於物件層級。 在 blob 上傳時，不論預設帳戶層為何，您都可以將選擇的存取層指定為經常性、非經常性或封存。 這項功能可讓您直接將資料寫入封存層，以在您于 blob 儲存體中建立資料的時間，實現節省成本。
+不可以。 只有經常性存取和非經常性存取層可以設定為預設帳戶存取層。 封存只能設定於物件層級。 在 blob 上傳時，不論預設帳戶層為何，您都可以將選擇的存取層指定為經常性、非經常性或封存。 這項功能可讓您直接將資料寫入封存層，以在您于 blob 儲存體中建立資料的時間，實現節省成本。
 
 **在哪些區域中可以使用經常性、非經常性和封存存取層？**
 

@@ -63,6 +63,8 @@
           href: security-center-policy-definitions.md
         - name: 使用增強安全性的建議
           href: security-center-using-recommendations.md
+        - name: 安全性基準
+          href: security-baseline.md
     - name: 威脅防護和安全性警示
       items:
         - name: 資訊安全中心內的威脅防護概觀

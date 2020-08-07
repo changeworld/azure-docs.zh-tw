@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/20/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 072beb4f6bd8f823b150a6e81f4308bdd6b29402
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500652"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852237"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK v4 for Core (SQL) API：版本資訊與資源
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ ms.locfileid: "87500652"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 資源提供者](/rest/api/cosmos-db-resource-provider/)
@@ -46,15 +48,17 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 > [Azure Cosmos DB 的研討會和實驗室](https://aka.ms/cosmosworkshop)是了解如何使用 Azure Cosmos DB Java SDK v4 的另一個絕佳資源！
 >
 
-| |  |
+## <a name="helpful-content"></a>有用的內容
+
+| 內容 | 連結 |
 |---|---|
-| **SDK 下載** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
+|**SDK 下載**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**API 文件** | [Java API 參考文件](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
 |**參與 SDK** | [GitHub 上的 Azure SDK for Java 中央存放庫](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
-|**開始使用** | [快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB SQL API 資料](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [使用快速入門程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
-|**基本程式碼範例** | [Azure Cosmos DB：SQL API 的 JAVA 範例](sql-api-java-sdk-samples.md)  ·[使用範例程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
-|**具有變更摘要的主控台應用程式**| [變更摘要 - Java SDK v4 範例](create-sql-api-java-changefeed.md) · [使用範例程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
-|**Web 應用程式範例**| [使用 Java SDK v4 建立 Web 應用程式](sql-api-java-application.md) · [使用範例程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
+|**開始使用** | [快速入門：建置 JAVA 應用程式來管理 Azure Cosmos DB SQL API 資料](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [含有快速入門程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**基本程式碼範例** | [Azure Cosmos DB：適用於 SQL API 的 Java 範例](sql-api-java-sdk-samples.md) <br> [包含範例程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
+|**具有變更摘要的主控台應用程式**| [變更摘要-JAVA SDK v4 範例](create-sql-api-java-changefeed.md) <br> [包含範例程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
+|**Web 應用程式範例**| [使用 JAVA SDK v4 建立 web 應用程式](sql-api-java-application.md) <br> [包含範例程式碼的 GitHub 存放庫](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
 | **效能秘訣**| [Java SDK v4 的效能秘訣](performance-tips-java-sdk-v4-sql.md)| 
 | **疑難排解** | [針對 Java SDK v4 進行疑難排解](troubleshoot-java-sdk-v4-sql.md) |
 | **從舊版 SDK 遷移至 v4** | [遷移至 JAVA V4 SDK](migrate-java-v4-sdk.md) |
@@ -63,9 +67,9 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 
 ## <a name="release-history"></a>版本歷程記錄
 
-### <a name="440-beta1-unreleased"></a>4.4.0-Beta 1 （建置）
+### <a name="440-beta1-unreleased"></a>4.4.0-搶鮮版（Beta） 1 (建置) 
 
-### <a name="430-2020-07-29"></a>4.3.0 （2020-07-29）
+### <a name="430-2020-07-29"></a>4.3.0 (2020-07-29) 
 #### <a name="new-features"></a>新功能
 * 已將 reactor 核心程式庫版本更新為 `3.3.8.RELEASE` 。 
 * 已將 reactor-netty 程式庫版本更新為 `0.9.10.RELEASE` 。 
@@ -85,7 +89,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 * 已修正適用于點作業的適當 JSON 格式的診斷字串。
 * 已修正運算子的問題， `.single()` 導致 reactor 鏈在找不到例外狀況時出現。 
 
-### <a name="420-2020-07-14"></a>4.2.0 （2020-07-14）
+### <a name="420-2020-07-14"></a>4.2.0 (2020-07-14) 
 #### <a name="new-features"></a>新功能
 * 已將腳本記錄啟用的 API 新增至 `CosmosStoredProcedureRequestOptions` 。
 * 已 `DirectConnectionConfig` 將預設值更新 `idleEndpointTimeout` 為1h，並預設 `connectTimeout` 為5秒。
@@ -97,7 +101,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 * 已修正 order by 查詢擲回發生 nullpointerexception 的問題。
 * 已修正在直接模式中處理已取消要求而造成呼叫 reactor 的問題 `onErrorDropped` 。 
 
-### <a name="410-2020-06-25"></a>4.1.0 （2020-06-25）
+### <a name="410-2020-06-25"></a>4.1.0 (2020-06-25) 
 #### <a name="new-features"></a>新功能
 * 已新增查詢的支援 `GROUP BY` 。
 * 在 DirectConnectionConfig 中，將 maxConnectionsPerEndpoint 的預設值增加為130。
@@ -107,7 +111,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 * 已修正值查詢針對嵌套物件傳回 null 值的問題。
 * 已修正 RntbdClientChannelPool 中要求管理員的 null 指標例外狀況。
 
-### <a name="401-2020-06-10"></a>4.0.1 （2020-06-10）
+### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10) 
 #### <a name="new-features"></a>新功能
 * 已將 `QueryRequestOptions` 重新命名為 `CosmosQueryRequestOptions`。
 * 已更新 `ChangeFeedProcessorBuilder` 為 builder 模式。
@@ -174,5 +178,5 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) 會將非同步 API 與同步 API 結
 ## <a name="faq"></a>常見問題集
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="next-steps"></a>後續步驟
 若要深入了解 Cosmos DB，請參閱 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) 服務頁面。

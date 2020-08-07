@@ -2,22 +2,22 @@
 title: 在 Azure AD Azure API for FHIR 中註冊服務應用程式
 description: 瞭解如何在 Azure Active Directory 中註冊服務用戶端應用程式，以用來驗證和取得權杖。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 83514ea13ca51e6980a1b4b60d4555974db5a240
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: 34eec3ad0d2fc193744898b6f08cbe50c261c945
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871078"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853018"
 ---
 # <a name="register-a-service-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中註冊服務用戶端應用程式
 
-在本文中，您將瞭解如何在 Azure Active Directory 中註冊服務用戶端應用程式。 用戶端應用程式註冊是應用程式的 Azure Active Directory 標記法，可用於驗證和取得權杖。 服務用戶端可供應用程式用來取得存取權杖，而不需要使用者進行互動式驗證。 取得存取權杖時，它會有特定的應用程式許可權，並使用應用程式密碼（密碼）。
+在本文中，您將瞭解如何在 Azure Active Directory 中註冊服務用戶端應用程式。 用戶端應用程式註冊是應用程式的 Azure Active Directory 標記法，可用於驗證和取得權杖。 服務用戶端可供應用程式用來取得存取權杖，而不需要使用者進行互動式驗證。 在取得存取權杖時，它會有特定的應用程式許可權，並使用應用程式密碼 (密碼) 。
 
 請遵循下列步驟來建立新的服務用戶端。
 
@@ -55,7 +55,7 @@ ms.locfileid: "84871078"
 
 ## <a name="application-secret"></a>應用程式祕密
 
-服務用戶端需要秘密（密碼），您在取得權杖時將會用到它。
+服務用戶端需要秘密 (密碼) ，在您取得權杖時將會用到。
 
 1. 按一下 [**憑證 &amp; 密碼**]
 

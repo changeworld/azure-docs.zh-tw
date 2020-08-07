@@ -1,7 +1,7 @@
 ---
 title: Azure API 管理開發人員入口網站的總覽
 titleSuffix: Azure API Management
-description: 深入瞭解 API 管理中的開發人員入口網站。
+description: 深入瞭解 API 管理中的開發人員入口網站。 開發人員入口網站可讓取用者找到您的 Api。
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373142"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852152"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理開發人員入口網站概觀
 
@@ -31,7 +31,7 @@ ms.locfileid: "87373142"
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 > [!NOTE]
-> <a name="migrate-from-legacy"></a>新的開發人員入口網站與舊版開發人員入口網站不相容，因此無法進行自動化遷移。 您必須手動重新建立內容（頁面、文字、媒體檔案），並自訂新入口網站的外觀。 如需指引，請參閱[開發人員入口網站教學](api-management-howto-developer-portal-customize.md)課程。
+> <a name="migrate-from-legacy"></a>新的開發人員入口網站與舊版開發人員入口網站不相容，因此無法進行自動化遷移。 您必須手動重新建立 (頁面、文字、媒體檔案) 的內容，並自訂新入口網站的外觀。 如需指引，請參閱[開發人員入口網站教學](api-management-howto-developer-portal-customize.md)課程。
 
 ## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a>受控和自我裝載版本
 
@@ -65,7 +65,7 @@ ms.locfileid: "87373142"
 
 *Api 管理內容*包括 Api、作業、產品、訂用帳戶等實體。
 
-入口網站是以[Paperbits 架構](https://paperbits.io/)的調整分支為基礎。 原始的 Paperbits 功能已擴充，可提供 API 管理特定的 widget （例如 Api 清單、產品清單），以及用於儲存和抓取內容的 API 管理服務連接器。
+入口網站是以[Paperbits 架構](https://paperbits.io/)的調整分支為基礎。 原始的 Paperbits 功能已擴充，以提供 API 管理特定 widget (例如，Api 清單、) 的產品清單，以及用來儲存和抓取內容的 API 管理服務連接器。
 
 ## <a name="frequently-asked-questions"></a><a name="faq"></a> 常見問題集
 
@@ -135,7 +135,7 @@ ms.locfileid: "87373142"
 
 ### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>我已新增身分識別提供者，但在入口網站中看不到它
 
-設定身分識別提供者（例如 AAD、AAD B2C）之後，您必須重新[發佈入口網站](api-management-howto-developer-portal-customize.md#publish)，變更才會生效。
+設定身分識別提供者 (例如 AAD、AAD B2C) ，您必須重新[發佈入口網站](api-management-howto-developer-portal-customize.md#publish)，變更才會生效。
 
 ### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>我已設定委派，但入口網站並未使用它
 
@@ -143,11 +143,11 @@ ms.locfileid: "87373142"
 
 ### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>我的其他 API 管理設定變更尚未在開發人員入口網站中傳播
 
-大部分的設定變更（例如，VNet、登入和產品條款）都需要重新[發佈入口網站](api-management-howto-developer-portal-customize.md#publish)。
+大部分的設定變更 (例如，VNet、登入和產品條款) 需要重新[發佈入口網站](api-management-howto-developer-portal-customize.md#publish)。
 
 ### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a>我在使用互動式主控台時遇到 CORS 錯誤
 
-互動式主控台會從瀏覽器提出用戶端 API 要求。 藉由在您的 API 上新增[cors 原則](api-management-cross-domain-policies.md#CORS)來解決 CORS 問題。
+互動式主控台會從瀏覽器提出用戶端 API 要求。 藉由在您的 API (s) 上新增[cors 原則](api-management-cross-domain-policies.md#CORS)來解決 CORS 問題。
 
 您可以在 Azure 入口網站的 API 管理服務的**入口網站 [總覽**] 區段中，檢查 CORS 原則的狀態。 警告方塊指出不存在或設定錯誤的原則。
 
@@ -164,7 +164,7 @@ ms.locfileid: "87373142"
 
 > [!NOTE]
 > 
-> 如果您在產品範圍中套用 CORS 原則，而不是在 API 範圍內套用，而您的 API 會透過標頭使用訂用帳戶金鑰驗證，則您的主控台將無法使用。
+> 如果您在產品範圍中套用 CORS 原則，而不是 API (s) 範圍，而您的 API 透過標頭使用訂用帳戶金鑰驗證，則您的主控台將無法使用。
 >
 > 瀏覽器會自動發出選項 HTTP 要求，其中未包含含有訂用帳戶金鑰的標頭。 由於遺漏了訂用帳戶金鑰，因此 API 管理無法將選項呼叫與產品產生關聯，因此無法套用 CORS 原則。
 >
@@ -172,9 +172,9 @@ ms.locfileid: "87373142"
 
 ### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>編輯開發人員入口網站需要哪些許可權？
 
-如果您 `Oops. Something went wrong. Please try again later.` 在系統管理模式中開啟入口網站時看到錯誤，您可能缺少必要的許可權（RBAC）。
+如果您 `Oops. Something went wrong. Please try again later.` 在系統管理模式中開啟入口網站時看到錯誤，您可能缺少 (RBAC) 所需的許可權。
 
-舊版入口網站需要 `Microsoft.ApiManagement/service/getssotoken/action` 服務範圍（）的許可權 `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>` ，以允許使用者系統管理員存取入口網站。 新的入口網站需要範圍的許可權 `Microsoft.ApiManagement/service/users/token/action` `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` 。
+舊版入口網站需要 `Microsoft.ApiManagement/service/getssotoken/action` 服務範圍的許可權 (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) ，以允許使用者系統管理員存取入口網站。 新的入口網站需要範圍的許可權 `Microsoft.ApiManagement/service/users/token/action` `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` 。
 
 您可以使用下列 PowerShell 腳本來建立具有必要許可權的角色。 請記得變更 `<subscription-id>` 參數。 
 
@@ -194,7 +194,7 @@ $customRole.AssignableScopes.Add('/subscriptions/<subscription-id>')
 New-AzRoleDefinition -Role $customRole 
 ```
  
-角色建立之後，就可以從 Azure 入口網站的 [**存取控制（IAM）** ] 區段中，授與給任何使用者。 將此角色指派給使用者，將會在服務範圍指派許可權。 使用者將能夠代表服務中的*任何*使用者產生 SAS 權杖。 此角色至少須指派給服務的系統管理員。 下列 PowerShell 命令示範如何將角色指派給 `user1` 位於最低範圍的使用者，以避免將不必要的許可權授與使用者： 
+建立角色之後，您可以從 Azure 入口網站中的**存取控制 (IAM) **區段，將其授與給任何使用者。 將此角色指派給使用者，將會在服務範圍指派許可權。 使用者將能夠代表服務中的*任何*使用者產生 SAS 權杖。 此角色至少須指派給服務的系統管理員。 下列 PowerShell 命令示範如何將角色指派給 `user1` 位於最低範圍的使用者，以避免將不必要的許可權授與使用者： 
 
 ```powershell
 New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 

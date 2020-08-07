@@ -5,18 +5,18 @@ description: Ubuntu 資料科學虛擬機器中包含的工具詳細資料
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.custom: tracking-python
+ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 247840fe4719dc83be8048826ac4defc76d7ef9d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955534"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852220"
 ---
-# <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>參考： Ubuntu （Linux）資料科學虛擬機器
+# <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>參考： Ubuntu (Linux) 資料科學虛擬機器
 
 如需 Ubuntu 資料科學虛擬機器上可用的工具清單，請參閱下文。 
 
@@ -240,7 +240,7 @@ VM 上安裝了下列 Azure 工具：
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Azure Machine Learning 是完全受控的雲端服務，讓您能夠建置、部署及共用預測性分析解決方案。 您可以在 Azure Machine Learning studio （預覽）中建立您的實驗和模型。 您可以瀏覽 [Microsoft Azure Machine Learning](https://ml.azure.com)，從資料科學虛擬機器上的網頁瀏覽器加以存取。
+Azure Machine Learning 是完全受控的雲端服務，讓您能夠建置、部署及共用預測性分析解決方案。 您可以在 Azure Machine Learning studio (preview) 中建立您的實驗和模型。 您可以瀏覽 [Microsoft Azure Machine Learning](https://ml.azure.com)，從資料科學虛擬機器上的網頁瀏覽器加以存取。
 
 登入 Azure Machine Learning studio 之後，您可以使用實驗畫布來建立機器學習演算法的邏輯流程。 您也可以存取裝載于 Azure Machine Learning 的 Jupyter 筆記本，並可順暢地與 Azure Machine Learning studio 中的實驗搭配使用。 
 
@@ -255,7 +255,7 @@ Azure Machine Learning 是完全受控的雲端服務，讓您能夠建置、部
 
 ## <a name="machine-learning-tools"></a>機器學習工具
 
-VM 隨附已預先編譯且預先安裝在本機上的機器學習工具和演算法。 這些包括：
+VM 隨附已預先編譯且預先安裝在本機上的機器學習工具和演算法。 其中包括：
 
 * **Vowpal Wabbit**：快速線上學習演算法。
 * **xgboost**：提供最佳化推進式決策樹演算法的工具。
@@ -341,7 +341,7 @@ rattle()
 1. 選取 [評估]**** 索引標籤。
 1. 選取 [風險]**** 選項，然後選取 [執行]**** 以顯示兩個 [風險 (累積)]**** 效能繪圖。
 1. 選取 [記錄]**** 索引標籤，以顯示針對先前的作業產生的 R 程式碼。
-   （由於目前的 Rattle 版本中有 bug，因此您必須在 [ **#** 將**此記錄檔匯出**到記錄檔] 的前面插入一個字元。）
+    (在目前版本的 Rattle 中，因為有 bug，所以您必須在 [ **#** 將**此記錄檔匯出**到記錄檔] 的前面插入一個字元。 ) 
 1. 選取 [匯出]**** 按鈕，將名為 weather_script.R** 的 R 指令檔儲存到主資料夾。
 
 您可以結束 Rattle 和 R。現在，您可以修改產生的 R 指令碼。 或者，您可以照原樣使用，並且隨時執行，以便重複執行在 Rattle UI 中完成的所有動作。 這是特別適合 R 初學者的方法，他們將可在簡單的圖形化介面中快速進行分析和機器學習，同時自動產生 R 程式碼來修改或學習。
