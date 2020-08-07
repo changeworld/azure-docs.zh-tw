@@ -1,18 +1,18 @@
 ---
 title: Azure App Service 的保留折扣
-description: 了解保留折扣如何套用至 Azure App Service 隔離式方案戳記。
+description: 了解保留折扣如何套用至 Azure App Service 隔離式方案戳記。 折扣會自動套用至區域中的戳記費用。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 97a0b63200951a30d1b5576fddbb5aa044a91a62
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a4229d60a31d61caf050dabf632c8718ef3c9f3
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200328"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460332"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>保留折扣如何套用至 Azure App Service 隔離式方案戳記
 
@@ -32,7 +32,7 @@ App Service 隔離式方案戳記費用折扣會套用至以小時為單位而�
 
 因此，戳記計量可能會在戳記的生命週期內，於 Windows 和 Linux 之間變來變去。 同時，保留會專屬於作業系統。 您必須購買保留來支援您打算部署至戳記的背景工作角色。 僅限 Windows 的戳記和混合式戳記會使用 Windows 保留。 只有 Linux 背景工作角色的戳記則會使用 Linux 保留。
 
-當您打算只  讓戳記中有 Linux 背景工作角色時，才應該購買 Linux 保留。
+當您打算只讓戳記中有 Linux 背景工作角色時，才應該購買 Linux 保留。
 
 ## <a name="discount-examples"></a>折扣範例
 

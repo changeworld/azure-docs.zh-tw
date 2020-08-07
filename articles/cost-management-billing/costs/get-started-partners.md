@@ -3,17 +3,17 @@ title: 適用於合作夥伴的 Azure 成本管理入門
 description: 本文說明合作夥伴如何使用 Azure 成本管理功能，以及如何為其客戶啟用成本管理存取權。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/28/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b5f00ee67803819b4d13cdc630bed3de26ac1be9
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372139"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563937"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>適用於合作夥伴的 Azure 成本管理入門
 
@@ -140,7 +140,7 @@ Azure 成本管理需要對您的計費帳戶或訂用帳戶的讀取權限。
 
 當成本原則設定為 [是] 時，與客戶租用戶相關聯的訂用帳戶使用者將可查看以隨用隨付費率計算的使用費。
 
-成本可見性原則啟用時，所有具有訂用帳戶使用量的服務，都會顯示以隨用隨付費率計算的成本。 保留使用量的實際和攤提成本會將費用顯示為零。 購買和權利不會與特定訂用帳戶相關聯。 因此，購買不會顯示在訂用帳戶範圍中。
+成本可見性原則啟用時，所有具有訂用帳戶使用量的服務，都會顯示以隨用隨付費率計算的成本。 保留使用量的實際和攤提成本會將費用顯示為零。 購買和權利不會與特定訂用帳戶相關聯。 因此，購買不會顯示在訂用帳戶範圍中。 直接合作夥伴或間接提供者的全域管理員/管理代理人也可以使用[更新客戶 API](/rest/api/billing/2019-10-01-preview/policies/updatecustomer) 大規模設定每個客戶的成本可見性原則。
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>檢視客戶租用戶中的訂用帳戶成本
 

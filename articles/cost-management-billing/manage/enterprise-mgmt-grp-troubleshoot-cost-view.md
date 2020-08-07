@@ -8,16 +8,16 @@ ms.topic: troubleshooting
 ms.date: 06/05/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 6c4fe563057e8d7fedbd68280bc8059867d997ed
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d96a2ed9f0aab03a0073519e08cf03d43d7ac2b7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120240"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503152"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>為企業成本檢視疑難排解
 
-在企業註冊內，有多個設定可能導致註冊內的使用者無法檢視成本。  這些設定由註冊管理員負責管理。 或者，如果並非直接經由 Microsoft 購買註冊，則會由合作夥伴管理設定。  本文可協助您了解設定，以及這些設定如何影響註冊。 這些設定與 Azure 角色型存取控制 (RBAC) 角色無關。
+在企業註冊內，有多個設定可能導致註冊內的使用者無法檢視成本。  這些設定由註冊管理員負責管理。 或者，如果並非直接經由 Microsoft 購買註冊，則會由合作夥伴管理設定。  本文可協助您了解設定，以及這些設定如何影響註冊。 這些設定與 Azure 角色無關。
 
 ## <a name="enable-access-to-costs"></a>能夠存取成本
 

@@ -1,24 +1,24 @@
 ---
 title: 使用 Azure 免費帳戶來建立免費服務
-description: 了解如何建立 Azure 免費帳戶隨附的服務。
+description: 了解如何建立 Azure 免費帳戶隨附的服務。 您可以在任何適用的區域中建立這些服務。
 author: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 1d2c4ed141aeff97f5987b0b23ff1e6201e53c6a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 540988892a5f5f650a8594b74792e45d25ca9036
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200875"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460944"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>建立 Azure 免費帳戶隨附的服務
 
 Azure 免費帳戶包含 12 個月數量有限的免費服務。 在這些限制內，您有彈性可使用各種組態中的免費服務來滿足您的需求。
 
 ## <a name="create-free-services-in-the-azure-portal"></a>在 Azure 入口網站中建立免費服務
-建議您使用[免費服務頁面](https://go.microsoft.com/fwlink/?linkid=859151)連結來建立免費服務。 或者，您也可以登入 [Azure 入口網站](https://portal.azure.com)，然後搜尋 [免費服務]  。 當您從免費服務頁面建立服務時，大部分的欄位都會預先選取，讓您輕鬆地免費建立服務。
+建議您使用[免費服務頁面](https://go.microsoft.com/fwlink/?linkid=859151)連結來建立免費服務。 或者，您也可以登入 [Azure 入口網站](https://portal.azure.com)，然後搜尋 [免費服務]。 當您從免費服務頁面建立服務時，大部分的欄位都會預先選取，讓您輕鬆地免費建立服務。
 
 ![顯示免費服務頁面的螢幕擷取畫面](./media/create-free-services/billing-freeservices-grid.png)
 

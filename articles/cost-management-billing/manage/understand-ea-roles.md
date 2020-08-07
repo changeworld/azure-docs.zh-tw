@@ -1,18 +1,18 @@
 ---
 title: 了解 Azure 中的企業管理員角色
-description: 了解 Azure 中的企業系統管理員角色。
+description: 了解 Azure 中的企業系統管理員角色。 您可以指派五個不同的系統管理角色。
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8a4705a68b0b96a8f95cc2356cda454fdef65054
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124335"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531484"
 ---
 # <a name="managing-azure-enterprise-roles"></a>管理 Azure 企業角色
 
@@ -103,9 +103,9 @@ Azure EA 系統管理員建立部門之後，Azure 企業系統管理員就可�
 
 若要了解如何設定這些原則，請參閱[管理對 Azure 帳單資訊的存取](manage-billing-access.md)。
 
-下表顯示 Enterprise 合約系統管理角色、檢視費用原則、Azure 入口網站中的角色型存取控制 (RBAC) 角色，以及您在 Azure 入口網站中看到之價格間的關聯性。 企業系統管理員所看到的使用方式詳細資料一律會以組織的 EA 價格為依據。 不過，部門系統管理員和帳戶擁有者會根據檢視費用原則及其 RBAC 角色而看到不同的價格檢視。 下表所列的部門系統管理員角色是指部門系統管理員和部門系統管理員 (唯讀) 角色。
+下表顯示 Enterprise 合約管理員角色、檢視費用原則、Azure 入口網站中的 Azure 角色，以及您在 Azure 入口網站中看到之價格間的關聯性。 企業系統管理員所看到的使用方式詳細資料一律會以組織的 EA 價格為依據。 不過，部門系統管理員和帳戶擁有者會根據檢視費用原則及其 Azure 角色而看到不同的價格檢視。 下表所列的部門系統管理員角色是指部門系統管理員和部門系統管理員 (唯讀) 角色。
 
-|Enterprise 合約系統管理員角色|角色的檢視費用原則|RBAC 角色|價格檢視|
+|Enterprise 合約系統管理員角色|角色的檢視費用原則|Azure 角色|價格檢視|
 |---|---|---|---|
 |帳戶擁有者或部門系統管理員|✔ 已啟用|擁有者|組織的 EA 價格|
 |帳戶擁有者或部門系統管理員|✘ 已停用|擁有者|零售價格|
@@ -113,7 +113,7 @@ Azure EA 系統管理員建立部門之後，Azure 企業系統管理員就可�
 |帳戶擁有者或部門系統管理員|✘ 已停用 |無|沒有價格|
 |None|不適用 |擁有者|零售價格|
 
-您會在企業版入口網站中設定企業系統管理員角色和檢視費用原則。 RBAC 角色可以在 Azure 入口網站中更新。 如需詳細資料，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
+您會在企業版入口網站中設定企業系統管理員角色和檢視費用原則。 Azure 角色可以在 Azure 入口網站中更新。 如需詳細資料，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
 
 
 

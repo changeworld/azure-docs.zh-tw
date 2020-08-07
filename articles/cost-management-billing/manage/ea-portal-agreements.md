@@ -3,16 +3,16 @@ title: Azure EA 合約和修訂文件
 description: 本文將說明 Azure EA 合約和修訂文件如何影響您使用 Azure EA 入口網站的方式。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4d40ffb04882e9809fc818ab492a4c97260d1ff4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bc1749ba8246aa2181890c4c846f9159a0557aff
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537794"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563478"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 合約和修訂文件
 
@@ -20,7 +20,7 @@ ms.locfileid: "86537794"
 
 ## <a name="enrollment-provisioning-status"></a>註冊佈建狀態
 
-新 Azure 預付款的開始日期是由區域營運中心開始進行處理的日期所定義。 由於透過 Azure EA 入口網站的 Azure 預付款訂單是在 UTC 時區僅型處理，如果您的 Azure 預付款採購單是在不同的區域進行處理，您可能會遇到一些延遲。 在 https://www.explore.ms 中，訂購單上的範圍開始日期會顯示 Azure 預付款的開始日期。 範圍開始日期是 Azure EA 入口網站中開始顯示 Azure 預付款的日期。
+新 Azure 預付款的開始日期是由區域營運中心開始進行處理的日期所定義。 由於透過 Azure EA 入口網站的 Azure 預付款訂單是在 UTC 時區僅型處理，如果您的 Azure 預付款採購單是在不同的區域進行處理，您可能會遇到一些延遲。 採購單上的範圍開始日期會顯示 Azure 預付款的開始日期。 範圍開始日期是 Azure EA 入口網站中開始顯示 Azure 預付款的日期。
 
 ## <a name="support-for-enterprise-customers"></a>對企業客戶的支援
 
@@ -43,7 +43,7 @@ ms.locfileid: "86537794"
 
 **到期** - EA 註冊在到達 Enterprise 合約結束日期時就會到期。 EA 客戶可以選擇退出延長的期限，而他們的所有服務都將會停用。
 
-自 2019 年 8 月 1 日起，Azure 商業客戶不再適用新的退出表單。 相反地，所有註冊都會進入無限延期。 如果您想要停止使用 Azure 服務，請在 [Azure 入口網站](https://portal.azure.com)中關閉您的訂用帳戶。 或者，您的合作夥伴可以在 https://www.explore.ms 上提交終止要求。 具有政府合約類型的客戶不會有任何變更。
+自 2019 年 8 月 1 日起，Azure 商業客戶不再適用新的退出表單。 相反地，所有註冊都會進入無限延期。 如果您想要停止使用 Azure 服務，請在 [Azure 入口網站](https://portal.azure.com)中關閉您的訂用帳戶。 或者，您的合作夥伴可以提交終止要求。 具有政府合約類型的客戶不會有任何變更。
 
 **已轉移** - 已轉移狀態適用於其相關聯的帳戶和服務已轉移至新註冊的註冊。 如果在續約期間產生新的註冊號碼，則註冊不會自動轉移。 先前的註冊號碼必須包含在客戶自動轉移的續約要求中。
 

@@ -1,6 +1,6 @@
 ---
 title: 了解詳細使用量和費用 | Microsoft Docs
-description: 了解如何讀取並了解詳細的使用量和費用
+description: 了解如何讀取並了解詳細的使用量和費用檔案。 檢視檔案中使用的詞彙和說明清單。
 author: bandersmsft
 ms.reviewer: micflan
 tags: billing
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b53869c9ef90dd0edf3ab9a3120e65db8f16e8a
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065650"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460281"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用量和費用檔案中的詞彙
 
@@ -37,7 +37,7 @@ Microsoft 客戶合約 (MCA) | 是 | 是 | 是 | 是
 下表說明最新版 Azure 使用量和費用檔案中使用的重要詞彙。
 此清單涵蓋「隨用隨付」(PAYG)、Enterprise 合約 (EA) 和 Microsoft 客戶合約 (MCA) 帳戶。
 
-詞彙 | 帳戶類型 | 描述
+詞彙 | 帳戶類型 | 說明
 --- | --- | ---
 AccountName | EA、PAYG | EA 註冊帳戶或 PAYG 計費帳戶的顯示名稱。
 AccountOwnerId<sup>1</sup> | EA、PAYG | EA 註冊帳戶或 PAYG 計費帳戶的唯一識別碼。
@@ -68,7 +68,7 @@ InvoiceSectionId<sup>1</sup> | EA、MCA | EA 部門或 MCA 發票區段的唯一
 InvoiceSectionName | EA、MCA | EA 部門或 MCA 發票區段的名稱。
 IsAzureCreditEligible | 全部 | 指出費用是否有資格使用 Azure 點數來支付 (值：True、False)。
 Location | MCA | 正在執行資源的資料中心位置。
-MeterCategory | 全部 | 計量的分類類別名稱。 例如，「雲端服務」  和「網路」  。
+MeterCategory | 全部 | 計量的分類類別名稱。 例如，「雲端服務」和「網路」。
 MeterId<sup>1</sup> | 全部 | 計量的唯一識別碼。
 MeterName | 全部 | 計量的名稱。
 MeterRegion | 全部 | 根據位置定價之服務的資料中心位置名稱。 請參閱 Location。
@@ -89,11 +89,11 @@ PublisherType | 全部 | 發行者的類型 (值：**Azure**、**AWS**、**Marke
 數量 | 全部 | 所購買或取用的單位數。
 ReservationId | EA、MCA | 所購買保留執行個體的唯一識別碼。
 ReservationName | EA、MCA | 所購買保留執行個體的名稱。
-ResourceGroup | 全部 | 資源所在[資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的名稱。 並非所有費用都來自於部署至資源群組的資源。 沒有資源群組的費用會顯示為 Null/空白、[其他]  或 [不適用]  。
+ResourceGroup | 全部 | 資源所在[資源群組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的名稱。 並非所有費用都來自於部署至資源群組的資源。 沒有資源群組的費用會顯示為 Null/空白、[其他] 或 [不適用]。
 ResourceId<sup>1</sup> | 全部 | [AzureResource Manager](https://docs.microsoft.com/rest/api/resources/resources) 資源的唯一識別碼。
 ResourceLocation | 全部 | 正在執行資源的資料中心位置。 請參閱 Location。
-ResourceName | EA、PAYG | 資源名稱。 並非所有費用都來自於已部署的資源。 沒有資源類型的費用會顯示為 Null/空白、[其他]  或 [不適用]  。
-ResourceType | MCA | 資源執行個體的類型。 並非所有費用都來自於已部署的資源。 沒有資源類型的費用會顯示為 Null/空白、[其他]  或 [不適用]  。
+ResourceName | EA、PAYG | 資源名稱。 並非所有費用都來自於已部署的資源。 沒有資源類型的費用會顯示為 Null/空白、[其他] 或 [不適用]。
+ResourceType | MCA | 資源執行個體的類型。 並非所有費用都來自於已部署的資源。 沒有資源類型的費用會顯示為 Null/空白、[其他] 或 [不適用]。
 ServiceFamily | MCA | 服務所屬的服務系列。
 ServiceInfo1 | 全部 | 服務專屬的中繼資料。
 ServiceInfo2 | 全部 | 含有選擇性服務特定中繼資料的舊版欄位。

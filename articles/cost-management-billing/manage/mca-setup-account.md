@@ -1,18 +1,18 @@
 ---
 title: 設定 Microsoft 客戶合約的計費 - Azure
-description: 了解如何設定 Microsoft 客戶合約的計費帳戶。
+description: 了解如何設定 Microsoft 客戶合約的計費帳戶。 請參閱設定的必要條件，並檢視其他可用的資源。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
-ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
+ms.openlocfilehash: 2b8ef67366df7c8a6ba76d2cdc693b36229b861b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80258051"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461845"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>設定 Microsoft 客戶合約的計費帳戶
 
@@ -196,7 +196,7 @@ ms.locfileid: "80258051"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]  。
+2. 搜尋 [成本管理 + 帳單]。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mca-setup-account/search-cmb.png)
 
@@ -216,7 +216,7 @@ ms.locfileid: "80258051"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]  。
+2. 搜尋 [成本管理 + 帳單]。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mca-setup-account/search-cmb.png)
 
@@ -232,7 +232,7 @@ ms.locfileid: "80258051"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]  。
+2. 搜尋 [成本管理 + 帳單]。
 
    ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mca-setup-account/search-cmb.png)
 
@@ -248,9 +248,9 @@ ms.locfileid: "80258051"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]  。
+2. 搜尋 [成本管理 + 帳單]。
 
-   ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mca-setup-account/search-cmb.png)。
+   ![顯示 Azure 入口網站搜尋的螢幕擷取畫面](./media/mca-setup-account/search-cmb.png).
 
 3. 選取發票區段。 發票區段會與其在 Enterprise 合約註冊中各自的部門同名。 您可能需要根據存取權來選取帳單帳戶。 從計費帳戶中選取 [帳單設定檔]  ，然後選取 [發票區段]  。 從發票區段清單中，選取一個發票區段。
 

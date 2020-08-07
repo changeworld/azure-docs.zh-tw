@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 07/28/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: 984f2d82e21344dd7e3bb8b7267e289832343e1b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 70408a3ed6638ec76af113c24cc3c8190a44f55c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385769"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445991"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>快速入門：使用 ARM 範本建立預算
 
@@ -33,7 +33,7 @@ ms.locfileid: "87385769"
 
 預算受下列類型的 Azure 帳戶類型和範圍支援：
 
-- Azure 角色型存取控制範圍
+- Azure 角色型存取控制 (Azure RBAC) 範圍
     - 管理群組
     - 訂用帳戶
 - Enterprise 合約範圍

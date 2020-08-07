@@ -1,18 +1,18 @@
 ---
 title: 管理 Azure 保留
-description: 了解如何管理 Azure 保留。
+description: 了解如何管理 Azure 保留。 請參閱變更保留範圍、分割保留和最佳化保留使用方式的步驟。
 ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: c0af39becf172b6d663cb9ffb0a815e529698283
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f3e4a772382606178d6cd5b0dcb92b0d1bc28695
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288997"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461811"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 資源的保留
 

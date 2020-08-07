@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 9e5657211e640c741dbf1bf2b5473a3ea5e10487
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 909d712e0c8e8ea242c27ab93f16a36e22d36aae
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287299"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759883"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>決定您要購買的保留
 
@@ -91,6 +91,8 @@ Azure Synapse Analytics 使用量可以在一天內相應增加和減少。 請�
 建議引擎所計算的保留購買會顯示在 [Azure 入口網站](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/docs)的 [建議]  索引標籤上。 以下是範例影像。
 
 ![顯示建議的影像](./media/determine-reservation-purchase/select-product-ri.png)
+
+深入了解[建議](reserved-instance-purchase-recommendations.md#recommendations-in-the-azure-portal)。
 
 ## <a name="recommendations-in-the-cost-management-power-bi-app"></a>成本管理 Power BI 應用程式中的建議
 

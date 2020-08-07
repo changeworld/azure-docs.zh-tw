@@ -1,18 +1,18 @@
 ---
 title: 檢視 Azure 資源的保留 | Microsoft Docs
-description: 了解如何在 Azure 入口網站中檢視 Azure 保留。
+description: 了解如何在 Azure 入口網站中檢視 Azure 保留。 使用 API、PowerShell、CLI 和 Power BI 查看保留和使用率。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: fd5d4248e9b1e645628ac8b87df3b4b0a16e2049
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 04c38f7445dc0405add88fd61cc6e4943a4fda96
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288959"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459261"
 ---
 # <a name="view-azure-reservations"></a>檢視 Azure 保留
 

@@ -1,23 +1,36 @@
 ---
-title: Azure 成本管理與計費的概觀 | Microsoft Docs
-description: 您可以使用 Azure 成本管理與計費功能來執行計費管理工作，以及管理成本的帳單存取。 您也可以使用這項功能來監視及控制 Azure 費用，並將 Azure 資源的使用方式最佳化。
+title: Azure 成本管理 + 計費概觀
+description: 您可以使用 Azure 成本管理 + 計費功能來執行計費管理工作，以及管理成本的帳單存取。 您也可以使用這些功能來監視及控制 Azure 費用，並將 Azure 資源的使用方式最佳化。
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 07/29/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 76121dd8126922de2843e430a4e01cae1c7c0d53
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879083"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412995"
 ---
-# <a name="what-is-azure-cost-management-and-billing"></a>什麼是 Azure 成本管理與計費？
+# <a name="what-is-azure-cost-management--billing"></a>什麼是 Azure 成本管理 + 計費？
 
-使用 Azure 產品和服務時，您只需為使用的部分付費。 當您建立和使用 Azure 資源時，您需支付資源的費用。 您可以使用 Azure 成本管理與計費功能來執行計費管理工作，以及管理成本的帳單存取。 您也可以使用其功能來監視及控制 Azure 費用，並將 Azure 資源的使用方式最佳化。
+藉由使用 Microsoft 雲端，您可以大幅提升商務工作負載的技術效能。 此外也可以降低您的成本，以及管理組織資產所需的額外負荷。 不過，商機也伴隨著風險，因為您的雲端部署中有可能導入浪費和低效的因子。 Azure 成本管理 + 計費是 Microsoft 所提供的一套工具，可協助您分析、管理和最佳化工作負載的成本。 使用此套件有助於確保您的組織充分利用雲端所提供的優勢。
+
+您可以將 Azure 工作負載想像成家裡的燈。 當您外出時，您會讓燈亮著不關嗎？ 您是否能改用更高效的燈泡，好節省一點電費？ 是否有哪個房間不需要那麼多盞燈？ 您可以使用 Azure 成本管理 + 計費功能，將類似的考量程序套用到組織所使用的工作負載。
+
+使用 Azure 產品和服務時，您只需為使用的部分付費。 當您建立和使用 Azure 資源時，您需支付資源的費用。 由於新資源很容易部署，因此若未進行適當的分析和監視，您的工作負載成本可能會大幅上升。 您可以使用 Azure 成本管理 + 計費功能來執行下列動作：
+
+- 進行計費管理工作，例如支付帳單
+- 管理成本的帳單存取
+- 下載用來產生每月發票的成本和使用方式資料
+- 主動將資料分析套用至您的成本
+- 設定費用閾值
+- 找機會變更工作負載以將費用最佳化
+
+若要深入了解如何以組織身分進行成本管理，請查看 [Azure 成本管理最佳做法](./costs/cost-mgt-best-practices.md)一文。
 
 ## <a name="understand-azure-billing"></a>了解 Azure 計費
 
@@ -45,7 +58,6 @@ Azure 入口網站目前支援下列計費帳戶類型：
 |計費帳戶     | 代表一或多個 Azure 訂用帳戶的單一擁有者 (帳戶管理員)。 帳戶管理員有權執行各種計費工作，例如建立訂用帳戶、檢視發票或變更訂用帳戶的計費。  |
 |訂用帳戶     |  代表 Azure 資源的群組。 發票會在訂用帳戶範圍上產生。 它有自己的付款方式，可用來支付其發票。|
 
-
 #### <a name="enterprise-agreement"></a>Enterprise 合約
 
 |影響範圍  |定義  |
@@ -53,7 +65,6 @@ Azure 入口網站目前支援下列計費帳戶類型：
 |計費帳戶    | 表示 Enterprise 合約註冊。 發票會在計費帳戶範圍上產生。 其使用部門和註冊帳戶進行結構化。  |
 |department     |  註冊帳戶的選擇性群組。      |
 |註冊帳戶     |  代表單一帳戶擁有者。 Azure 訂用帳戶會建立在註冊帳戶範圍之下。  |
-
 
 #### <a name="microsoft-customer-agreement"></a>Microsoft 客戶合約
 
@@ -63,19 +74,17 @@ Azure 入口網站目前支援下列計費帳戶類型：
 |帳單設定檔     |  表示發票及其付款方式。 發票會在此範圍產生。 帳單設定檔可以有多個發票區段。      |
 |發票區段     |   代表發票中的一組成本。 訂用帳戶和其他購買項目會與發票區段範圍相關聯。    |
 
-
 ## <a name="understand-azure-cost-management"></a>了解 Azure 成本管理
-成本管理是有效規劃和控制商務相關成本的流程。 成本管理工作通常是由財務、管理和應用程式小組執行。 「Azure 成本管理+計費」可協助組織在規劃時考量成本。 它也有助於有效地分析成本，並採取動作來將雲端費用最佳化。 若要深入了解如何以組織身分進行成本管理，請查看 [Azure 成本管理最佳做法](./costs/cost-mgt-best-practices.md)一文。
-
-觀看 [Azure 成本管理概觀影片](https://www.youtube.com/watch?v=el4yN5cHsJ0) 以快速並概略了解 Azure 成本管理如何協助您在 Azure 中節省成本。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
-
->[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 雖然計費與成本管理相關，則實則不同。 計費是涉及向客戶開立商品或服務發票以及管理商業關係的程序。
 
 成本管理會利用進階分析來顯示組織的成本和使用量模式。 成本管理報告顯示依使用量計費的 Azure 服務與協力廠商 Marketplace 方案所耗用的成本。 成本是根據議定的價格，並計入保留和 Azure Hybrid Benefit 折扣要素而定。 整體而言，這些報告會針對使用量和 Azure Marketplace 費用，顯示您的內部和外部成本。 其他費用，例如保留購買、支援和稅金還不會顯示在報告中。 這些報告可協助您了解您的費用和資源使用情況，並可協助您找出異常的費用。 也可提供預測性分析。 成本管理會使用 Azure 管理群組、預算及建議，清楚地說明如何組織您的費用以及如何降低成本。
 
 您可以使用 Azure 入口網站或適用於匯出自動化的各種 API ，來與外部系統和程序整合。 也可使用自動化計費資料匯出和排程定報告。
+
+觀看 [Azure 成本管理概觀影片](https://www.youtube.com/watch?v=el4yN5cHsJ0) 以快速並概略了解 Azure 成本管理如何協助您在 Azure 中節省成本。 若要觀看其他影片，請造訪[成本管理 YouTube 頻道](https://www.youtube.com/c/AzureCostManagement)。
+
+>[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 ### <a name="plan-and-control-expenses"></a>計劃和控制費用
 
@@ -99,17 +108,16 @@ Azure 入口網站目前支援下列計費帳戶類型：
 
 ### <a name="additional-azure-tools"></a>其他 Azure 工具
 
-Azure 有其他不屬於 Azure 成本管理與計費功能集的工具。 不過，它們在成本管理流程中扮演重要角色。 若要深入了解這些工具，請參閱下列連結。
+Azure 有其他不屬於 Azure 成本管理 + 計費功能集的工具。 不過，它們在成本管理流程中扮演重要角色。 若要深入了解這些工具，請參閱下列連結。
 
 - [Azure 定價計算機](https://azure.microsoft.com/pricing/calculator/) - 使用此工具來評估您的前期雲端成本。
 - [Azure Migrate](../migrate/migrate-overview.md) - 評估您目前的資料中心工作負載，以取得 Azure 替代解決方案需求的見解。
 - [Azure Advisor](../advisor/advisor-overview.md) - 識別未使用的 VM，並接收有關 Azure 保留執行個體購買的建議。
 - [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) - 將您目前的內部部署 Windows Server 或 SQL Server 授權用於 Azure 中的 VM 以節省成本。
 
-
 ## <a name="next-steps"></a>後續步驟
 
-您現在已經熟悉成本管理與計費，下一步是開始使用此服務。
+您現在已經熟悉成本管理 + 計費，下一步是開始使用此服務。
 
 - 開始使用 Azure 成本管理來[分析成本](./costs/quick-acm-cost-analysis.md)。
 - 您也可以進一步閱讀 [Azure 成本管理最佳做法](./costs/cost-mgt-best-practices.md)。

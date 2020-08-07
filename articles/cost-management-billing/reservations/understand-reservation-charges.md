@@ -1,18 +1,18 @@
 ---
 title: 了解 Azure SQL Database 的保留折扣 | Microsoft Docs
-description: 了解保留折扣套用至執行中 Azure SQL Database 的方式。
+description: 了解保留折扣套用至執行中 Azure SQL Database 的方式。 折扣會套用至這些資料庫 (以小時計算)。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 736e046b5254de9aa18c898994d7df11efc98a9a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9398a68d384eb7acba15fb64e27d7a2672006bc6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037982"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461284"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>保留折扣套用至 Azure SQL Database 的方式
 

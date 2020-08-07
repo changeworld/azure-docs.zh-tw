@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 6d16e663626a1b19271b7d37b39202a0a9b605b9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ddb40f470f9b951c786fdab529336af3eff38e54
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126120"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530005"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>新增或變更 Azure 訂用帳戶系統管理員
 
@@ -33,7 +33,7 @@ Microsoft 建議您使用 RBAC 來管理對資源的存取。 不過，如果您
 
 ## <a name="assign-a-subscription-administrator"></a>指派訂用帳戶系統管理員
 
-若要讓使用者成為 Azure 訂用帳戶的系統管理員，現有系統管理員會在訂用帳戶範圍為其指派[擁有者](../../role-based-access-control/built-in-roles.md#owner)角色 (RBAC 角色)。 「擁有者」角色可授與使用者訂用帳戶中所有資源的完整存取權，包括將存取權委派給其他人的權限。 針對任何其他角色指派，這些步驟都相同。
+若要讓使用者成為 Azure 訂用帳戶的系統管理員，現有系統管理員應在訂用帳戶範圍為其指派[擁有者](../../role-based-access-control/built-in-roles.md#owner)角色 (Azure 角色)。 「擁有者」角色可授與使用者訂用帳戶中所有資源的完整存取權，包括將存取權委派給其他人的權限。 針對任何其他角色指派，這些步驟都相同。
 
 如果您不確定誰是訂用帳戶的帳戶管理員，請使用下列步驟來找出帳戶管理員。
 

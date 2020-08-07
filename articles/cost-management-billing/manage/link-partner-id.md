@@ -7,28 +7,28 @@ ms.author: banders
 ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.openlocfilehash: 343db06ba658f31c258d2a63c4a52aa86993c1cd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5f50c63fa95018c13c48e9769f9e4049b2a81021
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281781"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529904"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>將合作夥伴識別碼連結到您的 Azure 帳戶
 
 Microsoft 合作夥伴提供的服務可協助客戶使用 Microsoft 產品達成商業和任務目標。 代表客戶管理、設定和支援 Azure 服務時，合作夥伴使用者會需要存取客戶的環境。 合作夥伴可以使用合作夥伴管理連結 (PAL)，將其合作夥伴網路識別碼與用於服務傳遞的認證產生關聯。
 
-PAL 可讓 Microsoft 找出及辨識可促使 Azure 客戶成功的合作夥伴。Microsoft 可以根據帳戶的權限 (RBAC 角色) 和範圍 (訂用帳戶、資源群組、資源)，將影響和使用 Azure 的收益歸屬於您的組織。
+PAL 可讓 Microsoft 找出及辨識可促使 Azure 客戶成功的合作夥伴。Microsoft 可以根據帳戶的權限 (Azure 角色) 和範圍 (訂用帳戶、資源群組、資源)，將影響和使用 Azure 的收益歸屬於您的組織。
 
 ## <a name="get-access-from-your-customer"></a>取得客戶提供的存取權
 
 在您連結合作夥伴識別碼之前，您的客戶必須先透過下列其中一個選項，將其 Azure 資源的存取權提供給您：
 
-- **來賓使用者**：客戶可將您新增為來賓使用者，並指派任何角色型存取控制 (RBAC) 角色。 如需詳細資訊，請參閱[從另一個目錄中新增來賓使用者](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。
+- **來賓使用者**：客戶可將您新增為來賓使用者，並指派任何 Azure 角色。 如需詳細資訊，請參閱[從另一個目錄中新增來賓使用者](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)。
 
-- **目錄帳戶**：客戶可以在自己的目錄中為您建立新使用者，並指派任何 RBAC 角色。
+- **目錄帳戶**：客戶可以在自己的目錄中為您建立新使用者，並指派任何 Azure 角色。
 
-- **服務主體**：客戶可從您的組織在其目錄中新增應用程式或指令碼，並指派任何 RBAC 角色。 應用程式或指令碼的身分識別稱為服務主體。
+- **服務主體**：客戶可從您的組織在其目錄中新增應用程式或指令碼，並指派任何 Azure 角色。 應用程式或指令碼的身分識別稱為服務主體。
 
 - **Azure Lighthouse**:您的客戶可以委派訂用帳戶 (或資源群組)，讓您的使用者可以從您的租用戶中處理。 如需詳細資訊，請參閱 [Azure 委派的資源管理](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)。
 
@@ -46,7 +46,7 @@ PAL 可讓 Microsoft 找出及辨識可促使 Azure 客戶成功的合作夥伴�
 
    ![顯示 [連結到合作夥伴識別碼] 的螢幕擷取畫面](./media/link-partner-id/link-partner-id01.png)
 
-4. 若要為另一個客戶連結合作夥伴識別碼，請切換目錄。 在 [切換目錄]**** 底下，選取您的目錄。
+4. 若要為另一個客戶連結合作夥伴識別碼，請切換目錄。 在 [切換目錄] 底下，選取您的目錄。
 
    ![顯示 [切換目錄] 的螢幕擷取畫面](./media/link-partner-id/directory-switcher.png)
 
@@ -168,9 +168,8 @@ C:\ az managementpartner delete --partner-id 12345
 
 **PAL 會收集哪些資料？**
 
-現有認證的 PAL 關聯不會提供新的客戶資料給 Microsoft。 此關聯只會將遙測資料提供給 Microsoft，而由合作夥伴主動參與客戶的 Azure 環境。 Microsoft 可根據客戶提供給合作夥伴的帳戶權限 (RBAC 角色) 和範圍 (管理群組、訂用帳戶、資源群組、資源)，將影響和使用 Azure 的收益歸屬於合作夥伴組織。 
+現有認證的 PAL 關聯不會提供新的客戶資料給 Microsoft。 此關聯只會將遙測資料提供給 Microsoft，而由合作夥伴主動參與客戶的 Azure 環境。 Microsoft 可根據客戶提供給合作夥伴的帳戶權限 (Azure 角色) 和範圍 (管理群組、訂用帳戶、資源群組、資源)，將影響和使用 Azure 的收益歸屬於合作夥伴組織。 
 
 **這會對客戶 Azure 環境的安全性造成影響嗎？**
 
-PAL 關聯只會將合作夥伴的 MPN 識別碼新增至已佈建的認證，而且不會改變任何權限 (RBAC 角色) 或提供其他 Azure 服務資料給合作夥伴或 Microsoft。 
-
+PAL 關聯只會將合作夥伴的 MPN 識別碼新增至已佈建的認證，而且不會改變任何權限 (Azure 角色) 或提供其他 Azure 服務資料給合作夥伴或 Microsoft。 

@@ -1,18 +1,18 @@
 ---
 title: 根據您的需求整理發票 - Azure
-description: 了解如何以您的發票整理成本。
+description: 了解如何以您的發票整理成本。 您可以建立帳單設定檔和發票區段，藉以自訂您的計費帳戶。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 553263ebac3c64e27a7711b4407a7d4ba573998c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200739"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460026"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>自訂計費帳戶以整理成本
 
@@ -72,15 +72,15 @@ ms.locfileid: "77200739"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]  。
+2. 搜尋 [成本管理 + 帳單]。
 
    ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/mca-section-invoice/search-cmb.png)
 
-3. 從左側窗格中選取 [帳單設定檔]  。 從清單中選取 [帳單設定檔]。 新的區段會顯示在所選帳單設定檔的發票上。
+3. 從左側窗格中選取 [帳單設定檔]。 從清單中選取 [帳單設定檔]。 新的區段會顯示在所選帳單設定檔的發票上。
 
    [![顯示帳單設定檔清單的螢幕擷取畫面](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
-4. 從左側窗格中選取 [發票區段]  ，然後從頁面頂端選取 [新增]  。
+4. 從左側窗格中選取 [發票區段]，然後從頁面頂端選取 [新增]。
 
    [![顯示新增發票區段的螢幕擷取畫面](./media/mca-section-invoice/mca-list-invoice-sections.png)](./media/mca-section-invoice/mca-list-invoice-sections-zoomed-in.png#lightbox)
 
@@ -88,7 +88,7 @@ ms.locfileid: "77200739"
 
    [![顯示發票區段建立頁面的螢幕擷取畫面](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
-6. 選取 [建立]  。
+6. 選取 [建立]。
 
 ## <a name="create-a-new-billing-profile"></a>建立新的帳單設定檔
 
@@ -100,11 +100,11 @@ ms.locfileid: "77200739"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]  。
+2. 搜尋 [成本管理 + 帳單]。
 
    ![顯示在入口網站中搜尋 [成本管理 + 帳單] 的螢幕擷取畫面](./media/mca-section-invoice/search-cmb.png)
 
-3. 從左側窗格中選取 [帳單設定檔]  ，然後從頁面頂端選取 [新增]  。
+3. 從左側窗格中選取 [帳單設定檔]，然後從頁面頂端選取 [新增]。
 
    [![顯示帳單設定檔清單的螢幕擷取畫面](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
@@ -112,7 +112,7 @@ ms.locfileid: "77200739"
     >
     > 如果您在 [帳單設定檔] 頁面中沒看到 [新增] 按鈕，表示您的帳戶無法使用此功能。 目前此功能僅提供給經 Microsoft 業務代表接洽設定的帳戶。
 
-4. 填妥表單，然後按一下 [建立]  。
+4. 填妥表單，然後按一下 [建立]。
 
    [![顯示帳單設定檔建立頁面的螢幕擷取畫面](./media/mca-section-invoice/mca-add-profile.png)](./media/mca-section-invoice/mca-add-profile-zoomed-in.png#lightbox)
 
@@ -123,7 +123,7 @@ ms.locfileid: "77200739"
     |帳單地址   | 帳單地址會顯示在為帳單設定檔產生的發票上。 |
     |電子郵件發票   | 勾選電子郵件發票方塊，即可透過電子郵件接收此帳單設定檔的發票。 如未勾選，可以在 Azure 入口網站中檢視及下載發票。|
 
-5. 選取 [建立]  。
+5. 選取 [建立]。
 
 ## <a name="link-charges-to-invoice-sections-and-billing-profiles"></a>連結費用與發票區段和帳單設定檔
 
@@ -137,7 +137,7 @@ ms.locfileid: "77200739"
 
    [![顯示在入口網站中搜尋訂用帳戶的螢幕擷取畫面](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
-3. 從頁面頂端選取 [新增]  。
+3. 從頁面頂端選取 [新增]。
 
    ![在 [訂用帳戶] 檢視中顯示 [新增] 按鈕的螢幕擷取畫面](./media/mca-section-invoice/subscription-add.png)
 
@@ -151,7 +151,7 @@ ms.locfileid: "77200739"
 
 7. 選取 Azure 方案，並為您的訂用帳戶輸入易記的名稱。
 
-9. 按一下頁面底部的 [新增]  。  
+9. 按一下 [建立]。  
 
 ### <a name="link-existing-subscriptions-and-products"></a>連結現有的訂用帳戶和產品
 
@@ -163,21 +163,21 @@ ms.locfileid: "77200739"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 搜尋 [成本管理 + 帳單]  。
+2. 搜尋 [成本管理 + 帳單]。
 
    ![顯示在入口網站中搜尋訂用帳戶的螢幕擷取畫面](./media/mca-section-invoice/search-cmb.png)
 
-3. 若要將訂用帳戶連結至新的發票區段，請選取畫面左側的 [Azure 訂用帳戶]  。 針對其他產品 (例如 Azure Marketplace、應用程式來源資源)，請選取 [週期性費用]  。
+3. 若要將訂用帳戶連結至新的發票區段，請選取畫面左側的 [Azure 訂用帳戶]。 針對其他產品 (例如 Azure Marketplace、應用程式來源資源)，請選取 [週期性費用]。
 
    [![顯示變更發票區段選項的螢幕擷取畫面](./media/mca-section-invoice/mca-select-change-invoice-section.png)](./media/mca-section-invoice/mca-select-change-invoice-section.png#lightbox)
 
-4. 在此頁面中，按一下您要連結到新發票區段的訂用帳戶或產品的省略號 (三個點)。 選取 [變更發票區段]  。
+4. 在此頁面中，按一下您要連結到新發票區段的訂用帳戶或產品的省略號 (三個點)。 選取 [變更發票區段]。
 
 5. 從下拉式清單中選取新的發票區段。 下拉式清單中只會顯示與現有發票區段相同帳單設定檔相關聯的發票區段。
 
     [![顯示選取新發票區段的螢幕擷取畫面](./media/mca-section-invoice/mca-select-new-invoice-section.png)](./media/mca-section-invoice/mca-select-new-invoice-section-zoomed-in.png#lightbox)
 
-6. 選取 [儲存]  。
+6. 選取 [儲存]。
 
 ## <a name="things-to-consider-when-adding-new-billing-profiles"></a>新增帳單設定檔時要考慮的事項
 

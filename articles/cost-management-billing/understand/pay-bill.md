@@ -1,6 +1,6 @@
 ---
 title: 支付 Microsoft Azure 帳單 | Microsoft Docs
-description: 說明如何在 Azure 入口網站中支付發票費用
+description: 了解如何在 Azure 入口網站中支付發票費用。 您必須是帳單設定檔擁有者、參與者或發票管理員，才能在入口網站中付款。
 keywords: 帳單, 逾期, 餘額, 立即支付,
 author: banders
 ms.reviewer: judupont
@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 8db50a25d98f5e4dc2ae96c708a5da49709f9ed5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bb3c9686ca734bb800f090af44f56643e07c6833
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200141"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459295"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>如何支付 Microsoft Azure 帳單
 
@@ -31,11 +31,11 @@ ms.locfileid: "77200141"
 您必須是帳單設定檔擁有者、參與者或發票管理員，才能在 Azure 入口網站中支付發票款項。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 針對 [成本管理 + 帳單]  進行搜尋。
-1. 在左側功能表中，選取 [計費] 之下的 [發票]  。
-1. 如果您的任何發票已到期或逾期，您會看到該發票的**立即付費**連結 (以藍色顯示)。 請選取 [立即付費]  。
-1. 在新的刀鋒視窗中，按一下 [選取付款方式]  以選擇現有信用卡，或新增一個信用卡。
-1. 選取付款方式後，按一下 [立即支付]  。
+1. 針對 [成本管理 + 帳單] 進行搜尋。
+1. 在左側功能表中，選取 [計費] 之下的 [發票]。
+1. 如果您的任何發票已到期或逾期，您會看到該發票的**立即付費**連結 (以藍色顯示)。 請選取 [立即付費]。
+1. 在新的刀鋒視窗中，按一下 [選取付款方式] 以選擇現有信用卡，或新增一個信用卡。
+1. 選取付款方式後，按一下 [立即支付]。
 
 在 [發票] 刀鋒視窗中，發票的狀態便會更新為 [已付]。
 

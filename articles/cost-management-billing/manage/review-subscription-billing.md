@@ -1,17 +1,17 @@
 ---
 title: 使用 REST API 檢閱 Azure 訂用帳戶計費資料
-description: 了解如何使用 Azure REST API 檢閱訂用帳戶計費詳細資料。
+description: 了解如何使用 Azure REST API 檢閱訂用帳戶計費詳細資料。 您可以利用篩選來自訂結果。
 author: lleonard-msft
 ms.service: cost-management-billing
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 7b80bd57906515ffeb0ff9e8ac52cf7178f5ccd8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ac5bbc1d93347654cea118ea9521d6074a9af7c8
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202802"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461828"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>使用 REST API 檢閱訂用帳戶計費
 
@@ -71,7 +71,7 @@ Authorization: Bearer
 }
 ```
 
-[值]  中的每個項目代表與使用服務相關的詳細資料：
+[值] 中的每個項目代表與使用服務相關的詳細資料：
 
 |回應屬性|描述|
 |----------------|----------|

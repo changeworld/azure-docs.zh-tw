@@ -1,6 +1,6 @@
 ---
 title: 檢視及下載 Azure 使用量和費用
-description: 說明如何下載或檢視您的 Azure 每日使用量和費用資訊。
+description: 了解如何下載或檢視您的 Azure 每日使用量和費用，以及查看其他可用的資源。
 keywords: 計費使用量, 使用量費用, 使用量下載, 檢視使用量, azure 發票, azure 使用量
 author: bandersmsft
 ms.author: banders
@@ -8,12 +8,12 @@ tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: bf9a98d6484e7f78a80a4e3018afdec00df51337
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d09f792e784c89e704691975d44cb3cbfa753cf4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322020"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460502"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>檢視及下載您的 Azure 使用量和費用
 

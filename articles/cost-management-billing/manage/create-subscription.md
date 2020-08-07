@@ -1,17 +1,17 @@
 ---
 title: 建立額外的 Azure 訂用帳戶
-description: 了解如何在 Azure 入口網站中新增 Azure 訂用帳戶。
+description: 了解如何在 Azure 入口網站中新增 Azure 訂用帳戶。 查看計費帳戶表單的相關資訊，並檢視其他可用的資源。
 author: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: d6a8196816aaaa61458050334f605cb41afa16b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d27120f6bd0978b69d664ab3ab2e86bfee4f1755
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200841"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460961"
 ---
 # <a name="create-an-additional-azure-subscription"></a>建立額外的 Azure 訂用帳戶
 
@@ -38,13 +38,13 @@ ms.locfileid: "77200841"
 
    ![顯示在入口網站中搜尋訂用帳戶的螢幕擷取畫面](./media/create-subscription/billing-search-subscription-portal.png)
 
-1. 選取 [新增]  。
+1. 選取 [新增]。
 
    ![在 [訂用帳戶] 檢視中顯示 [新增] 按鈕的螢幕擷取畫面](./media/create-subscription/subscription-add.png)
 
 1. 如果您有多個計費帳戶的存取權，請選取您想建立訂用帳戶的計費帳戶。
 
-1. 填妥表單，然後按一下 [建立]  。 下列表格針對每種計費帳戶類型列出表單上的欄位。
+1. 填妥表單，然後按一下 [建立]。 下列表格針對每種計費帳戶類型列出表單上的欄位。
 
 **Enterprise 合約**
 
@@ -83,4 +83,4 @@ ms.locfileid: "77200841"
 
 ## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡。
 
-如有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。

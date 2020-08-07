@@ -6,15 +6,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/03/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449f1e50bda2991db8eec15464a32d295a054c6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb7978dfa2c3ded2ae8e8c621bcb679f19620a2c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286592"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553473"
 ---
 # <a name="change-the-contact-information-for-your-azure-account"></a>變更 Azure 帳戶的連絡人資訊
 
@@ -24,7 +24,7 @@ ms.locfileid: "87286592"
 
 *帳單寄送地址* - 帳單寄送地址是組織或個人 (負責管理計費帳戶所產生的發票) 的地址和連絡人資訊。 Microsoft 線上服務方案 (MOSP) 的計費帳戶會有一個帳單寄送地址，此地址會顯示在為帳戶產生的所有發票上。 針對 Microsoft 客戶合約 (MCA) 的計費帳戶，每個帳單設定檔都會有一個帳單寄送地址，而且會顯示在為帳單設定檔產生的發票中。
 
-*服務和行銷電子郵件的連絡人電子郵件地址* - 您可以指定與您用來登入的電子郵件地址不同的電子郵件地址，以接收關於 Azure 帳戶的重要帳單、服務和建議相關通知。  
+*服務和行銷電子郵件的連絡人電子郵件地址* - 您可以指定與您用來登入的電子郵件地址不同的電子郵件地址，以接收關於 Azure 帳戶的重要帳單、服務和建議相關通知。 服務通知電子郵件 (例如緊急安全性問題、價格變更，或您的帳戶所使用之服務的重大變更) 一律會傳送至您的登入位址。
 
 ## <a name="update-an-mosp-billing-account-address"></a>更新 MOSP 計費帳戶地址
 

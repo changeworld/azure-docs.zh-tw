@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ecc442049ba63b64f951335940c312dc71985453
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077153"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501520"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解並使用範圍
 
@@ -93,8 +93,8 @@ Enterprise 合約 (EA) 計費帳戶 (也稱為註冊) 具有下列範圍：
 
 EA 計費範圍支援下列角色：
 
-- **企業系統管理員** – 可以管理計費帳戶設定和存取、可以檢視所有成本，以及可管理成本配置。 例如，預算和匯出。 在函式中，EA 計費範圍與[成本管理參與者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
-- **企業唯讀使用者** – 可以檢視計費帳戶設定、成本資料和成本配置。 例如，預算和匯出。 在函式中，EA 計費範圍與[成本管理讀者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
+- **企業系統管理員** – 可以管理計費帳戶設定和存取、可以檢視所有成本，以及可管理成本配置。 例如，預算和匯出。 在函式中，EA 計費範圍與[成本管理參與者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
+- **企業唯讀使用者** – 可以檢視計費帳戶設定、成本資料和成本配置。 例如，預算和匯出。 在函式中，EA 計費範圍與[成本管理讀者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
 - **部門系統管理員** – 可以管理部門設定 (例如成本中心)，而且可以存取、檢視所有成本，以及管理成本配置。 例如，預算和匯出。  必須為部門系統管理員和唯讀使用者啟用 [DA 檢視費用] 計費帳戶設定，才能查看成本。 如果已停用 [DA 檢視費用]，部門使用者就無法查看任何層級的成本，即使他們是帳戶或訂用帳戶擁有者也一樣。
 - **部門唯讀使用者** – 可以檢視部門設定、成本資料和成本配置。 例如，預算和匯出。 如果已停用 [DA 檢視費用]，部門使用者就無法查看任何層級的成本，即使他們是帳戶或訂用帳戶擁有者也一樣。
 - **帳戶擁有者** – 可以管理註冊帳戶設定 (例如成本中心)、檢視所有成本，以及管理註冊帳戶的成本配置 (例如預算和匯出)。 必須為帳戶擁有者和 RBAC 使用者啟用 [AO 檢視費用] 計費帳戶設定，才能查看成本。
@@ -141,10 +141,10 @@ Microsoft 客戶合約計費帳戶具有下列範圍：
 
 客戶合約計費範圍支援下列角色：
 
-- **擁有者** – 可以管理計費設定和存取權、檢視所有成本，以及管理成本配置。 例如，預算和匯出。 在函式中，此客戶合約計費範圍與[成本管理參與者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
-- **餐與者** – 可以管理計費設定 (存取權除外)、檢視所有成本，以及管理成本配置。 例如，預算和匯出。 在函式中，此客戶合約計費範圍與[成本管理參與者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
-- **讀者** – 可以檢視計費設定、成本資料和成本配置。 例如，預算和匯出。 在函式中，此客戶合約計費範圍與[成本管理讀者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
-- **發票管理員** – 可以檢視和支付發票費用，並可檢視成本資料和配置。 例如，預算和匯出。 在函式中，此客戶合約計費範圍與[成本管理讀者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
+- **擁有者** – 可以管理計費設定和存取權、檢視所有成本，以及管理成本配置。 例如，預算和匯出。 在函式中，此客戶合約計費範圍與[成本管理參與者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
+- **餐與者** – 可以管理計費設定 (存取權除外)、檢視所有成本，以及管理成本配置。 例如，預算和匯出。 在函式中，此客戶合約計費範圍與[成本管理參與者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
+- **讀者** – 可以檢視計費設定、成本資料和成本配置。 例如，預算和匯出。 在函式中，此客戶合約計費範圍與[成本管理讀者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
+- **發票管理員** – 可以檢視和支付發票費用，並可檢視成本資料和配置。 例如，預算和匯出。 在函式中，此客戶合約計費範圍與[成本管理讀者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
 - **Azure 訂用帳戶建立者** –可以建立 Azure 訂用帳戶、檢視成本，以及管理成本配置。 例如，預算和匯出。 在函式中，此客戶合約計費範圍與 EA 註冊帳戶擁有者角色相同。
 
 Azure 訂用帳戶會嵌套在 [發票] 區段之下，如同其位於 EA 註冊帳戶之下的方式。 計費使用者可以存取其各自範圍之下訂用帳戶和資源群組的成本資料。 不過，他們沒有存取權可在 Azure 入口網站中查看或管理資源。 計費使用者可藉由瀏覽至 Azure 入口網站服務清單中的 [成本管理 + 計費] 來檢視成本。 然後，可以針對需要報告的特定訂用帳戶和資源群組，篩選成本。

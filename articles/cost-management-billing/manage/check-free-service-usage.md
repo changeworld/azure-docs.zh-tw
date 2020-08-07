@@ -1,18 +1,18 @@
 ---
 title: 監視和追蹤 Azure 免費服務使用量
-description: 了解如何在 Azure 入口網站中檢查免費服務使用量。
+description: 了解如何在 Azure 入口網站中檢查免費服務使用量。 免費帳戶中包含的服務完全免費，除非您的使用量超過服務限制。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 0a62deecc6f70bb21059ae3ddda9eea173de65fe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 03efb7e4d0aa06e4c33a94f15621d58330e52e50
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199801"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461862"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>檢查 Azure 免費帳戶隨附的免費服務使用量
 
