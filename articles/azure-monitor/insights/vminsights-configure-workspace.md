@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 10c4f0ba4bfc88017304c228ca1afce4ba863118
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 40ff7bfe713f401a23dea0b3660be1b7728a1380
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328202"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828552"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>設定適用於 VM 的 Azure 監視器的 Log Analytics 工作區
 適用於 VM 的 Azure 監視器會從 Azure 監視器中的一或多個 Log Analytics 工作區收集其資料。 在上架代理程式之前，您必須先建立並設定工作區。 本文說明工作區的需求，並將其設定為適用於 VM 的 Azure 監視器。
@@ -40,10 +40,10 @@ ms.locfileid: "87328202"
 
 * [Azure 入口網站](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
-## <a name="supported-regions"></a>支援的區域
+## <a name="supported-regions"></a>支援區域
 
 適用於 VM 的 Azure 監視器支援下欄區域中的 Log Analytics 工作區，但您可以監視任何區域中的虛擬機器。 虛擬機器本身不限於 Log Analytics 工作區支援的區域。
 
@@ -95,7 +95,7 @@ ms.locfileid: "87328202"
 
 
 ### <a name="resource-manager-template"></a>Resource Manager 範本
-適用於 VM 的 Azure 監視器的 Azure Resource Manager 範本會在封存檔案（.zip）中提供，您可以[從我們的 GitHub 存放庫下載](https://aka.ms/VmInsightsARMTemplates)該檔。 這包括名為**ConfigureWorkspace**的範本，它會設定適用於 VM 的 Azure 監視器的 Log Analytics 工作區。 您可以使用任何標準方法來部署此範本，包括下列範例 PowerShell 和 CLI 命令： 
+適用於 VM 的 Azure 監視器的 Azure Resource Manager 範本提供于封存檔 ( .zip) ，您可以[從我們的 GitHub 存放庫下載](https://aka.ms/VmInsightsARMTemplates)該檔。 這包括名為**ConfigureWorkspace**的範本，它會設定適用於 VM 的 Azure 監視器的 Log Analytics 工作區。 您可以使用任何標準方法來部署此範本，包括下列範例 PowerShell 和 CLI 命令： 
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -116,4 +116,4 @@ New-AzResourceGroupDeployment -Name ConfigureWorkspace -ResourceGroupName my-res
 
 ## <a name="next-steps"></a>後續步驟
 - 請參閱將代理程式上[架至適用於 VM 的 Azure 監視器](vminsights-enable-overview.md)，將代理程式連接到適用於 VM 的 Azure 監視器。
-- 請參閱以[Azure 監視器（預覽）設定監視解決方案的目標](solution-targeting.md)，以限制從解決方案傳送到工作區的資料量。
+- 請參閱[Azure 監視器 (Preview) 中的目標監視解決方案](solution-targeting.md)，以限制從解決方案傳送到工作區的資料量。

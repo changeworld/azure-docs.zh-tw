@@ -1,6 +1,6 @@
 ---
 title: 設定呼叫 web Api 的 daemon 應用程式-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何為可呼叫 web Api （應用程式設定）的背景工作應用程式設定程式碼
+description: '瞭解如何為您的背景工作應用程式設定用來呼叫 web Api (應用程式佈建的程式碼) '
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 567bd0a34c1989403f29ea5a52fad258c2ffe825
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558555"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846151"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>呼叫 web Api 的 Daemon 應用程式-程式碼設定
 
@@ -28,21 +28,21 @@ ms.locfileid: "84558555"
 
   MSAL 程式庫 | 描述
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支援 .NET Framework 和 .NET Core 平臺來建立 daemon 應用程式。 （UWP、Xamarin 和 Xamarin 不受支援，因為這些平臺是用來建立公用用戶端應用程式）。
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支援 .NET Framework 和 .NET Core 平臺來建立 daemon 應用程式。  (UWP、Xamarin 和 Xamarin 都不受支援，因為這些平臺是用來建立公用用戶端應用程式。 ) 
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支援 Python 中的 daemon 應用程式。
   ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 支援 JAVA 中的 daemon 應用程式。
 
 ## <a name="configure-the-authority"></a>設定授權單位
 
-Daemon 應用程式會使用應用程式許可權，而不是委派的許可權。 因此，其支援的帳戶類型不能是任何組織目錄中的帳戶，也不能是任何個人 Microsoft 帳戶（例如 Skype、Xbox、Outlook.com）。 沒有租使用者系統管理員可將同意授與 Microsoft 個人帳戶的 daemon 應用程式。 您必須選擇 [*我的組織中的帳戶*] 或*任何組織中的帳戶*。
+Daemon 應用程式會使用應用程式許可權，而不是委派的許可權。 因此，其支援的帳戶類型不能是任何組織目錄中的帳戶，也不能是任何個人 Microsoft 帳戶 (例如 Skype、Xbox、Outlook.com) 。 沒有租使用者系統管理員可將同意授與 Microsoft 個人帳戶的 daemon 應用程式。 您必須選擇 [*我的組織中的帳戶*] 或*任何組織中的帳戶*。
 
-因此，應用程式設定中指定的授權單位應該是租使用者（指定租使用者識別碼或與您組織相關聯的功能變數名稱）。
+因此，您應該租使用者應用程式設定中指定的授權單位， (指定租使用者識別碼或與您的組織) 相關聯的功能變數名稱。
 
-如果您是 ISV，而且想要提供多租使用者工具，您可以使用 `organizations` 。 但請記住，您也必須向客戶說明如何授與系統管理員同意。 如需詳細資訊，請參閱[要求對整個租使用者的同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 此外，目前在 MSAL 中有一項限制： `organizations` 只有在用戶端認證是應用程式密碼（而非憑證）時，才允許使用。
+如果您是 ISV，而且想要提供多租使用者工具，您可以使用 `organizations` 。 但請記住，您也必須向客戶說明如何授與系統管理員同意。 如需詳細資訊，請參閱[要求對整個租使用者的同意](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。 此外，目前只有 MSAL 的限制：只有在 `organizations` 用戶端認證是應用程式密碼， (不是) 憑證時，才允許使用。
 
 ## <a name="configure-and-instantiate-the-application"></a>設定並具現化應用程式
 
-在 MSAL 程式庫中，用戶端認證（密碼或憑證）會當做機密用戶端應用程式結構的參數來傳遞。
+在 MSAL 程式庫中， (秘密或憑證) 的用戶端認證會當做機密用戶端應用程式結構的參數來傳遞。
 
 > [!IMPORTANT]
 > 即使您的應用程式是以服務形式執行的主控台應用程式，如果它是背景程式應用程式，則必須是機密用戶端應用程式。
@@ -111,9 +111,9 @@ Daemon 應用程式會使用應用程式許可權，而不是委派的許可權�
 
 ### <a name="instantiate-the-msal-application"></a>具現化 MSAL 應用程式
 
-若要具現化 MSAL 應用程式，您必須新增、參考或匯入 MSAL 套件（視語言而定）。
+若要具現化 MSAL 應用程式，您必須根據語言) 來新增、參考或匯入 MSAL 封裝 (。
 
-根據您使用的是用戶端密碼或憑證（或是做為高階案例，已簽署的判斷提示），此結構會有所不同。
+視您使用的是用戶端密碼或憑證而定，此結構會有所不同，這是以預先簽署的判斷提示)  (。
 
 #### <a name="reference-the-package"></a>參考封裝
 

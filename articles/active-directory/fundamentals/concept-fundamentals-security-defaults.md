@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c5015cb6328dba70fed40053bc234966572ae98
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554537"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873716"
 ---
 # <a name="what-are-security-defaults"></a>什麼是安全性預設值？
 
-與一般身分識別相關的常見攻擊 (例如密碼噴濺、重新執行和網路釣魚) 變得越來越普遍，因此管理安全性可能會很棘手。 安全性預設值可供使用預先設定的設安全性定，輕鬆地保護組織免於遭受這些攻擊：
+與一般身分識別相關的攻擊（例如密碼噴灑、重新執行和網路釣魚）變得越來越普遍，因此管理安全性可能會很棘手。 安全性預設值可供使用預先設定的設安全性定，輕鬆地保護組織免於遭受這些攻擊：
 
 - 要求所有使用者註冊 Azure Multi-Factor Authentication。
 - 要求系統管理員執行多重要素驗證。

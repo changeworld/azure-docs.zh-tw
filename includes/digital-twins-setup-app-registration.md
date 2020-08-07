@@ -12,7 +12,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
 ms.locfileid: "87408258"
 ---
-設定 Azure 數位 Twins 實例之後，通常會透過用戶端應用程式與該實例進行互動。 若要建立可運作的用戶端應用程式，您必須確定用戶端應用程式能夠針對 Azure 數位 Twins 進行驗證。 這是藉由設定[Azure Active Directory （Azure AD）](../articles/active-directory/fundamentals/active-directory-whatis.md) **應用程式註冊**來完成，以供用戶端應用程式使用。
+設定 Azure 數位 Twins 實例之後，通常會透過用戶端應用程式與該實例進行互動。 若要建立可運作的用戶端應用程式，您必須確定用戶端應用程式能夠針對 Azure 數位 Twins 進行驗證。 做法是設定[Azure Active Directory (Azure AD) ](../articles/active-directory/fundamentals/active-directory-whatis.md) **應用程式註冊**，以供用戶端應用程式使用。
 
 此應用程式註冊可讓您設定[Azure 數位 Twins api](../articles/digital-twins/how-to-use-apis-sdks.md)的存取權限。 之後，用戶端應用程式會對應用程式註冊進行驗證，因此會授與對 Api 所設定的存取權限。
 

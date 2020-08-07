@@ -6,13 +6,13 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.custom: tracking-python
-ms.openlocfilehash: fa68f1ea8c0dd0d4367d3dcf39f059d0bd8a77ea
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-python
+ms.openlocfilehash: f2645cc76f6b1a59e84ee01cbc8d4c650cd6c789
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421921"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843619"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遙測相互關聯
 
@@ -24,7 +24,7 @@ ms.locfileid: "87421921"
 
 Application Insights 會定義分散遙測相互關聯的[資料模型](../../azure-monitor/app/data-model.md)。 為了讓遙測與邏輯作業產生關聯，每個遙測專案都有一個稱為的內容欄位 `operation_Id` 。 每個遙測項目會在分散式追蹤內共用這個識別碼。 因此，即使您遺失單一層的遙測，仍然可以將其他元件所報告的遙測相關聯。
 
-分散式邏輯作業通常包含一組較小的作業，這是由其中一個元件所處理的要求。 這些作業是由[要求遙測](../../azure-monitor/app/data-model-request-telemetry.md)所定義。 每個要求遙測專案都有自己 `id` 的唯一和全域識別。 與要求相關聯的所有遙測專案（例如追蹤和例外狀況）都應該將設定 `operation_parentId` 為要求的值 `id` 。
+分散式邏輯作業通常包含一組較小的作業，這是由其中一個元件所處理的要求。 這些作業是由[要求遙測](../../azure-monitor/app/data-model-request-telemetry.md)所定義。 每個要求遙測專案都有自己 `id` 的唯一和全域識別。 與要求相關聯的所有遙測專案 (例如追蹤和例外狀況) ，都應該將設定 `operation_parentId` 為要求的值 `id` 。
 
 每個連出作業 (例如對另一個元件的 HTTP 呼叫) 都會由[相依性遙測](../../azure-monitor/app/data-model-dependency-telemetry.md)代表。 相依性遙測也會定義它自己 `id` 的全域唯一的。 由這個相依性呼叫起始的要求遙測會使用 這個 `id` 作為其 `operation_parentId`。
 
@@ -44,7 +44,7 @@ Application Insights 會定義分散遙測相互關聯的[資料模型](../../az
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-在結果中，請注意，所有遙測項目都共用 `operation_Id` 這個根。 從頁面進行 Ajax 呼叫時，會將新的唯一識別碼（ `qJSXU` ）指派給相依性遙測，並使用 pageView 的識別碼作為 `operation_ParentId` 。 接著，伺服器要求會使用 Ajax 識別碼作為 `operation_ParentId`。
+在結果中，請注意，所有遙測項目都共用 `operation_Id` 這個根。 從頁面進行 Ajax 呼叫時，會將新的唯一識別碼 (`qJSXU`) 指派給相依性遙測，並使用 pageView 的識別碼作為 `operation_ParentId` 。 接著，伺服器要求會使用 Ajax 識別碼作為 `operation_ParentId`。
 
 | itemType   | NAME                      | 識別碼           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
@@ -62,7 +62,7 @@ Application Insights 正在轉換為[W3C 追蹤內容](https://w3c.github.io/tra
 - `traceparent`：會攜帶全域唯一的作業識別碼和呼叫的唯一識別碼。
 - `tracestate`：攜帶系統特定的追蹤內容。
 
-最新版的 Application Insights SDK 支援追蹤內容通訊協定，但您可能需要加入宣告。 （將會維護 Application Insights SDK 支援的舊版相互關聯通訊協定的回溯相容性）。
+最新版的 Application Insights SDK 支援追蹤內容通訊協定，但您可能需要加入宣告。 Application Insights SDK 所支援的先前相互關聯通訊協定 (回溯相容性將會維持。 ) 
 
 相互[關聯 HTTP 通訊協定（也稱為要求識別碼](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)）即將被取代。 此通訊協定會定義兩個標頭：
 
@@ -76,7 +76,7 @@ Application Insights 也會定義相互關聯 HTTP 通訊協定的[延伸](https
   > [!NOTE]
   >  從 `Microsoft.ApplicationInsights.Web` 和開始 `Microsoft.ApplicationInsights.DependencyCollector` ，不需要進行任何設定。
 
-W3C 追蹤內容支援是以後向相容的方式來執行。 相互關聯應使用舊版 SDK 所檢測的應用程式（不含 W3C 支援）。
+W3C 追蹤內容支援是以後向相容的方式來執行。 相互關聯應與使用舊版 SDK 檢測的應用程式搭配使用， (沒有 W3C 支援) 。
 
 如果您想要繼續使用舊版 `Request-Id` 通訊協定，可以使用此設定來停用追蹤內容：
 
@@ -105,7 +105,7 @@ W3C 追蹤內容支援是以後向相容的方式來執行。 相互關聯應使
  > [!NOTE]
   > 從 `Microsoft.ApplicationInsights.AspNetCore` 版本2.8.0 開始，不需要進行任何設定。
  
-W3C 追蹤內容支援是以後向相容的方式來執行。 相互關聯應使用舊版 SDK 所檢測的應用程式（不含 W3C 支援）。
+W3C 追蹤內容支援是以後向相容的方式來執行。 相互關聯應與使用舊版 SDK 檢測的應用程式搭配使用， (沒有 W3C 支援) 。
 
 如果您想要繼續使用舊版 `Request-Id` 通訊協定，可以使用此設定來停用追蹤內容：
 
@@ -175,7 +175,7 @@ public void ConfigureServices(IServiceCollection services)
 
 這項功能在中 `Microsoft.ApplicationInsights.JavaScript` 。 此功能預設為停用。 若要啟用它，請使用 `distributedTracingMode` config。AI_AND_W3C 是為了與 Application Insights 所檢測的任何舊版服務回溯相容性而提供。
 
-- **npm 設定（如果使用程式碼片段設定則忽略）**
+- **如果使用程式碼片段設定) ，npm 安裝 (略過**
 
   ```javascript
   import { ApplicationInsights, DistributedTracingModes } from '@microsoft/applicationinsights-web';
@@ -188,7 +188,7 @@ public void ConfigureServices(IServiceCollection services)
   appInsights.loadAppInsights();
   ```
   
-- **程式碼片段設定（如果使用 npm 安裝程式則忽略）**
+- **如果使用 npm 安裝程式，程式碼片段設定 (略過]) **
 
   ```
   <script type="text/javascript">
@@ -263,9 +263,9 @@ curl --header "traceparent: 00-4bf92f3577b34da6a3ce929d0e0e4736-00f067aa0ba902b7
 
 `trace-flags`: `01`
 
-如果您查看已傳送至 Azure 監視器的要求專案，您可以看到填入追蹤標頭資訊的欄位。 您可以在 Azure 監視器 Application Insights 資源中的 [記錄（分析）] 下找到此資料。
+如果您查看已傳送至 Azure 監視器的要求專案，您可以看到填入追蹤標頭資訊的欄位。 您可以在 [Azure 監視器 Application Insights 資源] 中的 [記錄] ([分析) ] 下找到此資料。
 
-![在記錄中要求遙測（分析）](./media/opencensus-python/0011-correlation.png)
+![ (分析的記錄中要求遙測) ](./media/opencensus-python/0011-correlation.png)
 
 `id`欄位的格式為 `<trace-id>.<span-id>` ，其中 `trace-id` 是取自要求中所傳遞的追蹤標頭，而 `span-id` 是為此範圍產生的8位元組陣列。
 
@@ -321,17 +321,17 @@ ASP.NET Core 2.0 支援提取 HTTP 標頭和啟動新的活動。
 
 `System.Net.Http.HttpClient`從版本4.1.0 開始，支援自動插入相互關聯 HTTP 標頭和追蹤 HTTP 呼叫做為活動。
 
-有一個新的 HTTP 模組[microsoft.aspnet.telemetrycorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)，適用于傳統 ASP.NET。 此模組會使用 `DiagnosticSource` 來實作遙測相互關聯。 它會根據連入要求標頭來啟動活動。 它也會將來自不同要求處理階段的遙測相互關聯，即使 Internet Information Services （IIS）處理的每個階段都是在不同的 managed 執行緒上執行也一樣。
+有一個新的 HTTP 模組[microsoft.aspnet.telemetrycorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)，適用于傳統 ASP.NET。 此模組會使用 `DiagnosticSource` 來實作遙測相互關聯。 它會根據連入要求標頭來啟動活動。 它也會將來自不同要求處理階段的遙測相互關聯，即使每個 Internet Information Services 階段 (IIS) 處理都是在不同的 managed 執行緒上執行。
 
 Application Insights SDK 從 2.4.0-beta1 版開始，會使用 `DiagnosticSource` 和 `Activity` 來收集遙測，並將它與目前活動建立關聯。
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>JAVA 中的遙測相互關聯
 
-[JAVA 代理程式](./java-in-process-agent.md)以及[java SDK](../../azure-monitor/app/java-get-started.md) version 2.0.0 或更新版本都支援遙測的自動相互關聯。 它會自動填入在 `operation_id` 要求範圍內發出的所有遙測（例如追蹤、例外狀況和自訂事件）。 如果已設定[JAVA SDK 代理程式](../../azure-monitor/app/java-agent.md)，它也會透過 HTTP 傳播服務對服務呼叫的相互關聯標頭（如前文所述）。
+[JAVA 代理程式](./java-in-process-agent.md)以及[java SDK](../../azure-monitor/app/java-get-started.md) version 2.0.0 或更新版本都支援遙測的自動相互關聯。 它會自動填入在 `operation_id` 要求範圍內發出的所有遙測 (例如追蹤、例外狀況和自訂事件) 。 如果已設定[JAVA SDK 代理程式](../../azure-monitor/app/java-agent.md)，它也會傳播 (先前) 的相互關聯標頭，以透過 HTTP 進行服務對服務呼叫。
 
 > [!NOTE]
-> Application Insights JAVA 代理程式會自動收集 JMS、Kafka、Netty/Webflux 等等的要求和相依性。 針對 JAVA SDK，相互關聯功能僅支援透過 Apache HttpClient 所提出的呼叫。 SDK 不支援跨訊息技術（例如 Kafka、RabbitMQ 和 Azure 服務匯流排）的自動內容傳播。 
+> Application Insights JAVA 代理程式會自動收集 JMS、Kafka、Netty/Webflux 等等的要求和相依性。 針對 JAVA SDK，相互關聯功能僅支援透過 Apache HttpClient 所提出的呼叫。 SDK 不支援跨訊息 (技術（例如 Kafka、RabbitMQ 和 Azure 服務匯流排) ）的自動內容傳播。 
 
 > [!NOTE]
 > 若要收集自訂遙測，您需要使用 JAVA 2.6 SDK 來檢測應用程式。 

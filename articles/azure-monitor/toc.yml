@@ -171,10 +171,14 @@
         - name: 監視 Azure 虛擬機器
           href: insights/monitor-vm-azure.md
           displayname: VM
+    - name: 部署
+      items:
+        - name: 部署 Azure 監視器
+          href: deploy.md
+        - name: 大規模部署
+          href: deploy-scale.md
     - name: 管理和設定
       items:
-        - name: 大規模部署
-          href: platform/deploy-scale.md
         - name: 角色權限與安全性
           href: platform/roles-permissions-security.md
         - name: IP 位址
@@ -254,7 +258,7 @@
                 - name: Linux
                   displayname: diagnostics extension
                   items:
-                    - name: 總覽
+                    - name: 概觀
                       href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
                     - name: 使用 Telegraf 收集計量
                       href: platform/collect-custom-metrics-linux-telegraf.md
@@ -937,7 +941,7 @@
           href: insights/vminsights-optout.md
     - name: 適用於容器的 Azure 監視器
       items:
-        - name: 總覽
+        - name: 概觀
           href: insights/container-insights-overview.md
         - name: 常見問題集
           href: faq.md#azure-monitor-for-containers

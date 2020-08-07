@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 85fb188028e0e61378b1e47c1fb7b88eaaa4d7a0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 1caddf2fba8544bfbb1108865a459f4166af680b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541918"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846066"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 Web API 的傳統型應用程式：取得權杖
 
@@ -213,7 +213,7 @@ WithParentActivityOrWindow(object parent).
 
 `WithPrompt()` 是用來透過指定提示，以控制使用者的互動性。
 
-![顯示提示結構中欄位的影像。 這些常數值會藉由定義 WithPrompt （）方法所顯示的提示類型，以控制與使用者的互動。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![顯示提示結構中欄位的影像。 這些常數值會藉由定義 WithPrompt ( # A1 方法所顯示的提示類型，以控制與使用者的互動。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 類別會定義下列常數：
 

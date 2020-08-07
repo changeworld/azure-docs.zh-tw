@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 559198c4ecbbc86cc82ce8b286d9608170e161c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: c377d9882b59731857641e1f593dd6b7b24ca7f9
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079718"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844077"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Functions 的 Azure 服務匯流排輸出系結
 
@@ -287,12 +287,12 @@ Python 指令碼不支援屬性。
 |**name** | n/a | 代表函式程式碼中佇列或主題訊息的變數名稱。 設為 "$return" 以參考函式傳回值。 |
 |**queueName**|**QueueName**|佇列的名稱。  只有在傳送佇列訊息時設定 (不適用於主題)。
 |**topicName**|**TopicName**|主題的名稱。 只有在傳送主題訊息時設定 (不適用於佇列)。|
-|**connection**|**連線**|應用程式設定的名稱包含要用於此繫結的服務匯流排連接字串。 如果應用程式設定名稱是以 "AzureWebJobs" 開頭，您只能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyServiceBus"，函數執行時間會尋找名為 "AzureWebJobsMyServiceBus" 的應用程式設定。 如果您將 `connection` 保留空白，則 Functions 執行階段會使用應用程式設定中名稱為 "AzureWebJobsServiceBus" 的預設服務匯流排連接字串。<br><br>若要取得連接字串，請遵循[取得管理認證](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)所示的步驟。 連接字串必須是用於服務匯流排命名空間，而不限於特定佇列或主題。|
-|**accessRights** （僅限 v1）|**存取**|連接字串的存取權限。 可用值為 `manage` 和 `listen`。 預設值是 `manage`，這表示 `connection` 已具備**管理**權限。 如果您使用沒有**管理**權限的連接字串，請將 `accessRights` 設定為 "listen"。 否則，Functions 執行階段在嘗試執行需要管理權限的作業時可能會失敗。 在 Azure Functions 2.x 版和更新版本中，因為最新版的服務匯流排 SDK 不支援管理作業，所以無法使用這個屬性。|
+|**connection**|**[連接]**|應用程式設定的名稱包含要用於此繫結的服務匯流排連接字串。 如果應用程式設定名稱是以 "AzureWebJobs" 開頭，您只能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyServiceBus"，函數執行時間會尋找名為 "AzureWebJobsMyServiceBus" 的應用程式設定。 如果您將 `connection` 保留空白，則 Functions 執行階段會使用應用程式設定中名稱為 "AzureWebJobsServiceBus" 的預設服務匯流排連接字串。<br><br>若要取得連接字串，請遵循[取得管理認證](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)所示的步驟。 連接字串必須是用於服務匯流排命名空間，而不限於特定佇列或主題。|
+|僅限**accessRights** (v1) |**存取**|連接字串的存取權限。 可用值為 `manage` 和 `listen`。 預設值是 `manage`，這表示 `connection` 已具備**管理**權限。 如果您使用沒有**管理**權限的連接字串，請將 `accessRights` 設定為 "listen"。 否則，Functions 執行階段在嘗試執行需要管理權限的作業時可能會失敗。 在 Azure Functions 2.x 版和更新版本中，因為最新版的服務匯流排 SDK 不支援管理作業，所以無法使用這個屬性。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用量
 
 在 Azure Functions 1.x 中，執行階段會建立佇列 (如果佇列不存在)，且您已將 `accessRights` 設為 `manage`。 在函數2.x 版和更新版本中，佇列或主題必須已經存在;如果您指定的佇列或主題不存在，此函式將會失敗。 
 
@@ -303,9 +303,9 @@ Python 指令碼不支援屬性。
 * `out T paramName` - `T` 可以是任何可序列化 JSON 的類型。 當函式結束時，如果參數值為 Null，則 Functions 會使用 Null 物件建立訊息。
 * `out string` - 當函式結束時，如果參數值為 Null，則 Functions 不會建立一則訊息。
 * `out byte[]` - 當函式結束時，如果參數值為 Null，則 Functions 不會建立一則訊息。
-* `out BrokeredMessage`-如果函式結束時，參數值為 null，函數不會建立訊息（針對函式1.x）
-* `out Message`-如果參數值在函式結束時為 null，函式不會建立訊息（for 函數2.x 和更新版本）
-* `ICollector<T>`或 `IAsyncCollector<T>` （適用于非同步方法）-用於建立多個訊息。 當您呼叫 `Add` 方法時，就會建立一則訊息。
+* `out BrokeredMessage`-如果函式結束時，參數值為 null，則函數不會建立函式 1.x) 的訊息 (
+* `out Message`-如果參數值在函式結束時為 null，則函式不會建立函式2.x 和更高版本的訊息 () 
+* `ICollector<T>`或 `IAsyncCollector<T>` (非同步方法的) -用於建立多個訊息。 當您呼叫 `Add` 方法時，就會建立一則訊息。
 
 使用 c # 函數時：
 
@@ -320,8 +320,8 @@ Python 指令碼不支援屬性。
 * `out T paramName` - `T` 可以是任何可序列化 JSON 的類型。 當函式結束時，如果參數值為 Null，則 Functions 會使用 Null 物件建立訊息。
 * `out string` - 當函式結束時，如果參數值為 Null，則 Functions 不會建立一則訊息。
 * `out byte[]` - 當函式結束時，如果參數值為 Null，則 Functions 不會建立一則訊息。
-* `out BrokeredMessage`-如果函式結束時，參數值為 null，函數不會建立訊息（針對函式1.x）
-* `out Message`-如果參數值在函式結束時為 null，函式不會建立訊息（for 函數2.x 和更新版本）
+* `out BrokeredMessage`-如果函式結束時，參數值為 null，則函數不會建立函式 1.x) 的訊息 (
+* `out Message`-如果參數值在函式結束時為 null，則函式不會建立函式2.x 和更高版本的訊息 () 
 * `ICollector<T>` 或 `IAsyncCollector<T>` - 適用於建立多個訊息。 當您呼叫 `Add` 方法時，就會建立一則訊息。
 
 使用 c # 函數時：
@@ -332,7 +332,7 @@ Python 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用來存取佇列或主題 `context.bindings.<name from function.json>` 。 您可以將字串、位元組陣列或 JavaScript 物件（還原序列化為 JSON）指派給 `context.binding.<name>` 。
+使用來存取佇列或主題 `context.bindings.<name from function.json>` 。 您可以指派字串、位元組陣列或 JavaScript 物件 (還原序列化為的 JSON) 至 `context.binding.<name>` 。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -388,10 +388,10 @@ Python 指令碼不支援屬性。
 |---------|---------|---------|
 |prefetchCount|0|取得或設定訊息接收者可以同時要求的訊息數目。|
 |maxAutoRenewDuration|00:05:00|將自動更新訊息鎖定的最大持續時間。|
-|autoComplete|true|觸發程式是否應該在處理之後自動呼叫 complete，或函式程式碼是否會手動呼叫 complete。<br><br>`false`只有在 c # 中才支援將設定為。<br><br>如果設定為 `true` ，則觸發程式會在函式執行成功完成時自動完成訊息，否則會放棄訊息。<br><br>當設定為時 `false` ，您必須負責呼叫[MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)方法，以完成、放棄或 deadletter 訊息。 如果擲回例外狀況（而且沒有呼叫任何 `MessageReceiver` 方法），則會保留鎖定。 鎖定過期後，訊息會以遞增的方式重新排入佇列， `DeliveryCount` 並自動更新鎖定。<br><br>在非 C # 函式中，函式中的例外狀況會導致執行時間在背景中呼叫 `abandonAsync` 。 如果沒有發生任何例外狀況，則 `completeAsync` 會在背景中呼叫。 |
+|autoComplete|true|觸發程式是否應該在處理之後自動呼叫 complete，或函式程式碼是否會手動呼叫 complete。<br><br>`false`只有在 c # 中才支援將設定為。<br><br>如果設定為 `true` ，則觸發程式會在函式執行成功完成時自動完成訊息，否則會放棄訊息。<br><br>當設定為時 `false` ，您必須負責呼叫[MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)方法，以完成、放棄或 deadletter 訊息。 如果擲回例外狀況 (，且未 `MessageReceiver`) 呼叫任何方法，則會保留鎖定。 鎖定過期後，訊息會以遞增的方式重新排入佇列， `DeliveryCount` 並自動更新鎖定。<br><br>在非 C # 函式中，函式中的例外狀況會導致執行時間在背景中呼叫 `abandonAsync` 。 如果沒有發生任何例外狀況，則 `completeAsync` 會在背景中呼叫。 |
 |maxConcurrentCalls|16|對回呼的並行呼叫數目上限，訊息抽取應針對每個縮放的實例起始。 Functions 執行階段預設會並行處理多個訊息。|
 |maxConcurrentSessions|2000|每個縮放的實例可以同時處理的會話數目上限。|
 
 ## <a name="next-steps"></a>後續步驟
 
-- [建立服務匯流排佇列或主題訊息時執行函數（觸發程式）](./functions-bindings-service-bus-trigger.md)
+- [ (觸發程式建立服務匯流排佇列或主題訊息時執行函式) ](./functions-bindings-service-bus-trigger.md)

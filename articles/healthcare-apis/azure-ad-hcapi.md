@@ -3,18 +3,18 @@ title: Azure API for FHIR 的 Azure Active Directory 身分識別設定
 description: 瞭解 Azure FHIR server 的身分識別、驗證和授權原則。
 services: healthcare-apis
 author: caitlinv39
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
-ms.openlocfilehash: 53adf974a3af4a2cc3e5c89156fe4b50571c7b79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cdb73670996341e9219230bb277e087009266f32
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84870908"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846015"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>Azure API for FHIR 的 Azure Active Directory 身分識別設定
 
@@ -22,7 +22,7 @@ ms.locfileid: "84870908"
 
 ## <a name="access-control-overview"></a>存取控制概觀
 
-為了讓用戶端應用程式存取 Azure API for FHIR，它必須呈現存取權杖。 存取權杖是以[Base64](https://en.wikipedia.org/wiki/Base64)編碼的屬性（宣告）集合，可傳達用戶端身分識別的相關資訊，以及授與用戶端的角色和許可權。
+為了讓用戶端應用程式存取 Azure API for FHIR，它必須呈現存取權杖。 存取權杖是已簽署、 [Base64](https://en.wikipedia.org/wiki/Base64)編碼的屬性集合， (宣告) 以傳達用戶端身分識別的相關資訊，以及授與用戶端的角色和許可權。
 
 有數種方式可以取得權杖，但 Azure API for FHIR 並不在意權杖的取得方式，只要它是具有正確宣告的適當簽署權杖即可。 
 
@@ -30,18 +30,18 @@ ms.locfileid: "84870908"
 
 ![FHIR 授權](media/azure-ad-hcapi/fhir-authorization.png)
 
-1. 用戶端會將要求傳送至 `/authorize` Azure AD 的端點。 Azure AD 會將用戶端重新導向至登入頁面，使用者將使用適當的認證（例如使用者名稱和密碼或雙因素驗證）來進行驗證。 請參閱[取得授權碼](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#request-an-authorization-code)的詳細資訊。 驗證成功之後，會將*授權碼*傳回給用戶端。 Azure AD 只允許將此授權碼傳回給用戶端應用程式註冊中所設定的已註冊回復 URL （請參閱下文）。
-1. 用戶端應用程式會在 Azure AD 的端點上交換*存取權杖*的授權碼 `/token` 。 要求權杖時，用戶端應用程式可能必須提供用戶端秘密（應用程式密碼）。 請參閱[取得存取權杖](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#use-the-authorization-code-to-request-an-access-token)的詳細資料。
+1. 用戶端會將要求傳送至 `/authorize` Azure AD 的端點。 Azure AD 會將用戶端重新導向至登入頁面，使用者將使用適當的認證進行驗證， (例如使用者名稱和密碼或雙因素驗證) 。 請參閱[取得授權碼](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#request-an-authorization-code)的詳細資訊。 驗證成功之後，會將*授權碼*傳回給用戶端。 Azure AD 只允許將此授權碼傳回給用戶端應用程式註冊中所設定的已註冊回復 URL (請參閱以下) 。
+1. 用戶端應用程式會在 Azure AD 的端點上交換*存取權杖*的授權碼 `/token` 。 在要求權杖時，用戶端應用程式可能必須提供用戶端密碼 (應用程式密碼) 。 請參閱[取得存取權杖](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#use-the-authorization-code-to-request-an-access-token)的詳細資料。
 1. 用戶端對 Azure API for FHIR 提出要求，例如 `GET /Patient` 搜尋所有病人。 當提出要求時，它會在 HTTP 要求標頭中包含存取權杖，例如 `Authorization: Bearer eyJ0e...` ，其中 `eyJ0e...` 代表 Base64 編碼的存取權杖。
-1. Azure API for FHIR 會驗證權杖是否包含適當的宣告（權杖中的屬性）。 如果所有專案都已簽出，就會完成要求，並將結果傳回 FHIR 組合給用戶端。
+1. Azure API for FHIR 會驗證權杖是否在權杖) 中包含適當的宣告 (屬性。 如果所有專案都已簽出，就會完成要求，並將結果傳回 FHIR 組合給用戶端。
 
-請務必注意，Azure API for FHIR 不會涉及驗證使用者認證，也不會發出權杖。 驗證和權杖建立是由 Azure AD 完成。 Azure API for FHIR 只會驗證權杖是否已正確簽署（它是真實的），而且它具有適當的宣告。
+請務必注意，Azure API for FHIR 不會涉及驗證使用者認證，也不會發出權杖。 驗證和權杖建立是由 Azure AD 完成。 Azure API for FHIR 只會驗證權杖是否已正確簽署， (其是否為正版) 而且具有適當的宣告。
 
 ## <a name="structure-of-an-access-token"></a>存取權杖的結構
 
-開發 FHIR 應用程式時，通常會牽涉到偵錯工具的存取問題。 如果用戶端遭到拒絕存取 Azure API for FHIR，瞭解存取權杖的結構，以及如何將其解碼以檢查權杖的內容（宣告），會很有説明。 
+開發 FHIR 應用程式時，通常會牽涉到偵錯工具的存取問題。 如果用戶端遭到拒絕存取 Azure API for FHIR，瞭解存取權杖的結構，以及如何將其解碼以檢查權杖的宣告)  (內容，會很有説明。 
 
-FHIR 伺服器通常會預期使用[JSON Web 權杖](https://en.wikipedia.org/wiki/JSON_Web_Token)（JWT，有時也會是「jot」）。 其中包含三個部分：
+FHIR 伺服器通常會預期 (JWT 的[JSON Web 權杖](https://en.wikipedia.org/wiki/JSON_Web_Token)，有時會 ) 的「jot」。 其中包含三個部分：
 
 1. 標頭，如下所示：
     ```json
@@ -50,7 +50,7 @@ FHIR 伺服器通常會預期使用[JSON Web 權杖](https://en.wikipedia.org/wi
       "typ": "JWT"
     }
     ```
-1. 承載（宣告），例如：
+1. 承載 (宣告) ，例如：
     ```json
     {
      "oid": "123",
@@ -61,9 +61,9 @@ FHIR 伺服器通常會預期使用[JSON Web 權杖](https://en.wikipedia.org/wi
       ]
     }
     ```
-1. 簽章，其計算方式是串連標頭的 Base64 編碼內容和裝載，並根據 `alg` 標頭中指定的演算法（）來計算其密碼編譯雜湊。 伺服器將能夠從身分識別提供者取得公開金鑰，並驗證此權杖是由特定的識別提供者所發出，而且尚未遭到篡改。
+1. 簽章，其計算方式是串連標頭的 Base64 編碼內容和裝載，並根據 (`alg`) 在標頭中指定的演算法來計算其密碼編譯雜湊。 伺服器將能夠從身分識別提供者取得公開金鑰，並驗證此權杖是由特定的識別提供者所發出，而且尚未遭到篡改。
 
-完整的 token 是由這三個區段的 Base64 編碼（實際上是 Base64 url 編碼）版本所組成。 這三個區段會串連並以 `.` （點）分隔。
+完整的 token 包含 Base64 編碼 (這三個區段的) 版本實際上是以 Base64 url 編碼。 這三個區段會串連，並以 `.` (點) 分隔。
 
 範例 token 如下所示：
 
@@ -104,7 +104,7 @@ Azure AD 檔的相關章節包括：
     * [授權碼流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)。
     * [用戶端認證流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)。
 
-取得權杖的其他變化（例如代表流程）。 如需詳細資訊，請參閱 Azure AD 檔。 使用 Azure API for FHIR 時，還有一些快速鍵可以[使用 Azure CLI](get-healthcare-apis-access-token-cli.md)來取得存取權杖（用於進行調試）。
+有其他 (的變化，例如代表取得權杖的流程) 。 如需詳細資訊，請參閱 Azure AD 檔。 使用 Azure API for FHIR 時，還有一些快速鍵可以用來取得存取權杖， (用於) [使用 Azure CLI](get-healthcare-apis-access-token-cli.md)進行的偵錯工具。
 
 ## <a name="next-steps"></a>後續步驟
 

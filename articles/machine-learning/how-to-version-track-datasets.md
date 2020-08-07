@@ -10,13 +10,13 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 58458c4a4e5ff1317ef740208a7d7ff9f6fa925c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 4ae0ebaec011634153e4ac9bbe43ef519c58a251
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325741"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845879"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>版本和追蹤實驗中的資料集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>依名稱取得資料集
 
-根據預設，類別上的[get_by_name （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)方法會傳回 `Dataset` 已向工作區註冊之資料集的最新版本。 
+根據預設，類別上的[get_by_name ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--)方法會傳回 `Dataset` 已向工作區註冊之資料集的最新版本。 
 
 下列程式碼會取得資料集的第1版 `titanic_ds` 。
 
