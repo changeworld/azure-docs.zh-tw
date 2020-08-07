@@ -6,13 +6,13 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/22/2017
-ms.custom: tracking-python
-ms.openlocfilehash: bdb40fee95c018cbdebac7c28aa131c98e3ee4c3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-python
+ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129861"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876201"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>針對 Visual Studio Code 中的 Azure Data Lake Analytics 使用 Python、R 和 C# 開發 U-SQL
 了解如何使用 Visual Studio Code (VSCode) 以透過 U-SQL 撰寫 Python、R 和 C# 的程式碼後置，並將作業提交至 Azure Data Lake 服務。 如需關於 Azure Data Lake Tools for VSCode 的詳細資訊，請參閱[使用 Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)。

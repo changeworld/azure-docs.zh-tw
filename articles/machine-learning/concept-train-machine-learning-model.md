@@ -9,13 +9,13 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.custom: tracking-python
-ms.openlocfilehash: b35f971d90f8cd74e2f5a60e34864d8e55a743c4
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-python
+ms.openlocfilehash: dee74c787f6546494d12ea582eab383fbd99079d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431913"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876898"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -101,18 +101,18 @@ Azure 訓練週期由下列各項組成：
 1. 建立或下載 dockerfile 至計算節點 
     1. 系統會計算的雜湊： 
         - 基底映射 
-        - 自訂 docker 步驟（請參閱[使用自訂的 docker 基底映射部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)）
-        - Conda 定義 YAML （請參閱[建立 & 使用 Azure Machine Learning 中的軟體環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)）
-    1. 系統會使用此雜湊做為 Azure Container Registry （ACR）查詢工作區的索引鍵
+        - 自訂 docker 步驟 (參閱[使用自訂的 docker 基底映射部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
+        - Conda 定義 YAML (參閱[建立 & 在 Azure Machine Learning 中使用軟體環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
+    1. 系統會使用此雜湊作為 Azure Container Registry (ACR 的工作區查閱中的索引鍵) 
     1. 如果找不到，它會在全域 ACR 中尋找相符的
-    1. 如果找不到，系統會建立新的映射（將會快取並向工作區 ACR 註冊）
+    1. 如果找不到，系統會建立新的映射， (將會快取並向工作區 ACR 註冊) 
 1. 將壓縮的專案檔案下載到計算節點上的暫存儲存體
 1. 解壓縮專案檔案
 1. 執行的計算節點`python <entry script> <arguments>`
 1. 將記錄檔、模型檔案和其他寫入的檔案儲存 `./outputs` 至與工作區相關聯的儲存體帳戶
 1. 相應減少計算，包括移除暫存儲存體 
 
-如果您選擇在本機電腦上定型（「設定為本機執行」），則不需要使用 Docker。 如果您選擇，您可以在本機使用 Docker （如需範例，請參閱[設定 ML 管線](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline )一節）。
+如果您選擇在本機電腦上定型 ( 「設定為本機執行」 ) ，則不需要使用 Docker。 如果您選擇 (請參閱為範例) [設定 ML 管線](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline )一節，您可以在本機使用 Docker。
 
 ## <a name="r-sdk"></a>R SDK
 

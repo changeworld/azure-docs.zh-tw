@@ -7,14 +7,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, tracking-python
+ms.custom: seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: ea2bda905879f6bdc6cc515f43474ff570e881b4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 14f0c7177953e43b0c58b4f5432d0c08c5f03f45
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078879"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876609"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>設定 Visual Studio Code 的 PySpark 互動式環境
 
@@ -25,7 +25,7 @@ ms.locfileid: "86078879"
 1. 安裝[Python](https://www.python.org/downloads/)和[pip](https://pip.pypa.io/en/stable/installing/)。
 
    * 從安裝 Python [https://www.python.org/downloads/](https://www.python.org/downloads/) 。 
-   * 從安裝 pip [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) （如果它不是從 Python 安裝安裝）。
+   * 從 (安裝 pip （ [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) 如果未從 Python 安裝) 安裝）。
    * 使用下列命令來驗證是否已成功安裝 Python 和 pip。 (選用)
 
         ![檢查 Python pip 版本命令](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
@@ -55,7 +55,7 @@ sudo apt-get install python-dev
 
 重新開機 VSCode，然後返回 [VSCode 編輯器] 並執行**Spark： PySPark Interactive**命令。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 ### <a name="demo"></a>示範
 

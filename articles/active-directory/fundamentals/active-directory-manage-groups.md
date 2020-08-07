@@ -2,7 +2,7 @@
 title: 使用群組來管理應用程式 & 資源存取-Azure AD
 description: 了解如何使用 Azure Active Directory 群組來管理貴組織雲端式應用程式、內部部署應用程式以及資源的存取權。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25dace3ad7d467d6add236782c5e39f85d6462a6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982594"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797302"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>使用 Azure Active Directory 群組來管理應用程式和資源的存取權
-Azure Active Directory （Azure AD）可讓您使用群組來管理雲端式應用程式、內部部署應用程式和資源的存取權。 您的資源可以是 Azure AD 組織的一部分，例如透過 Azure AD 中的角色管理物件，或組織外部的許可權，例如軟體即服務（SaaS）應用程式、Azure 服務、SharePoint 網站和內部部署資源。
+Azure Active Directory (Azure AD) 可讓您使用群組來管理雲端式應用程式、內部部署應用程式和資源的存取權。 您的資源可以是 Azure AD 組織的一部分，例如透過 Azure AD 或組織外部的角色來管理物件的許可權，例如軟體即服務 (SaaS) 應用程式、Azure 服務、SharePoint 網站和內部部署資源。
 
 >[!NOTE]
 > 在 Azure 入口網站中，您可以看到某些群組的成員資格和群組詳細資料在入口網站中無法管理：

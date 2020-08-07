@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3b70590002e9c49f2f8711bb7fe90de79e1d2a73
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c01e543b251020581d96d61434d0b3309535ef0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554051"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902040"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -128,7 +128,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 |Locale  | Language            | 性別 | 語音名稱 | 樣式支援 |
 |--|--|--|--|--|
 | `ar-EG` | 阿拉伯文 (埃及)                  | Female | `ar-EG-SalmaNeural`      | 一般 |
-| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)           | Female | `ar-SA-ZariyahNeura`     | 一般 |
+| `ar-SA` | 阿拉伯文 (沙烏地阿拉伯)           | Female | `ar-SA-ZariyahNeural`    | 一般 |
 | `ca-ES` | 加泰蘭文 (西班牙)                 | Female | `ca-ES-AlbaNeural`       | 一般 |
 | `da-DK` | 丹麥文 (丹麥)                | Female | `da-DK-ChristelNeural`   | 一般 |
 | `de-DE` | 德文 (德國)                | Female | `de-DE-KatjaNeural`      | 一般 |
@@ -360,7 +360,7 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 
 | Locale | Language | 文字相依驗證 | 與文字無關的驗證 | 與文字無關的識別 |
 |----|----|----|----|----|
-| zh-TW | 英文 (美國) | 可以 | 是 | 是 |
+| zh-TW | 英文 (美國) | 是 | 是 | 是 |
 |zh-CN  |中文 (普通話，簡體)|    n/a|    是|    是|
 |de-DE  |德文 (德國)   |n/a    |是    |是|
 |en-GB  |英文 (英國)   |n/a    |是    |是|

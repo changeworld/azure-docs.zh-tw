@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808706"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876626"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>建立 IoT Edge 模組供應項目
 
@@ -199,15 +199,14 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 #### <a name="store-logos"></a>儲存標誌
 
-在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 和**中等** (90 x 90 圖元) 大小標誌。 您可以選擇性地將這些取代為不同的影像。
+請以下列四個像素的個別大小提供供應項目標誌的 PNG 檔案：
 
-在清單中的不同位置，必須使用所有三種標誌大小：
+- **小型 (48 x 48)**
+- **中型 (90 x 90)**
+- **大型 (216 x 216)**
+- **寬 (255 x 115)**
 
-- **小型** (48 x 48)
-- **中型** (90 x 90)
-- 216 x 216 與 350 x 350) 之間的**大型** (
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+這四個標誌都是必要的，且在市集清單中會用於不同位置。
 
 #### <a name="screenshots-optional"></a>螢幕擷取畫面 (選擇性)
 
@@ -226,12 +225,12 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 大型標誌
-2. Categories
+2. 類別
 3. 支援位址 (連結) 
 4. 條款及條件
 5. 隱私權原則位址 (連結) 
 6. 名稱
-7. 總結
+7. 摘要
 8. 描述
 9. 實用的連結
 10. 螢幕擷取畫面/影片

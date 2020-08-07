@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: ebc6ff2c7c0d72dff318c7582d9ae5339682bc95
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 42faf4ba0a596fc5b2b34f403a5117e5ceea82ed
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028219"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903335"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>備份和復原您的表單辨識器模型
 
@@ -49,12 +49,12 @@ POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-您會 `201\Created` `modelId` 在本文中收到具有值的回應。 這個字串是新建立（空白）模型的識別碼。 `accessToken`API 需要有，才能將資料複製到此資源，而 `expirationDateTimeTicks` 值為權杖的到期日。 將這三個值全部儲存到安全的位置。
+您會 `201\Created` `modelId` 在本文中收到具有值的回應。 這個字串是新建立 (空白) 模型的識別碼。 `accessToken`API 需要有，才能將資料複製到此資源，而 `expirationDateTimeTicks` 值為權杖的到期日。 將這三個值全部儲存到安全的位置。
 
 ```
 HTTP/1.1 201 Created
 Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
-{"modelId":"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d","accessToken":"1855fe23-5ffc-427b-aab2-e5196641502f","expirationDateTimeTicks":637233481531659440}
+{"modelId":"<your model ID>","accessToken":"<your access token>","expirationDateTimeTicks":637233481531659440}
 ```
 
 ## <a name="start-copy-operation"></a>開始複製作業
@@ -62,7 +62,7 @@ Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0
 下列 HTTP 要求會在來源資源上啟動複製作業。 您必須輸入來源資源的端點和金鑰做為標頭。 請注意，要求 URL 包含您要複製之來源模型的模型識別碼。
 
 ```
-POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
+POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/<your model ID>/copy HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -72,7 +72,7 @@ Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 {
    "targetResourceId": "{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}",  
    "targetResourceRegion": "{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}",
-   "copyAuthorization": {"modelId":"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d","accessToken":"1855fe23-5ffc-427b-aab2-e5196641502f","expirationDateTimeTicks":637233481531659440}
+   "copyAuthorization": {"modelId":"<your model ID>","accessToken":"<your access token>","expirationDateTimeTicks":637233481531659440}
 }
 ```
 
@@ -88,9 +88,9 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 ### <a name="common-errors"></a>常見錯誤
 
-|錯誤|解決方案|
+|錯誤|解決方法|
 |:--|:--|
-| 400/不正確的要求`"code:" "1002"` | 表示驗證錯誤或格式不正確的複製要求。 常見的問題包括： a）無效或已修改的承載 `copyAuthorization` 。 b）權杖的到期值 `expirationDateTimeTicks` （裝載 `copyAuhtorization` 有效時間為24小時）。 c）無效或不受支援 `targetResourceRegion` 。 d）字串無效或格式不正確 `targetResourceId` 。
+| 400/不正確的要求`"code:" "1002"` | 表示驗證錯誤或格式不正確的複製要求。 常見的問題包括：) 無效或已修改的承載 `copyAuthorization` 。 b) 權杖的過期值 `expirationDateTimeTicks` (承載 `copyAuhtorization` 的有效時間為24小時) 。 c) 無效或不受支援 `targetResourceRegion` 。 d) 無效或格式不正確 `targetResourceId` 的字串。
 |
 
 ## <a name="track-copy-progress"></a>追蹤複製進度
@@ -112,10 +112,10 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="common-errors"></a>常見錯誤
 
-|錯誤|解決方案|
+|錯誤|解決方法|
 |:--|:--|
 |"errors"： [{"code"： "AuthorizationError"，<br>"message"： "授權失敗，原因為 <br>授權宣告遺失或無效。 "}]   | 在 `copyAuthorization` 從 API 傳回的內容中修改承載或內容時發生 `copyAuthorization` 。 請確定裝載與先前呼叫所傳回的內容完全相同 `copyAuthorization` 。|
-|"errors"： [{"code"： "AuthorizationError"，<br>"message"： "無法取得授權 <br>中繼資料. 如果此問題持續發生，請使用不同的 <br>要複製到其中的目標模型。 "}] | 指出裝載 `copyAuthorization` 會與複製要求一起使用。 成功的複製要求將不會允許使用相同承載的任何進一步要求 `copyAuthorization` 。 如果您引發個別的錯誤（如下面所述的錯誤），而您接著使用相同的授權承載重試該複製，則會引發此錯誤。 解決方式是產生新的承載 `copyAuthorization` ，然後重新發出複製要求。|
+|"errors"： [{"code"： "AuthorizationError"，<br>"message"： "無法取得授權 <br>中繼資料. 如果此問題持續發生，請使用不同的 <br>要複製到其中的目標模型。 "}] | 指出裝載 `copyAuthorization` 會與複製要求一起使用。 成功的複製要求將不會允許使用相同承載的任何進一步要求 `copyAuthorization` 。 如果您引發不同的錯誤 (如下所述) ，而您接著使用相同的授權承載重試該複製，則會引發此錯誤。 解決方式是產生新的承載 `copyAuthorization` ，然後重新發出複製要求。|
 |"errors"： [{"code"： "DataProtectionTransformServiceError"，<br>"message"： "不允許資料傳輸要求 <br>因為它會降級為較不安全的資料保護配置。 請參閱檔或聯絡服務管理員 <br>以取得詳細資料。 "}]    | 在 `AEK` 已啟用的資源之間複製到未 `AEK` 啟用的資源時發生。 若要允許將加密的模型以未加密的方式複製到目標，請 `x-ms-forms-copy-degrade: true` 使用複製要求來指定標頭。|
 |"errors"： [{"code"： "ResourceResolverError"，<br>"message"： "無法提取識別碼為 ' ... ' 之認知資源的資訊。 請確定資源有效且存在於指定的區域 ' westus2 ' 中。」}] | 表示所表示的 Azure 資源不是 `targetResourceId` 有效的認知資源或不存在。 請確認並重新發出複製要求，以解決此問題。|
 

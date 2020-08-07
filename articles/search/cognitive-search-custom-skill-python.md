@@ -1,5 +1,5 @@
 ---
-title: 自訂技能範例（Python）
+title: " (Python) 的自訂技能範例"
 titleSuffix: Azure Cognitive Search
 description: 針對 Python 開發人員，瞭解使用 Azure Functions 和 Visual Studio 建立自訂技能的工具和技術。 自訂技能包含使用者定義的模型或邏輯，您可以將其新增至 Azure 認知搜尋中的 AI 擴充索引管線。
 manager: nitinme
@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: aac184b9dc7eae8afcf796376d2f7dca684b4367
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84604689"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852781"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>範例：使用 Python 建立自訂技能
 
 在此 Azure 認知搜尋技能集範例中，您將瞭解如何使用 Python 和 Visual Studio Code 建立 Web API 的自訂技能。 此範例會使用可執行[自訂技能介面](cognitive-search-custom-skill-interface.md)的[Azure](https://azure.microsoft.com/services/functions/)函式。
 
-自訂技能的設計很簡單（它會串連兩個字串），因此您可以專注于用於 Python 中自訂技能開發的工具和技術。 當您成功完成簡單的技能之後，您可以使用更複雜的案例來進行分支。
+自訂技能在設計上很簡單 (它會串連兩個字串) ，讓您可以專注于用於 Python 中自訂技能開發的工具和技術。 當您成功完成簡單的技能之後，您可以使用更複雜的案例來進行分支。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -32,7 +32,7 @@ ms.locfileid: "84604689"
   + [Visual Studio Code](https://code.visualstudio.com/)
   + [適用於 Visual Studio Code 的 Python 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-python.python) \(英文\)
   + [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local#v2)
-  + [Visual Studio Code 的 Azure Functions 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+  + [適用於 Visual Studio Code 的 Azure Functions 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) \(英文\)
 
 ## <a name="create-an-azure-function"></a>建立 Azure 函式
 
@@ -50,7 +50,7 @@ Visual Studio Code 中的 Azure Functions 專案範本會建立可發佈至 Azur
     > 這些步驟主要設計為在工作區以外的地方完成。 基於這個理由，請勿選取屬於工作區的專案資料夾。
 
 1. 選取函數應用程式專案的語言。 在本教學課程中，選取 [ **Python**]。
-1. 選取 Python 版本，（Azure Functions 支援版本3.7.5）
+1. 選取 Python 版本，Azure Functions 支援 (版本 3.7.5) 
 1. 為您專案的第一個函式選取範本。 選取 [ **HTTP 觸發**程式]，在新的函數應用程式中建立 HTTP 觸發的函式。
 1. 提供函數名稱。 在此情況下，讓我們使用**Concatenator** 
 1. 選取 [**函數**] 做為授權層級。 這表示我們將提供[函數金鑰](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)來呼叫函式的 HTTP 端點。 
@@ -88,7 +88,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ```
 
-現在，讓我們修改該程式碼，使其遵循[自訂技能介面](cognitive-search-custom-skill-interface.md)）。 使用下列內容修改程式碼：
+現在，讓我們修改該程式碼，使其遵循[自訂技能介面](cognitive-search-custom-skill-interface.md)) 。 使用下列內容修改程式碼：
 
 ```py
 import logging
@@ -190,9 +190,9 @@ Visual Studio Code 可讓您輕鬆地對程式碼進行偵錯工具。 按 ' F5 
 
 1. 輸入函數應用程式的全域唯一名稱。
 
-1. 選取 Python 版本（Python 3.7. x 適用于此功能）。
+1. 選取 [Python 版本 (Python 3.7. x 適用于此函式) 。
 
-1. 選取新資源的位置（例如，美國西部2）。
+1. 選取新資源的位置 (例如，美國西部 2) 。
 
 此時，將會在您的 Azure 訂用帳戶中建立所需的資源，以在 Azure 上裝載新的 Azure Function。 等待部署完成。 [輸出] 視窗會顯示部署流程的狀態。
 

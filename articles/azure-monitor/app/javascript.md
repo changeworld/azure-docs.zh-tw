@@ -1,15 +1,15 @@
 ---
 title: JavaScript web 應用程式的 Azure 應用程式 Insights
-description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁面應用程式（SPA），以及追蹤使用模式。 Detect exceptions and performance issues in JavaScript web pages.
+description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁面應用程式 (SPA) 和追蹤使用模式。 Detect exceptions and performance issues in JavaScript web pages.
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e0545660cbca68d41bc24b7266496b7912d408bc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531314"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905820"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -20,7 +20,7 @@ Application Insights 可以使用於任何網頁 - 您剛剛新增 JavaScript �
 ## <a name="adding-the-javascript-sdk"></a>新增 JavaScript SDK
 
 1. 首先，您需要 Application Insights 資源。 如果您還沒有資源和檢測金鑰，請遵循[建立新的資源指示](create-new-resource.md)。
-2. 針對您想要在其中傳送 JavaScript 遙測的資源（來自步驟1），複製_檢測金鑰_（也稱為 "iKey"）。您會將它新增至 `instrumentationKey` Application Insights JAVASCRIPT SDK 的設定。
+2. 針對您想要在步驟 1 (傳送 JavaScript 遙測的資源，複製_檢測金鑰_ (也稱為 "iKey" ) 。 ) 您會將它新增至 `instrumentationKey` Application Insights JavaScript SDK 的設定。
 3. 透過下列兩個選項的其中一個，將 Application Insights JavaScript SDK 新增至您的網頁或應用程式：
     * [npm 設定](#npm-based-setup)
     * [JavaScript 程式碼片段](#snippet-based-setup)
@@ -59,7 +59,7 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 為了協助追蹤您應用程式所使用的程式碼片段版本，從版本2.5.5 開始，網頁檢視事件會包含新的標記 "ai. internal. 程式碼片段"，其中將包含已識別的程式碼片段版本。
 
-目前的程式碼片段（如下所列）將識別為版本 "3"。
+下面所列的目前程式碼片段 () 會識別為 "3" 版。
 
 ```html
 <script type="text/javascript">
@@ -82,8 +82,8 @@ cfg: { // Application Insights Configuration
 
 #### <a name="reporting-script-load-failures"></a>報告腳本載入失敗
 
-此版本的程式碼片段會偵測並報告失敗，從 CDN 載入 SDK 作為 Azure 監視器入口網站的例外狀況（在 [失敗] &gt; 例外狀況 &gt; 瀏覽器底下），此例外狀況會提供此類型失敗的可見度，讓您知道應用程式不會如預期般報告遙測（或其他例外狀況）。 此信號是瞭解您已遺失遙測的重要度量，因為 SDK 並未載入或初始化，而這可能會導致：
-- 在報告中，使用者如何使用（或嘗試使用）您的網站;
+這一版的程式碼片段會在從 CDN 載入 SDK 時偵測並報告失敗，做為 Azure 監視器入口網站的例外狀況 (在 [失敗] &gt; 例外狀況 &gt; 瀏覽器) 下，此例外狀況會顯示此類型的失敗，讓您知道您的應用程式不會如預期般回報遙測 (或其他例外狀況) 。 此信號是瞭解您已遺失遙測的重要度量，因為 SDK 並未載入或初始化，而這可能會導致：
+- 在報告中，使用者使用 (或嘗試在您的網站上使用) ;
 - 您的終端使用者如何使用您的網站缺少遙測;
 - 缺少 JavaScript 錯誤，可能會封鎖您的終端使用者，使其無法成功使用您的網站。
 
@@ -91,7 +91,7 @@ cfg: { // Application Insights Configuration
 
 將此錯誤報表為入口網站的例外狀況，並不會使用 application insights 設定中的設定選項 ```disableExceptionTracking``` ，因此如果發生此失敗，它一律會由程式碼片段報告，即使已停用 windows onerror 支援也一樣。
 
-SDK 載入失敗的報告在 IE 8 （或更少）上特別不受支援。 這有助於減少程式碼片段的縮減大小，方法是假設大部分的環境不是專門的 IE 8 或更少。 如果您有此需求，而且想要收到這些例外狀況，您將需要包含提取 poly 填滿或建立使用的程式碼片段版本（ ```XDomainRequest``` 而不是 ```XMLHttpRequest``` ），建議您使用[提供的程式碼片段原始程式碼](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js)做為起點。
+IE 8 (或更少的) 上特別不支援 SDK 載入失敗的報告。 這有助於減少程式碼片段的縮減大小，方法是假設大部分的環境不是專門的 IE 8 或更少。 如果您有此需求，而且想要收到這些例外狀況，您將需要包含提取 poly 填滿或建立使用的程式碼片段版本（ ```XDomainRequest``` 而不是 ```XMLHttpRequest``` ），建議您使用[提供的程式碼片段原始程式碼](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js)做為起點。
 
 > [!NOTE]
 > 如果您使用的是舊版程式碼片段，則強烈建議您將更新為最新版本，以便收到先前未報告的問題。
@@ -104,13 +104,13 @@ SDK 載入失敗的報告在 IE 8 （或更少）上特別不受支援。 這有
 
 可用的設定選項為 
 
-| 名稱 | 類型 | 說明
+| 名稱 | 類型 | 描述
 |------|------|----------------
 | src | 字串 **[必要]** | 要從中載入 SDK 的完整 URL。 這個值會用於動態加入之腳本/標記的 "src" 屬性 &lt; &gt; 。 您可以使用公用 CDN 位置，或您自己的私人託管。
-| NAME | 字串 *[選擇性]* | 已初始化 SDK 的全域名稱，預設為 appInsights。 因此， ```window.appInsights``` 會參考初始化的實例。 注意：如果您提供名稱值或先前的實例會被指派（透過全域名稱 appInsightsSDK），則此名稱值也會在全域命名空間中定義為 ```window.appInsightsSDK=<name value>``` ，這是 SDK 初始化程式碼所需的，以確保它會初始化並更新正確的程式碼片段基本架構和 proxy 方法。
-| 個 | 以毫秒為單位的數位 *[選擇性]* | 定義要在嘗試載入 SDK 之前等待的載入延遲。 預設值為0毫秒，任何負值會立即將腳本標記新增至頁面的 &lt; 前端 &gt; 區域，接著會封鎖頁面載入事件直到載入腳本（或失敗）。
-| useXhr | 布林值 *[選擇性]* | 此設定僅用於報告 SDK 載入失敗。 報告會先嘗試使用 fetch （）（如果有的話），然後回到 XHR，將此值設定為 true 只會略過提取檢查。 只有當您的應用程式在提取無法傳送失敗事件的環境中使用時，才需要使用此值。
-| crossOrigin | 字串 *[選擇性]* | 藉由包含此設定，新增來下載 SDK 的腳本標記會包含具有此字串值的 crossOrigin 屬性。 如果未定義（預設值），則不會加入任何 crossOrigin 屬性。 建議的值未定義（預設值）;"";或「匿名」（針對所有有效值，請參閱[HTML 屬性： crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)檔）
+| NAME | 字串 *[選擇性]* | 已初始化 SDK 的全域名稱，預設為 `appInsights` 。 因此， ```window.appInsights``` 會參考初始化的實例。 注意：如果您提供名稱值或先前的實例 (透過全域名稱 appInsightsSDK 指派) 則此名稱值也會在全域命名空間中定義為 ```window.appInsightsSDK=<name value>``` ，這是 SDK 初始化程式碼所需的，以確保它會初始化並更新正確的程式碼片段基本架構和 proxy 方法。
+| 個 | 以毫秒為單位的數位 *[選擇性]* | 定義要在嘗試載入 SDK 之前等待的載入延遲。 預設值為0毫秒，任何負值會立即將腳本標記新增至頁面的 &lt; 前端 &gt; 區域，接著會封鎖頁面載入事件，直到載入腳本 (或) 失敗為止。
+| useXhr | 布林值 *[選擇性]* | 此設定僅用於報告 SDK 載入失敗。 報告會先嘗試使用 fetch ( # A1 （如果有的話），然後回到 XHR，將此值設定為 true 只會略過提取檢查。 只有當您的應用程式在提取無法傳送失敗事件的環境中使用時，才需要使用此值。
+| crossOrigin | 字串 *[選擇性]* | 藉由包含此設定，新增來下載 SDK 的腳本標記會包含具有此字串值的 crossOrigin 屬性。 未定義時 (預設) 不會加入任何 crossOrigin 屬性。  (預設) 不會定義建議的值;"";或「匿名」 (所有有效值的詳細資料，請參閱[HTML 屬性： `crossorigin` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)檔) 
 | cfg | 物件 **[必要]** | 初始化期間傳遞至 Application Insights SDK 的設定。
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>將遙測傳送至 Azure 入口網站
@@ -122,15 +122,15 @@ SDK 載入失敗的報告在 IE 8 （或更少）上特別不受支援。 這有
     - 例外狀況詳細資料和伴隨錯誤的訊息
     - 行 & 錯誤的欄數
     - 引發錯誤的 URL
-- 您的應用程式**XHR**和**提取**所提出的網路相依性要求（預設會停用提取集合）要求，包括的**相關**資訊
+- 您的應用程式**XHR**和**提取** (提取集合所提出的網路相依性要求，預設會停用) 要求，包括的**相關**資訊
     - 相依性來源的 Url
     - 命令 & 用來要求相依性的方法
     - 要求的持續時間
     - 要求的結果碼和成功狀態
-    - 提出要求之使用者的識別碼（如果有的話）
-    - 提出要求的相互關聯內容（如果有的話）
-- **使用者資訊**（例如，位置、網路、IP）
-- **裝置資訊**（例如，瀏覽器、OS、版本、語言、型號）
+    - 如果提出要求的使用者有任何) ，則 (識別碼
+    - 如果提出要求的任何) ，相互關聯內容 (
+-  (的**使用者資訊**，例如位置、網路、IP) 
+- **裝置資訊** (例如，瀏覽器、OS、版本、語言、模型) 
 - **會話資訊**
 
 ### <a name="telemetry-initializers"></a>遙測初始化運算式
@@ -160,45 +160,45 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | sessionRenewalMs | 1800000 | 如果使用者處於非使用中狀態的時間（以毫秒為單位），則會記錄會話。 預設值是 30 分鐘 |
 | sessionExpirationMs | 86400000 | 如果會話已繼續此時間量（以毫秒為單位），則會記錄會話。 預設值為24小時 |
 | maxBatchSizeInBytes | 10000 | 遙測批次的大小上限。 如果批次超過此限制，則會立即傳送並啟動新的批次 |
-| maxBatchInterval | 15000 | 在傳送之前，批次遙測的時間長度（毫秒） |
+| maxBatchInterval | 15000 | 傳送 (毫秒之前，批次遙測的時間長度)  |
 | disableExceptionTracking | false | 若為 true，則不會實驗自動收集例外狀況。 預設值為 false。 |
 | disableTelemetry | false | 若為 true，則不會收集或傳送遙測。 預設值為 false。 |
 | enableDebug | false | 若為 true，則不論 SDK 記錄設定為何，**內部**的偵錯工具資料都會擲回為例外狀況，**而不**是記錄。 預設值為 false。 <br>***注意：*** 啟用此設定將會在發生內部錯誤時產生已捨棄的遙測。 這有助於快速找出您的設定或使用 SDK 的問題。 如果您不想在進行調試時遺失遙測，請考慮使用 `consoleLoggingLevel` 或， `telemetryLoggingLevel` 而不是 `enableDebug` 。 |
-| loggingLevelConsole | 0 | 將**內部**Application Insights 錯誤記錄到主控台。 <br>0：關閉， <br>1：只有嚴重錯誤， <br>2：所有專案（錯誤 & 警告） |
-| loggingLevelTelemetry | 1 | 將**內部**Application Insights 錯誤當做遙測傳送。 <br>0：關閉， <br>1：只有嚴重錯誤， <br>2：所有專案（錯誤 & 警告） |
-| diagnosticLogInterval | 10000 | 內部內部記錄佇列的輪詢間隔（以毫秒為單位） |
+| loggingLevelConsole | 0 | 將**內部**Application Insights 錯誤記錄到主控台。 <br>0：關閉， <br>1：只有嚴重錯誤， <br>2： & 警告的所有 (錯誤)  |
+| loggingLevelTelemetry | 1 | 將**內部**Application Insights 錯誤當做遙測傳送。 <br>0：關閉， <br>1：只有嚴重錯誤， <br>2： & 警告的所有 (錯誤)  |
+| diagnosticLogInterval | 10000 |  (內部記錄佇列的內部) 輪詢間隔 (毫秒)  |
 | samplingPercentage | 100 | 將傳送的事件百分比。 預設值為100，表示傳送所有事件。 如果您想要保留大型應用程式的資料上限，請設定此設定。 |
 | autoTrackPageVisitTime | false | 若為 true，則在 pageview 上，會追蹤先前檢測的頁面的視圖時間並以遙測的形式傳送，並針對目前的 pageview 啟動新的計時器。 預設值為 false。 |
 | disableAjaxTracking | false | 若為 true，則不會實驗自動收集 Ajax 呼叫。 預設值為 false。 |
 | disableFetchTracking | true | 若為 true，則不會實驗自動收集提取要求。 預設值為 true。 |
 | overridePageViewDuration | false | 若為 true，則在呼叫 trackPageView 時，trackPageView 的預設行為會變更為 [記錄] 網頁檢視持續時間間隔的結尾。 如果為 false，而且沒有提供任何自訂持續時間來 trackPageView，則會使用導覽計時 API 來計算網頁檢視效能。 預設值為 false。 |
-| maxAjaxCallsPerView | 500 | 預設值 500-控制每個網頁檢視要監視的 Ajax 呼叫數目。 設定為-1 可監視頁面上所有（無限制的） Ajax 呼叫。 |
+| maxAjaxCallsPerView | 500 | 預設值 500-控制每個網頁檢視要監視的 Ajax 呼叫數目。 設定為-1 可監視頁面上所有 (無限制的) Ajax 呼叫。 |
 | disableDataLossAnalysis | true | 若為 false，則會在啟動時檢查尚未傳送的內部遙測寄件者緩衝區。 |
-| disableCorrelationHeaders | false | 若為 false，SDK 會將兩個標頭（「要求識別碼」和「要求-內容」）新增至所有相依性要求，以便將它們與伺服器端上的對應要求相互關聯。 預設值為 false。 |
+| disableCorrelationHeaders | false | 若為 false，SDK 會將 ( 「要求-識別碼」和「要求內容」 ) 的兩個標頭加入至所有相依性要求，以將它們與伺服器端上的對應要求相互關聯。 預設值為 false。 |
 | correlationHeaderExcludedDomains |  | 停用特定網域的相互關聯標頭 |
 | correlationHeaderDomains |  | 啟用特定網域的相互關聯標頭 |
 | disableFlushOnBeforeUnload | false | 預設值為 false。 若為 true，onBeforeUnload 事件觸發程式時將不會呼叫 flush 方法 |
 | enableSessionStorageBuffer | true | 預設值為 true。 若為 true，則包含所有未傳送遙測的緩衝區都會儲存在會話儲存體中。 在頁面載入時還原緩衝區 |
 | isCookieUseDisabled | false | 預設值為 false。 若為 true，則 SDK 不會儲存或讀取 cookie 中的任何資料。|
 | cookieDomain | null | 自訂 cookie 網域。 如果您想要跨子域共用 Application Insights 的 cookie，這會很有説明。 |
-| isRetryDisabled | false | 預設值為 false。 若為 false，則重試206（部分成功）、408（超時）、429（太多要求）、500（內部伺服器錯誤）、503（服務無法使用）和0（只有在偵測到時才會離線） |
+| isRetryDisabled | false | 預設值為 false。 若為 false，則在206上重試 (部分成功) 、408 (超時) 、429 (太多要求) 、500 (內部伺服器錯誤) 、503 (服務無法使用) ，以及 0 (離線，只有偵測到)  |
 | isStorageUseDisabled | false | 若為 true，則 SDK 不會儲存或讀取本機和會話儲存體中的任何資料。 預設值為 false。 |
 | isBeaconApiDisabled | true | 若為 false，SDK 會使用指標[API](https://www.w3.org/TR/beacon)傳送所有遙測 |
 | onunloadDisableBeacon | false | 預設值為 false。 當索引標籤關閉時，SDK 會使用指標[API](https://www.w3.org/TR/beacon)傳送所有剩餘的遙測 |
-| sdkExtension | null | 設定 sdk 延伸模組名稱。 只允許字母字元。 擴充功能名稱會新增為 ' sdkVersion ' 標記的前置詞（例如 ' ext_javascript： 2.0.0 '）。 預設為 Null。 |
+| sdkExtension | null | 設定 sdk 延伸模組名稱。 只允許字母字元。 擴充功能名稱會新增為 ' sdkVersion ' 標籤的前置詞， (例如 ' ext_javascript： 2.0.0 ' ) 。 預設為 Null。 |
 | isBrowserLinkTrackingEnabled | false | 預設值為 false。 若為 true，SDK 將會追蹤所有[瀏覽器連結](/aspnet/core/client-side/using-browserlink)要求。 |
 | appId | null | AppId 會用於用戶端上發生的 AJAX 相依性與伺服器端要求之間的相互關聯。 啟用「指標 API」時，無法自動使用它，但可在設定中手動設定。 預設值為 null |
-| enableCorsCorrelation | false | 若為 true，SDK 會將兩個標頭（「要求識別碼」和「要求-內容」）新增至所有 CORS 要求，以將外寄 AJAX 相依性與伺服器端上的對應要求相互關聯。 預設值為 false。 |
+| enableCorsCorrelation | false | 若為 true，SDK 會將 ( 「要求-識別碼」和「要求內容」 ) 的兩個標頭加入至所有 CORS 要求，以將外寄 AJAX 相依性與伺服器端上的對應要求相互關聯。 預設值為 false。 |
 | namePrefix | 未定義 | 選擇性值，將會作為 localStorage 和 cookie 名稱的名稱後置詞使用。
-| enableAutoRouteTracking | false | 自動追蹤單一頁面應用程式（SPA）中的路由變更。 若為 true，則每個路由變更都會將新的 Pageview 傳送至 Application Insights。 雜湊路由變更（ `example.com/foo#bar` ）也會記錄為新的頁面流覽。
+| enableAutoRouteTracking | false | 自動追蹤單一頁面應用程式中的路由變更 (SPA) 。 若為 true，則每個路由變更都會將新的 Pageview 傳送至 Application Insights。  () 的雜湊路由變更 `example.com/foo#bar` 也會記錄為新的頁面流覽。
 | enableRequestHeaderTracking | false | 若為 true，則會追蹤 AJAX & 提取要求標頭，預設值為 false。
 | enableResponseHeaderTracking | false | 若為 true，則會追蹤 AJAX & 提取要求的回應標頭，預設值為 false。
-| distributedTracingMode | `DistributedTracingModes.AI` | 設定分散式追蹤模式。 如果已設定 AI_AND_W3C 模式或 W3C 模式，則會產生 W3C 追蹤內容標頭（traceparent/tracestate），並將其包含在所有傳出的要求中。 AI_AND_W3C 是針對與任何舊版 Application Insights 檢測服務的回溯相容性而提供的。 請參閱[這裡](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的範例。
+| distributedTracingMode | `DistributedTracingModes.AI` | 設定分散式追蹤模式。 如果設定 AI_AND_W3C 模式或 W3C 模式，則會產生 W3C 追蹤內容標頭 (traceparent/tracestate) ，並將其包含在所有傳出的要求中。 AI_AND_W3C 是針對與任何舊版 Application Insights 檢測服務的回溯相容性而提供的。 請參閱[這裡](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的範例。
 | enableAjaxErrorStatusText | false | 預設值為 false。 若為 true，則在失敗的 AJAX 要求上包含相依性事件中的回應錯誤資料文字。
-| enableAjaxPerfTracking | false | 預設值為 false。 旗標，可讓您查閱和包含額外的瀏覽器視窗。報告的 ajax （XHR 和 fetch）報告的計量中的效能計時。
-| maxAjaxPerfLookupAttempts | 3 | 預設值為3。 要尋找視窗的最大次數。效能時間（如果有的話），因為並非所有瀏覽器都填入視窗，所以這是必要的。在報告 XHR 要求的結尾和提取要求之後，就會在其完成後新增這項功能。
-| ajaxPerfLookupDelay | 25 | 預設為25毫秒。 重新嘗試尋找 windows 之前等待的時間量。 ajax 要求的效能時間（以毫秒為單位），並會直接傳遞到 setTimeout （）。
-| enableUnhandledPromiseRejectionTracking | false | 若為 true，未處理的承諾拒絕將會實驗自動收集，並回報為 JavaScript 錯誤。 當 disableExceptionTracking 為 true （不追蹤例外狀況）時，將會忽略設定值，而且不會回報未處理的承諾拒絕。
+| enableAjaxPerfTracking | false | 預設值為 false。 用來啟用查詢和包含其他瀏覽器視窗的旗標。回報的 (中的效能時間 `ajax` XHR 和提取) 回報的計量。
+| maxAjaxPerfLookupAttempts | 3 | 預設值為3。 要尋找視窗的最大次數。效能時間 (如果可用) ，就必須這麼做，因為並非所有的瀏覽器都會填入視窗。在報告 XHR 要求結束之前的效能，以及針對提取要求，這會在其完成後新增。
+| ajaxPerfLookupDelay | 25 | 預設為25毫秒。 重新嘗試尋找 windows 之前等待的時間量。要求的效能 `ajax` 時間（以毫秒為單位），並會直接傳遞至 setTimeout ( # A1。
+| enableUnhandledPromiseRejectionTracking | false | 若為 true，未處理的承諾拒絕將會實驗自動收集，並回報為 JavaScript 錯誤。 當 disableExceptionTracking 為 true 時 (不追蹤例外狀況) ，將會忽略設定值，而且不會回報未處理的承諾拒絕。
 
 ## <a name="single-page-applications"></a>單一頁面應用程式
 
@@ -219,6 +219,38 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md) \(英文\)|
+
+## <a name="correlation"></a>相互關聯
+
+支援用戶端對伺服器端的相互關聯：
+
+- XHR/AJAX 要求 
+- 提取要求 
+
+和要求**不支援**用戶端對伺服器端的相互關聯 `GET` `POST` 。
+
+### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>啟用用戶端 AJAX 與伺服器要求之間的跨元件相互關聯
+
+若要啟用 `CORS` 相互關聯，用戶端必須傳送兩個額外的要求標頭 `Request-Id` 和 `Request-Context` ，而且伺服器端必須能夠接受與這些標頭存在的連接。 傳送這些標頭的方式是在 `enableCorsCorrelation: true` JAVASCRIPT SDK 設定內啟用。 
+
+視 `Access-Control-Allow-Headers` 伺服器端上的設定而定，通常需要手動新增和來擴充伺服器端清單 `Request-Id` `Request-Context` 。
+
+存取控制-允許-標頭： `Request-Id` 、 `Request-Context` 、`<your header>`
+
+如果用戶端與其通訊的任何協力廠商伺服器無法接受 `Request-Id` 和 `Request-Context` 標頭，而且您無法更新其設定，則您必須透過 configuration 屬性將它們放入排除清單中 `correlationHeaderExcludeDomains` 。 此屬性支援萬用字元。
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    enableCorsCorrelation: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
 
 ## <a name="explore-browserclient-side-data"></a>探索瀏覽器/用戶端資料
 
@@ -242,7 +274,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ### <a name="analytics"></a>分析
 
-若要查詢 JavaScript SDK 所收集的遙測資料，請選取 [**記錄（分析）** ] 按鈕中的 [查看]。 藉由新增的 `where` 語句 `client_Type == "Browser"` ，您只會看到來自 JavaScript SDK 的資料，而其他 sdk 所收集的任何伺服器端遙測也會被排除。
+若要查詢 JavaScript SDK 所收集的遙測資料，請選取 [**記錄 (分析) ** ] 按鈕中的 [查看]。 藉由新增的 `where` 語句 `client_Type == "Browser"` ，您只會看到來自 JavaScript SDK 的資料，而其他 sdk 所收集的任何伺服器端遙測也會被排除。
  
 ```kusto
 // average pageView duration by name
@@ -279,7 +311,7 @@ dataset
 ```
 npm i --save @microsoft/applicationinsights-web-basic
 ```
-此版本隨附最少的特性和功能，並視您的需要建立它。 例如，它不會執行任何 autocollection （未攔截的例外狀況、AJAX 等等）。 此版本不包含傳送特定遙測類型的 Api，例如 `trackTrace` 、 `trackException` 等等，因此您必須提供自己的包裝函式。 唯一可用的 API 是 `track` 。 [範例](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html)位於此處。
+此版本隨附最少的特性和功能，並視您的需要建立它。 例如，它不會執行任何 autocollection (未攔截的例外狀況、AJAX 等 ) 。 此版本不包含傳送特定遙測類型的 Api，例如 `trackTrace` 、 `trackException` 等等，因此您必須提供自己的包裝函式。 唯一可用的 API 是 `track` 。 [範例](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html)位於此處。
 
 ## <a name="examples"></a>範例
 
@@ -290,12 +322,12 @@ npm i --save @microsoft/applicationinsights-web-basic
 SDK V2 版本中的重大變更：
 - 為了允許更好的 API 簽章，某些 API 呼叫（例如 trackPageView 和 trackException）已更新。 不支援在 Internet Explorer 8 和舊版的瀏覽器中執行。
 - 遙測信封因數據架構更新而有欄位名稱和結構變更。
-- 已移 `context.operation` 至 `context.telemetryTrace` 。 有些欄位也已變更（ `operation.id`  -->  `telemetryTrace.traceID` ）。
-  - 若要手動重新整理目前的 pageview 識別碼（例如，在 SPA 應用程式中），請使用 `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` 。
+- 已移 `context.operation` 至 `context.telemetryTrace` 。 某些欄位也已變更 (`operation.id`  -->  `telemetryTrace.traceID`) 。
+  - 若要手動重新整理目前的 pageview 識別碼 (例如，在 SPA 應用程式) 中，請使用 `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` 。
     > [!NOTE]
     > 若要保留唯一的追蹤識別碼（您先前使用的位置 `Util.newId()` ），現在請使用 `Util.generateW3CId()` 。 最後最後是作業識別碼。
 
-如果您使用目前的 application insights 生產 SDK （1.0.20），而且想要查看新的 SDK 是否在執行時間中運作，請根據您目前的 SDK 載入案例更新 URL。
+如果您使用目前的 application insights 生產 SDK (1.0.20) 並想要查看新的 SDK 是否在執行時間中運作，請根據您目前的 SDK 載入案例更新 URL。
 
 - 透過 CDN 案例下載：更新您目前用來指向下列 URL 的程式碼片段：
    ```
@@ -333,7 +365,7 @@ Chrome 最新✔ |  Firefox 最新✔ | IE 9 + & Edge ✔<br>IE 8 相容 | Opera
 
 ## <a name="es3ie8-compatibility"></a>以及 ES3/IE8 相容性
 
-身為 SDK，有許多使用者無法控制其客戶所使用的瀏覽器。 因此，我們需要確保此 SDK 會繼續「工作」，而且不會在舊版瀏覽器載入時中斷 JS 的執行。 雖然不支援 IE8 和較舊的層代（以及 ES3）瀏覽器，但有許多大型客戶/使用者會繼續要求頁面「工作」，而且會注意到他們可能會或無法控制使用者選擇使用的瀏覽器。
+身為 SDK，有許多使用者無法控制其客戶所使用的瀏覽器。 因此，我們需要確保此 SDK 會繼續「工作」，而且不會在舊版瀏覽器載入時中斷 JS 的執行。 雖然不支援 IE8 和舊版的 (以及 ES3) 瀏覽器，但有許多大型客戶/使用者會繼續要求頁面「工作」，而且會注意到他們可能會或無法控制使用者選擇使用的瀏覽器。
 
 這並不表示我們只會支援最常見的功能集，只是我們需要維護以及 ES3 的程式碼相容性，而且加入新功能時，必須以不會中斷以及 ES3 JavaScript 剖析並新增為選擇性功能的方式新增。
 

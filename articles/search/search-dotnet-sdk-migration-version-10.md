@@ -1,5 +1,5 @@
 ---
-title: 升級至 Azure 認知搜尋 .NET SDK 第10版
+title: 升級至 .NET SDK 第10版
 titleSuffix: Azure Cognitive Search
 description: 從舊版將程式碼遷移至 Azure 認知搜尋 .NET SDK 第10版。 了解新功能與必要的程式碼變更。
 manager: nitinme
@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562387"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905776"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>升級至 Azure 認知搜尋 .NET SDK 第10版
 
 如果您使用的是9.0 或更舊版本的[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)，本文將協助您將應用程式升級為使用第10版。
 
-Azure 搜尋服務在第10版中重新命名為 Azure 認知搜尋，但命名空間和套件名稱不會變更。 舊版 SDK （9.0 和更早版本）會繼續使用先前的名稱。 如需使用 SDK 的詳細資訊（包括範例），請參閱[如何從 .Net 應用程式使用 Azure 認知搜尋](search-howto-dotnet-sdk.md)。
+Azure 搜尋服務在第10版中重新命名為 Azure 認知搜尋，但命名空間和套件名稱不會變更。 舊版 SDK (9.0 和更早版本) 繼續使用舊名稱。 如需使用 SDK 的詳細資訊（包括範例），請參閱[如何從 .Net 應用程式使用 Azure 認知搜尋](search-howto-dotnet-sdk.md)。
 
 第10版新增數個功能和 bug 修正，使其與 REST API 版本的功能等級相同 `2019-05-06` 。 在變更中斷現有程式碼的情況下，我們將逐步引導您完成[解決問題所需的步驟](#UpgradeSteps)。
 
@@ -117,14 +117,14 @@ var webApiSkill = new WebApiSkill(
 - 建立 `InputFieldMappingEntry` ，其中只有 `SourceContext` 和 `Inputs` 已初始化為有效。
 - 與這三個屬性相關的其他所有組合都是不正確。
 
-如果您決定要開始使用這項新功能，請先確定您的所有用戶端都已更新為使用第10版，再推出該變更。 否則，用戶端（使用較舊版本的 SDK）的更新可能會導致發生驗證錯誤。
+如果您決定要開始使用這項新功能，請先確定您的所有用戶端都已更新為使用第10版，再推出該變更。 否則，用戶端可能會使用較舊版本的 SDK) 的更新 (，而將其加入至整形器技能可能會導致驗證錯誤。
 
 > [!NOTE]
 > 雖然基礎模型已經過 `InputFieldMappingEntry` 修改，以允許來自嵌套內容的匯總，但它的使用只在整形程式技能的定義內有效。 以其他技能使用這項功能，而在編譯時期有效，將會在執行時間產生驗證錯誤。
 
 ## <a name="skills-can-be-identified-by-a-name"></a>技能可以透過名稱來識別
 
-技能集內的每個技能現在都有一個新的屬性 `Name` ，可以在您的程式碼中初始化以協助識別技能。 這是選擇性的-未指定時（這是預設值，如果未進行明確的程式碼變更），則會使用技能集中技能的以1為基礎的索引來指派預設名稱，並在前面加上 ' # ' 字元。 例如，在下列技能集定義中（為了簡潔起見，已略過大部分的初始化）：
+技能集內的每個技能現在都有一個新的屬性 `Name` ，可以在您的程式碼中初始化以協助識別技能。 這是選擇性的-如果未指定 (這是預設值，如果未) 明確的程式碼變更，則會使用技能集中的技能之以1為基礎的索引來指派預設名稱，並在前面加上 ' # ' 字元。 例如，在下列技能集定義中 (為了簡潔起見，已略過大部分的初始化) ：
 
 ```csharp
 var skillset = new Skillset()
@@ -145,7 +145,7 @@ var skillset = new Skillset()
 
 ## <a name="details-about-errors-and-warnings"></a>錯誤和警告的詳細資料
 
-`ItemError`以及 `ItemWarning` 封裝在索引子執行期間所發生之錯誤和警告詳細資料的和模型，已修改為包含三個新的屬性，其目標是要協助進行索引子的偵錯工具。 這些屬性是：
+`ItemError`和 `ItemWarning` 模型會分別封裝錯誤和警告的詳細資料 (在索引子執行期間所發生的) 已修改為包含三個新的屬性，其目標是要協助您進行索引子的偵錯工具。 這些屬性是：
 
 - `Name`：產生錯誤之來源的名稱。 例如，它可以參考附加技能集中的特定技能。
 - `Details`：錯誤或警告的其他詳細資訊。

@@ -1,7 +1,7 @@
 ---
 title: 在 API 管理中使用 OAuth 2.0 授權開發人員帳戶
 titleSuffix: Azure API Management
-description: 了解如何在 API 管理中使用 OAuth 2.0 來授權給使用者。
+description: 了解如何在 API 管理中使用 OAuth 2.0 來授權給使用者。 OAuth 2.0 可保護 API，讓使用者只能存取其所擁有的資源。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7eb77b9ffae49c7d8d3e5612b685e5725829898f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499778"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902252"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 授權開發人員帳戶
 
@@ -27,7 +27,7 @@ ms.locfileid: "86499778"
 > [!IMPORTANT]
 > 新開發人員入口網站的互動式主控台尚未提供 OAuth 2.0 授權。
 
-## <a name="prerequisites"></a><a name="prerequisites"> </a>先決條件
+## <a name="prerequisites"></a><a name="prerequisites"> </a>必要條件
 
 本指南將示範如何設定 API 管理服務執行個體，以便使用開發人員帳戶適用的 OAuth 2.0 授權，但並未示範如何設定 OAuth 2.0 提供者。 儘管步驟相似，且用來在 API 管理服務執行個體中設定 OAuth 2.0 所需的資訊也相同，但每個 OAuth 2.0 提供者的組態並不相同。 本主題演示的範例將 Azure Active Directory 當做 OAuth 2.0 提供者。
 
@@ -105,7 +105,7 @@ ms.locfileid: "86499778"
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-設定好 OAuth 2.0 授權伺服器並將 API 設定為使用該伺服器後，您可以前往開發人員入口網站並呼叫 API 來進行測試。 在 Azure API 管理實例 [**總覽**] 頁面的頂端功能表中，按一下 [**開發人員入口網站（舊版）** ]。
+設定好 OAuth 2.0 授權伺服器並將 API 設定為使用該伺服器後，您可以前往開發人員入口網站並呼叫 API 來進行測試。 從您的 Azure API 管理實例 [**總覽**] 頁面中，按一下頂端功能表中的 [**開發人員入口網站 (舊版) ** 。
 
 在上方功能表中按一下 [API]****，然後選取 [Echo API]****。
 

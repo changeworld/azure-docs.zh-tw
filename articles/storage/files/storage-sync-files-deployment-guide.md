@@ -1,18 +1,18 @@
 ---
 title: 部署 Azure 檔案同步 | Microsoft Docs
-description: 了解部署 Azure 檔案同步的完整程序。
+description: 瞭解如何使用 Azure 入口網站、PowerShell 或 Azure CLI，從開始到完成部署 Azure 檔案同步。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 006825b5040db482262f79497b9fd810ed3b790c
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460621"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903845"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 檔案同步
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -35,13 +35,13 @@ ms.locfileid: "87460621"
     - [建立檔案共用](storage-how-to-create-file-share.md)以取得如何建立檔案共用的逐步說明。
 1. 至少一個支援的 Windows Server 或 Windows Server cluster 實例與 Azure 檔案同步同步。如需有關支援的 Windows Server 版本和建議的系統資源的詳細資訊，請參閱[windows 檔案伺服器考慮](storage-sync-files-planning.md#windows-file-server-considerations)。
 
-1. Az PowerShell 模組可用於 PowerShell 5.1 或 PowerShell 6 +。 您可以在任何支援的系統上使用 Az PowerShell 模組來進行 Azure 檔案同步，包括非 Windows 系統，但是伺服器註冊 Cmdlet 一律必須在您要註冊的 Windows Server 實例上執行（這可以直接完成或透過 PowerShell 遠端處理）。 在 Windows Server 2012 R2 上，您可以確認您至少執行 PowerShell 5.1。 \*藉由查看 **$PSVersionTable**物件的**PSVersion**屬性值：
+1. Az PowerShell 模組可用於 PowerShell 5.1 或 PowerShell 6 +。 您可以在任何支援的系統（包括非 Windows 系統）上使用 Az PowerShell 模組來進行 Azure 檔案同步，不過，伺服器註冊 Cmdlet 一律必須在您要註冊的 Windows Server 實例上執行 (這可以直接完成，或透過 PowerShell 遠端處理) 。 在 Windows Server 2012 R2 上，您可以確認您至少執行 PowerShell 5.1。 \*藉由查看 **$PSVersionTable**物件的**PSVersion**屬性值：
 
     ```powershell
     $PSVersionTable.PSVersion
     ```
 
-    如果您的**PSVersion**值小於 5.1 \* ，則在最新安裝的 Windows Server 2012 R2 中，您可以藉由下載並安裝[WINDOWS Management Framework （WMF） 5.1](https://www.microsoft.com/download/details.aspx?id=54616)，輕鬆地進行升級。 針對 Windows Server 2012 R2 下載和安裝的適當套件是**win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64。** 
+    如果您的**PSVersion**值小於 5.1 \* ，則在最新安裝的 Windows Server 2012 R2 中，您可以藉由下載並安裝[WINDOWS Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616)，輕鬆地進行升級。 針對 Windows Server 2012 R2 下載和安裝的適當套件是**win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64。** 
 
     PowerShell 6 + 可以搭配任何支援的系統使用，並可透過其[GitHub 頁面](https://github.com/PowerShell/PowerShell#get-powershell)下載。 
 
@@ -159,7 +159,7 @@ if ($installType -ne "Server Core") {
 
 - **名稱**：儲存體同步服務的唯一名稱 (每一訂用帳戶)。
 - **訂用帳戶**：您要在其中建立儲存體同步服務的訂用帳戶。 視您組織的設定策略而定，您可能具有一或多個訂用帳戶的存取權限。 Azure 訂用帳戶是針對每個雲端服務 (例如 Azure 檔案服務) 計費的最基本容器。
-- **資源群組**：資源群組是 Azure 資源的邏輯群組，例如儲存體帳戶或儲存體同步服務。 您可以建立新的資源群組，或使用現有的資源群組來進行 Azure 檔案同步。（建議使用資源群組作為容器，以邏輯方式為組織隔離資源，例如將 HR 資源或特定專案的資源分組）。
+- **資源群組**：資源群組是 Azure 資源的邏輯群組，例如儲存體帳戶或儲存體同步服務。 您可以建立新的資源群組，或使用現有的資源群組來進行 Azure 檔案同步。 (建議您使用資源群組作為容器，以邏輯方式為組織隔離資源，例如將 HR 資源或特定專案的資源分組。 ) 
 - **位置**：您要在其中部署 Azure 檔案同步的區域。只有支援的區域可在此清單中取得。
 
 完成時，請選取 [建立]**** 來部署儲存體同步服務。
@@ -279,7 +279,7 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 > [!Note]
 > 伺服器註冊會使用您的 Azure 認證來建立儲存體同步服務和 Windows Server 之間的信任關係；但是，之後伺服器會建立並使用自有的身分識別，只要伺服器維持註冊狀態，且目前的共用存取簽章權杖 (儲存體 SAS) 有效，此身分識別就會是有效的。 如果伺服器未註冊，新的 SAS 權杖就無法發行至伺服器，並會因此移除伺服器存取您 Azure 檔案共用的能力，進而停止任何同步。
 
-註冊伺服器的系統管理員必須是所指定儲存體同步服務的管理角色**擁有**者或**參與者**的成員。 這可以在儲存體同步服務的 Azure 入口網站中的**存取控制（IAM）** 底下設定。
+註冊伺服器的系統管理員必須是所指定儲存體同步服務的管理角色**擁有**者或**參與者**的成員。 這可以在儲存體同步服務 Azure 入口網站中的**存取控制 (IAM) **底下設定。
 
 您也可以區分能夠註冊伺服器的系統管理員，以允許也在儲存體同步服務中設定同步。 為此，您需要建立自訂角色，您可以在其中列出僅允許註冊伺服器的系統管理員，並為您的自訂角色授與下列許可權：
 
@@ -319,7 +319,7 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 > [!Important]  
 > 您可以對同步群組中的任何雲端端點或伺服器端點進行變更，您的檔案將會與同步群組中的其他端點同步。 如果直接對雲端端點 (Azure 檔案共用) 進行變更，則必須先由 Azure 檔案同步變更偵測作業探索到該變更。 針對雲端端點的變更偵測作業，每隔 24 小時才會起始一次。 如需詳細資訊，請參閱 [Azure 檔案服務常見問題集](storage-files-faq.md#afs-change-detection)。
 
-建立雲端端點的系統管理員必須是包含雲端端點所指向之 Azure 檔案共用的儲存體帳戶之管理角色**擁有**者的成員。 這可以在儲存體帳戶的 Azure 入口網站中的**存取控制（IAM）** 底下設定。
+建立雲端端點的系統管理員必須是包含雲端端點所指向之 Azure 檔案共用的儲存體帳戶之管理角色**擁有**者的成員。 這可以在儲存體帳戶 Azure 入口網站中的**存取控制 (IAM) **底下設定。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 若要建立同步群組，請在[Azure 入口網站](https://portal.azure.com/)中，移至您的儲存體同步服務，然後選取 [ **+ 同步群組**]：
@@ -525,10 +525,10 @@ az storagesync sync-group server-endpoint create --resource-group myResourceGrou
 - 在同步拓撲完全啟動並執行之前，伺服器上的資料變更會導致伺服器端點發生衝突。  
 - 建立雲端端點之後，Azure 檔案同步在啟動初始同步處理之前，先執行一個程式來偵測雲端中的檔案。完成此程式所需的時間會視各種因素而異，例如網路速度、可用的頻寬，以及檔案和資料夾的數目。 根據預覽版本中的粗略估計，偵測程序會以大約每秒 10 個檔案的速度執行。因此，即使預先植入的執行速度快，但若在雲端預先植入資料，則系統完整執行的整體時間可能會更長。
 
-## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>透過舊版和 VSS 進行自助式還原（磁碟區陰影複製服務）
+## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>透過舊版和 VSS (的自助式還原磁碟區陰影複製服務) 
 
 > [!IMPORTANT]
-> 下列資訊只能與儲存體同步代理程式的第9版（或更新版本）搭配使用。 低於9的版本將不會有 StorageSyncSelfService Cmdlet。
+> 下列資訊僅適用于儲存體同步代理程式的第9版 (或以上的) 。 低於9的版本將不會有 StorageSyncSelfService Cmdlet。
 
 先前的版本是一項 Windows 功能，可讓您利用磁片區的伺服器端 VSS 快照集，將檔案的可還原版本呈現給 SMB 用戶端。
 這可為資訊工作者直接提供強大的案例，通常稱為自助式還原，而不是根據 IT 系統管理員的還原。
@@ -556,14 +556,14 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 ```
 
 它會列出伺服器上的所有磁片區，以及每個磁片區的雲端階層處理相容日數。 這個數位會根據每個磁片區的可能快照集和預設快照集排程自動計算。 因此，根據預設，呈現給資訊工作者的所有舊版都可以用來從還原。 如果您變更預設排程來取得更多快照集，也是如此。
-不過，如果您將排程變更為會導致磁片區上的可用快照集超過相容的天數值，則使用者將無法使用這種較舊的快照集（舊版）來還原。
+不過，如果您變更排程的方式會導致磁片區上的可用快照集比 [相容天數] 值還舊，則使用者將無法使用舊版的快照 (舊版) 還原。
 
 > [!Note]
-> 啟用自助式還原可能會影響您的 Azure 儲存體耗用量和帳單。 這種影響僅限於伺服器上目前階層式檔案。 啟用此功能可確保雲端中有可用的檔案版本，可透過舊版（VSS 快照集）專案來參考。
+> 啟用自助式還原可能會影響您的 Azure 儲存體耗用量和帳單。 這種影響僅限於伺服器上目前階層式檔案。 啟用此功能可確保雲端中有可用的檔案版本，可透過舊版 (VSS 快照) 專案來參考。
 >
 > 如果您停用此功能，Azure 儲存體耗用量將會緩慢地拒絕，直到 [相容的天數] 視窗通過為止。 沒有辦法加快此速度。 
 
-預設的 [每個磁片區的 VSS 快照集數目上限（64）] 和 [預設排程] 會產生最多45天的舊版資訊工作者可以從中還原的版本，視您可以在磁片區上儲存多少個 VSS 快照集而定。
+預設的每個磁片區的 VSS 快照集數目上限 (64) 以及接受的預設排程，會產生最多45天的資訊工作者可以從中還原的舊版本，取決於您可以在磁片區上儲存多少個 VSS 快照集。
 
 如果上限。64每個磁片區的 VSS 快照集不是正確的設定，您可以透過登錄機[碼來變更](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)該值。
 若要讓新的限制生效，您必須重新執行 Cmdlet，以便在先前啟用的每個磁片區上啟用先前的版本相容性，並使用-Force 旗標，將每個磁片區的最大 VSS 快照集數目納入考慮。 這會產生新計算的相容日數。 請注意，這項變更只會在新階層式檔案上生效，並會覆寫您所做的 VSS 排程上的任何自訂。

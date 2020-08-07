@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 01/21/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588627"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903998"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3.0： BreakSentence
 
@@ -37,18 +37,18 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 | -------| ----------- |
 | api-version <img width=200/>   | **必要查詢參數**。<br/>用戶端要求的 API 版本。 值必須為 `3.0`。 |
 | 語言 | **選擇性的查詢參數**。<br/>識別輸入文字語言的語言標記。 如果未指定代碼，將會套用自動語言偵測。 |
-| 指令碼 (script)    | **選擇性的查詢參數**。<br/>識別輸入文字所使用指令碼的指令碼標記。 如果未指定指令碼，將會假設語言的預設指令碼。  | 
+| 指令碼    | **選擇性的查詢參數**。<br/>識別輸入文字所使用指令碼的指令碼標記。 如果未指定指令碼，將會假設語言的預設指令碼。  | 
 
 要求標頭包括：
 
 | 標題 | 描述 |
 | ------- | ----------- |
-| 驗證標頭 <img width=200/>  | 必要的要求標頭****。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
-| Content-Type | 必要的要求標頭****。<br/>指定承載的內容類型。 可能的值為：`application/json`。 |
-| Content-Length    | 必要的要求標頭****。<br/>要求本文的長度。  | 
+| 驗證標頭 (s)  <img width=200/>  | **必要的要求標頭**。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
+| Content-Type | **必要的要求標頭**。<br/>指定承載的內容類型。 可能的值為：`application/json`。 |
+| Content-Length    | **必要的要求標頭**。<br/>要求本文的長度。  | 
 | X-ClientTraceId   | **選擇項**。<br/>用於識別唯一要求的 GUID，由用戶端產生。 請注意，若您使用名為 `ClientTraceId` 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。  | 
 
-## <a name="request-body"></a>要求本文
+## <a name="request-body"></a>Request body
 
 要求的本文是 JSON 陣列。 每個陣列項目都是具有字串屬性 `Text` 的 JSON 物件。 會針對 `Text` 屬性的值計算句子界限。 具有一段文字的要求本文範例看起來像這樣：
 
@@ -58,10 +58,10 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 ]
 ```
 
-套用下列限制：
+適用下列限制：
 
 * 陣列最多可以有 100 個項目。
-* 陣列項目的文字值不能超過 10,000 個字元，包括空格。
+* 陣列元素的文字值不能超過50000個字元，包括空格。
 * 要求中包含的完整文字不能超過 50,000 個字元，包括空格。
 * 如果指定 `language` 查詢參數，則所有陣列項目必須都是相同的語言。 否則，語言自動偵測會個別套用至每個陣列項目。
 

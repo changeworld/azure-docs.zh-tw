@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfdb717a27af8dc7f3186ac7afdff4d1eb3d79f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9c77ed2bf0d764fbbbe24770cc70b3fbeec7f678
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420833"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833448"
 ---
-# <a name="understanding-just-in-time-jit-vm-access"></a>瞭解即時（JIT） VM 存取
+# <a name="understanding-just-in-time-jit-vm-access"></a>瞭解及時 (JIT) VM 存取
 
-此頁面說明 Azure 資訊安全中心的即時（JIT） VM 存取功能和建議背後的邏輯背後的原則。
+此頁面說明 Azure 資訊安全中心的即時 (JIT) VM 存取功能和建議背後的邏輯背後的原則。
 
-若要瞭解如何使用 Azure 入口網站（資訊安全中心或 Azure 虛擬機器）或以程式設計方式將 JIT 套用至您的 Vm，請參閱[如何使用 jit 保護您的管理埠](security-center-just-in-time.md)。
+若要瞭解如何使用 Azure 入口網站 (資訊安全中心或 Azure 虛擬機器) 或以程式設計方式將 JIT 套用至您的 Vm，請參閱[如何使用 jit 保護您的管理埠](security-center-just-in-time.md)。
 
 
 ## <a name="the-risk-of-open-management-ports-on-a-virtual-machine"></a>在虛擬機器上開啟管理埠的風險
@@ -40,11 +40,11 @@ ms.locfileid: "87420833"
 
 ## <a name="how-jit-operates-with-network-security-groups-and-azure-firewall"></a>JIT 如何使用網路安全性群組和 Azure 防火牆操作
 
-當您啟用即時 VM 存取時，您可以選取 VM 上將會封鎖輸入流量的埠。 資訊安全中心可確保您在[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)（NSG）和[Azure 防火牆規則](https://docs.microsoft.com/azure/firewall/rule-processing)中，您選取的埠有「拒絕所有輸入流量」規則。 這些規則會限制對您的 Azure Vm 管理埠的存取，並保護其免于遭受攻擊。 
+當您啟用即時 VM 存取時，您可以選取 VM 上將會封鎖輸入流量的埠。 資訊安全中心可確保[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中所選埠的「拒絕所有輸入流量」規則， (NSG) 和[Azure 防火牆規則](https://docs.microsoft.com/azure/firewall/rule-processing)。 這些規則會限制對您的 Azure Vm 管理埠的存取，並保護其免于遭受攻擊。 
 
 如果選取的埠已有其他規則，則這些現有的規則會優先于新的「拒絕所有輸入流量」規則。 如果選取的埠上沒有現有的規則，則新的規則會優先使用 NSG 和 Azure 防火牆。
 
-當使用者要求存取 VM 時，資訊安全中心會檢查使用者是否有該 VM 的[角色型存取控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)許可權。 如果要求經過核准，資訊安全中心會將 Nsg 和 Azure 防火牆設定為允許從相關的 IP 位址（或範圍）到所選埠的輸入流量，指定的時間量。 時間到期之後，資訊安全中心會將 NSG 還原為其先前的狀態。 已建立的連接不會中斷。
+當使用者要求存取 VM 時，資訊安全中心檢查使用者是否具有[azure 角色型存取控制， (該 vm 的 AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)許可權。 如果要求經過核准，資訊安全中心會設定 Nsg 和 Azure 防火牆，以允許在指定的時間內，從相關的 IP 位址 (或範圍) 的輸入流量進入選取的埠。 時間到期之後，資訊安全中心會將 NSG 還原為其先前的狀態。 已建立的連接不會中斷。
 
 > [!NOTE]
 > JIT 不支援由[Azure 防火牆管理員](https://docs.microsoft.com/azure/firewall-manager/overview)所控制的 azure 防火牆所保護的 vm。
@@ -56,11 +56,11 @@ ms.locfileid: "87420833"
 
 下圖顯示在決定如何將支援的 Vm 分類時，資訊安全中心適用的邏輯： 
 
-[![即時（JIT）虛擬機器（VM）邏輯流程](media/just-in-time-explained/jit-logic-flow.png)](media/just-in-time-explained/jit-logic-flow.png#lightbox)
+[![即時 (JIT) 虛擬機器 (VM) 邏輯流程](media/just-in-time-explained/jit-logic-flow.png)](media/just-in-time-explained/jit-logic-flow.png#lightbox)
 
 當資訊安全中心找到可受益于 JIT 的電腦時，它會將該機器新增至建議的 [**狀況不良資源**] 索引標籤。 
 
-![及時（JIT）虛擬機器（VM）存取建議](./media/just-in-time-explained/unhealthy-resources.png)
+![及時 (JIT) 虛擬機器 (VM) 存取建議](./media/just-in-time-explained/unhealthy-resources.png)
 
 
 ## <a name="faq---questions-about-just-in-time-virtual-machine-access"></a>常見問題-即時虛擬機器存取的相關問題
@@ -85,7 +85,7 @@ ms.locfileid: "87420833"
 
 ## <a name="next-steps"></a>後續步驟
 
-此頁面說明_為何_應使用「即時（JIT）虛擬機器（VM）」存取。 
+此頁面說明_為什麼_應該使用 (JIT) 虛擬機器 (VM) 存取的時機。 
 
 前往操作說明文章，以瞭解如何啟用 JIT 並要求存取已啟用 JIT 的 Vm：
 

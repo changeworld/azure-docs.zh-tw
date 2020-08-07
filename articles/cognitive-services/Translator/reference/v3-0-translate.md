@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/17/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090853"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903981"
 ---
 # <a name="translator-30-translate"></a>翻譯工具3.0：轉譯
 
@@ -59,7 +59,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>  
   <tr>
     <td>textType</td>
-    <td><em>選擇性參數</em>。<br/>定義要翻譯的文字是純文字還是 HTML 文字。 任何 HTML 都需要是格式正確的完整項目。 可能的值為： <code>plain</code> （預設）或 <code>html</code>.</td>
+    <td><em>選擇性參數</em>。<br/>定義要翻譯的文字是純文字還是 HTML 文字。 任何 HTML 都需要是格式正確的完整項目。 可能的值為： <code>plain</code> (預設) 或 <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
@@ -106,7 +106,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th width="20%">標題</th>
   <th>描述</th>
   <tr>
-    <td>驗證標頭</td>
+    <td>驗證標頭 (s) </td>
     <td><em>必要的要求標頭</em>。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
   </tr>
   <tr>
@@ -136,7 +136,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 適用下列限制：
 
 * 陣列最多可以有 100 個項目。
-* 要求中包含的完整文字不能超過 5,000 個字元，包括空格。
+* 要求中包含的完整文字不能超過10000個字元，包括空格。
 
 ## <a name="response-body"></a>回應本文
 
@@ -384,14 +384,14 @@ Translator 服務通常會在翻譯中保留存在於來源的粗話。 粗話�
     <td>不雅字眼會取代為輸出中的標記。 標記取決於 <code>ProfanityMarker</code> 參數。<br/><br/>
 對於 <code>ProfanityMarker=Asterisk</code>，不雅字眼會取代為 <code>***</code>：<br/>
     <strong>範例來源 (日文)</strong>：彼はジャッカスです。<br/>
-    <strong>範例翻譯（英文）</strong>：他是 \* \* \* 。<br/><br/>
+    <strong> (英文) 的翻譯範例</strong>：他是 \* \* \* 。<br/><br/>
 對於 <code>ProfanityMarker=Tag</code>，不雅字眼會括上 XML 標籤 &lt;profanity&gt; 和 &lt;/profanity&gt;：<br/>
     <strong>範例來源 (日文)</strong>：彼はジャッカスです。<br/>
     <strong>範例翻譯 (英文)</strong>：He is a &lt;profanity&gt;jackass&lt;/profanity&gt;.
   </tr>
 </table> 
 
-例如:
+例如：
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'This is a freaking good idea.'}]"
@@ -492,7 +492,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 * HTML 格式的文字無法使用對齊方式，例如，textType = html
 * 只會傳回一部分語言組的對齊方式：
-  - 英文（繁體中文、廣東話（繁體）或塞爾維亞文（斯拉夫）除外）的任何其他語言。
+  - 英文 to/from 繁體中文以外的任何其他語言，廣東話 (傳統) 或塞爾維亞 (斯拉夫文) 。
   - 從日文到韓文，或從韓文到日文。
   - 從日文到簡體中文、簡體中文到日文。 
   - 從簡體中文到繁體中文和繁體中文，也就是簡體中文。 

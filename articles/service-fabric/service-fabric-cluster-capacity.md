@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247771"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904814"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 叢集容量規劃考量
 
@@ -155,7 +155,7 @@ ms.locfileid: "86247771"
 
 #### <a name="virtual-machine-sizing"></a>虛擬機器大小
 
-**針對生產工作負載，建議的 VM 大小 (SKU) 是標準 D2_V2 (或對等的) ，最少為 50 GB 的本機 SSD。** 建議至少使用 50 GB 的本機 SSD，不過，某些工作負載 (例如執行 Windows 容器) 會需要較大的磁片。 為生產環境工作負載選擇其他[VM 大小時](../virtual-machines/sizes-general.md)，請記住下列條件約束：
+**針對生產工作負載，建議的 VM 大小 (SKU) 是[標準 D2_V2](../virtual-machines/dv2-dsv2-series.md) (或同等的) ，最少為 50 GB 的本機 SSD、2個核心和 4 GiB 的記憶體。** 建議至少使用 50 GB 的本機 SSD，不過，某些工作負載 (例如執行 Windows 容器) 會需要較大的磁片。 為生產環境工作負載選擇其他[VM 大小時](../virtual-machines/sizes-general.md)，請記住下列條件約束：
 
 - 不支援像標準 A0 之類的部分核心 VM 大小。
 - *A 系列*基於效能考慮，不支援 VM 大小。

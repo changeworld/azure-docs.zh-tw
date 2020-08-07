@@ -1,44 +1,33 @@
 ---
-title: 瞭解 Azure 監視器警示的遷移工具
-description: 瞭解警示遷移工具的運作方式和疑難排解問題。
+title: 瞭解 Azure 監視器警示的遷移
+description: 瞭解警示遷移的運作方式和疑難排解問題。
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564090"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852390"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>了解移轉工具的運作方式
+# <a name="understand-migration-options-to-newer-alerts"></a>瞭解較新警示的遷移選項
 
-如[先前所宣佈](monitoring-classic-retirement.md)，Azure 監視器中的傳統警示將于2019年8月31日淘汰， (最初是 2019) 。 Azure 入口網站提供遷移工具給使用傳統警示規則的客戶，以及想要自行觸發遷移的使用者。
+傳統警示已[淘汰](./monitoring-classic-retirement.md)，但仍受限於僅適用于尚未支援新警示的資源。 即將推出的新日期將會針對剩餘的警示遷移、 [Azure Government 雲端](../../azure-government/documentation-government-welcome.md)和[Azure 中國世紀](https://docs.azure.cn/)。
 
-本文說明自發遷移工具的運作方式。 它也會說明一些常見問題的解決辦法。
-
-> [!NOTE]
-> 由於遷移工具的推出延遲，傳統警示遷移的淘汰日期已從2019年6月30日最初宣佈的日期[延長到2019年8月31日](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/)。
-
-## <a name="classic-alert-rules-that-will-not-be-migrated"></a>不會遷移的傳統警示規則
+本文說明「手動遷移」和「自發遷移」工具的工作方式，將用來遷移其餘的警示規則。 它也會說明一些常見問題的解決辦法。
 
 > [!IMPORTANT]
 > 活動記錄警示 (包括服務健康情況警示) 和記錄警示不會受到遷移的影響。 遷移僅適用于[這裡](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)所述的傳統警示規則。
 
-雖然此工具幾乎可以遷移所有[傳統的警示規則](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)，但還是有一些例外狀況。 下列警示規則不會使用工具進行遷移 (或在2019年9月) 開始自動遷移期間：
-
-- 傳統警示規則用於虛擬機器的來賓計量， (Windows 和 Linux) 。 請參閱本文稍後的在新的計量[警示中重新建立這類警示規則的指引](#guest-metrics-on-virtual-machines)。
-- 傳統的儲存體計量的傳統警示規則。 請參閱[監視傳統儲存體帳戶的指導](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/)方針。
-- 某些儲存體帳戶計量的傳統警示規則。 請參閱本文稍後的[詳細資料](#storage-account-metrics)。
-- 某些 Cosmos DB 計量的傳統警示規則。 請參閱本文稍後的[詳細資料](#cosmos-db-metrics)。
-- 所有傳統虛擬機器和雲端服務計量上的傳統警示規則 (Microsoft.classiccompute/virtualMachines 和 Microsoft.classiccompute/domainNames/) /個位置/角色。 請參閱本文稍後的[詳細資料](#classic-compute-metrics)。
-
-如果您的訂用帳戶有任何這類傳統規則，您必須手動進行遷移。 因為我們無法提供自動遷移，所以這些類型的任何現有、傳統計量警示都將繼續工作，直到2020年6月為止。 此延伸模組可讓您將時間移至新的警示。 您也可以在2020年6月之前，繼續針對上述例外狀況建立新的傳統警示。 不過，針對其他所有專案，2019年8月之後就無法建立新的傳統警示。
-
 > [!NOTE]
-> 除了上述的例外狀況之外，如果您的傳統警示規則無效，亦即其已被[取代的計量](#classic-alert-rules-on-deprecated-metrics)或已刪除的資源，則不會進行遷移，而且在服務淘汰之後將無法使用。
+> 如果您的傳統警示規則無效，亦即其已被[取代的計量](#classic-alert-rules-on-deprecated-metrics)或已刪除的資源，則不會進行遷移，而且在服務淘汰之後將無法使用。
+
+## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>將傳統警示手動遷移至較新的警示
+
+有興趣手動遷移其剩餘警示的客戶，可以使用下列各節來執行此動作。 這些區段也會定義資源提供者已淘汰，且目前無法直接遷移的計量。
 
 ### <a name="guest-metrics-on-virtual-machines"></a>虛擬機器上的來賓計量
 

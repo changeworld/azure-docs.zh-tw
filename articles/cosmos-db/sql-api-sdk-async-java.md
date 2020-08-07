@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 5b656286a2958957e8518deca88ec22d7279d767
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3f7b6c46a69acf8eea546469cf7919e86703f17c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323854"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852679"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Async JAVA SDK：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -26,8 +26,10 @@ ms.locfileid: "87323854"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
-> * 停(/rest/api
+> * [REST] (/rest/api
 > * [REST 資源提供者](/azure/azure-resource-manager/management/azure-services-resource-providers)
 > * [SQL](sql-api-query-reference.md)
 > * [大量執行程式-.NET v2](sql-api-sdk-bulk-executor-dot-net.md)

@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: robinsh
-ms.custom: mqtt, tracking-python
-ms.openlocfilehash: 142ac150e863b69a4580812478828062c1f5c6c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-python
+ms.openlocfilehash: 12b1d083ae1481f7c8b5fe60cac9156a56aeaa0a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84605590"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875467"
 ---
 # <a name="get-started-with-device-twins-python"></a>開始使用裝置對應項 (Python)
 
@@ -243,4 +243,4 @@ ms.locfileid: "84605590"
 
 * 使用裝置對應項的所需屬性搭配[使用所需的屬性來設定裝置](tutorial-device-twins.md)教學課程來設定裝置。
 
-* 以互動方式控制裝置（例如，從使用者控制的應用程式開啟風扇），[使用直接方法](quickstart-control-device-python.md)教學課程。
+* 透過[使用直接方法](quickstart-control-device-python.md)教學課程，以互動方式 (，例如從使用者控制的應用程式開啟風扇) 。

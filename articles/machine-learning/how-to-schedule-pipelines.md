@@ -9,19 +9,19 @@ ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: c076ceafc35a11f172ff35b7ab5ce89d1bf99f17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 351d52128660c25c557c536f2835e0e71c0115f7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319553"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842955"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>使用適用于 Python 的 Azure Machine Learning SDK 來排程機器學習管線
 
 在本文中，您將瞭解如何以程式設計方式排程管線以在 Azure 上執行。 您可以選擇根據經過時間或檔案系統變更來建立排程。 以時間為基礎的排程可以用來處理例行的工作，例如監視資料漂移。 以變更為基礎的排程可用於回應異常或無法預期的變更，例如上傳的新資料或正在編輯的舊資料。 學習如何建立排程之後，您將瞭解如何取出和停用排程。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://aka.ms/AMLFree)。
 

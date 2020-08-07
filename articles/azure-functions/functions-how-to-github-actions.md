@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 3fcf26670ec03b1d3a496574e58ae706acdf5c53
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559098"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853286"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>使用 GitHub 動作進行持續傳遞
 
@@ -68,7 +68,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 
 GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 
-## <a name="set-up-the-environment"></a>設定 Azure 環境 
+## <a name="set-up-the-environment"></a>設定環境 
 
 設定環境是使用特定語言的發行設定動作來完成。
 
@@ -198,14 +198,14 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 ```
 ---
 
-## <a name="deploy-the-function-app"></a>部署函式應用程式
+## <a name="deploy-the-function-app"></a>部署函數應用程式
 
 若要將程式碼部署至函式應用程式，您必須使用 `Azure/functions-action` 動作。 此動作有兩個參數：
 
 |參數 |說明  |
 |---------|---------|
-|**_app-name_** | 不必函數應用程式的名稱。 |
-|_**slot-name**_ | 選擇性您想要部署的[部署](functions-deployment-slots.md)位置名稱。 位置必須已在您的函式應用程式中定義。 |
+|**_應用程式名稱_** |  (強制) 函數應用程式的名稱。 |
+|_**位置名稱**_ |  (選擇性) 您想要部署的[部署](functions-deployment-slots.md)位置名稱。 位置必須已在您的函式應用程式中定義。 |
 
 
 下列範例會使用的第1版 `functions-action` ：
@@ -223,4 +223,4 @@ GitHub 現在可以在 Azure 中向您的函數應用程式進行驗證。
 若要查看完整的 yaml 檔案，請參閱[Azure GitHub 動作工作流程範例](https://aka.ms/functions-actions-samples)存放庫中的其中一個檔案，其 `functionapp` 名稱為。 您可以使用這些範例做為工作流程的起點。
 
 > [!div class="nextstepaction"]
-> [深入瞭解 GitHub 動作](https://help.github.com/en/articles/about-github-actions)
+> [深入了解 GitHub Actions](https://help.github.com/en/articles/about-github-actions)

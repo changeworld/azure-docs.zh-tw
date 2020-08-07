@@ -10,20 +10,20 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7aa17a7a96bffd0cd6f68f6187038aabd72b8cbd
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: e5fb19b0d8d94b5ccc07c465c3e9f3bf0de50ab7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542156"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843040"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署為 Web 服務的 Azure Machine Learning 模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 將 Azure Machine Learning 模型部署為 web 服務時，會建立 REST API 端點。 您可以將資料傳送至此端點，並接收模型所傳回的預測。 在本文件中，了解如何使用 C#、Go、Java 和 Python 為Web 服務建立用戶端。
 
-當您將模型部署到您的本機環境、Azure 容器實例、Azure Kubernetes Service 或可現場程式化閘道陣列（FPGA）時，會建立 web 服務。 您可以使用[AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)來抓取用來存取 web 服務的 URI。 如果已啟用驗證，您也可以使用 SDK 來取得驗證金鑰或權杖。
+當您將模型部署到您的本機環境、Azure 容器實例、Azure Kubernetes Service 或可現場程式化閘道陣列 (FPGA) 時，會建立 web 服務。 您可以使用[AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)來抓取用來存取 web 服務的 URI。 如果已啟用驗證，您也可以使用 SDK 來取得驗證金鑰或權杖。
 
 建立使用機器學習 Web 服務的用戶端所適用的一般工作流程是：
 
@@ -32,7 +32,7 @@ ms.locfileid: "87542156"
 1. 建立一個呼叫 Web 服務的應用程式。
 
 > [!TIP]
-> 本檔中的範例是以手動方式建立，而不使用 OpenAPI （Swagger）規格。 如果您已針對部署啟用 OpenAPI 規格，您可以使用[swagger codegen](https://github.com/swagger-api/swagger-codegen)之類的工具來建立服務的用戶端程式庫。
+> 本檔中的範例是以手動方式建立，而不使用 OpenAPI (Swagger) 規格。 如果您已針對部署啟用 OpenAPI 規格，您可以使用[swagger codegen](https://github.com/swagger-api/swagger-codegen)之類的工具來建立服務的用戶端程式庫。
 
 ## <a name="connection-information"></a>連線資訊
 
@@ -75,7 +75,7 @@ ms.locfileid: "87542156"
 
 ### <a name="secured-web-service"></a>受保護的 web 服務
 
-如果您使用 TLS/SSL 憑證來保護已部署的 web 服務，您可以使用[HTTPS](https://en.wikipedia.org/wiki/HTTPS)來連接到使用評分或 swagger URI 的服務。 HTTPS 藉由加密兩者之間的通訊，協助保護用戶端與 web 服務之間的通訊。 加密使用[傳輸層安全性（TLS）](https://en.wikipedia.org/wiki/Transport_Layer_Security)。 TLS 有時仍然稱為*安全通訊端層*（SSL），這是 tls 的前身。
+如果您使用 TLS/SSL 憑證來保護已部署的 web 服務，您可以使用[HTTPS](https://en.wikipedia.org/wiki/HTTPS)來連接到使用評分或 swagger URI 的服務。 HTTPS 藉由加密兩者之間的通訊，協助保護用戶端與 web 服務之間的通訊。 加密使用[傳輸層安全性 (TLS) ](https://en.wikipedia.org/wiki/Transport_Layer_Security)。 TLS 有時仍然稱為*安全通訊端層* (SSL) ，也就是 tls 的前身。
 
 > [!IMPORTANT]
 > Azure Machine Learning 部署的 Web 服務僅支援 TLS 版本1.2。 建立用戶端應用程式時，請確定它支援此版本。
@@ -197,7 +197,7 @@ Web 服務可以在單一要求中接受多個資料集。 它會傳回一個 JS
 > res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/> octet-stream'})
 > ```
 
-### <a name="cross-origin-resource-sharing-cors"></a>跨原始來源資源分享（CORS）
+### <a name="cross-origin-resource-sharing-cors"></a>跨原始資源分享 (CORS) 
 
 如需在服務中啟用 CORS 支援的詳細資訊，請參閱[跨原始來源資源分享](how-to-deploy-advanced-entry-script.md#cors)。
 
@@ -523,11 +523,11 @@ print(resp.text)
 ```
 
 
-## <a name="web-service-schema-openapi-specification"></a>Web 服務架構（OpenAPI 規格）
+## <a name="web-service-schema-openapi-specification"></a>Web 服務架構 (OpenAPI 規格) 
 
-如果您在部署中使用自動產生架構，您可以使用[swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)取得服務的 OpenAPI 規格位址。 （例如， `print(service.swagger_uri)` ）。使用 GET 要求，或在瀏覽器中開啟 URI 以取得規格。
+如果您在部署中使用自動產生架構，您可以使用[swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)取得服務的 OpenAPI 規格位址。 例如， (`print(service.swagger_uri)` 。 ) 使用 GET 要求，或在瀏覽器中開啟 URI 以取得規格。
 
-下列 JSON 檔是針對部署所產生的架構（OpenAPI 規格）範例：
+下列 JSON 檔是針對部署所產生之架構 (OpenAPI 規格) 的範例：
 
 ```json
 {
@@ -667,7 +667,7 @@ print(resp.text)
 
 
 > [!TIP]
-> 您可以在部署服務之後，取得架構 JSON 檔。 使用已部署 web 服務的 [ [swagger_uri] 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)（例如， `service.swagger_uri` ）來取得本機 Web 服務之 SWAGGER 檔案的 uri。
+> 您可以在部署服務之後，取得架構 JSON 檔。 使用已部署 web 服務的[swagger_uri 屬性](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) (例如， `service.swagger_uri`) 取得本機 web 服務 SWAGGER 檔案的 uri。
 
 ## <a name="consume-the-service-from-power-bi"></a>使用來自 Power BI 的服務
 

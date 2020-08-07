@@ -10,15 +10,15 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: ea26e1861d1e3916302563a27389763ebc4c450c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: a0241864a5eafe8783aea463197f86ff949ea9ed
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326693"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853376"
 ---
-# <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning 追蹤模型計量和部署 ML 模型（預覽）
+# <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure Machine Learning (preview 來追蹤模型計量和部署 ML 模型) 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -238,7 +238,7 @@ ws.get_details()
 
 ### <a name="log-your-model"></a>記錄您的模型
 
-在您可以部署之前，請確定您的模型已儲存，讓您可以參考它及其路徑位置以進行部署。 在定型腳本中，應該會有類似下列 log_model mlflow 的程式碼[（）](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) ，這種方法會將您的模型儲存至指定的輸出目錄。 
+在您可以部署之前，請確定您的模型已儲存，讓您可以參考它及其路徑位置以進行部署。 在定型腳本中，應該會有類似下列 log_model mlflow 的程式碼[ ( # B1](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html)方法，這會將您的模型儲存至指定的輸出目錄。 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -269,11 +269,11 @@ model_save_path = 'model'
 
 使用 Azure Machine Learning SDK，將模型部署為 web 服務。
 
-首先，指定部署設定。 Azure 容器實例（ACI）是適用于快速開發/測試部署的理想選擇，而 Azure Kubernetes Service （AKS）適用于可調整的生產環境部署。
+首先，指定部署設定。 Azure 容器實例 (ACI) 是適用于快速開發/測試部署的理想選擇，而 Azure Kubernetes Service (AKS) 適用于可調整的生產環境部署。
 
 #### <a name="deploy-to-aci"></a>部署到 ACI
 
-使用[deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法設定您的部署設定。 您也可以新增標記和描述，以協助追蹤您的 web 服務。
+使用[deploy_configuration ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法來設定您的部署設定。 您也可以新增標記和描述，以協助追蹤您的 web 服務。
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -300,7 +300,7 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>部署到 AKS
 
-若要部署至 AKS，請先建立 AKS 叢集。 使用[ComputeTarget. create （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)方法建立 AKS 叢集。 建立新叢集可能需要20-25 分鐘的時間。
+若要部署至 AKS，請先建立 AKS 叢集。 使用 ComputeTarget 建立 AKS 叢集[。建立 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-)方法。 建立新叢集可能需要20-25 分鐘的時間。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -320,7 +320,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-使用[deploy_configuration （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法設定您的部署設定。 您也可以新增標記和描述，以協助追蹤您的 web 服務。
+使用[deploy_configuration ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-)方法來設定您的部署設定。 您也可以新增標記和描述，以協助追蹤您的 web 服務。
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
