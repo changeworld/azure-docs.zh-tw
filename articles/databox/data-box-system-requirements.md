@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure 資料箱的系統需求 | Microsoft Docs
-description: 了解 Azure 資料箱的軟體和網路需求
+description: 瞭解 Azure 資料箱的重要系統需求，以及連接到資料箱的用戶端。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 496069ebf64340bc55f03df8dc15304b4888bec0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 71f499e1cdd7ccf22d90b21ce04299798978a828
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200317"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926598"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure 資料箱的系統需求
 
@@ -66,6 +66,6 @@ ms.locfileid: "86200317"
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [部署 Azure 資料箱](data-box-deploy-ordered.md)

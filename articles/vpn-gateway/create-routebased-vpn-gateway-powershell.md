@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 閘道：建立以路由為基礎的閘道： PowerShell
-description: 使用 PowerShell 來快速建立路由型 VPN 閘道
+description: 瞭解如何使用 PowerShell 建立以路由為基礎的 Azure VPN 閘道。 使用 VPN 閘道連接到您的內部部署網路。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5cd0971b04d1bad140cf3aac29a8c153977cfa62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e6c8ec12927afbabd6c6d41ab348bad9814e82c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987636"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923198"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>使用 PowerShell 來建立路由型 VPN 閘道
 

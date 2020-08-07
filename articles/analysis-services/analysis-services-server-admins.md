@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9edc43f9b2b62a3d9da9d6fba5ab52318e8b6427
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bc17d27837d5b96f06b5172fb019db873418db94
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077502"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922926"
 ---
 # <a name="manage-server-administrators"></a>管理伺服器管理員
 
-伺服器系統管理員必須是伺服器所在租使用者的 Azure Active Directory （Azure AD）中的有效使用者、服務主體或安全性群組。 在 Azure 入口網站、SSMS 的 [伺服器屬性]、PowerShell 或 REST API 中，您可以使用伺服器的 **Analysis Services 管理員**來管理伺服器管理員。 
+伺服器系統管理員必須是伺服器所在租使用者的 Azure Active Directory (Azure AD) 中的有效使用者、服務主體或安全性群組。 在 Azure 入口網站、SSMS 的 [伺服器屬性]、PowerShell 或 REST API 中，您可以使用伺服器的 **Analysis Services 管理員**來管理伺服器管理員。 
 
 新增**安全性群組**時，請使用 `obj:groupid@tenantid` 。 新增至伺服器管理員角色的安全性群組不支援服務主體。
 
@@ -50,9 +50,8 @@ ms.locfileid: "86077502"
 
 
 
-## <a name="next-steps"></a>下一步 
+## <a name="next-steps"></a>後續步驟 
 
 [驗證和使用者權限](analysis-services-manage-users.md)  
 [管理資料庫角色和使用者](analysis-services-database-users.md)  
-[角色型存取控制](../role-based-access-control/overview.md)  
-
+[Azure 角色型存取控制 (Azure RBAC) ](../role-based-access-control/overview.md)  

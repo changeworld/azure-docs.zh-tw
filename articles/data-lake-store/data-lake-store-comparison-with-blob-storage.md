@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 9ab1e2ed4aeace0ec98cb358f32a07f64c3dfea2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f9a03b5636af4a60c4abf563e073e22c970b8a02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075049"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921772"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>比較 Azure Data Lake Storage Gen1 和 Azure Blob 儲存體
 
@@ -29,17 +29,15 @@ ms.locfileid: "87075049"
 | 伺服器端 API |[WebHDFS 相容的 REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob 儲存體 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
 | Hadoop 檔案系統用戶端 |是 |是 |
 | 資料作業 - 驗證 |採用 [Azure Active Directory 身分識別](../active-directory/develop/authentication-scenarios.md) |採用共用密碼 - [帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)和[共用存取簽章金鑰](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 |
-| 資料作業 - 驗證通訊協定 |OAuth 2.0。 呼叫必須包含由 Azure Active Directory 發行的有效 JWT (JSON Web 權杖) |以雜湊為基礎的訊息驗證碼（HMAC）。 呼叫必須包含透過 HTTP 要求之一部分的 Base64 編碼 SHA-256 雜湊。 |
+| 資料作業 - 驗證通訊協定 |OAuth 2.0。 呼叫必須包含由 Azure Active Directory 發行的有效 JWT (JSON Web 權杖) |以雜湊為基礎的訊息驗證碼 (HMAC) 。 呼叫必須包含透過 HTTP 要求之一部分的 Base64 編碼 SHA-256 雜湊。 |
 | 資料作業 - 授權 |POSIX 存取控制清單 (ACL)  ACL 採用 Azure Active Directory 身分識別，可設為檔案或資料夾層級。 |針對帳戶層級授權 – 使用[帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)<br>針對帳戶、容器或 Blob 授權 - 使用[共用存取簽章金鑰](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | 資料作業 - 稽核 |可用。 如需相關資訊，請參閱[這裡](data-lake-store-diagnostic-logs.md)。 |可用 |
 | 待用資料加密 |<ul><li>透明、伺服器端</li> <ul><li>使用服務管理的金鑰</li><li>在 Azure KeyVault 中使用客戶管理的金鑰</li></ul></ul> |<ul><li>透明、伺服器端</li> <ul><li>使用服務管理的金鑰</li><li>在 Azure KeyVault 中使用客戶管理的金鑰 (預覽)</li></ul><li>用戶端加密</li></ul> |
-| 管理作業（例如，帳戶建立） |[角色型存取控制](../role-based-access-control/overview.md) (RBAC) |[角色型存取控制](../role-based-access-control/overview.md) (RBAC) |
+| 管理作業 (例如帳戶建立)  |Azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)進行帳戶管理 |Azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)進行帳戶管理 |
 | 開發人員 SDK |.NET、Java、Python、Node.js |.NET、JAVA、Python、Node.js、C++、Ruby、PHP、Go、Android、iOS |
 | 分析的工作負載效能 |平行分析工作負載的效能最佳化。 高輸送量和 IOPS。 |平行分析工作負載的效能最佳化。 |
 | 大小限制 |帳戶大小、檔案大小或檔案數目沒有限制 |如需特定限制，請參閱[標準儲存體帳戶的擴充性目標](../storage/common/scalability-targets-standard-account.md)和[Blob 儲存體的擴充性和效能目標](../storage/blobs/scalability-targets.md)。 可聯絡 [Azure 支援](https://azure.microsoft.com/support/faq/)以取得較大帳戶的限制 |
-| 異地備援 |本機多餘（一個 Azure 區域中的多個資料複本） |本機備援 (LRS)、區域備援 (ZRS)、全域備援 (GRS)、讀取存取全域備援 (RA-GRS)。 如需詳細資訊，請參閱[這裡](../storage/common/storage-redundancy.md) |
+| 異地備援 |本機冗余 (一個 Azure 區域中的多個資料複本)  |本機備援 (LRS)、區域備援 (ZRS)、全域備援 (GRS)、讀取存取全域備援 (RA-GRS)。 如需詳細資訊，請參閱[這裡](../storage/common/storage-redundancy.md) |
 | 服務狀態 |正式推出 |正式推出 |
 | 區域可用性 |請參閱[這裡](https://azure.microsoft.com/regions/#services) |所有 Azure 區域均可使用 |
 | 價格 |請參閱[定價](https://azure.microsoft.com/pricing/details/data-lake-store/) |請參閱[定價](https://azure.microsoft.com/pricing/details/storage/) |
-
-

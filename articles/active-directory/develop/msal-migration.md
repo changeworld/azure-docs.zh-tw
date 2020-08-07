@@ -13,12 +13,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f84e479c4780437b09ab463781edbb52d8dfdfaa
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 32a1440bb641f0cbe8e3f3b8ada42e0841d9aa67
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255620"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922484"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>將應用程式遷移至 Microsoft 驗證程式庫 (MSAL) 
 
@@ -52,10 +52,10 @@ ms.locfileid: "86255620"
 ## <a name="frequently-asked-questions-faq"></a>常見問題集 (FAQ)
 
 __問： ADAL 是否已被取代？__  
-A：是。 自2020年6月30日起，我們將不再將新功能新增至 ADAL。 我們會繼續在2022年6月30日前新增 ADAL 的重大安全性修正。
+A：是。 自2020年6月30日起，我們將不再將新功能新增至 ADAL。 我們會繼續在2022年6月30日前新增 ADAL 的重大安全性修正。 在這段時間之後，您使用 ADAL 的應用程式將可使用，但我們建議您升級至 MSAL，以利用最新功能並保持安全。
 
 __問：如何? 知道哪些應用程式使用 ADAL？__  
-答：如果您有應用程式的原始程式碼，您可以參考上述的「遷移指南」，以協助判斷應用程式所使用的程式庫，以及如何將它遷移至 MSAL。 如果您沒有應用程式原始程式碼的存取權，您可以[開啟支援要求](developer-support-help-options.md#open-a-support-request)來取得已註冊應用程式的清單，以及每個應用程式所使用的程式庫。
+答：如果您有應用程式的原始程式碼，您可以參考上述的「遷移指南」，以協助判斷應用程式所使用的程式庫，以及如何將它遷移至 MSAL。 如果您與 ISV 合作，建議您直接與您聯繫，以瞭解其 MSAL 的遷移旅程。 如果您沒有應用程式原始程式碼的存取權，您可以[開啟支援要求](developer-support-help-options.md#open-a-support-request)來取得已註冊應用程式的清單，以及每個應用程式所使用的程式庫。
 
 __問：我現有的 ADAL 應用程式是否會繼續工作？__  
 答：您現有的應用程式不需要修改即可繼續工作。 如果您打算將其保留在2022年6月30日之後，您應該考慮將它們更新為 MSAL 以確保它們安全，但不需要遷移至 MSAL 來維護現有的功能。

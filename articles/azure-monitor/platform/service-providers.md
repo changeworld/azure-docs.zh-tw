@@ -1,25 +1,25 @@
 ---
 title: 服務提供者的 Azure 監視器記錄 |Microsoft Docs
-description: Azure 監視器記錄可協助受管理的服務提供者（Msp）、大型企業、獨立軟體廠商（Isv）和主機服務提供者管理和監視客戶的內部部署或雲端基礎結構中的伺服器。
+description: Azure 監視器記錄可協助受管理的服務提供者 (Msp) 、大型企業、獨立軟體廠商 (Isv) 和主機服務提供者管理和監視客戶的內部部署或雲端基礎結構中的伺服器。
 ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315440"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921081"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>服務提供者的 Azure 監視器記錄
 
-Azure 監視器中的 Log Analytics 工作區可協助受管理的服務提供者（Msp）、大型企業、獨立軟體廠商（Isv）和主機服務提供者管理和監視客戶的內部部署或雲端基礎結構中的伺服器。
+Azure 監視器中的 Log Analytics 工作區可協助受管理的服務提供者 (Msp) 、大型企業、獨立軟體廠商 (Isv) 和主機服務提供者管理和監視客戶的內部部署或雲端基礎結構中的伺服器。
 
 大型企業與服務提供者有許多相似之處，特別是當有集中式的 IT 團隊負責管理許多不同業務單位的 IT 時。 為了簡單起見，本文件會使用「服務提供者」** 這個詞彙，但是相同的功能也適用於企業或其他客戶。
 
-針對屬於[雲端解決方案提供者（CSP）](https://partner.microsoft.com/membership/cloud-solution-provider)方案一部分的合作夥伴和服務提供者，Azure 監視器中的 Log Analytics 是 azure CSP 訂用帳戶中可用的其中一個 azure 服務。
+針對屬於[雲端解決方案提供者](https://partner.microsoft.com/membership/cloud-solution-provider)一部分的合作夥伴和服務提供者 (CSP) 計畫中，Azure 監視器中的 Log Analytics 是 azure CSP 訂用帳戶中提供的其中一個 azure 服務。
 
 服務提供者也可以使用 Azure 監視器中的 Log Analytics，透過[Azure 燈塔](../../lighthouse/overview.md)中的 azure 委派資源管理功能來管理客戶資源。
 
@@ -35,12 +35,12 @@ Log Analytics 工作區提供了一種方法，可讓系統管理員控制[記�
 
 有兩種方式可讓服務提供者系統管理員取得客戶租使用者中 Log Analytics 工作區的存取權：
 
-- 客戶可以將個別使用者從服務提供者新增為[Azure Active Directory 來賓使用者（B2B）](../../active-directory/b2b/what-is-b2b.md)。 服務提供者系統管理員必須登入 Azure 入口網站中的每個客戶目錄，才能夠存取這些工作區。 這也需要客戶管理每個服務提供者系統管理員的個別存取權。
+- 客戶可以將個別使用者從服務提供者新增為[Azure Active Directory 來賓使用者 (B2B) ](../../active-directory/b2b/what-is-b2b.md)。 服務提供者系統管理員必須登入 Azure 入口網站中的每個客戶目錄，才能夠存取這些工作區。 這也需要客戶管理每個服務提供者系統管理員的個別存取權。
 - 為了達到更高的擴充性和彈性，服務提供者可以使用[Azure 燈塔](../../lighthouse/overview.md)的[azure 委派資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)功能來存取客戶的租使用者。 使用此方法時，服務提供者系統管理員會包含在服務提供者租使用者的 Azure AD 使用者群組中，而且會在每個客戶的上架程式期間授與此群組存取權。 然後，這些系統管理員可以從自己的服務提供者租使用者記憶體取每個客戶的工作區，而不需要個別登入每個客戶的租使用者。 以這種方式存取客戶的 Log Analytics 工作區資源，可以減少用戶端所需的工作，並可讓您更輕鬆地透過[Azure 監視器活頁簿](./workbooks-overview.md)之類的工具，跨相同服務提供者所管理的多個客戶來收集和分析資料。 如需詳細資訊，請參閱[大規模監視客戶資源](../../lighthouse/how-to/monitor-at-scale.md)。
 
 分散式架構的優點如下：
 
-* 客戶可以透過[Azure 委派的資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)來確認特定層級的許可權，或可以使用自己的[角色型存取](../../role-based-access-control/overview.md)來記錄管理的存取權。
+* 客戶可以透過[azure 委派的資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)來確認特定層級的許可權，或者可以使用自己的[azure 角色型存取控制 (azure RBAC) ](../../role-based-access-control/overview.md)來記錄管理的存取權。
 * 記錄可以從所有類型的資源收集，而不只是以代理程式為基礎的 VM 資料。 例如，Azure 稽核記錄。
 * 每個客戶對於其工作區都可以有不同的設定，例如保留和資料限定。
 * 基於法規和合規性而隔離客戶。
@@ -90,4 +90,3 @@ Log Analytics 工作區提供了一種方法，可讓系統管理員控制[記�
 * 使用 [Power BI](./powerbi.md) 來產生摘要報告
 
 * 將客戶上架至[Azure 委派的資源管理](../../lighthouse/concepts/azure-delegated-resource-management.md)。
-

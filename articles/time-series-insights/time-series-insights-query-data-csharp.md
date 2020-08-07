@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c794cfb5f0d652e25007131d9ca39fb73e2218e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98077209e8245753bb9dae79fafd6c6a10f3eafb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080670"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920716"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>使用 C 從 Azure 時間序列深入解析 Gen1 環境查詢資料#
 
@@ -75,10 +75,11 @@ ms.locfileid: "87080670"
 
 ## <a name="c-sample-code"></a>C# 範例程式碼
 
-[!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
+[!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
 
 ## <a name="next-steps"></a>後續步驟
 
 - 若要深入了解查詢，請參閱[查詢 API 參考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) (機器翻譯)。
 
 - 請參閱如何[使用用戶端 SDK 將 JavaScript 應用程式連線到時間序列見解](https://github.com/microsoft/tsiclient) (英文)。
+Azure-範例/Azure-時間序列-Insights/gen1-sample/csharp-tsi-gen1-sample/Program .cs

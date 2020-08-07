@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/04/2020
-ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/06/2020
+ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446541"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925782"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式概觀
 開發 Azure Log Analytics 代理程式是為了能夠全面管理任何雲端中的虛擬機器、內部部署機器，以及 [System Center Operations Manager](/system-center/scom/) 所監視的機器。 Windows 和 Linux 代理程式會將從不同來源收集而來的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、[Azure 資訊安全中心](../../security-center/index.yml)和 [Azure 自動化](../../automation/automation-intro.md)。
@@ -122,11 +122,19 @@ Windows 代理程式正式支援下列 Windows 作業系統版本：
  - Ubuntu、Debian：`apt-get install -y python2`
  - SUSE：`zypper install -y python2`
 
-Python2 可執行檔必須使用下列命令，以別名為 "python"：
+使用下列程式，python2 可執行檔必須以*python*的別名：
 
-```
-alternatives --set python `which python2`
-```
+1. 執行下列命令，以查看任何目前的 python 別名（如果有的話）。 如果有，請記下下一個步驟的優先順序。
+ 
+    ```
+    sudo update-alternatives ––display python
+    ```
+
+2. 執行下列命令。 取代 *\<priority\>* 為大於任何現有連結優先順序的數位，如果目前沒有任何連結存在，則為1。
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
+    ```
 
 ### <a name="supported-distros"></a>支援的發行版
 
@@ -194,7 +202,7 @@ Windows 代理程式將在 2020 年 8 月 17 日開始獨佔使用 SHA-2 簽署�
 |*.blob.core.windows.net |連接埠 443 |輸出|是 |
 |*.azure-automation.net |連接埠 443 |輸出|是 |
 
-如需 Azure Government 所需的防火牆資訊，請參閱 [Azure Government 管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)。 
+如需 Azure Government 所需的防火牆資訊，請參閱 [Azure Government 管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)。 
 
 如果您打算使用 Azure 自動化混合式 Runbook 背景工作角色連線到自動化服務並向其註冊，以便在您的環境中使用 Runbook 或管理解決方案，其必須具有[設定適用於混合式 Runbook 背景工作角色的網路](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的連接埠號碼和 URL 存取權。 
 
@@ -209,7 +217,7 @@ Windows 和 Linux 代理程式支援使用 HTTPS 通訊協定，透過 Proxy 伺
 > [!NOTE]
 > 若您的 Proxy 伺服器不要求您進行驗證，Linux 代理程式仍會要求提供虛擬使用者/密碼。 這可以是任何使用者名稱或密碼。
 
-|屬性| 說明 |
+|屬性| 描述 |
 |--------|-------------|
 |通訊協定 | https |
 |user | 用於驗證 Proxy 的選擇性使用者名稱 |

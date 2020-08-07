@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 459a70c787dfdcd54fb3010655390787022c8f2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77187018"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921617"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API 開發與整合
 
@@ -30,7 +30,7 @@ ExpressRoute 合作夥伴會藉由對 expressRouteCrossConnections 資源發出 
 
 * ExpressRoute 合作夥伴的任何未來增強功能將會在 ExpressRouteCrossConnection 資源上提供。
 
-* 合作夥伴可以將以[角色為基礎的存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview)套用至 expressRouteCrossConnection 資源。 這些控制項可以定義許可權，讓使用者帳戶可以修改 expressRouteCrossConnection 資源，以及新增/更新/刪除對等互連設定。
+* 合作夥伴可以將[azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview)套用至 expressRouteCrossConnection 資源。 這些控制項可以定義許可權，讓使用者帳戶可以修改 expressRouteCrossConnection 資源，以及新增/更新/刪除對等互連設定。
 
 * ExpressRouteCrossConnection 資源會公開應用程式開發介面，這些 Api 有助於針對 ExpressRoute 連線進行疑難排解。 這包括 ARP 資料表、BGP 路由表摘要和 BGP 路由表詳細資料。 傳統部署 Api 不支援這項功能。
 
@@ -67,7 +67,7 @@ ExpressRoute 合作夥伴會藉由對 expressRouteCrossConnections 資源發出 
 成功設定驗證之後，您必須在 Dev_Provider_Sub 之下，授與網路參與者對用戶端應用程式的存取權。 若要授與許可權，請登入[Azure 入口網站](https://ms.portal.azure.com/#home)，然後完成下列步驟：
 
 1. 流覽至 [訂用帳戶]，然後選取 [Dev_Provider_Sub
-2. 流覽至存取控制（IAM）
+2. 流覽至存取控制 (IAM) 
 3. 新增角色指派
 4. 選取網路參與者角色
 5. 將存取權指派給 Azure AD 的使用者、群組或服務主體

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 495d0bce905a980f840527f4cc8cd9e2116e3e66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3c0b0f9f39620996245614b53c7ec274ec965d5b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82133757"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921193"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure 儲存體的虛擬網路服務端點原則
 
-虛擬網路（VNet）服務端點原則可讓您篩選透過服務端點 Azure 儲存體帳戶的輸出虛擬網路流量，並允許只將資料外泄到特定的 Azure 儲存體帳戶。 端點原則會針對虛擬網路流量提供更細微的存取控制，以在透過服務端點連接時 Azure 儲存體。
+虛擬網路 (VNet) 服務端點原則可讓您篩選輸出虛擬網路流量，以透過服務端點 Azure 儲存體帳戶，並允許只將資料外泄到特定的 Azure 儲存體帳戶。 端點原則會針對虛擬網路流量提供更細微的存取控制，以在透過服務端點連接時 Azure 儲存體。
 
 ![保護虛擬網路對 Azure 儲存體帳戶的輸出流量](./media/virtual-network-service-endpoint-policies-overview/vnet-service-endpoint-policies-overview.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "82133757"
 ]
 ```
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 -   您可以設定端點原則，將虛擬網路流量限制為特定 Azure 儲存體帳戶。
 -   您可在虛擬網路的子網路上設定端點原則。 應該在子網上啟用 Azure 儲存體的服務端點，才能套用原則。
@@ -93,7 +93,7 @@ ms.locfileid: "82133757"
 服務端點原則並未提供任何集中式記錄。 如需服務資源記錄，請參閱[服務端點記錄](virtual-network-service-endpoints-overview.md#logging-and-troubleshooting)。
 
 ### <a name="troubleshooting-scenarios"></a>疑難排解案例
-- 對處於預覽狀態（不在地理配對區域中）的儲存體帳戶拒絕存取
+- 對處於預覽狀態 (不在異地配對區域中的儲存體帳戶拒絕存取) 
   - 在 Azure 儲存體升級為使用全域服務標籤的情況下，服務端點和服務端點原則的範圍現在是全域的。 因此，Azure 儲存體的任何流量都會透過服務端點加密，而且只允許在 [原則] 中明確列出的儲存體帳戶存取。
   - 明確允許列出所有必要的儲存體帳戶來還原存取權。  
   - 連絡 Azure 支援。
@@ -122,7 +122,7 @@ ms.locfileid: "82133757"
 - 虛擬網路必須位於與服務端點原則相同的區域中。
 - 如果原則中列出的 Azure 服務已設定服務端點，您就只能將服務端點原則套用至子網路。
 - 如果流量是從內部部署網路流向 Azure 服務，您就無法對其使用服務端點原則。
-- Azure 受控服務目前不支援端點原則。 這包括部署到共用子網的受控服務（例如*Azure HDInsight、Azure Batch、AZURE 新增、Azure 應用程式閘道、AZURE VPN 閘道、Azure 防火牆*）或專用子網（例如*Azure App Service 環境、azure Redis CACHE、azure API 管理、azure SQL MI、傳統受控服務*）。
+- Azure 受控服務目前不支援端點原則。 這包括部署到共用子網的受控服務 (例如*Azure HDInsight、Azure Batch、azure 會將、Azure 應用程式閘道、AZURE VPN 閘道、Azure 防火牆*) 或加入專用子網 (例如*Azure App Service 環境、azure Redis CACHE、azure API 管理、azure SQL MI、傳統受控服務*) 。
 
  > [!WARNING]
  > 針對基礎結構需求，部署到虛擬網路中的 Azure 服務 (例如 Azure HDInsight) 可存取其他 Azure 服務 (例如 Azure 儲存體)。 如果您將端點原則限制給特定資源，可能會中斷存取虛擬網路中已部署 Azure 服務的這些基礎結構資源。
@@ -138,7 +138,7 @@ ms.locfileid: "82133757"
  |資源 | 預設限制 |
  |---------|---------------|
  |ServiceEndpointPoliciesPerSubscription |500 |
- |ServiceEndpintPoliciesPerSubnet|100 |
+ |ServiceEndpointPoliciesPerSubnet|100 |
  |ServiceResourcesPerServiceEndpointPolicyDefinition|200 |
 
 ## <a name="next-steps"></a>後續步驟
