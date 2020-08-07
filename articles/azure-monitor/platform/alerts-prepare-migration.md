@@ -6,25 +6,24 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539544"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843380"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>準備邏輯應用程式和 Runbook 以便移轉傳統警示規則
 
-如[先前所宣佈](monitoring-classic-retirement.md)，Azure 監視器中的傳統警示將于2019年9月淘汰（原本是在2019年7月）。 Azure 入口網站提供遷移工具給使用傳統警示規則的客戶，以及想要自行觸發遷移的使用者。
-
 > [!NOTE]
-> 由於遷移工具的推出延遲，傳統警示遷移的淘汰日期已從2019年6月30日最初宣佈的日期延長到2019年8月31日。
+> 如[先前所宣佈](monitoring-classic-retirement.md)，Azure 監視器中的傳統警示已淘汰，但仍受限於尚未支援新警示的資源。 這些警示的停用日期已進一步擴充。 新的日期即將宣佈。
+>
 
 如果您選擇主動將傳統警示規則遷移至新的警示規則，請注意這兩個系統之間有一些差異。 本文說明這些差異，以及您可以如何為變更做準備。
 
 ## <a name="api-changes"></a>API 變更
 
-建立和管理傳統警示規則（）的 Api 與 `microsoft.insights/alertrules` 建立和管理新計量警示（）的 api 不同 `microsoft.insights/metricalerts` 。 如果您目前以程式設計方式建立和管理傳統警示規則，請更新部署腳本以使用新的 Api。
+建立和管理傳統警示規則 () 的 Api 與 `microsoft.insights/alertrules` 建立和管理新計量警示 () 的 api 不同 `microsoft.insights/metricalerts` 。 如果您目前以程式設計方式建立和管理傳統警示規則，請更新部署腳本以使用新的 Api。
 
 下表是傳統和新警示的程式設計介面參考：
 
@@ -51,9 +50,9 @@ ms.locfileid: "86539544"
 | 警示規則的描述 | **coNtext。描述** | **資料. 內容。描述** |
 | 警示規則條件 | **coNtext。條件** | **data. coNtext。條件** |
 | 度量名稱 | **metricName** | **allOf [0]. metricName** |
-| 時間匯總（度量在評估視窗中的匯總方式）| **timeAggregation** | **timeAggregation** |
+| 時間匯總 (在評估視窗中匯總度量的方式) | **timeAggregation** | **timeAggregation** |
 | 評估期間 | **windowSize** | **資料。 windowSize** |
-| 運算子（匯總計量值如何與閾值比較） | **coNtext。條件. 運算子** | **data. condition. 運算子** |
+| 運算子 (匯總計量值如何與閾值進行比較)  | **coNtext。條件. 運算子** | **data. condition. 運算子** |
 | 閾值 | **內容。條件. 閾值** | **allOf [0]. 閾值** |
 | 度量值 | **metricValue** | **allOf [0]. metricValue** |
 | 訂用帳戶識別碼 | **內容。 subscriptionId** | **data. subscriptionId** |
@@ -71,7 +70,7 @@ ms.locfileid: "86539544"
 
 ## <a name="modify-a-logic-app-to-receive-a-metric-alert-notification"></a>修改邏輯應用程式以接收計量警示通知
 
-如果您使用具有傳統警示的邏輯應用程式，您必須修改邏輯應用程式代碼來剖析新的計量警示承載。 請遵循下列步驟：
+如果您使用具有傳統警示的邏輯應用程式，您必須修改邏輯應用程式代碼來剖析新的計量警示承載。 遵循下列步驟：
 
 1. 建立新的邏輯應用程式。
 

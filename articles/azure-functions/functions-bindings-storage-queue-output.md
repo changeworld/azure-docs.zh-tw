@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 1141186a262676fc47b0727c47e682dfe95ba6fb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 29f90261e4d9a0e76c7760a2e3142f178510f6d6
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055929"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844876"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體輸出系結
 
@@ -201,7 +201,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-若要在佇列上建立多個訊息，請將參數宣告為適當的清單類型，並將值陣列（符合清單類型）傳遞給 `set` 方法。
+若要在佇列上建立多個訊息，請將參數宣告為適當的清單類型，並將符合清單類型) 的值陣列 (傳遞給 `set` 方法。
 
 ```python
 import azure.functions as func
@@ -301,7 +301,7 @@ public class HttpTriggerQueueOutput {
 }
 ```
 
-| 屬性    | 說明 |
+| 屬性    | 描述 |
 |-------------|-----------------------------|
 |`name`       | 宣告函式簽章中的參數名稱。 觸發函式時，這個參數的值會有佇列訊息的內容。 |
 |`queueName`  | 宣告儲存體帳戶中的佇列名稱。 |
@@ -321,7 +321,7 @@ public class HttpTriggerQueueOutput {
 |**direction** | n/a | 必須設為 `out`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
 |**name** | n/a | 代表函式程式碼中佇列的變數名稱。 設為 `$return` 以參考函式傳回值。|
 |**queueName** |**QueueName** | 佇列的名稱。 |
-|**connection** | **連線** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
+|**connection** | **[連接]** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -383,7 +383,7 @@ public class HttpTriggerQueueOutput {
 
 ## <a name="exceptions-and-return-codes"></a>例外狀況和傳回碼
 
-| 繫結 |  參考資料 |
+| 繫結 |  參考 |
 |---|---|
 | 佇列 | [佇列錯誤碼](/rest/api/storageservices/queue-service-error-codes) |
 | Bob、資料表、佇列 | [儲存體錯誤碼](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -415,7 +415,7 @@ public class HttpTriggerQueueOutput {
 
 |屬性  |預設 | 描述 |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|佇列輪詢之間的間隔上限。 最小值為00：00：00.100 （100毫秒），而遞增至00:01:00 （1分鐘）。  在1.x 中，資料類型是毫秒，而在2.x 和更高的版本中，它是 TimeSpan。|
+|maxPollingInterval|00:00:01|佇列輪詢之間的間隔上限。 最小值為00：00： 00.100 (100 ms) ，而遞增至 00:01:00 (1 分鐘) 。  在1.x 中，資料類型是毫秒，而在2.x 和更高的版本中，它是 TimeSpan。|
 |visibilityTimeout|00:00:00|處理訊息失敗時，重試之間的時間間隔。 |
 |batchSize|16|Functions 執行階段會同時擷取，並以平行方式處理的佇列訊息數目。 當要處理的數目減少到 `newBatchThreshold` 時，執行階段就會取得另一個批次，並開始處理那些訊息。 因此，每個函式並行處理之訊息的上限為 `batchSize` 加上 `newBatchThreshold`。 這項限制個別套用至每個佇列觸發的函式。 <br><br>如果您需要避免平行執行在單一佇列上收到的訊息，可以將 `batchSize` 設定為 1。 不過，只要您的函式應用程式在單一虛擬機器 (VM) 上執行，這項設定就只會將並行排除。 如果函式應用程式相應放大為多個 VM，則每個 VM 可以執行每個佇列觸發之函式的一個執行個體。<br><br>最大值 `batchSize` 為 32。 |
 |maxDequeueCount|5|將訊息移至有害佇列之前，嘗試處理訊息的次數。|
@@ -423,7 +423,7 @@ public class HttpTriggerQueueOutput {
 
 ## <a name="next-steps"></a>後續步驟
 
-- [以佇列儲存體資料變更的形式執行函式（觸發程式）](./functions-bindings-storage-queue-trigger.md)
+- [以佇列儲存體資料變更的形式執行函數 (觸發程式) ](./functions-bindings-storage-queue-trigger.md)
 
 <!-- LINKS -->
 

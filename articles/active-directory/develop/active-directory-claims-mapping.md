@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 82866daaf720fc6b1ea9ba823587c921fd438b9c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428013"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902468"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：為租用戶中特定應用程式的權杖，自訂發出的宣告 (預覽)
 
@@ -261,13 +261,15 @@ ms.locfileid: "87428013"
 **資料類型：** 具有一或多個宣告結構描述項目的 JSON blob
 
 **摘要：** 此屬性會定義除了基本宣告集和核心宣告集以外，原則所影響到的權杖中還會有哪些宣告。
-此屬性中所定義的每個宣告結構描述項目必須有某些資訊。 指定資料來自何處 (**值**或**來源/識別碼組**)，以及資料是以哪種宣告形式發出 (**宣告類型**)。
+此屬性中所定義的每個宣告結構描述項目必須有某些資訊。 指定資料來自 (**值**、**來源/識別碼**組或**來源/ExtensionID**組) ，以及資料會以 (宣告**類型**) 的形式發出。
 
 ### <a name="claim-schema-entry-elements"></a>宣告結構描述項目的元素
 
 **值：** 值元素會定義靜態值來作為宣告中發出的資料。
 
-**來源/識別碼組：** 來源和識別碼元素會定義宣告中的資料來自何處。 
+**來源/識別碼組：** 來源和識別碼元素會定義宣告中的資料來自何處。  
+
+**來源/ExtensionID 配對：** Source 和 ExtensionID 元素會定義宣告中的資料來源所在的目錄架構延伸屬性。 如需詳細資訊，請參閱[在宣告中使用目錄架構擴充屬性](active-directory-schema-extensions.md)。
 
 來源元素必須設為下列其中一個值： 
 

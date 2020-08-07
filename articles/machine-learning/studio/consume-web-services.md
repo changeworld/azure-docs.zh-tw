@@ -1,31 +1,31 @@
 ---
-title: ML Studio （傳統）：使用 web 服務-Azure
-description: 從 Azure Machine Learning Studio （傳統）部署機器學習服務之後，就可以使用 RESTFul Web 服務作為即時要求-回應服務或批次執行服務。
+title: ML Studio (傳統) ：使用 web 服務-Azure
+description: 從 Azure Machine Learning Studio (傳統) 部署機器學習服務之後，就可以使用 RESTFul Web 服務作為即時要求-回應服務或批次執行服務。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: seodec18, tracking-python, devx-track-javascript
+ms.custom: seodec18, devx-track-python, devx-track-javascript
 ms.date: 05/29/2020
-ms.openlocfilehash: 4d72a811f018bb17a6a7bb7c129d52e6232f7caa
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bbecafbbd988530231d71892fb12a55c1a605442
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432909"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844366"
 ---
-# <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用 Machine Learning Studio （傳統） web 服務
+# <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用 Machine Learning Studio (傳統) web 服務
 
-**適用物件：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio （傳統） ![ 否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)  
+**適用於：** ![是](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (傳統版)![否](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 
-將 Azure Machine Learning Studio （傳統）預測模型部署為 Web 服務之後，您就可以使用 REST API 傳送資料並取得預測。 您可以即時或以批次模式傳送資料。
+將 Azure Machine Learning Studio (傳統) 預測模型部署為 Web 服務之後，您就可以使用 REST API 傳送資料並取得預測。 您可以即時或以批次模式傳送資料。
 
-您可以在這裡找到有關如何使用 Machine Learning Studio （傳統）建立和部署 Machine Learning Web 服務的詳細資訊：
+您可以在這裡找到有關如何使用 Machine Learning Studio (傳統) 來建立和部署 Machine Learning Web 服務的詳細資訊：
 
-* 如需如何在 Machine Learning Studio （傳統）中建立實驗的教學課程，請參閱[建立您的第一個實驗](create-experiment.md)。
+* 如需如何在 Machine Learning Studio (傳統) 中建立實驗的教學課程，請參閱[建立您的第一個實驗](create-experiment.md)。
 * 如需如何部署 Web 服務的詳細資訊，請參閱[部署 Machine Learning Web 服務](deploy-a-machine-learning-web-service.md)。
 * 如需 Machine Learning 的一般詳細資訊，請參閱 [Machine Learning 文件中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
@@ -34,9 +34,9 @@ ms.locfileid: "87432909"
 ## <a name="overview"></a>概觀
 使用 Azure Machine Learning Web 服務，外部應用程式會即時與機器學習服務工作流程計分模型通訊。 機器學習 Web 服務呼叫會將預測結果傳回外部應用程式。 若要進行機器學習 Web 服務呼叫，您可以傳遞部署預測時所建立的 API 金鑰。 機器學習服務 Web 服務以 REST 為基礎，這是一種常見的 Web 程式設計專案架構。
 
-Azure Machine Learning Studio （傳統）有兩種類型的服務：
+Azure Machine Learning Studio (傳統) 有兩種類型的服務：
 
-* 要求-回應服務（RR）–這是一種低延遲、高擴充性的服務，可為從 Machine Learning Studio （傳統）建立和部署的無狀態模型提供介面。
+* 要求-回應服務 (RR) -這是一種低延遲、高擴充性的服務，可為從 Machine Learning Studio (傳統) 建立和部署的無狀態模型提供介面。
 * 批次執行服務 (BES) – 這是一種非同步的服務，為一批資料記錄進行計分。
 
 如需 Machine Learning Web 服務的詳細資訊，請參閱[部署 Machine Learning web 服務](deploy-a-machine-learning-web-service.md)。
@@ -63,10 +63,10 @@ Azure Machine Learning Studio （傳統）有兩種類型的服務：
 5. 複製並儲存 [主要金鑰] ****。
 
 ### <a name="classic-web-service"></a>傳統 Web 服務
- 您也可以從 Machine Learning Studio （傳統）取得傳統 Web 服務的金鑰。
+ 您也可以從 Machine Learning Studio (傳統) 取得傳統 Web 服務的金鑰。
 
 #### <a name="machine-learning-studio-classic"></a>Machine Learning Studio (傳統)
-1. 在 [Machine Learning Studio （傳統）] 中，按一下左側的 [ **WEB 服務**]。
+1. 在 [Machine Learning Studio (傳統) 中，按一下左側的 [ **WEB 服務**]。
 2. 按一下某個 Web 服務。 [API 金鑰]**** 位於 [儀表板]**** 索引標籤上。
 
 ## <a name="connect-to-a-machine-learning-web-service"></a><a id="connect"></a>連接到 Machine Learning Web 服務

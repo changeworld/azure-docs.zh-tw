@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: b7393b0f3d3004c28e0d6befe2fdbbeda7f9a592
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 28bbe1432777e9e15ae625fb9788f9182495bd66
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026147"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845080"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>登入使用者的 Web 應用程式：登入和登出
 
@@ -33,7 +33,7 @@ ms.locfileid: "87026147"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET Core 中，針對 Microsoft 身分識別平臺應用程式，[登**入**] 按鈕會公開于 `Views\Shared\_LoginPartial.cshtml` （適用于 MVC 應用程式）或 `Pages\Shared\_LoginPartial.cshtm` （適用于 Razor 應用程式）。 只有在未驗證使用者時才會顯示。 也就是說，當使用者尚未登入或登出時，就會顯示它。相反地，當使用者已登入時，就會顯示 [**登出**] 按鈕。 請注意，帳戶控制器定義于名為**MicrosoftIdentity**的區域中的**Microsoft. IDENTITY. Web UI** NuGet 套件中。
+在 ASP.NET Core 中，針對 Microsoft 身分識別平臺應用程式，[登**入**] 按鈕會在 MVC 應用程式的 (中公開 `Views\Shared\_LoginPartial.cshtml`) 或 `Pages\Shared\_LoginPartial.cshtm` Razor 應用程式) 的 (。 只有在未驗證使用者時才會顯示。 也就是說，當使用者尚未登入或登出時，就會顯示它。相反地，當使用者已登入時，就會顯示 [**登出**] 按鈕。 請注意，帳戶控制器定義于名為**MicrosoftIdentity**的區域中的**Microsoft. IDENTITY. Web UI** NuGet 套件中。
 
 ```html
 <ul class="navbar-nav">
@@ -118,7 +118,7 @@ def index():
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在 ASP.NET 中，登出是從 `SignOut()` 控制器上的方法觸發（例如， [AccountController .Cs # L16 也-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)）。 這個方法不是 ASP.NET 架構的一部分（相對於 ASP.NET Core 所發生的情況）。 在建議重新導向 URI 之後，它會傳送 OpenID 登入挑戰。
+在 ASP.NET 中，登出是從 `SignOut()` 控制器上的方法觸發 (例如， [AccountController .Cs # L16 也-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)) 。 這個方法不是 ASP.NET 架構的一部分， (與 ASP.NET Core) 中發生的情況相反。 在建議重新導向 URI 之後，它會傳送 OpenID 登入挑戰。
 
 ```csharp
 public void SignIn()
@@ -241,7 +241,7 @@ Web 應用程式也必須將使用者重新導向至 Microsoft 身分識別平�
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-在 ASP.NET 中，選取 web 應用程式中的 [**登出**] 按鈕會觸發 `SignOut` 控制器上的動作 `AccountController` （請參閱下文）
+在 ASP.NET 中，選取 web 應用程式中的 [**登出**] 按鈕會觸發 `SignOut` 控制器上的動作 `AccountController` (如下所示) 
 
 ```html
 <ul class="navbar-nav">
@@ -339,7 +339,7 @@ else
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-在 ASP.NET 中，登出是從 `SignOut()` 控制器上的方法觸發（例如， [AccountController .Cs # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)）。 這個方法不是 ASP.NET 架構的一部分，與 ASP.NET Core 中發生的情況相反。 這樣
+在 ASP.NET 中，登出是從 `SignOut()` 控制器上的方法觸發 (例如， [AccountController .Cs # L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)) 。 這個方法不是 ASP.NET 架構的一部分，與 ASP.NET Core 中發生的情況相反。 這樣
 
 - 傳送 OpenID 登出挑戰。
 - 清除快取。
@@ -397,7 +397,7 @@ def logout():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core OpenID Connect 中介軟體可讓您的應用程式藉 `logout` 由提供名為的 OpenID connect 事件來攔截對 Microsoft 身分識別平臺端點的呼叫 `OnRedirectToIdentityProviderForSignOut` 。 這會由 Microsoft 自動處理（這會在您的 web 應用程式呼叫 web api 的情況下清除帳戶）
+ASP.NET Core OpenID Connect 中介軟體可讓您的應用程式藉 `logout` 由提供名為的 OpenID connect 事件來攔截對 Microsoft 身分識別平臺端點的呼叫 `OnRedirectToIdentityProviderForSignOut` 。 這會由 Microsoft. Identity. Web (自動處理，這會在您的 web 應用程式呼叫 web api 的情況下清除帳戶) 
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

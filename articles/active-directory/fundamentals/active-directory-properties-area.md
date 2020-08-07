@@ -2,7 +2,7 @@
 title: 新增組織的隱私權資訊 - Azure Active Directory | Microsoft Docs
 description: 以下相關指示說明如何將組織的隱私權資訊新增至 Azure Active Directory 的 [屬性] 區域。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,15 +13,15 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a8d1f3e541d61d515b28bf56964c0add3b390e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfc60eacd70576d9cfa79dbc03368c8e8c4a8636
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830633"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797388"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>使用 Azure Active Directory 新增組織的隱私權資訊
-本文說明租使用者系統管理員如何透過 Azure 入口網站，將隱私權相關資訊新增至組織的 Azure Active Directory （Azure AD）租使用者。
+本文說明租使用者系統管理員如何透過 Azure 入口網站將隱私權相關資訊新增至組織的 Azure Active Directory (Azure AD) 租使用者。
 
 我們強烈建議您同時新增您的全球隱私權連絡人和貴組織的隱私權聲明，讓您的內部員工和外部來賓可以檢查您的原則。 由於隱私權聲明是為每個企業量身打造、專屬於該家企業，強烈建議您洽詢律師尋求協助。
 

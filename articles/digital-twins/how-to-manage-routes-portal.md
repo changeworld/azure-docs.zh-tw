@@ -7,12 +7,12 @@ ms.author: v-lakast
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7786f970f612d2856948e2286ed234e2b0895072
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7d563c7706529c6f3e280f7d138c0d6ba0dfc849
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836952"
+ms.locfileid: "87902182"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>在 Azure 數位 Twins 中管理端點和路由 (入口網站) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "87836952"
 
 您也可以使用[EventRoutes api](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 數位 Twins CLI](how-to-use-cli.md)來管理端點和路由。 如需本文中使用這些機制（而不是入口網站）的版本，請參閱[*如何：管理端點和路由 (api 和 CLI) *](how-to-manage-routes-apis-cli.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 您將需要一個**Azure 帳戶** (您可以在[這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)免費設定一個) 
 * 您將需要 azure 訂用帳戶中的**Azure 數位 Twins 實例**。 如果您還沒有實例，您可以使用[*如何：設定實例和驗證*](how-to-set-up-instance-scripted.md)中的步驟來建立一個。 請備妥安裝程式中的下列值，以供本文稍後使用：
@@ -129,44 +129,49 @@ ms.locfileid: "87836952"
 
 ### <a name="create-an-event-route"></a>建立事件路由 
 
-事件路由定義可以包含下列元素：
-* 您想要使用的路由識別碼
+事件路由定義包含下列元素：
+* 您想要使用的路由名稱
 * 您想要使用的端點名稱
 * 定義哪些事件要傳送至端點的篩選器
+    - 若要停用路由而不傳送任何事件，請使用的篩選值為`false`
+    - 若要啟用沒有特定篩選的路由，請使用的篩選值為`true`
+    - 如需任何其他類型篩選的詳細資料，請參閱下面的[*篩選事件*](#filter-events)一節。
 
-如果沒有路由識別碼，則不會在 Azure 數位 Twins 外路由傳送任何訊息。
-如果有路由識別碼，且篩選為，則 `true` 所有訊息都會路由傳送至端點。
-如果有路由識別碼，而且新增了不同的篩選準則，則會根據篩選準則來篩選訊息。
-
-一個路由應允許選取多個通知和事件種類。
+單一路由可允許選取多個通知和事件種類。
 
 若要建立事件路由，請移至[Azure 入口網站](https://portal.azure.com)的 Azure 數位 Twins 實例的詳細資料頁面 (您可以在入口網站的搜尋列) 中輸入實例的名稱，以找到該實例。
 
 從 [實例] 功能表中，選取 [_事件路由_]。 然後從接下來的 [*事件路由*] 頁面，選取 [ *+ 建立事件路由*]。 
 
-在開啟的 [*建立事件路由*] 頁面上，為 [_名稱_] 欄位中的路由選擇 [至少一個名稱]，然後從下拉式清單中選取您想要用來建立路由的_端點_。
+在開啟的 [*建立事件路由*] 頁面上，選擇 [最小值]：
+* 您在 [_名稱_] 欄位中的路由名稱
+* 您想要用來建立路由的_端點_ 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="建立實例之事件路由的螢幕擷取畫面。":::
+若要啟用路由，您也必須至少**新增的事件路由篩選** `true` 。  (保留的預設值 `false` 將會建立路由，但不會傳送任何事件。 ) 若要這麼做，請切換 [ _Advanced editor_ ] 的參數加以啟用，然後 `true` 在 [*篩選*] 方塊中寫入。
+
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="建立實例之事件路由的螢幕擷取畫面。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 完成時，按 [_儲存_] 按鈕以建立您的事件路由。
 
 ### <a name="filter-events"></a>篩選事件
 
-在沒有篩選的情況下，端點會接收來自 Azure 數位 Twins 的各種事件：
+如先前所述，路由具有**篩選**欄位。 如果您路由上的篩選值為 `false` ，則不會將任何事件傳送至您的端點。 
+
+啟用的最小篩選後 `true` ，端點將會收到來自 Azure 數位 Twins 的各種事件：
 * 使用 Azure 數位 Twins 服務 API 的[數位 twins](concepts-twins-graph.md)所引發的遙測
 * 對應項屬性變更通知，針對 Azure 數位 Twins 實例中的任何對應項的屬性變更引發
 * 建立或刪除 twins 或關聯性時引發的生命週期事件
 * 新增或刪除 Azure 數位 Twins 實例[中設定的模型時](concepts-models.md)，所引發的模型變更事件
 
-您可以將端點的**篩選準則**新增至事件路由，以限制傳送的事件。
+您可以藉由定義更特定的篩選準則來限制所傳送的事件種類。
 
-若要在建立事件路由時新增篩選，請使用 [*建立事件路由*] 頁面的 [_新增事件路由篩選_] 區段。 
+若要在建立事件路由時新增事件篩選器，請使用 [*建立事件路由*] 頁面的 [_新增事件路由篩選_] 區段。 
 
 您可以從一些基本的一般篩選選項中選取，或使用 [高級篩選] 選項來撰寫您自己的自訂篩選器。
 
 #### <a name="use-the-basic-filters"></a>使用基本篩選
 
-若要使用基本篩選，請展開 [_事件種類_] 選項，然後選取對應至您想要篩選之事件的核取方塊。 
+若要使用基本篩選，請展開 [_事件種類_] 選項，然後選取對應至您想要傳送至端點之事件的核取方塊。 
 
 :::row:::
     :::column:::

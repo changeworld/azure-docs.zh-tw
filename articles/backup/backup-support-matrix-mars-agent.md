@@ -1,18 +1,18 @@
 ---
 title: MARS 代理程式的支援矩陣
-description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務（MARS）代理程式的電腦時的 Azure 備份支援。
+description: 本文摘要說明當您備份執行 Microsoft Azure 復原服務 (MARS) 代理程式的電腦時的 Azure 備份支援。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538644"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872407"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 復原服務 (MARS) 代理程式進行備份的支援矩陣
 
-您可以使用[Azure 備份服務](backup-overview.md)來備份內部部署機器和應用程式，以及備份 Azure 虛擬機器（vm）。 本文摘要說明當您使用 Microsoft Azure 復原服務（MARS）代理程式來備份電腦時的支援設定和限制。
+您可以使用[Azure 備份服務](backup-overview.md)來備份內部部署機器和應用程式，以及備份 (vm) 的 Azure 虛擬機器。 本文摘要說明當您使用 Microsoft Azure 復原服務 (MARS) 代理程式來備份電腦時的支援設定和限制。
 
 ## <a name="the-mars-agent"></a>MARS 代理程式
 
@@ -20,10 +20,10 @@ Azure 備份使用 MARS 代理程式，將資料從內部部署機器和 Azure V
 
 - 在內部部署 Windows 機器上執行，使其可以直接備份至 Azure 中的備份復原服務保存庫。
 - 在 Windows Vm 上執行，讓它們可以直接備份到保存庫。
-- 在 Microsoft Azure 備份 Server （MABS）或 System Center Data Protection Manager （DPM）伺服器上執行。 在此案例中，機器和工作負載會備份至 MABS 或 DPM 服務器。 MARS 代理程式接著會將此伺服器備份至 Azure 中的保存庫。
+- 在 Microsoft Azure 備份 Server (MABS) 或 System Center Data Protection Manager (DPM) Server 上執行。 在此案例中，機器和工作負載會備份至 MABS 或 DPM 服務器。 MARS 代理程式接著會將此伺服器備份至 Azure 中的保存庫。
 
 > [!NOTE]
->Azure 備份不支援自動調整日光節約時間（DST）的時鐘。 修改原則以確保將日光節約納入考慮，以避免實際時間和排程備份時間之間的差異。
+>Azure 備份不支援自動調整日光節約時間 (DST) 的時鐘。 修改原則以確保將日光節約納入考慮，以避免實際時間和排程備份時間之間的差異。
 
 您的備份選項取決於代理程式的安裝位置。 如需詳細資訊，請參閱[使用 MARS 代理程式 Azure 備份架構](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders)。 如需有關 MABS 和 DPM 備份架構的詳細資訊，請參閱[備份至 dpm 或 MABS](backup-architecture.md#architecture-back-up-to-dpmmabs)。 另請參閱備份架構的[需求](backup-support-matrix-mabs-dpm.md)。
 
@@ -39,14 +39,14 @@ Azure 備份使用 MARS 代理程式，將資料從內部部署機器和 Azure V
 
 ## <a name="cache-folder-support"></a>快取資料夾支援
 
-當您使用 MARS 代理程式來備份資料時，代理程式會取得資料的快照集，並將它儲存在本機快取資料夾中，然後再將資料傳送至 Azure。 快取（臨時）資料夾有數個需求：
+當您使用 MARS 代理程式來備份資料時，代理程式會取得資料的快照集，並將它儲存在本機快取資料夾中，然後再將資料傳送至 Azure。 快取 (待用) 資料夾有數個需求：
 
 **快取** | **詳細資料**
 --- | ---
 大小 |  快取資料夾中的可用空間至少應為備份資料整體大小的5% 到10%。
 Location | 快取資料夾必須存放在要備份的電腦上，而且必須在線上。 快取資料夾不可以在網路共用、卸載式媒體或離線磁片區上。
 資料夾 | 快取資料夾不應在已重復資料刪除的磁片區上，或在已壓縮、稀疏或具有重新分析點的資料夾中進行加密。
-位置變更 | 您可以藉由停止備份引擎（）並將快取 `net stop bengine` 資料夾複製到新的磁片磁碟機，來變更快取位置。 （請確認新的磁片磁碟機具有足夠的空間。）然後將**HKLM\SOFTWARE\Microsoft\Windows Azure 備份**（**config/ScratchLocation**和**config/CloudBackupProvider/ScratchLocation**）下的兩個登錄專案更新為新位置，然後重新開機引擎。
+位置變更 | 您可以藉由停止備份引擎來變更快取位置 (`net stop bengine`) ，並將快取資料夾複製到新的磁片磁碟機。  (確認新的磁片磁碟機具有足夠的空間。 ) 接著在**HKLM\SOFTWARE\Microsoft\Windows Azure 備份** (**Config/ScratchLocation**和**Config/CloudBackupProvider/ScratchLocation**) 更新為新位置的兩個登錄專案，然後重新開機引擎。
 
 ## <a name="networking-and-access-support"></a>網路功能與存取支援
 
@@ -54,7 +54,7 @@ Location | 快取資料夾必須存放在要備份的電腦上，而且必須在
 
 MARS 伺服器需要存取這些 URL：
 
-- <http://www.msftncsi.com/ncsi.txt>
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
@@ -69,7 +69,7 @@ MARS 伺服器需要存取這些 URL：
 
 ### <a name="azure-expressroute-support"></a>Azure ExpressRoute 支援
 
-您可以使用公用對等互連（適用于舊的線路）和 Microsoft 對等互連，透過 Azure ExpressRoute 來備份您的資料。 不支援透過私用對等互連進行備份。
+您可以使用公用對等互連 (適用于舊線路) 和 Microsoft 對等互連的 Azure ExpressRoute 來備份您的資料。 不支援透過私用對等互連進行備份。
 
 使用公用對等互連：請確認存取下列網域/位址：
 
@@ -79,16 +79,26 @@ MARS 伺服器需要存取這些 URL：
 - `.microsoftonline.com`
 - `.windows.net`
 
-透過 Microsoft 對等互連，請選取下列服務/區域和相關的「社區」值：
+使用 Microsoft 對等互連，選取下列服務/區域和相關的 [社區] 值：
 
 - Azure Active Directory (12076:5060)
-- Microsoft Azure 區域（根據復原服務保存庫的位置）
-- Azure 儲存體（根據您的復原服務保存庫的位置）
+- 根據復原服務保存庫的位置 (Microsoft Azure 區域) 
+- 根據復原服務保存庫的位置 Azure 儲存體 () 
 
 如需詳細資訊，請參閱[ExpressRoute 路由需求](../expressroute/expressroute-routing.md)。
 
 >[!NOTE]
 >新線路的公用對等互連已被取代。
+
+### <a name="private-endpoint-support"></a>私用端點支援
+
+您現在可以使用私人端點，將您的資料從伺服器安全地備份到復原服務保存庫。 由於 Azure Active Directory 目前不支援私人端點，Azure Active Directory 需要的 Ip 和 Fqdn 必須分別允許輸出存取。
+
+當您使用 MARS 代理程式來備份內部部署資源時，請確定您的內部部署網路 (包含要備份的資源) 會與包含保存庫私人端點的 Azure VNet 對等互連。 接著，您可以繼續安裝 MARS 代理程式並設定備份。 不過，您必須確保所有進行備份的通訊只會透過對等互連網路進行。
+
+如果您在 MARS 代理程式註冊後，移除保存庫的私用端點，則必須使用保存庫重新註冊容器。 您不需要停止保護它們。
+
+深入瞭解[Azure 備份的私用端點](private-endpoints.md)。
 
 ### <a name="throttling-support"></a>節流支援
 
@@ -114,11 +124,11 @@ MARS 伺服器需要存取這些 URL：
 Windows 10 (企業版、專業版、家用版) | 是 | 否 |  檢查對應的伺服器版本是否有軟體/模組需求
 Windows 8.1 (企業版、專業版)| 是 |否 | 檢查對應的伺服器版本是否有軟體/模組需求
 Windows 8 (企業版、專業版) | 是 | 否 | 檢查對應的伺服器版本是否有軟體/模組需求
-Windows Server 2016 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
-Windows Server 2012 R2(Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
-Windows Server 2012 (Standard、Datacenter、Essentials) | 是 | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0 <br> -部署映射服務與管理（DISM.exe）
-Windows Storage Server 2016/2012 R2/2012 （Standard、Workgroup） | 是 | 否 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
-Windows Server 2019 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console （MMC）3。0
+Windows Server 2016 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console (MMC) 3。0
+Windows Server 2012 R2(Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console (MMC) 3。0
+Windows Server 2012 (Standard、Datacenter、Essentials) | 是 | 是 |-.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console (MMC) 3。0 <br> -部署映像服務與管理 ( # A0) 
+Windows Storage Server 2016/2012 R2/2012 (Standard、Workgroup)  | 是 | 否 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console (MMC) 3。0
+Windows Server 2019 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4。5 <br> -Windows PowerShell <br> -最新相容的 Microsoft VC + + 可轉散發套件 <br> -Microsoft Management Console (MMC) 3。0
 
 如需詳細資訊，請參閱[支援的 MABS 和 DPM 作業系統](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)。
 
@@ -132,9 +142,9 @@ Windows Server 2019 (Standard、Datacenter、Essentials) | 是 | 是 | -.NET 4�
 
 | **作業系統**                                       | **檔案/資料夾** | **系統狀態** | **軟體/模組需求**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 （旗艦版、企業版、專業版、家用 Premium/Basic、Starter） | 是               | 否                 | 檢查對應的伺服器版本是否有軟體/模組需求 |
-| Windows Server 2008 R2 （Standard、Enterprise、Datacenter、Foundation） | 是               | 是                | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.exe） |
-| Windows Server 2008 SP2 （Standard、Datacenter、Foundation）  | 是               | 否                 | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console （MMC）3。0 <br>  -部署映射服務與管理（DISM.exe） <br>  -Virtual Server 2005 基底 + KB KB948515 |
+| Windows 7 (旗艦版、企業版、專業版、家用高階/基本、入門)  | 是               | 否                 | 檢查對應的伺服器版本是否有軟體/模組需求 |
+| Windows Server 2008 R2 (Standard、Enterprise、Datacenter、Foundation)  | 是               | 是                | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console (MMC) 3。0 <br>  -部署映像服務與管理 ( # A0)  |
+| Windows Server 2008 SP2 (Standard、Datacenter、Foundation)   | 是               | 否                 | -.NET 3.5、.NET 4。5 <br>  -Windows PowerShell <br>  -相容的 Microsoft VC + + 可轉散發套件 <br>  -Microsoft Management Console (MMC) 3。0 <br>  -部署映像服務與管理 ( # A0)  <br>  -Virtual Server 2005 基底 + KB KB948515 |
 
 ## <a name="backup-limits"></a>備份限制
 
@@ -156,7 +166,7 @@ Windows 7| 1,700 GB
 
 ## <a name="supported-file-types-for-backup"></a>支援的備份檔案類型
 
-**類型** | **支援**
+**型別** | **支援**
 --- | ---
 加密<sup>*</sup>| 支援。
 Compressed | 支援。
@@ -167,7 +177,7 @@ Compressed | 支援。
 加密和疏鬆 |不支援。 略.
 壓縮資料流| 不支援。 略.
 疏鬆資料流| 不支援。 略.
-OneDrive （已同步處理的檔案為稀疏資料流程）| 不支援。
+OneDrive (同步處理的檔案是稀疏資料流程) | 不支援。
 已啟用 DFS 複寫的資料夾 | 不支援。
 
 \*確定 MARS 代理程式可存取所需的憑證，以存取加密的檔案。 將略過無法存取的檔案。
@@ -176,7 +186,7 @@ OneDrive （已同步處理的檔案為稀疏資料流程）| 不支援。
 
 **磁碟機/磁碟區** | **支援** | **詳細資料**
 --- | --- | ---
-唯讀磁碟區| 不支援 | 磁片區複製陰影服務（VSS）只有在磁片區可寫入時才會運作。
+唯讀磁碟區| 不支援 | 磁片區複製陰影服務 (VSS) 只有在可寫入的磁片區時才會運作。
 離線磁碟區| 不支援 |只有當磁片區在線上時，VSS 才會運作。
 網路共用| 不支援 |磁片區必須是伺服器上的本機。
 BitLocker 鎖定的磁片區| 不支援 |必須先解除鎖定磁片區，才能開始備份。
@@ -186,7 +196,7 @@ BitLocker 鎖定的磁片區| 不支援 |必須先解除鎖定磁片區，才能
 
 ## <a name="support-for-initial-offline-backup"></a>支援初始離線備份
 
-Azure 備份支援*離線植*入，以使用磁片將初始備份資料傳輸到 Azure。 如果您的初始備份可能是大小範圍為 tb （Tb），這項支援將會很有説明。 支援離線備份的狀況：
+Azure 備份支援*離線植*入，以使用磁片將初始備份資料傳輸到 Azure。 如果您的初始備份可能是在 tb (Tb) 的大小範圍內，這項支援就很有説明。 支援離線備份的狀況：
 
 - 直接備份執行 MARS 代理程式之內部部署電腦上的檔案和資料夾。
 - 從 DPM 伺服器或 MABS 備份工作負載和檔案。

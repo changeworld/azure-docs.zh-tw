@@ -6,23 +6,23 @@ keywords: 資料科學工具、資料科學虛擬機器、資料科學工具、l
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.custom: tracking-python
+ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 7d3ab058d76186f73fa1a985d7e8af38dbd7a6f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a73336ba0a324c65ee0de764d81a8e69ab6079c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536176"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843261"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>資料科學虛擬機器上所支援的語言 
 
-資料科學虛擬機器（DSVM）隨附數種預先建立的語言和開發工具，可用來建立人工智慧（AI）應用程式。 以下是一些值得注意的部分。
+資料科學虛擬機器 (DSVM) 隨附數種預先建立的語言和開發工具，可用來建立人工智慧 (AI) 應用程式。 以下是一些值得注意的部分。
 
-## <a name="python-windows-server-2016-edition"></a>Python （Windows Server 2016 版）
+## <a name="python-windows-server-2016-edition"></a>Python (Windows Server 2016 版本) 
 
 | 類別 | 值 |
 | ------------- | ------------- |
@@ -53,7 +53,7 @@ ms.locfileid: "86536176"
     
 * 在 IDE 中使用：
 
-  使用 Visual Studio Community 版本中安裝的適用於 Visual Studio 的 Python 工具（PTVS）。 根據預設，在 PTVS 中自動設定的唯一環境是 Python 3.6。 
+  使用安裝在 Visual Studio Community 版本中的適用於 Visual Studio 的 Python 工具 (PTVS) 。 根據預設，在 PTVS 中自動設定的唯一環境是 Python 3.6。 
 
     > [!NOTE]
     > 若要將 PTVS 指向 Python 2.7，您必須在 PTVS 中建立自訂環境。 若要在 Visual Studio Community 版本中設定此環境路徑，請移至 [**工具**] [  ->  **python 工具**] [  ->  **python 環境**] 並選取 [ **+ 自訂**] 然後，將 [位置] 設定為 [ **c:\anaconda\envs\python2** ]，然後選取 [**自動**偵測]。
@@ -66,7 +66,7 @@ ms.locfileid: "86536176"
 
   DSVM 上的預設 Python 環境是所有使用者都可讀取的全域環境。 但只有系統管理員可以撰寫和安裝全域套件。 若要將套件安裝到全域環境，請以系統管理員身分使用命令來啟動至 root 或 python2 環境 `activate` 。 然後，您可以使用套件管理員（例如 `conda` 或） `pip` 來安裝或更新套件。
 
-## <a name="python-linux-edition"></a>Python （Linux 版）
+## <a name="python-linux-edition"></a>Python (Linux 版本) 
 
 | 類別 | 值 |
 | ------------- | ------------- |
@@ -109,7 +109,7 @@ ms.locfileid: "86536176"
 
 | 類別 | 值 |
 | ------------- | ------------- |
-| 支援的語言版本 | Microsoft R Open 3.x （100% 與 CRAN-R 相容）<br /> Microsoft R Server 9. x Developer edition （可擴充的企業級 R 平臺）|
+| 支援的語言版本 | Microsoft R Open 3.x (100% 與 CRAN-R) 相容<br /> Microsoft R Server 9. x Developer edition (可調整的企業級 R 平臺) |
 | 支援的 DSVM 版本      | Linux、Windows     |
 | 它是如何在 DSVM 上設定/安裝的？  | Windows：`C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux：`/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | 範例的連結      | 包含適用于 R 的範例 Jupyter 筆記本。     |
@@ -129,7 +129,7 @@ ms.locfileid: "86536176"
 
 * 在 Jupyter 中使用
 
-  開啟 Jupyter，然後選取 [**新增**] 以建立新的筆記本。 您可以將核心類型設定為**r** ，以使用 Jupyter R 核心（IRKernel）。
+  開啟 Jupyter，然後選取 [**新增**] 以建立新的筆記本。 您可以將核心類型設定為**R** ，以使用 Jupyter R Kernel (IRKernel) 。
 
 * 安裝 R 套件：
 
@@ -147,7 +147,7 @@ ms.locfileid: "86536176"
 
 * 在 Jupyter 中使用：
 
-  開啟 Jupyter，然後選取 [**新增**] 以建立新的筆記本。 您可以將核心類型設定為**r** ，以使用 Jupyter R 核心（IRKernel）。 
+  開啟 Jupyter，然後選取 [**新增**] 以建立新的筆記本。 您可以將核心類型設定為**R** ，以使用 Jupyter R Kernel (IRKernel) 。 
 
 * 安裝 R 套件：
 

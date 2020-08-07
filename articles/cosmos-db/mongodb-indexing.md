@@ -1,20 +1,20 @@
 ---
 title: 管理 Azure Cosmos DB 的 MongoDB API 中的索引編制
-description: 本文概述使用 MongoDB API 的 Azure Cosmos DB 索引功能。
+description: 本文概述如何使用 Azure Cosmos DB 適用于 MongoDB 的 API Azure Cosmos DB 編制索引功能
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: b8db9e2d8b58047ebe29865bb95d7f218732c88e
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: e47b8727eccd1b185f381ae3f8474fe13a406501
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761156"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843805"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的 MongoDB API 中的索引編制
 
@@ -315,7 +315,7 @@ Azure Cosmos DB 適用于 MongoDB 的 API 版本3.6 支援 `currentOp()` 用來�
    }
    ```
 
-### <a name="background-index-updates"></a>背景索引更新
+## <a name="background-index-updates"></a>背景索引更新
 
 不論為 [**背景**索引] 屬性指定的值為何，索引更新一律會在背景中完成。 因為索引更新會取用要求單位 (ru) 的優先順序低於其他資料庫作業，所以索引變更不會導致寫入、更新或刪除的任何停機時間。
 

@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.custom: tracking-python
-ms.openlocfilehash: 360d01d01c163e494340c2da3182192dc15612a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 5dd51f7bcaaa876285f6f514ea98603ff28e7ffa
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560806"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872594"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>建立依排程執行管線的觸發程序
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -320,10 +320,10 @@ ms.locfileid: "84560806"
 ### <a name="schema-overview"></a>結構描述概觀
 下表提供與觸發程序之週期和排程相關的主要結構描述元素概觀：
 
-| JSON 屬性 | Description |
+| JSON 屬性 | 描述 |
 |:--- |:--- |
 | **時間** | 日期時間值。 在簡易排程中，**startTime** 屬性的值會套用至第一個發生項目。 在複雜的排程中，觸發程序會在到了指定的 **startTime** 值才啟動。 |
-| **endTime** | 觸發程序的結束日期和時間。 觸發程序在指定的結束日期和時間之後便不再執行。 此屬性的值不可以是過去的時間。 這是選用屬性。 |
+| **endTime** | 觸發程序的結束日期和時間。 觸發程序在指定的結束日期和時間之後便不再執行。 此屬性的值不可以是過去的時間。 這是選擇性屬性。 |
 | **時區** | 時區。 目前僅支援 UTC 時區。 |
 | **定期** | 指定觸發程序之週期規則的 recurrence 物件。 recurrence 物件支援 **frequency**、**interval**、**endTime**、**count** 及 **schedule** 元素。 定義 recurrence 物件時，必須一併定義 **frequency** 元素。 其他 recurrence 物件元素則為選用元素。 |
 | **frequency** | 觸發程序重複執行時的頻率單位。 支援的值包括 "minute"、"hour"、"day"、"week" 及 "month"。 |
@@ -335,10 +335,10 @@ ms.locfileid: "84560806"
 
 | JSON 屬性 | 類型 | 必要 | 預設值 | 有效值 | 範例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **時間** | String | Yes | None | ISO 8601 日期時間 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **定期** | Object | 是 | None | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **期間** | Number | No | 1 | 1 到 1,000 | `"interval":10` |
-| **endTime** | String | Yes | None | 代表未來時間的日期時間值。 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **時間** | String | 是 | 無 | ISO 8601 日期時間 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **定期** | Object | 是 | 無 | Recurrence 物件 | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **期間** | Number | 否 | 1 | 1 到 1,000 | `"interval":10` |
+| **endTime** | String | 是 | 無 | 代表未來時間的日期時間值。 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **任務** | Object | 否 | None | Schedule 物件 | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime 屬性
@@ -349,7 +349,7 @@ ms.locfileid: "84560806"
 | 開始時間已過去 | 計算開始時間之後的第一個未來執行時間，並在該時間執行。<br/><br/>根據從上次執行時間算出的時間來執行後續的執行作業。<br/><br/>請參閱本表後面的範例。 | 觸發程式會從_指定的開始_時間開始。 第一次執行是根據從開始時間算出的排程。<br/><br/>根據週期排程執行後續的執行作業。 |
 | 開始時間在未來或現在 | 在指定的開始時間執行一次。<br/><br/>根據從上次執行時間算出的時間來執行後續的執行作業。 | 觸發程序會在「到了」__ 指定的開始時間才啟動。 第一次執行是根據從開始時間算出的排程。<br/><br/>根據週期排程執行後續的執行作業。 |
 
-我們來看看一個範例：當開始時間在過去、具有週期性但無排程時，會發生什麼情況。 假設目前時間是 `2017-04-08 13:00`，開始時間是 `2017-04-07 14:00`，而週期是每隔兩天。 （**週期**值的定義方式是將**frequency**屬性設定為 "day"，並將**interval**屬性設為2）。請注意， **startTime**值為過去，並在目前時間之前發生。
+我們來看看一個範例：當開始時間在過去、具有週期性但無排程時，會發生什麼情況。 假設目前時間是 `2017-04-08 13:00`，開始時間是 `2017-04-07 14:00`，而週期是每隔兩天。  (**週期**值的定義方式是將**frequency**屬性設定為 "day"，並將**interval**屬性設為2。 ) 注意**startTime**值為過去，且在目前時間之前發生。
 
 根據這些條件，第一次執行是在 `2017-04-09 at 14:00`。 排程器引擎會從開始時間計算執行週期。 過去的任何執行個體都會遭到捨棄。 引擎會使用下一個在未來發生的執行個體。 在此案例中，開始時間是 `2017-04-07 at 2:00pm`，因此下一個執行個體是在該時間的兩天後，亦即 `2017-04-09 at 2:00pm`。
 
@@ -367,7 +367,7 @@ ms.locfileid: "84560806"
 下表詳細說明 **schedule** 元素：
 
 
-| JSON 元素 | Description | 有效值 |
+| JSON 元素 | 描述 | 有效值 |
 |:--- |:--- |:--- |
 | **細節** | 一小時內觸發程序執行的分鐘數。 | <ul><li>整數</li><li>一連串整數</li></ul>
 | **多少** | 一天內觸發程序執行的小時數。 | <ul><li>整數</li><li>一連串整數</li></ul> |

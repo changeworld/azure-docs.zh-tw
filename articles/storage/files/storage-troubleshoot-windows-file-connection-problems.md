@@ -1,18 +1,18 @@
 ---
 title: 針對 Windows 中的 Azure 檔案服務問題進行疑難排解 | Microsoft Docs
-description: 針對 Windows 中的 Azure 檔案服務問題進行疑難排解
+description: 疑難排解 Windows 中的 Azure 檔案儲存體問題。 當您從 Windows 用戶端連接時，請參閱與 Azure 檔案儲存體相關的常見問題，並查看可能的解決方式。
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ecd7b0bc34d532e7d748bc9468d3a155b9aa2ad2
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259976"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901737"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>針對 Windows 中的 Azure 檔案服務問題進行疑難排解
 
@@ -137,7 +137,7 @@ Azure 檔案儲存體也支援 SMB 以外的 REST。 REST 存取會透過連接�
 
 當您達到 Azure 檔案共用上的檔案或目錄所允許的並行開啟控制碼上限時，就會發生錯誤1816。 如需詳細資訊，請參閱 [Azure 檔案服務擴展目標](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets)。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 關閉一些控制代碼以減少同時開啟的控制代碼數，然後再試一次。 如需詳細資訊，請參閱[Microsoft Azure 儲存體效能和擴充性檢查清單](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
@@ -176,7 +176,7 @@ Azure 檔案儲存體也支援 SMB 以外的 REST。 REST 存取會透過連接�
 ### <a name="cause"></a>原因
 如果檔案或目錄有開啟的控制碼，通常就會發生此問題。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 如果 SMB 用戶端已關閉所有開啟的控制碼，且問題持續發生，請執行下列動作：
 
@@ -222,7 +222,7 @@ Azure 檔案儲存體也支援 SMB 以外的 REST。 REST 存取會透過連接�
 
 根據預設，Windows 檔案總管不會以系統管理員身分執行。 如果您從系統管理命令提示字元執行 net use，就是以系統管理員身分對應網路磁碟機。 因為對應的磁碟機是以使用者為中心，如果磁碟機掛接在不同的使用者帳戶下，登入的使用者帳戶不會顯示此磁碟機。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 從非系統管理員命令掛接共用。 或者，您可以遵循[此 TechNet 主題](https://technet.microsoft.com/library/ee844140.aspx)來設定**EnableLinkedConnections**登錄值。
 
 <a id="netuse"></a>
@@ -232,7 +232,7 @@ Azure 檔案儲存體也支援 SMB 以外的 REST。 REST 存取會透過連接�
 
 Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者帳戶名稱開頭為斜線，磁碟機對應將會失敗。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 您可以使用下列其中一種方式來解決這個問題：
 
@@ -253,7 +253,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 磁碟機是按每個使用者掛接。 如果您的應用程式或服務正在與掛接磁碟機之帳戶不同的使用者帳戶下執行，應用程式將不會看到該磁碟機。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 使用下列其中一個解決方案：
 
@@ -294,7 +294,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 如果用戶端機器上沒有足夠的快取可供大型目錄使用時，就會發生此問題。
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 若要解決此問題，請調整 **DirectoryCacheEntrySizeMax** 登錄值，以允許在用戶端機器快取較大型的目錄清單：
 
@@ -311,7 +311,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 當您嘗試在儲存體帳戶上[啟用 Azure Active Directory Domain Services (AZURE AD DS) 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)，但未在相關聯訂用帳戶的 aad 租使用者上建立[aad DS Azure 檔案儲存體](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)時，就會發生錯誤 AadDsTenantNotFound。  
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 在您儲存體帳戶部署所在訂用帳戶的 AAD 租用戶上啟用 AAD DS。 您必須有 AAD 租用戶的系統管理員權限，才能建立受控網域。 如果您不是 Azure AD 租用戶的系統管理員，請連絡系統管理員，並遵循[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) 的逐步指導。
 
@@ -323,7 +323,7 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
 
 錯誤「發生系統錯誤1359。 當您嘗試使用以數位字元開頭的網域 DNS 名稱，針對 AAD DS 啟用 AAD DS 驗證來連線到檔案共用時，就會發生內部錯誤。 例如，如果您的 AAD DS 網域 DNS 名稱是 "1domain"，當您嘗試使用 AAD 認證掛接檔案共用時，就會收到此錯誤。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 目前，您可以考慮使用適用于下列規則的新網域 DNS 名稱來重新部署 AAD DS：
 - 名稱的開頭不能是數位字元。
@@ -361,7 +361,7 @@ Cmdlet 會依序執行下列檢查，並提供失敗的指引：
 - 當您按一下 [安全性] 索引標籤下的 [編輯] 許可權之後，就不會載入許可權 wizard。 
 - 當您嘗試選取新的使用者或群組時，網域位置不會顯示正確的 AD DS 網域。 
 
-### <a name="solution"></a>解決方案
+### <a name="solution"></a>解決方法
 
 建議您使用[icacls 工具](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)，將目錄/檔案層級許可權設定為因應措施。 
 

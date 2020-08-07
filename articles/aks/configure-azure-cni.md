@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 中設定 Azure CNI 
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1bf459c530195b8855169123b8f496e4969403b
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416846"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872424"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中設定 Azure CNI 網路
 
@@ -61,8 +61,8 @@ AKS 叢集中每個節點的 pod 數目上限為250。 每個節點「預設」*
 
 | 部署方法 | Kubenet 預設值 | Azure CNI 預設值 | 可在部署時設定 |
 | -- | :--: | :--: | -- |
-| Azure CLI | 110 | 30 | 是（最多250） |
-| Resource Manager 範本 | 110 | 30 | 是（最多250） |
+| Azure CLI | 110 | 30 | 是 (最多 250)  |
+| Resource Manager 範本 | 110 | 30 | 是 (最多 250)  |
 | 入口網站 | 110 | 30 | 否 |
 
 ### <a name="configure-maximum---new-clusters"></a>設定最大值 - 新叢集
@@ -87,7 +87,7 @@ AKS 叢集中每個節點的 pod 數目上限為250。 每個節點「預設」*
 
 ### <a name="configure-maximum---existing-clusters"></a>設定最大值 - 現有叢集
 
-當您建立新的節點集區時，可以定義每個節點的 maxPod 設定。 如果您需要增加現有叢集上每個節點的 maxPod 設定，請使用新的所需 maxPod 計數來新增節點集區。 將 pod 遷移至新的集區之後，請刪除舊的集區。 若要刪除叢集中的任何舊版集區，請確定您正在設定節點集區模式，如 [系統節點集區檔[系統節點]集區] 中所定義。
+當您建立新的節點集區時，可以定義每個節點的 maxPod 設定。 如果您需要增加現有叢集上每個節點的 maxPod 設定，請使用新的所需 maxPod 計數來新增節點集區。 將 pod 遷移至新的集區之後，請刪除舊的集區。 若要刪除叢集中的任何舊版集區，請確定您正在設定 [[系統節點][system-node-pools]集區] 檔中所定義的節點集區模式。
 
 ## <a name="deployment-parameters"></a>部署參數
 
@@ -106,7 +106,7 @@ AKS 叢集中每個節點的 pod 數目上限為250。 每個節點「預設」*
 
 雖然技術上有可能指定與您叢集相同虛擬網路內的服務位址範圍，但不建議這麼做。 如果使用重疊的 IP 範圍，就會造成無法預期的行為。 如需詳細資訊，請參閱本文的[常見問題集](#frequently-asked-questions)一節。 如需有關 Kubernetes 服務的詳細資訊，請參閱 Kubernetes 文件中的[服務][services]。
 
-**Kubernetes DNS 服務 IP 位址**：叢集 DNS 服務的 IP 位址。 此位址必須位於 Kubernetes 服務位址範圍** 內。 請勿使用您位址範圍中的第一個 IP 位址，例如 .1。 您子網路範圍內的第一個位址會用於 kubernetes.default.svc.cluster.local** 位址。
+**Kubernetes DNS 服務 IP 位址**：叢集 DNS 服務的 IP 位址。 此位址必須位於 *Kubernetes 服務位址範圍*中。 請勿使用您位址範圍中的第一個 IP 位址，例如 .1。 您子網路範圍內的第一個位址會用於 kubernetes.default.svc.cluster.local** 位址。
 
 **Docker 橋接器位址**： docker 橋接器網路位址代表所有 Docker 安裝中出現的預設*docker0*橋接器網路位址。 雖然 AKS 叢集或 pod 本身不會使用*docker0*橋接器，但您必須將此位址設定為繼續支援在 AKS 叢集中的*docker build*等案例。 您必須為 Docker 橋接器網路位址選取 CIDR，否則 Docker 會自動挑選可能與其他 CIDRs 發生衝突的子網。 您必須挑選不會與網路上的其餘 CIDRs 發生衝突的位址空間，包括叢集的服務 CIDR 和 pod CIDR。
 
@@ -214,4 +214,4 @@ az aks create \
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
-[系統節點集區]: use-system-pools.md
+[system-node-pools]: use-system-pools.md

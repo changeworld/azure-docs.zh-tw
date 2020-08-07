@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理中的訂用帳戶 | Microsoft Docs
-description: 深入了解 Azure APIM 中的訂用帳戶概念。
+description: 深入了解 Azure APIM 中的訂用帳戶概念。 取用者可以使用 Azure API 管理中的訂用帳戶來取得 Api 的存取權。
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: b4a3e8c71757417240af2719c317bbbd49cef9fc
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: d1ab8990d0e5c389e0454c23a31989a71b0cd9a2
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475765"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843771"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的訂用帳戶
 

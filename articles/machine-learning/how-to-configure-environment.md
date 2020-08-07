@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: f0ac64fa184382f3939530565caa93f87da0fbf6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 09d82c4834e50e0dff74edb5ccd14287736b937e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321474"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844468"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>設定 Azure Machine Learning 的開發環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,10 +27,10 @@ ms.locfileid: "87321474"
 
 | 環境 | 優點 | 缺點 |
 | --- | --- | --- |
-| [以雲端為基礎的 Azure Machine Learning 計算實例（預覽）](#compute-instance) | 最簡單的入門方式。 整個 SDK 已安裝在您的工作區 VM 中，且筆記本教學課程已預先複製並可供執行。 | 缺少開發環境和相依性的控制權。 Linux VM 所產生的額外成本（VM 可以在未使用時停止，以避免費用）。 請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
+| [以雲端為基礎 Azure Machine Learning 計算實例 (預覽) ](#compute-instance) | 最簡單的入門方式。 整個 SDK 已安裝在您的工作區 VM 中，且筆記本教學課程已預先複製並可供執行。 | 缺少開發環境和相依性的控制權。 Linux VM (VM 所產生的額外成本，可以在未使用時停止，以避免) 的費用。 請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)。 |
 | [本機環境](#local) | 完全控制您的開發環境和相依性。 使用您選擇的任何組建工具、環境或 IDE 來執行。 | 開始使用較長的時間。 必須安裝必要的 SDK 套件，如果您還沒有環境，也必須安裝它。 |
 | [Azure Databricks](#aml-databricks) | 適用于在可調整的 Apache Spark 平臺上執行大規模的機器學習工作流程。 | 適用于實驗性機器學習服務的大材小用，或較小規模的實驗和工作流程。 Azure Databricks 所產生的額外成本。 請參閱[定價詳細資料](https://azure.microsoft.com/pricing/details/databricks/)。 |
-| [資料科學虛擬機器（DSVM）](#dsvm) | 類似于雲端式計算實例（Python 和 SDK 已預先安裝），但已預先安裝其他常用的資料科學和機器學習工具。 易於調整，並與其他自訂工具和工作流程結合。 | 相較于雲端式計算實例，更慢的使用者入門體驗。 |
+| [資料科學虛擬機器 (DSVM) ](#dsvm) | 類似于雲端式計算實例 (Python 和 SDK 已預先安裝) ，但已預先安裝其他常用的資料科學和機器學習工具。 易於調整，並與其他自訂工具和工作流程結合。 | 相較于雲端式計算實例，更慢的使用者入門體驗。 |
 
 本文也提供下列工具的其他使用秘訣：
 
@@ -55,7 +55,7 @@ Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azu
 
 ## <a name="your-own-cloud-based-compute-instance"></a><a id="compute-instance"></a>您自己的雲端式計算實例
 
-Azure Machine Learning[計算實例（預覽）](concept-compute-instance.md)是安全的雲端式 Azure 工作站，可為數據科學家提供 Jupyter 筆記本伺服器、JupyterLab 和完整備妥的 ML 環境。
+Azure Machine Learning[計算實例 (預覽) ](concept-compute-instance.md)是安全的雲端式 Azure 工作站，可為數據科學家提供 Jupyter 筆記本伺服器、JupyterLab 和完整備妥的 ML 環境。
 
 不需要為計算實例安裝或設定任何內容。  從您的 Azure Machine Learning 工作區中隨時建立一個。 只提供名稱，並指定 Azure VM 類型。 請在本教學課程中立即試用[：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)。
 
@@ -136,9 +136,9 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
 
 ## <a name="local-computer"></a><a id="local"></a>本機電腦
 
-當您使用本機電腦（也可能是遠端虛擬機器）時，請建立 Anaconda 環境並安裝 SDK。 以下為範例：
+當您使用本機電腦 (也可能是遠端虛擬機器) 時，請建立 Anaconda 環境並安裝 SDK。 以下為範例：
 
-1. 如果您還沒有[Anaconda](https://www.anaconda.com/distribution/#download-section) （Python 3.7 版本），請下載並安裝。
+1. 如果您還沒有[Anaconda](https://www.anaconda.com/distribution/#download-section) (Python 3.7 版本，請下載並安裝) 。
 
 1. 開啟 Anaconda 提示字元，並使用下列命令建立環境：
 
@@ -154,7 +154,7 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
     conda activate myenv
     ```
 
-    這個範例會使用 python 3.7.7 建立環境，但是可以選擇任何特定的 subversions。 SDK 相容性可能無法保證某些主要版本（建議使用 3.5 +），如果遇到錯誤，建議您在 Anaconda 環境中嘗試不同的版本/subversion。 建立環境可能需要幾分鐘的時間，因為需要下載元件和套件。
+    這個範例會使用 python 3.7.7 建立環境，但是可以選擇任何特定的 subversions。 SDK 相容性可能無法保證某些主要版本 (3.5 + 建議) ，如果遇到錯誤，建議您在 Anaconda 環境中嘗試不同的版本/subversion。 建立環境可能需要幾分鐘的時間，因為需要下載元件和套件。
 
 1. 在您的新環境中執行下列命令，以啟用環境特定的 IPython 核心。 這可確保在 Anaconda 環境中使用 Jupyter 筆記本時，預期的核心和套件匯入行為：
 
@@ -189,7 +189,7 @@ Azure Machine Learning SDK 適用於 Ubuntu 或 Windows版本的 DSVM。 但如�
 
 1. 為您的機器學習實驗安裝其他套件。
 
-    使用下列其中一個命令，並將取代為 *\<new package>* 您要安裝的套件。 透過安裝套件 `conda install` 時，套件必須是目前通道的一部分（可以在 Anaconda Cloud 中新增新的通道）。
+    使用下列其中一個命令，並將取代為 *\<new package>* 您要安裝的套件。 透過安裝套件 `conda install` 時，套件必須是目前通道的一部分， (可以在 Anaconda Cloud) 中新增新的通道。
 
     ```bash
     conda install <new package>
@@ -245,7 +245,7 @@ Jupyter Notebook 是 [Jupyter 專案](https://jupyter.org/)的一部分。 它�
 
 ### <a name="visual-studio-code"></a><a id="vscode"></a>Visual Studio Code
 
-Visual Studio Code 是一個非常熱門的跨平臺程式碼編輯器，可透過[Visual Studio marketplace](https://marketplace.visualstudio.com/vscode)中提供的延伸模組，支援一組豐富的程式設計語言和工具。 [Azure Machine Learning 延伸](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)模組會安裝[python 延伸](https://marketplace.visualstudio.com/items?itemName=ms-python.python)模組，以便在所有類型的 python 環境中撰寫程式碼（虛擬、Anaconda 等）。 此外，它還提供便利的功能來處理 Azure Machine Learning 資源，並在不離開 Visual Studio Code 的情況下執行 Azure Machine Learning 實驗。
+Visual Studio Code 是一個非常熱門的跨平臺程式碼編輯器，可透過[Visual Studio marketplace](https://marketplace.visualstudio.com/vscode)中提供的延伸模組，支援一組豐富的程式設計語言和工具。 [Azure Machine Learning 延伸](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)模組會安裝[python 延伸](https://marketplace.visualstudio.com/items?itemName=ms-python.python)模組，以便在所有類型的 python 環境中撰寫程式碼， (虛擬、Anaconda 等 ) 。 此外，它還提供便利的功能來處理 Azure Machine Learning 資源，並在不離開 Visual Studio Code 的情況下執行 Azure Machine Learning 實驗。
 
 若要使用 Visual Studio Code 進行開發：
 
@@ -255,12 +255,12 @@ Visual Studio Code 是一個非常熱門的跨平臺程式碼編輯器，可透�
 
 1. 瞭解如何將 Visual Studio Code 用於任何類型的 Python 開發，請參閱[在 VSCode 中開始使用 python](https://code.visualstudio.com/docs/python/python-tutorial)。
 
-    - 若要選取包含 SDK 的 SDK Python 環境，請開啟 [VS Code]，然後選取 [Ctrl + Shift + P （Linux 和 Windows）] 或 [命令 + Shift + P （Mac）]。
+    - 若要選取包含 SDK 的 SDK Python 環境，請開啟 [VS Code]，然後選取 [Ctrl + Shift + P (Linux 和 Windows) 或命令 + Shift + P (Mac) ]。
         - __命令__選擇區隨即開啟。
 
     - 輸入__Python：選取 [解釋__器]，然後選取適當的環境
 
-1. 若要驗證您是否可以使用 SDK，請建立新的 Python 檔案（. .py），其中包含下列程式碼：
+1. 若要驗證您是否可以使用 SDK，請建立新的 Python 檔案 ( .py) ，其中包含下列程式碼：
 
     ```python
     #%%
@@ -288,10 +288,10 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 | 設定 |適用於| 值 |
 |----|---|---|
 | 叢集名稱 |always| yourclustername |
-| Databricks 執行階段 |always|非 ML 執行時間6.5 （scala 2.11、spark 2.4.3） |
+| Databricks 執行階段 |always|非 ML 執行時間 6.5 (scala 2.11、spark 2.4.3)  |
 | Python 版本 |always| 3 |
 | 背景工作角色 |always| 2 個以上 |
-| 背景工作節點 VM 類型 <br>（判斷並行反覆運算的最大數目） |自動化 ML<br>向| 建議使用已記憶體最佳化的 VM |
+| 背景工作節點 VM 類型 <br> (決定並行反覆運算的最大數目)  |自動化 ML<br>向| 建議使用已記憶體最佳化的 VM |
 | 啟用自動調整 |自動化 ML<br>向| 取消選取 |
 
 請靜候至叢集運作，再繼續操作。
@@ -301,7 +301,7 @@ Azure Databricks 如何與 Azure Machine Learning 搭配運作：
 
 1. 以滑鼠右鍵按一下您要儲存程式庫的目前工作區資料夾。 選取 [**建立**連結  >  **庫**]。
 
-1. **只選擇一個**選項（不支援其他 SDK 安裝）
+1. **只選擇一個**選項 (不支援其他 SDK 安裝) 
 
    |SDK &nbsp; 套件 &nbsp; 額外專案|來源|PyPi &nbsp; 名稱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
    |----|---|---|

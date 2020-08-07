@@ -3,12 +3,12 @@ title: 監視任何環境上的 JAVA 應用程式-Azure 監視器 Application In
 description: 應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，不需檢測應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: f35d661761f1bea4dbd6b691fb0667c6dad3e72e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541850"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902077"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights-公開預覽
 
@@ -106,8 +106,8 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 * Cassandra
 * JDBC
-* MongoDB （非同步和同步）
-* Redis （萵苣和 Jedis）
+* MongoDB (非同步和同步) 
+* Redis (萵苣和 Jedis) 
 
 ### <a name="logs"></a>記錄
 
@@ -117,7 +117,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 ### <a name="metrics"></a>計量
 
-* Micrometer （包括春季開機傳動標準）
+* Micrometer (包括春季開機傳動標準) 
 * JMX 計量
 
 ## <a name="sending-custom-telemetry-from-your-application"></a>從您的應用程式傳送自訂遙測
@@ -128,18 +128,17 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 ### <a name="supported-custom-telemetry"></a>支援的自訂遙測
 
-下表代表目前支援的自訂遙測類型，可讓您用來補充 JAVA 3.0 代理程式。 總而言之，自訂計量是透過 micrometer 來支援、自訂例外狀況和追蹤可以透過記錄架構來啟用，而且任何類型的自訂遙測都可透過[Application Insights JAVA 2.X SDK](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#sending-custom-telemetry-using-application-insights-java-sdk-2x)來支援。 
+下表代表目前支援的自訂遙測類型，可讓您用來補充 JAVA 3.0 代理程式。 總而言之，自訂計量是透過 micrometer 來支援、自訂例外狀況和追蹤可以透過記錄架構來啟用，而且任何類型的自訂遙測都可透過[Application Insights JAVA 2.X SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x)來支援。 
 
-
-|                 | Micrometer | Log4j，logback，七月 | 2.x SDK |
-|-----------------|------------|---------------------|---------|
-| 自訂事件   |            |                     |  是    |
-| 自訂計量  |  是       |                     |  是    |
-| 相依性    |            |                     |  是    |
-| 例外狀況      |            |  是                |  是    |   
-| 頁面檢視      |            |                     |  是    |
-| Requests        |            |                     |  是    |
-| 追蹤          |            |  是                |  是    |
+|                     | Micrometer | Log4j，logback，七月 | 2.x SDK |
+|---------------------|------------|---------------------|---------|
+| **自訂事件**   |            |                     |  是    |
+| **自訂計量**  |  是       |                     |  是    |
+| **相依性**    |            |                     |  是    |
+| **例外狀況**      |            |  是                |  是    |
+| **頁面流覽**      |            |                     |  是    |
+| **要求**        |            |                     |  是    |
+| **追蹤**          |            |  是                |  是    |
 
 我們目前不打算發行具有 Application Insights 3.0 的 SDK。
 
@@ -147,7 +146,7 @@ Application Insights JAVA 3.0 已在接聽傳送至 Application Insights JAVA SD
 
 ## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>使用 Application Insights JAVA SDK 2.x 傳送自訂遙測
 
-將新增 `applicationinsights-core-2.6.0.jar` 至您的應用程式（Application Insights JAVA 3.0 支援所有2.x 版本，但如果您有選擇，則值得使用最新版本）：
+將新增 `applicationinsights-core-2.6.0.jar` 至您的應用程式 (所有2.x 版都支援 Application Insights JAVA 3.0，但如果您有選擇) ，則值得使用最新版本：
 
 ```xml
   <dependency>

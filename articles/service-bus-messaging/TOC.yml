@@ -7,6 +7,8 @@
     - name: 比較訊息服務
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
+    - name: 搭配使用服務匯流排與 Java 訊息服務 (JMS) 2.0 (預覽)
+      href: how-to-use-java-message-service-20.md
 - name: 快速入門
   items:
     - name: 服務匯流排佇列
@@ -127,6 +129,8 @@
           items:
             - name: 佇列、主題和訂用帳戶
               href: service-bus-queues-topics-subscriptions.md
+            - name: Java 訊息服務 (JMS) 2.0 實體 (預覽)
+              href: java-message-service-20-entities.md
             - name: 訊息、承載和序列化
               href: service-bus-messages-payloads.md
             - name: 訊息傳輸、鎖定和安置

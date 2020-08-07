@@ -1,9 +1,9 @@
 ---
 title: 在 Azure AD 權利管理中建立存取套件的存取權審查
-description: 瞭解如何在 Azure Active Directory 存取評論（預覽）中建立權利管理存取套件的存取權審查原則。
+description: 瞭解如何在 Azure Active Directory 存取權審查 (預覽) 中，建立權利管理存取套件的存取權審查原則。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7aed942058a922fc8da504fe14c5ad8e0bed59a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 012eefe9140703a62d7bb1074ab763191a0976cb
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078588"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798506"
 ---
 # <a name="create-an-access-review-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中建立存取套件的存取權審查
 
@@ -53,14 +53,14 @@ ms.locfileid: "85078588"
 
 1. 設定 [**持續時間**]，以定義每次審查重複執行數列的天數，以供審核者輸入。 例如，您可以排程在1月1日開始的年度審核，並在30天內開啟以供審查，讓審核者能夠在該月結束後回應。
 
-1. 在 [**審核者**] 旁，選取 [**自我審查**] （如果您想要讓使用者執行自己的存取權審查，或選取**特定的檢閱者**，如果您想要指定審核者的話）。
+1. 如果您想要指定審核者，請在 [**審核者**] 旁選取 [**自我審查**]，以便讓使用者執行自己的存取權審查，或選取**特定的檢閱者 (s) ** 。
 
     ![選取 [新增審核者]](./media/entitlement-management-access-reviews/access-reviews-add-reviewer.png)
 
-1. 如果您選取 **[特定檢閱者**]，請指定哪些使用者將進行存取權審查：
+1. 如果您選取了** (s) 的特定檢閱者**，請指定哪些使用者將進行存取權審查：
     1. 選取 [**新增審核者**]。
-    1. 在 [**選取審核者**] 窗格中，搜尋並選取您想要成為審核者的使用者。
-    1. 選取您的審核者之後，請按一下 [**選取**] 按鈕。
+    1. 在 [**選取審核者**] 窗格中，搜尋並選取您想要成為審核者) 的使用者 (。
+    1. 當您選取了 (s) 的審查員時，請按一下 [**選取**] 按鈕。
 
     ![指定審核者](./media/entitlement-management-access-reviews/access-reviews-select-reviewer.png)
 

@@ -1,7 +1,7 @@
 ---
 title: 設定呼叫 web Api 的 Web API |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解如何建立呼叫 web Api 的 Web API （應用程式的程式碼設定）
+description: '瞭解如何建立 Web API，以呼叫 web Api (應用程式的程式碼設定) '
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/15/2020
+ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: eff5f68569d1878e1b802f2db4151d246bcc07c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95cb1181f841ce5f958b8a85697d7261f442b410
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026419"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799594"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的 Web API：程式碼設定
 
@@ -83,7 +83,7 @@ public class Startup
   {
    // ...
    services.AddMicrosoftWebApiAuthentication(Configuration)
-           .AddMicrosoftWebApiCallsWebApi()
+           .AddMicrosoftWebApiCallsWebApi(Configuration)
            .AddInMemoryTokenCaches();
   // ...
   }
@@ -97,7 +97,7 @@ public class Startup
 
 # <a name="java"></a>[Java](#tab/java)
 
-代理者（OBO）流程是用來取得權杖，以呼叫下游 Web API。 在此流程中，您的 Web API 會從用戶端應用程式接收具有使用者委派許可權的持有人權杖，然後將此權杖交換給另一個存取權杖，以呼叫下游 Web API。
+代理者 (OBO) 流程可用來取得權杖，以呼叫下游 Web API。 在此流程中，您的 Web API 會從用戶端應用程式接收具有使用者委派許可權的持有人權杖，然後將此權杖交換給另一個存取權杖，以呼叫下游 Web API。
 
 下列程式碼會在 Web API 中使用春季安全性架構 `SecurityContextHolder` ，以取得已驗證的持有人權杖。 接著，它會使用 MSAL JAVA 程式庫，透過呼叫來取得下游 API 的權杖 `acquireToken` `OnBehalfOfParameters` 。 MSAL 會快取權杖，讓後續對 API 的呼叫可以使用 `acquireTokenSilently` 來取得緩存的權杖。
 
@@ -166,7 +166,7 @@ class MsalAuthHelper {
 
 # <a name="python"></a>[Python](#tab/python)
 
-代理者（OBO）流程是用來取得權杖，以呼叫下游 Web API。 在此流程中，您的 Web API 會從用戶端應用程式接收具有使用者委派許可權的持有人權杖，然後將此權杖交換給另一個存取權杖，以呼叫下游 Web API。
+代理者 (OBO) 流程可用來取得權杖，以呼叫下游 Web API。 在此流程中，您的 Web API 會從用戶端應用程式接收具有使用者委派許可權的持有人權杖，然後將此權杖交換給另一個存取權杖，以呼叫下游 Web API。
 
 Python Web API 必須使用一些中介軟體來驗證從用戶端收到的持有人權杖。 然後，Web API 可以藉由呼叫方法，使用 MSAL Python 程式庫取得下游 API 的存取權杖 [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) 。 如需使用此 API 的範例，請參閱[GitHub 上的 microsoft 驗證-適用于 python 的測試程式碼](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)。 另請參閱此相同存放庫中的[問題 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53)討論，以取得略過中介層應用程式需求的方法。
 
@@ -178,7 +178,7 @@ Python Web API 必須使用一些中介軟體來驗證從用戶端收到的持�
 
 如需 OBO 通訊協定的詳細資訊，請參閱[Microsoft 身分識別平臺和 OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)代理者流程。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
 > [呼叫 web Api 的 Web API：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)

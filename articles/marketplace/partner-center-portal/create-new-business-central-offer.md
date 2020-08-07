@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 456764ae2b08b9852e56b2ab3f7cd9238b540b58
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5ec8949d1ba614ca947f9848182ae2c94e044fc3
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121940"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800393"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>建立 Dynamics 365 Business Central 供應項目
 
@@ -60,7 +60,7 @@ ms.locfileid: "86121940"
 
 #### <a name="free-trial-listing"></a>免費試用版 (清單)
 
-提供有效的 URL （開頭為或），以向客戶列出您的供應專案，以 `http` `https` 取得試用版的連結。  例如： `https://contoso.com/trial/my-app` 。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
+藉由提供有效的 URL (開始， `http` 或 `https`) 可以在何處取得試用版，將您的供應專案向客戶列出免費試用的連結。  例如： `https://contoso.com/trial/my-app` 。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
 
 > [!NOTE]
 > 您的應用程式透過試用連結所接收的權杖，只能經由 Azure Active Directory (Azure AD) 取得使用者資訊，以便在應用程式中自動建立帳戶。 Microsoft 帳戶不支援使用此權杖進行驗證。
@@ -91,7 +91,7 @@ ms.locfileid: "86121940"
 
 選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別（選擇性）。
+- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
 - 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
 
 請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
@@ -117,7 +117,7 @@ ms.locfileid: "86121940"
 > [!NOTE]
 > 您只能以一種語言提供供應項目清單的詳細資料。 如果供應項目描述開頭為以下詞句：「此應用程式僅適用於 [非英文語言]。」，則供應項目詳細資料不一定要使用英文。 也可利用不同於供應項目清單內容中所使用的語言，來提供供應項目內容的「說明連結 URL」。
 
-以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊（任何列出的價格僅供範例之用，而非用於反映實際成本）：
+以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
 
 :::image type="content" source="media/example-d365-business-central.png" alt-text="說明此供應專案在 Microsoft AppSource 中的顯示方式。":::
 
@@ -126,7 +126,7 @@ ms.locfileid: "86121940"
 1. 標誌
 2. 產品
 3. 類別
-4. 支援位址（連結）
+4. 支援位址 (連結) 
 5. 使用規定
 6. 隱私權原則
 7. 供應項目名稱
@@ -180,15 +180,19 @@ ms.locfileid: "86121940"
 
 在此提供至少一個 (最多三個) 相關的行銷文件，例如白皮書、小手冊、檢查清單或簡報。 這些文件必須是 .pdf 格式。
 
-### <a name="marketplace-images"></a>Marketplace 映像
+### <a name="store-logos"></a>儲存標誌
 
-請提供供應項目的標誌和影像。 所有影像都必須是 PNG 格式。 以兩種大小上傳您的供應項目標誌：
+在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 大小標誌。 您可以選擇性地將此取代為不同的影像。
 
-* **小型** (48 x 48 像素)
-* **大型** (216 x 216 像素)
+需要兩種標誌大小，才能在清單中的不同位置使用：
+
+- **小型** (48 x 48)
+- 216 x 216 與 350 x 350) 之間的**大型** (
 
 >[!NOTE]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 `https://upload.xboxlive.com` 服務。
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
@@ -202,7 +206,7 @@ ms.locfileid: "86121940"
 
 [市集供應項目清單的最佳做法](../gtm-offer-listing-best-practices.md)
 
-選取 **[儲存草稿]** 後再繼續。
+選取 [儲存草稿] 後再繼續。
 
 ## <a name="availability"></a>可用性
 
@@ -227,7 +231,7 @@ ms.locfileid: "86121940"
 
 然後，當準備好讓供應項目可供使用並移除預覽限制時，您將需要移除 [隱藏金鑰] 並重新發佈。
 
-選取 **[儲存草稿]** 後再繼續。
+選取 [儲存草稿] 後再繼續。
 
 ## <a name="technical-configuration"></a>技術設定
 
@@ -266,7 +270,7 @@ ms.locfileid: "86121940"
 
 此頁面可讓您設定示範 (即「試用產品」)，讓客戶在購買之前先試用您的供應項目。 在[什麼是試用](../what-is-test-drive.md)產品中深入瞭解。
 
-若要啟用試用產品，請在 [供應項目設定](#test-drive) 索引標籤中，選取 [啟用試用產品] 核取方塊。若要從您的供應項目中移除試用產品，請清除此核取方塊。
+若要啟用試用產品，請在[[供應項目設定]](#test-drive) 索引標籤中，選取 [啟用試用產品] 核取方塊。若要從您的供應項目中移除試用產品，請清除此核取方塊。
 
 當您完成試用產品的設定後，請選取 [**儲存草稿**] 再繼續。
 

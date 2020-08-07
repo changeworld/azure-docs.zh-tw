@@ -2,7 +2,7 @@
 title: 指派或移除授權 - Azure Active Directory | Microsoft Docs
 description: 關於如何從您的使用者或群組指派或移除 Azure Active Directory 授權的指示。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121bf7ef05c2a5bee621ecddcb40033d54194fac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9909b92e58d73c9578d3d17a7bbf24fe2924fae2
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542105"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797078"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 入口網站中指派或移除授權
 
-許多 Azure Active Directory （Azure AD）服務都需要您授權該服務的每個使用者或群組（和相關聯的成員）。 只有具備作用中授權的使用者才能夠存取及使用其為 true 的授權 Azure AD 服務。 授權會套用至每個租使用者，且不會轉移至其他租使用者。 
+許多 Azure Active Directory (Azure AD) 服務都會要求您授權每個使用者或群組 (和相關聯的成員) 該服務。 只有具備作用中授權的使用者才能夠存取及使用其為 true 的授權 Azure AD 服務。 授權會套用至每個租使用者，且不會轉移至其他租使用者。 
 
 ## <a name="available-license-plans"></a>可用的授權方案
 

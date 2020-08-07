@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 2c292ee601114a58e38b9e509efa53be2d3c93d6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9bc323e0fafc576c5e75f46b3c38fdf140b1b0f4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328171"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799797"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>使用 Azure 原則啟用適用於 VM 的 Azure 監視器
-本文說明如何使用 Azure 原則，針對與 Azure Arc （預覽）連線的 Azure 虛擬機器或混合式虛擬機器啟用適用於 VM 的 Azure 監視器。 Azure 原則可讓您指派原則定義，以在您的 Azure 環境中安裝適用於 VM 的 Azure 監視器所需的代理程式，並在每個虛擬機器建立時，自動啟用 Vm 的監視。 適用於 VM 的 Azure 監視器提供一項功能，可讓您在您的環境中探索及補救不相容的 Vm。 使用此功能，而不是直接使用 Azure 原則。
+本文說明如何使用 Azure 原則，針對使用 Azure Arc (preview) 連線的 Azure 虛擬機器或混合式虛擬機器啟用適用於 VM 的 Azure 監視器。 Azure 原則可讓您指派原則定義，以在您的 Azure 環境中安裝適用於 VM 的 Azure 監視器所需的代理程式，並在每個虛擬機器建立時，自動啟用 Vm 的監視。 適用於 VM 的 Azure 監視器提供一項功能，可讓您在您的環境中探索及補救不相容的 Vm。 使用此功能，而不是直接使用 Azure 原則。
 
-如果您不熟悉 Azure 原則，請在[使用 Azure 原則大規模部署 Azure 監視器](../platform/deploy-scale.md)中取得簡短介紹。
+如果您不熟悉 Azure 原則，請在[使用 Azure 原則大規模部署 Azure 監視器](../deploy-scale.md)中取得簡短介紹。
 
 > [!NOTE]
-> 若要使用 Azure 原則搭配 Azure 虛擬機器擴展集，或直接使用 Azure 原則來啟用 Azure 虛擬機器，請參閱[使用 Azure 原則大規模部署 Azure 監視器](../platform/deploy-scale.md#azure-monitor-for-vms-and-virtual-machine-agents)。
+> 若要使用 Azure 原則搭配 Azure 虛擬機器擴展集，或直接使用 Azure 原則來啟用 Azure 虛擬機器，請參閱[使用 Azure 原則大規模部署 Azure 監視器](../deploy-scale.md#azure-monitor-for-vms)。
 
 ## <a name="prerequisites"></a>必要條件
 - [建立和設定 Log Analytics 工作區](vminsights-configure-workspace.md)。
@@ -60,10 +60,10 @@ ms.locfileid: "87328171"
 
 下表提供此視圖中資訊的描述。
 
-| 函式 | 說明 | 
+| 函式 | 描述 | 
 |----------|-------------| 
 | **範圍** | 您擁有或繼承的管理群組和訂用帳戶，並能夠向下切入管理群組階層。|
-| **角色** | 您在範圍中的角色，可能是讀取者、擁有者或參與者。 如果您有訂用帳戶的存取權，而不是它所屬的管理群組，這將會是空白。 此角色會決定您可以查看的資料，以及您可以在指派原則或計畫（擁有者）、編輯它們或查看合規性方面執行的動作。 |
+| **角色** | 您在範圍中的角色，可能是讀取者、擁有者或參與者。 如果您有訂用帳戶的存取權，而不是它所屬的管理群組，這將會是空白。 此角色會決定您可以查看哪些資料，以及您可以在 (擁有者) 、編輯或查看合規性時，將原則或計畫指派給您的動作。 |
 | **Vm 總計** | 該範圍中的 Vm 總數（不論其狀態為何）。 對於管理群組，這是在 [訂用帳戶] 或 [子管理群組] 底下的總 Vm 總和。 |
 | **指派涵蓋範圍** | 方案涵蓋的 Vm 百分比。 |
 | **指派狀態** | **成功**-範圍中的所有 vm 都已部署 Log Analytics 和 Dependency agent。<br>**警告**-訂用帳戶不在管理群組底下。<br>**未啟動**-已新增新的指派。<br>**鎖定**-您沒有管理群組的足夠許可權。<br>**空白**-不存在任何 vm，或未指派原則。 |
@@ -72,11 +72,11 @@ ms.locfileid: "87328171"
 | **合規性狀態** | **相容**-虛擬機器範圍中的所有 vm 都已部署 Log Analytics 和相依性代理程式，或範圍內的任何新 vm 尚未進行評估。<br>**不相容**-有一些已評估但未啟用，而且可能需要補救的 vm。<br>**未啟動**-已新增新的指派。<br>**鎖定**-您沒有管理群組的足夠許可權。<br>**空白**-未指派任何原則。  |
 
 
-當您指派方案時，在指派中選取的範圍可能是所列的範圍或其子集。 例如，您可能已建立訂用帳戶的指派（原則範圍），而不是管理群組（涵蓋範圍範圍）。 在此情況下，**指派涵蓋**範圍的值會指出方案範圍中的 vm 除以涵蓋範圍內的 vm。 在另一種情況下，您可能已排除部分 Vm、資源群組或來自原則範圍的訂用帳戶。 如果此值為空白，表示原則或方案不存在，或您沒有許可權。 [**指派狀態**] 底下會提供資訊。
+當您指派方案時，在指派中選取的範圍可能是所列的範圍或其子集。 例如，您可能已建立訂用帳戶的指派 (原則範圍) 而不是 (涵蓋範圍) 的管理群組。 在此情況下，**指派涵蓋**範圍的值會指出方案範圍中的 vm 除以涵蓋範圍內的 vm。 在另一種情況下，您可能已排除部分 Vm、資源群組或來自原則範圍的訂用帳戶。 如果此值為空白，表示原則或方案不存在，或您沒有許可權。 [**指派狀態**] 底下會提供資訊。
 
 
 ## <a name="remediate-compliance-results"></a>補救合規性結果
-當虛擬機器建立或修改時，將會套用此計畫，但不會套用至現有的 Vm。 如果您的指派未顯示100% 合規性，請建立補救工作以評估並啟用現有的 Vm，選取省略號（...）以選取 [**查看相容性**]。
+當虛擬機器建立或修改時，將會套用此計畫，但不會套用至現有的 Vm。 如果您的指派未顯示100% 合規性，請建立補救工作以評估並啟用現有的 Vm，選取省略號 ( ... ) 以選取 [**查看相容性**]。
 
 [![查看合規性](media/vminsights-enable-at-scale-policy/view-compliance.png)](media/vminsights-enable-at-scale-policy/view-compliance.png#lightbox)
 
@@ -91,7 +91,7 @@ ms.locfileid: "87328171"
 按一下原則定義以查看其詳細資料。 原則定義會顯示為不符合規範的案例包括下列各項：
 
 * 未部署 Log Analytics 代理程式或相依性代理程式。 建立要緩和的補救工作。
-* 在原則定義中找不到 VM 映射（OS）。 部署原則的準則僅包含從已知 Azure VM 映像部署的 VM。 請參閱文件以了解 VM OS 是否受到支援。
+* 在原則定義中找不到 VM 映射 (OS) 。 部署原則的準則僅包含從已知 Azure VM 映像部署的 VM。 請參閱文件以了解 VM OS 是否受到支援。
 * Vm 不會記錄到指定的 Log Analytics 工作區。 方案範圍中的某些 Vm 會連線到 Log Analytics 工作區，而不是原則指派中指定的。
 
 [![原則合規性詳細資料](media/vminsights-enable-at-scale-policy/policy-compliance-details.png)](media/vminsights-enable-at-scale-policy/policy-compliance-details.png#lightbox)

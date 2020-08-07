@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a468b5f43e8b024dd1da6e382049f8cce6de295
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797360"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902349"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>使用 Azure Active Directory 將系統管理員和非系統管理員角色指派給使用者
 
@@ -28,7 +28,7 @@ ms.locfileid: "87797360"
 
 ## <a name="assign-roles"></a>指派角色
 
-將 Azure AD 角色指派給使用者的常見方式是在使用者的 [**指派的角色**] 頁面上。 您也可以使用 Privileged Identity Management (PIM) ，及時提升為角色的資格。 如需如何使用 PIM 的詳細資訊，請參閱[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)。
+將 Azure AD 角色指派給使用者的常見方式是在使用者的 [**指派的角色**] 頁面上。 您也可以使用 Privileged Identity Management (PIM) ，將使用者資格設定為及時提升為角色。 如需如何使用 PIM 的詳細資訊，請參閱[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)。
 
 > [!Note]
 > 如果您有 Azure AD Premium P2 授權方案，並已使用 PIM，則所有角色管理工作都會在[Privileged Identity Management 體驗](../users-groups-roles/directory-manage-roles-portal.md)中執行。
