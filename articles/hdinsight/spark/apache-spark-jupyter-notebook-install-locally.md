@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive,seoapr2020, tracking-python
+ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 5733a4e3825ee89527d73cc81990f41f50373ba8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 96b2e7deff464f00ced4457a514ac833a90bd42d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084761"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873886"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在電腦上安裝 Jupyter Notebook，並連線到 HDInsight 上的 Apache Spark
 
-在本文中，您將瞭解如何使用自訂 PySpark （適用于 Python）和 Apache Spark （適用于 Scala）具備 Spark 魔術的核心來安裝 Jupyter 筆記本。 接著，您可以將筆記本連線到 HDInsight 叢集。
+在本文中，您將瞭解如何使用適用于 Python) 的自訂 PySpark (安裝 Jupyter 筆記本，並使用 Spark 神奇的 Scala) 核心 Apache Spark (。 接著，您可以將筆記本連線到 HDInsight 叢集。
 
 安裝 Jupyter 和連線至 HDInsight 上的 Apache Spark 時，有四個主要步驟。
 
@@ -65,7 +65,7 @@ ms.locfileid: "86084761"
 
     然後將您的工作目錄變更為使用上述命令所識別的**位置**。
 
-1. 從您的新工作目錄中，輸入下列一個或多個命令，以安裝所需的核心：
+1. 從您的新工作目錄中，輸入下列一個或多個命令，以安裝所需的核心 () ：
 
     |核心 | Command |
     |---|---|
@@ -133,7 +133,7 @@ ms.locfileid: "86084761"
     |USERNAME|叢集登入，預設值為 `admin` 。|
     |CLUSTERDNSNAME|叢集名稱|
     |BASE64ENCODEDPASSWORD|以 base64 編碼的密碼，適用于您的實際密碼。  您可以在產生 base64 密碼 [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) 。|
-    |`"livy_server_heartbeat_timeout_seconds": 60`|如果使用 `sparkmagic 0.12.7` （叢集3.5 和3.6 版），請保留。  如果使用 `sparkmagic 0.2.3` （叢集3.4），請將取代為 `"should_heartbeat": true` 。|
+    |`"livy_server_heartbeat_timeout_seconds": 60`|如果使用 `sparkmagic 0.12.7` (叢集3.5 和 3.6) ，請繼續進行。  如果使用 `sparkmagic 0.2.3` (叢集 3.4) ，請將取代為 `"should_heartbeat": true` 。|
 
     您可以在[上的範例 config.js](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)查看完整的範例檔案。
 

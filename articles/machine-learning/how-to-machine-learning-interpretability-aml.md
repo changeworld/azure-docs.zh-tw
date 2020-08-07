@@ -1,5 +1,5 @@
 ---
-title: 解讀 Python 中的 & 說明 ML 模型（預覽）
+title: '解讀 & 在 Python (preview 中說明 ML 模型) '
 titleSuffix: Azure Machine Learning
 description: 瞭解如何在使用 Azure Machine Learning SDK 時，取得機器學習服務模型判斷功能重要性及進行預測的說明。
 services: machine-learning
@@ -10,15 +10,15 @@ author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7f2ca2a84123d3bb7dd92a797d517a2490544efa
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 8682342d23c37d527528de0b525dbdd49a52676e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307007"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853393"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用 interpretability 套件來說明 Python 中 & 預測的 ML 模型（預覽）
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用 interpretability 套件來說明 Python (preview 中 & 預測的 ML 模型) 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -73,7 +73,7 @@ ms.locfileid: "87307007"
    * 若要讓您的說明和視覺效果更具資訊性，您可以在執行分類時選擇傳入功能名稱和輸出類別名稱。
 
    下列程式碼區塊示範如何使用、和在本機具現化說明物件 `TabularExplainer` `MimicExplainer` `PFIExplainer` 。
-   * `TabularExplainer`呼叫底下三個 SHAP explainers 的其中一個（ `TreeExplainer` 、 `DeepExplainer` 或 `KernelExplainer` ）。
+   * `TabularExplainer`在 (`TreeExplainer` 、或) 底下，呼叫三個 SHAP explainers 的其中一個 `DeepExplainer` `KernelExplainer` 。
    * `TabularExplainer`會自動為您的使用案例選取最適合的一個，但是您可以直接呼叫它的三個基礎 explainers。
 
     ```python
@@ -123,9 +123,9 @@ ms.locfileid: "87307007"
                              classes=classes)
     ```
 
-### <a name="explain-the-entire-model-behavior-global-explanation"></a>說明整個模型行為（全域說明） 
+### <a name="explain-the-entire-model-behavior-global-explanation"></a>說明 (全域說明) 的整個模型行為 
 
-請參閱下列範例，以協助您取得匯總（全域）功能的重要性值。
+請參閱下列範例，以協助您取得匯總 (全域) 功能重要性值。
 
 ```python
 
@@ -144,7 +144,7 @@ dict(zip(sorted_global_importance_names, sorted_global_importance_values))
 global_explanation.get_feature_importance_dict()
 ```
 
-### <a name="explain-an-individual-prediction-local-explanation"></a>說明個別的預測（本機說明）
+### <a name="explain-an-individual-prediction-local-explanation"></a>說明個別的預測 (當地說明) 
 藉由呼叫個別實例或實例群組的說明，取得不同資料點的個別功能重要性值。
 > [!NOTE]
 > `PFIExplainer`不支援本機說明。
@@ -300,29 +300,29 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 在您的本機 Jupyter 筆記本中下載說明之後，您可以使用 [視覺效果儀表板] 來瞭解並解讀您的模型。
 
-### <a name="understand-entire-model-behavior-global-explanation"></a>瞭解整個模型行為（全域說明） 
+### <a name="understand-entire-model-behavior-global-explanation"></a>瞭解完整的模型行為 (全域說明)  
 
 下圖提供定型模型的整體觀點，以及其預測和說明。
 
-|圖|說明|
+|圖|描述|
 |----|-----------|
 |資料探索| 顯示資料集和預測值的總覽。|
-|全球重要性|匯總個別資料點的特徵重要性值，以顯示模型的整體主要 K （可設定的 K）重要功能。 有助於瞭解基礎模型的整體行為。|
+|全球重要性|匯總個別資料點的特徵重要性值，以顯示模型的整體頂端 K (可設定的 K) 重要功能。 有助於瞭解基礎模型的整體行為。|
 |說明探索|示範功能如何影響模型預測值的變更，或預測值的機率。 顯示功能互動的影響。|
 |摘要重要性|在所有資料點上使用個別功能重要性值，以顯示每項功能對預測值的影響分佈。 您可以使用此圖表來調查功能值影響預測值的方向。
 |
 
 [![視覺效果儀表板全域](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
 
-### <a name="understand-individual-predictions-local-explanation"></a>瞭解個別預測（本機說明） 
+### <a name="understand-individual-predictions-local-explanation"></a>瞭解個別的預測 (當地說明)  
 
 您可以按一下任何一種整體繪圖中的任何個別資料點，為任何資料點載入個別功能的重要性圖。
 
-|圖|說明|
+|圖|描述|
 |----|-----------|
-|本機重要性|顯示個別預測的前 K 個（可設定的 K）重要功能。 協助說明特定資料點上基礎模型的本機行為。|
-|Perturbation 探索（如果分析）|允許變更所選資料點的功能值，並觀察對預測值所產生的變更。|
-|個別條件式預期（ICE）| 允許將功能值從最小值變更為最大值。 協助說明當功能變更時，資料點的預測如何改變。|
+|本機重要性|針對個別預測，顯示前 K 個 (可設定的 K) 重要功能。 協助說明特定資料點上基礎模型的本機行為。|
+|Perturbation 探索 (假設分析) |允許變更所選資料點的功能值，並觀察對預測值所產生的變更。|
+|個別條件式預期 (ICE) | 允許將功能值從最小值變更為最大值。 協助說明當功能變更時，資料點的預測如何改變。|
 
 [![視覺效果儀表板區域功能重要性](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
 
@@ -359,13 +359,13 @@ ExplanationDashboard(global_explanation, model, dataset=x_test)
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning studio 中的視覺效果
 
-如果您完成[遠端 interpretability](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)步驟（將產生的說明上傳至 Azure Machine Learning 執行歷程記錄），您可以在[Azure Machine Learning studio](https://ml.azure.com)中查看視覺效果儀表板。 此儀表板是上述視覺效果儀表板的較簡單版本（說明探索和 ICE 繪圖已停用，因為 studio 中沒有可執行其即時運算的作用中計算）。
+如果您完成[遠端 interpretability](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)步驟 (將產生的說明上傳至 Azure Machine Learning 執行歷程記錄) ，您可以在[Azure Machine Learning studio](https://ml.azure.com)中查看視覺效果儀表板。 此儀表板是較簡單的視覺效果儀表板版本， (說明探索和 ICE 繪圖已停用，因為在 studio 中沒有作用中的計算可以執行其即時計算) 。
 
-如果有資料集、全域和本機說明，則資料會填入所有索引標籤（Perturbation 探索和 ICE 除外）。 如果只有全域說明可供使用，則會停用 [摘要重要性] 索引標籤和所有 [本機說明] 索引標籤。
+如果有資料集、全域和本機說明，資料會填入所有索引標籤 (除了 Perturbation 探索和 ICE) 以外。 如果只有全域說明可供使用，則會停用 [摘要重要性] 索引標籤和所有 [本機說明] 索引標籤。
 
 遵循下列其中一個路徑來存取 Azure Machine Learning studio 中的視覺效果儀表板：
 
-* **實驗**窗格（預覽）
+*  (預覽) 的**實驗**窗格
   1. 在左窗格中選取 [**實驗**]，以查看您在 Azure Machine Learning 上執行的實驗清單。
   1. 選取特定的實驗，以在該實驗中查看所有執行。
   1. 依序選取 [執行] 和 [說明] 視覺效果儀表板的 [**說明**] 索引標籤。
@@ -378,7 +378,7 @@ ExplanationDashboard(global_explanation, model, dataset=x_test)
 
 ## <a name="interpretability-at-inference-time"></a>在推斷階段 Interpretability
 
-您可以部署說明和原始模型，並在推斷時使用它，針對新的任何新的時間點提供個別功能的重要性值（本機說明）。 我們也提供較輕量的評分 explainers，以在推斷階段改善 interpretability 效能。 部署較輕量計分說明的程式類似于部署模型，並包含下列步驟：
+您可以將說明與原始模型一起部署，並在推斷階段使用它來提供個別功能的重要性值 (本機說明) 新的任何新的時間點。 我們也提供較輕量的評分 explainers，以在推斷階段改善 interpretability 效能。 部署較輕量計分說明的程式類似于部署模型，並包含下列步驟：
 
 1. 建立說明物件。 例如，您可以使用 `TabularExplainer` ：
 

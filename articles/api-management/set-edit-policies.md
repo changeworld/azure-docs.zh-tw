@@ -1,6 +1,6 @@
 ---
 title: 如何設定或編輯 Azure API 管理原則 | Microsoft Docs
-description: 本主題會示範如何設定或編輯 Azure API 管理原則。
+description: 瞭解如何設定或編輯 Azure API 管理原則。 這些原則是描述輸入和輸出語句序列的 XML 檔。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 9249cb1ac64bf61b405bc3537523cc85bca3f00c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3a8d3309cdc5ddb0ae75ed6fcf0376118275b835
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252788"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848004"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何設定或編輯 Azure API 管理原則
 

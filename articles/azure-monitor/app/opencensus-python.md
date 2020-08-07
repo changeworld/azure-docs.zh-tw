@@ -6,13 +6,13 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.custom: tracking-python
-ms.openlocfilehash: eec4a46596b9cd39a43b6bb1f8969d41e99916b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-python
+ms.openlocfilehash: ac7569a48e4bab25d4db17f2fc6dd92b31afcab5
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322545"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850044"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>設定 Python 應用程式的 Azure 監視器
 
@@ -22,7 +22,7 @@ Azure 監視器可透過與 [OpenCensus](https://opencensus.io) 整合來支援 
 
 - Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 - Python 安裝。 本文使用[Python 3.7.0](https://www.python.org/downloads/release/python-370/)，雖然其他版本可能會使用次要變更。 SDK 僅支援 Python 2.7 和 3.4-v 3.7。
-- 建立 Application Insights [資源](./create-new-resource.md)。 系統會為您的資源指派自己的檢測金鑰（ikey）。
+- 建立 Application Insights [資源](./create-new-resource.md)。 系統會為您的資源 (ikey) 指派自己的檢測金鑰。
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>使用適用於 Azure 監視器的 OpenCensus Python SDK 進行檢測
 
@@ -442,13 +442,13 @@ exporter = metrics_exporter.new_metrics_exporter(
 每個匯出工具都會接受相同的引數來進行設定，並透過函式傳遞。 您可以在這裡查看每個相關的詳細資料：
 
 - `connection_string`：用來連接到您 Azure 監視器資源的連接字串。 優先于 `instrumentation_key` 。
-- `enable_standard_metrics`：用於 `AzureMetricsExporter` 。 指示匯出程式自動傳送[效能計數器](../platform/app-insights-metrics.md#performance-counters)計量給 Azure 監視器。 預設為 `True`。
+- `enable_standard_metrics`：用於 `AzureMetricsExporter` 。 指示匯出程式自動傳送[效能計數器](../platform/app-insights-metrics.md#performance-counters)計量給 Azure 監視器。 預設值為 `True`。
 - `export_interval`：用來指定匯出的頻率（以秒為單位）。
 - `instrumentation_key`：用來連接到您 Azure 監視器資源的檢測金鑰。
 - `logging_sampling_rate`：用於 `AzureLogHandler` 。 提供用於匯出記錄的取樣率 [0，1.0]。 預設為1.0。
 - `max_batch_size`：指定一次匯出的遙測大小上限。
 - `proxies`：指定要用來將資料傳送至 Azure 監視器的一系列 proxy。 如需詳細資訊，[請參閱 proxy](https://requests.readthedocs.io/en/master/user/advanced/#proxies)。
-- `storage_path`：本機儲存體資料夾所在的路徑（未傳送的遙測）。 `opencensus-ext-azure`從 v 1.0.3，預設路徑是 OS 臨時目錄 + `opencensus-python`  +  `your-ikey` 。 在 v 1.0.3 之前，預設路徑是 $USER + `.opencensus`  +  `.azure`  +  `python-file-name` 。
+- `storage_path`：本機儲存體資料夾所在的路徑， (未傳送的遙測) 。 `opencensus-ext-azure`從 v 1.0.3，預設路徑是 OS 臨時目錄 + `opencensus-python`  +  `your-ikey` 。 在 v 1.0.3 之前，預設路徑是 $USER + `.opencensus`  +  `.azure`  +  `python-file-name` 。
 
 ## <a name="view-your-data-with-queries"></a>使用查詢來檢視資料
 

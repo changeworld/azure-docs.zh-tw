@@ -2,18 +2,18 @@
 title: 在 Azure AD Azure API for FHIR 中註冊公用用戶端應用程式
 description: 本文說明如何在 Azure Active Directory 中註冊公用用戶端應用程式，以準備在 Azure 中部署 FHIR API。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 5aa9e5a33dbe66e3ebd787decfa3a520454fc6f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: df1e6159baafc11c4b73c33feaf936784c05469e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84870998"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853036"
 ---
 # <a name="register-a-public-client-application-in-azure-active-directory"></a>在 Azure Active Directory 中註冊公用用戶端應用程式
 
@@ -45,7 +45,7 @@ ms.locfileid: "84870998"
 
 1. 開啟**API 許可權**。
 
-    如果您使用 Azure API for FHIR，您會藉由搜尋 [**我的組織使用的 api** ] 底下的 [Azure 醫療保健 api]，將許可權新增至 Azure 醫療保健 api （下圖）。
+    如果您使用 Azure API for FHIR，您會在 [**我的組織 (使用的 api** ] 底下的 [api] 下搜尋 azure 醫療保健 api，以新增 Azure 醫療保健 api 的許可權) 。
     
     如果您參考不同的資源應用程式，請選取您先前在 [**我的 api**] 底下建立的[FHIR API 資源應用程式註冊](register-resource-azure-ad-client-app.md)：
 

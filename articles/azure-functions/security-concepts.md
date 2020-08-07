@@ -3,12 +3,12 @@ title: 保護 Azure Functions
 description: 了解如何讓您的函式程式碼更安全地在 Azure 中執行，以免遭受常見的攻擊。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: e0c5036681aace103ea69d1e9cc73e96dc30821f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9bec32c4c3d8005ef0d3c9fc5732785a5fa19a0c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502676"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850707"
 ---
 # <a name="securing-azure-functions"></a>保護 Azure Functions
 
@@ -71,6 +71,18 @@ Functions 也會與 Azure 監視器記錄整合，讓您能夠將函式應用程
 
 若要深入了解存取金鑰，請參閱 [HTTP 觸發程序繫結文章](functions-bindings-http-webhook-trigger.md#obtaining-keys)。
 
+
+#### <a name="secret-repositories"></a>秘密存放庫
+
+根據預設，金鑰會儲存在設定所提供之帳戶的 Blob 儲存體容器中 `AzureWebJobsStorage` 。 您可以使用特定的應用程式設定來覆寫此行為，並將金鑰儲存在不同的位置。
+
+|Location  |設定 | 值 | 描述  |
+|---------|---------|---------|---------|
+|不同的儲存體帳戶     |  `AzureWebJobsSecretStorageSas`       | `<BLOB_SAS_URL` | 根據提供的 SAS URL，將金鑰儲存在第二個儲存體帳戶的 Blob 儲存體中。 金鑰會先經過加密，再使用您的函式應用程式特有的秘密加以儲存。 |
+|檔案系統   | `AzureWebJobsSecretStorageType`   |  `files`       | 金鑰會保存在檔案系統上，並在使用您的函式應用程式特有的秘密儲存之前加密。 |
+|Azure 金鑰保存庫  | `AzureWebJobsSecretStorageType`<br/>`AzureWebJobsSecretStorageKeyVaultName` | `keyvault`<br/>`<VAULT_NAME>` | 保存庫必須具有對應至主機資源之系統指派受控識別的存取原則。 存取原則應將下列秘密許可權授與識別： `Get` 、 `Set` 、 `List` 和 `Delete` 。 <br/>在本機執行時，會使用開發人員身分識別，而且設定必須位於檔案中的[local.settings.js](functions-run-local.md#local-settings-file)。 | 
+|Kubernetes 秘密  |`AzureWebJobsSecretStorageType`<br/>`AzureWebJobsKubernetesSecretName` (選擇性) | `kubernetes`<br/>`<SECRETS_RESOURCE>` | 只有在 Kubernetes 中執行函數執行時間時才支援。 若 `AzureWebJobsKubernetesSecretName` 未設定，則會將存放庫視為唯讀。 在此情況下，必須在部署前產生值。 當部署至 Kubernetes 時，Azure Functions Core Tools 會自動產生值。|
+
 ### <a name="authenticationauthorization"></a>驗證/授權
 
 雖然函式金鑰可以針對不必要的存取提供一些緩和措施，但真正保護函式端點的唯一方式，就是對存取您函式的用戶端實作正面驗證。 接著，您可以根據身分識別進行授權決策。  
@@ -83,7 +95,7 @@ Functions 也會與 Azure 監視器記錄整合，讓您能夠將函式應用程
 
 #### <a name="user-management-permissions"></a>使用者管理權限
 
-函數支援內建的[Azure 角色型存取控制（AZURE RBAC）](../role-based-access-control/overview.md)。 函式支援的 Azure 角色為[參與者](../role-based-access-control/built-in-roles.md#contributor)、[擁有](../role-based-access-control/built-in-roles.md#owner)者和[讀者](../role-based-access-control/built-in-roles.md#owner)。 
+函數支援內建的[azure 角色型存取控制， (AZURE RBAC) ](../role-based-access-control/overview.md)。 函式支援的 Azure 角色為[參與者](../role-based-access-control/built-in-roles.md#contributor)、[擁有](../role-based-access-control/built-in-roles.md#owner)者和[讀者](../role-based-access-control/built-in-roles.md#owner)。 
 
 權限會在函式應用層級生效。 您必須具備參與者角色，才能執行大部分函式應用程式層級的工作。 只有擁有者角色可以刪除函式應用程式。 
 

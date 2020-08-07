@@ -1,18 +1,18 @@
 ---
-title: 設定 Azure API for FHIR 的本機角色型存取控制（本機 RBAC）
+title: 針對 Azure API for FHIR (本機 RBAC) 設定本機角色型存取控制
 description: 本文說明如何將 Azure API for FHIR 設定為使用資料平面的外部 Azure AD 租使用者
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
-ms.author: mihansen
-ms.openlocfilehash: 11e7d31385140206070e3b415224ccca725d110f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.author: matjazl
+ms.openlocfilehash: c62593251cb0e19c91d1c4877d1b33fe407ebd06
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446902"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847001"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>設定 FHIR 的本機 RBAC 
 
@@ -65,7 +65,7 @@ Azure API for FHIR 將會快取最多5分鐘的決策。 如果您授與使用�
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已瞭解如何使用外部（次要） Azure Active Directory 租使用者來指派 FHIR 資料平面存取權。 接下來，請瞭解 Azure API for FHIR 的其他設定：
+在本文中，您已瞭解如何使用外部 (次要) Azure Active Directory 租使用者來指派 FHIR 資料平面存取權。 接下來，請瞭解 Azure API for FHIR 的其他設定：
  
 >[!div class="nextstepaction"]
 >[其他設定 Azure API for FHIR](azure-api-for-fhir-additional-settings.md)

@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.custom: tracking-python
-ms.openlocfilehash: c5f78535a3bd5ab93d3020d14a6242257c492297
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-python
+ms.openlocfilehash: abfd5e104bd4854781a0d3c9d08544506279518a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321287"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850078"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>使用 OpenCensus Python 追蹤相依性
 
@@ -21,7 +21,7 @@ ms.locfileid: "87321287"
 
 ## <a name="in-process-dependencies"></a>同進程相依性
 
-OpenCensus 適用于 Azure 監視器的 Python SDK 可讓您傳送「同進程」相依性遙測（應用程式內所發生的資訊和邏輯）。 同進程相依性的欄位會 `type` 和 `INPROC` 分析相同。
+OpenCensus 適用于 Azure 監視器的 Python SDK 可讓您傳送「同進程」相依性遙測， (在應用程式) 中發生的資訊和邏輯。 同進程相依性的欄位會 `type` 和 `INPROC` 分析相同。
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -173,6 +173,6 @@ config_integration.trace_integrations(['sqlalchemy'])
 * [應用程式對應](./app-map.md)
 * [可用性](./monitor-web-app-availability.md)
 * [搜尋](./diagnostic-search.md)
-* [記錄（分析）查詢](../log-query/log-query-overview.md)
+* [記錄 (分析) 查詢](../log-query/log-query-overview.md)
 * [交易診斷](./transaction-diagnostics.md)
 

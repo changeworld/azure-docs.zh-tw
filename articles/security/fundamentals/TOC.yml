@@ -58,6 +58,8 @@
       href: network-best-practices.md
     - name: DDoS保護
       href: ddos-best-practices.md
+    - name: DDoS 保護安全性基準
+      href: ddos-protection-security-baseline.md
     - name: 懸空 DNS 和子網域接管
       href: subdomain-takeover.md
     - name: 安全混合式網路架構

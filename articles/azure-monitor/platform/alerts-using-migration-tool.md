@@ -6,19 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: ab5c16995a2d2bad6e44f0f9d1187ca3d66be1b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5e811e487856ea38f96b669ccb12cabda655a8cd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81114257"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852118"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>使用自發的遷移工具來遷移傳統警示規則
 
-如[先前所宣佈](monitoring-classic-retirement.md)，Azure 監視器中的傳統警示將于2019年9月淘汰（原本是在2019年7月）。 Azure 入口網站提供遷移工具給使用傳統警示規則的客戶，以及想要自行觸發遷移的使用者。 本文說明如何使用遷移工具，在2019年9月開始自動遷移之前，先主動遷移傳統警示規則。
-
-> [!NOTE]
-> 由於遷移工具的推出延遲，傳統警示遷移的淘汰日期已從2019年6月30日最初宣佈的日期[延長到2019年8月31日](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/)。
+如[先前所宣佈](monitoring-classic-retirement.md)，Azure 監視器中的傳統警示已淘汰，但仍受限於尚未支援新警示的資源。 Azure 入口網站提供遷移工具給使用傳統警示規則，而且想要自行觸發遷移的客戶。 本文說明如何使用該遷移工具，這也會用於剩餘的警示，等待進一步的公告。
 
 ## <a name="benefits-of-new-alerts"></a>新警示的優點
 
@@ -27,9 +24,9 @@ ms.locfileid: "81114257"
 - 您可以針對[許多 Azure 服務](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)，針對各種多維度計量發出警示。
 - 新的計量警示支援[多資源警示規則](alerts-metric-overview.md#monitoring-at-scale-using-metric-alerts-in-azure-monitor)，可大幅降低管理許多規則的額外負荷。
 - 整合通知機制，支援：
-  - [動作群組](action-groups.md)，這是適用于所有新警示類型（度量、記錄和活動記錄）的模組化通知機制。
+  - [動作群組](action-groups.md)，這是適用于所有新警示類型的模組化通知機制， (計量、記錄和活動記錄) 。
   - 新的通知機制，像是 SMS、voice 和 ITSM 連接器。
-- [整合警示體驗](alerts-overview.md)會將不同信號（計量、記錄和活動記錄）上的所有警示帶入一個位置。
+- [整合警示體驗](alerts-overview.md)會將不同信號的所有警示（ (計量、記錄和活動記錄) ）帶入一個位置。
 
 ## <a name="before-you-migrate"></a>在您遷移之前
 
@@ -37,7 +34,7 @@ ms.locfileid: "81114257"
 
 - 通知承載格式和用來建立和管理新警示規則的 Api，與傳統警示規則的不同，因為它們支援更多的功能。 [瞭解如何準備進行遷移](alerts-prepare-migration.md)。
 
-- 某些傳統警示規則無法使用工具來遷移。 [瞭解哪些規則無法遷移，以及要如何處理它們](alerts-understand-migration.md#classic-alert-rules-that-will-not-be-migrated)。
+- 某些傳統警示規則無法使用工具來遷移。 [瞭解哪些規則無法遷移，以及要如何處理它們](alerts-understand-migration.md#manually-migrating-classic-alerts-to-newer-alerts)。
 
     > [!NOTE]
     > 遷移程式不會影響傳統警示規則的評估。 他們會繼續執行並傳送警示，直到遷移完畢，新的警示規則才會生效。
