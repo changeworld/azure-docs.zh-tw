@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 2d062ea4f38742129d44be0e2b7ff51fe3ad8dd1
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 4d0ed9826326256e3b91815746e43d34b6934ba0
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562424"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985867"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>瞭解 Azure 數位 Twins 中的對應項模型
 
@@ -204,14 +204,7 @@ DTDL 模型介面可以包含零個、一個或多個下欄欄位：
 
 ## <a name="validating-models"></a>驗證模型
 
-> [!TIP]
-> 建議您先離線驗證您的模型，再將其上傳至您的 Azure 數位 Twins 實例。
-
-有一種與語言無關的範例可用來驗證模型檔，以確保 DTDL 正確無誤。 其位於這裡： [**DTDL 驗證程式範例**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)。
-
-DTDL 驗證程式範例是以 .NET DTDL 剖析器程式庫為基礎，可在 NuGet 上作為用戶端程式庫：[**選取**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 您也可以直接使用程式庫來設計自己的驗證解決方案。 使用剖析器程式庫時，請務必使用與 Azure 數位 Twins 正在執行之版本相容的版本。 在預覽期間，這是版本*3.7.0*。
-
-若要深入瞭解剖析器程式庫，包括使用範例，請閱讀[*如何：剖析和驗證模型*](how-to-use-parser.md)。
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

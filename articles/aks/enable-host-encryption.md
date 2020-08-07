@@ -1,19 +1,19 @@
 ---
-title: 在 Azure Kubernetes Service 上啟用主機型加密（AKS）
-description: 瞭解如何在 Azure Kubernetes Service （AKS）叢集中設定主機型加密
+title: '在 Azure Kubernetes Service (AKS 上啟用主機型加密) '
+description: 瞭解如何在 Azure Kubernetes Service (AKS) cluster 中設定主機型加密
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: d2b34d8c3090eb6ae3f1445ff1fc663d90367977
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4b5deeec0b76520952345e9b03135fa094a1f78e
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517717"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986860"
 ---
-# <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service （AKS）上以主機為基礎的加密（預覽）
+# <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS)  (preview) 上以主機為基礎的加密
 
-使用以主機為基礎的加密，儲存在 AKS 代理程式節點 vm 的 VM 主機上的資料會在待用時加密，並將流量加密至儲存體服務。 這表示暫存磁片會在待用時使用平臺管理的金鑰進行加密。 OS 和資料磁片的快取會以平臺管理的金鑰或客戶管理的金鑰進行待用加密，視這些磁片上設定的加密類型而定。 根據預設，使用 AKS 時，OS 和資料磁片會使用平臺管理的金鑰進行待用加密，這表示這些磁片的快取也預設會以平臺管理的金鑰加密。  在 Azure Kubernetes Service 中，您可以遵循[攜帶您自己的金鑰（BYOK）與 Azure 磁片](azure-disk-customer-managed-keys.md)來指定自己的受控金鑰。 這些磁片的快取也會使用您在此步驟中指定的金鑰進行加密。
+使用以主機為基礎的加密，儲存在 AKS 代理程式節點 vm 的 VM 主機上的資料會在待用時加密，並將流量加密至儲存體服務。 這表示暫存磁片會在待用時使用平臺管理的金鑰進行加密。 OS 和資料磁片的快取會以平臺管理的金鑰或客戶管理的金鑰進行待用加密，視這些磁片上設定的加密類型而定。 根據預設，使用 AKS 時，OS 和資料磁片會使用平臺管理的金鑰進行待用加密，這表示這些磁片的快取也預設會以平臺管理的金鑰加密。  您可以遵循將[您自己的金鑰放在 Azure Kubernetes Service 中的 Azure 磁片，](azure-disk-customer-managed-keys.md)來指定您自己的受控金鑰 (BYOK) 。 這些磁片的快取也會使用您在此步驟中指定的金鑰進行加密。
 
 
 ## <a name="before-you-begin"></a>開始之前
@@ -23,7 +23,7 @@ ms.locfileid: "86517717"
 > [!NOTE]
 > 以主機為基礎的加密可在支援 Azure 受控磁片之伺服器端加密的[azure 區域][supported-regions]中取得，而且只適用于特定[支援的 VM 大小][supported-sizes]。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 - 請確定您已 `aks-preview` 安裝 CLI 擴充功能 v 0.4.55 或更新版本
 - 請確定您已 `EncryptionAtHost` 啟用 [功能] 旗標 `Microsoft.Compute` 。
@@ -57,11 +57,7 @@ az provider register --namespace Microsoft.Compute
 az provider register --namespace Microsoft.ContainerService
 ```
 
-> [!IMPORTANT]
-> AKS 預覽功能是自助加入宣告。 預覽會以「原樣」和「可用」的方式提供，並從服務等級協定中排除，並享有有限擔保。 AKS 預覽的部分是由客戶支援，以最大的方式來涵蓋。 因此，這些功能並不適用于生產環境使用。 如需其他資訊，請參閱下列支援文章：
->
-> - [AKS 支援原則](support-policies.md)
-> - [Azure 支援常見問題集](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 延伸模組
 
@@ -79,9 +75,9 @@ az extension update --name aks-preview
 
 - 只能在新的節點集區或新叢集上啟用。
 - 只能在支援 Azure 受控磁片之伺服器端加密的[azure 區域][supported-regions]中啟用，而且只能使用特定[支援的 VM 大小][supported-sizes]。
-- 需要以虛擬機器擴展集（VMSS）為基礎的 AKS 叢集和節點集區做為*VM 集合類型*。
+- 需要根據虛擬機器擴展集 (VMSS) 作為*VM 集類型*的 AKS 叢集和節點集區。
 
-## <a name="use-host-based-encryption-on-new-clusters-preview"></a>在新叢集上使用以主機為基礎的加密（預覽）
+## <a name="use-host-based-encryption-on-new-clusters-preview"></a>在新叢集上使用以主機為基礎的加密 (預覽) 
 
 設定叢集代理程式節點，以在建立叢集時使用以主機為基礎的加密。 使用 `--aks-custom-headers` 旗標來設定 `EnableEncryptionAtHost` 標頭。
 
@@ -91,7 +87,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D
 
 如果您想要建立沒有主機型加密的叢集，您可以省略自訂參數來執行此動作 `--aks-custom-headers` 。
 
-## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>在現有叢集上使用以主機為基礎的加密（預覽）
+## <a name="use-host-based-encryption-on-existing-clusters-preview"></a>在現有的叢集上使用以主機為基礎的加密 (預覽) 
 
 您可以藉由將新的節點集區新增至您的叢集，在現有叢集上啟用主機型加密。 設定新的節點集區，以使用以主機為基礎的加密（使用旗標） `--aks-custom-headers` 。
 

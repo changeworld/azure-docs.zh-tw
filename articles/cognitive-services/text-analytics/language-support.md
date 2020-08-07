@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 07/29/2020
 ms.author: aahi
-ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: b3cec783b43d0169a3d0d56ca040e1397701102e
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413326"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986163"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>文字分析 API v3 語言支援 
 
@@ -25,7 +25,7 @@ ms.locfileid: "85413326"
 
 #### <a name="sentiment-analysis"></a>[情感分析](#tab/sentiment-analysis)
 
-| Language              | 語言代碼 | v2 支援 | v3 支援 | 起始 v3 模型版本： |              注意 |
+| Language              | 語言代碼 | v2 支援 | v3 支援 | 起始 v3 模型版本： |              附註 |
 |:----------------------|:-------------:|:----------:|:----------:|:--------------------------:|-------------------:|
 | 簡體中文    |   `zh-hans`   |     ✓      |     ✓      |         2019-10-01         | 也接受 `zh` |
 | 繁體中文   |   `zh-hant`   |            |     ✓      |         2019-10-01         |                    |
@@ -47,20 +47,20 @@ ms.locfileid: "85413326"
 | 瑞典文               |     `sv`      |     ✓      |            |                            |                    |
 | 土耳其文               |     `tr`      |     ✓      |            |                            |                    |
 
-### <a name="opinion-mining-v31-preview-only"></a>意見挖掘（僅限 3.1-僅預覽）
+### <a name="opinion-mining-v31-preview-only"></a>意見挖掘 (3.1-僅限預覽) 
 
-| Language              | 語言代碼 | 從 v3 模型版本開始： |              注意 |
+| Language              | 語言代碼 | 從 v3 模型版本開始： |              附註 |
 |:----------------------|:-------------:|:------------------------------------:|-------------------:|
 | 英文               |     `en`      |              2020-04-01              |                    |
 
 
-#### <a name="named-entity-recognition-ner"></a>[具名實體辨識 (NER)](#tab/named-entity-recognition)
+#### <a name="named-entity-recognition-ner"></a>[命名實體辨識 (NER) ](#tab/named-entity-recognition)
 
 > [!NOTE]
 > * NER v3 目前僅支援英文和西班牙文語言。 如果您使用不同的語言呼叫 NER v3，則 API 會傳回2.1 版的結果，前提是版本2.1 中支援該語言。
 > * v 2.1 只會針對英文、簡體中文、法文、德文和西班牙文等語言，傳回一組完整的可用實體。  針對其他支援的語言，會傳回「人員」、「位置」和「組織」實體。
 
-| Language               | 語言代碼 | 2.1 版支援 | v3 支援 | 從 v3 模型版本開始： |       注意        |
+| Language               | 語言代碼 | 2.1 版支援 | v3 支援 | 從 v3 模型版本開始： |       附註        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | 阿拉伯文                |     `ar`      |     ✓      |            |                                 |                    |
 | 捷克文                 |     `cs`      |     ✓      |            |                                 |                    |
@@ -88,7 +88,7 @@ ms.locfileid: "85413326"
 
 #### <a name="key-phrase-extraction"></a>[關鍵片語擷取](#tab/key-phrase-extraction)
 
-| Language              | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： |       注意        |
+| Language              | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： |       附註        |
 |:----------------------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:------------------:|
 | 荷蘭文                 |     `nl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | 英文               |     `en`      |     ✓      |     ✓      |                2019-10-01                 |                    |
@@ -108,7 +108,7 @@ ms.locfileid: "85413326"
 
 #### <a name="entity-linking"></a>[實體連結](#tab/entity-linking)
 
-| Language | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： | 注意 |
+| Language | 語言代碼 | v2 支援 | v3 支援 | 從 v3 模型版本開始提供： | 附註 |
 |:---------|:-------------:|:----------:|:----------:|:-----------------------------------------:|:-----:|
 | 英文  |     `en`      |     ✓      |     ✓      |                2019-10-01                 |       |
 | 西班牙文  |     `es`      |     ✓      |     ✓      |                2019-10-01                 |       |

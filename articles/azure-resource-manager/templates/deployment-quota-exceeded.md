@@ -2,26 +2,33 @@
 title: 已超過部署配額
 description: 描述如何解決資源群組歷程記錄中有超過800個部署的錯誤。
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: 1b0c3de6007964b487a13e71cd43bd984cd970f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.openlocfilehash: 8996d7817eea2f8daf44fbc9b4416c884b05940f
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391174"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987047"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>解決部署計數超過800的錯誤
 
 在其部署歷程記錄中，每個資源群組都限制為800個部署。 本文說明當部署失敗時所收到的錯誤，因為它會超過允許的800部署。 若要解決此錯誤，請從資源群組歷程記錄中刪除部署。 從歷程記錄中刪除部署，並不會影響任何已部署的資源。
 
-> [!NOTE]
-> Azure Resource Manager 很快就會在您接近限制時，自動從歷程記錄中刪除部署。 如果您選擇不自動刪除，可能還是會看到此錯誤。 如需詳細資訊，請參閱[從部署歷程記錄自動刪除](deployment-history-deletions.md)。
+Azure Resource Manager 會在您接近限制時，自動從您的歷程記錄中刪除部署。 您可能還是會因為下列其中一個原因而看到此錯誤：
+
+1. 您在資源群組上有 CanNotDelete 鎖定，以防止從部署歷程記錄中刪除。
+1. 您已選擇不自動刪除。
+1. 您有大量的部署同時執行，而自動刪除的處理速度不夠快，無法減少總次數。
+
+如需移除鎖定或選擇自動刪除的相關資訊，請參閱[從部署歷程記錄自動刪除](deployment-history-deletions.md)。
+
+本文說明如何以手動方式從歷程記錄中刪除部署。
 
 ## <a name="symptom"></a>徵狀
 
 在部署期間，您會收到錯誤，指出目前的部署將會超過800部署的配額。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 ### <a name="azure-cli"></a>Azure CLI
 

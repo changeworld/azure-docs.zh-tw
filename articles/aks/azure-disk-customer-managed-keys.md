@@ -1,17 +1,17 @@
 ---
-title: 在 Azure Kubernetes Service （AKS）中使用客戶管理的金鑰來加密 Azure 磁片
-description: 攜帶您自己的金鑰（BYOK）來加密 AKS OS 和資料磁片。
+title: '在 Azure Kubernetes Service (AKS 中使用客戶管理的金鑰來加密 Azure 磁片) '
+description: 攜帶您自己的金鑰 (BYOK) ，以加密 AKS OS 和資料磁片。
 services: container-service
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: f0b96b3f78adf4a7efb1d43626a5aaf82a5b5d43
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d4f7842330862013644cf961f5bd8e079d097069
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499614"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985833"
 ---
-# <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中攜帶您自己的金鑰（BYOK）與 Azure 磁片
+# <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>使用 Azure Kubernetes Service (AKS 中的 Azure 磁片，讓您自己的金鑰 (BYOK) ) 
 
 Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設，資料是以使用 Microsoft 管理的金鑰加密。 若要進一步控制加密金鑰，您可以為 AKS 叢集的 OS 和資料磁片提供[客戶管理的金鑰][customer-managed-keys]，以用於待用加密。
 
@@ -23,11 +23,7 @@ Azure 儲存體會加密待用儲存體帳戶中的所有資料。 根據預設�
 
 * 您需要 Azure CLI version 2.0.79 或更新版本，以及 aks-preview 0.4.26 擴充功能
 
-> [!IMPORTANT]
-> AKS 預覽功能是自助加入宣告。 預覽會以「原樣」和「可用」的方式提供，並從服務等級協定中排除，並享有有限擔保。 AKS 預覽的部分是由客戶支援，以最大的方式來涵蓋。 因此，這些功能並不適用于生產環境使用。 如需其他資訊，請參閱下列支援文章：
->
-> * [AKS 支援原則](support-policies.md)
-> * [Azure 支援常見問題集](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>安裝最新的 AKS CLI preview 擴充功能
 
@@ -107,7 +103,7 @@ az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset
 
 將新的節點集區新增至上面建立的叢集時，會使用在建立期間提供的客戶管理金鑰來加密 OS 磁片。
 
-## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>加密您的 AKS 叢集資料磁片（選擇性）
+## <a name="encrypt-your-aks-cluster-data-diskoptional"></a> (選擇性) 將您的 AKS 叢集資料磁片加密
 如果未針對1.17.2 的資料磁片提供金鑰，則 OS 磁片加密金鑰將用來加密資料磁片，而且您也可以使用其他金鑰將 AKS 資料磁片加密。
 
 > [!IMPORTANT]

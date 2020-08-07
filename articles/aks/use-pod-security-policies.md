@@ -1,32 +1,28 @@
 ---
-title: 在 Azure Kubernetes Service 中使用 pod 安全性原則（AKS）
-description: 瞭解如何在 Azure Kubernetes Service 中使用 PodSecurityPolicy 控制 pod 許可（AKS）
+title: '在 Azure Kubernetes Service (AKS 中使用 pod 安全性原則) '
+description: '瞭解如何在 Azure Kubernetes Service (AKS 中使用 PodSecurityPolicy 控制 pod 許可) '
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: b5e9ec19392056115ae739d40c429d93d6ac810e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c8ec61666942fc74dcb64c03c0e3f06986e8c37
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015573"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987268"
 ---
-# <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>預覽-在 Azure Kubernetes Service 中使用 pod 安全性原則保護您的叢集（AKS）
+# <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>預覽-在 Azure Kubernetes Service (AKS 中使用 pod 安全性原則來保護您的叢集) 
 
 > [!WARNING]
-> **本檔中所述的「pod 安全性原則（預覽）」功能已設定為淘汰，在2020年10月15日之後將不再提供使用**，以[Azure 原則 AKS](use-pod-security-on-azure-policy.md)。
+> **本檔所述的功能 (preview) 的 pod 安全性原則已設定為淘汰，在2020年10月15日之後將不再提供使用**，以利[AKS 的 Azure 原則](use-pod-security-on-azure-policy.md)。
 >
-> 在 pod 安全性原則（預覽）淘汰之後，您必須在任何現有的叢集上停用此功能，並使用已被取代的功能來執行未來的叢集升級，並留在 Azure 支援中。
+> 在 pod 安全性原則 (預覽) 已淘汰之後，您必須使用已淘汰的功能在任何現有的叢集上停用此功能，以執行未來的叢集升級並保持在 Azure 支援內。
 >
-> 強烈建議您開始使用 Azure 原則 for AKS 測試案例，這會提供內建原則來保護 pod 和內建計畫，以對應至 pod 安全性原則。 按一下這裡以瞭解如何[從 pod 安全性原則（預覽）遷移至 Azure 原則](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)。
+> 強烈建議您開始使用 Azure 原則 for AKS 測試案例，這會提供內建原則來保護 pod 和內建計畫，以對應至 pod 安全性原則。 按一下這裡以瞭解如何[從 pod 安全性原則 (preview) 遷移至 Azure 原則](use-pod-security-on-azure-policy.md#migrate-from-kubernetes-pod-security-policy-to-azure-policy)。
 
 若要改善 AKS 叢集的安全性，您可以限制可以排程的 pod。 要求您不允許之資源的 pod 無法在 AKS 叢集中執行。 您可以使用 pod 安全性原則來定義此存取權。 本文說明如何使用 pod 安全性原則來限制 AKS 中的 pod 部署。
 
-> [!IMPORTANT]
-> AKS 預覽功能是自助加入宣告。 預覽會以「原樣」和「可用」的方式提供，並從服務等級協定中排除，並享有有限擔保。 AKS 預覽的部分是由客戶支援，以最大的方式來涵蓋。 因此，這些功能並不適用于生產環境使用。 如需其他資訊，請參閱下列支援文章：
->
-> * [AKS 支援原則][aks-support-policies]
-> * [Azure 支援常見問題集][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -426,7 +422,7 @@ kubectl delete -f psp-deny-privileged.yaml
 kubectl delete namespace psp-aks
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 本文說明如何建立 pod 安全性原則，以防止使用特殊許可權存取。 原則可以強制執行許多功能，例如磁片區類型或 RunAs 使用者。 如需可用選項的詳細資訊，請參閱[Kubernetes pod 安全性原則參考][kubernetes-policy-reference]檔。
 

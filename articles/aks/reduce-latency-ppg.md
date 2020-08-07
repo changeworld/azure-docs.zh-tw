@@ -1,24 +1,24 @@
 ---
-title: 使用鄰近放置群組來減少 Azure Kubernetes Service （AKS）叢集的延遲
+title: 使用鄰近放置群組來減少 Azure Kubernetes Service (AKS) 叢集的延遲
 description: 瞭解如何使用鄰近放置群組來減少 AKS 叢集工作負載的延遲。
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 07/10/2020
 author: jluk
-ms.openlocfilehash: f6cb370d258a79420b03baf17ec964b091cdebb7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056585"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986707"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>使用鄰近放置群組來減少延遲（預覽）
+# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>使用 (預覽) 的鄰近放置群組來減少延遲
 
 > [!Note]
 > 在 AKS 上使用鄰近放置群組時，共置僅適用于代理程式節點。 節點對節點和對應的主控 pod 至 pod 的延遲已獲得改善。 共置不會影響叢集控制平面的位置。
 
-在 Azure 中部署您的應用程式時，將虛擬機器（VM）實例分散到不同區域或可用性區域會建立網路延遲，這可能會影響應用程式的整體效能。 鄰近放置群組是一種邏輯群組，用來確保 Azure 計算資源實際位於彼此接近的位置。 某些應用程式（例如遊戲、工程模擬和高頻率交易（HFT））需要快速完成的低延遲和工作。 針對高效能運算（HPC）案例，例如，請考慮針對您的叢集節點集區使用[鄰近放置群組](../virtual-machines/linux/co-location.md#proximity-placement-groups)（PPG）。
+在 Azure 中部署您的應用程式時，將虛擬機器 (VM) 實例分散到不同區域或可用性區域會建立網路延遲，這可能會影響應用程式的整體效能。 鄰近放置群組是一種邏輯群組，用來確保 Azure 計算資源實際位於彼此接近的位置。 某些應用程式（例如遊戲、工程模擬和高頻率交易） (HFT) 需要快速完成的低延遲和工作。 針對高效能運算 (HPC) 案例（例如這些情況），請考慮為叢集的節點集區使用[鄰近放置群組](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) 。
 
 ## <a name="limitations"></a>限制
 
@@ -26,11 +26,7 @@ ms.locfileid: "87056585"
 * 節點集區必須使用虛擬機器擴展集來關聯鄰近放置群組。
 * 節點集區只能在節點集區建立時間建立鄰近放置群組的關聯。
 
-> [!IMPORTANT]
-> AKS preview 功能可在自助服務上自行選擇。 預覽會以「原樣」和「可用」的方式提供，並從服務等級協定中排除，並享有有限擔保。 AKS 預覽的部分是由客戶支援，以最大的方式來涵蓋。 因此，這些功能並不適用于生產環境使用。 如需詳細資訊，請參閱下列支援文章：
->
-> - [AKS 支援原則](support-policies.md)
-> - [Azure 支援常見問題集](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -67,7 +63,7 @@ az extension update --name aks-preview
 
 ## <a name="node-pools-and-proximity-placement-groups"></a>節點集區和鄰近放置群組
 
-您使用鄰近放置群組部署的第一個資源會附加至特定的資料中心。 使用相同的鄰近放置群組部署的其他資源，會共置於相同的資料中心。 當使用鄰近放置群組的所有資源都已停止（解除配置）或刪除之後，就不再附加。
+您使用鄰近放置群組部署的第一個資源會附加至特定的資料中心。 使用相同的鄰近放置群組部署的其他資源，會共置於相同的資料中心。 一旦使用鄰近放置群組的所有資源都已停止 (解除配置) 或刪除，就不再附加。
 
 * 許多節點集區可以與單一的鄰近放置群組建立關聯。
 * 節點集區只能與單一鄰近放置群組相關聯。
@@ -147,7 +143,7 @@ az aks nodepool add \
     --ppg myPPGResourceID
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 若要刪除叢集，請使用 [`az group delete`][az-group-delete] 命令來刪除 AKS 資源群組：
 
@@ -155,7 +151,7 @@ az aks nodepool add \
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 深入瞭解[鄰近放置群組][proximity-placement-groups]。
 

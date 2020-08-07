@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 337ecc6069211942a809f2bf3d793c5bccc08387
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277225"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986363"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>使用 Microsoft Graph 安全性和 Azure Logic Apps 整合安全性作業，改善威脅防護功能
 
@@ -68,7 +68,7 @@ ms.locfileid: "87277225"
 
    -或-
 
-   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取顯示的加號（+），然後選取 [**新增動作**]。
+   若要在步驟之間新增動作，將指標移至步驟之間的箭號。 選取顯示的加號 (+) ，然後選取 [**新增動作**]。
 
 1. 在搜尋方塊中，輸入「Microsoft Graph 安全性」作為篩選條件。 從 [動作] 清單中，選取您想要的動作。
 
@@ -126,7 +126,7 @@ ms.locfileid: "87277225"
 
 Microsoft Graph 支援[*訂閱*](/graph/api/resources/subscription)或 [*Webhook*](/graph/api/resources/webhooks)。 若要取得、更新或刪除訂閱，請將 [Microsoft Graph 支援的 ODATA 查詢參數](/graph/query-parameters)提供給 Microsoft Graph 實體，並在 ODATA 查詢後包含 `security/alerts`。 「請勿包含」** 基底 URL，例如：`https://graph.microsoft.com/v1.0`。 相反地，請使用此範例的格式：
 
-`security/alerts?$filter=status eq 'New'`
+`security/alerts?$filter=status eq 'NewAlert'`
 
 | 動作 | 描述 |
 |--------|-------------|

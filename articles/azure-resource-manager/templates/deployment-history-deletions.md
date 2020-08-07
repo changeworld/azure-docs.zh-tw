@@ -2,24 +2,22 @@
 title: 部署歷程記錄刪除
 description: 描述 Azure Resource Manager 如何自動從部署歷程記錄中刪除部署。 當歷程記錄接近超過800的限制時，就會刪除部署。
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/07/2020
+ms.openlocfilehash: 736a25a3c73f8f4c70c5fb6c686fa2b8bb86666d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248971"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986503"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>從部署歷程記錄自動刪除
 
 每次部署範本時，部署的相關資訊都會寫入至部署歷程記錄。 在其部署歷程記錄中，每個資源群組都限制為800個部署。
 
-Azure Resource Manager 很快就會在您接近限制時，自動從歷程記錄中刪除部署。 自動刪除是過去行為的變更。 之前，您必須手動從部署歷程記錄中刪除部署，以避免收到錯誤。 **這項功能尚未新增至 Azure。如果您想要退出，我們會通知您這項即將進行的變更。**
+Azure Resource Manager 會在您接近限制時，自動從您的歷程記錄中刪除部署。 自動刪除是過去行為的變更。 之前，您必須手動從部署歷程記錄中刪除部署，以避免收到錯誤。 **這種變更已于2020年8月6日執行。**
 
 > [!NOTE]
 > 從歷程記錄中刪除部署，並不會影響任何已部署的資源。
->
-> 如果您在資源群組上有[CanNotDelete 鎖定](../management/lock-resources.md)，就無法刪除該資源群組的部署。 您必須移除鎖定，才能利用部署歷程記錄中的自動刪除。
 
 ## <a name="when-deployments-are-deleted"></a>當部署已刪除時
 
@@ -35,6 +33,24 @@ Azure Resource Manager 很快就會在您接近限制時，自動從歷程記錄
 除了部署之外，您也會在執行「[假設](template-deploy-what-if.md)」作業或驗證部署時觸發刪除作業。
 
 當您提供部署與歷程記錄中的相同名稱時，您會在歷程記錄中重設其位置。 部署會移至歷程記錄中最新的位置。 當您在錯誤發生後[回復至該部署](rollback-on-error.md)時，也會重設部署的位置。
+
+## <a name="remove-locks-that-block-deletions"></a>移除封鎖刪除的鎖定
+
+如果您在資源群組上有[CanNotDelete 鎖定](../management/lock-resources.md)，就無法刪除該資源群組的部署。 您必須移除鎖定，才能利用部署歷程記錄中的自動刪除。
+
+若要使用 PowerShell 來刪除鎖定，請執行下列命令：
+
+```azurepowershell-interactive
+$lockId = (Get-AzResourceLock -ResourceGroupName lockedRG).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+若要使用 Azure CLI 來刪除鎖定，請執行下列命令：
+
+```azurecli-interactive
+lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
+az lock delete --ids $lockid
+```
 
 ## <a name="opt-out-of-automatic-deletions"></a>選擇不自動刪除
 

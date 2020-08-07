@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 64c7db4223fcb703272749b0bf8d5b1583fbb818
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281356"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987319"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 數位 Twins 模型
 
-您可以使用[**DigitalTwinsModels api**](how-to-use-apis-sdks.md)、 [.Net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[azure 數位 Twins CLI](how-to-use-cli.md)來管理您的 Azure 數位 Twins 實例所知道的[模型](concepts-models.md)。 
+您可以使用[**DigitalTwinsModels api**](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[azure 數位 Twins CLI](how-to-use-cli.md)，來管理您的 Azure 數位 Twins 實例所知道的[模型](concepts-models.md)。 
 
 管理作業包括上傳、驗證、抓取和刪除模型。 
 
@@ -59,17 +59,15 @@ Azure 數位 Twins 的模型是以 DTDL 撰寫，並儲存為*json*檔案。 另
 ```
 
 > [!NOTE]
-> 這是定義和儲存模型之 json 檔案的範例主體，會在用戶端專案中上傳。 另一方面，REST API 呼叫會採用類似上述的模型定義陣列（對應至 `IEnumerable<string>` .NET SDK 中的）。 因此，若要直接在 REST API 中使用此模型，請以方括弧括住。
+> 這是定義和儲存模型之 json 檔案的範例主體，會在用戶端專案中上傳。 另一方面，REST API 呼叫會採用類似上述的模型定義陣列， (對應至 `IEnumerable<string>` .NET SDK) 中的。 因此，若要直接在 REST API 中使用此模型，請以方括弧括住。
 
-此模型會定義患者聊天室的名稱和唯一識別碼，以及代表訪客計數和手動沖蝕狀態的屬性（這些計數器將會從動作感應器和智慧型 soap 配藥更新，並會一起用來計算*handwash 百分比*屬性）。 此模型也會定義關聯性*hasDevices*，其將用來將以此*房間*模型為基礎的任何[數位 twins](concepts-twins-graph.md)連接到實際裝置。
+此模型會定義患者聊天室的名稱和唯一識別碼，以及用來代表訪客計數和手動沖蝕狀態的屬性， (這些計數器會從動作感應器和智慧型 soap 配藥更新，並會一起用來計算*handwash 百分比*屬性) 。 此模型也會定義關聯性*hasDevices*，其將用來將以此*房間*模型為基礎的任何[數位 twins](concepts-twins-graph.md)連接到實際裝置。
 
 遵循此方法，您可以繼續為醫院的 wards、區域或醫院本身定義模型。
 
 ### <a name="validate-syntax"></a>驗證語法
 
-有一個用戶端程式庫可用來剖析和驗證 DTDL。 它會產生 DTDL 內容的 c # 物件模型，可用於模型驅動開發案例，例如產生 UI 元素。 您也可以使用此程式庫，確保您的模型在上傳之前不會有任何語法錯誤。 
-
-如需此程式庫的詳細資訊，以及針對 DTDL 驗證程式所建立之範例的存取權，請參閱[*如何：剖析和驗證模型*](how-to-use-parser.md)。
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="manage-models-with-apis"></a>使用 Api 管理模型。
 
@@ -86,7 +84,7 @@ Azure 數位 Twins 的模型是以 DTDL 撰寫，並儲存為*json*檔案。 另
 建立模型之後，您可以將其上傳至 Azure 數位 Twins 實例。
 
 > [!TIP]
-> 建議您先離線驗證您的模型，再將其上傳至您的 Azure 數位 Twins 實例。 在您將模型上傳至服務之前，您可以使用[*如何：剖析和驗證模型*](how-to-use-parser.md)中所述的[DTDL 客戶](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)端剖析器程式庫和[DTDL 驗證器範例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)來檢查您的模型。
+> 建議您先離線驗證您的模型，再將其上傳至您的 Azure 數位 Twins 實例。 在您將模型上傳至服務之前，您可以使用[*如何：剖析和驗證模型*](how-to-parse-models.md)中所述的[DTDL 客戶](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)端剖析器程式庫和[DTDL 驗證器範例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)來檢查您的模型。
 
 當您準備好上傳模型時，可以使用下列程式碼片段：
 
@@ -162,7 +160,7 @@ Pageable<ModelData> pmd3 = client.GetModels(null, true);
 Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 ```
 
-API 會呼叫以取得模型所有傳回 `ModelData` 的物件。 `ModelData`包含 Azure 數位 Twins 實例中所儲存之模型的相關中繼資料，例如模型的名稱、DTMI 和建立日期。 `ModelData`物件也會選擇性地包含模型本身。 視參數而定，您可以使用抓取呼叫來抓取中繼資料（例如，在您想要顯示可用工具 UI 清單的案例中很有用），或整個模型。
+API 會呼叫以取得模型所有傳回 `ModelData` 的物件。 `ModelData`包含 Azure 數位 Twins 實例中所儲存之模型的相關中繼資料，例如模型的名稱、DTMI 和建立日期。 `ModelData`物件也會選擇性地包含模型本身。 視參數而定，您可以使用抓取呼叫來僅抓取中繼資料 (這在您想要顯示可用工具的 UI 清單（例如) ）或整個模型的案例中很有用。
 
 `RetrieveModelWithDependencies`呼叫不僅會傳回要求的模型，也會傳回要求的模型所相依的所有模型。
 
@@ -231,13 +229,13 @@ await client.DeleteModelAsync(IDToDelete);
 * 查詢對應項
 * 讀取屬性
 * 讀取連出關聯性
-* 新增和刪除連入關聯性（例如，其他 twins 仍然可以形成*與*此對應項的關聯性）
+* 新增和刪除傳入關聯性 (中的，其他 twins 仍然可以形成*與*此對應項的關聯性) 
   - `target`關聯性定義中的，仍然可以反映已刪除之模型的 DTMI。 未定義目標的關聯性也可以在這裡工作。
 * 刪除關聯性
 * 刪除對應項
 
 您**不能**做的事：
-* 編輯傳出關聯性（如中所示），以*從*這個對應項到其他 twins 的關聯性
+* 編輯傳出關聯性 (，如同在中，此對應項與其他*twins 的關聯*性) 
 * 編輯屬性
 
 ##### <a name="after-deletion-re-uploading-a-model"></a>刪除之後：重新上傳模型

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850255"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987251"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB 和 .NET 的效能祕訣
 
@@ -44,13 +44,13 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 > 根據預設，新的 Visual Studio 專案會設定為 [**任何 CPU**]。 我們建議您將專案設定為**x64** ，使其不會切換至**x86**。 如果加入 x86 專用的相依性，則設定為 [**任何 CPU** ] 的專案可以輕易地切換至**x86** 。<br/>
 > ServiceInterop.dll 必須位於 SDK DLL 執行所在的資料夾中。 只有當您手動複製 Dll 或擁有自訂群組建/部署系統時，才需要考慮這一點。
     
-**開啟伺服器端垃圾收集（GC）**
+**開啟伺服器端垃圾收集 (GC) **
 
 在某些情況下，減少垃圾收集的頻率可能會有説明。 在 .NET 中，將[gcServer](https://docs.microsoft.com/dotnet/core/run-time-config/garbage-collector#flavors-of-garbage-collection)設定為 `true` 。
 
 **相應放大您的用戶端工作負載**
 
-如果您是以高輸送量層級（超過 50000 RU/秒）進行測試，用戶端應用程式可能會成為瓶頸，因為電腦會在 CPU 或網路使用率上達到上限。 如果到了這一刻，您可以將用戶端應用程式向外延展至多部伺服器，以繼續將 Azure Cosmos DB 帳戶再往前推進一步。
+如果您測試的是高輸送量層級 (超過 50000 RU/秒) ，用戶端應用程式可能會成為瓶頸，因為電腦會在 CPU 或網路使用率上達到上限。 如果到了這一刻，您可以將用戶端應用程式向外延展至多部伺服器，以繼續將 Azure Cosmos DB 帳戶再往前推進一步。
 
 > [!NOTE] 
 > 高 CPU 使用率可能會導致延遲增加和要求超時例外狀況。
@@ -62,7 +62,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 用戶端如何連線到 Azure Cosmos DB 會對效能造成重大影響，特別是針對觀察到的用戶端延遲。 設定用戶端連線原則有兩個可用的金鑰設定：連接*模式*和連接*通訊協定*。  兩個可用的模式︰
 
-   * Direct 模式（預設值）
+   * 直接模式 (預設) 
 
      直接模式支援透過 TCP 通訊協定連線，而且如果您使用[Cosmos/.Net V3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3)，則是預設連線模式。 這可提供較佳的效能，而且需要比閘道模式更少的網路躍點。
 
@@ -75,11 +75,11 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
 在閘道模式中，當您使用適用于 MongoDB 的 Azure Cosmos DB API 時，Azure Cosmos DB 會使用埠443和埠10250、10255和10256。 埠10250對應至預設 MongoDB 實例，而不進行異地複寫。 埠10255和10256會對應到具有異地複寫的 MongoDB 實例。
      
-當您在直接模式中使用 TCP 時，除了閘道埠之外，您還需要確保10000和20000之間的埠範圍已開啟，因為 Azure Cosmos DB 使用動態 TCP 埠（在[私人端點](./how-to-configure-private-endpoints.md)上使用直接模式時，必須開啟完整範圍的 tcp 埠-從0到65535）。 預設會針對標準 Azure VM 設定開啟埠。 如果未開啟這些埠，而您嘗試使用 TCP，您會收到503服務無法使用的錯誤。 下表顯示適用于各種 Api 的連線模式，以及用於每個 API 的服務埠：
+當您在直接模式中使用 TCP 時，除了閘道埠之外，您還需要確保10000和20000之間的埠範圍已開啟，因為 Azure Cosmos DB 使用動態 TCP 埠 (在[私人端點](./how-to-configure-private-endpoints.md)上使用直接模式時，必須開啟) 的完整 tcp 埠範圍（從0到65535）。 預設會針對標準 Azure VM 設定開啟埠。 如果未開啟這些埠，而您嘗試使用 TCP，您會收到503服務無法使用的錯誤。 下表顯示適用于各種 Api 的連線模式，以及用於每個 API 的服務埠：
 
 |連線模式  |支援的通訊協定  |支援的 SDK  |API/服務連接埠  |
 |---------|---------|---------|---------|
-|閘道  |   HTTPS    |  所有 Sdk    |   SQL （443）、MongoDB （10250、10255、10256）、Table （443）、Cassandra （10350）、Graph （443）    |
+|閘道  |   HTTPS    |  所有 Sdk    |   SQL (443) 、MongoDB (10250、10255、10256) 、Table (443) 、Cassandra (10350) 、Graph (443)     |
 |直接    |     TCP    |  .NET SDK    | 使用公用/服務端點時：10000到20000範圍中的埠<br>使用私用端點時：0到65535範圍內的埠 |
 
 Azure Cosmos DB 提供透過 HTTPS 的簡單開放式 RESTful 程式設計模型。 此外，它可提供有效率的 TCP 通訊協定，此 TCP 通訊協定在通訊模型中也符合 REST 限制，並且可以透過 .NET 用戶端 SDK 取得。 TCP 通訊協定會使用 TLS 進行初始驗證和加密流量。 為了達到最佳效能，儘可能使用 TCP 通訊協定。
@@ -107,7 +107,7 @@ new CosmosClientOptions
 
 在您具有稀疏存取的案例中，如果您在與閘道模式存取相比，發現連線計數較高，您可以：
 
-* 將[CosmosClientOptions PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode)屬性設定為 `PrivatePortPool` （使用 framework version>= 4.6.1 和 .net core 版本 >= 2.0）：此屬性可讓 SDK 針對不同的 Azure Cosmos DB 目的地端點使用小型的暫時埠集區。
+* 設定[CosmosClientOptions 的 PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode)屬性，使其 `PrivatePortPool` (符合 framework 版本>= 4.6.1 和 .net Core 版本 >= 2.0) ：此屬性可讓 SDK 針對不同的 Azure Cosmos DB 目的地端點使用小型的暫時埠集區。
 * 設定[CosmosClientOptions. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout)屬性必須大於或等於10分鐘。 建議的值介於20分鐘到24小時之間。
 
 <a id="same-region"></a>
@@ -149,7 +149,7 @@ Azure Cosmos DB SDK 會持續改善以提供最佳效能。 請參閱 [Azure Cos
 
 **在寫入作業上停用內容回應**
 
-針對具有 heave create 承載的工作負載，請將 EnableContentResponseOnWrite 要求選項設為 false。 服務將不會再將已建立或更新的資源傳回至 SDK。 應用程式通常會建立物件，因此不需要服務傳回它。 標頭值仍可存取，例如要求費用。 這可能會改善效能，因為 SDK 不再需要配置記憶體或序列化回應的主體。 這也可以減少網路頻寬使用量，以進一步協助效能。  
+對於具有大量建立承載的工作負載，請將 EnableContentResponseOnWrite 要求選項設為 false。 服務將不會再將已建立或更新的資源傳回至 SDK。 應用程式通常會建立物件，因此不需要服務傳回它。 標頭值仍可存取，例如要求費用。 這可能會改善效能，因為 SDK 不再需要配置記憶體或序列化回應的主體。 這也可以減少網路頻寬使用量，以進一步協助效能。  
 
 ```csharp
 ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };
@@ -162,7 +162,7 @@ itemResponse.Resource
 
 **使用閘道模式時增加每部主機的 System.Net MaxConnections**
 
-當您使用閘道模式時，Azure Cosmos DB 要求是透過 HTTPS/REST 進行。 它們會受到每個主機名稱或 IP 位址的預設連線限制。 您可能需要將設定 `MaxConnections` 為較高的值（100到1000），讓用戶端程式庫可以使用多個同時連線來 Azure Cosmos DB。 在 .NET SDK 1.8.0 和更新版本中， [ServicePointManager. servicepointmanager.defaultconnectionlimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx)的預設值是50。 若要變更此值，您可以將[ConnectionPolicy. documents.client.connectionpolicy.maxconnectionlimit 設定](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx)設定為較高的值。
+當您使用閘道模式時，Azure Cosmos DB 要求是透過 HTTPS/REST 進行。 它們會受到每個主機名稱或 IP 位址的預設連線限制。 您可能需要將設定 `MaxConnections` 為較高的值 (100 到 1000) ，用戶端程式庫才能使用多個同時連線來 Azure Cosmos DB。 在 .NET SDK 1.8.0 和更新版本中， [ServicePointManager. servicepointmanager.defaultconnectionlimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx)的預設值是50。 若要變更此值，您可以將[ConnectionPolicy. documents.client.connectionpolicy.maxconnectionlimit 設定](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx)設定為較高的值。
 
 **微調分割集合的平行查詢**
 
@@ -172,13 +172,13 @@ SQL .NET SDK 支援平行查詢，可讓您以平行方式查詢分割的容器�
 
 ***微調並行程度***
 
-平行查詢的運作方式是以平行方式查詢多個分割區。 但是來自個別分割區的資料會依查詢的順序提取。 將 `MaxConcurrency` [SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3)中的設定為分割區數目，有可能達到最高效能的查詢，但前提是所有其他系統條件都維持不變。 如果您不知道分割區數目，可以將平行處理原則的程度設定為較高的數位。 系統會選擇最小值（資料分割數目、使用者提供的輸入）做為平行處理原則的程度。
+平行查詢的運作方式是以平行方式查詢多個分割區。 但是來自個別分割區的資料會依查詢的順序提取。 將 `MaxConcurrency` [SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3)中的設定為分割區數目，有可能達到最高效能的查詢，但前提是所有其他系統條件都維持不變。 如果您不知道分割區數目，可以將平行處理原則的程度設定為較高的數位。 系統會選擇最小 (資料分割數目、使用者提供的輸入) 做為平行處理原則的程度。
 
-如果資料平均分散于與查詢相關的所有分割區，平行查詢會產生最大的好處。 如果分割的集合已分割，以便查詢所傳回的所有或大部分資料都集中在幾個分割區中（一個分割區是最壞的情況），則這些磁碟分割會造成查詢的效能瓶頸。
+如果資料平均分散于與查詢相關的所有分割區，平行查詢會產生最大的好處。 如果分割的集合已分割，以便查詢所傳回的所有或大部分資料都集中在少數幾個分割區中 (一個分割區是最糟的) ，則這些磁碟分割會造成查詢的效能瓶頸。
 
 ***微調 MaxBufferedItemCount***
     
-平行查詢的設計是可在用戶端處理目前的結果批次時，先預先擷取結果。 這個預先提取可協助改善查詢的整體延遲。 `MaxBufferedItemCount`參數會限制預先提取的結果數目。 設定 `MaxBufferedItemCount` 為預期傳回的結果數目（或較大的數位），以允許查詢從預先提取取得最大效益。
+平行查詢的設計是可在用戶端處理目前的結果批次時，先預先擷取結果。 這個預先提取可協助改善查詢的整體延遲。 `MaxBufferedItemCount`參數會限制預先提取的結果數目。 設定 `MaxBufferedItemCount` 為預期傳回的結果數目 (或較高的數目) 以允許查詢接收預先提取的最大效益。
 
 不論平行處理原則的程度為何，預先提取的運作方式都相同，而且所有分割區的資料都有單一緩衝區。  
 
@@ -203,7 +203,7 @@ readItemResponse.Diagnostics.ToString();
  
 **從索引編製中排除未使用的路徑以加快寫入速度**
 
-Azure Cosmos DB 編制索引原則也可讓您使用索引路徑（IndexingPolicy. Indexingpolicy.includedpaths 和 IndexingPolicy. Indexingpolicy.excludedpaths），指定要在索引編制中包含或排除的檔路徑。 僅針對您所需的路徑編制索引，可以改善寫入效能、減少寫入作業的 RU 費用，以及針對事先知道查詢模式的案例，減少索引儲存空間。 這是因為索引成本會直接與索引的唯一路徑數目相互關聯。 例如，此程式碼示範如何使用 "*" 萬用字元，從索引編制中排除檔的整個區段（子樹）：
+Azure Cosmos DB 編制索引原則也可讓您指定要在編制索引中包含或排除的檔路徑，方法是使用索引路徑 (Indexingpolicy.includedpaths 和 IndexingPolicy. Indexingpolicy.excludedpaths) 。 僅針對您所需的路徑編制索引，可以改善寫入效能、減少寫入作業的 RU 費用，以及針對事先知道查詢模式的案例，減少索引儲存空間。 這是因為索引成本會直接與索引的唯一路徑數目相互關聯。 例如，此程式碼示範如何使用 "*" 萬用字元，將檔的整個區段從編制索引中排除 (子樹) ：
 
 ```csharp
 var containerProperties = new ContainerProperties(id: "excludedPathCollection", partitionKeyPath: "/pk" );
@@ -219,13 +219,13 @@ Container container = await this.cosmosDatabase.CreateContainerAsync(containerPr
 
 **測量和調整較低的要求單位/秒使用量**
 
-Azure Cosmos DB 提供一組豐富的資料庫作業。 這些作業包括使用 Udf、預存程式和觸發程式的關聯式和階層式查詢，全都是在資料庫集合中的檔上運作。 與上述各項作業相關聯的成本會根據完成此操作所需的 CPU、IO 和記憶體而有所不同。 除了考慮和管理硬體資源，您可以將要求單位（RU）視為執行各種資料庫作業和服務應用程式要求所需資源的單一量值。
+Azure Cosmos DB 提供一組豐富的資料庫作業。 這些作業包括使用 Udf、預存程式和觸發程式的關聯式和階層式查詢，全都是在資料庫集合中的檔上運作。 與上述各項作業相關聯的成本會根據完成此操作所需的 CPU、IO 和記憶體而有所不同。 不需要考慮和管理硬體資源，您可以將要求單位的 (RU) 作為執行各種資料庫作業和服務應用程式要求所需資源的單一量值。
 
 輸送量是根據為每個容器所設定的[要求單位](request-units.md)數目來布建。 要求單位耗用量會評估為每秒的速率。 超過其容器布建的要求單位速率的應用程式會受到限制，直到該速率降到容器的布建層級以下為止。 如果您的應用程式需要較高層級的輸送量，您可以藉由布建額外的要求單位來增加輸送量。
 
 查詢的複雜性會影響針對作業所耗用的要求單位數目。 述詞數目、述詞性質、Udf 數目，以及源資料集的大小，全都會影響查詢作業的成本。
 
-若要測量任何作業（建立、更新或刪除）的額外負荷，請檢查[x 毫秒要求-費用](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)標頭（或 `RequestCharge` .net SDK 中的對等屬性 `ResourceResponse\<T>` ）， `FeedResponse\<T>` 以測量作業所耗用的要求單位數目：
+若要測量任何作業 (建立、更新或刪除) 的額外負荷，請檢查[x 毫秒要求-費用](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)標頭 (或 `RequestCharge` .net SDK) 中的對等屬性， `ResourceResponse\<T>` `FeedResponse\<T>` 以測量作業所耗用的要求單位數目：
 
 ```csharp
 // Measure the performance (Request Units) of writes
@@ -240,12 +240,12 @@ while (queryable.HasMoreResults)
     }
 ```             
 
-在此標頭中傳回的要求費用是布建輸送量的一小部分（也就是 2000 ru/秒）。 例如，如果上述查詢傳回 1000 1 KB 的檔，則作業成本為1000。 因此，在一秒內，伺服器只會接受兩個這類要求，再于之後速率限制要求。 如需詳細資訊，請參閱[要求單位](request-units.md)和[要求單位計算機](https://www.documentdb.com/capacityplanner)。
+在此標頭中傳回的要求費用是布建輸送量的一小部分， (也就是 2000 ru/秒) 。 例如，如果上述查詢傳回 1000 1 KB 的檔，則作業成本為1000。 因此，在一秒內，伺服器只會接受兩個這類要求，再于之後速率限制要求。 如需詳細資訊，請參閱[要求單位](request-units.md)和[要求單位計算機](https://www.documentdb.com/capacityplanner)。
 <a id="429"></a>
 
 **處理速率限制/要求速率太大**
 
-當用戶端嘗試超過帳戶的保留輸送量時，伺服器的效能不會降低，而且不會使用超過保留層級的輸送量容量。 伺服器會事先以 RequestRateTooLarge 結束要求（HTTP 狀態碼429）。 它會傳回一個[x 毫秒-重試後](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)端標頭，表示使用者在再次嘗試要求之前必須等待的時間量（以毫秒為單位）。
+當用戶端嘗試超過帳戶的保留輸送量時，伺服器的效能不會降低，而且不會使用超過保留層級的輸送量容量。 伺服器會事先結束要求，RequestRateTooLarge (HTTP 狀態碼 429) 。 它會傳回一個[x 毫秒-重試後](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)端標頭，表示使用者在再次嘗試要求之前必須等待的時間量（以毫秒為單位）。
 
 ```xml
     HTTP Status 429,
@@ -263,7 +263,7 @@ SDK 全都隱含地攔截這個回應，採用伺服器指定的 retry-after 標
 
 **如需更高的輸送量，請設計較小的檔**
 
-給定作業的要求費用（也就是要求-處理成本）與檔案大小直接相互關聯。 大型檔的作業成本高於小型檔的作業。
+要求費用 (也就是，指定作業的要求處理成本) 會直接與檔案大小產生關聯。 大型檔的作業成本高於小型檔的作業。
 
 ## <a name="next-steps"></a>後續步驟
 如需用來評估一些用戶端電腦上高效能案例 Azure Cosmos DB 的範例應用程式，請參閱[使用 Azure Cosmos DB 的效能和規模測試](performance-testing.md)。

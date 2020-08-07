@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 0e660678f33f36b75147c2513c77d3085136127d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8c5c4a6e5d8b2997d80c7263ba17a705d3846ed8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563198"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987387"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes Service 中使用受控識別
 
@@ -35,7 +35,7 @@ ms.locfileid: "87563198"
 
 AKS 會針對內建服務和附加元件使用數個受控識別。
 
-| 身分識別                       | Name    | 使用案例 | 預設許可權 | 攜帶您自己的身分識別
+| 身分識別                       | 名稱    | 使用案例 | 預設許可權 | 攜帶您自己的身分識別
 |----------------------------|-----------|----------|
 | 控制平面 | 不可見 | 由 AKS 用於受控網路資源，包括輸入負載平衡器和 AKS 受控公用 Ip | 節點資源群組的參與者角色 | 預覽
 | Kubelet | AKS 叢集名稱-agentpool | 使用 Azure Container Registry (ACR 進行驗證)  | 節點資源群組的讀取者角色 | 目前不支援
@@ -108,11 +108,7 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ## <a name="bring-your-own-control-plane-mi-preview"></a>讓您自己的控制平面 MI (預覽) 
 自訂控制項平面身分識別可讓您在建立叢集之前，將存取權授與現有的身分識別。 這可讓您使用自訂 VNET 或具有受控識別的 UDR outboundType 等案例。
 
-> [!IMPORTANT]
-> AKS preview 功能可在自助服務上自行選擇。 預覽會以「原樣」和「可用」的方式提供，並從服務等級協定中排除，並享有有限擔保。 AKS 預覽的部分是由客戶支援，以最大的方式來涵蓋。 因此，這些功能並不適用于生產環境使用。 如需詳細資訊，請參閱下列支援文章：
->
-> - [AKS 支援原則](support-policies.md)
-> - [Azure 支援常見問題集](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 您必須先安裝下列資源：
 - Azure CLI，2.9.0 版或更新版本

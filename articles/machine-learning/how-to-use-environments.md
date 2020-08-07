@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08e36f8ef31114b18a166e7a14d6d7ad8385582c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 3fb13a4912fbd2a9bea39b56333adbd1329efef6
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850367"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985898"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure Machine Learning 中建立 & 使用軟體環境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -320,6 +320,14 @@ myenv.python.interpreter_path = "/opt/miniconda/bin/python"
 > [!WARNING]
 > 如果您在 Docker 映射中安裝某些 Python 相依性，但忘了設定 user_managed_dependencies = True，則這些封裝將不會存在於執行環境中，因而導致執行時間失敗。 根據預設，Azure ML 會建立具有您指定之相依性的 Conda 環境，並會在該環境中執行此工作，而不是使用您安裝在基底映射上的任何 Python 程式庫。
 
+### <a name="retrieve-image-details"></a>取出映射詳細資料
+
+針對已註冊的環境，您可以使用下列程式碼來抓取映射詳細資料，其中 `details` 是[DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py) (AzureML Python SDK >= 1.11) 的實例，並提供有關環境映射的所有資訊，例如 dockerfile、registry 和映射名稱。
+
+```python
+details = environment.get_image_details()
+```
+
 ## <a name="use-environments-for-training"></a>使用環境進行定型
 
 若要提交訓練回合，您需要將您的環境、[計算目標](concept-compute-target.md)和訓練 Python 指令碼結合為回合組態。 此組態是用於提交回合的包裝函式物件。
@@ -376,12 +384,6 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 # Submit the run 
 run = experiment.submit(sk_est)
-```
-### <a name="retrieve-dockerfile-from-a-run"></a>從執行中取出 Dockerfile
-
-使用下列程式碼來取得啟用 Docker 的執行 Dockerfile。
-```python
-print(run.get_environment().get_image_details().dockerfile)
 ```
 
 ## <a name="use-environments-for-web-service-deployment"></a>使用 web 服務部署的環境

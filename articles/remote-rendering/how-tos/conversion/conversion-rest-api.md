@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 0a0feb6b638cb6e3a74fcd30baea5e8a04375699
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82857798"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985609"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>使用模型轉換 REST API
 
@@ -39,7 +39,7 @@ ms.locfileid: "82857798"
 轉換服務會提供三個 REST API 端點來執行下列動作：
 
 - 使用與您的 Azure 遠端轉譯帳戶連結的儲存體帳戶，啟動模型轉換。 
-- 使用提供的*共用存取簽章（SAS）* 啟動模型轉換。
+- 使用提供的*共用存取簽章 (SAS) *啟動模型轉換。
 - 查詢轉換狀態
 
 ### <a name="start-conversion-using-a-linked-storage-account"></a>使用連結的儲存體帳戶開始轉換
@@ -53,6 +53,8 @@ ms.locfileid: "82857798"
 
 #### <a name="request-body"></a>Request body
 
+> [!NOTE]
+> 下的所有專案 `input.folderPath` 都會取得，以在 Azure 上執行轉換。 如果 `input.folderPath` 未指定，則會抓取容器的完整內容。 取得抓取的所有 blob 和資料夾都必須有[有效的 Windows 檔案名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
 
 ```json
 {
@@ -73,21 +75,23 @@ ms.locfileid: "82857798"
 }
 ```
 ### <a name="start-conversion-using-provided-shared-access-signatures"></a>使用提供的共用存取簽章開始轉換
-如果您的 ARR 帳戶未連結至您的儲存體帳戶，此 REST 介面可讓您使用*共用存取簽章（SAS）* 來提供存取權。
+如果您的 ARR 帳戶未連結至您的儲存體帳戶，此 REST 介面可讓您使用*共用存取簽章 (SAS) *提供存取權。
 
 | 端點 | 方法 |
 |-----------|:-----------|
 | /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
-傳回進行中轉換的識別碼，包裝在 JSON 檔中。 功能變數名稱為 "conversionId"。
+傳回進行中轉換的識別碼，包裝在 JSON 檔中。 功能變數名稱為 `conversionId` 。
 
 #### <a name="request-body"></a>Request body
 
-要求主體與上述的建立 REST 呼叫中的相同，但輸入和輸出包含*共用存取簽章（SAS）權杖*。 這些權杖可讓您存取儲存體帳戶以讀取輸入和寫入轉換結果。
+要求主體與上述的建立 REST 呼叫中的相同，但輸入和輸出包含* (SAS) 權杖的共用存取*簽章。 這些權杖可讓您存取儲存體帳戶以讀取輸入和寫入轉換結果。
 
 > [!NOTE]
 > 這些 SAS URI 權杖是查詢字串，而不是完整的 URI。 
 
+> [!NOTE]
+> 下的所有專案 `input.folderPath` 都會取得，以在 Azure 上執行轉換。 如果 `input.folderPath` 未指定，則會抓取容器的完整內容。 取得抓取的所有 blob 和資料夾都必須有[有效的 Windows 檔案名](https://docs.microsoft.com/windows/win32/fileio/naming-a-file#naming-conventions)。
 
 ```json
 {

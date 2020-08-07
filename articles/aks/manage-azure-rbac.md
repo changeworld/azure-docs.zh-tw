@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 064a62b030a1fd9f3c875fce646ad8553b75d513
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799356"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986622"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用適用於 Kubernetes 的 Azure RBAC 授權 (預覽)
 
@@ -25,13 +25,9 @@ ms.locfileid: "87799356"
 
 從 Azure 管理 Kubernetes 資源之 RBAC 的功能，可讓您選擇使用 Azure 或原生 Kubernetes 機制來管理叢集資源的 RBAC。 啟用時，Azure AD 主體會由 Azure RBAC 獨佔驗證，而一般 Kubernetes 使用者和服務帳戶會由 Kubernetes RBAC 以獨佔方式進行驗證。 如需有關 AKS 的驗證、授權和 RBAC 的詳細資訊，請參閱[這裡](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)。
 
-> [!IMPORTANT]
-> AKS preview 功能可在自助服務上自行選擇。 預覽會以「原樣」和「可用」的方式提供，並從服務等級協定中排除，並享有有限擔保。 AKS 預覽的部分是由客戶支援，以最大的方式來涵蓋。 因此，這些功能並不適用于生產環境使用。 如需詳細資訊，請參閱下列支援文章：
->
-> - [AKS 支援原則](support-policies.md)
-> - [Azure 支援常見問題集](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-### <a name="prerequisites"></a>Prerequisites 
+### <a name="prerequisites"></a>必要條件 
 - 註冊預覽版 <https://aka.ms/aad-rbac-sign-up-form> 。
 - 確定您有 Azure CLI 版本2.9.0 版或更新版本
 - 請確定已 `EnableAzureRBACPreview` 啟用功能旗標。

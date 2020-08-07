@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c4274292dfbd53abed09dfeae77ec976afe9ebc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282954"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987030"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 代理者流程
 
@@ -61,12 +61,12 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 使用共用密碼時，服務對服務存取權杖要求包含下列參數：
 
-| 參數 | 類型 | 說明 |
+| 參數 | 類型 | 描述 |
 | --- | --- | --- |
 | `grant_type` | 必要 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |
 | `client_secret` | 必要 | 您在 Azure 入口網站 - 應用程式註冊頁面中為應用程式產生的用戶端秘密。 |
-| `assertion` | 必要 | 已傳送至中介層 API 的存取權杖。  此權杖必須具有應用程式的物件（ `aud` ）宣告，以進行此 OBO 要求（由欄位表示的應用程式 `client-id` ）。 應用程式無法兌換不同應用程式的權杖（例如，如果用戶端傳送的 API 是適用于 MS Graph 的權杖，則 API 無法使用 OBO 兌換它。  它應該會改為拒絕 token）。  |
+| `assertion` | 必要 | 已傳送至中介層 API 的存取權杖。  此權杖必須有物件 (`aud` 應用程式的) 宣告， (由欄位) 所表示的應用程式來提出此 OBO 要求 `client-id` 。 應用程式無法兌換不同應用 (程式的權杖，例如，如果用戶端傳送 API 給 MS Graph 的權杖，則 API 無法使用 OBO 兌換。  它應該會改為拒絕) 的權杖。  |
 | `scope` | 必要 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。 |
 | `requested_token_use` | 必要 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
 
@@ -93,13 +93,13 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 使用憑證的服務對服務存取權杖要求包含下列參數：
 
-| 參數 | 類型 | 說明 |
+| 參數 | 類型 | 描述 |
 | --- | --- | --- |
 | `grant_type` | 必要 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必要 |  [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |
 | `client_assertion_type` | 必要 | 值必須是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
 | `client_assertion` | 必要 | 您必須建立判斷提示 (JSON Web 權杖)，並使用註冊的憑證來簽署，以作為應用程式的認證。 若要深入了解如何註冊您的憑證與判斷提示的格式，請參閱[憑證認證](active-directory-certificate-credentials.md)。 |
-| `assertion` | 必要 |  已傳送至中介層 API 的存取權杖。  此權杖必須具有應用程式的物件（ `aud` ）宣告，以進行此 OBO 要求（由欄位表示的應用程式 `client-id` ）。 應用程式無法兌換不同應用程式的權杖（例如，如果用戶端傳送的 API 是適用于 MS Graph 的權杖，則 API 無法使用 OBO 兌換它。  它應該會改為拒絕 token）。  |
+| `assertion` | 必要 |  已傳送至中介層 API 的存取權杖。  此權杖必須有物件 (`aud` 應用程式的) 宣告， (由欄位) 所表示的應用程式來提出此 OBO 要求 `client-id` 。 應用程式無法兌換不同應用 (程式的權杖，例如，如果用戶端傳送 API 給 MS Graph 的權杖，則 API 無法使用 OBO 兌換。  它應該會改為拒絕) 的權杖。  |
 | `requested_token_use` | 必要 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
 | `scope` | 必要 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。|
 
@@ -194,49 +194,6 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 > [!TIP]
 > 當您從前端 Web 應用程式呼叫受 SAML 保護的 Web 服務時，只需呼叫 API 並搭配使用者現有的工作階段起始一般互動驗證流程。 當服務對服務呼叫需要 SAML 權杖以提供使用者內容時，您只需要使用 OBO 流程。
-
-### <a name="obtain-a-saml-token-by-using-an-obo-request-with-a-shared-secret"></a>使用具有共用祕密的 OBO 要求來取得 SAML 權杖
-
-適用於 SAML 判斷提示的服務對服務要求包含下列參數：
-
-| 參數 | 類型 | 說明 |
-| --- | --- | --- |
-| grant_type |必要 | 權杖要求的類型。 針對使用 JWT 的要求，此值必須是 **urn:ietf:params:oauth:grant-type:jwt-bearer**。 |
-| assertion |必要 | 要求中使用的存取權杖值。|
-| client_id |required | 在向 Azure AD 註冊期間指派給呼叫服務的應用程式識別碼。 若要在 Azure 入口網站中尋找應用程式識別碼，請選取 [Active Directory]，選擇目錄，然後選取應用程式名稱。 |
-| client_secret |必要 | 在 Azure AD 中註冊之呼叫端服務的金鑰。 此值應該在註冊期間記下來。 |
-| 資源 |必要 | 接收端服務 (受保護的資源) 的應用程式識別碼 URI。 這是 SAML 權杖對象的資源。 若要在 Azure 入口網站中尋找應用程式識別碼 URI，請選取 [Active Directory]，然後選擇目錄。 選取應用程式名稱，選擇 [所有設定]，然後選取 [屬性]。 |
-| requested_token_use |必要 | 指定應該如何處理要求。 在代理者流程中，此值必須是 **on_behalf_of**。 |
-| requested_token_type | required | 指定要求權杖的類型。 值可以是 **urn:ietf:params:oauth:token-type:saml2** 或 **urn:ietf:params:oauth:token-type:saml1**，取決於所存取之資源的需求。 |
-
-回應會包含以 UTF8 及 Base64url 編碼的 SAML 權杖。
-
-- **源自 OBO 呼叫之 SAML 判斷提示的 SubjectConfirmationData**：如果目標應用程式需要 **SubjectConfirmationData** 中的收件者值，該值必須是資源應用程式設定中的非萬用字元回覆 URL。
-- **SubjectConfirmationData 節點**：此節點不能包含 **InResponseTo** 屬性，因為該屬性不屬於 SAML 回應。 接收 SAML 權杖的應用程式必須能夠在沒有 **InResponseTo** 屬性的情況下接受 SAML 判斷提示。
-
-- **同意**：必須授與同意，才能在 OAuth 流程上接收包含使用者資料的 SAML 權杖。 如需權限和取得系統管理員同意的相關資訊，請參閱 [Azure Active Directory v1.0 端點中的權限和同意](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)。
-
-### <a name="response-with-saml-assertion"></a>使用 SAML 判斷提示進行回應
-
-| 參數 | 說明 |
-| --- | --- |
-| token_type |表示權杖類型值。 Azure AD 唯一支援的類型是 [持有人] 。 如需有關持有人權杖的詳細資訊，請參閱 [OAuth 2.0 授權架構︰持有人權杖使用方式 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) \(英文\)。 |
-| scope |在權杖中授與的存取範圍。 |
-| expires_in |存取權杖的有效時間長度 (以秒為單位)。 |
-| expires_on |存取權杖的到期時間。 日期會表示為從 1970-01-01T0:0:0Z UTC 至到期時間的秒數。 這個值用來判斷快取權杖的存留期。 |
-| resource |接收端服務 (受保護的資源) 的應用程式識別碼 URI。 |
-| access_token |傳回 SAML 判斷提示的參數。 |
-| refresh_token |重新整理權杖。 呼叫端服務可以使用這個權杖，在目前的 SAML 判斷提示過期之後，要求其他的存取權杖。 |
-
-- token_type：Bearer
-- expires_in：3296
-- ext_expires_in：0
-- expires_on：1529627844
-- resource：`https://api.contoso.com`
-- access_token：\<SAML assertion\>
-- issued_token_type：urn:ietf:params:oauth:token-type:saml2
-- refresh_token：\<Refresh token\>
-
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>取得中介層應用程式的同意
 

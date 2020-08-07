@@ -10,24 +10,24 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: aahi
-ms.openlocfilehash: dbd0699924268b38d69bc576a5886e8d31fa1208
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 9b76dac0734985b01a4a73ad4fc7f2a5f35838db
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373465"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986894"
 ---
-# <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用文字分析的健全狀況（預覽）
+# <a name="how-to-use-text-analytics-for-health-preview"></a>如何：使用文字分析進行健康情況 (預覽) 
 
 > [!IMPORTANT] 
-> 健全狀況的文字分析是以「原樣」提供的預覽功能，以及「所有的錯誤」。 因此，**在任何生產環境中使用時，不應執行或部署健康情況的文字分析（預覽）。** 適用于健康情況的文字分析並非適用于醫療裝置、臨床支援、診斷工具或其他要用於診斷、解決、緩和、處理或預防疾病或其他條件的技術，而且 Microsoft 不會授與授權或權利以用於這種用途。 這項功能並非設計或部署為替代專業醫學建議或醫療保健專業人員的醫療意見、診斷、治療或臨床判斷，因此不應使用。 客戶完全負責任何使用文字分析健康情況。 Microsoft 不保證健康情況的文字分析或與該功能連線所提供的任何資料，都能滿足任何醫療的目的，或符合任何人的健康或醫療需求。 
+> 健全狀況的文字分析是以「原樣」提供的預覽功能，以及「所有的錯誤」。 因此，**健康情況 (預覽) 的文字分析不應在任何實際執行環境中執行或部署。** 適用于健康情況的文字分析並非適用于醫療裝置、臨床支援、診斷工具或其他要用於診斷、解決、緩和、處理或預防疾病或其他條件的技術，而且 Microsoft 不會授與授權或權利以用於這種用途。 這項功能並非設計或部署為替代專業醫學建議或醫療保健專業人員的醫療意見、診斷、治療或臨床判斷，因此不應使用。 客戶完全負責任何使用文字分析健康情況。 Microsoft 不保證健康情況的文字分析或與該功能連線所提供的任何資料，都能滿足任何醫療的目的，或符合任何人的健康或醫療需求。 
 
 
 「健康情況文字分析」是一種容器化服務，可從非結構化的文字（例如醫生的記事、放電摘要、臨床檔和電子醫療記錄）中，將相關醫療資訊解壓縮並加以標示。  
 
 ## <a name="features"></a>特性
 
-健全狀況容器的文字分析目前會在您自己的開發環境中，針對符合您特定安全性和資料控管需求的英文文字執行命名實體辨識（NER）、關聯性提取、實體否定和實體連結。
+健全狀況容器的文字分析目前會在您自己的開發環境中，針對符合您特定安全性和資料控管需求的英文文字，執行名為實體辨識 (NER) 、關聯性、實體否定和實體連結。
 
 #### <a name="named-entity-recognition"></a>[具名實體辨識](#tab/ner)
 
@@ -46,12 +46,12 @@ ms.locfileid: "87373465"
 
 #### <a name="entity-linking"></a>[實體連結](#tab/entity-linking)
 
-實體連結會厘清相異的實體，方法是將文字中提及的已命名實體與概念的預先定義資料庫中找到的概念產生關聯。 例如，統一的醫學語言系統（UMLS）。
+實體連結會厘清相異的實體，方法是將文字中提及的已命名實體與概念的預先定義資料庫中找到的概念產生關聯。 例如，統一的醫學語言系統 (UMLS) 。
 
 > [!div class="mx-imgBorder"]
 > ![Health EL](../media/ta-for-health/health-entity-linking.png)
 
-文字分析健康狀態支援連結至在統一醫療語言系統（[UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)） Metathesaurus 知識來源中找到的健康狀態和生物醫學詞彙。
+文字分析健康狀態支援連結至統一醫學語言系統中找到的健康情況和生物醫學詞彙 ([UMLS](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html)) Metathesaurus 知識來源。
 
 #### <a name="negation-detection"></a>[否定偵測](#tab/negation-detection) 
 
@@ -90,7 +90,7 @@ Azure[用於容器的 Web App](https://azure.microsoft.com/services/app-service/
 > [!NOTE]
 > 使用 Azure Web 應用程式，您將會自動取得網域，其格式為`<appservice_name>.azurewebsites.net`
 
-使用 Azure CLI 來執行此 PowerShell 腳本，以使用您的訂用帳戶和透過 HTTPS 的容器映射來建立用於容器的 Web App。 等待腳本完成（大約20分鐘），然後再提交第一個要求。
+使用 Azure CLI 來執行此 PowerShell 腳本，以使用您的訂用帳戶和透過 HTTPS 的容器映射來建立用於容器的 Web App。 在提交第一個要求之前，請等候腳本完成 (大約25-30 分鐘的) 。
 
 ```bash
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
@@ -118,9 +118,10 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 ### <a name="install-the-container-using-azure-container-instance"></a>使用 Azure 容器實例安裝容器
 
-您也可以使用 Azure 容器實例（ACI）讓部署變得更容易。 ACI 是一項資源，可讓您在受控、無伺服器的 Azure 環境中隨選執行 Docker 容器。 
+您也可以使用 Azure 容器實例 (ACI) 讓部署變得更容易。 ACI 是一項資源，可讓您在受控、無伺服器的 Azure 環境中隨選執行 Docker 容器。 
 
-如需使用 Azure 入口網站部署 ACI 資源的步驟，請參閱[如何使用 Azure 容器實例](text-analytics-how-to-use-container-instances.md)。 您也可以使用下列 PowerShell 腳本來使用 Azure CLI，這會使用容器映射在您的訂用帳戶上建立 ACI。  等待腳本完成（大約20分鐘），然後再提交第一個要求。
+如需使用 Azure 入口網站部署 ACI 資源的步驟，請參閱[如何使用 Azure 容器實例](text-analytics-how-to-use-container-instances.md)。 您也可以使用下列 PowerShell 腳本來使用 Azure CLI，這會使用容器映射在您的訂用帳戶上建立 ACI。  在提交第一個要求之前，請等候腳本完成 (大約25-30 分鐘的) 。  由於每個 ACI 資源的 Cpu 最大數目限制，如果您預期提交超過5個大型檔，則請勿選取此選項， (每個要求) 大約5000個字元。
+如需可用性資訊，請參閱[ACI 區域支援](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability)文章。 
 
 > [!NOTE] 
 > Azure 容器實例不包含適用于內建網域的 HTTPS 支援。 如果您需要 HTTPS，您必須手動設定它，包括建立憑證和註冊網域。 您可以在下方找到使用 NGINX 來執行此動作的指示。
@@ -143,7 +144,7 @@ $DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-h
 
 az login
 az account set -s $subscription_name
-az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 5 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
+az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
 
 # Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
 ```

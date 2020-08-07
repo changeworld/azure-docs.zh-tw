@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65b4ede6f4851418bf17d42db5b3215dafa9234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c60c0324b04bca0a8115f4ac884704012e8e1d8c
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995168"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986843"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>條件式存取：需要符合規範的裝置
 
@@ -43,10 +43,10 @@ ms.locfileid: "83995168"
    1. 選取 [完成] 。
 1. 在 [**雲端應用程式] 或 [動作**] 底下  >  ** **，選取 [**所有雲端應用程式**]。
    1. 如果您必須從原則中排除特定應用程式，您可以從 [**選取排除的雲端應用程式**] 底下的 [**排除**] 索引標籤中選擇，然後選擇 [**選取**]
-   1. 選取 [完成] 。
-1. 在 [條件] > [用戶端應用程式 (預覽)] 中，將 [設定] 設定為 [是]，然後選取 [完成]。
+   1. 選取 [完成]。
+1. 在 [**條件**  >  **用戶端應用程式 (預覽] 下) **  >  **選取要套用此原則的用戶端應用程式**，保留選取所有預設值，然後選取 [**完成**]。
 1. 在 [**存取控制**]  >  **[授**與] 底下，選取 [**需要將裝置標示為符合規範**]。
-   1. 選取 [選取] 。
+   1. 選取 [選取]  。
 1. 確認您的設定，並將 [啟用原則] 設定為 [開啟]。
 1. 選取 [建立] 以建立以啟用您的原則。
 

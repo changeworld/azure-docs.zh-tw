@@ -1,14 +1,14 @@
 ---
 title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
-ms.date: 05/20/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8c0f5d4df640fa29f88b3c4c6c0403ad9de97dea
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921685"
+ms.locfileid: "87987098"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
@@ -35,8 +35,9 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 若要在電腦內審核設定，會啟用[虛擬機器擴充](../../../virtual-machines/extensions/overview.md)功能，且該電腦必須具有系統管理的身分識別。 延伸模組會下載適用的原則指派及相對應的設定定義。 識別會在電腦讀取和寫入來賓設定服務時用來進行驗證。 Arc 連線的電腦不需要此延伸模組，因為它包含在 Arc 連線的機器代理程式中。
 
 > [!IMPORTANT]
-> 需要來賓設定延伸模組和受控識別，才能審核 Azure 虛擬機器。 若要 > 必須有來賓設定延伸模組，才能在 Azure 虛擬機器中執行審核。 若要大規模部署擴充功能，請指派下列原則計畫： > 大規模部署擴充功能，請指派下列原則定義： 
->  - [部署必要條件，以在虛擬機器上啟用來賓設定原則](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> 需要來賓設定延伸模組和受控識別，才能審核 Azure 虛擬機器。 若要大規模部署擴充功能，請指派下列原則計畫：
+> 
+> - [部署必要條件，以在虛擬機器上啟用來賓設定原則](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>擴充模組上設定的限制
 
@@ -99,7 +100,7 @@ Azure Arc 所連接的 Azure 外部節點需要與來賓設定服務的連線。
 
 ## <a name="managed-identity-requirements"></a>受控識別需求
 
-方案中的原則會[部署必要條件，以在虛擬機器上啟用來賓設定原則，以](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)啟用系統指派的受控識別（如果不存在的話）。 計畫中有兩個原則定義可管理身分識別建立。 原則定義中的 IF 條件會根據 Azure 中機器資源的目前狀態，確保正確的行為。
+方案中的原則定義會[部署必要條件，以在虛擬機器上啟用來賓設定原則，以](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)啟用系統指派的受控識別（如果不存在的話）。 計畫中有兩個原則定義可管理身分識別建立。 原則定義中的 IF 條件會根據 Azure 中機器資源的目前狀態，確保正確的行為。
 
 如果電腦目前沒有任何受控識別，則有效原則會是： [ \[ 預覽 \] ：新增系統指派的受控識別，以在沒有身分識別的虛擬機器上啟用來賓設定指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
@@ -201,8 +202,8 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 - 了解如何從[來賓設定合規性檢視](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)中檢視每個設定的詳細資料
 - 在 [Azure 原則範例](../samples/index.md)檢閱範例。
-- 檢閱 [Azure 原則定義結構](definition-structure.md)。
-- 檢閱[了解原則效果](effects.md)。
+- 檢閱 [Azure 原則定義結構](./definition-structure.md)。
+- 檢閱[了解原則效果](./effects.md)。
 - 了解如何[以程式設計方式建立原則](../how-to/programmatically-create.md)。
 - 了解如何[取得合規性資料](../how-to/get-compliance-data.md)。
 - 了解如何[補救不符合規範的資源](../how-to/remediate-resources.md)。

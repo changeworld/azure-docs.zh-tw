@@ -1,18 +1,18 @@
 ---
-title: 預覽-將位置節點集區新增至 Azure Kubernetes Service （AKS）叢集
-description: 瞭解如何將點節點集區新增至 Azure Kubernetes Service （AKS）叢集。
+title: 預覽-將位置節點集區新增至 Azure Kubernetes Service (AKS) 叢集
+description: 瞭解如何將點節點集區新增至 Azure Kubernetes Service (AKS) 叢集。
 services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: ce2871883300e9eb135b51fdb2f5566e451084f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dbb003c287a18810c2c14c4f2ea401fa55cca427
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374605"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987285"
 ---
-# <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>預覽-將位置節點集區新增至 Azure Kubernetes Service （AKS）叢集
+# <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>預覽-將位置節點集區新增至 Azure Kubernetes Service (AKS) 叢集
 
 「點節點集區」是由「點」[虛擬機器擴展集][vmss-spot]支援的節點集區。 針對具有 AKS 叢集的節點使用點 Vm，可讓您在 Azure 中利用未運用容量，以節省大量成本。 可用的未運用容量數量會根據許多因素而有所不同，包括節點大小、區域和當日時間。
 
@@ -20,11 +20,11 @@ ms.locfileid: "85374605"
 
 點節點適用于可處理中斷、提早終止或收回的工作負載。 例如，批次處理工作、開發和測試環境，以及大型計算工作負載等工作負載，可能是在「點節點」集區上排程的理想候選項目。
 
-在本文中，您會將次要點節點集區新增至現有的 Azure Kubernetes Service （AKS）叢集。
+在本文中，您會將次要位置節點集區新增至現有的 Azure Kubernetes Service (AKS) 叢集。
 
 本文假設您對 Kubernetes 和 Azure Load Balancer 概念有基本瞭解。 如需詳細資訊，請參閱 [Azure Kubernetes Services (AKS) 的 Kubernetes 核心概念][kubernetes-concepts]。
 
-這項功能目前為預覽狀態。
+此功能目前為預覽狀態。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -32,11 +32,7 @@ ms.locfileid: "85374605"
 
 當您建立叢集以使用點節點集區時，該叢集也必須使用節點集區和*標準*SKU 負載平衡器的虛擬機器擴展集。 建立叢集之後，您也必須新增額外的節點集區，才能使用點節點集區。 稍後的步驟會涵蓋新增其他節點集區，但是您必須先啟用預覽功能。
 
-> [!IMPORTANT]
-> AKS 預覽功能是自助服務，可加入宣告。 其提供用來從我們的社區收集意見反應和 bug。 在預覽中，這些功能不適用於生產環境使用。 公開預覽中的功能落在「最佳」支援之下。 AKS 技術支援小組的協助僅適用于上班時間太平洋時區（PST）。 如需其他資訊，請參閱下列支援文章：
->
-> * [AKS 支援原則][aks-support-policies]
-> * [Azure 支援常見問題集][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="register-spotpoolpreview-preview-feature"></a>註冊 spotpoolpreview 預覽功能
 
@@ -60,7 +56,7 @@ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/s
 az provider register --namespace Microsoft.ContainerService
 ```
 
-### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 擴充功能
+### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 延伸模組
 
 若要建立使用點節點集區的 AKS 叢集，您需要*AKS-preview* CLI 擴充功能版本0.4.32 或更高版本。 請使用 [az extension add][az-extension-add] 命令安裝 aks-preview Azure CLI 擴充功能，然後使用 [az extension update][az-extension-update] 命令檢查是否有任何可用的更新：
 
@@ -85,7 +81,7 @@ az extension update --name aks-preview
 * 點節點集區的標籤*kubernetes.azure.com/scalesetpriority:spot*、污點*kubernetes.azure.com/scalesetpriority=spot:NoSchedule*和系統 pod 將具有反親和性。
 * 您必須新增[對應的 toleration][spot-toleration] ，以排程點節點集區上的工作負載。
 
-## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>將點節點集區新增至 AKS 叢集
+## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>將現成節點集區新增至 AKS 叢集
 
 您必須在已啟用多個節點集區的現有叢集上新增一個位置節點集區。 如需建立具有多個節點集區之 AKS 叢集的詳細資訊，請參閱[這裡][use-multiple-node-pools]。
 
@@ -140,7 +136,7 @@ spec:
 ## <a name="max-price-for-a-spot-pool"></a>點區集區的最大價格
 「[點」實例的定價是以][pricing-spot]區域和 SKU 為依據的變數。 如需詳細資訊，請參閱[Linux][pricing-linux]和[Windows][pricing-windows]的定價。
 
-有了可變的定價，您可以選擇使用最多5個小數位數來設定最大價格（以美元（美元）為單位）。 例如， *0.98765*的值是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為 *-1*，則不會根據價格來收回實例。 實例的價格將會是標準實例的目前價格或價格（以較少者為准），只要有可用的容量和配額。
+有了可變的定價，您可以選擇設定最大價格，以美元為單位， (美元) ，最多可使用5個小數位數。 例如， *0.98765*的值是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為 *-1*，則不會根據價格來收回實例。 實例的價格將會是標準實例的目前價格或價格（以較少者為准），只要有可用的容量和配額。
 
 ## <a name="next-steps"></a>後續步驟
 

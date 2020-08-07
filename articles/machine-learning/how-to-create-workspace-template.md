@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 06ab819065f96508bcc4ebd26371c743c89b9220
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87487797"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986557"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -120,7 +120,7 @@ New-AzResourceGroupDeployment `
 根據預設，在範本中建立的所有資源都是新的。 不過，您也可以選擇使用現有的資源。 藉由提供範本的其他參數，您可以使用現有的資源。 例如，如果您想要使用現有的儲存體帳戶，請將**storageAccountOption**值設為 [**現有**]，並在**storageAccountName**參數中提供儲存體帳戶的名稱。
 
 > [!IMPORTANT]
-> 如果您想要使用現有的 Azure 儲存體帳戶，它不能是 premium 帳戶（Premium_LRS 和 Premium_GRS）。 它也不能有階層式命名空間（與 Azure Data Lake Storage Gen2 一起使用）。 工作區的預設儲存體帳戶不支援 premium 儲存體或階層式命名空間。
+> 如果您想要使用現有的 Azure 儲存體帳戶，它不能是高階帳戶， (Premium_LRS 和 Premium_GRS) 。 它也不能有階層式命名空間 (搭配 Azure Data Lake Storage Gen2) 使用。 工作區的預設儲存體帳戶不支援 premium 儲存體或階層式命名空間。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -750,6 +750,32 @@ New-AzResourceGroupDeployment `
 
     ```text
     /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
+    ```
+
+### <a name="virtual-network-not-linked-to-private-dns-zone"></a>未連結到私人 DNS 區域的虛擬網路
+
+建立具有私人端點的工作區時，此範本會建立名為__privatelink.api.azureml.ms__的私人 DNS 區域。 __虛擬網路連結__會自動新增到此私人 DNS 區域。 只會針對您在資源群組中建立的第一個工作區和私人端點新增連結;如果您在相同的資源群組中建立另一個具有私人端點的虛擬網路和工作區，則第二個虛擬網路可能不會新增至私人 DNS 區域。
+
+若要查看私人 DNS 區域已經存在的虛擬網路連結，請使用下列 Azure CLI 命令：
+
+```azurecli
+az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --resource-group myresourcegroup
+```
+
+若要新增包含另一個工作區和私人端點的虛擬網路，請使用下列步驟：
+
+1. 若要尋找您要新增之網路的虛擬網路識別碼，請使用下列命令：
+
+    ```azurecli
+    az network vnet show --name myvnet --resource-group myresourcegroup --query id
+    ```
+    
+    此命令會傳回類似 ' "/subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet" ' 的值。 儲存此值，並在下一個步驟中使用它。
+
+2. 若要將虛擬網路連結新增至 privatelink.api.azureml.ms 私人 DNS 區域，請使用下列命令。 針對 `--virtual-network` 參數，請使用前一個命令的輸出：
+
+    ```azurecli
+    az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
 ## <a name="next-steps"></a>後續步驟
