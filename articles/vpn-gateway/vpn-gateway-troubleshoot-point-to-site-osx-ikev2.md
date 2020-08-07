@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 閘道：對點對站連線進行疑難排解： Mac OS X 用戶端
-description: P2S Mac OS X VPN 用戶端連線問題的疑難排解步驟
+description: 從 Mac OS X 疑難排解點對站連線能力。請檢查這些設定：伺服器位址、遠端識別碼、本機識別碼、驗證設定和 OS 版本。
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 8dbed35659e409e5e3bcad74b378dba1f71b1f29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae7ca9ad69bc5bea20fc959f86e41439bd01cd5c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998488"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920750"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>針對來自 Mac OS X VPN 用戶端的點對站 VPN 連線問題進行疑難排解
 
@@ -62,5 +62,5 @@ ms.locfileid: "86998488"
   
 3. 如果網路追蹤沒有伺服器回應，請確認您已在 Azure 入口網站網站的 [Azure 閘道設定] 頁面上啟用 IKEv2 通訊協定。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 如需其他協助，請參閱 [Microsoft 支援服務](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。

@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 的邊緣限制 |Microsoft Docs
-description: 描述 Azure Stack 邊緣的系統限制和建議大小。
+description: 瞭解部署和操作 Azure Stack Edge 時的限制和建議大小，包括服務限制、裝置限制和儲存體限制。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 4f7800efb5d4382e8d73c819d950fdfafd10f296
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bbcf3f61121813b91cb951809992d10977a640c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82569832"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922705"
 ---
 # <a name="azure-stack-edge-limits"></a>Azure Stack Edge 限制
 
@@ -29,9 +29,9 @@ ms.locfileid: "82569832"
 
 | 描述 | 值 |
 |---|---|
-|不會。 (每個裝置的檔案) |1 億 |
-|不會。 (每個裝置的共用) |24 |
-|不會。 共用數 |1 |
+|否。 (每個裝置的檔案) |1 億 |
+|否。 (每個裝置的共用) |24 |
+|否。 共用數 |1 |
 |寫入至共用的檔案大小上限| 5 TB |
 
 ## <a name="azure-storage-limits"></a>Azure 儲存體限制

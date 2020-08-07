@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7035a4f6e3fe8a3c104568697fcf323e4c0bd2c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fcde2ed4986b367e35965f6524e7d7727eaa07c9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096266"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926768"
 ---
 # <a name="tutorial-configure-linkedin-learning-for-automatic-user-provisioning"></a>教學課程︰設定 LinkedIn Learning 來自動佈建使用者
 
-本教學課程說明您需要在 LinkedIn Learning 和 Azure Active Directory （Azure AD）中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，將使用者和群組自動布建和取消布建至[LinkedIn Learning](https://learning.linkedin.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教學課程說明您需要在 LinkedIn Learning 和 Azure Active Directory (Azure AD) 中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，將使用者和群組自動布建和取消布建至[LinkedIn Learning](https://learning.linkedin.com/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支援的功能
@@ -33,7 +33,7 @@ ms.locfileid: "87096266"
 > * 當 LinkedIn Learning 中的使用者不再需要存取權時，將其移除
 > * 在 Azure AD 與 LinkedIn Learning 之間保持使用者屬性同步處理
 > * 在 LinkedIn Learning 中布建群組和群組成員資格
-> * [單一登入](linkedinlearning-tutorial.md)LinkedIn Learning （建議選項）
+> *  (建議使用[單一登入](linkedinlearning-tutorial.md)LinkedIn Learning) 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -41,14 +41,14 @@ ms.locfileid: "87096266"
 
 * [Azure AD 租用戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
-* 已啟用 LinkedIn Learning 的核准和 SCIM （透過電子郵件聯絡）。
+* 已啟用 LinkedIn Learning (連絡人的核准和 SCIM，) 電子郵件。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
 1. 了解[佈建服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) \(部分機器翻譯\)。
 2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
 3. 決定要[在 Azure AD 和 LinkedIn Learning 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。 
 
-## <a name="step-2-configure-linkedin-learning-to-support-provisioning-with-azure-ad"></a>步驟 2. 設定 LinkedIn Learning 以支援以 Azure AD 布建
+## <a name="step-2-configure-linkedin-learning-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 LinkedIn Learning 以支援以 Azure AD 布建
 1. 登入[LinkedIn Learning 設定](https://www.linkedin.com/learning-admin/settings/global)。 選取 [ **SCIM 安裝**]，然後選取 [**新增 SCIM**設定]。
 
    ![SCIM 安裝設定](./media/linkedin-learning-provisioning-tutorial/learning-scim-settings.png)
@@ -61,9 +61,9 @@ ms.locfileid: "87096266"
 
    ![SCIM 存取權杖](./media/linkedin-learning-provisioning-tutorial/learning-scim-token.png)
 
-4. 您可以重新發出任何現有的設定（會產生新的權杖），或將其移除。
+4. 您可以重新發出任何現有的設定， (會產生新的權杖) 或將其移除。
 
-## <a name="step-3-add-linkedin-learning-from-the-azure-ad-application-gallery"></a>步驟 3. 從 Azure AD 應用程式資源庫新增 LinkedIn Learning
+## <a name="step-3-add-linkedin-learning-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增 LinkedIn Learning
 
 從 Azure AD 應用程式資源庫新增 LinkedIn Learning，開始管理對 LinkedIn Learning 的布建。 如果您先前已為 SSO 設定 LinkedIn Learning，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
 
@@ -96,7 +96,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[佈建] 索引標籤](common/provisioning-automatic.png)
+    ![佈建索引標籤](common/provisioning-automatic.png)
 
 5. 在 [**管理員認證**] 區段下，輸入 [ `https://api.linkedin.com/scim` **租使用者 URL**]。 輸入稍早在**秘密權杖**中所取得的存取權杖值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 LinkedIn Learning。 如果連線失敗，請確定您的 LinkedIn Learning 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -114,14 +114,14 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
    |屬性|類型|支援篩選|
    |---|---|---|
-   |externalId|字串|&check;|
-   |userName|字串|
-   |name.givenName|字串|
-   |name.familyName|字串|
+   |externalId|String|&check;|
+   |userName|String|
+   |name.givenName|String|
+   |name.familyName|String|
    |displayName|String|
    |addresses[type eq "work"].locality|String|
-   |title|字串|
-   |emails[type eq "work"].value|字串|
+   |title|String|
+   |emails[type eq "work"].value|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|參考|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
 
@@ -131,7 +131,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     |屬性|類型|支援篩選|
     |---|---|---|
-    |displayName|字串|&check;|
+    |displayName|String|&check;|
     |members|參考|
     |externalId|String|
 
@@ -155,7 +155,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 設定佈建後，請使用下列資源來監視您的部署：
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 ## <a name="additional-resources"></a>其他資源

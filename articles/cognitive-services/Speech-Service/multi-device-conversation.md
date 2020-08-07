@@ -1,5 +1,5 @@
 ---
-title: 多重裝置交談（預覽）-語音服務
+title: 多裝置對話 (預覽) -語音服務
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 7c30ee2ef4a6ab0cd4241cac921a59eeadf5ce17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15b69e664ae9a01635afb44d7b6b7c24d7551ce9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401053"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921413"
 ---
-# <a name="what-is-multi-device-conversation-preview"></a>什麼是多重裝置對話（預覽）？
+# <a name="what-is-multi-device-conversation-preview"></a>什麼是多裝置對話 (預覽) ？
 
 **多重裝置交談**可讓您輕鬆地在多個用戶端之間建立語音或文字交談，並協調其間傳送的訊息。
 
@@ -27,7 +27,7 @@ ms.locfileid: "81401053"
 - 輕鬆地從每個用戶端轉譯音訊，並使用選擇性的翻譯將轉譯傳送給其他使用者。
 - 使用選擇性的轉譯，輕鬆地在用戶端之間傳送文字訊息。
 
-您可以建立可跨裝置陣列運作的功能或解決方案。 每個裝置都可以獨立地將訊息（音訊或立即訊息的轉譯）傳送給所有其他裝置。
+您可以建立可跨裝置陣列運作的功能或解決方案。 每個裝置都可以獨立傳送 (音訊或立即訊息的轉譯) 到所有其他裝置的訊息。
 
 雖然[**對話**](conversation-transcription.md)轉譯是在具有多重通道麥克風陣列的單一裝置上運作，**多裝置交談**適用于具有多個裝置的案例，每個裝置都有一個麥克風。
 
@@ -37,10 +37,10 @@ ms.locfileid: "81401053"
 ## <a name="key-features"></a>主要功能
 
 - **即時**轉譯–每個人都會收到對話的文字記錄，讓他們可以即時追蹤文字，或儲存以供稍後使用。
-- **即時翻譯**–提供超過60種支援的文字翻譯[語言](language-support.md#text-languages)，使用者可以將交談轉譯成其慣用的語言。
+- **即時翻譯**–提供超過60種支援的文字翻譯[語言](language-support.md#text-languages)，使用者可以將交談轉譯為其偏好的語言 (s) 。
 - **可讀取**的文字記錄–轉譯和翻譯很容易遵循，標點符號和句子也會中斷。
 - **語音或文字輸入**–每個使用者都可以在自己的裝置上說話或輸入，視為參與者所選語言啟用的語言支援功能而定。 請參閱[語言支援](language-support.md#speech-to-text)。
-- **訊息轉送**-多裝置交談服務會將一個用戶端所傳送的訊息，以其選擇的語言散發給其他使用者。
+- **訊息轉送**-多裝置交談服務會將一個用戶端所傳送的訊息，以其選擇的語言 () 散發給所有人。
 - **訊息識別**–使用者在交談中收到的每則訊息都會加上傳送的使用者昵稱。
 
 ## <a name="use-cases"></a>使用案例
@@ -60,13 +60,13 @@ ms.locfileid: "81401053"
 您也可以在螢幕上和觀眾成員的裝置上，提供簡報和演講的標題。 當物件與對話程式碼聯結之後，他們就可以在自己的裝置上以慣用的語言查看文字記錄。
 
 > [!NOTE]
-> 若要查看範例，請參閱[簡報 Translator](https://www.microsoft.com/translator/apps/presentation-translator/)，這是使用多裝置對話服務的 PowerPoint 增益集。 您可以從[這裡](https://www.microsoft.com/download/details.aspx?id=55024)下載。
+> 若要查看範例，請參閱[簡報 Translator](https://www.microsoft.com/translator/apps/presentation-translator/)，這是使用多裝置對話服務的 PowerPoint 增益集。 您可以從[這裡](https://download.cnet.com/s/powerpoint-add-in/)下載。
 
 ## <a name="how-it-works"></a>運作方式
 
-所有用戶端都會使用語音 SDK 來建立或加入交談。 語音 SDK 會與多裝置對話服務互動，以管理交談的存留期，包括參與者清單、每個用戶端選擇的語言和傳送的訊息。  
+所有用戶端都會使用語音 SDK 來建立或加入交談。 語音 SDK 會與多裝置對話服務互動，以管理交談的存留期，包括參與者清單、每個用戶端選擇的語言 () 和傳送的訊息。  
 
-每個用戶端都可以傳送音訊或立即訊息。 服務會使用「語音辨識」將音訊轉換成文字，並依自己的方式傳送立即訊息。 如果用戶端選擇不同的語言，則服務會將所有訊息轉譯為每個用戶端的指定語言。
+每個用戶端都可以傳送音訊或立即訊息。 服務會使用「語音辨識」將音訊轉換成文字，並依自己的方式傳送立即訊息。 如果用戶端選擇不同的語言，則服務會將所有訊息轉譯為每個用戶端的指定語言 (s) 。
 
 ![多裝置對話總覽圖表](media/scenarios/multi-device-conversation.png)
 

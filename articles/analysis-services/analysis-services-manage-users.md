@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361484"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926173"
 ---
 # <a name="authentication-and-user-permissions"></a>驗證和使用者權限
 
@@ -68,7 +68,7 @@ Excel 使用者可以使用 Windows 帳戶、組織識別碼 (電子郵件地址
 
 ![Azure 入口網站中的存取控制](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-此層級的角色會套用到使用者或帳戶，讓他們可在入口網站或使用 Azure Resource Manager 範本完成需要執行的工作。 若要深入了解，請參閱[角色型存取控制](../role-based-access-control/overview.md)。 
+此層級的角色會套用到使用者或帳戶，讓他們可在入口網站或使用 Azure Resource Manager 範本完成需要執行的工作。 若要深入瞭解，請參閱[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)。 
 
 ## <a name="database-roles"></a>資料庫角色
 
@@ -81,4 +81,4 @@ Excel 使用者可以使用 Windows 帳戶、組織識別碼 (電子郵件地址
 [使用 Azure Active Directory 群組來管理資源的存取權](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [管理資料庫角色和使用者](analysis-services-database-users.md)  
 [管理伺服器管理員](analysis-services-server-admins.md)  
-[角色型存取控制](../role-based-access-control/overview.md)  
+[Azure 角色型存取控制 (Azure RBAC) ](../role-based-access-control/overview.md)  

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8b09293f80b5aee2dd76abba3f165a50a5eeee5
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4fd7ce0229d5e26bc4bf3b05f7b97d20d2a23dff
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799135"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927193"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 新增功能的封存檔
 
@@ -1106,7 +1106,7 @@ Azure AD 的應用程式現在可以註冊並使用含有靜態查詢參數的�
 
 我們已更新 Azure AD 佈建體驗，現在包含新的進度列來顯示使用者佈建流程的進度。 這項更新的體驗還提供相關資訊，包括本次週期內佈建的使用者數目，以及目前為止佈建的使用者數目。
 
-如需詳細資訊，請參閱[檢查使用者佈建的狀態](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)。
+如需詳細資訊，請參閱[檢查使用者佈建的狀態](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)。
 
 ---
 

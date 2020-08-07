@@ -3,19 +3,19 @@ title: 將 SQL Server 資料庫備份到 Azure
 description: 本文說明如何將 SQL Server 備份至 Azure。 本文也將說明 SQL Server 復原。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: df8543d7f083dd2bf9d2421b4808de5b60a51e30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28644065619771069e556c941d2c5a77626e1ba6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513773"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922892"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>關於 Azure VM 中的 SQL Server 備份
 
 [Azure 備份](backup-overview.md)提供以資料流程為基礎的特製化解決方案，以備份在 Azure vm 中執行的 SQL Server。 此解決方案與 Azure 備份的零基礎結構備份、長期保留和集中管理的優點一致。 此外，它還提供下列優點，專門用於 SQL Server：
 
 1. 支援所有備份類型的工作負載感知備份-完整、差異和記錄
-2. 使用經常記錄備份的 15-最低 RPO （復原點目標）
+2. 使用經常記錄備份的復原點目標) 15-最低 RPO (
 3. 時間點恢復最多一秒
 4. 個別資料庫層級的備份與還原
 
@@ -40,7 +40,7 @@ ms.locfileid: "86513773"
 開始之前，請確認以下事項：
 
 1. 請確定您具有在 Azure 中執行的 SQL Server 執行個體。 您可以在 Marketplace 中[快速建立 SQL Server 執行個體](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md)。
-2. 檢閱[功能考量](sql-support-matrix.md#feature-consideration-and-limitations)和[案例支援](sql-support-matrix.md#scenario-support)。
+2. 請參閱[功能考慮](sql-support-matrix.md#feature-considerations-and-limitations)和[案例支援](sql-support-matrix.md#scenario-support)。
 3. [檢閱關於此案例的常見問題](faq-backup-sql-server.md)。
 
 ## <a name="set-vm-permissions"></a>設定 VM 權限
@@ -66,11 +66,11 @@ ms.locfileid: "86513773"
 
       ![在 [登入 - 新增] 對話方塊中，選取 [搜尋]](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Windows 虛擬服務帳戶 **NT SERVICE\AzureWLBackupPluginSvc** 已於虛擬機器註冊期間和 SQL 探索階段建立。 請輸入 [輸入要選取的物件名稱]**** 中顯示的帳戶名稱。 選取 [檢查名稱]**** 以解析名稱。 按一下 [確定]。
+  4. Windows 虛擬服務帳戶 **NT SERVICE\AzureWLBackupPluginSvc** 已於虛擬機器註冊期間和 SQL 探索階段建立。 請輸入 [輸入要選取的物件名稱]**** 中顯示的帳戶名稱。 選取 [檢查名稱]**** 以解析名稱。 按一下 [確定]  。
 
       ![選取 [檢查名稱] 以解析未知的服務名稱](./media/backup-azure-sql-database/check-name.png)
 
-  5. 在 [伺服器角色]**** 中，確定已選取**系統管理員**角色。 按一下 [確定]。 現在應該存在必要權限。
+  5. 在 [伺服器角色]**** 中，確定已選取**系統管理員**角色。 按一下 [確定]  。 現在應該存在必要權限。
 
       ![確定已選取系統管理員伺服器角色](./media/backup-azure-sql-database/sysadmin-server-role.png)
 

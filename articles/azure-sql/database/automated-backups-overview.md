@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810257"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921940"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自動備份-Azure SQL Database & SQL 受控執行個體
 
@@ -111,7 +111,7 @@ SQL Database 和 SQL 受控執行個體會計算已使用的備份儲存體總�
 
 - 將[備份保留期限](#change-the-pitr-backup-retention-period-by-using-the-azure-portal)縮減為您需求的最小值。
 - 請避免執行大型寫入作業，例如索引重建，而不是您所需的頻率。
-- 對於大型資料載入作業，請考慮使用叢集資料行存放區[索引](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes)，並遵循相關的[最佳作法](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)，並（或）減少非叢集索引的數目。
+- 對於大型資料載入作業，請考慮使用叢集資料行存放區[索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)，並遵循相關的[最佳作法](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)，並（或）減少非叢集索引的數目。
 - 在一般用途服務層級中，布建的資料儲存體會比備份儲存體的價格便宜。 如果您持續過高的備份儲存體成本，您可以考慮增加資料儲存空間，以儲存在備份儲存體上。
 - 在應用程式邏輯中使用 TempDB，而不是永久資料表來儲存暫存結果和/或暫時性資料。
 - 盡可能使用本機-多餘的備份儲存體 (例如開發/測試環境) 

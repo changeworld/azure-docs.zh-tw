@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 閘道：關於 P2S 路由
-description: 本文將協助您了解點對站 VPN 路由如何運作。
+description: 瞭解 Azure 點對站 VPN 路由行為，這取決於用戶端作業系統、用於連線的通訊協定，以及虛擬網路的連接方式。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: kumud
-ms.openlocfilehash: 536e1e57af16a87fba85323e9448bfb904d56384
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8ee75f80ea2e1ee379561b743c2b4add4ef1d7b9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027864"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926904"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>關於點對站 VPN 路由
 
@@ -114,7 +114,7 @@ Azure 目前支援兩種遠端存取通訊協定，即 IKEv2 和 SSTP。 許多�
 
 用戶端如果使用 Windows 或另一個支援的 OS，將可以存取所有使用站對站 VPN 連線來連線的 VNet，但必須手動將所連線 VNet 的路由新增至 Windows 用戶端。
 
-![多個 Vnet 和 S2S （BGP）](./media/vpn-gateway-about-point-to-site-routing/4.jpg "多個 Vnet 和 S2S BGP")
+![多個 Vnet 和 S2S (BGP) ](./media/vpn-gateway-about-point-to-site-routing/4.jpg "多個 Vnet 和 S2S BGP")
 
 ### <a name="address-space"></a>位址空間
 
@@ -168,7 +168,7 @@ Windows 和非 Windows 用戶端只能存取 VNet1。
 
 Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Site1 的路由新增至用戶端。 非 Windows 用戶端可以存取 VNet，也可以存取內部部署的分公司。
 
-![一個 VNet 和一個分公司（BGP）](./media/vpn-gateway-about-point-to-site-routing/6.jpg "一個 VNet 和一個分公司")
+![一個 VNet 和一個分公司 (BGP) ](./media/vpn-gateway-about-point-to-site-routing/6.jpg "一個 VNet 和一個分公司")
 
 ### <a name="address-space"></a>位址空間
 
@@ -249,6 +249,6 @@ Windows 用戶端可以存取 VNet 和分公司 (Site1)，但必須手動將 Sit
 
 * 非 Windows 用戶端可以存取 VNet1、VNet2、VNet3 及 Site1。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 請參閱[使用 Azure 入口網站來建立 P2S VPN](vpn-gateway-howto-point-to-site-resource-manager-portal.md) 以開始建立 P2S VPN。

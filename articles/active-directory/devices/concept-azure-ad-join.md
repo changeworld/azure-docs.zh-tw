@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3839c7b87e5d07368727d037b585965dce91303a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31374b851d90e43e7380024923c3ad025859b7a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058096"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923725"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD 加入裝置
 
@@ -28,8 +28,8 @@ Azure AD Join 適用於想要成為雲端優先或僅限雲端的組織。 任�
 | **主要對象** | 適用於僅限雲端和混合式組織。 |
 |   | 適用於組織中的所有使用者 |
 | **裝置擁有權** | 組織 |
-| **作業系統** | 所有 Windows 10 裝置 |
-|   | [在 Azure 中執行的 Windows Server 2019 虛擬機器](howto-vm-sign-in-azure-ad-windows.md)（不支援 Server core） |
+| **作業系統** | Windows 10 家用版以外的所有 Windows 10 裝置 |
+|   | [在 Azure 中執行的 Windows Server 2019 虛擬機器](howto-vm-sign-in-azure-ad-windows.md) (不支援伺服器核心) |
 | **佈建** | 自助：Windows OOBE 或設定 |
 |   | 大量註冊 |
 |   | Windows Autopilot |
@@ -62,7 +62,7 @@ Azure AD Join 適用於想要成為雲端優先或僅限雲端的組織。 任�
 - 您想要管理 Azure AD 中的使用者群組，而不是 Active Directory 中的使用者群組。 例如，此案例可以套用於季節工、約聘員工或學生。
 - 您要為內部部署基礎結構受到限制的遠端分公司工作者提供加入功能。
 
-您可以設定適用於 Windows 10 裝置的 Azure AD 已加入裝置。
+除了 Windows 10 家用版以外，您可以為所有 Windows 10 裝置設定 Azure AD 加入的裝置。
 
 Azure AD 加入裝置的目標是簡化：
 

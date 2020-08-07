@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: f09d2604a1dbf06caebb604ba2d63a09560fd33b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f3ec284de3d43e75bd0832b1d98bb9d319a7ca0e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835913"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925306"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 作業安全性概觀
 
@@ -68,7 +68,7 @@ Azure AD 還隨附一套完整的[身分識別管理功能](/azure/security/secu
 - [自助密碼管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [自助式群組管理](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [具有特殊權限的帳戶管理](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [角色型存取控制](/azure/role-based-access-control/overview)
+- [Azure 角色型存取控制 (Azure RBAC) ](/azure/role-based-access-control/overview)
 - [應用程式使用情況監視](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [豐富的稽核功能](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [安全性監視和警示](/azure/operations-management-suite/oms-security-responding-alerts)

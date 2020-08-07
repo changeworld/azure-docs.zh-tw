@@ -1,6 +1,6 @@
 ---
 title: 針對 Azure 資料箱磁碟進行疑難排解 | Microsoft Docs
-description: 說明如何針對在 Azure 資料箱磁碟中察覺的問題進行疑難排解。
+description: 瞭解如何使用記錄，針對部署 Azure 資料箱磁碟時可能會出現的驗證問題進行疑難排解。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 35b4b206de9c16d66387135b0ca75b6aaeb7c744
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565008"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925537"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>使用記錄對 Azure 資料箱磁碟中的驗證問題進行疑難排解
 

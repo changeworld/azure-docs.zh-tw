@@ -1,17 +1,17 @@
 ---
-title: 在 Azure Kubernetes Service 上啟用 Ultra 磁片支援（AKS）
-description: 瞭解如何在 Azure Kubernetes Service （AKS）叢集中啟用和設定 Ultra 磁片
+title: '在 Azure Kubernetes Service (AKS 上啟用 Ultra 磁片支援) '
+description: 瞭解如何在 Azure Kubernetes Service (AKS) 叢集中啟用和設定 Ultra 磁片
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 46be67a415f67e260262e5b80e5a1dad534aea79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 540269c7ecf42a7e022aa2efb048df7b11587d1a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531245"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926734"
 ---
-# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>在 Azure Kubernetes Service 上使用 Azure ultra 磁片（預覽）
+# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>在 Azure Kubernetes Service (preview 上使用 Azure ultra 磁片) 
 
 [Azure ultra 磁片](../virtual-machines/linux/disks-enable-ultra-ssd.md)為具狀態應用程式提供高輸送量、高 IOPS 以及一致的低延遲磁片儲存體。 Ultra 磁片的一個主要優點是能夠以動態方式變更 SSD 的效能，以及您的工作負載，而不需要重新開機您的代理程式節點。 Ultra 磁片適用于需要大量資料的工作負載。
 
@@ -22,7 +22,7 @@ ms.locfileid: "86531245"
 > [!IMPORTANT]
 > Azure ultra 磁片需要部署于可用性區域中的 nodepools，以及支援這些磁片的區域，以及僅限特定的 VM 系列。 請參閱[**Ultra 磁片 GA 範圍和限制**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations)。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 - 請確定已 `EnableUltraSSD` 啟用功能旗標。
 - 請確定您已安裝最新的 `aks-preview` [CLI 擴充][az-extension-add]功能。
@@ -97,7 +97,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster -l westus2 --node-vm-size S
 
 
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
 如果您想要建立新的節點集區，但不支援 ultra 磁片，您可以省略自訂參數來這麼做 `--aks-custom-headers` 。
@@ -232,7 +232,7 @@ Events:
 ## <a name="next-steps"></a>後續步驟
 
 - 如需 ultra 磁片的詳細資訊，請參閱[使用 Azure ultra 磁片](../virtual-machines/linux/disks-enable-ultra-ssd.md)。
-- 如需儲存體最佳做法的詳細資訊，請參閱[儲存體和備份在 Azure Kubernetes Service 中的最佳作法（AKS）][operator-best-practices-storage]
+- 如需儲存體最佳做法的詳細資訊，請參閱[Azure Kubernetes Service (AKS 中儲存和備份的最佳作法) ][operator-best-practices-storage]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes

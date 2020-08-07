@@ -1,6 +1,6 @@
 ---
 title: 關於在 Azure 可用性區域中的區域備援虛擬網路閘道
-description: 了解在可用性區域中的 VPN 閘道和 ExpressRoute 閘道。
+description: 深入瞭解 Azure 可用性區域中的 VPN 和 ExpressRoute 閘道，為 VNet 閘道新增復原、擴充性和更高的可用性。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -9,12 +9,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: f1bbaab99b6422de4053839e2099869d2d08db95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a0a3d59477511ebf019e2c2019786788a92ad70
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75864293"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922688"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>關於在 Azure 可用性區域中的區域備援虛擬網路閘道
 

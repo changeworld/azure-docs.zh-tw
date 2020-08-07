@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 0945f89e3c18ab20ece0b493a49ec9f7f31e4e13
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529189"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925000"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 私人 DNS 常見問題集
 
@@ -38,7 +38,7 @@ ms.locfileid: "87529189"
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>屬於不同訂用帳戶的虛擬網路是否可以連結至私人區域？
 
-是。 您必須在虛擬網路及私人 DNS 區域上皆擁有寫入作業權限。 寫入權限可以授與數個 Azure 角色。 例如，傳統網路參與者 Azure 角色具有虛擬網路的寫入權限，而私人 DNS 區域參與者角色具有私人 DNS 區域的寫入權限。 如需 Azure 角色的詳細資訊，請參閱[角色型存取控制](../role-based-access-control/overview.md)。
+是。 您必須在虛擬網路及私人 DNS 區域上皆擁有寫入作業權限。 寫入權限可以授與數個 Azure 角色。 例如，傳統網路參與者 Azure 角色具有虛擬網路的寫入權限，而私人 DNS 區域參與者角色具有私人 DNS 區域的寫入權限。 如需 Azure 角色的詳細資訊，請參閱 azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/overview.md)。
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>當您刪除虛擬機器時，會自動刪除私人區域中自動註冊的虛擬機器 DNS 記錄嗎？
 
@@ -60,7 +60,7 @@ ms.locfileid: "87529189"
 
 否。 當您刪除連結的虛擬網路，而不先將它從私人區域取消連結時，您的刪除作業會成功，且 DNS 區域的連結會自動清除。
 
-## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>即使私人區域（例如 private.contoso.com）已連結至虛擬網路，使用預設 FQDN （internal.cloudapp.net）的 DNS 解析仍可正常作用嗎？
+## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>使用預設 FQDN 的 DNS 解析 (internal.cloudapp.net) 仍然可以正常執行，即使私人區域 (例如，private.contoso.com) 已連結至虛擬網路呢？
 
 是。 私人區域不會取代預設的 Azure 提供的 internal.cloudapp.net 區域。 無論是仰賴由 Azure 所提供的 internal.cloudapp.net 或您自己的私人區域，都請使用您想要解析之目標區域的 FQDN。
 

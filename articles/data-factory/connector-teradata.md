@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 182e04625f829304168bfdefe000bb8797646c75
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81418026"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926887"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Teradata 有利複製資料
+
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
 >
 > * [第 1 版](v1/data-factory-onprem-teradata-connector.md)
@@ -71,8 +72,9 @@ Teradata 連結服務支援下列屬性：
 
 | 屬性 | 描述 | 預設值 |
 |:--- |:--- |:--- |
-| CharacterSet | 要用於會話的字元集。 例如， `CharacterSet=UTF16` 。<br><br/>此值可以是使用者定義的字元集，或是下列其中一個預先定義的字元集： <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS （Windows、DOS 相容、KANJISJIS_0S）<br/>-EUC （Unix 相容，KANJIEC_0U）<br/>-IBM 大型主機（KANJIEBCDIC5035_0I）<br/>-KANJI932_1S0<br/>-BIG5 （TCHBIG5_1R0）<br/>-GB （SCHGB2312_1T0）<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean （HANGULKSC5601_2R4）<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | 預設值為 `ASCII`。 |
-| MaxRespSize |SQL 要求的回應緩衝區大小上限（以 kb 為單位）（Kb）。 例如， `MaxRespSize=‭10485760‬` 。<br/><br/>針對 Teradata 資料庫16.00 版或更新版本，最大值為7361536。 若為使用舊版的連接，最大值為1048576。 | 預設值為 `65536`。 |
+| UseDataEncryption | 指定是否要加密與 Teradata 資料庫的所有通訊。 允許的值為0或1。<br><br/>- **0 (停用，預設) **：只加密驗證資訊。<br/>- **1 (啟用) **：加密在驅動程式與資料庫之間傳遞的所有資料。 | 否 |
+| CharacterSet | 要用於會話的字元集。 例如， `CharacterSet=UTF16` 。<br><br/>此值可以是使用者定義的字元集，或是下列其中一個預先定義的字元集： <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JIS (Windows、與 DOS 相容，KANJISJIS_0S) <br/>-EUC (Unix 相容，KANJIEC_0U) <br/>-IBM 大型主機 (KANJIEBCDIC5035_0I) <br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0) <br/>-GB (SCHGB2312_1T0) <br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-NetworkKorean (HANGULKSC5601_2R4) <br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | 預設值為 `ASCII`。 |
+| MaxRespSize |SQL 要求的回應緩衝區大小上限（以 kb 為單位） (Kb) 。 例如， `MaxRespSize=‭10485760‬` 。<br/><br/>針對 Teradata 資料庫16.00 版或更新版本，最大值為7361536。 若為使用舊版的連接，最大值為1048576。 | 預設值為 `65536`。 |
 
 **使用基本驗證的範例**
 
@@ -203,16 +205,16 @@ Teradata 連結服務支援下列屬性：
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 複製活動來源的類型屬性必須設定為 `TeradataSource` 。 | 是 |
-| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如 `"SELECT * FROM MyTable"`。<br>當您啟用資料分割載入時，您必須在查詢中攔截任何對應的內建資料分割參數。 如需範例，請參閱[從 Teradata 平行複製](#parallel-copy-from-teradata)一節。 | 否（如果已指定資料集中的資料表） |
-| partitionOptions | 指定用來從 Teradata 載入資料的資料分割選項。 <br>允許值為： **None** （預設值）、 **Hash**和**DynamicRange**。<br>當分割區選項已啟用（也就是不是 `None` ）時，從 Teradata 並行載入資料的平行處理原則程度，是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
+| 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如 `"SELECT * FROM MyTable"`。<br>當您啟用資料分割載入時，您必須在查詢中攔截任何對應的內建資料分割參數。 如需範例，請參閱[從 Teradata 平行複製](#parallel-copy-from-teradata)一節。 | 如果已指定資料集中的資料表，則不 ()  |
+| partitionOptions | 指定用來從 Teradata 載入資料的資料分割選項。 <br>允許值為： **None** (預設) 、 **Hash**和**DynamicRange**。<br>當分割區選項已啟用 (也就是不 `None`) 時，從 Teradata 並行載入資料的平行處理原則程度是由 [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 複製活動上的設定所控制。 | 否 |
 | partitionSettings | 指定資料分割的設定群組。 <br>當分割選項不是 `None` 時套用。 | 否 |
-| partitionColumnName | 針對 [平行複製的範圍分割或雜湊分割]，指定將使用的來源資料行名稱。 如果未指定，則會自動偵測資料表的主要索引，並使用它做為資料分割資料行。 <br>當資料分割選項為或時套用 `Hash` `DynamicRange` 。 如果您使用查詢來抓取來源資料，請攔截 `?AdfHashPartitionCondition` 或 `?AdfRangePartitionColumnName` 在 WHERE 子句中。 請參閱[Parallel copy From Teradata](#parallel-copy-from-teradata)一節中的範例。 | 否 |
+| partitionColumnName | 針對 [平行複製的範圍分割或雜湊分割]，指定將使用的來源資料行名稱。 如果未指定，則會 autodetected 資料表的主要索引，並當做資料分割資料行使用。 <br>當資料分割選項為或時套用 `Hash` `DynamicRange` 。 如果您使用查詢來抓取來源資料，請攔截 `?AdfHashPartitionCondition` 或 `?AdfRangePartitionColumnName` 在 WHERE 子句中。 請參閱[Parallel copy From Teradata](#parallel-copy-from-teradata)一節中的範例。 | 否 |
 | partitionUpperBound | 從分割資料行複製出資料時的最大值。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfRangePartitionUpbound`。 如需範例，請參閱[Parallel copy From Teradata](#parallel-copy-from-teradata)一節。 | 否 |
 | partitionLowerBound | 從分割資料行複製出資料時的最小值。 <br>當分割選項是 `DynamicRange` 時套用。 如果您使用查詢來取出來源資料，請在 WHERE 子句中加上 `?AdfRangePartitionLowbound`。 如需範例，請參閱[Parallel copy From Teradata](#parallel-copy-from-teradata)一節。 | 否 |
 
 > [!NOTE]
 >
-> `RelationalSource`仍然支援類型複製來源，但它不支援 Teradata 的新內建平行載入（資料分割選項）。 不過，我們建議您使用新的資料集。
+> `RelationalSource`仍然支援類型複製來源，但不支援從 Teradata (分割區選項) 的新內建平行載入。 不過，我們建議您使用新的資料集。
 
 **範例：使用沒有分割區的基本查詢來複製資料**
 
@@ -321,11 +323,11 @@ Data Factory Teradata 連接器會提供內建的資料分割，以平行方式�
 | Interval Year |不支援。 在來源查詢中套用明確轉換。 |
 | 間隔年至月 |不支援。 在來源查詢中套用明確轉換。 |
 | Number |Double |
-| 期間（日期） |不支援。 在來源查詢中套用明確轉換。 |
-| 期間（時間） |不支援。 在來源查詢中套用明確轉換。 |
-| 期間（使用時區的時間） |不支援。 在來源查詢中套用明確轉換。 |
+| 期間 (日期)  |不支援。 在來源查詢中套用明確轉換。 |
+| 期間 (時間)  |不支援。 在來源查詢中套用明確轉換。 |
+| 具有時區的期間 (時間)  |不支援。 在來源查詢中套用明確轉換。 |
 | Period (Timestamp) |不支援。 在來源查詢中套用明確轉換。 |
-| Period （含時區的時間戳記） |不支援。 在來源查詢中套用明確轉換。 |
+| 具有時區的期間 (時間戳記)  |不支援。 在來源查詢中套用明確轉換。 |
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | 時區的時間 |TimeSpan |

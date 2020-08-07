@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ecd7b0bc34d532e7d748bc9468d3a155b9aa2ad2
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901737"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927210"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>針對 Windows 中的 Azure 檔案服務問題進行疑難排解
 
@@ -305,27 +305,27 @@ Net use 命令會將斜線 (/) 解譯為命令列選項。 如果您的使用者
  
 例如，您可以將它設定為 0x100000，然後看看效能是否有變好。
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>啟用 Azure Active Directory 網域服務 (AAD DS) 驗證時發生錯誤 AadDsTenantNotFound，Azure 檔案儲存體「找不到使用租使用者識別碼 aad 租使用者識別碼的 Active tenant」
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-azure-ad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>啟用 Azure Active Directory 網域服務 (時發生錯誤 AadDsTenantNotFound Azure AD DS) 驗證 Azure 檔案儲存體 "找不到使用租使用者識別碼 aad 租使用者識別碼的 Active tenant
 
 ### <a name="cause"></a>原因
 
-當您嘗試在儲存體帳戶上[啟用 Azure Active Directory Domain Services (AZURE AD DS) 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)，但未在相關聯訂用帳戶的 aad 租使用者上建立[aad DS Azure 檔案儲存體](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)時，就會發生錯誤 AadDsTenantNotFound。  
+當您嘗試在 Azure 檔案儲存體的儲存體帳戶上[啟用 Azure Active Directory Domain Services (AZURE AD DS) 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)時，如果未在相關聯訂用帳戶的 Azure AD 租使用者上建立[ (網域服務 Azure AD) ds Azure AD](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) ，就會發生錯誤 AadDsTenantNotFound。  
 
 ### <a name="solution"></a>解決方法
 
-在您儲存體帳戶部署所在訂用帳戶的 AAD 租用戶上啟用 AAD DS。 您必須有 AAD 租用戶的系統管理員權限，才能建立受控網域。 如果您不是 Azure AD 租用戶的系統管理員，請連絡系統管理員，並遵循[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) 的逐步指導。
+在您的儲存體帳戶部署所在的訂用帳戶 Azure AD 租使用者上，啟用 Azure AD DS。 您需要 Azure AD 租使用者的系統管理員許可權，才能建立受控網域。 如果您不是 Azure AD 租用戶的系統管理員，請連絡系統管理員，並遵循[使用 Azure 入口網站啟用 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) 的逐步指導。
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>錯誤「發生系統錯誤1359。 Azure Active Directory 網域服務 (AAD DS) 驗證已啟用時，透過 SMB 對檔案共用的存取所收到的內部錯誤
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>錯誤「發生系統錯誤1359。 內部錯誤「透過 SMB 存取使用 Azure Active Directory 網域服務的檔案共用， (Azure AD DS) 驗證已啟用
 
 ### <a name="cause"></a>原因
 
-錯誤「發生系統錯誤1359。 當您嘗試使用以數位字元開頭的網域 DNS 名稱，針對 AAD DS 啟用 AAD DS 驗證來連線到檔案共用時，就會發生內部錯誤。 例如，如果您的 AAD DS 網域 DNS 名稱是 "1domain"，當您嘗試使用 AAD 認證掛接檔案共用時，就會收到此錯誤。 
+錯誤「發生系統錯誤1359。 當您嘗試使用針對具有以數位字元開頭之網域 DNS 名稱的 Azure AD DS 啟用的 Azure AD DS 驗證連線到檔案共用時，就會發生內部錯誤。 例如，如果您的 Azure AD DS 網域 DNS 名稱是 "1domain"，當您嘗試使用 Azure AD 認證來掛接檔案共用時，就會收到此錯誤。 
 
 ### <a name="solution"></a>解決方法
 
-目前，您可以考慮使用適用于下列規則的新網域 DNS 名稱來重新部署 AAD DS：
+目前，您可以考慮使用適用于下列規則的新網域 DNS 名稱，重新部署您的 Azure AD DS：
 - 名稱的開頭不能是數位字元。
 - 名稱的長度必須介於3到63個字元之間。
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: 28453af7eb38f4195774d70c5960eacc8467dedd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a3293cac15636ddf29df24cc1eff471aee25ec1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416999"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926530"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理員常見問題集 (FAQ)
 
@@ -124,7 +124,7 @@ DNS 查詢進入流量管理員時，它會在稱為存留時間 (TTL) 的回應
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>為什麼強烈建議客戶建立巢狀設定檔，而不是在啟用地理路由的設定檔下新增端點？
 
-在使用地理路由方法的設定檔內，一個區域只能指派給一個端點。 如果該端點不是已連結子設定檔的巢狀型別，而該端點變成狀況不良，流量管理員會繼續將流量傳送給它，因為沒有傳送任何流量的替代方式並不會有任何改善。 流量管理員不會容錯移轉至另一個端點，即使指派的區域是指派給狀況不良之端點的區域的「父系」（例如，如果端點的西班牙區域狀況不良，我們也不會容錯移轉至另一個端點，並將其指派為歐洲地區）。 這是為了確保流量管理員會顧及客戶在其設定檔中已設定的地理界限。 若要在端點變成狀況不良時能夠容錯移轉至另一個端點，建議將地理區域指派給內有多個端點的巢狀設定檔，而不是指派給個別的端點。 如此一來，如果巢狀子設定檔中的端點失敗，流量就可以容錯移轉至相同巢狀子設定檔內的另一個端點。
+在使用地理路由方法的設定檔內，一個區域只能指派給一個端點。 如果該端點不是已連結子設定檔的巢狀型別，而該端點變成狀況不良，流量管理員會繼續將流量傳送給它，因為沒有傳送任何流量的替代方式並不會有任何改善。 流量管理員不會容錯移轉至另一個端點，即使指派的區域是指派給狀況不良之端點的區域的「父系」 (例如，如果具有西班牙地區的端點狀況不良，我們就不會容錯移轉至另一個端點，並將其指派為歐洲地區，並) 。 這是為了確保流量管理員會顧及客戶在其設定檔中已設定的地理界限。 若要在端點變成狀況不良時能夠容錯移轉至另一個端點，建議將地理區域指派給內有多個端點的巢狀設定檔，而不是指派給個別的端點。 如此一來，如果巢狀子設定檔中的端點失敗，流量就可以容錯移轉至相同巢狀子設定檔內的另一個端點。
 
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>支援此路由類型的 API 版本有任何限制嗎？
 
@@ -147,7 +147,7 @@ DNS 查詢進入流量管理員時，它會在稱為存留時間 (TTL) 的回應
 
 -    您不能有重疊的位址範圍，因為每個 IP 都只需要對應至單一端點
 -    開始位址不能超過結束位址
--    在 CIDR 標記法的案例中，'/' 之前的 IP 位址應該是該範圍的起始位址（例如，1.2.3.0/24 有效，但 1.2.3.4.4/24 無效）
+-    若是 CIDR 標記法，'/' 前面的 IP 位址應該是該範圍的起始位址 (例如，1.2.3.0/24 是有效的，但是 1.2.3.4.4/24 無效) 
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>使用「子網路」路由時，如何指定後援端點？
 
@@ -155,7 +155,7 @@ DNS 查詢進入流量管理員時，它會在稱為存留時間 (TTL) 的回應
 
 ### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>如果「子網路」路由類型設定檔中已停用端點，則會發生什麼事？
 
-在具有「子網路」路由的設定檔中，如果您已停用端點，則流量管理員的行為就像該端點和其子網路對應不存在一樣。 如果收到的查詢與其 IP 位址對應相符，而且端點已停用，流量管理員會傳回一個不含對應的回溯端點，或如果這類端點不存在，則會傳回 NXDOMAIN 回應。
+在具有「子網路」路由的設定檔中，如果您已停用端點，則流量管理員的行為就像該端點和其子網路對應不存在一樣。 如果收到的查詢與其 IP 位址對應相符，而且端點已停用，流量管理員將會傳回一個沒有對應) 的回溯端點 (而如果這類端點不存在，則會傳回 NXDOMAIN 回應。
 
 ## <a name="traffic-manager-multivalue-traffic-routing-method"></a>流量管理員 MultiValue 流量路由方法
 
@@ -306,7 +306,7 @@ MultiValue 路由會在單一查詢回應中傳回多個狀況良好的端點。
 
 來自多個訂用帳戶的端點不能與 Azure Web 應用程式搭配使用。 Azure Web Apps 規定 Web Apps 使用的任何自訂網域名稱只能在單一訂用帳戶內使用。 無法使用具有相同網域名稱的多個訂用帳戶中的 Web Apps。
 
-針對其他端點類型，則可以將「流量管理員」與來自多個訂用帳戶的端點搭配使用。 在 Resource Manager 中，來自任何訂用帳戶的端點都可以新增至流量管理員，只要設定流量管理員設定檔的人員具有端點的讀取權限即可。 使用 [Azure Resource Manager 角色型存取控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)可以授與這些權限。 您可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint)或[Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)來新增其他訂用帳戶的端點。
+針對其他端點類型，則可以將「流量管理員」與來自多個訂用帳戶的端點搭配使用。 在 Resource Manager 中，來自任何訂用帳戶的端點都可以新增至流量管理員，只要設定流量管理員設定檔的人員具有端點的讀取權限即可。 您可以使用[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)來授與這些許可權。 您可以使用[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint)或[Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create)來新增其他訂用帳戶的端點。
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>我可以使用流量管理員來設定雲端服務「預備」位置嗎？
 
@@ -324,7 +324,7 @@ MultiValue 路由會在單一查詢回應中傳回多個狀況良好的端點。
 
 ### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>如何? 將我流量管理員設定檔的 Azure 端點移至不同的資源群組或訂用帳戶嗎？
 
-與流量管理員設定檔相關聯的 Azure 端點，是使用其資源識別碼來追蹤的。 當當做端點使用的 Azure 資源（例如，公用 IP、傳統雲端服務、WebApp，或以嵌套方式使用的另一個流量管理員設定檔）移至不同的資源群組或訂用帳戶時，其資源識別碼會變更。 在此情況下，目前您必須先刪除端點，然後再將端點加回設定檔中，以更新流量管理員設定檔。
+與流量管理員設定檔相關聯的 Azure 端點，是使用其資源識別碼來追蹤的。 當當做端點使用的 Azure 資源 (例如，公用 IP、傳統雲端服務、WebApp，或以嵌套方式使用的另一個流量管理員設定檔時) 會移至不同的資源群組或訂用帳戶，其資源識別碼會變更。 在此情況下，目前您必須先刪除端點，然後再將端點加回設定檔中，以更新流量管理員設定檔。
 
 ## <a name="traffic-manager-endpoint-monitoring"></a>流量管理員端點監視
 
@@ -416,7 +416,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>使用 TCP 監視時需要端點的哪些特定回應？
 
-使用 TCP 監視時，流量管理員會啟動三向 TCP 交握，方法是將 SYN 要求傳送至端點的指定連接埠。 然後，它會等待來自端點的 SYN ACK 回應一段時間（在 [超時設定] 中指定）。
+使用 TCP 監視時，流量管理員會啟動三向 TCP 交握，方法是將 SYN 要求傳送至端點的指定連接埠。 然後，它會等待來自端點的 SYN ACK 回應一段時間， (在 [超時設定]) 中指定。
 
 - 如果在監視設定中指定的超時時間內收到 SYN ACK 回應，則會將該端點視為狀況良好。 FIN 或 FIN 通知是定期終止通訊端時，來自流量管理員的預期回應。
 - 如果在指定的超時時間之後收到 SYN ACK 回應，流量管理員將會以 RST 回應，以重設連接。
@@ -439,7 +439,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 ### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>如何將 HTTP 標頭指派給我端點的流量管理員健康狀態檢查？
 
 流量管理員可讓您在對您端點起始的 HTTP(S) 健康狀態檢查中指定自訂標頭。 如果您想要指定自訂標頭，則可以在設定檔層級 (適用於所有端點) 或在端點層級指定。 如果在兩個層級定義標頭，則在端點層級指定的標頭將會覆寫設定檔層級標頭。
-此狀況的一個常見使用案例是指定主機標頭，以將流量管理員要求正確地路由至裝載於多租用戶環境的端點。 另一個使用案例是識別來自端點 HTTP （S）要求記錄的流量管理員要求
+此狀況的一個常見使用案例是指定主機標頭，以將流量管理員要求正確地路由至裝載於多租用戶環境的端點。 另一個使用案例是識別來自端點的 HTTP (S) 要求記錄的流量管理員要求
 
 ### <a name="what-host-header-do-endpoint-health-checks-use"></a>端點健全狀況檢查使用哪一個主機標頭？
 
@@ -497,7 +497,7 @@ Azure Resource Manager 需要所有資源群組指定位置，這會決定部署
 
 下表描述流量管理員檢查巢狀端點健康狀態時的行為。
 
-| 子設定檔監視狀態 | 父端點監視狀態 | 備註 |
+| 子設定檔監視狀態 | 父端點監視狀態 | 附註 |
 | --- | --- | --- |
 | 停用。 已停用子設定檔。 |已停止 |父端點狀態為「已停止」，不是「已停用」。 「已停用」狀態會保留，表示您已停用父設定檔中的端點。 |
 | 已降級。 至少有一個子設定檔端點的狀態為「已降級」。 |線上︰子設定檔中「線上」端點的數目至少等於 MinChildEndpoints 的值。<BR>CheckingEndpoint︰子設定檔中「線上」加 CheckingEndpoint 端點的數目至少等於 MinChildEndpoints 的值。<BR>已降級︰其他情況。 |系統會將流量傳遞給狀態為 CheckingEndpoint 的端點。 如果 MinChildEndpoints 設定太高，則端點一律會降級。 |

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74e37bda28bed3ecd2c842c4659bcff3cb86eb6a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064286"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920682"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>教學課程：設定 StarLeaf 來自動布建使用者
 
-本教學課程的目的是要示範要在 StarLeaf 和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至 StarLeaf。
+本教學課程的目的是要示範在 StarLeaf 和 Azure Active Directory 中執行的步驟 (Azure AD) 設定 Azure AD 自動布建和取消布建使用者和/或群組至 StarLeaf。
 
 > [!NOTE]
 >  本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
@@ -36,7 +36,7 @@ ms.locfileid: "77064286"
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * Azure AD 租用戶。
-* [StarLeaf 租](https://www.starleaf.com/solutions/)使用者。
+* [StarLeaf 租](https://starleaf.com/)使用者。
 * StarLeaf 中具有系統管理員許可權的使用者帳戶。
 
 ## <a name="assign-users-to-starleaf"></a>將使用者指派給 StarLeaf
@@ -48,7 +48,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 * 建議將單一 Azure AD 使用者指派給 StarLeaf，以測試自動使用者布建設定。 稍後可以指派其他使用者和群組。
 
-* 當您將使用者指派給 StarLeaf 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色（如果有的話）。 具有預設存取角色的使用者會從佈建中排除。
+* 當您將使用者指派給 StarLeaf 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色 (如果可用) 。 具有預設存取角色的使用者會從佈建中排除。
 
 ## <a name="set-up-starleaf-for-provisioning"></a>設定 StarLeaf 以提供布建
 
@@ -58,7 +58,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![StarLeaf 新增 SCIM](media/starleaf-provisioning-tutorial/image00.png)
 
-2. 選取要 Microsoft Azure Active Directory 的**類型**。 在 [**名稱**] 中輸入適當的名稱。 按一下 [套用] 。
+2. 選取要 Microsoft Azure Active Directory 的**類型**。 在 [**名稱**] 中輸入適當的名稱。 按一下 [套用]。
 
     ![StarLeaf 新增 SCIM](media/starleaf-provisioning-tutorial/image01.png)
 
@@ -105,7 +105,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[佈建] 索引標籤](common/provisioning-automatic.png)
+    ![佈建索引標籤](common/provisioning-automatic.png)
 
 5. 在 [管理員認證] 區段下，分別輸入 [**租使用者 URL** ] 和 [**秘密權杖**] 中稍早取得的**SCIM 基底 url**和**存取權杖**值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 StarLeaf。 如果連線失敗，請確定您的 StarLeaf 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -115,7 +115,7 @@ Azure Active Directory 使用所謂「指派」的概念，決定應該授權哪
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 **[儲存]** 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 StarLeaf**]。
 

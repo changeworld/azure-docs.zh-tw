@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555525"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927414"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Enterprise 和 Basic 版本的 Azure Machine Learning 
 
@@ -31,28 +31,28 @@ Azure Machine Learning 提供針對您的機器學習服務需求量身打造的
 
 | 功能                     | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| 標籤：在 studio 中[建立和管理標記專案](tutorial-labeling.md)（Web）                                                | 全部                     |
-| 標籤： studio 中的 Labeler （Web）                                    | 全部                     |
+| 標籤：在 studio 中[建立和管理標記專案](tutorial-labeling.md) (Web)                                                 | 全部                     |
+| 標記： (Web) studio 中的 Labeler                                    | 全部                     |
 | 標記：使用私用工作人力                               | 全部                     |
 | 標籤： [ML 輔助影像分類和物件偵測](how-to-label-images.md)                  | 僅限企業版 |
 | 資料集 + 資料存放區：在 Python 中建立和管理                       | 全部                     |
-| 資料集 + 資料存放區：在 studio 中建立和管理（Web）                         | 全部                     |
+| 資料集 + 資料存放區：在 studio 中建立和管理 (Web)                          | 全部                     |
 | 漂移：在 Python 中查看和管理資料集監視器                           | 全部                     |
-| 漂移：在 studio 中查看和管理資料集監視器（Web）                            | 僅限企業版 |
+| 漂移：在 studio 中查看和管理資料集監視器 (Web)                             | 僅限企業版 |
 
 
 <br/>
 <br/>
 
-### <a name="automated-training-capabilities-automl"></a>自動化訓練功能（AutoML）
+### <a name="automated-training-capabilities-automl"></a> (AutoML) 的自動化訓練功能
 
 | 功能    | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
 | [在筆記本中](how-to-configure-auto-train.md)建立及執行 AutoML 實驗               | 全部                     |
-| [在 studio 中建立和執行 AutoML 實驗（web）](how-to-use-automated-ml-for-ml-models.md)   | 僅限企業版 |
+| [在 studio 中建立和執行 AutoML 實驗 (web) ](how-to-use-automated-ml-for-ml-models.md)   | 僅限企業版 |
 | 領先業界的 AutoML 預測功能             | 僅限企業版 |
 | 支援深度學習和其他先進學習 | 僅限企業版 |
-| 大型資料支援分類和回歸工作（最多 100 GB）                     | 僅限企業版 |
+| 大型資料支援分類和回歸工作 (最多 100 GB)                      | 僅限企業版 |
 
 
 <br/>
@@ -84,7 +84,7 @@ Azure Machine Learning 提供針對您的機器學習服務需求量身打造的
 | ML 管線：在 Python 中建立、執行及發佈                           | 全部                     |
 | ML 管線：在 Python 中建立、編輯和刪除排程的管線執行| 全部                     |
 | ML 管線：在 Python SDK 中建立管線端點                                   | 全部                     |
-| ML 管線：在 studio 中查看執行詳細資料（web）                                              | 全部                     |
+| ML 管線：在 studio 中查看執行詳細資料 (web)                                               | 全部                     |
 | ML 管線：在設計工具中建立、執行、視覺化和發行                  | 僅限企業版 |
 | ML 管線：在設計工具中建立管線端點 | 僅限企業版 |
 | 整合式筆記本的受控計算實例                                 | 全部                     |
@@ -112,8 +112,8 @@ Azure Machine Learning 提供針對您的機器學習服務需求量身打造的
 
 | 功能     | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| 以[角色為基礎的存取控制](how-to-assign-roles.md)（RBAC）支援                                           | 全部                     |
-| 適用于計算的[虛擬網路（VNet）](how-to-enable-virtual-network.md)支援                                         | 全部                     |
+| Azure[角色型存取控制 (AZURE RBAC) ](how-to-assign-roles.md)支援                                           | 全部                     |
+| [虛擬網路 (VNet) ](how-to-enable-virtual-network.md)計算的支援                                         | 全部                     |
 | 評分端點驗證                                                    | 全部                     |
 | [工作區私用連結](how-to-configure-private-link.md)                                                            | 全部                     |
 | 跨工作區的[配額管理](how-to-manage-quotas.md)                                                 | 僅限企業版 |

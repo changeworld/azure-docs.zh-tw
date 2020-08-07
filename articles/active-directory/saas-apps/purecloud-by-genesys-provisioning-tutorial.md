@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d80502480e0536cb85ad9bd08344c8082f59d85
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77370676"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926989"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教學課程：設定 Purecloud by by Genesys 來自動布建使用者
 
-本教學課程說明您需要在 Purecloud by by Genesys 和 Azure Active Directory （Azure AD）中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，將使用者和群組自動布建和取消布建至[purecloud by By Genesys](https://www.genesys.com) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教學課程說明 Genesys 和 Azure Active Directory (Azure AD) 設定自動使用者布建時，必須在 Purecloud by 中執行的步驟。 設定之後，Azure AD 會使用 Azure AD 布建服務，將使用者和群組自動布建和取消布建至[purecloud by By Genesys](https://www.genesys.com) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支援的功能
@@ -33,7 +33,7 @@ ms.locfileid: "77370676"
 > * 當使用者不再需要存取權時，將其 Purecloud by by Genesys 移除
 > * 在 Genesys Azure AD 和 Purecloud by 之間保持使用者屬性同步處理
 > * 在 Purecloud by by Genesys 中布建群組和群組成員資格
-> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial)Purecloud by by Genesys （建議）
+> * Purecloud by by Genesys 的[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial) (建議的) 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -88,7 +88,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[佈建] 索引標籤](common/provisioning-automatic.png)
+    ![佈建索引標籤](common/provisioning-automatic.png)
 
 5. 在 [**管理員認證**] 區段底下，分別在 [**租使用者 URL** ] 和 [**秘密權杖**] 欄位中輸入您的 Purecloud by By Genesys API url 和 Oauth token。 API URL 將會結構化為 `{{API Url}}/api/v2/scim/v2` ，並使用來自[Purecloud by 開發人員中心](https://developer.mypurecloud.com/api/rest/index.html)的 PURECLOUD BY 區域 api url。 按一下 [**測試連接**] 以確保 Azure AD 可以透過 Genesys 連線至 purecloud by。 如果連線失敗，請確定您的 Purecloud by by Genesys 帳戶具有系統管理員許可權，然後再試一次。
 
@@ -146,7 +146,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 設定佈建後，請使用下列資源來監視您的部署：
 
 * 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-* 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+* 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
 * 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。
 
 ## <a name="additional-resources"></a>其他資源

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 724068950153e6bc4687679892edf55ab89f3bf2
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482406"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927397"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教學課程：設定 MediusFlow 來自動佈建使用者
 
@@ -56,7 +56,7 @@ ms.locfileid: "85482406"
 藉由執行下列步驟，開始在 MediusFlow 內啟用 Azure AD 登入和 Azure AD 設定功能的存取權：
 
 #### <a name="user-login"></a>使用者登入
-若要讓登入流程 Microsoft 365/Azure AD 請參閱 [this] （ https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章）。
+若要啟用 Microsoft 365/Azure AD 的登入流程，請參閱 [this] (https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章。
 
 #### <a name="user-transfer-configuration"></a>使用者轉移設定
 若要啟用從 Azure AD 布建之使用者的設定入口網站，請參閱[這](
@@ -202,7 +202,7 @@ Azure AD 佈建服務可讓您根據對應用程式的指派，或根據使用�
 設定佈建後，請使用下列資源來監視您的部署：
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)來判斷哪些使用者已佈建成功或失敗
-2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)來查看佈建週期的狀態，以及其接近完成的程度
+2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)來查看佈建週期的狀態，以及其接近完成的程度
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入了解隔離狀態。
 
 ## <a name="additional-resources"></a>其他資源

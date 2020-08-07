@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 入口網站中布建記錄（預覽） |Microsoft Docs
+title: 在 Azure Active Directory 入口網站中布建記錄 (預覽) |Microsoft Docs
 description: 在 Azure Active Directory 入口網站中布建活動報告的簡介
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 11/04/2019
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38cffdcc9c99cdec2aeac8bf6fe1dc1575691c8d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113333"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924025"
 ---
-# <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報告（預覽）
+# <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 入口網站中布建報表 (預覽) 
 
 Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
@@ -94,7 +94,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 在預設的 [] 視圖中，您可以選取下列篩選準則：
 
 - 身分識別
-- 日期
+- Date
 - 狀態
 - 動作
 
@@ -172,10 +172,10 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 修改過的屬性
 
-- 摘要
+- 總結
 
 
-![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "定位點")
+![Filter](./media/concept-provisioning-logs/provisioning-tabs.png "索引標籤")
 
 
 
@@ -186,7 +186,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 - 匯入物件
 - 判斷物件是否在範圍內
 - 來源與目標之間的相符物件
-- 布建物件（採取動作-這可能是 [建立]、[更新]、[刪除] 或 [停用]）
+- 布建物件 (採取動作-這可以是 [建立]、[更新]、[刪除] 或 [停用]) 
 
 
 
@@ -204,11 +204,11 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 **修改後的屬性**會顯示舊值和新值。 在沒有舊值的情況下，[舊值] 資料行是空白的。 
 
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>總結
 
 [**摘要**] 索引標籤可讓您大致瞭解來源和目標系統中物件的發生狀況和識別碼。 
 
-## <a name="what-you-should-know"></a>您應該知道的事情
+## <a name="what-you-should-know"></a>您應該知道的事項
 
 - 如果您有 premium edition 和7天的免費版本，Azure 入口網站會將報告的布建資料儲存30天。
 
@@ -245,7 +245,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 ## <a name="next-steps"></a>後續步驟
 
-* [檢查使用者布建的狀態](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
+* [檢查使用者布建的狀態](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)
 * [設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
 
 

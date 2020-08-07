@@ -1,6 +1,6 @@
 ---
 title: BGP 和 Azure VPN 閘道：總覽
-description: 本文提供 BGP 與 Azure VPN 閘道的概觀。
+description: 瞭解 Azure VPN 閘道支援邊界閘道協定，這是用來交換路由和可連線性資訊的標準路由通訊協定。
 services: vpn-gateway
 author: yushwang
 manager: rossort
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: yushwang
-ms.openlocfilehash: 0b4bb7ed90225fcb52ea170c07be2b57f8afbafe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f514c2708c3a81ff56c6029d5e43df43ad503036
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708088"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924694"
 ---
 # <a name="about-bgp-with-azure-vpn-gateway"></a>關於 BGP 與 Azure VPN 閘道
 這篇文章提供 Azure VPN 閘道中的 BGP (邊界閘道協定) 支援概觀。

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c75c9a2d0b491cc00d0fc58054b9bb1e58a364b8
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: bf44b24b9222072bf5f1493b36b0dfcca24b5389
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905715"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923606"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>檢視 Azure 匯入/匯出作業的狀態
 
@@ -60,7 +60,7 @@ ms.locfileid: "87905715"
 
 下表說明磁碟機失敗狀態，以及針對每個狀態採取的動作。
 
-| 磁碟機狀態 | Event - 事件 | 解決方法/後續步驟 |
+| 磁碟機狀態 | 事件 | 解決方法/後續步驟 |
 |:--- |:--- |:--- |
 | 從未收到 | 標示為「**從未收到**」的磁碟機 (因為在作業的運送過程中未收到) 在另一批貨運中送達。 | 作業小組會磁碟機改為「**已收到**」。 |
 | N/A | 不屬於任何作業的磁碟機在另一個作業中送達資料中心。 | 磁碟機會標示為額外的磁碟機，並會在與原始包裹相關聯的作業完成時寄回給您。 |
@@ -73,7 +73,7 @@ ms.locfileid: "87905715"
 -  要複製的作業類型和資料大小
 -  作業中的磁碟數量。 
 
-匯入/匯出服務沒有 SLA，但在收到磁碟之後，服務會努力在 7 到 10 天內完成複製。 除了 Azure 入口網站上所公佈的狀態之外，也可使用 REST API 來追蹤作業進度。 [[列出工作作業](/previous-versions/azure/dn529083(v=azure.100))] API 呼叫中的 [完成百分比] 參數會提供複製進度百分比。
+匯入/匯出服務沒有 SLA，但在收到磁碟之後，服務會努力在 7 到 10 天內完成複製。 除了在 Azure 入口網站上公佈的狀態以外，您還可以使用 REST Api 來追蹤作業進度。 [[列出工作作業](/previous-versions/azure/dn529083(v=azure.100))] API 呼叫中的 [完成百分比] 參數會提供複製進度百分比。
 
 
 ## <a name="next-steps"></a>後續步驟

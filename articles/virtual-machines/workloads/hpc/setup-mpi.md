@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 1b2d707569221a79ad53f04bcc379f5067ed9b04
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 210b2935cd2df81b0ff079c9a1c945fe770933f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905528"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926513"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>設定 HPC 的訊息傳遞介面
 
@@ -95,11 +95,24 @@ ${INSTALL_PREFIX}/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml 
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-[下載 INTEL MPI](https://software.intel.com/mpi-library/choose-download)。
+下載您選擇的[INTEL MPI](https://software.intel.com/mpi-library/choose-download)版本。 視版本而定，變更 I_MPI_FABRICS 環境變數。 若是 Intel MPI 2018，請使用 `I_MPI_FABRICS=shm:ofa` 2019 的，使用 `I_MPI_FABRICS=shm:ofi` 。
 
-視版本而定，變更 I_MPI_FABRICS 環境變數。 若是 Intel MPI 2018，請使用 `I_MPI_FABRICS=shm:ofa` 2019 的，使用 `I_MPI_FABRICS=shm:ofi` 。
+### <a name="non-sr-iov-vms"></a>非 SR-IOV Vm
+針對非 SR-IOV Vm，下載 5. x 執行時間[免費評估版](https://registrationcenter.intel.com/en/forms/?productid=1740)的範例如下所示：
+```bash
+wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
+```
+如需安裝步驟，請參閱 [Intel MPI Library 安裝指南](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html) \(英文\)。
+（選擇性）您可能會想要針對最新版本的 Intel MPI)  (所需的非根非偵錯工具進程啟用 ptrace。
+```bash
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
 
-根據預設，進程固定可正常運作15、30和 60 PPN。
+### <a name="suse-linux"></a>SUSE Linux
+針對 SUSE Linux Enterprise Server VM 映射版本-SLES 12 SP3 for HPC、SLES 12 SP3 for hpc (Premium) 、SLES 12 SP1 for HPC、SLES 12 SP1 for HPC (Premium) 、SLES 12 SP4 和 SLES 15，已安裝 RDMA 驅動程式，而 Intel MPI 套件會散發在 VM 上。 執行下列命令來安裝 Intel MPI：
+```bash
+sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+```
 
 ## <a name="mpich"></a>MPICH \(英文\)
 

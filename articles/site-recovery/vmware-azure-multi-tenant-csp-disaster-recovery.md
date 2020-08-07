@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292845"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924575"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用雲端解決方案提供者 (CSP) 方案在多租用戶環境中設定 VMware 災害復原
 
@@ -98,7 +98,7 @@ ms.locfileid: "87292845"
 依照本文所述，透過設定租用戶訂用帳戶，您可以快速開始在任何相關的多租用戶模型中啟用客戶。 您可以在[這裡](vmware-azure-multi-tenant-overview.md)進一步了解不同的多租用戶模型，和啟用內部部署存取控制的資訊。
 
 ## <a name="next-steps"></a>後續步驟
-- 深入了解如何使用[角色型存取控制](site-recovery-role-based-linked-access-control.md)來管理 Azure Site Recovery 部署。
+- 深入瞭解[azure 角色型存取控制 (AZURE RBAC) ](site-recovery-role-based-linked-access-control.md)來管理 Azure Site Recovery 部署。
 - 深入瞭解 VMware 至 Azure 複寫[架構](vmware-azure-architecture.md)。
 - 針對將 VMware VM 複寫到 Azure [檢閱教學課程](vmware-azure-tutorial.md)。
 深入了解[多租用戶環境](vmware-azure-multi-tenant-overview.md)，以將 VMware VM 複寫至 Azure。

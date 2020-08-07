@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531875"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922311"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -32,7 +32,7 @@ Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會�
 **功能** | **詳細資料**
 --- | ---
 **訂用帳戶中的保存庫** | 一個訂用帳戶中最多可以有 500 個復原服務保存庫。
-**保存庫中的機器** | 一個保存庫中最多可以有 1,000 個 Azure VM。<br/><br/> 可在單一保存庫中註冊最多 50 個 MABS 伺服器。
+**保存庫中的機器** | 在所有工作負載中，最多2000個數據源 (例如 Azure Vm、SQL Server VM、MABS 伺服器等) 可以在單一保存庫中受到保護。<br><br>一個保存庫中最多可以有 1,000 個 Azure VM。<br/><br/> 可在單一保存庫中註冊最多 50 個 MABS 伺服器。
 **資料來源** | 個別[資料來源](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined)的大小上限是 54,400 GB。 此限制不適用於 Azure VM 備份。 您可以備份至保存庫的資料總量不會有任何限制。
 **備份至保存庫** | **Azure VM：** 一天一次。<br/><br/>**受 DPM/MABS 保護的電腦：** 一天兩次。<br/><br/> **使用 MARS 代理程式直接備份的電腦：** 一天三次。
 **保存庫之間的備份** | 在區域內備份。<br/><br/> 您在每個 Azure 區域中都必須有一個保存庫包含您想要備份的 VM。 您無法備份至不同的區域。
@@ -85,7 +85,7 @@ Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會�
 
 ## <a name="daylight-saving-time-support"></a>日光節約時間支援
 
-Azure 備份在進行 Azure VM 備份時不支援依據日光節約時間而自動調整時鐘。 其不會將備份時間向前或向後移動。 為確保備份在所需的時間執行，請視需要，手動修改備份原則。
+Azure 備份在進行 Azure VM 備份時不支援依據日光節約時間而自動調整時鐘。 它不會向前或向後移動備份的小時。 為確保備份在所需的時間執行，請視需要，手動修改備份原則。
 
 ## <a name="disk-deduplication-support"></a>磁碟重複資料刪除支援
 

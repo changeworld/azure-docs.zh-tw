@@ -5,15 +5,15 @@ author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 08/01/2020
+ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 797a036b9cf2e77dfbcdf8dc7596179c4673e6a6
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e9f876f3d20af01867283f550590b3af23dec662
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513735"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926615"
 ---
 # <a name="h-series"></a>H 系列
 
@@ -29,7 +29,7 @@ ACU：290 - 300
 
 記憶體保留更新：不支援
 
-| 大小 | vCPU | 處理器 | 記憶體 (GB) | 記憶體頻寬 GB/秒 | 基本 CPU 頻率（GHz） | 所有核心頻率（GHz、尖峰） | 單核心頻率（GHz、尖峰） | RDMA 效能（Gb/s） | MPI 支援 | 暫存儲存體（GB） | 最大資料磁碟 | 最大磁碟輸送量︰IOPS | 最大乙太網路 Nic |
+| 大小 | vCPU | 處理器 | 記憶體 (GB) | 記憶體頻寬 GB/秒 | 基底 CPU 頻率 (GHz)  | 所有核心頻率 (GHz、尖峰)  | 單核心頻率 (GHz，尖峰)  | RDMA 效能 (Gb/s)  | MPI 支援 | 暫存儲存體 (GB)  | 最大資料磁碟 | 最大磁碟輸送量︰IOPS | 最大乙太網路 Nic |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8   | 8  | Intel 強 E5 2667 v3 | 56 | 40 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-MPI | 1000 | 32 | 32 x 500 | 2 |
 | Standard_H16  | 16 | Intel 強 E5 2667 v3 | 112 | 80 | 3.2 | 3.3 | 3.6 | - | Intel 5.x、MS-MPI | 2000 | 64 | 64 x 500 | 4 |
@@ -42,51 +42,8 @@ ACU：290 - 300
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-
-## <a name="supported-os-images-linux"></a>支援的 OS 映射（Linux）
- 
-Azure Marketplace 有許多支援 RDMA 連線能力的 Linux 散發套件：
-  
-* **CentOS 為基礎的 hpc** -針對非 sr-iov 啟用的 Vm，CentOS 型版本 6.5 HPC 或更新版本，最多可達7.5。 針對 H 系列 Vm，建議使用7.1 到7.5 版。 已在 VM 上安裝 RDMA 驅動程式和 Intel MPI 5.1。
-  針對 SR-IOV Vm，CentOS-HPC 7.6 已針對 RDMA 驅動程式和安裝的各種 MPI 套件進行優化和預先載入。
-  若為其他 RHEL/CentOS VM 映射，請新增 InfiniBandLinux 延伸模組以啟用 [未使用]。 此 Linux VM 擴充功能會安裝適用于 RDMA 連線的 Mellanox OFED 驅動程式（在 SR-IOV Vm 上）。 下列 PowerShell Cmdlet 會在現有具備 RDMA 功能的 VM 上安裝 InfiniBandDriverLinux 延伸模組的最新版本（版本1.0）。 具備 RDMA 功能的 VM 會命名為*myVM* ，並部署在*美國西部*區域中名為*myResourceGroup*的資源群組中，如下所示：
-
-  ```powershell
-  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
-  ```
-  或者，您可以將 VM 擴充功能包含在 Azure Resource Manager 範本中，以便使用下列 JSON 元素進行輕鬆部署：
-  ```json
-  "properties":{
-  "publisher": "Microsoft.HpcCompute",
-  "type": "InfiniBandDriverLinux",
-  "typeHandlerVersion": "1.0",
-  } 
-  ```
-  
-  下列命令會在名為*myResourceGroup*的資源群組中部署且名為*myVMSS*的現有虛擬機器擴展集內的所有支援 RDMA 的 vm 上，安裝最新版本 1.0 InfiniBandDriverLinux 延伸模組：
-  ```powershell
-  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
-  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
-  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
-  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
-  ```
-  
-  > [!NOTE]
-  > 在 CentOS 型 HPC 映像上， **yum** 組態檔中已停用核心更新。 這是因為 Linux RDMA 驅動程式是以 RPM 套件的形式散發，如果核心已更新，驅動程式更新可能無法正常執行。
-  >
-  
-
-* **SUSE Linux Enterprise Server** -SLES 12 SP3 for HPC、SLES 12 SP3 for Hpc （premium）、SLES 12 SP1 for HPC、SLES 12 SP1 for Hpc （Premium）、SLES 12 SP4 和 sles 15。 已在 VM 上安裝 RDMA 驅動程式並散發 Intel MPI 套件。 執行下列命令來安裝 MPI：
-
-  ```bash
-  sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
-  ```
-  
-* **Ubuntu** -ubuntu SERVER 16.04 LTS、18.04 LTS。 設定 VM 上的 RDMA 驅動程式，並向 Intel 註冊以下載 Intel MPI：
-
-  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../includes/virtual-machines-common-ubuntu-rdma.md)]  
-
-  如需有關啟用「未[使用](./workloads/hpc/enable-infiniband.md)」的詳細資訊，請參閱設定 MPI。
+> [!NOTE]
+> 在[支援 RDMA 的 vm](sizes-hpc.md#rdma-capable-instances)中，H 系列不會啟用 sr-iov。 因此，支援的[Vm 映射](./workloads/hpc/configure.md#vm-images)、不適用的[驅動程式](./workloads/hpc/enable-infiniband.md)需求和支援的[MPI 程式庫](./workloads/hpc/setup-mpi.md)，與啟用 sr-iov 的 vm 不同。
 
 ## <a name="other-sizes"></a>其他大小
 
@@ -99,7 +56,7 @@ Azure Marketplace 有許多支援 RDMA 連線能力的 Linux 散發套件：
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解如何將 Azure 的 HPC 應用程式優化，以及[Hpc 工作負載](./workloads/hpc/overview.md)的一些範例。
+- 深入瞭解如何設定[您的 vm](./workloads/hpc/configure.md)、[啟用](./workloads/hpc/enable-infiniband.md)未充分運用、在[Hpc 工作負載](./workloads/hpc/overview.md)上為 Azure[設定 MPI](./workloads/hpc/setup-mpi.md)和優化 hpc 應用程式。
 - 閱讀[Azure 計算技術小組的 blog](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)，瞭解最新的公告和一些 HPC 範例和結果。
-- 如需執行 HPC 工作負載的較高層級架構視圖，請參閱[Azure 上的高效能運算（HPC）](/azure/architecture/topics/high-performance-computing/)。
+- 如需執行 HPC 工作負載的更高層級架構視圖，請參閱[Azure 上的高效能運算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。
 - 深入了解 [Azure 計算單位 (ACU)](acu.md) 如何協助您比較各個 Azure SKU 的計算效能。

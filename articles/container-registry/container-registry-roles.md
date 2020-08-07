@@ -1,18 +1,18 @@
 ---
 title: Azure 角色和許可權
-description: 使用 Azure 角色型存取控制（Azure RBAC）和身分識別和存取管理（IAM），為 Azure container registry 中的資源提供更細緻的許可權。
+description: 使用 Azure 角色型存取控制 (Azure RBAC) 和身分識別和存取管理 (IAM) ，為 Azure container registry 中的資源提供更細緻的許可權。
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 90546b96f081893d312e66aae04e2125c1c210e5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 23a9c08162c03d4b34ed289d650fddcd7413ed08
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533303"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920070"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry 角色和權限
 
-Azure Container Registry 服務支援一組[內建的 azure 角色](../role-based-access-control/built-in-roles.md)，可為 azure Container Registry 提供不同層級的許可權。 使用 Azure[角色型存取控制](../role-based-access-control/index.yml)（RBAC），將特定許可權指派給需要與登錄互動的使用者、服務主體或其他身分識別。 
+Azure Container Registry 服務支援一組[內建的 azure 角色](../role-based-access-control/built-in-roles.md)，可為 azure Container Registry 提供不同層級的許可權。 使用[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/index.yml) ，將特定許可權指派給需要與登錄互動的使用者、服務主體或其他身分識別。 
 
 | 角色/權限       | [存取 Resource Manager](#access-resource-manager) | [建立/刪除登錄](#create-and-delete-registry) | [推送映像](#push-image) | [提取映像](#pull-image) | [刪除映像資料](#delete-image-data) | [變更原則](#change-policies) |   [簽署映像](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -89,4 +89,4 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 * 深入了解 Azure Container Registry 的[驗證選項](container-registry-authentication.md)。
 
-* 瞭解如何在容器登錄中啟用存放[庫範圍的許可權](container-registry-repository-scoped-permissions.md)（預覽）。
+* 瞭解如何在容器登錄中啟用存放[庫範圍的許可權](container-registry-repository-scoped-permissions.md) (預覽) 。

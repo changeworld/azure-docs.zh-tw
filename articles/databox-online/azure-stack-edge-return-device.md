@@ -1,6 +1,6 @@
 ---
 title: 傳回您的 Azure Stack Edge 裝置 |Microsoft Docs
-description: 說明如何傳回 Azure Stack Edge 裝置。
+description: 瞭解如何抹除資料並傳回您的 Azure Stack Edge 裝置，然後刪除與裝置相關聯的資源。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 018fe9b97b343bc07cf3c04a1d0e84edaf6cc7ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: aa917361ad3c967a697421e86d232e1a206c403e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283855"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923946"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>傳回您的 Azure Stack Edge 裝置
 
@@ -69,7 +69,7 @@ ms.locfileid: "87283855"
     
     ![裝置序號1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
-    2. 輸入服務標籤編號，這是您裝置特有的五個或更多個字元識別碼。 服務標籤位於裝置的右下角（當您面對裝置時）。 拉出 [資訊] 標籤（它是一個向外滑片的面板）。 此面板包含系統資訊，例如服務標籤、NIC、MAC 位址等等。 
+    2. 輸入服務標籤編號，這是您裝置特有的五個或更多個字元識別碼。 服務標記位於裝置 (的右下角，如同您在裝置) 。 拉出 [資訊] 標籤 (它是一個) 的 [向外滑片] 面板。 此面板包含系統資訊，例如服務標籤、NIC、MAC 位址等等。 
     
     ![服務標記編號1](media/azure-stack-edge-return-device/service-tag-number-1.png)
 

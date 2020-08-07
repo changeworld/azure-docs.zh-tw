@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 699eb37176d6737744fb0ba01f9f3f4a2d4e55b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c23c57e77f69cd7043e09ff5e2809d8329d62da3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318742"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925493"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>教學課程：設定 Smartsheet 來自動布建使用者
 
-本教學課程的目的是要示範要在 Smartsheet 和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至[Smartsheet](https://www.smartsheet.com/pricing)。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教學課程的目的是要示範在 Smartsheet 和 Azure Active Directory 中執行的步驟 (Azure AD) 設定 Azure AD 自動布建和取消布建使用者和/或群組至[Smartsheet](https://www.smartsheet.com/pricing)。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支援的功能
@@ -32,7 +32,7 @@ ms.locfileid: "85318742"
 > * 在 Smartsheet 中建立使用者
 > * 當使用者不再需要存取權時，移除 Smartsheet 中的使用者
 > * 在 Azure AD 和 Smartsheet 之間保持使用者屬性同步
-> * 單一登入 Smartsheet （建議選項）
+> * Smartsheet (的單一登入建議) 
 
 > [!NOTE]
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -79,7 +79,7 @@ ms.locfileid: "85318742"
 
     ![Smartsheet 安裝](media/smartsheet-provisioning-tutorial/Smartsheet06.png)
 
-7. 定義 API 存取權杖的名稱。 按一下 [確定]。
+7. 定義 API 存取權杖的名稱。 按一下 [確定]  。
 
     ![Smartsheet 安裝](media/smartsheet-provisioning-tutorial/Smartsheet07.png)
 
@@ -97,7 +97,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 * 將使用者和群組指派給 Smartsheet 時，您必須選取 [**預設存取**] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
 
-* 若要確保 Smartsheet 與 Azure AD 之間使用者角色指派的同位，建議使用完整 Smartsheet 使用者清單中填入的相同角色指派。 若要從 Smartsheet 抓取此使用者清單，請流覽至 [**帳戶管理員] > [使用者管理] [> 其他動作] > 下載使用者清單（csv）**]。
+* 若要確保 Smartsheet 與 Azure AD 之間使用者角色指派的同位，建議使用完整 Smartsheet 使用者清單中填入的相同角色指派。 若要從 Smartsheet 抓取此使用者清單，請流覽至**帳戶管理員 > 使用者管理 > 其他動作 > 下載使用者清單 (csv) **。
 
 * 若要存取應用程式中的某些功能，Smartsheet 需要使用者擁有多個角色。 若要深入瞭解 Smartsheet 中的使用者類型和許可權，請移至 [[使用者類型和許可權](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions)]。
 
@@ -125,7 +125,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 4. 將 [佈建模式] 設定為 [自動]。
 
-    ![[佈建] 索引標籤](common/provisioning-automatic.png)
+    ![佈建索引標籤](common/provisioning-automatic.png)
 
 5. 在 [**管理員認證**] 區段底下，分別輸入 [**租使用者 URL** ] 和 [**秘密權杖**] 中的 [ **SCIM 2.0 基底 url] 和 [存取權杖**] 值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Smartsheet。 如果連線失敗，請確定您的 Smartsheet 帳戶具有系統管理員（SysAdmin）許可權，然後再試一次。
 
@@ -135,7 +135,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [檔案] 。
+7. 按一下 **[儲存]** 。
 
 8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Smartsheet**]。
 
@@ -182,7 +182,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 設定佈建後，請使用下列資源來監視您的部署：
 
 1. 使用[佈建記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) \(部分機器翻譯\) 來判斷哪些使用者已佈建成功或失敗
-2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
+2. 檢查[進度列](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) \(部分機器翻譯\) 來查看佈建週期的狀態，以及其接近完成的程度
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 ## <a name="connector-limitations"></a>連接器限制

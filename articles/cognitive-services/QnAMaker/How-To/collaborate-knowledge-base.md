@@ -3,12 +3,12 @@ title: 在知識庫上共同作業-QnA Maker
 description: QnA Maker 可讓多位使用者對知識庫進行共同作業。 這項功能是以 Azure 角色型存取控制 (Azure RBAC) 提供。
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 86c8d919618b37223e51a23635a1322a4e0d780c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837426"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926842"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>與作者和編輯者共同作業
 
@@ -16,7 +16,7 @@ QnA Maker 資源層級提供共同作業，可讓您根據共同作業者的角�
 
 ## <a name="add-azure-role-based-access-control-azure-rbac-to-your-qna-maker-resource"></a>將 azure 角色型存取控制 (Azure RBAC) 新增至您的 QnA Maker 資源
 
-QnA Maker 可讓多人共同處理相同 QnA Maker 資源中的所有知識庫。 這項功能是連同 Azure [角色型存取控制](../../../active-directory/role-based-access-control-configure.md)一起提供。
+QnA Maker 可讓多人共同處理相同 QnA Maker 資源中的所有知識庫。 這項功能是以[azure 角色型存取控制 (AZURE RBAC) ](../../../active-directory/role-based-access-control-configure.md)提供。
 
 ## <a name="access-at-the-qna-maker-resource-level"></a>在 QnA Maker 資源層級存取
 

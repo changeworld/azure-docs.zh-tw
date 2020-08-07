@@ -6,18 +6,18 @@ ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8a82b0b70b7be8897d8f85cabea2ee21ce84d913
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0a997733e015a9f65b59ffc99cc137dae3d2d62a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169607"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927431"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>從 Azure Container Registry 部署至 Azure 容器執行個體
 
 [Azure Container Registry](../container-registry/container-registry-intro.md) 是 Azure 型的受控容器登錄服務，可用來儲存私人 Docker 容器映像。 本文說明如何在部署至 Azure 容器實例時，提取儲存在 Azure container registry 中的容器映射。 設定登錄存取的建議方式是建立 Azure Active Directory 服務主體和密碼，並將登入認證儲存在 Azure 金鑰保存庫中。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 **Azure container registry**：您需要 azure container registry，以及至少一個登錄中的容器映射--以完成本文中的步驟。 如果您需要登錄，請參閱[使用 Azure CLI 建立容器登錄](../container-registry/container-registry-get-started-azure-cli.md)。
 
@@ -25,7 +25,7 @@ ms.locfileid: "86169607"
 
 ## <a name="configure-registry-authentication"></a>設定登錄驗證
 
-在您提供「無周邊」服務和應用程式存取權的生產案例中，建議使用[服務主體](../container-registry/container-registry-auth-service-principal.md)來設定登錄存取。 服務主體可讓您為容器映射提供[角色型存取控制](../container-registry/container-registry-roles.md)。 例如，您可以設定服務主體具有僅限提取登錄的存取權。
+在您提供「無周邊」服務和應用程式存取權的生產案例中，建議使用[服務主體](../container-registry/container-registry-auth-service-principal.md)來設定登錄存取。 服務主體可讓您將 azure [RBAC)  (azure 角色型存取控制](../container-registry/container-registry-roles.md)提供給您的容器映射。 例如，您可以設定服務主體具有僅限提取登錄的存取權。
 
 Azure Container Registry 提供額外的[驗證選項](../container-registry/container-registry-authentication.md)。
 
@@ -69,7 +69,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-在前面的命令中，`--role` 引數設定服務主體具有 acrpull** 角色，授與主體僅限提取登錄的存取權。 若要同時授與發送和提取存取權，請將 `--role` 引數變更為 acrpush**。
+在前面的命令中，`--role` 引數設定服務主體具有 acrpull 角色，授與主體僅限提取登錄的存取權。 若要同時授與發送和提取存取權，請將 `--role` 引數變更為 acrpush。
 
 接下來，將服務主體的*appId*儲存在保存庫中，這是您傳遞給 Azure Container Registry 進行驗證的使用者**名稱**。
 
@@ -83,8 +83,8 @@ az keyvault secret set \
 
 您已建立 Azure Key Vault，並在其中儲存兩個祕密：
 
-* `$ACR_NAME-pull-usr`：服務主體識別碼，作為容器登錄的**使用者名稱**。
-* `$ACR_NAME-pull-pwd`：服務主體密碼，作為容器登錄的**密碼**。
+* `$ACR_NAME-pull-usr`:服務主體識別碼，用來作為容器登錄**使用者名稱**。
+* `$ACR_NAME-pull-pwd`:服務主體密碼，用來作為容器登錄**密碼**。
 
 現在，當您或應用程式和服務從登錄提取映像時，您可以依名稱參考這些祕密。
 

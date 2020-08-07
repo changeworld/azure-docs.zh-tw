@@ -4,16 +4,16 @@ description: 了解哪些作業系統可以執行 Azure IoT Edge 精靈和執行
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/19/2020
+ms.date: 07/17/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 097826a24cb2de17b603ff5fe3113d715e079697
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccfd85c5976642d30b3f21d2d2afeb868ba49bf9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807395"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924609"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支援的系統
 
@@ -108,7 +108,7 @@ IoT Edge 元件可以個別安裝或更新，並與舊版元件回溯相容。 �
 
 | 版本 | 安全性精靈 | Edge 中樞<br>Edge 代理程式 | Libiothsm | Moby |
 |--|--|--|--|--|
-| **1.0.9** | 1.0.9.3<br>1.0.9.2 版<br>1.0.9.1<br>1.0.9 | 1.0.9.3<br>1.0.9.2 版<br>1.0.9.1<br>1.0.9 | 1.0.9.3<br>1.0.9.2 版<br>1.0.9.1<br>1.0.9 |  |
+| **1.0.9** | 1.0.9.4<br>1.0.9.3<br>1.0.9.2 版<br>1.0.9.1<br>1.0.9 | 1.0.9.4<br>1.0.9.3<br>1.0.9.2 版<br>1.0.9.1<br>1.0.9 | 1.0.9.4<br>1.0.9.3<br>1.0.9.2 版<br>1.0.9.1<br>1.0.9 |  |
 | **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl、CentOS) |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |

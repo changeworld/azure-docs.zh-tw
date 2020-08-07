@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754386"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922671"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>規劃您的 Avere vFXT 系統
 
@@ -38,7 +38,7 @@ ms.locfileid: "80754386"
 
 * 後端儲存體-您想要快取的資料會長期儲存在硬體儲存系統或 Azure Blob 容器中。 您可以在建立 Avere vFXT for Azure 叢集之後新增儲存體，或如果使用 Blob 儲存體，您可以在建立叢集時新增和設定容器。
 
-* 用戶端-使用快取檔案的用戶端電腦會使用虛擬檔案路徑連接到叢集，而不是直接存取存放裝置系統。 （如需詳細資訊，請參閱[掛接 Avere vFXT](avere-vfxt-mount-clients.md)叢集）。
+* 用戶端-使用快取檔案的用戶端電腦會使用虛擬檔案路徑連接到叢集，而不是直接存取存放裝置系統。  (進一步瞭解[掛接 Avere vFXT](avere-vfxt-mount-clients.md)叢集。 ) 
 
 ## <a name="subscription-resource-group-and-network-infrastructure"></a>訂用帳戶、資源群組和網路基礎結構
 
@@ -71,12 +71,12 @@ ms.locfileid: "80754386"
 
   如果您想要使用已經存在的資源，請確定它們符合此表中的需求。
 
-  | 資源 | 使用現有的？ | 規格需求 |
+  | 資源 | 使用現有的？ | 需求 |
   |----------|-----------|----------|
   | 資源群組 | 是，如果是空的 | 必須是空的|
   | 儲存體帳戶 | **是**，如果在叢集建立後連接現有的 Blob 容器 <br/>  **否**，如果在叢集建立期間建立新的 Blob 容器 | 現有的 Blob 容器必須是空的 <br/> &nbsp; |
   | 虛擬網路 | 是 | 如果要建立新的 Azure Blob 容器，必須包含儲存體服務端點 |
-  | 子網路 | Yes | 不能包含其他資源 |
+  | 子網路 | 是 | 不能包含其他資源 |
 
 ## <a name="ip-address-requirements"></a>IP 位址需求
 
@@ -86,7 +86,7 @@ Avere vFXT 叢集會使用下列 IP 位址：
 
 * 一個叢集管理 IP 位址。 此位址可以視需要從節點移至叢集中的節點，使其永遠可供使用。 使用此位址連接到 Avere 控制台設定工具。
 * 對於每個叢集節點：
-  * 至少有一個面向用戶端的 IP 位址  （所有用戶端對應的位址都是由叢集的*vserver*管理，可以視需要在節點之間移動 IP 位址）。
+  * 至少有一個面向用戶端的 IP 位址   (所有用戶端對應的位址都是由叢集的*vserver*管理，這可以視需要在節點之間移動 IP 位址。 ) 
   * 一個用於叢集通訊的 IP 位址
   * 一個執行個體 IP 位址 (指派給 VM)
 
@@ -105,7 +105,7 @@ Avere vFXT 叢集會使用下列 IP 位址：
 
 | 執行個體類型 | vCPU | 記憶體  | 本機 SSD 儲存體  | 最大資料磁碟 | 取消快取的磁碟輸送量 | NIC (計數) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_E32s_v3 | 32  | 256 GiB | 512 GB  | 32 | 51,200 IOPS <br/> 768 MBps | 16,000 MBps (8)  |
+| Standard_E32s_v3 | 32  | 256 GiB | 512 GiB  | 32 | 51,200 IOPS <br/> 768 MBps | 16,000 MBps (8)  |
 
 每個節點的磁碟快取都可以設定，而且範圍可以從 1000 GB 到 8000 GB。 Standard_E32s_v3 節點的建議快取大小是每個節點 4 TB。
 
@@ -117,7 +117,7 @@ Avere vFXT 叢集會使用下列 IP 位址：
 
 ## <a name="back-end-data-storage"></a>後端資料儲存體
 
-後端儲存系統會將檔案提供給叢集的快取，也會接收來自快取的已變更資料。 決定您的工作集將長期儲存在新的 Blob 容器或現有的儲存系統（雲端或硬體）中。 這些後端儲存系統稱為「*核心」檔*。
+後端儲存系統會將檔案提供給叢集的快取，也會接收來自快取的已變更資料。 決定您的工作集將長期儲存在新的 Blob 容器或現有的儲存系統中， (雲端或硬體) 。 這些後端儲存系統稱為「*核心」檔*。
 
 ### <a name="hardware-core-filers"></a>硬體核心檔
 
@@ -147,7 +147,7 @@ Avere vFXT for Azure 位於私人子網路，叢集並沒有公用 IP 位址。 
   > [!TIP]
   > 如果您在叢集控制器上設定公用 IP 位址，則此控制器可作為跳板主機。 如需詳細資訊，請參閱[作為跳板主機的叢集控制器](#cluster-controller-as-jump-host)。
 
-* 虛擬私人網路（VPN）-在 Azure 中的私人網路與公司網路之間設定點對站或站對站 VPN。
+* 虛擬私人網路 (VPN) -在 Azure 中的私人網路與公司網路之間設定點對站或站對站 VPN。
 
 * Azure ExpressRoute - 透過 ExpressRoute 合作夥伴設定私人連線。
 
@@ -166,7 +166,7 @@ Avere vFXT for Azure 位於私人子網路，叢集並沒有公用 IP 位址。 
 
 ## <a name="vm-access-roles"></a>VM 存取角色
 
-Azure 會使用[角色型存取控制](../role-based-access-control/index.yml)（RBAC）來授權叢集 vm 執行特定工作。 例如，叢集控制器需要授權，才能建立和設定叢集節點 Vm。 叢集節點必須能夠將 IP 位址指派或重新指派給其他叢集節點。
+Azure 會使用 azure[角色型存取控制 (AZURE RBAC) ](../role-based-access-control/index.yml)來授權叢集 vm 執行特定工作。 例如，叢集控制器需要授權，才能建立和設定叢集節點 Vm。 叢集節點必須能夠將 IP 位址指派或重新指派給其他叢集節點。
 
 Avere vFXT 虛擬機器使用兩個內建的 Azure 角色：
 

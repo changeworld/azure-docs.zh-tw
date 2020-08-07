@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 9ead7eb19e49574073f038648ca1d247b2dab98f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131696"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923878"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>使用角色型存取控制來共用 Azure 儀表板
 
-設定儀表板之後，您可以將它發佈，並與組織中的其他使用者共用。 您可以使用 Azure[角色型存取控制](../role-based-access-control/role-assignments-portal.md)（RBAC）讓其他人查看您的儀表板。 將使用者或使用者群組指派給角色。 該角色會定義這些使用者是否可以查看或修改已發佈的儀表板。
+設定儀表板之後，您可以將它發佈，並與組織中的其他使用者共用。 您可以使用[azure 角色型存取控制 (AZURE RBAC) ](../role-based-access-control/role-assignments-portal.md)，讓其他人可以查看您的儀表板。 將使用者或使用者群組指派給角色。 該角色會定義這些使用者是否可以查看或修改已發佈的儀表板。
 
 所有已發佈的儀表板都會實作為 Azure 資源。 它們會在您的訂用帳戶內以可管理的專案形式存在，並包含在資源群組中。 從存取控制的觀點來看，儀表板與其他資源 (例如虛擬機器或儲存體帳戶) 並無不同。
 

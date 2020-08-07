@@ -12,17 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ee481067a3904c208061607b7109fcba0f3faaa7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504062"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920115"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>使用 Azure SQL 受控執行個體進行異動複寫
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-異動複寫是 Azure SQL 受控執行個體和 SQL Server 的功能，可讓您將資料從 Azure SQL 受控執行個體或 SQL Server 實例中的資料表複寫到遠端資料庫上的資料表。 此功能可讓您同步處理不同資料庫中的多個資料表。
+異動複寫是 Azure SQL 受控執行個體和 SQL Server 的功能，可讓您將資料從 Azure SQL 受控執行個體或 SQL Server 實例中的資料表複寫到遠端資料庫上的資料表。 此功能可讓您同步處理不同資料庫中的多個資料表。 
+
+異動複寫目前處於 SQL 受控執行個體的公開預覽狀態。 
 
 ## <a name="overview"></a>概觀
 
@@ -33,7 +35,7 @@ ms.locfileid: "86504062"
 - Azure SQL 受控執行個體中的實例資料庫
 
   > [!NOTE]
-  > 若要使用 Azure SQL 受控執行個體的所有功能，您必須使用最新版本的[SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)和[SQL Server Data Tools （SSDT）](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。
+  > 若要使用 Azure SQL 受控執行個體的所有功能，您必須使用最新版本的[SQL Server Management Studio (SSMS) ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)和[SQL Server Data Tools (SSDT) ](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。
 
 ### <a name="components"></a>元件
 
@@ -49,17 +51,17 @@ ms.locfileid: "86504062"
 | **發送訂閱者**| 是 | 是|
 | &nbsp; | &nbsp; | &nbsp; |
 
-發行者會藉由將更新傳送至散發**者**，來發行對某些資料表（發行項）所做的變更。 發行者可以是 Azure SQL 受控執行個體或 SQL Server 實例。
+發行者會藉由將更新傳送至散發**者**，來發行對某些資料表所做的變更 (文章) 。 發行者可以是 Azure SQL 受控執行個體或 SQL Server 實例。
 
-「散發者」會從「發行者 **」收集發行**項的變更，並將它們散發給「訂閱者」。 散發者可以是 Azure SQL 受控執行個體或 SQL Server 實例（任何版本只要等於或高於發行者版本）。
+「散發者」會從「發行者 **」收集發行**項的變更，並將它們散發給「訂閱者」。 散發者可以是 Azure SQL 受控執行個體或 SQL Server 實例 (任何版本，只要其等於或高於發行者版本) 。
 
 **訂閱**者會收到在發行者上所做的變更。 SQL Server 實例和 Azure SQL 受控執行個體可以是發送和提取訂閱者，但當散發者是 Azure SQL 受控執行個體，而訂閱者不支援提取訂閱時，則不支援提取訂用帳戶。 Azure SQL Database 中的資料庫只能是發送訂閱者。
 
 Azure SQL 受控執行個體可以支援來自下列版本 SQL Server 的訂閱者：
 
 - SQL Server 2016 及更新版本
-- SQL Server 2014 [RTM CU10 （12.0.4427.24）](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014)或[SP1 CU3 （12.0.2556.4）](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
-- SQL Server 2012 [SP2 CU8 （11.0.5634.1）](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2)或[SP3 （11.0.6020.0）](https://www.microsoft.com/download/details.aspx?id=49996)
+- SQL Server 2014 [RTM CU10 (12.0.4427.24) ](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014)或[SP1 CU3 (12.0.2556.4) ](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1) ](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2)或[SP3 (11.0.6020.0) ](https://www.microsoft.com/download/details.aspx?id=49996)
 
    > [!NOTE]
    >
@@ -146,7 +148,7 @@ Azure SQL 受控執行個體可以支援來自下列版本 SQL Server 的訂閱�
 - 如果虛擬網路不同，請設定複寫參與者之虛擬網路之間的 VPN 對等互連。
 
 > [!NOTE]
-> 當「散發者」為 Azure SQL 受控執行個體資料庫，而「訂閱者」為內部部署時，如果 Azure 儲存體連出網路安全性群組（NSG）埠445遭到封鎖，您可能會遇到錯誤53。 [更新 VNET NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以解決此問題。
+> 當「散發者」為 Azure SQL 受控執行個體資料庫，而「訂閱者」為內部部署時，如果 (NSG) 埠445的輸出網路安全性群組遭到封鎖，您可能會遇到錯誤 Azure 儲存體53。 [更新 VNET NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以解決此問題。
 
 ## <a name="with-failover-groups"></a>使用容錯移轉群組
 
@@ -176,7 +178,7 @@ Azure SQL 受控執行個體可以支援來自下列版本 SQL Server 的訂閱�
    EXEC sp_removedbreplication
    ```
 
-1. 從原始的主要 SQL 受控執行個體強制卸載舊的散發者（如果容錯回復到用來擁有散發者的舊主伺服器）。 在舊散發者 SQL 受控執行個體的 master 資料庫上執行下列腳本：
+1. 如果容錯回復到用來擁有散發者) 的舊主要複本，請從原始的主要 SQL 受控執行個體 (強制卸載舊的散發者。 在舊散發者 SQL 受控執行個體的 master 資料庫上執行下列腳本：
 
    ```sql
    EXEC sp_dropdistributor 1,1
@@ -195,7 +197,7 @@ Azure SQL 受控執行個體可以支援來自下列版本 SQL Server 的訂閱�
 - [設定 SQL 受控執行個體發行者與訂閱者之間的複寫](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [設定 SQL 受控執行個體「發行者」、「SQL 受控執行個體散發者」與「SQL Server 訂閱者」之間的複寫](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [建立發行](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)集。
-- 使用伺服器名稱做為訂閱者來[建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)（例如， `N'azuresqldbdns.database.windows.net` 以 Azure SQL Database 名稱中的資料庫做為目的地資料庫（例如**Adventureworks**）。 )
+- [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)，方法是使用伺服器名稱做為訂閱者 (例如， `N'azuresqldbdns.database.windows.net` 並以 Azure SQL Database 名稱的資料庫作為目的地資料庫 (例如**Adventureworks**。 )
 
 ## <a name="see-also"></a>另請參閱  
 
