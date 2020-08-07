@@ -10,14 +10,14 @@ author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
+ms.custom: how-to, devx-track-python
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: 42205f87e2025fa7f4492cb76aeb44a1fbf46eb6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 5e73744f3d467d08944d0e8800dd6d8824857abd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542758"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846967"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "87542758"
 
 1. 註冊模型。
 1. 準備推斷設定
-1. 準備輸入腳本（除非使用[無程式碼部署](how-to-deploy-no-code-deployment.md)）
+1. 除非使用[無程式碼部署，](how-to-deploy-no-code-deployment.md)否則 (準備專案腳本) 
 1. 將模型部署至計算目標。
 1. 測試已部署的模型，也稱為 web 服務。
 
@@ -51,7 +51,7 @@ ms.locfileid: "87542758"
 
 下表描述不同的服務狀態：
 
-| Webservice 狀態 | 說明 | 最終狀態？
+| Webservice 狀態 | 描述 | 最終狀態？
 | ----- | ----- | ----- |
 | 正在 | 服務正在進行部署。 | 否 |
 | Unhealthy | 服務已部署，但目前無法連線。  | 否 |
@@ -74,7 +74,7 @@ Azure Machine Learning 計算目標是由 Azure Machine Learning 建立和管理
 * [針對失敗的部署進行疑難排解](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md)
 * [建立用戶端應用程式以使用 web 服務](how-to-consume-web-service.md)
-* [更新 web 服務](how-to-deploy-update-web-service.md)
+* [更新 Web 服務](how-to-deploy-update-web-service.md)
 * [如何使用自訂 Docker 映射部署模型](how-to-deploy-custom-docker-image.md)
 * [使用 TLS 來透過 Azure Machine Learning 保護 Web 服務](how-to-secure-web-service.md)
 * [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)

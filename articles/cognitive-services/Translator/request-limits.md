@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561471"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903400"
 ---
 # <a name="request-limits-for-translator"></a>Translator 的要求限制
 
@@ -23,28 +23,28 @@ ms.locfileid: "85561471"
 
 ## <a name="character-and-array-limits-per-request"></a>每個要求的字元和陣列限制
 
-每個轉譯要求的限制為5000個字元，涵蓋您要轉譯的目的語言。 例如，傳送1500個字元的翻譯要求轉譯成3種不同的語言，會導致要求大小為1、500x3 = 4500 個字元，以滿足要求限制。 系統會依照每個字元收費，而不是依照要求數目收費。 建議您傳送較短的要求。
+每個轉譯要求的限制為10000個字元，涵蓋您要轉譯的目的語言。 例如，傳送3000個字元的翻譯要求轉譯成3種不同的語言，會導致要求大小為 3000x3 = 9000 個字元，以滿足要求限制。 系統會依照每個字元收費，而不是依照要求數目收費。 建議您傳送較短的要求。
 
 下表列出每個轉譯程式作業的陣列元素和字元限制。
 
-| 作業 | 陣列元素的大小上限 |    陣列元素的最大數目 |    要求大小上限（字元） |
+| 作業 | 陣列元素的大小上限 |    陣列元素的最大數目 |    要求大小上限 (個字元)  |
 |:----|:----|:----|:----|
-| Translate | 5,000    | 100    | 5,000 |
-| Transliterate | 5,000    | 10    | 5,000 |
-| Detect | 10,000 |    100 |    50,000 |
-| BreakSentence | 10,000    | 100 |    50,000 |
-| 字典查閱| 100 |    10    | 1,000 |
-| 字典範例 | 100用於文字，100用於轉譯（200 total）| 10|    2,000 |
+| Translate | 10,000    | 100   | 10,000 |
+| Transliterate | 5,000 | 10    | 5,000 |
+| Detect | 10,000 | 100 |   50,000 |
+| BreakSentence | 50,000    | 100 | 50,000 |
+| 字典查閱| 100 |  10  | 1,000 |
+| 字典範例 | 100用於翻譯的文字和 100 (200 total) | 10|   2,000 |
 
 ## <a name="character-limits-per-hour"></a>每小時的字元限制
 
 每小時的字元限制是以您的 Translator 訂用帳戶層為基礎。 
 
-每小時的配額應該在一小時內平均耗用。 例如，在每小時2000000個字元的 F0 層限制中，字元的取用速度不會比每分鐘大約33300個字元的滑動時間範圍（2000000個字元除以60分鐘）。
+每小時的配額應該在一小時內平均耗用。 例如，在每小時2000000個字元的 F0 層限制中，字元的取用速度不能超過大約每分鐘33300個字元的滑動視窗 (2000000 個字元除以60分鐘的) 。
 
 如果您達到或超過這些限制，或在短時間內傳送過多的配額部分，您可能會收到超出配額的回應。 並行要求沒有任何限制。
 
-| 層 | 字元限制 |
+| 階層 | 字元限制 |
 |------|-----------------|
 | F0 | 每小時 2 百萬個字元 |
 | S1 | 每小時 4 千萬個字元 |
@@ -64,7 +64,7 @@ ms.locfileid: "85561471"
 
 使用 [BreakSentence](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-break-sentence) 函式時，句子長度受限於 275 個字元。 下列語言有一些例外狀況：
 
-| Language | 程式碼 | 字元限制 |
+| 語言 | 程式碼 | 字元限制 |
 |----------|------|-----------------|
 | 中文 | zh | 166 |
 | 德文 | de | 800 |

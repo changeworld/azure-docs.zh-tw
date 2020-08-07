@@ -1,6 +1,6 @@
 ---
 title: 在 Azure API 管理中使用外部快取 | Microsoft Docs
-description: 了解如何在 Azure API 管理中設定及使用外部快取。
+description: 了解如何在 Azure API 管理中設定及使用外部快取。 使用外部快取可讓您克服內建快取的某些限制。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -11,18 +11,18 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 3f1f3d0fd0164a37c8011dc82a95337c89e103df
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cfb7dd7a3831d90235b25af9598cfbc137ffcb3d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250629"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904950"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>在 Azure API 管理中使用外部 Redis 相容快取
 
 除了使用內建快取，Azure API 管理還允許在外部 Redis 相容的快取中快取回應，例如 Azure Cache for Redis。
 
-使用外部快取可克服內建快取的一些限制：
+使用外部快取可讓您克服內建快取的一些限制：
 
 * 避免在 API 管理更新期間定期清除快取
 * 更充分地掌控您的快取組態
@@ -43,10 +43,10 @@ ms.locfileid: "86250629"
 
 若要完成本教學課程，您需要：
 
-+ [建立 Azure API 管理執行個體](get-started-create-service-instance.md)
++ [建立 Azure API 管理實例](get-started-create-service-instance.md)
 + 了解[在 Azure API 管理中快取](api-management-howto-cache.md)
 
-## <a name="create-azure-cache-for-redis"></a><a name="create-cache"> </a> 建立 Azure Redis 快取
+## <a name="create-azure-cache-for-redis"></a><a name="create-cache"> </a>建立 Azure Cache for Redis
 
 本節說明如何在 Azure 中建立「Azure Redis 快取」。 如果您在 Azure 內部或外部已經有「Azure Redis 快取」，則可以<a href="#add-external-cache">跳到</a>下一節。
 

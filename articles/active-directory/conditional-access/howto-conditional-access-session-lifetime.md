@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552122"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874770"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用條件式存取來設定驗證工作階段管理
 
@@ -35,9 +35,9 @@ ms.locfileid: "85552122"
 
 登入頻率會定義在嘗試存取資源時，要求使用者重新登入的時間週期。
 
-使用者登入頻率的 Azure Active Directory （Azure AD）預設設定是90天的滾動視窗。 要求使用者提供認證通常似乎是很好的作法，但它可以 backfire：已定型來輸入認證的使用者，而不想要在無意中將其提供給惡意的認證提示。
+Azure Active Directory () Azure AD [使用者登入頻率] 的預設設定是90天的滾動時間範圍。 要求使用者提供認證通常似乎是很好的作法，但它可以 backfire：已定型來輸入認證的使用者，而不想要在無意中將其提供給惡意的認證提示。
 
-這聽起來可能會令使用者不會要求重新登入，事實上，違反 IT 原則會撤銷會話。 某些範例包括（但不限於）密碼變更、incompliant 裝置或帳戶停用。 您也可以[使用 PowerShell 來明確撤銷使用者的會話](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 預設設定會變成「不詢問使用者在其會話的安全性狀態未變更時提供認證」。
+這聽起來可能會令使用者不會要求重新登入，事實上，違反 IT 原則會撤銷會話。 某些範例包括 (，但不限於) 密碼變更、incompliant 裝置或帳戶停用。 您也可以[使用 PowerShell 來明確撤銷使用者的會話](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 預設設定會變成「不詢問使用者在其會話的安全性狀態未變更時提供認證」。
 
 [登入頻率] 設定適用于已根據標準來執行 OAUTH2 或 OIDC 通訊協定的應用程式。 大部分適用于 Windows、Mac 和行動裝置的 Microsoft 原生應用程式，包括下列 web 應用程式都符合設定。
 
@@ -55,7 +55,7 @@ ms.locfileid: "85552122"
 
 ### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>使用者登入頻率和多重要素驗證
 
-登入頻率先前僅適用于已聯結 Azure AD 的裝置上的第一個因素驗證，混合式 Azure AD 聯結，並 Azure AD 註冊。 我們的客戶沒有簡單的方法可以在這些裝置上重新強制執行多重要素驗證（MFA）。 根據客戶的意見反應，登入頻率也將適用于 MFA。
+登入頻率先前僅適用于已聯結 Azure AD 的裝置上的第一個因素驗證，混合式 Azure AD 聯結，並 Azure AD 註冊。 我們的客戶無法輕鬆地在這些裝置上 (MFA) 重新強制執行多重要素驗證。 根據客戶的意見反應，登入頻率也將適用于 MFA。
 
 [![登入頻率和 MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
 
@@ -106,8 +106,6 @@ ms.locfileid: "85552122"
 ![設定登入頻率的條件式存取原則](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
 在 Azure AD 已註冊的 Windows 裝置上，會將登入裝置視為提示字元。 例如，如果您已將 Office 應用程式的登入頻率設定為24小時，Azure AD 已註冊的 Windows 裝置上的使用者將會藉由登入裝置而滿足登入頻率原則，而在開啟 Office 應用程式時將不會再次提示。
-
-如果您已針對在相同瀏覽器會話中執行的不同 web 應用程式設定不同的登入頻率，最嚴格的原則將會套用至這兩個應用程式，因為在相同的瀏覽器會話中執行的所有應用程式都會共用單一會話權杖。
 
 ### <a name="policy-2-persistent-browser-session"></a>原則2：持續性瀏覽器會話
 

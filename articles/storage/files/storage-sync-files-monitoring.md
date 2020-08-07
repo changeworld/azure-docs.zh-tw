@@ -1,18 +1,18 @@
 ---
 title: 監視 Azure 檔案同步 | Microsoft Docs
-description: 如何監視 Azure 檔案同步。
+description: 請參閱如何使用 Azure 監視器、儲存體同步服務和 Windows Server 監視您的 Azure 檔案同步部署。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 81224e0c055ad4a94bd57ebb3aa7c8a3b30c2dd7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9a4e4a30c5a84baf5a78d0a90f7302e2b31a5946
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832615"
+ms.locfileid: "87903522"
 ---
 # <a name="monitor-azure-file-sync"></a>監視 Azure 檔案同步
 
@@ -23,7 +23,7 @@ ms.locfileid: "87832615"
 本指南涵蓋下列案例： 
 - 在 Azure 監視器中查看 Azure 檔案同步計量。
 - 在 Azure 監視器中建立警示，以主動通知您重大狀況。
-- 使用 Azure 入口網站監視 Azure 檔案同步部署的健康情況。
+- 使用 Azure 入口網站來查看 Azure 檔案同步部署的健全狀況。
 - 如何使用 Windows 伺服器上的事件記錄檔和效能計數器來監視 Azure 檔案同步部署的健全狀況。 
 
 ## <a name="azure-monitor"></a>Azure 監視器
@@ -34,7 +34,9 @@ ms.locfileid: "87832615"
 
 依預設會啟用 Azure 檔案同步的計量，並且每 15 分鐘傳送至 Azure 監視器一次。
 
-若要在 Azure 監視器中查看 Azure 檔案同步計量，請選取**儲存體同步服務**資源類型。
+**如何在 Azure 監視器中查看 Azure 檔案同步計量**
+- 移至**Azure 入口網站**中的**儲存體同步服務**，然後按一下 [**計量**]。
+- 按一下 [計量 **] 下拉式選單，然後**選取您想要查看的度量。
 
 以下是 Azure 監視器中提供的 Azure 檔案同步計量：
 
@@ -82,7 +84,7 @@ ms.locfileid: "87832615"
 ### <a name="registered-server-health"></a>已註冊的伺服器健全狀況
 
 - 如果**已註冊的伺服器**狀態為 [**線上**]，伺服器就會成功與服務進行通訊。
-- 如果 [**已註冊的伺服器**] 狀態顯示為 [**離線**]，請確認伺服器上的儲存體同步監視器 ( # A0) 進程是否正在執行。 如果伺服器位於防火牆或 proxy 後方，請參閱[這篇文章](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)以設定防火牆和 proxy。
+- 如果 [**已註冊的伺服器**] 狀態**顯示為 [離線**]，表示儲存體同步監視器進程 ( # A0) 並未執行，或伺服器無法存取 Azure 檔案同步服務。 如需指引，請參閱[疑難排解檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity)。
 
 ### <a name="server-endpoint-health"></a>伺服器端點健全狀況
 
@@ -116,16 +118,18 @@ ms.locfileid: "87832615"
 
 同步健全狀況：
 
-- 同步會話完成後，會記錄事件識別碼9102。 使用此事件判斷同步會話是否成功 (**HResult = 0**) 以及是否有每個專案的同步錯誤。 如需詳細資訊，請參閱[同步處理健康](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)情況和[每個專案的錯誤](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)檔。
+- 同步工作階段完成後，會記錄事件識別碼 9102。 使用此事件判斷同步會話是否成功 (**HResult = 0**) 以及是否有每個專案的同步錯誤。 如需詳細資訊，請參閱[同步處理健康](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)情況和[每個專案的錯誤](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)檔。
 
   > [!Note]  
   > 有時候同步會話會整體失敗，或具有非零的 PerItemErrorCount。 不過，它們仍會繼續進行，而某些檔案也會順利同步。 您可以在套用的欄位（例如看出 appliedfilecount、AppliedDirCount、AppliedTombstoneCount 和 AppliedSizeBytes）中看到此功能。 這些欄位會告訴您會話成功的程度。 如果您在某個資料列中看到多個同步會話失敗，而且其已套用計數增加，請在開啟支援票證之前，提供同步處理時間再試一次。
+
+- 當同步會話完成時，會針對每個專案的錯誤記錄事件識別碼9121。 使用此事件可判斷因此錯誤而無法同步的檔案數 (**PersistentCount**和**TransientCount**) 。 應該調查持續性的每個專案錯誤，請參閱如何? 查看是否有特定的檔案[或資料夾未同步？](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)。
 
 - 如果有使用中的同步工作階段，則會每隔 5 到 10 分鐘記錄事件識別碼 9302 一次。 使用此事件來判斷目前的同步會話是否正在進行 (**AppliedItemCount > 0**) 的進度。 如果同步處理未進行進度，同步會話最後應該會失敗，而且會記錄事件識別碼9102並產生錯誤。 如需詳細資訊，請參閱[同步處理進度檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。
 
 已註冊的伺服器健全狀況：
 
-- 當伺服器查詢服務中的作業時，將會每 30 秒記錄事件識別碼 9301 一次。 如果 GetNextJob 以**status = 0**完成，伺服器就能夠與服務通訊。 如果 GetNextJob 完成並出現錯誤，請參閱[疑難排解檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)以取得指導方針。
+- 當伺服器查詢服務中的作業時，將會每 30 秒記錄事件識別碼 9301 一次。 如果 GetNextJob 以**status = 0**完成，伺服器就能夠與服務通訊。 如果 GetNextJob 完成並出現錯誤，請參閱[疑難排解檔](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity)以取得指導方針。
 
 雲端階層處理健全狀況：
 

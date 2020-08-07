@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ccacef6f9557bdcf683973c2ad5141b6066347b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176204"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904304"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 在 Azure 獨立雲端中管理儲存體
 
@@ -60,7 +60,7 @@ Get-AzLocation | select Location, DisplayName
 
 下表顯示針對德國雲端傳回的位置。
 
-|位置 | 顯示名稱 |
+|Location | 顯示名稱 |
 |----|----|
 | `germanycentral` | 德國中部|
 | `germanynortheast` | 德國東北部 |
@@ -112,6 +112,7 @@ Get-AzEnvironment -Name AzureGermanCloud
 | SqlDatabaseDnsSuffix | `.database.cloudapi.de` |
 | **StorageEndpointSuffix** | `core.cloudapi.de` |
 | ... | ... |
+
 若只要擷取儲存體端點尾碼屬性，請擷取特定雲端，並且只要求該單一屬性。
 
 ```powershell

@@ -1,6 +1,6 @@
 ---
 title: 建立 premium Azure 檔案共用
-description: 在本文中，您將瞭解如何建立 premium Azure 檔案共用。
+description: 在本文中，您將瞭解如何使用 Azure 入口網站、PowerShell 或 Azure CLI 來建立 premium Azure 檔案共用。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,15 +8,15 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5bdfbbc505f6abe4fee021df014e32d3ccae074
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adeb1635489441b30c15fee69922e3abef0a53f9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497625"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903811"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何建立 premium Azure 檔案共用
-高階檔案共用是在固態硬碟（SSD）儲存媒體上提供，適用于需要大量 IO 的工作負載，包括裝載資料庫和高效能運算（HPC）。 高階檔案共用裝載在特殊用途的儲存體帳戶類型中，稱為 FileStorage 帳戶。 Premium 檔案共用是針對高效能和企業級應用程式所設計，可提供一致的低延遲、高 IOPS 和高輸送量的共用。
+高階檔案共用是在固態磁片 (SSD) 儲存體媒體上提供，適用于需要大量 IO 的工作負載，包括裝載資料庫和高效能計算 (HPC) 。 高階檔案共用裝載在特殊用途的儲存體帳戶類型中，稱為 FileStorage 帳戶。 Premium 檔案共用是針對高效能和企業級應用程式所設計，可提供一致的低延遲、高 IOPS 和高輸送量的共用。
 
 本文說明如何使用[Azure 入口網站](https://portal.azure.com/)、Azure PowerShell 和 Azure CLI 來建立這個新帳戶類型。
 
@@ -51,7 +51,7 @@ ms.locfileid: "87497625"
     您必須在 [**帳戶種類**] 下拉式清單中選取 [ **Premium** for **FileStorage** ] 做為可用的選項。
 
 1. 選取 [**帳戶種類**]，然後選擇 [ **FileStorage**]。
-1. 將 **[複寫] 保留為**預設值 **[本機-多餘儲存體（LRS）**]。
+1. 將 **[複寫] 設為**其預設值 [**本機-多餘儲存體] (LRS) **。
 
     ![如何建立 premium 檔案共用的儲存體帳戶](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
 

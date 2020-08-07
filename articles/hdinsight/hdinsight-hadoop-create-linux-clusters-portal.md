@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 95756e9951b384c779f61651555482b3c8cb7321
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083367"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874022"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 入口網站在 HDInsight 中建立 Linux 型叢集
 
@@ -25,7 +25,7 @@ Azure 入口網站是 Web 架構的管理工具，可用來管理裝載於 Micro
 
 Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resource Manager 範本，您可以隱藏許多詳細資料。 如需詳細資訊，請參閱[使用 Resource Manager 範本在 HDInsight 中建立 Apache Hadoop 叢集](hdinsight-hadoop-create-linux-clusters-arm-templates.md)。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立一個[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="create-clusters"></a>建立叢集
 
@@ -85,6 +85,9 @@ Azure 入口網站會公開大部分的叢集屬性。 藉由使用 Azure Resour
 ### <a name="metastore-settings"></a>中繼存放區設定
 
 選擇性：指定現有的 SQL Database 以儲存叢集以外的 Apache Hive、Apache Oozie 和或 Apache Ambari 中繼資料。 用於中繼存放區的 Azure SQL Database 必須允許連接到其他 Azure 服務，包括 Azure HDInsight。 當您建立中繼存放區時，請勿使用包含破折號或連字號的資料庫名稱。 這些字元可能會導致叢集建立程序失敗。
+
+> [!IMPORTANT]
+> 對於支援中繼存放區的叢集圖形，預設中繼存放區**會提供基本第5層 DTU 限制的 Azure SQL Database， (無法升級) **！ 適用于基本測試用途。 針對大型或生產工作負載，我們建議您遷移至外部中繼存放區。
 
 選取 **[下一步]： [安全性 + 網路 >>** ] 以前進至下一個索引標籤。
 

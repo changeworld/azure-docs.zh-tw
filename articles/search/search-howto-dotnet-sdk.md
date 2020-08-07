@@ -1,26 +1,29 @@
 ---
-title: 在 .NET 中使用 Azure 認知搜尋
+title: 在 .NET 中使用 v10)  (的搜尋
 titleSuffix: Azure Cognitive Search
-description: '瞭解如何在使用 c # 和 .NET SDK 的 .NET 應用程式中使用 Azure 認知搜尋。 以程式碼為基礎的工作包括連線至服務、為內容編製索引，以及查詢索引。'
+description: '瞭解如何使用 c # 和第10版的 .NET SDK 來建立和管理搜尋物件 .NET 應用程式。 程式碼片段會示範如何連接到服務、建立索引和查詢。'
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 08/05/2020
+ms.openlocfilehash: 820ce3078b642f2cc672cd6906895f818c06f5b7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146914"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905418"
 ---
-# <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>如何從 .NET 應用程式使用 Azure 認知搜尋
+# <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>如何在 .NET 應用程式中使用 v10)  (的搜尋
 
-本文逐步解說如何讓您開始使用[Azure 認知搜尋 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)。 您可以使用 .NET SDK，在您的應用程式中使用 Azure 認知搜尋來執行豐富的搜尋體驗。
+本文說明如何使用 c # 和[Azure 認知搜尋 (v10) .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)來建立和管理搜尋物件。 第10版是最新版本的 Microsoft. Azure. 搜尋套件。 從 Azure SDK 小組[Azure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme)中，將會推出新功能。
 
-## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Azure 認知搜尋 SDK 的內容
+如果您有現有或傳遞的開發專案，請繼續使用第10版。 針對新的專案，或若要使用新功能，您應該將現有的搜尋解決方案轉換成新的程式庫。
+
+## <a name="whats-in-version-10"></a>第10版的內容
+
 SDK 包含數個用戶端程式庫，可讓您管理索引、資料來源、索引子及同義字地圖，以及上傳和管理文件，還可以執行查詢，而且一律不需要處理 HTTP 和 JSON 的細節。 這些用戶端程式庫都以 NuGet 套件來散發。
 
 主要的 NuGet 套件是 `Microsoft.Azure.Search`，這是包含所有其他相依套件的中繼套件。 如果您剛開始使用，或如果您知道您的應用程式將需要 Azure 認知搜尋的所有功能，請使用此套件。

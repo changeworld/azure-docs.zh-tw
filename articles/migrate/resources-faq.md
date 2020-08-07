@@ -3,12 +3,12 @@ title: Azure Migrate 常見問題
 description: 取得有關 Azure Migrate 服務常見問題的解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090003"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847460"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常見的問題
 
@@ -29,17 +29,23 @@ Azure Migrate 提供中央中樞來追蹤內部部署應用程式和工作負載
 
 [Azure Migrate](migrate-services-overview.md)提供集中式的中樞，供您評估和遷移至 Azure。 
 
-[Azure Site Recovery](../site-recovery/site-recovery-overview.md)是一種嚴重損壞修復解決方案。 
+- 使用 Azure Migrate 透過 Azure Migrate 工具、其他 Azure 服務及協力廠商工具，提供互通性和未來的擴充性。
+- Azure Migrate：伺服器遷移工具是專為伺服器遷移至 Azure 而設計的用途。 它已針對遷移優化。 您不需要瞭解與遷移不直接相關的概念和案例。 
+- 從 VM 開始複寫時，沒有任何工具使用費用可供遷移180天。 這讓您有時間完成遷移。 您只需支付複寫所使用的儲存體和網路資源，以及在測試遷移期間所耗用的計算費用。
+- Azure Migrate 支援 Site Recovery 支援的所有遷移案例。 此外，對於 VMware Vm，Azure Migrate 提供無代理程式的遷移選項。
+- 我們會為 Azure Migrate 的新遷移功能排定優先順序：僅限伺服器遷移工具。 這些功能不是以 Site Recovery 為目標。
+
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md)應該僅用於嚴重損壞修復。
 
 Azure Migrate：伺服器遷移工具會使用一些後端 Site Recovery 功能，以進行部分內部部署機器的隨即轉移。
 
 ## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>我有一個專案具有舊版 Azure Migrate 的傳統體驗。 如何? 開始使用新版本嗎？
 
-您無法將舊版中的專案或元件升級至新版本。 您需要[建立新的 Azure Migrate 專案](create-manage-projects.md)，並在其中新增[評估和遷移工具](how-to-add-tool-first-time.md)。 使用教學課程來瞭解如何使用可用的評估和遷移工具。 如果您已將 Log Analytics 工作區附加至傳統專案，您可以在刪除傳統專案之後，將它附加至目前版本的專案。
+您無法將舊版中的專案或元件升級至新版本。 您需要[建立新的 Azure Migrate 專案](create-manage-projects.md)，並[將評量與移轉工具新增到其中](how-to-add-tool-first-time.md)。 使用教學課程來了解如何使用可用的評量和移轉工具。 如果您已將 Log Analytics 工作區連結至傳統專案，可以在刪除傳統專案之後，將其連結加至目前版本的專案。
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate 之間的差異為何：伺服器評估和地圖工具組？
 
-伺服器評估提供評估以協助進行遷移，以及評估要遷移至 Azure 的工作負載。 [Microsoft 評估及規劃（MAP）工具](https://www.microsoft.com/download/details.aspx?id=7826)組可協助進行其他工作，包括較新版本的 Windows 用戶端和伺服器作業系統的遷移規劃，以及軟體使用方式追蹤。 在這些情況下，請繼續使用地圖工具組。
+伺服器評估提供評估以協助進行遷移，以及評估要遷移至 Azure 的工作負載。 [Microsoft 評估及規劃 (對應) 工具](https://www.microsoft.com/download/details.aspx?id=7826)組可協助進行其他工作，包括較新版本的 Windows 用戶端和伺服器作業系統的遷移規劃，以及軟體使用方式追蹤。 在這些情況下，請繼續使用地圖工具組。
 
 ## <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>伺服器評估與 Site Recovery 部署規劃工具之間有何差異？
 

@@ -3,12 +3,12 @@ title: Microsoft Azure 復原服務 (MARS) 代理程式–常見問題
 description: 解決有關使用 Azure 備份來備份檔案和資料夾的常見問題。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563089"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874617"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常見問題-Microsoft Azure 復原服務 (MARS) 代理程式
 
@@ -32,7 +32,7 @@ ms.locfileid: "87563089"
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>複雜密碼允許哪些字元？
 
-複雜密碼應使用 ASCII 字元集中的字元，且 ASCII 值小於或等於127。
+複雜密碼應使用 ASCII 字元集中的字元，且[ascii 值小於或等於 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127)。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>我可以從哪些磁片磁碟機備份檔案和資料夾？
 

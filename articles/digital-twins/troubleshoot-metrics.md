@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: cc270ebb12b27c6461b00a4f7042bc3c829d02ef
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87812277"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905191"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>針對 Azure 數位 Twins 進行疑難排解：計量
 
@@ -32,9 +32,14 @@ ms.locfileid: "87812277"
 
     此頁面會顯示您的 Azure 數位 Twins 實例的計量。 您也可以從清單中選取您想要查看的計量，以建立其自訂的觀點。
     
-3. 您可以從功能表中按一下 [**診斷設定**]，然後選取 [**新增診斷設定**]，以選擇將計量資料傳送至事件中樞端點或 Azure 儲存體帳戶。
+3. 您可以從功能表中選取 [**診斷設定**]，然後 [**新增診斷設定**]，選擇將計量資料傳送至事件中樞端點或 Azure 儲存體帳戶。
 
-    :::image type="content" source="media/troubleshoot-metrics/diagnostic-settings.png" alt-text="顯示 [診斷設定] 頁面和要新增之按鈕的螢幕擷取畫面":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="顯示 [診斷設定] 頁面和要新增之按鈕的螢幕擷取畫面":::
+
+    如需此流程的詳細資訊，請參閱[*疑難排解：設定診斷*](troubleshoot-diagnostics.md)。
+
+4. 您可以從功能表中選取 [**警示**]，然後選取 [ **+ 新增警示規則**]，以選擇設定計量資料的警示。
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="顯示 [警示] 頁面和要新增之按鈕的螢幕擷取畫面":::
 
     如需此流程的詳細資訊，請參閱[*疑難排解：設定診斷*](troubleshoot-diagnostics.md)。
 

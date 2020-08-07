@@ -1,6 +1,6 @@
 ---
 title: 使用共用金鑰授權呼叫 REST API 作業
-titleSuffix: Azure Storage
+titleSuffix: Discover how to call Azure Storage REST API operations with Shared Key authorization. Get detailed information about each step of the sample operation.
 description: 使用 Azure 儲存體 REST API，向使用共用金鑰授權的 Blob 儲存體提出要求。
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: ozge
 ms.subservice: common
-ms.openlocfilehash: 237ad3215ef0330fed8662d987b1b72eca4aec81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d43df68f48273b03fa9bde9633b487d69c0834ed
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509178"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905375"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>使用共用金鑰授權呼叫 REST API 作業
 
@@ -37,7 +37,7 @@ ms.locfileid: "85509178"
 
 範例應用程式是以 C# 撰寫的主控台應用程式。
 
-使用[git](https://git-scm.com/)將應用程式的複本下載至您的開發環境。
+使用 [git](https://git-scm.com/) 將應用程式的複本下載至您的開發環境。
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
@@ -205,7 +205,7 @@ Date: Fri, 17 Nov 2017 00:23:42 GMT
 Content-Length: 1511
 ```
 
-**回應主體（XML）：** 針對「列出容器」作業，這會顯示容器和其屬性的清單。
+** (XML) 的回應主體：** 針對「列出容器」作業，這會顯示容器和其屬性的清單。
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
@@ -267,9 +267,9 @@ Content-Length: 1511
 ## <a name="creating-the-authorization-header"></a>建立授權標頭
 
 > [!TIP]
-> Azure 儲存體現在支援 blob 和佇列的 Azure Active Directory （Azure AD）整合。 Azure AD 可提供更簡單的 Azure 儲存體要求授權體驗。 如需使用 Azure AD 來授權 REST 作業的詳細資訊，請參閱[使用 Azure Active Directory 進行授權](/rest/api/storageservices/authorize-with-azure-active-directory)。 如需 Azure AD 與 Azure 儲存體整合的總覽，請參閱[使用 Azure Active Directory 驗證 Azure 儲存體的存取權](storage-auth-aad.md)。
+> Azure 儲存體現在支援 blob 和佇列的 Azure Active Directory (Azure AD) 整合。 Azure AD 可提供更簡單的 Azure 儲存體要求授權體驗。 如需使用 Azure AD 來授權 REST 作業的詳細資訊，請參閱[使用 Azure Active Directory 進行授權](/rest/api/storageservices/authorize-with-azure-active-directory)。 如需 Azure AD 與 Azure 儲存體整合的總覽，請參閱[使用 Azure Active Directory 驗證 Azure 儲存體的存取權](storage-auth-aad.md)。
 
-本文會說明概念上（沒有程式碼）如何[授權 Azure 儲存體的要求](/rest/api/storageservices/authorize-requests-to-azure-storage)。
+有一篇文章會在概念上說明 (沒有程式碼) 如何[授權 Azure 儲存體的要求](/rest/api/storageservices/authorize-requests-to-azure-storage)。
 
 讓我們萃取該文章的精華，並顯示程式碼。
 
@@ -279,7 +279,7 @@ Content-Length: 1511
 Authorization="SharedKey <storage account name>:<signature>"  
 ```
 
-簽章欄位是雜湊式訊息驗證碼 (HMAC)，該驗證碼是從要求建構而來並使用 SHA256 演算法進行計算，然後使用 Base64 編碼方式進行編碼。 懂了嗎？ （請稍候，您還沒聽過「正式」*這個字）* 。
+簽章欄位是雜湊式訊息驗證碼 (HMAC)，該驗證碼是從要求建構而來並使用 SHA256 演算法進行計算，然後使用 Base64 編碼方式進行編碼。 懂了嗎？  (停止回應，您甚至還沒聽過「正式」*這個字。* ) 
 
 此程式碼片段會顯示共用金鑰簽章字串的格式：
 
@@ -302,7 +302,7 @@ StringToSign = VERB + "\n" +
 
 大部分的上述欄位都很少使用。 對於 Blob 儲存體，您可以指定 VERB、md5、內容長度、正式標頭和正式資源。 您可以將其他欄位空白 (但放入 `\n`，讓它知道是空白的)。
 
-什麼是 CanonicalizedHeaders 和 CanonicalizedResource？ 好問題。 事實上，正式 (canonicalized) 是什麼意思？ Microsoft Word 甚至不會將它視為一個字。 以下是[維琪百科所說的標準化](https://en.wikipedia.org/wiki/Canonicalization)概念：*在電腦科學中，正規化（有時候是標準化或正規化）是一種將多個可能的標記法轉換成「標準」、「一般」或標準格式的資料*的程式。 一般來說，這表示取得項目 (例如正式標頭中的標頭) 清單，並將它們標準化成為所需的格式。 基本上，Microsoft 已決定格式，而您必須符合它。
+什麼是 CanonicalizedHeaders 和 CanonicalizedResource？ 好問題。 事實上，正式 (canonicalized) 是什麼意思？ Microsoft Word 甚至不會將它視為一個字。 以下是[維琪百科所說的標準化](https://en.wikipedia.org/wiki/Canonicalization)概念：*在電腦科學中，正規化 (有時候標準化或正規化) 是將具有一個以上可能呈現的資料轉換成「標準」、「一般」或標準格式*的程式。 一般來說，這表示取得項目 (例如正式標頭中的標頭) 清單，並將它們標準化成為所需的格式。 基本上，Microsoft 已決定格式，而您必須符合它。
 
 讓我們從這兩個正式欄位著手，因為需有它們才能建立授權標頭。
 
@@ -569,7 +569,7 @@ Content-Length: 1135
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Blob 服務 REST API](/rest/api/storageservices/blob-service-rest-api)
-- [檔案服務 REST API](/rest/api/storageservices/file-service-rest-api)
-- [佇列服務 REST API](/rest/api/storageservices/queue-service-rest-api)
+- [Blob 服務 REST API](/rest/api/storageservices/blob-service-rest-api) \(英文\)
+- [檔案服務 REST API](/rest/api/storageservices/file-service-rest-api) \(英文\)
+- [佇列服務 REST API](/rest/api/storageservices/queue-service-rest-api) \(英文\)
 - [資料表服務 REST API](/rest/api/storageservices/table-service-rest-api) \(英文\)

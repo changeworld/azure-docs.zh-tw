@@ -11,13 +11,13 @@ manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 38e7ecf371beb003137b4ae1b2315046a474d090
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: dba64761d5df9bcf27cc903f84750a767478000a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319723"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846678"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>在 Python 中啟動、監視和取消定型執行
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "87319723"
 * 建立子執行。
 * 標記和尋找執行。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 您將需要下列專案：
 
@@ -39,7 +39,7 @@ ms.locfileid: "87319723"
 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 
-* 適用于 Python 的 Azure Machine Learning SDK （1.0.21 版或更新版本）。 若要安裝或更新為最新版本的 SDK，請參閱[安裝或更新 sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* 適用于 Python 的 Azure Machine Learning SDK (1.0.21 或更新版本) 。 若要安裝或更新為最新版本的 SDK，請參閱[安裝或更新 sdk](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
     若要檢查您的 Azure Machine Learning SDK 版本，請使用下列程式碼：
 
@@ -110,7 +110,7 @@ notebook_run.log(name="message", value="Hello from run!")
 
 ### <a name="using-azure-machine-learning-studio"></a>使用 Azure Machine Learning studio
 
-若要開始在設計工具（預覽）中提交管線執行，請使用下列步驟：
+若要開始在設計工具中提交管線執行 (預覽) ，請使用下列步驟：
 
 1. 為您的管線設定預設計算目標。
 
@@ -206,7 +206,7 @@ local_script_run.cancel()
 print(local_script_run.get_status())
 ```
 
-如果您的執行已完成，但它包含錯誤（例如，使用了不正確的定型腳本），您可以使用 [`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-) 方法將其標示為失敗。
+如果您的執行已完成，但它包含錯誤 (例如，) 使用了不正確的定型腳本，您可以使用 [`fail()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)#fail-error-details-none--error-code-none---set-status-true-) 方法將其標示為失敗。
 
 ```python
 local_script_run = exp.submit(run_config)

@@ -17,7 +17,7 @@ ms.locfileid: "87407427"
 
 新的 Azure 數位 Twins 實例的完整設定包含三個部分：
 1. **建立實例**
-2. **設定使用者存取權限**： azure 使用者必須擁有 Azure 數位 Twins 實例上的*Azure 數位 Twins 擁有者（預覽）* 角色，才能管理它及其資料。 在此步驟中，您身為 Azure 訂用帳戶中的擁有者，會將此角色指派給將管理您的 Azure 數位 Twins 實例的人員。 這可能是您自己或組織中的其他人。
+2. **設定使用者存取權限**： azure 使用者必須擁有 Azure 數位 Twins 實例上的*Azure 數位 Twins 擁有者 (預覽) *角色，才能管理 it 和其資料。 在此步驟中，您身為 Azure 訂用帳戶中的擁有者，會將此角色指派給將管理您的 Azure 數位 Twins 實例的人員。 這可能是您自己或組織中的其他人。
 3. **設定用戶端應用程式的存取權限**：通常會撰寫將用來與您的實例互動的用戶端應用程式。 為了讓該用戶端應用程式存取您的 Azure 數位 Twins，您必須在用戶端應用程式將用來向實例進行驗證的[Azure Active Directory](../articles/active-directory/fundamentals/active-directory-whatis.md)中設定*應用程式註冊*。
 
 若要繼續，您將需要 Azure 訂用帳戶。 您可以在[這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)免費設定一個。

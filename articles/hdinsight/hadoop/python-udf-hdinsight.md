@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive, tracking-python
-ms.openlocfilehash: 9bb27d1dd9c7bc5f067fa3d84f451537882150c5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
+ms.openlocfilehash: 2f02e579f7679180cecfd8a48736b3af307ba371
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087668"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874753"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>在 HDInsight 上搭配 Apache Hive 和 Apache Pig 使用 Python 使用者定義函數 (UDF)
 
@@ -46,7 +46,7 @@ HDInsight 也包含 Jython (以 Java 撰寫的 Python 實作)。 Jython 會直�
 > * 您在本機開發環境中建立 Python 指令碼。
 > * 您可以使用 `scp` 命令或提供的 PowerShell 腳本，將腳本上傳至 HDInsight。
 >
-> 如果您想要使用[Azure Cloud Shell （bash）](https://docs.microsoft.com/azure/cloud-shell/overview)來處理 HDInsight，則必須：
+> 如果您想要使用[Azure Cloud Shell (bash) ](https://docs.microsoft.com/azure/cloud-shell/overview)來處理 HDInsight，則必須：
 >
 > * 建立 Cloud Shell 環境內的指令碼。
 > * 使用 `scp` 將檔案從 Cloud Shell 上傳至 HDInsight。
@@ -105,7 +105,7 @@ while True:
 
 指令碼輸出是 `devicemake` 和 `devicemodel` 的輸入值串連，並且是串連值的雜湊。
 
-### <a name="upload-file-shell"></a>上傳檔案（shell）
+### <a name="upload-file-shell"></a>上傳檔 (shell) 
 
 在下列命令中， `sshuser` 將取代為實際的使用者名稱（如果不同的話）。  `mycluster`將取代為實際的叢集名稱。  確定您的工作目錄是檔案所在的位置。
 
@@ -127,7 +127,7 @@ while True:
     hdfs dfs -put hiveudf.py /hiveudf.py
     ```
 
-### <a name="use-hive-udf-shell"></a>使用 Hive UDF （shell）
+### <a name="use-hive-udf-shell"></a>使用 Hive UDF (shell) 
 
 1. 若要連接到 Hive，請從開啟的 SSH 會話使用下列命令：
 
@@ -164,7 +164,7 @@ while True:
     !q
     ```
 
-### <a name="upload-file-powershell"></a>上傳檔案（PowerShell）
+### <a name="upload-file-powershell"></a> (PowerShell) 上傳檔
 
 PowerShell 也可用來從遠端執行 Hive 查詢。 請確定您的工作目錄是所在的位置 `hiveudf.py` 。  使用下列 PowerShell 腳本來執行使用腳本的 Hive 查詢 `hiveudf.py` ：
 
@@ -361,7 +361,7 @@ def create_structure(input):
 
 當資料傳回至 Pig 時，其將具有如同 `@outputSchema` 陳述式中定義的一致性結構描述。
 
-### <a name="upload-file-shell"></a>上傳檔案（shell）
+### <a name="upload-file-shell"></a>上傳檔 (shell) 
 
 在下列命令中， `sshuser` 將取代為實際的使用者名稱（如果不同的話）。  `mycluster`將取代為實際的叢集名稱。  確定您的工作目錄是檔案所在的位置。
 
@@ -383,7 +383,7 @@ def create_structure(input):
     hdfs dfs -put pigudf.py /pigudf.py
     ```
 
-### <a name="use-pig-udf-shell"></a>使用 Pig UDF （shell）
+### <a name="use-pig-udf-shell"></a>使用 Pig UDF (shell) 
 
 1. 若要連線到 pig，請從開啟的 SSH 會話使用下列命令：
 
@@ -437,7 +437,7 @@ def create_structure(input):
 
     此作業完成後，您應該會看到和先前使用 Jython 執行指令碼時所得到的相同輸出。
 
-### <a name="upload-file-powershell"></a>上傳檔案（PowerShell）
+### <a name="upload-file-powershell"></a> (PowerShell) 上傳檔
 
 PowerShell 也可用來從遠端執行 Hive 查詢。 請確定您的工作目錄是所在的位置 `pigudf.py` 。  使用下列 PowerShell 腳本來執行使用腳本的 Hive 查詢 `pigudf.py` ：
 
@@ -480,7 +480,7 @@ Set-AzStorageBlobContent `
     -Context $context
 ```
 
-### <a name="use-pig-udf-powershell"></a>使用 Pig UDF （PowerShell）
+### <a name="use-pig-udf-powershell"></a>使用 Pig UDF (PowerShell) 
 
 > [!NOTE]  
 > 使用 PowerShell 遠端提交作業時，無法使用 C Python 做為解譯器。

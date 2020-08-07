@@ -3,18 +3,18 @@ title: 安裝混合式雲端擴充功能 (HCX)
 description: 為您的 Azure VMware 解決方案 (AVS) 私人雲端設定 VMware 混合式雲端擴充功能 (HCX) 解決方案
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84388c3ec53d9067df2580aabb21ca5885d154b8
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475442"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904988"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安裝適用於 Azure VMware 解決方案的 HCX
 
-在本文中，我們將逐步解說為您的 Azure VMWare 解決方案（AVS）私人雲端設定 VMWare 混合式雲端擴充功能（HCX）解決方案的程式。 HCX 可讓您透過各種內建 HCX 支援的遷移類型，將您的 VMware 工作負載遷移至雲端，以及其他已連線的網站。
+在本文中，我們將逐步解說設定 VMWare 混合式雲端擴充功能的程式 (HCX) 解決方案，讓您的 Azure VMWare 解決方案 (AVS) 私用雲端。 HCX 可讓您透過各種內建 HCX 支援的遷移類型，將您的 VMware 工作負載遷移至雲端，以及其他已連線的網站。
 
-HCX Advanced （預設安裝）支援最多三個 vCenters。 如果需要超過三個，客戶可以選擇透過支援啟用 HCX Enterprise 附加元件。 HCX Enterprise 安裝會在公開上市（GA）之後，對客戶收取額外費用，但會提供[額外的功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
+HCX Advanced （預設安裝）最多可支援三個網站連線 (內部部署或雲端到雲端) 。 如果需要三個以上的網站連線，客戶可以選擇透過支援啟用 HCX Enterprise 附加元件，此功能目前為預覽狀態。 HCX Enterprise 會在正式發行 (GA) 後對客戶收取額外費用，但提供[額外功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
 
 
 [在開始之前](#before-you-begin)，請先仔細檢閱[軟體版本需求](#software-version-requirements)和[先決條件](#prerequisites)。 
@@ -22,7 +22,7 @@ HCX Advanced （預設安裝）支援最多三個 vCenters。 如果需要超過
 然後，我們將逐步解說所有必要的程式，以：
 
 > [!div class="checklist"]
-> * 部署內部部署 HCX OVA
+> * 部署內部部署 HCX OVA (連接器) 
 > * 啟用和設定 HCX
 > * 設定網路上行連結和服務網格
 > * 藉由檢查設備狀態來完成設定
@@ -31,32 +31,35 @@ HCX Advanced （預設安裝）支援最多三個 vCenters。 如果需要超過
 
 ## <a name="before-you-begin"></a>開始之前
     
-* 請參閱基本的 AVS 軟體定義資料中心（SDDC）[教學課程系列](tutorial-network-checklist.md)。
+* 請參閱基本的 AVS 軟體定義資料中心 (SDDC) [教學課程系列](tutorial-network-checklist.md)。
 * 複習並參考[VMWARE HCX 檔](https://docs.vmware.com/en/VMware-HCX/index.html)，包括 HCX 使用者指南。
 * 請參閱[使用 VMWARE HCX 遷移虛擬機器的](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)vmware 檔。
 * （選擇性）查看[VMWARE HCX 部署考慮](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)。
 * 可選檢閱 HCX 上的相關 VMware 資料，例如 HCX 上 的 VMware vSphere [部落格系列](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html)。 
-* 透過 AVS 支援通道訂購 AVS HCX Enterprise 啟用。
+* 透過 AVS 支援通道要求 AVS HCX Enterprise 啟用。
 
-在準備使用 AVS 私人雲端 HCX 解決方案時，針對計算和儲存體資源調整工作負載大小是必要的規劃步驟。 在初始私用雲端環境規劃過程中，解決調整大小的步驟。   
+當您準備使用 AVS 私用雲端 HCX 解決方案時，針對計算和儲存體資源調整工作負載的大小是必要的規劃步驟。 在初始私用雲端環境規劃過程中，解決調整大小的步驟。 
+
+您也可以在 Azure Migrate 入口網站 (中完成 AVS 評估，以調整工作負載大小 https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) 。
 
 ## <a name="software-version-requirements"></a>軟體版本需求
+
 基礎結構元件必須執行所需的最低版本。 
                                                          
 | 元件類型    | 來源環境需求    | 目的地環境需求   |
 | --- | --- | --- |
 | vCenter Server   | 5.1<br/><br/>如果使用 5.5 U1 或更早的版本，請使用獨立 HCX 使用者介面來進行 HCX 作業。  | 6.0 U2 及更高版本   |
 | ESXi   | 5.0    | ESXi 6.0 及更高版本   |
-| NSX    | 針對位於來源的邏輯交換器 HCX 網路延伸模組： NSXv 6.2 + 或 NSX-T 2.4 +   | NSXv 6.2+ 或 NSX-T 2.4+<br/><br/>針對 HCX 鄰近性路由： NSXv 6.4 + （不支援以 NSX-T 進行鄰近性路由） |
+| NSX    | 針對位於來源的邏輯交換器 HCX 網路延伸模組： NSXv 6.2 + 或 NSX-T 2.4 +   | NSXv 6.2+ 或 NSX-T 2.4+<br/><br/>針對 HCX 鄰近性路由： NSXv 6.4 + (鄰近路由不支援使用 NSX-T)  |
 | vCloud Director   | 非必要 - 來源網站沒有與 vCloud Director 的互通性 | 將目的地環境與 Vcloud 進行整合主管整合時，最小值為9.1.0.2。  |
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * ExpressRoute Global 觸及應設定于內部部署和 AVS SDDC ExpressRoute 線路之間。
 
 * 所有必要的連接埠都應該在內部部署和 AVS SDDC 之間開啟 (請參閱 [VMware HCX 文件](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html))。
 
-* 一個用於內部部署 HCX 管理員的 IP 位址，以及至少兩個用於互連（IX）和網路延伸（NE）設備的 IP 位址。
+* 在內部部署 HCX 管理員的一個 IP 位址，以及至少兩個 IP 位址以進行互連 (IX) 和網路延伸 (NE) 設備。
 
 * 內部部署 HCX IX 和 NE 設備應該能夠觸及 vCenter 和 ESXi 基礎結構。
 
@@ -132,7 +135,7 @@ HCX Advanced （預設安裝）支援最多三個 vCenters。 如果需要超過
 
     ![建立網路設定檔](./media/hybrid-cloud-extension-installation/create-network-profile.png)
 
-1. 針對新的網路設定檔，輸入 HCX IX 和 NE IP 位址範圍（IX 和 NE 設備至少需要兩個 IP 位址）。
+1. 針對新的網路設定檔，輸入 HCX IX 和 NE IP 位址範圍 (IX 和 NE 設備) 至少需要兩個 IP 位址。
     
    ![輸入 IP 位址範圍](./media/hybrid-cloud-extension-installation/enter-address-ranges.png)
   

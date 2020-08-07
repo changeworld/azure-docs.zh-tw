@@ -1,6 +1,6 @@
 ---
 title: 開始使用儲存體總管 | Microsoft Docs
-description: 使用儲存體總管來管理 Azure 儲存體資源
+description: 開始使用儲存體總管來管理 Azure 儲存體資源。 下載並安裝 Azure 儲存體總管、連接到儲存體帳戶或服務等等。
 services: storage
 author: cawaMS
 ms.service: storage
@@ -8,16 +8,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff5480e6b78beda7fe50dc772eae925ccdb80664
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975260"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905341"
 ---
 # <a name="get-started-with-storage-explorer"></a>開始使用儲存體總管
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Microsoft Azure 儲存體總管是一個獨立應用程式，可讓您在 Windows、macOS 和 Linux 上輕鬆使用 Azure 儲存體資料。 在本文中，您將瞭解幾種連接和管理 Azure 儲存體帳戶的方式。
 
@@ -79,7 +79,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 ### <a name="sign-in-to-azure"></a>登入 Azure
 
 > [!NOTE]
-> 若要在登入之後完整存取資源，儲存體總管需要管理（Azure Resource Manager）和資料層許可權。 這表示您需要 Azure Active Directory （Azure AD）許可權，這可讓您存取儲存體帳戶、帳戶中的容器，以及容器中的資料。 如果您只有資料層的許可權，請考慮[透過 Azure AD 新增資源](#add-a-resource-via-azure-ad)。 如需儲存體總管需要之特定許可權的詳細資訊，請參閱[Azure 儲存體總管疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues)。
+> 若要在登入之後完整存取資源，儲存體總管需要管理 (Azure Resource Manager) 和資料層許可權。 這表示您需要 Azure Active Directory (Azure AD) 許可權，讓您能夠存取儲存體帳戶、帳戶中的容器，以及容器中的資料。 如果您只有資料層的許可權，請考慮[透過 Azure AD 新增資源](#add-a-resource-via-azure-ad)。 如需儲存體總管需要之特定許可權的詳細資訊，請參閱[Azure 儲存體總管疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues)。
 
 1. 在儲存體總管中，選取 [**查看**  >  **帳戶管理**]，或選取 [**管理帳戶**] 按鈕。
 
@@ -121,9 +121,9 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 如果您尚未這麼做，請使用 [**新增 Azure 帳戶**] 選項來登入可存取資源的 azure 帳戶。 登入之後，請返回 **[連線至 Azure 儲存體]**。
 
-1. 選取 [透過**Azure Active Directory （Azure AD）新增資源**]，然後選取 **[下一步]**。
+1. 選取 [透過**Azure Active Directory (新增資源] Azure AD) **]，然後選取 **[下一步]**。
 
-1. 選取 Azure 帳戶和租使用者。 這些值必須能夠存取您想要附加的儲存體資源。 選取 [下一步]。
+1. 選取 Azure 帳戶和租使用者。 這些值必須能夠存取您想要附加的儲存體資源。 選取 [下一步]  。
 
 1. 選擇您想要附加的資源類型。 輸入連接所需的資訊。 
 
@@ -131,7 +131,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 1. 請檢查連線**摘要**，確定所有資訊都正確無誤。 如果是，請選取 **[連線]**。 否則，請選取 [**上一步**] 返回先前的頁面，以修正任何不正確的資訊。
 
-成功新增連接之後，資源樹狀結構就會移至代表連接的節點。 資源會顯示在 [**本機 &** 連結  >  的**儲存體帳戶**（已連結  >  的**容器）**]  >  **Blob 容器**底下。 如果儲存體總管無法新增您的連線，或如果您在成功新增連線之後無法存取資料，請參閱[Azure 儲存體總管疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
+成功新增連接之後，資源樹狀結構就會移至代表連接的節點。 資源會顯示在 [**本機 & 連接**  >  的**儲存體帳戶**] 底下，  >  (連結的**容器) **  >  **Blob 容器**。 如果儲存體總管無法新增您的連線，或如果您在成功新增連線之後無法存取資料，請參閱[Azure 儲存體總管疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。
 
 #### <a name="use-a-connection-string"></a>使用連接字串
 
@@ -153,13 +153,13 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
     ![連接至 Azure 儲存體選項][9]
 
-1. 選取 [**使用共用存取簽章（SAS） URI**]，然後選取 **[下一步]**。
+1. 選取 [**使用共用存取簽章 (SAS) URI**]，然後選取 **[下一步]**。
 
-1. 為您的連線選擇 [顯示名稱]，然後輸入您的共用存取簽章 URI。 您要附加之資源類型的服務端點應該自動填入。 如果您使用的是自訂端點，則可能不是。 選取 [下一步]。
+1. 為您的連線選擇 [顯示名稱]，然後輸入您的共用存取簽章 URI。 您要附加之資源類型的服務端點應該自動填入。 如果您使用的是自訂端點，則可能不是。 選取 [下一步]  。
 
 1. 請檢查連線**摘要**，確定所有資訊都正確無誤。 如果是，請選取 **[連線]**。 否則，請選取 [**上一步**] 返回先前的頁面，以修正任何不正確的資訊。
 
-成功新增連接之後，資源樹狀結構就會移至代表連接的節點。 此資源會顯示在 [**本機 &** 連結  >  的**儲存體帳戶**  >  **（已附加的容器）**] 底下，您所  >  *附加的容器類型的服務節點*。 如果儲存體總管無法新增您的連線，請參閱[Azure 儲存體總管疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。 如果您在成功新增連接之後無法存取資料，請參閱疑難排解指南。
+成功新增連接之後，資源樹狀結構就會移至代表連接的節點。 資源會顯示在 [**本機 &** 連結  >  的**儲存體帳戶**] 底下  >  ** (附加的容器，) **  >  *您所附加容器類型的服務節點*。 如果儲存體總管無法新增您的連線，請參閱[Azure 儲存體總管疑難排解指南](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)。 如果您在成功新增連接之後無法存取資料，請參閱疑難排解指南。
 
 #### <a name="use-a-name-and-key"></a>使用名稱和金鑰
 
@@ -183,8 +183,8 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 儲存體總管目前支援兩個官方儲存體模擬器：
 
-* [Azure 儲存體模擬器](storage/common/storage-use-emulator.md)（僅限 Windows）
-* [Azurite](https://github.com/azure/azurite) （Windows、MacOS 或 Linux）
+* 僅限[Azure 儲存體模擬器](storage/common/storage-use-emulator.md) (Windows) 
+* [Azurite](https://github.com/azure/azurite) (Windows、MacOS 或 Linux) 
 
 如果您的模擬器正在接聽預設埠，您可以使用 [**模擬器-預設埠**] 節點來存取您的模擬器。 在 [**本機 &** 連結的儲存體帳戶] 下尋找 [**模擬器-預設埠**]  >  ** **。
 

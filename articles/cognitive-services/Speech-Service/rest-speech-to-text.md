@@ -1,21 +1,21 @@
 ---
-title: 語音轉換文字 API 參考（REST）-語音服務
+title: 語音轉換文字 API 參考 (REST) -語音服務
 titleSuffix: Azure Cognitive Services
 description: 瞭解如何使用語音轉換文字 REST API。 在本文中，您會了解到授權選項、查詢選項，以及如何建構要求與接收回應。
 services: cognitive-services
-author: yinhew
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.author: yinhew
-ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: trbye
+ms.openlocfilehash: 4b1548efe942cbef842498035d6e0b0d11a91d00
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537964"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905239"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
 
@@ -60,7 +60,7 @@ REST 要求的查詢字串中可能包括這些參數。
 
 下表列出了語音轉文字要求的必要標頭和選用標頭。
 
-|頁首| 描述 | 必要/選用 |
+|標頭| 描述 | 必要/選用 |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | 您的語音服務訂用帳戶金鑰。 | 必須有此標頭或 `Authorization`。 |
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必須有此標頭或 `Ocp-Apim-Subscription-Key`。 |
@@ -91,7 +91,7 @@ REST 要求的查詢字串中可能包括這些參數。
 | ReferenceText | 要針對發音進行評估的文字。 | 必要 |
 | GradingSystem | 用於評分校正的點系統。 接受的值為 `FivePoint` 和 `HundredMark`。 預設設定是 `FivePoint`。 | 選擇性 |
 | 細微度 | 評估資料細微性。 接受的值為 `Phoneme` ，它會顯示全文檢索單字和音素層級的分數，這會顯示全文檢索 `Word` 和字層級的分數，這 `FullText` 只會顯示全文檢索層級的分數。 預設設定是 `Phoneme`。 | 選擇性 |
-| 維度 | 定義輸出準則。 接受的值為 `Basic` （僅顯示精確度分數），會 `Comprehensive` 顯示更多維度的分數（例如，在全文檢索層級上順暢分數和完整性分數，word 層級的錯誤類型）。 請檢查[回應參數](#response-parameters)，以查看不同分數維度和 word 錯誤類型的定義。 預設設定是 `Basic`。 | 選擇性 |
+| 維度 | 定義輸出準則。 接受的值為 `Basic` （僅顯示精確度分數），會 `Comprehensive` 顯示更多維度的分數 (例如，在全文檢索層級上順暢分數和完整性分數、word 層級) 的錯誤類型。 請檢查[回應參數](#response-parameters)，以查看不同分數維度和 word 錯誤類型的定義。 預設設定是 `Basic`。 | 選擇性 |
 | EnableMiscue | 啟用 miscue 計算。 啟用此功能時，發音會與參考文字進行比較，而且會根據比較來標示省略/插入。 接受的值為 `False` 和 `True`。 預設設定是 `False`。 | 選擇性 |
 | ScenarioId | 指出自訂點系統的 GUID。 | 選擇性 |
 
@@ -114,7 +114,7 @@ var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson)
 var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
 
-我們強烈建議在張貼音訊資料時進行串流（區塊）上傳，這可能會大幅降低延遲。 請參閱[不同程式設計語言的範例程式碼](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)，以瞭解如何啟用串流。
+我們強烈建議您在張貼音訊資料時，串流處理 (區塊) 上傳，這可能會大幅降低延遲。 請參閱[不同程式設計語言的範例程式碼](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)，以瞭解如何啟用串流。
 
 >[!NOTE]
 >發音評估功能目前僅適用于 `westus` 、 `eastasia` 和 `centralindia` 區域。 這項功能目前僅適用于 `en-US` 語言。
@@ -145,7 +145,7 @@ Pronunciation-Assessment: eyJSZWZlcm...
 
 | HTTP 狀態碼 | 描述 | 可能的原因 |
 |------------------|-------------|-----------------|
-| `100` | 繼續 | 已接受初始要求。 繼續傳送其餘的資料。 （搭配區區塊轉送使用） |
+| `100` | 繼續 | 已接受初始要求。 繼續傳送其餘的資料。  (用於區塊轉送)  |
 | `200` | 確定 | 要求成功；回應主體是 JSON 物件。 |
 | `400` | 不正確的要求 | 未提供語言代碼，而不是支援的語言、不正確音訊檔案等。 |
 | `401` | 未經授權 | 訂用帳戶金鑰或授權權杖在指定的區域中無效，或是無效的端點。 |
@@ -153,7 +153,7 @@ Pronunciation-Assessment: eyJSZWZlcm...
 
 ## <a name="chunked-transfer"></a>區塊傳輸
 
-區塊傳輸（ `Transfer-Encoding: chunked` ）可協助減少辨識延遲。 它可讓語音服務在音訊檔案進行傳輸時開始處理。 REST API 不會提供部分或中間的結果。
+區塊傳輸 (`Transfer-Encoding: chunked`) 有助於減少辨識延遲。 它可讓語音服務在音訊檔案進行傳輸時開始處理。 REST API 不會提供部分或中間的結果。
 
 此程式碼範例說明如何以區塊傳送音訊。 只有第一個區塊應該包含音訊檔案的標頭。 `request`是 `HttpWebRequest` 連接到適當 REST 端點的物件。 `audioFile` 是音訊檔案在磁碟上的路徑。
 
@@ -191,10 +191,10 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 結果以 JSON 格式提供。 `simple` 格式包含以下的最上層欄位。
 
-| 參數 | 說明  |
+| 參數 | 描述  |
 |-----------|--------------|
 |`RecognitionStatus`|狀態，例如 `Success` 代表辨識成功。 請參閱下一個表格。|
-|`DisplayText`|大小寫、標點符號、反向文字正規化後的已辨識文字（將語音文字轉換成較短的表單，例如200代表 "200" 或 "Dr. smith" 代表 "醫生 Smith"），以及不雅內容遮罩。 只會在成功時呈現。|
+|`DisplayText`|在大小寫、標點符號、反向文字正規化之後的已辨識文字， (將語音文字轉換成較短的形式，例如200代表 "200" 或 "Dr. Smith" 代表 "醫生 Smith"，) 和不雅內容遮罩。 只會在成功時呈現。|
 |`Offset`|辨識的語音在音訊資料流中開始的時間 (以 100 奈秒為單位)。|
 |`Duration`|辨識的語音在音訊資料流中的持續時間 (以 100 奈秒為單位)。|
 
@@ -216,7 +216,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 清單中的物件 `NBest` 可以包括：
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 |-----------|-------------|
 | `Confidence` | 項目的信賴分數從 0.0 (不信賴) 到 1.0 (完全信賴) |
 | `Lexical` | 已辨識文字的語彙形式：已辨識的實際文字。 |
@@ -227,7 +227,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 | `FluencyScore` | 指定語音的順暢。 順暢指出語音與原生說話者在單字之間使用無訊息中斷的程度。 |
 | `CompletenessScore` | 語音的完整性，是藉由計算發音為參考文字輸入的比例來判斷。 |
 | `PronScore` | 表示指定語音之發音品質的整體分數。 這會從 `AccuracyScore` `FluencyScore` 和加權匯總 `CompletenessScore` 。 |
-| `ErrorType` | 這個值會指出相較于，是否省略、插入或發音不正確的字 `ReferenceText` 。 可能的值為 `None` （表示此單字上沒有錯誤） `Omission` 、 `Insertion` 和 `Mispronunciation` 。 |
+| `ErrorType` | 這個值會指出相較于，是否省略、插入或發音不正確的字 `ReferenceText` 。 可能的值為 `None` (表示此單字上沒有錯誤) `Omission` 、 `Insertion` 和 `Mispronunciation` 。 |
 
 ## <a name="sample-responses"></a>回應範例
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9274e147bcaec4b3e63a6720e369946d64e94628
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6ae3e72dc6e79b252c79c78fd5fac27bff8d4740
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809879"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905222"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 數位 Twins 中管理端點和路由 (Api 和 CLI) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "87809879"
 
 它們也可以透過[Azure 入口網站](https://portal.azure.com)來管理。 如需使用入口網站的文章版本，請參閱[*如何： (入口網站) 管理端點和路由*](how-to-manage-routes-portal.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 * 您將需要一個**Azure 帳戶** (您可以在[這裡](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)免費設定一個) 
 * 您將需要 azure 訂用帳戶中的**Azure 數位 Twins 實例**。 如果您還沒有實例，您可以使用[*如何：設定實例和驗證*](how-to-set-up-instance-scripted.md)中的步驟來建立一個。 請備妥安裝程式中的下列值，以供本文稍後使用：
@@ -104,11 +104,11 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 事件路由是使用資料平面 Api 所定義。 
 
 路由定義可以包含下列元素：
-* 您想要使用的路由識別碼
+* 您想要使用的路由名稱
 * 您想要使用的端點名稱
 * 定義哪些事件要傳送至端點的篩選器 
 
-如果沒有路由識別碼，則不會在 Azure 數位 Twins 外路由傳送任何訊息。 如果有路由識別碼，且篩選為，則 `true` 所有訊息都會路由傳送至端點。 如果有路由識別碼，而且新增了不同的篩選準則，則會根據篩選準則來篩選訊息。
+如果沒有路由名稱，則不會在 Azure 數位 Twins 外路由傳送任何訊息。 如果有路由名稱，且篩選為，則 `true` 所有訊息都會路由傳送至端點。 如果有路由名稱，而且加入了不同的篩選準則，則會根據篩選準則來篩選訊息。
 
 一個路由應允許選取多個通知和事件種類。 
 

@@ -5,19 +5,26 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 06/12/2020
+ms.date: 08/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: f22f81d69d746764af43d9167874aabedbd56f51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765321"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903590"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>使用 Azure 入口網站建立 ExpressRoute Direct
 
 本文說明如何使用 Azure 入口網站建立 ExpressRoute Direct。
 ExpressRoute Direct 可讓您在策略性分散于世界各地的對等互連位置，直接連接到 Microsoft 的全球網路。 如需詳細資訊，請參閱[關於 ExpressRoute Direct](expressroute-erdirect-about.md)。
+
+## <a name="before-you-begin"></a><a name="before"></a>開始之前
+
+確認已向您的訂用帳戶註冊**Microsoft 網路**資源提供者。 註冊資源提供者可將您的訂用帳戶設定為可搭配資源提供者使用。
+
+1. 存取[Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)中所述的訂用帳戶設定。
+1. 在您的訂用帳戶中，針對**資源提供者**，確認**Microsoft 網路**提供者顯示**已註冊**的狀態。 如果 Microsoft 網路資源提供者未出現在已註冊的提供者清單中，請新增它。
 
 ## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1. 建立 ExpressRoute Direct
 
