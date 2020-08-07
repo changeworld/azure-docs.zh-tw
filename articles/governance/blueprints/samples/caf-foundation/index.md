@@ -3,12 +3,12 @@ title: CAF 基礎藍圖範例概觀
 description: 適用於 Azure Foundation藍圖範本之雲端採用架構 (CAF) 的概觀和結構
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 3291fdc299652d2b22bff89f5b1dadbdc064e561
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: b8bd0015d5f95fc61806197ca21fdaeeb3452700
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901293"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852339"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>適用於 Azure 的 Microsoft 雲端採用架構基礎藍圖範例的概觀
 
@@ -35,7 +35,7 @@ CAF 基礎藍圖範例會在 Azure 中部署建議的基礎結構資源，供組
   - 需要 Azure 儲存體帳戶的安全傳輸加密
   - 拒絕資源類型 (在部署時選擇)  
 - 計畫
-  - 啟用 Azure 資訊安全中心的監視功能 (89 項原則)
+  - 啟用 Azure 資訊安全中心的監視功能 (100 個以上原則定義)
 
 所有這些項目皆遵循 [Azure 架構中心 - 參考架構](/azure/architecture/reference-architectures/)中所發佈且經過實證的做法。
 

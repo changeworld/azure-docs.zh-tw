@@ -23,6 +23,8 @@
       href: tutorial-access-api-with-certificates.md
     - name: 將記錄串流至事件中樞
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: 記錄分析精靈
+      href: tutorial-log-analytics-wizard.md
 - name: 概念
   items:
     - name: 規劃報告和監視部署

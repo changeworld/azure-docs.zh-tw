@@ -13,10 +13,10 @@
       items:
         - name: 註冊應用程式
           href: quickstart-register-app.md
-        - name: 設定應用程式以存取 Web API
-          href: quickstart-configure-app-access-web-apis.md
         - name: 設定應用程式以公開 Web API
           href: quickstart-configure-app-expose-web-apis.md
+        - name: 設定應用程式以存取 Web API
+          href: quickstart-configure-app-access-web-apis.md
         - name: 修改應用程式支援的帳戶
           href: quickstart-modify-supported-accounts.md
         - name: 移除應用程式

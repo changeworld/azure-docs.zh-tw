@@ -94,7 +94,7 @@
               href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
             - name: 企業客戶的使用量資料
               href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
-        - name: 計費術語
+        - name: 計費
           items:
             - name: 個人訂用帳戶使用量條款
               href: understand/understand-usage.md
@@ -108,6 +108,8 @@
               href: manage/mca-understand-pricesheet.md
             - name: Microsoft 合作夥伴合約發票條款
               href: understand/mpa-invoice-terms.md
+            - name: 更新後的個人計費帳戶變更
+              href: understand/mosp-new-customer-experience.md
             - name: Microsoft 客戶合約的帳單帳戶
               href: understand/mca-overview.md
             - name: Microsoft 合作夥伴合約的計費帳戶

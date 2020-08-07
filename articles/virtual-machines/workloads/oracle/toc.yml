@@ -4,7 +4,7 @@
       href: oracle-overview.md
     - name: Azure VM 中的解決方案
       href: oracle-vm-solutions.md
-    - name: WebLogic Server Azure 應用程式
+    - name: 什麼是 Azure 上的 Oracle WebLogic Server？
       href: oracle-weblogic.md
     - name: 使用 OCI 的解決方案
       href: oracle-oci-overview.md

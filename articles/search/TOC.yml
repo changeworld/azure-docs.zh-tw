@@ -312,9 +312,15 @@
         - name: 預覽功能清單
           href: search-api-preview.md
         - name: 以 .NET 開發
-          href: search-howto-dotnet-sdk.md
+          items:
+            - name: 使用 Microsoft.Azure.Search (v10)
+              href: search-howto-dotnet-sdk.md
+            - name: 開始使用 (v10)
+              href: search-get-started-dotnet-v10.md
         - name: 升級 SDK
           items:
+            - name: .NET SDK 11.0
+              href: search-dotnet-sdk-migration-version-11.md
             - name: .NET SDK 10.0
               href: search-dotnet-sdk-migration-version-10.md
             - name: .NET SDK 9.0
@@ -349,7 +355,7 @@
           items:
             - name: 安全性篩選條件
               href: search-security-trimming-for-azure-search.md
-            - name: AAD 身分識別的篩選條件
+            - name: 使用者身分識別的篩選條件
               href: search-security-trimming-for-azure-search-with-aad.md
     - name: 管理
       items:

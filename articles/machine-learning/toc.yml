@@ -229,7 +229,7 @@
         - name: 設定輸入和輸出目錄
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: 互動式偵錯
+        - name: Visual Studio Code
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
           href: how-to-set-up-vs-code-remote.md
         - name: Git 整合
@@ -437,26 +437,28 @@
           href: how-to-schedule-pipelines.md
         - name: 觸發管線
           href: how-to-trigger-published-pipeline.md
+        - name: 設計工具 (拖放)
+          items:
+            - name: 記錄計量
+              displayName: 'designer, logging'
+              href: how-to-track-designer-experiments.md
+            - name: 轉換資料
+              displayName: pipeline
+              href: how-to-designer-transform-data.md
+            - name: 使用已發佈的管線重新定型
+              displayName: 'retrain, designer, published pipeline'
+              href: how-to-retrain-designer.md
+            - name: 批次預測
+              displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+              href: how-to-run-batch-predictions-designer.md
+            - name: 執行 Python 程式碼
+              displayName: 'feature extraction, feature engineering'
+              href: how-to-designer-python.md
         - name: 管線偵錯與疑難排解
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: 對 Application Insights 中的管線進行偵錯
           href: how-to-debug-pipelines-application-insights.md
-        - name: 設計工具記錄計量
-          displayName: 'designer, logging'
-          href: how-to-track-designer-experiments.md
-        - name: 設計工具轉換資料
-          displayName: pipeline
-          href: how-to-designer-transform-data.md
-        - name: 設計工具使用已發佈的管線重新定型
-          displayName: 'retrain, designer, published pipeline'
-          href: how-to-retrain-designer.md
-        - name: 設計工具批次預測
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-        - name: 設計工具執行 Python 程式碼
-          displayName: 'feature extraction, feature engineering'
-          href: how-to-designer-python.md
         - name: 使用平行執行步驟
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
@@ -475,6 +477,9 @@
     - name: 管理資源 VS Code
       displayName: 'vscode,resources'
       href: how-to-manage-resources-vscode.md
+    - name: VS Code 互動式偵錯
+      displayName: 'vscode,remote,debug,pipelines,deployments,ssh'
+      href: how-to-debug-visual-studio-code.md
     - name: 匯出及刪除資料
       displayName: GDPR
       href: how-to-export-delete-data.md
