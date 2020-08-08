@@ -290,8 +290,8 @@
           href: windows-container-powershell.md
         - name: 遠端連線
           href: rdp.md
-        - name: 已知限制
-          href: windows-node-limitations.md
+        - name: Windows Server 容器常見問題集
+          href: windows-faq.md
         - name: 使用 Kubernetes 儀表板
           href: kubernetes-dashboard.md
         - name: 建立適用於 Windows Server 容器的 Dockerfiles

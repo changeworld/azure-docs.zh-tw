@@ -85,6 +85,10 @@
           items:
             - name: 建立資源
               href: samples/resource-manager-app-resource.md
+            - name: Azure App Service
+              href: samples/resource-manager-web-app.md
+            - name: Azure Functions
+              href: samples/resource-manager-function-app.md
         - name: 診斷設定
           href: samples/resource-manager-diagnostic-settings.md
         - name: Log Analytics 工作區

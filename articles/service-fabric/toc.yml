@@ -671,7 +671,7 @@
                 - name: 以程式設計方式擴增
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: 擴大主要節點類型
-                  href: service-fabric-scale-up-node-type.md
+                  href: service-fabric-scale-up-primary-node-type.md
                 - name: 新增節點類型
                   href: virtual-machine-scale-set-scale-node-type-scale-out.md
                 - name: 移除節點類型
