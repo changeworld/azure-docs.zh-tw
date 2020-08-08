@@ -4,20 +4,20 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 6bbdd3eb62229c3f8f180d2618dd25062ff0c1e9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062709"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010936"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>向 Azure Active Directory 進行驗證
 
 > [!IMPORTANT]
-> 1. 目前，**只有**電腦視覺 API、臉部 API、文字分析 API、沉浸式讀取程式、表單辨識器、異常偵測器和所有 Bing 服務，但 Bing 自訂搜尋支援使用 AZURE ACTIVE DIRECTORY （AAD）進行驗證。
+> 1. 目前，**只有**電腦視覺 API、臉部 API、文字分析 API、沉浸式讀取程式、表單辨識器、異常偵測器及所有 Bing 服務，但 Bing 自訂搜尋支援使用 AZURE ACTIVE DIRECTORY (AAD) 進行驗證。
 > 2. AAD 驗證必須一律與您 Azure 資源的自訂子功能變數名稱稱一起使用。 [區域端點](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints)不支援 AAD 驗證。
 
-在前面幾節中，我們示範了如何使用單一服務或多服務訂用帳戶金鑰，針對 Azure 認知服務進行驗證。 雖然這些索引鍵提供快速且簡單的途徑來開始開發，但它們在需要角色型存取控制的更複雜案例中很短暫。 讓我們看看使用 Azure Active Directory （AAD）進行驗證所需的內容。
+在前面幾節中，我們示範了如何使用單一服務或多服務訂用帳戶金鑰，針對 Azure 認知服務進行驗證。 雖然這些金鑰提供快速且簡單的途徑來開始開發，但它們在需要 Azure 角色型存取控制 (Azure RBAC) 的更複雜案例中很短暫。 讓我們看看使用 Azure Active Directory (AAD) 進行驗證所需的內容。
 
 在下列各節中，您將使用 Azure Cloud Shell 環境或 Azure CLI 來建立子域、指派角色，以及取得持有人權杖來呼叫 Azure 認知服務。 如果您停滯，會在每個區段中提供連結，其中包含 Azure Cloud Shell/Azure CLI 中每個命令的所有可用選項。
 
@@ -45,7 +45,7 @@ ms.locfileid: "86062709"
 既然您已有與資源相關聯的自訂子域，您就必須將角色指派給服務主體。
 
 > [!NOTE]
-> 請記住，AAD 角色指派最多可能需要五分鐘的時間來傳播。
+> 請記住，Azure 角色指派最多可能需要五分鐘的時間來傳播。
 
 1. 首先，讓我們來註冊[AAD 應用程式](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "86062709"
    >[!NOTE]
    > 如果您在 Azure 入口網站中註冊應用程式，則會為您完成此步驟。
 
-3. 最後一個步驟是[將「認知服務使用者」角色指派](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0)給服務主體（範圍限於資源）。 藉由指派角色，您就會授與此資源的服務主體存取權。 您可以將相同的服務主體存取權授與您訂用帳戶中的多個資源。
+3. 最後一個步驟是[將「認知服務使用者」角色指派](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0)給服務主體， (範圍設定為資源) 。 藉由指派角色，您就會授與此資源的服務主體存取權。 您可以將相同的服務主體存取權授與您訂用帳戶中的多個資源。
    >[!NOTE]
    > 使用服務主體的 ObjectId，而不是應用程式的 ObjectId。
    > ACCOUNT_ID 將會是您所建立認知服務帳戶的 Azure 資源識別碼。 您可以從 Azure 入口網站資源的 [屬性] 中找到 Azure 資源識別碼。
@@ -119,7 +119,7 @@ ms.locfileid: "86062709"
 
 ## <a name="authorize-access-to-managed-identities"></a>授權存取受控識別
  
-認知服務支援使用[Azure 資源的受控識別來](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)Azure Active Directory （Azure AD）驗證。 適用于 Azure 資源的受控識別可以使用 Azure 虛擬機器（Vm）中執行的應用程式、函式應用程式、虛擬機器擴展集和其他服務的 Azure AD 認證，來授權認知服務資源的存取權。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。  
+認知服務支援 Azure Active Directory Azure AD (使用[Azure 資源的受控識別進行](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)) 驗證。 適用于 Azure 資源的受控識別可以使用 Azure AD 認證，從 Azure 虛擬機器中執行的應用程式 (Vm) 、函數應用程式、虛擬機器擴展集和其他服務，授權存取認知服務資源。 藉由使用適用于 Azure 資源的受控識別搭配 Azure AD authentication，您可以避免將認證儲存在雲端中執行的應用程式。  
 
 ### <a name="enable-managed-identities-on-a-vm"></a>在 VM 上啟用受控識別
 

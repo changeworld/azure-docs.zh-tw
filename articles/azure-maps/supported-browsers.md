@@ -1,6 +1,6 @@
 ---
 title: Web SDK 支援的瀏覽器 |Microsoft Azure 對應
-description: 在本文中，您將瞭解 Microsoft Azure Maps Web SDK 支援的瀏覽器，以及如何檢查瀏覽器是否為支援的瀏覽器。
+description: 瞭解如何檢查 Azure 地圖服務 Web SDK 是否支援瀏覽器。 查看支援的瀏覽器清單。 瞭解如何搭配使用對應服務與舊版瀏覽器。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: e81b15b974469d319384a67b08512130b7876a30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6d4ea19e5547adb7bee25f4bdce295eb9a76d44
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76988782"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002933"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK 支援的瀏覽器
 
@@ -33,10 +33,10 @@ if (!atlas.isSupported()) {
 
 Azure 地圖服務 Web SDK 支援下列桌面瀏覽器：
 
-- Microsoft Edge （目前版本和舊版）
-- Google Chrome （目前版本和舊版）
-- Mozilla Firefox （目前版本和舊版）
-- Apple Safari （Mac OS X）（目前版本和舊版）
+- Microsoft Edge (目前版本和舊版) 
+- Google Chrome (目前版本和舊版) 
+- Mozilla Firefox (目前版本和舊版) 
+- Apple Safari (Mac OS X)  (目前版本和舊版) 
 
 另請參閱本文稍後的[目標舊版瀏覽器](#Target-Legacy-Browsers)。
 
@@ -59,16 +59,16 @@ Azure 地圖服務 Web SDK 支援下列行動瀏覽器：
 
 Node.js 也支援下列 Web SDK 模組：
 
-- 服務模組（[檔](how-to-use-services-module.md)  |  [npm 模組](https://www.npmjs.com/package/azure-maps-rest)）
+- 服務模組 ([檔](how-to-use-services-module.md)  |  [npm 模組](https://www.npmjs.com/package/azure-maps-rest)) 
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>以舊版瀏覽器為目標
 
-您可能想要以不支援 WebGL 或只有有限支援的舊版瀏覽器為目標。 在這種情況下，建議您將 Azure 地圖服務服務與開放原始碼地圖控制項（例如[Leaflet](https://leafletjs.com/)）搭配使用。 以下是範例：
+您可能想要以不支援 WebGL 或只有有限支援的舊版瀏覽器為目標。 在這種情況下，建議您將 Azure 地圖服務服務與開放原始碼地圖控制項（例如[Leaflet](https://leafletjs.com/)）搭配使用。 以下為範例：
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Azure 地圖服務 + Leaflet" src="//codepen.io/azuremaps/embed/GeLgyx/?height=500&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱 CodePen 上的 Azure 地圖服務（）的 Pen <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure 地圖服務 + Leaflet</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
+Azure 地圖服務 () 上的 CodePen，請參閱 Pen <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure 地圖服務 + Leaflet</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
 </iframe>
 
 

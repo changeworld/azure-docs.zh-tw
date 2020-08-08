@@ -1,30 +1,28 @@
 ---
-title: 使用服務主體部署適用于 Windows 虛擬桌面（傳統）的管理工具-Azure
-description: 如何使用 PowerShell 部署 Windows 虛擬桌面（傳統）的管理工具。
-services: virtual-desktop
+title: 使用服務主體部署 Windows 虛擬桌面 (傳統) 的管理工具-Azure
+description: 如何使用 PowerShell 部署 Windows 虛擬桌面 (傳統) 的管理工具。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6947e5ebf91ee65145c7a5042fb1ee6968c19c9b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 08366735308e8b3c6fb79efd1adca469272dd053
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284960"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005766"
 ---
-# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>使用 PowerShell 部署 Windows 虛擬桌面（傳統）管理工具
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>使用 PowerShell 部署 Windows 虛擬桌面 (傳統) 管理工具
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。
 
 本文將說明如何使用 PowerShell 部署管理工具。
 
 ## <a name="important-considerations"></a>重要考量
 
-每個 Azure Active Directory （Azure AD）租使用者的訂用帳戶都需要它自己個別部署的管理工具。 此工具不支援企業對企業（B2B）案例 Azure AD。
+ (Azure AD) 租使用者訂用帳戶的每個 Azure Active Directory 都需要自己個別部署的管理工具。 此工具不支援企業對企業 (B2B) 案例 Azure AD。
 
 這個管理工具很簡單。 Microsoft 將提供重要安全性與品質更新。 [原始程式碼可在 GitHub 中](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy)取得。 無論您是客戶或合作夥伴，我們都建議您自訂工具以滿足您的商務需求。
 
@@ -115,7 +113,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 ## <a name="set-the-redirect-uri"></a>設定重新導向 URI
 
-執行下列 PowerShell 命令來抓取 web 應用程式 URL，並將它設定為驗證重新導向 URI （也稱為回復 URL）：
+執行下列 PowerShell 命令來抓取 web 應用程式 URL，並將它設定為驗證重新導向 URI， (也稱為回復 URL) ：
 
 ```powershell
 $webApp = Get-AzWebApp -ResourceGroupName $resourceGroupName -Name $appName

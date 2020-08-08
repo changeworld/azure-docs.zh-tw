@@ -1,20 +1,18 @@
 ---
 title: 設定 Microsoft 端點 Configuration Manager-Azure
 description: 如何設定 Microsoft Endpoint Configuration Manager 在 Windows 虛擬桌面上將軟體更新部署至 Windows 10 企業版多會話。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/12/2020
 ms.author: helohr
 ms.reviewer: v-cawood; clemr
 manager: lizross
-ms.openlocfilehash: 100e269bb995f86d0721cd6de28cd4b933b58ecd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bfc797e0c11a1804d27c6c97fea8cb2ba62dca7a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204382"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010118"
 ---
 # <a name="configure-microsoft-endpoint-configuration-manager"></a>設定 Microsoft 端點 Configuration Manager
 

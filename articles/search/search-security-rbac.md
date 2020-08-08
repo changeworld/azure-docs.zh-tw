@@ -1,26 +1,26 @@
 ---
 title: 設定 azure 系統管理存取的 Azure 角色
 titleSuffix: Azure Cognitive Search
-description: Azure 入口網站中以角色為基礎的系統管理控制（RBAC），用於控制和委派 Azure 認知搜尋管理的系統管理工作。
+description: 角色型存取控制 (RBAC) 在 Azure 入口網站中，用於控制和委派 Azure 認知搜尋管理的管理工作。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: d1b2576eb42cbe25919eb77fc30e2720ed812ca4
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c01806194156fb43524e2db5f4c9bf636186de95
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534425"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009200"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>設定 Azure 角色以取得 Azure 認知搜尋的系統管理存取權
 
 Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務提供[全域角色型授權模型](../role-based-access-control/role-assignments-portal.md)。 「擁有者」、「參與者」和「讀取者」角色可針對指派給各角色的 Active Directory 使用者、群組和安全性主體，決定*服務管理*層級。 
 
 > [!Note]
-> 沒有角色型存取控制項來保護部分索引或文件子集。 針對搜尋結果的身分識別型存取，您可以建立安全性篩選，依身分識別修剪結果、移除要求者不應具備存取權的文件。 如需詳細資訊，請參閱[安全性篩選](search-security-trimming-for-azure-search.md)和[使用 Active Directory 保護安全](search-security-trimming-for-azure-search-with-aad.md)。
+> 沒有以角色為基礎的存取控制 (RBAC) 來保護部分的索引或檔子集。 針對搜尋結果的身分識別型存取，您可以建立安全性篩選，依身分識別修剪結果、移除要求者不應具備存取權的文件。 如需詳細資訊，請參閱[安全性篩選](search-security-trimming-for-azure-search.md)和[使用 Active Directory 保護安全](search-security-trimming-for-azure-search-with-aad.md)。
 
 ## <a name="management-tasks-by-role"></a>依角色管理工作
 
@@ -44,7 +44,7 @@ Azure 特別為透過入口網站或 Resource Manager API 管理的所有服務�
 | 建立服務 | Azure 訂用帳戶持有者 |
 | 調整服務規模 | 資源上的系統管理金鑰、RBAC 擁有者或參與者  |
 | 刪除服務 | 資源上的系統管理金鑰、RBAC 擁有者或參與者 |
-| 在服務上建立、修改、刪除物件： <br>索引和元件部分（包括分析器定義、評分設定檔、CORS 選項）、索引子、資料來源、同義字、建議工具 | 資源上的系統管理金鑰、RBAC 擁有者或參與者 |
+| 在服務上建立、修改、刪除物件： <br>索引和元件部分 (包括分析器定義、評分設定檔、CORS 選項) 、索引子、資料來源、同義字、建議工具 | 資源上的系統管理金鑰、RBAC 擁有者或參與者 |
 | 查詢索引 | 管理或查詢金鑰 (RBAC 不適用) |
 | 查詢系統資訊，例如傳回統計資料、計數和物件清單 | 管理金鑰、資源的 RBAC (擁有者、參與者、讀者) |
 | 管理管理金鑰 | 管理金鑰、資源的 RBAC 擁有者或參與者 |

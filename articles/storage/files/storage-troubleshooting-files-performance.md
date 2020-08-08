@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: ceadc2d37b9d13502b5ae20605ff083edfd5c51f
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6739e5619a0dcaa940d38571c4a88c4f68971dfe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986996"
+ms.locfileid: "88009268"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>針對 Azure 檔案儲存體效能問題進行疑難排解
 
@@ -182,22 +182,27 @@ CentOS/RHEL 不支援大於1的 IO 深度。
 6. 在 [**設定信號邏輯**] 分頁上，按一下 [**維度名稱**] 下拉式選，然後選取 [**回應類型**]。
 7. 按一下 [**維度值**] 下拉式選單，然後選取 [SMB) 的**SuccessWithThrottling** (] 或 [ **ClientThrottlingError** REST) 的 (。
 
-> [!NOTE]
-> 如果未列出 [SuccessWithThrottling] 或 [ClientThrottlingError] 維度值，這表示資源尚未進行節流。 若要加入維度值，請按一下 [**維度值**] 下拉式標題旁的 [**加入自訂值**]，輸入**SuccessWithThrottling**或**ClientThrottlingError**，按一下 **[確定]** ，然後重複步驟 #7。
+  > [!NOTE]
+  > 如果未列出 [SuccessWithThrottling] 或 [ClientThrottlingError] 維度值，這表示資源尚未進行節流。 若要加入維度值，請按一下 [**維度值**] 下拉式標題旁的 [**加入自訂值**]，輸入**SuccessWithThrottling**或**ClientThrottlingError**，按一下 **[確定]** ，然後重複步驟 #7。
 
 8. 按一下 [**維度名稱**] 下拉式選單，然後選取 [檔案**共用**]。
 9. 按一下 [**維度值**] 下拉式選單，然後選取您想要警示的檔案共用 (s) 。
 
-> [!NOTE]
-> 如果檔案共用是標準檔案共用，請選取 [**所有目前和未來的值**]。 [維度值] 下拉式清單不會列出檔案共用 () 因為標準檔案共用無法使用個別共用的計量。 如果儲存體帳戶中的任何檔案共用受到節流處理，且警示無法識別已節流的檔案共用，則會觸發標準檔案共用的節流警示。 由於標準檔案共用不提供每個共用的計量，因此建議每個儲存體帳戶都有一個檔案共用。
+  > [!NOTE]
+  > 如果檔案共用是標準檔案共用，請選取 [**所有目前和未來的值**]。 [維度值] 下拉式清單不會列出檔案共用 () 因為標準檔案共用無法使用個別共用的計量。 如果儲存體帳戶中的任何檔案共用受到節流處理，且警示無法識別已節流的檔案共用，則會觸發標準檔案共用的節流警示。 由於標準檔案共用不提供每個共用的計量，因此建議每個儲存體帳戶都有一個檔案共用。
 
 10. 定義**警示參數** (臨界值、運算子、匯總資料細微性和評估的頻率) 然後按一下 [**完成**]。
 
-> [!TIP]
-> 如果您使用靜態閾值，則如果檔案共用目前正在進行節流，計量圖表可以協助判斷合理的臨界值。 如果您使用的是動態閾值，計量圖表會顯示以最近資料為基礎的計算臨界值。
+  > [!TIP]
+  > 如果您使用靜態閾值，則如果檔案共用目前正在進行節流，計量圖表可以協助判斷合理的臨界值。 如果您使用的是動態閾值，計量圖表會顯示以最近資料為基礎的計算臨界值。
 
 11. 按一下 [**選取動作群組**]，藉由選取現有的動作群組或建立新的動作群組，將**動作群組** (電子郵件、SMS 等 ) 新增至警示。
 12. 填寫**警示詳細資料**，例如**警示規則名稱**、**描述**和**嚴重性**。
 13. 按一下 [**建立警示規則**] 來建立警示。
 
 若要深入瞭解如何在 Azure 監視器中設定警示，請參閱[Microsoft Azure 中的警示總覽]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
+
+## <a name="see-also"></a>另請參閱
+* [針對 Windows 中的 Azure 檔案服務進行疑難排解](storage-troubleshoot-windows-file-connection-problems.md)
+* [針對 Linux 中的 Azure 檔案服務進行疑難排解](storage-troubleshoot-linux-file-connection-problems.md)
+* [關於 Azure 檔案服務的常見問題集 (FAQ)](storage-files-faq.md)

@@ -1,24 +1,22 @@
 ---
 title: Windows 虛擬桌面疑難排解總覽-Azure
 description: 在設定 Windows 虛擬桌面環境時，針對問題進行疑難排解的總覽。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4622e64b585d3d4795b11d29e7bffdf9991203c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 171322fbec099aa9fafc36c4f951213b33007976
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292549"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009353"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Windows 虛擬桌面的疑難排解總覽、意見反應和支援
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md)。
 
 本文概述您在設定 Windows 虛擬桌面環境時可能會遇到的問題，並提供解決問題的方法。
 
@@ -36,13 +34,13 @@ ms.locfileid: "87292549"
 
 | **問題**                                                            | **建議的解決方案**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
-| 工作階段主機集區 Azure 虛擬網路（VNET）和 Express Route 設定               | [開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，然後選取適當的服務（在 [網路] 類別底下）。 |
-| 工作階段主機集區虛擬機器（VM）會在未使用 Windows 虛擬桌面提供的 Azure Resource Manager 範本時建立 | [開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，然後針對服務選取 [ **Windows 虛擬桌面**]。 <br> <br> 如需 Windows 虛擬桌面隨附之 Azure Resource Manager 範本的問題，請參閱[建立主機集](troubleshoot-set-up-issues.md)區的 Azure Resource Manager 範本錯誤一節。 |
+| 工作階段主機集區 Azure 虛擬網路 (VNET) 和 Express Route 設定               | [開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，然後選取 [網路] 類別下的適當服務 ([) ]。 |
+| 工作階段主機集區虛擬機器 (VM) 在未使用 Windows 虛擬桌面提供的 Azure Resource Manager 範本時建立 | [開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，然後針對服務選取 [ **Windows 虛擬桌面**]。 <br> <br> 如需 Windows 虛擬桌面隨附之 Azure Resource Manager 範本的問題，請參閱[建立主機集](troubleshoot-set-up-issues.md)區的 Azure Resource Manager 範本錯誤一節。 |
 | 從 Azure 入口網站管理 Windows 虛擬桌面工作階段主機環境    | [開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)。 <br> <br> 如需使用遠端桌面服務/Windows 虛擬桌面 PowerShell 時的管理問題，請參閱[Windows 虛擬桌面 powershell](troubleshoot-powershell.md)或[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，選取 [ **Windows 虛擬桌面**服務]，選取問題類型的 [設定**和管理**]，然後選取 [針對問題子類型**使用 PowerShell 設定環境] 問題**。 |
-| 管理系結至主機集區和應用程式群組的 Windows 虛擬桌面設定（應用程式群組）      | 請參閱[Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)，或[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，選取服務的**Windows 虛擬桌面**，然後選取適當的問題類型。|
+| 管理系結至主機集區和應用程式群組 (應用程式群組的 Windows 虛擬桌面設定)       | 請參閱[Windows 虛擬桌面 PowerShell](troubleshoot-powershell.md)，或[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，選取服務的**Windows 虛擬桌面**，然後選取適當的問題類型。|
 | 部署和管理 FSLogix 設定檔容器 | 請參閱[FSLogix 產品的疑難排解指南](/fslogix/fslogix-trouble-shooting-ht/)，如果無法解決問題，請[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，選取服務的**Windows 虛擬桌面**，針對問題類型選取 [ **FSLogix** ]，然後選取適當的問題子類型。 |
 | 遠端桌面用戶端在啟動時無法正常運作                                                 | 請參閱[疑難排解遠端桌面用戶端](troubleshoot-client.md)，如果無法解決問題，請[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，選取服務的**Windows 虛擬桌面**，然後針對問題類型選取 [**遠端桌面用戶端**]。  <br> <br> 如果是網路問題，您的使用者必須聯絡其網路系統管理員。 |
-| 已連線但沒有摘要                                                                 | 疑難排解使用使用者連接，但[Windows 虛擬桌面服務](troubleshoot-service-connection.md)連線[不會顯示任何內容（沒有摘要）](troubleshoot-service-connection.md#user-connects-but-nothing-is-displayed-no-feed)區段。 <br> <br> 如果您的使用者已指派給應用程式群組，請[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，針對服務選取 [ **Windows 虛擬桌面**]，然後針對 [問題類型] 選取 [**遠端桌面用戶端**]。 |
+| 已連線但沒有摘要                                                                 | 使用使用者連接進行疑難排解，[但不會顯示任何內容 (](troubleshoot-service-connection.md#user-connects-but-nothing-is-displayed-no-feed) [Windows 虛擬桌面服務](troubleshoot-service-connection.md)連線的摘要) 區段。 <br> <br> 如果您的使用者已指派給應用程式群組，請[開啟 Azure 支援要求](https://azure.microsoft.com/support/create-ticket/)，針對服務選取 [ **Windows 虛擬桌面**]，然後針對 [問題類型] 選取 [**遠端桌面用戶端**]。 |
 | 因網路而造成的摘要探索問題                                            | 您的使用者必須聯絡其網路系統管理員。 |
 | 連接用戶端                                                                    | 請參閱[Windows 虛擬桌面服務](troubleshoot-service-connection.md)連線，如果無法解決您的問題，請參閱[工作階段主機虛擬機器](troubleshoot-vm-configuration.md)設定。 |
 | 遠端應用程式或桌上型電腦的回應能力                                      | 如果問題系結至特定的應用程式或產品，請洽詢負責該產品的小組。 |

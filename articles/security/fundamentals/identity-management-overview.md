@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 9de31ba30c4599393d9127c7852cb567cf0258ef
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c9483363dcf6b4a5c05d71daa75d680dd25b8308
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542071"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002679"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure 身分識別管理安全性概觀
 
- 身分識別管理即為驗證與授權[安全性主體](/windows/security/identity-protection/access-control/security-principals)的流程。 其中還包含該主體 (識別身分) 資訊的控管。 安全性主體（身分識別）可能包括服務、應用程式、使用者、群組等。Microsoft 身分識別與存取管理解決方案可協助 IT 保護整個企業資料中心和雲端中的應用程式和資源存取。 這類保護會啟用其他層級的驗證，例如多重要素驗證和條件式存取原則。 透過進階的安全性報告、稽核和警示來監視可疑活動，有助於緩解潛在的安全性問題。 [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) 可以提供數千個雲端軟體即服務 (SaaS) 應用程式的單一登入 (SSO) 及存取您在內部部署執行的 Web 應用程式。
+ 身分識別管理即為驗證與授權[安全性主體](/windows/security/identity-protection/access-control/security-principals)的流程。 其中還包含該主體 (識別身分) 資訊的控管。  (身分識別) 的安全性主體可能包括服務、應用程式、使用者、群組等。Microsoft 身分識別與存取管理解決方案可協助 IT 保護整個企業資料中心和雲端中的應用程式和資源存取。 這類保護會啟用其他層級的驗證，例如多重要素驗證和條件式存取原則。 透過進階的安全性報告、稽核和警示來監視可疑活動，有助於緩解潛在的安全性問題。 [Azure Active Directory Premium](/azure/active-directory/active-directory-editions) 可以提供數千個雲端軟體即服務 (SaaS) 應用程式的單一登入 (SSO) 及存取您在內部部署執行的 Web 應用程式。
  
 善用 Azure Active Directory (Azure AD) 的安全性優點，您便可以：
 
@@ -41,7 +41,7 @@ ms.locfileid: "87542071"
 * 單一登入
 * 反向 proxy
 * 多重要素驗證
-* 角色型存取控制 (RBAC)
+* Azure 角色型存取控制 (Azure RBAC) 
 * 安全性監視、警示以及機器學習服務型報告
 * 消費者身分識別與存取管理
 * 裝置註冊
@@ -87,9 +87,9 @@ Azure Multi-Factor Authentication 是需要使用多種驗證方法，並在使�
 * [什麼是 Azure Multi-Factor Authentication？](/azure/active-directory/authentication/multi-factor-authentication)
 * [Azure Multi-Factor Authentication 的作用](../../active-directory/authentication/concept-mfa-howitworks.md)
 
-## <a name="rbac"></a>RBAC
+## <a name="azure-rbac"></a>Azure RBAC
 
-RBAC 是建置於 Azure Resource Manager 上的授權系統，可提供更細緻的 Azure 資源存取管理。 RBAC 讓您能精確控制使用者擁有的存取範圍。 舉例來說，您可以限制讓一個使用者只能管理虛擬網路，而另一個使用者只能管理一個資源群組中的資源。 Azure 包含數個供您使用的內建角色。 以下列出四個基本內建角色。 前三個適用於所有資源類型。
+Azure RBAC 是以 Azure Resource Manager 為基礎的授權系統，可提供更細緻的 Azure 資源存取管理。 Azure RBAC 可讓您更精確地控制使用者擁有的存取層級。 舉例來說，您可以限制讓一個使用者只能管理虛擬網路，而另一個使用者只能管理一個資源群組中的資源。 Azure 包含數個供您使用的內建角色。 以下列出四個基本內建角色。 前三個適用於所有資源類型。
 
 - [擁有者](/azure/role-based-access-control/built-in-roles#owner) - 具有所有資源的完整存取權，包括將存取權委派給其他人的權限。 
 - [參與者](/azure/role-based-access-control/built-in-roles#contributor) - 可以建立和管理所有類型的 Azure 資源，但是不能將存取權授與其他人。

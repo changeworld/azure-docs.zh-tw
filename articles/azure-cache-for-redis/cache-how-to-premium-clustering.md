@@ -6,17 +6,15 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 4f200457bd327a6f2ce74794bb28dd16c38e6fdd
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: d37aa275a07586738bf7416cee6611bdc8284df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856327"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004774"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Redis 快取的 Redis 叢集功能
 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 本文說明如何在進階「Azure Redis 快取」執行個體中設定叢集功能。
-
-如需其他進階快取功能的相關資訊，請參閱 [Azure Cache for Redis 進階層簡介](cache-premium-tier-intro.md)。
 
 ## <a name="what-is-redis-cluster"></a>Redis 叢集是什麼？
 「Azure Redis 快取」提供的 Redis 叢集與 [Redis 中所實作](https://redis.io/topics/cluster-tutorial)的相同。 使用 Redis 叢集有下列優點： 
@@ -26,7 +24,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 * 更多輸送量：當您增加分區數目時，輸送量會呈線性增加。 
 * 更多記憶體大小：當您增加分區數目時，會呈線性增加。  
 
-叢集化不會增加叢集快取的可用連線數目。 如需有關進階快取的大小、輸送量及頻寬的詳細資訊，請參閱[應該使用哪個 Azure Redis 快取供應項目和大小？](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+叢集化不會增加叢集快取的可用連線數目。 如需高階快取的大小、輸送量和頻寬的詳細資訊，請參閱[選擇正確的層級](cache-overview.md#choosing-the-right-tier)
 
 在 Azure 中，會以主要/複本模型形式提供 Redis 叢集，其中每個分區都有一個具複寫功能的主要/複本組，而複寫會由「Azure Redis 快取」服務管理。 
 
@@ -91,7 +89,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
   如需詳細資訊，請參閱 [Redis 叢集規格 - 實作的子集](https://redis.io/topics/cluster-spec#implemented-subset)。
 * 如果您使用 [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/)，則必須使用 1.0.481 或更新版本。 您可以使用與連接未啟用叢集的快取時所用的相同 [端點、連接埠和金鑰](cache-configure.md#properties) 來連接快取。 唯一的差別在於必須在資料庫 0 上完成所有的讀取和寫入。
   
-  * 其他用戶端可能有不同的需求。 請參閱 [所有 Redis 用戶端都支援叢集嗎？](#do-all-redis-clients-support-clustering)
+  其他用戶端可能有不同的需求。 請參閱 [所有 Redis 用戶端都支援叢集嗎？](#do-all-redis-clients-support-clustering)
 * 如果您的應用程式使用分成單一命令的多個索引鍵作業，則所有索引鍵都必須位於相同的分區。 若要將索引鍵置於相同的分區，請參閱[如何在叢集中散發索引鍵？](#how-are-keys-distributed-in-a-cluster)
 * 如果您使用 Redis ASP.NET 工作階段狀態提供者，則必須使用 2.0.1 或更高版本。 請參閱 [我可以將叢集使用於 Redis ASP.NET 工作階段狀態和輸出快取提供者嗎？](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
@@ -156,9 +154,9 @@ Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 如果您正在使用 StackExchange.Redis，並且在使用叢集時收到 `MOVE` 例外狀況，請確定您使用的是 [StackExchange.Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) 或更新版本。 如需設定 .NET 應用程式以使用 StackExchange.Redis 的指示，請參閱 [設定快取用戶端](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)。
 
 ## <a name="next-steps"></a>後續步驟
-了解如何使用更多進階快取功能。
+深入瞭解 Azure Cache for Redis 功能。
 
-* [Azure Cache for Redis 進階層簡介](cache-premium-tier-intro.md)
+* [Azure Cache for Redis Premium 服務層級](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

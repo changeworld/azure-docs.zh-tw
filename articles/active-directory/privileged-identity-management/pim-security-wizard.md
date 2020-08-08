@@ -1,6 +1,6 @@
 ---
-title: PIM 中的 Azure AD 角色安全性嚮導-Azure Active Directory |Microsoft Docs
-description: 說明您可以透過 Azure AD Privileged Identity Management (PIM) 用來將永久特殊權限 Azure AD 角色轉換為合格角色的安全性精靈。
+title: Azure AD 角色探索和深入解析 (預覽) Privileged Identity Management 先前的安全性嚮導-Azure Active Directory
+description: 探索和 insights (先前的安全性 Wizard) 可協助您將永久 Azure AD 角色指派轉換成與 Privileged Identity Management 的即時指派。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,65 +10,60 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/21/2020
+ms.date: 08/07/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc7aed1cc79a8c08a7ff11382a1c7a51455d5c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef1de7e98a9cb57f83b87589ceddedc3cdd80927
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743655"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005897"
 ---
-# <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Privileged Identity Management 中的 Azure AD 角色安全性嚮導
+# <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>探索和見解 (預覽) 適用于先前 (安全性嚮導的 Azure AD 角色) 
 
-如果您是在 Azure Active Directory （Azure AD）組織中使用 Privileged Identity Management （PIM）的第一個人，您會看到一個可供您開始使用的 wizard。 此嚮導可協助您瞭解特殊許可權身分識別的安全性風險，以及如何使用 Privileged Identity Management 來降低這些風險。 如果您想要稍後再進行變更，就不需要在精靈中對現有的角色指派進行任何變更。
+如果您開始使用 Azure Active Directory (Azure AD) 組織中的 Privileged Identity Management (PIM) ，您可以使用**探索和深入解析 (preview) **頁面開始。 這項功能會顯示指派給您組織中特殊許可權角色的人員，以及如何使用 PIM 將永久角色指派快速變更為及時指派。 您可以在**探索和深入解析 (預覽) **中，查看或變更您的永久特殊許可權角色指派。 它是一種分析工具和動作工具。
 
-> [!Important]
-> 安全性嚮導暫時無法使用。 感謝您的耐心配合。
+## <a name="discovery-and-insights-preview"></a>探索和深入解析 (預覽) 
 
-## <a name="wizard-overview"></a>精靈概觀
+在您的組織開始使用 Privileged Identity Management 之前，所有角色指派都是永久的。 即使使用者不需要許可權，也一定會在其指派的角色中。 探索和深入解析 (預覽) （取代先前的安全性嚮導）會顯示特殊許可權角色清單，以及目前在這些角色中的使用者人數。 如果有一或多個不熟悉，您可以列出角色的指派，以深入瞭解指派的使用者。
 
-在您的組織開始使用 Privileged Identity Management 之前，所有角色指派都是永久的：使用者一律會在這些角色中，即使他們目前不需要其許可權也一樣。 精靈的第一個步驟會顯示高特殊權限角色的清單，以及這些角色中目前有多少使用者。 如果不清楚一或多個角色，您可以向內切入某個特定角色來深入了解使用者。
+： heavy_check_mark： **Microsoft 建議**您保留2個中斷的玻璃帳戶，永久指派給在登入時不需要多重要素驗證的全域管理員角色。 您可以在任何中斷玻璃案例中使用這些功能，或在沒有人能夠提升為其全域管理員角色的情況下使用。
 
-精靈的第二個步驟會讓您有機會變更系統管理員的角色指派。  
+此外，如果使用者有 Microsoft 帳戶的 (（也就是他們用來登入 Microsoft 服務（例如 Skype）或 Outlook.com) 的帳戶），請將角色指派保持為永久。 如果您需要在這類角色中啟用多重要素驗證，將會鎖定使用者。
 
-> [!WARNING]
-> 請務必至少有一個全域管理員，以及一個以上具有工作或學校帳戶（而非 Microsoft 帳戶）的特殊權限角色管理員。 如果只有一個特殊權限角色管理員，組織就無法管理該帳戶刪除的 Privileged Identity Management。
-> 此外，如果使用者有 Microsoft 帳戶（換句話說，他們用來登入 Skype 和 Outlook.com 等 Microsoft 服務的帳戶），則保留角色指派為永久。 如果您打算要求多重要素驗證以啟用該角色，該使用者將會被鎖定。
-
-## <a name="run-the-wizard"></a>執行精靈
+## <a name="open-discovery-and-insights-preview"></a>開啟探索及深入解析 (預覽) 
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 1. 開啟**Azure AD Privileged Identity Management**。
 
-1. 選取 [ **Azure AD 角色**]，然後選取 [ **Wizard]**。
+1. 選取 [ **Azure AD 角色**]，然後選取 [探索] 和 [深入解析] ** (預覽) **。 開啟頁面會開始探索進程，以尋找相關的角色指派。
 
-    ![[Azure AD 角色]-[Wizard] 頁面，顯示執行嚮導的3個步驟](./media/pim-security-wizard/wizard-start.png)
+    ![Azure AD 角色-[探索] 和 [深入解析] 頁面顯示3個選項](./media/pim-security-wizard/new-preview-link.png)
 
-1. 選取 [ **1] 探索特殊許可權角色**。
+1. 選取 [**減少全域管理員**]。
 
-1. 檢閱特殊權限角色清單，以查看哪些使用者為永久或合格。
+    ![減少全域系統管理員-顯示所有成員的角色窗格](./media/pim-security-wizard/new-preview-page.png)
 
-    ![探索特殊許可權角色-顯示永久和合格成員的角色窗格](./media/pim-security-wizard/discover-privileged-roles-users.png)
+1. 查看全域管理員角色指派清單。
 
-1. 選取 [**下一步]** 以選取您要讓其符合資格的使用者或群組。
+    ![減少全域系統管理員-顯示所有成員的角色窗格](./media/pim-security-wizard/new-global-administrator-list.png)
 
-    ![將成員轉換為合格頁面，並提供選項來選取您想要讓角色符合資格的成員](./media/pim-security-wizard/convert-members-eligible.png)
+1. 選取 [**下一步]** 以選取您要讓其符合資格的使用者或群組，然後選取 [**設為合格**或**移除指派**]。
 
-1. 選取使用者或群組之後，請選取 **[下一步]**。
+    ![將成員轉換為合格頁面，並提供選項來選取您想要讓角色符合資格的成員](./media/pim-security-wizard/new-global-administrator-buttons.png)
 
-    ![[查看變更] 頁面，顯示具有將轉換之永久角色指派的成員](./media/pim-security-wizard/review-changes.png)
+1. 您也可以要求所有全域管理員檢查自己的存取權。
 
-1. 選取 **[確定]** ，將永久指派轉換為合格。
+    ![顯示存取權審查區段的全域管理員頁面](./media/pim-security-wizard/new-global-administrator-access-review.png)
 
-    轉換完成時，您會看到通知。
+1. 在您選取其中任何一項變更之後，您會看到 Azure 通知。
 
-    ![顯示轉換狀態的通知](./media/pim-security-wizard/notification-completion.png)
+1. 然後，您可以選取 [排除先前的**存取權**] 或 [**審查服務主體**]，在其他特殊許可權角色和服務主體角色指派上重複上述步驟。 針對服務主體角色指派，您只能移除角色指派。
 
-如果您需要將其他特殊權限角色指派轉換為合格，您可以再次執行此精靈。 如果您想要使用 Privileged Identity Management 介面，而不是 wizard，請參閱[在 Privileged Identity Management 中指派 Azure AD 角色](pim-how-to-add-role-to-user.md)。
+    ![其他深入解析選項，以消除持續存取並審查服務主體 ](./media/pim-security-wizard/new-preview-page-service-principals.png)
 
 ## <a name="next-steps"></a>後續步驟
 

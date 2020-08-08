@@ -1,6 +1,6 @@
 ---
 title: 將符號圖層新增至地圖 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用符號圖層來自訂符號，並使用 Microsoft Azure Maps Web SDK 在地圖上新增符號。
+description: 瞭解如何將自訂符號（例如文字或圖示）新增至地圖。 請參閱如何使用 Azure 地圖服務 Web SDK 中的資料來源和符號層來實現此目的。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: c10e47ea10939b60c6c334229fb18ec2702af11f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d705a43da2b2db37c6601f5865ad6e569688b2a7
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286915"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010186"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>將符號圖層新增至地圖
 
@@ -31,7 +31,7 @@ ms.locfileid: "87286915"
 - PNG
 - SVG
 - BMP
-- GIF （沒有動畫）
+- GIF (沒有動畫) 
 
 ## <a name="add-a-symbol-layer"></a>新增符號圖層
 

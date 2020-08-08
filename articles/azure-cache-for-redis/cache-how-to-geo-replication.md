@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184968"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003709"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何設定 Azure Cache for Redis 的異地複寫
 
@@ -24,7 +24,7 @@ ms.locfileid: "86184968"
 
 若要設定兩個快取之間的異地複寫，必須符合下列必要條件：
 
-- 這兩個快取都是高階[層](cache-premium-tier-intro.md)快取。
+- 這兩個快取都是高階[層](cache-overview.md#service-tiers)快取。
 - 這兩個快取都位於相同的 Azure 訂用帳戶中。
 - 次要連結快取的快取大小，或比主要連結快取更大的快取大小。
 - 這兩個快取都會建立並處於執行中狀態。
@@ -186,5 +186,6 @@ ms.locfileid: "86184968"
 若要啟動客戶起始的容錯移轉，請先取消快取的連結。 然後，將您的 Redis 用戶端變更為使用先前連結) 次要快取的 (的連接端點。 當兩個快取未連結時，次要快取會再次變成一般的讀寫快取，並直接接受來自 Redis 用戶端的要求。
 
 ## <a name="next-steps"></a>後續步驟
+深入瞭解 Azure Cache for Redis 功能。
 
-深入了解 [Azure Cache for Redis 進階層](cache-premium-tier-intro.md)。
+* [Azure Cache for Redis 服務層級](cache-overview.md#service-tiers)

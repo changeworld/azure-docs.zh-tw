@@ -1,6 +1,6 @@
 ---
 title: Azure 地圖服務 Web SDK 中的資料驅動樣式表達式 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何在 Microsoft Azure Maps Web SDK 中使用資料驅動樣式表達式。
+description: 深入瞭解資料驅動樣式表達式。 請參閱如何在 Azure 地圖服務 Web SDK 中使用這些運算式來調整地圖中的樣式。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 54477bd74df660edb12f6daffbaa2a7390f9516a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c8de7148e91f8fafa4a2b1f8a661964a77ead215
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285708"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009132"
 ---
-# <a name="data-driven-style-expressions-web-sdk"></a>資料驅動樣式表達式（Web SDK）
+# <a name="data-driven-style-expressions-web-sdk"></a> (Web SDK) 的資料驅動樣式表達式
 
 運算式可讓您將商務邏輯套用至樣式選項，以觀察資料來源中每個圖形中所定義的屬性。 運算式可以篩選資料來源或圖層中的資料。 運算式可能包含條件式邏輯，例如 if 語句。 而且，它們可以用來使用：字串運算子、邏輯運算子和數學運算子來運算元據。
 
@@ -28,7 +28,7 @@ ms.locfileid: "87285708"
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-運算式會以 JSON 陣列表示。 陣列中運算式的第一個元素是指定運算式運算子名稱的字串。 例如，"+" 或 "case"。 下一個元素（如果有的話）是運算式的引數。 每個引數都是常值（字串、數位、布林值或 `null` ）或另一個運算式陣列。 下列虛擬程式碼會定義運算式的基本結構。 
+運算式會以 JSON 陣列表示。 陣列中運算式的第一個元素是指定運算式運算子名稱的字串。 例如，"+" 或 "case"。 下一個元素 (是否有任何) 是運算式的引數。 每個引數都是字串、數位、布林值或 `null`) 或另一個運算式陣列 (的常值。 下列虛擬程式碼會定義運算式的基本結構。 
 
 ```javascript
 [ 
@@ -41,7 +41,7 @@ ms.locfileid: "87285708"
 
 Azure 地圖服務 Web SDK 支援許多類型的運算式。 運算式可以單獨使用，或與其他運算式搭配使用。
 
-| 運算式的類型 | 說明 |
+| 運算式的類型 | 描述 |
 |---------------------|-------------|
 | [匯總運算式](#aggregate-expression) | 運算式，定義在一組資料上處理的計算，並可與的選項搭配使用 `clusterProperties` `DataSource` 。 |
 | [布林運算式](#boolean-expressions) | 布林運算式提供一組布林運算子運算式來評估布林值比較。 |
@@ -84,7 +84,7 @@ Azure 地圖服務 Web SDK 支援許多類型的運算式。 運算式可以單�
 | 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | 從陣列中抓取專案。 |
-| `['geometry-type']` | 字串 | 取得功能的 geometry 類型： Point、MultiPoint、LineString、MultiLineString、多邊形、MultiPolygon。 |
+| `['geometry-type']` | string | 取得功能的 geometry 類型： Point、MultiPoint、LineString、MultiLineString、多邊形、MultiPolygon。 |
 | `['get', string]` | value | 從目前功能的屬性取得屬性值。 如果要求的屬性遺失，則傳回 null。 |
 | `['get', string, object]` | value | 從提供之物件的屬性取得屬性值。 如果要求的屬性遺失，則傳回 null。 |
 | `['has', string]` | boolean | 判斷功能的屬性是否具有指定的屬性。 |
@@ -402,12 +402,12 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 | 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| 物件 | 傳回常值陣列或物件值。 使用此運算式來防止陣列或物件被評估為運算式。 當運算式必須傳回陣列或物件時，這是必要的。 |
-| `['image', string]` | 字串 | 檢查是否已將指定的映射識別碼載入地圖影像 sprite。 如果是，則會傳回識別碼，否則會傳回 null。 |
+| `['image', string]` | string | 檢查是否已將指定的映射識別碼載入地圖影像 sprite。 如果是，則會傳回識別碼，否則會傳回 null。 |
 | `['to-boolean', value]` | boolean | 將輸入值轉換為布林值。 `false`當輸入是空字串、、、或時，結果為， `0` `false` 否則為 `null` `NaN` `true` 。 |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 將輸入值轉換成色彩。 如果提供多個值，則會依序評估每一個值，直到取得第一個成功的轉換為止。 如果無法轉換任何輸入，則運算式會是錯誤。 |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | 數字 | 盡可能將輸入值轉換成數位。 如果輸入為 `null` 或 `false` ，則結果為0。 如果輸入為 `true` ，則結果為1。 如果輸入為字串，則會使用 ECMAScript 語言規格的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字串函數轉換成數位。 如果提供多個值，則會依序評估每一個值，直到取得第一個成功的轉換為止。 如果無法轉換任何輸入，則運算式會是錯誤。 |
-| `['to-string', value]` | 字串 | 將輸入值轉換成字串。 如果輸入為 `null` ，則結果為 `""` 。 如果輸入是布林值，則結果會是 `"true"` 或 `"false"` 。 如果輸入是數位，則會使用 ECMAScript 語言規格的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函數將它轉換成字串。 如果輸入是色彩，則會轉換成 CSS RGBA 色彩字串 `"rgba(r,g,b,a)"` 。 否則，會使用 ECMAScript 語言規格的[json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函數，將輸入轉換成字串。 |
-| `['typeof', value]` | 字串 | 傳回描述指定值之類型的字串。 |
+| `['to-string', value]` | string | 將輸入值轉換成字串。 如果輸入為 `null` ，則結果為 `""` 。 如果輸入是布林值，則結果會是 `"true"` 或 `"false"` 。 如果輸入是數位，則會使用 ECMAScript 語言規格的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函數將它轉換成字串。 如果輸入是色彩，則會轉換成 CSS RGBA 色彩字串 `"rgba(r,g,b,a)"` 。 否則，會使用 ECMAScript 語言規格的[json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函數，將輸入轉換成字串。 |
+| `['typeof', value]` | string | 傳回描述指定值之類型的字串。 |
 
 > [!TIP]
 > 如果類似于的錯誤訊息 `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` 出現在瀏覽器主控台中，則表示您的程式碼中有一個運算式，其中有一個陣列沒有第一個值的字串。 如果您想要運算式傳回陣列，請使用運算式包裝陣列 `literal` 。 下列範例 `offset` 會設定符號圖層的圖示選項，其必須是包含兩個數字的陣列，方法是使用 `match` 運算式，根據 point 功能的屬性值，在兩個位移值之間做選擇 `entityType` 。
@@ -466,8 +466,8 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 | 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | 字串 | 將多個字串串連在一起。 每個值都必須是字串。 `to-string`如有需要，請使用類型運算式將其他實數值型別轉換成字串。 |
-| `['downcase', string]` | 字串 | 將指定字串轉換為小寫。 |
-| `['upcase', string]` | 字串 | 將指定字串轉換為大寫。 |
+| `['downcase', string]` | string | 將指定字串轉換為小寫。 |
+| `['upcase', string]` | string | 將指定字串轉換為大寫。 |
 
 **範例**
 

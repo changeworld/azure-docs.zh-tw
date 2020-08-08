@@ -1,24 +1,22 @@
 ---
-title: 針對服務連接 Windows 虛擬桌面（傳統）進行疑難排解-Azure
-description: 如何解決在 Windows 虛擬桌面（傳統）租使用者環境中設定用戶端連線時的問題。
-services: virtual-desktop
+title: 針對服務連線 Windows 虛擬桌面 (傳統) 進行疑難排解-Azure
+description: 如何解決在 Windows 虛擬桌面 (傳統) 租使用者環境中設定用戶端連線時的問題。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 213f7843e4896f8c7c9234e2c94433afbed1d565
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a034cb8371972c2c7908cdba4dd491c17d8cc9f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292506"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008537"
 ---
-# <a name="windows-virtual-desktop-classic-service-connections"></a>Windows 虛擬桌面（傳統）服務連線
+# <a name="windows-virtual-desktop-classic-service-connections"></a>Windows 虛擬桌面 (傳統) 服務連線
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-service-connection.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-service-connection.md)。
 
 使用此文章來解決 Windows 虛擬桌面用戶端連線的問題。
 

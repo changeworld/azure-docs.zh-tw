@@ -1,24 +1,22 @@
 ---
 title: 管理 Windows 虛擬桌面 PowerShell 的應用程式群組-Azure
 description: 如何使用 PowerShell 管理 Windows 虛擬桌面應用程式群組。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 186c6e455fa4d2ab578d6ab2a37f8f8f0d038e02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291423"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008639"
 ---
 # <a name="manage-app-groups-using-powershell"></a>使用 PowerShell 管理應用程式群組
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/manage-app-groups-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/manage-app-groups-2019.md)。
 
 為新的 Windows 虛擬桌面主機集區建立的預設應用程式群組，也會發佈完整桌面。 此外，您可以為主機集區建立一或多個 RemoteApp 應用程式群組。 遵循本教學課程來建立 RemoteApp 應用程式群組及發佈個別 [開始]  功能表應用程式。
 

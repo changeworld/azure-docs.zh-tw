@@ -3,16 +3,16 @@ title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a4e21f29762a30baec8d5cf6e3914da2b5faadeb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321763"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002775"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在訂用帳戶層級建立資源群組和資源
 
-若要簡化資源的管理，您可以使用 Azure Resource Manager 範本（ARM 範本），在您的 Azure 訂用帳戶層級部署資源。 例如，您可以將[原則](../../governance/policy/overview.md)和以[角色為基礎的存取控制](../../role-based-access-control/overview.md)部署至您的訂用帳戶，這會在您的訂用帳戶中加以套用。 您也可以在訂用帳戶內建立資源群組，並將資源部署至訂用帳戶中的資源群組。
+若要簡化資源的管理，您可以使用 Azure Resource Manager 範本 (ARM 範本) ，在您的 Azure 訂用帳戶層級部署資源。 例如，您可以將[原則](../../governance/policy/overview.md)和[azure 角色型存取控制 (azure RBAC) ](../../role-based-access-control/overview.md)部署至您的訂用帳戶，這會在您的訂用帳戶中套用。 您也可以在訂用帳戶內建立資源群組，並將資源部署至訂用帳戶中的資源群組。
 
 > [!NOTE]
 > 您可以在訂用帳戶層級部署中部署最多 800 個不同的資源群組。
@@ -28,7 +28,7 @@ ms.locfileid: "87321763"
 * [artifacts](/azure/templates/microsoft.blueprint/blueprints/artifacts)
 * [blueprints](/azure/templates/microsoft.blueprint/blueprints)
 * [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
-* [版本（藍圖）](/azure/templates/microsoft.blueprint/blueprints/versions)
+* [ (藍圖) 版本](/azure/templates/microsoft.blueprint/blueprints/versions)
 
 針對 Azure 原則，請使用：
 
@@ -473,7 +473,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="access-control"></a>存取控制
 
-若要了解如何指派角色，請參閱[使用 RBAC 和 Azure Resource Manager 範本管理對 Azure 資源的存取](../../role-based-access-control/role-assignments-template.md)。
+若要瞭解如何指派角色，請參閱[使用 Azure Resource Manager 範本新增 Azure 角色指派](../../role-based-access-control/role-assignments-template.md)。
 
 下列範例會建立資源群組、對其套用鎖定，並將角色指派給主體。
 

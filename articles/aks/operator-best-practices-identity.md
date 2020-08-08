@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: c7e8cd28380a86a671c74af03fa479abce5cfe25
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0e11f345bfed287be3170df38a909ed24149b754
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107133"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010254"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中驗證和授權的最佳做法
 
@@ -23,7 +23,7 @@ ms.locfileid: "86107133"
 > [!div class="checklist"]
 >
 > * 使用 Azure Active Directory 驗證 AKS 叢集使用者
-> * 使用 Kubernetes 角色型存取控制（RBAC）來控制對資源的存取
+> * 使用 Kubernetes 角色型存取控制 (RBAC) 來控制資源的存取權
 > * 使用 Azure RBAC 對 AKS 資源和 Kubernetes API 的大規模及 kubeconfig 的存取權限進行細微控制。
 > * 使用受控識別來驗證 pod 本身與其他服務
 
@@ -33,7 +33,7 @@ ms.locfileid: "86107133"
 
 Kubernetes 叢集的開發人員和應用程式擁有者需要存取不同的資源。 Kubernetes 不提供身分識別管理解決方案來控制哪些使用者可以與哪些資源互動。 您通常會將叢集與現有的身分識別解決方案整合。 Azure Active Directory (AD) 提供符合企業需求的身分識別管理解決方案，並且可與 AKS 叢集整合。
 
-透過 Azure AD 在 AKS 中整合的叢集，您可以建立*角色*或 *ClusterRoles*，以定義資源的存取權限。 接著，您可以從 Azure AD 將角色*繫結*至使用者或群組。 這些 Kubernetes 角色型存取控制 (RBAC) 將在下一節中討論。 下圖顯示 Azure AD 的整合以及如何控制對資源的存取：
+透過 Azure AD 在 AKS 中整合的叢集，您可以建立*角色*或 *ClusterRoles*，以定義資源的存取權限。 接著，您可以從 Azure AD 將角色*繫結*至使用者或群組。 這些 Kubernetes 以角色為基礎的存取控制 (RBAC) 會在下一節中討論。 下圖顯示 Azure AD 的整合以及如何控制對資源的存取：
 
 ![對 Azure Active Directory 與 AKS 的整合進行叢集層級驗證](media/operator-best-practices-identity/cluster-level-authentication-flow.png)
 
@@ -46,7 +46,7 @@ Kubernetes 叢集的開發人員和應用程式擁有者需要存取不同的資
 
 若要建立使用 Azure AD 的 AKS 叢集，請參閱[整合 Azure Active Directory 與 AKS][aks-aad]。
 
-## <a name="use-kubernetes-role-based-access-controls-rbac"></a>使用 Kubernetes 以角色為基礎的存取控制（RBAC）
+## <a name="use-kubernetes-role-based-access-control-rbac"></a>使用 Kubernetes 以角色為基礎的存取控制 (RBAC) 
 
 **最佳做法指引** - 使用 Kubernetes RBAC 定義使用者或群組對於叢集中的資源所擁有的權限。 建立會指派最少量必要權限的角色和繫結。 與 Azure AD 整合，讓使用者狀態或群組成員資格中的任何變更都會自動更新，並且讓叢集資源的存取權保持在最新狀態。
 
@@ -86,7 +86,7 @@ roleRef:
 
 針對 AKS 叢集驗證*developer1 \@ contoso.com*時，他們具有*財務應用程式*命名空間中資源的完整許可權。 如此，您將可透過邏輯方式來區分及控制對資源的存取。 如上一節的討論，Kubernetes RBAC 應與 Azure AD 整合搭配使用。
 
-若要瞭解如何使用 Azure AD 群組來控制使用 RBAC 的 Kubernetes 資源存取，請參閱[使用角色型存取控制來控制叢集資源的存取和 AKS 中的 Azure Active Directory][azure-ad-rbac]身分識別。
+若要瞭解如何使用 Azure AD 群組來控制使用 RBAC Kubernetes 資源的存取權，請參閱[使用角色型存取控制來控制叢集資源的存取和 AKS 中的 Azure Active Directory][azure-ad-rbac]身分識別。
 
 ## <a name="use-azure-rbac"></a>使用 Azure RBAC 
 **最佳做法指引**-使用 Azure RBAC 來定義使用者或群組在一或多個訂用帳戶中 AKS 資源所需的最小必要許可權。
@@ -95,7 +95,7 @@ roleRef:
 1. 存取 Azure 訂用帳戶上的 AKS 資源。 此存取層級可讓您使用 AKS Api 控制要調整或升級叢集的專案，以及提取您的 kubeconfig。
 若要瞭解如何控制對 AKS 資源和 kubeconfig 的存取，請參閱[限制對叢集設定檔的存取](control-kubeconfig-access.md)。
 
-2. Kubernetes API 的存取權。 此存取層級是由[KUBERNETES RBAC](#use-kubernetes-role-based-access-controls-rbac) （傳統）或整合 Azure RBAC 與 AKS 來進行 Kubernetes 授權所控制。
+2. Kubernetes API 的存取權。 此存取層級是由傳統) [KUBERNETES RBAC](#use-kubernetes-role-based-access-control-rbac) (，或藉由整合 Azure RBAC 與 AKS 來 Kubernetes 授權來控制。
 若要瞭解如何使用 Azure RBAC 將許可權授與 Kubernetes API，請參閱[使用 AZURE rbac 進行 Kubernetes 授權](manage-azure-rbac.md)。
 
 ## <a name="use-pod-identities"></a>使用 Pod 身分識別
@@ -104,7 +104,7 @@ roleRef:
 
 當 Pod 需要存取其他 Azure 服務時 (例如 Cosmos DB、Key Vault 或 Blob 儲存體)，Pod 將需要存取認證。 這些存取認證可以使用容器映像來定義或插入作為 Kubernetes 祕密，但必須以手動方式建立並指派。 認證通常會跨 Pod 重複使用，而不會定期輪替。
 
-適用于 Azure 資源的受控識別（目前實作為相關聯的 AKS 開放原始碼專案）可讓您透過 Azure AD 自動要求存取服務。 您不需手動定義 Pod 的認證，因為 Pod 會即時要求存取權杖，並且可用該權杖來存取其獲指派的服務。 在 AKS 中，叢集操作員會部署兩個元件，讓 Pod 能夠使用受控識別：
+適用于 Azure 資源的受控識別目前 (實作為相關聯的 AKS 開放原始碼專案，) 可讓您透過 Azure AD 自動要求存取服務。 您不需手動定義 Pod 的認證，因為 Pod 會即時要求存取權杖，並且可用該權杖來存取其獲指派的服務。 在 AKS 中，叢集操作員會部署兩個元件，讓 Pod 能夠使用受控識別：
 
 * **節點管理身分識別 (NMI) 伺服器**是在 AKS 叢集中的每個節點上以 DaemonSet 形式執行的 Pod。 NMI 伺服器會接聽 Pod 對 Azure 服務的要求。
 * **受控識別控制器 (MIC)** 是一個中央 Pod，有權查詢 Kubernetes API 伺服器，以及檢查對應至 Pod 的 Azure 身分識別對應。

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 42dcbf693b6ec685849b1523480506e9c8f5b54b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 8afe6ad23f0e23e2b9ab772f5526c63d307fa88b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202887"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003240"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>如何：在 Azure AD 中撰寫屬性對應的運算式
 
@@ -34,13 +34,14 @@ ms.locfileid: "86202887"
   2. 字串常數，必須以雙引號括住。 例如："United States"
   3. 其他函式。 例如： FunctionOne (`<<argument1>>` 、FunctionTwo (`<<argument2>>`) # A3
 * 對於字串常數，如果您在字串中需要反斜線 ( \ ) 或引號 ( " ) ，則必須使用反斜線 ( \ ) 符號逸出。 例如：「公司名稱： \\ "Contoso \\ "」
+* 語法會區分大小寫，必須在函式中將它們輸入為字串，並直接從此處貼上時，才需要考慮。 
 
 ## <a name="list-of-functions"></a>函式的清單
 
 [Append](#append) &nbsp; &nbsp; 附加 &nbsp; &nbsp;[BitAnd](#bitand) &nbsp; &nbsp; BitAnd &nbsp; &nbsp;[CBool](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp;[Coalesce](#coalesce) &nbsp; &nbsp; 聯合 &nbsp; &nbsp;[ConvertToBase64](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp;[ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp;[Count](#count) &nbsp; &nbsp; 計數 &nbsp; &nbsp;[CStr](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp;[DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp;[Guid](#guid) &nbsp; &nbsp; Guid &nbsp; &nbsp;[IIF](#iif) &nbsp; &nbsp; IIF &nbsp; &nbsp;[InStr](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp;[IsNull](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp;[IsNullOrEmpty](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp;[IsPresent](#ispresent) &nbsp; &nbsp; IsPresent &nbsp; &nbsp;[IsString](#isstring) &nbsp; &nbsp; IsString &nbsp; &nbsp;[Item](#item) &nbsp; &nbsp; 專案 &nbsp; &nbsp;[Join](#join) &nbsp; &nbsp; 聯結 &nbsp; &nbsp;[Left](#left) &nbsp; &nbsp; 左方 &nbsp; &nbsp;[Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word](#word)
 
 ---
-### <a name="append"></a>Append
+### <a name="append"></a>附加
 
 **函數**<br> Append(source, suffix)
 
@@ -137,7 +138,7 @@ ConvertToUTF8Hex("Hello world!")
  傳回 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>計數
 **函數**<br>  (屬性計數) 
 
 **描述:**<br> Count 函式會傳回多重值屬性中的元素個數
@@ -174,7 +175,7 @@ CStr([dn])
 
 | 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **value** |必要 | 日期 | 要轉換成日期時間類型的 AD 日期 |
+| **value** |必要 | Date | 要轉換成日期時間類型的 AD 日期 |
 
 **範例︰**<br>
 DateFromNum([lastLogonTimestamp])                                                                                                   
@@ -301,7 +302,7 @@ Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager])
 | **expression** |必要 |expression |要評估的運算式 |
 
 ---
-### <a name="item"></a>Item
+### <a name="item"></a>項目
 **函數**<br> 專案 (屬性，索引) 
 
 **描述:**<br> Item 函式會從多重值字串/屬性傳回一個項目。
@@ -362,8 +363,8 @@ Left ( "John Doe"，3)
 | 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為屬性的名稱。 |
-| **開始** |必要 |integer |**來源**字串中的索引，代表子字串的開頭。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
-| **length** |必要 |integer |子字串的長度。 如果長度超出 **source** 字串結尾，函式會傳回從 **start** 索引一直到 **source** 字串結尾的子字串。 |
+| **開始** |必要 |整數 |**來源**字串中的索引，代表子字串的開頭。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
+| **length** |必要 |整數 |子字串的長度。 如果長度超出 **source** 字串結尾，函式會傳回從 **start** 索引一直到 **source** 字串結尾的子字串。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -428,7 +429,7 @@ RemoveDuplicates([proxyAddresses])
 傳回已清理的 proxyAddress 屬性，其中已移除所有重複的值
 
 ---
-### <a name="replace"></a>Replace
+### <a name="replace"></a>取代
 **函數**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **描述:**<br>
@@ -496,7 +497,7 @@ RemoveDuplicates([proxyAddresses])
 | **[appRoleAssignments]** |必要 |String |**[appRoleAssignments]** 物件。 |
 
 ---
-### <a name="split"></a>Split
+### <a name="split"></a>分割
 **函數**<br> Split(source, delimiter)
 
 **描述:**<br> 使用指定的分隔符號字元將字串分割成多重值陣列。

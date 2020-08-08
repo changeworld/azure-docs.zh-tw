@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1e8fd08a22d5d243f404a12ff96c1a8797b97f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1cf4af12b9ef912d37014215e422d5b9c73903f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485581"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007874"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>適用于 Microsoft Azure 客戶加密箱的 Azure 安全性基準
 
@@ -222,13 +222,13 @@ Microsoft Azure 的客戶加密箱的 Azure 安全性基準包含可協助您改
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的詳細目錄
 
-**指引**：維護具有客戶加密箱要求之系統管理存取權的使用者帳戶清查。 您可以使用訂用帳戶的 Azure 入口網站中的 [身分識別] 和 [存取控制（IAM）] 窗格來設定角色型存取控制（RBAC）。 這些角色會套用至 Azure Active Directory 中的使用者、群組、服務主體和受控識別。
+**指引**：維護具有客戶加密箱要求之系統管理存取權的使用者帳戶清查。 您可以使用訂用帳戶 Azure 入口網站中的 [身分識別] 和 [存取控制] (IAM) ] 窗格，來設定 Azure 角色型存取控制 (Azure RBAC) 。 這些角色會套用至 Azure Active Directory 中的使用者、群組、服務主體和受控識別。
 
 在客戶組織中，具有 Azure 訂用帳戶擁有者角色的使用者會收到來自 Microsoft 的電子郵件，通知他們任何暫止的存取要求。 對於客戶加密箱要求，此人員是指定的核准者。
 
 * [瞭解自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [如何設定活頁簿的 RBAC](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [如何設定適用于活頁簿的 Azure RBAC](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [瞭解客戶加密箱中的存取要求許可權](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -283,7 +283,7 @@ Microsoft Azure 的客戶加密箱的 Azure 安全性基準包含可協助您改
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
-**指導**方針：使用具有 Azure 多重要素驗證（MFA）的特殊許可權存取工作站（PAW）來登入及設定您的客戶加密箱要求。
+**指導**方針：使用特殊許可權存取工作站 (PAW) 搭配 Azure 多重要素驗證 (MFA) 啟用以登入及設定您的客戶加密箱要求。
 
 * [特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -295,7 +295,7 @@ Microsoft Azure 的客戶加密箱的 Azure 安全性基準包含可協助您改
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：針對來自系統管理帳戶的可疑活動留下記錄和發出警示
 
-**指導**方針：當環境中發生可疑或不安全的活動時，使用 AZURE ACTIVE DIRECTORY PRIVILEGED IDENTITY MANAGEMENT （PIM）來產生記錄檔和警示。
+**指導**方針：當環境中發生可疑或不安全的活動時，請使用 AZURE ACTIVE DIRECTORY PRIVILEGED IDENTITY MANAGEMENT (PIM) 來產生記錄檔和警示。
 
 此外，您可以使用 Azure Active Directory 風險偵測來查看警示和報告有風險的使用者行為。
 
@@ -357,7 +357,7 @@ Microsoft Azure 的客戶加密箱的 Azure 安全性基準包含可協助您改
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差警示
 
-**指引**：對於控制平面上的帳戶登入行為偏差（例如 Azure 入口網站），請使用 Azure Active Directory identity protection 和風險偵測功能，針對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
+**指導**方針：對於控制平面上的帳戶登入行為偏差 (例如 Azure 入口網站) ，請使用 Azure Active Directory identity protection 和風險偵測功能，針對偵測到與使用者身分識別相關的可疑動作設定自動回應。 您也可將資料內嵌到 Azure Sentinel 中，以便進一步調查。
 
 * [如何觀看 Azure Active Directory 有風險的登入](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -411,7 +411,7 @@ Microsoft Azure 的客戶加密箱的 Azure 安全性基準包含可協助您改
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指引**：根據預設，Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務與客戶之間的資料。 Microsoft 資料中心會與連線到 Azure 服務的用戶端系統進行交涉以達成 TLS 連線。 TLS 提供增強式驗證、訊息隱私權、完整性 (可偵測訊息竄改、攔截和偽造)、互通性、演算法彈性，以及方便部署和使用。
+**指導**方針：根據預設，Microsoft 會使用傳輸層安全性 (TLS) 通訊協定來保護在雲端服務與客戶之間進行的資料。 Microsoft 資料中心會與連線到 Azure 服務的用戶端系統進行交涉以達成 TLS 連線。 TLS 提供增強式驗證、訊息隱私權、完整性 (可偵測訊息竄改、攔截和偽造)、互通性、演算法彈性，以及方便部署和使用。
 
 * [瞭解使用 Azure 傳輸加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
@@ -527,7 +527,7 @@ Microsoft Azure 的客戶加密箱的 Azure 安全性基準包含可協助您改
 
 * [如何檢視您的 Azure 訂閱](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [瞭解 Azure 角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [瞭解 Azure 角色型存取控制 (Azure RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -545,7 +545,7 @@ Microsoft Azure 的客戶加密箱的 Azure 安全性基準包含可協助您改
 
 **指引**：在適當的情況下，使用標籤、管理群組和個別訂閱來組織及追蹤 Azure 資源。 請定期調節清查，並確保會及時刪除訂閱中未經授權的資源。
 
-此外，使用 Azure 原則來限制可以使用下列內建原則定義，在客戶訂用帳戶中建立的資源類型：
+此外，使用 Azure 原則來對可在客戶訂用帳戶中建立的資源類型（使用下列內建原則定義）進行限制 (s) ：
 - 不允許的資源類型
 - 允許的資源類型
 
@@ -569,7 +569,7 @@ Microsoft Azure 的客戶加密箱的 Azure 安全性基準包含可協助您改
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 
-**指引**：使用 Azure 原則來限制可在您的訂用帳戶中建立的資源類型。
+**指導**方針：使用 Azure 原則來對可在訂用帳戶 (s) 中建立的資源類型施加限制。
 
 使用 Azure Resource Graph 來查詢/探索其訂閱內的資源。 確保已核准環境中的所有 Azure 資源。
 

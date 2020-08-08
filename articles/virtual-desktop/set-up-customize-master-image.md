@@ -1,29 +1,27 @@
 ---
 title: 準備和自訂主要 VHD 映射-Azure
 description: 如何準備、自訂 Windows 虛擬桌面主要映射並將其上傳至 Azure。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fe354991ce19031cc4a51b07098ab12240569a90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2a10a32a98a240f740f48f7b25e6fa6ac3f2e873
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832520"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009506"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>準備和自訂主要 VHD 映像
 
-本文說明如何準備要上傳至 Azure 的主要虛擬硬碟（VHD）映射，包括如何建立虛擬機器（Vm）並在其上安裝軟體。 這些指示適用於可搭配您組織現有程序使用的 Windows 虛擬桌面特定設定。
+本文說明如何準備要上傳至 Azure 的主要虛擬硬碟 (VHD) 映射，包括如何建立虛擬機器 (Vm) 並在其上安裝軟體。 這些指示適用於可搭配您組織現有程序使用的 Windows 虛擬桌面特定設定。
 
 ## <a name="create-a-vm"></a>建立 VM
 
 Windows 10 企業版多會話可在 Azure 映射庫中取得。 有兩個選項可自訂此影像。
 
-第一個選項是遵循[從受控映射建立 VM](../virtual-machines/windows/create-vm-generalized-managed.md)中的指示，在 Azure 中布建虛擬機器（VM），然後直接跳到[軟體準備和安裝](set-up-customize-master-image.md#software-preparation-and-installation)。
+第一個選項是依照[從受控映射建立 VM](../virtual-machines/windows/create-vm-generalized-managed.md)中的指示，在 Azure 中布建 (VM) 的虛擬機器，然後直接跳到 [[軟體準備和安裝](set-up-customize-master-image.md#software-preparation-and-installation)]。
 
 第二個選項是在本機建立映射，方法是下載映射、布建 Hyper-v VM，並根據您的需求進行自訂，我們將在下一節中討論。
 
@@ -72,7 +70,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 
 如果您的使用者需要存取特定 LOB 應用程式，建議您在完成本節的指示之後加以安裝。
 
-### <a name="set-up-user-profile-container-fslogix"></a>設定使用者設定檔容器（FSLogix）
+### <a name="set-up-user-profile-container-fslogix"></a> (FSLogix) 設定使用者設定檔容器
 
 若要包含 FSLogix 容器作為映射的一部分，請遵循[使用檔案共用建立主機集區的設定檔容器](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)中的指示。 您可以使用[本快速入門](/fslogix/configure-cloud-cache-tutorial/)來測試 FSLogix 容器的功能。
 
@@ -99,7 +97,7 @@ Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd 
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
 
-### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>指定 Windows 10 電腦的開始版面配置（選擇性）
+### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>指定 Windows 10 電腦的開始配置 (選擇性) 
 
 執行此命令以指定 Windows 10 電腦的開始配置。
 
@@ -144,14 +142,14 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 - [將語言新增至 Windows 映像](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [功能隨選安裝](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
-- [依需求的語言和區域功能（FOD）](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
+- [依需求的語言和區域功能 (FOD) ](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>其他應用程式和登錄設定
 
 本節涵蓋應用程式和作業系統設定。 本節中的所有設定都是透過可由命令列和 regedit 工具執行的登錄專案來完成。
 
 >[!NOTE]
->您可以使用群組原則物件（Gpo）或登錄匯入來執行設定中的最佳作法。 系統管理員可以根據組織的需求選擇任一選項。
+>您可以使用群組原則物件 (Gpo) 或登錄匯入）來執行設定中的最佳作法。 系統管理員可以根據組織的需求選擇任一選項。
 
 若要在 Windows 10 企業版多會話上收集遙測資料的意見反應中樞，請執行此命令：
 
@@ -189,12 +187,12 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 下列指示將告訴您如何將您的主要映射上傳至 Azure 儲存體帳戶。 如果您還沒有 Azure 儲存體帳戶，請遵循[這篇文章](/azure/developer/javascript/tutorial-vscode-static-website-node-03)中的指示來建立一個。
 
-1. 如果您還沒有 VM 映射（VHD），請將它轉換為固定。 如果您未將影像轉換為固定，則無法成功建立映射。
+1. 將 VM 映射 (VHD) 轉換為固定（如果尚未這麼做）。 如果您未將影像轉換為固定，則無法成功建立映射。
 
 2. 將 VHD 上傳至儲存體帳戶中的 blob 容器。 您可以使用[儲存體總管工具](https://azure.microsoft.com/features/storage-explorer/)快速上傳。 若要深入瞭解儲存體總管工具，請參閱[這篇文章](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
 
     > [!div class="mx-imgBorder"]
-    > ![Microsoft Azure 儲存體總管工具之 [搜尋] 視窗的螢幕擷取畫面。 已選取 [將 .vhd 或 vhdx 檔案當做分頁 blob （建議選項）] 核取方塊。](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
+    > ![Microsoft Azure 儲存體總管工具之 [搜尋] 視窗的螢幕擷取畫面。 已選取 [將 .vhd 或 vhdx 檔案當做分頁 blob (建議) ] 核取方塊。](media/897aa9a9b6acc0aa775c31e7fd82df02.png)
 
 3. 接下來，移至瀏覽器中的 Azure 入口網站，並搜尋「影像」。 您的搜尋應該會引導您到 [**建立映射**] 頁面，如下列螢幕擷取畫面所示：
 

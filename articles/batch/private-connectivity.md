@@ -2,13 +2,14 @@
 title: 使用私人端點搭配 Azure Batch 帳戶
 description: 瞭解如何使用私人端點，私下連接到 Azure Batch 帳戶。
 ms.topic: how-to
-ms.date: 06/12/2020
-ms.openlocfilehash: 04f52c8c58668b2978b38c65a94533a38c593888
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.custom: references_regions
+ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754288"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004250"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>使用私人端點搭配 Azure Batch 帳戶
 
@@ -16,16 +17,11 @@ ms.locfileid: "84754288"
 
 藉由使用[Azure 私人連結](../private-link/private-link-overview.md)，您可以透過[私人端點](../private-link/private-endpoint-overview.md)連接到 Azure Batch 帳戶。 私人端點是虛擬網路內子網路中的一組私人 IP 位址。 接著，您可以透過私人 IP 位址，限制 Azure Batch 帳戶的存取權。
 
-私人連結可讓使用者從虛擬網路內或從任何對等互連的虛擬網路存取 Azure Batch 帳戶。 對應至私用連結的資源也可以透過 VPN 或[Azure ExpressRoute](../expressroute/expressroute-introduction.md)在私人對等互連上存取。
+私人連結可讓使用者從虛擬網路內或從任何對等互連的虛擬網路存取 Azure Batch 帳戶。 對應至私用連結的資源也可以透過 VPN 或[Azure ExpressRoute](../expressroute/expressroute-introduction.md)在私人對等互連上存取。 您可以使用 [[自動] 或 [手動] 核准方法](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)，連線到以私人連結設定的 Azure Batch 帳戶。
 
-您可以使用 [[自動] 或 [手動] 核准方法](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)，連線到以私人連結設定的 Azure Batch 帳戶。
+Azure Batch 中的私人連線支援目前可在下列 Azure 區域中使用：美國中西部、美國西部2、美國東部、美國中南部、US Gov 維吉尼亞州、US Gov 亞利桑那州、東亞、法國和英國南部。
 
 本文說明建立私人 Batch 帳戶，並使用私用端點來存取的步驟。
-
-> [!IMPORTANT]
-> Azure Batch 中的私人連線支援目前處於公開預覽狀態，適用于美國中西部、美國西部2、美國東部、美國中南部、US Gov 維吉尼亞州和 US Gov 亞利桑那州區域。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="azure-portal"></a>Azure 入口網站
 

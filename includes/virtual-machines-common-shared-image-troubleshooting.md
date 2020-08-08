@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: c043cfb6cf437ab55cc4a48ced716798738adbef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 52569f3cec26432970606b31fe831bb6459839d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507413"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010944"
 ---
 如果您在共用映像資源庫、映像定義及映像版本上執行任何作業時遇到問題，請再次以偵錯模式執行失敗的命令。 藉由使用 `--debug` CLI 傳遞參數和使用 PowerShell 來切換參數，即可啟動「偵測模式」 `-Debug` 。 一旦您找到錯誤，請遵循本文件來針對錯誤進行疑難排解。
 
@@ -76,7 +76,7 @@ ms.locfileid: "87507413"
 
 嘗試建立 VM 或虛擬機器擴展集的使用者沒有映像版本的讀取權限。**
 
-請洽詢訂用帳戶擁有者，並要求他們透過[Azure 角色型存取控制（AZURE RBAC）](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)，授與映射版本或父資源（例如共用映射資源庫或映射定義）的讀取權限。 
+請洽詢訂用帳戶擁有者，並要求他們提供映射版本或父資源的讀取存取權 (例如共用映射庫或映射定義) 透過[azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)。 
 
 找不到映像版本。**
 
@@ -88,7 +88,7 @@ VM 或虛擬機器擴展集建立花費很長的時間。**
 
 ## <a name="unable-to-share-resources"></a>無法共用資源
 
-在訂用帳戶之間共用共用映射資源庫、映射定義和映射版本資源，是使用以[角色為基礎的存取控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)（RBAC）來啟用。 
+在訂用帳戶之間共用共用映射資源庫、映射定義和映射版本資源，會使用[azure 角色型存取控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)來啟用。 
 
 ## <a name="replication-is-slow"></a>複寫速度很慢
 

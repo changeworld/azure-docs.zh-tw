@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 554724c334cb6c51b8744de0eedd4d6815d707b5
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172562"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009574"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>遷移至 Azure Cache for Redis
 本文說明將內部部署或其他雲端服務中執行的現有 Redis 快取，遷移至 Azure Cache for Redis 的一些方法。
@@ -51,7 +51,7 @@ ms.locfileid: "87172562"
 
 ### <a name="export-data-to-an-rdb-file-and-import-it-into-azure-cache-for-redis"></a>將資料匯出至 RDB 檔案，並將它匯入至 Azure Cache for Redis
 
-開放原始碼 Redis 會定義標準機制，以建立快取記憶體內部資料集的快照，並將其儲存至檔案。 這個檔案（稱為 RDB）可由另一個 Redis 快取讀取。 [Azure Cache For Redis premium 層](cache-premium-tier-intro.md)支援透過 RDB 檔案將資料匯入快取實例。 您可以使用 RDB 檔案，將資料從現有的快取傳送至 Azure Cache for Redis。
+開放原始碼 Redis 會定義標準機制，以建立快取記憶體內部資料集的快照，並將其儲存至檔案。 這個檔案（稱為 RDB）可由另一個 Redis 快取讀取。 [Azure Cache For Redis premium 層](cache-overview.md#service-tiers)支援透過 RDB 檔案將資料匯入快取實例。 您可以使用 RDB 檔案，將資料從現有的快取傳送至 Azure Cache for Redis。
 
 > [!IMPORTANT]
 > RDB 檔案格式可以在 Redis 版本之間變更，而且可能不會維持回溯相容性。 您要匯出的快取 Redis 版本應該等於或小於 Azure Cache for Redis 所提供的版本。
@@ -59,7 +59,7 @@ ms.locfileid: "87172562"
 
 執行此選項的一般步驟如下：
 
-1. 在進階層中建立新的 Azure Cache for Redis 實例，其大小與現有的快取相同（或大於）。
+1. 在進階層中建立新的 Azure Cache for Redis 實例，其大小等於 (或大於現有快取) 。
 
 2. 儲存現有 Redis 快取的快照集。 您可以[設定 Redis 來定期儲存快照](https://redis.io/topics/persistence)集，或使用[save](https://redis.io/commands/save)或[BGSAVE](https://redis.io/commands/bgsave)命令手動執行進程。 RDB 檔案預設會命名為 "dump. RDB"，而且會位於*redis*設定檔案中指定的路徑。
 
@@ -79,7 +79,7 @@ ms.locfileid: "87172562"
 
 執行此選項的一般步驟如下：
 
-1. 在進階層中建立新的 Azure Cache for Redis 實例，其大小與現有的快取相同（或大於）。
+1. 在進階層中建立新的 Azure Cache for Redis 實例，其大小等於 (或大於現有快取) 。
 
 2. 修改應用程式程式碼，以寫入新的和原始的實例。
 
@@ -114,5 +114,5 @@ ms.locfileid: "87172562"
 ## <a name="next-steps"></a>後續步驟
 深入瞭解 Azure Cache for Redis 功能。
 
-* [Azure Cache for Redis 進階層簡介](cache-premium-tier-intro.md)
+* [Azure Cache for Redis 服務層級](cache-overview.md#service-tiers)
 * [匯入資料](cache-how-to-import-export-data.md#import)

@@ -10,27 +10,27 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17847546ace558d367aed6d935db0fed6d817f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742193"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009557"
 ---
-# <a name="grant-access-to-other-administrators-to-manage-privileged-identity-management"></a>授與其他系統管理員存取權以管理 Privileged Identity Management
+# <a name="delegate-access-to-privileged-identity-management"></a>委派 Privileged Identity Management 的存取權
 
-為組織啟用 Privileged Identity Management （PIM）的全域管理員會自動取得角色指派和 Privileged Identity Management 的存取權。 不過，您的 Azure Active Directory （Azure AD）組織中沒有其他人預設會取得寫入存取權，但包含其他全域管理員。 其他全域管理員、安全性系統管理員和安全性讀取者具有 Privileged Identity Management 的唯讀存取權。 若要授與 Privileged Identity Management 的存取權，第一位使用者可以將其他人指派給特殊**許可權角色管理員**角色。
+若要將存取權委派給 Privileged Identity Management (PIM) ，全域管理員可以將其他使用者指派給特殊許可權角色管理員角色。 根據預設，安全性系統管理員和安全性讀取者具有 Privileged Identity Management 的唯讀存取權。 若要授與 Privileged Identity Management 的存取權，第一位使用者可以將其他人指派給特殊**許可權角色管理員**角色。 只有特殊許可權角色管理員角色才需要管理 Azure AD 角色。 不需要特殊許可權角色管理員許可權來管理 Azure 資源的設定。
 
 > [!NOTE]
 > 管理 Privileged Identity Management 需要 Azure 多重要素驗證。 因為 Microsoft 帳戶無法註冊 Azure 多重要素驗證，所以使用 Microsoft 帳戶登入的使用者無法存取 Privileged Identity Management。
 
 請確保特殊權限角色管理員角色中永遠至少有兩位使用者，以防一位使用者遭到鎖定或他們的帳戶遭刪除。
 
-## <a name="grant-access-to-manage-pim"></a>授予管理 PIM 的存取權
+## <a name="delegate-access-to-manage-pim"></a>委派管理 PIM 的存取權
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
@@ -46,9 +46,9 @@ ms.locfileid: "84742193"
 
     ![特殊權限角色管理員 - 成員](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. 選取 [**新增成員**] 以開啟 [新增受控成員] 窗格。
+1. 選取 [**新增成員**] 以開啟 [**新增受控成員**] 窗格。
 
-1. 選取 [**選取成員**] 以開啟 [選取成員] 窗格。
+1. 選取 [**選取成員**] 以開啟 [**選取成員**] 窗格。
 
     ![特殊權限角色管理員 - 選取成員](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
 

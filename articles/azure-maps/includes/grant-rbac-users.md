@@ -9,25 +9,25 @@ ms.topic: include
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8dfc3714362b082168c32ba73e234e9b5fb43525
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 816e4e439bb98ced8bbc5b5d8a7d38ef65aee33f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545293"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88011068"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>將角色型存取權授與使用者，以 Azure 地圖服務
 
-您可以將 Azure AD 群組或安全性主體指派給一或多個 Azure 地圖服務存取控制角色定義，以授與*角色型存取控制*（RBAC）。 若要查看可用於 Azure 地圖服務的 Azure 角色定義，請移至 **[存取控制（IAM）**]。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。
+您可以將 Azure AD 群組或安全性主體指派給一個或多個 Azure 地圖服務角色定義，以授與*azure 角色型存取控制 (AZURE RBAC) * 。 若要查看可用於 Azure 地圖服務的 Azure 角色定義，請移至**存取控制 (IAM) **。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。
 
 * 若要有效率地管理大量使用者對 Azure 地圖服務的存取，請參閱[Azure AD 群組](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)。
 * 若要讓使用者能夠向應用程式進行驗證，則必須在 Azure AD 中建立使用者。 請參閱[使用 Azure AD 新增或刪除使用者](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)。
 
 深入瞭解[Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/)以有效管理使用者的目錄。
 
-1. 移至您的**Azure 地圖服務帳戶**。 選取 **[存取控制（IAM）**  >  **角色指派**]。
+1. 移至您的**Azure 地圖服務帳戶**。 選取 [**存取控制] (IAM) **  >  **角色指派**]。
 
-    ![授與 RBAC](../media/how-to-manage-authentication/how-to-grant-rbac.png)
+    ![使用 Azure RBAC 來授與存取權](../media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. 在 [**角色指派**] 索引標籤的 [**角色**] 底下，選取內建 Azure 地圖服務角色定義，例如**Azure 地圖服務資料讀取器**或**Azure 地圖服務資料參與者**。 在 [存取權指派對象為]**** 底下，選取 [Azure AD 使用者、群組或服務主體]****。 依名稱選取 [主體]。 然後選取 [儲存]  。
 

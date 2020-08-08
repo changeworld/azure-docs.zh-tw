@@ -1,6 +1,6 @@
 ---
 title: 叢集地圖上的點資料 | Microsoft Azure 地圖服務
-description: 在本文中，您會了解如何使用 Microsoft Azure 地圖服務 Web SDK 來叢集點資料，並將其呈現在地圖上。
+description: 瞭解如何在地圖上叢集點資料。 瞭解如何使用 Azure 地圖服務 Web SDK 來叢集資料、回應叢集滑鼠事件，以及顯示叢集匯總。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 05e21e63b104a21757c63b9ad8d2954ed778d4b8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 207106d8daab4d5d2a6d8d681aad5a20923a5a48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285742"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009047"
 ---
 # <a name="clustering-point-data"></a>叢集點資料
 

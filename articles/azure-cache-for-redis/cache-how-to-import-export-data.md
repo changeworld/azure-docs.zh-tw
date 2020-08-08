@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857000"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004331"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>在 Azure Cache for Redis 中匯入與匯出資料
 「匯入/匯出」是 Azure Cache for Redis 的資料管理作業，可讓您從進階快取將「Azure Cache for Redis 資料庫」(RDB) 快照集匯入和匯出至 Azure 儲存體帳戶中的 Blob，以將資料匯入 Azure Cache for Redis 或從 Azure Cache for Redis 匯出資料。
@@ -24,7 +24,7 @@ ms.locfileid: "85857000"
 本文提供使用 Azure Cache for Redis 匯入和匯出資料的指南，並提供常見問題的解答。
 
 > [!IMPORTANT]
-> 匯入/匯出僅供 [進階層](cache-premium-tier-intro.md) 快取使用。
+> 匯入/匯出僅[適用于進](cache-overview.md#service-tiers)階層快取。
 >
 >
 
@@ -148,10 +148,10 @@ The request to import data into cache 'contoso55' failed with status 'error' and
 
 若要解決此問題，請在經過 15 分鐘之前起始匯入或匯出作業。
 
-### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>我將資料匯出至 Azure Blob 儲存體時收到錯誤。 發生什麼事？
+### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>我將資料匯出至 Azure Blob 儲存體時收到錯誤。 結果如何？
 匯出只能使用儲存為分頁 blob 的 RDB 檔案。 目前不支援其他的 Blob 類型，包括經常性存取及非經常性存取層的 Blob 儲存體帳戶。 如需詳細資訊，請參閱 [Azure 儲存體帳戶概觀](../storage/common/storage-account-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
-了解如何使用更多進階快取功能。
+深入瞭解 Azure Cache for Redis 功能。
 
-* [Azure Cache for Redis 進階層簡介](cache-premium-tier-intro.md)
+* [Azure Cache for Redis 服務層級](cache-overview.md#service-tiers)

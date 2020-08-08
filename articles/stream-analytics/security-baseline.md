@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d085ba494ea6bb6e9e80490d85e50f100fc0908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03b1d43eeaffe4449d85d384e669ba0950442ab9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485551"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003379"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>適用于串流分析的 Azure 安全性基準
 
@@ -28,7 +28,7 @@ ms.locfileid: "84485551"
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路中的 Azure 資源
 
-**指引**： Azure 串流分析不支援使用網路安全性群組（NSG）和 Azure 防火牆。
+**指引**： Azure 串流分析不支援使用 (NSG) 和 Azure 防火牆的網路安全性群組。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -68,7 +68,7 @@ ms.locfileid: "84485551"
 
 **責任**：客戶
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統（IDS/IPS）
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統 (IDS/IPS) 
 
 **指引**：使用 Azure 資訊安全中心威脅防護來偵測 Azure 訂用帳戶環境中不尋常或可能有害的作業。
 
@@ -214,7 +214,7 @@ ms.locfileid: "84485551"
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
-**指導**方針： Azure 監視器中的 Azure DNS 分析（預覽）解決方案，將深入解析探索到 DNS 基礎結構中的安全性、效能和作業。 目前這不支援 Azure 串流分析不過，您可以使用協力廠商 dns 記錄解決方案。
+**指導**方針：在 Azure 監視器中 Azure DNS 分析 (預覽) 解決方案會收集有關安全性、效能和作業的 DNS 基礎結構深入解析。 目前這不支援 Azure 串流分析不過，您可以使用協力廠商 dns 記錄解決方案。
 
 * [收集搭配 DNS 分析預覽版解決方案使用 DNS 基礎結構的深入解析](https://docs.microsoft.com/azure/azure-monitor/insights/dns-analytics)
 
@@ -248,7 +248,7 @@ ms.locfileid: "84485551"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
-**指導**方針：串流分析沒有預設密碼的概念，因為驗證是以 Azure Active Directory 提供，並受到角色型存取控制（RBAC）的保護以管理服務。 視插入資料流程服務和輸出服務而定，您必須輪替作業中設定的認證。
+**指導**方針：串流分析沒有預設密碼的概念，因為驗證是以 Azure Active Directory 提供，並受到角色型存取控制的保護 (RBAC) 來管理服務。 視插入資料流程服務和輸出服務而定，您必須輪替作業中設定的認證。
 
 * [輪替串流分析作業的輸入和輸出的登入認證](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -258,7 +258,7 @@ ms.locfileid: "84485551"
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
-**指導**方針：遵循最佳作法（包括系統管理員角色最低許可權存取原則），建立身分識別管理和角色安全性計畫。 使用 Azure Privileged Identity Management （PIM）提供 Azure AD 和 Azure 資源的即時特殊許可權存取權。 使用 Azure PIM 警示和審核歷程記錄來監視系統管理帳戶的活動。 使用 Azure AD 安全性報告，協助識別可能已遭盜用的系統管理帳戶。
+**指導**方針：遵循最佳作法（包括系統管理員角色最低許可權存取原則），建立身分識別管理和角色安全性計畫。 使用 Azure Privileged Identity Management (PIM) 來提供 Azure AD 和 Azure 資源的即時特殊許可權存取。 使用 Azure PIM 警示和審核歷程記錄來監視系統管理帳戶的活動。 使用 Azure AD 安全性報告，協助識別可能已遭盜用的系統管理帳戶。
 
 * [深入了解](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
 
@@ -278,7 +278,7 @@ ms.locfileid: "84485551"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**指引**：啟用 Azure Active Directory 多重要素驗證（MFA），並遵循 Azure 資訊安全中心身分識別和存取管理建議，以協助保護您的串流分析資源。
+**指引**： (MFA) 啟用 Azure Active Directory 多重要素驗證，並遵循 Azure 資訊安全中心身分識別和存取管理建議來協助保護您的串流分析資源。
 
 * [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -290,7 +290,7 @@ ms.locfileid: "84485551"
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦 (特殊權限存取工作站) 進行所有系統管理工作
 
-**指導**方針：使用 paw （特殊許可權存取工作站），並設定多重要素驗證（MFA）來登入和設定串流分析資源。
+**指導**方針：使用 paw (特殊許可權存取工作站) 搭配多重要素驗證 (MFA) 設定為登入和設定串流分析資源。
 
 * [瞭解特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -324,7 +324,7 @@ ms.locfileid: "84485551"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 Azure Active Directory （Azure AD）做為中央驗證和授權系統。 Azure AD 提供角色型存取控制（RBAC），以精細控制用戶端對串流分析資源的存取。
+**指導**方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 提供角色型存取控制 (RBAC) ，以精細控制用戶端對串流分析資源的存取。
 
 * [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -346,7 +346,7 @@ ms.locfileid: "84485551"
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：監視嘗試存取已停用的認證
 
-**指導**方針：啟用 Azure 串流分析和 Azure Active Directory 的診斷設定，並將所有記錄傳送到 Log Analytics 工作區。 在 Log Analytics 中設定所需的警示（例如嘗試存取已停用的密碼）。
+**指導**方針：啟用 Azure 串流分析和 Azure Active Directory 的診斷設定，並將所有記錄傳送到 Log Analytics 工作區。 設定所需的警示 (例如，嘗試存取 Log Analytics 內已停用的密碼) 。
 
 * [將 Azure AD 記錄與 Azure 監視器記錄整合](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -442,11 +442,11 @@ ms.locfileid: "84485551"
 
 **責任**：客戶
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指引**：使用角色型存取控制（RBAC）來控制使用者與服務的互動方式。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來控制使用者與服務的互動方式。
 
-* [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [如何設定 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -462,7 +462,7 @@ ms.locfileid: "84485551"
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指導**方針：串流分析不會儲存傳入的資料，因為所有處理都是在記憶體中完成。 任何私用資料（包括需要由串流分析保存的查詢和函式）都會儲存在所設定的儲存體帳戶中。 使用客戶管理的金鑰（CMK）來加密儲存體帳戶中待用的輸出資料。 即使沒有 CMK，串流分析也會自動在其基礎結構中採用最佳的加密標準，以加密和保護您的資料。
+**指導**方針：串流分析不會儲存傳入的資料，因為所有處理都是在記憶體中完成。 任何私用資料（包括需要由串流分析保存的查詢和函式）都會儲存在所設定的儲存體帳戶中。  (CMK) 使用客戶管理的金鑰來加密您的儲存體帳戶中待用的輸出資料。 即使沒有 CMK，串流分析也會自動在其基礎結構中採用最佳的加密標準，以加密和保護您的資料。
 
 * [Azure 中的資料保護串流分析](https://docs.microsoft.com/azure/stream-analytics/data-protection)
 
@@ -522,7 +522,7 @@ Microsoft 會在支援 Azure 串流分析的基礎系統上執行弱點管理。
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指導**方針：使用 Azure 資訊安全中心所提供的預設風險評等（安全分數）。
+**指導**方針：使用預設風險分級 (Azure 資訊安全中心所提供的安全分數) 。
 
 * [瞭解 Azure 資訊安全中心安全分數](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
 
@@ -564,7 +564,7 @@ Microsoft 會在支援 Azure 串流分析的基礎系統上執行弱點管理。
 
 **指引**.. 適當地使用標記、管理群組和個別訂用帳戶來組織和追蹤 Azure 串流分析資源。 請定期調節清查，並確保會及時刪除訂用帳戶中未經授權的資源。
 
-此外，使用 Azure 原則來限制可以使用下列內建原則定義，在客戶訂用帳戶中建立的資源類型：
+此外，使用 Azure 原則來對可在客戶訂用帳戶中建立的資源類型（使用下列內建原則定義）進行限制 (s) ：
 - 不允許的資源類型
 - 允許的資源類型
 
@@ -592,7 +592,7 @@ Microsoft 會在支援 Azure 串流分析的基礎系統上執行弱點管理。
 - 不允許的資源類型
 - 允許的資源類型
 
-此外，請使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。
+此外，使用 Azure Resource Graph 來查詢/探索訂用帳戶 (s) 內的資源。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -722,7 +722,7 @@ Microsoft 會在支援 Azure 串流分析的基礎系統上執行弱點管理。
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指引**：使用 Azure Repos 安全地儲存和管理您的程式碼，包括自訂的 Azure 原則、Azure Resource Manager 範本、Desired State Configuration 腳本、使用者定義函數、查詢。 若要存取您在 Azure DevOps 中管理的資源，您可以將許可權授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory （Azure AD）中定義的群組（如果與 Azure DevOps 整合），或 Active Directory （如果與 TFS 整合）。
+**指引**：使用 Azure Repos 安全地儲存和管理您的程式碼，包括自訂的 Azure 原則、Azure Resource Manager 範本、Desired State Configuration 腳本、使用者定義函數、查詢。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中所定義之群組的許可權，或 Active Directory （如果與 TFS 整合）。
 
 * [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -826,7 +826,7 @@ Microsoft 會在支援 Azure 串流分析的基礎系統上執行弱點管理。
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指引**：在支援 azure 服務（例如 azure 串流分析）的基礎主機上啟用 Microsoft 反惡意程式碼，但不會在客戶內容上執行。
+**指引**：在支援 azure 服務 (的基礎主機上啟用 Microsoft 反惡意程式碼，例如 azure 串流分析) ，但不會對客戶內容執行。
 
 預先掃描上傳至 Azure 資源的任何內容，例如 App Service、串流分析、Blob 儲存體等等。Microsoft 無法存取您在這些實例中的資料。
 
