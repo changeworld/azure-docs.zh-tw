@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a43e7d1d97196afdad0a1e451b0c1618f0ea3a16
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809178"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006327"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -45,7 +45,7 @@ Azure 備份提供數種方法來還原 VM。
 
 ## <a name="before-you-start"></a>開始之前
 
-若要 (建立新的 VM) 來還原 VM，請確定您有正確的角色型存取控制 (RBAC) 的[許可權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)，才能執行還原 vm 操作。
+若要 (建立新的 VM) 來還原 VM，請確定您有正確的 Azure 角色型存取控制 (Azure RBAC) 的[許可權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)，才能進行還原 VM 操作。
 
 如果您沒有許可權，您可以[復原磁碟](#restore-disks)，然後在復原磁碟之後，使用在還原作業中產生的[範本](#use-templates-to-customize-a-restored-vm)來建立新的 VM。
 
@@ -173,7 +173,7 @@ Azure 備份提供數種方法來還原 VM。
 >
 >- 在觸發還原並于資料傳輸階段之後，就無法取消還原作業。
 >- 跨區域還原功能會將 CMK (客戶管理的金鑰還原) 已啟用的 Azure Vm （不會在已啟用 CMK 的復原服務保存庫中備份），做為次要區域中已啟用非 CMK 的 Vm。
->- RBAC (以角色為基礎的存取控制) 在次要區域中還原所需的角色，與主要區域中的相同。
+>- 在次要區域中還原所需的 Azure 角色與主要區域中的相同。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>監視次要區域還原作業
 

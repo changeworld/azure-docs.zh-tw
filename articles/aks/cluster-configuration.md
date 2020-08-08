@@ -3,15 +3,15 @@ title: Azure Kubernetes Service (AKS) 的叢集設定
 description: 了解如何在 Azure Kubernetes Service (AKS) 中設定叢集
 services: container-service
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1329aa056e8d1db951e01555634cf1ea709608b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252006"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008792"
 ---
 # <a name="configure-an-aks-cluster"></a>設定 AKS 叢集
 
@@ -233,6 +233,67 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 
 如果您想要建立一般 Gen1 節點集區，您可以省略自訂標記來執行此動作 `--aks-custom-headers` 。
 
+
+## <a name="ephemeral-os-preview"></a>暫時 OS (預覽) 
+
+根據預設，Azure 虛擬機器的作業系統磁片會自動複寫到 Azure 儲存體，以避免在 VM 需要重新放置到另一部主機時遺失資料。 不過，由於容器的設計不是要保存本機狀態，因此此行為會提供有限的價值，並提供一些缺點，包括較慢的節點布建和較低的讀取/寫入延遲。
+
+相反地，暫時 OS 磁片只會儲存在主機電腦上，就像暫存磁片一樣。 這可提供較低的讀取/寫入延遲，以及更快的節點縮放和叢集升級。
+
+就像暫存磁片一樣，暫時的 OS 磁片會包含在虛擬機器的價格中，因此您不會產生額外的儲存體成本。
+
+註冊 `EnableEphemeralOSDiskPreview` 功能：
+
+```azurecli
+az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
+```
+
+可能需要幾分鐘的時間，狀態才會顯示為 [已註冊]。 您可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令檢查註冊狀態：
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
+```
+
+當狀態顯示為已註冊時，請使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令重新整理 `Microsoft.ContainerService` 資源提供者的註冊：
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+若要安裝 aks-preview CLI 擴充功能，請使用下列 Azure CLI 命令：
+
+```azurecli
+az extension add --name aks-preview
+```
+
+若要更新 aks-preview CLI 擴充功能，請使用下列 Azure CLI 命令：
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-ephemeral-os-on-new-clusters-preview"></a>在新叢集上使用暫時 OS (預覽) 
+
+將叢集設定為在建立叢集時使用暫時的 OS 磁片。 使用 `--aks-custom-headers` 旗標，將暫時 OS 設定為新叢集的 os 磁片類型。
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+如果您想要使用網路連接的 OS 磁片建立一般叢集，可以省略自訂標記來執行此動作 `--aks-custom-headers` 。 您也可以選擇新增更多暫時 OS 節點集區，如下所示。
+
+### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>在現有叢集上使用暫時 OS (預覽) 
+設定新的節點集區以使用暫時的 OS 磁片。 使用旗標將 `--aks-custom-headers` 設定為 os 磁片類型，做為該節點集區的 os 磁片類型。
+
+```azure-cli
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+> [!IMPORTANT]
+> 有了暫時的 OS，您就可以將 VM 和實例映射部署到 VM 快取的大小。 在 AKS 案例中，預設節點 OS 磁片設定會使用100GiB，這表示您需要的 VM 大小必須大於 100 GiB 的快取。 預設 Standard_DS2_v2 的快取大小為 86 GiB，但不夠大。 Standard_DS3_v2 的快取大小為 172 GiB，這夠大。 您也可以使用來減少 OS 磁片的預設大小 `--node-osdisk-size` 。 AKS 映射的大小下限為30GiB。 
+
+如果您想要使用網路連接的 OS 磁片來建立節點集區，您可以省略自訂標記來執行此動作 `--aks-custom-headers` 。
+
 ## <a name="custom-resource-group-name"></a>自訂資源群組名稱
 
 當您在 Azure 中部署 Azure Kubernetes Service 叢集時，系統會建立背景工作角色節點的第二個資源群組。 根據預設，AKS 會將該節點資源群組命名為 `MC_resourcegroupname_clustername_location`，但也可以自行命名。
@@ -259,6 +320,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --node-resour
 - 請參閱[升級 Azure Kubernetes Service (AKS) 叢集](upgrade-cluster.md)，了解如何將叢集升級至最新版本的 Kubernetes。
 - 閱讀更多有關[ `containerd` 和 Kubernetes 的](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)資訊
 - 關於 AKS 常見問題的解答，請參閱 [AKS 的常見問題集](faq.md)。
+- 深入瞭解[暫時 OS 磁片](../virtual-machines/ephemeral-os-disks.md)。
 
 
 <!-- LINKS - internal -->

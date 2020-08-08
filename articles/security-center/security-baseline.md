@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9bd0f1cbe1f4797a0187952b94ca48077bb3134c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854237"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004485"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>適用于資訊安全中心的 Azure 安全性基準
 
@@ -190,7 +190,7 @@ ms.locfileid: "87854237"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指引**： Azure 角色型存取控制 (RBAC) 可讓您透過角色指派來管理 azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而且這些角色可以透過 Azure CLI、Azure PowerShell 或 Azure 入口網站之類的工具進行清查或查詢。 Azure 資訊安全中心具有「安全性讀取者」或「安全性」 Admin 的內建角色，可讓使用者讀取或更新安全性原則，以及解除警示和建議。
+**指導**方針： azure RBAC)  (azure 角色型存取控制，可讓您透過角色指派來管理 azure 資源的存取權。 您可以將這些角色指派給使用者、群組服務主體和受控識別。 某些資源有預先定義的內建角色，而且這些角色可以透過 Azure CLI、Azure PowerShell 或 Azure 入口網站之類的工具進行清查或查詢。 Azure 資訊安全中心具有「安全性讀取者」或「安全性」 Admin 的內建角色，可讓使用者讀取或更新安全性原則，以及解除警示和建議。
 
 - [Azure 資訊安全中心的權限](security-center-permissions.md)
 
@@ -344,7 +344,7 @@ ms.locfileid: "87854237"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指導**方針：使用個別的訂用帳戶和管理群組來執行隔離，以用於環境類型和資料敏感度層級等個別的安全性網域。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure Active Directory RBAC 來控制對 Azure 資源的存取。
+**指導**方針：使用個別的訂用帳戶和管理群組來執行隔離，以用於環境類型和資料敏感度層級等個別的安全性網域。 您可以限制您的應用程式和企業環境所需的 Azure 資源存取層級。 您可以透過 Azure RBAC 來控制 Azure 資源的存取權。
 
 根據預設，Azure 資訊安全中心的資料會儲存在資訊安全中心後端服務中。 如果您的組織已新增在您自己的資源中儲存此資料的需求，您可以設定 Log Analytics 工作區來儲存資訊安全中心資料、警示和建議。 使用您自己的工作區時，您可以根據資料的來源環境設定不同的工作區，以增加進一步的分隔。
 
@@ -376,15 +376,15 @@ ms.locfileid: "87854237"
 
 **責任**：共用
 
-### <a name="46-use-role-based-access-controls-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取 
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權 
 
-**指導**方針：使用 Azure 角色型存取控制來管理 Azure 資訊安全中心相關資料和資源的存取權。 Azure 資訊安全中心具有「安全性讀取者」或「安全性」 Admin 的內建角色，可讓使用者讀取或更新安全性原則，以及解除警示和建議。 儲存資訊安全中心所收集之資料的 Log Analytics 工作區，也具有您可以指派的內建角色，例如「Log Analytics 讀取者」、「Log Analytics 參與者」和其他。 指派使用者完成其必要工作所需的最寬鬆角色。 例如，將「讀取者」角色指派給只需要檢視資源安全性狀態的相關資訊，但不採取行動的使用者，例如套用建議或編輯原則。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來管理 Azure 資訊安全中心相關資料和資源的存取權。 Azure 資訊安全中心具有「安全性讀取者」或「安全性」 Admin 的內建角色，可讓使用者讀取或更新安全性原則，以及解除警示和建議。 儲存資訊安全中心所收集之資料的 Log Analytics 工作區，也具有您可以指派的內建角色，例如「Log Analytics 讀取者」、「Log Analytics 參與者」和其他。 指派使用者完成其必要工作所需的最寬鬆角色。 例如，將「讀取者」角色指派給只需要檢視資源安全性狀態的相關資訊，但不採取行動的使用者，例如套用建議或編輯原則。
 
 - [Azure Log Analytics 工作區的許可權](../role-based-access-control/built-in-roles.md#log-analytics-reader)
 
 - [Azure 資訊安全中心的權限](security-center-permissions.md)
 
-- [如何在 Azure 中設定 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何設定 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Azure 資訊安全中心監視**：不適用
 

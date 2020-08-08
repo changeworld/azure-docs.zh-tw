@@ -1,32 +1,30 @@
 ---
-title: Windows 7 虛擬機器 Windows 虛擬桌面（傳統）-Azure
-description: 如何解決 Windows 虛擬桌面（傳統）環境中 Windows 7 虛擬機器（Vm）的問題。
-services: virtual-desktop
+title: Windows 7 虛擬機器 Windows 虛擬桌面 (傳統) -Azure
+description: 如何解決 Windows 7 虛擬機器的問題 () Windows 虛擬桌面 (傳統) 環境中的 Vm。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e7f433668c34fb5edc35889adcd604023202ada4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d71b4472b16372927db56b20eca4fcbde0cc625
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286337"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005409"
 ---
-# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Windows 虛擬桌面中的 Windows 7 虛擬機器疑難排解（傳統）
+# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>針對 Windows 虛擬桌面 (傳統) 中的 Windows 7 虛擬機器進行疑難排解
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。
 
-使用本文來針對設定 Windows 虛擬桌面工作階段主機虛擬機器（Vm）時所發生的問題進行疑難排解。
+您可以使用本文來針對設定 (Vm) Windows 虛擬桌面工作階段主機虛擬機器時所發生的問題進行疑難排解。
 
 ## <a name="known-issues"></a>已知問題
 
 Windows 虛擬桌面電腦上的 windows 7 不支援下列功能：
 
-- 虛擬化應用程式（Remoteapp）
+-  (Remoteapp 的虛擬化應用程式) 
 - 時區重新導向
 - 自動 DPI 縮放比例
 
@@ -47,7 +45,7 @@ Windows 虛擬桌面只能虛擬化 Windows 7 的完整桌上型電腦。
 2. 選取您看到的錯誤訊息所在的虛擬機器。
 3. 選取 [**執行命令**]。
 4. 執行下列命令，並將 `<username>` 取代為您想要新增的使用者名稱：
-   
+
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add
    ```

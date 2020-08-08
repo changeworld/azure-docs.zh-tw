@@ -1,23 +1,21 @@
 ---
 title: FSLogix 設定檔容器 NetApp Windows 虛擬桌面-Azure
 description: 如何使用 Windows 虛擬桌面中的 Azure NetApp Files 建立 FSLogix 設定檔容器。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2656c7ee433198d2ccd883b1c3a175c141c43813
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362980"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002811"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>使用 Azure NetApp Files 和 AD DS 建立設定檔容器
 
-我們建議使用 FSLogix 設定檔容器作為[Windows 虛擬桌面服務](overview.md)的使用者設定檔解決方案。 FSLogix 設定檔容器會將完整的使用者設定檔儲存在單一容器中，並設計為在 Windows 虛擬桌面之類的非持續性遠端運算環境中漫遊設定檔。 當您登入時，容器會使用本機支援的虛擬硬碟（VHD）和 Hyper-v 虛擬硬碟（VHDX），以動態方式連接到計算環境。 這些先進的篩選驅動程式技術可讓使用者設定檔立即可用，並以本機使用者設定檔的形式出現在系統中。 若要深入瞭解 FSLogix 設定檔容器，請參閱[FSLogix 設定檔容器和 Azure 檔案](fslogix-containers-azure-files.md)。
+我們建議使用 FSLogix 設定檔容器作為[Windows 虛擬桌面服務](overview.md)的使用者設定檔解決方案。 FSLogix 設定檔容器會將完整的使用者設定檔儲存在單一容器中，並設計為在 Windows 虛擬桌面之類的非持續性遠端運算環境中漫遊設定檔。 當您登入時，容器會使用本機支援的虛擬硬碟，以動態方式連接到計算環境 (VHD) 和 Hyper-v 虛擬硬碟 (VHDX) 。 這些先進的篩選驅動程式技術可讓使用者設定檔立即可用，並以本機使用者設定檔的形式出現在系統中。 若要深入瞭解 FSLogix 設定檔容器，請參閱[FSLogix 設定檔容器和 Azure 檔案](fslogix-containers-azure-files.md)。
 
 您可以使用[Azure NetApp Files](https://azure.microsoft.com/services/netapp/)建立 FSLogix 設定檔容器，這是一種便於使用的 azure 原生平臺服務，可協助客戶針對其 Windows 虛擬桌面環境快速且可靠地布建企業級 SMB 磁片區。 若要深入瞭解 Azure NetApp Files，請參閱[什麼是 Azure Netapp files？](../azure-netapp-files/azure-netapp-files-introduction.md)
 
@@ -100,7 +98,7 @@ ms.locfileid: "85362980"
     - 針對 [**服務等級**]，從下拉式功能表中選取您想要的值。 我們建議大部分環境的**Premium** 。
        >[!NOTE]
        >Premium 設定提供高階服務等級可用的最小輸送量，也就是 256 MBps。 您可能需要針對生產環境調整此輸送量。 最終輸送量是以[輸送量限制](../azure-netapp-files/azure-netapp-files-service-levels.md)中所述的關聯性為基礎。
-    - 針對 [**大小（TiB）**]，輸入最符合您需求的容量集區大小。 大小下限為 4 TiB。
+    - 針對 [**大小 (TiB) **]，輸入最符合您需求的容量集區大小。 大小下限為 4 TiB。
 
 5. 完成後，按一下 [確定]****。
 
@@ -116,8 +114,8 @@ ms.locfileid: "85362980"
 2. 在 [**聯結 Active Directory** ] 頁面中輸入下列值，以加入連接：
 
     - 在 [**主要 DNS**] 中，輸入您的環境中可解析功能變數名稱的 DNS 伺服器 IP 位址。
-    - 針對 [**網域**]，輸入您的完整功能變數名稱（FQDN）。
-    - 針對 [ **SMB 伺服器（電腦帳戶）首碼**]，輸入您要附加到電腦帳戶名稱的字串。
+    - 針對 [**網域**]，輸入 (FQDN) 的完整功能變數名稱。
+    - 在 [ **SMB 伺服器 (電腦帳戶) 首碼**] 中，輸入您想要附加至電腦帳戶名稱的字串。
     - 針對 **[使用者名稱]**，輸入具有執行加入網域之許可權的帳戶名稱。
     - 針對 [**密碼**]，輸入帳戶的密碼。
 
@@ -131,7 +129,7 @@ ms.locfileid: "85362980"
 
     - 針對 [**磁片區名稱**]，輸入新磁片區的名稱。
     - 針對 [**容量集**區]，從下拉式功能表中選取您剛才建立的容量集區。
-    - 針對 [**配額（GiB）**]，輸入適用于您環境的磁片區大小。
+    - 針對 [**配額 (GiB) **]，輸入適用于您環境的磁片區大小。
     - 針對 [**虛擬網路**]，從下拉式功能表中選取可連線到網域控制站的現有虛擬網路。
     - 在 [**子網**] 下，選取 [**新建**]。 請記住，此子網將會委派給 Azure NetApp Files。
 
@@ -154,7 +152,7 @@ ms.locfileid: "85362980"
     > [!div class="mx-imgBorder"]
     > ![[總覽] 畫面的螢幕擷取畫面，其中紅色箭號指向掛接路徑。](media/overview-mount-path.png)
 
-## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>在工作階段主機虛擬機器（Vm）上設定 FSLogix
+## <a name="configure-fslogix-on-session-host-virtual-machines-vms"></a>在 (Vm) 的工作階段主機虛擬機器上設定 FSLogix
 
 本節是以[使用檔案共用建立主機集區的設定檔容器](create-host-pools-user-profile.md)為基礎。
 
@@ -168,7 +166,7 @@ ms.locfileid: "85362980"
 
 5. 選取 [**我同意授權條款及條件**] 旁的核取方塊。
 
-6. 選取 [安裝]。
+6. 選取 [安裝]  。
 
 7. 流覽至**C： \\ Program Files \\ FSLogix \\ Apps**以確認代理程式已安裝。
 
@@ -227,9 +225,9 @@ ms.locfileid: "85362980"
 
 5. 移至 [**總覽**] 索引標籤，並確認 FSLogix 設定檔容器使用空間。
 
-6. 使用遠端桌面直接連接到主機集區的任何 VM 部分，然後開啟檔案**瀏覽器。** 然後流覽至**掛接路徑**（在下列範例中，掛接路徑為 \\ \\ anf-SMB-3863.gt1107.onmicrosoft.com \\ 及-VOL）。
+6. 使用遠端桌面直接連接到主機集區的任何 VM 部分，然後開啟檔案**瀏覽器。** 然後流覽至下列範例中的**掛接路徑** (，掛接路徑為 \\ \\ anf-SMB-3863.gt1107.onmicrosoft.com \\ 及-VOL) 。
 
-   在此資料夾中，應該會有一個設定檔 VHD （或 VHDX），如下列範例所示。
+   在此資料夾中，應該會有一個設定檔 VHD (或 VHDX) 如下列範例所示。
 
    > [!div class="mx-imgBorder"]
    > ![掛接路徑中資料夾內容的螢幕擷取畫面。 內部是名為 "Profile_ssbb" 的單一 VHD 檔案。](media/mount-path-folder.png)

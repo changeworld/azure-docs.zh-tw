@@ -3,12 +3,12 @@ title: 為 Azure 轉送命名空間設定 IP 防火牆
 description: 本文說明如何使用防火牆規則，允許從特定 IP 位址連線至 Azure 轉送命名空間。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8cd788475ebe54c0316b8c37bd00aa186123fbf1
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2b8d1adef30eea0af9efdb51c31390c33a14b62e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533037"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009013"
 ---
 # <a name="configure-ip-firewall-for-an-azure-relay-namespace"></a>為 Azure 轉送命名空間設定 IP 防火牆
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取轉送命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
@@ -33,9 +33,8 @@ IP 防火牆規則會在命名空間層級套用。 因此，規則會套用至�
 1. 若要將存取限制為特定網路和 IP 位址，請選取 [選取的網路] 選項。 在 [防火牆] 區段中，依照下列步驟：
     1. 選取 [新增您的用戶端 IP 位址] 選項，來將命名空間的存取權授與您目前的用戶端 IP。 
     2. 針對 [位址範圍]，輸入特定的 IPv4 位址，或是以 CIDR 標記法輸入 IPv4 位址的範圍。 
-    3. 指定您是否要 [允許受信任的 Microsoft 服務略過此防火牆]。 
 
-        ![已選取 [防火牆 - 所有網路] 選項](./media/ip-firewall/selected-networks-trusted-access-disabled.png)
+        ![防火牆 - 已選取 [所有網路] 選項](./media/ip-firewall/selected-networks-trusted-access-disabled.png)
 3. 選取工具列上的 [儲存] 來儲存設定。 等候幾分鐘的時間，讓入口網站通知上顯示確認訊息。
 
 

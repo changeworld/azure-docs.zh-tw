@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c0fbb62f411ccc3056d782518c6c3b570106d2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9e8250661fdbd6c67faade31caaed61ee8a399fe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828620"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008080"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -27,9 +27,9 @@ ms.locfileid: "87828620"
 
 > [!TIP]
 > 在本文中，您會看到標示為的專案：
-> 
+>
 > ： heavy_check_mark： **Microsoft 建議**
-> 
+>
 > 這些項目屬於一般性建議，請在其適用於貴企業的特定需求時才加以實作。
 
 ## <a name="learn-about-privileged-identity-management"></a>深入瞭解 Privileged Identity Management
@@ -142,9 +142,9 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 1. 閱讀及了解[可用的 Azure AD 系統管理員角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)，來了解角色的細微性。 您和您的小組也應該參考 [Azure AD 中依識別工作區分的系統管理員角色](../users-groups-roles/roles-delegate-by-task.md)，文內會說明特定工作的最低特殊權限角色。
 
-1. 列出組織中具有特殊權限角色的人員。 您可以使用[Privileged Identity Management wizard](pim-security-wizard.md#run-the-wizard)來取得如下所示的頁面。
+1. 列出組織中具有特殊權限角色的人員。 您可以使用 Privileged Identity Management[探索和深入解析 (預覽) ](pim-security-wizard.md)來取得如下所示的頁面。
 
-    ![[探索特殊許可權角色] 窗格，其中顯示具有特殊許可權角色的人員](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![探索和深入解析 (預覽) 頁面，以減少透過特殊許可權角色的風險](./media/pim-deployment-plan/new-preview-page.png)
 
 1. 針對組織中的所有全域系統管理員，了解其為何需要該角色。 根據閱讀先前的檔，如果該人員的作業可以由一或多個細微的系統管理員角色執行，您應該將其從全域管理員角色中移除，並在 Azure Active Directory (內適當地進行指派，以做為參考： Microsoft 目前只有大約10個系統管理員具有全域管理員角色。 深入瞭解[Microsoft 如何使用 Privileged Identity Management](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)) 。
 
@@ -244,16 +244,16 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 | 角色 | 需要 MFA | 通知 | 事件票證 | 需要核准 | 核准者 | 啟動持續時間 | 永久性系統管理員 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 全域管理員 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 其他全域系統管理員 | 1 小時 | 緊急存取帳戶 |
-| Exchange 系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | 無 | 2 小時 | 無 |
-| 服務台系統管理員 | :x: | :x: | :heavy_check_mark: | :x: | 無 | 8 小時 | 無 |
+| Exchange 系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | None | 2 小時 | None |
+| 服務台系統管理員 | :x: | :x: | :heavy_check_mark: | :x: | None | 8 小時 | None |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>適用于 Azure 資源角色的 Privileged Identity Management 設定
 
 | 角色 | 需要 MFA | 通知 | 需要核准 | 核准者 | 啟動持續時間 | 有效系統管理員 | 有效到期日 | 合格到期日 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 重要訂用帳戶的擁有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 訂用帳戶的其他擁有者 | 1 小時 | 無 | n/a | 3 個月 |
-| 較不重要訂用帳戶的使用者存取系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | 無 | 1 小時 | 無 | n/a | 3 個月 |
-| 虛擬機器參與者 | :x: | :heavy_check_mark: | :x: | 無 | 3 小時 | 無 | n/a | 6 個月 |
+| 重要訂用帳戶的擁有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 訂用帳戶的其他擁有者 | 1 小時 | None | n/a | 3 個月 |
+| 較不重要訂用帳戶的使用者存取系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | None | 1 小時 | None | n/a | 3 個月 |
+| 虛擬機器參與者 | :x: | :heavy_check_mark: | :x: | None | 3 小時 | None | n/a | 6 個月 |
 
 下表說明每個設定。
 

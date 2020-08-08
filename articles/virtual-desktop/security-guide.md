@@ -1,19 +1,17 @@
 ---
 title: Windows 虛擬桌面安全性最佳做法-Azure
 description: 確保 Windows 虛擬桌面環境安全的最佳作法。
-services: virtual-desktop
 author: heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736667"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002282"
 ---
 # <a name="security-best-practices"></a>安全性最佳做法
 
@@ -23,7 +21,7 @@ Windows 虛擬桌面是一種受管理的虛擬桌面服務，其中包含可讓
 
 ## <a name="security-responsibilities"></a>安全性責任
 
-雲端服務與傳統內部部署虛擬桌面基礎結構（VDIs）的不同之處在于它們如何處理安全性責任。 例如，在傳統的內部部署 VDI 中，客戶會負責安全性的所有層面。 不過，在大部分的雲端服務中，這些責任會在客戶與公司之間共用。
+雲端服務與傳統內部部署虛擬桌面基礎結構有何不同 (VDIs) 是它們如何處理安全性責任。 例如，在傳統的內部部署 VDI 中，客戶會負責安全性的所有層面。 不過，在大部分的雲端服務中，這些責任會在客戶與公司之間共用。
 
 當您使用 Windows 虛擬桌面時，請務必瞭解，雖然某些元件已針對您的環境受到保護，但您必須自行設定其他區域，以符合您組織的安全性需求。
 
@@ -31,16 +29,16 @@ Windows 虛擬桌面是一種受管理的虛擬桌面服務，其中包含可讓
 
 | 安全性需求 | 客戶負責這種情況嗎？ |
 |---------------|:-------------------------:|
-|身分識別|Yes|
-|使用者裝置（行動和電腦）|Yes|
-|應用程式安全性|Yes|
-|工作階段主機 OS|Yes|
-|部署設定|Yes|
-|網路控制措施|Yes|
-|虛擬化控制平面|No|
-|實體主機|No|
-|實體網路|No|
-|實體資料中心|No|
+|身分識別|是|
+| (行動和電腦的使用者裝置) |是|
+|應用程式安全性|是|
+|工作階段主機 OS|是|
+|部署設定|是|
+|網路控制措施|是|
+|虛擬化控制平面|否|
+|實體主機|否|
+|實體網路|否|
+|實體資料中心|否|
 
 客戶不負責的安全性需求是由 Microsoft 所處理。
 
@@ -103,13 +101,13 @@ Windows 虛擬桌面中的所有使用者和系統管理員都需要多重要素
 
 ### <a name="enable-endpoint-protection"></a>啟用 endpoint protection
 
-為了保護您的部署免于已知的惡意軟體，我們建議您在所有工作階段主機上啟用 endpoint protection。 您可以使用 Windows Defender 防毒軟體或協力廠商程式。 若要深入瞭解，請參閱[在 VDI 環境中適用于 Windows Defender 防毒軟體的部署指南](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)。 
+為了保護您的部署免于已知的惡意軟體，我們建議您在所有工作階段主機上啟用 endpoint protection。 您可以使用 Windows Defender 防毒軟體或協力廠商程式。 若要深入瞭解，請參閱[在 VDI 環境中適用于 Windows Defender 防毒軟體的部署指南](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)。
 
 對於 FSLogix 之類的設定檔解決方案或其他裝載 VHD 檔案的解決方案，我們建議您排除 VHD 副檔名。
 
 ### <a name="install-an-endpoint-detection-and-response-product"></a>安裝端點偵測和回應產品
 
-我們建議您安裝端點偵測和回應（EDR）產品，以提供先進的偵測和回應功能。 對於已啟用[Azure 資訊安全中心](../security-center/security-center-services.md)的伺服器作業系統，安裝 EDR 產品將會部署 Defender ATP。 針對用戶端作業系統，您可以將[DEFENDER ATP](/windows/security/threat-protection/microsoft-defender-atp/onboarding)或協力廠商產品部署至這些端點。
+我們建議您安裝端點偵測和回應 (EDR) 產品，以提供先進的偵測和回應功能。 對於已啟用[Azure 資訊安全中心](../security-center/security-center-services.md)的伺服器作業系統，安裝 EDR 產品將會部署 Defender ATP。 針對用戶端作業系統，您可以將[DEFENDER ATP](/windows/security/threat-protection/microsoft-defender-atp/onboarding)或協力廠商產品部署至這些端點。
 
 ### <a name="enable-threat-and-vulnerability-management-assessments"></a>啟用威脅與弱點管理評量
 

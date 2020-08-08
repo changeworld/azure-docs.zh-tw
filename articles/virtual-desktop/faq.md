@@ -1,19 +1,17 @@
 ---
 title: Windows 虛擬桌面常見問題-Azure
 description: Windows 虛擬桌面的常見問題和最佳作法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504410"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007483"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows 虛擬桌面常見問題集
 
@@ -25,7 +23,7 @@ ms.locfileid: "87504410"
 
 您必須獲指派應用程式群組的「使用者存取系統管理員」角色，才能將應用程式群組發佈給使用者或使用者群組。
 
-若要限制系統管理員只能管理使用者會話，例如傳送訊息給使用者、登出使用者等等，您可以建立自訂角色。 例如： 
+若要限制系統管理員只能管理使用者會話，例如傳送訊息給使用者、登出使用者等等，您可以建立自訂角色。 例如：
 
 ```powershell
 "actions": [
@@ -46,9 +44,9 @@ ms.locfileid: "87504410"
 
 ## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Windows 虛擬桌面支援分割 Azure Active Directory 模型嗎？
 
-將使用者指派給應用程式群組時，服務會執行簡單的 Azure 角色指派。 因此，使用者的 Azure Active Directory （AD）和應用程式群組的 Azure AD 必須位於相同的位置。 所有服務物件（例如主機集區、應用程式群組和工作區）也必須與使用者位於相同的 Azure AD。
+將使用者指派給應用程式群組時，服務會執行簡單的 Azure 角色指派。 因此，使用者的 Azure Active Directory (AD) 和應用程式群組的 Azure AD 必須位於相同的位置。 所有服務物件（例如主機集區、應用程式群組和工作區）也必須與使用者位於相同的 Azure AD。
 
-您可以在不同的 Azure AD 中建立虛擬機器（Vm），只要您在相同的虛擬網路（VNET）中，將 Active Directory 與使用者的 Azure AD 同步。
+只要您將 Active Directory 與相同虛擬網路 Azure AD VNET (中的使用者) 同步，您就可以在不同的 Azure AD 中建立虛擬機器 (Vm) 。
 
 Azure 燈塔不完全支援管理 Windows 虛擬桌面環境。 由於燈塔目前不支援跨 Azure AD 的租使用者使用者管理，因此燈塔客戶仍然需要登入客戶用來管理使用者的 Azure AD。
 
@@ -94,7 +92,7 @@ CustomRdpProperty : audiocapturemode:i:0;audiomode:i:0;drivestoredirect:s:;redir
 
 Windows 虛擬桌面不支援 Azure AD 來賓使用者帳戶。 例如，假設一組來賓使用者擁有 Microsoft 365 E3 每位使用者、Windows E3 每位使用者，或在自己公司中贏得 VDA 授權，但在不同公司的 Azure AD 中是來賓使用者。 另一家公司則會在 Azure AD 和 Active Directory （例如本機帳戶）中管理來賓使用者的使用者物件。
 
-您不能將自己的授權用於協力廠商的權益。 此外，Windows 虛擬桌面目前不支援 Microsoft 帳戶（MSA）。
+您不能將自己的授權用於協力廠商的權益。 此外，Windows 虛擬桌面目前不支援 Microsoft 帳戶 (MSA) 。
 
 ## <a name="why-dont-i-see-the-client-ip-address-in-the-wvdconnections-table"></a>為什麼我在 WVDConnections 資料表中看不到用戶端 IP 位址？
 
@@ -114,9 +112,9 @@ Windows 虛擬桌面目前已針對小組進行優化。 Microsoft 目前不支�
 
 ## <a name="whats-the-largest-profile-size-fslogix-can-handle"></a>最大的配置檔案大小 FSLogix 可處理的內容為何？
 
-FSLogix 中的限制或配額取決於用來儲存使用者設定檔 VHD （X）檔案的存放網狀架構。
+FSLogix 中的限制或配額取決於用來儲存使用者設定檔 VHD (X) 檔案的存放網狀架構。
 
-下表提供 FSLogix 設定檔支援每個使用者所需資源的範例。 視每個設定檔的使用者、應用程式和活動而定，需求可能會有很大的差異。 
+下表提供 FSLogix 設定檔支援每個使用者所需資源的範例。 視每個設定檔的使用者、應用程式和活動而定，需求可能會有很大的差異。
 
 | 資源 | 需求 |
 |---|---|

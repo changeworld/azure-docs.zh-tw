@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698073"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008911"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>針對 Azure Cache for Redis 伺服器端問題進行疑難排解
 
-本節討論因 Azure Cache for Redis 或裝載它的虛擬機器上的條件而發生的疑難排解問題。
+本節討論因 Azure Cache for Redis 或虛擬機器 (s) 裝載的情況，而發生的問題疑難排解。
 
 - [Redis 伺服器上的記憶體壓力](#memory-pressure-on-redis-server)
 - [高 CPU 使用率或伺服器負載](#high-cpu-usage-or-server-load)
@@ -57,7 +57,7 @@ Redis 會透過[INFO](https://redis.io/commands/info)命令公開兩個統計資
 
 ## <a name="long-running-commands"></a>長時間執行的命令
 
-某些 Redis 命令的執行成本高於其他命令。 [Redis 命令檔](https://redis.io/commands)會顯示每個命令的時間複雜性。 由於 Redis 命令處理是單一執行緒，因此需要時間執行的命令將會封鎖它後面的所有其他專案。 您應該檢查您要向 Redis 伺服器發出的命令，以瞭解它們的效能影響。 例如，通常會使用[KEYS](https://redis.io/commands/keys)命令，而不知道它是 O （N）運算。 您可以使用 [[掃描](https://redis.io/commands/scan)] 來減少 CPU 尖峰，以避免金鑰。
+某些 Redis 命令的執行成本高於其他命令。 [Redis 命令檔](https://redis.io/commands)會顯示每個命令的時間複雜性。 由於 Redis 命令處理是單一執行緒，因此需要時間執行的命令將會封鎖它後面的所有其他專案。 您應該檢查您要向 Redis 伺服器發出的命令，以瞭解它們的效能影響。 例如，通常會使用[KEYS](https://redis.io/commands/keys)命令，而不知道它是 O (N) 作業。 您可以使用 [[掃描](https://redis.io/commands/scan)] 來減少 CPU 尖峰，以避免金鑰。
 
 您可以使用[SLOWLOG](https://redis.io/commands/slowlog)命令來測量針對伺服器執行的昂貴命令。
 
@@ -76,7 +76,7 @@ Redis 會透過[INFO](https://redis.io/commands/info)命令公開兩個統計資
 ## <a name="additional-information"></a>其他資訊
 
 - [針對 Azure Cache for Redis 用戶端問題進行疑難排解](cache-troubleshoot-client.md)
-- [應該使用哪個 Azure Redis 快取供應項目和大小？](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-- [如何效能評定和測試我快取的效能？](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [選擇正確的階層](cache-overview.md#choosing-the-right-tier)
+- [如何效能評定和測試我快取的效能？](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [如何監視 Azure Redis 快取](cache-how-to-monitor.md)
-- [如何執行 Redis 命令？](cache-faq.md#how-can-i-run-redis-commands)
+- [如何執行 Redis 命令？](cache-development-faq.md#how-can-i-run-redis-commands)

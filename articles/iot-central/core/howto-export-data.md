@@ -8,16 +8,17 @@ ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 6660f413c741b36f4dd28f6e1bcf83873e4f5c26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1428df124272816927c6bbbc4a242170c7f46c00
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483919"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008520"
 ---
-# <a name="export-iot-data-to-destinations-in-azure"></a>將 IoT 資料匯出至 Azure 中的目的地
+# <a name="export-iot-data-to-destinations-in-azure-using-data-export-legacy"></a>使用資料匯出 (舊版) 將 IoT 資料匯出至 Azure 中的目的地
 
-*此主題適用於系統管理員。*
+> [!Note]
+> 有一種新的方法可以在 IoT Central 中匯出資料。 您可以使用新的資料匯出來篩選和擴充匯出的資料，並將它匯出到新的目的地，例如 webhook 端點。 您可以在[這裡](./howto-use-data-export.md)瞭解新的資料匯出。 若要瞭解新的資料匯出和舊版資料匯出之間的差異，請參閱[比較表](./howto-use-data-export.md#comparison-of-legacy-data-export-and-new-data-export)。
 
 本文說明如何使用 Azure IoT Central 中的資料匯出功能。 這項功能可讓您將資料持續匯出至**Azure 事件中樞**、 **Azure 服務匯流排**或**Azure Blob 儲存體**實例。 資料匯出會使用 JSON 格式，而且可以包含遙測、裝置資訊和裝置範本資訊。 將匯出的資料用於：
 
@@ -135,9 +136,9 @@ ms.locfileid: "85483919"
 針對 Blob 儲存體，每分鐘會批次處理並匯出訊息一次。 匯出的檔案會使用與[IoT 中樞訊息路由傳送](../../iot-hub/tutorial-routing.md)至 blob 儲存體所匯出的訊息檔案相同的格式。
 
 > [!NOTE]
-> 對於 Blob 儲存體，請確定您的裝置正在傳送具有 `contentType: application/JSON` 和 `contentEncoding:utf-8` （或 `utf-16` ） `utf-32` 的訊息。 如需範例，請參閱[IoT 中樞檔](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body)。
+> 對於 Blob 儲存體，請確定您的裝置正在傳送具有 `contentType: application/JSON` 和 `contentEncoding:utf-8` (或 `utf-16`) `utf-32` 的訊息。 如需範例，請參閱[IoT 中樞檔](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body)。
 
-傳送遙測的裝置會以裝置識別碼來表示（請參閱下列各節）。 若要取得裝置的名稱，請匯出裝置資料，並使用符合裝置訊息**deviceId**的**connectionDeviceId** ，將每個訊息相互關聯。
+傳送遙測的裝置會以裝置識別碼表示 (請參閱下列各節) 。 若要取得裝置的名稱，請匯出裝置資料，並使用符合裝置訊息**deviceId**的**connectionDeviceId** ，將每個訊息相互關聯。
 
 下列範例顯示從事件中樞或服務匯流排佇列或主題接收的訊息：
 
@@ -567,7 +568,7 @@ ms.locfileid: "85483919"
 - `@id`裝置範本已重新命名為`id`
 - `@type`裝置範本的已重新命名為 `types` ，且現在是陣列
 
-### <a name="devices-format-deprecated-as-of-3-february-2020"></a>裝置（從2020年2月3日起已淘汰的格式）
+### <a name="devices-format-deprecated-as-of-3-february-2020"></a>從2020年2月3日起，已淘汰的裝置 (格式) 
 
 ```json
 {
@@ -613,7 +614,7 @@ ms.locfileid: "85483919"
 }
 ```
 
-### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>裝置範本（從2020年2月3日起已淘汰的格式）
+### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>從2020年2月3日起，已淘汰的裝置範本 (格式) 
 
 ```json
 {

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 0ed0009bce18e2b0970b425c31d2f38cef387187
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e6afd40266d280ae872d24b1828b6feadbee17e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008314"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007908"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Azure Cache for Redis 的最佳做法 
 藉由遵循這些最佳作法，您可以協助最大化 Azure Cache for Redis 實例的效能和符合成本效益的使用。
@@ -23,15 +23,15 @@ ms.locfileid: "87008314"
 
  * **開發您的系統，讓它可以**[因修補和容錯移轉而](cache-failover.md)處理連線短暫中斷。
 
- * 設定**您[的 maxmemory 保留設定](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)，以**在記憶體壓力條件下改善系統回應能力。  對於大量寫入的工作負載，或如果您要在 Redis 中儲存較大的值（100 KB 或更多），就有足夠的保留設定特別重要。 您應該以快取大小的10% 作為開頭，如果您有大量寫入負載，則會增加此百分比。
+ * 設定**您[的 maxmemory 保留設定](cache-configure.md#maxmemory-policy-and-maxmemory-reserved)，以**在記憶體壓力條件下改善系統回應能力。  對於大量寫入的工作負載，或如果您要在 Redis 中儲存較大的值 (100 KB 或更多的) ，有足夠的保留設定特別重要。 您應該以快取大小的10% 作為開頭，如果您有大量寫入負載，則會增加此百分比。
 
  * **Redis 最適合使用較小的值**，因此，請考慮將更大的資料團到多個索引鍵。  在[此 Redis 討論](https://stackoverflow.com/questions/55517224/what-is-the-ideal-value-size-range-for-redis-is-100kb-too-large/)中，會列出一些考慮事項，您應該仔細考慮。  閱讀 [這篇文章](cache-troubleshoot-client.md#large-request-or-response-size) 以了解較大值所造成的範例問題。
 
  * **在相同的區域中找出您的快取實例和應用程式。**  連線到不同區域中的快取會大幅增加延遲，並減少可靠性。  雖然您可以從 Azure 外部進行連線，但在*使用 Redis 作為*快取時，並不建議這麼做。  如果您只是使用 Redis 做為索引鍵/值存放區，延遲可能不是主要考慮。 
 
- * **重複使用連接。**  建立新的連線既昂貴又會增加延遲，因此盡可能重複使用連接。 如果您選擇建立新的連接，請務必先關閉舊的連接，然後再釋放它們（即使是在 .NET 或 JAVA 之類的 managed 記憶體語言中）。
+ * **重複使用連接。**  建立新的連線既昂貴又會增加延遲，因此盡可能重複使用連接。 如果您選擇建立新的連接，請務必先關閉舊的連接，再釋放它們 (即使是在 .NET 或 JAVA) 之類的 managed 記憶體語言中。
 
- * **將您的用戶端*連結*庫設定為使用至少15秒**的連線超時，讓系統時間即使在較高的 CPU 條件下也能連接。  小型連接逾時值不保證會在該時間範圍內建立連接。  如果發生錯誤（高用戶端 CPU、高伺服器 CPU 等等），則短連接逾時值會導致連線嘗試失敗。 這種行為通常會使不良的情況更糟。  較短的超時 aggravate 會強制系統重新開機嘗試重新連線的程式，而不會造成問題，而這可能會導致連線 *> 失敗 > 重試*迴圈。 我們通常會建議您在15秒或更高的時間保持連接逾時。 最好是讓連線嘗試在15或20秒後成功，而不是讓它快速地重試。 這種重試迴圈可能會導致您的停機時間，比您讓系統一開始就會更久。  
+ * **將您的用戶端*連結*庫設定為使用至少15秒**的連線超時，讓系統時間即使在較高的 CPU 條件下也能連接。  小型連接逾時值不保證會在該時間範圍內建立連接。  如果發生錯誤 (高用戶端 CPU、高伺服器 CPU 等等) ，則短連接逾時值會導致連線嘗試失敗。 這種行為通常會使不良的情況更糟。  較短的超時 aggravate 會強制系統重新開機嘗試重新連線的程式，而不會造成問題，而這可能會導致連線 *> 失敗 > 重試*迴圈。 我們通常會建議您在15秒或更高的時間保持連接逾時。 最好是讓連線嘗試在15或20秒後成功，而不是讓它快速地重試。 這種重試迴圈可能會導致您的停機時間，比您讓系統一開始就會更久。  
      > [!NOTE]
      > 此指導方針專屬於連線*嘗試*，而不會與您願意等候作業（例如 GET 或 SET）*完成的時間*相關。
  
@@ -49,13 +49,13 @@ ms.locfileid: "87008314"
  * **在您的金鑰上設定到期值。**  到期將會主動移除金鑰，而不是等到發生記憶體不足的壓力。  當收回因為記憶體不足的壓力而開始執行時，可能會造成伺服器上的額外負載。  如需詳細資訊，請參閱[過期](https://redis.io/commands/expire)和[EXPIREAT](https://redis.io/commands/expireat)命令的檔。
  
 ## <a name="client-library-specific-guidance"></a>用戶端程式庫的特定指引
- * [Stackexchange.redis. Redis （.NET）](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
+ * [Stackexchange.redis. Redis ( .NET) ](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [JAVA-應該使用哪一種用戶端？](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
- * [萵苣（JAVA）](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
- * [Jedis （JAVA）](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
+ * [萵苣 (JAVA) ](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
+ * [Jedis (JAVA) ](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)
  * [Node.js](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-node-js-md)
  * [PHP](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-php-md)
- * [Asp.Net 會話狀態提供者](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
+ * [ASP.NET 工作階段狀態提供者](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-session-state-provider-md)
 
 
 ## <a name="when-is-it-safe-to-retry"></a>何時可以安全地重試？
@@ -73,13 +73,13 @@ ms.locfileid: "87008314"
  * 用於測試的用戶端 VM 應該位於與您的 Redis 快取實例**相同的區域中**。
  * 我們建議您的用戶端**使用 DV2 VM 系列**，因為它們具有較佳的硬體，並會提供最佳的結果。
  * 請確定您所使用的用戶端 VM，至少具有與所測試快取相同的*計算和頻寬*。 
- * 如果您是在 Windows 上，請在用戶端電腦上**啟用 VRSS** 。  [參閱此處了解詳細資訊](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx)。  範例 powershell 腳本：
-     >PowerShell-ExecutionPolicy 不受限制的 Enable-Set-netadapterrss-Name （Get-netadapter）。檔案名 
+ * 如果您是在 Windows 上，請在用戶端電腦上**啟用 VRSS** 。  [參閱此處了解詳細資訊](https://technet.microsoft.com/library/dn383582(v=ws.11).aspx)。  範例 PowerShell 指令碼：
+     >PowerShell-ExecutionPolicy 不受限制的 Set-netadapterrss-Name ( Get-Get-netadapter) 。檔案名 
      
  * **請考慮使用 Premium 層 Redis 實例**。  這些快取大小會有更好的網路延遲和輸送量，因為它們都是在較佳的 CPU 和網路硬體上執行。
  
      > [!NOTE]
-     > 我們在[此發佈](cache-faq.md#azure-cache-for-redis-performance)觀察到的效能結果，以供您參考。   此外，請注意 SSL/TLS 會增加額外負荷，因此，如果您使用傳輸加密，則可能會有不同的延遲和/或輸送量。
+     > 我們在[此發佈](cache-planning-faq.md#azure-cache-for-redis-performance)觀察到的效能結果，以供您參考。   此外，請注意 SSL/TLS 會增加額外負荷，因此，如果您使用傳輸加密，則可能會有不同的延遲和/或輸送量。
  
 ### <a name="redis-benchmark-examples"></a>Redis-基準測試範例
 **測試前設定**：準備快取實例，並提供以下所列延遲和輸送量測試命令所需的資料。

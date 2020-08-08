@@ -1,6 +1,6 @@
 ---
 title: Azure 地圖服務 Web SDK 中的影像範本 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何在 Microsoft Azure Maps Web SDK 中，使用 HTML 標籤和各種層級的影像範本。
+description: 瞭解如何使用 Azure 地圖服務 Web SDK，將影像圖示和圖樣填滿的多邊形新增至地圖。 查看可用的影像和填滿模式範本。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ae3fa4684e4e71115d2d4ddce3c34ccb4f1cb703
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285674"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004650"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用映像範本
 
@@ -59,7 +59,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="具有內建圖示範本的符號圖層" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在 CodePen 上 Azure 地圖服務（），查看<a href='https://codepen.io/azuremaps/pen/VoQMPp/'>具有內建圖示範本的畫筆符號圖層</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+在 CodePen 上 Azure 地圖服務 () ，查看<a href='https://codepen.io/azuremaps/pen/VoQMPp/'>具有內建圖示範本的畫筆符號圖層</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="use-an-image-template-along-a-lines-path"></a>沿著行路徑使用影像範本
@@ -71,7 +71,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="具有內建圖示範本的線條圖層" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在 CodePen 上 Azure 地圖服務（），查看<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>具有內建圖示範本的畫筆線條圖層</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+在 CodePen 上 Azure 地圖服務 () ，查看<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>具有內建圖示範本的畫筆線條圖層</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
@@ -86,7 +86,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="使用內建圖示範本填滿多邊形" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在 CodePen 上 Azure 地圖服務（），查看<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>使用內建圖示範本的畫筆填滿多邊形</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+在 CodePen 上 Azure 地圖服務 () ，<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>以使用內建圖示範本</a>來查看 [畫筆填滿多邊形] <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]
@@ -101,7 +101,7 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="具有內建圖示範本的 HTML 標籤" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在 CodePen 上 Azure 地圖服務（），查看<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>具有內建圖示範本</a>的手寫筆 HTML 標籤 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+在 CodePen 上 Azure 地圖服務 () ，查看<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>具有內建圖示範本</a>的手寫筆 HTML 標籤 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 
@@ -119,10 +119,10 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 
 如果您的應用程式使用不同圖示的相同圖示，或如果您要建立可新增其他影像範本的模組，您可以從 Azure 地圖服務 web SDK 輕鬆地新增和取出這些圖示。 在命名空間上使用下列靜態函式 `atlas` 。
 
-| 名稱 | 傳回類型 | 說明 | 
+| 名稱 | 傳回類型 | 描述 | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | 將自訂 SVG 影像範本新增至 [阿特拉斯] 命名空間。 |
-|  `getImageTemplate(templateName: string, scale?: number)`| 字串 | 依名稱捕獲 SVG 範本。 |
+|  `getImageTemplate(templateName: string, scale?: number)`| string | 依名稱捕獲 SVG 範本。 |
 | `getAllImageTemplateNames()` | string[] |  依名稱捕獲 SVG 範本。 |
 
 SVG 影像範本支援下列預留位置值：
@@ -139,7 +139,7 @@ SVG 影像範本支援下列預留位置值：
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="將自訂圖示範本新增至塔命名空間" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱 CodePen 上的 Azure 地圖服務（），<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>以將自訂圖示範本新增至 [塔命名空間</a>] <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+在 CodePen 上 Azure 地圖服務 () ，請參閱將<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>自訂圖示範本新增至</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="list-of-image-templates"></a>影像範本清單
@@ -506,7 +506,7 @@ SVG 影像範本支援下列預留位置值：
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="圖示範本選項" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱 CodePen 上的 Azure 地圖服務（），以查看畫筆<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>圖示範本選項</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
+在 CodePen 上 Azure 地圖服務 () ，查看 [畫筆<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>圖示] 範本選項</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="next-steps"></a>後續步驟

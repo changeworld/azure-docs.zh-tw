@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: ba0430461df5ce1a2d615b819dbe5e8a36ae52b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 29492ee6b7bce50c4807a36d0c252e18e6aadf87
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184526"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008945"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>針對 Azure Cache for Redis 中的資料遺失問題進行疑難排解
 
@@ -119,6 +119,6 @@ Redis 是記憶體內部的資料存放區。 資料保存在託管 Redis 快取
 ## <a name="additional-information"></a>其他資訊
 
 - [針對 Azure Cache for Redis 伺服器端問題進行疑難排解](cache-troubleshoot-server.md)
-- [應該使用哪個 Azure Redis 快取供應項目和大小？](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+- [選擇正確的階層](cache-overview.md#choosing-the-right-tier)
 - [如何監視 Azure Redis 快取](cache-how-to-monitor.md)
-- [如何執行 Redis 命令？](cache-faq.md#how-can-i-run-redis-commands)
+- [如何執行 Redis 命令？](cache-development-faq.md#how-can-i-run-redis-commands)

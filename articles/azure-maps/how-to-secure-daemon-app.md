@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2b09163137bbfb6b8a7b0e2b8ddd6d7cccc52cc5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531366"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006633"
 ---
 # <a name="secure-a-daemon-application"></a>保護 daemon 應用程式
 
 下列指南適用于在受信任和受保護的環境中裝載的背景進程、計時器和作業。 範例包括 Azure Web 作業、Azure 函數應用程式、Windows 服務，以及任何其他可靠的背景服務。
 
 > [!Tip]
-> Microsoft 建議針對生產環境應用程式，實施 Azure Active Directory （Azure AD）和角色型存取控制（RBAC）。 如需概念的總覽，請參閱[Azure 地圖服務驗證](./azure-maps-authentication.md)。
+> Microsoft 建議您針對生產應用程式，將 Azure Active Directory (Azure AD) 和 Azure 角色型存取控制 (Azure RBAC) 。 如需概念的總覽，請參閱[Azure 地圖服務驗證](./azure-maps-authentication.md)。
 
 [!INCLUDE [authentication details](./includes/view-authentication-details.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "87531366"
 > [!Tip]
 > 如果應用程式裝載于 Azure 環境中，您應該執行受控識別，以降低管理密碼以驗證 Azure Key Vault 的成本和複雜度。 請參閱下列 Azure Key Vault[教學課程，以透過受控識別進行連接](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)。
 
-Daemon 應用程式會負責從安全的儲存區中抓取共用金鑰。 具有 Azure Key Vault 的執行需要透過 Azure AD 進行驗證，才能存取秘密。 取而代之的是，我們鼓勵直接 Azure AD RBAC 驗證，因為使用共用金鑰驗證的額外複雜性和操作需求而造成 Azure 地圖服務。
+Daemon 應用程式會負責從安全的儲存區中抓取共用金鑰。 具有 Azure Key Vault 的執行需要透過 Azure AD 進行驗證，才能存取秘密。 相反地，我們鼓勵直接 Azure AD 驗證，因為使用共用金鑰驗證的額外複雜性和操作需求而 Azure 地圖服務。
 
 > [!IMPORTANT]
 > 為了簡化金鑰重新產生，我們建議應用程式一次使用一個金鑰。 然後，應用程式可以重新產生未使用的金鑰，並將新重新產生的金鑰部署到安全的秘密存放區，例如 Azure Key Vault。
@@ -109,7 +109,7 @@ Daemon 應用程式會負責從安全的儲存區中抓取共用金鑰。 具有
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>將 daemon 應用程式的角色型存取權授與 Azure 地圖服務
 
-您可以將建立的受控識別或服務主體指派給一或多個 Azure 地圖服務存取控制角色定義，以授與*角色型存取控制*（RBAC）。 若要查看可用於 Azure 地圖服務的 Azure 角色定義，請移至 **[存取控制（IAM）**]。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。 這些 Azure 地圖服務角色是您可以授與存取權的角色。
+將建立的受控識別或服務主體指派給一或多個 Azure 地圖服務角色定義，以授與*azure 角色型存取控制 (AZURE RBAC) * 。 若要查看可用於 Azure 地圖服務的 Azure 角色定義，請移至**存取控制 (IAM) **。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。 這些 Azure 地圖服務角色是您可以授與存取權的角色。
 
 > [!div class="mx-imgBorder"]
 > ![檢視可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
@@ -117,7 +117,7 @@ Daemon 應用程式會負責從安全的儲存區中抓取共用金鑰。 具有
 1. 移至您的**Azure 地圖服務帳戶**。 選取 [存取控制 (IAM)] > [角色指派]。
 
     > [!div class="mx-imgBorder"]
-    > ![授與 RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
+    > ![使用 Azure RBAC 來授與存取權](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
 2. 在 [**角色指派**] 索引標籤上，**新增**角色指派。 
     

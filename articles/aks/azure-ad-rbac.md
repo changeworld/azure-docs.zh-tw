@@ -1,20 +1,20 @@
 ---
 title: 使用叢集的 Azure AD 和 RBAC
 titleSuffix: Azure Kubernetes Service
-description: 瞭解如何使用 Azure Kubernetes Service （AKS）中的角色型存取控制（RBAC），以 Azure Active Directory 群組成員資格來限制對叢集資源的存取
+description: '瞭解如何使用 Azure Active Directory 群組成員資格，在 Azure Kubernetes Service (AKS 中使用角色型存取控制 (RBAC) 來限制對叢集資源的存取) '
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: 646b1b5fb5079f0b959aaa2337c1dbab09ff4134
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2845a091c8a89f22e8892141dd2dad26d6049447
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057334"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006837"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>使用 Azure Kubernetes Service 中的角色型存取控制和 Azure Active Directory 身分識別，來控制叢集資源的存取權
 
-Azure Kubernetes Service (AKS) 可以設定為使用 Azure Active Directory (AD) 進行使用者驗證。 在此設定中，您會使用 Azure AD 驗證權杖來登入 AKS 叢集。 您也可以設定 Kubernetes 角色型存取控制（RBAC），以根據使用者的身分識別或群組成員資格來限制叢集資源的存取權。
+Azure Kubernetes Service (AKS) 可以設定為使用 Azure Active Directory (AD) 進行使用者驗證。 在此設定中，您會使用 Azure AD 驗證權杖來登入 AKS 叢集。 您也可以 (RBAC) 設定 Kubernetes 角色型存取控制，以根據使用者的身分識別或群組成員資格來限制叢集資源的存取權。
 
 本文說明如何使用 Azure AD 群組成員資格，在 AKS 叢集中使用 Kubernetes RBAC 來控制命名空間和叢集資源的存取權。 範例群組和使用者會在 Azure AD 中建立，然後在 AKS 叢集中建立角色和 RoleBindings，以授與建立和查看資源的適當許可權。
 
@@ -83,7 +83,7 @@ az role assignment create \
 
 使用[az AD user create][az-ad-user-create]命令，在 Azure AD 中建立第一個使用者帳戶。
 
-下列範例會建立使用者，其顯示名稱為*AKS Dev* ，使用者主體名稱（UPN）為 `aksdev@contoso.com` 。 更新 UPN 以包含 Azure AD 租使用者的已驗證網域（將*contoso.com*取代為您自己的網域），並提供您自己的安全 `--password` 認證：
+下列範例會建立一個使用者，其顯示名稱為*AKS Dev* ， (UPN) 的使用者主體名稱 `aksdev@contoso.com` 。 更新 UPN 以包含 Azure AD 租使用者的已驗證網域 (將*contoso.com*取代為您自己的網域) ，然後提供您自己的安全 `--password` 認證：
 
 ```azurecli-interactive
 AKSDEV_ID=$(az ad user create \
@@ -99,7 +99,7 @@ AKSDEV_ID=$(az ad user create \
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
-建立第二個使用者帳戶。 下列範例會建立使用者，其顯示名稱為*AKS SRE* ，而使用者主體名稱（UPN）為 `akssre@contoso.com` 。 同樣地，更新 UPN 以包含 Azure AD 租使用者的已驗證網域（將*contoso.com*取代為您自己的網域），並提供您自己的安全 `--password` 認證：
+建立第二個使用者帳戶。 下列範例會建立具有顯示名稱*AKS SRE*的使用者，以及 (UPN) 的使用者主體名稱 `akssre@contoso.com` 。 同樣地，更新 UPN 以包含 Azure AD 租使用者的已驗證網域 (將*contoso.com*取代為您自己的網域) ，然後提供您自己的安全 `--password` 認證：
 
 ```azurecli-interactive
 # Create a user for the SRE role
@@ -388,9 +388,9 @@ az ad group delete --group appdev
 az ad group delete --group opssre
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
-如需如何保護 Kubernetes 叢集的詳細資訊，請參閱[AKS 的存取和身分識別選項）][rbac-authorization]。
+如需如何保護 Kubernetes 叢集的詳細資訊，請參閱[AKS) 的存取和身分識別選項][rbac-authorization]。
 
 如需身分識別和資源控制的最佳做法，請參閱[AKS 中驗證和授權的最佳作法][operator-best-practices-identity]。
 
@@ -410,5 +410,5 @@ az ad group delete --group opssre
 [az-ad-user-create]: /cli/azure/ad/user#az-ad-user-create
 [az-ad-group-member-add]: /cli/azure/ad/group/member#az-ad-group-member-add
 [az-ad-group-show]: /cli/azure/ad/group#az-ad-group-show
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md

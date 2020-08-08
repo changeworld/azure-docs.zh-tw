@@ -1,24 +1,22 @@
 ---
 title: Windows 虛擬桌面診斷記錄分析-Azure
 description: 如何搭配使用 log analytics 與 Windows 虛擬桌面診斷功能。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85cd94c9ba0cf8909e2013a49d43a473a313db8b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292603"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005111"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>針對診斷功能使用 Log Analytics
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
 
 Windows 虛擬桌面使用[Azure 監視器](../azure-monitor/overview.md)來監視和警示，就像許多其他 Azure 服務一樣。 這可讓系統管理員透過單一介面來識別問題。 服務會為使用者和系統管理動作建立活動記錄。 每個活動記錄都落在下列類別之下：
 
@@ -38,7 +36,7 @@ Windows 虛擬桌面使用[Azure 監視器](../azure-monitor/overview.md)來監�
 
 因為診斷角色服務本身是 Windows 虛擬桌面的一部分，所以在診斷結果中不會顯示未觸達 Windows 虛擬桌面的連線。 當使用者遇到網路連線問題時，會發生 Windows 虛擬桌面連接問題。
 
-Azure 監視器可讓您分析 Windows 虛擬桌面的資料，並查看虛擬機器（VM）效能計數器，全部都在相同的工具中。 本文將告訴您如何為您的 Windows 虛擬桌面環境啟用診斷功能。
+Azure 監視器可讓您分析 Windows 虛擬桌面的資料，並查看虛擬機器 (VM) 效能計數器，全都在相同的工具中。 本文將告訴您如何為您的 Windows 虛擬桌面環境啟用診斷功能。
 
 >[!NOTE]
 >若要瞭解如何在 Azure 中監視您的 Vm，請參閱[使用 Azure 監視器監視 azure 虛擬機器](../azure-monitor/insights/monitor-vm-azure.md)。 此外，請務必[參閱效能計數器閾值](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds)，以進一步瞭解您在工作階段主機上的使用者體驗。
@@ -67,7 +65,7 @@ Azure 監視器可讓您分析 Windows 虛擬桌面的資料，並查看虛擬�
 
 1. 登入 Azure 入口網站並移至**Windows 虛擬桌面**。
 
-2. 流覽至您想要為其捕獲記錄和事件的物件（例如主機集區、應用程式群組或工作區）。
+2. 流覽至您想要用來捕捉記錄檔和事件的物件 (，例如主機集區、應用程式群組或工作區) 。
 
 3. 選取畫面左側功能表中的 [**診斷設定**]。
 
@@ -109,7 +107,7 @@ Azure 監視器可讓您分析 Windows 虛擬桌面的資料，並查看虛擬�
 
 2. 搜尋並選取 [監視]。
 
-3. 選取 [記錄]。
+3. 選取 [記錄]  。
 
 4. 依照 [記錄] 頁面中的指示來設定查詢的範圍。
 
@@ -134,7 +132,7 @@ Log Analytics 只會報告下列連接活動的中繼狀態：
 1. 移至您的 Log Analytics 工作區，然後選取 [**記錄**]。 範例查詢 UI 會自動顯示。
 1. 將篩選變更為 [**分類**]。
 1. 選取 [ **Windows 虛擬桌面**] 以查看可用的查詢。
-1. 選取 [**執行**] 以執行選取的查詢。 
+1. 選取 [**執行**] 以執行選取的查詢。
 
 在[Azure 監視器 Log Analytics 中的已儲存查詢](../azure-monitor/log-query/saved-queries.md)中深入瞭解範例查詢介面。
 

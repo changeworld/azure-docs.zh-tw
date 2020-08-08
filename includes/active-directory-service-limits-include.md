@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 840357f51bbeeb877aba48fd8d04baad204cec1e
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: ba0791108878dada5088428ce40d1af672d1892a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375073"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010969"
 ---
 以下是 Azure Active Directory (Azure AD) 服務的使用條件約束和其他服務限制。
 
@@ -30,4 +30,4 @@ ms.locfileid: "87375073"
 | 存取面板 |無論指派的授權有多少，每位使用者在存取面板中可以看到的應用程式數目沒有限制。  |
 | 報表 | 在任何報告中，最多可以檢視或下載 1000 個資料列。 任何其他資料會遭到截斷。 |
 | 管理單位 | Azure AD 資源可以是有不超過 30 個管理單位的成員。 |
-| 系統管理員角色與權限 | <ul><li>群組無法新增為[擁有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)。</li><li>群組無法指派給[角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)。</li><li>使用者讀取其他使用者目錄資訊的能力，無法在 Azure AD 全組織的交換器外部受到限制，以停用所有目錄資訊的所有非系統管理員使用者存取權 (不建議)。 如需預設權限的詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)。</li><li>最多可能需要 15 分鐘的時間或者先登出/登入，系統管理員角色成員資格新增和撤銷才會生效。</li></ul> |
+| 系統管理員角色與權限 | <ul><li>群組無法新增為[擁有者](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership)。</li><li>使用者讀取其他使用者目錄資訊的能力，無法在 Azure AD 全組織的交換器外部受到限制，以停用所有目錄資訊的所有非系統管理員使用者存取權 (不建議)。 如需預設權限的詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users)。</li><li>最多可能需要 15 分鐘的時間或者先登出/登入，系統管理員角色成員資格新增和撤銷才會生效。</li></ul> |

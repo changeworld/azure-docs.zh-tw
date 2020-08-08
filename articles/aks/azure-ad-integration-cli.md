@@ -1,21 +1,21 @@
 ---
-title: 整合 Azure Active Directory 與 Azure Kubernetes Service （舊版）
-description: 瞭解如何使用 Azure CLI 建立和 Azure Active Directory 啟用的 Azure Kubernetes Service （AKS）叢集（舊版）
+title: '整合 Azure Active Directory 與 Azure Kubernetes Service (舊版) '
+description: '瞭解如何使用 Azure CLI 來建立和 Azure Active Directory 啟用 Azure Kubernetes Service (AKS) 叢集 (舊版) '
 services: container-service
 author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: f99b304d2e238d72b47b09261ede19b44827264a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfcbf214c374f449a04139ce7bf4fbb6853ed524
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057363"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006854"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI 將 Azure Active Directory 整合 Azure Kubernetes Service （舊版）
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI (舊版) 整合 Azure Active Directory 與 Azure Kubernetes Service
 
-Azure Kubernetes Service (AKS) 可以設定為使用 Azure Active Directory (AD) 進行使用者驗證。 在此設定中，您可以使用 Azure AD 驗證權杖來登入 AKS 叢集。 叢集操作員也可以根據使用者的身分識別或目錄群組成員資格，設定 Kubernetes 角色型存取控制（RBAC）。
+Azure Kubernetes Service (AKS) 可以設定為使用 Azure Active Directory (AD) 進行使用者驗證。 在此設定中，您可以使用 Azure AD 驗證權杖來登入 AKS 叢集。 叢集操作員也可以根據使用者的身分識別或目錄群組成員資格，設定 Kubernetes 以角色為基礎的存取控制 (RBAC) 。
 
 本文說明如何建立必要的 Azure AD 元件，然後部署已啟用 Azure AD 的叢集，並在 AKS 叢集中建立基本的 RBAC 角色。
 
@@ -102,7 +102,7 @@ az ad app permission admin-consent --id  $serverApplicationId
 
 ## <a name="create-azure-ad-client-component"></a>建立 Azure AD 用戶端元件
 
-當使用者使用 Kubernetes CLI （）登入 AKS 叢集時，會使用第二個 Azure AD 應用程式 `kubectl` 。 此用戶端應用程式會接受來自使用者的驗證要求，並驗證其認證和許可權。 使用[az AD app create][az-ad-app-create]命令，建立用戶端元件的 Azure AD 應用程式：
+當使用者使用 Kubernetes CLI () 登入 AKS 叢集時，會使用第二個 Azure AD 應用程式 `kubectl` 。 此用戶端應用程式會接受來自使用者的驗證要求，並驗證其認證和許可權。 使用[az AD app create][az-ad-app-create]命令，建立用戶端元件的 Azure AD 應用程式：
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \
@@ -167,7 +167,7 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 必須先建立角色繫結或叢集角色繫結，Azure Active Directory 帳戶才能搭配 AKS 叢集使用。 「角色」** 會定義要授與的權限，而「繫結」** 會將角色套用至需要的使用者。 這些指派可以套用至指定的命名空間或在整個叢集中套用。 如需詳細資訊，請參閱[使用 RBAC 授權][rbac-authorization]。
 
-使用[az ad 登入-user show][az-ad-signed-in-user-show]命令，取得目前登入之使用者的使用者主體名稱（UPN）。 在下一個步驟中，此使用者帳戶已啟用 Azure AD 整合。
+使用[az ad 登入-user show][az-ad-signed-in-user-show]命令，取得目前登入之使用者的使用者主體名稱 (UPN) 。 在下一個步驟中，此使用者帳戶已啟用 Azure AD 整合。
 
 ```azurecli-interactive
 az ad signed-in-user show --query userPrincipalName -o tsv
@@ -246,13 +246,13 @@ error: You must be logged in to the server (Unauthorized)
 * 使用者不是 200 個以上的群組成員。
 * 在伺服器的應用程式註冊中定義的密碼符合使用設定的值`--aad-server-app-secret`
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需包含本文所示命令的完整腳本，請參閱[AKS 範例存放庫中的 Azure AD 整合腳本][complete-script]。
 
 若要使用 Azure AD 的使用者和群組來控制叢集資源的存取權，請參閱[使用角色型存取控制來控制對叢集資源的存取，並在 AKS 中 Azure AD][azure-ad-rbac]身分識別。
 
-如需如何保護 Kubernetes 叢集的詳細資訊，請參閱[AKS 的存取和身分識別選項）][rbac-authorization]。
+如需如何保護 Kubernetes 叢集的詳細資訊，請參閱[AKS) 的存取和身分識別選項][rbac-authorization]。
 
 如需身分識別和資源控制的最佳做法，請參閱[AKS 中驗證和授權的最佳作法][operator-best-practices-identity]。
 
@@ -280,7 +280,7 @@ error: You must be logged in to the server (Unauthorized)
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [managed-aad]: managed-aad.md

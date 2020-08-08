@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 08/07/2020
 ms.author: b-juche
-ms.openlocfilehash: a0d672f782cb9f476fa81d28ee369072caf8509b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0c790d1d8bec972135796533542a5efad6094d7c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147201"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006667"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files 的資源限制
 
@@ -33,6 +33,7 @@ ms.locfileid: "86147201"
 |----------------|---------------------|--------------------------------------|
 |  每個 Azure 區域的 NetApp 帳戶數目   |  10    |  是   |
 |  每個 NetApp 帳戶的容量集區數目   |    25     |   是   |
+|  每一 NetApp 帳戶的磁片區數目   |    500     |   是   |
 |  每個容量集區的磁片區數目     |    500   |    是     |
 |  每個磁片區的快照集數目       |    255     |    否        |
 |  委派給 Azure NetApp Files 的子網數， (Microsoft. NetApp/磁片區) 的每個 Azure 虛擬網路    |   1   |    否    |

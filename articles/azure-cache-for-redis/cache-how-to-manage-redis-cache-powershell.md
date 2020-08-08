@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 74308ae79b899a55db4682474e3dcd9dab26db98
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856926"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004863"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>使用 Azure PowerShell 管理 Azure Cache for Redis
 > [!div class="op_single_selector"]
@@ -655,7 +655,7 @@ ms.locfileid: "85856926"
 您可以使用 `Import-AzRedisCache` Cmdlet 將資料匯入 Azure Cache for Redis 執行個體中。
 
 > [!IMPORTANT]
-> 匯入/匯出僅供 [進階層](cache-premium-tier-intro.md) 快取使用。 如需匯入/匯出的詳細資訊，請參閱 [在 Azure Cache for Redis 中匯入與匯出資料](cache-how-to-import-export-data.md)。
+> 匯入/匯出僅[適用于進](cache-overview.md#service-tiers)階層快取。 如需匯入/匯出的詳細資訊，請參閱 [在 Azure Cache for Redis 中匯入與匯出資料](cache-how-to-import-export-data.md)。
 > 
 > 
 
@@ -719,7 +719,7 @@ ms.locfileid: "85856926"
 您可以使用 `Export-AzRedisCache` Cmdlet 從 Azure Cache for Redis 執行個體匯出資料。
 
 > [!IMPORTANT]
-> 匯入/匯出僅供 [進階層](cache-premium-tier-intro.md) 快取使用。 如需匯入/匯出的詳細資訊，請參閱 [在 Azure Cache for Redis 中匯入與匯出資料](cache-how-to-import-export-data.md)。
+> 匯入/匯出僅[適用于進](cache-overview.md#service-tiers)階層快取。 如需匯入/匯出的詳細資訊，請參閱 [在 Azure Cache for Redis 中匯入與匯出資料](cache-how-to-import-export-data.md)。
 > 
 > 
 
@@ -784,7 +784,7 @@ ms.locfileid: "85856926"
 您可以使用 `Reset-AzRedisCache` Cmdlet 將 Azure Cache for Redis 執行個體重新啟動。
 
 > [!IMPORTANT]
-> 重新啟動僅適用於 [進階層](cache-premium-tier-intro.md) 快取。 如需重新啟動快取的詳細資訊，請參閱 [快取管理 - 重新啟動](cache-administration.md#reboot)。
+> 重新開機僅[適用于進](cache-overview.md#service-tiers)階層快取。 如需重新啟動快取的詳細資訊，請參閱 [快取管理 - 重新啟動](cache-administration.md#reboot)。
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
 title: 將圖格圖層新增至地圖 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK 來覆迭地圖上的圖格圖層。 圖格圖層可讓您在地圖上呈現影像。
+description: 瞭解如何在地圖上疊加影像。 請參閱使用 Azure 地圖服務 Web SDK 將包含天氣雷達圖的磚圖層新增至地圖的範例。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: bb277a3413a21011b537b47bdc8fc1979c8e81c5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c96916c029c9c49ad7d4c493fed8859354508ebe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279554"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010169"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>將圖格圖層新增至地圖
 
@@ -24,7 +24,7 @@ ms.locfileid: "87279554"
 
 * X、Y、縮放標記法-X 是資料行，Y 是磚方格中磚的資料列位置，而 Zoom 標記法是以縮放層級為基礎的值。
 * Quadkey 標記法-將 x、y 和 zoom 資訊結合成單一字串值。 這個字串值會變成單一磚的唯一識別碼。
-* 周框方塊-以周框方塊座標格式指定影像： `{west},{south},{east},{north}` 。 [Web 對應服務（WMS）](https://www.opengeospatial.org/standards/wms)通常會使用此格式。
+* 周框方塊-以周框方塊座標格式指定影像： `{west},{south},{east},{north}` 。 [Web 對應服務 (WMS) ](https://www.opengeospatial.org/standards/wms)通常會使用此格式。
 
 > [!TIP]
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) 是視覺化地圖上大型資料集的好方法。 圖格圖層不僅可以從影像產生，向量資料也可以呈現為磚圖層。 藉由將向量資料轉譯為圖格圖層，地圖控制項只需要載入檔案大小較小的磚，而不是它們所代表的向量資料。 這項技術通常用來在地圖上轉譯數百萬個數據列。

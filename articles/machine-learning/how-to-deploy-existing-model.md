@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: fc3c03fa3368d87857ed91c720a92aacecf6eb89
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04442ad2c6f12960a6c27cc96b52eae20b046851
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843159"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008197"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署現有的模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "87843159"
 ## <a name="prerequisites"></a>必要條件
 
 * [Azure Machine Learning 工作區](how-to-manage-workspace.md)
-  + Python 範例假設 `ws` 變數已設定為您的 Azure Machine Learning 工作區。
+  + Python 範例假設 `ws` 變數已設定為您的 Azure Machine Learning 工作區。 如需如何連線到工作區的詳細資訊，請參閱[適用于 Python 的 AZURE MACHINE LEARNING SDK 檔](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#workspace)。
   
   + CLI 範例會使用和的預留位置 `myworkspace` `myresourcegroup` ，您應該將取代為您的工作區名稱和包含它的資源群組。
 

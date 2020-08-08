@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: f07e18498138d29497fa6ba85c5930a5a5f7ec4e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: bf9ddc78caa1e19d35ad7e96af76dc0303a8a67c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184764"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004734"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Cache for Redis 的虛擬網路支援
 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 VNet 是雲端中的私人網路。 當 Azure Cache for Redis 執行個體是以 VNet 設定時，它將無法公開定址，而只能從 VNet 中的虛擬機器和應用程式存取。 本文說明如何設定進階 Azure Cache for Redis 執行個體的虛擬網路支援。
@@ -20,8 +20,6 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 > Azure Cache for Redis 支援傳統與 Resource Manager VNet。
 > 
 > 
-
-如需其他進階快取功能的相關資訊，請參閱 [Azure Cache for Redis 進階層簡介](cache-premium-tier-intro.md)。
 
 ## <a name="why-vnet"></a>為何使用 VNet？
 [Azure 虛擬網路 (VNet) ](https://azure.microsoft.com/services/virtual-network/)部署為您的 azure Cache for Redis、子網、存取控制原則及其他功能提供增強的安全性和隔離，以進一步限制存取。
@@ -101,11 +99,11 @@ Azure Cache for Redis 裝載在 VNet 時，會使用下表中的連接埠。
 
 有九個輸出埠需求。 這些範圍內的輸出要求可能會輸出到其他需要的服務，以供快取運作或內部 Redis 子網進行節點間通訊。 針對異地複寫，主要與複本快取的子網之間的通訊有額外的輸出需求。
 
-| 連接埠 | 方向 | 傳輸通訊協定 | 用途 | 本機 IP | 遠端 IP |
+| 連接埠 | 方向 | 傳輸通訊協定 | 目的 | 本機 IP | 遠端 IP |
 | --- | --- | --- | --- | --- | --- |
 | 80、443 |輸出 |TCP |Azure 儲存體/PKI 上 Redis 的相依項目 (網際網路) | (Redis 子網路) |* |
 | 443 | 輸出 | TCP | Azure Key Vault 的 Redis 相依性 | (Redis 子網路) | AzureKeyVault <sup>1</sup> |
-| 53 |連出 |TCP/UDP |DNS 上 Redis 的相依項目 (網際網路/VNet) | (Redis 子網路) | 168.63.129.16 和 169.254.169.254 <sup>2</sup>以及子網<sup>3</sup>的任何自訂 DNS 伺服器 |
+| 53 |輸出 |TCP/UDP |DNS 上 Redis 的相依項目 (網際網路/VNet) | (Redis 子網路) | 168.63.129.16 和 169.254.169.254 <sup>2</sup>以及子網<sup>3</sup>的任何自訂 DNS 伺服器 |
 | 8443 |輸出 |TCP |Redis 內部通訊 | (Redis 子網路) | (Redis 子網路) |
 | 10221-10231 |輸出 |TCP |Redis 內部通訊 | (Redis 子網路) | (Redis 子網路) |
 | 20226 |輸出 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路) |
@@ -127,15 +125,15 @@ Azure Cache for Redis 裝載在 VNet 時，會使用下表中的連接埠。
 
 有八項輸入連接埠範圍需求。 在這些範圍的輸入要求如下：從相同 VNET 中裝載的其他服務輸入，或是 Redis 子網路內部通訊。
 
-| 連接埠 | 方向 | 傳輸通訊協定 | 用途 | 本機 IP | 遠端 IP |
+| 連接埠 | 方向 | 傳輸通訊協定 | 目的 | 本機 IP | 遠端 IP |
 | --- | --- | --- | --- | --- | --- |
 | 6379, 6380 |輸入 |TCP |對 Redis 進行的用戶端通訊，Azure 負載平衡 | (Redis 子網路) |  (Redis 子網) ，虛擬網路，Azure Load Balancer <sup>1</sup> |
 | 8443 |輸入 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路) |
-| 8500 |連入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
+| 8500 |輸入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
 | 10221-10231 |輸入 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路)，Azure Load Balancer |
 | 13000-13999 |輸入 |TCP |對 Redis 叢集的用戶端通訊，Azure 負載平衡 | (Redis 子網路) |虛擬網路，Azure Load Balancer |
 | 15000-15999 |輸入 |TCP |Redis 叢集、Azure 負載平衡和異地複寫的用戶端通訊 | (Redis 子網路) |虛擬網路、Azure Load Balancer (異地複本對等子網)  |
-| 16001 |連入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
+| 16001 |輸入 |TCP/UDP |Azure 負載平衡 | (Redis 子網路) |Azure Load Balancer |
 | 20226 |輸入 |TCP |Redis 內部通訊 | (Redis 子網路) |(Redis 子網路) |
 
 <sup>1</sup>您可以使用服務標籤 ' AzureLoadBalancer ' (Resource Manager)  (或「AZURE_LOADBALANCER」，針對傳統) 撰寫 NSG 規則。
@@ -237,9 +235,9 @@ Azure 會在每個子網路中保留一些 IP 位址，但這些位址無法使�
 如需 ExpressRoute 的詳細資訊，請參閱 [ExpressRoute 技術概觀](../expressroute/expressroute-introduction.md)。
 
 ## <a name="next-steps"></a>後續步驟
-了解如何使用更多進階快取功能。
+深入瞭解 Azure Cache for Redis 功能。
 
-* [Azure Cache for Redis 進階層簡介](cache-premium-tier-intro.md)
+* [Azure Cache for Redis Premium 服務層級](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

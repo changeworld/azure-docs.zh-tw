@@ -1,24 +1,22 @@
 ---
-title: Windows 虛擬桌面（傳統）診斷記錄分析-Azure
-description: 如何搭配使用 log analytics 與 Windows 虛擬桌面（傳統）診斷功能。
-services: virtual-desktop
+title: Windows 虛擬桌面 (傳統) 診斷記錄分析-Azure
+description: 如何搭配使用 log analytics 與 Windows 虛擬桌面 (傳統) 診斷功能。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 500758839b426143650707d3d77d78e8a064533e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a7a7a6681be78c2777130ca540319eb829d8f9d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285062"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002357"
 ---
-# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>針對 Windows 虛擬桌面（傳統）中的診斷功能使用 Log Analytics
+# <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>針對 Windows 虛擬桌面 (傳統中的診斷功能使用 Log Analytics) 
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../diagnostics-log-analytics.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../diagnostics-log-analytics.md)。
 
 Windows 虛擬桌面提供診斷功能，可讓系統管理員透過單一介面識別問題。 每當指派 Windows 虛擬桌面角色的人員使用服務時，此功能就會記錄診斷資訊。 每個記錄檔都包含有關活動涉及哪些 Windows 虛擬桌面角色、在會話期間出現的任何錯誤訊息、租使用者資訊，以及使用者資訊。 診斷功能會建立使用者和系統管理動作的活動記錄。 每個活動記錄都落在三個主要類別之下：
 

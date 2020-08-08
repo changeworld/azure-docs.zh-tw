@@ -1,23 +1,21 @@
 ---
 title: 建立 FSLogix 設定檔容器 Azure 檔案儲存體 Active Directory Domain Services-Azure
 description: 本文說明如何使用 Azure 檔案儲存體和 Azure Active Directory Domain Services 建立 FSLogix 設定檔容器。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91f5ef4a5065079f0fe385b92af2a1c4bfa5ee84
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362436"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007704"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>建立具有 Azure 檔案儲存體和 Azure AD DS 的設定檔容器
 
-本文將說明如何使用 Azure 檔案儲存體和 Azure Active Directory Domain Services （AD DS）來建立 FSLogix 設定檔容器。
+本文將說明如何使用 Azure 檔案儲存體和 Azure Active Directory Domain Services (AD DS) 來建立 FSLogix 設定檔容器。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -41,7 +39,7 @@ ms.locfileid: "85362436"
 
 ## <a name="set-up-an-azure-storage-account"></a>設定 Azure 儲存體帳戶
 
-現在可以啟用透過伺服器訊息區（SMB）進行 Azure AD DS 驗證的時機。
+現在可以透過伺服器訊息區 (SMB) 啟用 Azure AD DS 驗證。
 
 若要啟用驗證：
 
@@ -89,7 +87,7 @@ ms.locfileid: "85362436"
 
 4. 移至 [**虛擬機器**] 索引標籤，並找出將會成為您主機集區一部分的任何 VM。
 
-5. 在**虛擬機器（adVM）** 下選取虛擬機器（VM）的名稱，然後選取 **[連線]**
+5. 在 [**虛擬機器 () AdVM** ] 底下，選取虛擬機器 (VM) 的名稱，然後選取 **[連線]**
 
     這會下載可讓您使用自己的認證登入 VM 的 RDP 檔案。
 
@@ -104,7 +102,7 @@ ms.locfileid: "85362436"
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - `<desired-drive-letter>`將取代為您選擇的磁碟機號（例如 `y:` ）。
+    - 將取代為 `<desired-drive-letter>` 您選擇的磁碟機號 (例如， `y:`) 。
     - 將的所有實例取代 `<storage-account-name>` 為您稍早指定的儲存體帳戶名稱。
     - 將取代 `<share-name>` 為您稍早建立的共用名稱。
     - `<storage-account-key>`將取代為 Azure 中的儲存體帳戶金鑰。
@@ -142,20 +140,20 @@ ms.locfileid: "85362436"
 
 3. 安裝程式啟動後，請選取 **[我同意授權條款及條件]。** 如果適用的話，請提供新的金鑰。
 
-4. 選取 [安裝]。
+4. 選取 [安裝]  。
 
 5. 開啟**磁片磁碟機 C**，然後移至**Program Files**  >  **FSLogix**  >  **Apps** ，以確定 FSLogix 代理程式已正確安裝。
 
      >[!NOTE]
      > 如果主機集區中有多個 Vm，您必須針對每個 VM 重複步驟1到5。
 
-6. 以系統管理員身分執行**登錄編輯程式**（RegEdit）。
+6. 以系統管理員身分 (RegEdit) 執行**登錄編輯程式**。
 
 7. 流覽至 [ **Computer**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**]，以滑鼠右鍵按一下**FSLogix**，選取 [**新增**]，然後選取 [**金鑰**]。
 
 8. 建立名為**Profiles**的新金鑰。
 
-9.  以滑鼠右鍵按一下 [**設定檔**]，選取 [**新增**]，然後選取 **[DWORD （32-位）值]。** 將值命名為**Enabled** ，並將**資料**值設定為**1**。
+9.  以滑鼠右鍵按一下 [**設定檔**]，選取 [**新增**]，然後選取 [ **DWORD (32-bit) 值]。** 將值命名為**Enabled** ，並將**資料**值設定為**1**。
 
     > [!div class="mx-imgBorder"]
     > ![設定檔索引鍵的螢幕擷取畫面。 REG_DWORD 檔案會反白顯示，且其資料值會設為1。](media/dword-value.png)

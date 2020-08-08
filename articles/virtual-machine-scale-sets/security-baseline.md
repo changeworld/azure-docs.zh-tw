@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6db83d17a9e6f3df6d691d6de616ead5407e3f5f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 89da86d753f746774737c248ee318c7a377dd7a0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133039"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007092"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>適用于虛擬機器擴展集的 Azure 安全性基準
 
@@ -28,7 +28,7 @@ ms.locfileid: "87133039"
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保護虛擬網路中的 Azure 資源
 
-**指引**：當您建立 Azure 虛擬機器（VM）時，您必須建立虛擬網路，或使用現有的虛擬網路，並使用子網設定 VM。 請確定所有已部署的子網都已套用網路安全性群組，且該群組適用于應用程式信任的埠和來源的特定網路存取控制。
+**指導**方針：當您建立 (VM) 的 Azure 虛擬機器時，您必須建立虛擬網路，或使用現有的虛擬網路，並設定具有子網的 VM。 請確定所有已部署的子網都已套用網路安全性群組，且該群組適用于應用程式信任的埠和來源的特定網路存取控制。
 
 或者，如果您有集中式防火牆的特定使用案例，也可以使用 Azure 防火牆來滿足這些需求。
 
@@ -46,7 +46,7 @@ ms.locfileid: "87133039"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：監視和記錄虛擬網路、子網和網路介面的設定和流量
 
-**指引**：使用 Azure 資訊安全中心來識別並遵循網路保護建議，以協助保護 azure 中的 Azure 虛擬機器（VM）資源。 針對不尋常的活動，啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶，以進行 Vm 的流量審核。
+**指引**：使用 Azure 資訊安全中心來識別並遵循網路保護建議，以協助保護 Azure 虛擬機器 (VM) azure 中的資源。 針對不尋常的活動，啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶，以進行 Vm 的流量審核。
 
 * [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -58,9 +58,9 @@ ms.locfileid: "87133039"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 Web 應用程式
 
-**指導**方針：如果使用您的虛擬機器擴展集（VMSS）來裝載 web 應用程式，請使用 VMSS 子網上的網路安全性群組（NSG）來限制允許的網路流量、埠和通訊協定。 設定 Nsg 時，請遵循最低許可權的網路方法，只允許您的應用程式所需的流量。
+**指導**方針：如果使用您的虛擬機器擴展集 (VMSS) 來裝載 web 應用程式，請使用 VMSS 子網上的網路安全性群組 (NSG) ，以限制允許的網路流量、埠和通訊協定進行通訊。 設定 Nsg 時，請遵循最低許可權的網路方法，只允許您的應用程式所需的流量。
 
-您也可以在重要 Web 應用程式前方部署 Azure Web 應用程式防火牆（WAF），以進行連入流量的額外檢查。 啟用診斷設定以進行 WAF，並將記錄內嵌至儲存體帳戶、事件中樞或 Log Analytics 工作區。
+您也可以在重要 Web 應用程式之前，部署 Azure Web 應用程式防火牆 (WAF) ，以額外檢查傳入的流量。 啟用診斷設定以進行 WAF，並將記錄內嵌至儲存體帳戶、事件中樞或 Log Analytics 工作區。
 
 * [Azure 虛擬機器擴展集的網路](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)
 
@@ -72,7 +72,7 @@ ms.locfileid: "87133039"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指引**：在虛擬網路上啟用分散式阻斷服務（DDoS）標準保護，以防範 DDoS 攻擊。 使用 Azure 資訊安全中心整合式威脅情報，您可以監視與已知惡意 IP 位址的通訊。 在每個虛擬網路區段上設定 Azure 防火牆，並啟用威脅情報並將其設定為「警示和拒絕」，以取得惡意的網路流量。
+**指引**：在虛擬網路上啟用分散式阻斷服務 (DDoS) Standard 保護，以防範 DDoS 攻擊。 使用 Azure 資訊安全中心整合式威脅情報，您可以監視與已知惡意 IP 位址的通訊。 在每個虛擬網路區段上設定 Azure 防火牆，並啟用威脅情報並將其設定為「警示和拒絕」，以取得惡意的網路流量。
 
 您可以使用 Azure 資訊安全中心的即時網路存取，在有限期間內限制暴露于核准的 IP 位址 Windows 虛擬機器。 此外，您也可以使用 Azure 資訊安全中心的彈性網路強化，根據實際的流量和威脅情報來建議限制埠和來源 Ip 的 NSG 設定。
 
@@ -102,7 +102,7 @@ ms.locfileid: "87133039"
 
 **責任**：客戶
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統（IDS/IPS）
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統 (IDS/IPS) 
 
 **指導**方針：結合網路監看員所提供的封包捕捉和開放原始碼的識別碼工具，您可以針對各式各樣的威脅執行網路入侵偵測。 此外，您可以適當地在虛擬網路區段上部署 Azure 防火牆，並啟用威脅情報，並將惡意網路流量設定為「警示和拒絕」。
 
@@ -118,7 +118,7 @@ ms.locfileid: "87133039"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 Web 應用程式的流量
 
-**指導**方針：如果使用虛擬機器擴展集（VMSS）來裝載 web 應用程式，您可以針對已針對受信任憑證啟用 HTTPS/SSL 的 web 應用程式部署 Azure 應用程式閘道。 透過 Azure 應用程式閘道，您可以將接聽程式指派給埠、建立規則，以及將資源新增至後端集區（例如 VMSS 等），藉此將應用程式 web 流量導向至特定資源。
+**指導**方針：如果使用虛擬機器擴展集 (VMSS) 來裝載 web 應用程式，您可以針對已針對受信任憑證啟用 HTTPS/SSL 的 web 應用程式部署 Azure 應用程式閘道。 透過 Azure 應用程式閘道，您可以將接聽程式指派給埠、建立規則，以及將資源新增至後端集區（例如 VMSS 等），藉此將應用程式 web 流量導向至特定資源。
 
 * [如何部署應用程式閘道](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
 
@@ -160,7 +160,7 @@ ms.locfileid: "87133039"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指導**方針：您可以使用網路安全性群組（NSG）的標籤，以及針對 Windows 虛擬機器設定的網路安全性和流量流程的其他相關資源。 針對個別的 NSG 規則，請使用 [描述] 欄位來指定允許進出網路流量的任何規則的商務需求和/或持續時間。
+**指導**方針：您可以使用網路安全性群組的標籤 (NSG) 以及與 Windows 虛擬機器設定的網路安全性和流量流程相關的其他資源。 針對個別的 NSG 規則，請使用 [描述] 欄位來指定允許進出網路流量的任何規則的商務需求和/或持續時間。
 
 * [如何建立和使用標籤](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -176,7 +176,7 @@ ms.locfileid: "87133039"
 
 **指引**：使用 Azure 活動記錄來監視與您的 Azure 虛擬機器擴展集相關的網路資源設定變更。 在 Azure 監視器中建立警示，以在重大網路設定或資源的變更發生時觸發。
 
-使用 Azure 原則來驗證（及/或補救）與虛擬機器擴展集相關的網路資源設定。
+使用 Azure 原則來驗證 (和/或補救與虛擬機器擴展集相關之網路資源的) 設定。
 
 * [如何檢視及擷取 Azure 活動記錄事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
@@ -208,7 +208,7 @@ ms.locfileid: "87133039"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指引**：活動記錄可用來審核虛擬機器擴展集資源上執行的作業和動作。 活動記錄包含資源的所有寫入作業（PUT、POST、DELETE），但讀取作業（GET）除外。 當您進行疑難排解時，可以使用活動記錄來尋找錯誤，或是監視組織中的使用者修改資源的方式。
+**指引**：活動記錄可用來審核虛擬機器擴展集資源上執行的作業和動作。 活動記錄包含資源的所有寫入作業 (PUT、POST、DELETE) ，但讀取作業 (取得) 除外。 當您進行疑難排解時，可以使用活動記錄來尋找錯誤，或是監視組織中的使用者修改資源的方式。
 
 您可以啟用 Azure 活動記錄檔或虛擬機器資源所產生的和麵板記錄資料，以 Azure Sentinel 或中央安全性記錄管理的協力廠商 SIEM。
 
@@ -232,9 +232,9 @@ ms.locfileid: "87133039"
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
-**指引**：活動記錄可用來審核虛擬機器擴展集資源上執行的作業和動作。 活動記錄包含資源的所有寫入作業（PUT、POST、DELETE），但讀取作業（GET）除外。 當您進行疑難排解時，可以使用活動記錄來尋找錯誤，或是監視組織中的使用者修改資源的方式。
+**指引**：活動記錄可用來審核虛擬機器擴展集資源上執行的作業和動作。 活動記錄包含資源的所有寫入作業 (PUT、POST、DELETE) ，但讀取作業 (取得) 除外。 當您進行疑難排解時，可以使用活動記錄來尋找錯誤，或是監視組織中的使用者修改資源的方式。
 
-藉由在您的虛擬機器（VM）上部署診斷擴充功能，來啟用來賓 OS 診斷資料的收集。 您可以使用診斷擴充功能，從 Azure 虛擬機器收集診斷資料，例如應用程式記錄或效能計數器。
+藉由在您的虛擬機器 (VM) 上部署診斷擴充功能，來啟用來賓 OS 診斷資料的收集。 您可以使用診斷擴充功能，從 Azure 虛擬機器收集診斷資料，例如應用程式記錄或效能計數器。
 
 若要深入瞭解 Azure 虛擬機器擴展集所支援的應用程式和服務，您可以同時啟用適用於 VM 的 Azure 監視器和 Application insights。 使用 Application Insights，您可以監視應用程式並捕捉遙測資料，例如 HTTP 要求、例外狀況等等，讓您可以將 Vm 與應用程式之間的問題相互關聯。
 
@@ -244,7 +244,7 @@ ms.locfileid: "87133039"
 
 * [如何在 Azure 中監視虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)
 
-* [Application Insights 總覽](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
+* [Application Insights 概觀](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
 
 **Azure 資訊安全中心監視**：是
 
@@ -334,7 +334,7 @@ ms.locfileid: "87133039"
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列稽核記錄
 
-**指導**方針： Azure 資訊安全中心提供 Azure 虛擬機器（VM）的安全性事件記錄檔監視。 資訊安全中心會在所有支援的 Azure Vm 上，以及在啟用自動布建或您可以手動安裝代理程式時所建立的任何新虛擬機器上，提供 Microsoft Monitoring Agent。 代理程式支援處理序建立事件 4688，及事件 4688 中的 CommandLine 欄位。 EventLog 會記錄在 VM 上建立的新處理序，並由資訊安全中心的偵測服務監視。
+**指導**方針： Azure 資訊安全中心提供 Azure 虛擬機器 (VM) 的安全性事件記錄檔監視。 資訊安全中心會在所有支援的 Azure Vm 上，以及在啟用自動布建或您可以手動安裝代理程式時所建立的任何新虛擬機器上，提供 Microsoft Monitoring Agent。 代理程式支援處理序建立事件 4688，及事件 4688 中的 CommandLine 欄位。 EventLog 會記錄在 VM 上建立的新處理序，並由資訊安全中心的偵測服務監視。
 
 針對 Linux 虛擬機器，您可以手動設定每個節點的主控台記錄，並使用 syslog 來儲存資料。 此外，使用 Azure 監視器的 Log Analytics 工作區來審查記錄，並對 Azure 虛擬機器的 syslog 資料執行查詢。
 
@@ -374,7 +374,7 @@ ms.locfileid: "87133039"
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
-**指導**方針：使用可存取虛擬機器的專用系統管理帳戶，建立有關的標準操作程式。 使用 Azure 資訊安全中心的身分識別與存取管理來監視系統管理帳戶的數目。 任何用來存取 Azure 虛擬機器資源的系統管理員帳戶，也可以由 Azure Privileged Identity Management （PIM）管理。 Azure Privileged Identity Management 提供數個選項，例如時間提升許可權、在假設角色之前需要多重要素驗證，以及委派選項，僅供特定的時間範圍使用，而且需要核准者。
+**指導**方針：使用可存取虛擬機器的專用系統管理帳戶，建立有關的標準操作程式。 使用 Azure 資訊安全中心的身分識別與存取管理來監視系統管理帳戶的數目。 用來存取 Azure 虛擬機器資源的任何系統管理員帳戶，也可以由 Azure Privileged Identity Management (PIM) 來管理。 Azure Privileged Identity Management 提供數個選項，例如時間提升許可權、在假設角色之前需要多重要素驗證，以及委派選項，僅供特定的時間範圍使用，而且需要核准者。
 
 * [瞭解 Azure 資訊安全中心身分識別和存取](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
@@ -384,7 +384,7 @@ ms.locfileid: "87133039"
 
 **責任**：客戶
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入（SSO）
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入 (SSO) 
 
 **指導**方針：盡可能使用 SSO 搭配 Azure Active Directory，而不是設定個別服務的獨立認證。 使用 Azure 資訊安全中心身分識別和存取管理建議。
 
@@ -422,11 +422,11 @@ ms.locfileid: "87133039"
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：從系統管理客戶紀錄及警示可疑活動
 
-**指導**方針：當環境中發生可疑或不安全的活動時，使用 AZURE AD PRIVILEGED IDENTITY MANAGEMENT （PIM）來產生記錄檔和警示。 使用 Azure AD 風險偵測來檢視風險性使用者行為的相關警示和報告。 客戶可以選擇性地將 Azure 資訊安全中心風險偵測警示加入 Azure 監視器，並使用動作群組來設定自訂警示/通知。
+**指導**方針：當環境中發生可疑或不安全的活動時，請使用 AZURE AD PRIVILEGED IDENTITY MANAGEMENT (PIM) 來產生記錄檔和警示。 使用 Azure AD 風險偵測來檢視風險性使用者行為的相關警示和報告。 客戶可以選擇性地將 Azure 資訊安全中心風險偵測警示加入 Azure 監視器，並使用動作群組來設定自訂警示/通知。
 
 * [如何部署 Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
-* [瞭解 Azure 資訊安全中心風險偵測（可疑活動）](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [瞭解 Azure 資訊安全中心 (可疑活動的風險偵測) ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
 
 * [如何將 Azure 活動記錄整合到 Azure 監視器中](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -448,7 +448,7 @@ ms.locfileid: "87133039"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 Azure Active Directory （Azure AD）做為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。 您可以使用受控識別來向任何支援 Azure AD 驗證的服務進行驗證，包括 Key Vault，而您的程式碼中沒有任何認證。 在虛擬機器上執行的程式碼可以使用其受控識別，要求支援 Azure AD authentication 之服務的存取權杖。
+**指導**方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 會對待用資料和傳輸中資料使用增強式加密，以保護資料安全。 Azure AD 也會對使用者認證進行 Salt 處理、雜湊處理並安全儲存資料。 您可以使用受控識別來向任何支援 Azure AD 驗證的服務進行驗證，包括 Key Vault，而您的程式碼中沒有任何認證。 在虛擬機器上執行的程式碼可以使用其受控識別，要求支援 Azure AD authentication 之服務的存取權杖。
 
 * [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance)
 
@@ -500,7 +500,7 @@ ms.locfileid: "87133039"
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支援案例期間為 Microsoft 提供相關客戶資料的存取權
 
-**指引**：在 Microsoft 需要存取客戶資料（例如在支援要求期間）的支援案例中，請使用 Azure 虛擬機器的客戶加密箱來審查及核准或拒絕客戶資料存取要求。
+**指引**：在支援案例中，Microsoft 需要存取客戶資料 (例如在支援要求) 期間，請使用 Azure 虛擬機器的客戶加密箱來檢查及核准或拒絕客戶資料存取要求。
 
 * [瞭解客戶加密箱](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -524,7 +524,7 @@ ms.locfileid: "87133039"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感性資訊的系統
 
-**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 資源應該以虛擬網路/子網分隔、在網路安全性群組（NSG）或 Azure 防火牆內進行適當的標記和保護。 針對虛擬機器儲存或處理敏感性資料，請在不使用時，執行原則和程式將其關閉。
+**指引**：針對開發、測試和生產，實作不同的訂用帳戶及/或管理群組。 資源應該以虛擬網路/子網分隔，並適當地加以標記，並在網路安全性群組 (NSG) 或 Azure 防火牆內受到保護。 針對虛擬機器儲存或處理敏感性資料，請在不使用時，執行原則和程式 (s) 將它們關閉。
 
 * [如何建立額外的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -558,9 +558,9 @@ ms.locfileid: "87133039"
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指導**方針：在執行 Windows 的虛擬機器（VM）之間傳輸的資料會以數種方式進行加密，視連線的本質而定（例如，連線至 RDP 或 SSH 會話中的 VM 時）。
+**指導**方針：在執行 Windows 的虛擬機器 (VM) 之間傳輸的資料會以數種方式進行加密，視連線的本質而定（例如，連線至 RDP 或 SSH 會話中的 VM 時）。
 
-Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務與客戶之間的資料。
+Microsoft 會使用傳輸層安全性 (TLS) 通訊協定來保護雲端服務與客戶之間的資料。
 
 * [VM 中的傳輸中加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#in-transit-encryption-in-vms)
 
@@ -576,13 +576,13 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 **責任**：客戶
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指導**方針：使用角色型存取控制（RBAC），您可以將小組內的職責區隔，並僅授與執行其工作所需的虛擬機器（VM）使用者的存取權數量。 您不需為每個人授與 VM 的權限，而是只允許執行特定的動作。 您可以使用 Azure CLI 或 Azure PowerShell，在 Azure 入口網站中設定 VM 的存取控制。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) ，您可以將小組內的職責區隔，並僅授與虛擬)  (機上使用者執行其作業所需的存取權數量。 您不需為每個人授與 VM 的權限，而是只允許執行特定的動作。 您可以使用 Azure CLI 或 Azure PowerShell，在 Azure 入口網站中設定 VM 的存取控制。
 
-* [Azure 資源的角色型存取控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* [Azure 內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) (機器翻譯)
+* [Azure 內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)
 
 **Azure 資訊安全中心監視**：目前無法使用
 
@@ -598,7 +598,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指導**方針：虛擬機器（VM）上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密（ADE）在待用時加密。 Azure 磁碟加密利用 Linux 的 DM Crypt 功能，在來賓 VM 內使用客戶管理的金鑰來加密受控磁片。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
+**指導**方針：虛擬機器 (VM) 上的虛擬磁片會使用伺服器端加密或 Azure 磁片加密 (ADE) 進行待用加密。 Azure 磁碟加密利用 Linux 的 DM Crypt 功能，在來賓 VM 內使用客戶管理的金鑰來加密受控磁片。 使用客戶管理的金鑰進行伺服器端加密，可讓您藉由加密儲存庫服務中的資料，對您的 VM 使用任何作業系統類型和映像，而改善 ADE 的效能。
 
 * [虛擬機器擴展集的 Azure 磁碟加密](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-overview)
 
@@ -644,7 +644,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：為協力廠商軟體標題部署自動修補程式管理解決方案
 
-**指引**： Azure 虛擬機器擴展集（VMSS）可以使用自動 OS 映射升級。 在 VMSS 中，您可以使用適用于基礎虛擬機器的 Azure Desired State Configuration （DSC）延伸模組。 DSC 是用來在 Vm 上線時進行設定，因此它們正在執行您所需的軟體。
+**指引**： Azure 虛擬機器擴展集 (VMSS) 可以使用自動 OS 映射升級。 針對 VMSS 中的基礎虛擬機器，您可以使用 Azure Desired State Configuration (DSC) 延伸模組。 DSC 是用來在 Vm 上線時進行設定，因此它們正在執行您所需的軟體。
 
 * [搭配 Azure DSC 擴充功能使用虛擬機器擴展集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-dsc)
 
@@ -662,7 +662,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指導**方針：使用 Azure 資訊安全中心所提供的預設風險評等（安全分數）。
+**指導**方針：使用預設風險分級 (Azure 資訊安全中心所提供的安全分數) 。
 
 * [瞭解 Azure 資訊安全中心安全分數](https://docs.microsoft.com/azure/security-center/security-center-secure-score)
 
@@ -676,7 +676,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
-**指導**方針：使用 Azure Resource Graph 來查詢和探索訂用帳戶內的所有資源（包括虛擬機器）。 確保租用戶中有適當的 (讀取) 權限，且能列舉所有 Azure 訂用帳戶以及訂用帳戶中的資源。
+**指引**：使用 Azure Resource Graph 來查詢和探索所有資源， (包括您的訂用帳戶內) 的虛擬機器。 確保租用戶中有適當的 (讀取) 權限，且能列舉所有 Azure 訂用帳戶以及訂用帳戶中的資源。
 
 * [如何使用 Azure Graph 建立查詢](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
 
@@ -818,7 +818,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以實體或邏輯方式隔離高風險的應用程式
 
-**指導**方針：在您的 azure 環境中部署的高風險應用程式可能會使用虛擬網路、子網、訂用帳戶、管理群組等來進行隔離，並使用 Azure 防火牆、Web 應用程式防火牆（WAF）或網路安全性群組（NSG）進行充分的保護。
+**指導**方針：在您的 azure 環境中部署的高風險應用程式可能會使用虛擬網路、子網、訂用帳戶、管理群組等進行隔離，並使用 Azure 防火牆、Web 應用程式防火牆 (WAF) 或網路安全性群組 (NSG) 來進行充分的保護。
 
 * [Azure 中的虛擬網路和虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/network-overview)
 
@@ -844,7 +844,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指導**方針：使用 Azure 原則或 Azure 資訊安全中心來維護所有 Azure 資源的安全性設定。 此外，Azure Resource Manager 能夠在 JavaScript 物件標記法（JSON）中匯出範本，這應該進行檢查以確保設定符合/超過公司的安全性需求。
+**指導**方針：使用 Azure 原則或 Azure 資訊安全中心來維護所有 Azure 資源的安全性設定。 此外，Azure Resource Manager 能夠在 JavaScript 物件標記法 (JSON) 中匯出範本，這應該進行檢查以確保設定符合/超過公司的安全性需求。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -882,11 +882,11 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：維護安全的作業系統設定
 
-**指導**方針：有數個選項可維護適用于部署的 Azure 虛擬機器（VM）的安全設定：
+**指引**：有數個選項可維護 Azure 虛擬機器 (VM) 的安全設定以進行部署：
 
 1. Azure Resource Manager 範本：這些是用來從 Azure 入口網站部署 VM 的 JSON 型檔案，而自訂範本則需要維護。 Microsoft 會在基底範本上執行維護。
 
-2. 自訂虛擬硬碟（VHD）：在某些情況下，可能需要使用自訂 VHD 檔案，例如處理無法透過其他方式管理的複雜環境。
+2. 自訂虛擬硬碟 (VHD) ：在某些情況下，可能需要使用自訂 VHD 檔案，例如處理無法透過其他方式管理的複雜環境。
 
 3. Azure 自動化狀態設定：部署基本 OS 之後，這可以用來更精細地控制設定，並透過自動化架構強制執行。
 
@@ -904,7 +904,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指引**：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂的 Azure 原則、Azure Resource Manager 範本、Desired State Configuration 腳本等。 若要存取您在 Azure DevOps 管理的資源，例如程式碼、組建和工作追蹤，您必須擁有這些特定資源的許可權。 大部分許可權會透過內建安全性群組授與，如許可權和存取中所述。 如果與 Azure DevOps 整合，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory （Azure AD）中所定義群組的許可權（如果與 TFS 整合）或 Active Directory。
+**指引**：使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂的 Azure 原則、Azure Resource Manager 範本、Desired State Configuration 腳本等。 若要存取您在 Azure DevOps 管理的資源，例如程式碼、組建和工作追蹤，您必須擁有這些特定資源的許可權。 大部分許可權會透過內建安全性群組授與，如許可權和存取中所述。 您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory 中定義的群組的許可權 (Azure AD) 如果與 Azure DevOps 整合，或 Active Directory 與 TFS 整合。
 
 * [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -916,11 +916,11 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂作業系統映像
 
-**指導**方針：如果使用自訂映射（例如虛擬硬碟），請使用 Azure 角色型存取控制，以確保只有授權的使用者可以存取映射。
+**指導**方針：如果使用自訂映射 (例如虛擬硬碟) ，請使用 azure 角色型存取控制 (azure RBAC) ，以確保只有授權的使用者可以存取映射。
 
-* [瞭解 Azure 中的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [了解 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [如何在 Azure 中設定 RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [如何設定 Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -938,7 +938,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的設定管理工具
 
-**指導**方針： Azure 自動化狀態設定是適用于任何雲端或內部部署資料中心內 DESIRED STATE CONFIGURATION （DSC）節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
+**指導**方針： Azure 自動化狀態設定是在任何雲端或內部部署資料中心 DESIRED STATE CONFIGURATION (DSC) 節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
 
 * [將機器上架交由 Azure Automation State Configuration 管理](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
 
@@ -960,7 +960,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統實作自動化的設定監視
 
-**指導**方針： Azure 自動化狀態設定是適用于任何雲端或內部部署資料中心內 DESIRED STATE CONFIGURATION （DSC）節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
+**指導**方針： Azure 自動化狀態設定是在任何雲端或內部部署資料中心 DESIRED STATE CONFIGURATION (DSC) 節點的設定管理服務。 它可讓您從中央、安全的位置快速且輕鬆地延展性到數千部電腦。 您可以輕鬆地上架機器、指派它們宣告式組態和檢視顯示每個電腦的符合性報告 (達您指定的所需狀態)。
 
 * [將機器上架交由 Azure Automation State Configuration 管理](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding)
 
@@ -1060,7 +1060,7 @@ Microsoft 會使用傳輸層安全性（TLS）通訊協定來保護雲端服務�
 
 **指導**方針：使用 POWERSHELL 或 REST Api 建立 Azure 虛擬機器的快照集，或連接至這些實例的受控磁片。 備份 Azure Key Vault 中任何客戶管理的金鑰。
 
-啟用 Azure 備份和目標 Azure 虛擬機器（VM），以及所需的頻率和保留期限。 這包括完整的系統狀態備份。 如果您使用 Azure 磁片加密，Azure VM 備份會自動處理客戶管理金鑰的備份。
+啟用 Azure 備份和目標 Azure 虛擬機器 (VM) ，以及所需的頻率和保留週期。 這包括完整的系統狀態備份。 如果您使用 Azure 磁片加密，Azure VM 備份會自動處理客戶管理金鑰的備份。
 
 * [在使用加密的 Azure Vm 上進行備份](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)
 

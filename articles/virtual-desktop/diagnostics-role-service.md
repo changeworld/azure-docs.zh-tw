@@ -1,24 +1,22 @@
 ---
 title: Windows 虛擬桌面診斷問題 - Azure
 description: 如何使用 Windows 虛擬桌面診斷功能來診斷問題。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1e3d8eb9cb40d46ae0624be9d37fd199accd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a985ce4f93b04e4065b5189b2a406b54729720c3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288757"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005090"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>識別及診斷 Windows 虛擬桌面問題
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)。
 
 Windows 虛擬桌面提供診斷功能，可讓系統管理員透過單一介面識別問題。 若要深入瞭解 Windows 虛擬桌面的診斷功能，請參閱[針對診斷功能使用 Log Analytics](diagnostics-log-analytics.md)。
 
@@ -40,11 +38,11 @@ Windows 虛擬桌面提供診斷功能，可讓系統管理員透過單一介面
 
 |錯誤訊息|建議的解決辦法|
 |---|---|
-|無法建立註冊金鑰 |無法建立註冊權杖。 請嘗試使用較短的到期時間（介於1小時到1個月之間）重新建立。 |
+|無法建立註冊金鑰 |無法建立註冊權杖。 請嘗試使用較短的到期時間， (介於1小時到1個月) 之間再次建立。 |
 |無法刪除註冊金鑰|無法刪除註冊權杖。 請嘗試再次將它刪除。 如果仍然無法解決問題，請使用 PowerShell 來檢查權杖是否仍然存在。 如果存在，請使用 PowerShell 將它刪除。|
 |無法變更工作階段主機清空模式 |無法變更 VM 上的清空模式。 檢查 VM 狀態。 如果 VM 無法使用，則無法變更清空模式。|
 |無法中斷使用者會話的連線 |無法中斷使用者與 VM 的連線。 檢查 VM 狀態。 如果 VM 無法使用，使用者會話將無法中斷連線。 如果 VM 可以使用，請檢查使用者會話狀態以查看是否已中斷連線。 |
-|無法登出工作階段主機內的所有使用者 |無法將使用者從 VM 登出。 檢查 VM 狀態。 如果無法使用，使用者就無法登出。檢查使用者會話狀態，查看是否已登出。您可以使用 PowerShell 強制登出。 |
+|無法登出工作階段主機內的所有使用者 (s)  |無法將使用者從 VM 登出。 檢查 VM 狀態。 如果無法使用，使用者就無法登出。檢查使用者會話狀態，查看是否已登出。您可以使用 PowerShell 強制登出。 |
 |無法從應用程式群組取消指派使用者|無法解除發佈使用者的應用程式群組。 查看 Azure AD 上是否有使用者可用。 檢查使用者是否屬於應用程式群組發佈的使用者群組。 |
 |抓取可用的位置時發生錯誤 |檢查 [建立主機集區嚮導] 中使用的 VM 位置。 如果該位置無法使用 [映射]，請在該位置新增影像，或選擇不同的 VM 位置。 |
 

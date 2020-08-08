@@ -3,21 +3,19 @@ title: 針對一般部署錯誤進行疑難排解
 description: 說明如何解決使用 Azure Resource Manager 將資源部署至 Azure 時的常見錯誤。
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 06/25/2020
-ms.openlocfilehash: dad80cf4230c3c6b4d7d97b21d155f6e755c2ab9
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/07/2020
+ms.openlocfilehash: 1ab493b0ba2199d8e6778252cf50d963fbd2f387
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446607"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008163"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>使用 Azure Resource Manager 針對常見的 Azure 部署錯誤進行疑難排解
 
 本文說明一些常見的 Azure 部署錯誤，並且提供解決錯誤的資訊。 如果您找不到部署錯誤的錯誤碼，請參閱[尋找錯誤碼](#find-error-code)。
 
 如果您要尋找錯誤碼相關資訊，但本文並未提供該資訊，請讓我們知道。 您可在此頁面底部留下意見反應。 意見反應會與 GitHub 問題一併追蹤。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="error-codes"></a>錯誤碼
 
@@ -27,7 +25,7 @@ ms.locfileid: "87446607"
 | AccountPropertyCannotBeSet | 檢查可用儲存體帳戶屬性。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | 叢集或區域沒有可用的資源或無法支援所要求的 VM 大小。 稍後重試要求，或要求不同的 VM 大小。 | [Linux 的佈建和配置問題](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)、[Windows 的佈建和配置問題](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md)以及[配置失敗疑難排解](../../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | 等候並行作業完成。 | |
-| AuthorizationFailed | 您的帳戶或服務主體沒有完成部署的足夠存取權。 請檢查您的帳戶所屬的角色以及它針對部署範圍的存取權。<br><br>當所需的資源提供者未註冊時，您可能會收到這個錯誤。 | [Azure 角色型存取控制（Azure RBAC）](../../role-based-access-control/role-assignments-portal.md)<br><br>[解析註冊](error-register-resource-provider.md) |
+| AuthorizationFailed | 您的帳戶或服務主體沒有完成部署的足夠存取權。 請檢查您的帳戶所屬的角色以及它針對部署範圍的存取權。<br><br>當所需的資源提供者未註冊時，您可能會收到這個錯誤。 | [Azure 角色型存取控制 (Azure RBAC) ](../../role-based-access-control/role-assignments-portal.md)<br><br>[解析註冊](error-register-resource-provider.md) |
 | BadRequest | 您傳送的部署值不符合資源管理員的預期。 請查看內部狀態訊息，以取得疑難排解的說明。 | [範本參考](/azure/templates/)和[支援位置](resource-location.md) |
 | 衝突 | 您要求的作業在資源的目前狀態下不允許。 例如，只有在建立 VM 時或解除配置 VM 之後，才可調整磁碟大小。 | |
 | DeploymentActiveAndUneditable | 等候此資源群組的並行部署完成。 | |
@@ -76,6 +74,7 @@ ms.locfileid: "87446607"
 | StorageAccountAlreadyTaken | 提供儲存體帳戶的唯一名稱。 | [解析儲存體帳戶名稱](error-storage-account-name.md) |
 | StorageAccountNotFound | 檢查您嘗試使用的儲存體帳戶、資源群組和名稱。 | |
 | SubnetsNotInSameVnet | 虛擬機器只能有一個虛擬網路。 在部署數個 NIC 時，請確定它們屬於相同的虛擬網路。 | [多個 NIC](../../virtual-machines/windows/multiple-nics.md) |
+| SubscriptionNotFound | 無法存取指定的部署訂用帳戶。 可能是訂用帳戶識別碼錯誤、部署範本的使用者沒有足夠的許可權可部署至訂用帳戶，或訂用帳戶識別碼的格式錯誤。 使用嵌套部署[跨範圍進行部署](cross-scope-deployment.md)時，請提供訂用帳戶的 GUID。 | |
 | SubscriptionNotRegistered | 部署網路資源時，會自動在訂用帳戶中註冊 Microsoft 網路資源提供者。 有時候，自動註冊不會及時完成。 若要避免此間歇性錯誤，請在部署前註冊 Microsoft 網路資源提供者。 | [解析註冊](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | 移除不必要的相依性。 | [解析循環相依性](error-invalid-template.md#circular-dependency) |
 | TooManyTargetResourceGroups | 減少單一部署的資源群組數目。 | [跨領域部署](cross-scope-deployment.md) |
@@ -244,7 +243,7 @@ az deployment operation group list \
 }
 ```
 
-或者，假設您所收到的部署錯誤與不正確設定的相依性相關。 將其細分為簡化範本以測試您的範本。 首先，建立可部署單一資源 (例如 SQL Server) 的範本。 當您確定已正確定義該資源時，請新增相依于它的資源（例如 SQL Database）。 當您正確定義這兩個資源時，加入其他相依的資源 (例如稽核原則)。 在每個測試部署之間，刪除資源群組以確保您充分測試相依性。
+或者，假設您所收到的部署錯誤與不正確設定的相依性相關。 將其細分為簡化範本以測試您的範本。 首先，建立可部署單一資源 (例如 SQL Server) 的範本。 當您確定已正確定義該資源時，請新增相依于它的資源 (例如 SQL Database) 。 當您正確定義這兩個資源時，加入其他相依的資源 (例如稽核原則)。 在每個測試部署之間，刪除資源群組以確保您充分測試相依性。
 
 ## <a name="next-steps"></a>後續步驟
 

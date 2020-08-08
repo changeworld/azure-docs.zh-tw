@@ -1,24 +1,22 @@
 ---
-title: 建立 Windows 虛擬桌面（傳統）主機集區 PowerShell-Azure
-description: 如何使用 PowerShell Cmdlet 在 Windows 虛擬桌面（傳統）中建立主機集區。
-services: virtual-desktop
+title: 建立 Windows 虛擬桌面 (傳統) 主機集區 PowerShell-Azure
+description: 如何使用 PowerShell Cmdlet，在 Windows 虛擬桌面 (傳統) 中建立主機集區。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7bc1e229711ef24b07641c5767f5f60c17a3b97c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c035a7fbafe9b3a42fbd16e3f8377014010ddd49
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291289"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003551"
 ---
-# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>使用 PowerShell 在 Windows 虛擬桌面（傳統）中建立主機集區
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>使用 PowerShell 在 Windows 虛擬桌面 (傳統) 中建立主機集區
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../create-host-pools-powershell.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../create-host-pools-powershell.md)。
 
 主機集區是 Windows 虛擬桌面租用戶環境中一或多個相同虛擬機器的集合。 每個主機集區都可以包含一個應用程式群組，而使用者可如同在實體桌面上與其互動。
 

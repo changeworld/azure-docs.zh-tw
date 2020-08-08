@@ -1,24 +1,22 @@
 ---
-title: Windows 虛擬桌面（傳統）主機集區負載平衡-Azure
+title: Windows 虛擬桌面 (傳統) 主機集區負載平衡-Azure
 description: Windows 虛擬桌面環境的主機集區負載平衡方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3854471b2e74bd7c3315ae622a36588af0270d8c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 940863b983b00dbb3c4af590d75868665372f818
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284994"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002311"
 ---
-# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Windows 虛擬桌面中的主機集區負載平衡方法（傳統）
+# <a name="host-pool-load-balancing-methods-in-windows-virtual-desktop-classic"></a>Windows 虛擬桌面 (傳統) 中的主機集區負載平衡方法
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../host-pool-load-balancing.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../host-pool-load-balancing.md)。
 
 Windows 虛擬桌面支援兩種負載平衡方法。 每個方法都會決定當工作階段主機連線到主機集區中的資源時，將裝載該使用者的會話。
 

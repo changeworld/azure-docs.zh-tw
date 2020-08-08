@@ -1,6 +1,6 @@
 ---
 title: 將熱度圖層新增至地圖 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK，將熱度圖圖層新增至地圖。
+description: 瞭解如何建立熱度圖。 請參閱如何使用 Azure 地圖服務 Web SDK 將熱度圖層新增至地圖。 瞭解如何自訂熱度圖層。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 2558f30c0d2d1e9d652efec1693e7f056426255b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a6235ee6bbb476c69114e6895403f05e69fd6e19
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282903"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010237"
 ---
 # <a name="add-a-heat-map-layer"></a>新增熱度圖層
 
@@ -67,7 +67,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 前一個範例已藉由設定半徑和透明度選項來自訂熱度圖。 熱度圖層提供數個自訂選項，包括：
 
-* `radius`：定義要在其中呈現每個資料點的圖元半徑。 您可以將 radius 設定為固定數位或運算式。 藉由使用運算式，您可以根據縮放層級來調整半徑，並代表地圖上的一致空間區域（例如，5英里的半徑）。
+* `radius`：定義要在其中呈現每個資料點的圖元半徑。 您可以將 radius 設定為固定數位或運算式。 藉由使用運算式，您可以根據縮放層級來調整半徑，並代表地圖上的一致空間區域 (例如，5英里的半徑) 。
 * `color`：指定如何以色彩標示熱度圖。 色彩漸層是熱度圖的常見功能。 您可以使用運算式來達到效果 `interpolate` 。 您也可以使用 `step` 運算式來上色熱度圖，以視覺化方式將密度分解成類似等高線或雷達圖樣式地圖的範圍。 這些色彩調色盤會定義最小密度值到最大密度值的顏色。 
 
   您可以指定熱度圖的色彩值做為值的運算式 `heatmap-density` 。 沒有資料的區域色彩定義于「插補」運算式的索引0，或「階」運算式的預設色彩。 您可以使用這個值來定義背景色彩。 這個值通常會設定為透明或半透明的黑色。 
@@ -103,7 +103,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="一致的可縮放熱度圖" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱 CodePen 上的 Azure 地圖服務（）的「手寫筆<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一致可縮放熱度圖</a>」 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
+請參閱 CodePen 上的 Azure 地圖服務 () 的「手寫筆<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一致可縮放熱度圖</a>」 <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]

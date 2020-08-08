@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 3d9360a4b5c5f0ef080b3de2a9d425bcdf2b2e70
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: efe175e4086d5273471c1b0451e4cfb28449c236
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081894"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008928"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>針對 Azure Cache for Redis 逾時進行疑難排解
 
@@ -46,7 +46,7 @@ Stackexchange.redis： Redis 會使用名 `synctimeout` 為的設定來進行同
 | qu |其中6個進行中的作業是在未傳送的佇列中，尚未寫入到輸出網路 |
 | qs |67進行中的作業已傳送到伺服器，但尚未提供回應。 回應可能是 `Not yet sent by the server` 或 `sent by the server but not yet processed by the client.` |
 | qc |有0個進行中的作業已看到 [回復]，但尚未標示為 [完成]，因為他們正在等候完成迴圈 |
-| wr |有作用中的寫入器（表示不會忽略6個未傳送的要求） bytes/activewriters |
+| wr |有作用中的寫入器 (表示將不會忽略6個未傳送的要求) bytes/activewriters |
 | in |沒有作用中的讀取器，在 NIC 位元組/activereader 上可供讀取的位元組為零 |
 
 您可以使用下列步驟來調查可能的根本原因。
@@ -108,7 +108,7 @@ Stackexchange.redis： Redis 會使用名 `synctimeout` 為的設定來進行同
       retryTimeoutInMilliseconds="3000" />
     ```
 
-1. 透過[監視](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` 和 `Used Memory`，檢查「Azure Redis 快取」伺服器上的記憶體使用量。 如果已備有收回原則，Redis 就會在 `Used_Memory` 達到快取大小時開始收回金鑰。 理想情況下，`Used Memory RSS` 應該只稍微高於 `Used memory`。 較大的差異表示記憶體分散（內部或外部）。 當 `Used Memory RSS` 小於 `Used Memory` 時，則表示作業系統已交換部分快取記憶體。 如果發生此交換情況，您應該就會遇到顯著的延遲。 因為 Redis 無法控制其配置對應到記憶體分頁的方式，所以高 `Used Memory RSS` 通常是記憶體使用量突然增加的結果。 當 Redis 伺服器釋放記憶體時，配置器會取得記憶體，但不一定會將記憶體提供給系統。 `Used Memory` 值和作業系統報告的記憶體耗用量可能會有差異。 記憶體可能已由 Redis 使用和釋放，但不會傳回給系統。 若要協助降低記憶體問題，您可以執行下列步驟：
+1. 透過[監視](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` 和 `Used Memory`，檢查「Azure Redis 快取」伺服器上的記憶體使用量。 如果已備有收回原則，Redis 就會在 `Used_Memory` 達到快取大小時開始收回金鑰。 理想情況下，`Used Memory RSS` 應該只稍微高於 `Used memory`。 較大的差異表示 (內部或外部) 的記憶體片段。 當 `Used Memory RSS` 小於 `Used Memory` 時，則表示作業系統已交換部分快取記憶體。 如果發生此交換情況，您應該就會遇到顯著的延遲。 因為 Redis 無法控制其配置對應到記憶體分頁的方式，所以高 `Used Memory RSS` 通常是記憶體使用量突然增加的結果。 當 Redis 伺服器釋放記憶體時，配置器會取得記憶體，但不一定會將記憶體提供給系統。 `Used Memory` 值和作業系統報告的記憶體耗用量可能會有差異。 記憶體可能已由 Redis 使用和釋放，但不會傳回給系統。 若要協助降低記憶體問題，您可以執行下列步驟：
 
    - 將快取升級為較大的大小，讓您不會在系統上執行記憶體限制。
    - 設定金鑰的到期時間，以便主動收回較舊的值。
@@ -120,5 +120,5 @@ Stackexchange.redis： Redis 會使用名 `synctimeout` 為的設定來進行同
 
 - [針對 Azure Cache for Redis 用戶端問題進行疑難排解](cache-troubleshoot-client.md)
 - [針對 Azure Cache for Redis 伺服器端問題進行疑難排解](cache-troubleshoot-server.md)
-- [如何效能評定和測試我快取的效能？](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [如何效能評定和測試我快取的效能？](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [如何監視 Azure Redis 快取](cache-how-to-monitor.md)

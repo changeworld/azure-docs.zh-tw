@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Active Directory （預覽）登入 Azure 中的 Windows 虛擬機器
+title: 使用 Azure Active Directory (Preview) 登入 Azure 中的 Windows 虛擬機器
 description: Azure AD 登入執行 Windows 的 Azure VM
 services: active-directory
 ms.service: active-directory
@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcd1c3a9fd3e4be22e4057eb2cfc9a71d09d558
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 4e707393bda3d8820ccf94abed83beb1317027d5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529104"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005016"
 ---
-# <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication （預覽）登入 Azure 中的 Windows 虛擬機器
+# <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory authentication (Preview) 登入 Azure 中的 Windows 虛擬機器
 
-組織現在可以針對執行**Windows Server 2019 Datacenter edition**或**windows 10 1809**及更新版本的 Azure 虛擬機器（vm），使用 Azure Active Directory （AD）驗證。 使用 Azure AD 向 Vm 進行驗證，可讓您集中控制及強制執行原則。 Azure 角色型存取控制（Azure RBAC）和 Azure AD 的條件式存取之類的工具，可讓您控制誰可以存取 VM。 本文說明如何建立和設定 Windows Server 2019 VM，以使用 Azure AD 驗證。
+組織現在可以在執行**Windows Server 2019 Datacenter edition**或**Windows 10 1809**及更新版本的 Azure 虛擬機器 () vm 上，使用 Azure Active Directory (AD) 驗證。 使用 Azure AD 向 Vm 進行驗證，可讓您集中控制及強制執行原則。 Azure 角色型存取控制 (Azure RBAC) 和 Azure AD 條件式存取等工具，可讓您控制誰可以存取 VM。 本文說明如何建立和設定 Windows Server 2019 VM，以使用 Azure AD 驗證。
 
 > [!NOTE]
 > 適用于 Azure Windows Vm 的 Azure AD 登入是 Azure Active Directory 的公開預覽功能。 如需有關預覽的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
@@ -85,7 +85,7 @@ ms.locfileid: "87529104"
 1. 在 [搜尋 Marketplace] 搜尋列中輸入**Windows Server** 。
    1. 按一下 [ **Windows server** ]，然後從 [選取軟體方案] 下拉式清單中選擇 [ **Windows server 2019 Datacenter** ]。
    1. 按一下 [**建立**]。
-1. 在 [管理] 索引標籤上，啟用 [Azure Active Directory] 區段下的 [**使用 AAD 認證登入（預覽）** ] 選項（從 [關閉] 到 [**開啟**]）。
+1. 在 [管理] 索引標籤上，啟用 [**使用 AAD 認證登**入] 選項， (預覽]) 在 [關閉到**開啟**] 的 [Azure Active Directory] 區段底下。
 1. 請確定 [身分識別] 區段下的 [**系統指派的受控識別**] 設定為 [**開啟**]。 當您使用 Azure AD 認證來啟用登入之後，應該會自動進行此動作。
 1. 請流覽建立虛擬機器的其餘體驗。 在此預覽期間，您將必須為 VM 建立系統管理員使用者名稱和密碼。
 
@@ -162,7 +162,7 @@ az vm extension set \
 若要為您 Azure AD 啟用的 Windows Server 2019 Datacenter Vm 設定角色指派：
 
 1. 流覽至特定虛擬機器的 [總覽] 頁面
-1. 從功能表選項中選取 [**存取控制（IAM）** ]
+1. 從功能表選項中選取 [**存取控制] (IAM) **
 1. 選取 [**新增**]、[**新增角色指派**] 以開啟 [新增角色指派] 窗格。
 1. 在 [**角色**] 下拉式清單中，選取角色，例如 **[虛擬機器系統管理員登**入] 或 [**虛擬機器使用者登**入]。
 1. 在 [**選取**] 欄位中，選取使用者、群組、服務主體或受控識別。 如果在清單中未看到安全性主體，您可以在 [選取]**** 方塊中輸入，以在目錄中搜尋顯示名稱、電子郵件地址和物件識別碼。
@@ -174,7 +174,7 @@ az vm extension set \
 
 ### <a name="using-the-azure-cloud-shell-experience"></a>使用 Azure Cloud Shell 體驗
 
-下列範例會使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 將 [虛擬機器系統管理員登入] 角色指派給您目前 Azure 使用者的 VM。 作用中 Azure 帳戶的使用者名稱可透過 [az account show](/cli/azure/account#az-account-show) 來取得，而範圍會設定為在上一個步驟中使用 [az vm show](/cli/azure/vm#az-vm-show) 建立的 VM。 範圍也可指派於資源群組或訂用帳戶層級上，並套用一般 RBAC 繼承權限。 如需詳細資訊，請參閱[角色型存取控制](../../virtual-machines/linux/login-using-aad.md)。
+下列範例會使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 將 [虛擬機器系統管理員登入] 角色指派給您目前 Azure 使用者的 VM。 作用中 Azure 帳戶的使用者名稱可透過 [az account show](/cli/azure/account#az-account-show) 來取得，而範圍會設定為在上一個步驟中使用 [az vm show](/cli/azure/vm#az-vm-show) 建立的 VM。 範圍也可以在資源群組或訂用帳戶層級指派，而一般的 Azure RBAC 繼承許可權則適用。 如需詳細資訊，請參閱[使用 Azure Active Directory Authentication 登入 Azure 中的 Linux 虛擬機器](../../virtual-machines/linux/login-using-aad.md)。
 
 ```   AzureCLI
 username=$(az account show --query user.name --output tsv)
@@ -189,11 +189,11 @@ az role assignment create \
 > [!NOTE]
 > 如果您的 AAD 網域和登入使用者名稱網域不相符，您必須使用指定使用者帳戶的物件識別碼 `--assignee-object-id` ，而不只是的使用者名稱 `--assignee` 。 您可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 取得使用者帳戶的物件識別碼。
 
-如需有關如何使用 RBAC 來管理 Azure 訂用帳戶資源存取權的詳細資訊，請參閱下列文章：
+如需如何使用 Azure RBAC 來管理 Azure 訂用帳戶資源存取權的詳細資訊，請參閱下列文章：
 
-- [使用 RBAC 與 Azure CLI 管理對 Azure 資源的存取](/azure/role-based-access-control/role-assignments-cli)
-- [使用 RBAC 和 Azure 入口網站管理 Azure 資源的存取權](/azure/role-based-access-control/role-assignments-portal)
-- [使用 RBAC 和 Azure PowerShell 來管理 Azure 資源的存取權](/azure/role-based-access-control/role-assignments-powershell)。
+- [使用 Azure CLI 新增或移除 Azure 角色指派](/azure/role-based-access-control/role-assignments-cli)
+- [使用 Azure 入口網站新增或移除 Azure 角色指派](/azure/role-based-access-control/role-assignments-portal)
+- [使用 Azure PowerShell 新增或移除 Azure 角色指派](/azure/role-based-access-control/role-assignments-powershell)。
 
 ## <a name="using-conditional-access"></a>使用條件式存取
 
@@ -208,7 +208,7 @@ az role assignment create \
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Azure AD 認證登入 Windows VM
 
 > [!IMPORTANT]
-> 只有 Azure AD 已註冊的 Windows 10 電腦（20H1 的最小組建），或加入至與 VM**相同**目錄的 Azure AD 加入或混合式 Azure AD，才可從遠端連線至已加入 Azure AD 的 vm。 此外，若要使用 Azure AD 認證的 RDP，使用者必須屬於這兩個 Azure 角色之一： [虛擬機器系統管理員登入] 或 [虛擬機器使用者登入]。 如果使用 Azure AD 已註冊的 Windows 10 電腦，您必須以 AzureAD\UPN 格式輸入認證（例如 AzureAD\john@contoso.com ）。 目前，您無法使用 Azure 防禦來登入 AADLoginForWindows 擴充功能的 Azure Active Directory authentication;僅支援直接 RDP。
+> 僅允許從已加入 Azure AD 的 Windows 10 電腦遠端連線到 Azure AD 已註冊 (最低需求組建為 20H1) 或 Azure AD 聯結或混合式 Azure AD 加入至與 VM**相同**的目錄。 此外，若要使用 Azure AD 認證的 RDP，使用者必須屬於這兩個 Azure 角色之一： [虛擬機器系統管理員登入] 或 [虛擬機器使用者登入]。 如果使用 Azure AD 已註冊的 Windows 10 電腦，您必須以 AzureAD\UPN 格式輸入認證， (例如 AzureAD\john@contoso.com) 。 目前，您無法使用 Azure 防禦來登入 AADLoginForWindows 擴充功能的 Azure Active Directory authentication;僅支援直接 RDP。
 
 若要使用 Azure AD 登入您的 Windows Server 2019 虛擬機器： 
 
@@ -236,7 +236,7 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
    > [!NOTE]
    > 如果在初始失敗後重新開機延伸模組，則會將含有部署錯誤的記錄儲存為 CommandExecution_YYYYMMDDHHMMSSSSS .log。 "
-1. 在 VM 上開啟命令提示字元，並針對在 Azure 主機上執行的 Instance Metadata Service （IMDS）端點，確認這些查詢會傳回：
+1. 在 VM 上開啟命令提示字元，並針對在 Azure 主機上執行的 Instance Metadata Service (IMDS) 端點，確認這些查詢會傳回：
 
    | 要執行的命令 | 預期的輸出 |
    | --- | --- |
@@ -311,7 +311,7 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 結束代碼51會轉譯為「VM 的作業系統上不支援此延伸模組」。
 
-在公開預覽版本中，AADLoginForWindows 延伸模組僅適用于安裝在 Windows Server 2019 或 Windows 10 （組建1809或更新版本）上。 請確定支援的 Windows 版本。 如果不支援 Windows 組建，請將 VM 擴充功能卸載。
+在公開預覽版中，AADLoginForWindows 延伸模組僅適用于安裝在 Windows Server 2019 或 Windows 10 (組建1809或更新版本) 上。 請確定支援的 Windows 版本。 如果不支援 Windows 組建，請將 VM 擴充功能卸載。
 
 ### <a name="troubleshoot-sign-in-issues"></a>對登入問題進行疑難排解
 
@@ -342,7 +342,7 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 請確認您用來起始遠端桌面連線的 Windows 10 電腦，是 Azure AD 已加入，或是已加入您 VM 加入之相同 Azure AD 目錄的混合式 Azure AD。 如需裝置身分識別的詳細資訊，請參閱[什麼是裝置身分識別一](/azure/active-directory/devices/overview)文。
 
 > [!NOTE]
-> Windows 10 Build 20H1 新增了 Azure AD 已註冊電腦的支援，以起始對您 VM 的 RDP 連線。 使用已註冊的 Azure AD （未 Azure AD 聯結或混合式 Azure AD 加入）電腦作為 RDP 用戶端以起始連線到您的 VM 時，您必須以 AzureAD\UPn 的格式輸入認證（例如 AzureAD\john@contoso.com ）。
+> Windows 10 Build 20H1 新增了 Azure AD 已註冊電腦的支援，以起始對您 VM 的 RDP 連線。 當使用 Azure AD 註冊的 (未 Azure AD 加入或混合式 Azure AD 加入) 電腦作為 RDP 用戶端以起始連線到您的 VM 時，您必須以 AzureAD\UPn (的格式輸入認證，例如 AzureAD\john@contoso.com) 。
 
 此外，請確認在 Azure AD 聯結完成後，尚未卸載 AADLoginForWindows 延伸模組。
  
@@ -354,7 +354,7 @@ AADLoginForWindows 擴充功能必須成功安裝，VM 才能完成 Azure AD 聯
 
 ![您嘗試使用的登入方法不允許。](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-如果您已設定需要多重要素驗證（MFA）的條件式存取原則，才能存取資源，則必須確定 Windows 10 電腦使用增強式驗證方法（例如 Windows Hello）來登入您的 VM 的遠端桌面連線。 如果您未針對遠端桌面連線使用增強式驗證方法，就會看到先前的錯誤。
+如果您已設定條件式存取原則，要求 (MFA) 的多重要素驗證，才能存取資源，則您必須確定 Windows 10 電腦起始 VM 的遠端桌面連線使用增強式驗證方法（例如 Windows Hello）登入。 如果您未針對遠端桌面連線使用增強式驗證方法，就會看到先前的錯誤。
 
 如果您尚未部署 Windows Hello 企業版，而且目前無法使用，則您可以設定條件式存取原則，從需要 MFA 的雲端應用程式清單中排除「Azure Windows VM 登入」應用程式，以排除 MFA 需求。 若要深入瞭解 Windows Hello 企業版，請參閱[Windows Hello 企業版總覽](/windows/security/identity-protection/hello-for-business/hello-identity-verification)。
 

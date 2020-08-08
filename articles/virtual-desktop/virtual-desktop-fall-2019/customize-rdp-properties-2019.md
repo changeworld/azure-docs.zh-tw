@@ -1,26 +1,24 @@
 ---
-title: 使用 PowerShell Windows 虛擬桌面自訂 RDP 屬性（傳統）-Azure
-description: 如何使用 PowerShell Cmdlet 自訂 Windows 虛擬桌面（傳統）的 RDP 屬性。
-services: virtual-desktop
+title: 使用 PowerShell Windows 虛擬桌面 (傳統) 自訂 RDP 屬性-Azure
+description: 如何使用 PowerShell Cmdlet 自訂 Windows 虛擬桌面 (傳統) 的 RDP 屬性。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3ed7e8b8348ae87e676ec4585bce42a1ac389e23
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1df576e3316a529ec38c4a53960ff817d129ffd8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291276"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002251"
 ---
-# <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>自訂 Windows 虛擬桌面（傳統）主機集區的遠端桌面通訊協定屬性
+# <a name="customize-remote-desktop-protocol-properties-for-a--windows-virtual-desktop-classic-host-pool"></a>自訂 Windows 虛擬桌面 (傳統) 主機集區的遠端桌面通訊協定屬性
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../customize-rdp-properties.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../customize-rdp-properties.md)。
 
-自訂主機集區的遠端桌面通訊協定（RDP）內容，例如多監視器體驗和音訊重新導向，可讓您根據自己的需求為使用者提供最佳的體驗。 您可以使用**RdsHostPool** Cmdlet 中的 **-CustomRdpProperty**參數，在 WINDOWS 虛擬桌面中自訂 RDP 屬性。
+自訂主機集區的遠端桌面通訊協定 (RDP) 屬性（例如多監視器體驗和音訊重新導向），可讓您根據使用者的需求為您的使用者提供最佳的體驗。 您可以使用**RdsHostPool** Cmdlet 中的 **-CustomRdpProperty**參數，在 WINDOWS 虛擬桌面中自訂 RDP 屬性。
 
 如需支援的屬性及其預設值的完整清單，請參閱[支援的 RDP 檔案設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)。
 
@@ -36,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 |RDP 屬性 | 桌上型電腦 | RemoteApps |
 |---|---| --- |
-| 多監視器模式 | 啟用 | 不適用 |
+| 多監視器模式 | 已啟用 | N/A |
 | 磁片磁碟機重新導向已啟用 | 磁片磁碟機、剪貼簿、印表機、COM 埠、USB 裝置和智慧卡| 磁片磁碟機、剪貼簿和印表機 |
 | 遠端音訊模式 | 在本機播放 | 在本機播放 |
 

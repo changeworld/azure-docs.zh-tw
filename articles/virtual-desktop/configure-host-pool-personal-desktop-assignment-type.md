@@ -1,24 +1,22 @@
 ---
 title: Windows 虛擬桌面個人桌面指派類型 - Azure
 description: 如何為 Windows 虛擬桌面個人桌面主機集區設定自動或直接指派。
-services: virtual-desktop
-author: HeidiLohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 17df23a16bec91e5c333bc760143eac250b62699
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 446dae3c064f5f23d35cb12b2b24bdfea9e27012
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292625"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007806"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>設定個人桌面主機集區指派類型
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/configure-host-pool-personal-desktop-assignment-type-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/configure-host-pool-personal-desktop-assignment-type-2019.md)。
 
 您可以設定個人桌面主機集區的指派類型來調整您的 Windows 虛擬桌面環境，使其更符合您的需求。 在本主題中，我們將示範如何為您的使用者設定自動或直接指派。
 

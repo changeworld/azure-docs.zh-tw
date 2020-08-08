@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/01/2020
+ms.date: 08/07/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: dfa1c790dc0f2e229b3bfa19616e5760c3d3d02e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d4661c0819d214a2c750eb1582559f8d8a5959ed
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825135"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006599"
 ---
 # <a name="configure-and-optimize-vms"></a>設定和最佳化 VM
 
@@ -27,9 +27,18 @@ ms.locfileid: "87825135"
 ## <a name="vm-images"></a>VM 映像
 在未啟用的虛擬機器上，必須要有適當的驅動程式，才能啟用 RDMA。 在 Linux 上，Marketplace 中的 CentOS-HPC VM 映射已預先設定適當的驅動程式。 您可以使用[這裡的指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，利用正確的驅動程式來設定 Ubuntu VM 映射。 此外，也建議您使用適當的驅動程式和設定來建立[自訂 VM 映射](../../linux/tutorial-custom-images.md)，並重複使用這些 recurringly。
 
+> [!NOTE]
+> 在已啟用 GPU 的[N 系列](../../sizes-gpu.md)vm 上，另外還需要適當的 gpu 驅動程式，您可以透過[VM 擴充](../../extensions/hpccompute-gpu-linux.md)或[手動](../../linux/n-series-driver-setup.md)新增。 Marketplace 上的部分 VM 映射也會隨 Nvidia GPU 驅動程式預先安裝。
+
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM 映射
+
+#### <a name="non-sr-iov-enabled-vms"></a>非 SR-IOV 的已啟用 Vm
 對於啟用[RDMA 功能](../../sizes-hpc.md#rdma-capable-instances)的非 Sr-iov 型 vm，CENTOS-HPC 6.5 版或更新版本，最多可達7.5 （在 Marketplace 中）。 例如，針對[H16 系列 vm](../../h-series.md)，建議使用7.1 到7.5 版。 這些 VM 映射已預先載入 RDMA 和 Intel MPI 5.1 版的網路直接驅動程式。
 
+> [!NOTE]
+> 在非 SR-IOV 啟用之 Vm 的這些 CentOS 型 HPC 映射上，會在**yum**設定檔中停用核心更新。 這是因為 NetworkDirect Linux RDMA 驅動程式是以 RPM 套件的形式散發，如果核心已更新，驅動程式更新可能無法正常執行。
+
+#### <a name="sr-iov-enabled-vms"></a>已啟用 SR-IOV 的 Vm
   若為支援 SR-IOV 的[RDMA vm](../../sizes-hpc.md#rdma-capable-instances)，則適用于 Marketplace 中的[CentOS-HPC 7.6 版或更新版本的](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)vm 映射。 這些 VM 映射已針對 RDMA 的 OFED 驅動程式和各種常用的 MPI 程式庫和科學計算套件進行優化和預先載入，而且是開始使用的最簡單方式。
 
   從基底 CentOS Marketplace 映射建立 CentOS-HPC 7.6 版和更新版本的 VM 映射時使用的腳本範例位於[azhpc 映射](https://github.com/Azure/azhpc-images/tree/master/centos)存放庫。
