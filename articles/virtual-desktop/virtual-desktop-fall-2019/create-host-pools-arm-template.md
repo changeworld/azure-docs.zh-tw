@@ -1,24 +1,22 @@
 ---
-title: Windows 虛擬桌面（傳統）主機集區 Azure Resource Manager-Azure
-description: 如何使用 Azure Resource Manager 範本在 Windows 虛擬桌面（傳統）中建立主機集區。
-services: virtual-desktop
+title: Windows 虛擬桌面 (傳統) 主機集區 Azure Resource Manager-Azure
+description: 如何使用 Azure Resource Manager 範本在 Windows 虛擬桌面 (傳統) 中建立主機集區。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 88027db54f9b7d4a7ef2ef32d4ea0434d8a26a10
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b9999ae92840d79bb19464216c0f28504011b3f3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87270255"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008316"
 ---
-# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本在 Windows 虛擬桌面（傳統）中建立主機集區
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本在 Windows 虛擬桌面 (傳統) 中建立主機集區
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。
 
 主機集區是 Windows 虛擬桌面租用戶環境中一或多個相同虛擬機器的集合。 每個主機集區都可以包含一個應用程式群組，而使用者可如同在實體桌面上與其互動。
 
@@ -46,7 +44,7 @@ ms.locfileid: "87270255"
 
 1. 向下捲動並以滑鼠右鍵按一下 [部署至 Azure]****，然後選取 [複製連結位置]****。
 2. 開啟文字編輯器 (例如 [記事本])，並在該處貼上連結。
-3. 緊接在 "" 之後，在主題標籤 https://portal.azure.com/ （#）前面輸入 @ 符號，後面接著租使用者功能變數名稱。 以下是您應該使用的格式範例： `https://portal.azure.com/@Contoso.onmicrosoft.com#create/` 。
+3. 在 "" 之後，在主題標籤 https://portal.azure.com/ ( # )  ( 的後面輸入 @ ) ，後面接著租使用者功能變數名稱。 以下是您應該使用的格式範例： `https://portal.azure.com/@Contoso.onmicrosoft.com#create/` 。
 4. 以具有「雲端解決方案提供者」訂用帳戶系統管理員/參與者權限的使用者身分登入 Azure 入口網站。
 5. 將您之前複製到文字編輯器的連結貼到網址列。
 
@@ -70,7 +68,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-使用者的 UPN 應符合使用者在 Azure Active Directory 中的身分識別（例如 user1@contoso.com ）。 如果您想要新增多個使用者，則必須針對每個使用者執行此 Cmdlet。
+使用者的 UPN 應符合 Azure Active Directory (中的使用者身分識別，例如 user1@contoso.com) 。 如果您想要新增多個使用者，則必須針對每個使用者執行此 Cmdlet。
 
 在您完成這些步驟之後，新增至桌面應用程式群組的使用者可以透過支援的遠端桌面用戶端登入 Windows 虛擬桌面，並看到工作階段桌面的資源。
 

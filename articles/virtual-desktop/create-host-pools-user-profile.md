@@ -1,23 +1,21 @@
 ---
 title: Windows 虛擬桌面 FSLogix 設定檔容器共用-Azure
 description: 如何使用以虛擬機器為基礎的檔案共用，為 Windows 虛擬桌面主機集區設定 FSLogix 設定檔容器。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bac0047c1eb151f38ff09092b45ca7fd86fcc65a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211828"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002572"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>使用檔案共用建立主機集區的設定檔容器
 
-Windows 虛擬桌面服務提供 FSLogix 設定檔容器作為建議的使用者設定檔解決方案。 我們不建議使用使用者設定檔磁片（UPD）解決方案，這會在未來的 Windows 虛擬桌上出版本中被取代。
+Windows 虛擬桌面服務提供 FSLogix 設定檔容器作為建議的使用者設定檔解決方案。 我們不建議使用 (UPD) 解決方案的使用者設定檔磁片，這在未來的 Windows 虛擬桌上出版本中將會被取代。
 
 本文將告訴您如何使用以虛擬機器為基礎的檔案共用，為主機集區設定 FSLogix 設定檔容器共用。 我們強烈建議使用 Azure 檔案儲存體，而不是檔案共用。 如需更 FSLogix 的檔，請參閱[FSLogix 網站](https://docs.fslogix.com/)。
 

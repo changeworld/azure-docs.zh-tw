@@ -1,26 +1,24 @@
 ---
-title: 針對 Windows 虛擬桌面（傳統）工作階段主機進行疑難排解-Azure
-description: 如何解決當您設定 Windows 虛擬桌面（傳統）工作階段主機虛擬機器時的問題。
-services: virtual-desktop
+title: 針對 Windows 虛擬桌面 (傳統) 工作階段主機進行疑難排解-Azure
+description: 如何解決設定 Windows 虛擬桌面 (傳統) 工作階段主機虛擬機器的問題。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0155c9cf6b5d9df8a6a8831896093c4c6b074cd6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291262"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008622"
 ---
-# <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows 虛擬桌面（傳統）工作階段主機虛擬機器設定
+# <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows 虛擬桌面 (傳統) 工作階段主機虛擬機器設定
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-vm-configuration.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-vm-configuration.md)。
 
-使用本文來針對設定 Windows 虛擬桌面工作階段主機虛擬機器（Vm）時所發生的問題進行疑難排解。
+您可以使用本文來針對設定 (Vm) Windows 虛擬桌面工作階段主機虛擬機器時所發生的問題進行疑難排解。
 
 ## <a name="provide-feedback"></a>提供意見反應
 
@@ -46,7 +44,7 @@ ms.locfileid: "87291262"
 
 ### <a name="error-timeout-waiting-for-user-input"></a>錯誤：等候使用者輸入時發生超時
 
-**原因：** 用來完成加入網域的帳戶可能會有多重要素驗證（MFA）。
+**原因：** 用來完成加入網域的帳戶，可能會 (MFA) 進行多重要素驗證。
 
 **修正：** 請採取下列其中一個動作來解決。
 
@@ -64,11 +62,11 @@ ms.locfileid: "87291262"
 
 ### <a name="error-domain-name-doesnt-resolve"></a>錯誤：功能變數名稱無法解析
 
-**原因1：** Vm 位於與網域所在的虛擬網路（VNET）沒有關聯的虛擬網路上。
+**原因1：** Vm 位於與網域所在 (VNET) 不相關聯的虛擬網路上。
 
-**修正1：** 在布建 Vm 的 VNET 和執行網域控制站（DC）的 VNET 之間，建立 VNET 對等互連。 請參閱[建立虛擬網路對等互連-Resource Manager、不同的](../../virtual-network/create-peering-different-subscriptions.md)訂用帳戶。
+**修正1：** 在布建 Vm 的 VNET 和執行網域控制站 (DC) 的 vnet 之間，建立 VNET 對等互連。 請參閱[建立虛擬網路對等互連-Resource Manager、不同的](../../virtual-network/create-peering-different-subscriptions.md)訂用帳戶。
 
-**原因2：** 使用 Azure Active Directory Domain Services （Azure AD DS）時，虛擬網路不會更新其 DNS 伺服器設定，以指向受管理的網域控制站。
+**原因2：** 使用 Azure Active Directory Domain Services (Azure AD DS) 時，虛擬網路不會更新其 DNS 伺服器設定，以指向受管理的網域控制站。
 
 **修正2：** 若要更新包含 Azure AD DS 之虛擬網路的 DNS 設定，請參閱[更新 Azure 虛擬網路的 dns 設定](../../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)。
 
@@ -114,7 +112,7 @@ ms.locfileid: "87291262"
 
 ## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Windows 虛擬桌面代理程式未向 Windows 虛擬桌面服務註冊
 
-第一次在工作階段主機 Vm 上安裝 Windows 虛擬桌面代理程式（手動或透過 Azure Resource Manager 範本和 PowerShell DSC）時，它會提供註冊權杖。 下一節涵蓋適用于 Windows 虛擬桌面代理程式和權杖的疑難排解問題。
+第一次在工作階段主機 Vm 上安裝 Windows 虛擬桌面代理程式 (以手動方式或透過 Azure Resource Manager 範本和 PowerShell DSC) 來執行時，它會提供註冊權杖。 下一節涵蓋適用于 Windows 虛擬桌面代理程式和權杖的疑難排解問題。
 
 ### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>錯誤： RdsSessionHost Cmdlet 中的狀態會顯示為 [無法使用] 狀態
 
@@ -128,7 +126,7 @@ ms.locfileid: "87291262"
 1. 在工作階段主機 VM 上下載新版本的代理程式。
 2. 啟動 [工作管理員]，然後在 [服務] 索引標籤中，停止 RDAgentBootLoader 服務。
 3. 針對新版本的 Windows 虛擬桌面代理程式執行安裝程式。
-4. 當系統提示您輸入註冊權杖時，請移除 INVALID_TOKEN 的專案，然後按 [下一步] （不需要新的權杖）。
+4. 當系統提示您輸入註冊權杖時，請移除 INVALID_TOKEN 的專案，然後按 [下一步] (不需要) 新權杖。
 5. 完成安裝精靈。
 6. 開啟 [工作管理員]，然後啟動 RDAgentBootLoader 服務。
 
@@ -140,7 +138,7 @@ ms.locfileid: "87291262"
 
 1. 如果已經有註冊權杖，請移除 RDSRegistrationInfo。
 2. 使用 Rds-NewRegistrationInfo 產生新的 token。
-3. 確認-ExpriationHours 參數設定為72（最大值為99999）。
+3. 確認-ExpriationHours 參數設定為 72 (最大值為 99999) 。
 
 ### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>錯誤： Windows 虛擬桌面代理程式在執行 RdsSessionHost 時未回報心跳
 
@@ -180,13 +178,13 @@ ms.locfileid: "87291262"
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>針對 Windows 虛擬桌面並存堆疊的問題進行疑難排解
 
-Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 使用 Microsoft Installer （MSI）在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安裝並存堆疊。 針對 Microsoft Windows 10，會使用**enablesxstackrs.ps1**啟用 Windows 虛擬桌面並存堆疊。
+Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 使用 Microsoft Installer (MSI) 在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安裝並存堆疊。 針對 Microsoft Windows 10，會使用**enablesxstackrs.ps1**啟用 Windows 虛擬桌面並存堆疊。
 
 在工作階段主機集區 Vm 上安裝或啟用並存堆疊的主要方式有三種：
 
 - 使用 Azure Resource Manager**建立和布建新 Windows 虛擬桌面主機集**區範本
 - 藉由在主要映射上包含及啟用
-- 在每部 VM 上手動安裝或啟用（或使用延伸模組/PowerShell）
+- 以手動方式在每個 VM 上安裝或啟用 (或使用延伸模組/PowerShell) 
 
 如果您遇到 Windows 虛擬桌面並存堆疊的問題，請從命令提示字元輸入**qwinsta**命令，確認已安裝或啟用並存堆疊。
 
@@ -214,7 +212,7 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 
 **修正：** 請遵循這些指示，在工作階段主機 VM 上安裝並存堆疊。
 
-1. 使用遠端桌面通訊協定（RDP）以本機系統管理員身分直接進入工作階段主機 VM。
+1. 使用遠端桌面通訊協定 (RDP) 直接以本機系統管理員身分進入工作階段主機 VM。
 2. 下載並匯入[Windows 虛擬桌面 powershell 模組](/powershell/windows-virtual-desktop/overview/)以用於您的 powershell 會話（如果您尚未這麼做），然後執行此 Cmdlet 來登入您的帳戶：
 
     ```powershell
@@ -228,8 +226,8 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 在已知情況下，可能會導致並存堆疊故障：
 
 - 未遵循步驟的正確順序來啟用並存堆疊
-- 自動更新至 Windows 10 增強型光碟（EVD）
-- 缺少遠端桌面工作階段主機（RDSH）角色
+- 自動更新至 Windows 10 增強型光碟 (EVD) 
+- 缺少遠端桌面工作階段主機 (RDSH) 角色
 - 多次執行 enablesxsstackrc.ps1
 - 在不具備本機系統管理員許可權的帳戶中執行 enablesxsstackrc.ps1
 
@@ -239,7 +237,7 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 
 請依照下列指示，從相同的子網和網域執行補救：
 
-1. 使用標準遠端桌面通訊協定（RDP）連接到將套用修正的 VM。
+1. 使用標準遠端桌面通訊協定 (RDP) 連接到將套用修正的 VM。
 2. 從下載 PsExec https://docs.microsoft.com/sysinternals/downloads/psexec 。
 3. 將下載的檔案解壓縮。
 4. 以本機系統管理員身分啟動命令提示字元。
@@ -282,7 +280,7 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 
 12. 卸載所有 Windows 虛擬桌面元件之後，請遵循作業系統的指示：
 
-13. 如果您的作業系統是 Windows Server，請重新開機具有故障並存堆疊的 VM （不論是使用 Azure 入口網站或從 PsExec 工具）。
+13. 如果您的作業系統是 Windows Server，請重新開機具有故障並存堆疊 (的 VM，方法是 Azure 入口網站或 PsExec 工具) 。
 
 如果您的作業系統是 Microsoft Windows 10，請繼續執行下列指示：
 
@@ -311,10 +309,10 @@ Windows 虛擬桌面並存堆疊會隨著 Windows Server 2019 自動安裝。 �
 
 如果時間限制過期，就會出現一則錯誤訊息，指出「遠端會話已中斷連線，因為這部電腦沒有可用的遠端桌面用戶端存取使用權」。
 
-如果您看到其中一個訊息，這表示映射並未安裝最新的 Windows 更新，或您要透過群組原則設定遠端桌面授權模式。 依照下一節中的步驟來檢查群組原則設定、識別 Windows 10 企業版多會話的版本，並安裝對應的更新。  
+如果您看到其中一個訊息，這表示映射並未安裝最新的 Windows 更新，或您要透過群組原則設定遠端桌面授權模式。 依照下一節中的步驟來檢查群組原則設定、識別 Windows 10 企業版多會話的版本，並安裝對應的更新。
 
 >[!NOTE]
->Windows 虛擬桌面只有在您的主機集區包含 Windows Server 工作階段主機時，才需要 RDS 用戶端存取許可證（CAL）。 若要瞭解如何設定 RDS CAL，請參閱[使用用戶端存取許可證來授權您的 RDS 部署](/windows-server/remote/remote-desktop-services/rds-client-access-license/)。
+>Windows 虛擬桌面只有在您的主機集區包含 Windows Server 工作階段主機時，才需要使用 RDS 用戶端存取許可證 (CAL) 。 若要瞭解如何設定 RDS CAL，請參閱[使用用戶端存取許可證來授權您的 RDS 部署](/windows-server/remote/remote-desktop-services/rds-client-access-license/)。
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>停用遠端桌面授權模式群組原則設定
 

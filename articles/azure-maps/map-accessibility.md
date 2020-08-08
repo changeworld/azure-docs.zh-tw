@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 地圖服務建立無障礙地圖應用程式 | Microsoft Azure 地圖服務
-description: 在此文章中，您將了解如何使用 Microsoft Azure 地圖服務，來建置具有協助工具功能的應用程式。
+description: 深入瞭解 Azure 地圖服務中的協助工具考慮。 查看哪些功能可用來讓地圖應用程式可供存取，以及查看協助工具提示。
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: febfdf5405038e5b60a3133a554eba7a756f617d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242367"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006208"
 ---
 # <a name="building-an-accessible-application"></a>建置無障礙應用程式
 

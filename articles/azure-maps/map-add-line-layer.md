@@ -1,6 +1,6 @@
 ---
 title: 將線條圖層新增至地圖 | Microsoft Azure 地圖服務
-description: 在本文中，您會了解如何使用 Microsoft Azure 地圖服務 Web SDK，將線條圖層新增至地圖。
+description: 瞭解如何將線條新增至地圖。 請參閱使用 Azure 地圖服務 Web SDK 將線條圖層新增至地圖，以及使用符號和色彩漸層自訂線條的範例。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 366de0d17a1cdd62b95d39b1ad04b9bc76bec52c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c834ae6061fce6f2fc2f4cd7c4d80e036775b156
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286938"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010203"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>將線條圖層新增至地圖
 

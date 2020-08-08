@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: 36268910003c4235d7ae60d2fd68bc30d7b8b858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fe725f3e4571f5b1f646b320e8c669e663c657e0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830004"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004690"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何調整 Azure Redis 快取的規模
 「Azure Redis 快取」具有各種不同的快取供應項目，可讓您彈性選擇快取大小和功能。 建立快取之後，如果您應用程式的需求改變，您可以調整快取的大小和定價層。 本文說明如何使用 Azure 入口網站和 Azure PowerShell 與 Azure CLI 之類的工具來調整快取。
@@ -24,9 +24,9 @@ ms.locfileid: "85830004"
 * Redis 伺服器負載
 * 記憶體使用量
 * 網路頻寬
-* CPU 使用量
+* CPU 使用率
 
-如果您判斷快取不再符合您應用程式的需求，則可以調整為適合您應用程式的較大或較小快取定價層。 如需有關判斷要使用哪個快取定價層的詳細資訊，請參閱 [我應該使用哪個 Azure Redis 快取供應項目和大小](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)。
+如果您判斷快取不再符合您應用程式的需求，則可以調整為適合您應用程式的較大或較小快取定價層。 如需判斷所要使用之快取定價層的詳細資訊，請參閱[選擇正確的層級](cache-overview.md#choosing-the-right-tier)。
 
 ## <a name="scale-a-cache"></a>調整快取
 若要調整快取，在 [Azure 入口網站](https://portal.azure.com)中[瀏覽至快取](cache-configure.md#configure-azure-cache-for-redis-settings)，然後按一下 **[資源]** 功能表中的 **[調整]**。
@@ -70,7 +70,7 @@ ms.locfileid: "85830004"
    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 ```
 
-如需有關如何使用 PowerShell 來調整規模的詳細資訊，請參閱[使用 Powershell 來調整 Azure Redis 快取的規模](cache-how-to-manage-redis-cache-powershell.md#scale)。
+如需有關使用 PowerShell 進行調整的詳細資訊，請參閱[使用 Powershell 來調整 Azure Cache For Redis](cache-how-to-manage-redis-cache-powershell.md#scale)。
 
 ### <a name="scale-using-azure-cli"></a>使用 Azure CLI 進行調整
 若要使用 Azure CLI 來調整「Azure Redis 快取」執行個體的規模，請呼叫 `azure rediscache set` 命令，並視所需的調整作業而定，傳入所需的設定變更，包括新的大小、SKU 或叢集大小。

@@ -1,24 +1,22 @@
 ---
-title: 在 Windows 虛擬桌面（傳統）中發佈內建應用程式-Azure
-description: 如何在 Windows 虛擬桌面（傳統）中發佈內建應用程式。
-services: virtual-desktop
+title: 在 Windows 虛擬桌面 (傳統) 中發佈內建應用程式-Azure
+description: 如何在 Windows 虛擬桌面 (傳統) 中發佈內建應用程式。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5f204bc6d2595e7f18e59bae15ff35d49e1801e0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 80cd1a4c92441fb17ce0a66814ff0a39a92fb287
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284926"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005562"
 ---
-# <a name="publish-built-in-apps-in-windows-virtual-desktop-classic"></a>在 Windows 虛擬桌面中發佈內建應用程式（傳統）
+# <a name="publish-built-in-apps-in-windows-virtual-desktop-classic"></a>在 Windows 虛擬桌面 (傳統) 中發佈內建應用程式
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../publish-apps.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../publish-apps.md)。
 
 本文將告訴您如何在 Windows 虛擬桌面環境中發佈應用程式。
 

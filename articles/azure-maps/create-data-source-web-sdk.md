@@ -1,6 +1,6 @@
 ---
 title: 建立地圖的資料來源 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK 來建立資料來源，並將其新增至地圖。
+description: 瞭解如何建立地圖的資料來源。 深入瞭解 Azure 地圖服務 Web SDK 使用的資料來源： GeoJSON 來源和向量磚。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 4f51afbcf50939d762b1b5d32d6204ccfbb9a62d
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fea2c4fab51db59c9159853e9b0bdaec0bcdbb56
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551671"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009081"
 ---
 # <a name="create-a-data-source"></a>建立資料來源
 

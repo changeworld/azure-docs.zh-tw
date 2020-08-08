@@ -1,31 +1,29 @@
 ---
-title: Windows 虛擬桌面（傳統）診斷問題-Azure
-description: 如何使用 Windows 虛擬桌面（傳統）診斷功能來診斷問題。
-services: virtual-desktop
+title: Windows 虛擬桌面 (傳統) 診斷問題-Azure
+description: 如何使用 Windows 虛擬桌面 (傳統) 診斷功能來診斷問題。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 257ad5aa11bfaece70f676b452119d7800e2d1e2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7e652f04b42b132e7c1307503b1764dda7b2036b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285045"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009336"
 ---
-# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>識別及診斷 Windows 虛擬桌面中的問題（傳統）
+# <a name="identify-and-diagnose-issues-in-windows-virtual-desktop-classic"></a>找出並診斷 Windows 虛擬桌面 (傳統) 中的問題
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../diagnostics-role-service.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../diagnostics-role-service.md)。
 
 Windows 虛擬桌面提供診斷功能，可讓系統管理員透過單一介面識別問題。 每當使用者與系統互動時，Windows 虛擬桌面角色都會記錄診斷活動。 每個記錄都包含相關資訊，例如交易中涉及的 Windows 虛擬桌面角色、錯誤訊息、租用戶資訊、使用者資訊。 診斷活動是由使用者和系統管理動作建立，可分為三大類：
 
 * 摘要訂用帳戶活動：每當使用者嘗試透過 Microsoft 遠端桌面應用程式連線到其摘要時，就會觸發這些活動。
 * 連線活動：每當使用者嘗試透過 Microsoft 遠端桌面應用程式連線到桌面或 RemoteApp 時，就會觸發這些活動。
 * 管理活動：每當系統管理員在系統上執行管理作業時，例如建立主機集區、指派使用者至應用程式群組、建立角色指派，就會觸發這些活動。
-  
+
 因為診斷角色服務本身是 Windows 虛擬桌面的一部分，所以在診斷結果中不會顯示未觸達 Windows 虛擬桌面的連線。 當使用者遇到網路連線問題時，可能是發生了 Windows 虛擬桌面連線問題。
 
 首先，[下載並匯入 Windows 虛擬桌面的 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)，以用於您的 PowerShell 工作階段 (如果您還沒這麼做的話)。 之後，請執行下列 Cmdlet 來登入您的帳戶：
@@ -39,7 +37,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Windows 虛擬桌面診斷只會使用一個 PowerShell Cmdlet，但包含許多選用參數，以協助縮小和隔離問題。 下列各節列出您可以執行以診斷問題的 Cmdlet。 大部分的篩選都可以一起套用。 以方括弧括住的值 (例如 `<tenantName>`) 應取代為適用於您情況的值。
 
 >[!IMPORTANT]
->診斷功能適用於單一使用者的疑難排解。 所有使用 PowerShell 的查詢都必須包含 *-UserName* 或 *-ActivityID* 參數。 如需監視功能，請使用 Log Analytics。 如需如何將診斷資料傳送至工作區的詳細資訊，請參閱[將 Log Analytics 使用於診斷功能](diagnostics-log-analytics-2019.md)。 
+>診斷功能適用於單一使用者的疑難排解。 所有使用 PowerShell 的查詢都必須包含 *-UserName* 或 *-ActivityID* 參數。 如需監視功能，請使用 Log Analytics。 如需如何將診斷資料傳送至工作區的詳細資訊，請參閱[將 Log Analytics 使用於診斷功能](diagnostics-log-analytics-2019.md)。
 
 ### <a name="filter-diagnostic-activities-by-user"></a>依使用者篩選診斷活動
 

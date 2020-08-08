@@ -6,30 +6,30 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 224436c155f1133621abede21878b49ebc9b3331
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185193"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008027"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>如何管理 Azure Cache for Redis
 本主題說明如何執行管理工作，例如為 Azure Cache for Redis 執行個體進行[重新啟動](#reboot)和[排程更新](#schedule-updates)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="reboot"></a>重新開機
+## <a name="reboot"></a>重新啟動
 [重新啟動] **** 刀鋒視窗可讓您重新啟動快取的一或多個節點。 這個重新啟動的能力可讓您測試應用程式在快取節點失敗時的恢復功能。
 
-![重新開機](./media/cache-administration/redis-cache-administration-reboot.png)
+![重新啟動](./media/cache-administration/redis-cache-administration-reboot.png)
 
 選取要重新啟動的節點，然後按一下 [重新啟動]****。
 
-![重新開機](./media/cache-administration/redis-cache-reboot.png)
+![重新啟動](./media/cache-administration/redis-cache-reboot.png)
 
 如果您的進階快取已啟用叢集，您可以選取要重新啟動的快取分區。
 
-![重新開機](./media/cache-administration/redis-cache-reboot-cluster.png)
+![重新啟動](./media/cache-administration/redis-cache-reboot-cluster.png)
 
 若要重新啟動快取的一或多個節點，選取所需的節點，然後按一下 [重新啟動] ****。 如果您的進階快取已啟用叢集，選取要重新啟動的分區，然後按一下 [重新啟動]****。 稍候幾分鐘之後，選取的節點會重新啟動，並在幾分鐘之後重新上線。
 
@@ -98,5 +98,7 @@ ms.locfileid: "86185193"
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ## <a name="next-steps"></a>後續步驟
-* 瀏覽更多 [Azure Cache for Redis 進階層](cache-premium-tier-intro.md)功能。
+深入瞭解 Azure Cache for Redis 功能。
+
+* [Azure Cache for Redis 服務層級](cache-overview.md#service-tiers)
 

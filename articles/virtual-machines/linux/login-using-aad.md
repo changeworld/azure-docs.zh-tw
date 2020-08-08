@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534731"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002323"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>預覽：使用 Azure Active Directory authentication 登入 Azure 中的 Linux 虛擬機器
 
@@ -35,7 +35,7 @@ ms.locfileid: "87534731"
   - 若要進一步保護 Azure 虛擬機器的登入，您可以設定多因素驗證。
   - 使用 Azure Active Directory 登入 Linux 虛擬機器的能力，也適用於使用[同盟服務](../../active-directory/hybrid/how-to-connect-fed-whatis.md)的客戶。
 
-- **無縫式共同作業：** 透過角色型存取控制 (RBAC)，您可以指定哪些人能夠以一般使用者的身分或系統管理員權限登入指定的 VM。 當使用者加入或退出您的小組時，您可以更新 VM 的 RBAC 原則，以授與適當的存取權。 這項體驗遠比經由刪除 VM 移除非必要的 SSH 公開金鑰來得容易。 當員工離開您的組織時，其使用者帳戶會從 Azure AD 中停用或移除，且他們將無法再存取您的資源。
+- **順暢**的共同作業：透過 Azure 角色型存取控制 (Azure RBAC) ，您可以指定誰可以一般使用者或系統管理員許可權登入指定的 VM。 當使用者加入或離開您的小組時，您可以更新 VM 的 Azure RBAC 原則，以視需要授與存取權。 這項體驗遠比經由刪除 VM 移除非必要的 SSH 公開金鑰來得容易。 當員工離開您的組織時，其使用者帳戶會從 Azure AD 中停用或移除，且他們將無法再存取您的資源。
 
 ## <a name="supported-azure-regions-and-linux-distributions"></a>支援的 Azure 區域和 Linux 發行版
 
@@ -58,7 +58,7 @@ ms.locfileid: "87534731"
 >[!IMPORTANT]
 > 若要使用這項預覽功能，請您僅在支援的 Azure 區域中部署支援的 Linux 發行版。 Azure Government 或主權雲端不支援這項功能。
 >
-> 不支援在 Azure Kubernetes Service （AKS）叢集上使用此延伸模組。 如需詳細資訊，請參閱[AKS 的支援原則](../../aks/support-policies.md)。
+> 不支援在 Azure Kubernetes Service (AKS) 叢集上使用此延伸模組。 如需詳細資訊，請參閱[AKS 的支援原則](../../aks/support-policies.md)。
 
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.31 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
@@ -113,7 +113,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>設定 VM 的角色指派
 
-Azure 角色型存取控制（Azure RBAC）原則會決定誰可以登入 VM。 有兩個 Azure 角色可用來授權 VM 登入：
+Azure 角色型存取控制 (Azure RBAC) 原則會決定誰可以登入 VM。 有兩個 Azure 角色可用來授權 VM 登入：
 
 - **虛擬機器系統管理員登入**：被指派此角色的使用者能夠以 Windows 系統管理員或 Linux 根使用者權限登入 Azure 虛擬機器。
 - **虛擬機器使用者登入**：被指派此角色的使用者能夠以一般使用者權限登入 Azure 虛擬機器。
@@ -121,7 +121,7 @@ Azure 角色型存取控制（Azure RBAC）原則會決定誰可以登入 VM。 
 > [!NOTE]
 > 若要讓使用者透過 SSH 登入 VM，您必須指派 [虛擬機器系統管理員登入]** 或 [虛擬機器使用者登入]** 角色。 被指派 VM 的 [擁有者]** 或 [參與者]** 角色的 Azure 使用者，並不會自動取得透過 SSH 登入 VM 的權限。
 
-下列範例會使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 將 [虛擬機器系統管理員登入]** 角色指派給您目前 Azure 使用者的 VM。 作用中 Azure 帳戶的使用者名稱可透過 [az account show](/cli/azure/account#az-account-show) 來取得，而*範圍*會設定為在上一個步驟中使用 [az vm show](/cli/azure/vm#az-vm-show) 建立的 VM。 範圍也可指派於資源群組或訂用帳戶層級上，並套用一般 RBAC 繼承權限。 如需詳細資訊，請參閱[角色型存取控制](../../role-based-access-control/overview.md)
+下列範例會使用 [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) 將 [虛擬機器系統管理員登入]** 角色指派給您目前 Azure 使用者的 VM。 作用中 Azure 帳戶的使用者名稱可透過 [az account show](/cli/azure/account#az-account-show) 來取得，而*範圍*會設定為在上一個步驟中使用 [az vm show](/cli/azure/vm#az-vm-show) 建立的 VM。 範圍也可以在資源群組或訂用帳戶層級指派，而一般的 Azure RBAC 繼承許可權則適用。 如需詳細資訊，請參閱[AZURE RBAC](../../role-based-access-control/overview.md)
 
 ```azurecli-interactive
 username=$(az account show --query user.name --output tsv)
@@ -136,7 +136,7 @@ az role assignment create \
 > [!NOTE]
 > 如果 AAD 網域和登入使用者名稱網域不相符，您必須以 --assignee-object-id** 指定使用者帳戶的物件識別碼，而不只是以 -assignee** 指定使用者名稱。 您可以使用 [az ad user list](/cli/azure/ad/user#az-ad-user-list) 取得使用者帳戶的物件識別碼。
 
-如需關於如何使用 RBAC 來管理 Azure 訂用帳戶資源存取權的詳細資訊，請參閱使用 [Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure 入口網站](../../role-based-access-control/role-assignments-portal.md)或 [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)。
+如需如何使用 Azure RBAC 來管理 Azure 訂用帳戶資源存取權的詳細資訊，請參閱使用[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、 [Azure 入口網站](../../role-based-access-control/role-assignments-portal.md)或[Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)。
 
 您也可以設定 Azure AD，以要求特定使用者需要進行多因素驗證才能登入 Linux 虛擬機器。 如需詳細資訊，請參閱[開始在雲端中使用 Azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md)。
 
@@ -185,7 +185,7 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 ### <a name="access-denied-azure-role-not-assigned"></a>拒絕存取：未指派 Azure 角色
 
-如果您在 SSH 提示字元中看到下列錯誤，請確認您已為 VM 設定 RBAC 原則，而可為使用者授與 [虛擬機器系統管理員登入]** 或 [虛擬機器使用者登入]** 角色：
+如果您在 SSH 提示字元中看到下列錯誤，請確認您已為 VM 設定了 Azure RBAC 原則，以授與使用者「*虛擬機器系統管理員登*入」或「*虛擬機器使用者登*入」角色：
 
 ```output
 login as: azureuser@contoso.onmicrosoft.com

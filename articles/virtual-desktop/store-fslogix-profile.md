@@ -1,25 +1,23 @@
 ---
 title: 儲存體 FSLogix 設定檔容器 Windows 虛擬桌面-Azure
 description: Azure 儲存體上儲存 Windows 虛擬桌面 FSLogix 設定檔的選項。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dfa5d6bc5707679bbe5dada9f28046202e7aae5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4702c68dcda0c794aef34d3c0675e2fd158e6d4f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808524"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009404"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows 虛擬桌面中 FSLogix 設定檔容器的儲存體選項
 
-Azure 提供多個儲存體解決方案，可讓您用來儲存 FSLogix 設定檔容器。 本文會比較 Azure 為 Windows 虛擬桌面 FSLogix 使用者設定檔容器所提供的儲存體解決方案。 我們建議您將 FSLogix 設定檔容器儲存在大多數客戶的 Azure 檔案儲存體上。 
+Azure 提供多個儲存體解決方案，可讓您用來儲存 FSLogix 設定檔容器。 本文會比較 Azure 為 Windows 虛擬桌面 FSLogix 使用者設定檔容器所提供的儲存體解決方案。 我們建議您將 FSLogix 設定檔容器儲存在大多數客戶的 Azure 檔案儲存體上。
 
-Windows 虛擬桌面提供 FSLogix 設定檔容器作為建議的使用者設定檔解決方案。 FSLogix 可用來漫遊遠端運算環境中的設定檔，例如 Windows 虛擬桌面。 在登入時，此容器會使用原生支援的虛擬硬碟（VHD）和 Hyper-v 虛擬硬碟（VHDX），以動態方式連接到計算環境。 使用者設定檔會立即可供使用，而且會與原生使用者設定檔完全出現在系統中。
+Windows 虛擬桌面提供 FSLogix 設定檔容器作為建議的使用者設定檔解決方案。 FSLogix 可用來漫遊遠端運算環境中的設定檔，例如 Windows 虛擬桌面。 在登入時，此容器會使用原生支援的虛擬硬碟（ (VHD) 和 Hyper-v 虛擬硬碟 (VHDX) ，以動態方式連接到計算環境。 使用者設定檔會立即可供使用，而且會與原生使用者設定檔完全出現在系統中。
 
 下表比較 Windows 虛擬桌面 FSLogix 設定檔容器使用者設定檔的儲存體解決方案 Azure 儲存體提供專案。
 
@@ -30,18 +28,18 @@ Windows 虛擬桌面提供 FSLogix 設定檔容器作為建議的使用者設定
 |使用案例|一般用途|來自 NetApp 內部部署的 Ultra 效能或遷移|跨平台|
 |平臺服務|是，Azure-原生解決方案|是，Azure-原生解決方案|否，自我管理|
 |區域可用性|所有區域|[選取區域](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|所有區域|
-|備援性|本機多餘/區域-多餘/異地-多餘|本機多餘|本機多餘/區域-多餘/異地-多餘|
-|層級和效能|標準<br>Premium<br>每個共用最多10萬 IOPS，每個共用 5 GBps，大約3毫秒延遲|標準<br>Premium<br>魏<br>最多每個磁片區 4.5 GBps 的320k （16K） IOPS，大約1毫秒延遲|標準 HDD：每個磁片最多 500 IOPS 的限制<br>標準 SSD：最多 4k IOPS 每個磁片限制<br>進階 SSD：最多 20k IOPS 每一磁片限制<br>我們建議儲存空間直接存取的 Premium 磁片|
+|備援|本機多餘/區域-多餘/異地-多餘|本機多餘|本機多餘/區域-多餘/異地-多餘|
+|層級和效能|標準<br>Premium<br>每個共用最多10萬 IOPS，每個共用 5 GBps，大約3毫秒延遲|標準<br>Premium<br>魏<br>最多 320k (16K) IOPS，每個磁片區 4.5 GBps，大約1毫秒延遲|標準 HDD：每個磁片最多 500 IOPS 的限制<br>標準 SSD：最多 4k IOPS 每個磁片限制<br>進階 SSD：最多 20k IOPS 每一磁片限制<br>我們建議儲存空間直接存取的 Premium 磁片|
 |Capacity|100每個共用的 TiB|每個磁片區 100 TiB，每個訂用帳戶最多 12.5 PiB|每個磁片最多 32 TiB|
-|必要的基礎結構|最小共用大小 1 GiB|容量集區上限 4 TiB，最小磁片區大小 100 GiB|Azure IaaS （+ 雲端見證）上的兩個 Vm，或至少有三個 Vm，但不含磁片費用|
-|通訊協定|SMB 2.1/3。 和 REST|NFSv3，NFSv 4.1 （預覽），SMB 3.x/2。x|NFSv3，NFSv 4.1，SMB 3。1|
+|必要的基礎結構|最小共用大小 1 GiB|容量集區上限 4 TiB，最小磁片區大小 100 GiB|Azure IaaS 上的兩個 Vm (+ 雲端見證) 或至少三部 Vm，而不需和磁片費用|
+|通訊協定|SMB 2.1/3。 和 REST|NFSv3、NFSv 4.1 (preview) 、SMB 3.x/2。x|NFSv3，NFSv 4.1，SMB 3。1|
 
 ## <a name="azure-management-details"></a>Azure 管理詳細資料
 
 |特性|Azure 檔案|Azure NetApp Files|儲存空間 Direct|
 |--------|-----------|------------------|---------------------|
-|Access|雲端、內部部署和混合式（Azure 檔案同步）|雲端，內部部署（透過 ExpressRoute）|雲端，內部部署|
-|備份|Azure 備份快照集整合|Azure NetApp Files 快照集|Azure 備份快照集整合|
+|Access|雲端、內部部署和混合式 (Azure 檔案同步) |透過 ExpressRoute 的雲端、內部部署 () |雲端，內部部署|
+|Backup|Azure 備份快照集整合|Azure NetApp Files 快照集|Azure 備份快照集整合|
 |安全性與合規性|[所有 Azure 支援的憑證](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO 已完成|[所有 Azure 支援的憑證](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory 整合|[原生 Active Directory 和 Azure Active Directory Domain Services](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory Domain Services 和原生 Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|僅限原生 Active Directory 或 Azure Active Directory Domain Services 支援|
 

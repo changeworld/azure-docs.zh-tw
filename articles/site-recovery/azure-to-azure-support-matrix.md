@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 09b6bf6db5927c49950fc5b2a6d1753d53364380
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 09b7fe1cc4f871d1f94844a8551479fabc0e22ff
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836644"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008843"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -179,7 +179,7 @@ Azure 資源庫映像 - Microsoft 發行 | 支援 | 只要 VM 在支援的作業
 Azure 資源庫映像 - 第三方發行 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 自訂映像 - 第三方發行 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 使用 Site Recovery 移轉 VM | 支援 | 如果使用 Site Recovery 將 VMware VM 或實體機器遷移到 Azure，您需要將機器上執行的舊版行動服務解除安裝，然後重新啟動機器，再複寫到另一個 Azure 區域。
-RBAC 原則 | 不支援 | VM 上的角色型存取控制 (RBAC) 原則不會複寫至目標區域中的容錯移轉 VM。
+RBAC 原則 | 不支援 | 在 Vm 上 (RBAC) 原則的角色型存取控制不會複寫至目的地區域中的容錯移轉 VM。
 延伸模組 | 不支援 | 延伸模組不會複寫至目標區域中的容錯移轉 VM。 在容錯移轉之後必須手動安裝延伸模組。
 鄰近放置群組 | 支援 | 位於鄰近放置群組內的虛擬機器可以使用 Site Recovery 來加以保護。
 

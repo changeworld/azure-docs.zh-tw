@@ -1,24 +1,22 @@
 ---
 title: 使用新的工作階段主機擴充現有的主機集區-Azure
 description: 如何在 Windows 虛擬桌面中使用新的工作階段主機擴充現有的主機集區。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 69237c2e4404793ce239710407ed10f02bf07d50
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 339fe25a5a75ca8bc5cc0af7c4d96651e90c7eb6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288732"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002443"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的工作階段主機擴充現有的主機集區
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)。
 
 當您在主機集區中增加使用量時，您可能需要使用新的工作階段主機擴充現有的主機集區，以處理新的負載。
 
@@ -26,7 +24,7 @@ ms.locfileid: "87288732"
 
 ## <a name="what-you-need-to-expand-the-host-pool"></a>擴充主機集區所需的內容
 
-開始之前，請確定您已使用下列其中一種方法建立主機集區和工作階段主機虛擬機器（Vm）：
+開始之前，請確定您已使用下列其中一種方法， (Vm 建立主機集區和工作階段主機虛擬機器) ：
 
 - [Azure 入口網站](./create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 建立主機集區](./create-host-pools-powershell.md)
@@ -51,7 +49,7 @@ ms.locfileid: "87288732"
 
 5. 選取 [ **+ 新增**] 以開始建立您的主機集區。
 
-6. 忽略 [基本] 索引標籤，並改為選取 [ **VM 詳細資料**] 索引標籤。您可以在這裡查看和編輯您想要新增至主機集區的虛擬機器（VM）詳細資料。
+6. 忽略 [基本] 索引標籤，並改為選取 [ **VM 詳細資料**] 索引標籤。您可以在這裡查看和編輯您要新增至主機集區之虛擬機器 (VM) 的詳細資料。
 
 7. 選取您想要在其下建立 Vm 的資源群組，然後選取 [區域]。 您可以選擇目前使用的區域或新的區域。
 

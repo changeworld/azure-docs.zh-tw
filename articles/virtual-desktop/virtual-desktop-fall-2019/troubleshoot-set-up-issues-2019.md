@@ -1,24 +1,22 @@
 ---
-title: Windows 虛擬桌面（傳統）租使用者主機集區建立-Azure
-description: 如何在 Windows 虛擬桌面（傳統）租使用者環境的安裝期間疑難排解和解決租使用者和主機集區的問題。
-services: virtual-desktop
+title: Windows 虛擬桌面 (傳統) 租使用者主機集區建立-Azure
+description: 如何在 Windows 虛擬桌面 (傳統) 租使用者環境中進行設定時，疑難排解和解決租使用者和主機集區的問題。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269592"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009251"
 ---
-# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>在 Windows 虛擬桌面中建立租使用者和主機集區（傳統）
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>在 Windows 虛擬桌面 (傳統) 中建立租使用者和主機集區
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-set-up-issues.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-set-up-issues.md)。
 
 本文涵蓋 Windows 虛擬桌面租使用者和相關工作階段主機集區基礎結構的初始設定期間的問題。
 
@@ -43,9 +41,9 @@ ms.locfileid: "87269592"
 
 ```Error
 AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
-\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the
 configuration of your service subscriptions.650052 Message The app needs access to a service
-(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled.
 Contact your IT Admin to review the configuration of your service subscriptions.
 ```
 
@@ -95,9 +93,9 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **原因1：** 用來登入 Azure 的帳戶中沒有使用中的訂閱，或使用的帳戶沒有許可權可查看訂閱。
 
-**修正1：** 使用具有參與者存取權的帳戶（至少）登入工作階段主機 Vm 即將部署的訂用帳戶。
+**修正1：** 使用具有「參與者」存取權的帳戶登入，並在要部署工作階段主機 Vm 的訂用帳戶中至少)  (。
 
-**原因2：** 使用的訂用帳戶是 Microsoft Cloud 服務提供者（CSP）租使用者的一部分。
+**原因2：** 使用的訂用帳戶是 Microsoft Cloud 服務提供者 (CSP) 租使用者的一部分。
 
 **修正2：** 移至 GitHub 位置以**建立和布建新的 Windows 虛擬桌面主機集**區，並遵循下列指示：
 
@@ -124,12 +122,12 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 1. 結束目前的 Azure Marketplace 部署供應專案。
 2. 在頂端的搜尋列中，搜尋並選取 [**活動記錄**]。
 3. 尋找名為 [**驗證部署**] 且狀態為 [**失敗**] 的活動，然後選取該活動。
-   
+
    > [!div class="mx-imgBorder"]
    > ![個別「驗證部署」活動的螢幕擷取畫面 * * 失敗 * * 狀態](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. 選取 [JSON]，然後向下滾動到畫面底部，直到您看到 [statusMessage] 欄位為止。
-   
+
    > [!div class="mx-imgBorder"]
    > ![失敗活動的螢幕擷取畫面，其中包含 JSON 文字之 statusMessage 屬性周圍的紅色方塊。](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
@@ -138,7 +136,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
  - 使用您第一次使用的參數執行 Azure Marketplace，但這次使用較少的 Vm 和 VM 核心。
  - 開啟您在瀏覽器的 [ **statusMessage** ] 欄位中看到的連結以提交要求，為指定的 VM SKU 增加 Azure 訂用帳戶的配額。
 
-## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure Resource Manager 範本和 PowerShell Desired State Configuration （DSC）錯誤
+## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure Resource Manager 範本和 PowerShell Desired State Configuration (DSC) 錯誤
 
 請遵循這些指示，針對 Azure Resource Manager 範本和 PowerShell DSC 的不成功部署進行疑難排解。
 
@@ -170,7 +168,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **修正2：** 請參閱錯誤：[工作階段主機 VM](troubleshoot-vm-configuration-2019.md)設定中的[功能變數名稱無法解析](troubleshoot-vm-configuration-2019.md#error-domain-name-doesnt-resolve)。
 
-**原因3：** 您的虛擬網路（VNET） DNS 設定設為 [**預設**]。
+**原因3：** 您的虛擬網路 (VNET) DNS 設定設為**預設值**。
 
 若要修正此問題，請執行下列動作：
 
@@ -216,7 +214,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
  /resourceGroups/demoHostDesktop/providers/Microsoft.Compute/virtualMachines/demo", "resourceType": "Microsoft.Compute/virtualMachines", "resourceName": "demo" } }}
 ```
 
-**原因：** 提供的密碼包含禁止的子字串（管理員、系統管理員、根）。
+**原因：** 提供的密碼包含禁止的子字串， (管理員、系統管理員、根) 。
 
 **修正：** 更新使用者名稱或使用不同的使用者。
 
@@ -247,10 +245,10 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **修正：** 確認使用者名稱和密碼具有虛擬機器的系統管理存取權，然後再次執行 Azure Resource Manager 範本。
 
-### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>錯誤： DeploymentFailed-PowerShell DSC 設定 ' FirstSessionHost ' 已完成，但發生錯誤
+### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>錯誤： DeploymentFailed-PowerShell DSC 設定 ' FirstSessionHost ' 已完成，但發生錯誤 (s) 
 
 > [!div class="mx-imgBorder"]
-> ![因為 PowerShell DSC 設定 ' FirstSessionHost ' 已完成但發生錯誤，所以部署的螢幕擷取畫面失敗。](../media/64870370bcbe1286906f34cf0a8646ab.png)
+> ![PowerShell DSC 設定 ' FirstSessionHost ' 已完成，但發生錯誤 (s) ，部署的螢幕擷取畫面。](../media/64870370bcbe1286906f34cf0a8646ab.png)
 
 原始錯誤的範例：
 
@@ -260,7 +258,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n
@@ -377,10 +375,10 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>錯誤：使用者需要 Azure 多重要素驗證（MFA）
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>錯誤：使用者需要 Azure 多重要素驗證 (MFA) 
 
 > [!div class="mx-imgBorder"]
-> ![因缺少多重要素驗證（MFA）而導致部署失敗的螢幕擷取畫面](../media/MFARequiredError.png)
+> ![因為缺少多重要素驗證 (MFA) ，所以部署的螢幕擷取畫面失敗](../media/MFARequiredError.png)
 
 原始錯誤的範例：
 
@@ -388,7 +386,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**原因：** 指定的 Windows 虛擬桌面租使用者管理員需要 Azure 多重要素驗證（MFA）才能登入。
+**原因：** 指定的 Windows 虛擬桌面租使用者管理員需要 (MFA) 的 Azure 多因素驗證才能登入。
 
 **修正：** 遵循[教學課程：使用 PowerShell 建立服務主體和角色指派](create-service-principal-role-powershell.md)中的步驟，為您的 Windows 虛擬桌面租使用者建立服務主體並為其指派角色。 確認您可以使用服務主體登入 Windows 虛擬桌面之後，請根據您所使用的方法，重新執行 Azure Marketplace 供應專案或 GitHub Azure Resource Manager 範本。 請依照下列指示，為您的方法輸入正確的參數。
 
@@ -401,7 +399,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 如果您正在執行 GitHub Azure Resource Manager 範本，請提供下列參數的值，以適當地驗證 Windows 虛擬桌面：
 
-- 租使用者系統管理使用者主體名稱（UPN）或應用程式識別碼：您所建立之新服務主體的應用程式識別碼
+- 租使用者系統管理員使用者主體名稱 (UPN) 或應用程式識別碼：您所建立之新服務主體的應用程式識別碼
 - 租使用者系統管理員密碼：您為服務主體產生的密碼秘密
 - IsServicePrincipal： **true**
 - AadTenantId：您所建立之服務主體的 Azure AD 租使用者識別碼

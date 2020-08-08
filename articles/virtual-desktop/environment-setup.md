@@ -1,24 +1,22 @@
 ---
 title: Windows 虛擬桌面環境-Azure
 description: 瞭解 Windows 虛擬桌面環境的基本元素，例如主機集區和應用程式群組。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e382c1d52130d44479e94378da895c6add7ba3ee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 99a07dd1791b539ea44fcbab250aa9c227ee1705
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283413"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002611"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虛擬桌面環境
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/environment-setup-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/environment-setup-2019.md)。
 
 Windows 虛擬桌面是一種服務，可讓使用者輕鬆且安全地存取其虛擬化的桌面和 Remoteapp。 本主題將告訴您更多有關 Windows 虛擬桌面環境的一般結構。
 
@@ -40,7 +38,7 @@ Windows 虛擬桌面是一種服務，可讓使用者輕鬆且安全地存取其
 - RemoteApp，使用者可在其中存取您個別選取併發布至應用程式群組的 Remoteapp
 - 桌面，使用者在其中存取完整桌面
 
-根據預設，每當您建立主機集區時，就會自動建立桌面應用程式群組（名為「桌面應用程式群組」）。 您可以隨時移除此應用程式群組。 不過，當桌面應用程式群組存在時，您無法在主機集區中建立另一個桌面應用程式群組。 若要發佈 Remoteapp，您必須建立 RemoteApp 應用程式群組。 您可以建立多個 RemoteApp 應用程式群組來配合不同的背景工作案例。 不同的 RemoteApp 應用程式群組也可以包含重迭的 Remoteapp。
+根據預設，每當您建立主機集區時，就會自動建立名為「桌面應用程式群組」 ) 的桌面應用程式群組 (。 您可以隨時移除此應用程式群組。 不過，當桌面應用程式群組存在時，您無法在主機集區中建立另一個桌面應用程式群組。 若要發佈 Remoteapp，您必須建立 RemoteApp 應用程式群組。 您可以建立多個 RemoteApp 應用程式群組來配合不同的背景工作案例。 不同的 RemoteApp 應用程式群組也可以包含重迭的 Remoteapp。
 
 若要將資源發佈給使用者，您必須將它們指派給應用程式群組。 將使用者指派給應用程式群組時，請考慮下列事項：
 
@@ -49,7 +47,7 @@ Windows 虛擬桌面是一種服務，可讓使用者輕鬆且安全地存取其
 
 ## <a name="workspaces"></a>工作區
 
-工作區是 Windows 虛擬桌面中應用程式群組的邏輯群組。 每個 Windows 虛擬桌面應用程式群組都必須與工作區相關聯，使用者才能看到發佈給他們的遠端應用程式和桌上型電腦。  
+工作區是 Windows 虛擬桌面中應用程式群組的邏輯群組。 每個 Windows 虛擬桌面應用程式群組都必須與工作區相關聯，使用者才能看到發佈給他們的遠端應用程式和桌上型電腦。
 
 ## <a name="end-users"></a>使用者
 

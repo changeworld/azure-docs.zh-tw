@@ -1,24 +1,22 @@
 ---
-title: Windows 虛擬桌面（傳統） PowerShell-Azure
-description: 當您設定 Windows 虛擬桌面（傳統）租使用者環境時，如何針對 PowerShell 問題進行疑難排解。
-services: virtual-desktop
+title: Windows 虛擬桌面 (傳統) PowerShell-Azure
+description: 當您設定 Windows 虛擬桌面 (傳統) 租使用者環境時，如何針對 PowerShell 問題進行疑難排解。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04ef12d6de8820740be687bd09ffaa5a8e69eb86
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 23d1e4b06c9c0278742da0cec8ac565b5f80a362
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269609"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004910"
 ---
-# <a name="windows-virtual-desktop-classic-powershell"></a>Windows 虛擬桌面（傳統） PowerShell
+# <a name="windows-virtual-desktop-classic-powershell"></a>Windows 虛擬桌面 (傳統) PowerShell
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-powershell.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../troubleshoot-powershell.md)。
 
 使用這篇文章來解決搭配 Windows 虛擬桌面使用 PowerShell 時的錯誤和問題。 如需遠端桌面服務 PowerShell 的詳細資訊，請參閱[Windows 虛擬桌面 powershell](/powershell/module/windowsvirtualdesktop/)。
 
@@ -51,7 +49,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 **修正：** 確認下列清單中的專案。
 
 - 使用者已同步至 Azure Active Directory。
-- 使用者不會系結至企業對消費者（B2C）或企業對企業（B2B）商務。
+- 使用者不會 (B2C) 或企業對企業 (B2B) 商務，系結到企業對消費者。
 - Windows 虛擬桌面租使用者系結至正確的 Azure Active Directory。
 
 ### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>錯誤： RdsDiagnosticActivities--使用者未獲授權，無法查詢管理服務
@@ -85,7 +83,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 **修正2：** 具有 Active Directory 許可權的使用者必須執行角色指派。
 
 >[!Note]
->RdsRoleAssignment 無法將許可權授與 Azure Active Directory （AD）中不存在的使用者。
+>RdsRoleAssignment 無法將許可權授與 Azure Active Directory (AD) 中不存在的使用者。
 
 ## <a name="next-steps"></a>後續步驟
 

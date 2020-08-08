@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 8cff5ec6886c0aceff5270418f9feeb145f6fd17
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c2203fec71430840e547115d24330b661bda50f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836542"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002220"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理 Azure Machine Learning 工作區的存取權
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -382,9 +382,9 @@ az provider operation show –n Microsoft.MachineLearningServices
 若要在 Amlcompute 叢集上指派使用者指派的身分識別，必須擁有寫入權限才能建立計算並具有[受控識別操作員角色](/azure/role-based-access-control/built-in-roles#managed-identity-operator)。 如需具有受控識別之 RBAC 的詳細資訊，請參閱[如何管理使用者指派](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)的身分識別
 
 
-### <a name="q-do-we-support-role-based-access-controls-on-the-studio-portal"></a>Q. 我們是否支援 Studio 入口網站上的角色型存取控制？
+### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>Q. 我們是否支援 Studio 入口網站上的角色型存取控制？
 
-Azure Machine Learning Studio 支援以角色為基礎的存取控制。 
+Azure Machine Learning Studio 支援 Azure RBAC)  (以角色為基礎的存取控制。 
 
 > [!IMPORTANT]
 > 一旦您將具有特定許可權的自訂角色指派給工作區中的資料科學家，使用者就會自動隱藏對應的動作 (例如新增計算按鈕) 。 隱藏這些專案可避免在使用時看到從服務傳回未經授權存取通知的控制項。

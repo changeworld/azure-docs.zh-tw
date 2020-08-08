@@ -1,24 +1,22 @@
 ---
 title: 使用 Azure Resource Manager 範本部署管理工具 - Azure
-description: 如何安裝具有 Azure Resource Manager 範本的使用者介面工具，以管理 Windows 虛擬桌面（傳統）資源。
-services: virtual-desktop
+description: 如何使用 Azure Resource Manager 範本安裝使用者介面工具，以管理 Windows 虛擬桌面 (傳統) 資源。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bf9fff614f638aec9519c11b2bb558cc77b94814
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ed6587cab1e90c9b4bd4ceffa64c77fa5d8de574
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284943"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005698"
 ---
-# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署 Windows 虛擬桌面（傳統）管理工具
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署 Windows 虛擬桌面 (傳統) 管理工具
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。
 
 依照本文中的指示，使用 Azure Resource Manager 範本部署 UI。
 
@@ -85,7 +83,7 @@ ms.locfileid: "87284943"
 
 決定要同意的使用者後，請依照下列指示同意使用工具：
 
-1. 移至您的 Azure 資源，並以您在範本中提供的名稱（例如 Apr3UX）選取 [Azure App Services] 資源，然後流覽至與其相關聯的 URL。例如， <https://rdmimgmtweb-210520190304.azurewebsites.net> 。
+1. 移至您的 Azure 資源，並使用您在範本中提供的名稱來選取 Azure App Services 資源 (例如 Apr3UX) 並流覽至與其相關聯的 URL;例如， <https://rdmimgmtweb-210520190304.azurewebsites.net> 。
 2. 使用適當的 Azure Active Directory 使用者帳戶登入。
 3. 若使用「全域管理員」來驗證，您現在可以選取 [代表您的組織同意]**** 核取方塊。 選取 [接受]**** 以提供同意。
 

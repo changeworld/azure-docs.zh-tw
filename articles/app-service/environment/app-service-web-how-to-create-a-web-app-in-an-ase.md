@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 0407bde00c703663227230a0b6ff2de287f6650c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220689"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007058"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在 App Service 環境 v1 中建立 Web 應用程式
 
@@ -28,19 +28,19 @@ ms.locfileid: "86220689"
 > 
 > 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 本教學課程假設您已建立 App Service 環境。 如果尚未建立，請參閱 [建立 App Service 環境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，按一下 [建立資源] > [Web + 行動] > [Web 應用程式]****。 
    
     ![顯示在 Azure 入口網站中建立 web 應用程式之位置的螢幕擷取畫面。][1]
-2. 選取您的訂閱。  
+2. 選取您的訂用帳戶。  
    
     如果您有多個訂用帳戶，請注意，若要在您的 App Service 環境中建立應用程式，必須使用您在建立環境時所使用訂用帳戶來建立。 
 3. 選取或建立資源群組。
    
-    *資源群組*可讓您將相關的 Azure 資源當做一個單位來管理，而且在為您的應用程式建立*角色型存取控制* (RBAC) 規則時非常有用。 如需詳細資訊，請參閱 [Azure Resource Manager 概觀][ResourceGroups]。 
+    *資源群組*可讓您將相關的 azure 資源當做一個單位來管理，而且在建立*azure 角色型存取控制 (* 適用于您應用程式的 azure RBAC) 規則時非常有用。 如需詳細資訊，請參閱 [Azure Resource Manager 概觀][ResourceGroups]。 
 4. 選取或建立 App Service 方案。
    
     *App Service 規劃*是一組受控的 Web 應用程式。  當您選取價格時，支付的價格通常會套用到 App Service 方案，而非個別的應用程式。 在 ASE 中，您需對配置給 ASE 的計算執行個體付費，而不需對與您的 ASP 一起列出的項目付費。  若要相應增加 Web 應用程式的執行個體數目，您可相應增加 App Service 方案的執行個體，這會影響該方案中的所有 Web 應用程式。  方案中的某些功能 (例如網站位置或 VNET 整合) 也有數量限制。  如需詳細資訊，請參閱[Azure App Service 計畫總覽](../overview-hosting-plans.md)

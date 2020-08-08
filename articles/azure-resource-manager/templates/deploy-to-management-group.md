@@ -3,16 +3,16 @@ title: 將資源部署至管理群組
 description: 說明如何在 Azure Resource Manager 範本的管理群組範圍中部署資源。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a17387aef4d35c042d1fe0b02f1c6fd447e4a918
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 992882859ed1c67cf66c31f69f21e151081cf087
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321797"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002904"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理群組層級建立資源
 
-當您的組織成熟時，您可以部署 Azure Resource Manager 範本（ARM 範本）來建立管理群組層級的資源。 例如，您可能需要為管理群組定義和指派[原則](../../governance/policy/overview.md)或[角色型存取控制](../../role-based-access-control/overview.md)。 您可以使用管理群組層級範本，以宣告方式套用原則，並在管理群組層級指派角色。
+當您的組織成熟時，您可以 (ARM 範本部署 Azure Resource Manager 範本，) 在管理群組層級建立資源。 例如，您可能需要為管理群組定義和指派[原則](../../governance/policy/overview.md)或[azure 角色型存取控制 (azure RBAC) ](../../role-based-access-control/overview.md) 。 您可以使用管理群組層級範本，以宣告方式套用原則，並在管理群組層級指派角色。
 
 ## <a name="supported-resources"></a>支援的資源
 
@@ -357,6 +357,6 @@ New-AzManagementGroupDeployment `
 
 ## <a name="next-steps"></a>後續步驟
 
-* 若要了解如何指派角色，請參閱[使用 RBAC 和 Azure Resource Manager 範本管理對 Azure 資源的存取](../../role-based-access-control/role-assignments-template.md)。
+* 若要瞭解如何指派角色，請參閱[使用 Azure Resource Manager 範本新增 Azure 角色指派](../../role-based-access-control/role-assignments-template.md)。
 * 如需針對 Azure 資訊安全中心部署工作區設定的範例，請參閱 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 您也可以部署訂用帳戶[層](deploy-to-subscription.md)級和[租使用者層級](deploy-to-tenant.md)的範本。

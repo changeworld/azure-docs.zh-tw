@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171800"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008996"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>適用于 Azure 安全性基準測試的 Azure Resource Graph 安全性基準
 
-此安全性基準會將[Azure 安全性基準測試](../../../security/benchmarks/overview.md)的指引套用至 Azure Resource Graph。 Azure 安全性基準測試會提供您如何在 Azure 上保護雲端解決方案的建議。 內容是依 Azure 安全性基準測試所定義的**安全性控制**，以及適用于 Azure Resource Graph 的相關指引來分組。 不適用 Azure Resource Graph 的**控制項**已排除。 若要查看 Azure Resource Graph 如何完全對應到 Azure 安全性基準，請參閱[完整的 azure 虛擬網路安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
+此安全性基準會將[Azure 安全性基準測試](../../../security/benchmarks/overview.md)的指引套用至 Azure Resource Graph。 Azure 安全性基準提供如何在 Azure 上保護雲端解決方案的建議。 內容是依 Azure 安全性基準測試所定義的**安全性控制**，以及適用于 Azure Resource Graph 的相關指引來分組。 不適用 Azure Resource Graph 的**控制項**已排除。 若要查看 Azure Resource Graph 如何完全對應到 Azure 安全性基準，請參閱[完整的 azure 虛擬網路安全性基準對應](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines)檔案。
 
 
 
@@ -26,7 +26,7 @@ ms.locfileid: "86171800"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期檢閱並協調使用者存取
 
-**指導**方針： Azure Resource Graph 提供以角色為基礎的存取控制 (RBAC) 的資源類型和屬性的存取權。 請定期審查並審查授與安全性主體的存取權 (使用者、群組和服務) 帳戶，以確保查詢會傳回適當資源的結果。
+**指導**方針： Azure Resource Graph 可讓您根據 azure 角色型存取控制 (azure RBAC) 來存取資源類型和屬性。 請定期審查並審查授與安全性主體的存取權 (使用者、群組和服務) 帳戶，以確保查詢會傳回適當資源的結果。
 
 * [Azure Resource Graph 中的權限](../overview.md#permissions-in-azure-resource-graph)
 

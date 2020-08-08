@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836933"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009634"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>設定 Azure 數位 Twins 實例和驗證 (入口網站) 
 
@@ -24,27 +24,13 @@ ms.locfileid: "87836933"
 * 若要使用 CLI 手動執行這些步驟，請參閱本文的 CLI 版本：[*如何：設定實例和驗證 (CLI) *](how-to-set-up-instance-cli.md)。
 * 若要使用部署腳本範例執行自動安裝，請參閱本文的腳本版本：[*如何：設定實例和驗證 (腳本) *](how-to-set-up-instance-scripted.md)。
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
- 
-然後，使用您的認證登入[Azure 入口網站](https://ms.portal.azure.com/)。
-
-## <a name="prerequisites-permission-requirements"></a>必要條件：許可權需求
-
-若要能夠完成本文中的所有步驟，您必須將其分類為 Azure 訂用帳戶中的擁有者。 
-
-您可以在 [Azure 入口網站的 [訂用帳戶][頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中檢查許可權等級 (您可以使用此連結 *，或*使用入口網站搜尋列) 尋找訂用帳戶。 尋找您所使用的訂用帳戶名稱，並在 [*我的角色*] 資料行中查看其角色。 如果您是擁有者，此值為*owner*：
-
-:::image type="content" source="media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="Azure 入口網站中的 [訂閱] 頁面，以擁有者身分顯示使用者" lightbox="media/how-to-set-up-instance/portal/subscriptions-role.png":::
-
-如果您發現值是「*參與者*」或「*擁有*者」以外的專案，您可以透過下列其中一種方式繼續進行：
-* 請洽詢您的訂用帳戶擁有者並要求擁有者，以代表您完成本文中的步驟
-* 請洽詢訂用帳戶擁有者或訂用帳戶上具有使用者存取管理員角色的人員，並要求他們提高訂用帳戶的擁有者許可權，讓您能夠繼續進行。 這適用于您的組織和 it 內的角色。
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>建立 Azure 數位 Twins 實例
 
-在本節中，您將使用 Azure 入口網站**建立新的 Azure 數位 Twins 實例**。
+在本節中，您將使用[Azure 入口網站](https://ms.portal.azure.com/)**建立新的 Azure 數位 Twins 實例**。 流覽至入口網站，並使用您的認證登入。
 
-登入[Azure 入口網站](https://ms.portal.azure.com/)之後，請從在 [Azure 服務] 首頁功能表中選取 [_建立資源_] 開始。
+進入入口網站後，請從 [Azure 服務] 首頁功能表中選取 [_建立資源_] 開始。
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="從 Azure 入口網站的首頁選取 [建立資源]":::
 
@@ -87,7 +73,7 @@ ms.locfileid: "87836933"
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="從 [存取控制 (IAM) ] 頁面中選取 [新增角色指派]":::
 
-在下列 [*新增角色指派*] 頁面上，填入值 (必須由 Azure 訂用帳戶) 的擁有者完成：
+在下列 [*新增角色指派*] 頁面上，填入值 (必須由 Azure 訂用帳戶) 中具有[足夠許可權](#prerequisites-permission-requirements)的使用者完成：
 * **角色**：從下拉式功能表中選取 [ *Azure 數位 Twins 擁有者] (預覽) *
 * **指派存取**權：從下拉式功能表中選取 [ *Azure AD 使用者、群組或服務主體*]
 * **選取**：搜尋要指派的使用者名稱或電子郵件地址。 當您選取結果時，使用者會顯示在 [選取的*成員*] 區段中。

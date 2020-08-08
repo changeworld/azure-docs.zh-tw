@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 0dbcbd173ce0a7c4c6a123f0644b870aa3cec2f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d00a6b7753a61bb2527a56231b2fe054736f1b0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829885"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008571"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>使用範本來建立 Azure Cache for Redis
 
@@ -26,7 +26,7 @@ ms.locfileid: "85829885"
 如需完整的範本，請參閱 [Azure Cache for Redis 範本](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json) \(英文\)。
 
 > [!NOTE]
-> 新 [Premium 層](cache-premium-tier-intro.md) 中有可用的 Resource Manager 範本。 
+> 新 [Premium 層](cache-overview.md#service-tiers) 中有可用的 Resource Manager 範本。 
 > 
 > * [建立具有叢集的進階 Azure Cache for Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
 > * [建立具有資料持續性的進階 Azure Cache for Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)

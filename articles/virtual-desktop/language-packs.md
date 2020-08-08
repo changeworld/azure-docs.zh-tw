@@ -1,23 +1,21 @@
 ---
 title: 在 Windows 虛擬桌面中的 Windows 10 Vm 上安裝語言套件-Azure
 description: 如何在 Windows 虛擬桌面中安裝適用于 Windows 10 多會話 Vm 的語言套件。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 542163511a1b4fc0acde9b44d73be6ffc042d5d3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361297"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008758"
 ---
 # <a name="install-language-packs"></a>安裝語言套件
 
-當您以國際方式設定 Windows 虛擬桌面部署時，最好先確定您的部署支援多種語言。 您可以在 Windows 10 企業版多會話虛擬機器（VM）映射上安裝語言套件，以支援您的組織所需的多種語言。 本文將告訴您如何安裝語言套件和抓取影像，讓您的使用者可以選擇自己的顯示語言。
+當您以國際方式設定 Windows 虛擬桌面部署時，最好先確定您的部署支援多種語言。 您可以將語言套件安裝在 Windows 10 企業版多會話虛擬機器上 (VM) 映射，以支援您的組織所需的多種語言。 本文將告訴您如何安裝語言套件和抓取影像，讓您的使用者可以選擇自己的顯示語言。
 
 若要深入瞭解如何在 Azure 中部署 VM，請前往[使用 Azure 入口網站在可用性區域中建立 Windows 虛擬機器](../virtual-machines/windows/create-portal-availability-zone.md)。
 
@@ -41,7 +39,7 @@ ms.locfileid: "85361297"
 
 5. 之後，選取 [**語言**]，然後選取 [**新增語言**]。 從清單中選擇您想要安裝的語言，然後選取 **[下一步]**。
 6. 當 [**安裝語言功能**] 視窗開啟時，請選取標示為 [安裝語言套件] 的核取方塊，**然後設定為 [我的 Windows 顯示語言**]。
-7. 選取 [安裝]。
+7. 選取 [安裝]  。
 8. 若要一次新增多個語言，請選取 [**新增語言**]，然後重複此程式，在步驟5和6中新增語言。 針對您想要安裝的每種語言重複此程式。 不過，您一次只能設定一種語言作為顯示語言。
 
     讓我們透過快速的視覺化示範來執行。 下列影像顯示如何安裝法文和荷蘭文語言套件，然後將法文設定為顯示語言。

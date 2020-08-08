@@ -1,18 +1,16 @@
 ---
 title: 將 Windows 授權套用至工作階段主機虛擬機器-Azure
 description: 說明如何套用適用于 Windows 虛擬桌面 Vm 的 Windows 授權。
-services: virtual-desktop
 author: ChristianMontoya
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: 53e70fbb1321f33849073bbd6b2176f5d88a1f8b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5f3749be36f5f035e49fcb862f92180e4902101f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088992"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010135"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>將 Windows 授權套用至工作階段主機虛擬機器
 

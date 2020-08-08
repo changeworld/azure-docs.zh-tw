@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 地圖服務 Services 模組 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Azure 地圖服務 services 模組來利用 Microsoft Azure 地圖 REST 服務。
+description: 瞭解 Azure 地圖服務 services 模組。 請參閱如何載入和使用此 helper 程式庫，以存取 web 或 Node.js 應用程式中 Azure 地圖服務 REST 服務。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 69ca43021ff2c45733375e14d87d0ed65d8962e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2f8d41c8248ab761c6d781263f3978937ad01e22
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287054"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004150"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure 地圖服務 services 模組
 
@@ -40,7 +40,7 @@ Azure 地圖服務 Web SDK 提供*服務模組*。 此模組是協助程式程�
         <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
-1. 建立驗證管線。 您必須先建立管線，才能初始化服務 URL 用戶端端點。 使用您自己的 Azure 地圖服務帳戶金鑰或 Azure Active Directory （Azure AD）認證來驗證 Azure 地圖服務搜尋服務用戶端。 在此範例中，將會建立搜尋服務 URL 用戶端。 
+1. 建立驗證管線。 您必須先建立管線，才能初始化服務 URL 用戶端端點。 使用您自己的 Azure 地圖服務帳戶金鑰，或 Azure Active Directory (Azure AD) 認證來驗證 Azure 地圖服務搜尋服務用戶端。 在此範例中，將會建立搜尋服務 URL 用戶端。 
 
     如果您使用訂用帳戶金鑰進行驗證：
 
@@ -161,7 +161,7 @@ Azure 地圖服務 Web SDK 提供*服務模組*。 此模組是協助程式程�
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="使用服務模組" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-CodePen 上的 Azure 地圖服務（），請參閱<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用服務模組</a>的畫筆 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
+在 CodePen 上 Azure 地圖服務 () ，請參閱<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用服務模組</a>的畫筆 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
 </iframe>
 
 <br/>

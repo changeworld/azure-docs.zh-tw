@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9f5fcbda93e4a31b4d328bffe4689a47a4eb89ff
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281560"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005307"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>應用程式開發人員在 Azure Kubernetes Services (AKS) 中管理資源的最佳做法
 
@@ -74,7 +74,7 @@ spec:
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>對 AKS 叢集開發和偵錯應用程式
 
-**最佳做法指引** - 開發小組應使用 Dev Spaces 對 AKS 叢集進行部署和偵錯。 這個開發模型可確保在應用程式部署至生產環境之前，均實作了角色型存取控制、網路或儲存體需求。
+**最佳做法指引** - 開發小組應使用 Dev Spaces 對 AKS 叢集進行部署和偵錯。 此開發模型可確保在應用程式部署至生產環境之前，會先執行 (RBAC) 、網路或儲存體需求的角色型存取控制。
 
 透過 Azure Dev Spaces，您將可直接對 AKS 叢集開發、偵錯和測試應用程式。 小組內的開發人員可互相合作，而在整個應用程式生命週期中進行建置及測試。 您可以繼續使用現有的工具，例如 Visual Studio 或 Visual Studio Code。 系統會針對 Dev Spaces 安裝延伸模組，以提供在 AKS 叢集中執行和偵錯工具的選項。
 

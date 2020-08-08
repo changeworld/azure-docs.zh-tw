@@ -1,24 +1,22 @@
 ---
-title: Windows 虛擬桌面（傳統）個人桌面指派類型-Azure
-description: 如何設定 Windows 虛擬桌面（傳統）個人桌面主機集區的指派類型。
-services: virtual-desktop
-author: HeidiLohr
-ms.service: virtual-desktop
+title: Windows 虛擬桌面 (傳統) 個人桌面指派類型-Azure
+description: 如何設定 Windows 虛擬桌面 (傳統) 個人桌面主機集區的指派類型。
+author: Heidilohr
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76b68ba0a51d250e4ce143314c9126597133e97f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 669010d2de90498c98fc685fe931b084a11cd104
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271037"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008503"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>設定 Windows 虛擬桌面的個人桌面主機集區指派類型（傳統）
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>設定 Windows 虛擬桌面 (傳統) 的個人桌面主機集區指派類型
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../configure-host-pool-personal-desktop-assignment-type.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../configure-host-pool-personal-desktop-assignment-type.md)。
 
 您可以設定個人桌面主機集區的指派類型來調整您的 Windows 虛擬桌面環境，使其更符合您的需求。 在本主題中，我們將示範如何為您的使用者設定自動或直接指派。
 

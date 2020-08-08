@@ -1,14 +1,14 @@
 ---
 title: 預覽 - 了解適用於 Kubernetes 的 Azure 原則
 description: 了解 Azure 原則如何使用 Rego 和 Open Policy Agent 來管理在 Azure 或內部部署中執行 Kubernetes 的叢集。 這是預覽功能。
-ms.date: 06/12/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373754"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003515"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>了解適用於 Kubernetes 叢集的 Azure 原則 (預覽)
 
@@ -130,10 +130,16 @@ Azure 原則會延伸 [Gatekeeper](https://github.com/open-policy-agent/gatekeep
 
   1. 在主頁面中，選取 [啟用附加元件] 按鈕。
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="啟用 AKS 適用的 Azure 原則附加元件" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="啟用 AKS 適用的 Azure 原則附加元件":::
 
+     <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > 如果 [啟用附加元件] 按鈕呈現灰色，則表示訂用帳戶尚未新增至預覽。 如果已啟用 [停用附加元件] 按鈕，並顯示 v2 訊息的移轉警告，則仍然會安裝 Gatekeepver v2，因此必須移除。
+     > 如果 [啟用附加元件] 按鈕呈現灰色，則表示訂用帳戶尚未新增至預覽。 如果已啟用 [**停用附加**元件] 按鈕，並顯示 [遷移警告 v2] 訊息，則會安裝 v1 附加元件，並在指派 v2 原則定義之前，必須先將其移除。 2020年8月24日起，已_淘汰_的 v1 附加元件將會自動取代為 v2 附加元件。 接著，必須指派新的 v2 版本的原則定義。 若要立即升級，請遵循下列步驟：
+     > 
+     > 1. 造訪 AKS 叢集上的 [原則] [ ** () 預覽**] 頁面，確認您的 AKS 叢集已安裝 v1 附加元件，並具有「目前的叢集使用 Azure 原則附加元件 v1 ...」消息。
+     > 1. [移除附加](#remove-the-add-on-from-aks)元件。
+     > 1. 選取 [**啟用附加**元件] 按鈕，以安裝第2版的附加元件。
+     > 1. [指派 v1 內建原則定義的 v2 版本](#assign-a-built-in-policy-definition)
 
 - Azure CLI
 

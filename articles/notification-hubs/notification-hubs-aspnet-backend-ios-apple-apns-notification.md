@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530162"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004175"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送給特定使用者
 
@@ -50,7 +50,7 @@ ms.locfileid: "86530162"
 1. 開啟您在[使用通知中樞 Azure 將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)教學課程中所建立的單一網頁檢視應用程式。
 
    > [!NOTE]
-   > 本節假設您已使用空白組織名稱來設定您的專案。 否則，您需要在所有類別名稱的前方加上您的組織名稱。
+   > 本節假設您已使用空白組織名稱來設定您的專案。 如果不是，請在所有類別名稱前面加上您的組織名稱。
 
 2. 在 `Main.storyboard` 檔案中，從物件程式庫新增螢幕擷取畫面中顯示的元件。
 
@@ -66,7 +66,7 @@ ms.locfileid: "86530162"
 
      某些元件已新增[至使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式](ios-sdk-get-started.md)教學課程。
 
-3. **Ctrl** 可拖曳檢視中的元件到 `ViewController.h`，並新增這些新的輸出。
+3. **Ctrl**從 view 中的元件拖曳至 `ViewController.h` ，並新增這些新的輸出：
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,13 +86,13 @@ ms.locfileid: "86530162"
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. 在 `ViewController.h` 中，在匯入陳述式後面新增以下的 `#define`。 將 `<Enter Your Backend Endpoint>` 預留位置替換成上一節中用來部署應用程式後端的目的地 URL。 例如： `http://your_backend.azurewebsites.net` 。
+4. 在 `ViewController.h` 中，在匯入陳述式後面新增以下的 `#define`。 將 `<Your backend endpoint>` 預留位置替換成上一節中用來部署應用程式後端的目的地 URL。 例如，`http://your_backend.azurewebsites.net`：
 
     ```objc
-    #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
-5. 在您的專案中，建立一個名為 `RegisterClient` 的新 Cocoa Touch 類別，作為與您所建立 ASP.NET 後端互動的介面。 建立繼承自 `NSObject`的類別。 然後，將下列程式碼新增至 `RegisterClient.h`。
+5. 在您的專案中，建立一個名為 `RegisterClient` 的新 Cocoa Touch 類別，作為與您所建立 ASP.NET 後端互動的介面。 建立繼承自 `NSObject`的類別。 然後在中新增下列程式碼 `RegisterClient.h` ：
 
     ```objc
     @interface RegisterClient : NSObject
@@ -483,7 +483,7 @@ ms.locfileid: "86530162"
 
     ![iOS 測試應用程式][2]
 
-3. 您應該會看到註冊成功的快顯通知。 按一下 [確定]。
+3. 您應該會看到註冊成功的快顯通知。 按一下 [確定]  。
 
     ![顯示的 iOS 測試通知][3]
 
@@ -494,7 +494,7 @@ ms.locfileid: "86530162"
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已學會如何針對具有與其註冊相關聯標記的使用者，將通知推送至這些特定使用者。 若要了解如何推送以位置為基礎的通知，請繼續進行下列教學課程： 
+在本教學課程中，您已學會如何針對具有與其註冊相關聯標記的使用者，將通知推送至這些特定使用者。 若要了解如何推送以位置為基礎的通知，請繼續進行下列教學課程：
 
 > [!div class="nextstepaction"]
 >[推送以位置為基礎的通知](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

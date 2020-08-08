@@ -1,28 +1,26 @@
 ---
-title: 部署 Windows 7 虛擬機器 Windows 虛擬桌面（傳統）-Azure
-description: 如何在 Windows 虛擬桌面 Windows 虛擬桌面（傳統）上設定和部署 Windows 7 虛擬機器。
-services: virtual-desktop
+title: 部署 Windows 7 虛擬機器 Windows 虛擬桌面 (傳統) -Azure
+description: 如何在 Windows 虛擬桌面 Windows 虛擬桌面 (傳統) 上設定和部署 Windows 7 虛擬機器。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99c82f63e88815edba13bf88ba23c18493649dd9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 259e49fbdd6a0eb392ddf6a3cd3c318798cfabd0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285079"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005056"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>在 Windows 虛擬桌面上部署 Windows 7 虛擬機器（傳統）
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>在 Windows 虛擬桌面 (傳統) 上部署 Windows 7 虛擬機器
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您嘗試管理目前版本 Windows 虛擬桌面中引進 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../deploy-windows-7-virtual-machine.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理目前版本 Windows 虛擬桌面中引進 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../deploy-windows-7-virtual-machine.md)。
 
-在 Windows 虛擬桌面上部署 Windows 7 虛擬機器（VM）的程式，與執行較新版本 Windows 的 Vm 略有不同。 本指南將告訴您如何部署 Windows 7。
+在 Windows 虛擬桌面上部署 Windows 7 虛擬機器 (VM) 的程式，與執行較新版本 Windows 的 Vm 略有不同。 本指南將告訴您如何部署 Windows 7。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請遵循[使用 PowerShell 建立主機集](create-host-pools-powershell-2019.md)區中的指示來建立主機集區。 之後，請依照在 Azure Marketplace 中[建立主機](create-host-pools-azure-marketplace-2019.md#optional-assign-additional-users-to-the-desktop-application-group)集區中的指示，將一或多個使用者指派給桌面應用程式群組。
 
@@ -32,13 +30,13 @@ ms.locfileid: "87285079"
 
 若要在 Windows 虛擬桌面上設定 Windows 7 VM：
 
-1. 登入 Azure 入口網站並搜尋 Windows 7 Enterprise 映射，或上傳您自己的自訂 Windows 7 Enterprise （x64）映射。
-2. 以 Windows 7 Enterprise 作為其主機作業系統，部署一或多部虛擬機器。 請確定虛擬機器允許遠端桌面通訊協定（RDP）（TCP/3389 埠）。
+1. 登入 Azure 入口網站並搜尋 Windows 7 Enterprise 映射，或上傳您自己自訂的 Windows 7 Enterprise (x64) 映射。
+2. 以 Windows 7 Enterprise 作為其主機作業系統，部署一或多部虛擬機器。 請確定虛擬機器允許遠端桌面通訊協定 (RDP)  (TCP/3389 埠) 。
 3. 使用 RDP 連接到 Windows 7 企業版主機，並使用您在設定部署時所定義的認證進行驗證。
 4. 將使用 RDP 連接到主機時所用的帳戶新增至「遠端桌面使用者」群組。 如果您不這麼做，在將 VM 加入 Active Directory 網域之後，您可能無法連線到該 VM。
 5. 移至 VM 上的 Windows Update。
 6. 安裝 [重要] 分類中的所有 Windows 更新。
-7. 安裝選用類別（不含語言套件）中的所有 Windows 更新。 這會安裝完成這些指示所需的遠端桌面通訊協定8.0 更新（[KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)）。
+7. 在 [選用類別] 中安裝所有 Windows 更新， (排除語言套件) 。 這會安裝您完成這些指示所需的遠端桌面通訊協定8.0 更新 ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) 。
 8. 開啟本機群組原則編輯器，然後流覽至 [**電腦**設定  >  **系統管理範本**  >  **Windows 元件**]  >  **遠端桌面服務**  >  **遠端桌面工作階段主機**  >  **遠端會話環境**]。
 9. 啟用遠端桌面通訊協定8.0 原則。
 10. 將此 VM 加入您的 Active Directory 網域。

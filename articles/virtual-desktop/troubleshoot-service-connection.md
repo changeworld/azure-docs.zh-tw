@@ -1,24 +1,22 @@
 ---
 title: 針對服務連線 Windows 虛擬桌面進行疑難排解 - Azure
 description: 如何解決在 Windows 虛擬桌面租用戶環境中設定用戶端連線時的問題。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 875f39653c5240e3a1b571b531eb2bb08c4811d0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289841"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009370"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虛擬桌面服務連線
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
 
 使用此文章來解決 Windows 虛擬桌面用戶端連線的問題。
 
@@ -40,7 +38,7 @@ ms.locfileid: "87289841"
 
 3. 如果正在使用 Web 用戶端，請確認沒有任何快取的認證問題。
 
-4. 如果使用者是 Azure Active Directory （AD）使用者群組的一部分，請確定使用者群組是安全性群組，而不是通訊群組。 Windows 虛擬桌面不支援 Azure AD 通訊群組。
+4. 如果使用者是 Azure Active Directory (AD) 使用者群組的一部分，請確定使用者群組是安全性群組，而不是通訊群組。 Windows 虛擬桌面不支援 Azure AD 通訊群組。
 
 ## <a name="next-steps"></a>後續步驟
 

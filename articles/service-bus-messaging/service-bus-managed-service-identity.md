@@ -3,12 +3,12 @@ title: 搭配服務匯流排之 Azure 資源的受控識別
 description: 本文說明如何使用受控識別，以 Azure 服務匯流排實體 (佇列、主題和訂用帳戶) 來存取。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 2e1c6127f3705adbf05cbfd8a92740651efe9048
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a3458d7d160317e383da6217252e3dd7ed52e90f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835658"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008894"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取 Azure 服務匯流排資源
 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)是一個跨 Azure 功能，可讓您建立與應用程式程式碼執行所在之部署相關聯的安全識別。 然後您可以將該識別與存取控制角色產生關連，該角色會授與用來存取應用程式所需之特定 Azure 資源的自訂權限。
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) 會透過 azure [RBAC () 以角色為基礎的
 將 Azure 角色指派給 Azure AD 的安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以是訂用帳戶、資源群組或服務匯流排命名空間的層級。 Azure AD 的安全性主體可以是使用者、群組、應用程式服務主體，或適用于 Azure 資源的受控識別。
 
 ## <a name="azure-built-in-roles-for-azure-service-bus"></a>適用于 Azure 服務匯流排的 Azure 內建角色
-對於 Azure 服務匯流排來說，透過 Azure 入口網站和 Azure 資源管理 API 來的管理命名空間和所有相關資源的作業，已使用「角色型存取控制** (RBAC)」模型來加以保護。 Azure 提供下列 Azure 內建角色，以授權存取服務匯流排命名空間：
+針對 Azure 服務匯流排，透過 Azure 入口網站和 Azure 資源管理 API 來管理命名空間和所有相關資源的工作，已經使用 Azure RBAC 模型來保護。 Azure 提供下列 Azure 內建角色，以授權存取服務匯流排命名空間：
 
 - [Azure 服務匯流排資料擁有](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)者：可讓您 (佇列、主題、訂用帳戶和篩選，服務匯流排命名空間及其實體的資料存取權) 
 - [Azure 服務匯流排資料](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)傳送者：使用此角色可授與服務匯流排命名空間及其實體的傳送存取權。
@@ -72,7 +72,7 @@ Azure Active Directory (Azure AD) 會透過 azure [RBAC () 以角色為基礎的
 - [Azure Resource Manager 用戶端程式庫](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>在 Azure AD 中將許可權授與受控識別
-若要在您的應用程式中授權來自受控識別的服務匯流排服務要求，請先為該受控識別設定角色型存取控制 (RBAC) 設定。 Azure 服務匯流排定義的 Azure 角色包含從服務匯流排傳送和讀取的許可權。 將 Azure 角色指派給受控識別時，受控識別會被授與適當範圍內服務匯流排實體的存取權。
+若要在您的應用程式中授權來自受控識別的服務匯流排服務要求，請先為該受控識別設定 Azure 角色型存取控制 (Azure RBAC) 設定。 Azure 服務匯流排定義的 Azure 角色包含從服務匯流排傳送和讀取的許可權。 將 Azure 角色指派給受控識別時，受控識別會被授與適當範圍內服務匯流排實體的存取權。
 
 如需指派 Azure 角色的詳細資訊，請參閱[使用 Azure Active Directory 進行驗證和授權以存取服務匯流排資源](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)。
 

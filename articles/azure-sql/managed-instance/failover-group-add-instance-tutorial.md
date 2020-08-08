@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: ad0079a0a48178f1e662e2fdf1daa685ae768857
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47f33d8b1a7792487491cbe7f2ddb5c7f5b087af
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024181"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002985"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教學課程：將 SQL 受控執行個體新增至容錯移轉群組
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "87024181"
   > [!NOTE]
   > - 進行本教學課程時，請確定您是使用[設定 SQL 受控執行個體容錯移轉群組的必要條件來設定](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)您的資源。 
   > - 建立受控實例可能需要很長的時間。 因此，本教學課程可能需要數小時才能完成。 如需布建時間的詳細資訊，請參閱[SQL 受控執行個體管理作業](sql-managed-instance-paas-overview.md#management-operations)。 
-  > - 參與容錯移轉群組的受控實例需要[Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)或兩個連線的 VPN 閘道。 本教學課程提供建立和連接 VPN 閘道的步驟。 如果您已設定 ExpressRoute，請略過這些步驟。 
+  > - 參與容錯移轉群組的受控實例需要[Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)或兩個連線的 VPN 閘道。 目前不支援轉移的全域 VNet 對等互連。 本教學課程提供建立和連接 VPN 閘道的步驟。 如果您已設定 ExpressRoute，請略過這些步驟。 
 
 
 ## <a name="prerequisites"></a>必要條件
@@ -933,7 +933,7 @@ ms.locfileid: "87024181"
     1. 選擇**第二個虛擬網路閘道**的 [次要網路閘道]，例如 `Secondary-Gateway` 。 
     1. 選取 [**建立雙向連接**] 旁的核取方塊。 
     1. 請保留預設的主要連線名稱，或將它重新命名為您選擇的值。 
-    1. 提供連接的**共用金鑰（PSK）** ，例如 `mi1m2psk` 。 
+    1. 提供連接的**共用金鑰 (PSK) ** ，例如 `mi1m2psk` 。 
 
    ![建立閘道連線](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
@@ -1149,7 +1149,7 @@ Write-host "Removing residual resources and resource group..."
 
 ---
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 在本教學課程中，您已設定兩個受控實例之間的容錯移轉群組。 您已了解如何︰
 

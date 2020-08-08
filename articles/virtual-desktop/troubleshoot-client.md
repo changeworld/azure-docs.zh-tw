@@ -1,19 +1,17 @@
 ---
 title: 針對遠端桌面用戶端 Windows 虛擬桌面進行疑難排解-Azure
 description: 如何解決在 Windows 虛擬桌面租用戶環境中設定用戶端連線時的問題。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f91e68ec2bd4b0b5400ee3e8e380d91ea6f31f36
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6ac2eb2632ad96538e965e4d1057d7e4a116c05d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291325"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009387"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>針對遠端桌面用戶端進行疑難排解
 
@@ -64,7 +62,7 @@ nslookup rdweb.wvd.microsoft.com
 
 首先，請檢查您所使用的 Azure Active Directory 帳戶。 如果您已使用不同于您想要用於 Windows 虛擬桌面的 Azure Active Directory 帳戶登入，您應該簽署或使用私用瀏覽器視窗。
 
-如果您使用的是 Windows 虛擬桌面（傳統），請使用本文中的 web 用戶端連結來[連線到您](./virtual-desktop-fall-2019/connect-web-2019.md)的資源。
+如果您使用 Windows 虛擬桌面 (傳統) ，請使用本文中的 web 用戶端連結[連線到您](./virtual-desktop-fall-2019/connect-web-2019.md)的資源。
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Web 用戶端停止回應或中斷連線
 

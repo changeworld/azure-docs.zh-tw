@@ -6,17 +6,15 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 84a5b4784a36fb22ae50a7a1ec4fcb7e5ef5b7c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aaee1c07f0fc8d5b0bba03550986291aea814fcb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80245271"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004806"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Cache for Redis 的資料持續性
 Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快取大小和功能，包括叢集功能、持續性及虛擬網路支援等「進階」層功能。 本文說明如何在進階 Azure Cache for Redis 執行個體中設定持續性。
-
-如需其他進階快取功能的相關資訊，請參閱 [Azure Cache for Redis 進階層簡介](cache-premium-tier-intro.md)。
 
 ## <a name="what-is-data-persistence"></a>資料永續性是什麼？
 [Redis 持續性](https://redis.io/topics/persistence)可讓您保存儲存在 Redis 中的資料。 您也可以擷取快照和備份資料，以在硬體失敗時載入。 這是優於基本或標準層的重大優勢，基本或標準層的所有資料是儲存在記憶體中，若發生快取節點故障的失敗，資料可能會遺失。 
@@ -166,7 +164,7 @@ AOF 持續性將每筆寫入內容儲存至記錄，因此會對輸送量造成�
 
 儲存在 AOF 檔案中的資料會根據節點分成多個分頁 Blob，以提升將資料儲存至儲存體的效能。 下表顯示針對每個定價層所使用的分頁 Blob 數量：
 
-| 高階層 | Blob |
+| 進階層 | Blob |
 |--------------|-------|
 | P1           | 每個分區 4 個    |
 | P2           | 每個分區 8 個    |
@@ -179,9 +177,9 @@ AOF 持續性將每筆寫入內容儲存至記錄，因此會對輸送量造成�
 
 
 ## <a name="next-steps"></a>後續步驟
-了解如何使用更多進階快取功能。
+深入瞭解 Azure Cache for Redis 功能。
 
-* [Azure Cache for Redis 進階層簡介](cache-premium-tier-intro.md)
+* [Azure Cache for Redis Premium 服務層級](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

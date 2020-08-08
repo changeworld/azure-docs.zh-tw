@@ -1,24 +1,22 @@
 ---
 title: Windows 虛擬桌面環境主機集區建立-Azure
 description: 如何在 Windows 虛擬桌面環境安裝期間疑難排解和解決租使用者和主機集區的問題。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a36e21d346e08ebe09f8c4b34f6af529d2a0f0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 064cdc0189f6b85fa0e5872f49759c2ec67472e6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292557"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006157"
 ---
 # <a name="host-pool-creation"></a>主機集區建立
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md)。
 
 本文涵蓋 Windows 虛擬桌面租使用者和相關工作階段主機集區基礎結構的初始設定期間的問題。
 
@@ -37,13 +35,13 @@ ms.locfileid: "87292557"
 > [!div class="mx-imgBorder"]
 > ![顯示「建立免費帳戶」訊息之 Azure 入口網站的影像](media/create-new-account.png)
 
-**原因**：您用來登入 Azure 的帳戶中沒有使用中的訂閱，或帳戶沒有許可權可查看訂用帳戶。 
+**原因**：您用來登入 Azure 的帳戶中沒有使用中的訂閱，或帳戶沒有許可權可查看訂用帳戶。
 
-**修正**.. 登入訂用帳戶，您將會在其中部署工作階段主機虛擬機器（vm），並使用至少具有參與者層級存取權的帳戶。
+**修正**.. 登入訂用帳戶，您將會在其中部署工作階段主機虛擬機器 (vm) 具有至少具有參與者層級存取權的帳戶。
 
 ### <a name="error-exceeding-quota-limit"></a>錯誤：「超過配額限制」
 
-如果您的作業超過配額限制，您可以執行下列其中一項操作： 
+如果您的作業超過配額限制，您可以執行下列其中一項操作：
 
 - 使用相同的參數，但 Vm 和 VM 核心較少，建立新的主機集區。
 
@@ -81,7 +79,7 @@ ms.locfileid: "87292557"
 
 **修正2：** 請參閱錯誤：[工作階段主機 VM](troubleshoot-vm-configuration.md)設定中的[功能變數名稱無法解析](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve)。
 
-**原因3：** 您的虛擬網路（VNET） DNS 設定設為 [**預設**]。
+**原因3：** 您的虛擬網路 (VNET) DNS 設定設為**預設值**。
 
 若要修正此問題，請執行下列動作：
 
@@ -119,13 +117,13 @@ ms.locfileid: "87292557"
 原始錯誤的範例：
 
 ```Error
- { …{ "provisioningOperation": 
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ { …{ "provisioningOperation":
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
  "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
-**原因：** 提供的密碼包含禁止的子字串（管理員、系統管理員、根）。
+**原因：** 提供的密碼包含禁止的子字串， (管理員、系統管理員、根) 。
 
 **修正：** 更新使用者名稱或使用不同的使用者。
 
@@ -138,10 +136,10 @@ ms.locfileid: "87292557"
 
 ```Error
 { … "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
  One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
@@ -149,10 +147,10 @@ ms.locfileid: "87292557"
 
 **修正：** 確認使用者名稱和密碼具有虛擬機器的系統管理存取權，然後再次執行 Azure Resource Manager 範本。
 
-### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>錯誤： DeploymentFailed-PowerShell DSC 設定 ' FirstSessionHost ' 已完成，但發生錯誤
+### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>錯誤： DeploymentFailed-PowerShell DSC 設定 ' FirstSessionHost ' 已完成，但發生錯誤 (s) 
 
 > [!div class="mx-imgBorder"]
-> ![因為 PowerShell DSC 設定 ' FirstSessionHost ' 已完成但發生錯誤，所以部署的螢幕擷取畫面失敗。](media/failure-dsc.png)
+> ![PowerShell DSC 設定 ' FirstSessionHost ' 已完成，但發生錯誤 (s) ，部署的螢幕擷取畫面。](media/failure-dsc.png)
 
 原始錯誤的範例：
 
@@ -162,7 +160,7 @@ ms.locfileid: "87292557"
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n

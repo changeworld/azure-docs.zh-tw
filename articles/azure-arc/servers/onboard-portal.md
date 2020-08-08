@@ -6,15 +6,15 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/23/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bc9bc034abce789046803bbcad5b750984c905cb
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: f88fc4a1fd5c44b515ab44b604ebf9a885165ddc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809522"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007994"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>從 Azure 入口網站將混合式機器連線至 Azure
 
@@ -50,7 +50,9 @@ ms.locfileid: "87809522"
 1. 在 [產生指令碼] 頁面的 [作業系統] 下拉式清單中，選取要作為指令碼執行平台的作業系統。
 
 1. 如果機器透過 Proxy 伺服器進行通訊以連線到網際網路，請選取 [下一步：Proxy 伺服器]。
+
 1. 在 [Proxy 伺服器] 索引標籤上，指定要供機器用來與 Proxy 伺服器通訊的 Proxy 伺服器 IP 位址或名稱與連接埠號碼。 請以 `http://<proxyURL>:<proxyport>` 格式輸入值。
+
 1. 選取 [檢閱 + 產生]。
 
 1. 在 [檢閱 + 產生] 索引標籤上檢閱摘要資訊，然後選取 [下載]。 如果您還需要變更，請選取 [上一步]。
@@ -65,7 +67,7 @@ ms.locfileid: "87809522"
 >* 若要安裝或解除安裝此代理程式，您必須具有「系統管理員」權限。
 >* 您必須先下載安裝程式套件，並將其複製到目標伺服器上的資料夾，或從共用的網路資料夾執行此動作。 如果您在執行此安裝程式套件時未使用任何選項，則會啟動以互動方式安裝代理程式的安裝精靈。
 
-如果機器需要透過 Proxy 伺服器與服務通訊，則在安裝代理程式之後，您必須執行本文稍後所述的命令。 這會設定 Proxy 伺服器系統環境變數 `https_proxy`。
+如果電腦需要透過 proxy 伺服器與服務通訊，則在安裝代理程式之後，您需要執行下列步驟中所述的命令。 此命令會設定 proxy 伺服器系統內容變數 `https_proxy` 。
 
 如果您不熟悉 Windows Installer 套件的命令列選項，請參閱 [Msiexec 標準命令列選項](/windows/win32/msi/standard-installer-command-line-options)和 [Msiexec 命令列選項](/windows/win32/msi/command-line-options)。
 
@@ -75,13 +77,32 @@ ms.locfileid: "87809522"
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-若要以無訊息模式安裝代理程式，並在已存在的 `C:\Support\Logs` 資料夾中建立安裝記錄檔，請執行下列命令。
+1. 若要以無訊息模式安裝代理程式，並在已存在的 `C:\Support\Logs` 資料夾中建立安裝記錄檔，請執行下列命令。
 
-```dos
-msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
-```
+    ```dos
+    msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
+    ```
 
-如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是「%Programfiles%\AzureConnectedMachineAgentAgent\logs」。
+    如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是「%Programfiles%\AzureConnectedMachineAgentAgent\logs」。
+
+2. 如果電腦需要透過 proxy 伺服器進行通訊，若要設定 proxy 伺服器環境變數，請執行下列命令：
+
+    ```powershell
+    [Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
+    $env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+    # For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
+    Restart-Service -Name himds
+    ```
+
+    >[!NOTE]
+    >本代理程式不支援在此預覽版中設定 Proxy 驗證。
+    >
+
+3. 安裝代理程式之後，您必須執行下列命令，將其設定為與 Azure Arc 服務通訊：
+
+    ```dos
+    "%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"
+    ```
 
 ### <a name="install-with-the-scripted-method"></a>使用指令碼方法來安裝
 
@@ -97,34 +118,13 @@ msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagen
 
 如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是「%Programfiles%\AzureConnectedMachineAgentAgent\logs」。
 
-### <a name="configure-the-agent-proxy-setting"></a>設定代理程式 Proxy 設定
-
-若要設定 Proxy 伺服器環境變數，請執行下列命令：
-
-```powershell
-# If a proxy server is needed, execute these commands with the proxy URL and port.
-[Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
-$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
-# For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
-Restart-Service -Name himds
-```
-
->[!NOTE]
->本代理程式不支援在此預覽版中設定 Proxy 驗證。
->
-
-### <a name="configure-agent-communication"></a>設定代理程式通訊
-
-在安裝代理程式後，您必須執行下列命令，將代理程式設定為與 Azure Arc 服務進行通訊：
-
-`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
-
 ## <a name="install-and-validate-the-agent-on-linux"></a>在 Linux 上安裝和驗證代理程式
 
 適用於 Linux 的 Connected Machine 代理程式會以發行版本慣用的套件格式來提供 (.RPM 或 .DEB)，其裝載位置在 Microsoft 的[套件存放庫](https://packages.microsoft.com/)。 [殼層指令碼套件組合 `Install_linux_azcmagent.sh`](https://aka.ms/azcmagent) 會執行下列動作：
 
 - 設定主機電腦使其從 packages.microsoft.com 下載代理程式套件。
 - 安裝混合式資源提供者套件。
+- 向 Azure Arc 註冊機器
 
 (選擇性) 您可以納入 `--proxy "{proxy-url}:{proxy-port}"` 參數，以使用 Proxy 資訊來設定代理程式。
 
@@ -150,18 +150,9 @@ wget https://aka.ms/azcmagent -O ~/Install_linux_azcmagent.sh
 bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 ```
 
-### <a name="configure-the-agent-communication"></a>設定代理程式通訊
+## <a name="verify-the-connection-with-azure-arc"></a>驗證與 Azure Arc 的連線
 
-安裝好代理程式後，請執行下列命令將其設定為與 Azure Arc 服務進行通訊：
-
-`azcmagent connect --resource-group "resourceGroupName" --tenant-id "tenantID" --location "regionName" --subscription-id "subscriptionID"`
-
->[!NOTE]
->您必須具備 Linux 電腦的*根*存取權限，才能執行**azcmagent**。
-
-## <a name="verify-the-connection-with-azure-arc"></a>確認與 Azure Arc 的連線
-
-在安裝好代理程式並將其設定為連線至適用於伺服器的 Azure Arc (預覽) 之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
+在您安裝代理程式並將其設定為連接到適用于伺服器的 Azure Arc (預覽) 時，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
 
 ![成功的伺服器連線](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: 7d5ab5c125a8a395d1bc0139421ec804e1221e12
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506429"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008962"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>針對 Azure Cache for Redis 用戶端問題進行疑難排解
 
@@ -51,9 +51,9 @@ ms.locfileid: "86506429"
 在上述的例外狀況中，有幾個有趣的問題：
 
 - 請注意，在 `IOCP` 區段和 `WORKER` 區段中，`Busy` 值大於 `Min` 值。 這種差異表示您的 `ThreadPool` 設定需要調整。
-- 您也可以查看 `in: 64221`。 此值表示在用戶端的核心通訊端層收到64211個位元組，但應用程式尚未讀取。 這種差異通常表示您的應用程式（例如，Stackexchange.redis. Redis）在伺服器將資料傳送給您時，不會快速地從網路讀取資料。
+- 您也可以查看 `in: 64221`。 此值表示在用戶端的核心通訊端層收到64211個位元組，但應用程式尚未讀取。 這種差異通常表示您的應用程式 (例如 Stackexchange.redis。 Redis) 不會在伺服器將資料傳送給您時，快速地從網路讀取資料。
 
-您可以設定[您的 `ThreadPool` 設定](cache-faq.md#important-details-about-threadpool-growth)，以確定您的執行緒集區會在高載案例下快速地相應增加。
+您可以設定[您的 `ThreadPool` 設定](cache-management-faq.md#important-details-about-threadpool-growth)，以確定您的執行緒集區會在高載案例下快速地相應增加。
 
 ## <a name="high-client-cpu-usage"></a>用戶端 CPU 使用量很高
 
@@ -109,4 +109,4 @@ ms.locfileid: "86506429"
 ## <a name="additional-information"></a>其他資訊
 
 - [針對 Azure Cache for Redis 伺服器端問題進行疑難排解](cache-troubleshoot-server.md)
-- [如何效能評定和測試我快取的效能？](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [如何效能評定和測試我快取的效能？](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)

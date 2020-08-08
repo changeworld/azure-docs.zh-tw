@@ -1,24 +1,22 @@
 ---
-title: 連接 Windows 虛擬桌面（傳統） web 用戶端-Azure
-description: 如何使用 web 用戶端連接到 Windows 虛擬桌面（傳統）。
-services: virtual-desktop
+title: 連接 Windows 虛擬桌面 (傳統) web 用戶端-Azure
+description: 如何使用 web 用戶端連接到 Windows 虛擬桌面 (傳統) 。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: efe97c86ebfac8e130489b3105a97302866d6822
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c8a55e35ba89caefc362024fc871ac5eb800447b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87270374"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008418"
 ---
-# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>使用 web 用戶端連接到 Windows 虛擬桌面（傳統）
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>使用 web 用戶端連接到 Windows 虛擬桌面 (傳統) 
 
 >[!IMPORTANT]
->此內容適用于 Windows 虛擬桌面（傳統），不支援 Azure Resource Manager Windows 虛擬桌面物件。 如果您正嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../connect-web.md)。
+>此內容適用於不支援 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面 (傳統)。 如果您嘗試管理 Azure Resource Manager Windows 虛擬桌面物件，請參閱[這篇文章](../connect-web.md)。
 
 Web 用戶端可讓您從網頁瀏覽器存取您的 Windows 虛擬桌面資源，而不需要冗長的安裝過程。
 

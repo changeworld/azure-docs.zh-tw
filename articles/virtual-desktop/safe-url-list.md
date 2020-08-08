@@ -1,19 +1,17 @@
 ---
 title: Windows 虛擬桌面安全 URL 清單-Azure
 description: 您應該解除封鎖的 Url 清單，以確保您的 Windows 虛擬桌面部署如預期運作。
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075615"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009472"
 ---
 # <a name="safe-url-list"></a>安全 URL 清單
 
@@ -33,7 +31,7 @@ ms.locfileid: "87075615"
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows 啟用|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 入口網站支援|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 實例中繼資料服務端點](../virtual-machines/windows/instance-metadata-service.md) | 不適用 |
+| 169.254.169.254 | 80 | [Azure 實例中繼資料服務端點](../virtual-machines/windows/instance-metadata-service.md) | N/A |
 
 >[!IMPORTANT]
 >Windows 虛擬桌面現在支援 FQDN 標記。 如需詳細資訊，請參閱[使用 Azure 防火牆來保護 Windows 虛擬桌面部署](../firewall/protect-windows-virtual-desktop.md)。
@@ -44,13 +42,13 @@ ms.locfileid: "87075615"
 
 |位址|傳出 TCP 連接埠|目的|服務標記|
 |---|---|---|---|
-|*.microsoftonline.com|443|向 Microsoft Online Services 進行驗證|無|
-|*.events.data.microsoft.com|443|遙測服務|無|
-|www.msftconnecttest.com|443|偵測 OS 是否已連線到網際網路|無|
-|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|無|
+|*.microsoftonline.com|443|向 Microsoft Online Services 進行驗證|None|
+|*.events.data.microsoft.com|443|遙測服務|None|
+|www.msftconnecttest.com|443|偵測 OS 是否已連線到網際網路|None|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|None|
 |login.windows.net|443|登入 Microsoft Online Services、Microsoft 365|None|
 |*.sfx.ms|443|OneDrive 用戶端軟體的更新|None|
-|*.digicert.com|443|憑證撤銷檢查|無|
+|*.digicert.com|443|憑證撤銷檢查|None|
 
 >[!NOTE]
 >Windows 虛擬桌面目前沒有可解除封鎖的 IP 位址範圍清單以允許網路流量。 我們目前只支援解除封鎖特定的 Url。

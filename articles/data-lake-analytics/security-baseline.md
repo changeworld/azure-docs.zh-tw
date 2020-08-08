@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cb93fa266111a0f60a139d7b76a149ba81b486e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075078"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005130"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>適用于 Data Lake Analytics 的 Azure 安全性基準
 
@@ -68,13 +68,13 @@ ms.locfileid: "87075078"
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
-**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路中執行，也無法使用網路安全性群組（Nsg）來記錄網路流量記錄。
+**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，而且無法使用網路安全性群組 (Nsg) 來記錄網路流量記錄。
 
 **Azure 資訊安全中心監視**：不適用
 
 **責任**：不適用
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統（IDS/IPS）
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統 (IDS/IPS) 
 
 **指導**方針：不適用;Data Lake Analytics 是一種 PaaS 供應專案，不會部署到客戶網路。
 
@@ -92,7 +92,7 @@ ms.locfileid: "87075078"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
-**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路中執行，也無法使用網路安全性群組（Nsg）。
+**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，而且無法使用網路安全性群組 (Nsg) 。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -100,7 +100,7 @@ ms.locfileid: "87075078"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路中執行，也無法使用網路安全性群組（Nsg）。
+**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，而且無法使用網路安全性群組 (Nsg) 。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -108,7 +108,7 @@ ms.locfileid: "87075078"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路中執行，也無法使用網路安全性群組（Nsg）。
+**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，而且無法使用網路安全性群組 (Nsg) 。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -116,7 +116,7 @@ ms.locfileid: "87075078"
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路中執行，也無法使用網路安全性群組（Nsg）。
+**指導**方針：不適用;Data Lake Analytics 不會在客戶虛擬網路內部執行，而且無法使用網路安全性群組 (Nsg) 。
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -256,7 +256,7 @@ ms.locfileid: "87075078"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
-**指導**方針： Data Lake Analytics 沒有預設密碼的概念，因為 Azure Active Directory 提供驗證，並受到角色型存取控制（RBAC）的保護。
+**指導**方針： Data Lake Analytics 沒有預設密碼的概念，因為 Azure Active Directory 提供驗證，並受到 azure 角色型存取控制 (azure RBAC) 的保護。
 
 * [Azure Data Lake Analytics 總覽](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-overview)
 
@@ -276,7 +276,7 @@ ms.locfileid: "87075078"
 
 **責任**：客戶
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入（SSO）
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入 (SSO) 
 
 **指導**方針：盡可能使用 Azure Active Directory SSO，而不是設定個別服務的獨立認證。 使用 Azure 資訊安全中心身分識別和存取建議。
 
@@ -288,7 +288,7 @@ ms.locfileid: "87075078"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：所有以 Azure Active Directory 為基礎的存取都使用多重要素驗證
 
-**指引**：啟用 Azure Active Directory 多重要素驗證（MFA），並遵循 Azure 資訊安全中心身分識別和存取管理建議，以協助保護您的 Data Lake Analytics 資源。
+**指引**： (MFA) 啟用 Azure Active Directory 多重要素驗證，並遵循 Azure 資訊安全中心身分識別和存取管理建議來協助保護您的 Data Lake Analytics 資源。
 
 * [如何在 Azure 中啟用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -300,7 +300,7 @@ ms.locfileid: "87075078"
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用安全、受 Azure 管理的工作站來進行系統管理工作
 
-**指引**.. 針對需要更高許可權的系統管理工作，使用安全、受 Azure 管理的工作站（也稱為特殊許可權存取工作站，或 PAW）。
+**指導**方針：使用安全、受 Azure 管理的工作站 (也稱為特殊許可權存取工作站，或 PAW) ，以執行需要提高許可權的系統管理工作。
 
 * [瞭解安全、受 Azure 管理的工作站](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
 
@@ -334,7 +334,7 @@ ms.locfileid: "87075078"
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指導**方針：使用 Azure Active Directory （Azure AD）做為中央驗證和授權系統。 Azure AD 提供角色型存取控制（RBAC），以精細控制用戶端對 Data Lake Analytics 資源的存取。
+**指導**方針：使用 Azure Active Directory (Azure AD) 作為中央驗證和授權系統。 Azure AD 提供角色型存取控制 (RBAC) ，以精細控制用戶端對 Data Lake Analytics 資源的存取。
 
 * [如何建立和設定 Azure AD 實例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -356,7 +356,7 @@ ms.locfileid: "87075078"
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：監視嘗試存取已停用的認證
 
-**指導**方針：啟用 Data Lake Analytics 和 Azure Active Directory 的診斷設定，並將所有記錄傳送到 Log Analytics 工作區。 在 Log Analytics 中設定所需的警示（例如嘗試存取已停用的密碼）。
+**指導**方針：啟用 Data Lake Analytics 和 Azure Active Directory 的診斷設定，並將所有記錄傳送到 Log Analytics 工作區。 設定所需的警示 (例如，嘗試存取 Log Analytics 內已停用的密碼) 。
 
 * [將 Azure AD 記錄與 Azure 監視器記錄整合](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -458,7 +458,7 @@ ms.locfileid: "87075078"
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
 
-**指引**：使用角色型存取控制（RBAC）來控制使用者與服務的互動方式。
+**指引**：使用角色型存取控制 (RBAC) 來控制使用者與服務的互動方式。
 
 * [管理以角色為基礎的存取控制](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-manage-use-portal#manage-role-based-access-control)
 
@@ -536,7 +536,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指導**方針：使用常見的風險評分計畫（例如，常見的弱點評分系統）或協力廠商掃描工具所提供的預設風險評等。
+**指導**方針：使用常見的風險評分計畫 (例如，常見的弱點評分系統) 或協力廠商掃描工具所提供的預設風險評等。
 
 * [NIST 發行--常見的弱點評分系統](https://www.nist.gov/publications/common-vulnerability-scoring-system)
 
@@ -550,7 +550,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
-**指引**：使用 Azure Resource Graph 來查詢和探索訂用帳戶中的所有資源（例如計算、儲存體、網路、埠和通訊協定等）。 請確定您的租使用者中有適當（讀取）許可權，並列舉所有 Azure 訂用帳戶以及訂用帳戶中的資源。
+**指引**：使用 Azure Resource Graph 來查詢和探索所有資源 (例如，您訂用帳戶中的計算、儲存體、網路、埠及通訊協定等 ) 。 請確定您的租使用者中有適當的 (讀取) 許可權，並列舉所有的 Azure 訂用帳戶以及訂用帳戶中的資源。
 
 雖然可以透過 Azure Resource Graph Explorer 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
 
@@ -606,7 +606,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 - 不允許的資源類型
 - 允許的資源類型
 
-此外，請使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。
+此外，使用 Azure Resource Graph 來查詢/探索訂用帳戶 (s) 內的資源。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -735,7 +735,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指引**：使用 Azure Repos 安全地儲存和管理您的程式碼，例如自訂的 Azure 原則、Azure Resource Manager 範本、Desired State Configuration 腳本等。若要存取您在 Azure DevOps 中管理的資源，您可以將許可權授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory （Azure AD）中定義的群組（如果與 Azure DevOps 整合），或 Active Directory （如果與 TFS 整合）。
+**指引**：使用 Azure Repos 安全地儲存和管理您的程式碼，例如自訂的 Azure 原則、Azure Resource Manager 範本、Desired State Configuration 腳本等。若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中所定義之群組的許可權，或 Active Directory （如果與 TFS 整合）。
 
 * [如何在 Azure DevOps 中儲存程式碼](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -827,7 +827,7 @@ Microsoft 會在支援 Azure Data Lake Analytics 的基礎系統上執行弱點�
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指導**方針：支援 Azure 服務的基礎主機（例如 Azure Data Lake Analytics）已啟用 Microsoft 反惡意程式碼，但不會在客戶內容上執行。
+**指引**：在支援 Azure 服務 (的基礎主機上啟用 Microsoft 反惡意程式碼，例如 Azure Data Lake Analytics) ，但不會對客戶內容執行。
 
 預先掃描上傳至 Azure 資源的任何內容，例如 App Service、Data Lake Analytics、Blob 儲存體等等。Microsoft 無法存取您在這些實例中的資料。
 

@@ -1,23 +1,21 @@
 ---
 title: 診斷圖形效能問題遠端桌面-Azure
 description: 本文說明如何在遠端桌面通訊協定會話中使用 RemoteFX 圖形計數器，以診斷 Windows 虛擬桌面中圖形的效能問題。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc5c6499fa47a1e32a517032d5cc2a97b3f2677f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79127564"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007161"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>診斷遠端桌面的圖形效能問題
 
-若要診斷遠端會話的經驗品質問題，請在效能監視器的 [RemoteFX 圖形] 區段底下提供計數器。 本文可協助您在使用這些計數器的遠端桌面通訊協定（RDP）會話期間，找出並修正與圖形相關的效能瓶頸。
+若要診斷遠端會話的經驗品質問題，請在效能監視器的 [RemoteFX 圖形] 區段底下提供計數器。 本文可協助您找出並修正使用這些計數器遠端桌面通訊協定 (RDP) 會話期間的圖形相關效能瓶頸。
 
 ## <a name="find-your-remote-session-name"></a>尋找您的遠端會話名稱
 
@@ -25,8 +23,8 @@ ms.locfileid: "79127564"
 
 1. 從遠端會話開啟 Windows 命令提示字元。
 2. 執行**qwinsta**命令並尋找您的會話名稱。
-    - 如果您的會話裝載于多會話的虛擬機器（VM）中：每個計數器的實例尾碼會與您會話名稱的尾碼相同，例如「rdp-tcp 37」。
-    - 如果您的會話裝載于支援虛擬圖形處理器（vGPU）的 VM 中：每個計數器的實例會儲存在伺服器上，而不是存放在您的 VM 中。 您的計數器實例包含 VM 名稱，而不是會話名稱中的數位，例如 "Win8 Enterprise VM"。
+    - 如果您的會話裝載于多個會話的虛擬機器中 (VM) ：您的每個計數器實例會加上尾碼您會話名稱的相同號碼，例如 "rdp-tcp 37"。
+    - 如果您的會話裝載在支援虛擬圖形處理器的 VM 中 (vGPU) ：您的每個計數器實例會儲存在伺服器上，而不是存放在您的 VM 中。 您的計數器實例包含 VM 名稱，而不是會話名稱中的數位，例如 "Win8 Enterprise VM"。
 
 >[!NOTE]
 > 雖然計數器的名稱中有 RemoteFX，但它們也包含 vGPU 案例中的遠端桌面圖形。
@@ -62,13 +60,13 @@ ms.locfileid: "79127564"
 
 有三種類型的框架略過/第二個計數器：
 
-- 略過的框架/秒（伺服器資源不足）
-- 略過的框架/秒（網路資源不足）
-- 略過的框架/秒（用戶端資源不足）
+- 略過的框架/秒 (伺服器資源不足) 
+- 略過的框架/秒 (網路資源不足) 
+- 略過的框架/秒 (的用戶端資源不足) 
 
-任何略過的框架/第二個計數器的值很高，表示問題與計數器追蹤的資源相關。 例如，如果用戶端未以相同的速率解碼和呈現畫面格，伺服器會提供框架，則略過的框架/秒（用戶端資源不足）計數器會很高。
+任何略過的框架/第二個計數器的值很高，表示問題與計數器追蹤的資源相關。 例如，如果用戶端未以相同的速率解碼和呈現畫面格，伺服器會提供框架，則略過的 (的用戶端資源) 計數器會變高。
 
-如果輸出畫面/秒計數器與輸入畫面/秒計數器相符，但您仍發現異常的延遲或停止，則平均編碼時間可能是原因。 編碼是一種同步處理常式，會在單一會話（vGPU）案例中的伺服器上，以及在多會話案例中的 VM 上執行。 平均編碼時間應低於33毫秒。 如果平均編碼時間低於33毫秒，但您仍有效能問題，則您使用的應用程式或作業系統可能會發生問題。
+如果輸出畫面/秒計數器與輸入畫面/秒計數器相符，但您仍發現異常的延遲或停止，則平均編碼時間可能是原因。 編碼是一種同步處理常式，會在伺服器的單一會話中發生， (vGPU) 案例和多會話案例中的 VM 上。 平均編碼時間應低於33毫秒。 如果平均編碼時間低於33毫秒，但您仍有效能問題，則您使用的應用程式或作業系統可能會發生問題。
 
 如需診斷應用程式相關問題的詳細資訊，請參閱[使用者輸入延遲效能計數器](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)。
 
@@ -102,6 +100,6 @@ ms.locfileid: "79127564"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 若要建立 GPU 優化的 Azure 虛擬機器，請參閱[設定 Windows 虛擬桌面環境的圖形處理單元（GPU）加速](configure-vm-gpu.md)。
+- 若要建立 GPU 優化的 Azure 虛擬機器，請參閱[為 Windows 虛擬桌面環境設定圖形處理單元 (GPU) 加速](configure-vm-gpu.md)。
 - 如需疑難排解和擴大追蹤的總覽，請參閱[疑難排解總覽、意見反應和支援](troubleshoot-set-up-overview.md)。
 - 若要深入瞭解此服務，請參閱[Windows 桌面環境](environment-setup.md)。

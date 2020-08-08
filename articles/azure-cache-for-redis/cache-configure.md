@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010302"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009608"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何設定 Azure Redis 快取
 本主題說明您「Azure Redis 快取」執行個體可用的設定。 本主題也涵蓋適用於「Azure Redis 快取」執行個體的預設 Redis 伺服器設定。
@@ -32,12 +32,12 @@ ms.locfileid: "81010302"
 
 * [概觀](#overview)
 * [活動記錄檔](#activity-log)
-* [存取控制（IAM）](#access-control-iam)
+* [ (IAM) 的存取控制](#access-control-iam)
 * [Tags](#tags) (標籤)
 * [診斷並解決問題](#diagnose-and-solve-problems)
 * [設定](#settings)
-    * [存取金鑰](#access-keys)
-    * [Advanced 設定](#advanced-settings)
+    * [便捷鍵](#access-keys)
+    * [進階設定](#advanced-settings)
     * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
     * [縮放比例](#scale)
     * [叢集大小](#cluster-size)
@@ -62,7 +62,7 @@ ms.locfileid: "81010302"
     * [新增支援要求](#new-support-request)
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 **概觀**提供您快取的基本資訊，例如名稱、連接埠、定價層，以及選取的快取度量。
 
@@ -74,7 +74,7 @@ ms.locfileid: "81010302"
 
 **存取控制 (IAM)** 區段提供 Azure 入口網站中對於角色型存取控制 (RBAC) 的支援。 此設定可協助組織簡單而精準地符合其存取管理需求。 如需詳細資訊，請參閱 [Azure 入口網站中的角色型存取控制](../role-based-access-control/role-assignments-portal.md)。
 
-### <a name="tags"></a>Tags
+### <a name="tags"></a>標記
 
 [標記] **** 區段有助於您組織資源。 如需詳細資訊，請參閱 [使用標記組織您的 Azure 資源](../azure-resource-manager/management/tag-resources.md)。
 
@@ -88,8 +88,8 @@ ms.locfileid: "81010302"
 ## <a name="settings"></a>設定
 [設定]**** 區段中的設定可讓您存取和設定下列快取設定。
 
-* [存取金鑰](#access-keys)
-* [Advanced 設定](#advanced-settings)
+* [便捷鍵](#access-keys)
+* [進階設定](#advanced-settings)
 * [Azure Redis 快取建議程式](#azure-cache-for-redis-advisor)
 * [縮放比例](#scale)
 * [叢集大小](#cluster-size)
@@ -104,7 +104,7 @@ ms.locfileid: "81010302"
 
 
 
-### <a name="access-keys"></a>存取金鑰
+### <a name="access-keys"></a>便捷鍵
 按一下 [存取金鑰] **** 以檢視或重新產生快取的存取金鑰。 這些金鑰是由連線到您的快取的用戶端所使用。
 
 ![Azure Redis 快取存取金鑰](./media/cache-configure/redis-cache-manage-keys.png)
@@ -185,12 +185,12 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 | Azure Redis 快取計量 | 更多資訊 |
 | --- | --- |
-| 網路頻寬使用量 |[快取效能 - 可用的頻寬](cache-faq.md#cache-performance) |
+| 網路頻寬使用量 |[快取效能 - 可用的頻寬](cache-planning-faq.md#azure-cache-for-redis-performance) |
 | 連線的用戶端 |[預設 Redis 伺服器組態 - maxclients](#maxclients) |
 | 伺服器負載 |[使用量圖表 - Redis 伺服器負載](cache-how-to-monitor.md#usage-charts) |
-| 記憶體使用量 |[快取效能 - 大小](cache-faq.md#cache-performance) |
+| 記憶體使用量 |[快取效能 - 大小](cache-planning-faq.md#azure-cache-for-redis-performance) |
 
-若要升級您的快取，請按一下 [**立即升級**] 以變更定價層及[調整](#scale)您的快取。 如需有關選擇定價層的詳細資訊，請參閱[應該使用哪個 Azure Redis 快取供應項目和大小？](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+若要升級您的快取，請按一下 [**立即升級**] 以變更定價層及[調整](#scale)您的快取。 如需選擇定價層的詳細資訊，請參閱[選擇正確的層級](cache-overview.md#choosing-the-right-tier)
 
 
 ### <a name="scale"></a>調整
@@ -278,7 +278,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 
 ![Azure Redis 快取屬性](./media/cache-configure/redis-cache-properties.png)
 
-### <a name="locks"></a>鎖定
+### <a name="locks"></a>上鎖
 [**鎖定**] 區段可讓您鎖定訂用帳戶、資源群組或資源，以防止組織中的其他使用者不小心刪除或修改重要資源。 如需詳細資訊，請參閱[使用 Azure Resource Manager 鎖定資源](../azure-resource-manager/management/lock-resources.md)。
 
 ### <a name="automation-script"></a>自動化指令碼
@@ -386,7 +386,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
 >
 >
 
-| 設定 | 預設值 | 說明 |
+| 設定 | 預設值 | 描述 |
 | --- | --- | --- |
 | `databases` |16 |資料庫的預設數目為 16，但是您可以根據定價層設定不同的數字。<sup>1</sup> 預設資料庫為 DB 0，您可以根據每個連線使用 `connection.GetDatabase(dbid)` 選取一個不同的資料庫，其中 `dbid` 是介於 `0` 與 `databases - 1` 之間的數字。 |
 | `maxclients` |取決於定價層<sup>2</sup> |此值是允許同時連線的用戶端數目上限。 一旦達到限制，Redis 會關閉所有新的連線，並傳送「達到用戶端的數目上限」錯誤。 |
@@ -414,7 +414,7 @@ Redis Keyspace 通知是在 [進階設定] **** 刀鋒視窗上進行設定。 K
   * P4 (53 GB - 530 GB) - 最多 64 個資料庫
   * 所有進階快取均已啟用 Redis 叢集 - Redis 叢集僅支援使用資料庫 0，因此對於已啟用 Redis 叢集的任何進階快取， `databases` 限制實際上是 1，並且不允許 [Select](https://redis.io/commands/select) 命令。 如需詳細資訊，請參閱 [我需要對用戶端應用程式進行任何變更才能使用叢集嗎？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
-如需資料庫的詳細資訊，請參閱[什麼是 Redis 資料庫？](cache-faq.md#what-are-redis-databases)
+如需資料庫的詳細資訊，請參閱[什麼是 Redis 資料庫？](cache-development-faq.md#what-are-redis-databases)
 
 > [!NOTE]
 > `databases` 設定，而且只能使用 PowerShell、CLI 或其他管理用戶端。 如需在快取建立期間使用 PowerShell 來設定 `databases` 的範例，請參閱 [New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases)。
@@ -505,4 +505,4 @@ shard1>get myKey
 如需將資源從某個資源群組移到另一個資源群組，以及從某個訂用帳戶移到另一個訂用帳戶的相關資訊，請參閱 [將資源移動到新的資源群組或訂用帳戶](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 ## <a name="next-steps"></a>後續步驟
-* 如需使用 Redis 命令的詳細資訊，請參閱[如何執行 Redis 命令？](cache-faq.md#how-can-i-run-redis-commands)
+* 如需使用 Redis 命令的詳細資訊，請參閱[如何執行 Redis 命令？](cache-development-faq.md#how-can-i-run-redis-commands)

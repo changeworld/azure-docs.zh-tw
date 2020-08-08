@@ -1,26 +1,24 @@
 ---
 title: 從 macOS 連接到 Windows 虛擬桌面-Azure
 description: 如何使用 macOS 用戶端連接到 Windows 虛擬桌面。
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 80d75357baeb3f8afd910e22abca8b11af2d80b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 649176a363b1a721fede68c5db2a736d5304f485
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285161"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007631"
 ---
 # <a name="connect-to-windows-virtual-desktop-with-the-macos-client"></a>使用 macOS 用戶端連接到 Windows 虛擬桌面
 
 > 適用于： macOS 10.12 或更新版本
 
 >[!IMPORTANT]
->此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用 Windows 虛擬桌面（傳統）而不 Azure Resource Manager 物件，請參閱[這篇文章](./virtual-desktop-fall-2019/connect-macos-2019.md)。
+>此內容適用於具有 Azure Resource Manager Windows 虛擬桌面物件的 Windows 虛擬桌面。 如果您使用不含 Azure Resource Manager 物件的 Windows 虛擬桌面 (傳統)，請參閱[此文章](./virtual-desktop-fall-2019/connect-macos-2019.md)。
 
 您可以使用可下載的用戶端，從 macOS 裝置存取 Windows 虛擬桌面資源。 本指南將告訴您如何設定用戶端。
 

@@ -5,13 +5,14 @@ services: container-service
 ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
+ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251309"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003179"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service (AKS) 中叢集節點的連出流量
 
@@ -183,7 +184,7 @@ AKS 叢集需要下列網路和 FQDN/應用程式規則，如果您想要設定 
 | *.oms.opinsights.azure.com | **`HTTPS:443`** | Omsagent 會使用此端點來驗證 log analytics 服務。 |
 | *.monitoring.azure.com | **`HTTPS:443`** | 此端點用來將計量資料傳送至 Azure 監視器。 |
 
-### <a name="azure-dev-spaces"></a>Azure 開發人員空間
+### <a name="azure-dev-spaces"></a>Azure Dev Spaces
 
 更新您的防火牆或安全性設定，以允許進出下列所有 Fqdn 和[Azure Dev Spaces 基礎結構服務][dev-spaces-service-tags]的網路流量。
 
@@ -226,6 +227,8 @@ Azure 防火牆提供 Azure Kubernetes Service (`AzureKubernetesService`) FQDN �
 
 > [!NOTE]
 > FQDN 標記包含上列所有 Fqdn，而且會自動保持最新狀態。
+>
+> 針對生產案例，我們建議在 Azure 防火牆上至少有20個前端 Ip，以避免發生 SNAT 埠耗盡問題。
 
 以下是部署的範例架構：
 
@@ -364,7 +367,7 @@ Azure 會自動路由傳送 Azure 子網路、虛擬網路及內部部署網路�
 ```azure-cli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -409,7 +412,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 ### <a name="create-a-service-principal-with-access-to-provision-inside-the-existing-virtual-network"></a>建立可存取現有虛擬網路內佈建的服務主體
 
-AKS 會使用服務主體來建立叢集資源。 在建立時所傳遞的服務主體會用來建立基礎 AKS 資源（例如儲存體資源、Ip 和 AKS 所使用的負載平衡器） (您也可以使用[受控識別](use-managed-identity.md)，而不是) 。 如果未授與下列適當的許可權，您將無法布建 AKS 叢集。
+AKS 會使用服務主體來建立叢集資源。 在建立時所傳遞的服務主體會用來建立基礎 AKS 資源，例如 AKS 所使用的儲存體資源、Ip 和負載平衡器 (您也可以改為使用[受控識別](use-managed-identity.md)) 。 如果未授與下列適當的許可權，您將無法布建 AKS 叢集。
 
 ```azure-cli
 # Create SP and Assign Permission to Virtual Network
@@ -482,14 +485,14 @@ az aks create -g $RG -n $AKSNAME -l $LOC \
 CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 
 # Add to AKS approved list
-az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 
 ```
 
  使用 [az aks get-認證] [az-aks-get-認證] 命令來設定，以連線 `kubectl` 到新建立的 Kubernetes 叢集。 
 
  ```azure-cli
- az aks get-credentials -g $RG -n $AKS_NAME
+ az aks get-credentials -g $RG -n $AKSNAME
  ```
 
 ### <a name="deploy-a-public-service"></a>部署公用服務

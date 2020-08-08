@@ -4,12 +4,12 @@ description: 使用 Azure 儲存體帳戶建立傳輸管線，以將映射或其
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0bbdfc8d1586b7d71daf6d4cbfdc4288357aa45b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259464"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009149"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>將成品傳輸至另一個登錄
 
@@ -162,7 +162,7 @@ az deployment group create \
   --parameters azuredeploy.parameters.json
 ```
 
-在命令輸出中，記下管線的資源識別碼 (`id`) 。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如︰
+在命令輸出中，記下管線的資源識別碼 (`id`) 。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
 
 ```azurecli
 EXPORT_RES_ID=$(az group deployment show \
@@ -208,7 +208,7 @@ az deployment group create \
   --name importPipeline
 ```
 
-如果您打算手動執行匯入，請記下管線的資源識別碼 (`id`) 。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如︰
+如果您打算手動執行匯入，請記下管線的資源識別碼 (`id`) 。 您可以執行[az deployment group show][az-deployment-group-show]，將此值儲存在環境變數中供稍後使用。 例如：
 
 ```azurecli
 IMPORT_RES_ID=$(az group deployment show \
@@ -233,6 +233,8 @@ IMPORT_RES_ID=$(az group deployment show \
 |pipelineResourceId     |  匯出管線的資源識別碼。<br/>範例： `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/exportPipelines/myExportPipeline`|
 |targetName     |  您為匯出至來源儲存體帳戶的成品 blob 選擇的名稱，例如*myblob*
 |artifacts | 要傳送的來源成品陣列，做為標記或資訊清單摘要<br/>範例： `[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
+
+如果重新部署具有相同屬性的來擷取資源，您也必須使用[forceUpdateTag](#redeploy-pipelinerun-resource)屬性。
 
 執行[az deployment group create][az-deployment-group-create]來建立來擷取資源。 下列範例會將部署*exportPipelineRun*命名為。
 
@@ -291,6 +293,8 @@ az acr repository list --name <target-registry-name>
 |pipelineResourceId     |  匯入管線的資源識別碼。<br/>範例： `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
 |sourceName     |  儲存體帳戶中所匯出成品的現有 blob 名稱，例如*myblob*
 
+如果重新部署具有相同屬性的來擷取資源，您也必須使用[forceUpdateTag](#redeploy-pipelinerun-resource)屬性。
+
 執行[az deployment group create][az-deployment-group-create]來執行資源。
 
 ```azurecli
@@ -304,6 +308,23 @@ az deployment group create \
 
 ```azurecli
 az acr repository list --name <target-registry-name>
+```
+
+## <a name="redeploy-pipelinerun-resource"></a>重新部署來擷取資源
+
+如果要重新部署具有*相同屬性*的來擷取資源，您必須利用**forceUpdateTag**屬性。 這個屬性工作表示即使設定尚未變更，也應該重新建立來擷取資源。 請確定每次重新部署來擷取資源時，forceUpdateTag 都不同。 下列範例會重新建立匯出的來擷取。 目前的日期時間是用來設定 forceUpdateTag，藉此確保此屬性一律是唯一的。
+
+```console
+CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`
+```
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipelineRun \
+  --parameters azuredeploy.parameters.json \
+  --parameters forceUpdateTag=$CURRENT_DATETIME
 ```
 
 ## <a name="delete-pipeline-resources"></a>刪除管線資源
