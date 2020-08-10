@@ -1,6 +1,6 @@
 ---
 title: 支援的內建 Azure 地圖服務地圖樣式
-description: 在本文中，您將瞭解 Microsoft Azure 對應所支援的各種內建地圖樣式。
+description: 瞭解 Azure 地圖服務支援的內建地圖樣式，例如道路、blank_accessible、衛星、satellite_road_labels、road_shaded_relief 和夜間。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/24/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b9641fe647eebae020ee67ee19a9cc131a487a7c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f6ce2966d7e91bd0fc6a23ad2605316da4e2342e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286890"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037723"
 ---
 # <a name="azure-maps-supported-built-in-map-styles"></a>Azure 地圖服務支援的內建地圖樣式
 

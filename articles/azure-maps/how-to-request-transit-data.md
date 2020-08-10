@@ -1,6 +1,6 @@
 ---
 title: 使用 Microsoft Azure Maps 行動服務要求傳輸資料
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps 行動服務來要求公開傳輸資料。
+description: 瞭解如何使用 Azure 地圖服務行動服務來要求公開傳輸資料，例如 metro 區域識別碼、運輸停止、路線和路線路線。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/22/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 38fc6f213cbd58fc829a6605bdbed7d25e99bb8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0aad822f0433a161e20c520296ce9fb9eb296f7e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319009"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037740"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>使用 Azure 地圖服務行動服務來要求公開傳輸資料
 

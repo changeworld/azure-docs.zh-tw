@@ -1,6 +1,6 @@
 ---
 title: 將多邊形圖層新增至地圖 | Microsoft Azure 地圖服務
-description: 在本文中，您將了解如何在 Microsoft Azure 地圖服務 Web SDK 的地圖上呈現多邊形和多多邊形。
+description: 瞭解如何將多邊形或圓形新增至地圖。 瞭解如何使用 Azure 地圖服務 Web SDK 來自訂幾何圖案，並使其易於更新和維護。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: b267109113ce4d2ec3e653fb079b760eb4a5a514
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 58262be34a716a04e9779454a30e845d691f3a6a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286875"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037706"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>將多邊形圖層新增至地圖
 

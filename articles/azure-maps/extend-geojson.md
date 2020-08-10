@@ -1,6 +1,6 @@
 ---
 title: 擴充的 GeoJSON 幾何 |Microsoft Azure 對應
-description: 在本文中，您將瞭解 Microsoft Azure 對應如何擴充 GeoJSON 規格，以代表特定的幾何。
+description: 瞭解 Azure 地圖服務如何擴充 GeoJSON 規格以包含其他幾何圖案。 查看設定圓形和矩形以用於地圖的範例。
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687492"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037451"
 ---
 # <a name="extended-geojson-geometries"></a>擴充的 GeoJSON 幾何
 
@@ -39,7 +39,7 @@ Azure 地圖服務提供一份強大的 Api 清單，可供您在內和地理功
 
 `Circle`使用物件表示的 geometry `GeoJSON Feature` __必須__包含下列座標和屬性：
 
-- 中心
+- Center
 
     圓形的中心是使用物件來表示 `GeoJSON Point` 。
 

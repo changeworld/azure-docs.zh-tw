@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d9413deb99ce938429d05f7c6348c5914e7dd2b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e6381afb19018822f6f37171a5ca4b3d929b42e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304134"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037519"
 ---
-# <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的 SaaS 履行 Api
+# <a name="saas-fulfillment-apis-in-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的 SaaS 履行 Api
 
-SaaS 履行 Api 可讓發行者（也稱為獨立軟體廠商（Isv））在 Microsoft AppSource、Azure Marketplace 和 Azure 入口網站中發佈和銷售其 SaaS 應用程式。 這些 Api 可讓 ISV 應用程式參與所有啟用商務功能的管道：直接、合作夥伴導向（轉銷商）和現場 led。  與這些 Api 整合是在合作夥伴中心建立和發佈 transactable SaaS 供應專案的必要條件。
+SaaS 履行 Api 可讓發行者（也稱為獨立軟體廠商） (Isv) ，以 Microsoft AppSource、Azure Marketplace 和 Azure 入口網站發佈和銷售其 SaaS 應用程式。 這些 Api 可讓 ISV 應用程式參與所有啟用商務功能的管道：直接、合作夥伴導向的 (轉銷商) ，以及現場 led。  與這些 Api 整合是在合作夥伴中心建立和發佈 transactable SaaS 供應專案的必要條件。
 
 Isv 必須藉由將加入其 SaaS 服務程式代碼中，以維持與 Isv 和 Microsoft 相同的訂用帳戶狀態，來執行下列 API 流程：
 
@@ -31,15 +31,15 @@ Isv 必須藉由將加入其 SaaS 服務程式代碼中，以維持與 Isv 和 M
 與 SaaS 履行 Api 的正確整合非常重要，這是為了確保
 
 * 購買發行者 SaaS 供應專案的終端客戶，會由 Microsoft 正確計費。
-* 終端客戶會獲得正確的使用者體驗，包括購買、設定、使用和管理在 Marketplace 中購買的 SaaS 訂閱。
+* 終端客戶會獲得正確的使用者體驗，包括購買、設定、使用和管理在 marketplace 中購買的 SaaS 訂閱。
 
 這些 Api 可讓發行者的供應專案參與所有啟用商務功能的頻道：
 
 * 直接
-* 合作夥伴導向（轉售商、CSP）
+* 合作夥伴導向的 (轉銷商、CSP) 
 * 現場 led
 
-在轉銷商（CSP）案例中，CSP 代表終端客戶購買 SaaS 供應專案。 客戶應使用 SaaS 供應專案，但 CSP 是執行下列動作的實體：
+在轉銷商 (CSP) 案例中，CSP 會代表終端客戶購買 SaaS 供應專案。 客戶應使用 SaaS 供應專案，但 CSP 是執行下列動作的實體：
 
 * 向客戶收費
 * 變更訂用帳戶方案/已購買基座數量

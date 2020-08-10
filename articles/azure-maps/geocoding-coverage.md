@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Maps 搜尋服務中的地理編碼涵蓋範圍
-description: 在本文中，您將瞭解不同國家/地區的 Microsoft Azure Maps 地理編碼涵蓋範圍。
+description: 查看 Azure 地圖服務搜尋涵蓋的區域。 地理編碼類別包括位址點、房屋號碼、街道層級、城市層級，以及相關點數。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/28/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386906"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037434"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure 地圖地理編碼涵蓋範圍
 
@@ -23,7 +23,7 @@ Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search
 
 在國家/地區地理編碼的能力，取決於地理編碼服務的道路資料涵蓋範圍和地理編碼精確度。 下列分類可用來指定每個國家/地區中的地理編碼支援層級。
 
-* **位址點**-位址資料可以解析為位址包裹（屬性界限）內的緯度/經度座標。 位址點通常稱為「屋頂」精確，這是位址可用的最高精確度層級。
+* **位址點**-位址資料可以解析為位址包裹內的緯度/經度座標， (屬性界限) 。 位址點通常稱為「屋頂」精確，這是位址可用的最高精確度層級。
 * **門牌號碼** - 地址會插入到街道上的緯度/經度座標。
 * **街道層級** - 地址會解析為包含地址的街道緯度/經度座標。 可能不會處理門牌號碼。
 * **縣 (市) 層級** - 支援城市位置的名稱。

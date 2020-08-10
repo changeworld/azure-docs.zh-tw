@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 1e4539dcec1f3f57f7fcc0ca0b8d8c266dc1bc99
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 62f30d8a0fe1b2f2397fc16161929279a148aaa2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121498"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037502"
 ---
-# <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft 商業市集的支援
+# <a name="support-for-the-microsoft-commercial-marketplace"></a>支援 Microsoft 商業 marketplace
 
 您對以 Microsoft 商業市集發行者身分開始使用有任何疑問嗎？ 以下是商業市集的支援選項清單。 除了下列資源之外，您也可以在 [C + AI 社群論壇的 Marketplace 頻道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)取得許多問題的解答。  
 

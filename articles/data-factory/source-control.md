@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f2f5a8a87d4ac4936f25e7ece2a34b518c09a063
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674586"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037621"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory 中的原始檔控制
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -211,11 +211,11 @@ Azure Data Factory 一次只能有一個發佈分支。 當您指定新的發佈
 
 ### <a name="permissions"></a>權限
 
-一般來說，您不會希望每個小組成員都擁有更新處理站的權限。 建議您使用下列權限設定：
+通常您不會希望每個小組成員都擁有更新 Data Factory 的許可權。 建議您使用下列權限設定：
 
-*   所有小組成員都應該有資料處理站的唯讀權限。
-*   只應允許一組選取的人員發佈至處理站。 若要這麼做，這些人員必須在處理站所在的資源群組上擁有 **Data Factory 參與者**角色。 如需權限的詳細資訊，請參閱 [Azure Data Factory 的角色和權限](concepts-roles-permissions.md)。
-   
+*   所有小組成員都應該具有 Data Factory 的讀取權限。
+*   只應允許一組選取的人員發佈到 Data Factory。 若要這麼做，他們必須在包含 Data Factory 的**資源群組**上具有 [ **Data Factory 參與者**] 角色。 如需權限的詳細資訊，請參閱 [Azure Data Factory 的角色和權限](concepts-roles-permissions.md)。
+
 建議您不要允許直接簽入至共同作業分支。 此限制可協助避免錯誤 (bug)，因為每個簽入都會經歷[建立功能分支](source-control.md#creating-feature-branches)所述的提取要求檢閱程序。
 
 ### <a name="using-passwords-from-azure-key-vault"></a>使用來自 Azure Key Vault 的密碼

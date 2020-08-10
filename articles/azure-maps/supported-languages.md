@@ -1,6 +1,6 @@
 ---
 title: 當地語系化支援 |Microsoft Azure 地圖服務
-description: 在本文中，您將了解 Microsoft Azure 地圖服務中服務的支援語言。
+description: 查看哪些區域 Azure 地圖服務支援地圖、搜尋、路線規劃、天氣和流量事件等服務。 瞭解如何設定 View 參數。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 0d3adc4bc49379a9ec3408ab76b913a096840dbb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127888"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037689"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure 地圖服務中的當地語系化支援
 
@@ -110,37 +110,37 @@ Azure 地圖服務已經跨其服務以各種語言當地語系化。 下表提�
 > 2019 年 8 月 1 日之後，**View** 參數將會針對以上所列的新地區域/國家定義傳回的地圖內容。 Azure 地圖服務 **View** 參數 (也稱為「使用者區域參數」) 是兩個字母的 ISO-3166 國碼 (地區碼)，會顯示該國家/地區的正確地圖，以指定透過 Azure 地圖服務傳回哪些在地緣政治上有爭議的內容，包括地圖上顯示的邊界和標籤。 
 
 請確定您已針對您的服務所使用的 REST API 和 SDK 設定 **View** 參數。
->  
->
->  **Rest API：**
->  
->  確定您已視需要設定 View 參數。 View 參數指定哪個有地緣政治爭議的內容集會透過 Azure 地圖服務傳回。 
->
->  受影響的 Azure 地圖服務 REST 服務：
->    
->    * 取得地圖底圖
->    * 取得地圖影像 
->    * 取得模糊搜尋
->    * 取得 POI 搜尋
->    * 取得 POI 搜尋類別
->    * 取得鄰近搜尋
->    * 取得位址搜尋
->    * 取得結構化位址搜尋
->    * 取得位址反轉搜尋
->    * 取得交叉路口位址反轉搜尋
->    * 在幾何內搜尋後
->    * 搜尋後位址批次後預覽
->    * 搜尋位址反轉批次後預覽
->    * 沿路線搜尋後
->    * 模糊搜尋批次後預覽
->
->    
->  **SDKs:**
->
->  請確定您已視需要設定 **View** 參數，且您有最新版的 Web SDK 和 Android SDK。 影響的 SDK：
->
->    * Azure 地圖服務 Web SDK
->    * Azure 地圖服務 Android SDK
+  
+
+### <a name="rest-apis"></a>Rest Api
+  
+確定您已視需要設定 View 參數。 View 參數指定哪個有地緣政治爭議的內容集會透過 Azure 地圖服務傳回。 
+
+受影響的 Azure 地圖服務 REST 服務：
+    
+ * 取得地圖底圖
+ * 取得地圖影像 
+ * 取得模糊搜尋
+ * 取得 POI 搜尋
+ * 取得 POI 搜尋類別
+ * 取得鄰近搜尋
+ * 取得位址搜尋
+ * 取得結構化位址搜尋
+ * 取得位址反轉搜尋
+ * 取得交叉路口位址反轉搜尋
+ * 在幾何內搜尋後
+ * 搜尋後位址批次後預覽
+ * 搜尋位址反轉批次後預覽
+ * 沿路線搜尋後
+ * 模糊搜尋批次後預覽
+
+ 
+### <a name="sdks"></a>SDK
+
+請確定您已視需要設定 **View** 參數，且您有最新版的 Web SDK 和 Android SDK。 影響的 SDK：
+
+ * Azure 地圖服務 Web SDK
+ * Azure 地圖服務 Android SDK
 
 根據預設，View 參數會設定為 **Unified**，即使您未在要求中定義亦是如此。 判定您使用者的位置。 然後，為該位置正確設定 **View** 參數。 或者，您可以設定「View = Auto」，這會根據要求的 IP 位址傳回地圖資料。  Azure 地圖服務中的 **View** 參數必須遵循適用的法律，包括您已獲授權可透過 Azure 地圖服務存取的地圖、影像、其他資料第三方內容可供使用的國家/地區地圖相關法律。
 
