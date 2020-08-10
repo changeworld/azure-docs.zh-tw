@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562407"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042100"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 應用程式 Proxy 的常見問題
 
@@ -31,6 +31,9 @@ ms.locfileid: "87562407"
 ### <a name="what-license-is-required-to-use-azure-ad-application-proxy"></a>需要何種授權才能使用 Azure AD 應用程式 Proxy？
 
 若要使用 Azure AD 應用程式 Proxy，您必須具有 Azure AD Premium P1 或 P2 授權。 如需授權的詳細資訊，請參閱[Azure Active Directory 定價](https://azure.microsoft.com/pricing/details/active-directory/)
+
+### <a name="what-happens-to-azure-ad-application-proxy-in-my-tenant-if-my-license-expires"></a>如果我的授權到期，在我的租使用者中 Azure AD 應用程式 Proxy 會發生什麼事？
+如果您的授權過期，應用程式 Proxy 會自動停用。 您的應用程式資訊最多會儲存一年。
 
 ### <a name="why-is-the-enable-application-proxy-button-grayed-out"></a>為什麼 [啟用應用程式 Proxy] 按鈕呈現灰色？
 

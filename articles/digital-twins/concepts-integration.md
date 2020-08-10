@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca500401a6bff8a00dd9c51eecb29aa93fdbc82b
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800478"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042644"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>將 Azure 數位 Twins 與其他服務整合
 
-Azure 數位 Twins 通常會與其他服務搭配使用。 使用[**事件路由**](concepts-route-events.md)，Azure 數位 Twins 會接收來自上游服務（例如[IoT 中樞](../iot-hub/about-iot-hub.md)）的資料，用來傳遞遙測和通知。 Azure 數位 Twins 也可以將資料路由至下游服務，以進行儲存體、工作流程整合、分析和其他用途。 
+Azure 數位 Twins 通常會與其他服務搭配使用。 使用[**事件路由**](concepts-route-events.md)，Azure 數位 Twins 會接收來自上游服務（例如[IoT 中樞](../iot-hub/about-iot-hub.md)）的資料，用來傳遞遙測和通知。 
+
+Azure 數位 Twins 也可以將資料路由傳送至下游服務，例如 Azure 地圖服務 ([*如何：使用 Azure 數位 Twins 來更新 Azure 地圖服務室內地圖*](how-to-integrate-maps.md)) 和時間序列深入解析 (作法[*：與時間序列深入解析) 整合*](how-to-integrate-time-series-insights.md)，以進行儲存體、工作流程整合、分析等等。 
 
 ## <a name="data-ingress"></a>資料輸入
 

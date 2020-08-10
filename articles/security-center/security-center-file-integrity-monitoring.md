@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68d3646b4ebc3fc5dd5943186afdb75307dfd5ed
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519332"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042661"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure 資訊安全中心的檔案完整性監視
 了解如何利用此逐步解說，在 Azure 資訊安全中心設定檔案完整性監視 (FIM)。
@@ -26,12 +26,16 @@ ms.locfileid: "86519332"
 
 ## <a name="availability"></a>可用性
 
-- 發行階段：**正式推出**
-- 必要的角色：**工作區擁有**者可以啟用/停用 FIM （如需詳細資訊，請參閱[適用于 Log Analytics 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)）。 **讀者**可以查看結果。
-- 雲端：
-    - ✔ 商用雲端
-    - ✔ US Gov 雲端
-    - ✘中國 Gov/其他 Gov
+|層面|詳細資料|
+|----|:----|
+|發行狀態：|正式推出|
+|標價|標準層|
+|必要的角色和許可權：|**工作區擁有**者可以啟用/停用 FIM (如需詳細資訊，請參閱[適用于 Log Analytics 的 Azure 角色](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)) 。<br>**讀者**可以查看結果。|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|||
+
+
+
 
 
 ## <a name="what-is-fim-in-security-center"></a>何謂資訊安全中心的 FIM？
@@ -46,7 +50,7 @@ ms.locfileid: "86519332"
 資訊安全中心會建議要監視的實體，您可以輕鬆地對其啟用 FIM。 您也可以定義自己的 FIM 原則或要監視的實體。 本逐步解說會示範做法。
 
 > [!NOTE]
-> 檔案完整性監視（FIM）功能適用于 Windows 和 Linux 電腦和 Vm，可用於資訊安全中心的標準層。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。 FIM 會將資料上傳到 Log Analytics 工作區。 根據您上傳的資料量，需要支付資料費用。 請參閱 [Log Analytics 定價](https://azure.microsoft.com/pricing/details/log-analytics/)以深入了解。
+> 檔案完整性監視 (FIM) 功能適用于 Windows 和 Linux 電腦和 Vm，並且適用于資訊安全中心的標準層。 若要深入了解資訊安全中心的定價層，請參閱[價格](security-center-pricing.md)。 FIM 會將資料上傳到 Log Analytics 工作區。 根據您上傳的資料量，需要支付資料費用。 請參閱 [Log Analytics 定價](https://azure.microsoft.com/pricing/details/log-analytics/)以深入了解。
 
 FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更。 啟用檔案完整性監視時，您會有一個類型為 [**方案**] 的**變更追蹤**資源。 如需資料收集頻率的詳細資訊，請參閱 Azure 變更追蹤的[變更追蹤資料收集詳細資料](https://docs.microsoft.com/azure/automation/automation-change-tracking#change-tracking-data-collection-details)。
 
@@ -56,7 +60,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 ## <a name="which-files-should-i-monitor"></a>我應該監視哪些檔案？
 選擇要監視的檔案時，您應該考慮對系統和應用程式重要的檔案。 請考慮選擇不會未經計劃就變更的檔案。 選擇應用程式或作業系統經常變更的檔案 (例如記錄檔和文字檔) 會造成許多干擾而難以識別攻擊。
 
-資訊安全中心提供下列建議專案清單，以根據已知的攻擊模式進行監視。 這些包括檔案和 Windows 登錄機碼。 所有索引鍵都在 HKEY_LOCAL_MACHINE （資料表中的 "HKLM" 之下）。
+資訊安全中心提供下列建議專案清單，以根據已知的攻擊模式進行監視。 這些包括檔案和 Windows 登錄機碼。 資料表中的所有金鑰都在 HKEY_LOCAL_MACHINE ( "HKLM" 之下。 ) 
 
 |**Linux 檔案**|**Windows 檔案**|**Windows 登錄機碼**|
 |:----|:----|:----|
@@ -241,7 +245,7 @@ FIM 使用 Azure 變更追蹤解決方案來追蹤及識別您環境中的變更
 4. 選取 [移除]**** 以停用。
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已瞭解如何使用資訊安全中心中的檔案完整性監視（FIM）。 若要深入了解資訊安全中心，請參閱下列頁面：
+在本文中，您已瞭解如何在資訊安全中心中使用 (FIM) 的檔案完整性監視。 若要深入了解資訊安全中心，請參閱下列頁面：
 
 * [設定安全性原則](tutorial-security-policy.md)-瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
 * [管理安全性建議](security-center-recommendations.md) - 了解建議如何協助保護您的 Azure 資源。

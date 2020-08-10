@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534629"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042270"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>設定安全性警示的電子郵件通知 
 
@@ -34,9 +34,15 @@ ms.locfileid: "87534629"
 
 ## <a name="availability"></a>可用性
 
-- 發行階段：**正式推出**
-- 必要角色：**安全性系統管理員**或訂用帳戶**擁有**者 
-- 雲端：✔商用雲端✔ US Gov （部分）✘國家/地區/主權（中國 Gov，其他 Gov）
+|層面|詳細資料|
+|----|:----|
+|發行狀態：|正式推出|
+|標價|免費層|
+|必要的角色和許可權：|**安全性系統管理員**<br>**訂用帳戶擁有者** |
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov (部分) <br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|||
+
+
 
 
 ## <a name="set-up-email-notifications-for-alerts"></a>設定警示的電子郵件通知<a name="email"></a>

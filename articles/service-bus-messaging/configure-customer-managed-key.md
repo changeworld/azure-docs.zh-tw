@@ -3,25 +3,25 @@ title: 設定您自己的金鑰來加密待用 Azure 服務匯流排資料
 description: 本文提供有關如何設定您自己的金鑰來加密 Azure 服務匯流排資料其餘部分的資訊。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ca1597f26ec1c7ccaa578d4e7dcd68e0ef54f60c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4eef0965f585291c31a3698d1d37abf67c6295c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85475980"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041558"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密待用 Azure 服務匯流排資料
-Azure 服務匯流排 Premium 使用 Azure 儲存體服務加密（Azure SSE）提供待用資料的加密。 服務匯流排 Premium 依賴 Azure 儲存體來儲存資料，而且根據預設，所有以 Azure 儲存體儲存的資料都會使用 Microsoft 管理的金鑰進行加密。 
+Azure 服務匯流排 Premium 會使用 Azure SSE)  (Azure 儲存體服務加密，提供待用資料的加密。 服務匯流排 Premium 依賴 Azure 儲存體來儲存資料，而且根據預設，所有以 Azure 儲存體儲存的資料都會使用 Microsoft 管理的金鑰進行加密。 
 
-## <a name="overview"></a>總覽
-Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或客戶管理的金鑰（攜帶您自己的金鑰-BYOK）來加密待用資料的選項。 這項功能可讓您建立、輪替、停用及撤銷用來加密待用 Azure 服務匯流排之客戶管理金鑰的存取權。
+## <a name="overview"></a>概觀
+Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或客戶管理的金鑰來加密待用資料的選項 (攜帶您自己的金鑰 BYOK) 。 這項功能可讓您建立、輪替、停用及撤銷用來加密待用 Azure 服務匯流排之客戶管理金鑰的存取權。
 
 啟用 BYOK 功能是在命名空間上進行的一次性設定程式。
 
 > [!NOTE]
 > 針對服務端加密，客戶管理的金鑰會有一些注意事項。 
 >   * [Azure 服務匯流排](service-bus-premium-messaging.md)進階層支援這項功能。 無法為標準層服務匯流排命名空間啟用此功能。
->   * 只能為新的或空的命名空間啟用加密。 如果命名空間包含資料，加密作業將會失敗。
+>   * 只能為新的或空的命名空間啟用加密。 如果命名空間包含任何佇列或主題，加密作業將會失敗。
 
 您可以使用 Azure Key Vault 來管理金鑰，並審核金鑰使用方式。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 如需 Azure 金鑰保存庫的詳細資訊，請參閱 [什麼是 Azure 金鑰保存庫？](../key-vault/general/overview.md)
 
@@ -50,7 +50,7 @@ Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或客戶管理
     ```azurecli-interactive
     az keyvault create --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. 若要將清除保護新增至現有的保存庫（已啟用虛刪除），請使用[az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update)命令。
+1. 若要將清除保護新增到已啟用虛刪除) 的現有保存庫 (，請使用[az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update)命令。
 
     ```azurecli-interactive
     az keyvault update --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --enable-purge-protection true
@@ -106,7 +106,7 @@ Azure 服務匯流排現在支援使用 Microsoft 管理的金鑰或客戶管理
 
 1. 建立具有**受控服務識別**的**premium**服務匯流排命名空間。
 2. 建立**金鑰保存庫**，並將金鑰保存庫的存取權授與服務識別。 
-3. 使用金鑰保存庫資訊（索引鍵/值）更新服務匯流排的命名空間。 
+3. 使用金鑰保存庫資訊更新服務匯流排命名空間， (索引鍵/值) 。 
 
 
 ### <a name="create-a-premium-service-bus-namespace-with-managed-service-identity"></a>建立具有受控服務識別的 premium 服務匯流排命名空間

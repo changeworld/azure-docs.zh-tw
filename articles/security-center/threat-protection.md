@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836797"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041981"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 資訊安全中心內的威脅防護
 
@@ -114,12 +114,13 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 
 ### <a name="availability"></a>可用性
 
-- 發行狀態：**公開上市**
-- 必要角色：**安全性系統管理員**可以關閉警示。 **安全性讀取者**可以查看結果。
-- 雲端：<br>
-    ✔ 商用雲端<br>
-    ✘ US Gov<br>
-    ✘中國 Gov，其他 Gov
+|層面|詳細資料|
+|----|:----|
+|發行狀態：|正式推出|
+|標價|標準層|
+|必要的角色和許可權：|**安全性系統管理員**可以關閉警示。<br>**安全性讀取者**可以查看結果。|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov) |
+|||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
@@ -150,14 +151,13 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 
 ### <a name="availability"></a>可用性
 
-- 發行狀態：
-    - [Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) (公開上市) 
-    - [Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (預覽) 
-    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (預覽) 
-- 雲端：<br>
-    ✔ 商用雲端<br>
-    ✔ US Gov<br>
-    ✘中國 Gov，其他 Gov
+|層面|詳細資料|
+|----|:----|
+|發行狀態：|[Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) (公開上市) <br>[Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (預覽) <br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (預覽) |
+|標價|標準層|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|||
+
 
 ### <a name="whats-protected"></a>受保護的內容為何？
 

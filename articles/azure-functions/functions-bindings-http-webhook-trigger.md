@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-python
-ms.openlocfilehash: 47d023216c9e10eb7c2576eb3eb2aacc14a34419
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 271787c47b29bc713cc923c7d27852a8e05703ef
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850214"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042542"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 觸發程序
 
@@ -824,7 +824,7 @@ Webhook 授權是由 Webhook 接收器元件 (HTTP 觸發程序的一部分) 處
 
 ## <a name="limits"></a>限制
 
-HTTP 要求長度的限制為 100 MB (104,857,600 個位元組)，而 URL 長度的限制為 4 KB (4,096 個位元組)。 這些限制由執行階段 [Web.config 檔案](https://github.com/Azure/azure-functions-host/blob/3.x/src/WebJobs.Script.WebHost/web.config)的 `httpRuntime` 元素所指定。
+HTTP 要求長度的限制為 100 MB (104,857,600 個位元組)，而 URL 長度的限制為 4 KB (4,096 個位元組)。 這些限制由執行階段 [Web.config 檔案](https://github.com/Azure/azure-functions-host/blob/v3.x/src/WebJobs.Script.WebHost/web.config)的 `httpRuntime` 元素所指定。
 
 如果使用 HTTP 觸發程序的函式未在約 230 秒內完成，[Azure Load Balancer](../app-service/faq-availability-performance-application-issues.md#why-does-my-request-time-out-after-230-seconds) 將會逾時並傳回 HTTP 502 錯誤。 函式會繼續執行，但無法傳回 HTTP 回應。 對於長時間執行的函式，建議您遵循非同步模式，並傳回可以偵測要求狀態的位置。 如需函式可以執行多久的相關資訊，請參閱[級別和裝載 - 使用情況方案](functions-scale.md#timeout)。
 

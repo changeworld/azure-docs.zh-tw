@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 1ba8977272817d41334ccf0d9ad01d4d751bfb17
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439219"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041692"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -137,6 +137,8 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>如何在應用程式規則中將萬用字元用於目標 FQDN？
 
+目前只能在 FQDN 的左邊使用萬用字元。 例如，***. contoso.com**和 ***contoso.com**。
+
 如果您設定 ***contoso.com**，其會允許*任何值*.contoso.com，但不包含 contoso.com (網域頂點)。 如果您想要允許網域頂點，您必須明確地將其設定為目標 FQDN。
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>[佈建狀態:失敗] 是什麼意思？
@@ -160,7 +162,7 @@ Azure 防火牆必須在調整規模時佈建更多虛擬機器執行個體。 /
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>當服務調整時，防火牆子網路大小是否需要變更？
 
-不可以。 Azure 防火牆不需要大於 /26 的子網路。
+否。 Azure 防火牆不需要大於 /26 的子網路。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何增加防火牆輸送量？
 

@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0ec314e6b5abde60102dacfc81c9303cef16e887
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da697ad6fac5c75faacbfb20b768a4ec96528881
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058632"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041454"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在您的應用程式中新增應用程式角色，並且在權杖中接收這些角色
 
@@ -74,7 +74,7 @@ ms.locfileid: "87058632"
 ```
 
 > [!NOTE]
->`displayName` 不能包含空格。
+>`displayName`可能包含空格。
 
 您可以將應用程式角色定義成以 `users`、`applications` 或兩者為目標。 適用于時 `applications` ，應用程式角色會顯示為 [**管理**] 區段下的 [應用程式許可權] > **API 許可權 > 新增許可權 > [我的 API] > 選擇 API > 應用程式許可權**。 下列範例顯示以 `Application` 為目標的應用程式角色。
 
@@ -126,7 +126,7 @@ ms.locfileid: "87058632"
 ## <a name="more-information"></a>詳細資訊
 
 - [使用應用程式角色與角色宣告將授權新增至 ASP.NET Core Web 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
-- [使用 Microsoft 身分識別平臺在應用程式中執行授權（影片）](https://www.youtube.com/watch?v=LRoc-na27l0)
+- [使用 Microsoft 身分識別平臺，在您的應用程式中執行授權 (Video) ](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Azure Active Directory 現在具有群組宣告和應用程式角色](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [AAD 存取權杖](access-tokens.md)

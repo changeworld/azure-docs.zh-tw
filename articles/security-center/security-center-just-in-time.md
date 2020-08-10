@@ -1,6 +1,6 @@
 ---
 title: Azure 資訊安全中心中的 Just-In-Time 虛擬機器存取 | Microsoft Docs
-description: 本檔示範 Azure 資訊安全中心中的即時 VM 存取（JIT）如何協助您控制 Azure 虛擬機器的存取。
+description: 本檔示範如何 (JIT) Azure 資訊安全中心中的即時 VM 存取，協助您控制 Azure 虛擬機器的存取權。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a077e1dfd166051ad1cf16e42d11e8eeb61d2c91
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 611124a113a0cce3ab1fb8db5969a6ab6f5f6658
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419847"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041936"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用及時存取保護您的管理埠
 
-使用 Azure 資訊安全中心的及時（JIT）虛擬機器（VM）存取功能，鎖定 Azure 虛擬機器的輸入流量。 這可減少攻擊的風險，並在您需要連線到 VM 時提供輕鬆的存取。
+使用 Azure 資訊安全中心的即時 (JIT) 虛擬機器 (VM) 存取功能，鎖定您的 Azure 虛擬機器的輸入流量。 這可減少攻擊的風險，並在您需要連線到 VM 時提供輕鬆的存取。
 
 如需有關 JIT 如何運作和基礎邏輯的完整說明，請參閱[即時說明](just-in-time-explained.md)。
 
@@ -31,21 +31,14 @@ ms.locfileid: "87419847"
 
 ## <a name="availability"></a>可用性
 
-- 發行狀態：**公開上市**
-- 定價：**標準層**。 [深入瞭解定價](/azure/security-center/security-center-pricing)。
-- 必要的角色和許可權：
-    - 「**讀取**者」和**SecurityReader**角色都可以同時查看 JIT 狀態和參數。
-    - 若要建立可與 JIT 搭配使用的自訂角色，請參閱[設定和使用 jit 需要哪些許可權？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)
-    - 若要為需要要求對 VM 進行 JIT 存取的使用者建立最低許可權的角色，並不執行其他 JIT 作業，請使用資訊安全中心 GitHub 社區頁面中的[JitLeastPrivilegedRole 腳本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)。
-- 支援的 Vm： 
-    - ✔透過 Azure Resource Manager 部署的 Vm。
-    - ✘以傳統部署模型部署的 Vm。 [深入瞭解這些部署模型](../azure-resource-manager/management/deployment-models.md)。
-    - ✘受 azure[防火牆管理員](https://docs.microsoft.com/azure/firewall-manager/overview)控制的 azure 防火牆所保護的 vm。
-- 雲端： 
-    - ✔ 商用雲端
-    - ✔ 國家/地區/主權 (US Gov、中國 Gov、其他 Gov)
-
-
+|層面|詳細資料|
+|----|:----|
+|發行狀態：|正式運作|
+|標價|標準層|
+|支援的 Vm：|![是 ](./media/icons/yes-icon.png) 透過 Azure Resource Manager 部署的 vm。<br>![未 ](./media/icons/yes-icon.png) 使用傳統部署模型部署任何 vm。 [深入瞭解這些部署模型](../azure-resource-manager/management/deployment-models.md)。<br>![沒有 ](./media/icons/yes-icon.png) 受[Azure 防火牆管理員](https://docs.microsoft.com/azure/firewall-manager/overview)控制的 azure 防火牆所保護的 vm|
+|必要的角色和許可權：|「**讀取**者」和**SecurityReader**角色都可以同時查看 JIT 狀態和參數。<br>若要建立可與 JIT 搭配使用的自訂角色，請參閱[設定和使用 jit 所需的許可權？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)。<br>若要為需要要求對 VM 進行 JIT 存取的使用者建立最低許可權的角色，並不執行其他 JIT 作業，請使用資訊安全中心 GitHub 社區頁面中的[JitLeastPrivilegedRole 腳本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)。|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov) |
+|||
 
 
 ## <a name="enable-jit-vm-access"></a>啟用 JIT VM 存取<a name="jit-configure"></a>
@@ -75,7 +68,7 @@ ms.locfileid: "87419847"
         - 最後一個使用者
     - **未設定**-沒有啟用 jit 的 vm，但可支援 jit。 我們建議您為這些 Vm 啟用 JIT。
     - **不支援**-未啟用 JIT 且不支援此功能的 vm。 基於下列原因，您的 VM 可能會在此索引標籤中：
-      - 缺少網路安全性群組（NSG）-JIT 需要設定 NSG
+      - 缺少網路安全性群組 (NSG) -JIT 需要設定 NSG
       - 傳統 VM-JIT 支援透過 Azure Resource Manager 部署的 Vm，而不是「傳統部署」。 [深入瞭解傳統與 Azure Resource Manager 部署模型](../azure-resource-manager/management/deployment-models.md)。
       - 其他-如果在訂用帳戶或資源群組的安全性原則中停用了 JIT 解決方案，則您的 VM 可能會在此索引標籤中。
 
@@ -94,7 +87,7 @@ ms.locfileid: "87419847"
     - 使用 [**新增**] 按鈕新增自訂埠。 
     - 從清單中選取其中一個預設埠來加以修改。
 
-    針對每個埠（自訂和預設），[**新增埠**設定] 窗格會提供下列選項：
+    針對每個埠 (自訂和預設) [**新增埠**設定] 窗格會提供下列選項：
 
     - **通訊協定**-核准要求時在此埠上允許的通訊協定
     - **允許的來源 ip**-核准要求時在此埠上允許的 IP 範圍
@@ -238,7 +231,7 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
 
 ## <a name="request-access-to-a-jit-enabled-vm"></a>要求存取已啟用 JIT 的 VM
 
-您可以從 Azure 入口網站（在資訊安全中心或 Azure 虛擬機器）中或以程式設計方式，要求存取已啟用 JIT 的 VM。
+您可以) 或以程式設計方式，從資訊安全中心或 Azure 虛擬機器中的 Azure 入口網站 (要求存取已啟用 JIT 的 VM。
 
 下列每個選項都會在下方的個別索引標籤中說明。
 
@@ -291,7 +284,7 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
     - 如果已啟用 JIT，請選取 [**要求存取**] 以使用要求的 IP、時間範圍和針對該 VM 設定的埠來傳遞存取要求。
 
 > [!NOTE]
-> 針對受 Azure 防火牆保護的 VM 核准要求之後，資訊安全中心會為使用者提供適當的連線詳細資料（DNAT 資料表的埠對應），以用來連線至 VM。
+> 針對受 Azure 防火牆保護的 VM 核准要求之後，資訊安全中心會為使用者提供適當的連線詳細資料， (從 DNAT 資料表) 的埠對應，以用來連線至 VM。
 
 
 
@@ -320,7 +313,7 @@ Just-In-Time 虛擬機器存取功能可透過 Azure 資訊安全中心 API 使�
     $JitPolicyArr=@($JitPolicyVm1)
     ```
         
-1. 傳送要求存取權（使用步驟1中的資源識別碼）
+1. 傳送要求存取權 (使用步驟1中的資源識別碼) 
 
     ```azurepowershell
     Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr

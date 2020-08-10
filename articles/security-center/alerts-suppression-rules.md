@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 341373c9a8429f335f3064db7a94973d34e0ca1c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089935"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042495"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>隱藏來自 Azure 資訊安全中心威脅防護的警示
 
@@ -21,9 +21,15 @@ ms.locfileid: "87089935"
 
 ## <a name="availability"></a>可用性
 
-- 版本狀態：**預覽**
-- 必要角色：**安全性管理員**和**擁有者**可以建立/刪除規則。 **安全性讀取者**和**讀者**可以檢視規則。
-- 雲端：✔全國/主權的✔商用雲端（US Gov、中國 Gov、其他 Gov）
+|層面|詳細資料|
+|----|:----|
+|發行狀態：|預覽|
+|標價|免費層<br> (大部分的安全性警示僅適用于標準層) |
+|必要的角色和許可權：|**安全性系統管理員**和**擁有**者可以建立/刪除規則。<br>**安全性讀取者**和**讀者**可以檢視規則。|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov) |
+|||
+
+
 
 
 ## <a name="what-are-suppression-rules"></a>什麼是隱藏的規則？
@@ -32,9 +38,9 @@ Azure 資訊安全中心的威脅防護元件會偵測環境中任何區域的�
 
 當單一警示不需關注或不相關時，您可以手動將其關閉。 或者，使用歸併規則功能，在未來自動關閉類似的警示。 一般來說，您會使用歸併規則來執行下列動作：
 
-- 隱藏已識別為誤判為真的警示
+- 隱藏已識別為誤報的警示
 
-- 隱藏太常觸發而不實用的警示
+- 隱藏太常觸發的警示
 
 您的歸併規則會定義應自動關閉警示的準則。
 

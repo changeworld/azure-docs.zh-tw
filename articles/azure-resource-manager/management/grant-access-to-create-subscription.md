@@ -6,12 +6,12 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aef9c6781c87ff4e84e46de711308319755e4630
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824472"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042049"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授與建立 Azure 企業版訂用帳戶的權限 (預覽)
 
@@ -180,7 +180,7 @@ ms.locfileid: "87824472"
 
 若要追蹤透過此 API 建立的訂用帳戶，請使用[租用戶活動記錄 API](/rest/api/monitor/tenantactivitylogs)。 目前無法使用 PowerShell、CLI 或 Azure 入口網站來追蹤訂用帳戶的建立。
 
-1. 以 Azure AD 租用戶的租用戶管理員身分[提高存取權](../../role-based-access-control/elevate-access-global-admin.md)，然後將 `/providers/microsoft.insights/eventtypes/management`範圍的「讀者」角色指派給稽核使用者。
+1. 以 Azure AD 租用戶的租用戶管理員身分[提高存取權](../../role-based-access-control/elevate-access-global-admin.md)，然後將 `/providers/microsoft.insights/eventtypes/management`範圍的「讀者」角色指派給稽核使用者。 此存取權可在「[讀取](../../role-based-access-control/built-in-roles.md#reader)者」角色、「[監視參與者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)」角色或[自訂角色](../../role-based-access-control/custom-roles.md)中取得。
 1. 以稽核使用者身分呼叫[租用戶活動記錄 API](/rest/api/monitor/tenantactivitylogs)，以查看訂用帳戶建立活動。 範例：
 
     ```

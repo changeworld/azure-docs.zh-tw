@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b887c91a289730c3d92efe753a2df162f36a047
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032115"
+ms.locfileid: "88042474"
 ---
 # <a name="conditional-access-conditions"></a>條件式存取：條件
 
@@ -68,7 +68,7 @@ Azure AD 條件式存取支援下列裝置平臺：
 > 用戶端應用程式條件的行為已于2020年8月更新。 如果您有現有的條件式存取原則，它們會保持不變。 不過，如果您按一下現有的原則，就會移除 [設定] 切換，並選取套用原則的用戶端應用程式。
 
 > [!IMPORTANT]
-> 來自舊版驗證用戶端的登入不支援 MFA，也不會將裝置狀態資訊傳遞給 Azure AD，因此，條件式存取授與控制會封鎖它們，例如要求 MFA 或符合規範的裝置。 如果您有必須使用舊版驗證的帳戶，您可以從原則中排除這些帳戶，或將原則設定為只套用至新式驗證用戶端。
+> 來自舊版驗證用戶端的登入不支援 MFA，也不會將裝置狀態資訊傳遞給 Azure AD，因此，條件式存取授與控制會封鎖它們，例如要求 MFA 或符合規範的裝置。 如果您有必須使用舊版驗證的帳戶，則必須從原則中排除這些帳戶，或將原則設定為僅適用于新式驗證用戶端。
 
 設定為 **[是]** 時，會套用至已核**取的專案**，當設定為 [**否**] 時，會套用至所有用戶端應用程式，包括現代化和舊版驗證用戶端。 此切換不會出現在2020年8月之前建立的原則中。
 

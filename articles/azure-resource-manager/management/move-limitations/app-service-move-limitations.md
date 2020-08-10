@@ -2,13 +2,13 @@
 title: 移動 Azure App Service 資源
 description: 使用 Azure Resource Manager 將 App Service 資源移到新的資源群組或訂用帳戶。
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80655776"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042052"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>App Service 資源的移動指引
 
@@ -23,7 +23,8 @@ ms.locfileid: "80655776"
     - App Service 方案
     - 已上傳或匯入的 TLS/SSL 憑證
     - App Service 環境
-- 資源群組中的所有 App Service 資源必須一起移動。 請注意，App Service 環境無法移至新的資源群組或新的訂用帳戶。
+- 資源群組中的所有 App Service 資源必須一起移動。
+- App Service 環境無法移至新的資源群組或訂用帳戶。 不過，您可以將 web 應用程式和 app service 方案移到新的訂用帳戶，而不需要移動 App Service 環境。 移動之後，web 應用程式就不會再裝載于 App Service 環境。
 - 只要憑證與資源群組中的其他所有資源一起移動，您就可以將系結至 web 的憑證移動，而不刪除 TLS 系結。
 - 只能從其最初建立 App Service 資源的資源群組中移動 App Service 資源。 如果 App Service 資源不再位於其原始資源群組中，請將其移回其原始資源群組。 然後，在訂用帳戶之間移動資源。
 

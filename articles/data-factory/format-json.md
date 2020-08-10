@@ -7,16 +7,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 08/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 8429f58b9b8ce1be12fea861b805084347a0e2b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2fc2ccdc7a0520bd156bde8c1da36e19a9e2af1e
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537692"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042185"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory 中的 JSON 格式
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 當您想要**剖析 json 檔案，或將資料寫入 json 格式**時，請遵循這篇文章。 
@@ -30,11 +31,11 @@ ms.locfileid: "86537692"
 | 屬性         | 描述                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的類型屬性必須設定為**Json**。 | 是      |
-| location         | 檔案的位置設定。 每個以檔案為基礎的連接器在下都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章-> 資料集屬性一節中的詳細資訊**。 | 是      |
+| location         | 檔案 (s) 的位置設定。 每個以檔案為基礎的連接器在下都有自己的位置類型和支援的屬性 `location` 。 **請參閱連接器文章-> 資料集屬性一節中的詳細資訊**。 | 是      |
 | encodingName     | 用來讀取/寫入測試檔案的編碼類型。 <br>允許的值如下： "UTF-8"、"UTF-16"、"UTF-UTF-16BE"、"UTF-32"、"32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"，"GB18030"，"JOHAB"，"SHIFT-JIS"，"CP875"，"CP866"，"IBM00858"，"IBM037"，"IBM273"，"IBM437"，"IBM500"，"IBM737"，"IBM775"，"IBM850"，"IBM852"，"IBM855"，"IBM857"，"IBM860"，"IBM861"，"IBM863"，"IBM864"，"IBM865"，"IBM869"，"IBM870"，"IBM01140"，"IBM01141"，"IBM01142"，"IBM01143"，"IBM01144"，"IBM01145"，"IBM01146"，"IBM01147"，"IBM01148"，"IBM01149"，"ISO-2022-JP"，"ISO-2022-KR"，"ISO-8859-1"，"ISO-8859-2"，"ISO-8859-3"，"ISO-8859-4"，"ISO-8859-5"，"ISO-8859-6"，"ISO-8859-7"，"iso-8859-8"，"iso-8859-9"，"ISO-8859-13"、「ISO-8859-15」、「WINDOWS-874」、「WINDOWS-1250」、「WINDOWS-1251」、「WINDOWS-1252」、「WINDOWS-1253」、「WINDOWS-1254」、「WINDOWS-1255」、「WINDOWS-1256」、「WINDOWS-1257」、「WINDOWS-1258」。| 否       |
 | compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
-| type<br/>（*低於 `compression` *） | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為**bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **snappy**或**lz4**。 表示在儲存檔案時使用。 預設值為 [未壓縮]。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意**，使用複製活動來解壓縮**ZipDeflate**檔案並寫入以檔案為基礎的接收資料存放區時，預設會將檔案解壓縮至資料夾： `<path specified in dataset>/<folder named as source zip file>/` ， `preserveZipFileNameAsFolder` 在[複製活動來源](#json-as-source)上使用，以控制是否要將 ZIP 檔案名保留為資料夾結構。 | 否。  |
-| 等級<br/>（*低於 `compression` *） | 壓縮比例。 <br>允許的值為**最佳**或**最快**。<br>- **最快速：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
+| type<br/> (* `compression`) * | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為**bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **snappy**或**lz4**。 表示在儲存檔案時使用。 預設值為 [未壓縮]。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意**，使用複製活動將**ZipDeflate**檔案解壓縮 (s) 並寫入以檔案為基礎的接收資料存放區時，預設會將檔案解壓縮至資料夾： `<path specified in dataset>/<folder named as source zip file>/` ， `preserveZipFileNameAsFolder` 在[複製活動來源](#json-as-source)上使用，以控制是否要將 ZIP 檔案名保留為資料夾結構。 | 否。  |
+| 等級<br/> (* `compression`) * | 壓縮比例。 <br>允許的值為**最佳**或**最快**。<br>- **最快速：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
 以下是 Azure Blob 儲存體上的 JSON 資料集範例：
 
@@ -84,7 +85,7 @@ ms.locfileid: "86537692"
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | FormatSettings 的類型必須設定為**JsonReadSettings**。 | 是      |
 | compressionProperties | 一組屬性，說明如何將指定壓縮編解碼器的資料解壓縮。 | 否       |
-| preserveZipFileNameAsFolder<br>（*低於 `compressionProperties` *） | 適用于使用**ZipDeflate**壓縮設定輸入資料集時。 指出是否要在複製期間保留來源 ZIP 檔案名做為資料夾結構。 當設定為 true （預設值）時，Data Factory 會將解壓縮的檔案寫入 `<path specified in dataset>/<folder named as source zip file>/` ; 當設定為 false 時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。  | 否 |
+| preserveZipFileNameAsFolder<br> (* `compressionProperties`) * | 適用于使用**ZipDeflate**壓縮設定輸入資料集時。 指出是否要在複製期間保留來源 ZIP 檔案名做為資料夾結構。<br>-設定為**true 時 (預設) **，Data Factory 會將解壓縮的檔案寫入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-設定為**false**時，Data Factory 會將解壓縮的檔案直接寫入至 `<path specified in dataset>` 。 請確定您在不同的來源 zip 檔案中沒有重複的檔案名，以避免發生賽車或非預期的行為。  | 否 |
 
 ### <a name="json-as-sink"></a>JSON 做為接收
 
@@ -101,7 +102,7 @@ ms.locfileid: "86537692"
 | 屬性      | 描述                                                  | 必要                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | FormatSettings 的類型必須設定為**JsonWriteSettings**。 | 是                                                   |
-| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為： **setOfObjects** （JSON 行）和**arrayOfObjects**。 **預設**值為**setOfObjects**。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |否 |
+| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為： **setOfObjects** (JSON 行) 和**arrayOfObjects**。 **預設**值為**setOfObjects**。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |否 |
 
 ### <a name="json-file-patterns"></a>JSON 檔案模式
 
@@ -124,7 +125,7 @@ ms.locfileid: "86537692"
         }
         ```
 
-    * **JSON 行（接收的預設值）**
+    * **接收) 的 JSON 行 (預設值**
 
         ```json
         {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
@@ -205,11 +206,11 @@ ms.locfileid: "86537692"
 | 名稱 | 描述 | 必要 | 允許的值 | 資料流程腳本屬性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 萬用字元路徑 | 所有符合萬用字元路徑的檔案都會被處理。 覆寫資料集中所設定的資料夾和檔案路徑。 | 否 | String[] | wildcardPaths |
-| 分割區根路徑 | 對於已分割的檔案資料，您可以輸入資料分割根路徑，以便將分割的資料夾當做資料行來讀取 | 否 | 字串 | partitionRootPath |
+| 分割區根路徑 | 對於已分割的檔案資料，您可以輸入資料分割根路徑，以便將分割的資料夾當做資料行來讀取 | 否 | String | partitionRootPath |
 | 檔案清單 | 您的來源是否指向列出要處理之檔案的文字檔 | 否 | `true` 或 `false` | fileList |
-| 要儲存檔案名稱的資料行 | 建立具有來原始檔案名和路徑的新資料行 | 否 | 字串 | rowUrlColumn |
+| 要儲存檔案名稱的資料行 | 建立具有來原始檔案名和路徑的新資料行 | 否 | String | rowUrlColumn |
 | 完成後 | 在處理之後刪除或移動檔案。 檔案路徑從容器根目錄開始 | 否 | Delete： `true` 或`false` <br> 進入`['<from>', '<to>']` | purgeFiles <br> moveFiles |
-| 依上次修改時間篩選 | 選擇根據上次修改檔案的時間來篩選檔案 | 否 | Timestamp | modifiedAfter <br> modifiedBefore |
+| 依上次修改時間篩選 | 選擇根據上次修改檔案的時間來篩選檔案 | 否 | 時間戳記 | modifiedAfter <br> modifiedBefore |
 | 單一檔 | 對應資料流程從每個檔案讀取一個 JSON 檔 | 否 | `true` 或 `false` | singleDocument |
 | 不具引號的資料行名稱 | 如果選取了不具引號的資料**行名稱**，則對應資料流程會讀取未以引號括住的 JSON 資料行。 | 否 | `true` 或 `false` |  unquotedColumnNames |
 | 有批註 | 如果 JSON 資料具有 C 或 c + + 樣式批註，請選取 [**具有批註**] | 否 | `true` 或 `false` | asComments |
@@ -222,7 +223,7 @@ ms.locfileid: "86537692"
 
 ![JSON 設定](media/data-flow/json-settings.png "JSON 設定")
 
-#### <a name="default"></a>預設
+#### <a name="default"></a>Default
 
 根據預設，JSON 資料會以下列格式讀取。
 

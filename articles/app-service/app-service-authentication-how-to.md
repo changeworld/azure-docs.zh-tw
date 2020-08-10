@@ -4,12 +4,12 @@ description: 瞭解如何在不同案例的 App Service 中自訂驗證和授權
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 747729b7cbb3dcce72eb36704b5965e8427b59e1
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 32b7db234cd91aaf9fa5fcfa9b35679d32561474
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424251"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042610"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -24,7 +24,7 @@ ms.locfileid: "87424251"
 * [如何設定 App 以使用 Google 登入](configure-authentication-provider-google.md)
 * [如何設定 App 使用 Microsoft 帳戶登入](configure-authentication-provider-microsoft.md)
 * [如何設定 App 以使用 Twitter 登入](configure-authentication-provider-twitter.md)
-* [如何設定您的應用程式以使用 OpenID Connect 提供者登入（預覽）](configure-authentication-provider-openid-connect.md)
+* [如何設定應用程式以使用 OpenID Connect 提供者登入 (預覽) ](configure-authentication-provider-openid-connect.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>使用多個登入提供者
 
@@ -222,7 +222,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>限制登入帳戶的網域
 
-Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 例如，Microsoft 帳戶允許 _outlook.com_、_live.com_ 和 _hotmail.com_ 帳戶。 Azure AD 允許登入帳戶有任意數目的自訂網域。 不過，您可能會想要將使用者直接帶到您自己的品牌 Azure AD 登入頁面（例如 `contoso.com` ）。 若要建議登入帳戶的功能變數名稱，請遵循下列步驟。
+Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 例如，Microsoft 帳戶允許 _outlook.com_、_live.com_ 和 _hotmail.com_ 帳戶。 Azure AD 允許登入帳戶有任意數目的自訂網域。 不過，您可能會想要將使用者直接帶到您自己的品牌 Azure AD 登入頁面 (例如 `contoso.com`) 。 若要建議登入帳戶的功能變數名稱，請遵循下列步驟。
 
 在中，流覽至 [訂用帳戶] [https://resources.azure.com](https://resources.azure.com) > * *_ \<subscription\_name_** > **resourceGroups** > *_* * * **subscriptions** \<resource\_group\_name> _>**提供者**  >  **Microsoft**  >  **網站**> * *_ \<app\_name> _ * * > **config**  >  **authsettings**。 
 
@@ -240,13 +240,13 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 ## <a name="authorize-or-deny-users"></a>授權或拒絕使用者
 
-雖然 App Service 會負責處理最簡單的授權案例（也就是拒絕未驗證的要求），但您的應用程式可能需要更精細的授權行為，例如限制只有特定使用者群組的存取權。 在某些情況下，您需要撰寫自訂應用程式代碼，以允許或拒絕存取已登入的使用者。 在其他情況下，App Service 或您的身分識別提供者可能可以協助，而不需要變更程式碼。
+雖然 App Service 會負責處理最簡單的授權案例 (也就是拒絕未經驗證的要求) ，您的應用程式可能需要更精細的授權行為，例如限制只有特定使用者群組的存取權。 在某些情況下，您需要撰寫自訂應用程式代碼，以允許或拒絕存取已登入的使用者。 在其他情況下，App Service 或您的身分識別提供者可能可以協助，而不需要變更程式碼。
 
 - [伺服器層級](#server-level-windows-apps-only)
 - [識別提供者層級](#identity-provider-level)
 - [應用層級](#application-level)
 
-### <a name="server-level-windows-apps-only"></a>伺服器層級（僅限 Windows 應用程式）
+### <a name="server-level-windows-apps-only"></a>伺服器層級 (僅限 Windows 應用程式) 
 
 針對任何 Windows 應用程式，您可以藉由編輯*Web.config*檔案來定義 IIS web 伺服器的授權行為。 Linux 應用程式不會使用 IIS，而且無法透過*Web.config*來設定。
 
@@ -273,13 +273,13 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 識別提供者可能會提供特定的「金鑰授權」。 例如：
 
 - 針對[Azure App Service](configure-authentication-provider-aad.md)，您可以直接在 Azure AD 中[管理企業層級的存取](../active-directory/manage-apps/what-is-access-management.md)。 如需指示，請參閱[如何移除使用者對應用程式的存取權](../active-directory/manage-apps/methods-for-removing-user-access.md)。
-- 對於[google](configure-authentication-provider-google.md)，屬於[組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 google API 專案可以設定為只允許您組織中的使用者存取（請參閱[Google 的**設定 OAuth 2.0**支援頁面](https://support.google.com/cloud/answer/6158849?hl=en)）。
+- 對於[google](configure-authentication-provider-google.md)，屬於[組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 google API 專案可以設定為只允許您組織中的使用者存取 (請參閱[Google 的**設定 OAuth 2.0**支援頁面](https://support.google.com/cloud/answer/6158849?hl=en)) 。
 
 ### <a name="application-level"></a>應用程式層級
 
 如果其中一個層級未提供您所需的授權，或如果您的平臺或身分識別提供者不受支援，則您必須撰寫自訂程式碼，以根據[使用者宣告](#access-user-claims)來授權使用者。
 
-## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>使用檔案進行設定（預覽）
+## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>使用檔案 (預覽進行設定) 
 
 您可以選擇性地透過部署所提供的檔案來設定您的驗證設定。 App Service 驗證/授權的某些預覽功能可能需要此項。
 
@@ -291,13 +291,13 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 > [!CAUTION]
 > 在預覽期間，啟用以檔案為基礎的設定將會停用透過某些用戶端（例如 Azure 入口網站、Azure CLI 和 Azure PowerShell）來管理應用程式的 App Service 驗證/授權功能。
 
-1. 在您的專案根目錄（部署至您的 web/函式應用程式中的 D:\home\site\wwwroot）建立新的 JSON 檔案供您設定。 根據以檔案為基礎的設定[參考](#configuration-file-reference)，填入所需的設定。 如果修改現有的 Azure Resource Manager 設定，請務必將集合中所捕獲的屬性轉譯 `authsettings` 成您的設定檔。
+1. 在專案的根目錄建立新的 JSON 檔案， (部署至 web/函式應用程式) 中的 D:\home\site\wwwroot。 根據以檔案為基礎的設定[參考](#configuration-file-reference)，填入所需的設定。 如果修改現有的 Azure Resource Manager 設定，請務必將集合中所捕獲的屬性轉譯 `authsettings` 成您的設定檔。
 
-2. 修改現有的設定，此設定會在下的[Azure Resource Manager](../azure-resource-manager/management/overview.md) api 中加以捕捉 `Microsoft.Web/sites/<siteName>/config/authsettings` 。 若要修改此程式，您可以使用[Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)或[Azure 資源總管](https://resources.azure.com/)之類的工具。 在 authsettings 集合中，您將需要設定三個屬性（並可能會移除其他內容）：
+2. 修改現有的設定，此設定會在下的[Azure Resource Manager](../azure-resource-manager/management/overview.md) api 中加以捕捉 `Microsoft.Web/sites/<siteName>/config/authsettings` 。 若要修改此程式，您可以使用[Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)或[Azure 資源總管](https://resources.azure.com/)之類的工具。 在 authsettings 集合中，您必須 (設定三個屬性，而且可能會移除其他) ：
 
     1.  設定 `enabled` 為 "true"
     2.  設定 `isAuthFromFile` 為 "true"
-    3.  將設定為檔案的 `authFilePath` 名稱（例如，"auth.json"）
+    3.  將設定 `authFilePath` 為 (的檔案名，例如 "auth.json" ) 
 
 進行此設定更新之後，檔案的內容將用來定義該網站 App Service 驗證/授權的行為。 如果您想要回到 Azure Resource Manager 設定，可以將設 `isAuthFromFile` 回 "false" 來執行這項操作。
 
@@ -469,8 +469,69 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 }
 ```
 
+## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>將您的應用程式釘選到特定的驗證執行階段版本
+
+當您啟用驗證/授權時，平臺中介軟體會插入您的 HTTP 要求管線中，如[功能總覽](overview-authentication-authorization.md#how-it-works)中所述。 此平臺中介軟體會定期更新為例行平臺更新中的新功能和改進。 根據預設，您的 web 或函數應用程式會在此平臺中介軟體的最新版本上執行。 這些自動更新一律是回溯相容的。 不過，在罕見的情況下，此自動更新會為您的 web 或函式應用程式引進執行時間問題，您可以暫時復原到先前的中介軟體版本。 本文說明如何將應用程式暫時釘選到特定版本的驗證中介軟體。
+
+### <a name="automatic-and-manual-version-updates"></a>自動和手動版本更新 
+
+您可以藉由設定應用程式的設定，將應用程式釘選到平臺中介軟體的特定版本 `runtimeVersion` 。 您的應用程式一律會在最新版本上執行，除非您選擇明確地將其釘選回特定版本。 一次只支援幾個版本。 如果您釘選到已不再支援的無效版本，您的應用程式將會改為使用最新版本。 若要一律執行最新版本，請將設定 `runtimeVersion` 為 ~ 1。 
+
+### <a name="view-and-update-the-current-runtime-version"></a>檢視並更新目前的執行階段版本
+
+您可以變更應用程式所使用的執行階段版本。 新的執行階段版本應該會在重新開機應用程式之後生效。 
+
+#### <a name="view-the-current-runtime-version"></a>檢視目前的執行階段版本
+
+您可以使用 Azure CLI 或透過應用程式中的其中一個 built0 版本 HTTP 端點，來查看平臺驗證中介軟體的目前版本。
+
+##### <a name="from-the-azure-cli"></a>從 Azure CLI
+
+使用 Azure CLI，以[az webapp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show)命令來查看目前中介軟體版本。
+
+```azurecli-interactive
+az webapp auth show --name <my_app_name> \
+--resource-group <my_resource_group>
+```
+
+在此程式碼中， `<my_app_name>` 將取代為您的應用程式名稱。 也請將取代為 `<my_resource_group>` 您應用程式的資源組名。
+
+您會 `runtimeVersion` 在 CLI 輸出中看到此欄位。 它看起來類似下列範例輸出，已截斷以清楚明瞭： 
+```output
+{
+  "additionalLoginParams": null,
+  "allowedAudiences": null,
+    ...
+  "runtimeVersion": "1.3.2",
+    ...
+}
+```
+
+##### <a name="from-the-version-endpoint"></a>從版本端點
+
+您也可以在應用程式上叫用/.auth/version 端點，以查看正在執行應用程式的目前中介軟體版本。 它會類似下列範例輸出：
+```output
+{
+"version": "1.3.2"
+}
+```
+
+#### <a name="update-the-current-runtime-version"></a>更新目前的執行階段版本
+
+使用 Azure CLI，您可以使用 `runtimeVersion` [az webapp auth update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update)命令來更新應用程式中的設定。
+
+```azurecli-interactive
+az webapp auth update --name <my_app_name> \
+--resource-group <my_resource_group> \
+--runtime-version <version>
+```
+
+將取代 `<my_app_name>` 為您的應用程式名稱。 也請將取代為 `<my_resource_group>` 您應用程式的資源組名。 此外，請 `<version>` 以1.x 執行時間的有效版本或 `~1` 最新版本取代。 您可以在不同的執行階段版本 [這裡] (找到版本 https://github.com/Azure/app-service-announcements) 資訊，以協助判斷要釘選到的版本。
+
+您可以選擇上述程式碼範例中的 [試試看]****，從 [Azure Cloud Shell](../cloud-shell/overview.md) 執行此命令。 在執行 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 登入之後，您也可以使用[本機 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 來執行此命令。
+
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：端對端驗證和授權使用者（Windows）](app-service-web-tutorial-auth-aad.md) 
-> [教學課程：端對端驗證和授權使用者（Linux）](containers/tutorial-auth-aad.md)
+> [教學課程： (Windows) 的端對端驗證和授權使用者](app-service-web-tutorial-auth-aad.md) 
+> [教學課程： (Linux) 的端對端驗證和授權使用者](containers/tutorial-auth-aad.md)

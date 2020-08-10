@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3bfaa9f2961dca2b8b717b1506d112943910485a
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519692"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042311"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>匯出安全性警訊和建議
 
@@ -24,19 +24,21 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 使用這些工具，您可以：
 
 * 持續匯出至 Log Analytics 工作區
-* 持續匯出至 Azure 事件中樞（以與協力廠商 Siem 整合）
-* 匯出至 CSV （一次）
+* 持續匯出至 Azure 事件中樞 (以與協力廠商 Siem 整合) 
+* 匯出至 CSV (一次) 
 
 
 
 ## <a name="availability"></a>可用性
 
-- 發行階段：**正式推出**
-- 必要的角色和許可權：
-    - 包含匯出設定之訂用帳戶上的**讀取器**
-    - 資源群組（或**擁有**者）上的**安全性系統管理員角色**
-    - 也必須具有目標資源的寫入權限
-- 雲端：✔的商用雲端✔ US Gov ✘中國 Gov，其他 Gov
+|層面|詳細資料|
+|----|:----|
+|發行狀態：|正式推出|
+|標價|免費層|
+|必要的角色和許可權：|包含匯出設定之訂用帳戶上的**讀取器**<br>資源群組 (或**擁有**者) 的**安全性系統管理員角色**<br>也必須具有目標資源的寫入權限|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
+|||
+
 
 
 ## <a name="setting-up-a-continuous-export"></a>設定連續匯出
@@ -51,9 +53,9 @@ Azure 資訊安全中心會產生詳細的安全性警示和建議。 您可以�
 
     [ ![ 匯出選項在 Azure 資訊安全中心](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox)這裡您會看到匯出選項。 每個可用的匯出目標都有一個索引標籤。 
 
-1. 選取您想要匯出的資料類型，並從每個類型的篩選中選擇（例如，[僅匯出高嚴重性警示]）。
+1. 選取您想要匯出的資料類型，並從每個類型的篩選中選擇 (例如 [僅匯出高嚴重性警示]) 。
 
-1. 從 [匯出目標] 區域中，選擇您想要儲存資料的位置。 資料可以儲存在不同訂用帳戶上的目標中（例如，在中央事件中樞實例或中央 Log Analytics 工作區）。
+1. 從 [匯出目標] 區域中，選擇您想要儲存資料的位置。 資料可以儲存在不同訂用帳戶上的目標中 (例如在中央事件中樞實例或中央 Log Analytics 工作區) 。
 
 1. 按一下 [檔案] 。
 
@@ -93,7 +95,7 @@ Azure 事件中樞是用來以程式設計方式取用任何串流資料的絕�
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics 資料表和架構
 
-安全性警示和建議會分別儲存在*SecurityAlert*和*SecurityRecommendations*資料表中。 包含這些資料表的 Log Analytics 解決方案名稱，取決於您是在免費或標準層（請參閱[定價](security-center-pricing.md)）：安全性（' 安全性與稽核 '）或 SecurityCenterFree。
+安全性警示和建議會分別儲存在*SecurityAlert*和*SecurityRecommendations*資料表中。 包含這些資料表的 Log Analytics 解決方案名稱，取決於您是在免費或標準層 (參閱[定價](security-center-pricing.md)) ：安全性 ( ' 安全性與稽核 ' ) 或 SecurityCenterFree。
 
 ![Log Analytics 中的 * SecurityAlert * 資料表](./media/continuous-export/log-analytics-securityalert-solution.png)
 
@@ -105,13 +107,13 @@ Azure 事件中樞是用來以程式設計方式取用任何串流資料的絕�
 
 Azure 監視器針對各種 Azure 警示（包括診斷記錄、計量警示，以及根據 Log Analytics 工作區查詢的自訂警示）提供統一的警示體驗。
 
-若要從 Azure 監視器中的資訊安全中心查看警示和建議，請根據 Log Analytics 查詢來設定警示規則（記錄警示）：
+若要從 Azure 監視器中的資訊安全中心查看警示和建議，請根據 Log Analytics 查詢設定警示規則 (記錄警示) ：
 
 1. 在 Azure 監視器的 [**警示**] 頁面上，按一下 [**新增警示規則**]。
 
     ![Azure 監視器的 [警示] 頁面](./media/continuous-export/azure-monitor-alerts.png)
 
-1. 在 [建立規則] 頁面中，設定您的新規則（使用您在[Azure 監視器中設定記錄警示規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)的相同方式）：
+1. 在 [建立規則] 頁面中，以您在 Azure 監視器) 中設定[記錄警示規則](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)的相同方式，設定您的新規則 (：
 
     * 針對 [**資源**]，選取您匯出安全性警示和建議的 Log Analytics 工作區。
 
@@ -120,7 +122,7 @@ Azure 監視器針對各種 Azure 警示（包括診斷記錄、計量警示，�
     * （選擇性）設定您想要觸發的[動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。 動作群組可以觸發電子郵件傳送、ITSM 票證、Webhook 等等。
     ![Azure 監視器警示規則](./media/continuous-export/azure-monitor-alert-rule.png)
 
-您現在會在 Azure 監視器警示中看到新的 Azure 資訊安全中心警示或建議（視您的設定而定），並自動觸發動作群組（如果有提供的話）。
+您現在會看到新的 Azure 資訊安全中心警示或建議 (根據您在 Azure 監視器警示中的設定) ，自動觸發動作群組 (（如果有提供) ）。
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>手動一次匯出安全性警示
 
@@ -138,6 +140,6 @@ Azure 監視器針對各種 Azure 警示（包括診斷記錄、計量警示，�
 如需相關內容，請參閱下列檔： 
 
 - [Azure 事件中樞文件](https://docs.microsoft.com/azure/event-hubs/)
-- [Azure Sentinel 文件](https://docs.microsoft.com/azure/sentinel/)
+- [Azure Sentinel 檔](https://docs.microsoft.com/azure/sentinel/)
 - [Azure 監視器文件](https://docs.microsoft.com/azure/azure-monitor/)
 - [工作流程自動化和連續匯出資料類型架構](https://aka.ms/ASCAutomationSchemas)

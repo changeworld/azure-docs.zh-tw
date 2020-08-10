@@ -4,14 +4,14 @@ description: 瞭解如何使用 Azure 入口網站或 CLI 來建立、查看和�
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/10/2020
 ms.subservice: alerts
-ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321117"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042729"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理計量警示
 
@@ -53,7 +53,7 @@ Azure 監視器中的計量警示可讓您在其中一個度量超出臨界值�
 
 10. （選擇性）藉由調整**匯總資料細微性**和**評估頻率**來調整條件。 
 
-11. 按一下 [完成] 。
+11. 按一下 [完成]。
 
 12. (選擇性) 如果您想要監視複雜的警示規則，請新增另一個準則。 目前使用者可以使用具有動態閾值準則的警示規則作為單一準則。
 
@@ -87,6 +87,7 @@ Azure 監視器中的計量警示可讓您在其中一個度量超出臨界值�
     > 建立計量警示之後，就無法編輯 [目標資源]**** 與 [警示規則名稱]****。
 
 6. 按一下 [完成]**** 以儲存您的編輯。
+
 
 ## <a name="with-azure-cli"></a>透過 Azure CLI
 
@@ -133,6 +134,14 @@ Azure 監視器中的計量警示可讓您在其中一個度量超出臨界值�
     ```azurecli
     az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
+
+## <a name="with-powershell"></a>透過 PowerShell
+
+計量警示規則有專用的 PowerShell Cmdlet 可供使用：
+
+- [AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)：建立新的計量警示規則或更新現有的計量。
+- [AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)：取得一或多個計量警示規則。
+- [AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2)：移除計量警示規則。
 
 ## <a name="next-steps"></a>後續步驟
 

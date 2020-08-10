@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 38a2dd42c010e5b213fd89aa046c7c5b1e1d0a7f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758930"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041779"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教學課程：使用語音 SDK 為您的 bot 啟用語音
 
@@ -38,6 +38,7 @@ ms.locfileid: "87758930"
 1. 已辨識的文字會以 Bot Framework 活動的形式傳遞至 Echo Bot。
 1. 回應文字會由文字轉換語音 (TTS) 服務轉換成音訊，並串流回用戶端應用程式進行播放。
 
+<!-- svg src in User Story 1754106 -->
 ![圖表-標記](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "語音通道流程")
 
 > [!NOTE]
@@ -52,7 +53,7 @@ ms.locfileid: "87758930"
 > * 新增自訂關鍵字啟用
 > * 瞭解如何變更可辨識和說話語音的語言
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 以下是完成本教學課程所需的事項：
 
@@ -61,7 +62,7 @@ ms.locfileid: "87758930"
 - [.NET Framework 執行時間 4.6.1](https://dotnet.microsoft.com/download)或更高版本
 - Azure 帳戶。 [免費註冊](https://azure.microsoft.com/free/ai/)。
 - [GitHub](https://github.com/) 帳戶
-- [Git for Windows](https://git-scm.com/download/win)
+- [適用于 Windows 的 Git](https://git-scm.com/download/win)
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -226,7 +227,7 @@ ms.locfileid: "87758930"
 2. 在左側流覽窗格的 [設定] 底下，**按一下 [****設定**]。
 3. 選取 [**一般設定**] 索引標籤。
 4. 找出**Web 通訊端**的切換，並將其設定為 [**開啟**]。
-5. 按一下 [儲存]。
+5. 按一下 [檔案] 。
 
 > [!TIP]
 > 您可以使用 Azure App Service 頁面頂端的控制項來停止或重新開機服務。 進行疑難排解時，這可能會很有用。
@@ -290,11 +291,11 @@ ms.locfileid: "87758930"
    * 檢查標題為 [**設定 Direct Line Speech**] 頁面上的文字，然後展開 [**認知服務帳戶**] 下拉式功能表。
    * 從功能表中選取您稍早建立的語音資源 (例如**SpeechEchoBotTutorial-speech**) ，以將您的 bot 與您的語音訂用帳戶金鑰建立關聯。
    * 忽略其餘的選擇性欄位。
-   * 按一下 [儲存]。
+   * 按一下 [檔案] 。
 
 1. 從**Bot 管理**導覽中，按一下 [**設定**]。
    * 選取標示為 [**啟用串流端點**] 的方塊。 這是建立在 bot 與 Direct Line Speech 通道之間的 web 通訊端建立的通訊協定所需的。
-   * 按一下 [儲存]。
+   * 按一下 [檔案] 。
 
 > [!TIP]
 > 如果您想要深入瞭解，請參閱[將 bot 連線至 Direct Line 語音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此頁面包含其他資訊和已知問題。
