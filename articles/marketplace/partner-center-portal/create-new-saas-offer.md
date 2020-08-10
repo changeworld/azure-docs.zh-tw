@@ -3,18 +3,18 @@ title: 建立 SaaS 供應專案、Azure Marketplace 和 Microsoft AppSource
 description: 如何使用 Microsoft 合作夥伴中心的 Microsoft 商業 Marketplace 方案，在 Microsoft AppSource、Azure Marketplace 或透過雲端解決方案提供者 (CSP) 方案中，建立軟體即服務 (SaaS) 供應專案來進行清單或銷售。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 07/22/2020
+ms.topic: how-to
+ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7fbb50308f14acbcec98c562fe72763341538df2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800331"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031025"
 ---
-# <a name="create-a-saas-offer"></a>建立 SaaS 供應項目
+# <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>在商業 marketplace 中建立 SaaS 供應專案
 
 若要開始在商業市集中建立軟體即服務 (SaaS) 供應項目，請務必先[建立合作夥伴中心帳戶](./create-account.md)，開啟 [[商業市集儀表板]](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) 並選取 [概觀] 索引標籤。
 
@@ -83,7 +83,7 @@ ms.locfileid: "87800331"
 
 SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用者或使用量計費的按月或按年收費方式。 Microsoft 的商業市集會依代理商模型上運作，藉由這種模型，發行者可設定價格、Microsoft 可向客戶收費，而且 Microsoft 可將收益支付給發行者，同時扣除代理商費用。
 
-這是成本和支出的範例細目，用來示範代理程式模型 (任何列出的價格僅供範例之用，而不是為了反映實際成本) ：
+這是成本和支出的範例細目，用來示範代理程式模型 (任何列出的價格，例如僅供使用，而不是為了反映實際成本) ：
 
 |**授權成本**|**每月 $100**|
 |:---|:---|
@@ -127,13 +127,13 @@ SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用
 #### <a name="call-out-descriptions"></a>向外撥說明
 
 1. 大型標誌
-2. Categories
+2. 類別
 3. 產業
 4. 支援位址 (連結) 
 5. 使用規定
 6. 隱私權原則
 7. 供應項目名稱
-8. 總結
+8. 摘要
 9. 描述
 10. 螢幕擷取畫面/影片
 11. 文件
@@ -282,16 +282,18 @@ Microsoft 提供標準合約範本。
 #### <a name="files-and-images"></a>檔案和影像
 
 - **檔** (必要) –為您的供應專案新增相關的行銷檔（PDF 格式），且每個供應專案至少須有三份檔。
--  (需要) 的**影像**–有多個地方的供應專案標誌影像可能會出現在整個 marketplace () 。 在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 和**中等** (90 x 90 圖元) 大小標誌。 您可以選擇性地將這些取代為不同的影像。 新增**寬**標誌是選擇性的。
+- **影像**–以 PNG 格式上傳標誌影像：
 
-    在清單中的不同位置必須使用三種標誌大小;其中一個是選擇性的：
+  - **小型** (48 x 48 圖元，必要) 
+  - **中** (90 x 90 圖元，必要) 
+  - **大型** (216 x 216 圖元，必要) 
+  - **寬** (255 x 115 圖元)  (選擇性) 
 
-    - **小型** (48 x 48)
-    - **中型** (90 x 90)
-    - 216 x 216 與 350 x 350) 之間的**大型** (
-    - **寬** (255 x 115) ，*選擇性*
+   這三種標誌大小會用於店面中的不同位置：
 
-    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+   -   小型標誌 (48 x 48 圖元) 會出現在 Azure Marketplace 搜尋結果中，以及 [Microsoft AppSource 主頁面] 和 [搜尋結果] 頁面上。 
+   -   當您在 Microsoft Azure 中建立新資源時，) 會出現中等標誌 (90 x 90 圖元。
+   -   216 x 216 與 350 x 350 圖元之間的大型標誌 () 會出現在 Azure Marketplace 和 Microsoft AppSource 的供應專案清單頁面上。
 
 - 需要) 的**螢幕擷取畫面** (-新增最多五個螢幕擷取畫面，示範您的供應專案，大小為 1280 x 720 圖元。 所有影像都必須是 .PNG 格式。
 - **影片** (選用) - 新增用於呈現供應項目的影片連結。 您可以使用 YouTube 和/或 Vimeo 影片的連結，這會隨著您的供應項目顯示給客戶。 您也需要輸入影片的縮圖影像，必須為 1280 x 720 像素的 PNG 格式影像。 每個供應項目最多可以顯示四支影片。

@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 閘道：對點對站連線進行疑難排解： Mac OS X 用戶端
-description: 從 Mac OS X 疑難排解點對站連線能力。請檢查這些設定：伺服器位址、遠端識別碼、本機識別碼、驗證設定和 OS 版本。
+description: 瞭解如何使用原生 VPN 用戶端和 IKEv2，針對來自 Mac OS X 的點對站連線問題進行疑難排解。
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: ae7ca9ad69bc5bea20fc959f86e41439bd01cd5c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920750"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030654"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>針對來自 Mac OS X VPN 用戶端的點對站 VPN 連線問題進行疑難排解
 

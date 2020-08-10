@@ -1,22 +1,22 @@
 ---
-title: 合作夥伴中心的商業市集入口網站概觀
-description: 深入了解合作夥伴中心的商業市集入口網站，以及如何在 Azure Marketplace 及 AppSource 上，以及透過雲端解決方案提供者 (CSP) 方案刊登及銷售供應項目。
+title: 合作夥伴中心的商業 marketplace 入口網站總覽
+description: 在合作夥伴中心深入瞭解 Microsoft 商業 marketplace 入口網站，以及如何在 Azure Marketplace、AppSource 及透過雲端解決方案提供者 (CSP) 方案中，列出及銷售優惠。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c91e6396171511fa3b11b0295504f0ca0d75d15
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047599"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030856"
 ---
-# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作夥伴中心的商業市集入口網站概觀
+# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作夥伴中心的商業 marketplace 入口網站總覽
 
-歡迎使用合作夥伴中心的商業市集入口網站。 [商業市集入口網站](https://partner.microsoft.com/dashboard/commercial-marketplace/)可協助您銷售自己的產品及服務、觸及客戶，並拓展您的業務。
+歡迎使用合作夥伴中心的商業 marketplace 入口網站。 [商業市集入口網站](https://partner.microsoft.com/dashboard/commercial-marketplace/)可協助您銷售自己的產品及服務、觸及客戶，並拓展您的業務。
 
 這些文章會涵蓋建立及使用合作夥伴中心帳戶的基本概念。 這包括建立可以刊登於 [Azure Marketplace](https://azuremarketplace.microsoft.com/) 或 [AppSource](https://appsource.microsoft.com/) 上的新供應項目、管理移轉自 Cloud Partner 入口網站的現有供應項目，以及提供能協助回答問題及收集您意見反應的資源。
 
@@ -28,7 +28,7 @@ ms.locfileid: "87047599"
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>從 Cloud Partner 入口網站移轉
 
-合作夥伴中心正在持續演進，以更佳整合我們與軟體發行者在所有層面上的關係。 在此演進過程中，我們已將所有商業 marketplace 供應專案管理從 Cloud Partner 入口網站（CPP）遷移至合作夥伴中心。
+合作夥伴中心正在持續演進，以更佳整合我們與軟體發行者在所有層面上的關係。 在此演進過程中，我們已將所有的商用 marketplace 供應專案管理從 Cloud Partner 入口網站 (CPP) 遷移至合作夥伴中心。
 
 先前使用 CPP 的現有發行者會發現熟悉但改良且直覺的合作夥伴中心使用者體驗。 系統會順暢地將使用者引導到適當的位置。 客戶將不會受到此合作夥伴體驗升級的影響。
 

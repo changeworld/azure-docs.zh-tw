@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 中的存取控制概觀 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen2 中的存取控制運作方式
+description: 瞭解 Azure Data Lake Storage Gen2 中的存取控制運作方式。 支援 azure 角色型存取控制 (Azure RBAC) 和類似 POSIX 的 Acl。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 54867278b583124473b5b41c164714bf91f2f631
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543294"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030481"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的存取控制
 
-Azure Data Lake Storage Gen2 會執行可同時支援 Azure 角色型存取控制（Azure RBAC）和 POSIX 型存取控制清單（Acl）的存取控制模型。 本文摘要說明 Data Lake Storage Gen2 存取控制模型的基本概念。
+Azure Data Lake Storage Gen2 會執行一個存取控制模型，以支援 Azure 角色型存取控制， (Azure RBAC) 和類似 POSIX 的存取控制清單 (Acl) 。 本文摘要說明 Data Lake Storage Gen2 存取控制模型的基本概念。
 
 <a id="azure-role-based-access-control-rbac"></a>
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-RBAC 會使用角色指派，有效地將許可權集套用至*安全性主體*。 「*安全性主體」（security principal* ）是代表使用者、群組、服務主體或受控識別的物件，而這些定義是在要求存取 Azure 資源的 AZURE ACTIVE DIRECTORY （AD）中。
+RBAC 會使用角色指派，有效地將許可權集套用至*安全性主體*。 「*安全性主體」（security principal* ）是一個物件，代表使用者、群組、服務主體或受控識別，其定義于要求存取 Azure 資源的 AZURE ACTIVE DIRECTORY (AD) 中。
 
-一般而言，這些 Azure 資源會限制為最上層資源（例如： Azure 儲存體帳戶）。 在 Azure 儲存體的情況下，因此 Azure Data Lake Storage Gen2，這項機制已擴充至容器（檔案系統）資源。
+一般而言，這些 Azure 資源會限制為最上層資源 (例如： Azure 儲存體帳戶) 。 在 Azure 儲存體的情況下，因此 Azure Data Lake Storage Gen2，這項機制已擴充至容器 (檔案系統) 資源。
 
 若要瞭解如何將角色指派給儲存體帳戶範圍內的安全性主體，請參閱在[Azure 入口網站中使用 RBAC 授與 Azure blob 和佇列資料的存取權](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
@@ -41,7 +41,7 @@ RBAC 會使用角色指派，有效地將許可權集套用至*安全性主體*�
 > [!NOTE]
 > 如果已將儲存體 Blob 資料擁有者內建角色指派給安全性主體，則會將安全性主體視為*超級使用者*，並被授與所有變更作業的完整存取權，包括設定目錄或檔案的擁有者，以及它們不是擁有者的目錄和檔案的 acl。 超級使用者存取權是唯一可變更資源擁有者的授權方式。
 
-## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>共用金鑰和共用存取簽章（SAS）驗證
+## <a name="shared-key-and-shared-access-signature-sas-authentication"></a>共用金鑰和共用存取簽章 (SAS) 驗證
 
 Azure Data Lake Storage Gen2 支援共用金鑰和 SAS 方法以進行驗證。 這些驗證方法的特性是沒有與呼叫者相關聯的身分識別，因此無法執行以許可權為基礎的安全性主體授權。
 
@@ -51,7 +51,7 @@ SAS 權杖會在其權杖中包含允許的權限。 SAS 權杖中包含的權�
 
 ## <a name="access-control-lists-on-files-and-directories"></a>檔案和目錄的存取控制清單
 
-您可以讓安全性主體與檔案和目錄的存取層級產生關聯。 這些關聯會在*存取控制清單（ACL）* 中加以捕捉。 儲存體帳戶中的每個檔案和目錄都有存取控制清單。
+您可以讓安全性主體與檔案和目錄的存取層級產生關聯。 這些關聯會在*存取控制清單中捕捉 (ACL) *。 儲存體帳戶中的每個檔案和目錄都有存取控制清單。
 
 > [!NOTE]
 > Acl 只適用于相同租使用者中的安全性主體。 
@@ -102,7 +102,7 @@ SAS 權杖會在其權杖中包含允許的權限。 SAS 權杖中包含的權�
 | **執行 (X)** | 不表示 Data Lake Storage Gen2 內容中的任何項目 | 需要周遊目錄的子項目 |
 
 > [!NOTE]
-> 如果您只使用 Acl （無 RBAC）來授與許可權，則若要將檔案的讀取或寫入權限授與安全性主體，您必須將容器的**執行**許可權，以及導致檔案之資料夾階層中的每個資料夾，授與安全性主體。
+> 如果您只使用 Acl (沒有 RBAC) 授與許可權，則若要將檔案的讀取或寫入存取權授與安全性主體，您必須將容器的**執行**許可權，以及導致檔案之資料夾階層中的每個資料夾，授與安全性主體。
 
 #### <a name="short-forms-for-permissions"></a>權限的簡短形式
 
@@ -167,7 +167,7 @@ SAS 權杖會在其權杖中包含允許的權限。 SAS 權杖中包含的權�
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>指派新檔案或目錄的擁有群組
 
 * **案例 1**：根目錄 "/"。 建立 Data Lake Storage Gen2 容器時，會建立此目錄。 在此情況下，如果使用 OAuth 來建立容器，則擁有群組會設定為使用者。 如果容器是使用共用金鑰、帳戶 SAS 或服務 SAS 所建立，則擁有者和擁有群組會設定為 **$superuser**。
-* **案例 2** （其他所有案例）：建立新專案時，會從父目錄複寫擁有群組。
+* **案例 2** (每個其他案例) ：建立新專案時，會從父目錄複寫擁有群組。
 
 ##### <a name="changing-the-owning-group"></a>變更擁有群組
 
@@ -227,7 +227,7 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 如「存取檢查演算法」所說明，遮罩會限制具名使用者、擁有群組及具名群組的存取。  
 
 > [!NOTE]
-> 針對新的 Data Lake Storage Gen2 容器，根目錄（"/"）的存取 ACL 遮罩會預設為750（針對目錄）和640（代表檔案）。 檔案不會接收 X 位元，因為它與僅限儲存的系統中包含的檔案無關。
+> 針對新的 Data Lake Storage Gen2 容器，根目錄 ( "/) " 之存取 ACL 的遮罩會預設為750（針對目錄）和640（針對檔案）。 檔案不會接收 X 位元，因為它與僅限儲存的系統中包含的檔案無關。
 >
 > 遮罩可就個別的呼叫指定。 這可讓不同的取用系統 (例如叢集) 將不同的有效遮罩用於其檔案作業上。 指定於給定要求上的遮罩會完全覆寫預設遮罩。
 
@@ -280,7 +280,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-否。 只要開啟階層命名空間（HNS）功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
+否。 只要已開啟階層命名空間 (HNS) 功能，就會為儲存體帳戶啟用透過 Acl 的存取控制。
 
 如果 HNS 關閉，Azure RBAC 授權規則仍適用。
 
@@ -318,7 +318,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>如何? 為服務主體正確設定 Acl 嗎？
 
-當您定義服務主體的 Acl 時，請務必針對您所建立的應用程式註冊使用*服務主體*的物件識別碼（OID）。 請務必注意，已註冊的應用程式在特定的 Azure AD 租使用者中有個別的服務主體。 已註冊的應用程式具有在 Azure 入口網站中可見的 OID，但*服務主體*具有另一個（不同的） oid。
+當您定義服務主體的 Acl 時，請務必針對您所建立的應用程式註冊，使用*服務主體* (OID) 的物件識別碼。 請務必注意，已註冊的應用程式在特定的 Azure AD 租使用者中有個別的服務主體。 已註冊的應用程式具有 Azure 入口網站中可見的 OID，但*服務主體*有另一個 (不同的) OID。
 
 若要取得對應至應用程式註冊之服務主體的 OID，您可以使用 `az ad sp show` 命令。 將 [應用程式識別碼] 指定為參數。 以下是針對服務主體取得對應至應用程式識別碼 = 18218b12-1895-43e9-ad80-6e8fc1ea88ce 之應用程式註冊的 OID 範例。 在 Azure CLI 中執行下列命令：
 

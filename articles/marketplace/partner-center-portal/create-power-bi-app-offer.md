@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c464e26419648d396b39718f357bcef7e4fa5552
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800292"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030741"
 ---
 # <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應專案
 
@@ -136,13 +136,13 @@ ms.locfileid: "87800292"
 
 1. 標誌
 2. 產品
-3. Categories
+3. 類別
 4. 產業
 5. 支援位址 (連結) 
 6. 使用規定
 7. 隱私權原則
 8. 供應項目名稱
-9. 總結
+9. 摘要
 10. 描述
 11. 螢幕擷取畫面/影片
 
@@ -202,19 +202,20 @@ ms.locfileid: "87800292"
 
 提供要與您供應項目搭配使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊映像將會遭到拒絕。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 `https://upload.xboxlive.com` 服務。
 
 #### <a name="store-logos"></a>儲存標誌
 
-在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 大小標誌。 您可以選擇性地將此取代為不同的影像。
-
-需要兩種標誌大小，才能在清單中的不同位置使用：
-
+以兩個圖元大小提供供應專案標誌的 PNG 檔案：
 - **小型** (48 x 48)
-- 216 x 216 與 350 x 350) 之間的**大型** (
+- **大型** (216 x 216)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+這兩種標誌都是必要的，且會在市集清單中用於不同位置。
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 

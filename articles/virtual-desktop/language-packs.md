@@ -144,7 +144,7 @@ ms.locfileid: "88008758"
    > [!div class="mx-imgBorder"]
    > ![[建立映射] 視窗的螢幕擷取畫面。 使用者為此測試映射提供的名稱為 "vmwvd-image-fr"，且已將其指派給 "testwvdimagerg" 資源群組。](media/create-image.png)
 
-4. 選取 [建立]。
+4. 選取 [建立]  。
 
 5. 等候幾分鐘讓 capture 進程完成。 當映射準備就緒時，您應該會在 [通知中心] 看到一則訊息，讓您知道已捕獲該映射。
 

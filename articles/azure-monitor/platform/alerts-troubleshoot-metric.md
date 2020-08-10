@@ -4,14 +4,14 @@ description: Azure 監視器計量警示和可能解決方案的常見問題。
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e691e3f32404af792c852636a257659b629eef4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5ea28a7a4669fd000800bf62b7b940abefcf7551
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824557"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030957"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -129,6 +129,15 @@ ms.locfileid: "87824557"
               ]
         }
 ```
+
+## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>透過 Azure 入口網站匯出計量警示規則的 ARM 範本
+
+匯出計量警示規則的 ARM 範本，可協助您瞭解其 JSON 語法和屬性，並可用來將未來的部署作業自動化。
+1. 流覽至入口網站中的 [**資源群組**] 區段，然後選取包含規則的資源群組。
+2. 在 [總覽] 區段中，選取 [**顯示隱藏的類型**] 核取方塊。
+3. 在 [**類型**] 篩選中，選取 [ *microsoft insights/metricalerts*]。
+4. 選取相關的警示規則，以查看其詳細資料。
+5. 在 [**設定**] 底下，選取 [**匯出範本**]。
 
 ## <a name="metric-alert-rules-quota-too-small"></a>度量警示規則配額太小
 

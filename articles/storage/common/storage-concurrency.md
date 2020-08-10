@@ -1,7 +1,7 @@
 ---
 title: 管理並行存取
 titleSuffix: Azure Storage
-description: 了解如何管理 Blob、佇列、資料表和檔案服務的並行。
+description: 瞭解如何在 Azure 儲存體中管理 Blob、佇列、資料表和檔案服務的平行存取。 瞭解所使用的三個主要資料並行策略。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1ec7661bc2823932328bd994ec7bc7f6167f13a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504282"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030379"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>管理 Microsoft Azure 儲存體中的並行存取
 

@@ -1,6 +1,6 @@
 ---
 title: 微調效能： MapReduce、HDInsight & Azure Data Lake Storage Gen2 |Microsoft Docs
-description: Azure Data Lake Storage Gen2 MapReduce 效能微調方針
+description: 瞭解微調 Azure Data Lake Storage Gen2 上對應之效能的指導方針。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 7e4030583ac902093c30374c24b877e3f089eb02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106215"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030515"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>微調效能： MapReduce、HDInsight & Azure Data Lake Storage Gen2
 
@@ -40,7 +40,7 @@ ms.locfileid: "86106215"
 
 **Mapreduce.job.maps / Mapreduce.job.reduces** 這會決定要建立的對應器或歸納器數目上限。  分割數會決定要為 MapReduce 作業建立多少對應器。  因此，如果分割數比要求的對應器數目少，您所得到的對應器可能會比您要求的少。       
 
-## <a name="guidance"></a>指引
+## <a name="guidance"></a>指導方針
 
 > [!NOTE]
 > 本文中的指導方針假設您的應用程式是叢集上唯一執行的應用程式。

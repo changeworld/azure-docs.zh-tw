@@ -1,17 +1,17 @@
 ---
 title: 商務持續性-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
-description: 本文說明使用適用於 PostgreSQL 的 Azure 資料庫時， (時間點還原、資料中心中斷、異地還原) 的商務持續性。
+description: 本文說明使用適用於 PostgreSQL 的 Azure 資料庫時， (時間點還原、資料中心中斷、異地還原、複本) 的商務持續性。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/07/2020
+ms.openlocfilehash: b14eba63d848b5f583e16b39f3ade6bd7e7ba83f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245296"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031195"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫單一伺服器的商務持續性總覽
 
@@ -28,14 +28,16 @@ ms.locfileid: "86245296"
 | 從備份進行時間點還原 | 保留期間內的任何還原點 | 保留期間內的任何還原點 | 保留期間內的任何還原點 |
 | 從異地複寫備份進行異地還原 | 不支援 | ERT < 12 小時<br/>RPO < 1 小時 | ERT < 12 小時<br/>RPO < 1 小時 |
 
-> [!IMPORTANT]
-> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 使用[Azure 資源鎖定](../azure-resource-manager/management/lock-resources.md)協助防止意外刪除您的伺服器。
+您也可以考慮使用[讀取複本](concepts-read-replicas.md)。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在使用者或應用程式錯誤之後復原伺服器
 
 您可以使用服務的備份，在各種干擾性事件發生之後復原伺服器。 使用者可能會不小心刪除某些資料、不小心卸除重要的資料表，或甚至是卸除整個資料庫。 應用程式可能會因為應用程式缺陷或其他原因，而不慎以不正確的資料覆寫正確的資料。
 
 您可以執行**還原時間點**，將伺服器複本建立到已知的良好時間點。 此時間點必須在您為伺服器設定的備份保留期間內。 資料還原至新的伺服器之後，您可以將原始伺服器取代為還原的新伺服器，或從還原的伺服器將所需的資料複製到原始伺服器。
+
+> [!IMPORTANT]
+> 已刪除的伺服器**無法**還原。 如果您刪除伺服器，所有屬於該伺服器的資料庫也會一併刪除，且無法復原。 使用[Azure 資源鎖定](../azure-resource-manager/management/lock-resources.md)協助防止意外刪除您的伺服器。
 
 ## <a name="recover-from-an-azure-data-center-outage"></a>從 Azure 資料中心中斷復原
 

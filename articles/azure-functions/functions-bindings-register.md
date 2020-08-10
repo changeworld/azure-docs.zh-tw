@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 2dde784e2f67266b2f6c6ccd7da20f01546bbda7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a045ef0fea70347f168e8ae0cc93e0c359f31dfa
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506480"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031112"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>註冊 Azure Functions 系結延伸模組
 
-在 Azure Functions 2.x 版中，系結會當做函式運行[時間中的](./functions-triggers-bindings.md)個別套件來提供。 雖然 .NET 函式會透過 NuGet 封裝來存取系結，但擴充功能組合可讓其他函式透過設定設定來存取所有系結。
+從 Azure Functions 2.x 版開始，系結[會當做](./functions-triggers-bindings.md)函式執行時間中的個別套件來提供。 雖然 .NET 函式會透過 NuGet 封裝來存取系結，但擴充功能組合可讓其他函式透過設定設定來存取所有系結。
 
 請考慮下列與系結延伸模組相關的專案：
 
@@ -24,30 +24,38 @@ ms.locfileid: "86506480"
 
 下表指出註冊系結的時機和方式。
 
-| 開發環境 |註冊<br/> 在 Functions 1.x 中  |註冊<br/> 在 Functions 2.x 中  |
+| 開發環境 |註冊<br/> 在 Functions 1.x 中  |註冊<br/> 在函數 3.x/2.x 中  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure 入口網站|自動|自動|
+|Azure 入口網站|自動|自動<sup>*</sup>|
 |Non-.NET 語言或本機 Azure Core 工具開發|自動|[使用 Azure Functions Core Tools 和延伸模組配套](#extension-bundles)|
 |使用 Visual Studio 的 c # 類別庫|[使用 NuGet 工具](#vs)|[使用 NuGet 工具](#vs)|
 |使用 Visual Studio Code 的 C# 類別庫|N/A|[使用 .NET Core CLI](#vs-code)|
 
-## <a name="extension-bundles-for-local-development"></a><a name="extension-bundles"></a>本機開發的延伸模組配套
+<sup>*</sup>入口網站使用延伸模組配套。
 
-延伸模組配套是一種部署技術，可讓您將一組相容的函式系結擴充功能新增至函式應用程式。 當您建立應用程式時，會新增一組預先定義的延伸模組。 組合中定義的延伸模組套件彼此相容，這可協助您避免封裝之間的衝突。 您會在應用程式的 host.json file 中啟用擴充功能配套。  
+## <a name="extension-bundles"></a><a name="extension-bundles"></a>延伸模組配套
 
-您可以使用版本2.x 和更新版本的函式執行時間的延伸模組組合。 在本機開發時，請確定您使用的是最新版本的[Azure Functions Core Tools](functions-run-local.md#v2)。
+延伸模組組合是將一組相容的函式系結延伸模組新增至函式應用程式的方式。 使用配套時，會在您建立應用程式時新增一組預先定義的延伸模組。 配套中定義的延伸模組套件會經過驗證，以協助您避免封裝之間的衝突。 延伸模組配套可讓您避免必須以 non-.NET 函式專案發行 .NET 專案程式碼。 您會在應用程式的 host.json file 中啟用擴充功能配套。  
 
-在遠端建立時，使用 Azure Functions Core Tools、Visual Studio Code 和的本機開發延伸模組組合。
+您可以使用版本2.x 和更新版本的函式執行時間的延伸模組組合。 
 
-如果您未使用延伸模組配套，則必須先在本機電腦上安裝 .NET Core 2.x SDK，再安裝任何系結延伸模組。 延伸模組配套會移除本機開發的這項需求。 
+在遠端建立時，使用 Azure Functions Core Tools、Visual Studio Code 和的本機開發延伸模組組合。 在本機開發時，請確定您使用的是最新版本的[Azure Functions Core Tools](functions-run-local.md#v2)。 在 Azure 入口網站中開發函式時，也會使用延伸模組配套。 
+
+如果您未使用延伸模組配套，則必須先在本機電腦上安裝 .NET Core 2.x SDK，才能[明確安裝任何](#explicitly-install-extensions)系結延伸模組。 擴充 .csproj 檔案（明確定義必要的延伸模組）會新增至您的專案。 延伸模組配套會移除這些需求以進行本機開發。 
 
 若要使用延伸模組配套，請更新檔案*上的host.js* ，以包含下列專案 `extensionBundle` ：
  
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-<a name="local-csharp"></a>
+## <a name="explicitly-install-extensions"></a>明確安裝延伸模組
 
-## <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>\#具有 Visual Studio 的 C 類別庫
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
+
+## <a name="nuget-packages"></a><a name="local-csharp"></a>NuGet 套件
+
+針對 c # 類別庫型函式專案，您應該安裝延伸模組組合是特別針對非類別的專案所設計。 
+
+### <a name="c-class-library-with-visual-studio"></a><a name="vs"></a>\#具有 Visual Studio 的 C 類別庫
 
 在**Visual Studio**中，您可以使用 [[安裝套件](/nuget/tools/ps-ref-install-package)] 命令從套件管理員主控台安裝套件，如下列範例所示：
 

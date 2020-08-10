@@ -1,18 +1,18 @@
 ---
 title: 規劃 Azure 檔案同步部署 | Microsoft Docs
-description: 了解規劃 Azure 檔案服務部署時的考量事項。
+description: 規劃具有 Azure 檔案同步的部署，這項服務可讓您在內部部署 Windows Server 或雲端 VM 上快取一些 Azure 檔案共用。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036789"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030652"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>規劃 Azure 檔案同步部署
 
@@ -303,37 +303,37 @@ Azure 檔案同步可在下列區域提供：
 
 | Azure 雲端 | 地理區域 | Azure 區域 | 區域碼 |
 |-------------|-------------------|--------------|-------------|
-| 公用 | Asia | 東亞 | `eastasia` |
-| 公用 | Asia | 東南亞 | `southeastasia` |
-| 公用 | 澳大利亞 | 澳大利亞東部 | `australiaeast` |
-| 公用 | 澳大利亞 | 澳大利亞東南部 | `australiasoutheast` |
-| 公用 | 巴西 | 巴西南部 | `brazilsouth` |
-| 公用 | Canada | 加拿大中部 | `canadacentral` |
-| 公用 | Canada | 加拿大東部 | `canadaeast` |
-| 公用 | 歐洲 | 北歐 | `northeurope` |
-| 公用 | 歐洲 | 西歐 | `westeurope` |
-| 公用 | 法國 | 法國中部 | `francecentral` |
-| 公用 | 法國 | 法國南部* | `francesouth` |
-| 公用 | 印度 | 印度中部 | `centralindia` |
-| 公用 | 印度 | 印度南部 | `southindia` |
-| 公用 | 日本 | 日本東部 | `japaneast` |
-| 公用 | 日本 | 日本西部 | `japanwest` |
-| 公用 | 南韓 | 南韓中部 | `koreacentral` |
-| 公用 | 南韓 | 南韓南部 | `koreasouth` |
-| 公用 | 南非 | 南非北部 | `southafricanorth` |
-| 公用 | 南非 | 南非西部* | `southafricawest` |
+| 公開 | Asia | 東亞 | `eastasia` |
+| 公開 | Asia | 東南亞 | `southeastasia` |
+| 公開 | 澳大利亞 | 澳大利亞東部 | `australiaeast` |
+| 公開 | 澳大利亞 | 澳大利亞東南部 | `australiasoutheast` |
+| 公開 | 巴西 | 巴西南部 | `brazilsouth` |
+| 公開 | Canada | 加拿大中部 | `canadacentral` |
+| 公開 | Canada | 加拿大東部 | `canadaeast` |
+| 公開 | 歐洲 | 北歐 | `northeurope` |
+| 公開 | 歐洲 | 西歐 | `westeurope` |
+| 公開 | 法國 | 法國中部 | `francecentral` |
+| 公開 | 法國 | 法國南部* | `francesouth` |
+| 公開 | 印度 | 印度中部 | `centralindia` |
+| 公開 | 印度 | 印度南部 | `southindia` |
+| 公開 | 日本 | 日本東部 | `japaneast` |
+| 公開 | 日本 | 日本西部 | `japanwest` |
+| 公開 | 南韓 | 南韓中部 | `koreacentral` |
+| 公開 | 南韓 | 南韓南部 | `koreasouth` |
+| 公開 | 南非 | 南非北部 | `southafricanorth` |
+| 公開 | 南非 | 南非西部* | `southafricawest` |
 | 公開 | 阿拉伯聯合大公國 | 阿拉伯聯合大公國中部* | `uaecentral` |
-| 公用 | 阿拉伯聯合大公國 | 阿拉伯聯合大公國北部 | `uaenorth` |
-| 公用 | 英國 | 英國南部 | `uksouth` |
-| 公用 | 英國 | 英國西部 | `ukwest` |
-| 公開 | 美國 | 美國中部 | `centralus` |
-| 公開 | 美國 | 美國東部 | `eastus` |
-| 公開 | 美國 | 美國東部 2 | `eastus2` |
-| 公開 | 美國 | 美國中北部 | `northcentralus` |
-| 公開 | 美國 | 美國中南部 | `southcentralus` |
-| 公開 | 美國 | 美國中西部 | `westcentralus` |
-| 公開 | 美國 | 美國西部 | `westus` |
-| 公開 | 美國 | 美國西部 2 | `westus2` |
+| 公開 | 阿拉伯聯合大公國 | 阿拉伯聯合大公國北部 | `uaenorth` |
+| 公開 | 英國 | 英國南部 | `uksouth` |
+| 公開 | 英國 | 英國西部 | `ukwest` |
+| 公開 | US | 美國中部 | `centralus` |
+| 公開 | US | 美國東部 | `eastus` |
+| 公開 | US | 美國東部 2 | `eastus2` |
+| 公開 | US | 美國中北部 | `northcentralus` |
+| 公開 | US | 美國中南部 | `southcentralus` |
+| 公開 | US | 美國中西部 | `westcentralus` |
+| 公開 | US | 美國西部 | `westus` |
+| 公開 | US | 美國西部 2 | `westus2` |
 | US Gov | US | US Gov 亞利桑那州 | `usgovarizona` |
 | US Gov | US | US Gov 德克薩斯州 | `usgovtexas` |
 | US Gov | US | US Gov 維吉尼亞州 | `usgovvirginia` |
@@ -368,7 +368,7 @@ Azure 檔案同步僅支援與位於和儲存體同步服務相同之區域中�
 > 防毒軟體廠商可以使用 [Azure 檔案同步防毒相容性測試套件](https://www.microsoft.com/download/details.aspx?id=58322) (可從 Microsoft 下載中心下載)，檢查其產品與 Azure 檔案同步之間的相容性。
 
 ## <a name="backup"></a>Backup 
-如果已啟用雲端階層處理，則不應使用直接備份伺服器端點或伺服器端點所在之 VM 的解決方案。 雲端階層處理只會使您的資料子集儲存在伺服器端點上，而完整資料集則位於 Azure 檔案共用中。 視使用的備份解決方案而定，階層式檔案會略過且不會備份（因為它們已設定 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性），或將會重新叫用到磁片，導致輸出費用過高。 我們建議使用雲端備份解決方案，直接備份 Azure 檔案共用。 如需詳細資訊，請參閱[關於 azure 檔案共用備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)或請洽詢您的備份提供者，以查看其是否支援備份 Azure 檔案共用。
+如果已啟用雲端階層處理，則不應使用直接備份伺服器端點或伺服器端點所在之 VM 的解決方案。 雲端階層處理只會使您的資料子集儲存在伺服器端點上，而完整資料集則位於 Azure 檔案共用中。 視所使用的備份解決方案而定，階層式檔案會被略過且不會備份 (因為它們已設定 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性) ，或將其重新叫用到磁片，因而產生高輸出費用。 我們建議使用雲端備份解決方案，直接備份 Azure 檔案共用。 如需詳細資訊，請參閱[關於 azure 檔案共用備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)或請洽詢您的備份提供者，以查看其是否支援備份 Azure 檔案共用。
 
 如果您想要使用內部部署備份解決方案，應在已停用雲端階層處理的同步群組中的伺服器上執行備份。 執行還原時，請使用磁碟區層級或檔案層級的還原選項。 使用檔案層級還原選項進行還原的檔案會同步至同步群組中的所有端點，並使用從備份還原過來的版本取代現有檔案。  磁碟區層級還原將不會取代 Azure 檔案共用或其他伺服器端點中的較新檔案版本。
 
