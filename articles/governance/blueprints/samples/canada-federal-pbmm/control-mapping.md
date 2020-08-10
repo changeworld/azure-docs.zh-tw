@@ -1,18 +1,18 @@
 ---
 title: 加拿大聯邦 PBMM 藍圖範例控制項
 description: 加拿大聯邦 PBMM 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 05/08/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: e9153972938a572f8d37610e5721f7b0a578157c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3022dc32f689d1cbfc8b5b6545d1252ce47ca33d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085628"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500124"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大聯邦 PBMM 藍圖範例的控制項對應
 
-下列文章詳細說明 Azure 藍圖：加拿大聯邦 B 級保護、中度完整性、中度可用性 (PBMM) 藍圖範例如何對應至加拿大聯邦 PBMM 控制項。 如需控制項的詳細資訊，請參閱[加拿大聯邦 PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4)。
+下列文章詳細說明 Azure 藍圖：加拿大聯邦 B 級保護、中度完整性、中度可用性 (PBMM) 藍圖範例如何對應至加拿大聯邦 PBMM 控制項。 如需控制項的詳細資訊，請參閱[加拿大聯邦 PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html)。
 
 以下是**加拿大聯邦 PBMM**控制項的對應。 使用右側的導覽區可直接跳到特定的控制項對應。 許多對應的控制項都是以 [Azure 原則](../../../policy/overview.md)方案進行實作的。 若要檢閱完整方案，請在 Azure 入口網站中開啟 [原則]，然後選取 [定義] 頁面。 然後，找出並選取 **\[預覽\]：稽核加拿大聯邦 PBMM 控制項**的內建原則計畫。
 
@@ -116,8 +116,8 @@ Azure SQL Database 進階資料安全性的資料探索和分類功能提供一�
 Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中，進而啟用集中化報告與分析。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核和強制要求在 Azure 虛擬機器上部署 Log Analytics 代理程式，協助您確保會記錄事件。
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核適用於 VM 的 Log Analytics 工作區 - 報告不相符
+- 稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- 稽核適用於 VM 的 Log Analytics 工作區 - 報告不相符
 - \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
 
@@ -126,8 +126,9 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核 Azure 資源的記錄設定，以協助您確保會記錄系統事件。 這些原則定義會稽核並強制要求在 Azure 虛擬機器上部署 Log Analytics 代理程式，以及設定其他 Azure 資源類型的稽核設定。 這些原則定義也會稽核診斷記錄的設定，以深入解析 Azure 資源內所執行的作業。 此外，會在 SQL 伺服器上設定稽核與「進階資料安全性」。
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核適用於 VM 的 Log Analytics 工作區 - 報告不相符
+- 稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- 稽核適用於 VM 的 Log Analytics 工作區 - 報告 
+
 - \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
 - 稽核診斷設定
@@ -167,25 +168,25 @@ Azure Site Recovery 會將虛擬機器上執行的工作負載從主要位置複
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核允許帳戶無需密碼便可從遠端連線和/或在 passwd 檔案設定不正確權限的 Linux 虛擬機器。 此藍圖還指派了原則定義，稽核 Windows 虛擬機器的密碼加密類型搭配。 監視這些指標可協助您確保系統驗證器符合貴組織的識別與驗證原則。
 
-- \[預覽\]：從密碼檔權限未設為 0644 的 Linux VM 顯示稽核結果
-- \[預覽\]：從帳戶沒有密碼的 Linux VM 顯示稽核結果
-- \[預覽\]：部署需求以稽核密碼檔權限未設為 0644 的 Linux VM
-- \[預覽\]：部署需求以稽核有不具密碼帳戶的 Linux VM
+- 從密碼檔權限未設為 0644 的 Linux VM 顯示稽核結果
+- 從帳戶沒有密碼的 Linux VM 顯示稽核結果
+- 部署需求以稽核密碼檔權限未設為 0644 的 Linux VM
+- 部署需求以稽核有不具密碼帳戶的 Linux VM
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) 驗證器管理 | 密碼型驗證
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核未強制執行最低強度和其他密碼需求的 Windows 虛擬機器，以協助您強制要求使用強式密碼。 了解有哪些虛擬機器違反密碼強度原則可協助您採取矯正措施，以確保所有虛擬機器使用者帳戶的密碼都符合貴組織的密碼原則。
 
-- \[預覽\]：從允許重複使用前 24 個舊密碼的 Windows VM 顯示稽核結果
-- \[預覽\]：從最大密碼存留期不是 70 天的 Windows VM 顯示稽核結果
-- \[預覽\]：從最小密碼存留期不是 1 天的 Windows VM 顯示稽核結果
-- \[預覽\]：從未啟用密碼複雜度設定的 Windows VM 顯示稽核結果
-- \[預覽\]：從最小密碼長度未限制為 14 個字元的 Windows VM 顯示稽核結果
-- \[預覽\]：部署需求以稽核允許重複使用前 24 個舊密碼的 Windows VM
-- \[預覽\]：部署需求以稽核最大密碼存留期不是 70 天的 Windows VM
-- \[預覽\]：部署需求以稽核最小密碼存留期不是 1 天的 Windows VM
-- \[預覽\]：部署需求以稽核未啟用密碼複雜度設定的 Windows VM
-- \[預覽\]：部署需求以稽核最小密碼長度未限制為 14 個字元的 Windows VM
+- 從允許重複使用前 24 個舊密碼的 Windows VM 顯示稽核結果
+- 從最大密碼存留期不是 70 天的 Windows VM 顯示稽核結果
+- 從最小密碼存留期不是 1 天的 Windows VM 顯示稽核結果
+- 從未啟用密碼複雜度設定的 Windows VM 顯示稽核結果
+- 從最小密碼長度未限制為 14 個字元的 Windows VM 顯示稽核結果
+- 部署需求以稽核允許重複使用前 24 個舊密碼的 Windows VM
+- 部署需求以稽核最大密碼存留期不是 70 天的 Windows VM
+- 部署需求以稽核最小密碼存留期不是 1 天的 Windows VM
+- 部署需求以稽核未啟用密碼複雜度設定的 Windows VM
+- 部署需求以稽核最小密碼長度未限制為 14 個字元的 Windows VM
 
 ## <a name="ia-8-100-identification-and-authentication-non-organizational-users--identity-and-credential-assurance-levels"></a>IA-8 (100) 識別與驗證 (非組織使用者) | 身分識別和認證保證層級
 
@@ -289,7 +290,7 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 此藍圖可稽核並強制執行所有 Azure 資源的記錄和資料安全性，協助您監視系統。 具體來說，指派的原則會稽核並強制部署 Log Analytics 代理程式，以及 SQL 資料庫、儲存體帳戶與網路資源的增強式安全性設定。 這些功能可協助您偵測異常行為和攻擊的指標，以便採取適當動作。
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- 稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
 - \[預覽\]：稽核適用於 VM 的 Log Analytics 工作區 - 報告不相符
 - \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
 - \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 06/30/2020
 ms.service: azure-education
 ms.subservice: education-hub
-ms.openlocfilehash: e0d0804ce1f43d246dc4e87e222cbfbaf7db58aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a850e5ea851ee539c663b00ecc7f2053eae8dc34
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100797"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534085"
 ---
 # <a name="create-an-assignment-and-allocate-credit"></a>建立指派並配置信用額度
 
@@ -31,7 +31,7 @@ Azure Education Hub 會接受 _____@___.___ 格式的任何電子郵件地址。
 > [!IMPORTANT]
 > 公司和學校帳戶會受限於自己的原則，包括是否允許來自組織以外網域的電子郵件地址 (例如，將 student2@outlook.com 新增至 @school.edu 網域)。 新增使用者之前，請務必檢查這些原則。
 
-當公司或學校帳戶 (例如 student1@school.edu) 新增為教育工作者贊助者入口網站或 [Azure 入口網站](https://portal.azure.com)中的角色型存取控制 (RBAC) 時，Azure 會自動將電子郵件傳送給收件者。 這封電子郵件會要求使用者必須先接受新的帳戶和 RBAC 角色，才能收到訂用帳戶的存取權。 如果您是課程助教 (TA) 或教授，請務必讓學生知道這一點，以便其訂用帳戶能如預期般顯示在 Azure 入口網站中。 該電子郵件看起來應該像這樣：
+當公司或學校帳戶 (例如 student1@school.edu) 新增為教育工作者贊助者入口網站或 [Azure 入口網站](https://portal.azure.com)中的角色型存取控制 (RBAC) 時，Azure 會自動將電子郵件傳送給收件者。 這封電子郵件會要求使用者必須先接受新的帳戶和 Azure 角色，才能收到訂用帳戶的存取權。 如果您是課程助教 (TA) 或教授，請務必讓學生知道這一點，以便其訂用帳戶能如預期般顯示在 Azure 入口網站中。 該電子郵件看起來應該像這樣：
 
 :::image type="content" source="media/create-assignment-allocate-credit/azure-active-directory-get-started.png" alt-text="Azure Active Directory 開始使用" border="false":::
 

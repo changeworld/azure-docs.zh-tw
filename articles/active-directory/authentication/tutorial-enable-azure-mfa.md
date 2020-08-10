@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035055"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419541"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>教學課程：使用 Azure Multi-Factor Authentication 來保護使用者登入事件
 
@@ -39,7 +39,7 @@ Azure Multi-Factor Authentication 和條件式存取原則可讓您在特定登�
 
 若要完成此教學課程，您需要下列資源和權限：
 
-* 已啟用 Azure AD Premium 或試用版授權的運作中 Azure AD 租用戶。
+* 至少已啟用 Azure AD Premium P1 或試用版授權的有效 Azure AD 租用戶。
     * 如有需要，[請建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 具有「全域系統管理員」  權限的帳戶。
 * 具有已知密碼的非系統管理員使用者，例如 testuser  。 在本教學課程中，您會使用此帳戶來測試使用者的 Azure Multi-Factor Authentication 體驗。
@@ -65,7 +65,7 @@ Azure Multi-Factor Authentication 和條件式存取原則可讓您在特定登�
 1. 核取 [使用者和群組] 方塊，然後 [選取] 以瀏覽可用的 Azure AD 使用者和群組。
 1. 瀏覽並選取 Azure AD 群組，例如 *MFA-Test-Group*，然後選擇 [選取]。
 
-    [![](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png "Select your Azure AD group to use with the Conditional Access policy")](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
+    [ ![選取要與條件式存取原則搭配使用的 Azure AD 群組](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png) ](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
 
 1. 若要為群組套用條件式存取原則，請選取 [完成]。
 

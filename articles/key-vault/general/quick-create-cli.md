@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2c71e96dc1c92fc94d403e7c721b2b9f3149b8e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f3b9758d52c4be8e4d85c398f5ef1d0b3fae7e86
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100755"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541799"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>快速入門：使用 Azure CLI 來建立金鑰保存庫
 
@@ -69,7 +69,7 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 
 此集合中的其他快速入門和教學課程會以本快速入門為基礎。 如果您打算繼續進行後續的快速入門和教學課程，您可以讓這些資源留在原處。
 
-若不再需要，您可以使用 [az group delete](/cli/azure/group) 命令來移除資源群組和所有相關資源。 您可以刪除資源，如下所示：
+若不再需要，您可以使用 Azure CLI [az group delete](/cli/azure/group) 命令來移除資源群組和所有相關資源：
 
 ```azurecli
 az group delete --name myResourceGroup

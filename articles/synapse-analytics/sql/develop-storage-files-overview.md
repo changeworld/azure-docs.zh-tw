@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c33e2152fc120d406886d89adda26603126a8ba
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046884"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483547"
 ---
-# <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>存取 Synapse SQL 中的外部儲存體 (隨選)
+# <a name="access-external-storage-in-synapse-sql-on-demand"></a>存取 Synapse SQL 中的外部儲存體 (隨選)
 
 本文件說明使用者如何在 Synapse SQL (隨選) 中讀取儲存在 Azure 儲存體中的檔案資料。 使用者可以使用下列選項來存取儲存體：
 
@@ -59,7 +59,7 @@ GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<co
 > [!NOTE]
 > 此版 OPENROWSET 的設計訴求是使用預設驗證快速且輕鬆進行資料探索。 若要利用模擬或受控識別，請使用 OPENROWSET 搭配 DATASOURCE，如下一節所述。
 
-### <a name="querying-data-sources-using-openrowset"></a>使用 OPENROWSET 查詢資料來源
+### <a name="query-data-sources-using-openrowset"></a>使用 OPENROWSET 查詢資料來源
 
 OPENROWSET 可讓使用者查詢放在某些外部資料來源上的檔案：
 
@@ -91,7 +91,7 @@ DATABASE SCOPED CREDENTIAL 會指定如何存取參考資料來源 (目前為 SA
   - `ADMINISTER DATABASE BULK OPERATIONS` 可讓資料庫範圍的使用者執行 OPENROWSET 函式。
 - EXTERNAL DATA SOURCE 中所參考認證的 REFERENCES DATABASE SCOPED CREDENTIAL
 
-#### <a name="accessing-anonymous-data-sources"></a>存取匿名資料來源
+#### <a name="access-anonymous-data-sources"></a>存取匿名資料來源
 
 使用者可以在沒有 CREDENTIAL 可參考公用存取儲存體或使用 Azure AD 傳遞驗證的情況下，建立 EXTERNAL DATA SOURCE：
 
@@ -132,7 +132,7 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
 
 DATABASE SCOPED CREDENTIAL 會指定如何存取參考資料來源上的檔案。
 
-### <a name="reading-external-files-with-external-table"></a>使用 EXTERNAL TABLE 讀取外部檔案
+### <a name="read-external-files-with-external-table"></a>使用 EXTERNAL TABLE 讀取外部檔案
 
 EXTERNAL TABLE 可讓您使用標準 SQL SELECT 陳述式，從透過資料來源參考的檔案中讀取資料：
 

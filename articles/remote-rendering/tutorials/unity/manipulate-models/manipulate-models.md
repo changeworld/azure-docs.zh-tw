@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4928938c38df8a1ed0f1e31c73e755a4f7f6c371
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367625"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449052"
 ---
 # <a name="tutorial-manipulating-models"></a>教學課程：操作模型
 
@@ -332,18 +332,14 @@ ms.locfileid: "87367625"
 
 2. 在先前建立的 **TestModel** GameObject 上，新增 **RemoteRayCastPointerHandler** 元件和 **RemoteEntityHelper** 元件。
 1. 將 `EntityToDebugLog` 方法指派給 `OnRemoteEntityClicked` 事件。 當事件的輸出類型和方法的輸入類型相符時，我們可以使用 Unity 的動態事件連結，這會自動將事件值傳遞至方法。
-    1. 建立新的回呼欄位\
-    ![新增回呼](./media/add-callback-remote-entity-clicked.png)
-    1. 將**遠端實體協助程式**元件拖曳到 [物件] 欄位中，以參考父系 GameObject\
-    ![指派物件](./media/assign-object.png)
-    1. 將 `EntityToDebugLog` 指派為回呼\
-    ![指派回呼](./media/remote-entity-event.png)
+    1. 建立新的回呼欄位 ![新增回呼](./media/add-callback-remote-entity-clicked.png)
+    1. 將**遠端實體協助程式**元件拖曳到 [物件] 欄位中，以參考父系 GameObject ![指派物件](./media/assign-object.png)
+    1. 將 `EntityToDebugLog` 指派為回呼 ![指派回呼](./media/remote-entity-event.png)
 1. 按下 Unity 編輯器中的播放以啟動場景，連線到遠端工作階段並載入測試模型。
 1. 使用 MRTK 的手部模擬，按住左側 Shift 鍵。
 1. 引導模擬手部，讓手部光線指向測試模型。
 1. 長按以模擬空中點選，執行 `OnPointerClicked` 事件。
-1. 觀察 Unity 主控台是否有已選取子實體名稱的記錄訊息。 例如：\
-![子實體範例](./media/child-entity-example.png)
+1. 觀察 Unity 主控台是否有已選取子實體名稱的記錄訊息。 例如：![子實體範例](./media/child-entity-example.png)
 
 ## <a name="synchronizing-the-remote-object-graph-into-the-unity-hierarchy"></a>將遠端物件圖形同步處理至 Unity 階層
 
@@ -351,7 +347,7 @@ ms.locfileid: "87367625"
 
 1. 啟動場景並載入測試模型。
 1. 展開 Unity 階層中 **TestModel** GameObject 的子系，然後選取 **TestModel_Entity** GameObject。
-1. 在偵測器中，按一下「顯示子系」 按鈕。
+1. 在偵測器中，按一下「顯示子系」按鈕。
 ![顯示子系](./media/show-remote-children.png)
 1. 繼續展開階層中的子系，然後按一下 [顯示子系] 直到顯示較大的子系列表為止。
 ![所有子系](./media/test-model-children.png)
@@ -377,7 +373,7 @@ ms.locfileid: "87367625"
 1. 引導模擬手部，讓手部光線指向測試模型。
 1. 長按以模擬空中點選，執行 `OnPointerClicked` 事件。
 1. 勾選並展開階層，以查看代表已點選之實體的新子物件。
-![GameObject 表示法](./media/gameobject-representing-entity.png)\
+![GameObject 表示法](./media/gameobject-representing-entity.png)
 1. 測試之後，請移除 `MakeSyncedGameObject` 的回呼，因為我們會在稍後將此部分納入其他效果。
 
 > [!NOTE]

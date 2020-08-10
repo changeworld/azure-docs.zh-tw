@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c44d2d80e311fd42f0e2167cb0495a4070d0a313
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9cf30324371043d8b702d3e22ec3ecd98e114ba6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025858"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428592"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>教學課程：設定適用於同盟網域的混合式 Azure Active Directory Join
 
@@ -80,6 +80,9 @@ ms.locfileid: "87025858"
 - `https://device.login.microsoftonline.com`
 - 組織的 Security Token Service (STS) (適用於同盟網域)
 - `https://autologon.microsoftazuread-sso.com` (如果您使用或計劃使用無縫 SSO)
+
+> [!WARNING]
+> 如果您的組織使用的 Proxy 伺服器會在防止資料遺失或 Azure AD 租用戶限制等案例中攔截 SSL 流量，請確認已從 TLS 中斷和檢查 (TLS break-and-inspect) 中排除 'https://device.login.microsoftonline.com ' 的流量。 無法排除 'https://device.login.microsoftonline.com ' 可能會造成用戶端憑證驗證的干擾，進而產生裝置註冊和裝置型條件式存取的問題。
 
 從 Windows 10 1803 開始，如果使用 AD FS 的同盟網域的即時生效混合式 Azure AD Join 失敗，我們將依賴 Azure AD Connect 來同步 Azure AD 中後續要用來為混合式 Azure AD Join 完成裝置註冊的電腦物件。 確認 Azure AD Connect 已將您要加入混合式 Azure AD 之裝置的電腦物件同步處理至 Azure AD。 如果電腦物件屬於特定組織單位 (OU)，則您也必須在 Azure AD Connect 中設定 OU 進行同步處理。 若要深入了解如何使用 Azure AD Connect 同步處理電腦物件，請參閱[使用 Azure AD Connect 設定篩選](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)。
 

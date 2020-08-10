@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b36469a89c7bae39ae3c2d62792c2ccde0fcfda9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498503"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799322"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
@@ -20,7 +20,7 @@ ms.locfileid: "86498503"
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="general"></a>一般
-- [部署 Azure 監視器](platform/deploy-scale.md) - 新文章。
+- [部署 Azure 監視器](deploy-scale.md) - 新文章。
 - [Azure 監視器客戶管理的金鑰](platform/customer-managed-keys.md) - 更新的 billingtype 屬性。 已新增 PowerShell 命令。
 
 ### <a name="agents"></a>代理程式

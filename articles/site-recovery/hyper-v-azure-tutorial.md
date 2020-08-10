@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: afa8375805ebc5d52ac716126adca86850147166
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134086"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504223"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>設定 Hyper-V VM 至 Azure 的災害復原
 
@@ -51,14 +51,14 @@ ms.locfileid: "86134086"
 6. 在 [您是否使用 System Center VMM 來管理 Hyper-V 主機?]  中，選取 [否]  。
 7. 選取 [確定]  。
 
-    ![複寫目標](./media/hyper-v-azure-tutorial/replication-goal.png)
+    ![準備基礎結構中保護目標選項的螢幕擷取畫面。](./media/hyper-v-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>確認部署規劃
 
 1. 在 [部署規劃]  中，如果您正在規劃大型部署，請從頁面上的連結下載適用於 Hyper-V 的部署規劃工具。 [深入了解](hyper-v-deployment-planner-overview.md) Hyper-V 部署規劃。
 2. 在本教學課程中，我們不需要部署規劃工具。 在 [完成部署規劃了嗎?]  中，選取 [稍後再進行]  ，然後選取 [確定]  。
 
-    ![部署規劃](./media/hyper-v-azure-tutorial/deployment-planning.png)
+    ![準備基礎結構中部署規劃選項的螢幕擷取畫面。](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>設定來源環境
 
@@ -68,17 +68,17 @@ ms.locfileid: "86134086"
 2. 在 [準備來源]  中，選取 [+ Hyper-V 網站]  。
 3. 在 [建立 Hyper-V 網站]  中，指定網站名稱。 我們使用的是 **ContosoHyperVSite**。
 
-    ![Hyper-V 站台](./media/hyper-v-azure-tutorial/hyperv-site.png)
+    ![準備基礎結構中 Hyper-v 網站選項的螢幕擷取畫面。](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
 4. 建立網站後，請在 [準備來源]   > [步驟 1：  選取 Hyper-V 網站] 中，選取您所建立的網站。
 5. 選取 [+ Hyper-V 伺服器]  。
 
-    ![Hyper-V 伺服器](./media/hyper-v-azure-tutorial/hyperv-server.png)
+    ![準備基礎結構中 Hyper-v 伺服器選項的螢幕擷取畫面。](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
 6. 下載 Microsoft Azure Site Recovery 提供者的安裝程式。
 7. 下載保存庫註冊金鑰。 您需要此金鑰才能安裝 Provider。 該金鑰在產生後會維持 5 天有效。
 
-    ![下載提供者和註冊金鑰](./media/hyper-v-azure-tutorial/download.png)
+    ![下載提供者和註冊金鑰之選項的螢幕擷取畫面。](./media/hyper-v-azure-tutorial/download.png)
     
 
 ### <a name="install-the-provider"></a>安裝 Provider

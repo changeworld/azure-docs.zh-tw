@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392829"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499971"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Linux 虛擬機器
 
@@ -32,11 +32,11 @@ ms.locfileid: "85392829"
 1. 在 [虛擬機器] 頁面中，選取 [新增]。 [建立虛擬機器] 頁面隨即開啟。
 1. 在 [基本資料] 索引標籤中的 [專案詳細資料] 底下，確認已選取正確的訂用帳戶，然後選擇 [新建] 資源群組。 輸入 *myResourceGroup* 作為名稱*。 
 
-    ![為您的 VM 建立新的資源群組](./media/quick-create-portal/project-details.png)
+    ![專案詳細資料區段的螢幕擷取畫面，其中顯示您選取 Azure 訂用帳戶的位置，以及虛擬機器的資源群組](./media/quick-create-portal/project-details.png)
 
 1. 在 [執行個體詳細資料] 底下，輸入 *myVM* 作為 [虛擬機器名稱]、然後選擇 [美國東部] 作為您的 [區域]，然後選擇 [Ubuntu 18.04 LTS] 作為您的 [映像]。 其他部分保留預設值。
 
-    ![執行個體詳細資料區段](./media/quick-create-portal/instance-details.png)
+    ![執行個體詳細資料區段的螢幕擷取畫面，您在此提供虛擬機器的名稱，並選取其區域、映像和大小](./media/quick-create-portal/instance-details.png)
 
 1. 在 [Administrator 帳戶] 底下，選取 [SSH 公開金鑰]。
 
@@ -44,11 +44,11 @@ ms.locfileid: "85392829"
 
 1. 針對 [SSH 公開金鑰來源]，保留預設值 [產生新的金鑰組]，然後針對 [金鑰組名稱] 輸入「myKey」。
 
-    ![系統管理員帳戶](./media/quick-create-portal/administrator-account.png)
+    ![管理員帳戶區段的螢幕擷取畫面，您在此選取驗證類型並提供管理員認證](./media/quick-create-portal/administrator-account.png)
 
 1. 在 [輸入連接埠規則] > [公用輸入連接埠] 下方，選擇 [允許選取的連接埠]，然後從下拉式清單中選取 [SSH (22)] 和 [HTTP (80)]。 
 
-    ![開啟 RDP 和 HTTP 的連接埠](./media/quick-create-portal/inbound-port-rules.png)
+    ![輸入連接埠規則區段的螢幕擷取畫面，您在此選取允許輸入連線的連接埠](./media/quick-create-portal/inbound-port-rules.png)
 
 1. 保留其餘預設值，然後在頁面底部選取 [檢閱 + 建立] 按鈕。
 
@@ -61,7 +61,7 @@ ms.locfileid: "85392829"
 1. 在新 VM 的頁面上，選取公用 IP 位址，並將其複製到剪貼簿。
 
 
-    ![複製公用 IP 位址](./media/quick-create-portal/ip-address.png)
+    ![顯示如何複製虛擬機器 IP 位址的螢幕擷取畫面](./media/quick-create-portal/ip-address.png)
 
 ## <a name="connect-to-virtual-machine"></a>連線至虛擬機器
 
@@ -94,7 +94,7 @@ sudo apt-get -y install nginx
 
 使用所選的網頁瀏覽器來查看預設 NGINX 歡迎使用頁面。 輸入 VM 的公用 IP 位址作為網址。 您可以在 VM 的 [概觀] 頁面找到公用 IP 位址，也可以在您稍早使用的 SSH 連接字串中找到。
 
-![預設 NGINX 網站](./media/quick-create-portal/nginx.png)
+![在瀏覽器中顯示 NGINX 預設網站的螢幕擷取畫面](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 

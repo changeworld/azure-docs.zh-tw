@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 995ca20ed264d78e93e04a6f54e4f691ec551e84
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024854"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404169"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：為 Azure Active Directory Domain Services 受控網域設定安全 LDAP
 
@@ -110,6 +110,7 @@ Thumbprint                                Subject
 * **私密**金鑰會套用至受控網域。
     * 我們會用此私密金鑰來「解密」安全 LDAP 的流量。 私密金鑰只能套用至受控網域，而不是廣泛散發到用戶端電腦。
     * 包含私密金鑰的憑證會使用 .PFX 檔案格式。
+    * 憑證的加密演算法必須是 TripleDES-SHA1。
 * **公開**金鑰會套用至用戶端電腦。
     * 我們會使用此公開金鑰來「加密」安全 LDAP 的流量。 公開金鑰可以散發到用戶端電腦。
     * 沒有私密金鑰的憑證會使用 .CER 檔案格式。
@@ -149,7 +150,7 @@ Thumbprint                                Subject
 
 1. 當此憑證用於解密資料時，您應謹慎地控制存取。 密碼可以用來保護憑證的使用。 如果沒有正確的密碼，憑證就無法套用至服務。
 
-    在 [安全性] 頁面上，選擇 [密碼] 選項來保護 .PFX 憑證檔案。 輸入並確認密碼，然後選取 [下一步]。 在下一節中，此密碼會用來為您的受控網域啟用安全 LDAP。
+    在 [安全性] 頁面上，選擇 [密碼] 選項來保護 .PFX 憑證檔案。 加密演算法必須是 TripleDES-SHA1。 輸入並確認密碼，然後選取 [下一步]。 在下一節中，此密碼會用來為您的受控網域啟用安全 LDAP。
 1. 在 [要匯出的檔案]  頁面上，指定檔案名稱及接收匯出憑證的位置，例如 C:\Users\accountname\azure-ad-ds.pfx。 記下 *.PFX* 檔案的密碼和位置，因為後續步驟將需要這項資訊。
 1. 在檢閱頁面上選取 [完成]，以將憑證匯出至 .PFX 憑證檔案。 成功匯出憑證後，系統會顯示確認對話方塊。
 1. 讓 MMC 保持開啟，以供下一節使用。
@@ -210,7 +211,7 @@ CER 憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須�
 
 為受控網域啟用安全 LDAP 需要約幾分鐘的時間。 如果您提供的安全 LDAP 憑證不符合所需的準則，為受控網域啟用安全 LDAP 的動作將會失敗。
 
-失敗的一些常見原因為網域名稱不正確、憑證即將過期或已過期。 您可以利用有效的參數重新建立憑證，然後使用此更新憑證來啟用安全 LDAP。
+失敗的一些常見原因為網域名稱不正確、憑證的加密演算法不是 TripleDES-SHA1 或憑證即將過期或已過期。 您可以利用有效的參數重新建立憑證，然後使用此更新憑證來啟用安全 LDAP。
 
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>鎖定透過網際網路進行的安全 LDAP 存取
 

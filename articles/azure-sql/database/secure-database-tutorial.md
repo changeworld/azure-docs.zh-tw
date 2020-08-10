@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 73ffe7fe6336d9547ebbbf4c894bd1b9398e0900
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 12c3a35e12e3f432345ea788893d0d0ae6e6433f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092927"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496911"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>教學課程：保護 Azure SQL Database 中的資料庫
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -190,7 +190,7 @@ Azure 中 SQL Database 中的資料庫是由防火牆保護。 依預設，伺�
 Azure Active Directory 驗證要求將資料庫使用者建立為自主資料庫使用者。 自主資料庫使用者會對應至 Azure AD 目錄中與資料庫關聯的身分識別，而沒有 master 資料庫的登入。 Azure AD 身分識別可用於個別的使用者或群組。 如需詳細資訊，請參閱[自主資料庫使用者，使資料庫可攜](/sql/relational-databases/security/contained-database-users-making-your-database-portable)，並檢閱 [Azure AD 教學課程](authentication-aad-configure.md)以了解如何使用 Azure AD 進行驗證。
 
 > [!NOTE]
-> 您無法使用 Azure 入口網站建立資料庫使用者 (排除系統管理員)。 Azure RBAC 角色不會傳播至 SQL Server、資料庫或資料倉儲。 這類角色只用來管理 Azure 資源，並不會套用到資料庫權限。
+> 您無法使用 Azure 入口網站建立資料庫使用者 (排除系統管理員)。 Azure 角色不會傳播至 SQL Server、資料庫或資料倉儲。 這類角色只用來管理 Azure 資源，並不會套用到資料庫權限。
 >
 > 例如，「SQL Server 參與者」角色不會授與可連線到資料庫或資料倉儲的存取權。 必須使用 Transact-SQL 陳述式在資料庫內授與此權限。
 

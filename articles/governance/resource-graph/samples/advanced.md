@@ -3,12 +3,12 @@ title: 進階查詢範例
 description: 使用 Azure Resource Graph 執行某些進階查詢，包括使用資料行、列出使用的標籤，以及使用規則運算式比對資源。
 ms.date: 07/14/2020
 ms.topic: sample
-ms.openlocfilehash: 38013be583c74e968160cb7ec3a4dd32ede213b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3277d904ebf955c9f924e60dbf6df12eac138a15
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087487"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534782"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>進階 Resource Graph 查詢範例
 
@@ -322,7 +322,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip"></a>列出虛擬機器及其網路介面和公用 IP
 
-此查詢會使用兩個 **leftouter** `join` 命令，將虛擬機器、其相關的網路介面，以及任何與這些網路介面相關的公用 IP 位址結合在一起。
+此查詢會使用兩個 **leftouter** `join` 命令，將使用 Resource Manager 部署模型建立的虛擬機器、其相關的網路介面，以及任何與這些網路介面相關的公用 IP 位址結合在一起。
 
 ```kusto
 Resources

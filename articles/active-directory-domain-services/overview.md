@@ -10,18 +10,20 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 472ff9de069e7d95cb1753a6b05830649806d2fc
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 6efd33b9f8825b5b5699b6106dadafec851ed454
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84734549"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488545"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>什麼是 Azure Active Directory Domain Services？
 
 Azure Active Directory Domain Services (Azure AD DS) 提供受控網域服務，例如，網域加入、群組原則、輕量型目錄存取通訊協定 (LDAP) 與 Kerberos / NTLM 驗證。 您可以使用這些網域服務，而不需要在雲端部署、管理及修補網域控制站 (DC)。
 
-受控網域是 DNS 命名空間和相符目錄。 此受控網域會與您現有的 Azure AD 租用戶整合，讓使用者能夠使用其現有認證登入。 您也可以使用現有的群組與使用者帳戶，安全地存取資源，這樣能更順暢地將內部部署資源隨即轉移至 Azure。
+當您建立 Azure AD DS 受控網域時，您可以定義唯一的命名空間。 這個命名空間是網域名稱，例如 aaddscontoso.com，然後系統會將兩個網域控制站 (DC) 部署到您選取的 Azure 區域。 此 DC 的部署稱為「複本集」。 此受控網域會與您現有的 Azure AD 租用戶整合，讓使用者能夠使用其現有認證登入。 您也可以使用現有的群組與使用者帳戶，安全地存取資源，這樣能更順暢地將內部部署資源隨即轉移至 Azure。
+
+您可以擴充受控網域，讓每個 Azure AD 租用戶都有一個以上的複本集。 您可以將複本集新增至任何支援 Azure AD DS 之 Azure 區域中的任何對等互連虛擬網路。 不同 Azure 區域中的其他複本集，可在 Azure 區域離線時，為舊版應用程式提供地區性的災害復原。 複本集目前為預覽狀態。 如需詳細資訊，請參閱[受控網域的複本集概念和功能][concepts-replica-sets]。
 
 Azure AD DS 會與您現有的 Azure AD 租用戶整合。 此整合可讓使用者使用其現有的認證，登入已與受控網域連線的服務與應用程式。 您也可以使用現有的群組與使用者帳戶安全地存取資源。 這些功能可讓您更順暢地將內部部署資源隨即轉移至 Azure。
 
@@ -150,3 +152,4 @@ Azure AD DS 受控網域的一些關鍵層面如下：
 [forest-trusts]: concepts-resource-forest.md
 [administration-concepts]: administration-concepts.md
 [synchronization]: synchronization.md
+[concepts-replica-sets]: concepts-replica-sets.md

@@ -3,15 +3,15 @@ title: 發佈服務類別目錄受控應用程式
 description: 示範如何建立 Azure 受控應用程式，以供組織成員使用。
 author: tfitzmac
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: d0a3e2a435be679a2a35941dfa24978ae77291b0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f6a3a16fe7fd6b0036b36520262e85a9066a4e63
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86249031"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497849"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>快速入門：建立及發佈受控應用程式定義
 
@@ -195,7 +195,7 @@ az storage blob upload \
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>建立 Azure Active Directory 使用者群組或應用程式
 
-下一個步驟是選取要代表客戶管理資源的使用者群組、使用者或應用程式。 此身分識別會根據指派的角色，取得受控資源群組的權限。 角色可以是任何內建的角色型存取控制 (RBAC) 角色，例如擁有者或參與者。 若要建立新的 Active Directory 使用者群組，請參閱[在 Azure Active Directory 中建立群組和新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
+下一個步驟是選取要代表客戶管理資源的使用者群組、使用者或應用程式。 此身分識別會根據指派的角色，取得受控資源群組的權限。 角色可以是任何內建的 Azure 角色，例如擁有者或參與者。 若要建立新的 Active Directory 使用者群組，請參閱[在 Azure Active Directory 中建立群組和新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
 您需要使用者群組的物件識別碼，以便用於管理資源。 
 

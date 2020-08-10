@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: ceb9e731b1052d47131dfbc6754e1cb921a8f585
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b432a224aa32edf762f6610990027451abe9acc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280829"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759201"
 ---
 # <a name="whats-new-in-computer-vision"></a>電腦視覺的新功能
 
@@ -23,15 +23,15 @@ ms.locfileid: "87280829"
 
 ## <a name="july-2020"></a>2020 年 7 月
 
-### <a name="read-api-v31-preview1-adds-support-for-simplified-chinese"></a>Read API v3.1-preview.1 新增簡體中文的支援
-電腦視覺的 Read API v3.1-preview.1 新增簡體中文的支援。
+### <a name="read-api-v31-public-preview-adds-simplified-chinese-support"></a>Read API 3.1 公開預覽新增了簡體中文支援
+電腦視覺的 Read API v3.1 公開預覽新增了簡體中文的支援。
 
 * 此預覽版本的 Read API 支援英文、荷蘭文、法文、德文、義大利文、葡萄牙文、簡體中文和西班牙文語言。
 
 若要深入了解，請參閱 [Read API 概觀](concept-recognizing-text.md)。
 
 > [!div class="nextstepaction"]
-> [深入了解 Read API v3.1-preview.1](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
+> [深入了解 Read API v3.1 公開預覽](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005)
 
 ## <a name="may-2020"></a>2020 年 5 月
 電腦視覺 API v3.0 已公開上市，並包含[讀取 API](concept-recognizing-text.md) 的更新：

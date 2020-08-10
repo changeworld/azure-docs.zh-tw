@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290653"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501196"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>為內部部署 VMware VM 設定災害復原至 Azure
 
@@ -87,7 +87,7 @@ ms.locfileid: "87290653"
 1. 透過 VMware vSphere 用戶端，登入 VMware vCenter 伺服器或 vSphere ESXi 主機。
 2. 在 [檔案]  功能表上，選取 [部署 OVF 範本]  以啟動 [部署 OVF 範本精靈]  。
 
-     ![OVF 範本](./media/vmware-azure-tutorial/vcenter-wizard.png)
+     ![VMWare vSphere 用戶端中部署 OVF 範本命令的螢幕擷取畫面。](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
 3. 在 [選取來源]  上，輸入所下載 OVF 的位置。
 4. 在 [檢閱詳細資料]  上，選取 [下一步]  。
@@ -153,7 +153,7 @@ ms.locfileid: "87290653"
 1. 選取 [準備基礎結構]   > [目標]  。 選取您要使用的 Azure 訂用帳戶。 我們會使用 Resource Manager 模型。
 2. Site Recovery 會檢查您具有一或多個虛擬網路。 當您在本教學課程系列的[第一個教學課程](tutorial-prepare-azure.md)中設定 Azure 元件時，您應擁有這些。
 
-   ![目標索引標籤](./media/vmware-azure-tutorial/storage-network.png)
+   ![準備基礎結構 > 目標選項的螢幕擷取畫面。](./media/vmware-azure-tutorial/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>建立複寫原則
 
@@ -165,7 +165,7 @@ ms.locfileid: "87290653"
 6. 在 [復原點保留]  中，指定每個復原點的保留時間長度。 在本教學課程中，我們使用會 72 小時。 複寫的 VM 可以還原至保留期內的任何時間點。
 7. 在 [應用程式一致快照集頻率]  中，指定建立應用程式一致快照集的頻率。 我們會使用預設值 60 分鐘。 選取 [確定]  以建立原則。
 
-   ![建立複寫原則](./media/vmware-azure-tutorial/replication-policy.png)
+   ![建立複寫原則選項的螢幕擷取畫面。](./media/vmware-azure-tutorial/replication-policy.png)
 
 - 此原則會自動與設定伺服器產生關聯。
 - 依預設會自動建立容錯回復的比對原則。 例如，如果複寫原則是 **rep-policy**，容錯回復原則就會是 **rep-policy-failback**。 從 Azure 起始容錯回復時才會使用此原則。

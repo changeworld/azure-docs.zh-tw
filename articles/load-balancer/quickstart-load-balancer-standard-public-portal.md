@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1864ce5a3c1b5b0b2e0cfe757e66fca2074b764c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125185"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475800"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立負載平衡器以平衡 VM 的負載
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立公用負載平衡器以平衡 VM 的負載
 
 使用 Azure 入口網站建立公用負載平衡器和三部虛擬機器，以開始使用 Azure Load Balancer。
 
@@ -36,7 +36,7 @@ ms.locfileid: "87125185"
 
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[選項 1 (預設值)：建立負載平衡器 (標準 SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[選項 1 (預設值)：建立公用負載平衡器 (標準 SKU)](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >建議對生產環境工作負載使用標準 SKU 負載平衡器。  如需 SKU 的詳細資訊，請參閱 **[Azure Load Balancer 的標準 SKU](skus.md)** 。
@@ -76,7 +76,7 @@ ms.locfileid: "87125185"
 
 * 後端位址集區的負載平衡器設定。
 * 健康情況探查。
-* 負載平衡器規則和自動輸出規則。
+* 負載平衡器規則。
 
 ### <a name="create-a-backend-pool"></a>建立後端集區
 
@@ -281,7 +281,7 @@ ms.locfileid: "87125185"
 
 8. 選取 [儲存]。
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[選項 2：建立負載平衡器 (基本 SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[選項 2：建立公用負載平衡器 (基本 SKU)](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >建議對生產環境工作負載使用標準 SKU 負載平衡器。  如需 SKU 的詳細資訊，請參閱 **[Azure Load Balancer 的標準 SKU](skus.md)** 。
@@ -468,8 +468,9 @@ ms.locfileid: "87125185"
 5. 選取 [管理] 索引標籤，或選取 [下一步] > [管理]。
 
 6. 在 [管理] 索引標籤中，選取或輸入：
+    
     | 設定 | 值 |
-    |-|-|
+    |---|---|
     | **監視** | |
     | 開機診斷 | 選取 [關閉] |
 
@@ -484,6 +485,24 @@ ms.locfileid: "87125185"
     | 名稱 |  **myVM2** |**myVM3**|
     | 可用性設定組| 選取 [MyAvailabilitySet] | 選取 [MyAvailabilitySet]|
     | 網路安全性群組 | 選取現有的 **myNSG**| 選取現有的 **myNSG**|
+
+### <a name="add-virtual-machines-to-the-backend-pool"></a>將虛擬機器新增至後端集區
+
+在先前步驟中建立的 VM 必須新增至 **myLoadBalancer** 的後端集區。
+
+1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單中選取 **myLoadBalancer**。
+
+2. 在 [設定] 底下選取 [後端集區]，然後選取 [myBackendPool]。
+
+3. 在 [關聯性] 中，選取 [虛擬機器]。
+
+4. 在 [虛擬機器] 區段中，選取 [+新增]。
+
+5. 選取 **myVM1**、**myVM2** 和 **myVM3** 旁的方塊。
+
+6. 選取 [新增]。
+
+7. 選取 [儲存]。
 
 ---
 

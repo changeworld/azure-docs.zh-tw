@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a5b2f3a61e2167067bd6e61ee2a36bb1d22950d8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518534"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419660"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>教學課程：設定 Azure Active Directory 密碼保護的自訂禁用密碼
 
@@ -32,7 +32,7 @@ ms.locfileid: "86518534"
 
 若要完成此教學課程，您需要下列資源和權限：
 
-* 可運作且至少已啟用試用版授權的 Azure AD 租用戶。
+* 至少已啟用 Azure AD Premium P1 或試用版授權的有效 Azure AD 租用戶。
     * 如有需要，[請建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 具有「全域系統管理員」  權限的帳戶。
 * 具有已知密碼的非系統管理員使用者，例如 testuser  。 在本教學課程中，您會使用此帳戶來測試密碼變更事件。
@@ -77,7 +77,7 @@ Azure AD 包含全域禁用密碼清單。 全域禁用密碼清單的內容不�
 
     指定您要禁止的自有自訂密碼，如下列範例所示
 
-    [![](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png "Modify the custom banned password list under Authentication Methods in the Azure portal")](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
+    [ ![在 Azure 入口網站中的 [驗證方法] 下修改自訂禁用密碼清單](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png) ](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
 1. 讓 [在 Windows Server Active Directory 上啟用密碼保護] 選項保留為 [否]。
 1. 若要啟用自訂禁用密碼和您的項目，請選取 [儲存]。

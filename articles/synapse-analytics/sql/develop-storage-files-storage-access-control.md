@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283447"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534765"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 隨選 (預覽版) 的儲存體帳戶存取
 
@@ -89,7 +89,7 @@ SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存�
 
 
 > [!IMPORTANT]
-> 存取受防火牆保護的儲存體時，只能使用受控識別。 您必須[允許受信任的 Microsoft 服務... 設定](../../storage/common/storage-network-security.md#trusted-microsoft-services)，並針對該資源執行個體明確[指派 RBAC 角色](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)給[系統指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 RBAC 角色。
+> 存取受防火牆保護的儲存體時，只能使用受控識別。 您必須[允許受信任的 Microsoft 服務... 設定](../../storage/common/storage-network-security.md#trusted-microsoft-services)，並針對該資源執行個體明確[指派 Azure 角色](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)給[系統指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 Azure 角色。
 >
 
 ## <a name="credentials"></a>認證
@@ -219,7 +219,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ## <a name="examples"></a>範例
 
-**存取公用的資料來源**
+### <a name="access-a-publicly-available-data-source"></a>**存取公用的資料來源**
 
 使用下列指令碼建立可存取可公用資料來源的資料表。
 
@@ -248,7 +248,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
 GO
 ```
 
-**使用認證來存取資料來源**
+### <a name="access-a-data-source-using-credentials"></a>**使用認證來存取資料來源**
 
 修改下列指令碼來建立外部資料表，使其可使用 SAS 權杖、使用者的 Azure AD 身分識別或工作區的受控識別來存取 Azure 儲存體。
 

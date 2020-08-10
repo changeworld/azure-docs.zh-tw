@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 準備進行實體伺服器的評�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 31db91b512a4532cca144dc012282ea58a87514f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 55e6039e5844c575808210cde7ee348f658b40ec
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113246"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420782"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>準備評估實體伺服器並將其移轉至 Azure
 
@@ -46,9 +46,9 @@ ms.locfileid: "86113246"
 
 檢查您是否有建立 Azure Migrate 專案的權限。
 
-1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]****。
-2. 在 [檢查存取權]**** 中，尋找相關的帳戶，然後按一下以查看權限。
-3. 您應該會具有「參與者」**** 或「擁有者」**** 權限。
+1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]。
+2. 在 [檢查存取權] 中，尋找相關的帳戶，然後按一下以查看權限。
+3. 您應該會具有「參與者」或「擁有者」權限。
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 
@@ -69,8 +69,8 @@ ms.locfileid: "86113246"
 
 租用戶/全域管理員可以授與權限，如下所示：
 
-1. 在 Azure AD 中，租用戶/全域管理員應該瀏覽至 [Azure Active Directory]**** > [使用者]**** > [使用者設定]****。
-2. 管理員應將 [應用程式註冊]**** 設定為 [是]****。
+1. 在 Azure AD 中，租用戶/全域管理員應該瀏覽至 [Azure Active Directory] > [使用者] > [使用者設定]。
+2. 管理員應將 [應用程式註冊] 設定為 [是]。
 
     ![Azure AD 權限](./media/tutorial-prepare-hyper-v/aad.png)
 
@@ -95,9 +95,9 @@ ms.locfileid: "86113246"
 
 ### <a name="assign-permissions-to-create-project"></a>指派建立專案的權限
 
-1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]****。
-2. 在 [檢查存取權]**** 中，尋找相關的帳戶，然後按一下以查看權限。
-3. 您應該會具有「參與者」**** 或「擁有者」**** 權限。
+1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]。
+2. 在 [檢查存取權] 中，尋找相關的帳戶，然後按一下以查看權限。
+3. 您應該會具有「參與者」或「擁有者」權限。
     - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
     - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 
@@ -138,7 +138,7 @@ ms.locfileid: "86113246"
 
 Azure Migrate 需要探索內部部署伺服器的權限。
 
-- **Windows：** 您必須是網域管理員，或是您要探索的所有 Windows 伺服器上的本機管理員。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。
+- **Windows：** 您需要網域帳戶來探索已加入網域的伺服器，並使用本機帳戶來探索未加入網域的電腦。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。
 - **Linux：** 您在要探索的 Linux 伺服器上必須要有根帳戶。
 
 ## <a name="prepare-for-physical-server-migration"></a>準備進行實體伺服器移轉

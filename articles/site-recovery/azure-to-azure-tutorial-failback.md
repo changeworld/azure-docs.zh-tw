@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 432c92bcfa8a2e0df26adf1516f5bdc9ee73d267
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289307"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502370"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>在 Azure 區域之間容錯回復 Azure VM
 
@@ -42,7 +42,7 @@ ms.locfileid: "87289307"
 
 1. 在保存庫中，選取 [複寫的項目]  ，然後選取已受到重新保護的 VM。
 
-    ![容錯回復到主要區域](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
+    ![顯示 Azure 入口網站中容錯回復至主要區域的螢幕擷取畫面。](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
 
 2. 在 [複寫的項目]  中選取 VM，然後選取 [容錯移轉]  。
 3. 在 [容錯移轉]  中，選取要容錯移轉的目標復原點：
@@ -55,7 +55,7 @@ ms.locfileid: "87289307"
 7. 驗證容錯移轉之後，請選取 [認可容錯移轉]  。 認可作業會刪除所有可用的復原點。 無法再使用 [變更復原點] 選項。
 8. VM 應會顯示為已容錯移轉且已容錯回復。
 
-    ![主要和次要區域上的 VM](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+    ![顯示主要和次要區域的螢幕擷取畫面。](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
 > 對於使用受控磁碟並執行 Site Recovery 延伸模組版本 9.28.x.x 以上的電腦，[更新彙總套件 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) Site Recovery 會在容錯回復完成且 VM 重新受到保護後，清除次要災害復原區域中的電腦。 不需要手動刪除次要區域中的 VM 和 NIC。 請注意，不會清除具有非受控磁碟的 VM。 如果您在容錯回復之後完全停用複寫，除了 VM 和 NIC 之外，Site Recovery 還會清除災害復原區域中的磁碟。

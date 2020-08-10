@@ -6,19 +6,26 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 07/15/2020
-ms.openlocfilehash: 8c6486a3a64dcbe3dd37770844296da73724f3a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: 60efc645b1b5824306c1d4aa3e763eb9d2bc745d
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076341"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553917"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
 
 了解該服務的新功能。 將此頁面加入書籤，以掌握服務的最新狀態。
 
 ## <a name="feature-announcements-in-2020"></a>2020 的功能公告
+
+### <a name="august-2020"></a>2020 年 8 月
+
+|功能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 類別 | 描述 | 可用性  |
+|---------|------------------|-------------|---------------|
+| [雙重加密](search-security-overview.md#encryption) | 安全性 | 在新的搜尋服務上設定客戶管理的金鑰 (CMK) 加密，以在儲存層啟用雙重加密。 建立新的服務、[將客戶管理的金鑰設定並套用至索引或同義字對應](search-security-manage-encryption-keys.md)，並從該內容的雙重加密獲益。 | 於 2020 年 8 月 1 日後在下列區域建立的所有搜尋服務中正式發行：美國西部 2、美國東部、美國中南部、US Gov 維吉尼亞州、US Gov 亞利桑那州。 使用入口網站、管理 REST API 或 SDK 來建立服務。 |
 
 ### <a name="july-2020"></a>2020 年 7 月
 

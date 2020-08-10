@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338039"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808400"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入門：針對您 Azure Active Directory (Azure AD) 租用戶中的應用程式設定屬性
 
@@ -95,9 +95,17 @@ ms.locfileid: "87338039"
    > [!NOTE]
    > 這個 [屬性] 窗格上顯示的縮圖不會立即更新。 您可以關閉 [屬性] 窗格再重新加以開啟，以查看更新的圖示。
 
+
+> [!TIP]
+> 您可以使用圖形 API 自動管理應用程式，請參閱[使用 Microsoft Graph API 自動管理應用程式](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+
+
+## <a name="clean-up-resources"></a>清除資源
+
+如果您不打算繼續進行快速入門系列，請考慮刪除應用程式以清除您的測試租用戶。 本系列的最後一個快速入門涵蓋了刪除應用程式的說明，請參閱[刪除應用程式](delete-application-portal.md)。
+
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已設定了應用程式的屬性，接下來您可以設定單一登入。
-
-- [設定單一登入](add-application-portal-setup-sso.md)
-- [刪除應用程式](delete-application-portal.md)
+前往下一篇文章，了解如何設定應用程式單一登入。
+> [!div class="nextstepaction"]
+> [設定單一登入](add-application-portal-setup-sso.md)

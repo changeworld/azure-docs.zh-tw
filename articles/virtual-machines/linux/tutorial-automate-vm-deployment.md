@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: d2a6568b0d62c880a688160cf981fb33083ae02e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 2a07480bf5b3defb4176437d99274e9ecfb4ba13
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81461475"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433021"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教學課程 - 如何使用 cloud-init 在首次開機時於 Azure 中自訂 Linux 虛擬機器
 
@@ -129,7 +129,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myAuto
 ```
 
 ## <a name="test-web-app"></a>測試 Web 應用程式
-現在，您可以開啟 Web 瀏覽器，並在網址列輸入 *http:\/\/\<publicIpAddress>* 。 提供您自己從 VM 建立程序中取得的公用 IP 位址。 您的 Node.js 應用程式即會顯示，如下列範例所示：
+現在，您可以開啟 Web 瀏覽器，並在網址列輸入 http:\/\/\<publicIpAddress>。 提供您自己從 VM 建立程序中取得的公用 IP 位址。 您的 Node.js 應用程式即會顯示，如下列範例所示：
 
 ![檢視執行中的 NGINX 網站](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -260,7 +260,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>測試安全的 Web 應用程式
-現在，您可以開啟 Web 瀏覽器，並在網址列輸入 *https:\/\/\<publicIpAddress>* 。 提供您自己的公用 IP 位址，其已顯示在先前 VM 建立程序中的輸出中。 如果您使用自我簽署憑證，請接受安全性警告：
+現在，您可以開啟 Web 瀏覽器，並在網址列輸入 https:\/\/\<publicIpAddress>。 提供您自己的公用 IP 位址，其已顯示在先前 VM 建立程序中的輸出中。 如果您使用自我簽署憑證，請接受安全性警告：
 
 ![接受 Web 瀏覽器安全性警告](./media/tutorial-automate-vm-deployment/browser-warning.png)
 

@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 09d039801107a44df4f3bf3745a1e074e6d708b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2da31944a58fb3e5834938b7de32348f30ed7e25
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76760959"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439806"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教學課程：開發適用於 Windows 裝置的 C IoT Edge 模組
 
@@ -89,7 +89,7 @@ ms.locfileid: "76760959"
    | ----- | ----- |
    | 選取範本 | 選取 [C 模組]  。 |
    | 模組專案名稱 | 將模組命名為 **CModule**。 |
-   | Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會從模組專案名稱值預先填入容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<登錄名稱\>.azurecr.io/cmodule。 |
+   | Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會從模組專案名稱值預先填入容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/cmodule。 |
 
    ![針對目標裝置、模組類型和容器登錄設定您的專案](./media/tutorial-c-module-windows/add-application-and-module.png)
 
@@ -316,7 +316,13 @@ ms.locfileid: "76760959"
 
 在上一節中，您已建立 IoT Edge 解決方案，並將程式碼新增至 **CModule**，以篩選掉報告的機器溫度低於可接受閾值的訊息。 現在，您需要建置容器映像形式的解決方案，並將它推送到容器登錄。
 
-1. 在您的開發機器上使用下列命令登入 Docker。 使用您 Azure 容器登錄中的使用者名稱、密碼和登入伺服器登入。 您可以在 Azure 入口網站中，從登錄的 [存取金鑰]  區段擷取這些值。
+### <a name="sign-in-to-docker"></a>登入 Docker
+
+對您部署機器上的 Docker 提供容器登錄認證，使其可以推送要儲存在登錄中的容器映像。
+
+1. 開啟 PowerShell 或命令提示字元。
+
+2. 使用您在建立登錄之後所儲存的 Azure Container Registry 認證來登入 Docker。
 
    ```cmd
    docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -324,15 +330,21 @@ ms.locfileid: "76760959"
 
    您可能會收到安全性警告，建議您使用 `--password-stdin`。 雖然建議生產案例使用該最佳做法，但是不在本教學課程的討論範圍內。 如需詳細資訊，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 參考。
 
-2. 在 Visual Studio 方案總管中，以滑鼠右鍵按一下您想要建置的專案名稱。 預設名稱為 **AzureIotEdgeApp1**，且您要建置 Windows 模組，因此擴充功能應該為 **Windows.Amd64**。
+### <a name="build-and-push"></a>建置與推送
 
-3. 選取 [建置和推送 IoT Edge 模組]  。
+開發機器現在已可存取容器登錄，且 IoT Edge 裝置也會存取。 您可以開始將專案程式碼轉換成容器映像。
+
+1. 在 Visual Studio 方案總管中，以滑鼠右鍵按一下您想要建置的專案名稱。 預設名稱是 **AzureIotEdgeApp1**。 在本教學課程中，已選擇 **CTutorialApp** 名稱。 由於您要建置 Windows 模組，因此擴充功能應該為 **Windows.Amd64**。
+
+2. 選取 [建置和推送 IoT Edge 模組]。
 
    建置和推送命令會啟動三項作業。 首先，它會在名為 **config** 的解決方案中建立新資料夾，以保存完整部署資訊清單 (根據部署範本中的資訊建立)，以及其他解決方案檔案。 接著，它會執行 `docker build`，以根據目標架構的適當 dockerfile 建置容器映像。 然後，它會執行 `docker push` 以將映像存放庫推送至您的容器登錄。
 
+   此程序第一次進行時可能需要幾分鐘的時間，但下一次執行命令時速度就會變快。
+
 ## <a name="deploy-modules-to-device"></a>將模組部署到裝置
 
-使用 Visual Studio 雲端總管和 Azure IoT Edge Tools 擴充功能，將模組專案部署到您的 IoT Edge 裝置。 您已備妥您的案例所需的部署資訊清單，即 config 資料夾中的 **deployment.json** 檔案。 現在您只需選取要接收部署的裝置即可。
+使用 Visual Studio 雲端總管和 Azure IoT Edge Tools 擴充功能，將模組專案部署到您的 IoT Edge 裝置。 您已備妥您的案例所需的部署資訊清單，即 config 資料夾中的 **deployment.windows-amd64.json** 檔案。 現在您只需選取要接收部署的裝置即可。
 
 請確定您的 IoT Edge 裝置已啟動並執行。
 
@@ -340,7 +352,7 @@ ms.locfileid: "76760959"
 
 2. 以滑鼠右鍵按一下您要接收部署的 IoT Edge 裝置名稱。
 
-3. 選取 [建立部署]  。
+3. 選取 [建立部署]。
 
 4. 在檔案總管中，選取您解決方案的 config 資料夾中的 **deployment.windows-amd64** 檔案。
 
@@ -354,9 +366,9 @@ ms.locfileid: "76760959"
 
 1. 在 Visual Studio 雲端總管中，選取您的 IoT Edge 裝置名稱。
 
-2. 在 [動作]  清單中，選取 [開始監視內建事件端點]  。
+2. 在 [動作] 清單中，選取 [開始監視內建事件端點]。
 
-3. 檢視送達 IoT 中樞的訊息。 訊息可能需要一段時間才能送達，因為 IoT Edge 裝置必須接收其新的部署和啟動所有模組。 然後，我們對 CModule 程式碼所做的變更會等到機器溫度達到 25 度時才會傳送訊息。 它也會將 [警示]  訊息類型新增至任何觸達該溫度閾值的訊息。
+3. 檢視送達 IoT 中樞的訊息。 訊息可能需要一段時間才能送達，因為 IoT Edge 裝置必須接收其新的部署和啟動所有模組。 然後，我們對 CModule 程式碼所做的變更會等到機器溫度達到 25 度時才會傳送訊息。 它也會將 [警示] 訊息類型新增至任何觸達該溫度閾值的訊息。
 
    ![檢視送達 IoT 中樞的訊息](./media/tutorial-c-module-windows/view-d2c-message.png)
 
@@ -364,7 +376,7 @@ ms.locfileid: "76760959"
 
 我們已使用 CModule 模組對應項來設定 25 度的溫度閾值。 您可以使用模組對應項來變更此功能，而不必更新模組程式碼。
 
-1. 在 Visual Studio 中，開啟 **deployment.windows-amd64.json** 檔案。 (並非 deployment.template 檔案。 如果您在方案總管中沒看到 config 檔案中的部署資訊清單，請選取總管工具列中的 [顯示所有檔案]  圖示。)
+1. 在 Visual Studio 中，開啟 **deployment.windows-amd64.json** 檔案。 (並非 deployment.template 檔案。 如果您在方案總管中沒看到 config 檔案中的部署資訊清單，請選取總管工具列中的 [顯示所有檔案] 圖示。)
 
 2. 尋找 CModule 對應項，然後將 **temperatureThreshold** 參數的值變更為高於最近報告溫度 5 到 10 度的新溫度。
 

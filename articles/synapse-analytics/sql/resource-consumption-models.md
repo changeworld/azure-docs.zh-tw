@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: a358052d5f3959a236f29461890c989e77edb4dc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 086c853b21301074cf35f13db52db1fdb145518c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369011"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489566"
 ---
 # <a name="synapse-sql-resource-consumption"></a>Synapse SQL 資源耗用量
 
@@ -27,7 +27,7 @@ SQL 隨選是按照每個查詢來收費的服務，因此您不必挑選合適�
 
 選擇理想的資料倉儲單位 (DWU) 數目以獲得最佳價格與效能，以及如何變更單位數目的建議。
 
-### <a name="what-are-data-warehouse-units"></a>什麼是資料倉儲單位
+### <a name="data-warehouse-units"></a>資料倉儲單位
 
 Synapse SQL 集區代表所要佈建的分析資源集合。 分析資源會以 CPU、記憶體和 IO 的組合來定義。 這三個資源會組合成計算規模的單位，我們稱之為「資料倉儲單位 (DWU)」。 DWU 能以抽象而標準化的量值來呈現計算資源與效能。 變更服務等級即可改變可供系統使用的 DWU 數目，進而調整系統的效能與成本。
 
@@ -79,7 +79,7 @@ DWU 和 cDWU 均支援將計算相應增加或減少，並且在您不需使用�
 
 每部 SQL 伺服器 (例如 myserver.database.windows.net) 都有[資料庫交易單位 (DTU)](../../azure-sql/database/service-tiers-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) 配額，允許有特定數目的資料倉儲單位。 如需詳細資訊，請參閱[工作負載管理容量限制](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)。
 
-### <a name="how-many-data-warehouse-units-do-i-need"></a>我需要多少個資料倉儲單位
+### <a name="assess-the-number-of-data-warehouse-units-you-need"></a>評估您所需的資料倉儲單位數目
 
 理想的資料倉儲單位數大部分取決於您的工作負載，以及您已載入系統的資料量。
 

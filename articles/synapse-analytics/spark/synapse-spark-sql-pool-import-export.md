@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ca13cbd8bdba911882f7452e34c45cbc7918dd7f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b02296d5d9aed5866c0efcdf85fa1c9946617d0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077707"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501894"
 ---
 # <a name="introduction"></a>簡介
 
@@ -67,7 +67,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 您不必提供匯入陳述式，筆記本體驗已預先匯入這些陳述式。
 
-### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>在連結有工作區的 SQL 集區之間來回傳輸資料
+### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>在連結有工作區的 SQL 集區之間來回傳輸資料
 
 > [!NOTE]
 > **筆記本體驗中不需要匯入**
@@ -134,7 +134,7 @@ df.write.
 
 ```
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>如果您要在工作區外的 SQL 集區或資料庫之間來回傳輸資料
+### <a name="if-you-transfer-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>如果您要在工作區外的 SQL 集區或資料庫之間來回傳輸資料
 
 > [!NOTE]
 > 筆記本體驗中不需要匯入
@@ -160,7 +160,7 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="using-sql-auth-instead-of-aad"></a>使用 SQL 驗證而非 AAD
+### <a name="use-sql-auth-instead-of-aad"></a>使用 SQL 驗證而非 AAD
 
 #### <a name="read-api"></a>讀取 API
 
@@ -184,7 +184,7 @@ option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="using-the-pyspark-connector"></a>使用 PySpark 連接器
+### <a name="use-the-pyspark-connector"></a>使用 PySpark 連接器
 
 > [!NOTE]
 > 請記住，這個範例僅針對筆記本體驗來提供。
@@ -208,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 同樣地，在讀取案例中，請使用 Scala 讀取資料並將其寫入暫存資料表，並在 PySpark 中使用 Spark SQL 將暫存資料表查詢至資料框架。
 
-## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>允許其他使用者對您工作區中的 Synapse SQL 連接器使用 Azure Synapse Apache Spark
+## <a name="allow-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>允許其他使用者對您工作區中的 Synapse SQL 連接器使用 Azure Synapse Apache Spark
 
 您必須是連線到工作區的 ADLS Gen2 儲存體帳戶上所存在的儲存體 Blob 資料擁有者，才能更改其他人的遺漏權限。 請確定使用者可存取工作區並有權執行筆記本。
 

@@ -9,12 +9,12 @@ ms.service: genomics
 ms.topic: quickstart
 ms.date: 01/11/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 167bcf4364b88529256b79574c6b8c03098fed02
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: cd0cf3bb7df8efc944fabb8e236f32adb38749d4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607120"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424118"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>快速入門：透過 Microsoft Genomics 服務執行工作流程
 
@@ -48,18 +48,18 @@ ms.locfileid: "84607120"
 
 ## <a name="set-up-install-the-microsoft-genomics-python-client"></a>設定：安裝 Microsoft Genomics Python 用戶端
 
-您必須在本機環境中安裝 Python 和 Microsoft Genomics Python 用戶端。 
+您必須在本機環境中安裝 Python 和 Microsoft Genomics Python 用戶端 `msgen`。 
 
 ### <a name="install-python"></a>安裝 Python
 
 Microsoft Genomics Python 用戶端與 Python 2.7.12 或更新的 2.7.xx 版相容。 2.7.14 是建議版本。 您可以在[這裡](https://www.python.org/downloads/release/python-2714/)找到下載。 
 
 > [!IMPORTANT]
-> Python 3.x 與 Python 2.7.xx 不相容。  MSGen 是 Python 2.7 應用程式。 執行 MSGen 時，請確定您作用中的 Python 環境使用的是 Python 的 2.7.xx 版本。 嘗試搭配使用 MSGen 與 Python 的 3.x 版時，可能會發生錯誤。
+> Python 3.x 與 Python 2.7.xx 不相容。  `msgen` 是 Python 2.7 應用程式。 執行 `msgen` 時，請確定您作用中的 Python 環境使用的是 Python 的 2.7.xx 版本。 嘗試搭配使用 `msgen` 與 Python 的 3.x 版時，可能會發生錯誤。
 
-### <a name="install-the-microsoft-genomics-client"></a>安裝 Microsoft Genomics 用戶端
+### <a name="install-the-microsoft-genomics-python-client-msgen"></a>安裝 Microsoft Genomics Python 用戶端 `msgen`
 
-使用 Python `pip` 來安裝 Microsoft Genomics 用戶端 `msgen`。 下列指示假設 Python 已在您的系統路徑中。 如果您遇到 `pip` 安裝無法辨識的問題，您必須將 Python 和指令碼子資料夾新增至系統路徑。
+使用 Python `pip` 來安裝 Microsoft Genomics 用戶端 `msgen`。 下列指示假設 Python2.x 已在您的系統路徑中。 如果您遇到 `pip` 安裝無法辨識的問題，您必須將 Python 和指令碼子資料夾新增至系統路徑。
 
 ```
 pip install --upgrade --no-deps msgen
@@ -67,19 +67,14 @@ pip install msgen
 ```
 
 如果您不想要安裝 `msgen` 作為全系統的二進位檔並修改全系統的 Python 套件，請使用 `–-user` 旗標與 `pip`。
-如果您使用的是以套件為基礎的安裝或 setup.py，就已安裝所有必要套件。 否則，`msgen` 的基本必要套件為 
+如果您使用的是以套件為基礎的安裝或 setup.py，就已安裝所有必要套件。
 
- * [Azure-storage](https://pypi.python.org/pypi/azure-storage)。 
- * [要求](https://pypi.python.org/pypi/requests)。 
-
-您可以使用 `pip`、`easy_install` 或透過標準 `setup.py` 程序來安裝這些套件。 
-
-### <a name="test-the-microsoft-genomics-client"></a>測試 Microsoft Genomics 用戶端
-若要測試 Microsoft Genomics 用戶端，請從 Genomics 帳戶下載組態檔。 在 Azure 入口網站中，選取左上方的 [所有服務]  ，然後搜尋並選取 Genomics 帳戶，以瀏覽至您的 Genomics 帳戶。
+### <a name="test-msgen-python-client"></a>測試 `msgen` Python 用戶端
+若要測試 Microsoft Genomics 用戶端，請從 Genomics 帳戶下載組態檔。 在 Azure 入口網站中，選取左上方的 [所有服務]，然後搜尋並選取 Genomics 帳戶，以瀏覽至您的 Genomics 帳戶。
 
 ![在 Azure 入口網站上尋找 Microsoft Genomics](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "在 Azure 入口網站上尋找 Microsoft Genomics")
 
-選取您剛建立的 Genomics 帳戶，瀏覽至 [存取金鑰]  ，並下載組態檔。
+選取您剛建立的 Genomics 帳戶，瀏覽至 [存取金鑰]，並下載組態檔。
 
 ![從 Microsoft Genomics 下載設定檔](./media/quickstart-run-genomics-workflow-portal/genomics-mygenomicsaccount-box.png "從 Microsoft Genomics 下載設定檔")
 
@@ -106,9 +101,9 @@ Microsoft Genomics 服務預期會輸入儲存為 Azure 儲存體帳戶中的區
  |效能                  | 標準                   | 預設值是 [標準]。 如需標準和進階儲存體帳戶的詳細資訊，請參閱 [Microsoft Azure 儲存體簡介](https://docs.microsoft.com/azure/storage/common/storage-introduction)    |
  |帳戶類型       | BlobStorage       |  Blob 儲存體的下載及上傳速度可能比一般用途的快 2-5 倍。 |
  |複寫                  | 本地備援儲存體                  | 本地備援儲存體會在您建立儲存體帳戶的區域資料中心內複寫資料。 如需詳細資訊，請參閱 [Azure 儲存體複寫](https://docs.microsoft.com/azure/storage/common/storage-redundancy)    |
- |存取層                  | 經常性存取                   | 經常性存取表示會更頻繁地存取儲存體帳戶中的物件。    |
+ |存取層                  | 經常性存取層                   | 經常性存取表示會更頻繁地存取儲存體帳戶中的物件。    |
 
-然後，選取 [檢閱 + 建立]  以建立儲存體帳戶。 如同建立 Genomics 帳戶，您可以選取頂端功能表列中的 [通知]  來監視部署程序。 
+然後，選取 [檢閱 + 建立] 以建立儲存體帳戶。 如同建立 Genomics 帳戶，您可以選取頂端功能表列中的 [通知] 來監視部署程序。 
 
 ## <a name="upload-input-data-to-your-storage-account"></a>將輸入資料上傳至儲存體帳戶
 
@@ -119,18 +114,20 @@ Microsoft Genomics 服務預期會使用成對端讀取 (fastq 或 bam 檔案) �
 
 在儲存體帳戶內，您必須建立一個輸入資料的 blob 容器，和輸出資料的第二個 blob 容器。  將輸入資料上傳到您的輸入 blob 容器。 您可使用各種工具來執行，包括 [Microsoft Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)、[BlobPorter](https://github.com/Azure/blobporter) 或 [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 
-## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-python-client"></a>使用 Python 用戶端透過 Microsoft Genomics 服務執行工作流程 
+## <a name="run-a-workflow-through-the-microsoft-genomics-service-using-the-msgen-python-client"></a>使用 `msgen` Python 用戶端透過 Microsoft Genomics 服務執行工作流程
 
 若要透過 Microsoft Genomics 服務來執行工作流程，請編輯 *config.txt* 檔案，以指定資料的輸入和輸出儲存體容器。
-開啟您從 Genomics 帳戶下載的 *config.txt* 檔案。 您必須指定的小節包括您的訂用帳戶金鑰，以及底部的六個項目、儲存體帳戶名稱、輸入和輸出的金鑰與容器名稱。 您可以在 Azure 入口網站中瀏覽至儲存體帳戶的 [存取金鑰]  ，或直接從 Azure 儲存體總管找到這項資訊。  
+開啟您從 Genomics 帳戶下載的 *config.txt* 檔案。 您必須指定的小節包括您的訂用帳戶金鑰，以及底部的六個項目、儲存體帳戶名稱、輸入和輸出的金鑰與容器名稱。 您可以在 Azure 入口網站中瀏覽至儲存體帳戶的 [存取金鑰]，或直接從 Azure 儲存體總管找到這項資訊。  
 
-![Genomics 設定](./media/quickstart-run-genomics-workflow-portal/genomics-config.png "Genomics 設定")
+![Genomics 設定](./media/quickstart-run-genomics-workflow-portal/genomics-config.PNG "Genomics 設定")
 
 如果您想要執行 GATK4，請將 `process_name` 參數設定為 `gatk4`。
 
 根據預設，Genomics 服務會輸出 VCF 檔案。 如果您想要 gVCF 輸出而不是 VCF 輸出 (相當於 GATK 3.x 中的 `-emitRefConfidence` 及 GATK 4.x 中的 `emit-ref-confidence`)，請將 `emit_ref_confidence` 參數新增至您的 *config.txt*，並將其設定為 `gvcf`，如上圖所示。  若要變更回 VCF 輸出，請從 *config.txt* 檔案中移除該參數，或將 `emit_ref_confidence` 參數設定為 `none`。 
 
-### <a name="submit-your-workflow-to-the-microsoft-genomics-service-the-microsoft-genomics-client"></a>將工作流程提交至 Microsoft Genomics 用戶端 Microsoft Genomics 服務
+`bgzip` 是一種用來壓縮 vcf 或 gvcf 檔案的工具，而 `tabix` 會建立壓縮檔案的索引。 根據預設，Genomics 服務會執行 `bgzip` 後面接著 ".g.vcf" 輸出的 `tabix`，但預設不會針對 ".vcf" 輸出執行這些工具。 執行時，服務會產生 ".gz" (bgzip 輸出) 和 ".tbi" (tabix 輸出) 檔案。 引數是布林值，預設會將 ".vcf" 輸出設為 False，並將 ".g.vcf" 輸出設定為 True。 若要在命令列上使用，請將 `-bz` 或 `--bgzip-output` 指定為 `true` (執行 bgzip 和 tabix) 或 `false`。 若要在 config.txt 檔案中使用此引數，請將 `bgzip_output: true` 或 `bgzip_output: false` 新增至檔案。
+
+### <a name="submit-your-workflow-to-the-microsoft-genomics-service-using-the-msgen-python-client"></a>使用 `msgen` Python 用戶端將工作流程提交至 Microsoft Genomics 服務
 
 使用 Microsoft Genomics Python 用戶端搭配下列命令來提交工作流程：
 
@@ -146,4 +143,5 @@ msgen list -f c:\temp\config.txt
 工作流程完成後，您可以在您設定的輸出容器中檢視 Azure 儲存體帳戶中的輸出檔案。 
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您已將範例輸入資料上傳至 Azure 儲存體，並已透過 `msgen` Python 用戶端將工作流程提交至 Microsoft Genomics 服務。 若要了解有關可與 Microsoft Genomics 服務搭配使用的其他輸入檔案類型詳細資訊，請參閱下列頁面：[配對的 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [多個 FASTQ 或 BAM](quickstart-input-multiple.md)。 您也可以使用我們的 [Azure Notebook 教學課程](https://aka.ms/genomicsnotebook)來探索此教學課程。
+
+在本文中，您已將範例輸入資料上傳至 Azure 儲存體，並已透過 `msgen` Python 用戶端將工作流程提交至 Microsoft Genomics 服務。 若要了解有關可與 Microsoft Genomics 服務搭配使用的其他輸入檔案類型詳細資訊，請參閱下列頁面：[配對的 FASTQ](quickstart-input-pair-FASTQ.md) | [BAM](quickstart-input-BAM.md) | [多個 FASTQ 或 BAM](quickstart-input-multiple.md)。 您也可以下載 "Genomics Tutorial.ipynb" 檔案，並使用像是 [Jupyter](https://docs.microsoft.com/azure/notebooks/tutorial-create-run-jupyter-notebook) 的筆記本讀取程式來開啟檔案並執行，以使用我們的 [Azure 筆記本範例](https://aka.ms/genomicsnotebook)探索本教學課程。

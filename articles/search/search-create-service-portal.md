@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529619"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554017"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入門：在入口網站中建立 Azure 認知搜尋服務
 
@@ -30,8 +30,8 @@ Azure 認知搜尋是一項可用來在自訂應用程式中插入搜尋體驗�
 下列服務屬性已針對服務的存留期進行修正，需要新的服務才能變更。 因為這些服務屬性是固定的，所以在填寫每個屬性時，請將屬性使用方式的含意納入考慮：
 
 * 服務名稱會成為 URL 端點的一部分 ([檢閱秘訣](#name-the-service)了解實用的服務名稱)。
-* 服務層級會[影響帳單](search-sku-tier.md)並設定容量上限。
-* 服務區域可決定特定案例的可用性。 如果您對知識挖掘和 AI 擴充有興趣，則可能需要將認知服務和 Azure Machine Learning 放在相同的區域中 。
+* 服務層級會[影響帳單](search-sku-tier.md)並設定容量上限。 有些功能無法在免費層使用。
+* 服務區域可決定特定案例的可用性。 如果您需要[高安全性功能](search-security-overview.md)或 [AI 擴充](cognitive-search-concept-intro.md)，必須將 Azure 認知搜尋放在與其他服務相同的區域中，或放在提供問題功能的區域中。 
 
 ## <a name="subscribe-free-or-paid"></a>訂閱 (免費或付費)
 
@@ -51,7 +51,7 @@ Azure 認知搜尋是一項可用來在自訂應用程式中插入搜尋體驗�
 
 ## <a name="choose-a-subscription"></a>選擇訂用帳戶
 
-如果您有多個訂用帳戶，請針對您的搜尋服務選擇一個訂用帳戶。
+如果您有多個訂用帳戶，請針對您的搜尋服務選擇一個訂用帳戶。 如果您要實作[雙重加密](search-security-overview.md#double-encryption)或其他相依於受控服務識別的功能，請選擇與用於 Azure Key Vault 的訂用帳戶，或使用受控識別的其他服務。
 
 ## <a name="set-a-resource-group"></a>設定資源群組
 
@@ -89,6 +89,8 @@ Azure 認知搜尋可在大部分區域中使用。 支援的區域清單可在[
 
 > [!Note]
 > 新的服務目前無法在印度中部與阿拉伯聯合大公國北部使用。 對於已在那些區域提供的服務，您可以無限制地擴大，且您的服務在該區域中受到完整的支援。 限制是暫時的且僅限於新的服務。 當限制不再適用時，我們將移除此注意事項。
+>
+> 雙重加密僅適用於特定區域。 如需詳細資訊，請參閱[雙重加密](search-security-overview.md#double-encryption)。
 
 ### <a name="requirements"></a>需求
 

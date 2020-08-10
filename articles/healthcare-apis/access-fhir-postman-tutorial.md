@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
-ms.openlocfilehash: 684f85042fd09c14621801ec017fea0e632f2598
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 6e0851a55673792adc905d27fdd3f5c13d572032
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "84870527"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563954"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>使用 Postman 存取 Azure API for FHIR
 
@@ -23,6 +23,7 @@ ms.locfileid: "84870527"
 ## <a name="prerequisites"></a>必要條件
 
 - Azure 中的 FHIR 端點。 您可以使用受控 Azure API for FHIR 或適用於 Azure 的開放原始碼 FHIR 伺服器進行設定。 使用 [Azure 入口網站](fhir-paas-portal-quickstart.md)、[PowerShell](fhir-paas-powershell-quickstart.md)或 [Azure CLI](fhir-paas-cli-quickstart.md) 來設定受控 Azure API for FHIR。
+- 您將用來存取 FHIR 服務的[用戶端應用程式](register-confidential-azure-ad-client-app.md)
 - 已安裝 Postman。 您可以從 [https://www.getpostman.com](https://www.getpostman.com) 取得。
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR 伺服器和驗證詳細資料
@@ -108,7 +109,7 @@ Azure API for FHIR 的中繼資料 URL 為 `https://MYACCOUNT.azurehealthcareapi
 }
 ```
 
-在疑難排解的情況下，驗證您是否有正確的對象 (`aud` 宣告) 是不錯的開端。 如果您的權杖來自正確的簽發者 (`iss` 宣告) 且具有正確的對象 (`aud` 宣告)，但您仍無法存取 FHIR API，則使用者或服務主體 (`oid` 宣告) 可能沒有 FHIR 資料平面的存取權。 我們建議您[使用 Azure 角色型存取控制](configure-azure-rbac.md)，將資料平面角色指派給使用者。 如果您針對資料平面使用外部次要 Azure Active Directory 租用戶，則需要[設定本機 RBAC 指派](configure-local-rbac.md)。
+在疑難排解的情況下，驗證您是否有正確的對象 (`aud` 宣告) 是不錯的開端。 如果您的權杖來自正確的簽發者 (`iss` 宣告) 且具有正確的對象 (`aud` 宣告)，但您仍無法存取 FHIR API，則使用者或服務主體 (`oid` 宣告) 可能沒有 FHIR 資料平面的存取權。 建議您[使用 Azure 角色型存取控制 (Azure RBAC)](configure-azure-rbac.md)，將資料平面角色指派給使用者。 如果您針對資料平面使用外部次要 Azure Active Directory 租用戶，則需要[設定本機 RBAC 指派](configure-local-rbac.md)。
 
 您也可以[使用 Azure CLI 取得 Azure API for FHIR 的權杖](get-healthcare-apis-access-token-cli.md)。 如果您使用透過 Azure CLI 取得的權杖，則應該使用授權類型「持有人權杖」並直接貼入權杖。
 

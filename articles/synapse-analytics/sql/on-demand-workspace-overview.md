@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480434"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496384"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 SQL 隨選 (預覽) 
 
@@ -31,7 +31,7 @@ SQL 隨選無須伺服器，因此不必設置基礎結構，也不用維護叢�
 
 如果您在資料管線中使用 Apache Spark for Azure Synapse 來進行資料準備、清理或擴充，則可以直接從 SQL 隨選[查詢您在程序中所建立的外部 Spark 資料表](develop-storage-files-spark-tables.md)。 使用 [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) 則可將 SQL 隨選端點帶入到[受控工作區 VNet](../security/synapse-workspace-managed-vnet.md)。  
 
-## <a name="who-is-sql-on-demand-for"></a>SQL 隨選的適用對象
+## <a name="sql-on-demand-benefits"></a>隨選 SQL 權益
 
 如果您需要探索資料湖中的資料、取得資料的深入解析，或將現有的資料轉換管線最佳化，則可使用 SQL 隨選來獲益。 這適用於下列案例：
 
@@ -46,7 +46,7 @@ SQL 隨選無須伺服器，因此不必設置基礎結構，也不用維護叢�
 - 資料分析師可以使用連線至 SQL 隨選的熟悉 T-SQL 語言或其最愛的工具，來[探索資料科學家或資料工程師所建立的資料和 Spark 外部資料表](develop-storage-files-spark-tables.md)。
 - BI 專業人員可以快速地[根據資料湖所含的資料建立 Power BI 報告](tutorial-connect-power-bi-desktop.md)和 Spark 資料表。
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>要執行哪些動作才能開始使用？
+## <a name="how-to-start-using-sql-on-demand"></a>如何開始使用隨選 SQL
 
 每個 Azure Synapse 工作區內都會提供 SQL 隨選端點。 您可以使用熟悉的工具立即建立工作區並開始查詢資料。
 
@@ -54,7 +54,7 @@ SQL 隨選無須伺服器，因此不必設置基礎結構，也不用維護叢�
 
 SQL 隨選可讓現有的 SQL 臨機操作查詢和商業智慧工具利用資料湖。 其提供了熟悉的 T-SQL 語法，因此只要是能夠建立 TDS 連線 SQL 供應項目的工具，都可以[連線到 Synapse SQL 隨選並進行查詢](connect-overview.md)。 您可以與 Azure Data Studio 連線並執行臨機操作查詢，也可以與 Power BI 連線以在幾分鐘內取得深入解析。
 
-## <a name="is-full-t-sql-supported"></a>是否支援整個 T-SQL？
+## <a name="t-sql-support"></a>T-SQL 支援
 
 SQL 隨選提供 T-SQL 查詢介面區，其會在某些方面稍微強化/擴充，以配合半結構化和非結構化資料的查詢體驗。 此外，由於 SQL 隨選的設計，因此並不支援 T-SQL 語言的某些方面，例如，目前就不支援 DML 功能。
 

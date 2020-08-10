@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: ba9ff0ead1131b091aa1a5ece2ecf94d2319a968
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 0d2ee8fbcb71d8703702f2c72e0bf629563667b9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800692"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542190"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>針對使用兩組驗證認證的資源，將秘密的輪替自動化
 
@@ -41,9 +41,8 @@ ms.locfileid: "85800692"
 * 兩個 Azure 儲存體帳戶
 
 如果您沒有現有的金鑰保存庫和儲存體帳戶，可以使用下列部署連結：
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+
+[![顯示標示為「部署至 Azure」的按鈕影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. 在 [資源群組] 下方，選取 [新建]。 將群組命名為 **akvrotation** 然後按一下 [確定]。
 1. 請選取 [檢閱 + 建立]。
@@ -79,10 +78,9 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 - 具有事件觸發程序和 HTTP 觸發程序的儲存體帳戶金鑰輪替函式 (隨選輪替)
 - **SecretNearExpiry** 事件的 EventGrid 事件訂用帳戶
 
-1. 選取 Azure 範本部署連結：
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. 選取 Azure 範本部署連結： 
+
+   [![顯示標示為「部署至 Azure」的按鈕影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. 在 [資源群組] 清單中，選取 [akvrotation]。
 1. 在 [儲存體帳戶名稱] 中，輸入具有所要輪替存取金鑰的儲存體帳戶名稱
@@ -154,10 +152,9 @@ az storage account keys list -n akvrotationstorage
 - 將儲存體帳戶金鑰運算子服務角色指派給函數應用程式，以存取儲存體帳戶存取金鑰
 - **SecretNearExpiry** 事件的 EventGrid 事件訂用帳戶
 
-1. 選取 Azure 範本部署連結：
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. 選取 Azure 範本部署連結： 
+
+   [![顯示標示為「部署至 Azure」的按鈕影像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
 
 1. 在 [資源群組] 清單中，選取 [akvrotation]。
 1. 在 [儲存體帳戶名稱] 中，輸入具有所要輪替存取金鑰的儲存體帳戶名稱

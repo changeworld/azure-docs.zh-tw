@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: e4b4b6f21d158a758c2ff77db6660bbb44696d90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b2d43e970012209acb6ed7fbbaafbb1719617280
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086682"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533864"
 ---
 # <a name="quickstart-create-a-managed-instance-of-sql-managed-instance"></a>快速入門：建立 SQL 受控執行個體的受控執行個體
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -124,7 +124,9 @@ ms.locfileid: "86086682"
 > 3. 選取進行中的 SQL 受控執行個體部署作業。
 
 > [!IMPORTANT]
-> 為了能夠取得建立受控執行個體時的狀態，您必須具有資源群組的**讀取權限**。 如果您沒有此權限，或在受控執行個體建立過程中將其撤銷，則可能會導致 SQL 受控執行個體不會顯示在資源群組部署清單中。
+> - 建立 SQL 受控執行個體是長時間執行的作業，可能需要幾個小時，視特定的情況而定。 如需一般建立時間的相關資訊，請參閱[管理作業持續時間](management-operations-overview.md#management-operations-duration)。
+> - 在有其他受影響的作業 (例如在相同子網路中的其他受控執行個體上長時間執行的還原或調整作業) 時，可能會延遲建立 SQL 受控執行個體的開始時間。 若要深入了解，請參閱[管理作業交互影響](management-operations-overview.md#management-operations-cross-impact)。
+> - 為了能夠取得建立受控執行個體時的狀態，您必須具有資源群組的**讀取權限**。 如果您沒有此權限，或在受控執行個體建立過程中將其撤銷，則可能會導致 SQL 受控執行個體不會顯示在資源群組部署清單中。
 >
 
 ## <a name="view-resources-created"></a>檢視已建立的資源

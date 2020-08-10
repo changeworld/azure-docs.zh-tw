@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130984"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498985"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>準備 Azure 資源以進行 Hyper-V 災害復原
 
@@ -63,7 +63,7 @@ ms.locfileid: "86130984"
 9. 在 [位置]  中，選擇儲存體帳戶的地理位置。 本教學課程使用**西歐**。
 10. 選取 [建立]  以建立儲存體帳戶。
 
-   ![建立儲存體帳戶](media/tutorial-prepare-azure/create-storageacct.png)
+   ![建立儲存體帳戶選項的螢幕擷取畫面。](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫。
 
@@ -74,7 +74,7 @@ ms.locfileid: "86130984"
 3. 在 [位置]  中，選取要設置保存庫的區域。 本教學課程使用**西歐**。
 4. 若要從儀表板快速存取保存庫，請按一下 [釘選到儀表板]   > [建立]  。
 
-![建立新保存庫](./media/tutorial-prepare-azure/new-vault-settings.png)
+![建立復原服務保存庫頁面的螢幕擷取畫面。](./media/tutorial-prepare-azure/new-vault-settings.png)
 
 新的保存庫會出現在 [儀表板]   > [所有資源]  上，以及 [復原服務保存庫]  主頁面上。
 
@@ -91,7 +91,7 @@ ms.locfileid: "86130984"
 7. 保留基本 DDoS 保護的預設選項，且網路上沒有任何服務端點。
 8. 選取 [建立]  。
 
-![建立虛擬網路](media/tutorial-prepare-azure/create-network.png)
+![建立虛擬網路選項的螢幕擷取畫面。](media/tutorial-prepare-azure/create-network.png)
 
 虛擬網路的建立會耗用幾秒鐘時間。 建立後，您會在 Azure 入口網站儀表板中看到它。
 

@@ -9,28 +9,26 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 453307b304c4cb1899b1de31117c944ac66fcddb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 29317e9d5972faf9326a17ebbbe83063f79cdf23
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093334"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512788"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>教學課程：在 Python 中搭配使用 Azure Key Vault 與虛擬機器
 
-Azure Key Vault 可協助您保護秘密，例如，API 金鑰、存取應用程式時所需的資料庫連接字串、服務和 IT 資源。
+Azure Key Vault 可協助您保護金鑰、祕密和憑證，例如 API 金鑰和資料庫連接字串。
 
-在本教學課程中，您將了解如何讓主控台應用程式從 Azure Key Vault 讀取資訊。 若要這樣做，請使用 Azure 資源的受控識別。 
-
-本教學課程說明如何：
+在本教學課程中，您會設定 Python 應用程式，以使用 Azure 資源的受控識別從 Azure Key Vault 讀取資訊。 您會了解如何：
 
 > [!div class="checklist"]
-> * 建立金鑰保存庫。
-> * 將秘密新增至金鑰保存庫。
-> * 從金鑰保存庫擷取祕密。
-> * 建立 Azure 虛擬機器。
-> * 啟用受控識別。
-> * 對 VM 身分識別指派權限。
+> * 建立金鑰保存庫
+> * 將秘密儲存在 Key Vault 中
+> * 建立 Azure Linux 虛擬機器
+> * 啟用虛擬機器的[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)
+> * 授與主控台應用程式從 Key Vault 讀取資料所需的權限
+> * 從 Key Vault 擷取祕密
 
 在開始之前，請先閱讀 [Key Vault 基本概念](basic-concepts.md)。 
 
@@ -50,34 +48,43 @@ Azure Key Vault 可協助您保護秘密，例如，API 金鑰、存取應用程
 az login
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>建立資源群組和金鑰保存庫
+## <a name="create-a-resource-group-and-key-vault"></a>建立資源群組和金鑰保存庫
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-## <a name="add-a-secret-to-the-key-vault"></a>將秘密新增至金鑰保存庫
+## <a name="populate-your-key-vault-with-a-secret"></a>將祕密填入金鑰保存庫
 
-我們將新增密碼，以協助說明其運作方式。 此祕密可以是 SQL 連接字串，也可以是任何您必須安全保存並可供應用程式使用的其他資訊。
-
-為了在金鑰保存庫中建立名為 **AppSecret** 的秘密，請輸入下列命令：
-
-```azurecli
-az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
-```
-
-此秘密會儲存值 **MySecret**。
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
 ## <a name="create-a-virtual-machine"></a>建立虛擬機器
-您可以使用下列其中一個方法來建立虛擬機器：
 
-* [Azure CLI](../../virtual-machines/windows/quick-create-cli.md)
-* [PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
-* [Azure 入口網站](../../virtual-machines/windows/quick-create-portal.md)
+使用下列其中一個方法來建立名為 **myVM** 的 VM：
+
+| Linux | Windows |
+|--|--|
+| [Azure CLI](../../virtual-machines/linux/quick-create-cli.md) | [Azure CLI](../../virtual-machines/windows/quick-create-cli.md) |
+| [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
+| [Azure 入口網站](../../virtual-machines/linux/quick-create-portal.md) | [Azure 入口網站](../../virtual-machines/windows/quick-create-portal.md) |
+
+若要使用 Azure CLI 建立 Linux VM，請使用 [az vm create](/cli/azure/vm) 命令。  下列範例會新增名為 azureuser 的使用者帳戶。 `--generate-ssh-keys` 參數用來自動產生 SSH 金鑰，並將它放在預設金鑰位置 (~/.ssh)。 
+
+```azurecli-interactive
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --generate-ssh-keys
+```
+
+請注意輸出中的 `publicIpAddress` 值。
 
 ## <a name="assign-an-identity-to-the-vm"></a>將身分識別指派給 VM
-在此步驟中，請藉由在 Azure CLI 中執行下列命令，為虛擬機器建立系統指派的身分識別：
+
+使用 Azure CLI [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) 命令，為虛擬機器建立系統指派的身分識別：
 
 ```azurecli
-az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
+az vm identity assign --name "myVM" --resource-group "myResourceGroup"
 ```
 
 請注意下列程式碼中所顯示的系統指派身分識別。 上述命令的輸出會是： 
@@ -90,65 +97,73 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>對 VM 身分識別指派權限
+
 現在，您可以執行下列命令來對金鑰保存庫指派先前所建立的身分識別權限：
 
 ```azurecli
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
+az keyvault set-policy --name "<your-unique-keyvault-name>" --object-id "<systemAssignedIdentity>" --secret-permissions get list
 ```
 
-## <a name="log-on-to-the-virtual-machine"></a>登入虛擬機器
+## <a name="log-in-to-the-vm"></a>登入 VM
 
-若要登入虛擬機器，請遵循[連接和登入執行 Windows 的 Azure 虛擬機器](../../virtual-machines/windows/connect-logon.md)中的指示。
+若要登入虛擬機器，請遵循[連線和登入執行 Linux 的 Azure 虛擬機器](../../virtual-machines/linux/login-using-aad.md)或[連線和登入執行 Windows 的 Azure 虛擬機器](../../virtual-machines/windows/connect-logon.md)中的指示。
 
-## <a name="create-and-run-a-sample-python-app"></a>建立和執行 Python 應用程式範例
 
-下一個區段是名為 Sample.py 的範例檔案。 此檔案會使用[要求](https://2.python-requests.org/en/master/)程式庫來發出 HTTP GET 呼叫。
+若要登入 Linux VM，您可以使用 ssh 命令搭配[建立虛擬機器](#create-a-virtual-machine)步驟中提供的「<publicIpAddress>」：
 
-## <a name="edit-samplepy"></a>編輯 Sample.py
+```terminal
+ssh azureuser@<PublicIpAddress>
+```
 
-在建立 Sample.py 後，請開啟檔案，然後複製此區段中的程式碼。 
+## <a name="install-python-libraries-on-the-vm"></a>在 VM 上安裝 Python 程式庫
 
-此程式碼會顯示雙步驟程序：
-1. 從 VM 上的本機 MSI 端點擷取權杖。  
-  這樣做也會從 Azure AD 擷取權杖。
-1. 將權杖傳遞給金鑰保存庫，然後擷取祕密。 
+在虛擬機器上，安裝會在 Python 指令碼中使用的兩個 Python 程式庫：`azure-keyvault-secrets` 和 `azure.identity`。  
+
+例如，在 Linux VM 上，您可以使用 `pip3` 安裝：
+
+```bash
+pip3 install azure-keyvault-secrets
+
+pip3 install azure.identity
+```
+
+## <a name="create-and-edit-the-sample-python-script"></a>建立和編輯 Python 指令碼範例
+
+在虛擬機器中，建立名為 **sample.py** 的 Python 檔案。 編輯檔案以包含下列範例程式碼，並以您的金鑰保存庫名稱取代 "<your-unique-keyvault-name>"：
 
 ```python
-    # importing the requests library 
-    import requests 
+from azure.keyvault.secrets import SecretClient
+from azure.identity import DefaultAzureCredential
 
-    # Step 1: Fetch an access token from a Managed Identity enabled azure resource.
-    # Resources with an MSI configured recieve an AAD access token by using the Azure Instance Metadata Service (IMDS)
-    # IMDS provides an endpoint accessible to all IaaS VMs using a non-routable well-known IP Address
-    # To learn more about IMDS and MSI Authentication see the following link: https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service
-    # Note that the resource here is https://vault.azure.net for public cloud and api-version is 2018-02-01
-    MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
-    r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"}) 
-      
-    # extracting data in json format 
-    # This request gets an access_token from Azure AD by using the local MSI endpoint.
-    data = r.json() 
-    
-    # Step 2: Pass the access_token received from previous HTTP GET call to your key vault.
-    KeyVaultURL = "https://{YOUR KEY VAULT NAME}.vault.azure.net/secrets/{YOUR SECRET NAME}?api-version=2016-10-01"
-    kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
-    
-    print(kvSecret.json()["value"])
+keyVaultName = "<your-unique-keyvault-name>"
+KVUri = f"https://{keyVaultName}.vault.azure.net"
+secretName = "mySecret"
+
+credential = DefaultAzureCredential()
+client = SecretClient(vault_url=KVUri, credential=credential)
+retrieved_secret = client.get_secret(secretName)
+
+print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_secret.value}'")
 ```
 
-您可以執行下列程式碼來顯示祕密值： 
+## <a name="run-the-sample-python-app"></a>執行 Python 應用程式範例
 
-```console
-python Sample.py
+最後，執行 **sample.py**。 如果一切順利，系統應該會傳回您的祕密值：
+
+```bash
+python3 sample.py
+
+The value of secret 'mySecret' in '<your-unique-keyvault-name>' is: 'Success!'
 ```
-
-上述程式碼會示範如何在 Windows 虛擬機器中使用 Azure Key Vault 執行作業。 
 
 ## <a name="clean-up-resources"></a>清除資源
 
-不再需要時，請刪除虛擬機器和金鑰保存庫。
+不再需要時，請刪除虛擬機器和金鑰保存庫。  您只要刪除其所屬的資源群組，就可以快速完成這項操作：
+
+```azurecli
+az group delete -g myResourceGroup
+```
 
 ## <a name="next-steps"></a>後續步驟
 
-> [!div class="nextstepaction"]
-> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+[Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
-ms.openlocfilehash: c2dcba05e3b1fc5cfc32d6f1b38c22b811b73626
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 60ad7f5df4f13d626d7a2c24990c7f48db28d01d
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352586"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475221"
 ---
 # <a name="iot-plug-and-play-preview-refresh"></a>IoT 隨插即用預覽版重新整理
 
@@ -86,7 +86,7 @@ SDK 的先前預覽版本沒有回溯相容性。 如果您移至最新的 SDK �
 
 [Azure IoT Device Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) 擴充功能提供 DTDL v1 的撰寫支援、與舊版模型存放庫的整合，以及程式碼的產生。
 
-如果您需要 VS Code 中的 DTDL v2 撰寫支援，請在 VS Code 中安裝新的 [DTDL 擴充功能](https://github.com/azure/vscode-dtdl)。 擴充功能不會提供與模型存放庫的整合或程式碼的產生。 現在您可以使用 [Web UI](https://aka.ms/iotmodelrepo) 來管理存放庫中的模型。
+如果您需要 VS Code 中的 DTDL v2 撰寫支援，請在 VS Code 中安裝新的 [DTDL 擴充功能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)。 擴充功能不會提供與模型存放庫的整合或程式碼的產生。 現在您可以使用 [Web UI](https://aka.ms/iotmodelrepo) 或 [CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest) 來管理存放庫中的模型。
 
 ## <a name="digital-twin-service-side-rest-apis"></a>數位分身服務端 REST API
 
@@ -103,8 +103,6 @@ SDK 的先前預覽版本沒有回溯相容性。 如果您移至最新的 SDK �
 現在有一個單一模型存放庫，其中包含公用已發佈模型和私用 RBAC 保護公司模型。 所有模型都有唯一的識別碼，一旦建立之後就會固定。
 
 此版本不支援先前版本的現有公司模型存放庫。 您可以繼續使用 [Azure IoT 認證](https://preview.catalog.azureiotsolutions.com/products)網站來管理舊的 DTDL v1 模型。 不過，您無法再使用此網站來註冊、測試及認證裝置。
-
-適用於 Azure CLI 的 Azure IoT 擴充功能不支援新的模型存放庫。 `az iot pnp` 命令僅適用於先前版本中的模型存放庫。
 
 ## <a name="azure-iot-central"></a>Azure IoT 中心
 

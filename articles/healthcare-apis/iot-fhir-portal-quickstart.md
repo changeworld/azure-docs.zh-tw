@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: punagpal
-ms.openlocfilehash: bc85765666ba3baeae7ec795118f615f6b4b4368
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95f5b5f13401c224ccf67c5f013deedf00379de7
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100832"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446798"
 ---
 # <a name="quickstart-deploy-iot-connector-preview-using-azure-portal"></a>快速入門：使用 Azure 入口網站部署 IoT 連接器 (預覽)
 
@@ -181,7 +181,7 @@ Azure 提供一套廣泛的 IoT 產品，可連線並管理您的 IoT 裝置。 
 您可以使用 Postman，在 Azure API for FHIR 上檢視 IoT 連接器所建立的 FHIR 型觀察資源。 設定您的 [Postman 以存取 Azure API for FHIR](access-fhir-postman-tutorial.md)，並向 `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` 提出 `GET` 要求，以檢視含有心率值的觀察 FHIR 資源。 
 
 > [!TIP]
-> 請確定您的使用者擁有適當的 Azure API for FHIR 資料平面存取權。 使用 [Azure 角色型存取控制](configure-azure-rbac.md)，指派必要的資料平面角色。
+> 請確定您的使用者擁有適當的 Azure API for FHIR 資料平面存取權。 使用 [Azure 角色型存取控制 (Azure RBAC)](configure-azure-rbac.md)，指派必要的資料平面角色。
 
 ## <a name="clean-up-resources"></a>清除資源
 

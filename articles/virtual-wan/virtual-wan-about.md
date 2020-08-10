@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/29/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 9e4c3615d16834a0517b46f1be7221eef28c602c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 713e980eb84032c98ccf08c52e68dab36eadd659
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058752"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513140"
 ---
 # <a name="about-azure-virtual-wan"></a>關於 Azure 虛擬 WAN
 
@@ -124,9 +124,9 @@ Azure 虛擬 WAN 可為 ExpressRoute 流量提供加密功能。 此技術透過
 
 路由表現在具有關聯和傳播的功能。 既有的路由表是不具有這些功能的路由表。 如果您在中樞路由中有既有的路由，但想要使用新功能，請考慮下列方式：
 
-* **虛擬中樞內存在既有路由的標準虛擬 WAN 客戶**：若要使用新的路由表功能，請等候至 8 月 3 日這週會在 Azure 中推出。 如果您在 Azure 入口網站中樞的 [路由] 區段中已存在路由，則需要先將這些路由刪除，然後嘗試建立新的路由表 (可在 Azure 入口網站中樞的 [路由表] 區段中取得)。
+* **虛擬中樞內存在既有路由的標準虛擬 WAN 客戶**：若要使用新的路由表功能，請等候至 8 月 17 日這周會在 Azure 中推出。 如果您在 Azure 入口網站中樞的 [路由] 區段中已存在路由，則需要先將這些路由刪除，然後嘗試建立新的路由表 (可在 Azure 入口網站中樞的 [路由表] 區段中取得)。
 
-* **虛擬中樞內存在既有路由的基本虛擬 WAN 客戶**：若要使用新的路由表功能，請等候至 8 月 3 日這週會在 Azure 中推出。 如果您在 Azure 入口網站中樞的 [路由] 區段中已存在路由，則需要先將這些路由刪除，然後將基本虛擬 WAN **升級**為標準虛擬 WAN。 請參閱[將虛擬 WAN 從基本升級至標準](upgrade-virtual-wan.md)。
+* **虛擬中樞內存在既有路由的基本虛擬 WAN 客戶**：若要使用新的路由表功能，請等候至 8 月 17 日這周會在 Azure 中推出。 如果您在 Azure 入口網站中樞的 [路由] 區段中已存在路由，則需要先將這些路由刪除，然後將基本虛擬 WAN **升級**為標準虛擬 WAN。 請參閱[將虛擬 WAN 從基本升級至標準](upgrade-virtual-wan.md)。
 
 ## <a name="faq"></a><a name="faq"></a>常見問題集
 

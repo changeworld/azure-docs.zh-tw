@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/06/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7f840d4a75be72a4317860dcf4a6708642369a24
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: fb618f155e659ecd1fa5760117193a9045e6da35
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274215"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535122"
 ---
 # <a name="bulk-loading-with-synapse-sql"></a>使用 Synapse SQL 進行大量載入
 
@@ -28,7 +28,7 @@ ms.locfileid: "86274215"
 
 ## <a name="prerequisites"></a>必要條件
 
-- 此精靈會產生使用 AAD 傳遞來進行驗證的 COPY 陳述式。 [AAD 使用者必須可存取](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad)至少具有 ADLS Gen2 帳戶儲存體 Blob 資料參與者 RBAC 角色的工作區。
+- 此精靈會產生使用 AAD 傳遞來進行驗證的 COPY 陳述式。 [AAD 使用者必須可存取](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples#d-azure-active-directory-authentication-aad)至少具有 ADLS Gen2 帳戶儲存體 Blob 資料參與者 Azure 角色的工作區。
 
 - 如果您要建立要作為載入目的地的新資料表，則必須擁有所需的 [COPY 陳述式使用權限](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#permissions)和建立資料表權限。
 

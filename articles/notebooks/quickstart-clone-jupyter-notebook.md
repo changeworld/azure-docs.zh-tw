@@ -3,12 +3,12 @@ title: 使用 Azure Notebooks 預覽從 GitHub 複製 Jupyter Notebook
 description: 從 GitHub 存放庫中快速複製 Jupyter 筆記本，並在您的 Azure Notebooks 帳戶中執行。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 267e79e7d4bf108ac3b2c72d64cee5a07ba638be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833081"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424472"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>快速入門：在 Azure Notebooks 預覽中複製 Notebook
 
@@ -49,21 +49,21 @@ GitHub 存放庫提供 Jupyter Notebook 的儲存體和版本控制。 共同作
 
 1. 複製完成之後，Azure Notebook 會帶您前往新的專案，您可以在那裡看到所有檔案的複本。
 
-    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
+    :::image type="content" source="media/quickstarts/completed-clone.png" alt-text="檢視已完成的複本。" lightbox="media/quickstarts/completed-clone.png":::
 
 ## <a name="share-a-notebook"></a>共用筆記本
 
-1. 若要共用已複製專案的複本，請使用 [共用]  控制或取得連結、取得包含連結的 HTML 或 Markdown 程式碼，或建立包含結的電子郵件訊息：
+1. 若要共用已複製專案的複本，請使用 [共用] 控制或取得連結、取得包含連結的 HTML 或 Markdown 程式碼，或建立包含結的電子郵件訊息：
 
     ![專案共用命令](media/quickstarts/share-project-command.png)
 
-1. 因為您在複製專案時清除了 [公用]  選項，因此複本是私密的。 若要將您的複本設為公用，選取 [專案設定]  、在快顯視窗中設定 [公用專案]  選項，然後選取 [儲存]  。
+1. 因為您在複製專案時清除了 [公用] 選項，因此複本是私密的。 若要將您的複本設為公用，選取 [專案設定]、在快顯視窗中設定 [公用專案] 選項，然後選取 [儲存]。
 
 1. 在專案中選取要執行的筆記本。 例如，Azure 認知服務存放庫中的每個筆記本都是自己獨立的快速入門。 下圖顯示新增認知服務 API 訂用帳戶金鑰，並將搜尋字詞從 "puppies" 變更為 "bunnies" 之後，使用 BingImageSearchAPI 筆記本的結果：
 
     ![執行從 GitHub 複製的 Jupyter 筆記本](media/quickstarts/clone-notebook-result.png)
 
-1. 當您執行筆記本完畢之後，選取 [檔案]   > [關閉並終止]  來關閉筆記本及其瀏覽器視窗。
+1. 當您執行筆記本完畢之後，選取 [檔案] > [關閉並終止] 來關閉筆記本及其瀏覽器視窗。
 
 1. 若要共用專案中的個別筆記本，以滑鼠右鍵按一下筆記本，然後選取 **複製連結** (鍵盤快速鍵：y)：
 

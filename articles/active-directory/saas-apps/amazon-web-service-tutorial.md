@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75b6ba110264ae3826093222e9cd3c4073bc17f0
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0e16fdaed8ce7e73718569652e88e66844850175
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683591"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416552"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Amazon Web Services (AWS) 整合
 
@@ -105,7 +105,7 @@ ms.locfileid: "83683591"
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 設定] 設定區段上，已預先設定好應用程式，並已經為 Azure 預先填入必要的 URL。 使用者必須選取 [儲存]，才能儲存組態。
+1. 在 [基本 SAML 組態] 區段中，以相同的預設值 `https://signin.aws.amazon.com/saml` 更 **識別碼 (實體識別碼)** 和**回復 URL**。 您必須選取 [儲存]  以儲存組態變更。
 
 1. 若要設定多個執行個體，請提供識別碼值。 從第二個執行個體開始，請使用下列格式，並包括 **#** 符號來指定唯一 SPN 值。
 
@@ -123,11 +123,19 @@ ms.locfileid: "83683591"
     | 角色            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes` |
     | SessionDuration             | 「提供 900 秒 (15 分鐘) 到 43200 秒 (12 小時) 之間的值」 |  `https://aws.amazon.com/SAML/Attributes` |
 
-1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] (步驟 3) 對話方塊中，選取 [新增憑證]。
+
+    ![建立新的 SAML 憑證](common/add-saml-certificate.png)
+
+1. 產生新的 SAML 簽署憑證，接著選取 [新增憑證]。 輸入憑證通知的電子郵件地址。
+   
+    ![新增 SAML 憑證](common/new-saml-certificate.png) 
+
+1. 在 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
-1. 在 [設定 Amazon Web Services (AWS)] 區段上，依據您的需求複製適當的 URL。
+1. 在**設定 Amazon Web Services (AWS)** 區段中，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -142,7 +150,7 @@ ms.locfileid: "83683591"
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
    1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
    1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
-   1. 按一下頁面底部的 [新增] 。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 

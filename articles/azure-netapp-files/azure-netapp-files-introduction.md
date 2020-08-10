@@ -1,6 +1,6 @@
 ---
 title: 什麼是 Azure NetApp Files | Microsoft Docs
-description: 提供 Azure NetApp Files 和主要工作的概觀。
+description: 了解 Azure NetApp Files，這是一種企業級、高效能的計量付費檔案儲存體服務，可支援任何工作負載類型且高度可用。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 33a90f876f5ce35b52bb2d5625fa9d91a0a33dee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4ad556a6c720cb4eaac9a0c9cdf5c4346e2aa857
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "65522983"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512936"
 ---
 # <a name="what-is-azure-netapp-files"></a>什麼是 Azure NetApp Files
 

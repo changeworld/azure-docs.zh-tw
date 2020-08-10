@@ -39,11 +39,11 @@
       items:
         - name: 使用 Spring Boot 初始設定式
           href: cache-java-spring-boot-initializer-with-redis-cache.md
-    - name: 使用快取排行榜
+    - name: 建立排行榜
       href: cache-web-app-cache-aside-leaderboard.md
-    - name: Azure PowerShell
+    - name: 使用 Azure PowerShell 管理
       href: cache-how-to-manage-redis-cache-powershell.md
-    - name: Azure CLI
+    - name: 使用 Azure CLI 管理
       href: cli-samples.md
 - name: 概念
   items:
@@ -65,7 +65,7 @@
     - name: 計畫
       items:
         - name: 選擇快取層
-          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
+          href: cache-overview.md#choosing-the-right-tier
         - name: 利用叢集來散發您的快取
           href: cache-how-to-premium-clustering.md
         - name: 利用 Redis 資料永續性來留存您的快取
@@ -82,6 +82,12 @@
           href: cache-migration-guide.md
         - name: 從受控快取服務遷移 (已取代)
           href: cache-migrate-to-redis.md
+        - name: 規劃常見問題
+          href: cache-planning-faq.md
+    - name: 組建
+      items:
+        - name: 開發常見問題
+          href: cache-development-faq.md
     - name: 自動化
       items:
         - name: 使用 Azure PowerShell 進行部署和管理
@@ -106,12 +112,22 @@
           href: cache-how-to-redis-cli-tool.md
         - name: 移除 TLS 1.0 和 1.1
           href: cache-remove-tls-10-11.md
+        - name: 管理常見問題
+          href: cache-management-faq.md
     - name: 監視
       items:
         - name: 在 Azure 入口網站中監視
           href: cache-how-to-monitor.md
         - name: 為例外狀況設定警示
           href: cache-how-to-monitor.md#operations-and-alerts
+        - name: 監視常見問題
+          href: cache-monitor-troubleshoot-faq.md
+    - name: 調整
+      items:
+        - name: 更新至不同的大小與階層
+          href: cache-how-to-scale.md
+        - name: 使用 Redis 叢集進行縮減/放大
+          href: cache-how-to-premium-clustering.md
     - name: 診斷和疑難排解
       items:
         - name: Redis 伺服器疑難排解
@@ -122,12 +138,8 @@
           href: cache-troubleshoot-timeouts.md
         - name: 資料遺失疑難排解
           href: cache-troubleshoot-data-loss.md
-    - name: 調整
-      items:
-        - name: 更新至不同的大小與階層
-          href: cache-how-to-scale.md
-        - name: 使用 Redis 叢集進行縮減/放大
-          href: cache-how-to-premium-clustering.md
+        - name: 針對常見問題進行疑難排解
+          href: cache-monitor-troubleshoot-faq.md
 - name: 參考
   items:
     - name: Azure Cache for Redis 範例

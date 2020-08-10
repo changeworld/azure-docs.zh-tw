@@ -10,12 +10,13 @@ ms.custom:
 - seo-python-october2019
 - cli-validate
 - tracking-python
-ms.openlocfilehash: 718c9a62cc867e5d65cc3c79e78ce3282f1037c7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+- devx-track-azurecli
+ms.openlocfilehash: 0ab19e538d2ffb97f9bb80c47f9ce5471bdb87a9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285844"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799459"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>教學課程：在 Azure App Service 中使用 PostgreSQL 部署 Django Web 應用程式
 
@@ -30,6 +31,9 @@ ms.locfileid: "87285844"
 > * 更新您的程式碼並重新部署
 > * 檢視診斷記錄
 > * 在 Azure 入口網站中管理 Web 應用程式
+
+您也可以使用[本教學課程的 Azure 入口網站版本](/azure/developer/python/tutorial-python-postgresql-app-portal)。
+
 
 ## <a name="set-up-your-initial-environment"></a>設定初始環境
 
@@ -106,7 +110,7 @@ djangoapp 範例包含資料驅動的 Django 投票應用程式，您可以依�
 
 此範例也會修改為在實際執行環境中執行，例如 App Service：
 
-- 實際執行設定位於 *azuresite/production.py* 檔案中。 開發詳細資料位於 *azuresite/settings.py* 中。
+- 實際執行設定位於 *azuresite/production.py* 檔案中。 開發詳細資料位於 *azuresite/settings.py*。
 - 將 `DJANGO_ENV` 環境變數設定為 "production" 時，應用程式就會使用實際執行設定。 您稍後會在教學課程中建立此環境變數，以及用於 PostgreSQL 資料庫設定的其他變數。
 
 這些變更專門用來將 Django 設定為在任何實際執行環境中執行，而不是特別針對 App Service。 如需詳細資訊，請參閱 [Django 部署檢查清單](https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/) \(英文\)。

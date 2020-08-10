@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b80cd2e40e54837682e72837cf0d1a9058f3a7fc
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025773"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428372"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>教學課程：手動設定已加入混合式 Azure Active Directory 的裝置
 
@@ -59,6 +59,9 @@ Azure AD Connect：
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * 使用者的本機內部網路設定中應包含的組織 STS (適用於同盟網域)
+
+> [!WARNING]
+> 如果您的組織使用的 Proxy 伺服器會在防止資料遺失或 Azure AD 租用戶限制等案例中攔截 SSL 流量，請確認已從 TLS 中斷和檢查 (TLS break-and-inspect) 中排除 'https://device.login.microsoftonline.com ' 的流量。 無法排除 'https://device.login.microsoftonline.com ' 可能會造成用戶端憑證驗證的干擾，進而產生裝置註冊和裝置型條件式存取的問題。
 
 如果您的組織打算使用無縫 SSO，則下列 URL 必須能夠從組織內部的電腦連線。 此 URL 也必須新增至使用者的近端內部網路區域。
 
@@ -527,7 +530,7 @@ Azure AD Connect：
 1. 在 [Microsoft Office 365 身分識別平台] 信賴憑證者信任物件上按一下滑鼠右鍵，然後選取 [編輯宣告規則]。
 1. 在 [發佈轉換規則] 索引標籤上，選取 [新增規則]。
 1. 在 [宣告規則] 範本清單中，選取 [使用自訂規則傳送宣告]。
-1. 選取 [下一步] 。
+1. 選取 [下一步]  。
 1. 在 [宣告規則名稱] 方塊中，輸入**驗證方法宣告規則**。
 1. 在 [宣告規則] 方塊中，輸入下列規則︰
 

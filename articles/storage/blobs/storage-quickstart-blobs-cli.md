@@ -9,12 +9,13 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 06/04/2020
 ms.author: tamram
-ms.openlocfilehash: 471a8018a608da818f5961973f23123874c63427
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: eca67c4a5a942e6cd06f67cac868905da0e1f533
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434459"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535139"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入門：使用 Azure CLI 上傳、下載及列出 Blob
 
@@ -79,7 +80,7 @@ az storage account create \
 
 Blob 一律會上傳到容器中。 您可以在容器中組織 Blob 群組，方式如同在電腦的資料夾中組織檔案。 使用 [az storage container create](/cli/azure/storage/container) 命令，建立用於儲存 Blob 的容器。 
 
-下列範例會使用您的 Azure AD 帳戶來授權作業，以便建立容器。 建立容器之前，請將 [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的權限，才能對儲存體帳戶執行資料作業。 如需有關指派 RBAC 角色的詳細資訊，請參閱 [使用 Azure CLI 指派存取權的 RBAC 角色](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json)。  
+下列範例會使用您的 Azure AD 帳戶來授權作業，以便建立容器。 建立容器之前，請將 [儲存體 Blob 資料參與者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) 角色指派給自己。 即使您是帳戶擁有者，您還是需要明確的權限，才能對儲存體帳戶執行資料作業。 如需有關指派 Azure 角色的詳細資訊，請參閱 [使用 Azure CLI 指派存取權的 Azure 角色](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json)。  
 
 您也可以使用儲存體帳戶金鑰來授權作業以建立容器。 如需有關藉由 Azure CLI 授權資料作業的詳細資訊，請參閱 [藉由 Azure CLI 來授權 Blob 或佇列資料的存取權](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json)。
 

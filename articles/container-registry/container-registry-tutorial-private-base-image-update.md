@@ -3,12 +3,13 @@ title: 教學課程 - 在私人基礎映像更新時觸發映像建置
 description: 在本教學課程中，您會設定 Azure Container Registry 工作，以在另一個私人 Azure 容器登錄中的基礎映像更新時，自動觸發雲端中的容器映像建置。
 ms.topic: tutorial
 ms.date: 01/22/2020
-ms.openlocfilehash: e8aae8a91288d470c801dc4d82cfa6b44369d832
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e28dc65f44f3d9997a59e6204451cc84b0e41e40
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77617681"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407127"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>教學課程：在另一個私人容器登錄中更新基礎映像時自動執行容器映像建置 
 

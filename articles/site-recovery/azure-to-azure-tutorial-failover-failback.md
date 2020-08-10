@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9bc0d25e19ad3412e62eb3386b0faf3ae5d2a444
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8d38aa513b0829c2626fcd4a92c40faabff1f83e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68782598"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502387"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>在區域之間容錯移轉及重新保護 Azure VM
 
@@ -38,7 +38,7 @@ ms.locfileid: "68782598"
 
 1. 在 [複寫的項目]  中，選取您要容錯移轉的 VM > [容錯移轉]  。
 
-   ![容錯移轉](./media/azure-to-azure-tutorial-failover-failback/failover.png)
+   ![顯示 VM 容錯移轉選項的螢幕擷取畫面。](./media/azure-to-azure-tutorial-failover-failback/failover.png)
 
 2. 在 [容錯移轉]  中，選取要容錯移轉的目標**復原點**。 您可以使用下列其中一個選項：
 
@@ -58,7 +58,7 @@ ms.locfileid: "68782598"
 > [!NOTE]
 > 您容錯移轉 VM，並且在啟用 VM 的複寫之後新增磁碟時，複寫點就會顯示可用於復原的磁碟。 例如，如果 VM 有單一磁碟，而且您新增磁碟，則新增磁碟之前建立的複寫點就會顯示複寫點包含「1 個磁碟，共 2 個」。
 
-![使用新增的磁碟進行容錯移轉](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
+![顯示已新增磁碟容錯移轉的螢幕擷取畫面。](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
 
 ## <a name="reprotect-the-secondary-vm"></a>重新保護次要 VM
 
@@ -67,7 +67,7 @@ ms.locfileid: "68782598"
 1. 確定 VM 處於 [已認可容錯移轉]  狀態，並檢查主要區域是否使用，而且您可以建立及存取其中的新資源。
 2. 在 [保存庫]   > [已複寫的項目]  中，以滑鼠右鍵按一下已容錯移轉的 VM，然後選取 [重新保護]  。
 
-   ![按一下滑鼠右鍵可重新保護](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
+   ![VM 的重新保護選項螢幕擷取畫面。](./media/azure-to-azure-tutorial-failover-failback/reprotect.png)
 
 2. 確認已經選取保護方向 (次要到主要區域)。
 3. 檢閱**資源群組、網路、儲存體和可用性設定組**資訊。 在重新保護作業期間會建立任何標記為新的資源。

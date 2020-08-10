@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084699"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420816"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>教學課程：使用 Azure 防火牆管理員來保護您的虛擬中樞
 
@@ -108,7 +108,7 @@ ms.locfileid: "87084699"
 
 ### <a name="configure-the-hub-and-spoke-routing"></a>設定中樞和輪輻路由
 
-從 Azure 入口網站開啟 Cloud Shell，然後執行下列 Azure PowerShell 來設定所需的中樞和輪輻路由。
+從 Azure 入口網站開啟 Cloud Shell，然後執行下列 Azure PowerShell 來設定所需的中樞和輪輻路由。 對等互連輪輻/分支連線必須將傳播設定為 **NONE**。 這可防止輪輻之間的任何通訊，而會使用預設路由將流量路由傳送到防火牆。
 
 ```azurepowershell
 $noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
@@ -132,8 +132,8 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 
 ## <a name="deploy-the-servers"></a>部署伺服器
 
-1. 在 Azure 入口網站中，選取 [建立資源]。
-2. 選取 [熱門] 清單中的 [Windows Server 2016 Datacenter]。
+1. 在 Azure 入口網站中，選取 [建立資源]  。
+2. 選取 [熱門]  清單中的 [Windows Server 2016 Datacenter]  。
 3. 依虛擬機器輸入這些值：
 
    |設定  |值  |

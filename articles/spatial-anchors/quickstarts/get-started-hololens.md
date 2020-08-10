@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 582bb3e0f98535ccdc7be059de904e152db6ac77
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: e6d728647bb654ee2645bb1e3eb5968dcab337a8
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870992"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810338"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>快速入門：在 C++/WinRT 和 DirectX 中使用 Azure Spatial Anchors 建立 HoloLens 應用程式
 
@@ -54,7 +54,7 @@ ms.locfileid: "83870992"
 
 找出 `SpatialAnchorsAccountId` 欄位，並將 `Set me` 取代為帳戶識別碼。
 
-找出 `case DemoStep::ConfigSession:` 並新增下列程式碼行，以替換先前帳戶網域中的項目：`configuration.AccountDomain("MyAccountDomain");`。
+找出 `SpatialAnchorsAccountDomain` 欄位，並將 `Set me` 取代為帳戶網域。
 
 ## <a name="deploy-the-app-to-your-hololens"></a>將應用程式部署到您的 HoloLens
 

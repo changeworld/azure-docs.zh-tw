@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667312"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439566"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats 概觀 (預覽)
 
 Azure FarmBeats 是可在 Azure Marketplace 中取得的企業對企業供應項目。 其可跨提供者來彙總農業資料集。 Azure FarmBeats 可讓您根據已融合的資料集來建置人工智慧 (AI) 或機器學習 (ML) 模型。 藉由使用 Azure FarmBeats，農業企業可以專注於核心的附加價值，而不是一視同仁地忙著進行資料工程。
 
 > [!NOTE]
-> Azure FarmBeats 目前處於公開預覽狀態。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 Azure Blockchain 目前沒有服務等級合約。 請使用 [Azure FarmBeats 論壇](https://aka.ms/FarmBeatsMSDN ) \(英文\) 來取得支援。
+> Azure FarmBeats 目前處於公開預覽狀態。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 Azure Blockchain 目前沒有服務等級合約。 請使用 [Azure FarmBeats 支援論壇](https://aka.ms/farmbeatssupport) \(英文\) 來取得支援。
 
 ![專案 FarmBeats](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 

@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f4b42f2ed43da68daabb3bd334a362071202be42
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 619b5f16f5a913a4ec9bb1ebe2e7060fcac28d7d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073727"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421802"
 ---
 # <a name="app-service-overview"></a>App Service 概觀
 
@@ -31,11 +31,11 @@ App Service 不只能將 Microsoft Azure 的功能新增到您的應用程式，
 * **SaaS 平台和內部部署資料的連線** - 有超過 50 種適用於企業系統 (例如 SAP)、SaaS 服務 (例如 Salesforce) 和網際網路服務 (例如 Facebook) 的[連接器](../connectors/apis-list.md)可供選擇。 使用[混合式連線](app-service-hybrid-connections.md)和 [Azure 虛擬網路](web-sites-integrate-with-vnet.md)存取內部部署資料。
 * **安全性和法規遵循** - App Service 為 [ISO、SOC 和 PCI 相容](https://www.microsoft.com/en-us/trustcenter)。 可使用 [Azure Active Directory](configure-authentication-provider-aad.md) 或社交登入 ([Google](configure-authentication-provider-google.md)、[Facebook](configure-authentication-provider-facebook.md)、[Twitter](configure-authentication-provider-twitter.md) 和 [Microsoft](configure-authentication-provider-microsoft.md)) 驗證使用者。 建立 [IP 位址限制](app-service-ip-restrictions.md)和[管理服務身分識別](overview-managed-identity.md)。
 * **應用程式範本** - 從 [Azure Marketplace](https://azure.microsoft.com/marketplace/) 中的廣泛應用程式範本清單中進行選擇，例如 WordPress、Joomla 和 Drupal。
-* **Visual Studio 整合** - Visual Studio 中的專用工具可簡化建立、部署和偵錯的工作。
+* **Visual Studio 和 Visual Studio Code 整合** - Visual Studio 和 Visual Studio Code 中的專用工具可簡化建立、部署和偵錯的工作。
 * **API 和行動功能** - App Service 可提供適用於 RESTful API 案例的現成 CORS 支援，並可藉由啟用驗證、離線資料同步和推播通知等功能，簡化行動應用程式案例。
 * **無伺服器程式碼** - 可隨需執行程式碼片段或指令碼，而不必明確佈建或管理基礎結構，而且只須就程式碼實際使用的計算時間支付費用 (請參閱 [Azure Functions](/azure/azure-functions/))。
 
-除了 App Service，Azure 還提供可用來裝載網站和 Web 應用程式的其他服務。 在大部分的情況下，App Service 是最佳選擇。  若是微服務架構，請考慮使用 [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)。 如果您需要能更加充分地掌控程式碼執行所在的 VM，則請考慮使用 [Azure 虛擬機器](https://azure.microsoft.com/documentation/services/virtual-machines/)。 如需如何在這些 Azure 服務之間做選擇的詳細資訊，請參閱 [Azure App Service、虛擬機器、Service Fabric 及雲端服務的比較](overview-compare.md)。
+除了 App Service，Azure 還提供可用來裝載網站和 Web 應用程式的其他服務。 在大部分的情況下，App Service 是最佳選擇。  若是微服務架構，請考慮使用 [Azure Spring 雲端服務](/azure/spring-cloud/)或 [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)。  如果您需要能更加充分地掌控執行程式碼的 VM，則請考慮使用 [Azure 虛擬機器](https://azure.microsoft.com/documentation/services/virtual-machines/)。 如需如何在這些 Azure 服務之間做選擇的詳細資訊，請參閱 [Azure App Service、虛擬機器、Service Fabric 及雲端服務的比較](overview-compare.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

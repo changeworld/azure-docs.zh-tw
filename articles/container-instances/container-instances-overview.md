@@ -2,14 +2,14 @@
 title: Azure 中的無伺服器容器
 description: Azure Container Instances 服務提供最簡單快速的方法，讓您無需管理虛擬機器或採用更高層級的協調器，就能在 Azure 中執行隔離的容器。
 ms.topic: overview
-ms.date: 04/25/2019
+ms.date: 07/28/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259504"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498679"
 ---
 # <a name="what-is-azure-container-instances"></a>什麼是 Azure Container Instances？
 
@@ -21,6 +21,11 @@ ms.locfileid: "86259504"
 
 容器提供比虛擬機器 (VM) 更多的啟動優點。 Azure Container Instances 可在幾秒內啟動 Azure 中的容器，而不需要佈建和管理 VM。
 
+帶入來自 Docker Hub 的 Linux 或 Windows 容器映像、私人 [Azure Container Registry](../container-registry/index.yml) 或其他雲端式 Docker 登錄。 Azure 容器執行個體會快取數個常見的基本 OS 映像，協助加速部署您的自訂應用程式映像。
+
+> [!NOTE]
+> 目前，您無法將映像從內部部署登錄部署至 Azure 容器執行個體。
+
 ## <a name="container-access"></a>容器存取
 
 Azure Container Instances 可讓您利用 IP 位址和完整網域名稱 (FQDN)，直接向網際網路公開您的容器群組。 當您建立容器執行個體時，您可以指定自訂的 DNS 名稱標籤，讓系統可以在 *customlabel*.*azureregion*.azurecontainer.io 找到您的應用程式。
@@ -28,7 +33,7 @@ Azure Container Instances 可讓您利用 IP 位址和完整網域名稱 (FQDN)�
 Azure Container Instances 也會提供互動式殼層，讓您可以在執行中的容器內執行命令，進而協助應用程式的開發和疑難排解。 存取會透過 HTTPS 進行，並使用 TLS 來保護用戶端連線。
 
 > [!IMPORTANT]
-> 從 2020 年 1 月 13 日開始，Azure Container Instances 將要求所有來自伺服器和應用程式的安全連線都使用 TLS 1.2。 將會淘汰 TLS 1.0 和1.1 的支援。
+> 從 2020 年 1 月 13 日開始，Azure Container Instances 將要求所有來自伺服器和應用程式的安全連線都使用 TLS 1.2。 TLS 1.0 和 1.1 的支援將會淘汰。
 
 ## <a name="hypervisor-level-security"></a>Hypervisor 等級安全性
 
@@ -68,7 +73,7 @@ Azure Container Instances 支援排程共用主機、區域網路、儲存體和
 
 ## <a name="virtual-network-deployment"></a>虛擬網路部署
 
-Azure 容器執行個體的這項功能目前可在部分 Azure 區域中用於生產工作負載，可以[將容器執行個體部署至 Azure 虛擬網路](container-instances-vnet.md)。 藉由將容器執行個體部署至您虛擬網路內的子網路，這些執行個體可以安全地與虛擬網路中的其他資源通訊，包括內部部署的資源 (透過 [VPN 閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md))。
+Azure 容器執行個體可[將容器執行個體部署至 Azure 虛擬網路](container-instances-vnet.md)。 藉由部署至您虛擬網路內的子網路，容器執行個體可以安全地與虛擬網路中的其他資源通訊，包括內部部署的資源 (透過 [VPN 閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md))。
 
 ## <a name="next-steps"></a>後續步驟
 

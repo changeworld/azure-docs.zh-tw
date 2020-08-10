@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4687a98bfb58db8ed5e8a853fa0db2207f435e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518482"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419643"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教學課程：啟用目的地為內部部署環境的 Azure Active Directory 自助式密碼重設回寫
 
@@ -40,7 +40,7 @@ ms.locfileid: "86518482"
 
 若要完成此教學課程，您需要下列資源和權限：
 
-* 至少已啟用 Azure AD Premium P1 試用版授權的有效 Azure AD 租用戶。
+* 至少已啟用 Azure AD Premium P1 或試用版授權的有效 Azure AD 租用戶。
     * 如有需要，[請建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
     * 如需詳細資訊，請參閱 [Azure AD SSPR 的授權需求](concept-sspr-licensing.md)。
 * 具有「全域系統管理員」權限的帳戶。
@@ -81,7 +81,7 @@ Azure AD Connect 可讓您同步內部部署 AD DS 環境與 Azure AD 之間的�
     * **寫入 lockoutTime**
     * **寫入 pwdLastSet**
 
-    [![](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png "Set the appropriate permissions in Active Users and Computers for the account that is used by Azure AD Connect")](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
+    [ ![S在 [作用中使用者和電腦] 中，為 Azure AD Connect 所使用的帳戶設定適當權限](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png) ](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
 
 1. 準備好時，選取 [套用]/[確定] 以套用變更並結束任何開啟的對話方塊。
 

@@ -3,12 +3,12 @@ title: Azure 服務匯流排傳訊概觀 | Microsoft Docs
 description: 本文提供 Azure 服務匯流排的高階總覽，其為完全受控的企業整合訊息代理程式。
 ms.topic: overview
 ms.date: 06/23/2020
-ms.openlocfilehash: 8583996cde23b056261662a0640aa310e63d45a9
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 478dd0debb5117e76cf8d0ab6599dcf363c12ab3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341671"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501469"
 ---
 # <a name="what-is-azure-service-bus"></a>什麼是 Azure 服務匯流排？
 
@@ -92,7 +92,7 @@ Microsoft Azure 服務匯流排是完全受控的企業整合訊息代理程式�
 ### <a name="security-protocols"></a>安全性通訊協定
 <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>
 
-服務匯流排支援安全性通訊協定，例如[共用存取簽章](service-bus-sas.md) (SAS)、[角色型存取控制](authenticate-application.md) (RBAC) 和[Azure 資源的受控識別](service-bus-managed-service-identity.md)。
+服務匯流排支援安全性通訊協定，例如[共用存取簽章](service-bus-sas.md) (SAS)、[Azure 角色型存取控制 (Azure RBAC)](authenticate-application.md) 和[Azure 資源的受控識別](service-bus-managed-service-identity.md)。
 
 ### <a name="geo-disaster-recovery"></a>異地災害復原
 

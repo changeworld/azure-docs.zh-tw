@@ -5,19 +5,19 @@ author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 10/17/2018
+ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e18f66beb8f318e993bd9367f5e50740d76db73f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e3d400726bfb65b2548bc773ffb460fe1ad426a0
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510322"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513446"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>快速入門：使用 PowerShell 在 Azure 中建立 Linux 虛擬機器
 
-Azure PowerShell 模組用於從 PowerShell 命令列或在指令碼中建立和管理 Azure 資源。 本快速入門說明如何使用 Azure PowerShell 模組，在 Azure 中部署 Linux 虛擬機器 (VM)。 本快速入門會從 Canonical 使用 Ubuntu 16.04 LTS 市集映像。 為了查看作用中的 VM，您還會以 SSH 連線至 VM，並安裝 NGINX 網頁伺服器。
+Azure PowerShell 模組用於從 PowerShell 命令列或在指令碼中建立和管理 Azure 資源。 本快速入門說明如何使用 Azure PowerShell 模組，在 Azure 中部署 Linux 虛擬機器 (VM)。 本快速入門會從 Canonical 使用 Ubuntu 18.04 LTS 市集映像。 為了查看作用中的 VM，您還會以 SSH 連線至 VM，並安裝 NGINX 網頁伺服器。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -29,17 +29,18 @@ Azure Cloud Shell 是免費的互動式 Shell，可讓您用來執行本文中�
 
 ## <a name="create-ssh-key-pair"></a>建立 SSH 金鑰組
 
-您必須要有 SSH 金鑰組，才能完成本快速入門的操作。 如果您已經擁有 SSH 金鑰組，則可略過此步驟。
+使用 [ssh-keygen](https://www.ssh.com/ssh/keygen/) 來建立 SSH 金鑰組。 如果您已經擁有 SSH 金鑰組，則可略過此步驟。
 
-開啟 Bash 殼層，然後使用 [ssh-keygen](https://www.ssh.com/ssh/keygen/) 來建立 SSH 金鑰組。 如果本機電腦上沒有 Bash 殼層，則可以使用 [Azure Cloud Shell](https://shell.azure.com/bash)。  
 
 ```azurepowershell-interactive
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-如需如何建立 SSH 金鑰的詳細資訊 (包括 PuTTy 的用法)，請參閱[對 Windows 使用 SSH 金鑰](ssh-from-windows.md)。
+系統會提示您提供金鑰組的檔案名，或者您可以按 [輸入]，使用 `/home/<username>/.ssh/id_rsa` 的預設位置。 如有需要，您也可以建立金鑰的密碼。
 
-如果您使用 Cloud Shell 建立 SSH 金鑰組，該金鑰組會儲存在容器映像中，而這映像會位在 [Cloud Shell 所自動建立的儲存體帳戶](../../cloud-shell/persisting-shell-storage.md)內。 在擷取到金鑰前請勿刪除儲存體帳戶或其中的檔案共用，否則會無法存取 VM。 
+如需如何建立 SSH 金鑰組的詳細資訊，請參閱[如何搭配 Windows 使用 SSH 金鑰](ssh-from-windows.md)。
+
+如果您使用 Cloud Shell 建立 SSH 金鑰組，該金鑰組會儲存在 [Cloud Shell 自動建立的儲存體帳戶](../../cloud-shell/persisting-shell-storage.md)中。 在擷取到金鑰前請勿刪除儲存體帳戶或其中的檔案共用，否則會無法存取 VM。 
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -147,7 +148,7 @@ Set-AzVMOperatingSystem `
 Set-AzVMSourceImage `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
-  -Skus "16.04-LTS" `
+  -Skus "18.04-LTS" `
   -Version "latest" | `
 Add-AzVMNetworkInterface `
   -Id $nic.Id
@@ -178,7 +179,7 @@ New-AzVM `
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-使用和您建立 SSH 金鑰組時所用的同一個 Bash 殼層 (例如 [Azure Cloud Shell](https://shell.azure.com/bash) 或本機 Bash 殼層)，將 SSH 連線命令貼到殼層中，以建立 SSH 工作階段。
+使用您用來建立 SSH 金鑰組的相同殼層，將下列命令貼到殼層中，以建立 SSH 工作階段。 請以您 VM 的 IP 位址取代 10.111.12.123。
 
 ```bash
 ssh azureuser@10.111.12.123

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 07/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e75a45bc4ccd2614520fda39e09996c2286bdbd0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b7188708c44d00d075a02d54b0a3b10cbc81954
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74227622"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513509"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>教學課程：Azure Active Directory 與 FreshDesk 整合
 
@@ -47,114 +46,58 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 在本教學課程中，您會在測試環境中設定和測試 Azure AD 單一登入。
 
 * FreshDesk 支援 **SP** 起始的 SSO
+* 設定 FreshDesk 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-freshdesk-from-the-gallery"></a>從資源庫新增 FreshDesk
 
 若要設定 FreshDesk 與 Azure AD 整合，您需要從資源庫將 FreshDesk 新增至受控 SaaS 應用程式清單。
 
-**若要從資源庫新增 FreshDesk，請執行下列步驟：**
+1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]。
+1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **FreshDesk**。
+1. 從結果面板選取 [FreshDesk]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-1. 在 **[Azure 入口網站](https://portal.azure.com)** 的左方瀏覽窗格中，按一下 [Azure Active Directory]  圖示。
+## <a name="configure-and-test-azure-ad-single-sign-on-for-freshdesk"></a>設定及測試 FreshDesk 的 Azure AD 單一登入
 
-    ![Azure Active Directory 按鈕](common/select-azuread.png)
+以名為 **B.Simon** 的測試使用者，設定及測試與 FreshDesk 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 FreshDesk 中相關使用者之間的連結關聯性。
 
-2. 瀏覽至 [企業應用程式]  ，然後選取 [所有應用程式]  選項。
-
-    ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
-
-3. 若要新增新的應用程式，請按一下對話方塊頂端的 [新增應用程式]  按鈕。
-
-    ![新增應用程式按鈕](common/add-new-app.png)
-
-4. 在搜尋方塊中，輸入 **FreshDesk**，從結果面板中選取 [FreshDesk]  ，然後按一下 [新增]  按鈕以新增應用程式。
-
-     ![結果清單中的 FreshDesk](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
-
-在本節中，您會以名為 **Britta Simon** 的測試使用者身分，使用 FreshDesk 設定及測試 Azure AD 單一登入。
-若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 FreshDesk 中相關使用者之間的連結關聯性。
-
-若要設定及測試與 FreshDesk 搭配運作的 Azure AD 單一登入，您需要完成下列建置組塊：
+若要設定及測試與 FreshDesk 搭配運作的 Azure AD SSO，請完成下列建置組塊：
 
 1. **[設定 Azure AD 單一登入](#configure-azure-ad-single-sign-on)** - 讓您的使用者能夠使用此功能。
-2. **[設定 FreshDesk 單一登入](#configure-freshdesk-single-sign-on)** - 在應用程式端設定單一登入設定。
-3. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
-4. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
-5. **[建立 FreshDesk 測試使用者](#create-freshdesk-test-user)** - 使 FreshDesk 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
-6. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
+    1. **[建立 Azure AD 測試使用者](#create-an-azure-ad-test-user)** - 使用 Britta Simon 測試 Azure AD 單一登入。
+    1. **[指派 Azure AD 測試使用者](#assign-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
+1. **[設定 FreshDesk 單一登入](#configure-freshdesk-single-sign-on)** - 在應用程式端設定單一登入設定。
+    1. **[建立 FreshDesk 測試使用者](#create-freshdesk-test-user)** - 使 FreshDesk 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
+1. **[測試單一登入](#test-single-sign-on)** ，驗證組態是否能運作。
 
-### <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
+## <a name="configure-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
-在本節中，您會在 Azure 入口網站中啟用 Azure AD 單一登入。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [FreshDesk] 應用程式整合頁面上，尋找 [管理] 區段並選取 [單一登入]。
+1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
-若要設定與 FreshDesk 搭配運作的 Azure AD 單一登入，請執行下列步驟：
+   ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [FreshDesk]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
 
-    ![設定單一登入連結](common/select-sso.png)
+    a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL：`https://<tenant-name>.freshdesk.com` 或 Freshdesk 所建議的任何其他值。
 
-2. 在 [選取單一登入方法]  對話方塊中，選取 [SAML/WS-Fed]  模式以啟用單一登入。
-
-    ![單一登入選取模式](common/select-saml-option.png)
-
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
-
-    ![編輯基本 SAML 組態](common/edit-urls.png)
-
-4. 在 [基本 SAML 組態]  區段上，執行下列步驟：
-
-    ![FreshDesk 網域與 URL 單一登入資訊](common/sp-identifier.png)
-
-    a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL：`https://<tenant-name>.freshdesk.com` 或 Freshdesk 所建議的任何其他值。
-
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，以下列模式輸入 URL：`https://<tenant-name>.freshdesk.com` 或 Freshdesk 所建議的任何其他值。
+    b. 在 [識別碼 (實體識別碼)] 文字方塊中，以下列模式輸入 URL：`https://<tenant-name>.freshdesk.com` 或 Freshdesk 所建議的任何其他值。
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [FreshDesk 用戶端支援小組](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-5. FreshDesk 應用程式需要特定格式的 SAML 判斷提示，需要您加入自訂屬性對應到您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示上述的範例。 [唯一的使用者識別碼]  的預設值是 **user.userprincipalname**，但是 FreshDesk 會預期它是與使用者電子郵件地址對應的值。 對此您可以使用清單中的 **user.mail** 屬性，或者根據組織組態使用適當的屬性值。 
+1. FreshDesk 應用程式需要特定格式的 SAML 判斷提示，需要您加入自訂屬性對應到您的 SAML 權杖屬性設定。 下列螢幕擷取畫面顯示預設屬性的清單，而**唯一的使用者識別碼**與 **user.userprincipalname** 對應，但 FreshDesk 預期此宣告必須與 **user.mail** 對應，因此您必須按一下 [編輯] 圖示並變更屬性對應，以編輯屬性對應。
 
     ![image](common/edit-attribute.png)
 
-6. 在 [使用者屬性] 對話方塊的 [使用者宣告] 區段中，使用 [編輯] 圖示來編輯宣告或使用 [新增宣告] 來新增宣告，如上圖所示設定 SAML 權杖屬性，然後執行下列步驟：
-    
-    | 名稱 | 來源屬性 |
-    | ---------------| --------------- |
-    | 唯一的使用者識別碼 | user.mail |
-
-    a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. 在 [名稱]  文字方塊中，輸入該資料列所顯示的屬性名稱。
-
-    c. 讓 [命名空間]  保持空白。
-
-    d. 選取 [來源] 作為 [屬性]  。
-
-    e. 在 [來源屬性]  清單中，輸入該資料列所顯示的屬性值。
-
-    f. 按一下 [確定]  。
-
-    g. 按一下 [檔案]  。
-
-7. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (Base64)]，並儲存在您的電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
-8. 開啟 [命令提示字元]  並執行下列命令：
-
-    a. 在命令提示字元中輸入 `certutil.exe -dump FreshDesk.cer` 值。
-
-    > [!NOTE]
-    > 這裡的 **FreshDesk.cer** 是您從 Azure 入口網站下載的憑證。
-
-    b. 複製 [Cert 雜湊(sha256)]  值並貼到 [記事本] 中。 
-
-9. 在 [設定 FreshDesk]  區段上，依據您的需求複製適當的 URL。
+1. 在 [設定 FreshDesk] 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -164,35 +107,15 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 
     c. 登出 URL
 
-### <a name="configure-freshdesk-single-sign-on"></a>設定 FreshDesk 單一登入
-
-1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Freshdesk 公司網站。
-
-2. 選取 [設定]  圖示，並且在 [安全性]  區段中執行下列步驟：
-
-    ![單一登入](./media/freshdesk-tutorial/IC776770.png "單一登入")
-  
-    a. 針對 [單一登入 (SSO)]  選取 [啟用]  。
-
-    b. 選取 [SAML SSO]  。
-
-    c. 在 [SAML 登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登入 URL** 值。
-
-    d. 在 [登出 URL]  文字方塊中，貼上您從 Azure 入口網站複製的**登出 URL** 值。
-
-    e. 在 [安全性憑證指紋]  文字方塊中，貼上您先前取得的 [Cert 雜湊(sha256)]  值。
-  
-    f. 按一下 [檔案]  。
-
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  。
+2. 在畫面頂端選取 [新增使用者]。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -200,20 +123,21 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
+
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會把 FreshDesk 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [FreshDesk]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]、[所有應用程式] 及 [FreshDesk]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -221,7 +145,7 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 
     ![應用程式清單中的 FreshDesk 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. 在左側功能表中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -229,13 +153,37 @@ FreshDesk 與 Azure AD 整合提供下列優點：
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
-7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
-### <a name="create-freshdesk-test-user"></a>建立 FreshDesk 測試使用者
+## <a name="configure-freshdesk-single-sign-on"></a>設定 FreshDesk 單一登入
+
+1. 在不同的網頁瀏覽器視窗中，以系統管理員身分登入您的 Freshdesk 公司網站。
+
+2. 選取**安全性圖示**，並且在 [安全性] 區段中執行下列步驟：
+
+    ![單一登入](./media/freshdesk-tutorial/configure-1.png "單一登入")
+  
+    a. 針對 [單一登入]，選取 [啟用]。
+
+    b. 在 [登入方法]中，選取 [SAML SSO]。
+
+    c. 在 [IDP 提供的實體識別碼] 文字方塊中，貼上您從 Azure 入口網站複製的 [實體識別碼] 值。
+
+    d. 在 [SAML SSO URL] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
+
+    e. 在 [簽署選項] 中，從下拉式清單中選取 [僅已簽署的判斷提示]。
+
+    f. 在 [登出 URL] 文字方塊中，貼上您從 Azure 入口網站複製的**登出 URL** 值。
+
+    g. 在 [安全性憑證] 文字方塊中，貼上您先前取得的**憑證 (Base64)** 值。
+  
+    h. 按一下 [檔案] 。
+
+## <a name="create-freshdesk-test-user"></a>建立 FreshDesk 測試使用者
 
 若要讓 Azure AD 使用者可以登入 FreshDesk，則必須將他們佈建到 FreshDesk。  
 FreshDesk 需以手動的方式佈建。
@@ -244,29 +192,17 @@ FreshDesk 需以手動的方式佈建。
 
 1. 登入您的 **Freshdesk** 租用戶。
 
-2. 在頂端的功能表中，按一下 [系統管理員]  。
-
-    ![管理員](./media/freshdesk-tutorial/IC776772.png "管理")
-
-3. 在 [一般設定]  索引標籤上，按一下 [代理程式]  。
+1. 在左側功能表中，按一下 [管理員]，然後在 [一般設定] 索引標籤中按一下 [代理程式]。
   
-    ![代理程式](./media/freshdesk-tutorial/IC776773.png "代理程式")
+    ![代理程式](./media/freshdesk-tutorial/create-user-1.png "代理程式")
 
-4. 按一下 [新增代理程式]  。
+1. 按一下 [新增代理程式] 。
 
-    ![新代理程式](./media/freshdesk-tutorial/IC776774.png "新代理程式")
+    ![新代理程式](./media/freshdesk-tutorial/create-user-2.png "新代理程式")
 
-5. 在 [代理程式資訊] 對話方塊中，執行下列步驟：
+1. 在代理程式資訊對話方塊中，輸入必要的欄位，然後按一下 [建立代理程式]。
 
-    ![代理程式資訊](./media/freshdesk-tutorial/IC776775.png "代理程式資訊")
-
-    a. 在 [電子郵件]  文字方塊中，輸入您要佈建的 Azure AD 帳戶的電子郵件地址。
-
-    b. 在 [全名]  文字方塊中，輸入您要佈建的 Azure AD 帳戶名稱。
-
-    c. 在 [職稱]  文字方塊中，輸入您要佈建的 Azure AD 帳戶的職稱。
-
-    d. 按一下 [檔案]  。
+    ![代理程式資訊](./media/freshdesk-tutorial/create-user-3.png "代理程式資訊")
 
     >[!NOTE]
     >Azure AD 帳戶的持有者會收到一封包含連結的電子郵件，以在啟用帳戶前進行確認。

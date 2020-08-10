@@ -3,18 +3,18 @@ title: 建立 Azure IoT Central 應用程式 | Microsoft Docs
 description: 建立新的 Azure IoT Central 應用程式。 使用免費定價方案或其中一個標準定價方案來建立應用程式。
 author: viv-liu
 ms.author: viviali
-ms.date: 02/12/2020
+ms.date: 07/30/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758140"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552572"
 ---
 # <a name="create-an-azure-iot-central-application"></a>建立 Azure IoT Central 應用程式
 
@@ -43,8 +43,11 @@ ms.locfileid: "81758140"
     ![Azure IoT Central 計費資訊](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
-    > 如果您在上一頁選擇 [自訂應用程式]  ，就會看到 [應用程式範本]  下拉式清單。 在這裡，您可以在自訂和舊版範本之間進行切換。 您可能也會看到已提供給您的組織的其他範本。
+    > 如果您在上一頁選擇 [自訂應用程式]，就會看到 [應用程式範本] 下拉式清單。 下拉式清單會顯示組織提供的其他可用範本。 
 
+    >[!IMPORTANT]
+    >**自訂應用程式 (舊版)** 範本 (V2) 已被淘汰，因為舊版應用程式範本中先前可用的所有功能，現在都可以在最新的**自訂應用程式** 範本 (V3) 中取得。 
+    
 1. 選擇使用 7 天免費試用定價方案或其中一個標準定價方案來建立此應用程式：
 
     - 使用「免費」  方案建立的應用程式可以免費試用七天，且最多可支援五個裝置。 您可以在到期前，隨時將其轉換為使用標準定價方案。

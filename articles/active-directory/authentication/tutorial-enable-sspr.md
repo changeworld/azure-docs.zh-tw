@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ac13dc669ed20df58f05c672926b7bee55dbc90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6b6fe3238a2ad602b388ff24faaee3a200084ae0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035021"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419473"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教學課程：讓使用者使用 Azure Active Directory 自助式密碼重設來解除鎖定其帳戶或重設密碼
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 自助式密碼重設 (SSPR) 可讓使用者�
 
 若要完成此教學課程，您需要下列資源和權限：
 
-* 可運作且至少已啟用試用版授權的 Azure AD 租用戶。
+* 至少已啟用 Azure AD Premium P1 或試用版授權的有效 Azure AD 租用戶。
     * 如有需要，[請建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 具有「全域系統管理員」權限的帳戶。
 * 具有已知密碼的非系統管理員使用者，例如 testuser。 在本教學課程中，您會使用此帳戶來測試終端使用者 SSPR 體驗。
@@ -60,7 +60,7 @@ Azure AD 可讓您針對 [無]、[已選取] 或 [所有] 使用者啟用 SSPR�
 1. 在 [屬性] 頁面的 [已啟用自助式密碼重設] 選項下方，選擇 [選取群組]。
 1. 瀏覽並選取 Azure AD 群組，例如 *SSPR-Test-Group*，然後選擇 [選取]。
 
-    [![](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png "Select a group in the Azure portal to enable for self-service password reset")](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
+    [ ![在 Azure 入口網站中選取要啟用自助式密碼重設的群組](media/tutorial-enable-sspr/enable-sspr-for-group-cropped.png) ](media/tutorial-enable-sspr/enable-sspr-for-group.png#lightbox)
 
 1. 若要為所選的使用者啟用 SSPR，請選取 [儲存]。
 

@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure 藍圖文件
-summary: 將 Azure Resource Manager 範本、角色型存取控制和原則等成品封裝成單一藍圖定義，從而簡化部署作業。
+summary: 將 Azure Resource Manager 範本、Azure 角色型存取控制 (Azure RBAC) 和原則等成品封裝成單一藍圖定義，從而簡化部署作業。
 metadata:
   title: Azure 藍圖文件
-  description: 將 Azure Resource Manager 範本、角色型存取控制和原則等成品封裝成單一藍圖定義，從而簡化部署作業。
+  description: 將 Azure Resource Manager 範本、Azure 角色型存取控制 (Azure RBAC) 和原則等成品封裝成單一藍圖定義，從而簡化部署作業。
   ms.service: blueprints
   ms.topic: landing-page
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 06/29/2020
-  ms.openlocfilehash: 04c99d2428bd3c92187ce9383f51d38a9729d22a
-  ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+  ms.openlocfilehash: a0b800e12143cce428f0e5fcd26d9f9c0b690ee0
+  ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 07/06/2020
-  ms.locfileid: "85969374"
+  ms.lasthandoff: 08/07/2020
+  ms.locfileid: "88009540"
 landingContent:
 - title: 關於 Azure 藍圖
   linkLists:

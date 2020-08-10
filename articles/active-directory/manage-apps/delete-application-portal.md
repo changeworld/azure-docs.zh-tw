@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0b3ef559abe1c65872d8ecf87f63e6ff3ed4b0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223902"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808230"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>快速入門：從您的 Azure Active Directory (Azure AD) 租用戶中刪除應用程式
 
@@ -44,9 +43,15 @@ ms.locfileid: "86223902"
 1. 在左側窗格的 [管理] 區段中，選取 [屬性]。
 1. 選取 [刪除]，然後選取 [是]，確認您要從 Azure AD 租用戶中刪除應用程式。
 
+> [!TIP]
+> 您可以使用圖形 API 自動管理應用程式，請參閱[使用 Microsoft Graph API 自動管理應用程式](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+
+## <a name="clean-up-resources"></a>清除資源
+
+當您完成本快速入門系列時，請考慮刪除應用程式以清除您的測試租用戶。 本快速入門中涵蓋了刪除應用程式的資訊。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [應用程式管理的最佳做法](application-management-fundamentals.md)
-- [應用程式管理常見案例](common-scenarios.md)
-- [應用程式管理可見性和控制](cloud-app-security.md)
+您已經完成快速入門系列！ 在下一個步驟中，請閱讀應用程式管理的最佳做法。
+> [!div class="nextstepaction"]
+> [應用程式管理的最佳做法](application-management-fundamentals.md)

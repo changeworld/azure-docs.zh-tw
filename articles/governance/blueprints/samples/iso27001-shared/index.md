@@ -3,12 +3,12 @@ title: ISO 27001 共用服務藍圖範例概觀
 description: ISO 27001 共用服務藍圖範例的概觀和架構。 此藍圖範例可協助客戶評定特定 ISO 27001 控制措施。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 0ef39a4e409320d08529904239dc17fc563c2044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072873"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927346"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共用服務藍圖範例概觀
 
@@ -25,7 +25,7 @@ VDC 是經過實證的一組參考架構、自動化工具和業務開發模型�
 
 此環境包含數個 Azure 服務，用來提供以 ISO 27001 標準為基礎且完全受到監視的企業級安全共用服務基礎結構。 此環境包含：
 
-- [角色型存取控制](../../../../role-based-access-control/overview.md) (RBAC) 角色，以便您從控制層面區分責任。 部署任何基礎結構之前，會定義三個角色：
+- [Azure 角色](../../../../role-based-access-control/overview.md)，以便從控制平面的角度來進行權責區分。 部署任何基礎結構之前，會定義三個角色：
   - NetOps 角色有權管理網路環境，包括防火牆設定、NSG 設定、路由及其他網路功能
   - SecOps 角色具有部署和管理 [Azure 資訊安全中心](../../../../security-center/security-center-intro.md)和定義 [Azure 原則](../../../policy/overview.md)的必要權限，以及其他與安全性相關的權限
   - SysOps 角色具有在訂用帳戶中定義 [Azure 原則](../../../policy/overview.md)和為整個環境管理 [Log Analytics](../../../../azure-monitor/overview.md) 的必要權限，以及其他與作業相關的權限

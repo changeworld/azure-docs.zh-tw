@@ -1,14 +1,14 @@
 ---
 title: 澳大利亞政府 ISM 受保護藍圖範例概觀
 description: 澳大利亞政府 ISM 受保護藍圖範例概觀。 此藍圖範例可協助客戶評定特定 ISO 受保護控制措施。
-ms.date: 03/10/2020
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: d82598498fa7eb24ec2ea3f591d08ce8f9503b54
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517094"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760425"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>澳大利亞政府 ISM 受保護藍圖範例控制措施對應
 
@@ -106,10 +106,10 @@ ms.locfileid: "85517094"
 
 - 稽核不受限制的儲存體帳戶網路存取
 - Service Fabric 叢集應只能使用 Azure Active Directory 進行用戶端驗證
-- \[預覽\]：從允許不使用密碼從帳戶遠端連線的 Linux VM 顯示稽核結果
-- \[預覽\]：部署必要條件以稽核允許不使用密碼從帳戶遠端連線的 Linux VM
-- \[預覽\]：從帳戶沒有密碼的 Linux VM 顯示稽核結果
-- \[預覽\]：部署必要條件，以稽核有不具密碼帳戶的 Linux VM
+- 從允許不使用密碼從帳戶遠端連線的 Linux VM 顯示稽核結果
+- 部署必要條件以稽核允許不使用密碼從帳戶遠端連線的 Linux VM
+- 從帳戶沒有密碼的 Linux VM 顯示稽核結果
+- 部署必要條件，以稽核有不具密碼帳戶的 Linux VM
 
 ### <a name="0974-multi-factor-authentication-is-used-to-authenticate-standard-users"></a>0974 使用多重要素驗證來驗證標準使用者
 
@@ -122,8 +122,8 @@ ms.locfileid: "85517094"
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 用於單一要素驗證的複雜密碼至少要有 14 個字元的複雜度，且最理想的是包括 4 個隨機單字
 
-- \[預覽\]：顯示 [安全性設定 - 帳戶原則] 中的 Windows VM 設定稽核結果
-- \[預覽\]：部署必要條件，以稽核 [安全性設定 - 帳戶原則] 中的 Windows VM 設定
+- 顯示 [安全性設定 - 帳戶原則] 中的 Windows VM 設定稽核結果
+- 部署必要條件，以稽核 [安全性設定 - 帳戶原則] 中的 Windows VM 設定
 
 ## <a name="guidelines-for-system-management---system-administration"></a>系統管理指導方針 - 系統管理
 
@@ -147,7 +147,7 @@ ms.locfileid: "85517094"
 - 應修復 SQL 資料庫的弱點
 - 弱點評定應於您的 SQL 伺服器上啟用
 - SQL 受控執行個體上應啟用弱點評定
-- \[預覽\]：虛擬機器上應啟用弱點評定
+- 機器上應啟用弱點評估
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - 弱點評量解決方案應修復弱點
 - 您應在機器上修復安全性組態的弱點
@@ -159,7 +159,7 @@ ms.locfileid: "85517094"
 - 應修復 SQL 資料庫的弱點
 - 弱點評定應於您的 SQL 伺服器上啟用
 - SQL 受控執行個體上應啟用弱點評定
-- \[預覽\]：虛擬機器上應啟用弱點評定
+- 虛擬機器上應啟用弱點評定
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - 弱點評量解決方案應修復弱點
 - 您應在機器上修復安全性組態的弱點
@@ -171,7 +171,7 @@ ms.locfileid: "85517094"
 - 應修復 SQL 資料庫的弱點
 - 弱點評定應於您的 SQL 伺服器上啟用
 - SQL 受控執行個體上應啟用弱點評定
-- \[預覽\]：虛擬機器上應啟用弱點評定
+- 虛擬機器上應啟用弱點評定
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - 弱點評量解決方案應修復弱點
 - 您應在機器上修復安全性組態的弱點
@@ -183,7 +183,7 @@ ms.locfileid: "85517094"
 - 應修復 SQL 資料庫的弱點
 - 弱點評定應於您的 SQL 伺服器上啟用
 - SQL 受控執行個體上應啟用弱點評定
-- \[預覽\]：虛擬機器上應啟用弱點評定
+- 虛擬機器上應啟用弱點評定
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - 弱點評量解決方案應修復弱點
 - 您應在機器上修復安全性組態的弱點
@@ -195,7 +195,7 @@ ms.locfileid: "85517094"
 - 應修復 SQL 資料庫的弱點
 - 弱點評定應於您的 SQL 伺服器上啟用
 - SQL 受控執行個體上應啟用弱點評定
-- \[預覽\]：虛擬機器上應啟用弱點評定
+- 虛擬機器上應啟用弱點評定
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - 弱點評量解決方案應修復弱點
 - 您應在機器上修復安全性組態的弱點
@@ -207,7 +207,7 @@ ms.locfileid: "85517094"
 - 應修復 SQL 資料庫的弱點
 - 弱點評定應於您的 SQL 伺服器上啟用
 - SQL 受控執行個體上應啟用弱點評定
-- \[預覽\]：虛擬機器上應啟用弱點評定
+- 虛擬機器上應啟用弱點評定
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - 弱點評量解決方案應修復弱點
 - 您應在機器上修復安全性組態的弱點
@@ -229,8 +229,8 @@ ms.locfileid: "85517094"
 ### <a name="0582-the-following-events-are-logged-for-operating-systems-access-to-important-data-and-processes-application-crashes-and-any-error-messages-attempts-to-use-special-privileges-changes-to-accounts-changes-to-security-policy-changes-to-system-configurations-domain-name-system-dns-and-hypertext-transfer-protocol-http-requests-failed-attempts-to-access-data-and-system-resources-service-failures-and-restarts-system-startup-and-shutdown-transfer-of-data-to-external-media-user-or-group-management-use-of-special-privileges"></a>0582 系統會針對作業系統記錄下列事件：存取重要資料和流程、應用程式損毀和任何錯誤訊息、嘗試使用特殊權限、帳戶變更、安全性原則變更、系統組態變更、網域名稱系統 (DNS) 和超文字傳輸通訊協定 (HTTP) 要求、嘗試存取資料和系統資源失敗、服務失敗和重新開機、系統啟動和關機，將資料傳輸至外部媒體、使用者或群組管理、使用特殊權限
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：稽核適用於 VM 的 Log Analytics 工作區 - 報告不相符
+- 稽核 VMSS 中的記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- 稽核適用於 VM 的 Log Analytics 工作區 - 報告不相符
 - 稽核診斷設定
 
 ### <a name="1537-the-following-events-are-logged-for-databases-access-to-particularly-important-information-addition-of-new-users-especially-privileged-users-any-query-containing-comments-any-query-containing-multiple-embedded-queries-any-query-or-database-alerts-or-failures-attempts-to-elevate-privileges-attempted-access-that-is-successful-or-unsuccessful-changes-to-the-database-structure-changes-to-user-roles-or-database-permissions-database-administrator-actions-database-logons-and-logoffs-modifications-to-data-use-of-executable-commands"></a>1537 系統會針對資料庫記錄下列事件：存取特別重要的資訊、加入新的使用者，特別是有權限的使用者、包含註解的任何查詢、包含多個內嵌查詢的任何查詢、任何查詢或資料庫警示或失敗、嘗試提高使用權限、嘗試存取的行為 (無論成功與否)、資料庫結構變更、使用者角色或資料庫權限變更、資料庫管理員動作、資料庫登入和登出、資料修改、使用可執行命令
@@ -246,7 +246,7 @@ ms.locfileid: "85517094"
 - 應修復 SQL 資料庫的弱點
 - 弱點評定應於您的 SQL 伺服器上啟用
 - SQL 受控執行個體上應啟用弱點評定
-- \[預覽\]：虛擬機器上應啟用弱點評定
+- 虛擬機器上應啟用弱點評定
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - 弱點評量解決方案應修復弱點
 - 您應在機器上修復安全性組態的弱點

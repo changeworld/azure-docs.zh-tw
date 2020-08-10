@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 297241c5f939ae15fc77b29614b55d9b2bd63c84
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207803"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445904"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教學課程：保護 Azure 遠端轉譯和模型儲存體
 
@@ -176,16 +176,13 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
 1. 遵循[操作說明：設定驗證 - 已部署應用程式的驗證](../../../how-tos/authentication.md#authentication-for-deployed-applications)，其中請依照 Azure 空間錨點文件 [Azure AD 使用者驗證](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication) 中所列的指示進行。 這牽涉到註冊新的 Azure Active Directory 應用程式，以及設定 ARR 執行個體的存取權。
 1. 設定新的 AAD 應用程式後，請檢查您的 AAD 應用程式是否看起來像下列映像：
 
-    **AAD 應用程式 -> 驗證**\
-    ![應用程式驗證](./media/app-authentication-public.png)
+    **AAD 應用程式 -> 驗證** ![應用程式驗證](./media/app-authentication-public.png)
 
-    **AAD 應用程式 -> API 權限**\
-    ![應用程式 API](./media/request-api-permissions-step-five.png)
+    **AAD 應用程式 -> API 權限** ![應用程式 API](./media/request-api-permissions-step-five.png)
 
 1. 設定遠端轉譯帳戶後，請檢查您的設定是否看起來如下圖所示：
 
-    **AAR -> AccessControl (IAM)** \
-    ![ARR 角色](./media/azure-remote-rendering-role-assignment-complete.png)
+    **AAR -> AccessControl (IAM)** ![ARR 角色](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
     > 「擁有者」 角色不足透過用戶端應用程式來管理工作階段。 針對您想要授與管理工作階段功能的每個使用者，您必須提供**遠端轉譯用戶端**角色。 針對您想要管理工作階段和轉換模型的每個使用者，您必須提供**遠端轉譯管理員**角色。
@@ -357,9 +354,7 @@ return await Task.FromResult(new AzureFrontendAccountInfo(accountDomain, azureRe
 1. 在 Unity 編輯器中按下 [播放]，並同意執行工作階段。
     由於 **AADAuthentication** 元件具有檢視控制器，因此會自動連結，以在工作階段授權強制回應面板之後顯示提示。
 1. 依照 **AppMenu** 右側面板中找到的指示進行。
-    您應該會看到類似如下的內容：
-    ![AAD 驗證元件](./media/device-flow-instructions.png)\
-    在您的次要裝置 (或相同裝置上的瀏覽器) 上輸入所提供的程式碼，並使用您的認證登入之後，存取權杖將會傳回給要求的應用程式，在此案例中是 Unity 編輯器。
+    您應該會看到類似如下的內容：![ADD 驗證元件](./media/device-flow-instructions.png) 在您的次要裝置 (或相同裝置上的瀏覽器) 上輸入所提供的程式碼，並使用您的認證登入之後，存取權杖將會傳回給要求的應用程式，在此案例中是 Unity 編輯器。
 1. 在這之後，應用程式中的所有項目都應該正常進行。 如果您各階段的進度並未如預期，請檢查 Unity 主控台是否有任何錯誤。
 
 ## <a name="build-to-device"></a>建置至裝置

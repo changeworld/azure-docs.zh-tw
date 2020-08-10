@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555134"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489583"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>比較自我管理 Active Directory Domain Services、Azure Active Directory 和受控 Azure Active Directory Domain Services
 
@@ -47,7 +47,7 @@ ms.locfileid: "84555134"
 
 有了 Azure AD DS，Microsoft 就會為您部署和維護核心服務元件，如同「受控網域」體驗。 您不需要針對 VM、Windows Server OS 或網域控制站 (DC) 等元件部署、管理、修補及保護 AD DS 基礎結構。
 
-Azure AD DS 為傳統的自我管理 AD DS 環境提供較小的功能子集，可減少部分設計和管理的複雜度。 例如，沒有任何 AD 樹系、網域、站台與複寫連結需要設計及維護。 您仍然可以[在 Azure AD DS 與內部部署環境之間建立樹系信任 (目前處於預覽狀態)][create-forest-trust]。
+Azure AD DS 為傳統的自我管理 AD DS 環境提供較小的功能子集，可減少部分設計和管理的複雜度。 例如，沒有任何 AD 樹系、網域、站台與複寫連結需要設計及維護。 您仍然可以[在 Azure AD DS 與內部部署環境之間建立樹系信任][create-forest-trust]。
 
 對於在雲端中執行並需要存取傳統驗證機制 (例如 Kerberos 或 NTLM) 的應用程式和服務，Azure AD DS 會以最少的系統管理負荷來提供受控網域體驗。 如需詳細資訊，請參閱 [Azure AD DS 中使用者帳戶、密碼與系統管理的管理概念][administration-concepts]。
 

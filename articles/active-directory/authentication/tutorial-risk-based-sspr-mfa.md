@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18b2fb520ecab8b233be3c93ef614a2bce01a75e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e008091b3d0b450384cb7a672a62c786c33bfeab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034991"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419626"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>教學課程：利用使用者登入的風險偵測來觸發 Azure Multi-Factor Authentication 或密碼變更
 
@@ -39,7 +39,7 @@ ms.locfileid: "87034991"
 
 若要完成此教學課程，您需要下列資源和權限：
 
-* 至少已啟用 Azure AD Premium P2 試用版授權的有效 Azure AD 租用戶。
+* 至少已啟用 Azure AD Premium P2 或試用版授權的有效 Azure AD 租用戶。
     * 如有需要，[請建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 具有「全域系統管理員」權限的帳戶。
 * 已設定自助式密碼重設和 Azure Multi-Factor Authentication 的 Azure AD

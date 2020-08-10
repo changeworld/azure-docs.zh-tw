@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 07/27/2020
-ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281339"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432658"
 ---
 # <a name="changelog"></a>變更記錄 #
 
@@ -57,13 +57,13 @@ ms.locfileid: "87281339"
 
 ### <a name="changes-234"></a>變更 2.3.4
 
-- 在 iOS 和 MacOS Safari 上播放 HLS 時，已移除空白字幕標籤/曲目
+- 在 iOS 和 macOS Safari 上播放 HLS 時，已移除空白字幕標籤/曲目
 - 已減少 IMSC1 字幕 的 412 數目
 - 主控台中的輸出警告會有 10 個連續的空白 IMSC1 字幕回應，以協助即時偵錯
 
 ## <a name="232-official-update-october-9-2019"></a>2.3.2 (官方更新 2019 年 10 月 9 日)
 
-### <a name="features"></a>特性
+### <a name="features-232"></a>2\.3.2 的功能
 
 已對 Chromium Edge 瀏覽器的 DASH 播放新增 PlayReady 支援
 

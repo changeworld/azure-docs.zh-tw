@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a594a754f33ae60d151215deb5a5ed57f87126c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050647"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543551"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教學課程：將現有的自訂 DNS 名稱對應至 Azure App Service
 
@@ -95,7 +95,12 @@ ms.locfileid: "87050647"
 
 ## <a name="get-domain-verification-id"></a>取得網域驗證識別碼
 
-若要將自訂網域新增至您的應用程式，您必須將驗證識別碼新增為包含網域提供者的 TXT 記錄，以驗證網域的擁有權。 在應用程式頁面的左側導覽中，按一下 [設定] 下的 [自訂網域]。 從這裡複製自訂網域驗證識別碼的值。 您需要此驗證識別碼來進行下一個步驟。
+若要將自訂網域新增至您的應用程式，您必須將驗證識別碼新增為包含網域提供者的 TXT 記錄，以驗證網域的擁有權。 在應用程式頁面的左側導覽中，按一下 [自訂網域]。 在下一個步驟的 [自訂網域] 頁面中，複製**自訂網域驗證識別碼**。
+
+![取得自訂網域驗證識別碼](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
+
+> [!WARNING]
+> 將網域驗證識別碼新增到您的自訂網域，可以防止無關聯的 DNS 項目，並避免子網域接管。 如需有關此常見高嚴重性威脅的詳細資訊，請參閱[子網域接管](../security/fundamentals/subdomain-takeover.md)。
 
 ## <a name="map-your-domain"></a>對應您的網域
 

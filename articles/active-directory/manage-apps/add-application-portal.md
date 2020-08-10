@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 0818ab782710e6a102d2034790ff8d997cd54f8e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338022"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808432"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>快速入門：將應用程式新增到您的 Azure Active Directory (Azure AD) 租用戶
 
@@ -58,8 +57,15 @@ Azure Active Directory (Azure AD) 有一個資源庫，其中包含數千個預�
 
 您已完成新增應用程式。 下一個快速入門將示範如何為應用程式變更標誌和編輯其他屬性。
 
+> [!TIP]
+> 您可以使用圖形 API 自動管理應用程式，請參閱[使用 Microsoft Graph API 自動管理應用程式](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+
+## <a name="clean-up-resources"></a>清除資源
+
+如果您不打算繼續進行快速入門系列，請考慮刪除應用程式以清除您的測試租用戶。 本系列的最後一個快速入門涵蓋了刪除應用程式的說明，請參閱[刪除應用程式](delete-application-portal.md)。
+
 ## <a name="next-steps"></a>後續步驟
 
-- [設定應用程式](add-application-portal-configure.md)
-- [設定單一登入](add-application-portal-setup-sso.md)
-- [刪除應用程式](delete-application-portal.md)
+請前往下一篇文章，了解如何設定應用程式。
+> [!div class="nextstepaction"]
+> [設定應用程式](add-application-portal-configure.md)

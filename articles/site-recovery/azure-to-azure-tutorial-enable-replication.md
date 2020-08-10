@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a3cec6cb009e3d83d22f3f2a4140afe16db180a8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 50bf1ec7f21ccbc3a3fa8feaea02e45bd08a158a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372921"
+ms.locfileid: "87421411"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>設定適用於 Azure VM 的災害復原
 
@@ -66,12 +66,12 @@ ms.locfileid: "87372921"
 
 如果您使用以 URL 為基礎的防火牆 Proxy 來控制輸出連線能力，請允許存取這些 URL：
 
-| **URL** | **詳細資料** |
-| ------- | ----------- |
-| `*.blob.core.windows.net` | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
-| `login.microsoftonline.com` | 提供 Site Recovery 服務 URL 的授權和驗證。 |
-| `*.hypervrecoverymanager.windowsazure.com` | 允許 VM 與 Site Recovery 服務進行通訊。 |
-| `*.servicebus.windows.net` | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
+| **名稱**                  | **商業**                               | **政府**                                 | **說明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| 儲存體                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 提供 Site Recovery 服務 URL 的授權和驗證。 |
+| 複寫               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 允許 VM 與 Site Recovery 服務進行通訊。 |
+| 服務匯流排               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
 
@@ -117,7 +117,7 @@ Azure Site Recovery 提供 3 種內建角色，以控制 Site Recovery 管理作
 Site Recovery 會擷取與訂用帳戶和資源群組/雲端服務相關聯的 VM 清單。
 
 1. 在 [虛擬機器] 中，選取您要複寫的 VM。
-1. 選取 [確定]。
+1. 選取 [確定]  。
 
 ### <a name="configure-replication-settings"></a>設定複寫設定
 

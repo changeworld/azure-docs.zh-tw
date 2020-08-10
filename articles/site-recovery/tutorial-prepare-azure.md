@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130918"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498968"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>準備 Azure 以進行內部部署災害復原至 Azure
 
@@ -62,7 +62,7 @@ ms.locfileid: "86130918"
 6. 在 [區域]  中，選取保存庫應位於的區域。 我們使用**西歐**。
 7. 選取 [檢閱 + 建立]  。
 
-   ![建立新保存庫](./media/tutorial-prepare-azure/new-vault-settings.png)
+   ![建立復原服務保存庫頁面的螢幕擷取畫面。](./media/tutorial-prepare-azure/new-vault-settings.png)
 
    新的保存庫會出現在 [儀表板]   > [所有資源]  上，以及主要 [復原服務保存庫]  頁面上。
 
@@ -81,7 +81,7 @@ ms.locfileid: "86130918"
 9. 我們保留基本 DDoS 保護的預設選項，且網路上沒有任何服務端點或防火牆。
 9. 選取 [建立]  。
 
-   ![建立虛擬網路](media/tutorial-prepare-azure/create-network.png)
+   ![建立虛擬網路選項的螢幕擷取畫面。](media/tutorial-prepare-azure/create-network.png)
 
 虛擬網路的建立會耗用幾秒鐘時間。 建立後，您會在 Azure 入口網站儀表板中看到它。
 

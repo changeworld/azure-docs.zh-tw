@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/15/2020
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76167004"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439727"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教學課程：使用自訂視覺服務在邊緣執行影像分類
 
@@ -142,7 +142,7 @@ Azure IoT Edge 可藉由將工作負載從雲端移至邊緣，來提升 IoT 解
 
 解決方案可讓您以邏輯方式來開發及組織單一 IoT Edge 部署的多個模組。 解決方案會包含一或多個模組的程式碼，以及用來宣告要如何在 IoT Edge 裝置上設定這些模組的部署資訊清單。 
 
-1. 選取 [檢視]   > [命令選擇區]  ，以開啟 VS Code 命令選擇區。 
+1. 在 Visual Studio Code 中，選取 [檢視]   > [命令選擇區]  ，以開啟 VS Code 命令選擇區。 
 
 1. 在命令選擇區中，輸入並執行命令 Azure IoT Edge：**新增 IoT Edge 解決方案**。 在命令選擇區中提供下列資訊，以建立解決方案： 
 
@@ -152,7 +152,7 @@ Azure IoT Edge 可藉由將工作負載從雲端移至邊緣，來提升 IoT 解
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱 (例如 **CustomVisionSolution**)，或接受預設值。 |
    | 選取模組範本 | 選擇 [Python 模組]  。 |
    | 提供模組名稱 | 將模組命名為 **classifier**。<br><br>此模組名稱必須是小寫。 IoT Edge 在參考模組時會區分大小寫，而且此解決方案所使用的程式庫會將所有要求的格式設為小寫。 |
-   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會預先填入上一個步驟的容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。<br><br>最終字串的樣貌如下： **\<registry name\>.azurecr.io/classifier**。 |
+   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會預先填入上一個步驟的容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。<br><br>最終字串看起來會類似於： **\<registry name\>.azurecr.io/classifier**。 |
  
    ![提供 Docker 映像存放庫](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -161,6 +161,8 @@ Visual Studio Code 視窗會載入 IoT Edge 解決方案工作區。
 ### <a name="add-your-registry-credentials"></a>新增登錄認證
 
 環境檔案會儲存容器登錄的認證，並與 IoT Edge 執行階段共用這些認證。 執行階段需要有這些認證才能將私人映像提取到 IoT Edge 裝置。
+
+IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將這些認證填入到環境檔案中。 請查看您的認證是否已包含其中。 如果沒有，請立即新增：
 
 1. 在 VS Code 總管中，開啟 .env 檔案。
 2. 使用從 Azure Container Registry 複製過來的 [使用者名稱]  和 [密碼]  值來更新欄位。
@@ -210,14 +212,14 @@ Visual Studio Code 中的 Python 模組範本包含一些程式碼範例，可�
 
 在本節中，您會在相同的 CustomVisionSolution 中新增模組，並提供程式碼以建立模擬觀景窗。 
 
-1. 在同一個 Visual Studio Code 視窗中，使用命令選擇區來執行 [Azure IoT Edge:  新增 IoT Edge 模組] 命令來新增更多項目。 在命令選擇區中，為新模組提供下列資訊： 
+1. 在同一個 Visual Studio Code 視窗中，使用命令選擇區來執行 [Azure IoT Edge:新增 IoT Edge 模組] 命令來新增更多項目。 在命令選擇區中，為新模組提供下列資訊： 
 
    | Prompt | 值 | 
    | ------ | ----- |
-   | 選取部署範本檔案 | 選取 CustomVisionSolution 資料夾中的 deployment.template.json 檔案。 |
-   | 選取模組範本 | 選取 [Python 模組]  |
+   | 選取部署範本檔案 | 選取 CustomVisionSolution 資料夾中的 **deployment.template.json** 檔案。 |
+   | 選取模組範本 | 選取 [Python 模組] |
    | 提供模組名稱 | 將模組命名為 **cameraCapture** |
-   | 提供模組的 Docker 映像存放庫 | 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。<br><br>最終字串的樣貌如下： **\<registryname\>.azurecr.io/cameracapture**。 |
+   | 提供模組的 Docker 映像存放庫 | 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。<br><br>最終字串看起來會類似於： **\<registryname\>.azurecr.io/cameracapture**。 |
 
    VS Code 視窗會在解決方案工作區中載入新模組，並更新 deployment.template.json 檔案。 現在您應該會看到兩個模組資料夾：classifier 和 cameraCapture。 
 
@@ -364,7 +366,7 @@ Visual Studio Code 的 IoT Edge 擴充功能會在每個 IoT Edge 解決方案�
 
     ```json
         "routes": {
-          "CameraCaptureToIoTHub": "FROM /messages/modules/cameraCapture/outputs/* INTO $upstream"
+          "cameraCaptureToIoTHub": "FROM /messages/modules/cameraCapture/outputs/* INTO $upstream"
         },
     ```
 
@@ -372,31 +374,51 @@ Visual Studio Code 的 IoT Edge 擴充功能會在每個 IoT Edge 解決方案�
 
 7. 儲存 **deployment.template.json** 檔案。
 
-## <a name="build-and-deploy-your-iot-edge-solution"></a>建置和部署您的 IoT Edge 方案
+## <a name="build-and-push-your-iot-edge-solution"></a>建置和推送 IoT Edge 解決方案
 
-兩個模組都建立好且部署資訊清單範本已完成設定後，您便可開始建置容器映像，並將其推送至容器登錄。 
+兩個模組都建立好且部署資訊清單範本已完成設定後，您便可開始建置容器映像，並將其推送至容器登錄。
 
 映像進入登錄後，便可將解決方案部署到 IoT Edge 裝置。 您可以透過 IoT 中樞在裝置上設定模組，但您也可以透過 Visual Studio Code 存取 IoT 中樞和裝置。 在本節中，您會設定對 IoT 中樞的存取，然後使用 VS Code 將解決方案部署至您的 IoT Edge 裝置。
 
-首先，建置解決方案並推送至容器登錄。 
+首先，建置解決方案並推送至容器登錄。
 
-1. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]  。 您可以在 VS Code 的整合式終端機中查看這項作業的進度。 
-2. 請注意，解決方案 **config** 中已新增新的資料夾。展開此資料夾，然後開啟其中的 **deployment.json** 檔案。
-3. 檢閱 deployment.json 檔案中的資訊。 系統會根據您所設定的部署範本檔案以及解決方案中的資訊 (包括 .env 檔案和 module.json 檔案)，自動建立 (或更新) deployment.json 檔案。 
+1. 選取 [檢視]   > [終端機]  ，以開啟 VS Code 整合式終端機。
 
-接下來，選取裝置並部署解決方案。
+2. 在終端機中輸入下列命令來登入 Docker。 使用您 Azure 容器登錄中的使用者名稱、密碼和登入伺服器登入。 您可以在 Azure 入口網站中，從登錄的 [存取金鑰]  區段擷取這些值。
 
-1. 在 VS Code 總管中，展開 [Azure IoT 中樞裝置]  區段。 
-2. 以滑鼠右鍵按一下部署的目標裝置，然後選取 [建立單一裝置的部署]  。 
-3. 在檔案總管中，瀏覽至解決方案內的 **config** 資料夾，然後選擇 **deployment.json**。 按一下 [選取 Edge 部署資訊清單]  。 
+   ```bash
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
+   ```
 
-如果部署成功，VS Code 輸出中便會列印出確認訊息。 在 VS Code 總管中，展開此部署所用 IoT Edge 裝置的相關詳細資料。 如果模組未立即顯示，請將滑鼠游標停留在 **Azure IoT 中樞裝置**標頭以啟用 [重新整理] 按鈕。 模組可能需要一些時間才會啟動並向 IoT 中樞回報。 
+   您可能會收到安全性警告，建議您使用 `--password-stdin`。 雖然建議生產案例使用該最佳做法，但是不在本教學課程的討論範圍內。 如需詳細資訊，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 參考。
 
-您也可以查看並確認所有模組均已在裝置本身上啟動並執行。 在 IoT Edge 裝置上執行下列命令，以查看模組的狀態。 模組可能需要一些時間才會啟動。
+3. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]  。
+
+   建置和推送命令會啟動三項作業。 首先，它會在解決方案中建立名為 **config** 的新資料夾，以保存完整部署資訊清單 (根據部署範本中的資訊建立)，以及其他解決方案檔案。 接著，它會執行 `docker build`，以根據目標架構的適當 dockerfile 建置容器映像。 然後，它會執行 `docker push` 以將映像存放庫推送至您的容器登錄。
+
+   此程序第一次進行時可能需要幾分鐘的時間，但下一次執行命令時速度就會變快。
+
+## <a name="deploy-modules-to-device"></a>將模組部署到裝置
+
+使用 Visual Studio Code 總管和 Azure IoT Tools 擴充功能，將模組專案部署到您的 IoT Edge 裝置。 您已備妥您的案例所需的部署資訊清單，即 config 資料夾中的 **deployment.amd64.json** 檔案。 現在您只需選取要接收部署的裝置即可。
+
+請確定您的 IoT Edge 裝置已啟動並執行。
+
+1. 在 Visual Studio Code 總管中，展開 [Azure IoT 中樞] 區段下的 [裝置] 來查看您的 IoT 裝置清單。
+
+2. 以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [建立單一裝置的部署]。
+
+3. 選取 **config** 資料夾中的 **deployment.amd64.json** 檔案，然後按一下 [選取 Edge 部署資訊清單]。 請勿使用 deployment.template.json 檔案。
+
+4. 請展開裝置下的**模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的**分類器**和 **cameraCapture** 模組正在與 **$edgeAgent** 和 **$edgeHub** 一起執行。  
+
+您也可以查看並確認所有模組均已在裝置本身上啟動並執行。 在 IoT Edge 裝置上執行下列命令，以查看模組的狀態。
 
    ```bash
    iotedge list
    ```
+
+模組可能需要幾分鐘才會啟動。 IoT Edge 執行階段需要接收其新的部署資訊清單、從容器執行階段提取模組映像，然後啟動每個新的模組。
 
 ## <a name="view-classification-results"></a>檢視分類結果
 
@@ -408,9 +430,14 @@ Visual Studio Code 的 IoT Edge 擴充功能會在每個 IoT Edge 解決方案�
    iotedge logs cameraCapture
    ```
 
-從 Visual Studio Code 中，以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [開始監視內建事件端點]  。 
+從 Visual Studio Code 中，以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [開始監視內建事件端點]。 
 
-來自自訂視覺模組的結果 (從 cameraCapture 模組以訊息形式傳來)，會包含影像屬於鐵杉還是櫻花的機率。 由於影像是鐵杉，您應該看到機率為 1.0。 
+> [!NOTE]
+> 您一開始可能會在 cameraCapture 模組的輸出中看到一些連線錯誤。 這是因為部署和啟動模組之間的延遲所致。
+>
+> cameraCapture 模組會自動重新嘗試連線，直到成功為止。 之後，您應該會開始看到預期的影像分類訊息，如下所示。
+
+來自自訂視覺模組的結果 (從 cameraCapture 模組以訊息形式傳來)，會包含影像屬於鐵杉還是櫻花的機率。 由於影像是鐵杉，您應該看到機率為 1.0。
 
 ## <a name="clean-up-resources"></a>清除資源
 

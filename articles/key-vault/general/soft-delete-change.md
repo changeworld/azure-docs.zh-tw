@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91068bacee0bde9e11cc23816bd8e2a101854fb2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c75da4c27eae76df51836143c4fb383a1473159a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388254"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564124"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>所有金鑰保存庫都將會啟用虛刪除
 
@@ -73,7 +73,7 @@ ms.locfileid: "87388254"
 1. 登入 Azure 管理入口網站。
 2. 搜尋您的 Key Vault。
 3. 選取 [設定] 底下的 [屬性]。
-4. 在 [虛刪除] 底下，選取對應至 [啟用此保存庫及其物件的復原] 的選項按鈕。
+4. 在 [虛刪除] 底下，選取對應至 [啟用此保存庫及其物件的復原] 選項按鈕。
 5. 設定虛刪除的保留期間。
 6. 選取 [儲存]。
 

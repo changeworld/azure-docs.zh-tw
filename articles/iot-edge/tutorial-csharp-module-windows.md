@@ -11,12 +11,12 @@ ms.service: iot-edge
 ms.custom:
 - mvc
 - amqp
-ms.openlocfilehash: b71db71ac61e0dcd65a2546b2164610e618dab18
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 105dbed66b67f16b305cea74b9761abbef64d5fd
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81733498"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439786"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>教學課程：開發適用於 Windows 裝置的 C# IoT Edge 模組
 
@@ -83,7 +83,7 @@ Azure IoT Edge Tools 會針對 Visual Studio 中所有支援的 IoT Edge 模組�
    | ----- | ----- |
    | 選取範本 | 選取 [C# 模組]  。 |
    | 模組專案名稱 | 將模組命名為 **CSharpModule**。 |
-   | Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會從模組專案名稱值預先填入容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<登錄名稱\>.azurecr.io/csharpmodule。 |
+   | Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會從模組專案名稱值預先填入容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 <br><br> 最終的映像存放庫看起來類似於：\<registry name\>.azurecr.io/csharpmodule。 |
 
    ![針對目標裝置、模組類型和容器登錄設定您的專案](./media/tutorial-csharp-module-windows/add-application-and-module.png)
 
@@ -309,9 +309,11 @@ Azure IoT Edge Tools 會針對 Visual Studio 中所有支援的 IoT Edge 模組�
 
    建置和推送命令會啟動三項作業。 首先，它會在解決方案中建立名為 **config** 的新資料夾，以保存完整部署資訊清單 (根據部署範本中的資訊建立)，以及其他解決方案檔案。 接著，它會執行 `docker build`，以根據目標架構的適當 dockerfile 建置容器映像。 然後，它會執行 `docker push` 以將映像存放庫推送至您的容器登錄。
 
+   此程序第一次進行時可能需要幾分鐘的時間，但下一次執行命令時速度就會變快。
+
 ## <a name="deploy-modules-to-device"></a>將模組部署到裝置
 
-使用 Visual Studio 雲端總管和 Azure IoT Edge Tools 擴充功能，將模組專案部署到您的 IoT Edge 裝置。 您已備妥您的案例所需的部署資訊清單，即 config 資料夾中的 **deployment.json** 檔案。 現在您只需選取要接收部署的裝置即可。
+使用 Visual Studio 雲端總管和 Azure IoT Edge Tools 擴充功能，將模組專案部署到您的 IoT Edge 裝置。 您已備妥您的案例所需的部署資訊清單，即 config 資料夾中的 **deployment.windows-amd64.json** 檔案。 現在您只需選取要接收部署的裝置即可。
 
 請確定您的 IoT Edge 裝置已啟動並執行。
 
@@ -319,9 +321,9 @@ Azure IoT Edge Tools 會針對 Visual Studio 中所有支援的 IoT Edge 模組�
 
 2. 以滑鼠右鍵按一下您要接收部署的 IoT Edge 裝置名稱。
 
-3. 選取 [建立部署]  。
+3. 選取 [建立部署]。
 
-4. 在檔案總管中，選取您解決方案的 config 資料夾中的 **deployment.windows-amd64** 檔案。
+4. 在檔案總管中，選取您解決方案的 config 資料夾中的 **deployment.windows-amd64.json** 檔案。
 
 5. 重新整理雲端總管，以查看列在您裝置之下的已部署模組。
 
@@ -333,9 +335,9 @@ Azure IoT Edge Tools 會針對 Visual Studio 中所有支援的 IoT Edge 模組�
 
 1. 在 Visual Studio 雲端總管中，選取您的 IoT Edge 裝置名稱。
 
-2. 在 [動作]  清單中，選取 [開始監視內建事件端點]  。
+2. 在 [動作] 清單中，選取 [開始監視內建事件端點]。
 
-3. 檢視送達 IoT 中樞的訊息。 訊息可能需要一段時間才會送達，因為我們對 CSharpModule 程式碼所做的變更會等到機器溫度達到 25 度時才會傳送訊息。 它也會將 [警示]  訊息類型新增至任何觸達該溫度閾值的訊息。
+3. 檢視送達 IoT 中樞的訊息。 訊息可能需要一段時間才會送達，因為我們對 CSharpModule 程式碼所做的變更會等到機器溫度達到 25 度時才會傳送訊息。 它也會將 [警示] 訊息類型新增至任何觸達該溫度閾值的訊息。
 
    ![檢視送達 IoT 中樞的訊息](./media/tutorial-csharp-module-windows/view-d2c-message.png)
 
@@ -343,7 +345,7 @@ Azure IoT Edge Tools 會針對 Visual Studio 中所有支援的 IoT Edge 模組�
 
 我們已使用 CSharpModule 模組對應項來設定 25 度的溫度閾值。 您可以使用模組對應項來變更此功能，而不必更新模組程式碼。
 
-1. 在 Visual Studio 中，開啟 **deployment.windows-amd64.json** 檔案。 (並非 deployment.template 檔案。 如果您在方案總管中沒看到 config 檔案中的部署資訊清單，請選取總管工具列中的 [顯示所有檔案]  圖示。)
+1. 在 Visual Studio 中，開啟 **deployment.windows-amd64.json** 檔案。 (並非 deployment.template 檔案。 如果您在方案總管中沒看到 config 檔案中的部署資訊清單，請選取總管工具列中的 [顯示所有檔案] 圖示。)
 
 2. 尋找 CSharpModule 對應項，然後將 **temperatureThreshold** 參數的值變更為高於最近報告溫度 5 到 10 度的新溫度。
 

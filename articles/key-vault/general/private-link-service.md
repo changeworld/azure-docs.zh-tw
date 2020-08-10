@@ -7,12 +7,13 @@ ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.openlocfilehash: 95a999f38104e0bb3cfd6a510bd8f9e3d5440562
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 70a0620369792c1aaf2c11867fd468f42d6bb9ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521083"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494684"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>整合 Key Vault 與 Azure Private Link
 
@@ -233,6 +234,38 @@ Address:  10.1.0.5 (private IP address)
 Aliases:  <your-key-vault-name>.vault.azure.net
           <your-key-vault-name>.privatelink.vaultcore.azure.net
 ```
+
+## <a name="troubleshooting-guide"></a>疑難排解指南
+
+* 請檢查以確定私人端點處於已核准狀態。 
+    1. 您可以在 Azure 入口網站檢查並修正。 開啟 Key Vault 資源，然後按一下 [網路] 選項。 
+    2. 接著選取私人端點連線索引標籤。 
+    3. 請確定連線狀態「已核准」，且佈建狀態為「已成功」。 
+    4. 您也可以瀏覽至私人端點資源，並在該處檢閱相同的屬性，然後再次檢查該虛擬網路是否與您所使用的相符。
+
+* 請檢查以確定您有私人 DNS 區域資源。 
+    1. 您必須具有與下列名稱完全相同的私人 DNS 區域資源： privatelink.vaultcore.azure.net。 
+    2. 若要了解如何進行這項設定，請參閱下列連結。 [私人 DNS 區域](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    
+* 檢查以確認私人 DNS 區域並未連結至虛擬網路。 如果您仍然收到傳回的公用 IP 位址，表示可能發生問題。 
+    1. 如果私人區域 DNS 未連結到虛擬網路，來自虛擬網路的 DNS 查詢將會傳回金鑰保存庫的公用 IP 位址。 
+    2. 瀏覽至 Azure 入口網站中的私人 DNS 區域資源，按一下 [虛擬網路連結] 選項。 
+    4. 必須列出將執行金鑰保存庫呼叫的虛擬網路。 
+    5. 如果不存在，請加以新增。 
+    6. 如需詳細步驟，請參閱下列文件：[將虛擬網路連結到私人 DNS 區域](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)
+
+* 請檢查並確定私人 DNS 區域沒有遺失金鑰保存庫的 A 記錄。 
+    1. 瀏覽至 [私人 DNS 區域] 頁面。 
+    2. 按一下 [概觀]，並檢查是否有具有金鑰保存庫簡單名稱的 A 記錄 (例如 fabrikam)。 請不要指定任何尾碼。
+    3. 請確定您已檢查拼寫，並建立或修正 A 記錄。 您可以使用 3600 的 TTL (1 小時)。 
+    4. 請確定您指定的是正確的私人 IP 位址。 
+    
+* 檢查並確定 A 記錄具有正確的 IP 位址。 
+    1. 您可以在 Azure 入口網站中開啟私人端點資源，以確認 IP 位址 
+    2. 瀏覽至 Azure 入口網站 (而非 Key Vault 資源) 中的 Microsoft.Network/privateEndpoints 資源
+    3. 在概觀頁面中尋找網路介面，然後按一下該連結。 
+    4. 此連結會顯示 NIC 資源的概觀，其中包含私人 IP 位址屬性。 
+    5. 確認這是 A 記錄中指定的正確 IP 位址。
 
 ## <a name="limitations-and-design-considerations"></a>限制和設計考量
 

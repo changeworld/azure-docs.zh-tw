@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 360af0406a816a02540881962ed8794d69ce3bbb
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340823"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531807"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立及管理 Azure 檔案共用 
 本指南會逐步說明透過 PowerShell 來使用 [Azure 檔案共用](storage-files-introduction.md)的基本概念。 Azure 檔案共用與其他檔案共用類似，但它儲存在雲端中，並且由 Azure 平台支援。 Azure 檔案共用支援業界標準 SMB 通訊協定，並可在多個機器、應用程式及執行個體上啟用檔案共用。 
@@ -88,7 +88,7 @@ Azure 檔案服務提供兩個在 Azure 檔案共用中使用檔案和資料夾�
 - 您要利用無伺服器資源，例如 [Azure Functions](../../azure-functions/functions-overview.md)。 
 - 您要建立會與許多 Azure 檔案共用互動的加值服務，例如執行備份或防毒掃描。
 
-下列範例示範如何搭配 File REST 通訊協定使用 Azure PowerShell 模組，來操作 Azure 檔案共用。 `-Context` 參數可用來擷取儲存體帳戶金鑰，以對檔案共用執行指定的動作。 若要擷取儲存體帳戶金鑰，您必須具有儲存體帳戶上 `Owner` 的 RBAC 角色。
+下列範例示範如何搭配 File REST 通訊協定使用 Azure PowerShell 模組，來操作 Azure 檔案共用。 `-Context` 參數可用來擷取儲存體帳戶金鑰，以對檔案共用執行指定的動作。 若要擷取儲存體帳戶金鑰，您必須具有儲存體帳戶上 `Owner` 的 Azure 角色。
 
 #### <a name="create-directory"></a>建立目錄
 若要在 Azure 檔案共用的根目錄建立名為 *myDirectory* 的新目錄，請使用 [New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) Cmdlet。

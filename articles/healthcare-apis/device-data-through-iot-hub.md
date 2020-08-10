@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 06/27/2020
 ms.author: punagpal
-ms.openlocfilehash: aeed0c90eeecd59e23a1d87a3ebc1e1a836a84ec
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: d606cd4f5c4b901c060c97d73524997b94eaf225
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116847"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446294"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>教學課程：透過 Azure IoT 中樞接收裝置資料
 
@@ -96,7 +96,7 @@ Azure IoT 中樞支援稱為[訊息路由](https://docs.microsoft.com/azure/iot-
 您可以使用 Postman，在 Azure API for FHIR 上檢視 IoT 連接器所建立的 FHIR 觀察資源。 設定您的 [Postman 以存取 Azure API for FHIR](access-fhir-postman-tutorial.md)，並向 `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` 提出 `GET` 要求，以在上述範例訊息中，使用已提交的心率值來檢視觀察 FHIR 資源。
 
 > [!TIP]
-> 請確定您的使用者擁有適當的 Azure API for FHIR 資料平面存取權。 使用 [Azure 角色型存取控制](configure-azure-rbac.md)，指派必要的資料平面角色。
+> 請確定您的使用者擁有適當的 Azure API for FHIR 資料平面存取權。 使用 [Azure 角色型存取控制 (Azure RBAC)](configure-azure-rbac.md)，指派必要的資料平面角色。
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -114,4 +114,3 @@ Azure IoT 中樞支援稱為[訊息路由](https://docs.microsoft.com/azure/iot-
 >[IoT 連接器對應範本](iot-mapping-templates.md)
 
 FHIR 是 HL7 的註冊商標，必須搭配 HL7 權限方可使用。
-

@@ -6,26 +6,26 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: ff700739e2f8c6330ea151dbe489332acea3238c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/29/2020
+ms.openlocfilehash: 4d1a56c80cab58e98121ae35c98a086d16dfe02b
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71274905"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432238"
 ---
 # <a name="create-an-azure-cosmos-account-with-virtual-network-service-endpoints-using-azure-cli"></a>使用 Azure CLI 建立具有虛擬網路服務端點的 Azure Cosmos 帳戶
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本主題會要求您執行 Azure CLI 2.0.73 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+若選擇在本機安裝及使用 CLI，此命令需要您執行 Azure CLI 2.9.1 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="sample-script"></a>範例指令碼
 
-此範例會建立具有前端和後端子網路的新虛擬網路，並啟用 `Microsoft.AzureCosmosDB` 的服務端點。 然後，它會擷取此子網路的資源識別碼，並將其套用至 Azure Cosmos 帳戶，然後啟用該帳戶的服務端點。
+此範例會建立具有前端和後端子網路的新虛擬網路，並啟用 `Microsoft.AzureCosmosDB` 的服務端點。 然後，其會擷取此子網路的資源識別碼，並將其套用至 Azure Cosmos 帳戶，然後啟用該帳戶的服務端點。
 
 > [!NOTE]
-> 此範例會示範如何使用 SQL (核心) API 帳戶。 若要將此範例使用於其他 API，請將下面指令碼中的 `enable-virtual-network` 和 `virtual-network-rules` 參數套用至您的 API 專屬指令碼。
+> 此範例會示範如何使用 Core (SQL) API 帳戶。 若要將此範例使用於其他 API，請將下面指令碼中的 `enable-virtual-network` 和 `virtual-network-rules` 參數套用至您的 API 專屬指令碼。
 
 [!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/common/service-endpoints.sh "Create an Azure Cosmos account with service endpoints.")]
 

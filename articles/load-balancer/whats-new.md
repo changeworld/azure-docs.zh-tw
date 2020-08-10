@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 8b44dc230dbee1b29b9889a1b81e35ebe25f6b97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24c5133b9c012b628e43e956c56d5112e1ad4649
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078689"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447030"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure Load Balancer 的新功能
 
@@ -34,6 +34,16 @@ Azure Load Balancer 會定期更新。 請隨時掌握最新公告。 本文提�
 | 驗證 | 增加 HA 連接埠的驗證 | 已新增驗證，確保只有在啟用浮動 IP 時，才可設定 HA 連接埠規則和非 HA 連接埠規則。 先前已進行這項設定，但未如預期般執行。 未進行任何功能變更。 您可以在[這裡](load-balancer-ha-ports-overview.md#limitations)深入了解| 2020 年 6 月 |
 | 功能| Azure Load Balancer 的 IPv6 支援 (正式推出) | 您可以使用 IPv6 位址作為您 Azure Load Balancer 的前端。 [在這裡了解如何建立雙重堆疊應用程式](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |2020 年 4 月|
 | 功能| 閒置逾時時的 TCP 重設 (正式推出)| 使用 TCP 重設來建立更具有預測性的應用程式行為。 [深入了解](load-balancer-tcp-reset.md)| 2020 年 2 月 |
+
+## <a name="known-issues"></a>已知問題
+
+產品小組正積極處理下列已知問題的解決方法：
+
+|問題 |描述  |降低  |
+| ---------- |---------|---------|
+| Log Analytics 匯出 | Log Analytics 無法匯出 Standard Load Balancer 的計量，也無法匯出基本 Load Balancer 的健全狀態探查狀態記錄  | [針對 Standard Load Balancer，使用 Azure 監視器取得多維度計量](load-balancer-standard-diagnostics.md)。 雖然無法使用 Log Analytics 進行監視，但 Azure 監視器會提供一組豐富的多維度計量視覺效果。 您可以透過 Load Balancer 的 [深入解析] 子刀鋒視窗，利用預先設定的計量儀表板。 如果使用基本 Load Balancer，請[升級至標準](upgrade-basic-standard.md)以進行生產層級計量監視。
+
+  
 
 ## <a name="next-steps"></a>後續步驟
 

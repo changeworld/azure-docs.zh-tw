@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: a06b4e6ced437cc83fadfad000fa682264264874
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a7e159c94bf1b9f3e8049fd657abb562f1c85671
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052412"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503917"
 ---
 # <a name="azure-synapse-analytics-ip-firewall-rules-preview"></a>Azure Synapse Analytics IP 防火牆規則 (預覽)
 
@@ -35,7 +35,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址，授與或拒絕 Syn
 
 ![Azure 入口網站中的 Azure Synapse 工作區 IP 設定。](./media/synpase-workspace-ip-firewall/ip-firewall-3.png)
 
-## <a name="connecting-to-synapse-from-your-own-network"></a>從您自己的網路連線到 Synapse
+## <a name="connect-to-synapse-from-your-own-network"></a>從您自己的網路連線到 Synapse
 
 您可以使用 Synapse Studio 連線到您的 Synapse 工作區。 您也可以使用 SQL Server Management Studio (SSMS) 來連線到您工作區中的 SQL 資源 (SQL 集區和 SQL 隨選)。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e77701e17ef1b47aa6b8e3b8f2d10e93bf5e054e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ead0c13a1fce0b5d56c9dd875c594a2269e2c78c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093255"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513106"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>教學課程：在 .NET 中搭配使用 Azure Key Vault 與虛擬機器
 
@@ -56,21 +56,15 @@ Azure Key Vault 可協助您保護秘密，例如，API 金鑰、存取應用程
 az login
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>建立資源群組和金鑰保存庫
+## <a name="create-a-resource-group-and-key-vault"></a>建立資源群組和金鑰保存庫
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="populate-your-key-vault-with-a-secret"></a>將祕密填入金鑰保存庫
+## <a name="populate-your-key-vault-with-a-secret"></a>將祕密填入金鑰保存庫
 
-現在使用 [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) 命令將祕密新增至您的金鑰保存庫。 若要在金鑰保存庫中建立名為 **mySecret** 的秘密，請輸入下列命令：
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
-```azurecli
-az keyvault secret set --vault-name "<your-unique-key-vault-name>" --name "mySecret" --value "MySecret"
-```
-
-此秘密會儲存值 **MySecret**。
-
-### <a name="create-a-virtual-machine"></a>建立虛擬機器
+## <a name="create-a-virtual-machine"></a>建立虛擬機器
 使用下列其中一個方法來建立 Windows 或 Linux 虛擬機器：
 
 | Windows | Linux |
@@ -79,7 +73,7 @@ az keyvault secret set --vault-name "<your-unique-key-vault-name>" --name "mySec
 | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) |
 | [Azure 入口網站](../../virtual-machines/windows/quick-create-portal.md) | [Azure 入口網站](../../virtual-machines/linux/quick-create-portal.md) |
 
-### <a name="assign-an-identity-to-the-vm"></a>將身分識別指派給 VM
+## <a name="assign-an-identity-to-the-vm"></a>將身分識別指派給 VM
 使用 [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) 命令，為虛擬機器建立系統指派的身分識別：
 
 ```azurecli
@@ -95,16 +89,16 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 }
 ```
 
-### <a name="assign-permissions-to-the-vm-identity"></a>對 VM 身分識別指派權限
+## <a name="assign-permissions-to-the-vm-identity"></a>對 VM 身分識別指派權限
 使用 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令，對您的金鑰保存庫指派先前建立的身分識別權限：
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-### <a name="sign-in-to-the-virtual-machine"></a>登入虛擬機器
+## <a name="sign-in-to-the-virtual-machine"></a>登入虛擬機器
 
-若要登入虛擬機器，請遵循[連線和登入執行 Windows 的 Azure 虛擬機器](../../virtual-machines/windows/connect-logon.md)或[連線和登入執行 Linux 的 Azure 虛擬機器](../../virtual-machines/linux/login-using-aad.md)中的指示。
+若要登入虛擬機器，請遵循[連線和登入 Azure Windows 虛擬機器](../../virtual-machines/windows/connect-logon.md)或[連線和登入 Azure Linux 虛擬機器](../../virtual-machines/linux/login-using-aad.md)中的指示。
 
 ## <a name="set-up-the-console-app"></a>設定主控台應用程式
 

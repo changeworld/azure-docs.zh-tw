@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c27a50f823dcda74d735e6314c9004ec36769d4
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 8a7bb300bb634b342b1141d175b0046c7d2d7e2b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870891"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810304"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>快速入門：使用 Azure Spatial Anchors 建立 Xamarin Android 應用程式
 
@@ -63,9 +63,7 @@ ms.locfileid: "83870891"
 
 找出 `SpatialAnchorsAccountId` 欄位，並將 `Set me` 取代為帳戶識別碼。
 
-開啟 `Xamarin/SampleXamarin.Android/AzureSpatialAnchorsManager.cs`。
-
-找出 `AzureSpatialAnchorsManager(Session arCoreSession)` 並新增下列程式碼行，以替換先前帳戶網域中的項目：`this.spatialAnchorsSession.Configuration.AccountDomain = "MyAccountDomain";`。
+找出 `SpatialAnchorsAccountDomain` 欄位，並將 `Set me` 取代為帳戶網域。
 
 ## <a name="deploy-the-app-to-your-android-device"></a>將應用程式部署到您的 Android 裝置
 

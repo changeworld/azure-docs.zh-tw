@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: b08670c51b56f01ad1193d2729ecc77821242a19
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ae3d0ac6fb332fa17fbe938572b94c51e0785089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200740"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449008"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>教學課程：介面和自訂模型
 
@@ -82,7 +82,7 @@ ms.locfileid: "86200740"
 1. 在裝置上，您可以抬起手掌以啟動 **AppMenu**；在 Unity 編輯器中則請使用快速鍵 'M'。
 1. 如果看不到功能表，請按 'M' 鍵以啟動功能表。 功能表會放在相機附近以方便互動。
 1. 授權現在會在 **AppMenu** 右側顯示為要求；現在您可使用此要求來授權應用程式管理遠端轉譯工作階段。
- ![UI 授權](./media/authorize-request-ui.png)\
+ ![UI 授權](./media/authorize-request-ui.png)
 1. 停止 Unity 以繼續進行本教學課程。
 
 ## <a name="manage-model-state"></a>管理模型狀態

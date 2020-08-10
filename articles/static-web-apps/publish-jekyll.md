@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 3ced7e758669041d11d50ae7bfaf1065cf5439b3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: c4211f21d78ac0e06743c97f1081804fd641f9d2
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561898"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563564"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>教學課程：將 Jekyll 網站發佈至 Azure Static Web Apps Preview
 
@@ -146,7 +146,7 @@ Azure Static Web Apps 會使用 GitHub 來發佈您的網站。 下列步驟說�
 
 1. 在文字編輯器中開啟 Jekyll 應用程式，然後開啟 _.github/workflows/azure-pages-<WORKFLOW_NAME>.yml_ 檔案。
 
-1. 將 `- uses: actions/checkout@v1` 這一行取代為下列設定區塊。
+1. 在接續組態區塊的區塊 `- uses: actions/checkout@v2` 之後，新增幾行。
 
     ```yml
     - uses: actions/checkout@v2
@@ -154,12 +154,12 @@ Azure Static Web Apps 會使用 GitHub 來發佈您的網站。 下列步驟說�
         submodules: true
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
-        with:
+      with:
         ruby-version: 2.6
     - name: Install dependencies
-        run: bundle install
+      run: bundle install
     - name: Jekyll build
-        run: jekyll build
+      run: jekyll build
     ```
 
 1. 認可已更新的工作流程，並推送至 GitHub。

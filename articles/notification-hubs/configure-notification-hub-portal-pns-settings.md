@@ -11,20 +11,21 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: de135b57755919a1d312783409caf3e800e03fd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077989"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761020"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入門：設定通知中樞中的推播通知
 
 Azure 通知中樞提供易於使用並可相應放大的推播引擎。使用通知中樞將通知傳送至任何平台 (iOS、Android、Windows、百度)，以及任何後端 (雲端或內部部署)。 如需詳細資訊，請參閱[什麼是 Azure 通知中樞](notification-hubs-push-notification-overview.md)。
 
-在本快速入門中，您將使用通知中樞內的平台通知系統 (PNS) 設定，來設定多個平台的推播通知。 本快速入門會說明要在 Azure 入口網站中採取的步驟。  [Google Firebase 雲端通訊](?tabs=azure-cli#google-firebase-cloud-messaging-fcm)包含如何使用 Azure CLI 的指示。
+在本快速入門中，您將使用通知中樞內的平台通知系統 (PNS) 設定，來設定多個平台的推播通知。 本快速入門會說明要在 Azure 入口網站中採取的步驟。 [Google Firebase 雲端通訊](?tabs=azure-cli#google-firebase-cloud-messaging-fcm)包含如何使用 Azure CLI 的指示。
 
-如果您尚未建立通知中樞，立即建立一個。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Azure 通知中樞](create-notification-hub-portal.md)或[使用 Azure CLI 建立 Azure 通知中樞](create-notification-hub-azure-cli.md)
+如果您尚未建立通知中樞，立即建立一個。 如需詳細資訊，請參閱[在 Azure 入口網站中建立 Azure 通知中樞](create-notification-hub-portal.md)或[使用 Azure CLI 建立 Azure 通知中樞](create-notification-hub-azure-cli.md)。
 
 ## <a name="apple-push-notification-service"></a>Apple Push Notification Service
 
@@ -108,9 +109,7 @@ Azure 通知中樞提供易於使用並可相應放大的推播引擎。使用�
 
 使用 [az notification-hub credential](/cli/azure/ext/notification-hub/notification-hub/credential) 命令取得其他平台的 Azure CLI 參考。
 
----
-
-如需將通知推送至 Android 應用程式的詳細資訊，請參閱[使用 Firebase 將推播通知傳送至 Android 裝置](notification-hubs-android-push-notification-google-fcm-get-started.md)。
+如需將通知傳送至 Android 應用程式的詳細資訊，請參閱[使用 Firebase 將推播通知傳送至 Android 裝置](notification-hubs-android-push-notification-google-fcm-get-started.md)。
 
 ## <a name="windows-push-notification-service"></a>Windows 推播通知服務
 

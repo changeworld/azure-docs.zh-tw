@@ -12,12 +12,12 @@ ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 263eb531466e26ed6069dc889c17e2632aa9ed20
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76704216"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799407"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>快速入門：設定應用程式以公開 Web API
 
@@ -75,6 +75,13 @@ ms.locfileid: "76704216"
 
 1. 完成時，請設定 [狀態]  並選取 [新增範圍]  。
 
+1. (選用) 若要隱藏提示您的應用程式使用者同意您已定義的範圍，可以「預先授權」用戶端應用程式存取您的 Web API。 您應該「只」預先授權信任的用戶端應用程式，因為您的使用者不會有機會拒絕同意。
+    1. 在**授權的用戶端應用程式**底下，選取 [新增用戶端應用程式]
+    1. 輸入您要預先授權的用戶端應用程式的**應用程式 (用戶端)識別碼**。 例如，您先前註冊的 Web 應用程式。
+    1. 在 [授權範圍] 底下，選取您想要隱藏同意提示的範圍，然後選取 [新增應用程式]。
+
+    用戶端應用程式現在是預先授權的用戶端應用程式 (PCA)，系統不會在使用者登入時顯示同意的提示。
+
 1. 遵循相關步驟來[確認已向其他應用程式公開 Web API](#verify-the-web-api-is-exposed-to-other-applications)。
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>透過應用程式資訊清單公開新的範圍或角色
@@ -83,8 +90,8 @@ ms.locfileid: "76704216"
 
 若要透過應用程式資訊清單公開新的範圍：
 
-1. 從應用程式的 [概觀]  頁面，選取 [資訊清單]  區段。 Web 式的資訊清單編輯器隨即開啟，以供您在入口網站內**編輯**資訊清單。 或者，您也可以選取 [下載]  並在本機編輯資訊清單，然後使用 [上傳]  以將其重新套用到您的應用程式。
-    
+1. 從應用程式的 [概觀] 頁面，選取 [資訊清單] 區段。 Web 式的資訊清單編輯器隨即開啟，以供您在入口網站內**編輯**資訊清單。 或者，您也可以選取 [下載] 並在本機編輯資訊清單，然後使用 [上傳] 以將其重新套用到您的應用程式。
+
     下列範例說明如何藉由將下列 JSON 元素新增至 `oauth2Permissions` 集合，從而在資源/API 上公開稱為 `Employees.Read.All` 的新範圍。
 
       ```json
@@ -105,19 +112,22 @@ ms.locfileid: "76704216"
    >
    > 稍後您可以視需要公開其他範圍。 請考慮您的 Web API 可能會公開多個與各種不同功能相關聯的範圍。 在執行階段，您的資源可藉由評估所收到之 OAuth 2.0 存取權杖中的範圍 (`scp`) 宣告，來控制 Web API 的存取。
 
-1. 完成時，按一下 [儲存]  。 您的 Web API 現在已設定為可供目錄中的其他應用程式使用。
+1. 完成時，按一下 [儲存]。 您的 Web API 現在已設定為可供目錄中的其他應用程式使用。
 1. 遵循相關步驟來[確認已向其他應用程式公開 Web API](#verify-the-web-api-is-exposed-to-other-applications)。
 
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>確認已向其他應用程式公開 Web API
 
-1. 返回 Azure AD 租用戶，選取 [應用程式註冊]  ，然後尋找並選取您想要設定的用戶端應用程式。
+1. 返回 Azure AD 租用戶，選取 [應用程式註冊]，然後尋找並選取您想要設定的用戶端應用程式。
 1. 重複進行[設定用戶端應用程式以存取 Web API](quickstart-configure-app-access-web-apis.md) 中所述的步驟。
-1. 當您進行到 [選取 API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-) 步驟時，選取您的資源。 您應該會看到可供用戶端權限要求使用的新範圍。
+1. 當您進行到[選取 API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis) 步驟時，選取您的資源 (Web API 應用程式註冊)。
+    * 如果您使用 Azure 入口網站建立了 Web API 應用程式註冊，您的 API 資源會列在**我的 API** 索引標籤中。
+    * 如果您允許 Visual Studio 在專案建立期間建立您的 Web API 應用程式註冊，您的 API 資源會列在**我的組織使用的 API** 索引標籤中。
+
+一旦選取了 Web API 資源，您應該會看到可供用戶端權限要求使用的新範圍。
 
 ## <a name="more-on-the-application-manifest"></a>應用程式資訊清單的詳細資料
 
-應用程式資訊清單可作為更新應用程式實體的一種機制，其可定義 Azure AD 應用程式身分識別設定的所有屬性。 如需應用程式實體和其結構描述的詳細資訊，請參閱[圖形 API 應用程式實體文件](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)。 該文章包含可用來指定您 API 權限之應用程式實體成員的完整參考資訊，包括：  
+應用程式資訊清單可作為更新應用程式實體的一種機制，其可定義 Azure AD 應用程式身分識別設定的所有屬性。 如需應用程式實體和其結構描述的詳細資訊，請參閱[圖形 API 應用程式實體文件](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)。 該文章包含可用來指定您 API 權限之應用程式實體成員的完整參考資訊，包括：
 
 * appRoles 成員，此成員為 [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) 實體的集合，可用來定義 Web API 的[應用程式權限](developer-glossary.md#permissions)。
 * oauth2Permissions 成員，此成員為 [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) 實體的集合，可用來定義 Web API 的[委派的權限](developer-glossary.md#permissions)。

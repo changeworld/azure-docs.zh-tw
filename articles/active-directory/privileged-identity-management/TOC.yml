@@ -8,7 +8,7 @@
   items:
     - name: 授權需求
       href: subscription-requirements.md
-    - name: 您無法管理的角色
+    - name: 無法使用 PIM 管理的角色
       href: pim-roles.md
     - name: 特殊權限的安全存取
       href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -18,7 +18,7 @@
       href: pim-resource-roles-overview-dashboards.md
     - name: 電子郵件通知
       href: pim-email-notifications.md
-    - name: Microsoft Graph API
+    - name: Microsoft Graph API 和 PIM
       href: pim-apis.md
 - name: 操作指南
   expanded: true
@@ -33,7 +33,7 @@
           href: pim-security-wizard.md
         - name: 探索 Azure 資源
           href: pim-resource-roles-discover-resources.md
-        - name: 授與其他人存取權以管理 PIM
+        - name: 將存取權委派給 PIM
           href: pim-how-to-give-access-to-pim.md
         - name: 提高存取權限以管理所有訂用帳戶
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json

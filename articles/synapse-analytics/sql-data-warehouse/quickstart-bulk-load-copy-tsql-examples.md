@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1e44b58335bf90dbc0e97b58de7f878bc94c91c7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05dd1f1d429b59c4d621b63c6b78a1fc00e8d4dd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371952"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528458"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地載入資料
 
@@ -88,13 +88,13 @@ WITH (
    > [!NOTE]
    > 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)**升級至 v2**。
 
-3. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料擁有者、參與者或讀取者** RBAC 角色指派給您的 SQL 伺服器。
+3. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料擁有者、參與者或讀取者** Azure 角色指派給您的 SQL 伺服器。
 
    > [!NOTE]
    > 僅有具備「擁有者」權限的成員才能執行此步驟。 如需各種 Azure 內建角色，請參閱此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
    
     > [!IMPORTANT]
-    > 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 RBAC 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。 
+    > 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 Azure 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。 
 
     ![授與 RBAC 授權以載入](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 
@@ -112,10 +112,10 @@ WITH (
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory 驗證 (AAD)
 #### <a name="steps"></a>步驟
 
-1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料擁有者、參與者或讀取者** RBAC 角色指派給您的 AAD 使用者。 
+1. 在您的儲存體帳戶底下，瀏覽至 [存取控制 (IAM)]，然後選取 [新增角色指派]。 將**儲存體 Blob 資料擁有者、參與者或讀取者** Azure 角色指派給您的 AAD 使用者。 
 
     > [!IMPORTANT]
-    > 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 RBAC 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。
+    > 指定**儲存體** **Blob 資料**的擁有者、參與者或讀取者 Azure 角色。 這些角色與 Azure 內建的擁有者、參與者和讀取者角色不同。
 
     ![授與 RBAC 授權以載入](./media/quickstart-bulk-load-copy-tsql-examples/rbac-load-permissions.png)
 

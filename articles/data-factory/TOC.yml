@@ -620,6 +620,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
         - name: 自我裝載整合執行階段的自動化指令碼
           href: self-hosted-integration-runtime-automation-scripts.md
+        - name: 在 Windows 容器中執行自我裝載整合執行階段
+          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: 在 Azure 中執行 SSIS 套件
       items:
         - name: 從 SSDT 在 Azure 中執行 SSIS 套件

@@ -3,16 +3,16 @@ title: 教學課程 - 使用 Azure IoT Edge 進行邊緣上的串流分析
 description: 在本教學課程中，您會將 Azure 串流分析作為模組部署至 IoT Edge 裝置
 author: kgremban
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220277"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439411"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>教學課程：將 Azure 串流分析部署為 IoT Edge 模組
 
@@ -134,7 +134,7 @@ Azure IoT Edge 裝置：
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. 選取 [儲存]。
+1. 選取 [儲存佇列]。
 
 ### <a name="configure-iot-edge-settings"></a>設定 IoT Edge 設定
 
@@ -189,7 +189,7 @@ Azure IoT Edge 裝置：
 
 1. 選取 [更新] 或 [取消]。
 
-1. 記下您的串流分析模組名稱 (因為您在下一個步驟將會用到此名稱)，然後選取 [下一步：路由] 以繼續。
+1. 記下您的串流分析模組名稱 (因為您在下一個步驟將會用到此名稱)。 然後，選取 [下一步:路由] 以繼續。
 
 1. 在 [路由] 索引標籤上，請定義要用來在模組與 IoT 中樞之間傳遞訊息的方式。 訊息會使用名稱/值組來構成。 以下表所示的配對來取代預設的 `route` 和 `upstream` 名稱和值，下列名稱/值組會以 Azure 串流分析模組的名稱取代 {moduleName} 的執行個體。
 

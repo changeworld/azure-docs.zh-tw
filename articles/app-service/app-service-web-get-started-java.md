@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ca3c7d6bc6621c4b82a44431ae313384c1653f79
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0ae304763718f649d7895394d67c2aec307f14af
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324228"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799985"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入門：在 Windows 上的 Azure App Service 中建立 Java 應用程式
 
@@ -49,13 +49,19 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>設定 Maven 外掛程式
 
-部署到 Azure App Service 的程序可自動從 Azure CLI 收取您的 Azure 認證。 如果您沒有安裝 Azure CLI，Maven 外掛程式會使用 Oauth 或裝置登入將您登入。 如有需要，請參閱[以 Maven 外掛程式驗證](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)的詳細資料。
+部署到 Azure App Service 的程序可自動從 Azure CLI 收取您的 Azure 認證。 如果您沒有在本機安裝 Azure CLI，Maven 外掛程式會使用 Oauth 或裝置登入將您登入。 如有需要，請參閱[以 Maven 外掛程式驗證](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication)的詳細資料。
 
-您可以在命令提示字元處，執行下列 maven 命令來設定部署，為第一個步驟中的 **Windows** OS 選擇 ['2']，然後按 **ENTER** 鍵接受預設設定，直到出現 [確認 (是/否)] 提示，然後按 ['y'] 完成設定。 
-
+您可以執行下列 maven 命令來設定部署
 ```bash
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
+
+系統會要求您選取 
+* **作業系統 (預設值：`linux`)**
+* **Java 版本 (預設值：`1.8`)**
+* **Web 容器 (預設值：`tomcat 8.5`)** 
+
+請小心輸入 **`2`** ，以在第一個步驟選擇 **Windows** OS。 您可以按下[輸入]，將其他設定保留為預設值。 最後，按 **`Y`** **確認 (Y/N)** 提示完成設定。
 
 範例程序如下所示：
 
@@ -153,8 +159,11 @@ code pom.xml
 `<runtime>` | true | 執行階段環境組態，您可以在[此處](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)查看詳細資料。 | 0.1.0+
 `<deployment>` | true | 部署組態，您可以在[此處](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)查看詳細資料。 | 0.1.0+
 
+請小心 `<appName>` 和 `<resourceGroup>`的值 (在示範中為 `helloworld-1590394316693` 和 `helloworld-1590394316693-rg`)，稍後會用到這兩個值。
+
 > [!div class="nextstepaction"]
 > [我遇到問題](https://www.research.net/r/javae2e?tutorial=app-service-web-get-started-java&step=config)
+
 
 ## <a name="deploy-the-app"></a>部署應用程式
 
@@ -169,13 +178,14 @@ az login
 mvn package azure-webapp:deploy
 ```
 
-完成部署後，在網頁瀏覽器中使用下列 URL，瀏覽至已部署的應用程式，例如 `http://<webapp>.azurewebsites.net/`。
+部署完成後，您的應用程式就會在 `http://<appName>.azurewebsites.net/` (示範中為 `http://helloworld-1590394316693.azurewebsites.net`) 準備就緒。 使用您的本機網頁瀏覽器開啟 URL，您應該會看到
 
 ![在 Azure App Service 中執行的範例應用程式](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
 **恭喜！** 您已將第一個 Java 應用程式部署至 Windows 上的 App Service。
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
+
 
 ## <a name="next-steps"></a>後續步驟
 > [!div class="nextstepaction"]

@@ -3,12 +3,12 @@ title: 使用管理群組來組織資源 - Azure Governance
 description: 了解管理群組及權限如何運作，以及如何使用。
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 787658cebcb8345edd616bcdde485883ea43e8dc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132920"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529342"
 ---
 # <a name="what-are-azure-management-groups"></a>什麼是 Azure 管理群組？
 
@@ -38,7 +38,7 @@ ms.locfileid: "87132920"
 
 ## <a name="root-management-group-for-each-directory"></a>每個目錄的根管理群組
 
-每個目錄會都會有一個最上層管理群組，名為「根」管理群組。 這個根管理群組會建置於階層內，讓所有的管理群組和訂用帳戶摺疊於其中。 這個根管理群組可讓全域原則和 RBAC 指派在目錄層級套用。 [Azure AD 全域管理員必須提高本身的權限](../../role-based-access-control/elevate-access-global-admin.md)，以成為此根群組最初的使用者存取管理員角色。 提高存取權限後，管理員即可將任何 RBAC 角色指派給其他目錄使用者或群組，以管理階層。 身為管理員，您可以將自己的帳戶指派為根管理群組的擁有者。
+每個目錄會都會有一個最上層管理群組，名為「根」管理群組。 這個根管理群組會建置於階層內，讓所有的管理群組和訂用帳戶摺疊於其中。 這個根管理群組可讓全域原則和 Azure 角色指派在目錄層級套用。 [Azure AD 全域管理員必須提高本身的權限](../../role-based-access-control/elevate-access-global-admin.md)，以成為此根群組最初的使用者存取管理員角色。 提高存取權限後，管理員即可將任何 Azure 角色指派給其他目錄使用者或群組，以管理階層。 身為管理員，您可以將自己的帳戶指派為根管理群組的擁有者。
 
 ### <a name="important-facts-about-the-root-management-group"></a>關於根管理群組的重要事實
 
@@ -50,7 +50,7 @@ ms.locfileid: "87132920"
   - 建立新的訂用帳戶時，會自動預設為根管理群組。
 - 所有 Azure 客戶都可以看到根管理群組，但並非所有的客戶都有權管理該根管理群組。
   - 有訂用帳戶存取權的所有人，都可以查看訂用帳戶在階層中的上下內容。  
-  - 根管理群組的預設存取權不會授予任何人。 Azure AD 全域管理員是唯一可以提升自己以取得存取權的使用者。 一旦全域管理員擁有根管理群組存取權之後，就可以將任何 RBAC 角色指派給其他使用者以進行  
+  - 根管理群組的預設存取權不會授予任何人。 Azure AD 全域管理員是唯一可以提升自己以取得存取權的使用者。 一旦全域管理員擁有根管理群組存取權之後，就可以將任何 Azure 角色指派給其他使用者以進行  
     管理。
 - 在 SDK 中，根管理群組或「租用戶根目錄」會作為管理群組來運作。
 
@@ -82,12 +82,12 @@ ms.locfileid: "87132920"
   
 ## <a name="management-group-access"></a>管理群組存取
 
-Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角色型存取控制 (RBAC)](../../role-based-access-control/overview.md)。
-這些權限會被存在於階層中的子資源繼承。 可以將任何 RBAC 角色指派至繼承階層直到資源的管理群組。 例如，可以將 RBAC 角色 VM 參與者指派至管理群組。 此角色對管理群組沒有任何作用，但會繼承該管理群組下的所有 VM。
+Azure 管理群組支援對所有的資源存取和角色定義使用 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md)。
+這些權限會被存在於階層中的子資源繼承。 可以將任何 Azure 角色指派至繼承階層直到資源的管理群組。 例如，可以將 Azure 角色 VM 參與者指派至管理群組。 此角色對管理群組沒有任何作用，但會繼承該管理群組下的所有 VM。
 
 下圖顯示了角色清單與管理群組上支援的動作。
 
-| RBAC 角色名稱             | 建立 | 重新命名 | 移動\*\* | 刪除 | 指派存取權 | 指派原則 | 讀取  |
+| Azure 角色名稱             | 建立 | 重新命名 | 移動\*\* | 刪除 | 指派存取權 | 指派原則 | 讀取  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
 |擁有者                       | X      | X      | X        | X      | X             | X             | X     |
 |參與者                 | X      | X      | X        | X      |               |               | X     |

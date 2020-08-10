@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/09/2020
-ms.openlocfilehash: aabb42dc8d86e500875819cbfc169bcc86733219
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/30/2020
+ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100795"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499546"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>快速入門：使用 Azure CLI 來建立和管理邏輯應用程式
 
@@ -271,3 +271,11 @@ Expecting value: line 1 column 1 (char 0)
 | 偵錯 | `--debug` | 顯示所有的偵錯記錄。 |
 | 說明訊息 | `--help -h` | 顯示說明對話方塊。 |
 | 查詢 | `--query` | 設定 JSON 輸出的 JMESPath 查詢字串。 |
+
+## <a name="next-steps"></a>後續步驟
+
+如需 Azure CLI 的詳細資訊，請參閱 [Azure CLI 文件](/cli/azure/?view=azure-cli-latest)。
+
+如需如何透過 CLI 建立基本邏輯應用程式的範例，請參閱[範例指令碼和工作流程定義](sample-logic-apps-cli-script.md)。
+
+您可以在 [Microsoft 的程式碼範例瀏覽器](/samples/browse/?products=azure-logic-apps)中找到其他 Logic Apps CLI 指令碼範例。

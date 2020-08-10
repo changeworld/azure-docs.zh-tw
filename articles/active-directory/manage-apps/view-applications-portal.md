@@ -12,13 +12,12 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249cdbef6214eb8c66da841d9eae817bcf794996
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: dce579596563855022f14bb2c07353b84d1e6127
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055387"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808366"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>快速入門：檢視使用您 Azure Active Directory (Azure AD) 租用戶進行身分識別管理的應用程式清單
 
@@ -68,11 +67,17 @@ ms.locfileid: "86055387"
 3. 嘗試輸入應用程式名稱的前幾個字母。 此範例顯示以 **Sales** 開頭的所有應用程式。
     ![顯示所有應用程式皆以 Sales 開頭的範例](media/view-applications-portal/search-by-prefix.png)
 
+
+> [!TIP]
+> 您可以使用圖形 API 自動管理應用程式，請參閱[使用 Microsoft Graph API 自動管理應用程式](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+
+
+## <a name="clean-up-resources"></a>清除資源
+
+您在本快速入門中未建立任何新的資源，因此無需清除任何內容。
+
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已了解如何檢視您 Azure AD 租用戶中的應用程式。 您已了解如何依據應用程式類型、狀態及可見性來篩選應用程式清單。 您也已了解如何搜尋特定應用程式。
-
-- [新增應用程式](add-application-portal.md)
-- [設定應用程式](add-application-portal-configure.md)
-- [設定單一登入](add-application-portal-setup-sso.md)
-- [刪除應用程式](delete-application-portal.md)
+前往下一篇文章，了解如何使用 Azure AD 作為應用程式的識別提供者。
+> [!div class="nextstepaction"]
+> [新增應用程式](add-application-portal.md)

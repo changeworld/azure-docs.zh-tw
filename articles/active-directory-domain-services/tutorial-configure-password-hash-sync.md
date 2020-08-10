@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e9d6f31674db0744e220a9cd88033a32bb5c1e17
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 02828e0c159e2d30dacc5759f1239dae1268dac5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024684"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491777"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>教學課程：在混合式環境的 Azure Active Directory Domain Services 中啟用密碼同步處理
 
@@ -22,7 +22,7 @@ ms.locfileid: "86024684"
 
 若要搭配使用 Azure AD DS 與從內部部署 AD DS 環境同步處理的帳戶，您必須設定 Azure AD Connect，以同步處理 NTLM 和 Kerberos 驗證所需的密碼雜湊。 設定 Azure AD Connect 之後，內部部署帳戶的建立或密碼變更事件後續也會將舊版密碼雜湊同步處理至 Azure AD。
 
-如果您使用沒有內部部署 AD DS 環境的僅限雲端帳戶，則不需要執行這些步驟。
+如果您使用沒有內部部署 AD DS 環境的僅限雲端帳戶，或使用「資源樹系」，則不需要執行這些步驟。 對於使用資源樹系的受控網域，內部部署密碼雜湊永遠不會進行同步處理。 內部部署帳戶的驗證會使用您自己的 AD DS 網域控制站樹系信任。
 
 在此教學課程中，您將會學到：
 

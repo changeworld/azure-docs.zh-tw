@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 06/11/2020
+ms.date: 07/31/2020
 ms.author: juliako
-ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090105"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489770"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>媒體服務 v3 中的動態封裝
 
@@ -33,6 +33,8 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 ## <a name="to-prepare-your-source-files-for-delivery"></a>準備來源檔案以進行傳遞
 
 若要利用動態封裝功能，您必須將您的夾層 (來源) 檔案[編碼](encoding-concept.md)成一組多位元速率 MP4 (ISO 基礎媒體 14496-12) 檔案。 您必須具有內含經過編碼的 MP4 的[資產](assets-concept.md)，以及媒體服務動態封裝所需的串流設定檔。 從這組 MP4 檔案中，您可以使用動態封裝透過下面描述的串流媒體通訊協定來傳遞影片。
+
+Azure 媒體服務動態封裝僅支援 MP4 容器格式的影片和音訊檔案。 使用替代的轉碼器 (例如 Dolby) 時，音訊檔案也必須編碼成 MP4 容器。  
 
 > [!TIP]
 > 取得 MP4 檔案和串流設定檔的方法之一，是[使用媒體服務編碼您的夾層檔案](#encode-to-adaptive-bitrate-mp4s)。 
@@ -87,7 +89,7 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 
 ![搭配動態封裝之隨選資料流處理工作流程的圖表](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-下載路徑會出現在上圖中，顯示您可直接透過「串流端點」 (原點) 下載 MP4 檔案 (您會在串流定位器上指定可下載的[串流原則](streaming-policy-concept.md))。<br/>動態封裝程式不會改變此檔案。 
+下載路徑會出現在上圖中，顯示您可直接透過「串流端點」 (原點) 下載 MP4 檔案 (您會在串流定位器上指定可下載的[串流原則](streaming-policy-concept.md))。<br/>動態封裝程式不會改變此檔案。 如果您要略過「串流端點」 (原始) 功能，可以選擇性地使用 Azure Blob 儲存體 API 來直接存取 MP4 以進行漸進式下載。 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>編碼為調適性位元速率 MP4
 
@@ -123,17 +125,17 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>動態封裝支援視訊轉碼器
 
-動態封裝支援 MP4 檔案，其包含使用 [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC 或 AVC1) 或 [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC、hev1 或 hvc1) 編碼的視訊。
+動態封裝支援的影片檔案格式為 MP4 的容器檔案格式，並包含以 [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC or AVC1) 或 [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC、hev1 或 hvc1) 編碼的影片。
 
 > [!NOTE]
 > 最多可達 4K 的解析度，以及最多每秒 60 個畫面的畫面播放速率，皆已透過「動態封裝」進行測試。 [進階編碼器](../previous/media-services-encode-asset.md#media-encoder-premium-workflow)支援透過舊版 v2 API 編碼成 H.265。
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>動態封裝支援的音訊轉碼器
 
-動態封裝支援以下列通訊協定編碼的音訊：
+動態封裝也支援以 MP4 檔案容器格式儲存的音訊檔案，其中包含下列其中一個轉碼器的編碼音訊串流：
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC、HE-AAC v1 或 HE-AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 或 E-AC3)
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC、HE-AAC v1 或 HE-AAC v2)。 
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 或 E-AC3)。  編碼的音訊必須以 MP4 容器格式儲存，才能使用動態封裝。
 * Dolby Atmos
 
    若要串流 Dolby Atmos 內容，可透過搭配 Common Streaming Format (CSF) 或 Common Media Application Format (CMAF) 分散式 MP4 的 MPEG-DASH 通訊協定之類的標準，或是透過搭配 CMAF 的 HTTP 即時串流 (HLS) 來達成。
@@ -146,6 +148,10 @@ Microsoft Azure 媒體服務可以用來為許多媒體來源檔案格式編碼�
     * DTS-HD Lossless (無核心) (dtsl)
 
 動態封裝支援使用 DASH 或 HLS (版本 4 或更高版本) 的多重音訊音軌，用於串流具有使用多個轉碼器和語言之多重音訊音軌的資產。
+
+對於上述所有的音訊轉碼器，編碼的音訊必須以 MP4 容器格式儲存，才能使用動態封裝。 此服務不支援 Blob 儲存體上的原始基本串流檔案格式 (例如不支援 .dts 和 .ac3)。 
+
+音訊封裝僅支援副檔名為 .mp4 和 .mp4a 的檔案。 
 
 ### <a name="limitations"></a>限制
 

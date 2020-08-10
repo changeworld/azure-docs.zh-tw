@@ -1,15 +1,15 @@
 ---
-title: 探索、評估 Amazon Web Services (AWS) VM，並將其遷移至 Azure
+title: 探索、評估 Amazon Web Services (AWS) EC2 VM，並將其遷移至 Azure
 description: 本文說明如何使用 Azure Migrate 將 AWS VM 遷移至 Azure。
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 5d697c2146144ca7f4b9a8739b6863ba31845f4e
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165425"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534819"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>探索、評估 Amazon Web Services (AWS) VM，並將其遷移至 Azure
 
@@ -172,7 +172,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
     9.10 在 [摘要] 中，選取 [安裝]。   
     9.11 [安裝進度] 會顯示安裝程序相關資訊。 完成時，選取 [完成]。 視窗會顯示重新開機的相關訊息。 選取 [確定]。   
     9.12 接下來，視窗會顯示有關組態伺服器連線複雜密碼的訊息。 將複雜密碼複製到剪貼簿，並將複雜密碼儲存在來源 VM 上的暫存文字檔中。 您稍後會在行動服務安裝程序期間用到此複雜密碼。
-10. 安裝完成之後，系統會自動啟動設備設定精靈 (您也可以使用在設備桌面上建立的 cspsconfigtool 捷徑來手動啟動精靈)。 使用精靈的 [管理帳戶] 索引標籤，新增要用於行動服務推送安裝的帳戶詳細資料。 在本教學課程中，我們將在要複寫的來源 VM 上手動安裝行動服務，因此請在此步驟中建立虛擬帳戶並繼續進行。
+10. 安裝完成之後，系統會自動啟動設備設定精靈 (您也可以使用在設備桌面上建立的 cspsconfigtool 捷徑來手動啟動精靈)。 使用精靈的 [管理帳戶] 索引標籤，新增要用於行動服務推送安裝的帳戶詳細資料。 在本教學課程中，我們將在要複寫的來源 VM 上手動安裝行動服務，因此請在此步驟中建立虛擬帳戶並繼續進行。 您可以提供下列詳細資料，以建立虛擬帳戶：「來賓」作為易記名稱、「使用者名稱」作為使用者名稱，以及「密碼」作為帳戶的密碼。 您將會在啟用複寫階段中使用此虛擬帳戶。 
 11. 在安裝後重新啟動設備之後，在 [探索機器] 的 [選取組態伺服器] 中選取新設備，然後按一下 [完成註冊]。 完成註冊作業會執行數項最終工作，以備妥複寫設備。
 
     ![完成註冊](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
@@ -240,25 +240,24 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
 2. 在 [複寫] > [來源設定][您的電腦虛擬化了嗎] >  中，選取 [未虛擬化/其他]。
 3. 在 [內部部署設備] 中，選取您設定的 Azure Migrate 設備的名稱。
-4. 在 [處理序伺服器] 中，選取複寫設備的名稱。
-6. 在 [來賓認證] 中，您可以指定用來手動安裝行動服務的虛擬帳戶 (不支援推送安裝)。 然後按 [下一步：**虛擬機器]** 。
-
+4. 在 [處理序伺服器] 中，選取複寫設備的名稱。 
+5. 在**來賓認證**中，請選取先前在[複寫安裝程式安裝](#download-the-replication-appliance-installer)期間建立的虛擬帳戶以手動安裝行動服務 (不支援推送安裝)。 然後按 [下一步：**虛擬機器]** 。   
+ 
     ![複寫 VM](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
-
-7. 在 [虛擬機器] 的 [從評量匯入移轉設定?] 中，保留預設設定 [否，我將手動指定移轉設定]。
-8. 檢查您要遷移的每個 VM。 然後按 [下一步：目標設定]。
+6. 在 [虛擬機器] 的 [從評量匯入移轉設定?] 中，保留預設設定 [否，我將手動指定移轉設定]。
+7. 檢查您要遷移的每個 VM。 然後按 [下一步：目標設定]。
 
     ![選取 VM](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
-9. 在 [目標設定] 中，選取訂用帳戶、您的遷移目標區域，並指定 Azure VM 在移轉後所在的資源群組。
-10. 在 [虛擬網路] 中，選取 Azure VM 在移轉後所將加入的 Azure VNet/子網路。
-11. 在 [Azure Hybrid Benefit] 中：
+8. 在 [目標設定] 中，選取訂用帳戶、您的遷移目標區域，並指定 Azure VM 在移轉後所在的資源群組。
+9. 在 [虛擬網路] 中，選取 Azure VM 在移轉後所將加入的 Azure VNet/子網路。
+10. 在 [Azure Hybrid Benefit] 中：
     - 如果您不想套用 Azure Hybrid Benefit，請選取 [否]。 然後按一下 [下一步]。
     - 如果您有 Windows Server 機器涵蓋於有效的軟體保證或 Windows Server 訂用帳戶下，且您想要將權益套用至要移轉的機器，請選取 [是]。 然後按一下 [下一步]。
 
     ![目標設定](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. 在 [計算] 中，檢閱 VM 名稱、大小、OS 磁碟類型和可用性設定組。 VM 必須符合 [Azure 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
+11. 在 [計算] 中，檢閱 VM 名稱、大小、OS 磁碟類型和可用性設定組。 VM 必須符合 [Azure 需求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 
     - **VM 大小**：根據預設，「Azure Migrate 伺服器移轉」會根據 Azure 訂用帳戶中最接近的相符項來選擇大小。 或者，您可以在 [Azure VM 大小] 中手動選擇大小。
     - **OS 磁碟**：指定 VM 的 OS (開機) 磁碟。 OS 磁碟是具有作業系統開機載入器和安裝程式的磁碟。 
@@ -266,13 +265,13 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 
     ![計算設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. 在 [磁碟] 中，指定是否應將 VM 磁碟複寫至 Azure，並選取 Azure 中的磁碟類型 (標準 SSD/HDD 或進階受控磁碟)。 然後按一下 [下一步]。
+12. 在 [磁碟] 中，指定是否應將 VM 磁碟複寫至 Azure，並選取 Azure 中的磁碟類型 (標準 SSD/HDD 或進階受控磁碟)。 然後按一下 [下一步]。
     - 您可以從複寫排除磁碟。
     - 如果您排除磁碟，則在移轉後磁碟將不會出現在 Azure VM 上。 
 
     ![磁碟設定](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-14. 在 [檢閱並啟動複寫] 中檢閱設定，然後按一下 [複寫] 以啟動伺服器的初始複寫。
+13. 在 [檢閱並啟動複寫] 中檢閱設定，然後按一下 [複寫] 以啟動伺服器的初始複寫。
 
 > [!NOTE]
 > 您可以在複寫開始之前隨時更新複寫設定 (經由 [管理] > [複寫機器])。 在複寫啟動後，就無法變更設定。

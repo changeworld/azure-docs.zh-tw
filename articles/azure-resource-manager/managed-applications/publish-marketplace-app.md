@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcd036f09982cba8271ed6057a167eb7440303a9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: a5e2a3569c70404d64d24ecfc35a8258ea864a4f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054486"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480419"
 ---
 # <a name="tutorial-publish-azure-managed-applications-in-the-marketplace"></a>教學課程：在 Marketplace 中發佈 Azure 受控應用程式
 
@@ -98,7 +98,7 @@ SKU 會顯示在 Marketplace 中的父供應項目底下。 它會在 Azure 入�
 
      如需可用動作的清單，請參閱 [Azure Resource Manager 資源提供者作業](../../role-based-access-control/resource-provider-operations.md)。 例如，若要允許取用者重新啟動虛擬機器，可將 `Microsoft.Compute/virtualMachines/restart/action` 新增至允許的動作。 `*/read` 是自動允許的動作，因此您不需要加入該設定。
    * **PrincipalId**：這個屬性是使用者、使用者群組或應用程式的 Azure Active Directory (Azure AD) 識別碼，其擁有者被授與客戶訂用帳戶中資源的存取權。 角色定義描述權限。
-   * **角色定義**：這個屬性是 Azure AD 提供的所有內建角色型存取控制 (RBAC) 角色清單。 您可以選取最適合用於代表客戶管理資源的角色。
+   * **角色定義**：這個屬性是由 Azure AD 所提供的所有 Azure 內建角色清單。 您可以選取最適合用於代表客戶管理資源的角色。
    * **原則設定**：將 [Azure 原則](../../governance/policy/overview.md)套用至您的受控應用程式，以指定已部署解決方案的合規性需求。 從可用的選項中，選取要套用的原則。 針對 [原則參數]  ，提供包含參數值的 JSON 字串。 如需了解原則定義和參數值格式，請參閱 [Azure 原則範例](../../governance/policy/samples/index.md)。
 
 您可以新增數個授權。 建議您建立 AD 使用者群組並且在 **PrincipalId** 中指定其識別碼。 如此一來，您可以將更多使用者新增至使用者群組，而不需要更新 SKU。

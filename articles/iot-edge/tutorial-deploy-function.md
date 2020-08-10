@@ -4,19 +4,19 @@ description: 在本教學課程中，您會將 Azure 函式部署為 IoT Edge �
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/25/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f909ca12ce080fc5d1241bcc649c041361e405a7
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: d9b9ba3a8092992c9ebca9b3242223213b75ad80
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421169"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439675"
 ---
-# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教學課程：將 Azure 函式部署為 IoT Edge 模組
+# <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>教學課程：將 Azure Functions 部署為 IoT Edge 模組
 
 您可以使用 Azure Functions 來部署程式碼，直接在 Azure IoT Edge 裝置上實作您的商務邏輯。 本教學課程會逐步引導您建立並部署 Azure 函式，能在模擬的 IoT Edge 裝置上篩選感應器資料。 您將會使用模擬的 IoT Edge 裝置，其建立方法詳述於在 [Windows](quickstart.md) 或 [Linux](quickstart-linux.md) 中的模擬裝置上部署 Azure IoT Edge 的快速入門中。 在本教學課程中，您會了解如何：
 
@@ -71,13 +71,15 @@ ms.locfileid: "80421169"
    | 提供解決方案名稱 | 輸入解決方案的描述性名稱 (例如 **FunctionSolution**)，或接受預設值。 |
    | 選取模組範本 | 選擇 [Azure Functions - C#]  。 |
    | 提供模組名稱 | 將模組命名為 **CSharpFunction**。 |
-   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會預先填入上一個步驟的容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的登入伺服器值。 您可以在 Azure 入口網站中，從容器登錄的 [概觀] 頁面擷取登入伺服器。 最終字串看起來會類似於：\<登錄名稱\>.azurecr.io/CSharpFunction。 |
+   | 提供模組的 Docker 映像存放庫 | 映像存放庫包含容器登錄名稱和容器映像名稱。 系統會預先填入上一個步驟的容器映像。 將 **localhost:5000** 取代為 Azure Container Registry 的**登入伺服器**值。 您可以在 Azure 入口網站中，從容器登錄的概觀頁面擷取登入伺服器。 最終字串看起來會類似於：\<registry name\>.azurecr.io/CSharpFunction。 |
 
    ![提供 Docker 映像存放庫](./media/tutorial-deploy-function/repository.png)
 
 ### <a name="add-your-registry-credentials"></a>新增登錄認證
 
 環境檔案會儲存容器登錄的認證，並與 IoT Edge 執行階段共用這些認證。 執行階段需要有這些認證才能將私人映像提取到 IoT Edge 裝置。
+
+IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將這些認證填入到環境檔案中。 請查看您的認證是否已包含其中。 如果沒有，請立即新增：
 
 1. 在 VS Code 總管中，開啟 .env 檔案。
 2. 使用從 Azure Container Registry 複製過來的 [使用者名稱]  和 [密碼]  值來更新欄位。
@@ -172,30 +174,25 @@ ms.locfileid: "80421169"
 
 1. 儲存檔案。
 
-## <a name="build-your-iot-edge-solution"></a>建置 IoT Edge 解決方案
+## <a name="build-and-push-your-iot-edge-solution"></a>建置和推送 IoT Edge 解決方案
 
 在上一節中，您已建立 IoT Edge 解決方案 並修改 **CSharpFunction**，以篩選出回報的機器溫度低於可接受閾值的訊息。 現在，您需要建置容器映像形式的解決方案，並將它推送到容器登錄。
 
-在本節中，您第二次提供容器登錄的認證 (第一次是 IoT Edge 解決方案的 **.env** 檔案)，藉由從開發電腦本機登入，讓 Visual Studio Code 可以將映像推送至您的登錄。
-
 1. 選取 [檢視]   > [終端機]  ，以開啟 VS Code 整合式終端機。
 
-2. 在整合式終端機中輸入下列命令，以登入您的容器登錄。 請使用您先前從 Azure 容器登錄複製而來的使用者名稱和登入伺服器。
+2. 在終端機中輸入下列命令來登入 Docker。 使用您 Azure 容器登錄中的使用者名稱、密碼和登入伺服器登入。 您可以在 Azure 入口網站中，從登錄的 [存取金鑰]  區段擷取這些值。
 
-    ```csh/sh
-    docker login -u <ACR username> <ACR login server>
-    ```
+   ```bash
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
+   ```
 
-    當系統提示您輸入密碼時，請貼上容器登錄的密碼 (密碼不會顯示在終端機視窗中)，然後按 **Enter** 鍵。
+   您可能會收到安全性警告，建議您使用 `--password-stdin`。 雖然建議生產案例使用該最佳做法，但是不在本教學課程的討論範圍內。 如需詳細資訊，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 參考。
 
-    ```csh/sh
-    Password: <paste in the ACR password and press enter>
-    Login Succeeded
-    ```
+3. 在 VS Code 總管中，以滑鼠右鍵按一下 **deployment.template.json** 檔案，然後選取 [建置並推送 IoT Edge 解決方案]。
 
-3. 在 VS Code 總管中，以滑鼠右鍵按一下 deployment.template.json 檔案，然後選取 [建置並推送 IoT Edge 解決方案]  。
+   建置和推送命令會啟動三項作業。 首先，它會在解決方案中建立名為 **config** 的新資料夾，以保存完整部署資訊清單 (根據部署範本中的資訊建立)，以及其他解決方案檔案。 接著，它會執行 `docker build`，以根據目標架構的適當 dockerfile 建置容器映像。 然後，它會執行 `docker push` 以將映像存放庫推送至您的容器登錄。
 
-當您指示 Visual Studio Code 建置解決方案時，它會先擷取部署範本中的資訊，再於名為 **config** 的新資料夾中，產生 deployment.json 檔案。然後，它會在整合式終端機中執行兩個命令：`docker build` 和 `docker push`。 建置命令會建立您的程式碼並將函式容器化。 然後，推送命令會將程式碼推送至您在初始化解決方案時所指定的容器登錄。
+   此程序第一次進行時可能需要幾分鐘的時間，但下一次執行命令時速度就會變快。
 
 ## <a name="view-your-container-image"></a>檢視容器映像
 
@@ -210,13 +207,15 @@ ms.locfileid: "80421169"
 
 您可以使用 Azure 入口網站將函式模組部署到 IoT Edge 裝置，如同您在快速入門中所做的一樣。 您也可以從 Visual Studio Code 內部署和監視模組。 下列幾節會使用先決條件中所列的適用於 VS Code 的 Azure IoT 工具。 請立即安裝擴充功能 (如果您尚未安裝)。
 
-1. 在 VS Code 總管中，展開 [Azure IoT 中樞裝置]  區段。
+1. 在 Visual Studio Code 總管中，展開 [Azure IoT 中樞] 區段下的 [裝置] 來查看您的 IoT 裝置清單。
 
-2. 以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [建立單一裝置的部署]  。
+2. 以滑鼠右鍵按一下 IoT Edge 裝置的名稱，然後選取 [建立單一裝置的部署]。
 
-3. 瀏覽至 **CSharpFunction** 所在的解決方案資料夾。 開啟 config 資料夾、選取 **deployment.json** 檔案，然後選擇 [選取 Edge 部署資訊清單]  。
+3. 瀏覽至 **CSharpFunction** 所在的解決方案資料夾。 開啟 config 資料夾、選取 **deployment.amd64.json** 檔案，然後選擇 [選取 Edge 部署資訊清單]。
 
-4. 重新整理 [Azure IoT 中樞裝置]  區段。 您應該會看到新的 **CSharpFunction** 正在與 **SimulatedTemperatureSensor** 模組以及 **$edgeAgent** 和 **$edgeHub** 一起執行。 新模組可能需要一些時間才會出現。 IoT Edge 裝置必須從 IoT 中樞擷取其新的部署資訊、啟動新容器，然後向 IoT 中樞回報狀態。
+4. 請展開裝置下的**模組**，以查看已部署且執行中的模組清單。 按一下 [重新整理] 按鈕。 您應該會看到新的 **CSharpFunction** 正在與 **SimulatedTemperatureSensor** 模組以及 **$edgeAgent** 和 **$edgeHub** 一起執行。
+
+    新模組可能需要一些時間才會出現。 IoT Edge 裝置必須從 IoT 中樞擷取其新的部署資訊、啟動新容器，然後向 IoT 中樞回報狀態。
 
    ![在 VS Code 中檢視已部署的模組](./media/tutorial-deploy-function/view-modules.png)
 
