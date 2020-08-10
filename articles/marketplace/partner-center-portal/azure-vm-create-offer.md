@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
-ms.date: 07/28/2020
-ms.openlocfilehash: 0adffbb9058141ea89daefc292b937841659c879
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: 8d27594b33db72303c71ceb39de92b1d4340b9be
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798064"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037264"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
@@ -242,20 +242,23 @@ ms.locfileid: "87798064"
 
 提供要搭配您供應項目使用的標誌和影像。 所有影像都必須採用 PNG 格式。 模糊影像將會導致您的提交遭到拒絕。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
-#### <a name="store-logos"></a>儲存標誌
+#### <a name="azure-marketplace-logos"></a>Azure Marketplace 標誌
 
-在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 和**中等** (90 x 90 圖元) 大小標誌。 您可以選擇性地將這些取代為不同的影像。
+請以下列四個影像尺寸，提供供應項目標誌的 PNG 檔案：
 
-在清單中的不同位置，必須使用所有三種標誌大小：
+- **小** (48 &times; 48 像素)
+- **中** (90 &times; 90 像素)
+- **大** (216 &times; 216 像素)
+- **寬** (255 &times; 115 像素)
 
-- **小型** (48 x 48)
-- **中型** (90 x 90)
-- 216 x 216 與 350 x 350) 之間的**大型** (
+全部四個標誌都是必要的，而且會顯示在各種 Azure Marketplace 清單中。
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
@@ -531,7 +534,7 @@ Microsoft 將會傳送一封電子郵件訊息，讓您知道供應項目的預�
 
 1. 大型標誌
 2. 價格
-3. Categories
+3. 類別
 4. 條款及條件
 5. 隱私權原則位址 (連結) 
 6. 供應項目名稱

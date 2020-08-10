@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449134"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037026"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -39,7 +39,7 @@ Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您�
 
 除非另有說明，否則本文中的範例適用于3.x 版。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 Azure Functions Core Tools 目前取決於使用您的 Azure 帳戶進行驗證的 Azure CLI。 這表示您必須在[本機上安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能夠從 Azure Functions Core Tools[發佈至 Azure](#publish) 。 
 
@@ -56,11 +56,11 @@ Azure Functions Core Tools 目前取決於使用您的 Azure 帳戶進行驗證�
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-下列步驟會使用 Windows installer （MSI）來安裝 Core Tools v3. x。 如需其他以套件為基礎的安裝程式的詳細資訊，這些是安裝 Core Tools v2. x 的必要條件，請參閱[Core tools 讀我檔案](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
+下列步驟會使用 Windows installer (MSI) 來安裝 Core Tools v3. x。 如需其他以套件為基礎的安裝程式的詳細資訊，這些是安裝 Core Tools v2. x 的必要條件，請參閱[Core tools 讀我檔案](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
 1. 根據您的 Windows 版本，下載並執行 Core Tools 安裝程式：
 
-    - [v3. x-Windows 64 位](https://go.microsoft.com/fwlink/?linkid=2135274)（建議使用）。 [Visual Studio Code 的調試](functions-develop-vs-code.md#debugging-functions-locally)需要64位）。
+    - 建議使用[v3. x-Windows 64-bit](https://go.microsoft.com/fwlink/?linkid=2135274) (。 [Visual Studio Code 的調試](functions-develop-vs-code.md#debugging-functions-locally)需要64位。 ) 
     - [v3. x-Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 1. 如果您不打算使用[延伸](functions-bindings-register.md#extension-bundles)模組配套，請安裝[適用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
@@ -73,7 +73,7 @@ Azure Functions Core Tools 目前取決於使用您的 Azure 帳戶進行驗證�
 
 1. 安裝 Core Tools 套件：
 
-    ##### <a name="v3x-recommended"></a>v3. x （建議選項）
+    ##### <a name="v3x-recommended"></a>建議使用 v3. x () 
 
     ```bash
     brew tap azure/functions
@@ -137,7 +137,7 @@ Azure Functions Core Tools 目前取決於使用您的 Azure 帳戶進行驗證�
 
 1. 安裝 Core Tools 套件：
 
-    ##### <a name="v3x-recommended"></a>v3. x （建議選項）
+    ##### <a name="v3x-recommended"></a>建議使用 v3. x () 
     ```bash
     sudo apt-get update
     sudo apt-get install azure-functions-core-tools-3
@@ -191,7 +191,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init`支援下列版本 3.x/2. x-only 的選項，除非另有注明：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--csx`** | 建立 .NET 函數做為 c # 腳本，這是1.x 版的行為。 僅適用于 `--worker-runtime dotnet` 。 |
 | **`--docker`** | 使用以選擇的為基礎的基底映射，建立容器的 Dockerfile `--worker-runtime` 。 如果您要發佈至自訂 Linux 容器，請使用此選項。 |
@@ -200,12 +200,28 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--language`** | 初始化語言特定專案。 當 `--worker-runtime` 設定為時，目前支援 `node` 。 選項為 `typescript` 和 `javascript` 。 您也可以使用 `--worker-runtime javascript` 或 `--worker-runtime typescript` 。  |
 | **`--managed-dependencies`**  | 安裝受控相依性。 目前，只有 PowerShell 背景工作執行時間支援這種功能。 |
 | **`--source-control`** | 控制是否要建立 Git 存放庫。 依預設不會建立存放庫。 設為 `true` 時，就會建立存放庫。 |
-| **`--worker-runtime`** | 設定專案的語言執行階段。 支援的值為： `csharp` 、 `dotnet` 、 `javascript` 、 `node` （JavaScript）、、 `powershell` `python` 和 `typescript` 。 針對 JAVA，請使用[Maven](functions-reference-java.md#create-java-functions)。未設定時，系統會提示您在初始化期間選擇您的執行時間。 |
+| **`--worker-runtime`** | 設定專案的語言執行階段。 支援的值為： `csharp` 、 `dotnet` 、 `javascript` 、 `node` (JavaScript) 、 `powershell` 、 `python` 和 `typescript` 。 針對 JAVA，請使用[Maven](functions-reference-java.md#create-java-functions)。未設定時，系統會提示您在初始化期間選擇您的執行時間。 |
 |
 > [!IMPORTANT]
-> 根據預設，2.x 版和更新版本的 Core 工具會建立 .NET 執行時間的函式應用程式專案，做為[c # 類別專案](functions-dotnet-class-library.md)（.csproj）。 這些 C# 專案可以與 Visual Studio 或 Visual Studio Code 搭配使用，並在測試期間以及發佈至 Azure 時進行編譯。 如果您想要改為建立和使用在 1.x 版中以及在入口網站中建立的相同 C# 指令碼 (.csx) 檔案，當您建立及部署函式時，必須包含 `--csx` 參數。
+> 根據預設，2.x 版和更新版本的 Core 工具會建立 .NET 執行時間的函式應用程式專案，做為[c # 類別專案](functions-dotnet-class-library.md) ( .csproj) 。 這些 C# 專案可以與 Visual Studio 或 Visual Studio Code 搭配使用，並在測試期間以及發佈至 Azure 時進行編譯。 如果您想要改為建立和使用在 1.x 版中以及在入口網站中建立的相同 C# 指令碼 (.csx) 檔案，當您建立及部署函式時，必須包含 `--csx` 參數。
 
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+## <a name="register-extensions"></a>註冊延伸模組
+
+除了 HTTP 和計時器觸發程式以外，執行時間2.x 版和更新版本中的函式系結會實作為擴充封裝。 HTTP 系結和計時器觸發程式不需要擴充功能。 
+
+為了減少各種延伸模組套件之間的不相容性，函式可讓您在專案檔的 host.js中參考擴充功能配套。 如果您選擇不使用延伸模組配套，您也必須在本機安裝 .NET Core 2.x SDK，並使用您的函式專案來維護副檔名 .csproj。  
+
+在2.x 版和之後的 Azure Functions 執行時間中，您必須明確地為函式中使用的系結類型註冊擴充功能。 您可以選擇個別安裝系結延伸模組，也可以將延伸模組配套參考新增至專案檔案上的 host.js。 延伸模組配套會移除在使用多個系結類型時，發生套件相容性問題的機會。 這是註冊系結延伸模組的建議方法。 延伸模組配套也會移除安裝 .NET Core 2.x SDK 的需求。 
+
+### <a name="use-extension-bundles"></a>使用延伸模組配套
+
+[!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
+
+若要深入瞭解，請參閱[註冊 Azure Functions](functions-bindings-register.md#extension-bundles)系結延伸模組。 您應該先將延伸模組配套新增至 host.js，然後再將系結新增至檔案 function.js。
+
+### <a name="explicitly-install-extensions"></a>明確安裝延伸模組
+
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
@@ -289,9 +305,9 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 您也可以使用下列引數，在命令中指定這些選項：
 
-| 引數     | 說明                            |
+| 引數     | 描述                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | （2.x 版和更新版本）。產生在1.x 版和入口網站中使用的相同 c # 腳本（. .csx）範本。 |
+| **`--csx`** |  (2.x 版和更新版本。 ) 會產生相同的 c # 腳本 (. x 版和入口網站中使用的) 範本。 |
 | **`--language`**, **`-l`**| 範本程式語言，例如 C#、F# 或 JavaScript。 這是 1.x 版中的必要選項。 在2.x 版和更新版本中，請勿使用此選項，或選擇符合背景工作執行時間的語言。 |
 | **`--name`**, **`-n`** | 函數名稱。 |
 | **`--template`**, **`-t`** | 使用 `func templates list` 命令，以針對每個支援的語言查看可用範本的完整清單。   |
@@ -349,10 +365,10 @@ npm start
 
 `func start` 支援下列選項：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 執行前請勿建置目前的專案。 僅適用於 dotnet 專案。 預設會設定為 false。 1.x 版不支援。 |
-| **`--cors-credentials`** | 針對1.x 版，允許不支援跨原始來源驗證的要求（也就是 cookie 和驗證標頭）。 |
+| **`--cors-credentials`** | 允許跨原始來源驗證的要求 (例如，cookie 和驗證標頭) 不支援1.x 版。 |
 | **`--cors`** | 以逗號分隔的 CORS 來源清單，不含空格。 |
 | **`--language-worker`** | 用來設定語言背景工作角色的引數。 例如，您可以藉由提供[debug 埠和其他必要的引數](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)，啟用語言背景工作的偵錯工具。 1.x 版不支援。 |
 | **`--cert`** | 包含私密金鑰的 .pfx 檔案路徑。 僅能與 `--useHttps` 搭配使用。 1.x 版不支援。 |
@@ -449,7 +465,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 ```
 ---
 
-#### <a name="using-the-func-run-command-version-1x-only"></a>使用 `func run` 命令（僅限1.x 版）
+#### <a name="using-the-func-run-command-version-1x-only"></a>僅使用 `func run` (1.x 版的命令) 
 
 >[!IMPORTANT]
 > `func run`只有1.x 版的工具才支援此命令。 如需詳細資訊，請參閱[如何設定 Azure Functions 執行階段版本目標](set-runtime-version.md)主題。
@@ -458,7 +474,7 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 
 `func run` 支援下列選項：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | 內嵌內容。 |
 | **`--debug`**, **`-d`** | 在執行函式之前，請先將偵錯工具附加到主機處理序。|
@@ -497,14 +513,14 @@ func azure functionapp publish <FunctionAppName>
 
 下列發行選項適用于所有版本：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  將 local.settings.json 中的設定發佈至 Azure，若設定已經存在，則提示進行覆寫。 如果您使用 Microsoft Azure 儲存體模擬器，請先將應用程式設定變更為[實際的儲存體連接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 在使用 `--publish-local-settings -i` 時隱藏覆寫應用程式設定的提示。|
 
 只有2.x 版和更新版本才支援下列發行選項：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--publish-settings-only`**, **`-o`** |  僅發佈設定而略過內容。 預設值為提示。 |
 |**`--list-ignored-files`** | 顯示在發佈期間忽略的檔案清單，以 .funcignore 檔案為準。 |
@@ -528,7 +544,7 @@ func deploy
 
 以下是可用的自訂容器部署選項：
 
-| 選項     | 說明                            |
+| 選項     | 描述                            |
 | ------------ | -------------------------------------- |
 | **`--registry`** | 目前的使用者所登入的 Docker 登錄名稱。 |
 | **`--platform`** | 函式應用程式的裝載平台。 有效選項為 `kubernetes` |

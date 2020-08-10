@@ -8,12 +8,12 @@ ms.date: 08/04/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 737fe4b334e60f1b51e8f60f39e8821588a6841c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f51630154b77233aeb2587ac3a2d603c1da6fa4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010288"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036550"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>使用資料匯出 (預覽將 IoT 資料匯出到雲端目的地) 
 
@@ -33,7 +33,7 @@ ms.locfileid: "88010288"
 
 ## <a name="prerequisites"></a>必要條件
 
-您必須是 IoT Central 應用程式中的系統管理員，或具有資料匯出許可權。
+若要使用資料匯出 (預覽) ，您必須擁有 V3 應用程式，而且必須具有資料匯出許可權。
 
 ## <a name="set-up-export-destination"></a>設定匯出目的地
 
@@ -150,15 +150,22 @@ ms.locfileid: "88010288"
 
 ## <a name="export-contents-and-format"></a>匯出內容和格式
 
-對於事件中樞和服務匯流排目的地，資料會以近乎即時的方式匯出。 資料位於訊息本文中，並採用以 UTF-8 編碼的 JSON 格式。 如需範例，請參閱下文。
+### <a name="azure-blob-storage-destination"></a>Azure Blob 儲存體目的地
 
-對於 Blob 儲存體，資料會每分鐘匯出一次，每個檔案都包含自上次匯出檔案之後的變更批次。 匯出的資料會以 JSON 格式放在三個資料夾中。 您儲存體帳戶中的預設路徑為：
+資料會每分鐘匯出一次，其中每個檔案都會包含自上次匯出檔案之後的變更批次。 匯出的資料會以 JSON 格式放在三個資料夾中。 您儲存體帳戶中的預設路徑為：
 
 - 遙測： _{container}/{app-id}/{partition_id}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 - 屬性變更： _{container}/{app-id}/{partition_id}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 
 若要流覽 Azure 入口網站中匯出的檔案，請流覽至該檔案，然後選取 [**編輯 blob** ] 索引標籤。
 
+### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Azure 事件中樞和 Azure 服務匯流排目的地
+
+資料會以近乎即時的方式匯出。 資料位於訊息本文中，並採用以 UTF-8 編碼的 JSON 格式。 
+
+在訊息的注釋或系統屬性包中，您可以找到 `iotcentral-device-id` 、 `iotcentral-application-id` 、和， `iotcentral-message-source` `iotcentral-message-type` 其值與訊息本文中的對應欄位相同。
+
+### <a name="webhook-destination"></a>Webhook 目的地
 針對 webhook 目的地，資料也會以近乎即時的方式匯出。 資料在訊息內文中的格式與事件中樞和服務匯流排相同。
 
 
@@ -254,6 +261,7 @@ ms.locfileid: "88010288"
 | 篩選 | None | 視匯出的資料類型而定。 針對遙測，依遙測篩選、訊息屬性、屬性值 |
 | 擴充 | None | 使用裝置上的自訂字串或屬性值進行擴充 |
 | Destinations | Azure 事件中樞，Azure 服務匯流排佇列和主題，Azure Blob 儲存體 | 與舊版資料匯出和 webhook 相同| 
+| 支援的應用程式 | V2、V3 | 僅限第 3 版 |
 | 值得注意的限制 | 每個應用程式5個匯出，每個匯出1個目的地 | 10個匯出-每個應用程式的目的地連線數 | 
 
 ## <a name="next-steps"></a>後續步驟

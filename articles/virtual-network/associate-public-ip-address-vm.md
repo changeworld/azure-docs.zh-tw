@@ -1,7 +1,7 @@
 ---
 title: 將公用 IP 位址與虛擬機器建立關聯
 titlesuffix: Azure Virtual Network
-description: 使用 Azure 入口網站或 Azure CLI，將公用 IP 位址與虛擬機器（VM）建立關聯。
+description: 瞭解如何使用 Azure 入口網站或 Azure CLI，將公用 IP 位址與虛擬機器建立關聯 (VM) 。
 services: virtual-network
 documentationcenter: ''
 author: asudbring
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: d4ca5b067a1afe4225fe0e2e4c42c827e1eaedf6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265223"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035462"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>將公用 IP 位址與虛擬機器建立關聯
 
-在本文中，您將瞭解如何將公用 IP 位址與現有的虛擬機器（VM）建立關聯。 如果您想要從網際網路連線至 VM，VM 必須具有相關聯的公用 IP 位址。 如果您想要使用公用 IP 位址建立新的 VM，您可以使用[Azure 入口網站](virtual-network-deploy-static-pip-arm-portal.md)、 [Azure 命令列介面（CLI）](virtual-network-deploy-static-pip-arm-cli.md)或[PowerShell](virtual-network-deploy-static-pip-arm-ps.md)來執行此動作。 公用 IP 位址需要少許費用。 如需詳細資料，請參閱[定價](https://azure.microsoft.com/pricing/details/ip-addresses/)。 您可以針對每個訂用帳戶使用的公用 IP 位址數目有所限制。 如需詳細資訊，請參閱[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address)。
+在本文中，您將瞭解如何將公用 IP 位址與 (VM) 的現有虛擬機器建立關聯。 如果您想要從網際網路連線至 VM，VM 必須具有相關聯的公用 IP 位址。 如果您想要使用公用 IP 位址建立新的 VM，您可以使用[Azure 入口網站](virtual-network-deploy-static-pip-arm-portal.md)、 [Azure 命令列介面 (CLI) ](virtual-network-deploy-static-pip-arm-cli.md)或[PowerShell](virtual-network-deploy-static-pip-arm-ps.md)來執行此動作。 公用 IP 位址需要少許費用。 如需詳細資料，請參閱[定價](https://azure.microsoft.com/pricing/details/ip-addresses/)。 您可以針對每個訂用帳戶使用的公用 IP 位址數目有所限制。 如需詳細資訊，請參閱[限制](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address)。
 
-您可以使用[Azure 入口網站](#azure-portal)、Azure[命令列介面](#azure-cli)（CLI）或[PowerShell](#powershell) ，將公用 IP 位址與 VM 建立關聯。
+您可以使用[Azure 入口網站](#azure-portal)、Azure[命令列介面](#azure-cli) (CLI) 或[PowerShell](#powershell) ，將公用 IP 位址與 VM 建立關聯。
 
 ## <a name="azure-portal"></a>Azure 入口網站
 
@@ -44,7 +44,7 @@ ms.locfileid: "87265223"
    > [!NOTE]
    > 公用 IP 位址會與網路介面的 IP 設定產生關聯。 在上圖中，網路介面有一個 IP 設定。 如果網路介面有多個 IP 設定，它們會出現在清單中，而且您會選取要與公用 IP 位址產生關聯的 IP 設定。
 
-5. 選取 [**已啟用**]，然後選取 **[IP 位址（*設定必要設定*）**]。 選擇現有的公用 IP 位址，這會自動關閉 [**選擇公用 ip 位址**] 方塊。 如果您沒有列出任何可用的公用 IP 位址，則必須建立一個。 若要瞭解作法，請參閱[建立公用 IP 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 選取 [**儲存**]，如下圖所示，然後關閉 IP 設定的方塊。
+5. 選取 [**已啟用**]，然後選取 [ **IP 位址] (*設定所需的設定*) **。 選擇現有的公用 IP 位址，這會自動關閉 [**選擇公用 ip 位址**] 方塊。 如果您沒有列出任何可用的公用 IP 位址，則必須建立一個。 若要瞭解作法，請參閱[建立公用 IP 位址](virtual-network-public-ip-address.md#create-a-public-ip-address)。 選取 [**儲存**]，如下圖所示，然後關閉 IP 設定的方塊。
 
    ![啟用公用 IP 位址](./media/associate-public-ip-address-vm/enable-public-ip-address.png)
 

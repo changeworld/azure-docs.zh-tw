@@ -1,6 +1,6 @@
 ---
 title: Azure 地圖服務 API 使用計量的觀點 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何在 Azure 入口網站中查看 Microsoft Azure Maps API 呼叫的計量。
+description: 瞭解如何查看 Azure 地圖服務 API 使用計量，例如要求總數、總錯誤總數和可用性。 請參閱如何篩選資料和分割結果。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/06/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57fb699a7225a53af1f093520855e8e2ef132f42
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 766bb2eaf6878a8d7261472ba11ea7acd46de92e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130727"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036482"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>檢視 Azure 地圖服務 API 使用計量
 

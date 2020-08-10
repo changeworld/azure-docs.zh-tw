@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure 對應中的縮放層級和磚方格
-description: 在本文中，您將瞭解 Microsoft Azure 地圖中的縮放層級和圖格格線。
+description: 瞭解如何在 Azure 地圖服務中設定縮放層級。 請參閱如何將地理座標轉換成圖元座標、磚座標和 quadkeys。 View 程式碼範例。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/14/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced524080df87468116a538d9b7c8e91fb178a41
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093046"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035870"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>縮放層級和圖格格線
 
@@ -74,7 +74,7 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-因為地圖寬度和高度在每個縮放層級都不同，所以是圖元座標。 地圖左上角的圖元一律有圖元座標（0，0）。 地圖右下角的圖元具有圖元座標 *（寬度-1，高度-1）*，或參考上一節中的方程式 *（tileSize \* 2<sup>zoom</sup>–1，tileSize \* 2<sup>zoom</sup>–1）*。 例如，在層級2使用512正方形磚時，圖元座標的範圍從（0，0）到（2047，2047），如下所示：
+因為地圖寬度和高度在每個縮放層級都不同，所以是圖元座標。 地圖左上角的圖元一律有圖元座標 (0，0) 。 地圖右下角的圖元具有* (width-1、height-1) *的圖元座標，或參考上一節中的方程式， * (tileSize \* 2<sup>zoom</sup>–1，tileSize \* 2<sup>zoom</sup>– 1) *。 例如，在層級2使用512正方形磚時，圖元座標的範圍從 (0，0) 到 (2047，2047) ，如下所示：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="顯示圖元維度的地圖":::
 
@@ -100,7 +100,7 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-每個磚都有從左上角到（0，0）的 XY 座標，範圍介於右下方 *（2<sup>縮放</sup>–1，2<sup>縮放</sup>–1）* 。 例如，在縮放層級2，磚座標的範圍從（0，0）到（7，7），如下所示：
+每個磚都有一個從左上角的 (0，0) 範圍內的 XY 座標， * (2<sup>縮放</sup>–1，2<sup>縮放</sup>– 1) *在右下方。 例如，在縮放層級2，磚座標的範圍從 (0，0) 到 (7，7) 如下所示：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="磚座標的地圖":::
 
@@ -131,7 +131,7 @@ var tileY = Math.floor(pixelY / tileSize);
 > [!NOTE]
 > `quadkeys`命名慣例僅適用于一或多個縮放層級。 Azure 地圖服務 SDK 的支援縮放層級0，這是整個世界的單一地圖磚。 
 
-若要將磚座標轉換成 `quadkey` ，Y 和 X 座標的位是交錯的，而且結果會被轉譯為以4為基底的數位（保留前置零）並轉換成字串。 比方說，在層級3指定（3，5）的磚 XY 座標時， `quadkey` 會依照下列方式決定：
+若要將磚座標轉換成 `quadkey` ，Y 和 X 座標的位是交錯的，而且會將結果轉譯為 (，並將前置零維持) 並轉換成字串。 例如，給定的磚的 XY 座標為 (3，5) 在層級3，的 `quadkey` 決定方式如下：
 
 ```
 tileX = 3 = 011 (base 2)
@@ -141,7 +141,7 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`有幾個有趣的屬性。 首先，的長度 `quadkey` （數位數目）等於對應磚的縮放層級。 第二， `quadkey` 任何磚的會以 `quadkey` 其父磚的（在上一個層級的包含磚）開頭。 如下列範例所示，磚2是磚20到23的父系：
+`Qquadkeys`有幾個有趣的屬性。 首先， `quadkey` (位數) 等於對應磚的縮放層級數目。 第二， `quadkey` 任何磚的會以其父磚的為開頭， `quadkey` (上一個層級) 的內含磚。 如下列範例所示，磚2是磚20到23的父系：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Quadkey 磚金字塔圖":::
 

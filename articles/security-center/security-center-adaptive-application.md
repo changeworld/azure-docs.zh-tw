@@ -1,6 +1,6 @@
 ---
 title: Azure 資訊安全中心的自適性應用程式控制
-description: 本檔可協助您使用 Azure 資訊安全中心中的適應性應用程式控制，將在 Azure 機器中執行的應用程式列入允許清單。
+description: 本檔可協助您使用 Azure 資訊安全中心中的調適型應用程式控制，以允許列出在 Azure 機器中執行的應用程式。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,173 +11,218 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/23/2019
+ms.date: 08/06/2020
 ms.author: memildin
-ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cbbfddca1a6a07625a69be8ffb0409640d825793
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77604667"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036939"
 ---
-# <a name="adaptive-application-controls"></a>自適性應用程式控制
-了解如何利用此逐步解說，在 Azure 資訊安全中心設定應用程式控制。
+# <a name="use-adaptive-application-controls-to-reduce-your-machines-attack-surfaces"></a>使用適應性應用程式控制來減少電腦的攻擊面
 
-## <a name="what-are-adaptive-application-controls-in-security-center"></a>什麼是 Azure 資訊安全中心的自適性應用程式控制？
-彈性應用程式控制是來自 Azure 資訊安全中心的智慧型、自動化、端對端解決方案，可協助您控制哪些應用程式可在您的 Azure 和非 Azure 機器（Windows 和 Linux）上執行。 除了其他優點，這有助於強化電腦免于惡意程式碼的攻擊。 資訊安全中心使用機器學習服務來分析在您電腦上執行的應用程式，並從這個智慧建立允許清單。 這項功能可大幅簡化設定和維護應用程式允許清單原則的流程，讓您能夠：
+瞭解 Azure 資訊安全中心的彈性應用程式控制的優點，以及如何使用此資料驅動的智慧型功能來增強您的安全性。
 
-- 封鎖執行惡意應用程式的嘗試或提出警示，包括反惡意程式碼解決方案可能遺漏的嘗試。
-- 符合您組織規定只能使用授權軟體的安全性原則。
-- 避免在您的環境中使用不必要的軟體。
-- 避免執行舊版和不支援的應用程式。
-- 阻止您的組織不允許的特定軟體工具。
-- 讓 IT 能夠透過應用程式使用量來控制敏感性資料的存取。
 
-> [!NOTE]
-> 針對非 Azure 和 Linux 機器，只有 audit 模式支援彈性應用程式控制。
+## <a name="what-are-security-centers-adaptive-application-controls"></a>什麼是資訊安全中心的彈性應用程式控制？
 
-## <a name="how-to-enable-adaptive-application-controls"></a>如何啟用自適性應用程式控制？
+彈性應用程式控制是一種智慧型且自動化的解決方案，可為您的機器定義已知安全應用程式的允許清單。 
 
-彈性應用程式控制可協助您定義一組允許在已設定的電腦群組上執行的應用程式。 這項功能適用于 Azure 和非 Azure Windows （所有版本、傳統或 Azure Resource Manager）和 Linux 電腦。 使用下列步驟來設定您的應用程式允許清單：
+組織通常會有一系列定期執行相同進程的機器。 資訊安全中心使用機器學習服務來分析在您電腦上執行的應用程式，並建立已知安全軟體的清單。 允許清單是以您特定的 Azure 工作負載為基礎，您可以使用下列指示進一步自訂建議。
 
-1. 開啟 [資訊安全中心]**** 儀表板。
+當您已啟用並設定彈性應用程式控制時，如果任何應用程式執行的不是您定義為安全的，您就會收到安全性警示。
 
-1. 在左側窗格中，選取位於 [進階雲端防禦]**** 之下的 [自適性應用程式控制]****。
 
-    [![防禦](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
+## <a name="what-are-the-benefits-of-adaptive-application-controls"></a>彈性應用程式控制的優點為何？
 
-[自適性應用程式控制]**** 頁面隨即出現。
+藉由定義已知安全應用程式的清單，並在任何其他專案執行時產生警示，您可以達成多個強化目標：
 
-![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
+- 識別潛在惡意程式碼，甚至是反惡意程式碼解決方案可能遺漏的惡意程式碼
+- 使用規定僅授權軟體的本機安全性原則來改善合規性
+- 避免執行舊版或不支援的應用程式
+- 防止貴組織所禁止的特定軟體
+- 增加存取敏感性資料之應用程式的監督
 
-[VM 群組]**** 區段包含三個索引標籤：
 
-* **已設定**：內含已設定應用程式控制之 VM 的群組清單。
-* **建議**：建議採用應用程式控制的群組清單。 資訊安全中心會使用機器學習服務，根據 VM 是否以一致的方式執行相同的應用程式來識別適合採用應用程式控制的 VM。
-* **無建議**：內含無任何應用程式控制建議之 VM 的群組清單。 例如，其上的應用程式一直改變且尚未達到穩定狀態的 VM。
 
-> [!NOTE]
-> 資訊安全中心會使用專屬群集演算法來建立 VM 群組，以確保類似的 VM 取得最佳建議應用程式控制原則。
->
->
+## <a name="availability"></a>可用性
 
-### <a name="configure-a-new-application-control-policy"></a>設定新的應用程式控制原則
+|層面|詳細資料|
+|----|:----|
+|發行狀態：|正式運作|
+|標價|標準層|
+|支援的電腦：|![是 ](./media/icons/yes-icon.png) azure，而非 azure 機器執行 Windows 和 Linux<br>![是 ](./media/icons/yes-icon.png) [Azure Arc](https://docs.microsoft.com/azure/azure-arc/)機器|
+|必要的角色和許可權：|「**安全性讀取**者」和「**讀者**」角色可以同時查看群組和已知安全應用程式的清單<br>「**參與者**」和「**安全性管理員**」角色可以同時編輯群組和已知安全應用程式的清單|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov) |
+|||
 
-1. 針對具有應用程式控制建議的群組清單選取 [**建議**] 索引標籤：
 
-   ![建議](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
-   此清單包括：
+## <a name="enable-application-controls-on-a-group-of-machines"></a>啟用電腦群組上的應用程式控制項
 
-   - **組名**：訂用帳戶和群組的名稱
-   - **Vm 和電腦**：群組中的虛擬機器數目
-   - **狀態**：建議的狀態
-   - **嚴重性**：建議的嚴重性層級
+如果資訊安全中心已識別訂用帳戶中一致執行一組類似應用程式的機器群組，系統將會提示您提供下列建議：您**應該在電腦上啟用用於定義安全應用程式的彈性應用程式控制項**。
 
-2. 按一下群組以開啟 [建立應用程式控制規則]**** 選項。
+選取建議，或開啟 [彈性應用程式控制] 頁面，以查看建議的已知安全應用程式和電腦群組的清單。
 
-   [![應用程式控制規則](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
+1. 從資訊安全中心的功能表中，選取 [彈性**應用**程式控制]。
 
-3. 在 [選取 VM]**** 中，檢閱建議的 VM 清單，並取消選取任何不想套用應用程式允許清單原則的 VM。 接下來，您會看到兩份清單：
+    [彈性**應用**程式控制] 頁面隨即開啟，並將您的 vm 分組為下列索引標籤：
 
-   - **建議應用程式**：此群組中 VM 上經常使用的應用程式清單，建議您允許執行。
-   - **更多應用程式**：此群組中 VM 上較不常使用或稱為「易受利用」(詳情請參閱下文) 的應用程式清單，建議您加以檢閱。
+    - 已**設定**-已定義允許的應用程式清單的電腦群組。 針對每個群組，[已設定] 索引標籤會顯示：
+        - 群組中的機器數目
+        - 最近的警示
 
-4. 檢閱每份清單中的應用程式，並取消選取您不想套用的應用程式。 每份清單都包括：
+    - **建議**-一致執行相同應用程式，但未設定允許清單的電腦群組。 我們建議您為這些群組啟用彈性應用程式控制。
+    
+      > [!TIP]
+      > 如果您看到具有前置詞 "REVIEWGROUP" 的組名，則會包含具有部分一致應用程式清單的電腦。 資訊安全中心無法看到模式，但建議您查看此群組，以查看_您_是否可以手動定義一些彈性應用程式控制規則，如[編輯群組的彈性應用程式控制規則](#editing-a-groups-adaptive-application-controls-rule)中所述。
+      >
+      > 您也可以將機器從此群組移至其他群組，如[將電腦從一個群組移至另一個群組](#move-a-machine-from-one-group-to-another)中所述。
 
-   - **名稱**：應用程式的憑證資訊或完整路徑
-   - **檔案類型**：應用程式檔案類型。 這可以是 EXE、指令碼、MSI 或這些類型的任何排列。
-   - **易受利用**：警告圖示會指出攻擊者是否可以使用特定應用程式來略過應用程式允許清單。 建議您在核准之前檢閱這些應用程式。
-   - **使用者**：允許執行應用程式的建議使用者
+    - **無建議**-沒有已定義允許的應用程式清單，且不支援此功能的電腦。 您的電腦可能會因為下列原因而在此索引標籤中：
+      - 缺少 Log Analytics 代理程式
+      - Log Analytics 代理程式未傳送事件
+      - 這是一台 Windows 電腦，其中包含由 GPO 或本機安全性原則啟用的既有[AppLocker](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker)原則
 
-5. 一旦完成您的選擇，請選取 [建立]  。 <br>
-   選取 [建立] 之後，Azure 資訊安全中心會自動在 Windows 伺服器（AppLocker）上可用的內建應用程式允許清單解決方案之上建立適當的規則。
+      > [!TIP]
+      > 資訊安全中心需要至少兩周的資料，以定義每個電腦群組的唯一建議。 最近建立或屬於僅限標準層啟用之訂用帳戶的電腦，將會出現在 [**沒有建議**] 索引標籤底下。
 
-> [!NOTE]
-> - 資訊安全中心會依賴至少兩週的資料，以建立基準，並且在每個虛擬機器群組填入唯一建議。 資訊安全中心標準層的新客戶預期會有標準行為，也就是他們的虛擬機器群組一開始會出現在 [不推薦]** 索引標籤底下。
-> - 資訊安全中心的自適性應用程式控制不支援已由 GPO 或本機安全性原則啟用 AppLocker 原則的 VM。
-> -  最佳的安全性做法如下：資訊安全中心一律嘗試為選取為允許的應用程式建立發行者規則，且只有在應用程式沒有發行者資訊 (也就是未簽署) 時，才會針對特定應用程式的完整路徑建立路徑規則。
->   
 
-### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>編輯和監視已設定應用程式控制的群組
+1. 開啟 [**建議**] 索引標籤。出現 [建議的允許清單] 的電腦群組。
 
-1. 若要編輯和監視以應用程式允許清單原則設定的群組，請回到 [彈性**應用**程式控制] 頁面，然後選取 [在**Vm 群組**底下**設定**]：
+   ![建議的索引標籤](./media/security-center-adaptive-application/adaptive-application-recommended-tab.png)
 
-   ![群組](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
+1. 選取群組。 
 
-   此清單包括：
+1. 若要設定您的新規則，請檢查此 [**設定應用程式控制規則**] 頁面的各個區段和 [內容]，這將對此特定電腦群組而言是唯一的：
 
-   - **組名**：訂用帳戶和群組的名稱
-   - **Vm 和電腦**：群組中的虛擬機器數目
-   - **模式**： Audit 模式會記錄嘗試執行不在允許清單上的應用程式;[強制] 不允許應用程式執行，除非它們位於允許清單上
-   - **警示**：目前所有的違規情形
+   ![設定新的規則](./media/security-center-adaptive-application/adaptive-application-create-rule.png)
 
-2. 按一下群組以在 [編輯應用程式控制原則]**** 頁面中進行變更。
+   1. **選取機器**-根據預設，會選取已識別群組中的所有電腦。 取消選取任何專案，即可從這個規則中移除它們。
+   
+   1. **建議的應用程式**-請參閱此群組中電腦通用的此應用程式清單，並建議允許執行。
+   
+   1. **更多應用程式**-請參閱這份清單，這些應用程式在此群組中的機器上不常出現，或已知為可利用攻擊。 警告圖示表示攻擊者可能會使用特定應用程式來略過應用程式允許清單。 我們建議您仔細檢查這些應用程式。
 
-   ![保護](./media/security-center-adaptive-application/security-center-adaptive-application-fig6.png)
+      > [!TIP]
+      > 這兩個應用程式清單都包含將特定應用程式限制為特定使用者的選項。 盡可能採用最低許可權的原則。
+      > 
+      > 應用程式是由其發行者定義，如果應用程式沒有發行者資訊 (不帶正負號的) ，則會針對特定應用程式的完整路徑建立路徑規則。
 
-3. 在 [保護模式]**** 之下，您可以選取下列選項：
+   1. 若要套用規則，請選取 [ **Audit**]。 
 
-   - **稽核**：在此模式中，應用程式控制解決方案不會強制執行規則，而只會稽核受保護虛擬機器上的活動。 此模式建議用於下列情況：您想在封鎖要在目標 VM 中執行的應用程式之前，先觀察整體行為。
-   - **強制**：在此模式中，應用程式控制解決方案會強制執行規則，並確定不得執行的應用程式會遭到封鎖。
 
-   > [!NOTE]
-   > -  [強制執行]**** 保護模式已停用，直到進一步通知為止。
-   > - 如先前所述，根據預設，新的應用程式控制原則一律設定為「稽核」** 模式。 
+
+
+## <a name="editing-a-groups-adaptive-application-controls-rule"></a>編輯群組的彈性應用程式控制規則
+
+您可能會決定編輯電腦群組的允許清單，因為貴組織有已知的變更。 
+
+若要編輯電腦群組的規則：
+
+1. 從資訊安全中心的功能表中，選取 [彈性**應用**程式控制]。
+
+1. 從 [**已設定**] 索引標籤中，選取您要編輯規則的群組。
+
+1. 如在[機器群組上啟用](#enable-application-controls-on-a-group-of-machines)自動調整應用程式控制中所述，參閱**設定應用程式控制規則**頁面的各個區段。
+
+1. （選擇性）新增一或多個自訂規則：
+
+   1. 選取 [**新增規則**]。
+
+      ![新增自訂規則](./media/security-center-adaptive-application/adaptive-application-add-custom-rule.png)
+
+   1. 如果您要定義已知的安全路徑，請將**規則類型**變更為 [路徑]。 您可以在路徑中包含萬用字元。
+   
+      > [!TIP]
+      > 在路徑中使用萬用字元的部分案例可能會很有用：
+      > 
+      > * 在路徑結尾使用萬用字元，以允許在此資料夾和子資料夾內的所有可執行檔。
+      > * 在路徑的中間使用萬用字元來啟用具有變更資料夾名稱的已知可執行檔名稱 (例如，包含已知可執行檔的個人使用者資料夾、自動產生的資料夾名稱等等) 。
+  
+   1. 定義允許的使用者和受保護的檔案類型。
+
+   1. 當您完成定義規則時，請選取 [**新增**]。
+
+1. 若要套用變更，請選取 [**儲存**]。
+
+
+
+
+## <a name="responding-to-the-allowlist-rules-in-your-adaptive-application-control-policy-should-be-updated-recommendation"></a>回應「您的適應性應用程式控制原則中的允許清單規則應該更新」的建議
+
+當資訊安全中心的機器學習服務發現先前未允許的可能合法行為時，您會看到這項建議。 建議建議您現有定義的新規則，以減少錯誤正面警示的數目。
+
+若要修復問題：
+
+1. 在 [建議] 頁面上，選取 [彈性**應用程式控制原則] 中的允許清單規則應該更新**建議，以查看具有新識別之可能合法行為的群組。
+
+1. 選取您想要編輯規則的群組。
+
+1. 如在[機器群組上啟用](#enable-application-controls-on-a-group-of-machines)自動調整應用程式控制中所述，參閱**設定應用程式控制規則**頁面的各個區段。
+
+1. 若要套用變更，請選取 [ **Audit**]。
+
+
+
+
+## <a name="auditing-alerts-and-violations"></a>審核警示和違規
+
+1. 從資訊安全中心的功能表中，選取 [彈性**應用**程式控制]。
+
+1. 若要查看具有最近警示之電腦的群組，請查看 [**已設定**] 索引標籤中所列的群組。
+
+1. 若要進一步調查，請選取群組。
+
+   ![最近的警示](./media/security-center-adaptive-application/recent-alerts.png)
+
+1. 如需進一步的詳細資料，以及受影響的機器清單，請選取警示。
+
+
+
+## <a name="move-a-machine-from-one-group-to-another"></a>將電腦從一個群組移至另一個
+
+當您將電腦從一個群組移到另一個時，套用至它的應用程式控制原則會變更為您將它移到的群組設定。 您也可以將電腦從已設定的群組移至未設定的群組，這樣做會移除已套用至電腦的任何應用程式控制規則。
+
+1. 從 [彈性**應用程式控制項**] 頁面的 [**已設定**] 索引標籤中，選取包含要移動之電腦的群組。
+
+1. 開啟**已設定的電腦**清單。
+
+1. 從資料列結尾的三個點開啟電腦的功能表，然後選取 [**移動**]。 [**將電腦移至不同的群組**] 窗格隨即開啟。
+
+1. 選取目的地群組，然後選取 [**移動電腦**]。
+
+1. 若要儲存您的變更，請選取 [**儲存**]。
+
+
+
+
+
+## <a name="managing-application-controls-via-the-rest-api"></a>透過 REST API 管理應用程式控制 
+
+若要以程式設計方式管理您的彈性應用程式控制，請使用我們的 REST API。 
+
+完整的 API 檔位於[這裡](https://docs.microsoft.com/rest/api/securitycenter/adaptiveapplicationcontrols)。
+
+REST API 提供的部分功能如下：
+
+* **清單**會抓取您所有的群組建議，並為每個群組提供具有物件的 JSON。
+
+* **Get**會使用完整的建議資料來抓取 JSON (也就是電腦清單、發行者/路徑規則等等) 。
+
+* **Put**會設定您的規則 (使用以**Get**作為此要求) 主體的 JSON。
+ 
+   > [!IMPORTANT]
+   > **Put**函式所預期的參數比 Get 命令所傳回的 JSON 少。
    >
+   > 在 Put 要求中使用 JSON 之前，請先移除下列屬性： recommendationStatus、configurationStatus、問題、位置和及 sourcesystem。
 
-4. 在 [原則擴充功能]**** 底下，新增想允許的任何應用程式路徑。 新增這些路徑之後，資訊安全中心會在所選 VM 群組內的 Vm 上更新應用程式允許清單原則，並為這些應用程式建立適當的規則，以及已準備好的規則。
 
-5. 檢閱 [最近的警示] **** 區段中列出的目前違規情形。 按下每一行以重新導向到 Azure 資訊安全中心內的 [警示] **** 頁面，並檢視 Azure 資訊安全中心在相關聯 VM 上偵測到的所有警示。
-   - **警示**：已記錄的任何違規情形。
-   - **VM 數目**：具有此警示類型的虛擬機器數目。
 
-6. 在 [發行者允許清單規則]、[路徑允許清單規則] 和 [雜湊允許清單規則] 底下，可以根據規則集合類型，查看群組中的 VM 上目前設定了哪些應用程式允許清單規則。************ 在每個規則中，您可以看到：：
-
-   - **規則**：特定的參數，AppLocker 會根據這些參數來檢查應用程式，判斷是否允許執行應用程式。
-   - **檔案類型**：特定規則所涵蓋的檔案類型。 這可以是下列任一項：EXE、指令碼、MSI 或這些檔案類型的任何排列。
-   - **使用者**：使用者的名稱或數目，這些使用者可以執行應用程式允許清單規則所涵蓋的應用程式。
-
-   ![列入允許清單規則](./media/security-center-adaptive-application/security-center-adaptive-application-fig9.png)
-
-7. 若要刪除該特定規則或編輯允許的使用者，請按一下每一行結尾的三個點。
-
-8. 對**自適性應用程式控制**原則進行變更之後，請按一下 [儲存]****。
-
-### <a name="not-recommended-list"></a>不建議使用的清單
-
-資訊安全中心只會針對執行一組穩定應用程式的虛擬機器，建議應用程式允許清單原則。 如果相關 VM 上的應用程式一直變更，則不會產生建議。
-
-![建議](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
-
-此清單包含：
-- **組名**：訂用帳戶和群組的名稱
-- **Vm 和電腦**：群組中的虛擬機器數目
-
-Azure 資訊安全中心也可讓您對非建議的 VM 群組定義應用程式允許清單原則。 遵循先前所述的相同準則，同樣對這些群組設定應用程式允許清單原則。
-
-## <a name="move-a-vm-from-one-group-to-another"></a>將 VM 從一個群組移至另一個
-
- 當您將 VM 從一個群組移至另一個時，套用至它的應用程式控制原則會變更為您將它移到的群組設定。 您也可以將 VM 從已設定的群組移至未設定的群組，這會導致移除先前套用至 VM 的任何應用程式控制原則。
-
- 1. 從 [彈性**應用**程式控制] 頁面的 [**已設定**] 索引標籤中，按一下要移動的 VM 目前所屬的群組。
-1. 按一下 [**已設定的 vm 和電腦**]。
-1. 按一下要移動的 VM 行中的三個點，然後按一下 [**移動**]。 [**將電腦移至不同的群組**] 視窗隨即開啟。
-
-    ![保護](./media/security-center-adaptive-application/adaptive-application-move-group.png)
-
- 1. 選取要將 VM 移至其中的群組，然後按一下 [**移動電腦**]，再按一下 [**儲存**]。
-
-    ![保護](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
-
- > [!NOTE]
-> 按一下 [**移動電腦**] 之後，請務必按一下 [**儲存**]。 如果您未按一下 [**儲存**]，則不會移動電腦。
 
 ## <a name="next-steps"></a>後續步驟
-在本檔中，您已瞭解如何使用 Azure 資訊安全中心中的適應性應用程式控制，將在 Azure 和非 Azure Vm 中執行的應用程式列入允許清單。 若要深入了解「Azure 資訊安全中心」，請參閱下列主題：
+在本檔中，您已瞭解如何在 Azure 資訊安全中心中使用調適型應用程式控制，以定義在您的 Azure 和非 Azure 機器上執行之應用程式的允許清單。 若要深入瞭解資訊安全中心其他雲端工作負載保護功能的詳細資訊，請參閱：
 
-* [管理和回應 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 了解如何在資訊安全中心管理警示，以及回應安全性事件。
-* [Azure 資訊安全中心中的安全性健全狀況監視](security-center-monitoring.md)。 了解如何監視 Azure 資源的健全狀況。
-* [瞭解 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同類型的安全性警示。
-* [Azure 資訊安全中心疑難排解指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何針對資訊安全中心的常見問題進行疑難排解。
-* [Azure 安全性的 Blog](https://blogs.msdn.com/b/azuresecurity/)。 尋找有關 Azure 安全性與相容性的部落格文章。
+* [瞭解及時 (JIT) VM 存取](just-in-time-explained.md)
+* [保護您的 Azure Kubernetes 叢集](azure-kubernetes-service-integration.md)

@@ -1,6 +1,6 @@
 ---
 title: 路由的車輛耗用量模型 |Microsoft Azure 對應
-description: 在本文中，您將瞭解 Microsoft Azure 對應中路由的車輛耗用量模型。
+description: 瞭解 Azure 地圖服務支援的耗用量模型：燃燒和電動。 查看每個模型所使用的參數，並查看參數條件約束。
 author: subbarayudukamma
 ms.author: skamma
 ms.date: 05/08/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: c1572eddf78ca2d5f8f4e3ee9f1fe47b0d43f5aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b44186d783a249192a8c13ee97063034ee319df7
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190240"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036754"
 ---
 # <a name="consumption-model"></a>耗用模型
 
@@ -25,12 +25,12 @@ ms.locfileid: "77190240"
 在這兩種耗用量模型中，指定參數時，會有一些相依性。 也就是說，明確指定某些參數可能需要指定一些其他參數。 以下是要注意的相依性：
 
 * 所有參數都需要由使用者指定 **constantSpeedConsumption**。 如果未指定**constantSpeedConsumption** ，則指定任何其他耗用量模型參數是錯誤的。 **除了 vehicleweight**參數是此需求的例外狀況。
-* **accelerationEfficiency**和**decelerationEfficiency**必須一律指定為一組（也就是，兩者都是）。
+* **accelerationEfficiency**和**decelerationEfficiency**一定要指定為一組 (也就是，) 都是或 none。
 * 如果指定 **accelerationEfficiency** 和 **decelerationEfficiency**，其值的產品必不能大於 1 (以防永恆運動)。
-* **uphillEfficiency**和**downhillEfficiency**必須一律指定為成對（也就是，兩者都是）。
+* **uphillEfficiency**和**downhillEfficiency**必須一律指定為成對 (，兩者都是) 。
 * 如果指定 **uphillEfficiency** 和 **downhillEfficiency**，其值的產品必不能大於 1 (以防永恆運動)。
 * 如果使用者指定 \*__Efficiency__ 參數，則也必須指定 **vehicleWeight**。 若 **vehicleEngineType** 為 _combustion_，也必須指定 **fuelEnergyDensityInMJoulesPerLiter**。
-* **maxChargeInkWh**和**currentChargeInkWh**必須一律指定為一組（也就是，兩者都是）。
+* **maxChargeInkWh**和**currentChargeInkWh**一定要指定為一組 (也就是，) 都是或 none。
 
 > [!NOTE]
 > 如果僅指定 **constantSpeedConsumption**，沒有為耗用計算考慮其他耗用層面，如坡度和載具加速。

@@ -1,7 +1,7 @@
 ---
 title: 管理驗證
 titleSuffix: Azure Maps
-description: 使用 Azure 入口網站來管理 Microsoft Azure 對應中的驗證。
+description: 熟悉 Azure 地圖服務驗證。 查看哪種方法最適合在哪種情況下運作。 瞭解如何使用入口網站來查看驗證設定。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 870ecb8bda9f07c9270724002d381a4f58bc4d13
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8fc27ea4de7e81f1279f68d2e4a1a7fde1fcf41f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531722"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037332"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>管理 Azure 地圖服務中的驗證
 
-建立 Azure 地圖服務帳戶之後，會建立用戶端識別碼和金鑰，以支援 Azure Active Directory （Azure AD）驗證和共用金鑰驗證。
+建立 Azure 地圖服務帳戶之後，會建立用戶端識別碼和金鑰，以支援 Azure Active Directory (Azure AD) 驗證和共用金鑰驗證。
 
 ## <a name="view-authentication-details"></a>檢視驗證詳細資料
 
@@ -41,9 +41,9 @@ ms.locfileid: "87531722"
 下表概述 Azure 地圖服務中的常見驗證和授權案例。 下表提供每個案例所提供的保護類型比較。
 
 > [!IMPORTANT]
-> Microsoft 建議使用生產應用程式的角色型存取控制（RBAC），來執行 Azure Active Directory （Azure AD）。
+> Microsoft 建議您針對生產應用程式，使用角色型存取控制 (RBAC) 來執行 Azure Active Directory (Azure AD) 。
 
-| 狀況                                                                                    | 驗證 | 授權 | 開發成果 | 營運工作 |
+| 案例                                                                                    | 驗證 | 授權 | 開發成果 | 營運工作 |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
 | [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | 共用金鑰     | N/A           | 中             | 高               |
 | [受信任的 daemon/非互動式用戶端應用程式](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低度                | 中             |
@@ -56,14 +56,14 @@ ms.locfileid: "87531722"
 
 ## <a name="view-role-definitions"></a>查看角色定義
 
-若要查看可用於 Azure 地圖服務的 Azure 角色，請移至 **[存取控制（IAM）**]。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。 這些 Azure 地圖服務角色是您可以授與存取權的角色。
+若要查看可用於 Azure 地圖服務的 Azure 角色，請移至**存取控制 (IAM) **。 選取 [**角色**]，然後搜尋以*Azure 地圖服務*開頭的角色。 這些 Azure 地圖服務角色是您可以授與存取權的角色。
 
 > [!div class="mx-imgBorder"]
 > ![檢視可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 ## <a name="view-role-assignments"></a>檢視角色指派
 
-若要查看已授與 Azure 地圖服務之 RBAC 的使用者和應用程式，請移至**存取控制（IAM）**。 在該處選取 [**角色指派**]，然後依**Azure 地圖服務**篩選。
+若要查看已授與 Azure 地圖服務之 RBAC 的使用者和應用程式，請移至**存取控制 (IAM) **。 在該處選取 [**角色指派**]，然後依**Azure 地圖服務**篩選。
 
 > [!div class="mx-imgBorder"]
 > ![查看已授與 RBAC 的使用者和應用程式](./media/how-to-manage-authentication/how-to-view-amrbac.png)

@@ -1,19 +1,19 @@
 ---
 title: 針對 Azure 點對站連線問題進行疑難排解
 titleSuffix: Azure VPN Gateway
-description: 瞭解如何針對您可能會在 Azure 中遇到的常見點對站連線問題進行疑難排解，包括各種不同的 VPN 用戶端錯誤。
+description: 瞭解如何疑難排解和解決常見的點對站連線問題，以及其他虛擬私人網路錯誤和問題。
 services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 8fd32cb99db115484c913e1a0f00b038b62367e9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: dbf0d096827ec1af16e6d38d405709e48175ae89
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920648"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035940"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>疑難排解：Azure 點對站連線問題
 

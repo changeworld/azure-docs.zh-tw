@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 923b3fbb617f46ba0551f6b21c384331559da2f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263240"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036329"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory 的角色和權限
 
@@ -26,21 +26,21 @@ ms.locfileid: "85263240"
 
 ## <a name="roles-and-requirements"></a>角色和需求
 
-若要建立 Data Factory 執行個體，您用來登入 Azure 的使用者帳戶必須為「參與者」或「擁有者」角色，或是 Azure 訂用帳戶的「管理員」。 若要檢視您在訂用帳戶中擁有的權限，請在 Azure 入口網站中選取右上角的使用者名稱，然後選取 [權限]。 如果您有多個訂用帳戶的存取權，請選取適當的訂用帳戶。 
+若要建立 Data Factory 實例，您用來登入 Azure 的使用者帳戶必須是「*參與者*」角色、「*擁有*者」角色的成員，或是 Azure 訂用帳戶的*系統管理員*。 若要檢視您在訂用帳戶中擁有的權限，請在 Azure 入口網站中選取右上角的使用者名稱，然後選取 [權限]。 如果您有多個訂用帳戶的存取權，請選取適當的訂用帳戶。 
 
 若要建立及管理 Data factory 的子資源 (包括資料集、連結服務、管線、觸發程序和整合執行階段)，必須要符合下列需求：
-- 若要在 Azure 入口網站中建立及管理子資源，您必須屬於資源群組層級或更高層級的 **Data Factory 參與者**角色。
+- 若要建立和管理 Azure 入口網站中的子資源，您必須屬於**資源群組**層級或以上的**Data Factory 參與者**角色。
 - 若要使用 PowerShell 或 SDK 來建立及管理子資源，具備資源層級或更高層級的**參與者**角色即已足夠。
 
 如需將使用者新增至角色的範例指示，請參閱[新增角色](../cost-management-billing/manage/add-change-subscription-administrator.md)一文。
 
 ## <a name="set-up-permissions"></a>設定權限
 
-在建立 Data Factory 之後，您可以讓其他使用者使用資料處理站。 若要將此存取權提供給其他使用者，您必須將其新增至資料處理站所在資源群組上的內建 **Data Factory 參與者**角色。
+在建立 Data Factory 之後，您可以讓其他使用者使用資料處理站。 若要將此存取權授與其他使用者，您必須將他們新增至包含 Data Factory 之**資源群組**上的內建**Data Factory 參與者**角色。
 
 ### <a name="scope-of-the-data-factory-contributor-role"></a>Data Factory 參與者角色的範圍
 
-**Data Factory 參與者**角色中的成員資格可讓使用者執行下列作業：
+**Data Factory 參與者**角色的成員資格可讓使用者執行下列動作：
 - 建立、編輯和刪除資料處理站與子資源，包括資料集、連結的服務、管線、觸發程序和整合執行階段。
 - 部署 Resource Manager 範本。 Resource Manager 部署是 Data Factory 在 Azure 入口網站中所使用的部署方法。
 - 管理資料處理站的 App Insights 警示。
@@ -50,7 +50,7 @@ ms.locfileid: "85263240"
 
 ### <a name="resource-manager-template-deployment"></a>Resource Manager 範本部署
 
-位於資源群組層級以上的 **Data Factory 參與者**角色可讓使用者部署 Resource Manager 範本。 因此，該角色的成員可以使用 Resource Manager 範本來部署資料處理站及其子資源，包括資料集、連結的服務、管線、觸發程序和整合執行階段。 不過，此角色的成員資格不會讓使用者建立其他資源。
+位於資源群組層級以上的 **Data Factory 參與者**角色可讓使用者部署 Resource Manager 範本。 因此，該角色的成員可以使用 Resource Manager 範本來部署資料處理站及其子資源，包括資料集、連結的服務、管線、觸發程序和整合執行階段。 此角色中的成員資格不會讓使用者建立其他資源。
 
 Azure Repos 和 GitHub 上的權限與 Data Factory 權限無關。 因此，具備存放庫權限的使用者只能是讀者角色的成員，該使用者可以編輯 Data Factory 子資源，並將變更認可至存放庫，但無法發佈這些變更。
 

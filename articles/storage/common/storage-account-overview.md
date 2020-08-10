@@ -1,7 +1,7 @@
 ---
 title: 儲存體帳戶概觀
 titleSuffix: Azure Storage
-description: 了解用於建立和使用 Azure 儲存體帳戶的選項。
+description: 閱讀 Azure 儲存體中儲存體帳戶的總覽。 審查帳戶命名、效能層級、存取層、冗余、加密、端點等等。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 6ae5f4ba88880a53db765ab0ad9fde5bd9a4e4f9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 8342ffc122f56f4e2a3a41e249007b2ceaad22a6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043628"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034646"
 ---
 # <a name="storage-account-overview"></a>儲存體帳戶概觀
 
@@ -78,7 +78,7 @@ FileStorage 帳戶提供獨特的效能專用特性，例如 IOPS 負載平衡�
 
 為您的儲存體帳戶命名時，請記住這些規則：
 
-- 儲存體帳戶名稱必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。
+- 儲存體帳戶名稱的長度必須介於 3 到 24 個字元之間，且只能包含數字和小寫字母。
 - 儲存體帳戶名稱必須在 Azure 中是獨一無二的。 任兩個儲存體帳戶名稱不得相同。
 
 ## <a name="performance-tiers"></a>效能層級
@@ -115,7 +115,7 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 > [!IMPORTANT]
 > 變更現有儲存體帳戶或 Blob 的存取層可能會導致額外的費用。 如需詳細資訊，請參閱[儲存體帳戶計費](#storage-account-billing)小節。
 
-## <a name="redundancy"></a>備援性
+## <a name="redundancy"></a>備援
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
@@ -149,7 +149,7 @@ Azure 儲存體提供不同的選項，以便根據使用量模式來存取區�
 
 您可以使用下列任何一種方法，授與您儲存體帳戶中資料的存取權：
 
-- **Azure Active Directory：** 使用 Azure Active Directory （Azure AD）認證來驗證使用者、群組或其他身分識別，以便存取 blob 和佇列資料。 如果身分識別驗證成功，Azure AD 會傳回一個權杖，以使用於對 Azure Blob 儲存體或佇列儲存體的要求授權。 如需詳細資訊，請參閱[使用 Azure Active Directory 來驗證 Azure 儲存體的存取權](storage-auth-aad.md)。
+- **Azure Active Directory：** 使用 Azure Active Directory (Azure AD) 認證來驗證使用者、群組或其他身分識別，以便存取 blob 和佇列資料。 如果身分識別驗證成功，Azure AD 會傳回一個權杖，以使用於對 Azure Blob 儲存體或佇列儲存體的要求授權。 如需詳細資訊，請參閱[使用 Azure Active Directory 來驗證 Azure 儲存體的存取權](storage-auth-aad.md)。
 - **共用金鑰授權：** 使用儲存體帳戶存取金鑰來建構一個連接字串，以便您的應用程式在執行階段用來存取 Azure 儲存體。 連接字串中的值用來建構會傳遞至 Azure 儲存體的「授權」** 標頭。 如需詳細資訊，請參閱[設定 Azure 儲存體連接字串](storage-configure-connection-string.md)。
 - **共用存取**簽章：如果您不是使用 Azure AD 授權，請使用共用存取簽章來委派儲存體帳戶中資源的存取權。 共用存取簽章是一個權杖，可封裝在 URL 上對 Azure 儲存體的要求授權所需的資訊。 您可以將儲存體資源、授與的權限，以及權限有效的間隔指定為共用存取簽章的一部分。 如需詳細資訊，請參閱[使用共用存取簽章 (SAS)](storage-sas-overview.md)。
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8fa775ab4d183d75fef41529a95555fe3bcdc91c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 556d3df41b7ee66bfb2b32b8a566d7172f45e313
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827838"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034459"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 儲存體備援
 
@@ -51,11 +51,13 @@ Azure 儲存體帳戶中的資料一律會在主要區域內複寫三次。 Azur
 
 區域備援儲存體 (ZRS) 會在主要區域中將 Azure 儲存體資料同步複寫到三個 Azure 可用區域。 每個可用區域都是具備獨立的電源、冷卻和網路的不同實體位置。 ZRS 可在指定的一年中為 Azure 儲存體資料物件提供至少 99.9999999999% (12 個 9) 的持久性。
 
-透過 ZRS，即使區域無法使用，您仍然可針對讀取和寫入作業存取資料。 若區域無法使用，則 Azure 會執行網路更新，例如 DNS 重新指向。 若在更新完成之前存取資料，這些更新便可能會影響應用程式。 在為 ZRS 設計應用程式時，請遵循暫時性錯誤處理實務，包括以指數後退法實作重試原則。
+透過 ZRS，即使區域無法使用，您仍然可針對讀取和寫入作業存取資料。 如果區域變得無法使用，Azure 科學家網路會更新，例如 DNS repointing。 若在更新完成之前存取資料，這些更新便可能會影響應用程式。 在為 ZRS 設計應用程式時，請遵循暫時性錯誤處理實務，包括以指數後退法實作重試原則。
 
 對使用 ZRS 儲存體帳戶發出的寫入要求會以同步方式進行。 只有在將資料寫入三個可用區域的所有複本之後，寫入作業才會成功傳回。
 
-針對需要一致性、持久性和高可用性的案例，Microsoft 建議在主要區域中使用 ZRS。 ZRS 可為資料提供優秀的效能、低延遲以及復原，即使其暫時無法使用也一樣。 但是，ZRS 本身可能無法保護資料不受永久影響多個區域的區域性災害影響。 針對區域性災害的保護，Microsoft 建議使用[異地區域備援儲存體](#geo-zone-redundant-storage) (GZRS)，這種儲存體會在主要區域內使用 ZRS，但也會將資料異地複寫至次要區域。
+針對需要一致性、持久性和高可用性的案例，Microsoft 建議在主要區域中使用 ZRS。 如果您想要限制應用程式只在國家或地區內複寫資料，因為資料治理需求，我們也建議使用 ZRS。
+
+ZRS 可為資料提供優秀的效能、低延遲以及復原，即使其暫時無法使用也一樣。 但是，ZRS 本身可能無法保護資料不受永久影響多個區域的區域性災害影響。 針對區域性災害的保護，Microsoft 建議使用[異地區域備援儲存體](#geo-zone-redundant-storage) (GZRS)，這種儲存體會在主要區域內使用 ZRS，但也會將資料異地複寫至次要區域。
 
 下表顯示哪些儲存體帳戶類型在哪些區域支援 ZRS：
 

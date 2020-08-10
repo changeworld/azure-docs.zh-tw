@@ -1,6 +1,6 @@
 ---
 title: 微調效能： Spark、HDInsight & Azure Data Lake Storage Gen2 |Microsoft Docs
-description: Azure Data Lake Storage Gen2 Spark 效能微調指導方針
+description: 瞭解使用 Azure HDInsight 和 Azure Data Lake Storage Gen2 來微調 Spark 效能的指導方針。
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 06fe2670e5ee0d95df8985c9777d3ad9741336b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8ae9f96b42c0eb36a9380589780d141711c7ae4d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106113"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034726"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>微調效能： Spark、HDInsight & Azure Data Lake Storage Gen2
 
@@ -46,7 +46,7 @@ ms.locfileid: "86106113"
 
 依預設，在 HDInsight 上執行 Spark 時，會為每個實體核心定義兩個虛擬 YARN 核心。  這個數量能在並行能力與從多個執行緒切換而來的內容數量取得良好平衡。  
 
-## <a name="guidance"></a>指引
+## <a name="guidance"></a>指導方針
 
 針對 Data Lake Storage Gen2 中的資料執行 Spark 分析工作負載時，我們建議您使用最新 HDInsight 版本以取得最佳的 Data Lake Storage Gen2 效能。 當您的作業較為 I/O 密集時，您可以設定某些參數以提升效能。  Data Lake Storage Gen2 是具有高擴充性的儲存體平台，可處理高輸送量。  如果作業主要包含讀取和寫入，則提升 Data Lake Storage Gen2 往返 I/O 並行能力可增進效能。
 
@@ -71,16 +71,16 @@ ms.locfileid: "86106113"
 
 **計算記憶體限制** - num-executors 參數會受到記憶體或 CPU 所限制。  記憶體限制取決於應用程式的可用 YARN 記憶體數量。  您應該取得 YARN 記憶體總數，然後除以 executor-memory。  應用程式數目的限制必須取消調整，因此我們除以應用程式數目。
 
-記憶體限制 = （總 YARN 記憶體/執行程式記憶體）/應用程式數目
+記憶體條件約束 = (YARN 記憶體/執行程式記憶體總計) /應用程式數目
 
 **計算 CPU 限制**-CPU 限制的計算方式為虛擬核心總數除以每個執行程式的核心數目。  每個實體核心有 2 個虛擬核心。  和記憶體限制類似，我們必須除以應用程式數目。
 
-- 虛擬核心 = （叢集中的節點 * 節點中的實體核心數 * 2）
-- CPU 條件約束 = （虛擬核心總數/每個執行程式的核心數目）/應用程式數目
+- 虛擬核心 = 節點中的 (節點 * 2 中的實體核心數) 
+- CPU 條件約束 = (虛擬核心總數/每個執行程式的核心數目) /應用程式數目
 
 **設定 num-executors**– num-executors 參數是由記憶體限制和 CPU 限制較小者來決定。 
 
-num-執行程式 = Min （每個執行程式的總虛擬核心數/核心數目、可用的 YARN 記憶體/執行程式-記憶體）
+num-執行程式 = Min (總虛擬核心數/每個執行程式的核心數目，可用的 YARN 記憶體/執行程式-記憶體) 
 
 設定較高的 num-executors 數值未必能提升效能。  您應該考慮到，新增更多執行程式會對每個額外的執行程式新增額外的負擔，而可能降低效能。  Num-executors 受到叢集資源的限制。    
 
@@ -107,21 +107,21 @@ num-執行程式 = Min （每個執行程式的總虛擬核心數/核心數目�
 
 **計算記憶體限制** – 記憶體限制的計算方式為 YARN 記憶體總數除以每個執行程式的記憶體。
 
-- 記憶體限制 = （總 YARN 記憶體/執行程式記憶體）/應用程式數目
-- 記憶體限制 = （200GB/6GB）/2
-- 記憶體限制 = 16 （進位）
+- 記憶體條件約束 = (YARN 記憶體/執行程式記憶體總計) /應用程式數目
+- 記憶體條件約束 = (200GB/6GB) /2
+- 記憶體條件約束 = 16 (四捨五入) 
 
 **計算 CPU 限制**-CPU 限制的計算方式為 YARN 核心總數除以每個執行程式的核心數目。
 
 - YARN 核心 = 叢集中的節點 * 每個節點的核心數 * 2
 - YARN 核心 = 8 個節點 * 每個 D14 8 個核心 * 2 = 128
-- CPU 條件約束 = （每個執行程式的總 YARN 核心數/核心數）/應用程式數目
-- CPU 條件約束 = （128/4）/2
+- CPU 條件約束 = (總 YARN 核心數/每個執行程式的核心數目) /應用程式數目
+- CPU 條件約束 = (128/4) /2
 - CPU 條件約束 = 16
 
 **設定 num-executors**
 
-- num-執行次數 = Min （記憶體條件約束，CPU 條件約束）
-- num-執行次數 = Min （16，16）
+- num-執行次數 = Min (記憶體條件約束，CPU 條件約束) 
+- num-執行次數 = Min (16，16) 
 - num-執行次數 = 16
 

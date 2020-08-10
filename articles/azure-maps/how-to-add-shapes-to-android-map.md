@@ -1,6 +1,6 @@
 ---
 title: 將圖形新增至 Android 地圖 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Android SDK，在地圖上轉譯不同的圖案。
+description: 瞭解如何將圖形新增至地圖。 請參閱使用 Azure 地圖服務 Android SDK 的程式碼範例，將線條和多邊形加入至地圖。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 855a05bd228a3bf903b79522549ed519b4745e17
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9dd8718a6a96627781a578edb514d797e40f01fb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127089"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037417"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將圖形新增至地圖
 
@@ -51,7 +51,7 @@ ms.locfileid: "87127089"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您類別的**onCreate （）** 方法中 `MainActivity.java` 。
+2. 將下列程式碼片段複製到您類別的**onCreate ( # B1**方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -76,7 +76,7 @@ ms.locfileid: "87127089"
 
     ```
     
-    上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後，它會建立**Point**物件的清單。 **LineString**是從點清單建立，並加入至資料來源。 **線條圖層**會呈現包裝在地圖上資料來源中的線條物件。 然後會建立線條圖層，並將資料來源加入其中。
+    上述程式碼片段會先使用**onReady ( # B1**回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後，它會建立**Point**物件的清單。 **LineString**是從點清單建立，並加入至資料來源。 **線條圖層**會呈現包裝在地圖上資料來源中的線條物件。 然後會建立線條圖層，並將資料來源加入其中。
 
     新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
     
@@ -208,7 +208,7 @@ ms.locfileid: "87127089"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您類別的**onCreate （）** 方法中 `MainActivity.java` 。
+2. 將下列程式碼片段複製到您類別的**onCreate ( # B1**方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -238,7 +238,7 @@ ms.locfileid: "87127089"
     });
     ```
 
-    上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後會從**Point**物件清單建立**多邊形**物件，並將它加入至資料來源。 **多邊形圖層**會呈現地圖上資料來源中包裝的資料。 接著，它會建立多邊形圖層來轉譯多邊形區域，並將資料來源加入其中。 **線條圖層**會呈現包裝在資料來源中的線條物件。 程式碼片段的最後一個部分會建立線條圖層來呈現多邊形的外框，並將資料來源加入其中。
+    上述程式碼片段會先使用**onReady ( # B1**回呼方法來取得 Azure 地圖服務的地圖控制項實例。 然後，它會使用**DataSource**類別來建立資料來源物件，並將它加入至對應。 然後會從**Point**物件清單建立**多邊形**物件，並將它加入至資料來源。 **多邊形圖層**會呈現地圖上資料來源中包裝的資料。 接著，它會建立多邊形圖層來轉譯多邊形區域，並將資料來源加入其中。 **線條圖層**會呈現包裝在資料來源中的線條物件。 程式碼片段的最後一個部分會建立線條圖層來呈現多邊形的外框，並將資料來源加入其中。
 
     新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
 

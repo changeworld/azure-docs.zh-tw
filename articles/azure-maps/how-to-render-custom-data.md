@@ -1,6 +1,6 @@
 ---
 title: 在點陣地圖上轉譯自訂資料 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure 地圖靜態影像服務，在點陣地圖上轉譯自訂資料。
+description: 瞭解如何將圖釘、標籤和幾何圖案新增至點陣地圖。 如需此用途，請參閱如何在 Azure 地圖服務中使用靜態映射服務。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/23/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6eae060b2ed2b0f7d6de5ac54d92677c95fc8a89
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d5dcc2701a0b77509868471ec97c45917b2ccf42
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126868"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037366"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>在點陣地圖上轉譯自訂資料
 

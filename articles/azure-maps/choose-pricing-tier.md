@@ -1,6 +1,6 @@
 ---
 title: 為 Microsoft Azure 地圖選擇正確的定價層
-description: 在本文中，您將瞭解 Microsoft Azure Maps 所提供的定價層。
+description: 深入瞭解 Azure 地圖服務定價層。 查看哪些層級提供哪些功能，以及如何選擇定價層的重要考慮。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 359c2270f3de269adae13ce976cedeb4248935d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30507b289a0ae4f831c8bcf4e038049301da7981
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285759"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036771"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>在 Azure 地圖服務中選擇正確的定價層
 
@@ -38,15 +38,15 @@ S0 和 S1 定價層會處理不同的資料輸送量。 S0 定價層最多可處
 | 路由                                   | ✓                    |✓        |
 | 批次路由                            |                    | ✓        |
 | 矩陣路由                          |                     | ✓        |
-| 路由範圍（等時線）                |                     | ✓        |
+| 路由範圍 (等時線)                 |                     | ✓        |
 | 交通流量                                |✓                    |✓        |
 | 時區                               |✓                    |✓        |
-| 地理位置（預覽）                    |✓                   |✓        |
+| 地理位置 (預覽)                     |✓                   |✓        |
 | 空間作業                        |                    |✓        |
 | 地理柵欄                                |                    |✓        |
-| Azure 地圖服務資料（預覽）                |                     | ✓        |
-| 行動性（預覽）                       |                     | ✓        |
-| 氣象（預覽）                        |✓                    |✓        |
+| Azure 地圖服務資料 (預覽)                 |                     | ✓        |
+| 行動性 (預覽)                        |                     | ✓        |
+| 天氣 (預覽)                         |✓                    |✓        |
 
 請考慮下列其他重點：
 

@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 93366bf963350bf9cbdbda15ec4070c21a1dc975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090139"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036567"
 ---
-# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft 商業市集的常見問題
+# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>有關 Microsoft 商業 marketplace 的常見問題
 
 本文將回答商業市集的常見問題。
 
 ## <a name="general"></a>一般
 
-### <a name="what-is-microsoft-commercial-marketplace"></a>何謂 Microsoft 商業市集？
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>什麼是 Microsoft 商業 marketplace？
 
 商業市集會使用我們合作夥伴所建置的解決方案，連接商業和政府機構。 我們的合作夥伴會在合作夥伴中心建立和管理供應項目，而且客戶可以透過產品內體驗探索並購買解決方案，例如 Microsoft AppSource、Azure Marketplace、雲端解決方案提供者計畫中的轉銷商，以及透過共同銷售計畫的銷售團隊。
 
@@ -60,7 +60,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 - 對於您自動提供的解決方案，無論它們是付費、自備授權 (BYOL) 或免費，都會激勵客戶*立即取得*。
 - 支援試用產品 (示範) 的供應項目會要求客戶*試用產品*。 
-- 軟體即服務 (SaaS) 供應項目，可在我們的商業市集外提供試用版，即「免費試用版」。
+- 軟體即服務 (SaaS) 供應專案，可在商業市場外提供試用版，例如*免費試用版*。
 - 簡單清單可讓客戶要求「與我連絡」。
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>如何為商業市集建立供應項目？
@@ -77,7 +77,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>我的組織可以從商業市集取得哪些分析？
 
-我們會在商業市場內提供您供應項目的報告。 若要存取客戶、訂單、商店業務開發等等的相關資料，請前往[合作夥伴中心商業市集的分析](partner-center-portal/analytics.md)。
+我們會在商業市場中提供您供應專案的報告。 若要存取客戶、訂單、商店業務開發等等的相關資料，請前往[合作夥伴中心商業市集的分析](partner-center-portal/analytics.md)。
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Microsoft 與我客戶之間的關係為何？
 
@@ -124,7 +124,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>什麼是商業市集的潛在客戶，我該怎麼處理他們？
 
-當客戶在 Microsoft AppSource 和 Azure Marketplace 店面上使用您的供應項目時，就會擷取資訊。 在客戶展現出足夠的興趣之後，就會建立潛在客戶，並將商機傳送至您選擇的系統。 成功使用我們商業市集的發行者通常會尋求潛在客戶、開發關聯性，並將興趣化為交易。
+當客戶在 Microsoft AppSource 和 Azure Marketplace 店面上使用您的供應項目時，就會擷取資訊。 在客戶展現出足夠的興趣之後，就會建立潛在客戶，並將商機傳送至您選擇的系統。 成功使用商用 marketplace 的發行者通常會尋求潛在客戶、開發關係，並將重點放在交易中。
 
 如需詳細資訊，請參閱[來自您市集供應項目的潛在客戶](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
@@ -285,7 +285,7 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>在哪些國家/地區中，可代表我管理稅賦？
 
-客戶可以從世界各地的商業市場尋找解決方案，而且我們會管理許多位置中的稅賦。 
+客戶可以從世界各地的商業 marketplace 尋找解決方案，並在許多位置管理稅金。 
 
 若要檢閱完整位置清單，請前往[商業市集發行者的稅賦詳細資料](partner-center-portal/tax-details-paid-transactions.md)。
 

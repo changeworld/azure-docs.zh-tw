@@ -1,18 +1,18 @@
 ---
 title: 如何設定 Azure VPN 閘道的 OpenVPN 用戶端 |Microsoft Docs
-description: 瞭解如何設定適用于 Azure VPN 閘道的 OpenVPN 通訊協定用戶端，包括 Windows、Mac 和 Linux 用戶端。
+description: 瞭解如何設定適用于 Windows、Linux 和 Mac 作業系統用戶端的 OpenVPN for Azure VPN 閘道。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 136dcb0b2d1740aa5cadbd716b4a8386ad5cf486
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 92447a541726c1c11b7b10d6d52cf91cfc07f945
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926207"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036856"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>設定適用于 Azure VPN 閘道的 OpenVPN 用戶端
 

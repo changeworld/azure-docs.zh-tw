@@ -1,6 +1,6 @@
 ---
 title: 開始使用 Microsoft Azure 地圖 web 地圖控制項
-description: 瞭解如何使用 Microsoft Azure Maps web 地圖控制項用戶端 JavaScript 程式庫，將地圖和內嵌 Azure 地圖服務功能轉譯成您的 web 或行動應用程式。
+description: 瞭解如何使用 Azure 地圖服務中的地圖控制項用戶端 JavaScript 程式庫，將對應新增至 web 和行動應用程式。 請參閱如何當地語系化對應。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 40ae1492084430f7dbca331d1439b4ded099c866
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287075"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035945"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務的地圖控制項
 
 地圖控制項用戶端 JavaScript 程式庫可讓您將地圖和內嵌 Azure 地圖服務功能轉譯到 web 或行動應用程式中。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要在網頁中使用地圖控制項，您必須具有下列其中一個必要條件：
 
 * [建立 Azure 地圖服務帳戶](quick-demo-map-app.md#create-an-azure-maps-account)，並[取得主要的訂用帳戶金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也稱為「主要金鑰」或「訂用帳戶金鑰」。
 
-* 使用[驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)取得您的 AZURE ACTIVE DIRECTORY （AAD）認證。
+* 使用[驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)， (AAD) 認證取得您的 Azure Active Directory。
 
 ## <a name="create-a-new-map-in-a-web-page"></a>在網頁中建立新的地圖
 
@@ -34,22 +34,22 @@ ms.locfileid: "87287075"
 
 1. 建立新的 HTML 檔案。
 
-2. 載入 Azure 地圖服務 Web SDK。 您可以選擇兩個選項的其中一個：
+2. 載入 Azure 地圖服務 Web SDK。 您有兩個選項可選擇：
 
     * 藉由在 HTML 檔案的元素中新增 JavaScript 和樣式表單的參考，使用 Azure 地圖服務 Web SDK 的全域裝載 CDN 版本 `<head>` ：
 
-        ```HTML
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        ```
+      ```html
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
     * 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-control)NPM 套件在本機載入 AZURE 地圖服務 Web SDK 原始程式碼，並將其與您的應用程式搭配使用。 此套件也包含 TypeScript 定義。
 
-    > **npm 安裝 azure-maps-control**
+      > **npm 安裝 azure-maps-control**
 
     然後將 Azure 地圖服務樣式表單的參考新增至檔案的 `<head>` 元素：
 
-    ```HTML
+    ```html
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
      ```
 
@@ -83,7 +83,7 @@ ms.locfileid: "87287075"
     </body>
    ```
 
-5. 現在，我們將初始化地圖控制項。 若要驗證控制項，您必須擁有 Azure 地圖服務的訂用帳戶金鑰，或使用 Azure Active Directory （AAD）[認證搭配驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)。
+5. 現在，我們將初始化地圖控制項。 若要驗證控制項，您必須擁有 Azure 地圖服務的訂用帳戶金鑰，或使用 Azure Active Directory (AAD) [認證搭配驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)。
 
     如果您使用訂用帳戶金鑰進行驗證，請複製下列腳本元素並貼到元素內的 `<head>` 第一個元素底下 `<script>` 。 `<Your Azure Maps Key>`將取代為您的 Azure 地圖服務主要訂用帳戶金鑰。
 
@@ -104,7 +104,7 @@ ms.locfileid: "87287075"
     </script>
     ```
 
-    如果您使用 Azure Active Directory （AAD）進行驗證，請複製下列腳本元素並貼到專案中 `<head>` ，然後在第一個元素的下方 `<script>` 。
+    如果您使用 Azure Active Directory (AAD) 進行驗證，請複製下列腳本元素並貼到元素內的 `<head>` 第一個 `<script>` 元素底下。
 
       ```HTML
     <script type="text/javascript">
@@ -125,7 +125,7 @@ ms.locfileid: "87287075"
     </script>
    ```
 
-    如需使用 Azure 地圖服務進行驗證的詳細資訊，請參閱[使用 Azure 地圖服務驗證](azure-maps-authentication.md)檔。 此外，您可以在[這裡](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)找到範例清單，其中顯示如何整合 AZURE ACTIVE DIRECTORY （AAD）與 Azure 地圖服務。
+    如需使用 Azure 地圖服務進行驗證的詳細資訊，請參閱[使用 Azure 地圖服務驗證](azure-maps-authentication.md)檔。 此外，您可以在[這裡](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)找到範例清單，其中顯示如何整合 AZURE ACTIVE DIRECTORY (AAD) 與 Azure 地圖服務。
 
     >[!TIP]
     >在此範例中，我們已傳入 `id` 對應的 `<div>` 。 另一種做法是傳遞做 `HTMLElement` `document.getElementById('myMap')` 為第一個參數來傳入物件。
@@ -200,7 +200,7 @@ ms.locfileid: "87287075"
 
 ## <a name="localizing-the-map"></a>將地圖當地語系化
 
-Azure 地圖服務提供兩種不同的方式來設定轉譯地圖的語言和地區視圖。 第一個選項是將這項資訊新增至全域 `atlas` 命名空間，這會導致應用程式中的所有地圖控制項實例預設為這些設定。 以下會將語言設定為法文（"fr-fr"），並將地區視圖設為「自動」：
+Azure 地圖服務提供兩種不同的方式來設定轉譯地圖的語言和地區視圖。 第一個選項是將這項資訊新增至全域 `atlas` 命名空間，這會導致應用程式中的所有地圖控制項實例預設為這些設定。 以下會將語言設定為法文 ( "fr-fr" ) 並將地區視圖設為「自動」：
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -272,7 +272,7 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 > [!div class="nextstepaction"]
 > [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
 
-如需顯示如何整合 Azure Active Directory （AAD）與 Azure 地圖服務的範例清單，請參閱：
+如需示範如何將 Azure Active Directory (AAD) 與 Azure 地圖服務整合的範例清單，請參閱：
 
 > [!div class="nextstepaction"]
 > [Azure AD 驗證範例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

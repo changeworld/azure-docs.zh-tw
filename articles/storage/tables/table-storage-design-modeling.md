@@ -1,6 +1,6 @@
 ---
 title: Azure 資料表儲存體設計中的模型關聯性 |Microsoft Docs
-description: 了解設計表格儲存體解決方案時的模型化程序。
+description: 瞭解設計 Azure 資料表儲存體解決方案時的模型化程式。 閱讀一對多、一對一和繼承關聯性的相關資訊。
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 25082c107fbc0feeb533aa2b4fc56cff960e778d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c803a7b11aee3d57d6145bed296bd40ddd9bb5e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75457556"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036040"
 ---
 # <a name="modeling-relationships"></a>將關聯性模型化
 本文討論的模型化程序有助於您設計 Azure 表格儲存體解決方案。
@@ -100,7 +100,7 @@ ms.locfileid: "75457556"
 
 也有可能會導致您在表格服務中實作一對一關聯性的實作考量：  
 
-* 處理大型實體（如需詳細資訊，請參閱[大型實體模式](table-storage-design-patterns.md#large-entities-pattern)）。  
+* 處理大型實體 (如需詳細資訊，請參閱[大型實體模式](table-storage-design-patterns.md#large-entities-pattern)) 。  
 * 實作存取控制 (如需詳細資訊，請參閱使用共用存取簽章控制存取)。  
 
 ## <a name="join-in-the-client"></a>用戶端中的聯結

@@ -1,7 +1,7 @@
 ---
 title: 建立、變更或刪除 Azure 公用 IP 位址首碼
 titlesuffix: Azure Virtual Network
-description: 瞭解公用 IP 位址首碼，以及如果您不熟悉這些前置詞，可以在何處尋找其他資訊。 另請瞭解如何建立、變更或刪除一個。
+description: 瞭解公用 IP 位址首碼，以及如何建立、變更或刪除它們。 請參閱尋找其他資訊的位置。
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 85e649944b155fc9e51fe01c282fc7f34f8a00d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c844b25394d865453e653bfc3ac6bff396d97a47
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283158"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035054"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>建立、變更或刪除公用 IP 位址首碼
 
@@ -50,13 +50,13 @@ ms.locfileid: "87283158"
    |---|---|---|
    |訂用帳戶|是|所在的[訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)必須與您想要與公用 IP 位址建立關聯的資源相同。|
    |資源群組|是|所在的[資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)可以與您想要與公用 IP 位址建立關聯的資源相同或不同。|
-   |Name|是|名稱必須是您選取的資源群組中唯一的名稱。|
+   |名稱|是|名稱必須是您選取的資源群組中唯一的名稱。|
    |區域|是|必須與您從範圍指派位址的公用 IP 位址存在於相同[區域](https://azure.microsoft.com/regions)。|
    |首碼大小|是| 您需要的首碼大小。 /28 或 16 個 IP 位址為預設值。
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[新增-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
@@ -75,9 +75,9 @@ ms.locfileid: "87283158"
    |閒置逾時 (分鐘)|否|不需依賴用戶端傳送保持連線訊息，讓 TCP 或 HTTP 連線保持開啟的分鐘數。 |
    |DNS 名稱標籤|否|在您建立名稱的 Azure 區域 (跨越所有訂用帳戶和所有客戶) 中必須是唯一。 Azure 會在其 DNS 中自動登錄名稱和 IP 位址，以便您連線至具有此名稱的資源。 Azure 會將 *location.cloudapp.azure.com* (其中 location 是您選取的位置) 之類的預設子網路附加至您提供的名稱，以建立完整的 DNS 名稱。如需詳細資訊，請參閱[使用具有 Azure 公用 IP 位址的 Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)。|
 
-或者，您可以使用下列 CLI 和 PS 命令搭配--public-ip 首碼（CLI）和-PublicIpPrefix （PS）參數，以建立公用 IP 位址資源。 
+或者，您可以使用下列 CLI 和 PS 命令搭配--public-ip 首碼 (CLI) 和-PublicIpPrefix (PS) 參數，以建立公用 IP 位址資源。 
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
@@ -92,7 +92,7 @@ ms.locfileid: "87283158"
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) 可列出公用 IP 位址、[az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) 可顯示設定；[az network public-ip prefix update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) 可進行更新；[az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) 可進行刪除|
 |PowerShell|[AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix)以取出公用 IP 位址物件，並查看其設定， [AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix)以更新設定;[移除-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix)以刪除|
@@ -101,7 +101,7 @@ ms.locfileid: "87283158"
 
 若要針對公用 IP 位址首碼執行工作，您的帳戶必須指派為[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色，或為已指派下表所列適當動作的[自訂](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)角色：
 
-| 動作                                                            | Name                                                           |
+| 動作                                                            | 名稱                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft.Network/publicIPPrefixes/read                           | 讀取公用 IP 位址首碼                                |
 | Microsoft.Network/publicIPPrefixes/write                          | 建立或更新公用 IP 位址首碼                    |

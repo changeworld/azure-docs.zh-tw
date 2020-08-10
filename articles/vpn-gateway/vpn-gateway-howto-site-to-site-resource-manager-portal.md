@@ -1,6 +1,6 @@
 ---
 title: 將內部部署網路連線至 Azure 虛擬網路：站對站 VPN：入口網站
-description: 透過公用網際網路建立從內部部署網路至 Azure 虛擬網路之 IPsec 連線的步驟。 這些步驟可協助您使用入口網站建立跨單位的站對站 VPN 閘道連線。
+description: 使用入口網站建立從內部部署網路到 Azure 虛擬網路的 IPsec 站對站 VPN 閘道連線，透過公用網際網路。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 601e31cde22942abd6d2bc7c5bdcbc5d97f5a591
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfd03935f5189a544f11e5b8bbdd4b46e2aa989
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987661"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037060"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>在 Azure 入口網站中建立站對站連線
 
@@ -53,7 +53,7 @@ ms.locfileid: "84987661"
 * **虛擬網路閘道名稱：** VNet1GW
 * **公用 IP 位址名稱：** VNet1GWpip
 * **VPN 類型：** 以路由為基礎
-* **連線類型：** 站對站（IPsec）
+* **連線類型：** 站對站 (IPsec) 
 * **閘道類型：** 專用
 * **局域網路閘道名稱：** Site1
 * **連接名稱：** VNet1toSite1

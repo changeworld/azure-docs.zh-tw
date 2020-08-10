@@ -1,6 +1,6 @@
 ---
 title: 處理地圖事件 | Microsoft Azure 地圖服務
-description: 在本文中，您將了解如何使用 Microsoft Azure 地圖服務 Web SDK 來建立與地圖事件互動的 Web SDK。
+description: 瞭解當使用者與地圖互動時所引發的事件。 查看所有支援的對應事件清單。 請參閱如何使用 Azure 地圖服務 Web SDK 來處理事件。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 667ab684ef4a453d210af36c0221d350b25c9829
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f3a48e4434588b2eb64637e6f0a454148cad39f2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282886"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036436"
 ---
 # <a name="interact-with-the-map"></a>與地圖互動
 

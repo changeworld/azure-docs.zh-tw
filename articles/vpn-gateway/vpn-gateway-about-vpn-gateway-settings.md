@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 閘道： configuration 設定
-description: 瞭解 Azure 中的 VPN 閘道連線設定，其依賴多個資源，其中每一個都包含可設定的設定。
+description: 瞭解 Resource Manager 部署模型中建立之虛擬網路的 VPN 閘道資源和設定。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5fef54e4fff442f1c9eae523d7d278f193b84171
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6f801b94a16ae6fcee6896dd70510469c5e20098
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926921"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036907"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>關於 VPN 閘道組態設定
 

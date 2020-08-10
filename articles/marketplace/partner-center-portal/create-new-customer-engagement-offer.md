@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 650210ab965936de6e48b2ace3f2042857760053
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 000413267d09f5f51ffdb50ccc5aeaab78a18b5e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800002"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036652"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>建立 Dynamics 365 for Customer Engagement 和 PowerApps 供應項目
 
@@ -133,7 +133,7 @@ ms.locfileid: "87800002"
 
 1. 標誌
 2. 產品
-3. Categories
+3. 類別
 4. 支援位址 (連結) 
 5. 使用規定位址 (連結) 
 6. 供應項目名稱
@@ -190,19 +190,19 @@ ms.locfileid: "87800002"
 
 請提供供應項目的標誌和影像。 所有影像都必須採用 PNG 格式。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
 #### <a name="store-logos"></a>儲存標誌
 
-在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 大小標誌。 您可以選擇性地將此取代為不同的影像。
+請提供三種像素大小的供應項目標誌：
+- **小型** (必要；48 x 48)
+- **大型** (必要；216 x 216)
+- **寬型** (選擇性；255 x 115)
 
-需要兩種標誌大小，才能在清單中的不同位置使用：
-
-- **小型** (48 x 48)
-- 216 x 216 與 350 x 350) 之間的**大型** (
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 

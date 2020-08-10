@@ -1,6 +1,6 @@
 ---
 title: 地理柵欄的 GeoJSON 資料格式 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何準備可用於 Microsoft Azure Map GET 和 POST 地理柵欄 API 的地理柵欄資料。
+description: 深入瞭解 Azure 地圖服務地理柵欄資料。 瞭解如何在抓取相對於地理柵欄的座標位置時，使用 GET 地理柵欄和 POST 地理柵欄 Api。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 924c23f0fb0156ff585872dded72932a1574a12d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131300"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037400"
 ---
 # <a name="geofencing-geojson-data"></a>地理柵欄 GeoJSON 資料
 
@@ -30,12 +30,12 @@ Azure 地圖服務 [GET Geofence](/rest/api/maps/spatial/getgeofence) 和 [POST 
 * `expiredTime` 是地理柵欄資料的到期日期和時間。 如果要求中 `userTime` 的值比此值還要晚，系統會將對應的地理柵欄資料視為到期資料，且不會查詢它。 這會使此地理柵欄資料的 geometryId 被包含在地理柵欄回應內的 `expiredGeofenceGeometryId` 陣列中。
 * `validityPeriod` 是地理柵欄有效時間期間的清單。 如果要求中 `userTime` 的值落在有效期間之外，系統會將對應的地理柵欄資料視為無效，且不會查詢它。 此地理柵欄資料的 geometryId 被包含在地理柵欄回應內的 `invalidPeriodGeofenceGeometryId` 陣列中。 下表說明 validityPeriod 元素的屬性。
 
-| 名稱 | 類型 | 必要  | 說明 |
+| 名稱 | 類型 | 必要  | 描述 |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datetime  | true | 有效時間期間的開始日期時間。 |
 | EndTime   | Datetime  | true |  有效時間期間的結束日期時間。 |
 | recurrenceType | 字串 | false |   期間的週期類型。 值可為 `Daily`、`Weekly`、`Monthly`，或 `Yearly`。 預設值為 `Daily`。|
-| businessDayOnly | 布林值 | false |  指出資料是否僅在工作日有效。 預設值為 `false`。|
+| businessDayOnly | Boolean | false |  指出資料是否僅在工作日有效。 預設值為 `false`。|
 
 
 * 所有座標值都會表示為中定義的 [經度，緯度] `WGS84` 。

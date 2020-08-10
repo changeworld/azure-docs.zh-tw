@@ -1,6 +1,6 @@
 ---
 title: 將圖格圖層新增至 Android 地圖 |Microsoft Azure 對應
-description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Android SDK，在地圖上轉譯磚圖層。
+description: 瞭解如何將圖格圖層新增至地圖。 請參閱使用 Azure 地圖服務 Android SDK 將氣象雷達圖新增至地圖的範例。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e7480ba3befaf560eace2cae4ef4a822012373a2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bae1d06f1b5a96ad99d970613d957ce75a0c1393
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126970"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037349"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將磚圖層新增至地圖
 
@@ -71,7 +71,7 @@ ms.locfileid: "87126970"
     </FrameLayout>
     ```
 
-2. 將下列程式碼片段複製到您類別的**onCreate （）** 方法中 `MainActivity.java` 。
+2. 將下列程式碼片段複製到您類別的**onCreate ( # B1**方法中 `MainActivity.java` 。
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,7 +84,7 @@ ms.locfileid: "87126970"
     });
     ```
     
-    上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 接著，它會建立 `TileLayer` 物件，並將格式化的**XYZ**磚 URL 傳遞到 `tileUrl` 選項中。 圖層的不透明度設定為 `0.8` ，因為所使用之磚服務的磚是256圖元磚，所以這項資訊會傳遞到 `tileSize` 選項中。 圖格圖層接著會傳遞至 maps 圖層管理員。
+    上述程式碼片段會先使用**onReady ( # B1**回呼方法來取得 Azure 地圖服務的地圖控制項實例。 接著，它會建立 `TileLayer` 物件，並將格式化的**XYZ**磚 URL 傳遞到 `tileUrl` 選項中。 圖層的不透明度設定為 `0.8` ，因為所使用之磚服務的磚是256圖元磚，所以這項資訊會傳遞到 `tileSize` 選項中。 圖格圖層接著會傳遞至 maps 圖層管理員。
 
     新增上述程式碼片段之後，您 `MainActivity.java` 的看起來應該如下所示：
     

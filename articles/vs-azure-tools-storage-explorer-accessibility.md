@@ -1,6 +1,6 @@
 ---
-title: Azure 儲存體總管協助工具 (預覽) | Microsoft Docs
-description: Azure 儲存體總管協助工具 (預覽)
+title: Azure 儲存體總管存取範圍 |Microsoft Docs
+description: 瞭解 Azure 儲存體總管中的協助工具。 查看可用的螢幕閱讀者、縮放功能、高對比主題和快速鍵。
 services: storage
 documentationcenter: na
 author: MrayermannMSFT
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
-ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ca4a8d719277eaa1d853d53d282649f839256be9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60457245"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035480"
 ---
 # <a name="storage-explorer-accessibility"></a>儲存體總管協助工具
 
@@ -31,7 +31,7 @@ ms.locfileid: "60457245"
 ---------|--------------
 Windows  | NVDA
 Mac      | Voice Over
-Linux    | （Linux 上不支援螢幕讀取器）
+Linux    | Linux 上不支援 (螢幕讀取器) 
 
 使用儲存體總管時，如果遇到涉及身障求助方面的問題，請[在 GitHub 回報您的問題](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
@@ -55,7 +55,7 @@ Linux    | （Linux 上不支援螢幕讀取器）
 
 ### <a name="window-commands"></a>視窗命令
 
-命令       | 鍵盤快速鍵
+Command       | 鍵盤快速鍵
 --------------|--------------------
 開新視窗    | **Control+Shift+N**
 關閉編輯器  | **Control+F4**
@@ -63,7 +63,7 @@ Linux    | （Linux 上不支援螢幕讀取器）
 
 ### <a name="navigation-commands"></a>導覽命令
 
-命令                | 鍵盤快速鍵
+Command                | 鍵盤快速鍵
 -----------------------|----------------------
 焦點移至下一個窗格       | **F6**
 焦點移至上一個窗格   | **Shift+F6**
@@ -78,14 +78,14 @@ Linux    | （Linux 上不支援螢幕讀取器）
 
 ### <a name="zoom-commands"></a>縮放命令
 
-命令  | 鍵盤快速鍵
+Command  | 鍵盤快速鍵
 ---------|------------------
 放大  | **Control + =**
 縮小 | **Control +-**
 
 ### <a name="blob-and-file-share-editor-commands"></a>Blob 和檔案共用編輯器命令
 
-命令 | 鍵盤快速鍵
+Command | 鍵盤快速鍵
 --------|--------------------
 上一步    | **Alt+向左箭**
 下一頁 | **Alt + 向右鍵**
@@ -93,16 +93,16 @@ Up      | **Alt+向上箭**
 
 ### <a name="editor-commands"></a>編輯器命令
 
-命令 | 鍵盤快速鍵
+Command | 鍵盤快速鍵
 --------|------------------
 複製    | **Control+C**
 剪下     | **Control+X**
 貼上   | **Control+V**
-重新整理  | **Control+R**
+Refresh  | **Control+R**
 
 ### <a name="other-commands"></a>其他命令
 
-命令                | 鍵盤快速鍵
+Command                | 鍵盤快速鍵
 -----------------------|------------------
 切換開發人員工具 | **F12**
 重新載入                 | **Alt + Ctrl + R**

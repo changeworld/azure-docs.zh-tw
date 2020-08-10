@@ -3,12 +3,12 @@ title: 使用 REST API 備份 Azure 檔案共用
 description: 瞭解如何使用 REST API 來備份復原服務保存庫中的 Azure 檔案共用
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 7059dbae9d448b710880f1f9d72b843a6d77d98b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f48ebbd20d6775fe61c3e3dbb07e8f71af41635a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055023"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036737"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>使用 Azure 備份透過 Rest API 備份 Azure 檔案共用
 
@@ -58,7 +58,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 「重新整理」作業為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
-它會傳回兩個回應：當另一個作業已建立時，202（已接受），而當該作業完成時，則傳回200（確定）。
+它會傳回兩個回應： 202 (在建立另一個作業時接受) ，而200在該作業完成時 ([確定]) 。
 
 ##### <a name="example-responses"></a>範例回應
 
@@ -89,7 +89,7 @@ cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01’
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/operationResults/cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01
 ```
 
-一旦探索到所有 Azure 儲存體帳戶，GET 命令就會傳回200（沒有內容）回應。 保存庫現在能夠探索具有可在訂用帳戶內備份之檔案共用的任何儲存體帳戶。
+一旦探索到所有 Azure 儲存體帳戶，GET 命令會傳回 200 (沒有內容) 回應。 保存庫現在能夠探索具有可在訂用帳戶內備份之檔案共用的任何儲存體帳戶。
 
 ```http
 HTTP/1.1 200 NoContent
@@ -106,9 +106,9 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105304Z:d9bdb266-8349-4dbd-968
 Date   : Mon, 27 Jan 2020 10:53:04 GMT
 ```
 
-### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>取得可使用復原服務保存庫保護的儲存體帳戶清單
+### <a name="get-list-of-storage-accounts-with-file-shares-that-can-be-backed-up-with-recovery-services-vault"></a>取得具有可使用復原服務保存庫備份之檔案共用的儲存體帳戶清單
 
-若要確認「快取」已完成，請列出訂用帳戶下所有可保護的儲存體帳戶。 然後，在回應中找出所需的儲存體帳戶。 這會使用[GET ProtectableContainers](/rest/api/backup/protectablecontainers/list)作業來完成。
+若要確認「快取」已完成，請使用可透過復原服務保存庫備份的檔案共用，列出訂用帳戶中的所有儲存體帳戶。 然後，在回應中找出所需的儲存體帳戶。 這會使用[GET ProtectableContainers](/rest/api/backup/protectablecontainers/list)作業來完成。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -399,9 +399,9 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 範例回應
 
-建立受保護的專案是非同步作業，它會建立另一個需要追蹤的作業。 它會傳回兩個回應：在建立另一個作業時，202（已接受），而當該作業完成時，則會傳回200（確定）。
+建立受保護的專案是非同步作業，它會建立另一個需要追蹤的作業。 它會傳回兩個回應： 202 (在建立另一個作業時接受) ，而當該作業完成時，200 (OK) 。
 
-提交*PUT*要求以進行受保護的專案建立或更新之後，初始回應會是202（已接受）與位置標頭。
+提交*PUT*要求以進行受保護的專案建立或更新之後，初始回應會是 202 (接受位置標頭) 。
 
 ```http
 HTTP/1.1 202 Accepted
@@ -467,9 +467,9 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 若要觸發隨選備份，以下是要求本文的元件。
 
-| 名稱       | 類型                       | 說明                       |
+| 名稱       | 類型                       | 描述                       |
 | ---------- | -------------------------- | --------------------------------- |
-| [內容] | AzurefilesharebackupReques | BackupRequestResource 屬性 |
+| 屬性 | AzurefilesharebackupReques | BackupRequestResource 屬性 |
 
 如需要求本文的完整定義清單及其他詳細資訊，請參閱[觸發受保護項目的備份 REST API 文件](/rest/api/backup/backups/trigger#request-body) \(英文\)。
 
@@ -491,7 +491,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 觸發隨選備份為[非同步作業](../azure-resource-manager/management/async-operations.md)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
-它會傳回兩個回應：在建立另一個作業時，202（已接受），而當該作業完成時，則會傳回200（確定）。
+它會傳回兩個回應： 202 (在建立另一個作業時接受) ，而當該作業完成時，200 (OK) 。
 
 ### <a name="example-responses"></a>範例回應
 

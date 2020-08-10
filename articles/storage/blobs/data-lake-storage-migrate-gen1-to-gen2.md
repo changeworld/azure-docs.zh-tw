@@ -1,6 +1,6 @@
 ---
 title: 將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2
-description: 將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2。
+description: 將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2，這是建置於 Azure Blob 儲存體上，並提供一組專供 big Data analytics 使用的功能。
 author: normesta
 ms.topic: how-to
 ms.author: normesta
@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2cfe5f763b3dedd68c5180f5a0a3c7a3f4ea3e93
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 25879178930c80f1265470645808d9ee81acafa8
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496418"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035122"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>將 Azure Data Lake Storage 從 Gen1 遷移至 Gen2
 
@@ -103,7 +103,7 @@ Azure Data Lake Storage Gen2 建置於[Azure Blob 儲存體](storage-blobs-intro
 |VNET 支援|[VNET 整合](../../data-lake-store/data-lake-store-network-security.md)|[服務端點](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)，[私人端點](../common/storage-private-endpoints.md)|
 |開發人員體驗|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md)、 [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md)、 [JAVA](../../data-lake-store/data-lake-store-get-started-java-sdk.md)、 [Python](../../data-lake-store/data-lake-store-data-operations-python.md)、 [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)、 [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|正式推出- [REST](/rest/api/storageservices/data-lake-storage-gen2)、 [.net](data-lake-storage-directory-file-acl-dotnet.md)、 [JAVA](data-lake-storage-directory-file-acl-java.md)、 [Python](data-lake-storage-directory-file-acl-python.md)<br>公開預覽- [JavaScript](data-lake-storage-directory-file-acl-javascript.md)、 [PowerShell](data-lake-storage-directory-file-acl-powershell.md)、 [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |資源記錄|傳統記錄<br>[Azure 監視器整合](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[傳統記錄](../common/storage-analytics-logging.md)-正式推出<br>Azure 監視器整合-時程表 TBD|
-|生態系統|[HDInsight （3.6）](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)、 [Azure Databricks （3.1 和](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)更新版本）、 [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)、 [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight （3.6、4.0）](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、 [Azure Databricks （5.1 和](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)更新版本）、 [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)、 [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|生態系統|[HDInsight (3.6) ](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)、 [Azure Databricks (3.1 和](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html)更新版本) 、 [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store)、 [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3.6、4.0) ](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)、 [Azure Databricks (5.1 和](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2)更新版本) 、 [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md)、 [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns"></a>
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090156"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035786"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>取得認證以存取媒體服務 API  
 
@@ -45,7 +45,7 @@ ms.locfileid: "87090156"
 [API 存取] 頁面可讓您選取要用來連線到 API 的驗證方法。 此頁面也會提供連線到 API 所需的值。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的媒體服務帳戶。
-2. 選取如何連線到媒體服務 API。
+2. 選取左側導覽列上的 [ **API 存取] ([新增) ** ] 分頁。
 3. 在 [連線到媒體服務 API] 下，選取要連線的媒體服務 API 版本 (V3 是最新的服務版本)。
 
 ### <a name="service-principal-authentication--recommended"></a>服務主體驗證 (建議)

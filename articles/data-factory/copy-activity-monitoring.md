@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249681"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036363"
 ---
 # <a name="monitor-copy-activity"></a>監視複製活動
 
@@ -32,7 +32,7 @@ ms.locfileid: "85249681"
 
 ![監視複製活動執行](./media/copy-activity-overview/monitor-pipeline-run.png)
 
-在此層級中，您可以看到複製活動輸入、輸出和錯誤的連結（如果複製活動執行失敗），以及「持續時間/狀態」之類的統計資料。 按一下複製活動名稱旁邊的**詳細資料**按鈕（眼鏡），可讓您深入瞭解複製活動的執行。 
+在此層級中，您可以看到複製活動輸入、輸出和錯誤的連結， (如果複製活動執行失敗) ，以及「持續時間/狀態」之類的統計資料。 按一下 [複製活動名稱] 旁的 [**詳細資料**] 按鈕 (眼鏡) ，將會提供您複製活動執行的深入詳細資料。 
 
 ![監視複製活動執行](./media/copy-activity-overview/monitor-copy-activity-run.png)
 
@@ -56,6 +56,8 @@ ms.locfileid: "85249681"
 | dataWritten | 實際裝載寫入/認可至接收的資料。 大小可能會與大小不同 `dataRead` ，因為它會與每個資料存放區儲存資料的方式產生關聯。 | Int64 值（以位元組為單位） |
 | filesRead | 從以檔案為基礎的來源讀取的檔案數目。 | Int64 值 (未指定單位) |
 | filesWritten | 以檔案為基礎的接收寫入/認可的檔案數目。 | Int64 值 (未指定單位) |
+| filesSkipped | 從以檔案為基礎的來源略過的檔案數目。 | Int64 值 (未指定單位) |
+| dataConsistencyVerification | 資料一致性驗證的詳細資料，您可以在其中查看複製的資料是否已確認在來源與目的地存放區之間是一致的。 深入瞭解[這篇文章](copy-activity-data-consistency.md#monitoring)。 | Array |
 | sourcePeakConnections | 在複製活動執行期間，建立到來源資料存放區的並行連線尖峰數目。 | Int64 值 (未指定單位) |
 | sinkPeakConnections | 在複製活動執行期間，建立至接收資料存放區的並行連線尖峰數目。 | Int64 值 (未指定單位) |
 | rowsRead | 從來源讀取的資料列數目。 當您就地複製檔案但未剖析時，就不會套用此計量，例如，當來源和接收資料集是二進位格式類型，或其他具有相同設定的格式類型時。 | Int64 值 (未指定單位) |
@@ -63,17 +65,19 @@ ms.locfileid: "85249681"
 | rowsSkipped | 略過的不相容資料列數目。 您可以將設定為 true，以啟用略過不相容的資料列 `enableSkipIncompatibleRow` 。 | Int64 值 (未指定單位) |
 | copyDuration | 複製執行的持續時間。 | Int32 值（以秒為單位） |
 | throughput | 資料傳輸速率。 | 浮點數字，以 KBps 為單位 |
-| sourcePeakConnections | 在複製活動執行期間，建立到來源資料存放區的並行連線尖峰數目。 | Int32 值（沒有單位） |
-| sinkPeakConnections| 在複製活動執行期間，建立至接收資料存放區的並行連線尖峰數目。| Int32 值（沒有單位） |
+| sourcePeakConnections | 在複製活動執行期間，建立到來源資料存放區的並行連線尖峰數目。 | Int32 值 (沒有單位)  |
+| sinkPeakConnections| 在複製活動執行期間，建立至接收資料存放區的並行連線尖峰數目。| Int32 值 (沒有單位)  |
 | sqlDwPolyBase | 將資料複製到 SQL 資料倉儲時是否使用 PolyBase。 | Boolean |
 | redshiftUnload | 從 Redshift 複製資料時，是否使用 UNLOAD。 | Boolean |
 | hdfsDistcp | 從 HDFS 複製資料時是否使用 DistCp。 | Boolean |
-| effectiveIntegrationRuntime | 用來為活動執行供電的整合執行時間（IR）或執行時間（格式為） `<IR name> (<region if it's Azure IR>)` 。 | 文字 (字串) |
+| effectiveIntegrationRuntime | 整合執行時間 (IR) 或用來啟動活動執行的執行時間（格式為） `<IR name> (<region if it's Azure IR>)` 。 | 文字 (字串) |
 | usedDataIntegrationUnits | 複製期間的有效資料整合單位。 | Int32 值 |
 | usedParallelCopies | 複製期間有效的 parallelCopies。 | Int32 值 |
-| redirectRowPath | 您在屬性中設定的 blob 儲存體中，略過不相容資料列的記錄檔路徑 `redirectIncompatibleRowSettings` 。 請參閱[容錯](copy-activity-overview.md#fault-tolerance)。 | 文字 (字串) |
+| logPath | Blob 儲存體中略過資料的會話記錄檔路徑。 請參閱[容錯](copy-activity-overview.md#fault-tolerance)。 | 文字 (字串) |
 | executionDetails | 複製活動所經歷之階段的詳細資料，以及對應的步驟、持續時間、設定等等。 我們不建議您剖析此區段，因為它可能會變更。 若要進一步瞭解它如何協助您瞭解和疑難排解複製效能，請參閱以[視覺化方式監視](#monitor-visually)一節。 | Array |
 | perfRecommendation | 複製效能微調秘訣。 如需詳細資訊，請參閱[效能微調秘訣](copy-activity-performance-troubleshooting.md#performance-tuning-tips)。 | Array |
+| billingReference | 給定執行的計費耗用量。 深入瞭解[監視活動-執行層級的耗用量](plan-manage-costs.md#monitor-consumption-at-activity-run-level)。 | Object |
+| durationInQueue | 複製活動開始執行之前的佇列持續時間（秒）。 | Object |
 
 **範例︰**
 
@@ -83,6 +87,7 @@ ms.locfileid: "85249681"
     "dataWritten": 1180089300500,
     "filesRead": 110,
     "filesWritten": 110,
+    "filesSkipped": 0,
     "sourcePeakConnections": 640,
     "sinkPeakConnections": 1024,
     "copyDuration": 388,
@@ -92,6 +97,11 @@ ms.locfileid: "85249681"
     "usedDataIntegrationUnits": 128,
     "billingReference": "{\"activityType\":\"DataMovement\",\"billableDuration\":[{\"Managed\":11.733333333333336}]}",
     "usedParallelCopies": 64,
+    "dataConsistencyVerification": 
+    { 
+        "VerificationResult": "Verified", 
+        "InconsistentData": "None" 
+    },
     "executionDetails": [
         {
             "source": {

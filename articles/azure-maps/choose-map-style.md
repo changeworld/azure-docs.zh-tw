@@ -1,6 +1,6 @@
 ---
 title: 變更 Azure 地圖服務 Web 地圖控制項的樣式
-description: 在本文中，您將瞭解 Azure 地圖服務 Web 地圖控制項的樣式功能
+description: 瞭解如何變更地圖的樣式和選項。 請參閱如何在 Azure 地圖服務中將樣式選擇器控制項新增至地圖，讓使用者可以在不同的樣式之間切換。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a4c1629302c72d6f59f7f1fd10dc850d46cea5a7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285780"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036788"
 ---
 # <a name="change-the-style-of-the-map"></a>變更地圖樣式
 
@@ -50,7 +50,7 @@ map.setStyle({
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="地圖樣式選項" src="https://codepen.io/azuremaps/embed/eYNMjPb?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參閱 CodePen 上 Azure 地圖服務（）的畫筆<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>地圖樣式選項</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'> </a>。
+請在 CodePen 上 Azure 地圖服務 () ，查看 [畫筆<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>地圖樣式] 選項</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="set-a-base-map-style"></a>設定基底地圖樣式

@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 739eb4e7968cb140e49f1baee777b48140811936
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562441"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034952"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service 本機快取概觀
 
@@ -36,7 +36,7 @@ Azure App Service 本機快取功能可讓您以 Web 角色檢視您的內容。
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>本機快取對 App Service 的行為所造成的影響
 * _D:\home_ 會指向應用程式啟動時，在 VM 執行個體上建立的本機快取。 _D:\local_會繼續指向暫存 VM 特定的儲存體。
-* 本機快取中包含共用內容存放區上 _/site_ 和 _/siteextensions_ 資料夾的一次性副本，分別位在 _D:\home\site_ 和 _D:\home\siteextensions_。 當應用程式啟動時，檔案會複製到本機快取。 根據預設，每個應用程式的兩個資料夾大小限制為 1 GB，但可以增加至 2 GB。 請注意，隨著快取大小的增加，載入快取需要較長的時間。 如果複製的檔案超過本機快取的大小，App Service 會以無訊息方式忽略本機快取，並從遠端檔案共用讀取。
+* 本機快取中包含共用內容存放區上 _/site_ 和 _/siteextensions_ 資料夾的一次性副本，分別位在 _D:\home\site_ 和 _D:\home\siteextensions_。 當應用程式啟動時，檔案會複製到本機快取。 根據預設，每個應用程式的兩個資料夾大小限制為 1 GB，但可以增加至 2 GB。 請注意，隨著快取大小的增加，載入快取需要較長的時間。 如果您已將本機快取限制增加為 2 GB，且複製的檔案超過 2 GB 的大小上限，App Service 會以無訊息方式忽略本機快取，並從遠端檔案共用讀取。 如果未定義任何限制，或將限制設定為低於 2 GB 的任何值，且複製的檔案超過限制，則部署或交換可能會失敗併發生錯誤。
 * 本機快取具有讀寫屬性。 不過，當應用程式移動虛擬機器或重新啟動時，將會捨棄任何修改。 因此，請勿針對會在內容存放區中儲存關鍵任務資料的應用程式使用本機快取。
 * _D:\home\LogFiles_ 和 _D:\home\Data_ 中包含記錄檔和應用程式資料。 這兩個子資料夾會儲存在本機上的 VM 執行個體中，並定期複製到共用內容存放區。 應用程式可以藉由將記錄檔和資料寫入這些資料夾來加以保存。 不過，複製到共用內容存放區已是最佳方式，記錄檔和資料還是可能會因為 VM 執行個體突然當機而遺失。
 * [記錄串流](troubleshoot-diagnostic-logs.md#stream-logs)會受到此最佳複製方式的影響。 您可能會看到串流處理的記錄中有最多一分鐘的延遲。

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: c562b8a82ef21e78eccad2c2ed6159251056f4fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24a214d63fd01fc4353be6563d18f9e28b820c6f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392687"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036516"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>「適用於 MySQL 的 Azure 資料庫」中的限制
 下列各節說明資料庫服務中的容量、儲存引擎支援、權限支援、資料操作陳述式支援，以及功能限制。 另請參閱適用於 MySQL 資料庫引擎的[一般限制](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) \(英文\)。
@@ -21,7 +21,7 @@ ms.locfileid: "85392687"
 > [!NOTE]
 > 如果您要尋找伺服器參數（如和）的最小/最大值 `max_connections` `innodb_buffer_pool_size` ，這項資訊已移至**[伺服器參數](./concepts-server-parameters.md)** 文章。
 
-適用於 MySQL 的 Azure 資料庫支援微調伺服器參數的值。 某些參數的最小和最大值（例如 `max_connections`、 `join_buffer_size` 、 `query_cache_size` ）是由伺服器的定價層和虛擬核心所決定。 如需這些限制的詳細資訊，請參閱[伺服器參數](./concepts-server-parameters.md)。
+適用於 MySQL 的 Azure 資料庫支援微調伺服器參數的值。 某些參數的最小和最大值， (例如。 `max_connections`、 `join_buffer_size` `query_cache_size`) 是由伺服器的定價層和虛擬核心所決定。 如需這些限制的詳細資訊，請參閱[伺服器參數](./concepts-server-parameters.md)。
 
 在初始部署時，適用于 MySQL 伺服器的 Azure 會包含系統資料表的時區資訊，但不會填入這些資料表。 時區資料表可藉由從 MySQL 命令列或 MySQL Workbench 等工具呼叫 `mysql.az_load_timezone` 預存程序來填入。 請參閱 [Azure 入口網站](howto-server-parameters.md#working-with-the-time-zone-parameter)或 [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) 文章，以了解如何呼叫預存程序，以及設定全域或工作階段層級的時區。
 
@@ -43,7 +43,7 @@ ms.locfileid: "85392687"
 - DBA 角色：許多伺服器參數與設定可能會在無意中造成伺服器效能降級，或是取消 DBMS 的 ACID 屬性。 因此，為了維護產品層級的服務完整性與 SLA，此服務並不會公開 DBA 角色。 在建立新資料庫行個體時所建構的預設使用者帳戶，可讓使用者在受管理的資料庫執行個體中執行大部分的 DDL 與 DML 陳述式。 
 - SUPER 權限：同樣地，[SUPER 權限](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super)也受到限制。
 - 定義：需要進階的權限才能建立，而且受限制。 如果使用備份匯入資料，執行 mysqldump 時以手動方式或使用 `--skip-definer` 命令移除 `CREATE DEFINER` 命令。
-
+- 系統資料庫：在適用於 MySQL 的 Azure 資料庫中， [MySQL 系統資料庫](https://dev.mysql.com/doc/refman/8.0/en/system-schema.html)是唯讀的，因為它是用來支援各種 PaaS 服務功能。 請注意，您無法變更系統資料庫中的任何專案 `mysql` 。
 
 ## <a name="data-manipulation-statement-support"></a>資料操作陳述式支援
 

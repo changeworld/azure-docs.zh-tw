@@ -1,18 +1,18 @@
 ---
 title: Azure 檔案服務的常見問題集 (FAQ) | Microsoft Docs
-description: 尋找關於 Azure 檔案服務之常見問題集的解答。
+description: 取得 Azure 檔案儲存體常見問題的解答。 您可以同時在雲端或內部部署 Windows、Linux 或 macOS 部署上掛接 Azure 檔案共用。
 author: roygara
 ms.service: storage
 ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 87c1aa4d65b313f4c068ef11c9d2209e9318ef02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0bdc9451f0dbc32e14197cde48a3613196b864c0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482865"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037128"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
 [Azure 檔案](storage-files-introduction.md)提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
@@ -105,7 +105,7 @@ ms.locfileid: "85482865"
     效能會根據您的環境設定、設定，以及這是初始同步處理還是進行中的同步處理而有所不同。如需詳細資訊，請參閱[Azure 檔案同步效能計量](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**如果同一個檔案近乎同時地在兩部伺服器上進行變更，會發生什麼事？**  
-    Azure 檔案同步使用簡單的衝突解決策略：我們會同時對兩個端點中變更的檔案保留兩項變更。 最新寫入的變更會保留原始檔案名稱。 較舊的檔案（由 LastWriteTime 決定）會將端點名稱和衝突號碼附加至檔案名。 針對伺服器端點，端點名稱是伺服器的名稱。 針對雲端端點，端點名稱為 [**雲端**]。 此名稱會遵循此分類法： 
+    Azure 檔案同步使用簡單的衝突解決策略：我們會同時對兩個端點中變更的檔案保留兩項變更。 最新寫入的變更會保留原始檔案名稱。 較舊的檔案 (由 LastWriteTime 決定) 會將端點名稱和衝突號碼附加至檔案名。 針對伺服器端點，端點名稱是伺服器的名稱。 針對雲端端點，端點名稱為 [**雲端**]。 此名稱會遵循此分類法： 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -156,7 +156,7 @@ ms.locfileid: "85482865"
     
 * <a id="afs-resource-move"></a>
   **我可以將儲存體同步服務及/或儲存體帳戶移至不同的資源群組、訂用帳戶或 Azure AD 租使用者嗎？**  
-   是，您可以將儲存體同步服務及/或儲存體帳戶移至不同的資源群組、訂用帳戶或 Azure AD 租使用者。 移動儲存體同步服務或儲存體帳戶之後，您必須將儲存體帳戶的存取權授與 Microsoft.storagesync 應用程式（請參閱[確認 Azure 檔案同步有儲存體帳戶的存取](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)權）。
+   是，您可以將儲存體同步服務及/或儲存體帳戶移至不同的資源群組、訂用帳戶或 Azure AD 租使用者。 移動儲存體同步服務或儲存體帳戶之後，您必須將儲存體帳戶的存取權授與 Microsoft.storagesync 應用程式 (請參閱[確定 Azure 檔案同步能夠存取儲存體帳戶](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)) 。
 
     > [!Note]  
     > 建立雲端端點時，儲存體同步服務和儲存體帳戶必須位於相同的 Azure AD 租用戶中。 建立雲端端點之後，可以將儲存體同步服務和儲存體帳戶移至不同的 Azure AD 租用戶。
@@ -174,7 +174,7 @@ ms.locfileid: "85482865"
 * <a id="ad-support"></a>
 **Azure 檔案服務是否支援身分識別型驗證和存取控制？**  
     
-    是，Azure 檔案支援身分識別型驗證和存取控制。 您可以選擇下列兩種方式的其中一種來使用身分識別型存取控制：內部部署 Active Directory Domain Services 或 Azure Active Directory Domain Services （Azure AD DS）。 內部部署 Active Directory Domain Services (AD DS) 支援使用加入 AD DS 網域的機器進行驗證 (內部部署或在 Azure 中)，以透過 SMB 存取 Azure 檔案共用。 針對 Azure 檔案儲存體透過 SMB 進行 Azure AD DS 驗證可讓加入 Azure AD DS 網域的 Windows VM 使用 Azure AD 認證來存取共用、目錄與檔案。 如需詳細資訊，請參閱[支援 Azure 檔案儲存體身分識別型驗證進行 SMB 存取的概觀](storage-files-active-directory-overview.md)。 
+    是，Azure 檔案支援身分識別型驗證和存取控制。 您可以選擇下列兩種方式之一來使用身分識別型存取控制：內部部署 Active Directory Domain Services 或 Azure Active Directory Domain Services (Azure AD DS) 。 內部部署 Active Directory Domain Services (AD DS) 支援使用加入 AD DS 網域的機器進行驗證 (內部部署或在 Azure 中)，以透過 SMB 存取 Azure 檔案共用。 針對 Azure 檔案儲存體透過 SMB 進行 Azure AD DS 驗證可讓加入 Azure AD DS 網域的 Windows VM 使用 Azure AD 認證來存取共用、目錄與檔案。 如需詳細資訊，請參閱[支援 Azure 檔案儲存體身分識別型驗證進行 SMB 存取的概觀](storage-files-active-directory-overview.md)。 
 
     Azure 檔案服務提供兩種管理存取控制的額外方式：
 
@@ -256,7 +256,7 @@ ms.locfileid: "85482865"
     如需詳細資料，請參閱 [AD DS 區域可用性](storage-files-identity-auth-active-directory-enable.md#regional-availability)。
     
 * <a id="ad-aad-smb-afs"></a>
-**我可以在 Azure 檔案同步所管理的檔案共用上，利用 Azure 檔案儲存體 Active Directory （AD）驗證嗎？**
+**我可以在 Azure 檔案同步所管理的檔案共用上，利用 Azure 檔案儲存體 Active Directory (AD) 驗證嗎？**
 
     是，您可以在 Azure 檔案同步所管理的檔案共用上啟用 AD 驗證。本機檔案伺服器上目錄/檔案 NTFS ACL 的變更將分層至 Azure 檔案儲存體，反之亦然。
 

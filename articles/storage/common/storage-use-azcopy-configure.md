@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 儲存體設定、優化和疑難排解 AzCopy |Microsoft Docs
-description: 設定、優化和疑難排解 AzCopy。
+description: 使用 Azure 儲存體設定、優化和疑難排解 AzCopy。 變更或移除方案和記錄檔的位置。 變更預設記錄層級。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282427"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037179"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>對 AzCopy 進行設定、最佳化及疑難排解
 
@@ -30,7 +30,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 若要設定 AzCopy 的 proxy 設定，請設定 `https_proxy` 環境變數。 如果您在 Windows 上執行 AzCopy，AzCopy 會自動偵測 Proxy 設定，因此您不需要在 Windows 中使用此設定。 如果您選擇在 Windows 中使用此設定，其將會覆寫自動偵測。
 
-| 作業系統 | 命令  |
+| 作業系統 | Command  |
 |--------|-----------|
 | **Windows** | 在命令提示字元中，請使用：`set https_proxy=<proxy IP>:<proxy port>`<br> 在 PowerShell 中，請使用：`$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
@@ -40,11 +40,11 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 ### <a name="bypassing-a-proxy"></a>略過 proxy ###
 
-如果您是在 Windows 上執行 AzCopy，而且想要告訴它完全_不_使用 proxy （而不是自動偵測設定），請使用這些命令。 使用這些設定時，AzCopy 將不會查閱或嘗試使用任何 proxy。
+如果您是在 Windows 上執行 AzCopy，而您想要讓它在所有 (_都不使用_proxy，而不是自動偵測設定) 使用這些命令。 使用這些設定時，AzCopy 將不會查閱或嘗試使用任何 proxy。
 
 | 作業系統 | 環境 | 命令  |
 |--------|-----------|----------|
-| **Windows** | 命令提示字元（CMD） | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | 命令提示字元 (CMD)  | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
 | **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
 
 在其他作業系統上，如果您不想要使用任何 PROXY，只要將 HTTPS_PROXY 變數保留為未設定。
@@ -73,7 +73,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 | **範例** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
-> 這個範例會使用單引號（' '）來括住路徑引數。 在所有命令 shell 中使用單引號，但 Windows 命令介面（cmd.exe）除外。 如果您使用 Windows 命令 Shell （cmd.exe），請用雙引號（""）來括住路徑引數，而不是單引號（' '）。
+> 這個範例會以單引號括住路徑引數 ( ' ' ) 。 在所有命令介面中使用單引號，但 Windows 命令 Shell ( # A0) 除外。 如果您使用 Windows 命令 Shell ( # A0) ，請以雙引號括住路徑引數 ( "" ) 而不是以單引號 ( ' ' ) 。
 
 此命令會將測試資料上傳至指定的目的地，以執行效能基準測試。 測試資料會在記憶體中產生、上傳至目的地，然後在測試完成後從目的地中刪除。 您可以使用選擇性的命令參數，指定要產生的檔案數目，以及您想要的大小。
 
@@ -81,7 +81,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 Blob �
 
 ### <a name="optimize-throughput"></a>輸送量最佳化
 
-您可以 `cap-mbps` 在命令中使用旗標，將輸送量資料速率設為上限。 例如，下列命令會繼續作業，並將輸送量的上限設為 `10` 每秒 mb （Mb）。 
+您可以 `cap-mbps` 在命令中使用旗標，將輸送量資料速率設為上限。 例如，下列命令會繼續作業，並將輸送量的上限設為 `10` 每秒百萬位元 (Mb) 。 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
@@ -91,7 +91,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 如果您的電腦有少於5個 Cpu，則此變數的值會設定為 `32` 。 否則，預設值會等於 16 乘以 CPU 數目。 此變數的最大預設值為 `3000` ，但您可以手動將此值設定為較高或較低。 
 
-| 作業系統 | 命令  |
+| 作業系統 | Command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
@@ -104,9 +104,9 @@ azcopy jobs resume <job-id> --cap-mbps 10
 ### <a name="optimize-memory-use"></a>優化記憶體使用
 
 設定 `AZCOPY_BUFFER_GB` 環境變數，以指定您想要 AzCopy 在下載和上傳檔案時使用的系統記憶體數量上限。
-以 gb 為單位表示此值。
+以 gb 為單位表示此值 (GB) 。
 
-| 作業系統 | 命令  |
+| 作業系統 | Command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
@@ -124,20 +124,20 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 AzCopy 會建立為每個作業記錄和方案檔案。 您可以使用記錄來調查任何可能的問題並進行疑難排解。 
 
-記錄檔將包含失敗的狀態（ `UPLOADFAILED` 、 `COPYFAILED` 和 `DOWNLOADFAILED` ）、完整路徑，以及失敗的原因。
+記錄將包含失敗的狀態 (`UPLOADFAILED` 、 `COPYFAILED` 和 `DOWNLOADFAILED`) 、完整路徑，以及失敗的原因。
 
 根據預設，記錄檔和方案檔位於 `%USERPROFILE%\.azcopy` Windows 上的目錄或 `$HOME$\.azcopy` Mac 和 Linux 上的目錄，但您可以視需要變更該位置。
 
 相關的錯誤不一定是出現在檔案中的第一個錯誤。 對於像是網路錯誤、超時和伺服器忙碌錯誤等錯誤，AzCopy 會重試最多20次，而且通常會成功重試進程。  您所看到的第一個錯誤，可能是已成功重試的無害問題。  因此，請不要查看檔案中的第一個錯誤，而是尋找靠近 `UPLOADFAILED` 、或的錯誤 `COPYFAILED` `DOWNLOADFAILED` 。 
 
 > [!IMPORTANT]
-> 提交要求以 Microsoft 支援服務（或針對任何協力廠商的問題進行疑難排解）時，請共用您要執行之命令的編校版本。 這可確保 SAS 不會意外與任何人共用。 您可以在記錄檔開頭找到編校的版本。
+> 提交要求以 Microsoft 支援服務 (或針對涉及任何協力廠商) 的問題進行疑難排解時，請共用您要執行之命令的編校版本。 這可確保 SAS 不會意外與任何人共用。 您可以在記錄檔開頭找到編校的版本。
 
 ### <a name="review-the-logs-for-errors"></a>檢閱記錄以了解錯誤
 
 下列命令會從記錄檔中取得狀態為的所有錯誤 `UPLOADFAILED` `04dc9ca9-158f-7945-5933-564021086c79` ：
 
-**Windows （PowerShell）**
+**Windows (PowerShell) **
 
 ```
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -177,7 +177,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
 > [!TIP]
-> 將路徑引數（例如 SAS 權杖）括在單引號（' '）。 在所有命令 shell 中使用單引號，但 Windows 命令介面（cmd.exe）除外。 如果您使用 Windows 命令 Shell （cmd.exe），請用雙引號（""）來括住路徑引數，而不是單引號（' '）。
+> 將路徑引數（例如 SAS 權杖）括在 ( ' ' 的單引號中，) 。 在所有命令介面中使用單引號，但 Windows 命令 Shell ( # A0) 除外。 如果您使用 Windows 命令 Shell ( # A0) ，請以雙引號括住路徑引數 ( "" ) 而不是以單引號 ( ' ' ) 。
 
 當您繼續工作時，AzCopy 會查看作業計畫檔案。 計畫檔案會列出第一次建立作業時識別要處理的所有檔案。 當您繼續工作時，AzCopy 會嘗試傳送尚未傳送的計畫檔案中列出的所有檔案。
 
@@ -189,7 +189,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用任何這些命令。
 
-| 作業系統 | 命令  |
+| 作業系統 | Command  |
 |--------|-----------|
 | **Windows** | PowerShell`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> 在命令提示字元中，使用：：`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -201,7 +201,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 使用任何這些命令。
 
-| 作業系統 | 命令  |
+| 作業系統 | Command  |
 |--------|-----------|
 | **Windows** | PowerShell`$env:AZCOPY_LOG_LOCATION="<value>"` <br> 在命令提示字元中，使用：：`set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |

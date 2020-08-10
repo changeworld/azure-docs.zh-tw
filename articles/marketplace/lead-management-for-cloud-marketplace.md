@@ -1,5 +1,5 @@
 ---
-title: 商業市集的潛在客戶管理 | Azure Marketplace 和 AppSource
+title: 商用 marketplace 的潛在客戶管理 |Azure Marketplace 和 AppSource
 description: 向 Azure Marketplace 和 AppSource 發佈供應項目和技術成品的各種相關主題概觀
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 2abbef88ed7bac41b84eb06c8c0ec9c8a906b2f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d0aea0594a97990c7c89434e73fcd4982b01e20f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119441"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035173"
 ---
-# <a name="lead-management-for-commercial-marketplace"></a>商業市集的潛在客戶管理
+# <a name="lead-management-for-the-commercial-marketplace"></a>商用 marketplace 的潛在客戶管理
 
 客戶是所有優秀企業的核心。 在現今的產品併購變革中，行銷人員需要著重在直接與客戶連結，建立關係。 這也是為什麼產生高品質潛在客戶，對您的銷售循環而言是一個相當關鍵的工具。 在 [合作夥伴中心](https://partner.microsoft.com/)中列出您的供應項目後，系統會為您啟用工具，讓您在客戶對您市集中的產品表達興趣，或部署您的產品後，能以程式化方式，立即收到客戶連絡資訊。 
 
@@ -134,7 +134,7 @@ title = MSFT_TEST_636573304831318844
   - AzureMarketplace
   - AzurePortal
   - 試用  
-  - SPZA （AppSource 的縮寫）
+  - AppSource) 的 SPZA (縮寫
 
 - 動作：
   - "INS"-代表安裝。 這代表客戶在 Azure Marketplace 或 AppSource按下按鈕，取得您的產品。

@@ -1,6 +1,6 @@
 ---
 title: 在地圖中新增 HTML 標記 | Microsoft Azure 地圖服務
-description: 在本文中，您會了解如何使用 Microsoft Azure 地圖服務 Web SDK，以將 HTML 標記新增至地圖。
+description: 瞭解如何將 HTML 標籤新增至地圖。 瞭解如何使用 Azure 地圖服務 Web SDK 來自訂標記，並將快顯視窗和滑鼠事件新增至標記。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 9b7156bf5c266ccbba926a22a4afe46129ee3f1e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 58954a98215fd353c5944486446dab5664e5349c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286993"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035428"
 ---
 # <a name="add-html-markers-to-the-map"></a>在地圖中新增 HTML 標記
 

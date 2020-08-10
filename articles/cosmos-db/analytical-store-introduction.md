@@ -1,17 +1,17 @@
 ---
 title: 什麼是 Azure Cosmos DB 分析存放區 (預覽)？
 description: 深入了解 Azure Cosmos DB 交易 (以資料列為基礎) 和分析 (以資料行為基礎) 存放區。 分析存放區的優點、大規模工作負載的效能影響，以及將資料從交易存放區自動同步至分析存放區
-author: SriChintala
+author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.author: srchi
-ms.openlocfilehash: a6f486f15fb5967dfb14508115e2340e4953be81
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: rosouz
+ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116021"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037094"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>什麼是 Azure Cosmos DB 分析存放區 (預覽)？
 
