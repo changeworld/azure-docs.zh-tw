@@ -1,18 +1,18 @@
 ---
 title: 在 Azure VPN 閘道計量上設定警示
-description: 瞭解如何在 Azure VPN 閘道計量上設定警示。 使用 Azure 監視器來設定 VPN 類型之虛擬網路閘道的警示。
+description: 瞭解如何使用 Azure 入口網站，根據虛擬網路 VPN 閘道的計量來設定 Azure 監視器警示。
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: 3819f653cba80854a65a08f92a10f82057abb0fd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14bb407cb12e24ca789085e954aaabff2333da7b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923062"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033490"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>設定 VPN 閘道計量的警示
 

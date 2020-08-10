@@ -4,12 +4,12 @@ description: 瞭解如何藉由新增節點類型來調整 Service Fabric 叢集
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: 01f6c90f9f7d7679f5b108138e2d2318eb6b9e18
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5cabe7e377c29812252074336d7c5e9c9d3ba259
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010815"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031962"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>擴大 Service Fabric 叢集主要節點類型
 本文說明如何藉由將額外的節點類型新增至叢集，來相應增加 Service Fabric 叢集主要節點類型。 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。
@@ -62,9 +62,6 @@ New-AzResourceGroupDeployment `
 ### <a name="add-a-new-primary-node-type-to-the-cluster"></a>將新的主要節點類型新增至叢集
 > [!Note]
 > 完成調整作業之後，在下列步驟中建立的資源將成為叢集中的新主要節點類型。 請確定您使用的是初始子網、公用 IP、Load Balancer、虛擬機器擴展集和節點類型中唯一的名稱。 
-
-> [!Note]
-> 如果您已使用標準 SKU 公用 IP 和標準 SKU LB，您可能不需要建立新的網路資源。 
 
 您可以在這裡找到已完成下列所有步驟的範本： [Service Fabric-新的節點類型](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-2.json)叢集。 下列步驟包含部分資原始程式碼段，可反白顯示新資源中的變更。  
 
@@ -162,7 +159,40 @@ New-AzResourceGroupDeployment `
 ### <a name="remove-the-existing-node-type"></a>移除現有的節點類型 
 資源完成部署之後，您就可以開始停用原始主要節點類型中的節點。 當節點停用時，系統服務將會遷移至先前步驟中已部署的新主要節點類型。
 
-1. 停用節點類型0中的節點。 
+1. 將 Service Fabric 叢集資源中的 [主要節點類型] 屬性設定為 [false]。 
+```json
+{
+    "name": "[variables('vmNodeType0Name')]",
+    "applicationPorts": {
+        "endPort": "[variables('nt0applicationEndPort')]",
+        "startPort": "[variables('nt0applicationStartPort')]"
+    },
+    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
+    "durabilityLevel": "Bronze",
+    "ephemeralPorts": {
+        "endPort": "[variables('nt0ephemeralEndPort')]",
+        "startPort": "[variables('nt0ephemeralStartPort')]"
+    },
+    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
+    "isPrimary": false,
+    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
+    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+}
+```
+2. 使用原始節點類型上已更新的 isPrimary 屬性來部署範本。 您可以在這裡的原始節點類型上，找到主要旗標設為 false 的範本： [Service Fabric-主要節點類型 false](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json)。
+
+```powershell
+# deploy the updated template files to the existing resource group
+$templateFilePath = "C:\AzureDeploy-3.json"
+$parameterFilePath = "C:\AzureDeploy.Parameters.json"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile $templateFilePath `
+    -TemplateParameterFile $parameterFilePath `
+```
+
+3. 停用節點類型0中的節點。 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterConnectionEndpoint `
     -KeepAliveIntervalInSec 10 `
@@ -196,7 +226,7 @@ foreach($node in $nodes)
 > [!Note]
 > 此步驟可能需要一段時間才能完成。 
 
-2. 停止節點類型0上的資料。 
+4. 停止節點類型0上的資料。 
 ```powershell
 foreach($node in $nodes)
 {
@@ -208,62 +238,18 @@ foreach($node in $nodes)
   }
 }
 ```
-3. 解除配置原始虛擬機器擴展集中的節點 
+5. 解除配置原始虛擬機器擴展集中的節點 
 ```powershell
 $scaleSetName="nt1vm"
 $scaleSetResourceType="Microsoft.Compute/virtualMachineScaleSets"
 
 Remove-AzResource -ResourceName $scaleSetName -ResourceType $scaleSetResourceType -ResourceGroupName $resourceGroupName -Force
 ```
+> [!Note]
+> 如果您已經使用標準 SKU 公用 IP 和標準 SKU 負載平衡器，步驟6和7是選擇性的。 在此情況下，您可以在相同的負載平衡器下擁有多個虛擬機器擴展集/節點類型。 
 
-4. 從節點類型0移除節點狀態。
-```powershell
-foreach($node in $nodes)
-{
-  if ($node.NodeType -eq $nodeType)
-  {
-    $node.NodeName
+6. 您現在可以刪除原始 IP，並 Load Balancer 資源。 在此步驟中，您也會更新 DNS 名稱。 
 
-    Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
-  }
-}
-```
-5. 將 Service Fabric 叢集資源中的 [主要節點類型] 屬性設定為 [false]。 
-
-```json
-{
-    "name": "[variables('vmNodeType0Name')]",
-    "applicationPorts": {
-        "endPort": "[variables('nt0applicationEndPort')]",
-        "startPort": "[variables('nt0applicationStartPort')]"
-    },
-    "clientConnectionEndpointPort": "[variables('nt0fabricTcpGatewayPort')]",
-    "durabilityLevel": "Bronze",
-    "ephemeralPorts": {
-        "endPort": "[variables('nt0ephemeralEndPort')]",
-        "startPort": "[variables('nt0ephemeralStartPort')]"
-    },
-    "httpGatewayEndpointPort": "[variables('nt0fabricHttpGatewayPort')]",
-    "isPrimary": false,
-    "reverseProxyEndpointPort": "[variables('nt0reverseProxyEndpointPort')]",
-    "vmInstanceCount": "[parameters('nt0InstanceCount')]"
-}
-```
-
-5. 使用原始節點類型上已更新的 isPrimary 屬性來部署範本。 您可以在這裡的原始節點類型上，找到主要旗標設為 false 的範本： [Service Fabric-主要節點類型 false](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-3.json)。
-
-```powershell
-# deploy the updated template files to the existing resource group
-$templateFilePath = "C:\AzureDeploy-3.json"
-$parameterFilePath = "C:\AzureDeploy.Parameters.json"
-
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath `
-```
-
-7. 您現在可以刪除原始 IP，並 Load Balancer 資源。 在此步驟中，您也會更新 DNS 名稱。 
 ```powershell
 $lbname="LB-cluster-name-nt1vm"
 $lbResourceType="Microsoft.Network/loadBalancers"
@@ -283,11 +269,24 @@ $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
 Set-AzPublicIpAddress -PublicIpAddress $PublicIP
 ``` 
-6. 更新叢集上的管理端點，以參考新的 IP。 
+
+7. 更新叢集上的管理端點，以參考新的 IP。 
 ```json
   "managementEndpoint": "[concat('https://',reference(concat(variables('lbIPName'),'-',variables('vmNodeType1Name'))).dnsSettings.fqdn,':',variables('nt0fabricHttpGatewayPort'))]",
 ```
-7. 從 ARM 範本中的 Service Fabric 資源移除原始的節點類型參考。 
+8. 從節點類型0移除節點狀態。
+```powershell
+foreach($node in $nodes)
+{
+  if ($node.NodeType -eq $nodeType)
+  {
+    $node.NodeName
+
+    Remove-ServiceFabricNodeState -NodeName $node.NodeName -Force
+  }
+}
+```
+9. 從 ARM 範本中的 Service Fabric 資源移除原始的節點類型參考。 
 ```json
 "name": "[variables('vmNodeType0Name')]",
 "applicationPorts": {
@@ -338,13 +337,10 @@ Set-AzPublicIpAddress -PublicIpAddress $PublicIP
  } 
 }
 ```
+10. 從 ARM 範本移除所有與原始節點類型相關的其他資源。 如需移除所有這些原始資源的範本，請參閱[Service Fabric-新的節點類型](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json)叢集。
 
-8. 從 ARM 範本移除所有與原始節點類型相關的其他資源。 如需移除所有這些原始資源的範本，請參閱[Service Fabric-新的節點類型](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json)叢集。
-
-9. 部署已修改的 Azure Resource Manager 範本。 * * 此步驟需要一些時間，通常最多兩小時。 此升級會將設定變更為 InfrastructureService，因此需要重新開機節點。 在此情況下，會忽略 forceRestart。 參數 upgradeReplicaSetCheckTimeout 會指定 Service Fabric 等待分割區處於安全狀態的最長時間（如果尚未處於安全狀態）。 一旦對節點上的所有資料分割進行安全檢查，Service Fabric 會在該節點上繼續進行升級。 參數 upgradeTimeout 的值可以縮短為6小時，但應使用最大安全12小時。
-然後驗證：
-
-* 入口網站中的 Service Fabric 資源會顯示 [就緒]。
+11. 部署已修改的 Azure Resource Manager 範本。 * * 此步驟需要一些時間，通常最多兩小時。 此升級會將設定變更為 InfrastructureService，因此需要重新開機節點。 在此情況下，會忽略 forceRestart。 參數 upgradeReplicaSetCheckTimeout 會指定 Service Fabric 等待分割區處於安全狀態的最長時間（如果尚未處於安全狀態）。 一旦對節點上的所有資料分割進行安全檢查，Service Fabric 會在該節點上繼續進行升級。 參數 upgradeTimeout 的值可以縮短為6小時，但應使用最大安全12小時。
+然後驗證入口網站中的 Service Fabric 資源顯示為 [就緒]。 
 
 ```powershell
 # deploy the updated template files to the existing resource group

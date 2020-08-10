@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 425ed63238c07ffcf53df10eeddfa0ac95679a2c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c5d52a78dec31dd796929b141556d6da10044099
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904508"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031480"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -242,6 +242,8 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 提供要搭配您供應項目使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊影像將會導致您的提交遭到拒絕。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
@@ -255,6 +257,8 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 - **寬型** (255 x 115)
 
 全部三個標誌都是必要的，且在清單中會用於不同位置。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 

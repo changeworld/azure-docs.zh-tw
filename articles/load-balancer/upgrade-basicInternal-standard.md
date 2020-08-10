@@ -5,14 +5,14 @@ services: load-balancer
 author: irenehua
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 02/23/2020
+ms.date: 08/07/2020
 ms.author: irenehua
-ms.openlocfilehash: 801f57c8d5b67e31bd6b3ac25d845dc2e13e365c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 10a0c186bb1a0d9f974d485e7d2d1d7326bd849c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809323"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033150"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升級 Azure 內部 Load Balancer-不需要輸出連線
 [Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。
@@ -35,7 +35,7 @@ ms.locfileid: "84809323"
 * 如果在不同的區域中建立標準負載平衡器，您將無法將舊區域中現有的 Vm 與新建立的 Standard Load Balancer 建立關聯。 若要解決這項限制，請務必在新的區域中建立新的 VM。
 * 如果您的 Load Balancer 沒有任何前端 IP 設定或後端集區，您可能會遇到執行腳本的錯誤。 請確定它們不是空的。
 
-## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>針對前端 IP 設定將 IP 配置方法變更為靜態（如果它已經是靜態，請忽略此步驟）
+## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>將 [IP 配置方法] 變更為 [前端 IP 設定的靜態] (忽略此步驟（如果它已經是靜態的）) 
 
 1. 選取左側功能表中的 [**所有服務**]，選取 [**所有資源**]，然後從 [資源] 清單中選取您的基本 Load Balancer。
 
@@ -48,7 +48,7 @@ ms.locfileid: "84809323"
 
 ## <a name="download-the-script"></a>下載腳本
 
-從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureILBUpgrade/3.0)下載遷移腳本。
+從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureILBUpgrade/4.0)下載遷移腳本。
 ## <a name="use-the-script"></a>使用腳本
 
 有兩個選項可供您選擇，視您的本機 PowerShell 環境設定和偏好而定：
@@ -70,7 +70,7 @@ ms.locfileid: "84809323"
 
 ### <a name="install-using-the-script-directly"></a>直接使用腳本安裝
 
-如果您已安裝一些 Azure Az 模組，但無法將它們卸載（或不想要將它們卸載），您可以使用腳本下載連結中的 [**手動下載**] 索引標籤，手動下載腳本。 腳本會下載為原始的 nupkg 檔案。 若要從這個 nupkg 檔安裝腳本，請參閱[手動套件下載](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
+如果您已安裝一些 Azure Az 模組，但無法將它們卸載 (或不想要將它們卸載) ，您可以使用腳本下載連結中的 [**手動下載**] 索引標籤，手動下載腳本。 腳本會下載為原始的 nupkg 檔案。 若要從這個 nupkg 檔安裝腳本，請參閱[手動套件下載](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
 
 執行指令碼：
 

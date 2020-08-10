@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/13/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3df4eee14e5ce2f0638058efde0f80d0e5b051
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f72e477d332b33b7434663fb13cb3ca4f4c2069d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275474"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032172"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用條件式存取封鎖對 Azure AD 的舊式驗證   
 
@@ -49,7 +49,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 - 舊版的 Microsoft Office 應用程式
 - 使用 POP、IMAP、SMTP 等郵件通訊協定的應用程式
 
-在現今的環境中，單一要素驗證 (例如，使用者名稱和密碼) 已不敷使用。 密碼的缺點在於容易被猜到，且一般人不太懂得如何選擇理想的密碼。 密碼也很容易遭受各種攻擊，例如網路釣魚和密碼噴濺。 要防範密碼威脅，最簡單的方式就是實作 MFA。 透過 MFA，即便攻擊者取得使用者的密碼，單靠密碼本身仍不足以成功進行驗證並存取資料。
+在現今的環境中，單一要素驗證 (例如，使用者名稱和密碼) 已不敷使用。 密碼的缺點在於容易被猜到，且一般人不太懂得如何選擇理想的密碼。 密碼也很容易遭受各種攻擊，例如網路釣魚和密碼噴濺。 保護不受密碼威脅的其中一個最簡單的方法，就是在 MFA)  (執行多重要素驗證。 透過 MFA，即便攻擊者取得使用者的密碼，單靠密碼本身仍不足以成功進行驗證並存取資料。
 
 如何防止使用舊式驗證的應用程式存取您租用戶的資源？ 建議您使用條件式存取原則直接加以封鎖。 如有必要，您可以僅允許特定使用者和特定網路位置使用以舊式驗證為基礎的應用程式。
 
@@ -65,7 +65,7 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 - 經過驗證的 SMTP - 由 POP 與 IMAP 用戶端用於傳送電子郵件。
 - 自動探索 - 由 Outlook 與 EAS 用戶端用於尋找及連線至 Exchange Online 中的信箱。
-- Exchange ActiveSync （EAS）-用來連接到 Exchange Online 中的信箱。
+- Exchange ActiveSync (EAS) -用來連接到 Exchange Online 中的信箱。
 - Exchange Online PowerShell - 用於透過 PowerShell 連線至 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，則需使用 Exchange Online PowerShell 模組來連線。 如需相關說明，請參閱[使用多重要素驗證連線至 Exchange Online PowerShell](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。
 - Exchange Web 服務 (EWS) - Outlook、Mac 版 Outlook 及協力廠商應用程式使用的程式設計介面。
 - IMAP4 - IMAP 電子郵件用戶端所使用。
@@ -91,46 +91,24 @@ Azure AD 支援數個最常用的驗證和授權通訊協定，包括舊式驗�
 
 這些記錄會顯示哪些使用者仍依賴舊式驗證，以及哪些應用程式目前會使用舊式通訊協定提出驗證要求。 實施條件式存取原則時，僅限未出現在上述記錄中，且已確認並未使用舊式驗證的使用者。
 
-### <a name="block-legacy-authentication"></a>封鎖舊式驗證 
+## <a name="block-legacy-authentication"></a>封鎖舊式驗證 
 
-在條件式存取原則中，您可以設定與用來存取資源的用戶端應用程式繫結的條件。 用戶端應用程式條件可讓您將範圍縮小至使用舊式驗證的應用程式，做法是選取 [Exchange ActiveSync 用戶端]，再選取 [行動裝置 App 及桌面用戶端] 下方的 [其他用戶端]。
+有兩種方式可使用條件式存取原則來封鎖舊版驗證。
 
-![其他用戶端](./media/block-legacy-authentication/01.png)
-
-若要封鎖這些應用程式的存取，您必須選取 [封鎖存取]。
-
-![封鎖存取](./media/block-legacy-authentication/02.png)
-
-### <a name="select-users-and-cloud-apps"></a>選取使用者和雲端應用程式
-
-如果您想要為組織封鎖舊式驗證，您可能會認為藉由以下選取即可達成此目的：
-
-- 所有使用者
-- 所有雲端應用程式
-- 封鎖存取
-
-![指派](./media/block-legacy-authentication/03.png)
-
-Azure 有一項安全功能會防止您建立此類原則，因為這種設定違反條件式存取原則的[最佳做法](best-practices.md)。
+- [直接封鎖舊版驗證](#directly-blocking-legacy-authentication)
+- [間接封鎖舊版驗證](#indirectly-blocking-legacy-authentication)
  
-![不支援原則設定](./media/block-legacy-authentication/04.png)
+### <a name="directly-blocking-legacy-authentication"></a>直接封鎖舊版驗證
 
-這項安全功能是必要的，因為*封鎖所有使用者和所有雲端應用程式*可能會使您的整個組織無法登入租用戶。 您至少須排除一個使用者，才能符合最低的最佳做法需求。 您也可以排除目錄角色。
+若要在整個組織中封鎖舊版驗證，最簡單的方式就是設定條件式存取原則，特別適用于舊版驗證用戶端並封鎖存取。 將使用者和應用程式指派給原則時，請務必排除仍然需要使用傳統驗證登入的使用者和服務帳戶。 選取 [ **Exchange ActiveSync 客戶**端] 和 [**其他用戶端**] 來設定用戶端應用程式條件。 若要封鎖這些用戶端應用程式的存取，請設定存取控制以封鎖存取。
 
-![不支援原則設定](./media/block-legacy-authentication/05.png)
+![設定為封鎖舊版驗證的用戶端應用程式條件](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 
-您可以從原則中排除一個使用者，以符合這項安全功能的需求。 在理想情況下，您應定義幾個 [Azure AD 中的緊急存取系統管理帳戶](../users-groups-roles/directory-emergency-access.md)，並將其從您的原則中排除。
+### <a name="indirectly-blocking-legacy-authentication"></a>間接封鎖舊版驗證
 
-啟用原則以封鎖舊式驗證時，使用[僅限報告模式](concept-conditional-access-report-only.md)，就能讓您的組織有機會監視原則的影響。
+即使您的組織尚未準備好封鎖整個組織的舊版驗證，您仍應確保使用舊版驗證的登入不會略過需要授與控制的原則，例如要求多重要素驗證或符合規範/混合式 Azure AD 加入的裝置。 在驗證期間，舊版驗證用戶端不支援將 MFA、裝置合規性或聯結狀態資訊傳送至 Azure AD。 因此，請將具有 grant 控制項的原則套用至所有用戶端應用程式，以便封鎖無法滿足授與控制的舊版驗證型登入。 在2020年8月，用戶端應用程式條件正式運作時，新建立的條件式存取原則預設會套用至所有用戶端應用程式。
 
-## <a name="policy-deployment"></a>原則部署
-
-在您將原則用於生產環境之前，請處理好：
- 
-- **服務帳戶** - 識別作為服務帳戶或由裝置 (例如會議室的電話) 使用的使用者帳戶。 請確定這些帳戶具有強式密碼，並將這些帳戶新增至排除的群組中。
-- **登入報告** - 檢閱登入報告，並尋找**其他用戶端**流量。 識別最高使用量，並調查其使用原因。 流量通常由未使用新式驗證，或使用某些第三方郵件應用程式的舊版 Office 用戶端所產生。 請建立計劃以消除這些應用程式的使用，或者，如果影響不大，請通知使用者他們無法再使用這些應用程式。
- 
-如需詳細資訊，請參閱[如何部署新的原則？](best-practices.md#how-should-you-deploy-a-new-policy)。
+![用戶端應用程式條件預設設定](./media/block-legacy-authentication/client-apps-condition-configured-no.png)
 
 ## <a name="what-you-should-know"></a>您應該知道的事情
 
@@ -141,14 +119,6 @@ Azure 有一項安全功能會防止您建立此類原則，因為這種設定�
 原則最慢可能需要 24 小時才會生效。
 
 您可以選取  [其他用戶端] 條件所有可用的授與控制項，但使用者體驗一律相同，存取均會遭到封鎖。
-
-如果您使用 [其他用戶端] 條件來封鎖舊式驗證，也可以設定裝置平台和位置條件。 例如，如果您只想要封鎖行動裝置的舊版驗證，請選取下列項目來設定**裝置平台**條件：
-
-- Android
-- iOS
-- Windows Phone
-
-![不支援原則設定](./media/block-legacy-authentication/06.png)
 
 ## <a name="next-steps"></a>後續步驟
 

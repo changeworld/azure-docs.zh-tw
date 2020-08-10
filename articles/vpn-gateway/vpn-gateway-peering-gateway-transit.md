@@ -1,6 +1,6 @@
 ---
 title: 為虛擬網路對等互連設定 VPN 閘道傳輸
-description: 瞭解如何設定虛擬網路對等互連的閘道傳輸，以順暢地連接兩個 Azure 虛擬網路。
+description: 設定虛擬網路對等互連的閘道傳輸，以順暢地將兩個 Azure 虛擬網路連接到一個，以供連線之用。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: yushwang
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 66380fb7c8b9e3d88fe1c814042b51323ff3160a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: b5649c804cb21a221ca287711380c91846f55306
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925884"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031689"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>為虛擬網路對等互連設定 VPN 閘道傳輸
 

@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 閘道：密碼編譯需求
-description: 瞭解如何設定 Azure VPN 閘道，以滿足跨內部部署 S2S VPN 通道的密碼編譯需求，以及 Azure 內的 VNet 對 VNet 連線。
+description: 瞭解如何設定 Azure VPN 閘道，以滿足跨內部部署 S2S VPN 通道和 Azure VNet 對 VNet 連線的密碼編譯需求。
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: b591baa3fd942eb46cc7351a15c8849c44fe0d12
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 499d184d373b896ba7bffcf990693ef5e6ac466b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926956"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032419"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>關於密碼編譯需求和 Azure VPN 閘道
 

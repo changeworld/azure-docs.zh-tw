@@ -1,6 +1,6 @@
 ---
-title: 行動性（傳輸）涵蓋範圍
-description: 在本文中，您將瞭解 Microsoft Azure Maps 行動服務中的公開傳輸涵蓋範圍。
+title: 行動 (傳輸) 涵蓋範圍
+description: 瞭解 Azure 地圖服務行動服務在哪些區域提供公開運輸功能（例如路由和服務警示）的涵蓋範圍層級。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/23/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3cd2cc2068f1855c46bc139100006d75492632d8
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: d61cc94ee1b3c5d23135c033b1068aa7411761d1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169373"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033252"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure 地圖服務行動性涵蓋範圍
 
@@ -29,14 +29,14 @@ Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的�
 
 ## <a name="americas"></a>美洲
 
-| 國家/地區 |  城市（Metro 區域） |
+| 國家/地區 |   (Metro 區域的城市)  |
 |----------------|---------|
 | 安地卡及巴布達 | 安地卡及巴布達 * |
 | 阿根廷       | <p>Bahía Blanca、布宜諾斯艾利斯、Caleta Olivia、Catamarca、Chivilcoy、Comodoro Rivadavia、Córdoba、Corrientes、General Pico、La Rioja、Mar del Plata、門多薩、Miramar、Necochea、Neuquén、Oberá、Olavarría、Paraná、Posadas、Rio Tercero、Rosario、Salta、San Carlos de Bariloche、San Luis、San Pedro、洛杉磯、Tandil、Ushuaia、維多利亞、Viedma、別墅 María</p>|
 | 巴貝多       |  巴貝多 |
 | 巴西         | <p>Angra dos Reis、Anápolis、Apucarana、Aracaju、Araraquara、Araxa、Araçatuba、Bage、Barretos、Bauru、Bebedouro、貝倫、Belo Horizonte、Blumenau、Boa Vista、巴西利亞、Caldas Novas、Campina 格蘭德、Campinas、Campo Belo、Campo 格蘭德、Caraguatatuba、Caratinga、Cascavel、Cataguases、Caxias、Leopoldina e Região、Catalão、Caxias do Sul、Chapecó、Cianorte、Conselheiro Lafaiete、Corumbá、Criciúma、Cruzeiro、Sul、Cuiabá Dourados、Estrela、Feira de Santana、Fernando de 諾拉哈、Florianópolis、Fortaleza、Foz do Iguaçu、著稱、Garanhuns、Goiania、Governador Valadares、Guarapuava、Imperatriz、Ipatinga、Irati、Itabira、Itabuna、Itajaí、Itajuba、Ituiutaba、Jaguarao、Jaraguá do Sul、Joao Pessoa、Joinville、Juazeiro do Norte、Juiz de 方針、Jundiaí、Lages、Lavras e Regiao、Lucas do Rio 的，Londrina、Macapa、Macaé、Maceió、Mafra e Rio Negro、瑪瑙斯、Manhuacu、Maringá、Marília、Monte Carmelo、Montes Claros、Mossoró、Natal、Osorio、Ourinhos、Ouro Preto、Palmas、Paracatu、Paranaguá、Parnaíba、Passo Fundo、Passos、Patos de 米、Patrocínio、Pelotas、Piracicaba、Pirapora、Poco de Caldas、Ponta Grossa、韋 Alegre、韋 Ferreira、韋 Seguro、韋 Velho、Praia 格蘭德、Recife、Ribeirão Preto、Rio、Rio 約布蘭科、Rio、Rondonópolis、Salinas、、聖誕老人 Cruz do Sul、聖誕老人 Maria 聖 Rita do Sapucaí，Santarem，Santos，聖多美 Gabriel do Oeste，聖多美 Joao del Rei，Tiradentes e Regiao，聖多美 do Rio Preto，聖多美 Mateus，聖保羅，Sorocaba，聖多美 Carlos，聖多美 do Sul，聖多美 José dos Campos，聖多美 Lourenço，聖多美 Luís，Taubaté，Telemaco Borba，Teofilo Otoni，Teresina，托利多，Três Lagoas，Tucurui，Ubatuba，Uberaba，Uberlândia，Ubá，Uruguaiana，Varginha，Vicosa，Videira & Fraiburgo，Vitória，Vitória da Conquista，Volta Redonda，Votuporanga </p>|
-| 加拿大 | Banff （AB）、Brandon （MB）、Calgary （AB）、Comox 谷（BC）、Cowichan 谷（BC）、埃德蒙頓（AB）、Fort 聖 John、Fredericton （NB）、更多 Sudbury （ON）、更大的范和（BC）、Halifax （NS）、Kamloops （BC）、Kelowna （BC）、Kingston （ON）、倫敦（ON）、Moncton （NB）、蒙特利爾（QC）、Nanaimo （BC）、渥太華（ON）、Prince George （BC）、Québec City （QC）、Red 鹿（AB）、雷吉納（SK）、Rimouski （QC）、Saskatoon （BC），聖 John （NL），陽光 Coast，大圖示機架（開啟），多倫多（ON），維多利亞（BC），Whistler （BC），Windsor （ON），溫尼柏（MB），Woodstock</p>|
-| 智利  | <p>Antofagasta、Arica、Aysén、Chillán、Concepción、Constitución、Copiapó、Curicó、Iquique、La Serena y Coquimbo、Linares、洛杉磯（智利）、Los 拉哥斯、蓬 Arenas、Rancagua、聖地牙哥、Talca、Temuco、Valdivia、瓦爾帕萊索、Viña del Mar</p>|
+| 加拿大 | Banff (AB) ，Brandon (MB) 、Calgary (AB) 、Comox 矽谷 (BC) 、Cowichan (BC) 、埃德蒙頓 (AB) 、Fort 聖 John、Fredericton (NB) 、更多 Sudbury (在) 、更高的 (BC) 、Halifax (NS) 、Kamloops (BC) 、Kelowna (BC) 、Kingston (ON) 、倫敦 (ON) 、Moncton (NB) 、蒙特利爾 (的 QC) 、Nanaimo (BC) 、渥太華 (ON) 、Prince George (BC) 、Québec City (QC) 、Red 鹿 (AB) 、雷吉納 (SK) 、Rimouski (QC) 、Saskatoon (sk) 、Sherbrooke (qc) 、Squamish (BC) 、聖保羅 (NL) 、陽光 Coast (、) 上的 Windsor、多倫多 () 、維多利亞 (BC) 、Whistler (BC) 、 (、溫尼柏) MB (、Woodstock 的) 、</p>|
+| 智利  | <p>Antofagasta、Arica、Aysén、Chillán、Concepción、Constitución、Copiapó、Curicó、Iquique、La Serena y Coquimbo、Linares、洛杉磯 (智利) 、Los 拉哥斯、蓬 Arenas、Rancagua、聖地牙哥、Talca、Temuco、Valdivia、瓦爾帕萊索、Viña del Mar</p>|
 | 哥倫比亞 | <p>Barranquilla、Bogotá、Bucaramanga、Cali、Cartagena、Ibagué、Medellín、Pasto、Popayán、聖誕老人 Marta、Sincelejo、Valledupar</p>|  
 | 哥斯大黎加 | San José|
 | 多明尼加共和國 | 聖多明哥聖多明哥 |
@@ -48,13 +48,13 @@ Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的�
 | 波多黎各 | San Juan |
 | 蘇利南 | Paramaribo |
 | 烏拉圭 | 蒙特維多，蓬 del i，Salto |
-| 美國 | <p>Albany （紐約州）、新墨西哥（NM）、Anchorage （AK）、王小姐 Arbor （MI） Appleton 徹底改變-Oshkosh-Neenah （WI-FI）、是 asheville （NC）、雅典（GA）、雅典（華盛頓）、亞特蘭大（GA）、奧斯丁（德克薩斯州）、Bakersfield （CA）、Berkshire 縣市（MA）、伯明罕（AL）、Bloomington （IN）、Boise （ID）、波士頓（MA）、科羅拉多（CO）、保齡球綠（KY）、報德國家（佛羅里達）、Buffalo （紐約州）、Butte （MT）、維德角貨（MA）、中心縣市（PA）、分校-大學香檳（IL）、Charleston （SC）、Charleston （WV）、Charlotte （NC）、Charlottesville （VA）、Chattanooga （TN）、Cheyenne （WY）、芝加哥（IL）、辛辛那提（華盛頓）、柑橘縣市（FL）、克裡夫蘭（華盛頓）、Coachella 洛杉磯（CA）、科羅拉多彈簧（CO）、哥倫比亞特區（TN）、哥倫比亞特區（華盛頓州）、Columbus （哦）、主體 Christi （德克薩斯州）、達拉斯（德克薩斯州）、Dayton （哦）、特拉華州、丹佛（CO）、Des Moines （IA）、底特律（MI）、北極圈（MN）、El Paso （德克薩斯州）、Eugene （OR）、Fairbanks （AK）、Fargo （ND）、Fayetteville （NC）、Flagstaff （AZ）、Flint （MI） Fort Collins （CO）、Fort Wayne （IN）、Fresno （CA）、Gainesville （FL）、' '、總計 Rapids （MI）、綠色 Bay （WI-FI）、Greensboro （NC）、Greenville （SC）、Gunnison （CO）、Hampton 道路（VA）、Hanford （CA）、Hartford （CT）、Hernando 縣（佛羅里達）、Hinesville （GA）、檀香山（HI）、休士頓（德克薩斯州）、Humboldt 縣（CA）、阿拉巴馬州（AL）、Indianapolis （IN）、Ithaca （NY）、Jackson （MS）、Jackson （TN）、Pre-jacksonville-聖 John 的縣市（佛羅里達州）、Johnson city （TN）、Jonesboro （AR）、Joplin （MO）、Juneau （AK）、Kalamazoo （MI）、Kalispell （MT）、Kansas City （MO）、Kauai （HI）、Ketchum （ID）、田納西州諾克斯維爾（TN）、Lafayette （IN）、蘭卡斯特（PA）、Lansing （MI）、Laredo （德克薩斯州）、內華達等（NV）、Lawrence （KS）、先生縣市（佛羅里達州）、Lexington （KY）、林肯縣（OR）、小搖滾（AR）、洛杉磯（CA）、Louisville （KY）、Lubbock （德克薩斯州）、Madison （WI-FI）、曼徹斯特（NH）、McAllen （德克薩斯州）、Memphis （TN）、邁阿密（FL）、Milwaukee-Waukesha （WI-FI）、Minneapolis-St （MN）、Missoula （MT）、Modesto （USA）、Moline （IL）、門羅縣（PA）、蒙哥馬利（AL）、Morgantown （WV）、納什維爾（TN）、Navajo 國家/地區、新的紐約（CT）、新的奧爾良（LA）、NYC-NJ 面積（紐約州）、Ocala （FL）、Okaloosa 縣（FL）、Oklahoma City （OK）、Omaha （NE）、奧蘭多（FL）、Palm 沙漠（加拿大）、巴拿馬 City （FL）、Pensacola （FL）、Peoria （IL）、賓夕法尼亞州費城（PA）、Phoenix （AZ）、Pittsburgh （PA）、中北部（ME）、中北部（OR）、Racine （WI-FI）、Raleigh （NC）、Redding （CA）、Reno & Lake Tahoe （NV）、Richmond （VA）、Roanoke （VA-Lynchburg）、Rochester （NY）、Rocky 裝載（NC）、Rocky 山地全國公園（CO）、Rogue 洛杉磯（或）、Roseburg （或）、Roseville （CA）、Sacramento （CA）、Salem （或）、Salt Lake City （Antonio）、San Luis （德克薩斯州）、聖地牙哥（CA）、San Obispo Barbara （CA）、聖誕老人（CA）、聖誕老人（NM）、Sarasota （佛羅里達）、Savannah （GA）、Seacoast Region （NH）、西雅圖-Tacoma-Bellevue （WA）、SF Bay 區域（CA）、SF-三藩市地區（CA）、Sioux City （IA）、Sioux （SD）、Sitka （AK）、Spokane （WA）、Springfield （MA）、南部彎曲（在中）、Springfield （IL）、Springfield （品質）、聖 George （Stockton）、聖港（MO）、鳩（CA）、Utica-（NY）、Tallahassee （FL）、坦帕市-聖彼德堡（FL）、Terre Haute （在中）、托利多（聖）、Topeka （KS）、旅遊城市（MI）、Tucson （AZ）、Tulsa （OK）、佛蒙特州、Victorville （CA）、Volusia 縣市（佛羅里達州）、Waco （德克薩斯州）、華盛頓州（DC）、Waterbury （CT）、Wichita （KS）、Wichita 落（德克薩斯州） Wilmington （NC）、Yakima （WA）、Youngstown （華盛頓）、紐約縣（PA）、Yuma 縣（AZ）</p>|
+| 美國 | <p>Albany (紐約州) 、新墨西哥 (NM) 、Anchorage (AK) 、王 Arbor (MI) Appleton 徹底改變-Oshkosh-Neenah (WI-FI) 、是 asheville (NC) 、雅典 (GA) 、雅典 (華盛頓) 、亞特蘭大 (GA) 、奧斯丁 (德克薩斯州) 、Bakersfield (CA) 、Berkshire (AL) 、) 中的 Bloomington (、Boise (ID) 、波士頓 (MA) 、科羅拉多 (CO) 、保齡球綠 (KY) 、報德 (佛羅里達州) 、Buffalo (紐約州) 、Butte (MT) 、維德角 (MA) 、中心縣 (、) 、分校 ()  (、大學香檳) 、Charlottesville (VA) 、Chattanooga (TN) 、Cheyenne (WY) 、芝加哥 (IL) 、辛辛那提 (華盛頓) 、柑橘縣 (佛羅里達州) 、克裡夫蘭 (華盛頓) 、Coachella 洛杉磯 (CA) 、科羅拉多彈簧 (CO) 、哥倫比亞 (TN) 、哥倫比亞 (SC) 、Columbus (華盛頓州) 、主體 Christi (德克薩斯州) Dayton (哦) 、特拉華、丹佛 (CO) 、Des Moines (IA) 、底特律 (MI) 、北極圈 (MN) 、El Paso (TX) 、Eugene (或) 、Fairbanks (AK) 、Fargo (ND) 、Fayetteville (NC) 、Flagstaff (AZ) 、Flint (MI) Fort Collins (CO) 、Fort Wayne () 、Fresno (CA) 、Gainesville (FL) 、總計分支 (ND) 、總計 Rapids (MI) 、環保托架 (WI-FI) 、Greensboro (NC) 、Greenville (SC) 、Gunnison (CO) 、Hampton 道路 (VA) 、Hanford (CA) 、Hartford (CT) 、Hernando 縣 (佛羅里達) 、Hinesville (GA) 、檀香山 (HI) 、休士頓 (德克薩斯州、Humboldt 國家/地區) 、亞拉巴馬 (AL) 、Indianapolis (IN) 、Ithaca (紐約州) 、Jackson (MS) 、Jackson (TN) 、pre-jacksonville-聖 John 的國家/地區 (佛羅里達) 、Johnson city (TN) 、Jonesboro (AR) 、Joplin () ) 、Juneau (MT)  (，Kansas 城市 (的) ，Kauai (HI) 、Ketchum (ID) 、田納西州諾克斯維爾 (TN) 、Lafayette () 、蘭卡斯特 (PA) 、Lansing (MI) 、Laredo (德克薩斯州) 、內華達州 (NV) 、Lawrence (KS) 、的國家/地區 (、Lexington)  () 、 () 、洛杉磯 (CA) 、Louisville (KY) 、Lubbock (TX) 、Madison (的 WI-FI) 、曼徹斯特 (NH) 、McAllen (德克薩斯州) 、Memphis (TN) 、邁阿密 (FL) 、Milwaukee-Waukesha (WI-FI) 、Minneapolis-St (MN) 、Missoula (MT)  () 、Modesto ()  (、Morgantown (WV) 、納什維爾 (TN) 、Navajo 民族) 、新的 Ocala) 、新的奧爾良 (LA) 、NYC-NJ 面積 (紐約州) 、Okaloosa (佛羅里達州) 、Oklahoma 縣 (FL) 、Omaha City ( () 、沙漠 (NE) 、奧蘭多 (FL) 、Palm Pensacola (、) FL (、Peoria (IL) 、賓夕法尼亞州費城 (PA) 、Phoenix (AZ) 、Pittsburgh (PA) 、前 (我) 、前 (或) 、Racine (WI-FI) 、Raleigh (NC) 、Redding (CA) 、Reno & Lake Tahoe (NV) 、Richmond (VA) 、Roanoke (VA) 、Lynchburg 掛接 (NC) ，Rocky 山區全國公園 (CO) 、Rogue (或) 、Roseburg (或) 、Roseville (CA) 、Sacramento (CA) 、Salem (或) 、Salt Lake 城 (、San Antonio) 德克薩斯州 (、聖地牙哥) 、 (的 Luis Obispo) CA (、洛杉磯)  (、Barbara) FL (、Savannah (GA) 、Seacoast 地區 (NH) 、西雅圖-Tacoma-Bellevue (WA) 、SF 廳區域 (ca) 、SF-三藩市區域 (CA) 、Sioux City (IA) 、Sioux 落 (SD) 、Sitka (AK) 、Spokane (WA) 、Springfield (的)  (、Springfield) 大量 (，聖 George (Tallahassee，) ，聖港 (洛杉磯) ，Stockton (CA) ，鳩-Utica (紐約州) ，坦帕市 (FL) ，Terre-St. 聖彼德堡 (FL) ，Haute 托利多 (IN) ，Topeka (，) MI (，Tucson (AZ) 、Tulsa (OK) 、佛蒙特州、Victorville (CA) 、Volusia 縣 (FL) 、Waco (德克薩斯州) 、華盛頓 (DC) 、Waterbury (CT) 、Wichita (KS) 、Wichita 落 (德克薩斯) Wilmington (NC) 、Yakima (WA) 、Youngstown () AZ (</p>|
 | + 美屬英屬維爾京群島 | 美國英屬維爾京群島 * |
 | 委內瑞拉 | 卡拉卡斯 |
 
 ## <a name="asia-pacific"></a>亞太地區
 
-| 國家/地區 |  城市（Metro 區域） |
+| 國家/地區 |   (Metro 區域的城市)  |
 |--------|---------|
 | 澳洲 | <p>阿德萊德、Alice 彈簧、Bowen、布里斯班、Bundaberg QLD、Burnie、Cairns、坎培拉、達爾文、Gladstone、霍巴特、Innisfail、Launceston、Mercer-mackay、磁性島、Maryborough-Hervey Bay、墨爾本、新的南威爾士、通過、RockHampton、東南亞昆士蘭、悉尼、Toowoomba、Townsville、維多利亞、Warwick、Yeppoon</p> |
 | 汶萊 | Bandar Seri Begawan |
@@ -76,7 +76,7 @@ Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的�
 
 ## <a name="europe"></a>歐洲
 
-| 國家/地區 |  城市（Metro 區域） |
+| 國家/地區 |   (Metro 區域的城市)  |
 |----------------|---------|
 | 安道爾        | 安道爾 la Vella |
 | 奧地利        | 維也納 |
@@ -126,7 +126,7 @@ Azure 地圖服務不會針對所有城市和國家/地區提供相同層級的�
 
 ## <a name="middle-east-and-africa"></a>中東與非洲
 
-| 國家/地區 |  城市（Metro 區域） |
+| 國家/地區 |   (Metro 區域的城市)  |
 |---------|---------|
 | 巴林 | 群島 |
 | 布吉納法索 | Ouagadougou |

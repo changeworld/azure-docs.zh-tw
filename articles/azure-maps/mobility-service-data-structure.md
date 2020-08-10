@@ -1,6 +1,6 @@
 ---
 title: Azure 地圖服務中的行動服務資料結構 |Microsoft Azure 對應
-description: 在本文中，您將瞭解透過 Microsoft Azure Maps 行動服務所傳回的通用欄位和資料結構。
+description: 瞭解如何將資料組織成 Azure 地圖服務行動服務中的 metro 區域。 查看哪些欄位會儲存公用傳輸停止和行的相關資訊。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5c2033557d14a25c786f3f6b08dc5bd54956f7e1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131271"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033218"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure 地圖服務行動服務中的資料結構
 
@@ -31,7 +31,7 @@ ms.locfileid: "87131271"
 
 ## <a name="stop-ids"></a>停止識別碼
 
-傳輸停止可以透過兩種類型的識別碼來參考：[一般傳輸摘要規格（GFTS）](http://gtfs.org/)識別碼和 AZURE 地圖服務停止識別碼。 GFTS 識別碼稱為 stopKey，而 Azure 地圖服務停止識別碼稱為 stopID。 當經常參照傳輸停止時，建議您使用 Azure 地圖服務停止識別碼。 stopID 更穩定，而且只要實體停止存在，就有可能保持相同。 GTFS 停止識別碼會更頻繁地更新。 例如，您可以根據 GTFS 提供者要求，或在新的 GTFS 版本發行時，更新 GTFS 停止識別碼。 雖然實體停止不會變更，但 GTFS 停止識別碼可能會變更。
+傳輸停止可以透過兩種類型的識別碼來參考，[一般傳輸摘要規格 (GFTS) ](http://gtfs.org/)識別碼和 AZURE 地圖服務停止識別碼。 GFTS 識別碼稱為 stopKey，而 Azure 地圖服務停止識別碼稱為 stopID。 當經常參照傳輸停止時，建議您使用 Azure 地圖服務停止識別碼。 stopID 更穩定，而且只要實體停止存在，就有可能保持相同。 GTFS 停止識別碼會更頻繁地更新。 例如，您可以根據 GTFS 提供者要求，或在新的 GTFS 版本發行時，更新 GTFS 停止識別碼。 雖然實體停止不會變更，但 GTFS 停止識別碼可能會變更。
 
 若要開始，您可以使用[取得附近的傳輸 API](https://aka.ms/AzureMapsMobilityNearbyTransit)，要求附近的傳輸停止。
 

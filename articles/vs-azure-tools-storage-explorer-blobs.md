@@ -1,6 +1,6 @@
 ---
 title: 使用儲存體總管來管理 Azure Blob 儲存體資源 | Microsoft Docs
-description: 使用儲存體總管來管理 Azure Blob 容器和 Blob
+description: 使用儲存體總管管理 Azure Blob 儲存體資源。 建立 blob 容器、查看 blob 容器內容、刪除或複製 blob 容器等等。
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298118"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033609"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>使用儲存體總管來管理 Azure Blob 儲存體資源
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [Azure Blob 儲存體](storage/blobs/storage-dotnet-how-to-use-blobs.md)是一項用來儲存大量非結構化資料（例如文字或二進位資料）的服務，可透過 HTTP 或 HTTPS 從世界各地存取。
 您可以使用 Blob 儲存體向全球公開資料，或私下儲存應用程式資料。 在本文中，您將學習如何使用儲存體總管 來處理 Blob 容器和 Blob。

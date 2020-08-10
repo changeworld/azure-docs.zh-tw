@@ -1,18 +1,18 @@
 ---
 title: 如何使用 C++ 的物件 (Blob) 儲存體 - Azure | Microsoft Docs
-description: 使用 Azure Blob (物件) 儲存體在雲端中儲存非結構化資料。
+description: 瞭解如何使用 c + + 將非結構化資料儲存在雲端中，並使用 Azure Blob (物件) 儲存體來儲存 (blob) 。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: d21d37e366e0f34c896d76ee53c49c4ca30a18db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021132"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033626"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何使用 C++ 的 Blob 儲存體
 
@@ -254,7 +254,7 @@ azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(
 blockBlob.delete_blob();
 ```
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 了解 Blob 儲存體的基礎概念之後，請依照下列連結深入了解 Azure 儲存體。
 
 - [如何使用 C++ 的佇列儲存體](../storage-c-plus-plus-how-to-use-queues.md)

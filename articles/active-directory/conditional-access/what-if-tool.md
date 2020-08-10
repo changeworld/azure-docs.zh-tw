@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d9ca806a7ddaf7d6ba657d8224d312a6aae33b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5f75ce20d24f98e5fcefde49b95a545281f8066
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253132"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032878"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>在條件式存取中使用 What If 工具進行疑難排解
 
-[條件式存取](../active-directory-conditional-access-azure-portal.md)是 Azure Active Directory （Azure AD）的功能，可讓您控制授權使用者存取雲端應用程式的方式。 您要如何知道環境中的條件式存取原則會有什麼？ 若要回答這個問題，您可以使用**條件式存取 What If 工具**。
+[條件式存取](../active-directory-conditional-access-azure-portal.md)是 Azure Active Directory (Azure AD) 的功能，可讓您控制授權使用者存取雲端應用程式的方式。 您要如何知道環境中的條件式存取原則會有什麼？ 若要回答這個問題，您可以使用**條件式存取 What If 工具**。
 
 本文說明如何使用此工具來測試您的條件式存取原則。
 
@@ -58,7 +58,7 @@ ms.locfileid: "85253132"
 
 ![What If](./media/what-if-tool/02.png)
 
-### <a name="user"></a>使用者
+### <a name="user"></a>User
 
 您只能選取一個使用者。 這是唯一的必要欄位。
 
@@ -76,7 +76,7 @@ IP 位址是用來模擬[位置條件](location-condition.md)的單一 IPv4 位�
 
 ### <a name="client-apps"></a>用戶端應用程式
 
-這項設定會模擬[用戶端應用程式條件](concept-conditional-access-conditions.md#client-apps-preview)。
+這項設定會模擬[用戶端應用程式條件](concept-conditional-access-conditions.md#client-apps)。
 根據預設，此設定會導致系統評估已選取 [瀏覽器]**** 和 (或) [行動裝置應用程式和桌面用戶端]**** 的所有原則。 此外，還會偵測強制執行 **Exchange ActiveSync (EAS)** 的原則。 您可以選取下列選項來縮小此設定的範圍：
 
 - **瀏覽器**：可評估所有至少已選取 [瀏覽器]**** 的原則。 

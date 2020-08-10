@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a74fe2bf6b326dac782ac75418a7f4960e66501a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4b887c91a289730c3d92efe753a2df162f36a047
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274998"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032115"
 ---
 # <a name="conditional-access-conditions"></a>條件式存取：條件
 
 在條件式存取原則中，系統管理員可以利用來自風險、裝置平臺或位置等條件的信號來增強其原則決策。 
 
-![定義條件式存取原則並指定條件](./media/concept-conditional-access-conditions/conditional-access-conditions.png)
+[![定義條件式存取原則並指定條件](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 您可以結合多個條件來建立更細緻和特定的條件式存取原則。
 
@@ -60,21 +60,28 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 如需位置的詳細資訊，請參閱[Azure Active Directory 條件式存取中的位置條件](location-condition.md)。
 
-## <a name="client-apps-preview"></a>用戶端應用程式 (預覽)
+## <a name="client-apps"></a>用戶端應用程式
 
-條件式存取原則預設適用于使用新式驗證通訊協定的瀏覽器型應用程式和應用程式。 除了這些應用程式之外，系統管理員還可以選擇包含 Exchange ActiveSync 用戶端，以及其他使用舊版通訊協定的用戶端。
+根據預設，所有新建立的條件式存取原則都會套用至所有用戶端應用程式類型，即使未設定用戶端應用程式條件也一樣。 
 
 > [!NOTE]
-> 已移除用戶端應用程式條件中的 [設定為]/[否] 切換，讓您更輕鬆地查看選取的用戶端應用程式。 這不會影響現有原則適用的用戶端應用程式。
+> 用戶端應用程式條件的行為已于2020年8月更新。 如果您有現有的條件式存取原則，它們會保持不變。 不過，如果您按一下現有的原則，就會移除 [設定] 切換，並選取套用原則的用戶端應用程式。
 
-- 瀏覽器
-   - 其中包括使用 SAML、WS-同盟、OpenID Connect 等通訊協定的 web 應用程式，或註冊為 OAuth 機密用戶端的服務。
-- 行動裝置應用程式和桌面用戶端
-   - 新式驗證用戶端
-      - 此選項包含 Office desktop 和 phone 應用程式等應用程式。
+> [!IMPORTANT]
+> 來自舊版驗證用戶端的登入不支援 MFA，也不會將裝置狀態資訊傳遞給 Azure AD，因此，條件式存取授與控制會封鎖它們，例如要求 MFA 或符合規範的裝置。 如果您有必須使用舊版驗證的帳戶，您可以從原則中排除這些帳戶，或將原則設定為只套用至新式驗證用戶端。
+
+設定為 **[是]** 時，會套用至已核**取的專案**，當設定為 [**否**] 時，會套用至所有用戶端應用程式，包括現代化和舊版驗證用戶端。 此切換不會出現在2020年8月之前建立的原則中。
+
+- 新式驗證用戶端
+   - 瀏覽器
+      - 其中包括使用 SAML、WS-同盟、OpenID Connect 等通訊協定的 web 應用程式，或註冊為 OAuth 機密用戶端的服務。
+   - 行動裝置應用程式和桌面用戶端
+      -  此選項包含 Office desktop 和 phone 應用程式等應用程式。
+- 舊版驗證用戶端
    - Exchange ActiveSync 用戶端
-      - 根據預設，這包括所有 Exchange ActiveSync （EAS）通訊協定的使用。 選擇 [**僅將原則套用至支援的平臺**] 將會限制為支援的平臺，例如 IOS、Android 和 Windows。
+      - 這包括 Exchange ActiveSync (EAS) 通訊協定的所有使用。
       - 當原則封鎖 Exchange ActiveSync 的使用時，受影響的使用者將會收到單一的隔離電子郵件。 這封電子郵件會提供封鎖原因的相關資訊，並包含修復指示（如果可以的話）。
+      - 系統管理員只能將原則套用至支援的平臺 (例如 iOS、Android 和 Windows) 透過條件式存取 MS 圖形 API。
    - 其他用戶端
       - 此選項包括使用不支援新式驗證之基本/舊版驗證通訊協定的用戶端。
          - 經過驗證的 SMTP - 由 POP 與 IMAP 用戶端用於傳送電子郵件。
@@ -115,20 +122,20 @@ Azure AD 條件式存取支援下列裝置平臺：
 
 #### <a name="chrome-support"></a>Chrome 支援
 
-如需**windows 10 建立者更新（版本1703）** 或更新版本中的 Chrome 支援，請安裝[windows 10 帳戶延伸](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)模組。 當條件式存取原則需要裝置特定的詳細資料時，需要此延伸模組。
+如需**windows 10 建立者更新 (1703 版) **或更新版本中的 Chrome 支援，請安裝[windows 10 帳戶延伸](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)模組。 當條件式存取原則需要裝置特定的詳細資料時，需要此延伸模組。
 
 若要自動將此擴充功能部署到 Chrome 瀏覽器，請建立下列登錄機碼：
 
 - 路徑 HKEY_LOCAL_MACHINE \Software\Policies\Google\Chrome\ExtensionInstallForcelist
 - 名稱1
-- 類型 REG_SZ （字串）
+- 輸入 REG_SZ (字串) 
 - 資料 ppnbnpeolgkicgegkbkbjmhlideopiji; HTTPs \: //clients2.google.com/service/update2/crx
 
 如需 **Windows 8.1 和 7** 中的 Chrome 支援，請建立下列登錄機碼：
 
 - 路徑 HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls
 - 名稱1
-- 類型 REG_SZ （字串）
+- 輸入 REG_SZ (字串) 
 - Data {"pattern"： " https://device.login.microsoftonline.com "，"filter"： {"ISSUER"： {"CN"： "MS-組織存取"}}}
 
 這些瀏覽器支援裝置驗證，因此可以根據原則來識別和驗證裝置。 如果瀏覽器在私用模式中執行，裝置檢查將會失敗。
@@ -145,8 +152,8 @@ Azure AD 條件式存取支援下列裝置平臺：
 | [電子郵件]/[行事曆]/[人員] 應用程式、Outlook 2016、Outlook 2013 (使用新式驗證)| Office 365 Exchange Online | Windows 10 |
 | 應用程式的 MFA 和位置原則。 不支援以裝置為基礎的原則。| 任何 My Apps 應用程式服務 | Android 和 iOS |
 | Microsoft Teams Services - 這會控制支援 Microsoft Teams 及其所有用戶端應用程式的所有服務 - Windows 桌面、iOS、Android、WP 和 Web 用戶端 | Microsoft Teams | Windows 10、Windows 8.1、Windows 7、iOS、Android 及 macOS |
-| Office 2016 應用程式、Office 2013 （具備新式驗證）、 [OneDrive 同步處理用戶端](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1、Windows 7 |
-| Office 2016 應用程式、通用 Office 應用程式、Office 2013 （具備新式驗證）、 [OneDrive 同步處理用戶端](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
+| 使用新式驗證) 的 office 2016 應用程式、Office 2013 (、 [OneDrive 同步處理用戶端](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1、Windows 7 |
+| Office 2016 應用程式、通用 Office 應用程式、Office 2013 (搭配新式驗證) 、 [OneDrive 同步處理用戶端](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
 | Office 2016 (僅限 Word、Excel、PowerPoint、OneNote)。 | Office 365 SharePoint Online | macOS |
 | Office 2019| Office 365 SharePoint Online | Windows 10，macOS |
 | Office 行動應用程式 | Office 365 SharePoint Online | Android、iOS |

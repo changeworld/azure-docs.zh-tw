@@ -3,16 +3,16 @@ title: 在 Azure Marketplace 中透過合作夥伴中心建立 Azure IoT Edge �
 description: 瞭解如何使用合作夥伴中心在 Azure Marketplace 中建立、設定及發佈 IoT Edge 模組供應專案。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/07/2020
+ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876626"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032827"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>建立 IoT Edge 模組供應項目
 
@@ -194,6 +194,8 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 提供要與您供應項目搭配使用的標誌和映像。 所有影像都必須採用 PNG 格式。 模糊映像將會遭到拒絕。
 
+[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
@@ -207,6 +209,8 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 - **寬 (255 x 115)**
 
 這四個標誌都是必要的，且在市集清單中會用於不同位置。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>螢幕擷取畫面 (選擇性)
 
@@ -418,7 +422,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. 存取金鑰
+1. 便捷鍵
 2. 使用者名稱
 3. 密碼
 
@@ -445,14 +449,14 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 - 第 2 個名稱：FromContosoModuleToCloud
 - 第 2 個值：FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-**預設的模組對應項所需屬性**。 模組對應項是 IoT 中樞內的 JSON 文件，可儲存模組執行個體的狀態資訊，包括所需的屬性。 所需的屬性會搭配報告屬性使用，以便同步處理模組的設定或條件。 解決方案後端可以設定所需屬性，而模組則可加以讀取。 模組也可以接收所需屬性中的變更通知。 所需的屬性會使用最多五個名稱/值組來建立，且每個預設值都必須小於 512 個字元。 最多可以定義五個名稱/值對應項的所需屬性。 對應項所需屬性的值必須是有效的 JSON、非逸出、無陣列，且包含最多四個層級的巢狀階層。 在此案例中，預設值所需的參數無任何意義 (例如，客戶伺服器的 IP 位址)，您可新增參數做為預設值。 若要深入瞭解對應項所需屬性的詳細資訊，請參閱[定義或更新所需屬性](../../iot-edge/module-composition.md#define-or-update-desired-properties)) 。
+**預設的模組對應項所需屬性**。 模組對應項是 IoT 中樞內的 JSON 文件，可儲存模組執行個體的狀態資訊，包括所需的屬性。 所需的屬性會搭配報告屬性使用，以便同步處理模組的設定或條件。 解決方案後端可以設定所需屬性，而模組則可加以讀取。 模組也可以接收所需屬性中的變更通知。 所需的屬性會使用最多五個名稱/值組來建立，而且每個預設值都必須少於512個字元。 最多可以定義五個名稱/值對應項的所需屬性。 對應項所需屬性的值必須是有效的 JSON、非逸出、無陣列，且包含最多四個層級的巢狀階層。 在此案例中，預設值所需的參數無任何意義 (例如，客戶伺服器的 IP 位址)，您可新增參數做為預設值。 若要深入瞭解對應項所需屬性的詳細資訊，請參閱[定義或更新所需屬性](../../iot-edge/module-composition.md#define-or-update-desired-properties)) 。
 
 例如，如果模組使用對應項的所需屬性支援可動態設定的重新整理頻率，請定義以下預設的對應項所需屬性：
 
 - 第 1 個名稱：RefreshRate
 - 第 1 個值：60
 
-**預設環境變數**。 環境變數可對模組提供有助於設定程序的補充資訊。 環境變數是使用名稱/值組所建立。 每個預設環境變數名稱和值都必須小於 512 個字元，且您最多可以定義五個。 當預設值所需的參數無任何意義 (例如：客戶伺服器的 IP 位址) 時，您可新增參數做為預設值。
+**預設環境變數**。 環境變數可對模組提供有助於設定程序的補充資訊。 環境變數是使用名稱/值組所建立。 每個預設環境變數名稱和值都必須少於512個字元，而且您最多可以定義五個。 當預設值所需的參數無任何意義 (例如：客戶伺服器的 IP 位址) 時，您可新增參數做為預設值。
 
 例如，如果模組在啟動之前需要接受使用條款，您可以定義以下環境變數：
 

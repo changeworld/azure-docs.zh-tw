@@ -1,6 +1,6 @@
 ---
 title: 設定 Azure 儲存體防火牆和虛擬網路 | Microsoft Docs
-description: 為儲存體帳戶設定多層式的網路安全性。
+description: 使用 Azure 儲存體防火牆和 Azure 虛擬網路，為您的儲存體帳戶設定多層式網路安全性。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: a6f59fff351ecdae82ef7175d54e3b2ab1b7d30b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9c95501c4e17e0afaa082c3e02c29934435c1a19
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534102"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032488"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
 
@@ -384,7 +384,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 | Azure 網路         | Microsoft.Network          | 儲存和分析網路流量記錄，包括透過網路監看員和流量分析服務。 [深入了解](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | 當使用已啟用防火牆的快取、來源或目標儲存體帳戶時，啟用複寫以進行 Azure IaaS 虛擬機器的災害復原。  [深入了解](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
-如果您明確地[將 Azure 角色指派](storage-auth-aad.md#assign-azure-roles-for-access-rights)給該資源實例的[系統指派受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，[**允許受信任的 Microsoft 服務**] 設定也會允許下列服務的特定實例存取儲存體帳戶。 在此情況下，實例的存取範圍會對應至指派給受控識別的 Azure 角色。
+如果您明確地[將 Azure 角色指派](storage-auth-aad.md#assign-azure-roles-for-access-rights)給該資源實例的[系統指派受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，[**允許受信任的 Microsoft 服務**] 設定也會允許下列服務的特定實例存取儲存體帳戶。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 Azure 角色。
 
 | 服務                        | 資源提供者名稱                 | 目的            |
 | :----------------------------- | :------------------------------------- | :----------------- |

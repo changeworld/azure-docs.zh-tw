@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15e3c5ba72ff7b97e03cd7aa2b68eeffb2aa7882
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7a4693dabc62ec03897ccc46398bdff77118fe4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283005"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032079"
 ---
 # <a name="conditional-access-block-legacy-authentication"></a>條件式存取：封鎖舊式驗證
 
@@ -36,8 +36,8 @@ ms.locfileid: "87283005"
    1. 選取 [完成] 。
 1. 在 [雲端應用程式或動作] 下，選取 [所有雲端應用程式]。
    1. 選取 [完成] 。
-1. 在**Conditions**  >  **[條件用戶端應用程式（預覽）**] 底下**的 [選取要套用此原則的用戶端應用程式**] 底下：
-   1. 僅勾選方塊 [行動裝置應用程式和桌面用戶端] > [其他用戶端]。
+1. 在 [**條件**  >  **用戶端應用程式**] 下，將 **[設定]** 設為 [ **Configure**
+   1. 僅檢查**Exchange ActiveSync 用戶端**和**其他用戶端**的方塊。
    1. 選取 [完成] 。
 1. 在 [存取控制] > [授與] 下，選取 [封鎖存取]。
    1. 選取 [選取] 。

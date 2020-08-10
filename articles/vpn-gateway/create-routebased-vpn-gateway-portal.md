@@ -1,19 +1,19 @@
 ---
 title: 建立以路由為基礎的 VPN 閘道：入口網站
 titleSuffix: Azure VPN Gateway
-description: 瞭解如何使用 Azure 入口網站建立以路由為基礎的 Azure VPN 閘道。 使用 VPN 閘道連接到您的內部部署網路。
+description: 使用 Azure 入口網站來快速建立路由型 Azure VPN 閘道，以用於內部部署網路的 VPN 連線，或連接虛擬網路。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: d78dff60c08a67305824139ba11f336380b0a018
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e6d44c9a92ad239c37620ee2e19efcc1777ec3de
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923369"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032624"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>使用 Azure 入口網站建立路由型 VPN 閘道
 

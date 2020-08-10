@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610497"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032963"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>對使用條件式存取的登入問題進行疑難排解
 
@@ -55,11 +55,16 @@ ms.locfileid: "82610497"
    1. [**疑難排解和支援**] 索引標籤中的資訊，可能會清楚指出登入失敗的原因，例如不符合合規性需求的裝置。
    1. 若要進一步調查，請按一下**原則名稱**以向下切入原則的設定。 按一下**原則名稱**會顯示所選原則的原則設定使用者介面，以供審查和編輯。
    1. 條件式存取原則評估所用的**用戶端使用者**和**裝置詳細資料**，也可以在 [**基本資訊**]、[**位置**]、[**裝置資訊**]、[**驗證詳細資料**] 和登入事件的**其他詳細資料**索引標籤中取得。
-   1. 選取原則右邊的省略號會顯示原則詳細資料。 這會提供系統管理員有關為何成功套用原則的其他資訊。
+
+### <a name="policy-details"></a>原則詳細資料
+
+在登入事件中選取原則右側的省略號，會顯示原則詳細資料。 這會提供系統管理員有關為何成功套用原則的其他資訊。
 
    ![[登入事件條件式存取] 索引標籤](./media/troubleshoot-conditional-access/image5.png)
 
-   ![原則詳細資料（預覽）](./media/troubleshoot-conditional-access/policy-details.png)
+   ![ (預覽的原則詳細資料) ](./media/troubleshoot-conditional-access/policy-details.png)
+
+左側提供登入時所收集的詳細資料，而右側則提供這些詳細資料是否符合套用的條件式存取原則需求的詳細資料。 條件式存取原則只適用于滿足或未設定所有條件的情況。
 
 如果事件中的資訊不足以瞭解登入結果，或調整原則以取得所需的結果，則可能會開啟支援事件。 流覽至該登入事件的 [**疑難排解及支援**] 索引標籤，然後選取 [**建立新的支援要求**]。
 

@@ -1,18 +1,18 @@
 ---
 title: 重設 Azure VPN 閘道以重新建立 IPsec 通道
-description: 本文將逐步引導您重設「Azure VPN 閘道」以重新建立 IPsec 通道。 本文章適用於傳統，和 Resource Manager 部署模型兩者的 VPN 閘道。
+description: 重設您的 Azure VPN 閘道，以在傳統和 Resource Manager 部署模型中重新建立 VPN 閘道的 IPsec 通道。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 90a01e4ee3ddf7b100ef51e55b9917c709a05864
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f78b33a95001639abfeaecb381b597f5273c0fc
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84982878"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033048"
 ---
 # <a name="reset-a-vpn-gateway"></a>重設 VPN 閘道
 
@@ -71,7 +71,7 @@ Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gw
 
 **Reset-AzureVNetGateway** 是可用來重設閘道的 Cmdlet。 服務管理的 Azure PowerShell Cmdlet 必須安裝在您的桌面本機上。 您無法使用 Azure Cloud Shell。 執行重設之前，請確認您已安裝最新版的 [Service Management (SM) PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets)。 使用此命令時，請確定您使用的是虛擬網路的完整名稱。 使用入口網站建立的傳統 Vnet 具有 PowerShell 所需的完整名稱。 您可以使用 ' AzureVNetConfig-ExportToFile C:\Myfoldername\NetworkConfig.xml ' 來查看完整名稱。
 
-下列範例會重設名為 "Group TestRG1 TestVNet1" 的虛擬網路閘道（在入口網站中只顯示為 "TestVNet1"）：
+下列範例會重設名為 "Group TestRG1 TestVNet1" 的虛擬網路閘道， (在入口網站中顯示為「TestVNet1」) ：
 
 ```powershell
 Reset-AzureVNetGateway –VnetName 'Group TestRG1 TestVNet1'

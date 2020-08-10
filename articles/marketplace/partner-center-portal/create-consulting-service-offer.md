@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798217"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032589"
 ---
 # <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應項目
 
@@ -110,7 +110,7 @@ ms.locfileid: "87798217"
     - 災害復原
     - 身分識別
     - 物聯網
-    - 遷移
+    - 移轉
     - 網路
     - 安全性
     - 儲存體
@@ -140,7 +140,7 @@ ms.locfileid: "87798217"
 3. 解決方案區域
 4. 產業
 5. 供應項目名稱
-6. 總結
+6. 摘要
 7. 描述
 8. 螢幕擷取畫面/影片
 
@@ -155,7 +155,7 @@ ms.locfileid: "87798217"
 3. 產品
 4. 產業
 5. 供應項目名稱
-6. 總結
+6. 摘要
 7. 描述
 8. 螢幕擷取畫面/影片
 9. 文件
@@ -202,19 +202,22 @@ ms.locfileid: "87798217"
 
 提供要與您的供應項目搭配使用的標誌和影像。 所有影像都必須是 .png 格式。 模糊影像會被拒絕。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >如果您在上傳檔案時遇到問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 https://upload.xboxlive.com 服務。
 
 #### <a name="store-logos"></a>儲存標誌
 
-在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 大小標誌。 您可以選擇性地將此取代為不同的影像。
+請以下列每個像素大小提供供應項目標誌的 PNG 檔案：
 
-需要兩種標誌大小，才能在清單中的不同位置使用：
+- **小型 (48 x 48)**
+- **大型 (216 x 216)**
 
-- **小型** (48 x 48)
-- 216 x 216 與 350 x 350) 之間的**大型** (
+所有標誌都是必要的，且在市集清單中會用於不同位置。
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+-   小型標誌 (48 x 48 圖元) 會出現在 Azure Marketplace 搜尋結果中，以及 [Microsoft AppSource 主頁面] 和 [搜尋結果] 頁面上。 
+-   216 x 216 與 350 x 350 圖元之間的大型標誌 () 會出現在 Azure Marketplace 和 Microsoft AppSource 的供應專案清單頁面上。
 
 #### <a name="screenshots-optional"></a>螢幕擷取畫面 (選擇性)
 

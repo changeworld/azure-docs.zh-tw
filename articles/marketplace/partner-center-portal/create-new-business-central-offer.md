@@ -1,18 +1,18 @@
 ---
 title: 建立 Dynamics 365 Business Central 供應項目 - Microsoft 商業市集
-description: 了解在合作夥伴中心的商業市集入口網站中建立新 Dynamics 365 Business Central 供應項目的步驟和考量。 您可以在 Azure Marketplace 中或透過雲端解決方案提供者 (CSP) 方案，列出或銷售您的供應項目。
+description: 瞭解在合作夥伴中心的 Microsoft 商業 marketplace 中建立新 Dynamics 365 Business Central 供應專案的步驟和考慮。 您可以在 Azure Marketplace 中或透過雲端解決方案提供者 (CSP) 方案，列出或銷售您的供應項目。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 5ec8949d1ba614ca947f9848182ae2c94e044fc3
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: ff93a336b50ceac1106b31726d865ed3e0b41108
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800393"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031467"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>建立 Dynamics 365 Business Central 供應項目
 
@@ -180,19 +180,21 @@ ms.locfileid: "87800393"
 
 在此提供至少一個 (最多三個) 相關的行銷文件，例如白皮書、小手冊、檢查清單或簡報。 這些文件必須是 .pdf 格式。
 
-### <a name="store-logos"></a>儲存標誌
+### <a name="marketplace-images"></a>Marketplace 映像
 
-在 216 x 216 與 350 x 350 圖元) 之間，提供**大型**標誌 (的 PNG 檔案。 合作夥伴中心會使用此來建立**小型** (48 x 48 圖元) 大小標誌。 您可以選擇性地將此取代為不同的影像。
+請提供供應項目的標誌和影像。 所有影像都必須是 PNG 格式。 
 
-需要兩種標誌大小，才能在清單中的不同位置使用：
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
-- **小型** (48 x 48)
-- 216 x 216 與 350 x 350) 之間的**大型** (
+以兩種大小上傳您的供應項目標誌：
+
+* **小型** (48 x 48 像素)
+* **大型** (216 x 216 像素)
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 >[!NOTE]
 >如果在上傳檔案時發生問題，請確定您的區域網路不會封鎖合作夥伴中心所使用的 `https://upload.xboxlive.com` 服務。
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
@@ -206,7 +208,7 @@ ms.locfileid: "87800393"
 
 [市集供應項目清單的最佳做法](../gtm-offer-listing-best-practices.md)
 
-選取 [儲存草稿] 後再繼續。
+選取 **[儲存草稿]** 後再繼續。
 
 ## <a name="availability"></a>可用性
 
@@ -231,7 +233,7 @@ ms.locfileid: "87800393"
 
 然後，當準備好讓供應項目可供使用並移除預覽限制時，您將需要移除 [隱藏金鑰] 並重新發佈。
 
-選取 [儲存草稿] 後再繼續。
+選取 **[儲存草稿]** 後再繼續。
 
 ## <a name="technical-configuration"></a>技術設定
 
@@ -270,7 +272,7 @@ ms.locfileid: "87800393"
 
 此頁面可讓您設定示範 (即「試用產品」)，讓客戶在購買之前先試用您的供應項目。 在[什麼是試用](../what-is-test-drive.md)產品中深入瞭解。
 
-若要啟用試用產品，請在[[供應項目設定]](#test-drive) 索引標籤中，選取 [啟用試用產品] 核取方塊。若要從您的供應項目中移除試用產品，請清除此核取方塊。
+若要啟用試用產品，請在 [供應項目設定](#test-drive) 索引標籤中，選取 [啟用試用產品] 核取方塊。若要從您的供應項目中移除試用產品，請清除此核取方塊。
 
 當您完成試用產品的設定後，請選取 [**儲存草稿**] 再繼續。
 

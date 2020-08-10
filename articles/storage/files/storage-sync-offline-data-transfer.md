@@ -1,18 +1,18 @@
 ---
 title: 使用 Azure 資料箱將資料移轉至 Azure 檔案同步
-description: 以與 Azure 檔案同步相容的方式遷移大量資料。
+description: 將與 Azure 檔案同步相容的大量資料離線遷移。請避免檔案衝突，並在啟用同步處理之後，保留檔案和資料夾的 Acl 和時間戳記。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dda05331163d071a9a47c6f6af8c758a11ec7dd8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827889"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034340"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>使用 Azure DataBox 將大量資料遷移至 Azure 檔案同步
 您可以透過兩種方式將大量資料移轉至 Azure 檔案同步：

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 資料箱從內部內部部署 HDFS 存放區遷移至 Azure 儲存體
-description: 將資料從內部部署的 HDFS 存放區遷移至 Azure 儲存體
+description: 使用資料箱裝置，將內部部署 HDFS 存放區中的資料移轉至 Azure 儲存體 (blob 儲存體或 Data Lake Storage Gen2) 。
 author: normesta
 ms.service: storage
 ms.date: 02/14/2019
@@ -8,16 +8,16 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 6c5f2a041f03d53e1ea7c3f981683f4b70d3963b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465995"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032555"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>使用 Azure 資料箱從內部內部部署 HDFS 存放區遷移至 Azure 儲存體
 
-您可以使用資料箱裝置，將資料從 Hadoop 叢集的內部部署 HDFS 存放區遷移至 Azure 儲存體（blob 儲存體或 Data Lake Storage Gen2）。 您可以選擇資料箱磁碟、80-TB 資料箱或 770 TB 的 Data Box Heavy。
+您可以使用資料箱裝置，將資料從 Hadoop 叢集的內部部署 HDFS 存放區遷移至 Azure 儲存體 (blob 儲存體或 Data Lake Storage Gen2) 。 您可以選擇資料箱磁碟、80-TB 資料箱或 770 TB 的 Data Box Heavy。
 
 本文可協助您完成下列工作：
 
@@ -25,7 +25,7 @@ ms.locfileid: "84465995"
 > * 準備遷移您的資料。
 > * 將您的資料複製到資料箱磁碟、資料箱或 Data Box Heavy 裝置。
 > * 將裝置寄回給 Microsoft。
-> * 將存取權限套用至檔案和目錄（僅限 Data Lake Storage Gen2）
+> *  (Data Lake Storage Gen2，將存取權限套用至檔案和目錄) 
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -151,7 +151,7 @@ ms.locfileid: "84465995"
   
     若要改善複製速度：
 
-    * 請嘗試變更對應程式的數目。 （上述範例使用 `m` = 4 對應程式）。
+    * 請嘗試變更對應程式的數目。  (上述範例使用 `m` = 4 對應程式。 ) 
 
     * 請嘗試 `distcp` 以平行方式執行多個。
 
@@ -175,7 +175,7 @@ ms.locfileid: "84465995"
 
 5. 當 Microsoft 收到您的裝置之後，它會連線到資料中心網路，並將資料上傳至您在放置裝置訂單時所指定的儲存體帳戶。 針對所有您的資料上傳至 Azure 的 BOM 檔案進行驗證。 
 
-## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>將存取權限套用至檔案和目錄（僅限 Data Lake Storage Gen2）
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a> (Data Lake Storage Gen2，將存取權限套用至檔案和目錄) 
 
 您的 Azure 儲存體帳戶中已經有資料。 現在您會將存取權限套用至檔案和目錄。
 
@@ -204,7 +204,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 > [!NOTE]
 > 視 HDFS 中的檔案數目而定，此命令可能需要很長的時間才能執行。
 
-### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>產生身分識別的清單，並將其對應至 Azure Active Directory （新增）身分識別
+### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>產生身分識別的清單，並將其對應至 Azure Active Directory (新增) 身分識別
 
 1. 下載 `copy-acls.py` 腳本。 請參閱本文的[下載協助程式腳本，並設定您的邊緣節點來執行它們](#download-helper-scripts)一節。
 
@@ -219,7 +219,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 3. 在文字編輯器中開啟 `id_map.json` 檔案。
 
-4. 針對出現在檔案中的每個 JSON 物件， `target` 以適當的對應身分識別更新 AAD 使用者主要名稱（UPN）或 ObjectId （OID）的屬性。 完成後，請儲存檔案。 在下一個步驟中，您將需要此檔案。
+4. 針對出現在檔案中的每個 JSON 物件， `target` 使用適當的對應識別，更新 AAD 使用者主體名稱 (UPN) 或 ObjectId (OID) 的屬性。 完成後，請儲存檔案。 在下一個步驟中，您將需要此檔案。
 
 ### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>將許可權套用至複製的檔案並套用識別對應
 

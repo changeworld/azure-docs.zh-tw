@@ -1,5 +1,5 @@
 ---
-title: 商業市集合作夥伴與客戶使用狀況歸因
+title: 商業 marketplace 合作夥伴和客戶使用方式屬性
 description: 概略了解如何追蹤 Azure Marketplace 解決方案的客戶使用狀況。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,14 +8,14 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/14/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: ab729d34219c05ee76a2a14832f41342d29eab21
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c5fc239c32037354547c6818fd507a7a8cfd3657
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065791"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031280"
 ---
-# <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業市集合作夥伴與客戶使用狀況歸因
+# <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>商業 marketplace 合作夥伴和客戶使用方式屬性
 
 客戶使用狀況歸因可以將客戶訂用帳戶中執行 (且部署至您的解決方案中執行) 的 Azure 資源，與身為合作夥伴的您建立關聯。 在 Microsoft 內部系統中產生這些關聯，有助於更深入了解哪些 Azure 資源執行您的軟體。 當您採用這項追蹤功能時，您會與 Microsoft 銷售團隊密切合作，並獲得 Microsoft 合作夥伴計畫的信用額度。
 
@@ -45,7 +45,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 建議您為每個產品的每個供應項目與散發通道建立唯一的 GUID。 如果您不想要分割報告，您可以讓產品的多個散發通道使用單一 GUID。
 
-如果您使用範本來部署產品，而且 Azure Marketplace 與 GitHub 上都有該產品，則您可以建立並註冊兩個不同的 GUID：
+如果您使用範本部署產品，且在 Azure Marketplace 和 GitHub 上皆可使用，您可以建立並註冊兩個不同的 GUID：
 
 - Azure Marketplace 中的產品 A
 - GitHub 上的產品 A
@@ -61,7 +61,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 將 GUID 新增至範本或使用者代理程式，並在合作夥伴中心註冊 GUID 之後，就會追蹤未來的部署。
 
 > [!NOTE]
-> 如果您要透過合作夥伴中心將您的[Azure 應用程式](./partner-center-portal/create-new-azure-apps-offer.md)供應專案發佈至 Azure Marketplace，在範本上傳時，您的範本內所使用的任何新 GUID 都會自動註冊到您的合作夥伴中心設定檔。  
+> 如果您要透過合作夥伴中心將您的[Azure 應用程式](./partner-center-portal/create-new-azure-apps-offer.md)供應專案發佈至 Azure Marketplace，則在上傳範本時，您的範本內所使用的任何新 GUID 都會自動註冊到您的合作夥伴中心設定檔。  
 
 1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard)。
 
@@ -82,13 +82,13 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 1. 選取 [儲存]。
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 範本
-許多合作夥伴解決方案都是使用 Azure Resource Manager 範本來部署。 如果您的 Resource Manager 範本位於 Azure Marketplace、GitHub 或當作快速入門，則可以直截了當修改範本來啟用客戶使用狀況歸因。
+許多合作夥伴解決方案都是使用 Azure Resource Manager 範本來部署。 如果您有 Azure Marketplace、GitHub 上或快速入門中提供的 Resource Manager 範本，修改範本以啟用客戶使用屬性的程式會很簡單。
 
 > [!NOTE]
 > 如需有關建立及發佈「解決方案範本」的詳細資訊，請參閱
 > * [建立及部署第一個 Resource Manager 範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)。
 >* [Azure 應用程式供應項目](./partner-center-portal/create-new-azure-apps-offer.md)。
->* 視訊：[為 Azure Marketplace 建置解決方案範本和受控應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603) \(英文\)。
+>* 影片：[建立 Azure Marketplace 的解決方案範本和受控應用程式](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
 
 若要新增全域唯一識別碼 (GUID)，您只需要在主要範本檔案中進行一處修改：
@@ -99,7 +99,7 @@ GUID 是具有 32 個十六進位數字的唯一參考識別碼。 若要建立 
 
 1. 在主要範本檔案中加入新的資源。 資源只需要置於 **mainTemplate.json** 或 **azuredeploy.json** 檔案中，而非任何巢狀或連結的範本中。
 
-1. 在前置詞之後輸入 GUID 值 `pid-` （例如，pid-前置-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063）。
+1. 在前置詞 (後面輸入 GUID 值 `pid-` ，例如，pid-前置-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063-pid-eb7927c8-dd66-43e1-b0cf-c346a422063) 。
 
 1. 檢查範本是否有任何錯誤。
 
@@ -269,7 +269,7 @@ foreach ($deployment in $deployments){
 1. 針對您的問題選擇 [類別]：
 
    - 針對使用狀況關聯問題，請選取 [其他]。
-   - 若為 Azure Marketplace 的存取問題，請選取 [存取問題]。
+   - 如需 Azure Marketplace 的存取問題，請選取 [**存取問題**]。
 
      ![選擇問題類別](media/marketplace-publishers-guide/lu-article-incident.png)
 

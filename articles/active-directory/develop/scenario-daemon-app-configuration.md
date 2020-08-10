@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 08/08/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 567bd0a34c1989403f29ea5a52fad258c2ffe825
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2e7a0657949a2addbf895666682feee7fd0eb595
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846151"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033354"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>呼叫 web Api 的 Daemon 應用程式-程式碼設定
 
@@ -54,6 +54,9 @@ Daemon 應用程式會使用應用程式許可權，而不是委派的許可權�
 - 授權單位或雲端實例和租使用者識別碼。
 - 您從應用程式註冊所獲得的用戶端識別碼。
 - 可能是用戶端密碼或憑證。
+
+> [!NOTE]
+> 本文其餘部分的 .Net 程式碼片段會從[active directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)範例參考[config](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs) 。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -286,7 +289,7 @@ X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithAuthority(new Uri(config.Authority))
                                           .WithClientClaims(certificate, claims)
-                                          .Build();```
+                                          .Build();
 ```
 
 同樣地，如需詳細資訊，請參閱[用戶端判斷](msal-net-client-assertions.md)提示。
