@@ -103,6 +103,7 @@
           href: functions-bindings-example.md
         - name: 註冊繫結延伸模組
           href: functions-bindings-register.md
+          displayName: 'bundles, extension bundles'
         - name: 繫結運算式模式
           href: functions-bindings-expressions-patterns.md
         - name: 使用繫結傳回值
@@ -272,8 +273,6 @@
           displayName: 'app setting, application setting'
         - name: 設定執行階段版本
           href: set-runtime-version.md
-        - name: 手動登錄擴充功能
-          href: install-update-binding-extensions-manual.md
         - name: 停用函式
           href: disable-function.md
         - name: 異地災害復原
@@ -423,7 +422,7 @@
               displayName: Azure Event Hubs
         - name: IoT 中樞
           items:
-            - name: 概觀
+            - name: 總覽
               href: functions-bindings-event-iot.md
               displayName: Azure IoT Hubs
             - name: 觸發程序

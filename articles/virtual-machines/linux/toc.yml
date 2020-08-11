@@ -5,7 +5,6 @@
     - name: 關於虛擬機器
       href: overview.md
 - name: 快速入門
-  expanded: true
   items:
     - name: 建立 VM - Azure CLI
       href: quick-create-cli.md
@@ -16,6 +15,7 @@
     - name: 建立 VM - ARM 範本
       displayName: 'Resource Manager, template, json'
       href: quick-create-template.md
+  expanded: true
 - name: 教學課程
   items:
     - name: 1 - 建立/管理 VM
@@ -294,8 +294,8 @@
             - name: VM 執行個體大小彈性
               href: reserved-vm-instance-size-flexibility.md
         - name: Spot VM
-          href: spot-vms.md
           displayName: 'pre-empt, preempt'
+          href: spot-vms.md
         - name: 沒有暫存磁碟的 Azure VM
           href: ../azure-vms-no-temp-disk.md
         - name: Azure VM 大小命名慣例
@@ -371,14 +371,14 @@
       href: states-lifecycle.md
     - name: 監視
       href: ../../azure-monitor/insights/monitor-vm-azure.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+    - name: 開機診斷
+      href: ../../virtual-machines/boot-diagnostics.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 備份與復原
       href: ../backup-recovery.md
     - name: 雲端採用架構
       href: /azure/cloud-adoption-framework/get-started/
     - name: 架構中心
       href: /azure/architecture/
-    - name: 基礎結構方針
-      href: infrastructure-example.md
 - name: 操作指南
   items:
     - name: 建立 VM
@@ -405,8 +405,8 @@
             - name: 入口網站
               href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
             - name: ARM 範本
-              href: spot-template.md
               displayName: Azure Resource Manager
+              href: spot-template.md
             - name: 錯誤碼
               href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
     - name: 從傳統移轉至 Azure Resource Manager
@@ -550,8 +550,8 @@
             - name: 使用 Azure CLI
               href: image-builder.md
             - name: ARM 範本參考
-              href: image-builder-json.md
               displayName: 'ARM,Resource Manager'
+              href: image-builder-json.md
             - name: 建置供映像資源庫使用
               href: image-builder-gallery.md
             - name: 更新現有映像
@@ -585,9 +585,9 @@
                 - name: CLI
                   href: ../../bastion/create-host-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 使用 Bastion 來連線
+              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
               items:
                 - name: Bastion SSH 連線
-              href: ../../bastion/bastion-connect-vm-ssh.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Bastion RDP 連線
               href: ../../bastion/bastion-connect-vm-rdp.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Encrypt
@@ -716,7 +716,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -726,7 +726,7 @@
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 維修控制
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../maintenance-control.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
@@ -749,12 +749,12 @@
                 - name: 概觀
                   href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: Linux 診斷延伸模組
-                  displayname: diagnostics extension
                   items:
                     - name: 概觀
                       href: ../../azure-monitor/../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json?toc=/azure/azure-monitor/toc.json
                     - name: 使用 Telegraf 收集計量
                       href: ../../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  displayname: diagnostics extension
             - name: Log Analytics 代理程式
               items:
                 - name: 概觀
@@ -788,11 +788,11 @@
             - name: 疑難排解
               items:
                 - name: Log Analytics VM 延伸模組
-                  displayname: 'troubleshoot, troubleshooting'
                   href: ../../azure-monitor/platform/vmext-troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-                - name: Log Analytics Linux 代理程式
                   displayname: 'troubleshoot, troubleshooting'
+                - name: Log Analytics Linux 代理程式
                   href: ../../azure-monitor/platform/agent-linux-troubleshoot.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  displayname: 'troubleshoot, troubleshooting'
         - name: 適用於 VM 的 Azure 監視器
           items:
             - name: 概觀
@@ -1134,8 +1134,8 @@
     - name: REST
       href: /rest/api/compute
     - name: Resource Manager 範本
-      href: /azure/templates/microsoft.compute/allversions
       displayName: ARM
+      href: /azure/templates/microsoft.compute/allversions
 - name: 資源
   items:
     - name: 問答集
