@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389765"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077368"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 入口網站中設定 App Service 應用程式
 
@@ -29,17 +29,17 @@ ms.locfileid: "85389765"
 
 ![應用程式設定](./media/configure-common/open-ui.png)
 
-針對 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定應用程式設定，就像是在的 `<appSettings>` *Web.config*或*appsettings.js*中設定，但 App Service 中的值會覆寫*Web.config*或*appsettings.js*中的專案。 您可以將開發設定（例如，本機 MySQL 密碼）保留在*Web.config*或*appsettings.js*，但 App Service 中的生產秘密（例如 Azure MySQL 資料庫密碼）則是安全的。 當您在本機進行調試時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產密碼。
+針對 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定應用程式設定，就像是在的 `<appSettings>` *Web.config*或*appsettings.js*中設定，但 App Service 中的值會覆寫*Web.config*或*appsettings.js*中的專案。 您可以保留開發設定 (例如， *Web.config*或*appsettings.js*中的本機 MySQL 密碼) ，但生產秘密 (例如，) 中的 Azure MySQL 資料庫密碼 App Service 安全。 當您在本機進行調試時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產密碼。
 
 同樣地，其他語言堆疊也會在執行時間取得應用程式設定作為環境變數。 如需語言堆疊的特定步驟，請參閱：
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [自訂容器](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [自訂容器](configure-custom-container.md#configure-environment-variables)
 
 應用程式設定在儲存時一律加密 (待用加密)。
 
@@ -59,7 +59,7 @@ ms.locfileid: "85389765"
 完成後，按一下 [**更新**]。 別**忘了按一下**[設定] 頁面中的 [**存**回]。
 
 > [!NOTE]
-> 在預設的 Linux 容器或自訂的 Linux 容器中，應用程式設定名稱中的任何嵌套 JSON 金鑰結構（例如） `ApplicationInsights:InstrumentationKey` 都必須在 App Service 中設定，以做為索引 `ApplicationInsights__InstrumentationKey` 鍵名稱。 換句話說，any `:` 應該取代成 `__` （雙底線）。
+> 在預設的 Linux 容器或自訂的 Linux 容器中，應用程式設定名稱中的任何嵌套 JSON 金鑰結構（例如） `ApplicationInsights:InstrumentationKey` 都必須在 App Service 中設定，以做為索引 `ApplicationInsights__InstrumentationKey` 鍵名稱。 換句話說，任何 `:` 都應該以 `__` (雙底線) 取代。
 >
 
 ### <a name="edit-in-bulk"></a>大量編輯
@@ -90,7 +90,7 @@ ms.locfileid: "85389765"
 
 ![應用程式設定](./media/configure-common/open-ui.png)
 
-針對 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定連接字串，就像是在 `<connectionStrings>` *Web.config*中設定，但您在 App Service 中設定的值會覆寫*Web.config*中的。您可以在 App Service 中，安全地保留*Web.config*和生產秘密（例如，SQL Database 認證）中的開發設定（例如資料庫檔案）。 當您在本機進行調試時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產密碼。
+針對 ASP.NET 和 ASP.NET Core 開發人員，在 App Service 中設定連接字串，就像是在 `<connectionStrings>` *Web.config*中設定，但您在 App Service 中設定的值會覆寫*Web.config*中的。您可以保留開發設定 (例如， *Web.config*和生產密碼中) 的資料庫檔案 (例如 SQL Database 安全地) App Service 認證。 當您在本機進行調試時，相同的程式碼會使用您的開發設定，並在部署至 Azure 時使用您的生產密碼。
 
 針對其他語言堆疊，最好改用[應用程式設定](#configure-app-settings)，因為連接字串需要變數索引鍵中的特殊格式，才能存取值。 以下是一個例外狀況，不過，如果您在應用程式中設定其連接字串，某些 Azure 資料庫類型會與應用程式一起備份。 如需詳細資訊，請參閱[備份的內容](manage-backup.md#what-gets-backed-up)。 如果您不需要此自動備份，請使用應用程式設定。
 
@@ -104,13 +104,13 @@ ms.locfileid: "85389765"
 
 例如，名為*connectionstring1*的 MySql 連接字串可以做為環境變數來存取 `MYSQLCONNSTR_connectionString1` 。 如需語言堆疊的特定步驟，請參閱：
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [自訂容器](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [自訂容器](configure-custom-container.md#configure-environment-variables)
 
 連接字串在儲存時一律加密 (待用加密)。
 
@@ -176,7 +176,7 @@ ms.locfileid: "85389765"
     > [!NOTE]
     > 大部分的新式瀏覽器僅支援透過 TLS 的 HTTP/2 通訊協定，非加密的流量則會繼續使用 HTTP/1.1。 若要確保用戶端瀏覽器使用 HTTP/2 連接到您的應用程式，請保護您的自訂 DNS 名稱。 如需詳細資訊，請參閱[Azure App Service 中的使用 TLS/SSL 系結保護自訂 DNS 名稱](configure-ssl-bindings.md)。
     - **ARR 親和性**：在多重實例部署中，請確定在會話的生命週期中，用戶端會路由傳送至相同的實例。 針對無狀態應用程式，您可以將此選項設定為 [**關閉**]。
-- **調試**程式：啟用[ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、 [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)或[Node.js](containers/configure-language-nodejs.md#debug-remotely)應用程式的遠端偵錯程式。 此選項會在48小時後自動關閉。
+- **調試**程式：啟用[ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、 [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)或[Node.js](configure-language-nodejs.md#debug-remotely)應用程式的遠端偵錯程式。 此選項會在48小時後自動關閉。
 - 連**入的用戶端憑證**：需要[相互驗證](app-service-web-configure-tls-mutual-auth.md)的用戶端憑證。
 
 ## <a name="configure-default-documents"></a>設定預設檔
@@ -199,7 +199,7 @@ ms.locfileid: "85389765"
 
 [**路徑**對應] 頁面會根據 OS 類型來顯示不同的專案。
 
-### <a name="windows-apps-uncontainerized"></a>Windows 應用程式（uncontainerized）
+### <a name="windows-apps-uncontainerized"></a>Windows 應用程式 (uncontainerized) 
 
 針對 Windows 應用程式，您可以自訂 IIS 處理常式對應和虛擬應用程式和目錄。
 
@@ -209,13 +209,13 @@ ms.locfileid: "85389765"
 - **腳本處理器**。 您的腳本處理器的絕對路徑。 符合副檔名之檔案的要求會由腳本處理器處理。 使用路徑 `D:\home\site\wwwroot` 以指出應用程式的根目錄。
 - **引數**。 腳本處理器的選擇性命令列引數。
 
-每個應用程式都有對應至的預設根路徑（ `/` ） `D:\home\site\wwwroot` ，預設會部署程式碼。 如果您的應用程式根目錄位於不同的資料夾中，或如果您的存放庫有一個以上的應用程式，您可以在這裡編輯或新增虛擬應用程式和目錄。 按一下 [**新增虛擬應用程式或目錄**]。
+每個應用程式都有預設的根路徑 (`/`) 對應至 `D:\home\site\wwwroot` ，預設會部署程式碼。 如果您的應用程式根目錄位於不同的資料夾中，或如果您的存放庫有一個以上的應用程式，您可以在這裡編輯或新增虛擬應用程式和目錄。 按一下 [**新增虛擬應用程式或目錄**]。
 
-若要設定虛擬應用程式和目錄，請指定每個虛擬目錄及其相對於網站根目錄的對應實體路徑（ `D:\home` ）。 或者，您可以選取 [ **應用程式** ] 核取方塊，勾選虛擬目錄做為應用程式。
+若要設定虛擬應用程式和目錄，請指定每個虛擬目錄及其對應的實體路徑（相對於網站根目錄 (`D:\home`) ）。 或者，您可以選取 [ **應用程式** ] 核取方塊，勾選虛擬目錄做為應用程式。
 
 ### <a name="containerized-apps"></a>容器化應用程式
 
-您可以[為容器化應用程式新增自訂儲存體](containers/how-to-serve-content-from-azure-storage.md)。 容器化應用程式包含所有 Linux 應用程式，以及在 App Service 上執行的 Windows 和 Linux 自訂容器。 按一下 [**新增] Azure 儲存體掛接**並設定您的自訂存放裝置，如下所示：
+您可以[為容器化應用程式新增自訂儲存體](configure-connect-to-azure-storage.md)。 容器化應用程式包含所有 Linux 應用程式，以及在 App Service 上執行的 Windows 和 Linux 自訂容器。 按一下 [**新增] Azure 儲存體掛接**並設定您的自訂存放裝置，如下所示：
 
 - **名稱**：顯示名稱。
 - 設定**選項**： [**基本**] 或 [ **Advanced**]。
@@ -228,27 +228,27 @@ ms.locfileid: "85389765"
 - **存取金鑰**：適用于 advanced 設定的存取金鑰。
 - **掛接路徑**：容器中用來掛接自訂存放裝置的絕對路徑。
 
-如需詳細資訊，請參閱[從 Azure 儲存體在 Linux 上的 App Service 中提供內容](containers/how-to-serve-content-from-azure-storage.md)。
+如需詳細資訊，請參閱[從 App Service 中的容器存取 Azure 儲存體做為網路共用](configure-connect-to-azure-storage.md)。
 
 ## <a name="configure-language-stack-settings"></a>設定語言堆疊設定
 
 針對 Linux 應用程式，請參閱：
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md)
-- [Node.js](containers/configure-language-nodejs.md)
-- [PHP](containers/configure-language-php.md)
-- [Python](containers/how-to-configure-python.md)
-- [Java](containers/configure-language-java.md)
-- [Ruby](containers/configure-language-ruby.md)
+- [ASP.NET Core](configure-language-dotnetcore.md)
+- [Node.js](configure-language-nodejs.md)
+- [PHP](configure-language-php.md)
+- [Python](configure-language-python.md)
+- [Java](configure-language-java.md)
+- [Ruby](configure-language-ruby.md)
 
 ## <a name="configure-custom-containers"></a>設定自訂容器
 
-請參閱[設定適用于 Azure App Service 的自訂 Linux 容器](containers/configure-custom-container.md)
+請參閱[設定適用于 Azure App Service 的自訂 Linux 容器](configure-custom-container.md)
 
 ## <a name="next-steps"></a>後續步驟
 
 - [在 Azure App Service 中設定自訂網域名稱]
-- [在 Azure App Service 中設定預備環境]
+- [在 Azure App Service 中設定預備環境] \(部分機器翻譯\)
 - [在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱](configure-ssl-bindings.md)
 - [啟用診斷記錄](troubleshoot-diagnostic-logs.md)
 - [在 Azure App Service 中調整應用程式規模]
@@ -260,7 +260,7 @@ ms.locfileid: "85389765"
 [ASP.NET SignalR]: https://www.asp.net/signalr
 [Azure 入口網站]: https://portal.azure.com/
 [在 Azure App Service 中設定自訂網域名稱]: ./app-service-web-tutorial-custom-domain.md
-[在 Azure App Service 中設定預備環境]: ./deploy-staging-slots.md
+[在 Azure App Service 中設定預備環境]: ./deploy-staging-slots.md \(部分機器翻譯\)
 [How to: Monitor web endpoint status]: https://go.microsoft.com/fwLink/?LinkID=279906
 [在 Azure App Service 中監視基本概念]: ./web-sites-monitor.md
 [管線模式]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f01eaf879e70406c6dbe17e6fc544f7aed367e8b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a21d48787a39c491a2ab1ace1bf42ff85bd34993
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324109"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078082"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式
 
@@ -23,7 +23,7 @@ ms.locfileid: "87324109"
 
 ![分析工具追蹤](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 下列指示適用於所有 Windows、Linux 和 Mac 開發環境：
 
 * 安裝 [.NET Core SDK 2.1.2 或更新版本](https://dotnet.microsoft.com/download/archives)。
@@ -106,7 +106,7 @@ ms.locfileid: "87324109"
 
     ![設定 Git 存放庫](./media/profiler-aspnetcore-linux/setup-git-repo.png)
 
-如需更多部署選項，請參閱[本文](../../app-service/containers/choose-deployment-type.md)。
+如需更多部署選項，請參閱[App Service 檔](https://docs.microsoft.com/azure/app-service)。
 
 ## <a name="deploy-your-project"></a>部署您的專案
 

@@ -4,12 +4,12 @@ description: 瞭解如何在不同案例的 App Service 中自訂驗證和授權
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 32b7db234cd91aaf9fa5fcfa9b35679d32561474
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042610"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078388"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -17,8 +17,7 @@ ms.locfileid: "88042610"
 
 若要快速開始，請參閱下列其中一個教學課程︰
 
-* [教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](app-service-web-tutorial-auth-aad.md)
-* [教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](containers/tutorial-auth-aad.md)
+* [教學課程：在 Azure App Service 中對使用者進行端對端驗證和授權](tutorial-auth-aad.md)
 * [如何設定 App 使用 Azure Active Directory 登入](configure-authentication-provider-aad.md)
 * [如何設定 App 使用 Facebook 登入](configure-authentication-provider-facebook.md)
 * [如何設定 App 以使用 Google 登入](configure-authentication-provider-google.md)
@@ -533,5 +532,4 @@ az webapp auth update --name <my_app_name> \
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程： (Windows) 的端對端驗證和授權使用者](app-service-web-tutorial-auth-aad.md) 
-> [教學課程： (Linux) 的端對端驗證和授權使用者](containers/tutorial-auth-aad.md)
+> [教學課程：端對端驗證和授權使用者](tutorial-auth-aad.md)

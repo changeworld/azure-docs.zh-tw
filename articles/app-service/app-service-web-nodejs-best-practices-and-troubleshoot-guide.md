@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169973"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077470"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 上節點應用程式的最佳作法和疑難排解指南
 
-在本文中，您可以了解在 Azure App Service 上執行之[節點應用程式](app-service-web-get-started-nodejs.md)的最佳做法和疑難排解步驟 (透過 [iisnode](https://github.com/azure/iisnode))。
+在本文中，您將瞭解使用[iisnode](https://github.com/azure/iisnode)) 在 Azure App Service (上執行之[Windows Node.js 應用程式](quickstart-nodejs.md?pivots=platform-windows)的最佳作法和疑難排解步驟。
 
 > [!WARNING]
 > 請小心在您的生產網站上使用疑難排解步驟。 建議在非生產安裝 (例如您的預備位置) 上對應用程式進行疑難排解，而當問題修正後，請切換您的預備位置與生產位置。
@@ -172,7 +172,7 @@ http.createServer(function (req, res) {
 
 ![顯示網站/wwwroot 目錄和命令提示字元的螢幕擷取畫面。](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
-執行 `npm install v8-profiler` 命令。
+執行命令 `npm install v8-profiler`。
 
 此命令會在 node\_modules 目錄與其所有的相依項目之下安裝 v8 分析工具。
 現在，編輯 server.js 以剖析您的應用程式。
@@ -273,7 +273,7 @@ NODE.exe 具有稱為 `NODE_PENDING_PIPE_INSTANCES` 的設定。 在 Azure App S
 
 請遵循下列連結以深入了解 Azure App Service 上的 node.js 應用程式。
 
-* [在 Azure App Service 中開始使用 Node.js Web 應用程式](app-service-web-get-started-nodejs.md)
+* [在 Azure App Service 中開始使用 Node.js Web 應用程式](quickstart-nodejs.md)
 * [如何在 Azure App Service 中偵錯 Node.js Web 應用程式](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [使用 Node.js 模組與 Azure 應用程式搭配](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service Web Apps：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)

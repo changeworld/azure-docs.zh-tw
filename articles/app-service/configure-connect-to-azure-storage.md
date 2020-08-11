@@ -1,31 +1,49 @@
 ---
-title: 新增自訂儲存體（Windows 容器）
-description: 瞭解如何在 Azure App Service 的自訂 Windows 容器中附加自訂網路共用。 在應用程式之間共用檔案、遠端系統管理靜態內容和本機存取等等。
+title: '新增 Azure 儲存體 (容器) '
+description: 瞭解如何在 Azure App Service 的容器化應用程式中附加自訂網路共用。 在應用程式之間共用檔案、遠端系統管理靜態內容和本機存取等等。
 author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: app-service-containers-windows-linux
+ms.openlocfilehash: 8ced35f30966a96061792ad2171afe19599ed22c
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77120679"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077249"
 ---
-# <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>在 App Service 上的 Windows 容器中設定 Azure 檔案儲存體
+# <a name="access-azure-storage-as-a-network-share-from-a-container-in-app-service"></a>從中的容器以網路共用的形式存取 Azure 儲存體 App Service
 
-> [!NOTE]
-> 本文適用于自訂 Windows 容器。 若要部署至_Linux_上的 App Service，請參閱[從 Azure 儲存體提供內容](./containers/how-to-serve-content-from-azure-storage.md)。
->
+::: zone pivot="container-windows"
 
-本指南說明如何在 Windows 容器中存取 Azure 儲存體。 僅支援[Azure 檔案儲存體共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli)和[Premium 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-premium-fileshare)。 您在本操作說明中使用 Azure 檔案儲存體共用。 好處包括受保護的內容、內容可攜性、可存取多個應用程式，以及多個傳輸方法。
+本指南說明如何在 App Service 中，將 Azure 儲存體檔案作為網路共用連結至 windows 容器。 僅支援[Azure 檔案儲存體共用](../storage/files/storage-how-to-use-files-cli.md)和[Premium 檔案共用](../storage/files/storage-how-to-create-premium-fileshare.md)。 好處包括受保護的內容、內容可攜性、可存取多個應用程式，以及多個傳輸方法。
 
-## <a name="prerequisites"></a>必要條件
+::: zone-end
 
-- [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 或更新版本)。
-- [Azure App Service 中的現有 Windows 容器應用程式](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container)
-- [建立 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-cli)
-- [將檔案上傳至 Azure 檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-deployment-guide)
+::: zone pivot="container-linux"
+
+本指南說明如何將 Azure 儲存體附加至 App Service 的 Linux 容器。 優點包括安全內容、內容可攜性、持續儲存、存取多個應用程式，以及多個傳輸方法。
+
+::: zone-end
+
+## <a name="prerequisites"></a>Prerequisites
+
+::: zone pivot="container-windows"
+
+- [Azure App Service 中的現有 Windows 容器應用程式](quickstart-custom-container.md)
+- [建立 Azure 檔案共用](../storage/files/storage-how-to-use-files-cli.md)
+- [將檔案上傳至 Azure 檔案共用](../storage/files/storage-files-deployment-guide.md)
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+- 現有的[Linux 上的 App Service 應用程式](index.yml)。
+- [Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-cli)
+- [Azure 檔案共用和目錄](../storage/files/storage-how-to-use-files-cli.md)。
+
+::: zone-end
 
 > [!NOTE]
 > Azure 檔案儲存體為非預設儲存體，並會分開計費，不包含在 web 應用程式中。 因為基礎結構的限制，所以不支援使用防火牆設定。
@@ -33,32 +51,79 @@ ms.locfileid: "77120679"
 
 ## <a name="limitations"></a>限制
 
-- Windows 容器中的 Azure 儲存體處於**預覽**狀態，**不支援**用於**生產案例**。
-- Windows 容器中的 Azure 儲存體僅支援裝載**Azure 檔案儲存體容器**（讀取/寫入）。
-- Windows 容器中的 Azure 儲存體目前**不支援**在 windows App Service 方案上攜帶您自己的程式碼案例。
-- 由於基礎結構的限制，Windows 容器中的 Azure 儲存體**不支援**使用**存放裝置防火牆**設定。
-- Windows 容器中的 Azure 儲存體可讓您指定每個應用程式**最多五個**掛接點。
+::: zone pivot="container-windows"
+
+- App Service 中的 Azure 儲存體處於**預覽**狀態，**不支援**用於**生產案例**。
+- App Service 中的 Azure 儲存體目前**不支援**將您自己的程式碼案例 (非容器化 Windows 應用程式) 。
+- App Service 中的 Azure 儲存體**不支援**使用**儲存體防火牆**設定，因為基礎結構的限制。
+- App Service 的 Azure 儲存體可讓您為每個應用程式指定**最多五個**掛接點。
 - 無法透過 App Service 的 FTP/FTPs 端點存取裝載至應用程式的 Azure 儲存體。 使用[Azure 儲存體 explorer](https://azure.microsoft.com/features/storage-explorer/)。
-- Azure 儲存體會獨立計費，而且**不會包含**在您的 web 應用程式中。 深入瞭解[Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage)。
 
-## <a name="link-storage-to-your-web-app-preview"></a>將儲存體連結到您的 Web 應用程式 (預覽)
+::: zone-end
 
- 若要將 Azure 檔案儲存體共用掛接至 App Service 應用程式中的目錄，請使用 [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) 命令。 儲存體類型必須是 AzureFiles。
+::: zone pivot="container-linux"
+
+- App Service 中的 Azure 儲存體適用于 Linux 上的 App Service 和用於容器的 Web App 的**預覽**版本。 **不支援**用於**生產案例**。
+- App Service 中的 Azure 儲存體支援將**Azure 檔案儲存體容器**裝載 (讀取/寫入) 和**Azure Blob 容器** (唯讀) 
+- App Service 中的 Azure 儲存體**不支援**使用**儲存體防火牆**設定，因為基礎結構的限制。
+- App Service 中的 Azure 儲存體可讓您為每個應用程式指定**最多五個**掛接點。
+- 無法透過 App Service 的 FTP/FTPs 端點存取裝載至應用程式的 Azure 儲存體。 使用[Azure 儲存體 explorer](https://azure.microsoft.com/features/storage-explorer/)。
+
+::: zone-end
+
+## <a name="link-storage-to-your-app"></a>將儲存體連結到您的應用程式
+
+::: zone pivot="container-windows"
+
+建立[Azure 儲存體帳戶、檔案共用和目錄](#prerequisites)之後，您現在可以使用 Azure 儲存體來設定您的應用程式。
+
+若要將 Azure 檔案儲存體共用掛接至 App Service 應用程式中的目錄，請使用 [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) 命令。 儲存體類型必須是 AzureFiles。
 
 ```azurecli
-az webapp config storage-account add --resource-group <group_name> --name <app_name> --custom-id <custom_id> --storage-type AzureFiles --share-name <share_name> --account-name <storage_account_name> --access-key "<access_key>" --mount-path <mount_path_directory of form c:<directory name> >
+az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
 ```
 
 您應該針對想要連結到 Azure 檔案儲存體共用的其他目錄執行此動作。
 
-## <a name="verify"></a>確認
+::: zone-end
 
-當 Azure 檔案儲存體共用連結至 web 應用程式之後，您可以執行下列命令來確認：
+::: zone pivot="container-linux"
+
+建立[Azure 儲存體帳戶、檔案共用和目錄](#prerequisites)之後，您現在可以使用 Azure 儲存體來設定您的應用程式。
+
+若要將儲存體帳戶掛接到 App Service 應用程式中的目錄，請使用 [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) 命令。 儲存體類型可以是 AzureBlob 或 AzureFiles。 在此範例中會使用 AzureFiles。 [掛接路徑] 設定會對應至您想要從 Azure 儲存體掛接的資料夾。 將它設定為 '/' 會裝載整個 Azure 儲存體。
+
+
+> [!CAUTION]
+> 在您的 web 應用程式中指定為掛接路徑的目錄應該是空的。 新增外部掛接時，將會刪除儲存在此目錄中的任何內容。 如果您是移轉現有應用程式的檔案，請先備份您的應用程式和其內容再開始移轉。
+>
 
 ```azurecli
-az webapp config storage-account list --resource-group <resource_group> --name <app_name>
+az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory>
+```
+
+您應該對想要連結到儲存體帳戶的任何其他目錄執行此作業。
+
+::: zone-end
+
+## <a name="verify-linked-storage"></a>驗證連結的儲存體
+
+當共用連結至應用程式之後，您可以執行下列命令來確認：
+
+```azurecli
+az webapp config storage-account list --resource-group <resource-group> --name <app-name>
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Windows 容器（預覽）將 ASP.NET 應用程式遷移至 Azure App Service](app-service-web-tutorial-windows-containers-custom-fonts.md)。
+::: zone pivot="container-windows"
+
+- [使用自訂容器將自訂軟體遷移至 Azure App Service](tutorial-custom-container.md?pivots=container-windows)。
+
+::: zone-end
+
+::: zone pivot="container-linux"
+
+- [設定自訂容器](configure-custom-container.md?pivots=platform-linux)。
+
+::: zone-end

@@ -1,14 +1,14 @@
 ---
 title: Azure 服務匯流排-暫止訊息實體
-description: 本文說明如何暫時暫停和重新開機 Azure 服務匯流排訊息實體（佇列、主題和訂用帳戶）。
+description: 本文說明如何暫時暫停和重新開機 Azure 服務匯流排的訊息實體 (佇列、主題和訂用帳戶) 。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: da7c25c8ef9f3daa32984ac26aa62710ab775951
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dad0b774f271ed719ca09b1e749559d5e1868bd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038132"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078850"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暫止及重新啟動傳訊實體 (停用)
 
@@ -18,9 +18,11 @@ ms.locfileid: "87038132"
 
 暫止或重新啟動可以由使用者或系統執行。 系統只會因為重大的管理原因暫止實體，如達到訂用帳戶消費限制。 使用者無法重新啟動由系統停用的實體，不過當導致暫止的原因排除後實體將能恢復正常狀態。
 
-在入口網站中，個別實體的 [**屬性**] 區段可讓您變更狀態;下列螢幕擷取畫面顯示佇列的切換：
+在入口網站中，個別實體的 [**總覽**] 區段可讓您變更狀態;目前狀態會在 [**狀態**] 下顯示為超連結。
 
-![已醒目提示 [屬性] 設定的 [服務匯流排] 功能的螢幕擷取畫面，而 [佇列狀態] 選項設為 [作用中] 並以紅色標示。][1]
+下列螢幕擷取畫面顯示可以藉由選取超連結來變更實體的可用狀態： 
+
+![[總覽] 中服務匯流排功能的螢幕擷取畫面，可變更 [實體狀態] 選項。][1]
 
 入口網站只允許完全停止佇列。 您也可以使用 .NET Framework SDK 中的服務匯流排 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 分別停用傳送和接收作業，或是透過 Azure CLI 或 Azure PowerShell 使用 Azure Resource Manager 範本來達成。
 
@@ -55,5 +57,5 @@ Set-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueu
 * [開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服務匯流排主題和訂用帳戶](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-[1]: ./media/entity-suspend/queue-disable.png
+[1]: ./media/entity-suspend/entity-state-change.png
 

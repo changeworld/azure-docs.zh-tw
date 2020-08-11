@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解在啟用和使用 Azure Dev Spaces 時，如何針對常見問題進行疑難排解並加以解決
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: 1efaa178c2abda316cfad3e375dfdd38b41d75e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835692"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077028"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -284,7 +284,7 @@ Service cannot be started.
 
 在已安裝[受控識別](../aks/use-managed-identity.md)的 AKS 叢集上執行具有 Azure Dev Spaces 的服務，並已安裝[pod 受控](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities)識別時，進程可能會在*圖表安裝*步驟之後停止回應。 如果您檢查 *azds* 命名空間中的 *azds-injector-webhook*，您可能會看到此錯誤。
 
-在您的叢集上執行的服務 Azure Dev Spaces 會使用叢集的受控識別，與叢集外的 Azure Dev Spaces 後端服務溝通。 安裝 Pod 受控身分識別時，會在叢集的節點上設定網路規則，以便將受控識別認證的所有呼叫重新導向至叢集上安裝的 [Node 受控識別 (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI DaemonSet 會識別呼叫的 Pod，並確保 Pod 已妥善標示為可存取要求的受控識別。 Azure Dev Spaces 無法偵測叢集是否已安裝 Pod 受控識別，且無法執行必要的設定，以允許 Azure Dev Spaces 服務存取叢集的受控識別。 由於 Azure Dev Spaces 服務尚未設定為可存取叢集的受控識別，因此 NMI DaemonSet 不會允許這些服務取得受控識別的 AAD 權杖，也無法與 Azure Dev Spaces 後端服務通訊。
+在您的叢集上執行的服務 Azure Dev Spaces 會使用叢集的受控識別，與叢集外的 Azure Dev Spaces 後端服務溝通。 安裝 Pod 受控身分識別時，會在叢集的節點上設定網路規則，以便將受控識別認證的所有呼叫重新導向至叢集上安裝的 [Node 受控識別 (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI DaemonSet 會識別呼叫的 Pod，並確保 Pod 已妥善標示為可存取要求的受控識別。 Azure Dev Spaces 無法偵測叢集是否已安裝 Pod 受控識別，且無法執行必要的設定，以允許 Azure Dev Spaces 服務存取叢集的受控識別。 由於 Azure Dev Spaces 服務尚未設定為可存取叢集的受控識別，因此 NMI DaemonSet 將不會允許它們取得受控識別的 Azure AD 權杖，也無法與 Azure Dev Spaces 後端服務進行通訊。
 
 若要修正此問題，請套用 *azds-injector-webhook* 的 [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)，並透過 Azure Dev Spaces 所檢測的更新 Pod 來存取受控識別。
 
@@ -416,7 +416,7 @@ spec:
 
 執行 Visual Studio Code 偵錯工具時，您可能會看到此錯誤。 您可能沒有 VS Code 擴充功能可以讓 Azure Dev Spaces 在您的開發機器上安裝。
 
-若要修正此問題，請安裝[適用於 Azure Dev Spaces 的 VS Code 擴充功能](get-started-netcore.md)。
+若要修正此問題，請安裝適用於 Azure Dev Spaces 的 VS Code 擴充功能。
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>錯誤「無效的 'cwd' 值 '/src'。 系統找不到指定的檔案。」 或「launch: program '/src/[專案二進位檔案路徑]' 不存在」
 

@@ -3,12 +3,12 @@ title: Azure Site Recovery 中 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 對 VMware Vm 和實體伺服器至 Azure 的嚴重損壞修復支援。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 595f12f9204dff58af0bfebb60402cc89ffb386a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7bb4422eb17353dc4e1895de8dcb2c427c6d0d15
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826240"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079394"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -169,6 +169,9 @@ BTRFS | 行動服務的[更新彙總套件 34](https://support.microsoft.com/hel
 在複寫的 VM 上調整磁碟大小 | 在容錯移轉之前于來源 VM 上支援，直接在 VM 屬性中。 不需要停用/重新啟用複寫。<br/><br/> 如果您在容錯移轉之後變更來源 VM，變更就不會被捕捉。<br/><br/> 如果您在容錯移轉後變更 Azure VM 上的磁片大小，當您容錯回復時，Site Recovery 會使用更新建立新的 VM。
 在複寫的 VM 上新增磁碟 | 不支援。<br/> 請停用 VM 的複寫、新增磁片，然後重新啟用複寫。
 
+> [!NOTE]
+> 不支援對磁片身分識別進行任何變更。 例如，如果磁碟分割已經從 GPT 變更為 MBR，則這會變更磁片身分識別。 在這種情況下，複寫將會中斷，而且需要進行全新的設定。 
+
 ## <a name="network"></a>網路
 
 **元件** | **支援**
@@ -327,7 +330,7 @@ VM 上所有磁碟的尖峰資料變換 | 54 MB/秒
 
 ## <a name="obtain-latest-components"></a>取得最新元件
 
-**名稱** | **描述** | **詳細資料**
+**名稱** | **說明** | **詳細資料**
 --- | --- | ---
 組態伺服器 | 已安裝在內部部署。<br/> 協調內部部署 VMware 伺服器或實體機器與 Azure 之間的通訊。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md)設定伺服器。<br/> - [瞭解](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)如何升級至最新版本。<br/> - [深入瞭解](vmware-azure-deploy-configuration-server.md)設定伺服器。
 處理序伺服器 | 預設會安裝在組態伺服器上。<br/> 接收復寫資料，以快取、壓縮和加密進行優化，並將其傳送至 Azure。<br/> 隨著部署的成長，您可以新增額外的進程伺服器來處理較大量的複寫流量。 | - [瞭解](vmware-physical-azure-config-process-server-overview.md)進程伺服器。<br/> - [瞭解](vmware-azure-manage-process-server.md#upgrade-a-process-server)如何升級至最新版本。<br/> - [瞭解如何](vmware-physical-large-deployment.md#set-up-a-process-server)設定相應放大進程伺服器。

@@ -5,18 +5,18 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: a3601010eae614049b4af5aa2ddbcdc6acda21cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444874"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079017"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>設定實驗室以使用 SQL Server 管理和開發
 
-本文說明如何在 Azure 實驗室服務中設定基本 SQL Server 管理和開發類別的實驗室。  資料庫概念是在大學的大部分電腦科學部門所教授的其中一個簡介課程。 結構化查詢語言 (SQL) （SQL）是國際標準。  SQL 是關聯資料庫管理的標準語言，包括新增、存取和管理資料庫中的內容。  最值得注意的是，其快速處理、經過證實的可靠性、便利性和使用彈性。
+本文說明如何在 Azure 實驗室服務中設定基本 SQL Server 管理和開發類別的實驗室。  資料庫概念是在大學的大部分電腦科學部門所教授的其中一個簡介課程。 結構化查詢語言 (SQL)  (SQL) 是國際標準。  SQL 是關聯資料庫管理的標準語言，包括新增、存取和管理資料庫中的內容。  最值得注意的是，其快速處理、經過證實的可靠性、便利性和使用彈性。
 
-在本文中，我們將示範如何在實驗室中設定具有[Visual Studio 2019](https://visualstudio.microsoft.com/vs/)、 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)和[Azure Data Studio](https://github.com/microsoft/azuredatastudio)的虛擬機器範本。  在此實驗室中，我們將在整個實驗室中使用一個共用的[SQL Server 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)。 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)是 Azure 提供的平臺即服務（PaaS）資料庫引擎供應專案。
+在本文中，我們將示範如何在實驗室中設定具有[Visual Studio 2019](https://visualstudio.microsoft.com/vs/)、 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)和[Azure Data Studio](https://github.com/microsoft/azuredatastudio)的虛擬機器範本。  在此實驗室中，我們將在整個實驗室中使用一個共用的[SQL Server 資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)。 [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview)是 Azure 提供的平臺即服務 (PaaS) 資料庫引擎供應專案。
 
 ## <a name="lab-configuration"></a>實驗室組態
 
@@ -28,7 +28,7 @@ ms.locfileid: "85444874"
 
 | 實驗室帳戶設定 | Instructions |
 | ------------------- | ------------ |
-| Marketplace 映像 | 啟用「Windows 10 企業版 N （x64）」映射上的「Visual Studio 2019 社區（最新版本）」，以在您的實驗室帳戶中使用。 |
+| Marketplace 映像 | 啟用「Windows 10 企業版 N (x64) 」映射上的「Visual Studio 2019 社區 (最新版本) ，以在您的實驗室帳戶中使用。 |
 
 ### <a name="shared-resource-configuration"></a>共用資源設定
 
@@ -50,7 +50,7 @@ ms.locfileid: "85444874"
 9. 選擇**位置**的 [區域]。  可能的話，請輸入與實驗室帳戶相同的位置，並對等互連 vnet 以將延遲降至最低。
 10. 按一下 **[確定]** 以返回 [**建立 SQL Database** ] 表單。
 11. 按一下 [**計算 + 儲存體**] 設定下的 [**設定資料庫**] 連結。
-12. 視需要修改類別的資料庫設定。  您可以選擇 [已布建] 和 [無伺服器] 選項。  在此範例中，我們將使用自動縮放無伺服器選項，最大虛擬核心為4，min 虛擬核心為1。 我們會將自動暫停設定保持在最少1小時。 按一下 [套用] 。
+12. 視需要修改類別的資料庫設定。  您可以選擇 [已布建] 和 [無伺服器] 選項。  在此範例中，我們將使用自動縮放無伺服器選項，最大虛擬核心為4，min 虛擬核心為1。 我們會將自動暫停設定保持在最少1小時。 按一下 [套用]。
 13. 按 **[下一步：網路]** 按鈕。
 14. 在 [網路功能] 索引標籤上，針對 [連線**方法**] 選擇 [私人端點]。
 15. 在 [**私人端點**] 區段下，按一下 [**新增私人端點**]。
@@ -76,7 +76,7 @@ ms.locfileid: "85444874"
 | 實驗室設定 | 值/指示 |
 | ------------ | ------------------ |
 | 虛擬機器大小 | 中。 此大小最適合用於關聯式資料庫、記憶體內部快取及分析。 |
-| 虛擬機器映像 | Windows 10 企業版（x64）上的 Visual Studio 2019 的社區（最新版本） |
+| 虛擬機器映像 | Visual Studio 2019 社區 (Windows 10 企業版 N 的最新發行)  (x64)  |
 
 現在我們已建立實驗室，讓我們以所需的軟體修改範本機器。
 
@@ -84,19 +84,19 @@ ms.locfileid: "85444874"
 
 上面選擇的影像包含[Visual Studio 2019 的群體](https://visualstudio.microsoft.com/vs/community/)。  映射上已安裝所有工作負載和工具集。  使用 [Visual Studio 安裝程式安裝您想要的[任何選用工具](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019)。  登[入 Visual Studio](https://docs.microsoft.com/visualstudio/ide/signing-in-to-visual-studio?view=vs-2019#how-to-sign-in-to-visual-studio)以解除鎖定「社區」版本。
 
-Visual Studio 包含**資料儲存和處理**工具組，其中包括 SQL SERVER DATA TOOLS （SSDT）。  如需有關 SSDT 功能的詳細資訊，請參閱[SQL Server Data Tools 總覽](https://docs.microsoft.com/sql/ssdt/sql-server-data-tools?view=sql-server-ver15)。  若要確認與類別共用 SQL Server 的連接將會成功，請參閱[連接到資料庫和流覽現有的物件](https://docs.microsoft.com/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15)。 如果出現提示，請將範本機器 IP 新增至可連線到您 SQL Server 實例的[允許電腦清單](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure)。
+Visual Studio 包括**資料儲存和處理**工具組，其中包括 SQL SERVER DATA TOOLS (SSDT) 。  如需有關 SSDT 功能的詳細資訊，請參閱[SQL Server Data Tools 總覽](https://docs.microsoft.com/sql/ssdt/sql-server-data-tools?view=sql-server-ver15)。  若要確認與類別共用 SQL Server 的連接將會成功，請參閱[連接到資料庫和流覽現有的物件](https://docs.microsoft.com/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15)。 如果出現提示，請將範本機器 IP 新增至可連線到您 SQL Server 實例的[允許電腦清單](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure)。
 
-Visual Studio 支援數個工作負載，包括**Web & 雲端**和**桌面 &** 行動工作負載。  這兩個工作負載都支援 SQL Server 做為資料來源。 如需使用 ASP.NET Core SQL Server 的詳細資訊，請參閱 Azure App Service 教學課程[中的建立 ASP.NET Core 和 SQL Database 應用程式](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)。  使用[SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient)程式庫從[Xamarin](https://docs.microsoft.com/xamarin)應用程式連線到 SQL Database。
+Visual Studio 支援數個工作負載，包括**Web & 雲端**和**桌面 &** 行動工作負載。  這兩個工作負載都支援 SQL Server 做為資料來源。 如需使用 ASP.NET Core SQL Server 的詳細資訊，請參閱 Azure App Service 教學課程[中的建立 ASP.NET Core 和 SQL Database 應用程式](https://docs.microsoft.com/azure/app-service/tutorial-dotnetcore-sqldb-app)。  使用[SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient)程式庫從[Xamarin](https://docs.microsoft.com/xamarin)應用程式連線到 SQL Database。
 
 ## <a name="install-azure-data-studio"></a>安裝 Azure Data Studio
 
 [Azure Data Studio](https://github.com/microsoft/azuredatastudio)是一種多資料庫、跨平臺的桌面環境，適用于使用 Windows、MacOS 和 Linux 上的內部部署和雲端資料平臺系列的資料專業人員。
 
 1. 下載[適用于 Windows 的 Azure Data Studio*系統*安裝程式](https://go.microsoft.com/fwlink/?linkid=2127432)。 若要尋找其他支援作業系統的安裝程式，請移至[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download)下載頁面。
-2. 在 [**授權合約**] 頁面上，選取 [**我接受合約**]。 按 [下一步] 。
-3. 在 [選取目的地位置]**** 頁面上，按一下 [下一步]****。
-4. 在 [選取 [開始] 功能表資料夾]**** 頁面上，按一下 [下一步]****。
-5. 如果您想要桌面圖示，請在 [**選取其他**工作] 頁面上，核取 [**建立桌面圖示**]。  按 [下一步] 。
+2. 在 [**授權合約**] 頁面上，選取 [**我接受合約**]。 按一下 [下一步] 。
+3. 在 [選取目的地位置] 頁面上，按一下 [下一步]。
+4. 在 [選取 [開始] 功能表資料夾] 頁面上，按一下 [下一步]。
+5. 如果您想要桌面圖示，請在 [**選取其他**工作] 頁面上，核取 [**建立桌面圖示**]。  按一下 [下一步] 。
 6. 在 [**準備安裝**] 上，按 **[下一步]**。
 7. 等候安裝程式執行。  按一下 [完成] 。
 
@@ -113,7 +113,7 @@ Visual Studio 支援數個工作負載，包括**Web & 雲端**和**桌面 &** �
 
 ## <a name="install-sql-server-management-studio"></a>安裝 SQL Server Management Studio
 
-[SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)是用於管理任何 SQL 基礎結構的整合式環境。  SSMS 是資料庫管理員用來部署、監視和升級資料基礎結構的工具。
+[SQL Server Management Studio (SSMS) ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)是用於管理任何 SQL 基礎結構的整合式環境。  SSMS 是資料庫管理員用來部署、監視和升級資料基礎結構的工具。
 
 1. [下載 Sql Server Management Studio](https://aka.ms/ssmsfullsetup)。 下載完成後，啟動安裝程式。
 2. 在 [**歡迎使用**] 頁面上，按一下 [**安裝**]。
@@ -137,7 +137,7 @@ Visual Studio 支援數個工作負載，包括**Web & 雲端**和**桌面 &** �
 
 以下是此類別的可能成本預估範例：
 
-25名學生 \* （20個排程小時 \+ 10 個配額時數） * 0.42 美元/小時 = 315.00 美元
+25名學生 \* (20 個排程時數 \+) * 0.42 美元/小時 = 315.00 美元
 
 >[!IMPORTANT]
 >成本預估僅供範例之用。 如需定價的目前詳細資料，請參閱[Azure 實驗室服務定價](https://azure.microsoft.com/pricing/details/lab-services/)。

@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 5d5348f8abe8d30c7f23882974b8c121af39636c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: cdbce7c11bc3184b624fa00f3ac33db7ad8730d8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448148"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077422"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>將 App Service 或 Azure Functions 應用程式設定為使用 Azure AD 登入
 
@@ -103,7 +103,7 @@ ms.locfileid: "87448148"
     |欄位|描述|
     |-|-|
     |用戶端識別碼| 使用應用程式註冊的 [應用程式 (用戶端) 識別碼]。 |
-    |簽發者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，並將取代 *\<authentication-endpoint>* [為您雲端環境的驗證端點](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints)（例如，" https://login.microsoft.com " 代表全域 Azure），並將取代為在 *\<tenant-id>* 其中建立應用程式註冊的**目錄（租使用者）識別碼**。 此值用來將使用者重新導向至正確的 Azure AD 租用戶，以及下載適當的中繼資料，以判斷適當的權杖簽署金鑰和權杖簽發者宣告值 (舉例而言)。 針對使用 Azure AD v1 和 Azure Functions apps 的應用程式，請 `/v2.0` 在 URL 中省略。|
+    |簽發者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，並將取代為 *\<authentication-endpoint>* [您雲端環境的驗證端點](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (例如 "" （ https://login.microsoft.com 適用于全域 Azure) ）也會 *\<tenant-id>* 將取代為在其中建立應用程式註冊的**目錄 (租使用者) 識別碼**。 此值用來將使用者重新導向至正確的 Azure AD 租用戶，以及下載適當的中繼資料，以判斷適當的權杖簽署金鑰和權杖簽發者宣告值 (舉例而言)。 針對使用 Azure AD v1 和 Azure Functions apps 的應用程式，請 `/v2.0` 在 URL 中省略。|
     |用戶端秘密 (選用)| 使用您在應用程式註冊中產生的用戶端秘密。|
     |允許的權杖對象| 如果這是雲端或伺服器應用程式，而且您想允許來自 Web 應用程式的驗證權杖，請在這裡新增 Web 應用程式的 [應用程式識別碼 URI]。 所設定的 [用戶端識別碼]一律會被隱含地視為允許的對象。 |
 
@@ -157,7 +157,7 @@ ms.locfileid: "87448148"
 ## <a name="next-steps"></a><a name="related-content"> </a>後續步驟
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-* [教學課程：在 Azure App Service 中對使用者進行端對端驗證和授權](app-service-web-tutorial-auth-aad.md)
+* [教學課程：在 Azure App Service 中對使用者進行端對端驗證和授權](tutorial-auth-aad.md)
 <!-- URLs. -->
 
 [Azure 入口網站]: https://portal.azure.com/

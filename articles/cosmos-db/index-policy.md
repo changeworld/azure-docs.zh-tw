@@ -4,18 +4,18 @@ description: 瞭解如何在 Azure Cosmos DB 中設定和變更自動編制索�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/04/2020
+ms.date: 08/11/2020
 ms.author: tisande
-ms.openlocfilehash: e3981e828e7ffe401be3b72f68185c272ab11645
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: e1254b31bffa72918b46c550e8354bd1c2195dfb
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760816"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077589"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引編製原則
 
-在 Azure Cosmos DB 中，每個容器都有索引編制原則，以指示容器的專案應該如何編制索引。 新建立之容器的預設索引編制原則會編制每個專案的每個屬性的索引、強制執行任何字串或數位的範圍索引，以及類型為 Point 之任何 GeoJSON 物件的空間索引。 這可讓您取得高查詢效能，而不需要事先考慮索引編制和索引管理。
+在 Azure Cosmos DB 中，每個容器都有索引編制原則，以指示容器的專案應該如何編制索引。 新建立之容器的預設索引編制原則會針對每個專案的每個屬性編制索引，並強制執行任何字串或數位的範圍索引。 這可讓您取得高查詢效能，而不需要事先考慮索引編制和索引管理。
 
 在某些情況下，您可以覆寫此自動行為，使其更符合您的需求。 您可以藉由設定其*索引模式*來自訂容器的索引編制原則，並包含或排除*屬性路徑*。
 
@@ -196,7 +196,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 - 查詢的篩選準則中的屬性應該符合複合索引中的屬性。 如果屬性位於複合索引中，但不包含在查詢中做為篩選準則，則查詢不會使用複合索引。
 - 如果查詢的篩選準則中沒有定義于複合索引中的其他屬性，則會使用複合和範圍索引的組合來評估查詢。 這只需要較少的 RU，而不是使用範圍索引。
 - 如果屬性具有範圍篩選 (`>` 、、、 `<` `<=` `>=` 或 `!=`) ，則此屬性應該定義于複合索引中的最後一個。 如果查詢有一個以上的範圍篩選，則不會使用複合索引。
-- 當您建立複合索引以使用多個篩選準則來優化查詢時， `ORDER` 複合索引的不會影響結果。 這是選擇性屬性。
+- 當您建立複合索引以使用多個篩選準則來優化查詢時， `ORDER` 複合索引的不會影響結果。 這是選用屬性。
 - 如果您未針對具有多個屬性之篩選的查詢定義複合索引，則查詢仍然會成功。 不過，使用複合索引可以減少查詢的 RU 成本。
 
 請考慮下列在屬性名稱、年齡和時間戳記上定義複合索引的範例：

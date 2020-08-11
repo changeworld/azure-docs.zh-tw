@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 50a7fe866d236a7edb30b3cae5ef076d3ebbca56
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009710"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078473"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>設定 Azure 數位 Twins 實例和 (CLI 的驗證) 
 
@@ -63,10 +63,10 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-res
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-使用下列命令來指派角色 (必須由具有 Azure 訂用帳戶中具有[足夠許可權](#prerequisites-permission-requirements)的使用者執行) ：
+使用下列命令來指派角色 (必須由 Azure 訂用帳戶) 中具有[足夠許可權](#prerequisites-permission-requirements)的使用者執行。 此命令會要求您針對應指派角色的使用者，傳入 Azure AD 帳戶的*使用者主體名稱*。 在大部分情況下，這會比對使用者在 Azure AD 帳戶上的電子郵件。
 
 ```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-email-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
 此命令的結果會輸出已建立之角色指派的相關資訊。
@@ -74,13 +74,13 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 > [!NOTE]
 > 如果此命令傳回錯誤，指出 CLI**在圖形資料庫中找不到使用者或服務主體**：
 >
-> 使用使用者的*物件識別碼*，而不是其電子郵件。 個人[Microsoft 帳戶 (msa) ](https://account.microsoft.com/account)的使用者可能會發生這種情況。 
+> 請改為使用使用者的*物件識別碼*來指派角色。 個人[Microsoft 帳戶 (msa) ](https://account.microsoft.com/account)的使用者可能會發生這種情況。 
 >
 > 使用[Azure Active Directory 使用者](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)的 [Azure 入口網站] 頁面來選取使用者帳戶，並開啟其詳細資料。 複製使用者的*ObjectID*：
 >
 > :::image type="content" source="media/includes/user-id.png" alt-text="[物件識別碼] 欄位中顯示 GUID 的 Azure 入口網站中的使用者網頁檢視" lightbox="media/includes/user-id.png":::
 >
-> 然後，使用使用者的*物件識別碼*來取代電子郵件，以重複 [角色指派清單] 命令。
+> 然後，使用上述參數的使用者*物件識別碼*，重複 [角色指派清單] 命令 `assignee` 。
 
 ### <a name="verify-success"></a>確認是否成功
 

@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的處理常式，以及路由的運作方式
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
-ms.openlocfilehash: 8677284d61a0a08a3262c26d6307399922dab4be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512464"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077660"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>路由如何與 Azure Dev Spaces 搭配運作
 
@@ -49,7 +49,7 @@ Azure Dev Spaces 提供了多種方式，可供迅速逐一查看 Kubernetes 應
 
 ## <a name="sharing-a-dev-space"></a>共用開發人員空間
 
-與小組合作時，您可以在[整個小組之間共用開發人員空間](how-to/share-dev-spaces.md)，並建立衍生的 dev spaces。 具有 dev 空間之資源群組之參與者存取權的任何人都可以使用開發人員空間。
+與小組合作時，您可以在整個小組之間共用開發人員空間，並建立衍生的 dev spaces。 具有 dev 空間之資源群組之參與者存取權的任何人都可以使用開發人員空間。
 
 您也可以建立一個衍生自另一個開發人員空間的新開發人員空間。 當您建立衍生的開發人員空間時， *azds.io/parent-space=PARENT-SPACE-NAME*標籤會加入至衍生的開發人員空間的命名空間。 此外，父開發人員空間中的所有應用程式都會與衍生的開發人員空間共用。 如果您將應用程式的更新版本部署至衍生的開發人員空間，它只會存在於衍生的開發人員空間中，而父開發人員空間則不會受到影響。 您最多可以有三個層級的衍生 dev spaces 或*祖*空白字元。
 

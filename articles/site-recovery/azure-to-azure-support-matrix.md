@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 09b7fe1cc4f871d1f94844a8551479fabc0e22ff
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c8890afcdab1b6247fe072f2e34437d790185e58
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008843"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076922"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -163,7 +163,9 @@ SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 根據預設，支援所有 
 
 * 檔案系統：ext3、ext4、XFS、BTRFS
 * 磁碟區管理員：LVM2
-* 多重路徑軟體：裝置對應程式
+
+> [!NOTE]
+> 不支援多重路徑軟體。 
 
 
 ## <a name="replicated-machines---compute-settings"></a>複寫的機器 - 計算設定

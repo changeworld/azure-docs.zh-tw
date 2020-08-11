@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/14/2020
-ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/05/2020
+ms.openlocfilehash: e6a4c7fe739bd517646f8401e5c812a557441e9f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445298"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076892"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure 監視器代理程式的總覽
 
@@ -29,22 +29,37 @@ ms.locfileid: "87445298"
 
 ### <a name="windows-agents"></a>Windows 代理程式
 
-| | 診斷<br>延伸模組（WAD） | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
-|:---|:---|:---|:---|
-| **支援的環境** | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
-| **代理程式需求**  | None | None | 需要 Log Analytics 代理程式 |
-| **收集的資料** | 事件記錄<br>ETW 事件<br>效能<br>檔案型記錄<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<IIS logs><br>檔案型記錄<br>見解和解決方案<br>其他服務 | 進程詳細資料和相依性<br>網路連接計量 |
-| **資料傳送至** | Azure 儲存體<br>Azure 監視器計量<br>事件中樞 | Azure 監視器記錄 | Azure 監視器記錄 |
+| | Azure 監視器代理程式 (預覽)  | 診斷<br>延伸模組 (WAD)  | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
+|:---|:---|:---|:---|:---|
+| **支援的環境** | Azure<br>其他雲端<br>內部部署 | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | 
+| **代理程式需求**  | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
+| **收集的資料** | 事件記錄<br>效能 | 事件記錄<br>ETW 事件<br>效能<br>檔案型記錄<br>IIS 記錄<br>.NET 應用程式記錄檔<br>損毀傾印<br>代理程式診斷記錄 | 事件記錄<br>效能<IIS logs><br>檔案型記錄<br>見解和解決方案<br>其他服務 | 進程詳細資料和相依性<br>網路連接計量 |
+| **資料傳送至** | Azure 監視器記錄<br>Azure 監視器計量<br>Azure 儲存體<br>事件中樞 | Azure 儲存體<br>Azure 監視器計量<br>事件中樞 | Azure 監視器記錄 | Azure 監視器記錄 |
 
 
 ### <a name="linux-agents"></a>Linux 代理程式
 
-| | 診斷<br>延伸模組（LAD） | Telegraf<br>代理程式 | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
-|:---|:---|:---|:---|:---|
-| **支援的環境** | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 |
-| **代理程式需求**  | None | None | None | 需要 Log Analytics 代理程式 |
-| **收集的資料** | syslog<br>效能 | 效能 | syslog<br>效能| 進程詳細資料和相依性<br>網路連接計量 |
-| **資料傳送至** | Azure 儲存體<br>事件中樞 | Azure 監視器計量 | Azure 監視器記錄 | Azure 監視器記錄 |
+| | Azure 監視器代理程式 (預覽)  | 診斷<br>延伸模組 (LAD)  | Telegraf<br>代理程式 | Log Analytics<br>代理程式 | 相依性<br>代理程式 |
+|:---|:---|:---|:---|:---|:---|
+| **支援的環境** | Azure | Azure | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 | Azure<br>其他雲端<br>內部部署 |
+| **代理程式需求**  | 無 | 無 | 無 | 無 | 需要 Log Analytics 代理程式 |
+| **收集的資料** | syslog<br>效能 | syslog<br>效能 | 效能 | syslog<br>效能| 進程詳細資料和相依性<br>網路連接計量 |
+| **資料傳送至** | Azure 監視器記錄<br>Azure 儲存體<br>Azure 監視器計量<br>事件中樞 | Azure 儲存體<br>事件中樞 | Azure 監視器計量 | Azure 監視器記錄 | Azure 監視器記錄 |
+
+## <a name="azure-monitor-agent-preview"></a>Azure 監視器代理程式 (預覽) 
+[Azure 監視器代理程式](azure-monitor-agent-overview.md)目前為預覽狀態，將會取代適用于 Windows 和 Linux 虛擬機器的 Log Analytics 代理程式、診斷擴充功能和 Telegraf 代理程式。 它可以將資料傳送至 Azure 監視器記錄和 Azure 監視器計量，並使用[資料收集規則 (DCR) ](data-collection-rule-overview.md) ，以提供更具擴充性的方法來設定每個代理程式的資料收集和目的地。
+
+如果您需要，請使用 Azure 監視器代理程式：
+
+- 從 Azure、其他雲端或內部部署中的任何虛擬機器收集來賓記錄和計量。 僅在預覽中 (Azure。 ) 
+- 使用 Azure 監視器，將資料傳送至 Azure 監視器記錄和 Azure 監視器計量以進行分析。 
+- 將資料傳送至 Azure 儲存體以進行封存。
+- 使用[Azure 事件中樞](diagnostics-extension-stream-event-hubs.md)將資料傳送給協力廠商工具。
+- 使用[Azure 資訊安全中心](../../security-center/security-center-intro.md)或[Azure Sentinel](../../sentinel/overview.md)管理虛擬機器的安全性。  (無法在預覽中使用。 ) 
+
+Azure 監視器代理程式的限制包括：
+
+- 目前處於公開預覽狀態。 請參閱公開預覽期間的限制清單[目前的限制](azure-monitor-agent-overview.md#current-limitations)。
 
 ## <a name="log-analytics-agent"></a>Log Analytics 代理程式
 
@@ -52,7 +67,7 @@ ms.locfileid: "87445298"
 
 
 > [!NOTE]
-> 適用于 Windows 的 Log Analytics 代理程式通常稱為 Microsoft Monitoring Agent （MMA）。 適用于 Linux 的 Log Analytics 代理程式通常稱為「OMS 代理程式」。
+> 適用于 Windows 的 Log Analytics 代理程式通常稱為 Microsoft Monitoring Agent (MMA) 。 適用于 Linux 的 Log Analytics 代理程式通常稱為「OMS 代理程式」。
 
 
 
@@ -76,7 +91,7 @@ Log Analytics 代理程式的限制包括：
 如果您需要，請使用 Azure 診斷擴充功能：
 
 - 將資料傳送至 Azure 儲存體進行封存，或使用[Azure 儲存體總管](../../vs-azure-tools-storage-manage-with-storage-explorer.md)之類的工具加以分析。
-- 將資料傳送至[Azure 監視器計量](data-platform-metrics.md)以使用[計量瀏覽器](metrics-getting-started.md)進行分析，並利用近乎即時計量[警示](./alerts-metric-overview.md)和[自動](autoscale-overview.md)調整等功能（僅限 Windows）。
+- 將資料傳送至[Azure 監視器計量](data-platform-metrics.md)以使用[計量瀏覽器](metrics-getting-started.md)進行分析，並利用近乎即時計量[警示](./alerts-metric-overview.md)和[自動](autoscale-overview.md)調整 (Windows 僅) 的功能。
 - 使用[Azure 事件中樞](diagnostics-extension-stream-event-hubs.md)將資料傳送給協力廠商工具。
 - 收集[開機診斷](../../virtual-machines/troubleshooting/boot-diagnostics.md)以調查 VM 開機問題。
 
@@ -91,7 +106,7 @@ Azure 診斷延伸模組的限制包括：
 
 如果您需要，請使用 Telegraf 代理程式：
 
-* 將資料傳送至[Azure 監視器計量](data-platform-metrics.md)以使用[計量瀏覽器](metrics-getting-started.md)進行分析，並利用近乎即時計量[警示](./alerts-metric-overview.md)和[自動](autoscale-overview.md)調整等功能（僅限 Linux）。 
+* 將資料傳送至[Azure 監視器計量](data-platform-metrics.md)，以使用[計量瀏覽器](metrics-getting-started.md)進行分析，並利用近乎即時計量[警示](./alerts-metric-overview.md)和[自動](autoscale-overview.md)調整的功能， (僅限 Linux) 。 
 
 
 

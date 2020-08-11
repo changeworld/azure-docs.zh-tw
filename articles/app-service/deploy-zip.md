@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 32fc57e720f9c23f6ef26f02b2cd4a82c4266984
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f547f60bf6c67b757f2e12f06f1e39100c3e76cb
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957030"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077147"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 檔案將您的應用程式部署至 Azure App Service
 
@@ -31,7 +31,7 @@ WAR 檔案部署會將您的 [WAR](https://wikipedia.org/wiki/WAR_(file_format))
 > [!NOTE]
 > 使用時 `ZipDeploy` ，只有當檔案的時間戳記不符合已部署的檔案時，才會複製檔案。 使用可快取輸出的組建程式來產生 zip，會產生更快速的部署。 如需詳細資訊，請參閱[從 zip 檔案或 url 進行部署](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文中的步驟，請[建立 App Service 應用程式](/azure/app-service/)，或使用您在另一個教學課程中建立的應用程式。
 
@@ -40,7 +40,7 @@ WAR 檔案部署會將您的 [WAR](https://wikipedia.org/wiki/WAR_(file_format))
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-上述端點目前不適用於 Linux 應用程式服務。 請考慮改為使用 FTP 或[ZIP 部署 API](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) 。
+上述端點目前不適用於 Linux 應用程式服務。 請考慮改為使用 FTP 或[ZIP 部署 API](faq-app-service-linux.md#continuous-integration-and-deployment) 。
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>使用 Azure CLI 部署 ZIP 檔案
 
