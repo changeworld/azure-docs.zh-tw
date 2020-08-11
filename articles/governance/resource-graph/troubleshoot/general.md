@@ -1,14 +1,14 @@
 ---
 title: 常見問題疑難排解
 description: 瞭解如何在使用 Azure Resource Graph 查詢 Azure 資源時，針對各種 SDK 的問題進行疑難排解。
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e1b3758e52641bc27341c5da0ced9e811263c02b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 052c3e1c10f1b0ca94653f086e2df4f3d395070e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683229"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056936"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>針對使用 Azure Resource Graph 發生的錯誤進行疑難排解
 

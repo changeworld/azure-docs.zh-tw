@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e521711cdf488f00b56e2805ee0aaa6ee8412958
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471739"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056953"
 ---
 # <a name="caching-with-azure-front-door"></a>使用 Azure Front 快取
-下列文件會利用已啟用快取的路由規則來指定 Front Door 的行為。 Front 門是現代化的內容傳遞網路（CDN），因此除了動態網站加速和負載平衡，它也支援快取行為，就像任何其他 CDN 一樣。
+下列文件會利用已啟用快取的路由規則來指定 Front Door 的行為。 Front 門是現代化的內容傳遞網路 (CDN) ，因此除了動態網站加速和負載平衡，它也支援快取行為，就像任何其他 CDN 一樣。
 
 ## <a name="delivery-of-large-files"></a>傳遞大型檔案
 Azure Front 門板會傳遞大型檔案，且檔案大小沒有上限。 Front Door 會使用稱為物件區塊化的技術。 要求大型檔案時，Front Door 會從後端擷取較小的檔案片段。 接收到完整或位元組範圍檔案要求之後，Front Door 環境就會向後端要求檔案 (以 8 MB 的區塊為單位)。
@@ -75,7 +75,7 @@ Front Door 可在邊緣動態壓縮內容，因而對用戶端產生較小且更
 此外，檔案大小也必須介於 1 KB 到 8 MB (含) 之間。
 
 這些設定檔支援下列壓縮編碼：
-- [Gzip （GNU zip）](https://en.wikipedia.org/wiki/Gzip)
+- [Gzip (GNU zip) ](https://en.wikipedia.org/wiki/Gzip)
 - [Brotli](https://en.wikipedia.org/wiki/Brotli)
 
 如果要求支援 gzip 和 Brotli 壓縮，Brotli 壓縮的優先順序最高。</br>
@@ -92,7 +92,7 @@ Front Door 將會快取資產，直到資產的存留時間 (TTL) 到期。 資�
 </br>若要確定使用者一律會取得最新的資產複本，最佳作法是為每個更新設定資產版本，然後將它們發佈為新的 URL。 Front Door 將立即為下一個用戶端要求擷取新的資產。 有時您可能想要清除所有邊緣節點的快取內容，並強制它們全部擷取新的更新的資產。 可能是因為您的 Web 應用程式更新，或快速更新包含不正確資訊的資產。
 
 </br>選取您希望從邊緣節點清除的資產。 如果您希望清除所有資產，請按一下 [全部清除] 核取方塊。 或者，在 [路徑] 文字方塊中輸入每個您想要清除之資產的路徑。 路徑支援下列格式。
-1. **單一路徑清除**：藉由指定資產的完整路徑（不含通訊協定和網域）來清除個別資產，副檔名為，例如，/pictures/strasbourg.png;
+1. **單一路徑清除**：藉由指定資產 (的完整路徑（不含通訊協定和網域) ）來清除個別資產 () ，例如/pictures/strasbourg.png;
 2. **萬用字元清除**︰星號 (\*) 可作為萬用字元。 在路徑中，清除具有/的所有資料夾、子資料夾和檔案， \* 或指定資料夾並在特定資料夾下清除所有子資料夾和檔案 \* ，例如，/pictures/ \* 。
 3. **根網域清除**︰清除路徑中有 "/" 之端點的根目錄。
 
@@ -111,6 +111,12 @@ Front Door 上的快取清除是不區分大小寫的。 此外，它們是無�
 使用快取時，不會將下列要求標頭轉送至後端。
 - Content-Length
 - Transfer-Encoding
+
+## <a name="cache-duration"></a>快取持續時間
+
+快取持續時間可以在 Front 門板設計工具和規則引擎中設定。 在 Frontdoor 設計工具中設定的快取持續時間是最小的快取持續時間。 如果來源的快取控制標頭大於覆寫值的 TTL，此覆寫將無法正常執行。 
+
+透過規則引擎設定的快取持續時間是真正的快取覆寫，這表示它會使用覆寫值，而不論原始回應標頭為何。
 
 ## <a name="next-steps"></a>後續步驟
 

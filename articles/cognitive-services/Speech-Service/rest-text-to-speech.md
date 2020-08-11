@@ -1,5 +1,5 @@
 ---
-title: 文字轉換語音 API 參考（REST）-語音服務
+title: 文字轉換語音 API 參考 (REST) -語音服務
 titleSuffix: Azure Cognitive Services
 description: 瞭解如何使用文字轉換語音 REST API。 在本文中，您會了解到授權選項、查詢選項，以及如何建構要求與接收回應。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 0f43d1f780f838fdc49eb055536204026edcc729
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6fafb668ecc2ae36dbe5a6bbc3d1e1d501545b50
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079237"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056800"
 ---
 # <a name="text-to-speech-rest-api"></a>文字轉換語音 REST API
 
@@ -67,7 +67,7 @@ ms.locfileid: "87079237"
 
 下表列出文字轉換語音要求的必要和選擇性標頭。
 
-| 頁首 | 說明 | 必要/選用 |
+| 標頭 | 描述 | 必要/選用 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必要 |
 
@@ -155,7 +155,7 @@ Authorization: Bearer [Base64 access_token]
 
 ## <a name="convert-text-to-speech"></a>將文字轉換成語音
 
-`v1`端點可讓您使用[語音合成標記語言（SSML）](speech-synthesis-markup.md)將文字轉換為語音。
+`v1`端點可讓您使用[語音合成標記語言 (SSML) ](speech-synthesis-markup.md)，將文字轉換為語音。
 
 ### <a name="regions-and-endpoints"></a>區域與端點
 
@@ -167,7 +167,7 @@ Authorization: Bearer [Base64 access_token]
 
 下表列出文字轉換語音要求的必要和選擇性標頭。
 
-| 頁首 | 說明 | 必要/選用 |
+| 標頭 | 描述 | 必要/選用 |
 |--------|-------------|---------------------|
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必要 |
 | `Content-Type` | 指定所提供文字的內容類型。 接受的值為 `application/ssml+xml`。 | 必要 |
@@ -241,6 +241,6 @@ Authorization: Bearer [Base64 access_token]
 
 ## <a name="next-steps"></a>後續步驟
 
-- [試用認知服務](https://azure.microsoft.com/try/cognitive-services)
+- [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 - [適用于長格式音訊的非同步合成](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [開始使用自訂語音](how-to-custom-voice.md)

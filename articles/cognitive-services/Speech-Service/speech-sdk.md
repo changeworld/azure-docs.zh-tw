@@ -1,7 +1,7 @@
 ---
 title: 關於語音 SDK-語音服務
 titleSuffix: Azure Cognitive Services
-description: 語音軟體發展工具組（SDK）公開許多語音服務功能，可讓您更輕鬆地開發啟用語音的應用程式。
+description: 語音軟體發展工具組 (SDK) 公開許多語音服務功能，讓開發具備語音功能的應用程式變得更容易。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 79f7924b021de9426eeb66adf2ec12f8033efcea
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610756"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056851"
 ---
 # <a name="about-the-speech-sdk"></a>關於語音 SDK
 
-語音軟體發展工具組（SDK）公開許多語音服務功能，可讓您開發具備語音功能的應用程式。 語音 SDK 適用于許多程式設計語言，以及跨所有平臺。
+語音軟體發展工具組 (SDK) 公開許多語音服務功能，可讓您開發具備語音功能的應用程式。 語音 SDK 適用于許多程式設計語言，以及跨所有平臺。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
@@ -29,15 +29,15 @@ ms.locfileid: "85610756"
 
 ### <a name="speech-to-text"></a>語音轉文字
 
-[語音轉換文字](speech-to-text.md)（也稱為*語音辨識*）可將您的應用程式、工具或裝置可以取用或顯示的文字串流。 若搭配 [Language Understanding (LUIS)](../luis/index.yml) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 使用[語音翻譯](speech-translation.md)，透過單一呼叫將語音輸入翻譯成不同的語言。 如需詳細資訊，請參閱[語音轉換文字的基本概念](speech-to-text-basics.md)。
+[語音轉換文字](speech-to-text.md) (也稱為*語音辨識*) 可將音訊串流傳送至您的應用程式、工具或裝置可以取用或顯示的文字。 若搭配 [Language Understanding (LUIS)](../luis/index.yml) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 使用[語音翻譯](speech-translation.md)，透過單一呼叫將語音輸入翻譯成不同的語言。 如需詳細資訊，請參閱[語音轉換文字的基本概念](speech-to-text-basics.md)。
 
 ### <a name="text-to-speech"></a>文字轉換語音
 
-[文字到語音](text-to-speech.md)轉換（也稱為*語音合成*）會將文字轉換成類似人類的合成語音。 輸入文字可以是字串常值，或使用[語音合成標記語言（SSML）](speech-synthesis-markup.md)。 如需標準或類神經語音的詳細資訊，請參閱[文字轉換語音語言和語音支援](language-support.md#text-to-speech)。
+[文字轉換語音](text-to-speech.md) (也稱為*語音合成*) 會將文字轉換成類似人類的合成語音。 輸入文字可以是字串常值，或使用[語音合成標記語言 (SSML) ](speech-synthesis-markup.md)。 如需標準或類神經語音的詳細資訊，請參閱[文字轉換語音語言和語音支援](language-support.md#text-to-speech)。
 
 ### <a name="voice-assistants"></a>語音助理
 
-[語音助理](voice-assistants.md)使用語音 SDK，可讓開發人員為其應用程式和體驗建立自然、人類類似的對話介面。 語音助理服務可提供裝置與助理之間快速可靠的互動。 執行作業會使用 Bot Framework 的 Direct Line 語音通道或整合式自訂命令（預覽）服務來完成工作。 此外，語音助理可以使用[自訂語音入口網站](https://aka.ms/customvoice)中所建立的自訂語音，來新增唯一的語音輸出體驗。
+[語音助理](voice-assistants.md)使用語音 SDK，可讓開發人員為其應用程式和體驗建立自然、人類類似的對話介面。 語音助理服務可提供裝置與助理之間快速可靠的互動。 執行作業會使用 Bot Framework 的 Direct Line 語音通道或整合式自訂命令 (預覽) 服務來完成工作。 此外，語音助理可以使用[自訂語音入口網站](https://aka.ms/customvoice)中所建立的自訂語音，來新增唯一的語音輸出體驗。
 
 #### <a name="keyword-spotting"></a>關鍵字找出
 
@@ -49,7 +49,7 @@ ms.locfileid: "85610756"
 
 #### <a name="conversation-transcription"></a>對話轉譯
 
-[對話](conversation-transcription.md)轉譯可對每個說話者（也稱為*diarization*）進行即時（和非同步）語音辨識、說話者識別和句子特性。 非常適合利用辨識說話者的能力來轉譯面對面會議。
+[對話](conversation-transcription.md)轉譯可讓) 語音辨識、說話者識別，以及每個說話者的句子 (， (也稱為*diarization*) 。 非常適合利用辨識說話者的能力來轉譯面對面會議。
 
 #### <a name="multi-device-conversation"></a>多裝置交談
 
@@ -61,7 +61,7 @@ ms.locfileid: "85610756"
 
 #### <a name="call-center-transcription"></a>話務中心轉譯
 
-[話務中心](call-center-transcription.md)轉譯是語音轉換文字的常見案例，用於轉譯可能來自各種系統（例如互動式語音回應（IVR））的大量電話語音資料。 來自語音服務 excel 的最新語音辨識模型會轉譯此電話語音資料，即使是資料很容易瞭解的情況也是如此。
+[話務中心](call-center-transcription.md)轉譯是語音轉換文字的常見案例，用於轉譯可能來自各種系統（例如互動式語音回應 (IVR) 的大量電話語音資料。 來自語音服務 excel 的最新語音辨識模型會轉譯此電話語音資料，即使是資料很容易瞭解的情況也是如此。
 
 ### <a name="codec-compressed-audio-input"></a>編解碼器壓縮的音訊輸入
 
@@ -125,5 +125,5 @@ ms.locfileid: "85610756"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [試用認知服務](https://azure.microsoft.com/try/cognitive-services/)
+* [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * [了解如何以 C# 辨識語音](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) (英文)

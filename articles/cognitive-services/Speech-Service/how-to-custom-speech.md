@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 5401957cb527d43e041345ac9e67e7f7a69ed0d0
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: b9ac473c3864b4be06c978e7d6a3555bb4550d2a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725528"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056834"
 ---
 # <a name="what-is-custom-speech"></a>什麼是自訂語音？
 
@@ -31,7 +31,7 @@ ms.locfileid: "83725528"
 
 1. [訂閱並建立專案](#set-up-your-azure-account)-建立 Azure 帳戶並訂閱語音服務。 此整合訂閱可讓您存取語音轉換文字、文字轉換語音、語音翻譯和[自訂語音入口網站](https://speech.microsoft.com/customspeech)。 然後，使用您的語音服務訂用帳戶，建立您的第一個自訂語音專案。
 
-2. [上傳測試資料](how-to-custom-speech-test-data.md)-上傳測試資料（音訊檔案），為您的應用程式、工具和產品評估 Microsoft 的語音轉換文字供應專案。
+2. [上傳測試資料](how-to-custom-speech-test-data.md)-將測試資料上傳 (音訊檔案，) 為您的應用程式、工具和產品評估 Microsoft 的語音轉換文字供應專案。
 
 3. [檢查辨識品質](how-to-custom-speech-inspect-data.md)-使用[自訂語音入口網站](https://speech.microsoft.com/customspeech)播放上傳的音訊，並檢查測試資料的語音辨識品質。 如需量化度量，請參閱[檢查資料](how-to-custom-speech-inspect-data.md)。
 
@@ -39,7 +39,7 @@ ms.locfileid: "83725528"
 
 5. [改善精確度](how-to-custom-speech-improve-accuracy.md)-以策略性的形式選擇其他定型資料，以根據您的案例改善語音轉換文字模型的品質。
 
-6. [將模型定型](how-to-custom-speech-train-model.md)-藉由提供撰寫的文字記錄（10-1000 小時）和相關文字（<200 MB）以及您的音訊測試資料，來改善語音轉換文字模型的精確度。 這種資料有助於訓練語音轉換文字模型。 定型之後，請重新測試，如果您對結果感到滿意，可以部署您的模型。
+6. [將模型定型](how-to-custom-speech-train-model.md)-藉由提供撰寫的文字記錄 (10-1000 小時) 和相關文字 ( # B0 200 MB) 連同您的音訊測試資料，改善語音轉換文字模型的精確度。 這種資料有助於訓練語音轉換文字模型。 定型之後，請重新測試，如果您對結果感到滿意，可以部署您的模型。
 
 7. [部署模型](how-to-custom-speech-deploy-model.md)-針對您的語音轉換文字模型建立自訂端點，並在您的應用程式、工具或產品中使用它。
 
@@ -48,7 +48,7 @@ ms.locfileid: "83725528"
 必須要有語音服務訂用帳戶，才能使用[自訂語音入口網站](https://speech.microsoft.com/customspeech)來建立自訂模型。 遵循這些指示來建立標準語音服務訂用帳戶：[建立語音訂用](get-started.md#new-resource)帳戶。
 
 > [!NOTE]
-> 請務必建立標準（S0）訂閱，不支援免費試用（F0）訂用帳戶。
+> 請務必建立標準 (S0) 訂用帳戶，不支援免費的 (F0) 訂用帳戶。
 
 建立 Azure 帳戶和語音服務訂用帳戶之後，您必須登入[自訂語音入口網站](https://speech.microsoft.com/customspeech)並聯機您的訂用帳戶。
 
