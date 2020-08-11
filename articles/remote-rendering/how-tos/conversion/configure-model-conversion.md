@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432010"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067166"
 ---
 # <a name="configure-the-model-conversion"></a>設定模型轉換
 
@@ -49,6 +49,12 @@ ms.locfileid: "87432010"
             },
             "minItems": 3,
             "maxItems": 3
+        },
+        "metadataKeys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "additionalProperties" : false
@@ -131,6 +137,12 @@ ms.locfileid: "87432010"
 
 * `axis` - 覆寫座標系統單位向量。 預設值為 `["+x", "+y", "+z"]`。 理論上，FBX 格式有一個標頭，其中定義了這些向量，且轉換會使用該資訊來轉換場景。 GlTF 格式也會定義固定座標系統。 在實務上，某些資產的標頭中有不正確的資訊，或是以不同的座標系統慣例儲存。 此選項可讓您覆寫要補償的座標系統。 例如：`"axis" : ["+x", "+z", "-y"]` 將會藉由反轉 Y 軸方向來交換 Z 軸和 Y 軸，並保持座標系統慣用手。
 
+### <a name="node-meta-data"></a>節點中繼資料
+
+* `metadataKeys`-可讓您指定您想要保留在轉換結果中的節點中繼資料屬性索引鍵。 您可以指定確切的索引鍵或萬用字元。 萬用字元的格式為 "ABC *"，且符合任何以 "ABC" 開頭的索引鍵。 支援的中繼資料數值型別為 `bool` 、 `int` 、 `float` 和 `string` 。
+
+    針對 GLTF 檔，此資料來自[節點上的額外專案物件](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)。 對於 FBX 檔案，此資料來自的 `Properties70` 資料 `Model nodes` 。 如需進一步的詳細資料，請參閱3D 資產工具的檔。
+
 ### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::編排
 
 您可以調整 :::no-loc text="vertex"::: 網格的格式，以節省記憶體的交易精確度。 較低的磁碟使用量可讓您載入較大的模型，或達到更佳的效能。 不過，視您的資料而定，錯誤的格式可能會大幅影響轉譯品質。
@@ -205,7 +217,7 @@ ms.locfileid: "87432010"
 
 根據預設，轉換器必須假設您可能有時想要在模型上使用 PBR 的資料，以便為您產生 `normal`、`tangent` 和 `binormal` 資料。 因此，每個頂點的記憶體使用量是 `position` (12 個位元組) + `texcoord0` (8 個位元組) + `normal` (4 個位元組) + `tangent` (4 個位元組) + `binormal` (4 個位元組) = 32 個位元組。 這種類型的較大型模型可以輕鬆地產生許多數百萬個 :::no-loc text="vertices"::: 模型，而可能佔用多 gb 的記憶體。 這類大量資料會影響效能，且您甚至可能會用盡記憶體。
 
-知道您在模型上永遠不需要動態光源，而且知道所有材質座標都在 `[0; 1]` 範圍內，您可以將、和設定為，並將設為 `normal` `tangent` `binormal` `NONE` `texcoord0` 半精確度（ `16_16_FLOAT` ），因此每個只會產生16個位元組 :::no-loc text="vertex"::: 。 將網格資料減半可讓您載入較大的模型，且可能會改善效能。
+知道您在模型上永遠不需要動態光源，而且知道所有材質座標都在 `[0; 1]` 範圍內，您可以將 `normal` 、和設定 `tangent` `binormal` 為 `NONE` `texcoord0` 半精確度 (`16_16_FLOAT`) ，因此每個只會產生16個位元組 :::no-loc text="vertex"::: 。 將網格資料減半可讓您載入較大的模型，且可能會改善效能。
 
 ## <a name="memory-optimizations"></a>記憶體優化
 
@@ -217,7 +229,7 @@ ms.locfileid: "87432010"
 實例的使用案例範例是引擎模型中的螺絲或架構模型中的椅子。
 
 > [!NOTE]
-> 實例可以大幅改善記憶體耗用量（因而載入時間），不過，轉譯效能端的改善並不重要。
+> 實例可以改善記憶體耗用量 (，因此載入時間) 明顯，但是轉譯效能端的改善並不重要。
 
 轉換服務會在原始檔中標示元件時，遵循實例。 不過，轉換不會對網格資料執行額外的深入分析，以識別可重複使用的元件。 因此，「內容建立工具」和其「匯出管線」是適當實例設定的決定性準則。
 
@@ -229,9 +241,9 @@ ms.locfileid: "87432010"
 
 ![以 3ds Max 複製](./media/3dsmax-clone-object.png)
 
-* **`Copy`**：在此模式中，會複製網格，因此不會使用任何實例（ `numMeshPartsInstanced` = 0）。
-* **`Instance`**：這兩個物件會共用相同的網格，因此會使用實例（ `numMeshPartsInstanced` = 1）。
-* **`Reference`**：不同的修飾詞可以套用至幾何，因此，匯出工具會選擇保守的方法，而不會使用實例（ `numMeshPartsInstanced` = 0）。
+* **`Copy`**：在此模式中，會複製網格，因此不會使用任何實例 (`numMeshPartsInstanced` = 0) 。
+* **`Instance`**：這兩個物件會共用相同的網格，因此會使用實例 (`numMeshPartsInstanced` = 1) 。
+* **`Reference`**：不同的修飾詞可以套用至幾何，因此，匯出工具會選擇保守的方法，而且不會使用實例 (`numMeshPartsInstanced` = 0) 。
 
 
 ### <a name="depth-based-composition-mode"></a>深度式組合模式

@@ -1,5 +1,5 @@
 ---
-title: 將 JAVA Message Service （JMS）應用程式從 Apache ActiveMQ 遷移至 Azure 服務匯流排 |Microsoft Docs
+title: 將 JAVA Message Service (JMS) 應用程式從 Apache ActiveMQ 遷移至 Azure 服務匯流排 |Microsoft Docs
 description: 本文說明如何遷移與 Apache ActiveMQ 互動的現有 JMS 應用程式，以與 Azure 服務匯流排互動。
 services: service-bus-messaging
 documentationcenter: ''
@@ -14,20 +14,20 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369028"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067149"
 ---
-# <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>將現有的 JAVA Message Service （JMS）2.0 應用程式從 Apache ActiveMQ 遷移至 Azure 服務匯流排
+# <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>從 Apache ActiveMQ 將現有的 JAVA 訊息服務 (JMS) 2.0 應用程式遷移至 Azure 服務匯流排
 
-本文討論如何修改現有的 JAVA Message Service （JMS）2.0 應用程式，以與 JMS 代理人互動，改為與 Azure 服務匯流排互動。 特別是，本文涵蓋從 Apache ActiveMQ 或 Amazon MQ 進行遷移。
+本文討論如何修改現有的 JAVA Message Service (JMS) 2.0 應用程式，以與 JMS Broker 互動以與 Azure 服務匯流排互動。 特別是，本文涵蓋從 Apache ActiveMQ 或 Amazon MQ 進行遷移。
 
-Azure 服務匯流排支援 JAVA 2 平臺、企業版和春季工作負載，其使用 JMS 2.0 API over Advanced Message 佇列通訊協定（AMQP）。
+Azure 服務匯流排支援 JAVA 2 平臺、企業版和春季工作負載，其使用 JMS 2.0 API over Advanced Message 佇列通訊協定 (AMQP) 。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 ### <a name="differences-between-azure-service-bus-and-apache-activemq"></a>Azure 服務匯流排與 Apache ActiveMQ 之間的差異
 
@@ -37,10 +37,10 @@ Azure 服務匯流排和 Apache ActiveMQ 都是訊息代理人，做為用戶端
 
 | 類別 | ActiveMQ | Azure 服務匯流排 |
 | --- | --- | --- |
-| 應用程式分層 | 叢集單體 | 雙層 <br> （閘道 + 後端） |
+| 應用程式分層 | 叢集單體 | 雙層 <br>  (閘道 + 後端)  |
 | 通訊協定支援 | <ul> <li>AMQP</li> <li> STOMP </li> <li> OpenWire </li> </ul> | AMQP |
-| 佈建模式 | <ul> <li> 基礎結構即服務（IaaS），內部部署 </li> <li> Amazon MQ （受控平臺即服務） </li> | 受控平臺即服務（PaaS） |
-| 訊息大小 | 客戶可設定 | 1 MB （Premium 層） |
+| 佈建模式 | <ul> <li> 基礎結構即服務 (IaaS) ，內部部署 </li> <li> Amazon MQ (受控平臺即服務)  </li> | 受管理的平臺即服務 (PaaS)  |
+| 訊息大小 | 客戶可設定 | 1 MB (進階層)  |
 | 高可用性 | 由客戶管理 | 平臺管理 |
 | 災害復原 | 由客戶管理 | 平臺管理 | 
 
@@ -50,7 +50,7 @@ Azure 服務匯流排和 Apache ActiveMQ 都是訊息代理人，做為用戶端
 
 ### <a name="considerations"></a>考量
 
-Azure 服務匯流排的兩層式本質提供各種商務持續性功能（高可用性和嚴重損壞修復）。 不過，當您使用 JMS 功能時，會有一些考慮。
+Azure 服務匯流排的兩層式本質提供各種商務持續性功能， (高可用性和嚴重損壞修復) 。 不過，當您使用 JMS 功能時，會有一些考慮。
 
 #### <a name="service-upgrades"></a>服務升級
 
@@ -60,9 +60,9 @@ Azure 服務匯流排的兩層式本質提供各種商務持續性功能（高�
 
 在遷移和修改用戶端應用程式以與 Azure 服務匯流排互動的過程中，保留在 ActiveMQ 中的資料不會遷移至服務匯流排。 您可能需要自訂應用程式來清空 ActiveMQ 佇列、主題和訂用帳戶，然後將訊息重新執行至佇列、主題和訂用帳戶服務匯流排。
 
-#### <a name="authentication-and-authorization"></a>驗證與授權
+#### <a name="authentication-and-authorization"></a>驗證和授權
 
-角色型存取控制（RBAC）（由 Azure Active Directory 支援）是服務匯流排慣用的驗證機制。 因為 RBAC 或宣告式驗證目前不受 Apache QPID JMS 的支援，不過，您應該使用 SAS 金鑰進行驗證。
+以角色為基礎的存取控制 (RBAC) （由 Azure Active Directory 支援）是服務匯流排慣用的驗證機制。 因為 RBAC 或宣告式驗證目前不受 Apache QPID JMS 的支援，不過，您應該使用 SAS 金鑰進行驗證。
 
 ## <a name="pre-migration"></a>移轉前
 
@@ -72,12 +72,12 @@ Azure 服務匯流排的兩層式本質提供各種商務持續性功能（高�
 
 | 元件 | 版本 |
 |---|---|
-| JAVA 訊息服務（JMS） API | 1.1 或更高版本 |
+| JAVA 訊息服務 (JMS) API | 1.1 或更高版本 |
 | AMQP 通訊協定 | 1.0 |
 
 ### <a name="ensure-that-amqp-ports-are-open"></a>確定 AMQP 埠已開啟
 
-服務匯流排支援透過 AMQP 通訊協定進行通訊。 基於此目的，請透過埠5671（AMQP）和443（TCP）啟用通訊。 視用戶端應用程式的裝載位置而定，您可能需要支援票證才能允許透過這些埠進行通訊。
+服務匯流排支援透過 AMQP 通訊協定進行通訊。 基於此目的，請透過埠 5671 (AMQP) 和 443 (TCP) 啟用通訊。 視用戶端應用程式的裝載位置而定，您可能需要支援票證才能允許透過這些埠進行通訊。
 
 > [!IMPORTANT]
 > 服務匯流排僅支援 AMQP 1.0 通訊協定。
@@ -88,9 +88,9 @@ Azure 服務匯流排的兩層式本質提供各種商務持續性功能（高�
 
   * [虛擬網路服務端點](service-bus-service-endpoints.md)
   * [防火牆](service-bus-ip-filtering.md)
-  * [使用客戶管理的金鑰進行服務端加密（BYOK）](configure-customer-managed-key.md)
+  * [使用客戶管理的金鑰進行服務端加密 (BYOK) ](configure-customer-managed-key.md)
   * [私人端點](private-link-service.md)
-  * [驗證與授權](service-bus-authentication-and-authorization.md)
+  * [驗證和授權](service-bus-authentication-and-authorization.md)
 
 ### <a name="monitoring-alerts-and-tracing"></a>監視、警示和追蹤
 
@@ -127,14 +127,14 @@ Azure 服務匯流排的兩層式本質提供各種商務持續性功能（高�
 
 若要遷移現有的 JMS 2.0 應用程式以與服務匯流排互動，請遵循接下來幾節中的步驟。
 
-### <a name="export-the-topology-from-activemq-and-create-the-entities-in-service-bus-optional"></a>從 ActiveMQ 匯出拓撲並在服務匯流排中建立實體（選擇性）
+### <a name="export-the-topology-from-activemq-and-create-the-entities-in-service-bus-optional"></a>從 ActiveMQ 匯出拓撲，並在服務匯流排中建立實體 (選擇性) 
 
-若要確保用戶端應用程式可以順暢地與服務匯流排連線，請將拓撲（包括佇列、主題和訂用帳戶）從 Apache ActiveMQ 遷移至服務匯流排。
+若要確保用戶端應用程式可以順暢地與服務匯流排連線，請將拓撲 (包括佇列、主題和訂用帳戶) 從 Apache ActiveMQ 遷移至服務匯流排。
 
 > [!NOTE]
-> 針對 JMS 應用程式，您可以將佇列、主題和訂用帳戶建立為執行時間作業。 大部分的 JMS 提供者（訊息代理程式）都可讓您在執行時間建立這些服務。 這就是為什麼會將此匯出步驟視為選擇性。 若要確保您的應用程式具有在執行時間建立拓撲的許可權，請使用具有 SAS 許可權的連接字串 `Manage` 。
+> 針對 JMS 應用程式，您可以將佇列、主題和訂用帳戶建立為執行時間作業。 大部分的 JMS 提供者 (訊息代理程式) 讓您能夠在執行時間建立這些服務。 這就是為什麼會將此匯出步驟視為選擇性。 若要確保您的應用程式具有在執行時間建立拓撲的許可權，請使用具有 SAS 許可權的連接字串 `Manage` 。
 
-作法：
+若要這樣做：
 
 1. 使用[ActiveMQ 命令列工具](https://activemq.apache.org/activemq-command-line-tools-reference)來匯出拓撲。
 1. 使用[Azure Resource Manager 範本](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)重新建立相同的拓撲。
@@ -272,7 +272,7 @@ connection.start();
 
 ## <a name="next-steps"></a>後續步驟
 
-使用[適用于 AZURE 服務匯流排 JMS 的春天開機 Starter](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) ，與服務匯流排無縫整合。
+使用[適用于 AZURE 服務匯流排 JMS 的春天開機 Starter](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) ，與服務匯流排無縫整合。
 
 若要深入瞭解服務匯流排訊息和 JMS，請參閱：
 

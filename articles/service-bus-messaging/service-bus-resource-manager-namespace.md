@@ -7,16 +7,16 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 6bcbdbb72f3d26522790b769a8185138c1207a98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b7aafca331170100ce99c084a11c96c97df7781
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336828"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067387"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立服務匯流排命名空間
 
-瞭解如何部署 Azure Resource Manager 範本來建立服務匯流排命名空間。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。 如需建立範本的詳細資訊，請參閱[Azure Resource Manager 檔](/azure/azure-resource-manager/)。
+瞭解如何部署 Azure Resource Manager 範本來建立服務匯流排命名空間。 您可以直接在自己的部署中使用此範本，或自訂此範本以符合您的需求。 如需建立範本的詳細資訊，請參閱[Azure Resource Manager 檔](../azure-resource-manager/index.yml)。
 
 下列範本也可用於建立服務匯流排命名空間：
 
@@ -39,7 +39,7 @@ ms.locfileid: "85336828"
 
 若要藉由部署範本來建立服務匯流排命名空間：
 
-1. 選取下列程式碼區塊中的 [試用]****，然後依照指示登入 Azure Cloud Shell。
+1. 從下列程式碼區塊中選取 [**試試看**]，然後依照指示登入 Azure Cloud shell。
 
     ```azurepowershell-interactive
     $serviceBusNamespaceName = Read-Host -Prompt "Enter a name for the service bus namespace to be created"
@@ -55,8 +55,8 @@ ms.locfileid: "85336828"
 
     資源組名是已附加**rg**的服務匯流排命名空間名稱。
 
-2. 選取 [複製]**** 來複製 PowerShell 指令碼。
-3. 以滑鼠右鍵按一下殼層主控台，然後選取 [貼上]****。
+2. 選取 [複製] 來複製 PowerShell 指令碼。
+3. 以滑鼠右鍵按一下殼層主控台，然後選取 [貼上]。
 
 建立事件中樞需要幾分鐘的時間。
 

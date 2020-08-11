@@ -3,19 +3,19 @@ title: 在 IoT Edge 裝置上部署即時影片分析-Azure
 description: 本文列出的步驟將協助您在 IoT Edge 裝置上部署即時影片分析。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就會這麼做。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074462"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067875"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>在 IoT Edge 裝置上部署即時影片分析
 
 本文列出的步驟將協助您在 IoT Edge 裝置上部署即時影片分析。 例如，如果您有本機 Linux 電腦的存取權，以及（或）先前已建立 Azure 媒體服務帳戶，您就會這麼做。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 符合適用于即時影片分析之 HW/SW 限制的 Linux 機器
 * 您擁有擁有者[許可權](../../role-based-access-control/built-in-roles.md#owner)的 Azure 訂用帳戶
@@ -24,7 +24,7 @@ ms.locfileid: "87074462"
 * [在以 Debian 為基礎的 Linux 系統上安裝 Azure IoT Edge 執行階段](../../iot-edge/how-to-install-iot-edge-linux.md)
 * [建立 Azure 媒體服務帳戶](../latest/create-account-howto.md)
     * 使用下列其中一個區域：美國東部2、美國中部、美國中北部、日本東部、美國西部2、美國中西部、加拿大東部、英國南部、法國中部、法國南部、瑞士北部、瑞士西部和日本西部。
-    * 建議使用一般用途 v2 （GPv2）儲存體帳戶
+    * 建議您使用一般用途 v2 (GPv2) 儲存體帳戶
 
 ## <a name="configuring-azure-resources-for-using-live-video-analytics"></a>使用即時影片分析來設定 Azure 資源
 
@@ -86,8 +86,8 @@ IoT Edge 上的即時影片分析會公開模組對應項設定[架構](module-t
 
 ### <a name="deploy-using-the-azure-portal"></a>使用 Azure 入口網站部署
 
-Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 IoT Edge 裝置。
-選取您的裝置
+Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 IoT Edge 裝置。  
+#### <a name="select-your-device-and-set-modules"></a>選取您的裝置並設定模組
 
 1. 登入 [Azure 入口網站](https://ms.portal.azure.com/)，然後瀏覽至 IoT 中樞。
 1. 選取功能表中的 [IoT Edge]****。
@@ -112,23 +112,12 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
     > [!TIP]
     > 在 [**模組設定**]、[**容器建立選項**] 和 [模組對應項**設定**] 索引標籤上指定值之前，請不要選取 [**新增**]，如此程式中所述。
     
-    > [!IMPORTANT]
+    > [!WARNING]
     > 當您對模組進行呼叫時，Azure IoT Edge 會區分大小寫。 記下您用來做為模組名稱的確切字串。
 
 1. 開啟 [**環境變數**] 索引標籤。
    
-   複製下列 JSON 並貼到方塊中，以提供用來儲存應用程式資料和影片輸出的使用者識別碼和群組識別碼。
-    ```   
-   {
-        "LOCAL_USER_ID": 
-        {
-            "value": "1010"
-        },
-        "LOCAL_GROUP_ID": {
-            "value": "1010"
-        }
-    }
-     ``` 
+   在您看到環境變數的輸入方塊中新增下列值 ![](./media/deploy-iot-edge-device/environment-variables.png) 
 
 1. 開啟 [**容器建立選項**] 索引標籤。
 
@@ -201,8 +190,8 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
-   [!Note]
-   對應項屬性**allowUnsecuredEndpoints**會針對教學課程和快速入門的目的設定為 true。   
+   > [!Note]
+   > 對應項屬性**allowUnsecuredEndpoints**會針對教學課程和快速入門的目的設定為 true。   
    在生產環境中執行時，您應該將此屬性設定為**false** 。 這可確保應用程式會封鎖所有不安全的端點，若要執行圖形拓撲，則需要有效的連接認證。  
    
     選取 [新增] 以新增模組對應項屬性。
@@ -239,7 +228,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
 1. 按一下 [直接方法] 功能表選項。
 
     > [!NOTE] 
-    > 您必須在 [連接字串] 區段中加入一個值，如您在目前的頁面上所見。 您不需要隱藏或變更 [**設定名稱**] 區段中的任何專案。 可以讓它成為公用。
+    > 您必須在 [連接字串] 區段中加入一個值，如您在目前的頁面上所見。 您不需要隱藏或變更 [**設定名稱**] 區段中的任何專案。 可以讓其成為公用。
 
     ![直接方法](./media/deploy-iot-edge-device/module-details.png)
 1. 接下來，在 [方法名稱] 方塊中輸入 "GraphTopologyList"。
@@ -258,5 +247,7 @@ Azure 入口網站會引導您建立部署資訊清單，並將部署推送至 I
     ![狀態200訊息](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>後續步驟
+試用[快速入門：開始使用-IoT Edge 上的即時影片分析](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
-[快速入門：開始使用 - IoT Edge 上的 Live Video Analytics](get-started-detect-motion-emit-events-quickstart.md)
+> [!TIP]
+> 在命令中，您將執行下一個，使用您 `device-id` 的，而不是預設值 `lva-sample-device` 。

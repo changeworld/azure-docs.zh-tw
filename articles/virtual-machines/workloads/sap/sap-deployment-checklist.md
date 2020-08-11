@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f517eb5bd113d8d54714b75bea4c8436882d0f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a3c22a46d22ef4eb717eb686fa295c820c78c934
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924422"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067251"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作負載：規劃和部署檢查清單
 
@@ -44,7 +44,8 @@ ms.locfileid: "87924422"
     - 在 Azure 中執行高影響力商務資料的安全性原則。 若要深入瞭解資料安全性，請從[Azure 安全性檔案](../../../security/index.yml)開始。
 2.  技術設計檔。 本檔應包含：
     - 方案的區塊圖表。
-    - Azure 中的計算、儲存體和網路元件大小。 如需 Azure Vm 的 SAP 大小調整，請參閱[sap 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。
+    - Azure 中的計算、儲存體和網路元件大小。 針對 Azure Vm 的 SAP 大小調整，請參閱 [SAP 
+    -  注意 #1928533] (https://launchpad.support.sap.com/#/notes/1928533) 。
     - 商務持續性和嚴重損壞修復架構。
     - OS、DB、核心和 SAP 支援套件版本的詳細資訊。 Azure Vm 支援 SAP NetWeaver 或 S/4HANA 所支援的每個 OS 版本，這不一定是正確的。 DBMS 版本也是如此。 請檢查下列來源，以配合並視需要升級 SAP 版本、DBMS 版本和 OS 版本，以確保 SAP 和 Azure 支援。 您必須擁有 SAP 和 Azure 支援的發行組合，才能取得 SAP 和 Microsoft 的完整支援。 如有需要，您必須規劃升級某些軟體元件。 如需支援的 SAP、OS 和 DBMS 軟體的詳細資訊，請參閱：
         - [SAP 支援附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。 此附注會定義 Azure Vm 上支援的最低 OS 版本。 它也會定義大多數非 HANA 資料庫所需的最小資料庫發行。 最後，它會針對 SAP 支援的 Azure VM 類型提供 SAP 大小調整。
@@ -56,9 +57,11 @@ ms.locfileid: "87924422"
         - [SAP 支援附注 #2555629-SAP Hana 2.0 動態分層–虛擬程式和雲端支援](https://launchpad.support.sap.com/#/notes/2555629)
         - [SAP 支援附注 #1662610-適用于 Linux SIOS 保護套件的支援詳細資料](https://launchpad.support.sap.com/#/notes/1662610)
         - 適用于其他 SAP 特定產品的 SAP 附注。     
-    - 我們建議針對 SAP 生產系統進行嚴格的三層式設計。 我們不建議將 ASCS 和/或 DBMS 和（或）應用程式伺服器合併在一個 VM 上。 在 Azure 上的 Windows 客體作業系統上支援使用 SAP 中央服務的多 SID 叢集設定。 但在 Azure 上，Linux 作業系統上的 SAP 中央服務不支援此設定。 您可以在下列文章中找到 Windows 客體作業系統案例的檔：
+    - 在 Windows、SLES 及 Azure 上的 RHEL 客體作業系統上支援使用 SAP 中央服務的多重 SID 叢集設定。 請記住，[群發 radius] 可能會增加您在這類多 SID 叢集上所放置的 ASCS/SCS。 您可以在下列文章中找到個別來賓 OS 案例的檔：
         - [在 Azure 上搭配 Windows Server 容錯移轉叢集和共用磁碟的 SAP ASCS/SCS 執行個體多重 SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
         - [在 Azure 上搭配 Windows Server 容錯移轉叢集和檔案共用的 SAP ASCS/SCS 執行個體多重 SID 高可用性](./sap-ascs-ha-multi-sid-wsfc-file-share.md)
+        - [Azure Vm 上的 SAP NetWeaver 高可用性-適用于 SAP 應用程式的 SUSE Linux Enterprise Server 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+        - [Azure Vm 上的 SAP NetWeaver 高可用性-適用于 SAP 應用程式的 Red Hat Enterprise Linux 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
     - 高可用性和嚴重損壞修復架構。
         - 根據 RTO 和 RPO，定義高可用性和嚴重損壞修復架構所需的外觀。
         - 針對區域內的高可用性，請檢查所需的 DBMS 在 Azure 中提供的功能。 大部分的 DBMS 封裝都會提供同步熱待命的同步方法，我們建議用於生產系統。 另請參閱 SAP 相關檔中的不同資料庫，從適用于[sap 工作負載的 Azure 虛擬機器 DBMS 部署考慮](./dbms_guide_general.md)和相關檔開始。
@@ -78,7 +81,7 @@ ms.locfileid: "87924422"
     - 資源群組拓撲。
     - [標記策略](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing)。
     - Vm 和其他基礎結構元件和（或）邏輯名稱的命名慣例。
-5.  Microsoft 頂級支援合約。 識別您的 Microsoft 技術客戶經理 (TAM) 。 如需 SAP 支援需求，請參閱[sap 支援附注 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。
+5.  Microsoft Professional 或頂級支援合約。 如果您有 Microsoft 的頂級支援合約，請 (TAM) 識別您的 Microsoft 技術客戶經理。 如需 SAP 支援需求，請參閱[sap 支援附注 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。
 6.  訂用帳戶的 Azure 訂用帳戶和核心配額數目。 [開啟支援要求，視需要增加 Azure](../../../azure-portal/supportability/resource-manager-core-quotas-request.md)訂用帳戶的配額。
 7.  將 SAP 資料移轉至 Azure 的資料縮減和資料移轉計畫。 針對 SAP NetWeaver 系統，SAP 具有如何限制大量資料量的指導方針。 請參閱這份有關 SAP ERP 系統中資料管理的[sap 指南](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2)。 部分內容也適用于一般的 NetWeaver 和 S/4HANA 系統。
 8.  自動化部署方法。 Azure 上的基礎結構部署自動化目標是以具決定性的方式進行部署，並取得具決定性的結果。 許多客戶使用 PowerShell 或 CLI 架構的腳本。 但有各種開放原始碼技術可供您用來部署適用于 SAP 的 Azure 基礎結構，甚至是安裝 SAP 軟體。 您可以在 GitHub 上找到範例：
@@ -106,6 +109,7 @@ ms.locfileid: "87924422"
            -  [Azure 中的 Windows 虛擬機器大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
            -  [Azure 中 Linux 虛擬機器的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 請務必考慮調整大小的最大未快取*磁片輸送量*。
    2. [儲存空間]。
+        - 檢查[適用于 SAP 工作負載的檔 Azure 儲存體類型](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
         - 針對代表 SAP 應用層的 Vm，以及針對不區分效能的 Dbms 部署，請至少使用[Azure 標準 SSD 儲存體](../../windows/disks-types.md#standard-ssd)。
         - 一般而言，我們不建議使用[Azure 標準 HDD 磁片](../../windows/disks-types.md#standard-hdd)。
         - 針對任何遠端效能敏感的 DBMS Vm，使用[Azure 進階儲存體](../../windows/disks-types.md#premium-ssd)。

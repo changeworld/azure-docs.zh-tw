@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: 3f7d08e2290291dfcd931ed5609e30d5fec9f973
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e5728b220f12c3305aa896e64010fc7e5828d6fb
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835641"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067217"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 資訊安全中心的權限
 
@@ -45,7 +45,7 @@ Azure 資訊安全中心使用[azure 角色型存取控制 (AZURE RBAC) ](../rol
 |編輯安全性原則|-|✔|-|-|✔|
 |新增/指派方案 (包括) 法規合規性標準) |-|-|-|-|✔|
 |變更訂用帳戶定價層|-|✔|-|-|✔|
-|啟用/停用自動布建|-|✔|✔|-|✔|
+|啟用/停用自動布建|-|✔|-|✔|✔|
 |針對資源套用安全性建議</br>  (並使用[快速修正！](security-center-remediate-recommendations.md#quick-fix-remediation)) |-|-|✔|✔|✔|
 |關閉警示|-|✔|-|✔|✔|
 |檢視警示和建議|✔|✔|✔|✔|✔|

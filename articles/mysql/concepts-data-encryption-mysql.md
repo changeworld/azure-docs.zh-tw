@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 7399bc60ffa88112fee87b429571772f634c0754
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8fca0195c2941e4ed1a859c3201adfc2a4a0a2ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285419"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067438"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>適用於 MySQL 的 Azure 資料庫資料加密 (使用客戶管理的金鑰)
 
@@ -26,7 +26,7 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 ## <a name="benefits"></a>優點
 
-「適用於 MySQL 的 Azure 資料庫」的資料加密提供下列優點：
+適用於 MySQL 的 Azure 資料庫以客戶管理的金鑰進行資料加密，可提供下列優點：
 
 * 完全由您控制資料存取，您可以移除金鑰且讓資料庫無法存取 
 * 完全控制金鑰生命週期，包括輪替金鑰以配合公司原則
@@ -49,8 +49,8 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 針對使用儲存於 Key Vault 中的客戶管理金鑰來加密 DEK 的 MySQL 伺服器，Key Vault 系統管理員會授與伺服器下列存取權限：
 
 * **get**：用於在金鑰保存庫中，擷取金鑰的公開部分和屬性。
-* **wrapKey**：可以加密 DEK。
-* **unwrapKey**：可以解密 DEK。
+* **wrapKey**：可以加密 DEK。 加密的 DEK 會儲存在適用於 MySQL 的 Azure 資料庫中。
+* **unwrapKey**：可以解密 DEK。 適用於 MySQL 的 Azure 資料庫需要解密的 DEK 來加密/解密資料
 
 金鑰保存庫管理員也可以[啟用 Key Vault 稽核事件的記錄](../azure-monitor/insights/key-vault-insights-overview.md)，以便稍後再進行稽核。
 
@@ -60,16 +60,16 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 下列是設定 Key Vault 的需求：
 
-* Key Vault 和適用於 MySQL 的 Azure 資料庫必須屬於相同的 Azure Active Directory (Azure AD) 租用戶。 目前不支援跨租用戶 Key Vault 與伺服器互動。 之後在移動資源時會需要您重新設定資料加密。
+* Key Vault 和適用於 MySQL 的 Azure 資料庫必須屬於相同的 Azure Active Directory (Azure AD) 租用戶。 目前不支援跨租用戶 Key Vault 與伺服器互動。 之後移動 Key Vault 資源需要您重新設定資料加密。
 * 在金鑰保存庫上啟用虛刪除功能，可在意外刪除金鑰 (或 Key Vault) 時防止資料遺失。 除非使用者同時復原或清除虛刪除的資源，否則這些資源將會保留 90 天。 Key Vault 存取原則中已建立復原和清除動作本身權限的關聯。 虛刪除功能預設為關閉，但可透過 PowerShell 或 Azure CLI 啟用 (請注意，您無法透過 Azure 入口網站啟用)。
-* 使用其唯一的受控識別授與「適用於 MySQL 的 Azure 資料庫」對金鑰保存庫的存取權限，使其具有 get、wrapKey 和 unwrapKey 權限。 在 Azure 入口網站中，系統會在 MySQL 上啟用資料加密時自動建立唯一的身分識別。 如需使用 Azure 入口網站的詳細逐步指示，請參閱[設定 MySQL 的資料加密](howto-data-encryption-portal.md)。
+* 使用其唯一的受控識別授與「適用於 MySQL 的 Azure 資料庫」對金鑰保存庫的存取權限，使其具有 get、wrapKey 和 unwrapKey 權限。 在 Azure 入口網站中，在 MySQL 上啟用資料加密時，會自動建立唯一的「服務」身分識別。 如需使用 Azure 入口網站的詳細逐步指示，請參閱[設定 MySQL 的資料加密](howto-data-encryption-portal.md)。
 
 下列是設定客戶管理金鑰的需求：
 
 * 用來加密 DEK 的客戶管理金鑰，只能是非對稱的 RSA 2048。
 * 金鑰啟用日期 (若已設定) 必須是過去的日期和時間。 到期日 (若已設定) 必須是未來的日期和時間。
 * 金鑰必須處於「已啟用」狀態。
-* 如果您要將現有金鑰匯入金鑰保存庫，請務必以支援的檔案格式 (`.pfx`、`.byok`、`.backup`) 加以提供。
+* 如果您要將[現有的金鑰匯入](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey)金鑰保存庫，請務必以支援的檔案格式提供， (`.pfx` 、 `.byok` `.backup`) 。
 
 ## <a name="recommendations"></a>建議
 
@@ -129,13 +129,13 @@ Key Vault 是雲端式外部金鑰管理系統。 其具有高可用性，並為
 
 ## <a name="limitations"></a>限制
 
-針對適用於 MySQL 的 Azure 資料庫，使用客戶管理的金鑰（CMK）對待用資料進行加密的支援有少數限制-
+針對適用於 MySQL 的 Azure 資料庫，使用客戶管理的金鑰來加密待用資料的支援 (CMK) 的限制有限-
 
 * 此功能的支援僅限於**一般用途**和**記憶體優化**定價層。
 * 只有在支援最多 16 TB 儲存體的區域和伺服器上，才支援這項功能。 如需支援儲存體最多16TB 的 Azure 區域清單，請參閱[這裡](concepts-pricing-tiers.md#storage)的檔中的儲存體一節。
 
     > [!NOTE]
-    > - 所有新的 MySQL 伺服器都是在以上所列的區域中建立，並**提供**對客戶管理員金鑰進行加密的支援。 還原時間點（PITR）伺服器或讀取複本在理論上不會有任何限制，而是「新」。
+    > - 所有新的 MySQL 伺服器都是在以上所列的區域中建立，並**提供**對客戶管理員金鑰進行加密的支援。 還原的時間點 (PITR) server 或讀取複本在理論上不會有任何限制，它們都是「新」。
     > - 若要驗證您布建的伺服器是否支援最多16TB，您可以移至入口網站中的 [定價層] 分頁，並查看已布建伺服器所支援的最大儲存體大小。 如果您可以將滑杆移至4TB，您的伺服器可能不支援使用客戶管理的金鑰進行加密。 不過，資料會隨時使用服務管理的金鑰進行加密。 AskAzureDBforMySQL@service.microsoft.com如果您有任何問題，請聯繫。
 
 * 僅支援使用 RSA 2048 密碼編譯金鑰進行加密。

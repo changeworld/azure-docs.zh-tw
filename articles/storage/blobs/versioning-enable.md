@@ -1,24 +1,28 @@
 ---
-title: 啟用和管理 blob 版本設定（預覽）
+title: '啟用和管理 blob 版本設定 (預覽) '
 titleSuffix: Azure Storage
-description: 瞭解如何在 Azure 入口網站中啟用 blob 版本設定，或使用 Azure Resource Manager 範本。
+description: 瞭解如何在 Azure 入口網站中或使用 Azure Resource Manager 範本來啟用 blob 版本設定 (預覽) 。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086042"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067268"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>啟用和管理 Blob 版本設定
+# <a name="enable-and-manage-blob-versioning-preview"></a>啟用和管理 blob 版本設定 (預覽) 
 
-您可以使用 Azure 入口網站或 Azure Resource Manager 範本，隨時為儲存體帳戶啟用或停用 blob 版本設定（預覽）。
+您可以 (預覽) 啟用 Blob 儲存體版本設定，以自動維護舊版的物件。  啟用 blob 版本設定時，您可以還原較舊版本的 blob，以在錯誤地修改或刪除資料時加以復原。
+
+本文說明如何使用 Azure 入口網站或 Azure Resource Manager 範本，針對儲存體帳戶啟用或停用 blob 版本設定。
+
+您必須先註冊預覽版，才可啟用 blob 版本設定。 若要深入瞭解 blob 版本設定，包括如何註冊預覽版，請參閱[blob 版本設定 (預覽) ](versioning-overview.md)。
 
 ## <a name="enable-blob-versioning"></a>啟用 Blob 版本設定
 

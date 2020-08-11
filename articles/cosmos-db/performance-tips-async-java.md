@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6aa55f864319146c4d3237eb9e6725da2a68035f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d925c1387a408d38eb7974a01ebf3ce3386b7e58
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308979"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067605"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB 非同步 Java SDK v2 的效能祕訣
 
@@ -121,7 +121,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
   
   * **在您的應用程式中使用多執行緒來進行有效率的 TCP 資料傳輸**-提出要求之後，您的應用程式應該訂閱以接收另一個執行緒上的資料。 不這樣做會強制執行非預期的「半雙工」作業，而後續的要求會被封鎖，等待前一個要求的回復。
   
-  * **在專用的執行緒上執行需要大量計算的工作負載**-基於類似于上一個秘訣的原因，複雜資料處理之類的作業最好放在個別的執行緒中。 從另一個資料存放區提取資料的要求（例如，如果執行緒同時使用 Azure Cosmos DB 和 Spark 資料存放區）可能會遇到增加的延遲，建議您產生額外的執行緒來等候另一個資料存放區的回應。
+  * **在專用的執行緒上執行需要大量計算的工作負載**-基於類似于上一個秘訣的原因，複雜資料處理之類的作業最好放在個別的執行緒中。 從另一個資料存放區提取資料的要求 (例如，如果執行緒同時使用 Azure Cosmos DB 和 Spark 資料存放區) 可能會遇到增加的延遲，建議您產生額外的執行緒來等候另一個資料存放區的回應。
   
     * Azure Cosmos DB 非同步 JAVA SDK v2 中的基礎網路 IO 是由 Netty 管理，請參閱下列[秘訣，以避免封鎖 NETTY IO 執行緒的程式碼模式](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)。
   
@@ -169,7 +169,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
   例如，下列程式碼會在事件迴圈 IO netty 執行緒上執行 CPU 密集工作：
 
-  **非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）**
+  **非同步 JAVA SDK V2 (Maven .com. azure：： azure-cosmosdb) **
 
   ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -187,7 +187,7 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
 
   在收到結果之後，如果您需要對結果進行 CPU 密集工作，請避免在事件迴圈 IO netty 執行緒上進行。 您可以改為提供您自己的排程器，以提供自己的執行緒來執行工作。
 
-  **非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）**
+  **非同步 JAVA SDK V2 (Maven .com. azure：： azure-cosmosdb) **
 
   ```java
     import rx.schedulers;
@@ -239,28 +239,6 @@ Azure Cosmos DB 是一個既快速又彈性的分散式資料庫，可在獲得�
     ```
     * - nofile 100000
     ```
-
-* **為 netty 使用原生 TLS/SSL 實作**
-
-    Netty 可以直接為 TLS 實作堆疊使用 OpenSSL，以達到更好的效能。 如果沒有這個設定，netty 將會改為使用 Java 的預設 TLS 實作。
-
-    在 Ubuntu 上：
-    ```bash
-    sudo apt-get install openssl
-    sudo apt-get install libapr1
-    ```
-
-    並將下列相依性新增至專案 maven 相依性：
-    ```xml
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-tcnative</artifactId>
-      <version>2.0.20.Final</version>
-      <classifier>linux-x86_64</classifier>
-    </dependency>
-    ```
-
-針對其他平台 (Red Hat、Windows、Mac 等等)，請參閱這些指示 https://netty.io/wiki/forked-tomcat-native.html
 
 ## <a name="indexing-policy"></a>索引原則
  

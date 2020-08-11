@@ -3,15 +3,15 @@ title: Windows 虛擬桌面安全 URL 清單-Azure
 description: 您應該解除封鎖的 Url 清單，以確保您的 Windows 虛擬桌面部署如預期運作。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 37fb5ccf121fed6e772dc1cd3dcba2345d62c66f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009472"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067200"
 ---
 # <a name="safe-url-list"></a>安全 URL 清單
 
@@ -76,4 +76,6 @@ ms.locfileid: "88009472"
 |query.prod.cms.rt.microsoft.com|443|用戶端更新|Windows 桌面|
 
 >[!IMPORTANT]
->開啟這些 URL 是擁有可靠用戶端體驗所必需的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。 這些 URL 僅對應於用戶端網站和資源，並不包含其他服務 (例如 Azure Active Directory) 的 URL。
+>開啟這些 URL 是擁有可靠用戶端體驗所必需的。 不支援封鎖這些 URL 的存取，而且會影響服務功能。
+>
+>這些 Url 只會對應至用戶端網站和資源。 此清單不包含其他服務的 Url，例如 Azure Active Directory。 您可以在 [ [Office 365 url] 和 [IP 位址範圍](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)] 的識別碼56下找到 Azure Active Directory url。

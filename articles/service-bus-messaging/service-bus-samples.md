@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: article
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: beafd0d49e8fccaef4ccc043d198875b9f1b1ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 750ee2f05e81fe18560a20227aefb52ca343e07b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341015"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067523"
 ---
 # <a name="service-bus-messaging-samples"></a>服務匯流排傳訊範例
 服務匯流排傳訊範例在[服務匯流排傳訊](https://azure.microsoft.com/services/service-bus/)中示範主要功能。 目前，您可以在下列位置找到範例：
@@ -30,5 +30,4 @@ ms.locfileid: "85341015"
 請參閱下列主題以取得服務匯流排的概念性概觀。
 
 * [服務匯流排訊息概觀](service-bus-messaging-overview.md)
-* [服務匯流排架構](service-bus-architecture.md)
-
+* [服務匯流排架構](./service-bus-messaging-overview.md)

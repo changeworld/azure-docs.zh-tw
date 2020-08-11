@@ -4,12 +4,12 @@ description: 協助您在 Azure 中開發多層式應用程式，以使用服務
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 183f3b6e1231c843c04290024a89c270f0dd0026
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 044d0698f1ea181e8f508f92ad2c30ec29b6490b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083934"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067829"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>使用 Azure 服務匯流排佇列的 .NET 多層應用程式
 
@@ -24,7 +24,7 @@ ms.locfileid: "87083934"
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-在本教學課程中，您將在 Azure 雲端服務中建置和執行多層式應用程式。 前端為 ASP.NET MVC Web 角色，而後端為使用服務匯流排佇列的背景工作角色。 您可以建立相同的多層應用程式，並使其前端作為部署至 Azure 網站而非雲端服務的 Web 專案。 您也可以試試 [.NET 內部部署/雲端混合式應用程式](../service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教學課程。
+在本教學課程中，您將在 Azure 雲端服務中建置和執行多層式應用程式。 前端為 ASP.NET MVC Web 角色，而後端為使用服務匯流排佇列的背景工作角色。 您可以建立相同的多層應用程式，並使其前端作為部署至 Azure 網站而非雲端服務的 Web 專案。 您也可以試試 [.NET 內部部署/雲端混合式應用程式](../azure-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay.md)教學課程。
 
 下列螢幕擷取畫面顯示已完成的應用程式。
 
@@ -341,7 +341,7 @@ ms.locfileid: "87083934"
     
     ![當您按一下模擬器圖示時所顯示的螢幕擷取畫面。 [顯示計算模擬器 UI] 位於選項清單中。][19]
     
-    ![[Microsoft Azure 計算模擬器（Express）] 對話方塊的螢幕擷取畫面。][20]
+    ![Microsoft Azure 計算模擬器 (Express) ] 對話方塊的螢幕擷取畫面。][20]
 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解服務匯流排，請參閱下列資源：  

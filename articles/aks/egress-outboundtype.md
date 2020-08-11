@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244441"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067353"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>使用使用者定義的路由自訂叢集輸出
 
@@ -60,7 +60,7 @@ ms.locfileid: "86244441"
 
 如果 `userDefinedRouting` 設定了，AKS 將不會自動設定輸出路徑。 輸出設定必須由您完成。
 
-AKS 叢集必須部署到具有先前已設定之子網的現有虛擬網路，因為使用標準負載平衡器 (SLB) 架構時，您必須建立明確的輸出。 因此，此架構需要明確地將輸出流量傳送至應用裝置，例如防火牆、閘道或 proxy，或允許網路位址轉譯 (NAT) 由指派給標準負載平衡器或設備的公用 IP 來完成。
+AKS 叢集必須部署到現有的虛擬網路，並具有先前已設定的子網，因為在未使用標準負載平衡器 (SLB) 架構時，您必須建立明確的輸出。 因此，此架構需要明確地將輸出流量傳送至應用裝置，例如防火牆、閘道或 proxy，或允許網路位址轉譯 (NAT) 由指派給標準負載平衡器或設備的公用 IP 來完成。
 
 AKS 資源提供者將會部署標準負載平衡器 (SLB)。 負載平衡器不會使用任何規則進行設定，而且在[設定規則之前，不會產生任何費用](https://azure.microsoft.com/pricing/details/load-balancer/)。 AKS**不**會自動布建 SLB 前端的公用 IP 位址，也不會自動設定負載平衡器後端集區。
 
