@@ -30,6 +30,20 @@
       items:
         - name: 建立微型物流中心應用程式
           href: tutorial-micro-fulfillment-center.md
+    - name: 影片分析 - 物件與動態偵測
+      items:
+        - name: 1 - 建立影片分析應用程式
+          href: tutorial-video-analytics-create-app.md
+        - name: 2- 設定 IoT Edge 裝置
+          items:
+            - name: 在 Edge 上建立影片分析裝置 (Linux VM)
+              href: tutorial-video-analytics-iot-edge-vm.md
+            - name: 在 Edge 上建立影片分析裝置 (Intel NUC)
+              href: tutorial-video-analytics-iot-edge-nuc.md
+        - name: 3 - 監視並管理影片分析應用程式
+          href: tutorial-video-analytics-manage.md
+        - name: 4 - 修改並建置即時影片分析閘道模組
+          href: tutorial-video-analytics-build-module.md
 - name: 概念
   items:
     - name: 連線物流應用程式範本架構
@@ -42,12 +56,16 @@
       href: store-analytics-architecture.md
     - name: 微型物流中心應用程式範本架構
       href: architecture-micro-fulfillment-center.md
+    - name: 影片分析應用程式範本架構
+      href: architecture-video-analytics.md
     - name: 連線能力
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: 什麼是應用程式範本？
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: 操作指南
   items:
+    - name: 部署物件和動作偵測應用程式
+      href: howto-deploy-video-analytics-template.md
     - name: 連線裝置
       items:
         - name: 準備及連線 Rigado Cascade 500

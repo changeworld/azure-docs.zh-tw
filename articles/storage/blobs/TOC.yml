@@ -158,8 +158,10 @@
           items:
             - name: 版本控制
               href: versioning-overview.md
-            - name: 虛刪除
-              href: soft-delete-overview.md
+            - name: Blob 的虛刪除
+              href: soft-delete-blob-overview.md
+            - name: 容器的虛刪除
+              href: soft-delete-container-overview.md
             - name: 快照集
               href: snapshots-overview.md
             - name: 變更摘要
@@ -423,8 +425,10 @@
           items:
             - name: 啟用 Blob 版本設定
               href: versioning-enable.md
-            - name: 啟用虛刪除
-              href: soft-delete-enable.md
+            - name: 啟用 Blob 的虛刪除
+              href: soft-delete-blob-enable.md
+            - name: 啟用容器的虛刪除
+              href: soft-delete-container-enable.md
             - name: 建立快照集 (.NET)
               href: snapshots-manage-dotnet.md
             - name: 處理變更摘要記錄

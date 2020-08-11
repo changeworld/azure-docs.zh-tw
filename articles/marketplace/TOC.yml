@@ -131,7 +131,7 @@
                       href: ./partner-center-portal/common-sas-uri-issues.md
         - name: 諮詢服務
           items:
-            - name: 必要條件
+            - name: Prerequisites
               href: ./partner-center-portal/consulting-service-prerequisites.md
             - name: 建立諮詢服務供應項目
               href: ./partner-center-portal/create-consulting-service-offer.md
@@ -276,7 +276,7 @@
       items:
         - name: 概觀
           href: ./cloud-partner-portal-api-overview.md
-        - name: 必要條件
+        - name: Prerequisites
           href: ./cloud-partner-portal-api-prerequisites.md
         - name: 考量
           href: ./cloud-partner-portal-api-considerations.md

@@ -16,5 +16,5 @@ ms.lasthandoff: 07/02/2020
 ms.locfileid: "79365352"
 ---
 > [!NOTE]
-> 具有階層命名空間（Azure Data Lake Storage Gen2）的帳戶尚未支援這項功能。 若要深入瞭解，請參閱[Azure Data Lake Storage Gen2 中提供的 Blob 儲存體功能](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-supported-blob-storage-features)。
+> 具有階層式命名空間 (Azure Data Lake Storage Gen2) 的帳戶尚未支援這項功能。 若要深入瞭解，請參閱[Azure Data Lake Storage Gen2 中提供的 Blob 儲存體功能](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-supported-blob-storage-features)。
 
