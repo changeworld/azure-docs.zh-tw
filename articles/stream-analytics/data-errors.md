@@ -5,17 +5,17 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/27/2020
-ms.openlocfilehash: 725d1cf38a0c7f6de02addc62577e397a935af94
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/07/2020
+ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041042"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053145"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 串流分析資料錯誤
 
-資料錯誤是處理資料時所發生的錯誤。  這些錯誤通常會在資料還原序列化、序列化和寫入作業期間發生。  發生資料錯誤時，串流分析會將詳細的資訊和範例事件寫入資源記錄。  在某些情況下，也會透過入口網站通知來提供這項資訊的摘要。
+資料錯誤是處理資料時所發生的錯誤。  這些錯誤通常會在資料還原序列化、序列化和寫入作業期間發生。  發生資料錯誤時，串流分析會將詳細的資訊和範例事件寫入資源記錄。 在您的作業中啟用診斷記錄，以取得這些額外的詳細資料。 在某些情況下，也會透過入口網站通知來提供這項資訊的摘要。
 
 本文概述輸入和輸出資料錯誤的不同錯誤類型、原因和資源記錄詳細資料。
 

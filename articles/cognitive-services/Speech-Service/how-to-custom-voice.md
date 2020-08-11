@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 2aacf8881a57f0677177cd341a0ddc63224b26b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402044"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056681"
 ---
 # <a name="get-started-with-custom-voice"></a>開始使用自訂語音
 
@@ -31,7 +31,7 @@ ms.locfileid: "81402044"
 
 1. [訂閱並建立專案](#set-up-your-azure-account)-建立 Azure 帳戶，並建立語音服務訂用帳戶。 此整合訂閱可讓您存取語音轉換文字、文字轉換語音、語音翻譯和自訂語音入口網站。 然後，使用您的語音服務訂用帳戶，建立您的第一個自訂語音專案。
 
-2. [上傳資料](how-to-custom-voice-create-voice.md#upload-your-datasets)-使用自訂語音入口網站或自訂語音 API 來上傳資料（音訊和文字）。 在入口網站中，您可以調查及評估發音分數和信噪比。 如需詳細資訊，請參閱[如何準備自訂語音的資料](how-to-custom-voice-prepare-data.md)。
+2. [上傳資料](how-to-custom-voice-create-voice.md#upload-your-datasets)-使用自訂語音入口網站或自訂語音 API，將資料上傳 (音訊和文字) 。 在入口網站中，您可以調查及評估發音分數和信噪比。 如需詳細資訊，請參閱[如何準備自訂語音的資料](how-to-custom-voice-prepare-data.md)。
 
 3. [定型您的模型](how-to-custom-voice-create-voice.md#build-your-custom-voice-model)–使用您的資料來建立自訂文字轉換語音語音模型。 您可以使用不同的語言來定型模型。 定型之後，請測試您的模型，如果您對結果感到滿意，可以部署模型。
 
@@ -56,11 +56,11 @@ ms.locfileid: "81402044"
 4. 如果您想要切換至另一個語音訂用帳戶，請使用位於頂端導覽中的齒輪圖示。
 
 > [!NOTE]
-> 自訂語音服務不支援30天免費試用金鑰。 您必須先在 Azure 中建立 F0 或 S0 金鑰，才能使用此服務。
+> 您必須先在 Azure 中建立 F0 或 S0 金鑰，才能使用此服務。
 
 ## <a name="how-to-create-a-project"></a>如何建立專案
 
-像是資料、模型、測試和端點等內容，會組織成自訂語音入口網站中的**專案**。 每個專案都適用于國家/地區，以及您想要建立的語音性別。 例如，您可以為撥接中心的聊天機器人建立一個專案，以在美國（en-us）使用英文。
+像是資料、模型、測試和端點等內容，會組織成自訂語音入口網站中的**專案**。 每個專案都適用于國家/地區，以及您想要建立的語音性別。 例如，您可以為撥接中心的聊天機器人建立專案，以使用美國地區的英文 (en-us) 。
 
 若要建立您的第一個專案，請選取 [**文字轉換語音/自訂語音**] 索引標籤，然後按一下 [**新增專案**]。 依照 wizard 提供的指示來建立您的專案。 建立專案之後，您會看到四個索引標籤：**資料**、**定型**、**測試**和**部署**。 使用[後續步驟](#next-steps)中提供的連結，以瞭解如何使用每個索引標籤。
 

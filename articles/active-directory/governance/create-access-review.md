@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/29/2020
+ms.date: 08/09/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cf82080a54075353d2ff1d98a2ea19fc6a96dc7
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9bb290106c5ceafe8c636bbeeab38b74ea475eb4
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204039"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056185"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>在 Azure AD 存取評論中建立群組和應用程式的存取權審查
 
@@ -93,7 +93,7 @@ ms.locfileid: "86204039"
 
     ![建立存取權審查-完成後的設定](./media/create-access-review/upon-completion-settings.png)
 
-1. 如果您想要自動移除，存取被拒絕的使用者，請將 [**自動將結果套用至資源**] 設定為 [**啟用**]。 如果您想要在檢閱完成時手動套用結果，請將開關設為 [停用]。
+1. 如果您想要對遭拒絕的使用者自動移除存取權，請將 [自動將結果套用至資源] 設為 [啟用]。 如果您想要在檢閱完成時手動套用結果，請將開關設為 [停用]。
 
 1. 使用 [若檢閱者未回應] 清單，指定檢閱者在檢閱期間內未檢閱的使用者將受到何種處置。 此設定並不會影響檢閱者已手動檢閱的使用者。 如果最終的檢閱者決定 [拒絕]，則會移除使用者的存取權。
 

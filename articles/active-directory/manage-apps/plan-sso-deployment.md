@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 85ec94ccf853d4f8b02a14ba08e9515170b36b5e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387773"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054795"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>規劃單一登入部署
 
-單一登入（SSO）表示只要使用單一使用者帳戶登入一次，就能存取使用者所需的所有應用程式和資源。 使用 SSO 時，使用者可以存取所有必要的應用程式，而不需要再次驗證。
+單一登入 (SSO) 表示只要使用單一使用者帳戶登入一次，就能存取使用者所需的所有應用程式和資源。 使用 SSO 時，使用者可以存取所有必要的應用程式，而不需要再次驗證。
 
 ## <a name="benefits-of-sso"></a>SSO 的優點
 
-當使用者登入 Azure Active Directory （Azure AD）中的應用程式時，單一登入（SSO）可增加安全性和便利性。 
+當使用者登入 Azure Active Directory (Azure AD) 中的應用程式時，單一登入 (SSO) 可增加安全性和便利性。 
 
-許多組織都依賴軟體即服務（SaaS）應用程式，例如 Office 365、Box 和 Salesforce，以提供使用者生產力。 在過去，IT 人員需要在每個 SaaS 應用程式中個別建立並更新使用者帳戶，而使用者必須記住每個的密碼。
+許多組織都依賴軟體即服務 (SaaS) 應用程式，例如 Office 365、Box 和 Salesforce，以提供使用者生產力。 在過去，IT 人員需要在每個 SaaS 應用程式中個別建立並更新使用者帳戶，而使用者必須記住每個的密碼。
 
 3000 Azure Marketplace 的應用程式具有預先整合的 SSO 連線，可讓您輕鬆地將它們整合到您的租使用者中。
 
@@ -60,7 +60,7 @@ ms.locfileid: "87387773"
 
 ### <a name="considerations-for-password-based-sso"></a>密碼型 SSO 的考慮
 
-使用密碼 SSO 的 Azure AD 需要部署瀏覽器延伸模組，以安全地抓取認證並填寫登入表單。 定義以[支援的瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)進行大規模部署擴充功能的機制。 這些選項包括：
+使用密碼 SSO 的 Azure AD 需要部署瀏覽器延伸模組，以安全地抓取認證並填寫登入表單。 定義以[支援的瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)進行大規模部署擴充功能的機制。 選項包括：
 
 - [Internet Explorer 的群組原則](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 - [Internet Explorer 的 Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
@@ -70,7 +70,7 @@ ms.locfileid: "87387773"
 
 #### <a name="capturing-login-forms-metadata-for-applications-that-arent-in-the-gallery"></a>針對不在資源庫中的應用程式，捕獲登入表單中繼資料
 
-Microsoft 支援在 web 應用程式上捕獲中繼資料，以用於密碼保存庫（捕獲使用者名稱和密碼欄位）。 在設定應用程式以捕獲表單中繼資料的過程中，流覽至 [登入 URL]。 要求應用程式擁有者輸入確切的登入 URL。 此資訊會在登入程式期間使用，在登入期間將 Azure AD 認證對應至應用程式。
+Microsoft 支援在 web 應用程式上捕獲中繼資料，以用於密碼保存庫， (在) 中捕捉使用者名稱和密碼欄位。 在設定應用程式以捕獲表單中繼資料的過程中，流覽至 [登入 URL]。 要求應用程式擁有者輸入確切的登入 URL。 此資訊會在登入程式期間使用，在登入期間將 Azure AD 認證對應至應用程式。
 
 若要深入瞭解，請參閱[什麼是應用程式存取和 SSO 搭配 Azure AD？–密碼型 SSO](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/)。
 
@@ -129,7 +129,7 @@ Azure AD 會保留最多30天的審核資料，並透過 Azure 系統管理員�
 
 ### <a name="consider-using-microsoft-cloud-application-security"></a>考慮使用 Microsoft Cloud 的應用程式安全性
 
-Microsoft Cloud App Security （MCAS）是一種雲端存取安全性代理程式（CASB）解決方案。 它可讓您瞭解您的雲端應用程式和服務，提供精密的分析來識別和對抗網路威脅，並可讓您控制資料的傳輸方式。
+Microsoft Cloud App Security (MCAS) 是雲端存取安全性代理程式 (CASB) 解決方案。 它可讓您瞭解您的雲端應用程式和服務，提供精密的分析來識別和對抗網路威脅，並可讓您控制資料的傳輸方式。
 
 部署 MCAS 可讓您：
 
@@ -139,7 +139,7 @@ Microsoft Cloud App Security （MCAS）是一種雲端存取安全性代理程�
 - 使用條件式存取應用程式控制保護，取得雲端應用程式內的存取和活動的即時可見度和控制
 - 藉由設定，然後持續微調原則，協助您持續掌控。
 
-Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作業系統上任何主要平臺上的任何瀏覽器。 您也可以封鎖或允許行動應用程式和傳統型應用程式。 藉由以原生方式與 Azure AD 整合，可支援任何以 SAML 設定的應用程式，或在 Azure AD 中使用單一登入的 Open ID Connect 應用程式，包括[數個精選應用](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)程式。
+Microsoft Cloud 的應用程式安全性 (MCAS) 會話控制適用于任何作業系統上任何主要平臺上的任何瀏覽器。 您也可以封鎖或允許行動應用程式和傳統型應用程式。 藉由以原生方式與 Azure AD 整合，可支援任何以 SAML 設定的應用程式，或在 Azure AD 中使用單一登入的 Open ID Connect 應用程式，包括[數個精選應用](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)程式。
 
 如需 MCAS 的詳細資訊，請參閱[Microsoft Cloud App Security 總覽](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)。 MCAS 是以使用者為基礎的訂用帳戶服務。 您可以在[MCAS 授權資料表](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)中查看授權詳細資料。
 
@@ -147,11 +147,11 @@ Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作
 
 透過條件式存取，您可以將雲端應用程式的準則型存取控制決策自動化。
 
-完成第一個要素驗證之後，即會強制執行條件式存取原則。 因此，條件式存取不適合做為拒絕服務（DoS）攻擊等案例的第一行防線，但可以使用這些事件的信號來判斷存取權。 例如，您可以使用登入風險層級、要求的位置等等。 如需條件式存取的詳細資訊，請參閱[總覽](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)和[部署計畫](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
+完成第一個要素驗證之後，即會強制執行條件式存取原則。 因此，條件式存取不適合做為拒絕服務 (DoS) 攻擊等案例的第一行防線，但可以使用來自這些事件的信號來判斷存取權。 例如，您可以使用登入風險層級、要求的位置等等。 如需條件式存取的詳細資訊，請參閱[總覽](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)和[部署計畫](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
 
 ## <a name="azure-sso-technical-requirements"></a>Azure SSO 技術需求
 
-下一節詳細說明設定特定應用程式的需求，包括所需的環境、端點、宣告對應、必要的屬性、憑證和使用的通訊協定。 您將需要這項資訊，才能在[Azure AD 入口網站](https://portal.azure.com/)中設定 SSO。
+下一節詳細說明設定特定應用程式的需求，包括所需的環境 () 、端點、宣告對應、必要的屬性、憑證，以及所使用的通訊協定。 您將需要這項資訊，才能在[Azure AD 入口網站](https://portal.azure.com/)中設定 SSO。
 
 ### <a name="authentication-mechanism-details"></a>驗證機制詳細資料
 
@@ -201,11 +201,11 @@ Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作
 
 ### <a name="verify-end-user-scenarios-for-sso"></a>確認 SSO 的終端使用者案例
 
-您可以使用下列測試案例來進行公司擁有和個人裝置上的測試，以確保您的 SSO 設定如預期般運作。 下列案例假設使用者流覽至應用程式 URL，並通過服務提供者（SP 起始的驗證流程）所起始的驗證流程。
+您可以使用下列測試案例來進行公司擁有和個人裝置上的測試，以確保您的 SSO 設定如預期般運作。 下列案例假設使用者流覽至應用程式 URL，然後通過服務提供者所起始的驗證流程， (SP 起始的驗證流程) 。
 
-| 狀況 | 由使用者在 SP 起始的驗證流程上預期的結果 |
+| 案例 | 由使用者在 SP 起始的驗證流程上預期的結果 |
 |----------|---------------------------------------------------|
-| 在公司網路上使用 IE 登入應用程式。 | 整合式 Windows 驗證（IWA）會發生，而且不會出現任何額外的提示。 |
+| 在公司網路上使用 IE 登入應用程式。 | 整合式 Windows 驗證 (IWA) 發生，不會出現任何額外的提示。 |
 | 透過新的登入嘗試，在公司網路中登入具有 IE 的應用程式。 | AD FS 伺服器上以表單為基礎的提示。 使用者成功登入 MFA 的瀏覽器提示。 |
 | 使用目前的會話來登入具有 IE 的應用程式，但從未執行過 MFA。 | 使用者不會收到第一個因素的提示。 使用者收到 MFA 的提示。 |
 | 以目前的會話關閉公司網路，並在此會話中執行 MFA 時，使用 IE 登入應用程式。 | 使用者不會收到第一個因素的提示。 使用者未收到 MFA。 使用者 SSOs 到應用程式。 |
@@ -217,8 +217,8 @@ Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作
 | 授權的使用者嘗試登入，但輸入的密碼不正確。 | 使用者流覽至應用程式 URL，並收到錯誤的使用者名稱/密碼錯誤。 |
 | 已授權的使用者按一下電子郵件中的連結，並已通過驗證。 | 使用者按一下 [URL] 並登入應用程式，而不會出現其他提示。 |
 | 已授權的使用者按一下電子郵件中的連結，但尚未經過驗證。 | 使用者按一下 URL，系統會提示您使用第一個因素進行驗證。 |
-| 已授權的使用者使用應用程式行動應用程式（SP 起始）登入應用程式，並嘗試新的登入。 | AD FS 伺服器上以表單為基礎的提示。 使用者成功登入和 ADAL 用戶端提示以進行 MFA。 |
-| 未經授權的使用者嘗試使用登入 URL （SP 起始）登入應用程式。 | AD FS 伺服器上以表單為基礎的提示。 使用者無法以第一個因素登入。 |
+| 已授權的使用者使用應用程式行動應用程式 (SP 起始的) 登入應用程式，並嘗試新的登入。 | AD FS 伺服器上以表單為基礎的提示。 使用者成功登入和 ADAL 用戶端提示以進行 MFA。 |
+| 未經授權的使用者嘗試使用登入 URL 登入應用程式， (SP 起始的) 。 | AD FS 伺服器上以表單為基礎的提示。 使用者無法以第一個因素登入。 |
 | 授權的使用者嘗試登入，但輸入的密碼不正確。| 使用者流覽至應用程式 URL，並收到錯誤的使用者名稱/密碼錯誤。 |
 | 已授權的使用者登出後再重新登入。 | 如果已設定登出 URL，則使用者會登出所有服務，並提示您進行驗證。 |
 | 已授權的使用者登出後再重新登入。 | 如果未設定 [登出 URL]，則會使用現有的 Azure AD 瀏覽器會話中現有的權杖自動重新登入使用者。 |
@@ -233,15 +233,15 @@ Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作
 
 請一律使用具備最少許可權的角色，以在 Azure Active Directory 內完成必要的工作。 Microsoft 建議您[檢查可用的不同角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)，並選擇正確的角色來解決此應用程式每個角色的需求。 在完成部署後，可能需要暫時套用一些角色並加以移除。
 
-| 生活| 角色 | Azure AD 角色（如有必要） |
+| 生活| 角色 | 如有需要，Azure AD 角色 ()  |
 |--------|-------|-----------------------------|
-| 技術支援中心系統管理員 | 第1層支援 | 無 |
+| 技術支援中心系統管理員 | 第1層支援 | None |
 | 身分識別管理員 | 在問題影響時設定和調試 Azure AD | 全域系統管理員 |
-| 應用程式管理員 | 應用程式中的使用者證明，具有許可權的使用者設定 | 無 |
+| 應用程式管理員 | 應用程式中的使用者證明，具有許可權的使用者設定 | None |
 | 基礎結構管理員 | 憑證變換擁有者 | 全域系統管理員 |
-| 商務擁有者/專案關係人 | 應用程式中的使用者證明，具有許可權的使用者設定 | 無 |
+| 商務擁有者/專案關係人 | 應用程式中的使用者證明，具有許可權的使用者設定 | None |
 
-我們建議使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) （PIM）來管理您的角色，以針對具有目錄許可權的使用者提供額外的審核、控制和存取權審查。
+我們建議使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) 來管理您的角色，為具有目錄許可權的使用者提供額外的審核、控制和存取權審查。
 
 ### <a name="sso-certificate-lifecycle-management"></a>SSO 憑證生命週期管理
 
@@ -261,7 +261,7 @@ Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作
 
 - **如果您的應用程式支援多個身分識別提供者**（例如 LDAP 和 AD FS 和 Ping），請不要在推出期間刪除現有的 SSO 設定。 相反地，在遷移期間停用它，以防您稍後需要將其切換回來。 
 
-- **如果您的應用程式不支援多個 idp** ，但允許使用者使用表單架構驗證（使用者名稱/密碼）登入，請確定在新的 SSO 設定推出失敗時，使用者可以切換回這種方法。
+- **如果您的應用程式不支援多個 idp** ，但允許使用者使用表單架構驗證來登入 (使用者名稱/密碼) ，請確定在新的 SSO 設定推出失敗時，使用者可以切換回這種方法。
 
 ### <a name="access-management"></a>存取管理
 
@@ -315,7 +315,7 @@ Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作
 
 [單一登出 SAML 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
 
-[AZURE AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) （適用于合作夥伴和廠商等外部使用者）
+為外部使用者（例如合作夥伴和廠商） [AZURE AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) () 
 
 [Azure AD 條件式存取](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
 
@@ -324,3 +324,5 @@ Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作
 [SSO 存取](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 [應用程式 SSO 教學課程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+
+[白皮書下載-單一登入部署計畫](https://aka.ms/SSODeploymentPlan)

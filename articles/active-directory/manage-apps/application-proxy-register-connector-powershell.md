@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea90c80d9edbefe9df05a5d64da612a89c3b251f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850812"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054829"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>建立 Azure AD 應用程式 Proxy 連接器的自動安裝指令碼
 
@@ -37,6 +37,9 @@ ms.locfileid: "85850812"
 若要讓[應用程式 Proxy 連接器](application-proxy-connectors.md)能夠正常執行，必須使用應用程式系統管理員和密碼向您的 Azure AD 目錄註冊。 通常，此資訊是在連接器安裝期間於一個快顯對話方塊中輸入的，但是您可以改用 PowerShell 使此程序自動進行。
 
 自動安裝有兩個步驟。 首先，安裝連接器。 其次，向 Azure AD 註冊連接器。
+
+> [!IMPORTANT]
+> 如果您要安裝適用于 Azure Government cloud 的[連接器，請](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#allow-access-to-urls)參閱必要條件和[安裝步驟](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud#install-the-agent-for-the-azure-government-cloud)。 您需要啟用一組不同 URL 的存取權，以及執行安裝的其他參數。
 
 ## <a name="install-the-connector"></a>安裝連接器
 使用下列步驟安裝連接器而不註冊連接器：

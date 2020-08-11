@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: c6999b67a5c0a0f4ca7cb943ae8de3afd8b6a11e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096253"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056273"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>關於 Azure Key Vault 憑證更新
 
@@ -23,8 +23,11 @@ Azure Key Vault 可讓您輕鬆地布建、管理及部署網路的數位憑證�
 
 擁有短期憑證或增加憑證輪替的頻率，會限制敵人的損毀範圍。
 
+## <a name="certificate-expiration-notifications"></a>憑證到期通知
+首先，請務必將憑證連絡人新增至您的 Key Vault，以便在憑證即將到期時收到通知 (例如。 使用 PowerShell [AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)) 秒，設定您想要取得憑證到期通知的時間。 若要設定存留時間動作，請[在這裡](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)
+
 在 key vault 中建立憑證的類別有三種。 本指南將協助您瞭解如何才能達成憑證的更新。
--   使用整合式 CA 建立的憑證（DigiCert 或透過 globalsign）
+-   使用整合式 CA 建立的憑證 (DigiCert 或透過 globalsign) 
 -   使用非整合式 CA 建立的憑證
 -   自我簽署憑證
 
@@ -55,6 +58,10 @@ Azure key vault 可讓其使用者從任何 CA 匯入憑證，以允許其使用
 
 ### <a name="troubleshoot"></a>疑難排解
 如果在 Azure 入口網站中發出的憑證處於「已停用」狀態，請繼續查看憑證作業，以查看該憑證的錯誤訊息。
+
+### <a name="frequently-asked-questions"></a>常見問題集
+會在自動更新憑證後複寫標記嗎？
+否，除非使用者手動複製標記，否則標記不會複寫。
 
 ### <a name="see-also"></a>另請參閱
 *   [將 Key Vault 與 DigiCert 憑證授權單位整合](how-to-integrate-certificate-authority.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 44d58b4e68e9f846b6bdb87765e96bcab90274a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0309f4d07056e3986138139e10ab29faa675cfcd
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083594"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056073"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知問題
 
@@ -54,8 +54,6 @@ Blob API 和 Data Lake Storage Gen2 API 可運作於相同的資料上。
 * [取得頁面範圍](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges) (機器翻譯)
 * [累加複製 Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob) (機器翻譯)
 * [從 URL 放置頁面](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url) (機器翻譯)
-* [Put Blob (附加)](https://docs.microsoft.com/rest/api/storageservices/put-blob) (機器翻譯)
-* [附加區塊](https://docs.microsoft.com/rest/api/storageservices/append-block)
 * [從 URL 附加區塊](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url) (機器翻譯)
 
 具有階層式命名空間的帳戶不支援非受控 VM 磁碟。 如果要在儲存體帳戶上啟用階層命名空間，請將非受控 VM 磁碟放入沒有啟用階層命名空間功能的儲存體帳戶。

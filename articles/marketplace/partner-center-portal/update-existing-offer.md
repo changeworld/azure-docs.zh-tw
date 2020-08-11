@@ -1,24 +1,24 @@
 ---
-title: 更新現有的商業 Marketplace 供應專案
-description: 如何對現有的商用 Marketplace 供應專案進行更新，包括編輯、刪除草稿、取消發佈要求、停止銷售供應專案或方案，以及同步私人物件。
+title: 更新現有的商業 marketplace 供應專案
+description: 如何對現有的商用 marketplace 供應專案進行更新，包括編輯、刪除草稿、取消發佈要求、停止銷售供應專案或方案，以及同步私人物件。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 33e7a97f4b82bd3d7e82532fe2f0a5e3d80c73f5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ca106625acf28aded0009fd09022843f1016faf3
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006786"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056137"
 ---
-# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>更新商業市集中的現有供應項目
+# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>更新商用 marketplace 中的現有供應專案
 
 您可以在合作夥伴中心的[商業 Marketplace 入口網站](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)的 [**總覽**] 索引標籤上，查看您現有的供應專案。
 
-若要更新目前在 marketplace 中的現有供應專案：
+若要更新目前在商業 marketplace 中的現有供應專案：
 
 1. 選取您想要更新的供應專案名稱。 供應專案的狀態可能會列為**預覽**、**即時**、**發佈進行中**、**草稿**、**需要注意**或**無法使用** (如果您之前已選擇停止銷售供應專案) 。 選取之後，即會開啟該供應專案的**供應專案總覽**頁面。
 2. 從供應專案總覽頁面上的卡片中選取 [**更新**]，或在您想要更新的區域左側導覽上的功能表項目。 您可能想要更新**供應專案設定**、**屬性**、**供應專案清單**、**預覽**、**技術**設定、**計畫總覽**或**試用**產品。
@@ -74,7 +74,7 @@ ms.locfileid: "88006786"
 1. 選取 [儲存草稿]。
 1. 當您完成新方案的所有必要區段之後，請選取 [**審查併發布**]。 這會提交您的供應專案以供審查和發行。 如需詳細資訊，請閱讀[審查並將供應專案發佈到商業 marketplace](../review-publish-offer.md) 。
 
-## <a name="compare-changes-to-marketplace-offers"></a>比較 marketplace 供應專案的變更
+## <a name="compare-changes-to-commercial-marketplace-offers"></a>比較商業 marketplace 供應專案的變更
 
 您可以使用 [**比較**] 讓您對[已發行](#compare-changes-to-published-offer)或[預覽](#compare-changes-to-a-preview-offer)的供應專案進行變更，然後再將其上線。
 
@@ -161,15 +161,17 @@ ms.locfileid: "88006786"
 
 ## <a name="stop-selling-an-offer-or-plan"></a>停止銷售供應專案或方案
 
+基於各種原因，您可能會決定從 Microsoft 商業 marketplace 移除您的供應專案清單。 [供應專案移除] 可確保新的客戶無法再購買或部署您的供應專案，但不會影響現有的客戶。
+
 若要在發佈供應專案之後停止銷售，請從供應專案的 **[總覽**] 頁面選取 [**停止銷售**]。
 
-一旦您確認您想要停止銷售供應專案，在幾小時內就不會再顯示于 marketplace 中，而且不會有任何新客戶能夠下載。
+在您確認您想要停止銷售供應專案之後的幾個小時內，它就不會再顯示于商業 marketplace 中，而且不會有任何新客戶能夠下載。
 
-若要停止銷售計畫，請從 [**計畫總覽**] 頁面選取 [**停止銷售**]。 只有當您在供應專案中有一個以上的方案時，才可以使用停止銷售方案的選項。 您可以選擇停止銷售一個方案，而不會影響供應專案內的其他計畫。 確認您想要停止銷售方案之後，您必須重新發佈供應專案，變更才會生效。 供應專案重新發佈之後，此方案將不再顯示于 marketplace 中，而且不會有任何新的客戶可以下載。
+若要停止銷售計畫，請從 [**計畫總覽**] 頁面選取 [**停止銷售**]。 只有當您在供應專案中有一個以上的方案時，才可以使用停止銷售方案的選項。 您可以選擇停止銷售一個方案，而不會影響供應專案內的其他計畫。 確認您想要停止銷售方案之後，您必須重新發佈供應專案，變更才會生效。 供應專案重新發佈之後，此方案將不再顯示于商業 marketplace 中，而且不會有任何新的客戶可以下載。
 
 先前取得供應專案或方案的任何客戶仍可使用它。 他們可以再次下載，但如果您稍後更新並重新發佈供應專案或方案，它們就不會取得更新。
 
-在您停止銷售供應專案/方案的要求完成後，您仍會在合作夥伴中心的商業 Marketplace 入口網站中看到 [**無法使用**] 狀態。
+在您停止銷售供應專案/方案的要求完成後，您仍會在合作夥伴中心的商業 marketplace 入口網站中看到 [**無法使用**] 狀態。
 
 如果您決定要再次列出或銷售此供應專案或方案，請遵循指示來[更新現有的供應](#update-an-existing-offer-in-the-commercial-marketplace)專案。 別忘了，在進行任何變更之後，您將需要再次**發佈**供應專案或方案。
 
@@ -190,4 +192,4 @@ ms.locfileid: "88006786"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [檢查您的商業 Marketplace 供應專案的發佈狀態](./publishing-status.md)
+- [檢查您的商業 marketplace 供應專案的發佈狀態](./publishing-status.md)

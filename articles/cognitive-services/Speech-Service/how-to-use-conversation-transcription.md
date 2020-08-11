@@ -1,5 +1,5 @@
 ---
-title: 即時對話轉譯（預覽）-語音服務
+title: 即時對話轉譯 (Preview) -語音服務
 titleSuffix: Azure Cognitive Services
 description: '瞭解如何搭配語音 SDK 使用即時對話轉譯。 適用于 c + +、c # 和 JAVA。'
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: fc22dea201ccd19c4e7bee92a1092b4ff50117db
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f9670733f8aa040b87cec20ac28aacc636c04698
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134948"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056205"
 ---
-# <a name="real-time-conversation-transcription-preview"></a>即時對話轉譯（預覽）
+# <a name="real-time-conversation-transcription-preview"></a>即時對話轉譯 (預覽) 
 
-語音 SDK 的**ConversationTranscriber** API 可讓您透過使用或，將音訊串流到語音服務，轉譯會議和其他交談，使其能夠加入、移除和識別多個參與者 `PullStream` `PushStream` 。 本主題會要求您瞭解如何搭配語音 SDK （1.8.0 或更新版本）使用語音轉換文字。 如需詳細資訊，請參閱[什麼是語音服務](overview.md)。
+語音 SDK 的**ConversationTranscriber** API 可讓您透過使用或，將音訊串流到語音服務，轉譯會議和其他交談，使其能夠加入、移除和識別多個參與者 `PullStream` `PushStream` 。 本主題會要求您瞭解如何搭配語音 SDK (1.8.0 或更新版本) 使用語音轉換文字。 如需詳細資訊，請參閱[什麼是語音服務](overview.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -37,7 +37,7 @@ ms.locfileid: "86134948"
 
 ## <a name="prerequisites"></a>必要條件
 
-語音服務訂用帳戶。 您可以[取得語音試用版訂用](https://azure.microsoft.com/try/cognitive-services/)帳戶（如果您沒有的話）。
+語音服務訂用帳戶。 您可以建立[免費的 Azure 帳戶](https://azure.microsoft.com/free/cognitive-services/)（如果您沒有的話）。
 
 ## <a name="create-voice-signatures"></a>建立語音簽名
 
@@ -45,12 +45,12 @@ ms.locfileid: "86134948"
 
 ### <a name="audio-input-requirements"></a>音訊輸入需求
 
-- 用於建立語音簽名的輸入音訊 wave 檔案應該是16位樣本、16 kHz 採樣速率和單一通道（mono）格式。
+- 用於建立語音簽名的輸入音訊 wave 檔案應該是16位樣本、16 kHz 採樣速率和單一通道 (mono) 格式。
 - 每個音訊樣本的建議長度介於三十秒到2分鐘之間。
 
 ### <a name="sample-code"></a>範例程式碼
 
-下列範例顯示使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)來建立語音簽名的兩種不同方式。 請注意，您必須以「YourSubscriptionKey」的真實資訊、「speakerVoice」的 wave 檔案名，以及 `{region}` 和「YourServiceRegion」（_centralus_或_eastasia_）的區域取代。
+下列範例顯示使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)來建立語音簽名的兩種不同方式。 請注意，您必須以「YourSubscriptionKey」的真實資訊、「speakerVoice」的 wave 檔案名，以及您的區域 `{region}` 和「YourServiceRegion」 (_centralus_或_eastasia_) 。
 
 ```csharp
 class Program

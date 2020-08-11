@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 19e02012c31246b3b6b4636ef61154fbade347ce
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 48e3f895fb123429f1bedd106bd92113533c84ae
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494616"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055797"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp Files 的方案架構
 本文提供最佳做法的參考，可協助您瞭解使用 Azure NetApp Files 的解決方案架構。  
@@ -44,8 +44,8 @@ ms.locfileid: "87494616"
 
 ### <a name="file-sharing-and-global-file-caching"></a>檔案共用和全域檔案快取
 
-* [Talon/Azure NetApp Files 部署](https://youtu.be/91LKb1qsLIM)
 * [建立您自己的 Azure NFS？將 Linux 檔案共用 Wrestling 到雲端](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares)
+* [全域檔案快取/Azure NetApp Files 部署](https://youtu.be/91LKb1qsLIM)
 
 ### <a name="sql-server"></a>SQL Server
 
@@ -62,7 +62,7 @@ ms.locfileid: "87494616"
 * [使用 Azure NetApp Files 的 Microsoft Azure 上的 SAP 應用程式](https://www.netapp.com/us/media/tr-4746.pdf)
 * [針對 SAP 應用程式使用 Azure NetApp Files 在 SUSE Linux Enterprise Server 上的 Azure VM 達到 SAP NetWeaver 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
 * [Red Hat Enterprise Linux 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
-* [使用適用于 SAP 應用程式的 Azure NetApp Files （SMB）在 Windows 上的 Azure Vm 上進行 SAP NetWeaver 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
+* [使用 Azure NetApp Files 在 Windows 上的 Azure Vm 上進行 SAP NetWeaver 的高可用性，適用于 SAP 應用程式 (SMB) ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)
 * [Azure Vm 上的 SAP NetWeaver 高可用性-適用于 SAP 應用程式的 Red Hat Enterprise Linux 多 SID 指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 
 ### <a name="sap-hana"></a>SAP HANA 
@@ -91,7 +91,7 @@ ms.locfileid: "87494616"
 
 ## <a name="hpc-solutions"></a>HPC 解決方案
 
-本節提供高效能運算（HPC）解決方案的參考。 
+本節提供高效能計算 (HPC) 解決方案的參考。 
 
 ### <a name="generic-hpc"></a>一般 HPC
 
@@ -101,10 +101,10 @@ ms.locfileid: "87494616"
 
 ### <a name="oil-and-gas"></a>石油與天然氣
 
-* [高效能運算（HPC）： Azure 中的石油與天然氣](https://techcommunity.microsoft.com/t5/azure-global/high-performance-computing-hpc-oil-and-gas-in-azure/ba-p/824926)
+* [高效能運算 (HPC) ： Azure 中的石油與天然氣](https://techcommunity.microsoft.com/t5/azure-global/high-performance-computing-hpc-oil-and-gas-in-azure/ba-p/824926)
 * [在 Azure 上執行容器模擬軟體](https://docs.microsoft.com/azure/architecture/example-scenario/infrastructure/reservoir-simulation)
 
-### <a name="electronic-design-automation-eda"></a>電子設計自動化（EDA）
+### <a name="electronic-design-automation-eda"></a>電子設計自動化 (EDA) 
 
 * [使用 Azure NetApp Files 進行電子設計自動化的優點](solutions-benefits-azure-netapp-files-electronic-design-automation.md)
 * [Azure CycleCloud： EDA HPC 實驗室與 Azure NetApp Files](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)

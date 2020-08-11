@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c32867313a0adf1967cb55cb78c42cc1b4e5758
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc4bd817fda762e62e791542aea2df65deb0dae3
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653114"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054046"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>開始使用 Azure Multi-Factor Authentication Server
 
@@ -51,10 +51,10 @@ ms.locfileid: "80653114"
 
 請確定您用於 Azure Multi-Factor Authentication Server 的伺服器符合下列需求：
 
-| Azure Multi-Factor Authentication Server 需求 | Description |
+| Azure Multi-Factor Authentication Server 需求 | 描述 |
 |:--- |:--- |
 | 硬體 |<li>200 MB 的硬碟空間</li><li>具有 x32 或 x64 功能的處理器</li><li>1 GB 或更高的 RAM</li> |
-| 軟體 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008，SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003，SP1、SP2</li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本</li><li>Windows Vista，所有版本，SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>如果安裝使用者入口網站或 Web 服務 SDK，則為 IIS 7.0 或更高版本</li> |
+| 軟體 |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>只有[ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates)的 Windows Server 2008/R2 () </li><li>Windows 10</li><li>Windows 8.1，所有版本</li><li>Windows 8，所有版本</li><li>Windows 7，所有版本只 (使用[ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates)) </li><li>Microsoft .NET 4.0 Framework</li><li>如果安裝使用者入口網站或 Web 服務 SDK，則為 IIS 7.0 或更高版本</li> |
 | 權限 | 網域系統管理員或企業系統管理員以向 Active Directory 註冊 |
 
 ### <a name="azure-mfa-server-components"></a>Azure MFA Server 元件
@@ -81,15 +81,27 @@ ms.locfileid: "80653114"
 |:---: |:---: |:---: |
 | 134.170.116.0/25 |255.255.255.128 |134.170.116.1 – 134.170.116.126 |
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1 – 134.170.165.126 |
-| 70.37.154.128/25 |255.255.255.128 |70.37.154.129 – 70.37.154.254 |
+| 70.37.154.128/25 |255.255.255.128 |70.37.154.129 – 70.37.154.254   |
+| 52.251.8.48/28   | 255.255.255.240 | 52.251.8.48 - 52.251.8.63     |
+| 52.247.73.160/28 | 255.255.255.240 | 52.247.73.160 - 52.247.73.175 |
+| 52.159.5.240/28  | 255.255.255.240 | 52.159.5.240 - 52.159.5.255   |
+| 52.159.7.16/28   | 255.255.255.240 | 52.159.7.16 - 52.159.7.31     |
+| 52.250.84.176/28 | 255.255.255.240 | 52.250.84.176 - 52.250.84.191 |
+| 52.250.85.96/28  | 255.255.255.240 | 52.250.85.96 - 52.250.85.111  |
 
 如果您不會使用事件確認功能，而且使用者不會使用行動應用程式從公司網路上的裝置進行驗證，您只需要下列範圍︰
 
 | IP 子網路 | 網路遮罩 | IP 範圍 |
 |:---: |:---: |:---: |
-| 134.170.116.72/29 |255.255.255.248 |134.170.116.72 – 134.170.116.79 |
-| 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |
-| 70.37.154.200/29 |255.255.255.248 |70.37.154.201 – 70.37.154.206 |
+| 134.170.116.72/29 |255.255.255.248 |134.170.116.72 – 134.170.116.79|
+| 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79|
+| 70.37.154.200/29 |255.255.255.248  |70.37.154.201 – 70.37.154.206  |
+| 52.251.8.48/28   | 255.255.255.240 | 52.251.8.48 - 52.251.8.63     |
+| 52.247.73.160/28 | 255.255.255.240 | 52.247.73.160 - 52.247.73.175 |
+| 52.159.5.240/28  | 255.255.255.240 | 52.159.5.240 - 52.159.5.255   |
+| 52.159.7.16/28   | 255.255.255.240 | 52.159.7.16 - 52.159.7.31     |
+| 52.250.84.176/28 | 255.255.255.240 | 52.250.84.176 - 52.250.84.191 |
+| 52.250.85.96/28  | 255.255.255.240 | 52.250.85.96 - 52.250.85.111  |
 
 ## <a name="download-the-mfa-server"></a>下載 MFA Server
 
@@ -161,7 +173,7 @@ ms.locfileid: "80653114"
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Azure Multi-Factor Authentication Server 如何處理使用者資料？
 
-當您使用內部部署的多重要素驗證（MFA）伺服器時，使用者的資料會儲存在內部部署伺服器中。 雲端中不會儲存任何持續性的使用者資料。 當使用者執行雙步驟驗證時，MFA Server 會將資料傳送至 Azure MFA 雲端服務，以執行驗證。 當這些驗證要求傳送至雲端服務時，要求和記錄中會傳送下列欄位，供客戶的驗證/使用情況報告中使用。 某些欄位是選擇性，可以在 Multi-Factor Authentication Server 內啟用或停用。 從 MFA Server 到 MFA 雲端服務的通訊使用透過連接埠 443 輸出的 SSL/TLS。 這些欄位包括：
+當您使用多重要素驗證 (MFA) 伺服器內部部署時，使用者的資料會儲存在內部部署伺服器中。 雲端中不會儲存任何持續性的使用者資料。 當使用者執行雙步驟驗證時，MFA Server 會將資料傳送至 Azure MFA 雲端服務，以執行驗證。 當這些驗證要求傳送至雲端服務時，要求和記錄中會傳送下列欄位，供客戶的驗證/使用情況報告中使用。 某些欄位是選擇性，可以在 Multi-Factor Authentication Server 內啟用或停用。 從 MFA Server 到 MFA 雲端服務的通訊使用透過連接埠 443 輸出的 SSL/TLS。 這些欄位包括：
 
 * 唯一識別碼 - 使用者名稱或內部的 MFA 伺服器識別碼
 * 名字和姓氏 (選擇性)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2020
 ms.author: memildin
-ms.openlocfilehash: 767ad928779743ec28dbe3da8be6154a1fe0b0ab
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 718f9a29b70dab34269c959ccd62452e56a32d72
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042304"
+ms.locfileid: "88056596"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>資訊安全中心 Azure Container Registry 影像掃描
 
@@ -31,7 +31,7 @@ Azure Container Registry (ACR) 是受控的私用 Docker 登錄服務，可在�
 |----|:----|
 |發行狀態：|正式運作|
 |標價|標準層|
-|支援的登錄和映射：|![是 ](./media/icons/yes-icon.png) Linux 主控的 ACR 登錄，可從公用網際網路存取並提供 shell 存取。<br>![沒有任何 ](./media/icons/yes-icon.png) Windows 裝載的 ACR 登錄。<br>![沒有「私用」登錄 ](./media/icons/yes-icon.png) -資訊安全中心需要可從公用網際網路存取您的登錄。 資訊安全中心目前無法連線到或掃描具有受防火牆限制、服務端點或私人端點（例如 Azure 私人連結）之存取權的登錄。<br>![沒有任何 ](./media/icons/yes-icon.png) 超級極簡映射（例如[Docker 待用](https://hub.docker.com/_/scratch/)映射），或只包含應用程式及其執行時間相依性（沒有套件管理員、shell 或 OS）的 "Distroless" 映射。|
+|支援的登錄和映射：|![是 ](./media/icons/yes-icon.png) Linux 主控的 ACR 登錄，可從公用網際網路存取並提供 shell 存取。<br>![沒有任何 ](./media/icons/no-icon.png) Windows 裝載的 ACR 登錄。<br>![沒有「私用」登錄 ](./media/icons/no-icon.png) -資訊安全中心需要可從公用網際網路存取您的登錄。 資訊安全中心目前無法連線到或掃描具有受防火牆限制、服務端點或私人端點（例如 Azure 私人連結）之存取權的登錄。<br>![沒有任何 ](./media/icons/no-icon.png) 超級極簡映射（例如[Docker 待用](https://hub.docker.com/_/scratch/)映射），或只包含應用程式及其執行時間相依性（沒有套件管理員、shell 或 OS）的 "Distroless" 映射。|
 |必要的角色和許可權：|**安全性讀取者**和[Azure Container Registry 讀者角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov) |
 |||

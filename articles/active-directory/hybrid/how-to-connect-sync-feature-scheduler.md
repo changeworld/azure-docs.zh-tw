@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147001"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053043"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步處理：排程器
 本主題描述 Azure AD Connect 同步處理 (同步處理引擎) 中的內建排程器。
@@ -171,7 +171,7 @@ Azure AD Connect 同步處理會使用排程器來同步處理您內部部署目
 排程器仍在作用中，並且會在下次有機會時重新啟動。
 
 ## <a name="custom-scheduler"></a>自訂排程器
-本節記載的 Cmdlet 只有在組建 [1.1.130.0](reference-connect-version-history.md#111300) 和更新版本中才有提供。
+本節記載的 Cmdlet 只有在組建 [1.1.130.0](reference-connect-version-history.md) 和更新版本中才有提供。
 
 如果內建的排程器無法滿足您的需求，您可以使用 PowerShell 來排程連接器。
 

@@ -8,19 +8,19 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: bcb4563f7106161920b89897b706b05d2f819938
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4bf3974cd561626c280dc65aa5fc78d0c9a159b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282444"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056494"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 儲存體傳輸資料
 
 AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料。 本文包含可搭配 Blob 儲存體使用的範例命令。
 
 > [!TIP]
-> 本文中的範例會以單引號（' '）括住路徑引數。 在所有命令 shell 中使用單引號，但 Windows 命令介面（cmd.exe）除外。 如果您使用 Windows 命令 Shell （cmd.exe），請用雙引號（""）來括住路徑引數，而不是單引號（' '）。
+> 本文中的範例會以單引號括住路徑引數 ( ' ' ) 。 在所有命令介面中使用單引號，但 Windows 命令 Shell ( # A0) 除外。 如果您使用 Windows 命令 Shell ( # A0) ，請以雙引號括住路徑引數 ( "" ) 而不是以單引號 ( ' ' ) 。
 
 ## <a name="get-started"></a>開始使用
 
@@ -41,7 +41,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 |--------|-----------|
 | **語法** | `azcopy make 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>'` |
 | **範例** | `azcopy make 'https://mystorageaccount.blob.core.windows.net/mycontainer'` |
-| **範例**（階層式命名空間） | `azcopy make 'https://mystorageaccount.dfs.core.windows.net/mycontainer'` |
+|  (階層式命名空間的**範例**)  | `azcopy make 'https://mystorageaccount.dfs.core.windows.net/mycontainer'` |
 
 如需詳細的參考檔，請參閱[azcopy make](storage-ref-azcopy-make.md)。
 
@@ -60,7 +60,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 > [!TIP]
 > 您可以使用選擇性旗標來調整您的上傳作業。 以下是一些範例。
 >
-> |狀況|旗標|
+> |案例|旗標|
 > |---|---|
 > |以附加 Blob 或分頁 Blob 的形式上傳檔案。|**--blob-類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
 > |上傳至特定存取層 (例如封存層)。|**--區塊-blob 層** = \[無經常性存取封存 \| \| \|\]|
@@ -73,55 +73,55 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 |--------|-----------|
 | **語法** | `azcopy copy '<local-file-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>'` |
 | **範例** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
-| **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
-您也可以在檔案路徑或檔案名中的任何位置使用萬用字元符號（*）上傳檔案。 例如： `'C:\myDirectory\*.txt'` 、或 `C:\my*\*.txt` 。
+您也可以在檔案路徑或檔案名中的任何位置，使用萬用字元符號 ( * ) 上傳檔案。 例如： `'C:\myDirectory\*.txt'` 、或 `C:\my*\*.txt` 。
 
 ### <a name="upload-a-directory"></a>上傳目錄
 
-這個範例會將目錄（以及該目錄中的所有檔案）複製到 blob 容器。 結果是容器中具有相同名稱的目錄。
+這個範例會將目錄 (和該目錄中的所有檔案) 複製到 blob 容器。 結果是容器中具有相同名稱的目錄。
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --recursive` |
 | **範例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
-| **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --recursive` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --recursive` |
 
 若要複製到容器內的目錄，只要在命令字串中指定該目錄的名稱即可。
 
 |    |     |
 |--------|-----------|
 | **範例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
-| **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' --recursive` |
 
 如果您指定的目錄名稱不存在於容器中，AzCopy 會依該名稱建立新的目錄。
 
 ### <a name="upload-the-contents-of-a-directory"></a>上傳目錄的內容
 
-您可以上傳目錄的內容，而不需使用萬用字元符號（*）來複製包含目錄本身。
+您可以上傳目錄的內容，而不需使用萬用字元符號 ( * ) 來複製包含目錄本身。
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>'` |
 | **範例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory'` |
-| **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory'` |
 
 > [!NOTE]
 > 附加 `--recursive` 旗標，以上傳所有子目錄中的檔案。
 
 ### <a name="upload-specific-files"></a>上傳特定檔案
 
-您可以使用完整檔案名、具有萬用字元（*）的部分名稱，或使用日期和時間來上傳特定檔案。
+您可以使用完整檔案名、具有萬用字元的部分名稱 ( * ) ，或使用日期和時間來上傳特定檔案。
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多個完整的檔案名
 
-使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-path` 選項。 使用分號（）分隔個別的檔案名 `;` 。
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-path` 選項。 使用分號 () 來分隔個別的檔案名 `;` 。
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-path <semicolon-separated-file-list>` |
 | **範例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
-| **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-path 'photos;documents\myFile.txt' --recursive` |
 
 在此範例中，AzCopy 會傳送 `C:\myDirectory\photos` 目錄和檔案 `C:\myDirectory\documents\myFile.txt` 。 您必須包含 `--recursive` 選項，才能傳送目錄中的所有檔案 `C:\myDirectory\photos` 。
 
@@ -129,13 +129,13 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 
 #### <a name="use-wildcard-characters"></a>使用萬用字元
 
-使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-pattern` 選項。 指定包含萬用字元的部分名稱。 使用 semicolin （）來分隔名稱 `;` 。 
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-pattern` 選項。 指定包含萬用字元的部分名稱。 使用 semicolin () 來分隔名稱 `;` 。 
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy '<local-directory-path>' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **範例** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
-| **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.dfs.core.windows.net/mycontainer' --include-pattern 'myFile*.txt;*.pdf*'` |
 
 您也可以使用選項來排除檔案 `--exclude-pattern` 。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
@@ -143,13 +143,13 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 
 #### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上傳在日期和時間之後修改的檔案 
 
-使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間（例如： `2020-08-19T15:04:00Z` ）。 
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間， (例如： `2020-08-19T15:04:00Z`) 。 
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy '<local-directory-path>\*' 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>'  --include-after <Date-Time-in-ISO-8601-format>` |
 | **範例** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory'  --include-after '2020-08-19T15:04:00Z'` |
-| **範例**（階層式命名空間） | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory'   --include-after '2020-08-19T15:04:00Z'` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory'   --include-after '2020-08-19T15:04:00Z'` |
 
 如需詳細參考，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
@@ -168,7 +168,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 > [!TIP]
 > 您可以使用選擇性旗標來調整您的下載作業。 以下是一些範例。
 >
-> |狀況|旗標|
+> |案例|旗標|
 > |---|---|
 > |自動解壓縮檔案。|**--解壓縮**|
 > |指定您想要複製相關記錄專案的詳細程度。|**--記錄層級** = \[警告 \| 錯誤 \| 資訊 \| 無\]|
@@ -185,7 +185,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
 | **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
-| **範例**（階層式命名空間） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
 
 ### <a name="download-a-directory"></a>下載目錄
 
@@ -193,13 +193,13 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
-| **範例**（階層式命名空間） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
 這個範例會產生名為 `C:\myDirectory\myBlobDirectory` 的目錄，其中包含所有下載的檔案。
 
 ### <a name="download-the-contents-of-a-directory"></a>下載目錄的內容
 
-您可以下載目錄的內容，而不需使用萬用字元符號（*）複製包含的目錄本身。
+您可以下載目錄的內容，而不需使用萬用字元符號 ( * ) 來複製包含目錄本身。
 
 > [!NOTE]
 > 目前，只有沒有階層式命名空間的帳戶才支援此案例。
@@ -214,17 +214,17 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 
 ### <a name="download-specific-files"></a>下載特定檔案
 
-您可以使用完整檔案名、具有萬用字元（*）的部分名稱，或使用日期和時間來下載特定檔案。 
+您可以使用完整檔案名、具有萬用字元的部分名稱 ( * ) ，或使用日期和時間來下載特定檔案。 
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多個完整的檔案名
 
-使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-path` 選項。 使用 semicolin （）來分隔個別的檔案名 `;` 。
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-path` 選項。 使用 semicolin () 來分隔個別的檔案名 `;` 。
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
-| **範例**（階層式命名空間） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
 在此範例中，AzCopy 會傳送 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 目錄和檔案 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/documents/myFile.txt` 。 您必須包含 `--recursive` 選項，才能傳送目錄中的所有檔案 `https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/photos` 。
 
@@ -232,13 +232,13 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 
 #### <a name="use-wildcard-characters"></a>使用萬用字元
 
-使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-pattern` 選項。 指定包含萬用字元的部分名稱。 使用 semicolin （）來分隔名稱 `;` 。
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-pattern` 選項。 指定包含萬用字元的部分名稱。 使用 semicolin () 來分隔名稱 `;` 。
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
-| **範例**（階層式命名空間） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
 您也可以使用選項來排除檔案 `--exclude-pattern` 。 若要深入瞭解，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
@@ -246,13 +246,13 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 
 #### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下載在日期和時間之後修改的檔 
 
-使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間（例如： `2020-08-19T15:04:00Z` ）。 
+使用[azcopy copy](storage-ref-azcopy-copy.md)命令搭配 `--include-after` 選項。 以 ISO-8601 格式指定日期和時間， (例如： `2020-08-19T15:04:00Z`) 。 
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>/*' '<local-directory-path>' --include-after <Date-Time-in-ISO-8601-format>` |
 | **範例** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
-| **範例**（階層式命名空間） | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 
 如需詳細參考，請參閱[azcopy 複製](storage-ref-azcopy-copy.md)參考檔。
 
@@ -265,8 +265,8 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 > [!NOTE]
 > 此案例在目前版本中具有下列限制。
 >
-> - 您必須將 SAS 權杖附加至每個來源 URL。 如果您使用 Azure Active Directory （AD）提供授權認證，則只能從目的地 URL 省略 SAS 權杖。 請確定您已在目的地帳戶中設定適當的角色。 請參閱[選項1：使用 Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)。
->-  Premium 區塊 blob 儲存體帳戶不支援存取層。 將設定 `s2s-preserve-access-tier` 為（例如：），以從複製作業中省略 blob 的存取層 `false` `--s2s-preserve-access-tier=false` 。
+> - 您必須將 SAS 權杖附加至每個來源 URL。 如果您使用 Azure Active Directory (AD) 來提供授權認證，就只能從目的地 URL 省略 SAS 權杖。 請確定您已在目的地帳戶中設定適當的角色。 請參閱[選項1：使用 Azure Active Directory](storage-use-azcopy-v10.md?toc=/azure/storage/blobs/toc.json#option-1-use-azure-active-directory)。
+>-  Premium 區塊 blob 儲存體帳戶不支援存取層。 將設定 `s2s-preserve-access-tier` 為 `false` (例如：) ，即可從複製作業中省略 blob 的存取層 `--s2s-preserve-access-tier=false` 。
 
 本區段包含下列範例：
 
@@ -276,65 +276,65 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 > * 將容器複製到另一個儲存體帳戶
 > * 將所有容器、目錄和檔案複製到另一個儲存體帳戶
 
-這些範例也適用于具有階層式命名空間的帳戶。 [Data Lake Storage 上的多重通訊協定存取](../blobs/data-lake-storage-multi-protocol-access.md)，可讓您在這些帳戶上使用相同的 URL 語法（ `blob.core.windows.net` ）。
+這些範例也適用于具有階層式命名空間的帳戶。 [Data Lake Storage 上的多重通訊協定存取](../blobs/data-lake-storage-multi-protocol-access.md)，可讓您在這些帳戶上使用相同的 URL 語法 (`blob.core.windows.net`) 。
 
 > [!TIP]
 > 您可以使用選擇性旗標來調整複製作業。 以下是一些範例。
 >
-> |狀況|旗標|
+> |案例|旗標|
 > |---|---|
-> |將檔案複製成附加 Blob 或分頁 Blob。|**--blob-類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
-> |複製到特定的存取層（例如封存層）。|**--區塊-blob 層** = \[無經常性存取封存 \| \| \|\]|
+> |將 blob 複製成區塊、分頁或附加 Blob。|**--blob-類型** = \[BlockBlob \| PageBlob \| AppendBlob\]|
+> |複製到特定的存取層 (例如封存層) 。|**--區塊-blob 層** = \[無經常性存取封存 \| \| \|\]|
 > |自動解壓縮檔案。|**--解壓縮** = \[gzip \| deflate\]|
 > 
 > 如需完整清單，請參閱[選項](storage-ref-azcopy-copy.md#options)。
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>將 blob 複製到另一個儲存體帳戶
 
-針對具有階層式命名空間的帳戶，請使用相同的 URL 語法（ `blob.core.windows.net` ）。
+針對具有階層式命名空間的帳戶，請使用相同的 URL 語法 (`blob.core.windows.net`) 。
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<blob-path>'` |
 | **範例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
-| **範例**（階層式命名空間） | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
+|  (階層式命名空間的**範例**)  | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>將目錄複寫到另一個儲存體帳戶
 
-針對具有階層式命名空間的帳戶，請使用相同的 URL 語法（ `blob.core.windows.net` ）。
+針對具有階層式命名空間的帳戶，請使用相同的 URL 語法 (`blob.core.windows.net`) 。
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **範例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
-| **範例**（階層式命名空間）| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+|  (階層式命名空間的**範例**) | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="copy-a-container-to-another-storage-account"></a>將容器複製到另一個儲存體帳戶
 
-針對具有階層式命名空間的帳戶，請使用相同的 URL 語法（ `blob.core.windows.net` ）。
+針對具有階層式命名空間的帳戶，請使用相同的 URL 語法 (`blob.core.windows.net`) 。
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<container-name><SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **範例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
-| **範例**（階層式命名空間）| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+|  (階層式命名空間的**範例**) | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
 ### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>將所有容器、目錄和 blob 複製到另一個儲存體帳戶
 
-針對具有階層式命名空間的帳戶，請使用相同的 URL 語法（ `blob.core.windows.net` ）。
+針對具有階層式命名空間的帳戶，請使用相同的 URL 語法 (`blob.core.windows.net`) 。
 
 |    |     |
 |--------|-----------|
 | **語法** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
 | **範例** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
-| **範例**（階層式命名空間）| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
+|  (階層式命名空間的**範例**) | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 
 ## <a name="synchronize-files"></a>同步處理檔案
 
 您可以同步處理本機檔案系統與 blob 容器的內容。 您也可以彼此同步處理容器和虛擬目錄。 同步處理是單向的。 換句話說，您可以選擇這兩個端點中的哪一個是來源，以及哪一個是目的地。 同步處理也會使用伺服器到伺服器 Api。 本節中顯示的範例也適用于具有階層式命名空間的帳戶。 
 
 > [!NOTE]
-> 目前的 AzCopy 版本不會在其他來源和目的地之間同步處理（例如：檔案儲存體或 Amazon Web Services （AWS） S3 bucket）。
+> 目前的 AzCopy 版本不會在其他來源和目的地之間同步處理 (例如：檔案儲存體或 Amazon Web Services (AWS) S3 值區) 。
 
 [同步](storage-ref-azcopy-sync.md)命令會比較檔案名和上次修改的時間戳記。 將 `--delete-destination` 選擇性旗標設定為 `true` 或 `prompt` ，如果這些檔案已不存在於來原始目錄中，則會刪除目的地目錄中的檔案。
 
@@ -346,7 +346,7 @@ AzCopy 會使用[伺服器對伺服器](https://docs.microsoft.com/rest/api/stor
 > [!TIP]
 > 您可以使用選擇性旗標來調整同步作業。 以下是一些範例。
 >
-> |狀況|旗標|
+> |案例|旗標|
 > |---|---|
 > |指定下載時應如何驗證嚴格的 MD5 雜湊。|**--check-md5** = \[NoCheck \| LogOnly \| FailIfDifferent \| FailIfDifferentOrMissing\]|
 > |根據模式排除檔案。|**--排除-路徑**|

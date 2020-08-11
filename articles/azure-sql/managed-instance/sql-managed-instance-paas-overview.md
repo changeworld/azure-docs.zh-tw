@@ -1,6 +1,6 @@
 ---
 title: 什麼是 Azure SQL 受控執行個體？
-description: 瞭解 Azure SQL 受控執行個體如何與最新 SQL Server （Enterprise Edition）資料庫引擎提供接近100% 的相容性
+description: 瞭解 Azure SQL 受控執行個體如何透過最新的 SQL Server (Enterprise Edition) database engine 提供近乎100% 的相容性
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 06/25/2020
-ms.openlocfilehash: b7d7ec95d2227076ff7b7a95ce6e72fffc840975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073341"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055191"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什麼是 Azure SQL 受控執行個體？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Azure SQL 受控執行個體是 Azure SQL 產品系列的一部分，它是智慧型、可擴充的雲端資料庫服務，可將最廣泛的 SQL Server 資料庫引擎相容性與完全受控且以高擴充平臺為服務的所有優點結合。 SQL 受控執行個體與最新的 SQL Server （Enterprise Edition）資料庫引擎幾乎100% 的相容性，並提供原生[虛擬網路（VNet）](../../virtual-network/virtual-networks-overview.md)來解決常見的安全性考慮，以及對現有的 SQL Server 客戶有利的[商業模型](https://azure.microsoft.com/pricing/details/sql-database/)。 SQL 受控執行個體可讓現有的 SQL Server 客戶將其內部部署應用程式隨即轉移至雲端，只需要最少的應用程式和資料庫變更。 同時，SQL 受控執行個體會保留所有 PaaS 功能（自動修補和版本更新、[自動備份](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)），以大幅降低管理負擔和 TCO。
+Azure SQL 受控執行個體是智慧型、可擴充的雲端資料庫服務，結合了最廣泛的 SQL Server 資料庫引擎相容性與完全受控且可做為服務的高達平臺的所有優點。 SQL 受控執行個體幾乎100% 與最新的 SQL Server (Enterprise Edition) 資料庫引擎相容，並提供原生[虛擬網路 (VNet) ](../../virtual-network/virtual-networks-overview.md)執行，以解決常見的安全性考慮，以及對現有 SQL Server 客戶有利的[商業模型](https://azure.microsoft.com/pricing/details/sql-database/)。 SQL 受控執行個體可讓現有的 SQL Server 客戶將其內部部署應用程式隨即轉移至雲端，只需要最少的應用程式和資料庫變更。 同時，SQL 受控執行個體會保留所有 PaaS 功能 (自動修補和版本更新、[自動備份](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)) ，大幅降低管理負擔和 TCO。
 
 > [!IMPORTANT]
 > 如需目前可使用 SQL 受控執行個體的區域清單，請參閱[支援的區域](resource-limits.md#supported-regions)。
@@ -43,7 +43,7 @@ SQL 受控執行個體結合 Azure SQL Database 和 SQL Server 資料庫引擎�
 | --- | --- |
 |無須硬體採購和管理 <br>沒有管理基礎結構的管理負擔 <br>快速佈建和服務調整 <br>自動修補和版本升級 <br>與其他 PaaS 資料服務整合 |99.99% 的 SLA 運作時間  <br>內建[高可用性](../database/high-availability-sla.md) <br>使用[自動備份](../database/automated-backups-overview.md)保護資料 <br>客戶可設定的備份保留期限 <br>使用者起始的[備份](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[時間點資料庫還原](../database/recovery-using-backups.md#point-in-time-restore)功能 |
 |**安全性與合規性** | **管理**|
-|隔離的環境 ([VNet 整合](connectivity-architecture-overview.md)、單一租用戶服務、專用的運算和儲存體) <br>[透明資料加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory （Azure AD）驗證](../database/authentication-aad-overview.md)，單一登入支援 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 伺服器主體（登入）</a>  <br>遵守與 Azure SQL Database 相同的合規性標準 <br>[SQL 審核](auditing-configure.md) <br>[進階威脅防護](threat-detection-configure.md) |用於自動化服務佈建與調整的 Azure Resource Manager API <br>用於手動服務佈建與調整的 Azure 入口網站功能 <br>資料移轉服務
+|隔離的環境 ([VNet 整合](connectivity-architecture-overview.md)、單一租用戶服務、專用的運算和儲存體) <br>[透明資料加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure Active Directory (Azure AD) 驗證](../database/authentication-aad-overview.md)、單一登入支援 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current"> (登入 Azure AD 伺服器主體) </a>  <br>遵守與 Azure SQL Database 相同的合規性標準 <br>[SQL 審核](auditing-configure.md) <br>[進階威脅防護](threat-detection-configure.md) |用於自動化服務佈建與調整的 Azure Resource Manager API <br>用於手動服務佈建與調整的 Azure 入口網站功能 <br>資料移轉服務
 
 > [!IMPORTANT]
 > Azure SQL 受控執行個體已通過許多合規性標準的認證。 如需詳細資訊，請參閱[Microsoft Azure 合規性供應](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuideV3?command=Download&downloadType=Document&downloadId=44bbae63-bf4d-4e3b-9d3d-c96fb25ec363&tab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb&docTab=7027ead0-3d6b-11e9-b9e1-290b1eb4cdeb_FAQ_and_White_Papers)專案，您可以在此找到最新的 SQL 受控執行個體合規性認證清單（列在 [ **SQL Database**] 底下）。
@@ -52,7 +52,7 @@ SQL 受控執行個體結合 Azure SQL Database 和 SQL Server 資料庫引擎�
 
 |功能 | 描述|
 |---|---|
-| SQL Server 版本/組建 | SQL Server 資料庫引擎（最新穩定） |
+| SQL Server 版本/組建 | SQL Server 資料庫引擎 (最新穩定)  |
 | 受控自動化備份 | 是 |
 | 內建執行個體和資料庫的監視與計量 | 是 |
 | 自動軟體修補 | 是 |
@@ -73,8 +73,8 @@ SQL 受控執行個體結合 Azure SQL Database 和 SQL Server 資料庫引擎�
 
 在 vCore 模型中，您可以選擇硬體的世代。
 
-- **第4代**邏輯 cpu 是以 Intel E5-2673 V3 （Haswell） 2.4-GHz 處理器、附加 SSD、實體核心、每個核心 7 GB RAM，以及8到24虛擬核心之間的計算大小為基礎。
-- **第5代**邏輯 cpu 是以 Intel E5-2673 V4 （Broadwell） 2.3-GHz 和 Intel SP-8160 （Skylake）處理器、快速 NVMe SSD、超執行緒邏輯核心，以及4和80核心之間的計算大小為基礎。
+- **第4代**邏輯 cpu 是以 Intel E5-2673 V3 (Haswell) 2.4-GHz 處理器、附加 SSD、實體核心、每個核心 7 GB RAM，以及8到24虛擬核心之間的計算大小為基礎。
+- **第5代**邏輯 cpu 是以 Intel E5-2673 v4 為基礎， (Broadwell) 2.3 GHz 和 Intel SP-8160 (Skylake) 處理器、快速 NVMe SSD、超執行緒邏輯核心，以及4和80核心之間的計算大小。
 
 尋找有關[SQL 受控執行個體資源限制](resource-limits.md#hardware-generation-characteristics)中硬體世代之間差異的詳細資訊。
 
@@ -95,7 +95,7 @@ SQL 受控執行個體提供兩個服務層級：
 - 高效能的 Azure Blob 儲存體 (8 TB)
 - 以可靠的 Azure Blob 儲存體和[Azure Service Fabric](../../service-fabric/service-fabric-overview.md)為基礎的內建[高可用性](../database/high-availability-sla.md#basic-standard-and-general-purpose-service-tier-availability)
 
-如需詳細資訊，請參閱[一般用途層中的儲存層](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c)和[適用于 SQL 受控執行個體的儲存體效能最佳做法和考慮（一般用途）](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/)。
+如需詳細資訊，請參閱[一般用途層中的儲存層](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c)和[適用于 SQL 受控執行個體 (一般用途) 的儲存體效能最佳做法和考慮](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/)。
 
 尋找有關[SQL 受控執行個體資源限制](resource-limits.md#service-tier-characteristics)中服務層級差異的詳細資訊。
 
@@ -146,16 +146,16 @@ Azure SQL 受控執行個體提供一組先進的安全性功能，可用來保�
 - 移動中的資料加密-SQL 受控執行個體藉由使用傳輸層安全性為移動中的資料提供加密，來保護您的資料。 除了傳輸層安全性，SQL 受控執行個體還提供在使用[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)保護進行中、待用和查詢處理期間的敏感性資料。 Always Encrypted 提供資料安全性來對抗重要資料遭竊的漏洞。 例如，透過 Always Encrypted，信用卡號碼會永遠加密儲存在資料庫中，即使在查詢處理期間，都允許需要處理該資料的已授權人員或應用程式在使用時解密。
 - [先進的威脅防護](threat-detection-configure.md)提供一層內建于服務中的額外安全情報，以偵測存取或惡意探索資料庫的異常且可能有害的嘗試，藉此補充[審核](auditing-configure.md)程式。 系統會警示您有關可疑活動、潛在弱點、SQL 插入式攻擊和異常資料庫存取模式。 您可以從 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)檢視進階威脅保護警示。 它們會提供可疑活動的詳細資料，以及如何調查和緩和威脅的建議動作。  
 - [動態資料遮罩](/sql/relational-databases/security/dynamic-data-masking)可藉由遮罩處理，使不具權限的使用者無法看見敏感性資料。 動態資料遮罩可讓您在應用程式層級受到最小影響的情況下指定要顯示多少敏感性資料，而協助防止未經授權者存取敏感性資料。 這項原則式安全性功能會將敏感性資料隱藏在指定資料庫欄位的查詢結果集內，而資料庫中的資料則不會變更。
-- 資料[列層級安全性](/sql/relational-databases/security/row-level-security)（RLS）可讓您根據執行查詢之使用者的特性（例如，依群組成員資格或執行內容），來控制對資料庫資料表中之資料列的存取。 RLS 簡化了應用程式中安全性的設計和編碼。 RLS 可讓您實作資料的資料列存取限制。 例如，確保背景工作角色只能存取其部門相關資料列，或將資料存取權限制為僅限相關資料。
-- [透明資料加密（TDE）](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)會將 SQL 受控執行個體資料檔案加密，也稱為待用資料加密。 TDE 會執行資料和記錄檔的即時 I/O 加密和解密。 加密會使用資料庫加密金鑰 (DEK)，此金鑰會儲存在資料庫開機記錄中，以在復原期間提供可用性。 您可以使用透明資料加密來保護受控執行個體中的所有資料庫。 TDE 是在 SQL Server 中經過證實的待用加密技術，許多合規性標準所需，以防止儲存媒體遭竊。
+- 資料[列層級安全性](/sql/relational-databases/security/row-level-security) (RLS) 可讓您根據執行 (查詢之使用者的特性（例如，依群組成員資格或執行內容) ），控制對資料庫資料表中之資料列的存取。 RLS 簡化了應用程式中安全性的設計和編碼。 RLS 可讓您實作資料的資料列存取限制。 例如，確保背景工作角色只能存取其部門相關資料列，或將資料存取權限制為僅限相關資料。
+- [透明資料加密 (TDE) ](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)會加密 SQL 受控執行個體資料檔案，又稱為待用資料加密。 TDE 會執行資料和記錄檔的即時 I/O 加密和解密。 加密會使用資料庫加密金鑰 (DEK)，此金鑰會儲存在資料庫開機記錄中，以在復原期間提供可用性。 您可以使用透明資料加密來保護受控執行個體中的所有資料庫。 TDE 是在 SQL Server 中經過證實的待用加密技術，許多合規性標準所需，以防止儲存媒體遭竊。
 
 透過 Azure 資料庫移轉服務或原生還原，可支援將加密的資料庫移轉至 SQL 受控執行個體。 如果您打算使用原生還原來遷移加密的資料庫，將現有的 TDE 憑證從 SQL Server 實例遷移至 SQL 受控執行個體是必要的步驟。 如需有關遷移選項的詳細資訊，請參閱[SQL Server 遷移至 SQL 受控執行個體](migrate-to-instance-from-sql-server.md)。
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory 整合
 
-SQL 受控執行個體支援傳統 SQL Server 的資料庫引擎登入以及與 Azure AD 整合的登入。 Azure AD 伺服器主體（登入）（**公開預覽**）是您在內部部署環境中使用的 Azure cloud 版本內部部署資料庫登入。 Azure AD 伺服器主體（登入）可讓您將 Azure AD 租使用者中的使用者和群組指定為真正實例範圍的主體，能夠執行任何實例層級的作業，包括在相同受控實例中的跨資料庫查詢。
+SQL 受控執行個體支援傳統 SQL Server 的資料庫引擎登入以及與 Azure AD 整合的登入。 Azure AD 伺服器主體 (登入)  (**公開預覽**) 是您在內部部署環境中使用的 Azure cloud 版本內部部署資料庫登入。 Azure AD 伺服器主體 (登入) 可讓您將 Azure AD 租使用者中的使用者和群組指定為真實實例範圍的主體，且能夠執行任何實例層級作業，包括在相同受控實例內的跨資料庫查詢。
 
-引進了新的語法，可**從外部提供者**建立 Azure AD 伺服器主體（登入）。 如需語法的詳細資訊，請參閱<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">建立登</a>入和參閱為[SQL 受控執行個體提供 Azure Active Directory 系統管理員一](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)文。
+引進了新的語法，可**從外部提供者**建立 Azure AD 伺服器主體 (登入) 。 如需語法的詳細資訊，請參閱<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">建立登</a>入和參閱為[SQL 受控執行個體提供 Azure Active Directory 系統管理員一](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance)文。
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory 整合和多重要素驗證
 
@@ -184,7 +184,7 @@ SQL 受控執行個體將目標設為從內部部署或 IaaS 資料庫執行進�
 
 移轉方法會利用 SQL 備份到 Azure Blob 儲存體。 您可以使用[T-SQL RESTORE 命令](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current)，將儲存在 Azure 儲存體 blob 中的備份直接還原至受控實例。
 
-- 如需示範如何還原 Wide World 匯入工具-標準資料庫備份檔案的快速入門，請參閱將[備份檔案還原至受控實例](restore-sample-database-quickstart.md)。 本快速入門說明您必須將備份檔案上傳至 Azure Blob 儲存體，並使用共用存取簽章（SAS）金鑰來保護它。
+- 如需示範如何還原 Wide World 匯入工具-標準資料庫備份檔案的快速入門，請參閱將[備份檔案還原至受控實例](restore-sample-database-quickstart.md)。 本快速入門說明您必須將備份檔案上傳至 Azure Blob 儲存體，並使用共用存取簽章 (SAS) 金鑰來保護它。
 - 如需從 URL 還原的資訊，請參閱[從 URL 原生還原](migrate-to-instance-from-sql-server.md#native-restore-from-url)。
 
 > [!IMPORTANT]
@@ -192,7 +192,7 @@ SQL 受控執行個體將目標設為從內部部署或 IaaS 資料庫執行進�
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-Azure 資料庫移轉服務是完全受控的服務，其設計目的是要在停機時間最短的情況之下，從多個資料庫來源順暢地遷移至 Azure 資料平臺。 此服務可簡化將現有協力廠商和 SQL Server 資料庫移至 Azure VM 上 Azure SQL Database、Azure SQL 受控執行個體和 SQL Server 所需的工作。 請參閱[如何使用資料庫移轉服務，將您的內部部署資料庫移轉至 SQL 受控執行個體](https://aka.ms/migratetoMIusingDMS)。
+Azure 資料庫移轉服務是一個完全受控的服務，能夠從多個資料庫來源無縫移轉到 Azure 資料平台，將停機時間降到最低。 此服務可簡化將現有協力廠商和 SQL Server 資料庫移至 Azure VM 上 Azure SQL Database、Azure SQL 受控執行個體和 SQL Server 所需的工作。 請參閱[如何使用資料庫移轉服務，將您的內部部署資料庫移轉至 SQL 受控執行個體](https://aka.ms/migratetoMIusingDMS)。
 
 ## <a name="sql-features-supported"></a>SQL 功能支援
 
@@ -202,7 +202,7 @@ SQL 受控執行個體支援 SQL Server 2008 資料庫的回溯相容性。 支�
   
 下圖概述 SQL 受控執行個體中的介面區相容性：  
 
-![遷移](./media/sql-managed-instance-paas-overview/migration.png)
+![移轉](./media/sql-managed-instance-paas-overview/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-sql-managed-instance"></a>SQL Server 內部部署和 SQL 受控執行個體之間的主要差異
 
@@ -215,11 +215,11 @@ SQL 受控執行個體的優點是在雲端中一律是最新狀態，這表示 
 - 不支援指定完整實體路徑，因此必須以不同的方式支援所有對應的案例： RESTORE DB 不支援 WITH MOVE、CREATE DB 不允許實體路徑、BULK INSERT 僅適用于 Azure blob 等等。
 - SQL 受控執行個體支援[Azure AD authentication](../database/authentication-aad-overview.md) ，做為 Windows 驗證的雲端替代方案。
 - SQL 受控執行個體會自動為包含記憶體內部 OLTP 物件的資料庫管理 XTP 檔案群組和檔案。
-- SQL 受控執行個體支援 SQL Server Integration Services （SSIS），而且可以裝載儲存 SSIS 封裝的 SSIS 目錄（SSISDB），但它們是在 Azure Data Factory 中的受控 Azure SSIS Integration Runtime （IR）上執行。 請參閱[在 Data Factory 中建立 AZURE SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 若要比較 SSIS 功能，請參閱[比較 SQL Database 與 SQL 受控執行個體](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。
+- SQL 受控執行個體支援 SQL Server Integration Services (SSIS) ，並可裝載儲存 SSIS 封裝 (SSISDB) 的 SSIS 目錄，但它們是在 Integration Runtime 的受控 Azure SSIS () IR Azure Data Factory 上執行。 請參閱[在 Data Factory 中建立 AZURE SSIS IR](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)。 若要比較 SSIS 功能，請參閱[比較 SQL Database 與 SQL 受控執行個體](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)。
 
 ### <a name="administration-features"></a>系統管理功能
 
-SQL 受控執行個體可讓系統管理員在管理工作上花費較少的時間，因為這項服務會為您執行這些工作，或大幅簡化這些工作。 例如， [OS/RDBMS 安裝和修補](../database/high-availability-sla.md)、[動態實例的大小調整和](../database/single-database-scale.md)設定、[備份](../database/automated-backups-overview.md)、[資料庫](replication-between-two-instances-configure-tutorial.md)複寫（包括系統資料庫）、[高可用性](../database/high-availability-sla.md)設定，以及健康情況和[效能監視](../../azure-monitor/insights/azure-sql.md)資料流程的設定。
+SQL 受控執行個體可讓系統管理員在管理工作上花費較少的時間，因為這項服務會為您執行這些工作，或大幅簡化這些工作。 例如， [OS/RDBMS 安裝和修補](../database/high-availability-sla.md)、[動態實例的大小調整和](../database/single-database-scale.md)設定、[備份](../database/automated-backups-overview.md)、[資料庫](replication-between-two-instances-configure-tutorial.md)複寫 (包括系統資料庫) 、[高可用性](../database/high-availability-sla.md)設定，以及健康情況和[效能監視](../../azure-monitor/insights/azure-sql.md)資料流程的設定。
 
 如需詳細資訊，請參閱[支援和不支援的 sql 受控執行個體功能清單](../database/features-comparison.md)，以及[sql 受控執行個體和 SQL Server 之間的 t-sql 差異](transact-sql-tsql-differences-sql-server.md)。
 
@@ -229,7 +229,7 @@ SQL 受控執行個體可讓系統管理員在管理工作上花費較少的時�
 
 |屬性|值|註解|
 |---|---|---|
-|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值與 SQL Database 中的相同。 這**不**表示 SQL 引擎第12版（SQL Server 2014）。 SQL 受控執行個體一律會執行最新的穩定 SQL 引擎版本，其等於或高於 SQL Server 的最新可用 RTM 版本。  |
+|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值與 SQL Database 中的相同。 這**不**表示 SQL engine 第12版 (SQL Server 2014) 。 SQL 受控執行個體一律會執行最新的穩定 SQL 引擎版本，其等於或高於 SQL Server 的最新可用 RTM 版本。  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值與 SQL Database 中的相同。|
 |`SERVERPROPERTY('EngineEdition')`|8|此值只會識別出受控執行個體。|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|下列格式的完整執行個體 DNS 名稱：`<instanceName>`.`<dnsPrefix>`.database.windows.net，其中 `<instanceName>` 是客戶提供的名稱，而 `<dnsPrefix>` 是自動產生的部分名稱，確保全域 DNS 名稱是唯一的 (例如，"wcus17662feb9ce98")|範例：my-managed-instance.wcus17662feb9ce98.database.windows.net|

@@ -6,23 +6,23 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 08/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ef205a9a94ef7b40ed271387df617a5d96a78307
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142536"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054301"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 PowerShell 來管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
 本文說明如何使用 PowerShell 來建立和管理已啟用階層命名空間 (HNS) 的儲存體帳戶中的目錄、檔案和許可權。 
 
-[Gen1 至 Gen2 對應](#gen1-gen2-map) | [提供意見反應](https://github.com/Azure/azure-powershell/issues)
+[參考](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0)  | [Gen1 至 Gen2 對應](#gen1-gen2-map)  | [提供意見](https://github.com/Azure/azure-powershell/issues)反應
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -411,7 +411,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 下表顯示用於 Data Lake Storage Gen1 的 Cmdlet 對應至 Data Lake Storage Gen2 之 Cmdlet 的方式。
 
-|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 附註 |
+|Data Lake Storage Gen1 Cmdlet| Data Lake Storage Gen2 Cmdlet| 注意 |
 |--------|---------|-----|
 |AzDataLakeStoreChildItem|AzDataLakeGen2ChildItem|根據預設，AzDataLakeGen2ChildItem Cmdlet 只會列出第一個層級的子專案。 -遞迴參數會以遞迴方式列出子專案。 |
 |AzDataLakeStoreItem<br>AzDataLakeStoreItemAclEntry<br>AzDataLakeStoreItemOwner<br>AzDataLakeStoreItemPermission|AzDataLakeGen2Item|AzDataLakeGen2Item 指令程式的輸出專案具有下列屬性： Acl、擁有者、群組、許可權。|

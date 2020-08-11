@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9658175b0d42db9acfc94d39e4ab226bfe2cfc4b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: ee49ae905622b4b76d782f6a31e0c2333b6d54be
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187314"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055287"
 ---
 # <a name="manage-variables-in-azure-automation"></a>管理 Azure 自動化中的變數
 
@@ -30,10 +30,10 @@ ms.locfileid: "86187314"
 
 Azure 自動化會保存變數，並使其可供使用，即使 Runbook 或 DSC 組態失敗也一樣。 此行為可讓一個 Runbook 或 DSC 組態設定另一個 Runbook 所使用的值，或下一次其執行時的相同 Runbook 或 DSC 組態。
 
-Azure 自動化會安全地儲存每個加密變數。 建立變數時，您可以 Azure 自動化做為安全資產，來指定其加密和儲存體。 
+Azure 自動化會安全地儲存每個加密變數。 當您建立變數時，您可以 Azure 自動化做為安全資產來指定其加密和儲存體。 建立變數之後，您就無法變更其加密狀態，而不需要重新建立變數。 Azure 資訊安全中心建議將所有 Azure 自動化變數加密，如[自動化帳戶變數](../../security-center/recommendations-reference.md#recs-computeapp)中所述。 
 
 >[!NOTE]
->Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會經過加密，並使用為每個自動化帳戶產生的唯一金鑰儲存在 Azure 自動化中。 Azure 自動化會將金鑰儲存在系統管理的 Key Vault 中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。 
+>Azure 自動化中的安全資產包括認證、憑證、連接和加密的變數。 這些資產都會經過加密，並使用為每個自動化帳戶產生的唯一金鑰，儲存在 Azure 自動化中。 Azure 自動化會將金鑰儲存在系統管理的 Key Vault 中。 在儲存安全資產之前，自動化會從 Key Vault 載入金鑰，然後將其用來加密資產。 
 
 ## <a name="variable-types"></a>變數型別
 
@@ -196,4 +196,4 @@ except AutomationAssetNotFound:
 
 * 若要深入了解用來存取變數的 Cmdlet，請參閱[管理 Azure 自動化中的模組](modules.md)。
 * 如需 Runbook 的一般資訊，請參閱 [Azure 自動化中的 Runbook 執行](../automation-runbook-execution.md)。
-* 如需 DSC 組態的詳細資訊，請參閱 [Azure 自動化狀態設定總覽](../automation-dsc-overview.md)。
+* 如需 DSC 設定的詳細資料，請參閱 [Azure 自動化狀態設定概觀](../automation-dsc-overview.md)。

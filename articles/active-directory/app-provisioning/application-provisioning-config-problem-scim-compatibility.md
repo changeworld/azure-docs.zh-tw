@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c54478282cb1106ae95fe1c9e3fbb15e9c37bbf9
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: da458b8aaf1ace7b87e98ded59a4bf90e4158e0f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808570"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054081"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 使用者佈建服務 SCIM 2.0 通訊協定相容性的已知問題和解決方法
 
@@ -50,36 +50,102 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM 旗標到稍後的行為。":::
 
-* 更新修補程式列為以確保合規性
+* 使用下列 URL 來更新修補程式列為，並確保 SCIM 合規性。 目前只有在使用旗標時才可使用這種行為，但會在接下來的幾個月內成為預設行為。
+  * **URL (符合 SCIM 規範的) ：** AzureAdScimPatch062020
   * **SCIM RFC 參考：** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2
-  * **URL (符合 SCIM 規範的) ：** AzureAdScimPatch062020
   * **表現**
-    * 符合規範的群組成員資格移除：
   ```json
+   PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
    {
-     "schemas":
-      ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
-     "Operations":[{
-       "op":"remove",
-       "path":"members[value eq \"2819c223-7f76-...413861904646\"]"
-     }]
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "remove",
+            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
+        }
+    ]
    }
+
+    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "add",
+            "path": "members",
+            "value": [
+                {
+                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
+                }
+            ]
+        }
+    ]
+    } 
+
+    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "someone@contoso.com"
+        },
+        {
+            "op": "replace",
+            "path": "emails[type eq \"work\"].primary",
+            "value": true
+        },
+        {
+            "op": "replace",
+            "value": {
+                "active": false,
+                "userName": "someone"
+            }
+        }
+    ]
+    }
+
+    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "replace",
+            "path": "active",
+            "value": false
+        }
+    ]
+    }
+
+    PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
+    {
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ],
+    "Operations": [
+        {
+            "op": "add",
+            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
+            "value": "Tech Infrastructure"
+        }
+    ]
+    }
+   
   ```
-  * **URL (不符合 SCIM 規範的) ：** AzureAdScimPatch2017
-  * **表現**
-    * 不符合規範的群組成員資格移除：
-   ```json
-   {
-     "schemas":
-     ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
-     "Operations":[{
-       "op":"Remove",  
-       "path":"members",
-       "value":[{"value":"2819c223-7f76-...413861904646"}]
-     }]
-   }
-   ```
+
+  * **降級 URL：** 一旦新的 SCIM 相容行為變成非資源庫應用程式上的預設值，您就可以使用下列 URL 回復成不符合 SCIM 規範的舊行為： AzureAdScimPatch2017
+  
+
 
 ## <a name="upgrading-from-the-older-customappsso-job-to-the-scim-job"></a>從舊版 customappsso 作業升級至 SCIM 作業
 遵循下列步驟將會刪除現有的 customappsso 作業，並建立新的 scim 作業。 
@@ -139,4 +205,3 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 
 ## <a name="next-steps"></a>後續步驟
 [深入了解對於 SaaS 應用程式的佈建和取消佈建](user-provisioning.md)
-

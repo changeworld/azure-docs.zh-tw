@@ -1,14 +1,14 @@
 ---
 title: 取得原則合規性資料
 description: Azure 原則評估和效果會決定合規性。 了解如何取得 Azure 資源的合規性詳細資料。
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 8da1876842e89e806b61bba611db74795a6710d1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7795bba9fec79ee13600d9c72f68e9c763b169e4
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521529"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054647"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>取得 Azure 資源的合規性資料
 
@@ -34,7 +34,7 @@ Azure 原則的其中一個最大優點，就是能夠針對訂用帳戶中的�
 
 - 更新已指派給範圍的原則或計畫。 此案例的評估週期和時間與範圍的新指派相同。
 
-- 資源會透過 Azure Resource Manager、REST、Azure CLI 或 Azure PowerShell，部署至具有指派的範圍。 在此案例中，個別資源的效果事件 (附加、稽核、拒絕、部署) 和合規性狀態資訊，約 15 分鐘後會在入口網站和 SDK 中變成可用。 此事件不會導致對其他資源進行評估。
+- 資源會透過 Azure Resource Manager、REST API 或受支援的 SDK，在具有指派的範圍內部署或更新。 在此案例中，個別資源的效果事件 (附加、稽核、拒絕、部署) 和合規性狀態資訊，約 15 分鐘後會在入口網站和 SDK 中變成可用。 此事件不會導致對其他資源進行評估。
 
 - 標準合規性評估週期。 每 24 小時會自動對指派進行一次重新評估。 由許多資源組成的大型原則或方案可能需要一些時間，因此對於何時會完成評估週期，並沒有任何預先定義的預期。 完成之後，會在入口網站和 SDK 中提供更新的合規性結果。
 
@@ -196,7 +196,7 @@ Azure 入口網站示範視覺化並了解您環境中合規性狀態的圖形�
 
 ## <a name="command-line"></a>命令列
 
-您可以使用 REST API （包括[ARMClient](https://github.com/projectkudu/ARMClient)）、Azure PowerShell 和 Azure CLI 來抓取入口網站中可用的相同資訊。 如需 REST API 的完整詳細資訊，請參閱 [Azure 原則見解](/rest/api/policy-insights/)參考。 REST API 參考頁面上有每個作業的 [試用] 綠色按鈕，可讓您直接在瀏覽器中試用。
+您可以使用 REST API (來抓取入口網站中可用的相同資訊，包括[ARMClient](https://github.com/projectkudu/ARMClient)) 、Azure PowerShell 和 Azure CLI。 如需 REST API 的完整詳細資訊，請參閱 [Azure 原則見解](/rest/api/policy-insights/)參考。 REST API 參考頁面上有每個作業的 [試用] 綠色按鈕，可讓您直接在瀏覽器中試用。
 
 使用 ARMClient 或類似工具來處理 REST API 範例的 Azure 驗證。
 
@@ -246,7 +246,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 
 ### <a name="query-for-resources"></a>查詢資源
 
-在上述範例中，**value.policyAssignments.policyDefinitions.results.queryResultsUri** 會為特定原則定義的所有不符合規範資源提供一個範例 URI。 查看 **$filter**值，ComplianceState 等於（eq）為「不相容」，PolicyAssignmentId 是針對原則定義所指定，然後是 PolicyDefinitionId 本身。 之所以要在篩選中包含 PolicyAssignmentId，是因為 PolicyDefinitionId 可能存在於數個具有各種不同範圍的原則或方案指派中。 藉由同時指定 PolicyAssignmentId 和 the PolicyDefinitionId，我們便可以明確指出要尋找的結果。 之前，針對 PolicyStates，我們使用了 **latest**，這會自動將 **from** 和 **to** 時間範圍設定為過去 24 小時。
+在上述範例中，**value.policyAssignments.policyDefinitions.results.queryResultsUri** 會為特定原則定義的所有不符合規範資源提供一個範例 URI。 查看 **$filter**值時，ComplianceState 等於 (eq) 為「不相容」、針對原則定義指定 PolicyAssignmentId，然後 PolicyDefinitionId 本身。 之所以要在篩選中包含 PolicyAssignmentId，是因為 PolicyDefinitionId 可能存在於數個具有各種不同範圍的原則或方案指派中。 藉由同時指定 PolicyAssignmentId 和 the PolicyDefinitionId，我們便可以明確指出要尋找的結果。 之前，針對 PolicyStates，我們使用了 **latest**，這會自動將 **from** 和 **to** 時間範圍設定為過去 24 小時。
 
 ```http
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-10-01&$from=2018-05-18 04:28:22Z&$to=2018-05-19 04:28:22Z&$filter=ComplianceState eq 'NonCompliant' and PolicyAssignmentId eq '/subscriptions/{subscriptionId}/resourcegroups/rg-tags/providers/microsoft.authorization/policyassignments/37ce239ae4304622914f0c77' and PolicyDefinitionId eq '/providers/microsoft.authorization/policydefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62'

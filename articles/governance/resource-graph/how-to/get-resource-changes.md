@@ -1,14 +1,14 @@
 ---
 title: 取得資源變更
 description: 了解如何找出變更資源的時間、取得已變更屬性的清單，以及評估差異。
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: how-to
-ms.openlocfilehash: 3d65b5d7e968fda17f80d790ae3171398e2cb73b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135542"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056562"
 ---
 # <a name="get-resource-changes"></a>取得資源變更
 

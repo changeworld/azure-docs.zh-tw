@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 05283c02c2e5f95e22beb6fbeaad7a99e42ee6aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: b6111529d1a3d37f08b29fb5c0751fb6a49acea5
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540830"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054063"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的驗證方法？
 
@@ -39,7 +39,7 @@ Azure AD 中有許多帳戶已啟用自助式密碼重設 (SSPR) 和 Azure Multi
 | [Microsoft Authenticator 應用程式](#microsoft-authenticator-app) | 是 (預覽) | MFA 和 SSPR |
 | [FIDO2 安全性金鑰 (預覽)](#fido2-security-keys) | 是 | 僅限 MFA |
 | [OATH 軟體權杖](#oath-software-tokens) | 否 | MFA |
-| [OATH 硬體權杖 (預覽)](#oath-hardware-tokens-preview) | 是 | MFA |
+| [OATH 硬體權杖 (預覽)](#oath-hardware-tokens-preview) | 否 | MFA |
 | [SMS](#phone-options) | 是 (預覽) | MFA 和 SSPR |
 | [語音通話](#phone-options) | 否 | MFA 和 SSPR |
 | [安全性問題](#security-questions) | 否 | 僅限 SSPR |
@@ -74,7 +74,7 @@ Authenticator 應用程式可協助防止未經授權即存取帳戶，並藉由
 ![範例網頁瀏覽器提示的螢幕擷取畫面，其中顯示用以完成登入程序的 Authenticator 應用程式通知](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 > [!NOTE]
-> 如果您的組織有員工參與或前往中國，透過 Android 裝置上的行動裝置*應用程式*方法的通知將無法在該國家/地區運作，因為 Google play 服務（包括推播通知）會在區域中遭到封鎖。 不過，iOS 通知會正常執行。 針對 Android 裝置，應讓這些使用者使用替代的驗證方法。
+> 如果您的組織有員工參與或前往中國，則在 Android 裝置上透過行動裝置*應用程式*方法的通知，無法在該國家/地區做為 Google play 服務 (包含推播通知) 會在區域中遭到封鎖。 不過，iOS 通知會正常執行。 針對 Android 裝置，應讓這些使用者使用替代的驗證方法。
 
 ### <a name="verification-code-from-mobile-app"></a>行動應用程式傳回的驗證碼
 

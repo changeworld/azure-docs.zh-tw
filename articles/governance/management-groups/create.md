@@ -1,14 +1,14 @@
 ---
 title: 建立管理群組來組織資源-Azure 治理
 description: 了解如何使用入口網站、Azure PowerShell 和 Azure CLI 建立 Azure 管理群組來管理多個資源。
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6fe7f2ea74c697701084321e068042b36acbdb11
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 0739eafdf4cf41195b189a8496c331ab470bbec0
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971130"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056630"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>建立用於資源組織及管理的管理群組
 
@@ -18,7 +18,7 @@ ms.locfileid: "85971130"
 
 ## <a name="create-a-management-group"></a>建立管理群組
 
-租使用者中的任何 Azure AD 使用者都可以建立管理群組，而不需將管理群組寫入權限指派給該使用者。 這個新的管理群組將是根管理群組的子系，而建立者將會獲得「擁有者」角色指派。 管理群組服務允許此功能，因此不需要根層級的角色指派。 建立根管理群組時，沒有任何使用者可以存取它。 為了避免尋找 Azure AD 全域管理員開始使用管理群組的障礙，我們允許在根目錄建立初始管理群組  
+租使用者中的任何 Azure AD 使用者都可以建立管理群組，而不需將管理群組寫入權限指派給該使用者。 這個新的管理群組將是根管理群組的子系，而建立者將會獲得「擁有者」角色指派。 管理群組服務允許此功能，因此在根層級不需要角色指派。 建立根管理群組時，沒有任何使用者可以存取它。 為了避免尋找 Azure AD 全域管理員開始使用管理群組的障礙，我們允許在根目錄建立初始管理群組  
 二級.
 
 您可以使用入口網站、 [Azure Resource Manager 範本](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)、PowerShell 或 Azure CLI 來建立管理群組。

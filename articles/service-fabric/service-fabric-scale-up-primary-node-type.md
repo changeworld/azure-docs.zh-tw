@@ -4,14 +4,14 @@ description: 瞭解如何藉由新增節點類型來調整 Service Fabric 叢集
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: 5cabe7e377c29812252074336d7c5e9c9d3ba259
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: eecf398359470f6e5e151c53eb63b3cb56efbe39
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031962"
+ms.locfileid: "88056749"
 ---
-# <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>擴大 Service Fabric 叢集主要節點類型
+# <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>藉由新增節點類型來相應增加 Service Fabric 叢集主要節點類型
 本文說明如何藉由將額外的節點類型新增至叢集，來相應增加 Service Fabric 叢集主要節點類型。 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 虛擬機器擴展集是一個 Azure 計算資源，可以用來將一組虛擬機器當做一個集合加以部署和管理。 在 Azure 叢集中定義的每個節點類型，會[設定為不同的擴展集](service-fabric-cluster-nodetypes.md)。 隨後，您即可個別管理每個節點類型。
 
 下列教學課程中的範例範本可以在這裡找到： [Service Fabric 主要節點類型調整範例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Primary-NodeType-Scaling-Sample)

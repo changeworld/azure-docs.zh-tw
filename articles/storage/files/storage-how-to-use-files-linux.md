@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bc0390ba9bf8d0f80d1533fe6e40b42df0cb5359
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d00b0558f85e18dfb53736d89fead953cc01ee60
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835709"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053162"
 ---
 # <a name="use-azure-files-with-linux"></a>搭配 Linux 使用 Azure 檔案
 [Azure 檔案服務](storage-files-introduction.md)是 Microsoft 易於使用的雲端檔案系統。 可以使用 [SMB 核心用戶端](https://wiki.samba.org/index.php/LinuxCIFS)將 Azure 檔案共用裝載在 Linux 發行版本中。 本文將說明掛接 Azure 檔案共用的兩種方式：使用 `mount` 命令的隨選掛接，以及建立項目 `/etc/fstab` 的開機掛接。
@@ -26,7 +26,7 @@ ms.locfileid: "87835709"
 | CentOS | 7+ |  7.5+ |
 | Debian | 8+ | 10+ |
 | openSUSE | 13.2+ | 42.3+ |
-| SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
+| SUSE Linux Enterprise Server | 12+ | 12 SP2+ |
 
 如果您使用上表中未列出的 Linux 散發套件，您可以檢查 Linux 核心版本，以查看您的 Linux 散發套件是否支援使用加密的 SMB 3.0。 使用加密的 SMB 3.0 已新增至 Linux 核心版本4.11。 此 `uname` 命令會傳回使用中的 Linux 核心版本：
 
@@ -34,7 +34,7 @@ ms.locfileid: "87835709"
 uname -r
 ```
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 <a id="smb-client-reqs"></a>
 
 * <a id="install-cifs-utils"></a>**確定已安裝 cifs utils 套件。**  
@@ -246,7 +246,7 @@ uname -r
 
 從 Linux 核心4.18 開始，SMB 核心模組（ `cifs` 因傳統原因而呼叫）會公開新的模組參數， (通常稱為的各種外部檔) 的*parm* `disable_legacy_dialects` 。 雖然是在 Linux 核心4.18 中引進，但部分廠商已將這項變更 backport 到其支援的舊版核心。 為了方便起見，下表詳細說明通用 Linux 散發套件上此模組參數的可用性。
 
-| 發行版本 | 可以停用 SMB 1 |
+| 散發 | 可以停用 SMB 1 |
 |--------------|-------------------|
 | Ubuntu 14.04-16.04 | 否 |
 | Ubuntu 18.04 | 是 |

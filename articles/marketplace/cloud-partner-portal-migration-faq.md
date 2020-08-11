@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 59f66b88c998a78f5bd3ccf3757cb791aea2521b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279299"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056545"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>從 Cloud Partner 入口網站轉換到合作夥伴中心的常見問題
 
@@ -25,7 +25,7 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 | 區域<img src="" width=200px> | 變更 |
 | --- | --- |
 | 帳戶 | 不需要建立新的合作夥伴中心帳戶;您可以使用現有的 Cloud Partner 入口網站認證登入合作夥伴中心，您現在會在其中管理您的帳戶、使用者、許可權和計費。 發行合約和公司設定檔資訊會遷移至新的合作夥伴中心帳戶，以及任何付款設定檔資訊、使用者帳戶和許可權，以及使用中的供應專案。 若要深入瞭解，請到[在合作夥伴中心管理您的商業 marketplace 帳戶](partner-center-portal/manage-account.md)。 |
-| 提供發佈和供應專案管理體驗 | 我們已將您的供應專案資料從 Cloud Partner 入口網站移至合作夥伴中心。 您現在將會在合作夥伴中心存取您的供應專案，以提供改良的使用者體驗和直覺介面。 瞭解如何[在商業 Marketplace 中更新現有的供應](partner-center-portal/update-existing-offer.md)專案。 |
+| 提供發佈和供應專案管理體驗 | 我們已將您的供應專案資料從 Cloud Partner 入口網站移至合作夥伴中心。 您現在將會在合作夥伴中心存取您的供應專案，以提供改良的使用者體驗和直覺介面。 瞭解如何[在商業 marketplace 中更新現有的供應](partner-center-portal/update-existing-offer.md)專案。 |
 | 在商業 marketplace 中提供供應專案的可用性 | 無變更。 如果您的供應專案在商用 marketplace 中上線，則會繼續上線。 |
 | 新購買和部署 | 無變更。 您的客戶可以繼續購買及部署您的供應專案，而不會有任何中斷。 |
 | 支出 | 任何購買和部署都將繼續以一般方式向您收費。 深入瞭解如何[在商業 marketplace 中付費](partner-center-portal/get-paid.md)。 |
@@ -89,7 +89,7 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 | 諮詢服務 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立諮詢服務供應](partner-center-portal/create-consulting-service-offer.md)專案。 |
 | 受控服務 | 是 | 登入合作夥伴中心以建立新的供應專案，並管理在 Cloud Partner 入口網站中建立的供應專案。 若要深入瞭解，請到[建立受控服務供應](partner-center-portal/create-new-managed-service-offer.md)專案。 |
 | Dynamics Nav 受控服務 | 否 | Microsoft 已將 Dynamics NAV 受控服務演變為[dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)，因此我們已從 AppSource 中取消列出 Dynamics Nav 受控服務的即時供應專案。 這些供應專案已不再由客戶探索，而且尚未移至合作夥伴中心。 若要在 AppSource 中提供您的供應專案，請將其調整為 Dynamics 365 Business Central 供應專案，並在[合作夥伴中心](https://partner.microsoft.com/)提交。 若要深入瞭解，請到[建立 Dynamics 365 Business Central 供應](partner-center-portal/create-new-business-central-offer.md)專案。 |
-| Cortana Intelligence | 否 | Microsoft 已發展 Cortana 情報的產品藍圖，因此我們已從 AppSource 中取消列出 Cortana 情報的現場優惠。 這些供應專案已不再由客戶探索，而且尚未移至合作夥伴中心。 若要在商業 marketplace 中提供您的供應專案，請將您的供應專案調整為軟體即服務（SaaS）供應專案，並在[合作夥伴中心](https://partner.microsoft.com/)提交。 若要深入瞭解，請到[合作夥伴中心的 SaaS 供應專案建立檢查清單](partner-center-portal/offer-creation-checklist.md)。 |
+| Cortana Intelligence | 否 | Microsoft 已發展 Cortana 情報的產品藍圖，因此我們已從 AppSource 中取消列出 Cortana 情報的現場優惠。 這些供應專案已不再由客戶探索，而且尚未移至合作夥伴中心。 若要在商業 marketplace 中提供您的供應專案，請將您的供應專案調整為軟體即服務 (SaaS) 供應專案，並在[合作夥伴中心](https://partner.microsoft.com/)提交這些產品。 若要深入瞭解，請到[合作夥伴中心的 SaaS 供應專案建立檢查清單](partner-center-portal/offer-creation-checklist.md)。 |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>我在合作夥伴中心找不到我的 Cloud Partner 入口網站供應專案
 
@@ -143,7 +143,7 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 
 ### <a name="enhanced-preview-options"></a>強化的預覽選項
 
-合作夥伴中心包含[比較功能](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers) \(部分機器翻譯\)，其具備改善的篩選選項。 這可讓您比較供應項目的預覽及上線版本。
+合作夥伴中心包含[比較功能](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers) \(部分機器翻譯\)，其具備改善的篩選選項。 這可讓您比較供應項目的預覽及上線版本。
 
 [![螢幕擷取畫面顯示合作夥伴中心比較功能。](media/cpp-pc-faq/compare.png "顯示合作夥伴中心比較功能")](media/cpp-pc-faq/compare.png#lightbox)
 
@@ -153,7 +153,7 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 
 [![螢幕擷取畫面：顯示 [合作夥伴中心方案] 頁面。](media/cpp-pc-faq/plans.png "顯示 [合作夥伴中心方案] 頁面")](media/cpp-pc-faq/plans.png#lightbox)
 
-此外，您先前在 Cloud Partner 入口網站的**Marketplace**或**店面詳細資料**（諮詢服務、Power BI 應用程式）頁面中提供的資訊，現在會在 [合作夥伴中心] 的 [供應專案]**清單**頁面上收集：
+此外，您先前在**Marketplace**或**店面詳細資料**中提供的資訊 (諮詢服務，Cloud Partner 入口網站中的 Power BI 應用程式) 頁面現在會在合作夥伴中心的**供應專案清單**頁面上收集：
 
 [![螢幕擷取畫面顯示合作夥伴中心供應專案清單頁面。](media/cpp-pc-faq/offer-listing.png "顯示合作夥伴中心供應專案清單頁面")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
@@ -162,7 +162,7 @@ Cloud Partner 入口網站已轉換至合作夥伴中心。 合作夥伴中心�
 - [計劃設定] 頁面
 - [計劃清單] 頁面
 - 計劃 [可用性] 頁面
-- [規劃技術設定] 頁面，如下所示： ![ ！ [螢幕擷取畫面顯示 [合作夥伴中心技術設定] 頁面。]（media/cpp-pc-常見問題/technical-configuration.png "顯示合作夥伴中心技術設定頁面"）](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- [規劃技術設定] 頁面，如下所示： ![ ！ [螢幕擷取畫面顯示 [合作夥伴中心技術設定] 頁面。] (media/cpp-pc-常見問題/technical-configuration.png」顯示合作夥伴中心的 [技術設定] 頁面 [) ](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 您的供應專案識別碼現在會顯示在供應專案的左側導覽列上：
 

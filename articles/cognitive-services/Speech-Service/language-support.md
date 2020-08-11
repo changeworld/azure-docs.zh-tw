@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: c01e543b251020581d96d61434d0b3309535ef0c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902040"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053570"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>語音服務的語言和語音支援
 
@@ -361,20 +361,20 @@ Microsoft Speech SDK 和 REST API 均支援這些語音，且各支援依地區�
 | Locale | Language | 文字相依驗證 | 與文字無關的驗證 | 與文字無關的識別 |
 |----|----|----|----|----|
 | zh-TW | 英文 (美國) | 是 | 是 | 是 |
-|zh-CN  |中文 (普通話，簡體)|    n/a|    是|    是|
-|de-DE  |德文 (德國)   |n/a    |是    |是|
-|en-GB  |英文 (英國)   |n/a    |是    |是|
-|fr-FR  |法文 (法國)    |n/a    |是    |是|
-|en-AU  |英文 (澳大利亞)    |n/a    |是    |是|
-|en-CA  |英文 (加拿大)   |n/a|   是|    是|
-|fr-CA  |法文 (加拿大)    |n/a    |是|   是|
-|it-IT  |義大利文|   n/a |是|   是|
-|es-ES| 西班牙文 (西班牙) |n/a    |是|   是|
-|es-MX  |西班牙文 (墨西哥)   |n/a|   是|    是|
-|ja-JP| 日文    |n/a    |是    |是|
-|pt-BR| 葡萄牙文 (巴西)|    n/a|    是|    是|
+|zh-CN    |中文 (普通話，簡體)|    n/a|    是|    是|
+|de-DE    |德文 (德國)    |n/a    |是    |是|
+|en-GB    |英文 (英國)    |n/a    |是    |是|
+|fr-FR    |法文 (法國)    |n/a    |是    |是|
+|en-AU    |英文 (澳大利亞)    |n/a    |是    |是|
+|en-CA    |英文 (加拿大)    |n/a|    是|    是|
+|fr-CA    |法文 (加拿大)    |n/a    |是|    是|
+|it-IT    |義大利文|    n/a    |是|    是|
+|es-ES|    西班牙文 (西班牙)    |n/a    |是|    是|
+|es-MX    |西班牙文 (墨西哥)    |n/a|    是|    是|
+|ja-JP|    日文    |n/a    |是    |是|
+|pt-BR|    葡萄牙文 (巴西)|    n/a|    是|    是|
 
 ## <a name="next-steps"></a>後續步驟
 
-* [取得您的語音服務試用訂用帳戶](https://azure.microsoft.com/try/cognitive-services/)
+* [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 * [了解如何以 C# 辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp) (英文)

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 091555bac780f3abc7089d6214d0f9a8cfbf98cd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518431"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055372"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>在條件式存取原則中使用位置條件 
 
@@ -33,7 +33,7 @@ ms.locfileid: "86518431"
 網路位置取決於用戶端提供給 Azure Active Directory 的公用 IP 位址。 條件式存取原則預設適用于所有 IPv4 和 IPv6 位址。 
 
 > [!TIP]
-> 只有**[命名位置（預覽）](#preview-features)** 介面支援 IPv6 範圍。 
+> 只有**[命名位置 (預覽) ](#preview-features)** 介面支援 IPv6 範圍。 
 
 ## <a name="named-locations"></a>具名位置
 
@@ -49,7 +49,7 @@ ms.locfileid: "86518431"
 - 最多 90 個具名位置，每個位置皆指派一個 IP 範圍。
 
 > [!TIP]
-> 只有**[命名位置（預覽）](#preview-features)** 介面支援 IPv6 範圍。 
+> 只有**[命名位置 (預覽) ](#preview-features)** 介面支援 IPv6 範圍。 
 
 ### <a name="trusted-locations"></a>信任的位置
 
@@ -93,7 +93,7 @@ ms.locfileid: "86518431"
 
 ## <a name="preview-features"></a>預覽功能
 
-除了正式推出的「命名位置」功能之外，還有一個命名位置（預覽）。 您可以使用目前 [命名位置] 分頁上方的橫幅來存取命名位置預覽。
+除了正式推出的「命名位置」功能以外，也有一個名為 location (preview) 。 您可以使用目前 [命名位置] 分頁上方的橫幅來存取命名位置預覽。
 
 ![試用命名位置預覽](./media/location-condition/preview-features.png)
 
@@ -147,12 +147,12 @@ ms.locfileid: "86518431"
 
 ### <a name="when-will-my-tenant-have-ipv6-traffic"></a>我的租使用者何時會有 IPv6 流量？
 
-Azure Active Directory （Azure AD）目前不支援使用 IPv6 的直接網路連線。 不過，在某些情況下，驗證流量會透過另一個服務來代理。 在這些情況下，將會在原則評估期間使用 IPv6 位址。
+Azure Active Directory (Azure AD) 目前不支援使用 IPv6 的直接網路連線。 不過，在某些情況下，驗證流量會透過另一個服務來代理。 在這些情況下，將會在原則評估期間使用 IPv6 位址。
 
 大部分以 proxy 傳送至 Azure AD 的 IPv6 流量都是來自 Microsoft Exchange Online。 當可用時，Exchange 會偏好使用 IPv6 連線。 **因此，如果您有任何 Exchange 的條件式存取原則已針對特定 IPv4 範圍進行設定，您會想要確定您也已新增組織的 IPv6 範圍。** 在下列兩種情況下，不包含 IPv6 範圍會導致非預期的行為：
 
 - 當使用郵件用戶端以舊版驗證連線到 Exchange Online 時，Azure AD 可能會收到 IPv6 位址。 初始驗證要求會前往 Exchange，然後再 proxy 傳送至 Azure AD。
-- 在瀏覽器中使用 Outlook Web 存取（OWA）時，它會定期驗證所有條件式存取原則是否繼續滿足。 這種檢查是用來攔截使用者可能已從允許的 IP 位址移至新位置的情況，像是在街道下的咖啡廳。 在此情況下，如果使用 IPv6 位址，而且 IPv6 位址不在設定的範圍內，則使用者可能會中斷其會話，並將其導向回到 Azure AD 重新驗證。 
+- 當 Outlook Web 存取 (OWA) 在瀏覽器中使用時，它會定期驗證所有條件式存取原則是否繼續滿足。 這種檢查是用來攔截使用者可能已從允許的 IP 位址移至新位置的情況，像是在街道下的咖啡廳。 在此情況下，如果使用 IPv6 位址，而且 IPv6 位址不在設定的範圍內，則使用者可能會中斷其會話，並將其導向回到 Azure AD 重新驗證。 
 
 這些是您在命名位置中設定 IPv6 範圍時可能需要的最常見原因。 此外，如果您使用 Azure Vnet，則會有來自 IPv6 位址的流量。 如果您有條件式存取原則封鎖的 VNet 流量，請檢查您的 Azure AD 登入記錄。 一旦識別出流量之後，您就可以取得使用的 IPv6 位址，並將它從原則中排除。 
 
@@ -165,7 +165,7 @@ Azure Active Directory （Azure AD）目前不支援使用 IPv6 的直接網路�
 
 您也可以按一下報表中的資料列，然後前往登入活動詳細資料中的 [位置] 索引標籤，來尋找用戶端 IP。 
 
-## <a name="what-you-should-know"></a>您應該知道的事情
+## <a name="what-you-should-know"></a>您應該知道的事項
 
 ### <a name="when-is-a-location-evaluated"></a>何時會評估位置？
 
@@ -190,7 +190,7 @@ Azure Active Directory （Azure AD）目前不支援使用 IPv6 的直接網路�
 
 當您使用雲端託管 Proxy 或 VPN 解決方案時，Azure AD 在評估原則時使用的 IP 位址為 Proxy 的 IP 位址。 不會使用包含使用者公用 IP 位址的 X-Forwarded-For (XFF) 標頭，因為無法驗證它來自受信任的來源，故會提供偽造 IP 位址的方法。
 
-當雲端 Proxy 已就緒時，就能使用用來要求已加入網域之裝置的原則或來自 AD FS 的內部公司網路宣告。
+當雲端 proxy 就緒時，就可以使用用來要求已加入混合式 Azure AD 裝置的原則，或 AD FS 的內部公司網路索賠。
 
 ### <a name="api-support-and-powershell"></a>API 支援與 PowerShell
 

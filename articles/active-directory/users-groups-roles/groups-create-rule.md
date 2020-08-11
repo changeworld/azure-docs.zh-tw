@@ -14,17 +14,17 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4855db7678a8cdea9bdad19ac0a8ec33503ff983
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 383c5a0d6811b2797ecb4407e73c26752e1a5022
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728411"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055984"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>在 Azure Active Directory 中建立或更新動態群組
 
-在 Azure Active Directory （Azure AD）中，您可以使用規則根據使用者或裝置屬性來判斷群組成員資格。 本文說明如何在 Azure 入口網站中設定動態群組的規則。
-安全性群組或 Office 365 群組支援動態成員資格。 套用群組成員資格規則時，會評估使用者和裝置屬性是否符合成員資格規則。 當使用者或裝置的屬性變更時，會處理組織中的所有動態群組規則，以進行成員資格變更。 如果使用者和裝置符合群組的條件，則會加以新增或移除。 安全性群組可以用於裝置或使用者，但 Office 365 群組只能是使用者群組。
+在 Azure Active Directory (Azure AD) 中，您可以使用規則根據使用者或裝置屬性來判斷群組成員資格。 本文說明如何在 Azure 入口網站中設定動態群組的規則。
+安全性群組或 Microsoft 365 群組都支援動態成員資格。 套用群組成員資格規則時，會評估使用者和裝置屬性是否符合成員資格規則。 當使用者或裝置的屬性變更時，會處理組織中的所有動態群組規則，以進行成員資格變更。 如果使用者和裝置符合群組的條件，則會加以新增或移除。 安全性群組可以用於裝置或使用者，但 Microsoft 365 群組只能是使用者群組。
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure 入口網站中的規則建立器
 

@@ -1,14 +1,14 @@
 ---
 title: 如何使用您的管理群組 - Azure 治理
 description: 了解如何檢視、維護、更新及刪除您的管理群組階層。
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5a0269935daedb3be478cc27d5ecaf87f3c97f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43837dcaed9b9628573ee92244ede542107155f9
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535003"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055134"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>利用管理群組來管理您的資源
 
@@ -65,9 +65,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 若要刪除管理群組，必須符合下列需求：
 
-1. 管理群組下沒有任何子管理群組或訂用帳戶。
-
-   - 若要將訂用帳戶或管理群組移至另一個管理群組，請參閱[在階層中移動管理群組和訂用帳戶](#moving-management-groups-and-subscriptions)。
+1. 管理群組下沒有任何子管理群組或訂用帳戶。 若要將訂用帳戶或管理群組移至另一個管理群組，請參閱在階層[中移動管理群組和訂閱](#moving-management-groups-and-subscriptions)。
 
 1. 您必須具備管理群組上的寫入權限 (「擁有者」、「參與者」或「管理群組參與者」)。 若要查看您有哪些權限，請選取管理群組，然後選取 **IAM**。 若要深入瞭解 Azure 角色，請參閱  
    [使用 RBAC 管理存取權與權限](../../role-based-access-control/overview.md)。
@@ -200,7 +198,7 @@ az account management-group show --name 'Contoso' -e -r
 
 建立管理群組的其中一個原因是要將訂用帳戶組合在一起。 只有管理群組和訂用帳戶才能設為另一個管理群組的子群組。 移至管理群組的訂用帳戶會繼承父管理群組中的所有使用者存取權和原則
 
-將管理群組或訂用帳戶移為另一個管理群組的子系時，有三個規則必須評估為 true。
+將管理群組或訂用帳戶移至另一個管理群組的子系時，必須將三個規則評估為 [true]。
 
 如果您要執行移動動作，您需要： 
 

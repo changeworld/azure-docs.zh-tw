@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cd8771afdc9c4462faaff758ffdd073382f69f53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550984"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055763"
 ---
 # <a name="blob-snapshots"></a>Blob 快照集
 
 快照集是在某個點時間取得的唯讀 Blob 版本。
 
 > [!NOTE]
-> Blob 版本設定（預覽）提供另一種方式來維護 blob 的歷程記錄複本。 如需詳細資訊，請參閱[Blob 版本設定（預覽）](versioning-overview.md)。
+> Blob 版本設定 (預覽) 提供另一種方式來維護 blob 的歷程記錄複本。 如需詳細資訊，請參閱[Blob 版本設定 (預覽) ](versioning-overview.md)。
 
 ## <a name="about-blob-snapshots"></a>關於 blob 快照集
 
@@ -33,7 +33,7 @@ Blob 的快照集與其基底 Blob 相同，除了 Blob URI 附加了 [日期時
 > 所有快照集會共用基底 blob 的 URI。 基底 blob 與快照集之間的唯一差別在於附加的 **DateTime** 值。
 >
 
-Blob 可包含任意數目的快照集。 快照集會一直保存到明確刪除為止，這表示快照集無法 outlive 其基底 blob。 您可以列舉與基底 Blob 相關聯的快照集，以追蹤目前的快照集。
+Blob 可包含任意數目的快照集。 快照集會一直保存到明確刪除為止，不論是獨立或作為基底 blob 的刪除 Blob 作業的一部分。 您可以列舉與基底 Blob 相關聯的快照集，以追蹤目前的快照集。
 
 當您建立 Blob 的快照集時，Blob 的系統屬性都會使用相同值複製到快照集中。 基底 blob 的中繼資料也會複製到快照集，除非您在建立快照集時為其指定個別的中繼資料。 建立快照集後，您便可加以讀取、複製或刪除，但無法加以修改。
 

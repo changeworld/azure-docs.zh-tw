@@ -1,7 +1,7 @@
 ---
 title: Blob 版本設定 (預覽)
 titleSuffix: Azure Storage
-description: Blob 儲存體版本設定（預覽）會自動維護舊版的物件，並使用時間戳來識別它們。 您可以還原先前版本的 blob，以在錯誤地修改或刪除資料時加以復原。
+description: Blob 儲存體版本設定 (預覽) 會自動維護舊版的物件，並以時間戳記加以識別。 您可以還原先前版本的 blob，以在錯誤地修改或刪除資料時加以復原。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,20 +10,22 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2085f0e8a148e27914b517f25e48894009592dd2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498594"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056528"
 ---
 # <a name="blob-versioning-preview"></a>Blob 版本設定 (預覽)
 
-您可以啟用 Blob 儲存體版本設定（預覽），自動維護舊版的物件。  啟用 blob 版本設定時，您可以還原較舊版本的 blob，以在錯誤地修改或刪除資料時加以復原。
+您可以 (預覽) 啟用 Blob 儲存體版本設定，以自動維護舊版的物件。  啟用 blob 版本設定時，您可以還原較舊版本的 blob，以在錯誤地修改或刪除資料時加以復原。
 
 儲存體帳戶上會啟用 Blob 版本設定，並套用至儲存體帳戶中的所有 blob。 為儲存體帳戶啟用 blob 版本設定之後，Azure 儲存體會自動維護儲存體帳戶中每個 blob 的版本。
 
 Microsoft 建議使用 blob 版本設定來維護舊版的 blob，以提供更佳的資料保護。 可能的話，請使用 blob 版本設定而不是 blob 快照集來維護先前的版本。 Blob 快照集提供類似的功能，因為它們會維護舊版的 blob，但您的應用程式必須手動維護快照集。
+
+若要瞭解如何啟用 blob 版本設定，請參閱[啟用和管理 blob 版本](versioning-enable.md)設定。
 
 > [!IMPORTANT]
 > Blob 版本控制無法協助您復原意外刪除的儲存體帳戶或容器。 若要防止意外刪除儲存體帳戶，請在儲存體帳戶資源上設定**CannotDelete**鎖定。 如需有關鎖定 Azure 資源的詳細資訊，請參閱[鎖定資源以防止非預期的變更](../../azure-resource-manager/management/lock-resources.md)。
@@ -32,7 +34,7 @@ Microsoft 建議使用 blob 版本設定來維護舊版的 blob，以提供更�
 
 版本會在指定的時間點，捕捉 blob 的狀態。 針對儲存體帳戶啟用 blob 版本設定時，Azure 儲存體會在每次修改或刪除 blob 時，自動建立新版本的 blob。
 
-當您建立已啟用版本設定的 blob 時，新的 blob 會是 blob （或基底 blob）的目前版本。 如果您後續修改該 blob，Azure 儲存體會建立一個版本，以在修改之前先捕獲 blob 的狀態。 修改後的 blob 會變成新的目前版本。 每次修改 blob 時，就會建立新的版本。
+當您建立已啟用版本設定的 blob 時，新的 blob 會是 blob (或基底 blob) 的目前版本。 如果您後續修改該 blob，Azure 儲存體會建立一個版本，以在修改之前先捕獲 blob 的狀態。 修改後的 blob 會變成新的目前版本。 每次修改 blob 時，就會建立新的版本。
 
 當您刪除已啟用版本設定的 blob 時，Azure 儲存體會建立一個版本，它會在刪除 blob 之前，先捕獲該 blob 的狀態。 然後會刪除 blob 的目前版本，但會保存 blob 的版本，以便在需要時重新建立。 
 
@@ -42,7 +44,7 @@ Blob 版本是不可變的。 您無法修改現有 blob 版本的內容或中�
 
 每個 blob 版本都是以版本識別碼來識別。 版本識別碼的值是寫入或更新 blob 的時間戳記。 建立版本時，會指派版本識別碼。
 
-您可以藉由提供版本識別碼，對特定版本的 blob 執行讀取或刪除作業。 如果您省略版本識別碼，作業會針對目前的版本（基底 blob）進行操作。
+您可以藉由提供版本識別碼，對特定版本的 blob 執行讀取或刪除作業。 如果您省略版本識別碼，作業會針對基底 blob)  (目前的版本。
 
 當您呼叫寫入作業來建立或修改 blob 時，Azure 儲存體會在回應中傳回*x-ms 版本識別碼*標頭。 此標頭包含寫入作業所建立之目前 blob 版本的版本識別碼。
 
@@ -91,8 +93,8 @@ Blob 版本是不可變的。 您無法修改現有 blob 版本的內容或中�
 
 下列作業不會觸發新版本的建立。 若要從這些作業中捕捉變更，請手動建立快照集：
 
-- [Put 頁面](/rest/api/storageservices/put-page)（分頁 blob）
-- [附加區塊](/rest/api/storageservices/append-block)（附加 blob）
+- [將頁面](/rest/api/storageservices/put-page) (分頁 blob) 
+- [附加區塊](/rest/api/storageservices/append-block) (附加 blob) 
 
 Blob 的所有版本都必須是相同的 blob 類型。 如果 blob 有先前的版本，除非您先刪除 blob 及其所有版本，否則無法使用另一種類型覆寫其中一個類型的 blob。
 
@@ -167,8 +169,8 @@ Blob 快照集是特定時間點所取得之 blob 的唯讀複本。 Blob 快照
 
 您可以使用下列其中一種方法來授權 blob 版本的存取權：
 
-- 藉由使用角色型存取控制（RBAC）將許可權授與 Azure Active Directory （Azure AD）安全性主體。 Microsoft 建議使用 Azure AD 以獲得更佳的安全性和易用性。 如需有關使用 Azure AD 搭配 blob 作業的詳細資訊，請參閱[使用 Azure Active Directory 授權存取 blob 和佇列](../common/storage-auth-aad.md)。
-- 藉由使用共用存取簽章（SAS）來委派 blob 版本的存取權。 指定已簽署資源類型的版本識別碼 `bv` （代表 blob 版本），以針對特定版本的作業建立 SAS 權杖。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章 (SAS) 授與 Azure 儲存體資源的有限存取權](../common/storage-sas-overview.md)。
+- 藉由使用角色型存取控制 (RBAC) ，將許可權授與 Azure Active Directory (Azure AD) 的安全性主體。 Microsoft 建議使用 Azure AD 以獲得更佳的安全性和易用性。 如需有關使用 Azure AD 搭配 blob 作業的詳細資訊，請參閱[使用 Azure Active Directory 授權存取 blob 和佇列](../common/storage-auth-aad.md)。
+- 藉由使用共用存取簽章 (SAS) 來委派 blob 版本的存取權。 指定已簽署資源類型的版本識別碼 `bv` （代表 blob 版本），以針對特定版本的作業建立 SAS 權杖。 如需共用存取簽章的詳細資訊，請參閱[使用共用存取簽章 (SAS) 授與 Azure 儲存體資源的有限存取權](../common/storage-sas-overview.md)。
 - 藉由使用帳戶存取金鑰，以共用金鑰組 blob 版本的作業進行授權。 如需詳細資訊，請參閱[使用共用金鑰進行授權](/rest/api/storageservices/authorize-with-shared-key)。
 
 Blob 版本設定是為了保護您的資料免于遭到意外或惡意刪除所設計。 若要加強保護，刪除 blob 版本需要特殊許可權。 下列各節說明刪除 blob 版本所需的許可權。
@@ -177,12 +179,12 @@ Blob 版本設定是為了保護您的資料免于遭到意外或惡意刪除所
 
 下表顯示哪些 RBAC 動作支援刪除 blob 或 blob 版本。
 
-| 說明 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
+| 描述 | Blob 服務作業 | 需要 RBAC 資料動作 | RBAC 內建角色支援 |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | 刪除 blob 的目前版本 | 刪除 Blob | **Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete** | 儲存體 Blob 資料參與者 |
 | 刪除版本 | 刪除 Blob | **Microsoft. Storage/storageAccounts/blobServices/container/blob/deleteBlobVersion/action** | 儲存體 Blob 資料擁有者 |
 
-### <a name="shared-access-signature-sas-parameters"></a>共用存取簽章（SAS）參數
+### <a name="shared-access-signature-sas-parameters"></a> (SAS) 參數的共用存取簽章
 
 Blob 版本的已簽署資源是 `bv` 。 如需詳細資訊，請參閱[建立服務 SAS](/rest/api/storageservices/create-service-sas)或[建立使用者委派 SAS](/rest/api/storageservices/create-user-delegation-sas)。
 
@@ -204,7 +206,8 @@ Blob 版本設定在下欄區域提供預覽：
 - 加拿大東部
 - 加拿大中部
 
-預覽僅適用於非生產環境。
+> [!IMPORTANT]
+> Blob 版本設定預覽僅適用于非生產環境。 生產環境的服務等級協定 (SLA) 目前無法使用。
 
 2019-10-10 版和更新版本的 Azure 儲存體 REST API 支援 blob 版本設定。
 
@@ -226,7 +229,7 @@ Blob 版本設定適用于下列類型的儲存體帳戶：
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要向 PowerShell 註冊，請呼叫[AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature)命令。
+若要向 PowerShell 註冊，請呼叫[AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature)命令。
 
 ```powershell
 # Register for blob versioning (preview)
@@ -242,8 +245,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 若要向 Azure CLI 註冊，請呼叫[az feature register](/cli/azure/feature#az-feature-register)命令。
 
 ```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name Versioning
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
 ```
 
 ---
@@ -266,8 +269,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 若要使用 Azure CLI 檢查註冊的狀態，請呼叫[az feature](/cli/azure/feature#az-feature-show)命令。
 
 ```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name Versioning
+az feature show --namespace Microsoft.Storage --name Versioning
 ```
 
 ---
@@ -302,7 +304,7 @@ Blob 版本（例如 blob 快照集）的計費方式與使用中資料的費率
 
 #### <a name="scenario-2"></a>案例 2
 
-在案例2中，blob 中的一個區塊（圖中的區塊3）已更新。 雖然更新的區塊包含相同的資料和相同的識別碼，但它與先前版本中的區塊3並不相同。 因此，此帳戶必須支付四個區塊的費用。
+在案例2中，已更新 blob 中圖表)  (區塊3的一個區塊。 雖然更新的區塊包含相同的資料和相同的識別碼，但它與先前版本中的區塊3並不相同。 因此，此帳戶必須支付四個區塊的費用。
 
 ![Azure 儲存體資源](./media/versioning-overview/versions-billing-scenario-2.png)
 

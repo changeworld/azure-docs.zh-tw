@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 23a426bf8cc3f30516fff0a672d7118a49666433
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1574ea1c6f97606198d071d79ea69d58304a6159
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584921"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053553"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>關於語音 SDK 音訊輸入資料流 API
 
@@ -25,7 +25,7 @@ ms.locfileid: "83584921"
 
 - 識別音訊資料流的格式。 語音 SDK 和語音服務必須支援此格式。 目前僅支援下列設定：
 
-  PCM 格式的音訊樣本、一個頻道、每個樣本16位、8000或每秒16000個樣本（16000或每秒32000位元組）、兩個區塊對齊（包含樣本的16位，包括填補）。
+  PCM 格式的音訊樣本、一個頻道、每個樣本16位、8000或每秒16000個樣本 (16000 或每秒32000位元組) ，兩個區塊對齊 (16 位，包括範例) 的填補。
 
   SDK 中用於建立音訊格式相對應程式碼看起來像這樣：
 
@@ -75,5 +75,5 @@ ms.locfileid: "83584921"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [試用認知服務](https://azure.microsoft.com/try/cognitive-services/)
+- [建立 Azure 免費帳戶](https://azure.microsoft.com/free/cognitive-services/)
 - [了解如何以 C# 辨識語音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) (英文)

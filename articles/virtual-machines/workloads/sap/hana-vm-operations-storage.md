@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/30/2020
+ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e0efc2c64a1cbdcc2c83c019f7743406054afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 074171d658eb4e1e029652c9c0851e082ba043fe
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074024"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053434"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
@@ -46,7 +46,7 @@ Azure 為 Azure Standard 和 premium 儲存體上的 Vhd 提供兩種部署方�
 - 至少適用于 **/hana/log**磁片區的 Azure Ultra 磁片。 **/Hana/data**磁片區可以放在沒有 Azure 寫入加速器或的 premium 儲存體上，以獲得更快速的重新開機時間（Ultra 磁片）
 - 適用于 **/hana/log 和/hana/data**的 Azure NetApp Files 頂端的**NFS 4.1**磁片區。 /Hana/shared 的數量可以使用 NFS v3 或 NFS 4.1 通訊協定
 
-有些儲存體類型可以合併。 例如，您可以將 **/hana/data**放到高階儲存體，並將 **/Hana/log**放在 Ultra 磁片儲存體上，以取得所需的低延遲。 如果您使用以及為基礎的磁片區來進行 **/hana/data**，則 **/hana/log**磁片區也必須以及上的 NFS 為基礎。 **不支援**在及上針對其中一個磁片區（例如/hana/data）和 Azure premium 儲存體或 Ultra 磁片（例如 **/HANA/LOG**）使用 NFS。
+有些儲存體類型可以合併。 例如，您可以將 **/hana/data**放到高階儲存體，並將 **/Hana/log**放在 Ultra 磁片儲存體上，以取得所需的低延遲。 如果您使用以及為基礎的磁片區來進行 **/hana/data**，則 **/hana/log**磁片區也必須以及上的 NFS 為基礎。 在及上使用 NFS 的其中一個磁片區 (例如/hana/data) 和 Azure premium 儲存體，或其他磁片區的 Ultra 磁片 (例如 **/hana/log**) ，則**不受支援**。
 
 在內部部署環境中，您很少需要在意 I/O 子系統及其功能。 原因是設備廠商必須確認最低儲存體需求符合 SAP HANA。 當您自行建置 Azure 基礎結構時，您應該對這些 SAP 發出的需求有些了解。 SAP 所建議的部分最小輸送量特性如下：
 
@@ -61,7 +61,7 @@ Azure 為 Azure Standard 和 premium 儲存體上的 Vhd 提供兩種部署方�
 
 - 根據[SAP 工作負載的 Azure 儲存體類型](./planning-guide-storage.md)決定儲存體類型，並[選取磁片類型](../../linux/disks-types.md)
 - 調整大小或決定 VM 時，會記住整體 VM i/o 輸送量和 IOPS 限制。 整體 VM 儲存體輸送量記載于[記憶體優化的虛擬機器大小](../../sizes-memory.md)一文中
-- 在決定存放裝置設定時，請嘗試使用您的 **/hana/data**磁片區設定，保持在 VM 的整體輸送量之下。 寫入儲存點，SAP Hana 可以是積極的發行 i/o。 當您撰寫儲存點時，很容易就能推送至 **/hana/data**磁片區的輸送量限制。 如果您建立 **/hana/data**磁片區的磁片，其輸送量高於您的 VM 所允許的容量，您可能會遇到儲存點寫入所使用的輸送量，因而干擾重做記錄檔寫入的輸送量需求。 可能會影響應用程式輸送量的情況
+- 在決定存放裝置設定時，請嘗試使用您的 **/hana/data**磁片區設定，保持在 VM 的整體輸送量之下。 寫入儲存點，SAP Hana 可以是積極的發行 i/o。 當您撰寫儲存點時，很容易就能推送至 **/hana/data**磁片區的輸送量限制。 如果您的磁片 () 建立 **/hana/data**磁片區的輸送量高於您的 VM 所允許的輸送量，您可能會遇到儲存點寫入所使用的輸送量與重做記錄檔寫入的輸送量需求的情況。 可能會影響應用程式輸送量的情況
 - 如果您使用的是 Azure premium 儲存體，最便宜的設定是使用邏輯磁片區管理員來建立等量集合，以建立 **/hana/data**和 **/hana/log**磁片區
 
 > [!IMPORTANT]
@@ -111,7 +111,7 @@ Azure 寫入加速器是專用於 Azure M 系列 VM 的功能。 如其名稱所
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Premium 儲存體的 Azure 高載功能
-針對容量較小或等於 512 GiB 的 Azure premium 儲存體磁片，會提供高載功能。 磁片高載運作方式的確切方式如下所[述。](../../linux/disk-bursting.md) 當您閱讀文章時，您瞭解當 i/o 工作負載低於磁片的名義 IOPS 和輸送量時，產生 IOPS 和輸送量的概念（如需有關名義輸送量的詳細資訊，請參閱[受控磁片定價](https://azure.microsoft.com/pricing/details/managed-disks/)）。 您將會在目前的使用量和磁片的名義值之間，累積 IOPS 和輸送量的差異。 高載限制為30分鐘。
+針對容量較小或等於 512 GiB 的 Azure premium 儲存體磁片，會提供高載功能。 磁片高載運作方式的確切方式如下所[述。](../../linux/disk-bursting.md) 當您閱讀文章時，您瞭解當 i/o 工作負載低於磁片的名義 IOPS 和輸送量時，產生 IOPS 和輸送量的概念 (如需有關名義輸送量的詳細資訊，請參閱[受控磁片定價](https://azure.microsoft.com/pricing/details/managed-disks/)) 。 您將會在目前的使用量和磁片的名義值之間，累積 IOPS 和輸送量的差異。 高載限制為30分鐘。
 
 在中，可規劃此高載功能的理想情況可能是包含不同 DBMS 資料檔案的磁片區。 對這些磁片區預期的 i/o 工作負載，特別是小型到中型的系統，應該看起來像這樣：
 
@@ -151,11 +151,11 @@ SAP **/hana/data**磁片區的設定：
 | M64s | 1,000 GiB | 1,000 MBps | 4 x P15 | 680 MBps | 4400 | 14,000 |
 | M64ms | 1,750 GiB | 1,000 MBps | 4 x P20 | 680 MBps | 9200 | 14,000 |  
 | M128s | 2,000 GiB | 2000 MBps | 4 x P20 | 680 MBps | 9200| 14,000 | 
-| M128ms | 3,800 GiB | 2000 MBps | 4 x P30 | 800 MBps （已布建） | 20,000 | 無高載 | 
-| M208s_v2 | 2,850 GiB | 1,000 MBps | 4 x P30 | 800 MBps （已布建） | 20,000| 無高載 | 
-| M208ms_v2 | 5,700 GiB | 1,000 MBps | 4 x P40 | 1000 MBps （已布建） | 25,000 | 無高載 |
-| M416s_v2 | 5,700 GiB | 2000 MBps | 4 x P40 | 1000 MBps （已布建） | 25,000 | 無高載 |
-| M416ms_v2 | 11,400 GiB | 2000 MBps | 4 x P50 | 2000 MBps （已布建） | 25,000 | 無高載 |
+| M128ms | 3,800 GiB | 2000 MBps | 4 x P30 | 800 MBps (布建的)  | 20,000 | 無高載 | 
+| M208s_v2 | 2,850 GiB | 1,000 MBps | 4 x P30 | 800 MBps (布建的)  | 20,000| 無高載 | 
+| M208ms_v2 | 5,700 GiB | 1,000 MBps | 4 x P40 | 1000 MBps (布建的)  | 25,000 | 無高載 |
+| M416s_v2 | 5,700 GiB | 2000 MBps | 4 x P40 | 1000 MBps (布建的)  | 25,000 | 無高載 |
+| M416ms_v2 | 11,400 GiB | 2000 MBps | 4 x P50 | 2000 MBps (布建的)  | 25,000 | 無高載 |
 
 
 適用于 **/hana/log**磁片區。 設定看起來會像這樣：
@@ -305,7 +305,7 @@ Azure NetApp 磁碟區的輸送量是磁碟區大小的功能和服務等級，�
 
 為了符合資料和記錄的 SAP 最低輸送量需求，以及遵循 `/hana/shared` 的指導方針，建議的大小如下：
 
-| 磁碟區 | Size<br /> 進階儲存層 | 大小<br /> Ultra 儲存層 | 支援的 NFS 通訊協定 |
+| 磁碟區 | 大小<br /> 進階儲存層 | 大小<br /> Ultra 儲存層 | 支援的 NFS 通訊協定 |
 | --- | --- | --- |
 | /hana/log/ | 4 TiB | 2 TiB | v4.1 |
 | /hana/data | 6.3 TiB | 3.2 TiB | v4.1 |
@@ -321,6 +321,44 @@ Azure NetApp 磁碟區的輸送量是磁碟區大小的功能和服務等級，�
 > 您可以動態地重新調整 Azure NetApp Files 磁碟區大小，而不需要 `unmount` 磁碟區、停止虛擬機器或停止 SAP Hana。 這可讓您彈性地滿足應用程式上預期和未預期的輸送量需求。
 
 [使用SUSE Linux Enterprise Server 上的 Azure NetApp Files，在 Azure VM 上使用待命節點來擴展 SAP Hana](./sap-hana-scale-out-standby-netapp-files-suse.md) 中，已發佈如何使用 ANF 中所裝載的 NFS v4.1 磁碟區，搭配待命節點來部署 SAP Hana 延展設定的方法。
+
+
+## <a name="cost-conscious-solution-with-azure-premium-storage"></a>使用 Azure premium 儲存體的成本在乎解決方案
+到目前為止，本檔中所述的 Azure premium 儲存體解決方案會在[適用于 Azure M 系列虛擬機器的高階儲存體和 azure 寫入加速器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)一節中說明，這適用于 SAP Hana 生產支援的案例。 生產環境支援設定的其中一項特性是區隔磁片區，以 SAP Hana 資料和重做記錄到兩個不同的磁片區。 這類分離的原因是磁片區上的工作負載特性不相同。 因此，使用建議的生產環境設定時，可能需要不同類型的快取或甚至是不同類型的 Azure 區塊儲存體。 使用 Azure 區塊儲存體目標的生產支援設定也會與[azure 虛擬機器的單一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)相容。  針對非生產案例，針對生產系統所採取的一些考慮可能不適用於較低的非生產系統。 因此，可以合併 HANA 資料和記錄磁片區。 但最後有一些原因，例如最終不會符合生產系統所需的特定輸送量或延遲 Kpi。 在這類環境中降低成本的另一個層面，就是[Azure 標準 SSD 儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage)的使用量。 雖然會使[Azure 虛擬機器的單一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)失效的選擇。 
+
+這類設定成本較低的替代方式如下所示：
+
+
+| VM SKU | RAM | 最大 VM I/O<br /> Throughput | /hana/data 和 /hana/log<br /> 與 LVM 或 MDADM 等量 | HANA/shared | /root volume | /usr/sap | comments |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 112 GiB | 768 MB/秒 | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | 將無法達到小於1毫秒儲存體延遲<sup>1</sup> |
+| E16v3 | 128 GB | 384 MB/秒 | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | VM 類型未通過 HANA 認證 <br /> 將無法達到小於1毫秒儲存體延遲<sup>1</sup> |
+| M32ts | 192 GiB | 500 MB/秒 | 3 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 5000<sup>2</sup> |
+| E20ds_v4 | 160 GiB | 480 MB/秒 | 4 x P6 | 1 x E15 | 1 x E6 | 1 x E6 | 將無法達到小於1毫秒儲存體延遲<sup>1</sup> |
+| E32v3 | 256 GiB | 768 MB/秒 | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | VM 類型未通過 HANA 認證 <br /> 將無法達到小於1毫秒儲存體延遲<sup>1</sup> |
+| E32ds_v4 | 256 GiB | 768 MBps | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | 將無法達到小於1毫秒儲存體延遲<sup>1</sup> |
+| M32ls | 256 GiB | 500 MB/秒 | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 5000<sup>2</sup> |
+| E48ds_v4 | 384 GiB | 1152 MBps | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 將無法達到小於1毫秒儲存體延遲<sup>1</sup> |
+| E64v3 | 432 GiB | 1,200 MB/秒 | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 將無法達到小於1毫秒儲存體延遲<sup>1</sup> |
+| E64ds_v4 | 504 GiB | 1200 MB/秒 |  7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 將無法達到小於1毫秒儲存體延遲<sup>1</sup> |
+| M64ls | 512 GB | 1,000 MB/秒 | 7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 10000<sup>2</sup> |
+| M64s | 1,000 GiB | 1,000 MB/秒 | 7 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 10000<sup>2</sup> |
+| M64ms | 1,750 GiB | 1,000 MB/秒 | 6 x P20 | 1 x E30 | 1 x E6 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 10000<sup>2</sup> |
+| M128s | 2,000 GiB | 2,000 MB/秒 |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 20000<sup>2</sup> |
+| M208s_v2 | 2,850 GiB | 1,000 MB/秒 | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 10000<sup>2</sup> |
+| M128ms | 3,800 GiB | 2,000 MB/秒 | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 20000<sup>2</sup> |
+| M208ms_v2 | 5,700 GiB | 1,000 MB/秒 | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 10000<sup>2</sup> |
+| M416s_v2 | 5,700 GiB | 2,000 MB/秒 | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 20000<sup>2</sup> |
+| M416ms_v2 | 11400 GiB | 2,000 MB/秒 | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | 將寫入加速器用於結合的資料和記錄磁片區，會將 IOPS 速率限制為 20000<sup>2</sup> |
+
+
+<sup>1</sup> [Azure 寫入加速器](../../linux/how-to-enable-write-accelerator.md)不能與 Ev4 和 Ev4 VM 系列搭配使用。 由於使用 Azure premium 儲存體的結果，i/o 延遲不會小於1毫秒
+
+<sup>2</sup> VM 系列支援[Azure 寫入加速器](../../linux/how-to-enable-write-accelerator.md)，但寫入加速器的 IOPS 限制可能會限制磁片設定 iops 功能
+
+在結合資料和記錄磁片區以進行 SAP Hana 時，建立等量磁片區的磁片不應該啟用讀取快取或讀寫快取。
+
+列出的 VM 類型未通過 SAP 認證，因此未列在中，因此稱為[SAP Hana 硬體目錄](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)。 客戶的意見反應是那些未列出的 VM 類型已針對某些非生產工作成功使用。
 
 
 ## <a name="next-steps"></a>後續步驟

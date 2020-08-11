@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8f22b1ff97826dc318794aca58973b1276e74209
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a82f3c347c75d658e3e7ec52d51107f5a240ee5b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087866"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056511"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 串流分析作業的相容性層級
 
@@ -53,7 +53,7 @@ Azure 串流分析目前支援三種相容性層級：
 
 ###  <a name="amqp-messaging-protocol"></a>AMQP 訊息通訊協定
 
-**1.2 層級**： Azure 串流分析使用[先進的訊息佇列通訊協定（AMQP）](../service-bus-messaging/service-bus-amqp-overview.md)訊息通訊協定來寫入服務匯流排的佇列和主題。 透過開放式標準通訊協定，AMQP 可讓您打造一個跨平台的混合式應用程式。
+**1.2 層級**： Azure 串流分析使用[Advanced Message 佇列通訊協定 (AMQP) ](../service-bus-messaging/service-bus-amqp-overview.md)訊息通訊協定來寫入服務匯流排的佇列和主題。 透過開放式標準通訊協定，AMQP 可讓您打造一個跨平台的混合式應用程式。
 
 ### <a name="geospatial-functions"></a>GeoSpatial 函式
 
@@ -63,7 +63,7 @@ Azure 串流分析目前支援三種相容性層級：
 
 Azure 串流分析支援地理空間參考資料索引。 包含地理空間元素的參考資料可以編制索引，以進行更快速的聯結計算。
 
-更新的地理空間函式會帶入知名文字（WKT）地理空間格式的完整表達。 您可以指定先前不支援 GeoJson 的其他地理空間元件。
+更新的地理空間函式會提供已知文字的完整表達， (WKT) 地理空間格式。 您可以指定先前不支援 GeoJson 的其他地理空間元件。
 
 如需詳細資訊，請參閱[Azure 串流分析-雲端和 IoT Edge 中的地理空間功能更新](https://azure.microsoft.com/blog/updates-to-geospatial-functions-in-azure-stream-analytics-cloud-and-iot-edge/)。
 
@@ -125,7 +125,7 @@ Upsert 行為是*insert 或 replace*。
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 
-**1.1 層級：** 訊息內容包含直接沒有其他標記的資料流程。 例如：`{ "SensorId":"1", "Temperature":64}`
+**1.1 層級：** 訊息內容包含直接沒有其他標記的資料流程。 例如： `{ "SensorId":"1", "Temperature":64}`
 
 ### <a name="persisting-case-sensitivity-for-field-names"></a>欄位名稱保持大小寫區分
 
@@ -138,15 +138,15 @@ Upsert 行為是*insert 或 replace*。
 
 ### <a name="floatnandeserializationdisabled"></a>FloatNaNDeserializationDisabled
 
-**1.0 層級：** CREATE TABLE 命令未以 NaN （非-數位）篩選事件。 例如，Infinity, -Infinity) 的事件，因其不符合這些數字的記載範圍。
+**1.0 層級：** CREATE TABLE 命令未以 NaN (不是-數位來篩選事件。 例如，Infinity, -Infinity) 的事件，因其不符合這些數字的記載範圍。
 
 **1.1 層級：** CREATE TABLE 可讓您指定強式架構。 串流分析引擎會驗證資料是否符合此結構描述。 使用此模型，命令可以篩選具有 NaN 值的事件。
 
-### <a name="disable-automatic-upcast-for-datetime-strings-in-json"></a>停用 JSON 中 datetime 字串的自動向上轉換
+### <a name="disable-automatic-conversion-of-datetime-strings-to-datetime-type-at-ingress-for-json"></a>在 JSON 的輸入中停用 datetime 字串自動轉換為 DateTime 類型
 
-**1.0 層級：** JSON 剖析器會自動將日期/時間/區域資訊的字串值，轉換成日期時間類型，然後將它轉換成 UTC。 此行為導致遺失時區資訊。
+**1.0 層級：** JSON 剖析器會自動將日期/時間/區域資訊的字串值轉換成輸入的日期時間類型，讓值立即失去其原始格式和時區資訊。 因為這是在輸入時完成，即使該欄位不是在查詢中使用，也會轉換成 UTC 日期時間。
 
-**1.1 層級：** 不會再自動將日期/時間/區域資訊的字串值向上轉換成 DateTime 類型。 如此一來，即可保留時區資訊。
+**1.1 層級：** 不會自動將具有日期/時間/區域資訊的字串值轉換為 DATETIME 類型。 因此，會保留時區資訊和原始格式。 不過，如果在查詢中使用 NVARCHAR (MAX) 欄位做為 DATETIME 運算式的一部分 (DATEADD 函式，例如) ，它會轉換成 DATETIME 類型來執行計算，而且它會失去其原始格式。
 
 ## <a name="next-steps"></a>後續步驟
 

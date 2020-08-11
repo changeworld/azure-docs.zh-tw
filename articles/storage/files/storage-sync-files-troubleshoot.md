@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d268358f2f80cc9d347fa722d5027e1a87894b20
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034391"
+ms.locfileid: "88056256"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>針對 Azure 檔案同步進行移難排解
 使用 Azure 檔案同步，將組織的檔案共用集中在 Azure 檔案服務中，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步會將 Windows Server 轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料，包括 SMB、NFS 和 FTPS。 您可以視需要存取多個散佈於世界各地的快取。
@@ -47,7 +47,7 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 driveletter:\ 無法存取。  
 參數錯誤。
 
-若要解決此問題，請安裝最新的 Windows Server 2012 R2 更新，然後重新啟動伺服器。
+若要解決此問題，請安裝[KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014)並重新啟動伺服器。 如果此更新將不會安裝，因為已安裝更新版本，請移至 Windows Update，安裝 Windows Server 2012 R2 的最新更新，然後重新開機伺服器。
 
 <a id="server-registration-missing-subscriptions"></a>**伺服器註冊未列出所有 Azure 訂用帳戶**  
 使用 ServerRegistration.exe 註冊伺服器時，按一下 [Azure 訂用帳戶] 下拉式清單後未顯示訂用帳戶。
@@ -338,7 +338,7 @@ PerItemErrorCount: 1006.
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | 無法同步檔案，因為已達到衝突檔案的最大數目。 Azure 檔案同步支援每個檔案可具有 100 個衝突檔案。 若要深入了解檔案衝突，請參閱 Azure 檔案同步[常見問題集](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution) (機器翻譯)。 | 若要解決此問題，請減少衝突檔案的數目。 一旦衝突檔案的數目小於 100，檔案就會同步處理。 |
 
 #### <a name="handling-unsupported-characters"></a>處理不支援的字元
-如果 **FileSyncErrorsReport.ps1** PowerShell 指令碼因不支援的字元而失敗 (錯誤碼 0x8007007b 或 0x80c80255)，則應從個別檔案名稱中移除或重新命名錯誤的字元。 由於這些字元大多沒有標準的視覺編碼，PowerShell 可能會將這些字元列印為問號或空的矩形。 [評估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用來識別不受支援的字元。
+如果**FileSyncErrorsReport.ps1** PowerShell 腳本因為不支援的字元而顯示每個專案的同步錯誤 (錯誤碼0x8007007b 或 0x80c80255) ，您應該從個別的檔案名中移除或重新命名錯誤的字元。 由於這些字元大多沒有標準的視覺編碼，PowerShell 可能會將這些字元列印為問號或空的矩形。 [評估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用來識別不受支援的字元。 如果您的資料集有數個檔案包含不正確字元，請使用[ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars)腳本來重新命名包含不支援字元的檔案。
 
 下表列出 Azure 檔案同步尚不支援的所有 Unicode 字元。
 

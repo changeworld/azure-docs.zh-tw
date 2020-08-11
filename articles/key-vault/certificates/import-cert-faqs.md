@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 402672d8eeaae8a5097e2ab2905997eb1f646ad6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445786"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056341"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>常見問題-Azure Key Vault 憑證匯入
 
@@ -33,13 +33,17 @@ ms.locfileid: "87445786"
 
 當您匯入憑證時，您必須確定該金鑰包含在檔案本身。 如果您使用不同的格式來個別擁有私密金鑰，就必須結合該金鑰與憑證。 有些憑證授權單位單位提供不同格式的憑證，因此在匯入憑證之前，請確定它們是在 pem 或 .pfx 格式中，而且使用的金鑰是 RSA 或 ECC。 如需瞭解[憑證需求](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support)和[憑證金鑰需求](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection)，請參閱下列各項。
 
+###  <a name="can-i-import-certificate-using-arm-template"></a>我可以使用 ARM 範本匯入憑證嗎？
+
+不可以，您無法使用 ARM 範本執行 certifiate 作業。 建議的解決方法是在 API 或 CLI 或 PowerShell 中使用憑證匯入方法。 如果您有現有憑證，則可以將它匯入為秘密。
+
 ### <a name="error-when-importing-certificate-via-portal-something-went-wrong-how-can-i-investigate-further"></a>透過入口網站匯入憑證時出現「發生錯誤」的錯誤訊息。 我該如何進一步進行調查？
     
 若要查看更具描述性的錯誤，請透過[Azure CLI](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)或[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)匯入憑證檔案。
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>如何解決「錯誤類型：拒絕存取或使用者未經授權匯入憑證」？
     
-進行此作業需要憑證/匯入權限。 瀏覽至 Key Vault 的所在位置，您必須在存取原則下，將適當的權限授與使用者。 流覽至 [Key Vault> 存取原則] > [新增存取原則] > 選取 [憑證許可權] （或您想要的許可權） > 主體 > 搜尋，然後新增使用者的電子郵件。 [深入瞭解憑證相關的存取原則](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control)
+進行此作業需要憑證/匯入權限。 瀏覽至 Key Vault 的所在位置，您必須在存取原則下，將適當的權限授與使用者。 流覽至 [Key Vault> 存取原則] > [新增存取原則] > 選取 [憑證許可權] (或您想要許可權) > 主體] > 搜尋，然後新增使用者的電子郵件。 [深入瞭解憑證相關的存取原則](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control)
 
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>如何解決「錯誤類型：建立憑證時發生衝突」？

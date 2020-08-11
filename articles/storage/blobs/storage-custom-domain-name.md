@@ -9,21 +9,21 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465536"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053621"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>將自訂網域對應至 Azure Blob 儲存體端點
 
 您可以將自訂網域對應至 blob 服務端點或[靜態網站](storage-blob-static-website.md)端點。 
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> 這個對應僅適用于子域（例如： `www.contoso.com` ）。 如果您想要在根域（例如：）上使用 web 端點，則必須 `contoso.com` 使用 AZURE CDN。 如需指導方針，請參閱本文的[對應已啟用 HTTPS 的自訂網域](#enable-https)一節。 因為您前往本文的那一節來啟用自訂網域的根域，所以啟用 HTTPS 的那一節內的步驟是選擇性的。 
+> 此對應僅適用于子域 (例如： `www.contoso.com`) 。 如果您想要在根域中使用 web 端點 (例如： `contoso.com`) ，則必須使用 AZURE CDN。 如需指導方針，請參閱本文的[對應已啟用 HTTPS 的自訂網域](#enable-https)一節。 因為您前往本文的那一節來啟用自訂網域的根域，所以啟用 HTTPS 的那一節內的步驟是選擇性的。 
 
 <a id="enable-http"></a>
 
@@ -38,13 +38,13 @@ ms.locfileid: "84465536"
 ### <a name="map-a-custom-domain"></a>對應自訂網域
 
 > [!IMPORTANT]
-> 當您完成設定時，使用者會短暫無法使用您的自訂網域。 如果您的網域目前支援的應用程式具有不需要停機的服務等級協定（SLA），請遵循本文的[對應自訂網域與零停機](#zero-down-time)一節中的步驟，以確保使用者可以在 DNS 對應發生時存取您的網域。
+> 當您完成設定時，使用者會短暫無法使用您的自訂網域。 如果您的網域目前支援具有服務等級協定的應用程式 (SLA) 而不需要停機，請遵循本文的[對應自訂網域與零停機](#zero-down-time)一節中的步驟，以確保使用者可以在 DNS 對應發生時存取您的網域。
 
 如果您要不在乎您的使用者暫時無法使用該網域，請遵循下列步驟。
 
 ： heavy_check_mark：步驟1：取得儲存體端點的主機名稱。
 
-： heavy_check_mark：步驟2：使用您的網域提供者建立正式名稱（CNAME）記錄。
+： heavy_check_mark：步驟2：建立與您的網域提供者 (CNAME) 記錄的正式名稱。
 
 ： heavy_check_mark：步驟3：向 Azure 註冊自訂網域。 
 
@@ -62,7 +62,7 @@ ms.locfileid: "84465536"
 
 3. 將**主要 Blob 服務端點**或**主要靜態網站端點**的值複製到文字檔。 
 
-4. 從該字串移除通訊協定識別碼（*例如*，HTTPS）和尾端斜線。 下表包含範例。
+4. 移除通訊協定識別碼 (*例如*，HTTPS) 和該字串的尾端斜線。 下表包含範例。
 
    | 端點的類型 |  端點 | 主機名稱 |
    |------------|-----------------|-------------------|
@@ -73,7 +73,7 @@ ms.locfileid: "84465536"
 
 <a id="create-cname-record"></a>
 
-#### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>步驟2：使用您的網域提供者建立正式名稱（CNAME）記錄
+#### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>步驟2：使用您的網域提供者建立標準名稱 (CNAME) 記錄
 
 建立 CNAME 記錄以指向您的主機名稱。 CNAME 記錄是一種將來源網域名稱對應至目的地網域名稱的 DNS 記錄。
 
@@ -109,7 +109,7 @@ ms.locfileid: "84465536"
 
 4. 若要註冊自訂網域，請選擇 [**儲存**] 按鈕。
 
-   當 CNAME 記錄透過功能變數名稱伺服器（DNS）傳播後，如果您的使用者擁有適當的許可權，他們就可以使用自訂網域來查看 blob 資料。
+   當 CNAME 記錄透過功能變數名稱伺服器傳播 (DNS) ，而且如果您的使用者具有適當的許可權，他們就可以使用自訂網域來查看 blob 資料。
 
 #### <a name="step-4-test-your-custom-domain"></a>步驟4：測試您的自訂網域
 
@@ -124,11 +124,11 @@ ms.locfileid: "84465536"
 > [!NOTE]
 > 如果您要不在乎您的使用者暫時無法使用該網域，請考慮遵循本文的[對應自訂網域](#map-a-domain)一節中的步驟。 這是較簡單的方法，其中包含更少的步驟。  
 
-如果您的網域目前支援的應用程式具有不需要停機的服務等級協定（SLA），則請遵循下列步驟，以確保使用者可以在 DNS 對應發生時存取您的網域。 
+如果您的網域目前支援具有服務等級協定的應用程式 (SLA) 不需要停機，請遵循下列步驟，以確保使用者可以在 DNS 對應發生時存取您的網域。 
 
 ： heavy_check_mark：步驟1：取得儲存體端點的主機名稱。
 
-： heavy_check_mark：步驟2：使用您的網域提供者建立中繼正式名稱（CNAME）記錄。
+： heavy_check_mark：步驟2：使用您的網域提供者建立仲介正式名稱 (CNAME) 記錄。
 
 ： heavy_check_mark：步驟3：使用 Azure 預先註冊自訂網域。
 
@@ -148,7 +148,7 @@ ms.locfileid: "84465536"
 
 3. 將**主要 Blob 服務端點**或**主要靜態網站端點**的值複製到文字檔。 
 
-4. 從該字串移除通訊協定識別碼（*例如*，HTTPS）和尾端斜線。 下表包含範例。
+4. 移除通訊協定識別碼 (*例如*，HTTPS) 和該字串的尾端斜線。 下表包含範例。
 
    | 端點的類型 |  端點 | 主機名稱 |
    |------------|-----------------|-------------------|
@@ -157,7 +157,7 @@ ms.locfileid: "84465536"
   
    請稍後再設定此值。
 
-#### <a name="step-2-create-a-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>步驟2：使用您的網域提供者建立中繼正式名稱（CNAME）記錄
+#### <a name="step-2-create-a-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>步驟2：使用您的網域提供者建立 (CNAME) 記錄的中繼標準名稱
 
 建立暫存 CNAME 記錄以指向您的主機名稱。 CNAME 記錄是一種將來源網域名稱對應至目的地網域名稱的 DNS 記錄。
 
@@ -203,7 +203,7 @@ ms.locfileid: "84465536"
 
 5. 若要註冊自訂網域，請選擇 [**儲存**] 按鈕。
   
-   當 CNAME 記錄透過功能變數名稱伺服器（DNS）傳播後，如果您的使用者擁有適當的許可權，他們就可以使用自訂網域來查看 blob 資料。
+   當 CNAME 記錄透過功能變數名稱伺服器傳播 (DNS) ，而且如果您的使用者具有適當的許可權，他們就可以使用自訂網域來查看 blob 資料。
 
 #### <a name="step-4-create-a-cname-record-with-your-domain-provider"></a>步驟4：使用您的網域提供者建立 CNAME 記錄
 
@@ -244,7 +244,7 @@ ms.locfileid: "84465536"
 
 3. 清除包含自訂網域名稱的文字方塊內容。
 
-4. 選取 [儲存]**** 按鈕。
+4. 選取 [儲存] 按鈕。
 
 成功移除自訂網域之後，您會看到已成功更新儲存體帳戶的入口網站通知
 
@@ -318,9 +318,9 @@ ms.locfileid: "84465536"
    > [!NOTE] 
    > 當您更新靜態網站時，請務必清除 CDN 端點，以清除 CDN edge server 上的快取內容。 如需詳細資訊，請參閱[清除 Azure CDN 端點](../../cdn/cdn-purge-endpoint.md)。
 
-4. 選擇性請參閱下列指引：
+4.  (選擇性) 請參閱下列指導方針：
 
-   * [使用 AZURE CDN 的共用存取簽章（SAS）權杖](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures)。
+   * [使用 AZURE CDN (SAS) 權杖的共用存取](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures)簽章。
 
    * [使用 AZURE CDN 的 HTTP 對 HTTPS](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)重新導向。
 

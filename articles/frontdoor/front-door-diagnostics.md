@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 249b2406f048709fd7e4f76f8272b3158708e5bb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322308"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056426"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>監視 Azure Front 中的計量和記錄
 
@@ -42,15 +42,15 @@ ms.locfileid: "85322308"
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>活動記錄
 
-活動記錄會提供有關 Front 的作業資訊。 它們也會決定要在 Front 上執行的任何寫入作業（put、post 或 delete）的內容、物件和時機。
+活動記錄會提供有關 Front 的作業資訊。 它們也會決定任何寫入作業 (put、post 或 delete) 在前門上的內容、物件和時間。
 
 >[!NOTE]
->活動記錄不包含讀取（get）作業。 它們也不包含您使用 Azure 入口網站或原始管理 API 執行的作業。
+>活動記錄不包含讀取 (取得) 作業。 它們也不包含您使用 Azure 入口網站或原始管理 API 執行的作業。
 
 在 Azure 監視器中，存取您的 Front 或 Azure 資源的所有記錄中的活動記錄。 檢視活動記錄：
 
 1. 選取您的 Front 門板實例。
-2. 選取 [**活動記錄**]。
+2. 選取 [活動記錄]。
 
     ![活動記錄檔](./media/front-door-diagnostics/activity-log.png)
 
@@ -71,11 +71,11 @@ ms.locfileid: "85322308"
 
 3. 選取 [開啟診斷]。 將診斷記錄連同計量封存至儲存體帳戶、將其串流至事件中樞，或將它們傳送至 Azure 監視器記錄。
 
-Front 門目前提供診斷記錄（每小時批次）。 診斷記錄會提供個別的 API 要求，其中每個專案都具有下列架構：
+Front 門板目前提供診斷記錄 (每小時) 批次。 診斷記錄會提供個別的 API 要求，其中每個專案都具有下列架構：
 
-| 屬性  | 說明 |
+| 屬性  | 描述 |
 | ------------- | ------------- |
-| BackendHostname | 如果將要求轉送到後端，此欄位代表後端的主機名稱。 如果要求已重新導向或轉送到區域快取（針對路由規則啟用快取），此欄位將會是空白。 |
+| BackendHostname | 如果將要求轉送到後端，此欄位代表後端的主機名稱。 如果已將要求重新導向或轉送至區域快取，則此欄位為空白， (在路由規則啟用快取時) 。 |
 | CacheStatus | 針對快取案例，此欄位會在 POP 上定義快取點擊/遺漏 |
 | ClientIp | 發出要求之用戶端的 IP 位址。 如果要求中有 X 轉送的標頭，則會從相同的中挑選用戶端 IP。 |
 | ClientPort | 提出要求之用戶端的 IP 埠。 |
@@ -91,7 +91,7 @@ Front 門目前提供診斷記錄（每小時批次）。 診斷記錄會提供�
 | RulesEngineMatchNames | 要求符合的規則名稱。 |
 | SecurityProtocol | 要求所使用的 TLS/SSL 通訊協定版本，如果沒有加密則為 null。 |
 | SentToOriginShield | 布林值欄位，表示第一個環境中是否有快取遺漏，而且要求已傳送至區域快取。 如果路由規則是重新導向，或未啟用快取，請忽略此欄位。 |
-| TimeTaken | 動作所花費的時間長度 (毫秒)。 |
+| TimeTaken | 從要求的第一個位元組到前一個位元組回應的時間長度（以秒為單位）。 |
 | TrackingReference | 這項唯一的參考字串可識別 Front Door 所提供的要求，也會以 X-Azure Ref 標頭的形式傳送給用戶端， 這是在特定要求的存取記錄中搜尋詳細資料時的必要項目。 |
 | UserAgent | 用戶端使用的瀏覽器類型。 |
 
@@ -99,8 +99,8 @@ Front 門目前提供診斷記錄（每小時批次）。 診斷記錄會提供�
 
 | 案例 | 記錄專案計數 | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 未啟用快取的路由規則 | 1 | 邊緣 POP 程式碼 | 轉送要求的後端 | False | CONFIG_NOCACHE |
-| 已啟用快取的路由規則。 邊緣 POP 上的快取點擊 | 1 | 邊緣 POP 程式碼 | 空白 | False | 找到 |
+| 未啟用快取的路由規則 | 1 | 邊緣 POP 程式碼 | 轉送要求的後端 | 否 | CONFIG_NOCACHE |
+| 已啟用快取的路由規則。 邊緣 POP 上的快取點擊 | 1 | 邊緣 POP 程式碼 | 空白 | 否 | 找到 |
 | 已啟用快取的路由規則。 邊緣 POP 上的快取遺漏，但在父快取 POP 快取命中 | 2 | 1. 邊緣 POP 代碼</br>2. 父快取 POP 程式碼 | 1. 父快取 POP 主機名稱</br>2. 空白 | 1. True</br>2. False | 1. 遺漏</br>2. PARTIAL_HIT |
 | 已啟用快取的路由規則。 邊緣和父快取 POP 的快取遺漏 | 2 | 1. 邊緣 POP 代碼</br>2. 父快取 POP 程式碼 | 1. 父快取 POP 主機名稱</br>2. 可協助填入快取的後端 | 1. True</br>2. False | 1. 遺漏</br>2. 遺漏 |
 

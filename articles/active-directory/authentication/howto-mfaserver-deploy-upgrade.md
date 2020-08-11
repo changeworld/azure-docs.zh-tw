@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f242b4a7e984ceeb183547cb3a949927f3c91da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80653109"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053995"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升級為最新的 Azure Multi-Factor Authentication Server
 
@@ -41,7 +41,7 @@ ms.locfileid: "80653109"
 4. 在每部 MFA Server 上執行新的安裝程式。 先升級次級伺服器，因為它們可以讀取由主要伺服器所複寫的舊資料檔。
 
    > [!NOTE]
-   > 升級伺服器時，應使該伺服器無法與其他 MFA Server 進行負載平衡或共用流量。
+   > 升級伺服器時，應該從任何負載平衡或與其他 MFA 伺服器共用的流量中移除它。
    >
    > 您不需解除安裝目前的 MFA Server，就能執行安裝程式。 安裝程式會執行就地升級。 系統會從先前安裝的登錄中挑選安裝路徑，因此它會安裝在相同位置 (例如，C:\Program Files\Multi-Factor Authentication Server)。
   
@@ -102,7 +102,7 @@ ms.locfileid: "80653109"
 
    完成此步驟之後，您必須先完成步驟 8，才能在此 AD FS 叢集中透過 MFA Server 進行雙步驟驗證。
 
-4. 執行 Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 指令碼來取消註冊舊版的 AD FS 配接器。 請確定 *-Name*參數（"WindowsAzureMultiFactorAuthentication" 或 "AzureMFAServerAuthentication"）符合步驟3中所顯示的名稱。 這適用於相同 AD FS 叢集中的所有伺服器，因為有一個中央組態。
+4. 執行 Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 指令碼來取消註冊舊版的 AD FS 配接器。 請確定 *-Name*參數 ("WindowsAzureMultiFactorAuthentication" 或 "AzureMFAServerAuthentication" ) 符合步驟3中所顯示的名稱。 這適用於相同 AD FS 叢集中的所有伺服器，因為有一個中央組態。
 5. 執行 Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 指令碼來註冊新的 AD FS 配接器。 這適用於相同 AD FS 叢集中的所有伺服器，因為有一個中央組態。
 6. 在已從 AD FS 伺服器陣列中移除的每部伺服器上重新啟動 AD FS 服務。
 7. 將更新的伺服器加回 AD FS 伺服器陣列，並從該伺服器陣列中移除其他伺服器。

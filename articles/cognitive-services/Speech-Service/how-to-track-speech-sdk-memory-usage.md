@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rhurey
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: da5103317a2215aca68cec14ba8a0951258c9b89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a6be6ca00b2bc5d7b35fb71437809754f129df96
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75462385"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054630"
 ---
 # <a name="how-to-track-speech-sdk-memory-usage"></a>如何追蹤語音 SDK 記憶體使用量
 
@@ -38,9 +38,9 @@ ms.locfileid: "75462385"
 
 ## <a name="set-a-warning-threshold"></a>設定警告臨界值
 
-您可以選擇建立警告臨界值，如果超過該臨界值（假設已啟用記錄），就會記錄警告訊息。 警告訊息包含所有物件的傾印及其計數。 這種資訊可以用來進一步瞭解問題。 
+您可以選擇建立警告臨界值，如果超過該臨界值 (假設已) 啟用記錄，則會記錄警告訊息。 警告訊息包含所有物件的傾印及其計數。 這種資訊可以用來進一步瞭解問題。 
 
-若要啟用警告臨界值，必須在`SpeechConfig`物件上指定。 建立新的辨識器時，會檢查此物件。 在下列範例中，假設您已建立名`SpeechConfig` `config`為的實例：
+若要啟用警告臨界值，必須在物件上指定 `SpeechConfig` 。 建立新的辨識器時，會檢查此物件。 在下列範例中，假設您已建立名為的實例 `SpeechConfig` `config` ：
 
 ::: zone pivot="programming-language-csharp"
 
@@ -69,7 +69,7 @@ config.setProperty("SPEECH-ObjectCountWarnThreshold", "10000");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name(“SPEECH-ObjectCountWarnThreshold", "10000")?
+speech_config.set_property_by_name("SPEECH-ObjectCountWarnThreshold", "10000")?
 ```
 
 ::: zone-end
@@ -102,7 +102,7 @@ class Microsoft::CognitiveServices::Speech::Impl::ISpxAudioConfig 0
 class Microsoft::CognitiveServices::Speech::Impl::ISpxSpeechConfig 0
 ```
 
-若要啟用錯誤閾值，必須在`SpeechConfig`物件上指定。 建立新的辨識器時，會檢查此物件。 在下列範例中，假設您已建立名`SpeechConfig` `config`為的實例：
+若要啟用錯誤閾值，必須在物件上指定 `SpeechConfig` 。 建立新的辨識器時，會檢查此物件。 在下列範例中，假設您已建立名為的實例 `SpeechConfig` `config` ：
 
 ::: zone pivot="programming-language-csharp"
 
@@ -131,7 +131,7 @@ config.setProperty("SPEECH-ObjectCountErrorThreshold", "10000");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000")?
+speech_config.set_property_by_name("SPEECH-ObjectCountErrorThreshold", "10000")?
 ```
 
 ::: zone-end
@@ -145,9 +145,8 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000"
 ::: zone-end
 
 > [!TIP]
-> 這個屬性的預設值是`size_t`資料類型的平臺特定最大值。 一般的辨識會耗用7到10個內建物件。
+> 這個屬性的預設值是資料類型的平臺特定最大值 `size_t` 。 一般的辨識會耗用7到10個內建物件。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [取得您的語音服務試用版訂用帳戶](get-started.md)
-* [瞭解如何使用麥克風辨識語音](quickstarts/speech-to-text-from-microphone.md)
+* [深入瞭解語音 SDK](speech-sdk.md)

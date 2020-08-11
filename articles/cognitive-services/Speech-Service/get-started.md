@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 4604bfe7c815f79733f99a1a3727e4c68527e7ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc1f8ed31c8d7199a31643a76e611d828da77ac
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656135"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056460"
 ---
-# <a name="try-the-speech-service-for-free"></a>免費試用語音服務 ' '
+# <a name="try-the-speech-service-for-free"></a>免費試用語音服務
 
 在本文中，您會選擇免費輕鬆地測試語音服務的選項，讓您可以探索服務可執行檔動作，並決定是否適合您的需求。 根據您的情況和使用案例，選擇下列兩個選項的其中一個：
 
-- [選項 1](#no-card)：立即取得**免費試用**API 金鑰，而不提供任何信用卡資訊（您必須擁有現有的 Azure 帳戶）。 **免費試用**會持續30天，且資料會在結束時刪除。 此選項最適合用來進行服務的快速實驗。
-- [選項 2](#new-resource)：使用**免費訂**用帳戶在 Azure 中建立新的語音資源（需要信用卡資訊）。 **免費的訂**用帳戶主要具有比付費訂用帳戶更嚴格的速率限制。 如果您想要測試服務，但也計畫在未來升級至付費訂用帳戶，而不想遺失資料，最好使用此選項。
+- [選項 1](#no-card)：立即取得**免費試用**API 金鑰，但不提供任何信用卡資訊 (您必須擁有現有的 Azure 帳戶) 。 **免費試用**會持續30天，且資料會在結束時刪除。 此選項最適合用來進行服務的快速實驗。
+- [選項 2](#new-resource)：使用**免費的訂**用帳戶在 Azure 中建立新的語音資源 () 所需的信用卡資訊。 **免費的訂**用帳戶主要具有比付費訂用帳戶更嚴格的速率限制。 如果您想要測試服務，但也計畫在未來升級至付費訂用帳戶，而不想遺失資料，最好使用此選項。
 
 ## <a name="try-the-speech-service-without-credit-card-info"></a><a id="no-card"></a>試用語音服務，而不需要信用卡資訊
 
@@ -69,7 +69,7 @@ ms.locfileid: "80656135"
    - 為您的新資源提供唯一的名稱。 此名稱可協助您區分多個與相同服務系結的訂閱。
    - 選擇與新資源相關聯的 Azure 訂用帳戶來決定費用的計費方式。
    - 選擇將使用資源的[區域](regions.md)。
-   - 請選擇免費（F0）或付費（S0）定價層。 如需每一層的定價和使用量配額完整資訊，請選取 [**查看完整定價詳細資料**]。
+   - 請選擇免費的 (F0) 或付費 (S0) 定價層。 如需每一層的定價和使用量配額完整資訊，請選取 [**查看完整定價詳細資料**]。
    - 為此語音訂用帳戶建立新的資源群組，或將該訂用帳戶指派給現有的資源群組。 資源群組可協助組織各種 Azure 訂用帳戶。
    - 選取 [建立]  。 這會帶您前往部署總覽並顯示部署進度訊息。
 
@@ -96,5 +96,5 @@ ms.locfileid: "80656135"
 完成個我們的任何一個 10 分鐘快速入門，或查看我們的 SDK 範例：
 
 > [!div class="nextstepaction"]
-> [快速入門：以 c #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> 辨識語音[語音 SDK 範例](speech-sdk.md#sample-source-code)
+> [快速入門：使用語音 CLI](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programmer-tool-spx) 
+>  辨識語音[語音 SDK 範例](speech-sdk.md#sample-source-code)

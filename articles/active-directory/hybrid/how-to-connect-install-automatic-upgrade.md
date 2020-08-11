@@ -16,15 +16,15 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749c97549661f2b2d647f8f7ba718d7696ef8355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcc6de1ce50e86f177023a0a66c436633c8d502c
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359002"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053281"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自動升級
-此功能已隨組建 [1.1.105.0 (於 2016 年 2 月發行)](reference-connect-version-history.md#111050) 一起推出。  這項功能已在[組建 1.1.561](reference-connect-version-history.md#115610) 中更新，且現在支援先前未支援的其他案例。
+此功能已隨組建 [1.1.105.0 (於 2016 年 2 月發行)](reference-connect-version-history.md) 一起推出。  這項功能已在[組建 1.1.561](reference-connect-version-history.md) 中更新，且現在支援先前未支援的其他案例。
 
 ## <a name="overview"></a>概觀
 使用「自動升級」  功能是可確保您 Azure AD Connect 安裝永遠維持在最新狀態的最簡單方式。 此功能預設為啟用，以供進行快速安裝及 DirSync 升級。 新版本發行時，您的安裝會自動升級。
@@ -71,7 +71,7 @@ ms.locfileid: "85359002"
 
 結果碼前面會有包含狀態概觀的前置詞。
 
-| 結果碼前置詞 | 說明 |
+| 結果碼前置詞 | 描述 |
 | --- | --- |
 | Success |安裝已順利升級。 |
 | UpgradeAborted |發生暫時狀況導致升級停止。 它將會重試一次，而且預期稍後成功。 |

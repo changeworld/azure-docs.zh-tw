@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 77c0489838685d65d7579f37d6a6cb922af509f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062536"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053740"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>使用 Azure Key Vault 和受控身分識別，為您的 Azure Batch 帳戶設定客戶管理的金鑰
 
@@ -82,7 +82,7 @@ az batch account show \
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>在 Azure Key Vault 中產生金鑰
 
-在 Azure 入口網站中，移至 [**金鑰**] 區段中的 [Key Vault] 實例，選取 [**產生/匯入**]。 選取要**Key Type**成為 `RSA` 和**金鑰大小**的金鑰類型 `2048` 。
+在 Azure 入口網站中，移至 [**金鑰**] 區段中的 [Key Vault] 實例，選取 [**產生/匯入**]。 選取**金鑰類型**為 `RSA` ，而**RSA 金鑰大小**至少為 `2048` 位。 `EC`金鑰類型目前不支援做為 Batch 帳戶上的客戶管理金鑰。
 
 ![建立金鑰](./media/batch-customer-managed-key/create-key.png)
 
@@ -110,7 +110,7 @@ az batch account set \
 
 ## <a name="update-the-customer-managed-key-version"></a>更新客戶管理的金鑰版本
 
-當您建立新版本的金鑰時，請更新 Batch 帳戶以使用新的版本。 請遵循這些步驟：
+當您建立新版本的金鑰時，請更新 Batch 帳戶以使用新的版本。 請遵循下列步驟：
 
 1. 在 Azure 入口網站中流覽至您的 Batch 帳戶，並顯示加密設定。
 2. 輸入新金鑰版本的 URI。 或者，您可以再次選取金鑰保存庫和金鑰，以更新版本。
@@ -142,12 +142,13 @@ az batch account set \
 ```
 ## <a name="frequently-asked-questions"></a>常見問題集
   * **現有的 Batch 帳戶是否支援客戶管理的金鑰？** 不可以。 只有新的 Batch 帳戶支援客戶管理的金鑰。
+  * **我可以選取大於2048位的 RSA 金鑰大小嗎？** 是，也支援 RSA 金鑰大小 `3072` 和 `4096` 位。
   * **客戶管理的金鑰撤銷後，可以執行哪些作業？** 如果 Batch 無法存取客戶管理的金鑰，則唯一允許的作業是刪除帳戶。
   * **如果我不小心刪除 Key Vault 金鑰，應該如何還原 Batch 帳戶的存取權？** 由於已啟用「清除保護」和「虛刪除」，因此您可以還原現有的金鑰。 如需詳細資訊，請參閱[復原 Azure Key Vault](../key-vault/general/soft-delete-cli.md#recovering-a-key-vault)。
   * **我可以停用客戶管理的金鑰嗎？** 您可以隨時將 Batch 帳戶的加密類型設定回「Microsoft 受控金鑰」。 在此之後，您可以隨意刪除或變更金鑰。
   * **如何輪替我的金鑰？** 客戶管理的金鑰不會自動輪替。 若要輪替金鑰，請更新與帳戶相關聯的金鑰識別碼。
   * **在還原存取權之後，Batch 帳戶再次執行需要多久的時間？** 還原存取權後，最多可能需要10分鐘的時間，才能再次存取該帳戶。
-  * **當 Batch 帳戶無法使用時，我的資源會發生什麼事？** 當對客戶管理的金鑰進行批次存取時，任何正在執行的集區都會繼續執行。 不過，節點會轉換成無法使用的狀態，而且工作將會停止執行（並重新排入佇列）。 一旦還原存取權，節點就會再次變成可用，而工作將會重新開機。
+  * **當 Batch 帳戶無法使用時，我的資源會發生什麼事？** 當對客戶管理的金鑰進行批次存取時，任何正在執行的集區都會繼續執行。 不過，節點會轉換成無法使用的狀態，而工作將會停止執行 (並重新排入佇列) 。 一旦還原存取權，節點就會再次變成可用，而工作將會重新開機。
   * **此加密機制適用于 Batch 集區中的 VM 磁片嗎？** 不可以。 針對雲端服務設定集區，不會對 OS 和暫存磁片套用加密。 若為虛擬機器設定集區，則預設會使用 Microsoft 平臺管理金鑰來加密 OS 和任何指定的資料磁片。 目前，您無法為這些磁片指定您自己的金鑰。 若要使用 Microsoft 平臺管理的金鑰來加密 Batch 集區的 Vm 暫存磁片，您必須在[虛擬機器](/rest/api/batchservice/pool/add#virtualmachineconfiguration)設定集區中啟用[diskEncryptionConfiguration](/rest/api/batchservice/pool/add#diskencryptionconfiguration)屬性。 針對高度敏感的環境，建議您啟用暫存磁片加密，並避免在 OS 和資料磁片上儲存機密資料。
   * **Batch 帳戶上的系統指派受控識別是否可在計算節點上使用？** 不可以。 此受控識別目前僅用於存取客戶管理之金鑰的 Azure Key Vault。
   

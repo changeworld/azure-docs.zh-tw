@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 47448a97c89b1feddfc43da300cb53fd65eaff05
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041779"
+ms.locfileid: "88056647"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教學課程：使用語音 SDK 為您的 bot 啟用語音
 
@@ -60,7 +60,7 @@ ms.locfileid: "88041779"
 - 具有正常運作麥克風和喇叭的 Windows 10 電腦 (或耳機) 
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)或更高版本，且已安裝**ASP.NET 和 網頁程式開發**工作負載
 - [.NET Framework 執行時間 4.6.1](https://dotnet.microsoft.com/download)或更高版本
-- Azure 帳戶。 [免費註冊](https://azure.microsoft.com/free/ai/)。
+- Azure 帳戶。 [免費註冊](https://azure.microsoft.com/free/cognitive-services/)
 - [GitHub](https://github.com/) 帳戶
 - [適用于 Windows 的 Git](https://git-scm.com/download/win)
 
@@ -83,7 +83,6 @@ ms.locfileid: "88041779"
 
 * 請確定您使用的是[支援的 Azure 區域](regions.md#voice-assistants)。
 * Direct Line 語音通道會使用文字轉換語音服務，其具有標準和類神經語音。 類神經語音[僅限於特定的 Azure 區域](regions.md#standard-and-neural-voices)。
-* 免費試用金鑰可能會限制在特定區域。
 
 如需區域的詳細資訊，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。
 

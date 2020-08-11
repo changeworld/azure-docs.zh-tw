@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 9804992aee318fdc34815bdbe4187144704cd667
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099775"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053911"
 ---
 # <a name="what-is-batch-transcription"></a>什麼是批次轉譯？
 
-批次轉譯是一組 REST API 作業，可讓您在儲存體中轉譯大量的音訊。 您可以使用共用存取簽章（SAS） URI 來指向音訊檔案，並以非同步方式接收轉譯結果。 使用新的 v3.0 API，您可以選擇轉譯一或多個音訊檔案，或處理整個儲存體容器。
+批次轉譯是一組 REST API 作業，可讓您在儲存體中轉譯大量的音訊。 您可以使用共用存取簽章來指向音訊檔案 (SAS) URI，並以非同步方式接收轉譯結果。 使用新的 v3.0 API，您可以選擇轉譯一或多個音訊檔案，或處理整個儲存體容器。
 
 非同步語音轉換文字轉譯只是其中一項功能。 您可以使用批次轉譯 REST Api 來呼叫下列方法：
 
@@ -31,7 +31,7 @@ ms.locfileid: "85099775"
 |    抓取已驗證之訂用帳戶的轉譯清單。    |    GET       |    speechtotext/v3.0/轉譯            |
 |    取得離線轉譯支援的地區設定清單。              |    GET       |    speechtotext/v3.0/轉譯/地區設定    |
 |    更新識別碼所識別之轉譯的可變詳細資料。    |    PATCH     |    speechtotext/v3.0/轉譯/{id}       |
-|    刪除指定的轉譯工作。                                 |    刪除    |    speechtotext/v3.0/轉譯/{id}       |
+|    刪除指定的轉譯工作。                                 |    DELETE    |    speechtotext/v3.0/轉譯/{id}       |
 |    取得指定識別碼所識別的轉譯。                        |    GET       |    speechtotext/v3.0/轉譯/{id}       |
 |    取得指定識別碼所識別之轉譯的結果檔案。    |    GET       |    speechtotext/v3.0/轉譯/{id}/files |
 
@@ -44,18 +44,18 @@ ms.locfileid: "85099775"
 
 在容易使用的 API 旁，您不需要部署自訂端點，也不會有任何要觀察的並行需求。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 ### <a name="subscription-key"></a>訂用帳戶金鑰
 
 如同語音服務的所有功能，您可以依照我們的[快速入門指南](get-started.md)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
 
 >[!NOTE]
-> 需要「語音服務」的標準訂用帳戶（S0）才能使用批次轉譯。 免費訂用帳戶金鑰（F0）無法使用。 如需詳細資訊，請參閱[定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+> 需要「語音服務」的標準訂用帳戶 (S0) 才能使用批次轉譯。 免費的訂用帳戶金鑰 (F0) 無法使用。 如需詳細資訊，請參閱[定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 ### <a name="custom-models"></a>自訂模型
 
-如果您打算自訂模型，請遵循聲場[自訂](how-to-customize-acoustic-models.md)和[語言自訂](how-to-customize-language-model.md)中的步驟。 若要在批次轉譯中使用已建立的模型，您需要其模型位置。 當您檢查模型的詳細資料（屬性）時，可以取得模型位置 `self` 。 批次轉譯服務*不需要*已部署的自訂端點。
+如果您打算自訂模型，請遵循聲場[自訂](how-to-customize-acoustic-models.md)和[語言自訂](how-to-customize-language-model.md)中的步驟。 若要在批次轉譯中使用已建立的模型，您需要其模型位置。 當您檢查模型的詳細資料時，您可以 (屬性) ，來取得模型位置 `self` 。 批次轉譯服務*不需要*已部署的自訂端點。
 
 ## <a name="the-batch-transcription-api"></a>Batch 轉譯 API
 
@@ -63,7 +63,7 @@ ms.locfileid: "85099775"
 
 Batch 轉譯 API 支援下列格式：
 
-| [格式] | 轉碼器 | Bitrate | 採樣速率                     |
+| 格式 | 轉碼器 | Bitrate | 採樣速率                     |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16 位元  | 8 kHz 或 16 kHz、單聲道或身歷聲 |
 | MP3    | PCM   | 16 位元  | 8 kHz 或 16 kHz、單聲道或身歷聲 |
@@ -71,9 +71,9 @@ Batch 轉譯 API 支援下列格式：
 
 針對身歷聲音訊資料流程，左右聲道會在轉譯期間分割。 針對每個通道，會建立 JSON 結果檔案。 每個語句產生的時間戳記可讓開發人員建立排序的最終文字記錄。
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
-設定參數是以 JSON （一或多個個別檔案）的形式提供：
+設定參數提供為 JSON (一或多個個別檔案) ：
 
 ```json
 {
@@ -88,7 +88,7 @@ Batch 轉譯 API 支援下列格式：
 }
 ```
 
-設定參數是以 JSON （處理整個儲存體容器）的形式提供：
+設定參數會以 JSON 形式提供， (處理整個儲存體容器) ：
 
 ```json
 {
@@ -143,35 +143,35 @@ Batch 轉譯 API 支援下列格式：
       `punctuationMode`
    :::column-end:::
    :::column span="2":::
-      指定如何處理辨識結果中的標點符號。 接受的值為 `None` 停用標點符號、表示 `Dictated` 明確（讀出）標點符號、 `Automatic` 讓解碼器處理標點符號，或 `DictatedAndAutomatic` 使用聽寫和自動標點符號。 預設設定是 `DictatedAndAutomatic`。
+      指定如何處理辨識結果中的標點符號。 接受的值是 `None` 停用標點符號，表示 `Dictated` 明確 (說) 標點符號， `Automatic` 讓解碼器處理標點符號，或 `DictatedAndAutomatic` 使用聽寫和自動標點符號。 預設設定是 `DictatedAndAutomatic`。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `wordLevelTimestampsEnabled`
    :::column-end:::
    :::column span="2":::
-      指定是否將字組層級時間戳記新增至輸出。 接受的值是 `true` 啟用 word 層級時間戳記和 `false` （預設值）來停用它。
+      指定是否將字組層級時間戳記新增至輸出。 接受的值是 `true` 啟用 word 層級時間戳記，並 `false` (預設值) 停用它。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `diarizationEnabled`
    :::column-end:::
    :::column span="2":::
-      指定應該在輸入上執行 diarization 分析，這應該是包含兩個語音的 mono 通道。 接受的值會 `true` 啟用 diarization 和 `false` （預設值）來停用它。 它也需要 `wordLevelTimestampsEnabled` 設定為 true。
+      指定應該在輸入上執行 diarization 分析，這應該是包含兩個語音的 mono 通道。 接受的值會 `true` 啟用 diarization，並 `false` (預設值) 停用它。 它也需要 `wordLevelTimestampsEnabled` 設定為 true。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `channels`
    :::column-end:::
    :::column span="2":::
-      要處理的選擇性通道編號陣列。 您可以在這裡指定音訊檔案中可用通道的子集，以進行處理（例如 `0` 僅限）。 如果未指定，則 `0` `1` 會將通道和轉譯為預設值。
+      要處理的選擇性通道編號陣列。 您可以在這裡指定音訊檔案中可用通道的子集， (例如 `0` 僅) 。 如果未指定，則 `0` `1` 會將通道和轉譯為預設值。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `timeToLive`
    :::column-end:::
    :::column span="2":::
-      在完成轉譯之後自動刪除轉譯的選擇性持續時間。 適用 `timeToLive` 于大量處理轉譯，以確保最終會刪除它們（例如 `PT12H` ）。 如果未指定或設定為 `PT0H` ，將不會自動刪除轉譯。
+      在完成轉譯之後自動刪除轉譯的選擇性持續時間。 在 `timeToLive` 大量處理轉譯中很有用，可確保最後會刪除 (例如 `PT12H`) 。 如果未指定或設定為 `PT0H` ，將不會自動刪除轉譯。
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -272,7 +272,7 @@ Batch 轉譯 API 支援下列格式：
       `itn`
    :::column-end:::
    :::column span="2":::
-      已辨識文字的反向文字正規化形式。 會套用縮寫（"醫生 smith" 至 "dr smith"）、電話號碼和其他轉換。
+      已辨識文字的反向文字正規化形式。  ( "醫生 smith" 的縮寫，) 、電話號碼和其他轉換都適用。
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -289,7 +289,7 @@ Batch 轉譯 API 支援下列格式：
       已辨識文字的顯示形式。 包含已新增的標點符號和大小寫。
 :::row-end:::
 
-## <a name="speaker-separation-diarization"></a>說話者分隔（Diarization）
+## <a name="speaker-separation-diarization"></a> (Diarization) 的說話者分隔
 
 Diarization 是在一段音訊中分隔喇叭的程式。 我們的批次管線支援 diarization，而且能夠在 mono 通道錄製上辨識兩個喇叭。 這項功能不適用於身歷聲記錄。
 
@@ -346,4 +346,4 @@ Diarization 是在一段音訊中分隔喇叭的程式。 我們的批次管線�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [試用認知服務](https://azure.microsoft.com/try/cognitive-services/)
+- [語音轉換文字 v3 API 參考](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

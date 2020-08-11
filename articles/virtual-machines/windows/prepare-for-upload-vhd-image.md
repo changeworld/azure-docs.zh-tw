@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: genli
-ms.openlocfilehash: 6010c67b531d0f1ebb0ed836062cd5e323e5474c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5124a0336773412ae9c36a32a0f6f86da62a31
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083509"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056239"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>準備 Windows VHD 或 VHDX 以上傳至 Azure
 
-將 Windows 虛擬機器（VM）從內部部署上傳至 Azure 之前，您必須準備虛擬硬碟（VHD 或 VHDX）。 Azure 支援具有 VHD 檔案格式且具有固定大小磁片的第1代和第2代 Vm。 第1代 VM 上允許的 OS VHD 大小上限為 2 TB。
+將 Windows 虛擬機器從內部部署 (VM) 上傳至 Azure 之前，您必須先準備虛擬硬碟 (VHD 或 VHDX) 。 Azure 支援具有 VHD 檔案格式且具有固定大小磁片的第1代和第2代 Vm。 第1代 VM 上允許的 OS VHD 大小上限為 2 TB。
 
 您可以將 VHDX 檔案轉換成 VHD、將動態擴充的磁片轉換成固定大小的磁片，但無法變更 VM 的世代。 如需詳細資訊，請參閱[應該在 hyper-v 中建立第1代或第2代 vm](/windows-server/virtualization/hyper-v/plan/Should-I-create-a-generation-1-or-2-virtual-machine-in-Hyper-V) ，並[支援 Azure 上的第2代 vm](generation-2.md)。
 
@@ -43,8 +43,8 @@ ms.locfileid: "87083509"
 
    1. Azure 中的磁片必須具有與 1 MiB 一致的虛擬大小。 如果您的 VHD 是 1 MiB 的分數，則需要將磁片大小調整為 1 MiB 的倍數。 從上傳的 VHD 建立映射時，屬於 MiB 分數的磁片會造成錯誤。 若要確認這一點，您可以[使用 PowerShell comdlet](/powershell/module/hyper-v/get-vhd)來顯示「大小」，這必須是 Azure 中的 1 MiB 的倍數，而「FileSize」則等於「大小」加上512位元組（適用于 VHD 頁尾）。
    
-   1. 具有第1代 VM 的 OS VHD 所允許的大小上限為 2048 GiB （2 TiB）、 
-   1. 資料磁片的大小上限為 32767 GiB （32 TiB）。
+   1. 具有第1代 VM 的 OS VHD 所允許的大小上限為 2048 GiB (2 TiB) 、 
+   1. 資料磁片的大小上限為 32767 GiB (32 TiB) 。
 
 > [!NOTE]
 > - 如果您在轉換成固定磁片之後準備 Windows OS 磁片，並視需要調整大小，請建立使用該磁片的 VM。 啟動並登入 VM，並繼續進行本文中的各節，以完成準備以進行上傳。  
@@ -58,7 +58,7 @@ ms.locfileid: "87083509"
 1. 若要從 VHDX 轉換，請選取 [ **VHD**  >  **] [下一步]**。
 1. 若要從動態擴充磁片進行轉換，請選取 [**固定大小**  >  **] [下一步]**。
 1. 找出並選取路徑以儲存新的 VHD 檔案。
-1. 選取 [完成] 。
+1. 選取 [完成]。
 
 ### <a name="use-powershell-to-convert-the-disk"></a>使用 PowerShell 轉換磁片
 
@@ -82,7 +82,7 @@ Convert-VHD -Path C:\test\MyVM.vhdx -DestinationPath C:\test\MyNewVM.vhd -VHDTyp
 1. 在 [**尋找虛擬硬碟**] 頁面上，選取您的虛擬磁片。
 1. 在 [**選擇動作**] 頁面上，選取 [**展開**  >  **下一步]**。
 1. 在 [**尋找虛擬硬碟**] 頁面上，于 [GiB] 中輸入新的大小 >**下一步]**。
-1. 選取 [完成] 。
+1. 選取 [完成]。
 
 ### <a name="use-powershell-to-resize-the-disk"></a>使用 PowerShell 來調整磁片大小
 
@@ -100,7 +100,7 @@ Resize-VHD -Path C:\test\MyNewVM.vhd -SizeBytes 105906176
 
 ### <a name="run-windows-system-file-checker-utility-before-generalization-of-os-image"></a>在作業系統映射的一般化之前執行 Windows 系統檔案檢查工具公用程式
 
-系統檔案檢查程式（SFC）是用來驗證和取代 Windows 系統檔案。
+系統檔案檢查程式 (SFC) 用來驗證和取代 Windows 系統檔案。
 
 > [!IMPORTANT]
 > 使用已提升許可權的 PowerShell 會話來執行本文中的範例。
@@ -125,7 +125,7 @@ Windows Resource Protection did not find any integrity violations.
 ## <a name="set-windows-configurations-for-azure"></a>設定適用於 Azure 的 Windows 設定
 
 > [!NOTE]
-> Azure 平臺會在從一般化映射建立 Windows VM 時，將 ISO 檔案掛接至 DVD-ROM。 基於這個理由，您必須在通用映射的 OS 中啟用 DVD-ROM。 如果已停用，則 Windows VM 會停滯在全新體驗（OOBE）。
+> Azure 平臺會在從一般化映射建立 Windows VM 時，將 ISO 檔案掛接至 DVD-ROM。 基於這個理由，您必須在通用映射的 OS 中啟用 DVD-ROM。 如果已停用，則 Windows VM 將會卡在 (OOBE) 的全新體驗中。
 
 1. 移除路由表中的任何靜態持續性路由：
 
@@ -138,7 +138,7 @@ Windows Resource Protection did not find any integrity violations.
    netsh.exe winhttp reset proxy
    ```
 
-    如果 VM 需要使用特定的 proxy，請新增 Azure IP 位址（[168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)）的 proxy 例外，讓 VM 可以連線到 azure：
+    如果 VM 需要使用特定的 proxy，請將 Azure IP 位址的 proxy 例外 ([168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)) ，讓 VM 可以連線到 azure：
 
     ```
     $proxyAddress='<your proxy server>'
@@ -159,7 +159,7 @@ Windows Resource Protection did not find any integrity violations.
    DISKPART> exit
    ```
 
-1. 設定 Windows 的國際標準時間（UTC）時間。 此外，將 Windows 時間服務**w32time**的啟動類型設定為 [**自動**]：
+1. 設定 Windows 的國際標準時間 (UTC) 時間。 此外，將 Windows 時間服務**w32time**的啟動類型設定為 [**自動**]：
 
    ```powershell
    Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation -Name RealTimeIsUniversal -Value 1 -Type DWord -Force
@@ -221,7 +221,7 @@ Get-Service -Name Netlogon, Netman, TermService |
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\Winstations\RDP-Tcp' -Name LanAdapter -Value 0 -Type DWord -Force
    ```
 
-1. 設定 RDP 連線的網路層級驗證（NLA）模式：
+1. 針對 RDP 連線 (NLA) 模式設定網路層級驗證：
 
    ```powershell
    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -Name UserAuthentication -Value 1 -Type DWord -Force
@@ -274,13 +274,13 @@ Get-Service -Name Netlogon, Netman, TermService |
 
 ## <a name="configure-windows-firewall-rules"></a>設定 Windows 防火牆規則
 
-1. 在三個設定檔（網域、標準和公用）上開啟 Windows 防火牆：
+1. 在 [網域]、[標準] 和 [公用])  (的三個設定檔上開啟 Windows 防火牆：
 
    ```powershell
    Set-NetFirewallProfile -Profile Domain, Public, Private -Enabled True
    ```
 
-1. 執行下列範例，以允許 WinRM 透過三種防火牆設定檔（網域、私人和公用），並啟用 PowerShell 遠端服務：
+1. 執行下列範例，以允許 WinRM 透過三種防火牆設定檔 (網域、私用和公用) ，並啟用 PowerShell 遠端服務：
 
    ```powershell
    Enable-PSRemoting -Force
@@ -363,7 +363,7 @@ Get-Service -Name Netlogon, Netman, TermService |
    Set-Service -Name WerSvc -StartupType Manual
    ```
 
-1. 確認 Windows Management Instrumentation （WMI）存放庫是一致的：
+1. 確認 (WMI) 存放庫的 Windows Management Instrumentation 一致：
 
    ```powershell
    winmgmt.exe /verifyrepository
@@ -381,7 +381,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 
    - 遵循[這些額外的步驟](https://support.microsoft.com/kb/2904015)來準備磁碟。
 
-   - 如果您必須在 DSRM 中啟動 VM，請確定您知道目錄服務還原模式（DSRM）密碼。 如需詳細資訊，請參閱[設定 DSRM 密碼](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc754363(v=ws.11))。
+   - 如果您必須在 DSRM 中啟動 VM，請確定您知道目錄服務還原模式 (DSRM) 密碼。 如需詳細資訊，請參閱[設定 DSRM 密碼](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc754363(v=ws.11))。
 
 1. 請確定您知道內建的系統管理員帳戶和密碼。 您可能會想要重設目前的本機系統管理員密碼，並確定您可以使用此帳戶，透過 RDP 連線來登入 Windows。 此存取權限是由「允許透過遠端桌面服務登入」群組原則物件所控制。 在 [本機群組原則編輯器中查看此物件：
 
@@ -411,7 +411,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 
 1. 重新開機 VM，以確保 Windows 仍然狀況良好，並可透過 RDP 連線來達到。 此時，請考慮在您的本機 Hyper-v 伺服器上建立 VM，以確定 VM 已完全啟動。 然後進行測試，以確定您可以透過 RDP 連線到 VM。
 
-1. 移除任何額外的傳輸驅動程式介面（TDI）篩選器。 例如，移除分析 TCP 封包或額外防火牆的軟體。 若要稍後再進行檢查，您可以在 Azure 中部署 VM 之後執行此動作。
+1. 移除任何額外的傳輸驅動程式介面 (TDI) 篩選器。 例如，移除分析 TCP 封包或額外防火牆的軟體。 若要稍後再進行檢查，您可以在 Azure 中部署 VM 之後執行此動作。
 
 1. 卸載與實體元件或任何其他虛擬化技術相關的其他協力廠商軟體或驅動程式。
 
@@ -464,7 +464,7 @@ Get-Service -Name Netlogon, Netman, TermService |
 
 ### <a name="determine-when-to-use-sysprep"></a>判斷何時要使用 Sysprep
 
-系統準備工具（ `sysprep.exe` ）是您可以執行以重設 Windows 安裝的程式。
+系統準備工具 (`sysprep.exe`) 是您可以執行以重設 Windows 安裝的程式。
 Sysprep 藉由移除所有個人資料並重設數個元件來提供「現成」體驗。
 
 您通常 `sysprep.exe` 會執行來建立範本，您可以在其中部署數個具有特定設定的其他 vm。 此範本稱為*一般化映射*。
@@ -488,8 +488,9 @@ Sysprep 藉由移除所有個人資料並重設數個元件來提供「現成」
 
 1. 登入 Windows VM。
 1. 以系統管理員身分執行 PowerShell 會話。
+1.  (C:\Windows\Panther) 中刪除 panther 目錄。
 1. 將目錄變更為 `%windir%\system32\sysprep` 。 然後執行 `sysprep.exe`。
-1. 在 [**系統準備工具**] 對話方塊中，選取 [**進入系統全新體驗（OOBE）**]，並確定已選取 [**一般化**] 核取方塊。
+1. 在 [**系統準備工具**] 對話方塊中，選取 [**進入系統全新體驗] (OOBE) **，並確定已選取 [**一般化**] 核取方塊。
 
     ![系統準備工具](media/prepare-for-upload-vhd-image/syspre.png)
 1. 在 [關機選項] 中選取 [關機]。

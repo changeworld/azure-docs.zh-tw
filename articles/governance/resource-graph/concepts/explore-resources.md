@@ -1,14 +1,14 @@
 ---
 title: 探索您的 Azure 資源
 description: 了解使用 Resource Graph 查詢語言來瀏覽您的資源，並探索其連線的方式。
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654494"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056579"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>使用 Resource Graph 探索您的 Azure 資源
 
@@ -207,8 +207,8 @@ Resources
 | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-在執行查詢之前，我們怎麼知道 **type** 現在應該是 **Microsoft.Compute/disks**？
-如果您查看完整的識別碼，您會看到 **/providers/Microsoft.Compute/disks/** 作為字串的一部分。 此字串片段會為您提供要搜尋之類型的提示。 替代方法是依類型移除限制，而只依 [識別碼] 欄位搜尋。 由於識別碼是唯一的，因此只會傳回一筆記錄，並且其上的 **type** 屬性會提供詳細資料。
+在執行查詢之前，我們怎麼知道 **type** 現在應該是 **Microsoft.Compute/disks**？ 如果您查看完整的識別碼，您會看到 **/providers/Microsoft.Compute/disks/** 作為字串的一部分。
+此字串片段會為您提供要搜尋之類型的提示。 替代方法是依類型移除限制，而只依 [識別碼] 欄位搜尋。 由於識別碼是唯一的，因此只會傳回一筆記錄，並且其上的 **type** 屬性會提供詳細資料。
 
 > [!NOTE]
 > 若要使此範例正常運作，必須使用您自己的環境中的結果取代 [識別碼] 欄位。

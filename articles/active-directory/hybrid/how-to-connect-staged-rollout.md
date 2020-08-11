@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460604"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053214"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分段推出移轉至雲端驗證 (預覽)
 
-分段推出可讓您選擇性地使用雲端驗證功能來測試使用者群組，例如 Azure 多重要素驗證（MFA）、條件式存取、洩漏認證的身分識別保護、身分識別管理等，然後再移至您的網域。  本文討論如何進行此切換。 不過，在開始分段推出前，如果下列一或多個條件成立，則您應思考其含意：
+分段推出可讓您選擇性地使用雲端驗證功能來測試使用者群組，例如 Azure 多重要素驗證 (MFA) 、條件式存取、洩漏認證的身分識別保護、身分識別控管等等，然後在您的網域之前進行。  本文討論如何進行此切換。 不過，在開始分段推出前，如果下列一或多個條件成立，則您應思考其含意：
     
 -  您目前正在使用內部部署 Multi-Factor Authentication 伺服器。 
 -  您正在使用智慧卡進行驗證。 
@@ -38,14 +38,14 @@ ms.locfileid: "87460604"
 -   您擁有具有同盟網域的 Azure Active Directory (Azure AD) 租用戶。
 
 -   您決定移至這兩個選項的其中之一：
-    - **選項 A**  - *密碼雜湊同步處理（同步處理）*  + *無縫單一登入（SSO）*。  如需詳細資訊，請參閱[什麼是密碼雜湊同步](whatis-phs.md)處理和[什麼是無縫 SSO](how-to-connect-sso.md)
+    - **選項 A**  - *密碼雜湊同步處理 (同步) *  + *無縫單一登入 (SSO) *。  如需詳細資訊，請參閱[什麼是密碼雜湊同步](whatis-phs.md)處理和[什麼是無縫 SSO](how-to-connect-sso.md)
     - **選項 B**  - *傳遞驗證*  + *無縫 SSO*。  如需詳細資訊，請參閱[什麼是傳遞驗證](how-to-connect-pta.md)  
     
     雖然「無縫 SSO」為選擇，但我們建議將其啟用，以為正在公司網路內部執行已加入網域電腦的使用者提供無訊息登入體驗。
 
 -   針對正在移轉至雲端驗證的使用者，您已為其設定了所需的所有適當租用戶商標和條件式存取原則。
 
--   如果您打算使用 Azure 多重要素驗證，建議您使用[結合註冊來進行自助式密碼重設（SSPR）和多重要素驗證](../authentication/concept-registration-mfa-sspr-combined.md)，讓您的使用者註冊其驗證方法一次。
+-   如果您打算使用 Azure 多重要素驗證，建議您使用[結合註冊來進行自助式密碼重設 (SSPR) 和多重要素驗證](../authentication/concept-registration-mfa-sspr-combined.md)，讓您的使用者註冊其驗證方法一次。
 
 -   若要使用分段推出功能，則您必須是租用戶的全域管理員。
 
@@ -84,7 +84,7 @@ ms.locfileid: "87460604"
 
 - 在第一次新增安全性群組以進行分段推出時，會限制為 200 位使用者，以避免 UX 逾時。新增群組後，即可視需要將更多使用者直接新增至群組。
 
-- 當使用者在分段推出時，密碼到期原則會設定為90天，而且不會有自訂的選項。 
+- 當使用者在分段推出時，如果啟用 EnforceCloudPasswordPolicyForPasswordSyncedUsers，密碼到期原則會設定為90天，而且不會有自訂的選項。 
 
 
 ## <a name="get-started-with-staged-rollout"></a>開始使用分段推出
@@ -177,7 +177,7 @@ ms.locfileid: "87460604"
 
    >[!NOTE]
    >群組中的成員會自動啟用，以進行分段推出。 不支援巢狀和動態群組進行分段推出。
-   >新增群組時，群組中的使用者（最多200個新群組的使用者）將會更新為使用受控驗證 immidiatly。 編輯群組（新增或移除使用者）最多可能需要24小時的時間，變更才會生效。
+   >新增群組時，群組中的使用者 (最多200個新群組的使用者) 將會更新為使用受控驗證 immidiatly。 編輯群組 (新增或移除) 的使用者，最多可能需要24小時的時間，變更才會生效。
 
 ## <a name="auditing"></a>稽核
 

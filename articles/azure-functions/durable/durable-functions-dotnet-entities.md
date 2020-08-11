@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8fdf298357370415c1b3af95dd9ed22ad8539786
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d480b8db69b34eda7ca1ea8e1b2755179f9c673f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125475"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055168"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET 中的持久性實體開發人員指南
 
@@ -67,17 +67,17 @@ public class Counter
 }
 ```
 
-函 `Run` 式包含使用以類別為基礎的語法時所需的樣板。 它必須是*靜態*的 Azure 函式。 它會針對實體所處理的每個作業訊息執行一次。 當 `DispatchAsync<T>` 呼叫且實體尚未存在於記憶體中時，它會建立類型的物件 `T` ，並從儲存體中找到的最後一個持續性 JSON 填入其欄位（如果有的話）。 然後，它會叫用具有相符名稱的方法。
+函 `Run` 式包含使用以類別為基礎的語法時所需的樣板。 它必須是*靜態*的 Azure 函式。 它會針對實體所處理的每個作業訊息執行一次。 當 `DispatchAsync<T>` 呼叫，而且實體尚未存在於記憶體中時，它會建立類型的物件 `T` ，並從儲存體 (中的最後一個持續性 JSON 填入其欄位（如果有任何) 的話）。 然後，它會叫用具有相符名稱的方法。
 
 > [!NOTE]
 > 以類別為基礎之實體的狀態會在實體處理作業之前**隱含建立**，而且可以藉由呼叫在作業中**明確地刪除** `Entity.Current.DeleteState()` 。
 
 ### <a name="class-requirements"></a>類別需求
  
-實體類別是 Poco （純舊的 CLR 物件），不需要特殊的超類、介面或屬性。 但是：
+實體類別是 Poco (單純的舊版 CLR 物件) 不需要特殊的超類、介面或屬性。 但是：
 
-- 類別必須是可建構（請參閱[實體結構](#entity-construction)）。
-- 類別必須是可序列化的 JSON （請參閱[實體序列化](#entity-serialization)）。
+- 類別必須是可建構 (參閱[實體結構](#entity-construction)) 。
+- 類別必須是 JSON 可序列化 (請參閱[實體序列化](#entity-serialization)) 。
 
 此外，任何要當做作業叫用的方法，都必須滿足額外的需求：
 
@@ -93,7 +93,7 @@ public class Counter
 
 * `EntityName`：目前正在執行之實體的名稱。
 * `EntityKey`：目前正在執行之實體的索引鍵。
-* `EntityId`：目前執行之實體的識別碼（包括名稱和索引鍵）。
+* `EntityId`：目前正在執行之實體 (的識別碼包含名稱和金鑰) 。
 * `SignalEntity`：將單向訊息傳送至實體。
 * `CreateNewOrchestration`：啟動新的協調流程。
 * `DeleteState`：刪除此實體的狀態。
@@ -113,7 +113,7 @@ public class Counter
 
 ## <a name="accessing-entities-directly"></a>直接存取實體
 
-以類別為基礎的實體可以直接存取，使用實體及其作業的明確字串名稱。 我們提供下列範例：如需基礎概念（例如信號和呼叫）的更深入說明，請參閱[存取實體](durable-functions-entities.md#access-entities)中的討論。 
+以類別為基礎的實體可以直接存取，使用實體及其作業的明確字串名稱。 我們提供下列範例：如需基礎概念的更深入說明 (例如信號與呼叫) ，請參閱[存取實體](durable-functions-entities.md#access-entities)中的討論。 
 
 > [!NOTE]
 > 可能的話，我們建議您[透過介面來存取實體](#accessing-entities-through-interfaces)，因為它提供更多的型別檢查。
@@ -272,11 +272,11 @@ context.SignalEntity<ICounter>("myCounter", ...);
 如果違反其中任何一項規則， `InvalidOperationException` 當介面當做或的型別引數使用時，就會在執行時間擲回 `SignalEntity` `CreateProxy` 。 例外狀況訊息會說明哪一個規則已中斷。
 
 > [!NOTE]
-> 傳回的介面方法 `void` 只能有信號（單向），不能呼叫（雙向）。 傳回或的介面方法 `Task` `Task<T>` 可以是呼叫或信號。 如果呼叫，則會傳回作業的結果，或重新擲回作業所擲出的例外狀況。 不過，當發出信號時，它們不會從作業傳回實際的結果或例外狀況，而只會傳回預設值。
+> 傳回的介面方法 `void` 只能 (單向) 發出信號，而不會 (雙向) 呼叫。 傳回或的介面方法 `Task` `Task<T>` 可以是呼叫或信號。 如果呼叫，則會傳回作業的結果，或重新擲回作業所擲出的例外狀況。 不過，當發出信號時，它們不會從作業傳回實際的結果或例外狀況，而只會傳回預設值。
 
 ## <a name="entity-serialization"></a>實體序列化
 
-由於實體的狀態是永久保存的，因此實體類別必須是可序列化的。 Durable Functions 執行時間會針對此目的使用[Json.NET](https://www.newtonsoft.com/json)程式庫，它支援多個原則和屬性來控制序列化和還原序列化程式。 最常用的 c # 資料類型（包括陣列和集合類型）已經可序列化，而且很容易用於定義持久性實體的狀態。
+由於實體的狀態是永久保存的，因此實體類別必須是可序列化的。 Durable Functions 執行時間會針對此目的使用[Json.NET](https://www.newtonsoft.com/json)程式庫，它支援多個原則和屬性來控制序列化和還原序列化程式。 最常使用的 c # 資料類型 (包括陣列和集合類型) 已可序列化，而且很容易用於定義持久性實體的狀態。
 
 例如，Json.NET 可以輕鬆地序列化和還原序列化下列類別：
 
@@ -471,7 +471,7 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
             ctx.SetState(0);
             break;
         case "get":
-            ctx.Return(ctx.GetState<int>()));
+            ctx.Return(ctx.GetState<int>());
             break;
         case "delete":
             ctx.DeleteState();
@@ -488,19 +488,19 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 
 * `EntityName`：目前正在執行之實體的名稱。
 * `EntityKey`：目前正在執行之實體的索引鍵。
-* `EntityId`：目前執行之實體的識別碼（包括名稱和索引鍵）。
+* `EntityId`：目前正在執行之實體 (的識別碼包含名稱和金鑰) 。
 * `OperationName`：目前作業的名稱。
 * `GetInput<TInput>()`：取得目前作業的輸入。
 * `Return(arg)`：將值傳回至呼叫作業的協調流程。
 
-下列成員會管理實體的狀態（[建立]、[讀取]、[更新]、[刪除]）。 
+下列成員會管理實體 (建立、讀取、更新、刪除) 的狀態。 
 
 * `HasState`：實體是否存在，也就是具有某種狀態。 
 * `GetState<TState>()`：取得實體的目前狀態。 如果尚未存在，則會建立它。
 * `SetState(arg)`：建立或更新實體的狀態。
 * `DeleteState()`：刪除實體的狀態（如果有的話）。 
 
-如果傳回的狀態 `GetState` 是物件，則應用程式代碼可以直接修改它。 不需要 `SetState` 在結尾再次呼叫（但也不會有任何傷害）。 如果多次 `GetState<TState>` 呼叫，則必須使用相同的類型。
+如果傳回的狀態 `GetState` 是物件，則應用程式代碼可以直接修改它。 不需要 `SetState` 在結尾 (再次呼叫，但也不會對) 造成傷害。 如果多次 `GetState<TState>` 呼叫，則必須使用相同的類型。
 
 最後，使用下列成員來通知其他實體，或啟動新的協調流程：
 

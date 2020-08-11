@@ -7,18 +7,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/09/2020
+ms.date: 08/10/2020
 ms.author: iainfou
-ms.openlocfilehash: f77d9cd72476f9f2c30ca22bb2296efe1fd6cf9d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de27ee713caae0310f185cd717d5db2095feff32
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051668"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054284"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>將 Azure Active Directory Domain Services 從傳統虛擬網路模型遷移至 Resource Manager
 
-Azure Active Directory Domain Services （Azure AD DS）針對目前使用傳統虛擬網路模型的客戶，支援一次移動至 Resource Manager 虛擬網路模型。 使用 Resource Manager 部署模型 Azure AD DS 受控網域提供額外的功能，例如更細緻的密碼原則、audit 記錄和帳戶鎖定保護。
+Azure Active Directory Domain Services (Azure AD DS) 針對目前使用傳統虛擬網路模型的客戶，支援一次移動到 Resource Manager 虛擬網路模型。 使用 Resource Manager 部署模型 Azure AD DS 受控網域提供額外的功能，例如更細緻的密碼原則、audit 記錄和帳戶鎖定保護。
 
 本文概述遷移的考慮，然後是成功遷移現有受控網域所需的步驟。 如需一些優點，請參閱[在 AZURE AD DS 中從傳統部署模型遷移至 Resource Manager 部署模型的優點][migration-benefits]。
 
@@ -48,7 +48,7 @@ Azure Active Directory Domain Services （Azure AD DS）針對目前使用傳統
 > [!NOTE]
 > 請不要轉換傳統虛擬網路，直到您確認遷移成功為止。 轉換虛擬網路會移除復原或還原受控網域的選項（如果在遷移和驗證階段期間發生任何問題）。
 
-### <a name="migrate-azure-ad-ds-to-an-existing-resource-manager-virtual-network-recommended"></a>將 Azure AD DS 遷移至現有的 Resource Manager 虛擬網路（建議）
+### <a name="migrate-azure-ad-ds-to-an-existing-resource-manager-virtual-network-recommended"></a>將 Azure AD DS 遷移至現有的 Resource Manager 虛擬網路 (建議使用) 
 
 常見的案例是您已經將其他現有的傳統資源移至 Resource Manager 部署模型與虛擬網路。 對等互連會從 Resource Manager 虛擬網路，用來繼續在 Azure AD DS 中執行的傳統虛擬網路。 這種方法可讓 Resource Manager 應用程式和服務在傳統虛擬網路中使用受控網域的驗證和管理功能。 遷移之後，所有資源都會使用 Resource Manager 部署模型和虛擬網路來執行。
 
@@ -145,11 +145,11 @@ Azure AD DS 通常會使用位址範圍中前兩個可用的 IP 位址，但這�
 
 | 步驟    | 執行  | 預估時間  | 停機  | 要復原/還原嗎？ |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [步驟 1-更新並尋找新的虛擬網路](#update-and-verify-virtual-network-settings) | Azure 入口網站 | 15 分鐘 | 不需要停機 | 不適用 |
+| [步驟 1-更新並尋找新的虛擬網路](#update-and-verify-virtual-network-settings) | Azure 入口網站 | 15 分鐘 | 不需要停機 | N/A |
 | [步驟 2-準備受控網域以進行遷移](#prepare-the-managed-domain-for-migration) | PowerShell | 平均 15-30 分鐘 | 完成此命令之後，Azure AD DS 的停機時間就會啟動。 | 復原和還原可用。 |
-| [步驟 3-將受控網域移至現有的虛擬網路](#migrate-the-managed-domain) | PowerShell | 平均 1-3 小時 | 當此命令完成後，就會有一個網域控制站可供使用，停機時間結束。 | 失敗時，可以使用復原（自助式）和還原。 |
+| [步驟 3-將受控網域移至現有的虛擬網路](#migrate-the-managed-domain) | PowerShell | 平均 1-3 小時 | 當此命令完成後，就會有一個網域控制站可供使用，停機時間結束。 | 失敗時，會同時提供復原 (自助式) 和還原。 |
 | [步驟 4-測試並等候複本網域控制站](#test-and-verify-connectivity-after-the-migration)| PowerShell 和 Azure 入口網站 | 1小時以上，視測試數目而定 | 這兩個網域控制站都可以使用，而且應該正常運作。 | N/A。 成功遷移第一個 VM 之後，就不會有復原或還原的選項。 |
-| [步驟 5-選擇性設定步驟](#optional-post-migration-configuration-steps) | Azure 入口網站和 Vm | 不適用 | 不需要停機 | 不適用 |
+| [步驟 5-選擇性設定步驟](#optional-post-migration-configuration-steps) | Azure 入口網站和 Vm | N/A | 不需要停機 | N/A |
 
 > [!IMPORTANT]
 > 若要避免額外的停機時間，請在開始進行遷移程式之前，閱讀所有這項遷移文章和指導方針。 遷移程式會在一段時間內影響 Azure AD DS 網域控制站的可用性。 使用者、服務和應用程式在遷移過程中無法針對受控網域進行驗證。
@@ -164,7 +164,7 @@ Azure AD DS 通常會使用位址範圍中前兩個可用的 IP 位址，但這�
 
 1. 建立或選擇現有的 Resource Manager 虛擬網路。
 
-    請確定網路設定不會封鎖 Azure AD DS 所需的必要端口。 傳統虛擬網路和 Resource Manager 虛擬網路都必須開啟埠。 這些設定包括路由表（但不建議使用路由表）和網路安全性群組。
+    請確定網路設定不會封鎖 Azure AD DS 所需的必要端口。 傳統虛擬網路和 Resource Manager 虛擬網路都必須開啟埠。 這些設定包括路由表 (，但不建議使用路由表) 和網路安全性群組。
 
     若要查看所需的埠，請參閱[網路安全性群組和所需的埠][network-ports]。 若要將網路通訊問題降至最低，建議您在成功完成遷移之後，等候並將網路安全性群組或路由表套用至 Resource Manager 的虛擬網路。
 
@@ -197,6 +197,12 @@ Azure PowerShell 可用來準備受控網域以進行遷移。 這些步驟包�
     ```powershell
     $creds = Get-Credential
     ```
+    
+1. 為您的 Azure 訂用帳戶識別碼定義變數。 如有需要，您可以使用[get-azsubscription](/powershell/module/az.accounts/get-azsubscription) Cmdlet 來列出及查看您的訂用帳戶識別碼。 在下列命令中提供您自己的訂用帳戶識別碼：
+
+   ```powershell
+   $subscriptionId = 'yourSubscriptionId'
+   ```
 
 1. 現在，請 `Migrate-Aadds` 使用 *-Prepare*參數執行 Cmdlet。 為您自己的受控網域提供 *-ManagedDomainFqdn* ，例如*aaddscontoso.com*：
 
@@ -204,7 +210,8 @@ Azure PowerShell 可用來準備受控網域以進行遷移。 這些步驟包�
     Migrate-Aadds `
         -Prepare `
         -ManagedDomainFqdn aaddscontoso.com `
-        -Credentials $creds
+        -Credentials $creds `
+        -SubscriptionId $subscriptionId
     ```
 
 ## <a name="migrate-the-managed-domain"></a>遷移受控網域
@@ -224,7 +231,8 @@ Migrate-Aadds `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
-    -Credentials $creds
+    -Credentials $creds `
+    -SubscriptionId $subscriptionId
 ```
 
 在腳本驗證受控網域準備好進行遷移之後，請輸入*Y*開始進行遷移程式。
@@ -310,7 +318,8 @@ Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
-    -Credentials $creds
+    -Credentials $creds `
+    -SubscriptionId $subscriptionId
 ```
 
 ### <a name="restore"></a>還原

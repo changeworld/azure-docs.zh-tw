@@ -1,14 +1,14 @@
 ---
 title: 使用大型資料集
 description: 了解如何在使用 Azure Resource Graph 時取得、格式化、分頁及略過大型資料集中的記錄。
-ms.date: 03/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681063"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056401"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>使用大型 Azure 資源資料集
 
@@ -63,10 +63,10 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 
 ## <a name="paging-results"></a>分頁結果
 
-如果需要將結果集分解為較小的記錄集以進行處理，或者因為結果集可能超過 _1000_ 筆傳回記錄的允許值上限，請使用分頁。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** 會提供值來表示已將結果集分解：**resultTruncated** 和 **$skipToken**。
-**resultTruncated** 是一個布林值，如果回應中有其他未傳回的記錄，則會通知取用者。 在 **count** 屬性小於 **totalRecords** 屬性時，也可識別出此條件。 **totalRecords** 會定義符合查詢的記錄筆數。
+如果需要將結果集分解為較小的記錄集以進行處理，或者因為結果集可能超過 _1000_ 筆傳回記錄的允許值上限，請使用分頁。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 
+ **QueryResponse**會提供值，以指出結果集已被分解： **resultTruncated**和 **$skipToken**。 **resultTruncated** 是一個布林值，如果回應中有其他未傳回的記錄，則會通知取用者。 在 **count** 屬性小於 **totalRecords** 屬性時，也可識別出此條件。 **totalRecords** 會定義符合查詢的記錄筆數。
 
- 當分頁已停用或因為沒有 `id` 資料行而無法進行時，或當可用的資源少於查詢所要求的資源時，則 **resultTruncated** 為 **true**。 當 **resultTruncated** 為 **true** 時，則不會設定 **$skipToken** 屬性。
+ 當任何一個分頁已停用或無法使用時， **resultTruncated**為**true** ，因為沒有資料 `id` 行，或當查詢所要求的資源不足時。 當**resultTruncated**為**true**時，不會設定 **$skipToken**屬性。
 
 下列範例示範如何**略過**前 3000 筆記錄，並在使用 Azure CLI 和 Azure PowerShell 略過這些記錄之後，傳回 **前** 1000 筆記錄：
 

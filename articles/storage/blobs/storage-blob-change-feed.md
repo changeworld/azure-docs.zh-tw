@@ -1,5 +1,5 @@
 ---
-title: 變更 Azure Blob 儲存體中的摘要（預覽） |Microsoft Docs
+title: Azure Blob 儲存體 (預覽中變更摘要) |Microsoft Docs
 description: 深入瞭解 Azure Blob 儲存體中的變更摘要記錄，以及如何使用它們。
 author: normesta
 ms.author: normesta
@@ -8,20 +8,20 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: d464897c031522b2227c682f9581f0d34c8db64b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 09a97897ca7e3984c7003c1dbbca65cddaec1ee6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518736"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055412"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的變更摘要支援 (預覽)
 
 變更摘要的目的是要為儲存體帳戶中 blob 和 blob 中繼資料所發生的所有變更提供交易記錄。 變更摘要會提供這些變更的已**排序**、**保證**、**持久**、**不可變**、**唯讀**記錄。 用戶端應用程式可以隨時在串流處理或批次模式中讀取這些記錄。 變更摘要可讓您建立有效率且可調整的解決方案，以低成本處理 Blob 儲存體帳戶中發生的變更事件。
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
-變更摘要會以[blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)的形式儲存在儲存體帳戶的特殊容器中，以標準[blob 定價](https://azure.microsoft.com/pricing/details/storage/blobs/)成本為限。 您可以根據您的需求來控制這些檔案的保留期限（請參閱目前版本的[條件](#conditions)）。 變更事件會以[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html)格式規格的記錄形式附加至變更摘要，這是精簡、快速的二進位格式，可使用內嵌架構提供豐富的資料結構。 此格式廣泛運用在 Hadoop 生態系統、串流分析和 Azure Data Factory。
+變更摘要會以[blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)的形式儲存在儲存體帳戶的特殊容器中，以標準[blob 定價](https://azure.microsoft.com/pricing/details/storage/blobs/)成本為限。 您可以根據您的需求來控制這些檔案的保留期限 (查看目前版本) 的[條件](#conditions)。 變更事件會以[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html)格式規格的記錄形式附加至變更摘要，這是精簡、快速的二進位格式，可使用內嵌架構提供豐富的資料結構。 此格式廣泛運用在 Hadoop 生態系統、串流分析和 Azure Data Factory。
 
 您可以非同步或完整地處理這些記錄。 任何數目的用戶端應用程式都可以依自己的步調，以平行方式獨立讀取變更摘要。 [Apache](https://drill.apache.org/docs/querying-avro-files/)切入或[Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html)之類的分析應用程式可以直接取用記錄檔（例如 Avro 檔案），讓您以低成本的方式處理這些檔案，並具有高頻寬，而不需要撰寫自訂應用程式。
 
@@ -52,7 +52,7 @@ ms.locfileid: "86518736"
 
 - 建立、更新和刪除變更只會在 blob 服務層級上捕捉。
 
-- 變更摘要會針對帳戶上發生的所有可用事件，捕捉*所有*的變更。 用戶端應用程式可以視需要篩選掉事件種類。 （請參閱目前版本的[條件](#conditions)）。
+- 變更摘要會針對帳戶上發生的所有可用事件，捕捉*所有*的變更。 用戶端應用程式可以視需要篩選掉事件種類。  (查看目前版本) 的[條件](#conditions)。
 
 - 只有 GPv2 和 Blob 儲存體帳戶可以啟用變更摘要。 目前不支援 Premium BlockBlobStorage 帳戶和已啟用階層命名空間的帳戶。 不支援 GPv1 儲存體帳戶，但可在不停機的情況下升級至 GPv2，如需詳細資訊，請參閱[升級至 GPv2 儲存體帳戶](../common/storage-account-upgrade.md)。
 
@@ -71,7 +71,7 @@ ms.locfileid: "86518736"
 
 4. 選擇 [**儲存**] 按鈕以確認您的**資料保護**設定。
 
-    ![顯示資料保護設定的螢幕擷取畫面。](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+    ![顯示資料保護設定的螢幕擷取畫面。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -170,7 +170,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 > [!NOTE]
 > `$blobchangefeed/idx/segments/1601/01/01/0000/meta.json`當您啟用變更摘要時，會自動建立。 您可以放心地忽略此檔案。 這是一律是空的初始化檔。 
 
-區段資訊清單檔案（ `meta.json` ）會顯示內容中該區段的變更摘要檔案路徑 `chunkFilePaths` 。 以下是區段資訊清單檔案的範例。
+區段資訊清單檔案 (`meta.json`) 會在屬性中顯示該區段的變更摘要檔案路徑 `chunkFilePaths` 。 以下是區段資訊清單檔案的範例。
 
 ```json
 {
@@ -209,7 +209,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 變更摘要檔案包含一系列的變更事件記錄。 每個變更事件記錄都會對應到個別 blob 的一項變更。 這些記錄會使用[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html)格式規格進行序列化並寫入檔案。 您可以使用 Avro 檔案格式規格來讀取記錄。 有數個程式庫可用來處理該格式的檔案。
 
-變更摘要檔案會以 `$blobchangefeed/log/` [附加 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)的形式儲存在虛擬目錄中。 每個路徑下的第一個變更摘要檔案會包含 `00000` 檔案名中的（例如 `00000.avro` ）。 每個新增至該路徑的後續記錄檔名稱會遞增1（例如： `00001.avro` ）。
+變更摘要檔案會以 `$blobchangefeed/log/` [附加 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)的形式儲存在虛擬目錄中。 每個路徑下的第一個變更摘要檔案會 `00000` 在檔案名 (，例如 `00000.avro`) 。 每個新增至該路徑的後續記錄檔名稱會遞增 1 (例如： `00001.avro`) 。
 
 下列事件種類會在變更摘要記錄中捕捉：
 - Microsoft.storage.blobcreated
@@ -291,7 +291,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 <a id="register"></a>
 
-## <a name="register-your-subscription-preview"></a>註冊您的訂用帳戶（預覽）
+## <a name="register-your-subscription-preview"></a>註冊您的訂用帳戶 (預覽) 
 
 因為變更摘要僅適用于公開預覽，所以您必須註冊您的訂用帳戶才能使用此功能。
 
@@ -315,7 +315,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 <a id="conditions"></a>
 
-## <a name="conditions-and-known-issues-preview"></a>條件和已知問題（預覽）
+## <a name="conditions-and-known-issues-preview"></a> (Preview) 的條件和已知問題
 
 本節說明變更摘要目前公開預覽版中的已知問題和條件。 
 - 針對預覽版本，您必須先[註冊您的訂](#register)用帳戶，才能在美國中西部、美國西部2、法國中部、法國南部、加拿大中部和加拿大東部區域中啟用儲存體帳戶的變更摘要。 
