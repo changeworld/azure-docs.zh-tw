@@ -9,23 +9,23 @@ ms.author: mlearned
 description: 將已啟用 Azure Arc 的 Kubernetes 叢集與 Azure Arc 連線
 keywords: Kubernetes, Arc, Azure, K8s, 容器
 ms.custom: references_regions
-ms.openlocfilehash: 2c5e697f3dd67087582118fb6a6e083feecf549f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 761263a4cb8c83475142c2afcc39695bb84d46cd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050094"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080485"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>連線已啟用 Azure Arc 的 Kubernetes 叢集 (預覽)
 
-本檔涵蓋將任何雲端原生運算 Foundation （由 CNCF）認證的 Kubernetes 叢集（例如 Azure 上的 AKS 引擎、Azure Stack Hub、GKE、EKS 和 VMware vSphere 叢集上的 AKS 引擎）連接到 Azure Arc 的程式。
+本檔涵蓋將任何雲端原生運算基礎連接 (由 CNCF) 認證的 Kubernetes 叢集的程式，例如 Azure 上的 AKS 引擎、Azure Stack Hub 上的 AKS engine、GKE、EKS 和 VMware vSphere 叢集到 Azure Arc。
 
 ## <a name="before-you-begin"></a>開始之前
 
 確認您已備妥下列需求：
 
 * 已啟動且正在執行的 Kubernetes 叢集。 如果您沒有現有的 Kubernetes 叢集，您可以使用下列其中一個指南來建立測試叢集：
-  * [在 Docker 中使用 Kubernetes 建立 Kubernetes 叢集（種類）](https://kind.sigs.k8s.io/)
+  * 使用 Docker 中的 Kubernetes 建立 Kubernetes 叢集[ (種類) ](https://kind.sigs.k8s.io/)
   * 使用適用于[Mac](https://docs.docker.com/docker-for-mac/#kubernetes)或[Windows](https://docs.docker.com/docker-for-windows/#kubernetes)的 Docker 建立 Kubernetes 叢集
 * 您需要 kubeconfig 檔案，才能存取叢集上的叢集和叢集系統管理員角色，以部署已啟用 Arc 的 Kubernetes 代理程式。
 * 搭配 `az login` 和 `az connectedk8s connect` 命令使用的使用者或服務主體，必須具有「Microsoft.Kubernetes/connectedclusters」資源類型的「讀取」和「寫入」權限。 「Kubernetes 叢集-Azure Arc 上架」角色具有這些許可權，可用於使用者或服務主體上的角色指派。
@@ -170,7 +170,42 @@ AzureArcTest1  eastus      AzureArcTest
 您也可以在[Azure 入口網站](https://portal.azure.com/)上查看此資源。 在瀏覽器中開啟入口網站後，根據先前在命令中使用的資源名稱和資源組名輸入，流覽至資源群組和已啟用 Azure Arc 的 Kubernetes 資源 `az connectedk8s connect` 。
 
 > [!NOTE]
-> 上線叢集之後，需要約5到10分鐘的時間，叢集中繼資料（叢集版本、代理程式版本、節點數目）才會出現在 Azure 入口網站中啟用 Azure Arc 之 Kubernetes 資源的 [總覽] 頁面上。
+> 上線叢集之後，大約需要5到10分鐘的時間，叢集中繼資料 (叢集版本、代理程式版本、節點數目) 在 Azure 入口網站的 Azure Arc 已啟用 Kubernetes 資源的 [總覽] 頁面上呈現。
+
+## <a name="connect-using-an-outbound-proxy-server"></a>使用輸出 proxy 伺服器連接
+
+如果您的叢集位於輸出 proxy 伺服器後方，Azure CLI 和啟用 Arc 的 Kubernetes 代理程式需要透過輸出 proxy 伺服器來路由傳送要求。 下列設定有助於達成該目標：
+
+1. 執行下列命令，檢查 `connectedk8s` 安裝在您電腦上的延伸模組版本：
+
+    ```bash
+    az -v
+    ```
+
+    您需要 `connectedk8s` 擴充功能版本 >= 0.2.3，才能使用輸出 proxy 來設定代理程式。 如果您的電腦上有版本 < 0.2.3，請遵循[更新步驟](#before-you-begin)，在您的電腦上取得最新版本的延伸模組。
+
+2. 設定 Azure CLI 所需的環境變數：
+
+    ```bash
+    export HTTP_PROXY=<proxy-server-ip-address>:<port>
+    export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+    export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+    ```
+
+3. 使用指定的 proxy 參數執行 connect 命令：
+
+    ```bash
+    az connectedk8s connect -n <cluster-name> -g <resource-group> \
+    --proxy-https https://<proxy-server-ip-address>:<port> \
+    --proxy-http http://<proxy-server-ip-address>:<port> \
+    --proxy-skip-range <excludedIP>,<excludedCIDR>
+    ```
+
+> [!NOTE]
+> 1. 指定 excludedCIDR 的 [--proxy-略過範圍] 非常重要，可確保代理程式的叢集中通訊不會中斷。
+> 2. 上述 proxy 規格目前僅適用于 Arc 代理程式，不適用於 sourceControlConfiguration 中所使用的 flux pod。 已啟用 Arc 的 Kubernetes 小組正積極處理這項功能，而且很快就會提供。
+
+## <a name="azure-arc-agents-for-kubernetes"></a>適用於 Kubernetes 的 Azure Arc 代理程式
 
 啟用 Azure Arc 的 Kubernetes 會在 `azure-arc` 命名空間內部署幾個運算子。 您可以在這裡檢視這些部署和 Pod：
 
@@ -200,8 +235,6 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-## <a name="azure-arc-agents-for-kubernetes"></a>適用於 Kubernetes 的 Azure Arc 代理程式
-
 啟用 Azure Arc 的 Kubernetes 是由幾個代理程式 (運算子) 所組成，其會在您部署到 `azure-arc` 命名空間的叢集中執行。
 
 * `deployment.apps/config-agent`：監看已連線的叢集，以了解叢集上套用的原始檔控制設定資源和更新合規性狀態
@@ -209,7 +242,7 @@ pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 * `deployment.apps/metrics-agent`：收集其他 Arc 代理程式的計量，以確保這些代理程式呈現最佳效能
 * `deployment.apps/cluster-metadata-operator`：收集叢集中繼資料-叢集版本、節點計數和 Azure Arc 代理程式版本
 * `deployment.apps/resource-sync-agent`：將上述叢集中繼資料同步處理至 Azure
-* `deployment.apps/clusteridentityoperator`：已啟用 Azure Arc 的 Kubernetes 目前支援系統指派的身分識別。 clusteridentityoperator 會維護其他代理程式用來與 Azure 通訊的受控服務識別（MSI）憑證。
+* `deployment.apps/clusteridentityoperator`：已啟用 Azure Arc 的 Kubernetes 目前支援系統指派的身分識別。 clusteridentityoperator 會維護受控服務識別 (MSI) 憑證，供其他代理程式用來與 Azure 進行通訊。
 * `deployment.apps/flux-logs-agent`：從部署為原始檔控制設定一部分的 flux 運算子收集記錄
 
 ## <a name="delete-a-connected-cluster"></a>刪除已連線的叢集

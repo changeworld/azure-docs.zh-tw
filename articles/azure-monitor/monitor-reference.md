@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447318"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080859"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure 監視器監視的項目為何？
 本文說明 Azure 監視器監視的不同應用程式和服務。 
@@ -220,7 +220,7 @@ Azure 監視器可以使用下表所列的方法，從 Azure 外部的資源收�
 | 資源 | 方法 |
 |:---|:---|
 | 應用程式 | 使用 Application Insights 監視 Azure 外部的 Web 應用程式。 請參閱[什麼是 Application Insights？](./app/app-insights-overview.md)。 |
-| 虛擬機器 | 使用 Log Analytics 代理程式，從其他雲端環境或內部部署中虛擬機器的客體作業系統收集資料。 請參閱[使用 Log Analytics 代理程式收集記錄資料](platform/log-analytics-agent.md)。 |
+| 虛擬機器 | 使用代理程式，從其他雲端環境或內部部署中虛擬機器的客體作業系統收集資料。 請參閱[Azure 監視器代理程式的總覽](platform/agents-overview.md)。 |
 | REST API 用戶端 | 有不同的 API 可用來將來自任何 REST API 用戶端的資料寫入 Azure 監視器記錄和計量。 針對記錄請參閱[使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器](platform/data-collector-api.md)，針對計量請參閱[使用 REST API 將 Azure 資源的自訂計量傳送至 Azure 監視器計量的存放區](platform/metrics-store-custom-rest-api.md)。 |
 
 

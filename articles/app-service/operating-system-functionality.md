@@ -5,18 +5,18 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74671617"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080193"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service 上的作業系統功能
 本文說明在 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上執行的所有 Windows 應用程式可用的一般基礎作業系統功能。 此功能包含檔案、網路、登錄存取、診斷記錄和事件。 
 
 > [!NOTE] 
-> App Service 中的 [Linux 應用程式](containers/app-service-linux-intro.md)會在自己的容器中執行。 不允許存取主機作業系統，但您擁有根容器的存取權。 同樣地，對於 [Windows 容器中執行的應用程式](app-service-web-get-started-windows-container.md)，您擁有容器的系統管理存取權，但沒有主機作業系統存取權。 
+> App Service 中的 [Linux 應用程式](overview.md#app-service-on-linux)會在自己的容器中執行。 不允許存取主機作業系統，但您擁有根容器的存取權。 同樣地，對於 [Windows 容器中執行的應用程式](quickstart-custom-container.md?pivots=container-windows)，您擁有容器的系統管理存取權，但沒有主機作業系統存取權。 
 >
 
 <a id="tiers"></a>
@@ -45,7 +45,7 @@ App Service 中的各種磁碟機，包含本機磁碟機和網路磁碟機。
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>本機磁碟機
-基本上，App Service 是一項在 Azure PaaS (平台即服務) 基礎結構之上執行的服務。 因此，「附加」至虛擬機器的本機磁碟機就是任何在 Azure 中執行之背景工作角色可用的相同磁碟機類型。 其中包括：
+基本上，App Service 是一項在 Azure PaaS (平台即服務) 基礎結構之上執行的服務。 因此，「附加」至虛擬機器的本機磁碟機就是任何在 Azure 中執行之背景工作角色可用的相同磁碟機類型。 這包括：
 
 - 作業系統磁碟機 (D:\ 磁碟機)
 - 應用程式磁碟機，包含 App Service 專用的 Azure 封裝 cspkg 檔案 (客戶無法存取)
@@ -60,7 +60,7 @@ App Service 中的各種磁碟機，包含本機磁碟機和網路磁碟機。
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>網路磁碟機 (亦稱為 UNC 共用)
+### <a name="network-drives-unc-shares"></a> (UNC 共用) 的網路磁碟機機
 App Service 將所有使用者內容儲存在一組 UNC 共用上，此種獨特做法讓應用程式的部署和維護變得直接。 此種模型非常符合一種內容儲存體模式，該模式通常是由具有多個負載平衡伺服器的內部部署虛擬主機所使用。 
 
 在 App Service 中，每個資料中心內都已建立許多 UNC 共用。 每個 UNC 共用都會配置每個資料中心內各客戶某個百分比的使用者內容。 此外，單一客戶訂閱的所有檔案內容一律放在相同的 UNC 共用上。 
@@ -123,7 +123,7 @@ App Service 中的每個應用程式都會以隨機唯一的低許可權背景�
 
 App Service 並未提供對 VM 執行個體的遠端桌面存取。
 
-## <a name="more-information"></a>更多資訊
+## <a name="more-information"></a>其他資訊
 
 [Azure App Service 沙箱](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) - 有關 App Service 執行環境的最新資訊。 本頁面由 App Service 開發團隊直接維護。
 

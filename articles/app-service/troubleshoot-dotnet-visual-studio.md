@@ -6,15 +6,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 26746a477da301eb352f002e105e883f992aaf0a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: f7c35fa2d69df9c900eb64f10da1948fade02b5f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857207"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079802"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 針對 Azure App Service 中的應用程式進行疑難排解
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本教學課程示範如何使用 Visual Studio 工具，協助針對 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的應用程式進行偵錯，方法是以[偵錯模式](https://docs.microsoft.com/visualstudio/debugger/)從遠端執行，或者檢視應用程式記錄與 Web 伺服器記錄。
 
 您將了解：
@@ -29,7 +29,7 @@ ms.locfileid: "85857207"
 如果您有 Visual Studio Ultimate，您也可以使用 [IntelliTrace](/visualstudio/debugger/intellitrace) 進行偵錯。 本教學課程未涵蓋 IntelliTrace。
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>必要條件
-本教學課程可運用於開發環境、Web 專案與您在[在 Azure App Service 中建立 ASP.NET 應用程式](app-service-web-get-started-dotnet-framework.md)中所設定的 App Service 應用程式。 針對 WebJobs 區段，您將會用到您在[開始使用 Azure WebJobs SDK][GetStartedWJ] 中建立的應用程式。
+本教學課程可運用於開發環境、Web 專案與您在[在 Azure App Service 中建立 ASP.NET 應用程式](quickstart-dotnet-framework.md)中所設定的 App Service 應用程式。 針對 WebJobs 區段，您將會用到您在[開始使用 Azure WebJobs SDK][GetStartedWJ] 中建立的應用程式。
 
 本教學課程中所提供的程式碼範例適用於 C# MVC Web 應用程式，但是疑難排解程序則是與 Visual Basic 和 Web Form 應用程式一樣。
 
@@ -51,7 +51,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
     如需從 Visual Studio 連線至 Azure 資源的詳細資訊，請參閱 [管理帳戶、訂閱和系統管理角色](https://go.microsoft.com/fwlink/?LinkId=324796#BKMK_AccountVCert)。
 2. 在 [伺服器總管]**** 中，展開 [Azure]****，然後展開 [App Service]****。
-3. 展開包含應用程式的資源群組 (該應用程式是您在[在 Azure App Service 中建立 ASP.NET 應用程式](app-service-web-get-started-dotnet-framework.md)中建立的)，然後使用滑鼠右鍵按一下應用程式節點，然後按一下 [檢視設定]****。
+3. 展開包含應用程式的資源群組 (該應用程式是您在[在 Azure App Service 中建立 ASP.NET 應用程式](quickstart-dotnet-framework.md)中建立的)，然後使用滑鼠右鍵按一下應用程式節點，然後按一下 [檢視設定]****。
 
     ![在伺服器總管中檢視設定](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewsettings.png)
 
@@ -108,9 +108,9 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
 遠端偵錯無法在 Visual Studio 的 Express 版本中運作。
 
-本節示範如何使用您在[在 Azure App Service 中建立 ASP.NET 應用程式](app-service-web-get-started-dotnet-framework.md)中建立的專案進行遠端偵錯。
+本節示範如何使用您在[在 Azure App Service 中建立 ASP.NET 應用程式](quickstart-dotnet-framework.md)中建立的專案進行遠端偵錯。
 
-1. 開啟您在[在 Azure App Service 中建立 ASP.NET 應用程式](app-service-web-get-started-dotnet-framework.md)中建立的 Web 專案。
+1. 開啟您在[在 Azure App Service 中建立 ASP.NET 應用程式](quickstart-dotnet-framework.md)中建立的 Web 專案。
 
 1. 開啟 *Controllers\HomeController.cs*。
 
@@ -129,13 +129,13 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
 1. 在**方案總管**中，以滑鼠右鍵按一下專案，然後按一下 [**發佈**]。
 
-1. 在 [設定檔]**** 下拉式清單中，選取您在[在 Azure App Service 中建立 ASP.NET 應用程式](app-service-web-get-started-dotnet-framework.md)中所使用的同一設定檔。 然後，按一下 [設定]。
+1. 在 [設定檔]**** 下拉式清單中，選取您在[在 Azure App Service 中建立 ASP.NET 應用程式](quickstart-dotnet-framework.md)中所使用的同一設定檔。 然後，按一下 [設定]。
 
 1. 在 [發佈]**** 對話方塊中，按一下 [設定]**** 索引標籤，然後將 [設定]**** 變更為 [偵錯]****，接著按一下 [儲存]****。
 
     ![於偵錯模式中發行](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-1. 按一下 **[發行]**。 當部署完成且您的瀏覽器開啟至應用程式的 Azure URL 之後，請關閉瀏覽器。
+1. 按一下 [發佈] 。 當部署完成且您的瀏覽器開啟至應用程式的 Azure URL 之後，請關閉瀏覽器。
 
 1. 在 [伺服器總管]**** 中，以滑鼠右鍵按一下您的應用程式，接著按一下 [連結偵錯工具]****。
 
@@ -264,7 +264,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 ## <a name="create-and-view-application-trace-logs"></a><a name="apptracelogs"></a>建立並檢視應用程式追蹤記錄
 在本節中，您將會執行下列工作：
 
-* 將追蹤陳述式新增至您在[開始使用 Azure 和 ASP.NET](app-service-web-get-started-dotnet-framework.md) 中建立的 Web 專案。
+* 將追蹤陳述式新增至您在[開始使用 Azure 和 ASP.NET](quickstart-dotnet-framework.md) 中建立的 Web 專案。
 * 當您在本機上執行專案時檢視記錄。
 * 依原樣檢視 Azure 中執行的應用程式所產生的記錄。
 
@@ -337,7 +337,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
     ```
 
 1. 按 CTRL+F5 執行應用程式。
-1. 在瀏覽器視窗的網址列中，將*trace.axd*新增至 URL，然後按 ENTER （url 類似 `http://localhost:53370/trace.axd` ）。
+1. 在瀏覽器視窗的網址列中，將*trace.axd*新增至 url，然後按 ENTER (url 類似 `http://localhost:53370/trace.axd`) 。
 1. 在 [應用程式追蹤]**** 頁面上，按一下第一行 (不是 BrowserLink 行) 上的 [檢視詳細資料]****。
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
@@ -579,7 +579,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 
 5. 在新的瀏覽器視窗中，前往您應用程式之 [概觀]**** 頁面的 [FTP 主機名稱]**** 或 [FTPS 主機名稱]**** 下方所示的 URL。
 
-6. 使用您稍早建立的 FTP 認證登入（包括使用者名稱的應用程式名稱前置詞）。
+6. 使用您稍早建立的 FTP 認證登入 (包括) 使用者名稱的應用程式名稱前置詞。
 
     瀏覽器會顯示應用程式的根資料夾。
 
@@ -645,7 +645,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
   針對追蹤 Azure 雲端應用程式所建議的電子書章節。
 * [ASP.NET 追蹤](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
    舊有但仍是該主題的基本簡介的良好資源。
-* [追蹤接聽程式](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
+* [追蹤接聽項](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
   內含有關追蹤接聽程式的資訊，但是沒有提到 [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener)。
 * [逐步解說︰整合 ASP.NET 追蹤與 System.Diagnostics 追蹤](/previous-versions/b0ectfxd(v=vs.140))<br/>
   本文同樣為舊有的資料，但是內含簡介文章沒有提到的一些額外資訊。
@@ -686,5 +686,5 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 ### <a name="analyzing-failed-request-tracing-logs"></a>分析失敗要求追蹤記錄
 Microsoft TechNet 網站包含「[使用失敗要求追蹤](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」一節，這可能有助於瞭解如何使用這些記錄。 不過，本文主要著重在 IIS 內設定失敗要求追蹤功能，這是您無法在 Azure App Service 中執行的功能。
 
-[GetStarted]: app-service-web-get-started-dotnet.md
+[GetStarted]: quickstart-dotnetcore.md?pivots=platform-windows
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0407bde00c703663227230a0b6ff2de287f6650c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007058"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080604"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在 App Service 環境 v1 中建立 Web 應用程式
 
@@ -24,11 +24,11 @@ ms.locfileid: "88007058"
 本教學課程說明如何在 [App Service 環境 v1](app-service-app-service-environment-intro.md) (ASE) 中建立 Web 應用程式和 App Service 方案。 
 
 > [!NOTE]
-> 如果您想要了解如何建立 Web 應用程式，但不需要在 App Service 環境中加以實作，請參閱 [建立 .NET Web 應用程式](../app-service-web-get-started-dotnet.md) ，或其中一個適用於其他語言和架構的相關教學課程。
+> 如果您想要了解如何建立 Web 應用程式，但不需要在 App Service 環境中加以實作，請參閱 [建立 .NET Web 應用程式](../quickstart-dotnetcore.md) ，或其中一個適用於其他語言和架構的相關教學課程。
 > 
 > 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本教學課程假設您已建立 App Service 環境。 如果尚未建立，請參閱 [建立 App Service 環境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式

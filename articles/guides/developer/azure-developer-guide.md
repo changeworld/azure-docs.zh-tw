@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: aae0ed4efa7f96ab6258dbf0ce4c34a6879ecbc2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d91fd15d7f1f5d2bb1bd97b5a28ef56f09797140
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832802"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080312"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開發人員開始使用指南
 
@@ -64,7 +64,7 @@ Azure 提供可支援應用程式開發和裝載需求的服務。 Azure 提供�
 
 > **使用**時機：當您將現有的 web 應用程式遷移至 Azure 時，以及當您需要 web 應用程式的完全受控裝載平臺時，請使用 App Service。 當您需要支援行動用戶端或是使用應用程式公開 REST API 時，也可以使用 App Service。
 >
-> **開始使用**：App Service 可讓您輕鬆地建立和部署第一個 [Web 應用程式](../../app-service/app-service-web-get-started-dotnet.md)、[行動應用程式](../../app-service-mobile/app-service-mobile-ios-get-started.md)或 [API 應用程式](../../app-service/app-service-web-tutorial-rest-api.md)。
+> **開始使用**：App Service 可讓您輕鬆地建立和部署第一個 [Web 應用程式](../../app-service/quickstart-dotnetcore.md)、[行動應用程式](../../app-service-mobile/app-service-mobile-ios-get-started.md)或 [API 應用程式](../../app-service/app-service-web-tutorial-rest-api.md)。
 >
 > **立即試用**：App Service 可讓您佈建短期應用程式來嘗試平台，而不需要註冊 Azure 帳戶。 請嘗試平台，並[建立 Azure App Service 應用程式](https://tryappservice.azure.com/)。
 
@@ -307,7 +307,7 @@ Azure 資源總管是很棒的工具，可用來以視覺化方式檢視您已�
 
   > **使用時機**：當您以程式設計方式管理 Azure 資源或授與應用程式存取權時。 如需詳細資訊，請參閱[建立 Active Directory 應用程式和服務主體](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-#### <a name="tags"></a>標記
+#### <a name="tags"></a>標籤
 
 Azure Resource Manager 可讓您將自訂標記指派給個別資源。 當您需要組織資源以進行計費或監視時，標記 (即鍵值組) 可能特別有用。 標記提供一種方法來追蹤多個資源群組的資源。 您可以透過下列方式指派標籤：
 

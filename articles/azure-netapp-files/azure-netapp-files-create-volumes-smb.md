@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: ba66716abe80a1b12bc64b739f498a0a01d54fe3
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3299865837bd14566cca54ec84b2dce452c633da
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533167"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080502"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
-Azure NetApp Files 支援使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或雙重通訊協定（NFSv3 和 SMB）來建立磁片區。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 SMBv3 磁碟區。
+Azure NetApp Files 支援使用 NFS (NFSv3 和 NFSv 4.1) 、SMBv3 或雙重通訊協定 (NFSv3 和 SMB) 來建立磁片區。 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。 本文說明如何建立 SMBv3 磁碟區。
 
 ## <a name="before-you-begin"></a>開始之前 
 您必須已經設定容量集區。   
@@ -172,7 +172,7 @@ Azure NetApp Files 支援使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或雙重�
         檢查功能註冊的狀態： 
 
         > [!NOTE]
-        > 在變更為之前， **RegistrationState**可能處於 `Registering` 數分鐘的狀態 `Registered` 。 等候狀態為 [**已註冊**]，再繼續進行。
+        > **RegistrationState** `Registering` 最多可能處於60分鐘的狀態，然後再變更為 `Registered` 。 等候狀態為 [**已註冊**]，再繼續進行。
 
         ```azurepowershell-interactive
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator

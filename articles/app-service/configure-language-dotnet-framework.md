@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure App Service 中設定 ASP.NET 應用程式。
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1aeb243b3ff4a1e6bd2ae984510d2ec709776fa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53654520ea20bd8ee797de61449a616eadd001a5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907888"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080142"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 ASP.NET 應用程式
 
@@ -18,13 +18,13 @@ ms.locfileid: "84907888"
 
 ASP.NET apps 必須部署到 Azure App Service 做為已編譯的二進位檔。 Visual Studio 發佈工具會建立解決方案，然後直接部署已編譯的二進位檔，而 App Service 部署引擎會先部署程式碼存放庫，然後再編譯二進位檔。
 
-本指南提供 ASP.NET 開發人員的重要概念和指示。 如果您從未使用過 Azure App Service，請先遵循[ASP.NET 快速入門](app-service-web-get-started-dotnet-framework.md)和[ASP.NET with SQL Database 教學](app-service-web-tutorial-dotnet-sqldatabase.md)課程。
+本指南提供 ASP.NET 開發人員的重要概念和指示。 如果您從未使用過 Azure App Service，請先遵循[ASP.NET 快速入門](quickstart-dotnet-framework.md)和[ASP.NET with SQL Database 教學](app-service-web-tutorial-dotnet-sqldatabase.md)課程。
 
 ## <a name="show-supported-net-framework-runtime-versions"></a>顯示支援的 .NET Framework 執行階段版本
 
 在 App Service 中，Windows 實例已安裝所有支援的 .NET Framework 版本。 若要顯示您可以使用的 .NET Framework 執行時間和 SDK 版本，請流覽至， `https://<app-name>.scm.azurewebsites.net/DebugConsole` 並在瀏覽器型主控台中執行適當的命令：
 
-針對 CLR 4 執行階段版本（.NET Framework 4 和更新版本）：
+針對 CLR 4 執行階段版本 ( .NET Framework 4 和更新版本) ：
 
 ```CMD
 ls "D:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\"
@@ -32,7 +32,7 @@ ls "D:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramewor
 
 最新的 .NET Framework 版本可能無法立即使用。
 
-針對 CLR 2 執行階段版本（.NET Framework 3.5 和以下）：
+針對 CLR 2 執行階段版本 ( .NET Framework 3.5 和以下) ：
 
 ```CMD
 ls "D:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\"
@@ -46,11 +46,11 @@ ls "D:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\"
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query netFrameworkVersion
 ```
 
-的值 `v4.0` 表示使用最新的 CLR 4 版本（.NET Framework 4.x）。 的值 `v2.0` 表示使用 CLR 2 版本（.NET Framework 3.5）。
+的值 `v4.0` 表示使用最新的 CLR 4 版本 ( .NET Framework 4.x) 。 的值 `v2.0` 表示使用的是 CLR 2 版本 ( .NET Framework 3.5) 。
 
 ## <a name="set-net-framework-runtime-version"></a>設定 .NET Framework 執行階段版本
 
-根據預設，App Service 會使用最新支援的 .NET Framework 版本來執行 ASP.NET 應用程式。 若要改為使用 .NET Framework 3.5 來執行應用程式，請在[Cloud Shell](https://shell.azure.com)中執行下列命令（V2.0 表示 CLR 2）：
+根據預設，App Service 會使用最新支援的 .NET Framework 版本來執行 ASP.NET 應用程式。 若要改為使用 .NET Framework 3.5 執行應用程式，請在[Cloud Shell](https://shell.azure.com)中執行下列命令 (V2.0 表示 CLR 2) ：
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --net-framework-version v2.0

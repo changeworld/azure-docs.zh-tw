@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: c8e0b476c50378bde00e01a39985fbcc188f04ed
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8362cc3b8f8477f77d8ec672144e7c68d2e3434d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562373"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080723"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service 和 Azure Functions 中的驗證和授權
 
@@ -56,7 +56,7 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 
 ### <a name="userapplication-claims"></a>使用者/應用程式宣告
 
-針對所有語言架構，App Service 會將宣告放入權杖中， (無論是來自已驗證的使用者或用戶端應用程式，都可以將其插入要求標頭中，以供您的) 程式碼使用。 在 ASP.NET 4.6 應用程式中，App Service 會使用已驗證的使用者宣告填入 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)，因此您可以遵循標準的 .NET 程式碼模式，包括 `[Authorize]` 屬性。 同樣地，在 PHP 應用程式中，App Service 會填入 `_SERVER['REMOTE_USER']` 變數。 針對 JAVA 應用程式，[可從 Tomcat servlet 存取](containers/configure-language-java.md#authenticate-users-easy-auth)宣告。
+針對所有語言架構，App Service 會將宣告放入權杖中， (無論是來自已驗證的使用者或用戶端應用程式，都可以將其插入要求標頭中，以供您的) 程式碼使用。 在 ASP.NET 4.6 應用程式中，App Service 會使用已驗證的使用者宣告填入 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)，因此您可以遵循標準的 .NET 程式碼模式，包括 `[Authorize]` 屬性。 同樣地，在 PHP 應用程式中，App Service 會填入 `_SERVER['REMOTE_USER']` 變數。 針對 JAVA 應用程式，[可從 Tomcat servlet 存取](configure-language-java.md#authenticate-users-easy-auth)宣告。
 
 針對[Azure Functions](../azure-functions/functions-overview.md)， `ClaimsPrincipal.Current` 不會針對 .net 程式碼填入，但您仍然可以在要求標頭中找到使用者宣告，或 `ClaimsPrincipal` 從要求內容取得物件，甚至是透過系結參數。 如需詳細資訊，請參閱[使用用戶端](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities)身分識別。
 
@@ -149,7 +149,7 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 
 ## <a name="more-resources"></a>其他資源
 
-[教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](app-service-web-tutorial-auth-aad.md)  
+[教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](tutorial-auth-aad.md)  
 [教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](containers/tutorial-auth-aad.md)  
 [在 App Service](app-service-authentication-how-to.md) 
  中自訂驗證和授權[Azure AppService EasyAuth (協力廠商) ](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 

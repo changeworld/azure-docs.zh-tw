@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 25f43051f11d42c4f8565039d3168f2ae162eb37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 163a6940e50d1f8beacc23855fd1e6f9daad0085
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74671694"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080468"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中 Web 應用程式的部署常見問題集
 
@@ -40,7 +40,7 @@ ms.locfileid: "74671694"
 ## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>如何將 ASP.NET 應用程式從 Visual Studio 部署到 App Service？
 <a id="deployasp"></a>
 
-本教學課程會[在五分鐘內于 Azure 中建立您的第一個 ASP.NET web 應用](app-service-web-get-started-dotnet.md)程式說明如何使用 Visual Studio，在 App Service 中將 ASP.NET web 應用程式部署至 web 應用程式。
+本教學課程會[在五分鐘內于 Azure 中建立您的第一個 ASP.NET web 應用](quickstart-dotnetcore.md)程式說明如何使用 Visual Studio，在 App Service 中將 ASP.NET web 應用程式部署至 web 應用程式。
 
 ## <a name="what-are-the-different-types-of-deployment-credentials"></a>不同類型的部署認證有哪些？
 
@@ -86,7 +86,7 @@ App Service 支援兩種認證類型，用於本機 Git 部署和 FTP/S 部署�
 *   使用 Git 專案。 使用 [部署中心] 透過 App Service 連接。
 *   使用 Team Foundation 版本控制 (TFVC) 專案。 藉由使用 App Service 的組建代理程式來部署。
 
-這兩個選項的持續程式碼部署取決於現有的開發人員工作流程和簽入程序。 如需詳細資訊，請參閱下列文章： 
+這兩個選項的持續程式碼部署取決於現有的開發人員工作流程和簽入程序。 如需詳細資訊，請參閱這些文章： 
 
 *   [實作您的應用程式到 Azure 網站的持續部署](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
 *   [設定 Azure DevOps 組織，使其可部署至 Web 應用程式](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)

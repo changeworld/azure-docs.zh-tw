@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 271c3c9f63ee3f761826e214f3bf32a8df5f1cbe
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 85990aee5143c9ccc0362a00597a748763977204
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533286"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080210"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
 
@@ -60,7 +60,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 2. 檢查功能註冊的狀態： 
 
     > [!NOTE]
-    > 在變更為之前， **RegistrationState**可能處於 `Registering` 數分鐘的狀態 `Registered` 。 等候狀態為 [**已註冊**]，再繼續進行。
+    > **RegistrationState** `Registering` 最多可能處於60分鐘的狀態，然後再變更為 `Registered` 。 等候狀態為 [**已註冊**]，再繼續進行。
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
@@ -96,7 +96,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
     ![每月快照集原則](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  按一下 [檔案] 。  
+4.  按一下 [儲存]。  
 
 如果您需要建立其他快照集原則，請重複步驟3。
 您所建立的原則會顯示在 [快照集原則] 頁面中。
@@ -117,7 +117,7 @@ Azure NetApp Files 支援建立隨選快照集，並使用快照集原則來排�
 
 ### <a name="modify-a-snapshot-policy"></a>修改快照集原則 
 
-您可以修改現有的快照集原則，以變更原則狀態、快照集頻率（每小時、每日、每週或每月），或要保留的快照集數目。  
+您可以修改現有的快照集原則，以變更原則狀態、快照集頻率 (每小時、每日、每週或每月) ，或要保留的快照集數目。  
  
 1.  從 [NetApp 帳戶] 視圖中，按一下 [**快照集原則**]。
 

@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 5e32baa10e98f0f57a861f8cebfb7506ad615631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74980058"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080927"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>與服務端點的應用程式閘道整合
-App Service 有三種變化，需要與 Azure 應用程式閘道的整合設定略有不同。 這些變化包括一般 App Service-也稱為多租使用者、內部 Load Balancer （ILB） App Service 環境（ASE）和外部 ASE。 本文將逐步解說如何使用 App Service （多租使用者）進行設定，並討論 ILB 和外部 ASE 的相關考慮。
+App Service 有三種變化，需要與 Azure 應用程式閘道的整合設定略有不同。 這些變化包括一般 App Service （也稱為多租使用者、內部 Load Balancer (ILB) App Service 環境 (ASE) 和外部 ASE。 本文將逐步解說如何使用 App Service (多租使用者) 來進行設定，並討論 ILB 和外部 ASE 的相關考慮。
 
-## <a name="integration-with-app-service-multi-tenant"></a>與 App Service 的整合（多租使用者）
-App Service （多租使用者）具有公用的網際網路面向端點。 您可以使用[服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)，只允許來自 Azure 虛擬網路中特定子網的流量，並封鎖其他所有專案。 在下列案例中，我們將使用這項功能來確保 App Service 實例只能接收來自特定應用程式閘道實例的流量。
+## <a name="integration-with-app-service-multi-tenant"></a>與 App Service (多租使用者) 整合
+App Service (多租使用者) 具有公用的網際網路面向端點。 您可以使用[服務端點](../../virtual-network/virtual-network-service-endpoints-overview.md)，只允許來自 Azure 虛擬網路中特定子網的流量，並封鎖其他所有專案。 在下列案例中，我們將使用這項功能來確保 App Service 實例只能接收來自特定應用程式閘道實例的流量。
 
 ![應用程式閘道與 App Service 整合](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
 
@@ -33,7 +33,7 @@ App Service （多租使用者）具有公用的網際網路面向端點。 您�
 
 ## <a name="using-azure-portal"></a>使用 Azure 入口網站
 使用 Azure 入口網站，您可以遵循四個步驟來布建和設定安裝程式。 如果您有現有的資源，可以略過第一個步驟。
-1. 使用 App Service 檔中的其中一個快速入門來建立 App Service，例如[.Net Core 快速入門](../../app-service/app-service-web-get-started-dotnet.md)
+1. 使用 App Service 檔中的其中一個快速入門來建立 App Service，例如[.Net Core 快速入門](../quickstart-dotnetcore.md)
 2. 使用[入口網站快速入門](../../application-gateway/quick-create-portal.md)建立應用程式閘道，但略過新增後端目標一節。
 3. 將[App Service 設定為應用程式閘道中的後端](../../application-gateway/configure-web-app-portal.md)，但略過 [限制存取] 區段。
 4. 最後，[使用服務端點建立存取限制](../../app-service/app-service-ip-restrictions.md#service-endpoints)。
@@ -59,7 +59,7 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ## <a name="considerations-for-ilb-ase"></a>ILB ASE 的考慮
 ILB ASE 不會公開至網際網路，且實例和應用程式閘道之間的流量，因此已經與虛擬網路隔離。 下列操作[指南](../environment/integrate-with-application-gateway.md)會設定 ILB ASE，並使用 Azure 入口網站將它與應用程式閘道整合。 
 
-如果您想要確保只有來自應用程式閘道子網的流量會到達 ASE，您可以設定網路安全性群組（NSG），這會影響 ASE 中的所有 web 應用程式。 針對 NSG，您可以指定子網 IP 範圍和（選擇性）埠（80/443）。 請確定您未覆寫 ASE 的[必要 NSG 規則](../environment/network-info.md#network-security-groups)，才能正確運作。
+如果您想要確保只有來自應用程式閘道子網的流量會到達 ASE，您可以設定 (NSG) 的網路安全性群組，這會影響 ASE 中的所有 web 應用程式。 針對 NSG，您可以指定子網 IP 範圍，以及選擇性的埠 (80/443) 。 請確定您未覆寫 ASE 的[必要 NSG 規則](../environment/network-info.md#network-security-groups)，才能正確運作。
 
 若要將流量隔離到個別的 web 應用程式，您必須使用 ip 型存取限制，因為服務端點不適用於 ASE。 IP 位址應該是應用程式閘道實例的私人 IP。
 

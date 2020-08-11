@@ -1,24 +1,27 @@
 ---
-title: 設定 Windows ASP.NET Core 應用程式
-description: 瞭解如何在 App Service 的原生 Windows 實例中設定 ASP.NET Core 應用程式。 本文說明最常見的設定工作。
+title: 設定 ASP.NET Core 應用程式
+description: 瞭解如何在 Azure App Service 中，于原生 Windows 實例或預先建立的 Linux 容器中設定 ASP.NET Core 應用程式。 本文說明最常見的設定工作。
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 5819fc5b2d6e64d1812dacd88a2a4f840f6e03c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: app-service-platform-windows-linux
+ms.openlocfilehash: 77bff369e2af09921a2065a031166c017128f008
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907887"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080159"
 ---
-# <a name="configure-a-windows-aspnet-core-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Windows ASP.NET Core 應用程式
+# <a name="configure-an-aspnet-core-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 ASP.NET Core 應用程式
 
 > [!NOTE]
 > 如需 .NET Framework 中的 ASP.NET，請參閱[設定適用于 Azure App Service 的 ASP.NET 應用程式](configure-language-dotnet-framework.md)
 
-ASP.NET Core 應用程式必須部署成 Azure App Service 做為已編譯的二進位檔。 Visual Studio 發佈工具會建立解決方案，然後直接部署已編譯的二進位檔，而 App Service 部署引擎會先部署程式碼存放庫，然後再編譯二進位檔。 如需 Linux 應用程式的相關資訊，請參閱[設定適用于 Azure App Service 的 Linux ASP.NET Core 應用程式](containers/configure-language-dotnetcore.md)。
+ASP.NET Core 應用程式必須部署成 Azure App Service 做為已編譯的二進位檔。 Visual Studio 發佈工具會建立解決方案，然後直接部署已編譯的二進位檔，而 App Service 部署引擎會先部署程式碼存放庫，然後再編譯二進位檔。
 
-本指南提供 ASP.NET Core 開發人員的重要概念和指示。 如果您從未使用過 Azure App Service，請先遵循[ASP.NET 快速入門](app-service-web-get-started-dotnet.md)，並[使用 SQL Database 教學](app-service-web-tutorial-dotnetcore-sqldb.md)課程來 ASP.NET Core。
+本指南提供 ASP.NET Core 開發人員的重要概念和指示。 如果您從未使用過 Azure App Service，請先遵循[ASP.NET Core 快速入門](quickstart-dotnetcore.md)和[ASP.NET Core SQL Database 教學](tutorial-dotnetcore-sqldb-app.md)課程。
+
+::: zone pivot="platform-windows"  
 
 ## <a name="show-supported-net-core-runtime-versions"></a>顯示支援的 .NET Core 執行階段版本
 
@@ -28,9 +31,69 @@ ASP.NET Core 應用程式必須部署成 Azure App Service 做為已編譯的二
 dotnet --info
 ```
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="show-net-core-version"></a>顯示 .NET Core 版本
+
+若要顯示目前的 .NET Core 版本，請在[Cloud Shell](https://shell.azure.com)中執行下列命令：
+
+```azurecli-interactive
+az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
+```
+
+若要顯示所有支援的 .NET Core 版本，請在[Cloud Shell](https://shell.azure.com)中執行下列命令：
+
+```azurecli-interactive
+az webapp list-runtimes --linux | grep DOTNETCORE
+```
+
+::: zone-end
+
 ## <a name="set-net-core-version"></a>設定 .NET Core 版本
 
+::: zone pivot="platform-windows"  
+
 在 ASP.NET Core 專案的專案檔中設定目標 framework。 如需詳細資訊，請參閱選取要在 .NET Core 中[使用的 .Net core 版本](https://docs.microsoft.com/dotnet/core/versions/selection)檔。
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+在[Cloud Shell](https://shell.azure.com)中執行下列命令，將 .net Core 版本設定為3.1：
+
+```azurecli-interactive
+az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "DOTNETCORE|3.1"
+```
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="customize-build-automation"></a>自訂組建自動化
+
+如果您使用 Git 或 zip 套件並開啟組建自動化來部署應用程式，App Service 組建自動化將會依下列順序逐步執行：
+
+1. 執行自訂指令碼 (如果 `PRE_BUILD_SCRIPT_PATH` 已指定)。
+1. 執行 `dotnet restore` 以還原 NuGet 相依性。
+1. 執行 `dotnet publish` 以建立用於生產的二進位檔。
+1. 執行自訂指令碼 (如果 `POST_BUILD_SCRIPT_PATH` 已指定)。
+
+`PRE_BUILD_COMMAND` 和 `POST_BUILD_COMMAND` 是預設為空值的環境變數。 若要執行建置前命令，請定義 `PRE_BUILD_COMMAND`。 若要執行建置後命令，請定義 `POST_BUILD_COMMAND`。
+
+下列範例會將兩個變數指定給一系列的命令 (以逗號分隔)。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+若要了解其他可自訂組建自動化的環境變數，請參閱 [Oryx 設定](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+
+如需有關 App Service 如何在 Linux 中執行和建立 ASP.NET Core 應用程式的詳細資訊，請參閱[Oryx 檔：如何偵測和建立 .Net Core 應用程式](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/dotnetcore.md)。
+
+::: zone-end
 
 ## <a name="access-environment-variables"></a>存取環境變數
 
@@ -103,7 +166,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ## <a name="get-detailed-exceptions-page"></a>取得詳細例外狀況頁面
 
-當您的 ASP.NET Core 應用程式在 Visual Studio 偵錯工具中產生例外狀況時，瀏覽器會顯示詳細的例外狀況頁面，但在中，App Service 該頁面會由一般**HTTP 500**錯誤取代，或在**處理您的要求時發生錯誤。** 訊息。 若要在 App Service 中顯示詳細的例外狀況頁面，請 `ASPNETCORE_ENVIRONMENT` 在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中執行下列命令，以將應用程式設定新增至您的應用程式。
+當您的 ASP.NET Core 應用程式在 Visual Studio 偵錯工具中產生例外狀況時，瀏覽器會顯示詳細的例外狀況頁面，但在中，App Service 該頁面會由一般**HTTP 500**錯誤取代，或在**處理您的要求時發生錯誤。** 回應。 若要在 App Service 中顯示詳細的例外狀況頁面，請 `ASPNETCORE_ENVIRONMENT` 在<a target="_blank" href="https://shell.azure.com" >Cloud Shell</a>中執行下列命令，以將應用程式設定新增至您的應用程式。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"
@@ -115,7 +178,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 - 請使用 [ForwardedHeadersOptions](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersoptions) 來設定中介軟體以轉送 `Startup.ConfigureServices` 中的 `X-Forwarded-For` 和 `X-Forwarded-Proto` 標頭。
 - 將私人 IP 位址範圍新增至已知的網路，讓中介軟體可以信任 App Service 負載平衡器。
-- 呼叫其他中介軟體之前，請先在中叫用[UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders)方法 `Startup.Configure` 。
+- [UseForwardedHeaders](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.builder.forwardedheadersextensions.useforwardedheaders) `Startup.Configure` 呼叫其他中介軟體之前，請先在中叫用 UseForwardedHeaders 方法。
 
 將這三個元素全部放在一起，您的程式碼看起來如下列範例所示：
 
@@ -146,7 +209,25 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 如需詳細資訊，請參閱[設定 ASP.NET Core 以處理 Proxy 伺服器和負載平衡器](https://docs.microsoft.com/aspnet/core/host-and-deploy/proxy-load-balancer)。
 
+::: zone pivot="platform-linux"
+
+## <a name="open-ssh-session-in-browser"></a>在瀏覽器中開啟 SSH 工作階段
+
+[!INCLUDE [Open SSH session in browser](../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
+
+[!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
+
+::: zone-end
+
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [教學課程：ASP.NET Core 應用程式搭配 SQL Database](app-service-web-tutorial-dotnetcore-sqldb.md)
+> [教學課程：ASP.NET Core 應用程式搭配 SQL Database](tutorial-dotnetcore-sqldb-app.md)
+
+::: zone pivot="platform-linux"
+
+> [!div class="nextstepaction"]
+> [App Service Linux 常見問題集](faq-app-service-linux.md)
+
+::: zone-end
+

@@ -1,21 +1,21 @@
 ---
-title: Azure Windows Communication Foundation （WCF）轉送混合式內部部署/雲端應用程式（.NET） |Microsoft Docs
+title: Azure Windows Communication Foundation (WCF) 轉送混合式內部部署/雲端應用程式 ( .NET) |Microsoft Docs
 description: 了解如何使用 Azure 轉送將內部部署 WCF 服務公開至雲端中的 Web 應用程式
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9ac01beb28b1246122f437bcf1c7a7be7a1dfd9
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314409"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079955"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 轉送將內部部署 WCF 服務公開至雲端中的 Web 應用程式
 
 本文示範如何使用 Microsoft Azure 和 Visual Studio 建置混合式雲端應用程式。 您會在雲端中建立使用多個 Azure 資源的應用程式。 本教學課程可協助您瞭解：
 
 * 如何建立 Web 服務或調整現有的 Web 服務，以供 Web 方案使用。
-* 如何使用 Azure Windows Communication Foundation （WCF）轉送服務，在 Azure 應用程式與其他位置託管的 web 服務之間共用資料。
+* 如何使用 Azure Windows Communication Foundation (WCF) 轉送服務，在 Azure 應用程式與其他位置託管的 web 服務之間共用資料。
 
 您將在本教學課程中執行下列工作：
 
@@ -30,7 +30,7 @@ ms.locfileid: "85314409"
 > * 將 web 應用程式部署至 Azure。
 > * 在 Azure 上執行應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本教學課程，您需要下列必要條件：
 
@@ -44,15 +44,15 @@ ms.locfileid: "85314409"
 
 眾多方案架構爭相開始使用雲端，以期能夠更輕鬆地處理擴充需求並降低操作成本。 在這種情況下，他們發現他們想要用來做為解決方案建立區塊的現有服務資產，是在公司防火牆內，而雲端解決方案則不容易接觸到。 許多內部服務並不是以可在公司網路邊緣輕鬆公開的方式來建立或託管。
 
-[Azure 轉送](https://azure.microsoft.com/services/service-bus/)採用現有的 WCF web 服務，並讓那些服務安全地存取公司周邊以外的解決方案，而不需要對公司網路基礎結構進行侵入式變更。 此類轉送服務仍然裝載在其現有環境，但它們會將接聽連入工作階段和要求的工作委派給雲端裝載的轉送服務。 Azure 轉送也會使用[共用存取簽章（SAS）](../service-bus-messaging/service-bus-sas.md)驗證，保護這些服務免于未經授權的存取。
+[Azure 轉送](https://azure.microsoft.com/services/service-bus/)採用現有的 WCF web 服務，並讓那些服務安全地存取公司周邊以外的解決方案，而不需要對公司網路基礎結構進行侵入式變更。 此類轉送服務仍然裝載在其現有環境，但它們會將接聽連入工作階段和要求的工作委派給雲端裝載的轉送服務。 Azure 轉送也會使用[共用存取簽章 (SAS) ](../service-bus-messaging/service-bus-sas.md)驗證，保護這些服務免于未經授權的存取。
 
 ## <a name="review-the-scenario"></a>檢閱案例
 
 在本教學課程中，您將建立 ASP.NET 網站，讓您可在產品庫存頁面上看到產品清單。
 
-![狀況][0]
+![案例][0]
 
-此教學課程假設您有現有內部部署系統中的產品資訊，並使用 Azure 轉送來連接該系統。 在簡單主控台應用程式中執行的 web 服務會模擬這種情況。 它包含一組記憶體中的產品。 您可以在自己的電腦上執行此主控台應用程式，並將 web 角色部署至 Azure。 如此一來，您就會看到在 Azure 資料中心內執行的 web 角色如何呼叫您的電腦。 即使您的電腦幾乎都是在至少一個防火牆和網路位址轉譯（NAT）層後方，還是會發生此呼叫。
+此教學課程假設您有現有內部部署系統中的產品資訊，並使用 Azure 轉送來連接該系統。 在簡單主控台應用程式中執行的 web 服務會模擬這種情況。 它包含一組記憶體中的產品。 您可以在自己的電腦上執行此主控台應用程式，並將 web 角色部署至 Azure。 如此一來，您就會看到在 Azure 資料中心內執行的 web 角色如何呼叫您的電腦。 即使您的電腦幾乎會在至少一個防火牆後方，以及 (NAT) 層的網路位址轉譯後，還是會發生此呼叫。
 
 ## <a name="set-up-the-development-environment"></a>設定開發環境
 
@@ -67,7 +67,7 @@ ms.locfileid: "85314409"
 
 ## <a name="create-a-namespace"></a>建立命名空間
 
-第一個步驟是建立命名空間，並取得[共用存取簽章（SAS）](../service-bus-messaging/service-bus-sas.md)金鑰。 命名空間會為每個透過轉送服務公開的應用程式提供應用程式界限。 建立服務命名空間時，系統會自動產生 SAS 金鑰。 服務命名空間與 SAS 金鑰的組合會提供一個認證，供 Azure 用來驗證對應用程式的存取權。
+第一個步驟是建立命名空間，並取得[ (SAS) 金鑰的共用存取](../service-bus-messaging/service-bus-sas.md)簽章。 命名空間會為每個透過轉送服務公開的應用程式提供應用程式界限。 建立服務命名空間時，系統會自動產生 SAS 金鑰。 服務命名空間與 SAS 金鑰的組合會提供一個認證，供 Azure 用來驗證對應用程式的存取權。
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
@@ -77,7 +77,7 @@ ms.locfileid: "85314409"
 
 1. 以系統管理員身分啟動 Microsoft Visual Studio。 若要這樣做，請以滑鼠右鍵按一下 Visual Studio 程式圖示，然後選取 [以系統管理員身分執行]。
 1. 在 Visual Studio 中，選取 [建立新專案]。
-1. 在 [**建立新專案**] 中，選取 c # 的**主控台應用程式（.NET Framework）** ，然後選取 **[下一步]**。
+1. 在 [**建立新專案**] 中，選取 c # 的**主控台應用程式 ( .NET Framework) ** ，然後選取 **[下一步]**。
 1. 將專案命名為*ProductsServer* ，然後選取 [**建立**]。
 
    ![設定您的新專案][11]
@@ -233,7 +233,7 @@ ms.locfileid: "85314409"
 
 1. 確定 Visual Studio 是以系統管理員身分執行。
 1. 在 Visual Studio 中，選取 [建立新專案]。
-1. 在 [**建立新專案**] 中，選取 c # 的**ASP.NET Web 應用程式（.NET Framework）** ，然後選取 **[下一步]**。
+1. 在 [**建立新專案**] 中，選取 [ **ASP.NET Web Application ( .NET Framework** c # 的) ，然後選取 **[下一步]**。
 1. 將專案命名為*ProductsPortal* ，然後選取 [**建立**]。
 1. 在 [**建立新的 ASP.NET Web 應用程式**] 中選擇 [ **MVC** ]，然後選取 [**驗證**] 底下的 [**變更**
 
@@ -244,7 +244,7 @@ ms.locfileid: "85314409"
     ![指定驗證][18]
 
 1. 回到 [**建立新的 ASP.NET Web 應用程式**]，選取 [**建立**] 以建立 MVC 應用程式。
-1. 設定新 web 應用程式的 Azure 資源。 請遵循[發佈 web 應用程式](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard)中的步驟。 然後，返回本教學課程並繼續進行下一個步驟。
+1. 設定新 web 應用程式的 Azure 資源。 請遵循[發佈 web 應用程式](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard)中的步驟。 然後，返回本教學課程並繼續進行下一個步驟。
 1. 在**方案總管**中，以滑鼠右鍵按一下 [**模型**]，然後選取 [**新增**  >  **類別**]。
 1. 將類別命名為*Product.cs*，然後選取 [**新增**]。
 
@@ -427,7 +427,7 @@ ms.locfileid: "85314409"
 
 下一步是重新發佈 Azure Web 應用程式**ProductsPortal**前端：
 
-1. 在**方案總管**中，以滑鼠右鍵按一下**ProductsPortal**專案，然後選取 [**發佈**]。 在 [**發行**] 頁面上，選取 [**發佈**]。
+1. 在**方案總管**中，以滑鼠右鍵按一下**ProductsPortal**專案，然後選取 [**發佈**]。 在 [發佈] 頁面中，選取 [發佈]。
 
    > [!NOTE]
    > 在部署後自動啟動 **ProductsPortal** Web 專案時，您可在瀏覽器視窗中看到錯誤訊息。 這是預期的，且因為 **ProductsServer** 應用程式尚未執行而出現。

@@ -3,12 +3,12 @@ title: 搭配服務匯流排之 Azure 資源的受控識別
 description: 本文說明如何使用受控識別，以 Azure 服務匯流排實體 (佇列、主題和訂用帳戶) 來存取。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: b33f4e9b38d55ef3ed709df8d09f1ffd62a8bca8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 1deb3bdf823f1554e302bb35baabe444223f9008
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066282"
+ms.locfileid: "88079853"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取 Azure 服務匯流排資源
 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)是一個跨 Azure 功能，可讓您建立與應用程式程式碼執行所在之部署相關聯的安全識別。 然後您可以將該識別與存取控制角色產生關連，該角色會授與用來存取應用程式所需之特定 Azure 資源的自訂權限。
@@ -79,7 +79,7 @@ Azure Active Directory (Azure AD) 會透過 azure [RBAC () 以角色為基礎的
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>搭配使用服務匯流排和 Azure 資源的受控識別
 若要搭配使用服務匯流排與受控識別，您必須為身分指派角色和適當的範圍。 本節中的程式會使用以受控識別執行的簡單應用程式，並存取服務匯流排資源。
 
-在這裡，我們會使用[Azure App Service](https://azure.microsoft.com/services/app-service/)所裝載的範例 web 應用程式。 如需建立 web 應用程式的逐步指示，請參閱[在 Azure 中建立 ASP.NET Core web 應用程式](../app-service/app-service-web-get-started-dotnet.md)
+在這裡，我們會使用[Azure App Service](https://azure.microsoft.com/services/app-service/)所裝載的範例 web 應用程式。 如需建立 web 應用程式的逐步指示，請參閱[在 Azure 中建立 ASP.NET Core web 應用程式](../app-service/quickstart-dotnetcore.md)
 
 建立應用程式之後，請遵循下列步驟： 
 

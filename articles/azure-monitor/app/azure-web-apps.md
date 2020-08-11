@@ -4,12 +4,12 @@ description: Azure 應用程式服務的應用程式效能監視。 圖表載入
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6c0d99e89e17c2aad3c7dcfe0056b597aa88d2a2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d30d5fa8532b9bdec2b231daf9a59732dc1ebce8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876388"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079683"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -401,7 +401,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 當您在 Azure App 服務中使用或執行時間建立 web 應用程式時， `ASP.NET` `.NET Core` 它會將單一靜態 HTML 網頁部署為入門網站。 靜態網頁也會在 IIS 中載入 .NET 管理的網頁元件。 這可讓您測試無程式碼伺服器端監視，但不支援自動用戶端監視。
 
-如果您想要在 Azure App Services web 應用程式中測試適用于 ASP.NET 或 ASP.NET Core 的無程式碼伺服器和用戶端監視，建議您遵循[建立 ASP.NET Core web 應用程式](../../app-service/app-service-web-get-started-dotnet.md)和[建立 ASP.NET Framework web 應用](../../app-service/app-service-web-get-started-dotnet-framework.md)程式的官方指南，然後使用目前文章中的指示來啟用監視。
+如果您想要在 Azure App Services web 應用程式中測試適用于 ASP.NET 或 ASP.NET Core 的無程式碼伺服器和用戶端監視，建議您遵循[建立 ASP.NET Core web 應用程式](../../app-service/quickstart-dotnetcore.md)和[建立 ASP.NET Framework web 應用](../../app-service/quickstart-dotnet-framework.md)程式的官方指南，然後使用目前文章中的指示來啟用監視。
 
 ### <a name="php-and-wordpress-are-not-supported"></a>不支援 PHP 和 WordPress
 

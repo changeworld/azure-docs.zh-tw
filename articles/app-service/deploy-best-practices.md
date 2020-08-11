@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770671"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88081046"
 ---
 # <a name="deployment-best-practices"></a>部署最佳作法
 
@@ -26,7 +26,7 @@ ms.locfileid: "81770671"
 
 ### <a name="build-pipeline"></a>組建管線
 
-一旦您決定部署來源，下一步就是選擇組建管線。 組建管線會從部署來源讀取您的原始程式碼，並執行一系列的步驟（例如編譯器代碼、縮小 HTML 和 JavaScript、執行測試和封裝元件），以讓應用程式處於可執行檔狀態。 組建管線所執行的特定命令取決於您的語言堆疊。 這些作業可以在 Azure Pipelines 的組建伺服器上執行，或在本機執行。
+一旦您決定部署來源，下一步就是選擇組建管線。 組建管線會從部署來源讀取您的原始程式碼，並執行一系列的步驟， (例如編譯器代碼、縮小 HTML 和 JavaScript、執行測試，以及封裝元件) 讓應用程式處於可執行檔狀態。 組建管線所執行的特定命令取決於您的語言堆疊。 這些作業可以在 Azure Pipelines 的組建伺服器上執行，或在本機執行。
 
 ### <a name="deployment-mechanism"></a>部署機制
 
@@ -43,9 +43,9 @@ ms.locfileid: "81770671"
 
 ### <a name="continuously-deploy-code"></a>持續部署程式碼
 
-如果您的專案已指定用於測試、QA 和預備環境的分支，則應該將每個分支援續部署至預備位置。 （這就是所謂的[Gitflow 設計](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)）。這可讓您的專案關係人輕鬆地評估和測試已部署的分支。 
+如果您的專案已指定用於測試、QA 和預備環境的分支，則應該將每個分支援續部署至預備位置。  (這就是所謂的[Gitflow 設計](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)。 ) 這可讓您的專案關係人輕鬆地評估和測試已部署的分支。 
 
-您的生產位置永遠不應啟用持續部署。 相反地，您的生產分支（通常是 master）應部署到非生產位置。 當您準備好要釋放基底分支時，請將它交換至生產位置。 交換到生產環境（而不是部署到生產環境）可避免停機，並可讓您重新交換變更，藉以復原變更。 
+您的生產位置永遠不應啟用持續部署。 相反地，您的生產分支通常會 (主要) 部署到非生產位置。 當您準備好要釋放基底分支時，請將它交換至生產位置。 交換到生產環境（而不是部署到生產環境）可避免停機，並可讓您重新交換變更，藉以復原變更。 
 
 ![位置使用方式視覺效果](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
@@ -69,7 +69,7 @@ App Service 透過部署中心[內建容器的持續傳遞](deploy-continuous-de
 
 ### <a name="use-github-actions"></a>使用 GitHub 動作
 
-您也可以[使用 GitHub 動作](containers/deploy-container-github-action.md)來自動化您的容器部署。  下列工作流程檔案將使用認可識別碼來建立及標記容器、將其推送至容器登錄，並使用新的映射標籤更新指定的網站位置。
+您也可以[使用 GitHub 動作](deploy-container-github-action.md)來自動化您的容器部署。  下列工作流程檔案將使用認可識別碼來建立及標記容器、將其推送至容器登錄，並使用新的映射標籤更新指定的網站位置。
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps
@@ -131,11 +131,11 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
 
 ### <a name="node"></a>節點
 
-根據預設，Kudu 會執行節點應用程式（）的組建步驟 `npm install` 。 如果您使用 Azure DevOps 之類的組建服務，則不需要 Kudu 組建。 若要停用 Kudu 組建，請建立應用程式設定， `SCM_DO_BUILD_DURING_DEPLOYMENT` 其值為 `false` 。
+根據預設，Kudu 會 () 執行節點應用程式的組建步驟 `npm install` 。 如果您使用 Azure DevOps 之類的組建服務，則不需要 Kudu 組建。 若要停用 Kudu 組建，請建立應用程式設定， `SCM_DO_BUILD_DURING_DEPLOYMENT` 其值為 `false` 。
 
 ### <a name="net"></a>.NET 
 
-根據預設，Kudu 會執行 .NET 應用程式（）的組建步驟 `dotnet build` 。 如果您使用 Azure DevOps 之類的組建服務，則不需要 Kudu 組建。 若要停用 Kudu 組建，請建立應用程式設定， `SCM_DO_BUILD_DURING_DEPLOYMENT` 其值為 `false` 。
+根據預設，Kudu 會執行 .NET 應用程式 () 的組建步驟 `dotnet build` 。 如果您使用 Azure DevOps 之類的組建服務，則不需要 Kudu 組建。 若要停用 Kudu 組建，請建立應用程式設定， `SCM_DO_BUILD_DURING_DEPLOYMENT` 其值為 `false` 。
 
 ## <a name="other-deployment-considerations"></a>其他部署考慮
 

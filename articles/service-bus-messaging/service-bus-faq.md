@@ -1,16 +1,16 @@
 ---
 title: Azure 服務匯流排常見問題集 (FAQ) | Microsoft Docs
-description: 本文提供一些關於 Azure 服務匯流排的常見問題（FAQ）的解答。
+description: 本文提供一些常見問題的解答， (常見問題) 關於 Azure 服務匯流排的問題。
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371238"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080808"
 ---
-# <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排-常見問題（FAQ）
+# <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排-常見問題 (常見問題) 
 
 本文討論 Microsoft Azure 服務匯流排的一些常見問題解集。 您也可以造訪 [Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)，以取得一般的 Azure 價格和支援資訊。
 
@@ -57,7 +57,7 @@ ms.locfileid: "87371238"
 1. 從命令提示字元執行下列命令： 
 
     ```
-    nslookup <YourNamespaceName>.cloudapp.net
+    nslookup <YourNamespaceName>.servicebus.windows.net
     ```
 2. 記下 `Non-authoritative answer` 中傳回的 IP 位址。 這個 IP 位址是靜態的。 只有當您將命名空間還原到不同的叢集時，才會變更該 IP 位址。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87371238"
 1. 首先，在命名空間上執行 nslookup。
 
     ```
-    nslookup <yournamespace>.cloudapp.net
+    nslookup <yournamespace>.servicebus.windows.net
     ```
 2. 記下 [非授權回答] 區段中的名稱，其採用下列其中一種格式： 
 
@@ -78,7 +78,7 @@ ms.locfileid: "87371238"
 3. 針對尾碼為 s1、s2 和 s3 的每個名稱執行 nslookup，以取得三個執行個體全都在三個可用性區域執行的 IP 位址。 
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>哪裡可以找到用戶端在命名空間傳送/接收訊息的 IP 位址？ 
-我們不會記錄從您的命名空間傳送或接收訊息之用戶端的 IP 位址。 重新產生金鑰，讓所有現有的用戶端都無法驗證和審核角色型存取控制（[RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)）設定，以確保只有允許的使用者或應用程式可以存取命名空間。 
+我們不會記錄從您的命名空間傳送或接收訊息之用戶端的 IP 位址。 重新產生金鑰，讓所有現有的用戶端都無法驗證和審核角色型存取控制 ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) 設定，以確保只有允許的使用者或應用程式可以存取命名空間。 
 
 如果您使用**premium**命名空間，請使用[IP 篩選](service-bus-ip-filtering.md)、[虛擬網路服務端點](service-bus-service-endpoints.md)和[私人端點](private-link-service.md)來限制對命名空間的存取。 
 
@@ -108,7 +108,7 @@ ms.locfileid: "87371238"
 指定的 Azure 區域內的任何資料傳輸都是免費提供，以及任何輸入的資料傳輸。 區域外部的資料傳送需要出口流量費用，可以在[這裡](https://azure.microsoft.com/pricing/details/bandwidth/)找到。
 
 ### <a name="does-service-bus-charge-for-storage"></a>服務匯流排是否會收取儲存體費用？
-不可以。 服務匯流排不會收取儲存體費用。 不過，配額會限制每個佇列/主題可以保存的最大資料量。 請參閱下一個常見問題。
+否。 服務匯流排不會收取儲存體費用。 不過，配額會限制每個佇列/主題可以保存的最大資料量。 請參閱下一個常見問題。
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有一個服務匯流排標準命名空間。 為什麼我會看到資源群組 ' $system ' 下的費用？
 Azure 服務匯流排最近已升級計費元件。 由於這項變更，如果您有服務匯流排標準命名空間，您可能會在資源群組 ' $system ' 下看到資源 '/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' 的明細專案。

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 6f5df14d9488f8ccb1f93c2a16ba52998f25e268
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: db1b88b9c22012cb4e6b5025dda31432c9278ff8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876575"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080893"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>設定 Azure 認知服務虛擬網路
 
@@ -40,10 +40,9 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 
 ## <a name="supported-regions-and-service-offerings"></a>支援的區域和服務供應專案
 
-下面所列的認知服務支援商業雲端和 US Gov 雲端中的虛擬網路。 如果此服務未列于此處，它還不支援虛擬網路。
+在[可用認知服務的區域](https://azure.microsoft.com/global-infrastructure/services/)中，支援 (vnet) 的虛擬網路。 如果未列出認知服務，則目前不支援虛擬網路。
 
 > [!div class="checklist"]
-
 > * [異常偵測器](./anomaly-detector/index.yml)
 > * [電腦視覺](./computer-vision/index.yml)
 > * [內容仲裁](./content-moderator/index.yml)
@@ -59,8 +58,8 @@ Azure 認知服務提供多層式安全性模型。 此模型可讓您將認知�
 ## <a name="service-tags"></a>服務標籤
 
 認知服務支援網路規則設定的服務標記。 以下所列的服務包含在**CognitiveServicesManagement**服務標記中。
-> [!div class="checklist"]
 
+> [!div class="checklist"]
 > * [異常偵測器](./anomaly-detector/index.yml)
 > * [電腦視覺](./computer-vision/index.yml)
 > * [內容仲裁](./content-moderator/index.yml)

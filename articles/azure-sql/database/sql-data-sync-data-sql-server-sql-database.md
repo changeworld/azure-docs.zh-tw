@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: 0e6229e38674651f3db068d30f68ef4c7e293c0a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 7f5ce25edfc4c3afd8a30528396f1f285b9af571
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386838"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080689"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>什麼是適用于 Azure 的 SQL 資料同步？
 
@@ -58,7 +58,7 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您跨內�
 
 在下列案例中，資料同步不是慣用的解決方案：
 
-| 狀況 | 某些建議的解決方案 |
+| 案例 | 某些建議的解決方案 |
 |----------|----------------------------|
 | 災害復原 | [Azure 異地備援備份](automated-backups-overview.md) |
 | 讀取級別 | [使用唯讀複本對唯讀查詢工作負載進行負載平衡 (預覽)](read-scale-out.md) |
@@ -131,11 +131,12 @@ SQL 資料同步是以 Azure SQL Database 為基礎的服務，可讓您跨內�
 ### <a name="general-limitations"></a>一般限制
 
 - 資料表不能有不是主要索引鍵的識別欄位。
+- 資料表必須有叢集索引，才能使用資料同步。
 - 主鍵不能有下列資料類型： SQL_variant、binary、Varbinary、image、xml。
 - 當您使用下列資料類型作為主要索引鍵時請務必謹慎，原因是支援的有效位數只到秒：time、datetime、datetime2、datetimeoffset。
-- 物件（資料庫、資料表和資料行）的名稱不能包含可列印的字元句點（.）、左方括弧（[）或右方括弧（]）。
+-  (資料庫、資料表和資料行的物件名稱) 不能包含可列印的字元期間 (. ) 、左方括弧 ( [) 或右方括弧 (] ) 。
 - 不支援 Azure Active Directory 驗證。
-- 不支援具有相同名稱但不同架構（例如，dbo. customers 和 sales）的資料表。
+- 同名但架構不同的資料表 (例如，dbo. customers 和 sales. 客戶) 不受支援。
 - 不支援具有使用者定義資料類型的資料行
 - 不支援在不同的訂用帳戶之間移動伺服器。 
 
@@ -206,7 +207,7 @@ SQL 資料同步會在以下所有區域內上市。
 - 如果訂用帳戶屬於同一個租用戶，且您擁有所有訂用帳戶的權限，則可以在 Azure 入口網站中設定同步群組。
 - 否則，您必須使用 PowerShell 來新增屬於不同訂用帳戶的同步成員。
 
-### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>我可以使用資料同步，在屬於不同雲端的 SQL Database 資料庫之間進行同步處理（例如 Azure 公用雲端和 Azure 中國世紀）
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>我可以使用資料同步，在屬於不同雲端 (（例如 Azure 公用雲端和 Azure 中國世紀）的 SQL Database 中的資料庫之間進行同步處理) 
 
 是。 您可以在屬於不同雲端的資料庫之間進行同步處理。 您必須使用 PowerShell 來新增屬於不同訂用帳戶的同步成員。
 
@@ -236,9 +237,9 @@ SQL 資料同步會在以下所有區域內上市。
 
 同盟根資料庫可使用於 SQL 資料同步服務 (無任何限制)。 您無法將同盟資料庫端點新增至目前的 SQL 資料同步版本。
 
-### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>我可以使用資料同步來同步處理從 Dynamics 365 匯出的資料，使用自備資料庫（BYOD）功能嗎？
+### <a name="can-i-use-data-sync-to-sync-data-exported-from-dynamics-365-using-bring-your-own-database-byod-feature"></a>我可以使用資料同步來同步處理從 Dynamics 365 匯出的資料，使用 [自備資料庫] (BYOD) ] 功能嗎？
 
-Dynamics 365 自備資料庫功能可讓系統管理員將應用程式中的資料實體匯出至自己的 Microsoft Azure SQL database。 如果資料是使用累加**式推送**匯出（不支援完整推送），而且 [**目標資料庫中的啟用觸發**程式] 設定為 **[是]**，則可以使用資料同步將此資料同步至其他資料庫。
+Dynamics 365 自備資料庫功能可讓系統管理員將應用程式中的資料實體匯出至自己的 Microsoft Azure SQL database。 資料同步可用來將此資料同步處理到其他資料庫中。如果資料是使用累加**式推送**匯出， (不) 支援完整推送，而且**目標資料庫中的 [啟用觸發**程式] 設定為 **[是]**。
 
 ## <a name="next-steps"></a>後續步驟
 

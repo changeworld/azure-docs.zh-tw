@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 739eb4e7968cb140e49f1baee777b48140811936
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034952"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080706"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service 本機快取概觀
 
 > [!NOTE]
-> 函數應用程式或容器化 App Service 應用程式中不支援本機快取，例如在[Windows 容器](app-service-web-get-started-windows-container.md)或[Linux 上的 App Service](containers/app-service-linux-intro.md)上。
+> 函數應用程式或容器化 App Service 應用程式中不支援本機快取，例如在[Windows 容器](quickstart-custom-container.md?pivots=container-windows)或[Linux 上的 App Service](overview.md#app-service-on-linux)上。
 
 
 Azure App Service 內容會儲存在 Azure 儲存體上，並以持久的方式呈現為內容共用。 這項設計的目的是為了要與各種應用程式搭配使用，而且其具有下列特性︰  
@@ -102,7 +102,7 @@ Azure App Service 本機快取功能可讓您以 Web 角色檢視您的內容。
 ### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache"></a>如何知道我的網站是否已切換成使用本機快取？
 如果搭配預備環境使用「本機快取」功能，在本機快取準備就緒之前將無法完成交換作業。 若要檢查您的網站是否正在執行本機快取，您可以檢查工作者處理序環境變數 `WEBSITE_LOCALCACHE_READY`。 使用 [背景工作角色處理序環境變數](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) 頁面中的指示，存取多個執行個體上的工作者處理序環境變數。  
 
-### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>我剛剛發佈了新的變更，但我的應用程式似乎沒有變更。 原因為何？
+### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>我剛剛發佈了新的變更，但我的應用程式似乎沒有變更。 為何會這樣？
 如果您的應用程式使用「本機快取」，則您需要重新啟動您的網站，以取得最新的變更。 不想對生產網站發佈變更嗎？ 請參閱前面的最佳作法一節中的位置選項。
 
 > [!NOTE]
