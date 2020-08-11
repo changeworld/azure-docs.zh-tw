@@ -2,13 +2,13 @@
 title: 使用 PowerShell Service Fabric 應用程式升級
 description: 本文會逐步解說使用 PowerShell 來部署 Service Fabric 應用程式、變更程式碼及執行升級的體驗。
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: d277df6959ea3e7985514f81faed520f163c6012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/5/2020
+ms.openlocfilehash: 2bd74d071d5dfb3385d4203704eacd5ba685917e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82195879"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064582"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>使用 PowerShell 進行 Service Fabric 應用程式升級
 > [!div class="op_single_selector"]
@@ -23,7 +23,22 @@ ms.locfileid: "82195879"
 
 可以使用受控或原生 API、PowerShell、Azure CLI、Java 或 REST，執行監視應用程式升級。 如需有關使用 Visual Studio 來執行升級的說明，請參閱 [使用 Visual Studio 升級您的應用程式](service-fabric-application-upgrade-tutorial.md)。
 
-透過 Service Fabric 監視輪流升級，應用程式系統管理員即可設定 Service Fabric 用來判斷應用程式健康狀態良好的健康狀態評估原則。 此外，系統管理員可以設定當健全狀況評估失敗時所要採取的動作（例如，執行自動回復）。本節將逐步解說使用 PowerShell 的其中一個 SDK 範例的監視升級。 
+透過 Service Fabric 監視輪流升級，應用程式系統管理員即可設定 Service Fabric 用來判斷應用程式健康狀態良好的健康狀態評估原則。 此外，系統管理員可以設定當健全狀況評估失敗時所要採取的動作 (例如，執行自動回復。 ) 本節會逐步解說使用 PowerShell 的其中一個 SDK 範例的監視升級。 
+
+> [!NOTE]
+> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters)不會在應用程式升級期間保留。 為了保留目前的應用程式參數，使用者應該先取得參數，然後將它們傳遞至升級 API 呼叫，如下所示：
+```powershell
+$myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
+$appParamCollection = $myApplication.ApplicationParameters
+
+$applicationParameterMap = @{}
+foreach ($pair in $appParamCollection)
+{
+    $applicationParameterMap.Add($pair.Name, $pair.Value);
+}
+
+Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -ApplicationTypeVersion 2.0.0 -ApplicationParameter $applicationParameterMap -Monitored -FailureAction Rollback
+```
 
 ## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>步驟 1：建置和部署視覺物件範例
 在應用程式專案 **VisualObjectsApplication** 上按一下滑鼠右鍵，然後選取 [發佈]**** 命令來建置和發佈應用程式。  如需詳細資訊，請參閱 [Service Fabric 應用程式升級教學課程](service-fabric-application-upgrade-tutorial.md)。  或者，您可以使用 PowerShell 來部署您的應用程式。

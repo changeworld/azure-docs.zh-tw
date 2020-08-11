@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure 服務匯流排管理程式庫，以
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 63a8f0f8ef299f9d27d3c1be2746052536c4e5e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341715"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066163"
 ---
 # <a name="service-bus-management-libraries"></a>服務匯流排管理程式庫
 
@@ -22,15 +22,15 @@ Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空�
 * 建立、更新、刪除主題
 * 建立、更新、刪除訂用帳戶
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用服務匯流排管理程式庫，您必須使用 Azure Active Directory (Azure AD) 服務來驗證。 Azure AD 會要求您以提供 Azure 資源存取權的服務主體來進行驗證。 如需建立服務主體的詳細資訊，請參閱以下其中一篇文章：  
 
-* [使用 Azure 入口網站建立可存取資源的 Active Directory 應用程式和服務主體](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [使用 Azure PowerShell 建立用來存取資源的服務主體](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [使用 Azure CLI 建立用來存取資源的服務主體](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [使用 Azure 入口網站建立可存取資源的 Active Directory 應用程式和服務主體](../active-directory/develop/howto-create-service-principal-portal.md)
+* [使用 Azure PowerShell 建立用來存取資源的服務主體](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [使用 Azure CLI 建立用來存取資源的服務主體](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 
-這些教學課程會提供您 `AppId` (用戶端識別碼)、`TenantId` 和 `ClientSecret` (驗證金鑰)，全部由管理程式庫用於驗證。 對於您想要執行的資源群組，您必須至少擁有[**Azure 服務匯流排資料擁有**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner)者或[**參與者**](/azure/role-based-access-control/built-in-roles#contributor)許可權。
+這些教學課程會提供您 `AppId` (用戶端識別碼)、`TenantId` 和 `ClientSecret` (驗證金鑰)，全部由管理程式庫用於驗證。 對於您想要執行的資源群組，您必須至少擁有[**Azure 服務匯流排資料擁有**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)者或[**參與者**](../role-based-access-control/built-in-roles.md#contributor)許可權。
 
 ## <a name="programming-pattern"></a>程式設計模式
 

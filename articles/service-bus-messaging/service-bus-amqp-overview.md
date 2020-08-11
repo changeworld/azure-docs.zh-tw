@@ -1,17 +1,17 @@
 ---
 title: Azure 服務匯流排中的 AMQP 1.0 總覽
-description: 瞭解 Azure 服務匯流排如何支援先進訊息佇列通訊協定（AMQP），這是一種開放式標準通訊協定。
+description: 瞭解 Azure 服務匯流排如何支援先進的訊息佇列通訊協定 (AMQP) （開放式標準通訊協定）。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1113ffd268c991ba8a9c8f574b90d555a81ae840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083866"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066333"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服務匯流排中的 AMQP 1.0 支援
-Azure 服務匯流排雲端服務和內部部署 [Service Bus for Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) 兩者都支援進階訊息佇列通訊協定 (AMQP) 1.0。 透過開放式標準通訊協定，AMQP 可讓您打造一個跨平台的混合式應用程式。 您可以透過使用不同語言和架構所建立，且在不同作業系統上執行的元件來建構應用程式。 所有這些元件都可以連線到服務匯流排，並有效地且不失真地順暢交換結構化的商業訊息。
+Azure 服務匯流排雲端服務和內部部署 [Service Bus for Windows Server (Service Bus 1.1)](/previous-versions/service-bus-archive/dn282144(v=azure.100)) 兩者都支援進階訊息佇列通訊協定 (AMQP) 1.0。 透過開放式標準通訊協定，AMQP 可讓您打造一個跨平台的混合式應用程式。 您可以透過使用不同語言和架構所建立，且在不同作業系統上執行的元件來建構應用程式。 所有這些元件都可以連線到服務匯流排，並有效地且不失真地順暢交換結構化的商業訊息。
 
 ## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>簡介：何謂 AMQP 1.0 以及它為什麼很重要？
 傳統上，訊息導向的中介軟體產品會採用專屬的通訊協定，以進行用戶端應用程式和代理程式之間的通訊。 這表示一旦選取特定的廠商訊息代理程式，您就必須使用該廠商的程式庫來連接用戶端應用程式與該代理程式。 結果便是您會一定程度地與該廠商相依，因為若要將應用程式移植到其他產品，將需要變更所有已連接應用程式的程式碼。 
@@ -60,7 +60,7 @@ Azure 服務匯流排中的 AMQP 1.0 支援代表您現在能夠從一組平台�
 
 目前已知下列用戶端程式庫可以使用服務匯流排：
 
-| Language | 程式庫 |
+| 語言 | 程式庫 |
 | --- | --- |
 | Java |Apache Qpid Java 訊息服務 (JMS) 用戶端<br/>IIT Software SwiftMQ Java 用戶端 |
 | C |Apache Qpid Proton-C |
@@ -70,7 +70,7 @@ Azure 服務匯流排中的 AMQP 1.0 支援代表您現在能夠從一組平台�
 
 **圖 2：AMQP 1.0 用戶端程式庫的資料表**
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 * AMQP 1.0 是一個既開放又可靠的訊息通訊協定，可以用來建置跨平台的混合應用程式。 AMQP 1.0 是一項 OASIS 標準。
 * Azure 服務匯流排和 Service Bus for Windows Server (Service Bus 1.1) 中現可支援 AMQP 1.0。 價格與現有的通訊協定一樣。
 
@@ -84,6 +84,6 @@ Azure 服務匯流排中的 AMQP 1.0 支援代表您現在能夠從一組平台�
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [搭配使用 .NET 的服務匯流排與 AMQP]: service-bus-amqp-dotnet.md
-[搭配使用 Java 的服務匯流排與 AMQP]: service-bus-amqp-java.md
-[在 Azure Linux VM 上安裝 Apache Qpid Proton-C]: service-bus-amqp-apache.md
-[Windows Server 服務匯流排中的 AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+[搭配使用 Java 的服務匯流排與 AMQP]: ./service-bus-java-how-to-use-jms-api-amqp.md
+[在 Azure Linux VM 上安裝 Apache Qpid Proton-C]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

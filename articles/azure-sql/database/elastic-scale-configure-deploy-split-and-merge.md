@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84031969"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064939"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署分割合併服務以在分區化資料庫之間移動資料
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,11 +35,11 @@ ms.locfileid: "84031969"
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-檔案會放在名為 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目錄中，其中 *x.x.xxx.x* 反映版本號碼。 在**content\splitmerge\powershell 子目錄**子目錄中尋找分割合併服務檔案，並在**content\splitmerge\powershell**子目錄中找到分割合併 PowerShell 腳本（和必要的用戶端 dll）。
+檔案會放在名為 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目錄中，其中 *x.x.xxx.x* 反映版本號碼。 在**content\splitmerge\powershell 子目錄**子目錄中尋找分割合併服務檔案，並在**content\splitmerge\powershell**子目錄中 (和必要的用戶端 dll) 分割合併的 PowerShell 腳本。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-1. 建立將用來做為分割合併狀態資料庫的 Azure SQL Database 資料庫。 移至 [Azure 入口網站](https://portal.azure.com)。 建立新的 **SQL Database**。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
+1. 建立將用來做為分割合併狀態資料庫的 Azure SQL Database 資料庫。 前往 [Azure 入口網站](https://portal.azure.com)。 建立新的 **SQL Database**。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
 
 1. 請確定您的伺服器允許 Azure 服務連線。 在入口網站的 [防火牆設定]**** 中，確定 [允許存取 Azure 服務]**** 設定設為 [開啟]****。 按一下儲存圖示。
 
@@ -108,7 +108,7 @@ ms.locfileid: "84031969"
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>將 PFX 檔案上傳至雲端服務
 
-1. 移至 [Azure 入口網站](https://portal.azure.com)。
+1. 前往 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [雲端服務]。
 3. 選取您先前為分割/合併服務建立的雲端服務。
 4. 按一下頂端功能表的 [憑證] **** 。
@@ -174,6 +174,9 @@ Web 角色：
 
 執行內含的範例 PowerShell 指令碼即可測試部署和您的環境。
 
+> [!IMPORTANT]
+> 範例腳本會在 PowerShell 5.1 上執行。 它們目前不會在 PowerShell 6 或更新版本上執行。
+
 內含的指令碼檔案：
 
 1. *SetupSampleSplitMergeEnvironment.ps1* - 設定分割/合併的測試資料層 (請參閱下表中的詳細說明)
@@ -228,7 +231,7 @@ Web 角色：
 
 1. 開啟新的 PowerShell 視窗，並瀏覽至您下載分割-合併套件的目錄，然後瀏覽到 "powershell" 目錄。
 
-2. 建立伺服器（或選擇現有的伺服器），其中將會建立分區對應管理員和分區。
+2. 建立伺服器 (或選擇現有的伺服器) ，其中將會建立分區對應管理員和分區。
 
    > [!NOTE]
    > 根據預設， *SetupSampleSplitMergeEnvironment.ps1*腳本會在相同伺服器上建立所有這些資料庫，讓腳本保持簡單。 這不是分割合併服務本身的限制。
@@ -255,7 +258,7 @@ Web 角色：
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. 執行*ExecuteSampleSplitMerge.ps1*腳本來執行分割作業（將第一個分區上的一半資料移至第二個分區），然後執行合併作業（將資料移回第一個分區）。 如果您已設定 TLS 並將 HTTP 端點停用，請確定您使用的是 HTTPs://端點。
+5. 執行*ExecuteSampleSplitMerge.ps1*腳本來執行分割作業 (將第一個分區上的一半資料移至第二個分區) 然後合併作業 (將資料移回第一個分區) 。 如果您已設定 TLS 並將 HTTP 端點停用，請確定您使用的是 HTTPs://端點。
 
     範例命令列：
 

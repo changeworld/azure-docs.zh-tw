@@ -3,25 +3,25 @@ title: 針對 Azure 服務匯流排中的 AMQP 錯誤進行疑難排解 |Microso
 description: 提供當您使用 Azure 服務匯流排時可能會收到的 AMQP 錯誤清單，以及這些錯誤的原因。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9680e930dd8c1cb8cbd062f029af9d674d62c0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88b10940e0b910f50e6ccf7f8c53134fa7f0ba2f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337824"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064344"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>AMQP Azure 服務匯流排中的錯誤
 本文提供使用 AMQP 搭配 Azure 服務匯流排時所收到的一些錯誤。 這些全都是服務的標準行為。 您可以在連線/連結上發出傳送/接收呼叫，這會自動重新建立連線/連結，以避免這些問題。
 
 ## <a name="link-is-closed"></a>連結已關閉 
-當 AMQP 連線和連結作用中，但沒有使用連結10分鐘的呼叫（例如，傳送或接收）時，您會看到下列錯誤。 因此，連結已關閉。 連接仍為開啟狀態。
+當 AMQP 連線和連結作用中，但沒有任何呼叫 (例如，使用連結10分鐘來傳送或接收) 時，您會看到下列錯誤。 因此，連結已關閉。 連接仍為開啟狀態。
 
 ```
 amqp:link:detach-forced:The link 'G2:7223832:user.tenant0.cud_00000000000-0000-0000-0000-00000000000000' is force detached by the broker due to errors occurred in publisher(link164614). Detach origin: AmqpMessagePublisher.IdleTimerExpired: Idle timeout: 00:10:00. TrackingId:00000000000000000000000000000000000000_G2_B3, SystemTracker:mynamespace:Topic:MyTopic, Timestamp:2/16/2018 11:10:40 PM
 ```
 
 ## <a name="connection-is-closed"></a>連接已關閉
-當連接中的所有連結都已關閉，因為沒有活動（閒置），而且未在5分鐘內建立新的連結時，您會在 AMQP 連接上看到下列錯誤。
+當連線中的所有連結都已關閉，但因為沒有活動 (閒置) ，而且未在5分鐘內建立新連結時，您會在 AMQP 連接上看到下列錯誤。
 
 ```
 Error{condition=amqp:connection:forced, description='The connection was inactive for more than the allowed 300000 milliseconds and is closed by container 'LinkTracker'. TrackingId:00000000000000000000000000000000000_G21, SystemTracker:gateway5, Timestamp:2019-03-06T17:32:00', info=null}
@@ -44,4 +44,4 @@ Error{condition=amqp:connection:forced, description='The connection was inactive
 
 [服務匯流排 AMQP 概觀]: service-bus-amqp-overview.md
 [AMQP 1.0 通訊協定指南]: service-bus-amqp-protocol-guide.md
-[Windows Server 服務匯流排中的 AMQP]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)
+[Windows Server 服務匯流排中的 AMQP]: /previous-versions/service-bus-archive/dn282144(v=azure.100)

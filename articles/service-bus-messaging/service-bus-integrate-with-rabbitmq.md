@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071629"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064548"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>如何整合 RabbitMQ 與 Azure 服務匯流排
 
@@ -20,7 +20,7 @@ ms.locfileid: "87071629"
 
 以下是一些可利用這些功能的案例：
 
-- **Edge**設定：我們有 edge 設定，我們會將訊息傳送至 RabbitMQ，但我們想要將這些訊息轉送至[Azure 服務匯流排](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview)以進行進一步的處理，因此我們可以使用許多[Azure Big Data 功能](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/big-data)。
+- **Edge**設定：我們有 edge 設定，我們會將訊息傳送至 RabbitMQ，但我們想要將這些訊息轉送至[Azure 服務匯流排](./service-bus-messaging-overview.md)以進行進一步的處理，因此我們可以使用許多[Azure Big Data 功能](/azure/architecture/guide/architecture-styles/big-data)。
 - **混合式雲端**：您的公司剛取得使用 RabbitMQ 的協力廠商，以滿足其訊息需求。 它們位於不同的雲端。 當他們轉換至 Azure 時，您可以藉由將 RabbitMQ 與 Azure 服務匯流排橋接來開始共用資料。
 - **協力廠商整合**：協力廠商使用 RabbitMQ 作為代理人，而且想要將資料傳送給我們，但它們不在我們的組織外部。 我們可以提供 SAS 金鑰給他們，讓他們能夠存取一組有限的 Azure 服務匯流排佇列，以便將訊息轉送到其中。
 
@@ -28,7 +28,7 @@ ms.locfileid: "87071629"
 
 首先，您必須在[這裡](https://azure.microsoft.com/free/)註冊來建立免費的 Azure 帳戶
 
-一旦您登入您的帳戶，請移至[Azure 入口網站](https://portal.azure.com/)，然後建立新的 Azure 服務匯流排[命名空間](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)。 命名空間是我們的訊息元件會存留的範圍容器，例如佇列和主題。
+一旦您登入您的帳戶，請移至[Azure 入口網站](https://portal.azure.com/)，然後建立新的 Azure 服務匯流排[命名空間](./service-bus-create-namespace-portal.md)。 命名空間是我們的訊息元件會存留的範圍容器，例如佇列和主題。
 
 ## <a name="adding-a-new-azure-service-bus-namespace"></a>加入新的 Azure 服務匯流排命名空間
 
@@ -40,7 +40,7 @@ ms.locfileid: "87071629"
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="選取 Azure 服務匯流排":::
 
-系統會提示您輸入命名空間資訊。 選取您要使用的 Azure 訂用帳戶。 如果您沒有[資源群組](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)，您可以建立一個新的。
+系統會提示您輸入命名空間資訊。 選取您要使用的 Azure 訂用帳戶。 如果您沒有[資源群組](../azure-resource-manager/management/manage-resource-groups-portal.md)，您可以建立一個新的。
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="建立命名空間":::
 
@@ -76,7 +76,7 @@ rabbitmq-plugins enable rabbitmq_shovel_management
 
 ## <a name="connecting-rabbitmq-to-azure-service-bus"></a>將 RabbitMQ 連接到 Azure 服務匯流排
 
-您必須為您的佇列建立[共用存取原則](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)（SAS），讓 RabbitMQ 可以發佈訊息給它。 SAS 原則可讓您指定允許哪些外部合作物件處理您的資源。 其概念是 RabbitMQ 可以傳送訊息，但無法接聽或管理佇列。
+您必須為您的佇列 (SAS) 建立[共用存取原則](../storage/common/storage-sas-overview.md)，讓 RabbitMQ 可以發佈訊息給它。 SAS 原則可讓您指定允許哪些外部合作物件處理您的資源。 其概念是 RabbitMQ 可以傳送訊息，但無法接聽或管理佇列。
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="新增 SAS 原則":::
 
@@ -86,7 +86,7 @@ rabbitmq-plugins enable rabbitmq_shovel_management
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/sas-policy-key.png" alt-text="取得 SAS 原則":::
 
-在您可以使用該連接字串之前，您必須將它轉換成 RabbitMQ 的 AMQP 連接格式。 因此，請移至[連接字串轉換器工具](https://red-mushroom-0f7446a0f.azurestaticapps.net/)，並在表單中貼上您的連接字串，然後按一下 [轉換]。 您將會取得 RabbitMQ 就緒的連接字串。 （該網站會在瀏覽器中執行本機所有專案，因此您的資料不會透過網路傳送）。 您可以在[GitHub](https://github.com/videlalvaro/connstring_to_amqp)上存取其原始程式碼。
+在您可以使用該連接字串之前，您必須將它轉換成 RabbitMQ 的 AMQP 連接格式。 因此，請移至[連接字串轉換器工具](https://red-mushroom-0f7446a0f.azurestaticapps.net/)，並在表單中貼上您的連接字串，然後按一下 [轉換]。 您將會取得 RabbitMQ 就緒的連接字串。  (該網站會在瀏覽器中執行本機所有專案，因此您的資料不會透過網路) 傳送。 您可以在[GitHub](https://github.com/videlalvaro/connstring_to_amqp)上存取其原始程式碼。
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/converter.png" alt-text="轉換連接字串":::
 

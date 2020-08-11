@@ -3,18 +3,18 @@ title: Azure 服務匯流排驗證和授權 | Microsoft Docs
 description: 使用共用存取簽章 (SAS) 驗證向服務匯流排驗證應用程式。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 56461c13cf6589b5f66f05837e1bcaa6a49a58c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337712"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066855"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>服務匯流排驗證和授權
-有兩種方式可驗證和授權 Azure 服務匯流排資源的存取： Azure 活動目錄（Azure AD）和共用存取簽章（SAS）。 本文提供使用這兩種型別安全性機制的詳細資料。 
+有兩種方式可驗證和授權 Azure 服務匯流排資源的存取： Azure 活動目錄 (Azure AD) 和共用存取簽章 (SAS) 。 本文提供使用這兩種型別安全性機制的詳細資料。 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
-服務匯流排資源的 Azure AD 整合提供角色型存取控制（RBAC），以精細控制用戶端對資源的存取。 您可以使用角色型存取控制（RBAC），將許可權授與安全性主體，這可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，以傳回 OAuth 2.0 權杖。 權杖可以用來授權存取服務匯流排資源的要求（佇列、主題等）。
+服務匯流排資源的 Azure AD 整合提供角色型存取控制 (RBAC) ，以精細控制用戶端對資源的存取。 您可以使用角色型存取控制 (RBAC) ，將許可權授與安全性主體，這可能是使用者、群組或應用程式服務主體。 安全性主體會由 Azure AD 進行驗證，以傳回 OAuth 2.0 權杖。 權杖可以用來授權要求存取服務匯流排資源 (佇列、主題等 ) 。
 
 如需使用 Azure AD 進行驗證的詳細資訊，請參閱下列文章：
 
@@ -25,12 +25,12 @@ ms.locfileid: "85337712"
 > [服務匯流排 REST API](/rest/api/servicebus/)支援使用 Azure AD 的 OAuth 驗證。
 
 > [!IMPORTANT]
-> 使用 Azure AD 所傳回的 OAuth 2.0 權杖來授權使用者或應用程式，可透過共用存取簽章（SAS）提供優異的安全性和易用性。 有了 Azure AD，就不需要在程式碼中儲存權杖，也可能會有潛在的安全性弱點。 我們建議您盡可能使用搭配 Azure 服務匯流排應用程式使用 Azure AD。 
+> 使用 Azure AD 所傳回的 OAuth 2.0 權杖來授權使用者或應用程式，可讓您透過共用存取簽章 (SAS) ，提供更優異的安全性和易用性。 有了 Azure AD，就不需要在程式碼中儲存權杖，也可能會有潛在的安全性弱點。 我們建議您盡可能使用搭配 Azure 服務匯流排應用程式使用 Azure AD。 
 
 ## <a name="shared-access-signature"></a>共用存取簽章
 [SAS 驗證](service-bus-sas.md)可讓您授與使用者具特定權限的服務匯流排資源存取權。 服務匯流排中的 SAS 驗證牽涉到在服務匯流排資源上設定具有相關權限的密碼編譯金鑰。 接著用戶端可以藉由提出 SAS 權杖 (其中包含正在存取的資源 URI 及利用設定金鑰簽署的到期日) 存取該資源。
 
-您可以在服務匯流排命名空間上設定 SAS 的金鑰。 金鑰會套用至該命名空間中的所有訊息實體。 您也可以在服務匯流排佇列和主題上設定金鑰。 [Azure 轉送](../service-bus-relay/relay-authentication-and-authorization.md)上也支援 SAS。
+您可以在服務匯流排命名空間上設定 SAS 的金鑰。 金鑰會套用至該命名空間中的所有訊息實體。 您也可以在服務匯流排佇列和主題上設定金鑰。 [Azure 轉送](../azure-relay/relay-authentication-and-authorization.md)上也支援 SAS。
 
 若要使用 SAS，您可以在命名空間、佇列或主題上設定 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) 物件。 此規則由下列元素組成：
 
@@ -46,12 +46,12 @@ ms.locfileid: "85337712"
 服務匯流排的 SAS 驗證支援包含在 Azure .NET SDK 2.0 版或更新版本中。 SAS 包括 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)的支援。 所有接受連接字串做為參數的 API 包括 SAS 連接字串的支援。
 
 > [!IMPORTANT]
-> 如果您使用 Azure Active Directory 存取控制（也稱為存取控制服務或 ACS）與服務匯流排，請注意，此方法的支援現已受到限制，您應該將[應用程式遷移至使用 SAS](service-bus-migrate-acs-sas.md) ，或搭配使用 OAuth 2.0 驗證與 Azure AD （建議）。如需有關淘汰 ACS 的詳細資訊，請參閱[這篇 blog 文章](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)。
+> 如果您使用 Azure Active Directory 存取控制 (也稱為存取控制服務或 ACS) 與服務匯流排，請注意，此方法的支援現已受到限制，您應該將[應用程式遷移至使用 SAS](service-bus-migrate-acs-sas.md) ，或使用 OAuth 2.0 驗證搭配 Azure AD (建議) 。如需有關淘汰 ACS 的詳細資訊，請參閱[這篇 blog 文章](/archive/blogs/servicebus/upcoming-changes-to-acs-enabled-namespaces)。
 
 ## <a name="next-steps"></a>後續步驟
 如需使用 Azure AD 進行驗證的詳細資訊，請參閱下列文章：
 
-- [使用受控識別進行驗證](service-bus-managed-service-identity.md)
+- [使用受控識別執行驗證作業](service-bus-managed-service-identity.md)
 - [從應用程式進行驗證](authenticate-application.md)
 
 如需使用 SAS 進行驗證的詳細資訊，請參閱下列文章：

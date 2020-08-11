@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 15b6de6a03bc5dd67650076beac603845b99ff59
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 711bcc06a65483921492aaad819b961fc09740d4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286184"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067030"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最佳化的虛擬機器大小
 
 GPU 優化的 VM 大小是使用單一、多個或小數 Gpu 提供的特製化虛擬機器。 這些大小是專門針對計算密集型、圖形密集型及視覺效果的工作負載所設計。 本文章提供有關 GPU、vCPU、資料磁碟及 NIC 之數量和類型的資訊。 另說明此群組中每個大小的輸送量和網路頻寬。
 
-- [NC 系列](nc-series.md)、 [NCv2 系列](ncv2-series.md)、 [NCv3 系列](ncv3-series.md)大小已針對計算密集型和網路密集型應用程式和演算法進行優化。 其中一些範例包括 CUDA 和 OpenCL 架構的應用程式，以及模擬、AI 和深度學習。 NCv3 系列著重於高效能運算工作負載，採用 NVIDIA 的 Tesla V100 GPU。 NC 系列使用 Intel Haswell E5-2690 v3 2.60 GHz v3 （）處理器，而 NCv2 系列和 NCv3 系列 Vm 則使用 Intel 最強 E5-2690 v4 （Broadwell）處理器。
+- [NC 系列](nc-series.md)、 [NCv2 系列](ncv2-series.md)、 [NCv3 系列](ncv3-series.md)和[NCT4_v3 系列](nct4-v3-series.md)大小已針對計算密集型和網路密集型應用程式和演算法進行優化。 其中一些範例包括 CUDA 和 OpenCL 架構的應用程式，以及模擬、AI 和深度學習。 NCT4v3 系列著重于具有 NVIDIA Tesla T4 GPU 和 AMD EPYC2 羅馬處理器的推斷工作負載。 NCv3 系列著重於高效能運算工作負載，採用 NVIDIA 的 Tesla V100 GPU。 NC 系列使用 Intel 2690 v3 2.60 GHz v3 (Haswell) 處理器，而 NCv2 系列和 NCv3 系列 Vm 則使用 Intel E5-2690 v4 (Broadwell) 處理器。
 
-- [ND 系列](nd-series.md)和[NDv2 系列](ndv2-series.md)的大小著重于深度學習的訓練與推斷案例。 他們使用 NVIDIA Tesla P40 GPU 和 Intel 2690 E5-v4 （Broadwell）處理器。 NDv2 系列使用 Intel 8168 級的白金（Skylake）處理器。
+- [ND 系列](nd-series.md)和[NDv2 系列](ndv2-series.md)的大小著重于深度學習的訓練與推斷案例。 他們使用 NVIDIA Tesla P40 GPU 和 Intel 2690 E5-v4 (Broadwell) 處理器。 NDv2 系列使用 Intel 8168) 處理器 (Skylake。
 
 - [NV 系列](nv-series.md)和[NVv3 系列](nvv3-series.md)大小已針對遠端視覺效果、串流、遊戲、編碼和 VDI 案例進行優化和設計，其使用 OpenGL 和 DirectX 這類架構。 這些 VM 是由 NVIDIA Tesla M60 GPU 提供支援。
 

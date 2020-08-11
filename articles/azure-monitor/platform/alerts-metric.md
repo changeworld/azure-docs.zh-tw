@@ -4,14 +4,14 @@ description: 瞭解如何使用 Azure 入口網站或 CLI 來建立、查看和�
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042729"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065857"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure 監視器建立、檢視及管理計量警示
 
@@ -141,7 +141,16 @@ Azure 監視器中的計量警示可讓您在其中一個度量超出臨界值�
 
 - [AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)：建立新的計量警示規則或更新現有的計量。
 - [AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)：取得一或多個計量警示規則。
-- [AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2)：移除計量警示規則。
+- [AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2)：刪除計量警示規則。
+
+## <a name="with-rest-api"></a>使用 REST API
+
+- [建立或更新](/rest/api/monitor/metricalerts/createorupdate)：建立新的計量警示規則或更新現有的計量。
+- [取得](/rest/api/monitor/metricalerts/get)：取得特定計量警示規則。
+- [依資源群組列出](/rest/api/monitor/metricalerts/listbyresourcegroup)：取得特定資源群組中的計量警示規則清單。
+- [依訂用帳戶列出](/rest/api/monitor/metricalerts/listbysubscription)：取得特定訂用帳戶中的計量警示規則清單。
+- [更新](/rest/api/monitor/metricalerts/update)：更新計量警示規則。
+- [刪除](/rest/api/monitor/metricalerts/delete)：刪除計量警示規則。
 
 ## <a name="next-steps"></a>後續步驟
 

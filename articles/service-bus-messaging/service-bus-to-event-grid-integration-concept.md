@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9c9c061e31ac4d3eba8d31352253bb25b62a9b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 641cae751b0b87d93235e1272bc5f46f7797d834
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503288"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065109"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure 服務匯流排與 Event Grid 的整合概觀
 
@@ -32,7 +32,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>確認您具有參與者存取權
-移至您的服務匯流排命名空間，然後選取 **[存取控制（IAM）**]，再選取 [**角色指派**] 索引標籤。請確認您具有命名空間的參與者存取權。 
+移至您的服務匯流排命名空間，然後選取 [**存取控制] (IAM) **，然後選取 [**角色指派**] 索引標籤。請確認您具有命名空間的參與者存取權。 
 
 ### <a name="events-and-event-schemas"></a>事件和事件結構描述
 
@@ -41,9 +41,9 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
 * DeadletterMessagesAvailable
 
-此外服務匯流排會使用標準 Event Grid 安全性和[驗證機制](https://docs.microsoft.com/azure/event-grid/security-authentication)。
+此外服務匯流排會使用標準 Event Grid 安全性和[驗證機制](../event-grid/security-authentication.md)。
 
-如需詳細資訊，請參閱 [Azure Event Grid 事件結構描述](https://docs.microsoft.com/azure/event-grid/event-schema)。
+如需詳細資訊，請參閱 [Azure Event Grid 事件結構描述](../event-grid/event-schema.md)。
 
 #### <a name="active-messages-available-event"></a>作用中訊息可用事件
 
@@ -132,7 +132,7 @@ Azure 服務匯流排已開始與 Azure Event Grid 進行全新整合。 此功�
 
 ## <a name="azure-cli-instructions"></a>Azure CLI 指示
 
-首先，確定已安裝 Azure CLI 2.0 版或更新版本。 [下載安裝程式](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。 選取 [ **Windows + X**]，然後以系統管理員許可權開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
+首先，確定已安裝 Azure CLI 2.0 版或更新版本。 [下載安裝程式](/cli/azure/install-azure-cli?view=azure-cli-latest)。 選取 [ **Windows + X**]，然後以系統管理員許可權開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
 
 執行以下程式碼：
 
@@ -150,7 +150,7 @@ az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR 
 
 ## <a name="powershell-instructions"></a>PowerShell 指示
 
-確定您已安裝 Azure PowerShell。 [下載安裝程式](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 選取 [Windows + X]****，然後以系統管理員權限開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
+確定您已安裝 Azure PowerShell。 [下載安裝程式](/powershell/azure/install-Az-ps)。 選取 [Windows + X]****，然後以系統管理員權限開啟新的 PowerShell 主控台。 或者，也可以在 Azure 入口網站中使用命令 shell。
 
 ```powershell-interactive
 Connect-AzAccount
@@ -171,10 +171,10 @@ New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTIO
 ## <a name="next-steps"></a>後續步驟
 
 * 取得服務匯流排和 Event Grid [範例](service-bus-to-event-grid-integration-example.md)。
-* 深入了解 [Event Grid](https://docs.microsoft.com/azure/event-grid/)。
-* 深入了解 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。
-* 深入瞭解[Logic Apps](https://docs.microsoft.com/azure/logic-apps/)。
-* 深入了解[服務匯流排](https://docs.microsoft.com/azure/service-bus/)。
+* 深入了解 [Event Grid](../event-grid/index.yml)。
+* 深入了解 [Azure Functions](../azure-functions/index.yml)。
+* 深入瞭解[Logic Apps](../logic-apps/index.yml)。
+* 深入了解[服務匯流排](/azure/service-bus/)。
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

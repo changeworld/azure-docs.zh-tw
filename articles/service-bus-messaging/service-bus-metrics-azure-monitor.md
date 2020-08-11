@@ -3,18 +3,18 @@ title: Azure 監視器中的 Azure 服務匯流排計量 | Microsoft Docs
 description: 本文說明如何使用 Azure 監視器來監視服務匯流排實體 (佇列、主題和訂閱)。
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: c4bf33fc7aa21be150a1ee0d6c65df84a391565e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089680"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065007"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 服務匯流排計量
 
 服務匯流排計量會提供您 Azure 訂用帳戶中的資源狀態。 您可以使用豐富的計量資料集，評估服務匯流排資源的整體健康狀態，不只在命名空間層級，還有實體層級。 這些統計資料相當重要，因為它們可協助您監視服務匯流排的狀態。 計量也可協助針對問題的根本原因進行疑難排解，而不需要連絡 Azure 支援。
 
-「Azure 監視器」提供統一的使用者介面，可供您監視各個不同的 Azure 服務。 如需詳細資訊，請參閱 [Microsoft Azure 中的監視](../monitoring-and-diagnostics/monitoring-overview.md)和 GitHub 上的 [Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) (使用 .NET 擷取 Azure 監視計量) 範例。
+「Azure 監視器」提供統一的使用者介面，可供您監視各個不同的 Azure 服務。 如需詳細資訊，請參閱 [Microsoft Azure 中的監視](../azure-monitor/overview.md)和 GitHub 上的 [Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) (使用 .NET 擷取 Azure 監視計量) 範例。
 
 > [!IMPORTANT]
 > 在未與實體互動的時間達 2 小時之後，計量將會開始顯示 "0" 作為值，直到該實體不再閒置為止。
@@ -29,11 +29,11 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 您可以在 [Azure 入口網站](https://portal.azure.com)中監視一段時間的計量。 下列範例示範如何檢視帳戶層級的成功要求及連入要求：
 
-![Azure 入口網站中 [監視-計量（預覽）] 頁面的螢幕擷取畫面。][1]
+![Azure 入口網站中 [監視-計量] (預覽) ] 頁面的螢幕擷取畫面。][1]
 
 您也可以直接透過命名空間來存取計量。 若要這樣做，請選取您的命名空間，然後按一下 [計量]。 若要顯示篩選至實體範圍的計量，請選取實體，然後按一下[計量]。
 
-![篩選至實體範圍的 [監視-計量（預覽）] 頁面螢幕擷取畫面。][2]
+![[監視-計量 () 預覽] 頁面的螢幕擷取畫面，已篩選為實體的範圍。][2]
 
 如需支援維度的計量，您必須使用所需的維度值來進行篩選。
 
@@ -80,7 +80,7 @@ Azure 監視器上的計量和警示會按每項警示計費。 當警示已設�
 | 活動訊息| 佇列/主題中的作用中訊息計數。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/> 維度：機構名稱 |
 | 無效訊息| 佇列/主題中的無效訊息計數。 <br/><br/> 單位：Count <br/> 彙總類型：Average <br/>維度：機構名稱 |
 | 排定的訊息| 佇列/主題中排程的訊息計數。 <br/><br/> 單位：Count <br/> 彙總類型：Average  <br/> 維度：機構名稱 |
-| Size | 實體（佇列或主題）的大小（以位元組為單位）。 <br/><br/>單位：Count <br/>彙總類型：Average <br/>維度：機構名稱 | 
+| 大小 | 實體 (佇列或主題的大小，以位元組為單位) 。 <br/><br/>單位：Count <br/>彙總類型：Average <br/>維度：機構名稱 | 
 
 > [!NOTE]
 > 下列計量值為時間點的值。 在該時間點之後立即取用的傳入訊息可能不會反映在這些計量中。 
@@ -128,7 +128,7 @@ Azure 服務匯流排支援下列的 Azure 監視器計量維度。 將維度新
     1. 針對 [依資源類型篩選] 欄位，選取 [服務匯流排命名空間]。 
     2. 針對 [依訂用帳戶篩選]  欄位，選取您的訂用帳戶。
     3. 從清單中選取 [服務匯流排命名空間]。 
-    4. 選取 [完成]。 
+    4. 選取 [完成] 。 
     
         ![選取命名空間](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. 選取 [新增準則]，然後在 [設定訊號邏輯] 頁面上執行下列動作：
@@ -169,9 +169,7 @@ Azure 服務匯流排支援下列的 Azure 監視器計量維度。 將維度新
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱 [Azure 監視器概觀](../monitoring-and-diagnostics/monitoring-overview.md)。
+請參閱 [Azure 監視器概觀](../azure-monitor/overview.md)。
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png
-
-

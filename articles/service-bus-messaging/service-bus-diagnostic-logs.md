@@ -3,12 +3,12 @@ title: Azure 服務匯流排診斷記錄 |Microsoft Docs
 description: 本文概述可用於 Azure 服務匯流排的所有操作和診斷記錄。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337537"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064429"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>啟用服務匯流排的診斷記錄
 
@@ -18,14 +18,14 @@ Azure 服務匯流排目前支援「活動」和「作業記錄」，其會捕�
 
 ## <a name="operational-logs-schema"></a>作業記錄結構描述
 
-所有記錄都會以 JavaScript 物件標記法（JSON）格式儲存在下列兩個位置中：
+所有記錄都會以 JavaScript 物件標記法 (JSON) 格式儲存在下列兩個位置：
 
 - **AzureActivity**：顯示作業的記錄，以及針對 Azure 入口網站中的命名空間或透過 Azure Resource Manager 範本部署進行的動作。
 - **AzureDiagnostics**：使用 API 或透過語言 SDK 上的管理用戶端，顯示針對您的命名空間進行的作業和動作的記錄。
 
 作業記錄 JSON 字串包括下表所列的元素：
 
-| Name | 描述 |
+| 名稱 | 描述 |
 | ------- | ------- |
 | ActivityId | 內部識別碼，用來識別指定的活動 |
 | EventName | 作業名稱 |
@@ -34,7 +34,7 @@ Azure 服務匯流排目前支援「活動」和「作業記錄」，其會捕�
 | EventTimeString | 作業時間 |
 | EventProperties | 作業屬性 |
 | 狀態 | 作業狀態 |
-| 呼叫者 | 作業的呼叫者（Azure 入口網站或管理用戶端） |
+| 呼叫者 | Azure 入口網站或管理用戶端 (作業的呼叫者)  |
 | 類別 | OperationalLogs |
 
 以下是作業記錄 JSON 字串的範例：
@@ -62,7 +62,7 @@ Azure 服務匯流排目前支援「活動」和「作業記錄」，其會捕�
 
 下列管理作業會在操作記錄中加以捕捉： 
 
-| 影響範圍 | 操作|
+| 影響範圍 | 作業|
 |-------| -------- |
 | 命名空間 | <ul> <li> 建立命名空間</li> <li> 更新命名空間 </li> <li> 刪除命名空間 </li> <li> 更新命名空間 Win2k3 sharedaccess 原則 </li> </ul> | 
 | 佇列 | <ul> <li> 建立佇列</li> <li> 更新佇列</li> <li> 刪除佇列 </li> <li> AutoDelete 刪除佇列 </li> </ul> | 
@@ -101,7 +101,7 @@ Azure 服務匯流排目前支援「活動」和「作業記錄」，其會捕�
 
 新的設定會在大約10分鐘內生效。 記錄會顯示在 [**診斷記錄**] 窗格中設定的封存目標中。
 
-如需有關設定診斷設定的詳細資訊，請參閱[Azure 診斷記錄的總覽](../azure-monitor/platform/diagnostic-logs-overview.md)。
+如需有關設定診斷設定的詳細資訊，請參閱[Azure 診斷記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: Azure 服務匯流排和事件中樞的 AMQP 1.0 通訊協定指南 | Mic
 description: Azure 服務匯流排和事件中樞的 AMQP 1.0 運算式和說明的通訊協定指南
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511308"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064531"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服務匯流排和事件中樞的 AMQP 1.0 通訊協定指南
 
@@ -73,11 +73,11 @@ Azure 服務匯流排目前只對每個連線使用一個工作階段。 服務�
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP 輸出埠需求
 
-透過 TCP 使用 AMQP 連接的用戶端需要在本機防火牆中開啟埠5671和5672。 除了這些埠，如果啟用[EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet)功能，可能需要開啟其他埠。 `EnableLinkRedirect`是新的訊息功能，可協助在接收訊息時略過一個躍點，因而有助於提升輸送量。 用戶端會開始透過埠範圍104XX 直接與後端服務進行通訊，如下圖所示。 
+透過 TCP 使用 AMQP 連接的用戶端需要在本機防火牆中開啟埠5671和5672。 除了這些埠，如果啟用[EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet)功能，可能需要開啟其他埠。 `EnableLinkRedirect`是新的訊息功能，可協助在接收訊息時略過一個躍點，因而有助於提升輸送量。 用戶端會開始透過埠範圍104XX 直接與後端服務進行通訊，如下圖所示。 
 
 ![目的地埠的清單][4]
 
-如果防火牆封鎖了這些埠，.NET 用戶端將會失敗並出現 SocketException （「嘗試以其存取權限禁止存取通訊端」）。 您可以藉由在連接字串中設定來停用此功能 `EnableAmqpLinkRedirect=false` ，這會強制用戶端透過埠5671與遠端服務進行通訊。
+.NET 用戶端會失敗並出現 SocketException ( 「嘗試以其存取權限禁止的方式存取通訊端」 ) 如果防火牆封鎖了這些埠。 您可以藉由在連接字串中設定來停用此功能 `EnableAmqpLinkRedirect=false` ，這會強制用戶端透過埠5671與遠端服務進行通訊。
 
 
 ### <a name="links"></a>連結
@@ -120,7 +120,7 @@ AMQP 1.0 規格會定義稱為「已接收」** 的進一步處置狀態稱，�
 
 除了先前討論過的工作階段層級流量控制模型以外，每個連結都有自己的流量控制模型。 工作階段層級流量控制可防止容器必須一次處理太多框架，連結層級流量控制會讓應用程式負責控制它想要從連結處理的訊息數目以及時機。
 
-![記錄檔的螢幕擷取畫面，其中顯示來源、目的地、來源埠、目的地埠和通訊協定名稱。 在 fiest 資料列中，目的地通訊埠10401（0x28 A 1）會以黑色來概述。][4]
+![記錄檔的螢幕擷取畫面，其中顯示來源、目的地、來源埠、目的地埠和通訊協定名稱。 在 fiest 資料列中，目的地埠 10401 (0x28 會以黑色概述 1) 。][4]
 
 在連結上，只有在寄件者擁有足夠的*連結信用額度*時，才會進行傳輸。 連結信用額度是接收者使用「流程」** 展演所設定的計數器，其範圍是連結。 將連結信用額度指派給傳送者時，將會藉由傳遞訊息來嘗試用完該信用額度。 每個訊息傳遞會使剩餘的連結信用額外遞減 1。 當連結信用額度用完時，便會停止傳遞。
 
@@ -208,7 +208,7 @@ AMQP 1.0 規格會定義稱為「已接收」** 的進一步處置狀態稱，�
 
 #### <a name="header"></a>header
 
-| 欄位名稱 | 使用量 | API 名稱 |
+| 欄位名稱 | 使用方式 | API 名稱 |
 | --- | --- | --- |
 | 持久 |- |- |
 | priority |- |- |
@@ -218,7 +218,7 @@ AMQP 1.0 規格會定義稱為「已接收」** 的進一步處置狀態稱，�
 
 #### <a name="properties"></a>properties
 
-| 欄位名稱 | 使用量 | API 名稱 |
+| 欄位名稱 | 使用方式 | API 名稱 |
 | --- | --- | --- |
 | message-id |應用程式為此訊息定義的自由格式識別碼。 用於重複偵測。 |[Id](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |應用程式定義的使用者識別碼，服務匯流排無法加以解譯。 |無法透過服務匯流排 API 存取。 |
@@ -238,7 +238,7 @@ AMQP 1.0 規格會定義稱為「已接收」** 的進一步處置狀態稱，�
 
 有幾個其他服務匯流排訊息屬性不屬於 AMQP 訊息屬性，而且會隨著 `MessageAnnotations` 在訊息上傳遞。
 
-| 註解對應索引鍵 | 使用量 | API 名稱 |
+| 註解對應索引鍵 | 使用方式 | API 名稱 |
 | --- | --- | --- |
 | x-opt-scheduled-enqueue-time | 宣告訊息應出現在實體上的時間 |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
 | x-opt-partition-key | 應用程式定義的索引鍵，指出訊息應落在哪個資料分割中。 | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
@@ -357,16 +357,16 @@ CBS 會定義由傳訊基礎結構所提供的虛擬管理節點 (名為 *$cbs*)
 
 要求訊息具有下列應用程式屬性︰
 
-| 索引鍵 | 選擇性 | 數值類型 | 值內容 |
+| 答案 | 選擇性 | 數值類型 | 值內容 |
 | --- | --- | --- | --- |
 | operation (作業) |否 |字串 |**put-token** |
-| type |否 |字串 |正在放置的權杖類型。 |
+| 類型 |否 |字串 |正在放置的權杖類型。 |
 | NAME |否 |字串 |套用權杖的「對象」。 |
 | expiration |是 |timestamp |權杖的到期時間。 |
 
 *name* 屬性會識別應與權杖相關聯的實體。 在服務匯流排中，這是佇列或主題/訂用帳戶的路徑。 *type* 屬性會識別權杖類型︰
 
-| 權杖類型 | 權杖描述 | 主體類型 | 備忘稿 |
+| 權杖類型 | 權杖描述 | 主體類型 | 備註 |
 | --- | --- | --- | --- |
 | amqp:jwt |JSON Web 權杖 (JWT) |AMQP 值 (字串) |尚未提供。 |
 | amqp:swt |簡單 Web 權杖 (SWT) |AMQP 值 (字串) |僅支援 AAD/ACS 所簽發的 SWT 權杖 |
@@ -376,7 +376,7 @@ CBS 會定義由傳訊基礎結構所提供的虛擬管理節點 (名為 *$cbs*)
 
 回覆訊息具有下列 *application-properties* 值
 
-| 索引鍵 | 選擇性 | 數值類型 | 值內容 |
+| 答案 | 選擇性 | 數值類型 | 值內容 |
 | --- | --- | --- | --- |
 | status-code |否 |int |HTTP 回應碼 **[RFC2616]**。 |
 | status-description |是 |字串 |狀態的描述。 |
@@ -419,5 +419,5 @@ CBS 會定義由傳訊基礎結構所提供的虛擬管理節點 (名為 *$cbs*)
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
 [服務匯流排 AMQP 概觀]: service-bus-amqp-overview.md
-[適用於服務匯流排分割的佇列和主題的 AMQP 1.0 支援]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[Windows Server 服務匯流排中的 AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+[適用於服務匯流排分割的佇列和主題的 AMQP 1.0 支援]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

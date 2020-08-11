@@ -3,12 +3,12 @@ title: 搭配服務匯流排之 Azure 資源的受控識別
 description: 本文說明如何使用受控識別，以 Azure 服務匯流排實體 (佇列、主題和訂用帳戶) 來存取。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a3458d7d160317e383da6217252e3dd7ed52e90f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: b33f4e9b38d55ef3ed709df8d09f1ffd62a8bca8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008894"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066282"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取 Azure 服務匯流排資源
 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)是一個跨 Azure 功能，可讓您建立與應用程式程式碼執行所在之部署相關聯的安全識別。 然後您可以將該識別與存取控制角色產生關連，該角色會授與用來存取應用程式所需之特定 Azure 資源的自訂權限。
@@ -65,7 +65,7 @@ Azure Active Directory (Azure AD) 會透過 azure [RBAC () 以角色為基礎的
 ## <a name="enable-managed-identities-on-a-vm"></a>在 VM 上啟用受控識別
 您必須先在 VM 上啟用 Azure 資源的受控識別，才可以使用 Azure 資源的受控識別來授權 VM 的服務匯流排資源。 若要了解如何啟用 Azure 資源的受控識別，請參閱下列其中一篇文章：
 
-- [Azure 入口網站](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure 入口網站](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager 範本](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)

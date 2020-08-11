@@ -3,12 +3,12 @@ title: 建立分割的 Azure 服務匯流排佇列和主題 | Microsoft Docs
 description: 說明如何使用多個訊息代理程式分割服務匯流排佇列和主題。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6ea0bee255f489355056f91d82195382153786bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c43d8d560ddede021b70b0cdc167f42052904b0b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339641"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064854"
 ---
 # <a name="partitioned-queues-and-topics"></a>分割的佇列和主題
 
@@ -35,7 +35,7 @@ Azure 服務匯流排會採用多個訊息代理人來處理訊息，並採用�
 
 ### <a name="standard"></a>標準
 
-在標準傳訊層中，您可以建立 1、2、3、4 或 5 GB 大小的服務匯流排佇列和主題 (預設值為 1 GB)。 啟用分割時，服務匯流排會建立實體的16個複本（16個數據分割），每個都指定相同的大小。 因此，如果您建立 5 GB 大小的佇列，每 GB 有 16 個資料分割，則佇列大小上限會變成 (5 \* 16) = 80 GB。 如果要查看分割佇列或主題的大小上限，您可以在 [Azure 入口網站][Azure portal]上，在該實體的 [概觀]**** 刀鋒視窗中檢視其項目。
+在標準傳訊層中，您可以建立 1、2、3、4 或 5 GB 大小的服務匯流排佇列和主題 (預設值為 1 GB)。 啟用分割時，服務匯流排會建立16個複本 (16 個磁碟分割) 實體，每個都指定相同的大小。 因此，如果您建立 5 GB 大小的佇列，每 GB 有 16 個資料分割，則佇列大小上限會變成 (5 \* 16) = 80 GB。 如果要查看分割佇列或主題的大小上限，您可以在 [Azure 入口網站][Azure portal]上，在該實體的 [概觀]**** 刀鋒視窗中檢視其項目。
 
 ### <a name="premium"></a>Premium
 
@@ -69,7 +69,7 @@ ns.CreateTopic(td);
 
 **PartitionKey**：若訊息已設定 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性而非 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 屬性，則服務匯流排會使用 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性做為分割區索引鍵。 如果訊息已設定 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 和 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性，這兩個屬性必須相同。 如果 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性設為和 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 屬性不同的值，服務匯流排會傳回無效作業例外狀況。 如果傳送者傳送非工作階段感知的交易訊息，應使用 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性。 分割索引鍵可確保在交易內傳送的所有訊息都由相同的訊息代理人處理。
 
-**MessageId**：如果佇列或主題已將 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 屬性設為 **true**，且未設定 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 或 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性，則 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 屬性值可做為分割區索引鍵。 （如果傳送應用程式沒有，Microsoft .NET 和 AMQP 程式庫會自動指派訊息識別碼）。在此情況下，相同訊息的所有複本都會由相同的訊息代理程式處理。 此識別碼可讓服務匯流排偵測並排除重複的訊息。 如果 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 屬性未設為 **true**，服務匯流排不會將 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 屬性視為分割區索引鍵。
+**MessageId**：如果佇列或主題已將 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 屬性設為 **true**，且未設定 [SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid) 或 [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) 屬性，則 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 屬性值可做為分割區索引鍵。  (Microsoft .NET 和 AMQP 程式庫會在傳送應用程式不會自動指派訊息識別碼。 ) 在此情況下，相同訊息的所有複本都會由相同的訊息代理程式處理。 此識別碼可讓服務匯流排偵測並排除重複的訊息。 如果 [RequiresDuplicateDetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) 屬性未設為 **true**，服務匯流排不會將 [MessageId](/dotnet/api/microsoft.azure.servicebus.message.messageid) 屬性視為分割區索引鍵。
 
 ### <a name="not-using-a-partition-key"></a>不使用分割索引鍵
 
@@ -149,4 +149,4 @@ committableTransaction.Commit();
 [QueueDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
 [TopicDescription.EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablepartitioning
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto
-[AMQP 1.0 support for Service Bus partitioned queues and topics]: service-bus-partitioned-queues-and-topics-amqp-overview.md
+[AMQP 1.0 support for Service Bus partitioned queues and topics]: ./service-bus-amqp-protocol-guide.md

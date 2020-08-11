@@ -3,12 +3,12 @@ title: 設定 Azure 服務匯流排的 IP 防火牆規則
 description: 如何使用「防火牆規則」允許從特定 IP 位址連線至「Azure 服務匯流排」。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e9b39f1b163a894bf4831662ac050463086133d5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 699ece2e78ff0605ff4076b09c023d14e289b1f7
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552912"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064633"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-ip-addresses-or-ranges"></a>允許從特定 IP 位址或範圍存取 Azure 服務匯流排命名空間
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取服務匯流排命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
@@ -164,4 +164,4 @@ IP 防火牆規則會套用在服務匯流排命名空間層級上。 因此，�
 
 [lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [lnk-vnet]: service-bus-service-endpoints.md
-[express-route]:  /azure/expressroute/expressroute-faqs#supported-services
+[express-route]:  ../expressroute/expressroute-faqs.md#supported-services

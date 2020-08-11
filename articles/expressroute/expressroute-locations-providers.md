@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: e066f810dca9c1b824c5eb30bb9f938df856a819
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 6fb065e48b744a31bcce2ca3249d0d6bd0216049
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002705"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066418"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -88,7 +88,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **坎培拉2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | 澳大利亞中部 2| 10G、100G | CDC |
 | **開普敦** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | 南非西部 | 10G | BCX、Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
 | **辰內** | Tata Communications | 2 | 印度南部 | 10G | Global CloudXchange (GCX)、SIFY、Tata Communications |
-| **辰內2** | Airtel | 2 | 印度南部 | n/a | Airtel |
+| **辰內2** | Airtel | 2 | 印度南部 | 10G | Airtel |
 | **芝加哥** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | 1 | 美國中北部 | 10G、100G | Aryaka Networks、AT&T NetBond、CenturyLink Cloud ConnectCologix、Comcast、ColtCoresite、Equinix、InterCloud、Internet2、Level 3 Communications、Megaport、PacketFabric、PCCW Global Limited、Sprint、Telia Carrier、Verizon、Zayo |
 | **哥本哈根** | [Interxion CPH1](https://www.interxion.com/Locations/copenhagen/) | 1 | n/a | 10G | Interxion |
 | **達拉斯** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | n/a | 10G、100G | Aryaka Networks、AT&T NetBond、Cologix、Equinix、Internet2、Level 3 Communications、Megaport、Neutrona Networks、Telmex Uninet、Telia Carrier、Transtelco、Verizon、Zayo|
@@ -115,7 +115,7 @@ ExpressRoute 位置 (有時稱為對等互連位置或 meet-me-locations) 是 Mi
 | **Minneapolis** | [Cologix MIN1](https://www.cologix.com/data-centers/minneapolis/min1/) | 1 | n/a | 10G、100G | Cologix |
 | **蒙特婁** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | n/a | 10G、100G | Bell Canada、Cologix、Megaport、Telus、Zayo |
 | **孟買** | Tata Communications | 2 | 印度西部 | 10G | CIX、Global CloudXchange (GCX) 、依賴 Jio、Sify、Tata 通訊、Verizon |
-| **孟買2** | Airtel | 2 | 印度西部 | n/a | Airtel、Sify、Vodafone Idea |
+| **孟買2** | Airtel | 2 | 印度西部 | 10G | Airtel、Sify、Vodafone Idea |
 | **幕尼黑** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | n/a | 10G | DE-CIX |
 | **紐約** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | n/a | 10G、100G | CenturyLink Cloud Connect、Colt、Coresite、DE CIX、Equinix、InterCloud、Megaport、Packet、Zayo |
 | **Newport(Wales)** | [新一代資料](https://www.nextgenerationdata.co.uk) | 1 | 英國西部 | n/a | British Telecom、Colt、Level 3 Communications、Next Generation Data |

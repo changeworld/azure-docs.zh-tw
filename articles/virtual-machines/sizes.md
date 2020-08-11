@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 65b4bf5e8a681bea36ab381771a2843ac1d1fbe4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 234156186d045e21cc01cc4b407408f98268c790
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827617"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065466"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Azure 中的虛擬機器大小
 
@@ -25,7 +25,7 @@ ms.locfileid: "87827617"
 | [計算最佳化](sizes-compute.md) | F、Fs、Fsv2 | CPU 與記憶體的比例高。 適用於中流量 Web 伺服器、網路設備、批次處理，以及應用程式伺服器。 |
 | [記憶體最佳化](sizes-memory.md) | Esv3、Ev3、Easv4、Eav4、Ev4、Esv4、Edv4、Edsv4、Mv2、M、DSv2、Dv2 | 記憶體與 CPU 的比例高。 適用於關聯式資料庫伺服器、中型至大型快取，以及記憶體內部分析。                 |
 | [儲存體最佳化](sizes-storage.md) | Lsv2 | 較高的磁碟輸送量和 IO 適用於巨量資料、SQL、NoSQL 資料庫、資料倉儲和大型交易資料庫。  |
-| [GPU](sizes-gpu.md) | NC、NCv2、NCv3、ND、NDv2 (預覽)、NV、NVv3、NVv4 | 特製化的虛擬機器，其目標是大量的圖形轉譯和視訊編輯，以及搭配深入學習運作的模型訓練和推斷 (ND)。 有單一或多個 GPU 可供使用。 |
+| [GPU](sizes-gpu.md) | NC、NCv2、NCv3、NCasT4_v3 (Preview) 、ND、NDv2 (Preview) 、NV、NVv3、NVv4 | 特製化的虛擬機器，其目標是大量的圖形轉譯和視訊編輯，以及搭配深入學習運作的模型訓練和推斷 (ND)。 有單一或多個 GPU 可供使用。 |
 | [高效能計算](sizes-hpc.md) | HB、HBv2、HC、H | 速度最快、功能最強的 CPU 虛擬機器，搭載選配的高輸送量網路介面 (RDMA)。 |
 
 - 如需各種大小的價格資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)或[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)的定價頁面。

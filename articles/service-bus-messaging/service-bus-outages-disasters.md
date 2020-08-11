@@ -3,12 +3,12 @@ title: 將 Azure 服務匯流排應用程式與中斷和災難隔離
 description: 這篇文章提供保護應用程式免于潛在 Azure 服務匯流排中斷的技術。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e6dba5e6cf4700dfab354a434ac4d48f9a95b76a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339654"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065619"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>將應用程式與服務匯流排中斷和災難隔絕的最佳做法
 
@@ -23,11 +23,11 @@ ms.locfileid: "85339654"
 
 ### <a name="geo-disaster-recovery"></a>異地災害復原
 
-「服務匯流排進階層」支援命名空間層級的異地災害復原。 如需詳細資訊，請參閱[Azure 服務匯流排異地](service-bus-geo-dr.md)嚴重損壞修復。 災害復原功能僅適用於[進階 SKU](service-bus-premium-messaging.md)，其會實作中繼資料災害復原，並依賴主要和次要災害復原命名空間。
+「服務匯流排進階層」支援命名空間層級的異地災害復原。 如需詳細資訊，請參閱 [Azure 服務匯流排地理災害復原](service-bus-geo-dr.md)。 災害復原功能僅適用於[進階 SKU](service-bus-premium-messaging.md)，其會實作中繼資料災害復原，並依賴主要和次要災害復原命名空間。
 
 ### <a name="availability-zones"></a>可用性區域
 
-「服務匯流排進階 SKU」支援[可用性區域](../availability-zones/az-overview.md)，可在 Azure 區域內提供錯誤隔離位置。 服務匯流排管理訊息存放區的三個複本（1個主要和2個次要）。 服務匯流排會將三個複本保持同步，以進行資料和管理作業。 如果主要複本失敗，其中一個次要複本會升級為主要複本，而不會察覺到停機時間。 如果應用程式看到暫時性中斷與服務匯流排的連線，SDK 中的重試邏輯會自動重新連線到服務匯流排。 
+「服務匯流排進階 SKU」支援[可用性區域](../availability-zones/az-overview.md)，可在 Azure 區域內提供錯誤隔離位置。 服務匯流排管理訊息存放區的三個複本， (1 個主要和2個次要) 。 服務匯流排會將三個複本保持同步，以進行資料和管理作業。 如果主要複本失敗，其中一個次要複本會升級為主要複本，而不會察覺到停機時間。 如果應用程式看到暫時性中斷與服務匯流排的連線，SDK 中的重試邏輯會自動重新連線到服務匯流排。 
 
 > [!NOTE]
 > 「Azure 服務匯流排進階層」的「可用性區域」支援僅適用於有可用性區域存在的 [Azure 區域](../availability-zones/az-region.md)。
@@ -45,7 +45,7 @@ ms.locfileid: "85339654"
 
 如果應用程式不需要永久的傳送者至接收者通訊，應用程式可以實作持續的用戶端佇列，以防止訊息遺失並避免傳送者發生任何暫時性服務匯流排錯誤。
 
-### <a name="active-replication"></a>主動複寫
+### <a name="active-replication"></a>主動式複寫
 主動複寫會針對每個作業使用兩個命名空間中的實體。 傳送訊息的任何用戶端會傳送相同訊息的兩個複本。 第一個複本傳送至主要實體 (例如，**contosoPrimary.servicebus.windows.net/sales**)，而訊息的第二個複本傳送至次要實體 (例如，**contosoSecondary.servicebus.windows.net/sales**)。
 
 用戶端會從這兩個佇列接收訊息。 接收者會處理訊息的第一個複本，並隱藏第二個複本。 若要隱藏重複的訊息，傳送者必須利用唯一的識別碼標記每個訊息。 訊息的兩個複本必須以相同的識別碼標記。 您可以使用 [BrokeredMessage.MessageId][BrokeredMessage.MessageId]、[BrokeredMessage.Label][BrokeredMessage.Label] 屬性或自訂屬性來標記訊息。 接收者必須維護其已收到的訊息清單。
@@ -57,7 +57,7 @@ ms.locfileid: "85339654"
 > 
 > 
 
-### <a name="passive-replication"></a>被動複寫
+### <a name="passive-replication"></a>被動式複寫
 在沒有錯誤的情況下，被動複寫只會使用兩個訊息實體的其中之一。 用戶端會傳送訊息至作用中的實體。 如果作用中實體上的作業失敗，並出現錯誤碼指出裝載作用中實體的資料中心可能會無法使用，用戶端會傳送訊息的複本至備份實體。 作用中和備份實體會在這一點交換角色：傳送用戶端會將舊的使用中實體視為新的備份實體，而將舊的備份實體視為新的作用中實體。 如果這兩個傳送作業都失敗，兩個實體的角色會保持不變並傳回錯誤。
 
 用戶端會從這兩個佇列接收訊息。 因為接收者可能會收到相同訊息的兩個複本，所以接收者必須隱藏重複的訊息。 您可以主動複寫所描述的相同方式隱藏重複訊息。
@@ -72,7 +72,7 @@ ms.locfileid: "85339654"
 [搭配服務匯流排標準層的異地複寫][Geo-replication with Service Bus Standard Tier] \(英文\) 範例示範傳訊實體的被動複寫。
 
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>保護轉送端點免於發生資料中心中斷或災害
-[Azure 轉送](../service-bus-relay/relay-what-is-it.md)端點的異地複寫可讓公開轉送端點的服務在發生服務匯流排中斷時可連線。 若要達到異地複寫，服務必須在不同的命名空間中建立兩個轉送端點。 命名空間必須位於不同的資料中心而兩個端點必須具有不同的名稱。 例如，可在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下找到主要端點，並在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下找到其次要的對應項目。
+[Azure 轉送](../azure-relay/relay-what-is-it.md)端點的異地複寫可讓公開轉送端點的服務在發生服務匯流排中斷時可連線。 若要達到異地複寫，服務必須在不同的命名空間中建立兩個轉送端點。 命名空間必須位於不同的資料中心而兩個端點必須具有不同的名稱。 例如，可在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下找到主要端點，並在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下找到其次要的對應項目。
 
 然後服務會接聽這兩個端點，且用戶端可以透過任一端點叫用服務。 用戶端應用程式會隨機挑選其中一個轉送做為主要端點，並將其要求傳送至作用中的端點。 如果作業失敗並出現錯誤代碼，此失敗代表轉送端點無法使用。 應用程式會開啟備份端點的通道並重新發出要求。 作用中和備份端點會在這一點交換角色：用戶端應用程式會將舊的使用中端點視為新的備份端點，而將舊的備份端點視為新的作用中端點。 如果這兩個傳送作業都失敗，兩個實體的角色會保持不變並傳回錯誤。
 

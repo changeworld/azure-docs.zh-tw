@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae598fb9e4018369230de5fadcf173a3df9fb4c
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 09050bc6895076994baf1c98c65aa87672a5652e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551688"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066061"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -545,11 +545,11 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.directory/appRoleAssignments/update | 更新在 Azure Active Directory 中的 appRoleAssignments。 |
 | microsoft.directory/appRoleAssignments/delete | 刪除 Azure Active Directory 中的 appRoleAssignments。 |
 | microsoft.directory/auditLogs/allProperties/read | 讀取 Azure Active Directory 中的 auditLogs 所包含的所有屬性 (包括特殊權限的屬性)。 |
-| microsoft.directory/connectorGroups/everything/read | 讀取 Azure Active Directory 中的應用程式 Proxy 連接器群組屬性。 |
-| microsoft.directory/connectorGroups/everything/update | 更新 Azure Active Directory 中的所有應用程式 Proxy 連接器群組屬性。 |
+| microsoft 目錄/connectorGroups/allProperties/read | 讀取 Azure Active Directory 中的應用程式 Proxy 連接器群組屬性。 |
+| microsoft directory/connectorGroups/allProperties/update | 更新 Azure Active Directory 中的所有應用程式 Proxy 連接器群組屬性。 |
 | microsoft.directory/connectorGroups/create | 在 Azure Active Directory 中建立應用程式 Proxy 連接器群組。 |
 | microsoft.directory/connectorGroups/delete | 刪除 Azure Active Directory 中的應用程式 Proxy 連接器群組。 |
-| microsoft.directory/connectors/everything/read | 讀取 Azure Active Directory 中的所有應用程式 Proxy 連接器屬性。 |
+| microsoft 目錄/連接器/allProperties/讀取 | 讀取 Azure Active Directory 中的所有應用程式 Proxy 連接器屬性。 |
 | microsoft.directory/connectors/create | 在 Azure Active Directory 中建立應用程式 Proxy 連接器。 |
 | microsoft.directory/policies/applicationConfiguration/basic/read | 讀取 Azure Active Directory 中的 policies.applicationConfiguration 屬性。 |
 | microsoft.directory/policies/applicationConfiguration/basic/update | 更新 Azure Active Directory 中的 policies.applicationConfiguration 屬性。 |
@@ -1426,7 +1426,6 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.office365.messageCenter/messages/read | 讀取 microsoft.office365.messageCenter 中的訊息。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
-| microsoft.office365.usageReports/allEntities/read | 讀取 Office 365 使用量報告。 |
 | microsoft.office365.userCommunication/allEntities/allTasks | 讀取及更新新功能訊息的顯示設定。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 

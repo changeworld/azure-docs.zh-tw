@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ffbd23dccd7bac03e849241866416ac07af4a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5734cb76e4ed018778c6858597ec8efe3019bf9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035412"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065976"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>使用 Azure Active Directory 智慧鎖定保護使用者帳戶免于遭受攻擊
 
@@ -24,7 +24,7 @@ ms.locfileid: "87035412"
 
 ## <a name="how-smart-lockout-works"></a>智慧鎖定的運作方式
 
-根據預設，智慧鎖定會在 10 次失敗嘗試後鎖定帳戶，使其無法嘗試登入一分鐘。 在每次後續登入嘗試失敗之後，帳戶會再次鎖定，先鎖定一分鐘，後續嘗試鎖定時間會更長。
+根據預設，智慧鎖定會在 10 次失敗嘗試後鎖定帳戶，使其無法嘗試登入一分鐘。 在每次後續登入嘗試失敗之後，帳戶會再次鎖定，先鎖定一分鐘，後續嘗試鎖定時間會更長。 為了將攻擊者解決此行為的方式降到最低，我們不會洩漏鎖定期間超過額外登入嘗試失敗的速率。
 
 智慧鎖定會追蹤最後三個不正確的密碼雜湊，以避免因為相同密碼而累計鎖定計數器。 如果有人多次輸入相同的錯誤密碼，此行為就不會造成帳戶鎖定。
 
@@ -37,20 +37,20 @@ ms.locfileid: "87035412"
 
 使用智慧鎖定並不保證真正的使用者永遠不會遭到鎖定。當智慧鎖定鎖定使用者帳戶時，我們會嘗試我們的最佳做法，不要鎖定真正的使用者。 鎖定服務會嘗試確保不良的執行者無法取得正版使用者帳戶的存取權。 您必須考量下列事項：
 
-* 每個 Azure AD 資料中心都會獨立追蹤鎖定。 如果使用者按下每個資料中心，則使用者具有（*threshold_limit * datacenter_count*）嘗試次數。
+* 每個 Azure AD 資料中心都會獨立追蹤鎖定。 如果使用者按下每個資料中心，使用者會 (*threshold_limit datacenter_count **) 嘗試次數。
 * 智慧鎖定會使用熟悉的位置與不熟悉的位置來區分實際使用者與不良執行者。 不熟悉和熟悉的位置都有不同的鎖定計數器。
 
-智慧鎖定可以與使用密碼雜湊同步處理或傳遞驗證的混合式部署整合，以保護內部部署 Active Directory Domain Services （AD DS）帳戶免于遭到攻擊者鎖定。 藉由在 Azure AD 中適當地設定智慧鎖定原則，可以先將攻擊篩選掉，然後才會進入內部部署 AD DS。
+智慧鎖定可以與使用密碼雜湊同步處理或傳遞驗證的混合式部署整合，以保護內部部署 Active Directory Domain Services (AD DS) 的帳戶遭到攻擊者鎖定。 藉由在 Azure AD 中適當地設定智慧鎖定原則，可以先將攻擊篩選掉，然後才會進入內部部署 AD DS。
 
 使用[傳遞驗證](../hybrid/how-to-connect-pta.md)時，適用下列考慮事項：
 
 * Azure AD 鎖定閾值**低於**AD DS 帳戶鎖定閾值。 設定值，讓 AD DS 帳戶鎖定閾值至少比 Azure AD 鎖定閾值長二或三倍。
 * Azure AD 的鎖定持續時間必須設定超過持續時間後的 AD DS 重設帳戶鎖定計數器。 Azure AD 持續時間是以秒為單位設定，而 AD 持續時間設定為分鐘。
 
-例如，如果您想要 Azure AD 計數器高於 AD DS，則當您的內部部署 AD 設定為1分鐘（60秒）時，Azure AD 會是120秒（2分鐘）。
+例如，如果您想要 Azure AD 計數器高於 AD DS，則 Azure AD 會是120秒 (2 分鐘) 而您的內部部署 AD 會設定為1分鐘 (60 秒) 。
 
 > [!IMPORTANT]
-> 目前，如果使用者的雲端帳戶已被智慧鎖定功能鎖定，則系統管理員無法將其解除鎖定。 系統管理員必須等待鎖定持續期間結束。 不過，使用者可以使用來自受信任裝置或位置的自助式密碼重設（SSPR）來解除鎖定。
+> 目前，如果使用者的雲端帳戶已被智慧鎖定功能鎖定，則系統管理員無法將其解除鎖定。 系統管理員必須等待鎖定持續期間結束。 不過，使用者可以使用自助式密碼重設來解除鎖定， (SSPR) 來自受信任的裝置或位置。
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>驗證內部部署帳戶鎖定原則
 

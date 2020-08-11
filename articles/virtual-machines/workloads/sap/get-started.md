@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a882e3a21d5e1e99f6f9154fd2162071752b4499
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6151bb915298cc4f771b6d49628f39c8d27b62b4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800343"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064361"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -45,6 +45,7 @@ ms.locfileid: "87800343"
     - [HANA 大型執行個體的支援案例](./hana-supported-scenario.md) \(部分機器翻譯\)
 - 若要了解在不同的 Azure 區域中，可以使用哪些 Azure 服務、Azure VM 類型及 Azure 儲存體服務，請參閱[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)網站 
 - 協力廠商 HA 框架是否可運作，除了支援 Windows 和 Pacemaker 之外？ 查看[SAP 支援附注](https://launchpad.support.sap.com/#/notes/1928533)的下半部 #1928533
+- 哪一個 Azure 儲存體最適合我的案例？ 閱讀[SAP 工作負載的 Azure 儲存體類型](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (大型執行個體)
@@ -59,23 +60,7 @@ ms.locfileid: "87800343"
  
 
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>在 Azure 虛擬機器上部署的 SAP NetWeaver
-此節會列出 Azure 上的 SAP NetWeaver 和 Business One 的規劃和部署文件。 文件會專注在於 Azure 上搭配 SAP 工作負載之非 HANA 資料庫的基本概念及使用方式。 針對高可用性的文件和文章，也是 Azure 中 HANA 高可用性的基礎，例如：
-
-- [Azure 計劃指南](./planning-guide.md) \(部分機器翻譯\)。 
-- [Azure 虛擬機器上的 SAP Business One](./business-one-azure.md) \(部分機器翻譯\)
-- [使用 Site Recovery 保護多層式 SAP NetWeaver 應用程式部署](../../../site-recovery/site-recovery-sap.md) \(部分機器翻譯\)
-- [適用於 Azure 的 SAP LaMa 連接器](./lama-installation.md)
-
-如需 Azure 上 SAP 工作負載底下之非 HANA 資料庫的相關資訊，請參閱：
-
-- [適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量](./dbms_guide_general.md)
-- [適用於 SAP NetWeaver 的 SQL Server Azure 虛擬機器 DBMS 部署](./dbms_guide_sqlserver.md)
-- [適用於 SAP 工作負載的 Oracle Azure 虛擬機器 DBMS 部署](./dbms_guide_oracle.md)
-- [適用於 SAP 工作負載的 IBM DB2 Azure 虛擬機器 DBMS 部署](./dbms_guide_ibm.md)
-- [適用於 SAP 工作負載的 SAP ASE Azure 虛擬機器 DBMS 部署](./dbms_guide_sapase.md)
-- [Azure VM 上的 SAP MaxDB、Live Cache 和 Content Server 部署](./dbms_guide_maxdb.md) \(部分機器翻譯\)
-
-針對 Azure 上 SAP HANA 資料庫的相關資訊，請參閱＜Azure 虛擬機器上的 SAP HANA＞一節。
+此節會列出 Azure 上的 SAP NetWeaver 和 Business One 的規劃和部署文件。 文件會專注在於 Azure 上搭配 SAP 工作負載之非 HANA 資料庫的基本概念及使用方式。 適用于高可用性的檔和文章也是 Azure 中 HANA 高可用性的基礎
 
 如需 Azure 上 SAP 工作負載之高可用性的相關資訊，請參閱：
 
@@ -104,6 +89,7 @@ ms.locfileid: "87800343"
 
 ## <a name="change-log"></a>變更記錄檔
 
+- 08/10/2020： [SAP Hana azure 虛擬機器儲存體](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)設定和在 azure 上對 SAP 工作負載進行一些更新，使成本上的 SAP Hana 儲存設定簡介[：規劃和部署檢查清單](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 - 08/04/2020：在 Azure 中的[SLES 上設定 Pacemaker](./high-availability-guide-suse-pacemaker.md) ，以及在[AZURE 中的 RHEL 上設定 Pacemaker](./high-availability-guide-rhel-pacemaker.md) ，以強調 Pacemaker 叢集的可靠名稱解析的重要性
 - 08/04/2020：在[WFCS 上使用檔案共用](./sap-high-availability-installation-wsfc-file-share.md)、 [sap NW ha on WFCS with shared disk](./sap-high-availability-installation-wsfc-shared-disk.md)、 [Ha For sap nw on azure vm](./high-availability-guide.md)、HA for sap Nw （在 SLES 上的[AZURE vm](./high-availability-guide-suse.md)）上變更 Sap Nw ha 適用于 sles 上的[AZURE vm 上具有及](./high-availability-guide-suse-netapp-files.md)、ha FOR sap nw 的 azure vm 上的 ha[多 sid 指南](./high-availability-guide-suse-multi-sid.md)、azure 上的 sap [NetWeaver 的高可用性適用于](./high-availability-guide-rhel.md)rhel 上的 Azure vm、sap 上的 ha （在 rhel 上使用[及](./high-availability-guide-rhel-netapp-files.md)和 ha）適用于 azure 上的 azure vm[上](./high-availability-guide-rhel-multi-sid.md)的 sap nw`enque/encni/set_so_keepalive`
 - 07/23/2020：已新增[儲存在 SAP Hana 大型實例上的 Azure 保留](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)文章，說明購買 SAP Hana 的大型實例保留之前，您需要知道的事項，以及如何進行購買

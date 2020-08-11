@@ -3,12 +3,12 @@ title: Azure 服務匯流排的疑難排解指南 |Microsoft Docs
 description: 本文提供在發生例外狀況時所要採取的 Azure 服務匯流排訊息例外狀況和建議的動作清單。
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 6071aae85daa1852c9384656d7caf5e2deffd84e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 822a97a230a8646ddadde21eedc6c23d5e3efbd6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071304"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067047"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>Azure 服務匯流排的疑難排解指南
 本文提供使用 Azure 服務匯流排時，您可能會看到的幾個問題的疑難排解秘訣和建議。 
@@ -34,7 +34,7 @@ ms.locfileid: "87071304"
         </Detail>
     </Error>
     ```
-- 執行下列命令，以檢查防火牆上是否有任何埠遭到封鎖。 使用的埠為443（HTTPS）、5671（AMQP）和9354（Net 訊息/SBMP）。 視您使用的程式庫而定，也會使用其他埠。 以下是檢查5671埠是否已封鎖的範例命令。 
+- 執行下列命令，以檢查防火牆上是否有任何埠遭到封鎖。 使用的埠為 443 (HTTPS) 、5671 (AMQP) 和 9354 (Net 訊息/SBMP) 。 視您使用的程式庫而定，也會使用其他埠。 以下是檢查5671埠是否已封鎖的範例命令。 
 
     ```powershell
     tnc <yournamespacename>.servicebus.windows.net -port 5671
@@ -64,7 +64,7 @@ ms.locfileid: "87071304"
 ### <a name="cause"></a>原因
 後端服務升級和重新開機，可能會在您的應用程式中造成這些問題。
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 如果應用程式程式碼使用 SDK，則重試原則已經內建且作用中。 應用程式會重新連線，而不會對應用程式/工作流程造成重大影響。
 
 ## <a name="unauthorized-access-send-claims-are-required"></a>未經授權的存取：需要傳送宣告
@@ -79,8 +79,8 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 ### <a name="cause"></a>原因
 身分識別沒有存取服務匯流排主題的許可權。 
 
-### <a name="resolution"></a>解決方案
-若要解決此錯誤，請安裝[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)程式庫。  如需詳細資訊，請參閱[本機開發驗證](..\key-vault\service-to-service-authentication.md#local-development-authentication)。 
+### <a name="resolution"></a>解決方法
+若要解決此錯誤，請安裝[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication/)程式庫。  如需詳細資訊，請參閱[本機開發驗證](../key-vault/general/service-to-service-authentication.md#local-development-authentication)。 
 
 若要瞭解如何將許可權指派給角色，請參閱[使用 Azure Active Directory 來驗證受控識別，以存取 Azure 服務匯流排資源](service-bus-managed-service-identity.md)。
 
@@ -94,12 +94,11 @@ Service Bus Error: Unauthorized access. 'Send' claim\(s\) are required to perfor
 ### <a name="cause"></a>原因
 使用服務匯流排命名空間的單一連接來傳送和接收訊息時，會使用權杖數目限制。 其為1000。 
 
-### <a name="resolution"></a>解決方案
+### <a name="resolution"></a>解決方法
 開啟與服務匯流排命名空間的新連接，以傳送更多訊息。
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章： 
 
-- [Azure Resource Manager 例外](service-bus-resource-manager-exceptions.md)狀況。 它會列出使用 Azure Resource Manager （透過範本或直接呼叫）與 Azure 服務匯流排互動時所產生的例外狀況。
-- [訊息例外](service-bus-messaging-exceptions.md)狀況。 它會提供 Azure 服務匯流排的 .NET Framework 所產生的例外狀況清單。 
-
+- [Azure Resource Manager 例外](service-bus-resource-manager-exceptions.md)狀況。 它會列出使用 Azure Resource Manager (透過範本或直接呼叫) 來與 Azure 服務匯流排互動時所產生的例外狀況。
+- [訊息例外](service-bus-messaging-exceptions.md)狀況。 它會提供 Azure 服務匯流排的 .NET Framework 所產生的例外狀況清單。

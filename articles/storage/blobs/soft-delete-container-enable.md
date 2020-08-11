@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8d8b558ebc49a009548afe9a8527985b9e4f5c75
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: f79b198b512547b1d93fbbd458af8251b109e62f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057156"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066656"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>啟用和管理容器 (預覽) 的虛刪除
 
 容器虛刪除 (預覽) 保護您的資料不會被意外或錯誤地修改或刪除。 針對儲存體帳戶啟用容器虛刪除時，容器和其內容可能會在您指定的保留期間內被刪除之後復原。
 
-如果應用程式或其他儲存體帳戶使用者可能不小心修改或刪除您的資料，Microsoft 建議您開啟容器虛刪除。 本文說明如何啟用容器的虛刪除。 如需容器虛刪除的詳細資訊，請參閱[ (預覽) 的容器虛刪除](soft-delete-container-overview.md)。
+如果應用程式或其他儲存體帳戶使用者可能不小心修改或刪除您的資料，Microsoft 建議您開啟容器虛刪除。 本文說明如何啟用容器的虛刪除。 如需容器虛刪除的詳細資料，包括如何註冊預覽版，請參閱[ (預覽) 的容器虛刪除](soft-delete-container-overview.md)。
 
 對於端對端資料保護，Microsoft 建議您也為 blob 和 blob 版本設定啟用虛刪除， (預覽) 。 若要瞭解如何同時啟用 blob 的虛刪除，請參閱[啟用和管理 blob 的虛刪除](soft-delete-blob-enable.md)。 若要瞭解如何啟用 blob 版本設定，請參閱[blob 版本設定 (預覽) ](versioning-overview.md)。
 

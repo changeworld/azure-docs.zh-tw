@@ -3,12 +3,12 @@ title: 使用共用存取簽章 Azure 服務匯流排存取控制
 description: 使用共用存取簽章的服務匯流排存取控制概觀，詳細說明 Azure 服務匯流排之 SAS 授權的相關資訊。
 ms.topic: article
 ms.date: 07/30/2020
-ms.openlocfilehash: b75f1ec3a1aac36124287523140c24d468329aaa
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 8e48858fd76bcf4667cfff1237f49597a477b3e8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460689"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066180"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共用存取簽章的服務匯流排存取控制
 
@@ -17,7 +17,7 @@ ms.locfileid: "87460689"
 SAS 會根據授權規則保護對服務匯流排的存取。 這些規則會設定於命名空間或訊息實體 (轉送、佇列或主題)。 授權規則具有名稱、與特定權限相關聯，並且承載了密碼編譯金鑰組。 您可以透過服務匯流排 SDK 使用規則的名稱和金鑰，或用於您自己的程式碼中以產生 SAS 權杖。 接著，用戶端可將權杖傳至服務匯流排，以證明要求之作業的授權。
 
 > [!NOTE]
-> Azure 服務匯流排支援使用 Azure Active Directory （Azure AD）來授權服務匯流排命名空間及其實體的存取權。 使用 Azure AD 所傳回的 OAuth 2.0 權杖來授權使用者或應用程式，可透過共用存取簽章（SAS）提供優異的安全性和易用性。 有了 Azure AD，就不需要在程式碼中儲存權杖，也可能會有潛在的安全性弱點。
+> Azure 服務匯流排支援使用 Azure Active Directory (Azure AD) 來授權服務匯流排命名空間及其實體的存取權。 使用 Azure AD 所傳回的 OAuth 2.0 權杖來授權使用者或應用程式，可讓您透過共用存取簽章 (SAS) ，提供更優異的安全性和易用性。 有了 Azure AD，就不需要在程式碼中儲存權杖，也可能會有潛在的安全性弱點。
 >
 > Microsoft 建議您盡可能使用 Azure AD 與您的 Azure 服務匯流排應用程式。 如需詳細資訊，請參閱下列文章：
 > - [使用 Azure Active Directory 存取 Azure 服務匯流排實體，驗證和授權應用程式](authenticate-application.md)。
@@ -27,7 +27,7 @@ SAS 會根據授權規則保護對服務匯流排的存取。 這些規則會設
 
 共用存取簽章是使用簡易權杖的宣告式授權機制。 使用 SAS 時，金鑰一律不會透過網路傳遞。 金鑰可用來以密碼編譯方式簽署稍後可由服務驗證的資訊。 SAS 的作用可類似於用戶端直接擁有授權規則名稱和相符金鑰的使用者名稱和密碼。 SAS 的作用也可類似於同盟安全性模型；在此模型中，用戶端會收到來自於安全性權杖服務、具有時效性且已簽署的存取權杖，而從未擁有簽署金鑰。
 
-服務匯流排中的 SAS 驗證，會使用具有相關存取權限的具名[共用存取授權規則](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)以及主要和次要密碼編譯金鑰組進行設定。 金鑰是採用 Base64 表示法的 256 位元值。 您可以在服務匯流排[轉送](../service-bus-relay/relay-what-is-it.md)、[佇列](service-bus-messaging-overview.md#queues)和[主題](service-bus-messaging-overview.md#topics)上，於命名空間層級設定規則。
+服務匯流排中的 SAS 驗證，會使用具有相關存取權限的具名[共用存取授權規則](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)以及主要和次要密碼編譯金鑰組進行設定。 金鑰是採用 Base64 表示法的 256 位元值。 您可以在服務匯流排[轉送](../azure-relay/relay-what-is-it.md)、[佇列](service-bus-messaging-overview.md#queues)和[主題](service-bus-messaging-overview.md#topics)上，於命名空間層級設定規則。
 
 [共用存取簽章](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider)權杖包含所選授權規則的名稱、應存取之資源的 URI、到期時間，以及使用所選授權規則的主要或次要密碼編譯金鑰對這些欄位計算的 HMAC RSA-SHA256 密碼編譯簽章。
 
@@ -72,7 +72,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`**-要存取之資源的 URI。
 * **`sig`** 簽章.
 
-`signature-string`是根據資源 URI 計算的 SHA-256 雜湊（如上一節所述的**範圍**），以及權杖到期時刻的字串表示（以 LF 分隔）。
+`signature-string`是針對資源 URI 計算的 SHA-256 雜湊 (**範圍**，如上一節所述) 和權杖到期瞬間的字串標記法（以 LF 分隔）。
 
 雜湊計算看起來類似下列虛擬程式碼，會傳回 256 位元/32 位元組的雜湊值。
 
@@ -84,7 +84,7 @@ SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 
 資源 URI 是宣告其存取權之服務匯流排資源的完整 URI。 例如，`http://<namespace>.servicebus.windows.net/<entityPath>` 或 `sb://<namespace>.servicebus.windows.net/<entityPath>`；也就是 `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`。 
 
-**URI 必須以[百分比編碼](https://msdn.microsoft.com/library/4fkewx0t.aspx)。**
+**URI 必須以[百分比編碼](/dotnet/api/system.web.httputility.urlencode?view=netcore-3.1)。**
 
 用於簽署的共用存取授權規則必須設定於此 URI 或其中一個階層式上層所指定的實體。 例如，先前範例中的 `http://contoso.servicebus.windows.net/contosoTopics/T1` 或 `http://contoso.servicebus.windows.net`。
 
@@ -184,7 +184,7 @@ ContentType: application/atom+xml;type=entry;charset=utf-8
 
 開始將資料傳送到服務匯流排之前，發行者必須在 AMQP 訊息內部將 SAS 權杖傳送至正確定義且名為 **$cbs** 的 AMQP 節點 (您可以將它視為一個由服務所使用的「特別」佇列，用來取得並驗證所有的 SAS 權杖)。 發行者必須在 AMQP 訊息中指定 **ReplyTo** 欄位；這是服務將以權杖驗證結果 (發行者與服務之間的簡單要求/回覆模式) 回覆發行者的節點所在。 此回覆節點是「動態」建立，如 AMQP 1.0 規格中所述的「動態建立遠端節點」。 檢查 SAS 權杖有效之後，發行者可以繼續並開始將資料傳送至服務。
 
-下列步驟示範如何使用[AMQP.NET Lite](https://github.com/Azure/amqpnetlite)程式庫，傳送具有 AMQP 通訊協定的 SAS 權杖。 如果您無法使用官方服務匯流排 SDK （例如在 WinRT、.NET Compact Framework、.NET 微架構和 Mono 上）以 C 進行開發，這會很有用 \# 。 當然，此程式庫對於了解宣告型安全性如何在 AMQP 層級運作非常有用，如同您了解其如何在 HTTP 層級運作一樣 (使用 HTTP POST 要求以及在標頭 "Authorization" 內部傳送的 SAS 權杖)。 如果您不需要 AMQP 的這類深入知識，可以將官方服務匯流排 SDK 與 .NET Framework 應用程式搭配使用，這會為您提供。
+下列步驟示範如何使用[AMQP.NET Lite](https://github.com/Azure/amqpnetlite)程式庫，傳送具有 AMQP 通訊協定的 SAS 權杖。 如果您無法使用官方服務匯流排 SDK (例如 WinRT、.NET Compact Framework、.NET 微架構和 Mono) 以 C 進行開發，這會很有用 \# 。 當然，此程式庫對於了解宣告型安全性如何在 AMQP 層級運作非常有用，如同您了解其如何在 HTTP 層級運作一樣 (使用 HTTP POST 要求以及在標頭 "Authorization" 內部傳送的 SAS 權杖)。 如果您不需要 AMQP 的這類深入知識，可以將官方服務匯流排 SDK 與 .NET Framework 應用程式搭配使用，這會為您提供。
 
 ### <a name="c35"></a>C&#35;
 

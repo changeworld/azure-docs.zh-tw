@@ -3,16 +3,16 @@ title: Azure 服務匯流排-遷移至共用存取簽章授權
 description: 瞭解如何從 Azure Active Directory 存取控制服務遷移至共用存取簽章授權。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9ef6eda205af150a20236da68e1b6b1dbf91059e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8cd12ac97020417f9958beded1fd198dd485fff
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340118"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064616"
 ---
 # <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>服務匯流排-從 Azure Active Directory 存取控制服務遷移至共用存取簽章授權
 
-服務匯流排應用程式在過去可選擇使用兩個不同的授權模型：由服務匯流排直接提供的[共用存取簽章 (SAS)](service-bus-sas.md) 權杖模型，以及同盟模型，其中授權規則的管理是由 [Azure Active Directory](/azure/active-directory/) 存取控制服務 (ACS) 內部管理，而從 ACS 取得的權杖會傳遞至服務匯流排，以授權存取所需的功能。
+服務匯流排應用程式在過去可選擇使用兩個不同的授權模型：由服務匯流排直接提供的[共用存取簽章 (SAS)](service-bus-sas.md) 權杖模型，以及同盟模型，其中授權規則的管理是由 [Azure Active Directory](../active-directory/index.yml) 存取控制服務 (ACS) 內部管理，而從 ACS 取得的權杖會傳遞至服務匯流排，以授權存取所需的功能。
 
 ACS 授權模型長期以來已被 [SAS 授權](service-bus-authentication-and-authorization.md)取代為首選模型，而且今日所有文件、指南和範例皆僅使用 SAS。 此外，無法再建立與 ACS 配對的新服務匯流排命名空間。
 
@@ -56,4 +56,3 @@ SAS 規則並非要作為帳戶使用，而是與權限相關的具名簽署金�
 
 * [服務匯流排驗證和授權](service-bus-authentication-and-authorization.md)
 * [使用共用存取簽章的服務匯流排驗證](service-bus-sas.md)
-

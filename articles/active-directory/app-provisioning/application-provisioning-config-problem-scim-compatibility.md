@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: da458b8aaf1ace7b87e98ded59a4bf90e4158e0f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 39a4cbd5ffd04aa3346b1ce4f3b73576b92c4d3b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054081"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065483"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 使用者佈建服務 SCIM 2.0 通訊協定相容性的已知問題和解決方法
 
@@ -43,14 +43,14 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 | 延伸模組屬性在屬性名稱前面使用點 "." 標記法，而不是冒號 ":" 標記法 |  是  | 2018 年 12 月 18 日  | 降級至 customappSSO |
 | 多重值屬性的修補程式要求包含無效的路徑篩選語法 | 是  |  2018 年 12 月 18 日  | 降級至 customappSSO |
 | 群組建立要求包含無效的結構描述 URI | 是  |  2018 年 12 月 18 日  |  降級至 customappSSO |
-| 更新修補程式列為以確保合規性 | 否 | TBD| 使用預覽旗標 |
+| 更新修補程式列為以確保合規性 (例如 active as boolean 和適當的群組成員資格移除)  | 否 | TBD| 使用預覽旗標 |
 
 ## <a name="flags-to-alter-the-scim-behavior"></a>用來改變 SCIM 行為的旗標
 請在應用程式的租使用者 URL 中使用下列旗標，以變更預設的 SCIM 用戶端行為。
 
 :::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM 旗標到稍後的行為。":::
 
-* 使用下列 URL 來更新修補程式列為，並確保 SCIM 合規性。 目前只有在使用旗標時才可使用這種行為，但會在接下來的幾個月內成為預設行為。
+* 使用下列 URL 來更新修補程式列為，並確保 SCIM 合規性 (例如 active as boolean 和) 的適當群組成員資格移除。 目前只有在使用旗標時才可使用這種行為，但會在接下來的幾個月內成為預設行為。
   * **URL (符合 SCIM 規範的) ：** AzureAdScimPatch062020
   * **SCIM RFC 參考：** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2

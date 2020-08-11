@@ -3,12 +3,12 @@ title: Azure 事件中樞防火牆規則 | Microsoft Docs
 description: 使用「防火牆規則」以允許從特定 IP 位址連線至「Azure 事件中樞」。
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: b59c34e80fb08e35a9ed8b1b3e406e2e63517877
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7870260b77785af59f4f186274775067f2292ef6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836814"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066044"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>允許從特定 IP 位址或範圍存取 Azure 事件中樞命名空間
 根據預設，只要要求具備有效的驗證和授權，便可以從網際網路存取事件中樞命名空間。 透過 IP 防火牆，您可以將其進一步限制為僅允許一組 IPv4 位址，或是使用 [CIDR (無類別網域間路由)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 標記法來設定 IPv4 位址範圍。
@@ -18,9 +18,9 @@ ms.locfileid: "87836814"
 >[!WARNING]
 > 啟用 IP 篩選可防止其他 Azure 服務與事件中樞互動。
 >
-> 實作「虛擬網路」時，不支援受信任的 Microsoft 服務。
+> 執行 IP 篩選時，不支援受信任的 Microsoft 服務。
 >
-> 無法與「虛擬網路」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
+> 不適用 IP 篩選的常見 Azure 案例 (請注意，清單並**不**完整) -
 > - Azure 串流分析
 > - Azure IoT 中樞路由
 > - Azure IoT Device Explorer
