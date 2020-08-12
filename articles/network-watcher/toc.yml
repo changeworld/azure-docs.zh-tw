@@ -49,6 +49,8 @@
       items:
         - name: 安全性基準
           href: security-baseline.md
+    - name: 資料存留處
+      href: data-residency.md
 - name: 操作指南
   items:
     - name: 設定網路監看員

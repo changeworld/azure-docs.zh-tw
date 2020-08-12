@@ -57,10 +57,10 @@
     - name: 2 - 建立 Web 應用程式
       items:
         - name: 容器中的 WordPress 與 MySQL
-          href: ../app-service/containers/tutorial-multi-container-app.md
+          href: ../app-service/tutorial-multi-container-app.md
           maintainContext: true
         - name: PHP with MySQL
-          href: ../app-service/app-service-web-tutorial-php-mysql.md
+          href: ../app-service/tutorial-php-mysql-app.md
           maintainContext: true
 - name: 範例
   items:

@@ -143,11 +143,13 @@
     - name: Linux 支援
       href: linux-overview.md
     - name: 支援的 RDP 檔案設定
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
     - name: 網路指導方針
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: 虛擬機器大小指導方針
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
+    - name: Azure 命令列介面 (CLI)
+      href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
 - name: 資源
   items:
     - name: PowerShell
@@ -159,7 +161,7 @@
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 學習路徑
-      href: 'https://docs.microsoft.com/learn/paths/m365-wvd/'
+      href: /learn/paths/m365-wvd/
     - name: 操作方式影片
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: 技術社群支援群組

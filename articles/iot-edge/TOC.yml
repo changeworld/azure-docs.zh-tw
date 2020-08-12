@@ -211,8 +211,6 @@
           href: how-to-devops-project.md
         - name: Azure DevOps
           href: how-to-ci-cd.md
-        - name: Jenkins 的 IoT Edge 外掛程式
-          href: how-to-devops-plugins.md
     - name: 疑難排解
       items:
         - name: 標準的診斷步驟

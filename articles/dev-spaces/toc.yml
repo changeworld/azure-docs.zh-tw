@@ -25,38 +25,8 @@
           href: quickstart-existing-helm-chart.md
     - name: 教學課程
       items:
-        - name: Java (VS Code 與 CLI)
-          items:
-            - name: 1 - 開始使用
-              href: get-started-java.md
-            - name: 2 - 多重服務開發
-              href: multi-service-java.md
-            - name: 3 - 小組開發
-              href: team-development-java.md
-        - name: .NET Core (VS Code 和 CLI)
-          items:
-            - name: 1 - 開始使用
-              href: get-started-netcore.md
-            - name: 2 - 多重服務開發
-              href: multi-service-netcore.md
-            - name: 3 - 小組開發
-              href: team-development-netcore.md
-        - name: .NET Core (Visual Studio)
-          items:
-            - name: 1 - 開始使用
-              href: get-started-netcore-visualstudio.md
-            - name: 2 - 多重服務開發
-              href: multi-service-netcore-visualstudio.md
-            - name: 3 - 小組開發
-              href: team-development-netcore-visualstudio.md
-        - name: Node.js (VS Code 與 CLI)
-          items:
-            - name: 1 - 開始使用
-              href: get-started-nodejs.md
-            - name: 2 - 多重服務開發
-              href: multi-service-nodejs.md
-            - name: 3 - 小組開發
-              href: team-development-nodejs.md
+        - name: Visual Studio 使用者入門
+          href: get-started-netcore-visualstudio.md
     - name: 概念
       items:
         - name: Dev Spaces 如何運作
@@ -83,8 +53,6 @@
           href: how-to/install-dev-spaces.md
         - name: 使用 Azure Cloud Shell 建立 Kubernetes 叢集
           href: how-to/create-cluster-cloud-shell.md
-        - name: 分享 Azure 開發人員空間
-          href: how-to/share-dev-spaces.md
         - name: 管理祕密
           href: how-to/manage-secrets.md
         - name: 使用自訂 NuGet 摘要

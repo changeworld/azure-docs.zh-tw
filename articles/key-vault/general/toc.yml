@@ -90,6 +90,8 @@
           href: managed-identity.md
         - name: 使用存取控制原則
           href: group-permissions-for-apps.md
+        - name: 疑難排解存取問題
+          href: troubleshooting-access-issues.md
     - name: 開發
       items:
         - name: Azure 金鑰保存庫開發人員指南
