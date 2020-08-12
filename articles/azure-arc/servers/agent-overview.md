@@ -1,19 +1,14 @@
 ---
 title: Connected Machine Windows 代理程式概觀
 description: 本文提供適用于伺服器 (preview) 代理程式的 Azure Arc 詳細總覽，其支援監視混合式環境中裝載的虛擬機器。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0337894eb0309c5be42c52233df44edcdc06f022
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8e8abfcc3c6ec7b7893563c67dc6bb82ccdda850
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904969"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121828"
 ---
 # <a name="overview-of-azure-arc-for-servers-preview-agent"></a>概述伺服器的 Azure Arc (預覽) 代理程式
 

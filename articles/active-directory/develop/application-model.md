@@ -1,7 +1,7 @@
 ---
 title: 應用程式模型 |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解註冊應用程式以與 Microsoft 身分識別平臺（v2.0）整合的流程。
+description: 深入瞭解註冊應用程式以與 Microsoft 身分識別平臺 (v2.0) 進行整合的過程。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 774822eae5ab327f57da3eca4499ca14d3e0c7a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82584307"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117476"
 ---
 # <a name="application-model"></a>應用程式模型
 
@@ -86,4 +86,4 @@ Microsoft 身分識別平臺：
 
 * 如需有關 Microsoft 身分識別平臺中的應用程式物件和服務主體的詳細資訊，請參閱[如何和為何將應用程式新增至 Azure AD](active-directory-how-applications-are-added.md) 。
 * 如需單一租使用者應用程式和多租使用者應用程式的詳細資訊，請參閱[Azure Active Directory 中](single-and-multi-tenant-apps.md)的租用。
-* 如需有關 Azure AD 如何同時提供 Azure Active Directory B2C，讓組織可以使用像是 Google 帳戶的社交身分識別來登入使用者（通常是客戶）的詳細資訊，請參閱[Azure Active Directory B2C 檔](https://docs.microsoft.com/azure/active-directory-b2c)。
+* 如需有關 Azure AD 如何同時提供 Azure Active Directory B2C，讓組織可以使用像是 Google 帳戶的社交身分識別來登入使用者（通常是客戶）的詳細資訊，請參閱[Azure Active Directory B2C 檔](../../active-directory-b2c/index.yml)。

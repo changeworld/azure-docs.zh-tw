@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925782"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121522"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理程式概觀
 開發 Azure Log Analytics 代理程式是為了能夠全面管理任何雲端中的虛擬機器、內部部署機器，以及 [System Center Operations Manager](/system-center/scom/) 所監視的機器。 Windows 和 Linux 代理程式會將從不同來源收集而來的資料傳送至 Azure 監視器中的 Log Analytics 工作區，以及監視解決方案中所定義的任何唯一記錄或計量。 Log Analytics 代理程式也支援 Azure 監視器中的深入解析和其他服務，例如[適用於 VM 的 Azure 監視器](../insights/vminsights-enable-overview.md)、[Azure 資訊安全中心](../../security-center/index.yml)和 [Azure 自動化](../../automation/automation-intro.md)。
@@ -174,7 +174,7 @@ Linux 代理程式正式支援下列 Linux 作業系統版本：
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Windows 的 SHA-2 程式碼簽署支援需求
-Windows 代理程式將在 2020 年 8 月 17 日開始獨佔使用 SHA-2 簽署。 這項變更會影響在舊版 OS 上以任何 Azure 服務 (Azure 監視器、Azure 自動化、Azure 更新管理、Azure 變更追蹤、Azure 資訊安全中心、Azure Sentinel、Windows Defender ATP) 的形式來使用 Log Analytics 代理程式的客戶。 除非客戶在舊版 OS (Windows 7、Windows Server 2008 R2 和 Windows Server 2008) 上執行代理程式，否則此變更不需要其採取任何動作。 在舊版 OS 上執行的客戶必須於 2020 年 8 月 17 日之前在其電腦上採取下列動作，否則其代理程式將會停止將資料傳送到其 Log Analytics 工作區：
+Windows 代理程式將在2020年11月2日開始以獨佔方式使用 SHA-1 簽署。 這項變更會影響在舊版 OS 上以任何 Azure 服務 (Azure 監視器、Azure 自動化、Azure 更新管理、Azure 變更追蹤、Azure 資訊安全中心、Azure Sentinel、Windows Defender ATP) 的形式來使用 Log Analytics 代理程式的客戶。 除非客戶在舊版 OS (Windows 7、Windows Server 2008 R2 和 Windows Server 2008) 上執行代理程式，否則此變更不需要其採取任何動作。 在2020年11月2日之前，在舊版作業系統上執行的客戶必須在其電腦上採取下列動作，否則其代理程式將會停止將資料傳送到其 Log Analytics 工作區：
 
 1. 安裝適用於 OS 的最新 Service Pack。 所需的 Service Pack 版本如下：
     - Windows 7 SP1

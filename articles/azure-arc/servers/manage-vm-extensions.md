@@ -3,16 +3,12 @@ title: 使用適用于伺服器的 Azure Arc 進行 VM 擴充功能管理
 description: 適用于伺服器 (預覽) 的 Azure Arc 可以管理虛擬機器擴充功能的部署，以使用非 Azure Vm 來提供部署後設定和自動化工作。
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.openlocfilehash: eb1de0c2a5b995231c2972fca7279195cbaea9e7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809624"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121301"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>使用適用于伺服器的 Azure Arc 管理虛擬機器擴充功能 (預覽) 
 
@@ -40,7 +36,7 @@ VM 擴充功能僅適用于[支援的區域](overview.md#supported-regions)清�
 
 在此預覽中，我們支援 Windows 和 Linux 電腦上的下列 VM 擴充功能。
 
-|延伸模組 |OS |發行者 |其他資訊 |
+|延伸模組 |OS |Publisher |其他資訊 |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Windows 自訂腳本擴充功能](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Microsoft PowerShell|[Windows PowerShell DSC 延伸模組](../../virtual-machines/extensions/dsc-windows.md)|

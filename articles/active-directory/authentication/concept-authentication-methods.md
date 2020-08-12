@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b6111529d1a3d37f08b29fb5c0751fb6a49acea5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054063"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116762"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的驗證方法？
 
@@ -45,6 +45,8 @@ Azure AD 中有許多帳戶已啟用自助式密碼重設 (SSPR) 和 Azure Multi
 | [安全性問題](#security-questions) | 否 | 僅限 SSPR |
 | [電子郵件地址](#email-address) | 否 | 僅限 SSPR |
 | [應用程式密碼](#app-passwords) | 否 | 只有在某些情況下的 MFA |
+
+這些驗證方法可以在 Azure 入口網站中設定，並使用[Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)搶鮮版（Beta）來增加。
 
 本文概述 Azure AD 中各種可用的驗證方法，以及任何特定的限制。
 
@@ -297,6 +299,8 @@ Microsoft 不保證相同號碼會提供一致的 SMS 或語音型 Azure Multi-F
 若要深入了解 SSPR 概念，請參閱 [Azure AD 自助式密碼重設的運作方式][concept-sspr]。
 
 若要深入了解 MFA 概念，請參閱 [Azure Multi-Factor Authentication 的運作方式][concept-mfa]。
+
+深入瞭解如何使用[Microsoft Graph REST API Beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)來設定驗證方法。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

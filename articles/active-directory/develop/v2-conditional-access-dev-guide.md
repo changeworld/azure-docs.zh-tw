@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771072"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120621"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 條件式存取的開發人員指引
 
@@ -33,7 +33,7 @@ ms.locfileid: "83771072"
 
 針對建置 Azure AD 適用應用程式的開發人員，本文會說明如何使用條件式存取，而您也會了解存取已套用條件式存取原則的資源有何影響。 本文也會探討在代理者流程、Web 應用程式、存取 Microsoft Graph 以及呼叫 API 中進行條件式存取的含意。
 
-它假設對於[單一](quickstart-register-app.md)和[多租用戶](howto-convert-app-to-be-multi-tenant.md)應用程式以及[常見驗證模式](authentication-scenarios.md)的認知。
+它假設對於[單一](quickstart-register-app.md)和[多租用戶](howto-convert-app-to-be-multi-tenant.md)應用程式以及[常見驗證模式](./authentication-vs-authorization.md)的認知。
 
 > [!NOTE]
 > 使用此方法需要 Azure AD Premium P1 授權。 若要尋找適用於您需求的正確授權，請參閱[比較 Free、Basic 及 Premium 版本的正式運作功能](https://azure.microsoft.com/pricing/details/active-directory/)。
@@ -52,7 +52,7 @@ ms.locfileid: "83771072"
 * 使用 MSAL.js 的單頁應用程式
 * 呼叫資源的 Web Apps
 
-條件式存取原則可以套用至應用程式，也可套用至您應用程式存取的 Web API。 若要深入了解如何設定條件式存取原則的相關詳細資訊，請參閱[快速入門：透過 Azure Active Directory 條件式存取來要求特定應用程式必須使用 MFA](../conditional-access/app-based-mfa.md)。
+條件式存取原則可以套用至應用程式，也可套用至您應用程式存取的 Web API。 若要深入了解如何設定條件式存取原則的相關詳細資訊，請參閱[快速入門：透過 Azure Active Directory 條件式存取來要求特定應用程式必須使用 MFA](../authentication/tutorial-enable-azure-mfa.md)。
 
 企業客戶可以根據這種情節，隨時套用及移除條件式存取原則。 若要在套用新原則時讓您的應用程式繼續運作，您必須實作「挑戰」處理。 下列範例說明挑戰處理。
 
@@ -93,7 +93,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ### <a name="prerequisites"></a>Prerequisites
 
-Azure AD 條件式存取是 [Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 中所包含的一項功能。 擁有 [Microsoft 365 商務版授權](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客戶也有條件式存取功能的存取權。
+Azure AD 條件式存取是 [Azure AD Premium](../fundamentals/active-directory-whatis.md) 中所包含的一項功能。 擁有 [Microsoft 365 商務版授權](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)的客戶也有條件式存取功能的存取權。
 
 ### <a name="considerations-for-specific-scenarios"></a>特定情節的考量
 
@@ -180,7 +180,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 ## <a name="see-also"></a>另請參閱
 
-* 若要深入了解功能，請參閱 [Azure Active Directory 中的條件式存取](/azure/active-directory/conditional-access/overview)。
+* 若要深入了解功能，請參閱 [Azure Active Directory 中的條件式存取](../conditional-access/overview.md)。
 * 如需更多的 Azure AD 程式碼範例，請參閱[範例](sample-v2-code.md)。
 * 如需 MSAL SDK 的詳細資訊及存取參考文件，請參閱 [Microsoft 驗證程式庫概觀](msal-overview.md)。
 * 若要深入了解多租用戶情節，請參閱[如何使用多租用戶模式將使用者登入](howto-convert-app-to-be-multi-tenant.md)。

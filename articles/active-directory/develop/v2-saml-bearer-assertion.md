@@ -12,12 +12,12 @@ ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 2d745ddcf7b1d5bd7976a0ca8461c13d8ae3c849
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282376"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114688"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 SAML 持有人判斷提示流程
 OAuth 2.0 SAML 持有人判斷提示流程可供在用戶端需要使用現有的信任關係時，使用 SAML 判斷提示來要求 OAuth 存取權杖。 套用至 SAML 判斷提示的簽章會提供授權應用程式其驗證。 SAML 判斷提示是一種由識別提供者發行，並由服務提供者取用的 XML 安全性權杖。 服務提供者會針對與安全性相關的用途，依賴其內容來識別判斷提示的主旨。
@@ -37,7 +37,7 @@ OAuth SAML 持有人判斷提示流程也支援使用識別提供者 (例如與 
 
 ### <a name="prerequisites"></a>必要條件
 
-建立授權伺服器/環境 (Microsoft 365) 與識別提供者之間的信任關係，或與 SAML 2.0 持有人判斷提示簽發者 (ADFS) 之間的信任關係。 若要針對單一登入設定 ADFS 以及將其設為識別提供者，您可參閱[本文](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/)。
+建立授權伺服器/環境 (Microsoft 365) 與識別提供者之間的信任關係，或與 SAML 2.0 持有人判斷提示簽發者 (ADFS) 之間的信任關係。 若要針對單一登入設定 ADFS 以及將其設為識別提供者，您可參閱[本文](/archive/blogs/canitpro/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365)。
 
 在[入口網站](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中註冊應用程式：
 1. 登入[入口網站的應用程式註冊刀鋒視窗](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) (請注意，由於我們正在使用 Graph API 的 v2.0 端點，因此需要在此入口網站中註冊應用程式。 否則，我們可以使用 Azure Active Directory 中的註冊)。 

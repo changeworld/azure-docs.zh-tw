@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 75c211ea61359c244c6280b9664a4f412b3d2279
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afa9c6a508e0215b905a39a430cb64161575b748
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552011"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116003"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 身分識別平台存取權杖
 
@@ -100,7 +100,7 @@ JWT (JSON Web 權杖) 分成三個部分：
 | `name` | String | 提供人類看得懂的值，用以識別權杖的主體。 此值不保證是唯一值，它是可變動的，並且在設計上僅用於顯示。 需要 `profile` 範圍才能接收此宣告。 |
 | `scp` | 字串，範圍的空格分隔清單 | 由您應用程式公開的範圍集合，用戶端應用程式已針對此集合要求 (和接收) 同意。 您的應用程式應確認這些範圍是由應用程式公開的有效範圍，並根據這些範圍的值做出授權決策。 僅包含於[使用者權杖](#user-and-application-tokens)中。 |
 | `roles` | 字串陣列、權限清單 | 由您應用程式公開的權限集合，而要求應用程式或使用者已獲得用於呼叫的權限。 若為[應用程式權杖](#user-and-application-tokens)，這會在用戶端認證流程 ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) 期間用來取代使用者範圍。  若為[使用者權杖](#user-and-application-tokens)，這會填入目標應用程式上指派給使用者的角色。 |
-| `wids` | [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) GUID 的陣列 | 代表從[系統管理員角色頁面](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)中的角色區段，指派給此使用者的全租用戶角色。  此宣告會透過[應用程式資訊清單](reference-app-manifest.md)的 `groupMembershipClaims` 屬性，針對每個應用程式進行設定。  必須將其設定為 "All" 或 "DirectoryRole"。  可能不會出現在因權杖長度考量而透過隱含流程取得的權杖中。 |
+| `wids` | [RoleTemplateID](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids) GUID 的陣列 | 代表從[系統管理員角色頁面](../users-groups-roles/directory-assign-admin-roles.md#role-template-ids)中的角色區段，指派給此使用者的全租用戶角色。  此宣告會透過[應用程式資訊清單](reference-app-manifest.md)的 `groupMembershipClaims` 屬性，針對每個應用程式進行設定。  必須將其設定為 "All" 或 "DirectoryRole"。  可能不會出現在因權杖長度考量而透過隱含流程取得的權杖中。 |
 | `groups` | GUID 的 JSON 陣列 | 提供代表主體群組成員資格的物件識別碼。 這些值都是唯一的 (請參閱「物件識別碼」)，而且可安全地用來管理存取權，例如強制授權以存取資源。 群組宣告中包含的群組會透過[應用程式資訊清單](reference-app-manifest.md)的 `groupMembershipClaims` 屬性，針對每個應用程式進行設定。 Null 值將會排除所有群組，"SecurityGroup" 值只會包含 Active Directory 安全性群組成員資格，而 "All" 值將會包含安全性群組和 Office 365 通訊群組清單。 <br><br>請參閱下面的 `hasgroups` 宣告，以取得使用 `groups` 宣告搭配隱含授與的詳細資訊。 <br>針對其他流程，如果使用者所屬的群組數目超過限制 (SAML 為 150，JWT 為 200)，則會將超額宣告新增至指向 Microsoft Graph 端點 (包含使用者群組清單) 的宣告來源。 |
 | `hasgroups` | Boolean | 如果有的話，一律為 `true`，表示使用者在至少一個群組中。 如果完整 groups 宣告會將 URI 片段延伸超出 URL 長度限制 (目前為 6 個或更多群組)，則使用於取代隱含授與流程中 JWT 的 `groups` 宣告。 表示用戶端應該使用 Microsoft Graph API 來判斷使用者的群組 (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`)。 |
 | `groups:src1` | JSON 物件 | 若為沒有長度限制 (請參閱上面的 `hasgroups`) 但是對權杖而言仍然太大的權杖要求，則會包含使用者的完整 groups 清單連結。 在 JWT 中以分散式宣告形式取代 `groups` 宣告，在 SAML 中則以新宣告形式取代。 <br><br>**範例 JWT 值**： <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
@@ -142,7 +142,7 @@ JWT (JSON Web 權杖) 分成三個部分：
 | 宣告 | [格式] | 描述 |
 |-----|--------|-------------|
 | `ipaddr`| String | 從中進行使用者驗證的 IP 位址。 |
-| `onprem_sid`| 字串，採 [SID 格式](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | 如果使用者具有內部部署驗證，此宣告會提供其 SID。 您可以使用 `onprem_sid` 取得繼承應用程式中的授權。|
+| `onprem_sid`| 字串，採 [SID 格式](/windows/desktop/SecAuthZ/sid-components) | 如果使用者具有內部部署驗證，此宣告會提供其 SID。 您可以使用 `onprem_sid` 取得繼承應用程式中的授權。|
 | `pwd_exp`| 整數，UNIX 時間戳記 | 表示使用者密碼到期的時間。 |
 | `pwd_url`| String | 可傳送給使用者以重設其密碼的 URL。 |
 | `in_corp`| boolean | 指出用戶端是否是從公司網路登入的。 如果不是，則不包含宣告。 |
@@ -171,7 +171,7 @@ Microsoft 身分識別可透過不同的方式來驗證，這些方式可能與�
 
 若要驗證 id_token 或 access_token，您的應用程式應該驗證權杖的簽章和宣告。 為了驗證存取權杖，應用程式也應該驗證簽發者、對象及簽署權杖。 這些都需要對 OpenID 探索文件中的值進行驗證。 例如，租用戶獨立版的文件位於 [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration)。
 
-Azure AD 中介軟體已內建驗證存取權杖的功能，您可以瀏覽我們的[範例](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples)，以找到您所選擇語言的範例。
+Azure AD 中介軟體已內建驗證存取權杖的功能，您可以瀏覽我們的[範例](../azuread-dev/sample-v1-code.md)，以找到您所選擇語言的範例。
 
 我們提供示範如何處理權杖驗證的程式庫和程式碼範例。 下列資訊專門提供給想要了解基礎程序的人。 另外還有多個協力廠商開放原始碼程式庫可用於 JWT 驗證，幾乎每個平台和語言都有至少一個選項。 如需有關 Azure AD 驗證程式庫和程式碼範例的詳細資訊，請參閱 [v1.0 驗證程式庫](../azuread-dev/active-directory-authentication-libraries.md)和 [v2.0 驗證程式庫](reference-v2-libraries.md)。
 
@@ -224,15 +224,15 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 * 使用 `appidacr` 來確認呼叫用戶端的驗證狀態；如果公用用戶端不允許呼叫 API，則這不應是 0。
 * 檢查過去的 `nonce` 宣告清單，以確認權杖不會重新執行。
 * 檢查 `tid` 是否符合允許呼叫您 API 的租用戶。
-* 使用 `acr` 宣告確認使用者已執行 MFA。 這應該使用[條件式存取](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)來強制執行。
+* 使用 `acr` 宣告確認使用者已執行 MFA。 這應該使用[條件式存取](../conditional-access/overview.md)來強制執行。
 * 如果您已在存取權杖中要求 `roles` 或 `groups` 宣告，請確認使用者位在允許執行此動作的群組中。
   * 針對使用隱含流程擷取的權杖，您可能需要查詢此資料的 [Microsoft Graph](https://developer.microsoft.com/graph/)，因為這通常會太大，而無法放入權杖。
 
 ## <a name="user-and-application-tokens"></a>使用者和應用程式權杖
 
-您的應用程式可能會收到使用者（通常會討論的流程）或直接從應用程式（透過[用戶端認證流程](v1-oauth2-client-creds-grant-flow.md)）的權杖。 這些應用程式專用的權杖表示此呼叫來自應用程式，而且沒有使用者的支援。 這些權杖的處理方式大致相同：
+您的應用程式可能會收到使用者 (的權杖，此流程通常) 或直接從應用程式 (透過[用戶端認證流程](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)) 進行討論。 這些應用程式專用的權杖表示此呼叫來自應用程式，而且沒有使用者的支援。 這些權杖的處理方式大致相同：
 
-* 使用 `roles` 來查看已授與權杖主體（服務主體，而不是在此案例中的使用者）的許可權。
+* 使用 `roles` 來查看已授與 (服務主體之權杖主體的許可權，而不是在此案例中) 的使用者。
 * 使用 `oid` 或 `sub` 來驗證呼叫的服務主體是否為預期的主體。
 
 如果您的應用程式需要區分僅限應用程式存取權杖和使用者的存取權杖，請使用 `idtyp` [選擇性](active-directory-optional-claims.md)宣告。  藉由將宣告新增 `idtyp` 至 `accessToken` 欄位，並檢查值 `app` ，您可以偵測僅限應用程式的存取權杖。  使用者的識別碼權杖和存取權杖將不會包含該宣告 `idtyp` 。
@@ -262,8 +262,8 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 | 使用者已變更密碼 | 已撤銷 | 已撤銷 | 保持運作 | 保持運作 | 保持運作 |
 | 使用者進行 SSPR | 已撤銷 | 已撤銷 | 保持運作 | 保持運作 | 保持運作 |
 | 管理員重設密碼 | 已撤銷 | 已撤銷 | 保持運作 | 保持運作 | 保持運作 |
-| 使用者[透過 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) \(英文\) 撤銷他們的重新整理權杖 | 已撤銷 | 已撤銷 | 已撤銷 | 已撤銷 | 已撤銷 |
-| 系統管理員[透過 PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) 撤銷使用者的所有重新整理權杖 | 已撤銷 | 已撤銷 |已撤銷 | 已撤銷 | 已撤銷 |
+| 使用者[透過 PowerShell](/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) \(英文\) 撤銷他們的重新整理權杖 | 已撤銷 | 已撤銷 | 已撤銷 | 已撤銷 | 已撤銷 |
+| 系統管理員[透過 PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) 撤銷使用者的所有重新整理權杖 | 已撤銷 | 已撤銷 |已撤銷 | 已撤銷 | 已撤銷 |
 | Web 上的單一登出 ([v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out)、[v2.0](v2-protocols-oidc.md#single-sign-out)) | 已撤銷 | 保持運作 | 已撤銷 | 保持運作 | 保持運作 |
 
 > [!NOTE]
