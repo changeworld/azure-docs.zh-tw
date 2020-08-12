@@ -3,15 +3,15 @@ title: Windows 虛擬桌面環境主機集區建立-Azure
 description: 如何在 Windows 虛擬桌面環境安裝期間疑難排解和解決租使用者和主機集區的問題。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 01/08/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 064cdc0189f6b85fa0e5872f49759c2ec67472e6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006157"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121369"
 ---
 # <a name="host-pool-creation"></a>主機集區建立
 
@@ -252,6 +252,12 @@ the VM.\\\"
 **原因：** 此錯誤是因為靜態路由、防火牆規則或 NSG 封鎖下載與 Azure Resource Manager 範本系結的 zip 檔案。
 
 **修正：** 移除封鎖靜態路由、防火牆規則或 NSG。 （選擇性）在文字編輯器中開啟 Azure Resource Manager 範本 json 檔案，接受 zip 檔案的連結，並將資源下載到允許的位置。
+
+### <a name="error-cant-delete-a-session-host-from-the-host-pool-after-deleting-the-vm"></a>錯誤：刪除 VM 之後，無法從主機集區刪除工作階段主機
+
+**原因：** 您必須先刪除工作階段主機，才能刪除 VM。
+
+**修正：** 讓工作階段主機進入清空模式，登出工作階段主機中的所有使用者，然後刪除主機。
 
 ## <a name="next-steps"></a>後續步驟
 

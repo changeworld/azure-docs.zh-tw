@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154945"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116439"
 ---
 # <a name="application-types-in-v10"></a>v1.0 中的應用程式類型
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) 支援各種新型應用程式架構的驗證�
 在開始使用程式碼之前，請參考相關連結以深入了解各種類型的應用程式，並了解概要的案例。 您也可以了解在撰寫與 v1.0 端點或 v2.0 端點搭配運作的特定應用程式時所需了解的差異。
 
 > [!NOTE]
-> v2.0 端點並未支援所有的 Azure AD 案例和功能。 若要判斷您是否應該使用 v2.0 端點，請參閱 [v2.0 限制](../develop/active-directory-v2-limitations.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
+> v2.0 端點並未支援所有的 Azure AD 案例和功能。 若要判斷您是否應該使用 v2.0 端點，請參閱 [v2.0 限制](./azure-ad-endpoint-comparison.md?bc=%2fazure%2factive-directory%2fazuread-dev%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fazuread-dev%2ftoc.json)。
 
 您可以使用多種語言和平台開發本文所說明的任何應用程式和案例。 這些案例都有完整的程式碼範例，您可以在程式碼範例指南中取得：[依據案例的 v1.0 程式碼範例](sample-v1-code.md)和[依據案例的 v2.0 程式碼範例](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 您可以直接從對應的 [GitHub 範例存放庫](https://github.com/Azure-Samples?q=active-directory)中下載程式碼範例。
 

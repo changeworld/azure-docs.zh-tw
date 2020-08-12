@@ -13,16 +13,16 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 titleSuffix: Microsoft identity platform
-ms.openlocfilehash: e71f555f7a9cefef3aeada79031db3a07e3db49a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7865fbe758b35ae9ff1ffe526da5e7100e83c966
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77202056"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117544"
 ---
 # <a name="azure-active-directory-developer-platform-videos"></a>Azure Active Directory 開發人員平臺影片
 
-瞭解新的 Microsoft 身分識別平臺，以及如何從 Azure Active Directory （Azure AD）開發人員平臺進行遷移。 影片的長度通常為1-2 分鐘。
+深入瞭解新的 Microsoft 身分識別平臺，以及如何從 Azure Active Directory (Azure AD) 開發人員平臺進行遷移。 影片的長度通常為1-2 分鐘。
 
 ## <a name="migrate-from-v10-to-v20"></a>從 v1.0 遷移至 v2.0
 
@@ -73,4 +73,4 @@ ms.locfileid: "77202056"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解新的[Microsoft 身分識別平臺](https://docs.microsoft.com/azure/active-directory/develop)
+瞭解新的[Microsoft 身分識別平臺](../develop/index.yml)

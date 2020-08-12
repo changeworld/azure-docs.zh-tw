@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 06e1abc4f863674cc67c1a78a9f2f626565d296f
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c8f9bc283d88121ad4b6144b8ac9463510349212
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828926"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117221"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>操作說明：使用入口網站來建立可存取資源的 Azure AD 應用程式和服務主體
 
@@ -101,7 +101,7 @@ ms.locfileid: "87828926"
 
    如果您未看見所尋找的訂用帳戶，請選取 [全域訂閱篩選]****。 確定您想要的訂用帳戶已針對入口網站選取。
 
-1. 選取 [存取控制 (IAM)]  。
+1. 選取 [存取控制 (IAM)]。
 1. 選取 [新增角色指派]。
 1. 選取您想要將應用程式指派給哪個角色。 例如，若要允許應用程式執行諸如**重新開機**、**啟動**和**停止**實例等動作，請選取 [**參與者**] 角色。  根據預設，請閱讀更多[可用角色](../../role-based-access-control/built-in-roles.md)的相關資訊，Azure AD 應用程式不會顯示在可用的選項中。 若要尋找您的應用程式，請搜尋名稱並加以選取。
 
@@ -159,7 +159,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
     ![選取 [上傳憑證]，然後選取您想要新增的憑證](./media/howto-create-service-principal-portal/upload-cert.png)
 
-1. 選取 [新增]。
+1. 選取 [加入]。
 
 在應用程式註冊入口網站中向應用程式註冊憑證之後，您必須啟用用戶端應用程式程式碼以使用憑證。
 
@@ -178,7 +178,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
    ![複製秘密值，因為您之後無法取得此值](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>設定資源的存取原則
-請記住，您可能需要設定應用程式需要存取之資源的其他許可權。 例如，您也必須[更新金鑰保存庫的存取原則](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)，讓您的應用程式存取金鑰、秘密或憑證。  
+請記住，您可能需要設定應用程式需要存取之資源的其他許可權。 例如，您也必須[更新金鑰保存庫的存取原則](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)，讓您的應用程式存取金鑰、秘密或憑證。  
 
 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至您的金鑰保存庫，然後選取 [**存取原則**]。  
 1. 選取 [**新增存取原則**]，然後選取您想要授與應用程式的金鑰、密碼和憑證許可權。  選取您先前建立的服務主體。

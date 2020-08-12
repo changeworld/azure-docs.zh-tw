@@ -1,6 +1,6 @@
 ---
-title: 無密碼安全性金鑰登入（預覽）-Azure Active Directory
-description: 使用 FIDO2 安全性金鑰（預覽）啟用無密碼安全性金鑰登入 Azure AD
+title: 無密碼安全性金鑰登入 (預覽) -Azure Active Directory
+description: '啟用無密碼安全性金鑰登入 Azure AD 使用 FIDO2 安全性金鑰 (預覽) '
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550414"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116592"
 ---
-# <a name="enable-passwordless-security-key-sign-in-preview"></a>啟用無密碼安全性金鑰登入（預覽）
+# <a name="enable-passwordless-security-key-sign-in-preview"></a>啟用無密碼安全性金鑰登入 (預覽) 
 
 對於目前使用密碼並具有共用電腦環境的企業，安全性金鑰提供順暢的方式讓背景工作人員進行驗證，而不需要輸入使用者名稱或密碼。 安全性金鑰可提高背景工作角色的效率，並提供更好的安全性。
 
@@ -30,7 +30,7 @@ ms.locfileid: "85550414"
 ## <a name="requirements"></a>規格需求
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [結合的安全性資訊註冊預覽](concept-registration-mfa-sspr-combined.md)
+- 啟用[結合的安全性資訊註冊預覽](concept-registration-mfa-sspr-combined.md)
 - 相容的[FIDO2 安全性金鑰](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN 需要 Windows 10 1809 版或更高版本 * *
 
@@ -46,12 +46,12 @@ ms.locfileid: "85550414"
 
 ### <a name="enable-the-combined-registration-experience"></a>啟用合併的註冊體驗
 
-無密碼驗證方法的註冊功能依賴結合的註冊功能。 遵循[啟用結合的安全性資訊註冊（預覽）](howto-registration-mfa-sspr-combined.md)一文中的步驟，以啟用合併的註冊。
+無密碼驗證方法的註冊功能依賴結合的註冊功能。 遵循[啟用結合的安全性資訊註冊 (預覽) ](howto-registration-mfa-sspr-combined.md)一文中的步驟，以啟用合併的註冊。
 
 ### <a name="enable-fido2-security-key-method"></a>啟用 FIDO2 安全性金鑰方法
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 流覽至**Azure Active Directory**  >  **安全性**  >  **驗證方法**  >  **驗證方法原則（預覽）**。
+1. 流覽至**Azure Active Directory**  >  **安全性**  >  **驗證方法**  >  **驗證方法原則 (預覽) **。
 1. 在 [方法**FIDO2] 安全性金鑰**底下，選擇下列選項：
    1. **啟用**-是或否
    1. **目標**-所有使用者或選取使用者
@@ -68,7 +68,7 @@ ms.locfileid: "85550414"
 1. 選擇 [ **USB 裝置**] 或 [ **NFC 裝置**]。
 1. 備妥您的金鑰，然後選擇 **[下一步]**。
 1. 隨即會出現一個方塊，並要求使用者建立/輸入您的安全性金鑰的 PIN，然後執行金鑰的必要手勢，也就是生物識別或觸控。
-1. 使用者將會回到合併的註冊體驗，並要求您提供有意義的金鑰名稱，讓使用者可以識別有多個索引鍵（如果有的話）。 按 [下一步] 。
+1. 使用者將會回到合併的註冊體驗，並要求您提供有意義的金鑰名稱，讓使用者可以識別有多個索引鍵（如果有的話）。 按一下 [下一步] 。
 1. 按一下 [**完成**] 完成程式。
 
 ## <a name="sign-in-with-passwordless-credential"></a>使用無密碼認證登入

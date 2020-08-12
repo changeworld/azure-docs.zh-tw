@@ -12,12 +12,12 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb629b80958ed2897f76eb099f738c33b48c3696
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868673"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119601"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft 身分識別平臺上的系統管理員同意
 
@@ -45,16 +45,16 @@ https://graph.microsoft.com/mail.send
 ```
 
 
-| 參數     | 條件     | 說明                                                                               |
+| 參數     | 條件     | 描述                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
 | `tenant` | 必要 | 您想要要求權限的目錄租用戶。 可以提供 GUID 或易記的名稱格式，或是一般會參考使用 `organizations` (如範例所示)。 請勿使用「通用」，因為個人帳戶無法提供系統管理員同意，除非在租使用者的內容中。 若要確保與管理租使用者的個人帳戶具有最佳相容性，請盡可能使用租使用者識別碼。 |
 | `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
 | `redirect_uri` | 必要 |您想要傳送回應以供應用程式處理的重新導向 URI。 它必須與您在應用程式註冊入口網站中註冊的其中一個重新導向 URI 完全相符。 |
 | `state` | 建議 | 同樣會隨權杖回應傳回之要求中所包含的值。 它可以是您想要的任何內容的字串。 請在驗證要求出現之前，先使用此狀態在應用程式中將使用者狀態的相關資訊 (例如他們之前所在的網頁或檢視) 編碼。 |
-|`scope`        | 必要      | 定義應用程式所要求的許可權集合。 這可以是靜態（使用/.default）或動態範圍。  這可能包括 OIDC 範圍（ `openid` 、 `profile` 、 `email` ）。 |
+|`scope`        | 必要      | 定義應用程式所要求的許可權集合。 這可以是使用/.default) 或動態範圍的靜態 (。  這可能包括 (`openid` 、) 的 OIDC `profile` 範圍 `email` 。 |
 
 
-此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 系統會要求系統管理員核准您在參數中要求的擁有權限 `scope` 。  如果您已使用靜態（ `/.default` ）值，它的運作方式就像是 v1.0 系統管理員同意端點，並要求同意所有在應用程式的必要許可權中找到的範圍。
+此時，Azure AD 會要求租用戶系統管理員登入來完成要求。 系統會要求系統管理員核准您在參數中要求的擁有權限 `scope` 。  如果您已使用靜態 (`/.default`) 值，它的運作方式就像是 v1.0 系統管理員同意端點，並要求同意所有在應用程式的必要許可權中找到的範圍。
 
 ### <a name="successful-response"></a>成功回應
 
@@ -64,7 +64,7 @@ https://graph.microsoft.com/mail.send
 http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
 ```
 
-| 參數         | Description                                                                                       |
+| 參數         | 描述                                                                                       |
 |------------------:|:-------------------------------------------------------------------------------------------------:|
 | `tenant`| 將應用程式所要求的權限授與應用程式的目錄租用戶 (採用 GUID 格式)。|
 | `state`           | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 此狀態用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。|
@@ -88,5 +88,5 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 ## <a name="next-steps"></a>後續步驟
 - 請參閱[如何將應用程式轉換成多租用戶](howto-convert-app-to-be-multi-tenant.md)
 - 瞭解在[授權碼授與流程期間，OAuth 2.0 通訊協定層支援的同意](v2-oauth2-auth-code-flow.md#request-an-authorization-code)方式。
-- 瞭解[多租使用者應用程式如何使用同意架構](active-directory-devhowto-multi-tenant-overview.md)來實行「使用者」和「系統管理員」同意，以支援更先進的多層式應用程式模式。
+- 瞭解[多租使用者應用程式如何使用同意架構](./howto-convert-app-to-be-multi-tenant.md)來實行「使用者」和「系統管理員」同意，以支援更先進的多層式應用程式模式。
 - 瞭解[Azure AD 應用程式同意體驗](application-consent-experience.md)

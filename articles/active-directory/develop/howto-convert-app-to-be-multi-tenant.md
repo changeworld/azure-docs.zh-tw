@@ -13,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 6a48467100e396ed1b43544d1b10ae5007415e3e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: d3810d3998f82127fc32327f696a2784382b4537
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201955"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117034"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>操作說明：讓任何 Azure Active Directory (AD) 使用者以多租用戶應用程式的模式登入
 
@@ -47,7 +47,7 @@ Azure AD 中的 Web 應用程式/API 註冊預設是單一租用戶。 您可以
 根據預設，透過 Azure 入口網站建立的應用程式具有在建立應用程式時設定的全域唯一應用程式識別碼 URI，但您可以變更此值。 例如，如果租用戶的名稱是 contoso.onmicrosoft.com，則有效的「應用程式識別碼 URI」會是 `https://contoso.onmicrosoft.com/myapp`。 如果租用戶具有已驗證的網域 `contoso.com`，則有效的「應用程式識別碼 URI」也會是 `https://contoso.com/myapp`。 如果「應用程式識別碼 URI」沒有按照這個模式，將應用程式設定成多租用戶時就會失敗。
 
 > [!NOTE]
-> Native client 註冊以及 Microsoft 身分[識別平臺應用程式](./active-directory-appmodel-v2-overview.md)預設為多租使用者。 因此，您不需要採取任何動作來將這些應用程式註冊轉換成多租用戶。
+> Native client 註冊以及 Microsoft 身分[識別平臺應用程式](./v2-overview.md)預設為多租使用者。 因此，您不需要採取任何動作來將這些應用程式註冊轉換成多租用戶。
 
 ## <a name="update-your-code-to-send-requests-to-common"></a>將您的程式碼更新成將要求傳送給 /common
 
@@ -155,7 +155,7 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 
 如果在不同的租用戶中註冊不同的應用程式層，將會發生類似的情況。 例如，想像建置一個會呼叫 Office 365 Exchange Online API 的原生用戶端應用程式的情況。 若要開發此原生應用程式，然後讓此原生應用程式在客戶的租用戶中執行，就必須要有 Exchange Online 服務主體。 在此情況下，開發人員和客戶必須購買 Exchange Online，如此才能在其租用戶中建立服務主體。
 
-如果它是由 Microsoft 以外的組織所建立的 API，則 API 的開發人員必須提供一種方法，讓其客戶同意應用程式進入其客戶的租使用者。 建議的設計是讓協力廠商開發人員建立 API，使其也可以做為 web 用戶端來執行註冊。 作法：
+如果它是由 Microsoft 以外的組織所建立的 API，則 API 的開發人員必須提供一種方法，讓其客戶同意應用程式進入其客戶的租使用者。 建議的設計是讓協力廠商開發人員建立 API，使其也可以做為 web 用戶端來執行註冊。 若要這樣做：
 
 1. 遵循先前的章節，確保 API 實作多租用戶應用程式註冊/程式碼的需求。
 2. 除了公開 API 的範圍/角色，請確定註冊包含預設) 提供的「登入和讀取使用者設定檔」許可權 (。
@@ -201,7 +201,7 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 [AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
+[AAD-Samples-MT]: /samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview
@@ -226,9 +226,9 @@ Web 應用程式和 web Api 會接收並驗證來自 Microsoft 身分識別平�
 [AZURE-portal]: https://portal.azure.com
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
-[O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest
+[O365-Perm-Ref]: /graph/permissions-reference
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
-[OAuth2-AuthZ-Code-Grant-Flow]: https://msdn.microsoft.com/library/azure/dn645542.aspx
+[OAuth2-AuthZ-Code-Grant-Flow]: /previous-versions/azure/dn645542(v=azure.100)
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6

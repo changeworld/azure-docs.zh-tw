@@ -1,5 +1,5 @@
 ---
-title: 使用 Transact-sql 建立和管理彈性資料庫作業（T-sql）
+title: '使用 Transact-sql 建立和管理彈性資料庫作業 (preview)  (T-sql) '
 description: 使用 Transact-SQL (T-SQL) 透過彈性資料庫作業代理程式跨多個資料庫執行指令碼。
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: c91f96afefe924856b7416844d37c4d7a13c794b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 339b66310d75e228bc6107635ac39b8d27d774c1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84031099"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119108"
 ---
-# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 建立及管理彈性資料庫作業
+# <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>使用 Transact-sql (T-sql) 來建立和管理 (預覽的彈性資料庫作業) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 本文提供許多範例案例，說明如何透過 T-SQL 開始使用彈性作業。
@@ -73,7 +73,7 @@ SELECT * FROM jobs.target_group_members WHERE target_group_name='ServerGroup1';
 
 ## <a name="exclude-an-individual-database"></a>排除個別資料庫
 
-下列範例顯示如何針對伺服器中的所有資料庫執行作業，但名為 *(mappingdb*的資料庫除外。  
+下列範例顯示如何針對伺服器中的所有資料庫執行作業，但名為* (mappingdb*的資料庫除外。  
 連線至[*作業資料庫*](job-automation-overview.md#job-database)，然後執行下列命令：
 
 ```sql
@@ -389,7 +389,7 @@ EXEC jobs.sp_delete_job @job_name='ResultsPoolsJob'
 
 下列預存程序位於[作業資料庫](job-automation-overview.md#job-database)中。
 
-|預存程序  |Description  |
+|預存程序  |描述  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     新增作業。    |
 |[sp_update_job](#sp_update_job)    |      更新現有作業。   |
@@ -614,7 +614,7 @@ sp_add_job 必須從建立作業代理程式時所指定的作業代理程式資
 作業步驟的順序識別碼。 步驟識別碼從 1 開始，並漸次遞增而不會跳號。 如果現有的步驟已經有此識別碼，則該步驟和所有下列步驟將會遞增其識別碼，以便將這個新步驟插入順序中。 若未指定，則會將 step_id 自動指派給步驟序列中的最後一個項目。 step_id 是 int。
 
 [ ** \@ step_name =** ] step_name  
-步驟的名稱。 必須指定，但作業的第一個步驟（為了方便），其預設名稱為 ' JobStep '。 step_name 是 nvarchar(128)。
+步驟的名稱。 必須指定，但作業的第一個步驟 (為了方便) ，其預設名稱為 ' JobStep '。 step_name 是 nvarchar(128)。
 
 [ ** \@ command_type =** ] ' command_type '  
 此作業步驟所執行的命令類型。 command_type 是 nvarchar(50)，預設值為 TSql，表示 @command_type 參數的值為 T-SQL 指令碼。
@@ -1204,7 +1204,7 @@ GO
 
 [作業資料庫](job-automation-overview.md#job-database)中提供下列檢視。
 
-|檢視  |說明  |
+|檢視  |描述  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  顯示作業執行歷程記錄。      |
 |[作業](#jobs-view)     |   顯示所有作業。      |
@@ -1220,7 +1220,7 @@ GO
 
 顯示作業執行歷程記錄。
 
-|資料行名稱 | 資料類型 | Description |
+|資料行名稱 | 資料類型 | 描述 |
 |---------|---------|---------|
 |**job_execution_id** | UNIQUEIDENTIFIER | 作業執行的執行個體唯一識別碼。
 |**job_name** | nvarchar(128) | 作業的名稱。

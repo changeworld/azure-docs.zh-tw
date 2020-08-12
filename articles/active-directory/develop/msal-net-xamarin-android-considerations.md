@@ -1,7 +1,7 @@
 ---
-title: Xamarin Android 考慮（MSAL.NET） |Azure
+title: " (MSAL.NET) 的 Xamarin Android 考慮 |Azure"
 titleSuffix: Microsoft identity platform
-description: 瞭解使用 Xamarin Android 搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）的考慮。
+description: 瞭解使用 Xamarin Android 搭配適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 的考慮。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.date: 04/24/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bb5950360734bc46923ef18424e3ad1ce275ad7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d244bbbe96bcea45da5c0860e4af52409123fb7f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652678"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118683"
 ---
 # <a name="considerations-for-using-xamarin-android-with-msalnet"></a>使用 Xamarin Android 搭配 MSAL.NET 的考慮
-本文討論當您使用 Xamarin Android 搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）時應考慮的事項。
+本文討論當您使用 Xamarin Android 搭配適用于 .NET 的 Microsoft 驗證程式庫 (MSAL.NET) 時所應考慮的事項。
 
 ## <a name="set-the-parent-activity"></a>設定父活動
 
@@ -56,7 +56,7 @@ var pca = PublicClientApplicationBuilder
 ## <a name="ensure-that-control-returns-to-msal"></a>確定控制項返回 MSAL 
 當驗證流程的互動部分結束時，請確定該控制項會回到 MSAL。 在 Android 上，覆寫的 `OnActivityResult` 方法 `Activity` 。 然後呼叫 `SetAuthenticationContinuationEventArgs` MSAL 類別的方法 `AuthenticationContinuationHelper` 。 
 
-以下是範例：
+以下為範例：
 
 ```csharp
 protected override void OnActivityResult(int requestCode, 
@@ -90,9 +90,9 @@ protected override void OnActivityResult(int requestCode,
  </activity>
 ```
 
-以您在 Azure 入口網站中註冊的封裝名稱取代 `android:host=` 值。 以您在 Azure 入口網站中註冊的金鑰雜湊取代 `android:path=` 值。 簽章雜湊*不*應以 URL 編碼。 確定前置正斜線（ `/` ）出現在簽章雜湊的開頭。
+以您在 Azure 入口網站中註冊的封裝名稱取代 `android:host=` 值。 以您在 Azure 入口網站中註冊的金鑰雜湊取代 `android:path=` 值。 簽章雜湊*不*應以 URL 編碼。 確定前置正斜線 (`/`) 出現在簽章雜湊的開頭。
 
-或者，[在程式碼中建立活動](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics)，而不是手動編輯*AndroidManifest.xml*。 若要在程式碼中建立活動，請先建立包含 `Activity` 屬性和屬性的類別 `IntentFilter` 。 
+或者，[在程式碼中建立活動](/xamarin/android/platform/android-manifest#the-basics)，而不是手動編輯*AndroidManifest.xml*。 若要在程式碼中建立活動，請先建立包含 `Activity` 屬性和屬性的類別 `IntentFilter` 。 
 
 以下是代表 XML 檔案值的類別範例：
 
@@ -111,9 +111,9 @@ protected override void OnActivityResult(int requestCode,
 
 [Xamarin] 會產生程式碼， `package` `com.companyname.{appName}` 在*AndroidManifest.xml*中將屬性設定為。 如果您使用 `DataScheme` as `msal{client_id}` ，則您可能會想要變更值，使其符合 `MainActivity.cs` 命名空間的值。
 
-## <a name="use-the-embedded-web-view-optional"></a>使用內嵌的 web view （選擇性）
+## <a name="use-the-embedded-web-view-optional"></a>使用內嵌的 web view (選擇性的) 
 
-根據預設，MSAL.NET 會使用系統網頁瀏覽器。 此瀏覽器可讓您使用 web 應用程式和其他應用程式來取得單一登入（SSO）。 在某些罕見的情況下，您可能會想要讓系統使用內嵌的 web view。 
+根據預設，MSAL.NET 會使用系統網頁瀏覽器。 此瀏覽器可讓您使用 web 應用程式和其他應用程式， (SSO) 取得單一登入。 在某些罕見的情況下，您可能會想要讓系統使用內嵌的 web view。 
 
 這個程式碼範例示範如何設定內嵌的 web view：
 

@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bfc6b6fa6a2af8750c868aaacb289d39306ce06e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770971"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118615"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft 身分識別平台和 OAuth 2.0 資源擁有者密碼認證授與
 
@@ -33,7 +33,7 @@ Microsoft 身分識別平台支援 [OAuth 2.0 資源擁有者密碼認證 (ROPC)
 > * 受邀加入 Azure AD 租用戶的個人帳戶無法使用 ROPC。
 > * 沒有密碼的帳戶無法透過 ROPC 登入。 針對此案例，建議您改用不同的應用程式流程。
 > * 如果使用者必須使用[多重要素驗證 (MFA)](../authentication/concept-mfa-howitworks.md) 來登入應用程式，則會遭到封鎖。
-> * [混合式身分識別同盟](/azure/active-directory/hybrid/whatis-fed)案例 (例如，用來驗證內部部署帳戶的 Azure AD 和 ADFS) 中不支援 ROPC。 如果以整頁方式將使用者重新導向至內部部署身分識別提供者，Azure AD 就無法對該身分識別提供者測試使用者名稱和密碼。 不過，ROPC 支援[傳遞驗證](/azure/active-directory/hybrid/how-to-connect-pta)。
+> * [混合式身分識別同盟](../hybrid/whatis-fed.md)案例 (例如，用來驗證內部部署帳戶的 Azure AD 和 ADFS) 中不支援 ROPC。 如果以整頁方式將使用者重新導向至內部部署身分識別提供者，Azure AD 就無法對該身分識別提供者測試使用者名稱和密碼。 不過，ROPC 支援[傳遞驗證](../hybrid/how-to-connect-pta.md)。
 
 ## <a name="protocol-diagram"></a>通訊協定圖表
 
@@ -113,4 +113,4 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ## <a name="learn-more"></a>深入了解
 
 * 使用[範例主控台應用程式](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)自行試用 ROPC。
-* 若要判斷您是否應該使用 v2.0 端點，請參閱 [Microsoft 身分識別平台限制](active-directory-v2-limitations.md)。
+* 若要判斷您是否應該使用 v2.0 端點，請參閱 [Microsoft 身分識別平台限制](../azuread-dev/azure-ad-endpoint-comparison.md)。

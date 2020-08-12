@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 7352fe220e302730f2683d335de5d32ca13d9add
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 30b90b89300d6ca63255a000c7a6f7723f648056
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845165"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118752"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>登入使用者的 Web 應用程式：程式碼設定
 
@@ -345,21 +345,21 @@ Session(app)
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
-> [登入和登出](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnetcore)
+> [登入和登出](./scenario-web-app-sign-user-sign-in.md?tabs=aspnetcore)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
-> [登入和登出](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnet)
+> [登入和登出](./scenario-web-app-sign-user-sign-in.md?tabs=aspnet)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [登入和登出](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=java)
+> [登入和登出](./scenario-web-app-sign-user-sign-in.md?tabs=java)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [登入和登出](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=python)
+> [登入和登出](./scenario-web-app-sign-user-sign-in.md?tabs=python)
 
 ---

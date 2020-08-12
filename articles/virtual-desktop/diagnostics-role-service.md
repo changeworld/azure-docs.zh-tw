@@ -3,15 +3,15 @@ title: Windows 虛擬桌面診斷問題 - Azure
 description: 如何使用 Windows 虛擬桌面診斷功能來診斷問題。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a985ce4f93b04e4065b5189b2a406b54729720c3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005090"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121403"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>識別及診斷 Windows 虛擬桌面問題
 
@@ -60,6 +60,14 @@ Windows 虛擬桌面提供診斷功能，可讓系統管理員透過單一介面
 |8|ConnectionBroken|用戶端與閘道或伺服器之間的連線已中斷。 除非是意外發生，否則不需要採取任何動作。|
 |14|UnexpectedNetworkDisconnect|網路連線已中斷。 要求使用者再次連線。|
 |24|ReverseConnectFailed|主機虛擬機器無法直接看到 RD 閘道。 請確定可以解析閘道 IP 位址。|
+
+## <a name="error-cant-add-user-assignments-to-an-app-group"></a>錯誤：無法將使用者指派新增至應用程式群組
+
+將使用者指派給應用程式群組之後，Azure 入口網站會顯示警告，指出「會話結束」或「遇到驗證問題-延伸模組 Microsoft_Azure_WVD」。 然後就不會載入 [指派] 頁面，之後頁面就會停止在整個 Azure 入口網站中載入 (例如 Azure 監視器、Log Analytics、服務健康狀態等等，) 。
+
+**原因：** 條件式存取原則發生問題。 Azure 入口網站嘗試取得 Microsoft Graph 的 token，而此權杖相依于 SharePoint Online。 客戶具有稱為「Microsoft Office 365 資料儲存體使用規定」的條件式存取原則，要求使用者接受使用規定來存取資料存放區。 不過，他們尚未登入，因此 Azure 入口網站無法取得權杖。
+
+**修正：** 在登入 Azure 入口網站之前，系統管理員必須先登入 SharePoint 並接受使用條款。 之後，他們應該就可以像平常一樣登入 Azure 入口網站。
 
 ## <a name="next-steps"></a>後續步驟
 

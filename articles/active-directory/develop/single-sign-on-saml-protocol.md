@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282988"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118445"
 ---
 # <a name="single-sign-on-saml-protocol"></a>單一登入 SAML 通訊協定
 
@@ -50,7 +50,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | --- | --- | --- |
 | ID | 必要 | Azure AD 使用這個屬性來填入所傳回回應的 `InResponseTo` 屬性。 識別碼的開頭不能是數字，因此常見的策略是在 GUID 的字串表示法前面加上 "id" 等字串。 例如， `id6c1c178c166d486687be4aaf5e482730` 便是有效的識別碼。 |
 | 版本 | 必要 | 此參數應該設定為 **2.0**。 |
-| IssueInstant | 必要 | 這是具有 UTC 值和 [來回行程格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)的日期時間字串。 Azure AD 必須要有這種類型的日期時間值，但不會評估或使用此值。 |
+| IssueInstant | 必要 | 這是具有 UTC 值和 [來回行程格式 ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)的日期時間字串。 Azure AD 必須要有這種類型的日期時間值，但不會評估或使用此值。 |
 | AssertionConsumerServiceUrl | 選用 | 如果提供，此參數必須符合 Azure AD 中雲端服務的 `RedirectUri`。 |
 | ForceAuthn | 選用 | 這是布林值。 如果為 true，表示即使使用者在 Azure AD 中具有有效的工作階段，也會強制使用者重新驗證。 |
 | IsPassive | 選用 | 這是布林值，指定 Azure AD 是否以無訊息模式驗證使用者，不需要使用者互動，如果有工作階段 cookie 的話則使用此 cookie。 如果是這種情況，Azure AD 會嘗試使用工作階段 cookie 驗證使用者。 |
@@ -157,7 +157,7 @@ Azure AD 會忽略 `AllowCreate` 屬性。
 * `Destination`:當登入順利完成時，這會設定為服務提供者 (雲端服務) 的 `RedirectUri`。
 * `InResponseTo`:這會設定為起始回應的 `AuthnRequest` 元素的 `ID` 屬性。
 
-### <a name="issuer"></a>Issuer
+### <a name="issuer"></a>簽發者
 
 Azure AD 會將 `Issuer` 元素設為 `https://sts.windows.net/<TenantIDGUID>/`，其中，\<TenantIDGUID> 是 Azure AD 租用戶的租用戶識別碼。
 

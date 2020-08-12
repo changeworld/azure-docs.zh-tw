@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/17/2020
+ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592265"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121012"
 ---
 # <a name="translator-v30"></a>Translator v3。0
 
@@ -43,14 +43,14 @@ Microsoft Translator 的要求是由最接近要求來源的資料中心所處�
 
 |描述|Azure 地理位置|基底 URL|
 |:--|:--|:--|
-|Azure|全域（非區域）|   api.cognitive.microsofttranslator.com|
+|Azure|全域 (非區域) |   api.cognitive.microsofttranslator.com|
 |Azure|美國|   api-nam.cognitive.microsofttranslator.com|
 |Azure|歐洲|  api-eur.cognitive.microsofttranslator.com|
 |Azure|亞太地區|    api-apc.cognitive.microsofttranslator.com|
 
 ## <a name="authentication"></a>驗證
 
-訂閱 Translator 或認知服務 Azure 認知服務中的[多服務](https://azure.microsoft.com/pricing/details/cognitive-services/)，並使用您的訂用帳戶金鑰（可在 Azure 入口網站中取得）來進行驗證。 
+訂閱 Translator 或認知服務 Azure 認知服務中的[多服務](https://azure.microsoft.com/pricing/details/cognitive-services/)，並使用 Azure 入口網站) 中提供的訂用帳戶金鑰 (來進行驗證。 
 
 有三個標頭可供用來驗證您的訂用帳戶。 下表描述每個使用方式：
 
@@ -143,15 +143,15 @@ curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscrip
 Authorization: Bearer <Base64-access_token>
 ```
 
-驗證權杖的有效時間為 10 分鐘。 對轉譯器進行多次呼叫時，應該重複使用權杖。 不過，如果您的程式在一段很長的時間內對翻譯人員提出要求，則您的程式必須定期要求新的存取權杖（例如，每8分鐘一次）。
+驗證權杖的有效時間為 10 分鐘。 對轉譯器進行多次呼叫時，應該重複使用權杖。 不過，如果您的程式在一段很長的時間內對翻譯人員提出要求，則您的程式必須定期要求新的存取權杖 (例如，每8分鐘) 。
 
 ## <a name="virtual-network-support"></a>虛擬網路支援
 
-Translator 服務現已提供有限區域（ `WestUS2` 、 `EastUS` 、、 `SouthCentralUS` `WestUS` 、 `CentralUSEUAP` 、 `global` ）中的虛擬網路功能。 若要啟用虛擬網路，請參閱設定[Azure 認知服務虛擬網路](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
+Translator 服務現在可在 Azure 公用雲端的所有區域中，虛擬網路 (的 VNET) 功能使用。 若要啟用虛擬網路，請參閱設定[Azure 認知服務虛擬網路](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
 
-一旦您開啟這項功能，就必須使用自訂端點來呼叫翻譯工具。 您不能使用全域 translator 端點（"api.cognitive.microsofttranslator.com"），也無法使用存取權杖進行驗證。
+一旦您開啟這項功能，就必須使用自訂端點來呼叫翻譯工具。 您無法使用全域轉譯程式端點 ( "api.cognitive.microsofttranslator.com" ) ，也無法使用存取權杖進行驗證。
 
-建立[translator 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)之後，您就可以找到自訂端點。
+建立[translator 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)並允許從選取的網路和私人端點進行存取之後，您可以找到自訂端點。
 
 |標題|描述|
 |:-----|:----|
@@ -243,7 +243,7 @@ curl -X POST "https://<your-custom-domain>.cognitiveservices.azure.com/translato
 | SuccessfulCalls| 成功的呼叫數。|
 | TotalErrors| 具有錯誤回應的呼叫數目。|
 | BlockedCalls| 超過速率或配額限制的呼叫數目。|
-| ServerErrors| 伺服器內部錯誤（5XX）的呼叫次數。|
-| ClientErrors| 用戶端錯誤（4XX）的呼叫次數。|
+| ServerErrors| 伺服器內部錯誤 (5XX) 的呼叫次數。|
+| ClientErrors| 用戶端錯誤 (4XX) 的呼叫次數。|
 | Latency| 完成要求的持續時間（以毫秒為單位）。|
 | CharactersTranslated| 傳入文字要求中的字元總數。|

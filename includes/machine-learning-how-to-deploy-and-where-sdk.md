@@ -6,18 +6,18 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 624824f5b6b8f7154ccd7b50da49f3f4bb179bb9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 97f0412141f15ad0a72c02b92cfcf089b61db0cf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542759"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120334"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立 Azure Machine Learning 工作區](../articles/machine-learning/how-to-manage-workspace.md)。
 - 模型。 如果您沒有定型的模型，您可以使用[本教學](https://aka.ms/azml-deploy-cloud)課程中提供的模型和相依性檔案。
-- [適用于 Python 的 Azure Machine Learning 軟體發展工具組（SDK）](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+- [適用于 Python 的 Azure Machine Learning 軟體發展工具組 (SDK) ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 
 
 ## <a name="connect-to-your-workspace"></a>連線到您的工作區
@@ -34,7 +34,7 @@ ws = Workspace.from_config(path=".file-path/ws_config.json")
 已註冊的模型是組成模型的一或多個檔案所在的邏輯容器。 例如，如果您有儲存在多個檔案中的模型，您可以在工作區中將其註冊為單一模型。 註冊檔案之後，您就可以下載或部署已註冊的模型，並接收您註冊的所有檔案。
 
 > [!TIP]
-> 當您註冊模型時，您會提供雲端位置（從定型回合）或本機目錄的路徑。 此路徑只是為了在註冊過程中，尋找要上傳的檔案。 它不需要符合輸入腳本中使用的路徑。 如需詳細資訊，請參閱[在您的輸入腳本中尋找模型](../articles/machine-learning/how-to-deploy-advanced-entry-script.md#load-registered-models)檔案。
+> 當您註冊模型時，您會提供從定型回合) 或本機目錄 (的雲端位置路徑。 此路徑只是為了在註冊過程中，尋找要上傳的檔案。 它不需要符合輸入腳本中使用的路徑。 如需詳細資訊，請參閱[在您的輸入腳本中尋找模型](../articles/machine-learning/how-to-deploy-advanced-entry-script.md#load-registered-models)檔案。
 
 機器學習模型會在您的 Azure Machine Learning 工作區中註冊。 模型可以來自 Azure Machine Learning 或其他地方。 註冊模型時，您可以選擇性地提供有關模型的中繼資料。 `tags`接著， `properties` 您可以將套用至模型註冊的和字典用於篩選模型。
 
@@ -100,12 +100,11 @@ ws = Workspace.from_config(path=".file-path/ws_config.json")
 
 如需使用 Azure Machine Learning 外部定型模型的詳細資訊，請參閱[如何部署現有的模型](../articles/machine-learning/how-to-deploy-existing-model.md)。
 
-
 ## <a name="define-an-entry-script"></a>定義專案腳本
 
 [!INCLUDE [write entry script](machine-learning-entry-script.md)]
 
-## <a name="define-an-inference-configuration"></a>定義推斷設定
+## <a name="define-an-inferenceconfig"></a>定義 InferenceConfig
 
 推斷設定會說明如何設定包含模型的 web 服務。 稍後當您部署模型時，就會用到它。
 
@@ -124,7 +123,7 @@ dependencies:
 ```
 
 > [!IMPORTANT]
-> 如果您的相依性可透過 Conda 和 pip （來自 PyPi）取得，Microsoft 建議使用 Conda 版本，因為 Conda 套件通常會隨附預先建立的二進位檔，讓安裝更可靠。
+> 如果您的相依性可透過 PyPi) 的 Conda 和 pip (取得，Microsoft 建議使用 Conda 版本，因為 Conda 套件通常隨附預先建立的二進位檔，讓安裝更可靠。
 >
 > 如需詳細資訊，請參閱[瞭解 Conda 和 Pip](https://www.anaconda.com/understanding-conda-and-pip/)。
 >
@@ -162,23 +161,20 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 
 ## <a name="choose-a-compute-target"></a>選擇計算目標
 
-
 [!INCLUDE [aml-compute-target-deploy](aml-compute-target-deploy.md)]
 
-
-
-## <a name="define-a-deployment-configuration"></a>定義部署設定
+## <a name="define-a-deploymentconfiguration"></a>定義 DeploymentConfiguration
 
 在部署模型之前，您必須先定義部署設定。 *部署設定適用于將裝載 web 服務的計算目標。* 例如，當您在本機部署模型時，您必須指定服務接受要求的埠。 部署設定不屬於您的輸入腳本。 它是用來定義將裝載模型和專案腳本之計算目標的特性。
 
-您可能也需要建立計算資源（例如，您的工作區尚未有相關聯的 Azure Kubernetes Service （AKS）實例）。
+例如，您可能也需要建立計算資源，如果您還沒有 Azure Kubernetes Service (AKS 與您的工作區相關聯的) 實例。
 
 下表提供建立每個計算目標之部署設定的範例：
 
 | 計算目標 | 部署設定範例 |
 | ----- | ----- |
 | 本機 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
-| Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+| Azure 容器執行個體 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 本機、Azure 容器實例和 AKS web 服務的類別可以從下列來源匯入 `azureml.core.webservice` ：
@@ -186,7 +182,6 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
 
 ## <a name="deploy-your-model"></a>部署模型
 
@@ -201,13 +196,11 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-如需詳細資訊，請參閱[LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py)、 [Model. deploy （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)和[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)的檔。
-
+如需詳細資訊，請參閱[LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py)的檔、[模型。部署 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)和[Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py)。
 
 ## <a name="delete-resources"></a>刪除資源
 
 若要刪除已部署的 Web 服務，請使用 `service.delete()`。
 若要刪除已註冊的模型，請使用 `model.delete()`。
 
-如需詳細資訊，請參閱[WebService. delete （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)和[Model. delete （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)的檔。
-
+如需詳細資訊，請參閱 WebService 的檔[。刪除 ( # B1](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--)和[Model。刪除 ( # B3 ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--)。

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 005fb194a5c1539b70ccb8e8ac7d938b190ee4f5
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 204bc7dd8cc31f48fdc09eae6b00247023de64f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563307"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120961"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保護的 Web API：驗證範圍和應用程式角色
 
@@ -88,7 +88,7 @@ public class TodoListController : Controller
 
 #### <a name="verify-the-scopes-more-globally"></a>更全域驗證範圍
 
-針對您的 Web API 定義細微範圍，並驗證每個控制器動作中的範圍是建議的方法。 不過，您也可以使用 ASP.NET Core 來驗證應用程式層級或控制站的範圍。 如需詳細資訊，請參閱 ASP.NET core 檔中的宣告[型授權](https://docs.microsoft.com/aspnet/core/security/authorization/claims)。
+針對您的 Web API 定義細微範圍，並驗證每個控制器動作中的範圍是建議的方法。 不過，您也可以使用 ASP.NET Core 來驗證應用程式層級或控制站的範圍。 如需詳細資訊，請參閱 ASP.NET core 檔中的宣告[型授權](/aspnet/core/security/authorization/claims)。
 
 ### <a name="net-mvc"></a>.NET MVC
 
@@ -96,7 +96,7 @@ public class TodoListController : Controller
 
 ## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>在精靈應用程式所呼叫的 API 中驗證應用程式角色
 
-如果您的 Web API 是由[精靈應用程式](scenario-daemon-overview.md)呼叫，該應用程式應該需要 Web API 的應用程式權限。 如[公開應用程式權限 (應用程式角色)](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles) 所示，您的 API 會公開這類權限。 其中一個範例是 `access_as_application` 應用程式角色。
+如果您的 Web API 是由[精靈應用程式](scenario-daemon-overview.md)呼叫，該應用程式應該需要 Web API 的應用程式權限。 如[公開應用程式權限 (應用程式角色)](./scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) 所示，您的 API 會公開這類權限。 其中一個範例是 `access_as_application` 應用程式角色。
 
 您現在必須讓 API 確認其所收到的權杖包含 `roles` 宣告，而且此宣告具有預期的值。 除了控制器動作會測試角色而非範圍以外，驗證碼類似於可驗證委派權限的程式碼：
 

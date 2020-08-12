@@ -1,5 +1,5 @@
 ---
-title: 使用 Active Directory 聯機服務（Visual Studio）
+title: '使用 Active Directory 聯機服務 (Visual Studio) '
 description: 使用 Visual Studio 的 [加入已連接服務] 對話方塊加入 Azure Active Directory
 author: ghogen
 manager: jillfra
@@ -10,22 +10,22 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: b77241b1413fea09e5a16e8bd5cbcda8db5b2327
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4275ae635affbfbc6a70c0107018602fbd100771
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477119"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114671"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>在 Visual Studio 中使用已連線的服務來新增 Azure Active Directory
 
-藉由使用 Azure Active Directory （Azure AD），您可以支援 ASP.NET MVC web 應用程式的單一登入（SSO），或 Web API 服務中的 Active Directory 驗證。 在使用 Azure AD 驗證的情況下，您的使用者可以從 Azure Active Directory 使用其帳戶來連線到您的 Web 應用程式。 Web API Azure AD 驗證的優點包括從 web 應用程式公開 API 時，增強的資料安全性。 有了 Azure AD，您不必以各自的帳戶和使用者管理作業來管理個別的驗證系統。
+藉由使用 Azure Active Directory (Azure AD) ，您可以支援單一登入 (SSO) 以 ASP.NET MVC web 應用程式，或在 Active Directory services 中 Web API 驗證。 在使用 Azure AD 驗證的情況下，您的使用者可以從 Azure Active Directory 使用其帳戶來連線到您的 Web 應用程式。 Web API Azure AD 驗證的優點包括從 web 應用程式公開 API 時，增強的資料安全性。 有了 Azure AD，您不必以各自的帳戶和使用者管理作業來管理個別的驗證系統。
 
 這篇文章和其附屬文件提供使用適用於 Active Directory 之 Visual Studio 連線服務的詳細資料。 這項功能可在 Visual Studio 2015 和更新版本中取得。
 
 目前，Active Directory 連線服務不支援 ASP.NET Core 應用程式。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure 帳戶：如果您沒有 Azure 帳戶，您可以[申請免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F)，或是[啟用您的 Visual Studio 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)。
 - **Visual Studio 2015**或更新版本。 [立即下載 Visual Studio](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
@@ -44,7 +44,7 @@ ms.locfileid: "85477119"
 
     ![[簡介] 頁面](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. 在 [單一登入]**** 頁面上，從 [網域]**** 下拉式清單中選取網域。 此清單包含 Visual Studio 的 [帳戶設定] 對話方塊中列出的帳戶所存取的所有網域（[檔案 **> 帳戶設定 ...**]）。或者，如果您找不到所要尋找的功能變數名稱（例如），則可以輸入該名稱 `mydomain.onmicrosoft.com` 。 您可以選擇可建立 Azure Active Directory 應用程式的選項，或是使用來自現有 Azure Active Directory 應用程式的設定。 完成時，選取 [下一步]****。
+1. 在 [單一登入]**** 頁面上，從 [網域]**** 下拉式清單中選取網域。 此清單包含 [帳戶設定] 對話方塊中所列出的帳戶可存取的所有網域 Visual Studio (檔案 **> 帳戶設定 ...** ]) 。或者，如果您找不到所要尋找的功能變數名稱（例如），則可以輸入該名稱 `mydomain.onmicrosoft.com` 。 您可以選擇可建立 Azure Active Directory 應用程式的選項，或是使用來自現有 Azure Active Directory 應用程式的設定。 完成時，選取 [下一步]****。
 
     ![[單一登入] 頁面](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
@@ -72,5 +72,5 @@ ms.locfileid: "85477119"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Active Directory 的驗證案例](authentication-scenarios.md)
+- [Azure Active Directory 的驗證案例](./authentication-vs-authorization.md)
 - [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

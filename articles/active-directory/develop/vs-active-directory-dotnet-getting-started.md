@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 36479acca56aa97a5453a9ab99691ed1993daaf3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e260e36aaa06cf9e157d58ad870b9817218c15da
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477000"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114637"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>開始使用 Azure Active Directory (ASP.NET MVC 專案)
 
@@ -82,5 +82,5 @@ ms.locfileid: "85477000"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Active Directory 的驗證案例](authentication-scenarios.md)
+- [Azure Active Directory 的驗證案例](./authentication-vs-authorization.md)
 - [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

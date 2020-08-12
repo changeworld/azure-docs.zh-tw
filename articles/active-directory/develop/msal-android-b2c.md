@@ -1,7 +1,7 @@
 ---
-title: Azure AD B2C （MSAL Android） |Azure
+title: Azure AD B2C (MSAL Android) |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解使用 Azure AD B2C 搭配適用于 Android 的 Microsoft 驗證程式庫（MSAL）時的特定考慮。面向
+description: '瞭解使用 Azure AD B2C 搭配適用于 Android 的 Microsoft 驗證程式庫 (MSAL 時的特定考慮。Android) '
 services: active-directory
 author: brianmel
 manager: CelesteDG
@@ -13,20 +13,20 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76696516"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119873"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>搭配 B2C 使用適用于 Android 的 MSAL
 
-Microsoft 驗證程式庫 (MSAL) 可讓應用程式開發人員使用 [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/) \(部分機器翻譯\)，以社交和本機身分識別驗證使用者。 Azure AD B2C 是身分識別管理服務。 用來自訂和控制客戶在使用您的應用程式時，如何註冊、登入及管理其設定檔。
+Microsoft 驗證程式庫 (MSAL) 可讓應用程式開發人員使用 [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) \(部分機器翻譯\)，以社交和本機身分識別驗證使用者。 Azure AD B2C 是身分識別管理服務。 用來自訂和控制客戶在使用您的應用程式時，如何註冊、登入及管理其設定檔。
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>設定已知的授權單位和重新導向 URI
 
-在 MSAL for Android 中，B2C 原則（使用者旅程）會設定為個別的授權單位。
+在適用于 Android 的 MSAL 中， (使用者旅程) 的 B2C 原則會設定為個別的授權單位。
 
 假設有一個具有兩個原則的 B2C 應用程式：
 - 註冊/登入
@@ -54,7 +54,7 @@ Microsoft 驗證程式庫 (MSAL) 可讓應用程式開發人員使用 [Azure Act
 }
 ```
 
-`redirect_uri`必須在應用程式設定中註冊，也可以在中， `AndroidManifest.xml` 以支援[授權碼授與流程](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)期間的重新導向。
+`redirect_uri`必須在應用程式設定中註冊，也可以在中， `AndroidManifest.xml` 以支援[授權碼授與流程](../../active-directory-b2c/authorization-code-flow.md)期間的重新導向。
 
 ## <a name="initialize-ipublicclientapplication"></a>初始化 IPublicClientApplication
 
@@ -153,7 +153,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>處理密碼變更原則
 
-本機帳戶註冊或登入使用者流程顯示「**忘記密碼？**」 連結。 按一下此連結並不會自動觸發密碼重設使用者流程。
+本機帳戶註冊或登入使用者流程顯示「**忘記密碼？**」 連結免費建立一個帳戶。 按一下此連結並不會自動觸發密碼重設使用者流程。
 
 相反地，系統會將錯誤碼 `AADB2C90118` 傳回您的應用程式。 您的應用程式應該藉由執行可重設密碼的特定使用者流程來處理此錯誤碼。
 
@@ -227,7 +227,7 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>IdToken 宣告
 
-IdToken 中傳回的宣告會由安全性權杖服務（STS）填入，而不是由 MSAL。 視所使用的識別提供者（IdP）而定，某些宣告可能不存在。 有些 Idp 目前不提供宣告 `preferred_username` 。 由於 MSAL 會使用此宣告來進行快取，因此 `MISSING FROM THE TOKEN RESPONSE` 會在其位置使用預留位置值。 如需有關 B2C IdToken 宣告的詳細資訊，請參閱[Azure Active Directory B2C 中的權杖總覽](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims)。
+安全性權杖服務會將 IdToken 中傳回的宣告填入 (STS) ，而不是由 MSAL。 視識別提供者 (使用的 IdP) 而定，某些宣告可能不存在。 有些 Idp 目前不提供宣告 `preferred_username` 。 由於 MSAL 會使用此宣告來進行快取，因此 `MISSING FROM THE TOKEN RESPONSE` 會在其位置使用預留位置值。 如需有關 B2C IdToken 宣告的詳細資訊，請參閱[Azure Active Directory B2C 中的權杖總覽](../../active-directory-b2c/tokens-overview.md#claims)。
 
 ## <a name="managing-accounts-and-policies"></a>管理帳戶和原則
 
@@ -239,4 +239,4 @@ B2C 會將每個原則視為個別的授權單位。 因此，從每個原則傳
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[Azure Active Directory B2C 的](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)Azure Active Directory B2C （Azure AD B2C）？
+若要深入瞭解 Azure Active Directory B2C (Azure AD B2C) [Azure Active Directory B2C 是什麼？](../../active-directory-b2c/overview.md)

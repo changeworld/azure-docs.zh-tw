@@ -13,12 +13,12 @@ ms.date: 07/29/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 945d6ac15c3cb0b3f98ebb14e6b859b8f356b944
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ef42dbb4cad1d40a35af28845baa402763acfc9b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419830"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119618"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 授權碼流程
 
@@ -66,14 +66,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 按一下下面的連結以執行此要求！ 登入之後，您的瀏覽器應重新導向至在位址列中有 `code` 的 `https://localhost/myapp/`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| 參數    | 必要/選用 | 說明 |
+| 參數    | 必要/選用 | 描述 |
 |--------------|-------------|--------------|
-| `tenant`    | 必要    | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。  |
+| `tenant`    | required    | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id`   | required    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。  |
 | `response_type` | required    | 授權碼流程必須包含 `code`。       |
-| `redirect_uri`  | 必要 | 應用程式的 redirect_uri，您的應用程式可在此傳送及接收驗證回應。 其必須完全符合您在入口網站中註冊的其中一個 redirect_uris，不然就必須得是編碼的 url。 對於原生和行動應用程式，請使用 `https://login.microsoftonline.com/common/oauth2/nativeclient` 的預設值。   |
+| `redirect_uri`  | required | 應用程式的 redirect_uri，您的應用程式可在此傳送及接收驗證回應。 其必須完全符合您在入口網站中註冊的其中一個 redirect_uris，不然就必須得是編碼的 url。 對於原生和行動應用程式，請使用 `https://login.microsoftonline.com/common/oauth2/nativeclient` 的預設值。   |
 | `scope`  | required    | 您要使用者同意的 [範圍](v2-permissions-and-consent.md) 空格分隔清單。  在要求的 `/authorize` 階段中，這可以涵蓋多項資源，讓您的應用程式對於您想要呼叫的多個 Web API 徵得同意。 |
-| `response_mode`   | 建議使用 | 指定將產生的權杖送回到應用程式所應該使用的方法。 可以是下列其中一項：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 會提供程式碼，以作為重新導向 URI 的查詢字串參數。 如果您要求可使用隱含流程的識別碼權杖，就無法使用 [OpenID 規格](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果您只要求程式碼，您可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 會執行 POST，其中包含您重新導向 URI 的程式碼。 如需詳細資訊，請參閱 [OpenID Connect 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)。  |
+| `response_mode`   | 建議使用 | 指定將產生的權杖送回到應用程式所應該使用的方法。 可以是下列其中一項：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 會提供程式碼，以作為重新導向 URI 的查詢字串參數。 如果您要求可使用隱含流程的識別碼權杖，就無法使用 [OpenID 規格](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果您只要求程式碼，您可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 會執行 POST，其中包含您重新導向 URI 的程式碼。 如需詳細資訊，請參閱 [OpenID Connect 通訊協定](../azuread-dev/v1-protocols-openid-connect-code.md)。  |
 | `state`                 | 建議使用 | 同樣會隨權杖回應傳回之要求中所包含的值。 其可以是您想要之任何內容的字串。 隨機產生的唯一值通常用於 [防止跨站台要求偽造攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此值也可以將驗證要求發生前使用者在應用程式中的狀態相關資訊 (例如他們所在的網頁或檢視) 編碼。 |
 | `prompt`  | 選用    | 表示需要的使用者互動類型。 此時唯有 `login`、`none` 及 `consent` 是有效值。<br/><br/>- `prompt=login` 會強制使用者在該要求上輸入認證，否定單一登入。<br/>- `prompt=none` 則相反，其會確保使用者不會看到任何互動式提示。 如果無法透過單一登入以無訊息方式完成要求，Microsoft 身分識別平台端點將傳回 `interaction_required` 錯誤。<br/>- `prompt=consent` 會在使用者登入之後觸發 OAuth 同意對話方塊，詢問使用者是否要授與權限給應用程式。<br/>- `prompt=select_account` 將中斷單一登入，其中會列出工作階段或任何已記住的帳戶中的所有帳戶，或提供選擇使用不同帳戶的選項。<br/> |
 | `login_hint`  | 選用    | 如果您事先知道其使用者名稱，可用來預先填入使用者登入頁面的使用者名稱/電子郵件地址欄位。 通常應用程式會在重新驗證期間使用此參數，已經使用 `preferred_username` 宣告從上一個登入擷取使用者名稱。   |
@@ -156,9 +156,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > 嘗試在 Postman 中執行這項要求！ (別忘了取代 `code`) [![請嘗試在 Postman 中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| 參數  | 必要/選用 | 說明     |
+| 參數  | 必要/選用 | 描述     |
 |------------|-------------------|----------------|
-| `tenant`   | 必要   | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。  |
+| `tenant`   | required   | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | required  | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |
 | `grant_type` | required   | 必須是授權碼流程的 `authorization_code` 。   |
 | `scope`      | 選用   | 以空格分隔的範圍清單。 範圍必須全部來自單一資源，以及 OIDC 範圍 (`profile`、`openid`、`email`)。 如需範圍的詳盡說明，請參閱 [權限、同意和範圍](v2-permissions-and-consent.md)。 這是授權碼流程的 Microsoft 擴充功能，目的是要允許應用程式在權杖兌換期間宣告他們想要權杖的資源。|
@@ -277,13 +277,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 嘗試在 Postman 中執行這項要求！ (別忘了取代 `refresh_token`) [![請嘗試在 Postman 中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 >
 
-| 參數     | 類型           | 說明        |
+| 參數     | 類型           | 描述        |
 |---------------|----------------|--------------------|
 | `tenant`        | required     | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。   |
-| `client_id`     | 必要    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
-| `grant_type`    | 必要    | 必須是授權碼流程此階段的 `refresh_token` 。 |
+| `client_id`     | required    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
+| `grant_type`    | required    | 必須是授權碼流程此階段的 `refresh_token` 。 |
 | `scope`         | required    | 範圍的空格分隔清單。 在此階段中要求的範圍必須相當於或為原始 authorization_code 要求階段中所要求的範圍子集。 如果這個要求中指定的範圍遍及多個資源伺服器，Microsoft 身分識別平台端點就會傳回第一個範圍中所指定資源的權杖。 如需範圍的詳盡說明，請參閱 [權限、同意和範圍](v2-permissions-and-consent.md)。 |
-| `refresh_token` | 必要    | 您在流程的第二個階段中取得的 refresh_token。 |
+| `refresh_token` | required    | 您在流程的第二個階段中取得的 refresh_token。 |
 | `client_secret` | Web Apps 所需 | 您在應用程式註冊入口網站中為應用程式建立的應用程式密碼。 此參數不應用於原生應用程式中，因為 client_secrets 無法可靠地儲存在裝置上。 這是 Web 應用程式和 Web API 的必要參數，能夠將 client_secret 安全地儲存在伺服器端。 此密碼必須經過 URL 編碼。 如需詳細資訊，請參閱 [URI 一般語法規格](https://tools.ietf.org/html/rfc3986#page-12)。 |
 
 #### <a name="successful-response"></a>成功回應

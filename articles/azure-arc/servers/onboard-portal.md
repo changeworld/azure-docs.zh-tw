@@ -1,20 +1,15 @@
 ---
 title: 從 Azure 入口網站將混合式機器連線至 Azure
 description: 在本文中，您將了解如何從 Azure 入口網站使用適用於伺服器的 Azure Arc (預覽) 來安裝代理程式並將機器連線至 Azure。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: f88fc4a1fd5c44b515ab44b604ebf9a885165ddc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 08f2563aaa67cdd45760af34ef3bef3e8e472ae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007994"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120978"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>從 Azure 入口網站將混合式機器連線至 Azure
 

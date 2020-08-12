@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: c11bbe4aab064c8c1f32cf273cd3e0b6c2a3ae8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf72a8863976d8a678fbdfb6d369c0423b59acf2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478190"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117289"
 ---
 # <a name="branding-guidelines-for-applications"></a>應用程式的商標指導方針
 
@@ -61,9 +61,9 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 ## <a name="visual-guidance-for-app-acquisition"></a>取得應用程式的視覺化導引
 
-[取得應用程式] 連結必須將使用者重新導向到 Azure AD 授與存取權 (授權) 頁面，讓組織的系統管理員可授權您的應用程式來存取由 Microsoft 代管的組織資料。 [整合應用程式與 Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) 一文中詳細討論存取權的要求方式。
+[取得應用程式] 連結必須將使用者重新導向到 Azure AD 授與存取權 (授權) 頁面，讓組織的系統管理員可授權您的應用程式來存取由 Microsoft 代管的組織資料。 [整合應用程式與 Azure Active Directory](./quickstart-register-app.md) 一文中詳細討論存取權的要求方式。
 
-在系統管理員同意您的應用程式之後，他們可以選擇將其新增至使用者的 Office 365 應用程式啟動器體驗（可從松餅和存取 [https://portal.office.com/myapps](https://portal.office.com/myapps) ）。 如果您想要宣傳此功能，可以使用「將此應用程式加入至您的組織」之類的詞彙，並顯示類似下列範例的按鈕：
+在系統管理員同意您的應用程式之後，他們可以選擇將其新增至使用者的 Office 365 應用程式啟動器體驗， (可從松餅和 [https://portal.office.com/myapps](https://portal.office.com/myapps)) 存取。 如果您想要宣傳此功能，可以使用「將此應用程式加入至您的組織」之類的詞彙，並顯示類似下列範例的按鈕：
 
 ![顯示 Microsoft 標誌和「新增至我的組織」文字的按鈕](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 

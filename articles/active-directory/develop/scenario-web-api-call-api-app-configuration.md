@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 95cb1181f841ce5f958b8a85697d7261f442b410
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 29c57411a2a35c36d0b4a9d4def931821b795094
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799594"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121131"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的 Web API：程式碼設定
 
@@ -176,7 +176,7 @@ Python Web API 必須使用一些中介軟體來驗證從用戶端收到的持�
 
 ## <a name="protocol"></a>通訊協定
 
-如需 OBO 通訊協定的詳細資訊，請參閱[Microsoft 身分識別平臺和 OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)代理者流程。
+如需 OBO 通訊協定的詳細資訊，請參閱[Microsoft 身分識別平臺和 OAuth 2.0](./v2-oauth2-on-behalf-of-flow.md)代理者流程。
 
 ## <a name="next-steps"></a>後續步驟
 

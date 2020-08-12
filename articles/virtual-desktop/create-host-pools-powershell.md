@@ -3,15 +3,15 @@ title: 建立 Windows 虛擬桌面主機集區 PowerShell - Azure
 description: 如何使用 PowerShell Cmdlet 在 Windows 虛擬桌面中建立主機集區。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3e4b326b5a78f4b14bdd87e842d8ca485f56831
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002580"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121148"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 建立 Windows 虛擬桌面主機集區
 
@@ -116,6 +116,32 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
 >[!IMPORTANT]
 >為了保護您在 Azure 中的 Windows 虛擬桌面環境，建議您不要在 VM 上開啟輸入連接埠 3389。 Windows 虛擬桌面不需要開啟輸入連接埠 3389 讓使用者存取主機集區的 VM。 如果您為了要進行疑難排解而必須開啟連接埠 3389，建議您使用 [Just-In-Time VM 存取](../security-center/security-center-just-in-time.md)。 我們也不建議將 VM 指派給公用 IP。
+
+## <a name="update-the-agent"></a>更新代理程式
+
+如果您是在下列其中一種情況下，則需要更新代理程式：
+
+- 您想要將先前註冊的會話遷移至新的主機集區
+- 更新之後，工作階段主機不會出現在您的主機集區中
+
+若要更新代理程式：
+
+1. 以系統管理員身分登入 VM。
+2. 移至 [**服務**]，然後停止**Rdagent**和**遠端桌面代理程式載入**器進程。
+3. 接下來，尋找代理程式和開機載入器 Msi。 它們會放在**C:\DeployAgent**資料夾中，或是您在安裝時所儲存的位置。
+4. 尋找下列檔案並將其卸載：
+     
+     - RDInfra. RDAgent。安裝程式-x64-verx. x. x
+     - RDInfra. RDAgentBootLoader. 安裝程式-x64
+
+   若要卸載這些檔案，請在每個檔案名上按一下滑鼠右鍵，然後選取 [**卸載**]。
+5. （選擇性）您也可以移除下列登錄設定：
+     
+     - Computer \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
+     - Computer \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
+
+6. 卸載這些專案之後，這應該會移除與舊主機集區的所有關聯。 如果您想要將此主機重新註冊到服務，請依照向[WIndows 虛擬桌面主機集區註冊虛擬機器](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中的指示進行。
+
 
 ## <a name="next-steps"></a>後續步驟
 

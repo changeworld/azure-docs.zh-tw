@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2da2755af4b44c0b17550676845c38c1a93cf801
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: ac438b42f25fc82a0a5dd5384205e809e45ff57a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845182"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120080"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>呼叫 Web API 的 Web 應用程式：程式碼設定
 
@@ -61,7 +61,7 @@ public void ConfigureServices(IServiceCollection services)
 若對深入了解權杖快取感興趣，請參閱[權杖快取序列化選項](#token-cache)
 
 > [!NOTE]
-> 若要完全了解此處的程式碼範例，則需要熟悉 [ASP.NET Core 基本概念](https://docs.microsoft.com/aspnet/core/fundamentals) (機器翻譯)，特別是[相依性插入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)和[選項](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)。
+> 若要完全了解此處的程式碼範例，則需要熟悉 [ASP.NET Core 基本概念](/aspnet/core/fundamentals) (機器翻譯)，特別是[相依性插入](/aspnet/core/fundamentals/dependency-injection)和[選項](/aspnet/core/fundamentals/configuration/options)。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
@@ -268,7 +268,7 @@ def authorized():
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-ASP.NET Core 教學課程會使用相依性插入以供在應用程式的 Startup.cs 中決定權杖快取實作。 Microsoft.Identity.Web 隨附[權杖快取序列化](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)中所述的預建權杖快取序列化程式。 選擇 ASP.NET Core 另外一項有趣的可能性是[分散式記憶體快取](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache)：
+ASP.NET Core 教學課程會使用相依性插入以供在應用程式的 Startup.cs 中決定權杖快取實作。 Microsoft.Identity.Web 隨附[權杖快取序列化](msal-net-token-cache-serialization.md#token-cache-for-a-web-app-confidential-client-application)中所述的預建權杖快取序列化程式。 選擇 ASP.NET Core 另外一項有趣的可能性是[分散式記憶體快取](/aspnet/core/performance/caching/distributed#distributed-memory-cache)：
 
 ```csharp
 // Use a distributed token cache by adding:

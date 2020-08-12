@@ -1,19 +1,14 @@
 ---
 title: 針對伺服器的 Azure Arc 代理程式連線問題進行疑難排解
 description: 本文說明在嘗試連線到服務時，如何針對伺服器 (預覽) 的 Azure Arc 所引發的連線機器代理程式進行疑難排解及解決問題。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2a6f51f1c6901eaa18c1de9c1fc788ed583b7394
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 5cd2560279085485a8ac7b285e4f601060a924f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809437"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118003"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>針對連線的機器代理程式連接問題進行疑難排解
 

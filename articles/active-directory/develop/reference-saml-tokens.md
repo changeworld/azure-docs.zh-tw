@@ -13,12 +13,12 @@ ms.date: 06/22/2018
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 59ba97ccc0bc4a1a273873d638ef3f519b91e530
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bab21bfc6dba6e9cd35c8053e943cb76339e2254
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284433"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114960"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 權杖參考
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) 會在處理每個驗證流程時發出數種�
 ## <a name="claims-in-saml-tokens"></a>SAML 權杖中的宣告
 
 > [!div class="mx-codeBreakAll"]
-> | Name | 對等的 JWT 宣告 | 說明 | 範例 |
+> | 名稱 | 對等的 JWT 宣告 | 描述 | 範例 |
 > | --- | --- | --- | ------------|
 > |對象 | `aud` |權杖的預定接收者。 接收權杖的應用程式必須確認對象值正確無誤，並拒絕任何適用於不同對象的權杖。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | 驗證時刻 | |記錄驗證發生的日期和時間。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) 會在處理每個驗證流程時發出數種�
 > |IssuedAt | `iat` |儲存權杖簽發的時間。 這通常用來測量權杖有效時間。 | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |簽發者 | `iss` |識別負責建構並傳回權杖的 Security Token Service (STS)。 在 Azure AD 傳回的權杖中，簽發者為 sts.windows.net。 簽發者宣告值中的 GUID 是 Azure AD 目錄的租用戶識別碼。 租用戶識別碼是目錄的不可變且可靠的識別碼。 | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |姓氏 | `family_name` |提供使用者的姓氏 (如 Azure AD 使用者物件中所定義)。 | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |Name | `unique_name` |提供人類看得懂的值，用以識別權杖的主體。 此值不保證是租用戶中的唯一值，而且僅限用於顯示目的。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |名稱 | `unique_name` |提供人類看得懂的值，用以識別權杖的主體。 此值不保證是租用戶中的唯一值，而且僅限用於顯示目的。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |物件識別碼 | `oid` |包含 Azure AD 中物件的唯一識別碼。 這個值不可變，而且無法重新指派或重複使用。 使用物件識別碼來識別 Azure AD 查詢中的物件。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |角色 | `roles` |表示透過群組成員資格，直接或間接授與主體的所有應用程式角色，而且可用來強制執行角色型存取控制。 應用程式角色是透過應用程式資訊清單的 `appRoles` 屬性，針對每個應用程式進行定義。 每個應用程式角色的 `value` 屬性就是出現在角色宣告中的值。 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
 > |主體 | `sub` |識別權杖判斷提示其相關資訊的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用，因此可用來安全地執行授權檢查。 因為主體一律存在於 Azure AD 簽發的權杖中，所以建議您將此值使用於一般用途授權系統中。 <br> `SubjectConfirmation` 不是宣告。 它會描述如何驗證權杖的主體。 `Bearer` 表示主體已經由持有權杖來確認。 | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
@@ -154,7 +154,7 @@ Azure Active Directory (Azure AD) 會在處理每個驗證流程時發出數種�
 
 ## <a name="related-content"></a>相關內容
 
-* 請參閱[原則資源](https://docs.microsoft.com/graph/api/resources/policy?view=graph-rest-beta)，以深入瞭解如何使用 Microsoft Graph API 管理權杖存留期原則。
+* 請參閱[原則資源](/graph/api/resources/policy?view=graph-rest-beta)，以深入瞭解如何使用 Microsoft Graph API 管理權杖存留期原則。
 * 如需透過 PowerShell Cmdlet 管理原則的詳細資訊和範例，包括範例，請參閱[在 Azure AD 中設定權杖存留期](../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 
 * 將[自訂和選擇性宣告](../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)新增至應用程式的權杖。
 * 搭配使用 [SAML 與單一登入 (SSO)](single-sign-on-saml-protocol.md)。

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: d6cb8cf4b97ed3882d41a4eb179f11bf05f42118
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d16407d1cfadcb7d3a79968fae4436e7c631e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82593160"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115640"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>驗證流程和應用程式情節
 
@@ -34,7 +34,7 @@ Microsoft 身分識別平台 (v2.0) 端點支援各種新式應用程式架構�
 - 傳統型應用程式
 - Web API
 
-在沒有瀏覽器或在物聯網（IoT）上執行的裝置上執行的應用程式也可以取得權杖。
+權杖也可以由在沒有瀏覽器的裝置上執行的應用程式取得，或在物聯網 (IoT) 上執行。
 
 下列各節說明應用程式的類別。
 
@@ -42,7 +42,7 @@ Microsoft 身分識別平台 (v2.0) 端點支援各種新式應用程式架構�
 
 驗證情節牽涉到兩個活動：
 
-- 取得**受保護 Web API 的安全性權杖**：建議您使用[Microsoft 支援的用戶端程式庫](reference-v2-libraries.md#microsoft-supported-client-libraries)來取得權杖。 特別是，我們建議採用 Microsoft Authentication Library （MSAL）系列。
+- 取得**受保護 Web API 的安全性權杖**：建議您使用[Microsoft 支援的用戶端程式庫](reference-v2-libraries.md#microsoft-supported-client-libraries)來取得權杖。 特別的是，我們建議 (MSAL) 系列的 Microsoft 驗證程式庫。
 - **保護 Web API 或 web 應用程式**：保護這些資源的一項挑戰就是驗證安全性權杖。 在某些平台上，Microsoft 提供會[中介軟體程式庫](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)。
 
 ### <a name="with-users-or-without-users"></a>有使用者或沒有使用者
@@ -147,16 +147,16 @@ Microsoft 身分識別平臺端點支援下列應用程式架構的驗證：
 
 ![呼叫 Web API 的行動應用程式](media/scenarios/mobile-app.svg)
 
-MSAL iOS 和 MSAL Android 預設會使用系統網頁瀏覽器。 不過，您可以指示它們改為使用內嵌的 web view。 Specificities 相依于行動平臺：通用 Windows 平臺（UWP）、iOS 或 Android。
+MSAL iOS 和 MSAL Android 預設會使用系統網頁瀏覽器。 不過，您可以指示它們改為使用內嵌的 web view。 Specificities 相依于行動平臺：通用 Windows 平臺 (UWP) 、iOS 或 Android。
 
 某些案例 (像是涉及與裝置識別碼或裝置註冊相關之條件式存取的案例) 會要求您在裝置上安裝訊息代理程式。 訊息代理程式的範例包括 Android 上的 Microsoft 公司入口網站以及 Android 與 iOS 上的 Microsoft Authenticator。 MSAL 現在可以與訊息代理程式互動。 如需有關訊息代理程式的詳細資訊，請參閱[在 Android 和 iOS 上運用代理](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/leveraging-brokers-on-Android-and-iOS)程式。
 
 如需詳細資訊，請參閱[呼叫 Web API 的行動裝置應用程式](scenario-mobile-overview.md)。
 
 > [!NOTE]
-> 使用 MSAL 的行動應用程式，MSAL。Android 或 MSAL.NET on Xamarin 可以套用應用程式保護原則。 比方說，這些原則可能讓使用者無法複製受保護的文字。 行動裝置應用程式由 Intune 管理，並由 Intune 辨識為受管理的應用程式。 如需詳細資訊，請參閱[Microsoft Intune APP SDK 總覽](https://docs.microsoft.com/intune/app-sdk)。
+> 使用 MSAL 的行動應用程式，MSAL。Android 或 MSAL.NET on Xamarin 可以套用應用程式保護原則。 比方說，這些原則可能讓使用者無法複製受保護的文字。 行動裝置應用程式由 Intune 管理，並由 Intune 辨識為受管理的應用程式。 如需詳細資訊，請參閱[Microsoft Intune APP SDK 總覽](/intune/app-sdk)。
 >
-> [Intune 應用程式 SDK](https://docs.microsoft.com/intune/app-sdk-get-started) 獨立於 MSAL 程式庫之外，而且會自行與 AAD 互動。
+> [Intune 應用程式 SDK](/intune/app-sdk-get-started) 獨立於 MSAL 程式庫之外，而且會自行與 AAD 互動。
 
 ### <a name="protected-web-api"></a>受保護的 Web API
 
@@ -199,19 +199,19 @@ MSAL iOS 和 MSAL Android 預設會使用系統網頁瀏覽器。 不過，您�
    <td><a href="scenario-spa-overview.md"><img alt="Single-Page App" src="media/scenarios/spa-app.svg"></a></td>
    <td><a href="scenario-spa-overview.md">單一頁面應用程式</a></td>
    <td><a href="v2-oauth2-implicit-grant-flow.md">隱含</a></td>
-   <td>工作或學校帳戶、個人帳戶和 Azure Active Directory B2C （Azure AD B2C）</td>
+   <td>工作或學校帳戶、個人帳戶及 Azure Active Directory B2C (Azure AD B2C) </td>
  </tr>
 
   <tr>
    <td><a href="scenario-web-app-sign-user-overview.md"><img alt="Web app that signs in users" src="media/scenarios/scenario-webapp-signs-in-users.svg"></a></td>
-   <td><a href="scenario-web-app-sign-user-overview.md">可將使用者登入的 Web 應用程式</a></td>
+   <td><a href="scenario-web-app-sign-user-overview.md">登入使用者的 Web 應用程式</a></td>
    <td><a href="v2-oauth2-auth-code-flow.md">授權碼</a></td>
    <td>公司或學校帳戶、個人帳戶和 Azure AD B2C</td>
  </tr>
 
   <tr>
    <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web app that signs in users" src="media/scenarios/web-app.svg"></a></td>
-   <td><a href="scenario-web-app-call-api-overview.md">可呼叫 Web API 的 Web 應用程式</a></td>
+   <td><a href="scenario-web-app-call-api-overview.md">呼叫 Web API 的 Web 應用程式</a></td>
    <td><a href="v2-oauth2-auth-code-flow.md">授權碼</a></td>
    <td>公司或學校帳戶、個人帳戶和 Azure AD B2C</td>
  </tr>
@@ -294,8 +294,8 @@ Microsoft 驗證程式庫支援多個平臺：
 |案例  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
 | [單一頁面應用程式](scenario-spa-overview.md) <br/>[![單一頁面應用程式](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
-| [可將使用者登入的 Web 應用程式](scenario-web-app-sign-user-overview.md) <br/>[![登入使用者的 Web 應用程式](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core
-| [可呼叫 Web API 的 Web 應用程式](scenario-web-app-call-api-overview.md) <br/> <br/>[![可呼叫 Web API 的 Web 應用程式](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png) <br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python
+| [登入使用者的 Web 應用程式](scenario-web-app-sign-user-overview.md) <br/>[![登入使用者的 Web 應用程式](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core
+| [呼叫 Web API 的 Web 應用程式](scenario-web-app-call-api-overview.md) <br/> <br/>[![可呼叫 Web API 的 Web 應用程式](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png) <br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python
 | [呼叫 Web API 的傳統型應用程式](scenario-desktop-overview.md) <br/> <br/>[ ![ 呼叫 web api](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) ![ 的傳統型應用程式裝置程式碼流程](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python <br/> ![iOS/Objective C 或 swift](media/sample-v2-code/small_logo_iOS.png) MSAL.objc |
 | [呼叫 Web API 的行動應用程式](scenario-mobile-overview.md) <br/> [![呼叫 Web API 的行動應用程式](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS/Objective C 或 swift](media/sample-v2-code/small_logo_iOS.png) MSAL.objc | ![Android](media/sample-v2-code/small_logo_Android.png) MSAL.Android
 | [精靈應用程式](scenario-daemon-overview.md) <br/> [![精靈應用程式](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
@@ -305,5 +305,5 @@ Microsoft 驗證程式庫支援多個平臺：
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入瞭解[Microsoft 身分識別平臺中的](access-tokens.md)[驗證基本概念](authentication-scenarios.md)和存取權杖。
+* 深入瞭解[Microsoft 身分識別平臺中的](access-tokens.md)[驗證基本概念](./authentication-vs-authorization.md)和存取權杖。
 * 深入瞭解如何[保護 IoT 應用程式的存取權](/azure/architecture/example-scenario/iot-aad/iot-aad)。

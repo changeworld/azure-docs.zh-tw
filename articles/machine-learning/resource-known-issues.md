@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/06/2020
-ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905491"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120757"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning 中的已知問題和疑難排解
 
@@ -169,7 +169,7 @@ ms.locfileid: "87905491"
   * Chrome (最新版本)
   * Firefox (最新版本)
 
-## <a name="set-up-your-environment"></a>設定您的環境
+## <a name="set-up-your-environment"></a>設定環境
 
 * **建立 AmlCompute 時遇到問題**：在 GA 版本之前，從 Azure 入口網站建立其 Azure Machine Learning 工作區的使用者很罕見，可能無法在該工作區中建立 AmlCompute。 您可以對服務提出支援要求，或透過入口網站或 SDK 建立新的工作區來立即解除封鎖。
 
@@ -302,6 +302,47 @@ time.sleep(600)
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
+* **automl_setup 失敗**： 
+    * 在 Windows 上，從 Anaconda 提示字元執行 automl_setup。 若要安裝 Miniconda，請按一下[這裡](https://docs.conda.io/en/latest/miniconda.html)。
+    * 執行命令，確定已安裝 conda 64 位，而不是32位 `conda info` 。 `platform` `win-64` 適用于 Windows 或 `osx-64` Mac。
+    * 請確定已安裝 conda 4.4.10 或更新版本。 您可以使用命令來檢查版本 `conda -V` 。 如果您已安裝舊版，可以使用下列命令來更新它： `conda update conda` 。
+    * 廠商`gcc: error trying to exec 'cc1plus'`
+      *  如果 `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` 發生錯誤，請使用 sqlserverrp 命令來安裝 build essentials `sudo apt-get install build-essential` 。
+      * 將新名稱當做第一個參數傳遞至 automl_setup，以建立新的 conda 環境。 使用來查看現有的 conda 環境 `conda env list` ，並將其移除 `conda env remove -n <environmentname>` 。
+      
+* **automl_setup_linux sh 失敗**：如果 Ubuntu linux 上的 automl_setup_linus sh 失敗，發生錯誤：`unable to execute 'gcc': No such file or directory`-
+  1. 請確定已啟用輸出埠53和80。 在 Azure VM 上，您可以從 Azure 入口網站中選取 VM，然後按一下 [網路] 來執行此動作。
+  2. 執行命令：`sudo apt-get update`
+  3. 執行命令：`sudo apt-get install build-essential --fix-missing`
+  4. `automl_setup_linux.sh`再次執行
+
+* **ipynb 失敗**：
+  * 若為本機 conda，請先確定 automl_setup 已 susccessfully 執行。
+  * 請確定 subscription_id 是正確的。 藉由選取 [所有服務] 和 [訂用帳戶]，在 Azure 入口網站中尋找 subscription_id。 「<」和「>」字元不應該包含在 subscription_id 值中。 例如， `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` 具有有效的格式。
+  * 確保參與者或擁有者可以存取訂用帳戶。
+  * 檢查區域是否為其中一個支援的區域： `eastus2` 、 `eastus` 、 `westcentralus` 、 `southeastasia` 、 `westeurope` 、 `australiaeast` 、 `westus2` 、 `southcentralus` 。
+  * 請務必使用 Azure 入口網站存取區域。
+  
+* 匯**入 AutoMLConfig 失敗**：自動化機器學習服務版本1.0.76 中有套件變更，必須先卸載舊版，才能更新至新版本。 如果在 `ImportError: cannot import name AutoMLConfig` 1.0.76 至 v 1.0.76 或更新版本之前從 SDK 版本升級之後遇到，請執行下列程式來解決錯誤： `pip uninstall azureml-train automl` 和 `pip install azureml-train-auotml` 。 Automl_setup .cmd 腳本會自動執行此工作。 
+
+* **工作區。 from_config 失敗**：如果呼叫 Ws = workspace。 from_config ( # A1 ' 失敗-
+  1. 請確定 ipynb 筆記本已順利執行。
+  2. 如果要從不在執行之資料夾下的資料夾執行筆記本 `configuration.ipynb` ，請將資料夾 aml_config，並將其包含的檔案 config.js複製到新的資料夾。 工作區。 from_config 會讀取筆記本資料夾或其上層資料夾的 config.js。
+  3. 如果正在使用新的訂用帳戶、資源群組、工作區或區域，請確定您已 `configuration.ipynb` 再次執行筆記本。 只有在工作區已存在於指定的訂用帳戶下的指定資源群組中時，直接變更 config.js才會生效。
+  4. 如果您想要變更區域，請變更工作區、資源群組或訂用帳戶。 `Workspace.create`將不會建立或更新工作區（如果已存在），即使指定的區域不同也一樣。
+  
+* **範例筆記本失敗**：如果範例筆記本失敗並出現錯誤，表示 preperty、方法或程式庫不存在：
+  * 確定已在 jupyter 筆記本中選取 correctcorrect 核心。 核心會顯示在 [筆記本] 頁面的右上方。 預設值為 azure_automl。 請注意，核心會儲存為筆記本的一部分。 因此，如果您切換到新的 conda 環境，就必須選取筆記本中的新核心。
+      * 針對 Azure Notebooks，它應該是 Python 3.6。 
+      * 對於本機 conda 環境，它應該是您在 automl_setup 中指定的 conda envioronment 名稱。
+  * 請確定筆記本適用于您所使用的 SDK 版本。 您可以在 jupyter 筆記本資料格中執行，以檢查 SDK 版本 `azureml.core.VERSION` 。 您可以從 GitHub 下載先前版本的範例筆記本，方法是按一下 `Branch` 按鈕，選取索引標籤， `Tags` 然後選取版本。
+
+* **Windows 中的 Numpy 匯入失敗**：有些 Windows 環境會在載入 Numpy 時看到最新的 Python 版本3.6.8。 如果您看到此問題，請嘗試 Python 版本3.6.7。
+
+* **Numpy 匯入失敗**：檢查自動化 ml conda 環境中的 tensorflow 版本。 支援的版本為 1.13 <。 從環境卸載 tensorflow 如果版本 >= 1.13，您可以檢查 tensorflow 版本並卸載，如下所示-
+  1. 啟動命令 shell，啟用自動化 ml 套件安裝所在的 conda 環境。
+  2. 輸入 `pip freeze` 並尋找 `tensorflow` （如果找到的話），列出的版本應該是 < 1.13
+  3. 如果列出的版本不是支援的版本，請 `pip uninstall tensorflow` 在命令 shell 中輸入 y 進行確認。
 
 ## <a name="deploy--serve-models"></a>部署和提供模型
 

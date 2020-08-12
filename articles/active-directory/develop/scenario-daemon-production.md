@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e5d25169aa3daee33a9f02e605cbff91776dc7f1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72e6d0a8677f7a8175223b80541c99026a9eb16f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885424"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119159"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>呼叫 web Api 的 Daemon 應用程式-移至生產環境
 
@@ -41,8 +41,8 @@ ms.locfileid: "80885424"
 
 - 快速入門：[使用應用程式的身分識別取得權杖，並從主控台應用程式呼叫 MICROSOFT GRAPH API](./quickstart-v2-netcore-daemon.md)。
 - 的參考檔：
-  - 具現化[ConfidentialClientApplication](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
-  - 呼叫[AcquireTokenForClient](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)。
+  - 具現化[ConfidentialClientApplication](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
+  - 呼叫[AcquireTokenForClient](/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder)。
 - 其他範例/教學課程：
   - [microsoft-身分識別平臺-主控台-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon)功能是簡單的 .net Core daemon 主控台應用程式，可顯示租使用者查詢 Microsoft Graph。
 

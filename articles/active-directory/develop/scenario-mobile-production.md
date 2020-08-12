@@ -1,7 +1,7 @@
 ---
 title: 準備行動應用程式-針對生產環境呼叫 web Api |Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何建置會呼叫 Web API 的行動應用程式。 （準備適用于生產環境的應用程式）。
+description: '了解如何建置會呼叫 Web API 的行動應用程式。  (準備生產環境的應用程式。 ) '
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 28ace84f9a80b71209d7963d02b66317292b151b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1a7407c947c1c5bae1eed00acb0f216722f3d09
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882534"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121029"
 ---
 # <a name="prepare-mobile-apps-for-production"></a>準備用於生產的行動應用程式
 
@@ -28,7 +28,7 @@ ms.locfileid: "80882534"
 
 當您準備用於生產的行動應用程式時，可能會發生數個錯誤狀況。 您將處理的主要案例是無訊息失敗，並會回到互動。 您應該考慮的其他條件包括：無網路狀況、服務中斷、系統管理員同意需求，以及其他案例特定的情況。
 
-針對每個「Microsoft 驗證程式庫」（MSAL）類型，您可以找到說明如何處理錯誤狀況的範例程式碼和 wiki 內容：
+針對每個 (MSAL) 類型的 Microsoft 驗證程式庫，您可以找到說明如何處理錯誤狀況的範例程式碼和 wiki 內容：
 
 - [MSAL Android wiki](https://github.com/AzureAD/microsoft-authentication-library-for-android)
 - [MSAL iOS wiki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/wiki)
@@ -36,7 +36,7 @@ ms.locfileid: "80882534"
 
 ## <a name="mitigate-and-investigate-issues"></a>緩和和調查問題
 
-若要更有效地診斷應用程式中的問題，請收集資料。 如需您可以收集之資料類型的相關資訊，請參閱[MSAL 應用程式中的記錄](https://docs.microsoft.com/azure/active-directory/develop/msal-logging)。
+若要更有效地診斷應用程式中的問題，請收集資料。 如需您可以收集之資料類型的相關資訊，請參閱[MSAL 應用程式中的記錄](./msal-logging.md)。
 
 以下是資料收集的一些建議：
 

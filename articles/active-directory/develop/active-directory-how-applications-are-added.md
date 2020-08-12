@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884268"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115759"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>將應用程式加入至 Azure AD 的方式和原因
 
@@ -74,7 +74,7 @@ ms.locfileid: "80884268"
   * 訂閱或開始試用 Office 365 時，目錄中會建立一或多個服務主體，代表用來傳遞所有 Office 365 相關功能的各種服務。
   * 某些 Office 365 服務(如 SharePoint) 會持續建立服務主體，以允許元件之間的安全通訊，包括工作流程。
 * 當系統管理員從應用程式庫新增應用程式時 (這也會建立基礎應用程式物件)
-* 新增應用程式來使用 [Azure AD 應用程式 Proxy](/azure/active-directory/manage-apps/application-proxy)
+* 新增應用程式來使用 [Azure AD 應用程式 Proxy](../manage-apps/application-proxy.md)
 * 連接應用程式以便啟用 SAML 單一登入或密碼單一登入 (SSO)
 * 以程式設計方式透過 Microsoft Graph API 或 PowerShell
 
@@ -104,8 +104,8 @@ ms.locfileid: "80884268"
   * 宣告轉換規則
   * 屬性對應 (使用者佈建)
 * 如需有關服務主體和應用程式物件的詳細資訊，請參閱 Microsoft Graph API 參考檔：
-  * [應用程式](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
-  * [Service Principal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [應用程式](/graph/api/resources/application?view=graph-rest-1.0)
+  * [Service Principal](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>應用程式為何要與 Azure AD 整合？
 

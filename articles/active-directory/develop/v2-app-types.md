@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7b89add55a060c7ba0ef9488f1f6438090b8d3d2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682253"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121165"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft 身分識別平台的應用程式類型
 
@@ -83,7 +83,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 
 若要查看此案例的實際運作情形，請在 [Microsoft 身分識別平台開始使用](v2-overview.md#getting-started)一節的 Web 應用程式登入程式碼範例中擇一試用。
 
-除了簡易登入之外，Web 伺服器應用程式可能也需要存取其他 Web 服務，例如 REST API。 在此情況下，Web 伺服器應用程式可以使用 [OAuth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)，參與結合了 OpenID Connect 與 OAuth 2.0 的流程。 如需有關此案例的詳細資訊，請參閱[開始使用 Web 應用程式和 Web API](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)。
+除了簡易登入之外，Web 伺服器應用程式可能也需要存取其他 Web 服務，例如 REST API。 在此情況下，Web 伺服器應用程式可以使用 [OAuth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)，參與結合了 OpenID Connect 與 OAuth 2.0 的流程。 如需有關此案例的詳細資訊，請參閱[開始使用 Web 應用程式和 Web API](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIDConnect-DotNet)。
 
 
 ## <a name="web-apis"></a>Web API

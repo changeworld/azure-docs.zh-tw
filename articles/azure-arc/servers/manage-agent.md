@@ -1,19 +1,14 @@
 ---
 title: 管理適用於伺服器的 Azure Arc (預覽) 代理程式
 description: 本文描述適用於伺服器的 Azure Arc Connected Machine 代理程式生命週期期間，您通常會執行的不同管理工作。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 73ece3f1bc8d5e88d4c1c37e1040f2494230e4ee
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b7fcaca2188ef0e1e3c8c65226f8b383576082ba
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809590"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121284"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和維護 Connected Machine 代理程式
 

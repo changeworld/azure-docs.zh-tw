@@ -12,33 +12,33 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75b6559117420ad75b79c58b219400690b25b4cb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77185836"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117867"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>將使用 Microsoft Authenticator 從 ADAL.NET 到 MSAL.NET 的 iOS 應用程式遷移
 
-您已使用適用于 .NET （ADAL.NET）和 iOS 訊息代理程式的 Azure Active Directory Authentication Library。 現在可以開始遷移至適用于 .NET 的[Microsoft 驗證程式庫](msal-overview.md)（MSAL.NET），這可從發行4.3 開始支援 iOS 上的訊息代理程式。 
+您已使用適用于 .NET (ADAL.NET) 和 iOS broker 的 Azure Active Directory Authentication 程式庫。 現在可以開始遷移至適用于 .NET 的[Microsoft 驗證程式庫](msal-overview.md) (MSAL.NET) ，其支援從4.3 版起的 iOS 上的訊息代理程式。 
 
 您應該從何處著手？ 本文可協助您將 Xamarin iOS 應用程式從 ADAL 遷移至 MSAL。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 本文假設您已經有與 iOS broker 整合的 Xamarin iOS 應用程式。 如果您沒有這麼做，請直接移至 MSAL.NET，並在該處開始執行代理程式。 如需如何使用新的應用程式在 MSAL.NET 中叫用 iOS broker 的詳細資訊，請參閱[此檔](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications)。
 
 ## <a name="background"></a>背景
 
 ### <a name="what-are-brokers"></a>什麼是訊息代理程式？
 
-訊息代理程式是由 Microsoft 在 Android 和 iOS 上提供的應用程式。 （請參閱 iOS 和 Android 上的[Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)應用程式和 android 上的 Intune 公司入口網站應用程式）。 
+訊息代理程式是由 Microsoft 在 Android 和 iOS 上提供的應用程式。  (查看 iOS 和 Android 上的[Microsoft Authenticator](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)應用程式，以及 Android 上的 Intune 公司入口網站應用程式。 )  
 
 它們會啟用：
 
 - 單一登入。
 - 某些[條件式存取原則](../conditional-access/overview.md)所需的裝置識別。 如需詳細資訊，請參閱[裝置管理](../conditional-access/concept-conditional-access-conditions.md#device-platforms)。
-- 應用程式識別驗證，在某些企業案例中也是必要的。 如需詳細資訊，請參閱[Intune 行動應用程式管理（MAM）](https://docs.microsoft.com/intune/mam-faq)。
+- 應用程式識別驗證，在某些企業案例中也是必要的。 如需詳細資訊，請參閱[Intune 行動應用程式管理 (MAM) ](/intune/mam-faq)。
 
 ## <a name="migrate-from-adal-to-msal"></a>從 ADAL 遷移至 MSAL
 
@@ -80,7 +80,7 @@ page.BrokerParameters = new PlatformParameters(
 </td><td>
 在 MSAL.NET 中，會以每個 PublicClientApplication 為基礎啟用訊息代理程式支援。 此功能預設為停用。 若要啟用它，請使用 
 
-`WithBroker()`參數（預設為 true），以便呼叫訊息代理程式：
+`WithBroker()`參數 (預設) 設定為 true，才能呼叫訊息代理程式：
 
 ```csharp
 var app = PublicClientApplicationBuilder
@@ -97,8 +97,8 @@ result = await app.AcquireTokenInteractive(scopes)
 ```
 </table>
 
-### <a name="step-2-set-a-uiviewcontroller"></a>步驟2：設定 UIViewController （）
-在 ADAL.NET 中，您會在中傳入 UIViewController `PlatformParameters` 。 （請參閱步驟1中的範例）。在 MSAL.NET 中，為了讓開發人員有更大的彈性，會使用物件視窗，但是一般 iOS 使用方式並不需要。 若要使用訊息代理程式，請設定 [物件] 視窗，以便傳送和接收來自訊息代理程式的回應。 
+### <a name="step-2-set-a-uiviewcontroller"></a>步驟2：設定 UIViewController ( # A1
+在 ADAL.NET 中，您會在中傳入 UIViewController `PlatformParameters` 。  (參閱步驟 1. ) MSAL.NET 中的範例，以提供開發人員更大的彈性，使用物件視窗，但在一般的 iOS 使用方式下則不需要。 若要使用訊息代理程式，請設定 [物件] 視窗，以便傳送和接收來自訊息代理程式的回應。 
 <table>
 <tr><td>目前的 ADAL 程式碼：</td><td>MSAL 對應：</td></tr>
 <tr><td>
@@ -151,7 +151,7 @@ ADAL.NET 和 MSAL.NET 會使用 Url 叫用訊息代理程式，並將 broker 回
 <tr><td>
 URL 配置對您的應用程式而言是唯一的。
 </td><td>
-必須提供 
+此 
 
 `CFBundleURLSchemes`名稱必須包含 
 
@@ -159,7 +159,7 @@ URL 配置對您的應用程式而言是唯一的。
 
 作為前置詞，後面接著您的`CFBundleURLName`
 
-例如：`$"msauth.(BundleId")`
+例如： `$"msauth.(BundleId")`
 
 ```csharp
  <key>CFBundleURLTypes</key>
@@ -241,4 +241,4 @@ ADAL.NET 和 MSAL.NET 會在以訊息代理程式為目標時，對重新導向 
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解有關[MSAL.NET 的 Xamarin iOS 特定考慮](msal-net-xamarin-ios-considerations.md)。 
+瞭解有關[MSAL.NET 的 Xamarin iOS 特定考慮](msal-net-xamarin-ios-considerations.md)。

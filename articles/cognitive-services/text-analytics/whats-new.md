@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 67850490a3c1d972d4d03eec545068b1d9eb9fff
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986293"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121845"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
@@ -23,9 +23,45 @@ ms.locfileid: "87986293"
 
 ## <a name="august-2020"></a>2020 年 8 月
 
+### <a name="general-api-updates"></a>一般 API 更新
+
 * V3 的模型版本 `2020-07-01` `/keyphrases` `/pii` 和 `/languages` 端點，其會新增：
     * 命名實體辨識的其他政府和國家/地區特定[實體類別](named-entity-types.md?tabs=personal)。
 * 對於超出已發佈[資料限制](concepts/data-limits.md)的 v3 API 要求，現在會傳回 HTTP 400 錯誤。 
+
+### <a name="text-analytics-for-health-container-august-updates"></a>適用于健康情況容器的文字分析8月更新
+
+下列更新僅適用于健康情況容器的文字分析8月版。
+
+* 新模型-健全狀況的文字分析版本：`2020-07-24`
+* 用於傳送健康情況要求之文字分析的新 URL：`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+
+JSON 回應中的下列屬性已變更：
+
+* `type` 已重新命名為 `category` 
+* `score` 已重新命名為 `confidenceScore`
+* `category`JSON 輸出之欄位中的實體現在是 pascal 大小寫。 下列實體已重新命名：
+    * `EXAMINATION_RELATION` 已經重新命名為 `RelationalOperator`。
+    * `EXAMINATION_UNIT` 已經重新命名為 `MeasurementUnit`。
+    * `EXAMINATION_VALUE` 已經重新命名為 `MeasurementValue`。
+    * `ROUTE_OR_MODE`已重新命名 `MedicationRoute` 。
+    * 關聯式實體已重新 `ROUTE_OR_MODE_OF_MEDICATION` 命名為 `RouteOfMedication` 。
+
+已新增下列實體：
+
+* NER
+    * `AdministrativeEvent`
+    * `CareEnvironment`
+    * `HealthcareProfession`
+    * `MedicationForm` 
+
+* 關聯性解壓縮
+    * `DirectionOfCondition`
+    * `DirectionOfExamination`
+    * `DirectionOfTreatment`
+
+> [!div class="nextstepaction"]
+> [深入瞭解健全狀況容器的文字分析](how-tos/text-analytics-for-health.md)
 
 ## <a name="july-2020"></a>2020 年 7 月 
 
@@ -39,10 +75,6 @@ ms.locfileid: "87986293"
 * 關聯性解壓縮
 * 實體連結
 * 否定
-
-
-> [!div class="nextstepaction"]
-> [深入瞭解健全狀況容器的文字分析](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 

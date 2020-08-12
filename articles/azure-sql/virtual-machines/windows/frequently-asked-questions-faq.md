@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 7a44e9c6b0545bce83f17c3bf85149d4ebe95dc1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f382e3cf0f5d2d60c2868c6698b1ea901fbac023
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955670"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121437"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure Vm 上 SQL Server 的常見問題
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "85955670"
 > * [Windows](frequently-asked-questions-faq.md)
 > * [Linux](../linux/frequently-asked-questions-faq.md)
 
-本文提供有關[在 Windows Azure 虛擬機器（vm）上執行 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)的一些常見問題的解答。
+本文提供有關在[Windows Azure 虛擬機器 (vm) 上執行 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)的一些常見問題的解答。
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
@@ -70,7 +70,7 @@ ms.locfileid: "85955670"
 
    是，但必須[將每部 SQL Server VM 註冊到 SQL Server VM 資源提供者](sql-vm-resource-provider-register.md)，才能在入口網站中管理 SQL Server VM，以及利用自動修補和自動備份等功能。
 
-1. **是否可以設定虛擬機器資源庫中未顯示的設定（例如 Windows 2008 R2 + SQL Server 2012）？**
+1. **是否可以設定虛擬機器資源庫中未顯示的設定 (例如 Windows 2008 R2 + SQL Server 2012) ？**
 
    否。 針對包含 SQL Server 的虛擬機器資源庫映像，您必須透過 Azure 入口網站或 [PowerShell](create-sql-vm-powershell.md) 選取其中一個提供的映像。 不過，您能夠在其上部署 Windows VM，並自行安裝 SQL Server。 接著，您必須向[SQL SERVER VM 資源提供者註冊您的 SQL SERVER vm](sql-vm-resource-provider-register.md) ，以在 Azure 入口網站中管理您的 SQL Server VM，以及利用自動修補和自動備份等功能。 
 
@@ -89,7 +89,7 @@ ms.locfileid: "85955670"
 
 1. **如何在 Azure VM 上安裝 SQL Server 授權版本？**
 
-   有三種方式可以執行此動作。 如果您是 Enterprise 合約（EA）客戶，則可以布建其中一個[支援授權的虛擬機器映射](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL)，也就是所謂的自備授權（BYOL）。 如果您有[軟體保證](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)，可以在現有的隨用隨付（PAYG）映射上啟用[Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md) 。 或者，您可以將 SQL Server 安裝媒體複製到 Windows Server VM 上，然後在 VM 上安裝 SQL Server。 請務必將 SQL Server VM 註冊到[資源提供者](sql-vm-resource-provider-register.md)，以取得入口網站管理、自動備份和自動修補等功能。 
+   有三種方式可以執行此動作。 如果您是 Enterprise 合約 (EA) 客戶，您可以布建其中一個[支援授權的虛擬機器映射](sql-server-on-azure-vm-iaas-what-is-overview.md#BYOL)，這也稱為「自備授權 (BYOL) 。 如果您有[軟體保證](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default)，可以在現有的隨用隨付 (PAYG) 映射上啟用[Azure Hybrid Benefit](licensing-model-azure-hybrid-benefit-ahb-change.md) 。 或者，您可以將 SQL Server 安裝媒體複製到 Windows Server VM 上，然後在 VM 上安裝 SQL Server。 請務必將 SQL Server VM 註冊到[資源提供者](sql-vm-resource-provider-register.md)，以取得入口網站管理、自動備份和自動修補等功能。 
 
 1. **如果是從其中一個隨用隨付資源庫映像建立，可以將 VM 變更為使用自己的 SQL Server 授權嗎？**
 
@@ -132,7 +132,7 @@ ms.locfileid: "85955670"
 
 1. **哪些訂用帳戶支援災害復原 (DR) 權益？**
 
-   提供軟體保證同等訂用帳戶權限作為固定權益的完整方案，可支援 DR 權益。 這包括 但不限於開放值（OV）、開放值訂用帳戶（OVS-ES）、Enterprise 合約（EA）、Enterprise 合約訂用帳戶（EAS），以及伺服器與雲端註冊（SCE）。 如需詳細資訊，請參閱[產品條款](https://www.microsoft.com/licensing/product-licensing/products)，並洽詢授權連絡人或帳戶管理員。 
+   提供軟體保證同等訂用帳戶權限作為固定權益的完整方案，可支援 DR 權益。 這包括 但不限於開放值 (OV) 、Open Value 訂用帳戶 (OVS-ES) 、Enterprise 合約 (EA) 、Enterprise 合約訂閱 (EAS) ，以及伺服器和雲端註冊 (SCE) 。 如需詳細資訊，請參閱[產品條款](https://www.microsoft.com/licensing/product-licensing/products)，並洽詢授權連絡人或帳戶管理員。 
 
    
  ## <a name="resource-provider"></a>資源提供者
@@ -162,7 +162,7 @@ ms.locfileid: "85955670"
 
 1. **是否可以在相同的 VM 上安裝第二個 SQL Server 執行個體？是否可以變更預設執行個體的已安裝功能？**
 
-   是。 SQL Server 安裝媒體位於 **C** 磁碟機的資料夾中。 您可從該位置執行 **Setup.exe** 來新增新的 SQL Server 執行個體，或變更機器上 SQL Server 的其他已安裝功能。 請注意，某些功能 (例如自動備份、自動修補和 Azure Key Vault 整合) 只能在預設執行個體或正確設定的具名執行個體上運作 (請參閱問題 3)。 
+   是。 SQL Server 安裝媒體位於 **C** 磁碟機的資料夾中。 您可從該位置執行 **Setup.exe** 來新增新的 SQL Server 執行個體，或變更機器上 SQL Server 的其他已安裝功能。 請注意，某些功能 (例如自動備份、自動修補和 Azure Key Vault 整合) 只能在預設執行個體或正確設定的具名執行個體上運作 (請參閱問題 3)。 透過 Azure Hybrid Benefit 或**隨用隨付**授權模型使用[軟體保證](licensing-model-azure-hybrid-benefit-ahb-change.md)的客戶，可以在虛擬機器上安裝多個 SQL Server 實例，而不會產生額外的授權成本。 除非正確設定，否則其他 SQL Server 實例可能會消耗系統資源。 
 
 1. **是否可以將 SQL Server 的預設執行個體解除安裝**
 

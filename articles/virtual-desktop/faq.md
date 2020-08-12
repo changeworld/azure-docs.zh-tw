@@ -3,15 +3,15 @@ title: Windows 虛擬桌面常見問題-Azure
 description: Windows 虛擬桌面的常見問題和最佳作法。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007483"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121114"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows 虛擬桌面常見問題集
 
@@ -47,8 +47,6 @@ ms.locfileid: "88007483"
 將使用者指派給應用程式群組時，服務會執行簡單的 Azure 角色指派。 因此，使用者的 Azure Active Directory (AD) 和應用程式群組的 Azure AD 必須位於相同的位置。 所有服務物件（例如主機集區、應用程式群組和工作區）也必須與使用者位於相同的 Azure AD。
 
 只要您將 Active Directory 與相同虛擬網路 Azure AD VNET (中的使用者) 同步，您就可以在不同的 Azure AD 中建立虛擬機器 (Vm) 。
-
-Azure 燈塔不完全支援管理 Windows 虛擬桌面環境。 由於燈塔目前不支援跨 Azure AD 的租使用者使用者管理，因此燈塔客戶仍然需要登入客戶用來管理使用者的 Azure AD。
 
 ## <a name="what-are-location-restrictions"></a>什麼是位置限制？
 
@@ -132,3 +130,11 @@ FSLogix 中的限制或配額取決於用來儲存使用者設定檔 VHD (X) 檔
 - 針對每個區域和每個訂用帳戶，您可以建立的核心數目有限制。 例如，如果您有 Enterprise 合約訂用帳戶，您可以建立350核心。 您必須將350除以每個 VM 的預設核心數目或您自己的核心限制，以決定每次執行範本時可以建立的 Vm 數目。 若要深入瞭解，請[虛擬機器限制-Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager)。
 
 - VM 首碼名稱和 Vm 數目少於15個字元。 若要深入瞭解，請參閱[Azure 資源的命名規則和限制](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute)。
+
+## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>我可以使用 Azure 燈塔來管理 Windows 虛擬桌面環境嗎？
+
+Azure 燈塔不完全支援 Windows 虛擬桌面環境的管理。 由於燈塔目前不支援跨 Azure AD 的租使用者使用者管理，因此燈塔客戶仍然需要登入客戶用來管理使用者的 Azure AD。
+
+您也無法搭配 Windows 虛擬桌面服務使用 CSP 沙箱訂閱。 若要深入瞭解，請參閱[整合沙箱帳戶](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)。
+
+最後，如果您已從 CSP 擁有者帳戶啟用資源提供者，CSP 客戶帳戶將無法修改資源提供者。

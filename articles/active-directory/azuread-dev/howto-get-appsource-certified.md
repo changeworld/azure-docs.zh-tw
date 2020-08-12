@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7654de8bf26c3eaa3c93c8efcf99577fe88e6f24
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540337"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116308"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>如何讓 AppSource 取得 Azure Active Directory 認證
 
@@ -47,7 +47,7 @@ ms.locfileid: "87540337"
 
 「單一租用戶應用程式」** 是一個應用程式，僅接受來自所定義之 Azure AD 執行個體的使用者登入。 將每個使用者以來賓帳戶的身分新增至應用程式註冊所在的 Azure AD 執行個體之後，外部使用者 (包括來自其他組織的公司或學校帳戶，或個人帳戶) 就可以登入單一租用戶應用程式。 
 
-您可以透過 [Azure AD B2B 共同作業](../b2b/what-is-b2b.md)將使用者以來賓帳戶的身分新增至 Azure AD，而且能[以程式設計方式](../../active-directory-b2c/code-samples.md)執行此動作。 使用 B2B 時，使用者可以建立不需邀請即可登入的自助入口網站。 如需詳細資訊，請參閱 [Azure AD B2B 共同作業註冊的自助入口網站](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal)。
+您可以透過 [Azure AD B2B 共同作業](../external-identities/what-is-b2b.md)將使用者以來賓帳戶的身分新增至 Azure AD，而且能[以程式設計方式](../../active-directory-b2c/code-samples.md)執行此動作。 使用 B2B 時，使用者可以建立不需邀請即可登入的自助入口網站。 如需詳細資訊，請參閱 [Azure AD B2B 共同作業註冊的自助入口網站](../external-identities/self-service-portal.md)。
 
 單一租用戶應用程式可以啟用「與我連絡」** 體驗，但如果您想要啟用 AppSource 建議的單鍵/免費試用體驗，可改為在您的應用程式上啟用多重租用。
 
@@ -102,13 +102,13 @@ ms.locfileid: "87540337"
 </tr>
 </table>
 
-### <a name="more-information"></a>詳細資訊
+### <a name="more-information"></a>其他資訊
 
 如需 AppSource 試用體驗的詳細資訊，請參閱[這段影片](https://aka.ms/trialexperienceforwebapps)。 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需建置支援 Azure AD 登入之應用程式的詳細資訊，請參閱 [Azure AD 的驗證案例](https://docs.microsoft.com/azure/active-directory/develop/v1-authentication-scenarios)。
+- 如需建置支援 Azure AD 登入之應用程式的詳細資訊，請參閱 [Azure AD 的驗證案例](./v1-authentication-scenarios.md)。
 - 如需如何列出 AppSource 中的 SaaS 應用程式的資訊，請參閱 [AppSource 合作夥伴資訊](https://appsource.microsoft.com/partners)
 
 ## <a name="get-support"></a>取得支援

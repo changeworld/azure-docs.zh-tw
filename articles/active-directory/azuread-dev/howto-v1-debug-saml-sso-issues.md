@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: bbd622ccb7aeecfff4d3dc744623105a593e6a67
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f1829127d1eaf65be586ddff3fb2615cae72c5d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85383575"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116133"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>針對 Azure Active Directory 中應用程式的 SAML 型單一登入進行偵錯
 
@@ -43,7 +43,7 @@ ms.locfileid: "85383575"
 1. 以全域系統管理員或其他已獲得授權可管理應用程式的系統管理員身分，登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在左側的分頁視窗中，選取 [ **Azure Active Directory**]，然後選取 [**企業應用程式**]。 
 1. 從企業應用程式清單中，選取您要測試單一登入的應用程式，然後從左側的選項中選取 [**單一登入**]。
-1. 若要開啟以 SAML 為基礎的單一登入測試體驗，請移至**測試單一登入**（步驟5）。 如果 [**測試**] 按鈕呈現灰色，您必須在 [**基本 SAML**設定] 區段中，先填寫並儲存必要的屬性。
+1. 若要開啟 SAML 型單一登入測試體驗，請移至 [測試] [**單一登入**] (步驟 5) 。 如果 [**測試**] 按鈕呈現灰色，您必須在 [**基本 SAML**設定] 區段中，先填寫並儲存必要的屬性。
 1. 在 [測試單一登入]**** 刀鋒視窗中，使用公司的認證來登入目標應用程式。 您可以使用目前使用者或不同使用者的身分來登入。 如果您使用不同使用者的身分登入，會有提示要求您進行驗證。
 
     ![顯示 [測試 SAML SSO] 頁面的螢幕擷取畫面](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
@@ -104,4 +104,4 @@ ms.locfileid: "85383575"
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，單一登入正在使用您的應用程式，您可以將[使用者布建和解除布建到 SaaS 應用程式](../manage-apps/user-provisioning.md)，或[開始使用條件式存取](../conditional-access/app-based-conditional-access.md)。
+現在，單一登入正在使用您的應用程式，您可以將[使用者布建和解除布建到 SaaS 應用程式](../app-provisioning/user-provisioning.md)，或[開始使用條件式存取](../conditional-access/app-based-conditional-access.md)。

@@ -9,18 +9,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5a74f1ca8d1055885561a35dbd18899193d3924d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0561be00f50dad0fe89ca47428802f45ee44f50d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984149"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121420"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>將站台對站台連線新增至使用現有 VPN 閘道連線的 VNet
 
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
-> * [PowerShell （傳統）](vpn-gateway-multi-site.md)
+> * [PowerShell (傳統) ](vpn-gateway-multi-site.md)
 >
 > 
 
@@ -43,7 +43,7 @@ ms.locfileid: "84984149"
 * 您的 VNet 的虛擬網路閘道是路由型。 如果您的 VPN 閘道為原則型，您就必須刪除虛擬網路閘道，並建立新的路由型 VPN 閘道。
 * 此 VNet 連接的所有 VNet 的位址範圍沒有重疊。
 * 您有相容的 VPN 裝置以及能夠對其進行設定的人員。 請參閱 [關於 VPN 裝置](vpn-gateway-about-vpn-devices.md)。 如果不熟悉設定 VPN 裝置，或不熟悉位於內部部署網路組態的 IP 位址範圍，則您需要與能夠提供那些詳細資料的人協調。
-* 您的 VPN 裝置有對外開放的公用 IP 位址。 此 IP 位址不能位於 NAT 後方。
+* 您的 VPN 裝置有對外開放的公用 IP 位址。
 
 ## <a name="part-1---configure-a-connection"></a><a name="part1"></a>第 1 部分 - 設定連線
 1. 從瀏覽器流覽至[Azure 入口網站](https://portal.azure.com)，並視需要使用您的 Azure 帳戶登入。
@@ -57,7 +57,7 @@ ms.locfileid: "84984149"
 5. 在 [新增連線]**** 頁面上，填寫下列欄位︰
    
    * **名稱︰** 為您要建立連線的網站提供名稱。
-   * **連線類型：** 選取 **[站對站（IPsec）**]。
+   * **連線類型：** 選取**站對站 (IPsec) **。
      
      ![[新增連接] 頁面](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "[新增連接] 頁面")<br>
 

@@ -10,16 +10,16 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: b3e8c2c8a5e95cc5c862112410f5073a5e600651
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 7d008dc0f7ed90397ac07e12320d861b107f0f46
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986758"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120927"
 ---
 # <a name="model-versioning-in-the-text-analytics-api"></a>文字分析 API 中的模型版本設定
 
-文字分析 API 的第3版可讓您選擇要在資料上使用的模型版本。 使用選擇性 `model-version` 參數，在您的 API 要求中選取模型的版本。 例如：`<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01`。 如果未指定此參數，則 API 會預設為最新的穩定版本。 
+文字分析 API 的第3版可讓您選擇要在資料上使用的模型版本。 使用選擇性 `model-version` 參數，在您的 API 要求中選取模型的版本。 例如： `<resource-url>/text/analytics/v3.0/sentiment?model-version=2020-04-01` 。 如果未指定此參數，則 API 會預設為最新的穩定版本。 
 
 ## <a name="available-versions"></a>可用的版本
 
@@ -44,9 +44,11 @@ ms.locfileid: "87986758"
 
 | 端點                        | 容器映射標記                     | 模型版本 |
 |---------------------------------|-----------------------------------------|---------------|
-| `/domains/health`               | `1.1.012640001-amd64-preview`或最新版本 | `2020-05-08`  |
+| `/domains/health`               | `1.1.013150001-amd64-preview`或最新版本 | `2020-07-24`  |
+| `/domains/health`               | `1.1.012640001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012420001-amd64-preview`           | `2020-05-08`  |
 | `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-04-16`  |
+| `/domains/health`               | `1.1.012070001-amd64-preview`           | `2020-07-24`  |
 
 
 
