@@ -4,12 +4,12 @@ description: 教學課程：本教學課程說明如何使用由事件格線觸�
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1a7030014a8926b1db11ad99ba031e51194ddfd9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039492"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833720"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教學課程：使用事件方格和 Azure Functions 將擷取的事件中樞資料遷移至 SQL 資料倉儲
 
@@ -178,4 +178,4 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 ## <a name="next-steps"></a>後續步驟 
 您可以對資料倉儲使用功能強大的資料視覺效果工具，以產生付諸行動的深入解析。
 
-本文說明如何[搭配使用 Power BI 與 SQL 資料倉儲](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi)
+本文說明如何[搭配使用 Power BI 與 SQL 資料倉儲](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)

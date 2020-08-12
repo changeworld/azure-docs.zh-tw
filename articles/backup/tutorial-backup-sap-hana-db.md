@@ -3,12 +3,12 @@ title: 教學課程 - 將 SAP HANA 資料庫備份至 Azure VM
 description: 在本教學課程中，您將了解如何將執行於 Azure VM 上的 SAP HANA 資料庫備份至 Azure 備份復原服務保存庫。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: f89d21a252870befae7807d2dda96828aaaa1326
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: e892bf2b943d35728b15a9354308e149af2e478e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439665"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810202"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教學課程：將 SAP HANA 資料庫備份至 Azure VM
 
@@ -73,7 +73,7 @@ ms.locfileid: "87439665"
 
 1. 按一下 [新增] 以儲存新建立的輸出安全性規則。
 
-同樣地，您也可以建立 Azure 儲存體和 Azure AD 的 NSG 輸出安全性規則。 如需服務標記的詳細資訊，請參閱這篇[文章](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+同樣地，您也可以建立 Azure 儲存體和 Azure AD 的 NSG 輸出安全性規則。 如需服務標記的詳細資訊，請參閱這篇[文章](../virtual-network/service-tags-overview.md)。
 
 ### <a name="azure-firewall-tags"></a>Azure 防火牆標籤
 

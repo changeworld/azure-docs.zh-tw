@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: f43db986f70e64e55225465223b7e324450541a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec4b771387854c40045f2b57afe7ead6c52f2c7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084331"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836032"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-300-preview1"></a>教學課程：使用 Azure 通知中樞 (3.0.0-preview1 版) 將推播通知傳送至 iOS 應用程式
 
@@ -317,7 +317,7 @@ ms.locfileid: "87084331"
 
 以下是可供您在傳送通知時檢閱的其他教學課程清單：
 
-- Azure Mobile Apps：如需透過範例來了解如何從已與通知中樞整合的 Mobile Apps 後端傳送通知，請參閱 [將推播通知新增至您的 iOS 應用程式](/azure/app-service-mobile/app-service-mobile-ios-get-started-push)。
+- Azure Mobile Apps：如需透過範例來了解如何從已與通知中樞整合的 Mobile Apps 後端傳送通知，請參閱 [將推播通知新增至您的 iOS 應用程式](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)。
 - ASP.NET： [使用通知中樞將推播通知傳送給使用者](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)。
 - Azure 通知中樞 Java SDK：請參閱 [如何從 Java 使用通知中樞](notification-hubs-java-push-notification-tutorial.md) 以便從 Java 傳送通知。 對於 Android 的開發已經在 Eclipse 中測試。
 - PHP： [如何從 PHP 使用通知中樞](notification-hubs-php-push-notification-tutorial.md)。

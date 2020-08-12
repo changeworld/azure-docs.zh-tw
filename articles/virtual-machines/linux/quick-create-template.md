@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 479e580ee8821f0a6de054c631714c5386927e4f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0849aeb6180a17238f0885896a863936cfdf715d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083911"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827651"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>快速入門：使用 ARM 範本建立 Ubuntu Linux 虛擬機器
 
@@ -65,7 +65,7 @@ ms.locfileid: "86083911"
     - **DNS 標籤首碼**：輸入要作為 DNS 標籤一部分使用的唯一識別碼。
     - **Ubuntu OS 版本**：選取您想要在 VM 上執行的 Ubuntu 版本。
     - **位置**：預設值為與資源群組相同的位置 (如果其已存在)。
-    - **VM 大小**：選取要用於 VM 的[大小](sizes.md)。
+    - **VM 大小**：選取要用於 VM 的[大小](../sizes.md)。
     - **虛擬網路名稱**：要用於 vNet 的名稱。
     - **子網路名稱**：VM 應使用之子網路的名稱。
     - **網路安全性群組名稱**：NSG 的名稱。

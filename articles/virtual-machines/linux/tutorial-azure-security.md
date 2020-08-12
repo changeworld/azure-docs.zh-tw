@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6711075ba3a58e526733c3a18cab03084edc067e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24117e914afa0e443ce979ae71eb506156fa11b3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080092"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830405"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>教學課程：使用 Azure 資訊安全中心來監視 Linux 虛擬機器
 
@@ -133,4 +133,4 @@ Azure 資訊安全中心可協助您了解 Azure 資源的安全性作法。 資
 前進到下一個教學課程，深入了解如何利用 Jenkins、GitHub、Docker 建立 CI/CD 管線。
 
 > [!div class="nextstepaction"]
-> [以 Jenkins、GitHub 及 Docker 建立 CI/CD 基礎結構](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
+> [以 Jenkins、GitHub 及 Docker 建立 CI/CD 基礎結構](/azure/developer/jenkins/pipeline-with-github-and-docker)

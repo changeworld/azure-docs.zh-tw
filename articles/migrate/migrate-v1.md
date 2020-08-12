@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306106"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835998"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用舊版的 Azure Migrate
 
@@ -101,7 +101,7 @@ Azure Migrate 服務有兩個版本：
 --- | --- | ---
 **開機類型** | 支援 BIOS。 不支援 UEFI。 | 如果開機類型為 UEFI，便已有條件地就緒。
 **核心** | 機器核心 <= Azure VM 支援的核心數目上限 (128)。<br/><br/> 如果效能歷程記錄可用，則 Azure Migrate 會將已使用的核心數納入考量。<br/>如果評量設定已指定緩和因數，則會將使用的核心數目乘以緩和因數。<br/><br/> 如果沒有效能記錄，Azure Migrate 會使用配置的核心，而不套用緩和因數。 | 小於或等於限制便就緒。
-**記憶體** | 機器的記憶體大小 <= Azure VM 的記憶體上限 (Azure M 系列 Standard_M128m 上為 3892 GB &nbsp;<sup>2</sup>)。 [深入了解](../virtual-machines/windows/sizes.md)。<br/><br/> 如果效能歷程記錄可用，Azure Migrate 會將已使用的記憶體數納入考量。<br/><br/>如果已指定緩和因數，則會將使用的記憶體乘以緩和因數。<br/><br/> 如果沒有記錄，則會使用配置的記憶體，而不套用緩和因數。<br/><br/> | 在限制內便就緒。
+**記憶體** | 機器的記憶體大小 <= Azure VM 的記憶體上限 (Azure M 系列 Standard_M128m 上為 3892 GB &nbsp;<sup>2</sup>)。 [深入了解](../virtual-machines/sizes.md)。<br/><br/> 如果效能歷程記錄可用，Azure Migrate 會將已使用的記憶體數納入考量。<br/><br/>如果已指定緩和因數，則會將使用的記憶體乘以緩和因數。<br/><br/> 如果沒有記錄，則會使用配置的記憶體，而不套用緩和因數。<br/><br/> | 在限制內便就緒。
 **存放磁碟** | 已配置的磁碟大小必須小於或等於 4 TB (4096 GB)。<br/><br/> 附加至機器的磁碟數目必須小於或等於 65，作業系統磁碟亦包含在內。 | 在限制內便就緒。
 **網路功能** | 機器必須附加 32 個以內的網路介面卡。 | 在限制內便就緒。
 
@@ -263,7 +263,7 @@ Linux | Azure 認同這些 [Linux 作業系統](../virtual-machines/linux/endors
     ```sh InstallDependencyAgent-Linux64.bin```
 
 - 深入了解 Windows 與 Linux 作業系統的[相依性代理程式支援](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)。
-- [深入了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)如何使用指令碼安裝 Dependency 代理程式。
+- [深入了解](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)如何使用指令碼安裝 Dependency 代理程式。
 
 >[!NOTE]
 > 若適用於 VM 的 Azure 監視器文章中提供了部署相依性代理程式時所需的系統必要條件和方法概觀，則這些文章也適用於「服務對應」解決方案。

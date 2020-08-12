@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 706ae5a6c93468da9a65293c1bb4eefb136b938d
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 49984349ce8d9d1bc43778c0042dd21485eded15
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553269"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829674"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 建立自訂 KPI 儀表板
 
@@ -34,7 +34,7 @@ ms.locfileid: "87553269"
 - 將 .NET 應用程式部署至 Azure，並[啟用 Application Insights SDK](../app/asp-net.md)。
 
 > [!NOTE]
-> 有關使用儀表板的必要權限，請參閱[了解儀表板的存取控制](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboard-share-access#understanding-access-control-for-dashboards)一文。
+> 有關使用儀表板的必要權限，請參閱[了解儀表板的存取控制](../../azure-portal/azure-portal-dashboard-share-access.md#understanding-access-control-for-dashboards)一文。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
@@ -131,4 +131,3 @@ Azure Applications Insights Logs (Analytics) 是分開的服務，因此您必�
 
 > [!div class="nextstepaction"]
 > [深入診斷](../app/devops.md)
-

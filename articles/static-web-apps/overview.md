@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 476b81fc9aceae3f05ed54e7b2b11be381121bd8
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488914"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835777"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>什麼是 Azure Static Web Apps 預覽？
 
@@ -44,7 +44,7 @@ Azure Static Web Apps 的工作流程是專為開發人員每天的工作流程�
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>如何使用 Static Web Apps
 
-- **建置新式 JavaScript 應用程式**，使用像是 [Angular](https://angular.io/)、[React](https://reactjs.org/)、[Svelte](https://svelte.dev/)、[Vue](https://vuejs.org/) 的架構和程式庫，具有 [Azure Functions](https://azure.microsoft.com/services/functions/) 後端。
+- **建置新式 JavaScript 應用程式**，使用像是 [Angular](getting-started.md#tabpanel_CeZOj-G++Q_angular)、[React](getting-started.md#tabpanel_CeZOj-G++Q_react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md#tabpanel_CeZOj-G++Q_vue) 的架構和程式庫，具有 [Azure Functions](apis.md) 後端。
 - **發佈靜態網站**，使用像是 [Gatsby](publish-gatsby.md)、[Hugo](publish-hugo.md)、[VuePress](publish-vuepress.md) 的架構。
 - **部署 Web 應用程式**，使用像是 [Next.js](deploy-nextjs.md) 和 [Nuxt.js](deploy-nuxtjs.md) 的架構。
 
