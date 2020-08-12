@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 5cefc59a6072a945be493487c09b1cc7f9827475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b437e3117540719c8c0adc5701ac1a5e934340b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830565"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114467"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>使用 Azure Active Directory 連線服務診斷錯誤
 
@@ -96,4 +96,4 @@ ms.locfileid: "85830565"
 
 若要變更驗證類型，請移除不相容的驗證類型，然後嘗試重新新增連線服務。
 
-如需詳細資訊，請參閱 [Azure AD 的驗證案例](authentication-scenarios.md)。
+如需詳細資訊，請參閱 [Azure AD 的驗證案例](./authentication-vs-authorization.md)。

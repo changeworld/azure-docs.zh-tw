@@ -1,25 +1,25 @@
 ---
-title: 將客戶上架到 Azure 燈塔
+title: 讓客戶在 Azure Lighthouse 上線
 description: 瞭解如何將客戶上線至 Azure 燈塔，讓他們的資源可透過您自己的租使用者存取及管理，並使用 Azure 委派的資源管理。
 ms.date: 05/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3cc754dba124c5f647cd4b51246ced19360c82c3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: cac40a835ff3227a31611b31655865d43fa378ab
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133467"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118870"
 ---
-# <a name="onboard-a-customer-to-azure-lighthouse"></a>將客戶上架到 Azure 燈塔
+# <a name="onboard-a-customer-to-azure-lighthouse"></a>讓客戶在 Azure Lighthouse 上線
 
-本文說明身為服務提供者，您可以將客戶上線至 Azure 燈塔。 當您這麼做時，可以使用[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)，透過您自己的 Azure Active Directory （Azure AD）租使用者存取和管理客戶的委派資源（訂用帳戶和/或資源群組）。
+本文說明身為服務提供者，您可以將客戶上線至 Azure 燈塔。 當您這麼做時，客戶的委派資源 (訂用帳戶和/或資源群組) 可以透過您自己的 Azure Active Directory (Azure AD) 租使用者使用[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)來存取和管理。
 
 如果您在管理多個客戶的資源，您可以重複此程序。 然後，當授權的使用者登入您的租使用者時，該使用者就可以在客戶租用範圍內獲得授權，以執行管理作業，而不需要登入每個個別的客戶租使用者。
 
 為了追蹤您對客戶參與的整體影響及接受表彰，您可將 Microsoft 合作夥伴網路 (MPN) 識別碼與能存取每個已上線訂用帳戶的至少一個使用者帳戶建立關聯。 請注意，您必須在服務提供者租用戶中執行此關聯。 為了簡化作業，建議在租用戶中建立與 MPN 識別碼建立關聯的服務主體帳戶，並授與其每個上架客戶的讀取存取權。 如需詳細資訊，請參閱[將合作夥伴識別碼連結到 Azure 帳戶](../../cost-management-billing/manage/link-partner-id.md)。 
 
 > [!NOTE]
-> 當客戶購買您發佈到 Azure Marketplace 的受控服務供應專案（公開或私用）時，也可以上架至 Azure 燈塔。 如需詳細資訊，請參閱[將受控服務供應項目發佈到 Azure Marketplace](publish-managed-services-offers.md)。 您也可以搭配發佈至 Azure Marketplace 的供應項目來使用這裡所描述上線程序。
+> 當客戶購買受管理的服務供應專案時，也可以上架至 Azure 燈塔， (您發佈至 Azure Marketplace 的公用或私用) 。 如需詳細資訊，請參閱[將受控服務供應項目發佈到 Azure Marketplace](publish-managed-services-offers.md)。 您也可以搭配發佈至 Azure Marketplace 的供應項目來使用這裡所描述上線程序。
 
 上線程序需要您在服務提供者的租用戶與客戶的租用戶內都採取動作。 此文章中描述所有這些步驟。
 
@@ -86,7 +86,7 @@ az account show
 (Get-AzADUser -UserPrincipalName '<yourUPN>').id
 
 # To retrieve the objectId for an SPN
-(Get-AzADApplication -DisplayName '<appDisplayName>').objectId
+(Get-AzADApplication -DisplayName '<appDisplayName>' | Get-AzADServicePrincipal).Id
 
 # To retrieve role definition IDs
 (Get-AzRoleDefinition -Name '<roleName>').id
@@ -196,7 +196,7 @@ az role definition list --name "<roleName>" | grep name
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure Resource Manager 範本
 
-更新參數檔案之後，客戶租用戶中使用者必須將其租用戶中的 Azure Resource Manager 範本部署為訂用帳戶層級部署。 您想要上架的每個訂用帳戶（或包含您想要上架之資源群組的每個訂用帳戶）都需要個別部署。
+更新參數檔案之後，客戶租用戶中使用者必須將其租用戶中的 Azure Resource Manager 範本部署為訂用帳戶層級部署。 您想要上架 (的每個訂用帳戶，或包含您想要上架) 之資源群組的每個訂用帳戶，都需要個別部署。
 
 這是訂用帳戶層級部署，因此無法在 Azure 入口網站中起始。 您可以使用 PowerShell 或 Azure CLI 完成部署，如下所示。
 
@@ -247,7 +247,7 @@ az deployment create --name <deploymentName> \
 
 ## <a name="confirm-successful-onboarding"></a>確認上線成功
 
-當客戶訂用帳戶成功上架至 Azure 燈塔時，服務提供者的租使用者中的使用者將能夠看到訂用帳戶和其資源（如果已透過上述程式授與存取權給他們，不論是個別或以具有適當許可權的 Azure AD 群組成員）。 若要確認，請檢查並確定訂用帳戶以下列其中一種方式出現。  
+當客戶訂用帳戶已成功上架至 Azure 燈塔時，如果使用者已透過上述程式（個別或以具有適當許可權) 的 Azure AD 群組成員）授與該訂用帳戶及其資源，則該服務提供者的租使用者中的使用者將能夠查看其 (。 若要確認，請檢查並確定訂用帳戶以下列其中一種方式出現。  
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
@@ -258,7 +258,7 @@ az deployment create --name <deploymentName> \
 3. 請確認您可以看到訂用帳戶顯示為您在 Resource Manager 範本中所提供的名稱。
 
 > [!IMPORTANT]
-> 若要在[我的客戶](view-manage-customers.md)中查看委派的訂用帳戶，在上架訂閱時，服務提供者的租使用者中必須已被授與[讀取](../../role-based-access-control/built-in-roles.md#reader)者角色（或其他內建角色，包括讀取器存取權）。
+> 若要在[我的客戶](view-manage-customers.md)中查看委派的訂用帳戶，服務提供者的租使用者中的使用者必須已被授與[讀取](../../role-based-access-control/built-in-roles.md#reader)者角色 (或另一個內建角色，包括上架訂用帳戶時) 讀取器存取權。
 
 在客戶租用戶中：
 

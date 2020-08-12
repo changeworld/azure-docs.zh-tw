@@ -1,7 +1,7 @@
 ---
 title: 搭配 Azure AD B2C 使用 MSAL.js
 titleSuffix: Microsoft identity platform
-description: 適用于 JavaScript 的 Microsoft 驗證程式庫（MSAL.js）可讓應用程式使用 Azure AD B2C 並取得權杖，以呼叫受保護的 web Api。 這些 Web API 可以是 Microsoft Graph、其他 Microsoft API、來自其他發行者的 Web API，或是您自己的 Web API。
+description: '適用于 JavaScript 的 Microsoft 驗證程式庫 ( # A0) 可讓應用程式使用 Azure AD B2C 並取得權杖來呼叫受保護的 web Api。 這些 Web API 可以是 Microsoft Graph、其他 Microsoft API、來自其他發行者的 Web API，或是您自己的 Web API。'
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -13,26 +13,26 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f43711652bb205c75870fdb969c44298087a2b07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84308556"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119781"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>使用適用于 JavaScript 的 Microsoft 驗證程式庫來處理 Azure AD B2C
 
-[適用于 javascript 的 Microsoft 驗證程式庫（MSAL.js）](https://github.com/AzureAD/microsoft-authentication-library-for-js)可讓 javascript 開發人員使用[Azure Active Directory B2C](../../active-directory-b2c/overview.md) （Azure AD B2C）來驗證具有社交和本機身分識別的使用者。
+[適用于 javascript 的 Microsoft 驗證程式庫 ( # A0) ](https://github.com/AzureAD/microsoft-authentication-library-for-js)可讓 JavaScript 開發人員使用[Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C) 來驗證具有社交和本機身分識別的使用者。
 
 藉由使用 Azure AD B2C 做為身分識別管理服務，您可以自訂和控制客戶在使用您的應用程式時，註冊、登入及管理其設定檔的方式。 Azure AD B2C 也可讓您為應用程式在驗證過程中顯示的 UI 進行品牌和自訂。
 
 下列各節將示範如何：
 
 - 保護 Node.js Web API
-- 支援單一頁面應用程式（SPA）中的登入，並呼叫受保護*的*Web API
+- 支援單一頁面應用程式中的登入 (SPA) 並呼叫受保護*的*Web API
 - 啟用密碼重設支援
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 如果您還沒有這麼做，請建立[Azure AD B2C 租](../../active-directory-b2c/tutorial-create-tenant.md)使用者。
 
@@ -44,7 +44,7 @@ ms.locfileid: "84308556"
 
 ### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 
-若要使用 Azure AD B2C 保護您的 Web API，您必須先註冊它。 請參閱[註冊您的應用程式](../../active-directory-b2c/add-web-application.md) \(英文\) 以取得詳細步驟。
+若要使用 Azure AD B2C 保護您的 Web API，您必須先註冊它。 請參閱[註冊您的應用程式](../../active-directory-b2c/add-web-api-application.md) \(英文\) 以取得詳細步驟。
 
 ### <a name="step-2-download-the-sample-application"></a>步驟2：下載範例應用程式
 
@@ -157,7 +157,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
         }
     ```
 
-1. 接下來，使用 `signInSignUp` 原則做為預設值來初始化您的 MSAL 物件（請參閱上述的程式碼片段）。 當使用者嘗試登入時，就會看到下列畫面：
+1. 接下來，使用原則將您的 MSAL 物件初始化 `signInSignUp` 為預設 (查看前述的程式碼片段) 。 當使用者嘗試登入時，就會看到下列畫面：
 
     :::image type="content" source="media/msal-b2c-overview/user-journey-01-signin.png" alt-text="Azure AD B2C 顯示的登入畫面":::
 

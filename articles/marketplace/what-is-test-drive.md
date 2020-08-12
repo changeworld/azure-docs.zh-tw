@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229443"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121862"
 ---
 # <a name="what-is-a-test-drive"></a>什麼是試用產品？
 
@@ -44,7 +44,17 @@ ms.locfileid: "86229443"
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager 試用產品
 
-此部署範本包含組成您解決方案的所有 Azure 資源。 適用於此案例的產品為僅使用 Azure 資源的產品。 這是虛擬機器或 Azure 應用程式供應專案的唯一 [試用產品] 選項。
+此部署範本包含組成您解決方案的所有 Azure 資源。 適用於此案例的產品為僅使用 Azure 資源的產品。 Azure Resource Manager 試用產品適用于下列供應專案類型： 
+
+- Azure 應用程式
+- Dynamics 365 for Business Central
+- Dynamics 365 for Customer Engagement & PowerApps
+- Dynamics 365 for Operations
+- SaaS
+- 虛擬機器
+
+>[!NOTE]
+>這是虛擬機器和 Azure 應用程式供應專案的唯一 [試用產品] 選項。
 
 ### <a name="hosted-test-drive"></a>託管的試用產品
 

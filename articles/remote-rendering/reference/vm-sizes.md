@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
-ms.openlocfilehash: aab914caa2647146639aa366f558c80bebcfde54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8e439a055b71ed291573965c561ee31610e3ed4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809935"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121607"
 ---
 # <a name="vm-sizes"></a>VM 大小
 
@@ -76,7 +76,7 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
 
 有兩種方式可判斷構成 VM 大小之預算限制的模型或場景的多邊形數目 `standard` ：
 * 在模型轉換端，取出[轉換輸出 json](../how-tos/conversion/get-information.md)檔案，並檢查 `numFaces` [ *inputStatistics*區段](../how-tos/conversion/get-information.md#the-inputstatistics-section)中的專案
-* 如果您的應用程式處理動態內容，則可以在執行時間中動態查詢轉譯的多邊形數目。 使用[效能評定查詢](../overview/features/performance-queries.md#performance-assessment-queries)，並檢查 `polygonsRendered` 結構中的成員 `FrameStatistics` 。 棋盤背景一律會淡入，並會有一些延遲，以確保使用者可以在這個非同步查詢之後採取動作。 實例的使用者動作可以隱藏或刪除模型實例。
+* 如果您的應用程式處理動態內容，則可以在執行時間中動態查詢轉譯的多邊形數目。 使用[效能評定查詢](../overview/features/performance-queries.md#performance-assessment-queries)，並檢查 `polygonsRendered` 結構中的成員 `FrameStatistics` 。 當轉譯器 `polygonsRendered` `bad` 達到多邊形限制時，此欄位會設定為。 棋盤背景一律會淡入，並會有一些延遲，以確保使用者可以在這個非同步查詢之後採取動作。 實例的使用者動作可以隱藏或刪除模型實例。
 
 ## <a name="pricing"></a>定價
 

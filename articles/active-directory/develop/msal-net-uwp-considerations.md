@@ -1,7 +1,7 @@
 ---
-title: UWP 考慮（MSAL.NET） |Azure
+title: UWP 考慮 (MSAL.NET) |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）使用通用 Windows 平臺（UWP）的考慮。
+description: 瞭解搭配適用于 .NET 的 Microsoft 驗證程式庫的通用 Windows 平臺 (UWP)  (MSAL.NET) 的考慮。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,18 +13,18 @@ ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0654bce86cf5fb0b5bd117e444721e95f137dd47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 502bbe65cdc0aef768ff4f017b1f6a920815b001
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652684"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118853"
 ---
 # <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>搭配 MSAL.NET 使用通用 Windows 平臺的考慮
-使用通用 Windows 平臺（UWP）搭配 MSAL.NET 的應用程式開發人員應該考慮本文所提供的概念。
+使用通用 Windows 平臺 (UWP) MSAL.NET 的應用程式開發人員應該考慮這篇文章所提供的概念。
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork 屬性
-在 Windows 執行階段（WinRT）平臺上， `PublicClientApplication` 具有布林值屬性 `UseCorporateNetwork` 。 此屬性可讓 Windows 8.1 應用程式和 UWP 應用程式受益于整合式 Windows 驗證（IWA）（如果使用者已登入具有同盟 Azure Active Directory （Azure AD）租使用者的帳戶）。 已登入作業系統的使用者也可以使用單一登入（SSO）。 當您設定 `UseCorporateNetwork` 屬性時，MSAL.NET 會使用 web 驗證訊息代理程式（WAB）。
+在 Windows 執行階段 (WinRT) 平臺上， `PublicClientApplication` 具有布林值屬性 `UseCorporateNetwork` 。 此屬性可讓 Windows 8.1 應用程式和 UWP 應用程式受益于整合式 Windows 驗證 (IWA) 如果使用者登入的帳戶具有同盟 Azure Active Directory (Azure AD 的租使用者。 已登入作業系統的使用者也可以使用單一登入 (SSO) 。 當您設定 `UseCorporateNetwork` 屬性時，MSAL.NET 會使用 web 驗證訊息代理程式 (WAB) 。
 
 > [!IMPORTANT]
 > 將 `UseCorporateNetwork` 屬性設定為 true 時，會假設應用程式開發人員已在應用程式中啟用 IWA。 若要啟用 IWA：
@@ -50,13 +50,13 @@ ms.locfileid: "82652684"
 We can't connect to the service you need right now. Check your network connection or try this again later.
 ```
 
-您可以確定 WAB （基礎 Windows 元件）允許私人網路，以避免此問題。 您可以藉由設定登錄機碼來執行此動作：
+若要避免這個問題，您可以確定 (基礎 Windows 元件的 WAB) 允許私人網路。 您可以藉由設定登錄機碼來執行此動作：
 
 ```Text
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-如需詳細資訊，請參閱[Web 驗證訊息代理程式-Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler)。
+如需詳細資訊，請參閱[Web 驗證訊息代理程式-Fiddler](/windows/uwp/security/web-authentication-broker#fiddler)。
 
 ## <a name="next-steps"></a>後續步驟
 下列範例會提供詳細資訊。

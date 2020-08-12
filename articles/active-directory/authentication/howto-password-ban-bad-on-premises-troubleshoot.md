@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035480"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116456"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>疑難排解：內部部署 Azure AD 密碼保護
 
@@ -32,15 +32,15 @@ ms.locfileid: "87035480"
 
 此問題的主要徵兆是 DC 代理程式管理事件記錄檔中的30018事件。 這個問題可能有數個可能的原因：
 
-1. DC 代理程式位於網路的隔離部分，不允許網路連線到已註冊的 proxy。 只要其他 DC 代理程式可以與 proxy 通訊，才能從 Azure 下載密碼原則，此問題可能會是良性的。 一旦下載之後，隔離的 DC 就會透過 sysvol 共用中的原則檔案複寫來取得這些原則。
+1. DC 代理程式位於網路的隔離部分，不允許網路連線到已註冊的 proxy (s) 。 只要其他 DC 代理程式可以與 proxy (s) 進行通訊，才能從 Azure 下載密碼原則，此問題可能是良性的。 一旦下載之後，隔離的 DC 就會透過 sysvol 共用中的原則檔案複寫來取得這些原則。
 
-1. Proxy 主機電腦封鎖對 RPC 端點對應程式端點的存取（埠135）
+1. Proxy 主機電腦封鎖對 RPC 端點對應程式端點的存取 (埠 135) 
 
    Azure AD 密碼保護 Proxy 安裝程式會自動建立 Windows 防火牆輸入規則，以允許存取埠135。 如果稍後刪除或停用此規則，DC 代理程式將無法與 Proxy 服務進行通訊。 如果已停用內建 Windows 防火牆代替另一個防火牆產品，您必須將該防火牆設定為允許存取埠135。
 
-1. Proxy 主機電腦封鎖了對 Proxy 服務接聽的 RPC 端點（動態或靜態）的存取
+1. Proxy 主機電腦封鎖了對 RPC 端點的存取， (由 Proxy 服務接聽的動態或靜態) 
 
-   Azure AD 密碼保護 Proxy 安裝程式會自動建立 Windows 防火牆輸入規則，以允許存取由 Azure AD 的密碼保護 Proxy 服務所接聽的任何輸入埠。 如果稍後刪除或停用此規則，DC 代理程式將無法與 Proxy 服務進行通訊。 如果已停用內建 Windows 防火牆代替另一個防火牆產品，您必須將該防火牆設定為允許存取由 Azure AD 密碼保護 Proxy 服務所接聽的任何輸入埠。 如果 Proxy 服務已設定為在特定靜態 RPC 埠（使用 Cmdlet）接聽，則此設定可能會更具體 `Set-AzureADPasswordProtectionProxyConfiguration` 。
+   Azure AD 密碼保護 Proxy 安裝程式會自動建立 Windows 防火牆輸入規則，以允許存取由 Azure AD 的密碼保護 Proxy 服務所接聽的任何輸入埠。 如果稍後刪除或停用此規則，DC 代理程式將無法與 Proxy 服務進行通訊。 如果已停用內建 Windows 防火牆代替另一個防火牆產品，您必須將該防火牆設定為允許存取由 Azure AD 密碼保護 Proxy 服務所接聽的任何輸入埠。 如果 Proxy 服務已設定為使用 Cmdlet)  (接聽特定的靜態 RPC 埠，則此設定可能會更具體 `Set-AzureADPasswordProtectionProxyConfiguration` 。
 
 1. Proxy 主機電腦未設定為允許網域控制站登入電腦。 此行為是透過 [從網路存取這台電腦] 使用者權限指派來控制。 樹系中所有網域的所有網域控制站都必須被授與此許可權。 這項設定通常會被限制為較大網路強化工作的一部分。
 
@@ -60,11 +60,11 @@ Azure AD 密碼保護對於 Microsoft 金鑰發佈服務所提供的加密和解
 
 1. 確定 KDS 根金鑰服務已在網域中的所有 Windows Server 2012 和更新版本的網域控制站上啟用和運作。
 
-   根據預設，KDS 根金鑰服務的服務啟動模式會設定為手動（觸發程式啟動）。 此設定表示當用戶端第一次嘗試使用此服務時，它會隨選啟動。 此預設服務啟動模式可讓 Azure AD 密碼保護正常執行。
+   根據預設，KDS 根金鑰服務的服務啟動模式會設定為手動 (觸發程式開始) 。 此設定表示當用戶端第一次嘗試使用此服務時，它會隨選啟動。 此預設服務啟動模式可讓 Azure AD 密碼保護正常執行。
 
    如果 KDS 根金鑰服務啟動模式已設定為停用，則必須先修正此設定，Azure AD 密碼保護才會正常運作。
 
-   這個問題的簡單測試是透過服務管理 MMC 主控台手動啟動 KDS 根金鑰服務，或使用其他管理工具（例如，從命令提示字元主控台執行 "net start kdssvc"）。 KDS 根金鑰服務預期會順利啟動並繼續執行。
+   這個問題的簡單測試是透過服務管理 MMC 主控台手動啟動 KDS 根金鑰服務，或使用其他管理工具 (例如，從命令提示字元主控台) 執行 "net start kdssvc"。 KDS 根金鑰服務預期會順利啟動並繼續執行。
 
    KDS 根金鑰服務無法啟動的最常見根本原因是 Active Directory 網域控制站物件位於預設的網域控制站 OU 之外。 KDS 根金鑰服務不支援此設定，而且不是 Azure AD 密碼保護所加諸的限制。 這種情況的修正方法是將網域控制站物件移至預設網域控制站 OU 底下的位置。
 
@@ -72,15 +72,28 @@ Azure AD 密碼保護對於 Microsoft 金鑰發佈服務所提供的加密和解
 
    Windows Server 2016 引進了 KDS 根金鑰的安全性修正，修改了 KDS 根金鑰加密緩衝區的格式;這些緩衝區有時會無法在 Windows Server 2012 和 Windows Server 2012 R2 上解密。 相反的方向是 Windows Server 2012 和 Windows Server 2012 R2 上以 KDS 根金鑰加密的緩衝區，一律會在 Windows Server 2016 和更新版本上成功解密。 如果 Active Directory 網域中的網域控制站執行了這些作業系統的混合，則可能會報告密碼保護解密失敗的偶爾 Azure AD。 基於安全性修正的本質，無法精確預測這些失敗的時機或徵兆，並假設它不具決定性，Azure AD 的密碼保護 DC 代理程式會在特定時間加密資料。
 
-   Microsoft 正在調查此問題的修正程式，但尚未提供任何 ETA。 在此同時，除了不會在 Active Directory 網域中混用這些不相容的作業系統之外，此問題並沒有因應措施。 換句話說，您應該只執行 Windows Server 2012 和 Windows Server 2012 R2 網域控制站，或只執行 Windows Server 2016 和更新版本的網域控制站。
+   除了在您的 Active Directory 網域 (s) 中不混用這些不相容的作業系統時，此問題的因應措施並無任何因應措施。 換句話說，您應該只執行 Windows Server 2012 和 Windows Server 2012 R2 網域控制站，或只執行 Windows Server 2016 和更新版本的網域控制站。
+
+## <a name="dc-agent-thinks-the-forest-has-not-been-registered"></a>DC 代理程式認為樹系尚未註冊
+
+此問題的徵兆是記錄在 DC Agent\Admin 通道中的30016事件，其中包含：
+
+```text
+The forest has not been registered with Azure. Password policies cannot be downloaded from Azure unless this is corrected.
+```
+
+此問題有兩個可能的原因。
+
+1. 樹系尚未註冊。 若要解決此問題，請執行 Register-azureadpasswordprotectionforest 命令，如[部署需求](howto-password-ban-bad-on-premises-deploy.md)中所述。
+1. 樹系已註冊，但 DC 代理程式無法解密樹系註冊資料。 在 [DC 代理程式] 底下所列的問題 #2，這種情況下的根本原因，[是無法加密或解密密碼原則](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files)檔案。 確認這個理論的簡單方法是，您只會在執行 Windows Server 2012 或 Windows Server 2012R2 網域控制站的 DC 代理程式上看到此錯誤，而在 Windows Server 2016 和更新版本的網域控制站上執行的 DC 代理程式則沒問題。 解決方法如下：將所有網域控制站升級至 Windows Server 2016 或更新版本。
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>已接受弱式密碼，但不應
 
 這個問題可能有幾個原因。
 
-1. 您的 DC 代理程式正在執行已過期的公開預覽軟體版本。 請參閱[公開預覽 DC 代理程式軟體已過期](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)。
+1. 您的 DC 代理程式 (s) 正在執行已過期的公開預覽軟體版本。 請參閱[公開預覽 DC 代理程式軟體已過期](howto-password-ban-bad-on-premises-troubleshoot.md#public-preview-dc-agent-software-has-expired)。
 
-1. 您的 DC 代理程式無法下載原則，或無法解密現有的原則。 請檢查上述主題中的可能原因。
+1. 您的 DC 代理程式 (s) 無法下載原則或無法解密現有的原則。 請檢查上述主題中的可能原因。
 
 1. 密碼原則強制模式仍會設為 [稽核]。 如果此設定作用中，請將它重新設定為使用 Azure AD 密碼保護入口網站來強制執行。 如需詳細資訊，請參閱作業[模式](howto-password-ban-bad-on-premises-operations.md#modes-of-operation)。
 
@@ -109,7 +122,7 @@ Setting password failed.
         Error Message: Password doesn't meet the requirements of the filter dll's
 ```
 
-當 Azure AD 密碼保護記錄 Active Directory DSRM 密碼的密碼驗證事件記錄檔事件時，事件記錄檔訊息預期不會包含使用者名稱。 之所以會發生這種行為，是因為 DSRM 帳戶是不屬於實際 Active Directory 網域的本機帳戶。  
+當 Azure AD 密碼保護記錄 Active Directory DSRM 密碼的密碼驗證事件記錄檔事件 (s) 時，事件記錄檔訊息預期不會包含使用者名稱。 之所以會發生這種行為，是因為 DSRM 帳戶是不屬於實際 Active Directory 網域的本機帳戶。  
 
 ## <a name="domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password"></a>網域控制站複本升級因弱式 DSRM 密碼而失敗
 
@@ -199,7 +212,7 @@ Azure AD 的密碼保護 Proxy 軟體在任何版本中都沒有時間限制。 
 
 ## <a name="removal"></a>移除
 
-如果決定卸載 Azure AD 密碼保護軟體，並從網域和樹系清除所有相關的狀態，則可以使用下列步驟來完成這項工作：
+如果決定卸載 Azure AD 密碼保護軟體，並從網域 (s) 與樹系中清除所有相關的狀態，則可以使用下列步驟來完成此工作：
 
 > [!IMPORTANT]
 > 這些步驟務必要依序執行。 如果有任何 Proxy 服務的執行個體仍繼續執行，它將會定期重新建立其 serviceConnectionPoint 物件。 如果有任何 DC 代理程式服務的執行個體仍繼續執行，它將會定期重新建立其 serviceConnectionPoint 物件與 sysvol 狀態。

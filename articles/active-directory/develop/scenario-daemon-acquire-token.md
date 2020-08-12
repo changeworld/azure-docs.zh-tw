@@ -1,6 +1,6 @@
 ---
-title: 取得權杖以呼叫 Web API （daemon 應用程式）-Microsoft 身分識別平臺 |Azure
-description: 瞭解如何建立可呼叫 web Api （取得權杖）的 daemon 應用程式
+title: 取得權杖以呼叫 Web API (daemon 應用程式) -Microsoft 身分識別平臺 |Azure
+description: '瞭解如何建立會呼叫 web Api (取得權杖的 daemon 應用程式) '
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d755573b53eb63d85165fb73fe4b97298dbeff09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868984"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119210"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>呼叫 web Api 的 Daemon 應用程式-取得權杖
 
@@ -24,7 +24,7 @@ ms.locfileid: "81868984"
 
 ## <a name="scopes-to-request"></a>要求的範圍
 
-要求用戶端認證流程的範圍是資源的名稱，後面接著 `/.default` 。 此標記法會告訴 Azure Active Directory （Azure AD）使用在應用程式註冊期間以靜態方式宣告的*應用層級許可權*。 此外，租使用者系統管理員必須授與這些 API 許可權。
+要求用戶端認證流程的範圍是資源的名稱，後面接著 `/.default` 。 此標記法會告訴 Azure Active Directory (Azure AD) 使用在應用程式註冊期間以靜態方式宣告的*應用層級許可權*。 此外，租使用者系統管理員必須授與這些 API 許可權。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -51,13 +51,13 @@ final static String GRAPH_DEFAULT_SCOPE = "https://graph.microsoft.com/.default"
 
 ---
 
-### <a name="azure-ad-v10-resources"></a>Azure AD （v1.0）資源
+### <a name="azure-ad-v10-resources"></a>Azure AD (v1.0) 資源
 
 用於用戶端認證的範圍應該一律是資源識別碼，後面接著 `/.default` 。
 
 > [!IMPORTANT]
 > 當 MSAL 針對接受版本1.0 存取權杖的資源要求存取權杖時，Azure AD 會在最後一個斜線之前取得所有專案，並使用它做為資源識別碼，以從要求的範圍中剖析所需的物件。
-> 因此，如果 Azure SQL Database （**HTTPs： \/ /database.windows.net**），資源預期以斜線結尾的物件（適用于 Azure SQL Database `https://database.windows.net/` ），您將需要要求的範圍 `https://database.windows.net//.default` 。 （請注意雙斜線）。另請參閱 MSAL.NET 問題[#747：省略資源 url 的尾端斜線，這會導致 sql 驗證失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
+> 因此，如果 Azure SQL Database (**HTTPs： \/ /database.windows.net**) ，資源預期會以 Azure SQL Database 的斜線 (結尾的物件， `https://database.windows.net/`) ，您將需要要求的範圍 `https://database.windows.net//.default` 。  (請注意雙斜線。 ) 另請參閱 MSAL.NET 問題[#747：省略資源 url 的尾端斜線，這會導致 sql 驗證失敗](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747)。
 
 ## <a name="acquiretokenforclient-api"></a>AcquireTokenForClient API
 
@@ -202,7 +202,7 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 ## <a name="application-token-cache"></a>應用程式權杖快取
 
-在 MSAL.NET 中，會 `AcquireTokenForClient` 使用應用程式權杖快取。 （所有其他 AcquireToken*XX*方法都會使用使用者 token 快取）。請不要在 `AcquireTokenSilent` 呼叫之前呼叫 `AcquireTokenForClient` ，因為會 `AcquireTokenSilent` 使用*使用者*token 快取。 `AcquireTokenForClient`檢查*應用程式*權杖快取本身並加以更新。
+在 MSAL.NET 中，會 `AcquireTokenForClient` 使用應用程式權杖快取。  (所有其他 AcquireToken*XX*方法都會使用使用者 token 快取。 `AcquireTokenSilent` 在您呼叫之前，) 不會呼叫 `AcquireTokenForClient` ，因為會 `AcquireTokenSilent` 使用*使用者*token 快取。 `AcquireTokenForClient`檢查*應用程式*權杖快取本身並加以更新。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -234,16 +234,16 @@ Content: {
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [Daemon 應用程式-呼叫 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=dotnet)
+> [Daemon 應用程式-呼叫 Web API](./scenario-daemon-call-api.md?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Daemon 應用程式-呼叫 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=python)
+> [Daemon 應用程式-呼叫 Web API](./scenario-daemon-call-api.md?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Daemon 應用程式-呼叫 Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-call-api?tabs=java)
+> [Daemon 應用程式-呼叫 Web API](./scenario-daemon-call-api.md?tabs=java)
 
 ---

@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76696413"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120893"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS 與 ADAL JS 之間的差異
 
@@ -30,7 +30,7 @@ ms.locfileid: "76696413"
 
 在大部分情況下，您想使用 Microsoft 身分識別平台和 MSAL.js，也就是最新一代的 Microsoft 驗證程式庫。 您可以使用 MSAL.js 取得權杖，以供使用者利用 Azure AD (公司和學校帳戶)、Microsoft (個人) 帳戶 (MSA) 或 Azure AD B2C 登入您的應用程式。
 
-如果您已熟悉 v1.0 端點 (和 ADAL.js)，您可以閱讀 [V2.0 端點有哪些差異？](active-directory-v2-compare.md)。
+如果您已熟悉 v1.0 端點 (和 ADAL.js)，您可以閱讀 [V2.0 端點有哪些差異？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 不過，如果您的應用程式需要使用舊版的 [Active Directory 同盟服務 (ADFS)](/windows-server/identity/active-directory-federation-services) 登入使用者，您仍然需要使用 ADAL.js。
 
@@ -96,4 +96,4 @@ ms.locfileid: "76696413"
     ```
 
 ## <a name="next-steps"></a>後續步驟
-如需詳細資訊，請參閱 [v1.0 和 v2.0 的比較](active-directory-v2-compare.md)。
+如需詳細資訊，請參閱 [v1.0 和 v2.0 的比較](../azuread-dev/azure-ad-endpoint-comparison.md)。

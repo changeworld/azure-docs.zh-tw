@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552776"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115606"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>在宣告中使用目錄架構延伸屬性
 
@@ -34,7 +34,7 @@ ms.locfileid: "87552776"
 ## <a name="registering-and-using-directory-schema-extensions"></a>註冊和使用目錄架構延伸模組
 目錄架構擴充屬性可以透過下列兩種方式的其中一種來註冊和填入：
 
-- 藉由設定 AD Connect 來建立它們，並將資料從內部部署 AD 同步處理到其中。 請參閱[Azure AD Connect 同步目錄延伸](/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)模組。
+- 藉由設定 AD Connect 來建立它們，並將資料從內部部署 AD 同步處理到其中。 請參閱[Azure AD Connect 同步目錄延伸](../hybrid/how-to-connect-sync-feature-directory-extensions.md)模組。
 - 使用 Microsoft Graph 來註冊、設定的值，並從目錄架構延伸模組屬性讀取[目錄架構擴充功能 |圖形 API 概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)及/或 powershell +[使用 AzureAD Powershell Cmdlet 管理延伸模組屬性](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0)。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>以 AD Connect 所建立之目錄架構延伸屬性的資料發出宣告

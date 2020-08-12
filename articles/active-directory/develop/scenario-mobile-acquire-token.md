@@ -1,7 +1,7 @@
 ---
-title: 取得權杖以呼叫 Web API （行動應用程式） |Azure
+title: 取得權杖以呼叫 Web API (mobile apps) |Azure
 titleSuffix: Microsoft identity platform
-description: 了解如何建置會呼叫 Web API 的行動應用程式。 （取得應用程式的權杖）。
+description: '了解如何建置會呼叫 Web API 的行動應用程式。  (取得應用程式的權杖。 ) '
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 499b7348c645f4792332769ac598ffcea07ea102
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 79b9be504639b35c7c15d427bd7766ed2dd15535
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541901"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121080"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>為呼叫 web Api 的行動應用程式取得權杖
 
-在您的應用程式可以呼叫受保護的 web Api 之前，它需要存取權杖。 本文會逐步引導您完成使用 Microsoft 驗證程式庫（MSAL）取得權杖的程式。
+在您的應用程式可以呼叫受保護的 web Api 之前，它需要存取權杖。 本文會逐步引導您使用 Microsoft 驗證程式庫 (MSAL) 取得權杖。
 
 ## <a name="define-a-scope"></a>定義範圍
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive`只有一個強制參數： `scopes` 。 `scopes`參數會列舉字串，其會定義需要權杖的範圍。 如果權杖是用於 Microsoft Graph，您可以在每個 Microsoft Graph API 的 API 參考中找到所需的範圍。 在參考中，移至「許可權」一節。
 
-例如，若要[列出使用者的連絡人](https://docs.microsoft.com/graph/api/user-list-contacts)，請使用「使用者. 讀取」、「連絡人. 讀取」的範圍。 如需詳細資訊，請參閱 [Microsoft Graph 權限參考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+例如，若要[列出使用者的連絡人](/graph/api/user-list-contacts)，請使用「使用者. 讀取」、「連絡人. 讀取」的範圍。 如需詳細資訊，請參閱 [Microsoft Graph 權限參考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
 
 在 Android 上，您可以在使用建立應用程式時指定父活動 `PublicClientApplicationBuilder` 。 如果您在該時間未指定父活動，稍後可以使用來指定它， `.WithParentActivityOrWindow` 如下一節所示。 如果您指定父活動，則權杖會在互動之後回到該父活動。 如果您未指定，則呼叫會擲回 `.ExecuteAsync()` 例外狀況。
 
@@ -221,11 +221,11 @@ catch(MsalUiRequiredException)
 
 參數會藉 `WithPrompt()` 由指定提示來控制與使用者的互動。
 
-![顯示提示結構中欄位的影像。 這些常數值會藉由定義 WithPrompt （）參數所顯示的提示類型，以控制與使用者的互動。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![顯示提示結構中欄位的影像。 這些常數值會藉由定義 WithPrompt ( # A1 參數所顯示的提示類型，以控制與使用者的互動。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 類別會定義下列常數：
 
-- `SelectAccount`強制 Security Token Service （STS）出示 [帳戶選取] 對話方塊。 此對話方塊包含使用者具有會話的帳戶。 當您想要讓使用者在不同的身分識別之間進行選擇時，可以使用此選項。 此選項會驅動 MSAL，以將 `prompt=select_account` 傳送至識別提供者。
+- `SelectAccount`強制 Security Token Service (STS) 呈現 [帳戶選取] 對話方塊。 此對話方塊包含使用者具有會話的帳戶。 當您想要讓使用者在不同的身分識別之間進行選擇時，可以使用此選項。 此選項會驅動 MSAL，以將 `prompt=select_account` 傳送至識別提供者。
 
     `SelectAccount`常數是預設值，它會根據可用的資訊，有效地提供最佳的體驗。 可用的資訊可能包括帳戶、使用者的會話是否存在等等。 請不要變更此預設值，除非您有很好的理由要這麼做。
 - `Consent`可讓您提示使用者同意，即使之前已授與同意亦然。 在此情況下，MSAL 會將 `prompt=consent` 傳送給識別提供者。
@@ -234,7 +234,7 @@ catch(MsalUiRequiredException)
 - `ForceLogin`讓服務即使不需要提示，也會提示使用者提供認證。
 
     如果權杖取得失敗，而您想要讓使用者重新登入，此選項會很有用。 在此情況下，MSAL 會將 `prompt=login` 傳送給識別提供者。 您可能會想要在以安全性為主的應用程式中使用此選項，組織治理會要求使用者在每次存取應用程式的特定部分時登入。
-- `Never`僅適用于 .NET 4.5 和 Windows 執行階段（WinRT）。 這個常數不會提示使用者，但會嘗試使用儲存在隱藏的內嵌 web 視圖中的 cookie。 如需詳細資訊，請參閱搭配[使用網頁瀏覽器與 MSAL.NET](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)。
+- `Never`僅適用于 .NET 4.5 和 Windows 執行階段 (WinRT) 。 這個常數不會提示使用者，但會嘗試使用儲存在隱藏的內嵌 web 視圖中的 cookie。 如需詳細資訊，請參閱搭配[使用網頁瀏覽器與 MSAL.NET](./msal-net-web-browsers.md)。
 
     如果此選項失敗，則會擲回例外狀況， `AcquireTokenInteractive` 通知您需要 UI 互動。 接著，您必須使用另一個 `Prompt` 參數。
 - `NoPrompt`不會傳送提示給識別提供者。
@@ -259,7 +259,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ### <a name="acquire-tokens-via-the-protocol"></a>透過通訊協定取得權杖
 
-我們不建議直接使用通訊協定來取得權杖。 如果您這樣做，應用程式將不會支援涉及單一登入（SSO）、裝置管理和條件式存取的某些案例。
+我們不建議直接使用通訊協定來取得權杖。 如果您這樣做，應用程式將不會支援涉及單一登入 (SSO) 、裝置管理和條件式存取的某些案例。
 
 當您使用通訊協定來取得行動應用程式的權杖時，請提出兩個要求：
 

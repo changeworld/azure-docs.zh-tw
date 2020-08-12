@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5d66e79e79edd98f3192d0187d6f0454c3aeffa
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708921"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121471"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 閘道常見問題集
 
@@ -90,15 +90,15 @@ VPN 閘道是一種虛擬網路閘道。 VPN 閘道可透過公用連線在您�
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>在建立之前是否可以取得我的 VPN 閘道 IP 位址？
 
-區域冗余和區域性閘道（名稱中有_AZ_的閘道 sku）都依賴_標準 SKU_ Azure 公用 IP 資源。 Azure 標準 SKU 公用 IP 資源必須使用靜態配置方法。 因此，當您建立要用於它的標準 SKU 公用 IP 資源時，您的 VPN 閘道就會有公用 IP 位址。
+區域-多餘的和分區閘道 (在名稱中有_AZ_的閘道 sku) 都依賴_標準 SKU_ Azure 公用 IP 資源。 Azure 標準 SKU 公用 IP 資源必須使用靜態配置方法。 因此，當您建立要用於它的標準 SKU 公用 IP 資源時，您的 VPN 閘道就會有公用 IP 位址。
 
-針對非區域多餘和非區域性閘道（名稱中_沒有_ _AZ_的閘道 sku），您無法在建立 VPN 閘道 IP 位址之前取得它。 只有當您刪除並重新建立 VPN 閘道時，IP 位址才會變更。
+針對非區域冗余和非區域性閘道 (閘道 Sku 在名稱) _not_中沒有_AZ_ ，您就無法在建立 VPN 閘道 IP 位址之前取得它。 只有當您刪除並重新建立 VPN 閘道時，IP 位址才會變更。
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>是否可以要求我的 VPN 閘道的靜態公用 IP 位址？
 
-如上所述，區域冗余和區域性閘道（在名稱中具有_AZ_的閘道 sku）都依賴_標準 SKU_ Azure 公用 IP 資源。 Azure 標準 SKU 公用 IP 資源必須使用靜態配置方法。
+如上所述，區域冗余和區域性閘道 (具有_AZ_ in name) 的閘道 sku 都依賴_標準 SKU_ Azure 公用 IP 資源。 Azure 標準 SKU 公用 IP 資源必須使用靜態配置方法。
 
-針對非區域多餘和非區域性閘道（_不_具有_AZ_ in Name 的閘道 sku），只支援動態 IP 位址指派。 不過，這並不表示 IP 位址會在指派給您的 VPN 閘道之後變更。 VPN 閘道 IP 位址變更的唯一時機是刪除閘道後再重新建立。 當您調整、重設或完成 VPN 閘道的其他內部維護和升級時，VPN 閘道公用 IP 位址不會變更。
+針對非區域冗余和非區域性閘道 (閘道 Sku 在名稱) _not_中沒有_AZ_ ，只支援動態 IP 位址指派。 不過，這並不表示 IP 位址會在指派給您的 VPN 閘道之後變更。 VPN 閘道 IP 位址變更的唯一時機是刪除閘道後再重新建立。 當您調整、重設或完成 VPN 閘道的其他內部維護和升級時，VPN 閘道公用 IP 位址不會變更。
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>我的 VPN 通道如何獲得驗證？
 
@@ -126,6 +126,10 @@ Azure VPN 使用 PSK (預先共用金鑰) 驗證。 當建立 VPN 通道時，�
 ### <a name="can-i-configure-force-tunneling"></a>是否可以設定強制通道？
 
 是。 請參閱[設定強制通道](vpn-gateway-about-forced-tunneling.md)。
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>我可以在 VPN 連線上使用 NAT-T 嗎？
+
+是，支援 (NAT-T) 的 NAT 遍歷。 Azure VPN 閘道不會在來自 IPsec 通道的內部封包上執行任何類似 NAT 的功能。  在此設定中，請確定內部部署裝置會起始 IPSec 通道。
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>是否可以在 Azure 中設定自己的 VPN 伺服器，並用來連接到內部部署網路？
 

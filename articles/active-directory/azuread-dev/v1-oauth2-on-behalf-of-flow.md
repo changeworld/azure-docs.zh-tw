@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6fc4de3ef934e2d1b9dcff46c78f45e7d0f3b6d8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f746cc654934464d907c6ad669eb7470e4dcaeeb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845454"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117731"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>使用代理者流程中委派使用者身分識別的服務對服務呼叫
 
@@ -264,7 +264,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 - **源自 OBO 呼叫之 SAML 判斷提示的 SubjectConfirmationData**：如果目標應用程式需要 **SubjectConfirmationData** 中的收件者值，該值必須是資源應用程式設定中的非萬用字元回覆 URL。
 - **SubjectConfirmationData 節點**：此節點不能包含 **InResponseTo** 屬性，因為該屬性不屬於 SAML 回應。 接收 SAML 權杖的應用程式必須能夠在沒有 **InResponseTo** 屬性的情況下接受 SAML 判斷提示。
 
-- **同意**：必須授與同意，才能在 OAuth 流程上接收包含使用者資料的 SAML 權杖。 如需權限和取得系統管理員同意的相關資訊，請參閱 [Azure Active Directory v1.0 端點中的權限和同意](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)。
+- **同意**：必須授與同意，才能在 OAuth 流程上接收包含使用者資料的 SAML 權杖。 如需權限和取得系統管理員同意的相關資訊，請參閱 [Azure Active Directory v1.0 端點中的權限和同意](./v1-permissions-consent.md)。
 
 ### <a name="response-with-saml-assertion"></a>使用 SAML 判斷提示進行回應
 

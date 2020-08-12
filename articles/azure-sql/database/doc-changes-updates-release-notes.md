@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: af19b72846c78ef80ba170b6d6e0cec97fa2b96e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533354"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121454"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database & SQL 受控執行個體有哪些新功能？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 
 不同 Azure SQL 產品之間的這項說明應該簡化並簡化在 Azure 中使用 SQL Server 資料庫引擎的程式，無論是 Azure SQL Database 中的單一受控資料庫、裝載 Azure SQL 受控執行個體中的多個資料庫的完整受控實例，或是在 Azure 虛擬機器上託管的熟悉內部部署 SQL Server 產品。
 
-請考慮這是進行中的工作，而不是每篇文章都已更新。 例如，Transact-sql （T-sql）語句、預存程式和 Azure SQL Database 與 Azure SQL 受控執行個體之間共用的許多功能的檔尚未完成，因此我們會感謝您的耐心等候，我們會繼續說明內容。 
+請考慮這是進行中的工作，而不是每篇文章都已更新。 例如，Transact-sql (T-sql) 語句、預存程式，以及 Azure SQL Database 與 Azure SQL 受控執行個體之間共用的許多功能都尚未完成，因此我們會感謝您的耐心等候，因為我們會繼續闡明內容。 
 
 下表提供術語變更的快速比較： 
 
@@ -52,7 +52,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 | ---| --- |
 | 使用單一資料庫和彈性集區加速資料庫復原 | 如需相關資訊，請參閱[加速資料庫](../accelerated-database-recovery.md)復原。|
 | 資料探索與分類  |如需詳細資訊，請參閱[Azure SQL Database 和 Azure Synapse 分析資料探索 & 分類](data-discovery-and-classification-overview.md)。|
-| 彈性資料庫工作 | 如需相關資訊，請參閱[建立、設定和管理彈性作業](elastic-jobs-overview.md)。 |
+| 彈性資料庫工作 (預覽)  | 如需相關資訊，請參閱[建立、設定和管理彈性作業](elastic-jobs-overview.md)。 |
 | 彈性查詢 | 如需相關資訊，請參閱[彈性查詢總覽](elastic-query-overview.md)。 |
 | 彈性交易 | [跨雲端資料庫的分散式交易](elastic-transactions-overview.md)。 |
 | Azure 入口網站中的查詢編輯器 |如需相關資訊，請參閱[使用 Azure 入口網站的 SQL 查詢編輯器來連接及查詢資料](connect-query-portal.md)。|
@@ -65,7 +65,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 | 功能 | 詳細資料 |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">執行個體集區</a> | 方便且符合成本效益的方式，將較小的 SQL 實例遷移至雲端。 |
-| <a href="https://aka.ms/managed-instance-aadlogins">實例層級 Azure AD 伺服器主體（登入）</a> | 使用<a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a>語句來建立實例層級的登入。 |
+| <a href="https://aka.ms/managed-instance-aadlogins">實例層級 Azure AD 伺服器主體 (登入) </a> | 使用<a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a>語句來建立實例層級的登入。 |
 | [異動複寫](../managed-instance/replication-transactional-overview.md) | 將資料表中的變更複寫到 SQL 受控執行個體、SQL Database 或 SQL Server 中的其他資料庫。 當某些資料列在 SQL 受控執行個體或 SQL Server 的其他實例中變更時，或更新您的資料表。 如需相關資訊，請參閱[在 AZURE SQL 受控執行個體中設定](../managed-instance/replication-between-two-instances-configure-tutorial.md)複寫。 |
 | 威脅偵測 |如需相關資訊，請參閱[在 AZURE SQL 受控執行個體中設定威脅偵測](../managed-instance/threat-detection-configure.md)。|
 | 長期備份保留期 | 如需相關資訊，請參閱在[AZURE SQL 受控執行個體中設定長期備份保留期](../managed-instance/long-term-backup-retention-configure.md)，此功能目前為有限的公開預覽。 | 
@@ -77,7 +77,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 ### <a name="sql-managed-instance-h2-2019-updates"></a>SQL 受控執行個體 H2 2019 更新
 
 - [服務輔助子網](https://azure.microsoft.com/updates/service-aided-subnet-configuration-for-managed-instance-in-azure-sql-database-available/)設定是一種安全且方便的方式，可管理您控制資料流量的子網設定，而 SQL 受控執行個體可確保管理流量不中斷。
-- [透明資料加密（TDE）與攜帶您自己的金鑰（BYOK）](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/)可讓您自備金鑰（BYOK）案例進行待用資料保護，並可讓組織將金鑰和資料的管理責任分開。
+- [透明資料加密 (使用攜帶您自己的金鑰 (BYOK 的 TDE) ) ](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/)可為待用資料保護啟用自備金鑰 (BYOK) 案例，並可讓組織將金鑰和資料的管理職責分開。
 - [自動容錯移轉群組](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/)可讓您將主要實例的所有資料庫複寫至另一個區域中的次要實例。
 - [全域追蹤旗標](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/)可讓您設定 SQL 受控執行個體行為。
 
@@ -88,10 +88,10 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
   - 支援<a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019">sharepoint 2016 和 sharepoint 2019</a>和<a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance">Dynamics 365 Business Central。</a>
   - 建立具有<a href="https://aka.ms/managed-instance-collation">實例層級定序</a>的受控實例，以及您選擇的<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">時區</a>。
   - 受控實例現在會受到[內建防火牆](../managed-instance/management-endpoint-verify-built-in-firewall.md)的保護。
-  - 設定 SQL 受控執行個體以使用[公用端點](../managed-instance/public-endpoint-configure.md)、 [Proxy 覆寫](connectivity-architecture.md#connection-policy)連線以取得更佳的網路效能、 <a href="https://aka.ms/four-cores-sql-mi-update">4 虛擬核心在第5代硬體產生</a>，或<a href="https://aka.ms/managed-instance-configurable-backup-retention">將備份保留設定為35天</a>以進行時間點還原。 [長期備份保留期](long-term-retention-overview.md#sql-managed-instance-support)（最多10年）目前僅限公開預覽。  
+  - 設定 SQL 受控執行個體以使用[公用端點](../managed-instance/public-endpoint-configure.md)、 [Proxy 覆寫](connectivity-architecture.md#connection-policy)連線以取得更佳的網路效能、 <a href="https://aka.ms/four-cores-sql-mi-update">4 虛擬核心在第5代硬體產生</a>，或<a href="https://aka.ms/managed-instance-configurable-backup-retention">將備份保留設定為35天</a>以進行時間點還原。 [長期備份保留期](long-term-retention-overview.md#sql-managed-instance-support) (最多10年) 目前處於有限的公開預覽階段。  
   - 新功能可讓您<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 將資料庫異地還原至另一個資料中心</a>、[重新命名資料庫](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[刪除虛擬叢集](../managed-instance/virtual-cluster-delete.md)。
-  - 新的內建[實例參與者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)可讓責任區隔（SoD）符合安全性原則，並遵循企業標準。
-  - SQL 受控執行個體適用于 GA （US Gov 德克薩斯州、US Gov 亞利桑那州）的下列 Azure Government 區域，以及中國北部2和中國東部2。 這也適用于下列公用區域：澳大利亞中部、澳大利亞中部2、巴西南部、法國南部、阿拉伯聯合大公國中部、阿拉伯聯合大公國北部、南非北部、南非西部。
+  - 新的內建[實例參與者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)能夠區分責任 (SoD) 合規性與安全性原則，以及符合企業標準。
+  - 下列 Azure Government 區域提供 SQL 受控執行個體，可供 GA (US Gov 德克薩斯州、US Gov 亞利桑那州) 以及中國北部2和中國東部2。 這也適用于下列公用區域：澳大利亞中部、澳大利亞中部2、巴西南部、法國南部、阿拉伯聯合大公國中部、阿拉伯聯合大公國北部、南非北部、南非西部。
 
 ### <a name="known-issues"></a>已知問題
 
@@ -121,7 +121,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 |[CLR 模組與連結的伺服器有時候無法參考本機 IP 位址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||有因應措施||
 |從 Azure Blob 儲存體還原資料庫之後，未使用 DBCC CHECKDB 確認資料庫一致性。||已解決|2019年11月|
 |如果源資料庫包含記憶體內部 OLTP 物件，則從業務關鍵層到一般用途層的時間點資料庫還原將不會成功。||已解決|2019年10月|
-|使用安全連線之外部（非 Azure）郵件伺服器的 Database mail 功能||已解決|2019年10月|
+|使用安全連線的外部 (非 Azure) 郵件伺服器的 Database mail 功能||已解決|2019年10月|
 |SQL 受控執行個體中不支援自主資料庫||已解決|2019年8月|
 
 
@@ -137,7 +137,7 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 
 ### <a name="permissions-on-resource-group-not-applied-to-sql-managed-instance"></a>資源群組的許可權未套用至 SQL 受控執行個體
 
-當 SQL 受控執行個體參與者 Azure 角色套用至資源群組（RG）時，它不會套用至 SQL 受控執行個體且不會有任何作用。
+當 SQL 受控執行個體參與者 Azure 角色套用至資源群組 (RG) 時，不會套用至 SQL 受控執行個體且不會有任何作用。
 
 因應**措施：為**訂用帳戶層級的使用者設定 SQL 受控執行個體參與者角色。
 
@@ -149,9 +149,9 @@ Azure SQL Database 和 Azure SQL 受控執行個體的檔已分割成不同的�
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL Agent 角色需要非系統管理員 (sysadmin) 登入的明確 EXECUTE 許可權
 
-如果將非系統管理員（sysadmin）登入加入任何[SQL Agent 固定資料庫角色](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)中，就會有一個問題，即必須授與主要預存程式的明確執行許可權，才能讓這些登入工作。 如果發生此問題，將會顯示錯誤訊息「物件 <上的執行許可權被拒絕 object_name> （Microsoft SQL Server，錯誤：229）」。
+如果將非系統管理員（sysadmin）登入加入任何[SQL Agent 固定資料庫角色](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles)中，就會有一個問題，即必須授與主要預存程式的明確執行許可權，才能讓這些登入工作。 如果發生此問題，將會顯示錯誤訊息「物件 <上的執行許可權已被拒絕 object_name> (Microsoft SQL Server，將會顯示錯誤： 229) 」。
 
-因應**措施：當**您將登入加入至 SQL Agent 固定資料庫角色（SQLAgentUserRole、SQLAgentReaderRole 或 SQLAgentOperatorRole）之後，針對加入這些角色的每個登入，請執行下列 t-sql 腳本，將執行許可權明確授與所列的預存程式。
+因應**措施：將**登入加入至 SQL Agent 固定資料庫角色 (SQLAgentUserRole、SQLAgentReaderRole 或 SQLAgentOperatorRole) ，針對新增至這些角色的每個登入，執行下列 t-sql 腳本，將執行許可權明確授與所列的預存程式。
 
 ```tsql
 USE [master]
@@ -165,7 +165,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>代理程式進程重新開機可能會中斷 SQL 代理程式作業
 
-**（2020年3月解決）** SQL 代理程式會在每次作業啟動時建立新的會話，逐漸增加記憶體耗用量。 為了避免達到內部記憶體限制（這會封鎖執行排程工作），Agent 進程會在其記憶體耗用量達到閾值後重新開機。 這可能會導致在重新開機時中斷執行的作業。
+** (于2020年3月解決) **SQL 代理程式會在每次作業啟動時建立新的會話，逐漸增加記憶體耗用量。 為了避免達到內部記憶體限制（這會封鎖執行排程工作），Agent 進程會在其記憶體耗用量達到閾值後重新開機。 這可能會導致在重新開機時中斷執行的作業。
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>記憶體內部 OLTP 記憶體限制不適用
 
@@ -189,7 +189,7 @@ SQL Server 和 SQL 受控執行個體[不允許使用者捨棄不是空的](/sql
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>業務關鍵服務層級上的 Resource Governor 可能需要在容錯移轉之後重新設定
 
-[ [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) ] 功能可讓您限制指派給使用者工作負載的資源，可能會在容錯移轉或使用者起始的服務層級變更（例如，最大 vCore 或最大實例儲存體大小的變更）時，不正確地分類某些使用者工作負載。
+[ [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) ] 功能可讓您限制指派給使用者工作負載的資源，可能會在容錯移轉或使用者起始的服務層級變更時，不正確地分類某些使用者工作負載 (例如，[最大 vCore] 或 [最大實例儲存體大小]) 變更。
 
 因應**措施：定期執行，** `ALTER RESOURCE GOVERNOR RECONFIGURE` 或當做 sql 代理程式作業的一部分，當實例啟動時，如果您使用[Resource Governor](/sql/relational-databases/resource-governor/resource-governor)，就會執行 sql 工作。
 
@@ -201,7 +201,7 @@ SQL Server 和 SQL 受控執行個體[不允許使用者捨棄不是空的](/sql
 
 ### <a name="impersonation-of-azure-ad-login-types-is-not-supported"></a>不支援 Azure AD 登入類型的模擬
 
-`EXECUTE AS USER` `EXECUTE AS LOGIN` 不支援使用或下列 Azure Active Directory （Azure AD）主體的模擬：
+`EXECUTE AS USER` `EXECUTE AS LOGIN` 不支援使用或下列 Azure Active Directory (Azure AD) 主體的模擬：
 -   別名 Azure AD 使用者。 在此情況下，會傳回下列錯誤： `15517` 。
 - 根據 Azure AD 的應用程式或服務主體，Azure AD 登入和使用者。 在此情況下，會傳回下列錯誤： `15517` 和 `15406` 。
 
@@ -266,7 +266,7 @@ SQL 受控執行個體中提供的錯誤記錄檔不會保存下來，而且其�
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>不支援相同實例內兩個資料庫的交易範圍
 
-**（2020年3月解決）**`TransactionScope`如果兩個查詢傳送至相同交易範圍下相同實例中的兩個資料庫，.net 中的類別將無法使用：
+** (于2020年3月解決) **`TransactionScope`如果兩個查詢傳送至相同交易範圍下相同實例中的兩個資料庫，.net 中的類別將無法使用：
 
 ```csharp
 using (var scope = new TransactionScope())
@@ -291,7 +291,7 @@ using (var scope = new TransactionScope())
 
 ```
 
-因應措施 **（自2020年3月起不需要）**：使用[sqlconnection.changedatabase （字串）](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase)來使用連接內容中的另一個資料庫，而不是使用兩個連接。
+因應措施** (自2020年3月) 起不需要**因應措施：使用[SqlConnection. sqlconnection.changedatabase (字串) ](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase)以在連接內容中使用另一個資料庫，而不是使用兩個連接。
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR 模組與連結的伺服器有時候無法參考本機 IP 位址
 

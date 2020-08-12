@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: bae052e06aae4881dd7203a5616b35e9c96997fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551733"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117782"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>操作說明：從 Azure 存取控制服務遷移
 
@@ -59,7 +59,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 但所有進入 `https://accounts.accesscontrol.windows.net` 的流量除外。 進入此 URL 的流量已經由其他服務處理，因此**不**受「存取控制」的淘汰影響。 
 
-如需有關存取控制的詳細資訊，請參閱[存取控制服務 2.0 (已封存)](https://msdn.microsoft.com/library/hh147631.aspx)。
+如需有關存取控制的詳細資訊，請參閱[存取控制服務 2.0 (已封存)](/previous-versions/azure/azure-services/hh147631(v=azure.100))。
 
 ## <a name="find-out-which-of-your-apps-will-be-impacted"></a>找出哪些應用程式會受影響
 
@@ -114,7 +114,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 - **2017 年 11 月**：Azure 傳統入口網站中的 Azure AD 管理員體驗[已淘汰](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/)。 目前，可在以下新的專用 URL 進行「存取控制」的命名空間管理：`https://manage.windowsazure.com?restoreClassic=true`。 該 URL 可以用來檢視現有的命名空間、啟用和停用命名空間，若您有需要，也可以刪除命名空間。
 - **2018 年 4 月 2 日**：Azure 傳統入口網站已完全淘汰，這意謂著透過任何 URL 都無法進行「存取控制」命名空間管理。 屆時，您將無法停用或啟用、刪除或列舉存取控制命名空間。 不過，「存取控制」管理入口網站將會在 `https://\<namespace\>.accesscontrol.windows.net` 運作並提供完整功能。 存取控制的其他所有元件都將繼續正常運作。
-- **2018 年 11 月 7 日**：所有「存取控制」元件將永久關閉。 這包括存取控制管理入口網站、管理服務、STS 和權杖轉換規則引擎。 此時，傳送至存取控制（位於. accesscontrol.windows.net）的任何要求都會 \<namespace\> 失敗。 在那之前，請確實將所有現有的應用程式和服務移轉至其他技術。
+- **2018 年 11 月 7 日**：所有「存取控制」元件將永久關閉。 這包括存取控制管理入口網站、管理服務、STS 和權杖轉換規則引擎。 此時，傳送至存取控制 (的任何要求都位於 \<namespace\> 。 accesscontrol.windows.net) 會失敗。 在那之前，請確實將所有現有的應用程式和服務移轉至其他技術。
 
 > [!NOTE]
 > 原則會停用在一段期間內未要求權杖的命名空間。 自 2018 年 9 月起，這段期間目前為 14 天的非使用狀態，但在未來的幾週內，這將縮短成 7 天的非使用狀態。 如果您有目前停用的「存取控制」命名空間，您可以[下載並安裝 ACS PowerShell](#download-and-install-acs-powershell) 來重新啟用這些命名空間。
@@ -129,13 +129,13 @@ https://<mynamespace>.accesscontrol.windows.net
 
 | 服務 | 指引 |
 | ------- | -------- |
-| Azure 服務匯流排 | [遷移至共用存取簽章](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Azure 服務匯流排轉送 | [遷移至共用存取簽章](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Azure 受控快取 | [移轉至 Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure DataMarket | [移轉至認知服務 API](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk 服務 | [移轉至 Azure App Service 的邏輯應用程式功能](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure 服務匯流排 | [遷移至共用存取簽章](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure 服務匯流排轉送 | [遷移至共用存取簽章](../../azure-relay/relay-migrate-acs-sas.md) |
+| Azure 受控快取 | [遷移至 Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.md) |
+| Azure DataMarket | [移轉至認知服務 API](https://azure.microsoft.com/services/cognitive-services/) |
+| BizTalk 服務 | [移轉至 Azure App Service 的邏輯應用程式功能](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure 媒體服務 | [移轉至 Azure AD 驗證](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
-| Azure 備份 | [升級 Azure 備份代理程式](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
+| Azure 備份 | [升級 Azure 備份代理程式](../../backup/backup-azure-file-folder-backup-faq.md) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -150,10 +150,10 @@ SharePoint 2013、2016和 SharePoint Online 客戶在雲端、內部部署和混
 
 | 功能 | 指引 |
 | ------- | -------- |
-| 從 Azure AD 驗證使用者 | 先前，Azure AD 並不支援 SharePoint 進行驗證所需的 SAML 1.1 權杖，因此 ACS 被用來作為讓 SharePoint 與 Azure AD 權杖格式相容的媒介。 現在，您可以[使用 Azure AD App 圖庫 sharepoint 內部部署應用程式，將 sharepoint 直接連接到 Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)。 |
-| [應用程式驗證 & SharePoint 內部部署中的伺服器對伺服器驗證](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | 不受 ACS 淘汰影響；無須進行任何變更。 | 
-| [SharePoint 增益集 (提供者裝載和 SharePoint 裝載) 的低信任度授權](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 淘汰影響；無須進行任何變更。 |
-| [SharePoint 雲端混合式搜尋](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | 不受 ACS 淘汰影響；無須進行任何變更。 |
+| 從 Azure AD 驗證使用者 | 先前，Azure AD 並不支援 SharePoint 進行驗證所需的 SAML 1.1 權杖，因此 ACS 被用來作為讓 SharePoint 與 Azure AD 權杖格式相容的媒介。 現在，您可以[使用 Azure AD App 圖庫 sharepoint 內部部署應用程式，將 sharepoint 直接連接到 Azure AD](../saas-apps/sharepoint-on-premises-tutorial.md)。 |
+| [應用程式驗證 & SharePoint 內部部署中的伺服器對伺服器驗證](/SharePoint/security-for-sharepoint-server/authentication-overview) | 不受 ACS 淘汰影響；無須進行任何變更。 | 
+| [SharePoint 增益集 (提供者裝載和 SharePoint 裝載) 的低信任度授權](/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 淘汰影響；無須進行任何變更。 |
+| [SharePoint 雲端混合式搜尋](/archive/blogs/spses/cloud-hybrid-search-service-application) | 不受 ACS 淘汰影響；無須進行任何變更。 |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>使用被動驗證的 Web 應用程式
 
@@ -214,7 +214,7 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 
 如果您決定 Azure AD 是最適合您應用程式和服務的移轉方式，請瞭解以下兩種讓應用程式與 Azure AD 整合。
 
-若要使用 WS-同盟或 WIF 來與 Azure AD 整合，我們建議您依照[為不在資源庫內的應用程式設定同盟單一登入](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)所述的方法執行。 本文說明設定 Azure AD 來使用 SAML 單一登入的方法，但是同樣適用於 WS-同盟。 如欲採用此方法需要 Azure AD Premium 授權。 此方法有兩個優點：
+若要使用 WS-同盟或 WIF 來與 Azure AD 整合，我們建議您依照[為不在資源庫內的應用程式設定同盟單一登入](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)所述的方法執行。 本文說明設定 Azure AD 來使用 SAML 單一登入的方法，但是同樣適用於 WS-同盟。 如欲採用此方法需要 Azure AD Premium 授權。 此方法有兩個優點：
 
 - 您有 Azure AD 權杖自訂的完整彈性。 您可以自訂 Azure AD 簽發的宣告，使其符合存取控制簽發的宣告， 尤以使用者識別碼或名稱識別碼宣告最為重要。 若要在變更技術後繼續接收您使用者的一致使用者識別碼，請確認 Azure AD 簽發的使用者識別碼與存取控制簽發的識別碼相符。
 - 您可以為您的應用程式設定專用的權杖簽署憑證與存留期。
@@ -224,7 +224,7 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 
 另一個方法是參考[此程式碼範例](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)，當中的 WS-同盟設定指示稍有不同。 此程式碼範例不使用 WIF，而是使用 ASP.NET 4.5 OWIN 中介軟體。 不過，應用程式註冊指示適用於使用 WIF 的應用程式，而且不需要 Azure AD Premium 授權。 
 
-如果您選擇此方法，請參閱並理解 [Azure AD 中的簽署金鑰變換](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)一文。 這個方法會使用 Azure AD 全域簽署金鑰來簽發權杖。 根據預設，WIF 不會自動重新整理簽署金鑰。 當 Azure AD 轉換其全域簽署金鑰時，您的 WIF 實作必須準備好接受變更。 如需詳細資訊，請參閱 [Azure AD 中簽署金鑰變換的相關重要資訊](https://msdn.microsoft.com/library/azure/dn641920.aspx)。
+如果您選擇此方法，請參閱並理解 [Azure AD 中的簽署金鑰變換](../develop/active-directory-signing-key-rollover.md)一文。 這個方法會使用 Azure AD 全域簽署金鑰來簽發權杖。 根據預設，WIF 不會自動重新整理簽署金鑰。 當 Azure AD 轉換其全域簽署金鑰時，您的 WIF 實作必須準備好接受變更。 如需詳細資訊，請參閱 [Azure AD 中簽署金鑰變換的相關重要資訊](/previous-versions/azure/dn641920(v=azure.100))。
 
 如果您可以透過 OpenID Connect 或 OAuth 通訊協定與 Azure AD 整合，建議採用該方法。 我們的 [Azure AD 開發人員指南](https://aka.ms/aaddev)有許多關於如何將 Azure AD 整合至 Web 應用程式的文件和指導。
 
@@ -265,8 +265,8 @@ Azure AD 租用戶也可以透過 AD FS，與內部部署 Active Directory 的�
 
 如果您決定 Azure AD B2C 是適合您應用程式和服務的移轉方式，請先了解下列資源的內容：
 
-- [Azure AD B2C 文件](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
-- [Azure AD B2C 自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
+- [Azure AD B2C 文件](../../active-directory-b2c/overview.md)
+- [Azure AD B2C 自訂原則](../../active-directory-b2c/custom-policy-overview.md)
 - [Azure AD B2C 定價](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>移轉至 Ping Identity 或 Auth0

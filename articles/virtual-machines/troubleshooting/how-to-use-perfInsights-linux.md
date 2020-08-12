@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526794"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121386"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -44,7 +44,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 
 - 儲存體資訊
 
-- Azure 虛擬機器設定（使用[azure Instance Metadata Service](../windows/instance-metadata-service.md)進行收集）
+- 使用[azure Instance Metadata Service](../windows/instance-metadata-service.md)) 收集的 Azure 虛擬機器設定 (
 
 - 執行中的進程、磁片、記憶體和 CPU 使用量的清單
 
@@ -72,7 +72,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
   - PCI 裝置 [ `*` ]
 
 - 進程和記憶體
-  - 進程清單（工作名稱、使用的記憶體、開啟的檔案）
+  - 進程清單 (工作名稱、使用的記憶體、開啟的檔案) 
   - 總計、可用和可用實體記憶體
   - 總計、可用和可用的交換記憶體
   - CPU 和進程的程式碼剖析捕獲（5秒間隔）
@@ -83,7 +83,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
   - 網路路由表
   - 開啟的埠和狀態
 
-- 存放裝置
+- 儲存體
   - 封鎖裝置清單
   - 資料分割清單
   - 掛接點清單
@@ -99,6 +99,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
   - /var/log/boot.log
   - /var/log/yum.log
   - /var/log/dpkg.log
+  - /var/log/sysstat 或/var/log/sa [ `**` ]
   - /var/log/cloud-init.log
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
@@ -112,7 +113,9 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 - [Azure 虛擬機器實例中繼資料](../windows/instance-metadata-service.md)
 
 >[!Note]
->[ `*` ] 尚未在 Debian 和 SLES 發行版本上收集 PCI 資訊
+>[ `*` ] 尚未在 Debian 和 SLES 發行版本上收集 PCI 資訊。
+> 
+>[ `**` ]/var/log/sysstat 或/var/log/sa 包含系統活動報表 (SAR) sysstat 封裝所收集的檔案。 如果 VM 上未安裝 sysstat 套件，PerfInsights 工具會提供安裝的建議。
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>在您的 VM 上執行 PerfInsights Linux
 
@@ -121,13 +124,13 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 #### <a name="tool-requirements"></a>工具需求
 
 - 此工具必須在發生效能問題的 VM 上執行。
-- Python 2.7 必須安裝在 VM 上
+- Python 3.x 或 Python 2.7 必須安裝在 VM 上。
 
 - 目前支援下列發行版本：
 
     | 散發               | 版本                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux 伺服器        | 6.10 [ `*` ]、7.3、7.6、7.5 （Oracle-資料庫-Ee 13.8 marketplace 映射）|
+    | Oracle Linux 伺服器        | 6.10 [ `*` ]、7.3、7.6、7.5 (Oracle-資料庫-Ee 13.8 marketplace 映射) |
     | CentOS                     | 6.5 [ `*` ]，7。6                                    |
     | RHEL                       | 7.2、7.5、8.0 [ `*` ]                               |
     | Ubuntu                     | 14.04、16.04、18.04                               |

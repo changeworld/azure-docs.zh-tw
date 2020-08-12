@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 9503abf147ee89ec03e7e1317df823426ea37b1c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758878"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120825"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>將模型部署到 Azure Kubernetes Service 叢集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ AKS 叢集和 AML 工作區可以位於不同的資源群組中。
 > 建立或附加程式是一次性的工作。 一旦 AKS 叢集連線到工作區，您就可以將它用於部署。 如果您不再需要 AKS 叢集，您可以卸離或刪除該叢集。 卸離或刪除之後，您將無法再部署到叢集。
 
 > [!IMPORTANT]
-> 強烈建議您在部署至 web 服務之前，先在本機進行偵錯工具。如需詳細資訊，請參閱在[本機進行調試](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+> 我們建議您在部署至 web 服務之前，先在本機進行偵錯工具。 如需詳細資訊，請參閱在[本機進行 Debug](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
 >
 > 您也可以參考 Azure Machine Learning-[部署至本機筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
@@ -63,7 +63,7 @@ AKS 叢集和 AML 工作區可以位於不同的資源群組中。
 
 - 本文中的__CLI__程式碼片段假設您已建立 `inferenceconfig.json` 檔。 如需有關建立此檔的詳細資訊，請參閱[如何和部署模型的位置](how-to-deploy-and-where.md)。
 
-- 如果您需要在您的叢集中部署 Standard Load Balancer (SLB) ，而不是基本 Load Balancer (BLB) ，請在 AKS portal/CLI/SDK 中建立叢集，然後將它連結到 AML 工作區。
+- 如果您需要在叢集中部署 Standard Load Balancer (SLB) ，而不是在基本 Load Balancer (BLB) 中，請在 AKS portal/CLI/SDK 中建立叢集，然後將它連結到 AML 工作區。
 
 - 如果您附加的 AKS 叢集已[啟用授權的 IP 範圍來存取 API 伺服器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，請啟用 AKS 叢集的 AML 控制平面 ip 範圍。 AML 控制平面會部署在配對的區域中，並將推斷 pod 部署在 AKS 叢集上。 如果沒有 API 伺服器的存取權，就無法部署推斷 pod。 在 AKS 叢集中啟用 IP 範圍時，請使用兩個[配對區域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 範圍](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)。
 
@@ -88,7 +88,7 @@ __Authroized IP 範圍僅適用于 Standard Load Balancer。__
 建立或附加 AKS 叢集是工作區的一次性程式。 您可以重複使用此叢集進行多個部署。 如果您刪除叢集或包含該叢集的資源群組，則必須在下次需要部署時建立新的叢集。 您可以將多個 AKS 叢集附加至您的工作區。
  
 Azure Machine Learning 現在支援使用已啟用私用連結的 Azure Kubernetes Service。
-若要建立私用 AKS 叢集，請遵循[這裡](https://docs.microsoft.com/azure/aks/private-clusters)的檔
+若要建立私人 AKS 叢集，請遵循[這裡](https://docs.microsoft.com/azure/aks/private-clusters)的檔
 
 > [!TIP]
 > 如果您想要使用 Azure 虛擬網路保護您的 AKS 叢集，您必須先建立虛擬網路。 如需詳細資訊，請參閱[使用 Azure 虛擬網路保護實驗和推斷](how-to-enable-virtual-network.md#aksvnet)。
@@ -109,6 +109,13 @@ from azureml.core.compute import AksCompute, ComputeTarget
 # For example, to create a dev/test cluster, use:
 # prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
+# Example configuration to use an existing virtual network
+# prov_config.vnet_name = "mynetwork"
+# prov_config.vnet_resourcegroup_name = "mygroup"
+# prov_config.subnet_name = "default"
+# prov_config.service_cidr = "10.0.0.0/16"
+# prov_config.dns_service_ip = "10.0.0.10"
+# prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
 aks_name = 'myaks'
 # Create the cluster
@@ -267,7 +274,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 ### <a name="understand-the-deployment-processes"></a>瞭解部署程式
 
-「部署」一詞同時用於 Kubernetes 和 Azure Machine Learning。 「部署」在這兩個內容中具有非常不同的意義。 在 Kubernetes 中， `Deployment` 是使用宣告式 YAML 檔案所指定的具體實體。 Kubernetes 與 `Deployment` 其他 Kubernetes 實體（例如和）具有已定義的生命週期和實體關聯性 `Pods` `ReplicaSets` 。 您可以在[什麼是 Kubernetes](https://aka.ms/k8slearning)中瞭解 Kubernetes 的檔和影片？。
+「部署」一詞同時用於 Kubernetes 和 Azure Machine Learning。 「部署」在這兩個內容中具有不同的意義。 在 Kubernetes 中， `Deployment` 是使用宣告式 YAML 檔案所指定的具體實體。 Kubernetes 與 `Deployment` 其他 Kubernetes 實體（例如和）具有已定義的生命週期和實體關聯性 `Pods` `ReplicaSets` 。 您可以在[什麼是 Kubernetes](https://aka.ms/k8slearning)中瞭解 Kubernetes 的檔和影片？。
 
 在 Azure Machine Learning 中，您可以使用「部署」，以更通用的方式來提供和清除您的專案資源。 Azure Machine Learning 考慮部署部分的步驟如下：
 

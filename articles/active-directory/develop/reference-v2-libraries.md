@@ -12,21 +12,21 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f4d442831658b276f74146ef91e69b92dec83619
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b844b9c2862d86dab322c4d2df3a96c206ebe8f0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553899"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115130"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft 身分識別平臺驗證程式庫
 
-[Microsoft 身分識別平臺端點](active-directory-v2-compare.md)支援業界標準的 OAuth 2.0 和 OpenID connect 1.0 通訊協定。 Microsoft 驗證程式庫（MSAL）是設計用來與 Microsoft 身分識別平臺端點搭配使用。 您也可以使用支援 OAuth 2.0 和 OpenID Connect 1.0 的開放原始碼程式庫。
+[Microsoft 身分識別平臺端點](../azuread-dev/azure-ad-endpoint-comparison.md)支援業界標準的 OAuth 2.0 和 OpenID connect 1.0 通訊協定。 Microsoft Authentication Library (MSAL) 是設計用來與 Microsoft 身分識別平臺端點搭配使用。 您也可以使用支援 OAuth 2.0 和 OpenID Connect 1.0 的開放原始碼程式庫。
 
-建議您使用遵循安全性開發週期（SDL）方法的通訊協定網域專家所撰寫的程式庫。 這類方法包括[Microsoft 遵循的方式][Microsoft-SDL]。 如果您手動撰寫通訊協定的程式碼，您應該遵循 Microsoft SDL 之類的方法。 請密切注意每個通訊協定的標準規格中的安全性考慮。
+建議您使用通訊協定網域專家遵循安全性開發生命週期 (SDL) 方法所撰寫的程式庫。 這類方法包括[Microsoft 遵循的方式][Microsoft-SDL]。 如果您手動撰寫通訊協定的程式碼，您應該遵循 Microsoft SDL 之類的方法。 請密切注意每個通訊協定的標準規格中的安全性考慮。
 
 > [!NOTE]
-> 您正在尋找 Azure Active Directory Authentication Library （ADAL）嗎？ 請參閱[ADAL 程式庫指南](../azuread-dev/active-directory-authentication-libraries.md)。
+> 您要尋找 Azure Active Directory Authentication Library (ADAL) 嗎？ 請參閱[ADAL 程式庫指南](../azuread-dev/active-directory-authentication-libraries.md)。
 
 ## <a name="types-of-libraries"></a>程式庫類型
 
@@ -48,11 +48,11 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 
 使用用戶端驗證程式庫來取得權杖，以呼叫受保護的 Web API。
 
-| 平台 | 程式庫 | 下載 | 原始程式碼 | 範例 | 參考 | 概念文件 | 藍圖 |
+| 平台 | 程式庫 | 下載 | 原始程式碼 | 範例 | 參考資料 | 概念文件 | 藍圖 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [單一頁面應用程式](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [參考](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [概念檔](msal-overview.md)| [藍圖](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 ![Angular](media/sample-v2-code/logo_angular.png) | MSAL 角度 | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [角 SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [參考](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [概念檔](msal-overview.md) | [藍圖](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [傳統型應用程式](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[概念檔](msal-overview.md) | [藍圖](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
+| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [傳統型應用程式](/azure/active-directory/develop/active-directory-windesktop) | [MSAL.NET](/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[概念檔](msal-overview.md) | [藍圖](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
 | ![Python](media/sample-v2-code/logo_python.png) | MSAL Python | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [範例](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [藍圖](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
 | ![Java](media/sample-v2-code/logo_java.png) | MSAL Java | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [範例](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [參考](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [藍圖](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
 | iOS 和 macOS | MSAL iOS 和 macOS | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS 應用程式](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)， [macOS 應用程式](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [參考](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [概念檔](msal-overview.md) | |
@@ -64,8 +64,8 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 
 | 平台 | 程式庫 | 下載 | 原始程式碼 | 範例 | 參考
 | --- | --- | --- | --- | --- | --- |
-| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET 安全性 |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC 應用程式](quickstart-v2-aspnet-webapp.md) |[ASP.NET API 參考](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
-| ![.NET](media/sample-v2-code/logo_NET.png)| 適用於 .NET 的身分識別模型延伸模組| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC 應用程式](quickstart-v2-aspnet-webapp.md) |[參考](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
+| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET 安全性 |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC 應用程式](quickstart-v2-aspnet-webapp.md) |[ASP.NET API 參考](/dotnet/api/?view=aspnetcore-2.0) |
+| ![.NET](media/sample-v2-code/logo_NET.png)| 適用於 .NET 的身分識別模型延伸模組| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC 應用程式](quickstart-v2-aspnet-webapp.md) |[參考](/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
 | ![Node.js](media/sample-v2-code/logo_nodejs.png) | Azure AD Passport |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Web 應用程式](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
 
 ## <a name="microsoft-supported-libraries-by-os--language"></a>Microsoft 支援的程式庫（依 OS/語言）
@@ -75,7 +75,7 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 | 平台    | Windows    | Linux      | macOS      | iOS | Android    |
 |-------------|------------|------------|------------|------------|------------|
 | ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
-| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET、ASP.NET Core、MSAL.Net （.NET FW、Core、UWP）| ASP.NET Core，MSAL.Net （.NET Core） | ASP.NET Core，MSAL.Net （macOS）       | MSAL.Net （Xamarin. iOS） | MSAL.Net （Xamarin）|
+| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET、ASP.NET Core、MSAL.Net ( .NET FW、Core、UWP) | ASP.NET Core，MSAL.Net ( .NET Core)  | ASP.NET Core，MSAL.Net (macOS)        | MSAL.Net (Xamarin)  | MSAL.Net (Xamarin) |
 | Swift <br> Objective-C |            |            | [適用於 iOS 和 macOS 的 MSAL](msal-overview.md) | [適用於 iOS 和 macOS 的 MSAL](msal-overview.md) |            |
 | ![Java](media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android |
 | ![Python](media/sample-v2-code/logo_python.png) Python | MSAL Python | MSAL Python | MSAL Python |
@@ -102,7 +102,7 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 * 如需程式庫程式碼中的問題和新功能要求，請連絡程式庫擁有者。
 * 如需服務端通訊協定實作中的問題和新功能要求，請連絡 Microsoft。
 * 針對您想要在通訊協定中看到的其他功能，[提出功能要求](https://feedback.azure.com/forums/169401-azure-active-directory)。
-* 如果您發現 Microsoft 身分識別平臺端點不符合 OAuth 2.0 或 OpenID Connect 1.0 的問題，請[建立支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
+* 如果您發現 Microsoft 身分識別平臺端點不符合 OAuth 2.0 或 OpenID Connect 1.0 的問題，請[建立支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ## <a name="related-content"></a>相關內容
 
@@ -114,7 +114,7 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 [AAD-App-Model-V2-Overview]: v2-overview.md
 [ClientLib-NET-Lib]: https://www.nuget.org/packages/Microsoft.Identity.Client
 [ClientLib-NET-Repo]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet
-[ClientLib-NET-Sample]: active-directory-v2-devquickstarts-wpf.md
+[ClientLib-NET-Sample]: ./tutorial-v2-windows-desktop.md
 [ClientLib-Node-Lib]: https://www.npmjs.com/package/passport-azure-ad
 [ClientLib-Node-Repo]: https://github.com/AzureAD/passport-azure-ad
 [ClientLib-Node-Sample]:/
@@ -131,7 +131,7 @@ Microsoft 身分識別平臺端點適用于兩種類型的程式庫：
 [Microsoft-SDL]: https://www.microsoft.com/sdl/default.aspx
 [ServerLib-Net4-Owin-Oidc-Lib]: https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/
 [ServerLib-Net4-Owin-Oidc-Repo]: https://katanaproject.codeplex.com/
-[ServerLib-Net4-Owin-Oidc-Sample]: active-directory-v2-devquickstarts-dotnet-web.md
+[ServerLib-Net4-Owin-Oidc-Sample]: ./tutorial-v2-asp-webapp.md
 [ServerLib-Net4-Owin-Oauth-Lib]: https://www.nuget.org/packages/Microsoft.Owin.Security.OAuth/
 [ServerLib-Net4-Owin-Oauth-Repo]: https://katanaproject.codeplex.com/
 [ServerLib-Net4-Owin-Oauth-Sample]: https://azure.microsoft.com/documentation/articles/active-directory-v2-devquickstarts-dotnet-api/

@@ -11,20 +11,20 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 6c5e0779ce0dfe2730a60873316c66184e038a35
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 50cf58f83115cfb8c84fe7b2a37b6664c2d9c567
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039869"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116677"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>停用弱式密碼和密碼雜湊同步處理，以保護 Azure Active Directory Domain Services 受控網域
 
-根據預設，Azure Active Directory Domain Services （Azure AD DS）可讓您使用 NTLM v1 和 TLS v1 之類的密碼。 某些繼承應用程式可能需要這些加密，但被視為弱式，如果您不需要，也可以停用這些加密。 如果您使用 Azure AD Connect 的內部部署混合式連線，您也可以停用 NTLM 密碼雜湊的同步處理。
+根據預設，Azure Active Directory Domain Services (Azure AD DS) 可讓您使用 NTLM v1 和 TLS v1 之類的密碼。 某些繼承應用程式可能需要這些加密，但被視為弱式，如果您不需要，也可以停用這些加密。 如果您使用 Azure AD Connect 的內部部署混合式連線，您也可以停用 NTLM 密碼雜湊的同步處理。
 
 本文說明如何停用 NTLM v1 和 TLS v1 密碼，並停用 NTLM 密碼雜湊同步處理。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文，您需要下列資源：
 
@@ -74,6 +74,11 @@ Set-AzResource -Id $DomainServicesResource.ResourceId -Properties $securitySetti
 ```
 
 將安全性設定套用至受控網域需要幾分鐘的時間。
+
+> [!IMPORTANT]
+> 停用 NTLM 之後，請在 Azure AD Connect 中執行完整的密碼雜湊同步處理，以從受控網域中移除所有密碼雜湊。 如果您停用 NTLM，但不強制密碼雜湊同步處理，則只會在下次密碼變更時移除使用者帳戶的 NTLM 密碼雜湊。 如果使用者在使用 NTLM 做為驗證方法的系統上快取認證，這項行為可能會讓使用者繼續登入。
+>
+> 一旦 NTLM 密碼雜湊與 Kerberos 密碼雜湊不同，回溯至 NTLM 將無法使用。 如果 VM 可以連線到受控網域控制站，則快取的認證也無法再使用。  
 
 ## <a name="next-steps"></a>後續步驟
 

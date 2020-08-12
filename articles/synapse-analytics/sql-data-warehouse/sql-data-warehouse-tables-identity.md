@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080721"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121318"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用身分識別在 Synapse SQL 集區中建立代理金鑰
 
@@ -24,7 +24,9 @@ ms.locfileid: "87080721"
 
 ## <a name="what-is-a-surrogate-key"></a>什麼是代理鍵
 
-資料表上的 Surrogate 索引鍵是每個資料列都有唯一識別碼的資料行。 索引鍵並非從資料表資料產生。 資料製造模型者在設計資料倉儲模型時，都喜歡在其資料表上建立 Surrogate 索引鍵。 您可以使用 IDENTITY 屬性，在不影響載入效能的情況下，以簡單又有效的方式達成此目標。 IDENTITY 屬性確實有一些限制，如[CREATE TABLE （transact-sql） IDENTITY （屬性）](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)中所述。 身分識別的其中一個限制是不保證它是唯一的。 將 IDENTITY INSERT 和 not 重新植入設定為識別值會導致更多唯一值，但在所有情況下可能不保證唯一性。 如果您因為識別的限制而無法使用識別值，請建立另一個包含目前值的資料表，並使用您的應用程式來管理對資料表和編號指派的存取權。 
+資料表上的 Surrogate 索引鍵是每個資料列都有唯一識別碼的資料行。 索引鍵並非從資料表資料產生。 資料製造模型者在設計資料倉儲模型時，都喜歡在其資料表上建立 Surrogate 索引鍵。 您可以使用 IDENTITY 屬性，在不影響載入效能的情況下，以簡單又有效的方式達成此目標。
+> [!NOTE]
+> 如果使用者明確地插入具有 "SET IDENTITY_INSERT ON" 或 reseeds 身分識別的重複值，則 Synapse SQL 中的識別值不保證是唯一的。 如需詳細資訊，請參閱[CREATE TABLE (transact-sql) IDENTITY (屬性) ](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)。 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>建立具有 IDENTITY 資料行的資料表
 
@@ -161,7 +163,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 目前在使用 IDENTITY 資料行將資料載入資料表時，並無法使用 `CREATE TABLE AS SELECT`。
 >
 
-如需載入資料的詳細資訊，請參閱[設計 SYNAPSE SQL 集區的解壓縮、載入和轉換（ELT）](design-elt-data-loading.md)和[載入最佳做法](guidance-for-loading-data.md)。
+如需載入資料的詳細資訊，請參閱[SYNAPSE SQL 集區的 (ELT) 的設計解壓縮、載入和轉換](design-elt-data-loading.md)和[載入最佳做法](guidance-for-loading-data.md)。
 
 ## <a name="system-views"></a>系統檢視表
 
@@ -197,7 +199,7 @@ AND     tb.name = 'T1'
 
 Synapse SQL 集區中不支援下列相關功能：
 
-- [身分識別（）](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [身分識別 ( # B1](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

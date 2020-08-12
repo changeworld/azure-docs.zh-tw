@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: damendo
-ms.openlocfilehash: 14b4d3568c129c77260b00d554db520809dfd670
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: dff5519c1b36a0a7738cb2529c2f4460ecf61e48
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068176"
+ms.locfileid: "88117830"
 ---
-# <a name="data-residency-for-the-azure-network-watcher"></a>適用于 Azure 網路監看員的資料存放區
+# <a name="data-residency-for-azure-network-watcher"></a>適用于 Azure 網路監看員的資料存放區
 除了連線監視器 (Preview) 服務以外，Azure 網路監看員不會儲存客戶資料。
 
 

@@ -1,7 +1,7 @@
 ---
-title: ADAL 至 MSAL 遷移指南（MSAL iOS/macOS） |Azure
+title: ADAL 至 MSAL 遷移指南 (MSAL iOS/macOS) |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解 iOS/macOS 的 MSAL 與 ObjectiveC 的 Azure AD 驗證程式庫之間的差異（ADAL）。ObjC），以及如何遷移至適用于 iOS/macOS 的 MSAL。
+description: 瞭解適用于 iOS/macOS 的 MSAL 與 ObjectiveC (ADAL 的 Azure AD 驗證程式庫之間的差異。ObjC) 以及如何遷移至適用于 iOS/macOS 的 MSAL。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,18 +13,18 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 6050bdc8c2600998b9804b04b62102e74612719f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77085170"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119924"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>將應用程式遷移至適用于 iOS 和 macOS 的 MSAL
 
-建立 Azure Active Directory Authentication Library （[ADAL 目標-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc)）以透過 v1.0 端點與 Azure Active Directory 帳戶搭配使用。
+Azure Active Directory Authentication Library ([ADAL 目標-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc)) 是透過 v1.0 端點建立來與 Azure Active Directory 帳戶搭配使用。
 
-適用于 iOS 和 macOS 的 Microsoft 驗證程式庫（MSAL）是專為透過 Microsoft 身分識別平臺（正式為 Azure AD v2.0 端點）處理所有 Microsoft 身分身分（例如 Azure Active Directory （Azure AD）帳戶、個人 Microsoft 帳戶和 Azure AD B2C 帳戶）所設計。
+適用于 iOS 和 macOS (MSAL) 的 Microsoft 驗證程式庫是專為搭配所有 Microsoft 身分識別（例如 Azure Active Directory (Azure AD) v2.0 端點 Azure AD B2C 正式的 microsoft 身分識別平臺）所建立。
 
 Microsoft 身分識別平臺與 Azure Active Directory v1.0 有一些主要的差異。 本文重點說明這些差異，並提供將應用程式從 ADAL 遷移至 MSAL 的指引。
 
@@ -33,7 +33,7 @@ Microsoft 身分識別平臺與 Azure Active Directory v1.0 有一些主要的�
 ### <a name="who-can-sign-in"></a>誰可以登入
 
 * ADAL 僅支援工作和學校帳戶，也稱為 Azure AD 帳戶。
-* MSAL 支援個人 Microsoft 帳戶（MSA 帳戶），例如 Hotmail.com、Outlook.com 和 Live.com。
+* MSAL 支援 (MSA 帳戶) 的個人 Microsoft 帳戶，例如 Hotmail.com、Outlook.com 和 Live.com。
 * MSAL 支援工作和學校帳戶，以及 Azure AD B2C 帳戶。
 
 ### <a name="standards-compliance"></a>標準合規性
@@ -45,7 +45,7 @@ Microsoft 身分識別平臺與 Azure Active Directory v1.0 有一些主要的�
 * Azure Active Directory v1.0 端點需要在應用程式註冊期間預先宣告擁有權限。 這表示這些許可權是靜態的。
 * Microsoft 身分識別平臺可讓您以動態方式要求許可權。 應用程式可以視需要要求許可權，並在應用程式需要時要求更多許可權。
 
-如需 Azure Active Directory v1.0 與 Microsoft 身分識別平臺之間差異的詳細資訊，請參閱[為何要更新至 microsoft 身分識別平臺（v2.0）？](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)。
+如需 Azure Active Directory v1.0 與 Microsoft 身分識別平臺之間差異的詳細資訊，請參閱[為何要更新至 microsoft 身分識別平臺 (v2.0) ？](../azuread-dev/azure-ad-endpoint-comparison.md)。
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL 與 MSAL 程式庫的差異
 
@@ -53,7 +53,7 @@ MSAL 公用 API 會反映 Azure AD v1.0 與 Microsoft 身分識別平臺之間�
 
 ### <a name="msalpublicclientapplication-instead-of-adauthenticationcontext"></a>MSALPublicClientApplication 而不是 ADAuthenticationCoNtext
 
-`ADAuthenticationContext`是 ADAL 應用程式所建立的第一個物件。 它代表 ADAL 的具現化。 應用程式會 `ADAuthenticationContext` 針對每個 Azure Active Directory 雲端和租使用者（授權單位）組合，建立的新實例。 您 `ADAuthenticationContext` 可以使用相同的來取得多個公用用戶端應用程式的權杖。
+`ADAuthenticationContext`是 ADAL 應用程式所建立的第一個物件。 它代表 ADAL 的具現化。 應用程式會 `ADAuthenticationContext` 針對每個 Azure Active Directory 雲端和租使用者 (授權單位) 組合，建立新的實例。 您 `ADAuthenticationContext` 可以使用相同的來取得多個公用用戶端應用程式的權杖。
 
 在 MSAL 中，主要的互動是透過 `MSALPublicClientApplication` 物件，在[OAuth 2.0 公用用戶端](https://tools.ietf.org/html/rfc6749#section-2.1)之後模型化。 其中一個實例 `MSALPublicClientApplication` 可以用來與多個 AAD 雲端和租使用者互動，而不需要為每個授權單位建立新的實例。 對於大部分的應用程式而言，一個 `MSALPublicClientApplication` 實例就已足夠。
 
@@ -75,15 +75,15 @@ MSAL 公用 API 會反映 Azure AD v1.0 與 Microsoft 身分識別平臺之間�
 
 這是每個應用程式的內建範圍。 它是指註冊應用程式時所設定的靜態許可權清單。 其行為與相同 `resource` 。 這在遷移時很有用，可確保維護一組類似的範圍和使用者體驗。
 
-若要使用 `/.default` 範圍，請將附加 `/.default` 至資源識別碼。 例如： `https://graph.microsoft.com/.default` 。 如果您的資源結尾是斜線（ `/` ），您仍然應該附加 `/.default` ，包括前置正斜線，而產生一個範圍，其中包含雙正斜線（ `//` ）。
+若要使用 `/.default` 範圍，請將附加 `/.default` 至資源識別碼。 例如： `https://graph.microsoft.com/.default` 。 如果您的資源以斜線 (`/`) 結尾，您仍然應該附加 `/.default` ，包括前置正斜線，而導致範圍中的雙正斜線 (`//`) 。
 
-您可以在[這裡](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope)閱讀更多有關使用 "/.default" 範圍的資訊
+您可以在[這裡](./v2-permissions-and-consent.md#the-default-scope)閱讀更多有關使用 "/.default" 範圍的資訊
 
 ### <a name="supporting-different-webview-types--browsers"></a>& 瀏覽器支援不同的 Web 類型
 
 ADAL 僅支援適用于 iOS 的 UIWebView/WKWebView，以及 macOS 的 Web 程式。 MSAL for iOS 支援在要求授權碼時顯示 web 內容的更多選項，而且不再支援， `UIWebView` 這可改善使用者體驗和安全性。
 
-根據預設，iOS 上的 MSAL 會使用[ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)，這是 Apple 建議在 iOS 12 + 裝置上進行驗證的 web 元件。 它透過應用程式與 Safari 瀏覽器之間的 cookie 共用，提供單一登入（SSO）權益。
+根據預設，iOS 上的 MSAL 會使用[ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)，這是 Apple 建議在 iOS 12 + 裝置上進行驗證的 web 元件。 它透過應用程式與 Safari 瀏覽器之間的 cookie 共用，提供單一登入 (SSO) 權益。
 
 根據應用程式需求和您想要的使用者體驗，您可以選擇使用不同的 web 元件。 如需更多選項，請參閱[支援的 web 檢視類型](customize-webviews.md)。
 
@@ -101,7 +101,7 @@ MSAL 提供一組 Api 來列出已知 MSAL 的所有帳戶，而不需要取得�
 
 MSAL 會提供一組 Api 來移除帳戶，讓移除的帳戶無法供應用程式存取。 移除帳戶之後，稍後的權杖取得呼叫將會提示使用者執行互動式權杖取得。 帳戶移除僅適用于啟動它的用戶端應用程式，而且不會從裝置上執行的其他應用程式或從系統瀏覽器移除帳戶。 這可確保即使在登出個別應用程式之後，使用者仍然可以在裝置上使用 SSO 體驗。
 
-此外，MSAL 也會傳回可用來在稍後以無訊息方式要求權杖的帳戶識別碼。 不過，帳戶識別碼（可透過 `identifier` 物件中的屬性存取 `MSALAccount` ）無法顯示，而且您無法在嘗試解讀或剖析它時，假設其格式為何。
+此外，MSAL 也會傳回可用來在稍後以無訊息方式要求權杖的帳戶識別碼。 不過，您可以透過物件) 中的屬性來存取帳戶識別碼 (無法顯示 `identifier` `MSALAccount` ，而且您無法在嘗試解讀或剖析它時，同時假設它的格式為何。
 
 ### <a name="migrating-the-account-cache"></a>遷移帳戶快取
 
@@ -109,9 +109,9 @@ MSAL 會提供一組 Api 來移除帳戶，讓移除的帳戶無法供應用程�
 
 `- (nullable MSALAccount *)accountForUsername:(nonnull NSString *)username error:(NSError * _Nullable __autoreleasing * _Nullable)error;`
 
-此 API 會讀取 MSAL 和 ADAL 的快取，以依 ADAL userId （UPN）尋找帳戶。
+此 API 會讀取 MSAL 和 ADAL 的快取，以) ADAL userId (UPN 來尋找帳戶。
 
-如果找到帳戶，開發人員應該使用此帳戶來執行無訊息的權杖取得。 第一個無訊息的取得會有效地升級帳戶，而開發人員會在 MSAL 結果（）中取得 MSAL 相容的帳戶識別碼 `identifier` 。 之後，只 `identifier` 應該使用下列 API 來進行帳戶查閱：
+如果找到帳戶，開發人員應該使用此帳戶來執行無訊息的權杖取得。 第一個無訊息的取得會有效地升級帳戶，而開發人員會在 MSAL 結果 () 中取得 MSAL 相容的帳戶識別碼 `identifier` 。 之後，只 `identifier` 應該使用下列 API 來進行帳戶查閱：
 
 `- (nullable MSALAccount *)accountForIdentifier:(nonnull NSString *)identifier error:(NSError * _Nullable __autoreleasing * _Nullable)error;`
 
@@ -140,7 +140,7 @@ MSAL 可讓您的應用程式所能處理的錯誤和需要使用者介入的錯
 
 ### <a name="broker-support"></a>Broker 支援
 
-從版本0.3.0 開始，MSAL 可支援使用 Microsoft Authenticator 應用程式進行代理驗證。 Microsoft Authenticator 也會啟用條件式存取案例的支援。 條件式存取案例的範例包括需要使用者透過 Intune 註冊裝置或向 AAD 註冊以取得權杖的裝置合規性政策。 和行動應用程式管理（MAM）條件式存取原則，在您的應用程式可以取得權杖之前，需要證明合規性。
+從版本0.3.0 開始，MSAL 可支援使用 Microsoft Authenticator 應用程式進行代理驗證。 Microsoft Authenticator 也會啟用條件式存取案例的支援。 條件式存取案例的範例包括需要使用者透過 Intune 註冊裝置或向 AAD 註冊以取得權杖的裝置合規性政策。 和行動應用程式管理 (MAM) 條件式存取原則，在您的應用程式可以取得權杖之前，需要證明合規性。
 
 若要為您的應用程式啟用 broker：
 
@@ -207,7 +207,7 @@ IOS 上的 MSAL 也支援兩種其他類型的 SSO：
 
 ## <a name="intune-mam-sdk"></a>Intune MAM SDK
 
-從版本[11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2)開始， [Intune MAM SDK](https://docs.microsoft.com/intune/app-sdk-get-started)支援 MSAL for iOS
+從版本[11.1.2](https://github.com/msintuneappsdk/ms-intune-app-sdk-ios/releases/tag/11.1.2)開始， [Intune MAM SDK](/intune/app-sdk-get-started)支援 MSAL for iOS
 
 ## <a name="msal-and-adal-in-the-same-app"></a>相同應用程式中的 MSAL 和 ADAL
 

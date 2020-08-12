@@ -11,21 +11,21 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: a27524f860f17642dcd0640bcb740fc04c187407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d865ac8bae475365dbfc6c8bad990a1acc7998f0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881378"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116745"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>如何設定新的多租用戶應用程式
 
 下列清單包含可深入了解多租用戶應用程式的建議主題：
 
-- 取得[多租用戶應用程式](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application)的一般知識
-- 取得有關[如何將應用程式設定為多租用戶](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant)的一般知識
-- 取得有關 [Azure AD 同意架構如何用於實作同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的逐步概觀，這是多租用戶應用程式的必要條件
-- 深入了解[如何從頭到尾設定多租用戶應用程式以及撰寫程式碼](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)，包括如何註冊、使用「通用」端點、實作「使用者」與「系統管理員」同意、如何實作更多進階多租用戶案例
+- 取得[多租用戶應用程式](./developer-glossary.md#multi-tenant-application)的一般知識
+- 取得有關[如何將應用程式設定為多租用戶](./howto-convert-app-to-be-multi-tenant.md)的一般知識
+- 取得有關 [Azure AD 同意架構如何用於實作同意](./quickstart-register-app.md)的逐步概觀，這是多租用戶應用程式的必要條件
+- 深入了解[如何從頭到尾設定多租用戶應用程式以及撰寫程式碼](./howto-convert-app-to-be-multi-tenant.md)，包括如何註冊、使用「通用」端點、實作「使用者」與「系統管理員」同意、如何實作更多進階多租用戶案例
 
 ## <a name="next-steps"></a>後續步驟
 [AzureAD StackOverflow (英文)](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 8/7/2020
-ms.openlocfilehash: 518d3880a740de2cda4f01e362d8a5ef7865b361
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037298"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121352"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database 無伺服器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -119,7 +119,7 @@ SQL 快取會隨著資料以相同的方式從磁片提取，而且速度與布�
 - 異地複寫 (主動式異地複寫和自動容錯移轉群組) 。
 -  (LTR) 的長期備份保留。
 - SQL 資料同步中使用的同步資料庫。 不同于同步資料庫，中樞和成員資料庫支援 autopausing。
-- 用於彈性作業的作業資料庫。
+- 彈性作業中使用的作業資料庫 (預覽) 。
 
 在部署某些需要線上資料庫的服務更新時，會暫時防止 Autopausing。  在這種情況下，服務更新完成後，就會再次允許 autopausing。
 

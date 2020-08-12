@@ -12,12 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b2f9fd27515e9ecda6e78ae16528a4956d3bf607
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 42f100618ac6ce8769c4a7da67a5bd586794c63b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552759"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115589"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft 身分識別平臺中的簽署金鑰變換
 本文討論 Microsoft 身分識別平臺用來簽署安全性權杖的公開金鑰須知事項。 請務必注意，這些金鑰會定期變換，且在緊急情況下可以立即變換。 所有使用 Microsoft 身分識別平臺的應用程式，都應該能夠以程式設計方式處理金鑰變換程式，或建立定期手動變換程式。 請繼續閱讀以了解金鑰的運作方式、如何評估變換對應用程式的影響，以及必要時如何更新應用程式或建立定期手動變換程序來處理金鑰變換。
@@ -148,7 +148,7 @@ passport.use(new OIDCStrategy({
 
 如果您手動設定驗證，請遵循下列指示，以瞭解如何設定您的 Web API 以自動更新其金鑰資訊。
 
-下列程式碼片段示範如何從同盟中繼資料文件取得最新的金鑰，然後使用 [JWT 權杖處理常式](https://msdn.microsoft.com/library/dn205065.aspx) 來驗證權杖。 此程式碼片段假設您將使用自己的快取機制來保存金鑰，以驗證來自 Microsoft 身分識別平臺的未來權杖，不論其位於資料庫、設定檔或其他位置。
+下列程式碼片段示範如何從同盟中繼資料文件取得最新的金鑰，然後使用 [JWT 權杖處理常式](/previous-versions/dotnet/framework/security/json-web-token-handler) 來驗證權杖。 此程式碼片段假設您將使用自己的快取機制來保存金鑰，以驗證來自 Microsoft 身分識別平臺的未來權杖，不論其位於資料庫、設定檔或其他位置。
 
 ```
 using System;
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>保護資源且使用 Visual Studio 2012 建立的 Web 應用程式
-如果應用程式是在 Visual Studio 2012 中建置的，您大概是使用身分識別與存取工具來設定應用程式。 您也可能是使用 [驗證簽發者名稱登錄 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)。 VINR 會負責維護 (Microsoft 身分識別平臺) 的受信任身分識別提供者的相關資訊，以及用來驗證它們所簽發權杖的金鑰。 VINR 也可透過下載與目錄相關聯的最新同盟中繼資料文件、使用最新文件檢查組態是否過期，以及視需要讓應用程式更新為使用新金鑰，讓您輕鬆地自動更新 Web.config 檔案中儲存的金鑰資訊。
+如果應用程式是在 Visual Studio 2012 中建置的，您大概是使用身分識別與存取工具來設定應用程式。 您也可能是使用 [驗證簽發者名稱登錄 (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry)。 VINR 會負責維護 (Microsoft 身分識別平臺) 的受信任身分識別提供者的相關資訊，以及用來驗證它們所簽發權杖的金鑰。 VINR 也可透過下載與目錄相關聯的最新同盟中繼資料文件、使用最新文件檢查組態是否過期，以及視需要讓應用程式更新為使用新金鑰，讓您輕鬆地自動更新 Web.config 檔案中儲存的金鑰資訊。
 
 如果您是使用 Microsoft 所提供的任何程式碼範例或逐步解說文件建立應用程式，則專案中已含有金鑰變換邏輯。 您會發現專案中已存在下列程式碼。 如果應用程式還沒有此邏輯，請遵循下列步驟，以新增此邏輯並確認它能正常運作。
 
@@ -288,14 +288,14 @@ namespace JWTValidation
 如果您在 WIF v1.0 上建置應用程式，則沒有提供相關機制來將應用程式的組態自動重新整理為使用新的金鑰。
 
 * ** 使用 WIF SDK 中內含的 FedUtil 工具，它可以擷取最新的中繼資料文件並更新組態。
-* 將應用程式更新至 .NET 4.5，其包含位於「系統」命名空間中的 WIF 的最新版本。 然後，您可以使用 [驗證簽發者名稱登錄 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx) 來執行應用程式組態的自動更新。
+* 將應用程式更新至 .NET 4.5，其包含位於「系統」命名空間中的 WIF 的最新版本。 然後，您可以使用 [驗證簽發者名稱登錄 (VINR)](/previous-versions/dotnet/framework/security/validating-issuer-name-registry) 來執行應用程式組態的自動更新。
 * 根據本指導文件結尾的指示執行手動變換。
 
 使用 FedUtil 來更新組態的指示︰
 
 1. 確認 Visual Studio 2008 或 2010 的開發電腦上已安裝 WIF v1.0 SDK。 如果尚未安裝，您可以[從這裡下載](https://www.microsoft.com/en-us/download/details.aspx?id=4451)。
 2. 在 Visual Studio 中開啟方案，然後以滑鼠右鍵按一下適用的專案，並選取 [更新同盟中繼資料]****。 如果無法使用此選項，則表示尚未安裝 FedUtil 和/或 WIF v1.0 SDK。
-3. 在提示中，選取 [更新]**** 開始更新同盟中繼資料。 如果您可以存取裝載應用程式的伺服器環境，則可以選擇性地使用 FedUtil 的 [自動中繼資料更新排程器](https://msdn.microsoft.com/library/ee517272.aspx)。
+3. 在提示中，選取 [更新]**** 開始更新同盟中繼資料。 如果您可以存取裝載應用程式的伺服器環境，則可以選擇性地使用 FedUtil 的 [自動中繼資料更新排程器](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))。
 4. 按一下 [完成]**** 以完成更新程序。
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>保護資源且使用任何其他程式庫或手動實作任何支援的通訊協定的 Web 應用程式 / API

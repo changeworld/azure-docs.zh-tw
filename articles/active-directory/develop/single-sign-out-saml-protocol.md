@@ -12,12 +12,12 @@ ms.date: 07/19/2017
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: c2673552638c1829b1640724634e365dc6595703
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284416"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118258"
 ---
 # <a name="single-sign-out-saml-protocol"></a>單一登出 SAML 通訊協定
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) 支援 SAML 2.0 Web 瀏覽器單一登出設�
 
 * `ID` - 這會識別登出要求。 `ID` 的值不應該以數字開頭。 一般的做法是附加 **id** 至 GUID 的字串表示法。
 * `Version` - 將此元素的值設定為 **2.0**。 這是必要的值。
-* `IssueInstant` - 這是具有國際標準時間 (UTC) 值和[來回行程格式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx) 的 `DateTime` 字串。 Azure AD 會預期此類型的值，但不會強制。
+* `IssueInstant` - 這是具有國際標準時間 (UTC) 值和[來回行程格式 ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings) 的 `DateTime` 字串。 Azure AD 會預期此類型的值，但不會強制。
 
 ### <a name="issuer"></a>Issuer
 `LogoutRequest` 中的 `Issuer` 元素必須完全符合 Azure AD 中雲端服務的其中一個 **ServicePrincipalNames**。 一般而言，這會設定為應用程式註冊期間指定的 **應用程式識別碼 URI** 。

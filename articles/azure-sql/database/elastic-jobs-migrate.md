@@ -1,5 +1,5 @@
 ---
-title: 遷移至新的彈性資料庫作業
+title: '遷移至新的彈性資料庫作業 (預覽) '
 description: 移轉至新的彈性資料庫作業。
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: bb5f7c441ae25e24857d0709b32e17931c3c63a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1f9e392ddb7b5a79b01459925fe711707db97b5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84038369"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121182"
 ---
-# <a name="migrate-to-the-new-elastic-database-jobs"></a>移轉至新的彈性資料庫作業
+# <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>遷移至新的彈性資料庫工作 (preview) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 升級版本的[彈性資料庫作業](elastic-jobs-overview.md)可供使用。
@@ -369,7 +369,7 @@ function Setup-TargetGroup ($tgName, $agent) {
 
 若要將目標 (伺服器、資料庫及自訂集合) 移轉至新的作業資料庫，請執行 **Migrate-TargetGroups** Cmdlet 以執行下列動作：
 
-- 屬於伺服器和資料庫的根層級目標會遷移至名為 "（，）" 的新目標群組， \<serverName\> \<databaseName\> 其中僅包含根層級目標。
+- 屬於伺服器和資料庫的根層級目標會遷移至名為 " (，) " 的新目標群組 \<serverName\> ， \<databaseName\> 其中僅包含根層級目標。
 - 自訂集合會移轉至新的目標群組，其中包含所有子系目標。
 
 ```powershell
@@ -565,7 +565,7 @@ function Setup-JobStep ($newJob, $job) {
 
 若要將作業、作業內容、作業觸發程序和作業排程移轉至新的彈性作業代理程式資料庫，請執行傳遞至代理程式的 **Migrate-Jobs** Cmdlet。
 
-- 具有多個具有不同排程之觸發程式的作業，會分成多個具有命名配置的工作： " \<jobName\> （ \<scheduleName\> ）"。
+- 具有多個具有不同排程之觸發程式的作業會分成多個具有命名配置的工作： " \<jobName\> (\<scheduleName\>) "。
 - 系統會新增具有相關聯命令文字、名為 JobStep 的預設作業步驟，將作業內容移轉至作業。
 - 作業預設為停用，讓您可以在啟用之前進行驗證。
 

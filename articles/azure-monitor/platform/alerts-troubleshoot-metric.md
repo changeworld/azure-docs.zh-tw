@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 08/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5ea28a7a4669fd000800bf62b7b940abefcf7551
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030957"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114892"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>針對 Azure 監視器計量警示中的問題進行疑難排解 
 
@@ -108,9 +108,9 @@ ms.locfileid: "88030957"
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>針對尚未發出的自訂計量定義警示規則
 
-建立計量警示規則時，系統會根據計量[定義 API](/rest/api/monitor/metricdefinitions/list)來驗證計量名稱，以確保它存在。 在某些情況下，您會想要建立自訂計量的警示規則，即使在發出之前也一樣。 例如，使用 ARM 範本建立 (時) 將發出自訂計量的 Application Insights 資源，以及監視該度量的警示規則。
+建立計量警示規則時，系統會根據計量[定義 API](/rest/api/monitor/metricdefinitions/list)來驗證計量名稱，以確保它存在。 在某些情況下，您會想要建立自訂計量的警示規則，即使在發出之前也一樣。 例如，使用 Resource Manager 範本建立 (時) 將發出自訂計量的 Application Insights 資源，以及監視該度量的警示規則。
 
-若要避免在嘗試驗證自訂計量的定義時部署失敗，您可以在警示規則的 [準則] 區段中使用*skipMetricValidation*參數，這會導致略過計量驗證。 請參閱下列範例，以瞭解如何在 ARM 範本中使用此參數 (如需建立計量警示規則的完整 ARM 範本範例，請參閱[這裡]( ./alerts-metric-create-templates.md)) 。
+若要避免在嘗試驗證自訂計量的定義時部署失敗，您可以在警示規則的 [準則] 區段中使用*skipMetricValidation*參數，這會導致略過計量驗證。 請參閱下列範例，以瞭解如何在 Resource Manager 範本中使用此參數。 如需詳細資訊，請參閱[建立計量警示規則的完整 Resource Manager 範本範例](./alerts-metric-create-templates.md)。
 
 ```json
 "criteria": {

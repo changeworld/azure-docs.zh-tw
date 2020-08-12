@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
-ms.translationtype: HT
+ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028242"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119516"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -508,6 +508,8 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 - 如果您收到**服務無法使用**訊息，模擬器可能無法初始化網路堆疊。 由於 Pulse 安全用戶端或 Juniper 網路用戶端的網路篩選驅動程式可能會造成問題，因此請檢查是否已安裝這些驅動程式。 解除安裝協力廠商網路篩選驅動程式通常便會修正問題。 或者，使用 /DisableRIO 來啟動模擬器，將模擬器網路通訊切換為一般 Winsock。 
 
+- 如果您遇到「禁止」的**訊息，則會以傳輸通訊協定或加密中禁止的加密來提出要求。請檢查帳戶 SSL/TLS 的最小允許通訊協定設定 ...** 」連線問題，這可能是因為 OS (中的全域變更（例如 Insider Preview 組建 20170) 或啟用 TLS 1.3 的瀏覽器設定為預設值）所造成。 使用 SDK 對 Cosmos 模擬器執行要求時可能會發生類似的錯誤，例如**Microsoft.Azure.Documents.DocumentClientException：要求是以傳輸通訊協定或加密中禁止的加密進行。檢查 [帳戶 SSL/TLS 允許的最低通訊協定] 設定**。 這是預期的情況，因為 Cosmos 模擬器只接受並搭配 TLS 1.2 通訊協定使用。 建議的解決方法是變更設定並預設為 TLS 1.2;例如，在 IIS 管理員中，流覽至 [網站]-> [預設的網站]，並找出埠8081的 [網站系結]，然後編輯以停用 TLS 1.3。 您可以透過 [設定] 選項，針對網頁瀏覽器執行類似的作業。
+
 - 當模擬器執行時，如果您的電腦進入睡眠模式或執行任何作業系統更新，您應該會看見**服務目前無法使用**的訊息。 以滑鼠右鍵按一下視窗通知匣上出現的圖示，然後選取 [重設資料]，來重設模擬器的資料。
 
 ### <a name="collect-trace-files"></a><a id="trace-files"></a>收集追蹤檔案
@@ -515,7 +517,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 若要收集偵錯追蹤，請從系統管理命令提示字元執行下列命令︰
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. 第 1 課：建立 Windows Azure 儲存體物件`Microsoft.Azure.Cosmos.Emulator.exe /shutdown`。 監看系統匣，確認程式已經關閉，這可能需要一分鐘的時間。 您也可以直接按一下 Azure Cosmos 模擬器使用者介面中的 [結束]。
+2. `Microsoft.Azure.Cosmos.Emulator.exe /shutdown`. 監看系統匣，確認程式已經關閉，這可能需要一分鐘的時間。 您也可以直接按一下 Azure Cosmos 模擬器使用者介面中的 [結束]。
 3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
 4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. 重現問題。 如果資料總管無法運作，您只需要等候數秒鐘的時間，等到瀏覽器開啟即可攔截錯誤。

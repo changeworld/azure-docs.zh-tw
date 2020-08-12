@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80550249"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114909"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>適用於 iOS 裝置的共用裝置模式
 
@@ -39,9 +39,9 @@ ms.locfileid: "80550249"
 
 若要建立共用裝置模式應用程式，開發人員和雲端裝置管理員會共同作業：
 
-1. **應用程式開發人員**會撰寫單一帳戶應用程式（共用裝置模式中不支援多帳戶應用程式），並撰寫程式碼來處理像是共用裝置登出之類的專案。
+1. **應用程式開發人員**會撰寫單一帳戶應用程式 (多帳戶應用程式不受共用裝置模式支援) 並撰寫程式碼來處理共用裝置登出之類的工作。
 
-1. **裝置系統管理員**會使用行動裝置管理（MDM）提供者（如 Microsoft Intune）來準備要共用的裝置，以管理其組織中的裝置。 MDM 會將 Microsoft Authenticator 應用程式推送至裝置，並透過裝置的設定檔更新，為每個裝置開啟「共用模式」。 此共用模式設定會變更裝置上支援之應用程式的行為。 這項來自 MDM 提供者的設定會設定裝置的共用裝置模式，並為共用裝置模式所需的[Apple 裝置啟用 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)。
+1. **裝置系統管理員**會使用行動裝置管理來準備要共用的裝置， (MDM) 提供者，例如 Microsoft Intune 來管理其組織中的裝置。 MDM 會將 Microsoft Authenticator 應用程式推送至裝置，並透過裝置的設定檔更新，為每個裝置開啟「共用模式」。 此共用模式設定會變更裝置上支援之應用程式的行為。 這項來自 MDM 提供者的設定會設定裝置的共用裝置模式，並為共用裝置模式所需的[Apple 裝置啟用 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)。
 
 1. [**僅限公開預覽期間所需**]具有[雲端裝置管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator)角色的使用者必須啟動[Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md)，並將其裝置加入組織。
 
@@ -67,7 +67,7 @@ ms.locfileid: "80550249"
       - 類型：布林值
       - 值： True
 
-    如需使用 Intune 設定的詳細資訊，請參閱[intune 設定檔](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)。
+    如需使用 Intune 設定的詳細資訊，請參閱[intune 設定檔](/intune/configuration/ios-device-features-settings)。
 
 1. 接下來，設定您的 MDM 以透過 MDM 設定檔將 Microsoft Authenticator 應用程式推送至您的裝置。
 
@@ -88,7 +88,7 @@ ms.locfileid: "80550249"
 
 ### <a name="detect-shared-device-mode"></a>偵測共用裝置模式
 
-偵測共用裝置模式對您的應用程式很重要。 在共用裝置上使用應用程式時，許多應用程式都需要變更使用者體驗（UX）。 例如，您的應用程式可能會有「註冊」功能，這不適合第一線的背景工作角色，因為他們可能已經有帳戶。 如果您的應用程式是共用的裝置模式，您可能也會想要為其處理資料增加額外的安全性。
+偵測共用裝置模式對您的應用程式很重要。 在共用裝置上使用應用程式時，許多應用程式都需要變更其使用者體驗 (UX) 。 例如，您的應用程式可能會有「註冊」功能，這不適合第一線的背景工作角色，因為他們可能已經有帳戶。 如果您的應用程式是共用的裝置模式，您可能也會想要為其處理資料增加額外的安全性。
 
 使用 `getDeviceInformationWithParameters:completionBlock:` 中的 API `MSALPublicClientApplication` 來判斷應用程式是否在共用裝置模式的裝置上執行。
 

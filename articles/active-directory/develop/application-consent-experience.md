@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885577"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115470"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 應用程式同意體驗
 
@@ -28,10 +28,10 @@ ms.locfileid: "80885577"
 
 同意是使用者授權應用程式代表使用者存取受保護的資源所用的程序。 系統管理員或使用者需要同意允許存取其組織/個人資料。
 
-實際的使用者同意體驗會根據使用者的租用戶、使用者的授權範圍 (或角色) 和用戶端應用程式要求的[權限](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)類型所設定的原則，而有所不同。 這表示應用程式開發人員和租用戶管理員擁有相同的同意體驗控制權。 管理員可彈性設定租用戶或應用程式控制其租用戶同意體驗的原則，和加以停用。 應用程式開發人員可以決定可要求的權限類型，以及是否要引導使用者進行使用者同意流程或管理員同意流程。
+實際的使用者同意體驗會根據使用者的租用戶、使用者的授權範圍 (或角色) 和用戶端應用程式要求的[權限](../azuread-dev/v1-permissions-consent.md)類型所設定的原則，而有所不同。 這表示應用程式開發人員和租用戶管理員擁有相同的同意體驗控制權。 管理員可彈性設定租用戶或應用程式控制其租用戶同意體驗的原則，和加以停用。 應用程式開發人員可以決定可要求的權限類型，以及是否要引導使用者進行使用者同意流程或管理員同意流程。
 
 - **使用者同意流程**是應用程式開發人員將使用者導向授權端點以僅針對目前使用者記錄同意的過程。
-- **管理員同意流程**是應用程式開發人員將使用者導向管理員同意端點以僅針對整個租用戶記錄同意的過程。 若要確保管理員同意流程運作正常，應用程式開發人員必須列出應用程式資訊清單中`RequiredResourceAccess`屬性的所有權限。 如需詳細資訊，請參閱[應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。
+- **管理員同意流程**是應用程式開發人員將使用者導向管理員同意端點以僅針對整個租用戶記錄同意的過程。 若要確保管理員同意流程運作正常，應用程式開發人員必須列出應用程式資訊清單中`RequiredResourceAccess`屬性的所有權限。 如需詳細資訊，請參閱[應用程式資訊清單](./reference-app-manifest.md)。
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>同意提示的建置組塊
 
@@ -81,6 +81,6 @@ ms.locfileid: "80885577"
     1. 非管理使用者會看到與上述 2.ii 相同的畫面。
 
 ## <a name="next-steps"></a>後續步驟
-- 取得有關 [Azure AD 同意架構如何實作同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的逐步概觀。
-- 深入了解[多租用戶應用程式如何使用同意架構](active-directory-devhowto-multi-tenant-overview.md)來實作「使用者」與「系統管理員」同意，進而支援更進階的多層應用程式模式。
+- 取得有關 [Azure AD 同意架構如何實作同意](./quickstart-register-app.md)的逐步概觀。
+- 深入了解[多租用戶應用程式如何使用同意架構](./howto-convert-app-to-be-multi-tenant.md)來實作「使用者」與「系統管理員」同意，進而支援更進階的多層應用程式模式。
 - 瞭解[如何設定應用程式的發行者網域](howto-configure-publisher-domain.md)。

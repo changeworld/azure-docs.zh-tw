@@ -13,12 +13,12 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 53a44ed270dc47725dddfd57d6a212e859d46bad
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 0574eb0b8ab0b5d4de671ad44a45a85e434393f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552708"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115572"
 ---
 # <a name="app-registration-reference"></a>App 註冊參考
 
@@ -26,7 +26,7 @@ ms.locfileid: "87552708"
 
 ## <a name="my-applications-or-converged-applications"></a>我的應用程式或交集的應用程式
 
-此清單包含所有為搭配 Microsoft 身分識別平台 (v2.0) 端點使用而註冊的應用程式。 這些應用程式能夠讓使用者使用個人的 Microsoft 帳戶登入，也可使用工作/學校帳戶從 Azure Active Directory 登入。 若要深入了解身分識別平台端點，請參閱 [v2.0 概觀](active-directory-appmodel-v2-overview.md)。 這些應用程式也可以用來與 Microsoft 帳戶驗證端點 `https://login.live.com`整合。
+此清單包含所有為搭配 Microsoft 身分識別平台 (v2.0) 端點使用而註冊的應用程式。 這些應用程式能夠讓使用者使用個人的 Microsoft 帳戶登入，也可使用工作/學校帳戶從 Azure Active Directory 登入。 若要深入了解身分識別平台端點，請參閱 [v2.0 概觀](./v2-overview.md)。 這些應用程式也可以用來與 Microsoft 帳戶驗證端點 `https://login.live.com`整合。
 
 ## <a name="azure-ad-only-applications"></a>僅限 Azure AD 的應用程式
 

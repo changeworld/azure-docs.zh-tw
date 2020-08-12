@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: ca164b6ad6b5333c662a6632b27f658ab479231c
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067625"
+ms.locfileid: "88120638"
 ---
 # <a name="hyperscale-service-tier"></a>超大規模資料庫服務層級
 
@@ -105,7 +105,9 @@ Azure 儲存體包含資料庫中的所有資料檔案。 頁面伺服器會將 
 
 ## <a name="backup-and-restore"></a>備份與還原
 
-備份是以檔案快照集為基礎，因此幾乎是瞬間完成。 儲存體和計算區隔可讓您將備份/還原作業向下推送至儲存層，以降低主要計算複本的處理負擔。 因此，資料庫備份不會影響主要計算節點的效能。 同樣地，還原會藉由還原為檔案快照集來完成，因此這不是資料作業的大小。 Restore 是一種持續時間的作業，甚至可以在數分鐘內還原多 tb 的資料庫，而不需要數小時或數天。 藉由還原現有的備份來建立新的資料庫也會利用這項功能：建立用於開發或測試用途的資料庫複本，甚至是大小 tb 的資料庫，在數分鐘內就會雖可行。
+備份是以檔案快照集為基礎，因此幾乎是瞬間完成。 儲存體和計算區隔可讓您將備份/還原作業向下推送至儲存層，以降低主要計算複本的處理負擔。 因此，資料庫備份不會影響主要計算節點的效能。 同樣地，時間點復原 (PITR) 是藉由還原為檔案快照集來完成，因此這不是資料作業的大小。 在相同的 Azure 區域中還原超大規模資料庫資料庫是一種持續時間的作業，甚至可以在數分鐘內還原多 tb 的資料庫，而不需要數小時或數天。 藉由還原現有的備份來建立新的資料庫也會利用這項功能：建立用於開發或測試用途的資料庫複本，甚至是大小 tb 的資料庫，在數分鐘內就會雖可行。
+
+如需超大規模資料庫資料庫的異地還原，請參閱將[超大規模資料庫資料庫還原到不同的區域](#restoring-a-hyperscale-database-to-a-different-region)。
 
 ## <a name="scale-and-performance-advantages"></a>規模和效能優點
 
@@ -156,7 +158,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>超大規模資料庫資料庫的嚴重損壞修復
 
-### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>將超大規模資料庫資料庫還原到不同的地理位置
+### <a name="restoring-a-hyperscale-database-to-a-different-region"></a>將超大規模資料庫資料庫還原到不同的區域
 
 如果您需要將 Azure SQL Database 中的超大規模資料庫資料庫還原至其目前裝載所在的區域以外的地區，做為嚴重損壞修復作業或演練、重新配置或任何其他原因，主要方法是執行資料庫的異地還原。 這牽涉到的步驟與您用來將任何其他 SQL Database 資料庫還原至不同區域的方式完全相同：
 

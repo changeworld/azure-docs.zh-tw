@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204621"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120944"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>處理 MSAL 例外狀況和錯誤
 
@@ -236,7 +236,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 * 成功的回應會包含 `"access_token"` 索引鍵。 回應的格式則由 OAuth2 通訊協定來定義。 如需詳細資訊，請參閱 [5.1 成功回應](https://tools.ietf.org/html/rfc6749#section-5.1)
 * 錯誤回應會包含 `"error"`，且通常會包含 `"error_description"`。 回應的格式則由 OAuth2 通訊協定來定義。 如需詳細資訊，請參閱 [5.2 錯誤回應](https://tools.ietf.org/html/rfc6749#section-5.2)
 
-有錯誤傳回時，`"error_description"` 索引鍵會包含人類看得懂的訊息；而這一般又會包含 Microsoft 身分識別平台的錯誤碼。 如需各種錯誤碼的詳細資訊，請參閱[驗證與授權錯誤碼](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes)。
+有錯誤傳回時，`"error_description"` 索引鍵會包含人類看得懂的訊息；而這一般又會包含 Microsoft 身分識別平台的錯誤碼。 如需各種錯誤碼的詳細資訊，請參閱[驗證與授權錯誤碼](./reference-aadsts-error-codes.md)。
 
 在適用於 Python 的 MSAL 中，大部分錯誤都會藉由傳回錯誤值來加以處理，因此例外狀況很罕見。 只有在您嘗試使用程式庫的方式有問題時 (例如，API 參數的格式不正確時)，才會擲回 `ValueError` 例外狀況。
 

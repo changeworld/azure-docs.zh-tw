@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682433"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120774"
 ---
 # <a name="publisher-verification-preview"></a>發行者驗證 (預覽)
 
@@ -42,13 +42,13 @@ Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」�
 
 -  有效 [Microsoft 合作夥伴網路](https://partner.microsoft.com/membership)帳戶的 MPN 識別碼，該帳戶必須已完成[驗證](/partner-center/verification-responses)程序。 此 MPN 帳戶必須是您組織的[合作夥伴通用帳戶 (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga)。 
 
--  其[自訂網域](/azure/active-directory/fundamentals/add-custom-domain)已經過 DNS 驗證的 Azure AD 租用戶。 自訂網域必須符合前述步驟中進行驗證時所使用的電子郵件地址網域。 
+-  其[自訂網域](../fundamentals/add-custom-domain.md)已經過 DNS 驗證的 Azure AD 租用戶。 自訂網域必須符合前述步驟中進行驗證時所使用的電子郵件地址網域。 
 
 -  在 Azure AD 租用戶中註冊的應用程式，並以先前使用的相同網域設定[發行者網域](howto-configure-publisher-domain.md)。 
 
 -  執行驗證的使用者必須獲得授權，才能對 Azure AD 中的應用程式註冊和合作夥伴中心內的 MPN 帳戶進行變更。 
 
-    -  在 Azure AD 中，此使用者必須是應用程式的擁有者，或是具有下列其中一種[角色](/azure/active-directory/users-groups-roles/directory-assign-admin-roles)：應用程式管理員、雲端應用程式系統管理員、全域管理員。 
+    -  在 Azure AD 中，此使用者必須是應用程式的擁有者，或是具有下列其中一種[角色](../users-groups-roles/directory-assign-admin-roles.md)：應用程式管理員、雲端應用程式系統管理員、全域管理員。 
 
     -  在合作夥伴中心內，此使用者必須擁有下列其中一種[角色](/partner-center/permissions-overview)：MPN 管理員、帳戶管理員或全域管理員 (這是在 Azure AD 中主控的共用角色)。
     
@@ -67,7 +67,7 @@ Azure AD 同意提示和其他畫面上會出現一個藍色的「已驗證」�
 
   同時與 Microsoft 365 整合的開發人員可以從這些程式獲得額外好處。 如需詳細資訊，請參閱 [Microsoft 365 發行者證明](/microsoft-365-app-certification/docs/attestation)和 [Microsoft 365 應用程式認證](/microsoft-365-app-certification/docs/certification)。 
 
-- **這與 Azure AD 應用程式庫相同嗎？** 不同，發行者驗證是 [Azure Active Directory 應用程式庫](/azure/active-directory/azuread-dev/howto-app-gallery-listing)的互補程式，但是是個別的程式。 無論是否參與該程式，符合上述準則的開發人員都應該獨立完成發行者驗證流程。 
+- **這與 Azure AD 應用程式庫相同嗎？** 不同，發行者驗證是 [Azure Active Directory 應用程式庫](../azuread-dev/howto-app-gallery-listing.md)的互補程式，但是是個別的程式。 無論是否參與該程式，符合上述準則的開發人員都應該獨立完成發行者驗證流程。 
 
 ## <a name="next-steps"></a>後續步驟
 * 了解如何[將應用程式標示為發行者已驗證](mark-app-as-publisher-verified.md)。

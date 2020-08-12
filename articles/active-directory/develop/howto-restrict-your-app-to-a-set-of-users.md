@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 6e20b2f8c0e12fdb23668d16e2cbd7936cc4e48c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: a9b0090fa13a6d2f7a837a4f5ffee37d70893318
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445470"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116898"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>如何：將您的 Azure AD 應用程式限制為 Azure AD 租使用者中的一組使用者
 
@@ -26,7 +26,7 @@ ms.locfileid: "87445470"
 
 同樣地，在[多租用戶](howto-convert-app-to-be-multi-tenant.md)應用程式的案例中，於此應用程式佈建所在的 Azure AD 租用戶中，使用者一旦成功驗證其各自的租用戶後，都能夠存取此應用程式。
 
-租用戶系統管理員和開發人員通常需要將應用程式限制為僅供一組特定的使用者存取。 開發人員可以使用 Azure 角色型存取控制（Azure RBAC）之類的熱門授權模式來完成相同的工作，但這種方法在開發人員中需要大量的工作量。
+租用戶系統管理員和開發人員通常需要將應用程式限制為僅供一組特定的使用者存取。 開發人員可以使用熱門的授權模式（例如 Azure 角色型存取控制 (Azure RBAC) ）來達到相同目的，但這種方法需要開發人員執行大量的工作。
 
 租使用者系統管理員和開發人員也可以使用 Azure AD 的這項內建功能，將應用程式限制為租使用者中一組特定的使用者或安全性群組。
 
@@ -39,13 +39,13 @@ ms.locfileid: "87445470"
 - 直接建置在 Azure AD 應用程式平台上，且會在使用者或系統管理員同意該應用程式之後，使用 OAuth 2.0/OpenID Connect 驗證的應用程式。
 
      > [!NOTE]
-     > 這項功能只適用於 Web 應用程式/Web API 和企業應用程式。 註冊為[原生](quickstart-v1-integrate-apps-with-azure-ad.md)的應用程式無法限制為僅供租用戶中的一組使用者或安全性群組存取。
+     > 這項功能只適用於 Web 應用程式/Web API 和企業應用程式。 註冊為[原生](./quickstart-register-app.md)的應用程式無法限制為僅供租用戶中的一組使用者或安全性群組存取。
 
 ## <a name="update-the-app-to-enable-user-assignment"></a>更新應用程式以啟用使用者指派
 
 有兩種方式可建立具有已啟用使用者指派的應用程式。 其中一個需要**全域管理員**角色，第二個則否。
 
-### <a name="enterprise-applications-requires-the-global-administrator-role"></a>企業應用程式（需要全域管理員角色）
+### <a name="enterprise-applications-requires-the-global-administrator-role"></a>企業應用程式 (需要全域管理員角色) 
 
 1. 移至[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 1. 在頂端列中，選取已登入的帳戶。 
@@ -89,14 +89,14 @@ ms.locfileid: "87445470"
      隨即會顯示使用者和安全性群組清單，以及用來搜尋並找出特定使用者或群組的文字方塊。 此畫面可讓您一次選取多個使用者和群組。
 
 1. 在您選好使用者和群組後，請按底部的 [選取] 按鈕，以移至下一個部分。
-1. 選擇性如果您已在應用程式中定義應用程式角色，您可以使用 [**選取角色**] 選項，將選取的使用者和群組指派給其中一個應用程式角色。 
+1.  (選擇性) 如果您已在應用程式中定義應用程式角色，您可以使用 [**選取角色**] 選項，將選取的使用者和群組指派給應用程式的其中一個角色。 
 1. 按底部的 [指派] 按鈕，即可將使用者和群組指派給應用程式。 
 1. 確認您新增的使用者和群組有顯示在更新後的 [使用者和群組] 清單中。
 
 ## <a name="more-information"></a>詳細資訊
 
-- [如何：在您的應用程式中新增應用程式角色](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)
+- [如何：在您的應用程式中新增應用程式角色](./howto-add-app-roles-in-azure-ad-apps.md)
 - [使用應用程式角色與角色宣告將授權新增至 ASP.NET Core Web 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [在您的應用程式中使用安全性群組和應用程式角色 (影片)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory 現在具有群組宣告和應用程式角色](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Azure Active Directory 應用程式資訊清單](./reference-app-manifest.md)

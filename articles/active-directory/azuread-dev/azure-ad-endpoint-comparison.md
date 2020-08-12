@@ -1,6 +1,6 @@
 ---
-title: 為何要更新至 Microsoft 身分識別平臺（v2.0） |Azure
-description: 瞭解 Microsoft 身分識別平臺（v2.0）端點與 Azure Active Directory （Azure AD） v1.0 端點之間的差異，並瞭解更新至 v2.0 的優點。
+title: 為何要更新至 Microsoft 身分識別平臺 (v2.0) |Azure
+description: 瞭解 Microsoft 身分識別平臺 (v2.0) 端點和 Azure Active Directory (Azure AD) v1.0 端點之間的差異，並瞭解更新至 v2.0 的優點。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 001de375edab7505ed4687d848aca0ad0965dbfb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034902"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116388"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>為何要更新至 Microsoft 身分識別平台 (v2.0)？
 
-開發新的應用程式時，請務必瞭解 Microsoft 身分識別平臺（v2.0）和 Azure Active Directory （v1.0）端點之間的差異。 本文涵蓋端點的主要差異，以及 Microsoft 身分識別平臺的一些現有限制。
+開發新的應用程式時，請務必瞭解 Microsoft 身分識別平臺 (v2.0) 和 Azure Active Directory (v1.0) 端點之間的差異。 本文涵蓋端點的主要差異，以及 Microsoft 身分識別平臺的一些現有限制。
 
 > [!NOTE]
 > Microsoft 身分識別平臺端點不支援所有 Azure AD 案例和功能。 若要判斷您是否應該使用 Microsoft 身分識別平臺端點，請參閱[microsoft 身分識別平臺限制](#limitations)。
@@ -32,12 +32,12 @@ ms.locfileid: "87034902"
 ![誰可以登入 v1.0 與 v2.0 端點](media/azure-ad-endpoint-comparison/who-can-signin.svg)
 
 * v1.0 端點只允許使用公司和學校帳戶登入您的應用程式 (Azure AD)
-* Microsoft 身分識別平臺端點可讓 Azure AD 和個人 Microsoft 帳戶（MSA）（例如 hotmail.com、outlook.com 和 msn.com）的公司和學校帳戶登入。
-* 這兩個端點也會針對設定為*[單一租](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* 使用者的應用程式，或針對設定為指向租使用者特定端點（）的*多租*使用者應用程式，接受 Azure AD 目錄的*[來賓使用者](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* 登入 `https://login.microsoftonline.com/{TenantId_or_Name}` 。
+* Microsoft 身分識別平臺端點可讓 Azure AD 和個人 Microsoft 帳戶 (MSA) （例如 hotmail.com、outlook.com 和 msn.com）登入。
+* 這兩個端點也會針對設定為*[單一租](../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)* 使用者的應用程式，或針對設定為指向租使用者特定端點 () 的*多租*使用者應用程式，接受 Azure AD 目錄的*[來賓使用者](../external-identities/what-is-b2b.md)* 登入 `https://login.microsoftonline.com/{TenantId_or_Name}` 。
 
-Microsoft 身分識別平臺端點可讓您撰寫應用程式，以接受來自個人 Microsoft 帳戶及公司和學校帳戶的登入。 這可讓您撰寫完全無從驗證帳戶的應用程式。 例如，如果您的應用程式呼叫 [Microsoft Graph](https://graph.microsoft.io) \(英文\)，則公司帳戶可取得一些額外的功能和資料，例如他們的 SharePoint 網站或目錄資料。 但在許多動作 (例如[讀取使用者的郵件](https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0)) 中，相同的程式碼可以存取個人及公司和學校帳戶的電子郵件。
+Microsoft 身分識別平臺端點可讓您撰寫應用程式，以接受來自個人 Microsoft 帳戶及公司和學校帳戶的登入。 這可讓您撰寫完全無從驗證帳戶的應用程式。 例如，如果您的應用程式呼叫 [Microsoft Graph](https://graph.microsoft.io) \(英文\)，則公司帳戶可取得一些額外的功能和資料，例如他們的 SharePoint 網站或目錄資料。 但在許多動作 (例如[讀取使用者的郵件](/graph/api/user-list-messages?view=graph-rest-1.0)) 中，相同的程式碼可以存取個人及公司和學校帳戶的電子郵件。
 
-針對 Microsoft 身分識別平臺端點，您可以使用 Microsoft 驗證程式庫（MSAL）來取得取用者、教育和企業環境的存取權。 Azure AD v1.0 端點只接受來自公司和學校帳戶的登入。
+針對 Microsoft 身分識別平臺端點，您可以使用 Microsoft 驗證程式庫 (MSAL) ，以取得取用者、教育和企業環境的存取權。 Azure AD v1.0 端點只接受來自公司和學校帳戶的登入。
 
 ## <a name="incremental-and-dynamic-consent"></a>增量和動態同意
 
@@ -141,7 +141,7 @@ Microsoft 身分識別平臺端點將演進以排除此處所列的限制，因�
 
 ### <a name="restrictions-on-redirect-urls"></a>重新導向 URL 的限制
 
-如需針對 Microsoft 身分識別平臺註冊之應用程式的重新導向 Url 限制的最新資訊，請參閱 Microsoft 身分識別平臺檔中的重新[導向 URI/回復 URL 限制和限制](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
+如需針對 Microsoft 身分識別平臺註冊之應用程式的重新導向 Url 限制的最新資訊，請參閱 Microsoft 身分識別平臺檔中的重新[導向 URI/回復 URL 限制和限制](../develop/reply-url.md)。
 
 若要瞭解如何註冊應用程式以與 Microsoft 身分識別平臺搭配使用，請參閱[使用新的應用程式註冊體驗註冊應用程式](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 
@@ -150,7 +150,7 @@ Microsoft 身分識別平臺端點將演進以排除此處所列的限制，因�
 目前，Microsoft 身分識別平臺端點的程式庫支援有限。 如果您想要在實際執行應用程式中使用 Microsoft 身分識別平臺端點，您有下列選項：
 
 * 如果您要建立 web 應用程式，可以安全地使用正式運作的伺服器端中介軟體來執行登入和權杖驗證。 這些包括了適用於 ASP.NET 的 OWIN OpenID Connect 中介軟體和 Node.js Passport 外掛程式。 如需使用 Microsoft 中介軟體的程式碼範例，請參閱[microsoft 身分識別平臺使用者入門](../develop/v2-overview.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json#getting-started)一節。
-* 如果您要建立桌上型電腦或行動應用程式，您可以使用其中一個 Microsoft 驗證程式庫（MSAL）。 這些程式庫已正式運作，或在生產環境支援的預覽中，因此在生產應用程式中使用它們是安全的。 您可以在[驗證程式庫參考](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)中，閱讀更多和預覽條款與可用程式庫相關的詳細資訊。
+* 如果您要建立桌上型電腦或行動應用程式，您可以使用其中一個 Microsoft 驗證程式庫 (MSAL) 。 這些程式庫已正式運作，或在生產環境支援的預覽中，因此在生產應用程式中使用它們是安全的。 您可以在[驗證程式庫參考](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)中，閱讀更多和預覽條款與可用程式庫相關的詳細資訊。
 * 針對 Microsoft 程式庫未涵蓋的平臺，您可以直接在應用程式代碼中傳送和接收通訊協定訊息，以與 Microsoft 身分識別平臺端點整合。 OpenID Connect 和 OAuth 通訊協定[會明確記載](../develop/active-directory-v2-protocols.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)，以協助您進行這類整合。
 * 最後，您可以使用開放原始碼 OpenID Connect 和 OAuth 程式庫來與 Microsoft 身分識別平臺端點整合。 Microsoft 身分識別平臺端點應該與許多開放原始碼通訊協定程式庫相容，而不需要變更。 這類的程式庫的可用性會依語言和平台而有所不同。 [OpenID Connect](https://openid.net/connect/) \(英文\) 和 [OAuth 2.0](https://oauth.net/2/) \(英文\) 網站保有一份常用的實作清單。 如需詳細資訊，請參閱[microsoft 身分識別平臺和驗證程式庫](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)，以及已使用 Microsoft 身分識別平臺端點測試的開放原始碼用戶端程式庫和範例清單。
 * 如需參考， `.well-known` Microsoft 身分識別平臺通用端點的端點為 `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration` 。 使用您的租用戶識別碼來取代 `common`，以取得您租用戶特有的資料。  
@@ -167,4 +167,4 @@ Microsoft 身分識別平臺端點不支援 SAML 或 WS-同盟;它只支援 Open
 
 #### <a name="saml-restrictions"></a>SAML 限制
 
-如果您已在 Windows 應用程式中使用 Active Directory 驗證程式庫（ADAL），您可能已利用 Windows 整合式驗證，其使用安全性聲明標記語言（SAML）判斷提示授與。 有了此授與之後，同盟 Azure AD 租用戶的使用者便可向其內部部署 Active Directory 執行個體以無訊息方式進行驗證，而不需輸入認證。 Microsoft 身分識別平臺端點不支援 SAML 判斷提示授與。
+如果您已在 Windows 應用程式中使用 Active Directory 驗證程式庫 (ADAL) ，您可能已利用 Windows 整合式驗證，其使用安全性聲明標記語言 (SAML) 判斷提示授與。 有了此授與之後，同盟 Azure AD 租用戶的使用者便可向其內部部署 Active Directory 執行個體以無訊息方式進行驗證，而不需輸入認證。 Microsoft 身分識別平臺端點不支援 SAML 判斷提示授與。

@@ -12,18 +12,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: ad66e0698cf0705c7a4db90a6dd515b71fed84e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478615"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116082"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>操作說明：針對企業應用程式，設定 SAML 權杖中發出的角色宣告
 
 藉由使用 Azure Active Directory (Azure AD)，您可以針對在授權應用程式之後所收到回應權杖中的角色宣告，自訂其宣告類型。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 具有目錄設定的 Azure AD 訂用帳戶。
 - 已啟用單一登入 (SSO) 的訂用帳戶。 您必須設定與您應用程式搭配運作的 SSO。
@@ -88,7 +88,7 @@ ms.locfileid: "85478615"
 
       ![用來取得所需修改服務主體的查詢](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    如 從服務主體物件中解壓縮**appRoles**屬性。
+    g. 從服務主體物件中解壓縮**appRoles**屬性。
 
       ![appRoles 屬性的詳細資料](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
@@ -265,7 +265,7 @@ ms.locfileid: "85478615"
 
 ## <a name="next-steps"></a>後續步驟
 
-如需其他步驟，請參閱[應用程式文件](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)。
+如需其他步驟，請參閱[應用程式文件](../saas-apps/tutorial-list.md)。
 
 <!--Image references-->
 <!--Image references-->

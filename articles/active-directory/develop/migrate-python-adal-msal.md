@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 4737b2ef701f643ff5bec47be29b3139e27fb146
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8dcd2b55d177c533336842293b2aedaef6b4222c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845148"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119907"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>適用于 Python 的 MSAL 遷移指南的 ADAL
 
@@ -38,19 +38,19 @@ ADAL 適用于 Azure Active Directory (Azure AD) v1.0 端點。 Microsoft Authen
   - OAuth v2。0
   - OpenID Connect (OIDC) 
 
-如需詳細資訊，請參閱[Microsoft 身分識別平臺 (v2.0) 端點](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)）的差異。
+如需詳細資訊，請參閱[Microsoft 身分識別平臺 (v2.0) 端點](../azuread-dev/azure-ad-endpoint-comparison.md)）的差異。
 
 ### <a name="scopes-not-resources"></a>範圍，而非資源
 
-ADAL Python 會取得資源的權杖，但 MSAL Python 會取得範圍的權杖。 MSAL Python 中的 API 介面已不再有資源參數。 您需要提供範圍做為字串清單，以宣告所需的許可權和所要求的資源。 若要查看範圍的一些範例，請參閱[Microsoft Graph 的範圍](https://docs.microsoft.com/graph/permissions-reference)。
+ADAL Python 會取得資源的權杖，但 MSAL Python 會取得範圍的權杖。 MSAL Python 中的 API 介面已不再有資源參數。 您需要提供範圍做為字串清單，以宣告所需的許可權和所要求的資源。 若要查看範圍的一些範例，請參閱[Microsoft Graph 的範圍](/graph/permissions-reference)。
 
 您可以將 `/.default` 範圍尾碼新增至資源，以協助將您的應用程式從 v1.0 端點 (ADAL) 遷移至 Microsoft 身分識別平臺端點 (MSAL) 。 例如，針對的資源值 `https://graph.microsoft.com` ，對等的範圍值為 `https://graph.microsoft.com/.default` 。  如果資源不是在 URL 表單中，而是表單的資源識別碼 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` ，您仍然可以使用範圍值做為 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` 。
 
-如需不同類型範圍的詳細資訊，請參閱[Microsoft 身分識別平臺中的許可權和同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)和[接受 V1.0 權杖的 Web API 範圍一](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes)文。
+如需不同類型範圍的詳細資訊，請參閱[Microsoft 身分識別平臺中的許可權和同意](./v2-permissions-and-consent.md)和[接受 V1.0 權杖的 Web API 範圍一](./msal-v1-app-scopes.md)文。
 
 ### <a name="error-handling"></a>錯誤處理
 
-適用于 Python 的 Azure Active Directory Authentication 程式庫 (ADAL) 會使用例外狀況 `AdalError` 來表示發生問題。 MSAL for Python 通常會改為使用錯誤碼。 如需詳細資訊，請參閱[MSAL For Python error 處理](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python)。
+適用于 Python 的 Azure Active Directory Authentication 程式庫 (ADAL) 會使用例外狀況 `AdalError` 來表示發生問題。 MSAL for Python 通常會改為使用錯誤碼。 如需詳細資訊，請參閱[MSAL For Python error 處理](./msal-handling-exceptions.md?tabs=python)。
 
 ### <a name="api-changes"></a>API 變更
 
@@ -122,4 +122,4 @@ print("Migration completed")
 
 ## <a name="next-steps"></a>後續步驟
 
-如需詳細資訊，請參閱 [v1.0 和 v2.0 的比較](active-directory-v2-compare.md)。
+如需詳細資訊，請參閱 [v1.0 和 v2.0 的比較](../azuread-dev/azure-ad-endpoint-comparison.md)。

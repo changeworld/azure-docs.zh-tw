@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 1caddf2fba8544bfbb1108865a459f4166af680b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c394a3e84982db31b5727d170c143e9c07636d62
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846066"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121063"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 Web API 的傳統型應用程式：取得權杖
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>必要參數
 
-`AcquireTokenInteractive` 只有一個強制參數：``scopes``，其中包含定義需要權杖之範圍的字串列舉。 如果權杖是用於 Microsoft Graph，則您可以在名為「權限」的區段中，於每個 Microsoft Graph API 的 API 參考中找到所需的範圍。 例如，若要[列出使用者的連絡人](https://docs.microsoft.com/graph/api/user-list-contacts)，必須使用「User.Read」、「Contacts.Read」範圍。 如需詳細資訊，請參閱 [Microsoft Graph 權限參考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+`AcquireTokenInteractive` 只有一個強制參數：``scopes``，其中包含定義需要權杖之範圍的字串列舉。 如果權杖是用於 Microsoft Graph，則您可以在名為「權限」的區段中，於每個 Microsoft Graph API 的 API 參考中找到所需的範圍。 例如，若要[列出使用者的連絡人](/graph/api/user-list-contacts)，必須使用「User.Read」、「Contacts.Read」範圍。 如需詳細資訊，請參閱 [Microsoft Graph 權限參考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
 
 在 Android 上，您也必須使用 `.WithParentActivityOrWindow` 來指定父活動，如此一來，權杖就會在互動之後回到該父活動。 如果您未指定，則在呼叫 `.ExecuteAsync()` 時，就會擲回例外狀況。
 
@@ -278,7 +278,7 @@ MSAL.NET 小組已重新撰寫 UI 測試，以使用此擴充性機制。 如果
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>提供 SystemWebViewOptions 的絕佳體驗
 
-從 MSAL.NET 4.1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) 中，您可以指定：
+從 MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) 中，您可以指定：
 
 - 在系統網頁瀏覽器中登入或同意錯誤時，所要前往的 URI (`BrowserRedirectError`) 或所要顯示的 HTML 片段 (`HtmlMessageError`)。
 - 在成功登入或同意時，所要前往的 URI (`BrowserRedirectSuccess`) 或所要顯示的 HTML 片段 (`HtmlMessageSuccess`)。
@@ -433,13 +433,13 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
   - 或者，租用戶系統管理員先前必須已同意租用戶中的所有使用者，才能使用該應用程式。
   - 換句話說：
     - 您身為開發人員，請自行選取 Azure 入口網站中的 [授與] 按鈕。
-    - 或者，租用戶系統管理員已在應用程式註冊的 [API 權限] 索引標籤上，選取 [授與/撤銷 {租用戶網域} 系統管理員同意] 按鈕。 如需詳細資訊，請參閱[新增存取 Web API 的許可權](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis)。
-    - 或者，您已為使用者提供同意應用程式的方式。 如需詳細資訊，請參閱[要求個別使用者同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent)。
-    - 或者，您也提供一種方法，讓租用戶系統管理員同意應用程式。 如需詳細資訊，請參閱[管理員同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant)。
+    - 或者，租用戶系統管理員已在應用程式註冊的 [API 權限] 索引標籤上，選取 [授與/撤銷 {租用戶網域} 系統管理員同意] 按鈕。 如需詳細資訊，請參閱[新增存取 Web API 的許可權](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
+    - 或者，您已為使用者提供同意應用程式的方式。 如需詳細資訊，請參閱[要求個別使用者同意](./v2-permissions-and-consent.md#requesting-individual-user-consent)。
+    - 或者，您也提供一種方法，讓租用戶系統管理員同意應用程式。 如需詳細資訊，請參閱[管理員同意](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
 
 - 此流程已針對 .NET 傳統型、.NET Core 和 UWP 應用程式啟用。
 
-如需有關同意的詳細資訊，請參閱 [Microsoft 身分識別平台的權限和同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)。
+如需有關同意的詳細資訊，請參閱 [Microsoft 身分識別平台的權限和同意](./v2-permissions-and-consent.md)。
 
 ### <a name="learn-how-to-use-it"></a>了解其使用方式
 
