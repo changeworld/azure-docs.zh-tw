@@ -1,14 +1,14 @@
 ---
 title: 快速入門：您的第一個入口網站查詢
 description: 遵循此快速入門中的步驟，以使用 Azure Resource Graph Explorer 從 Azure 入口網站執行您的第一個查詢。
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: quickstart
-ms.openlocfilehash: 1e506ee1b1c610381f300323f80c38eb6bf67caa
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958802"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056375"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>快速入門：使用 Azure Resource Graph Explorer 執行您的第一個 Resource Graph 查詢
 

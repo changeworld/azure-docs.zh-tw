@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.date: 04/04/2020
-ms.author: erhopf
+ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 08001aabd279b2df64635719e9ef3e0772df62e9
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 2af0d0eb2411c5ffe9f80498a3e93d48fe0a769b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671745"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88057792"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 

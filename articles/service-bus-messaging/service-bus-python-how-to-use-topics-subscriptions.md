@@ -7,13 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: tracking-python
-ms.openlocfilehash: 4c490d252fa1153324df62a6119ae6bdc548c331
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-python
+ms.openlocfilehash: f6d1b25cb502b8cb208ba5b59c91667e03c77778
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341040"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064378"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>快速入門：透過 Python 使用服務匯流排主題和訂用帳戶
 
@@ -176,7 +176,7 @@ bus_service.delete_topic('mytopic')
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-根據預設，主題和訂用帳戶會持續存在，直到您將其刪除為止。 若要在經過特定一段時間之後自動刪除訂用帳戶，您可以在訂用帳戶上設定 [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) 參數。 
+根據預設，主題和訂用帳戶會持續存在，直到您將其刪除為止。 若要在經過特定一段時間之後自動刪除訂用帳戶，您可以在訂用帳戶上設定 [auto_delete_on_idle](/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) 參數。 
 
 > [!TIP]
 > 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓您連線到服務匯流排命名空間，並輕鬆地管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能)，以及測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
@@ -192,4 +192,4 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 [Azure Python package]: https://pypi.python.org/pypi/azure
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
-[Service Bus quotas]: service-bus-quotas.md 
+[Service Bus quotas]: service-bus-quotas.md
