@@ -1,23 +1,23 @@
 ---
-title: 使用 Azure 入口網站來存取 blob 或佇列資料
+title: 選擇如何授權存取 Azure 入口網站中的 blob 或佇列資料
 titleSuffix: Azure Storage
 description: 當您使用 Azure 入口網站存取 blob 或佇列資料時，入口網站會要求在幕後 Azure 儲存體。 這些 Azure 儲存體的要求可以使用您的 Azure AD 帳戶或儲存體帳戶存取金鑰來進行驗證和授權。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/14/2020
+ms.date: 08/12/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 27c5b166565dd8f0803f3bca05d137e643325368
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534170"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185735"
 ---
-# <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 入口網站來存取 blob 或佇列資料
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-in-the-azure-portal"></a>選擇如何授權存取 Azure 入口網站中的 blob 或佇列資料
 
 當您使用[Azure 入口網站](https://portal.azure.com)存取 blob 或佇列資料時，入口網站會要求在幕後 Azure 儲存體。 Azure 儲存體的要求可以使用您的 Azure AD 帳戶或儲存體帳戶存取金鑰進行授權。 入口網站會指出您所使用的方法，並可讓您在有適當許可權的情況下，于兩者之間切換。  
 
@@ -25,7 +25,7 @@ ms.locfileid: "87534170"
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>存取 blob 或佇列資料所需的許可權
 
-根據您要如何授權存取 Azure 入口網站中的 blob 或佇列資料，您將需要特定的許可權。 在大部分情況下，會透過角色型存取控制（RBAC）來提供這些許可權。 如需 RBAC 的詳細資訊，請參閱[什麼是 Azure 角色型存取控制（AZURE RBAC）？](../../role-based-access-control/overview.md)。
+根據您要如何授權存取 Azure 入口網站中的 blob 或佇列資料，您將需要特定的許可權。 在大部分情況下，這些許可權是透過角色型存取控制 (RBAC) 提供。 如需 RBAC 的詳細資訊，請參閱[什麼是 azure 角色型存取控制 (AZURE RBAC) ？](../../role-based-access-control/overview.md)。
 
 ### <a name="use-the-account-access-key"></a>使用帳戶存取金鑰
 
@@ -38,7 +38,7 @@ ms.locfileid: "87534170"
 當您嘗試存取 Azure 入口網站中的 blob 或佇列資料時，入口網站會先檢查您是否已獲指派具有**Microsoft storageAccounts/listkeys/action**的角色。 如果您已使用此動作指派角色，則入口網站會使用帳戶金鑰來存取 blob 和佇列資料。 如果您尚未使用此動作指派角色，則入口網站會嘗試使用您的 Azure AD 帳戶來存取資料。
 
 > [!NOTE]
-> 傳統訂用帳戶管理員角色服務管理員和共同管理員包含對等的 Azure Resource Manager[擁有](../../role-based-access-control/built-in-roles.md#owner)者角色。 「**擁有**者」角色包含所有動作，包括**storageAccounts/listkeys/action**，因此具有其中一個系統管理角色的使用者也可以使用帳戶金鑰來存取 blob 和佇列資料。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 系統管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
+> 傳統訂用帳戶管理員角色服務管理員和共同管理員包含對等的 Azure Resource Manager[擁有](../../role-based-access-control/built-in-roles.md#owner)者角色。 「**擁有**者」角色包含所有動作，包括**storageAccounts/listkeys/action**，因此具有其中一個系統管理角色的使用者也可以使用帳戶金鑰來存取 blob 和佇列資料。 如需詳細資訊，請參閱[傳統訂用帳戶管理員角色、Azure 角色和 Azure AD 管理員角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)。
 
 ### <a name="use-your-azure-ad-account"></a>使用您的 Azure AD 帳戶
 

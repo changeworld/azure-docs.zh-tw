@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031076"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185616"
 ---
 # <a name="monitor-azure-file-sync"></a>監視 Azure 檔案同步
 
@@ -40,7 +40,7 @@ ms.locfileid: "88031076"
 
 以下是 Azure 監視器中提供的 Azure 檔案同步計量：
 
-| 度量名稱 | 描述 |
+| 度量名稱 | Description |
 |-|-|
 | 同步的位元組 | 傳輸的資料大小 (上傳和下載)。<br><br>單位：位元組<br>匯總類型：總和<br>適用的維度：伺服器端點名稱、同步方向、同步組名 |
 | 雲端階層處理重新叫用 | 重新叫用的資料大小。<br><br>**注意**：未來將會移除此度量。 使用 [雲端階層處理重新叫用大小] 計量來監視重新叫用的資料大小。<br><br>單位：位元組<br>匯總類型：總和<br>適用的維度：伺服器名稱 |
@@ -70,7 +70,7 @@ ms.locfileid: "88031076"
 
 下表列出一些要監視的範例案例，以及要用於警示的適當計量：
 
-| 案例 | 用於警示的度量 |
+| 狀況 | 用於警示的度量 |
 |-|-|
 | 伺服器端點健全狀況在入口網站中顯示錯誤 | 同步工作階段結果 |
 | 檔案無法同步處理到伺服器或雲端端點 | 檔案無法同步 |
@@ -112,7 +112,7 @@ ms.locfileid: "88031076"
 
 - 下列計量圖表可在儲存體同步服務入口網站中看到：
 
-  | 度量名稱 | 描述 | 分頁名稱 |
+  | 度量名稱 | Description | 分頁名稱 |
   |-|-|-|
   | 同步的位元組 | 傳輸的資料大小 (上傳和下載) | 同步群組、伺服器端點 |
   | 雲端階層處理重新叫用 | 重新叫用的資料大小 | 已註冊的伺服器 |
@@ -156,12 +156,13 @@ ms.locfileid: "88031076"
   - 事件識別碼 9016 會提供磁碟區的建立映像結果。 例如：可用空間百分比是、會話中的已幻影檔案數目，以及無法准刪除的檔案數目。
   - 事件識別碼 9029 會提供伺服器端點的虛像化工作階段資訊。 例如：會話中嘗試的檔案數目、會話中階層式檔案數目，以及已階層式檔案數目。
   
-- 若要監視伺服器上的回收活動，請使用遙測事件記錄檔中的事件識別碼9005、9006、9009和9059，其位於 [*應用程式和 and services\microsoft\filesync\agent*] 底下的事件檢視器中。
+- 若要監視伺服器上的回收活動，請使用遙測事件記錄檔中的事件識別碼9005、9006、9009、9059和9071，其位於 [*應用程式和 and services\microsoft\filesync\agent*] 底下的事件檢視器。
 
   - 事件識別碼 9005 會提供伺服器端點的回收可靠性。 例如：存取的唯一檔案總數，以及存取失敗的唯一檔案總數。
   - 事件識別碼 9006 會提供伺服器端點的回收錯誤分布。 例如：失敗的要求總數和 ErrorCode。 每個錯誤碼會記錄一個事件。
   - 事件識別碼 9009 會提供伺服器端點的回收工作階段資訊。 例如： DurationSeconds、CountFilesRecallSucceeded 和 CountFilesRecallFailed。
   - 事件識別碼 9059 會提供伺服器端點的應用程式回收分布。 例如： ShareId、應用程式名稱和 TotalEgressNetworkBytes。
+  - 事件識別碼9071會提供伺服器端點的雲端階層處理效率。 例如： TotalDistinctFileCountCacheHit、TotalDistinctFileCountCacheMiss、TotalCacheHitBytes 和 TotalCacheMissBytes。
 
 ### <a name="performance-counters"></a>效能計數器
 
@@ -171,7 +172,7 @@ ms.locfileid: "88031076"
 
 以下是效能監視器中為 Azure 檔案同步提供的效能計數器：
 
-| 效能物件\計數器名稱 | 描述 |
+| 效能物件\計數器名稱 | Description |
 |-|-|
 | 傳輸的 AFS 位元組\每秒下載的位元組 | 每秒下載的位元組數。 |
 | 傳輸的 AFS 位元組\每秒上傳的位元組 | 每秒上傳的位元組數。 |

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133522"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185208"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>針對行動服務推入安裝進行疑難排解
 
@@ -22,21 +22,21 @@ ms.locfileid: "86133522"
 * [登入失敗](#login-failures-errorid-95519-95520-95521-95522)
 * [連線錯誤](#connectivity-failure-errorid-95117--97118)
 * [檔案及印表機共用錯誤](#file-and-printer-sharing-services-check-errorid-95105--95106)
-* [Windows Management Instrumentation （WMI）失敗](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [Windows Management Instrumentation (WMI) 失敗](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
 * [不支援的作業系統](#unsupported-operating-systems)
 * [不支援的開機設定](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
-* [磁片區陰影複製服務（VSS）安裝失敗](#vss-installation-failures)
+* [磁片區陰影複製服務 (VSS) 安裝失敗](#vss-installation-failures)
 * [裝置名稱位於 GRUB 設定而非裝置 UUID](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
-* [邏輯磁片區管理員（LVM）磁片區](#lvm-support-from-920-version)
+* [邏輯磁片區管理員 (LVM) 磁片區](#lvm-support-from-920-version)
 * [重新啟動警告](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
-當您啟用複寫時，Azure Site Recovery 會嘗試在您的虛擬機器（VM）上安裝行動服務代理程式。 在此過程中，設定伺服器會嘗試與虛擬機器連線並複製代理程式。 若要啟用成功安裝，請遵循逐步疑難排解指引。
+當您啟用複寫時，Azure Site Recovery 會嘗試在您的虛擬機器上安裝行動服務代理程式 (VM) 。 在此過程中，設定伺服器會嘗試與虛擬機器連線並複製代理程式。 若要啟用成功安裝，請遵循逐步疑難排解指引。
 
 ## <a name="credentials-check-errorid-95107--95108"></a>認證檢查 (錯誤碼：95107 & 95108)
 
 確認啟用複寫期間選擇的使用者帳戶是否有效且正確。 Azure Site Recovery 需要具有**系統管理員許可權**的**根**帳戶或使用者帳戶，才能執行推送安裝。 否則，將會封鎖來源機器上的推送安裝。
 
-若為 Windows （**錯誤 95107**），請確認使用者帳戶具有來源電腦的系統管理存取權，其中包含本機帳戶或網域帳戶。 如果您不是使用網域帳戶，則必須停用本機電腦上的遠端使用者存取控制。
+對於 Windows (**錯誤 95107**) ，請使用本機帳戶或網域帳戶，確認使用者帳戶具有來源電腦的系統管理存取權。 如果您不是使用網域帳戶，則必須停用本機電腦上的遠端使用者存取控制。
 
 * 若要手動新增停用遠端使用者存取控制的登錄機碼：
 
@@ -48,7 +48,7 @@ ms.locfileid: "86133522"
 
   `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
 
-若為 Linux （**錯誤 95108**），您必須選擇**根**帳戶，才能成功安裝行動服務代理程式。 此外，SSH 檔案傳輸通訊協定（SFTP）服務應該正在執行。 若要在_sshd_config_檔案中啟用 SFTP 子系統和密碼驗證：
+針對 Linux (**錯誤 95108**) ，您必須選擇**根**帳戶，才能成功安裝行動服務代理程式。 此外，SSH 檔案傳輸通訊協定 (SFTP) 服務應該正在執行。 若要在_sshd_config_檔案中啟用 SFTP 子系統和密碼驗證：
 
 1. 以**root**身分登入。
 1. 移至_到/etc/ssh/sshd_config_檔案，尋找以開頭的那一行 `PasswordAuthentication` 。
@@ -58,29 +58,29 @@ ms.locfileid: "86133522"
 
 如果您想要修改所選使用者帳戶的認證，請遵循[這些指示](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)。
 
-## <a name="insufficient-privileges-failure-errorid-95517"></a>許可權不足失敗（錯誤識別碼：95517）
+## <a name="insufficient-privileges-failure-errorid-95517"></a>許可權不足失敗 (錯誤識別碼： 95517) 
 
 當選擇安裝行動代理程式的使用者沒有系統管理員許可權時，不允許設定伺服器/相應放大進程伺服器將行動代理程式軟體複製到來源機器。 此錯誤是拒絕存取失敗的結果。 請確定使用者帳戶具備系統管理員權限。
 
 如果您想要修改所選使用者帳戶的認證，請遵循[這些指示](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)。
 
-## <a name="insufficient-privileges-failure-errorid-95518"></a>許可權不足失敗（錯誤識別碼：95518）
+## <a name="insufficient-privileges-failure-errorid-95518"></a>許可權不足失敗 (錯誤識別碼： 95518) 
 
 當主要網域與工作站之間的網域信任關係在嘗試登入來源電腦時失敗，行動代理程式安裝將會失敗，錯誤識別碼為95518。 請確定用來安裝行動代理程式的使用者帳戶具有系統管理許可權，可透過來源機器的主域進行登入。
 
 如果您想要修改所選使用者帳戶的認證，請遵循[這些指示](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)。
 
-## <a name="login-failures-errorid-95519-95520-95521-95522"></a>登入失敗（錯誤識別碼：95519、95520、95521、95522）
+## <a name="login-failures-errorid-95519-95520-95521-95522"></a>登入失敗 (錯誤識別碼：95519、95520、95521、95522) 
 
 本節說明認證和登入錯誤訊息。
 
-### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>使用者帳戶的認證已停用（錯誤識別碼：95519）
+### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>使用者帳戶的認證已停用 (錯誤識別碼： 95519) 
 
 啟用複寫期間選擇的使用者帳戶已停用。 若要啟用使用者帳戶，請參閱[這篇文章](/powershell/module/Microsoft.PowerShell.LocalAccounts/Enable-LocalUser)，或以實際使用者名稱取代文字_username_來執行下列命令。
 
 `net user 'username' /active:yes`
 
-### <a name="credentials-locked-out-because-of-multiple-failed-login-attempts-errorid-95520"></a>因為多次登入嘗試失敗，而鎖定了認證（錯誤識別碼：95520）
+### <a name="credentials-locked-out-because-of-multiple-failed-login-attempts-errorid-95520"></a>因為多次嘗試登入失敗，所以已鎖定認證 (錯誤識別碼： 95520) 
 
 多次重試存取機器失敗將會導致使用者帳戶遭到鎖定。 失敗原因可能是：
 
@@ -89,18 +89,18 @@ ms.locfileid: "86133522"
 
 依照[這些指示](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)修改所選擇的認證，然後再次嘗試操作。
 
-### <a name="logon-servers-arent-available-on-the-source-machine-errorid-95521"></a>來源電腦上沒有可用的登入伺服器（錯誤識別碼：95521）
+### <a name="logon-servers-arent-available-on-the-source-machine-errorid-95521"></a>來源電腦上無法使用登入伺服器 (錯誤識別碼： 95521) 
 
 當來源電腦上無法使用登入伺服器時，就會發生此錯誤。 如果無法使用登入伺服器，登入要求將會失敗，而且無法安裝行動代理程式。 若要成功登入，請確定來源電腦上有可用的登入伺服器，並啟動 Netlogon 服務。 如需詳細資訊，請參閱[Windows 登入案例](/windows-server/security/windows-authentication/windows-logon-scenarios)。
 
-### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>登入服務未在來源電腦上執行（錯誤識別碼：95522）
+### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>登入服務未在來源電腦上執行 (錯誤識別碼： 95522) 
 
 登入服務未在來源電腦上執行，導致登入要求失敗。 無法安裝行動代理程式。 若要解決此錯誤，請使用下列其中一種方法來啟動 `Netlogon` 來源電腦上的服務：
 
 * 若要 `Netlogon` 從命令提示字元啟動服務，請執行命令 `net start Netlogon` 。
 * 從 [工作管理員] 啟動 `Netlogon` 服務。
 
-## <a name="connectivity-failure-errorid-95117--97118"></a>連線失敗（錯誤識別碼： 95117 & 97118）
+## <a name="connectivity-failure-errorid-95117--97118"></a>連接失敗 (錯誤識別碼： 95117 & 97118) 
 
 設定伺服器/相應放大進程伺服器會嘗試連線至來源 VM 以安裝行動代理程式。 因為發生網路連線問題，所以無法連線到來源電腦時，就會發生此錯誤。
 
@@ -126,7 +126,7 @@ ms.locfileid: "86133522"
 * 如果在一段時間後沒有適當的回應，或已建立的連接因為連線的主機無法回應而失敗，則連接嘗試可能會失敗。
 * 這可能是連線/網路/網域相關問題。 這也可能是因為 DNS 名稱解析問題或 TCP 通訊埠耗盡問題。 檢查您的網域中是否有任何這類的已知問題。
 
-## <a name="connectivity-failure-errorid-95523"></a>連線失敗（錯誤識別碼：95523）
+## <a name="connectivity-failure-errorid-95523"></a>連接失敗 (錯誤識別碼： 95523) 
 
 找不到來源機器所在的網路、可能已刪除或無法再使用時，就會發生此錯誤。 解決錯誤的唯一方法是確保網路存在。
 
@@ -154,7 +154,7 @@ ms.locfileid: "86133522"
 
 若要針對較新版本的 Windows 或 Linux 啟用 [檔案及印表機共用]，請遵循[針對 VMware vm 和實體伺服器的嚴重損壞修復安裝行動服務](vmware-azure-install-mobility-service.md)中的指示。
 
-## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Windows Management Instrumentation （WMI）設定檢查（錯誤碼：95103）
+## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Windows Management Instrumentation (WMI) 設定檢查 (錯誤碼： 95103) 
 
 在檔案和印表機服務檢查之後，請透過防火牆啟用私人、公用和網域設定檔的 WMI 服務。 若要在來源機器上完成遠端執行，這些設定是必要的。
 
@@ -162,7 +162,7 @@ ms.locfileid: "86133522"
 
 1. 移至 [**控制台**] [  >  **安全性**]，然後選取 [ **Windows 防火牆**]。
 1. 選取 [**變更設定**]，然後選取 [**例外**] 索引標籤。
-1. 在 [**例外**狀況] 視窗中，選取 WINDOWS MANAGEMENT INSTRUMENTATION （WMI）的核取方塊，以啟用透過防火牆的 WMI 流量。
+1. 在 [**例外**狀況] 視窗中，選取 WINDOWS MANAGEMENT INSTRUMENTATION (wmi) 的核取方塊，以啟用透過防火牆的 wmi 流量。
 
 您也可以從命令提示字元使用下列命令，透過防火牆啟用 WMI 流量：
 
@@ -180,29 +180,29 @@ ms.locfileid: "86133522"
 
 若要查看 Azure Site Recovery 所支援的作業系統和核心版本清單，請參閱[支援矩陣檔](vmware-physical-azure-support-matrix.md#replicated-machines)。
 
-## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>不支援的開機磁片設定（錯誤識別碼：95309、95310、95311）
+## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>不支援的開機磁片設定 (錯誤識別碼：95309、95310、95311) 
 
-### <a name="boot-and-system-partitions--volumes-arent-the-same-disk-errorid-95309"></a>開機與系統磁碟分割/磁片區不是相同的磁片（錯誤識別碼：95309）
+### <a name="boot-and-system-partitions--volumes-arent-the-same-disk-errorid-95309"></a>開機與系統磁碟分割/磁片區不是相同的磁片 (錯誤識別碼： 95309) 
 
 在9.20 版之前，不同磁片上的開機和系統磁碟分割/磁片區是不受支援的設定。 從[9.20 版](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)開始，支援此設定。
 
-### <a name="the-boot-disk-isnt-available-errorid-95310"></a>開機磁片無法使用（錯誤識別碼：95310）
+### <a name="the-boot-disk-isnt-available-errorid-95310"></a>開機磁片無法使用 (錯誤識別碼： 95310) 
 
 無法保護不含開機磁片的虛擬機器。 開機磁片可確保在容錯移轉作業期間順暢地復原虛擬機器。 如果沒有開機磁片，會導致在容錯移轉之後將機器開機失敗。 請確認虛擬機器包含開機磁片，然後再次嘗試操作。 此外，不支援在同一部電腦上有多個開機磁片。
 
-### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>來源電腦上有多個開機磁片（錯誤識別碼：95311）
+### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>來源電腦上有多個開機磁片， (錯誤識別碼： 95311) 
 
 具有多個開機磁片的虛擬機器不是[支援](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)的設定。
 
-## <a name="system-partition-on-multiple-disks-errorid-95313"></a>多個磁片上的系統磁碟分割（錯誤識別碼：95313）
+## <a name="system-partition-on-multiple-disks-errorid-95313"></a>多個磁片上的系統磁碟分割 (錯誤識別碼： 95313) 
 
 在9.20 版之前，多個磁片上的根磁碟分割或磁片區設定是不受支援的設定。 從[9.20 版](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)開始，支援此設定。
 
-## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>啟用保護失敗，因為在 GRUB 設定中提及的裝置名稱，而不是 UUID （錯誤識別碼：95320）
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>啟用保護失敗，因為在 GRUB 設定中提及的裝置名稱，而不是 UUID (錯誤識別碼： 95320) 
 
 ### <a name="possible-cause"></a>可能的原因
 
-「統一開機載入器」（GRUB）設定檔（_/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/boot/grub2/grub.cfg_或 _/etc/default/grub_）可能會包含參數**root**和**resume**作為實際裝置名稱的值，而不是通用唯一識別碼（UUID）。 Site Recovery 會強制 UUID 方法，因為裝置名稱可能會在 VM 重新開機時變更。 例如，VM 可能不會在容錯移轉時以相同的名稱上線，因而導致問題。
+「統一開機載入器 (GRUB) 設定檔 (_/boot/grub/menu.lst_、 _/boot/grub/grub.cfg_、 _/Boot/grub2/grub.cfg_或 _/etc/default/grub_) 可能會包含參數**root**和**resume**作為實際裝置名稱的值，而不是 (UUID) 的通用唯一識別碼。 Site Recovery 會強制 UUID 方法，因為裝置名稱可能會在 VM 重新開機時變更。 例如，VM 可能不會在容錯移轉時以相同的名稱上線，因而導致問題。
 
 例如：
 
@@ -238,7 +238,7 @@ ms.locfileid: "86133522"
 
 1. 重新開機保護。
 
-## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>安裝行動服務已完成，但出現警告而無法重新開機（錯誤識別碼： 95265 & 95266）
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>安裝行動服務已完成，但有警告重新開機 (錯誤識別碼： 95265 & 95266) 
 
 Site Recovery 行動服務有許多元件，其中一個稱為「篩選驅動程式」。 只有在系統重新開機時，才會將篩選器驅動程式載入系統記憶體。 只有在系統重新開機時載入新的篩選器驅動程式時，才能實現篩選器驅動程式修正。
 
@@ -250,17 +250,21 @@ Site Recovery 行動服務有許多元件，其中一個稱為「篩選驅動程
 
 ## <a name="lvm-support-from-920-version"></a>從 9.20 版開始支援 LVM
 
-在9.20 版之前，只支援資料磁片的邏輯磁片區管理員（LVM）。 `/boot`分割區應位於磁碟分割上，而不是 LVM 磁片區。
+在9.20 版之前，僅支援資料磁片的邏輯磁片區管理員 (LVM) 。 `/boot`分割區應位於磁碟分割上，而不是 LVM 磁片區。
 
 從[9.20 版](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)開始，會支援[LVM 上的 OS 磁片](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)。
 
-## <a name="insufficient-space-errorid-95524"></a>空間不足（錯誤識別碼：95524）
+## <a name="insufficient-space-errorid-95524"></a>空間不足 (錯誤識別碼： 95524) 
 
 將行動代理程式複製到來源機器時，至少需要 100 MB 的可用空間。 請確認您的來源電腦具有所需的可用空間量，然後重試此操作。
 
+## <a name="low-system-resources"></a>系統資源不足
+
+當系統的可用記憶體不足，而且無法配置記憶體來安裝行動服務時，就會發生此問題。 請確定已釋放足夠的記憶體，以讓安裝順利進行，並順利完成。
+
 ## <a name="vss-installation-failures"></a>VSS 安裝失敗
 
-「磁片區陰影複製服務」（VSS）安裝是行動代理程式安裝的一部分。 此服務會用於產生應用程式一致復原點的進程中。 在 VSS 安裝期間發生失敗的原因有許多種。 若要找出確切的錯誤，請參閱_C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_。 下一節會反白顯示一些常見的錯誤和解決步驟。
+磁片區陰影複製服務 (VSS) 安裝是行動代理程式安裝的一部分。 此服務會用於產生應用程式一致復原點的進程中。 在 VSS 安裝期間發生失敗的原因有許多種。 若要找出確切的錯誤，請參閱_C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_。 下一節會反白顯示一些常見的錯誤和解決步驟。
 
 ### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>VSS 錯誤 -2147023170 [0x800706BE] - 結束代碼 511
 
@@ -337,7 +341,7 @@ Site Recovery 行動服務有許多元件，其中一個稱為「篩選驅動程
 1. 若要略過 VSS 安裝：
    1. 開啟位於下列位置的 Azure Site Recovery 行動服務安裝目錄：
 
-      _C:\Program Files （x86） \Microsoft Azure Site Recovery\agent_
+      _C:\Program Files (x86) \Microsoft Azure Site Recovery\agent_
 
    1. 請新增下列幾行，以修改 Azure Site Recovery VSS 提供者安裝腳本_InMageVSSProvider_Install_ _InMageVSSProvider_Uninstall_並將其設為一律成功：
 
@@ -354,7 +358,7 @@ Site Recovery 行動服務有許多元件，其中一個稱為「篩選驅動程
    `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 1. 確認 Azure Site Recovery VSS 提供者已安裝為 Windows 服務中的服務。 開啟 [元件服務] MMC，確認已列出 VSS 提供者。
-1. 如果 VSS 提供者安裝持續失敗，請與技術支援人員合作，以解決密碼編譯應用程式開發介面（CAPI2）中的許可權錯誤。
+1. 如果 VSS 提供者安裝持續失敗，請與技術支援人員合作，以解決密碼編譯應用程式開發介面 (CAPI2) 中的許可權錯誤。
 
 ## <a name="vss-provider-installation-fails-because-the-cluster-service-being-enabled-on-non-cluster-machine"></a>VSS 提供者安裝失敗，因為在非叢集電腦上啟用叢集服務
 

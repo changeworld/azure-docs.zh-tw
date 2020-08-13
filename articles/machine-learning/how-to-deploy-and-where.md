@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e8aa87eecc29a5b664520cb1be2cbc5e65b2969e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 67a66ae94508a8d7f54d6112de95fa65a8fd5f09
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134542"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185412"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,13 +39,13 @@ ms.locfileid: "88134542"
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 - 模型。 如果您沒有定型的模型，您可以使用[本教學](https://aka.ms/azml-deploy-cloud)課程中提供的模型和相依性檔案。
-- [適用于 Machine Learning 服務的 Azure 命令列介面 (CLI) 延伸](reference-azure-machine-learning-cli.md)模組
+- [適用于 Machine Learning 服務的 Azure 命令列介面 (CLI) 延伸](reference-azure-machine-learning-cli.md)模組。
 
 # <a name="python"></a>[Python](#tab/python)
 
 - Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 - 模型。 如果您沒有定型的模型，您可以使用[本教學](https://aka.ms/azml-deploy-cloud)課程中提供的模型和相依性檔案。
-- [適用于 Python 的 Azure Machine Learning 軟體發展工具組 (SDK) ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+- [適用于 Python 的 Azure Machine Learning 軟體發展工具組 (SDK) ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
 
 ---
 
@@ -242,7 +242,7 @@ myenv = Environment.from_conda_specification(name = 'myenv',
 myenv.register(workspace=ws)
 ```
 
-如需使用和自訂具有 Azure Machine Learning 之 Python 環境的完整討論，請參閱[在 Azure Machine Learning 中建立 & 使用軟體環境](how-to-use-environments.md)
+如需使用和自訂具有 Azure Machine Learning 之 Python 環境的完整討論，請參閱[在 Azure Machine Learning 中建立 & 使用軟體環境](how-to-use-environments.md)。
 
 如需有關使用自訂 Docker 映射搭配推斷設定的詳細資訊，請參閱[如何使用自訂 docker 映射部署模型](how-to-deploy-custom-docker-image.md)。
 
@@ -290,7 +290,7 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 | 計算目標 | 部署設定範例 |
 | ----- | ----- |
 | 本機 | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
-| Azure 容器執行個體 | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+| Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
 本機、Azure 容器實例和 AKS web 服務的類別可以從下列來源匯入 `azureml.core.webservice` ：
@@ -348,11 +348,11 @@ print(service.state)
 
 下表描述不同的服務狀態：
 
-| Webservice 狀態 | 說明 | 最終狀態？
+| Webservice 狀態 | Description | 最終狀態？
 | ----- | ----- | ----- |
-| 正在 | 服務正在進行部署。 | 否 |
-| Unhealthy | 服務已部署，但目前無法連線。  | 否 |
-| 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | 否 |
+| 正在 | 服務正在進行部署。 | No |
+| Unhealthy | 服務已部署，但目前無法連線。  | No |
+| 設無法排程 | 因為缺少資源，所以目前無法部署服務。 | No |
 | 失敗 | 因為發生錯誤或損毀，所以服務無法部署。 | 是 |
 | Healthy | 服務狀況良好，且端點可供使用。 | 是 |
 
@@ -373,7 +373,7 @@ Azure Machine Learning 計算目標是由 Azure Machine Learning 建立和管理
 
 若要從您的工作區刪除已註冊的模型，請使用`az ml model delete <model id>`
 
-深入瞭解[刪除 webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete)和[刪除模型](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)
+深入瞭解[刪除 webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete)和[刪除模型](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)。
 
 # <a name="python"></a>[Python](#tab/python)
 

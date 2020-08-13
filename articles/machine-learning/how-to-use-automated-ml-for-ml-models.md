@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6e4ed8514cd99d42790296a58296a73696989b69
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539130"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185395"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 建立、檢閱和部署自動化機器學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -75,7 +75,7 @@ ms.locfileid: "87539130"
 
     1. 檢閱 [設定和預覽] 表單以進行確認。 表單會根據檔案類型以智慧方式填入。 
 
-        欄位| 說明
+        欄位| 描述
         ----|----
         檔案格式| 定義檔案中所儲存資料的版面配置和類型。
         分隔符號| 一或多個字元，其用來指定純文字或其他資料流中個別獨立區域之間的界限。
@@ -128,20 +128,20 @@ ms.locfileid: "87539130"
     
         1. 選取*時間資料行*：此資料行包含要使用的時間資料。
 
-        1. 選取 [*預測範圍*]：指出模型能夠預測到未來的時間單位數（分鐘/小時/天/周/月/年）。 模型需要針對未來預測的時間越長，其正確性越低。 [深入了解預測及預測範圍](how-to-auto-train-forecast.md)。
+        1. 選取 [*預測範圍*]：指出模型能夠預測到未來的時間單位數 (分鐘/小時/天/周/月/年) 。 模型需要針對未來預測的時間越長，其正確性越低。 [深入了解預測及預測範圍](how-to-auto-train-forecast.md)。
 
 1. (選擇性) 檢視其他組態設定：可用來更進一步控制訓練作業的其他設定。 否則會根據實驗選取範圍和資料來套用預設值。 
 
-    其他組態|說明
+    其他組態|描述
     ------|------
-    主要計量| 用來評分模型的主要計量。 [深入了解模型計量](how-to-configure-auto-train.md#explore-model-metrics)。
+    主要計量| 用來評分模型的主要計量。 [深入了解模型計量](how-to-configure-auto-train.md#primary-metric)。
     解釋最佳模型 | 選取以啟用或停用，以便顯示建議最佳模型的可解釋性。
     封鎖的演算法| 選取要從訓練作業中排除的演算法。
     結束準則| 當符合其中任何一項準則時，訓練作業即會停止。 <br> 訓練作業時間 (小時)：允許訓練作業執行的時間長度。 <br> 計量分數閾值：所有管線的最低計量分數。 這可確保若擁有想要達到的已定義目標計量，則不會在訓練作業上花費超過必要程度的時間。
     驗證| 選取要在訓練作業中使用的交叉驗證選項。 [深入了解交叉驗證](how-to-configure-cross-validation-data-splits.md#prerequisites)。
     並行| *並行反覆項目上限*：要在訓練作業中測試的管線 (反覆項目) 數量上限。 作業不會執行超過指定數量的反覆項目。
 
-1. 選擇性查看特徵化設定：如果您選擇在 [**其他設定**] 表單中啟用 [**自動特徵化**]，則會套用預設的特徵化技術。 在 [ **View 特徵化] 設定**中，您可以變更這些預設值，並據以進行自訂。 瞭解如何[自訂 featurizations](#customize-featurization)。 
+1.  (選擇性) View 特徵化設定：如果您選擇在 [**其他設定**] 表單中啟用 [**自動特徵化**]，則會套用預設特徵化技術。 在 [ **View 特徵化] 設定**中，您可以變更這些預設值，並據以進行自訂。 瞭解如何[自訂 featurizations](#customize-featurization)。 
 
     ![Azure Machine Learning studio 工作類型表單](media/how-to-use-automated-ml-for-ml-models/view-featurization-settings.png)
 

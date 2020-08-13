@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3973e94c9d3add25dba0af7a6b0c0deb18b77440
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 20a85c17ccd4167b29e167c55df1bd8a8cc4d56e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850435"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185650"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>在 Python 中的 Azure Machine Learning 管線中使用自動化 ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -328,8 +328,9 @@ automl_config = AutoMLConfig(task = 'classification',
 
 train_step = AutoMLStep(name='AutoML_Classification',
     automl_config=automl_config,
-    passthru_automl_config=False,
     outputs=[metrics_data,model_data],
+    enable_default_model_output=False,
+    enable_default_metrics_output=False,
     allow_reuse=True)
 ```
 此程式碼片段會顯示常用於的用法 `AutoMLConfig` 。  (超參數-ish) 更流暢的引數會在個別的字典中指定，而較不可能變更的值則直接在此函式中指定 `AutoMLConfig` 。 在此情況下， `automl_settings` 指定 brief 執行：執行只會在2個反復專案或15分鐘後停止，視何者先發生。
@@ -346,7 +347,7 @@ train_step = AutoMLStep(name='AutoML_Classification',
 `AutoMLStep`本身會採用， `AutoMLConfig` 並以輸出的形式建立用 `PipelineData` 來保存計量和模型資料的物件。 
 
 >[!Important]
-> `passthru_automl_config` `False` 如果您 `AutoMLStep` 使用 `PipelineOutputTabularDataset` 物件進行輸入，您必須將設為。
+> `enable_default_model_output`除非您使用，否則必須將和設定 `enable_default_metrics_output` 為 `False` `AutoMLStep` 。
 
 在此範例中，自動化 ML 程式會在上執行交叉驗證 `training_data` 。 您可以使用引數來控制交叉驗證的數目 `n_cross_validations` 。 如果您已將定型資料分割為數據準備步驟的一部分，您可以將設定 `validation_data` 為自己的 `Dataset` 。
 

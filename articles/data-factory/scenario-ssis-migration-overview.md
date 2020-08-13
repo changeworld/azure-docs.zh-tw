@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 034d1c4dbbb91ad7317ffb56b1fe38e010694c44
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 53085544be9477c03fdbbc27e709bd80dea25b92
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927091"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186058"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>將內部部署 SSIS 工作負載移轉至 ADF 中的 SSIS
 
@@ -53,7 +53,7 @@ DMA 目前支援從**DMA 版本 v 5.0**開始，儲存在**檔案系統**、**�
 
 取得[DMA](https://docs.microsoft.com/sql/dma/dma-overview)，並[使用它來執行您的套件評估](https://docs.microsoft.com/sql/dma/dma-assess-ssis)。
 
-## <a name="migration"></a>遷移
+## <a name="migration"></a>移轉
 
 根據來源 SSIS 封裝的[儲存體類型](#four-storage-types-for-ssis-packages)和資料庫工作負載的遷移目的地 **，遷移 ssis 封裝和**排程 ssis 套件執行**SQL Server Agent 作業**的步驟可能會有所不同。 有兩種案例：
 
@@ -64,10 +64,10 @@ DMA 目前支援從**DMA 版本 v 5.0**開始，儲存在**檔案系統**、**�
 
 | **套件儲存類型** |如何批次處理 SSIS 套件|如何批次處理 SSIS 作業|
 |-|-|-|
-|SSISDB|[遷移**SSISDB**](scenario-ssis-migration-ssisdb-mi.md)|[將 SSIS 作業遷移至 Azure SQL 受控執行個體代理程式](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent)|
-|檔案系統|透過 dtinstall/dtutil/手動複製，將它們重新部署到檔案共用/Azure 檔案儲存體，或保留在檔案系統中，以透過 VNet/自我裝載 IR 來存取。 如需詳細資訊，請參閱[dtutil utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)。|<li> [在 SSMS 中使用 SSIS 作業遷移嚮導](how-to-migrate-ssis-job-ssms.md)進行遷移 <li>透過腳本/SSMS/ADF 入口網站，將它們轉換成 ADF 管線/活動/觸發程式。 如需詳細資訊，請參閱[SSMS 排程功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
+|SSISDB|[遷移**SSISDB**](scenario-ssis-migration-ssisdb-mi.md)|<li>[將 SSIS 作業遷移至 Azure SQL 受控執行個體代理程式](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent) <li>透過腳本/SSMS/ADF 入口網站，將它們轉換成 ADF 管線/活動/觸發程式。 如需詳細資訊，請參閱[SSMS 排程功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
+|檔案系統|透過 dtinstall/dtutil/手動複製，將它們重新部署到檔案共用/Azure 檔案儲存體，或保留在檔案系統中，以透過 VNet/自我裝載 IR 來存取。 如需詳細資訊，請參閱[dtutil utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)。|<li>[將 SSIS 作業遷移至 Azure SQL 受控執行個體代理程式](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent) <li> [在 SSMS 中使用 SSIS 作業遷移嚮導](how-to-migrate-ssis-job-ssms.md)進行遷移 <li>透過腳本/SSMS/ADF 入口網站，將它們轉換成 ADF 管線/活動/觸發程式。 如需詳細資訊，請參閱[SSMS 排程功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
 |SQL Server (MSDB) |透過 SSMS/dtutil 將它們匯出至檔案系統/檔案共用/Azure 檔案儲存體。 如需詳細資訊，請參閱[匯出 SSIS 封裝](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service#import-and-export-packages)。|透過腳本/SSMS/ADF 入口網站，將它們轉換成 ADF 管線/活動/觸發程式。 如需詳細資訊，請參閱[SSMS 排程功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
-|封裝存放區|將它們匯出至 [檔案系統]/[檔案共用]/[透過 SSMS/dtutil Azure 檔案儲存體，或透過 dtinstall/dtutil/手動複製將它們重新部署到檔案共用/Azure 檔案儲存體，或將它們保存在檔案系統中，以透過 VNet/自我裝載 IR 來存取。 如需詳細資訊，請參閱 dtutil utility。 如需詳細資訊，請參閱[dtutil utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)。|透過腳本/SSMS/ADF 入口網站，將它們轉換成 ADF 管線/活動/觸發程式。 如需詳細資訊，請參閱[SSMS 排程功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
+|封裝存放區|將它們匯出至 [檔案系統]/[檔案共用]/[透過 SSMS/dtutil Azure 檔案儲存體，或透過 dtinstall/dtutil/手動複製將它們重新部署到檔案共用/Azure 檔案儲存體，或將它們保存在檔案系統中，以透過 VNet/自我裝載 IR 來存取。 如需詳細資訊，請參閱 dtutil utility。 如需詳細資訊，請參閱[dtutil utility](https://docs.microsoft.com/sql/integration-services/dtutil-utility)。|<li>[將 SSIS 作業遷移至 Azure SQL 受控執行個體代理程式](scenario-ssis-migration-ssisdb-mi.md#ssis-jobs-to-sql-managed-instance-agent) <li> 透過腳本/SSMS/ADF 入口網站，將它們轉換成 ADF 管線/活動/觸發程式。 如需詳細資訊，請參閱[SSMS 排程功能](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms)。|
 
 ### <a name="azure-sql-database-as-database-workload-destination"></a>做為資料庫工作負載目的地**Azure SQL Database**
 

@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 37106517c47c86f4a4a562eebd6d120e31e22334
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a19ced1cb9496bddd1f9aa7ea9e3eb58ba7eea3d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564532"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185684"
 ---
-# <a name="connect-data-from-azure-active-directory-azure-ad"></a>從 Azure Active Directory 連接資料（Azure AD）
+# <a name="connect-data-from-azure-active-directory-azure-ad"></a>將資料從 Azure Active Directory (Azure AD) 
 
 
 
@@ -30,7 +30,7 @@ Azure Sentinel 可讓您從[Azure Active Directory](../active-directory/fundamen
 
 ## <a name="prerequisites"></a>必要條件
 
-- 如果您想要從 Azure AD 匯出登入資料，您必須具有 Azure AD P1 或 P2 授權。
+- 任何 Azure AD 授權 (免費/O365/P1/P2) 可以與 Azure 監視器整合，並將登入記錄內嵌至 Azure Sentinel。 Azure 監視器或 Azure Sentinel 會收取額外的每 gb 費用。
 
 - 在您想要串流處理記錄的租使用者上具有全域管理員或安全性系統管理員許可權的使用者。
 

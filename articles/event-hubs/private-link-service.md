@@ -3,12 +3,12 @@ title: 將 Azure 事件中樞與 Azure Private Link 服務整合
 description: 了解如何將 Azure 事件中樞與 Azure Private Link 服務整合
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 66753e51fd1e918e5659e219c5ebbe471705b3ee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421091"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185463"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>允許透過私人端點存取 Azure 事件中樞命名空間 
 Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取各 Azure 服務 (例如 Azure 事件中樞、Azure 儲存體和 Azure Cosmos DB)，以及 Azure 裝載的客戶/合作夥伴服務。
@@ -18,21 +18,19 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 如需詳細資訊，請參閱[何謂 Azure Private Link？](../private-link/private-link-overview.md)
 
 > [!IMPORTANT]
-> **標準**和**專用**層都支援這項功能。 
-
->[!WARNING]
-> 啟用私人端點可防止其他 Azure 服務與事件中樞互動。
+> **標準**和**專用**層都支援這項功能。 **基本**層不支援此功能。
 >
-> 使用虛擬網路時，不支援信任的 Microsoft 服務。
+> 啟用私人端點可防止其他 Azure 服務與事件中樞互動。  封鎖的要求包括來自其他 Azure 服務、Azure 入口網站及記錄與計量服務等等的要求。 
+> 
+> 以下是啟用私用端點時，無法存取事件中樞資源的一些服務。 請注意，清單並**不**完整。
 >
-> 無法與「虛擬網路」搭配運作的常見 Azure 案例 (請注意，這**不是**完整的清單) -
 > - Azure 串流分析
 > - Azure IoT 中樞路由
 > - Azure IoT Device Explorer
+> - Azure Event Grid
+> - Azure 監視器 (診斷設定) 
 >
-> 虛擬網路上必須有下列 Microsoft 服務
-> - Azure Web Apps
-> - Azure Functions
+> 作為例外狀況，您可以允許從特定信任的服務存取事件中樞資源，即使啟用了私用端點也一樣。 如需信任的服務清單，請參閱[信任的服務](#trusted-microsoft-services)。
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>使用 Azure 入口網站新增私人端點
 
@@ -105,6 +103,10 @@ Azure Private Link 服務可讓您透過虛擬網路中的**私人端點**存取
 12. 確認您可以在端點清單中看見您所建立的私人端點連線。 在此範例中，系統會自動核准私人端點，因為您是連線到您目錄中的 Azure 資源，且您具有足夠的權限。 
 
     ![已建立私人端點](./media/private-link-service/private-endpoint-created.png)
+
+[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+
+若要允許信任的服務存取您的命名空間，請切換至 [**網路**] 頁面上的 [**防火牆和虛擬網路**] 索引標籤，然後針對 [**允許信任的 Microsoft 服務略過此防火牆**] 選取 **[是]** 。 
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>使用 PowerShell 新增私人端點
 下列範例會示範如何使用 Azure PowerShell 來建立私人端點連線。 其不會為您建立專用叢集。 請遵循[此文章](event-hubs-dedicated-cluster-create-portal.md)中的步驟，以建立專用的事件中樞叢集。 

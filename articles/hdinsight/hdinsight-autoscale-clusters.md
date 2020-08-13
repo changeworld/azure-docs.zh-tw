@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 29c04fc8f6af016200e06ad239095a3665de5869
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc294eb1bdfd4a6a8c6ad001c007f83a10983644
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086427"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185803"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
@@ -21,7 +21,7 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
 
 ## <a name="how-it-works"></a>運作方式
 
-自動調整功能使用兩種類型的條件來觸發調整事件：各種叢集效能標準（稱為以*負載為*基礎的調整）和以時間為基礎的觸發程式（稱為以*排程為基礎的調整*）的臨界值。 以負載為基礎的調整會在您設定的範圍內變更叢集中的節點數目，以確保最佳的 CPU 使用量並將執行成本降至最低。 以排程為基礎的調整會根據您與特定日期和時間相關聯的作業，變更叢集中的節點數目。
+自動調整功能使用兩種類型的條件來觸發調整事件：各種叢集效能標準的臨界值 (稱為*載入式調整*) 和以時間為基礎的觸發程式 (稱為以*排程為基礎的調整*) 。 以負載為基礎的調整會在您設定的範圍內變更叢集中的節點數目，以確保最佳的 CPU 使用量並將執行成本降至最低。 以排程為基礎的調整會根據您與特定日期和時間相關聯的作業，變更叢集中的節點數目。
 
 下列影片概述自動調整可解決的挑戰，以及它如何協助您使用 HDInsight 控制成本。
 
@@ -72,12 +72,12 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
 
 下表描述與自動調整功能相容的叢集類型和版本。
 
-| 版本 | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
+| 版本 | Spark | Hive | LLAP | HBase | Kafka | 暴風雨 | ML |
 |---|---|---|---|---|---|---|---|
-| 不含 ESP 的 HDInsight 3。6 | Yes | 是 | 是 | 是* | 否 | 否 | 否 |
-| 不含 ESP 的 HDInsight 4。0 | Yes | 是 | 是 | 是* | 否 | 否 | 否 |
-| 使用 ESP 的 HDInsight 3。6 | Yes | 是 | 是 | 是* | 否 | 否 | 否 |
-| 使用 ESP 的 HDInsight 4。0 | Yes | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不含 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不含 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 使用 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 使用 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
 
 \*HBase 叢集只能針對以排程為基礎的調整進行設定，而非以載入為基礎。
 
@@ -133,7 +133,7 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
 
 #### <a name="load-based-autoscaling"></a>以負載為基礎的自動調整
 
-您可以透過將節點加入至具有屬性的區段，以使用載入型自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集， `autoscale` `computeProfile`  >  `workernode` `minInstanceCount` `maxInstanceCount` 如下列 json 程式碼片段所示。
+您可以透過將節點加入至具有屬性的區段，以使用載入型自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集， `autoscale` `computeProfile`  >  `workernode` `minInstanceCount` `maxInstanceCount` 如下列 json 程式碼片段所示。 如需完整的 resource manager 範本，請參閱[快速入門範本：部署已啟用 Loadbased 自動調整的 Spark](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)叢集。
 
 ```json
 {
@@ -161,7 +161,7 @@ Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，�
 
 #### <a name="schedule-based-autoscaling"></a>以排程為基礎的自動調整
 
-您可以藉由將節點新增至區段，以排程為基礎的自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集 `autoscale` `computeProfile`  >  `workernode` 。 `autoscale`節點包含 `recurrence` 具有 `timezone` 和 `schedule` 的，可描述何時會進行變更。
+您可以藉由將節點新增至區段，以排程為基礎的自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集 `autoscale` `computeProfile`  >  `workernode` 。 `autoscale`節點包含 `recurrence` 具有 `timezone` 和 `schedule` 的，可描述何時會進行變更。 如需完整的 resource manager 範本，請參閱[部署 Spark 叢集並啟用以排程為基礎的自動](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)調整。
 
 ```json
 {
@@ -259,6 +259,6 @@ Azure 入口網站中所列的叢集狀態可協助您監視自動調整活動�
 
 請不要將叢集調整為少於三個節點。 將您的叢集調整至少於三個節點，可能會導致它因為檔案複寫不完整而停滯于安全模式。  如需詳細資訊，請參閱[在安全模式中停滯](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
 
-## <a name="next-steps"></a>下一步
+## <a name="next-steps"></a>後續步驟
 
 閱讀[調整指導方針](hdinsight-scaling-best-practices.md)中的手動調整叢集的指導方針

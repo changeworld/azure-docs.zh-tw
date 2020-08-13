@@ -1,17 +1,17 @@
 ---
 title: 如何關閉 Microsoft Azure FXT Edge 檔案管理工具單位
-description: Azure FXT Edge 檔案管理工具節點的啟動和安全關機程式
+description: 瞭解使用「叢集控制台」軟體啟動和安全關閉 Azure FXT Edge 檔案管理工具節點的程式。
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 92364de82bc3de8229eced4ee02997a27afbde45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d597d5d1e86a2ea13363bc270fb55304d77dee5c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506407"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184868"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>如何安全地關閉 Azure FXT Edge 檔案管理工具硬體的電源
 
@@ -28,7 +28,7 @@ ms.locfileid: "85506407"
 
 請遵循這些指示來安全地關閉 Azure FXT Edge 檔案管理工具節點：
 
-1. 登入叢集控制台。 （[開啟 [設定] 頁面中的](fxt-cluster-create.md#open-the-settings-pages)指示）
+1. 登入叢集控制台。 [開啟 [設定] 頁面中的](fxt-cluster-create.md#open-the-settings-pages) (指示) 
 1. 按一下 [**設定**] 索引標籤，然後**載入 [叢集**  >  **FXT 節點**] 頁面。
 1. 在叢集節點清單中，找出您想要關閉的節點。 按一下 [**動作**] 資料行中的 [**關閉電源**] 按鈕。 
 1. 請稍候片刻。 節點將會關閉，並關閉其電源。

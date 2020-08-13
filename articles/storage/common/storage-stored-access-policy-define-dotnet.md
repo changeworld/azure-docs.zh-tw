@@ -10,12 +10,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a08929c4affbd6eeb4d66a82d787ec5eba122e5b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c9c267097f681a78ba940283096b2c18d692e9cc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903760"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185361"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>使用 .NET 建立預存存取原則
 
@@ -41,7 +41,7 @@ ms.locfileid: "87903760"
 
 下列程式碼範例會在容器上建立預存存取原則。 您可以使用存取原則，對於容器上的服務 SAS 或其 Blob 指定條件約束。
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 若要在 .NET 用戶端程式庫12版的容器上建立預存存取原則，以進行 Azure 儲存體，請呼叫下列其中一個方法：
 
@@ -92,7 +92,7 @@ async static Task CreateStoredAccessPolicyAsync(string containerName)
 }
 ```
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 若要在 .NET 用戶端程式庫12版的容器上建立預存存取原則，以進行 Azure 儲存體，請呼叫下列其中一個方法：
 
@@ -125,7 +125,7 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ---
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [使用 (SAS 的共用存取簽章，授與 Azure 儲存體資源的有限存取權) ](storage-sas-overview.md)
 - [定義預存的存取原則](/rest/api/storageservices/define-stored-access-policy)

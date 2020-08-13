@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463530"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185276"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中建立和管理 Blob 快照集
 
@@ -24,7 +24,7 @@ ms.locfileid: "84463530"
 
 ## <a name="create-a-snapshot"></a>建立快照集
 
-# <a name="net-version-12x"></a>[.NET 版本 12. x](#tab/v12)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本5.x 建立區塊 blob 的快照集，請使用下列其中一種方法：
 
@@ -77,7 +77,7 @@ private static async Task CreateBlockBlobSnapshot(string accountName, string con
 }
 ```
 
-# <a name="net-version-11x"></a>[.NET 版本 11. x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本 11. x 建立區塊 blob 的快照集，請使用下列其中一種方法：
 
@@ -126,7 +126,7 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 若要刪除 blob，您必須先刪除該 blob 的任何快照集。 您可以個別刪除快照集，或指定在刪除來源 Blob 時刪除所有的快照集。 如果您嘗試刪除仍具有快照集的 Blob，則會發生錯誤。
 
-# <a name="net-version-12x"></a>[.NET 版本 12. x](#tab/v12)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本5.x 來刪除 blob 及其快照集，請使用下列其中一種方法，並包含[DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption)列舉：
 
@@ -135,13 +135,13 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 - [DeleteIfExists](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexists)
 - [Cloudblobcontainer.deleteifexistsasync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.deleteifexistsasync)
 
-下列程式碼範例示範如何在 .NET 中刪除 blob 及其快照集，其中 `blobClient` 是[BlobClient](/dotnet/api/azure.storage.blobs.blobclient)類型的物件）：
+下列程式碼範例顯示如何在 .NET 中刪除 blob 及其快照集，其中 `blobClient` 是[BlobClient](/dotnet/api/azure.storage.blobs.blobclient)類型的物件) ：
 
 ```csharp
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
 ```
 
-# <a name="net-version-11x"></a>[.NET 版本 11. x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 若要使用適用于 .NET 的 Azure 儲存體用戶端程式庫版本 11. x 刪除 blob 及其快照集，請使用下列其中一種 blob 刪除方法，並包含[DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption)列舉：
 
@@ -161,5 +161,5 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 ## <a name="next-steps"></a>後續步驟
 
 - [Blob 快照集](snapshots-overview.md)
-- [Blob 版本（預覽）](versioning-overview.md)
+- [Blob 版本 (預覽) ](versioning-overview.md)
 - [Blob 的虛刪除](storage-blob-soft-delete.md)

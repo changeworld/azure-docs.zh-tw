@@ -3,7 +3,7 @@ title: Azure 背書的散發套件
 description: 了解在 Azure 背書散發套件上的 Linux，包括 Ubuntu、CentOS、Oracle 和 SUSE 的準則。
 services: virtual-machines-linux
 documentationcenter: ''
-author: gbowerman
+author: danielsollondon
 manager: gwallace
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: fd21170c4edc1ed0587ea4d4e067e61590530623
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 83a5289e17243fc7d89dd463b10916fb73046947
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283311"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184987"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 上背書的 Linux 散發套件
 
@@ -50,7 +50,7 @@ Azure 要求經背書的 Linux 散發套件發行者定期以最新的修補程�
 
 ## <a name="azure-tuned-kernels"></a>Azure 微調的核心
 
-Azure 與各種經背書的 Linux 散發套件密切合作，將其發佈至 Azure Marketplace 的映射優化。 此共同作業的其中一個層面是開發已針對 Azure 平臺優化的「微調」 Linux 核心，並以 Linux 散發套件的完整支援元件來提供。 Azure 微調的核心結合了新功能和效能改進，而且相較于散發所提供的預設或一般核心，速度更快（通常是每季）。
+Azure 與各種經背書的 Linux 散發套件密切合作，將其發佈至 Azure Marketplace 的映射優化。 此共同作業的其中一個層面是開發已針對 Azure 平臺優化的「微調」 Linux 核心，並以 Linux 散發套件的完整支援元件來提供。 Azure 微調的核心結合了新功能和效能改進，而且速度更快 (通常每季) 步調，相較于散發所提供的預設或一般核心。
 
 在大部分情況下，您會發現這些核心已預先安裝在 Azure Marketplace 的預設映射中，因此客戶會立即獲得這些優化核心的優勢。 這些 Azure 微調核心的詳細資訊可在下列連結中找到：
 
@@ -64,16 +64,24 @@ Azure 與各種經背書的 Linux 散發套件密切合作，將其發佈至 Azu
 ### <a name="coreos"></a>CoreOS
 
 CoreOS 已排程為在2020的5月26日[結束生命週期](https://coreos.com/os/eol/)。
-Microsoft 有兩個（2） CoreOS 使用者的遷移通道。
+Microsoft 有兩個 (2) CoreOS 使用者的遷移通路。
 
-- Flatcar by Kinvolk （請參閱「Flatcar Container Linux by Kinvolk」專案）。
-- [Fedora 核心作業系統](https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-azure/)（客戶必須上傳自己的映射。 以下是[遷移檔](https://docs.fedoraproject.org/en-US/fedora-coreos/migrate-cl/)）。
+- Flatcar by Kinvolk (查看「Flatcar Container Linux by Kinvolk」專案。 ) 
+- [Fedora 核心作業系統](https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-azure/) (客戶必須上傳自己的映射。 以下是) 的[遷移檔](https://docs.fedoraproject.org/en-US/fedora-coreos/migrate-cl/)。
 
 ### <a name="credativ"></a>Credativ
 
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
 Credativ 是一家獨立的顧問暨服務公司，專長為使用免費的軟體來開發和實作專業解決方案。 作為業界領先的開放原始碼專家，Credativ 的支援受到許多 IT 部門所採用，從而在國際上享有認可。 Credativ 目前與 Microsoft 合作，正準備適用於 Debian 8 (Jessie) 與 7 之前的 Debian (Wheezy) 的 Debian 映像。 這兩個映像都是專為在 Azure 上執行並可透過平台輕鬆管理所設計。 Credativ 也透過其開放原始碼支援中心，長期支援維護與更新適用於 Azure 的 Debian 映像。
+
+### <a name="kinvolk"></a>Kinvolk
+[https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
+
+Kinvolk 是 Flatcar 容器 Linux 背後的公司，針對容器化應用程式繼續進行最基本、不可變和自動更新的原始 CoreOS 願景。 最基本的散發版本是，Flatcar 只包含部署容器所需的套件。 它的不可變檔案系統保證一致性和安全性，而其自動更新功能可讓您隨時掌握最新的安全性修正程式。 
+
+Flatcar Container Linux 是由 Kinvolk 的全球 Linux 團隊和容器技術專家所備份，其提供選擇性的商業支援訂用帳戶，其中包含全天候的回應、安全性和技術警示，以及專屬的 Azure 優化映射，包括長期支援通道。
+
 
 ### <a name="oracle"></a>Oracle
 

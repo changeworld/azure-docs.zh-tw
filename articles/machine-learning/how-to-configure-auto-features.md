@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 94595bac2febdef1d3739703f0fa49c9ef15f218
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: a5eb24b5420431a43afa2ffd006ac821f0e907c9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166615"
+ms.locfileid: "88185752"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動化機器學習服務中的特徵化
 
@@ -28,6 +28,8 @@ ms.locfileid: "88166615"
 - 如何為您的[自動化機器學習實驗](concept-automated-ml.md)自訂這些功能。
 
 *特色工程*是使用資料的領域知識來建立功能的程式，以協助機器學習服務 (ML) 演算法更進一步瞭解。 在 Azure Machine Learning 中，會套用資料調整和正規化技術，讓特性工程更容易。 這些技術和這項功能工程統稱是*特徵化*在自動化機器學習或*AutoML*實驗中。
+
+## <a name="prerequisites"></a>必要條件
 
 本文假設您已經知道如何設定 AutoML 實驗。 如需設定的相關資訊，請參閱下列文章：
 
@@ -45,7 +47,7 @@ ms.locfileid: "88166615"
 
 下表顯示 `featurization` [AutoMLConfig 類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)中已接受的設定：
 
-|特徵化設定 | 描述|
+|特徵化設定 | Description|
 ------------- | ------------- |
 |`"featurization": 'auto'`| 指定在前置處理過程中，[資料護欄和特徵化步驟](#featurization)會自動完成。 這項設定是預設值。|
 |`"featurization": 'off'`| 指定不會自動執行特徵化步驟。|
@@ -60,13 +62,13 @@ ms.locfileid: "88166615"
 > [!NOTE]
 > 如果您打算將 AutoML 建立的模型匯出至[ONNX 模型](concept-onnx.md)，ONNX 格式僅支援以星號表示的特徵化選項 ( "*" ) 。 深入了解[將模型轉換為 ONNX](concept-automated-ml.md#use-with-onnx)。
 
-|特徵化 &nbsp; 步驟| 描述 |
+|特徵化 &nbsp; 步驟| Description |
 | ------------- | ------------- |
 |**捨棄高基數或無變異數功能*** |從定型和驗證集卸載這些功能。 適用于所有遺漏值的功能，在所有資料列中具有相同的值，或具有高基數 (例如，) 的雜湊、識別碼或 Guid。|
 |**插補遺漏值*** |對於數值特徵，請插補資料行中值的平均值。<br/><br/>針對類別特徵，請插補最常出現的值。|
-|**產生其他功能*** |針對 DateTime 特徵：年、月、日、星期幾、幾月幾日、季、第幾週、小時、分鐘、秒。<br><br> *針對預測工作，* 會建立這些額外的日期時間功能： ISO Year、半年半年度、日曆月份（如字串）、周、一周中的星期幾、年中的日、上午/下午 (0，如果小時在下午 (12) ，則為1，) 否則為 (12hr 基礎) <br/><br/>針對文字功能：根據 unigrams、bigrams 和 trigrams 的詞彙頻率。 深入瞭解[如何使用經理 bert 完成此作業。](#bert-integration)|
+|**產生其他功能*** |針對 DateTime 特徵：年、月、日、星期幾、幾月幾日、季、第幾週、小時、分鐘、秒。<br><br> *針對預測工作，* 會建立這些額外的日期時間功能： ISO Year、半年中的行事曆月份、字串、周、一周中的日、年中的日、上午/下午 (0，如果小時在下午 (12) ，則為1，) 否則為 (12 小時的一天) <br/><br/>針對文字功能：根據 unigrams、bigrams 和 trigrams 的詞彙頻率。 深入瞭解[如何使用經理 bert 完成此作業。](#bert-integration)|
 |**轉換和編碼***|將具有幾個唯一值的數值特徵轉換成類別功能。<br/><br/>一種經常性編碼用於低基數分類功能。 一種經常性雜湊編碼用於高基數類別功能。|
-|**字組內嵌**|文字 featurizer 會使用預先定型模型，將文字標記的向量轉換成句子向量。 檔中每個單字的內嵌向量都會與其余部分匯總，以產生檔功能向量。|
+|**字組內嵌**|文字 featurizer 會使用預先定型的模型，將文字標記的向量轉換成句子向量。 檔中每個單字的內嵌向量都會與其余部分匯總，以產生檔功能向量。|
 |**目標編碼**|針對分類功能，此步驟會將每個類別對應至回歸問題的平均目標值，並針對分類問題的每個類別，將其設為類別的機率。 會套用以頻率為基礎的加權和 k 折迭交叉驗證，以減少稀疏資料類別所造成之對應和雜訊的過度學習。|
 |**文字目標編碼**|針對文字輸入，會使用具備文字袋 (bag-of-words) 的堆疊線性模型來產生每個類別其機率。|
 |**證據權數 (WoE)**|將 WoE 作為類別資料行相互關聯與目標資料行相互關聯的量值計算。 WoE 是以類別與類別外機率的比率記錄來計算。 此步驟會針對每個類別產生一個數值特徵資料行，而不需要明確插補遺漏值和極端值處理。|
@@ -120,7 +122,7 @@ ms.locfileid: "88166615"
 
 |自訂|定義|
 |--|--|
-|**資料行用途更新**|針對指定的資料行覆寫自動偵測的功能類型。|
+|**資料行用途更新**|覆寫指定之資料行的 autodetected 功能類型。|
 |**轉換器參數更新** |更新指定之轉換器的參數。 目前支援*Imputer* (平均值、最常值和中位數) 和*HashOneHotEncoder*。|
 |**卸除資料行** |指定要從特徵化中捨棄的資料行。|
 |**區塊轉換器**| 指定要在特徵化進程中使用的區塊轉換器。|
@@ -140,34 +142,196 @@ featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "m
 featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
 ```
 
-## <a name="bert-integration"></a>經理 BERT 整合 
-[經理 bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657)用於自動化 ML 的特徵化層。 在這一層中，我們會偵測資料行是否包含任意文字或其他類型的資料，例如時間戳記或簡單數位，我們會據此來進行特徵化。 針對經理 BERT，我們會利用使用者提供的標籤來微調/定型模型，然後我們會輸出檔案內嵌 (經理 BERT 這些是與特殊的 [CLS] 權杖相關聯的最終隱藏狀態，) 與其他功能（例如，以時間戳記為基礎的 (功能），像是在一周中的日期) 或許多一般資料集所擁有的數位。 
+## <a name="featurization-transparency"></a>特徵化透明度
 
-若要啟用經理 BERT，您應該使用 GPU 計算來進行定型。 如果使用 CPU 計算，則 AutoML 會啟用 BiLSTM DNN featurizer，而不是經理 BERT。 為了叫用經理 BERT，您必須在 automl_settings 中設定 "enable_dnn： True"，並使用 GPU 計算 (例如 vm_size = "STANDARD_NC6" 或較高的 GPU) 。 如需範例，請參閱[此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)。
+每個 AutoML 模型都已自動套用特徵化。  特徵化包括) 和調整和正規化時 (自動化的功能工程 `"featurization": 'auto'` ，這會影響選取的演算法及其超參數值。 AutoML 支援不同的方法，以確保您能夠查看已套用至模型的內容。
 
-AutoML 會採取下列步驟，在經理 BERT 的情況下 (請注意，您必須在 automl_settings 中設定 "enable_dnn： True"，這些專案才會) ：
+請考慮這個預測範例：
 
-1. 前置處理包括所有文字資料行的 token 化 (您會在最終模型的特徵化摘要中看到 "StringCast" 轉換器。 請造訪[此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)以瞭解如何使用方法產生模型的特徵化摘要的範例 `get_featurization_summary()` 。
++ 有四種輸入功能： (數值) 、B (數值) 、C (數值) 、D (DateTime) 。
++ 數值特徵 C 已卸載，因為它是具有所有唯一值的識別碼資料行。
++ 數值特徵 A 和 B 具有遺漏值，因此會插補平均值。
++ DateTime 功能 D 特徵化為11個不同的工程功能。
+
+若要取得此資訊，請使用 `fitted_model` 自動化 ML 實驗執行的輸出。
 
 ```python
-text_transformations_used = []
-for column_group in fitted_model.named_steps['datatransformer'].get_featurization_summary():
-    text_transformations_used.extend(column_group['Transformations'])
-text_transformations_used
+automl_config = AutoMLConfig(…)
+automl_run = experiment.submit(automl_config …)
+best_run, fitted_model = automl_run.get_output()
+```
+### <a name="automated-feature-engineering"></a>自動化特徵工程 
+會傳回 `get_engineered_feature_names()` 工程化功能名稱的清單。
+
+  >[!Note]
+  >對於「預測」工作，請使用 'timeseriestransformer'，對於「迴歸」或「分類」工作則使用 'datatransformer'。
+
+  ```python
+  fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
+  ```
+
+此清單包含所有工程特徵名稱。 
+
+  ```
+  ['A', 'B', 'A_WASNULL', 'B_WASNULL', 'year', 'half', 'quarter', 'month', 'day', 'hour', 'am_pm', 'hour12', 'wday', 'qday', 'week']
+  ```
+
+會 `get_featurization_summary()` 取得所有輸入功能的特徵化摘要。
+
+  ```python
+  fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+  ```
+
+輸出
+
+  ```
+  [{'RawFeatureName': 'A',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 2,
+    'Tranformations': ['MeanImputer', 'ImputationMarker']},
+   {'RawFeatureName': 'B',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 2,
+    'Tranformations': ['MeanImputer', 'ImputationMarker']},
+   {'RawFeatureName': 'C',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'Yes',
+    'EngineeredFeatureCount': 0,
+    'Tranformations': []},
+   {'RawFeatureName': 'D',
+    'TypeDetected': 'DateTime',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 11,
+    'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
+  ```
+
+   |輸出|定義|
+   |----|--------|
+   |RawFeatureName|提供的資料集中的輸入特徵/資料行名稱。|
+   |TypeDetected|偵測到輸入特徵的資料類型。|
+   |Dropped|指出是已卸除還是使用了輸入特徵。|
+   |EngineeringFeatureCount|透過自動化特徵工程轉換而產生的特徵數目。|
+   |轉換|套用至輸入特徵以產生工程特徵的轉換清單。|
+
+### <a name="scaling-and-normalization"></a>調整和正規化
+
+若要瞭解縮放/正規化和選取的演算法及其超參數值，請使用 `fitted_model.steps` 。 
+
+以下是 `fitted_model.steps` 針對所選執行執行的範例輸出：
+
+```
+[('RobustScaler', 
+  RobustScaler(copy=True, 
+  quantile_range=[10, 90], 
+  with_centering=True, 
+  with_scaling=True)), 
+
+  ('LogisticRegression', 
+  LogisticRegression(C=0.18420699693267145, class_weight='balanced', 
+  dual=False, 
+  fit_intercept=True, 
+  intercept_scaling=1, 
+  max_iter=100, 
+  multi_class='multinomial', 
+  n_jobs=1, penalty='l2', 
+  random_state=None, 
+  solver='newton-cg', 
+  tol=0.0001, 
+  verbose=0, 
+  warm_start=False))
 ```
 
-2. 將所有文字資料行串連成單一文字資料行，因此您會在最終模型中看到 "StringConcatTransformer"。 
+若要取得更多詳細資料，請使用此協助程式函式： 
 
-> [!NOTE]
-> 我們的經理 BERT 的執行會將定型樣本的總文字長度限制為128個權杖。 也就是說，串連時，所有的文字資料行最理想的長度應該是128個權杖。 理想的情況是，如果有多個資料行，則應該將每個資料行剪除，這樣就能滿足這種情況。 比方說，如果資料中有兩個文字資料行，則兩個文字資料行都應該剪除為 64 token， (假設您想要在最後一個串連的文字資料行中，將這兩個數據行平均呈現) ，然後才將資料摘要至 AutoML。 針對長度 >128 token 的串連資料行，經理 BERT 的 tokenizer 層會將此輸入截斷為 128 token。
+```python
+from pprint import pprint
 
-3. 在此功能清除步驟中，AutoML 會比較經理 BERT 與) 在資料範例上之單字 (包的基準，並判斷經理 BERT 是否會提供精確度的改善。 如果判斷經理 BERT 的執行效果優於基準，AutoML 就會使用經理 BERT 做為文字特徵化的最佳特徵化策略，並繼續 featurizing 整個資料。 在這種情況下，您會在最終模型中看到 "PretrainedTextDNNTransformer"。
+def print_model(model, prefix=""):
+    for step in model.steps:
+        print(prefix + step[0])
+        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
+            pprint({'estimators': list(
+                e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            print()
+            for estimator in step[1].estimators:
+                print_model(estimator[1], estimator[0] + ' - ')
+        else:
+            pprint(step[1].get_params())
+            print()
 
-經理 BERT 通常會比其他大部分的有長執行時間。 藉由在您的叢集中提供更多計算，即可加速。 AutoML 會將經理 BERT 訓練散發到多個節點（如果有的話） (最多8個節點) 。 將[max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)設定為大於1，即可完成這項作業。 為了達到較佳的效能，我們建議使用具有 RDMA 功能的 sku (例如 "STANDARD_NC24r" 或 "STANDARD_NC24rs_V3" ) 
+print_model(model)
+```
+
+此 helper 函式會使用 `LogisticRegression with RobustScalar` 做為特定的演算法，傳回特定執行的下列輸出。
+
+```
+RobustScaler
+{'copy': True,
+'quantile_range': [10, 90],
+'with_centering': True,
+'with_scaling': True}
+
+LogisticRegression
+{'C': 0.18420699693267145,
+'class_weight': 'balanced',
+'dual': False,
+'fit_intercept': True,
+'intercept_scaling': 1,
+'max_iter': 100,
+'multi_class': 'multinomial',
+'n_jobs': 1,
+'penalty': 'l2',
+'random_state': None,
+'solver': 'newton-cg',
+'tol': 0.0001,
+'verbose': 0,
+'warm_start': False}
+```
+
+### <a name="predict-class-probability"></a>預測類別機率
+
+使用自動化 ML 產生的模型都有包裝函式物件，會從其開放原始碼原始類別中鏡像處理功能。 自動化 ML 傳回的分類模型包裝函式物件大多會執行 `predict_proba()` 函式，而接受特徵 (X 值) 的類陣列或疏鬆矩陣資料範例，並傳回每個範例及其個別類別機率的 N 維陣列。
+
+假設您已使用前述的相同呼叫來擷取最佳執行和適合的模型，您可以直接從適當的模型呼叫 `predict_proba()`，並根據模型類型，以適當的格式提供 `X_test` 範例。
+
+```python
+best_run, fitted_model = automl_run.get_output()
+class_prob = fitted_model.predict_proba(X_test)
+```
+
+如果基礎模型不支援 `predict_proba()` 函式，或格式不正確，則會擲回模型類別特定的例外狀況。 如需如何對不同的模型類型實作此函式的範例，請參閱 [RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) 和 [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) 參考文件。
+
+## <a name="bert-integration"></a>經理 BERT 整合
+
+[經理 bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657)用於 AutoML 的特徵化層。 在此圖層中，如果資料行包含任意文字或其他類型的資料，例如時間戳記或簡單數位，則會據以套用特徵化。
+
+針對經理 BERT，此模型會進行微調，並利用使用者提供的標籤進行定型。 從這裡開始，檔內嵌會與其他功能一起輸出，例如以時間戳記為基礎的功能、一周中的日。 
+
+
+### <a name="bert-steps"></a>經理 BERT 步驟
+
+若要叫用經理 BERT，您必須 `enable_dnn: True` 在 automl_settings 中設定，並使用 gpu 計算 (例如 `vm_size = "STANDARD_NC6"` ，或較高的 gpu) 。 如果使用 CPU 計算，則 AutoML 會啟用 BiLSTM DNN featurizer，而不是經理 BERT。
+
+AutoML 會針對經理 BERT 採取下列步驟。 
+
+1. **所有文字資料行的**前置處理和 token 化。 例如，您可以在最終模型的特徵化摘要中找到 "StringCast" 轉換器。 您可以在[此筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)中找到如何產生模型的特徵化摘要的範例。
+
+2. 將**所有文字資料行串連成單一文字資料行**，因此 `StringConcatTransformer` 在最終模型中為。 
+
+    我們的經理 BERT 的執行會將定型樣本的總文字長度限制為128個權杖。 也就是說，串連時，所有的文字資料行最理想的長度應該是128個權杖。 如果有多個資料行，則應該將每個資料行剪除，以便滿足此條件。 否則，針對長度 >128 token 的串連資料行，經理 BERT 的 tokenizer 層會將此輸入截斷為 128 token。
+
+3. **在功能清除的過程中，AutoML 會比較經理 BERT 與資料範例上) 之單字 (包的基準。** 這項比較會判斷經理 BERT 是否能提供精確度的改善。 如果經理 BERT 的執行效果優於基準，AutoML 會針對整個資料使用經理 BERT 的文字特徵化。 在這種情況下，您會 `PretrainedTextDNNTransformer` 在最終模型中看到。
+
+經理 BERT 通常會比其他有長的執行時間。 為了達到較佳的效能，我們建議針對其 RDMA 功能使用 "STANDARD_NC24r" 或 "STANDARD_NC24rs_V3"。 
+
+AutoML 會將經理 BERT 訓練散發到多個節點（如果有的話） (最多八個節點) 。 將 `AutoMLConfig` 參數設定為大於1，即可在您的物件中完成這項作業 `max_concurrent_iterations` 。 
+### <a name="supported-languages"></a>支援的語言
 
 AutoML 目前支援大約100語言，而視資料集的語言而定，AutoML 會選擇適當的經理 BERT 模型。 對於德文的資料，我們使用德文經理 BERT 模型。 若是英文，我們使用英文經理 BERT 模型。 針對所有其他語言，我們會使用多語系經理 BERT 模型。
 
-在下列程式碼中，會觸發德文經理 BERT 模型，因為資料集語言已指定為 ' deu '，而德文的3個字母語言代碼是根據[ISO 分類](https://iso639-3.sil.org/code/deu)：
+在下列程式碼中，會觸發德文經理 BERT 模型，因為已根據 ISO 分類，將資料集語言指定為 `deu` ，德文的三個[ISO classification](https://iso639-3.sil.org/code/deu)字母語言代碼：
 
 ```python
 from azureml.automl.core.featurization import FeaturizationConfig

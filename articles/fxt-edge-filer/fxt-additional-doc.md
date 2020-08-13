@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge 檔案管理工具-其他檔
-description: 適用于 Azure FXT Edge 檔案管理工具安裝的其他參考檔
+description: 其他參考檔可協助您瞭解及使用 Microsoft Azure FXT Edge 檔案管理工具混合式快取。
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 4fe2867343f07a7b1a7dd3d8eb2b44dd1ec1e271
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 314d745072d33fecd8fbf9eafe543fd0d52fe3cb
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086535"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185769"
 ---
 # <a name="additional-documentation-for-azure-fxt-edge-filer"></a>Azure FXT Edge 檔案管理工具的其他檔
 

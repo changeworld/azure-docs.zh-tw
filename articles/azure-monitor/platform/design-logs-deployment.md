@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 3a6afd42c12a523523b45861b38b323fa680ecab
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8b74fa39c47f9032e57d2b6630be1a3ef45990a3
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317279"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185174"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>設計 Azure 監視器記錄部署
 
@@ -58,11 +58,11 @@ Log Analytics 工作區提供：
 
 ## <a name="access-control-overview"></a>存取控制概觀
 
-使用角色型存取控制（RBAC），您可以只授與使用者和群組使用工作區中的監視資料所需的存取權數量。 這可讓您使用單一工作區，將收集到的資料儲存在所有資源上，以配合您的 IT 組織作業模型。 例如，您將存取權授與您負責裝載于 Azure 虛擬機器（Vm）上之基礎結構服務的小組，因此他們只能存取 Vm 所產生的記錄。 這會遵循我們的新資源內容記錄模型。 此模型的基礎是針對 Azure 資源所發出的每個記錄檔記錄，它會自動與此資源相關聯。 記錄會轉送到中央工作區，以根據資源來遵循範圍和 RBAC。
+使用角色型存取控制 (RBAC) ，您可以只授與使用者和群組在工作區中使用監視資料所需的存取權。 這可讓您使用單一工作區，將收集到的資料儲存在所有資源上，以配合您的 IT 組織作業模型。 例如，您將存取權授與負責裝載于 Azure 虛擬機器上的基礎結構服務 (Vm) 的許可權，因此他們只能存取 Vm 所產生的記錄。 這會遵循我們的新資源內容記錄模型。 此模型的基礎是針對 Azure 資源所發出的每個記錄檔記錄，它會自動與此資源相關聯。 記錄會轉送到中央工作區，以根據資源來遵循範圍和 RBAC。
 
 使用者可以存取的資料是由下表所列的因素組合所決定。 以下各節將說明每個步驟。
 
-| 因數 | 說明 |
+| 因素 | Description |
 |:---|:---|
 | [存取模式](#access-mode) | 使用者用來存取工作區的方法。  定義可用資料的範圍，以及套用的存取控制模式。 |
 | [存取控制模式](#access-control-mode) | 在工作區上設定，以定義是否要在工作區或資源層級套用許可權。 |
@@ -100,7 +100,7 @@ Azure 監視器會根據您執行記錄搜尋的內容，自動決定正確的�
 | 問題 | 工作區-內容 | 資源內容 |
 |:---|:---|:---|
 | 每個模型的用途為何？ | 管理中心。 需要設定資料收集的系統管理員，以及需要存取各種資源的使用者。 目前也需要存取 Azure 外部資源的記錄。 | 應用程式小組。 受監視的 Azure 資源系統管理員。 |
-| 使用者需要什麼才能查看記錄？ | 工作區的許可權。 請參閱[使用工作區許可權來管理存取權](manage-access.md#manage-access-using-workspace-permissions)中的**工作區許可權**。 | 資源的讀取權限。 請參閱[使用 Azure 許可權來管理存取權](manage-access.md#manage-access-using-azure-permissions)中的**資源許可權**。 許可權可以是繼承的（例如，從包含的資源群組），或直接指派給資源。 系統將會自動指派資源的記錄許可權。 |
+| 使用者需要什麼才能查看記錄？ | 工作區的許可權。 請參閱[使用工作區許可權來管理存取權](manage-access.md#manage-access-using-workspace-permissions)中的**工作區許可權**。 | 資源的讀取權限。 請參閱[使用 Azure 許可權來管理存取權](manage-access.md#manage-access-using-azure-permissions)中的**資源許可權**。 許可權可以繼承 (例如，從包含的資源群組) 或直接指派給資源。 系統將會自動指派資源的記錄許可權。 |
 | 許可權的範圍為何？ | 區域. 具有工作區存取權的使用者可以從他們有許可權的資料表查詢工作區中的所有記錄。 請參閱[資料表存取控制](manage-access.md#table-level-rbac) | Azure 資源。 使用者可以從任何工作區查詢可存取的特定資源、資源群組或訂用帳戶的記錄，但無法查詢其他資源的記錄。 |
 | 使用者存取記錄的方式為何？ | <ul><li>從**Azure 監視器**] 功能表啟動**記錄**。</li></ul> <ul><li>從**Log Analytics 工作區**啟動**記錄**。</li></ul> <ul><li>從 Azure 監視器活頁[簿](../visualizations.md#workbooks)。</li></ul> | <ul><li>從 Azure 資源的功能表啟動**記錄**</li></ul> <ul><li>從**Azure 監視器**] 功能表啟動**記錄**。</li></ul> <ul><li>從**Log Analytics 工作區**啟動**記錄**。</li></ul> <ul><li>從 Azure 監視器活頁[簿](../visualizations.md#workbooks)。</li></ul> |
 
@@ -127,17 +127,25 @@ Azure 監視器會根據您執行記錄搜尋的內容，自動決定正確的�
 
 ## <a name="ingestion-volume-rate-limit"></a>內嵌磁片區速率限制
 
-Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 預設的 [攝取速率] 閾值會設定為每個工作區**6 GB/分鐘**。 這是估計值，因為根據記錄長度和其壓縮比率，實際大小可能會在資料類型之間有所不同。 此限制不適用於從代理程式或[資料收集器 API](data-collector-api.md)傳送的資料。
+Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 磁片區速率限制是為了保護客戶在多組織使用者管理環境中突然激增的尖峰 Azure 監視器。 預設的內嵌磁片區速率閾值 500 MB (壓縮的) 適用于工作空間，大約是**6 GB/分鐘**未壓縮--根據記錄長度和其壓縮比率，實際大小可能會在資料類型之間有所不同。 此閾值適用于所有的內嵌資料，不論是使用[診斷設定](diagnostic-settings.md)、[資料收集器 API](data-collector-api.md)或代理程式從 Azure 資源傳送。
 
-如果您以較高的速率將資料傳送至單一工作區，則會卸載某些資料，並每隔6小時將事件傳送至工作區中的*作業資料表，* 而臨界值會繼續超過閾值。 如果您的內嵌磁片區持續超過速率限制，或您希望很快就會到達，您可以傳送電子郵件至 LAIngestionRate@microsoft.com 或開啟支援要求，以要求增加您的工作區。
- 
-若要在您的工作區中收到這類事件的通知，請使用下列查詢建立[記錄警示規則](alerts-log.md)，並以大於的結果數目為零的警示邏輯基底。
+當您將資料傳送到工作區時，在工作區中設定的閾值高於80% 時，每隔6小時會將一個事件傳送至工作區中的*作業資料表，* 而閾值會繼續超過。 當內嵌的 [磁片區速率] 高於 [閾值] 時，會卸載某些資料，並每隔6小時將一個事件傳送至工作區中的*作業資料表，* 而閾值會繼續超過。 如果您的擴大磁片區速率持續超過閾值，或您希望很快就會到達，您可以藉由開啟支援要求，要求在您的工作區中增加它。 
 
-``` Kusto
+若要在您的工作區中收到這類事件的通知，請使用下列查詢建立[記錄警示規則](alerts-log.md)，並以大於的結果數目為零、5分鐘的評估期和5分鐘的頻率。
+
+已達80% 閾值的內嵌磁片區速率：
+```Kusto
 Operation
 |where OperationCategory == "Ingestion"
-|where Detail startswith "The rate of data crossed the threshold"
-``` 
+|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+```
+
+已達到內嵌磁片區速率閾值：
+```Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The data ingestion volume rate crossed the threshold"
+```
 
 
 ## <a name="recommendations"></a>建議
@@ -161,7 +169,7 @@ Operation
 * 識別授與應用程式小組資源的存取權，並在開發環境中進行測試，然後才在生產環境中執行。
 * 設定工作區以啟用 [**使用資源] 或 [工作區] 許可權**。
 * 移除應用程式小組讀取和查詢工作區的許可權。
-* 啟用和設定任何監視解決方案，例如容器和/或適用於 VM 的 Azure 監視器的 Azure 監視器、您的自動化帳戶，以及部署在原始工作區中的管理解決方案（例如更新管理、啟動/停止 Vm 等）。
+* 啟用和設定任何監視解決方案，例如容器和/或適用於 VM 的 Azure 監視器的 Azure 監視器、您的自動化帳戶 () ，以及部署在原始工作區中的管理解決方案（例如更新管理、啟動/停止 Vm 等）。
 
 ## <a name="next-steps"></a>後續步驟
 
