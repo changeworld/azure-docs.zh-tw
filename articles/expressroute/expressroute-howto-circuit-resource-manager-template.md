@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute 範本：建立 ExpressRoute 線路
-description: 建立、布建、刪除和取消布建 ExpressRoute 線路。
+description: 瞭解如何使用 Azure PowerShell 部署 Azure Resource Manager 範本來建立 Azure ExpressRoute 線路。
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: charwen
-ms.openlocfilehash: 336337c0860ba19095665310d2c797cf10ba183f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78318726a658b6e0dc966288f386c65ee4c6f0e4
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736300"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190449"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立 ExpressRoute 線路
 
@@ -22,12 +22,12 @@ ms.locfileid: "84736300"
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager 範本](expressroute-howto-circuit-resource-manager-template.md)
 > * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [PowerShell （傳統）](expressroute-howto-circuit-classic.md)
+> * [PowerShell (傳統) ](expressroute-howto-circuit-classic.md)
 >
 
 瞭解如何使用 Azure PowerShell 部署 Azure Resource Manager 範本來建立 ExpressRoute 線路。 如需開發 Resource Manager 範本的詳細資訊，請參閱 [Resource Manager 文件](/azure/azure-resource-manager/)和[範本參考](/azure/templates/microsoft.network/expressroutecircuits)。
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="before-you-begin"></a>在您開始前
 
 * 開始設定之前，請檢閱[必要條件](expressroute-prerequisites.md)和[工作流程](expressroute-workflows.md)。
 * 確定您具有建立新網路資源的權限。 如果您沒有正確的權限，請連絡您的帳戶管理員。
@@ -35,15 +35,15 @@ ms.locfileid: "84736300"
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>建立和佈建 ExpressRoute 線路
 
-[Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)具有 Resource Manager 範本的良好集合。 您可以使用其中一個[現有的範本](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/)來建立 ExpressRoute 線路。
+[Azure 快速入門範本](https://azure.microsoft.com/resources/templates/) 具有 Resource Manager 範本的良好集合。 您可以使用其中一個 [現有的範本](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/) 來建立 ExpressRoute 線路。
 
 [!code-json[create-azure-expressroute-circuit](~/quickstart-templates/101-expressroute-circuit-create/azuredeploy.json)]
 
-若要查看更多相關範本，請選取[這裡](https://azure.microsoft.com/resources/templates/?term=expressroute)。
+若要查看更多相關範本，請選取 [這裡](https://azure.microsoft.com/resources/templates/?term=expressroute)。
 
 若要藉由部署範本來建立 ExpressRoute 線路：
 
-1. 選取下列程式碼區塊中的 [試用]****，然後依照指示登入 Azure Cloud Shell。
+1. 從下列程式碼區塊中選取 [ **試試看** ]，然後依照指示登入 Azure Cloud shell。
 
     ```azurepowershell-interactive
     $circuitName = Read-Host -Prompt "Enter a circuit name"
@@ -63,17 +63,17 @@ ms.locfileid: "84736300"
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU 層**會決定 ExpressRoute 線路是[Local](expressroute-faqs.md#expressroute-local)、Standard 或[Premium](expressroute-faqs.md#expressroute-premium)。 您可以指定 [*本機*]、[標準] 或 [ *Premium*]。
-   * **SKU 系列**會決定計費類型。 您可以針對計量付費資料方案指定*Metereddata* ，並針對無限制的資料方案*Unlimiteddata* 。 您可以將計費類型從 *Metereddata* 變更為 *Unlimiteddata*，但無法將類型從 *Unlimiteddata* 變更為 *Metereddata*。 *本機*線路僅供*Unlimiteddata* 。
+   * **SKU 層** 會決定 ExpressRoute 線路是 [Local](expressroute-faqs.md#expressroute-local)、Standard 或 [Premium](expressroute-faqs.md#expressroute-premium)。 您可以指定 [ *本機*]、[標準] 或 [ *Premium*]。
+   * **SKU 系列** 會決定計費類型。 您可以針對計量付費資料方案指定 *Metereddata* ，並針對無限制的資料方案 *Unlimiteddata* 。 您可以將計費類型從 *Metereddata* 變更為 *Unlimiteddata*，但無法將類型從 *Unlimiteddata* 變更為 *Metereddata*。 *本機*線路僅供*Unlimiteddata* 。
    * [對等位置]**** 是您與 Microsoft 對等互連的實體位置。
 
      > [!IMPORTANT]
      > [對等位置] 表示您與 Microsoft 對等互連的[實體位置](expressroute-locations.md)。 這**不會**連結到「位置」屬性，這是指 Azure 網路資源提供者所在的地理位置。 儘管它們並無關聯，但最好還是選擇地理位置靠近線路對等位置的網路資源提供者。
 
-    資源組名是已附加**rg**的服務匯流排命名空間名稱。
+    資源組名是已附加 **rg** 的服務匯流排命名空間名稱。
 
-2. 選取 [複製]**** 來複製 PowerShell 指令碼。
-3. 以滑鼠右鍵按一下殼層主控台，然後選取 [貼上]****。
+2. 選取 [複製] 來複製 PowerShell 指令碼。
+3. 以滑鼠右鍵按一下殼層主控台，然後選取 [貼上]。
 
 建立事件中樞需要幾分鐘的時間。
 
@@ -85,11 +85,11 @@ ms.locfileid: "84736300"
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>取消佈建和刪除 ExpressRoute 線路
 
-您可以選取 [**刪除**] 圖示來刪除您的 ExpressRoute 線路。 請注意下列資訊︰
+您可以選取 [ **刪除** ] 圖示來刪除您的 ExpressRoute 線路。 請注意下列資訊︰
 
 * 您必須取消連結 ExpressRoute 線路的所有虛擬網路。 如果此操作失敗，請檢查您是否有任何虛擬網路連結至線路。
 * 如果 ExpressRoute 線路服務提供者布建狀態為 [布建] 或 [已布建]，您必須與服務提供者合作，以在其端取消布**建**線路。 **Provisioning** 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
-* 如果服務提供者已取消布建線路（服務提供者布建狀態設定為 [**未布建**]），您可以刪除線路。 這樣會停止針對線路計費。
+* 如果服務提供者已取消布建線路 (服務提供者布建狀態設定為 [ **未布建**) ]，則您可以刪除線路。 這樣會停止針對線路計費。
 
 您可以藉由執行下列 PowerShell 命令來刪除您的 ExpressRoute 線路：
 

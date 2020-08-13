@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure CDN 計費 | Microsoft Docs
-description: 本常見問題集描述 Azure CDN 的計費方式。
+description: 瞭解 Azure 內容傳遞網路所裝載內容的計費結構，包括計費區域、交貨費用，以及管理成本。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
-ms.openlocfilehash: f3240151937a8ad758e4afe765341261069fd60e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd6b4831b29a99ed6694f75e64202f339385b7ea
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254560"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191164"
 ---
 # <a name="understanding-azure-cdn-billing"></a>了解 Azure CDN 計費
 

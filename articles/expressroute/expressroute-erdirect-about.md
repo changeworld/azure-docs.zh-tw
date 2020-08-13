@@ -1,18 +1,18 @@
 ---
 title: 關於 Azure ExpressRoute Direct
-description: 本頁提供 ExpressRoute Direct 的總覽
+description: 瞭解 Azure ExpressRoute Direct 的主要功能，以及上架至 ExpressRoute Direct 所需的資訊，例如可用的 Sku 和技術需求。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
-ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0faa4992b025783e4e5448dcf04fcfa958ba5ed
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74083596"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192359"
 ---
 # <a name="about-expressroute-direct"></a>關於 ExpressRoute Direct
 
@@ -52,7 +52,7 @@ Microsoft Azure ExpressRoute 可讓您透過連線提供者所提供的私人連
 
 ## <a name="circuit-skus"></a>線路 SKU
 
-ExpressRoute Direct 支援將大量資料擷取至 Azure 儲存體與其他巨量資料服務的案例。 100 Gbps ExpressRoute Direct 的 ExpressRoute 線路現在也支援**40 gbps**和**100 Gbps**線路 sku。 實體埠配對僅限**100 或 10 Gbps** ，而且可以有多個虛擬電路。 線路大小：
+ExpressRoute Direct 支援將大量資料擷取至 Azure 儲存體與其他巨量資料服務的案例。 100 Gbps ExpressRoute Direct 的 ExpressRoute 線路現在也支援 **40 gbps** 和 **100 Gbps** 線路 sku。 實體埠配對僅限 **100 或 10 Gbps** ，而且可以有多個虛擬電路。 線路大小：
 
 | **100 Gbps ExpressRoute Direct** | **10 Gbps ExpressRoute Direct** | 
 | --- | --- |
@@ -61,19 +61,19 @@ ExpressRoute Direct 支援將大量資料擷取至 Azure 儲存體與其他巨�
 
 ## <a name="technical-requirements"></a>技術需求
 
-* Microsoft Enterprise Edge 路由器（MSEE）介面：
+* Microsoft Enterprise Edge 路由器 (MSEE) 介面：
     * 只有跨路由器配對的雙10或 100 Gigabit 乙太網路埠
     * 單一模式 LR 光纖連線能力
     * IPv4 和 IPv6
     * IP MTU 1500 位元組
 
 * 交換器/路由器層 2/第3層連線能力：
-    * 必須支援 1 802.1 Q （Dot1Q）標記或雙標記 802.1 Q （QinQ）標記封裝
+    * 必須支援 1 802.1 Q (Dot1Q) 標記或兩個標記 802.1 Q (QinQ) 標記封裝
     * Ethertype = 0x8100
-    * 必須根據 Microsoft 所指定的 VLAN ID 新增外部 VLAN 標記（STAG）-*僅適用于 QinQ*
-    * 必須支援每個埠和裝置有多個 BGP 會話（Vlan）
+    * 必須根據 Microsoft 所指定的 VLAN ID （*僅適用于 QinQ）* ，將外部 VLAN 標記 (STAG) 中
+    * 必須支援每個埠和裝置 (Vlan) 的多個 BGP 會話
     * IPv4 和 IPv6 連線能力。 若*為 IPv6，將不會建立額外的子介面。IPv6 位址將會新增至現有的子介面*。 
-    * 選擇性：[雙向轉送偵測（BFD）](https://docs.microsoft.com/azure/expressroute/expressroute-bfd)支援，預設會在 ExpressRoute 線路上的所有私用對等互連上設定。
+    * 選擇性： [雙向轉送偵測 (BFD) ](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) 支援，其預設會在 ExpressRoute 線路上的所有私用對等互連上設定。
 
 ## <a name="vlan-tagging"></a>VLAN 標記
 

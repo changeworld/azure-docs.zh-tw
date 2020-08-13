@@ -1,24 +1,24 @@
 ---
 title: Azure Data Lake Storage Gen1 效能微調-MapReduce
-description: Azure Data Lake Storage Gen1 MapReduce 效能微調方針
+description: 瞭解 Azure Data Lake Storage Gen1 中 MapReduce 的效能微調，包括參數、指引、範例計算和限制。
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510921"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190210"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight 和 Azure Data Lake Storage Gen1 上的 MapReduce 效能微調方針
 
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen1 帳戶**。 如需如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+* **Azure Data Lake Storage Gen1 帳戶**。 如需如何建立帳戶的指示，請參閱 [開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * 可存取 Data Lake Storage Gen1 帳戶的 **Azure HDInsight 叢集**。 請參閱[建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)。 請確實為叢集啟用遠端桌面。
 * **在 HDInsight 上使用 MapReduce**。 如需詳細資訊，請參閱[在 HDInsight 上的 Hadoop 中使用 MapReduce](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
 * 請**參閱 Data Lake Storage Gen1 的效能微調方針**。 如需一般的效能概念，請參閱[Data Lake Storage Gen1 效能微調指導](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)方針
@@ -27,7 +27,7 @@ ms.locfileid: "85510921"
 
 在執行 MapReduce 作業時，您可以設定以下最重要的參數，以在 Data Lake Storage Gen1 上增加效能︰
 
-|參數      | 說明  |
+|參數      | 描述  |
 |---------|---------|
 |`Mapreduce.map.memory.mb`  |  要配置給每個對應程式的記憶體數量。  |
 |`Mapreduce.job.maps`     |  每項作業的對應工作數目。  |
@@ -36,7 +36,7 @@ ms.locfileid: "85510921"
 
 ### <a name="mapreducemapmemory--mapreducereducememory"></a>Mapreduce. map. memory/Mapreduce. 減少記憶體
 
-根據對應和（或）減少工作所需的記憶體數量來調整此數目。 您可以透過 Yarn 設定， `mapreduce.map.memory` 在 Ambari 中查看和的預設值 `mapreduce.reduce.memory` 。 在 Ambari 中，流覽至 YARN，並**查看 [[** ]] 索引標籤。將會顯示 YARN 記憶體。
+根據對應和（或）減少工作所需的記憶體數量來調整此數目。 您可以透過 Yarn 設定， `mapreduce.map.memory` 在 Ambari 中查看和的預設值 `mapreduce.reduce.memory` 。 在 Ambari 中，流覽至 YARN，並 **查看 [[** ]] 索引標籤。將會顯示 YARN 記憶體。
 
 ### <a name="mapreducejobmaps--mapreducejobreduces"></a>Mapreduce. map/Mapreduce. 作業. 減少
 
@@ -54,7 +54,7 @@ ms.locfileid: "85510921"
 
 ### <a name="step-3-determine-total-yarn-memory"></a>步驟3：判斷總 YARN 記憶體
 
-若要微調 mapreduce. map/mapreduce.，請考慮可供使用的總 YARN 記憶體數量。 這項資訊可在 Ambari 中取得。 流覽至**YARN，並查看 [[** ]] 索引標籤。YARN 記憶體會顯示在此視窗中。 將 YARN 記憶體與叢集中的節點數目相乘，以取得總 YARN 記憶體。
+若要微調 mapreduce. map/mapreduce.，請考慮可供使用的總 YARN 記憶體數量。 這項資訊可在 Ambari 中取得。 流覽至 **YARN，並查看 [[** ]] 索引標籤。YARN 記憶體會顯示在此視窗中。 將 YARN 記憶體與叢集中的節點數目相乘，以取得總 YARN 記憶體。
 
 `Total YARN memory = nodes * YARN memory per node`
 

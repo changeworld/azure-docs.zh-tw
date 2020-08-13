@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1-效能微調
-description: 說明如何微調 Azure Data Lake Storage Gen1 的效能。
+description: 瞭解如何在 Azure Data Lake Storage Gen1 中使用所有可用的輸送量，以盡可能平行執行多個讀取和寫入，以取得最佳效能。
 author: stewu
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 6b6dba101c7793198fe9d1e2bef1bcd99ddac618
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281730"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190245"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>微調 Azure Data Lake Storage Gen1 效能
 
@@ -131,7 +131,7 @@ HDInsight 叢集內有三個層級可以微調，以增加容器數目並且使�
 | [MapReduce on HDInsight](data-lake-store-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
 | [Storm on HDInsight](data-lake-store-performance-tuning-storm.md)| <ul><li>背景工作處理序數目</li><li>Spout 執行程式執行個體數目</li><li>Bolt 執行程式執行個體數目 </li><li>Spout 工作數目</li><li>Bolt 工作數目</li></ul>|
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [開始使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

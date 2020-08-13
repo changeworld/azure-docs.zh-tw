@@ -1,22 +1,22 @@
 ---
 title: 網路合作夥伴：Azure 網路 | Microsoft Docs
-description: 本文提供 MSP 網路合作夥伴的清單
+description: 瞭解 Azure 網路管理的服務提供者合作夥伴計畫，並尋找提供雲端和混合式網路服務的合作夥伴清單。
 services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 69129ad0ecda6b5893a5f758b8cac9a30dd0b093
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 841c4d85dee829eeebaef17e6ff12343d9940d03
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282104"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192042"
 ---
 # <a name="about-azure-networking-msp-partners"></a>關於 Azure 網路 MSP 合作夥伴
 
-[Azure 網路受控服務提供者（MSP）合作夥伴計畫](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/)可讓網路服務專注于 Msp、電信公司和 Systems 整合者（SIs），提供以 Azure 的網路產品和服務組合為中心的雲端和混合式網路服務。
+[Azure 網路受控服務提供者 (MSP) 合作夥伴計畫](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/)可讓網路服務專注于 Msp、電信公司和系統整合者 (SIs) 提供以 Azure 的網路產品和服務組合為中心的雲端和混合式網路服務。
 
 Azure 網路 MSP 是一組特製化的受控服務提供者，可解決雲端和混合式網路上所有層面的企業雲端網路需求和挑戰。 受控網路服務包含下列一項或多項服務：網路架構、規劃、部署、操作、維護和最佳化。
 
@@ -55,7 +55,7 @@ Azure 網路 MSP 是一組特製化的受控服務提供者，可解決雲端和
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 健康情況檢查：5 天評量](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute：5 天實作](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis 受控 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[由 Fortinet 提供技術支援的 Vandis 受控 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)；[由 Palo Alto Networks 提供技術支援的 Vandis 受控 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-下列 Azure 網路 MSP 合作夥伴的受控 ExpressRoute、虛擬 WAN、安全性服務和私人邊緣區域服務的 Azure Marketplace 供應專案位於我們的藍圖： [Amdocs](https://www.amdocs.com/); [德國 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406); [IX 觸及](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[OmniClouds](https://omniclouds.com/); [Sejong 電信](https://www.sejongtelecom.net/en/pages/service/cloud_ms);
+下列 Azure 網路 MSP 合作夥伴的受控 ExpressRoute、虛擬 WAN、安全性服務和私人邊緣區域服務的 Azure Marketplace 供應專案位於我們的藍圖： [Amdocs](https://www.amdocs.com/);  [德國 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX 觸及](https://www.ixreach.com/services/sdn-cloud-connect/);  [InterCloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/);  [Sejong 電信](https://www.sejongtelecom.net/en/pages/service/cloud_ms);
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute 合作夥伴
 

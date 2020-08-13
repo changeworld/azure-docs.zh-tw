@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：設定 ExpressRoute Direct
-description: 此頁面可協助您設定 ExpressRoute Direct。
+description: 瞭解如何使用 Azure PowerShell 來設定 Azure ExpressRoute Direct，以直接連線到全球對等互連位置的 Microsoft 全球網路。
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: 8d028baef8898ce8d45fa8e2e142a58a1ae3300c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 42803cbc7901be01c88145e2d98f2982434710a1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736249"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192757"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>如何設定 ExpressRoute Direct
 
@@ -231,7 +231,7 @@ ExpressRoute Direct 可讓您在策略性分散於世界各地的對等互連位
 
 ExpressRoute Direct 上有只可用於支援以上所述案例的額外線路頻寬。 這些是：40Gbps 和 100Gbps。
 
-**SkuTier**可以是 Local、Standard 或 Premium。
+**SkuTier** 可以是 Local、Standard 或 Premium。
 
 只有在 ExpressRoute Direct 不支援**SkuFamily**時，才必須 MeteredData 為無限制。
 
@@ -277,4 +277,4 @@ ExpressRoute Direct 上有只可用於支援以上所述案例的額外線路頻
 
 ## <a name="next-steps"></a>後續步驟
 
-如需有關 ExpressRoute Direct 的詳細資訊，請參閱[總覽](expressroute-erdirect-about.md)。
+如需有關 ExpressRoute Direct 的詳細資訊，請參閱 [總覽](expressroute-erdirect-about.md)。

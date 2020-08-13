@@ -1,6 +1,6 @@
 ---
 title: 針對 Azure CDN 端點（404狀態碼）進行疑難排解
-description: 針對 Azure CDN 端點的 404 回應碼進行疑難排解。
+description: 瞭解如何針對傳回 404 HTTP 回應狀態碼的 Azure 內容傳遞網路端點問題進行疑難排解。
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6476993627708670a210cce50072f1b183d90a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888669"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192485"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>針對傳回 404 狀態碼的 Azure CDN 端點進行疑難排解
 本文可讓您針對傳回 404 HTTP 回應狀態碼的 Azure 內容傳遞網路 (CDN) 端點問題進行疑難排解。
 
-如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至[Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。
+如果在本文章中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您也可以提出 Azure 支援事件。 請移至 [Azure 支援網站](https://azure.microsoft.com/support/options/) ，然後選取 [ **取得支援**]。
 
 ## <a name="symptom"></a>徵狀
 您已建立 CDN 設定檔和端點，但您的內容似乎無法在 CDN 上使用。 嘗試透過 CDN URL 存取內容的使用者收到 HTTP 404 狀態碼。 

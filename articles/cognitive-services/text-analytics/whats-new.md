@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121845"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192034"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文字分析 API 有哪些新功能？
 
@@ -26,15 +26,15 @@ ms.locfileid: "88121845"
 ### <a name="general-api-updates"></a>一般 API 更新
 
 * V3 的模型版本 `2020-07-01` `/keyphrases` `/pii` 和 `/languages` 端點，其會新增：
-    * 命名實體辨識的其他政府和國家/地區特定[實體類別](named-entity-types.md?tabs=personal)。
-* 對於超出已發佈[資料限制](concepts/data-limits.md)的 v3 API 要求，現在會傳回 HTTP 400 錯誤。 
+    * 命名實體辨識的其他政府和國家/地區特定 [實體類別](named-entity-types.md?tabs=personal) 。
+* 對於超出已發佈 [資料限制](concepts/data-limits.md)的 v3 API 要求，現在會傳回 HTTP 400 錯誤。 
 
 ### <a name="text-analytics-for-health-container-august-updates"></a>適用于健康情況容器的文字分析8月更新
 
 下列更新僅適用于健康情況容器的文字分析8月版。
 
-* 新模型-健全狀況的文字分析版本：`2020-07-24`
-* 用於傳送健康情況要求之文字分析的新 URL：`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+* 新模型-健全狀況的文字分析版本： `2020-07-24`
+* 用於傳送健康情況要求文字分析的新 URL： `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` (請注意，必須先清除瀏覽器快取，才能使用此新容器映射中包含的示範 web 應用程式) 
 
 JSON 回應中的下列屬性已變更：
 
@@ -44,7 +44,7 @@ JSON 回應中的下列屬性已變更：
     * `EXAMINATION_RELATION` 已經重新命名為 `RelationalOperator`。
     * `EXAMINATION_UNIT` 已經重新命名為 `MeasurementUnit`。
     * `EXAMINATION_VALUE` 已經重新命名為 `MeasurementValue`。
-    * `ROUTE_OR_MODE`已重新命名 `MedicationRoute` 。
+    * `ROUTE_OR_MODE` 已重新命名 `MedicationRoute` 。
     * 關聯式實體已重新 `ROUTE_OR_MODE_OF_MEDICATION` 命名為 `RouteOfMedication` 。
 
 已新增下列實體：
@@ -82,11 +82,11 @@ JSON 回應中的下列屬性已變更：
 
 文字分析 API v3 現已公開提供下列更新：
 
-* 模型版本`2020-04-01`
+* 模型版本 `2020-04-01`
 * 每項功能的新[資料限制](concepts/data-limits.md)
 * [情感分析 (SA) v3](how-tos/text-analytics-how-to-sentiment-analysis.md)的更新[語言支援](language-support.md)
 * 實體連結的個別端點 
-* 命名實體辨識中新的「位址」實體類別[ (NER) v3](how-tos/text-analytics-how-to-entity-linking.md)。
+* 命名實體辨識中新的「位址」實體類別 [ (NER) v3](how-tos/text-analytics-how-to-entity-linking.md)。
 * NER v3 中的新子類別：
    * 位置-地理
    * 位置-結構化
@@ -98,13 +98,13 @@ JSON 回應中的下列屬性已變更：
    * 活動-運動
 
 已新增 JSON 回應中的下列屬性：
-   * `SentenceText`在情感分析
-   * `Warnings`針對每份檔 
+   * `SentenceText` 在情感分析
+   * `Warnings` 針對每份檔 
 
 JSON 回應中下列屬性的名稱已變更（如果適用）：
 
 * `score` 已重新命名為 `confidenceScore`
-    * `confidenceScore`有兩個小數位數。 
+    * `confidenceScore` 有兩個小數位數。 
 * `type` 已重新命名為 `category`
 * `subtype` 已重新命名為 `subcategory`
 
@@ -114,8 +114,8 @@ JSON 回應中下列屬性的名稱已變更（如果適用）：
 > [深入瞭解文字分析 API v3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)
 
 ### <a name="text-analytics-api-v31-public-preview"></a>文字分析 API 3.1 版公開預覽
-   * 新的情感分析功能-[意見挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
-   * 新的[個人 (`PII`) 網域篩選準則](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)，以取得受保護的健全狀況資訊 (`PHI`) 。
+   * 新的情感分析功能- [意見挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
+   * 新的 [個人 (`PII`) 網域篩選準則](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) ，以取得受保護的健全狀況資訊 (`PHI`) 。
 
 > [!div class="nextstepaction"]
 > [深入瞭解文字分析 API 3.1 版預覽](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -124,7 +124,7 @@ JSON 回應中下列屬性的名稱已變更（如果適用）：
 
 ### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>文字分析 API v3 公開預覽版本的 SDK 支援
 
-作為[整合 AZURE SDK 版本](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)的一部分，文字分析 API v3 SDK 現在可作為下列程式設計語言的公開預覽：
+作為 [整合 AZURE SDK 版本](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290)的一部分，文字分析 API v3 SDK 現在可作為下列程式設計語言的公開預覽：
    * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
    * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
    * [JavaScript (Node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
@@ -135,11 +135,11 @@ JSON 回應中下列屬性的名稱已變更（如果適用）：
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>命名實體辨識 v3 公開預覽
 
- (NER) v3 公開預覽服務中的其他實體類型現在可供使用，因為我們會展開文字中找到的一般和個人資訊實體的偵測。 此更新會引進[模型版本](concepts/model-versioning.md) `2020-02-01` ，其中包括：
+ (NER) v3 公開預覽服務中的其他實體類型現在可供使用，因為我們會展開文字中找到的一般和個人資訊實體的偵測。 此更新會引進 [模型版本](concepts/model-versioning.md) `2020-02-01` ，其中包括：
 
 * 下列一般實體類型的辨識僅 (英文) ：
     * PersonType
-    * Products
+    * 產品
     * 事件
     * 地緣政治實體 (GPE) 作為 [位置] 底下的子類型
     * 技能
@@ -161,7 +161,7 @@ JSON 回應中下列屬性的名稱已變更（如果適用）：
 
 #### <a name="named-entity-recognition-ner"></a>具名實體辨識 (NER)
 
-* 識別個人資訊實體類型的[新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii)僅 (英文) 
+* 識別個人資訊實體類型的 [新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) 僅 (英文) 
 
 * [實體](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)辨識和[實體連結](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)的個別端點。
 
@@ -175,7 +175,7 @@ JSON 回應中下列屬性的名稱已變更（如果適用）：
 
 #### <a name="sentiment-analysis-v3-public-preview"></a>情感分析 V3 公開預覽
 
-* 用於分析情感的[新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)。
+* 用於分析情感的 [新端點](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) 。
 * [模型版本](concepts/model-versioning.md) `2019-10-01` ，其中包括：
 
     * 應用程式開發介面文字分類和計分的精確度和詳細資料大幅改進。

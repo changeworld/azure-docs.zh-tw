@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：連接到使用全球範圍的 Microsoft Cloud
-description: 此文章說明 ExpressRoute Global Reach。
+description: 瞭解 Azure ExpressRoute 全球可以如何將 ExpressRoute 線路連結在一起，以在您的內部部署網路之間建立私人網路。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5022efacf33a2c07f1388666b5de26ee86322739
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c747253a56476b0fd9431311294d487ef336e69
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636728"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190746"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute 是私人且有彈性的方式，可讓您將內部部署網路連線到 Microsoft Cloud。 您可以從私人資料中心或公司網路存取許多 Microsoft 雲端服務（例如 Azure）和 Office 365。 例如，您在舊金山分公司的 ExpressRoute 線路可能在美國矽谷，而另一家倫敦分公司的 ExpressRoute 線路則位於同一座城市。 這兩家分公司都具備可連至美國西部和英國南部之 Azure 資源的高速連線能力。 不過，這些分公司彼此無法直接交換資料。 換句話說，10.0.1.0/24 可以將資料傳送到 10.0.3.0/24 和 10.0.4.0/24，但不能傳送到 10.0.2.0/24。
@@ -21,7 +21,7 @@ ExpressRoute 是私人且有彈性的方式，可讓您將內部部署網路連�
 
 透過 **ExpressRoute Global Reach**，您可以將 ExpressRoute 線路連結在一起，以在內部部署網路之間產生私人網路。 在上述範例中，透過新增 ExpressRoute Global Reach，舊金山分公司 (10.0.1.0/24) 就能透過現有的 ExpressRoute 線路及透過 Microsoft 的全球網路，直接與倫敦分公司 (10.0.2.0/24) 交換資料。 
 
-![熟悉][2]
+![取代為][2]
 
 ## <a name="use-case"></a>使用案例
 ExpressRoute Global Reach 是設計來補充您服務提供者的 WAN 實作，以及連線您位於世界各地的分公司。 例如，如果您服務提供者的營運範圍主要是在美國境內，並且已連結您在美國的所有分公司，但該服務提供者並未在日本和香港特別行政區中營運，透過 ExpressRoute Global Reach，您就能與當地服務提供者合作，而 Microsoft 會使用 ExpressRoute 和全球網路，將您位於該處的分公司連線到美國的分公司。

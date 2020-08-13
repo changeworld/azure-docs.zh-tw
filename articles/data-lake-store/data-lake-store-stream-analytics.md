@@ -1,17 +1,17 @@
 ---
 title: 將資料從串流分析串流至 Data Lake Storage Gen1-Azure
-description: 使用 Azure 串流分析將資料串流至 Azure Data Lake Storage Gen1。
+description: 瞭解如何使用 Azure Data Lake Storage Gen1 做為 Azure 串流分析作業的輸出，以及從 Azure 儲存體 blob 讀取資料的簡單案例。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515163"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192154"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>使用 Azure 串流分析將來自 Azure 儲存體 Blob 的資料串流處理至 Azure Data Lake Storage Gen1
 在本文中，您將瞭解如何使用 Azure Data Lake Storage Gen1 做為 Azure 串流分析作業的輸出。 此文章示範從 Azure 儲存體 Blob (輸入) 讀取資料以及將資料寫入至 Data Lake Storage Gen1 (輸出) 的簡單案例。
@@ -90,7 +90,7 @@ ms.locfileid: "85515163"
     
 ## <a name="run-the-stream-analytics-job"></a>執行串流分析作業
 
-1. 若要執行串流分析作業，您必須從 [**查詢**] 索引標籤執行查詢。在本教學課程中，您可以使用作業輸入和輸出別名來取代預留位置，以執行範例查詢，如下列螢幕擷取畫面所示。
+1. 若要執行串流分析作業，您必須從 [ **查詢** ] 索引標籤執行查詢。在本教學課程中，您可以使用作業輸入和輸出別名來取代預留位置，以執行範例查詢，如下列螢幕擷取畫面所示。
 
     ![執行查詢](./media/data-lake-store-stream-analytics/run.query.png "執行查詢")
 
@@ -112,5 +112,5 @@ ms.locfileid: "85515163"
 
     請注意，在 [資料總管] 窗格中，輸出會寫入到 Data Lake Storage Gen1 輸出設定中所指定的資料夾路徑 (`streamanalytics/job/output/{date}/{time}`)。  
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [建立 HDInsight 叢集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

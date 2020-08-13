@@ -1,6 +1,6 @@
 ---
 title: Data Lake Storage Gen1 中的存取控制概觀 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen1 中的存取控制運作方式
+description: 深入瞭解從 HDFS 衍生的 Azure Data Lake Storage Gen1 存取控制模型的基本概念。
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847821"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190156"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的存取控制
 
@@ -71,7 +71,7 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 
 以下是一些常見的案例，可協助您了解在 Data Lake Storage Gen1 帳戶上執行某些作業所需的權限。
 
-| 操作 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
+| 作業 | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | 讀取      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | 附加至 | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -216,7 +216,7 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="umask"></a>umask
 
-建立檔案或資料夾時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父資料夾上的9位值，其中包含**擁有使用者**、**擁有群組**及**其他**的 RWX 值。
+建立檔案或資料夾時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父資料夾上的9位值，其中包含 **擁有使用者**、 **擁有群組**及 **其他**的 RWX 值。
 
 Azure Data Lake Storage Gen1 的 umask 是設定為007的常數值。 此值會轉譯成
 
@@ -250,7 +250,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>我必須啟用 ACL 的支援嗎？
 
-否。 Data Lake Storage Gen1 帳戶一律會啟用透過 ACL 的存取控制。
+不正確。 Data Lake Storage Gen1 帳戶一律會啟用透過 ACL 的存取控制。
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>若要以遞迴方式刪除資料夾與其內容，需要哪些權限？
 
@@ -297,6 +297,6 @@ ACL 中的項目會儲存為對應於 Azure AD 中使用者的 GUID。 API 會�
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
 * [Linux 上使用存取控制清單的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)

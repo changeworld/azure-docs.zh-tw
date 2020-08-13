@@ -1,6 +1,6 @@
 ---
 title: 在 Azure CDN 端點上預先載入資產 | Microsoft Docs
-description: 了解如何預先載入 Azure CDN 端點上的快取內容。
+description: 瞭解如何在 Azure 內容傳遞網路端點上預先載入快取的內容。 這項功能適用于產品的特定版本。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887564"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192575"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 端點上預先載入資產
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -66,7 +66,7 @@ ms.locfileid: "84887564"
 > 
 > 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [清除 Azure CDN 端點](cdn-purge-endpoint.md)
 * [Azure CDN REST API 參考 - 預先載入端點上的內容](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
 * [Azure CDN REST API 參考 - 從端點清除內容](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)

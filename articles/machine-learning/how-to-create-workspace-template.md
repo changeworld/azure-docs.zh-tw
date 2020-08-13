@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986557"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192343"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本建立 Azure Machine Learning 的工作區
 
@@ -34,7 +34,7 @@ ms.locfileid: "87986557"
 
 ## <a name="workspace-resource-manager-template"></a>工作區 Resource Manager 範本
 
-本檔中使用的 Azure Resource Manager 範本可在 Azure 快速入門範本 GitHub 存放庫的[201-機器學習-先進](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json)目錄中找到。
+本檔中使用的 Azure Resource Manager 範本可在 Azure 快速入門範本 GitHub 存放庫的 [201-機器學習-先進](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json) 目錄中找到。
 
 此範本會建立下列 Azure 服務：
 
@@ -46,9 +46,9 @@ ms.locfileid: "87986557"
 
 資源群組是保存服務的容器。 各種服務是 Azure Machine Learning 工作區的必要項。
 
-範例範本有兩個**必要**參數：
+範例範本有兩個 **必要** 參數：
 
-* 將建立資源的**位置**。
+* 將建立資源的 **位置** 。
 
     範本將會針對大部分的資源使用您選取的位置。 例外狀況是 Application Insights 服務，該服務在其他服務可用的所有位置都無法使用。 如果您選取的位置無法使用，服務會建立在美國中南部位置。
 
@@ -62,7 +62,7 @@ ms.locfileid: "87986557"
 > [!TIP]
 > 雖然與本文件建立關聯的範本會建立新 Azure Container Registry，但您也可建立新的工作區，而不需要建立容器登錄。 當執行需要容器登錄的作業時，將會建立一個。 例如，定型或部署模型。
 >
-> 您也可以在 Azure Resource Manager 範本中參考現有的容器登錄或儲存體帳戶，而不是建立一個新的。 不過，您使用的容器登錄必須啟用系統__管理員帳戶__。 如需啟用系統管理員帳戶的相關資訊，請參閱系統[管理員帳戶](/azure/container-registry/container-registry-authentication#admin-account)。
+> 您也可以在 Azure Resource Manager 範本中參考現有的容器登錄或儲存體帳戶，而不是建立一個新的。 不過，您使用的容器登錄必須啟用系統 __管理員帳戶__ 。 如需啟用系統管理員帳戶的相關資訊，請參閱系統 [管理員帳戶](/azure/container-registry/container-registry-authentication#admin-account)。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -76,7 +76,7 @@ ms.locfileid: "87986557"
 
 若要部署您的範本，您必須建立資源群組。
 
-如果您偏好使用圖形化使用者介面，請參閱[Azure 入口網站](#use-the-azure-portal)一節。
+如果您偏好使用圖形化使用者介面，請參閱 [Azure 入口網站](#use-the-azure-portal) 一節。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -117,7 +117,7 @@ New-AzResourceGroupDeployment `
 
 ---
 
-根據預設，在範本中建立的所有資源都是新的。 不過，您也可以選擇使用現有的資源。 藉由提供範本的其他參數，您可以使用現有的資源。 例如，如果您想要使用現有的儲存體帳戶，請將**storageAccountOption**值設為 [**現有**]，並在**storageAccountName**參數中提供儲存體帳戶的名稱。
+根據預設，在範本中建立的所有資源都是新的。 不過，您也可以選擇使用現有的資源。 藉由提供範本的其他參數，您可以使用現有的資源。 例如，如果您想要使用現有的儲存體帳戶，請將 **storageAccountOption** 值設為 [ **現有** ]，並在 **storageAccountName** 參數中提供儲存體帳戶的名稱。
 
 > [!IMPORTANT]
 > 如果您想要使用現有的 Azure 儲存體帳戶，它不能是高階帳戶， (Premium_LRS 和 Premium_GRS) 。 它也不能有階層式命名空間 (搭配 Azure Data Lake Storage Gen2) 使用。 工作區的預設儲存體帳戶不支援 premium 儲存體或階層式命名空間。
@@ -318,9 +318,9 @@ New-AzResourceGroupDeployment `
 
 當您成功完成上述步驟之後，請像平常一樣部署您的範本。 若要啟用客戶管理的金鑰，請設定下列參數：
 
-* **encryption_status**為 [**已啟用**]。
-* **cmk_keyvault**至 `cmk_keyvault` 先前步驟中取得的值。
-* **resource_cmk_uri**至 `resource_cmk_uri` 先前步驟中取得的值。
+* **encryption_status** 為 [ **已啟用**]。
+* **cmk_keyvault** 至 `cmk_keyvault` 先前步驟中取得的值。
+* **resource_cmk_uri** 至 `resource_cmk_uri` 先前步驟中取得的值。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -351,9 +351,9 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-使用客戶管理的金鑰時，Azure Machine Learning 會建立包含 Cosmos DB 實例的次要資源群組。 如需詳細資訊，請參閱[靜態加密-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)。
+使用客戶管理的金鑰時，Azure Machine Learning 會建立包含 Cosmos DB 實例的次要資源群組。 如需詳細資訊，請參閱 [靜態加密-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)。
 
-您可以為資料提供的其他設定是將**confidential_data**參數設為**true**。 這樣做會執行下列動作：
+您可以為資料提供的其他設定是將 **confidential_data** 參數設為 **true**。 這樣做會執行下列動作：
 
 * 開始加密 Azure Machine Learning 計算叢集的本機暫存磁片，但前提是您尚未在您的訂用帳戶中建立任何先前的叢集。 如果您先前已在訂用帳戶中建立叢集，請開啟支援票證，讓您的計算叢集能夠加密已啟用的暫存磁片。
 * 清除執行之間的本機暫存磁片。
@@ -363,7 +363,7 @@ New-AzResourceGroupDeployment `
     > [!IMPORTANT]
     > 建立工作區之後，即無法變更機密資料、加密、金鑰保存庫識別碼或金鑰識別碼的設定。 若要變更這些值，則必須使用新的值來建立新工作區。
 
-  如需詳細資訊，請參閱[靜態加密](concept-enterprise-security.md#encryption-at-rest)。
+  如需詳細資訊，請參閱 [靜態加密](concept-enterprise-security.md#encryption-at-rest)。
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>在虛擬網路後方部署工作區
 
@@ -377,10 +377,10 @@ New-AzResourceGroupDeployment `
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>僅在私人端點後方部署工作區
 
-如果相關聯的資源不在虛擬網路後方，您可以將**privateEndpointType**參數設定為 `AutoAproval` 或， `ManualApproval` 以將工作區部署在私人端點後方。 這可以針對新的和現有的工作區來完成。 更新現有的工作區時，請以現有工作區中的資訊填入範本參數。
+如果相關聯的資源不在虛擬網路後方，您可以將 **privateEndpointType** 參數設定為 `AutoAproval` 或， `ManualApproval` 以將工作區部署在私人端點後方。 這可以針對新的和現有的工作區來完成。 更新現有的工作區時，請以現有工作區中的資訊填入範本參數。
 
 > [!IMPORTANT]
-> 部署僅適用于支援私用端點的區域。
+> 使用 Azure 私人連結來建立 Azure Machine Learning 工作區的私人端點目前為公開預覽狀態。 這項功能僅適用于 **美國東部** 和 **美國西部 2** 區域。 此預覽版是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -410,7 +410,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="use-a-new-virtual-network"></a>使用新的虛擬網路
 
-若要將資源部署在新的虛擬網路後方，請將**vnetOption**設定為 [**新增**]，以及個別資源的虛擬網路設定。 下列部署示範如何使用新虛擬網路背後的儲存體帳戶資源來部署工作區。
+若要將資源部署在新的虛擬網路後方，請將 **vnetOption** 設定為 [ **新增** ]，以及個別資源的虛擬網路設定。 下列部署示範如何使用新虛擬網路背後的儲存體帳戶資源來部署工作區。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -523,7 +523,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="use-an-existing-virtual-network--resources"></a>使用現有的虛擬網路 & 資源
 
-若要部署具有現有相關聯資源的工作區，您必須將**vnetOption**參數設定為**現有**的和子網參數。 不過，在部署**之前**，您必須在虛擬網路中為每個資源建立服務端點。 如同新的虛擬網路部署，您可以在虛擬網路後方擁有一或所有資源。
+若要部署具有現有相關聯資源的工作區，您必須將 **vnetOption** 參數設定為 **現有** 的和子網參數。 不過，在部署 **之前** ，您必須在虛擬網路中為每個資源建立服務端點。 如同新的虛擬網路部署，您可以在虛擬網路後方擁有一或所有資源。
 
 > [!IMPORTANT]
 > 子網應具有 `Microsoft.Storage` 服務端點
@@ -640,8 +640,8 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 當您到達 [__選取範本__] 畫面時，從下拉式清單中選擇 [ **201-機器學習-先進**的範本]。
-1. 選取 [__選取範本__] 以使用範本。 根據您的部署案例，提供下列必要的資訊和任何其他參數。
+1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 當您到達 [ __選取範本__ ] 畫面時，從下拉式清單中選擇 [ **201-機器學習-先進** 的範本]。
+1. 選取 [ __選取範本__ ] 以使用範本。 根據您的部署案例，提供下列必要的資訊和任何其他參數。
 
    * 訂用帳戶：選取要用於這些資源的 Azure 訂用帳戶。
    * 資源群組：選取或建立資源群組以包含服務。
@@ -649,7 +649,7 @@ New-AzResourceGroupDeployment `
    * 工作區名稱：要用於將建立之Azure Machine Learning 工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
    * 位置：選取將建立資源的位置。
 1. 選取 [檢閱 + 建立]。
-1. 在 [__審查 + 建立__] 畫面上，同意列出的條款及條件，然後選取 [__建立__]。
+1. 在 [ __審查 + 建立__ ] 畫面上，同意列出的條款及條件，然後選取 [ __建立__]。
 
 如需詳細資訊，請參閱[從自訂範本部署資源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
@@ -754,7 +754,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="virtual-network-not-linked-to-private-dns-zone"></a>未連結到私人 DNS 區域的虛擬網路
 
-建立具有私人端點的工作區時，此範本會建立名為__privatelink.api.azureml.ms__的私人 DNS 區域。 __虛擬網路連結__會自動新增到此私人 DNS 區域。 只會針對您在資源群組中建立的第一個工作區和私人端點新增連結;如果您在相同的資源群組中建立另一個具有私人端點的虛擬網路和工作區，則第二個虛擬網路可能不會新增至私人 DNS 區域。
+建立具有私人端點的工作區時，此範本會建立名為 __privatelink.api.azureml.ms__的私人 DNS 區域。 __虛擬網路連結__會自動新增到此私人 DNS 區域。 只會針對您在資源群組中建立的第一個工作區和私人端點新增連結;如果您在相同的資源群組中建立另一個具有私人端點的虛擬網路和工作區，則第二個虛擬網路可能不會新增至私人 DNS 區域。
 
 若要查看私人 DNS 區域已經存在的虛擬網路連結，請使用下列 Azure CLI 命令：
 

@@ -1,14 +1,14 @@
 ---
 title: 最佳作法
 description: 了解開發 Azure Batch 解決方案的最佳做法和實用秘訣。
-ms.date: 07/30/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474898"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191800"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -57,9 +57,13 @@ Batch 集區可能會在 Azure 中遇到停機事件。 在規劃和開發 Batch
 
 如果節點失敗，Batch 會自動嘗試代表您復原這些計算節點。 這可能會在復原的節點上，觸發任何正在執行的工作進行重新排程。 如需有關中斷工作的詳細資訊，請參閱[重試設計](#design-for-retries-and-re-execution)。
 
+### <a name="custom-image-pools"></a>自訂映射集區
+
+當您使用虛擬機器設定建立 Azure Batch 集區時，需指定 VM 映像，以提供集區中每個計算節點的作業系統。 您可以使用支援的 Azure Marketplace 映射來建立集區，也可以 [使用共用映射庫映射來建立自訂映射](batch-sig-images.md)。 雖然您也可以使用 [受控映射](batch-custom-images.md) 來建立自訂映射集區，但建議您盡可能使用共用映射庫來建立自訂映射。 使用共用映射資源庫可協助您更快速地布建集區、調整較大數量的 Vm，以及改善布建 Vm 時的可靠性。
+
 ### <a name="third-party-images"></a>協力廠商映射
 
-您可以使用發佈到 Azure Marketplace 的協力廠商映射來建立集區。 使用使用者訂用帳戶模式 Batch 帳戶時，您可能會在使用特定協力廠商映射建立集區時，看到「因 marketplace 購買資格檢查而導致配置失敗」錯誤。 若要解決此錯誤，請接受映射發行者所設定的條款。 您可以使用[Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0)或[Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest)來執行此動作。
+您可以使用發佈到 Azure Marketplace 的協力廠商映射來建立集區。 使用使用者訂用帳戶模式 Batch 帳戶時，您可能會在使用特定協力廠商映射建立集區時，看到「因 marketplace 購買資格檢查而導致配置失敗」錯誤。 若要解決此錯誤，請接受映射發行者所設定的條款。 您可以使用 [Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest)來執行此動作。
 
 ### <a name="azure-region-dependency"></a>Azure 區域相依性
 
@@ -127,7 +131,7 @@ Batch 可以自動重試工作。 重試的類型有兩種：使用者控制和�
 
 ### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>針對 Windows 節點上的簡短工作使用集區範圍
 
-在 Batch-節點上排程工作時，您可以選擇是否要使用工作範圍或集區範圍來執行。 如果工作只會短時間執行，工作範圍可能會因為建立該工作的自動使用者帳戶所需的資源而沒有效率。 若要提高效率，請考慮將這些工作設定為集區範圍。 如需詳細資訊，請參閱以[具有集區範圍的自動使用者身分執行工作](batch-user-accounts.md#run-a-task-as-an-auto-user-with-pool-scope)。
+在 Batch-節點上排程工作時，您可以選擇是否要使用工作範圍或集區範圍來執行。 如果工作只會短時間執行，工作範圍可能會因為建立該工作的自動使用者帳戶所需的資源而沒有效率。 若要提高效率，請考慮將這些工作設定為集區範圍。 如需詳細資訊，請參閱以 [具有集區範圍的自動使用者身分執行工作](batch-user-accounts.md#run-a-task-as-an-auto-user-with-pool-scope)。
 
 ## <a name="nodes"></a>節點
 
@@ -153,7 +157,7 @@ Batch 可以自動重試工作。 重試的類型有兩種：使用者控制和�
 
 ### <a name="manage-os-upgrades"></a>管理作業系統升級
 
-針對使用者訂用帳戶模式的 Batch 帳戶，自動化的 OS 升級可能會中斷工作進度，特別是當工作長時間執行時。 [建立等冪](#build-durable-tasks)工作有助於減少這些中斷所造成的錯誤。 我們也建議您[針對預期不會執行工作的時間，排程 OS 映射升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
+針對使用者訂用帳戶模式的 Batch 帳戶，自動化的 OS 升級可能會中斷工作進度，特別是當工作長時間執行時。 [建立等冪](#build-durable-tasks) 工作有助於減少這些中斷所造成的錯誤。 我們也建議您 [針對預期不會執行工作的時間，排程 OS 映射升級](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md#manually-trigger-os-image-upgrades)。
 
 ## <a name="isolation-security"></a>隔離安全性
 
@@ -182,7 +186,7 @@ Azure Batch 帳戶無法直接從一個區域移至另一個區域。 不過，�
 
 ### <a name="honoring-dns"></a>遵守 DNS
 
-請確定您的系統會遵守 Batch 帳戶服務 URL 的 DNS 存留時間 (TTL)。 此外，請確定 batch 服務的 Batch 服務用戶端和其他連線機制不依賴 IP 位址（或[建立具有靜態公用 IP 位址的集](create-pool-public-ip.md)區，如下所述）。
+請確定您的系統會遵守 Batch 帳戶服務 URL 的 DNS 存留時間 (TTL)。 此外，請確定 batch 服務的 Batch 服務用戶端和其他連接機制不依賴 IP 位址 (或 [建立具有靜態公用 IP 位址的集](create-pool-public-ip.md) 區，如下) 所述。
 
 如果您的要求收到 5xx 層級的 HTTP 回應，而且回應中有「連線：關閉」標頭，則 Batch 服務用戶端應該遵循建議來關閉現有連線、重新解析 Batch 帳戶服務 URL 的 DNS，然後在新的連線上嘗試下列要求。
 
@@ -192,7 +196,7 @@ Azure Batch 帳戶無法直接從一個區域移至另一個區域。 不過，�
 
 ### <a name="static-public-ip-addresses"></a>靜態公用 IP 位址
 
-一般而言，Batch 集區中的虛擬機器是透過可在集區存留期內變更的公用 IP 位址來存取。 這可能會讓您難以與資料庫或其他外部服務互動，以限制對特定 IP 位址的存取。 若要確保集區中的公用 IP 位址不會意外變更，您可以使用您所控制的一組靜態公用 IP 位址來建立集區。 如需詳細資訊，請參閱[使用指定的公用 IP 位址建立 Azure Batch 集](create-pool-public-ip.md)區。
+一般而言，Batch 集區中的虛擬機器是透過可在集區存留期內變更的公用 IP 位址來存取。 這可能會讓您難以與資料庫或其他外部服務互動，以限制對特定 IP 位址的存取。 若要確保集區中的公用 IP 位址不會意外變更，您可以使用您所控制的一組靜態公用 IP 位址來建立集區。 如需詳細資訊，請參閱 [使用指定的公用 IP 位址建立 Azure Batch 集](create-pool-public-ip.md)區。
 
 ## <a name="batch-node-underlying-dependencies"></a>Batch 節點基礎相依性
 

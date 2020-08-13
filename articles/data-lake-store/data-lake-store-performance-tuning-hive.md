@@ -1,17 +1,17 @@
 ---
 title: 效能微調-Azure Data Lake Storage Gen1 上的 Hive
-description: HdInsight 上的 Hive 和 Azure Data Lake Storage Gen1 的效能微調方針。
+description: 瞭解 HdInsight 上的 Hive 和 Azure Data Lake Storage Gen1 的效能微調。 對於需要大量 i/o 的查詢，請調整 Hive 以取得更好的效能。
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 9e05773955fb79007a5d5899babf8680c69aa654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d10b1811257e14238cb04a79ff184cee57aab471
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281713"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189959"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight 和 Azure Data Lake Storage Gen1 上的 Hive 效能微調指導方針
 
@@ -20,7 +20,7 @@ ms.locfileid: "87281713"
 ## <a name="prerequisites"></a>必要條件
 
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Data Lake Storage Gen1 帳戶**。 如需如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+* **Data Lake Storage Gen1 帳戶**。 如需如何建立帳戶的指示，請參閱 [開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * 可存取 Data Lake Storage Gen1 帳戶的 **Azure HDInsight 叢集**。 請參閱[建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)。 請確實為叢集啟用遠端桌面。
 * **在 HDInsight 上執行 Hive**。  若要了解如何在 HDInsight 上執行 Hive 作業，請參閱[ HDInsight 上使用 Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
 * **Data Lake Storage Gen1 的效能微調方針**。  如需一般的效能概念，請參閱[Data Lake Storage Gen1 效能微調指導](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)方針
@@ -45,7 +45,7 @@ ms.locfileid: "87281713"
 
 **hive.exec.reducer.bytes.per.reducer** – 此參數會設定每個歸納器的大小。  根據預設，每個歸納器為 256 MB。  
 
-## <a name="guidance"></a>指導方針
+## <a name="guidance"></a>指引
 
 **Set hive.exec.reducer.bytes.per.reducer** – 資料若未壓縮，預設值就很適用。  資料若有壓縮，則應縮減歸納器的大小。  
 

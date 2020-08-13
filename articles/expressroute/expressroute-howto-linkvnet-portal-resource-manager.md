@@ -1,6 +1,6 @@
 ---
 title: ExpressRoute：將 VNet 連結到線路： Azure 入口網站
-description: 將 VNet 連線至 Azure ExpressRoute 線路。 操作說明步驟。
+description: 瞭解如何建立連線，以使用 Azure 入口網站將虛擬網路連結至 Azure ExpressRoute 線路。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad222e55f1e3051266c1398d76c8d246e342aba9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737065"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190921"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>使用入口網站將虛擬網路連線到 ExpressRoute 線路
 > [!div class="op_single_selector"]
@@ -21,18 +21,18 @@ ms.locfileid: "84737065"
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [PowerShell （傳統）](expressroute-howto-linkvnet-classic.md)
+> * [PowerShell (傳統) ](expressroute-howto-linkvnet-classic.md)
 > 
 
 本文可協助您使用 Azure 入口網站建立連線，將擬網路連結到 Azure ExpressRoute 線路。 連線至 Azure ExpressRoute 線路的虛擬網路可以位於相同的訂用帳戶中，或屬於另一個訂用帳戶。
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="before-you-begin"></a>在您開始前
 
 * 開始設定之前，請先檢閱[必要條件](expressroute-prerequisites.md)、[路由需求](expressroute-routing.md)及[工作流程](expressroute-workflows.md)。
 
 * 您必須擁有作用中的 ExpressRoute 線路。
   * 遵循指示來 [建立 ExpressRoute 線路](expressroute-howto-circuit-portal-resource-manager.md) ，並由您的連線提供者來啟用該線路。
-  * 確定您已針對循環設定了 Azure 私用對等。 如需對等互連和路由指示，請參閱[建立和修改 ExpressRoute 線路的對等互連一](expressroute-howto-routing-portal-resource-manager.md)文。
+  * 確定您已針對循環設定了 Azure 私用對等。 如需對等互連和路由指示，請參閱 [建立和修改 ExpressRoute 線路的對等互連一](expressroute-howto-routing-portal-resource-manager.md) 文。
   * 請確定已設定 Azure 私用對等，且已開啟您的網路與 Microsoft 之間的 BGP 對等，讓您可以啟用端對端連線。
   * 請確定您有已建立且完整佈建的虛擬網路和虛擬網路閘道。 請依照指示[為 ExpressRoute 建立虛擬網路閘道](expressroute-howto-add-gateway-resource-manager.md)。 ExpressRoute 的虛擬網路閘道會使用 GatewayType 'ExpressRoute'，而不是 VPN。
 
@@ -52,7 +52,7 @@ ms.locfileid: "84737065"
 
 ### <a name="to-create-a-connection"></a>建立連線
 
-1. 確認正確設定您的 ExpressRoute 電路和 Azure 私人對等互連。 依照[建立 expressroute 電路](expressroute-howto-circuit-arm.md)中的指示，[建立和修改 expressroute 線路的對等互連](expressroute-howto-routing-arm.md)。 ExpressRoute 線路看起來應該像下圖：
+1. 確認正確設定您的 ExpressRoute 電路和 Azure 私人對等互連。 依照 [建立 expressroute 電路](expressroute-howto-circuit-arm.md) 中的指示， [建立和修改 expressroute 線路的對等互連](expressroute-howto-routing-arm.md)。 ExpressRoute 線路看起來應該像下圖：
 
    [![刪除 ExpressRoute 線路螢幕擷取畫面](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "視圖線路")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
 2. 您現在可以開始佈建將虛擬網路閘道連結至 ExpressRoute 線路的連線。 按一下 [**連接**]  >  [**新增**] 以開啟 [**新增連接**] 頁面，然後設定值。
@@ -122,7 +122,7 @@ ms.locfileid: "84737065"
 
    ![基本頁面](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. 在 [設定]**** 頁面中選取 [虛擬網路閘道]****，並選取 [兌換授權]**** 核取方塊。
-6. 輸入**授權金鑰**和**對等線路 URI**，並提供連線名稱。 按一下 [確定]。 「**對等線路 URI** 」是 expressroute 線路的資源識別碼（您可以在 expressroute 線路的 [內容] 設定窗格中找到）。
+6. 輸入**授權金鑰**和**對等線路 URI**，並提供連線名稱。 按一下 [確定]。 **對等線路 URI**是 expressroute 線路的資源識別碼， (您可以在 expressroute 線路) 的 [屬性] 設定窗格中找到。
 
    ![設定頁面](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. 在 [摘要]**** 頁面中檢閱資訊，然後按一下 [確定]****。

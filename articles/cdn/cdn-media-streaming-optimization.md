@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CDN 的媒體串流最佳化
-description: 將串流媒體檔案最佳化以便傳遞順暢
+description: 瞭解在 Azure 內容傳遞網路中優化串流媒體的選項，例如部分快取共用和快取填滿等候時間。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
-ms.openlocfilehash: edc2198cff360b6f0d2f6ace3b76d35bf77fab97
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206702"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192612"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>使用 Azure CDN 的媒體串流最佳化 
  

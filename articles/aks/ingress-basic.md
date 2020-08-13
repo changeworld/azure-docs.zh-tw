@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中安裝及�
 services: container-service
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 2c75d41d827ad1838898736ba8ff41aaef0b6f13
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6a34649bba275fa4b11a4c5a0c0084235d83fd4a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927044"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190777"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中建立輸入控制器
 
@@ -25,15 +25,15 @@ ms.locfileid: "87927044"
 - [建立使用自有 TLS 憑證的輸入控制器][aks-ingress-own-tls]
 - 建立輸入控制器，其使用 Let's Encrypt 自動產生[具有動態公用 IP][aks-ingress-tls] 或[具有靜態公用 IP 位址][aks-ingress-static-tls]的 TLS 憑證
 
-## <a name="before-you-begin"></a>開始之前
+## <a name="before-you-begin"></a>在您開始前
 
-本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器。
+本文使用 [Helm 3][helm] 來安裝 NGINX 輸入控制器。 請確定您使用的是最新版本的 Helm，並具有 *穩定* Helm 存放庫的存取權。
 
 本文也會要求您執行 Azure CLI 版本2.0.64 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 ## <a name="create-an-ingress-controller"></a>建立輸入控制器
 
-若要建立輸入控制器，請使用 Helm 來安裝*nginx*輸入。 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
+若要建立輸入控制器，請使用 Helm 來安裝 *nginx*輸入。 為了新增備援，您必須使用 `--set controller.replicaCount` 參數部署兩個 NGINX 輸入控制器複本。 為充分享有執行輸入控制器複本的好處，請確定 AKS 叢集中有多個節點。
 
 輸入控制器也需要在 Linux 節點上排程。 Windows Server 節點不應執行輸入控制器。 您可以使用 `--set nodeSelector` 參數來指定節點選取器，以告知 Kubernetes 排程器在 Linux 式節點上執行 NGINX 輸入控制器。
 
@@ -41,7 +41,7 @@ ms.locfileid: "87927044"
 > 下列範例會建立名為「輸入 *-基本*」的輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。
 
 > [!TIP]
-> 如果您想要為叢集中的容器要求啟用[用戶端來源 IP 保留][client-source-ip]，請將新增 `--set controller.service.externalTrafficPolicy=Local` 至 Helm install 命令。 用戶端來源 IP 會儲存在要求標頭的 [ *X-轉送-*] 下。 當使用已啟用用戶端來源 IP 保留的輸入控制器時，SSL 傳遞將無法運作。
+> 如果您想要為叢集中的容器要求啟用 [用戶端來源 IP 保留][client-source-ip] ，請將新增 `--set controller.service.externalTrafficPolicy=Local` 至 Helm install 命令。 用戶端來源 IP 會儲存在要求標頭的 [ *X-轉送-*] 下。 當使用已啟用用戶端來源 IP 保留的輸入控制器時，SSL 傳遞將無法運作。
 
 ```console
 # Create a namespace for your ingress resources
@@ -72,9 +72,9 @@ nginx-ingress-default-backend    ClusterIP      10.0.192.145   <none>        80/
 
 ## <a name="run-demo-applications"></a>執行示範應用程式
 
-若要查看作用中的輸入控制器，請在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，您會使用 `kubectl apply` 來部署簡單*Hello world*應用程式的兩個實例。
+若要查看作用中的輸入控制器，請在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，您會使用 `kubectl apply` 來部署簡單 *Hello world* 應用程式的兩個實例。
 
-建立*aks-helloworld-one yaml*檔案，並複製下列範例 yaml：
+建立 *aks-helloworld-one yaml* 檔案，並複製下列範例 yaml：
 
 ```yml
 apiVersion: apps/v1
@@ -112,7 +112,7 @@ spec:
     app: aks-helloworld-one
 ```
 
-建立*aks-helloworld-兩個 yaml*檔案，並複製下列範例 yaml：
+建立 *aks-helloworld-兩個 yaml* 檔案，並複製下列範例 yaml：
 
 ```yml
 apiVersion: apps/v1
@@ -161,9 +161,9 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 這兩個應用程式現在都已在您的 Kubernetes 叢集上執行。 若要將流量路由至每個應用程式，請建立 Kubernetes 輸入資源。 輸入資源會設定將流量路由至這兩個應用程式之一的規則。
 
-在下列範例中， *EXTERNAL_IP*的流量會路由傳送至名為的服務 `aks-helloworld-one` 。 *EXTERNAL_IP/hello-world-two*的流量會路由傳送至 `aks-helloworld-two` 服務。 *EXTERNAL_IP/靜態*的流量會路由傳送至名 `aks-helloworld-one` 為的靜態資產服務。
+在下列範例中， *EXTERNAL_IP* 的流量會路由傳送至名為的服務 `aks-helloworld-one` 。 *EXTERNAL_IP/hello-world-two*的流量會路由傳送至 `aks-helloworld-two` 服務。 *EXTERNAL_IP/靜態*的流量會路由傳送至名 `aks-helloworld-one` 為的靜態資產服務。
 
-建立名為*hello-yaml*的檔案，並複製下列範例 yaml。
+建立名為 *hello-yaml* 的檔案，並複製下列範例 yaml。
 
 ```yaml
 apiVersion: networking.k8s.io/v1beta1
@@ -218,11 +218,11 @@ ingress.extensions/hello-world-ingress-static created
 
 ## <a name="test-the-ingress-controller"></a>測試輸入控制器
 
-若要測試輸入控制器的路由，請瀏覽至這兩個應用程式。 將網頁瀏覽器開啟至 NGINX 輸入控制器的 IP 位址，例如*EXTERNAL_IP*。 第一個示範應用程式會顯示在網頁瀏覽器中，如下列範例所示：
+若要測試輸入控制器的路由，請瀏覽至這兩個應用程式。 將網頁瀏覽器開啟至 NGINX 輸入控制器的 IP 位址，例如 *EXTERNAL_IP*。 第一個示範應用程式會顯示在網頁瀏覽器中，如下列範例所示：
 
 ![執行於輸入控制器後方的第一個應用程式](media/ingress-basic/app-one.png)
 
-現在，將 */hello-world-two*路徑新增至 IP 位址，例如*EXTERNAL_IP/hello-world-two*。 此時會顯示具有自訂標題的第二個示範應用程式：
+現在，將 */hello-world-two* 路徑新增至 IP 位址，例如 *EXTERNAL_IP/hello-world-two*。 此時會顯示具有自訂標題的第二個示範應用程式：
 
 ![執行於輸入控制器後方的第二個應用程式](media/ingress-basic/app-two.png)
 

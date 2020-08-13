@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: 034e72238375750651a1374a94b844d36fd97d03
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: caad034c2cc3403bc88ee5f50d101702ec692c35
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166445"
+ms.locfileid: "88192242"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -67,7 +67,7 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 |原則|影響範圍|
 |----|:----|
-|**應該在虛擬機器上啟用弱點評估**<br>原則識別碼：501541f7-f7e7-4cd6-868c-4190fdad3ac9|內建|
+|**虛擬機器上應啟用弱點評定**<br>原則識別碼：501541f7-f7e7-4cd6-868c-4190fdad3ac9|內建|
 |**弱點評估解決方案應補救漏洞**<br>原則識別碼：760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
 ||||
 
@@ -106,11 +106,11 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 在此更新中，已移除檢查，而且您現在可以將弱點評定工具部署到「自訂」 Windows 和 Linux 電腦。 自訂映射是您從 marketplace 預設值修改的影像。
 
-雖然您現在可以部署整合式弱點評定延伸模組 (在多部電腦上 Qualys) 提供支援，但只有在您使用[部署 Qualys 內建弱點掃描器](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)中所列的作業系統時，才可使用。
+雖然您現在可以部署整合式弱點評定延伸模組 (在多部電腦上 Qualys) 提供支援，但只有在您使用 [部署 Qualys 內建弱點掃描器](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)中所列的作業系統時，才可使用。
 
-深入瞭解[虛擬機器的整合式弱點掃描器 (標準層僅) ](built-in-vulnerability-assessment.md)。
+深入瞭解 [虛擬機器的整合式弱點掃描器 (標準層僅) ](built-in-vulnerability-assessment.md)。
 
-在[部署合作夥伴弱點掃描解決方案](partner-vulnerability-assessment.md)中，深入瞭解如何在 Qualys 或 Rapid7 中使用您自己的私用授權弱點評估解決方案。
+在 [部署合作夥伴弱點掃描解決方案](partner-vulnerability-assessment.md)中，深入瞭解如何在 Qualys 或 Rapid7 中使用您自己的私用授權弱點評估解決方案。
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 (preview) 
@@ -119,7 +119,7 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 
 您的資料可以受到保護，不論其儲存為 blob 容器、檔案共用或資料 lake。 
 
-深入瞭解[Azure 儲存體的威脅防護](threat-protection.md#threat-protection-for-azure-storage-)。
+深入瞭解 [Azure 儲存體的威脅防護](threat-protection.md#threat-protection-for-azure-storage-)。
 
 
 
@@ -139,7 +139,7 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 - **應在 Azure 儲存體帳戶上啟用進階威脅防護**
 - **應該在虛擬機器上啟用先進的威脅防護**
 
-這些新的建議屬於 [**啟用先進的威脅防護**] 安全性控制。
+這些新的建議屬於 [ **啟用先進的威脅防護** ] 安全性控制。
 
 這些建議也包含快速修正功能。 
 
@@ -148,9 +148,9 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 > 
 > 例如，如果您的訂用帳戶中沒有任何 Azure Kubernetes Service 叢集，而您啟用威脅防護，則不會產生任何費用。 未來，如果您在相同的訂用帳戶上新增叢集，該叢集將會自動受到保護，並將于該時間開始收費。
 
-若要深入瞭解這些資訊，請[參閱安全性建議參考頁面](recommendations-reference.md)。
+若要深入瞭解這些資訊，請 [參閱安全性建議參考頁面](recommendations-reference.md)。
 
-深入瞭解[Azure 資訊安全中心中的威脅防護](https://docs.microsoft.com/azure/security-center/threat-protection)。
+深入瞭解 [Azure 資訊安全中心中的威脅防護](https://docs.microsoft.com/azure/security-center/threat-protection)。
 
 
 
@@ -201,7 +201,7 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 - 應在 SQL 受控執行個體進階資料安全性設定中，啟用傳給系統管理員和訂用帳戶擁有者的電子郵件通知
 - 應在 SQL 伺服器進階資料安全性設定中啟用傳給系統管理員和訂用帳戶擁有者的通知
 
-深入瞭解[內建原則](security-center-policy-definitions.md)。
+深入瞭解 [內建原則](security-center-policy-definitions.md)。
 
 
 
@@ -210,7 +210,7 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 ## <a name="june-2020"></a>2020 年 6 月
 
 六月的更新包括：
-- [ (預覽) 的安全分數 API](#secure-score-api-preview)
+- [ (預覽) 的安全分數 API ](#secure-score-api-preview)
 - [SQL 電腦的先進資料安全性 (Azure、其他雲端及內部內部部署)  (preview) ](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
 - [ (preview 將 Log Analytics 代理程式部署至 Azure Arc 機器的兩個新建議) ](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
 - [可大規模建立連續匯出和工作流程自動化設定的新原則](#new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale)
@@ -221,11 +221,11 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 
 ### <a name="secure-score-api-preview"></a> (預覽) 的安全分數 API
 
-您現在可以透過[安全分數 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/)來存取您的分數， (目前處於預覽狀態) 。 API 方法提供彈性來查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用**安全分數**API 來取得特定訂用帳戶的分數。 此外，您可以使用**安全分數控制項**API 來列出安全性控制項和您的訂用帳戶目前分數。
+您現在可以透過 [安全分數 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) 來存取您的分數， (目前處於預覽狀態) 。 API 方法提供彈性來查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用 **安全分數** API 來取得特定訂用帳戶的分數。 此外，您可以使用 **安全分數控制項** API 來列出安全性控制項和您的訂用帳戶目前分數。
 
-如需使用安全分數 API 進行外部工具的範例，請參閱[GitHub 社區的安全分數區域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
+如需使用安全分數 API 進行外部工具的範例，請參閱 [GitHub 社區的安全分數區域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
 
-深入瞭解[Azure 資訊安全中心中的安全分數和安全性控制](secure-score-security-controls.md)。
+深入瞭解 [Azure 資訊安全中心中的安全分數和安全性控制](secure-score-security-controls.md)。
 
 
 
@@ -241,26 +241,26 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 1. 在資訊安全中心的 [定價和設定] 頁面中啟用選用套件組合。
 
-深入瞭解[SQL 電腦的先進資料安全性](security-center-iaas-advanced-data.md)。
+深入瞭解 [SQL 電腦的先進資料安全性](security-center-iaas-advanced-data.md)。
 
 
 
 ### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a> (preview 將 Log Analytics 代理程式部署至 Azure Arc 機器的兩個新建議) 
 
-已新增兩個新的建議，以協助將[Log Analytics 代理程式](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)部署至您的 Azure Arc 機器，並確保其受到 Azure 資訊安全中心的保護：
+已新增兩個新的建議，以協助將 [Log Analytics 代理程式](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent) 部署至您的 Azure Arc 機器，並確保其受到 Azure 資訊安全中心的保護：
 
 - **Log Analytics 代理程式應該安裝在以 Windows 為基礎的 Azure Arc 機器上 (預覽) **
 - **Log Analytics 代理程式應該安裝在以 Linux 為基礎的 Azure Arc 機器上 (預覽) **
 
-這些新的建議會出現在與現有 (相關) 建議相同的四個安全性控制項中，**監視代理程式應該安裝在您的電腦上**：補救安全性設定、套用自動調整應用程式控制、套用系統更新，以及啟用 endpoint protection。
+這些新的建議會出現在與現有 (相關) 建議相同的四個安全性控制項中， **監視代理程式應該安裝在您的電腦上**：補救安全性設定、套用自動調整應用程式控制、套用系統更新，以及啟用 endpoint protection。
 
 這些建議也包含快速修正功能，可協助加速部署程式。 
 
-在[計算和應用程式建議](recommendations-reference.md#recs-computeapp)資料表中深入瞭解這兩個新的建議。
+在 [計算和應用程式建議](recommendations-reference.md#recs-computeapp) 資料表中深入瞭解這兩個新的建議。
 
-深入瞭解 Azure 資訊安全中心如何在[Log Analytics 代理程式](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)中使用代理程式？。
+深入瞭解 Azure 資訊安全中心如何在 [Log Analytics 代理程式](https://docs.microsoft.com/azure/security-center/faq-data-collection-agents#what-is-the-log-analytics-agent)中使用代理程式？。
 
-深入瞭解[Azure Arc 機器的延伸](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)模組。
+深入瞭解 [Azure Arc 機器的延伸](https://docs.microsoft.com/azure/azure-arc/servers/manage-vm-extensions#enable-extensions-from-the-portal)模組。
 
 
 
@@ -268,7 +268,7 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 自動化組織的監視和事件回應程式，可以大幅改善調查和緩和安全性事件所需的時間。
 
-若要在整個組織中部署您的自動化設定，請使用這些內建的「DeployIfdNotExist」 Azure 原則來建立及設定[連續匯出](continuous-export.md)和[工作流程自動化](workflow-automation.md)程式：
+若要在整個組織中部署您的自動化設定，請使用這些內建的「DeployIfdNotExist」 Azure 原則來建立及設定 [連續匯出](continuous-export.md) 和 [工作流程自動化](workflow-automation.md) 程式：
 
 您可以在 Azure 原則中找到這些原則：
 
@@ -281,9 +281,9 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 |安全性建議的工作流程自動化|[為 Azure 資訊安全中心建議部署工作流程自動化](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
 ||||
 
-開始使用[工作流程自動化範本](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)。
+開始使用 [工作流程自動化範本](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)。
 
-若要深入瞭解如何使用這兩個匯出原則，請透過[原則持續匯出 Azure 資訊安全中心警示和建議](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745)。
+若要深入瞭解如何使用這兩個匯出原則，請透過 [原則持續匯出 Azure 資訊安全中心警示和建議](https://techcommunity.microsoft.com/t5/azure-security-center/continuously-export-azure-security-center-alerts-and/ba-p/1440745)。
 
 
 ### <a name="new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines"></a>使用 Nsg 來保護非網際網路面向虛擬機器的新建議
@@ -292,9 +292,9 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 - **應使用網路安全性群組保護非網際網路對應的虛擬機器**
 
-現有的建議、**網際網路對向虛擬機器應該使用網路安全性群組來保護**，而無法區分網際網路對向和非網際網路對應的 vm。 對於這兩種情況，如果未將 VM 指派給網路安全性群組，就會產生高嚴重性建議。 這項新的建議會將非網際網路對向的電腦分開，以減少誤報，並避免不必要的高嚴重性警示。
+現有的建議、 **網際網路對向虛擬機器應該使用網路安全性群組來保護**，而無法區分網際網路對向和非網際網路對應的 vm。 對於這兩種情況，如果未將 VM 指派給網路安全性群組，就會產生高嚴重性建議。 這項新的建議會將非網際網路對向的電腦分開，以減少誤報，並避免不必要的高嚴重性警示。
 
-在[網路建議](recommendations-reference.md#recs-network)表格中深入瞭解。
+在 [網路建議](recommendations-reference.md#recs-network) 表格中深入瞭解。
 
 
 
@@ -318,7 +318,7 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 | [應在虛擬機器上啟用進階威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
 |                                                                                                                                                                                                                                                                       |                                      |
 
-深入瞭解[Azure 資訊安全中心中的威脅防護](https://docs.microsoft.com/azure/security-center/threat-protection)。
+深入瞭解 [Azure 資訊安全中心中的威脅防護](https://docs.microsoft.com/azure/security-center/threat-protection)。
 
 
 
@@ -418,13 +418,13 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 新增至控制項的兩個新建議如下：
 
-- **來賓設定延伸模組應該安裝在 windows 虛擬機器上 (Preview) ** -使用[Azure 原則來賓](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)設定會在虛擬機器中提供可見度， (僅限 Windows) 的伺服器和應用程式設定。
+- **來賓設定延伸模組應該安裝在 windows 虛擬機器上 (Preview) ** -使用 [Azure 原則來賓](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) 設定會在虛擬機器中提供可見度， (僅限 Windows) 的伺服器和應用程式設定。
 
 - **Windows Defender 惡意探索防護應在您的電腦上啟用 (Preview) ** -Windows Defender 惡意探索防護會利用 Azure 原則來賓設定代理程式。 「惡意探索防護」有四個元件，設計用來鎖定裝置，使其免於遭受惡意程式碼攻擊的各種攻擊和封鎖行為，同時讓企業能夠平衡本身的安全性風險和生產力需求 (僅限 Windows)。
 
 若要深入瞭解 Windows Defender 惡意探索防護，請參閱[建立及部署惡意探索防護原則](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)。
 
-深入瞭解[增強式安全分數 (預覽) ](secure-score-security-controls.md)中的安全性控制項。
+深入瞭解 [增強式安全分數 (預覽) ](secure-score-security-controls.md)中的安全性控制項。
 
 
 
@@ -446,7 +446,7 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 此轉換的一些優點：
 
-- **主動式和即時惡意程式碼偵測**-這是 CDA 的方法，其中涉及等待損毀發生，然後執行分析以尋找惡意的成品。 使用無檔案攻擊偵測可在執行中時，為記憶體內部威脅提供主動式識別。 
+- **主動式和即時惡意程式碼偵測** -這是 CDA 的方法，其中涉及等待損毀發生，然後執行分析以尋找惡意的成品。 使用無檔案攻擊偵測可在執行中時，為記憶體內部威脅提供主動式識別。 
 
 - **擴充的警示** - 來自無檔案攻擊偵測的安全性警示包含無法從 CDA 取得的擴充，例如使用中的網路連線資訊。 
 

@@ -1,6 +1,6 @@
 ---
 title: 憑證建立方式
-description: 在 Key Vault 中建立憑證的方式。
+description: 瞭解在 Azure Key Vault 中建立或匯入 Key Vault 憑證的不同選項。 建立 Key Vault 憑證的方法有好幾種。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 312f04ff4b1d860724640dfc9e5ea9d75bb76bae
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81866261"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189964"
 ---
 # <a name="certificate-creation-methods"></a>憑證建立方式
 
@@ -43,7 +43,7 @@ ms.locfileid: "81866261"
 
 1. 在上圖中，您的應用程式即將建立憑證，內部程序首先會在金鑰保存庫中建立金鑰。
 2. Key Vault 將 TLS/SSL 憑證要求傳送給 CA。
-3. 您的應用程式會以迴圈和等待流程來輪詢 Key Vault，直到憑證完成。 Key Vault 收到含 x509 憑證的 CA 回應時，憑證建立工作即完成。
+3. 您的應用程式會在迴圈和等候程序中輪詢 Key Vault 憑證是否完成。 當 Key Vault 收到具有 x509 憑證的 CA 回應時，就會完成憑證建立。
 4. CA 會使用 TLS/SSL x.509 憑證來回應 Key Vault 的 TLS/SSL 憑證要求。
 5. 您的新憑證建立會隨著 CA 的 TLS/SSL x.509 憑證合併而完成。
 

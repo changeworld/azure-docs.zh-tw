@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
 ms.date: 08/12/2020
-ms.openlocfilehash: faef8c29b2a5e75745e36c5d826b4feee2d60a98
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88169118"
+ms.locfileid: "88191192"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>在 SQL 受控執行個體上由使用者起始的手動容錯移轉
 
@@ -23,20 +23,23 @@ ms.locfileid: "88169118"
 
 ## <a name="when-to-use-manual-failover"></a>使用手動容錯移轉的時機
 
-[高可用性](../database/high-availability-sla.md)是 SQL 受控執行個體平臺的基本部分，可讓您的資料庫應用程式以透明的方式運作。 當節點降低或偵測錯誤時，從主要節點容錯移轉到次要節點，或在每月定期執行軟體更新時，都是在 Azure 中使用 SQL 受控執行個體的所有應用程式的預期發生。
+[高可用性](../database/high-availability-sla.md) 是 SQL 受控執行個體平臺的基本部分，可讓您的資料庫應用程式以透明的方式運作。 當節點降低或偵測錯誤時，從主要節點容錯移轉到次要節點，或在每月定期執行軟體更新時，都是在 Azure 中使用 SQL 受控執行個體的所有應用程式的預期發生。
 
-基於下列原因，您可能會考慮在 SQL 受控執行個體上執行[手動容錯移轉](../database/high-availability-sla.md#testing-application-fault-resiliency)：
+基於下列原因，您可能會考慮在 SQL 受控執行個體上執行 [手動容錯移轉](../database/high-availability-sla.md#testing-application-fault-resiliency) ：
 - 在部署至生產環境之前，先測試應用程式的容錯移轉復原
 - 測試端對端系統，以在自動容錯移轉時復原錯誤
 - 測試容錯移轉如何影響現有的資料庫會話
 - 確認容錯移轉是否因網路延遲的變更而變更端對端效能
 - 在某些情況下，在查詢效能降低中，手動容錯移轉有助於減輕效能問題。
 
+> [!NOTE]
+> 在部署至生產環境之前，確保您的應用程式能夠復原，將有助於降低生產環境中應用程式錯誤的風險，並將為您的客戶提供應用程式可用性。
+
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>在 SQL 受控執行個體上起始手動容錯移轉
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-Az. Sql 的最低版本必須是[v 2.9.0 版](https://www.powershellgallery.com/packages/Az.Sql/2.9.0)。 請考慮使用一律具有最新 PowerShell 版本的 Azure 入口網站中的[Azure Cloud Shell](../../cloud-shell/overview.md) 。 
+Az. Sql 的最低版本必須是 [v 2.9.0 版](https://www.powershellgallery.com/packages/Az.Sql/2.9.0)。 請考慮使用一律具有最新 PowerShell 版本的 Azure 入口網站中的 [Azure Cloud Shell](../../cloud-shell/overview.md) 。 
 
 如需必要條件，請使用下列 PowerShell 腳本來安裝必要的 Azure 模組。 此外，請選取您想要容錯移轉受控執行個體所在的訂用帳戶。
 
@@ -50,7 +53,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-使用 PowerShell 命令叫用[-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover)與下列範例來起始主要節點的容錯移轉，適用于 BC 和 GP 服務層。
+使用 PowerShell 命令叫用 [-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) 與下列範例來起始主要節點的容錯移轉，適用于 BC 和 GP 服務層。
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -84,7 +87,7 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>使用 Rest API
 
-對於可能需要針對執行連續測試管線或自動化效能 mitigators 的 SQL 受控實例進行自動容錯移轉的高階使用者，可以透過 API 呼叫來起始容錯移轉來完成此功能。 如需詳細資訊，請參閱[受控實例-容錯移轉 REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) 。
+對於可能需要針對執行連續測試管線或自動化效能 mitigators 的 SQL 受控實例進行自動容錯移轉的高階使用者，可以透過 API 呼叫來起始容錯移轉來完成此功能。 如需詳細資訊，請參閱 [受控實例-容錯移轉 REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) 。
 
 若要使用 REST API 呼叫來起始容錯移轉，請先使用您選擇的 API 用戶端來產生驗證權杖。 產生的驗證權杖會當做 API 要求標頭中的 Authorization 屬性使用，而且是必要的。
 
@@ -109,7 +112,7 @@ API 回應將會是下列其中一種：
 - 202 已接受
 - 其中一個400要求錯誤。
 
-您可以透過在回應標頭中審查 API 回應來追蹤作業狀態。 如需詳細資訊，請參閱[非同步 Azure 作業的狀態](../../azure-resource-manager/management/async-operations.md)。
+您可以透過在回應標頭中審查 API 回應來追蹤作業狀態。 如需詳細資訊，請參閱 [非同步 Azure 作業的狀態](../../azure-resource-manager/management/async-operations.md)。
 
 ## <a name="monitor-the-failover"></a>監視容錯移轉
 
@@ -131,5 +134,5 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解[AZURE SQL 受控執行個體](../database/high-availability-sla.md)的受控實例高可用性高可用性。
-- 如需總覽，請參閱[什麼是 AZURE SQL 受控執行個體？](sql-managed-instance-paas-overview.md)。
+- 深入瞭解 [AZURE SQL 受控執行個體](../database/high-availability-sla.md)的受控實例高可用性高可用性。
+- 如需總覽，請參閱 [什麼是 AZURE SQL 受控執行個體？](sql-managed-instance-paas-overview.md)。

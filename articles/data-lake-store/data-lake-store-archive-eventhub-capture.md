@@ -1,17 +1,17 @@
 ---
 title: 從事件中樞捕獲資料至 Azure Data Lake Storage Gen1
-description: 使用 Azure Data Lake Storage Gen1 來捕捉 Azure 事件中樞所收到的資料。
+description: 了解如何使用 Azure Data Lake Storage Gen1 來擷取 Azure 事件中樞所收到的資料。 一開始請先確認必要條件。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515762"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190270"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 從事件中樞擷取資料
 
@@ -117,6 +117,6 @@ ms.locfileid: "85515762"
 一旦資料位於 Data Lake Storage Gen1，您就可以執行分析作業來處理資料並進行大量運算。 請參閱 [USQL Avro 範例](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)，以了解如何使用 Azure Data Lake Analytics 來執行此動作。
   
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)
 * [將資料從 Azure 儲存體 Blob 複製到 Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

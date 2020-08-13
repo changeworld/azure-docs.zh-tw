@@ -4,26 +4,26 @@ description: 在本文中，您會找到有關使用 Azure 備份服務來備份
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: bf09c4e56c3881987e14d27d5f2166c68e311ab3
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 268146430a71cca4e620381ec4ce8666f808fefd
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533490"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190891"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
-本文會回答有關使用[Azure 備份](./backup-overview.md)服務來備份 Azure vm 的常見問題。
+本文會回答有關使用 [Azure 備份](./backup-overview.md) 服務來備份 Azure vm 的常見問題。
 
 ## <a name="backup"></a>Backup
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>建立虛擬機器映射時，可以針對備份啟用哪些 VM 映射？
 
-當您建立 VM 時，可以針對執行[支援的作業系統](backup-support-matrix-iaas.md#supported-backup-actions)的 vm 啟用備份。
+當您建立 VM 時，可以針對執行 [支援的作業系統](backup-support-matrix-iaas.md#supported-backup-actions)的 vm 啟用備份。
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>VM 成本中包含備份成本嗎？
 
-否。 備份成本與 VM 的成本不同。 深入瞭解[Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
+不正確。 備份成本與 VM 的成本不同。 深入瞭解 [Azure 備份定價](https://azure.microsoft.com/pricing/details/backup/)。
 
 ### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>若要啟用 VM 的備份，需要哪些許可權？
 
@@ -43,7 +43,7 @@ ms.locfileid: "87533490"
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>隨選備份作業是否會使用與排定備份相同的保留排程？
 
-否。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
+不正確。 指定隨選備份作業的保留範圍。 根據預設，若從入口網站觸發，則會保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我在最近一些 VM 上啟用了 Azure 磁碟加密。 我的備份是否會繼續運作？
 
@@ -63,17 +63,17 @@ ms.locfileid: "87533490"
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>我是否可以取消進行中的備份作業？
 
-是。 您可以在**拍攝快照**集狀態中取消備份作業。 如果正在從快照集傳輸資料，則無法取消作業。
+是。 您可以在 **拍攝快照** 集狀態中取消備份作業。 如果正在從快照集傳輸資料，則無法取消作業。
 
-### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>我啟用了 Azure 備份服務所建立之資源群組的鎖定（例如 `AzureBackupRG_<geo>_<number>` ）。 我的備份是否會繼續運作？
+### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>我啟用了 Azure 備份 (服務所建立之資源群組的鎖定，例如 `AzureBackupRG_<geo>_<number>`) 。 我的備份是否會繼續運作？
 
 如果您鎖定 Azure 備份服務所建立的資源群組，則備份會開始失敗，因為最大限制為18個還原點。
 
-移除鎖定，並清除該資源群組中的還原點集合，讓未來的備份成功。 [請遵循下列步驟](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)來移除還原點集合。
+移除鎖定，並清除該資源群組中的還原點集合，讓未來的備份成功。 [請遵循下列步驟](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) 來移除還原點集合。
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure 備份是否支援標準 SSD 受控磁片？
 
-是，Azure 備份支援[標準 SSD 受控磁片](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。
+是，Azure 備份支援 [標準 SSD 受控磁片](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)。
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>我們可以備份具有已啟用寫入加速器 (WA) 之磁碟的 VM 嗎？
 
@@ -83,7 +83,7 @@ ms.locfileid: "87533490"
 
 Azure 備份無法備份已啟用 WA 的磁碟，但可從備份中排除該磁碟。 不過，備份將不會提供資料庫一致性，因為系統不會備份已啟用 WA 之磁碟的相關資訊。 如果您想要作業系統磁碟備份以及未啟用 WA 的磁碟備份，您可以使用此設定來備份磁碟。
 
-Azure 備份為具有15分鐘 RPO 的 SAP Hana 資料庫提供串流備份解決方案。 它是由 SAP 認證，以提供利用 SAP Hana 的原生 Api 的原生備份支援。 深入瞭解[如何在 Azure vm 中備份 SAP Hana 資料庫](./sap-hana-db-about.md)。
+Azure 備份為具有15分鐘 RPO 的 SAP Hana 資料庫提供串流備份解決方案。 它是由 SAP 認證，以提供利用 SAP Hana 的原生 Api 的原生備份支援。 深入瞭解 [如何在 Azure vm 中備份 SAP Hana 資料庫](./sap-hana-db-about.md)。
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>我在 VM 備份原則中所設定的排程備份時間，我可以預期的最大延遲為何？
 
@@ -95,11 +95,11 @@ Azure 虛擬機器備份原則支援最小保留範圍，最多7天到9999天。
 
 ### <a name="what-happens-if-i-change-the-case-of-the-name-of-my-vm-or-my-vm-resource-group"></a>如果我變更我的 VM 或我的 VM 資源群組的名稱案例，會發生什麼事？
 
-如果您變更 VM 或 VM 資源群組的大小寫（或更低），備份專案名稱的大小寫將不會變更。 不過，這是預期的 Azure 備份行為。 案例變更不會出現在備份專案中，但會在後端更新。
+如果您將大小寫 (變更為 VM 或 VM 資源群組的上限或較低) ，備份專案名稱的案例將不會變更。 不過，這是預期的 Azure 備份行為。 案例變更不會出現在備份專案中，但會在後端更新。
 
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>我可以備份或還原附加至 VM 的選擇性磁片嗎？
 
-Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁碟備份和還原。 如需詳細資訊，請參閱[適用于 Azure vm 的選擇性磁片備份與還原](selective-disk-backup-restore.md)。
+Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁碟備份和還原。 如需詳細資訊，請參閱 [適用于 Azure vm 的選擇性磁片備份與還原](selective-disk-backup-restore.md)。
 
 ## <a name="restore"></a>還原
 
@@ -121,7 +121,7 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>如何將 VM 還原至將 VM 遷移至受控磁碟之前的還原點？
 
-還原程式維持不變。 如果復原點是 VM 具有非受控磁片時的時間點，您可以將[磁片還原為未受管理](tutorial-restore-disk.md#unmanaged-disks-restore)。 如果 VM 具有受控磁片，則您可以將[磁片還原為受控磁片](tutorial-restore-disk.md#managed-disk-restore)。 然後您可以[從這些磁片建立 VM](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)。
+還原程式維持不變。 如果復原點是 VM 具有非受控磁片時的時間點，您可以將 [磁片還原為未受管理](tutorial-restore-disk.md#unmanaged-disks-restore)。 如果 VM 具有受控磁片，則您可以將 [磁片還原為受控磁片](tutorial-restore-disk.md#managed-disk-restore)。 然後您可以 [從這些磁片建立 VM](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)。
 
 [深入了解](backup-azure-vms-automation.md#restore-an-azure-vm)如何在 PowerShell 中執行此動作。
 
@@ -167,8 +167,8 @@ VM 會使用已修改或新的原則中的排程和保留期設定來備份。
 
    1. 尋找虛擬機器的位置。
    2. 尋找具有下列命名模式的資源群組： `AzureBackupRG_<location of your VM>_1` 。 例如， *AzureBackupRG_westus2_1*
-   3. 在 [Azure 入口網站中，勾選 [**顯示隱藏的類型**]。
-   4. 尋找類型為**Microsoft. Compute/restorePointCollections**且具有命名模式的資源 `AzureBackup_<name of your VM that you're trying to move>_###########` 。
+   3. 在 [Azure 入口網站中，勾選 [ **顯示隱藏的類型**]。
+   4. 尋找類型為 **Microsoft. Compute/restorePointCollections** 且具有命名模式的資源 `AzureBackup_<name of your VM that you're trying to move>_###########` 。
    5. 刪除此資源。 此作業只會刪除立即復原點，而不會刪除保存庫中備份的資料。
    6. 刪除作業完成之後，您就可以移動虛擬機器。
 
@@ -188,3 +188,11 @@ VM 會使用已修改或新的原則中的排程和保留期設定來備份。
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>可以與相同備份原則建立關聯的 Vm 數目是否有限制？
 
 是，有 100 Vm 的限制，可以從入口網站與相同的備份原則建立關聯。 針對超過100個 Vm，我們建議您建立多個具有相同排程或不同排程的備份原則。
+
+### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>如何才能查看備份的保留設定？
+
+目前，您可以根據指派給 VM 的備份原則，在 (VM) 層級的備份專案上，查看保留設定。 
+
+若要查看備份的保留設定，其中一種方式是在 [Azure 入口網站] 中流覽至 VM 的 [備份專案] [儀表板](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) 。 按一下其備份原則的連結，可協助您查看與 VM 相關聯的每日、每週、每月和每年保留點的保留期間。
+
+您也可以使用 [ [備份瀏覽器](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) ]，在單一畫面中查看所有 vm 的保留設定。 流覽至任何復原服務保存庫中的備份瀏覽器，移至 [ **備份專案** ] 索引標籤，然後選取 [Advanced View]，以查看每個 VM 的詳細保留資訊。  

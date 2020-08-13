@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：路由器組態範例
-description: 此頁面提供適用於 Cisco 和 Juniper 路由器的路由器組態範例。
+description: 使用這些介面和路由設定範例，將 Cisco IOS-XE 和刺柏 MX 系列路由器當做使用 Azure ExpressRoute 的範例。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: osamaz
-ms.openlocfilehash: 6b9db450139c22fdf2df0875f36c65cdf684dfb3
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: fdf50dc6b4c0976a713a1d436ac9af7c1bd9701b
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856697"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190784"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>設定和管理路由的路由器組態範例
 此頁面提供在使用 Azure ExpressRoute 時，適用於 Cisco IOS XE 和 Juniper MX 系列路由器的介面和路由組態範例。

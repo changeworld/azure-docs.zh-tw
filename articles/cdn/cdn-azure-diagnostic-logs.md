@@ -1,7 +1,7 @@
 ---
 title: 診斷記錄
 titleSuffix: Azure Content Delivery Network
-description: 客戶可以啟用 Azure CDN 的記錄分析功能。
+description: 瞭解如何使用 Azure 診斷記錄來儲存核心分析，這可讓您從 Azure 內容傳遞網路端點匯出使用計量。
 services: cdn
 author: asudbring
 manager: KumudD
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: dbaba67a163bb0f948de5ba2ebbdba5497ad5ff9
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116981"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191277"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>診斷記錄-Azure 內容傳遞網路
 
@@ -36,7 +36,7 @@ ms.locfileid: "87116981"
 * 匯出資料至事件中樞，並將資料與其他 Azure 服務相互關聯。
 * 將資料匯出至您自己的 Log Analytics 工作區中 Azure 監視器記錄及查看資料
 
-需要有 Azure CDN 設定檔，才能執行下列步驟。 請參閱[建立 AZURE CDN 設定檔和端點](cdn-create-new-endpoint.md)，再繼續進行操作。
+需要有 Azure CDN 設定檔，才能執行下列步驟。 請參閱 [建立 AZURE CDN 設定檔和端點](cdn-create-new-endpoint.md) ，再繼續進行操作。
 
 ## <a name="enable-logging-with-the-azure-portal"></a>使用 Azure 入口網站啟用記錄
 
@@ -59,9 +59,9 @@ ms.locfileid: "87116981"
 若要使用儲存體帳戶來儲存記錄，請遵循下列步驟：
 
  >[!NOTE] 
- >需要有儲存體帳戶，才能完成這些步驟。 如需詳細資訊，請參閱：**[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)**。
+ >需要有儲存體帳戶，才能完成這些步驟。 如需詳細資訊，請參閱： **[建立 Azure 儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)** 。
     
-1. 針對 [**診斷設定名稱**]，輸入診斷記錄設定的名稱。
+1. 針對 [ **診斷設定名稱**]，輸入診斷記錄設定的名稱。
  
 2. 選取 [封存至儲存體帳戶]****，然後選取 [CoreAnalytics]****。 
 
@@ -78,11 +78,11 @@ ms.locfileid: "87116981"
 若要針對記錄使用 Log Analytics，請遵循下列步驟：
 
 >[!NOTE] 
->需要有 log analytics 工作區，才能完成這些步驟。 如需詳細資訊，請參閱：**[在 Azure 入口網站中建立 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)**。
+>需要有 log analytics 工作區，才能完成這些步驟。 如需詳細資訊，請參閱： **[在 Azure 入口網站中建立 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)** 。
     
-1. 針對 [**診斷設定名稱**]，輸入診斷記錄設定的名稱。
+1. 針對 [ **診斷設定名稱**]，輸入診斷記錄設定的名稱。
 
-2. 選取 [**傳送至 Log Analytics**]，然後選取 [ **CoreAnalytics**]。 
+2. 選取 [ **傳送至 Log Analytics**]，然後選取 [ **CoreAnalytics**]。 
 
 3. 選取記錄的訂用帳戶和 Log Analytics 工作區。
 
@@ -95,11 +95,11 @@ ms.locfileid: "87116981"
 若要使用記錄的事件中樞，請遵循下列步驟：
 
 >[!NOTE] 
->必須要有事件中樞，才能完成這些步驟。 如需詳細資訊，請參閱：**[快速入門：使用 Azure 入口網站建立事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)**。
+>必須要有事件中樞，才能完成這些步驟。 如需詳細資訊，請參閱： **[快速入門：使用 Azure 入口網站建立事件中樞](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)** 。
     
-1. 針對 [**診斷設定名稱**]，輸入診斷記錄設定的名稱。
+1. 針對 [ **診斷設定名稱**]，輸入診斷記錄設定的名稱。
 
-2. 選取 [**串流至事件中樞**]，然後選取 [ **CoreAnalytics**]。 
+2. 選取 [ **串流至事件中樞**]，然後選取 [ **CoreAnalytics**]。 
 
 3. 選取記錄的訂用帳戶和事件中樞命名空間。
 
@@ -187,7 +187,7 @@ ms.locfileid: "87116981"
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 儲存體總管
 若要下載此工具，請參閱 [Azure 儲存體總管](https://storageexplorer.com/)。 下載並安裝軟體後，請將其設定為使用同一個已設定為 CDN 診斷記錄目的地的 Azure 儲存體帳戶。
 
-1.  開啟**Microsoft Azure 儲存體總管**
+1.  開啟 **Microsoft Azure 儲存體總管**
 2.  找到儲存體帳戶
 3.  展開此儲存體帳戶下方的 [Blob 容器]**** 節點。
 4.  選取名為 *insights-logs-coreanalytics* 的容器。
@@ -204,13 +204,13 @@ ms.locfileid: "87116981"
 
 **欄位說明：**
 
-|值|說明|
+|值|描述|
 |-------|---------|
 |訂用帳戶識別碼    |使用 GUID 格式的 Azure 訂用帳戶識別碼。|
 |資源群組名稱 |CDN 資源所屬資源群組的名稱。|
 |設定檔名稱 |CDN 設定檔名稱|
 |端點名稱 |CDN 端點名稱|
-|年|  四位數的年份表示法，例如 2017|
+|Year|  四位數的年份表示法，例如 2017|
 |Month| 兩位數的月份表示法。 01 = 一月 .。。12 = 十二月|
 |天|   兩位數的當月日期表示法|
 |PT1H.json| 儲存分析資料的實際 JSON 檔案|
@@ -221,7 +221,7 @@ ms.locfileid: "87116981"
 
 以下為使用此工具的方式：
 
-1.  請造訪 GitHub 連結：[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  請造訪 GitHub 連結： [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  下載程式碼。
 3.  依照指示編譯與設定。
 4.  執行工具。

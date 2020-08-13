@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault 客戶資料功能 - Azure Key Vault | Microsoft Docs
-description: 深入了解 Key Vault 中的客戶資料
+description: 瞭解客戶資料，Azure Key Vault 在建立或更新保存庫、金鑰、秘密、憑證及受控儲存體帳戶期間接收。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: bceea53e6b177940305a2dc77f2a6ecfa37f277a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e7cfc707aa4bccdcd72e45efa3693ebd8f88a211
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81617904"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189925"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客戶資料功能
 
@@ -52,7 +52,7 @@ Azure Key Vault 存取記錄是選擇性的功能，您可以針對每個 REST A
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure Key Vault 記錄](logging.md)）
+- [Azure Key Vault 記錄](logging.md)) 
 
 - [Azure Key Vault 虛刪除概觀](soft-delete-cli.md)
 

@@ -1,6 +1,6 @@
 ---
 title: 驗證、要求和回應
-description: 使用 Key Vault 向 AD 驗證
+description: 瞭解 Azure Key Vault 如何使用 JSON 格式的要求和回應，以及使用金鑰保存庫所需的驗證。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2b4c8ad666efa32d98e78a0bc2544d0f8851be5e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81430886"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191789"
 ---
 # <a name="authentication-requests-and-responses"></a>驗證、要求和回應
 
@@ -113,5 +113,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization：可能用來取得要求存取權杖之 OAuth2 授權服務的位址。  
 
--   資源： `https://vault.azure.net` 要在授權要求中使用的資源名稱（）。  
+-   資源： `https://vault.azure.net` 要在授權要求中使用的資源 () 名稱。  
 

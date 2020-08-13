@@ -1,6 +1,6 @@
 ---
 title: Azure 金鑰保存庫服務限制 - Azure Key Vault | Microsoft Docs
-description: 了解 Azure 金鑰保存庫的服務限制。
+description: 瞭解 Azure Key Vault 的服務限制，包括金鑰交易和 Azure 私人連結整合。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 75fec93be9b43785a91c93b7c609231e37188602
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec1894a54e9ebc10e10c40984b4891be9272bd33
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429820"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191734"
 ---
 # <a name="azure-key-vault-service-limits"></a>Azure Key Vault 服務限制
 

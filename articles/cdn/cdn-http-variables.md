@@ -1,6 +1,6 @@
 ---
 title: Azure CDN 規則引擎的 HTTP 變數 | Microsoft Docs
-description: HTTP 變數可讓您擷取 HTTP 要求和回應中繼資料。
+description: 瞭解 HTTP 變數，其可讓您取得某些規則引擎功能的 HTTP 要求和回應中繼資料。 使用中繼資料來改變要求/回應。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203574"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192679"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 HTTP 變數
 HTTP 變數能提供擷取 HTTP 要求和回應中繼資料的方法。 此中繼資料可以接著用來動態調整要求或回應。 HTTP 變數的使用，僅限於下列規則引擎功能：
@@ -96,13 +96,13 @@ HTTP 變數名稱僅支援字母字元和底線。 系統會將不支援的字�
 | --------- | ----------- |
 | := | 表示將會在變數滿足下列其中一個條件時，將預設值指派給變數： <br />- 遺漏 <br />- 設定為 NULL。 |
 | :+ | 表示在變數有指派值的情況下，將預設值指派給變數。 |
-| 所解碼的字元： | 表示將會展開變數指派值的子字串。 |
+| : | 表示將會展開變數指派值的子字串。 |
 | # | 表示若在變數關聯值的開頭找到此分隔符號之後所指定的模式時，應該將該模式刪除。 |
 | % | 表示若在變數關聯值的尾端找到在此分隔符號之後所指定的模式時，應該將該模式刪除。 <br />只有在使用 % 符號作為分隔符號時才適用此定義。 |
 | / | 分隔 HTTP 變數或模式。 |
 | // | 尋找並取代指定模式的所有執行個體。 |
 | /= | 尋找，複製並重寫指定模式的所有發生案例。 |
-| 、 | 將 HTTP 變數關聯值轉換成小寫。 |
+| , | 將 HTTP 變數關聯值轉換成小寫。 |
 | ^ | 將 HTTP 變數關聯值轉換成大寫。 |
 | ,, | 將 HTTP 變數關聯值中指定字元的所有執行個體轉換成小寫。 |
 | ^^ | 將 HTTP 變數關聯值中指定字元的所有執行個體轉換成大寫。 |
@@ -187,7 +187,7 @@ https:\//www.mydomain.com/mobile/marketing/proposal.htm
 
 下表示範此語法的運作方式。
 
-| 範例語法 | 結果 | 描述 |
+| 範例語法 | 結果 | Description |
 | ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | 由於變數是以該模式作為開頭，因此會被取代。 |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | 由於變數沒有以該模式作為結尾，因此沒有任何變更。|

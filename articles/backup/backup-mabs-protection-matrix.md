@@ -3,12 +3,12 @@ title: MABS (Azure 備份伺服器) V3 UR1 保護對照表
 description: 本文提供支援矩陣，其中列出 Azure 備份伺服器保護的所有工作負載、資料類型和安裝。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa8e2a33718c17df7b918b2aaa545ca80c473c29
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036720"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190856"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure 備份伺服器) V3 UR1 保護對照表
 
@@ -25,7 +25,7 @@ ms.locfileid: "88036720"
 * 保護和還原 – 列出關於工作負載的詳細資訊，例如，支援的儲存體容器或支援的部署
 
 >[!NOTE]
->32位保護代理程式的支援已被 MABS v3 UR1 取代。 請參閱[32 位保護代理程式](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation)取代。
+>32位保護代理程式的支援已被 MABS v3 UR1 取代。 請參閱 [32 位保護代理程式](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation)取代。
 
 ## <a name="protection-support-matrix"></a>保護支援矩陣
 
@@ -40,9 +40,9 @@ ms.locfileid: "88036720"
 | **[工作負載]**               | **版本**                                                  | **Azure 備份伺服器安裝**                       | **支援的 Azure 備份伺服器** | **保護和復原**                                  |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
 | 用戶端電腦 (64 位)  | Windows 10                                                  | 實體伺服器  <br><br>    Hyper-V 虛擬機器   <br><br>   VMware 虛擬機器 | V3 UR1                            | 磁片區、共用、資料夾、檔案、重復資料刪除磁片區   <br><br>   受保護的磁碟區必須是 NTFS。 不支援 FAT 和 FAT32。  <br><br>    磁碟區至少必須是 1 GB。 Azure 備份伺服器使用磁碟區陰影複製服務 (VSS) 來製作資料快照集，而快照集只適用于磁片區至少為 1 GB 的情況。 |
-| 伺服器 (64 位)           | Windows Server 2019、2016、2012 R2、2012                    | 當工作負載以 Azure 虛擬機器的形式執行時，azure 虛擬機器 ()   <br><br>    實體伺服器  <br><br>    Hyper-V 虛擬機器 <br><br>     VMware 虛擬機器  <br><br>    Azure Stack | V3 UR1                            | 磁片區、共用、資料夾、檔案、重復資料刪除的磁片區 (NTFS 和 ReFS)   <br><br>   當工作負載當做 Azure 虛擬機器執行時，不支援系統狀態和裸機 ()  |
-| 伺服器 (64 位)           | Windows Server 2008 R2 SP1、Windows Server 2008 SP2 (您必須安裝[Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855))  | 實體伺服器  <br><br>    Hyper-V 虛擬機器  <br><br>      VMware 虛擬機器  <br><br>   Azure Stack | V3 UR1                            | 磁片區、共用、資料夾、檔案、系統狀態/裸機        |
-| SQL Server                | SQL Server 2019、2017、2016和[支援的 sps](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202016)、2014和支援的[sps](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202014) | 實體伺服器  <br><br>     Hyper-V 虛擬機器   <br><br>     VMware 虛擬機器  <br><br>   Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)  <br><br>     Azure Stack | V3 UR1                            | 所有部署案例：資料庫       <br><br>  MABS v3 UR1 支援透過 ReFS 磁片區備份 SQL 資料庫                  |
+| 伺服器 (64 位)           | Windows Server 2019、2016、2012 R2、2012                    | 當工作負載以 Azure 虛擬機器的形式執行時，azure 虛擬機器 ()   <br><br>    實體伺服器  <br><br>    Hyper-V 虛擬機器 <br><br>     VMware 虛擬機器  <br><br>    Azure Stack | V3 UR1                            | 磁片區、共用、資料夾、檔案 <br><br>    僅 (NTFS 的重復資料刪除磁片區)   <br><br>   當工作負載當做 Azure 虛擬機器執行時，不支援系統狀態和裸機 ()  |
+| 伺服器 (64 位)           | Windows Server 2008 R2 SP1、Windows Server 2008 SP2 (您必須安裝 [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855))  | 實體伺服器  <br><br>    Hyper-V 虛擬機器  <br><br>      VMware 虛擬機器  <br><br>   Azure Stack | V3 UR1                            | 磁片區、共用、資料夾、檔案、系統狀態/裸機        |
+| SQL Server                | SQL Server 2019、2017、2016和 [支援的 sps](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202016)、2014和支援的 [sps](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202014) | 實體伺服器  <br><br>     Hyper-V 虛擬機器   <br><br>     VMware 虛擬機器  <br><br>   Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)  <br><br>     Azure Stack | V3 UR1                            | 所有部署案例：資料庫       <br><br>  MABS v3 UR1 支援透過 ReFS 磁片區備份 SQL 資料庫                  |
 | Exchange                   | Exchange 2019、2016                                         | 實體伺服器   <br><br>   Hyper-V 虛擬機器  <br><br>      VMware 虛擬機器  <br><br>   Azure Stack  <br><br>    Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時) | V3 UR1                            | 保護 (所有部署案例) ：獨立 Exchange 伺服器、資料庫可用性群組下的資料庫 (DAG)   <br><br>    復原 (所有部署案例)：信箱、DAG 下的信箱資料庫    <br><br>  MABS v3 UR1 支援透過 ReFS 備份 Exchange |
 | SharePoint                 | 具有最新 SPs 的 SharePoint 2019、2016                       | 實體伺服器  <br><br>    Hyper-V 虛擬機器 <br><br>    VMware 虛擬機器  <br><br>   Azure 虛擬機器 (當工作負載當做 Azure 虛擬機器執行時)   <br><br>   Azure Stack | V3 UR1                            | 保護 (所有部署案例) ：伺服器陣列、前端網頁伺服器內容  <br><br>    復原 (所有部署案例) ：伺服器陣列、資料庫、web 應用程式、檔案或清單專案、SharePoint 搜尋、前端網頁伺服器  <br><br>    不支援保護針對內容資料庫使用 SQL Server 2012 AlwaysOn 功能的 SharePoint 伺服器陣列。 |
 
@@ -57,7 +57,7 @@ ms.locfileid: "88036720"
 
 | **[工作負載]** | **版本**                               | **Azure 備份伺服器安裝**                      | **支援的 Azure 備份伺服器** | **保護與修復**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | 以 Hyper-v 或 VMware 來賓身分執行的 Linux | 實體伺服器、內部部署 Hyper-v VM、VMWare 中的 Windows VM | V3 UR1                             | Hyper-v 必須在 Windows Server 2012 R2、Windows Server 2016 或 Windows Server 2019 上執行。 保護：整部虛擬機器   <br><br>   復原：整部虛擬機器   <br><br>    僅支援檔案一致的快照集。    <br><br>   如需支援的 Linux 散發套件和版本的完整清單，請參閱[Azure 背書的 linux 發行](../virtual-machines/linux/endorsed-distros.md)版一文。 |
+| Linux        | 以 Hyper-v 或 VMware 來賓身分執行的 Linux | 實體伺服器、內部部署 Hyper-v VM、VMWare 中的 Windows VM | V3 UR1                             | Hyper-v 必須在 Windows Server 2012 R2、Windows Server 2016 或 Windows Server 2019 上執行。 保護：整部虛擬機器   <br><br>   復原：整部虛擬機器   <br><br>    僅支援檔案一致的快照集。    <br><br>   如需支援的 Linux 散發套件和版本的完整清單，請參閱 [Azure 背書的 linux 發行](../virtual-machines/linux/endorsed-distros.md)版一文。 |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute 支援
 
@@ -77,7 +77,7 @@ ms.locfileid: "88036720"
 * 根據復原服務保存庫的位置 (Microsoft Azure 區域) 
 * 根據復原服務保存庫的位置 Azure 儲存體 () 
 
-如需詳細資訊，請參閱[ExpressRoute 路由需求](../expressroute/expressroute-routing.md)。
+如需詳細資訊，請參閱 [ExpressRoute 路由需求](../expressroute/expressroute-routing.md)。
 
 >[!NOTE]
 >新線路的公用對等互連已被取代。

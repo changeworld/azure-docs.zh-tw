@@ -1,6 +1,6 @@
 ---
 title: 取得 Azure CDN 的目前 POP IP 清單 |Microsoft Docs
-description: 瞭解如何取出目前的 POP 清單。
+description: 瞭解如何使用 REST API 來取得 POP 伺服器。 POP 伺服器會向與 Azure 內容傳遞網路端點相關聯的源伺服器提出要求。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 7b98bb446fc400007e4061d09db8084960702943
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 13d4587a80cbbe66e18eb1bec8f3154221ac62b5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668282"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192561"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>取得 Azure CDN 的目前 POP IP 清單
 

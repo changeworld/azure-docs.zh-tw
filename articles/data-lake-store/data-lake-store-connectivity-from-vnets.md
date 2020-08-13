@@ -1,6 +1,6 @@
 ---
 title: 從 VNET 連線到 Azure Data Lake Storage Gen1 | Microsoft Docs
-description: 從 Azure VNET 連線到 Azure Data Lake Storage Gen1
+description: 瞭解如何從具有資源有限存取權的 Azure 虛擬機器，啟用 Azure Data Lake Storage Gen1 的存取權。
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 5793e1659f18818b85748dc0f2979895318ea913
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 0fa836ea31793d9177ad6e838ddea1516bf51733
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985402"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191399"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>從 Azure VNET 內的虛擬機器存取 Azure Data Lake Storage Gen1
 Azure Data Lake Storage Gen1 是公用網際網路 IP 位址上執行的 PaaS 服務。 可以連線到公用網際網路的任何伺服器，通常也可以連線到 Azure Data Lake Storage Gen1 端點。 根據預設，Azure VNET 中的所有虛擬機器皆可存取網際網路，因此，可以存取 Azure Data Lake Storage Gen1。 不過，也可以將 VNET 中的 VM 設定為無法存取網際網路。 對於這類虛擬機器，也會限制對 Azure Data Lake Storage Gen1 的存取。 封鎖 Azure VNET 中 VM 的公用網際網路存取，可以使用下列任一個方法來完成：
@@ -54,7 +54,7 @@ Aliases:  mydatastore.azuredatalakestore.net
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>使用 ExpressRoute 從受限制的 VM 啟用連線
 設定 ExpressRoute 電路時，內部部署伺服器可以透過公用對等互連來存取 Data Lake Storage Gen1。 如需針對公用互連設定 ExpressRoute 的詳細資訊，請參閱 [ExpressRoute 常見問題集](../expressroute/expressroute-faqs.md)。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [保護儲存在 Azure Data Lake Storage Gen1 中的資料](data-lake-store-security-overview.md)
 

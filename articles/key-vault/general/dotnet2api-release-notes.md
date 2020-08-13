@@ -1,6 +1,6 @@
 ---
 title: 金鑰保存庫 .NET 2.x API 版本資訊 | Microsoft Docs
-description: .NET 開發人員會使用這個 API 來編寫 Azure 金鑰保存庫的程式碼
+description: '瞭解如何更新針對舊版 Azure Key Vault 所撰寫的應用程式，以使用適用于 c # 和 .NET 的2.0 版 Azure Key Vault 程式庫。'
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431913"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189843"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 金鑰保存庫 .NET 2.0 - 版本資訊和移轉指南
 下列資訊可協助您移轉至適用於 C# 和 .NET 的 Azure Key Vault 文件庫 2.0 版。  您必須更新針對舊版所撰寫的應用程式，才能支援最新版本。  必須進行這些變更才能完整支援新功能和改進功能，例如 **Key Vault 憑證**。
@@ -91,7 +91,7 @@ Key Vault 憑證可管理 x509 憑證，並支援下列行為：
 ## <a name="class-changes"></a>類別變更
 
 * 已移除**UnixEpoch**類別。
-* **Base64UrlConverter**類別已重新命名為**Base64UrlJsonConverter**。
+* **Base64UrlConverter** 類別已重新命名為 **Base64UrlJsonConverter**。
 
 ## <a name="other-changes"></a>其他變更
 
@@ -99,7 +99,7 @@ Key Vault 憑證可管理 x509 憑證，並支援下列行為：
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
 
-* 針對傳回保存*庫*的作業，傳回類型是包含保存**庫**屬性的類別。 傳回類型現在是 *Vault*。
+* 針對傳回保存 *庫*的作業，傳回類型是包含保存 **庫** 屬性的類別。 傳回類型現在是 *Vault*。
 * *PermissionsToKeys* 和 *PermissionsToSecrets* 現在是 *Permissions.Keys* 和 *Permissions.Secrets*
 * 某些傳回類型變更也會套用至控制平面。
 

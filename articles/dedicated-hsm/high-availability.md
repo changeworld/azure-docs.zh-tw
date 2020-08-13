@@ -1,6 +1,6 @@
 ---
 title: 高可用性 - Azure 專用 HSM | Microsoft Docs
-description: 「Azure 專用 HSM」高可用性範例和基本考量
+description: 瞭解 Azure 專用 HSM 高可用性的基本考慮。 本文包含範例。
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f8fa2f12825fe88218fe7033a1721cb49fc7335
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "70882244"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189854"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure 專用 HSM 高可用性
 
@@ -25,7 +25,7 @@ Azure 專用 HSM 的基礎是由 Microsoft 高可用性資料中心所構成。 
 
 ## <a name="high-availability-example"></a>高可用性範例
 
-如需進一步瞭解如何在軟體層級設定 HSM 裝置以實現高可用性，請參閱《Gemalto Luna 網路 HSM 管理指南》(英文)， 您可以在[GEMALTO HSM 頁面](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)取得這份檔。
+如需進一步瞭解如何在軟體層級設定 HSM 裝置以實現高可用性，請參閱《Gemalto Luna 網路 HSM 管理指南》(英文)， 您可以在  [GEMALTO HSM 頁面](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)取得這份檔。
 
 下圖顯示的是一個高可用性的架構。 此架構在同個區域中使用了多台裝置，且在獨立區域中有多台配對裝置。 此架構最少使用了四個 HSM 裝置和虛擬網路元件。
 
