@@ -8,22 +8,22 @@ ms.author: shresha
 manager: dpalled
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/23/2020
+ms.date: 08/12/2020
 ms.custom: shresha
-ms.openlocfilehash: a74a5e2b8e80121324dc8b880d90f493d5b2ddfd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 784c19844c658af6850c755244314145223c45ef
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423944"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163946"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>遷移至新的 Azure 時間序列深入解析 Gen2 API 版本
 
 ## <a name="overview"></a>概觀
 
-如果您已在公開預覽（2020年7月16日之前）建立 Azure 時間序列深入解析 Gen2 環境，請遵循本文中所述的步驟，更新 TSI 環境以使用新的正式運作版 Api。
+如果您在2020年7月16日之前建立了 Azure 時間序列深入解析 Gen2 環境， () ，請遵循本文中所述的步驟，更新 TSI 環境以使用新的正式運作版 Api。
 
-新的 API 版本為 `2020-07-31` ，並使用更新的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
+新的 API 版本為 `2020-07-31` ，並使用更新的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
 使用者必須遷移其環境的[時間序列模型變數](./concepts-variables.md)、儲存的查詢、Power BI 查詢，以及任何對 API 端點進行呼叫的自訂工具。 如果您有任何關於遷移程式的問題或疑慮，請透過 Azure 入口網站提交支援票證，並提及這份檔。
 
@@ -39,7 +39,7 @@ ms.locfileid: "87423944"
 
 1. Explorer 會提示您更新您的時間序列模型變數與儲存的查詢所使用的語法。
 
-    [![提示](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
+    [![及時](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
 
     如果您不小心關閉通知，它可以在通知面板中找到。
 
@@ -52,7 +52,7 @@ ms.locfileid: "87423944"
 1. 按一下 [**更新變數**]。 當變數已更新時，此工具將會通知您。
 
     > [!IMPORTANT]
-    > 如果您更新類型，使用較舊 API 版本（）的自訂應用程式 `2018-11-01-preview` 將需要使用新的 api 版本（ `2020-07-31` ），才能繼續運作。 如果您不確定所使用的 API 版本，請洽詢您的系統管理員，然後再進行更新。 您可以關閉遷移工具，稍後再返回這些步驟。 深入瞭解[如何遷移自訂應用程式](#migrate-custom-applications)。
+    > 如果您更新類型，使用舊版 API 的自訂應用程式 (`2018-11-01-preview`) 將需要使用新的 api 版本 (`2020-07-31`) 才能繼續運作。 如果您不確定所使用的 API 版本，請洽詢您的系統管理員，然後再進行更新。 您可以關閉遷移工具，稍後再返回這些步驟。 深入瞭解[如何遷移自訂應用程式](#migrate-custom-applications)。
 
     [![更新變數](media/api-migration/ux-migration-tool-downloaded-types.png)](media/v2-update-overview/overview-one.png#lightbox)
 
@@ -60,7 +60,7 @@ ms.locfileid: "87423944"
 
     [![更新已儲存的查詢](media/api-migration/ux-migration-tool-updated-variables.png)](media/v2-update-overview/overview-one.png#lightbox)
 
-1. 按一下 [完成] 。
+1. 按一下 [完成]。
 
     [![已完成遷移](media/api-migration/ux-migration-tool-updated-saved-queries.png)](media/v2-update-overview/overview-one.png#lightbox)
 
@@ -81,7 +81,7 @@ ms.locfileid: "87423944"
 
 - 時間序列模型 API (機器翻譯)
   - 模型設定 Api
-    - [Get](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
+    - [獲取](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get)
     - [更新](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update)
   - 執行個體 API
     - [所有批次作業](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch)
@@ -95,7 +95,7 @@ ms.locfileid: "87423944"
     - [Delete、Get 作業](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch)
     - [清單](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list)
 
-針對下列 REST 端點，您必須將 URI 中的 API 版本更新為， `2020-07-31` 並確定所有出現的屬性都 `tsx` 使用更新的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
+針對下列 REST 端點，您必須將 URI 中的 API 版本更新為， `2020-07-31` 並確定所有出現的屬性都 `tsx` 使用更新的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
 - 類型 Api
   - [Put 作業](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch#typesbatchput)
@@ -108,7 +108,7 @@ ms.locfileid: "87423944"
 
 #### <a name="typesbatchput"></a>TypesBatchPut
 
-舊的要求主體（由使用 `2018-11-01-preview` ）：
+) 使用舊的要求主體 (`2018-11-01-preview` ：
 
 ```JSON
 {
@@ -136,7 +136,7 @@ ms.locfileid: "87423944"
 }
 ```
 
-已更新要求主體（由使用 `2020-07-31` ）：
+) 使用 (更新的要求主體 `2020-07-31` ：
 
 ```JSON
 {
@@ -164,11 +164,11 @@ ms.locfileid: "87423944"
 }
 ```
 
-或者， `filter` 也可以是 `$event.Mode.String = 'outdoor'` 。 `value`必須使用括弧來轉義特殊字元（ `_` ）。
+或者， `filter` 也可以是 `$event.Mode.String = 'outdoor'` 。 `value`必須使用括弧來將特殊字元 (`_`) 。
 
 #### <a name="getevents"></a>GetEvents
 
-舊的要求主體（由使用 `2018-11-01-preview` ）：
+) 使用舊的要求主體 (`2018-11-01-preview` ：
 
 ```JSON
 {
@@ -194,7 +194,7 @@ ms.locfileid: "87423944"
 }
 ```
 
-已更新要求主體（由使用 `2020-07-31` ）：
+) 使用 (更新的要求主體 `2020-07-31` ：
 
 ```JSON
 {
@@ -224,7 +224,7 @@ ms.locfileid: "87423944"
 
 #### <a name="getseries"></a>GetSeries
 
-舊的要求主體（由使用 `2018-11-01-preview` ）：
+) 使用舊的要求主體 (`2018-11-01-preview` ：
 
 ```JSON
 {
@@ -254,7 +254,7 @@ ms.locfileid: "87423944"
 }
 ```
 
-已更新要求主體（由使用 `2020-07-31` ）：
+) 使用 (更新的要求主體 `2020-07-31` ：
 
 ```JSON
 {
@@ -284,11 +284,11 @@ ms.locfileid: "87423944"
 }
 ```
 
-或者， `value` 也可以是 `$event['Bar-Pressure-Offset'].Double` 。 如果未指定任何資料類型，則資料類型一律會假設為 Double。 括弧標記法必須用來將特殊字元（）換用 `-` 。
+或者， `value` 也可以是 `$event['Bar-Pressure-Offset'].Double` 。 如果未指定任何資料類型，則資料類型一律會假設為 Double。 括弧標記法必須用來 () 中的特殊字元換用 `-` 。
 
 #### <a name="aggregateseries"></a>AggregateSeries
 
-舊的要求主體（由使用 `2018-11-01-preview` ）：
+) 使用舊的要求主體 (`2018-11-01-preview` ：
 
 ```JSON
 {
@@ -319,7 +319,7 @@ ms.locfileid: "87423944"
 }
 ```
 
-已更新要求主體（由使用 `2020-07-31` ）：
+) 使用 (更新的要求主體 `2020-07-31` ：
 
 ```JSON
   "aggregateSeries": {
@@ -355,7 +355,7 @@ ms.locfileid: "87423944"
 
 #### <a name="invalidinput"></a>InvalidInput
 
-如果您看到下列錯誤，則是使用新的 API 版本（ `2020-07-31` ），但 TSX 語法尚未更新。 請參閱上述的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)和遷移範例。 重新 `tsx` 提交 API 要求之前，請確定已正確更新所有屬性。
+如果您看到下列錯誤，則是使用新的 API 版本 (`2020-07-31`) 但 TSX 語法尚未更新。 請參閱上述的[時間序列運算式語法](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)和遷移範例。 重新 `tsx` 提交 API 要求之前，請確定已正確更新所有屬性。
 
 ```JSON
 {
