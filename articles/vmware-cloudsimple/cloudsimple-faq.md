@@ -1,6 +1,6 @@
 ---
 title: 常見問題-依 CloudSimple 的 Azure VMware 解決方案
-description: Azure VMware Solution by CloudSimple 的常見問題
+description: 這些關於 Azure VMware Solution by CloudSimple 的常見問題包括連線能力、網路功能、安全性、儲存體、Azure 整合等等。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025056"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140882"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>VMware Solution by CloudSimple 的常見問題
 
@@ -25,7 +25,7 @@ Azure VMware 解決方案藉由 CloudSimple 在短短幾分鐘內，將 VMware �
 
 **什麼是 CloudSimple 私用雲端？**
 
-CloudSimple 私用雲端是私用的專用雲端，其中包含部署在 Azure 位置的 Microsoft Azure 基礎結構（硬體和資料中心空間）上的高效能計算、儲存體和網路環境。  私用雲端提供原生 VMware 的「平臺即服務」。 在 VMware 方面，每個私人雲端都只包含一個 vCenter Server 實例。 此 vCenter Server 會管理一或多個 vSphere 叢集包含的多個 ESXi 節點，以及對應的虛擬 SAN （vSAN）儲存體。 CloudSimple 服務可在您的 Azure 訂用帳戶中包含多個私人雲端。  如需詳細資訊，請參閱[私用雲端總覽](cloudsimple-private-cloud.md)。
+CloudSimple 私用雲端是私用的專用雲端，其中包含部署在 Microsoft Azure 基礎結構上的高效能計算、儲存體和網路環境， (Azure 位置) 的硬體和資料中心空間。  私用雲端提供原生 VMware 的「平臺即服務」。 在 VMware 方面，每個私人雲端都只包含一個 vCenter Server 實例。 此 vCenter Server 會管理一或多個 vSphere 叢集中包含的多個 ESXi 節點，以及對應的虛擬 SAN (vSAN) 儲存體。 CloudSimple 服務可在您的 Azure 訂用帳戶中包含多個私人雲端。  如需詳細資訊，請參閱[私用雲端總覽](cloudsimple-private-cloud.md)。
 
 **CloudSimple 服務可在何處取得？**
 
@@ -76,7 +76,7 @@ Azure ExpressRoute 線路是高速、低延遲、安全的連線。  CloudSimple
 
 **我的私人雲端有哪些網路功能可供使用？**
 
-您可以布建 Vlan （及其子網）和防火牆資料表，並指派對應至在私人雲端中執行之虛擬機器的公用 IP 位址。 如需網路功能的詳細資訊，請參閱[vlan 和子網總覽](cloudsimple-vlans-subnets.md)、[防火牆資料表總覽](cloudsimple-firewall-tables.md)和[公用 IP 位址總覽](cloudsimple-public-ip-address.md)。
+您可以) 和防火牆資料表來布建 Vlan (及其子網，以及指派對應至在私人雲端中執行之虛擬機器的公用 IP 位址。 如需網路功能的詳細資訊，請參閱[vlan 和子網總覽](cloudsimple-vlans-subnets.md)、[防火牆資料表總覽](cloudsimple-firewall-tables.md)和[公用 IP 位址總覽](cloudsimple-public-ip-address.md)。
 
 **如何? 為我的私人雲端中的應用程式設定不同的子網嗎？**
 
@@ -106,9 +106,9 @@ CloudSimple 提供下列安全性功能來保護您的私用雲端環境：
 
 CloudSimple 提供下列主機類型：
 
-* **CS28 節點：** CPU： 2x 2.2 GHz，總計28核心，48 HT。  RAM： 256 GB。  儲存體： 1600 GB NVMe 快取，5760 GB 資料（全部-Flash）。 網路： 4x25Gbe NIC
-* **CS36 節點：** CPU 2x 2.3 GHz，總36核心，72 HT。  RAM： 512 GB。  儲存體： 3200 GB NVMe 快取 11520 GB 資料（全部-Flash）。  網路： 4x25Gbe NIC
-* **CS36m-節點：** CPU 2x 2.3 GHz，總36核心，72 HT。  RAM： 576 GB。  儲存體： 3200 GB NVMe 快取 13360 GB 資料（全部-Flash）。  網路： 4x25Gbe NIC
+* **CS28 節點：** CPU： 2x 2.2 GHz，總計28核心，48 HT。  RAM： 256 GB。  儲存體： 1600 GB NVMe 快取，5760 GB 資料 (所有-Flash) 。 網路： 4x25Gbe NIC
+* **CS36 節點：** CPU 2x 2.3 GHz，總36核心，72 HT。  RAM： 512 GB。  儲存體： 3200 GB NVMe 快取 11520 GB 資料 (所有-Flash) 。  網路： 4x25Gbe NIC
+* **CS36m-節點：** CPU 2x 2.3 GHz，總36核心，72 HT。  RAM： 576 GB。  儲存體： 3200 GB NVMe 快取 13360 GB 資料 (所有-Flash) 。  網路： 4x25Gbe NIC
 
 **如何處理任何硬體失敗？**
 
@@ -121,24 +121,24 @@ CloudSimple 平臺和我們的服務營運小組會持續監視所有 CloudSimpl
 CloudSimple 透過每個私人雲端提供所有 flash 的 VMware vSAN 儲存體。  每個 vSphere 都是使用自己的 vSAN 資料存放區所建立。  如需詳細資訊，請參閱[私用雲端 VMware 元件-vSAN 儲存體](vmware-components.md#vsan-storage)。
 
 **是否支援加密資料？**
-是。  您可以在私人雲端上設定 vSAN 儲存體，以使用部署在內部部署或 Azure 上的金鑰管理伺服器（KMS）來加密 vSAN 上儲存的資料。
+是。  您可以在私人雲端上設定 vSAN 存放區，以使用 (KMS) 部署于內部部署或 Azure 上的金鑰管理伺服器來加密 vSAN 上儲存的資料。
 
 **如何處理失敗的磁片？**
 
-CloudSimple 會持續監視私人雲端的所有硬體元件。  如果偵測到磁片失敗或磁片識別為失敗（根據啟發學習法），則會自動將新的節點新增至私人雲端。  具有失敗或失敗磁片的節點會從私人雲端移除。
+CloudSimple 會持續監視私人雲端的所有硬體元件。  如果偵測到磁片失敗，或是根據啟發學習法) 將磁片識別為失敗 (，就會自動將新的節點新增至私人雲端。  具有失敗或失敗磁片的節點會從私人雲端移除。
 
 ## <a name="vmware"></a>VMware
 
 **如何? 在內部部署環境中執行應用程式和資料的大規模上傳或遷移？**
 
-CloudSimple 提供原生 VMware vSphere 解決方案。  所有適用于大量資料移轉的 VMware 工具都可以搭配您的私用雲端使用。  這些選項包括：
+CloudSimple 提供原生 VMware vSphere 解決方案。  所有適用于大量資料移轉的 VMware 工具都可以搭配您的私用雲端使用。  選項包括：
 
 * 用於大量遷移資料的 VMware HCX。
 * 使用從內部部署到 CloudSimple 的儲存體 vMotion 來進行資料的冷遷移。
 
 **我可以安裝任何 VMware 工具嗎？**
 
-CloudSimple 提供原生 VMware vSphere 解決方案。  所有用來管理內部部署 vSphere 環境的 VMware 工具都可以在 CloudSimple 上使用。  CloudSimple 支援「自備授權」（BYOL）模型來安裝 VMware 工具。
+CloudSimple 提供原生 VMware vSphere 解決方案。  所有用來管理內部部署 vSphere 環境的 VMware 工具都可以在 CloudSimple 上使用。  CloudSimple 支援自備授權 (BYOL) 模型，供您安裝 VMware 工具。
 
 **更新和升級的管理方式為何？**
 
@@ -163,4 +163,4 @@ CloudSimple 提供獨特的功能，從 Azure 入口網站管理私人雲端上�
 
 **我可以使用 Azure 取得哪些授權權益？**
 
-透過 CloudSimple，您可以利用 Azure 混合式使用權益，並省下高達90% 的授權。 這項權益可保留您對 Microsoft 授權的投資，並降低您與其他雲端解決方案相關的 TCO。 您也可以取得 Windows Server 2008 和 Microsoft SQL Server 2008 的擴充安全性更新。  「自備授權」（BYOL）模型可協助您為常見的應用程式（例如 Veeam 和 Zerto）維持低成本。  
+透過 CloudSimple，您可以利用 Azure 混合式使用權益，並省下高達90% 的授權。 這項權益可保留您對 Microsoft 授權的投資，並降低您與其他雲端解決方案相關的 TCO。 您也可以取得 Windows Server 2008 和 Microsoft SQL Server 2008 的擴充安全性更新。  自備授權 (BYOL) 模型可協助您為常見的應用程式（例如 Veeam 和 Zerto）維持低成本。  

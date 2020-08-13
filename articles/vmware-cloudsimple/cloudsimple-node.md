@@ -1,6 +1,6 @@
 ---
 title: 依 CloudSimple 的 Azure VMware 解決方案-節點總覽
-description: 深入瞭解 CloudSimple 節點和概念。
+description: 深入瞭解 CloudSimple 概念，包括節點、已布建的節點、私人雲端，以及 CloudSimple 節點 Sku 的 VMware 解決方案。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 65afe26a98a53b00b72a1ea2b49799db2049b727
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7de4b5faa997d909089daedab7e48e5d5a6de2e7
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024920"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140831"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple 節點總覽
 
@@ -39,7 +39,7 @@ ms.locfileid: "77024920"
 | SKU           | CS28-Node                 | CS36-Node                 | CS36m-Node                |
 |---------------|-----------------------------|-----------------------------|-----------------------------|
 | 區域        | 美國東部、美國西部            | 美國東部、美國西部            | 西歐                 |
-| CPU           | 2x 2.2 GHz，28核心（56 HT） | 2x 2.3 GHz，36核心（72 HT） | 2x 2.3 GHz，36核心（72 HT） |
+| CPU           | 2x 2.2 GHz，28核心 (56 HT)  | 2x 2.3 GHz，36核心 (72 HT)  | 2x 2.3 GHz，36核心 (72 HT)  |
 | RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
 | 快取磁片    | 1.6-TB NVMe                 | 3.2-TB NVMe                 | 3.2-TB NVMe                 |
 | 容量磁片 | 5.625 TB 原始                | 11.25 TB 原始                | 15.36 TB 原始                |
@@ -58,5 +58,5 @@ ms.locfileid: "77024920"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何布建[節點](create-nodes.md)
+* 瞭解如何布建 [節點](create-nodes.md)
 * 瞭解[私人](cloudsimple-private-cloud.md)雲端

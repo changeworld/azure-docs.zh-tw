@@ -1,7 +1,7 @@
 ---
 title: CloudSimple 活動管理
 titleSuffix: Azure VMware Solution by CloudSimple
-description: 描述 VMware Solution by CloudSimple 的活動概念
+description: 深入瞭解活動頁面，其中摘要說明活動，並可讓您找到其他詳細資料。 活動包括警示、事件、工作和 audit 活動。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/30/2019
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f77e996e83819b78bb9ab4484b9a1d3653a97560
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025090"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140967"
 ---
 # <a name="activity-management-overview"></a>活動管理總覽
 
