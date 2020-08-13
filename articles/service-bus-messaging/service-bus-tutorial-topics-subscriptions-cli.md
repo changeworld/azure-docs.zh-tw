@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: spelluru
 ms.author: spelluru
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cdbde84780ed7c64f9ad3f4284a74261d2f4a728
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2526559a8b88309c098e59e8cc6d0ffd2793984f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500448"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067574"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教學課程：使用 CLI 和主題/訂用帳戶來更新庫存
 
@@ -36,7 +36,7 @@ Microsoft Azure 服務匯流排是一項多租用戶雲端傳訊服務，可在�
 若要使用 Java 開發服務匯流排應用程式，您必須安裝下列項目：
 
 - 最新版本的 [Java Development Kit](https://aka.ms/azure-jdks)。
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure CLI](/cli/azure)
 - [Apache Maven](https://maven.apache.org) 3.0 版或更高版本。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]

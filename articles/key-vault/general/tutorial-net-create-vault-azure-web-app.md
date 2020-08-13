@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a198456412c3146db2bc3e2a2483377e387f452d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b957ea9131c5124925b74576fd78665522afd8dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513327"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080227"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教學課程：使用受控識別透過 .NET 將 Key Vault 連線至 Azure Web 應用程式
 
@@ -140,7 +140,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-a-remote-web-app"></a>建立遠端 Web 應用程式
 
-在 `myAppServicePlan` App Service 方案中建立 [Azure Web 應用程式](../../app-service/containers/app-service-linux-intro.md)。 
+在 `myAppServicePlan` App Service 方案中建立 [Azure Web 應用程式](../../app-service/overview.md#app-service-on-linux)。 
 
 > [!Important]
 > 和 Key Vault 一樣，Azure Web 應用程式必須有唯一名稱。 在下列範例中，請將 \<your-webapp-name\> 取代為您的 Web 應用程式名稱。

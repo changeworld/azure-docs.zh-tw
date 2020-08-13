@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 04/22/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: f397a3df7280b9277b2b7205368ef5788ed321aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5fe447e8a1467530cd0eb4c9d2f8a20a4273876
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82206661"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080876"
 ---
-在 `myAppServicePlan` App Service 方案中建立 [Web 應用程式](../articles/app-service/containers/app-service-linux-intro.md)。 
+在 `myAppServicePlan` App Service 方案中建立 [Web 應用程式](../articles/app-service/overview.md#app-service-on-linux)。 
 
-在 Cloud Shell 中，您可以使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) 命令。 在下列範,了中，使用全域唯一的應用程式名稱 (有效的字元為 `a-z`、`0-9` 和 `-`) 取代 `<app-name>`。 執行階段會設定為 `DOTNETCORE|LTS`，也就是 .NET Core 3.1。 若要查看所有支援的執行階段，請執行 [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)。 
+在 Cloud Shell 中，您可以使用 [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) 命令。 在下列範,了中，使用全域唯一的應用程式名稱 (有效的字元為 `a-z`、`0-9` 和 `-`) 取代 `<app-name>`。 執行階段設定為 `DOTNETCORE|3.1`。 若要查看所有支援的執行階段，請執行 [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)。 
 
 ```azurecli-interactive
 # Bash
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|LTS" --deployment-local-git
+az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|3.1" --deployment-local-git
 # PowerShell
-az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|LTS" --deployment-local-git
+az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --runtime "DOTNETCORE|3.1" --deployment-local-git
 ```
 
 建立 Web 應用程式後，Azure CLI 會顯示類似下列範例的輸出：
@@ -49,12 +49,3 @@ Local git is configured with url of 'https://<username>@<app-name>.scm.azurewebs
 > [!NOTE]
 > Git 遠端的 URL 會顯示在 `deploymentLocalGitUrl` 屬性中，其格式為 `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`。 儲存此 URL，稍後您會用到此資訊。
 >
-
-目前，您必須執行下列額外的命令，才能正確地設定 .NET Core 版本 (將 `<app-name>` 取代為上一個步驟中的內容)：
-
-```azurecli-interactive
-# Bash
-az webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
-# PowerShell
-az --% webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
-```

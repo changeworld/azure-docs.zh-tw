@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597890"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078626"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure App Service 中使用 TLS/SSL 繫結保護自訂 DNS 名稱
 
@@ -52,7 +52,7 @@ ms.locfileid: "82597890"
 
 請執行下列步驟：
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務]   >  **\<app-name>** 。
+在 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>的左側功能表中，選取 [應用程式服務] > \<app-name>。
 
 從應用程式的左側導覽中，透過下列方式啟動 [TLS/SSL 繫結]  對話方塊：
 
@@ -153,7 +153,7 @@ ms.locfileid: "82597890"
 
 在 App Service 中，[TLS 終止](https://wikipedia.org/wiki/TLS_termination_proxy)會在網路負載平衡器上發生，因此所有的 HTTPS 要求都會以未加密 HTTP 要求的形式進入您的應用程式。 如果您的應用程式邏輯需要檢查使用者要求是否有加密，請檢查 `X-Forwarded-Proto` 標頭。
 
-語言專屬的設定指南 (如 [Linux Node.js 設定](containers/configure-language-nodejs.md#detect-https-session)指南) 會說明如何在應用程式的程式碼中偵測 HTTPS 工作階段。
+語言專屬的設定指南 (如 [Linux Node.js 設定](configure-language-nodejs.md#detect-https-session)指南) 會說明如何在應用程式的程式碼中偵測 HTTPS 工作階段。
 
 ## <a name="automate-with-scripts"></a>使用指令碼進行自動化
 

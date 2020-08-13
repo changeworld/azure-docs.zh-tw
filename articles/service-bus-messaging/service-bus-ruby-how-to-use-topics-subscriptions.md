@@ -6,12 +6,12 @@ documentationcenter: ruby
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ef4bb8ba724a8ae1f708ab80a770a521f7879685
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85336735"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067557"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>快速入門：如何透過 Ruby 使用服務匯流排主題和訂用帳戶
  
@@ -62,7 +62,7 @@ topic = azure_service_bus_service.create_topic(topic)
 
 根據預設，訂用帳戶是持續性的。 會持續到本身或相關的主題遭到刪除為止。 如果應用程式含有建立訂用帳戶的邏輯，它應該會先使用 getSubscription 方法檢查訂用帳戶是否存在。
 
-您可以藉由設定 [AutoDeleteOnIdle 屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)，將訂用帳戶自動刪除。
+您可以藉由設定 [AutoDeleteOnIdle 屬性](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)，將訂用帳戶自動刪除。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>使用預設 (MatchAll) 篩選器建立訂用帳戶
 如果在建立新的訂用帳戶時未指定篩選器，將會使用 **MatchAll** 篩選器 (預設)。 使用 **MatchAll** 篩選器時，所有發佈至主題的訊息都會被置於訂用帳戶的虛擬佇列中。 下列範例將建立名為「all-messages」的訂用帳戶，並使用預設的 **MatchAll** 篩選器。
@@ -150,7 +150,7 @@ azure_service_bus_service.delete_subscription_message(message)
 如果應用程式在處理訊息之後，尚未呼叫 `delete_subscription_message()` 方法時當機，則會在應用程式重新啟動時將訊息重新傳遞給該應用程式。 這通常稱為*至少處理一次*，也就是說，每個訊息至少會被處理一次，但在特定狀況下，可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則應用程式開發人員應在其應用程式中加入其他邏輯，以處理重複的訊息傳遞。 您通常可以使用訊息的 `message_id` 屬性來達到此邏輯，這在各個傳遞嘗試中保持不變。
 
 ## <a name="delete-topics-and-subscriptions"></a>刪除主題和訂用帳戶
-除非設定了 [AutoDeleteOnIdle 屬性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)，否則主題和訂用帳戶將是持續性的。 您可以透過 [Azure 入口網站][Azure portal]或以程式設計方式加以刪除。 下列範例示範如何刪除名為 `test-topic` 的主題。
+除非設定了 [AutoDeleteOnIdle 屬性](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)，否則主題和訂用帳戶將是持續性的。 您可以透過 [Azure 入口網站][Azure portal]或以程式設計方式加以刪除。 下列範例示範如何刪除名為 `test-topic` 的主題。
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")

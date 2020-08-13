@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: af75afb2840d2bc14e1fa46310f76f662efa2a54
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 17e01894ac3d26720b1e74be9d0fd7fc193c463f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384781"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077300"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>快速入門：使用 Azure Application Insights 開始監視您的 Node.js Web 應用程式
 
@@ -60,7 +60,7 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
    npm install applicationinsights --save
    ```
 
-3. 編輯應用程式的第一個 *.js* 檔案，並將以下兩行新增至指令碼的最上方。 如果您使用 [Node.js 快速入門應用程式](../../app-service/app-service-web-get-started-nodejs.md)，請修改 *index.js* 檔案。 將 `<instrumentation_key>` 取代為應用程式的檢測金鑰。 
+3. 編輯應用程式的第一個 *.js* 檔案，並將以下兩行新增至指令碼的最上方。 如果您使用 [Node.js 快速入門應用程式](../../app-service/quickstart-nodejs.md)，請修改 *index.js* 檔案。 將 `<instrumentation_key>` 取代為應用程式的檢測金鑰。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');

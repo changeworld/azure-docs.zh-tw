@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7153200bc80f6e27a99123a1bba676d0188f607
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 4db0956b1a2dec7626a24de2939941c2384d6a8a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129027"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080757"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教學課程：新增內部部署應用程式以便透過 Azure Active Directory 中的應用程式 Proxy 進行遠端存取
 
@@ -114,7 +114,7 @@ Azure Active Directory (Azure AD) 有一項應用程式 Proxy 服務，可讓使
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | 連接器和應用程式 Proxy 雲端服務之間的通訊 |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | 連接器會使用這些 URL 來確認憑證。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | 連接器會在註冊程序進行期間使用這些 URL。 |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>\*.microsoftonline.com<br>\*.microsoftonline-p.com<br>\*.msauth.net<br>\*.msauthimages.net<br>\*.msecnd.net<br>\*.msftauth.net<br>\*.msftauthimages.net<br>\*.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | 連接器會在註冊程序進行期間使用這些 URL。 |
 
 如果防火牆或 Proxy 可讓您設定 DNS 允許清單，您便可以允許連往 \*.msappProxy.net 和 \*.servicebus.windows.net 的連線。 如果不是，您需要允許存取 [Azure IP 範圍和服務標籤 - 公用雲端](https://www.microsoft.com/download/details.aspx?id=56519)。 IP 範圍會每週更新。
 

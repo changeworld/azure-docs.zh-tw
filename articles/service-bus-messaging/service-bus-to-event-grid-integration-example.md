@@ -6,12 +6,12 @@ author: spelluru
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8f947489c2298e580ae455763709df1734687130
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 0909fd95238051a6a50e582cb2543dd3bdd307bf
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337049"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067285"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>教學課程：使用 Azure Functions 和 Azure Logic Apps 來回應透過 Azure 事件方格所收到的 Azure 服務匯流排事件
 在本教學課程中，您將了解如何使用 Azure Functions 和 Azure Logic Apps 來回應透過 Azure 事件方格所收到的 Azure 服務匯流排事件。 
@@ -355,10 +355,10 @@ ms.locfileid: "85337049"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 深入了解 [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/)。
-* 深入了解 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。
-* 深入了解 [Azure App Service 的 Logic Apps 功能](https://docs.microsoft.com/azure/logic-apps/)。
-* 深入了解 [Azure 服務匯流排](https://docs.microsoft.com/azure/service-bus/)。
+* 深入了解 [Azure Event Grid](../event-grid/index.yml)。
+* 深入了解 [Azure Functions](../azure-functions/index.yml)。
+* 深入了解 [Azure App Service 的 Logic Apps 功能](../logic-apps/index.yml)。
+* 深入了解 [Azure 服務匯流排](/azure/service-bus/)。
 
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png

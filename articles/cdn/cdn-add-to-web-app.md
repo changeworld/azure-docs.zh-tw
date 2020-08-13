@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254604"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079904"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教學課程：將 Azure CDN 新增至 Azure App Service Web 應用程式
 
@@ -49,7 +49,7 @@ ms.locfileid: "81254604"
 
 ## <a name="create-the-web-app"></a>建立 Web 應用程式
 
-若要建立您將使用的 Web 應用程式，請遵循[靜態 HTML 快速入門](../app-service/app-service-web-get-started-html.md)的**瀏覽至應用程式**步驟。
+若要建立您將使用的 Web 應用程式，請遵循[靜態 HTML 快速入門](../app-service/quickstart-html.md)的**瀏覽至應用程式**步驟。
 
 ## <a name="log-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -60,7 +60,7 @@ ms.locfileid: "81254604"
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>建立 CDN 設定檔和端點
 
-在左側導覽中，選取 [應用程式服務]，然後選取您在[靜態 HTML 快速入門](../app-service/app-service-web-get-started-html.md)中建立的應用程式。
+在左側導覽中，選取 [應用程式服務]，然後選取您在[靜態 HTML 快速入門](../app-service/quickstart-html.md)中建立的應用程式。
 
 ![在入口網站中選取 App Service 應用程式](media/cdn-add-to-web-app/portal-select-app-services.png)
 

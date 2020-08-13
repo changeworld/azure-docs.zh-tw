@@ -4,12 +4,12 @@ description: 在本教學課程中，了解如何從 PHP 應用程式使用 Azur
 ms.devlang: PHP
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: f2161d39961cc52bc0f0da509abec3ed6377cc07
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 706f523fdfb3c710bb16b048cfc68ce98875adb1
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341093"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066197"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>快速入門：如何透過 PHP 使用服務匯流排主題和訂用帳戶
 
@@ -261,13 +261,13 @@ for($i = 0; $i < 5; $i++){
 服務匯流排主題支援的訊息大小上限：在[標準層](service-bus-premium-messaging.md)中為 256 KB 以及在[進階層](service-bus-premium-messaging.md)中為 1 MB。 標頭 (包含標準和自訂應用程式屬性) 可以容納 64 KB 的大小上限。 主題中所保存的訊息數目沒有限制，但主題所保存的訊息大小總計會有最高限制。 主題大小的這項上限為 5 GB。 如需有關配額的詳細資訊，請參閱 [服務匯流排配額][Service Bus quotas]。
 
 ## <a name="receive-messages-from-a-subscription"></a>自訂用帳戶接收訊息
-從訂用帳戶接收訊息的最佳方式是使用 `ServiceBusRestProxy->receiveSubscriptionMessage` 方法。 可以兩種不同的模式接收訊息：[*ReceiveAndDelete* 和 *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)。 **PeekLock** 是預設值。
+從訂用帳戶接收訊息的最佳方式是使用 `ServiceBusRestProxy->receiveSubscriptionMessage` 方法。 可以兩種不同的模式接收訊息：[*ReceiveAndDelete* 和 *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode)。 **PeekLock** 是預設值。
 
-使用 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式時，接收是一次性作業；也就是說，當服務匯流排在訂用帳戶中收到訊息的讀取要求時，它會將此訊息標示為已使用，並將它傳回應用程式。 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * 模式是最簡單的模型，且最適合可容許在發生失敗時不處理訊息的應用程式案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排已將訊息標示為已取用，所以，當應用程式重新啟動並開始重新取用訊息時，它會遺漏當機前已取用的訊息。
+使用 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式時，接收是一次性作業；也就是說，當服務匯流排在訂用帳戶中收到訊息的讀取要求時，它會將此訊息標示為已使用，並將它傳回應用程式。 [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) * 模式是最簡單的模型，且最適合可容許在發生失敗時不處理訊息的應用程式案例。 若要了解這一點，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排已將訊息標示為已取用，所以，當應用程式重新啟動並開始重新取用訊息時，它會遺漏當機前已取用的訊息。
 
-在預設的 [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式中，接收訊息會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 在應用程式完成處理訊息 (或可靠地儲存此訊息以供未來處理) 之後，它會將已接收的訊息傳遞至 `ServiceBusRestProxy->deleteMessage`，以完成接收程序的第二個階段。 當服務匯流排看到 `deleteMessage` 呼叫時，它會將訊息標示為已取用，並將它從佇列中移除。
+在預設的 [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式中，接收訊息會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 在應用程式完成處理訊息 (或可靠地儲存此訊息以供未來處理) 之後，它會將已接收的訊息傳遞至 `ServiceBusRestProxy->deleteMessage`，以完成接收程序的第二個階段。 當服務匯流排看到 `deleteMessage` 呼叫時，它會將訊息標示為已取用，並將它從佇列中移除。
 
-下列範例說明如何使用 [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式 (預設模式) 來接收與處理訊息。 
+下列範例說明如何使用 [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode) 模式 (預設模式) 來接收與處理訊息。 
 
 ```php
 require_once 'vendor/autoload.php';

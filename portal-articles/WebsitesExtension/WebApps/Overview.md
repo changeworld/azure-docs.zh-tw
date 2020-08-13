@@ -8,29 +8,29 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: bc013469610d5535c89870947fe094da93660012
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: abd322ce7f89be70cb7caf52b3155ba4be904ac9
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73488432"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080244"
 ---
 # <a name="app-service-documentation"></a>App Service 文件
 Azure App Service 可讓您以選定的程式設計語言來建置並裝載 Web 應用程式，無需管理基礎結構或是語言或 Web Framework 執行階段。 它提供自動調整功能與高度可用性，支援 Windows 與 Linux，而且可讓您從 GitHub、Azure DevOps Services 或任何 Git 存放庫進行自動部署。 了解如何透過我們的快速入門、教學課程和範例使用 Azure App Service。
 
 ## <a name="windows-linux-and-docker"></a>Windows、Linux 和 Docker
-[Web 應用程式](/app-service/overview)是 App Service 的主要供應項目，用以建置和裝載使用 Windows 環境的 Web 應用程式。 慣用 Linux 環境的開發人員可以選擇[適用於 Linux 的 App Service](/app-service/containers/app-service-linux-intro)。 開發人員也可以將 Docker 映像直接部署到適用於 Linux 的 App Service 中，以部署自訂的執行階段/架構。
+[Web 應用程式](/app-service/overview)是 App Service 的主要供應項目，用以建置和裝載使用 Windows 環境的 Web 應用程式。 慣用 Linux 環境的開發人員可以選擇[適用於 Linux 的 App Service](/app-service/overview#app-service-on-linux)。 開發人員也可以將 Docker 映像直接部署到適用於 Linux 的 App Service 中，以部署自訂的執行階段/架構。
 
 ## <a name="5-minute-quickstarts"></a>5 分鐘快速入門
 
 了解如何使用適用於 Web 應用程式的 App Service 將第一個應用程式部署至雲端：
 
-- [.NET](/azure/app-service/app-service-web-get-started-dotnet)
-- [Node.js](/azure/app-service/app-service-web-get-started-nodejs)
-- [PHP](/azure/app-service/app-service-web-get-started-php)
-- [Java](/azure/app-service/app-service-web-get-started-java)
-- [Python](/azure/app-service/containers/quickstart-python)
-- [HTML](/azure/app-service/app-service-web-get-started-html)
+- [.NET](/azure/app-service/quickstart-dotnetcore)
+- [Node.js](/azure/app-service/quickstart-nodejs)
+- [PHP](/azure/app-service/quickstart-php)
+- [Java](/azure/app-service/quickstart-java)
+- [Python](/azure/app-service/quickstart-python)
+- [HTML](/azure/app-service/quickstart-html)
 
 ## <a name="step-by-step-tutorials"></a>逐步教學課程
 
@@ -38,9 +38,9 @@ Azure App Service 可讓您以選定的程式設計語言來建置並裝載 Web 
 
 - 使用下列項目建立應用程式：
   - [.NET with Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
-  - [Node.js with MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
+  - [Node.js 搭配 MongoDB](/azure/app-service/tutorial-nodejs-mongodb-app)
   - [Java with MySQL](/app-service/app-service-web-tutorial-java-mysql)
-  - [Python with PostgreSQL](/app-service/containers/tutorial-python-postgresql-app)
+  - [Python with PostgreSQL](/app-service/tutorial-python-postgresql-app)
 - [將現有的自訂網域對應至您的應用程式](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [將 SSL 憑證與您的應用程式繫結](/azure/app-service/configure-ssl-bindings)
 
@@ -56,6 +56,6 @@ Azure App Service 可讓您以選定的程式設計語言來建置並裝載 Web 
 - [Azure CLI](/azure/app-service/app-service-cli-sample)
 - [Azure PowerShell](/azure/app-service/samples-powershell)
 
-## <a name="more"></a>更多資訊
+## <a name="more"></a>其他
 
 - [了解所有 Azure 服務](https://aka.ms/j3wr7y)

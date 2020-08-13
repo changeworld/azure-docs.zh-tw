@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: d84867e598110c5d9a59b477d92a2c8e021358db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ea03b1ff2e2a1e9b7d5256a0f1417c5ac113e0e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087334"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067319"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>快速入門：使用 PowerShell 上傳、下載及列出 Blob
 
@@ -52,23 +52,32 @@ Blob 儲存體支援區塊 Blob、附加 Blob 和分頁 Blob。 用來備份 Iaa
 下列範例會將本機磁碟上 *D:\\_TestImages* 資料夾中的 *Image001.jpg* 和 *Image002.png* 上傳至您所建立的容器。
 
 ```powershell
-# upload a file
-Set-AzStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
+# upload a file to the default account (inferred) access tier
+Set-AzStorageBlobContent -File "D:\_TestImages\Image000.jpg" `
   -Container $containerName `
   -Blob "Image001.jpg" `
   -Context $ctx 
 
-# upload another file
+# upload a file to the Hot access tier
+Set-AzStorageBlobContent -File "D:\_TestImages\Image001.jpg" `
+  -Container $containerName `
+  -Blob "Image001.jpg" `
+  -Context $ctx 
+  -StandardBlobTier Hot
+
+# upload another file to the Cool access tier
 Set-AzStorageBlobContent -File "D:\_TestImages\Image002.png" `
   -Container $containerName `
   -Blob "Image002.png" `
   -Context $ctx
+  -StandardBlobTier Cool
 
-# upload a file to a folder
+# upload a file to a folder to the Archive access tier
 Set-AzStorageBlobContent -File "D:\_TestImages\foldername\Image003.jpg" `
   -Container $containerName `
   -Blob "Foldername/Image003.jpg" `
   -Context $ctx 
+  -StandardBlobTier Archive
 ```
 
 請上傳您所需的檔案數量，再繼續進行。

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
-ms.openlocfilehash: c59ff344cc3e24387c764ba2f23bc3fe0065b371
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 78d44310420558d2f57d2b652f8453028b20c433
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559791"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077645"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>教學課程：在 Azure App Service 中裝載具有 CORS 支援的 RESTful API
 
@@ -203,4 +203,4 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 移至下一個教學課程，以了解如何為使用者進行驗證和授權。
 
 > [!div class="nextstepaction"]
-> [教學課程：端對端驗證和授權使用者](app-service-web-tutorial-auth-aad.md)
+> [教學課程：端對端驗證和授權使用者](tutorial-auth-aad.md)

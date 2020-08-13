@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 0b150491fff953434062cc583566e1113947a679
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 91fecbc68efec1adcee9a2c4013dea46f6da86af
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504898"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066469"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>什麼是 Azure NetApp Files 的儲存體階層
 
@@ -50,8 +50,6 @@ ms.locfileid: "86504898"
 - 磁碟區會依據邏輯容量耗用量進行測量，且可以調整。 
 - 磁碟區的容量耗用量是根據其集區的佈建容量進行計算。
 - 每個磁碟區都只屬於一個集區，但是一個集區可以包含多個磁碟區。 
-- 磁碟區不能跨越容量集區移動。 <!--Within the same NetApp account, you can move a volume across pools.  -->   
-  例如，在下方的[儲存體階層的概念圖表](#conceptual_diagram_of_storage_hierarchy)中，您可以將磁碟區從容量集區 1 移至容量集區 2。
 
 ## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>儲存體階層的概念圖表 
 下列範例顯示 Azure 訂用帳戶、NetApp 帳戶、容量集區和磁碟區之間的關係。   

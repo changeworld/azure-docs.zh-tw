@@ -5,19 +5,19 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: e38711cbb5ccd9fe4cc8584a9229a1c57550d618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 206da4e7fe92846352120d604cd8bee578eb45dc
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021223"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077725"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
 [App Service](overview.md) 可在 Azure 中提供可高度擴充、自我修復的 Web 主控服務。 它也為您的應用程式提供[受控識別](overview-managed-identity.md)，這是用於保護 [Azure SQL Database](/azure/sql-database/) 和其他 Azure 服務存取權的周全解決方案。 App Service 中的受控識別可藉由從應用程式刪除祕密 (例如連接字串中的認證)，讓應用程式更加安全。 在本教學課程中，您會將受控識別新增至您在下列其中一個教學課程所建置的 Web 應用程式範例： 
 
 - [教學課程：在 Azure 中搭配 SQL Database 來建置 ASP.NET 應用程式](app-service-web-tutorial-dotnet-sqldatabase.md)
-- [教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](app-service-web-tutorial-dotnetcore-sqldb.md)
+- [教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](tutorial-dotnetcore-sqldb-app.md)
 
 當您完成時，範例應用程式不需要使用者名稱和密碼，即可安全地連線到 SQL Database。
 
@@ -43,7 +43,7 @@ ms.locfileid: "84021223"
 
 ## <a name="prerequisites"></a>必要條件
 
-本文會從您結束[教學課程：在 Azure 中搭配 SQL Database 來建置 ASP.NET 應用程式](app-service-web-tutorial-dotnet-sqldatabase.md)或[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](app-service-web-tutorial-dotnetcore-sqldb.md)。 如果您尚未進行，請先依照這兩個教學課程的其中一個來進行。 或者，您可以使用 SQL Database 針對自己的 .NET 應用程式調整步驟。
+本文會從您結束[教學課程：在 Azure 中搭配 SQL Database 來建置 ASP.NET 應用程式](app-service-web-tutorial-dotnet-sqldatabase.md)或[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](tutorial-dotnetcore-sqldb-app.md)。 如果您尚未進行，請先依照這兩個教學課程的其中一個來進行。 或者，您可以使用 SQL Database 針對自己的 .NET 應用程式調整步驟。
 
 若要使用 SQL Database 作為後端對您的應用程式進行偵錯，請確定您已允許從您的電腦進行用戶端連線。 如果尚未這麼做，請遵循[使用 Azure 入口網站管理伺服器層級 IP 防火牆規則](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)中的步驟來新增用戶端 IP。
 
@@ -74,14 +74,14 @@ az sql server ad-admin create --resource-group myResourceGroup --server-name <se
 
 ## <a name="set-up-visual-studio"></a>設定 Visual Studio
 
-### <a name="windows"></a>Windows
+### <a name="windows-client"></a>Windows 用戶端
 Visual Studio for Windows 會與 Azure AD 驗證整合。 若要啟用在 Visual Studio 中的開發和偵錯，請從功能表中選取 [檔案] > [帳戶設定]，然後按一下 [新增帳戶]，以在 Visual Studio 中新增您的 Azure AD 使用者。
 
 若要設定 Azure 服務驗證的 Azure AD 使用者，請從功能表中選取 [工具] > [選項]，然後選取 [Azure 服務驗證] > [帳戶選取]。 選取您新增的 Azure AD 使用者，然後按一下 [確定]。
 
 現在您已可開始將 SQL Database 作為後端，使用 Azure AD 驗證開發和偵錯您的應用程式。
 
-### <a name="macos"></a>MacOS
+### <a name="macos-client"></a>macOS 用戶端
 
 Visual Studio for Mac 不會與 Azure AD 驗證整合。 不過，稍後會用到的 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 程式庫可以使用 Azure CLI 中的權杖。 若要在 Visual Studio 中啟用開發和偵錯工具，您必須先在本機電腦上安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
@@ -142,7 +142,7 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
-在 [ASP.NET Core 和 SQL Database 教學課程](app-service-web-tutorial-dotnetcore-sqldb.md)中完全不會使用連接字串 `MyDbConnection`，因為本機開發環境會使用 Sqlite 資料庫檔案，Azure 生產環境則會使用來自 App Service 的連接字串。 在使用 Active Directory 驗證時，您會希望這兩個環境使用相同的連接字串。 在 appsettings.json 中，將 `MyDbConnection` 連接字串的值取代為：
+在 [ASP.NET Core 和 SQL Database 教學課程](tutorial-dotnetcore-sqldb-app.md)中完全不會使用連接字串 `MyDbConnection`，因為本機開發環境會使用 Sqlite 資料庫檔案，Azure 生產環境則會使用來自 App Service 的連接字串。 在使用 Active Directory 驗證時，您會希望這兩個環境使用相同的連接字串。 在 appsettings.json 中，將 `MyDbConnection` 連接字串的值取代為：
 
 ```json
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
@@ -245,7 +245,7 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 
 在發佈頁面中，按一下 [發佈]。 
 
-**如果您來自[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](app-service-web-tutorial-dotnetcore-sqldb.md)** ，請使用 Git 和下列命令來發佈變更：
+**如果您來自[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](tutorial-dotnetcore-sqldb-app.md)** ，請使用 Git 和下列命令來發佈變更：
 
 ```bash
 git commit -am "configure managed identity"

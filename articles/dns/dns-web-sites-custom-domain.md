@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76939106"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079445"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>教學課程：在自訂網域中建立 Web 應用程式的 DNS 記錄 
 
@@ -48,7 +48,7 @@ ms.locfileid: "76939106"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * 您必須提供可用的網域名稱，才能使用可裝載於 Azure DNS 的網域名稱進行測試。 您必須擁有此網域的完整控制權。 完整控制權包括為網域設定名稱伺服器 (NS) 記錄的能力。
-* [建立 App Service 應用程式](../app-service/app-service-web-get-started-html.md)，或使用您針對另一個教學課程建立的應用程式。
+* [建立 App Service 應用程式](../app-service/quickstart-html.md)，或使用您針對另一個教學課程建立的應用程式。
 
 * 在 Azure DNS 中建立 DNS 區域，並將註冊機構中的區域委派給 Azure DNS。
 

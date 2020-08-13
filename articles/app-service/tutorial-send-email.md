@@ -4,12 +4,12 @@ description: 了解如何從您的 App Service 應用程式叫用商務流程。
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 2b478ae75c8be978ea93a493b65dafdc7756c4b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 874c67b0d8d29c163fa5f36b3d100f1d2a013d53
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083237"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080961"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教學課程：傳送電子郵件並從 App Service 叫用其他商務流程
 
@@ -32,23 +32,23 @@ ms.locfileid: "87083237"
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](app-service-web-tutorial-dotnetcore-sqldb.md)
+[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](tutorial-dotnetcore-sqldb-app.md)
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-[教學課程：在 Azure 中建置 Node.js 和 MongoDB 應用程式](app-service-web-tutorial-nodejs-mongodb-app.md)
+[教學課程：在 Azure 中建置 Node.js 和 MongoDB 應用程式](tutorial-nodejs-mongodb-app.md)
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-[教學課程：在 Azure 中建置 PHP 和 MySQL 應用程式](app-service-web-tutorial-php-mysql.md)
+[教學課程：在 Azure 中建置 PHP 和 MySQL 應用程式](tutorial-php-mysql-app.md)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-[教學課程：在 Azure App Service 中透過 PostgreSQL 執行 Python (Django) Web 應用程式](containers/tutorial-python-postgresql-app.md)
+[教學課程：在 Azure App Service 中透過 PostgreSQL 執行 Python (Django) Web 應用程式](tutorial-python-postgresql-app.md)
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-[在 Linux 上的 Azure App Service 中建置 Ruby 和 Postgres 應用程式](containers/tutorial-ruby-postgres-app.md)
+[在 Linux 上的 Azure App Service 中建置 Ruby 和 Postgres 應用程式](tutorial-ruby-postgres-app.md)
 
 ---
 
@@ -191,7 +191,7 @@ var jsonData = JsonSerializer.Serialize(new
 });
 
 HttpResponseMessage result = await client.PostAsync(
-    // Requires DI configuration to access app settings. See https://docs.microsoft.com/azure/app-service/containers/configure-language-dotnetcore#access-environment-variables
+    // Requires DI configuration to access app settings. See https://docs.microsoft.com/azure/app-service/configure-language-dotnetcore#access-environment-variables
     _configuration["LOGIC_APP_URL"],
     new StringContent(jsonData, Encoding.UTF8, "application/json"));
     
@@ -201,7 +201,7 @@ var statusCode = result.StatusCode.ToString();
 > [!NOTE]
 > 撰寫此程式碼的目的是為了簡化示範。 實際上，請勿將每個要求的 `HttpClient` 物件具現化。 請依照[使用 IHttpClientFactory 來實作復原性 HTTP 要求](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)的指引操作。
 
-如果您要在[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](app-service-web-tutorial-dotnetcore-sqldb.md)的範例應用程式上測試此程式碼，可以在新增 `Todo` 項目之後，使用此程式碼在 [Create 動作](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)中傳送電子郵件確認。
+如果您要在[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](tutorial-dotnetcore-sqldb-app.md)的範例應用程式上測試此程式碼，可以在新增 `Todo` 項目之後，使用此程式碼在 [Create 動作](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)中傳送電子郵件確認。
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
@@ -228,7 +228,7 @@ var jsonData = {
 
 ```
 
-如果您要在[教學課程：在 Azure 中建置 ASP.NET Core 和 MongoDB 應用程式](app-service-web-tutorial-nodejs-mongodb-app.md)的範例應用程式上測試此程式碼，可以在[順利儲存本文](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)之後，使用此程式碼在 [Create 動作](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)中傳送電子郵件確認。
+如果您要在[教學課程：在 Azure 中建置 ASP.NET Core 和 MongoDB 應用程式](tutorial-nodejs-mongodb-app.md)的範例應用程式上測試此程式碼，可以在[順利儲存本文](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)之後，使用此程式碼在 [Create 動作](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)中傳送電子郵件確認。
 
 ### <a name="php"></a>[PHP](#tab/php)
 
@@ -260,7 +260,7 @@ $response = $promise->wait();
 Log::info(print_r($response, TRUE));
 ```
 
-如果您要在[教學課程：在 Azure 中建置 PHP 和 MySQL 應用程式](app-service-web-tutorial-php-mysql.md)的範例應用程式上測試此程式碼，可以使用此程式碼在 [Route::post 函式](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)中 (就在 return 陳述式之前) 中傳送電子郵件確認。
+如果您要在[教學課程：在 Azure 中建置 PHP 和 MySQL 應用程式](tutorial-php-mysql-app.md)的範例應用程式上測試此程式碼，可以使用此程式碼在 [Route::post 函式](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)中 (就在 return 陳述式之前) 中傳送電子郵件確認。
 
 ### <a name="python"></a>[Python](#tab/python)
 
@@ -291,7 +291,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
     print(await resp.status())
 ``` -->
 
-如果您要在[教學課程：在 Azure App Service 中使用 PostgreSQL 執行 Python (Django) Web 應用程式](containers/tutorial-python-postgresql-app.md)的範例應用程式上測試此程式碼，可以使用此程式碼在 [Route::post 函式](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)中 (就在 return 陳述式之前) 傳送電子郵件確認。
+如果您要在[教學課程：在 Azure App Service 中使用 PostgreSQL 執行 Python (Django) Web 應用程式](tutorial-python-postgresql-app.md)的範例應用程式上測試此程式碼，可以使用此程式碼在 [Route::post 函式](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)中 (就在 return 陳述式之前) 傳送電子郵件確認。
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
@@ -308,7 +308,7 @@ body = {
 connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 ```
 
-如果您要在[在 Linux 上的 Azure App Service 中建置 Ruby 和 Postgres 應用程式](containers/tutorial-ruby-postgres-app.md)的範例應用程式上測試此程式碼，[當 @task.save 成功時](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30)，使用此程式碼在 [Create](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) 動作中傳送電子郵件確認。
+如果您要在[在 Linux 上的 Azure App Service 中建置 Ruby 和 Postgres 應用程式](tutorial-ruby-postgres-app.md)的範例應用程式上測試此程式碼，[當 @task.save 成功時](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30)，使用此程式碼在 [Create](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) 動作中傳送電子郵件確認。
 
 ---
 

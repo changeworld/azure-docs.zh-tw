@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 63b8c33b61d6bff28eca98929e344df7ea54e779
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c082eff4f70b0255b7701340ac6e8b377223c0b5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430674"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076858"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>快速入門：了解如何透過 Node.js 和 azure/service-bus 套件使用服務匯流排佇列
 在本教學課程中，您將了解如何撰寫 Node.js 程式，以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 套件對服務匯流排佇列傳送及接收訊息。 此套件使用較快速的 [AMQP 1.0 通訊協定](service-bus-amqp-overview.md)，而舊版的 [azure-sb](https://www.npmjs.com/package/azure-sb) 套件則使用[服務匯流排 REST 執行階段 API](/rest/api/servicebus/service-bus-runtime-rest)。 相關範例是以 JavaScript 撰寫的。
@@ -22,7 +22,7 @@ ms.locfileid: "87430674"
 - 如果您沒有可用的佇列，請執行[使用 Azure 入口網站建立服務匯流排佇列](service-bus-quickstart-portal.md)一文中的步驟，以建立佇列。 請記下服務匯流排執行個體的連接字串，以及您所建立的佇列名稱。 我們將在範例中使用這些值。
 
 > [!NOTE]
-> - 本教學課程使用您可以透過 [Nodejs](https://nodejs.org/) 來複製和執行的範例。 如需有關建立 Node.js 應用程式的指示，請參閱[建立 Node.js 應用程式並將其部署到 Azure 網站](../app-service/app-service-web-get-started-nodejs.md)或 [Node.js 雲端服務 (使用 Windows PowerShell)](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)。
+> - 本教學課程使用您可以透過 [Nodejs](https://nodejs.org/) 來複製和執行的範例。 如需有關建立 Node.js 應用程式的指示，請參閱[建立 Node.js 應用程式並將其部署到 Azure 網站](../app-service/quickstart-nodejs.md)或 [Node.js 雲端服務 (使用 Windows PowerShell)](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)。
 > - 新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 套件尚不支援建立佇列的作業。 如果您想要以程式設計方式加以建立，請使用 [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) 套件。
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>使用 Node Package Manager (NPM) 安裝封裝
@@ -33,7 +33,7 @@ npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-queue"></a>傳送訊息至佇列
-與服務匯流排佇列的互動時，會先具現化 [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) 類別，並使用它來具現化 [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) 類別。 當您擁有佇列用戶端之後，您即可建立傳送者，並對其使用 [send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) 或 [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) 方法來傳送訊息。
+與服務匯流排佇列的互動時，會先具現化 [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) 類別，並使用它來具現化 [QueueClient](/javascript/api/@azure/service-bus/queueclient) 類別。 當您擁有佇列用戶端之後，您即可建立傳送者，並對其使用 [send](/javascript/api/@azure/service-bus/sender#send-sendablemessageinfo-) 或 [sendBatch](/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) 方法來傳送訊息。
 
 1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/)
 2. 建立名為 `send.js` 的檔案，並在其中貼上下列程式碼。 此程式碼會將 10 則訊息傳送至您的佇列。
@@ -83,7 +83,7 @@ npm install @azure/service-bus
 服務匯流排佇列支援的訊息大小上限：在[標準層](service-bus-premium-messaging.md)中為 256 KB 以及在[進階層](service-bus-premium-messaging.md)中為 1 MB。 佇列中所保存的訊息數目沒有限制，但佇列所保存的訊息大小總計會有最高限制。 此佇列大小會在建立時定義，上限是 5 GB。 如需有關配額的詳細資訊，請參閱 [服務匯流排配額](service-bus-quotas.md)。
 
 ## <a name="receive-messages-from-a-queue"></a>從佇列接收訊息
-與服務匯流排佇列的互動時，會先具現化 [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) 類別，並使用它來具現化 [QueueClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient) 類別。 擁有佇列用戶端之後，您即可建立接收者，並對其使用 [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) 或 [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) 方法來接收訊息。
+與服務匯流排佇列的互動時，會先具現化 [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) 類別，並使用它來具現化 [QueueClient](/javascript/api/@azure/service-bus/queueclient) 類別。 擁有佇列用戶端之後，您即可建立接收者，並對其使用 [receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) 或 [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) 方法來接收訊息。
 
 1. 開啟您慣用的編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/)
 2. 建立名為 `recieve.js` 的檔案，並在其中貼上下列程式碼。 此程式碼會嘗試從您的佇列接收 10 則訊息。 您實際收到的計數取決於佇列中的訊息數目和網路延遲。
@@ -119,7 +119,7 @@ npm install @azure/service-bus
 
 恭喜！ 您已從服務匯流排佇列接收訊息。
 
-[createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-) 方法會採用 `ReceiveMode`，這是一個具有 [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) 和 [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) 值的列舉。 如果您在訊息上使用了任何 `complete()`、`abandon()`、`defer()` 或 `deadletter()` 方法藉以使用 `PeekLock` 模式，請務必[結算您的訊息](message-transfers-locks-settlement.md#settling-receive-operations)。
+[createReceiver](/javascript/api/@azure/service-bus/queueclient#createreceiver-receivemode-) 方法會採用 `ReceiveMode`，這是一個具有 [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) 和 [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) 值的列舉。 如果您在訊息上使用了任何 `complete()`、`abandon()`、`defer()` 或 `deadletter()` 方法藉以使用 `PeekLock` 模式，請務必[結算您的訊息](message-transfers-locks-settlement.md#settling-receive-operations)。
 
 > [!NOTE]
 > 您可以使用[服務匯流排總管](https://github.com/paolosalvatori/ServiceBusExplorer/)來管理服務匯流排資源。 服務匯流排總管可讓使用者連線到服務匯流排命名空間，並以簡便的方式管理傳訊實體。 此工具提供進階的功能 (例如匯入/匯出功能) 或測試主題、佇列、訂用帳戶、轉送服務、通知中樞和事件中樞的能力。 
@@ -129,4 +129,3 @@ npm install @azure/service-bus
 - [佇列、主題和訂用帳戶](service-bus-queues-topics-subscriptions.md)
 - [在 GitHub 上查看服務匯流排的其他 Nodejs 範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Node.js 開發人員中心](https://azure.microsoft.com/develop/nodejs/)
-

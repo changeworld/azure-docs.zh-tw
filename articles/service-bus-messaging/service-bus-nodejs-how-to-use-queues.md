@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
-ms.openlocfilehash: 076233c52074bca646c072e9a1abe63b15412c1b
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: ba0fd6cf7214beeaca9e93b1fe003a144c247cb5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430643"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076994"
 ---
 # <a name="quickstart-use-service-bus-queues-in-azure-with-nodejs-and-the-azure-sb-package"></a>快速入門：透過 Node.js 和 azure-sb 套件在 Azure 中使用服務匯流排佇列
 在本教學課程中，您將了解如何建立 Node.js 應用程式，以使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 套件對 Azure 服務匯流排佇列傳送及接收訊息。 範例均以 JavaScript 撰寫，並使用在內部使用 azure-sb 套件的 Node.js [Azure 模組](https://www.npmjs.com/package/azure)。
@@ -20,7 +20,7 @@ ms.locfileid: "87430643"
 > [!IMPORTANT]
 > [azure-sb](https://www.npmjs.com/package/azure-sb) 套件會使用[服務匯流排 REST 執行階段 API](/rest/api/servicebus/service-bus-runtime-rest)。 您可以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) (採用更快速的 [AMQP 1.0 通訊協定](service-bus-amqp-overview.md))，以獲得更快速的體驗。 
 > 
-> 若要深入了解新的套件，請參閱[如何透過 Node.js 和 @azure/service-bus 套件使用服務匯流排佇列](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues-new-package)，否則，請繼續閱讀以了解如何使用 [Azure](https://www.npmjs.com/package/azure) 套件。
+> 若要深入了解新的套件，請參閱[如何透過 Node.js 和 @azure/service-bus 套件使用服務匯流排佇列](./service-bus-nodejs-how-to-use-queues-new-package.md)，否則，請繼續閱讀以了解如何使用 [Azure](https://www.npmjs.com/package/azure) 套件。
 
 ## <a name="prerequisites"></a>Prerequisites
 - Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或是[註冊免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
@@ -193,6 +193,6 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[Create and deploy a Node.js application to an Azure Website]: ../app-service/app-service-web-get-started-nodejs.md
+[Create and deploy a Node.js application to an Azure Website]: ../app-service/quickstart-nodejs.md
 [Node.js Web Application with Storage]:../cosmos-db/table-storage-how-to-use-nodejs.md
 [Service Bus quotas]: service-bus-quotas.md

@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 6a9a3df1d200aae9e5ea401652752656ed9ff423
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cfcb5645a6284214e233758705537486f32967c6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760969"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079292"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>如何從 Node.js 使用 Azure 表格儲存體或 Azure Cosmos DB 資料表 API
 
@@ -484,5 +484,5 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 * [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) 是一個免費的獨立應用程式，可讓您在 Windows、MacOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。
 * GitHub 上的 [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) \(英文\) 存放庫。
 * [適用於 Node.js 開發人員的 Azure](https://docs.microsoft.com/azure/developer/javascript/)
-* [在 Azure 中建立 Node.js Web 應用程式](../app-service/app-service-web-get-started-nodejs.md)
+* [在 Azure 中建立 Node.js Web 應用程式](../app-service/quickstart-nodejs.md)
 * [建置 Node.js 應用程式並部署到 Azure 雲端服務](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (使用 Windows PowerShell)

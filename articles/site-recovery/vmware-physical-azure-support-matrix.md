@@ -29,7 +29,7 @@ VMware Vm 的嚴重損壞修復 | 將內部部署 VMware 虛擬機器複寫至 A
 
 ## <a name="on-premises-virtualization-servers"></a>內部部署虛擬化伺服器
 
-**Server** | **需求** | **詳細資料**
+**伺服器** | **需求** | **詳細資料**
 --- | --- | ---
 vCenter Server | 版本7.0、6.7、6.5、6.0 或5。5 | 我們建議您在嚴重損壞修復部署中使用 vCenter server。
 vSphere 主機 | 版本7.0、6.7、6.5、6.0 或5。5 | 我們建議 vSphere 主機與 vCenter 伺服器應位於和處理序伺服器相同的網路中。 根據預設，處理序伺服器會在設定伺服器上執行。 [深入了解](vmware-physical-azure-config-process-server-overview.md)。
