@@ -290,12 +290,16 @@
                   href: customize-encoder-presets-how-to.md
                 - name: 建立重疊轉換
                   href: how-to-create-overlay.md
+                - name: 使用 .NET 產生縮圖
+                  href: media-services-generate-thumbnails-dotnet.md
             - name: 透過 CLI
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: 透過 REST
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+            - name: 使用 REST 產生縮圖
+              href: media-services-generate-thumbnails-rest.md
         - name: 子剪輯影片
           items:
             - name: 透過 .NET

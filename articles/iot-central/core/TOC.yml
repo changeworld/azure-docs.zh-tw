@@ -139,6 +139,8 @@
               href: howto-monitor-application-health.md
             - name: 關於您的應用程式
               href: howto-get-app-info.md
+            - name: 捲動 X.509 憑證
+              href: how-to-roll-x509-certificates.md
         - name: 從其他地方管理
           items:
             - name: 從 Azure 入口網站管理

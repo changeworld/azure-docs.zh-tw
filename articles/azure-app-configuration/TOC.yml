@@ -109,6 +109,8 @@
       href: howto-labels-aspnet-core.md
     - name: 匯入或匯出設定資料
       href: howto-import-export-data.md
+    - name: 針對索引鍵/值使用 JSON 內容類型
+      href: howto-leverage-json-content-type.md
     - name: 將事件路由至自訂端點
       href: howto-app-configuration-event.md
     - name: 自動備份設定存放區

@@ -11,7 +11,11 @@
           expanded: true
           items:
             - name: 設定 - Azure 入口網站
-              href: data-box-quickstart-portal.md
+              items:
+                - name: 匯入
+                  href: data-box-quickstart-portal.md
+                - name: 匯出
+                  href: data-box-quickstart-export.md
         - name: 教學課程
           items:
             - name: 將資料匯入 Azure

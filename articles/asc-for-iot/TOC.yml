@@ -29,8 +29,10 @@
       href: quickstart-configure-your-solution.md
     - name: 建立適用於 IoT 的 Azure 資訊安全中心模組對應項
       href: quickstart-create-security-twin.md
-    - name: 建立自訂的安全性警訊
+    - name: 建立自訂的安全性警示
       href: quickstart-create-custom-alerts.md
+    - name: 調查安全性警示
+      href: quickstart-investigate-security-alerts.md
 - name: 概念
   items:
     - name: 安全性代理程式驗證

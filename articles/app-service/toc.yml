@@ -4,8 +4,6 @@
   items:
     - name: 關於 Web Apps
       href: overview.md
-    - name: 關於 Linux 上的 App Service
-      href: containers/app-service-linux-intro.md
     - name: 關於 App Service Environment
       href: environment/intro.md
     - name: 比較主機選項
@@ -13,34 +11,50 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立 .NET Core 應用程式
-      href: app-service-web-get-started-dotnet.md
-    - name: 建立.NET Framework 應用程式
-      href: app-service-web-get-started-dotnet-framework.md
-    - name: 建立 Node.js 應用程式
-      href: app-service-web-get-started-nodejs.md
-    - name: 建立 PHP 應用程式
-      href: app-service-web-get-started-php.md
-    - name: 建立 Java 應用程式
-      href: app-service-web-get-started-java.md
-    - name: 建立靜態 HTML 網站
-      href: app-service-web-get-started-html.md
-    - name: 執行 Windows 容器
-      href: app-service-web-get-started-windows-container.md
+    - name: .NET Core
+      href: quickstart-dotnetcore.md
+    - name: .NET Framework
+      href: quickstart-dotnet-framework.md
+    - name: Node.js
+      href: quickstart-nodejs.md
+    - name: PHP
+      href: quickstart-php.md
+    - name: Java
+      href: quickstart-java.md
+    - name: Python
+      href: quickstart-python.md
+    - name: Ruby
+      href: quickstart-ruby.md
+    - name: 靜態 HTML 網站
+      href: quickstart-html.md
+    - name: 自訂容器
+      href: quickstart-custom-container.md
+    - name: 多個容器應用程式
+      href: quickstart-multi-container.md
 - name: 教學課程
   items:
     - name: App with DB
       items:
         - name: .NET Core with SQL DB
-          href: app-service-web-tutorial-dotnetcore-sqldb.md
+          href: tutorial-dotnetcore-sqldb-app.md
         - name: 具有 SQL DB 的 .NET Framework
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: PHP with MySQL
-          href: app-service-web-tutorial-php-mysql.md
+          href: tutorial-php-mysql-app.md
         - name: Node.js 搭配 MongoDB
-          href: app-service-web-tutorial-nodejs-mongodb-app.md
-    - name: 自訂 Windows (容器)
-      href: app-service-web-tutorial-windows-containers-custom-fonts.md
+          href: tutorial-nodejs-mongodb-app.md
+        - name: Ruby with Postgres
+          href: tutorial-ruby-postgres-app.md
+        - name: Python with Postgres
+          href: tutorial-python-postgresql-app.md
+        - name: Java with Spring Data
+          href: tutorial-java-spring-cosmosdb.md
+    - name: 自訂容器
+      items:
+        - name: 從 ACR 部署
+          href: tutorial-custom-container.md
+        - name: 多個容器應用程式
+          href: tutorial-multi-container-app.md
     - name: 安全存取 SQL DB
       href: app-service-web-tutorial-connect-msi.md
     - name: 託管 RESTful API
@@ -52,9 +66,11 @@
     - name: 新增 CDN
       href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
     - name: 驗證使用者
-      href: app-service-web-tutorial-auth-aad.md
+      href: tutorial-auth-aad.md
     - name: 傳送電子郵件/推文
       href: tutorial-send-email.md
+    - name: 針對錯誤進行疑難排解
+      href: tutorial-troubleshoot-monitor.md
 - name: 範例
   items:
     - name: Azure CLI
@@ -125,8 +141,14 @@
           href: configure-language-nodejs.md
         - name: 設定 PHP
           href: configure-language-php.md
+        - name: 設定 Python
+          href: configure-language-python.md
         - name: 設定 Java
           href: configure-language-java.md
+        - name: 設定 Ruby
+          href: configure-language-ruby.md
+        - name: 設定自訂 Linux 容器
+          href: configure-custom-container.md
         - name: 連線到內部部署資源
           href: web-sites-integrate-with-vnet.md
         - name: 設定 Azure 儲存體 (容器)
@@ -145,10 +167,14 @@
               href: deploy-content-sync.md
             - name: 連續部署
               href: deploy-continuous-deployment.md
+            - name: 自訂容器 CI/CD
+              href: deploy-ci-cd-custom-container.md
             - name: 從本機 Git 進行部署
               href: deploy-local-git.md
-            - name: 使用 GitHub 動作部署
+            - name: GitHub Action
               href: deploy-github-actions.md
+            - name: 容器的 GitHub Action
+              href: deploy-container-github-action.md
             - name: 透過範本進行部署
               href: deploy-complex-application-predictably.md
         - name: 設定部署認證
@@ -215,6 +241,8 @@
           href: troubleshoot-diagnostic-logs.md
         - name: 取得資源事件
           href: get-resource-events.md
+        - name: 開啟 Linux 容器的 SSH 工作階段
+          href: configure-linux-open-ssh-session.md
     - name: 管理應用程式
       items:
         - name: 管理主機方案

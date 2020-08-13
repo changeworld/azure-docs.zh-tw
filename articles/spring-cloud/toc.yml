@@ -22,6 +22,8 @@
   items:
     - name: 手動調整應用程式
       href: spring-cloud-tutorial-scale-manual.md
+    - name: 自動調整應用程式
+      href: spring-cloud-tutorial-setup-autoscale.md
     - name: 警示和動作群組
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: 使用 IntelliJ 部署應用程式
@@ -38,8 +40,6 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: 使用受控識別將 Key Vault 連線至 Azure Spring Cloud 應用程式
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: 設定微服務應用程式的自動調整
-      href: spring-cloud-tutorial-setup-autoscale.md
 - name: 範例
   items:
     - name: Azure 原則內建

@@ -3,18 +3,18 @@ title: Microsoft 身分識別平台文件
 summary: Microsoft 身分識別平台是驗證服務、開放原始碼程式庫和應用程式管理工具。 了解如何透過我們的快速入門、教學課程和程式碼範例，建立現代化的標準型驗證解決方案。 建置可供使用者和客戶使用其 Microsoft 身分識別或社交帳戶來登入的應用程式，並授權其存取您的 API 或 Microsoft API，例如 Microsoft Graph。
 metadata:
   ms.topic: landing-page
-  ms.date: 07/13/2020
-  author: CelesteDG
-  ms.author: celested
+  ms.date: 08/11/2020
+  author: mmacy
+  ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: e17e6195d629238c9c719d8e34780593129ae244
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: d978cc0f2b59cdb1cd41b0cf5e23851ad5165558
+  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87027065"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88116728"
 landingContent:
 - title: 關於 Microsoft 身分識別平台
   linkLists:
@@ -83,7 +83,7 @@ landingContent:
     - text: ASP.NET
       url: quickstart-v2-dotnet-native-aspnet.md
     - text: ASP.NET Core
-      url: https://docs.microsoft.com/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+      url: /samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
 - title: Microsoft Graph
   linkLists:
   - linkListType: get-started
@@ -91,7 +91,7 @@ landingContent:
     - text: 使用 Microsoft Graph API
       url: microsoft-graph-intro.md
     - text: Microsoft Graph 驗證概觀
-      url: https://docs.microsoft.com/graph/auth/
+      url: /graph/auth/
 - title: 通訊協定
   linkLists:
   - linkListType: overview
@@ -116,3 +116,13 @@ landingContent:
       url: ../managed-identities-azure-resources/overview.md
     - text: 受控識別和 Azure VM
       url: ../managed-identities-azure-resources/how-managed-identities-work-vm.md
+- title: Docs 中的新功能
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 處理錯誤和例外狀況 - Android
+      url: msal-android-handling-exceptions.md
+    - text: 宣告中的目錄結構描述擴充屬性
+      url: active-directory-schema-extensions.md
+    - text: MSAL.js 2.0 驗證碼 + PKCE & CORS
+      url: quickstart-v2-javascript-auth-code.md

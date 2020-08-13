@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/17/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6ba9147aefb793387b429702623639bbccf0beea
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 26d6ca641c03395996fdeaa4e54d2a001cf02bef
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507606"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88162778"
 ---
 ## <a name="benefits-of-managed-disks"></a>受控磁碟的好處
 
@@ -53,7 +53,7 @@ ms.locfileid: "87507606"
 
 ### <a name="private-links"></a>Private Link
 
-受控磁碟支援使用 Private Link 來匯入或匯出網路內部的受控磁碟。 Private Link 可讓您為未連結的受控磁碟和快照集產生時間繫結的共用存取簽章 (SAS) URI，以供您用來將資料匯出至其他區域進行區域擴充、災害復原和鑑識分析。 您也可以使用 SAS URI，直接將 VHD 從內部部署環境上傳至空白磁碟。 現在您可以利用 [Private Link](../articles/private-link/private-link-overview.md) 來限制受控磁碟的匯出和匯入，使其只能在您的 Azure 虛擬網路內進行。 Private Link 可讓您確保資料只會在安全的 Microsoft 骨幹網路內移動。
+目前對受控磁碟的 Private Link 支援處於預覽狀態，可用於匯入或匯出網絡內部的受控磁碟。 Private Link 可讓您為未連結的受控磁碟和快照集產生時間繫結的共用存取簽章 (SAS) URI，以供您用來將資料匯出至其他區域進行區域擴充、災害復原和鑑識分析。 您也可以使用 SAS URI，直接將 VHD 從內部部署環境上傳至空白磁碟。 現在您可以利用 [Private Link](../articles/private-link/private-link-overview.md) 來限制受控磁碟的匯出和匯入，使其只能在您的 Azure 虛擬網路內進行。 Private Link 可讓您確保資料只會在安全的 Microsoft 骨幹網路內移動。
 
 若要了解如何啟用 Private Link 以便匯入或匯出受控磁碟，請參閱 [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) 或[入口網站](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md)文章。
 

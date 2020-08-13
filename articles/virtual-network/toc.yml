@@ -12,6 +12,8 @@
       href: quick-create-powershell.md
     - name: 建立虛擬網路 - Azure CLI
       href: quick-create-cli.md
+    - name: 建立虛擬網路 - ARM 範本
+      href: quick-create-template.md
   expanded: true
 - name: 教學課程
   items:

@@ -196,7 +196,21 @@
               href: app/pricing.md
             - name: 記錄資料使用量和成本
               href: platform/manage-cost-storage.md
-        - name: Log Analytics 工作區
+    - name: 平台記錄
+      items:
+        - name: 概觀
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/platform-logs-overview.md
+        - name: 活動記錄檔
+          href: platform/activity-log.md
+        - name: 資源記錄
+          href: platform/resource-logs.md
+        - name: 診斷設定
+          displayName: 'Platform logs, Resource logs, Activity log'
+          href: platform/diagnostic-settings.md
+    - name: Log Analytics
+      items:
+        - name: 工作區
           items:
             - name: 設計工作區部署
               href: platform/design-logs-deployment.md
@@ -218,119 +232,6 @@
               href: platform/service-providers.md
             - name: 管理存取權
               href: platform/manage-access.md
-        - name: 虛擬機器代理程式
-          items:
-            - name: 概觀
-              href: platform/agents-overview.md
-            - name: 常見問題集
-              href: faq.md#agents
-            - name: Azure 診斷擴充功能
-              items:
-                - name: 概觀
-                  href: platform/diagnostics-extension-overview.md
-                - name: Windows
-                  displayname: diagnostics extension
-                  items:
-                    - name: 安裝和設定
-                      items:
-                        - name: 安裝選項
-                          href: platform/diagnostics-extension-windows-install.md
-                        - name: PowerShell
-                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
-                        - name: Resource Manager 範本
-                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
-                    - name: 傳送至 Azure 監視器計量
-                      items:
-                        - name: 虛擬機器
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                        - name: VM 擴展集
-                          href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                        - name: VM 傳統
-                          href: platform/collect-custom-metrics-guestos-vm-classic.md
-                        - name: 雲端服務
-                          href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: 傳送至事件中樞
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: 傳送至記錄
-                      href: platform/diagnostics-extension-logs.md
-                    - name: 傳送至 Application Insights
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: 版本歷程記錄
-                      href: platform/diagnostics-extension-versions.md
-                    - name: 疑難排解
-                      href: platform/diagnostics-extension-troubleshooting.md
-                - name: Linux
-                  displayname: diagnostics extension
-                  items:
-                    - name: 概觀
-                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
-                    - name: 使用 Telegraf 收集計量
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Log Analytics 代理程式
-              items:
-                - name: 概觀
-                  href: platform/log-analytics-agent.md
-                - name: Windows 代理程式
-                  href: platform/agent-windows.md
-                - name: Linux 代理程式
-                  href: platform/agent-linux.md
-                - name: Windows 的 VM 延伸模組
-                  href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
-                - name: Linux 的 VM 延伸模組
-                  href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
-                - name: Log Analytics 閘道
-                  href: platform/gateway.md
-                - name: 代理程式管理
-                  href: platform/agent-manage.md
-                - name: 代理程式健康狀態
-                  href: insights/solution-agenthealth.md
-                - name: 資料來源
-                  items:
-                    - name: 概觀
-                      href: platform/agent-data-sources.md
-                    - name: Windows 事件
-                      href: platform/data-sources-windows-events.md
-                    - name: 自訂 JSON 資料
-                      href: platform/data-sources-json.md
-                    - name: CollectD 效能資料
-                      href: platform/data-sources-collectd.md
-                    - name: syslog
-                      href: platform/data-sources-syslog.md
-                    - name: 效能計數器
-                      href: platform/data-sources-performance-counters.md
-                    - name: Linux 應用程式的效能
-                      href: platform/data-sources-linux-applications.md
-                    - name: IIS 記錄
-                      href: platform/data-sources-iis-logs.md
-                    - name: 自訂的記錄
-                      href: platform/data-sources-custom-logs.md
-                    - name: 自訂欄位
-                      href: platform/custom-fields.md
-            - name: 疑難排解
-              items:
-                - name: Log Analytics VM 延伸模組
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/vmext-troubleshoot.md
-                - name: Log Analytics Windows 代理程式
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-windows-troubleshoot.md
-                - name: Log Analytics Linux 代理程式
-                  displayname: 'troubleshoot, troubleshooting'
-                  href: platform/agent-linux-troubleshoot.md
-    - name: 平台記錄
-      items:
-        - name: 概觀
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/platform-logs-overview.md
-        - name: 活動記錄檔
-          href: platform/activity-log.md
-        - name: 資源記錄
-          href: platform/resource-logs.md
-        - name: 診斷設定
-          displayName: 'Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings.md
-    - name: Log Analytics
-      items:
         - name: 記錄查詢概觀
           displayname: 'log query, log queries, query, queries'
           href: log-query/log-query-overview.md
@@ -424,6 +325,135 @@
           href: platform/metric-chart-samples.md
         - name: 針對計量圖表進行疑難排解
           href: platform/metrics-troubleshoot.md
+    - name: 資料收集
+      items:
+        - name: 資料收集規則
+          href: platform/data-collection-rule-overview.md
+        - name: 自訂度量
+          items:
+            - name: 自訂度量
+              href: platform/metrics-custom-overview.md
+            - name: Metrics REST API
+              href: platform/metrics-store-custom-rest-api.md
+        - name: 自訂的記錄
+          items:
+            - name: Log Analytics 資料收集器 API
+              href: platform/data-collector-api.md
+            - name: Log Analytics 資料收集器 API 管線範例
+              href: platform/create-pipeline-datacollector-api.md
+        - name: Logic Apps
+          items:
+            - name: Azure 監視器記錄連接器
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights 連接器
+              href: app/automate-with-logic-apps.md
+    - name: 代理程式
+      items:
+        - name: 概觀
+          href: platform/agents-overview.md
+        - name: 常見問題集
+          href: faq.md#agents
+        - name: Azure 監視器代理程式
+          items:
+            - name: 概觀
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-overview.md
+            - name: 資料收集
+              displayname: 'data collection rule,Azure Monitor agent'
+              href: platform/data-collection-rule-azure-monitor-agent.md
+        - name: Azure 診斷擴充功能
+          items:
+            - name: 概觀
+              href: platform/diagnostics-extension-overview.md
+            - name: Windows
+              displayname: diagnostics extension
+              items:
+                - name: 安裝和設定
+                  items:
+                    - name: 安裝選項
+                      href: platform/diagnostics-extension-windows-install.md
+                    - name: PowerShell
+                      href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                    - name: Resource Manager 範本
+                      href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                - name: 傳送至 Azure 監視器計量
+                  items:
+                    - name: 虛擬機器
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                    - name: VM 擴展集
+                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                    - name: VM 傳統
+                      href: platform/collect-custom-metrics-guestos-vm-classic.md
+                    - name: 雲端服務
+                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                - name: 傳送至事件中樞
+                  href: platform/diagnostics-extension-stream-event-hubs.md
+                - name: 傳送至記錄
+                  href: platform/diagnostics-extension-logs.md
+                - name: 傳送至 Application Insights
+                  href: platform/diagnostics-extension-to-application-insights.md
+                - name: 版本歷程記錄
+                  href: platform/diagnostics-extension-versions.md
+                - name: 疑難排解
+                  href: platform/diagnostics-extension-troubleshooting.md
+            - name: Linux
+              displayname: diagnostics extension
+              items:
+                - name: 概觀
+                  href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                - name: 使用 Telegraf 收集計量
+                  href: platform/collect-custom-metrics-linux-telegraf.md
+        - name: Log Analytics 代理程式
+          items:
+            - name: 概觀
+              href: platform/log-analytics-agent.md
+            - name: Windows 代理程式
+              href: platform/agent-windows.md
+            - name: Linux 代理程式
+              href: platform/agent-linux.md
+            - name: Windows 的 VM 延伸模組
+              href: ../virtual-machines/extensions/oms-windows.md?toc=/azure/azure-monitor/toc.json
+            - name: Linux 的 VM 延伸模組
+              href: ../virtual-machines/extensions/oms-linux.md?toc=/azure/azure-monitor/toc.json
+            - name: Log Analytics 閘道
+              href: platform/gateway.md
+            - name: 代理程式管理
+              href: platform/agent-manage.md
+            - name: 代理程式健康狀態
+              href: insights/solution-agenthealth.md
+            - name: 資料來源
+              items:
+                - name: 概觀
+                  href: platform/agent-data-sources.md
+                - name: Windows 事件
+                  href: platform/data-sources-windows-events.md
+                - name: 自訂 JSON 資料
+                  href: platform/data-sources-json.md
+                - name: CollectD 效能資料
+                  href: platform/data-sources-collectd.md
+                - name: syslog
+                  href: platform/data-sources-syslog.md
+                - name: 效能計數器
+                  href: platform/data-sources-performance-counters.md
+                - name: Linux 應用程式的效能
+                  href: platform/data-sources-linux-applications.md
+                - name: IIS 記錄
+                  href: platform/data-sources-iis-logs.md
+                - name: 自訂的記錄
+                  href: platform/data-sources-custom-logs.md
+                - name: 自訂欄位
+                  href: platform/custom-fields.md
+        - name: 疑難排解
+          items:
+            - name: Log Analytics VM 延伸模組
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/vmext-troubleshoot.md
+            - name: Log Analytics Windows 代理程式
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-windows-troubleshoot.md
+            - name: Log Analytics Linux 代理程式
+              displayname: 'troubleshoot, troubleshooting'
+              href: platform/agent-linux-troubleshoot.md
     - name: Autoscale
       items:
         - name: 概觀
@@ -1148,29 +1178,6 @@
               href: log-query/dashboard-upgrade.md
         - name: 將資料傳送到 Grafana
           href: platform/grafana-plugin.md
-    - name: 自訂資料收集與分析
-      items:
-        - name: 自訂度量
-          items:
-            - name: 自訂度量
-              href: platform/metrics-custom-overview.md
-            - name: Metrics REST API
-              href: platform/metrics-store-custom-rest-api.md
-        - name: 自訂的記錄
-          items:
-            - name: Log Analytics 資料收集器 API
-              href: platform/data-collector-api.md
-            - name: Log Analytics 資料收集器 API 管線範例
-              href: platform/create-pipeline-datacollector-api.md
-        - name: Logic Apps
-          items:
-            - name: Azure 監視器記錄連接器
-              href: platform/logicapp-flow-connector.md
-            - name: Application Insights 連接器
-              href: app/automate-with-logic-apps.md
-        - name: REST API
-          displayname: 'metrics, analyze'
-          href: platform/rest-api-walkthrough.md
     - name: System Center 整合
       items:
         - name: 與 Operations Manager 連線
@@ -1274,6 +1281,9 @@
           href: /rest/api/monitor/
         - name: Azure 監視器記錄
           href: /rest/api/loganalytics
+        - name: REST API 逐步解說
+          displayname: 'metrics, analyze'
+          href: platform/rest-api-walkthrough.md
     - name: Resource Manager 範本
       items:
         - name: Azure 監視器
