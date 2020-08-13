@@ -1,6 +1,6 @@
 ---
 title: 將 StorSimple 5000-7000 系列的資料移轉到 8000 系列裝置| Microsoft Docs
-description: 提供移轉功能的概觀和必要條件。
+description: 瞭解如何將 StorSimple 5000-7000 系列的資料移轉至8000系列裝置，以及遷移程式的必要條件。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 721dffcaea64e949ac7a5230e24f3aa37261fa9e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0fc18c6d67935889b0ba0c306dc326eca3b888f5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206480"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184290"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>將 StorSimple 5000-7000 系列的資料移轉到 8000 系列裝置
 

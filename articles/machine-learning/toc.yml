@@ -161,8 +161,11 @@
             - name: 管理使用者和角色
               href: how-to-assign-roles.md
             - name: 使用虛擬網路
-              displayName: 'vnet, blob, private endpoint, private link'
+              displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
+            - name: 使用 Private Link
+              displayName: private endpoint
+              href: how-to-configure-private-link.md
             - name: 使用 TLS 保護 Web 服務
               displayName: ssl
               href: how-to-secure-web-service.md

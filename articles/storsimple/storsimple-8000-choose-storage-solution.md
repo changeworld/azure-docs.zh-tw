@@ -1,18 +1,18 @@
 ---
 title: 使用設備針對 Azure 進行資料傳輸的選項 | Microsoft Docs
-description: 了解如何選擇正確的設備以將資料傳輸至 Azure
+description: 瞭解如何選擇適用于在 Data Box Edge、Azure 檔案同步和 StorSimple 8000 系列之間將內部部署資料傳輸至 Azure 的應用裝置。
 services: storsimple
 author: alkohli
 ms.service: storsimple
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: dc7de4e69d42a2165f5845f3d8214975d67cdc3c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 903342230b28f8e4fbdcdfd93543e5a0aa54975e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203976"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183270"
 ---
 # <a name="compare-storsimple-with-azure-file-sync-and-data-box-edge-data-transfer-options"></a>比較 StorSimple、Azure 檔案同步及 Data Box Edge 資料傳輸選項 
 
@@ -33,7 +33,7 @@ ms.locfileid: "86203976"
 |**Edge 計算** |無法使用 |無法使用 |支援使用 Azure IoT Edge 執行容器    |
 |**板型規格**  |實體裝置   |安裝在 Windows Server 上的代理程式 |實體裝置   |
 |**硬體**     |由 Microsoft 作為服務的一部分提供的實體裝置 | 由客戶提供 |由 Microsoft 作為服務的一部分提供的實體裝置  |
-|**資料格式**  |自訂格式   |檔案         |Blob 或檔案    |
+|**資料格式**  |自訂格式   |檔案儲存體         |Blob 或檔案    |
 |**通訊協定支援** |iSCSI          |SMB、NFS    | SMB 或 NFS      |
 |**定價**      |[StorSimple](https://azure.microsoft.com/pricing/details/storsimple/) |[Azure 檔案同步](https://azure.microsoft.com/pricing/details/storage/files/)  |[資料箱邊緣](https://azure.microsoft.com/pricing/details/storage/databox/edge/)  |
 

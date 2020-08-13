@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65aed14ec7f644f2792aaecde5c8bccfffdd8081
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 30d18041a746a0c1046a51cf408494ccb81019c9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078439"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183202"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用雲端群組來管理 Azure Active Directory (preview 中的角色指派) 
 
@@ -28,12 +28,12 @@ Azure Active Directory (Azure AD) 引進公開預覽，您可以在其中指派�
 
 ## <a name="how-this-feature-works"></a>這項功能的運作方式
 
-建立新的 Office 365 或安全性群組，並將 ' isAssignableToRole ' 屬性設定為 ' true '。 在 Azure 入口網站中建立群組時，您也可以啟用此屬性，方法是開啟**Azure AD 角色可指派給群組**。 不論是哪一種方式，您都可以將群組指派給一個或多個 Azure AD 角色，就像將角色指派給使用者一樣。 最多可以在單一 Azure AD 組織中建立200角色可指派的群組， (租使用者) 。
+建立新的 Office 365 或安全性群組，並將 ' isAssignableToRole ' 屬性設定為 ' true '。 在 Azure 入口網站中建立群組時，您也可以啟用此屬性，方法是開啟 **Azure AD 角色可指派給群組**。 不論是哪一種方式，您都可以將群組指派給一個或多個 Azure AD 角色，就像將角色指派給使用者一樣。 最多可以在單一 Azure AD 組織中建立200角色可指派的群組， (租使用者) 。
 
 如果您不想讓群組的成員擁有角色的存取權，您可以使用 Azure AD Privileged Identity Management。 將群組指派為 Azure AD 角色的合格成員。 然後，群組的每個成員都有資格為指派給該群組的角色啟用其指派。 然後，他們可以在固定時間內啟用其角色指派。
 
 > [!Note]
-> 您必須是 Privileged Identity Management 的更新版本，才能透過 PIM 將群組指派給 Azure AD 角色。 因為您的 Azure AD 組織會利用 Privileged Identity Management API，所以您可以在較舊版本的 PIM 上。 請聯繫別名 pim_preview@microsoft.com 以移動您的組織並更新您的 API。 若要深入瞭解，請[AZURE AD PIM 中的角色和功能](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-roles-features)。
+> 您必須是 Privileged Identity Management 的更新版本，才能透過 PIM 將群組指派給 Azure AD 角色。 因為您的 Azure AD 組織會利用 Privileged Identity Management API，所以您可以在較舊版本的 PIM 上。 請聯繫別名 pim_preview@microsoft.com 以移動您的組織並更新您的 API。 若要深入瞭解，請 [AZURE AD PIM 中的角色和功能](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-roles-features)。
 
 ## <a name="why-we-enforce-creation-of-a-special-group-for-assigning-it-to-a-role"></a>為什麼我們會強制建立特殊群組來將它指派給角色
 
@@ -59,19 +59,19 @@ Azure AD 可讓您使用名為 isAssignableToRole 的新屬性來保護指派給
 ## <a name="known-issues"></a>已知問題
 
 - 透過群組指派角色時，您無法建立或修改動態群組。
-- 「**啟用受控使用者登入的分段推出**」功能不支援透過群組進行指派。
-- *僅 Azure AD P2 授權客戶*：不要透過 Azure AD 和 Privileged Identity Management，將群組指派為作用中的角色。 這會導致使用者無法在 PIM 中看到其作用中角色指派，以及無法移除該 PIM 指派的問題。 符合資格的指派在此案例中不會受到影響。 如果您嘗試進行這種指派，可能會看到非預期的行為，例如：
+- 「 **啟用受控使用者登入的分段推出** 」功能不支援透過群組進行指派。
+- *僅 Azure AD P2 授權客戶*：不要透過 Azure AD 和 PRIVILEGED IDENTITY MANAGEMENT (PIM) 將群組指派為作用中的角色。 具體而言，請不要在建立角色時將它指派給角色可指派的群組 *，並* 在稍後使用 PIM 將角色指派給群組。 這會導致使用者無法在 PIM 中看到其作用中角色指派，以及無法移除該 PIM 指派的問題。 符合資格的指派在此案例中不會受到影響。 如果您嘗試進行這種指派，可能會看到非預期的行為，例如：
   - 角色指派的結束時間可能會不正確地顯示。
-  - 在 PIM 入口網站中，**我的角色**可以只顯示一個角色指派，而不論指派被授與多少種方法 (透過一或多個群組並直接) 。
-- *僅 Azure AD P2 授權客戶*即使在刪除群組之後，仍會在 PIM UI 中顯示為該角色的合格成員。 功能沒問題，這只是 Azure 入口網站中的快取問題。  
+  - 在 PIM 入口網站中， **我的角色** 可以只顯示一個角色指派，而不論指派被授與多少種方法 (透過一或多個群組並直接) 。
+- *僅 Azure AD P2 授權客戶* 即使在刪除群組之後，仍會在 PIM UI 中顯示為該角色的合格成員。 功能沒問題，這只是 Azure 入口網站中的快取問題。  
 - Exchange 系統管理中心尚未透過群組辨識角色成員資格，但 PowerShell Cmdlet 會正常執行。
-- Azure 資訊保護入口網站 (傳統入口網站) 尚未透過群組辨識角色成員資格。 您可以[遷移至統一的敏感度標籤平臺](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels)，然後使用 Office 365 安全性 & 合規性中心來使用群組指派來管理角色。
+- Azure 資訊保護入口網站 (傳統入口網站) 尚未透過群組辨識角色成員資格。 您可以 [遷移至統一的敏感度標籤平臺](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels) ，然後使用 Office 365 安全性 & 合規性中心來使用群組指派來管理角色。
 
 我們正在修正這些問題。
 
 ## <a name="required-license-plan"></a>必要授權方案
 
-若要使用這項功能，您必須在 Azure AD 組織中擁有可用的 Azure AD Premium P1 授權。 若要同時使用 Privileged Identity Management 以進行即時角色啟用，您必須擁有可用的 Azure AD Premium P2 授權。 若要尋找您需求的正確授權，請參閱[比較免費和 Premium 方案的正式推出功能](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)。
+若要使用這項功能，您必須在 Azure AD 組織中擁有可用的 Azure AD Premium P1 授權。 若要同時使用 Privileged Identity Management 以進行即時角色啟用，您必須擁有可用的 Azure AD Premium P2 授權。 若要尋找您需求的正確授權，請參閱 [比較免費和 Premium 方案的正式推出功能](../fundamentals/active-directory-whatis.md#what-are-the-azure-ad-licenses)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3a48e598680ee969f3823dee6699c8c981dff392
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833395"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182471"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>使用 .NET 管理容器屬性和中繼資料
 
@@ -29,7 +29,7 @@ ms.locfileid: "85833395"
 
 ## <a name="retrieve-container-properties"></a>取得容器屬性
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 若要取得容器屬性，請呼叫下列其中一個方法：
 
@@ -40,7 +40,7 @@ ms.locfileid: "85833395"
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 抓取 Blob 儲存體資源的屬性和中繼資料值是兩個步驟的程式。 您必須先呼叫 **FetchAttributes** 或 **FetchAttributesAsync** 方法明確地擷取這些值，才能開始讀取這些值。 此規則的例外狀況是**Exists**和**ExistsAsync**方法會在幕後呼叫適當的**FetchAttributes**方法。 當您呼叫其中一種方法時，您也不需要呼叫**FetchAttributes**。
 
@@ -80,14 +80,14 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 
 ## <a name="set-and-retrieve-metadata"></a>設定和取得中繼資料
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 您可以針對 Blob 或容器資源，將中繼資料指定為一個或多個名稱/值組。 若要設定中繼資料，請將名稱/值組加入至[IDictionary](/dotnet/api/system.collections.idictionary)物件，然後呼叫下列其中一個方法來寫入值：
 
 - [SetMetadata](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadata)
 - [SetMetadataAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.setmetadataasync)
 
-您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會保留其建立時的大小寫，但在設定或讀取時不區分大小寫。 如果為資源提交了兩個或多個具有相同名稱的中繼資料標頭，Blob 儲存體會以逗號分隔並串連這兩個值，並傳回 HTTP 回應碼200（確定）。
+您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會保留其建立時的大小寫，但在設定或讀取時不區分大小寫。 如果為資源提交了兩個或多個具有相同名稱的中繼資料標頭，Blob 儲存體會以逗號分隔並串連這兩個值，並傳回 HTTP 回應碼 200 (確定) 。
 
 下列程式碼範例會在容器上設定中繼資料。
 
@@ -102,14 +102,14 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 您可以針對 Blob 或容器資源，將中繼資料指定為一個或多個名稱/值組。 若要設定中繼資料，請將名稱/值組加入至資源的**中繼資料**集合，然後呼叫下列其中一種方法來寫入值：
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadataasync)
 
-您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會保留其建立時的大小寫，但在設定或讀取時不區分大小寫。 如果為資源提交了兩個或多個具有相同名稱的中繼資料標頭，Blob 儲存體會以逗號分隔並串連這兩個值，並傳回 HTTP 回應碼200（確定）。
+您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會保留其建立時的大小寫，但在設定或讀取時不區分大小寫。 如果為資源提交了兩個或多個具有相同名稱的中繼資料標頭，Blob 儲存體會以逗號分隔並串連這兩個值，並傳回 HTTP 回應碼 200 (確定) 。
 
 下列程式碼範例會在容器上設定中繼資料。 其中一個值是使用集合的 **Add** 方法設定。 其他值是使用隱含的索引鍵/值語法來設定。 兩者都有效。
 
@@ -169,7 +169,7 @@ public static async Task ReadContainerMetadataAsync(CloudBlobContainer container
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [取得容器屬性作業](/rest/api/storageservices/get-container-properties)
 - [設定容器中繼資料作業](/rest/api/storageservices/set-container-metadata)

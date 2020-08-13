@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: db2e493f04d74308b21e8a63222f26b1e2af8546
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e6f3a541f1e9dbca2c9949fb0c5cde28cd43e8e5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038194"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183004"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>從 Azure 開放資料集建立 Azure Machine Learning 資料集
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,19 +75,21 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 ## <a name="create-datasets-with-the-studio"></a>使用 studio 建立資料集
 
-您也可以使用[Azure Machine Learning studio](https://ml.azure.com)，從開啟的資料集建立資料集。 在工作區中，選取 [**資產**] 底下的 [**資料集**] 索引標籤。 在 [**建立資料集**] 下拉式功能表中，選取 [**從開啟的資料集**]。
+您也可以使用[Azure Machine Learning studio](https://ml.azure.com)，從開啟的資料集建立資料集。
 
-![使用 UI 開啟資料集](./media/how-to-create-dataset-from-open-dataset/open-datasets-1.png)
+1. 在工作區中，選取 [**資產**] 底下的 [**資料集**] 索引標籤。 在 [**建立資料集**] 下拉式功能表中，選取 [**從開啟的資料集**]。
 
-選取資料集，選取其磚。  (您可以選擇使用 [搜尋] 列進行篩選。 ) 選取 **[下一步]**。
+    ![使用 UI 開啟資料集](./media/how-to-create-dataset-from-open-dataset/open-datasets-1.png)
 
-![選擇資料集](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
+1. 選取資料集，選取其磚。  (您可以選擇使用 [搜尋] 列進行篩選。 ) 選取 **[下一步]**。
 
-選擇用來註冊資料集的名稱，並選擇性地使用可用的篩選準則來篩選資料。 在此情況下，針對公用假日資料集，您可以將時間週期篩選為僅限一年，並將國家/地區代碼篩選為美國。 選取 [建立]  。
+    ![選擇資料集](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-![設定資料集參數並建立資料集](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
+1. 選擇用來註冊資料集的名稱，並選擇性地使用可用的篩選準則來篩選資料。 在此情況下，針對**公用假日**資料集，您可以將時間週期篩選為僅限一年，並將國家/地區代碼篩選為美國。 選取 [建立]。
 
-資料集現在可在您的工作區中的 [**資料集**] 下取得。 您可以使用與您所建立的其他資料集相同的方式來使用它。
+    ![設定資料集參數並建立資料集](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
+
+    資料集現在可在您的工作區中的 [**資料集**] 下取得。 您可以使用與您所建立的其他資料集相同的方式來使用它。
 
 
 ## <a name="access-datasets-for-your-experiments"></a>存取您實驗的資料集

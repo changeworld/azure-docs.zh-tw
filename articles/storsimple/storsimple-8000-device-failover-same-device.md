@@ -1,6 +1,6 @@
 ---
 title: 教學課程-將 StorSimple 實體裝置損毀修復至相同的裝置
-description: 了解如何將您的 StorSimple 裝置容錯移轉至相同的裝置。
+description: 瞭解在發生嚴重損壞時，將 StorSimple 8000 系列實體裝置損毀修復至其本身所需的步驟。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 60bf5b593efc5a26387680c092fc972bf9274e56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511750"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184324"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>將您的 StorSimple 實體裝置容錯移轉至相同的裝置
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明出現災害時，將 StorSimple 8000 系列實體裝置容錯移轉至本身裝置所需要的步驟。 StorSimple 會使用裝置容錯移轉功能，將資料從資料中心的實體裝置來源移轉至另一個實體裝置。 本教學課程中的指導方針適用於執行軟體版本 Update 3 和更新版本的 StorSimple 8000 系列實體裝置。
 

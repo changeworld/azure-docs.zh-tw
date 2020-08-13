@@ -2,19 +2,19 @@
 title: 使用範本建立多 VM 環境和 PaaS 資源
 description: 了解如何從 Azure Resource Manager 範本在 Azure DevTest Labs 中建立多個 VM 環境和 PaaS 資源
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: bab107257a6233543cecfb664b3a6d313dd0e538
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481420"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182403"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本建立多個 VM 環境和 PaaS 資源
 
 Azure DevTest Labs 環境可讓使用者以一致的方式，在實驗室的範圍內輕鬆部署複雜的基礎結構。 您可以使用[Azure Resource Manager 範本](../azure-resource-manager/templates/template-syntax.md)，在 DevTest Labs 中建立具有資源集的環境。 這些環境可以包含 Resource Manager 範本可以建立的任何 Azure 資源。
 
-您可以使用[Azure 入口網站](https://portal.azure.com)，輕鬆地[一次將一部虛擬機器（VM）新增](devtest-lab-add-vm.md)至實驗室。 不過，多層式 web 應用程式或 SharePoint 伺服器陣列之類的案例，需要在單一步驟中建立多個 Vm 的機制。 藉由使用 Azure Resource Manager 範本，您可以定義 Azure 解決方案的基礎結構和設定，並在一致的狀態中重複部署多個 Vm。
+您可以使用[Azure 入口網站](https://portal.azure.com)，輕鬆地[一次將一部虛擬機器 (VM) 新增](devtest-lab-add-vm.md)至實驗室。 不過，多層式 web 應用程式或 SharePoint 伺服器陣列之類的案例，需要在單一步驟中建立多個 Vm 的機制。 藉由使用 Azure Resource Manager 範本，您可以定義 Azure 解決方案的基礎結構和設定，並在一致的狀態中重複部署多個 Vm。
 
 Azure Resource Manager 範本也提供下列優點：
 
@@ -79,7 +79,7 @@ Azure DevTest Labs 具有[Azure Resource Manager 範本的公用存放庫](https
 
    - **名稱**：輸入要在實驗室中使用的存放庫名稱。
    - **Git 複製 url**：輸入 GitHub 或 Azure Repos 的 git HTTPS 複製 url。
-   - **分支**（選擇性）：輸入要用來存取 Azure Resource Manager 範本定義的分支名稱。
+   - **分支** (選擇性) ：輸入分支名稱以存取您 Azure Resource Manager 的範本定義。
    - **個人存取權杖**：輸入用來安全存取存放庫的個人存取權杖。
      - 若要從 Azure Repos 取得您的權杖，請在設定檔中選取 [**使用者設定**] [安全性] [  >  **Security**  >  **個人存取權杖**]。
      - 若要從 GitHub 取得您的權杖，請選取 [**設定**] [  >  **開發人員設定**] [  >  **個人存取權杖**]。
@@ -203,10 +203,10 @@ Azure DevTest Labs 具有[Azure Resource Manager 範本的公用存放庫](https
    Set-AzContext -SubscriptionId $SubscriptionId | Out-Null
 
    # Get information about the user, specifically the user ID, which is used later in the script.  
-   $UserId = $((Get-AzADUser -UserPrincipalName (Get-AzContext).Account).Id.Guid)
+   $UserId = $((Get-AzADUser -UserPrincipalName ((Get-AzContext).Account).Id).Id)
 
    # Get information about the lab, such as lab location.
-   $lab = Get-AzResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName -ResourceGroupName $ResourceGroupName
+   $lab = Get-AzResource -ResourceType "Microsoft.DevTestLab/labs" -Name $LabName
    if ($lab -eq $null) { throw "Unable to find lab $LabName in subscription $SubscriptionId." }
 
    # Get information about the repository in the lab.
@@ -255,7 +255,7 @@ Azure DevTest Labs 具有[Azure Resource Manager 範本的公用存放庫](https
    Write-Output "Environment $EnvironmentName completed."
    ```
 
-1. 執行腳本，如下所示，使用您的特定值作為 SubscriptionId、LabName、ResourceGroupName、Event.pushnotification.repositoryname、TemplateName （Git 存放庫中的資料夾）和 EnvironmentName。
+1. 執行腳本，如下所示，使用您在 Git 存放庫中的 SubscriptionId、LabName、ResourceGroupName、Event.pushnotification.repositoryname、TemplateName (資料夾的特定值) 和 EnvironmentName。
 
    ```powershell
    ./deployenv.ps1 -SubscriptionId "000000000-0000-0000-0000-0000000000000" -LabName "mydevtestlab" -ResourceGroupName "mydevtestlabRG000000" -RepositoryName "myRepository" -TemplateName "My Environment template name" -EnvironmentName "myGroupEnv"

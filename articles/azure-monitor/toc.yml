@@ -325,7 +325,7 @@
           href: platform/metric-chart-samples.md
         - name: 針對計量圖表進行疑難排解
           href: platform/metrics-troubleshoot.md
-    - name: 資料收集
+    - name: 資料集合
       items:
         - name: 資料收集規則
           href: platform/data-collection-rule-overview.md
@@ -358,7 +358,7 @@
             - name: 概觀
               displayname: Azure Monitor agent
               href: platform/azure-monitor-agent-overview.md
-            - name: 資料收集
+            - name: 資料集合
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
         - name: Azure 診斷擴充功能
@@ -935,6 +935,10 @@
               href: app/sharepoint.md
             - name: Windows 桌面
               href: app/windows-desktop.md
+        - name: 其他工具
+          items:
+            - name: 變更分析
+              href: app/change-analysis.md
     - name: 適用於 VM 的 Azure 監視器
       items:
         - name: 概觀
@@ -1062,10 +1066,6 @@
           href: insights/resource-group-insights.md
         - name: 疑難排解深入解析
           href: insights/troubleshoot-workbooks.md
-    - name: 變更分析
-      items:
-        - name: 變更分析
-          href: app/change-analysis.md
     - name: 方案
       items:
         - name: 概觀

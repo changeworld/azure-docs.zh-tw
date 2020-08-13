@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e2eb1c2b6ecb98c60b117d004a97cd4e5f07a55
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510033"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182156"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>處理預定的維護通知
 
@@ -25,8 +25,8 @@ ms.locfileid: "86510033"
 
 預定進行的維護作業若需要重新開機，會排定在不同波段。 每一波段有不同的範圍 (區域)。
 
-- 波段開始時會傳送通知給客戶。 根據預設，通知會傳送給服務管理員和共同管理員。 您可以使用[活動記錄警示](../service-health/alerts-activity-log-service-notifications-portal.md)，新增更多收件者和訊息選項，例如電子郵件、SMS 和 webhook。  
-- 一旦通知出現，就會提供*自助服務視窗*。 在此視窗中，您可以查詢哪些虛擬機器受到影響，並根據您自己的排程需求開始維護。 自助服務視窗通常大約是35天。
+- 波段開始時會傳送通知給客戶。 根據預設，通知會傳送給服務管理員和共同管理員。 您可以使用 [活動記錄警示](../service-health/alerts-activity-log-service-notifications-portal.md)，新增更多收件者和訊息選項，例如電子郵件、SMS 和 webhook。  
+- 一旦通知出現，就會提供 *自助服務視窗* 。 在此視窗中，您可以查詢哪些虛擬機器受到影響，並根據您自己的排程需求開始維護。 自助服務視窗通常大約是35天。
 - 在自助期間之後，「排定維護期間」** 隨即開始。 在此期間的某個時間點，Azure 會排定並將必要的維護套用於您的虛擬機器。 
 
 有兩個期間的目標是要讓您在知道 Azure 何時將會自動開始維修的同時，有足夠時間開始維修，並將虛擬機器重新啟動。
@@ -43,10 +43,10 @@ ms.locfileid: "86510033"
 > 自助式維護可能不適用於所有的虛擬機器。 若要判斷主動式重新部署是否可供您的虛擬機器使用，請在維護狀態中尋找 [立即開始]****。 雲端服務 (Web/背景工作角色) 和 Service Fabric 目前無法使用自助維護。
 
 
-不建議使用**可用性設定組**進行自助維護。 可用性設定組已一次只更新一個更新網域。 
+不建議使用 **可用性設定組**進行自助維護。 可用性設定組已一次只更新一個更新網域。 
 
 - 讓 Azure 觸發維護工作。 針對需要重新開機的維護作業，將會依更新網域來更新網域。 更新網域不一定會依序接收維護，而且更新網域之間會暫停30分鐘。 
-- 如果需要暫時遺失某些容量（1個更新網域），您可以在維護期間加入實例。 
+- 如果暫時遺失部分容量 (1 更新網域) 是個問題，您可以在維護期間新增實例。 
 - 針對不需要重新開機的維護，系統會在容錯網域層級套用更新。 
 
 在下列情況，**請勿**使用自助式維護： 
@@ -62,7 +62,7 @@ ms.locfileid: "86510033"
 - 您需要向管理階層或一般客戶傳達確切的維護期間。 
 - 您需要在指定的日期前完成維護作業。 
 - 您需要控制維護序列 (例如多層式應用程式) 以保證安全復原。
-- 兩個更新網域（ud）之間需要30分鐘以上的 VM 復原時間。 若要控制更新網域之間的時間，您必須在虛擬機器上觸發維護 (一次一個更新網域 (UD))。
+- 兩個更新網域之間需要30分鐘以上的 VM 復原時間 (ud) 。 若要控制更新網域之間的時間，您必須在虛擬機器上觸發維護 (一次一個更新網域 (UD))。
 
 
 ## <a name="faq"></a>常見問題集
@@ -76,11 +76,11 @@ ms.locfileid: "86510033"
 
 **答：** 部署在可用性設定組或虛擬機器擴展集的虛擬機器，具有更新網域 (UD) 的概念。 執行維護時，Azure 會接受 UD 條件約束，並且不會從不同的 UD (在相同的可用性設定組內) 重新啟動虛擬機器。  Azure 也會等候至少 30 分鐘，再移至下一個虛擬機器群組。 
 
-如需高可用性的詳細資訊，請參閱[Azure 中虛擬機器的可用性](availability.md)。
+如需高可用性的詳細資訊，請參閱 [Azure 中虛擬機器的可用性](availability.md)。
 
 **問：我如何取得規劃維護的通知？**
 
-**答：** 規劃的維護是從對一或多個 Azure 區域設定排程開始。 不久之後，電子郵件通知會傳送給訂用帳戶管理員（每個訂用帳戶一封電子郵件）。 可以使用「活動記錄警示」來設定此通知的其他通道和收件者。 如果您將虛擬機器部署到已排程規劃的維護之區域，您不會收到通知，但是需要檢查 VM 的維護狀態。
+**答：** 規劃的維護是從對一或多個 Azure 區域設定排程開始。 不久之後，電子郵件通知會傳送給訂用帳戶管理員，每個訂用帳戶)  (一個電子郵件。 可以使用「活動記錄警示」來設定此通知的其他通道和收件者。 如果您將虛擬機器部署到已排程規劃的維護之區域，您不會收到通知，但是需要檢查 VM 的維護狀態。
 
 **問：我在入口網站、PowerShell 或 CLI 中都看不到任何已規劃維護的指示。怎麼了？**
 
@@ -96,7 +96,7 @@ ms.locfileid: "86510033"
 
 **問：虛擬機器擴展集的體驗是什麼？**
 
-**答：** 已規劃的維護現在可供虛擬機器擴展集。 如需如何起始自助維護的指示，請參閱[虛擬機器擴展集的預定維護](../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md)檔。
+**答：** 已規劃的維護現在可供虛擬機器擴展集。 如需如何起始自助維護的指示，請參閱 [虛擬機器擴展集的預定維護](../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md) 檔。
 
 **問：雲端服務 (Web/背景工作角色) 和 Service Fabric 的體驗是什麼？**
 
@@ -107,7 +107,8 @@ ms.locfileid: "86510033"
 **答：** 您在 VM 上看不到任何維護資訊有以下幾個原因：
 1.  您使用標示為 Microsoft 內部的訂用帳戶。
 2.  您的 VM 未排程進行維護。 可能是維護波段已經結束、取消或修改，所以您的 VM 不再受到它的影響。
-3.  您尚未將 [維護]**** 資料行新增至您的虛擬機器清單檢視。 雖然我們已將此資料行新增至預設檢視，但是設定為查看非預設資料行的客戶必須將 [維護]**** 資料行手動新增至其 VM 清單檢視。
+3. 您已解除配置 VM，然後啟動它。 這可能會導致 VM 移至未排程預定維護波的位置。 如此一來，VM 就不會再顯示維護資訊。 
+4.  您尚未將 [維護]**** 資料行新增至您的虛擬機器清單檢視。 雖然我們已將此資料行新增至預設檢視，但是設定為查看非預設資料行的客戶必須將 [維護]**** 資料行手動新增至其 VM 清單檢視。
 
 **問：我的 VM 已排程在第二次進行維護。因此?**
 
@@ -121,4 +122,4 @@ ms.locfileid: "86510033"
 
 ## <a name="next-steps"></a>後續步驟
 
-您可以使用[Azure CLI](maintenance-notifications-cli.md)、 [Azure PowerShell](maintenance-notifications-powershell.md)或[入口網站](maintenance-notifications-portal.md)來處理預定的維護。
+您可以使用 [Azure CLI](maintenance-notifications-cli.md)、 [Azure PowerShell](maintenance-notifications-powershell.md) 或 [入口網站](maintenance-notifications-portal.md)來處理預定的維護。

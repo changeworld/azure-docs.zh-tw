@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 391a5f054c5d80b255fd333ea416900c8c5ab6d1
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135414"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184647"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -575,9 +575,9 @@ union *
 - **定義警示條件**：將您的 Log Analytics 工作區指定為資源目標。
 - **警示準則**：指定下列項目：
    - **訊號名稱**：選取 [自訂記錄搜尋]
-   - **搜尋查詢**至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 如果您想要不同 
+   - **搜尋查詢**至 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 
    - [警示邏輯] 為 [根據結果數目]，而 [條件] 為 [大於臨界值 0]
-   - 每個 1440 minutesto 一天執行一次的**時間週期**為*1440*分鐘，而每個*1440*的**警示頻率**為。
+   - 每天執行一次的*1440*分鐘**時間**和**警示頻率**（每*1440*分鐘）。
 - **定義警示詳細資料**：指定下列項目：
    - **Name** *在24小時內，可計費資料磁片區的名稱大於 50 GB*
    - 將 [嚴重性] 設定為「警告」
@@ -604,7 +604,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 |收集停止的原因| 解決方法| 
 |-----------------------|---------|
 |已達您工作區的每日上限|等到自動重新開始收集或提高每日資料量限制，如「管理每日資料量上限」中所述。 每日上限重設時間會顯示在**每日上限**頁面上。 |
-| 您的工作區已達到[資料內嵌量的速率](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | 使用診斷設定從 Azure 資源傳送之資料的預設內嵌磁片區速率限制約為每個工作區 6 GB/分鐘。 這是估計值，因為根據記錄長度和其壓縮比率，實際大小可能會在資料類型之間有所不同。 此限制不適用於從代理程式或資料收集器 API 傳送的資料。 如果您以較高的速率將資料傳送至單一工作區，則會卸載某些資料，並每隔6小時將事件傳送至工作區中的作業資料表，而臨界值會繼續超過閾值。 如果您的內嵌磁片區持續超過速率限制，或您希望很快就會到達，您可以傳送電子郵件至 LAIngestionRate@microsoft.com 或開啟支援要求，以要求增加您的工作區。 要尋找的事件表示查詢可以找到資料的內嵌速率限制 `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"` 。 |
+| 您的工作區已達到[資料內嵌量的速率](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | 預設的內嵌磁片區速率閾值 500 MB (壓縮的) 適用于工作空間，大約是**6 GB/分鐘**未壓縮--根據記錄長度和其壓縮比率，實際大小可能會在資料類型之間有所不同。 此閾值適用于所有的內嵌資料，不論是使用[診斷設定](diagnostic-settings.md)、[資料收集器 API](data-collector-api.md)或代理程式從 Azure 資源傳送。 當您將資料傳送到工作區時，在工作區中設定的閾值高於80% 時，每隔6小時會將一個事件傳送至工作區中的*作業資料表，* 而閾值會繼續超過。 當內嵌的 [磁片區速率] 高於 [閾值] 時，會卸載某些資料，並每隔6小時將一個事件傳送至工作區中的*作業資料表，* 而閾值會繼續超過。 如果您的擴大磁片區速率持續超過閾值，或您希望很快就會到達，您可以藉由開啟支援要求，要求在您的工作區中增加它。 若要在您的工作區中收到這類事件的通知，請使用下列查詢建立[記錄警示規則](alerts-log.md)，並以大於的結果數目為零、5分鐘的評估期和5分鐘的頻率。 已達80% 的閾值的內嵌磁片區速率： `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` 。 已達到內嵌磁片區速率閾值： `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` 。 |
 |已達舊版免費定價層的每日限制 |請等到隔天自動重新開始收集，或變更為付費定價層。|
 |Azure 訂用帳戶處於暫停狀態，原因如下：<br> 免費試用已結束<br> Azure Pass 已過期<br> 已達每月消費限制 (例如 MSDN 或 Visual Studio 訂閱)|轉換成付費訂閱<br> 移除限制，或等到限制重設|
 

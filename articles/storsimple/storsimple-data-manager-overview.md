@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple Data Manager 概觀 | Microsoft Docs
-description: 提供 StorSimple 資料管理員服務的概觀
+description: 瞭解 StorSimple 資料管理員解決方案，以及您可以如何使用此服務來撰寫使用 StorSimple 資料和其他 Azure 服務的應用程式。
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: alkohli
-ms.openlocfilehash: 2ffe17bf7ef4f01c18d2c26f4a045add7302272d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d683f49cadb384ef59d3bae819156733691813cd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67876110"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183491"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple 資料管理員解決方案概觀
 

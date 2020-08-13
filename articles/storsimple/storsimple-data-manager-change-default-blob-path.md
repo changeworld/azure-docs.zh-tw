@@ -1,17 +1,17 @@
 ---
 title: 變更預設的 blob 路徑
-description: 了解如何設定 Azure 函式來重新命名 blob 檔案路徑
+description: 瞭解如何設定 Azure 函式來重新命名預設的 blob 檔案路徑，並將 blob 移至不同的位置。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 92925fcf13f91364619262455579392a7457f6b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504826"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183712"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>變更預設的 blob 路徑
 
@@ -25,9 +25,9 @@ StorSimple 資料管理員服務在轉換資料時，預設會將經過轉換的
 
 若要建立 Azure 函式，請執行下列步驟：
 
-1. 移至 [Azure 入口網站](https://portal.azure.com/)。
+1. 前往 [Azure 入口網站](https://portal.azure.com/)。
 
-2. 按一下 [+ 建立資源]****。 在 [搜尋]**** 方塊中輸入**函式應用程式**，然後按 **Enter** 鍵。 在顯示的應用程式清單中選取並按一下 [函式應用程式]****。
+2. 按一下 [+ 建立資源]。 在 [搜尋]**** 方塊中輸入**函式應用程式**，然後按 **Enter** 鍵。 在顯示的應用程式清單中選取並按一下 [函式應用程式]****。
 
     ![在 [搜尋] 方塊中輸入「函式應用程式」](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 

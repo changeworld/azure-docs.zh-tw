@@ -1,35 +1,35 @@
 ---
-title: 使用 Azure CLI 授權 blob 或佇列資料的存取權
+title: 使用 Azure AD 認證來執行 Azure CLI 命令，以存取 blob 或佇列資料
 titleSuffix: Azure Storage
-description: 指定如何使用 Azure CLI 對 blob 或佇列資料授權資料作業。 您可以使用 Azure AD 認證、帳戶存取金鑰或共用存取簽章（SAS）權杖來授權資料作業。
+description: 指定如何使用 Azure CLI 對 blob 或佇列資料授權資料作業。 您可以使用 Azure AD 認證、帳戶存取金鑰，或使用共用存取簽章 (SAS) 權杖來授權資料作業。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 08/12/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a656ccc56d198943c8631077466115eb6411a64a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 5ab346af1516c29b1638811217b779e11f120043
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534884"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183389"
 ---
-# <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>使用 Azure CLI 授權 blob 或佇列資料的存取權
+# <a name="run-azure-cli-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>使用 Azure AD 認證來執行 Azure CLI 命令，以存取 blob 或佇列資料
 
 Azure 儲存體提供 Azure CLI 的延伸模組，可讓您指定您想要如何授權 blob 或佇列資料的作業。 您可以利用下列方式來授權資料作業：
 
-- 具有 Azure Active Directory （Azure AD）安全性主體。 Microsoft 建議使用 Azure AD 認證，以獲得更佳的安全性和易用性。
-- 使用帳戶存取金鑰或共用存取簽章（SAS）權杖。
+- 有了 Azure Active Directory (Azure AD) 的安全性主體。 Microsoft 建議使用 Azure AD 認證，以獲得更佳的安全性和易用性。
+- 使用帳戶存取金鑰或共用存取簽章 (SAS) token。
 
 ## <a name="specify-how-data-operations-are-authorized"></a>指定資料作業的授權方式
 
 用來讀取和寫入 blob 和佇列資料的 Azure CLI 命令包含選擇性 `--auth-mode` 參數。 指定此參數以指示要如何授權資料作業：
 
-- 將 `--auth-mode` 參數設定為 `login` ，以使用 Azure AD 安全性主體進行登入（建議）。
+- 將 `--auth-mode` 參數設定為 `login` ，以使用 Azure AD 安全性主體 (建議的) 進行登入。
 - 將 `--auth-mode` 參數設定為舊版 `key` 值，以嘗試取出帳戶存取金鑰以用於授權。 如果您省略 `--auth-mode` 參數，則 Azure CLI 也會嘗試取得存取金鑰。
 
 若要使用 `--auth-mode` 參數，請確定您已安裝 Azure CLI 版2.0.46 版或更新版本。 執行 `az --version` 來檢查您安裝的版本。
@@ -43,7 +43,7 @@ Azure 儲存體提供 Azure CLI 的延伸模組，可讓您指定您想要如何
 
 當您使用 Azure AD 認證登入 Azure CLI 時，會傳回 OAuth 2.0 存取權杖。 Azure CLI 會自動使用該權杖來對 Blob 或佇列儲存體授權後續的資料作業。 針對支援的作業，您不需要再使用命令傳遞帳戶金鑰或 SAS 權杖。
 
-您可以透過角色型存取控制（RBAC），將 blob 和佇列資料的許可權指派給 Azure AD 的安全性主體。 如需 Azure 儲存體中 Azure 角色的詳細資訊，請參閱[使用 RBAC 來管理 Azure 儲存體資料的存取權限](storage-auth-aad-rbac.md)。
+您可以透過角色型存取控制 (RBAC) ，將 blob 和佇列資料的許可權指派給 Azure AD 的安全性主體。 如需 Azure 儲存體中 Azure 角色的詳細資訊，請參閱[使用 RBAC 來管理 Azure 儲存體資料的存取權限](storage-auth-aad-rbac.md)。
 
 ### <a name="permissions-for-calling-data-operations"></a>呼叫資料作業的許可權
 
@@ -103,8 +103,8 @@ az storage container create \
 |    AZURE_STORAGE_ACCOUNT              |    儲存體帳戶名稱。 此變數應該與儲存體帳戶金鑰或 SAS 權杖搭配使用。 如果兩者都不存在，Azure CLI 會嘗試使用已驗證的 Azure AD 帳戶來抓取儲存體帳戶存取金鑰。 如果一次執行大量命令，可能會達到 Azure 儲存體資源提供者節流限制。 如需資源提供者限制的詳細資訊，請參閱[Azure 儲存體資源提供者的擴充性和效能目標](scalability-targets-resource-provider.md)。             |
 |    AZURE_STORAGE_KEY                  |    儲存體帳戶金鑰。 此變數必須與儲存體帳戶名稱一起使用。                                                                                                                                                                                                                                                                          |
 |    AZURE_STORAGE_CONNECTION_STRING    |    包含儲存體帳戶金鑰或 SAS 權杖的連接字串。 此變數必須與儲存體帳戶名稱一起使用。                                                                                                                                                                                                                       |
-|    AZURE_STORAGE_SAS_TOKEN            |    共用存取簽章（SAS）權杖。 此變數必須與儲存體帳戶名稱一起使用。                                                                                                                                                                                                                                                            |
-|    AZURE_STORAGE_AUTH_MODE            |    用來執行命令的授權模式。 允許的值為 `login` （建議）或 `key` 。 如果您指定 `login` ，則 Azure CLI 會使用您的 Azure AD 認證來授權資料作業。 如果您指定舊版 `key` 模式，Azure CLI 會嘗試查詢帳戶存取金鑰，並使用金鑰來授權命令。    |
+|    AZURE_STORAGE_SAS_TOKEN            |     (SAS) 權杖的共用存取簽章。 此變數必須與儲存體帳戶名稱一起使用。                                                                                                                                                                                                                                                            |
+|    AZURE_STORAGE_AUTH_MODE            |    用來執行命令的授權模式。 `login` (建議) 或的允許值 `key` 。 如果您指定 `login` ，則 Azure CLI 會使用您的 Azure AD 認證來授權資料作業。 如果您指定舊版 `key` 模式，Azure CLI 會嘗試查詢帳戶存取金鑰，並使用金鑰來授權命令。    |
 
 ## <a name="next-steps"></a>後續步驟
 

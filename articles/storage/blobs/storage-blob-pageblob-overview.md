@@ -9,12 +9,12 @@ ms.date: 06/15/2020
 ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: 447653cdcaeb1a0bbf891a26e8bc0af5ead87fdb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 270461ad0ba5c77f845af13d7cd4a24d0c098b31
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518702"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182454"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 分頁 Blob 的概觀
 
@@ -31,7 +31,7 @@ Azure 分頁 Blob 的主要功能包括其 REST 介面、基礎儲存體的持�
 第一方 Microsoft 服務 (例如 Azure Site Recovery、Azure 備份)，以及許多第三方協力廠商的開發人員，皆使用分頁 Blob 的 REST 介面來實作領先業界的創新功能。 以下是一些實作於 Azure 上的獨特案例： 
 
 * 應用程式導向的累加快照集管理：應用程式可以利用分頁 Blob 快照集和 REST API 來儲存應用程式檢查點，以免於因複製資料所帶來高成本。 Azure 儲存體支援針對分頁 Blob 的本機快照集，此功能並不需要複製整個 Blob。 這些公用快照集 API 也能提供針對快照集間差異的存取及複製。
-* 從內部部署到雲端的應用程式和資料即時移轉：複製內部部署資料，並使用 REST Api 直接寫入 Azure 分頁 blob，同時內部部署 VM 會繼續執行。 一旦趕上目標之後，您可以使用該資料快速地容錯移轉至 Azure VM。 如此一來，您就可以將 Vm 和虛擬磁片從內部部署遷移至雲端，但停機時間最短，因為資料移轉會在背景中進行，而當您繼續使用 VM 時，容錯移轉所需的停機時間會很短（以分鐘為單位）。
+* 從內部部署到雲端的應用程式和資料即時移轉：複製內部部署資料，並使用 REST Api 直接寫入 Azure 分頁 blob，同時內部部署 VM 會繼續執行。 一旦趕上目標之後，您可以使用該資料快速地容錯移轉至 Azure VM。 如此一來，您就可以將 Vm 和虛擬磁片從內部部署遷移至雲端，但停機時間最短，因為資料移轉會在背景中進行，而當您繼續使用 VM 時，容錯移轉所需的停機時間會是短 (，) 分鐘。
 * [SAS 型](../common/storage-sas-overview.md)共用存取，可實現如多個讀取器及單一寫入器並支援並行控制的案例。
 
 ## <a name="pricing"></a>定價
@@ -50,15 +50,15 @@ Azure 分頁 Blob 的主要功能包括其 REST 介面、基礎儲存體的持�
 
 #### <a name="creating-an-empty-page-blob-of-a-specified-size"></a>建立指定大小的空分頁 Blob
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 首先，取得容器的參考。 若要建立分頁 blob，請呼叫[GetPageBlobClient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient)方法，然後呼叫[PageBlobClient. create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create)方法。 傳入要建立之 blob 的大小上限。 該大小必須是512個位元組的倍數。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-若要建立分頁 blob，我們會先建立**CloudBlobClient**物件，並使用基底 URI 來存取儲存體帳戶的 blob 儲存體（如 [圖 1] 中的*Pbaccount* ）以及**StorageCredentialsAccountAndKey**物件，如下列範例所示。 然後，此範例會顯示如何建立**CloudBlobContainer**物件的參考，然後建立容器（*testvhds*）（如果尚未存在的話）。 然後，透過 **CloudBlobContainer** 物件，建立 **CloudPageBlob** 物件的參照，方法是指定要存取的分頁 Blob 名稱 (os4.vhd)。 若要建立分頁 blob，請呼叫[CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，傳入要建立之 blob 的大小上限。 *blobSize* 必須是 512 位元組的倍數。
+若要建立分頁 blob，我們會先建立**CloudBlobClient**物件，並使用基底 URI 來存取儲存體帳戶的 blob 儲存體 (*pbaccount* （如 [圖) 1] 所示），以及**StorageCredentialsAccountAndKey**物件，如下列範例所示。 然後，此範例會顯示如何建立**CloudBlobContainer**物件的參考，然後建立容器 (*Testvhds*) （如果尚未存在的話）。 然後，透過 **CloudBlobContainer** 物件，建立 **CloudPageBlob** 物件的參照，方法是指定要存取的分頁 Blob 名稱 (os4.vhd)。 若要建立分頁 blob，請呼叫[CloudPageBlob](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create)，傳入要建立之 blob 的大小上限。 *blobSize* 必須是 512 位元組的倍數。
 
 ```csharp
 using Microsoft.Azure;
@@ -87,13 +87,13 @@ pageBlob.Create(16 * OneGigabyteAsBytes);
 
 #### <a name="resizing-a-page-blob"></a>調整分頁 Blob 大小
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 若要在建立之後調整分頁 blob 的大小，請使用重[設大小](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.resize?view=azure-dotnet)方法。 要求的大小應該是 512 位元組的倍數。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ResizePageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 若要在建立之後調整分頁 blob 的大小，請使用重[設大小](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.resize)方法。 要求的大小應該是 512 位元組的倍數。
 
@@ -105,13 +105,13 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 
 #### <a name="writing-pages-to-a-page-blob"></a>將分頁寫入分頁 Blob
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 若要寫入頁面，請使用[PageBlobClient. UploadPages](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.uploadpages)方法。  
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_WriteToPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 若要寫入分頁，請使用 [CloudPageBlob.WritePages](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.beginwritepages) 方法。  
 
@@ -134,13 +134,13 @@ pageBlob.WritePages(dataStream, startingOffset);
 
 #### <a name="reading-pages-from-a-page-blob"></a>從分頁 Blob 讀取分頁
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 若要讀取頁面，請使用[PageBlobClient](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download)方法來讀取分頁 blob 中的位元組範圍。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 若要讀取分頁，請使用 [CloudPageBlob.DownloadRangeToByteArray](/dotnet/api/microsoft.azure.storage.blob.icloudblob.downloadrangetobytearray) 方法，從分頁 Blob 讀取位元組範圍。 
 
@@ -159,13 +159,13 @@ pageBlob.DownloadRangeToByteArray(buffer, bufferOffset, pageBlobOffset, rangeSiz
 
 如果您有疏鬆填入的 Blob，建議只下載有效的頁面區域，以避免支付零位元組的輸出，並降低下載延遲。  
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 若要判斷哪些頁面是由資料所支援，請使用[PageBlobClient. GetPageRanges](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.getpageranges)。 然後，您可以對傳回的範圍進行列舉，並下載每個範圍中的資料。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadValidPageRegionsFromPageBlob":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 若要判斷有哪些分頁是由資料所支援，請使用 [CloudPageBlob.GetPageRanges](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.getpageranges)。 然後，您可以對傳回的範圍進行列舉，並下載每個範圍中的資料。 
 

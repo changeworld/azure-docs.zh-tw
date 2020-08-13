@@ -1,21 +1,21 @@
 ---
 title: 將 .NET SDK 用於 Microsoft Azure StorSimple 資料管理員作業
-description: 了解如何使用 .NET SDK 啟動 StorSimple Data Manager 作業
+description: 瞭解如何在 StorSimple 資料管理員服務內使用 .NET SDK 來轉換 StorSimple 裝置資料。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514889"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183641"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 起始資料轉換
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文說明如何使用 StorSimple Data Manager 服務中的資料轉換功能來轉換 StorSimple 裝置資料。 轉換後的資料由雲端中的其他 Azure 服務取用。
 
@@ -36,7 +36,7 @@ ms.locfileid: "85514889"
     - Azure Powershell。 [下載 Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
 *   資源群組內 StorSimple 資料管理員中正確設定的作業定義。
 *   所有必要的 dll。 從 [GitHub 儲存機制](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下載這些 dll。
-*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)來自 GitHub 存放庫的腳本。
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) 來自 GitHub 存放庫的腳本。
 
 ## <a name="step-by-step-procedure"></a>逐步程序
 
@@ -61,7 +61,7 @@ ms.locfileid: "85514889"
 
 3. 使用 Visual Studio 2012、2013 或 2015 建立 C# .NET 主控台應用程式。
 
-    1. 啟動**Visual Studio 2012/2013/2015**。
+    1. 啟動 **Visual Studio 2012/2013/2015**。
     1. 選取 [檔案] > [新增] > [專案]****。
 
         ![建立專案 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        

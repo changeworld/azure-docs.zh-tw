@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 127604264850f9845846d0bb6a2768cac23cdc8c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 0613b4c444b9eacaaf2b9d3e0795f4872cb903f3
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88169122"
+ms.locfileid: "88182933"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虛擬機器的生命週期和狀態
 
@@ -23,137 +23,195 @@ Azure 虛擬機器 (VM) 會經歷不同狀態，這些狀態可以分成「佈�
 
 電源狀態代表 VM 的最後一個已知狀態。
 
-![VM 電源狀態圖](./media/vm-power-states.png)
+![VM 電源狀態圖](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
 
 <br>
 下表提供每個執行個體狀態的描述，並指出是否會收取其執行個體使用量費用。
 
-<table>
-<tr>
-<th>
-State
-</th>
-<th>
-描述
-</th>
-<th>
-執行個體使用量計費
-</th>
-</tr>
-<tr>
-<td>
-<p><b>啟動中</b></p>
-</td>
-<td>
-<p>VM 正在啟動。</p>
-<code>"statuses": [<br>
-   {<br>
-      "code": "PowerState/starting",<br>
-       "level": "Info",<br>
-        "displayStatus": "VM starting"<br>
-    }<br>
-    ]</code><br>
-</td>
-<td>
-<p><b>不會計費</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>執行中</b></p>
-</td>
-<td>
-<p>VM 的正常工作狀態</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/running",<br>
- "level": "Info",<br>
- "displayStatus": "VM running"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>支付</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>停止中</b></p>
-</td>
-<td>
-<p>這是過渡狀態。 完成時，便會顯示為**已停止**。</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/stopping",<br>
- "level": "Info",<br>
- "displayStatus": "VM stopping"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>支付</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>已停止</b></p>
-</td>
-<td>
-<p>已從客體 OS 內或藉由使用 PowerOff API 關閉 VM。</p>
-<p>硬體仍配置給 VM，且會留在主機上。 </p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/stopped",<br>
- "level": "Info",<br>
- "displayStatus": "VM stopped"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>不會計費&#42;</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>正在解除配置</b></p>
-</td>
-<td>
-<p>過渡狀態。 完成時，VM 會顯示為**已解除配置**。</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/deallocating",<br>
- "level": "Info",<br>
- "displayStatus": "VM deallocating"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>不會計費&#42;</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>已解除配置</b></p>
-</td>
-<td>
-<p>VM 已成功停止，並從主機中移除。 </p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/deallocated",<br>
- "level": "Info",<br>
- "displayStatus": "VM deallocated"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>不會計費</b></p>
-</td>
-</tr>
-</tbody>
-</table>
+:::row:::
+   :::column span="":::
+
+   **State**
+   
+   :::column-end:::
+   :::column span="":::
+
+   **描述**
+
+   :::column-end:::
+   :::column span="":::
+
+   **實例使用量計費**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **啟動中**
+
+   :::column-end:::
+   :::column span="":::
+
+   VM 正在啟動。
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/starting",
+    "level": "Info",
+    "displayStatus": "VM starting"
+    }
+   ]
+   ```
+   :::column-end:::
+   :::column span="":::
+
+   **不會計費**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **執行中**
+
+   :::column-end:::
+   :::column span="":::
+
+   VM 的正常工作狀態
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/running",
+    "level": "Info",
+    "displayStatus": "VM running"
+    }
+  ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **支付**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **停止中**
+
+   :::column-end:::
+   :::column span="":::
+
+   這是過渡狀態。 完成時，便會顯示為**已停止**。
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/stopping",
+    "level": "Info",
+    "displayStatus": "VM stopping"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **支付**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **已停止**
+
+   :::column-end:::
+   :::column span="":::
+
+   已從客體 OS 內或藉由使用 PowerOff API 關閉 VM。
+
+   硬體仍配置給 VM，且會留在主機上。
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/stopped",
+    "level": "Info",
+    "displayStatus": "VM stopped"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **支付***
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **正在解除配置**
+
+   :::column-end:::
+   :::column span="":::
+
+   過渡狀態。 完成時，VM 會顯示為**已解除配置**。
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/deallocating",
+    "level": "Info",
+    "displayStatus": "VM deallocating"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **未計費***
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **已解除配置**
+
+   :::column-end:::
+   :::column span="":::
+
+   VM 已成功停止，並從主機中移除。
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/deallocated",
+    "level": "Info",
+    "displayStatus": "VM deallocated"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **不會計費**
+
+   :::column-end:::
+:::row-end:::
 
 
-&#42;某些 Azure 資源 (例如，磁碟和網路) 會產生費用。 執行個體上的軟體授權不會產生費用。
+&#42; 某些 Azure 資源（例如磁片和網路）會產生費用。 執行個體上的軟體授權不會產生費用。
 
 ## <a name="provisioning-states"></a>佈建狀態
 
@@ -171,86 +229,159 @@ State
 
 平台接受使用者所起始的動作後，會有以下過渡作業狀態：
 
-<br>
+:::row:::
+   :::column span="":::
 
-<table>
-<tbody>
-<tr>
-<td width="162">
-<p><b>狀態</b></p>
-</td>
-<td width="366">
-<p>描述</p>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>建立中</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating",<br>
- "level": "Info",<br>
- "displayStatus": "Creating"<br>
- }</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>更新</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/updating",<br>
- "level": "Info",<br>
- "displayStatus": "Updating"<br>
- }<br>
- ]</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>刪除中</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/deleting",<br>
- "level": "Info",<br>
- "displayStatus": "Deleting"<br>
- }<br>
- ]</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>OS 佈建狀態</b></p>
-</td>
-<td width="366">
-<p>如果使用 OS 映像而非特製化映像來建立 VM，則會觀察到下列子狀態：</p>
-<p>1. <b>OSProvisioningInprogress</b> &ndash; VM 正在執行，且客體 OS 的安裝正在進行中。 <p /> 
-<code> "statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
- "level": "Info",<br>
- "displayStatus": "OS Provisioning In progress"<br>
- }<br>
-]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; 短期狀態。 除非需要安裝任何擴充功能，否則 VM 會快速過渡為**成功**狀態。 安裝擴充功能需要一些時間。 <br />
-<code> "statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
- "level": "Info",<br>
- "displayStatus": "OS Provisioning Complete"<br>
- }<br>
-]</code><br>
-<p><b>附註</b>：如果發生 OS 失敗或 OS 未及時安裝，則 OS 佈建會過渡為**失敗**狀態。 客戶必須就基礎結構上已部署的 VM 支付費用。</p>
-</td>
-</tr>
-</table>
+   **State**
+   
+   :::column-end:::
+   :::column span="2":::
 
+   **描述**
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **建立中**
+
+   :::column-end:::
+   :::column span="2":::
+
+  ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating",
+    "level": "Info",
+    "displayStatus": "Creating"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **更新**
+
+   :::column-end:::
+   :::column span="2":::
+
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/updating",
+    "level": "Info",
+    "displayStatus": "Updating"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **刪除中**
+
+   :::column-end:::
+   :::column span="2":::
+
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/deleting",
+    "level": "Info",
+    "displayStatus": "Deleting"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OS 佈建狀態**
+   
+   :::column-end:::
+   :::column span="2":::
+
+   **描述**
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+
+
+   :::column-end:::
+   :::column span="2":::
+
+   如果使用 OS 映像而非特製化映像來建立 VM，則會觀察到下列子狀態：
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OSProvisioningInprogress**
+
+   :::column-end:::
+   :::column span="2":::
+
+   VM 正在執行，且正在進行來賓 OS 的安裝。
+ 
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating/OSProvisioningInprogress",
+    "level": "Info",
+    "displayStatus": "OS Provisioning In progress"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OSProvisioningComplete**
+
+   :::column-end:::
+   :::column span="2":::
+   
+   短期的狀態。 除非需要安裝任何擴充功能，否則 VM 會快速過渡為**成功**狀態。 安裝擴充功能需要一些時間。
+   
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating/OSProvisioningComplete",
+    "level": "Info",
+    "displayStatus": "OS Provisioning Complete"
+    }
+   [
+   ```
+   
+   **附註**：如果發生 OS 失敗或 OS 未及時安裝，則 OS 佈建會過渡為**失敗**狀態。 客戶必須就基礎結構上已部署的 VM 支付費用。
+
+   :::column-end:::
+
+:::row-end:::
 
 作業完成後，VM 會過渡為下列其中一個狀態：
 

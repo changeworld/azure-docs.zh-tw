@@ -4,16 +4,16 @@ description: 瞭解如何使用 .NET 用戶端程式庫，設定和取出系統�
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/09/2019
+ms.date: 08/12/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 3d86b6e39d6199d2f0268070cfa5456e512daa49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29fae4ffb08aba6a45a3879ffe28bf6b90f28a0e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465876"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182386"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>使用 .NET 管理 blob 屬性和中繼資料
 
@@ -26,18 +26,21 @@ ms.locfileid: "84465876"
 - **使用者定義的中繼資料**：使用者定義的中繼資料是由您為 Blob 儲存體資源指定的一或多個名稱/值配對所組成。 您可以使用中繼資料來儲存資源的額外值。 中繼資料值僅供您自己的用途，不會影響資源的運作方式。
 
 > [!NOTE]
-> Blob 索引標籤也可讓您將任意使用者定義的索引鍵/值屬性與 Blob 儲存體資源一起儲存。 雖然類似于中繼資料，但只有 Blob 索引標記會自動編制索引，並由原生 Blob 服務進行查詢。 中繼資料無法以原生方式編制索引和查詢，除非您使用不同的服務，例如 Azure 搜尋服務。
+> Blob 索引標籤也可讓您將任意使用者定義的索引鍵/值屬性與 Azure Blob 儲存體資源一起儲存。 雖然類似于中繼資料，但只有 blob 索引標記會自動編制索引，並由原生 blob 服務進行搜尋。 除非您使用不同的服務（例如 Azure 搜尋服務），否則無法對中繼資料進行索引和查詢。
 >
-> 若要深入瞭解這項功能，請參閱[使用 Blob 索引來管理和尋找 Azure Blob 儲存體上的資料（預覽）](storage-manage-find-blobs.md)。
-
-抓取 Blob 儲存體資源的中繼資料和屬性值是兩個步驟的程式。 在您可以讀取這些值之前，您必須呼叫或方法明確地提取它們 `FetchAttributes` `FetchAttributesAsync` 。 此規則的例外狀況是 `Exists` 和方法會 `ExistsAsync` 在幕後呼叫適當的 `FetchAttributes` 方法。 當您呼叫其中一種方法時，您也不需要呼叫 `FetchAttributes` 。
-
-> [!IMPORTANT]
-> 如果您發現尚未填入儲存體資源的屬性或中繼資料值，請檢查您的程式碼是否呼叫 `FetchAttributes` 或 `FetchAttributesAsync` 方法。
+> 若要深入瞭解這項功能，請參閱[使用 Blob 索引在 Azure blob 儲存體上管理和尋找資料 (預覽) ](storage-manage-find-blobs.md)。
 
 ## <a name="set-and-retrieve-properties"></a>設定和取出屬性
 
 下列程式碼範例會 `ContentType` `ContentLanguage` 在 blob 上設定和系統屬性。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+若要設定 blob 的屬性，請呼叫[SetHttpHeaders](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.sethttpheaders)或[SetHttpHeadersAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.sethttpheadersasync)。 未明確設定的任何屬性都會被清除。 下列程式碼範例會先取得 blob 上的現有屬性，然後使用它們來填入未更新的標頭。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_SetBlobProperties":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 public static async Task SetBlobPropertiesAsync(CloudBlob blob)
@@ -64,8 +67,22 @@ public static async Task SetBlobPropertiesAsync(CloudBlob blob)
     }
 }
 ```
+---
 
-若要抓取 blob 屬性，請 `FetchAttributes` `FetchAttributesAsync` 在您的 blob 上呼叫或方法，以填入 `Properties` 屬性。 下列程式碼範例會取得 blob 的系統屬性，並顯示一些值：
+下列程式碼範例會取得 blob 的系統屬性，並顯示某些值。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobProperties":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+抓取 Blob 儲存體資源的中繼資料和屬性值是兩個步驟的程式。 在您可以讀取這些值之前，您必須呼叫或方法明確地提取它們 `FetchAttributes` `FetchAttributesAsync` 。 此規則的例外狀況是 `Exists` 和方法會 `ExistsAsync` 在幕後呼叫適當的 `FetchAttributes` 方法。 當您呼叫其中一種方法時，您也不需要呼叫 `FetchAttributes` 。
+
+> [!IMPORTANT]
+> 如果您發現尚未填入儲存體資源的屬性或中繼資料值，請檢查您的程式碼是否呼叫 `FetchAttributes` 或 `FetchAttributesAsync` 方法。
+
+若要抓取 blob 屬性，請 `FetchAttributes` `FetchAttributesAsync` 在您的 blob 上呼叫或方法，以填入 `Properties` 屬性。
 
 ```csharp
 private static async Task GetBlobPropertiesAsync(CloudBlob blob)
@@ -91,19 +108,34 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
     }
 }
 ```
+---
 
 ## <a name="set-and-retrieve-metadata"></a>設定和取得中繼資料
 
 您可以針對 Blob 或容器資源，將中繼資料指定為一個或多個名稱/值組。 若要設定中繼資料，請將名稱/值組加入至 `Metadata` 資源上的集合。 然後，呼叫下列其中一種方法來寫入值：
 
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+- [SetMetadata](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.setmetadata)
+- [SetMetadataAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.setmetadataasync)
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)
+---
 
 中繼資料名稱/值組是有效的 HTTP 標頭，且應遵守管理 HTTP 標頭的所有限制。 中繼資料名稱必須是有效的 HTTP 標頭名稱和有效的 c # 識別碼、只能包含 ASCII 字元，而且應該視為不區分大小寫。 [Base64 編碼](https://docs.microsoft.com/dotnet/api/system.convert.tobase64string)或[URL 編碼的](https://docs.microsoft.com/dotnet/api/system.web.httputility.urlencode)中繼資料值，其中包含非 ASCII 字元。
 
-您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會維持建立時所使用的大小寫，但在設定或讀取時不區分大小寫。 如果為資源提交了兩個或多個使用相同名稱的中繼資料標頭，Azure Blob 儲存體會傳回 HTTP 錯誤碼400（不正確的要求）。
+您的中繼資料名稱必須符合 C# 識別碼的命名慣例。 中繼資料名稱會維持建立時所使用的大小寫，但在設定或讀取時不區分大小寫。 如果為資源提交了兩個或多個使用相同名稱的中繼資料標頭，則 Azure Blob 儲存體會傳回 HTTP 錯誤碼 400 (不正確的要求) 。
 
 下列程式碼範例會在 blob 上設定中繼資料。 其中一個值是使用集合的方法來設定 `Add` 。 其他值是使用隱含的索引鍵/值語法來設定。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_AddBlobMetadata":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 ```csharp
 public static async Task AddBlobMetadataAsync(CloudBlob blob)
@@ -129,6 +161,17 @@ public static async Task AddBlobMetadataAsync(CloudBlob blob)
     }
 }
 ```
+---
+
+下列程式碼範例會讀取 blob 上的中繼資料。
+
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
+
+若要取得中繼資料，請在您的 blob 或容器上呼叫[GetProperties](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getproperties)或[GetPropertiesAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.getpropertiesasync)方法來填入[中繼資料](/dotnet/api/azure.storage.blobs.models.blobproperties.metadata)集合，然後讀取這些值，如下列範例所示。
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadBlobMetadata":::
+
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 若要取得中繼資料， `FetchAttributes` 請 `FetchAttributesAsync` 在您的 blob 或容器上呼叫或方法來填入 `Metadata` 集合，然後讀取值，如下列範例所示。
 
@@ -160,10 +203,11 @@ public static async Task ReadBlobMetadataAsync(CloudBlob blob)
     }
 }
 ```
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [設定 Blob 屬性作業](/rest/api/storageservices/set-blob-properties)
 - [取得 Blob 屬性作業](/rest/api/storageservices/get-blob-properties)
