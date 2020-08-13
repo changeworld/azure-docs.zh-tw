@@ -15,22 +15,22 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31235936109361f0f15a071346baee128060375a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763426"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164983"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何：使用群組原則部署 Internet Explorer 的存取面板延伸模組
 
-本教學課程示範如何使用群組原則，在您的使用者電腦上遠端安裝 Internet Explorer 的存取面板延伸模組。 需要登入使用 [密碼單一登入](what-is-single-sign-on.md#password-based-sso)設定的應用程式的 Internet Explorer 使用者，都需要此延伸模組。
+本教學課程示範如何使用群組原則，在您的使用者電腦上遠端安裝 Internet Explorer 的存取面板延伸模組。 需要登入使用 [密碼單一登入](sso-options.md#password-based-sso)設定的應用程式的 Internet Explorer 使用者，都需要此延伸模組。
 
 我們建議系統管理員自動化部署這個延伸模組。 否則，使用者必須自行下載並安裝延伸模組，這樣很容易發生使用者錯誤，而且需要系統管理員權限。 本教學課程涵蓋使用群組原則自動化軟體部署的一種方法。 [深入了解群組原則。](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
 存取面板延伸模組也可供 [Chrome](https://go.microsoft.com/fwLink/?LinkID=311859) 和 [Firefox](https://go.microsoft.com/fwLink/?LinkID=626998) 使用，兩者都不需要系統管理員權限即可安裝。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 您已設定了 [Active Directory 網域服務](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)，並且已將使用者的電腦加入網域。
 * 您必須擁有「編輯設定」權限，才能編輯群組原則物件 (GPO)。 根據預設，下列安全性群組的成員擁有此權限：網域系統管理員、企業系統管理員及群組原則建立者擁有者。 [深入了解。](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
@@ -58,7 +58,7 @@ ms.locfileid: "84763426"
 
 ## <a name="step-2-create-the-group-policy-object"></a>步驟2：建立群組原則物件
 
-1. 登入裝載您的 Active Directory Domain Services （AD DS）安裝的伺服器。
+1. 登入裝載 Active Directory Domain Services 的伺服器 (AD DS) 安裝。
 1. 在伺服器管理員中，移至 [**工具**] [  >  **群組原則管理**]。
 
     ![移至工具 > 群組原則管理](./media/deploy-access-panel-browser-extension/tools-gpm.png)
@@ -66,7 +66,7 @@ ms.locfileid: "84763426"
 1. 在 [群組原則管理] **** 視窗的左窗格中，檢視您的組織單位 (OU) 階層並決定您想要套用群組原則的範圍。 例如，您可能決定針對測試挑選小型 OU 以部署到少數使用者，或者您可能會挑選最上層 OU 以部署到整個組織。
 
    > [!NOTE]
-   > 如果您想要建立或編輯您的組織單位（ou），請切換回伺服器管理員並移至 [**工具**] [  >  **Active Directory 使用者和電腦**]。
+   > 如果您想要 (ou 建立或編輯您的組織單位) ，請切換回伺服器管理員並移至 [**工具**] [  >  **Active Directory 使用者和電腦**]。
 
 1. 一旦您選取 OU，以滑鼠右鍵按一下它然後選取 [在這個網域中建立 GPO 並連結到...]****
 
@@ -124,7 +124,7 @@ ms.locfileid: "84763426"
 
 延伸模組現在應該已在所選 OU 中的機器啟用。 [深入了解使用群組原則啟用或停用 Internet Explorer 附加元件。](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>步驟5（選用）：停用 [記住密碼] 提示
+## <a name="step-5-optional-disable-remember-password-prompt"></a>步驟 5 (選擇性) ：停用 [記住密碼] 提示
 
 當使用者登入使用存取面板擴充功能的網站時，Internet Explorer 可能會顯示下列提示詢問「是否要儲存密碼？」
 

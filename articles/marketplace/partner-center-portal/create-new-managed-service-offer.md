@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: f58ec53d1c4f3ad95993fd2faff44f7164c4beeb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4d2a884bd6fd4cb62aa7cae5f3e53b865082fde8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036601"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166598"
 ---
 # <a name="create-a-managed-service-offer"></a>建立受控服務供應項目
 
@@ -85,7 +85,7 @@ ms.locfileid: "88036601"
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. Title
+1. 標題
 2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
@@ -175,6 +175,8 @@ ms.locfileid: "88036601"
 ## <a name="plan-overview"></a>方案概觀
 
 每個供應專案都必須有一或多個方案 (先前稱為 Sku) 。 您可以新增多個方案來支援設定為不同價格的不同功能，或為特定客戶的限定對象自訂特定方案。 客戶可以檢視父代供應項目下可供他們使用的方案。
+
+您最多可以為每個供應專案建立100方案：最多可以是私人的45。 深入瞭解[Microsoft 商業 Marketplace 私人](../private-offers.md)方案中的私用計畫。
 
 在 [方案概觀] 頁面上，選取 [+ 建立新方案]。 然後，輸入**方案識別碼**和**方案名稱**。 這兩個值都只能包含小寫英數字元、連字號與底線，且最多 50 個字元。 這些值可能會向客戶顯示，而且在您發佈供應項目之後，即無法變更。
 

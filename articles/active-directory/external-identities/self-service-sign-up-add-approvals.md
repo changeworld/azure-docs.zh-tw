@@ -4,19 +4,19 @@ description: '在外部身分識別中新增自訂核准工作流程的 API 連�
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: how-to
+ms.topic: article
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908190"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165225"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>新增自訂核准工作流程以進行自助式註冊
 
@@ -65,7 +65,7 @@ ms.locfileid: "87908190"
 
   ![檢查核准狀態 API 連接器設定](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **要求核准**-在使用者完成 [屬性集合] 頁面後，但在建立使用者帳戶之前，傳送對核准系統的呼叫，以要求核准。 核准要求可以自動授與或手動審核。 「要求核准」 API 連接器的範例。 選取**要傳送**核准系統所需的任何宣告，以做出核准決策。
+- **要求核准**-在使用者完成 [屬性集合] 頁面後，但在建立使用者帳戶之前，傳送對核准系統的呼叫，以要求核准。 核准要求可以自動授與或手動審核。 「要求核准」 API 連接器的範例。 
 
   ![要求核准 API 連接器設定](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -90,28 +90,33 @@ ms.locfileid: "87908190"
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>使用 API 回應控制註冊流程
 
-您的核准系統可以使用來自兩個 API 端點的[api 回應類型](self-service-sign-up-add-api-connector.md#expected-response-types-from-the-web-api)來控制註冊流程。
+當您的核准系統呼叫以控制註冊流程時，可以使用其回應。 
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>「檢查核准狀態」 API 連接器的要求和回應
 
 API 從「檢查核准狀態」 API 連接器收到的要求範例：
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
      "issuerAssignedId":"0123456789"
      }
  ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "lastName":"Smith",
  "ui_locales":"en-US"
 }
 ```
+
+傳送至 API 的確切宣告取決於識別提供者所提供的資訊。 [電子郵件] 一律會傳送。
 
 #### <a name="continuation-response-for-check-approval-status"></a>「檢查核准狀態」的接續回應
 
@@ -169,12 +174,12 @@ Content-type: application/json
 API 從「要求核准」 API 連接器收到的 HTTP 要求範例：
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -182,11 +187,21 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
- "city": "Redmond",
- "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
+
+傳送至 API 的確切宣告取決於從使用者收集的資訊，或由識別提供者提供。
 
 #### <a name="continuation-response-for-request-approval"></a>「要求核准」的接續回應
 
@@ -257,7 +272,7 @@ Content-type: application/json
 
 如果您的使用者已使用 Google 或 Facebook 帳戶登入，您可以使用[使用者建立 API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)。
 
-1. 核准系統會接收來自使用者流程的 HTTP 要求。
+1. 核准系統會使用接收來自使用者流程的 HTTP 要求。
 
 ```http
 POST <Approvals-API-endpoint>

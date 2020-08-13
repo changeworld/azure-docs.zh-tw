@@ -1,7 +1,7 @@
 ---
-title: 用戶端判斷提示（MSAL.NET） |Azure
+title: " (MSAL.NET) 的用戶端判斷提示 |Azure"
 titleSuffix: Microsoft identity platform
-description: 瞭解適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）中的機密用戶端應用程式的已簽署用戶端判斷提示支援。
+description: 瞭解適用于 .NET 的 Microsoft 驗證程式庫中的機密用戶端應用程式的已簽署用戶端判斷提示支援 (MSAL.NET) 。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 11/18/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 8c97387bfd2a362d3bf5a6b8a3252242f061da31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: aeef0c4f139f9721449ba2c503f08fafa2c627d3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80050298"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166309"
 ---
 # <a name="confidential-client-assertions"></a>機密用戶端判斷提示
 
 為了證明其身分識別，機密用戶端應用程式會以 Azure AD 交換秘密。 秘密可以是：
-- 用戶端秘密（應用程式密碼）。
+-  (應用程式密碼) 的用戶端秘密。
 - 憑證，用來建立包含標準宣告的帶正負號的判斷提示。
 
 這個秘密也可以是直接簽署的判斷提示。
@@ -52,12 +52,12 @@ Azure AD 所需的宣告為：
 
 宣告類型 | 值 | 描述
 ---------- | ---------- | ----------
-aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "Aud" （物件）宣告可識別 JWT 適用的收件者（此處 Azure AD），請參閱 [RFC 7519，區段 4.1.3]
-exp | 星期四6月 27 2019 15:04:17 GMT + 0200 （羅馬日光節約時間） | "exp" (到期時間) 宣告會識別到期時間，等於或晚於此時間都不得接受 JWT 以進行處理。 請參閱 [RFC 7519，第4.1.4 節]
-iss | ClientID | "Iss" （簽發者）宣告會識別發出 JWT 的主體。 此宣告的處理是應用程式特有的。 「Iss」值是區分大小寫的字串，其中包含 StringOrURI 值。 [RFC 7519，區段 4.1.1]
-jti | （Guid） | "Jti" （JWT ID）宣告會提供 JWT 的唯一識別碼。 識別碼值必須以確保不會意外地將相同值指派給不同資料物件的機率來指派：如果應用程式使用多個簽發者，則必須在不同簽發者所產生的值之間避免衝突。 "Jti" 宣告可以用來防止 JWT 重新執行。 "Jti" 值是區分大小寫的字串。 [RFC 7519，區段 4.1.7]
-nbf | 星期四6月 27 2019 14:54:17 GMT + 0200 （羅馬日光節約時間） | "nbf" (生效時間) 宣告會識別生效時間，在此時間之前不得接受 JWT 以進行處理。 [RFC 7519，區段 4.1.5]
-sub | ClientID | "Sub" （subject）宣告會識別 JWT 的主旨。 JWT 中的宣告通常是關於主體的陳述。 主旨值的範圍必須是在簽發者內容中為本地唯一的，或必須是全域唯一的。 請參閱 [RFC 7519，第4.1.2 節]
+aud | `https://login.microsoftonline.com/{tenantId}/v2.0` | "Aud" (物件) 宣告識別 (JWT 用於此處的收件者 Azure AD) 請參閱 [RFC 7519，章節 4.1.3]
+exp | 星期四6月 27 2019 15:04:17 GMT + 0200 (浪漫日光節約時間)  | "exp" (到期時間) 宣告會識別到期時間，等於或晚於此時間都不得接受 JWT 以進行處理。 請參閱 [RFC 7519，第4.1.4 節]
+iss | ClientID | 「Iss」 (簽發者) 宣告會識別發出 JWT 的主體。 此宣告的處理是應用程式特有的。 「Iss」值是區分大小寫的字串，其中包含 StringOrURI 值。 [RFC 7519，區段 4.1.1]
+jti |  (Guid)  | "Jti" (JWT ID) 宣告會提供 JWT 的唯一識別碼。 識別碼值必須以確保不會意外地將相同值指派給不同資料物件的機率來指派：如果應用程式使用多個簽發者，則必須在不同簽發者所產生的值之間避免衝突。 "Jti" 宣告可以用來防止 JWT 重新執行。 "Jti" 值是區分大小寫的字串。 [RFC 7519，區段 4.1.7]
+nbf | 星期四6月 27 2019 14:54:17 GMT + 0200 (浪漫日光節約時間)  | "nbf" (生效時間) 宣告會識別生效時間，在此時間之前不得接受 JWT 以進行處理。 [RFC 7519，區段 4.1.5]
+sub | ClientID | "Sub" (subject) 宣告可識別 JWT 的主旨。 JWT 中的宣告通常是關於主體的陳述。 主旨值的範圍必須是在簽發者內容中為本地唯一的，或必須是全域唯一的。 請參閱 [RFC 7519，第4.1.2 節]
 
 以下是如何製作這些宣告的範例：
 

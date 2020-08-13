@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: c5d52a78dec31dd796929b141556d6da10044099
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 420ca9ff6a3ccc0e0bb76887e777f05dd955e97b
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031480"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166683"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -187,7 +187,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 4. 使用規定
 5. 隱私權原則位址 (連結) 
 6. 供應項目名稱
-7. 摘要
+7. [摘要]
 8. 描述
 9. 螢幕擷取畫面/影片
 
@@ -197,7 +197,7 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. Title
+1. 標題
 2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
@@ -315,6 +315,8 @@ Azure 應用程式方法有兩種：解決方案範本和受控應用程式。
 ## <a name="plan-overview"></a>方案概觀
 
 此索引標籤可讓您在相同供應項目中提供不同的方案選項。 這些方案 (先前稱為 Sku) 在方案類型 (解決方案範本與受控應用程式) 、營收或物件方面可能有所不同。 請至少設定一個方案，才能在 Marketplace 中列出您的供應項目。
+
+您最多可以為每個供應專案建立100方案：最多可以是私人的45。 深入瞭解[Microsoft 商業 Marketplace 私人](../private-offers.md)方案中的私用計畫。
 
 建立之後，您將會在此索引標籤上看到您的方案名稱、識別碼、方案類型、可用性 (公用或私人)、目前發佈狀態，以及任何可用的動作。
 

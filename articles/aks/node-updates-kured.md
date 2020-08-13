@@ -1,24 +1,24 @@
 ---
 title: 使用 kured 處理 Linux 節點重新開機
 titleSuffix: Azure Kubernetes Service
-description: 瞭解如何在 Azure Kubernetes Service （AKS）中使用 kured 更新 Linux 節點並自動重新開機
+description: '瞭解如何使用 Azure Kubernetes Service (AKS 中的 kured 來更新 Linux 節點並自動重新開機它們) '
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: 955e5323769a7b9bf80413c045aaa3d55547eb02
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35c9e76c234e4b09fbb090eda363506ee3e11130
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82208069"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164235"
 ---
-# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中將安全性和核心更新套用至 Linux 節點
+# <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>將安全性和核心更新套用至 Azure Kubernetes Service (AKS 中的 Linux 節點) 
 
 為了保護您的叢集，安全性更新會自動套用至 AKS 中的 Linux 節點。 這些更新包括 OS 安全性修正或核心更新。 這其中有一些更新需要重新啟動節點，才能完成此程序。 AKS 不會自動重新開機這些 Linux 節點來完成更新程式。
 
 讓 Windows Server 節點保持在最新狀態的程式稍有不同。 Windows Server 節點不會收到每日更新。 相反地，您會執行 AKS 升級，以使用最新的基底視窗伺服器映射和修補程式來部署新的節點。 如需使用 Windows Server 節點的 AKS 叢集，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
 
-本文說明如何使用開放原始碼[kured （KUbernetes 重新開機守護程式）][kured]來監看需要重新開機的 Linux 節點，然後自動處理執行中 pod 和節點重新開機程式的重新排定。
+本文說明如何使用開放原始碼[kured (KUbernetes 重新開機][kured]背景程式) 來監看需要重新開機的 Linux 節點，然後自動處理執行中 pod 和節點重新開機程式的重新排定。
 
 > [!NOTE]
 > `Kured` 是由 Weaveworks 所提供的開放原始碼專案。 我們會盡力在 AKS 中提供對此專案的支援。 您可以在 #weave 社區的「時差」頻道中找到其他支援。
@@ -55,8 +55,8 @@ AKS 中有一個額外的程序可讓您的「升級」** 叢集。 升級通常
 若要部署 `kured` DaemonSet，請安裝下列官方 Kured Helm 圖表。 這會建立角色和叢集角色、系結和服務帳戶，然後使用來部署 DaemonSet `kured` 。
 
 ```console
-# Add the stable Helm repository
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+# Add the Kured Helm repository
+helm repo add kured https://weaveworks.github.io/kured
 
 # Update your local Helm chart repository cache
 helm repo update
@@ -65,7 +65,7 @@ helm repo update
 kubectl create namespace kured
 
 # Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
-helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
+helm install kured kured/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
 您也可以設定適用於 `kured` 的其他參數，例如，與 Prometheus 或 Slack 整合。 如需其他設定參數的詳細資訊，請參閱[Kured Helm 圖表][kured-install]。
@@ -107,7 +107,7 @@ aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5   
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://hub.helm.sh/charts/stable/kured
+[kured-install]: https://github.com/weaveworks/kured/tree/master/charts/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

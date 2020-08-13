@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 7fbb50308f14acbcec98c562fe72763341538df2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031025"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166717"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>在商業 marketplace 中建立 SaaS 供應專案
 
@@ -133,7 +133,7 @@ SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用
 5. 使用規定
 6. 隱私權原則
 7. 供應項目名稱
-8. 摘要
+8. [摘要]
 9. 描述
 10. 螢幕擷取畫面/影片
 11. 文件
@@ -144,7 +144,7 @@ SaaS 供應項目使用計量收費服務，支援以固定費用、每位使用
 
 #### <a name="call-out-descriptions"></a>向外撥說明
 
-1. Title
+1. 標題
 2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
@@ -351,6 +351,8 @@ Microsoft 提供標準合約範本。
 ## <a name="plan-overview"></a>方案概觀
 
 此頁面可讓您提供相同供應項目的不同方案選項。 這些方案 (有時稱為 SKU) 在版本、創造營收或服務層級方面可能有所不同。 您至少必須設定一個方案，才能在市集中列出您的供應項目。
+
+您最多可以為每個供應專案建立100方案：最多可以是私人的45。 深入瞭解[Microsoft 商業 Marketplace 私人](../private-offers.md)方案中的私用計畫。
 
 建立之後，會看到您的方案名稱、識別碼、價格模型、供應狀態 (公用或私人)、目前發佈狀態，以及任何可用的動作。
 

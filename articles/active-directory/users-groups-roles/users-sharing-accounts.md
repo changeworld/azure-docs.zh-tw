@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386940"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164218"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共用帳戶
 
@@ -55,7 +55,7 @@ Azure AD 提供使用共用帳戶的新方法，可以消除這些缺點。
 
 啟用帳戶共用的 Azure AD 功能包括：
 
-* [密碼單一登入](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* [密碼單一登入](../manage-apps/sso-options.md#password-based-sso)
 * 密碼單一登入代理程式
 * [群組指派](groups-self-service-management.md)
 * 自訂密碼應用程式

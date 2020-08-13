@@ -1,7 +1,7 @@
 ---
-title: Xamarin iOS 考慮（MSAL.NET） |Azure
+title: " (MSAL.NET) 的 Xamarin iOS 考慮 |Azure"
 titleSuffix: Microsoft identity platform
-description: 瞭解搭配使用 Xamarin iOS 與適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）的考慮。
+description: 瞭解搭配適用于 .NET 的 Microsoft 驗證程式庫使用 Xamarin iOS 的考慮 (MSAL.NET) 。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 7125559dd39e1626634dae7c45b0744bfff57d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 73303d64d7ebeb94290819226e5e5944f95f6e42
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82652664"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165697"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>使用 Xamarin iOS 搭配 MSAL.NET 的考慮
-當您在 Xamarin iOS 上使用適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）時，您應該： 
+當您在 Xamarin iOS 上使用適用于 .NET (MSAL.NET) 的 Microsoft 驗證程式庫時，您應該： 
 
 - 在中覆寫並執行 `OpenUrl` 函數 `AppDelegate` 。
 - 啟用 keychain 群組。
@@ -31,7 +31,7 @@ ms.locfileid: "82652664"
 
 ## <a name="implement-openurl"></a>執行 OpenUrl
 
-覆寫 `OpenUrl` `FormsApplicationDelegate` 衍生類別的方法，並呼叫 `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` 。 以下是範例：
+覆寫 `OpenUrl` `FormsApplicationDelegate` 衍生類別的方法，並呼叫 `AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs` 。 以下為範例：
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
@@ -51,7 +51,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
 
 若要啟用 keychain 存取，請確定您的應用程式具有 keychain 存取群組。 當您使用 API 建立應用程式時，可以設定 keychain 存取群組 `WithIosKeychainSecurityGroup()` 。
 
-若要受益于快取和單一登入（SSO），請在您的所有應用程式中，將 keychain 存取群組設定為相同的值。
+若要從 [快取] 和 [單一登入] (SSO) 獲益，請將 keychain 存取群組設定為所有應用程式中的相同值。
 
 此安裝程式的範例會使用 MSAL 4.x：
 ```csharp
@@ -72,7 +72,7 @@ var builder = PublicClientApplicationBuilder
 </dict>
 ```
 
-當您使用 `WithIosKeychainSecurityGroup()` API 時，MSAL 會自動將您的安全性群組附加至應用程式*小組識別碼*（）的結尾 `AppIdentifierPrefix` 。 MSAL 會新增您的安全性群組，因為當您在 Xcode 中建立應用程式時，它會執行相同的動作。 這就是為什麼檔案中的權利 `Entitlements.plist` 必須包含在 `$(AppIdentifierPrefix)` keychain 存取群組之前的原因。
+當您使用 `WithIosKeychainSecurityGroup()` API 時，MSAL 會自動將您的安全性群組附加至應用程式的*小組識別碼* (`AppIdentifierPrefix`) 的結尾。 MSAL 會新增您的安全性群組，因為當您在 Xcode 中建立應用程式時，它會執行相同的動作。 這就是為什麼檔案中的權利 `Entitlements.plist` 必須包含在 `$(AppIdentifierPrefix)` keychain 存取群組之前的原因。
 
 如需詳細資訊，請參閱[iOS 權利檔](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps)。 
 
@@ -80,7 +80,7 @@ var builder = PublicClientApplicationBuilder
 
 從 MSAL 2.x 開始，您可以指定 keychain 存取群組，在多個應用程式中保存權杖快取。 此設定可讓您在具有相同 keychain 存取群組的數個應用程式之間共用權杖快取。 您可以在[ADAL.NET](https://aka.ms/adal-net)應用程式、MSAL.NET Xamarin iOS 應用程式，以及在[ADAL. objc](https://github.com/AzureAD/azure-activedirectory-library-for-objc)或[MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)中開發的原生 iOS 應用程式之間共用權杖現金。
 
-藉由共用權杖快取，您可以在所有使用相同 keychain 存取群組的應用程式之間，允許單一登入（SSO）。
+藉由共用權杖快取，您可以在所有使用相同 keychain 存取群組的應用程式之間，允許單一登入 (SSO) 。
 
 若要啟用此快取共用，請使用 `WithIosKeychainSecurityGroup()` 方法，在共用相同快取的所有應用程式中，將 keychain 存取群組設定為相同的值。 本文中的第一個程式碼範例會示範如何使用方法。
 
@@ -116,6 +116,6 @@ Microsoft 發行了有關 iOS 12 與某些驗證類型之間不相容性的[安�
 
 範例 | 平台 | 描述
 ------ | -------- | -----------
-[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、通用 Windows 平臺（UWP） | 簡單的 Xamarin Forms 應用程式，示範如何使用 MSAL 來驗證 Microsoft 個人帳戶，並透過 Azure AD 2.0 端點 Azure AD。 應用程式也會顯示如何使用產生的權杖來存取 Microsoft Graph。
+[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS、Android、通用 Windows 平臺 (UWP)  | 簡單的 Xamarin Forms 應用程式，示範如何使用 MSAL 來驗證 Microsoft 個人帳戶，並透過 Azure AD 2.0 端點 Azure AD。 應用程式也會顯示如何使用產生的權杖來存取 Microsoft Graph。
 
 <!--- https://github.com/Azure-Samples/active-directory-xamarin-native-v2/blob/master/ReadmeFiles/Topology.png -->

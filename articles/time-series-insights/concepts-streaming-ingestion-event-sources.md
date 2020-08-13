@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/12/2020
+ms.openlocfilehash: 6524128cb5bccfefe37d605b406210a91e78cac8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491964"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163963"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 時間序列深入解析 Gen2 事件來源
 
@@ -27,40 +27,40 @@ ms.locfileid: "87491964"
 
 ## <a name="create-or-edit-event-sources"></a>建立或編輯事件來源
 
-您的事件來源資源可以與您的 Azure 時間序列深入解析 Gen2 環境或不同的訂用帳戶存在於相同的 Azure 訂用帳戶中。您可以使用 [ [Azure 入口網站](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)]、[ [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)]、[ [ARM 範本](time-series-insights-manage-resources-using-azure-resource-manager-template.md)] 和 [ [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) ] 來建立、編輯或移除環境的事件來源。
+您的事件來源資源 () 可以與您的 Azure 時間序列深入解析 Gen2 環境或不同的訂用帳戶存留在相同的 Azure 訂用帳戶中。您可以使用 [ [Azure 入口網站](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)]、[ [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)]、[ [ARM 範本](time-series-insights-manage-resources-using-azure-resource-manager-template.md)] 和 [ [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) ] 來建立、編輯或移除環境的事件來源。
 
 當您連線到事件來源時，您的 Azure 時間序列深入解析 Gen2 環境將會從最舊的事件開始，讀取目前儲存在您的 Iot 或事件中樞中的所有事件。
 
 > [!IMPORTANT]
 >
-> * 將事件來源附加至 Azure 時間序列深入解析 Gen2 環境時，可能會遇到高初始延遲的情況。
-> 事件來源延遲取決於目前在 IoT 中樞或事件中樞內的事件數目。
-> * 在第一次擷取事件來源資料之後，將會減少高延遲。 如果您遭遇持續高延遲的情況，請透過 Azure 入口網站提交支援票證。
+> - 將事件來源附加至 Azure 時間序列深入解析 Gen2 環境時，可能會遇到高初始延遲的情況。
+> - 事件來源延遲取決於目前在 IoT 中樞或事件中樞內的事件數目。
+> - 在第一次擷取事件來源資料之後，將會減少高延遲。 如果您遭遇持續高延遲的情況，請透過 Azure 入口網站提交支援票證。
 
 ## <a name="streaming-ingestion-best-practices"></a>串流內嵌最佳做法
 
-* 請務必為您的 Azure 時間序列深入解析 Gen2 環境建立唯一的取用者群組，以取用來自您事件來源的資料。 重複使用取用者群組可能會導致隨機中斷連線，而且可能會導致資料遺失。
+- 請務必為您的 Azure 時間序列深入解析 Gen2 環境建立唯一的取用者群組，以取用來自您事件來源的資料。 重複使用取用者群組可能會導致隨機中斷連線，而且可能會導致資料遺失。
 
-* 在相同的 Azure 區域中設定您的 Azure 時間序列深入解析 Gen2 環境，以及您的 IoT 中樞和/或事件中樞。 雖然可以在不同的區域中設定事件來源，但不支援此案例，因此我們無法保證高可用性。
+- 在相同的 Azure 區域中設定您的 Azure 時間序列深入解析 Gen2 環境，以及您的 IoT 中樞和/或事件中樞。 雖然可以在不同的區域中設定事件來源，但不支援此案例，因此我們無法保證高可用性。
 
-* 請勿超出環境的[輸送量速率限制](./concepts-streaming-ingress-throughput-limits.md)或每個分割區限制。
+- 請勿超出環境的[輸送量速率限制](./concepts-streaming-ingress-throughput-limits.md)或每個分割區限制。
 
-* 設定延遲[警示](https://review.docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency?branch=pr-en-us-117938#monitor-latency-and-throttling-with-alerts)，以在您的環境遇到處理資料問題時收到通知。
+- 設定延遲[警示](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)，以在您的環境遇到處理資料問題時收到通知。
 
-* 僅針對近乎即時和最近的資料使用串流擷取，不支援串流歷程記錄資料。
+- 僅針對近乎即時和最近的資料使用串流擷取，不支援串流歷程記錄資料。
 
-* 瞭解如何將屬性轉義，以及如何將 JSON[資料壓平合併並儲存。](./concepts-json-flattening-escaping-rules.md)
+- 瞭解如何將屬性轉義，以及如何將 JSON[資料壓平合併並儲存。](./concepts-json-flattening-escaping-rules.md)
 
-* 提供事件來源連接字串時，請遵循最低許可權的原則。 針對事件中樞，請使用僅限*傳送*宣告來設定共用存取原則，而針對 IoT 中樞則只使用*服務連接*許可權。
+- 提供事件來源連接字串時，請遵循最低許可權的原則。 針對事件中樞，請使用僅限*傳送*宣告來設定共用存取原則，而針對 IoT 中樞則只使用*服務連接*許可權。
 
 ### <a name="historical-data-ingestion"></a>歷程記錄資料擷取
 
 Azure 時間序列深入解析 Gen2 目前不支援使用串流管線匯入歷程記錄資料。 如果您需要將過去的資料匯入至您的環境，請遵循下列指導方針：
 
-* 請不要以平行方式串流即時和歷程記錄資料。 擷取不按順序的資料會導致查詢效能降低。
-* 依時間排序的方式擷取歷程記錄資料，以獲得最佳效能。
-* 保持在下列的擷取輸送量速率限制內。
-* 如果資料比您的溫存放區保留期間還舊，請停用溫存放區。
+- 請不要以平行方式串流即時和歷程記錄資料。 擷取不按順序的資料會導致查詢效能降低。
+- 依時間排序的方式擷取歷程記錄資料，以獲得最佳效能。
+- 保持在下列的擷取輸送量速率限制內。
+- 如果資料比您的溫存放區保留期間還舊，請停用溫存放區。
 
 ## <a name="event-source-timestamp"></a>事件來源時間戳記
 
@@ -82,10 +82,6 @@ Azure 時間序列深入解析 Gen2 目前不支援使用串流管線匯入歷�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 閱讀 JSON 簡維[和「轉義規則](./concepts-json-flattening-escaping-rules.md)」，以瞭解事件的儲存方式。 
+- 閱讀 JSON 簡維[和「轉義規則](./concepts-json-flattening-escaping-rules.md)」，以瞭解事件的儲存方式。
 
-* 瞭解您環境的[輸送量限制](./concepts-streaming-ingress-throughput-limits.md)
-
-
-
-
+- 瞭解您環境的[輸送量限制](./concepts-streaming-ingress-throughput-limits.md)

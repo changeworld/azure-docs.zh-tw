@@ -8,27 +8,27 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 53e29734095506a3f55593f938c2d9aba5903771
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68b80a3511a82ff06677d3b7bb1fbea1c68cb2ae
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87097304"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164150"
 ---
 # <a name="azure-time-series-insights-gen2-explorer"></a>Azure 時間序列深入解析 Gen2 Explorer
 
 本文說明 Azure 時間序列深入解析 Gen2[示範環境](https://insights.timeseries.azure.com/preview/demo)中可用的各種功能和選項。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用 Azure 時間序列深入解析 Gen2 Explorer，您必須：
 
 * 已布建 Azure 時間序列深入解析 Gen2 環境。 閱讀[Azure 時間序列深入解析 Gen2](./time-series-insights-update-create-environment.md)教學課程，以深入瞭解如何布建實例。
 * 提供您為帳戶所建立 Azure 時間序列深入解析 Gen2 環境的[資料存取權](./time-series-insights-data-access.md)。 您可以將存取權提供給其他人和您自己。
 * 將事件來源新增至 Azure 時間序列深入解析 Gen2 環境，以將資料推送至環境：
-  * 瞭解[如何連接到事件中樞](./time-series-insights-how-to-add-an-event-source-eventhub.md) 
+  * 瞭解[如何連接到事件中樞](./time-series-insights-how-to-add-an-event-source-eventhub.md)
   * 瞭解[如何連接到 IoT 中樞](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
 ## <a name="explore-the-azure-time-series-insights-gen2-explorer"></a>探索 Azure 時間序列深入解析 Gen2 Explorer
@@ -43,8 +43,7 @@ Azure 時間序列深入解析 Gen2 Explorer 包含下列七個元素：
 1. [時間序列良好](#4-time-series-well)：顯示您目前選取的所有資料元素。
 1. [圖表面板](#5-chart-panel)：顯示您目前的工作圖表。
 1. [時間軸](#6-time-editor-panel)：可讓您修改工作時間範圍。
-1. [應用程式行](#7-app-bar)：包含您的使用者管理選項（例如目前的租使用者），並可讓您變更它們和語言設定。
-
+1. [應用程式行](#7-app-bar)：包含您的使用者管理選項 (例如目前的租使用者) ，並可讓您變更它們和語言設定。
 
 ## <a name="1-environment-panel"></a>1. 環境面板
 
@@ -67,7 +66,7 @@ Azure 時間序列深入解析 Gen2 Explorer 包含下列七個元素：
 
 ### <a name="model-authoring"></a>模型撰寫
 
-Azure 時間序列深入解析 Gen2 支援在您的時間序列模型上進行完整的建立、讀取、更新和刪除（CRUD）作業。
+Azure 時間序列深入解析 Gen2 支援在您的時間序列模型上進行完整的 create、read、update 和 delete (CRUD) 作業。
 
 [![模型搜尋面板](media/v2-update-explorer/model-search-panel.png)](media/v2-update-explorer/model-search-panel.png#lightbox)
 
@@ -79,19 +78,19 @@ Azure 時間序列深入解析 Gen2 支援在您的時間序列模型上進行�
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. 階層樹狀結構和搜尋面板
 
-階層樹狀結構和 [搜尋] 面板可讓您輕鬆地搜尋及流覽[時間序列模型](./concepts-model-overview.md)階層，以尋找您想要在圖表上顯示的特定時間序列實例。 當您選取實例時，它們不僅會加入目前的圖表中，還會加入至資料中。 
+階層樹狀結構和 [搜尋] 面板可讓您輕鬆地搜尋及流覽[時間序列模型](./concepts-model-overview.md)階層，以尋找您想要在圖表上顯示的特定時間序列實例。 當您選取實例時，它們不僅會加入目前的圖表中，還會加入至資料中。
 
 [![階層樹狀結構和搜尋面板](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
 [搜尋結果] 窗格也可讓您在階層視圖或清單視圖中查看結果，讓您可以輕鬆地找到想要顯示的實例。
- 
+
 ## <a name="4-time-series-well"></a>4. 時間序列良好
 
-它會顯示實例欄位，以及與所選時間序列模型實例相關聯的其他中繼資料。 藉由選取右側的核取方塊，您可以隱藏或顯示目前圖表中的特定實例。 
+它會顯示實例欄位，以及與所選時間序列模型實例相關聯的其他中繼資料。 藉由選取右側的核取方塊，您可以隱藏或顯示目前圖表中的特定實例。
 
   [![Gen2 良好](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
-您可以選取專案左側的紅色 [**刪除**] （垃圾桶）控制項，從目前的資料中移除特定的資料元素。 也可以讓您控制每個元素在圖表中的顯示方式。 您可以加入宣告最小/最大陰影、資料點、將專案移入時間，並以逐步方式將實例視覺化。 
+您可以從目前的資料中移除特定的資料元素，方法是選取紅色的**刪除** (垃圾桶可以) 控制項的左邊。 也可以讓您控制每個元素在圖表中的顯示方式。 您可以加入宣告最小/最大陰影、資料點、將專案移入時間，並以逐步方式將實例視覺化。
 
 此外，探勘控制項可讓您輕鬆地建立時間移位和散佈圖。  
 
@@ -104,7 +103,7 @@ Azure 時間序列深入解析 Gen2 支援在您的時間序列模型上進行�
 
 ## <a name="5-chart-panel"></a>5. 圖表面板
 
-圖表可讓您將時間序列實例顯示為線條。 您可以按一下 Web 控制項將圖表加大，以摺疊環境面板、資料模型和時間範圍控制面板。 
+圖表可讓您將時間序列實例顯示為線條。 您可以按一下 Web 控制項將圖表加大，以摺疊環境面板、資料模型和時間範圍控制面板。
 
   [![Gen2 圖表總覽](media/v2-update-explorer/tsi-preview-chart-overview.png)](media/v2-update-explorer/tsi-preview-chart-overview.png#lightbox)
 
@@ -149,7 +148,7 @@ Azure 時間序列深入解析 Gen2 支援在您的時間序列模型上進行�
 > [!TIP]
 > 時間軸的一部分會以琥珀色或橙色反白顯示，以指出暖存放區中可用的資料範圍。
 
-Azure 時間序列深入解析 Gen2 中可使用下列 web 控制項來選取您的工作時間範圍。 
+Azure 時間序列深入解析 Gen2 中可使用下列 web 控制項來選取您的工作時間範圍。
 
   [![探索妥善掌控](media/v2-update-explorer/exploration-well-control.png)](media/v2-update-explorer/exploration-well-control.png#lightbox)
 
@@ -205,7 +204,7 @@ Azure 時間序列深入解析 Gen2 Explorer 支援兩個主題：
 
 ### <a name="gen2-terms-panel"></a>Gen2 條款面板
 
-本節僅適用于在更新的 UI 中嘗試使用 Explorer 的現有 Gen 1 環境。 您可能想要使用 Gen 1 產品和 Gen2 產品群組。 我們已從現有的 UI 新增一些功能到更新的 Explorer，但您可以在新的 Azure 時間序列深入解析 Gen2 Explorer 中取得 Gen 1 環境的完整 UI 體驗。 
+本節僅適用于在更新的 UI 中嘗試使用 Explorer 的現有 Gen 1 環境。 您可能想要使用 Gen 1 產品和 Gen2 產品群組。 我們已從現有的 UI 新增一些功能到更新的 Explorer，但您可以在新的 Azure 時間序列深入解析 Gen2 Explorer 中取得 Gen 1 環境的完整 UI 體驗。
 
 而不是階層，會顯示 [Azure 時間序列深入解析 Gen2 詞彙] 面板。 [詞彙] 面板可讓您定義環境中的查詢。 您也可以使用它來根據述詞來篩選資料。
 
@@ -215,22 +214,22 @@ Azure 時間序列深入解析 Gen2 Explorer 支援兩個主題：
 
 **Where**：使用 where 子句，藉由使用下表所列的運算元集合來快速篩選事件。 如果透過選取運算元進行搜尋，述詞會依據該搜尋自動更新。 支援的運算元類型包括下列各項：
 
-| 操作    | 支援的類型    | 附註 |
+| 作業    | 支援的類型    | 注意 |
 | --- | --- | --- |
 | `<`, `>`, `<=`, `>=` | Double、DateTime、TimeSpan | |
 | `=`, `!=`, `<>` | String、Bool、Double、DateTime、TimeSpan、NULL |
 | `IN` | String、Bool、Double、DateTime、TimeSpan、NULL | 所有的運算元都應該是相同的類型或是 NULL 常數。 |
-| `HAS` | 字串 | 右側只允許常數位串常值。 不允許空字串和 Null。 |
+| `HAS` | String | 右側只允許常數位串常值。 不允許空字串和 Null。 |
 
-若要深入瞭解支援的查詢作業和資料類型，請參閱[時間序列運算式（TSX）](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
+若要深入瞭解支援的查詢作業和資料類型，請參閱[ (TSX) 的時間序列運算式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)。
 
 ### <a name="examples-of-where-clauses"></a>Where 子句範例
 
   [![Where 子句範例](media/v2-update-explorer/tsi-preview-example-queries.png)](media/v2-update-explorer/tsi-preview-example-queries.png#lightbox)
 
-**量值**：顯示所有數值資料行（**雙精度**浮點數）的下拉式清單，您可以用來做為目前圖表的元素。
+**量值**：顯示所有數值資料行的下拉式清單 (**雙精度**浮點數，) 您可以當做目前圖表的元素使用。
 
-**分割依據**：此下拉式清單會顯示您模型中的所有可用類別資料行（字串），您可以將其分組。 您最多可以在同一個 X 軸上加入五個詞彙。 輸入您想要的參數，然後選取 [**新增**] 以新增新的字詞。
+**分割依據**：此下拉式清單會顯示您的模型中 (字串) 的所有可用分類資料行，您可以將其分組。 您最多可以在同一個 X 軸上加入五個詞彙。 輸入您想要的參數，然後選取 [**新增**] 以新增新的字詞。
 
   [![查詢和篩選的視圖一](media/v2-update-explorer/s1-s2-preview-filtered-view.png)](media/v2-update-explorer/s1-s2-preview-filtered-view.png#lightbox)
 
@@ -240,10 +239,10 @@ Azure 時間序列深入解析 Gen2 Explorer 支援兩個主題：
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何將[資料內嵌](./concepts-ingestion-overview.md)至您的環境。
+* 瞭解如何將[資料內嵌](./concepts-ingestion-overview.md)至您的環境。
 
-- 請參閱[儲存體](concepts-storage.md)上的文章。
+* 請參閱[儲存體](concepts-storage.md)上的文章。
 
-- 閱讀 Azure 時間序列深入解析 Gen2 中的[資料模型](./concepts-model-overview.md)。
+* 閱讀 Azure 時間序列深入解析 Gen2 中的[資料模型](./concepts-model-overview.md)。
 
-- 瞭解[如何診斷和疑難排解](./time-series-insights-update-how-to-troubleshoot.md)您的環境。
+* 瞭解[如何診斷和疑難排解](./time-series-insights-update-how-to-troubleshoot.md)您的環境。

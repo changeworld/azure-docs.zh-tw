@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 07/08/2020
-ms.openlocfilehash: 828c8a33315f5a76eea780705e2cdf3c2871bd14
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc4c39cf26f3ab8d1037222f967789bfbeca05ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012802"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166752"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境是什麼？
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning 環境是機器學習訓練發生所在環境的封裝。 他們會針對您的訓練和評分腳本指定 Python 套件、環境變數和軟體設定。 它們也會指定執行時間（Python、Spark 或 Docker）。 這些環境是在您的 Machine Learning 工作區內管理和設定版本的實體，可讓您在各種計算目標上進行可重現、可審核和便攜的機器學習工作流程。
+Azure Machine Learning 環境是機器學習訓練發生所在環境的封裝。 他們會針對您的訓練和評分腳本指定 Python 套件、環境變數和軟體設定。 它們也會指定執行時間 (Python、Spark 或 Docker) 。 這些環境是在您的 Machine Learning 工作區內管理和設定版本的實體，可讓您在各種計算目標上進行可重現、可審核和便攜的機器學習工作流程。
 
 您可以使用 `Environment` 本機計算上的物件來執行下列動作：
 * 開發您的訓練指令碼。
@@ -27,7 +27,7 @@ Azure Machine Learning 環境是機器學習訓練發生所在環境的封裝。
 * 使用同一個環境部署您的模型。
 * 重新流覽現有模型已定型的環境。
 
-下圖說明如何在您的回合設定 `Environment` （用於訓練）和您的推斷和部署設定（適用于 web 服務部署）中使用單一物件。
+下圖說明如何在您的回合設定 `Environment` (中使用單一物件，以進行訓練) 和) 的 web 服務部署 (的推斷和部署設定。
 
 ![機器學習服務工作流程中環境的圖表](./media/concept-environments/ml-environment.png)
 
@@ -68,7 +68,7 @@ Azure Machine Learning 服務會將環境定義建立到 Docker 映射和 conda 
 
 ### <a name="submitting-a-run-using-an-environment"></a>使用環境提交執行
 
-當您第一次使用環境提交遠端執行時，Azure Machine Learning 服務會在與工作區相關聯的 Azure Container Registry （ACR）上叫用[ACR 組建](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)工作。 然後，會在工作區 ACR 上快取建立的 Docker 映射。 策劃環境是由全域 ACR 中快取的 Docker 映射所支援。 開始執行時，會從相關 ACR 的計算目標抓取映射。
+當您第一次使用環境提交遠端執行時，Azure Machine Learning 服務會在與工作區相關聯的 Azure Container Registry (ACR) 上叫用[Acr 組建](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)工作。 然後，會在工作區 ACR 上快取建立的 Docker 映射。 策劃環境是由全域 ACR 中快取的 Docker 映射所支援。 開始執行時，會從相關 ACR 的計算目標抓取映射。
 
 針對本機執行，會根據環境定義來建立 Docker 或 Conda 環境。 然後，腳本會在目標計算上執行：本機執行時間環境或本機 Docker 引擎。
 
@@ -94,9 +94,9 @@ Azure Machine Learning 服務會將環境定義建立到 Docker 映射和 conda 
  * Conda 定義中的 Python 套件清單
  * Spark 定義中的套件清單 
 
-雜湊不會相依于環境名稱或版本-如果您將環境重新命名，或使用現有的屬性和封裝建立新的環境，則雜湊值會維持不變。 不過，環境定義變更（例如新增或移除 Python 封裝或變更封裝版本）會導致雜湊值變更。 請務必注意，對策劃環境所做的任何變更都會使雜湊失效，並產生新的「非策劃」環境。
+雜湊不會相依于環境名稱或版本-如果您將環境重新命名，或使用現有的屬性和封裝建立新的環境，則雜湊值會維持不變。 不過，環境定義變更（例如新增或移除 Python 封裝或變更封裝版本）會導致雜湊值變更。 變更環境中相依性或通道的順序，將會產生新的環境，因此需要新的映射組建。 請務必注意，對策劃環境所做的任何變更都會使雜湊失效，並產生新的「非策劃」環境。
 
-計算的雜湊值會與工作區和全域 ACR （或本機執行的計算目標）上的值進行比較。 如果有相符的結果，則會提取快取的影像，否則會觸發映射組建。 提取快取映射的持續時間包含下載時間，而提取新建立之映射的持續時間則包括組建時間和下載時間。 
+計算的雜湊值會與工作區中的和全域 ACR (或本機執行的計算目標) 進行比較。 如果有相符的結果，則會提取快取的影像，否則會觸發映射組建。 提取快取映射的持續時間包含下載時間，而提取新建立之映射的持續時間則包括組建時間和下載時間。 
 
 下圖顯示三個環境定義。 其中兩個有不同的名稱和版本，但基底映射和 Python 套件相同。 但是它們具有相同的雜湊，因此會對應到相同的快取映射。 第三個環境有不同的 Python 套件和版本，因此對應至不同的快取映射。
 
@@ -105,12 +105,12 @@ Azure Machine Learning 服務會將環境定義建立到 Docker 映射和 conda 
 >[!IMPORTANT]
 > 例如，如果您建立的環境具有取消固定的封裝相依性，則 ```numpy``` 該環境會繼續使用在_環境建立時_所安裝的套件版本。 此外，任何未來具有相符定義的環境都會繼續使用舊版本。 
 
-若要更新封裝，請指定用來強制映射重建的版本號碼，例如 ```numpy==1.18.1``` 。 將會安裝新的相依性（包括內嵌的相依性），這可能會中斷先前運作的案例。
+若要更新封裝，請指定用來強制映射重建的版本號碼，例如 ```numpy==1.18.1``` 。 將會安裝新的相依性（包括內嵌的相依性），這可能會中斷先前運作的案例。 
 
 > [!WARNING]
 >  在[環境中，build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-)方法會重建快取的映射，而且可能會產生更新已取消釘選封裝的副作用，並中斷與該快取影像對應之所有環境定義的重現性。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何在 Azure Machine Learning 中[建立和使用環境](how-to-use-environments.md)。
 * 請參閱[環境類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py)的 Python SDK 參考檔。

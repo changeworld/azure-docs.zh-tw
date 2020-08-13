@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 8d27594b33db72303c71ceb39de92b1d4340b9be
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037264"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166700"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure Marketplace 上建立 Azure 虛擬機器供應項目
 
@@ -291,6 +291,8 @@ ms.locfileid: "88037264"
 ## <a name="plan-overview"></a>方案概觀
 
 您可以在合作夥伴中心的相同供應項目中提供各種方案選項。 供應專案至少需要一個方案 (先前稱為 SKU) ，這可能會因營收物件、Azure 區域、功能或 VM 映射而異。
+
+您最多可以為每個供應專案建立100方案：最多可以是私人的45。 深入瞭解[Microsoft 商業 Marketplace 私人](../private-offers.md)方案中的私用計畫。
 
 建立方案之後，選取 [方案概觀] 索引標籤以顯示：
 

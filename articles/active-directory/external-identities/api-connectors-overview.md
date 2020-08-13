@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5e546c6eac77c4952a0d32d360f49d4251d49d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cdb6e85b6d81de3d4b88ba315ddd35bd5b37ae7a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908769"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165204"
 ---
 # <a name="use-api-connectors-to-customize-and-extend-self-service-sign-up"></a>使用 API 連接器來自訂和擴充自助式註冊 
 
@@ -30,7 +30,7 @@ ms.locfileid: "87908769"
 <!-- - **Enrich user data**. Integrate with your external cloud systems that store user information to integrate them with the sign-up flow. For example, your API can receive the user's email address, query a CRM system, and return the user's loyalty number. Returned claims can be used to pre-fill form fields or return additional data in the application token.  -->
 - **執行自訂商務邏輯**。 您可以在雲端系統中觸發下游事件以傳送推播通知、更新公司資料庫、管理許可權、審核資料庫，以及執行其他自訂動作。
 
-API 連接器會藉由定義 HTTP 端點、驗證、要求和預期的回應，來代表 Azure AD 與 API 端點之間的合約。 設定 API 連接器之後，您可以在使用者流程的特定步驟中啟用它。 當使用者在註冊流程中達到該步驟時，會叫用 API 連接器並具體化為 HTTP POST 要求，並將選取的宣告當做 JSON 主體中的機碼值組來傳送。 API 回應可能會影響使用者流程的執行。 例如，API 回應可能會封鎖使用者的註冊、要求使用者重新輸入資訊，或覆寫和附加使用者屬性。
+API 連接器會藉由定義 HTTP 端點 URL 和驗證，為 Azure Active Directory 提供呼叫 API 端點所需的資訊。 設定 API 連接器之後，您可以在使用者流程的特定步驟中啟用它。 當使用者在註冊流程中達到該步驟時，會叫用 API 連接器，並具體化為您 API 的 HTTP POST 要求，將使用者資訊 ( 「宣告」 ) 作為 JSON 主體中的機碼值組來傳送。 API 回應可能會影響使用者流程的執行。 例如，API 回應可能會封鎖使用者的註冊、要求使用者重新輸入資訊，或覆寫和附加使用者屬性。
 
 ## <a name="where-you-can-enable-an-api-connector-in-a-user-flow"></a>您可以在其中啟用使用者流程中的 API 連接器
 
@@ -39,7 +39,8 @@ API 連接器會藉由定義 HTTP 端點、驗證、要求和預期的回應，�
 - 使用身分識別提供者登入之後
 - 建立使用者之前
 
-在這兩種情況下，API 連接器會在註冊期間叫用，而不是登入。
+> [!IMPORTANT]
+> 在這兩種情況下，會在使用者**註冊**期間叫用 API 連接器，而不是登入。
 
 ### <a name="after-signing-in-with-an-identity-provider"></a>使用身分識別提供者登入之後
 

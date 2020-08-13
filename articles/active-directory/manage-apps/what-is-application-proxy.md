@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4d9583e08591e8ea5792aad28e247dff178f1c08
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080655"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164575"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 應用程式 Proxy 來為遠端使用者發佈內部部署應用程式
 
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 * [**表單或密碼型驗證**](application-proxy-configure-single-sign-on-password-vaulting.md)。 若使用此驗證方法，使用者在第一次存取應用程式時，要以使用者名稱和密碼登入應用程式。 第一次登入之後，Azure AD 就會向應用程式提供使用者名稱和密碼。 在此案例中，驗證會由 Azure AD 處理。
 * [**SAML 驗證**](application-proxy-configure-single-sign-on-on-premises-apps.md)。 使用 SAML 2.0 或 WS-同盟通訊協定的應用程式都支援 SAML 型單一登入。 使用 SAML 單一登入時，Azure AD 會使用使用者的 Azure AD 帳戶向應用程式驗證。
 
-如需有關支援的方法的詳細資訊，請參閱[選擇單一登入方法](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
+如需有關支援的方法的詳細資訊，請參閱[選擇單一登入方法](sso-options.md#choosing-a-single-sign-on-method)。
 
 ### <a name="security-benefits"></a>安全性優點
 

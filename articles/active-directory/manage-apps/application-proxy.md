@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6ed9d5eb8d230b05a090424d6105865acae69e61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019347"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164915"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>透過 Azure AD 應用程式 Proxy 遠端存取內部部署應用程式
 
@@ -41,7 +41,7 @@ Azure AD 應用程式 Proxy 具有下列特性：
 * 裝載于[遠端桌面閘道](application-proxy-integrate-with-remote-desktop-services.md)後方的應用程式
 * 與 Microsoft Authentication Library (MSAL) 整合的豐富型用戶端應用程式
 
-應用程式 Proxy 支援單一登入。 如需有關支援的方法的詳細資訊，請參閱[選擇單一登入方法](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
+應用程式 Proxy 支援單一登入。 如需有關支援的方法的詳細資訊，請參閱[選擇單一登入方法](sso-options.md#choosing-a-single-sign-on-method)。
 
 建議使用應用程式 Proxy，讓遠端使用者存取內部資源。 應用程式 Proxy 會取代 VPN 或反向 Proxy 的需求。 不適合用于公司網路上的內部使用者。  這些不必要地使用應用程式 Proxy 的使用者可能會產生非預期且不想要的效能問題。
 
@@ -67,6 +67,6 @@ Azure AD 應用程式 Proxy 具有下列特性：
 | Active Directory (AD) | Active Directory 在內部部署執行以對網域帳戶執行驗證。 設定單一登入之後，連接器將與 AD 通訊以執行所需的任何額外的驗證。
 | 內部部署應用程式 | 最後，使用者就能夠存取內部部署應用程式。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 若要開始使用應用程式 Proxy，請參閱[教學課程：新增內部部署應用程式以透過應用程式 proxy 進行遠端存取](application-proxy-add-on-premises-application.md)。
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2020
+ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: bf503cf90df7b08e5a957416d66eae2f1a599bed
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 034e72238375750651a1374a94b844d36fd97d03
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438954"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166445"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -29,11 +29,69 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 此頁面會定期更新，因此請時常瀏覽。 如果想要尋找超過 6 個月的項目，請前往[Azure 資訊安全中心內新功能的封存](release-notes-archive.md)。
 
+
+## <a name="august-2020"></a>2020 年 8 月
+
+### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Vm 上的弱點評估-合併的建議和原則
+
+資訊安全中心會檢查您的 Vm，以偵測其是否正在執行弱點評估解決方案。 如果找不到任何弱點評估解決方案，資訊安全中心會提供簡化部署的建議。
+
+發現弱點時，資訊安全中心會提供摘要說明的建議，以供您調查並視需要進行補救。
+
+為了確保所有使用者的一致體驗，不論他們使用的掃描器類型為何，我們都已將四個建議整合到下列兩個：
+
+|統一的建議|變更描述|
+|----|:----|
+|**應在您的虛擬機器上啟用弱點評估解決方案**|取代下列兩項建議：<br> **•** 在虛擬機器上啟用內建弱點評估解決方案 (由 Qualys 提供技術支援， (現在已淘汰)  (包含在標準層中) <br> **•** 弱點評估解決方案應該安裝在您的虛擬機器上 (現在已淘汰)  (標準和免費層) |
+|**應補救虛擬機器中的弱點**|取代下列兩項建議：<br>**•** 修復在虛擬機器上找到的弱點 (由 Qualys 提供支援)  (現在已被取代) <br>**•** 弱點評估解決方案應補救漏洞， (現在已淘汰) |
+|||
+
+現在，您將使用相同的建議來部署資訊安全中心的弱點評定延伸模組，或從合作夥伴（例如 Qualys 或 Rapid7） ( 「BYOL」 ) 私下授權解決方案。
+
+此外，當發現弱點並回報資訊安全中心時，單一建議會向您發出通知，而不論發現它們的弱點評估解決方案為何。
+
+#### <a name="updating-dependencies"></a>正在更新相依性
+
+如果您有腳本、查詢或自動化參考先前的建議或原則索引鍵/名稱，請使用下清單格來更新參考：
+
+##### <a name="before-august-2020"></a>2020年8月之前
+
+|建議|影響範圍|
+|----|:----|
+|**在虛擬機器上啟用內建弱點評估解決方案， (由 Qualys 提供技術支援) **<br>索引鍵：550e890b-e652-4d22-8274-60b3bdb24c63|內建|
+|**補救在您的虛擬機器上發現的弱點 (Qualys 技術提供)**<br>索引鍵：1195afff-c881-495e-9bc5-1486211ae03f|內建|
+|**虛擬機器上應安裝弱點評定解決方案**<br>索引鍵：01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
+|**弱點評量解決方案應修復弱點**<br>索引鍵：71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
+||||
+
+
+|原則|影響範圍|
+|----|:----|
+|**應該在虛擬機器上啟用弱點評估**<br>原則識別碼：501541f7-f7e7-4cd6-868c-4190fdad3ac9|內建|
+|**弱點評估解決方案應補救漏洞**<br>原則識別碼：760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
+||||
+
+
+##### <a name="from-august-2020"></a>2020年8月
+
+|建議|影響範圍|
+|----|:----|
+|**應在您的虛擬機器上啟用弱點評估解決方案**<br>索引鍵： ffff0522-1e88-47fc-8382-2a80ba848f5d|內建 + BYOL|
+|**應補救虛擬機器中的弱點**<br>索引鍵：1195afff-c881-495e-9bc5-1486211ae03f|內建 + BYOL|
+||||
+
+|原則|影響範圍|
+|----|:----|
+|[**應該在虛擬機器上啟用弱點評估**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>原則識別碼：501541f7-f7e7-4cd6-868c-4190fdad3ac9 |內建 + BYOL|
+||||
+
+
+
 ## <a name="july-2020"></a>2020 年 7 月
 
 7月份的更新包括：
 - [虛擬機器的弱點評定現在適用于非 marketplace 映射](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
-- [Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 （預覽）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 (preview) ](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
 - [啟用威脅防護功能的八個新建議](#eight-new-recommendations-to-enable-threat-protection-features)
 - [容器安全性改進-更快的登錄掃描和重新整理檔](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
 - [在路徑規則中使用新的建議和萬用字元支援來更新彈性應用程式控制](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
@@ -48,14 +106,14 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 在此更新中，已移除檢查，而且您現在可以將弱點評定工具部署到「自訂」 Windows 和 Linux 電腦。 自訂映射是您從 marketplace 預設值修改的影像。
 
-雖然您現在可以在許多電腦上部署整合式弱點評定延伸模組（由 Qualys 提供支援），但只有當您使用的作業系統是在[部署 Qualys 內建的弱點掃描器](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)中時才可使用。
+雖然您現在可以部署整合式弱點評定延伸模組 (在多部電腦上 Qualys) 提供支援，但只有在您使用[部署 Qualys 內建弱點掃描器](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)中所列的作業系統時，才可使用。
 
-深入瞭解[虛擬機器的整合式弱點掃描器（僅限標準層）](built-in-vulnerability-assessment.md)。
+深入瞭解[虛擬機器的整合式弱點掃描器 (標準層僅) ](built-in-vulnerability-assessment.md)。
 
 在[部署合作夥伴弱點掃描解決方案](partner-vulnerability-assessment.md)中，深入瞭解如何在 Qualys 或 Rapid7 中使用您自己的私用授權弱點評估解決方案。
 
 
-### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 （預覽）
+### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>Azure 儲存體的威脅防護已擴充為包含 Azure 檔案儲存體和 Azure Data Lake Storage Gen2 (preview) 
 
 Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的活動。 資訊安全中心會在偵測到嘗試存取或惡意探索您的儲存體帳戶時顯示警示。 
 
@@ -119,12 +177,14 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 
 調適型應用程式控制功能已收到兩個重大更新：
 
-- 新的建議會識別先前未允許的可能合法行為。 **您應該更新彈性應用程式控制原則中的允許清單規則**，並提示您將新規則新增至現有的原則，以減少彈性應用程式控制違規警示中的誤報數目。
+* 新的建議會識別先前未允許的可能合法行為。 **您應該更新彈性應用程式控制原則中的允許清單規則**，並提示您將新規則新增至現有的原則，以減少彈性應用程式控制違規警示中的誤報數目。
 
-- 路徑規則現在支援萬用字元。 在此更新中，您可以使用萬用字元來設定允許的路徑規則。 支援的案例有兩種：
+* 路徑規則現在支援萬用字元。 在此更新中，您可以使用萬用字元來設定允許的路徑規則。 支援的案例有兩種：
 
-    - 在路徑結尾使用萬用字元，以允許此資料夾和子資料夾中的所有可執行檔
-    - 在路徑中間使用萬用字元，可啟用具有變更資料夾名稱的已知可執行檔名稱（例如，具有已知可執行檔的個人使用者資料夾、自動產生的資料夾名稱等等）。 
+    * 在路徑結尾使用萬用字元，以允許此資料夾和子資料夾中的所有可執行檔
+
+    * 在路徑的中間使用萬用字元，可啟用具有變更資料夾名稱的已知可執行檔名稱 (例如具有已知可執行檔的個人使用者資料夾、自動產生的資料夾名稱等等) 。
+
 
 [深入了解自適性應用程式控制](security-center-adaptive-application.md)。
 
@@ -150,18 +210,18 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 ## <a name="june-2020"></a>2020 年 6 月
 
 六月的更新包括：
-- [安全分數 API （預覽）](#secure-score-api-preview)
-- [SQL 電腦的先進資料安全性（Azure、其他雲端及內部內部部署）（預覽）](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
-- [將 Log Analytics 代理程式部署至 Azure Arc 機器的兩個新建議（預覽）](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
+- [ (預覽) 的安全分數 API](#secure-score-api-preview)
+- [SQL 電腦的先進資料安全性 (Azure、其他雲端及內部內部部署)  (preview) ](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
+- [ (preview 將 Log Analytics 代理程式部署至 Azure Arc 機器的兩個新建議) ](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
 - [可大規模建立連續匯出和工作流程自動化設定的新原則](#new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale)
 - [使用 Nsg 來保護非網際網路面向虛擬機器的新建議](#new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines)
 - [啟用威脅防護和先進資料安全性的新原則](#new-policies-for-enabling-threat-protection-and-advanced-data-security)
 
 
 
-### <a name="secure-score-api-preview"></a>安全分數 API （預覽）
+### <a name="secure-score-api-preview"></a> (預覽) 的安全分數 API
 
-您現在可以透過[安全分數 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) （目前處於預覽狀態）來存取您的分數。 API 方法提供彈性來查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用**安全分數**API 來取得特定訂用帳戶的分數。 此外，您可以使用**安全分數控制項**API 來列出安全性控制項和您的訂用帳戶目前分數。
+您現在可以透過[安全分數 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/)來存取您的分數， (目前處於預覽狀態) 。 API 方法提供彈性來查詢資料，並在一段時間後建立您自己的安全分數報告機制。 例如，您可以使用**安全分數**API 來取得特定訂用帳戶的分數。 此外，您可以使用**安全分數控制項**API 來列出安全性控制項和您的訂用帳戶目前分數。
 
 如需使用安全分數 API 進行外部工具的範例，請參閱[GitHub 社區的安全分數區域](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
 
@@ -169,7 +229,7 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 
 
 
-### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview"></a>SQL 電腦的先進資料安全性（Azure、其他雲端及內部內部部署）（預覽）
+### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview"></a>SQL 電腦的先進資料安全性 (Azure、其他雲端及內部內部部署)  (preview) 
 
 Azure 資訊安全中心的 SQL 機器先進資料安全性現在會保護裝載于 Azure、其他雲端環境，甚至是內部部署機器上的 SQL Server。 這會為您的 Azure 原生 SQL 伺服器擴充保護，以完整支援混合式環境。
 
@@ -185,14 +245,14 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 
 
-### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a>將 Log Analytics 代理程式部署至 Azure Arc 機器的兩個新建議（預覽）
+### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a> (preview 將 Log Analytics 代理程式部署至 Azure Arc 機器的兩個新建議) 
 
 已新增兩個新的建議，以協助將[Log Analytics 代理程式](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)部署至您的 Azure Arc 機器，並確保其受到 Azure 資訊安全中心的保護：
 
-- **Log Analytics 代理程式應該安裝在您的以 Windows 為基礎的 Azure Arc 機器上（預覽）**
-- **Log Analytics 代理程式應該安裝在您的以 Linux 為基礎的 Azure Arc 機器上（預覽）**
+- **Log Analytics 代理程式應該安裝在以 Windows 為基礎的 Azure Arc 機器上 (預覽) **
+- **Log Analytics 代理程式應該安裝在以 Linux 為基礎的 Azure Arc 機器上 (預覽) **
 
-這些新的建議會出現在與現有（相關）建議相同的四個安全性控制項中，**監視代理程式應該安裝在您的電腦上**：補救安全性設定、套用自動調整應用程式控制、套用系統更新，以及啟用 endpoint protection。
+這些新的建議會出現在與現有 (相關) 建議相同的四個安全性控制項中，**監視代理程式應該安裝在您的電腦上**：補救安全性設定、套用自動調整應用程式控制、套用系統更新，以及啟用 endpoint protection。
 
 這些建議也包含快速修正功能，可協助加速部署程式。 
 
@@ -340,7 +400,7 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 深入瞭解[在 Azure 資訊安全中心之內的增強型安全分數 (預覽)](secure-score-security-controls.md) 中出現的安全性控制項。
 
-![建議的 [群組依據控制項] 切換](./media/secure-score-security-controls/recommendations-group-by-toggle.gif)
+![建議的 [群組依據控制項] 切換](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>擴充的安全性控制「實作安全性最佳做法」 
 
@@ -358,13 +418,13 @@ Advanced data security 為您的 SQL 機器提供弱點評估和先進的威脅�
 
 新增至控制項的兩個新建議如下：
 
-- **來賓設定延伸模組應安裝在 Windows 虛擬機器（預覽）上**-使用[Azure 原則來賓](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)設定會在虛擬機器中提供對伺服器和應用程式設定的可見度（僅限 Windows）。
+- **來賓設定延伸模組應該安裝在 windows 虛擬機器上 (Preview) ** -使用[Azure 原則來賓](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)設定會在虛擬機器中提供可見度， (僅限 Windows) 的伺服器和應用程式設定。
 
-- **Windows Defender 惡意探索防護應在您的電腦上啟用（預覽）** -Windows Defender 惡意探索防護會利用 Azure 原則來賓設定代理程式。 「惡意探索防護」有四個元件，設計用來鎖定裝置，使其免於遭受惡意程式碼攻擊的各種攻擊和封鎖行為，同時讓企業能夠平衡本身的安全性風險和生產力需求 (僅限 Windows)。
+- **Windows Defender 惡意探索防護應在您的電腦上啟用 (Preview) ** -Windows Defender 惡意探索防護會利用 Azure 原則來賓設定代理程式。 「惡意探索防護」有四個元件，設計用來鎖定裝置，使其免於遭受惡意程式碼攻擊的各種攻擊和封鎖行為，同時讓企業能夠平衡本身的安全性風險和生產力需求 (僅限 Windows)。
 
 若要深入瞭解 Windows Defender 惡意探索防護，請參閱[建立及部署惡意探索防護原則](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)。
 
-深入瞭解[增強式安全分數（預覽）](secure-score-security-controls.md)中的安全性控制項。
+深入瞭解[增強式安全分數 (預覽) ](secure-score-security-controls.md)中的安全性控制項。
 
 
 
@@ -512,17 +572,4 @@ Azure 資訊安全中心正在擴充其容器安全性功能，以保護 Azure K
 這些建議不會再出現在資訊安全中心的建議清單中。 相關的原則將不再包含在名為「資訊安全中心預設」的方案中。
 
 深入瞭解[安全性建議](recommendations-reference.md)。
-
-
-
-## <a name="february-2020"></a>2020 年 2 月
-
-### <a name="fileless-attack-detection-for-linux-preview"></a>適用於 Linux 的無檔案攻擊偵測 (預覽)
-
-當攻擊者增加採用 stealthier 方法以避免偵測時，除了 Windows 之外，Azure 資訊安全中心也會擴充 Linux 的無檔案攻擊偵測。 無檔案攻擊會運用軟體弱點，並將惡意承載插入良性系統程序，然後在記憶體中隱藏。 這些技術：
-
-- 最小化或排除磁碟上的惡意程式碼追蹤
-- 藉由以磁碟為基礎的惡意程式碼掃描解決方案，大幅降低偵測的機會
-
-若要對付這項威脅，Azure 資訊安全中心在 2018 年 10 月發行 Windows 的無檔案攻擊偵測，而且現在也已在 Linux 上擴充無檔案攻擊偵測。 
 

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f8494852bcff49602645c940470b529302f119f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764803"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165068"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>如何讓原生用戶端應用程式與 Proxy 應用程式互動
 
@@ -124,4 +124,4 @@ if (authResult != null)
 
 如需原生應用程式流程的詳細資訊，請參閱 [Azure Active Directory 中的原生應用程式](../azuread-dev/native-app.md)。
 
-深入了解設定 [Azure Active Directory 中應用程式的單一登入](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
+深入了解設定 [Azure Active Directory 中應用程式的單一登入](sso-options.md#choosing-a-single-sign-on-method)。

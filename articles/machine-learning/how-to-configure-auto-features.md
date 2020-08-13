@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 8e3657128ddcff7f9436398ac4bcc6e220b86168
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 94595bac2febdef1d3739703f0fa49c9ef15f218
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552470"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166615"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動化機器學習服務中的特徵化
 
@@ -47,7 +47,7 @@ ms.locfileid: "87552470"
 
 |特徵化設定 | 描述|
 ------------- | ------------- |
-|`"featurization": 'auto'`| 指定在前置處理過程中，[資料護欄和特徵化步驟](#featurization)會自動完成。 這是預設設定。|
+|`"featurization": 'auto'`| 指定在前置處理過程中，[資料護欄和特徵化步驟](#featurization)會自動完成。 這項設定是預設值。|
 |`"featurization": 'off'`| 指定不會自動執行特徵化步驟。|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| 指定要使用的自訂特徵化步驟。 [了解如何自訂特徵化](#customize-featurization)。|
 
@@ -106,7 +106,7 @@ ms.locfileid: "87552470"
 **遺漏特徵值插補** |已通過 <br><br><br> 完成| 在訓練資料中沒有偵測到任何遺漏特徵值。 深入瞭解[缺少-值的插補。](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> 在定型資料中偵測到遺漏的功能值，且已插補。
 **高基數特徵處理** |已通過 <br><br><br> 完成| 已分析您的輸入，但未偵測到高基數的功能。 <br><br> 在您的輸入中偵測到高基數的功能，並已處理。
 **驗證分割處理** |完成| 驗證設定為 `'auto'` ，而且定型資料包含*少於20000個數據列*。 <br> 定型模型的每個反復專案都是使用交叉驗證來驗證。 深入瞭解[驗證資料](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)。 <br><br> 驗證設定設為 `'auto'` ，定型資料包含超過*20000 個數據列*。 <br> 輸入資料已分割成訓練資料集和驗證資料集，以用於模型驗證。
-**類別平衡偵測** |已通過 <br><br><br><br><br> 警示 <br><br><br><br> 完成| 已分析輸入，且訓練資料中所有類別都是平衡的。 如果資料集內的每個類別都有良好的標記法，則會將資料集視為平衡，如樣本的數目和比率所測量。 <br><br> 在輸入中偵測到不平衡的類別。 若要修正模型偏差，請修正平衡問題。 深入瞭解[不平衡資料](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)。 <br><br> 在您的輸入中偵測到不平衡類別，而清除的邏輯已決定要套用平衡。
+**類別平衡偵測** |已通過 <br><br>警示 <br><br>完成 | 已分析輸入，且訓練資料中所有類別都是平衡的。 如果資料集內的每個類別都有良好的標記法，則會將資料集視為平衡，如樣本的數目和比率所測量。 <br><br><br> 在輸入中偵測到不平衡的類別。 若要修正模型偏差，請修正平衡問題。 深入瞭解[不平衡資料](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)。<br><br><br> 在您的輸入中偵測到不平衡類別，而清除的邏輯已決定要套用平衡。
 **記憶體問題偵測** |已通過 <br><br><br><br> 完成 |<br> 所選取的值 (水準、延隔、滾動視窗) 已分析，而且未偵測到潛在的記憶體不足問題。 深入瞭解時間序列[預測](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)設定。 <br><br><br>選取的值 ([水準]、[延後]、[滾動視窗) 已分析，而且可能會導致您的實驗用盡記憶體。 Lag 或滾動視窗設定已關閉。
 **頻率偵測** |已通過 <br><br><br><br> 完成 |<br> 分析時間序列，而且所有資料點都會與偵測到的頻率對齊。 <br> <br> 已分析時間序列，並偵測到與偵測到的頻率不一致的資料點。 這些資料點已從資料集移除。 深入瞭解[時間序列預測的資料準備](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)。
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 77cc63945e5cfc612c074e75e38365ada26073ea
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032776"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166734"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 容器供應專案
 
@@ -252,9 +252,11 @@ ms.locfileid: "88032776"
 
 選取 [儲存草稿] 後再繼續。
 
-### <a name="plan-overview"></a>方案概觀
+## <a name="plan-overview"></a>方案概觀
 
 此索引標籤可讓您在相同供應項目中提供不同的方案選項。 方案 (先前稱為 Sku) 在可用的雲端（例如全域雲端、政府雲端，以及方案所參考的影像）方面可能有所不同。 若要在商業市集中列出您的供應項目，至少必須設定一個方案。
+
+您最多可以為每個供應專案建立100方案：最多可以是私人的45。 深入瞭解[Microsoft 商業 Marketplace 私人](../private-offers.md)方案中的私用計畫。
 
 建立方案之後，隨即顯示 [方案概觀] 索引標籤：
 
@@ -269,7 +271,7 @@ ms.locfileid: "88032776"
 - **刪除草稿** - 如果方案狀態為草稿。
 - **停止銷售方案** - 如果方案狀態為即時發佈。
 
-#### <a name="create-new-plan"></a>建立新的方案
+### <a name="create-new-plan"></a>建立新的方案
 
 選取 [建立新方案]。 [新增方案] 對話方塊隨即出現。
 
@@ -301,7 +303,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 若要顯示這些方案的認證，您可以提供最多 100 個描述這些認證的連結。 這些可以直接連結到您在方案上的清單或連結到您自己的網站。 只有 Azure Government 客戶可以看到這些連結。
 
-## <a name="plan-listing"></a>方案清單
+### <a name="plan-listing"></a>方案清單
 
 此索引標籤會顯示目前供應項目中每個不同方案的特定資訊。
 
@@ -331,7 +333,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="說明 Azure 入口網站的方案詳細資料。":::
 
-## <a name="plan-availability"></a>方案可用性
+### <a name="plan-availability"></a>方案可用性
 
 如果您想要隱藏已發佈的供應項目，讓客戶無法在市集中搜尋、瀏覽或購買，請選取 [可用性] 索引標籤上的 [隱藏方案] 核取方塊。
 
