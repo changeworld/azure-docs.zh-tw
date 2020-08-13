@@ -1,19 +1,17 @@
 ---
 title: 在 Windows 虛擬桌面 (傳統) 中建立租用戶 - Azure
 description: 說明如何設定 Azure Active Directory 中的 Windows 虛擬桌面 (傳統) 租用戶。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a1f2dbf1f7cfc8fbb6a29129c7e445ffef87b070
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286354"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005613"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>教學課程：在 Windows 虛擬桌面 (傳統) 中建立租用戶
 
@@ -82,12 +80,12 @@ ms.locfileid: "87286354"
    > ![在 Azure 入口網站中搜尋企業應用程式的螢幕擷取畫面](../media/azure-portal-enterprise-applications.png)
 
 2. 在 [企業應用程式] 中，搜尋 [Windows 虛擬桌面]。 您會看到您在上一節中同意的兩個應用程式。 在這兩個應用程式中，選取 [Windows 虛擬桌面]。
-   
+
    > [!div class="mx-imgBorder"]
    > ![在 企業應用程式 中搜尋「Windows 虛擬桌面」時的搜尋結果螢幕擷取畫面。 已醒目提示名為「Windows 虛擬桌面」的應用程式。](../media/tenant-enterprise-app.png)
 
 3. 選取 [使用者和群組]。 您可能會看到對應用程式授與同意權的系統管理員已列出，並且已獲派**預設存取**角色。 這還不足以建立 Windows 虛擬桌面租用戶。 請繼續遵循這些指示來對使用者新增 **TenantCreator** 角色。
-   
+
    > [!div class="mx-imgBorder"]
    > ![指派來管理「Windows 虛擬桌面」企業應用程式的使用者和群組螢幕擷取畫面。 螢幕擷取畫面顯示只有一個適用於「預設存取」的指派。](../media/tenant-default-access.png)
 
@@ -126,13 +124,13 @@ ms.locfileid: "87286354"
 
 若要尋找您的 Azure 訂用帳戶識別碼：
 1. 在相同的 [Azure 入口網站](https://portal.azure.com)工作階段中，搜尋並選取 [訂用帳戶]。
-   
+
    > [!div class="mx-imgBorder"]
    > ![在 Azure 入口網站中搜尋 "Azure Active Directory" 的結果螢幕擷取畫面。 服務 底下的搜尋結果已醒目提示。](../media/tenant-search-subscription.png)
 
 2. 選取您想要用來接收 Windows 虛擬桌面服務通知的 Azure 訂用帳戶。
 3. 尋找**訂用帳戶識別碼**，然後將滑鼠移到該值上，直到剪貼簿圖示出現。 選取 [剪貼簿] 圖示，然後將其貼在方便取得的位置，以便稍後用來作為 **AzureSubscriptionId** 值。
-   
+
    > [!div class="mx-imgBorder"]
    > ![Azure 訂用帳戶屬性的螢幕擷取畫面。 滑鼠停留在 [訂用帳戶識別碼] 的剪貼簿圖示上，以便複製及貼上。](../media/tenant-subscription-id.png)
 

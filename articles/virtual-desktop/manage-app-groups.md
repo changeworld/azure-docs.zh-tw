@@ -1,19 +1,17 @@
 ---
 title: 管理 Windows 虛擬桌面的應用程式群組 (入口網站) - Azure
 description: 如何使用 Azure 入口網站管理 Windows 虛擬桌面應用程式群組。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5b0269b80cb879923f9f00861494915b6abe103e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283396"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010084"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>教學課程：使用 Azure 入口網站管理應用程式群組
 
@@ -49,16 +47,16 @@ ms.locfileid: "87283396"
     > ![Azure 入口網站中 [基本資料] 索引標籤的螢幕擷取畫面。](media/basics-tab.png)
 
 6. 如果您想要將應用程式群組新增至主機集區，請在畫面左側的功能表中選取 [主機集區]  。
-   
+
     接下來，選取您想要對其新增應用程式群組的主機集區名稱。
-   
+
     然後，從畫面左側的功能表中選取 [應用程式群組]  ，然後選取 [+ 新增]  。
 
     最後，選取您想要在其中建立應用程式群組的訂用帳戶群組和資源群組。 您可以從下拉式功能表中選取現有的資源群組，或選取 [新建]  來建立新的資源群組。
 
       >[!NOTE]
       >當您將應用程式群組新增至主機集區時，表示您已選取與該應用程式群組相關的主機集區，因為您已從其中進行瀏覽。
-      > 
+      >
       > [!div class="mx-imgBorder"]
       >![[基本資料] 索引標籤的螢幕擷取畫面，其中已預先選取主機集區。](media/host-pool-selected.png)
 
@@ -80,7 +78,7 @@ ms.locfileid: "87283396"
 
 12.  選取 [應用程式]  索引標籤，然後選取 [+ 新增應用程式]  。
 
-13.  若要從 [開始] 功能表新增應用程式： 
+13.  若要從 [開始] 功能表新增應用程式：
 
       - 移至 [應用程式來源]  ，然後從下拉式功能表中選取 [開始功能表]  。 接下來，移至 [應用程式]  ，然後從下拉式功能表中選擇應用程式。
 
@@ -111,7 +109,7 @@ ms.locfileid: "87283396"
 16.  如果您想要將應用程式群組註冊到工作區，請移至 [註冊應用程式群組]  ，然後選取 [是]  。 如果您想要在稍後註冊應用程式群組，請選取 [否]  。
 
 17.  如果您選取 [是]  ，則可以選取現有的工作區來註冊應用程式群組。
-       
+
        >[!NOTE]
        >您只能對建立在主機集區所在位置的工作區註冊應用程式群組。 此外， 如果您先前已從新應用程式群組所在的主機集區中，將其他應用程式群組註冊到工作區，則會選取相同工作區，而且您無法進行編輯。 主機集區中的所有應用程式群組都必須註冊到相同的工作區。
 

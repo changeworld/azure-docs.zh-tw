@@ -1,19 +1,17 @@
 ---
 title: Windows 虛擬桌面主機集區服務更新 - Azure
 description: 將更新推展到生產環境之前，如何建立驗證主機集區來監視服務更新。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 177763e7939de082faa0c83d2ab661292f0758b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8eac40ad958a10b8c853304ee2be8b2dc27af1a2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292647"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008707"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教學課程：建立主機集區以驗證服務更新
 
@@ -62,7 +60,7 @@ Cmdlet 的結果應該類似以下輸出：
     HostPoolName        : hostpoolname
     FriendlyName        :
     Description         :
-    Persistent          : False 
+    Persistent          : False
     CustomRdpProperty   : use multimon:i:0;
     MaxSessionLimit     : 10
     LoadBalancerType    : BreadthFirst
@@ -77,7 +75,7 @@ Cmdlet 的結果應該類似以下輸出：
 
 ## <a name="next-steps"></a>後續步驟
 
-現在您已建立驗證主機集區，接下來可以了解如何使用 Azure 服務健康狀態來監視您的 Windows 虛擬桌面部署。 
+現在您已建立驗證主機集區，接下來可以了解如何使用 Azure 服務健康狀態來監視您的 Windows 虛擬桌面部署。
 
 > [!div class="nextstepaction"]
 > [設定服務警示](./set-up-service-alerts.md)

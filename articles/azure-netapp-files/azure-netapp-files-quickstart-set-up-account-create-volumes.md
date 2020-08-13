@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c2ef52669a0bc5cd29bdcebf920beb1f409e65d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533099"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987506"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入門：設定 Azure NetApp Files 並建立 NFS 磁碟區 
 
@@ -132,7 +132,7 @@ ms.locfileid: "87533099"
 
     > [!NOTE]
     > 如需支援的區域清單，請參閱[各區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)。
-    > 若要取得命令列工具所支援的區域名稱，請使用 `az account list-locations -query "[].{Region:name}" --out table`
+    > 若要取得命令列工具所支援的區域名稱，請使用 `az account list-locations --query "[].{Region:name}" --out table`
     >
 
 2. 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立新資源群組：

@@ -1,19 +1,17 @@
 ---
 title: Windows 虛擬桌面主機集區 Azure 入口網站 - Azure
 description: 如何使用 Azure 入口網站建立 Windows 虛擬桌面主機集區。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e27bbdcec9b0c9e2bcabf4228a19d87e263d60f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291443"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002663"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教學課程：透過 Azure 入口網站建立主機集區
 
@@ -61,7 +59,7 @@ ms.locfileid: "87291443"
 6. 輸入主機集區的唯一名稱
 
 7. 在 [位置] 欄位中，從下拉式功能表中選取您想要建立主機集區的區域。
-   
+
    與您所選區域相關聯的 Azure 地理位置是將儲存此主機集區中繼資料及其相關物件的位置。 所選區域務必要在儲存服務中繼資料的地理位置內。
 
      > [!div class="mx-imgBorder"]
@@ -140,7 +138,7 @@ ms.locfileid: "87291443"
 
     > [!div class="mx-imgBorder"]
     > ![安全性群組頁面的螢幕擷取畫面，其中顯示下拉式功能表中的可用連接埠清單。](media/available-ports.png)
-    
+
     如果您選擇 [進階]，請選取您已設定的現有網路安全性群組。
 
 10. 然後，請選取您是否要將虛擬機器加入特定網域和組織單位。 如果您選擇 [是]，請指定要加入的網域。 您也可以新增特定組織單位來將虛擬機器加入其中。
@@ -153,7 +151,7 @@ ms.locfileid: "87291443"
 
 ## <a name="workspace-information"></a>工作區資訊
 
-根據預設，主機集區設定程序會建立桌面應用程式群組。 為了讓主機集區能夠如預期般執行，您必須將此應用程式群組發佈至使用者或使用者群組，而且您必須向工作區註冊應用程式群組。 
+根據預設，主機集區設定程序會建立桌面應用程式群組。 為了讓主機集區能夠如預期般執行，您必須將此應用程式群組發佈至使用者或使用者群組，而且您必須向工作區註冊應用程式群組。
 
 若要將桌面應用程式群組註冊至工作區：
 
@@ -167,10 +165,10 @@ ms.locfileid: "87291443"
 
     您可以在這裡新增標籤，以使用中繼資料將物件分組，讓您更輕鬆地進行管理。
 
-4. 當您完成時，選取 [檢閱 + 建立]。 
+4. 當您完成時，選取 [檢閱 + 建立]。
 
      >[!NOTE]
-     >「檢閱+建立」驗證程序不會檢查您的密碼是否符合安全性標準，或是您的架構是否正確，因此您必須自行檢查這任何一項是否有問題。 
+     >「檢閱+建立」驗證程序不會檢查您的密碼是否符合安全性標準，或是您的架構是否正確，因此您必須自行檢查這任何一項是否有問題。
 
 5. 請檢閱部署的相關資訊，以確定一切看起來都沒有問題。 當您完成時，選取 [建立]。 這會啟動部署程序來建立下列物件：
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b141f3722a722a57e5ec7c5662ded4b9a8c790
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1de6af0f30453d40348e9e836b2a5989652f49f1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170423"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925034"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SuccessFactors 整合
 
@@ -116,7 +116,7 @@ ms.locfileid: "86170423"
     - `https://<companyname>.sapsf.cn/<companyname>`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [SuccessFactors 用戶端支援小組](https://www.successfactors.com/content/ssf-site/en/support.html) \(英文\) 以取得這些值。
+    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [SuccessFactors 用戶端支援小組](https://www.sap.com/support.html) \(英文\) 以取得這些值。
 
 4. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -227,7 +227,7 @@ ms.locfileid: "86170423"
 
 若要讓 Azure AD 使用者能夠登入 SuccessFactors，必須將他們佈建到 SuccessFactors。 SuccessFactors 需以手動方式佈建。
 
-若要在 SuccessFactors 建立使用者，您需要連絡 [SuccessFactors 支援小組](https://www.successfactors.com/content/ssf-site/en/support.html)。
+若要在 SuccessFactors 建立使用者，您需要連絡 [SuccessFactors 支援小組](https://www.sap.com/support.html)。
 
 ## <a name="test-sso"></a>測試 SSO 
 

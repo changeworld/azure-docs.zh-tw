@@ -1,19 +1,17 @@
 ---
 title: 管理 Windows 虛擬桌面的應用程式群組 (傳統) - Azure
 description: 說明如何設定 Azure Active Directory 中的 Windows 虛擬桌面 (傳統) 租用戶。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fcf946c4bde89f3c14e78744305bc274ea67962f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ad8afc3d842a134ba09281005e35cf8cb04818a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284977"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009064"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-classic"></a>教學課程：管理 Windows 虛擬桌面的應用程式群組 (傳統)
 
@@ -53,7 +51,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
-   
+
 4. 執行下列 Cmdlet 以根據 `AppAlias` 安裝應用程式。 當您執行執行步驟 3 的輸出時，`AppAlias` 隨即顯示。
 
    ```powershell

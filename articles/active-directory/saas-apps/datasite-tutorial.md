@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 08/05/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da42ef51646f7775234ed870e59c442d54933c1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: df9b417b6387a44004b6c363f4e8b12a6f692a94
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170548"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032266"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datasite"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Datasite 整合
 
@@ -87,17 +87,7 @@ ms.locfileid: "87170548"
     在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://auth.<ENVIRONMENT>.com/sp/ACS.saml2`
 
     > [!NOTE]
-    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Datasite 客戶支援小組](mailto:applicationsupport@datasite.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
-
-1. Datasite 應用程式需要特定格式的 SAML 判斷提示，因此您必須將自訂屬性對應新增至 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
-
-    ![image](common/default-attributes.png)
-
-1. 除了上述屬性外，Datasite 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
-    
-    | 名稱 | 來源屬性 |
-    | -------------| --------- |
-    | organizationId | < organizationId > |
+    > 這不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Datasite 客戶支援小組](mailto:service@datasite.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
@@ -139,11 +129,11 @@ ms.locfileid: "87170548"
 
 ## <a name="configure-datasite-sso"></a>設定 Datasite SSO
 
-若要設定 **Datasite** 端的單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)] 和複製的適當 URL 傳送給 [Datasite 支援小組](mailto:applicationsupport@datasite.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要設定 **Datasite** 端的單一登入，您必須將從 Azure 入口網站下載的 [憑證 (Base64)] 和複製的適當 URL 傳送給 [Datasite 支援小組](mailto:service@datasite.com)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-datasite-test-user"></a>建立 Datasite 測試使用者
 
-在此節中，您會在 Datasite 中建立名為 B.Simon 的測試使用者。 請與  [Datasite 客戶支援小組](mailto:applicationsupport@datasite.com)合作，在 Datasite 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在此節中，您會在 Datasite 中建立名為 B.Simon 的測試使用者。 請與  [Datasite 客戶支援小組](mailto:service@datasite.com)合作，在 Datasite 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ## <a name="test-sso"></a>測試 SSO 
 
