@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: 8414a84190659ff31596bc202d29fe45eefdc588
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 483ca63abbabaabd3b25446c9267a1b0540f60dd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536647"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852968"
 ---
 # <a name="client-application-registration"></a>用戶端應用程式註冊
 在上一個教學課程中，您已部署並設定您的 Azure API for FHIR。 既然您已設定 Azure API for FHIR，我們將註冊公用用戶端應用程式。 如需更多詳細資料或進行疑難排解，您可以閱讀完整的[註冊公用用戶端應用程式](register-public-azure-ad-client-app.md)操作指南，但我們已針對此教學課程擷取了下列主要步驟。

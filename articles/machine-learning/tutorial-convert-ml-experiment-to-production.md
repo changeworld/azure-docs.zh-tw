@@ -8,13 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
-ms.custom: tracking-python
-ms.openlocfilehash: eabd4ceced77e90646169d80d08338c81af96e2f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-python
+ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025636"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852611"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>教學課程：將 ML 實驗轉換為生產環境的 Python 程式碼
 
