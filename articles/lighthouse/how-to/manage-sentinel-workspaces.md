@@ -3,24 +3,27 @@ title: 大規模管理 Azure Sentinel 的工作區
 description: 瞭解如何有效率地管理委派客戶資源上的 Azure Sentinel。
 ms.date: 06/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105263"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163232"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大規模管理 Azure Sentinel 的工作區
 
-身為服務提供者，您可能已將多個客戶租使用者上架至[Azure 燈塔](../overview.md)。 Azure 燈塔可讓服務提供者一次對數個 Azure Active Directory （Azure AD）租使用者執行大規模作業，讓管理工作更有效率。
+身為服務提供者，您可能已將多個客戶租使用者上架至[Azure 燈塔](../overview.md)。 Azure 燈塔可讓服務提供者同時在數個 Azure Active Directory (Azure AD) 租使用者中執行大規模作業，讓管理工作更有效率。
 
 Azure Sentinel 提供安全性分析和威脅情報，提供警示偵測、威脅可見度、主動式搜尋和威脅回應的單一解決方案。 透過 Azure 燈塔，您可以大規模管理跨租使用者的多個 Azure Sentinel 工作區。 這可讓您在多個工作區執行查詢，或建立活頁簿以視覺化和監視連接資料來源中的資料，以取得深入資訊。 例如查詢和腳本的 IP 會保留在您的管理租使用者中，但可用於在客戶租使用者中執行安全性管理。
 
 本主題概要說明如何以可調整的方式，使用[Azure Sentinel](../../sentinel/overview.md)跨租使用者可見度和受控安全性服務。
 
+> [!TIP]
+> 雖然我們在本主題中參考服務提供者和客戶，但本指南也適用于[使用 Azure 燈塔管理多個](../concepts/enterprise.md)租使用者的企業。
+
 ## <a name="architectural-considerations"></a>架構考慮
 
-對於想要使用 Azure Sentinel 建立安全性即服務供應專案的受控安全性服務提供者（MSSP），可能需要單一安全性作業中心（SOC），以集中監視、管理及設定在個別客戶租使用者中部署的多個 Azure Sentinel 工作區。 同樣地，具有多個 Azure AD 租使用者的企業，可能會想要集中管理跨租使用者部署的多個 Azure Sentinel 工作區。
+對於受管理的安全性服務提供者 (MSSP) 想要使用 Azure Sentinel 建立安全性即服務供應專案，您可能需要單一安全性作業中心 (SOC) ，以集中監視、管理及設定在個別客戶租使用者中部署的多個 Azure Sentinel 工作區。 同樣地，具有多個 Azure AD 租使用者的企業，可能會想要集中管理跨租使用者部署的多個 Azure Sentinel 工作區。
 
 這個集中式部署模型具有下列優點：
 
@@ -29,11 +32,11 @@ Azure Sentinel 提供安全性分析和威脅情報，提供警示偵測、威�
 - 確保資料隔離，因為多個客戶的資料不會儲存在相同的工作區中。 
 - 防止從受管理的租使用者外泄資料，以協助確保資料合規性。
 - 相關成本會收取給每個受管理的租使用者，而不是管理租使用者。
-- 所有資料來源的資料和與 Azure Sentinel 整合的資料連線器（例如 Azure AD 活動記錄、Office 365 記錄或 Microsoft 威脅防護警示）都會保留在每個客戶租使用者內。
+- 所有資料來源的資料和與 Azure Sentinel (整合的資料連線器（例如 Azure AD 活動記錄、Office 365 記錄或 Microsoft 威脅防護) 警示）都會保留在每個客戶租使用者內。
 - 減少網路延遲。
 - 輕鬆新增或移除新的子公司或客戶。
 
-## <a name="granular-role-based-access-control-rbac"></a>細微的角色型存取控制（RBAC）
+## <a name="granular-role-based-access-control-rbac"></a> (RBAC) 以角色為基礎的細微存取控制
 
 MSSP 將管理的每個客戶訂用帳戶都必須[上架至 Azure 燈塔](onboard-customer.md)。 這可讓管理租使用者中的指定使用者存取和執行部署在客戶租使用者中 Azure Sentinel 工作區上的管理作業。
 
@@ -52,7 +55,7 @@ MSSP 將管理的每個客戶訂用帳戶都必須[上架至 Azure 燈塔](onboa
 如果您要管理多個客戶的 Azure Sentinel 資源，您可以同時在多個租使用者的多個工作區中，同時查看和管理事件。 如需詳細資訊，請參閱[一次處理多個工作區中的事件](../../sentinel/multiple-workspace-view.md)，並在[工作區和租使用者之間擴充 Azure Sentinel](../../sentinel/extend-sentinel-across-workspaces-tenants.md)。
 
 > [!NOTE]
-> 請確定已在管理的租使用者中，對受管理的所有工作區指派讀取和寫入權限。 如果使用者只擁有部分工作區的讀取權限，則在選取這些工作區中的事件時，可能會顯示警告訊息，而且使用者將無法修改這些事件，或任何您已選取的事件（即使您對其他人有許可權）。
+> 請確定已在管理的租使用者中，對受管理的所有工作區指派讀取和寫入權限。 如果使用者只擁有部分工作區的讀取權限，當您在這些工作區中選取事件時，可能會顯示警告訊息，而且使用者將無法修改這些事件，或是您使用這些 (選取的任何其他專案，即使您對其他人) 有許可權也一樣。
 
 ## <a name="configure-playbooks-for-mitigation"></a>設定風險降低的腳本
 
@@ -68,7 +71,7 @@ MSSP 將管理的每個客戶訂用帳戶都必須[上架至 Azure 燈塔](onboa
 
 ## <a name="run-queries-across-azure-sentinel-workspaces"></a>跨 Azure Sentinel 工作區執行查詢
 
-您可以在管理租使用者中集中建立並儲存用於威脅偵測的 Log Analytics 查詢。 然後您可以使用 Union 運算子和 workspace （）運算式，在所有客戶的 Azure Sentinel 工作區中執行這些查詢。 如需詳細資訊，請參閱[跨工作區查詢](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)。
+您可以在管理租使用者中集中建立並儲存用於威脅偵測的 Log Analytics 查詢。 接著，您可以使用 Union 運算子和工作區 ( # A1 運算式，在所有客戶的 Azure Sentinel 工作區中執行這些查詢。 如需詳細資訊，請參閱[跨工作區查詢](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)。
 
 ## <a name="use-automation-for-cross-workspace-management"></a>使用自動化進行跨工作區管理
 

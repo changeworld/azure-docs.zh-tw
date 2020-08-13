@@ -2,273 +2,246 @@
 title: 從 IoT 中樞內嵌遙測
 titleSuffix: Azure Digital Twins
 description: 請參閱如何從 IoT 中樞內嵌裝置遙測訊息。
-author: cschormann
-ms.author: cschorm
-ms.date: 3/17/2020
+author: alexkarcher-msft
+ms.author: alkarche
+ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7c73f007f85a963a09de4e05222082fd52f784c0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 5209ffb0328e90fb2ca9b91773cbf18dd4ed2916
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131560"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163595"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>將 IoT 中樞遙測內嵌到 Azure 數位 Twins
 
 Azure 數位 Twins 是由 IoT 裝置和其他來源的資料所驅動。 要在 Azure 數位 Twins 中使用之裝置資料的常見來源是[IoT 中樞](../iot-hub/about-iot-hub.md)。
 
-在預覽期間，將資料內嵌到 Azure 數位 Twins 的程式是設定外部計算資源（例如[Azure](../azure-functions/functions-overview.md)函式），以接收資料並使用[選取 api](how-to-use-apis-sdks.md)來設定屬性，或據以在[數位 Twins](concepts-twins-graph.md)上引發遙測事件。 
+將資料內嵌到 Azure 數位 Twins 的程式是設定外部計算資源（例如[Azure](../azure-functions/functions-overview.md)函式），以接收資料並使用[選取 api](how-to-use-apis-sdks.md)來設定屬性，或在[數位 Twins](concepts-twins-graph.md)上引發遙測事件。 
 
 本操作說明文件將逐步解說如何撰寫可從 IoT 中樞內嵌遙測的 Azure 函式。
 
-## <a name="example-telemetry-scenario"></a>範例遙測案例
+## <a name="prerequisites"></a>Prerequisites
+
+繼續執行此範例之前，您必須先完成下列必要條件。
+* **IoT 中樞**。 如需相關指示，請參閱[本 IoT 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的*建立 IoT 中樞*一節。
+* 具有正確許可權的**Azure 函式**，可呼叫您的數位對應項實例。 如需相關指示，請參閱[*如何：設定用來處理資料的 Azure 函數*](how-to-create-azure-function.md)。 
+* **數位 Twins 實例**，將會接收您的裝置遙測。 請參閱[*如何：設定 Azure 數位 Twins 實例和驗證*](./how-to-set-up-instance-portal.md) 
+
+### <a name="example-telemetry-scenario"></a>範例遙測案例
 
 本操作說明概述如何使用 Azure function，將訊息從 IoT 中樞傳送至 Azure 數位 Twins。 有許多可能的設定和相符的策略可供您使用，但本文的範例包含下列部分：
 * IoT 中樞中的溫度計裝置，具有已知的裝置識別碼。
 * 代表裝置的數位對應項，具有相符的識別碼
-* 代表房間的數位對應項
 
 > [!NOTE]
-> 這個範例會在裝置識別碼與對應的數位對應項識別碼之間使用簡單的識別碼比對，但是可以提供更複雜的對應，從裝置到其對應項（例如與對應資料表）。
+> 這個範例會在裝置識別碼與相對應的數位對應項識別碼之間使用簡單的識別碼比對，但是可以提供更複雜的對應，從裝置到其對應項 (例如對應資料表) 。
 
-當溫度計裝置傳送溫度遙測事件時，*房間*對應項的*溫度*屬性應會更新。 若要進行這項操作，您將會從裝置上的遙測事件對應到數位對應項上的屬性 setter。 您將使用對應項[圖形](concepts-twins-graph.md)中的拓撲資訊來尋找*房間*對應項，然後您可以設定對應項的屬性。 在其他情況下，使用者可能會想要在相符的對應項上設定屬性（在此範例中，識別碼為*123*的對應項）。 Azure 數位 Twins 可讓您有很大的彈性可決定如何將遙測資料對應至 Twins。 
+當溫度計裝置傳送溫度遙測事件時，數位對應項的*溫度*屬性應會更新。 下圖概述此案例：
 
-下圖概述此案例：
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="顯示流程圖的圖表。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。" border="false":::
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="IoT 中樞裝置會透過 IoT 中樞、事件方格或系統主題，將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中 twins 的溫度屬性。" border="false":::
+## <a name="add-a-model-and-twin"></a>加入模型和對應項
 
-## <a name="prerequisites"></a>必要條件
+您需要有對應項，才能使用 IoT 中樞資訊進行更新。
 
-繼續執行此範例之前，您必須先完成下列必要條件。
-1. 建立 IoT 中樞。 如需相關指示，請參閱[本 IoT 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的*建立 IoT 中樞*一節。
-2. 建立至少一個 Azure 函式，以處理來自 IoT 中樞的事件。 請參閱[*如何：設定用來處理資料的 azure*](how-to-create-azure-function.md)函式，以建立可連線至 Azure 數位 Twins 並呼叫 Azure 數位 Twins API 功能的基本 Azure 函式。 本操作說明的其餘部分將會根據此功能來建立。
-3. 設定中樞資料的事件目的地。 在 [ [Azure 入口網站](https://portal.azure.com/)中，流覽至您的 IoT 中樞實例。 在 [*事件*] 底下，為您的 Azure function 建立訂用帳戶。 
+模型看起來像這樣：
+```JSON
+{
+  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+  "@type": "Interface",
+  "@context": "dtmi:dtdl:context;2",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "Temperature",
+      "schema": "double"
+    }
+  ]
+}
+```
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="Azure 入口網站：新增事件訂用帳戶":::
+若要將**此模型上傳到您的 twins 實例**，請開啟 Azure CLI 並執行下列命令：
+```azurecli-interactive
+az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
+```
 
-4. 在 [*建立事件訂*用帳戶] 頁面中，填寫欄位，如下所示：
-   * 在 [*事件訂閱詳細資料*] 底下，將訂用帳戶命名為您想要的
-   * 在 [*事件種類*] 底下，選擇 [*裝置遙測*] 做為要篩選的事件種類
-      - 如有需要，請將篩選新增至其他事件種類。
-   * 在 [*端點詳細資料*] 底下，選取您的 Azure 函式作為端點
+接著，您必須**使用此模型建立一個對應項**。 使用下列命令來建立對應項，並將0.0 設定為初始溫度值。
+```azurecli-interactive
+az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
+```
 
-## <a name="create-an-azure-function-in-visual-studio"></a>在 Visual Studio 中建立 Azure 函式
+成功的對應項 create 命令的輸出應該如下所示：
+```json
+{
+  "$dtId": "thermostat67",
+  "$etag": "W/\"0000000-9735-4f41-98d5-90d68e673e15\"",
+  "$metadata": {
+    "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+    "Temperature": {
+      "ackCode": 200,
+      "ackDescription": "Auto-Sync",
+      "ackVersion": 1,
+      "desiredValue": 0.0,
+      "desiredVersion": 1
+    }
+  },
+  "Temperature": 0.0
+}
+```
+
+## <a name="create-an-azure-function"></a>建立 Azure 函式
 
 本節使用相同的 Visual Studio 啟動步驟和 Azure 函式基本架構，從[*如何：設定 azure 函數來處理資料*](how-to-create-azure-function.md)。 此基本架構會處理驗證並建立服務用戶端，以供您處理資料和呼叫 Azure 數位 Twins Api 以進行回應。 
 
-基本架構函式的核心如下：
-
-```csharp
-namespace FunctionSample
-{
-    public static class FooFunction
-    {
-        const string adtAppId = "https://digitaltwins.azure.net";
-        private static string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
-        private static HttpClient httpClient = new HttpClient();
-
-        [FunctionName("Foo")]
-        public static async Task Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
-        {
-            DigitalTwinsClient client = null;
-            try
-            {
-                ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-                DigitalTwinsClientOptions opts = 
-                    new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-                client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, opts);
-                                                
-                log.LogInformation($"ADT service client connection created.");
-            }
-            catch (Exception e)
-            {
-                log.LogError($"ADT service client connection failed. " + e.ToString());
-                return;
-            }
-            log.LogInformation(eventGridEvent.Data.ToString());
-        }
-    }
-}
-```
-
 在接下來的步驟中，您將會在其中新增特定程式碼，以便處理來自 IoT 中樞的 IoT 遙測事件。  
 
-## <a name="add-telemetry-processing"></a>新增遙測處理
-
+### <a name="add-telemetry-processing"></a>新增遙測處理
+    
 遙測事件的形式來自裝置的訊息。 新增遙測處理常式代碼的第一個步驟，是從事件方格事件中，將此裝置訊息的相關部分解壓縮。 
 
-不同的裝置可能會以不同的方式來結構其訊息，因此此步驟的程式碼取決於已連線的裝置。 
+不同的裝置可能會以不同的方式來結構其訊息，因此此步驟的程式碼**取決於已連線的裝置。** 
 
-下列程式碼顯示將遙測當做 JSON 傳送的簡單裝置範例。 此範例會解壓縮傳送訊息之裝置的裝置識別碼，以及溫度值。
+下列程式碼顯示將遙測當做 JSON 傳送的簡單裝置範例。 此範例已在教學課程[*：連接端對端解決方案*](./tutorial-end-to-end.md)中完整探索。 下列程式碼會尋找傳送訊息之裝置的裝置識別碼，以及溫度值。
 
 ```csharp
-JObject job = eventGridEvent.Data as JObject;
-string devid = (string)job["systemProperties"].ToObject<JObject>().Property("IoT-hub-connection-device-ID").Value;
-double temp = (double)job["body"].ToObject<JObject>().Property("temperature").Value;
+JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
+string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
+var temperature = deviceMessage["body"]["Temperature"];
 ```
 
-回想一下，此練習的目的是要更新對應項圖形內的*房間*溫度。 這表示訊息的目標不是與此裝置相關聯的數位對應項，而是其父系的*房間*對應項。 您可以使用上述程式碼，從遙測訊息中解壓縮的裝置識別碼值來尋找父系對應項。
-
-若要這麼做，請使用 Azure 數位 Twins Api 來存取裝置的連入關聯性，代表對應項（在此案例中，其識別碼與裝置相同）。 從傳入的關聯性中，您可以使用下列程式碼片段來尋找父系的識別碼。
-
-下列程式碼片段顯示如何抓取對應項的傳入關聯性：
+下一個程式碼範例會採用識別碼和溫度值，並使用它們來「修補」 (進行更新以) 該對應項。
 
 ```csharp
-AsyncPageable<IncomingRelationship> res = client.GetIncomingRelationshipsAsync(twin_id);
-await foreach (IncomingRelationship irel in res)
-{
-    Log.Ok($"Relationship: {irel.RelationshipName} from {irel.SourceId} | {irel.RelationshipId}");
-}
-```
-
-對應項的父系位於關聯性的*SourceId*屬性中。
-
-代表裝置只具有單一內送關聯性的對應項模型相當常見。 在此情況下，您可能會挑選傳回的第一個（且唯一的）關聯性。 如果您的模型允許此對應項有多個關聯性類型，您可能需要進一步指定，以從多個連入關聯性中選擇。 執行這項操作的常見方式是依挑選關聯性 `RelationshipName` 。 
-
-當您擁有代表*房間*的父系對應項識別碼之後，就可以「修補」（進行更新）該對應項。 若要這麼做，請使用下列程式碼：
-
-```csharp
-UpdateOperationsUtility uou = new UpdateOperationsUtility();
-uou.AppendAddOp("/Temperature", temp);
-try
-{
-    await client.UpdateDigitalTwinAsync(twin_id, uou.Serialize());
-    Log.Ok($"Twin '{twin_id}' updated successfully!");
-}
+//Update twin using device temperature
+var uou = new UpdateOperationsUtility();
+uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
+await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 ...
 ```
 
-### <a name="full-azure-function-code"></a>完整的 Azure function 程式碼
+### <a name="update-your-azure-function-code"></a>更新您的 Azure function 程式碼
 
-使用先前範例中的程式碼，以下是內容中的整個 Azure 函數：
+既然您已瞭解先前範例中的程式碼，請開啟 Visual Studio，並將您的 Azure 函式程式碼取代為此範例程式碼。
 
 ```csharp
-[FunctionName("ProcessHubToDTEvents")]
-public async void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
+using System;
+using System.Net.Http;
+using Azure.Core.Pipeline;
+using Azure.DigitalTwins.Core;
+using Azure.DigitalTwins.Core.Serialization;
+using Azure.Identity;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace IotHubtoTwins
 {
-    // After this is deployed, in order for this function to be authorized on Azure Digital Twins APIs,
-    // you'll need to turn the Managed Identity Status to "On", 
-    // grab the Object ID of the function, and assign the "Azure Digital Twins Owner (Preview)" role to this function identity.
+    public class IoTHubtoTwins
+    {
+        private static readonly string adtInstanceUrl = Environment.GetEnvironmentVariable("ADT_SERVICE_URL");
+        private static readonly HttpClient httpClient = new HttpClient();
 
-    DigitalTwinsClient client = null;
-    //log.LogInformation(eventGridEvent.Data.ToString());
-    // Authenticate on Azure Digital Twins APIs
-    try
-    {
-        
-        ManagedIdentityCredential cred = new ManagedIdentityCredential(adtAppId);
-        client = new DigitalTwinsClient(new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions { Transport = new HttpClientTransport(httpClient) });
-        log.LogInformation($"ADT service client connection created.");
-    }
-    catch (Exception e)
-    {
-        log.LogError($"ADT service client connection failed. " + e.ToString());
-        return;
-    }
-
-    if (client != null)
-    {
-        try
+        [FunctionName("IoTHubtoTwins")]
+        public async void Run([EventGridTrigger] EventGridEvent eventGridEvent, ILogger log)
         {
-            if (eventGridEvent != null && eventGridEvent.Data != null)
+            if (adtInstanceUrl == null) log.LogError("Application setting \"ADT_SERVICE_URL\" not set");
+
+            try
             {
-                #region Open this region for message format information
-                // Telemetry message format
-                //{
-                //  "properties": { },
-                //  "systemProperties": 
-                // {
-                //    "iothub-connection-device-id": "thermostat1",
-                //    "iothub-connection-auth-method": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-                //    "iothub-connection-auth-generation-id": "637199981642612179",
-                //    "iothub-enqueuedtime": "2020-03-18T18:35:08.269Z",
-                //    "iothub-message-source": "Telemetry"
-                //  },
-                //  "body": "eyJUZW1wZXJhdHVyZSI6NzAuOTI3MjM0MDg3MTA1NDg5fQ=="
-                //}
-                #endregion
-
-                // Reading deviceId from message headers
-                log.LogInformation(eventGridEvent.Data.ToString());
-                JObject job = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
-                string deviceId = (string)job["systemProperties"]["iothub-connection-device-id"];
-                log.LogInformation($"Found device: {deviceId}");
-
-                // Extracting temperature from device telemetry
-                byte[] body = System.Convert.FromBase64String(job["body"].ToString());
-                var value = System.Text.ASCIIEncoding.ASCII.GetString(body);
-                var bodyProperty = (JObject)JsonConvert.DeserializeObject(value);
-                var temperature = bodyProperty["Temperature"];
-                log.LogInformation($"Device Temperature is:{temperature}");
-
-                // Update device Temperature property
-                await AdtUtilities.UpdateTwinProperty(client, deviceId, "/Temperature", temperature, log);
-
-                // Find parent using incoming relationships
-                string parentId = await AdtUtilities.FindParent(client, deviceId, "contains", log);
-                if (parentId != null)
+                //Authenticate with Digital Twins
+                ManagedIdentityCredential cred = new ManagedIdentityCredential("https://digitaltwins.azure.net");
+                DigitalTwinsClient client = new DigitalTwinsClient(
+                    new Uri(adtInstanceUrl), cred, new DigitalTwinsClientOptions 
+                    { Transport = new HttpClientTransport(httpClient) });
+                log.LogInformation($"ADT service client connection created.");
+            
+                if (eventGridEvent != null && eventGridEvent.Data != null)
                 {
-                    await AdtUtilities.UpdateTwinProperty(client, parentId, "/Temperature", temperature, log);
-                }
+                    log.LogInformation(eventGridEvent.Data.ToString());
 
+                    // Reading deviceId and temperature for IoT Hub JSON
+                    JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
+                    string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
+                    var temperature = deviceMessage["body"]["Temperature"];
+                    
+                    log.LogInformation($"Device:{deviceId} Temperature is:{temperature}");
+
+                    //Update twin using device temperature
+                    var uou = new UpdateOperationsUtility();
+                    uou.AppendReplaceOp("/Temperature", temperature.Value<double>());
+                    await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
+                }
+            }
+            catch (Exception e)
+            {
+                log.LogError($"Error in ingest function: {e.Message}");
             }
         }
-        catch (Exception e)
-        {
-            log.LogError($"Error in ingest function: {e.Message}");
-        }
     }
 }
 ```
 
-用來尋找連入關聯性的公用程式函式：
-```csharp
-public static async Task<string> FindParent(DigitalTwinsClient client, string child, string relname, ILogger log)
+## <a name="connect-your-function-to-iot-hub"></a>將您的函式連線至 IoT 中樞
+
+1. 設定中樞資料的事件目的地。 在 [ [Azure 入口網站](https://portal.azure.com/)中，流覽至您的 IoT 中樞實例。 在 [**事件**] 底下，為您的 Azure function 建立訂用帳戶。 
+
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="顯示新增事件訂閱之 Azure 入口網站的螢幕擷取畫面。":::
+
+2. 在 [**建立事件訂**用帳戶] 頁面中，填寫欄位，如下所示：
+    1. 在 [**名稱**] 底下，將訂用帳戶命名為您想要的名稱。
+    2. 在 [**事件架構**] 底下，選擇 [**事件方格架構**]。
+    3. 在 [**系統主題名稱**] 下，選擇唯一的名稱。
+    4. 在 [**事件種類**] 底下，選擇 [**裝置遙測**] 做為要篩選的事件種類。
+    5. 在 [**端點詳細資料**] 底下，選取您的 Azure 函式作為端點。
+
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/event-subscription-2.png" alt-text="顯示事件訂用帳戶詳細資料之 Azure 入口網站的螢幕擷取畫面":::
+
+## <a name="send-simulated-iot-data"></a>傳送模擬的 IoT 資料
+
+若要測試新的輸入函式，請使用[*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)中的裝置模擬器。 該教學課程是由以 c # 撰寫的範例專案所驅動。 範例程式碼位於： [Azure 數位 Twins 範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 您將使用該存放庫中的**devicesimulator.exe**專案。
+
+在端對端教學課程中，完成下列步驟：
+1. [*向 IoT 中樞註冊模擬裝置*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
+2. [*設定並執行模擬*](./tutorial-end-to-end.md#configure-and-run-the-simulation)
+
+## <a name="validate-your-results"></a>驗證您的結果
+
+執行上述裝置模擬器時，數位對應項的溫度值將會變更。 在 Azure CLI 中，執行下列命令以查看溫度值。
+
+```azurecli-interactive
+az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name}
+```
+
+您的輸出應該包含如下的溫度值：
+
+```json
 {
-    // Find parent using incoming relationships
-    try
+  "result": [
     {
-        AsyncPageable<IncomingRelationship> rels = client.GetIncomingRelationshipsAsync(child);
-
-        await foreach (IncomingRelationship ie in rels)
-        {
-            if (ie.RelationshipName == relname)
-                return (ie.SourceId);
+      "$dtId": "thermostat67",
+      "$etag": "W/\"0000000-1e83-4f7f-b448-524371f64691\"",
+      "$metadata": {
+        "$model": "dtmi:contosocom:DigitalTwins:Thermostat;1",
+        "Temperature": {
+          "ackCode": 200,
+          "ackDescription": "Auto-Sync",
+          "ackVersion": 1,
+          "desiredValue": 69.75806974934324,
+          "desiredVersion": 1
         }
+      },
+      "Temperature": 69.75806974934324
     }
-    catch (RequestFailedException exc)
-    {
-        log.LogInformation($"*** Error in retrieving parent:{exc.Status}:{exc.Message}");
-    }
-    return null;
+  ]
 }
 ```
 
-以及用來修補對應項的公用程式函式：
-```csharp
-public static async Task UpdateTwinProperty(DigitalTwinsClient client, string twinId, string propertyPath, object value, ILogger log)
-{
-    // If the twin does not exist, this will log an error
-    try
-    {
-        // Update twin property
-        UpdateOperationsUtility uou = new UpdateOperationsUtility();
-        uou.AppendAddOp(propertyPath, value);
-        await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
-    }
-    catch (RequestFailedException exc)
-    {
-        log.LogInformation($"*** Error:{exc.Status}/{exc.Message}");
-    }
-}
-```
-
-現在您已有一個 Azure 函式，可供讀取和解讀來自 IoT 中樞的案例資料。
-
-## <a name="debug-azure-function-apps-locally"></a>在本機上對 Azure 函數應用程式進行 Debug
-
-您可以在本機使用事件方格觸發程式來進行 Azure 函數的偵測。 如需這方面的詳細資訊，請參閱在[*本機偵錯工具事件方格觸發*](../azure-functions/functions-debug-event-grid-trigger-local.md)程式。
+若要查看值變更，請重複執行上面的查詢命令。
 
 ## <a name="next-steps"></a>後續步驟
 

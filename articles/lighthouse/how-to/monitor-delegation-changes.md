@@ -3,12 +3,12 @@ title: 監視管理租使用者中的委派變更
 description: 瞭解如何監視客戶租使用者的委派活動與您的管理租使用者。
 ms.date: 08/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 9842ad91c059fe4da70221d8c7c5570084bcc6b9
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 63b8ec60ecf2f2e5655e3253db7aef01c003fc63
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119006"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163334"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>監視管理租使用者中的委派變更
 
@@ -173,6 +173,9 @@ else {
 1. 確定已在畫面頂端附近的篩選中選取 [**目錄活動**]。
 
 將會顯示委派變更的清單。 您可以選取 **[編輯資料行**]，以顯示或隱藏**狀態**、**事件類別目錄**、**時間**、**時間戳記**、**訂**用帳戶、**事件起始者**、**資源群組**、**資源類型**和**資源**值。
+
+> [!TIP]
+> 雖然我們在本主題中參考服務提供者和客戶，但[管理多個](../concepts/enterprise.md)租使用者的企業可以使用相同的程式。
 
 ## <a name="next-steps"></a>後續步驟
 

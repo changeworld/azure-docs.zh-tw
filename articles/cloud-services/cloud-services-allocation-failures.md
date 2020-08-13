@@ -1,6 +1,6 @@
 ---
 title: 針對雲端服務配置失敗進行疑難排解 | Microsoft Docs
-description: 疑難排解在 Azure 中部署雲端服務時發生的配置失敗
+description: 當您部署 Azure 雲端服務時，針對配置失敗進行疑難排解。 瞭解配置的運作方式，以及配置可能失敗的原因。
 services: azure-service-management, cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: ab6cc71478e80bc3ff9d81a3a91ce90fbb09adb3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921601"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142480"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>疑難排解在 Azure 中部署雲端服務時發生的配置失敗
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 當您部署執行個體至雲端服務或加入新的 Web 或背景工作角色執行個體時，Microsoft Azure 會配置計算資源。 執行這些作業時，即使尚未達到 Azure 訂用帳戶限制，也可能偶爾發生錯誤。 本文說明一些常見配置失敗的原因，並建議可能的補救方法。 規劃服務的部署時，本資訊可能也很有用。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]

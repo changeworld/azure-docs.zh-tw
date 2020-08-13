@@ -1,18 +1,21 @@
 ---
 title: 部署可補救的原則
 description: 若要透過 Azure 燈塔部署使用補救工作的原則，您必須在客戶租使用者中建立受控識別。
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: fc13b6209826d4a59d82bca5db63d4ca5c39f9fb
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105331"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163249"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>部署可在委派的訂用帳戶內補救的原則
 
-[Azure 燈塔](../overview.md)可讓服務提供者建立和編輯委派訂用帳戶內的原則定義。 不過，若要部署使用[補救](../../governance/policy/how-to/remediate-resources.md)工作的原則（也就是具有[deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists)或[modify](../../governance/policy/concepts/effects.md#modify)效果的原則），您必須在客戶租使用者中建立[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 Azure 原則可以使用此受控識別在原則內部署範本。 當您讓客戶上線進行 Azure 委派資源管理，以及當您部署原則本身時，必須執行下列步驟才能啟用此案例。
+[Azure 燈塔](../overview.md)可讓服務提供者建立和編輯委派訂用帳戶內的原則定義。 不過，若要部署使用[補救](../../governance/policy/how-to/remediate-resources.md)工作的原則 (也就是具有[deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists)或[modify](../../governance/policy/concepts/effects.md#modify)效果) 的原則，您必須在客戶租使用者中建立[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 Azure 原則可以使用此受控識別在原則內部署範本。 當您讓客戶上線進行 Azure 委派資源管理，以及當您部署原則本身時，必須執行下列步驟才能啟用此案例。
+
+> [!TIP]
+> 雖然我們在本主題中參考服務提供者和客戶，但[管理多個](../concepts/enterprise.md)租使用者的企業可以使用相同的程式。
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>建立可將角色指派給客戶租用戶中受控識別的使用者
 
@@ -42,7 +45,7 @@ ms.locfileid: "86105331"
 
 例如，假設您想要啟用客戶租使用者中 Azure Key Vault 資源的診斷功能，如此[範例](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)所示。 管理租用戶中具有適當權限的使用者 (如上所述) 會部署 [Azure Resource Manager 範本](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json)以啟用此案例。
 
-請注意，目前必須透過 API (而不是在 Azure 入口網站中) 建立要與委派訂用帳戶搭配使用的原則指派。 當您這麼做時，**apiVersion ** 必須設定為 **2019-04-01-preview**，其中包含新的 **delegatedManagedIdentityResourceId** 屬性。 此屬性可讓您包含位於客戶租使用者中的受控識別（在已上架至 Azure 燈塔的訂用帳戶或資源群組中）。
+請注意，目前必須透過 API (而不是在 Azure 入口網站中) 建立要與委派訂用帳戶搭配使用的原則指派。 當您這麼做時，**apiVersion ** 必須設定為 **2019-04-01-preview**，其中包含新的 **delegatedManagedIdentityResourceId** 屬性。 此屬性可讓您在已上架至 Azure 燈塔) 的訂用帳戶或資源群組中，包含位於客戶租使用者 (的受控識別。
 
 下列範例顯示具有 **delegatedManagedIdentityResourceId** 的角色指派。
 

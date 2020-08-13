@@ -2,18 +2,18 @@
 title: Microsoft Azure 資料箱自我管理寄送 | 資料中的 Microsoft Docs
 description: 說明 Azure 資料箱裝置的自我管理寄送工作流程
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/20/2020
-ms.author: v-grpr
-ms.openlocfilehash: 99c7021744467484656c52cf72378c6f553c3913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.author: alkohli
+ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608582"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142531"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>在 Azure 入口網站中使用 Azure 資料箱的自我管理寄送
 
@@ -28,6 +28,8 @@ ms.locfileid: "84608582"
 * 日本
 * 新加坡
 * 南韓
+* 印度
+* 南非
 
 ## <a name="use-self-managed-shipping"></a>使用自我管理寄送
 
@@ -47,9 +49,9 @@ ms.locfileid: "84608582"
 
    ![訂購要領取的資料箱裝置](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-01.png)
 
-5. 依照 [排程到 Azure 取貨] 中的指示進行。
+5. 依照 [安排 Azure 的取貨] 中的指示進行。
 
-   您必須先傳送電子郵件至 [adbops@microsoft.com](mailto:adbops@microsoft.com) 以安排到您所在的區域資料中心取貨的時間，才能得到授權碼。
+   您必須先傳送電子郵件至 [adbops@microsoft.com](mailto:adbops@microsoft.com)，以安排到您所在區域的資料中心取貨時間，才能得到授權碼。
 
    ![排程取貨](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
 
@@ -57,13 +59,13 @@ ms.locfileid: "84608582"
 
    ![檢視您的授權碼](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   請記下此**授權碼**。 根據安全性需求，在排程挑選時，必須為要取得挑選的人員，出示名稱，才會出現。
+   請記下此 [授權碼]。 根據安全性需求，在排程挑選時，必須為要取得挑選的人員，出示名稱，才會出現。
 
    您也必須提供將前往資料中心取貨人員的詳細資料。 您或連絡人必須攜帶政府核准使用附相片的身分證，以供資料中心驗證。
 
-   此外，取貨人員也必須有**授權碼**。 在資料中心取貨時，會驗證授權碼。
+   此外，取貨人員也必須有 [授權碼]。 在資料中心取貨時，會驗證授權碼。
 
-7. 從資料中心領取裝置後，您的訂單就會自動變成  [已取貨] 狀態。
+7. 從資料中心領取裝置後，您的訂單就會自動變成 [已取貨] 狀態。
 
     ![已取貨](media\data-box-portal-customer-managed-shipping\data-box-portal-picked-up-boxed-01.png)
 
@@ -82,7 +84,7 @@ ms.locfileid: "84608582"
 
     ![完成接收](media\data-box-portal-customer-managed-shipping\data-box-portal-received-complete-01.png)
 
-11. 在收到裝置後，資料複製將會繼續進行。 當複製完成時，訂單便完成。
+11. 在收到裝置後，將會繼續進行資料複製。 當複製完成時，訂單即完成。
 
 ## <a name="next-steps"></a>後續步驟
 

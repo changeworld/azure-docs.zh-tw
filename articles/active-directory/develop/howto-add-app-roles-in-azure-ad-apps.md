@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0ba348bc9c97ba8be415cac2e5fd7d102d850568
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5a2acb08971bc0878c943047c42c9dc2a9525794
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117068"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141426"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在您的應用程式中新增應用程式角色，並且在權杖中接收這些角色
 
@@ -30,7 +30,7 @@ ms.locfileid: "88117068"
 
 ## <a name="declare-roles-for-an-application"></a>宣告應用程式的角色
 
-這些應用程式角色會定義於 [Azure 入口網站](https://portal.azure.com)中應用程式的註冊資訊清單中。  當使用者登入應用程式時，Azure AD 會針對已個別授與給使用者和自其群組成員資格授與的每個角色發出 `roles` 宣告。  透過入口網站的 UI，或以程式設計方式使用 [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview)，即可將使用者和群組指派給角色。
+這些應用程式角色會定義於 [Azure 入口網站](https://portal.azure.com)中應用程式的註冊資訊清單中。  當使用者登入應用程式時，Azure AD 會針對已個別授與給使用者和自其群組成員資格授與的每個角色發出 `roles` 宣告。  透過入口網站的 UI，或以程式設計方式使用 [Microsoft Graph](/graph/azuread-identity-access-management-concept-overview)，即可將使用者和群組指派給角色。
 
 ### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 入口網站宣告應用程式角色
 

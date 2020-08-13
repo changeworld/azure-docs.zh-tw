@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169424"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163181"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中開始使用自訂原則
 
@@ -213,6 +213,6 @@ Azure AD B2C 會要求註冊兩個用來以本機帳戶註冊和登入使用者�
 
 ## <a name="next-steps"></a>後續步驟
 
-接下來，嘗試新增 Azure Active Directory (Azure AD) 作為識別提供者。 此入門指南中所使用的基底檔案已經包含新增其他識別提供者 (例如 Azure AD) 時所需部分內容。
+接下來，嘗試新增 Azure Active Directory (Azure AD) 作為識別提供者。 此入門指南中所使用的基底檔案已經包含新增其他識別提供者 (例如 Azure AD) 時所需部分內容。 如需設定 Azure AD 做為身分識別提供者的詳細資訊，請參閱[使用 Active Directory B2C 自訂原則，設定使用 Azure Active Directory 帳戶的註冊和登入](identity-provider-azure-ad-single-tenant-custom.md)。 
 
-如需設定 Azure AD 作為識別提供者的資訊，請參閱[使用 Active Directory B2C 自訂原則透過 Azure Active Directory 帳戶設定註冊和登入](identity-provider-azure-ad-single-tenant-custom.md)。
+請造訪我們的[合作夥伴資源庫](partner-gallery.md)，以深入瞭解如何使用自訂原則來執行 ISV 整合。 

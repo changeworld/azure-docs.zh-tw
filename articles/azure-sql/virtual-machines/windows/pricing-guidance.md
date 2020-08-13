@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fc14d79edda1fb8e0083dffa68d23f46630ba2f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342590"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141953"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure Vm 上 SQL Server 的定價指導方針
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "84342590"
 本文提供[Azure 虛擬機器上 SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md)的定價指導方針。 影響成本的選項有數個，而挑選平衡成本和業務需求的正確映像相當重要。
 
 > [!TIP]
-> 如果您只需要找出特定 SQL Server 版和虛擬機器（VM）大小組合的成本預估，請參閱[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows)或[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的定價頁面。 從 [OS/軟體] 清單選取您的平台和 SQL Server 版本。
+> 如果您只需要找出 SQL Server edition 和虛擬機器 (VM) 大小的特定組合成本預估，請參閱[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows)或[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的定價頁面。 從 [OS/軟體] 清單選取您的平台和 SQL Server 版本。
 >
 > ![VM 定價頁面上的 UI](./media/pricing-guidance/virtual-machines-pricing-ui.png)
 >
@@ -65,9 +65,9 @@ ms.locfileid: "84342590"
 
 ## <a name="pay-per-usage"></a>依使用量付費
 
-**依使用量支付 SQL Server 授權費用** (亦稱為**隨用隨付**) 意謂著執行 Azure VM 的每秒鐘費用都包含 SQL Server 授權的費用。 您可以在適用于[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows)或[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的 Azure 虛擬機器定價頁面中，查看不同 SQL Server 版本（Web、Standard、Enterprise）的定價。
+**依使用量支付 SQL Server 授權費用** (亦稱為**隨用隨付**) 意謂著執行 Azure VM 的每秒鐘費用都包含 SQL Server 授權的費用。 您可以在適用于[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows)或[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)的 Azure 虛擬機器定價頁面中，查看不同 SQL Server 版本 (Web、Standard、Enterprise) 的定價。
 
-所有 SQL Server 版本 (2012 SP3 到 2017) 的費用都相同。 每秒鐘的授權費用取決於 VM vCPU 數目。
+所有版本的 SQL Server (2012 SP3 到 2019) 的成本都相同。 每秒鐘的授權費用取決於 VM vCPU 數目。
 
 針對下列情況，建議採用依使用量支付 SQL Server 授權費用：
 
@@ -140,7 +140,7 @@ SQL Server 的授權成本與 vCPU 數目直接相關。 選擇符合預期的 C
 
 有一些新的機器大小適用於特定類型的 SQL Server 工作負載。 這些機器的大小可維持高等級的記憶體、儲存以及 I/O 頻寬，但是它們具有較低的虛擬化核心計數。 例如，請考慮下列範例：
 
-| VM 大小 | vCPU | 記憶體 | 最大磁碟 | 最大 I/O 輸送量 | SQL Server 授權成本 | 總成本（計算 + 授權） |
+| VM 大小 | vCPU | 記憶體 | 磁碟上限 | 最大 I/O 輸送量 | SQL Server 授權成本 | 總成本 (計算 + 授權)  |
 |---|---|---|---|---|---|---|
 | **Standard_DS14v2** | 16 | 112 GB | 32 | 51,200 IOPS 或 768 MB/秒 | | |
 | **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51,200 IOPS 或 768 MB/秒 | 降低 75% | 降低 57% |

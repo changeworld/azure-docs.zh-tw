@@ -1,20 +1,23 @@
 ---
 title: 大規模監視委派的資源
 description: 瞭解如何在您所管理的客戶租使用者中，以可調整的方式有效率地使用 Azure 監視器記錄。
-ms.date: 07/15/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 5cace0396c5a1f430ce10ba29ee051b5e432c125
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: fdd0147737da47613d6b7ef1bf6005e4c03de0dd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448940"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163283"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大規模監視委派的資源
 
 身為服務提供者，您可能已將多個客戶租使用者上架至[Azure 燈塔](../overview.md)。 Azure Lighthouse 可讓服務提供者一次在多個租用戶之間執行大規模作業，讓管理工作更有效率。
 
 本主題說明如何在您所管理的客戶租使用者中，以可調整的方式使用[Azure 監視器記錄](../../azure-monitor/platform/data-platform-logs.md)。
+
+> [!TIP]
+> 雖然我們在本主題中參考服務提供者和客戶，但本指南也適用于[使用 Azure 燈塔管理多個](../concepts/enterprise.md)租使用者的企業。
 
 ## <a name="create-log-analytics-workspaces"></a>建立 Log Analytics 工作區
 

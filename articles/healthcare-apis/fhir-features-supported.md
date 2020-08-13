@@ -8,22 +8,22 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 1cb3af32f1ad16218c82f91c3f28d4f4ab47e677
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843499"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142514"
 ---
 # <a name="features"></a>特性
 
-Azure API for FHIR 提供適用于 Azure 的 Microsoft FHIR Server 完全受控部署。 伺服器是[FHIR](https://hl7.org/fhir)標準的執行。 本檔列出 FHIR 伺服器的主要功能。
+Azure API for FHIR 提供適用于 Azure 的 Microsoft FHIR Server 完全受控部署。 伺服器是 [FHIR](https://hl7.org/fhir) 標準的執行。 本檔列出 FHIR 伺服器的主要功能。
 
 ## <a name="fhir-version"></a>FHIR 版本
 
-支援的最新版本：`4.0.1`
+支援的最新版本： `4.0.1`
 
-目前也支援舊版，包括：`3.0.2`
+目前也支援舊版，包括： `3.0.2`
 
 ## <a name="rest-api"></a>REST API
 
@@ -79,7 +79,7 @@ Azure API for FHIR 提供適用于 Azure 的 Microsoft FHIR Server 完全受控�
 |`:[type]` (參考)   | 否        | 否        | 否        |         |
 |`:below` (uri)          | 是       | 是       | 是       |         |
 |`:not`                 | 否        | 否        | 否        |         |
-|`:above` (uri)          | 否        | 否        | 否        | 問題[#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:above` (uri)          | 否        | 否        | 否        | 問題 [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | 一般搜尋參數 | 支援-PaaS | 支援-OSS (SQL)  | 支援-OSS (Cosmos DB)  | 註解 |
 |-------------------------| ----------| ----------| ----------|---------|
@@ -103,7 +103,7 @@ Azure API for FHIR 提供適用于 Azure 的 Microsoft FHIR Server 完全受控�
 | `_count`                | 是       | 是       | 是       |         |
 | `_summary`              | 部分   | 部分   | 部分   | 支援 `_summary=count` |
 | `_include`              | 否        | 是       | 否        |         |
-| `_revinclude`           | 否        | 否        | 否        |         |
+| `_revinclude`           | 否        | 是       | 否        | 包含的專案限制為100。 |
 | `_contained`            | 否        | 否        | 否        |         |
 | `_elements`             | 否        | 否        | 否        |         |
 
@@ -111,15 +111,15 @@ Azure API for FHIR 提供適用于 Azure 的 Microsoft FHIR Server 完全受控�
 
 Microsoft FHIR Server 具有可插入的持續性模組 (請參閱 [`Microsoft.Health.Fhir.Core.Features.Persistence`](https://github.com/Microsoft/fhir-server/tree/master/src/Microsoft.Health.Fhir.Core/Features/Persistence)) 。
 
-目前，FHIR 伺服器的開放原始碼程式碼包含[Azure Cosmos DB](../cosmos-db/index-overview.md)和[SQL Database](https://azure.microsoft.com/services/sql-database/)的執行。
+目前，FHIR 伺服器的開放原始碼程式碼包含 [Azure Cosmos DB](../cosmos-db/index-overview.md) 和 [SQL Database](https://azure.microsoft.com/services/sql-database/)的執行。
 
-Cosmos DB 是全域散發的多模型 (SQL API、MongoDB API 等 ) 資料庫。 它支援不同的[一致性層級](../cosmos-db/consistency-levels.md)。 預設部署範本會設定具有一致性的 FHIR 伺服器 `Strong` ，但您可以修改一致性原則， (通常會使用 `x-ms-consistency-level` 要求標頭以要求為基礎，在要求上進行寬鬆的) 。
+Cosmos DB 是全域散發的多模型 (SQL API、MongoDB API 等 ) 資料庫。 它支援不同的 [一致性層級](../cosmos-db/consistency-levels.md)。 預設部署範本會設定具有一致性的 FHIR 伺服器 `Strong` ，但您可以修改一致性原則， (通常會使用 `x-ms-consistency-level` 要求標頭以要求為基礎，在要求上進行寬鬆的) 。
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-FHIR 伺服器會使用[Azure Active Directory](https://azure.microsoft.com/services/active-directory/)進行存取控制。 具體而言，會強制執行以角色為基礎的)  (存取控制，如果 `FhirServer:Security:Enabled` 設定參數設為 `true` ，則 (除了 `/metadata` FHIR 伺服器) 以外的所有要求都必須 `Authorization` 將要求標頭設定為 `Bearer <TOKEN>` 。 權杖必須包含一或多個如宣告中所定義的角色 `roles` 。 如果權杖包含允許指定之資源上指定動作的角色，則會允許要求。
+FHIR 伺服器會使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 進行存取控制。 具體而言，會強制執行以角色為基礎的)  (存取控制，如果 `FhirServer:Security:Enabled` 設定參數設為 `true` ，則 (除了 `/metadata` FHIR 伺服器) 以外的所有要求都必須 `Authorization` 將要求標頭設定為 `Bearer <TOKEN>` 。 權杖必須包含一或多個如宣告中所定義的角色 `roles` 。 如果權杖包含允許指定之資源上指定動作的角色，則會允許要求。
 
-目前，針對指定角色所允許的動作會在 API 上*全域*套用。
+目前，針對指定角色所允許的動作會在 API 上 *全域* 套用。
 
 ## <a name="next-steps"></a>後續步驟
 

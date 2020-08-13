@@ -3,20 +3,20 @@ title: Azure Lighthouse 案例中的租用戶、角色和使用者
 description: 了解 Azure Active Directory 租用戶、使用者和角色的概念，以及如何在 Azure Lighthouse 案例中使用它們。
 ms.date: 07/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6bcfd1603469ba27971fffa8e7c46f0f696bb6a2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 855f6a39abc99f07e5847a01896ef864473358c4
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105382"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163300"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse 案例中的租用戶、角色和使用者
 
-將[Azure 燈塔](../overview.md)的客戶上線之前，請務必瞭解 Azure Active Directory （Azure AD）租使用者、使用者和角色如何運作，以及如何在 azure 燈塔案例中使用它們。
+將[Azure 燈塔](../overview.md)的客戶上線之前，請務必瞭解 Azure Active Directory (Azure AD) 租使用者、使用者和角色如何運作，以及如何在 azure 燈塔案例中使用它們。
 
 *租用戶*是專用且受信任的 Azure AD 執行個體。 每個租用戶通常都代表一個組織。 [Azure 委派的資源管理](azure-delegated-resource-management.md)可讓您將資源從一個租使用者邏輯投影至另一個租使用者。 如此可讓管理租用戶中的使用者 (例如，屬於服務提供者的使用者) 存取客戶租用戶中的委派資源，或讓[具有多個租用戶的企業集中管理營運](enterprise.md)。
 
-為完成這個邏輯投影，客戶租用戶中的訂用帳戶 (或訂用帳戶內的一或多個資源群組) 必須是*上線*，才能進行 Azure 委派的資源管理。 此上線程序可以[透過 Azure Resource Manager 範本](../how-to/onboard-customer.md)，或藉由[將公用或私用供應項目發佈至 Azure Marketplace](../how-to/publish-managed-services-offers.md) 來完成。
+若要達成這項邏輯投射，訂用帳戶 (或在客戶租使用者的訂用帳戶) 內的一個或多個資源群組，必須*上架*至 Azure 燈塔。 此上線程序可以[透過 Azure Resource Manager 範本](../how-to/onboard-customer.md)，或藉由[將公用或私用供應項目發佈至 Azure Marketplace](../how-to/publish-managed-services-offers.md) 來完成。
 
 無論您選擇哪一種上線方法，都必須定義*授權*。 每個授權都會在管理租用戶中指定一個可存取委派資源的使用者帳戶，以及一個可設定每個使用者對這些資源所擁有之權限的內建角色。
 
@@ -31,7 +31,7 @@ Azure 燈塔目前支援所有[內建角色](../../role-based-access-control/bui
 - 支援[使用者存取系統管理員](../../role-based-access-control/built-in-roles.md#user-access-administrator)內建角色，但僅限於[將角色指派給客戶租用戶中的受控識別](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)。 將不適用此角色通常授與的其他任何權限。 如果您定義具有此角色的使用者，您也必須指定此使用者可以指派給受控識別的內建角色。
 
 > [!NOTE]
-> 將新的適用內建角色新增至 Azure 之後，您就可以在[使用 Azure Resource Manager 範本將客戶上架](../how-to/onboard-customer.md)時指派。 在[發佈受管理的服務供應](../how-to/publish-managed-services-offers.md)專案的 Cloud Partner 入口網站中，可能會有一段延遲時間，新加入的角色才會變成可用。
+> 將新的適用內建角色新增至 Azure 之後，您就可以在[使用 Azure Resource Manager 範本將客戶上架](../how-to/onboard-customer.md)時指派。 [發佈受管理的服務供應](../how-to/publish-managed-services-offers.md)專案時，可能會延遲一段時間，新加入的角色才會變成可在合作夥伴中心使用。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>定義使用者和角色的最佳做法
 

@@ -1,6 +1,6 @@
 ---
 title: 透過 CloudSimple 私用雲端縮減 Azure VMware 解決方案
-description: 說明如何壓縮 CloudSimple 私用雲端。
+description: 瞭解如何藉由從現有的 vSphere 叢集中移除節點或移除整個叢集，在 CloudSimple 中動態縮減私用雲端。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 07/01/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2759b35c9ba521a63eaf54c4c696598d545120b4
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77014261"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141732"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>壓縮 CloudSimple 私用雲端
 
@@ -21,11 +21,11 @@ CloudSimple 提供動態縮減私用雲端的彈性。  私人雲端是由一或
 
 ## <a name="before-you-begin"></a>開始之前
 
-若要壓縮私人雲端，必須符合下列條件。  無法刪除建立私人雲端時所建立的管理叢集（第一個叢集）。
+若要壓縮私人雲端，必須符合下列條件。  管理叢集 (在建立私人雲端時所建立的第一個叢集) 無法刪除。
 
 * VSphere 叢集必須有三個節點。  只有三個節點的叢集無法壓縮。
 * 已耗用的總儲存體不應超過叢集壓縮後的總容量。
-* 檢查是否有任何分散式資源排程器（DRS）規則會阻止虛擬機器的 vMotion。  如果有規則存在，請停用或刪除規則。  DRS 規則包含虛擬機器以裝載相似性規則。
+* 檢查是否有任何分散式資源排程器 (DRS) 規則會阻止虛擬機器的 vMotion。  如果有規則存在，請停用或刪除規則。  DRS 規則包含虛擬機器以裝載相似性規則。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 

@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: fe321de279397d24e0926cf1ef26a1d66adac8c4
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 75d848c8d4459e5534e2954a11612bdf44f6d1ce
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117306"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141545"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 同意架構
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) 同意架構可讓您輕鬆地開發多租用�
 
 同意架構建置在 OAuth 2.0 和各種不同流程上，例如授權碼授與和用戶端認證授與，使用公用或機密的用戶端。 藉由使用 OAuth 2.0，Azure AD 就可以建置許多不同類型的用戶端應用程式 (例如在電話、平板電腦、伺服器或 web 應用程式上)，並且存取所需的資源。
 
-如需搭配 OAuth2.0 授權授與使用同意架構的詳細資訊，請參閱[使用 OAuth 2.0 和 Azure AD 授權存取 Web 應用程式](v2-oauth2-auth-code-flow.md)和 [Azure AD 的驗證案例](./authentication-vs-authorization.md)。 如需透過 Microsoft Graph 取得 Office 365 的授權存取權的相關資訊，請參閱[使用 Microsoft Graph 進行應用程式驗證](https://developer.microsoft.com/graph/docs/authorization/auth_overview)。
+如需搭配 OAuth2.0 授權授與使用同意架構的詳細資訊，請參閱[使用 OAuth 2.0 和 Azure AD 授權存取 Web 應用程式](v2-oauth2-auth-code-flow.md)和 [Azure AD 的驗證案例](./authentication-vs-authorization.md)。 如需透過 Microsoft Graph 取得 Office 365 的授權存取權的相關資訊，請參閱[使用 Microsoft Graph 進行應用程式驗證](/graph/)。
 
 ## <a name="consent-experience---an-example"></a>同意體驗 - 範例
 
@@ -48,14 +48,14 @@ Azure Active Directory (Azure AD) 同意架構可讓您輕鬆地開發多租用�
 
     ![顯示在同意對話方塊中顯示的許可權範例](./media/consent-framework/consent.png)
 
-1. 使用者同意後，授權碼會傳回您的應用程式，藉以兌換取得存取權杖和重新整理權杖。 如需此流程的詳細資訊，請參閱[OAuth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)。
+1. 使用者同意後，授權碼會傳回您的應用程式，藉以兌換取得存取權杖和重新整理權杖。 如需此流程的詳細資訊，請參閱 [OAuth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)。
 
-1. 身為系統管理員，您也可以代表租用戶中的所有使用者，同意應用程式的委派權限。 系統管理同意會防止租使用者中的每個使用者顯示同意對話方塊，而且可以在具有管理員角色的使用者[Azure 入口網站](https://portal.azure.com)中完成。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。
+1. 身為系統管理員，您也可以代表租用戶中的所有使用者，同意應用程式的委派權限。 系統管理同意會防止租使用者中的每個使用者顯示同意對話方塊，而且可以在具有管理員角色的使用者 [Azure 入口網站](https://portal.azure.com) 中完成。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。
 
     **同意應用程式的委派權限**
 
-   1. 前往應用程式的 [ **API 許可權**] 頁面
-   1. 按一下 [授與系統**管理員同意**] 按鈕。
+   1. 前往應用程式的 [ **API 許可權** ] 頁面
+   1. 按一下 [授與系統 **管理員同意** ] 按鈕。
 
       ![授與明確的系統管理員同意權限](./media/consent-framework/grant-consent.png)
 

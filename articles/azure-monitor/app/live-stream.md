@@ -4,16 +4,16 @@ description: 透過自訂計量即時監視您的 Web 應用程式，並透過�
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 4b84088c1213801e61a4c669bccb1a983c999310
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c12126c23ce1f1e2bd72f88eead5b8f34e4fd83d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321933"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142208"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>即時計量資料流︰以 1 秒的延遲進行監視與診斷
 
-使用[Application Insights](./app-insights-overview.md)中的即時計量資料流，監視即時、生產中的 web 應用程式。 選取並篩選要即時監看的計量和效能計數器，而不會對您的服務造成任何干擾。 檢查失敗要求和例外狀況範例中的堆疊追蹤。 與[Profiler](./profiler.md)和[快照偵錯工具](./snapshot-debugger.md)搭配使用，即時計量資料流為您的即時網站提供強大且不具侵入性的診斷工具。
+使用即時計量資料流 (也稱為[Application Insights](./app-insights-overview.md)的 QuickPulse) ，監視您的即時生產 web 應用程式。 選取並篩選要即時監看的計量和效能計數器，而不會對您的服務造成任何干擾。 檢查失敗要求和例外狀況範例中的堆疊追蹤。 與[Profiler](./profiler.md)和[快照偵錯工具](./snapshot-debugger.md)搭配使用，即時計量資料流為您的即時網站提供強大且不具侵入性的診斷工具。
 
 您可以使用即時計量資料流：
 
@@ -31,19 +31,81 @@ ms.locfileid: "87321933"
 
 ## <a name="get-started"></a>開始使用
 
-1. 在您的應用程式中[安裝 Application Insights](../azure-monitor-app-hub.yml) 。
-2. 除了標準 Application Insights 套件之外，還需要 [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/)，才能啟用「即時計量」串流。
-3. **更新至最新版本**的 Application Insights 套件。 在 Visual Studio 中，以滑鼠右鍵按一下您的專案，然後選擇 [**管理 NuGet 封裝**]。 開啟 [更新]**** 索引標籤，然後選取所有 Microsoft.ApplicationInsights.* 套件。
+1. 遵循語言特定指導方針來啟用即時計量。
+   * [ASP.NET](./asp-net.md) -預設會啟用 [即時計量]。
+   * [ASP.NET Core](./asp-net-core.md)-即時計量預設為啟用。
+   * [.Net/.Net Core 主控台/背景工作](./worker-service.md)-即時計量預設為啟用。
+   * [.Net 應用程式-使用程式碼啟用](#enable-livemetrics-using-code-for-any-net-application)。
+   * [Node.js](./nodejs.md#live-metrics)
 
-    重新部署您的應用程式。
+2. 在 [Azure 入口網站](https://portal.azure.com)中，開啟您應用程式的 Application Insights 資源，然後開啟 [即時資料流]。
 
-3. 在 [Azure 入口網站](https://portal.azure.com)中，開啟您應用程式的 Application Insights 資源，然後開啟 [即時資料流]。
+3. 如果您可能在篩選中使用客戶名稱等敏感性資料，請[保護控制通道](#secure-the-control-channel)。
 
-4. 如果您可能在篩選中使用客戶名稱等敏感性資料，請[保護控制通道](#secure-the-control-channel)。
+### <a name="enable-livemetrics-using-code-for-any-net-application"></a>針對任何 .NET 應用程式，使用程式碼啟用 LiveMetrics
 
-### <a name="no-data-check-your-server-firewall"></a>沒有資料？ 請檢查您的伺服器防火牆
+即使在使用 .NET 應用程式的建議指示進行上架時，預設會啟用 LiveMetrics，但以下顯示如何手動設定即時計量。
 
-檢查是否已開啟您伺服器防火牆中[即時計量資料流的連出連接埠](./ip-addresses.md#outgoing-ports)。
+1. 安裝 NuGet 套件[ApplicationInsights. microsoft.applicationinsights.perfcountercollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector)
+2. 下列範例主控台應用程式程式碼顯示如何設定即時計量。
+
+```csharp
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+using System;
+using System.Threading.Tasks;
+
+namespace LiveMetricsDemo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Create a TelemetryConfiguration instance.
+            TelemetryConfiguration config = TelemetryConfiguration.CreateDefault();
+            config.InstrumentationKey = "INSTRUMENTATION-KEY-HERE";
+            QuickPulseTelemetryProcessor quickPulseProcessor = null;
+            config.DefaultTelemetrySink.TelemetryProcessorChainBuilder
+                .Use((next) =>
+                {
+                    quickPulseProcessor = new QuickPulseTelemetryProcessor(next);
+                    return quickPulseProcessor;
+                })
+                .Build();
+
+            var quickPulseModule = new QuickPulseTelemetryModule();
+
+            // Secure the control channel.
+            // This is optional, but recommended.
+            quickPulseModule.AuthenticationApiKey = "YOUR-API-KEY-HERE";
+            quickPulseModule.Initialize(config);
+            quickPulseModule.RegisterTelemetryProcessor(quickPulseProcessor);
+
+            // Create a TelemetryClient instance. It is important
+            // to use the same TelemetryConfiguration here as the one
+            // used to setup Live Metrics.
+            TelemetryClient client = new TelemetryClient(config);
+
+            // This sample runs indefinitely. Replace with actual application logic.
+            while (true)
+            {
+                // Send dependency and request telemetry.
+                // These will be shown in Live Metrics stream.
+                // CPU/Memory Performance counter is also shown
+                // automatically without any additional steps.
+                client.TrackDependency("My dependency", "target", "http://sample",
+                    DateTimeOffset.Now, TimeSpan.FromMilliseconds(300), true);
+                client.TrackRequest("My Request", DateTimeOffset.Now,
+                    TimeSpan.FromMilliseconds(230), "200", true);
+                Task.Delay(1000).Wait();
+            }
+        }
+    }
+}
+```
+
+雖然上述範例適用于主控台應用程式，但相同的程式碼可以在任何 .NET 應用程式中使用。 如果已啟用任何其他 TelemetryModules 來自動收集遙測，請務必確保用來初始化這些模組的相同設定也適用于即時計量模組。
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>即時計量資料流與計量瀏覽器和分析有何不同？
 
@@ -53,7 +115,7 @@ ms.locfileid: "87321933"
 |**沒有保留**|資料在圖表上就會保存，之後便會捨棄該資料|[資料會保留 90 天](./data-retention-privacy.md#how-long-is-the-data-kept)|
 |**隨選**|只有在 [即時計量] 窗格開啟時，才會串流處理資料 |每當安裝並啟用 SDK 時都會傳送資料|
 |**免費**|即時資料流資料免費|依[價格](./pricing.md)付費
-|**取樣**|傳輸所有選取的計量和計數器。 取樣失敗和堆疊追蹤。 不會套用 TelemetryProcessors。|可能[取樣](./api-filtering-sampling.md)事件|
+|**取樣**|傳輸所有選取的計量和計數器。 取樣失敗和堆疊追蹤。 |可能[取樣](./api-filtering-sampling.md)事件|
 |**控制通道**|篩選控制項訊號會傳送至 SDK。 建議您保護這個通道。|通訊是以單向方式前往入口網站|
 
 ## <a name="select-and-filter-your-metrics"></a>選取並篩選您的計量
@@ -97,9 +159,10 @@ ms.locfileid: "87321933"
 ## <a name="secure-the-control-channel"></a>保護控制通道
 
 > [!NOTE]
-> 目前，您只能使用程式碼基底監視來設定已驗證的通道，而且無法使用無程式碼 attach 來驗證服務器。
+> 目前，您只能使用以程式碼為基礎的監視來設定已驗證的通道，而且無法使用無程式碼 attach 來驗證服務器。
 
-您指定的自訂篩選條件準則會傳回給 Application Insights SDK 中的即時計量元件。 篩選條件可能會包含機密資訊，例如 customerIDs。 除了檢測金鑰之外，您還可以利用祕密 API 金鑰來保護頻道安全。
+您在 [即時計量] 入口網站中指定的自訂篩選準則，會傳送回 Application Insights SDK 中的 [即時計量] 元件。 篩選條件可能會包含機密資訊，例如 customerIDs。 除了檢測金鑰之外，您還可以利用祕密 API 金鑰來保護頻道安全。
+
 ### <a name="create-an-api-key"></a>建立 API 金鑰
 
 ![API 金鑰 > [建立 API 金鑰 ](./media/live-stream/api-key.png)
@@ -107,73 +170,63 @@ ms.locfileid: "87321933"
 
 ### <a name="add-api-key-to-configuration"></a>將 API 金鑰新增至設定
 
-### <a name="classic-aspnet"></a>傳統 ASP.NET
+### <a name="aspnet"></a>ASP.NET
 
 在 applicationinsights.config 檔案中，將 AuthenticationApiKey 新增至 QuickPulseTelemetryModule：
-``` XML
 
+```XML
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
 </Add>
-
 ```
-或在程式碼中，在 QuickPulseTelemetryModule 上設定它：
+
+### <a name="aspnet-core"></a>ASP.NET Core
+
+針對[ASP.NET Core](./asp-net-core.md)應用程式，請遵循下列指示。
+
+修改 `ConfigureServices` Startup.cs 檔案，如下所示：
+
+新增下列命名空間。
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-using Microsoft.ApplicationInsights.Extensibility;
-
-             TelemetryConfiguration configuration = new TelemetryConfiguration();
-            configuration.InstrumentationKey = "YOUR-IKEY-HERE";
-
-            QuickPulseTelemetryProcessor processor = null;
-
-            configuration.TelemetryProcessorChainBuilder
-                .Use((next) =>
-                {
-                    processor = new QuickPulseTelemetryProcessor(next);
-                    return processor;
-                })
-                        .Build();
-
-            var QuickPulse = new QuickPulseTelemetryModule()
-            {
-
-                AuthenticationApiKey = "YOUR-API-KEY"
-            };
-            QuickPulse.Initialize(configuration);
-            QuickPulse.RegisterTelemetryProcessor(processor);
-            foreach (var telemetryProcessor in configuration.TelemetryProcessors)
-                {
-                if (telemetryProcessor is ITelemetryModule telemetryModule)
-                    {
-                    telemetryModule.Initialize(configuration);
-                    }
-                }
-
 ```
+
+然後修改 `ConfigureServices` 方法，如下所示。
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    // existing code which include services.AddApplicationInsightsTelemetry() to enable Application Insights.
+    services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
+}
+```
+
+如需有關設定 ASP.NET Core 應用程式的詳細資訊，請參閱我們在[ASP.NET Core 中設定遙測模組](./asp-net-core.md#configuring-or-removing-default-telemetrymodules)的指引。
+
+### <a name="workerservice"></a>WorkerService
+
+針對[WorkerService](./worker-service.md)應用程式，請遵循下列指示。
+
+新增下列命名空間。
+
+```csharp
+using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
+```
+
+接下來，在呼叫之前新增下面這一行 `services.AddApplicationInsightsTelemetryWorkerService` 。
+
+```csharp
+    services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
+```
+
+如需設定 WorkerService 應用程式的詳細資訊，請參閱我們在[WorkerServices 中設定遙測模組](./worker-service.md#configuring-or-removing-default-telemetrymodules)的指引。
 
 ### <a name="azure-function-apps"></a>Azure 函數應用程式
 
-針對 Azure 函式應用程式（v2），可以使用環境變數來使用 API 金鑰來保護通道。
+針對 Azure 函式應用程式 (v2) ，使用環境變數可以完成使用 API 金鑰來保護通道的安全。
 
-請從 Application Insights 資源內部建立 API 金鑰，然後前往您「函數應用程式」的 [應用程式設定]****。 選取 [新增設訂]****，然後輸入名稱 `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 及與您 API 金鑰對應的值。
-
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core （需要 Application Insights ASP.NET Core SDK 2.3.0 或更高版本）
-
-修改您的 startup.cs 檔案，如下所示：
-
-第一次新增
-
-```csharp
-using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse;
-```
-
-然後在 ConfigureServices 方法內新增：
-
-```csharp
-services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
-```
+從您的 Application Insights 資源內建立 API 金鑰，並移至函數應用程式 **> 設定**]。 選取 [**新增應用程式設定**]，並輸入與您的 API 金鑰組應的 [名稱] `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` 和 [值]。
 
 不過，如果您認得並信任所有連線的伺服器，則無需透驗證的頻道就可以嘗試自訂篩選器。 這個選項有六個月可供使用。 一旦每個新的工作階段或是新的伺服器上線後，就需要此覆寫。
 
@@ -187,30 +240,28 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => mod
 
 | Language                         | 基本計量       | 效能度量 | 自訂篩選    | 範例遙測    | 依進程分割的 CPU |
 |----------------------------------|:--------------------|:--------------------|:--------------------|:--------------------|:---------------------|
-| .NET                             | 支援（V 2.7.2 +） | 支援（V 2.7.2 +） | 支援（V 2.7.2 +） | 支援（V 2.7.2 +） | 支援（V 2.7.2 +）  |
-| .NET Core （target =. NET Framework）| 支援（V 2.4.1 +） | 支援（V 2.4.1 +） | 支援（V 2.4.1 +） | 支援（V 2.4.1 +） | 支援（V 2.4.1 +）  |
-| .NET Core （target =. NET Core）     | 支援（V 2.4.1 +） | 支援*          | 支援（V 2.4.1 +） | 支援（V 2.4.1 +） | **不受支援**    |
-| Azure Functions v2               | 支援           | 支援           | 支援           | 支援           | **不受支援**    |
-| Java                             | 支援（V 2.0.0 +） | 支援（V 2.0.0 +） | **不受支援**   | **不受支援**   | **不受支援**    |
-| Node.js                          | 支援（V 1.3.0 +） | 支援（V 1.3.0 +） | **不受支援**   | 支援（V 1.3.0 +） | **不受支援**    |
+| .NET Framework                   | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)  | 支援的 (V 2.7.2 +)   |
+| .NET Core (target =. NET Framework) | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)   |
+| .NET Core (目標 = NET Core)      | 支援的 (V 2.4.1 +)  | 支援*          | 支援的 (V 2.4.1 +)  | 支援的 (V 2.4.1 +)  | **不受支援**    |
+| Azure Functions v2               | 支援           | 支援           | 支援           | 支援           | **不支援**    |
+| Java                             | 支援的 (V 2.0.0 +)  | 支援的 (V 2.0.0 +)  | **不受支援**   | **不受支援**   | **不受支援**    |
+| Node.js                          | 支援的 (V 1.3.0 +)  | 支援的 (V 1.3.0 +)  | **不受支援**   | 支援的 (V 1.3.0 +)  | **不受支援**    |
 
-基本計量包括要求、相依性和例外狀況速率。 效能計量（效能計數器）包含記憶體和 CPU。 範例遙測會顯示失敗要求和相依性、例外狀況、事件和追蹤的詳細資訊串流。
+基本計量包括要求、相依性和例外狀況速率。 效能計量 (效能計數器) 包含記憶體和 CPU。 範例遙測會顯示失敗要求和相依性、例外狀況、事件和追蹤的詳細資訊串流。
 
  \*PerfCounters 支援與不是以 .NET Framework 為目標的 .NET Core 版本稍有不同：
 
-- 在 Windows Azure App Service 中執行時，支援 PerfCounters 度量。 （AspNetCore SDK Version 2.4.1 或更高版本）
-- 當應用程式在任何 Windows 機器（VM、雲端服務或內部內部部署等）中執行時，會支援 PerfCounters。（AspNetCore SDK Version 2.7.1 或更高版本），但適用于以 .NET Core 2.0 或更新版本為目標的應用程式。
-- 當應用程式在最新的搶鮮版（Linux、Windows、適用于 Linux 的 app service、容器等）中執行時，會支援 PerfCounters （亦即 AspNetCore SDK Version 2.8.0-Beta1 或更高版本），但適用于以 .NET Core 2.0 或更新版本為目標的應用程式。
-
-預設會停用 Node.js SDK 中的即時計量。 若要啟用即時計量，請在 `setSendLiveMetrics(true)` 初始化 SDK 時，將新增至您的設定[方法](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)。
+- 在 Windows Azure App Service 中執行時，支援 PerfCounters 度量。  (AspNetCore SDK Version 2.4.1 或更高版本) 
+- 當應用程式在任何 Windows 電腦 (VM、雲端服務或內部內部部署等中執行時，支援 PerfCounters。 )  (AspNetCore SDK 版本2.7.1 或更高的) ，但適用于以 .NET Core 2.0 或更新版本為目標的應用程式。
+- 當應用程式在任何地方執行 (Linux、Windows、適用于 Linux 的 app service、容器等 ) 在最新版本 (即 AspNetCore SDK 版本2.8.0 或更高的) ，但僅適用于以 .NET Core 2.0 或更高版本為目標的應用程式。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-沒有資料？ 如果您的應用程式位於受保護的網路中：即時計量資料流使用與其他 Application Insights 遙測不同的 IP 位址。 請確定[這些 IP 位址](./ip-addresses.md)在您的防火牆中為開啟狀態。
+即時計量資料流使用與其他 Application Insights 遙測不同的 IP 位址。 請確定[這些 IP 位址](./ip-addresses.md)在您的防火牆中為開啟狀態。 同時也請檢查您的伺服器防火牆中已開啟[即時計量資料流的傳出埠](./ip-addresses.md#outgoing-ports)。
 
 ## <a name="next-steps"></a>後續步驟
+
 * [使用 Application Insights 監視使用情況](./usage-overview.md)
 * [使用診斷搜尋](./diagnostic-search.md)
 * [分析工具](./profiler.md)
 * [快照集偵錯工具](./snapshot-debugger.md)
-

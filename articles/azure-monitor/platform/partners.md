@@ -4,12 +4,12 @@ description: 了解 Azure Monitor 的監視合作夥伴以及如何存取與合�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318329"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142397"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 監視器合作夥伴整合
 
@@ -124,7 +124,7 @@ LogicMonitor &reg; 是領先的 SaaS 型效能監控平臺，適用于複雜的 
 
 ![LogRhythm 標誌](./media/partners/logrhythm.png)
 
-LogRhythm 是 NextGen SIEM 的領導者，讓組織能夠透過快速偵測、回應和抵銷網路威脅，來顯著提升降低風險。 LogRhythm 的威脅生命週期管理（TLM）工作流程是安全性營運中心的基礎，可協助客戶保護其雲端、實體和虛擬基礎結構的 IT 和環境。 如果您是 LogRhythm 客戶，而且已準備好開始 Azure 旅程，您將需要安裝並設定 LogRhythm 開啟收集器和 EventHub 整合。 您可以在[這裡](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)找到更多詳細資料，包括設定 Azure 監視器和開啟收集器的檔。 
+LogRhythm 是 NextGen SIEM 的領導者，讓組織能夠透過快速偵測、回應和抵銷網路威脅，來顯著提升降低風險。 LogRhythm 的威脅生命週期管理 (TLM) 工作流程是安全性作業中心的基礎，可協助客戶保護其雲端、實體和虛擬基礎結構的 IT 和環境。 如果您是 LogRhythm 客戶，而且已準備好開始 Azure 旅程，您將需要安裝並設定 LogRhythm 開啟收集器和 EventHub 整合。 您可以在[這裡](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)找到更多詳細資料，包括設定 Azure 監視器和開啟收集器的檔。 
 
 
 
@@ -184,6 +184,16 @@ PagerDuty 是業界領先的事件管理解決方案，針對 Azure 度量警示
 
 [請移至文件。][pagerduty-doc]
 
+## <a name="promitor"></a>Promitor
+
+![Promitor 標誌](./media/partners/promitor.png)
+
+Promitor 是可在 Atlassian Statuspage、Prometheus 和 StatsD 等系統中提供計量的 Azure 監視器 scraper。
+
+將所有計量推送至 Azure 監視器，並在需要時取用它們。
+
+[深入了解。][promitor-doc]
+
 ## <a name="qradar"></a>QRadar
 
 ![QRadar 標誌](./media/partners/qradar.png)
@@ -202,7 +212,7 @@ ScienceLogic 提供新一代 IT 服務保證平台，可在任何位置管理任
 
 ![Serverless360 標誌](./media/partners/serverless360.png)
 
-Serverless360 是操作、管理及監視 Azure 無伺服器元件的一個平臺工具。 管理性是無伺服器執行的重要挑戰之一。 數百個小型的離散無伺服器服務散佈在不同的地方-管理和操作這類解決方案很複雜。 Serverless360 透過一組豐富的複雜工具解決了這些挑戰。 它可以監視無伺服器服務，例如 Azure Functions、Logic Apps、事件格線、服務匯流排佇列、主題、轉送、事件中樞、儲存體佇列、檔案、blob 和資料表。 Azure Marketplace 提供 Serverless360。 這些功能都可在 SaaS 和私用裝載上使用（託管于您自己的環境）。  
+Serverless360 是操作、管理及監視 Azure 無伺服器元件的一個平臺工具。 管理性是無伺服器執行的重要挑戰之一。 數百個小型的離散無伺服器服務散佈在不同的地方-管理和操作這類解決方案很複雜。 Serverless360 透過一組豐富的複雜工具解決了這些挑戰。 它可以監視無伺服器服務，例如 Azure Functions、Logic Apps、事件格線、服務匯流排佇列、主題、轉送、事件中樞、儲存體佇列、檔案、blob 和資料表。 Azure Marketplace 提供 Serverless360。 這些功能適用于在您自己的環境中裝載的 SaaS 和私用主控 () 。  
 
 [深入了解。][serverless360-doc]
 
@@ -293,6 +303,7 @@ Turbonomic 透過同時讓效能、成本及合規性即時達到最佳狀態，
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文件。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie 文件。"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty 文件。"
+[promitor-doc]: https://promitor.io/ "Promitor 檔。"
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar 文件。"
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic 文件。"
 [serverless360-doc]: https://docs.serverless360.com/docs/ "Serverless360 檔。"

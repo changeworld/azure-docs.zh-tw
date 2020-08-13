@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: 9d703eab97b087ed6b3e4d9c3519a7e3ee7489cd
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117408"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141494"
 ---
 # <a name="national-clouds"></a>國家雲端
 
@@ -67,7 +67,7 @@ ms.locfileid: "88117408"
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-若要了解如何在國家雲端環境中呼叫 Microsoft Graph API，請移至[國家雲端部署中的 Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/deployments) (英文)。
+若要了解如何在國家雲端環境中呼叫 Microsoft Graph API，請移至[國家雲端部署中的 Microsoft Graph](/graph/deployments) (英文)。
 
 > [!IMPORTANT]
 > 某些全球服務特定區域中的服務和功能，可能無法在全部國家雲端中提供。 若要了解提供的服務有哪些，請移至[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)。

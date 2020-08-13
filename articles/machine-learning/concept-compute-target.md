@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f8b532716e14a8a90b0be061f7d93abf43e55e38
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321984"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141920"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？ 
 
 **計算目標**是指定的計算資源/環境，您可以在其中執行定型腳本或裝載您的服務部署。 這個位置可能是您的本機電腦或雲端式計算資源。 使用計算目標可讓您更輕鬆地在稍後變更計算環境，而不需要變更您的程式碼。  
 
 在典型的模型開發生命週期中，您可能會：
-1. 從開發和實驗少量的資料開始。 在這個階段，我們建議您的本機環境（本機電腦或雲端式 VM）做為您的計算目標。 
+1. 從開發和實驗少量的資料開始。 在此階段中，我們建議您的本機環境 (本機電腦或雲端式 VM) 作為計算目標。 
 2. 相應增加至較大的資料，或使用其中一個[訓練計算目標](#train)進行分散式訓練。  
 3. 當您的模型就緒之後，請將它部署到具有其中一個[部署計算目標](#deploy)的 web 主控環境或 IoT 裝置。
 
@@ -44,7 +44,7 @@ Azure Machine Learning 在不同的計算資源上有不同的支援。  您也�
 瞭解[將模型部署至計算目標的位置和方式](how-to-deploy-and-where.md)。
 
 <a name="amlcompute"></a>
-## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning 計算（受控）
+## <a name="azure-machine-learning-compute-managed"></a>Azure Machine Learning 計算 (受控) 
 
 受管理的計算資源是由 Azure Machine Learning 來建立和管理。 此計算已針對機器學習工作負載進行優化。 Azure Machine Learning 計算叢集和[計算實例](concept-compute-instance.md)是唯一的受控計算。 未來可能會新增其他受控計算資源。
 
@@ -52,7 +52,7 @@ Azure Machine Learning 在不同的計算資源上有不同的支援。  您也�
 * Azure Machine Learning Studio
 * Azure 入口網站
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py)和[AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)類別
-* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) （預覽）
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (預覽) 
 * Resource Manager 範本。 如需範例範本，請參閱[建立 Azure Machine Learning 計算範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)。
 * [Azure CLI 的](reference-azure-machine-learning-cli.md#resource-management)機器學習服務延伸模組。  
 
@@ -82,17 +82,19 @@ Azure Machine Learning 在不同的計算資源上有不同的支援。  您也�
 
 | **支援的 VM 系列**  | **限制** |
 |------------|------------|
-| D | 無 |
-| Dv2 | 無 |  
-| DSv2 | 無 |  
-| FSv2 | 無 |  
+| D | None |
+| Dv2 | None |  
+| DSv2 | None |  
+| FSv2 | None | 
+| HBv2 | 需要核准 |  
+| HCS | 需要核准 |  
 | M | 需要核准 |
-| NC | 無 |    
+| NC | None |    
 | NCsv2 | 需要核准 |
 | NCsv3 | 需要核准 |  
 | NDs | 需要核准 |
 | NDv2 | 需要核准 |
-| NV | 無 |
+| NV | None |
 | NVv3 | 需要核准 | 
 
 

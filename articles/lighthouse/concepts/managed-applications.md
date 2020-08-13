@@ -1,24 +1,27 @@
 ---
 title: Azure Lighthouse 和 Azure 受控應用程式
-description: Azure 燈塔和 Azure 受控應用程式 .。。
-ms.date: 05/01/2020
+description: 瞭解 Azure 燈塔和 Azure 受控應用程式如何協助實現不同的案例，以及如何搭配使用它們。
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3e1477de18b24cf5099cd4479a82169e3ecada26
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 81ff61a6d1b7487d3da0643bac3987589de46c1e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121600"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163419"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse 和 Azure 受控應用程式
 
 Azure 受控應用程式和 Azure 燈塔的工作方式，是讓服務提供者存取位於客戶租使用者中的資源。 瞭解其運作方式的差異，以及它們有助於啟用的案例，以及如何搭配使用它們，可能會很有説明。
 
+> [!TIP]
+> 雖然我們在本主題中參考服務提供者和客戶，但[管理多個](enterprise.md)租使用者的企業可以使用相同的程式和工具。
+
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>比較 Azure 燈塔和 Azure 受控應用程式
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
-透過[Azure 燈塔](../overview.md)，服務提供者可直接在客戶的訂用帳戶（或資源群組）上執行各種管理工作。 這項存取是透過邏輯投射來達成，讓服務提供者能夠登入自己的租使用者，並存取屬於客戶租使用者的資源。 客戶可以判斷要委派給服務提供者的訂用帳戶或資源群組，而客戶會維護這些資源的完整存取權。 他們也可以隨時移除服務提供者的存取權。
+透過[Azure 燈塔](../overview.md)，服務提供者可以直接在客戶的訂用帳戶 (或資源群組) 上執行各種管理工作。 這項存取是透過邏輯投射來達成，讓服務提供者能夠登入自己的租使用者，並存取屬於客戶租使用者的資源。 客戶可以判斷要委派給服務提供者的訂用帳戶或資源群組，而客戶會維護這些資源的完整存取權。 他們也可以隨時移除服務提供者的存取權。
 
 若要使用 Azure 燈塔，您可以透過[部署 ARM 範本](../how-to/onboard-customer.md)或[Azure Marketplace 中的受控服務供應](managed-services-offers.md)專案，上架[azure 委派資源管理](azure-delegated-resource-management.md)的客戶。 您可以藉由[連結合作夥伴識別碼](../../cost-management-billing/manage/link-partner-id.md)來追蹤對客戶業務的影響。
 
@@ -42,7 +45,7 @@ Azure 受控應用程式通常用於特定客戶需求，可透過完全由服�
 
 例如，客戶可能想要透過 Azure 燈塔提供給服務提供者的受控服務，讓他們能夠看到合作夥伴的動作，並持續控制其委派的訂用帳戶。 不過，服務提供者可能不想讓客戶存取將儲存在客戶租使用者中的特定資源，或允許對這些資源執行任何自訂動作。 為了符合這些目標，服務提供者可以將私用供應專案發佈為受控應用程式。 受控應用程式可以包含部署在客戶租使用者中的資源群組，但客戶無法直接存取。
 
-客戶可能也會對來自多個服務提供者的受控應用程式感興趣，無論他們是否也會透過 Azure 燈塔，從任何這些服務提供者使用受控服務。 此外，雲端解決方案提供者（CSP）方案中的合作夥伴可以將其他 Isv 發佈的特定受控應用程式轉售給他們透過 Azure 燈塔支援的客戶。 透過各種不同的選項，服務提供者可以選擇適當的平衡來符合客戶的需求，並在適當時限制資源的存取權。
+客戶可能也會對來自多個服務提供者的受控應用程式感興趣，無論他們是否也會透過 Azure 燈塔，從任何這些服務提供者使用受控服務。 此外，雲端解決方案提供者 (CSP) 方案中的合作夥伴，可以將其他 Isv 發佈的特定受控應用程式轉售給他們透過 Azure 燈塔所支援的客戶。 透過各種不同的選項，服務提供者可以選擇適當的平衡來符合客戶的需求，並在適當時限制資源的存取權。
 
 ## <a name="next-steps"></a>後續步驟
 

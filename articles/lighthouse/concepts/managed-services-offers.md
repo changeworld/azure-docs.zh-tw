@@ -1,14 +1,14 @@
 ---
 title: Azure Marketplace 中的受控服務供應項目
-description: 受管理的服務提供允許服務提供者在 Azure Marketplace 中銷售資源管理供應專案給客戶。
+description: 受控服務供應專案可讓您在 Azure Marketplace 中銷售資源管理供應專案給客戶。
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 6c3047cd95128f689e75d9c1f5fba5a39f86291c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406855"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163317"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure Marketplace 中的受控服務供應項目
 
@@ -18,7 +18,7 @@ ms.locfileid: "87406855"
 
 受控服務可簡化將客戶上架至 Azure 燈塔的程式。 當客戶在 Azure Marketplace 中購買供應項目時，他們將能夠指定應上架的訂用帳戶和 (或) 資源群組。
 
-之後，您組織中的使用者將能夠根據您在建立供應專案時所定義的存取權，透過[Azure 委派的資源管理](azure-delegated-resource-management.md)，在您組織的租使用者內處理這些資源。 這會透過指定可存取客戶資源的 Azure Active Directory （Azure AD）使用者、群組和服務主體，以及定義其存取層級的角色來完成。 透過將權限指派給 Azure AD 群組，而非一系列個別使用者或應用程式帳戶，您便可以在需要變更存取權時個別地加入或移除使用者。
+之後，您組織中的使用者將能夠根據您在建立供應專案時所定義的存取權，透過[Azure 委派的資源管理](azure-delegated-resource-management.md)，在您的管理租使用者內處理這些資源。 這項作業是透過指定 Azure Active Directory (Azure AD) 使用者、群組和服務主體（可存取客戶資源），以及定義其存取層級的角色來完成。 透過將權限指派給 Azure AD 群組，而非一系列個別使用者或應用程式帳戶，您便可以在需要變更存取權時個別地加入或移除使用者。
 
 ## <a name="public-and-private-offers"></a>公用和私人供應項目
 
@@ -27,7 +27,7 @@ ms.locfileid: "87406855"
 如果您想要將供應項目限制為僅提供特定客戶使用，則可以發佈私人方案。 當您這麼做時，只能針對您提供的特定訂用帳戶 Id 購買方案。 如需詳細資訊，請參閱[私人供應項目](../../marketplace/private-offers.md) \(部分機器翻譯\)。
 
 > [!NOTE]
-> 透過雲端解決方案提供者（CSP）計畫的轉銷商所建立的訂用帳戶，不支援私用供應專案。
+> 透過雲端解決方案提供者的轉銷商所建立的訂用帳戶不支援私用供應專案 (CSP) 方案。
 
 公用方案能讓您將服務推廣給新的客戶。 當您僅需要客戶租用戶的有限存取權時，這通常是較為適合的選擇。 當您與客戶建立關聯性之後，如果他們決定將額外存取權授與您的組織，您可以僅為該客戶發佈新的私人方案，或是[使用 Azure Resource Manager 範本將他們上線以取得進一步存取](../how-to/onboard-customer.md)。
 

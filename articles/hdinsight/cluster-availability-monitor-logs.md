@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/01/2020
-ms.openlocfilehash: 25bda7ed94eef20e22bcf717780d08a3ea5e6521
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077213"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163725"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>如何使用 HDInsight 中的 Azure 監視器記錄監視叢集可用性
 
@@ -30,9 +30,11 @@ Azure 監視器記錄可讓多個資源（例如 HDInsight 叢集）所產生的
 
 ![HDInsight 操作管理套件](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
+根據預設，這會在所有叢集節點上安裝 OMS 代理程式，但邊緣節點除外。 因為叢集邊緣節點上未安裝 OMS 代理程式，所以 Log Analytics 中的邊緣節點上預設不會有遙測。
+
 ## <a name="query-metrics-and-logs-tables"></a>查詢計量和記錄資料表
 
-一旦啟用 Azure 監視器記錄整合（這可能需要幾分鐘的時間），請流覽至您的**Log Analytics 工作區**資源，然後選取 [**記錄**]。
+一旦啟用 Azure 監視器記錄整合 (這可能需要幾分鐘的時間) ，流覽至您的**Log Analytics 工作區**資源，然後選取 [**記錄**]。
 
 ![Log Analytics 工作區記錄](media/cluster-availability-monitor-logs/hdinsight-portal-logs.png)
 
@@ -46,7 +48,7 @@ Azure 監視器記錄可讓多個資源（例如 HDInsight 叢集）所產生的
 | 無法使用的電腦           | 列出過去5小時內未傳送信號的所有已知電腦 |
 | 可用性速率               | 計算每部連線電腦的可用性費率                |
 
-例如，在該查詢上選取 [**執行**]，以執行 [**可用性速率**] 範例查詢，如上面的螢幕擷取畫面所示。 這會顯示叢集中每個節點的可用性速率（以百分比表示）。 如果您已啟用多個 HDInsight 叢集將計量傳送至相同的 Log Analytics 工作區，您會看到顯示在這些叢集中所有節點的可用性費率。
+例如，在該查詢上選取 [**執行**]，以執行 [**可用性速率**] 範例查詢，如上面的螢幕擷取畫面所示。 這會顯示叢集中每個節點的可用性速率（以百分比表示）。 如果您已啟用多個 HDInsight 叢集以將計量傳送至相同的 Log Analytics 工作區，您會看到所有節點的可用性費率 (不包括顯示在這些叢集中的邊緣節點) 。
 
 ![Log Analytics 工作區記錄「可用性速率」範例查詢](media/cluster-availability-monitor-logs/portal-availability-rate.png)
 
@@ -57,7 +59,7 @@ Azure 監視器記錄可讓多個資源（例如 HDInsight 叢集）所產生的
 
 ## <a name="azure-monitor-alerts"></a>Azure 監視器警示
 
-您也可以設定 Azure 監視器警示，當計量的值或查詢的結果符合特定條件時，就會觸發此警示。 例如，讓我們建立警示，以在一或多個節點未在5小時（也就是假設為無法使用）傳送信號時，傳送電子郵件。
+您也可以設定 Azure 監視器警示，當計量的值或查詢的結果符合特定條件時，就會觸發此警示。 例如，讓我們建立警示，以在一或多個節點未在5小時內傳送信號時傳送電子郵件 (亦即，假設為無法使用) 。
 
 在 [**記錄**] 中，選取 [在該查詢上**執行**] 來執行 [**無法使用的電腦**] 範例查詢，如下所示。
 
@@ -67,7 +69,7 @@ Azure 監視器記錄可讓多個資源（例如 HDInsight 叢集）所產生的
 
 ![Log Analytics 工作區新增警示規則](media/cluster-availability-monitor-logs/portal-logs-new-alert-rule.png)
 
-警示有三個元件：用來建立規則的*資源*（在此案例中為 Log Analytics 工作區）、觸發警示的*條件*，以及決定觸發警示時將發生什麼情況的*動作群組*。
+警示有三個元件：在此情況下， (Log Analytics 工作區中建立規則的*資源*) 、觸發警示的*條件*，以及決定觸發警示時將發生什麼情況的*動作群組*。
 按一下 [**條件] 標題**（如下所示），以完成設定信號邏輯。
 
 ![入口網站警示建立規則條件](media/cluster-availability-monitor-logs/portal-condition-title.png)
@@ -106,7 +108,7 @@ Azure 監視器記錄可讓多個資源（例如 HDInsight 叢集）所產生的
 ![入口網站建立警示規則完成](media/cluster-availability-monitor-logs/portal-create-alert-rule-finish.png)
 
 > [!TIP]
-> 指定**嚴重性**的能力是一種功能強大的工具，可在建立多個警示時使用。 例如，您可以建立一個警示來引發警告（嚴重性1），如果單一前端節點中斷，另一個警示則會在這兩個前端節點關閉的罕見事件中引發重大（嚴重性0）。
+> 指定**嚴重性**的能力是一種功能強大的工具，可在建立多個警示時使用。 例如，您可以建立一個警示來引發警告 (嚴重性 1) 如果單一前端節點中斷，另一個警示則會在這兩個前端節點關閉時引發重要的 (嚴重性 0) 。
 
 當符合此警示的條件時，將會引發警示，而您會收到包含警示詳細資料的電子郵件，如下所示：
 
@@ -116,7 +118,7 @@ Azure 監視器記錄可讓多個資源（例如 HDInsight 叢集）所產生的
 
 ![Log Analytics 工作區警示](media/cluster-availability-monitor-logs/hdi-portal-oms-alerts.png)
 
-在嚴重性群組上選取（如上方反白顯示的**嚴重性 1** ）將會顯示該嚴重性的所有警示記錄，如下所示：
+選取嚴重性群組 (**嚴重性1，** 如上所示) 會顯示該嚴重性的所有警示的記錄，如下所示：
 
 ![Log Analytics 工作區嚴重性一個警示](media/cluster-availability-monitor-logs/portal-oms-alerts-sev1.png)
 

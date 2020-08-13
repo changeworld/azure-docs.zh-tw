@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/23/2020
-ms.openlocfilehash: 9d29d83ed92ee0fa2217bb1c27fbf6c2fbb3584c
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 08/12/2020
+ms.openlocfilehash: e6fd405d1969a2f40a5f0c3466a57fbec60723e9
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170884"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141154"
 ---
 # <a name="supported-data-types"></a>支援的資料類型
 
@@ -27,13 +27,13 @@ ms.locfileid: "87170884"
 | **double** | 雙精確度64位數位  | `"value": 31.0482941` | value_double
 | **long** | 帶正負號的64位整數  | `"value" : 31` | value_long
 | **string** | 文字值必須包含有效的 UTF-8。 Null 和空字串的處理方式相同。 |  `"site": "DIM_MLGGG"` | site_string
-| **動態** | 複雜（非基本）型別，由陣列或屬性包（字典）組成。 目前只有 stringified 基本的 JSON 陣列或不包含 TS ID 或 timestamp 屬性的物件陣列會儲存為動態。 閱讀這[篇文章](./concepts-json-flattening-escaping-rules.md)以瞭解如何將物件壓平合併，以及如何 unrolled 陣列。 儲存為此類型的裝載屬性可透過 Azure 時間序列深入解析 Gen2 Explorer 和 `GetEvents`   查詢 API 來存取。 |  `"values": "[197, 194, 189, 188]"` | values_dynamic
+| **效果** | 複雜 (非基本) 類型，由陣列或屬性包 (字典) 所組成。 目前只會 stringified 基本的 JSON 陣列或物件陣列，而不包含 [TS 識別碼] 或 [時間戳記] 屬性 () 將會儲存為動態。 閱讀這[篇文章](./concepts-json-flattening-escaping-rules.md)以瞭解如何將物件壓平合併，以及如何 unrolled 陣列。 儲存為此類型的裝載屬性可透過 Azure 時間序列深入解析 Gen2 Explorer 和 `GetEvents`   查詢 API 來存取。 |  `"values": "[197, 194, 189, 188]"` | values_dynamic
 
 ## <a name="sending-mixed-data-types"></a>傳送混合資料類型
 
-您的 Azure 時間序列深入解析 Gen2 環境是強型別。 如果裝置或標籤會針對裝置屬性傳送不同類型的資料，值將會儲存在兩個分隔的資料行中，而且當您在 API 呼叫中定義時間序列模型變數運算式時，應該使用[聯合（）函數](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)。
+您的 Azure 時間序列深入解析 Gen2 環境是強型別。 如果裝置或標籤傳送裝置屬性的不同類型資料，值將會儲存在兩個分隔的資料行中，而且在 API 呼叫中定義時間序列模型變數運算式時，應該使用[聯合 ( # A1 函數](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions)。
 
-Azure 時間序列深入解析 Explorer 提供了一種方式，可以自動合併相同裝置屬性的個別資料行。 在下列範例中，感應器會傳送一個 `PresentValue` 可以是 Long 或 Double 的屬性。 若要對屬性的所有儲存值（不論資料類型為何）進行查詢 `PresentValue` ，請選擇，然後將資料行結合在 `PresentValue (Double | Long)` 一起。
+Azure 時間序列深入解析 Explorer 提供了一種方式，可以自動合併相同裝置屬性的個別資料行。 在下列範例中，感應器會傳送一個 `PresentValue` 可以是 Long 或 Double 的屬性。 若要針對所有儲存的值進行查詢 (不論屬性的資料類型) `PresentValue` ，請選擇 `PresentValue (Double | Long)` ，將會為您合併資料行。
 
 [![Explorer 自動合併](media\concepts-supported-data-types/explorer-auto-coalesce-sample.png)](media\concepts-supported-data-types/explorer-auto-coalesce-sample.png#lightbox)
 

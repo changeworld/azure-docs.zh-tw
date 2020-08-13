@@ -9,25 +9,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47a35f70251622674205a28af9b7cc64132d0530
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690274"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163657"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 身分識別平台的應用程式驗證憑證認證
 
-Microsoft 身分識別平台可讓應用程式使用自己的認證進行驗證；例如，在 [OAuth 2.0 用戶端認證授與流程 v2.0](v2-oauth2-client-creds-grant-flow.md) 和[代理者流程](v2-oauth2-on-behalf-of-flow.md)中。
+Microsoft 身分識別平臺可讓應用程式使用自己的認證進行驗證，例如，在 OAuth 2.0[用戶端認證授](v2-oauth2-client-creds-grant-flow.md)與流程中，以及代理[者 (OBO](v2-oauth2-on-behalf-of-flow.md)) 流程。
 
-應用程式可用於驗證的認證形式之一，是以應用程式擁有的憑證簽署的 JSON Web 權杖 (JWT) 判斷提示。
+應用程式可用於驗證的一種認證形式是[JSON Web 權杖](./security-tokens.md#json-web-tokens-jwts-and-claims)， (JWT) 判斷提示，並以應用程式擁有的憑證簽署。
 
 ## <a name="assertion-format"></a>判斷提示格式
-Microsoft 身分識別平台：若要計算判斷提示，您可使用所選語言中多個 [JSON Web 權杖](https://jwt.ms/)程式庫的其中一個。 權杖所承載的資訊如下︰
+
+若要計算判斷提示，您可以使用所選語言中的許多 JWT 程式庫其中之一。 此資訊會由權杖在[標頭](#header)、[宣告](#claims-payload)和簽章中[攜帶。](#signature)
 
 ### <a name="header"></a>頁首
 
@@ -35,22 +36,22 @@ Microsoft 身分識別平台：若要計算判斷提示，您可使用所選語�
 | --- | --- |
 | `alg` | 應該是 **RS256** |
 | `typ` | 應該是 **JWT** |
-| `x5t` | 應該是 X.509 憑證 SHA-1 憑證指紋 |
+| `x5t` | X.509 憑證雜湊 (也稱為 cert 的 SHA-1*指紋*，) 編碼為 Base64 字串值。 例如，如果指定了的 x.509 憑證雜湊 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` ，則宣告 `x5t` 會是 `hOBcHZi846VCHSJbFAs26Go9VTQ` 。 |
 
 ### <a name="claims-payload"></a>宣告 (承載)
 
 | 參數 |  備註 |
 | --- | --- |
-| `aud` | Audience：應該是 **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** |
-| `exp` | 到期日：權杖到期的日期。 時間會表示為從 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 到權杖有效時間到期的秒數。|
-| `iss` | 簽發者︰應該是 client_id (用戶端服務的應用程式識別碼) |
-| `jti` | GUID：JWT ID |
-| `nbf` | 生效時間：無法在此日期之前使用權杖。 時間會表示為從 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 到權杖發出時間的秒數。 |
-| `sub` | 主旨：至於 `iss`，應該是 client_id (用戶端服務的應用程式識別碼) |
+| `aud` | 物件：應該是`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
+| `exp` | 到期日：權杖到期的日期。 時間會表示為從 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 到權杖有效時間到期的秒數。 我們建議使用較短的到期時間-10 分鐘到1小時。|
+| `iss` | 簽發者：應該是用戶端服務的 client_id (*應用程式 (用戶端) 識別碼*)  |
+| `jti` | GUID： JWT 識別碼 |
+| `nbf` | 不早于：無法使用權杖的日期。 時間以1970年1月1日 (1970-01-01T0：0： 0Z) UTC 的秒數表示，直到建立判斷提示的時間為止。 |
+| `sub` | 主旨：對於 `iss` ，應該是用戶端服務的 client_id (*應用程式 (用戶端) 識別碼*)  |
 
-### <a name="signature"></a>簽章
+### <a name="signature"></a>簽名
 
-簽章是使用 [JSON Web 權杖 RFC7519 規格](https://tools.ietf.org/html/rfc7519) 中所述的憑證計算的
+簽章的計算方式是套用憑證，如[JSON Web 權杖 RFC7519 規格](https://tools.ietf.org/html/rfc7519)中所述。
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>已解碼的 JWT 判斷提示範例
 
@@ -75,10 +76,11 @@ Microsoft 身分識別平台：若要計算判斷提示，您可使用所選語�
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>已編碼的 JWT 判斷提示範例
 
-下列字串是已編碼判斷提示的範例。 如果您仔細看，會發現三個以點 (.) 分隔的區段：
-* 第一個區段編碼標頭
-* 第二個區段編碼承載
-* 最後一個區段則是使用前兩個區段的內容中包含的憑證計算出來的簽章
+下列字串是已編碼判斷提示的範例。 如果您仔細看一下，您會注意到三個以點分隔的區段， (`.`) ：
+
+* 第一個區段編碼*標頭*
+* 第二個區段會將*宣告*編碼 (承載) 
+* 最後一節是使用前兩個區段內容中的憑證*所計算的*簽章
 
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
@@ -101,8 +103,8 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 擁有憑證之後，您必須計算︰
 
-- `$base64Thumbprint`，這是憑證雜湊的 base64 編碼
-- `$base64Value`，它是憑證未經處理資料的 base64 編碼
+- `$base64Thumbprint`-以 Base64 編碼的憑證雜湊值
+- `$base64Value`-憑證原始資料的 Base64 編碼值
 
 您也必須提供 GUID 來識別應用程式資訊清單中的金鑰 (`$keyId`)。
 
@@ -125,9 +127,6 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
    `keyCredentials` 屬性是多重值，因此您可以上傳多個憑證以進行更豐富的金鑰管理。
 
-## <a name="code-sample"></a>程式碼範例
+## <a name="next-steps"></a>後續步驟
 
-> [!NOTE]
-> 您必須使用憑證的雜湊，將 X5T 標頭轉換成 Base 64 字串，才能計算該標頭。 在 C# 中執行此作業的程式碼為 `System.Convert.ToBase64String(cert.GetCertHash());`。
-
-[使用 Microsoft 身分識別平台的 .NET Core 精靈主控台應用程式](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)這個程式碼範例顯示應用程式如何使用自己的認證進行驗證。 此外也說明如何使用 `New-SelfSignedCertificate` PowerShell 命令[建立自我簽署憑證](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)。 您也可以利用[應用程式建立指令碼](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)來建立憑證、計算指紋，和執行其他作業。
+在 GitHub 上[使用 Microsoft 身分識別平臺程式碼範例的 .Net Core daemon 主控台應用程式](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)，會顯示應用程式如何使用自己的認證進行驗證。 它也會說明如何使用 PowerShell Cmdlet[建立自我簽署憑證](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) `New-SelfSignedCertificate` 。 您也可以使用範例存放庫中的[應用程式建立腳本](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)來建立憑證、計算指紋等等。

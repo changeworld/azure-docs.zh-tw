@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 79b9be504639b35c7c15d427bd7766ed2dd15535
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121080"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141273"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>為呼叫 web Api 的行動應用程式取得權杖
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive`只有一個強制參數： `scopes` 。 `scopes`參數會列舉字串，其會定義需要權杖的範圍。 如果權杖是用於 Microsoft Graph，您可以在每個 Microsoft Graph API 的 API 參考中找到所需的範圍。 在參考中，移至「許可權」一節。
 
-例如，若要[列出使用者的連絡人](/graph/api/user-list-contacts)，請使用「使用者. 讀取」、「連絡人. 讀取」的範圍。 如需詳細資訊，請參閱 [Microsoft Graph 權限參考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+例如，若要[列出使用者的連絡人](/graph/api/user-list-contacts)，請使用「使用者. 讀取」、「連絡人. 讀取」的範圍。 如需詳細資訊，請參閱 [Microsoft Graph 權限參考](/graph/permissions-reference)。
 
 在 Android 上，您可以在使用建立應用程式時指定父活動 `PublicClientApplicationBuilder` 。 如果您在該時間未指定父活動，稍後可以使用來指定它， `.WithParentActivityOrWindow` 如下一節所示。 如果您指定父活動，則權杖會在互動之後回到該父活動。 如果您未指定，則呼叫會擲回 `.ExecuteAsync()` 例外狀況。
 
