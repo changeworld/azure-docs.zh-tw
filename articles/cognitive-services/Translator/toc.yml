@@ -6,6 +6,8 @@
       items:
         - name: 什麼是翻譯工具？
           href: translator-info-overview.md
+        - name: 語言支援
+          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
     - name: 快速入門
       items:
         - name: 翻譯文字
@@ -22,7 +24,7 @@
           href: quickstart-sentences.md
     - name: 教學課程
       items:
-        - name: '建立適用於翻譯工具的 WPF 應用程式 (C#)'
+        - name: 建立適用於翻譯工具的 WPF 應用程式 (C#)
           href: tutorial-wpf-translation-csharp.md
         - name: 建立 Flask 轉譯應用程式，Python
           href: tutorial-build-flask-app-translation-synthesis.md
@@ -50,7 +52,7 @@
           href: firewalls.md
     - name: 範例
       items:
-        - name: 'C#'
+        - name: C#
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp'
         - name: Java
           href: 'https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Java'
@@ -92,22 +94,20 @@
               href: ctf-reporting.md
             - name: 傳回 N 最佳翻譯
               href: return-n-best-translations.md
+        - name: 要求限制
+          href: request-limits.md
     - name: 資源
       items:
         - name: GitHub 上的程式碼範例
           href: 'https://aka.ms/TranslatorGitHub'
         - name: 常見問題集
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: 語言支援
-          href: language-support.md
         - name: 定價
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
         - name: 區域可用性
           href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
         - name: 法規遵循
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-        - name: 要求限制
-          href: request-limits.md
         - name: Stack Overflow
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
 - name: 自訂翻譯工具
@@ -162,8 +162,6 @@
           href: custom-translator/unsupported-language-deployments.md
     - name: 資源
       items:
-        - name: 語言支援
-          href: 'https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization'
         - name: 詞彙
           href: custom-translator/glossary.md
         - name: 常見問題集

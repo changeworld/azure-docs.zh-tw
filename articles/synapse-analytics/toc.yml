@@ -242,7 +242,7 @@
               href: sql/best-practices-sql-pool.md
         - name: 載入資料
           items:
-            - name: 總覽
+            - name: 概觀
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 最佳作法
               href: sql/data-loading-best-practices.md
@@ -252,7 +252,7 @@
               href: sql/load-data-overview.md
         - name: 部署
           items:
-            - name: 總覽
+            - name: 概觀
               href: sql/develop-overview.md
             - name: 最佳作法
               href: sql/develop-best-practices.md
@@ -267,7 +267,7 @@
             - name: 結果集設定快取
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 機器學習預測
-              href: ./sql-data-warehouse/sql-data-warehouse-predict.md
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 資料表
               items:
                 - name: 概觀
