@@ -4,17 +4,17 @@ description: 使用 Azure 私人端點私下連線至 Web 應用程式
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4fab75aef2a94ba7108085e9d5b5dbbf190342f6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 773e63cb5eb2a9825975402f65439acd6ad192ae
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068297"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135380"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>使用 Azure Web 應用程式的私人端點 (預覽)
 
@@ -101,7 +101,7 @@ ms.locfileid: "87068297"
 
 如果您需要使用自訂 DNS 名稱，則必須在 Web 應用程式中新增自訂名稱。 在預覽期間，您必須使用公用 DNS 解析來驗證自訂名稱，就如同任何自訂名稱一樣。 如需詳細資訊，請參閱[自訂 DNS 驗證][dnsvalidation]。
 
-針對 Kudu 主控台或 Kudu REST API （例如，使用 Azure DevOps 自我裝載代理程式部署），您必須在 Azure DNS 私人區域或自訂 DNS 伺服器中建立兩個記錄。 
+針對 Kudu 主控台，或使用 Azure DevOps 自我裝載代理程式的 Kudu REST API (部署，例如) ，您必須在您的 Azure DNS 私人區域或您的自訂 DNS 伺服器中建立兩筆記錄。 
 
 | 名稱 | 類型 | 值 |
 |-----|-----|-----|
@@ -128,6 +128,8 @@ ms.locfileid: "87068297"
 - 若要使用 Azure CLI 部署 Web 應用程式的私用端點，請參閱[如何使用 Azure CLI 私下連接到 Web 應用程式][howtoguide2]
 - 若要使用 PowerShell 為您的 Web 應用程式部署私用端點，請參閱[如何使用 powershell 以私下連線到 Web 應用程式][howtoguide3]
 - 若要使用 Azure 範本來部署 Web 應用程式的私用端點，請參閱[如何使用 azure 範本私下連接到 Web 應用程式][howtoguide4]
+- 端對端範例：如何使用 VNet 插入和私人端點搭配 ARM 範本將前端 web 應用程式連線至安全的後端 web 應用程式，請參閱此[快速入門][howtoguide5]
+- 端對端範例：如何使用 terraform 將前端 web 應用程式連線至具有 VNet 插入和私人端點的安全後端 web 應用程式，請參閱此[範例][howtoguide6]
 
 
 <!--Links-->
@@ -144,3 +146,5 @@ ms.locfileid: "87068297"
 [howtoguide2]: https://docs.microsoft.com/azure/app-service/scripts/cli-deploy-privateendpoint
 [howtoguide3]: https://docs.microsoft.com/azure/app-service/scripts/powershell-deploy-private-endpoint
 [howtoguide4]: https://docs.microsoft.com/azure/app-service/scripts/template-deploy-private-endpoint
+[howtoguide5]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-privateendpoint-vnet-injection
+[howtoguide6]: https://docs.microsoft.com/azure/app-service/scripts/terraform-secure-backend-frontend

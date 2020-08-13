@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple-VPN 閘道
-description: 深入瞭解 CloudSimple 站對站 VPN 和點對站 VPN 概念
+description: 深入瞭解 CloudSimple 站對站和點對站 VPN 閘道，其可用來在 CloudSimple 區域與其他資源之間傳送加密的流量。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e013bb96990a8f3a0ef7d3a58529b200919e276
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024852"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140627"
 ---
 # <a name="vpn-gateways-overview"></a>VPN 閘道總覽
 
@@ -50,7 +50,7 @@ VPN 閘道可讓您從私人雲端上的內部部署取用服務，以及從內�
 | IKE 版本 | IKEv1 | IKEv1 | IKEv1 |
 | 加密 | AES 128 | AES 256 | AES 256 |
 | 雜湊演算法| SHA 256 | SHA 256 | SHA 1 |
-| Diffie-hellman 群組（DH 群組） | 2 | 2 | 2 |
+|  (DH 群組的 diffie-hellman 群組)  | 2 | 2 | 2 |
 | 存留時間 | 28,800 秒 | 28,800 秒 | 28,800 秒 |
 | 資料大小 | 4 GB | 4 GB | 4 GB |
 
@@ -60,7 +60,7 @@ VPN 閘道可讓您從私人雲端上的內部部署取用服務，以及從內�
 |-----------|------------|------------|------------|
 | 加密 | AES 128 | AES 256 | AES 256 |
 | 雜湊演算法| SHA 256 | SHA 256 | SHA 1 |
-| 完整轉寄秘密群組（PFS 群組） | None | None | None |
+| 完整轉寄密碼群組 (PFS 群組)  | None | None | None |
 | 存留時間 | 1800秒 | 1800秒 | 1800秒 |
 | 資料大小 | 4 GB | 4 GB | 4 GB |
 

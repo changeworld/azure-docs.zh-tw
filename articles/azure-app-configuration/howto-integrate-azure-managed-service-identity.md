@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure 受控識別進行驗證
+title: 使用受控識別來存取應用程式組態
 titleSuffix: Azure App Configuration
-description: 使用 Azure 受控識別向 Azure 應用程式組態進行驗證
+description: 使用受控識別向 Azure 應用程式組態進行驗證
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056827"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135465"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>與 Azure 受控識別整合
+# <a name="use-managed-identities-to-access-app-configuration"></a>使用受控識別來存取應用程式組態
 
-Azure Active Directory[受控](../active-directory/managed-identities-azure-resources/overview.md)識別可簡化雲端應用程式的秘密管理。 使用受控識別，您的程式碼可以使用為其執行所在之 Azure 服務所建立的服務主體。 您會使用受控識別，而不是使用儲存在 Azure Key Vault 中的個別認證或本機連接字串。 
+Azure Active Directory[受控](../active-directory/managed-identities-azure-resources/overview.md)識別可簡化雲端應用程式的秘密管理。 使用受控識別，您的程式碼可以使用為其執行所在之 Azure 服務所建立的服務主體。 您會使用受控識別，而不是使用儲存在 Azure Key Vault 中的個別認證或本機連接字串。
 
 Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶端程式庫都內建了受控識別支援。 雖然您不需要使用它，但受控識別不需要包含秘密的存取權杖。 您的程式碼只能使用服務端點來存取應用程式組態存放區。 您可以直接在程式碼中內嵌此 URL，而不會公開任何秘密。
 
@@ -84,7 +84,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 1. 尋找應用程式組態存放區的端點。 此 URL 會列在 [Azure 入口網站中存放區的 [**存取金鑰**] 索引標籤上。
 
-1. 開啟 *appsettings.json*，然後新增下列指令碼。 以 *\<service_endpoint>* 您應用程式組態存放區的 URL 取代（包括括弧）。 
+1. 開啟 *appsettings.json*，然後新增下列指令碼。 以 *\<service_endpoint>* 您應用程式組態存放區的 URL 取代（包括括弧）。
 
     ```json
     "AppConfig": {
@@ -183,6 +183,9 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
     您現在可以存取 Key Vault 參考，就像任何其他應用程式組態金鑰一樣。 Config 提供者會使用 `KeyVaultClient` 您設定的來驗證 Key Vault 並取出值。
 
+> [!NOTE]
+> `ManagedIdentityCredential`僅支援受控識別驗證。 在本機環境中無法使用。 如果您想要在本機執行程式碼，請考慮使用 `DefaultAzureCredential` ，它也支援服務主體驗證。 如需詳細資訊，請參閱[連結](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential)。
+
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>從本機 Git 進行部署
@@ -216,7 +219,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 }
 ```
 
-### <a name="deploy-your-project"></a>部署專案
+### <a name="deploy-your-project"></a>部署您的專案
 
 在_本機終端機視窗_中，將 Azure 遠端新增至您的本機 Git 存放庫。 將取代 _\<url>_ 為您從[啟用本機 Git 與 Kudu](#enable-local-git-with-kudu)中所獲得的 Git 遠端 URL。
 
@@ -242,7 +245,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>以其他語言使用受控識別
 
-適用於 .NET Framework 和 Java Spring 的應用程式設定提供者也有內建的受控識別支援。 當您設定其中一個提供者時，您可以使用存放區的 URL 端點，而不是它的完整連接字串。 
+適用於 .NET Framework 和 Java Spring 的應用程式設定提供者也有內建的受控識別支援。 當您設定其中一個提供者時，您可以使用存放區的 URL 端點，而不是它的完整連接字串。
 
 例如，您可以更新在快速入門中建立的 .NET Framework 主控台應用程式，以在*App.config*檔案中指定下列設定：
 

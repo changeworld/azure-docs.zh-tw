@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 08/11/2020
 ms.author: juliako
-ms.openlocfilehash: 2226d7a769caf049af30bbca81ca3079d72970b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d8a60d6c4b3fb66b46742fbd99e3a73a63fff45
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023121"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136077"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>使用媒體服務 .NET SDK 建立篩選器
 
@@ -36,7 +36,7 @@ ms.locfileid: "87023121"
 - 檢閱[篩選器與動態資訊清單](filters-dynamic-manifest-overview.md)。
 - [建立媒體服務帳戶](./create-account-howto.md)。 請務必記住資源群組名稱和「媒體服務」帳戶名稱。 
 - 取得所需資訊來[存取 API](./access-api-howto.md)
-- 檢閱[使用 Azure 媒體服務執行上傳、編碼和串流](stream-files-tutorial-with-api.md)，以了解如何[開始使用 .NET SDK](stream-files-tutorial-with-api.md#start_using_dotnet)
+- 檢閱[使用 Azure 媒體服務執行上傳、編碼和串流](stream-files-tutorial-with-api.md)，以了解如何[開始使用 .NET SDK](stream-files-tutorial-with-api.md#start-using-media-services-apis-with-net-sdk)
 
 ## <a name="define-a-filter"></a>定義篩選器  
 
@@ -84,7 +84,7 @@ client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, enc
 
 ## <a name="associate-filters-with-streaming-locator"></a>將篩選器與串流定位器建立關聯
 
-您可以指定資產或帳戶篩選器的清單，其適用于您的串流定位器。 動態封裝程式[（串流端點）](dynamic-packaging-overview.md)會將這份篩選器清單與您的用戶端在 URL 中指定的篩選準則一起套用。 這個組合會產生[動態資訊清單](filters-dynamic-manifest-overview.md)，這是根據 URL 中的篩選器，以及您在串流定位器上指定的篩選準則。 如果您想要套用篩選，但不想要在 URL 中公開篩選名稱，建議您使用這項功能。
+您可以指定資產或帳戶篩選器的清單，其適用于您的串流定位器。 動態封裝程式[ (串流端點) ](dynamic-packaging-overview.md)會將這份篩選器清單與您的用戶端在 URL 中指定的篩選準則一起套用。 這個組合會產生[動態資訊清單](filters-dynamic-manifest-overview.md)，這是根據 URL 中的篩選器，以及您在串流定位器上指定的篩選準則。 如果您想要套用篩選，但不想要在 URL 中公開篩選名稱，建議您使用這項功能。
 
 下列 c # 程式碼說明如何建立串流定位器並指定 `StreamingLocator.Filters` 。 這是選擇性的屬性，可接受 `IList<string>` 篩選名稱的。
 
@@ -116,6 +116,6 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
 |Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [串流影片](stream-files-tutorial-with-api.md) 

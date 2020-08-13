@@ -3,15 +3,15 @@ title: Windows 虛擬桌面安全 URL 清單-Azure
 description: 您應該解除封鎖的 Url 清單，以確保您的 Windows 虛擬桌面部署如預期運作。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37fb5ccf121fed6e772dc1cd3dcba2345d62c66f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067200"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135856"
 ---
 # <a name="safe-url-list"></a>安全 URL 清單
 
@@ -27,11 +27,12 @@ ms.locfileid: "88067200"
 |mrsglobalsteus2prod.blob.core.windows.net|443|代理程式和 SXS 堆疊更新|AzureCloud|
 |*.core.windows.net|443|代理程式流量|AzureCloud|
 |*.servicebus.windows.net|443|代理程式流量|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|代理程式流量|AzureCloud|
+|gcs.prod.monitoring.core.windows.net|443|代理程式流量|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows 啟用|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 入口網站支援|AzureCloud|
 | 169.254.169.254 | 80 | [Azure 實例中繼資料服務端點](../virtual-machines/windows/instance-metadata-service.md) | N/A |
+| 168.63.129.16 | 80 | [工作階段主機健全狀況監視](../virtual-network/security-overview.md#azure-platform-considerations) | N/A |
 
 >[!IMPORTANT]
 >Windows 虛擬桌面現在支援 FQDN 標記。 如需詳細資訊，請參閱[使用 Azure 防火牆來保護 Windows 虛擬桌面部署](../firewall/protect-windows-virtual-desktop.md)。

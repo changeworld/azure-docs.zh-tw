@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple-私人雲端
-description: 深入瞭解 CloudSimple 私用雲端和概念。
+description: 瞭解 CloudSimple 的概念和優點，包括完整的 VMware 作業持續性、與現有工具、技能和流程的相容性。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024939"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140711"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple 私用雲端總覽
 
@@ -31,7 +31,7 @@ CloudSimple 與完全相容：
 
 * 現有的工具
 * 技術
-* 處理程序
+* 處理序
 
 此相容性可讓您的小組管理 Azure 雲端上的工作負載，而不會中斷這些類型的原則：
 

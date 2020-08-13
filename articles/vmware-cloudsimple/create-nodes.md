@@ -1,6 +1,6 @@
 ---
 title: CloudSimple 的 VMware 解決方案布建節點-Azure
-description: 瞭解如何使用 CloudSimple 部署將節點新增至 VMWare
+description: 瞭解如何在 Azure 入口網站中使用 CloudSimple 部署，將節點新增至 VMWare。 您可以為您的私用雲端環境設定「隨用隨付」功能。
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024801"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140729"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>針對 Azure VMware Solution by CloudSimple 布建節點
 
@@ -25,7 +25,7 @@ ms.locfileid: "77024801"
 
 ## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>將節點新增至您的 CloudSimple 私人雲端
 
-1. 選取 [所有服務]  。
+1. 選取 [所有服務]。
 2. 搜尋**CloudSimple 節點**。
 
    ![搜尋 CloudSimple 節點](media/create-cloudsimple-node-search.png)
@@ -42,7 +42,7 @@ ms.locfileid: "77024801"
 9. 選取要裝載節點資源的專用位置。
 10. 選取[節點類型](cloudsimple-node.md)。
 11. 選取要布建的節點數目。
-12. 選取 [檢閱 + 建立]****。
+12. 選取 [檢閱 + 建立]。
 13. 檢查設定。 若要修改任何設定，請按一下 [**上一步**]。
 14. 選取 [建立]。
 

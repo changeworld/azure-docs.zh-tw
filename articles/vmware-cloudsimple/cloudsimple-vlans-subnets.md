@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple 中的 Vlan 和子網
-description: 瞭解 CloudSimple 私用雲端中的 Vlan 和子網
+description: 瞭解 CloudSimple 私人雲端中的 Vlan 和子網，以及 CloudSimple 提供 CloudSimple 服務部署位置的網路。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3235b394f739e8af846f30dfe51705d0926c843
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024886"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140661"
 ---
 # <a name="vlans-and-subnets-overview"></a>Vlan 和子網總覽
 
@@ -23,7 +23,7 @@ CloudSimple 會針對您的 CloudSimple 服務部署所在的每個區域提供�
 
 ## <a name="vlans"></a>VLAN
 
-會針對每個私人雲端建立 VLAN （第2層網路）。  第2層流量會保留在私人雲端的界限內，讓您可以隔離私人雲端內的本機流量。  在私人雲端上建立的 VLAN 只能用來在該私人雲端中建立分散式通訊埠群組。  在私人雲端上建立的 VLAN 會在所有連接到私人雲端主機的交換器上自動設定。
+會針對每個私人雲端建立 VLAN (第2層網路) 。  第2層流量會保留在私人雲端的界限內，讓您可以隔離私人雲端內的本機流量。  在私人雲端上建立的 VLAN 只能用來在該私人雲端中建立分散式通訊埠群組。  在私人雲端上建立的 VLAN 會在所有連接到私人雲端主機的交換器上自動設定。
 
 ## <a name="subnets"></a>子網路
 
@@ -33,7 +33,7 @@ CloudSimple 會針對您的 CloudSimple 服務部署所在的每個區域提供�
 
 ## <a name="vspherevsan-subnets-cidr-range"></a>vSphere/vSAN 子網 CIDR 範圍
 
-私用雲端會建立為 vCenter server 所管理的隔離 VMware 堆疊（ESXi 主機、vCenter、vSAN 和 NSX）環境。  管理元件會部署在為 vSphere/vSAN 子網 CIDR 選取的網路中。  在部署期間，網路 CIDR 範圍會分成不同的子網。
+私用雲端會建立為隔離的 VMware 堆疊 (ESXi 主機、vCenter、vSAN，以及由 vCenter server 管理的 NSX) 環境。  管理元件會部署在為 vSphere/vSAN 子網 CIDR 選取的網路中。  在部署期間，網路 CIDR 範圍會分成不同的子網。
 
 * 最小 vSphere/vSAN 子網 CIDR 範圍前置詞： **/24**
 * 最大 vSphere/vSAN 子網 CIDR 範圍前置詞： **/21**

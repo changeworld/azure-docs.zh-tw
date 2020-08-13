@@ -5,13 +5,13 @@ author: shreyasharmamsft
 ms.author: shresha
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 73d5c3abb2edc940bee9727ce1f3b0c4e8e0a62e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/12/2020
+ms.openlocfilehash: d0a5b48e93e839b0a0adaf185700d7f60fec7948
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289951"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140678"
 ---
 # <a name="time-series-model-variables"></a>時間序列模型變數
 
@@ -21,20 +21,20 @@ ms.locfileid: "87289951"
 
 * **數值**類型可搭配連續數值使用。
 * **類別**類型會使用一組已定義的離散值。
-* **匯總**種類結合了單一種類的多個變數（全部都是數值或所有類別）。
+* **匯總**種類結合了單一類型的多個變數 (所有數值或所有類別) 。
 
 下表顯示每個變數種類的相關屬性。
 
 [![時間序列模型變數資料表](media/v2-update-tsm/time-series-model-variable-table.png)](media/v2-update-tsm/time-series-model-variable-table.png#lightbox)
 
-#### <a name="numeric-variables"></a>數值變數
+## <a name="numeric-variables"></a>數值變數
 
 | Variable 屬性 | 說明 |
 | --- | ---|
 | 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
 | 變數值 | 用於計算來自裝置或感應器，或使用時間序列運算式轉換的遙測值。 數數值型別變數必須是*Double*類型。|
 | 變數插補 | 插補會指定如何使用現有的資料來重建信號。 [*步驟*] 和 [*線性*插補] 選項適用于數值變數。 |
-| 變數彙總 | 透過[數值變數種類的支援彙總函式來](https://docs.microsoft.com/rest/api/time-series-insights/preview#numeric-variable-kind-1)執行計算。 |
+| 變數彙總 | 透過[數值變數種類的支援彙總函式來](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#numeric-variable-kind)執行計算。 |
 
 變數符合下列 JSON 範例：
 
@@ -57,7 +57,7 @@ ms.locfileid: "87289951"
 }
 ```
 
-#### <a name="categorical-variables"></a>類別變數
+## <a name="categorical-variables"></a>類別變數
 
 | Variable 屬性 | 說明 |
 | --- | ---|
@@ -73,7 +73,7 @@ ms.locfileid: "87289951"
 "Status": {
   "kind": "categorical",
   "value": {
-     "tsx": "$event.Status.Long" 
+     "tsx": "$event.Status.Long"
 },
   "interpolation": {
     "kind": "step",
@@ -97,12 +97,12 @@ ms.locfileid: "87289951"
 }
 ```
 
-#### <a name="aggregate-variables"></a>匯總變數
+## <a name="aggregate-variables"></a>匯總變數
 
 | Variable 屬性 | 說明 |
 | --- | ---|
 | 變數篩選條件 | 篩選是選擇性的條件子句，可限制要考慮計算的資料列數目。 |
-| 變數彙總 | 透過[匯總變數種類支援的彙總函式來](https://docs.microsoft.com/rest/api/time-series-insights/preview#aggregate-variable-kind-1)執行計算。 |
+| 變數彙總 | 透過[匯總變數種類支援的彙總函式來](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#aggregate-variable-kind)執行計算。 |
 
 變數符合下列 JSON 範例：
 
@@ -123,4 +123,3 @@ ms.locfileid: "87289951"
 * 深入瞭解[時間序列模型](./concepts-model-overview.md)。
 
 * 深入瞭解如何使用[查詢 api](./concepts-query-overview.md)，以內嵌方式定義變數。
-

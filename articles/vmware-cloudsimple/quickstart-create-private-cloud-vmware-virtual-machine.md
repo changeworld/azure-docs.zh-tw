@@ -1,6 +1,6 @@
 ---
 title: 快速入門-在私人雲端上建立 Azure VMware VM-CloudSimple 的 Azure VMware 解決方案
-description: 說明如何在 CloudSimple 私人雲端上建立 Azure VMware VM
+description: 瞭解如何在 CloudSimple 私用雲端上建立 VMware 虛擬機器。 從 Azure 入口網站存取 CloudSimple 入口網站。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 000e30f2656b88c068654fd8099cdff0ce0a4b37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091261"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140848"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在您的私人雲端上建立 VMware 虛擬機器
 
@@ -94,11 +94,11 @@ VM 現在已新增至工作負載計算資源，並可供使用。
 
 下列各節包含有關設定私人雲端工作負載的 DNS 和 DHCP 伺服器，以及修改預設網路設定的選擇性資訊。
 
-## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>將使用者和身分識別來源新增至 vCenter （選擇性）
+## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>將使用者和身分識別來源新增至 vCenter (選擇性) 
 
 CloudSimple 會指派具有使用者名稱的預設 vCenter 使用者帳戶 `cloudowner@cloudsimple.local` 。 您不需要進行其他帳戶設定即可開始使用。  CloudSimple 通常會為系統管理員指派執行正常作業所需的許可權。  將您的內部部署 active directory 或 Azure AD 設定為私人雲端上的[其他身分識別來源](set-vcenter-identity.md)。
 
-## <a name="create-a-dns-and-dhcp-server-optional"></a>建立 DNS 和 DHCP 伺服器（選擇性）
+## <a name="create-a-dns-and-dhcp-server-optional"></a>建立 DNS 和 DHCP 伺服器 (選擇性) 
 
 在私人雲端環境中執行的應用程式和工作負載需要名稱解析和 DHCP 服務，才能進行查閱和 IP 位址指派。 必須要有適當的 DHCP 和 DNS 基礎結構，才能提供這些服務。 您可以在 vCenter 中設定虛擬機器，以在您的私用雲端環境中提供這些服務。
 
@@ -126,7 +126,7 @@ Linux 提供各種封裝來設定 DNS 伺服器。  以下是設定開放原始�
 
 [做為 DHCP 伺服器的 Windows Server](/windows-server/networking/technologies/dhcp/dhcp-top)
 
-## <a name="customize-networking-configuration-optional"></a>自訂網路設定（選擇性）
+## <a name="customize-networking-configuration-optional"></a>自訂網路設定 (選擇性) 
 
 CloudSimple 入口網站中的 [網路] 頁面可讓您指定防火牆資料表的設定和 Vm 的公用 IP 位址。
 
@@ -139,7 +139,7 @@ CloudSimple 入口網站中的 [網路] 頁面可讓您指定防火牆資料表�
 5. 如有需要，請使用滑杆來變更閒置超時。
 6. 輸入您要為其指派公用 IP 位址的本機 IP 位址。
 7. 如有需要，請輸入相關聯的 DNS 名稱。
-8. 按一下 [完成] 。
+8. 按一下 [完成]。
 
     ![公用 IP](media/quick-create-pc-public-ip.png)
 
@@ -209,17 +209,17 @@ python3 -m http.server 80
 
 ### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>公用 IP 的預設 CloudSimple 防火牆規則
 
-* VPN 流量：允許（從/到） VPN 與所有工作負載網路和管理網路之間的所有流量。
-* 私人雲端內部流量：允許（from/to）工作負載網路和管理網路（如上所示）之間的所有東部-西部流量。
+* VPN 流量：允許 (之間的所有流量) VPN 和所有工作負載網路和管理網路。
+* 私人雲端內部流量： (from/to) 工作負載網路和管理網路 (之間的所有東部-西部流量，並允許) 以上顯示。
 * 網際網路流量：
   * 所有來自網際網路的連入流量都會拒絕到工作負載網路和管理網路。
   * 允許從工作負載網路或管理網路到網際網路的所有連出流量。
 
 您也可以使用防火牆規則功能來修改流量的保護方式。 如需詳細資訊，請參閱[設定防火牆資料表和規則](firewall.md)。
 
-## <a name="install-solutions-optional"></a>安裝解決方案（選用）
+## <a name="install-solutions-optional"></a> (選擇性) 安裝解決方案
 
-您可以在 CloudSimple 私用雲端上安裝解決方案，以充分利用您的私用雲端 vCenter 環境。 您可以設定備份、嚴重損壞修復、複寫和其他功能來保護您的虛擬機器。 範例包括 VMware Site Recovery Manager （VMware SRM）和 Veeam Backup & 複寫。
+您可以在 CloudSimple 私用雲端上安裝解決方案，以充分利用您的私用雲端 vCenter 環境。 您可以設定備份、嚴重損壞修復、複寫和其他功能來保護您的虛擬機器。 範例包括 vmware Site Recovery Manager (VMware SRM) ，以及 Veeam 備份 & 複寫。
 
 若要安裝方案，您必須在有限期間內要求額外的許可權。 請參閱[提升許可權](escalate-private-cloud-privileges.md)。
 

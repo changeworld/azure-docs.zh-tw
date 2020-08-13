@@ -3,15 +3,15 @@ title: 針對遠端桌面用戶端 Windows 虛擬桌面進行疑難排解-Azure
 description: 如何解決在 Windows 虛擬桌面租用戶環境中設定用戶端連線時的問題。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ac2eb2632ad96538e965e4d1057d7e4a116c05d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009387"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134474"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>針對遠端桌面用戶端進行疑難排解
 
@@ -41,13 +41,13 @@ nslookup rdweb.wvd.microsoft.com
 
 請嘗試與其他用戶端連線，例如適用于 Windows 7 或 Windows 10 的遠端桌面用戶端，並檢查您是否可以開啟網頁用戶端。
 
-### <a name="opening-another-site-fails"></a>開啟另一個網站失敗
+### <a name="cant-open-other-websites-while-connected-to-the-web-client"></a>連線到 web 用戶端時，無法開啟其他網站
 
-這通常是因網路連線問題或網路中斷所造成。 我們建議您洽詢網路支援。
+如果您在連線到 web 用戶端時無法開啟其他網站，可能是網路連線問題或網路中斷。 我們建議您洽詢網路支援。
 
-### <a name="nslookup-cannot-resolve-the-name"></a>Nslookup 無法解析名稱
+### <a name="nslookup-cant-resolve-the-name"></a>Nslookup 無法解析名稱
 
-這通常是因網路連線問題或網路中斷所造成。 我們建議您洽詢網路支援。
+如果 nslookup 無法解析名稱，則可能是網路連線問題或網路中斷。 我們建議您洽詢網路支援。
 
 ### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>您的用戶端無法連線，但您網路上的其他用戶端可以連接
 
@@ -58,11 +58,13 @@ nslookup rdweb.wvd.microsoft.com
 3. 清除瀏覽器快取。 請參閱[清除瀏覽器的瀏覽器](https://binged.it/2RKyfdU)快取。
 4. 以私用模式開啟瀏覽器。
 
-## <a name="web-client-does-not-show-my-resources"></a>Web 用戶端不會顯示我的資源
+## <a name="client-doesnt-show-my-resources"></a>用戶端不會顯示我的資源
 
-首先，請檢查您所使用的 Azure Active Directory 帳戶。 如果您已使用不同于您想要用於 Windows 虛擬桌面的 Azure Active Directory 帳戶登入，您應該簽署或使用私用瀏覽器視窗。
+首先，請檢查您所使用的 Azure Active Directory 帳戶。 如果您已使用不同於您想要用於 Windows 虛擬桌面的 Azure Active Directory 帳戶登入，請登出或使用私人瀏覽器視窗。
 
 如果您使用 Windows 虛擬桌面 (傳統) ，請使用本文中的 web 用戶端連結[連線到您](./virtual-desktop-fall-2019/connect-web-2019.md)的資源。
+
+如果無法解決問題，請確定您的應用程式群組與工作區相關聯。
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Web 用戶端停止回應或中斷連線
 

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/09/2020
 ms.author: juliako
-ms.openlocfilehash: 5f8fb98b1032111eb55197fa5b7d561019be9de3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c2d55b15fb69fe4c1aea21bb2183f0e40c3586c
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074487"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136485"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>教學課程：使用媒體服務 v3 上傳、編碼和串流處理影片
 
@@ -72,7 +72,7 @@ Azure 媒體服務可讓您將媒體檔案編碼成可在各種不同的瀏覽�
 6. 建立**串流定位器**。
 7. 建置串流 URL。
 
-### <a name="start-using-media-services-apis-with-net-sdk"></a><a id="start_using_dotnet" />開始使用媒體服務 API 搭配 .NET SDK
+### <a name="start-using-media-services-apis-with-net-sdk"></a>開始搭配使用媒體服務 API 與 .NET SDK
 
 若要開始搭配使用媒體服務 API 與 .NET，您需要建立 **AzureMediaServicesClient** 物件。 若要建立物件，您需要提供必要的認證，讓用戶端使用 Azure AD 連線至 Azure。 在您於本文一開始複製的程式碼中，**GetCredentialsAsync** 函式會根據本機組態檔中提供的認證建立 ServiceClientCredentials 物件。
 

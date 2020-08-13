@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/05/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5f0d66a515ed13f96645e5916af2b01841950375
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f38b2715115efadef4e09a95e9392b1dfd4c68b0
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846593"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135737"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 變更摘要處理器 SDK：下載和版本資訊
 
@@ -49,6 +49,9 @@ ms.locfileid: "87846593"
 ## <a name="release-notes"></a>版本資訊
 
 ### <a name="v2-builds"></a>v2 組建
+
+### <a name="232"></a><a name="2.3.2"/>2.3.2
+* 已新增與[V3 SDK](sql-api-sdk-dotnet-standard.md)的租用存放區相容性，可啟用熱遷移路徑。 應用程式可以遷移至 V3 SDK，並遷移回變更摘要處理器程式庫，而不會遺失任何狀態。
 
 ### <a name="231"></a><a name="2.3.1"/>2.3.1
 * 已更正當 `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` 找不到分割區， `FeedProcessing.IChangeFeedObserver.CloseAsync` 或目標複本不是最新的讀取會話時，將關閉原因傳送到的情況。 在這些情況下 `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ， `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` 現在會使用關閉的原因。
@@ -193,6 +196,7 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |2020年8月11日 |--- |
 | [2.3.1](#2.3.1) |2020年7月30日 |--- |
 | [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |
 | [2.2.8](#2.2.8) |2019 年 10 月 28 日 |--- |

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 08/11/2020
 ms.author: allensu
-ms.openlocfilehash: 93ce3b02ef8963a33e485b6560516e1d2b9c1ef5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
-ms.translationtype: HT
+ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424012"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135805"
 ---
 # <a name="what-is-virtual-network-nat"></a>什麼是虛擬網路 NAT？
 
@@ -153,7 +153,6 @@ NAT 是透過標準支援管道來支援。
 
 * NAT 與標準 SKU 公用 IP、公用 IP 前置詞和負載平衡器資源相容。 基本資源 (例如基本負載平衡器) 及其衍生的所有產品都不會與 NAT 相容。  基本資源必須置於未透過 NAT 設定的子網路上。
 * 支援 IPv4 位址系列。  NAT 不會與 IPv6 位址系列互動。  NAT 無法部署在具有 IPv6 首碼的子網路上。
-* 使用 NAT 時，不支援 NSG 流量記錄。
 * NAT 無法跨越多個虛擬網路。
 
 ## <a name="next-steps"></a>後續步驟

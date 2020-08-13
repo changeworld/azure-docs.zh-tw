@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: bf6215bd9225292f7b85ed6d4c4566cd4ee860b7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902094"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136332"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商業市集的地理可用性和貨幣支援
 
@@ -179,11 +179,7 @@ ms.locfileid: "87902094"
 > [!NOTE]
 > 在您的方案中發佈市場價格之後，之後就無法進行變更。 若要在發佈之前確保價格正確，請匯出定價試算表，並檢閱每個市場的價格。
 
-## <a name="rate-changes"></a>速率變更
-
-我們用來計算當地價格的費率會每日更新。 這項計算是在 ISV 儲存頁面時完成，而且可以在發行前先匯出和查看價格來審查所有的費率。
-
-### <a name="retrieving-currency-information-by-api"></a>依 API 正在抓取貨幣資訊
+## <a name="retrieving-currency-information-by-api"></a>依 API 正在抓取貨幣資訊
 
 個別價格 (，根據其設定方式，可能會受到其儲存當天的匯率影響，) 可以使用 API 來抓取。無法進行貨幣資訊。
 

@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: 4ff80330ab6244bc9d108b7f5a1d4e4e0dbd4feb
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6e03b8f89ec22b74ad7dd14d9225c11fde78ec7f
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387399"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135618"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立適用於 PostgreSQL 的 Azure 資料庫 - 超大規模 (Citus)
 
@@ -115,7 +115,7 @@ GROUP BY hour
 ORDER BY hour;
 ```
 
-到目前為止，查詢已獨家參與 github\_events，但我們可以結合此資訊與 github\_users。 因為我們已將相同識別碼 (`user_id`) 上的 users 和 events 分區化，所以使用者識別碼相符的這兩個資料表上的資料列將[共置](https://docs.citusdata.com/en/stable/sharding/data_modeling.html#colocation)於相同的資料庫節點上，並可輕鬆地聯結。
+到目前為止，查詢已獨家參與 github\_events，但我們可以結合此資訊與 github\_users。 因為我們已將相同識別碼 (`user_id`) 上的 users 和 events 分區化，所以使用者識別碼相符的這兩個資料表上的資料列將[共置](concepts-hyperscale-colocation.md)於相同的資料庫節點上，並可輕鬆地聯結。
 
 如果我們在 `user_id` 上聯結，Hyperscale 可以將聯結執行向下推送到分區，進而以平行方式在背景工作角色節點上執行。 例如，讓我們找出建立最多存放庫的使用者：
 

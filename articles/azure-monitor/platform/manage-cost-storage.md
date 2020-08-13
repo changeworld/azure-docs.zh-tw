@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: e6e1c6a02979ff6621961e17378c7fe2c9a1592b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 391a5f054c5d80b255fd333ea416900c8c5ab6d1
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926343"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135414"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure 監視器記錄來管理使用量和成本    
 
@@ -266,8 +266,7 @@ Heartbeat
 若要取得過去 24 小時內傳送資料的節點計數，請使用查詢： 
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project Computer
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize nodes = dcount(computerName)
@@ -276,15 +275,14 @@ union *
 若要取得傳送任何資料的節點清單 (以及每個節點傳送的資料量)，則可以使用下列查詢：
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _BilledSize, Computer
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
 > [!TIP]
-> 請謹慎使用這些 `union *` 查詢，因為執行跨資料類型掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型 (請參閱下文)。
+> 請謹慎使用這些 `find` 查詢，因為執行跨資料類型掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型 (請參閱下文)。
 
 ## <a name="understanding-ingested-data-volume"></a>了解已擷取的資料量
 
@@ -346,8 +344,7 @@ Usage
 `Usage` 資料類型不包含電腦層級的資訊。 若要查看每一部電腦已擷取的資料**大小**，請使用會提供大小 (以位元組為單位) 的 `_BilledSize` [屬性](log-standard-properties.md#_billedsize)：
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, Computer
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize BillableDataBytes = sum(_BilledSize) by  computerName 
@@ -359,8 +356,7 @@ union *
 若要查看每一部電腦所擷取的可計費事件**計數**，請使用 
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _IsBillable, Computer
 | where _IsBillable == true 
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize eventCount = count() by computerName  
@@ -368,15 +364,14 @@ union *
 ```
 
 > [!TIP]
-> 請謹慎使用這些 `union  *` 查詢，因為執行跨資料類型掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型。
+> 請謹慎使用這些 `find` 查詢，因為執行跨資料類型掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)。 如果您不需要**每一部電腦**的結果，則請查詢 Usage 資料類型。
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>資料量 (依 Azure 資源、資源群組或訂用帳戶)
 
 針對 Azure 中所裝載節點的資料，您可以取得__每一部電腦__所擷取資料的**大小**，使用 _ResourceId [屬性](log-standard-properties.md#_resourceid)，此屬性會提供資源的完整路徑：
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
 | where _IsBillable == true 
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by BillableDataBytes nulls last
 ```
@@ -384,22 +379,20 @@ union *
 針對 Azure 中裝載之節點的資料，您可以取得__每個 azure 訂__用帳戶的內嵌資料**大小**，取得訂用帳戶 ID `_ResourceId` 屬性為：
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
 | where _IsBillable == true 
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
-| extend subscriptionId = split(_ResourceId, "/")[2] 
+| extend subscriptionId = tostring(split(_ResourceId, "/")[2]) 
 | summarize BillableDataBytes = sum(BillableDataBytes) by subscriptionId | sort by BillableDataBytes nulls last
 ```
 
 同樣地，若要依資源群組取得資料量，這會是：
 
 ```kusto
-union * 
-| where TimeGenerated > ago(24h)
+find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
 | where _IsBillable == true 
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
-| extend resourceGroup = split(_ResourceId, "/")[4] 
+| extend resourceGroup = tostring(split(_ResourceId, "/")[4] )
 | summarize BillableDataBytes = sum(BillableDataBytes) by resourceGroup | sort by BillableDataBytes nulls last
 ```
 
@@ -411,7 +404,7 @@ union *
 ```
 
 > [!TIP]
-> 請謹慎使用這些 `union  *` 查詢，因為執行跨資料類型掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)。 如果您不需要每一訂用帳戶、資源群組或資源名稱的結果，請查詢 Usage 資料類型。
+> 請謹慎使用這些 `find` 查詢，因為執行跨資料類型掃描會[耗用大量資源](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane)。 如果您不需要每一訂用帳戶、資源群組或資源名稱的結果，請查詢 Usage 資料類型。
 
 > [!WARNING]
 > [使用量] 資料類型的部分欄位雖然仍位於結構描述中，但皆已過時，且系統將不再填入其值。 這包括 [Computer]，以及其他與擷取相關的欄位 ([TotalBatches]、[BatchesWithinSla]、[BatchesOutsideSla]、[BatchesCapped]，以及 [AverageProcessingTimeMs])。
@@ -458,8 +451,7 @@ union *
 若要在工作區位於舊版的每一節點定價層時，取得會以節點形式計費的電腦清單，請尋找會傳送**已計費資料類型** (某些資料類型是免費的) 的節點。 若要這麼做，請使用 `_IsBillable` [屬性](log-standard-properties.md#_isbillable)，並使用完整網域名稱的最左邊欄位。 這會傳回具有每小時 (這是節點的計算和計費細微性) 已計費資料的電腦計數：
 
 ```kusto
-union * 
-| where _IsBillable == true 
+find where TimeGenerated > ago(24h) project Computer, TimeGenerated
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize billableNodes=dcount(computerName) by bin(TimeGenerated, 1h) | sort by TimeGenerated asc

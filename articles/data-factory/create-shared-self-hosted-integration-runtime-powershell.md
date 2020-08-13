@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 03e906d448790be8c7494e8172d02b3fc0603673
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 28836d0b1109952d8cf81c66b44b1f98d9b770bf
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067948"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136026"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中建立共用的自我裝載整合執行階段
 
@@ -155,7 +155,7 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
 #### <a name="create-another-data-factory"></a>建立另一個資料處理站
 
 > [!NOTE]  
-> 此為選用步驟。 如果您已有要共用的資料處理站，請略過此步驟。 但在或中，若要新增或移除其他資料處理站的角色指派，您必須具有 `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 許可權，例如 [[使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)] 或 [[擁有](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)者]。
+> 此為選用步驟。 如果您已有要共用的資料處理站，請略過此步驟。 但是，若要新增或移除其他資料處理站的角色指派，您必須具有 `Microsoft.Authorization/roleAssignments/write` 和 `Microsoft.Authorization/roleAssignments/delete` 許可權，例如 [[使用者存取系統管理員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)] 或 [[擁有](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)者]。
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `

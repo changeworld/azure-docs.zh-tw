@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: b-juche
-ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533133"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134491"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>關於 Azure NetApp Files 的常見問題
 
-本文會回答有關 Azure NetApp Files 的常見問題（Faq）。 
+本文會回答有關 Azure NetApp Files (常見問題) 常見問題。 
 
 ## <a name="networking-faqs"></a>網路功能常見問題
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 資料路徑是否經過網際網路？  
 
-否。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是一種 Azure 原生服務，可部署到提供服務的 Azure 虛擬網路（VNet）中。 Azure NetApp Files 會使用委派的子網，並直接在 VNet 上布建網路介面。 
+否。 NFS 資料路徑不會經過網際網路。 Azure NetApp Files 是一種 Azure 原生服務，可部署到可使用服務的 Azure 虛擬網路 (VNet) 中。 Azure NetApp Files 會使用委派的子網，並直接在 VNet 上布建網路介面。 
 
 如需詳細資訊，請參閱[Azure NetApp Files 網路規劃的指導方針](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)。  
 
@@ -54,7 +54,7 @@ ms.locfileid: "87533133"
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Azure VM 與儲存體之間的網路流量是否可以加密？
 
-資料流量（從 NFSv3、NFSv 4.1 或 SMBv3 用戶端到 Azure NetApp Files 磁片區的流量）不會加密。 不過，從 Azure VM （執行 NFS 或 SMB 用戶端）到 Azure NetApp Files 的流量，與任何其他 Azure VM 到 VM 的流量一樣安全。 這是 Azure 資料中心網路的本機流量。 
+從 NFSv3、NFSv 4.1 或 SMBv3 用戶端到 Azure NetApp Files 磁片區) 的資料流量 (流量不會加密。 不過，從 Azure VM (執行 NFS 或 SMB 用戶端) 到 Azure NetApp Files 的流量，與任何其他 Azure VM 到 VM 的流量一樣安全。 這是 Azure 資料中心網路的本機流量。 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>儲存體可以在待用時加密嗎？
 
@@ -64,7 +64,7 @@ ms.locfileid: "87533133"
 
 Azure NetApp Files 的金鑰管理是由服務所處理。 會針對每個磁片區產生唯一的 XTS-AES-256 資料加密金鑰。 加密金鑰階層用來加密和保護所有磁片區金鑰。 這些加密金鑰永遠不會以未加密的格式顯示或報告。 刪除磁片區時，會立即刪除加密金鑰。
 
-使用 Azure 專用 HSM 的使用者管理金鑰（攜帶您自己的金鑰）支援可在美國東部、美國西部2和美國中南部區域以控制的基礎提供。  您可以在要求存取權 **anffeedback@microsoft.com** 。 當容量可供使用時，將會核准要求。
+支援使用者管理的金鑰 (攜帶您自己的金鑰) 使用 Azure 專用 HSM 可在美國東部、US 西部2和美國中南部區域以控制的基礎提供。  您可以在要求存取權 **anffeedback@microsoft.com** 。 當容量可供使用時，將會核准要求。
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>我可以設定 NFS 匯出原則規則來控制 Azure NetApp Files 服務裝載目標的存取權嗎？
 
@@ -131,7 +131,7 @@ Azure NetApp Files 支援 NFSv3 和 NFSv 4.1。 您可以使用任何一個 NFS 
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Azure NetApp Files 支援哪些 SMB 版本？
 
-Azure NetApp Files 支援 SMB 2.1 和 SMB 3.1 （其中包含 SMB 3.0 的支援）。    
+Azure NetApp Files 支援 SMB 2.1 和 SMB 3.1 (，其中包含 SMB 3.0) 的支援。    
 
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>SMB 存取需要 Active Directory 連接嗎？ 
 
@@ -139,13 +139,13 @@ Azure NetApp Files 支援 SMB 2.1 和 SMB 3.1 （其中包含 SMB 3.0 的支援�
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>支援多少個 Active Directory 連接？
 
-即使 AD 連線是在不同的 NetApp 帳戶中，Azure NetApp Files 也不支援單一*區域*中的多個 ACTIVE DIRECTORY （AD）連線。 不過，只要 AD 連線位於不同的區域中，您就可以在單一*訂*用帳戶中有多個 ad 連接。 如果您在單一區域中需要多個 AD 連線，您可以使用不同的訂用帳戶來執行這項操作。 
+即使 AD 連線是在不同的 NetApp 帳戶中，Azure NetApp Files 也不支援在單一*區域*中 (ad) 連線的多個 Active Directory。 不過，只要 AD 連線位於不同的區域中，您就可以在單一*訂*用帳戶中有多個 ad 連接。 如果您在單一區域中需要多個 AD 連線，您可以使用不同的訂用帳戶來執行這項操作。 
 
 AD 連線設定為每個 NetApp 帳戶;AD 連線只會透過其建立所在的 NetApp 帳戶來顯示。
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp Files 是否支援 Azure Active Directory？ 
 
-同時支援[Azure Active Directory （AD）網域服務](https://docs.microsoft.com/azure/active-directory-domain-services/overview)和[Active Directory Domain Services （AD DS）](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) 。 您可以使用現有的 Active Directory 網域控制站搭配 Azure NetApp Files。 網域控制站可位於 Azure 中做為虛擬機器，或透過 ExpressRoute 或 S2S VPN 在內部部署。 Azure NetApp Files 目前不支援[Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/)的 AD 聯結。
+支援[ (AD) 網域服務](https://docs.microsoft.com/azure/active-directory-domain-services/overview)和[Active Directory Domain Services (](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) AD DS) Azure Active Directory。 您可以使用現有的 Active Directory 網域控制站搭配 Azure NetApp Files。 網域控制站可位於 Azure 中做為虛擬機器，或透過 ExpressRoute 或 S2S VPN 在內部部署。 Azure NetApp Files 目前不支援[Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/)的 AD 聯結。
 
 如果您將 Azure NetApp Files 與 Azure Active Directory Domain Services 搭配使用，當您為 NetApp 帳戶設定 Active Directory 時，組織單位路徑是 `OU=AADDC Computers`。
 
@@ -177,6 +177,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 若要避免「許可權被拒」的問題，請在 `pcuser` 存取掛接點之前，先確定 Windows Active Directory 包含。 如果您在 `pcuser` 遇到「許可權被拒」的問題之後加入，請等候24小時讓快取專案清除，然後再次嘗試存取。
 
+### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>當我嘗試建立雙重通訊協定磁片區時，為什麼建立程式失敗，錯誤為「無法驗證 LDAP 設定，請在更正 LDAP 設定後再試一次」？  
+
+DNS 伺服器上可能遺失 AD 主機電腦 (PTR) 記錄的指標。 您必須在 DNS 伺服器上建立反向對應區域，然後在該反向對應區域中新增 AD 主機電腦的 PTR 記錄。
+
+例如，假設 AD 電腦的 IP 位址是 `1.1.1.1` 、ad 電腦的主機名稱 (如使用命令找到的 `hostname`) 是 `AD1` ，且功能變數名稱為 `myDomain.com` 。  加入至反向對應區域的 PTR 記錄應該是 `1.1.1.1`  ->  `AD1.myDomain.com` 。
 
 ## <a name="capacity-management-faqs"></a>容量管理常見問題
 
@@ -190,9 +195,9 @@ Azure NetApp Files 提供容量集區和磁片區使用計量。 您也可以使
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何? 判斷目錄是否已接近限制大小？
 
-您可以 `stat` 從用戶端使用命令來查看目錄是否已接近目錄中繼資料（320 MB）的大小上限。
+您可以使用 `stat` 來自用戶端的命令，查看目錄是否已接近目錄中繼資料的大小上限 (320 MB) 。
 
-若為 320 MB 目錄，區塊數目為655360，每個區塊大小為512個位元組。  （也就是 320x1024x1024/512）。  
+若為 320 MB 目錄，區塊數目為655360，每個區塊大小為512個位元組。   (也就是 320x1024x1024/512。 )   
 
 範例：
 

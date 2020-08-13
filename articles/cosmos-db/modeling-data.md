@@ -7,12 +7,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 41fed622b14c10d3fbc7dfedca7ebc53a8efbc66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799338"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136034"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB 中的資料模型化
 
@@ -37,7 +37,7 @@ ms.locfileid: "85799338"
 
 使用關係資料庫時，策略是將您的所有資料標準化。 將您的資料正規化通常牽涉到取得實體（例如個人），然後將它細分為不同的元件。 在上述範例中，一個人可以有多個連絡人詳細資料記錄，以及多個地址記錄。 藉由進一步將一般欄位（例如類型）解壓縮，可以進一步細分連絡人詳細資料。 這同樣適用于位址，每筆記錄可以是*Home*或*Business*類型。
 
-將資料正規化的引導前提是在每個記錄資料上 **避免儲存多餘的資料** ，而是參考資料。 在此範例中，若要讀取個人及其所有連絡人的詳細資料和位址，您必須使用聯結，在執行時間有效地為您的資料進行重新撰寫（或反正規化）。
+將資料正規化的引導前提是在每個記錄資料上 **避免儲存多餘的資料** ，而是參考資料。 在此範例中，若要讀取個人及其所有連絡人詳細資料和位址，您必須使用聯結，有效地在執行時間 (或反正規化) 您的資料。
 
 ```sql
 SELECT p.FirstName, p.LastName, a.City, cd.Detail
@@ -329,7 +329,7 @@ Joining documents:
 
 ```json
 Author documents:
-{"id": "a1", "name": "Thomas Andersen", "books": ["b1, "b2", "b3"]}
+{"id": "a1", "name": "Thomas Andersen", "books": ["b1", "b2", "b3"]}
 {"id": "a2", "name": "William Wakefield", "books": ["b1", "b4"]}
 
 Book documents:
@@ -339,7 +339,7 @@ Book documents:
 {"id": "b4", "name": "Deep Dive into Azure Cosmos DB", "authors": ["a2"]}
 ```
 
-現在，如果我有一個作者，我會立即知道他們寫了哪些書籍，相反地，如果我已經載入書籍檔，我就知道作者的識別碼。 這樣可以省下對聯結資料表的中繼查詢，減少您的應用程式必須進行的伺服器來回行程數目。
+現在，如果我有一位作者，我會立即知道他們寫了哪些書籍，相反地，如果我已載入書籍檔，我知道作者的識別碼 (s) 。 這樣可以省下對聯結資料表的中繼查詢，減少您的應用程式必須進行的伺服器來回行程數目。
 
 ## <a name="hybrid-data-models"></a>混合式資料模型
 

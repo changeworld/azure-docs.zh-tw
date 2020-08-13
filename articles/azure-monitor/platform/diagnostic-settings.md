@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: ff0df654650bb1c32d5c3e9833ebde2a81e3d65c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799951"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135431"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>建立診斷設定以將平台記錄和計量傳送至不同目的地
 Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記錄檔和資源記錄，可針對 Azure 資源和其相依的 azure 平臺提供詳細的診斷和審核資訊。 預設會收集[平臺計量](data-platform-metrics.md)，而且通常會儲存在 Azure 監視器計量資料庫中。 本文提供有關建立及設定診斷設定的詳細資料，以將平臺計量和平臺記錄檔傳送至不同的目的地。
@@ -41,34 +41,24 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
 
 
 ## <a name="destinations"></a>Destinations
-
-平臺記錄和計量可以傳送至下表中的目的地。 請遵循下表中的每個連結，以取得將資料傳送至該目的地的詳細資訊。
+平臺記錄和計量可以傳送至下表中的目的地。 
 
 | Destination | 描述 |
 |:---|:---|
-| [Log Analytics 工作區](#log-analytics-workspace) | 將記錄和計量傳送至 Log Analytics 工作區，可讓您使用功能強大的記錄查詢 Azure 監視器所收集的其他監視資料進行分析，也可以利用警示和視覺效果等其他 Azure 監視器功能。 |
-| [事件中樞](#event-hub) | 將記錄和計量傳送至事件中樞可讓您將資料串流至外部系統，例如協力廠商 Siem 和其他 log analytics 解決方案。 |
-| [Azure 儲存體帳戶](#azure-storage) | 將記錄和計量封存到 Azure 儲存體帳戶適用于 audit、靜態分析或備份。 相較于 Azure 監視器記錄和 Log Analytics 工作區，Azure 儲存體的成本較低，而且記錄可以無限期保存。 |
+| [Log Analytics 工作區](design-logs-deployment.md) | 將記錄和計量傳送至 Log Analytics 工作區，可讓您使用功能強大的記錄查詢 Azure 監視器所收集的其他監視資料進行分析，也可以利用警示和視覺效果等其他 Azure 監視器功能。 |
+| [事件中樞](/azure/event-hubs/) | 將記錄和計量傳送至事件中樞可讓您將資料串流至外部系統，例如協力廠商 Siem 和其他 log analytics 解決方案。  |
+| [Azure 儲存體帳戶](/azure/storage/blobs/) | 將記錄和計量封存到 Azure 儲存體帳戶適用于 audit、靜態分析或備份。 相較于 Azure 監視器記錄和 Log Analytics 工作區，Azure 儲存體的成本較低，而且記錄可以無限期保存。  |
 
 
-## <a name="prerequisites"></a>必要條件
-您必須使用必要的許可權來建立診斷設定的任何目的地。 請參閱下列各節，以瞭解每個目的地的必要條件需求。
+### <a name="destination-requirements"></a>目的地需求
 
-### <a name="log-analytics-workspace"></a>Log Analytics 工作區
-[建立新的工作區](../learn/quick-create-workspace.md)（如果您還沒有的話）。 工作區不一定要與資源傳送記錄位於相同的訂用帳戶中，前提是設定此設定的使用者具有這兩個訂用帳戶的適當 RBAC 存取權。
+在建立診斷設定之前，必須先建立診斷設定的任何目的地。 目的地不一定要與資源傳送記錄位於相同的訂用帳戶中，前提是設定此設定的使用者具有這兩個訂用帳戶的適當 RBAC 存取權。 下表提供每個目的地的獨特需求，包括任何區域限制。
 
-### <a name="event-hub"></a>事件中樞
-[建立事件中樞](../../event-hubs/event-hubs-create.md)（如果您還沒有的話）。 事件中樞命名空間不一定要與發出記錄的訂用帳戶位於相同的訂用帳戶中，只要設定此設定的使用者具有這兩個訂用帳戶的適當 RBAC 存取權，而且兩個訂用帳戶都位於相同的租使用者中即可。
-
-命名空間的共用存取原則會定義串流機制擁有的許可權。 串流至事件中樞需要 [管理]、[傳送] 和 [接聽] 許可權。 您可以在事件中樞命名空間的 [設定] 索引標籤下的 Azure 入口網站中，建立或修改共用存取原則。 若要更新診斷設定以包含串流，您必須具有該事件中樞授權規則的 ListKey 許可權。 
-
-
-### <a name="azure-storage"></a>Azure 儲存體
-如果您還沒有[Azure 儲存體帳戶](../../storage/common/storage-account-create.md)，請建立一個。 儲存體帳戶不一定要與資源傳送記錄位於相同的訂用帳戶中，前提是設定此設定的使用者具有這兩個訂用帳戶的適當 RBAC 存取權。
-
-您不應該使用已儲存其他非監視資料的現有儲存體帳戶，讓您可以更有效地控制資料的存取權。 不過，如果您要同時封存活動記錄檔和資源記錄，您可以選擇使用相同的儲存體帳戶，將所有監視資料保留在中央位置。
-
-若要將資料傳送至不可變的儲存體，請設定儲存體帳戶的不可變原則，如[設定和管理 Blob 儲存體](../../storage/blobs/storage-blob-immutability-policies-manage.md)的不可變性原則中所述。 您必須遵循本文中的所有步驟，包括啟用受保護的附加 blob 寫入。
+| Destination | 需求 |
+|:---|:---|
+| Log Analytics 工作區 | 工作區不需要與受監視資源位於相同的區域。|
+| 事件中樞 | 命名空間的共用存取原則會定義串流機制擁有的許可權。 串流至事件中樞需要 [管理]、[傳送] 和 [接聽] 許可權。 若要更新診斷設定以包含串流，您必須具有該事件中樞授權規則的 ListKey 許可權。<br><br>如果資源是區域，事件中樞命名空間必須與受監視資源位於相同的區域。 |
+| Azure 儲存體帳戶 | 您不應該使用已儲存其他非監視資料的現有儲存體帳戶，讓您可以更有效地控制資料的存取權。 不過，如果您要同時封存活動記錄檔和資源記錄，您可以選擇使用相同的儲存體帳戶，將所有監視資料保留在中央位置。<br><br>若要將資料傳送至不可變的儲存體，請設定儲存體帳戶的不可變原則，如[設定和管理 Blob 儲存體](../../storage/blobs/storage-blob-immutability-policies-manage.md)的不可變性原則中所述。 您必須遵循本文中的所有步驟，包括啟用受保護的附加 blob 寫入。<br><br>如果資源是區域，則儲存體帳戶必須位於與受監視資源相同的區域中。 |
 
 > [!NOTE]
 > Azure Data Lake Storage Gen2 帳戶目前不支援做為診斷設定的目的地，即使其在 Azure 入口網站中可能列為有效的選項。
@@ -138,7 +128,7 @@ Azure 中的[平臺記錄](platform-logs-overview.md)，包括 azure 活動記�
         >
         > 例如，如果您將*WorkflowRuntime*的保留原則設定為180天，並在24小時後將它設定為365天，則前24小時內儲存的記錄將會在180天后自動刪除，而該類型的所有後續記錄檔將會在365天后自動刪除。 稍後變更保留原則並不會讓前24小時的記錄持續365天。
 
-6. 按一下 [儲存]。
+6. 按一下 [檔案] 。
 
 幾分鐘之後，新的設定就會出現在此資源的設定清單中，而且記錄會在產生新的事件資料時串流處理至指定的目的地。 在事件發出和[記錄分析工作區中顯示](data-ingestion-time.md)時，可能需要15分鐘的時間。
 

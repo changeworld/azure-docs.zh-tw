@@ -7,13 +7,13 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 3e4b44c8f784524b4cd363a2f4531c5bf0a70e0d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.custom: contperfq1
+ms.openlocfilehash: a75fbeb9a12f61f827411e56c57ff6a4460ab083
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041590"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136264"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 應用程式中定義新的 IoT 裝置類型
 
@@ -118,7 +118,7 @@ ms.locfileid: "88041590"
 
 下表顯示遙測功能的組態設定：
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 | ----- | ----------- |
 | 顯示名稱 | 儀表板和表單上所用遙測值的顯示名稱。 |
 | 名稱 | 遙測訊息中的欄位名稱。 IoT Central 會從顯示名稱產生此欄位的值，但如有必要，您也可以選擇自己所要使用的值。 此欄位必須是英數位元。 |
@@ -130,7 +130,7 @@ ms.locfileid: "88041590"
 | 單位 | 遙測值的單位，例如**mph**、 **%** 或** &deg; C**。 |
 | 顯示單位 | 要在儀表板和表單上使用的顯示單位。 |
 | 註解 | 遙測功能的任何相關註解。 |
-| 描述 | 遙測功能的說明。 |
+| 說明 | 遙測功能的說明。 |
 
 ### <a name="properties"></a>屬性
 
@@ -138,7 +138,7 @@ ms.locfileid: "88041590"
 
 下表顯示屬性功能的組態設定：
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 | ----- | ----------- |
 | 顯示名稱 | 儀表板和表單上所用屬性值的顯示名稱。 |
 | 名稱 | 屬性的名稱。 IoT Central 會從顯示名稱產生此欄位的值，但如有必要，您也可以選擇自己所要使用的值。 此欄位必須是英數位元。 |
@@ -151,7 +151,7 @@ ms.locfileid: "88041590"
 | 單位 | 屬性值的單位，例如**mph**、 **%** 或** &deg; C**。 |
 | 顯示單位 | 要在儀表板和表單上使用的顯示單位。 |
 | 註解 | 屬性功能的任何相關註解。 |
-| 描述 | 屬性功能的說明。 |
+| 說明 | 屬性功能的說明。 |
 
 ### <a name="commands"></a>命令
 
@@ -159,14 +159,14 @@ ms.locfileid: "88041590"
 
 下表顯示命令功能的組態設定：
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 | ----- | ----------- |
 | 顯示名稱 | 儀表板和表單上所用命令的顯示名稱。 |
 | 名稱 | 命令的名稱。 IoT Central 會從顯示名稱產生此欄位的值，但如有必要，您也可以選擇自己所要使用的值。 此欄位必須是英數位元。 |
 | 功能類型 | 命令。 |
-| Command | `SynchronousExecutionType`. |
+| 命令 | `SynchronousExecutionType`. |
 | 註解 | 有關命令功能的任何註解。 |
-| 描述 | 命令功能的說明。 |
+| 說明 | 命令功能的說明。 |
 | 要求 | 若啟用，則為要求參數的定義，包括：名稱、顯示名稱、結構描述、單位和顯示單位。 |
 | 回應 | 若啟用，則為命令回應的定義，包括：名稱、顯示名稱、結構描述、單位和顯示單位。 |
 
@@ -182,7 +182,7 @@ ms.locfileid: "88041590"
 
 下表顯示雲端屬性的組態設定：
 
-| 欄位 | 描述 |
+| 欄位 | 說明 |
 | ----- | ----------- |
 | 顯示名稱 | 儀表板和表單上所用雲端屬性值的顯示名稱。 |
 | 名稱 | 雲端屬性的名稱。 IoT Central 會從顯示名稱產生此欄位的值，但如有必要，您也可以選擇自己所要使用的值。 |

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: a4594ca1a992f158522eccb4ffa6e846a1f4f605
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c0f23c864430b6cb2f49f924d5aaa8bde296037c
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406277"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135958"
 ---
-# <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory 受控虛擬網路（預覽）
+# <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory 受控虛擬網路 (preview) 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "87406277"
 
 ## <a name="managed-virtual-network"></a>受控虛擬網路
 
-當您在 Azure Data Factory 受控虛擬網路（VNET）內建立 Azure Integration Runtime （IR）時，整合執行時間將會以受控虛擬網路布建，並會利用私人端點安全地連線到支援的資料存放區。 
+當您在 Azure Data Factory 受控虛擬網路 (VNET) 中建立 Azure Integration Runtime (IR) 時，整合執行時間將會以受控虛擬網路布建，並會利用私人端點安全地連線到支援的資料存放區。 
 
 在 managed 虛擬網路內建立 Azure IR 可確保資料整合程式已隔離且安全。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "87406277"
 
 ![新增受控私人端點](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory 支援私用連結。 私人連結可讓您存取 Azure （PaaS）服務（例如 Azure 儲存體、Azure Cosmos DB Azure SQL 資料倉儲）。
+Azure Data Factory 支援私用連結。 私人連結可讓您存取 Azure (PaaS) 服務 (例如 Azure 儲存體、Azure Cosmos DB、Azure Synapse 分析 (先前 Azure SQL 資料倉儲 # A5。
 
 當您使用私用連結時，您的資料存放區與受控虛擬網路之間的流量，會完全透過 Microsoft 骨幹網路進行。 Private Link 可保護您免受資料外洩風險。 您可以建立私人端點來建立資源的私人連結。
 
@@ -59,7 +59,7 @@ Azure Data Factory 支援私用連結。 私人連結可讓您存取 Azure （Pa
 > 建議您使用受控私人端點連線到所有資料來源。 
  
 > [!WARNING]
-> 如果 PaaS 資料存放區（Blob、ADLS Gen2、SQL DW）有已針對它建立的私用端點，而且即使它允許來自所有網路的存取，ADF 只能使用受控私人端點來存取它。 請務必在這類案例中建立私用端點。 
+> 如果 PaaS 資料存放區 (Blob，ADLS Gen2 SQL DW) 有已針對它建立的私用端點，即使它允許來自所有網路的存取，ADF 也只能使用受控私人端點來存取它。 請務必在這類案例中建立私用端點。 
 
 當您在 Azure Data Factory 中建立受控私用端點時，會以「擱置」狀態建立私用端點連接。 已起始核准工作流程。 私人連結資源的擁有者會負責核准或拒絕連線。
 
@@ -78,8 +78,8 @@ Azure Data Factory 支援私用連結。 私人連結可讓您存取 Azure （Pa
 - Azure 表格儲存體
 - Azure 檔案
 - Azure Data Lake Gen2
-- Azure SQL Database （不包含 Azure SQL 受控執行個體）
-- Azure SQL 資料倉儲
+- Azure SQL Database (不包含 Azure SQL 受控執行個體) 
+- Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲)
 - Azure CosmosDB SQL
 - Azure 金鑰保存庫
 - Azure Private Link

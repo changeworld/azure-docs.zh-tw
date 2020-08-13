@@ -1,23 +1,15 @@
 ---
 title: PowerShell-在 Azure DevTest Labs 中的實驗室中建立自訂角色
 description: 本文提供 Azure PowerShell 腳本，可將外部使用者新增至 Azure DevTest Labs 中的實驗室。
-services: lab-services
-author: spelluru
-manager: ''
-editor: ''
-ms.service: lab-services
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 04/22/2020
-ms.author: spelluru
-ms.openlocfilehash: c97d5d3119644a6426152b1b832fabac3dde4863
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
-ms.translationtype: MT
+ms.devlang: azurecli
+ms.topic: sample
+ms.date: 08/11/2020
+ms.openlocfilehash: 9b6e4d47babd17916e31ab2762ec87f6aa433da6
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498407"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136196"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 在 Azure DevTest Labs 的實驗室中建立自訂角色
 
@@ -27,7 +19,7 @@ ms.locfileid: "87498407"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 * **實驗室**。 指令碼需要您擁有現有的實驗室。 
 
 ## <a name="sample-script"></a>範例指令碼

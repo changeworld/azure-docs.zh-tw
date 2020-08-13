@@ -5,28 +5,28 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/12/2020
-ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/07/2020
+ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824778"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135519"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure 監視器中的監視解決方案
 
-監視解決方案會利用 Azure 中的服務來提供特定應用程式或服務之作業的額外分析。 本文提供 Azure 中監視解決方案的簡短概觀，以及使用和安裝它們的詳細資料。 您可以針對您使用的任何應用程式和服務，將監視解決方案新增至 Azure 監視器。 這些監視解決方案通常免費提供，但是會收集可能造成使用費用的資料。
+中的監視解決方案 Azure 監視器提供特定 Azure 應用程式或服務之作業的分析。 本文提供 Azure 中監視解決方案的簡短概觀，以及使用和安裝它們的詳細資料。 您可以針對您使用的任何應用程式和服務，將監視解決方案新增至 Azure 監視器。 這些監視解決方案通常免費提供，但是會收集可能造成使用費用的資料。
 
 ## <a name="use-monitoring-solutions"></a>使用監視解決方案
 
-在 Azure 監視器中開啟 [概觀] 頁面，以顯示工作區中每個已安裝解決方案的圖格。
+Azure 監視器中的 [解決方案**總覽**] 頁面會顯示 Log Analytics 工作區中所安裝每個解決方案的磚。 若要開啟此頁面，請移至[Azure 入口網站](https://ms.portal.azure.com)中的**Azure 監視器**。 在 [**深入**解析] 功能表底下，選取 [**更多**] 以開啟**Insights 中樞**，然後按一下 [ **Log Analytics 工作區**]。
 
-1. 移至 [Azure 入口網站](https://ms.portal.azure.com)。 搜尋並選取 [監視]。
-1. 在 [Insights] 功能表下方，選取 [其他]。
-1. 使用畫面頂端的下拉式清單方塊，來變更針對圖格所使用的工作區或時間範圍。
-1. 按一下解決方案的圖格以開啟其檢視，其中包含所收集資料的更詳細分析。
+[![Insights 中樞](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
-![概觀](media/solutions/overview.png)
+
+使用畫面頂端的下拉式清單方塊，來變更針對圖格所使用的工作區或時間範圍。 按一下解決方案的圖格以開啟其檢視，其中包含所收集資料的更詳細分析。
+
+[![概觀](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 監視解決方案可以包含多種的 Azure 資源，而您可以檢視解決方案隨附的任何資源，就像任何其他資源一樣。 例如，解決方案中包含的任何記錄查詢都會列在 [查詢總管](../log-query/get-started-portal.md#load-queries) 中的 [解決方案查詢] 下方。您在使用[記錄查詢](../log-query/log-query-overview.md) 執行臨機操作分析時，使用那些查詢。
 
