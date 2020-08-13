@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 32eafc41451c42a9c929e94d30450b923e7eae83
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 41ad20de6b7a800ff1f97a7ff371c8e0012fed27
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760918"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166972"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的網路檔案系統 (NFS) 3.0 通訊協定支援 (預覽) 
 
 Blob 儲存體現在支援網路檔案系統 (NFS) 3.0 通訊協定。 這項支援可讓 Windows 或 Linux 用戶端在 Blob 儲存體中，從 Azure 虛擬機器 (VM) 或內部部署電腦掛接容器。 
 
 > [!NOTE]
-> Azure Blob 儲存體中的 NFS 3.0 通訊協定支援處於公開預覽狀態，並可在下欄區域使用：美國東部、美國中部和加拿大中部。
+> Azure Blob 儲存體中的 NFS 3.0 通訊協定支援處於公開預覽狀態，且可在下欄區域使用：美國東部、美國中部、美國西部中部、澳大利亞東南部、北歐、英國西部、韓國中部、南韓南部和加拿大中部。
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>一般工作流程：裝載儲存體帳戶容器
 

@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cb3cb41b46c2def4f99af7f1811e4ff96dff7070
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760784"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167023"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用網路檔案系統 (NFS) 3.0 通訊協定 (preview 來掛接 Blob 儲存體) 
 
 您可以從以 Windows 或 Linux 為基礎的 Azure 虛擬機器 (VM) 或在內部部署執行的 Windows 或 Linux 系統，使用 NFS 3.0 通訊協定，從 Blob 儲存體掛接容器。 本文提供逐步指引。 若要深入瞭解 Blob 儲存體中的 NFS 3.0 通訊協定支援，請參閱[Azure blob 儲存體 (預覽) 中的網路檔案系統 (nfs) 3.0 通訊協定支援](network-file-system-protocol-support.md)。
 
 > [!NOTE]
-> Azure Blob 儲存體中的 NFS 3.0 通訊協定支援處於公開預覽狀態，並可在下欄區域使用：美國東部、美國中部和加拿大中部。
+> Azure Blob 儲存體中的 NFS 3.0 通訊協定支援處於公開預覽狀態，且可在下欄區域使用：美國東部、美國中部、美國西部中部、澳大利亞東南部、北歐、英國西部、韓國中部、南韓南部和加拿大中部。
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>步驟1：向您的訂用帳戶註冊 NFS 3.0 通訊協定功能
 
@@ -92,9 +92,9 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 |設定 | 值|
 |----|---|
-|Location|下列其中一個區域：美國東部、美國中部和加拿大中部 |
+|Location|下列其中一個區域：美國東部、美國中部、美國中西部、澳大利亞東南部、北歐、英國西部、韓國中部、南韓南部和加拿大中部 |
 |效能|Premium|
-|帳戶種類|BlockBlobStorage|
+|帳戶類型|BlockBlobStorage|
 |複寫|本地備援儲存體 (LRS)|
 |連線方法| (選取的網路) 或私人端點的公用端點|
 |需要安全傳輸|已停用|
@@ -158,12 +158,12 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="resolve-common-issues"></a>解決常見的問題
 
-|問題/錯誤 | 解決方法|
+|問題/錯誤 | 解決方案|
 |---|---|
 |`Access denied by server while mounting`|確定您的用戶端是在支援的子網路內執行。 請參閱[支援的網路位置](network-file-system-protocol-support.md#supported-network-connections)。|
 |`No such file or directory`| 確認您要掛接的容器是在確認該功能已註冊之後所建立。 請參閱[步驟2：確認已註冊此功能](#step-2-verify-that-the-feature-is-registered)。此外，請務必在終端機中直接輸入 mount 命令和它的參數。 如果您將此命令的任何部分複製並貼到另一個應用程式的終端機中，則貼上資訊中的隱藏字元可能會導致此錯誤出現。|
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [Azure Blob 儲存體中的網路檔案系統 (NFS) 3.0 通訊協定支援 (預覽) ](network-file-system-protocol-support.md)
 
