@@ -5,19 +5,19 @@ description: 在本 REST API 快速入門中，使用可用的公用 LUIS 應用
 services: cognitive-services
 author: diberry
 manager: nitinme
-ms.custom: seodec18, tracking-python, devx-track-javascript
+ms.custom: seodec18, devx-track-python, devx-track-javascript
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 06/03/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 79098056fcebdd8ac382dec1057935fdfee6b77b
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 516ea2e9b99b3abf21cbdd2920c3680c577a1a8e
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407249"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875127"
 ---
 # <a name="quickstart-change-model-with-rest-apis"></a>快速入門：使用 REST API 變更模型
 

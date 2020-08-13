@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 808d1ad522f6678ced54de334e7ea39fb60cd165
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d26179ab82f29ce8f937f5b444463c1308d92047
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420680"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904049"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>教學課程：將範例 IoT 隨插即用預覽多個元件裝置應用程式連線至 IoT 中樞 (Node.js)
 
@@ -98,29 +98,29 @@ pnpTemperatureController.js 檔案中的程式碼會實作 IoT 隨插即用溫�
 
 1. 定義 `modelId`，這是所要實作的裝置所擁有的 DTMI。 此 DTMI 是使用者定義的，而且必須符合[溫度控制器 DTDL 模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)的 DTMI。
 
-1. 實作在溫度控制器 DTDL 模型中定義的元件。 實際溫度控制器中的元件應該會執行這兩個介面。 這兩個介面已在中央存放庫中發佈。 在此範例中，這兩個介面分別是：
+2. 實作在溫度控制器 DTDL 模型中定義的元件。 實際溫度控制器中的元件應該會執行這兩個介面。 這兩個介面已在中央存放庫中發佈。 在此範例中，這兩個介面分別是：
   - 控溫器
   - Azure 所開發的裝置資訊
 
-1. 定義元件名稱。 這個範例有兩個恒溫器和一個裝置資訊元件。
+3. 定義元件名稱。 這個範例有兩個恒溫器和一個裝置資訊元件。
 
-1. 定義命令名稱。 這些是裝置所回應的命令。
+4. 定義命令名稱。 這些是裝置所回應的命令。
 
-1. 定義 `serialNumber` 常數。 `serialNumber` 是固定的任何指定裝置。
+5. 定義 `serialNumber` 常數。 `serialNumber` 是固定的任何指定裝置。
 
-1. 定義命令處理常式。
+6. 定義命令處理常式。
 
-1. 定義用來傳送命令回應的函式。
+7. 定義用來傳送命令回應的函式。
 
-1. 定義協助程式函式來記錄命令要求。
+8. 定義協助程式函式來記錄命令要求。
 
-1. 定義協助程式函式來建立屬性。
+9. 定義協助程式函式來建立屬性。
 
-1. 定義用於屬性更新的接聽程式。
+10. 定義用於屬性更新的接聽程式。
 
-1. 定義從這個裝置傳送遙測的函式。 恒溫器和根元件都會傳送遙測。 此函式會接收元件名稱來作為參數。
+11. 定義從這個裝置傳送遙測的函式。 恒溫器和根元件都會傳送遙測。 此函式會接收元件名稱來作為參數。
 
-1. 定義 `main` 函式，此函式會：
+12. 定義 `main` 函式，此函式會：
 
     1. 使用裝置 SDK 來建立裝置用戶端，並連線到您的 IoT 中樞。 裝置會提供 `modelId`，讓 IoT 中樞可以將裝置識別為 IoT 隨插即用裝置。
 

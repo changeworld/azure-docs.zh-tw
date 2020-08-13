@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: dcb3afd14a7355a08291cd8553d5050d96919aec
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801422"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874056"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>開始使用 Azure 監視器中的查詢
 
 > [!NOTE]
-> 如果您要從至少一台虛擬機器收集資料，就可以在自己的環境中進行這項練習。 若非如此，請使用我們的[示範環境](https://portal.loganalytics.io/demo)，內有許多範例資料。  如果您已經知道如何在 KQL 中查詢，但只需要根據資源類型快速建立有用的查詢，請參閱[儲存的範例查詢窗格](saved-queries.md)。
+> 如果您要從至少一台虛擬機器收集資料，就可以在自己的環境中進行這項練習。 若非如此，請使用我們的[示範環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，內有許多範例資料。  如果您已經知道如何在 KQL 中查詢，但只需要根據資源類型快速建立有用的查詢，請參閱[儲存的範例查詢窗格](saved-queries.md)。
 
 在本教學課程中，您會了解如何在 Azure 監視器中撰寫記錄查詢。 它會告訴您如何：
 

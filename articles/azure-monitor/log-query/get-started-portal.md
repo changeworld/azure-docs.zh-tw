@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075344"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874226"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>教學課程：開始使用 Log Analytics 查詢
 
@@ -32,7 +32,7 @@ ms.locfileid: "87075344"
 ## <a name="open-log-analytics"></a>開啟 Log Analytics
 若要使用 Log Analytics，您必須登入 Azure 帳戶。 如果您沒有 Azure 帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-若要完成本教學課程中大部分的步驟，您可以使用[此示範環境](https://portal.loganalytics.io/demo)，其中包含許多範例資料。 在示範環境中，您將無法儲存查詢，或將結果釘選到儀表板。
+若要完成本教學課程中大部分的步驟，您可以使用[此示範環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，其中包含許多範例資料。 在示範環境中，您將無法儲存查詢，或將結果釘選到儀表板。
 
 如果您要使用 Azure 監視器收集至少一項 Azure 資源的記錄資料，您也可以使用自己的環境。 若要開啟 Log Analytics 工作區，請在 Azure 監視器的左側導覽中選取 [記錄]  。 
 

@@ -4,13 +4,13 @@ description: 教學課程 - 使用 Batch Python 用戶端程式庫透過 Azure B
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: 1d9f84d90c8c06cd00999b0764419fdb1c4cbe95
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: 34cea5e0b60c0a7ee8c3d31dd02a6f7e975de738
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497891"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853325"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教學課程：使用 Python API 透過 Azure Batch 執行平行工作負載
 

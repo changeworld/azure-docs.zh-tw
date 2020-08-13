@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e21b1c72f191f3644975afd511a900667a04ce9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 57eda7e1d5ffedf7d5b867bfa7a59850fbadaf99
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157911"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904984"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>教學課程：Azure Active Directory 與 ArcGIS Enterprise 整合
 
@@ -41,6 +41,9 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
 * Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以在[這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月的試用帳戶
 * 已啟用 ArcGIS Enterprise 單一登入的訂用帳戶
+
+> [!NOTE]
+> 也可以在 Azure AD 美國政府雲端環境中使用此整合。 您可以在 Azure AD 美國政府雲端應用程式庫中找到此應用程式，並以與公用雲端相同的方式進行設定。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -70,7 +73,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **ArcGIS Enterprise**，從結果面板中選取 [ArcGIS Enterprise]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **ArcGIS Enterprise**，從結果面板中選取 [ArcGIS Enterprise]****，然後按一下 [新增]**** 按鈕以新增應用程式。
 
      ![結果清單中的 ArcGIS Enterprise](common/search-new-app.png)
 
@@ -94,7 +97,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
 若要設定與 [應用程式名稱] 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [ArcGIS Enterprise]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [ArcGIS Enterprise]**** 應用程式整合頁面上，選取 [單一登入]****。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -102,7 +105,7 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
@@ -110,18 +113,18 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![ArcGIS Enterprise 網域與 URL 單一登入資訊](common/idp-intiated.png)
 
-    a. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：`<EXTERNAL_DNS_NAME>.portal`
+    a. 在 [識別碼] 文字方塊中，使用下列模式來輸入 URL：`<EXTERNAL_DNS_NAME>.portal`
 
-    b. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
+    b. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
 
     c. 如果您想要以 **SP** 起始模式設定應用程式，請按一下 [設定其他 URL]，然後執行下列步驟：
 
     ![ArcGIS Enterprise 網域與 URL 單一登入資訊](common/metadata-upload-additional-signon.png)
 
-    在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
+    在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [ArcGIS Enterprise 用戶端支援小組](mailto:support@esri.com)以取得這些值。 您會從 [設定識別提供者]  區段取得識別碼值，本教學課程稍後會有其說明。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [ArcGIS Enterprise 用戶端支援小組](mailto:support@esri.com)以取得這些值。 您會從 [設定識別提供者] 區段取得識別碼值，本教學課程稍後會有其說明。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [複製] 按鈕以複製 [應用程式同盟中繼資料 URL]  ，並將其儲存在您的電腦上。
 
@@ -131,41 +134,41 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
 1. 在不同的 Web 瀏覽器視窗中，以系統管理員身分登入 ArcGIS Enterprise 公司網站。
 
-2. 選取 [組織] > [編輯設定]  。
+2. 選取 [組織] > [編輯設定]****。
 
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure1.png)
 
-3. 選取 [安全性]  索引標籤。
+3. 選取 [安全性]**** 索引標籤。
 
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure2.png)
 
-4. 向下捲動至 [透過 SAML 進行企業登入]  區段，然後選取 [設定企業登入]  。
+4. 向下捲動至 [透過 SAML 進行企業登入]**** 區段，然後選取 [設定企業登入]****。
 
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure3.png)
 
-5. 在 [設定識別提供者]  區段中，執行下列步驟：
+5. 在 [設定識別提供者]**** 區段中，執行下列步驟：
 
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure4.png)
 
-    a. 在 [名稱] 文字方塊中提供名稱，例如 **Azure Active Directory 測試**。
+    a. 在 [名稱]**** 文字方塊中提供名稱，例如 **Azure Active Directory 測試**。
 
-    b. 在 [URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [應用程式同盟中繼資料 Url]  值。
+    b. 在 [URL]**** 文字方塊中，貼上您從 Azure 入口網站複製的 [應用程式同盟中繼資料 Url]**** 值。
 
-    c. 按一下 [顯示進階設定] 並複製 [實體識別碼] 值，然後將它貼至 Azure 入口網站中 [ArcGIS Enterprise 網域和 URL] 區段的 [識別碼] 文字方塊。
+    c. 按一下 [顯示進階設定]**** 並複製 [實體識別碼]**** 值，然後將它貼至 Azure 入口網站中 [ArcGIS Enterprise 網域和 URL]**** 區段的 [識別碼]**** 文字方塊。
     
     ![ArcGIS Enterprise 設定](./media/arcgisenterprise-tutorial/configure5.png)
 
-    d. 按一下 [更新識別提供者]  。
+    d. 按一下 [更新識別提供者]****。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  。
+2. 在畫面頂端選取 [新增使用者]。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -173,28 +176,28 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 ArcGIS Enterprise 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [ArcGIS Enterprise]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [ArcGIS Enterprise]****。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，輸入並選取 [ArcGIS Enterprise]  。
+2. 在應用程式清單中，輸入並選取 [ArcGIS Enterprise]****。
 
     ![應用程式清單中的 ArcGIS Enterprise 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. 在左側功能表中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -202,11 +205,11 @@ ArcGIS Enterprise 與 Azure AD 整合提供下列優點：
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
-7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ### <a name="create-arcgis-enterprise-test-user"></a>建立 ArcGIS Enterprise 測試使用者
 

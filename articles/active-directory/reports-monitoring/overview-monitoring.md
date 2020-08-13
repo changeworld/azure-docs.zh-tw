@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 84353dd3c8b803f27073d113d6946152f059d9be
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "68988197"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873410"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>什麼是 Azure Active Directory 監視？
 
@@ -34,6 +34,8 @@ ms.locfileid: "68988197"
 - Azure 事件中樞，因此您可以與 Splunk 和 Sumologic 執行個體整合。
 - Azure Log Analytics 工作區，您可在其中分析資料、建立儀表板以及特定事件的警示
 
+**必要角色**：全域管理員
+
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
@@ -42,11 +44,11 @@ ms.locfileid: "68988197"
 
 若要設定 Azure AD 活動記錄的監視設定，請先登入 [Azure 入口網站](https://portal.azure.com)，然後選取 **Azure Active Directory**。 在此，您有兩種方式可存取診斷設定組態頁面：
 
-* 從 [監視] 區段選取 [診斷設定]。
+* 從 [監視]**** 區段選取 [診斷設定]****。
 
     ![診斷設定](./media/overview-monitoring/diagnostic-settings.png)
     
-* 選取 [稽核記錄]  或 [登入]  ，然後選取 [匯出設定]  。 
+* 選取 [稽核記錄]**** 或 [登入]****，然後選取 [匯出設定]****。 
 
     ![匯出設定](./media/overview-monitoring/export-settings.png)
 

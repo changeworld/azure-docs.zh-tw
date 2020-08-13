@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/06/2020
 ms.author: banders
-ms.openlocfilehash: 9979ced6d5bd71dd1a42d19c222111a76ed18428
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b8e4c4188b0a3b862715a2e4eec2f31dd3f55ac9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200226"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902060"
 ---
 # <a name="azure-software-plan-discount"></a>Azure 軟體方案折扣
 
@@ -97,32 +97,6 @@ Azure 入口網站市集名稱：
 |SLES for SAP Priority (1-2 個 vCPU)|497fe0b6-fa3c-4e3d-a66b-836097244142|1|D2s_v3|
 |SLES for SAP Priority (3-4 個 vCPU) |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
 |SLES for SAP Priority (5 個以上 vCPU) |18ae79cd-dfce-48c9-897b-ebd3053c6058|2.41176|D8s_v3|
-
-### <a name="suse-linux-enterprise-server-priority"></a>SUSE Linux Enterprise Server Priority
-
-Azure 入口網站市集名稱：
-
-- SLES 15 (PRIORITY)
-- SLES 12 SP3 (Priority)
-- SLES 11 SP4 (Priority)
-
-|SUSE VM | 計量識別碼 | 比例|VM 大小範例|
-| ------- |------------------------| --- |--- |
-|SLES 1 vCPU|462cd632-ec6b-4663-b79f-39715f4e8b38|1|B1ms|
-|SLES 2-4 個 vCPU |924bee71-5eb8-424f-83ed-a58823c33908|2|D4s_v3|
-|SLES 2-4 個 vCPU |60b3ae9d-e77a-46b2-9cdf-92fa87407969|2|D4s_v3|
-|SLES 6 個 vCPU |e8862232-6131-4dbe-bde4-e2ae383afc6f|3||
-|SLES 8 個 vCPU |e11331a8-fd32-4e71-b60e-4de2a818c67a|3.2|D8s_v3|
-|SLES 12 個核心 vCPU |a5afd00d-d3ef-4bcd-8b42-f158b2799782|3.2||
-|SLES 16 個 vCPU |bb21066f-fe46-46d3-8006-b326b1663e52|3.2| D16s_v3|
-|SLES 20 個 vCPU |c5228804-1de6-4bd4-a61c-501d9003acc8|3.2| |
-|SLES 24 個核心 vCPU |-005d-4075-ac11-822ccde9e8f6|3.2| ND24s|
-|SLES 32 個 vCPU |180c1a0a-b0a5-4de3-a032-f92925a4bf90|3.2| D32s_v3|
-|SLES 40 個核心 vCPU |a161d3d3-0592-4956-9b64-6829678b6506|3.2||
-|SLES 64 個 vCPU |7f5a36ed-d5b5-4732-b6bb-837dbf0fb9d8|3.2| D64s_v3|
-|SLES 72 個核心 vCPU |93329a72-24d7-4faa-93d9-203f367ed334|3.2|F72s_v2|
-|SLES 96 個核心 vCPU |2018c3a8-ff13-41f8-b64d-9558c5206547|3.2||
-|SLES 128 個核心 vCPU |ac27e4d7-44b5-4fee-bc1a-78ac5b4abaf7|3.2| M128ms|
 
 ### <a name="suse-linux-enterprise-server-standard"></a>SUSE Linux Enterprise Server Standard
 
