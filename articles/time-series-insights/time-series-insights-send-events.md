@@ -9,16 +9,16 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a5ee1cc8efead7c29dadaf64adb8e2686a10621
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495069"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168077"
 ---
-# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>使用事件中樞將事件傳送至 Azure 時間序列深入解析 Gen1 環境
+# <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>使用事件中樞將事件傳送至 Azure 時間序列深入解析 Gen1 環境
 
 本文說明如何在 Azure 事件中樞中建立和設定事件中樞。 它也會說明如何執行範例應用程式，以將事件推送至事件中樞的 Azure 時間序列深入解析。 如果您現有的事件中樞具有 JSON 格式的事件，請略過此教學課程，並在[Azure 時間序列深入解析](./time-series-insights-update-create-environment.md)中查看您的環境。
 
@@ -55,9 +55,9 @@ ms.locfileid: "86495069"
 
 ## <a name="add-an-azure-time-series-insights-instance"></a>新增 Azure 時間序列深入解析實例
 
-在 Azure 時間序列深入解析 Gen 2 中，您可以使用時間序列模型（TSM）將內容資料新增至傳入的遙測。 在 TSM 中，您的標籤或信號會以實例的形式來表示 *，* 而且您可以將內容資料儲存在*實例欄位中。* 資料會在查詢期間透過使用 [時間序列識別碼]****.加入。 我們稍後在本文中使用之範例風車專案的**時間序列識別碼**為 `id` 。 若要深入瞭解如何將資料儲存在實例欄位中，請參閱[時間序列模型](./concepts-model-overview.md)總覽。
+在 Azure 時間序列深入解析 Gen2 中，您可以使用 (TSM) 的時間序列模型，將內容資料新增至傳入的遙測。 在 [TSM] 中，您的標籤或信號稱為「*實例」，* 您可以在*實例欄位*中儲存內容相關資料。 資料會在查詢期間透過使用 [時間序列識別碼]****.加入。 我們稍後在本文中使用之範例風車專案的**時間序列識別碼**為 `id` 。 若要深入瞭解如何將資料儲存在實例欄位中，請參閱[時間序列模型](./concepts-model-overview.md)總覽。
 
-### <a name="create-a-azure-time-series-insights-event-source"></a>建立 Azure 時間序列深入解析事件來源
+### <a name="create-an-azure-time-series-insights-event-source"></a>建立 Azure 時間序列深入解析事件來源
 
 1. 如果您尚未建立事件來源，請完成這些步驟以[建立事件來源](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)。
 
@@ -73,15 +73,15 @@ ms.locfileid: "86495069"
 
     [![複製主索引鍵連接字串的值](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. 前往 https://tsiclientsample.azurewebsites.net/windFarmGen.html。 URL 會建立並執行模擬的風車裝置。
+1. 前往 <https://tsiclientsample.azurewebsites.net/windFarmGen.html>。 URL 會建立並執行模擬的風車裝置。
 1. 在網頁的 [**事件中樞連接字串**] 方塊中，貼上您在 [[風車輸入] 欄位](#push-events-to-windmills-sample)中複製的連接字串。
   
     [![將主索引鍵連接字串貼到 [事件中樞連接字串] 方塊中](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
-1. 選取 [按一下即可啟動]****。 
+1. 選取 [按一下即可啟動]****。
 
     > [!TIP]
-    > 風車模擬器也會建立 JSON，供您用來做為[AZURE 時間序列深入解析 GA 查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)的承載。
+    > 風車模擬器也會建立 JSON，供您用來做為[AZURE 時間序列深入解析 GA 查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query)的承載。
 
     > [!NOTE]
     > 模擬器會繼續傳送資料，直到 [瀏覽器] 索引標籤關閉為止。
@@ -203,6 +203,6 @@ ms.locfileid: "86495069"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在 [Azure 時間序列深入解析 Explorer] 中[查看您的環境](https://insights.timeseries.azure.com)。
+* 在 [Azure 時間序列深入解析 Explorer] 中[查看您的環境](https://insights.timeseries.azure.com)。
 
-- 深入瞭解[IoT 中樞裝置訊息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)
+* 深入瞭解[IoT 中樞裝置訊息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)

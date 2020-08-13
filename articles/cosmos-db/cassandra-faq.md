@@ -4,14 +4,14 @@ description: 取得 Azure Cosmos DB 的 Cassandra API 常見問題的解答。
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b327c0786fb07488fd8863272598dbffe19bfe07
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84449731"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167601"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>有關 Azure Cosmos DB 中的 Cassandra API 常見問題
 
@@ -22,8 +22,8 @@ ms.locfileid: "84449731"
 - Apache Cassandra 建議在分割區索引鍵的大小上使用 100 MB 的限制。 Azure Cosmos DB 的 Cassandra API 允許每個分割區最多 20 GB。
 - Apache Cassandra 可讓您停用持久認可。 您可以略過寫入認可記錄檔，並直接移至 memtables。 如果節點在 memtables 排清到磁片上的 SSTables 之前停止運作，這可能會導致資料遺失。 Azure Cosmos DB 一律會執行長期認可，以協助防止資料遺失。
 - 如果工作負載牽涉到許多取代或刪除，Apache Cassandra 會看到效能降低的情況。 這是因為讀取工作負載需要略過來提取最新資料的原因。 當工作負載有許多取代或刪除時，Cassandra API 不會看到降低的讀取效能。
-- 在高更換工作負載的情況下，需要執行壓縮以合併磁片上的 SSTables。 （需要合併，因為 Apache Cassandra 的寫入只會附加。 多個更新會儲存為需要定期合併的個別 Sstable loader 專案。 這種情況也可能導致壓縮期間的讀取效能降低。 Cassandra API 不會對效能造成影響，因為 API 不會執行壓縮。
-- 您可以使用 Apache Cassandra 來設定複寫因數1。 不過，如果只有一個具有資料的節點停止運作，它會導致低可用性。 這不是 Azure Cosmos DB 的 Cassandra API 的問題，因為一律有複寫因數4（仲裁為3）。
+- 在高更換工作負載的情況下，需要執行壓縮以合併磁片上的 SSTables。 需要 (合併，因為 Apache Cassandra 的寫入只會附加。 多個更新會儲存為個別的 Sstable loader 專案，需要定期合併) 。 這種情況也可能導致壓縮期間的讀取效能降低。 Cassandra API 不會對效能造成影響，因為 API 不會執行壓縮。
+- 您可以使用 Apache Cassandra 來設定複寫因數1。 不過，如果只有一個具有資料的節點停止運作，它會導致低可用性。 這不是 Azure Cosmos DB 的 Cassandra API 的問題，因為一律會有 3) 的複寫因數 4 (仲裁。
 - 在 Apache Cassandra 中新增或移除節點需要手動介入，以及新節點上的高 CPU 使用量，而現有節點則會將其部分權杖範圍移至新節點。 當您解除委任現有的節點時，這種情況就會相同。 不過，Cassandra API 會相應放大，而不會在服務或應用程式中觀察到任何問題。
 - 您不需要在叢集中的每個節點上設定**num_tokens** ，如同 Apache Cassandra。 Azure Cosmos DB 完全管理節點和權杖範圍。
 - Cassandra API 是完全受控的。 您不需要在 Apache Cassandra 中使用的**nodetool**命令，例如修復和解除委任。
@@ -45,7 +45,7 @@ Azure Cosmos DB 能提供效能和延遲上的保證，限定作業時的上限�
 
 ### <a name="what-is-the-throughput-of-a-table-thats-created-through-cql"></a>透過 CQL 建立之資料表的輸送量為何？
 
-Azure Cosmos DB 使用每秒的要求單位（RU/秒）做為提供輸送量的貨幣。 根據預設，透過 CQL 建立的資料表具有 400 RU。 您可以從 Azure 入口網站變更 RU。
+Azure Cosmos DB 使用每秒的要求單位數 (RU/秒) 作為提供輸送量的貨幣。 根據預設，透過 CQL 建立的資料表具有 400 RU。 您可以從 Azure 入口網站變更 RU。
 
 CQL
 
@@ -71,7 +71,7 @@ Azure Cosmos DB 能提供效能和延遲上的保證，限定作業時的上限�
 
 **0x1001 超載：無法處理要求，因為「要求速率很大」** 
 
-請務必查看哪些作業（和其磁片區）造成此問題。 您可以使用 Azure 入口網站上的計量，取得已布建容量的已耗用容量相關概念。 接著，您必須確保在所有基礎資料分割上幾乎平均地耗用容量。 如果您看到某個分割區耗用大部分的輸送量，您就會有工作負載的扭曲。
+請務必查看 (的作業和其磁片區) 會造成此問題。 您可以使用 Azure 入口網站上的計量，取得已布建容量的已耗用容量相關概念。 接著，您必須確保在所有基礎資料分割上幾乎平均地耗用容量。 如果您看到某個分割區耗用大部分的輸送量，您就會有工作負載的扭曲。
 
 計量可用來顯示輸送量在數小時內如何使用，以及跨資料分割或匯總的每七天。 如需詳細資訊，請參閱[使用 Azure Cosmos DB 中的計量監控及偵錯](use-metrics.md)。
 
@@ -79,13 +79,13 @@ Azure Cosmos DB 能提供效能和延遲上的保證，限定作業時的上限�
 
 ### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>主要索引鍵是否會對應至 Azure Cosmos DB 的資料分割索引鍵概念？
 
-是，資料分割索引鍵是用來將實體放在正確的位置。 在 Azure Cosmos DB 中，它是用來尋找儲存在實體資料分割上的正確邏輯資料分割。 資料分割概念的詳細說明請見[在 Azure Cosmos DB 中進行資料分割和調整](partition-data.md)一文。 此處的重要重點是邏輯分割區不應超過 10 GB 的限制。
+是，資料分割索引鍵是用來將實體放在正確的位置。 在 Azure Cosmos DB 中，它是用來尋找儲存在實體資料分割上的正確邏輯資料分割。 資料分割概念的詳細說明請見[在 Azure Cosmos DB 中進行資料分割和調整](partition-data.md)一文。 此處的重要重點是邏輯分割區不應該超過 20 GB 的限制。
 
 ### <a name="what-happens-when-i-get-a-notification-that-a-partition-is-full"></a>當我收到資料分割已滿的通知時，會發生什麼事？
 
-Azure Cosmos DB 是以服務等級協定（SLA）為基礎的系統。 它提供無限制的規模，並保證延遲、輸送量、可用性和一致性。 這種無限制的儲存體是以水準向外延展資料為基礎，使用分割做為關鍵概念。 資料分割概念的詳細說明請見[在 Azure Cosmos DB 中進行資料分割和調整](partition-data.md)一文。
+Azure Cosmos DB 是以服務等級協定 (SLA) 為基礎的系統。 它提供無限制的規模，並保證延遲、輸送量、可用性和一致性。 這種無限制的儲存體是以水準向外延展資料為基礎，使用分割做為關鍵概念。 資料分割概念的詳細說明請見[在 Azure Cosmos DB 中進行資料分割和調整](partition-data.md)一文。
 
-您應該遵守每個邏輯分割區的實體或專案數目的 10 GB 限制。 為了確保您的應用程式能夠進行適當的調整，建議您「避免」** 建立常用資料分割 (將所有資訊儲存在一個資料分割，然後進行查詢)。 只有當您的資料扭曲時，才會發生此錯誤：也就是說，您有許多資料用於一個分割區索引鍵（超過 10 &nbsp; GB）。 您可以使用儲存體入口網站來尋找資料的散發。 修正此錯誤的方法是重新建立資料表，然後選擇細微的主要（資料分割索引鍵），這可允許更好的資料散發。
+您應該遵守每個邏輯分割區的實體或專案數目的 20 GB 限制。 為了確保您的應用程式能夠進行適當的調整，建議您「避免」** 建立常用資料分割 (將所有資訊儲存在一個資料分割，然後進行查詢)。 只有當您的資料扭曲時，才會發生此錯誤：也就是說，您有許多資料分割區索引鍵 (超過 20 GB) 。 您可以使用儲存體入口網站來尋找資料的散發。 修正此錯誤的方法是重新建立資料表，然後選擇細微的主要 (分割區索引鍵) ，這可讓您更有效率地散發資料。
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>我可以使用 Cassandra API 做為具有百萬或數十億個數據分割索引鍵的金鑰值存放區嗎？
 
@@ -101,7 +101,7 @@ Azure Cosmos DB 是適用于資料和控制平面活動的資源控管系統。 
 
 ### <a name="what-is-the-maximum-number-of-tables-that-i-can-create"></a>我可以建立的資料表數目上限為何？
 
-資料表數目沒有實體限制。 如果您有大量的資料表（穩定大小總計超過 10 TB 的資料）需要建立（而不是一般的數十或數百個），請傳送電子郵件至 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 。
+資料表數目沒有實體限制。 如果您有大量的資料表 (在此情況下，總穩定大小會超過 10 TB 的資料) 需要建立，而不是一般的數十或上百，請傳送電子郵件至 [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) 。
 
 ### <a name="what-is-the-maximum-number-of-keyspaces-that-i-can-create"></a>我可以建立的 keyspace 數目上限為何？
 

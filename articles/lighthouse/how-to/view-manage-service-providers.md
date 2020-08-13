@@ -1,18 +1,21 @@
 ---
 title: 檢視和管理服務提供者
 description: 客戶可以使用 Azure 入口網站中的 [服務提供者] 頁面，檢視服務提供者、服務提供者供應項目與委派的資源的相關資訊。
-ms.date: 07/10/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: c22408a52d973a244d67528a73d4eaa487f166ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273773"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167159"
 ---
 # <a name="view-and-manage-service-providers"></a>檢視和管理服務提供者
 
-客戶可以使用[Azure 入口網站](https://portal.azure.com)中的 [**服務提供者**] 頁面，以查看服務提供者和服務提供者供應專案的詳細資料、將特定資源委派給[Azure 燈塔](../overview.md)，並購買新的服務提供者供應專案。 雖然我們在此所述的是服務提供者與其客戶，但管理多個租用戶的企業也可以使用相同的程序來合併其管理體驗。
+客戶可以使用[Azure 入口網站](https://portal.azure.com)中的 [**服務提供者**] 頁面，以查看服務提供者和服務提供者供應專案的詳細資料、將特定資源委派給[Azure 燈塔](../overview.md)，並購買新的服務提供者供應專案。
+
+> [!TIP]
+> 雖然我們會在這裡參考服務提供者和客戶，但[管理多個](../concepts/enterprise.md)租使用者的企業可以使用相同的程式來合併其管理經驗。
 
 若要存取 Azure 入口網站中的 [服務提供者]**** 頁面，客戶可選取 [所有服務]****，然後搜尋**服務提供者**並選取它。 他們也可以在靠近 Azure 入口網站頂端的搜尋方塊中輸入「服務提供者」或「Azure 燈塔」來尋找它。
 

@@ -9,30 +9,30 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: a8da2355b62d7be36b10ac9a1ce4b53e87b4b288
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2a33c701278a900e502da9e6d9520ea213ce4c3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059226"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168094"
 ---
-# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c"></a>使用 C 管理 Azure 時間序列深入解析 Gen 1 環境的參考資料#
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>使用 C 銳利管理 Azure 時間序列深入解析 Gen 1 環境的參考資料
 
-本文示範如何結合 c #、 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)和 Azure Active Directory，將程式設計 api 要求提供給 Azure 時間序列深入解析 Gen 1[參考資料管理 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)。
+本文示範如何結合 c #、 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)和 Azure Active Directory，將程式設計 api 要求提供給 Azure 時間序列深入解析 Gen 1[參考資料管理 api](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)。
 
 > [!TIP]
-> 在 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 檢視 GA C# 程式碼範例。
+> 在 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) 檢視 GA C# 程式碼範例。
 
 ## <a name="summary"></a>摘要
 
 以下範例程式碼會示範下列功能：
 
 * 使用 [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication** 取得存取權杖。
-* 針對 Gen 1[參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)的順序建立、讀取、更新和刪除作業。
-* 常見的回應碼包括[常見錯誤碼](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)。
-    
+* 針對 Gen 1[參考資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)的順序建立、讀取、更新和刪除作業。
+* 常見的回應碼包括[常見錯誤碼](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling)。
+
     參考資料管理 API 會個別處理每個項目，且其中一個項目的錯誤不會防止其他項目成功完成。 例如，若要求包含 100 個項目，且其中一個項目發生錯誤，則會寫入 99 個項目，並拒絕一個項目。
 
 ## <a name="prerequisites-and-setup"></a>先決條件和設定
@@ -46,7 +46,7 @@ ms.locfileid: "87059226"
 
    | 機碼名稱 | 類型 |
    | --- | --- |
-   | uuid | String | 
+   | uuid | String |
 
 1. 針對 Azure Active Directory 設定 Azure 時間序列見解環境，如[驗證和授權](time-series-insights-authentication-and-authorization.md)中所述。 使用 `http://localhost:8080/` 作為**重新導向 URI**。
 
@@ -54,7 +54,7 @@ ms.locfileid: "87059226"
 
 1. 將每個 **#PLACEHOLDER** 取代為適當的環境識別碼來編輯以下範例程式碼。
 
-1. 在專案的根目錄內執行 `dotnet run`。 出現提示時，請以使用者設定檔來登入 Azure。 
+1. 在專案的根目錄內執行 `dotnet run`。 出現提示時，請以使用者設定檔來登入 Azure。
 
 ## <a name="project-dependencies"></a>專案相依性
 
@@ -92,6 +92,7 @@ ms.locfileid: "87059226"
       </ItemGroup>
     </Project>
     ```
+
 1. 然後執行 `dotnet restore`。
 
 ## <a name="c-sample-code"></a>C# 範例程式碼
@@ -114,7 +115,7 @@ namespace CsharpTsiMsalGaSample
     {
         /**
          * Review the product documentation for detailed configuration steps or skip ahead and configure your environment settings.
-         * 
+         *
          * https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization
          */
 
@@ -138,7 +139,7 @@ namespace CsharpTsiMsalGaSample
 
             /**
              * MSAL.NET configuration. Review the product documentation for more information about MSAL.NET authentication options.
-             * 
+             *
              * https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/
              */
 
@@ -174,7 +175,7 @@ namespace CsharpTsiMsalGaSample
                 Path = $"referencedatasets/{EnvironmentReferenceDataSetName}/$batch",
                 Query = "api-version=2016-12-12"
              }.Uri;
-                
+
              Console.WriteLine("Making HTTP POST to URI: {0}", uri);
              Console.WriteLine("");
 
@@ -202,7 +203,7 @@ namespace CsharpTsiMsalGaSample
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
 
-            {   
+            {
                 // CREATE reference data
                 Console.WriteLine("CREATE reference data example...");
                 Console.WriteLine("");
@@ -309,4 +310,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如[資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)參考檔，請參閱第1代參考。
+* 如[資料管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)參考檔，請參閱第1代參考。

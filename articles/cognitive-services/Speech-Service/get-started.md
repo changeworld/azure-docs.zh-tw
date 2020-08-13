@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 5dc1f8ed31c8d7199a31643a76e611d828da77ac
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c15601b4c58ce072881b3c244f10bc196bceb853
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056460"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167805"
 ---
 # <a name="try-the-speech-service-for-free"></a>免費試用語音服務
 
@@ -71,7 +71,7 @@ ms.locfileid: "88056460"
    - 選擇將使用資源的[區域](regions.md)。
    - 請選擇免費的 (F0) 或付費 (S0) 定價層。 如需每一層的定價和使用量配額完整資訊，請選取 [**查看完整定價詳細資料**]。
    - 為此語音訂用帳戶建立新的資源群組，或將該訂用帳戶指派給現有的資源群組。 資源群組可協助組織各種 Azure 訂用帳戶。
-   - 選取 [建立]  。 這會帶您前往部署總覽並顯示部署進度訊息。
+   - 選取 [建立]。 這會帶您前往部署總覽並顯示部署進度訊息。
 
 > [!NOTE]
 > 您可以在一或多個區域中建立無限數量的標準層訂用帳戶。 不過，您可以建立只有一個免費層的訂用帳戶。 免費層上保留7天未使用的模型部署將會自動解除委任。
@@ -87,7 +87,7 @@ ms.locfileid: "88056460"
 
 ## <a name="about-regions"></a>關於區域
 
-- 如果您的應用程式使用[語音 SDK](speech-sdk.md)，您會在建立語音設定時提供區域程式碼，例如 `westus`。
+- 如果您的應用程式使用[語音 SDK](speech-sdk.md)，您可以在建立語音設定時提供區域識別碼，例如 `westus` 。
 - 如果您的應用程式使用其中一個語音服務 [REST API](rest-apis.md)，則區域會是您提出要求時所用端點 URI 的一部份。
 - 為某區域建立的金鑰，就只能在該區域中使用。 若嘗試在其他區域使用，將會導致驗證錯誤。
 

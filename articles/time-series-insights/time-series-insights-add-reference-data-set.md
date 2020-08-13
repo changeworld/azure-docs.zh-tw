@@ -9,14 +9,14 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2503a58f7d5fe05240f374fabbe2bf88d34dcf6c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 57e99dfd0cec4ee396cc90173f1f22715c7ba760
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046631"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168179"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>使用 Azure 入口網站為您的 Azure 時間序列深入解析 Gen1 環境建立參考資料集
 
@@ -30,7 +30,7 @@ ms.locfileid: "87046631"
 
 ### <a name="learn-about-time-series-insights-reference-data-modelbr"></a>瞭解時間序列深入解析的參考資料模型。</br>
 
-> [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
+> [!VIDEO <https://www.youtube.com/embed/Z0NuWQUMv1o>]
 
 ## <a name="add-a-reference-data-set"></a>新增參考資料集
 
@@ -55,7 +55,7 @@ ms.locfileid: "87046631"
 1. 在 [新增參考資料集]**** 頁面上，選擇資料的格式：
 
    - 針對逗號分隔資料選擇 [CSV]****。 第一個資料列會視為標題資料列。
-   - 選擇適用于 JavaScript 物件標記法（JSON）格式資料的**JSON 陣列**。
+   - 選擇 JavaScript 物件標記法的**Json 陣列** (json) 格式化的資料。
 
    [![選擇資料格式。](media/add-reference-data-set/tsi-select-data-upload-option.png)](media/add-reference-data-set/tsi-select-data-upload-option.png#lightbox)
 
@@ -74,7 +74,7 @@ ms.locfileid: "87046631"
 
    [![審查參考資料](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. 請檢查每個資料行，以瞭解假設的資料類型，並視需要變更資料類型。  選取欄位標題中的資料類型符號： [ **#** double （數值資料）]、[ **T |]F**表示布林值，或**Abc**表示字串。
+1. 請檢查每個資料行，以瞭解假設的資料類型，並視需要變更資料類型。  選取欄位標題中的資料類型符號： **#** 針對 double (數值資料) ， **T |F**表示布林值，或**Abc**表示字串。
 
    [![選擇欄位標題上的資料類型。](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
@@ -93,7 +93,7 @@ ms.locfileid: "87046631"
 
     [![選取索引鍵資料行。](media/add-reference-data-set/select-primary-key-column.png)](media/add-reference-data-set/select-primary-key-column.png#lightbox)
 
-    **（選擇性）** 選取 **+** 按鈕以加入次要索引鍵資料行做為複合主鍵。 如果您需要復原選取項目，請從下拉式清單中選擇空白值，以移除次要索引鍵。
+    ** (選擇性) **選取 **+** 按鈕以加入次要索引鍵資料行做為複合主鍵。 如果您需要復原選取項目，請從下拉式清單中選擇空白值，以移除次要索引鍵。
 
 1. 若要上傳資料，請選取 [上傳資料列]**** 按鈕。
 
@@ -116,6 +116,6 @@ ms.locfileid: "87046631"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 以程式設計的方式[管理參考資料](time-series-insights-manage-reference-data-csharp.md)。
+- 以程式設計的方式[管理參考資料](time-series-insights-manage-reference-data-csharp.md)。
 
-* 如需完整的 API 參考，請參閱[參考資料 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)檔。
+- 如需完整的 API 參考，請參閱[參考資料 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api)檔。

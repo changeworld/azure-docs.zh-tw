@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 23ce3272d99401340d784f88dd537baa55774a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708819"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167941"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL 受控執行個體內容參考
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "84708819"
 ## <a name="load-data"></a>載入資料
 
 - [遷移至 AZURE sql 受控執行個體](migrate-to-instance-from-sql-server.md)：瞭解建議的遷移程式和工具，以遷移至 azure sql 受控執行個體。
-- [將 TDE 憑證遷移至 AZURE SQL 受控執行個體](tde-certificate-migrate.md)：如果您的 SQL Server 資料庫受到透明資料加密（TDE）保護，您將需要遷移 SQL 受控執行個體可用來解密您要在 Azure 中還原之備份的憑證。
+- [將 TDE 憑證遷移至 AZURE SQL 受控執行個體](tde-certificate-migrate.md)：如果您的 SQL Server 資料庫受到透明資料加密 (TDE) 的保護，則您需要遷移 SQL 受控執行個體可用來將您想要在 Azure 中還原之備份解密的憑證。
 - [從 BACPAC 匯入 DB](../database/database-import.md)
 - [從 BACPAC 匯出 DB](../database/database-export.md)
 - [使用 BCP 載入資料](../load-from-csv-with-bcp.md)
@@ -75,6 +75,14 @@ ms.locfileid: "84708819"
 - [將擴充事件儲存到事件檔案中](../database/xevent-code-event-file.md)
 - [將擴充事件儲存到信號緩衝區](../database/xevent-code-ring-buffer.md)
 
+### <a name="alerting"></a>警示
+
+- [在受控實例上建立警示](alerts-create.md)
+
+## <a name="operations"></a>作業
+
+- [在 SQL 受控執行個體上由使用者起始的手動容錯移轉](user-initiated-failover.md)
+
 ## <a name="develop-applications"></a>開發應用程式
 
 - [連線能力](../database/connect-query-content-reference-guide.md#libraries)
@@ -99,8 +107,6 @@ ms.locfileid: "84708819"
 - [SaaS 設計模式](../database/saas-tenancy-app-design-patterns.md)
 - [SaaS 影片索引子](../database/saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS 應用程式安全性](../database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
-
-
 
 ## <a name="next-steps"></a>後續步驟
 

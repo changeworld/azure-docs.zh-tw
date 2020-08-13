@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbee9881addf66d762f1eadb837e5a4e41bf79de
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515369"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167890"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 開發 Azure 檔案服務
 
@@ -23,7 +23,7 @@ ms.locfileid: "85515369"
 
 * 取得檔案的內容。
 * 設定檔案共用的大小上限或*配額*。
-* 為使用共用上所定義之預存存取原則的檔案建立共用存取簽章（SAS 金鑰）。
+* 為使用共用上所定義之預存存取原則的檔案建立共用存取簽章 (SAS 金鑰) 。
 * 將檔案複製到相同儲存體帳戶中的另一個檔案。
 * 將檔案複製到相同儲存體帳戶中的 Blob。
 * 使用 Azure 儲存體計量進行疑難排解。
@@ -46,7 +46,7 @@ API | 使用時機 | 注意
 在 Visual Studio 中，建立新的 Windows 主控台應用程式。 下列步驟說明如何在 Visual Studio 2019 中建立主控台應用程式。 這些步驟類似其他 Visual Studio 版本中的步驟。
 
 1. 啟動 Visual Studio，然後選取 [建立新專案]。
-1. 在 [**建立新專案**] 中，選擇 c # 的 [**主控台應用程式（.NET Framework）** ]，然後選取 **[下一步]**。
+1. 在 [**建立新專案**] 中，選擇 [主控台] [**應用程式 ( .NET Framework** c #) ，然後選取 **[下一步]**。
 1. 在 [**設定您的新專案**] 中，輸入應用程式的名稱，然後選取 [**建立**]。
 
 您可以將本教學課程中的所有程式碼範例新增至 `Main()` 主控台應用程式檔案的方法 `Program.cs` 。
@@ -70,7 +70,7 @@ API | 使用時機 | 注意
 
   此套件提供一個類別，用於剖析設定檔中的連接字串，無論您的應用程式在何處執行。
 
-您可以使用 NuGet 來取得這兩個封裝。 請遵循下列步驟：
+您可以使用 NuGet 來取得這兩個封裝。 請遵循這些步驟：
 
 1. 在**方案總管**中，以滑鼠右鍵按一下您的專案，然後選擇 [**管理 NuGet 封裝**]。
 1. 在 [NuGet 套件管理員] 中，選取 [瀏覽]。 然後，搜尋並選擇 [ **Microsoft. Azure**]，然後選取 [**安裝**]。
@@ -99,7 +99,7 @@ API | 使用時機 | 注意
 ```
 
 > [!NOTE]
-> 最新版本的 Azure 儲存體模擬器不支援 Azure 檔案服務。 您的連接字串必須以雲端中的 Azure 儲存體帳戶為目標，才能與 Azure 檔案服務搭配使用。
+> Azure 儲存體模擬器的最新版本不支援 Azure 檔案儲存體。 您的連接字串必須以雲端中的 Azure 儲存體帳戶為目標，才能與 Azure 檔案服務搭配使用。
 
 ## <a name="add-using-directives"></a>新增 using 指示詞
 
@@ -154,7 +154,7 @@ if (share.Exists())
 
 ## <a name="set-the-maximum-size-for-a-file-share"></a>設定檔案共用的大小上限
 
-從 Azure 儲存體用戶端程式庫的5.x 版開始，您可以設定檔案共用的配額（大小上限）。 您也可以檢查有多少資料目前儲存在共用上。
+從 Azure 儲存體用戶端程式庫的5.x 版開始，您可以設定檔案共用的配額 (大小上限) 。 您也可以檢查有多少資料目前儲存在共用上。
 
 設定共用的配額會限制儲存在共用上的檔案大小總計。 如果共用上的檔案大小總計超過共用上設定的配額，則用戶端無法增加現有檔案的大小。 除非這些檔案是空的，否則用戶端無法建立新檔案。
 
@@ -487,7 +487,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ### <a name="conceptual-articles-and-videos"></a>概念性文章和影片
 
 * [Azure 檔案服務：相容於 Windows 和 Linux 的雲端 SMB 檔案系統](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [搭配 Linux 使用 Azure 檔案](storage-how-to-use-files-linux.md)
+* [搭配 Linux 使用 Azure 檔案儲存體](storage-how-to-use-files-linux.md) (機器翻譯)
 
 ### <a name="tooling-support-for-file-storage"></a>檔案儲存體的工具支援
 
@@ -497,7 +497,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ### <a name="reference"></a>參考
 
 * [適用於 .NET 的 Azure 儲存體 API](/dotnet/api/overview/azure/storage)
-* [檔案服務 REST API](/rest/api/storageservices/File-Service-REST-API)
+* [檔案服務 REST API](/rest/api/storageservices/File-Service-REST-API) \(英文\)
 
 ### <a name="blog-posts"></a>部落格文章
 

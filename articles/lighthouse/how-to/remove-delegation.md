@@ -1,14 +1,14 @@
 ---
 title: 移除委派的存取權
 description: 瞭解如何移除已委派給 Azure 燈塔服務提供者之資源的存取權。
-ms.date: 07/07/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: be1547056bc3ec387ba4cba52f6b6d6fbcaad23c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111723"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167217"
 ---
 # <a name="remove-access-to-a-delegation"></a>移除委派的存取權
 
@@ -16,9 +16,12 @@ ms.locfileid: "86111723"
 
 只要使用者擁有適當的許可權，就可以在客戶租使用者或服務提供者租使用者中移除委派。
 
+> [!TIP]
+> 雖然我們在本主題中參考服務提供者和客戶，但[管理多個](../concepts/enterprise.md)租使用者的企業可以使用相同的程式。
+
 ## <a name="customers"></a>客戶
 
-客戶租使用者中擁有訂用帳戶之擁有者[內建角色](../../role-based-access-control/built-in-roles.md#owner)的使用者，可以移除該訂用帳戶（或該訂用帳戶中的資源群組）的服務提供者存取權。 若要這樣做，客戶租使用者中的使用者可以前往 [Azure 入口網站的 [[服務提供者] 頁面](view-manage-service-providers.md#add-or-remove-service-provider-offers)，在 [**服務提供者供應**專案] 畫面上尋找供應專案，然後選取該供應專案的資料列中的垃圾桶圖示。
+客戶租使用者中擁有訂用帳戶之擁有者[內建角色](../../role-based-access-control/built-in-roles.md#owner)的使用者，可以移除該訂用帳戶的服務提供者存取權 (或該訂用帳戶) 中的資源群組。 若要這樣做，客戶租使用者中的使用者可以前往 [Azure 入口網站的 [[服務提供者] 頁面](view-manage-service-providers.md#add-or-remove-service-provider-offers)，在 [**服務提供者供應**專案] 畫面上尋找供應專案，然後選取該供應專案的資料列中的垃圾桶圖示。
 
 確認刪除之後，服務提供者租使用者中的任何使用者都無法存取先前已委派的資源。
 

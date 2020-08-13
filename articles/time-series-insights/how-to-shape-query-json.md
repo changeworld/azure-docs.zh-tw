@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: article
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: cc24c1f49a48e81509961d5d7d01dba60dc50475
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1a7a88e0db38f399dc47c030f3b97f6b26f4da07
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077642"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168230"
 ---
 # <a name="shape-json-to-maximize-query-performance-in-your-gen1-environment"></a>塑造 JSON 以將 Gen1 環境中的查詢效能最大化
 
@@ -24,7 +24,7 @@ ms.locfileid: "87077642"
 
 ### <a name="learn-best-practices-for-shaping-json-to-meet-your-storage-needsbr"></a>瞭解塑造 JSON 以符合您的儲存體需求的最佳做法。</br>
 
-> [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
+> [!VIDEO <https://www.youtube.com/embed/b2BD5hwbg5I>]
 
 ## <a name="best-practices"></a>最佳作法
 
@@ -60,7 +60,6 @@ ms.locfileid: "87077642"
 
 請考慮將下列 JSON 承載傳送至您的 Azure 時間序列深入解析 GA 環境，其使用在傳送至 Azure 雲端時序列化為 JSON 的[IoT 裝置訊息物件](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.message?view=azure-dotnet)：
 
-
 ```JSON
 [
     {
@@ -90,14 +89,14 @@ ms.locfileid: "87077642"
 ]
 ```
 
-* 具有 key 屬性**deviceId**的參考資料表：
+- 具有 key 屬性**deviceId**的參考資料表：
 
    | deviceId | messageId | deviceLocation |
    | --- | --- | --- |
    | FXXX | LINE\_DATA | EU |
    | FYYY | LINE\_DATA | 美國 |
 
-* 在簡維之後 Azure 時間序列深入解析事件資料表：
+- 在簡維之後 Azure 時間序列深入解析事件資料表：
 
    | deviceId | messageId | deviceLocation | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
    | --- | --- | --- | --- | --- | --- |
@@ -106,8 +105,9 @@ ms.locfileid: "87077642"
    | FYYY | LINE\_DATA | 美國 | 2018-01-17T01:18:00Z | 0.58015072345733643 | 22.2 |
 
 > [!NOTE]
-> - **deviceId** 資料行是車隊中各種裝置的資料行標頭。 將**deviceId**值設為其本身的屬性名稱，會將裝置的總計限制為595（適用于 S1 環境）或795（適用于 S2 環境），以及其他五個數據行。
-> - 避免不必要的屬性（例如，make 和 model 資訊）。 因為未來不會查詢這些屬性，所以排除它們可提高網路和儲存體的效率。
+
+> - **deviceId** 資料行是車隊中各種裝置的資料行標頭。 將**deviceId**值設為其本身的屬性名稱，會將 S1 環境的裝置總計限制為 595 (，) 或 795 (適用于 S2 環境) 其他五個數據行。
+> - 避免不必要的屬性 (例如，make 和 model 資訊) 。 因為未來不會查詢這些屬性，所以排除它們可提高網路和儲存體的效率。
 > - 使用參考資料來減少透過網路傳輸的位元組數目。 使用索引鍵屬性**deviceId**聯結兩個屬性**messageId**和**deviceLocation** 。 這項資料會在輸入時與遙測資料聯結，然後儲存在 Azure 時間序列深入解析以進行查詢。
 > - 會使用兩層的嵌套，這是 Azure 時間序列深入解析所支援的最大嵌套數量。 請務必避免巢狀結構很深的陣列。
 > - 量值會當做相同物件內的個別屬性來傳送，因為有幾個量值。 在本例中，**series.Flow Rate psi** 和 **series.Engine Oil Pressure ft3/s** 是唯一的資料行。
@@ -160,28 +160,29 @@ ms.locfileid: "87077642"
 ]
 ```
 
-* 具有索引鍵屬性**deviceId**和**tagId**的參考資料表：
+- 具有索引鍵屬性**deviceId**和**tagId**的參考資料表：
 
-   | deviceId | series.tagId | messageId | deviceLocation | 類型 | unit |
+   | deviceId | series.tagId | messageId | deviceLocation | type | unit |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | 流動率 | ft3/s |
    | FXXX | oilPressure | LINE\_DATA | EU | 引擎機油壓力 | psi |
    | FYYY | pumpRate | LINE\_DATA | 美國 | 流動率 | ft3/s |
    | FYYY | oilPressure | LINE\_DATA | 美國 | 引擎機油壓力 | psi |
 
-* 在簡維之後 Azure 時間序列深入解析事件資料表：
+- 在簡維之後 Azure 時間序列深入解析事件資料表：
 
-   | deviceId | series.tagId | messageId | deviceLocation | 類型 | unit | timestamp | series.value |
+   | deviceId | series.tagId | messageId | deviceLocation | type | unit | timestamp | series.value |
    | --- | --- | --- | --- | --- | --- | --- | --- |
-   | FXXX | pumpRate | LINE\_DATA | EU | 流動率 | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
+   | FXXX | pumpRate | LINE\_DATA | EU | 流動率 | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 |
    | FXXX | oilPressure | LINE\_DATA | EU | 引擎機油壓力 | psi | 2018-01-17T01:17:00Z | 34.7 |
-   | FXXX | pumpRate | LINE\_DATA | EU | 流動率 | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 | 
+   | FXXX | pumpRate | LINE\_DATA | EU | 流動率 | ft3/s | 2018-01-17T01:17:00Z | 2.445906400680542 |
    | FXXX | oilPressure | LINE\_DATA | EU | 引擎機油壓力 | psi | 2018-01-17T01:17:00Z | 49.2 |
    | FYYY | pumpRate | LINE\_DATA | 美國 | 流動率 | ft3/s | 2018-01-17T01:18:00Z | 0.58015072345733643 |
    | FYYY | oilPressure | LINE\_DATA | 美國 | 引擎機油壓力 | psi | 2018-01-17T01:18:00Z | 22.2 |
 
 > [!NOTE]
-> - 資料行**deviceId**和**tagId**可做為車隊中各種裝置和標記的欄標題。 使用每個做為其本身的屬性，會將查詢限制為594（適用于 S1 環境）或794（適用于 S2 環境）與其他六個數據行的裝置總數。
+
+> - 資料行**deviceId**和**tagId**可做為車隊中各種裝置和標記的欄標題。 使用每個做為其本身的屬性，會將 S1 環境的查詢限制為 594 (，) 或 794 (適用于 S2 環境) 包含其他六個數據行的裝置總數。
 > - 基於第一個範例中提及的原因，已避免不必要的屬性。
 > - 參考資料是用來減少透過網路傳輸的位元組數，方法是引進**deviceId**，這會用於唯一的**messageId**和**deviceLocation**。 複合索引鍵**序列. tagId**是用於**類型**和**單位**的唯一配對。 複合索引鍵可讓**deviceId**和**tagId 組**用來參考四個值： **messageId、deviceLocation、type**和**unit**。 此資料會在輸入時與遙測資料聯結。 然後，它會儲存在 Azure 時間序列深入解析以進行查詢。
 > - 針對第一個範例中所述的原因，會使用兩層的嵌套。
@@ -190,13 +191,13 @@ ms.locfileid: "87077642"
 
 對於具有大量可能值的屬性，最好以單一資料行中的相異值來傳送，而不是針對每個值建立新的資料行。 在前兩個範例中：
 
-  - 在第一個範例中，有幾個屬性有數個值，因此最好讓每一個屬性都是不同的。
-  - 在第二個範例中，不會將量值指定為個別屬性。 相反地，它們是在通用數列屬性下的值或量值陣列。 會傳送新的索引鍵**tagId** ，這會在簡維資料表中建立新的**資料行數列 tagId** 。 新的屬性**類型**和**單位**是使用參考資料所建立，因此不會達到屬性限制。
+- 在第一個範例中，有幾個屬性有數個值，因此最好讓每一個屬性都是不同的。
+- 在第二個範例中，不會將量值指定為個別屬性。 相反地，它們是在通用數列屬性下的值或量值陣列。 會傳送新的索引鍵**tagId** ，這會在簡維資料表中建立新的**資料行數列 tagId** 。 新的屬性**類型**和**單位**是使用參考資料所建立，因此不會達到屬性限制。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 深入瞭解將[IoT 中樞裝置訊息傳送至雲端](../iot-hub/iot-hub-devguide-messages-construct.md)。
 
-- 若要深入瞭解 Azure 時間序列深入解析資料存取 REST API 的查詢語法，請參閱[Azure 時間序列深入解析查詢語法](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax)。
+- 若要深入瞭解 Azure 時間序列深入解析資料存取 REST API 的查詢語法，請參閱[Azure 時間序列深入解析查詢語法](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-syntax)。
 
 - 瞭解[如何塑造事件](./time-series-insights-send-events.md)。

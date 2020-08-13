@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sgilley
 author: sdgilley
-ms.date: 07/28/2020
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: fefc7b39a6539822686618d9f018084f65443ee1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: c852d416b73ba29b22efe63996835deac3a5277d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121701"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167669"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理 Azure Machine Learning 工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,78 +42,16 @@ ms.locfileid: "88121701"
 
    欄位|描述 
    ---|---
-   工作區名稱 |輸入可識別您工作區的唯一名稱。 名稱必須是整個資源群組中唯一的。 請使用可輕鬆回想並且與其他人建立的工作區有所區別的名稱。 工作區名稱不區分大小寫。
+   工作區名稱 |輸入可識別您工作區的唯一名稱。 在此範例中，我們使用 **docs-ws**。 名稱必須是整個資源群組中唯一的。 請使用可輕鬆回想並且與其他人建立的工作區有所區別的名稱。 工作區名稱不區分大小寫。
    訂用帳戶 |選取您要使用的 Azure 訂用帳戶。
-   資源群組 | 在您的訂用帳戶中使用現有的資源群組，或輸入名稱來建立新的資源群組。 資源群組會保留 Azure 方案的相關資源。 
-   位置 | 選取最接近您的使用者與資料資源的位置，以建立工作區。
+   資源群組 | 在您的訂用帳戶中使用現有的資源群組，或輸入名稱來建立新的資源群組。 資源群組會保留 Azure 方案的相關資源。 在此範例中，我們使用 **docs-aml**。 
+   Location | 選取最接近您的使用者與資料資源的位置，以建立工作區。
    工作區版本 | 選取 [**基本**] 或 [**企業**]。  此工作區版本會決定您可以存取和定價的功能。 深入瞭解[基本和企業版供應](overview-what-is-azure-ml.md#sku)專案。 
 
-   :::image type="content" source="media/how-to-manage-workspace/select-edition.png" alt-text="設定工作區":::
+    ![設定您的工作區](./media/how-to-manage-workspace/select-edition.png)
 
-1. 當您完成設定工作區時，可以選取 [**審核] [+ 建立**]，或前進至選用的__網路__設定。
-
-### <a name="optional-networking"></a> (選擇性) 網路功能
-
-> [!IMPORTANT]
-> 如需搭配工作區使用私人端點和虛擬網路的詳細資訊，請參閱[網路隔離和隱私權](how-to-enable-virtual-network.md)。
-
-1. 預設的網路設定是使用公用__端點__，這可在公用網際網路上存取。 若要將您工作區的存取許可權制為您已建立的 Azure 虛擬網路，您可以改為選取 [__私人端點__] 做為連線__方法__，然後使用 [ __+ 新增__] 來設定端點。
-
-   :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="私人端點選取":::
-
-1. 在 [__建立私人端點__] 表單上，設定要使用的 [位置]、[名稱] 和 [虛擬網路]。 如果您想要使用具有私人 DNS 區域的端點，請選取 [__與私人 dns 區域整合__]，然後使用 [__私人 dns 區域__] 欄位選取區域。 選取 __[確定]__ 以建立端點。 
-
-   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="私人端點建立":::
-
-1. 當您完成設定網路功能時，您可以選取 [審核] [ __+ 建立__]，或前進到選擇性的 [ __Advanced__ configuration]。
-
-    > [!WARNING]
-    > 當您建立私用端點時，會建立名為__privatelink.api.azureml.ms__的新私人 DNS 區域。 這包含虛擬網路的連結。 如果您在相同的資源群組中建立具有私人端點的多個工作區，則只有第一個私人端點的虛擬網路可以新增至 DNS 區域。 若要新增其他工作區/私人端點所使用之虛擬網路的專案，請使用下列步驟：
-    > 
-    > 1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取包含工作區的資源群組。 然後選取名為__privatelink.api.azureml.ms__的私人 DNS 區域資源。
-    > 2. 在 [__設定__] 中，選取 [__虛擬網路連結__]。
-    > 3. 選取 [加入]。 從 [__新增虛擬網路] 連結__頁面，提供唯一的__連結名稱__，然後選取要新增的__虛擬網路__。 選取 __[確定]__ 以新增網路連結。
-    >
-    > 如需詳細資訊，請參閱[Azure 私人端點 DNS](/azure/private-link/private-endpoint-dns)設定。
-
-### <a name="optional-advanced"></a> (選擇性) Advanced
-
-根據預設，工作區的計量和中繼資料會儲存在 Microsoft 維護的 Azure Cosmos DB 實例中。 這項資料會使用 Microsoft 管理的金鑰進行加密。 
-
-若要限制 Microsoft 在您的工作區中收集的資料，請選取 [__高商業影響] 工作區__。
-
-> [!IMPORTANT]
-> 只有在建立工作區時，才能選取 [高商業影響]。 您無法在建立工作區之後變更此設定。
-
-如果您使用的是__企業__版的 Azure Machine Learning，您可以改為提供您自己的金鑰。 這麼做會建立在您的 Azure 訂用帳戶中儲存計量和中繼資料的 Azure Cosmos DB 實例。 請使用下列步驟來使用您自己的金鑰：
-
-> [!IMPORTANT]
-> 在遵循這些步驟之前，您必須先執行下列動作：
->
-> 1. 使用訂用帳戶的參與者許可權，在身分識別和存取管理) 中授權__Machine Learning 應用程式__ (。
-> 1. 依照[設定客戶管理的金鑰](/azure/cosmos-db/how-to-setup-cmk)中的步驟進行：
->     * 註冊 Azure Cosmos DB 提供者
->     * 建立和設定 Azure Key Vault
->     * 產生金鑰
->
->     您不需要手動建立 Azure Cosmos DB 實例，系統會在建立工作區時為您建立一個實例。 此 Azure Cosmos DB 實例將會使用以此模式為基礎的名稱，在不同的資源群組中建立： `<your-resource-group-name>_<GUID>` 。
->
-> 您無法在建立工作區之後變更此設定。 如果您刪除工作區所使用的 Azure Cosmos DB，也必須刪除正在使用的工作區。
-
-1. 選取 [__客戶管理的金鑰__]，然後選取 [__按一下以選取金鑰__]。
-
-    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="客戶管理的金鑰":::
-
-1. 在 [__從 Azure Key Vault__ ] 表單的 [選取金鑰] 中，選取現有的 Azure Key Vault、其包含的金鑰，以及金鑰的版本。 這個金鑰是用來加密儲存在 Azure Cosmos DB 中的資料。 最後，使用 [__選取__] 按鈕來使用此機碼。
-
-   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="選取金鑰":::
-
-
-當您完成網路設定後，請選取 [__審查 + 建立__]。
-
-### <a name="review--create"></a>審查 + 建立
-
-1. 檢查設定，並進行任何其他變更或更正。 當您對設定感到滿意時，請選取 [**建立**]。
+1. 當您完成設定工作區時，請選取 [**審查 + 建立**]。
+2. 檢查設定，並進行任何其他變更或更正。 當您對設定感到滿意時，請選取 [**建立**]。
 
    > [!Warning] 
    > 在雲端中建立工作區可能需要數分鐘的時間。

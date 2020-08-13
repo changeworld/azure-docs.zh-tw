@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5f8487126cd187ea66f9423a480c9a73151154c3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420102"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168009"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的私人優惠
 
@@ -35,7 +35,7 @@ ms.locfileid: "87420102"
 
 ## <a name="creating-private-offers-using-plans"></a>使用方案建立私用供應專案
 
-針對*新的或現有的方案*供應專案，發行者可以建立新的方案（先前稱為 sku）並將其標示為私用，輕鬆建立新的私用變數。  
+針對*新的或現有的方案*供應專案，發行者可以建立新方案 (之前稱為 sku) ，並將其標示為私用，輕鬆建立新的私用變數。 每個供應專案最多可以有45私人方案。
 
 <!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) --->
 
@@ -63,7 +63,7 @@ ms.locfileid: "87420102"
 私人供應項目也會出現在搜尋結果中。 只要尋找**私**用徽章。
 
 >[!Note]
->透過雲端解決方案提供者（CSP）計畫的轉銷商所建立的訂用帳戶，不支援私用供應專案。
+>透過雲端解決方案提供者的轉銷商所建立的訂用帳戶不支援私用供應專案 (CSP) 方案。
 
 
 <!---

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032827"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167176"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>建立 IoT Edge 模組供應項目
 
@@ -234,7 +234,7 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 4. 條款及條件
 5. 隱私權原則位址 (連結) 
 6. 名稱
-7. 摘要
+7. [摘要]
 8. 描述
 9. 實用的連結
 10. 螢幕擷取畫面/影片
@@ -288,9 +288,11 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 選取 [儲存草稿]，再繼續進行下一節的「方案概觀」。
 
-### <a name="plan-overview"></a>方案概觀
+## <a name="plan-overview"></a>方案概觀
 
 此索引標籤可讓您在合作夥伴中心的相同供應項目中提供不同的方案選項。 方案 (先前稱為 Sku) 在可用的雲端（例如全域雲端、政府雲端，以及方案所參考的影像）方面可能有所不同。 若要在市集中列出您的供應項目，您至少必須設定一個方案。
+
+您最多可以為每個供應專案建立100方案：最多可以是私人的45。 深入瞭解[Microsoft 商業 Marketplace 私人](../private-offers.md)方案中的私用計畫。
 
 建立方案之後，隨即顯示 [方案概觀] 索引標籤：
 
@@ -305,7 +307,7 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 - **刪除草稿**：如果方案狀態為 [草稿]。
 - **停止銷售方案**：如果方案狀態為 [即時發佈]。
 
-#### <a name="create-new-plan"></a>建立新的方案
+### <a name="create-new-plan"></a>建立新的方案
 
 選取 [建立新方案]。 [新增方案] 對話方塊隨即出現。
 
@@ -337,7 +339,7 @@ IoT Edge 模組供應項目必須在描述的底部包含最低硬體需求段�
 
 Azure Government 服務會處理受限於特定政府法規和需求的資料。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 若要告知這些程式的認證，您可以提供最多 100 個連結來描述您的認證。 這些可以直接連結到您在程式上的清單或連結到您自己的網站。 只有 Azure Government 客戶可以看到這些連結。
 
-## <a name="plan-listing"></a>方案清單
+### <a name="plan-listing"></a>方案清單
 
 此索引標籤會顯示相同供應項目中每個不同方案的特定資訊。
 
@@ -377,7 +379,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 2. 方案名稱
 3. 方案描述
 
-## <a name="availability"></a>可用性
+### <a name="availability"></a>可用性
 
 如果您想要隱藏已發佈的供應項目，讓客戶無法在市集中搜尋、瀏覽或購買，請選取 [可用性] 索引標籤上的 [隱藏方案] 核取方塊。
 

@@ -6,26 +6,26 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/7/2020
-ms.openlocfilehash: dbf3a13ed5a544406950dbcfb5ea8796eceb03c1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8dbdf87eef193540fd5c1bf9d9e7f3794ae46ce
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030535"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168213"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料
 
-本文說明如何藉由設定主要和複本伺服器，在適用於 MySQL 的 Azure 資料庫中設定[資料傳入](concepts-data-in-replication.md)複寫。 本文假設您先前已有使用 MySQL 伺服器和資料庫的經驗。
+本文說明如何藉由設定主要和複本伺服器，在適用於 MySQL 的 Azure 資料庫中設定 [資料傳入](concepts-data-in-replication.md) 複寫。 本文假設您先前已有使用 MySQL 伺服器和資料庫的經驗。
 
 > [!NOTE]
 > 無偏差通訊
 >
-> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對_一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
+> Microsoft 支援多樣化和 inclusionary 的環境。 本文包含對 _一詞的_參考。 [適用于無偏差通訊的 Microsoft 樣式指南](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md)可辨識此為 exclusionary 單字。 本文中會使用這個字來進行一致性，因為它目前是出現在軟體中的單字。 當軟體更新為移除此單字時，此文章將會更新為對齊。
 >
 
-若要在適用於 MySQL 的 Azure 資料庫服務中建立複本，[資料傳入](concepts-data-in-replication.md)複寫會同步處理內部部署的主要 MySQL 伺服器、虛擬機器 (vm) 或雲端資料庫服務中的資料。 資料帶入複寫是建立在以二進位記錄 (binlog) 檔案位置為基礎的 MySQL 原生複寫之上。 若要深入了解 binlog 複寫，請參閱 [MySQL binlog 複寫概觀](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) \(英文\)。
+若要在適用於 MySQL 的 Azure 資料庫服務中建立複本， [資料傳入](concepts-data-in-replication.md)  複寫會同步處理內部部署的主要 MySQL 伺服器、虛擬機器 (vm) 或雲端資料庫服務中的資料。 資料帶入複寫是建立在以二進位記錄 (binlog) 檔案位置為基礎的 MySQL 原生複寫之上。 若要深入了解 binlog 複寫，請參閱 [MySQL binlog 複寫概觀](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) \(英文\)。
 
-執行本文中的步驟之前，請先參閱複寫資料的[限制和需求](concepts-data-in-replication.md#limitations-and-considerations)。
+執行本文中的步驟之前，請先參閱複寫資料的 [限制和需求](concepts-data-in-replication.md#limitations-and-considerations) 。
 
 ## <a name="create-a-mysql-server-to-be-used-as-replica"></a>建立 MySQL 伺服器做為複本
 
@@ -49,11 +49,11 @@ ms.locfileid: "88030535"
 下列步驟會針對裝載在內部部署的 MySQL 伺服器、虛擬機器中的 MySQL 伺服器或由其他雲端提供者所代管的資料庫服務，準備及設定資料帶入複寫。 此伺服器是「資料輸入複寫」中的「主要」伺服器。
 
 
-1. 請先檢查[主伺服器需求](concepts-data-in-replication.md#requirements)，再繼續進行。 
+1. 請先檢查 [主伺服器需求](concepts-data-in-replication.md#requirements) ，再繼續進行。 
 
-   例如，請確定主伺服器允許埠3306上的輸入和輸出流量，且主伺服器具有**公用 IP 位址**、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
+   例如，請確定主伺服器允許埠3306上的輸入和輸出流量，且主伺服器具有 **公用 IP 位址**、可公開存取 DNS，或具有 (FQDN) 的完整功能變數名稱。 
    
-   嘗試從另一部電腦上裝載的 MySQL 命令列之類的工具連線，或從 Azure 入口網站中提供的[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ，來測試主伺服器的連線能力。
+   嘗試從另一部電腦上裝載的 MySQL 命令列之類的工具連線，或從 Azure 入口網站中提供的 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ，來測試主伺服器的連線能力。
 
 1. 開啟二進位記錄
 
@@ -204,9 +204,11 @@ ms.locfileid: "88030535"
 
 1. 篩選 
  
-   如果您想要略過從主要複本複寫某些資料表，請更新 `replicate_wild_ignore_table` 複本伺服器上的 server 參數。 請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) \(英文\)，以深入了解此參數。
+   如果您想要略過從主要複本複寫某些資料表，請更新 `replicate_wild_ignore_table` 複本伺服器上的 server 參數。 您可以使用逗號分隔清單提供多個資料表模式。
+
+   請檢閱 [MySQL 文件](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table) \(英文\)，以深入了解此參數。 
     
-    若要更新參數，您可以使用[Azure 入口網站](howto-server-parameters.md)或[Azure CLI](howto-configure-server-parameters-using-cli.md)。
+   若要更新參數，您可以使用 [Azure 入口網站](howto-server-parameters.md) 或 [Azure CLI](howto-configure-server-parameters-using-cli.md)。
 
 1. 啟動複寫
 

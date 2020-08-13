@@ -4,12 +4,12 @@ description: 與代理程式、延伸模組及磁碟相關之 Azure 備份失敗
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809760"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167924"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -23,7 +23,7 @@ ms.locfileid: "87809760"
 
 ### <a name="step-1-check-azure-vm-health"></a>步驟1：檢查 Azure VM 健康情況
 
-- **請確認 AZURE vm 布建狀態為**「執行中」：如果 VM 布建[狀態](../virtual-machines/windows/states-lifecycle.md#provisioning-states)為「**已停止/已解除配置/正在更新**」狀態，則會干擾備份作業。 開啟*Azure 入口網站 > vm > 總覽 >* 並檢查 vm 狀態以確定其**正在**執行，然後重試備份作業。
+- **請確認 AZURE vm 布建狀態為**「執行中」：如果 VM 布建[狀態](../virtual-machines/states-lifecycle.md#provisioning-states)為「**已停止/已解除配置/正在更新**」狀態，則會干擾備份作業。 開啟*Azure 入口網站 > vm > 總覽 >* 並檢查 vm 狀態以確定其**正在**執行，然後重試備份作業。
 - **查看擱置中的 os 更新或重新開機**：確定 VM 上沒有擱置中的 os 更新或擱置中的重新開機。
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>步驟2：檢查 Azure VM 來賓代理程式服務健全狀況
@@ -101,7 +101,7 @@ Azure VM 代理程式可能已停止、過期、處於不一致的狀態，或�
 **錯誤碼**： UserErrorVmProvisioningStateFailed<br>
 **錯誤訊息**： VM 處於失敗的布建狀態<br>
 
-當其中一個延伸模組失敗使 VM 進入「布建失敗」狀態時，就會發生此錯誤。<br>**開啟 Azure 入口網站 > VM > 設定 > >** 延伸模組的狀態，並檢查所有延伸模組是否處於布建**成功**狀態。 若要深入瞭解，請參閱布建[狀態](../virtual-machines/windows/states-lifecycle.md#provisioning-states)。
+當其中一個延伸模組失敗使 VM 進入「布建失敗」狀態時，就會發生此錯誤。<br>**開啟 Azure 入口網站 > VM > 設定 > >** 延伸模組的狀態，並檢查所有延伸模組是否處於布建**成功**狀態。 若要深入瞭解，請參閱布建[狀態](../virtual-machines/states-lifecycle.md#provisioning-states)。
 
 - 如果 VMSnapshot 延伸模組處於失敗狀態，請以滑鼠右鍵按一下失敗的延伸模組，並將它移除。 觸發隨選備份。 此動作會重新安裝延伸模組，並執行備份作業。  <br>
 - 如果任何其他延伸模組處於失敗狀態，則可能會干擾備份。 請確定已解決這些延伸模組問題，然後重試備份操作。

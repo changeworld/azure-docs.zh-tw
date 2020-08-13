@@ -4,19 +4,19 @@ description: 使用 Azure IoT Edge 裝置作為可處理來自下游裝置之資
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0155294777e1d732e5ff3874102b90049d9a123d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782580"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167397"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>設定 IoT Edge 裝置作為透明閘道
 
@@ -38,14 +38,14 @@ ms.locfileid: "84782580"
 
 下游裝置可以是使用 [Azure IoT 中樞](https://docs.microsoft.com/azure/iot-hub)雲端服務建立身分識別的任何應用程式或平台。 這些應用程式通常會使用[Azure IoT 裝置 SDK](../iot-hub/iot-hub-devguide-sdks.md)。 下游裝置甚至可以是在 IoT Edge 閘道裝置本身上執行的應用程式。 不過，IoT Edge 裝置不能是 IoT Edge 閘道的下游。
 
-您可以建立任何憑證基礎結構，來啟用裝置閘道拓撲所需的信任。 在本文中，我們假設您要用來在 IoT 中樞中啟用[X.509 CA 安全性](../iot-hub/iot-hub-x509ca-overview.md)的相同憑證設定，這牽涉到與特定 IoT 中樞（iot 中樞根 CA）相關聯的 x.509 CA 憑證、一系列以此 CA 簽署的憑證，以及適用于 IoT Edge 裝置的 CA。
+您可以建立任何憑證基礎結構，來啟用裝置閘道拓撲所需的信任。 在本文中，我們假設您要用來在 IoT 中樞中啟用[X.509 CA 安全性](../iot-hub/iot-hub-x509ca-overview.md)的相同憑證設定，這牽涉到與特定 iot 中樞相關聯的 x.509 CA 憑證 (IoT 中樞根 CA) 、一系列以此 CA 簽署的憑證，以及 IoT Edge 裝置的 CA。
 
 >[!NOTE]
 >本文中使用的*根 CA 憑證*一詞指的是 PKI 憑證鏈的最高授權公開憑證，而不一定是聯合憑證授權單位的憑證根目錄。 在許多情況下，它實際上是中繼 CA 公開憑證。
 
 下列步驟會逐步引導您完成建立憑證的程式，並將它們安裝在閘道上的適當位置。 您可以使用任何電腦產生憑證，然後再將其複製到您的 IoT Edge 裝置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
 已安裝 IoT Edge 的 Linux 或 Windows 裝置。
 
@@ -55,7 +55,7 @@ ms.locfileid: "84782580"
 
 ![閘道憑證設定](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
-根 CA 憑證與裝置 CA 憑證（具有其私密金鑰）必須存在於 IoT Edge 閘道裝置上，並在 IoT Edge yaml 檔案中設定。 請記住，在此案例中，*根 CA 憑證*表示此 IoT Edge 案例的最上層憑證授權單位單位。 閘道裝置 CA 憑證和下游裝置憑證必須匯總至相同的根 CA 憑證。
+根 CA 憑證與裝置 CA 憑證 (及其私密金鑰) 必須存在於 IoT Edge 閘道裝置上，並在 IoT Edge yaml 檔案中設定。 請記住，在此案例中，*根 CA 憑證*表示此 IoT Edge 案例的最上層憑證授權單位單位。 閘道裝置 CA 憑證和下游裝置憑證必須匯總至相同的根 CA 憑證。
 
 >[!TIP]
 >在 IoT Edge 裝置上安裝根 CA 憑證和裝置 CA 憑證的程式，也會在[管理 IoT Edge 裝置上的憑證](how-to-manage-device-certificates.md)中更詳細地說明。
@@ -93,15 +93,19 @@ ms.locfileid: "84782580"
    * Windows：`Restart-Service iotedge`
    * Linux：`sudo systemctl restart iotedge`
 
-## <a name="deploy-edgehub-to-the-gateway"></a>將 edgeHub 部署至閘道
+## <a name="deploy-edgehub-and-route-messages"></a>部署 edgeHub 和路由訊息
 
-當您第一次在裝置上安裝 IoT Edge 時，只有一個系統模組會自動啟動： IoT Edge 代理程式。 當您建立裝置的第一個部署之後，第二個系統模組（IoT Edge 中樞）也會一併啟動。
+下游裝置會將遙測和訊息傳送至閘道裝置，其中 IoT Edge 中樞模組負責將資訊路由傳送至其他模組或 IoT 中樞。 若要為您的閘道裝置準備此功能，請確定：
 
-IoT Edge 中樞會負責接收來自下游裝置的傳入訊息，並將它們路由傳送到下一個目的地。 如果**edgeHub**模組未在您的裝置上執行，請為您的裝置建立初始部署。 部署會看起來是空的，因為您不會新增任何模組，但它會確保兩個系統模組都在執行中。
+* IoT Edge 中樞模組會部署到裝置。
 
-您可以藉由檢查 Azure 入口網站中的裝置詳細資料、Visual Studio 或 Visual Studio Code 中的裝置狀態，或在裝置本身上執行命令，來檢查裝置上正在執行哪些模組 `iotedge list` 。
+  當您第一次在裝置上安裝 IoT Edge 時，只有一個系統模組會自動啟動： IoT Edge 代理程式。 當您建立裝置的第一個部署之後，第二個系統模組（IoT Edge 中樞）也會一併啟動。 如果**edgeHub**模組未在您的裝置上執行，請為您的裝置建立部署。
 
-如果**edgeAgent**模組在沒有**edgeHub**模組的情況下執行，請使用下列步驟：
+* IoT Edge hub 模組已設定路由，以處理來自下游裝置的傳入訊息。
+
+  閘道裝置必須有適當的路由，才能處理來自下游裝置的訊息，否則將不會處理那些訊息。 您可以將訊息傳送至閘道裝置上的模組，或直接傳送至 IoT 中樞。
+
+若要部署 IoT Edge 中樞模組，並使用路由來設定，以處理來自下游裝置的傳入訊息，請遵循下列步驟：
 
 1. 在 Azure 入口網站中，瀏覽至您的 IoT 中樞。
 
@@ -109,13 +113,27 @@ IoT Edge 中樞會負責接收來自下游裝置的傳入訊息，並將它們�
 
 3. 選取 [**設定模組**]。
 
-4. 選取 **[下一步：路由]**。
+4. 在 [**模組**] 頁面上，您可以將任何想要部署的模組新增至閘道裝置。 基於本文的目的，我們將著重于設定及部署 edgeHub 模組，這不需要在此頁面上明確設定。
 
-5. 在 [**路由**] 頁面上，您應該會有預設路由，可將所有訊息（不論是從模組或下游裝置）傳送到 IoT 中樞。 如果不是，請使用下列值新增新的路由，然後選取 [**檢查 + 建立**]：
-   * **名稱**：`route`
-   * **值**：`FROM /messages/* INTO $upstream`
+5. 選取 **[下一步：路由]**。
 
-6. 在 [**審查 + 建立**] 頁面上，選取 [**建立**]。
+6. 在 [**路由**] 頁面上，請確定有路由可處理來自下游裝置的訊息。 例如：
+
+   * 將所有訊息（不論是從模組或下游裝置）傳送到 IoT 中樞的路由：
+       * **名稱**：`allMessagesToHub`
+       * **值**：`FROM /messages/* INTO $upstream`
+
+   * 將所有下游裝置的所有訊息傳送至 IoT 中樞的路由：
+      * **名稱**：`allDownstreamToHub`
+      * **值**：`FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+
+      此路由的運作方式是，不同于來自 IoT Edge 模組的訊息，來自下游裝置的訊息沒有相關聯的模組識別碼。 使用路由的**WHERE**子句可讓我們篩選出具有該系統屬性的任何訊息。
+
+      如需有關訊息路由的詳細資訊，請參閱[部署模組及建立路由](./module-composition.md#declare-routes)。
+
+7. 建立您的路由或路由之後，請選取 [**審查 + 建立**]。
+
+8. 在 [**審查 + 建立**] 頁面上，選取 [**建立**]。
 
 ## <a name="open-ports-on-gateway-device"></a>在閘道裝置上開啟埠
 
@@ -128,25 +146,6 @@ IoT Edge 中樞會負責接收來自下游裝置的傳入訊息，並將它們�
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT + WS <br> AMQP + WS |
-
-## <a name="route-messages-from-downstream-devices"></a>從下游裝置路由傳送訊息
-
-IoT Edge 執行階段可以路由傳送從下游裝置送來的訊息，就像路由傳送從模組送來的訊息一樣。 這項功能可讓您在將任何資料傳送至雲端之前，于閘道上執行的模組中執行分析。
-
-目前，針對下游裝置所傳送的訊息，您進行路由傳送的方式是將它們與模組所傳送的訊息做區分。 模組所傳送的訊息全都包含名為 **connectionModuleId** 系統屬性，但下游裝置所傳送的訊息則無此屬性。 您可以使用路由的 WHERE 子句來排除任何包含該系統屬性的訊息。
-
-下列路由是一個範例，它會將來自任何下游裝置的訊息傳送至名為的模組 `ai_insights` ，然後從 `ai_insights` 到 IoT 中樞。
-
-```json
-{
-    "routes":{
-        "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")",
-        "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream"
-    }
-}
-```
-
-如需有關訊息路由的詳細資訊，請參閱[部署模組及建立路由](./module-composition.md#declare-routes)。
 
 ## <a name="enable-extended-offline-operation"></a>啟用延伸離線操作
 

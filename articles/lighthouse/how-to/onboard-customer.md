@@ -1,30 +1,30 @@
 ---
 title: 讓客戶在 Azure Lighthouse 上線
 description: 瞭解如何將客戶上線至 Azure 燈塔，讓他們的資源可透過您自己的租使用者存取及管理，並使用 Azure 委派的資源管理。
-ms.date: 05/26/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: cac40a835ff3227a31611b31655865d43fa378ab
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: f20df54a4bc689effad210746f93928defdaf0f5
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118870"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167312"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>讓客戶在 Azure Lighthouse 上線
 
 本文說明身為服務提供者，您可以將客戶上線至 Azure 燈塔。 當您這麼做時，客戶的委派資源 (訂用帳戶和/或資源群組) 可以透過您自己的 Azure Active Directory (Azure AD) 租使用者使用[Azure 委派的資源管理](../concepts/azure-delegated-resource-management.md)來存取和管理。
 
-如果您在管理多個客戶的資源，您可以重複此程序。 然後，當授權的使用者登入您的租使用者時，該使用者就可以在客戶租用範圍內獲得授權，以執行管理作業，而不需要登入每個個別的客戶租使用者。
-
-為了追蹤您對客戶參與的整體影響及接受表彰，您可將 Microsoft 合作夥伴網路 (MPN) 識別碼與能存取每個已上線訂用帳戶的至少一個使用者帳戶建立關聯。 請注意，您必須在服務提供者租用戶中執行此關聯。 為了簡化作業，建議在租用戶中建立與 MPN 識別碼建立關聯的服務主體帳戶，並授與其每個上架客戶的讀取存取權。 如需詳細資訊，請參閱[將合作夥伴識別碼連結到 Azure 帳戶](../../cost-management-billing/manage/link-partner-id.md)。 
-
-> [!NOTE]
-> 當客戶購買受管理的服務供應專案時，也可以上架至 Azure 燈塔， (您發佈至 Azure Marketplace 的公用或私用) 。 如需詳細資訊，請參閱[將受控服務供應項目發佈到 Azure Marketplace](publish-managed-services-offers.md)。 您也可以搭配發佈至 Azure Marketplace 的供應項目來使用這裡所描述上線程序。
-
-上線程序需要您在服務提供者的租用戶與客戶的租用戶內都採取動作。 此文章中描述所有這些步驟。
-
 > [!TIP]
 > 雖然我們在本主題中參考服務提供者和客戶，但[管理多個](../concepts/enterprise.md)租使用者的企業可以使用相同的程式來設定 Azure 燈塔，併合並其管理體驗。
+
+您可以對多個客戶重複上架程式。 當具有適當許可權的使用者登入您的管理租使用者時，該使用者可以跨客戶租用範圍進行授權，以執行管理作業，而不需要登入每個個別的客戶租使用者。
+
+為了追蹤您對客戶參與的整體影響及接受表彰，您可將 Microsoft 合作夥伴網路 (MPN) 識別碼與能存取每個已上線訂用帳戶的至少一個使用者帳戶建立關聯。 您必須在服務提供者租使用者中執行此關聯。 為了簡化作業，建議在租用戶中建立與 MPN 識別碼建立關聯的服務主體帳戶，並授與其每個上架客戶的讀取存取權。 如需詳細資訊，請參閱[將合作夥伴識別碼連結到 Azure 帳戶](../../cost-management-billing/manage/link-partner-id.md)。
+
+> [!NOTE]
+> 當客戶購買受管理的服務供應專案時，也可以上架至 Azure 燈塔， (您[發佈至 Azure Marketplace](publish-managed-services-offers.md)的公用或私用) 。 您也可以使用此處所述的上執行緒序，以及發行至 Azure Marketplace 的供應專案。
+
+上線程序需要您在服務提供者的租用戶與客戶的租用戶內都採取動作。 此文章中描述所有這些步驟。
 
 ## <a name="gather-tenant-and-subscription-details"></a>收集租用戶與訂用帳戶詳細資料
 
@@ -65,14 +65,16 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>定義角色與權限
 
-身為服務提供者，您可以對單一客戶執行多個工作，每個都要求存取不同範圍。 您可以定義所需數量的授權，以便將[角色型存取控制 (RBAC) 內建角色](../../role-based-access-control/built-in-roles.md)指派給租用戶中的使用者。
+身為服務提供者，您可以對單一客戶執行多個工作，每個都要求存取不同範圍。 您可以定義所需數量的授權，以便將適當的[角色型存取控制 (RBAC) 內建角色](../../role-based-access-control/built-in-roles.md)指派給租使用者中的使用者。
 
-若要讓管理工作更容易，我們建議針對每個角色使用 Azure AD 使用者群組，而不是將權限直接指派給該使用者，讓您可將個別使用者新增至群組或從中移除。 您也可以將角色指派給服務主體。 請務必遵循最少特殊權限準則，讓使用者只具備完成其工作所需的權限。 如需有關所支援角色的建議和資訊，請參閱 [Azure Lighthouse 中的租用戶、使用者和角色案例](../concepts/tenants-users-roles.md)。
+為了簡化管理，建議您針對每個角色使用 Azure AD 的使用者群組。 這可讓您彈性地將個別使用者新增或移除到具有存取權的群組，如此一來，您就不需要重複上架程式來進行使用者變更。 您可以將角色指派給服務主體，這在自動化案例中會很有用。
+
+定義您的授權時，請務必遵循最低許可權的原則，讓使用者只擁有完成其工作所需的許可權。 如需所支援角色的指導方針和相關資訊，請參閱[Azure 燈塔案例中的租使用者、使用者和角色](../concepts/tenants-users-roles.md)。
 
 > [!IMPORTANT]
 > 若要新增 Azure AD 群組的許可權，[群組類型] 必須是 [安全性]，而不是 [Office 365]。 建立群組時，會選取此選項。 如需詳細資訊，請參閱[使用 Azure Active Directory 建立基本群組並新增成員](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-為了定義授權，您必須知道在要授與存取權的服務提供者租用戶中，每個使用者、使用者群組或服務主體的識別碼值。 您也會需要所要指派每個內建角色的角色定義識別碼。 如果還沒有識別碼值，您可從服務提供者租用戶內，執行下列命令來擷取。
+若要定義授權，您必須知道您要授與存取權之服務提供者租使用者中每個使用者、使用者群組或服務主體的識別碼值。 您也會需要所要指派每個內建角色的角色定義識別碼。 如果還沒有識別碼值，您可從服務提供者租用戶內，執行下列命令來擷取。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -109,12 +111,13 @@ az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output ts
 # To retrieve role definition IDs
 az role definition list --name "<roleName>" | grep name
 ```
+
 > [!TIP]
 > 建議您在讓客戶上線時，指派[受控服務註冊指派刪除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)，讓您租用戶中的使用者之後可以視需要，[移除委派的存取權](remove-delegation.md)。 如果未指派此角色，則只有客戶租用戶中的使用者可以移除委派的資源。
 
 ## <a name="create-an-azure-resource-manager-template"></a>建立 Azure Resource Manager 範本
 
-若要讓客戶上線，您必須為供應項目建立包含下列資訊的 [Azure Resource Manager](../../azure-resource-manager/index.yml) 範本。 當客戶在 Azure 入口網站的[服務提供者頁面](view-manage-service-providers.md)中檢視供應項目詳細資料時，會顯示 **mspOfferName** 和 **mspOfferDescription** 值。
+若要讓客戶上線，您必須為供應項目建立包含下列資訊的 [Azure Resource Manager](../../azure-resource-manager/index.yml) 範本。 在 Azure 入口網站的 [[服務提供者] 頁面](view-manage-service-providers.md)中，客戶會看到**mspOfferName**和**mspOfferDescription**值。
 
 |欄位  |定義  |
 |---------|---------|
@@ -192,13 +195,11 @@ az role definition list --name "<roleName>" | grep name
 }
 ```
 
-上述範例的最後一個授權會新增具有「使用者存取系統管理員」角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 **principalId**。 當您指派此角色時，必須包含 **delegatedRoleDefinitionIds** 屬性與一或多個內建角色。 在此授權中所建立使用者能夠將這些內建角色指派給客戶租用戶中的[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，在[部署可補救的原則](deploy-policy-remediation.md)時需要這些角色。  使用者也可以建立支援事件。  通常與「使用者存取系統管理員」角色相關聯的其他權限都不會套用至此使用者。
+上述範例的最後一個授權會新增具有「使用者存取系統管理員」角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 **principalId**。 當您指派此角色時，必須包含 **delegatedRoleDefinitionIds** 屬性與一或多個內建角色。 在此授權中建立的使用者將能夠將這些內建角色指派給客戶租使用者中的[受控](../../active-directory/managed-identities-azure-resources/overview.md)識別，以便[部署可補救的原則](deploy-policy-remediation.md)。  使用者也可以建立支援事件。  通常與「使用者存取系統管理員」角色相關聯的其他權限都不會套用至此使用者。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure Resource Manager 範本
 
-更新參數檔案之後，客戶租用戶中使用者必須將其租用戶中的 Azure Resource Manager 範本部署為訂用帳戶層級部署。 您想要上架 (的每個訂用帳戶，或包含您想要上架) 之資源群組的每個訂用帳戶，都需要個別部署。
-
-這是訂用帳戶層級部署，因此無法在 Azure 入口網站中起始。 您可以使用 PowerShell 或 Azure CLI 完成部署，如下所示。
+更新參數檔案之後，客戶租用戶中使用者必須將其租用戶中的 Azure Resource Manager 範本部署為訂用帳戶層級部署。 您想要上架 (的每個訂用帳戶，或包含您想要上架) 之資源群組的每個訂用帳戶，都需要個別部署。 您可以使用 PowerShell 或 Azure CLI 完成部署，如下所示。
 
 > [!IMPORTANT]
 > 這個訂用帳戶層級部署必須由客戶租用戶中的非來賓帳戶執行，且該租用戶對於要上線的訂用帳戶必須有[「擁有者」內建角色](../../role-based-access-control/built-in-roles.md#owner) (機器翻譯) (或其包含要上線的資源群組)。 若要查看可委派訂用帳戶的所有使用者，客戶租用戶中的使用者可以在 Azure 入口網站中選取訂用帳戶並開啟 [存取控制 (IAM)]，然後[查看所有具有「擁有者」角色的使用者](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。
