@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f62f6702b36915c6a6e1350072982e231cd9c07e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058285"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118224"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
@@ -264,7 +264,7 @@ ms.locfileid: "87058285"
     ```
 
 ### <a name="more-information"></a>詳細資訊
-此頁面會以 SVG 格式新增一個具有黑色背景的登入按鈕：<br/>![使用 Microsoft 登入](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 如需了解更多登入按鈕，請前往[商標指導方針](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "商標方針")。
+此頁面會以 SVG 格式新增一個具有黑色背景的登入按鈕：<br/>![使用 Microsoft 登入](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 如需了解更多登入按鈕，請前往[商標指導方針](./howto-add-branding-in-azure-ad-apps.md "商標方針")。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>新增控制器來顯示使用者的宣告
 此控制器示範如何使用 `[Authorize]` 屬性來保護控制器。 此屬性會設定限制，只允許經過驗證的使用者存取控制器。 下列程式碼會利用屬性來顯示在登入過程中擷取的使用者宣告：
@@ -403,7 +403,7 @@ ms.locfileid: "87058285"
 - 應用程式開發人員新增任何其他需要**管理員同意**的權限。
 - 或租用戶經過設定 (在 [企業應用程式] -> [使用者設定]  中)，使得使用者無法自行同意應用程式存取公司資料。
 
-如需詳細資訊，請參閱 [Microsoft 身分識別平台端點中的權限和同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)。
+如需詳細資訊，請參閱 [Microsoft 身分識別平台端點中的權限和同意](./v2-permissions-and-consent.md)。
 
 ### <a name="view-application-results"></a>檢視應用程式結果
 
@@ -424,7 +424,7 @@ ms.locfileid: "87058285"
 |**主旨** |主體 |用來跨網站唯一識別使用者的字串|
 |**租用戶識別碼** |Guid | 唯一代表使用者 Azure AD 組織的 **guid**|
 
-此外，您應該會看到驗證要求中所有宣告的資料表。 如需詳細資訊，請參閱[識別碼權杖中的宣告清單](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
+此外，您應該會看到驗證要求中所有宣告的資料表。 如需詳細資訊，請參閱[識別碼權杖中的宣告清單](./id-tokens.md)。
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>對具有 Authorize 屬性 (選用) 的方法進行存取測試
 
@@ -484,6 +484,6 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 了解如何建立可呼叫 Microsoft Graph 的 Web 應用程式：
 
 > [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET 教學課程](https://docs.microsoft.com/graph/tutorials/aspnet)
+> [Microsoft Graph ASP.NET 教學課程](/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

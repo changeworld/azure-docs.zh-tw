@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1efae6563b88f82318f9b8358d255b234c6cb7fd
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387604"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116201"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 程式碼範例 (v1.0 端點)
 
@@ -124,4 +124,4 @@ ASP.NET Web 應用程式  | ![此圖顯示 .NET 標誌](media/sample-v2-code/log
 
 - [Azure Active Directory 開發人員指南](v1-overview.md)
 - [Azure Active Directory 驗證程式庫](active-directory-authentication-libraries.md)
-- [Microsoft Graph API 的概念和參考](https://docs.microsoft.com/graph/use-the-api)
+- [Microsoft Graph API 的概念和參考](/graph/use-the-api)

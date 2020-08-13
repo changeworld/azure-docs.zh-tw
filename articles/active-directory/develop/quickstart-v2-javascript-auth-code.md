@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 02652243b3c25c0a02e325c8b7b1d7e7c226abcd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 461f05b90b79852194d657a5dcbc3ba7583cff8d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311937"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115181"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入門：使用授權碼流程讓使用者登入並取得 JavaScript SPA 中的存取權杖
 
 在本快速入門中，您會執行程式碼範例，該範例會示範 JavaScript 單頁應用程式 (SPA) 如何使用授權碼流程讓使用者登入個人帳戶、公司帳戶和學校帳戶。 此程式碼範例也會示範如何取得存取權杖來呼叫 Web API (在此案例中為 Microsoft Graph API)。 如需圖例，請參閱[此範例的運作方式](#how-the-sample-works)。
 
-本快速入門會使用 MSAL.js 2.0 搭配授權碼流程。 如需搭配使用 MSAL.js 1.0 與隱含流程的類似快速入門，請參閱[快速入門：在 JavaScript 單頁應用程式中讓使用者登入](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript)。
+本快速入門會使用 MSAL.js 2.0 搭配授權碼流程。 如需搭配使用 MSAL.js 1.0 與隱含流程的類似快速入門，請參閱[快速入門：在 JavaScript 單頁應用程式中讓使用者登入](./quickstart-v2-javascript.md)。
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
@@ -152,7 +152,7 @@ ms.locfileid: "87311937"
 >
 > [!div renderon="docs"]
 >
-> `Enter_the_Graph_Endpoint_Here` 是要對其進行 API 呼叫的端點。 針對主要 (全域) Microsoft Graph API 服務，請輸入 `https://graph.microsoft.com/` (包含尾端的正斜線)。 如需國家雲端上的 Microsoft Graph 詳細資訊，請參閱[國家雲端部署](https://docs.microsoft.com/graph/deployments)。
+> `Enter_the_Graph_Endpoint_Here` 是要對其進行 API 呼叫的端點。 針對主要 (全域) Microsoft Graph API 服務，請輸入 `https://graph.microsoft.com/` (包含尾端的正斜線)。 如需國家雲端上的 Microsoft Graph 詳細資訊，請參閱[國家雲端部署](/graph/deployments)。
 >
 > 如果您使用主要 (全域) Microsoft Graph API 服務，則 *graphConfig.js* 檔案中的 `graphMeEndpoint` 和 `graphMailEndpoint` 值應該如下所示：
 >
@@ -202,4 +202,4 @@ npm install @azure/msal-browser
 如需如何建置本快速入門所用應用程式的詳細逐步指南，請參閱下列教學課程：
 
 > [!div class="nextstepaction"]
-> [登入和呼叫 MS Graph 的教學課程 >](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-auth-code)
+> [登入和呼叫 MS Graph 的教學課程 >](./tutorial-v2-javascript-auth-code.md)

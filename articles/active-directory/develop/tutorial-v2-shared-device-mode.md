@@ -12,12 +12,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: f49a5703b19a76095c8eafe358742b442725d3d0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886427"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118241"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>教學課程：在 Android 應用程式中使用共用裝置模式
 
@@ -28,11 +28,11 @@ ms.locfileid: "80886427"
 
 ## <a name="developer-guide"></a>開發人員指南
 
-本指南提供開發人員指導方針，說明如何使用 Microsoft 驗證程式庫 (MSAL) 在 Android 應用程式中執行共用裝置模式。 請參閱 [MSAL Android 教學課程](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android)，以了解如何整合 MSAL 與 Android 應用程式、登入使用者、呼叫 Microsoft Graph 及登出使用者。
+本指南提供開發人員指導方針，說明如何使用 Microsoft 驗證程式庫 (MSAL) 在 Android 應用程式中執行共用裝置模式。 請參閱 [MSAL Android 教學課程](./tutorial-v2-android.md)，以了解如何整合 MSAL 與 Android 應用程式、登入使用者、呼叫 Microsoft Graph 及登出使用者。
 
 ### <a name="download-the-sample"></a>下載範例
 
-從 GitHub 複製[範例應用程式](https://github.com/Azure-Samples/ms-identity-android-java/)。 此範例可在[單一或多個帳戶模式](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)中使用。
+從 GitHub 複製[範例應用程式](https://github.com/Azure-Samples/ms-identity-android-java/)。 此範例可在[單一或多個帳戶模式](./single-multi-account.md)中使用。
 
 ### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>將 MSAL SDK 新增至您的本機 Maven 存放庫
 
@@ -46,7 +46,7 @@ dependencies{
 
 ### <a name="configure-your-app-to-use-shared-device-mode"></a>將您的應用程式設定為使用共用裝置模式
 
-如需有關設定組態檔的詳細資訊，請參閱[設定文件](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)。
+如需有關設定組態檔的詳細資訊，請參閱[設定文件](./msal-configuration.md)。
 
 在 MSAL 組態檔中，將 `"shared_device_mode_supported"` 設定為 `true`。
 
@@ -204,7 +204,7 @@ private void onSignOutClicked()
 
 首先，在您的組織租用戶中註冊您的應用程式。 然後依序在 auth_config.json 中提供下列值，好讓應用程式可正確執行。
 
-如需如何執行此動作的相關資訊，請參閱[註冊應用程式](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#register-your-application)。
+如需如何執行此動作的相關資訊，請參閱[註冊應用程式](./tutorial-v2-android.md#register-your-application)。
 
 > [!NOTE]
 > 當您註冊應用程式時，請使用左側的快速入門指南，然後選取 [Android]  。 這會引導您到一個頁面，然後要求您提供應用程式的**套件名稱**及**簽章雜湊**。 這些是確保您應用程式組態能夠正常執行的重要項目。 接著，您會收到用於應用程式的組態物件，您可以將其剪下並貼到 auth_config.json 檔案中。

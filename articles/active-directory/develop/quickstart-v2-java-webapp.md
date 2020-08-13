@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: 1474a8ad73f7deb9a7c321f7d7994a7b2b73d624
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 10ae1c76d48c1cedbb915fec66177ac3612feea0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87312396"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115215"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式
 
@@ -212,7 +212,7 @@ ms.locfileid: "87312396"
 
 
 > [!IMPORTANT]
-> 此快速入門應用程式會使用用戶端密碼，將自己識別為機密用戶端。 由於用戶端密碼會以純文字形式新增至您的專案檔，因此，基於安全考量，在考慮將應用程式當作生產應用程式之前，建議您使用憑證，而非用戶端密碼。 如需如何使用憑證的詳細資訊，請參閱[適用於應用程式驗證的憑證認證](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials)。
+> 此快速入門應用程式會使用用戶端密碼，將自己識別為機密用戶端。 由於用戶端密碼會以純文字形式新增至您的專案檔，因此，基於安全考量，在考慮將應用程式當作生產應用程式之前，建議您使用憑證，而非用戶端密碼。 如需如何使用憑證的詳細資訊，請參閱[適用於應用程式驗證的憑證認證](./active-directory-certificate-credentials.md)。
 
 ## <a name="more-information"></a>詳細資訊
 
@@ -254,11 +254,11 @@ import com.microsoft.aad.msal4j.*;
 深入了解權限和同意：
 
 > [!div class="nextstepaction"]
-> [權限和同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
+> [權限和同意](./v2-permissions-and-consent.md)
 
 若要深入了解此案例的驗證流程，請參閱 OAuth 2.0 授權碼流程：
 
 > [!div class="nextstepaction"]
-> [授權碼 OAuth 流程](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
+> [授權碼 OAuth 流程](./v2-oauth2-auth-code-flow.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

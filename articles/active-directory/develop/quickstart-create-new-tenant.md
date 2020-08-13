@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 19c94a4807b8958fa8b1ec46ccae660c7cbe92de
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: df873e49e1bc581a32bcb4e4b40b2b24db98cee5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256691"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120808"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>快速入門：設定租用戶
 
@@ -72,5 +72,5 @@ Microsoft 身分識別平台可讓開發人員建置以各種自訂 Microsoft 36
 ## <a name="next-steps"></a>後續步驟
 
 * [註冊應用程式](quickstart-register-app.md)，並與 Microsoft 身分識別平台整合。 
-* 了解[驗證的基本概念](authentication-scenarios.md)。
+* 了解[驗證的基本概念](./authentication-vs-authorization.md)。
 * 如需訂用帳戶與 Azure AD 租用戶之間關聯性的詳細資料，請參閱[將 Azure 訂用帳戶與 Azure Active Directory 租用戶建立關聯或將其新增至其中](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。

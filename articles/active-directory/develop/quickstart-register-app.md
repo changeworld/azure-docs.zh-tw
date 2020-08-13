@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 79983678d13b810a521a00ba2c1978de92a5029f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 65fff06b4a2d28bbc276920ccbaba90d814d03f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309513"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115351"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>快速入門：使用 Microsoft 身分識別平台來註冊應用程式
 
@@ -50,7 +50,7 @@ ms.locfileid: "81309513"
     * 若為 Web 應用程式，請提供應用程式的基底 URL。 例如，`https://localhost:31544` 可能是在您的本機電腦上執行之 Web 應用程式的 URL。 使用者會使用此 URL 來登入 Web 用戶端應用程式。
     * 若為公用用戶端應用程式，請提供 Azure AD 用來傳回權杖回應的 URI。 輸入應用程式特定的值，例如 `myapp://auth`。
 
-    如需 Web 應用程式或原生應用程式的範例，請參閱 [Microsoft 身分識別平台](https://docs.microsoft.com/azure/active-directory/develop)中的快速入門。
+    如需 Web 應用程式或原生應用程式的範例，請參閱 [Microsoft 身分識別平台](./index.yml)中的快速入門。
 
 1. 完成時，選取 [註冊]  。
 
@@ -70,7 +70,7 @@ Azure AD 會將唯一的應用程式識別碼或用戶端識別碼指派給您�
 
 * 若要管理支援的帳戶，請參閱[快速入門：修改應用程式所支援的帳戶](quickstart-modify-supported-accounts.md)。
 
-* 若要建立應用程式並新增功能，請參閱 [Microsoft 身分識別平台](https://docs.microsoft.com/azure/active-directory/develop)中的快速入門。
+* 若要建立應用程式並新增功能，請參閱 [Microsoft 身分識別平台](./index.yml)中的快速入門。
 
 * 若要了解代表已註冊的應用程式和它們之間關係的兩個 Azure AD 物件，請參閱[應用程式物件和服務主體物件](app-objects-and-service-principals.md)。
 

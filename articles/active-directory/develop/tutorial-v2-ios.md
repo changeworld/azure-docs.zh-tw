@@ -12,12 +12,12 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0f712dbee6218ce8e012639b82a3a2ee7c177bb3
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.openlocfilehash: 61a3884ce4d1075dbcac61a0c202c3a393d2d943
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84904757"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118139"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph
 
@@ -149,7 +149,7 @@ var webViewParameters : MSALWebviewParameters?
 var currentAccount: MSALAccount?
 ```
 
-上方唯一需要修改的值是指派給 `kClientID` 的值，應修改為您的[應用程式識別碼](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-id-client-id)。 此值是 MSAL 設定資料的一部分，也就是本教學課程一開始以步驟引導您在 Azure 入口網站中註冊應用程式時，您所儲存的資料。
+上方唯一需要修改的值是指派給 `kClientID` 的值，應修改為您的[應用程式識別碼](./developer-glossary.md#application-id-client-id)。 此值是 MSAL 設定資料的一部分，也就是本教學課程一開始以步驟引導您在 Azure 入口網站中註冊應用程式時，您所儲存的資料。
 
 ## <a name="configure-xcode-project-settings"></a>進行 Xcode 專案設定
 
@@ -842,4 +842,4 @@ func acquireTokenInteractively() {
 
 ## <a name="get-help"></a>取得說明
 
-對於本教學課程或 Microsoft 身分識別平台若有任何問題，請瀏覽[說明與支援](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)。
+對於本教學課程或 Microsoft 身分識別平台若有任何問題，請瀏覽[說明與支援](./developer-support-help-options.md)。

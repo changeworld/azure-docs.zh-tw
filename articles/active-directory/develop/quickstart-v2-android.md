@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 9afb5b7602b220c25d919f8fe0773d5cfa143d89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a46cd1b916edeae8a24fb997db46e5a0651567cb
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80991189"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115266"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入門：從 Android 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -483,7 +483,7 @@ mMultipleAccountApp.removeAccount(accountList.get(accountListSpinner.getSelected
 試著遵循＜[從 Android 應用程式登入使用者並呼叫 Microsoft Graph](tutorial-v2-android.md)＞教學課程，此教學課程會逐步引導您建立 Android 應用程式來取得存取權杖，並使用該權杖呼叫 Microsoft Graph API。
 
 > [!div class="nextstepaction"]
-> [呼叫 Graph API Android 教學課程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-android)
+> [呼叫 Graph API Android 教學課程](./tutorial-v2-android.md)
 
 ### <a name="msal-for-android-library-wiki"></a>適用於 Android 的 MSAL 程式庫的 Wiki
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7193affad3da212a6a40c0d9479473ec597e86f6
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 38bd83f8bd713f2d5bda658e052c919dd3d7625d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807616"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119703"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>自通用 Windows 平台應用程式 (XAML) 呼叫 Microsoft Graph API
 
@@ -27,7 +27,7 @@ ms.locfileid: "85807616"
 在本指南結尾，您的應用程式會使用個人帳戶呼叫受保護的 API。 例如，outlook.com、live.com 等。 您的應用程式也會從具有 Azure Active Directory (Azure AD) 的任何公司或組織呼叫工作和學校帳戶。
 
 >[!NOTE]
-> 本指南需安裝具備通用 Windows 平台開發功能的 Visual Studio。 如需下載及設定 Visual Studio 以開發通用 Windows 平台應用程式的說明，請參閱[開始設定](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)。
+> 本指南需安裝具備通用 Windows 平台開發功能的 Visual Studio。 如需下載及設定 Visual Studio 以開發通用 Windows 平台應用程式的說明，請參閱[開始設定](/windows/uwp/get-started/get-set-up)。
 
 >[!NOTE]
 > 如果您不熟悉 Microsoft 身分識別平台，請從[從通用 Windows 平台 (UWP) 應用程式快速入門呼叫 Microsoft Graph API](quickstart-v2-uwp.md) 開始了解。

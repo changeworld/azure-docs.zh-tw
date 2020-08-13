@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 67ce5f898f2f9b6be088a0d01aec908c93ce7418
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: a58da8b11876d662173ae83de43d8ed74ab43e93
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446883"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118275"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教學課程：讓使用者登入並從 Angular 單頁應用程式呼叫 Microsoft Graph API
 
@@ -71,7 +71,7 @@ ng generate component page-name                  # To add a new page (such as a 
 
 ## <a name="register-your-application"></a>註冊您的應用程式
 
-依照指示，在 Azure 入口網站中[註冊單頁應用程式](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration)。
+依照指示，在 Azure 入口網站中[註冊單頁應用程式](./scenario-spa-app-registration.md)。
 
 在您註冊的應用程式 [概觀] 頁面上，記下 [應用程式 (用戶端) 識別碼] 值以供稍後使用。
 
@@ -124,7 +124,7 @@ ng generate component page-name                  # To add a new page (such as a 
     |值名稱|關於|
     |---------|---------|
     |Enter_the_Application_Id_Here|在應用程式註冊的 [概觀] 頁面中，這是您的**應用程式 (用戶端) 識別碼**值。 |
-    |Enter_the_Cloud_Instance_Id_Here|這是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，請輸入 **https://login.microsoftonline.com** 。 針對國家端 (例如中國)，請參閱[國家雲端](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。|
+    |Enter_the_Cloud_Instance_Id_Here|這是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，請輸入 **https://login.microsoftonline.com** 。 針對國家端 (例如中國)，請參閱[國家雲端](./authentication-national-cloud.md)。|
     |Enter_the_Tenant_Info_Here| 設為下列其中一個選項：如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為目錄 (租用戶) 識別碼或租用戶名稱 (例如 **contoso.microsoft.com**)。 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」，請將此值取代為 [通用]。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」，請將此值取代為 [取用者]。 |
     |Enter_the_Redirect_Uri_Here|以 **http://localhost:4200** 取代。|
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8d22e86a37ca386d41374cf0b4811943108d293b
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: ad45f4c57c336b30f09684c250539bd4452a10a8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553845"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114552"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>快速入門：取得權杖，並從 Windows 傳統型應用程式呼叫 Microsoft Graph API
 
@@ -177,4 +177,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 嘗試 Windows Desktop 教學課程以取得建置應用程式與新功能的完整逐步指南，包括此快速入門的完整說明。
 
 > [!div class="nextstepaction"]
-> [呼叫 圖形 API 教學課程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-windesktop)
+> [呼叫 圖形 API 教學課程](./tutorial-v2-windows-desktop.md)

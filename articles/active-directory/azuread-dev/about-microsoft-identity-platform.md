@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 504caffe0505a4e8a66608fcad528130630a5cc8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236203"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117765"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft 身分識別平台的演化
 
@@ -49,7 +49,7 @@ Azure 入口網站 **[應用程式註冊](https://go.microsoft.com/fwlink/?linki
 
 若要與 Azure AD B2C 整合 (在驗證社交或本機身分識別時)，您必須在 Azure AD B2C 租用戶中註冊您的應用程式。 這項體驗也是 Azure 入口網站的一部分。
 
-使用[應用程式 API](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) 可讓您以程式設計方式設定與 Microsoft 身分識別平台整合的應用程式，以驗證任何 Microsoft 身分識別。
+使用[應用程式 API](/graph/api/resources/application?view=graph-rest-1.0) 可讓您以程式設計方式設定與 Microsoft 身分識別平台整合的應用程式，以驗證任何 Microsoft 身分識別。
 
 ### <a name="msal-libraries"></a>MSAL 程式庫
 
@@ -57,7 +57,7 @@ Azure 入口網站 **[應用程式註冊](https://go.microsoft.com/fwlink/?linki
 
 您也可以使用 MSAL 程式庫將您的應用程式與 Azure AD B2C 整合。
 
-用來建置 Web 應用程式和 Web API 的伺服器端程式庫已正式運作：[ASP.NET](https://docs.microsoft.com/aspnet/overview) 和 [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+用來建置 Web 應用程式和 Web API 的伺服器端程式庫已正式運作：[ASP.NET](/aspnet/overview) 和 [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
 
 ### <a name="microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點
 

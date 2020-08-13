@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 787f30302d163dc0097cde1be31e745d7f29bb64
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1e537c6f61a7c461b2a9edb4097fba95f5c66a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129775"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120519"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入門：登入使用者並取得 JavaScript SPA 中的存取權杖
 
@@ -111,7 +111,7 @@ ms.locfileid: "87129775"
 >
 > 其中：
 > - *\<Enter_the_Application_Id_Here>* 是您註冊之應用程式的 **應用程式 (用戶端) 識別碼**。
-> - *\<Enter_the_Cloud_Instance_Id_Here>* 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，只要輸入 *https://login.microsoftonline.com* 即可。 針對**國家**雲端 (例如中國)，請參閱[國家雲端](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。
+> - *\<Enter_the_Cloud_Instance_Id_Here>* 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，只要輸入 *https://login.microsoftonline.com* 即可。 針對**國家**雲端 (例如中國)，請參閱[國家雲端](./authentication-national-cloud.md)。
 > - *\<Enter_the_Tenant_info_here>* 設定為下列其中一個選項：
 >    - 如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] \(例如 *contoso.microsoft.com*\)。
 >    - 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。
@@ -144,7 +144,7 @@ ms.locfileid: "87129775"
 > [!div renderon="docs"]
 >
 > 其中：
-> - *\<Enter_the_Graph_Endpoint_Here>* 是要對其進行 API 呼叫的端點。 針對主要或全域 Microsoft Graph API 服務，只需輸入 `https://graph.microsoft.com`。 如需詳細資訊，請參閱[國家雲端部署](https://docs.microsoft.com/graph/deployments)
+> - *\<Enter_the_Graph_Endpoint_Here>* 是要對其進行 API 呼叫的端點。 針對主要或全域 Microsoft Graph API 服務，只需輸入 `https://graph.microsoft.com`。 如需詳細資訊，請參閱[國家雲端部署](/graph/deployments)
 >
 > #### <a name="step-4-run-the-project"></a>步驟 4：執行專案
 
@@ -300,7 +300,7 @@ myMSALObj.acquireTokenPopup(requestObj)
 如需建置本快速入門應用程式的詳細逐步指南，請參閱：
 
 > [!div class="nextstepaction"]
-> [登入和呼叫 MS Graph 的教學課程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
+> [登入和呼叫 MS Graph 的教學課程](./tutorial-v2-javascript-spa.md)
 
 若要瀏覽 MSAL 存放庫的文件、常見問題集、問題等等，請參閱：
 

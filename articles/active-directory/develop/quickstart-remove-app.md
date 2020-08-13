@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 3cc9e4458f14a63bad7f484bc16683248895ede9
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: bdcf32f53da49834b37471a8258262f0eb2b21da
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84692218"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115317"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>快速入門：移除使用 Microsoft 身分識別平台所註冊的應用程式
 
@@ -34,7 +34,7 @@ ms.locfileid: "84692218"
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>移除您或組織所編寫的應用程式
 
-您或組織所註冊的應用程式會同時由租用戶中的應用程式物件與服務主體物件來表示。 如需詳細資訊，請參閱 [應用程式物件和服務主體物件](active-directory-application-objects.md)。
+您或組織所註冊的應用程式會同時由租用戶中的應用程式物件與服務主體物件來表示。 如需詳細資訊，請參閱 [應用程式物件和服務主體物件](./app-objects-and-service-principals.md)。
 
 ### <a name="to-remove-an-application"></a>移除應用程式
 
@@ -49,7 +49,7 @@ ms.locfileid: "84692218"
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>移除其他組織所編寫的應用程式
 
-如果您正在檢視租用戶內容中的 [應用程式註冊]  ，則出現在 [所有應用程式]  索引標籤下方的應用程式子集，均來自另一個租用戶，並且是在同意程序進行期間註冊到租用戶的。 更具體來說，它們僅由您租用戶中的服務主體物件表示，而沒有對應的應用程式物件。 如需有關應用程式物件與服務主體物件之差異的詳細資訊，請參閱 [Azure AD 中的應用程式和服務主體物件](active-directory-application-objects.md)。
+如果您正在檢視租用戶內容中的 [應用程式註冊]  ，則出現在 [所有應用程式]  索引標籤下方的應用程式子集，均來自另一個租用戶，並且是在同意程序進行期間註冊到租用戶的。 更具體來說，它們僅由您租用戶中的服務主體物件表示，而沒有對應的應用程式物件。 如需有關應用程式物件與服務主體物件之差異的詳細資訊，請參閱 [Azure AD 中的應用程式和服務主體物件](./app-objects-and-service-principals.md)。
 
 為了移除應用程式對目錄的存取權 (在授與同意之後)，公司系統管理員必須移除其服務主體。 系統管理員必須擁有全域系統管理員存取權，才能透過 Azure 入口網站移除應用程式或使用 [Azure AD PowerShell Cmdlet](https://go.microsoft.com/fwlink/?LinkId=294151) 移除存取權。
 

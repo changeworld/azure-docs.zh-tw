@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, tracking-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: c8fab1449c72dc3e1a27506e97272e322c0e8c6e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
+ms.openlocfilehash: 6d4710f0b8756ea9b7f824b8b0aa1221ad8b30f0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85553880"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120383"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>快速入門：使用應用程式的身分識別取得權杖，並從 Python 主控台應用程式呼叫 Microsoft Graph API
 
-在本快速入門中，您將撰寫 Python 應用程式，以使用應用程式的身分識別取得存取權杖，然後呼叫 Microsoft Graph API 以顯示目錄中的[使用者清單](https://docs.microsoft.com/graph/api/user-list)。 此案例適用於無周邊的自動作業或 Windows 服務需要使用應用程式身分識別 (而非使用者的身分識別) 才能執行的情況。
+在本快速入門中，您將撰寫 Python 應用程式，以使用應用程式的身分識別取得存取權杖，然後呼叫 Microsoft Graph API 以顯示目錄中的[使用者清單](/graph/api/user-list)。 此案例適用於無周邊的自動作業或 Windows 服務需要使用應用程式身分識別 (而非使用者的身分識別) 才能執行的情況。
 
 > [!div renderon="docs"]
 > ![說明本快速入門所產生之範例應用程式的運作方式](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)

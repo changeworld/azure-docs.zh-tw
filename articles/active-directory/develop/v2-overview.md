@@ -12,12 +12,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231670"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119550"
 ---
 # <a name="microsoft-identity-platform-overview"></a>Microsoft 身分識別平台概觀
 
@@ -59,7 +59,7 @@ Microsoft 身分識別平台由數個元件組成：
 
 在這組建議的文章中，了解如何將核心驗證和 Azure AD 概念套用至 Microsoft 身分識別平台：
 
-- [驗證基本概念](authentication-scenarios.md)
+- [驗證基本概念](./authentication-vs-authorization.md)
 - [應用程式與服務主體](app-objects-and-service-principals.md)
 - [對象](v2-supported-account-types.md)
 - [權限和同意](v2-permissions-and-consent.md)
@@ -71,7 +71,7 @@ Microsoft 身分識別平台由數個元件組成：
 
 [Azure AD B2C](../../active-directory-b2c/overview.md) - 建立客戶面向的應用程式，讓使用者可以使用其社交帳戶 (例如 Facebook 或 Google) 或電子郵件地址和密碼來登入。
 
-[Azure AD B2B](../b2b/what-is-b2b.md) - 邀請外部使用者成為您 Azure AD 租用戶的「來賓」使用者，並對其指派權限以進行授權，同時他們可使用其現有認證來進行驗證。
+[Azure AD B2B](../external-identities/what-is-b2b.md) - 邀請外部使用者成為您 Azure AD 租用戶的「來賓」使用者，並對其指派權限以進行授權，同時他們可使用其現有認證來進行驗證。
 
 > [!TIP]
 > 正在尋找 Azure Active Directory 開發人員平台 (v1.0) 文件嗎？ 請參閱[開發人員適用的 Azure Active Directory (v1.0) 概觀](../azuread-dev/v1-overview.md)。

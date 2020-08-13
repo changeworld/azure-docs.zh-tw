@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: a7553eea8941b93e589f38f8229ef35b70361f8e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bf921ce4ce3ad65f0787ccab2f0a064da8973af1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129180"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115232"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入門：讓使用者登入並取得 Angular 單頁應用程式中的存取權杖
 
@@ -47,7 +47,7 @@ ms.locfileid: "87129180"
 >
 > 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 > 1. 如果您的帳戶可存取多個租用戶，請在右上方選取帳戶，然後將您的入口網站工作階段設定為想要使用的 Azure AD 租用戶。
-> 1. 依照指示，在 Azure 入口網站中[註冊單頁應用程式](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration)。
+> 1. 依照指示，在 Azure 入口網站中[註冊單頁應用程式](./scenario-spa-app-registration.md)。
 > 1. 在應用程式註冊的 [驗證] 窗格中新增平台，然後註冊重新導向 URI：`http://localhost:4200/`。
 > 1. 本快速入門會使用[隱含的授與流程](v2-oauth2-implicit-grant-flow.md)。 選取 [識別碼權杖] 和 [存取權杖] 的 [隱含授與] 設定。 因為此應用程式會將使用者登入並呼叫 API，所以識別碼權杖和存取權杖都是必要權杖。
 
@@ -99,7 +99,7 @@ ms.locfileid: "87129180"
 >|值名稱|描述|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|在應用程式註冊的 [概觀] 頁面中，這是您的**應用程式 (用戶端) 識別碼**值。 |
->|Enter_the_Cloud_Instance_Id_Here|這是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，請輸入 **https://login.microsoftonline.com** 。 針對國家端 (例如中國)，請參閱[國家雲端](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。|
+>|Enter_the_Cloud_Instance_Id_Here|這是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，請輸入 **https://login.microsoftonline.com** 。 針對國家端 (例如中國)，請參閱[國家雲端](./authentication-national-cloud.md)。|
 >|Enter_the_Tenant_Info_Here| 設為下列其中一個選項：如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為目錄 (租用戶) 識別碼或租用戶名稱 (例如 **contoso.microsoft.com**)。 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。 如果您的應用程式支援「任何組織目錄中的帳戶及個人的 Microsoft 帳戶」，請將此值取代為 [通用]。 若要將支援範圍限制為「僅限個人 Microsoft 帳戶」，請將此值取代為 [取用者]。 |
 >|Enter_the_Redirect_Uri_Here|以 **http://localhost:4200** 取代。|
 >|cacheLocation  | (選用) 設定驗證狀態的瀏覽器儲存體。 預設值是 **sessionStorage**。   |
@@ -142,5 +142,4 @@ ms.locfileid: "87129180"
 接下來，在 Angular 教學課程中了解如何讓使用者登入並取得權杖：
 
 > [!div class="nextstepaction"]
-> [Angular 教學課程](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
-
+> [Angular 教學課程](./tutorial-v2-angular.md)

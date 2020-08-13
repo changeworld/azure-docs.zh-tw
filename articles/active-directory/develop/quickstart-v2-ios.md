@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: bd17c20707c3bf1a153e9209cd7e2ec279de0501
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 39062396e0076af5901f2fc7d76f5c989e2ccc3a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554046"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115249"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>快速入門：從 iOS 或 macOS 應用程式登入使用者並呼叫 Microsoft Graph API
 
@@ -101,12 +101,12 @@ ms.locfileid: "85554046"
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
-> 1. 如果您要為 [Azure AD 國家雲端](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)建置應用程式，請使用正確端點來取代開頭為 'let kGraphEndpoint' 的那一行。 在 [全域存取] 中，請使用預設值：
+> 1. 如果您要為 [Azure AD 國家雲端](/graph/deployments#app-registration-and-token-service-root-endpoints)建置應用程式，請使用正確端點來取代開頭為 'let kGraphEndpoint' 的那一行。 在 [全域存取] 中，請使用預設值：
 >     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.com/"
 >     let kAuthority = "https://login.microsoftonline.com/common"
 >     ```
-> 1. 其他端點則記載在[這裡](https://docs.microsoft.com/graph/deployments#app-registration-and-token-service-root-endpoints)。 例如，若要執行 Azure AD Germany 的快速入門，請使用下列內容：
+> 1. 其他端點則記載在[這裡](/graph/deployments#app-registration-and-token-service-root-endpoints)。 例如，若要執行 Azure AD Germany 的快速入門，請使用下列內容：
 >     ```swift
 >     let kGraphEndpoint = "https://graph.microsoft.de/"
 >     let kAuthority = "https://login.microsoftonline.de/common"
@@ -269,6 +269,6 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 ### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>了解如何建立本快速入門中所使用的應用程式
 
 > [!div class="nextstepaction"]
-> [針對 iOS 和 macOS 呼叫圖形 API 教學課程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)
+> [針對 iOS 和 macOS 呼叫圖形 API 教學課程](./tutorial-v2-ios.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

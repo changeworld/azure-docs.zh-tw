@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
-ms.custom: aaddev, tracking-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 0a2867b9b39634000366ec2a92f936a4e419e859
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
+ms.openlocfilehash: 6b58e927952b2a51289c3017455cc7d66545fe86
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558630"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120315"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式
 
@@ -140,7 +140,7 @@ ms.locfileid: "84558630"
     python app.py
     ```
    > [!IMPORTANT]
-   > 此快速入門應用程式會使用用戶端密碼，將自己識別為機密用戶端。 由於用戶端密碼會以純文字形式新增至您的專案檔，因此，基於安全考量，在考慮將應用程式當作生產應用程式之前，建議您使用憑證，而非用戶端密碼。 如需如何使用憑證的詳細資訊，請參閱[這些指示](https://docs.microsoft.com/azure/active-directory/develop/active-directory-certificate-credentials) \(部分機器翻譯\)。
+   > 此快速入門應用程式會使用用戶端密碼，將自己識別為機密用戶端。 由於用戶端密碼會以純文字形式新增至您的專案檔，因此，基於安全考量，在考慮將應用程式當作生產應用程式之前，建議您使用憑證，而非用戶端密碼。 如需如何使用憑證的詳細資訊，請參閱[這些指示](./active-directory-certificate-credentials.md) \(部分機器翻譯\)。
 
 ## <a name="more-information"></a>詳細資訊
 

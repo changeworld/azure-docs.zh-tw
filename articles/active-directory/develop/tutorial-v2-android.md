@@ -12,17 +12,17 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b899e1d651f41c9c1e1e54af1b5ec19162dfc28d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b4de8a5e96466ea324475030df1f00eb6bb5cf1a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380066"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118280"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>教學課程：從 Android 應用程式登入使用者並呼叫 Microsoft Graph 
 
 >[!NOTE]
->本教學課程示範使用「適用於 Android 的 MSAL」的簡化範例。 為了簡單起見，本教學課程僅使用單一帳戶模式。 您也可以檢視存放庫和複製[預先設定的範例應用程式](https://github.com/Azure-Samples/ms-identity-android-java/)，以探索更複雜的案例。 如需範例應用程式、組態和註冊的詳細資訊，請參閱[快速入門](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android)。 
+>本教學課程示範使用「適用於 Android 的 MSAL」的簡化範例。 為了簡單起見，本教學課程僅使用單一帳戶模式。 您也可以檢視存放庫和複製[預先設定的範例應用程式](https://github.com/Azure-Samples/ms-identity-android-java/)，以探索更複雜的案例。 如需範例應用程式、組態和註冊的詳細資訊，請參閱[快速入門](./quickstart-v2-android.md)。 
 
 在本教學課程中，您將了解如何使用適用於 Android 的 Microsoft 驗證程式庫，將您的 Android 應用程式與 Microsoft 身分識別平台整合。 您將了解如何登入和登出使用者、取得存取權杖來呼叫 Microsoft Graph API，以及對 Graph API 提出要求。 
 
@@ -117,7 +117,7 @@ ms.locfileid: "81380066"
    ```
     
    >[!NOTE]
-   >本教學課程僅示範如何以單一帳戶模式設定應用程式。 如需關於[單一與多重帳戶模式的比較](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)和[設定應用程式](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)的詳細資訊，請參閱文件
+   >本教學課程僅示範如何以單一帳戶模式設定應用程式。 如需關於[單一與多重帳戶模式的比較](./single-multi-account.md)和[設定應用程式](./msal-configuration.md)的詳細資訊，請參閱文件
    
 4. 在 [app]   > [src]   > [main]   > [AndroidManifest.xml]  中，於應用程式主體下方新增 `BrowserTabActivity` 活動。 此輸入可讓 Microsoft 在完成驗證後回呼您的應用程式：
 
@@ -582,4 +582,4 @@ private void performOperationOnSignOut() {
 
 ## <a name="get-help"></a>取得說明
 
-對於本教學課程或 Microsoft 身分識別平台若有任何問題，請瀏覽[說明與支援](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)。
+對於本教學課程或 Microsoft 身分識別平台若有任何問題，請瀏覽[說明與支援](./developer-support-help-options.md)。
