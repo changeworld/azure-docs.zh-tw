@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 29f90261e4d9a0e76c7760a2e3142f178510f6d6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844876"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212279"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體輸出系結
 
@@ -155,7 +155,7 @@ module.exports = function(context) {
 
 下列範例示範如何將單一和多個值輸出到儲存體佇列。 *在上function.js*所需的設定也是相同的方式。
 
-儲存體佇列系結定義于的*function.js上*，其*類型*設定為 `queue` 。
+儲存體佇列系結定義于的 *function.js上* ，其 *類型* 設定為 `queue` 。
 
 ```json
 {
@@ -262,7 +262,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-如需完整範例，請參閱[輸出範例](#example)。
+如需完整範例，請參閱 [輸出範例](#example)。
 
 您可以使用 `StorageAccount` 屬性來指定類別、方法或參數層級的儲存體帳戶。 如需詳細資訊，請參閱「觸發程序 - 屬性」。
 
@@ -361,7 +361,7 @@ public class HttpTriggerQueueOutput {
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-輸出佇列專案可以透過 `context.bindings.<NAME>` ，其中 `<NAME>` 符合*function.js*中定義的名稱。 對於佇列項目承載，可使用字串或 JSON 可序列化物件。
+輸出佇列專案可以透過 `context.bindings.<NAME>` ，其中 `<NAME>` 符合 *function.js*中定義的名稱。 對於佇列項目承載，可使用字串或 JSON 可序列化物件。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -373,7 +373,7 @@ public class HttpTriggerQueueOutput {
 
 # <a name="java"></a>[Java](#tab/java)
 
-有兩個選項可從函式使用[QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput)批註輸出事件中樞訊息：
+有兩個選項可從函式使用 [QueueOutput](/java/api/com.microsoft.azure.functions.annotation.queueoutput) 批註輸出事件中樞訊息：
 
 - 傳回**值**：藉由將注釋套用至函式本身，函式的傳回值會保存為事件中樞訊息。
 
@@ -393,7 +393,7 @@ public class HttpTriggerQueueOutput {
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-本節說明2.x 版和更高版本中可供此系結使用的全域設定。 以下檔案的範例 host.js僅包含此系結的2.x 版 + 設定。 如需有關2.x 版和更早版本中的全域設定的詳細資訊，請參閱[Azure Functions 的參考host.js](functions-host-json.md)。
+本節說明2.x 版和更高版本中可供此系結使用的全域設定。 以下檔案的範例 host.js僅包含此系結的2.x 版 + 設定。 如需有關2.x 版和更早版本中的全域設定的詳細資訊，請參閱 [ Azure Functions 的參考host.js](functions-host-json.md)。
 
 > [!NOTE]
 > 有關 Functions 1.x 中 host.json 的參考，請參閱[適用於 Azure Functions 1.x 的 host.json 參考](functions-host-json-v1.md)。

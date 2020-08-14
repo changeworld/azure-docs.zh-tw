@@ -1,19 +1,19 @@
 ---
 title: 從 Azure 入口網站將混合式機器連線至 Azure
-description: 在本文中，您將了解如何從 Azure 入口網站使用適用於伺服器的 Azure Arc (預覽) 來安裝代理程式並將機器連線至 Azure。
+description: 在本文中，您將瞭解如何使用 Azure 入口網站的已啟用 Azure Arc 的伺服器來安裝代理程式，並將電腦連線至 Azure (preview) 。
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 08f2563aaa67cdd45760af34ef3bef3e8e472ae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120978"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213499"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>從 Azure 入口網站將混合式機器連線至 Azure
 
-您可以手動執行一組步驟，為環境中的一部或少數幾部 Windows 或 Linux 機器啟用「適用於伺服器的 Azure Arc」(預覽)。 或者，您也可以藉由執行我們所提供的範本指令碼來使用自動化方法。 此指令碼會自動下載並安裝這兩個代理程式。
+您可以手動執行一組步驟，為您環境中的一或少數 Windows 或 Linux 電腦，啟用已啟用 Azure Arc 的伺服器 (預覽) 。 或者，您也可以藉由執行我們所提供的範本指令碼來使用自動化方法。 此指令碼會自動下載並安裝這兩個代理程式。
 
 若要使用這種方法，您必須擁有機器上的系統管理員權限，才能安裝和設定代理程式。 在 Linux 上請使用根帳號，在 Windows 上則必須是本機系統管理員群組的成員。
 
@@ -34,7 +34,7 @@ ms.locfileid: "88120978"
 1. 在 [產生指令碼] 頁面上，選取您要在 Azure 中用來管理機器的訂用帳戶和資源群組。 選取要用來儲存機器中繼資料的 Azure 位置。
 
     >[!NOTE]
-    >適用於伺服器的 Azure Arc (預覽) 僅支援下欄區域：
+    >已啟用 Azure Arc 的伺服器 (預覽) 僅支援下欄區域：
     >- EastUS
     >- WestUS2
     >- WestEurope
@@ -147,7 +147,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>驗證與 Azure Arc 的連線
 
-在您安裝代理程式並將其設定為連接到適用于伺服器的 Azure Arc (預覽) 時，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
+在您安裝代理程式並將其設定為連線至已啟用 Azure Arc 的伺服器後 (預覽) ]，請移至 Azure 入口網站，確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
 
 ![成功的伺服器連線](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

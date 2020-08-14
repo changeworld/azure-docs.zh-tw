@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: d089cb1844356032b956110a7475d839031ef006
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 9596e6a6fd32994f782125c9bd4b8ca6d5a94b03
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849823"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213065"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體輸出系結
 
@@ -338,11 +338,11 @@ Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱[輸出範例](#example)。
+`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱 [輸出範例](#example) 。
 
 ---
 
-如需完整範例，請參閱[輸出範例](#example)。
+如需完整範例，請參閱 [輸出範例](#example)。
 
 您可以使用 `StorageAccount` 屬性來指定類別、方法或參數層級的儲存體帳戶。 如需詳細資訊，請參閱[觸發程序 - 屬性](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)。
 
@@ -379,14 +379,14 @@ Python 指令碼不支援屬性。
 
 您可以將函式參數宣告為下列類型，以將其寫出至 blob 儲存體：
 
-* 字串為`func.Out(str)`
-* 資料流程為`func.Out(func.InputStream)`
+* 字串為 `func.Out(str)`
+* 資料流程為 `func.Out(func.InputStream)`
 
-如需詳細資訊，請參閱[輸出範例](#example)。
+如需詳細資訊，請參閱 [輸出範例](#example) 。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱[輸出範例](#example)。
+`@BlobOutput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將設定 `dataType` 為 `binary` 。 如需詳細資訊，請參閱 [輸出範例](#example) 。
 
 ---
 

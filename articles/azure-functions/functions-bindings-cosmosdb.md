@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
-ms.custom: seodec18
-ms.openlocfilehash: 37c98ca2fbffddd064b55192e9b5d83c948d88e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 8ae7613eea4b952c079be90b05e615087ea80a32
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041969"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214157"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>適用於 Azure Functions 1.x 的 Azure Cosmos DB 繫結
 
@@ -22,7 +22,7 @@ ms.locfileid: "87041969"
 本文說明如何在 Azure Functions 中使用 [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) 繫結。 Azure Functions 支援適用於 Azure Cosmos DB 的觸發程序、輸入和輸出繫結。
 
 > [!NOTE]
-> 本文適用於 Azure Functions 1.x。 如需如何在函數2.x 和更新版本中使用這些系結的詳細資訊，請參閱[Azure Functions 2.x 的 Azure Cosmos DB](functions-bindings-cosmosdb-v2.md)系結。
+> 本文適用於 Azure Functions 1.x。 如需如何在函數2.x 和更新版本中使用這些系結的詳細資訊，請參閱 [Azure Functions 2.x 的 Azure Cosmos DB](functions-bindings-cosmosdb-v2.md)系結。
 >
 >這個繫結最初命名為 DocumentDB。 在 Functions 1.x 版中，只有觸發程序已重新命名為 Cosmos DB；輸入繫結、輸出繫結和 NuGet 套件則保留 DocumentDB 名稱。
 
@@ -1139,7 +1139,7 @@ JavaScript 不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-當函式結束時，不會自動進行更新。 請改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 來進行更新。 請參閱[輸入範例](#input)。
+當函式結束時，不會自動進行更新。 請改用 `context.bindings.<documentName>In` 和 `context.bindings.<documentName>Out` 來進行更新。 請參閱 [輸入範例](#input)。
 
 ---
 
@@ -1152,7 +1152,7 @@ Azure Cosmos DB 輸出繫結可讓您使用 SQL API，將新的文件寫入 Azur
 本區段包含下列範例：
 
 * 佇列觸發程序，寫入一份文件
-* 佇列觸發程式，使用寫入檔`IAsyncCollector`
+* 佇列觸發程式，使用寫入檔 `IAsyncCollector`
 
 範例會參考簡單的 `ToDoItem` 類型：
 
@@ -1238,7 +1238,7 @@ namespace CosmosDBSamplesV1
 本區段包含下列範例：
 
 * 佇列觸發程序，寫入一份文件
-* 佇列觸發程式，使用寫入檔`IAsyncCollector`
+* 佇列觸發程式，使用寫入檔 `IAsyncCollector`
 
 ### <a name="queue-trigger-write-one-doc"></a>佇列觸發程序，寫入一份文件
 
@@ -1436,7 +1436,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
     }
 ```
 
-如需完整範例，請參閱[輸出](#output)。
+如需完整範例，請參閱 [輸出](#output)。
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
@@ -1479,7 +1479,7 @@ JavaScript 不支援屬性。
 |---|---|
 | CosmosDB | [CosmosDB 錯誤碼](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [深入了解使用 Cosmos DB 的無伺服器資料庫](../cosmos-db/serverless-computing-database.md)
 * [深入了解 Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)

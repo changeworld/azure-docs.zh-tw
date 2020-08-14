@@ -1,18 +1,18 @@
 ---
 title: 使用 Windows PowerShell DSC 安裝連線的電腦代理程式
-description: 在本文中，您將瞭解如何使用適用于伺服器的 Azure Arc，將機器連接到 Azure (preview) 使用 Windows PowerShell DSC。
+description: 在本文中，您將瞭解如何使用已啟用 Azure Arc 的伺服器，將機器連線至 Azure (preview) 使用 Windows PowerShell DSC。
 ms.date: 03/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdda3e6681d3e6912d031c45f5c6da9e92814e8f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 25d6e435c261a83bf81c15d5dd445a936d48a08b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120995"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213083"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>如何使用 Windows PowerShell DSC 安裝連線的電腦代理程式
 
-使用[Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) ，您可以將 windows 電腦的軟體安裝和設定自動化。 本文說明如何使用 DSC，為混合式 Windows 電腦上已連線的電腦代理程式安裝 Azure Arc。
+使用 [Windows PowerShell Desired State Configuration](/powershell/scripting/dsc/getting-started/winGettingStarted?view=powershell-7) (DSC) ，您可以將 windows 電腦的軟體安裝和設定自動化。 本文說明如何使用 DSC，在混合式 Windows 電腦上安裝已啟用 Azure Arc 的伺服器 (preview) 連線的電腦代理程式。
 
 ## <a name="requirements"></a>規格需求
 
@@ -20,7 +20,7 @@ ms.locfileid: "88120995"
 
 - [AzureConnectedMachineDsc](https://www.powershellgallery.com/packages/AzureConnectedMachineDsc/1.0.1.0) DSC 模組
 
-- 用來以非互動方式將電腦連線至 Azure Arc 的服務主體。 如果您尚未為伺服器的 Arc 建立服務主體，請遵循[建立服務主體以進行大規模](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)上線一節中的步驟。
+- 將電腦連線到已啟用 Azure Arc 之伺服器的服務主體 (預覽) 非互動方式。 如果您尚未為已啟用 Arc 的伺服器建立服務主體 (預覽) ，請遵循 [建立服務主體以進行大規模](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 上線一節中的步驟。
 
 ## <a name="install-the-connectedmachine-dsc-module"></a>安裝 ConnectedMachine DSC 模組
 
@@ -42,9 +42,9 @@ ms.locfileid: "88120995"
 
 ## <a name="install-the-agent-and-connect-to-azure"></a>安裝代理程式並連線至 Azure
 
-此課程模組中的資源是設計來管理 Azure 連線的機器代理程式設定。 此外，也包含 PowerShell 腳本 `AzureConnectedMachineAgent.ps1` ，可在資料夾中找到 `AzureConnectedMachineDsc\examples` 。 它會使用「社區」資源將下載和安裝自動化，並建立與 Azure Arc 的連線。此腳本會執行[從 Azure 入口網站將混合式機器連線至 Azure](onboard-portal.md)一文中所述的類似步驟。
+此課程模組中的資源是設計來管理 Azure 連線的機器代理程式設定。 此外，也包含 PowerShell 腳本 `AzureConnectedMachineAgent.ps1` ，可在資料夾中找到 `AzureConnectedMachineDsc\examples` 。 它會使用「社區」資源將下載和安裝自動化，並建立與 Azure Arc 的連線。此腳本會執行 [從 Azure 入口網站將混合式機器連線至 Azure](onboard-portal.md) 一文中所述的類似步驟。
 
-如果電腦需要透過 proxy 伺服器與服務通訊，則在安裝代理程式之後，您必須執行[這裡](manage-agent.md#update-or-remove-proxy-settings)所述的命令。 這會設定 Proxy 伺服器系統環境變數 `https_proxy`。 您可以使用[ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0)模組，透過 DSC 執行此步驟，而不是手動執行命令。
+如果電腦需要透過 proxy 伺服器與服務通訊，則在安裝代理程式之後，您必須執行 [這裡](manage-agent.md#update-or-remove-proxy-settings)所述的命令。 這會設定 Proxy 伺服器系統環境變數 `https_proxy`。 您可以使用 [ComputeManagementDsc](https://www.powershellgallery.com/packages/ComputerManagementDsc/6.0.0.0) 模組，透過 DSC 執行此步驟，而不是手動執行命令。
 
 >[!NOTE]
 >為了讓 DSC 能夠執行，Windows 必須設定為接收 PowerShell 遠端命令，即使您是在執行 localhost 設定時也一樣。 若要輕鬆正確地設定您的環境，只要在已提高權限的 PowerShell 終端機中執行 `Set-WsManQuickConfig -Force` 即可。
@@ -60,11 +60,11 @@ ms.locfileid: "88120995"
 
 - `ResourceGroup`：您要讓連線電腦所屬的資源組名。
 
-- `Location`：請參閱[支援的 Azure 區域](overview.md#supported-regions)。 此位置可與資源群組的位置相同或不同。
+- `Location`：請參閱 [支援的 Azure 區域](overview.md#supported-regions)。 此位置可與資源群組的位置相同或不同。
 
 - `Tags`：應套用至已連線電腦資源之標記的字串陣列。
 
-- `Credential`：具有**ApplicationId**和**密碼**的 PowerShell 認證物件，用來使用[服務主體](onboard-service-principal.md)來大規模註冊電腦。 
+- `Credential`：具有 **ApplicationId** 和 **密碼** 的 PowerShell 認證物件，用來使用 [服務主體](onboard-service-principal.md)來大規模註冊電腦。 
 
 1. 在 PowerShell 主控台中，流覽至您儲存檔案的資料夾 `.ps1` 。
 
@@ -76,13 +76,13 @@ ms.locfileid: "88120995"
 
 3. 這會 `localhost.mof file` 在名為的新資料夾中建立 `C:\dsc` 。
 
-在安裝好代理程式並將其設定為連線至適用於伺服器的 Azure Arc (預覽) 之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
+在您安裝代理程式並將其設定為連接到已啟用 Azure Arc 的伺服器後 (預覽) ]，請移至 Azure 入口網站，確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
 
 ## <a name="adding-to-existing-configurations"></a>新增至現有的設定
 
 此資源可以新增至現有的 DSC 設定，以代表機器的端對端設定。 例如，您可能想要將此資源新增至設定安全作業系統設定的設定。
 
-PowerShell 資源庫中的[CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0)模組可以用來建立範例設定的[複合資源](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7)，以進一步簡化組合設定。
+PowerShell 資源庫中的 [CompsiteResource](https://www.powershellgallery.com/packages/compositeresource/0.4.0) 模組可以用來建立範例設定的 [複合資源](/powershell/scripting/dsc/resources/authoringResourceComposite?view=powershell-7) ，以進一步簡化組合設定。
 
 ## <a name="next-steps"></a>後續步驟
 

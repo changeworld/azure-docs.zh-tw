@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: efe175e4086d5273471c1b0451e4cfb28449c236
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008928"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213455"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>針對 Azure Cache for Redis 逾時進行疑難排解
 
@@ -26,7 +27,7 @@ ms.locfileid: "88008928"
 
 ## <a name="redis-server-patching"></a>Redis 伺服器修補
 
-Azure Cache for Redis 會定期更新其伺服器軟體，做為它所提供的受控服務功能的一部分。 此[修補](cache-failover.md)活動主要會在幕後進行。 在容錯移轉期間，當 Redis 伺服器節點正在進行修補時，連接到這些節點的 Redis 用戶端可能會在這些節點之間切換連接時遇到暫時性的超時。 請參閱[容錯移轉如何影響我的用戶端應用程式](cache-failover.md#how-does-a-failover-affect-my-client-application)，以取得您的應用程式上可能有哪些副作用修補的詳細資訊，以及如何改善其修補事件的處理方式。
+Azure Cache for Redis 會定期更新其伺服器軟體，做為它所提供的受控服務功能的一部分。 此 [修補](cache-failover.md) 活動主要會在幕後進行。 在容錯移轉期間，當 Redis 伺服器節點正在進行修補時，連接到這些節點的 Redis 用戶端可能會在這些節點之間切換連接時遇到暫時性的超時。 請參閱 [容錯移轉如何影響我的用戶端應用程式](cache-failover.md#how-does-a-failover-affect-my-client-application) ，以取得您的應用程式上可能有哪些副作用修補的詳細資訊，以及如何改善其修補事件的處理方式。
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange.Redis 逾時例外狀況
 
@@ -80,14 +81,14 @@ Stackexchange.redis： Redis 會使用名 `synctimeout` 為的設定來進行同
     ```
 
 1. 請確定您使用最新版的 [StackExchange.Redis NuGet 封裝](https://www.nuget.org/packages/StackExchange.Redis/)。 程式碼中的錯誤會經常修正，以便更能應付逾時問題，因此請務必要擁有最新版本。
-1. 如果您的要求是由伺服器或用戶端上的頻寬限制所系結，則需要較長的時間才能完成，而且可能會造成超時。 若要查看您的超時是否因為伺服器上的網路頻寬，請參閱[伺服器端頻寬限制](cache-troubleshoot-server.md#server-side-bandwidth-limitation)。 若要查看您的超時是否是因為用戶端網路頻寬所導致，請參閱[用戶端頻寬限制](cache-troubleshoot-client.md#client-side-bandwidth-limitation)。
+1. 如果您的要求是由伺服器或用戶端上的頻寬限制所系結，則需要較長的時間才能完成，而且可能會造成超時。 若要查看您的超時是否因為伺服器上的網路頻寬，請參閱 [伺服器端頻寬限制](cache-troubleshoot-server.md#server-side-bandwidth-limitation)。 若要查看您的超時是否是因為用戶端網路頻寬所導致，請參閱 [用戶端頻寬限制](cache-troubleshoot-client.md#client-side-bandwidth-limitation)。
 1. 您是否在伺服器或用戶端上受到 CPU 限制？
 
    - 檢查您的用戶端上是否有受 CPU 的限制。 高 CPU 可能會導致要求不會在間隔內進行處理 `synctimeout` ，並導致要求超時。移至較大的用戶端大小或散佈負載有助於控制此問題。
-   - 藉由監視 CPU 快取[效能](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)計量，檢查您是否要在伺服器上取得受 cpu 限制。 當 Redis 與 CPU 系結時，傳入的要求可能會導致這些要求超時。若要解決此狀況，您可以將負載分散到高階快取中的多個分區，或升級為較大的大小或定價層。 如需詳細資訊，請參閱[伺服器端頻寬限制](cache-troubleshoot-server.md#server-side-bandwidth-limitation)。
-1. 伺服器上是否有命令需要很長的處理時間？ 長時間執行且在 redis 伺服器上需要很長時間來處理的命令可能會造成超時。 如需長時間執行命令的詳細資訊，請參閱[長時間執行的命令](cache-troubleshoot-server.md#long-running-commands)。 您可以使用 Redis-cli 用戶端或[Redis 主控台](cache-configure.md#redis-console)來連線到您的 Azure Cache for Redis 實例。 然後，執行[SLOWLOG](https://redis.io/commands/slowlog)命令，以查看是否有要求速度低於預期。 Redis 伺服器和 StackExchange.Redis 最適合許多小型要求，而非少數幾個大型要求。 將資料分割成較小的區塊可以改善這些問題。
+   - 藉由監視 CPU 快取 [效能](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)計量，檢查您是否要在伺服器上取得受 cpu 限制。 當 Redis 與 CPU 系結時，傳入的要求可能會導致這些要求超時。若要解決此狀況，您可以將負載分散到高階快取中的多個分區，或升級為較大的大小或定價層。 如需詳細資訊，請參閱 [伺服器端頻寬限制](cache-troubleshoot-server.md#server-side-bandwidth-limitation)。
+1. 伺服器上是否有命令需要很長的處理時間？ 長時間執行且在 redis 伺服器上需要很長時間來處理的命令可能會造成超時。 如需長時間執行命令的詳細資訊，請參閱 [長時間執行的命令](cache-troubleshoot-server.md#long-running-commands)。 您可以使用 Redis-cli 用戶端或 [Redis 主控台](cache-configure.md#redis-console)來連線到您的 Azure Cache for Redis 實例。 然後，執行 [SLOWLOG](https://redis.io/commands/slowlog) 命令，以查看是否有要求速度低於預期。 Redis 伺服器和 StackExchange.Redis 最適合許多小型要求，而非少數幾個大型要求。 將資料分割成較小的區塊可以改善這些問題。
 
-    如需使用 redis-cli 和 stunnel 連接到快取的 TLS/SSL 端點的相關資訊，請參閱[宣佈 Redis 預覽版本的 ASP.NET 會話狀態提供者](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)的 blog 文章。
+    如需使用 redis-cli 和 stunnel 連接到快取的 TLS/SSL 端點的相關資訊，請參閱 [宣佈 Redis 預覽版本的 ASP.NET 會話狀態提供者](https://devblogs.microsoft.com/aspnet/announcing-asp-net-session-state-provider-for-redis-preview-release/)的 blog 文章。
 1. 高 Redis 伺服器負載可能會導致逾時。 您可以藉由監視 `Redis Server Load` [快取效能度量](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)來監視伺服器負載。 伺服器負載為 100 (最大值) 表示 Redis 伺服器正忙碌處理要求，並沒有閒置的時間。 若要確認特定要求是否會佔用所有伺服器功能，請執行 SlowLog 命令，如上一段所述。 如需詳細資訊，請參閱「高 CPU 使用率/伺服器負載」。
 1. 用戶端上是否有其他任何事件可能導致網路問題？ 常見事件包括：相應增加或相應減少用戶端實例數目、部署新版本的用戶端，或啟用自動調整。 在我們的測試中，我們發現自動調整或相應增加/相應減少可能會導致輸出網路連線中斷幾秒鐘。 StackExchange.Redis 程式碼對於這類事件具有復原能力，因此將會重新連線。 重新連線時，佇列中的任何要求都可能會超時。
 1. 是否有大型的要求會在快取的幾個小型要求上發生？ `qs`錯誤訊息中的參數會告訴您有多少要求已從用戶端傳送到伺服器，但尚未處理回應。 這個值會不斷成長，因為 StackExchange.Redis 使用單一 TCP 連線，而且一次只能讀取一個回應。 即使第一個作業超時，它也不會阻止更多資料從伺服器傳送或傳出。 其他要求將會遭到封鎖，直到大型要求完成，而且可能會導致超時為止。 有一個解決方案是確保快取足以容納工作負載，並將較大的值分割成較小的區塊，以將逾時的機會降到最低。 另一個可能的解決方案是在用戶端中使用 `ConnectionMultiplexer` 物件集區，並在傳送新要求時選擇最少負載的 `ConnectionMultiplexer`。 在多個連線物件之間載入，應該會防止單一超時時間造成其他要求也會超時。
@@ -114,7 +115,7 @@ Stackexchange.redis： Redis 會使用名 `synctimeout` 為的設定來進行同
    - 設定金鑰的到期時間，以便主動收回較舊的值。
    - 監視 `used_memory_rss` 快取計量。 當此值接近其快取的大小時，您可能會開始看到效能問題。 如果您使用 premium 快取，或升級至較大的快取大小，請將資料分散到多個分區。
 
-   如需詳細資訊，請參閱[Redis 伺服器上的記憶體壓力](cache-troubleshoot-server.md#memory-pressure-on-redis-server)。
+   如需詳細資訊，請參閱 [Redis 伺服器上的記憶體壓力](cache-troubleshoot-server.md#memory-pressure-on-redis-server)。
 
 ## <a name="additional-information"></a>其他資訊
 

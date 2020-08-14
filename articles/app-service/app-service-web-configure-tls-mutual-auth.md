@@ -4,13 +4,13 @@ description: 瞭解如何在 TLS 上驗證用戶端憑證。 Azure App Service �
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
-ms.custom: seodec18
-ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82592361"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213651"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>設定 Azure App Service 的 TLS 相互驗證
 
@@ -24,7 +24,7 @@ ms.locfileid: "82592361"
 
 ## <a name="enable-client-certificates"></a>啟用用戶端憑證
 
-若要將您的應用程式設定為需要用戶端憑證，您可以從 Azure 入口網站**Configuration**選取 [設定] **On**  >  **[一般設定**]，或需要將應用程式的設定設為，以切換 [需要傳入憑證] `clientCertEnabled` `true` 。 若要設定設定，請在[Cloud Shell](https://shell.azure.com)中執行下列命令。
+若要將您的應用程式設定為需要用戶端憑證，您可以從 Azure 入口網站**Configuration**選取 [設定] **On**  >  **[一般設定**]，或需要將應用程式的設定設為，以切換 [需要傳入憑證] `clientCertEnabled` `true` 。 若要設定設定，請在 [Cloud Shell](https://shell.azure.com)中執行下列命令。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -41,11 +41,11 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 ## <a name="access-client-certificate"></a>存取用戶端憑證
 
-在 App Service 中，要求的 TLS 終止會發生在前端負載平衡器上。 在[啟用用戶端憑證](#enable-client-certificates)的情況下，將要求轉送至您的應用程式程式碼時，App Service 會 `X-ARR-ClientCert` 以用戶端憑證插入要求標頭。 App Service 不會使用此用戶端憑證來執行任何動作，而是將它轉送至您的應用程式。 您的應用程式程式碼會負責驗證用戶端憑證。
+在 App Service 中，要求的 TLS 終止會發生在前端負載平衡器上。 在 [啟用用戶端憑證](#enable-client-certificates)的情況下，將要求轉送至您的應用程式程式碼時，App Service 會 `X-ARR-ClientCert` 以用戶端憑證插入要求標頭。 App Service 不會使用此用戶端憑證來執行任何動作，而是將它轉送至您的應用程式。 您的應用程式程式碼會負責驗證用戶端憑證。
 
-針對 ASP.NET，用戶端憑證可透過**HttpRequest. ClientCertificate**屬性取得。
+針對 ASP.NET，用戶端憑證可透過 **HttpRequest. ClientCertificate** 屬性取得。
 
-若為其他應用程式堆疊（Node.js、PHP 等），則用戶端憑證會透過要求標頭中的 base64 編碼值，在您的應用程式中提供 `X-ARR-ClientCert` 。
+對於其他應用程式堆疊 ( # A0、PHP 等等 ) ，用戶端憑證會透過要求標頭中的 base64 編碼值，在您的應用程式中提供 `X-ARR-ClientCert` 。
 
 ## <a name="aspnet-sample"></a>ASP.NET 範例
 
@@ -173,7 +173,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 ## <a name="nodejs-sample"></a>Node.js 範例
 
-下列 Node.js 範例程式碼會取得 `X-ARR-ClientCert` 標頭，並使用[node-偽造](https://github.com/digitalbazaar/forge)將 BASE64 編碼的 PEM 字串轉換成憑證物件並進行驗證：
+下列 Node.js 範例程式碼會取得 `X-ARR-ClientCert` 標頭，並使用 [node-偽造](https://github.com/digitalbazaar/forge) 將 BASE64 編碼的 PEM 字串轉換成憑證物件並進行驗證：
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -218,7 +218,7 @@ export class AuthorizationHandler {
 
 ## <a name="java-sample"></a>Java 範例
 
-下列 JAVA 類別會將憑證從編碼 `X-ARR-ClientCert` 成 `X509Certificate` 實例。 `certificateIsValid()`驗證憑證的指紋是否符合在此函式中指定的指紋，而且該憑證尚未過期。
+下列 JAVA 類別會將憑證從編碼 `X-ARR-ClientCert` 成 `X509Certificate` 實例。 `certificateIsValid()` 驗證憑證的指紋是否符合在此函式中指定的指紋，而且該憑證尚未過期。
 
 
 ```java

@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 271787c47b29bc713cc923c7d27852a8e05703ef
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 29ec547a6033b77d92ad7949df286dc94e3243a2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042542"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213939"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 觸發程序
 
@@ -816,7 +816,7 @@ Webhook 授權是由 Webhook 接收器元件 (HTTP 觸發程序的一部分) 處
 
 ## <a name="content-types"></a>內容類型
 
-將二進位和表單資料傳遞至非 C # 函式需要使用適當的 content-type 標頭。 支援的內容類型包括 `octet-stream` 二進位資料和[多部分類型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
+將二進位和表單資料傳遞至非 C # 函式需要使用適當的 content-type 標頭。 支援的內容類型包括 `octet-stream` 二進位資料和 [多部分類型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
 
 ### <a name="known-issues"></a>已知問題
 

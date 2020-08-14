@@ -8,23 +8,34 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c9b0b34202f35babcaa3dce37331d31edf641254
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef840dc84c04875333958fa59ce399f2d16d07b5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557259"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214033"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>如何將 AI 擴充的欄位對應至可搜尋的索引
 
-在本文中，您可以了解如何將擴充的輸入欄位對應至可搜尋索引中的輸出欄位。 一旦具備[定義的技能集](cognitive-search-defining-skillset.md)，即必須將直接提供值之任何技能的輸出欄位，對應至搜尋索引中的指定欄位。 
+![索引子階段](./media/cognitive-search-output-field-mapping/indexer-stages-output-field-mapping.png "索引子階段")
 
-將內容從擴充的檔移至索引時，需要輸出欄位對應。  擴充的檔其實是一種資訊的樹狀結構，即使索引中有複雜類型的支援，有時您可能會想要將資訊從擴充的樹狀結構轉換成更簡單的類型（例如，字串陣列）。 輸出欄位對應可讓您透過簡維資訊來執行資料圖形轉換。
+在本文中，您可以了解如何將擴充的輸入欄位對應至可搜尋索引中的輸出欄位。 一旦具備[定義的技能集](cognitive-search-defining-skillset.md)，即必須將直接提供值之任何技能的輸出欄位，對應至搜尋索引中的指定欄位。
+
+將內容從擴充的檔移至索引時，需要輸出欄位對應。  擴充的檔其實是一種資訊的樹狀結構，即使索引中有複雜類型的支援，有時您可能會想要將資訊從擴充的樹狀結構轉換成更簡單的類型 (例如，) 的字串陣列。 輸出欄位對應可讓您透過簡維資訊來執行資料圖形轉換。 輸出欄位對應一律會在技能集執行之後發生，不過即使未定義任何技能集，此階段也可能執行。
+
+輸出欄位對應的範例：
+
+* 在您的技能集過程中，您會解壓縮檔的每個頁面中所提及的組織名稱。 現在您想要將每個組織名稱對應到類型為 Edm 的索引中的欄位， (Edm. String) 。
+
+* 在您的技能集過程中，您會產生稱為 "document/translated_text" 的新節點。 您想要將此節點上的資訊對應至索引中的特定欄位。
+
+* 您沒有技能集，而是從 Cosmos DB 資料庫編制複雜類型的索引。 您想要取得該複雜型別的節點，並將它對應至索引中的欄位。
 
 > [!NOTE]
-> 我們最近啟用了輸出欄位對應的對應函數功能。 如需對應函數的詳細資訊，請參閱[欄位對應函數](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
+> 我們最近啟用了輸出欄位對應的對應函數功能。 如需對應函數的詳細資訊，請參閱 [欄位對應函數](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
 
 ## <a name="use-outputfieldmappings"></a>使用 outputFieldMappings
+
 若要對應欄位，請將 `outputFieldMappings` 新增至您的索引子定義，如下所示：
 
 ```http
@@ -70,7 +81,7 @@ Content-Type: application/json
 }
 ```
 
-針對每個輸出欄位對應，設定擴充的檔樹狀結構（Sourcefieldname 路徑）中的資料位置，以及索引中所參考之欄位的名稱（targetFieldName）。
+針對每個輸出欄位對應，將資料的位置設定在擴充的檔樹狀結構中 (Sourcefieldname 路徑) ，並在索引 (targetFieldName) 中參考欄位的名稱。
 
 ## <a name="flattening-information-from-complex-types"></a>從複雜類型簡維資訊 
 
@@ -115,7 +126,7 @@ sourceFieldName 中的路徑可以代表一個元素或多個元素。 在上述
 ]
 ```
 
-讓我們假設您的索引有一個名為 ' 疾病 ' 的欄位，其類型為 Collection （Edm. String），您想要在其中儲存實體的每個名稱。 
+讓我們假設您的索引有一個名為 ' 疾病 ' （類型為 Collection）的欄位， (Edm. String) ，您想要在其中儲存實體的每個名稱。 
 
 這可以使用 " \* " 符號輕鬆完成，如下所示：
 
@@ -137,4 +148,4 @@ sourceFieldName 中的路徑可以代表一個元素或多個元素。 在上述
 ## <a name="next-steps"></a>後續步驟
 一旦您將擴充欄位對應至可搜尋欄位，即可為每個可搜尋欄位將欄位屬性設定為[索引定義的一部分](search-what-is-an-index.md)。
 
-如需欄位對應的詳細資訊，請參閱[Azure 認知搜尋索引子中的欄位](search-indexer-field-mappings.md)對應。
+如需欄位對應的詳細資訊，請參閱 [Azure 認知搜尋索引子中的欄位](search-indexer-field-mappings.md)對應。

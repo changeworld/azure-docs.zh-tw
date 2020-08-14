@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 4c725fe74185088dea55b7506493fe667e71b7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b3df38e8feef2a7b9bbc090e11a669164010f32
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806630"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213199"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Azure 認知搜尋中的相似性與評分
 
@@ -75,9 +75,9 @@ Azure 認知搜尋支援兩種不同的相似性排名演算法：*傳統的相�
 
 <a name="featuresMode-param"></a>
 
-## <a name="featuresmode-parameter-preview"></a>featuresMode 參數（預覽）
+## <a name="featuresmode-parameter-preview"></a>featuresMode 參數 (預覽) 
 
-[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents)要求具有新的[featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode)參數，可在欄位層級提供有關相關性的其他詳細資料。 雖然 `@searchScore` 是針對檔進行的計算（在此查詢的內容中，這份檔的相關資訊），但透過 featuresMode，您可以取得個別欄位（如結構中所表示）的詳細資訊 `@search.features` 。 結構包含查詢中使用的所有欄位（在查詢中透過**searchFields**的特定欄位，或**索引中所有屬性為可**搜尋的欄位）。 針對每個欄位，您會取得下列值：
+[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents) 要求具有新的 [featuresMode](https://docs.microsoft.com/rest/api/searchservice/preview-api/search-documents#featuresmode) 參數，可在欄位層級提供有關相關性的其他詳細資料。 雖然 `@searchScore` 會針對檔進行匯總 (在此查詢的內容中，這份檔的相關內容) ，但您可以透過 featuresMode 取得個別欄位的資訊，如結構中所示 `@search.features` 。 結構包含查詢中使用的所有欄位， (特定欄位透過查詢中的 **searchFields** ，或在索引) 中所有 **屬性為可** 搜尋的欄位。 針對每個欄位，您會取得下列值：
 
 + 在欄位中找到的唯一標記數目
 + 相似性分數，或欄位內容與查詢字詞的相對程度的量值
@@ -102,7 +102,8 @@ Azure 認知搜尋支援兩種不同的相似性排名演算法：*傳統的相�
         }
 ```
 
-您可以在[自訂計分解決方案](https://github.com/Azure-Samples/search-ranking-tutorial)中取用這些資料點，或使用此資訊來偵測搜尋相關性問題。
+您可以在 [自訂計分解決方案](https://github.com/Azure-Samples/search-ranking-tutorial) 中取用這些資料點，或使用此資訊來偵測搜尋相關性問題。
+
 
 ## <a name="see-also"></a>另請參閱
 

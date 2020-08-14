@@ -3,18 +3,18 @@ title: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 description: 適用于 Azure DevTest Labs 的 Azure 安全性基準
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 158ead7531b0b3da2e495e36e40e761961bea498
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761003"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212300"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>適用于 Azure DevTest Labs 的 Azure 安全性基準
 
 適用于 Azure DevTest Labs 的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 
-此服務的基準取自[Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其中提供有關如何在 Azure 上保護雲端解決方案的建議。
+此服務的基準取自 [Azure 安全性基準測試版本 1.0](../security/benchmarks/overview.md)，其中提供有關如何在 Azure 上保護雲端解決方案的建議。
 
 如需詳細資訊，請參閱 [Azure 安全性基準概觀](../security/benchmarks/security-baselines-overview.md) (機器翻譯)。
 
@@ -34,7 +34,7 @@ ms.locfileid: "87761003"
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 **指導方針：** 啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在管理平面層級的 Azure DevTest Labs 實例上所進行的作業。 使用 Azure 活動記錄資料，您可以判斷任何寫入作業的「內容、物件和時間」， (PUT、POST、DELETE) 在 DevTest Labs 實例的管理平面層級完成。
 
-如需詳細資訊，請參閱[建立診斷設定以將平臺記錄和計量傳送至不同的目的地](../azure-monitor/platform/diagnostic-settings.md)。
+如需詳細資訊，請參閱 [建立診斷設定以將平臺記錄和計量傳送至不同的目的地](../azure-monitor/platform/diagnostic-settings.md)。
 
 **Azure 資訊安全中心監視：** 目前無法使用
 
@@ -43,7 +43,7 @@ ms.locfileid: "87761003"
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 **指導方針：** 啟用 Azure 活動記錄診斷設定，並將記錄傳送到 Log Analytics 工作區、Azure 事件中樞或 Azure 儲存體帳戶進行封存。 活動記錄可讓您深入瞭解在管理平面層級的 Azure DevTest Labs 實例上所進行的作業。 使用 Azure 活動記錄資料，您可以判斷任何寫入作業的「內容、物件和時間」， (PUT、POST、DELETE) 在 DevTest Labs 實例的管理平面層級完成。
 
-如需詳細資訊，請參閱[建立診斷設定以將平臺記錄和計量傳送至不同的目的地](../azure-monitor/platform/diagnostic-settings.md)。
+如需詳細資訊，請參閱 [建立診斷設定以將平臺記錄和計量傳送至不同的目的地](../azure-monitor/platform/diagnostic-settings.md)。
 
 **Azure 資訊安全中心監視：** 目前無法使用
 
@@ -64,7 +64,7 @@ ms.locfileid: "87761003"
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留期
 ***指導方針：** 在 Azure 監視器中，根據貴組織的合規性規定，設定與您的 Azure DevTest Labs 實例相關聯之 Log Analytics 工作區的記錄保留週期。
 
-如需詳細資訊，請參閱下列文章：[如何設定記錄檔保留參數](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+如需詳細資訊，請參閱下列文章： [如何設定記錄檔保留參數](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure 資訊安全中心監視：** 不適用
 
@@ -85,7 +85,7 @@ ms.locfileid: "87761003"
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 **指導方針：** 使用 Azure Log Analytics 工作區來監視和警示有關安全性記錄檔中的異常活動，以及與您的 Azure DevTest Labs 相關的事件。
 
-如需詳細資訊，請參閱下列文章：[如何在 log analytics 記錄資料上發出警示](../azure-monitor/learn/tutorial-response.md)
+如需詳細資訊，請參閱下列文章： [如何在 log analytics 記錄資料上發出警示](../azure-monitor/learn/tutorial-response.md)
 
 **Azure 資訊安全中心監視：** 目前無法使用
 
@@ -342,9 +342,9 @@ Microsoft 會管理 Azure DevTest Labs 的基礎結構，並已實行嚴格的�
 - 用來從公式建立虛擬機器的[公式檔](devtest-lab-manage-formulas.md)
 - 實驗室虛擬機器的作業系統和資料磁片 
 
-成品結果和公式檔會傳送至在每個實驗室部署過程中建立的 Azure 儲存體帳戶。 Azure 儲存體中的資料會使用256位 AES 加密（可用的最強區塊密碼之一），以透明的方式進行加密和解密，且符合 FIPS 140-2 標準。 無法停用 Azure 儲存體加密。 您可以依賴 Microsoft 管理的金鑰來加密您的儲存體帳戶，也可以使用您自己的金鑰來管理加密。 如需詳細資訊，請參閱[實驗室儲存體帳戶的加密](encrypt-storage.md)。
+成品結果和公式檔會傳送至在每個實驗室部署過程中建立的 Azure 儲存體帳戶。 Azure 儲存體中的資料會使用256位 AES 加密（可用的最強區塊密碼之一），以透明的方式進行加密和解密，且符合 FIPS 140-2 標準。 無法停用 Azure 儲存體加密。 您可以依賴 Microsoft 管理的金鑰來加密您的儲存體帳戶，也可以使用您自己的金鑰來管理加密。 如需詳細資訊，請參閱 [實驗室儲存體帳戶的加密](encrypt-storage.md)。
 
-根據預設，所有實驗室 OS 和資料磁片都會以平臺管理金鑰進行加密。 所有寫入現有受控磁片的受控磁片、快照集、映射和資料，都會使用平臺管理的金鑰進行待用加密。 身為實驗室擁有者，您可以設定要使用客戶管理的金鑰來加密的實驗室 OS 磁片。 針對實驗室資料磁片使用客戶管理的金鑰進行加密，目前無法透過實驗室本身進行設定。 不過，訂用帳戶系統管理員現在可以針對訂用帳戶內的實驗室磁片設定此設定。 如需詳細資訊，請參閱[使用客戶管理的金鑰來加密 Lab DevTest LABS OS 磁片](encrypt-disks-customer-managed-keys.md)。
+根據預設，所有實驗室 OS 和資料磁片都會以平臺管理金鑰進行加密。 所有寫入現有受控磁片的受控磁片、快照集、映射和資料，都會使用平臺管理的金鑰進行待用加密。 身為實驗室擁有者，您可以設定要使用客戶管理的金鑰來加密的實驗室 OS 磁片。 針對實驗室資料磁片使用客戶管理的金鑰進行加密，目前無法透過實驗室本身進行設定。 不過，訂用帳戶系統管理員現在可以針對訂用帳戶內的實驗室磁片設定此設定。 如需詳細資訊，請參閱 [使用客戶管理的金鑰來加密 Lab DevTest LABS OS 磁片](encrypt-disks-customer-managed-keys.md)。
 
 **Azure 資訊安全中心監視：** 不適用
 
@@ -387,9 +387,9 @@ Microsoft 會在支援 Azure DevTest Labs 的基礎資源上執行弱點管理�
 **責任：** 顧客
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署自動化的第三方軟體修補程式管理解決方案
-***指導方針：*** 身為實驗室系統管理員，您可以使用[DevTest Labs](add-artifact-vm.md)成品，將實驗室自訂映射的更新自動化，包括安全性修補程式和其他更新。 
+***指導方針：*** 身為實驗室系統管理員，您可以使用 [DevTest Labs](add-artifact-vm.md) 成品，將實驗室自訂映射的更新自動化，包括安全性修補程式和其他更新。 
 
-深入瞭解[DevTest Labs 映射 Factory](image-factory-create.md)，這是一種設定即程式碼解決方案，會定期自動建立和散發映射，並使用所有想要的設定。 
+深入瞭解 [DevTest Labs 映射 Factory](image-factory-create.md)，這是一種設定即程式碼解決方案，會定期自動建立和散發映射，並使用所有想要的設定。 
 
 身為訂用帳戶管理員，您也可以使用 Azure 更新管理解決方案來管理 DevTest Labs Vm 的更新和修補程式。 更新管理依賴本機設定的更新存放庫來修補支援的 Windows 系統。 如 System Center Updates Publisher (Updates Publisher) 的工具可讓您將自訂更新發佈至 Windows Server Update Services (WSUS) 。 此案例可讓更新管理利用協力廠商軟體，修補使用 Configuration Manager 作為其更新存放庫的機器。
 
@@ -458,7 +458,7 @@ Microsoft 會在支援 Azure DevTest Labs 的基礎資源上執行弱點管理�
 
 - [如何啟用適應性應用程式控制](../security-center/security-center-adaptive-application.md)
  
-**Azure 資訊安全中心監視：** 不適用的**責任：** 客戶
+**Azure 資訊安全中心監視：** 不適用的 **責任：** 客戶
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：監視未經核准的 Azure 資源
 **指導方針：** 使用 Azure 原則來對可在客戶訂用帳戶中建立的資源類型（使用下列內建原則定義）進行限制 (s) ：
@@ -602,7 +602,7 @@ Microsoft 會在支援 Azure DevTest Labs 的基礎資源上執行弱點管理�
 **責任：** 不適用
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
-**指導方針：** 使用 Azure 原則**拒絕**並**部署如果不存在**] 規則，在 DevTest Labs 中建立的 Azure 資源上強制執行安全設定。 此外，您可以使用 Azure Resource Manager 範本來維護貴組織所需之 Azure 資源的安全性設定。
+**指導方針：** 使用 Azure 原則 **拒絕** 並 **部署如果不存在** ] 規則，在 DevTest Labs 中建立的 Azure 資源上強制執行安全設定。 此外，您可以使用 Azure Resource Manager 範本來維護貴組織所需之 Azure 資源的安全性設定。
 
 - [瞭解 Azure 原則效果](../governance/policy/concepts/effects.md)
 - [建立和管理原則以強制執行合規性](../governance/policy/tutorials/create-and-manage.md)
@@ -629,8 +629,8 @@ Microsoft 會在支援 Azure DevTest Labs 的基礎資源上執行弱點管理�
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 **指導方針：** 使用 Azure DevOps 安全地儲存和管理您的程式碼，例如自訂的 Azure 原則、Azure Resource Manager 範本和 Desired State Configuration 腳本。 若要存取您在 Azure DevOps 中管理的資源，您可以授與或拒絕特定使用者、內建安全性群組或 Azure Active Directory (Azure AD) （如果與 Azure DevOps 整合）中所定義之群組的許可權。
 
-- [Azure Repos Git 教學課程](/devops/repos/git/gitworkflow?view=azure-devops)
-- [關於許可權和群組](/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure Repos Git 教學課程](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [關於許可權和群組](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
 - [Azure DevTest Labs 與 Azure DevOps 工作流程之間的整合](devtest-lab-dev-ops.md)
 
 **Azure 資訊安全中心監視：** 不適用
@@ -872,7 +872,7 @@ Azure 資訊安全中心監視： * * * * 不適用
 
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
-*如需詳細資訊，請參閱安全性控制：[滲透測試和 red team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
+*如需詳細資訊，請參閱安全性控制： [滲透測試和 red team 練習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)。*
 
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：進行 Azure 資源的定期滲透測試，並確保在 60 天內補救所有重大安全性發現

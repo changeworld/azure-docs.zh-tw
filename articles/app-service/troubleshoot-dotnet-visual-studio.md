@@ -5,13 +5,13 @@ ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.custom: seodec18
-ms.openlocfilehash: f7c35fa2d69df9c900eb64f10da1948fade02b5f
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 1ed7a6ebea12e5db37ec89c73db105dd7ce7e2ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079802"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211983"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 針對 Azure App Service 中的應用程式進行疑難排解
 ## <a name="overview"></a>概觀
@@ -38,7 +38,7 @@ ms.locfileid: "88079802"
 串流記錄功能僅適用於鎖定 .NET Framework 4 或更新版本的應用程式。
 
 ## <a name="app-configuration-and-management"></a><a name="sitemanagement"></a>應用程式組態與管理
-Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwlink/?LinkId=529715)中可用的應用程式管理功能與組態設定的子集。 在本節中，您會看到使用**伺服器總管**可用的內容。 若要查看最新的 Azure 整合功能，也請試試 **雲端總管** 。 您可以同時從 [檢視] **** 功能表開啟這兩個視窗。
+Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwlink/?LinkId=529715)中可用的應用程式管理功能與組態設定的子集。 在本節中，您會看到使用 **伺服器總管**可用的內容。 若要查看最新的 Azure 整合功能，也請試試 **雲端總管** 。 您可以同時從 [檢視] **** 功能表開啟這兩個視窗。
 
 1. 如果您尚未在 Visual Studio 中登入 Azure，請在 [伺服器總管]**** 中以滑鼠右鍵按一下 [Azure]****，然後選取 [連接到 Microsoft Azure 訂用帳戶]****。
 
@@ -61,7 +61,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
     在本教學課程中，您將使用記錄與追蹤下拉式清單。 您也會使用遠端偵錯功能，但是將以不同的方式來加以啟用。
 
-    如需此視窗中 [應用程式設定] 和 [連接字串] 方塊的詳細資訊，請參閱[Azure App Service：應用程式字串和連接字串的工作方式](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)。
+    如需此視窗中 [應用程式設定] 和 [連接字串] 方塊的詳細資訊，請參閱 [Azure App Service：應用程式字串和連接字串的工作方式](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)。
 
     若您想要執行無法在此視窗中完成的應用程式管理工作，請按一下 [在管理入口網站中開啟]****，以開啟 Azure 入口網站的瀏覽器視窗。
 
@@ -127,7 +127,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
 1. [在 `ViewBag.Message`這行設定中斷點](https://docs.microsoft.com/visualstudio/debugger/)。
 
-1. 在**方案總管**中，以滑鼠右鍵按一下專案，然後按一下 [**發佈**]。
+1. 在 **方案總管**中，以滑鼠右鍵按一下專案，然後按一下 [ **發佈**]。
 
 1. 在 [設定檔]**** 下拉式清單中，選取您在[在 Azure App Service 中建立 ASP.NET 應用程式](quickstart-dotnet-framework.md)中所使用的同一設定檔。 然後，按一下 [設定]。
 
@@ -271,7 +271,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 如需如何在 WebJobs 中建立應用程式記錄的詳細資訊，請參閱 [如何運用 WebJobs SDK 來使用 Azure 佇列儲存體 - 如何寫入記錄](https://github.com/Azure/azure-webjobs-sdk/wiki)。 下列有關在 Azure 中檢視記錄和控制記錄儲存方式的指示也同樣適用於 WebJobs 所建立的應用程式記錄。
 
 ### <a name="add-tracing-statements-to-the-application"></a>將追蹤陳述式新增至應用程式
-1. 開啟*Controllers\HomeController.cs*，並以 `Index` `About` 下列程式碼取代、和方法，以便 `Contact` 加入 `Trace` 語句和的 `using` 語句 `System.Diagnostics` ：
+1. 開啟 *Controllers\HomeController.cs*，並以 `Index` `About` 下列程式碼取代、和方法，以便 `Contact` 加入 `Trace` 語句和的 `using` 語句 `System.Diagnostics` ：
 
     ```csharp
     public ActionResult Index()
@@ -337,7 +337,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
     ```
 
 1. 按 CTRL+F5 執行應用程式。
-1. 在瀏覽器視窗的網址列中，將*trace.axd*新增至 url，然後按 ENTER (url 類似 `http://localhost:53370/trace.axd`) 。
+1. 在瀏覽器視窗的網址列中，將 *trace.axd* 新增至 url，然後按 ENTER (url 類似 `http://localhost:53370/trace.axd`) 。
 1. 在 [應用程式追蹤]**** 頁面上，按一下第一行 (不是 BrowserLink 行) 上的 [檢視詳細資料]****。
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
@@ -684,7 +684,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 * [IIS 7.0、IIS 7.5 與 IIS 8.0 中的 HTTP 狀態碼](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>分析失敗要求追蹤記錄
-Microsoft TechNet 網站包含「[使用失敗要求追蹤](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」一節，這可能有助於瞭解如何使用這些記錄。 不過，本文主要著重在 IIS 內設定失敗要求追蹤功能，這是您無法在 Azure App Service 中執行的功能。
+Microsoft TechNet 網站包含「 [使用失敗要求追蹤](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing) 」一節，這可能有助於瞭解如何使用這些記錄。 不過，本文主要著重在 IIS 內設定失敗要求追蹤功能，這是您無法在 Azure App Service 中執行的功能。
 
 [GetStarted]: quickstart-dotnetcore.md?pivots=platform-windows
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki

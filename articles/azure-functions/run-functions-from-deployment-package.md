@@ -3,21 +3,18 @@ title: 從封裝執行您的 Azure Functions
 description: 讓 Azure Functions 執行階段藉由掛接部署套件檔案 (內含函式應用程式的專案檔) 來執行函式。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a2633550c9bcbdc59baf99f79559655afbb9b74
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79365266"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214245"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>從套件檔案執行 Azure Functions
 
 在 Azure 中，您可以直接從函式應用程式中的部署套件檔案執行函式。 另一個選項是將您的檔案部署在函式應用程式的 `d:\home\site\wwwroot` 目錄中。
 
 本文說明從套件執行函式的優點。 文中也會說明如何在函式應用程式中啟用這項功能。
-
-> [!IMPORTANT]
-> 將函式部署至高階[方案](functions-scale.md#premium-plan)中的 Linux 函式應用程式時，您應該一律從封裝檔案執行，並[使用 Azure Functions Core Tools 發佈應用程式](functions-run-local.md#project-file-deployment)。
 
 ## <a name="benefits-of-running-from-a-package-file"></a>從套件檔案執行的優點
   
@@ -29,16 +26,16 @@ ms.locfileid: "79365266"
 + 提升 [Azure Resource Manager 部署](functions-infrastructure-as-code.md)的效能。
 + 可縮短冷啟動時間，特別是針對具有大型 npm 套件樹狀結構的 JavaScript 函式。
 
-如需詳細資訊，請參閱[此公告](https://github.com/Azure/app-service-announcements/issues/84)。
+如需詳細資訊，請參閱 [此公告](https://github.com/Azure/app-service-announcements/issues/84)。
 
 ## <a name="enabling-functions-to-run-from-a-package"></a>讓函式能夠從套件執行
 
 若要讓函式應用程式能夠從套件執行，您只需要將 `WEBSITE_RUN_FROM_PACKAGE` 設定新增至函式應用程式的設定。 `WEBSITE_RUN_FROM_PACKAGE` 設定可具有下列其中一個值：
 
-| 值  | 說明  |
+| 值  | 描述  |
 |---------|---------|
-| **`1`**  | 建議用於 Windows 上執行的函數應用程式。 從函式應用程式中 `d:\home\data\SitePackages` 資料夾內的套件檔案執行。 如果不是[使用 zip deploy 進行部署](#integration-with-zip-deployment)，此選項會要求資料夾也要有名為的檔案 `packagename.txt` 。 此檔案只會包含資料夾內套件檔案的名稱，且不含任何空白字元。 |
-|**`<URL>`**  | 所要執行的特定套件檔案所在的位置。 使用 Blob 儲存體時，請搭配使用私用容器與[共用存取簽章 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 來讓 Functions 執行階段能夠存取套件。 您可以使用 [Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md)將套件檔案上傳至 Blob 儲存體帳戶。 當您指定 URL 時，您也必須在發行更新的封裝之後[同步處理觸發](functions-deployment-technologies.md#trigger-syncing)程式。 |
+| **`1`**  | 建議用於 Windows 上執行的函數應用程式。 從函式應用程式中 `d:\home\data\SitePackages` 資料夾內的套件檔案執行。 如果不是 [使用 zip deploy 進行部署](#integration-with-zip-deployment)，此選項會要求資料夾也要有名為的檔案 `packagename.txt` 。 此檔案只會包含資料夾內套件檔案的名稱，且不含任何空白字元。 |
+|**`<URL>`**  | 所要執行的特定套件檔案所在的位置。 使用 Blob 儲存體時，請搭配使用私用容器與[共用存取簽章 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 來讓 Functions 執行階段能夠存取套件。 您可以使用 [Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md)將套件檔案上傳至 Blob 儲存體帳戶。 當您指定 URL 時，您也必須在發行更新的封裝之後 [同步處理觸發](functions-deployment-technologies.md#trigger-syncing) 程式。 |
 
 > [!CAUTION]
 > 在 Windows 上執行函數應用程式時，[外部 URL] 選項會產生較差的冷啟動效能。 將您的函式應用程式部署到 Windows 時，您應該將設 `WEBSITE_RUN_FROM_PACKAGE` 為 `1` ，並使用 zip 部署進行發佈。
@@ -64,8 +61,8 @@ ms.locfileid: "79365266"
 - [從封裝執行] 會變成 `wwwroot` 唯讀，因此當您將檔案寫入此目錄時，將會收到錯誤。
 - 不支援 Tar 和 gzip 格式。
 - 這項功能不會使用本機快取來撰寫。
-- 若要改善冷啟動效能，請使用本機 Zip 選項（ `WEBSITE_RUN_FROM_PACKAGE` = 1）。
-- 從封裝執行與部署自訂選項（）不相容 `SCM_DO_BUILD_DURING_DEPLOYMENT=true` ，部署期間將會忽略組建步驟。
+- 若要改善冷啟動效能，請使用 (= 1) 的本機 Zip 選項 `WEBSITE_RUN_FROM_PACKAGE` 。
+- 從封裝執行與部署自訂選項不相容 (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`) ，部署期間將會忽略組建步驟。
 
 ## <a name="next-steps"></a>後續步驟
 

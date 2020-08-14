@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述在 Azure Kubernetes Service 上使用 Azure Dev Spaces 進行遠端偵錯程式的進程。
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
-ms.openlocfilehash: a9f303ea6f954285a319be137a594f7ce127f740
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80241396"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213392"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>如何使用 Azure Dev Spaces 進行遠端偵錯程式碼的運作方式
 
@@ -30,15 +30,7 @@ Azure Dev Spaces 提供了多種方式，可供迅速逐一查看 Kubernetes 應
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始使用 Azure Dev Spaces 來進行遠端的專案檢查，請參閱下列快速入門：
+深入瞭解 Azure Dev Spaces 的運作方式。
 
-* [使用 Visual Studio Code 和 JAVA 快速反復查看和調試][quickstart-java]
-* [使用 Visual Studio Code 和 .NET 快速反復查看和調試][quickstart-netcore]
-* [使用 Visual Studio Code 和 Node.js快速反復查看和調試][quickstart-node]
-* [使用 Visual Studio 和 .NET Core 快速反復查看和調試][quickstart-vs]
-
-
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces 如何運作](how-dev-spaces-works.md)

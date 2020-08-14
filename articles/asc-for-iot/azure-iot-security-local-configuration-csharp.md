@@ -1,5 +1,5 @@
 ---
-title: '安全性代理程式本機設定（c #）'
+title: " (c # ) 的安全性代理程式本機設定"
 description: '深入瞭解 IoT 安全性服務的 Azure 資訊安全中心、c # 的安全性代理程式本機設定檔。'
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -10,19 +10,20 @@ editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: fc869a8ab905275c8082c4fd375f8f6d6d48d97e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eab7764ede300ca355ec6193312279c5726f8a01
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205453"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212394"
 ---
-# <a name="understanding-the-local-configuration-file-c-agent"></a>瞭解本機設定檔案（c # 代理程式）
+# <a name="understanding-the-local-configuration-file-c-agent"></a>瞭解本機設定檔 (c # 代理程式) 
 
 IoT 安全性代理程式的 Azure 資訊安全中心會使用本機設定檔案中的設定。
 
@@ -30,8 +31,8 @@ IoT 安全性代理程式的 Azure 資訊安全中心會使用本機設定檔案
 
 C # 安全性代理程式會使用多個設定檔：
 
-- **General.config**代理程式的相關設定。
-- **Authentication.config** -驗證相關設定（包括驗證詳細資料）。
+- **General.config** 代理程式的相關設定。
+- **Authentication.config** 驗證相關設定 (包括) 的驗證詳細資料。
 - **SecurityIotInterface.config** IoT 相關設定。
 
 設定檔包含預設設定。 驗證設定會在代理程式安裝期間填入，而當代理程式重新開機時，系統會對設定檔進行變更。
@@ -56,8 +57,8 @@ C # 安全性代理程式會使用多個設定檔：
 | producerInterval | TimeSpan | 事件產生者背景工作間隔。 |
 | consumerInterval | TimeSpan | 事件取用者背景工作間隔。 |
 | highPriorityQueueSizePercentage | 0 < 數位 < 1 | 高優先順序訊息專用的總快取部分。 |
-| logLevel | 「關閉」、「嚴重」、「錯誤」、「警告」、「資訊」、「Debug」  | 等於和高於此嚴重性的記錄訊息會記錄到 [調試] 主控台（Linux 中的 Syslog）。 |
-| fileLogLevel |  「關閉」、「嚴重」、「錯誤」、「警告」、「資訊」、「Debug」| 等於和高於此嚴重性的記錄訊息會記錄到檔案（Linux 中的 Syslog）。 |
+| logLevel | 「關閉」、「嚴重」、「錯誤」、「警告」、「資訊」、「Debug」  | 等於和高於此嚴重性的記錄訊息會記錄到 Linux)  (Syslog 中的 [調試] 主控台。 |
+| fileLogLevel |  「關閉」、「嚴重」、「錯誤」、「警告」、「資訊」、「Debug」| 等於和高於此嚴重性的記錄訊息會記錄到 Linux) 中的 file (Syslog。 |
 | diagnosticVerbosityLevel | "None"、"Some"、"All"、 | 診斷事件的詳細資訊層級。 無-不傳送診斷事件，只會傳送具有高重要性的部分診斷事件，所有記錄也會當做診斷事件傳送。 |
 | logFilePath | 檔案的路徑 | 如果 fileLogLevel > Off，記錄檔就會寫入這個檔案。 |
 | defaultEventPriority | 「高」、「低」、「關閉」 | 預設事件優先順序。 |
@@ -86,10 +87,10 @@ C # 安全性代理程式會使用多個設定檔：
 | 組態名稱 | 可能值 | 詳細資料 |
 |:-----------|:---------------|:--------|
 | moduleName | 字串 | 安全性模組身分識別的名稱。 此名稱必須對應至裝置中的模組身分識別名稱。 |
-| deviceId | 字串 | 裝置的識別碼（如 Azure IoT 中樞中所註冊）。 || schedulerInterval | TimeSpan 字串 | 內部排程器間隔。 |
+| deviceId | 字串 | Azure IoT 中樞) 中註冊的裝置 (識別碼。 || schedulerInterval | TimeSpan 字串 | 內部排程器間隔。 |
 | gatewayHostname | 字串 | Azure Iot 中樞的主機名稱。 通常 <我的中樞>。 azure-devices.net |
 | filePath | 字串-檔案的路徑 | 包含驗證密碼之檔案的路徑。|
-| 類型 | "SymmetricKey"、"SelfSignedCertificate" | 用於驗證的使用者密碼。 如果使用者密碼是對稱金鑰，請選擇 [ *SymmetricKey* ]，如果密碼是自我簽署憑證，請選擇 [*自我簽署憑證*]。 |
+| 類型 | "SymmetricKey"、"SelfSignedCertificate" | 用於驗證的使用者密碼。 如果使用者密碼是對稱金鑰，請選擇 [ *SymmetricKey* ]，如果密碼是自我簽署憑證，請選擇 [ *自我簽署憑證* ]。 |
 | 身分識別 | 「DPS」、「模組」、「裝置」 | 驗證身分識別-如果驗證是透過 DPS、模組（如果使用模組認證進行驗證，則為），或在使用裝置認證進行驗證時為裝置。
 | certificateLocationKind |  "LocalFile"、"Store" | LocalFile 如果憑證儲存在檔案中，則儲存憑證是否位於憑證存放區中。 |
 | idScope | 字串 | DPS 的識別碼範圍 |
@@ -131,10 +132,10 @@ C # 安全性代理程式會使用多個設定檔：
 
 ## <a name="next-steps"></a>後續步驟
 
-- 閱讀 IoT 服務的 Azure 資訊安全中心[總覽](overview.md)
+- 閱讀 IoT 服務的 Azure 資訊安全中心 [總覽](overview.md)
 - 深入瞭解 IoT[架構](architecture.md)的 Azure 資訊安全中心
 - 啟用 IoT[服務](quickstart-onboard-iot-hub.md)的 Azure 資訊安全中心
-- 閱讀 IoT 服務的 Azure 資訊安全中心[常見問題](resources-frequently-asked-questions.md)
+- 閱讀 IoT 服務的 Azure 資訊安全中心 [常見問題](resources-frequently-asked-questions.md)
 - 了解如何存取[未經處理的安全性資料](how-to-security-data-access.md)
 - 了解[建議](concept-recommendations.md)
-- 瞭解安全性[警示](concept-security-alerts.md)
+- 瞭解安全性 [警示](concept-security-alerts.md)

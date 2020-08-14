@@ -3,18 +3,19 @@ title: Azure Functions SignalR Service 觸發程式系結
 description: 瞭解如何從 Azure Functions 傳送 SignalR Service 訊息。
 author: chenyl
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540225"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212593"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions 的 SignalR Service 觸發程式系結
 
-使用*SignalR*觸發程式系結來回應從 Azure SignalR Service 傳送的訊息。 觸發函式時，傳遞至函式的訊息會剖析為 json 物件。
+使用 *SignalR* 觸發程式系結來回應從 Azure SignalR Service 傳送的訊息。 觸發函式時，傳遞至函式的訊息會剖析為 json 物件。
 
 如需安裝和設定詳細資料的相關資訊，請參閱[概觀](functions-bindings-signalr-service.md)。
 
@@ -28,7 +29,7 @@ C # 的 SignalR Service 觸發程式系結有兩種程式設計模型。 以類�
 
 ### <a name="with-class-based-model"></a>使用以類別為基礎的模型
 
-如需詳細資訊，請參閱以[類別為基礎的模型](../azure-signalr/signalr-concept-serverless-development-config.md#class-based-model)。
+如需詳細資訊，請參閱以 [類別為基礎的模型](../azure-signalr/signalr-concept-serverless-development-config.md#class-based-model) 。
 
 ```cs
 public class SignalRTestHub : ServerlessHub
@@ -43,7 +44,7 @@ public class SignalRTestHub : ServerlessHub
 
 ### <a name="with-traditional-model"></a>使用傳統模型
 
-傳統模型遵守由 c # 所開發的 Azure Function 慣例。 如果您不熟悉它，可以從[檔](./functions-dotnet-class-library.md)中學習。
+傳統模型遵守由 c # 所開發的 Azure Function 慣例。 如果您不熟悉它，可以從 [檔](./functions-dotnet-class-library.md)中學習。
 
 ```cs
 [FunctionName("SignalRTest")]
@@ -53,7 +54,7 @@ public static async Task Run([SignalRTrigger("SignalRTest", "messages", "SendMes
 }
 ```
 
-#### <a name="use-attribute-signalrparameter-to-simplify-parameternames"></a>使用屬性 `[SignalRParameter]` 來簡化`ParameterNames`
+#### <a name="use-attribute-signalrparameter-to-simplify-parameternames"></a>使用屬性 `[SignalRParameter]` 來簡化 `ParameterNames`
 
 由於使用很麻煩 `ParameterNames` ，因此 `SignalRParameter` 會提供來達到相同的目的。
 
@@ -162,7 +163,7 @@ def main(invocation) -> None:
 
 ---
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 ### <a name="signalrtrigger"></a>SignalRTrigger
 
@@ -174,9 +175,9 @@ def main(invocation) -> None:
 |**direction**| n/a | 必須設為 `in`。|
 |**name**| n/a | 函數程式碼中用於觸發程式調用內容物件的變數名稱。 |
 |**hubName**|**HubName**| 這個值必須設定為要觸發之函式的 SignalR 中樞名稱。|
-|**類別**|**類別**| 這個值必須設定為要觸發之函式的訊息類別。 類別可以是下列其中一個值： <ul><li>**連接**：包含*已連線*和*中斷連接*的事件</li><li>**訊息**：包括 [*連接*] 類別中的所有其他事件除外</li></ul> |
+|**類別**|**類別**| 這個值必須設定為要觸發之函式的訊息類別。 類別可以是下列其中一個值： <ul><li>**連接**：包含 *已連線* 和 *中斷連接* 的事件</li><li>**訊息**：包括 [ *連接* ] 類別中的所有其他事件除外</li></ul> |
 |**event**|**事件**| 這個值必須設定為要觸發之函式的訊息事件。 針對*訊息*類別目錄，事件是用戶端傳送的[調用訊息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的*目標*。 針對連線類別，只會使用 [*已連接*] 和 [已*中斷**連接]* 。 |
-|**parameterNames**|**ParameterNames**| 選擇性系結至參數的名稱清單。 |
+|**parameterNames**|**ParameterNames**|  (選擇性) 系結至參數的名稱清單。 |
 |**connectionStringSetting**|**ConnectionStringSetting**| 包含 SignalR Service 連接字串 (預設值為 "AzureSignalRConnectionString") 的應用程式設定名稱 |
 
 ## <a name="payload"></a>Payload
@@ -189,8 +190,8 @@ InvocationCoNtext 包含訊息從 SignalR Service 傳送的所有內容。
 
 |InvocationCoNtext 中的屬性 | 描述|
 |------------------------------|------------|
-|引數| 適用于*訊息*類別。 包含[調用訊息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的*引數*|
-|錯誤| 適用于已*中斷*連線的事件。 如果連接已關閉但沒有錯誤，或包含錯誤訊息，則它可以是空的。|
+|引數| 適用于 *訊息* 類別。 包含[調用訊息](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)中的*引數*|
+|錯誤| 適用于已 *中斷* 連線的事件。 如果連接已關閉但沒有錯誤，或包含錯誤訊息，則它可以是空的。|
 |集線器| 訊息所屬的中樞名稱。|
 |類別| 訊息的分類。|
 |事件| 訊息的事件。|
@@ -216,7 +217,7 @@ await connection.invoke("broadcast", message1, message2);
 
 對於參數系結，順序很重要。 如果您使用的是 `ParameterNames` ，中的順序會 `ParameterNames` 符合您在用戶端中叫用之引數的順序。 如果您 `[SignalRParameter]` 在 c # 中使用屬性，Azure 函式方法中的引數順序會符合用戶端中引數的順序。
 
-`ParameterNames`和屬性 `[SignalRParameter]` **不能**同時使用，否則您會收到例外狀況。
+`ParameterNames` 和屬性 `[SignalRParameter]` **不能** 同時使用，否則您會收到例外狀況。
 
 ## <a name="send-messages-to-signalr-service-trigger-binding"></a>將訊息傳送至 SignalR Service 觸發程式系結
 

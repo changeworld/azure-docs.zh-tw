@@ -4,14 +4,15 @@ description: 使用 Azure 應用程式組態開啟和關閉功能
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
+ms.custom: devx-track-dotnet
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 8227810c154078fc8424b2cadd373394d07e9730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b77f0063b37adbfaecaff68387e858d0077561b3
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523725"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212658"
 ---
 # <a name="feature-management-overview"></a>功能管理概觀
 
@@ -31,7 +32,7 @@ ms.locfileid: "77523725"
 
 以下是數個與功能管理有關的新詞彙：
 
-* **功能旗**標：功能旗標是二進位狀態為*on*或*off*的變數。 功能旗標也有相關聯的程式碼區塊。 功能旗標的狀態會觸發程式碼區塊是否執行。
+* **功能旗**標：功能旗標是二進位狀態為 *on* 或 *off*的變數。 功能旗標也有相關聯的程式碼區塊。 功能旗標的狀態會觸發程式碼區塊是否執行。
 * **功能管理員**：功能管理員是一個應用程式封裝，可處理應用程式中所有功能旗標的生命週期。 功能管理員也提供額外的功能，包括快取功能旗標和更新其狀態。
 * **篩選**：篩選準則是用來評估功能旗標狀態的規則。 可能的篩選準則包括使用者群組、裝置或瀏覽器類型、地理位置和時間視窗。
 

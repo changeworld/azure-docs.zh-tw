@@ -8,18 +8,22 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bdbe157198ad62578613d86f3b3a55b72ca0acf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 779aa96fcf58d45bb53757f7fe974a0fe4c61ffa
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85557453"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214072"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋的 AI 擴充管線中建立技能集 
 
-AI 擴充會解壓縮和來擴充資料，使其可在 Azure 認知搜尋中進行搜尋。 我們將擷取和擴充步驟稱為*認知技能*，而這些技能會合併為在索引編製期間所參考的*技能集*。 技能集可以使用[內建技能](cognitive-search-predefined-skills.md)或自訂技能（如需詳細資訊，請參閱[範例：在 AI 擴充管線中建立自訂技能](cognitive-search-create-custom-skill-example.md)）。
+![索引子階段](media/cognitive-search-defining-skillset/indexer-stages-skillset.png "索引子階段")
 
-在本文中，您將了解如何為您要使用的技能建立擴充管線。 技能集會附加至 Azure 認知搜尋[索引子](search-indexer-overview.md)。 在本文的說明中，建構技能集本身屬於管線設計的一部分。 
+技能集會定義將資料解壓縮並擴充以使其可供搜尋的作業。 技能集會在文字和影像內容從來源文件中解壓縮之後，以及從來源文件中的任何欄位 (選擇性地) 對應至索引或知識存放區中的目的地欄位之後執行。
+
+技能集包含一或多個代表特定擴充作業的 *認知技能* ，例如翻譯文字、解壓縮關鍵字組，或從影像檔執行光學字元辨識。 若要建立技能集，您可以使用 Microsoft [內建的技能](cognitive-search-predefined-skills.md) ，或包含您提供之模型或處理邏輯的自訂技能 (參閱 [範例：在 AI 擴充管線中建立自訂技能](cognitive-search-create-custom-skill-example.md) ，以取得詳細資訊) 。
+
+在本文中，您將了解如何為您要使用的技能建立擴充管線。 技能集會附加至 Azure 認知搜尋 [索引子](search-indexer-overview.md)。 在本文的說明中，建構技能集本身屬於管線設計的一部分。 
 
 > [!NOTE]
 > 管線設計的另一個部分是指定索引子，如[下一個步驟](#next-step)所說明。 索引子定義包含對技能集的參考，以及將輸入連線至目標索引中的輸出時所使用的欄位對應。
@@ -48,7 +52,7 @@ AI 擴充會解壓縮和來擴充資料，使其可在 Azure 認知搜尋中進�
 在您了解要在管線中放置哪些項目後，即可呈現出提供這些步驟的技能集。 在功能上，當您將索引子定義上傳至 Azure 認知搜尋時，會表示技能集。 若要深入了解如何上傳您的索引子，請參閱[索引子文件](https://docs.microsoft.com/rest/api/searchservice/create-indexer)。
 
 
-在上圖中，*文件萃取*步驟會自動執行。 基本上，Azure 認知搜尋知道如何開啟已知的檔案，並建立*內容*欄位，其中包含從每份檔中解壓縮的文字。 白色方塊是內建的擴充程式，而虛線的「Bing 實體搜尋」方塊則表示您要建立的自訂擴充程式。 如圖所示，技能集包含三項技能。
+在上圖中，*文件萃取*步驟會自動執行。 基本上，Azure 認知搜尋知道如何開啟已知的檔案，並建立 *內容* 欄位，其中包含從每份檔中解壓縮的文字。 白色方塊是內建的擴充程式，而虛線的「Bing 實體搜尋」方塊則表示您要建立的自訂擴充程式。 如圖所示，技能集包含三項技能。
 
 ## <a name="skillset-definition-in-rest"></a>REST 中的技能集定義
 
@@ -140,7 +144,7 @@ Content-Type: application/json
 
 ## <a name="add-built-in-skills"></a>加入內建技能
 
-讓我們看看第一項技能，這是內建[實體辨識技能](cognitive-search-skill-entity-recognition.md)：
+讓我們看看第一項技能，這是內建 [實體辨識技能](cognitive-search-skill-entity-recognition.md)：
 
 ```json
     {
@@ -167,7 +171,7 @@ Content-Type: application/json
 
 * 每項技能都應有 ```"context"```。 內容表示作業執行的層級。 在上述技能中，內容是整份檔，這表示每份檔會呼叫一次實體辨識技能。 輸出也會在該層級上產生。 更具體來說，```"organizations"``` 會產生作為 ```"/document"``` 的成員。 在下游技能中，您可以將這項新建立的資訊稱為 ```"/document/organizations"```。  如果 ```"context"``` 欄位未明確設定，預設內容將是文件。
 
-* 技能有一個名為「文字」的輸入，其來源輸入設定為 ```"/document/content"```。 技能（實體辨識）會在每份檔的*內容*欄位上運作，這是由 Azure blob 索引子所建立的標準欄位。 
+* 技能有一個名為「文字」的輸入，其來源輸入設定為 ```"/document/content"```。  (實體辨識的技能) 會在每份檔的 *內容* 欄位上運作，這是由 Azure blob 索引子所建立的標準欄位。 
 
 * 技能會有一個名為 ```"organizations"``` 的輸出。 只有在處理期間才會有輸出。 若要將此輸出鏈結至下游技能的輸入，請將輸出作為 ```"/document/organizations"``` 來參考。
 
@@ -227,7 +231,7 @@ Content-Type: application/json
     }
 ```
 
-此定義是一種[自訂技能](cognitive-search-custom-skill-web-api.md)，會在擴充流程中呼叫 Web API。 針對實體辨識所識別的每個組織，這項技能會呼叫 Web API 來尋找該組織的描述。 何時應呼叫 Web API 以及如何傳輸接收到的資訊等協調流程，由擴充引擎在內部處理。 不過，呼叫此自訂 API 所需的初始化，必須提供於 JSON 中 (例如 URI、httpHeaders 和預期的輸入)。 如需為擴充管線建立自訂 Web API 的指引，請參閱[如何定義自訂介面](cognitive-search-custom-skill-interface.md)。
+此定義是一種 [自訂技能](cognitive-search-custom-skill-web-api.md) ，會在擴充流程中呼叫 Web API。 針對實體辨識所識別的每個組織，這項技能會呼叫 Web API 來尋找該組織的描述。 何時應呼叫 Web API 以及如何傳輸接收到的資訊等協調流程，由擴充引擎在內部處理。 不過，呼叫此自訂 API 所需的初始化，必須提供於 JSON 中 (例如 URI、httpHeaders 和預期的輸入)。 如需為擴充管線建立自訂 Web API 的指引，請參閱[如何定義自訂介面](cognitive-search-custom-skill-interface.md)。
 
 請注意，[內容] 欄位設定為附有星號的 ```"/document/organizations/*"```，這表示擴充步驟是對 ```"/document/organizations"``` 下的「每個」** 組織而呼叫的。 
 
@@ -247,9 +251,9 @@ Content-Type: application/json
 
 ## <a name="add-a-knowledge-store"></a>新增知識存放區
 
-[知識存放區](knowledge-store-concept-intro.md)是 Azure 認知搜尋中的一項功能，可用於儲存擴充的檔。 您建立的知識存放區是由 Azure 儲存體帳戶所支援，這是您擴充的資料所在的存放庫。 
+[知識存放區](knowledge-store-concept-intro.md) 是 Azure 認知搜尋中的一項功能，可用於儲存擴充的檔。 您建立的知識存放區是由 Azure 儲存體帳戶所支援，這是您擴充的資料所在的存放庫。 
 
-知識存放區定義會加入至技能集。 如需整個程式的逐步解說，請參閱[在 REST 中建立知識存放區](knowledge-store-create-rest.md)。
+知識存放區定義會加入至技能集。 如需整個程式的逐步解說，請參閱 [在 REST 中建立知識存放區](knowledge-store-create-rest.md)。
 
 ```json
 "knowledgeStore": {
@@ -271,7 +275,7 @@ Content-Type: application/json
 }
 ```
 
-您可以選擇將擴充的檔儲存為具有階層式關聯性的資料表，或做為 blob 儲存體中的 JSON 檔。 技能集中任何技能的輸出都可以做為投射的輸入來源。 如果您想要將資料投影到特定的圖形，已更新的「塑造」[技能](cognitive-search-skill-shaper.md)現在可以模型化複雜型別供您使用。 
+您可以選擇將擴充的檔儲存為具有階層式關聯性的資料表，或做為 blob 儲存體中的 JSON 檔。 技能集中任何技能的輸出都可以做為投射的輸入來源。 如果您想要將資料投影到特定的圖形，已更新的「塑造」 [技能](cognitive-search-skill-shaper.md) 現在可以模型化複雜型別供您使用。 
 
 <a name="next-step"></a>
 

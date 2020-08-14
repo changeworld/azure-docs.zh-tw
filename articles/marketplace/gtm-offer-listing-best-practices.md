@@ -7,31 +7,32 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: efe60079814958116d8042991e1cfd6e2f6f71f5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798115"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213886"
 ---
 # <a name="offer-listing-best-practices"></a>陳列供應項目的最佳做法
 
-本文提供建立和設定商業市集供應項目的建議。 下表概述在合作夥伴中心完成供應項目資訊的最佳做法。 如需供應項目執行方式的分析，請移至合作夥伴中心內的 [Marketplace Insights 儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)。 
+本文提供建立和參與 Microsoft 商業 marketplace 優惠的建議。 下表概述在合作夥伴中心完成供應項目資訊的最佳做法。 如需供應項目執行方式的分析，請移至合作夥伴中心內的 [Marketplace Insights 儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)。 
 
 ## <a name="storefront-offer-details"></a>店面供應項目詳細資料
 
 | 店面設定 | 最佳做法 |
 |:--- |:--- |  
-| 供應項目名稱 | 針對應用程式，請提供清楚的標題，其中包含搜尋關鍵字，以協助客戶探索您的供應專案。 <br> <br> 針對諮詢服務，請遵循此格式： [供應專案名稱： [持續時間] [供應專案類型] (例如 Contoso：2周的執行)  <br> <br> 遵守品牌指導方針：在參照 Microsoft 商標和 Microsoft 軟體、產品和服務的名稱時，請遵循[Microsoft 商標和品牌指導方針](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)，以及其他相關的產品特定指導方針。 |
+| 供應項目名稱 | 針對應用程式，請提供清楚的標題，其中包含搜尋關鍵字，以協助客戶探索您的供應專案。 <br> <br> 針對諮詢服務，請遵循此格式： [供應專案名稱： [持續時間] [供應專案類型] (例如 Contoso：2周的執行)  |
 | 供應項目描述 | 請在前幾個句子中提供清楚描述您供應專案價值主張的說明。  請記住，這些句子可能會用於搜尋引擎結果中。 價值主張的核心元件應包括： <ul> <li>產品或解決方案的描述。 </li> <li> 從產品或解決方案獲益的使用者角色。 </li> <li> 客戶需要或解決產品或解決方案的問題。 </li> </ul> <br> 盡可能使用業界標準詞彙或以權益為基礎的用語。  請勿依賴特色與功能來銷售您的產品。  反之，要鎖定在您所提供的價值。 <br> <br> 針對諮詢服務清單，請清楚陳述您提供的專業服務。 |
 
-本節中的表格會提供建立和設定 Marketplace 供應項目的建議。 若要撰寫和設定您的行銷資料，請移至[合作夥伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/)。 
+> [!IMPORTANT]
+> 參考 Microsoft 商標和 Microsoft 軟體、產品和服務的名稱時，請確定您的供應專案名稱和供應專案描述遵守 **[Microsoft 商標和品牌指導方針](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** ，以及其他相關的產品特定指導方針。
 
 ## <a name="storefront-listing-details"></a>店面清單詳細資料
 
 不同店面的類別和產業將適用于不同的供應專案類型。
 
-| 店面 | Categories <br>依店面 | Categories <br>依店面 | 產業 <br> 針對 AppSource |
+| 店面 | 類別 <br>依店面 | 類別 <br>依店面 | 產業 <br> 針對 AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **供應專案類型**   |  **Azure Marketplace**  | **AppSource**  |
 | Azure 應用程式 | X | |
@@ -45,7 +46,7 @@ ms.locfileid: "87798115"
 | SaaS | X | X | X |
 | Azure 虛擬機器 |  X |    |
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>類別
 
 Microsoft AppSource 和 Azure Marketplace 是兩個不同的店面，可滿足獨特的客戶需求。 Azure Marketplace 的目標是在 Azure 上建立解決方案的 IT 專業人員和開發人員。  Microsoft AppSource 是以商務使用者為目標，尋找商務和/或產業 SaaS 應用程式、Dynamics 365 增益集、Microsoft 365 增益集和電源平臺應用程式。
 
@@ -60,7 +61,7 @@ Microsoft AppSource 和 Azure Marketplace 是兩個不同的店面，可滿足�
 
 **重要事項： SaaS 提供和 Microsoft 365 增益集**
 
-如需有關交易功能如何影響您的供應專案可由 marketplace 客戶查看和購買的特定詳細資料，請參閱「[供應專案類型指南](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview)」。 若為 SaaS 供應專案，提供者的交易功能以及類別選擇，將會決定將發佈您供應專案的店面：
+如需有關交易功能如何影響您的供應專案可由 marketplace 客戶查看和購買的特定詳細資料，請參閱「 [供應專案類型指南](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) 」。 若為 SaaS 供應專案，提供者的交易功能以及類別選擇，將會決定將發佈您供應專案的店面：
 
 | SaaS 供應專案    | SaaS 供應專案   | SaaS 供應專案  | SaaS 供應專案   | SaaS 供應專案   | SaaS 供應專案   | SaaS 供應專案    | 適用的店面 | 適用的店面 |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
@@ -93,7 +94,7 @@ Microsoft AppSource 和 Azure Marketplace 是兩個不同的店面，可滿足�
 | **Distribution** | 簽署 <br> & 套件運送的包裹 |  
 | **教育訓練** | 高等教育 <br> 主要 & 次要 Edu/K-12 <br> & 博物館的程式庫 |
 | **金融服務** | 銀行業 & 資本市場 <br> Insurance | 
-| **政府機關** |  防禦 & 情報 <br> 文職政府 <br> 公用安全 & 司法 |
+| **政府** |  防禦 & 情報 <br> 文職政府 <br> 公用安全 & 司法 |
 | **醫療保健** | 健全狀況醫療給付 <br> 健全狀況提供者 <br> Pharmaceuticals | 
 | **旅行 & 旅遊** | 旅遊和運輸 <br> 飯店 & 休閒 <br> 餐廳 & 食物服務 | 
 | **製造 & 資源** | 化學 & Agrochemical <br> 離散製造 <br> 能源 | 
@@ -119,15 +120,15 @@ Microsoft AppSource 和 Azure Marketplace 是兩個不同的店面，可滿足�
 ## <a name="storefront-marketing-details"></a>店面行銷詳細資料
 | 店面設定 | 最佳做法 |
 |:--- |:--- |  
-| 供應專案標誌 (PNG 格式，介於216×216與 350 x 350 圖元之間) ：應用程式詳細資料頁面 | 針對數位媒體設計及最佳化您的標誌：<br>以 PNG 格式上傳標誌到您供應項目的應用程式詳細資料清單頁面。 合作夥伴中心會將其大小調整為所需的標誌大小。 |
-| 供應專案標誌 (PNG 格式，48×48圖元) ：搜尋頁面 | 合作夥伴中心會從您上傳的大型標誌產生此標誌。 您可以選擇性地將此取代為不同的影像。 |
-| 「深入了解」文件 | 在 [深入了解] 下包括支援業務與行銷資產，例如：<ul><li>白皮書</li><li> 折頁冊</li><li>檢查清單，或是</li><li> PowerPoint 簡報</li></ul><br>將所有檔案都儲存為 PDF 格式。 您此處的目標應該是教育客戶，而不是銷售產品或服務給客戶。<br><br>將您應用程式登陸頁面的連結新增到您的所有文件，並加入 URL 參數以協助您追蹤訪客和試用。 |
+| 供應項目標誌 (PNG 格式，48&nbsp;&times;&nbsp;48)：搜尋頁面 | 針對數位媒體設計及最佳化您的標誌：<br>以 PNG 格式上傳標誌到您的供應項目搜尋頁面。 |
+| 供應項目標誌 (PNG 格式，216&nbsp;&times;&nbsp;216)：應用程式詳細資料頁面 | 針對數位媒體設計及最佳化您的標誌：<br>以 PNG 格式上傳標誌到您供應項目的應用程式詳細資料清單頁面。 |
+| 「深入了解」文件 | 在 [深入了解] 下包括支援業務與行銷資產，例如： <ul> <li> 技術白皮書、 </li> <li> 小手冊、 </li> <li> 檢查清單，或是 </li> <li> PowerPoint 簡報。</li> </ul>將所有檔案都儲存為 PDF 格式。 您此處的目標應該是教育客戶，而不是銷售產品或服務給客戶。 <br><br>將您應用程式登陸頁面的連結新增到您的所有文件，並加入 URL 參數以協助您追蹤訪客和試用。 |
 | 影片：僅 AppSource、諮詢服務以及 SaaS 供應項目 | 最有力的影片能以敘事方式傳遞供應項目價值：<ul> <li> 將客戶 (而非您的公司) 設定為影片故事的主角。 </li> <li> 您的影片應該解決目標客戶的主要挑戰與目標。 </li> <li> 建議長度：60-90 秒。</li> <li> 在影片名稱中包含搜尋關鍵字。 </li> <li> 請考慮新增其他影片，例如操作說明、使用者入門或是客戶證言。 </li> </ul> |
 | 螢幕擷取畫面 (1280&nbsp;&times;&nbsp;720) | 新增最多五個螢幕擷取畫面：<br>在影片名稱中包含搜尋關鍵字。 |
 
 ## <a name="link-to-your-offer-page-from-your-website"></a>從您的網站連結至供應項目頁面
 
-當您從網站上的 AppSource 或 Azure Marketplace 徽章連結到市集上的清單時，您可以在 URL 結尾處包含以下查詢參數，以支援強大的分析與報告功能：
+當您從網站上的 AppSource 或 Azure Marketplace 徽章連結到您在商業 Marketplace 中的清單時，您可以在 URL 結尾包含下列查詢參數，藉以支援強式分析和報告：
 * **src**：包含路由傳送到 AppSource (例如，網站、LinkedIn 或 Facebook) 的流量來源。
 * **mktcmpid**：您的行銷活動識別碼，最多可包含 16 個字元，而且可以是字母、數字、底線與連字號的任意組和 (例如，blogpost_12)。
 
