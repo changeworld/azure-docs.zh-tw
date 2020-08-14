@@ -5,24 +5,6 @@
       items:
         - name: 什麼是 Azure Dev Spaces？
           href: about.md
-    - name: 快速入門
-      items:
-        - name: 小組開發
-          href: quickstart-team-development.md
-        - name: 偵錯和逐一查看
-          items:
-            - name: 使用 Visual Studio Code 搭配 Java
-              href: quickstart-java.md
-            - name: 使用 Visual Studio Code 搭配 .NET Core
-              href: quickstart-netcore.md
-            - name: 使用 Visual Studio Code 搭配 Node.js
-              href: quickstart-nodejs.md
-            - name: 使用 Visual Studio 搭配 .NET Core
-              href: quickstart-netcore-visualstudio.md
-        - name: 使用 CLI 開發
-          href: quickstart-cli.md
-        - name: 使用現有 Helm 圖表進行開發
-          href: quickstart-existing-helm-chart.md
     - name: 教學課程
       items:
         - name: Visual Studio 使用者入門

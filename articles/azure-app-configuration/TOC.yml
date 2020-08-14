@@ -91,8 +91,6 @@
           href: concept-customer-managed-keys.md
         - name: 使用私人端點保護您的設定存放區
           href: concept-private-endpoint.md
-        - name: 與 Azure 受控識別整合
-          href: howto-integrate-azure-managed-service-identity.md
         - name: 使用 Azure Active Directory 啟用存取
           href: concept-enable-rbac.md
         - name: 指派 Azure 受控識別
@@ -115,6 +113,8 @@
       href: howto-app-configuration-event.md
     - name: 自動備份設定存放區
       href: howto-backup-config-store.md
+    - name: 使用受控識別來存取應用程式組態
+      href: howto-integrate-azure-managed-service-identity.md
 - name: 參考
   items:
     - name: 組態

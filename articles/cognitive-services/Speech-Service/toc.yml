@@ -117,30 +117,16 @@
   items:
     - name: 文字轉換語音文件
       href: index-text-to-speech.yml
-    - name: 概觀
-      items:
-        - name: 什麼是文字轉換語音？
-          href: text-to-speech.md
-        - name: 文字轉換語音基本概念
-          href: text-to-speech-basics.md
-    - name: 快速入門
-      items:
-        - name: 將語音合成至喇叭
-          href: quickstarts/text-to-speech.md
-        - name: 將語音合成至音訊檔案
-          href: quickstarts/text-to-speech-audio-file.md
-        - name: 使用長格式音訊合成語音
-          href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    - name: 什麼是文字轉換語音？
+      href: text-to-speech.md
+    - name: 文字轉換語音快速入門
+      href: get-started-text-to-speech.md
     - name: 操作指南
       items:
         - name: 使用 SSML 改善合成
           href: speech-synthesis-markup.md
         - name: 使用長音訊 API 合成語音
           href: long-audio-api.md
-        - name: 取得使用 REST 的語音清單 (Python)
-          href: quickstart-python-get-text-to-speech-voices.md
-        - name: 使用 REST 將文字轉換為語音 (Python)
-          href: quickstart-python-text-to-speech.md
     - name: 自訂
       items:
         - name: 負責部署

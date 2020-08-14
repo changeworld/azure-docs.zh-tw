@@ -185,3 +185,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 法規遵循
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: 從 2.0 或 2.1 升級至 v3.0
+      href: upgrade-api-versions.md

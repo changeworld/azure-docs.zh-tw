@@ -117,10 +117,14 @@
               href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: 透過 PowerShell
               href: azure-stack-edge-connect-powershell-interface.md
-        - name: 疑難排解
-          href: azure-stack-edge-troubleshoot.md
-        - name: 連絡 Microsoft 支援服務
-          href: azure-stack-edge-contact-microsoft-support.md
+            - name: 疑難排解
+              items:
+                - name: 透過記錄
+                  href: azure-stack-edge-troubleshoot.md
+                - name: 排序問題
+                  href: azure-stack-edge-troubleshoot-ordering.md
+                - name: 連絡 Microsoft 支援服務
+                  href: azure-stack-edge-contact-microsoft-support.md
         - name: 監視
           href: azure-stack-edge-monitor.md
         - name: 傳回裝置

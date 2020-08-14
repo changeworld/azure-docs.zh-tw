@@ -170,6 +170,8 @@
         - name: 使用 Terraform 部署 AKS
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: 使用 Kubernetes 資源檢視器 (預覽)
+          href: kubernetes-portal.md
         - name: 使用 Kubernetes 儀表板
           href: kubernetes-dashboard.md
     - name: 設定資料磁碟區

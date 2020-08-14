@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6981b6acaf0281c1643e2d8ac3933e0fa892e3c2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
-ms.translationtype: MT
+ms.openlocfilehash: a3a2474b491abd31b750a15aad7860666c7bd02e
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84124473"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88186282"
 ---
 本文說明如何在 Azure 中規劃 IaaS 虛擬機器 (VM) 和磁碟的備份和災害復原 (DR)。 本文件涵蓋受控磁碟和非受控磁碟。
 
@@ -257,9 +257,6 @@ Azure 備份在排定的時間起始備份工作時，會觸發 VM 中所安裝�
 如果結果是嚴重的中斷，Azure 團隊可能會觸發異地容錯移轉，然後變更主要 DNS 項目以指向次要儲存體。 此時，如果您啟用異地備援儲存體或具有讀取權限的異地備援儲存體，您可以存取之前為次要區域中的資料。 換句話說，如果您的儲存體帳戶是具有讀取權限的異地備援儲存體並發生問題，只有在具異地容錯移轉時才能存取次要儲存體。
 
 如需詳細資訊，請參閱[如果 Azure 儲存體發生中斷怎麼辦](../articles/storage/common/storage-disaster-recovery-guidance.md)。
-
->[!NOTE] 
->Microsoft 會控制是否發生容錯移轉。 容錯移轉不是針對每個儲存體帳戶所控制，所以不會由個別客戶來決定。 若要實作特定儲存體帳戶或虛擬機器磁碟的災害復原，您必須使用本文稍早所述的技術。
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png

@@ -1,3 +1,5 @@
+- name: Azure HDInsight 文件
+  href: index.yml
 - name: HDInsight 服務
   expanded: true
   items:
@@ -74,7 +76,7 @@
               href: overview-data-lake-storage-gen1.md
             - name: Azure Data Lake Storage Gen2 概觀
               href: overview-data-lake-storage-gen2.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 建立叢集
           items:
@@ -342,7 +344,7 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: 遷移至 Spark 2.3 或 2.4
           href: ./spark/migrate-versions.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 使用工具
           items:
@@ -471,7 +473,7 @@
           href: ./hdinsight-hadoop-create-linux-clusters-adf.md
         - name: 提交 Apache Hadoop 作業
           href: ./hadoop/submit-apache-hadoop-jobs-programmatically.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 使用工具
           items:
@@ -616,7 +618,7 @@
           href: ./kafka/apache-kafka-performance-tuning.md
         - name: Kafka 常見問題集
           href: ./kafka/kafka-faq.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 開發
           items:
@@ -667,7 +669,7 @@
       items:
         - name: 使用 HDInsight 中的 Apache HBase
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 開發
           items:
@@ -746,7 +748,7 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: 調整大小指導方針
           href: ./interactive-query/sizing-guidelines.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 開發
           items:
@@ -843,7 +845,7 @@
           href: ./r-server/ml-services-tutorial-spark-compute.md
         - name: 使用適用於 Visual Studio 的 R 工具
           href: ./r-server/r-server-submit-jobs-r-tools-vs.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 開發
           items:
@@ -875,7 +877,7 @@
           href: ./storm/apache-storm-write-data-lake-store.md
         - name: Apache Kafka 與 Apache Storm (Java)
           href: ./hdinsight-apache-storm-with-kafka.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 將 Storm 遷移至 Spark
           href: ./storm/migrate-storm-to-spark.md
@@ -943,7 +945,7 @@
           href: ./disk-encryption.md
         - name: Ranger 和 Apache Ambari 中的 LDAP 同步處理
           href: ./domain-joined/ldap-sync.md
-    - name: 如何
+    - name: 操作指南
       items:
         - name: 使用識別碼訊息代理程式進行認證管理
           href: ./domain-joined/identity-broker.md

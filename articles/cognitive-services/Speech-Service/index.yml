@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 455f71c7fd9defd7a1187f6b5df6b5b3b9c3131b
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.openlocfilehash: 74fd89633e4add1c577e44b822f1f90a86b3f498
+  ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85563757"
+  ms.lasthandoff: 08/13/2020
+  ms.locfileid: "88167771"
 highlightedContent:
   items:
   - title: 什麼是語音服務？
@@ -51,15 +51,15 @@ conceptualContent:
       url: index-speech-to-text.yml
   - title: 文字轉換語音
     links:
+    - itemType: overview
+      text: 關於文字轉換語音
+      url: text-to-speech.md
     - itemType: quickstart
-      text: 將語音合成至喇叭
-      url: quickstarts/text-to-speech.md
-    - itemType: quickstart
-      text: 將語音合成至音訊檔案
-      url: quickstarts/text-to-speech-audio-file.md
+      text: 開始使用文字轉換語音
+      url: get-started-text-to-speech.md
     - itemType: how-to-guide
-      text: 語音合成基本概念
-      url: text-to-speech-basics.md
+      text: 使用 SSML 改善合成
+      url: speech-synthesis-markup.md
     footerLink:
       text: 更多資訊
       url: index-text-to-speech.yml
@@ -141,7 +141,7 @@ conceptualContent:
     - itemType: overview
       text: 關於Speech Studio (自訂)
       url: https://speech.microsoft.com
-  - title: Hosting
+  - title: 裝載
     links:
     - itemType: how-to-guide
       text: 語音服務容器

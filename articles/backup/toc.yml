@@ -24,7 +24,7 @@
       href: tutorial-backup-vm-at-scale.md
     - name: 使用 PowerShell 來備份 Azure VM
       href: tutorial-backup-azure-vm.md
-    - name: 還原磁碟
+    - name: 使用 Azure CLI 來還原 VM
       href: tutorial-restore-disk.md
     - name: 還原個別檔案
       href: tutorial-restore-files.md
@@ -355,7 +355,7 @@
           href: backup-rm-template-samples.md
     - name: 安全性
       items:
-        - name: 總覽
+        - name: 概觀
           href: security-overview.md
         - name: 角色型存取控制
           href: backup-rbac-rs-vault.md

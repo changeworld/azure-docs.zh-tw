@@ -6,6 +6,16 @@
       href: ./kubernetes/overview.md
     - name: 關於已啟用 Azure Arc 的伺服器
       href: ./servers/overview.md
+- name: 快速入門
+  items:
+    - name: 啟用伺服器代理程式的 Arc
+      href: ./servers/learn/quick-enable-hybrid-vm.md
+- name: 教學課程
+  items:
+    - name: 指派原則以評定合規性
+      href: ./servers/learn/tutorial-assign-policy-portal.md
+    - name: 監視機器
+      href: ./servers/learn/tutorial-enable-vm-insights.md
 - name: 範例
   items:
     - name: Azure 原則內建

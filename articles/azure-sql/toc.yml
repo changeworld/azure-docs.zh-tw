@@ -72,7 +72,7 @@
               items:
                 - name: 設定 Azure AD 驗證
                   href: database/authentication-aad-configure.md
-                - name: 多重要素 AAD 驗證
+                - name: 多重要素 Azure AD 驗證
                   href: database/authentication-mfa-ssms-overview.md
                 - name: 設定多因素驗證
                   href: database/authentication-mfa-ssms-configure.md
@@ -891,8 +891,10 @@
           href: managed-instance/threat-detection-configure.md
         - name: 連線應用程式
           href: managed-instance/connect-application-instance.md
-        - name: 建立警示
+        - name: 在受控執行個體上建立警示
           href: managed-instance/alerts-create.md
+        - name: 在受控執行個體上手動起始容錯移轉
+          href: managed-instance/user-initiated-failover.md
     - name: 範例
       items:
         - name: Azure CLI
@@ -1024,7 +1026,7 @@
                       href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                     - name: 手動設定
                       items:
-                        - name: 必要條件
+                        - name: Prerequisites
                           href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                         - name: 教學課程
                           href: virtual-machines/windows/availability-group-manually-configure-tutorial.md

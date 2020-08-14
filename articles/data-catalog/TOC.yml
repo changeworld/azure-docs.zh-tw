@@ -5,6 +5,7 @@
     - name: 什麼是資料目錄？
       href: overview.md
 - name: 快速入門
+  expanded: true
   items:
     - name: 建立 Azure 資料目錄
       href: data-catalog-get-started.md
@@ -20,11 +21,9 @@
       href: data-catalog-dsr.md
     - name: 採用 Azure 資料目錄
       href: data-catalog-adopting-data-catalog.md
-    - name: Prerequisites
-      href: data-catalog-prerequisites.md
     - name: 常見問題集
       href: data-catalog-frequently-asked-questions.md
-- name: 作法
+- name: 如何
   items:
     - name: 註冊資料來源
       href: data-catalog-how-to-register.md

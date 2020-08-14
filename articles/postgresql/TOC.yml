@@ -169,14 +169,16 @@
               href: howto-move-regions-portal.md
     - name: 超大規模資料庫 (Citus)
       items:
-        - name: 節點
-          href: concepts-hyperscale-nodes.md
         - name: 分散式資料
-          href: concepts-hyperscale-distributed-data.md
-        - name: 選擇散發資料行
-          href: concepts-hyperscale-choose-distribution-column.md
-        - name: 資料表共置
-          href: concepts-hyperscale-colocation.md
+          items:
+            - name: 節點和資料表
+              href: concepts-hyperscale-nodes.md
+            - name: 決定應用程式類型
+              href: concepts-hyperscale-app-type.md
+            - name: 選擇散發資料行
+              href: concepts-hyperscale-choose-distribution-column.md
+            - name: 資料表共置
+              href: concepts-hyperscale-colocation.md
         - name: 資料存取和安全性
           items:
             - name: 防火牆規則
@@ -341,12 +343,16 @@
       items:
         - name: 建立使用者
           href: howto-hyperscale-create-users.md
-        - name: 調整
+        - name: 伺服器群組大小
           href: howto-hyperscale-scaling.md
         - name: 管理防火牆
           items:
             - name: Azure 入口網站
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: 分散式資料
+          items:
+            - name: 散發和修改資料表
+              href: howto-hyperscale-modify-distributed-tables.md
         - name: 高可用性
           href: howto-hyperscale-high-availability.md
         - name: 監視
@@ -361,12 +367,22 @@
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: 參考
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
-    - name: REST API
-      href: /rest/api/postgresql
-    - name: Resource Manager 範本
-      href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: 單一伺服器
+      items:
+        - name: Azure CLI
+          href: /cli/azure/postgres
+        - name: REST API
+          href: /rest/api/postgresql
+        - name: Resource Manager 範本
+          href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: 超大規模資料庫 (Citus)
+      items:
+        - name: SQL API 函式
+          href: reference-hyperscale-functions.md
+        - name: 伺服器參數
+          href: reference-hyperscale-parameters.md
+        - name: 系統資料表
+          href: reference-hyperscale-metadata.md
 - name: 資源
   items:
     - name: 透過 Microsoft Learn 增進您的技巧

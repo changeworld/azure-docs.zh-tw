@@ -4,6 +4,8 @@
   items:
     - name: 關於適用於 FHIR 的 Azure API
       href: overview.md
+    - name: 關於 Azure IoT Connector for FHIR (預覽)
+      href: overview.md#azure-iot-connector-for-fhir-preview
 - name: 快速入門
   expanded: true
   items:

@@ -11,19 +11,19 @@ metadata:
   ms.collection: collection
   author: mblythe
   ms.author: mblythe
-  ms.date: 12/19/2019
-  ms.openlocfilehash: 277326eb6b120c4cc1b456a17c6f58791c66dd16
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 08/05/2020
+  ms.openlocfilehash: f45fc98073dcc6eeee10c691fe9f93860e0fb654
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75890780"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88212091"
 landingContent:
 - title: 關於 Azure 入口網站
   linkLists:
   - linkListType: overview
     links:
-    - text: 什麼是 Azure入口網站？
+    - text: 什麼是 Azure 入口網站？
       url: azure-portal-overview.md
     - text: 支援的瀏覽器和裝置
       url: azure-portal-supported-browsers-devices.md
@@ -47,7 +47,7 @@ landingContent:
       url: azure-portal-dashboard-share-access.md
   - linkListType: learn
     links:
-    - text: 管理 Azure 中的資源
+    - text: 在 Azure 中管理資源
       url: /learn/paths/manage-resources-in-azure/
     - text: 使用角色型存取控制 (RBAC) 保護 Azure 資源
       url: /learn//modules/secure-azure-resources-with-rbac/
@@ -63,9 +63,9 @@ landingContent:
       url: azure-portal-video-series.md
   - linkListType: learn
     links:
-    - text: Azure 基礎
+    - text: Azure 基本概念
       url: /learn/paths/azure-fundamentals/
-    - text: 雲端概念 - 雲端運算原則
+    - text: 雲端概念 - 雲端運算的準則
       url: /learn/modules/principles-cloud-computing/
 - title: 使用協助工具選項
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 開啟高對比
-      url: azure-portal-change-theme-high-contrast.md
+      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
 - title: 建立及管理支援要求
   linkLists:
   - linkListType: how-to-guide
