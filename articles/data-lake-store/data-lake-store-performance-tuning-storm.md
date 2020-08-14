@@ -1,17 +1,17 @@
 ---
 title: 效能微調-具有 Azure Data Lake Storage Gen1 的電流
-description: 深入瞭解 Azure Data Lake Storage Gen1 上適用于風暴叢集的效能微調方針。
+description: 瞭解當您微調 Azure 風暴拓撲的效能時應考慮的因素，包括針對常見問題進行疑難排解。
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 47fb385e5e1fb60f860735530356fa87031c51e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513789"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192805"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight 和 Azure Data Lake Storage Gen1 上的 Storm 效能微調方針
 
@@ -22,7 +22,7 @@ ms.locfileid: "85513789"
 * **Azure 訂用帳戶**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帳戶**。 如需有關如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。
 * 可存取 Data Lake Storage Gen1 帳戶的 **Azure HDInsight 叢集**。 請參閱[建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)。 請確實為叢集啟用遠端桌面。
-* **在 Data Lake Storage Gen1 上執行 Storm 叢集**。 如需詳細資訊，請參閱[在 HDInsight 上的風暴](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
+* **在 Data Lake Storage Gen1 上執行 Storm 叢集**。 如需詳細資訊，請參閱 [在 HDInsight 上的風暴](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
 * **Data Lake Storage Gen1 的效能微調方針**。  如需一般的效能概念，請參閱 [Data Lake Storage Gen1 效能微調指導方針](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)。  
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>調整拓撲的平行處理原則
@@ -55,7 +55,7 @@ ms.locfileid: "85513789"
 
 假設您有一個具有 D13v2 Azure VM 的8個背景工作節點叢集。 此 VM 有八個核心，因此在八個背景工作節點中，共有64個核心。
 
-假設我們會針對每個核心執行八個螺栓執行緒。 若給定 64 個核心，這表示我們總共需要 512 個 Bolt 執行程式執行個體 (亦即執行緒)。 在此情況下，假設我們一開始讓每個 VM 擁有一個 JVM，並且大多在 JVM 內使用執行緒並行存取以達到並行效果。 這表示我們需要8個背景工作角色（每個 Azure VM 一個）和512個螺栓執行程式。 若指定此設定，則會嘗試將背景工作平均分散到背景工作節點（也稱為監督員節點），讓每個背景工作角色節點一個 JVM。 在主管內部，風暴會嘗試在監督員之間平均分散執行程式，讓每個監督員（亦即 JVM）各有8個執行緒。
+假設我們會針對每個核心執行八個螺栓執行緒。 若給定 64 個核心，這表示我們總共需要 512 個 Bolt 執行程式執行個體 (亦即執行緒)。 在此情況下，假設我們一開始讓每個 VM 擁有一個 JVM，並且大多在 JVM 內使用執行緒並行存取以達到並行效果。 這表示我們需要8個背景工作角色， (每個 Azure VM) 和512個螺栓執行程式。 若指定此設定，則會嘗試將背景工作平均分散到背景工作節點 (也稱為監督員節點) ，讓每個背景工作角色節點一個 JVM。 在主管內部，風暴會嘗試在監督員之間平均分散執行程式，讓每個監督員 (也就是 JVM) 八個執行緒。
 
 ## <a name="tune-additional-parameters"></a>微調其他參數
 在擁有基本拓撲之後，您可以考慮是否要調整任何參數︰
@@ -79,7 +79,7 @@ ms.locfileid: "85513789"
   良好的計算方式是估計每個 Tuple 的大小。 然後找出一個 Spout 執行緒有多少記憶體。 配置給執行緒的記憶體總數除以這個值，應該就能得出最大 Spout 暫止參數的上限。
 
 ## <a name="tune-the-bolt"></a>微調 Bolt
-在寫入至 Data Lake Storage Gen1 時，請將大小同步處理原則 (用戶端上的緩衝區) 設為 4 MB。 只有當緩衝區大小是這個值時，才會執行排清或 hsync （）。 背景工作 VM 上的 Data Lake Storage Gen1 驅動程式會自動執行此緩衝作業，除非您明確執行 hsync()。
+在寫入至 Data Lake Storage Gen1 時，請將大小同步處理原則 (用戶端上的緩衝區) 設為 4 MB。 只有當緩衝區大小是這個值時，才會執行排清或 hsync ( # A1。 背景工作 VM 上的 Data Lake Storage Gen1 驅動程式會自動執行此緩衝作業，除非您明確執行 hsync()。
 
 預設 Data Lake Storage Gen1 Storm Bolt 有一個大小同步處理原則參數 (fileBufferSize) 可用來調整此參數。
 
@@ -130,6 +130,6 @@ ms.locfileid: "85513789"
 2. 監視背景工作節點上的 Storm 拓撲記錄 (在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下)，注意是否有 Data Lake Storage Gen1 節流例外狀況。
 
 ## <a name="next-steps"></a>後續步驟
-您可以在[此 blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)中參考其他風暴的效能微調。
+您可以在 [此 blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)中參考其他風暴的效能微調。
 
 如需可執行的其他範例，請參閱 [GitHub 上的這一個](https://github.com/hdinsight/storm-performance-automation)。
