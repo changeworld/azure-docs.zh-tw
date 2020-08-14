@@ -5,19 +5,19 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 28b608446c543fc568a5c322ffce1df6100d4a73
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 67e1f1dff43939ce7ef279db57bee4b18bd12dc8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852458"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213947"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體觸發程式
 
-偵測到新的或已更新的 Blob 時，Blob 儲存體觸發程序會啟動函式。 提供 blob 內容做為[函數的輸入](./functions-bindings-storage-blob-input.md)。
+偵測到新的或已更新的 Blob 時，Blob 儲存體觸發程序會啟動函式。 提供 blob 內容做為 [函數的輸入](./functions-bindings-storage-blob-input.md)。
 
-Azure Blob 儲存體觸發程式需要一般用途的儲存體帳戶。 也支援具有階層[命名空間](../storage/blobs/data-lake-storage-namespace.md)的儲存體 V2 帳戶。 若要使用僅限 blob 的帳戶，或如果您的應用程式具有特殊需求，請參閱使用此觸發程式的替代方案。
+Azure Blob 儲存體觸發程式需要一般用途的儲存體帳戶。 也支援具有階層 [命名空間](../storage/blobs/data-lake-storage-namespace.md) 的儲存體 V2 帳戶。 若要使用僅限 blob 的帳戶，或如果您的應用程式具有特殊需求，請參閱使用此觸發程式的替代方案。
 
 如需安裝和設定詳細資料的相關資訊，請參閱[概觀](./functions-bindings-storage-blob.md)。
 
@@ -27,17 +27,17 @@ Azure Blob 儲存體觸發程式需要一般用途的儲存體帳戶。 也支�
 
 [事件方格觸發](functions-bindings-event-grid.md)程式也有[blob 事件](../storage/blobs/storage-blob-event-overview.md)的內建支援。 請使用 Event Grid 來因應以下情節的需求，避免使用 Blob 儲存體觸發程序：
 
-- **僅限 blob 的儲存體帳戶**： blob 輸入和輸出系結支援[僅限 blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)，但 blob 觸發程式則不支援。
+- **僅限 blob 的儲存體帳戶**： blob 輸入和輸出系結支援 [僅限 blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts) ，但 blob 觸發程式則不支援。
 
 - **大規模：高**級別可以鬆散定義為具有超過100000個 blob 的容器，或每秒有超過100個 blob 更新的儲存體帳戶。
 
 - **最小化延遲**：如果您的函式應用程式在取用方案上，如果函式應用程式已進入閒置狀態，則處理新 blob 時最多會有10分鐘的延遲。 若要避免這類延遲，可以切換到 App Service 方案並啟用 Always On。 您也可以透過 Blob 儲存體帳戶使用 [Event Grid 觸發程序](functions-bindings-event-grid.md)。 如需範例，請參閱[ Event Grid 教學課程](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)。
 
-請參閱事件方格的[影像調整大小](../event-grid/resize-images-on-storage-blob-upload-event.md)教學課程範例。
+請參閱事件方格的 [影像調整大小](../event-grid/resize-images-on-storage-blob-upload-event.md) 教學課程範例。
 
 ### <a name="queue-storage-trigger"></a>佇列儲存體觸發程序
 
-另一個處理 blob 的方法是撰寫對應于所建立或修改之 blob 的佇列訊息，然後使用[佇列儲存體觸發](./functions-bindings-storage-queue.md)程式來開始處理。
+另一個處理 blob 的方法是撰寫對應于所建立或修改之 blob 的佇列訊息，然後使用 [佇列儲存體觸發](./functions-bindings-storage-queue.md) 程式來開始處理。
 
 ## <a name="example"></a>範例
 
@@ -55,11 +55,11 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 
 Blob 觸發程序路徑 `samples-workitems/{name}` 中的字串 `{name}` 會建立[繫結運算式](./functions-bindings-expressions-patterns.md)，您可以在函式程式碼中用來存取觸發 Blob 的檔案名稱。 如需詳細資訊，請參閱本文稍後的 [Blob 名稱模式](#blob-name-patterns)。
 
-如需屬性的詳細資訊 `BlobTrigger` ，請參閱[屬性和批註](#attributes-and-annotations)。
+如需屬性的詳細資訊 `BlobTrigger` ，請參閱 [屬性和批註](#attributes-and-annotations)。
 
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
-下列範例顯示在檔案的*function.js*中的 blob 觸發程式系結，以及使用該系結的程式碼。 在容器中新增或更新 blob 時，函數會寫入記錄 `samples-workitems` [ ](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。
+下列範例顯示在檔案的 *function.js* 中的 blob 觸發程式系結，以及使用該系結的程式碼。 在容器中新增或更新 blob 時，函數會寫入記錄 `samples-workitems` [ ](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -227,7 +227,7 @@ public void run(
   }
    ```
 
-  如需完整範例，請參閱[觸發程式範例](#example)。
+  如需完整範例，請參閱 [觸發程式範例](#example)。
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -267,7 +267,7 @@ Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobTrigger`屬性是用來提供觸發函式之 blob 的存取權。 如需詳細資訊，請參閱[觸發程式範例](#example)。
+`@BlobTrigger`屬性是用來提供觸發函式之 blob 的存取權。 如需詳細資訊，請參閱 [觸發程式範例](#example) 。
 
 ---
 
@@ -280,7 +280,7 @@ Python 指令碼不支援屬性。
 |**type** | n/a | 必須設為 `blobTrigger`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
 |**direction** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
 |**name** | n/a | 表示函式程式碼中 Blob 的變數名稱。 |
-|**path** | **BlobPath** |要監視的[容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  可能是 [Blob 名稱模式](#blob-name-patterns)。 |
+|**path** | **BlobPath** |要監視的 [容器](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) 。  可能是 [Blob 名稱模式](#blob-name-patterns)。 |
 |**connection** | **[連接]** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將 `connection` 設定為「MyStorage」，則函式執行階段會尋找名稱為「AzureWebJobsMyStorage」的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須是用於一般用途的儲存體帳戶，而不是[Blob 儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -297,15 +297,15 @@ Python 指令碼不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用來存取 blob 資料 `context.bindings.<NAME>` ，其中會 `<NAME>` 符合在*function.js*中定義的值。
+使用來存取 blob 資料 `context.bindings.<NAME>` ，其中會 `<NAME>` 符合在 *function.js*中定義的值。
 
 # <a name="python"></a>[Python](#tab/python)
 
-透過輸入為[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的參數來存取 blob 資料。 如需詳細資訊，請參閱[觸發程式範例](#example)。
+透過輸入為 [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的參數來存取 blob 資料。 如需詳細資訊，請參閱 [觸發程式範例](#example) 。
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobTrigger`屬性是用來提供觸發函式之 blob 的存取權。 如需詳細資訊，請參閱[觸發程式範例](#example)。
+`@BlobTrigger`屬性是用來提供觸發函式之 blob 的存取權。 如需詳細資訊，請參閱 [觸發程式範例](#example) 。
 
 ---
 
@@ -392,7 +392,7 @@ Azure Functions 會將 blob 回條儲存在您函數應用程式 (`AzureWebJobsS
 * Blob 名稱
 * ETag (Blob 版本識別碼，例如："0x8D1DC6E70A277EF")
 
-要強制重新處理某個 Blob，可以從 *azure-webjobs-hosts* 容器中手動刪除該 Blob 的 Blob 回條。 雖然重新處理可能不會立即發生，但一定會在稍後的時間點發生。 若要立即重新處理，可以更新 azure 中的*scaninfo* blob *-webjob-hosts/blobscaninfo* 。 在屬性之後具有上次修改時間戳記的任何 blob `LatestScan` 都會再次掃描。
+要強制重新處理某個 Blob，可以從 *azure-webjobs-hosts* 容器中手動刪除該 Blob 的 Blob 回條。 雖然重新處理可能不會立即發生，但一定會在稍後的時間點發生。 若要立即重新處理，可以更新 azure 中的 *scaninfo* blob *-webjob-hosts/blobscaninfo* 。 在屬性之後具有上次修改時間戳記的任何 blob `LatestScan` 都會再次掃描。
 
 ## <a name="poison-blobs"></a>有害 blob
 

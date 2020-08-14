@@ -1,18 +1,18 @@
 ---
 title: Connected Machine Windows 代理程式概觀
-description: 本文提供適用于伺服器 (preview) 代理程式的 Azure Arc 詳細總覽，其支援監視混合式環境中裝載的虛擬機器。
+description: 本文提供已啟用 Azure Arc 的伺服器 (preview) 代理程式的詳細總覽，其支援監視在混合式環境中託管的虛擬機器。
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8e8abfcc3c6ec7b7893563c67dc6bb82ccdda850
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121828"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212986"
 ---
-# <a name="overview-of-azure-arc-for-servers-preview-agent"></a>概述伺服器的 Azure Arc (預覽) 代理程式
+# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>概述已啟用 Azure Arc 的伺服器 (預覽) 代理程式
 
-適用于伺服器的 Azure Arc (預覽) 已連線的機器代理程式可讓您在公司網路或其他雲端提供者上，管理裝載于 Azure 外部的 Windows 和 Linux 電腦。 本文將詳細說明代理程式的概觀、系統和網路需求以及不同的部署方法。
+已啟用 Azure Arc 的伺服器 (預覽) 已連線的機器代理程式可讓您管理在公司網路或其他雲端提供者上裝載于 Azure 外部的 Windows 和 Linux 電腦。 本文將詳細說明代理程式的概觀、系統和網路需求以及不同的部署方法。
 
 ## <a name="agent-component-details"></a>代理程式元件詳細資料
 
@@ -22,7 +22,7 @@ Azure 連線的機器代理程式套件包含數個結合在一起的邏輯元�
 
 * 「來賓設定代理程式」提供來賓內原則和來賓設定功能，例如評估電腦是否符合必要的原則。
 
-    請注意，已中斷連線電腦的 Azure 原則[來賓](../../governance/policy/concepts/guest-configuration.md)設定的下列行為：
+    請注意，已中斷連線電腦的 Azure 原則 [來賓](../../governance/policy/concepts/guest-configuration.md) 設定的下列行為：
 
     * 以中斷連線的電腦為目標的來賓設定原則指派不受影響。
     * 來賓指派會儲存在本機14天。 在14天的期間內，如果連線的機器代理程式重新連接到服務，則會重新套用原則指派。
@@ -61,11 +61,11 @@ Azure Connected Machine 代理程式可正式支援下列 Windows 和 Linux 作�
 
 * 若要使電腦上線，您必須是 **Azure Connected Machine 上線**角色的成員。
 
-* 若要讀取、修改、重新上架和刪除機器，您是**Azure 已連線機器資源管理員**角色的成員。 
+* 若要讀取、修改、重新上架和刪除機器，您是 **Azure 已連線機器資源管理員** 角色的成員。 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure 訂用帳戶與服務限制
 
-在使用適用于伺服器的 Azure Arc (預覽) 設定電腦之前，請先參閱 Azure Resource Manager 訂用帳戶[限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)和[資源群組限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)，以規劃要連線的電腦數目。
+使用已啟用 Azure Arc 的伺服器設定電腦 (預覽) ，請參閱 Azure Resource Manager [訂](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) 用帳戶限制和 [資源群組限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) ，以規劃要連線的電腦數目。
 
 ### <a name="transport-layer-security-12-protocol"></a>傳輸層安全性1.2 通訊協定
 
@@ -105,7 +105,7 @@ URL：
 
 ### <a name="register-azure-resource-providers"></a>註冊 Azure 資源提供者
 
-適用於伺服器的 Azure Arc (預覽) 需依賴您訂用帳戶中的下列 Azure 資源提供者來使用此服務：
+已啟用 Azure Arc 的伺服器 (預覽) 取決於您訂用帳戶中的下列 Azure 資源提供者，才能使用此服務：
 
 * **Microsoft.HybridCompute**
 * **Microsoft.GuestConfiguration**
@@ -248,4 +248,4 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 ## <a name="next-steps"></a>後續步驟
 
-若要開始評估適用於伺服器的 Azure Arc (預覽)，請遵循[從 Azure 入口網站將混合式機器連線到 Azure](onboard-portal.md) 一文。
+若要開始評估已啟用 Azure Arc 的伺服器 (預覽) ，請遵循 [從 Azure 入口網站將混合式機器連線至 Azure](onboard-portal.md)一文。

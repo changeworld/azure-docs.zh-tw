@@ -2,13 +2,14 @@
 title: Azure Functions 執行階段版本概觀
 description: Azure Functions 支援多個執行階段版本。 了解其間的差異以及如何選擇最適合您的版本。
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 29dd4a1ea60c463655c5b9a17fedcf6d51eee927
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081673"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208112"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 執行階段版本概觀
 
@@ -21,7 +22,7 @@ Azure Functions 目前支援三種版本的執行時間主機：1.x、2.x 和3.x
 
 ## <a name="languages"></a>語言
 
-從2.x 版開始，執行時間會使用語言擴充性模型，而且函數應用程式中的所有函式都必須共用相同的語言。 在建立應用程式時，會選擇函式應用程式中的函式語言，並在函式背景[ \_ 工作 \_ 運行](functions-app-settings.md#functions_worker_runtime)時間設定中維護。 
+從2.x 版開始，執行時間會使用語言擴充性模型，而且函數應用程式中的所有函式都必須共用相同的語言。 在建立應用程式時，會選擇函式應用程式中的函式語言，並在函式背景 [ \_ 工作 \_ 運行](functions-app-settings.md#functions_worker_runtime) 時間設定中維護。 
 
 下表指出每個執行階段版本目前支援的程式設計語言。
 
@@ -43,7 +44,7 @@ Azure Functions 目前支援三種版本的執行時間主機：1.x、2.x 和3.x
 
 從2.x 版開始，您必須針對應用程式中的函式所使用的特定觸發程式和系結，安裝擴充功能。 唯一的例外是 HTTP 和計時器觸發程序，這兩者不需要延伸模組。  如需詳細資訊，請參閱[註冊及安裝繫結延伸模組](./functions-bindings-register.md)。
 
-在或版本之間，函式的*function.js上*也有一些變更。 例如，「事件中樞」的 `path` 屬性現在是 `eventHubName`。 如需每個繫結的文件連結，請參閱[現有的繫結表格](#bindings)。
+在或版本之間，函式的 *function.js上* 也有一些變更。 例如，「事件中樞」的 `path` 屬性現在是 `eventHubName`。 如需每個繫結的文件連結，請參閱[現有的繫結表格](#bindings)。
 
 ### <a name="changes-in-features-and-functionality-after-version-1x"></a>版本1.x 之後功能的變更
 
@@ -65,7 +66,7 @@ Azure Functions 目前支援三種版本的執行時間主機：1.x、2.x 和3.x
 
 * 預設會針對取用方案函式執行 HTTP 並行節流，預設值為每個實例100個並行要求。 您可以在 host.json 檔案的設定中變更此值 [`maxConcurrentRequests`](functions-host-json.md#http) 。
 
-* 由於[.Net Core 的限制](https://github.com/Azure/azure-functions-host/issues/3414)，已移除對 F # 腳本（. run.fsx）函數的支援。 仍然支援已編譯的 F# 函式 (.fs)。
+* 由於 [.Net Core 的限制](https://github.com/Azure/azure-functions-host/issues/3414)，已移除對 F # 腳本 ( run.fsx) 函數的支援。 仍然支援已編譯的 F# 函式 (.fs)。
 
 * 「事件方格」觸發程序 Webhook 的 URL 格式已變更為 `https://{app}/runtime/webhooks/{triggerName}`。
 
@@ -155,7 +156,7 @@ Azure 中已發佈應用程式所使用的函式執行時間版本，是由 [`FU
 
 #### <a name="maven-and-java-apps"></a>Maven 和 JAVA 應用程式
 
-您可以安裝在本機執行所需的 2.x[版核心工具](functions-run-local.md#install-the-azure-functions-core-tools)，將 JAVA 應用程式從版本2.x 遷移至3.x。  在確認您的應用程式正確地在版本3.x 的本機上執行之後，請更新應用程式的檔案，將 `POM.xml` `FUNCTIONS_EXTENSION_VERSION` 設定修改為 `~3` ，如下列範例所示：
+您可以安裝在本機執行所需的 2.x [版核心工具](functions-run-local.md#install-the-azure-functions-core-tools) ，將 JAVA 應用程式從版本2.x 遷移至3.x。  在確認您的應用程式正確地在版本3.x 的本機上執行之後，請更新應用程式的檔案，將 `POM.xml` `FUNCTIONS_EXTENSION_VERSION` 設定修改為 `~3` ，如下列範例所示：
 
 ```xml
 <configuration>
@@ -177,7 +178,7 @@ Azure 中已發佈應用程式所使用的函式執行時間版本，是由 [`FU
 
 ## <a name="bindings"></a>繫結
 
-從2.x 版開始，執行時間會使用新的系結擴充性[模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，以提供下列優點：
+從2.x 版開始，執行時間會使用新的系結擴充性 [模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) ，以提供下列優點：
 
 * 支援第三方繫結延伸模組。
 

@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 01/07/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 383c5a0d6811b2797ecb4407e73c26752e1a5022
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 85b457b4aefee408e35fb89d46e0de0dc4e96740
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055984"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213856"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>在 Azure Active Directory 中建立或更新動態群組
 
@@ -42,45 +42,45 @@ Azure AD 提供規則建立器，可讓您更快速建立和更新重要的規�
 
 ![新增動態群組的成員資格規則](./media/groups-create-rule/update-dynamic-group-rule.png)
 
-如需語法、支援的屬性、運算子和成員資格規則值的範例，請參閱[Azure Active Directory 中群組的動態成員資格規則](groups-dynamic-membership.md)。
+如需語法、支援的屬性、運算子和成員資格規則值的範例，請參閱 [Azure Active Directory 中群組的動態成員資格規則](groups-dynamic-membership.md)。
 
 ## <a name="to-create-a-group-membership-rule"></a>建立群組成員資格規則
 
-1. 使用 Azure AD 組織中全域管理員、Intune 管理員或使用者系統管理員角色的帳戶登入[Azure AD 系統管理中心](https://aad.portal.azure.com)。
-1. 搜尋並選取 [**群組**]。
+1. 使用 Azure AD 組織中全域管理員、Intune 管理員或使用者系統管理員角色的帳戶登入 [Azure AD 系統管理中心](https://aad.portal.azure.com) 。
+1. 搜尋並選取 [ **群組**]。
 1. 選取 [所有群組]****，然後選取 [新增群組]****。
 
    ![選取命令以新增群組](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
-1. 在 [**群組**] 頁面上，輸入新群組的名稱和描述。 選取使用者或裝置的**成員資格類型**，然後選取 [**新增動態查詢**]。 「規則產生器」最多支援五個運算式。 若要加入五個以上的運算式，您必須使用文字方塊。
+1. 在 [ **群組** ] 頁面上，輸入新群組的名稱和描述。 選取使用者或裝置的 **成員資格類型** ，然後選取 [ **新增動態查詢**]。 「規則產生器」最多支援五個運算式。 若要加入五個以上的運算式，您必須使用文字方塊。
 
    ![新增動態群組的成員資格規則](./media/groups-create-rule/add-dynamic-group-rule.png)
 
 1. 若要查看您的成員資格查詢可用的自訂延伸模組屬性：
    1. 選取 [**取得自訂擴充屬性**]
-   1. 輸入 [應用程式識別碼]，然後選取 [重新整理**屬性**]。
-1. 建立規則之後，請選取 [**儲存**]。
+   1. 輸入 [應用程式識別碼]，然後選取 [重新整理 **屬性**]。
+1. 建立規則之後，請選取 [ **儲存**]。
 1. 選取 [**新增群組**] 頁面上的 [**建立**] 來建立群組。
 
 如果您輸入的規則無效，說明無法處理規則的原因會顯示在入口網站的 Azure 通知中。 請仔細閱讀，以瞭解如何修正規則。
 
 ## <a name="to-update-an-existing-rule"></a>若要更新現有規則
 
-1. 使用 Azure AD 組織中全域管理員、群組系統管理員、Intune 管理員或使用者系統管理員角色的帳戶登入[Azure AD 系統管理中心](https://aad.portal.azure.com)。
+1. 使用 Azure AD 組織中全域管理員、群組系統管理員、Intune 管理員或使用者系統管理員角色的帳戶登入 [Azure AD 系統管理中心](https://aad.portal.azure.com) 。
 1. 選取 [**群組**] [  >  **所有群組**]。
 1. 選取群組以開啟其設定檔。
-1. 在群組的 [設定檔] 頁面上，選取 [**動態成員資格規則**]。 「規則產生器」最多支援五個運算式。 若要加入五個以上的運算式，您必須使用文字方塊。
+1. 在群組的 [設定檔] 頁面上，選取 [ **動態成員資格規則**]。 「規則產生器」最多支援五個運算式。 若要加入五個以上的運算式，您必須使用文字方塊。
 
    ![新增動態群組的成員資格規則](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 1. 若要查看您的成員資格規則可用的自訂延伸模組屬性：
    1. 選取 [**取得自訂擴充屬性**]
-   1. 輸入 [應用程式識別碼]，然後選取 [重新整理**屬性**]。
-1. 更新規則之後，請選取 [**儲存**]。
+   1. 輸入 [應用程式識別碼]，然後選取 [重新整理 **屬性**]。
+1. 更新規則之後，請選取 [ **儲存**]。
 
 ## <a name="turn-on-or-off-welcome-email"></a>開啟或關閉歡迎電子郵件
 
-當建立新的 Office 365 群組時，會將新增至群組的使用者傳送歡迎電子郵件通知。 之後，如果使用者或裝置的任何屬性變更，則會處理組織中的所有動態群組規則，以進行成員資格變更。 新增的使用者隨後也會收到歡迎通知。 您可以在[Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)中關閉此行為。
+建立新的 Microsoft 365 群組時，會將新增至群組的使用者傳送歡迎電子郵件通知。 之後，如果使用者或裝置的任何屬性變更，則會處理組織中的所有動態群組規則，以進行成員資格變更。 新增的使用者隨後也會收到歡迎通知。 您可以在 [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)中關閉此行為。
 
 ## <a name="check-processing-status-for-a-rule"></a>檢查規則的處理狀態
 
@@ -102,7 +102,7 @@ Azure AD 提供規則建立器，可讓您更快速建立和更新重要的規�
 - **進行中**：目前正在更新。
 - **未知**：無法抓取上次更新時間。 群組可能是新的。
 
-如果處理特定群組的成員資格規則時發生錯誤，則會在群組的 [概觀]**** 頁面頂端顯示警示。 如果無法針對組織內的所有群組處理擱置中的動態成員資格更新超過24小時，則會在 [**所有群組**] 頂端顯示警示。
+如果處理特定群組的成員資格規則時發生錯誤，則會在群組的 [概觀]**** 頁面頂端顯示警示。 如果無法針對組織內的所有群組處理擱置中的動態成員資格更新超過24小時，則會在 [ **所有群組**] 頂端顯示警示。
 
 ![處理錯誤訊息警示](./media/groups-create-rule/processing-error.png)
 

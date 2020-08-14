@@ -1,18 +1,18 @@
 ---
-title: 管理適用於伺服器的 Azure Arc (預覽) 代理程式
-description: 本文描述適用於伺服器的 Azure Arc Connected Machine 代理程式生命週期期間，您通常會執行的不同管理工作。
+title: " (預覽) 代理程式管理已啟用 Azure Arc 的伺服器"
+description: 本文說明您通常會在已啟用 Azure Arc 的伺服器生命週期期間執行的不同管理工作， (preview) 已連線的電腦代理程式。
 ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: b7fcaca2188ef0e1e3c8c65226f8b383576082ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6066226cea224b1e13262763b626c8c646a397d7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121284"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213129"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和維護 Connected Machine 代理程式
 
-在針對 Windows 或 Linux 初始部署適用於伺服器的 Azure Arc (預覽) Connected Machine 代理程式之後，如果代理程式已達到其生命週期的淘汰階段，您可能需要重新設定代理程式、升級、或是從電腦中移除。 您可以手動或自動的方式輕鬆地管理這些例行維護工作，後者可以降低操作錯誤和費用。
+在初始部署已啟用 Azure Arc 的伺服器 (預覽) 已連線的 Windows 或 Linux 電腦代理程式之後，您可能需要重新設定代理程式、將它升級，或將它從電腦中移除（如果已達到其生命週期的淘汰階段）。 您可以手動或自動的方式輕鬆地管理這些例行維護工作，後者可以降低操作錯誤和費用。
 
 ## <a name="upgrading-agent"></a>升級代理程式
 
@@ -120,7 +120,7 @@ ms.locfileid: "88121284"
 
 ## <a name="about-the-azcmagent-tool"></a>關於 Azcmagent 工具
 
-Azcmagent 工具 (Azcmagent.exe) 是用來在安裝或安裝之後修改代理程式的初始設定期間，設定適用於伺服器的 Azure Arc (預覽) Connected Machine 代理程式。 Azcmagent.exe 提供命令列參數以自訂代理程式及檢視其狀態：
+Azcmagent 工具 ( # A0) 是用來在安裝期間設定已啟用 Azure Arc 的伺服器 (預覽) 連線的機器代理程式，或在安裝後修改代理程式的初始設定。 Azcmagent.exe 提供命令列參數以自訂代理程式及檢視其狀態：
 
 * **Connect** - 將機器連線至 Azure Arc
 
@@ -136,16 +136,16 @@ Azcmagent 工具 (Azcmagent.exe) 是用來在安裝或安裝之後修改代理�
 
 * **-v 或 --verbose** - 啟用詳細資訊記錄
 
-您可以在以互動方式登入的情況下，手動執行 **Connect**、**Disconnect** 和 **Reconnect**，或使用您用來將多個代理程式上線的相同服務主體或使用 Microsoft 身分識別平台[存取權杖](../../active-directory/develop/access-tokens.md)，將其自動化。 如果您未使用服務主體向適用於伺服器的 Azure Arc (預覽) 註冊機器，請參閱下列[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)以建立服務主體。
+您可以在以互動方式登入的情況下，手動執行 **Connect**、**Disconnect** 和 **Reconnect**，或使用您用來將多個代理程式上線的相同服務主體或使用 Microsoft 身分識別平台[存取權杖](../../active-directory/develop/access-tokens.md)，將其自動化。 如果您未使用服務主體向已啟用 Azure Arc 的伺服器註冊電腦 (預覽) ，請參閱下列 [文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) 來建立服務主體。
 
 >[!NOTE]
->您必須具備 Linux 電腦的*根*存取權限，才能執行**azcmagent**。
+>您必須具備 Linux 電腦的 *根* 存取權限，才能執行 **azcmagent**。
 
 ### <a name="connect"></a>連線
 
 此參數會指定 Azure Resource Manager 中的資源，代表已在 Azure 中建立機器。 資源是在指定的訂用帳戶和資源群組中，而機器的相關資料則是儲存在 `--location` 設定所指定的 Azure 區域中。 如果未指定，預設資源名稱就是這部機器的主機名稱。
 
-接著會下載與系統指派機器身分識別對應的憑證，並儲存在本機。 完成此步驟之後，Azure Connected Machine Metadata Service 和來賓設定代理程式會開始與適用於伺服器的 Azure Arc (預覽) 進行同步處理。
+接著會下載與系統指派機器身分識別對應的憑證，並儲存在本機。 完成此步驟之後，Azure 連線的機器 Metadata Service 和來賓設定代理程式會開始與已啟用 Azure Arc 的伺服器同步處理 (preview) 。
 
 若要使用服務主體進行連線，請執行下列命令：
 
@@ -161,7 +161,7 @@ Azcmagent 工具 (Azcmagent.exe) 是用來在安裝或安裝之後修改代理�
 
 ### <a name="disconnect"></a>中斷連接
 
-此參數會指定 Azure Resource Manager 中的資源，代表已在 Azure 中刪除機器。 不會從機器刪除代理程式，必須以個別步驟來完成。 機器中斷連線之後，如果您想要向適用於伺服器的 Azure Arc (預覽) 重新註冊，請使用 `azcmagent connect`，就會在 Azure 中為其建立新的資源。
+此參數會指定 Azure Resource Manager 中的資源，代表已在 Azure 中刪除機器。 不會從機器刪除代理程式，必須以個別步驟來完成。 當電腦中斷連線後，如果您想要使用已啟用 Azure Arc 的伺服器重新註冊， (預覽) ，請使用， `azcmagent connect` 以便在 azure 中為其建立新的資源。
 
 若要使用服務主體中斷連線，請執行下列命令：
 
@@ -178,9 +178,9 @@ Azcmagent 工具 (Azcmagent.exe) 是用來在安裝或安裝之後修改代理�
 ### <a name="reconnect"></a>重新連接
 
 > [!WARNING]
-> 此 `reconnect` 命令已被取代，不應使用。 此命令將會在未來的代理程式版本中移除，而現有的代理程式將無法完成重新連接要求。 相反地，請[中斷](#disconnect)電腦的連線，然後再重新[連接](#connect)。
+> 此 `reconnect` 命令已被取代，不應使用。 此命令將會在未來的代理程式版本中移除，而現有的代理程式將無法完成重新連接要求。 相反地，請 [中斷](#disconnect) 電腦的連線，然後再重新 [連接](#connect) 。
 
-此參數會重新連線已向適用於伺服器的 Azure Arc (預覽) 註冊或已與其連線的機器。 如果機器已關閉至少 45 天讓其憑證過期，這可能是必要的。 此參數會使用所提供的驗證選項來擷取新認證，該認證與代表這部機器的 Azure Resource Manager 資源對應。
+此參數會將已註冊或已連線的電腦重新連接到已啟用 Azure Arc 的伺服器， (預覽) 。 如果機器已關閉至少 45 天讓其憑證過期，這可能是必要的。 此參數會使用所提供的驗證選項來擷取新認證，該認證與代表這部機器的 Azure Resource Manager 資源對應。
 
 此命令需要比 [Azure Connected Machine 上線](agent-overview.md#required-permissions)角色更高的權限。
 
@@ -198,7 +198,7 @@ Azcmagent 工具 (Azcmagent.exe) 是用來在安裝或安裝之後修改代理�
 
 ## <a name="remove-the-agent"></a>移除代理程式
 
-執行下列其中一種方法，從機器解除安裝 Windows 或 Linux Connected Machine 代理程式。 移除代理程式並不會向適用於伺服器的 Arc (預覽) 取消註冊機器，這是當您不再需要在 Azure 中管理機器時所執行的個別程序。
+執行下列其中一種方法，從機器解除安裝 Windows 或 Linux Connected Machine 代理程式。 移除代理程式並不會將具有已啟用 Arc 之伺服器的電腦取消註冊 (預覽) ，這是您不再需要在 Azure 中管理電腦時所執行的個別進程。
 
 ### <a name="windows-agent"></a>Windows 代理程式
 
@@ -267,9 +267,9 @@ Azcmagent 工具 (Azcmagent.exe) 是用來在安裝或安裝之後修改代理�
 
 ## <a name="unregister-machine"></a>取消註冊機器
 
-如果您打算停止使用 Azure 中的支援服務來管理機器，請執行下列步驟，向適用於伺服器的 Arc (預覽) 取消註冊機器。 您可以在從機器移除 Connected Machine 代理程式之前或之後，執行這些步驟。
+如果您打算停止使用 Azure 中的支援服務來管理電腦，請執行下列步驟，以使用已啟用 Arc 的伺服器將電腦取消註冊 (預覽) 。 您可以在從機器移除 Connected Machine 代理程式之前或之後，執行這些步驟。
 
-1. 移至 [Azure 入口網站](https://aka.ms/hybridmachineportal)來開啟適用於伺服器的 Azure Arc (預覽)。
+1. 前往 [Azure 入口網站](https://aka.ms/hybridmachineportal)，開啟啟用 Azure Arc 的伺服器 (預覽) 。
 
 2. 依序選取清單中的機器、省略號 ( **...** ) 和 [刪除]。
 

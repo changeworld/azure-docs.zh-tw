@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067353"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214217"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>使用使用者定義的路由自訂叢集輸出
 
@@ -35,10 +35,10 @@ ms.locfileid: "88067353"
 您可以使用負載平衡器或使用者定義路由的唯一 `outboundType` 類型來自訂 AKS 叢集。
 
 > [!IMPORTANT]
-> 傳出類型只會影響叢集的連出流量。 如需詳細資訊，請參閱[設定輸入控制器](ingress-basic.md)。
+> 傳出類型只會影響叢集的連出流量。 如需詳細資訊，請參閱 [設定輸入控制器](ingress-basic.md)。
 
 > [!NOTE]
-> 您可以使用自己的[路由表][byo-route-table]搭配 UDR 和 kubenet 網路功能。 請確定您的叢集身分識別 (服務主體或受控識別) 具有自訂路由表的「參與者」許可權。
+> 您可以使用自己的 [路由表][byo-route-table] 搭配 UDR 和 kubenet 網路功能。 請確定您的叢集身分識別 (服務主體或受控識別) 具有自訂路由表的「參與者」許可權。
 
 ### <a name="outbound-type-of-loadbalancer"></a>LoadBalancer 的連出類型
 
@@ -62,16 +62,17 @@ ms.locfileid: "88067353"
 
 AKS 叢集必須部署到現有的虛擬網路，並具有先前已設定的子網，因為在未使用標準負載平衡器 (SLB) 架構時，您必須建立明確的輸出。 因此，此架構需要明確地將輸出流量傳送至應用裝置，例如防火牆、閘道或 proxy，或允許網路位址轉譯 (NAT) 由指派給標準負載平衡器或設備的公用 IP 來完成。
 
-AKS 資源提供者將會部署標準負載平衡器 (SLB)。 負載平衡器不會使用任何規則進行設定，而且在[設定規則之前，不會產生任何費用](https://azure.microsoft.com/pricing/details/load-balancer/)。 AKS**不**會自動布建 SLB 前端的公用 IP 位址，也不會自動設定負載平衡器後端集區。
+AKS 資源提供者將會部署標準負載平衡器 (SLB)。 負載平衡器不會使用任何規則進行設定，而且在 [設定規則之前，不會產生任何費用](https://azure.microsoft.com/pricing/details/load-balancer/)。 AKS **不** 會自動布建 SLB 前端的公用 IP 位址，也不會自動設定負載平衡器後端集區。
 
 ## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>部署具有 UDR 和 Azure 防火牆連出類型的叢集
 
-為了說明使用使用者定義路由的輸出類型來應用叢集，可以在具有 Azure 防火牆的虛擬網路上，于自己的子網中設定叢集。 請參閱[使用 Azure 防火牆限制輸出流量範例](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)中的此範例。
+為了說明使用使用者定義路由的輸出類型來應用叢集，可以在具有 Azure 防火牆的虛擬網路上，于自己的子網中設定叢集。 請參閱 [使用 Azure 防火牆限制輸出流量範例](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)中的此範例。
 
 > [!IMPORTANT]
 > UDR 的輸出類型需要路由表中的 0.0.0.0/0 和下一個躍點目的地的路由，)  (網路虛擬裝置。
 > 路由表已經有預設的 0.0.0.0/0 到網際網路，如果沒有公用 IP 到 SNAT，那麼只要新增此路由就不會提供您輸出。 AKS 會驗證您不會建立指向網際網路的 0.0.0.0/0 路由，而是改為 NVA 或閘道等。
-
+> 
+> 使用輸出類型的 UDR 時，除非已設定 *loadbalancer* 類型的服務，否則不會建立負載平衡器公用 IP 位址。
 
 ## <a name="next-steps"></a>後續步驟
 

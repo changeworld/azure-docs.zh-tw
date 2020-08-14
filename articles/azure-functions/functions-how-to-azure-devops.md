@@ -5,17 +5,17 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 15ac5bde6029b5608ff02c35451d4041bec29796
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853342"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210223"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>使用 Azure DevOps 的持續傳遞
 
-您可以使用[Azure Pipelines](/azure/devops/pipelines/)，將您的函式自動部署至 Azure Functions 應用程式。
+您可以使用 [Azure Pipelines](/azure/devops/pipelines/)，將您的函式自動部署至 Azure Functions 應用程式。
 
 您有兩個選項可定義您的管線：
 
@@ -220,7 +220,7 @@ Azure DevOps 中的範本是預先定義的工作群組，可建立或部署應�
 
 在 Azure Pipelines 中建立應用程式的方式，取決於您應用程式的程式設計語言。 每種語言都有建立部署成品的特定組建步驟。 部署成品用來更新 Azure 中的函數應用程式。
 
-若要使用內建的組建範本，當您建立新的組建管線時，請選取 **[使用傳統編輯器**]，利用設計工具範本來建立管線。
+若要使用內建的組建範本，當您建立新的組建管線時，請選取 **[使用傳統編輯器** ]，利用設計工具範本來建立管線。
 
 ![選取 [Azure Pipelines 傳統編輯器]](media/functions-how-to-azure-devops/classic-editor.png)
 
@@ -228,13 +228,13 @@ Azure DevOps 中的範本是預先定義的工作群組，可建立或部署應�
 
 ![選取 Azure Functions 組建範本](media/functions-how-to-azure-devops/build-templates.png)
 
-在某些情況下，組建成品具有特定的資料夾結構。 您可能需要選取 [**保存路徑的根資料夾名稱**] 核取方塊。
+在某些情況下，組建成品具有特定的資料夾結構。 您可能需要選取 [ **保存路徑的根資料夾名稱** ] 核取方塊。
 
 ![要在根資料夾名稱前面加上的選項](media/functions-how-to-azure-devops/prepend-root-folder.png)
 
 #### <a name="javascript-apps"></a>JavaScript 應用程式
 
-如果您的 JavaScript 應用程式相依于 Windows 原生模組，您必須將代理程式組件區版本更新為**HOSTED VS2017**。
+如果您的 JavaScript 應用程式相依于 Windows 原生模組，您必須將代理程式組件區版本更新為 **HOSTED VS2017**。
 
 ![更新代理程式組件區版本](media/functions-how-to-azure-devops/change-agent.png)
 
@@ -252,21 +252,21 @@ Azure DevOps 中的範本是預先定義的工作群組，可建立或部署應�
 
 - 如果您的程式碼位於 GitHub：
 
-    - 您必須擁有訂用帳戶的**寫入**許可權。
+    - 您必須擁有訂用帳戶的 **寫入** 許可權。
 
     - 您必須是 Azure DevOps 中的專案系統管理員。
 
-    - 您必須具有許可權，才能建立 GitHub 個人存取權杖， (具有足夠許可權的 PAT) 。 如需詳細資訊，請參閱[GITHUB PAT 許可權需求。](https://aka.ms/azure-devops-source-repos)
+    - 您必須具有許可權，才能建立 GitHub 個人存取權杖， (具有足夠許可權的 PAT) 。 如需詳細資訊，請參閱 [GITHUB PAT 許可權需求。](https://aka.ms/azure-devops-source-repos)
 
     - 您必須有許可權可認可 GitHub 存放庫中的主要分支，才能認可自動產生的 YAML 檔案。
 
 - 如果您的程式碼位於 Azure Repos：
 
-    - 您必須擁有訂用帳戶的**寫入**許可權。
+    - 您必須擁有訂用帳戶的 **寫入** 許可權。
 
     - 您必須是 Azure DevOps 中的專案系統管理員。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[Azure Functions 總覽](functions-overview.md)。
-- 請參閱[Azure DevOps 總覽](/azure/devops/pipelines/)。
+- 請參閱 [Azure Functions 總覽](functions-overview.md)。
+- 請參閱 [Azure DevOps 總覽](/azure/devops/pipelines/)。

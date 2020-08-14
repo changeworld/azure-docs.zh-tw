@@ -4,13 +4,13 @@ description: 在 Azure Functions 上執行 Azure 函式之前，先了解如何�
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp, 80e4ff38-5174-43
+ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037026"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207439"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -31,9 +31,9 @@ Azure Functions Core Tools 可讓您使用命令提示字元或終端機，在�
 
 ## <a name="core-tools-versions"></a>Core Tools 版本
 
-Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您的本機開發環境、[選擇的語言](supported-languages.md)，以及所需的支援層級：
+Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您的本機開發環境、 [選擇的語言](supported-languages.md)，以及所需的支援層級：
 
-+ [**版本 3.x/**](#v2)2.X：支援[版本3.x 或2.x 的 Azure Functions 運行](functions-versions.md)時間。 這些版本支援[Windows](?tabs=windows#v2)、 [macOS](?tabs=macos#v2)和[Linux](?tabs=linux#v2) ，並使用平臺特定套件管理員或 npm 進行安裝。
++ [**版本 3.x/**](#v2)2.X：支援 [版本3.x 或2.x 的 Azure Functions 運行](functions-versions.md)時間。 這些版本支援 [Windows](?tabs=windows#v2)、 [macOS](?tabs=macos#v2)和 [Linux](?tabs=linux#v2) ，並使用平臺特定套件管理員或 npm 進行安裝。
 
 + 1.x**版**：支援版本1.x 的 Azure Functions 執行時間。 這個版本的工具只有在 Windows 電腦上提供支援，並且從 [npm 套件](https://www.npmjs.com/package/azure-functions-core-tools)進行安裝。
 
@@ -41,7 +41,7 @@ Azure Functions Core Tools 有三個版本。 您所使用的版本取決於您�
 
 ## <a name="prerequisites"></a>必要條件
 
-Azure Functions Core Tools 目前取決於使用您的 Azure 帳戶進行驗證的 Azure CLI。 這表示您必須在[本機上安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能夠從 Azure Functions Core Tools[發佈至 Azure](#publish) 。 
+Azure Functions Core Tools 目前取決於使用您的 Azure 帳戶進行驗證的 Azure CLI。 這表示您必須在 [本機上安裝 Azure CLI](/cli/azure/install-azure-cli) ，才能夠從 Azure Functions Core Tools [發佈至 Azure](#publish) 。 
 
 ## <a name="install-the-azure-functions-core-tools"></a>安裝 Azure Functions Core Tools
 
@@ -49,21 +49,21 @@ Azure Functions Core Tools 目前取決於使用您的 Azure 帳戶進行驗證�
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>3.x 和2.x 版
 
-2.x/2.x 版的工具會使用以 .NET Core 為基礎的 Azure Functions 執行時間。 .NET Core 支援的所有平臺都支援這個版本，包括[Windows](?tabs=windows#v2)、 [macOS](?tabs=macos#v2)和[Linux](?tabs=linux#v2)。 
+2.x/2.x 版的工具會使用以 .NET Core 為基礎的 Azure Functions 執行時間。 .NET Core 支援的所有平臺都支援這個版本，包括 [Windows](?tabs=windows#v2)、 [macOS](?tabs=macos#v2)和 [Linux](?tabs=linux#v2)。 
 
 > [!IMPORTANT]
-> 您可以使用[延伸]模組套件，略過安裝 .NET Core SDK 的需求。
+> 您可以使用 [延伸]模組套件，略過安裝 .NET Core SDK 的需求。
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-下列步驟會使用 Windows installer (MSI) 來安裝 Core Tools v3. x。 如需其他以套件為基礎的安裝程式的詳細資訊，這些是安裝 Core Tools v2. x 的必要條件，請參閱[Core tools 讀我檔案](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
+下列步驟會使用 Windows installer (MSI) 來安裝 Core Tools v3. x。 如需其他以套件為基礎的安裝程式的詳細資訊，這些是安裝 Core Tools v2. x 的必要條件，請參閱 [Core tools 讀我檔案](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
 1. 根據您的 Windows 版本，下載並執行 Core Tools 安裝程式：
 
-    - 建議使用[v3. x-Windows 64-bit](https://go.microsoft.com/fwlink/?linkid=2135274) (。 [Visual Studio Code 的調試](functions-develop-vs-code.md#debugging-functions-locally)需要64位。 ) 
+    - 建議使用[v3. x-Windows 64-bit](https://go.microsoft.com/fwlink/?linkid=2135274) (。 [Visual Studio Code 的調試](functions-develop-vs-code.md#debugging-functions-locally) 需要64位。 ) 
     - [v3. x-Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2135275)
 
-1. 如果您不打算使用[延伸](functions-bindings-register.md#extension-bundles)模組配套，請安裝[適用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
+1. 如果您不打算使用 [延伸](functions-bindings-register.md#extension-bundles)模組配套，請安裝 [適用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
@@ -89,7 +89,7 @@ Azure Functions Core Tools 目前取決於使用您的 Azure 帳戶進行驗證�
     brew install azure-functions-core-tools@2
     ```
     
-1. 如果您不打算使用[延伸](functions-bindings-register.md#extension-bundles)模組配套，請安裝[適用于 MacOS 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
+1. 如果您不打算使用 [延伸](functions-bindings-register.md#extension-bundles)模組配套，請安裝 [適用于 MacOS 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -149,7 +149,7 @@ Azure Functions Core Tools 目前取決於使用您的 Azure 帳戶進行驗證�
     sudo apt-get install azure-functions-core-tools-2
     ```
 
-1. 如果您不打算使用[延伸](functions-bindings-register.md#extension-bundles)模組配套，請安裝[適用于 Linux 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
+1. 如果您不打算使用 [延伸](functions-bindings-register.md#extension-bundles)模組配套，請安裝 [適用于 Linux 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
 
 ---
 
@@ -176,7 +176,7 @@ python
 powershell
 </pre>
 
-使用向上/向下鍵來選擇語言，然後按 Enter。 如果您打算開發 JavaScript 或 TypeScript 函式，請選擇 [ **node**]，然後選取語言。 TypeScript 有[一些額外的需求](functions-reference-node.md#typescript)。 
+使用向上/向下鍵來選擇語言，然後按 Enter。 如果您打算開發 JavaScript 或 TypeScript 函式，請選擇 [ **node**]，然後選取語言。 TypeScript 有 [一些額外的需求](functions-reference-node.md#typescript)。 
 
 JavaScript 專案的輸出看起來會像下列範例：
 
@@ -189,7 +189,7 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 </pre>
 
-`func init`支援下列版本 3.x/2. x-only 的選項，除非另有注明：
+`func init` 支援下列版本 3.x/2. x-only 的選項，除非另有注明：
 
 | 選項     | 描述                            |
 | ------------ | -------------------------------------- |
@@ -200,10 +200,10 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--language`** | 初始化語言特定專案。 當 `--worker-runtime` 設定為時，目前支援 `node` 。 選項為 `typescript` 和 `javascript` 。 您也可以使用 `--worker-runtime javascript` 或 `--worker-runtime typescript` 。  |
 | **`--managed-dependencies`**  | 安裝受控相依性。 目前，只有 PowerShell 背景工作執行時間支援這種功能。 |
 | **`--source-control`** | 控制是否要建立 Git 存放庫。 依預設不會建立存放庫。 設為 `true` 時，就會建立存放庫。 |
-| **`--worker-runtime`** | 設定專案的語言執行階段。 支援的值為： `csharp` 、 `dotnet` 、 `javascript` 、 `node` (JavaScript) 、 `powershell` 、 `python` 和 `typescript` 。 針對 JAVA，請使用[Maven](functions-reference-java.md#create-java-functions)。未設定時，系統會提示您在初始化期間選擇您的執行時間。 |
+| **`--worker-runtime`** | 設定專案的語言執行階段。 支援的值為： `csharp` 、 `dotnet` 、 `javascript` 、 `node` (JavaScript) 、 `powershell` 、 `python` 和 `typescript` 。 針對 JAVA，請使用 [Maven](functions-reference-java.md#create-java-functions)。未設定時，系統會提示您在初始化期間選擇您的執行時間。 |
 |
 > [!IMPORTANT]
-> 根據預設，2.x 版和更新版本的 Core 工具會建立 .NET 執行時間的函式應用程式專案，做為[c # 類別專案](functions-dotnet-class-library.md) ( .csproj) 。 這些 C# 專案可以與 Visual Studio 或 Visual Studio Code 搭配使用，並在測試期間以及發佈至 Azure 時進行編譯。 如果您想要改為建立和使用在 1.x 版中以及在入口網站中建立的相同 C# 指令碼 (.csx) 檔案，當您建立及部署函式時，必須包含 `--csx` 參數。
+> 根據預設，2.x 版和更新版本的 Core 工具會建立 .NET 執行時間的函式應用程式專案，做為 [c # 類別專案](functions-dotnet-class-library.md) ( .csproj) 。 這些 C# 專案可以與 Visual Studio 或 Visual Studio Code 搭配使用，並在測試期間以及發佈至 Azure 時進行編譯。 如果您想要改為建立和使用在 1.x 版中以及在入口網站中建立的相同 C# 指令碼 (.csx) 檔案，當您建立及部署函式時，必須包含 `--csx` 參數。
 
 ## <a name="register-extensions"></a>註冊延伸模組
 
@@ -217,7 +217,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 [!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
 
-若要深入瞭解，請參閱[註冊 Azure Functions](functions-bindings-register.md#extension-bundles)系結延伸模組。 您應該先將延伸模組配套新增至 host.js，然後再將系結新增至檔案 function.js。
+若要深入瞭解，請參閱 [註冊 Azure Functions](functions-bindings-register.md#extension-bundles)系結延伸模組。 您應該先將延伸模組配套新增至 host.js，然後再將系結新增至檔案 function.js。
 
 ### <a name="explicitly-install-extensions"></a>明確安裝延伸模組
 
@@ -244,13 +244,13 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 即使在使用 Microsoft Azure 儲存體模擬器進行開發時，您可能會想要使用實際的儲存體連接進行測試。 假設您已經[建立了儲存體帳戶](../storage/common/storage-account-create.md)，您可以透過下列其中一種方式取得有效的儲存體連接字串：
 
-- 從 [ [Azure 入口網站]] 中，搜尋並選取 [**儲存體帳戶**]。 
+- 從 [ [Azure 入口網站]] 中，搜尋並選取 [ **儲存體帳戶**]。 
   ![從 Azure 入口網站選取儲存體帳戶](./media/functions-run-local/select-storage-accounts.png)
   
   選取您的儲存體帳戶，選取 [**設定**] 中的 [**存取金鑰**]，然後複製其中一個**連接字串**值。
   ![從 Azure 入口網站複製連接字串](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- 使用 [Azure 儲存體總管](https://storageexplorer.com/)以連接至您的 Azure 帳戶。 在**Explorer**中，展開您的訂用帳戶，展開 [**儲存體帳戶**]，選取您的儲存體帳戶，然後複製主要或次要連接字串。
+- 使用 [Azure 儲存體總管](https://storageexplorer.com/)以連接至您的 Azure 帳戶。 在 **Explorer**中，展開您的訂用帳戶，展開 [ **儲存體帳戶**]，選取您的儲存體帳戶，然後複製主要或次要連接字串。
 
   ![透過儲存體總管複製連接字串](./media/functions-run-local/storage-explorer.png)
 
@@ -345,7 +345,7 @@ func start
 ```
 func start
 ```
-此命令必須[在虛擬環境中執行](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)。
+此命令必須 [在虛擬環境中執行](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)。
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -370,7 +370,7 @@ npm start
 | **`--no-build`** | 執行前請勿建置目前的專案。 僅適用於 dotnet 專案。 預設會設定為 false。 1.x 版不支援。 |
 | **`--cors-credentials`** | 允許跨原始來源驗證的要求 (例如，cookie 和驗證標頭) 不支援1.x 版。 |
 | **`--cors`** | 以逗號分隔的 CORS 來源清單，不含空格。 |
-| **`--language-worker`** | 用來設定語言背景工作角色的引數。 例如，您可以藉由提供[debug 埠和其他必要的引數](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)，啟用語言背景工作的偵錯工具。 1.x 版不支援。 |
+| **`--language-worker`** | 用來設定語言背景工作角色的引數。 例如，您可以藉由提供 [debug 埠和其他必要的引數](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)，啟用語言背景工作的偵錯工具。 1.x 版不支援。 |
 | **`--cert`** | 包含私密金鑰的 .pfx 檔案路徑。 僅能與 `--useHttps` 搭配使用。 1.x 版不支援。 |
 | **`--password`** | 密碼或包含 .pfx 檔案密碼的檔案。 僅能與 `--cert` 搭配使用。 1.x 版不支援。 |
 | **`--port`**, **`-p`** | 要接聽的本機連接埠。 預設值：7071。 |
@@ -397,7 +397,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 若要在本機測試您的函式，您要使用 HTTP 要求在本機伺服器上[啟動 Functions 主機](#start)並呼叫端點。 您呼叫的端點取決於函式的類型。
 
 >[!NOTE]
-> 本主題中的範例使用 cURL 工具，從終端機或命令提示字元傳送 HTTP 要求。 您可以使用您選擇的工具，將 HTTP 要求傳送至本機伺服器。 在以 Linux 為基礎的系統和 Windows 10 組建17063及更新版本上，預設會提供捲曲的工具。 在較舊的 Windows 上，您必須先下載並安裝[捲曲的工具](https://curl.haxx.se/)。
+> 本主題中的範例使用 cURL 工具，從終端機或命令提示字元傳送 HTTP 要求。 您可以使用您選擇的工具，將 HTTP 要求傳送至本機伺服器。 在以 Linux 為基礎的系統和 Windows 10 組建17063及更新版本上，預設會提供捲曲的工具。 在較舊的 Windows 上，您必須先下載並安裝 [捲曲的工具](https://curl.haxx.se/)。
 
 如需測試函式的更多一般資訊，請參閱[在 Azure Functions 中測試程式碼的策略](functions-test-a-function.md)。
 
@@ -435,7 +435,7 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data "{'name':'Azu
 
 對於 HTTP 觸發程式和 webhook 和事件方格觸發程式以外的所有函式類型，您可以呼叫管理端點，在本機測試您的函式。 在本機伺服器上使用 HTTP POST 要求來呼叫此端點會觸發函式。 
 
-若要在本機測試 Event Grid 觸發的函式，請參閱[使用檢視器 web 應用程式進行本機測試](functions-bindings-event-grid-trigger.md#local-testing-with-viewer-web-app)。
+若要在本機測試 Event Grid 觸發的函式，請參閱 [使用檢視器 web 應用程式進行本機測試](functions-bindings-event-grid-trigger.md#local-testing-with-viewer-web-app)。
 
 您可以在 POST 要求本文中選擇性地傳遞測試資料到執行程序。 這項功能類似於 Azure 入口網站中的 [測試]**** 索引標籤。
 
@@ -490,10 +490,10 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish-to-azure"></a><a name="publish"></a>發佈至 Azure
 
-此 Azure Functions Core Tools 支援兩種部署類型：透過[Zip 部署](functions-deployment-technologies.md#zip-deploy)和[部署自訂 Docker 容器](functions-deployment-technologies.md#docker-container)，將函式專案檔直接部署至函式應用程式。 您必須已[在 Azure 訂用帳戶中建立函式應用程式](functions-cli-samples.md#create)，您將在其中部署您的程式碼。 應建置需要編譯的專案，以便部署二進位檔。
+此 Azure Functions Core Tools 支援兩種部署類型：透過 [Zip 部署](functions-deployment-technologies.md#zip-deploy) 和 [部署自訂 Docker 容器](functions-deployment-technologies.md#docker-container)，將函式專案檔直接部署至函式應用程式。 您必須已 [在 Azure 訂用帳戶中建立函式應用程式](functions-cli-samples.md#create)，您將在其中部署您的程式碼。 應建置需要編譯的專案，以便部署二進位檔。
 
 >[!IMPORTANT]
->您必須將[Azure CLI](/cli/azure/install-azure-cli)安裝在本機上，才能從核心工具發行至 Azure。  
+>您必須將 [Azure CLI](/cli/azure/install-azure-cli) 安裝在本機上，才能從核心工具發行至 Azure。  
 
 專案資料夾可能包含不應發行的特定語言檔案和目錄。 排除的專案會列在根專案資料夾中的 funcignore 檔案中。     
 
@@ -505,7 +505,7 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 func azure functionapp publish <FunctionAppName>
 ```
 
-此命令會發行至 Azure 中的現有函式應用程式。 如果您嘗試發行至不存在於訂用帳戶中的，將會收到錯誤 `<FunctionAppName>` 。 若要了解如何使用 Azure CLI 從命令提示字元或終端機視窗建立函式應用程式，請參閱[建立無伺服器也可執行的函式應用程式](./scripts/functions-cli-create-serverless.md)。 根據預設，此命令會使用[遠端組建](functions-deployment-technologies.md#remote-build)，並部署您的應用程式以[從部署套件執行](run-functions-from-deployment-package.md)。 若要停用這個建議的部署模式，請使用 `--nozip` 選項。
+此命令會發行至 Azure 中的現有函式應用程式。 如果您嘗試發行至不存在於訂用帳戶中的，將會收到錯誤 `<FunctionAppName>` 。 若要了解如何使用 Azure CLI 從命令提示字元或終端機視窗建立函式應用程式，請參閱[建立無伺服器也可執行的函式應用程式](./scripts/functions-cli-create-serverless.md)。 根據預設，此命令會使用 [遠端組建](functions-deployment-technologies.md#remote-build) ，並部署您的應用程式以 [從部署套件執行](run-functions-from-deployment-package.md)。 若要停用這個建議的部署模式，請使用 `--nozip` 選項。
 
 >[!IMPORTANT]
 > 當您在 Azure 入口網站中建立函數應用程式時，它預設會使用版本3.x 的函式執行時間。 若要讓函式應用程式使用 1.x 版的執行階段，請依照[在 1.x 版上執行](functions-versions.md#creating-1x-apps)中的指示操作。
@@ -515,7 +515,7 @@ func azure functionapp publish <FunctionAppName>
 
 | 選項     | 描述                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  將 local.settings.json 中的設定發佈至 Azure，若設定已經存在，則提示進行覆寫。 如果您使用 Microsoft Azure 儲存體模擬器，請先將應用程式設定變更為[實際的儲存體連接](#get-your-storage-connection-strings)。 |
+| **`--publish-local-settings -i`** |  將 local.settings.json 中的設定發佈至 Azure，若設定已經存在，則提示進行覆寫。 如果您使用 Microsoft Azure 儲存體模擬器，請先將應用程式設定變更為 [實際的儲存體連接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 在使用 `--publish-local-settings -i` 時隱藏覆寫應用程式設定的提示。|
 
 只有2.x 版和更新版本才支援下列發行選項：
@@ -536,7 +536,7 @@ func azure functionapp publish <FunctionAppName>
 
 ### <a name="deploy-custom-container"></a>部署自訂容器
 
-Azure Functions 可讓您在[自訂的 Docker 容器](functions-deployment-technologies.md#docker-container)中部署函數專案。 如需詳細資訊，請參閱[使用自訂映像在 Linux 上建立函式](functions-create-function-linux-custom-image.md)。 自訂容器必須具有 Dockerfile。 若要建立具有 Dockerfile 的應用程式，請使用上的--Dockerfile 選項 `func init` 。
+Azure Functions 可讓您在 [自訂的 Docker 容器](functions-deployment-technologies.md#docker-container)中部署函數專案。 如需詳細資訊，請參閱[使用自訂映像在 Linux 上建立函式](functions-create-function-linux-custom-image.md)。 自訂容器必須具有 Dockerfile。 若要建立具有 Dockerfile 的應用程式，請使用上的--Dockerfile 選項 `func init` 。
 
 ```
 func deploy
@@ -576,7 +576,7 @@ func deploy
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用 Azure Functions Core Tools [Microsoft 學習模組](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/)Azure Functions Core Tools 是[開放原始碼並裝載于 GitHub 上](https://github.com/azure/azure-functions-cli)，來開發、測試和發佈 Azure Functions。  
+瞭解如何使用 Azure Functions Core Tools [Microsoft 學習模組](/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) Azure Functions Core Tools 是 [開放原始碼並裝載于 GitHub 上](https://github.com/azure/azure-functions-cli)，來開發、測試和發佈 Azure Functions。  
 若要提出錯誤或功能要求，[請開啟 GitHub 問題](https://github.com/azure/azure-functions-cli/issues)。
 
 <!-- LINKS -->

@@ -1,19 +1,19 @@
 ---
 title: 架構：全域傳輸網路架構
 titleSuffix: Azure Virtual WAN
-description: 瞭解適用于虛擬 WAN 的全球傳輸網路架構
+description: 瞭解 Azure 虛擬 WAN 如何藉由啟用雲端工作負載之間的各種內部連線，來允許全球傳輸網路架構。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: c0ab2b2f61c4aa7a83d82b0300bb28cae91992d2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056885"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212709"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全球傳輸網路架構和虛擬 WAN
 
@@ -35,7 +35,7 @@ ms.locfileid: "88056885"
 
 ## <a name="global-transit-network-with-virtual-wan"></a><a name="globalnetworktransit"></a>具有虛擬 WAN 的全球傳輸網路
 
-Azure 虛擬 WAN 是受 Microsoft 管理的雲端網路服務。 此服務所組成的所有網路元件都是由 Microsoft 託管及管理。 如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 Wan 總覽](virtual-wan-about.md)文章。
+Azure 虛擬 WAN 是受 Microsoft 管理的雲端網路服務。 此服務所組成的所有網路元件都是由 Microsoft 託管及管理。 如需有關虛擬 WAN 的詳細資訊，請參閱 [虛擬 Wan 總覽](virtual-wan-about.md) 文章。
 
 Azure 虛擬 WAN 可讓您在 Vnet、分公司、SaaS 和 PaaS 應用程式和使用者的全域分散式雲端工作負載集合之間，啟用通用的任意對任意連線，以允許全球傳輸網路架構。
 
@@ -49,7 +49,7 @@ Azure 虛擬 WAN 可讓您在 Vnet、分公司、SaaS 和 PaaS 應用程式和�
   
 ## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>中樞對中樞連線能力
 
-企業雲端使用量可以跨多個雲端區域，而且是最佳 (延遲的) ，可從最接近其實體網站和使用者的區域存取雲端。 全球傳輸網路架構的其中一個主要原則，是啟用所有雲端和內部部署網路端點之間的跨區域連線。 這表示從一個區域中連線到雲端的分支流量，可以使用[Azure 全域網路](https://azure.microsoft.com/global-infrastructure/global-network/)所啟用的中樞對中樞連線，連接到不同區域中的另一個分支或 VNet。
+企業雲端使用量可以跨多個雲端區域，而且是最佳 (延遲的) ，可從最接近其實體網站和使用者的區域存取雲端。 全球傳輸網路架構的其中一個主要原則，是啟用所有雲端和內部部署網路端點之間的跨區域連線。 這表示從一個區域中連線到雲端的分支流量，可以使用 [Azure 全域網路](https://azure.microsoft.com/global-infrastructure/global-network/)所啟用的中樞對中樞連線，連接到不同區域中的另一個分支或 VNet。
 
 ![跨區域](./media/virtual-wan-global-transit-network-architecture/figure3.png)
 
@@ -57,7 +57,7 @@ Azure 虛擬 WAN 可讓您在 Vnet、分公司、SaaS 和 PaaS 應用程式和�
 
 在單一虛擬 WAN 中啟用多個中樞時，中樞會透過中樞對中樞連結自動進行連線，因此可在分散于多個區域的分支和 Vnet 之間啟用全域連線能力。 
 
-此外，所有屬於相同虛擬 WAN 的中樞都可以與不同的地區存取和安全性原則相關聯。 如需詳細資訊，請參閱本文稍後的[安全性與原則控制](#security)。
+此外，所有屬於相同虛擬 WAN 的中樞都可以與不同的地區存取和安全性原則相關聯。 如需詳細資訊，請參閱本文稍後的 [安全性與原則控制](#security) 。
 
 ## <a name="any-to-any-connectivity"></a><a name="anytoany"></a>任何對任何連線能力
 
@@ -83,7 +83,7 @@ Azure 虛擬 WAN 支援下列全球傳輸連接路徑。 括弧中的字母會�
 
 ### <a name="branch-to-vnet-a-and-branch-to-vnet-cross-region-g"></a>分支對 VNet () 和分支對 VNet 跨區域 (g) 
 
-分支對 VNet 是 Azure 虛擬 WAN 支援的主要路徑。 此路徑可讓您將分支連線至 azure Vnet 中部署的 Azure IAAS 企業工作負載。 分支可以透過 ExpressRoute 或站對站 VPN 連線到虛擬 WAN。 流量會傳輸到透過 VNet 連線連接到虛擬 WAN 中樞的 Vnet。 虛擬 WAN 不需要明確的[閘道傳輸](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity)，因為虛擬 wan 會自動啟用閘道傳輸至分支網站。 請參閱[虛擬 Wan 合作夥伴](virtual-wan-configure-automation-providers.md)文章，以瞭解如何將 SD-WAN CPE 連線至虛擬 WAN。
+分支對 VNet 是 Azure 虛擬 WAN 支援的主要路徑。 此路徑可讓您將分支連線至 azure Vnet 中部署的 Azure IAAS 企業工作負載。 分支可以透過 ExpressRoute 或站對站 VPN 連線到虛擬 WAN。 流量會傳輸到透過 VNet 連線連接到虛擬 WAN 中樞的 Vnet。 虛擬 WAN 不需要明確的 [閘道傳輸](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) ，因為虛擬 wan 會自動啟用閘道傳輸至分支網站。 請參閱 [虛擬 Wan 合作夥伴](virtual-wan-configure-automation-providers.md) 文章，以瞭解如何將 SD-WAN CPE 連線至虛擬 WAN。
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute 全球接觸和虛擬 WAN
 
@@ -127,7 +127,7 @@ VNet 對 VNet 傳輸可讓 Vnet 彼此連線，以便互相連接跨多個 Vnet 
 
 Azure 虛擬 WAN 中樞會在混合式網路上互連所有的網路端點，而且可能會看到所有傳輸網路流量。 虛擬 WAN 中樞可以轉換成安全的虛擬中樞，方法是將 Azure 防火牆部署在 VWAN 中樞內，以啟用雲端式安全性、存取和原則控制。 Azure 防火牆管理員可以執行虛擬 WAN 中樞中的 Azure 防火牆協調流程。
 
-[Azure 防火牆管理員](https://go.microsoft.com/fwlink/?linkid=2107683)提供功能來管理和調整全球傳輸網路的安全性。 Azure 防火牆管理員透過協力廠商和 Azure 防火牆，提供集中管理路由、全域原則管理、先進的網際網路安全性服務的能力。
+[Azure 防火牆管理員](https://go.microsoft.com/fwlink/?linkid=2107683) 提供功能來管理和調整全球傳輸網路的安全性。 Azure 防火牆管理員透過協力廠商和 Azure 防火牆，提供集中管理路由、全域原則管理、先進的網際網路安全性服務的能力。
 
 ![受保護的虛擬中樞與 Azure 防火牆](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 

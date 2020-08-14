@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-javascript
-ms.openlocfilehash: 56099a7d350a29db5a57708bc87b7174cfdb3b29
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 53bd4905cf4b8829d65ce2b10c85260ff3f8926c
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079274"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210522"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>使用 Azure 佇列服務來建立和刪除 Node.js 的佇列
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "88079274"
 本指南示範如何使用 Microsoft Azure 佇列服務執行常見案例。 這些範例使用 Node.js API 撰寫。 所涵蓋的案例包括「插入」****、「查看」****、「取得」**** 和「刪除」**** 佇列訊息，以及「建立和刪除佇列」****。
 
 > [!IMPORTANT]
-> 本文是指 JavaScript 的舊版 Azure 儲存體用戶端程式庫。 若要開始使用最新版本，請參閱[快速入門：適用于 JavaScript 的 Azure 佇列儲存體用戶端程式庫](storage-quickstart-queues-nodejs.md)
+> 本文是指 JavaScript 的舊版 Azure 儲存體用戶端程式庫。 若要開始使用最新版本，請參閱 [快速入門：適用于 JavaScript 的 Azure 佇列儲存體用戶端程式庫](storage-quickstart-queues-nodejs.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -85,7 +85,7 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 
 如果建立佇列，則 `result.created` 為 true。 如果佇列已存在，則 `result.created` 為 false。
 
-### <a name="filters"></a>篩選條件
+### <a name="filters"></a>篩選器
 可以將選用性的篩選操作套用到使用 **QueueService** 執行的操作。 篩選作業可包括記錄、自動重試等等。篩選器是使用簽章實作方法的物件：
 
 ```javascript
@@ -195,7 +195,7 @@ queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, results, getResponse){
   if(!error){
     // Messages retrieved
-    for(var index in result){
+    for(var index in results){
       // text is available in result[index].messageText
       var message = results[index];
       queueSvc.deleteMessage(queueName, message.messageId, message.popReceipt, function(error, deleteResponse){
@@ -330,7 +330,7 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ## <a name="next-steps"></a>後續步驟
 了解佇列儲存體的基礎概念之後，請參考下列連結以了解有關更複雜的儲存工作。
 
-* 流覽[Azure 儲存體小組的 Blog][Azure Storage Team Blog]。
+* 流覽 [Azure 儲存體小組的 Blog][Azure Storage Team Blog]。
 * 請造訪 GitHub 上的 [Azure Storage SDK for Node][Azure Storage SDK for Node] 儲存機制。
 
 

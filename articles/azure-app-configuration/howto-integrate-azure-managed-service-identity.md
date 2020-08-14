@@ -5,24 +5,25 @@ description: 使用受控識別向 Azure 應用程式組態進行驗證
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: b1efeeef09e7c228eb8fc14de52a6beb2e9ffffe
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135465"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206826"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>使用受控識別來存取應用程式組態
 
-Azure Active Directory[受控](../active-directory/managed-identities-azure-resources/overview.md)識別可簡化雲端應用程式的秘密管理。 使用受控識別，您的程式碼可以使用為其執行所在之 Azure 服務所建立的服務主體。 您會使用受控識別，而不是使用儲存在 Azure Key Vault 中的個別認證或本機連接字串。
+Azure Active Directory [受控](../active-directory/managed-identities-azure-resources/overview.md) 識別可簡化雲端應用程式的秘密管理。 使用受控識別，您的程式碼可以使用為其執行所在之 Azure 服務所建立的服務主體。 您會使用受控識別，而不是使用儲存在 Azure Key Vault 中的個別認證或本機連接字串。
 
 Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶端程式庫都內建了受控識別支援。 雖然您不需要使用它，但受控識別不需要包含秘密的存取權杖。 您的程式碼只能使用服務端點來存取應用程式組態存放區。 您可以直接在程式碼中內嵌此 URL，而不會公開任何秘密。
 
-本文說明如何利用受控識別來存取應用程式組態。 本文會以快速入門中介紹的 Web 應用程式作為基礎。 繼續之前，請先[使用應用程式組態建立 ASP.NET Core 應用程式](./quickstart-aspnet-core-app.md)。
+本文說明如何利用受控識別來存取應用程式組態。 本文會以快速入門中介紹的 Web 應用程式作為基礎。 繼續之前，請先  [使用應用程式組態建立 ASP.NET Core 應用程式](./quickstart-aspnet-core-app.md) 。
 
-本文也會說明如何搭配應用程式組態的 Key Vault 參考來使用受控識別。 使用單一受控識別，您可以從應用程式組態順暢地存取 Key Vault 和設定值的秘密。 如果您想要探索這項功能，請先完成搭配[ASP.NET Core 使用 Key Vault 參考](./use-key-vault-references-dotnet-core.md)。
+本文也會說明如何搭配應用程式組態的 Key Vault 參考來使用受控識別。 使用單一受控識別，您可以從應用程式組態順暢地存取 Key Vault 和設定值的秘密。 如果您想要探索這項功能，請先完成搭配 [ASP.NET Core 使用 Key Vault 參考](./use-key-vault-references-dotnet-core.md) 。
 
 您可以使用任何程式碼編輯器來進行本教學課程中的步驟。 Windows、macOS 及 Linux 平台上都有提供的 [Visual Studio Code](https://code.visualstudio.com/) 是一個絕佳的選項。
 
@@ -46,7 +47,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 若要在入口網站中設定受控識別，您必須先建立應用程式，然後再啟用此功能。
 
-1. 如往常一般，在[Azure 入口網站](https://portal.azure.com)中建立應用程式服務實例。 在入口網站中移至該應用程式。
+1. 如往常一般，在 [Azure 入口網站](https://portal.azure.com) 中建立應用程式服務實例。 在入口網站中移至該應用程式。
 
 1. 在左側窗格中，向下捲動到 [設定]**** 群組，然後選取 [身分識別]****。
 
@@ -58,13 +59,13 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
 ## <a name="grant-access-to-app-configuration"></a>授與應用程式設定的存取權
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [**所有資源**]，然後選取您在快速入門中建立的應用程式組態存放區。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [ **所有資源** ]，然後選取您在快速入門中建立的應用程式組態存放區。
 
 1. 選取 [存取控制 (IAM)]。
 
 1. 在 [檢查存取權]**** 索引標籤上，選取 [新增角色指派]**** 卡片 UI 中的 [新增]****。
 
-1. 在 [**角色**] 下，選取 [**應用程式組態資料讀取器**]。 在 [存取權指派對象為]**** 底下，選取 [系統指派的受控識別]**** 底下的 [App Service]****。
+1. 在 [ **角色**] 下，選取 [ **應用程式組態資料讀取器**]。 在 [存取權指派對象為]**** 底下，選取 [系統指派的受控識別]**** 底下的 [App Service]****。
 
 1. 在 [訂用帳戶]**** 底下，選取您的 Azure 訂用帳戶。 選取您應用程式的 App Service 資源。
 
@@ -72,17 +73,17 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
 
     ![新增受控識別](./media/add-managed-identity.png)
 
-1. 選擇性：如果您也想要授與 Key Vault 的存取權，請遵循[使用受控識別提供 Key Vault 驗證](https://docs.microsoft.com/azure/key-vault/managed-identity)中的指示。
+1. 選擇性：如果您也想要授與 Key Vault 的存取權，請遵循 [使用受控識別提供 Key Vault 驗證](https://docs.microsoft.com/azure/key-vault/managed-identity)中的指示。
 
 ## <a name="use-a-managed-identity"></a>建立受控識別
 
-1. 新增對*Azure 身分識別*套件的參考：
+1. 新增對 *Azure 身分識別* 套件的參考：
 
     ```cli
     dotnet add package Azure.Identity
     ```
 
-1. 尋找應用程式組態存放區的端點。 此 URL 會列在 [Azure 入口網站中存放區的 [**存取金鑰**] 索引標籤上。
+1. 尋找應用程式組態存放區的端點。 此 URL 會列在 [Azure 入口網站中存放區的 [ **存取金鑰** ] 索引標籤上。
 
 1. 開啟 *appsettings.json*，然後新增下列指令碼。 以 *\<service_endpoint>* 您應用程式組態存放區的 URL 取代（包括括弧）。
 
@@ -92,7 +93,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     }
     ```
 
-1. 開啟*Program.cs*，並加入 `Azure.Identity` 和命名空間的參考 `Microsoft.Azure.Services.AppAuthentication` ：
+1. 開啟 *Program.cs*，並加入 `Azure.Identity` 和命名空間的參考 `Microsoft.Azure.Services.AppAuthentication` ：
 
     ```csharp-interactive
     using Azure.Identity;
@@ -133,7 +134,7 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     ```
     ---
 
-1. 若要同時使用應用程式組態值和 Key Vault 參考，請更新*Program.cs* ，如下所示。 這段程式碼會使用建立新的 `KeyVaultClient` `AzureServiceTokenProvider` ，並將此參考傳遞給 `UseAzureKeyVault` 方法的呼叫。
+1. 若要同時使用應用程式組態值和 Key Vault 參考，請更新 *Program.cs* ，如下所示。 這段程式碼會使用建立新的 `KeyVaultClient` `AzureServiceTokenProvider` ，並將此參考傳遞給 `UseAzureKeyVault` 方法的呼叫。
 
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
@@ -184,13 +185,13 @@ Azure 應用程式組態及其 .NET Core、.NET Framework 和 JAVA 春季用戶�
     您現在可以存取 Key Vault 參考，就像任何其他應用程式組態金鑰一樣。 Config 提供者會使用 `KeyVaultClient` 您設定的來驗證 Key Vault 並取出值。
 
 > [!NOTE]
-> `ManagedIdentityCredential`僅支援受控識別驗證。 在本機環境中無法使用。 如果您想要在本機執行程式碼，請考慮使用 `DefaultAzureCredential` ，它也支援服務主體驗證。 如需詳細資訊，請參閱[連結](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential)。
+> `ManagedIdentityCredential` 僅支援受控識別驗證。 在本機環境中無法使用。 如果您想要在本機執行程式碼，請考慮使用 `DefaultAzureCredential` ，它也支援服務主體驗證。 如需詳細資訊，請參閱 [連結](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential) 。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>從本機 Git 進行部署
 
-若要使用 Kudu 組建伺服器為您的應用程式啟用本機 Git 部署，最簡單的方式是使用[Azure Cloud Shell](https://shell.azure.com)。
+若要使用 Kudu 組建伺服器為您的應用程式啟用本機 Git 部署，最簡單的方式是使用 [Azure Cloud Shell](https://shell.azure.com)。
 
 ### <a name="configure-a-deployment-user"></a>設定部署使用者
 
@@ -221,7 +222,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 
 ### <a name="deploy-your-project"></a>部署您的專案
 
-在_本機終端機視窗_中，將 Azure 遠端新增至您的本機 Git 存放庫。 將取代 _\<url>_ 為您從[啟用本機 Git 與 Kudu](#enable-local-git-with-kudu)中所獲得的 Git 遠端 URL。
+在 _本機終端機視窗_中，將 Azure 遠端新增至您的本機 Git 存放庫。 將取代 _\<url>_ 為您從 [啟用本機 Git 與 Kudu](#enable-local-git-with-kudu)中所獲得的 Git 遠端 URL。
 
 ```bash
 git remote add azure <url>
@@ -247,7 +248,7 @@ http://<app_name>.azurewebsites.net
 
 適用於 .NET Framework 和 Java Spring 的應用程式設定提供者也有內建的受控識別支援。 當您設定其中一個提供者時，您可以使用存放區的 URL 端點，而不是它的完整連接字串。
 
-例如，您可以更新在快速入門中建立的 .NET Framework 主控台應用程式，以在*App.config*檔案中指定下列設定：
+例如，您可以更新在快速入門中建立的 .NET Framework 主控台應用程式，以在 *App.config* 檔案中指定下列設定：
 
 ```xml
     <configSections>

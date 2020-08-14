@@ -3,14 +3,15 @@ title: Azure Functions 的通知中樞繫結
 description: 了解如何在 Azure Functions 中使用「Azure 通知中樞」繫結。
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 97e43d2348ccbe9bf0aebfd7647f6cc34906948c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540361"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212218"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions 的通知中樞輸出繫結
 
@@ -21,7 +22,7 @@ ms.locfileid: "86540361"
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!IMPORTANT]
-> Google 已[淘汰 Google 雲端通訊（GCM），取而代之的是 Firebase 雲端通訊（FCM）](https://developers.google.com/cloud-messaging/faq)。 此輸出系結不支援 FCM。 若要使用 FCM 傳送通知，請直接在您的函式中使用[FIREBASE API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) ，或使用[範本通知](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。
+> Google 已 [淘汰 Google 雲端通訊 (GCM) ，改用 Firebase 雲端通訊 (FCM) ](https://developers.google.com/cloud-messaging/faq)。 此輸出系結不支援 FCM。 若要使用 FCM 傳送通知，請直接在您的函式中使用 [FIREBASE API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) ，或使用 [範本通知](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。
 
 ## <a name="packages---functions-1x"></a>套件 - Functions 1.x
 
@@ -243,9 +244,9 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 屬性的建構函式參數和屬性會在[組態](#configuration)一節中加以敘述。
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
-下表說明您在*function.json* file 和 attribute 設定的系結設定屬性 `NotificationHub` ：
+下表說明您在 *function.json* file 和 attribute 設定的系結設定屬性 `NotificationHub` ：
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
@@ -255,7 +256,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 |**tagExpression** |**TagExpression** | 標籤運算式可讓您指定將通知傳遞到一組裝置，這些裝置已註冊要接收與標籤運算式相符的通知。  如需詳細資訊，請參閱 [路由與標籤運算式](../notification-hubs/notification-hubs-tags-segment-push-message.md)。 |
 |**hubName** | **HubName** | Azure 入口網站中通知中樞資源的名稱。 |
 |**connection** | **ConnectionStringSetting** | 包含「通知中樞」連接字串的應用程式設定名稱。  必須針對通知中樞將連接字串設為 DefaultFullSharedAccessSignature** 值。 請參閱本文稍後的[連線字串設定](#connection-string-setup)。|
-|**平台** | **平台** | 此平台屬性指出作為您通知目標的用戶端平台。 依照預設，如果輸出繫結中省略平台屬性，範本通知可用來以「Azure 通知中樞」上所設定的任何平台為目標。 如需有關一般使用範本搭配「Azure 通知中樞」來傳送跨平台通知的詳細資訊，請參閱[範本](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。 platform**** 在設定時必須是以下其中一個值： <ul><li><code>apns</code>&mdash;Apple Push Notification Service。 如需有關設定 APNS 的通知中樞及在用戶端應用程式中接收通知的詳細資訊，請參閱[使用 Azure 通知中樞將推播通知傳送至 iOS](../notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started.md)。</li><li><code>adm</code>&mdash;[Amazon 裝置通訊](https://developer.amazon.com/device-messaging)。 如果有關設定適用於 ADM 的通知中樞及在 Kindle App 中接收通知的詳細資訊，請參閱[開始使用適用於 Kindle 應用程式的通知中樞](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)。</li><li><code>wns</code>&mdash;以 Windows 平台為目標的 [Windows 推播通知服務](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)。 WNS 也支援 Windows Phone 8.1 和更新版本。 如需詳細資訊，請參閱[開始使用適用於 Windows 通用平台應用程式的通知中樞](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。</li><li><code>mpns</code>&mdash;[Microsoft 推播通知服務](/previous-versions/windows/apps/ff402558(v=vs.105))。 此平台支援 Windows Phone 8 和舊版 Windows Phone 平台。 如需詳細資訊，請參閱[在 Windows Phone 上使用 Azure 通知中樞傳送推播通知](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)。</li></ul> |
+|**平台** | **平台** | 此平台屬性指出作為您通知目標的用戶端平台。 依照預設，如果輸出繫結中省略平台屬性，範本通知可用來以「Azure 通知中樞」上所設定的任何平台為目標。 如需有關一般使用範本搭配「Azure 通知中樞」來傳送跨平台通知的詳細資訊，請參閱[範本](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。 platform**** 在設定時必須是以下其中一個值： <ul><li><code>apns</code>&mdash;Apple Push Notification Service。 如需有關設定 APNS 的通知中樞及在用戶端應用程式中接收通知的詳細資訊，請參閱 [使用 Azure 通知中樞將推播通知傳送至 iOS](../notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started.md)。</li><li><code>adm</code>&mdash;[Amazon 裝置通訊](https://developer.amazon.com/device-messaging)。 如果有關設定適用於 ADM 的通知中樞及在 Kindle App 中接收通知的詳細資訊，請參閱[開始使用適用於 Kindle 應用程式的通知中樞](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)。</li><li><code>wns</code>&mdash;以 Windows 平台為目標的 [Windows 推播通知服務](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)。 WNS 也支援 Windows Phone 8.1 和更新版本。 如需詳細資訊，請參閱[開始使用適用於 Windows 通用平台應用程式的通知中樞](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。</li><li><code>mpns</code>&mdash;[Microsoft 推播通知服務](/previous-versions/windows/apps/ff402558(v=vs.105))。 此平台支援 Windows Phone 8 和舊版 Windows Phone 平台。 如需詳細資訊，請參閱[在 Windows Phone 上使用 Azure 通知中樞傳送推播通知](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)。</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

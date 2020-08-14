@@ -3,15 +3,16 @@ title: 在 .NET Azure Functions 中使用相依性插入
 description: 了解如何在 .NET 函式中使用相依性插入來註冊和使用服務
 author: craigshoemaker
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 05b845f3284ea95dd2be595c4d59767e45149306
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ee3caef30c573763db56f89aa4900aa62b8a436a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500459"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206097"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 
@@ -125,7 +126,7 @@ Azure Functions 應用程式提供與 [ASP.NET 相依性插入](/aspnet/core/fun
 
 ## <a name="logging-services"></a>記錄服務
 
-如果您需要自己的記錄提供者，請將自訂類型註冊為的實例 [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，這可透過[Microsoft Extensions. 記錄抽象](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/)NuGet 封裝取得。
+如果您需要自己的記錄提供者，請將自訂類型註冊為的實例 [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，這可透過 [Microsoft Extensions. 記錄抽象](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet 封裝取得。
 
 Azure Functions 會自動新增 Application Insights。
 

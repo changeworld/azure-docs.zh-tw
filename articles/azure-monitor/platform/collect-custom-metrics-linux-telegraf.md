@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 57eb005109b97a423f9218ee6a47ce5bb06c3853
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505341"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207806"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>使用 InfluxData Telegraf 代理程式收集 Linux VM 的自訂計量
 
@@ -34,17 +34,17 @@ ms.locfileid: "86505341"
 登入 [Azure 入口網站](https://portal.azure.com)。
 
 > [!NOTE]  
-> 如果您想要遷移傳統警示規則，並使用現有的 Linux 虛擬機器，請確定虛擬機器的 [系統指派的身分識別] 設定為 [**開啟**]。
+> 如果您想要遷移傳統警示規則，並使用現有的 Linux 虛擬機器，請確定虛擬機器的 [系統指派的身分識別] 設定為 [ **開啟**]。
 
 建立新的 Linux VM： 
 
-1. 從左側導覽窗格中，選取 [**建立資源**] 選項。 
+1. 從左側導覽窗格中，選取 [ **建立資源** ] 選項。 
 1. 搜尋 [虛擬機器]****。  
 1. 選取 [Ubuntu 16.04 LTS]****，然後選取 [建立]****。 
-1. 提供 VM 名稱，例如**MyTelegrafVM**。  
-1. 讓磁碟類型保持為 **SSD**。 然後提供使用者**名稱**，例如**azureuser**。 
-1. 針對 [**驗證類型**]，選取 [**密碼**]。 然後輸入密碼，以便稍後用來透過 SSH 連線到此 VM。 
-1. 選擇**建立新的資源群組**。 然後提供名稱，例如**myResourceGroup**。 選擇您的**位置**。 然後選取 [確定]。 
+1. 提供 VM 名稱，例如 **MyTelegrafVM**。  
+1. 讓磁碟類型保持為 **SSD**。 然後提供使用者 **名稱**，例如 **azureuser**。 
+1. 針對 [ **驗證類型**]，選取 [ **密碼**]。 然後輸入密碼，以便稍後用來透過 SSH 連線到此 VM。 
+1. 選擇 **建立新的資源群組**。 然後提供名稱，例如 **myResourceGroup**。 選擇您的 **位置**。 然後選取 [確定]。 
 
     ![建立 Ubuntu VM](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -52,13 +52,13 @@ ms.locfileid: "86505341"
 
     ![虛擬機器大小 Telegraf 代理程式概觀](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. 在 [**網路**網路安全性群組] 的 [**設定**] 頁面上  >  **Network Security Group**  >  ，**選取 [公用輸入埠**]，選取 [ **HTTP**和**SSH （22）**]。 保留其餘的預設值，然後選取 [確定]****。 
+1. 在 [**網路**網路安全性群組] 的 [**設定**] 頁面上  >  **Network Security Group**  >  **，選取 [公用輸入埠**]，選取 [ **HTTP**和**SSH (22) **]。 保留其餘的預設值，然後選取 [確定]****。 
 
 1. 在 [摘要] 頁面上選取 [建立]****，以開始進行 VM 部署。 
 
 1. VM 會釘選到 Azure 入口網站儀表板。 完成部署後，VM 摘要就會自動開啟。 
 
-1. 在 [VM] 窗格中，流覽至 [身分**識別**] 索引標籤。請確定您的 VM 已將系統指派的身分識別設定為 [**開啟**]。 
+1. 在 [VM] 窗格中，流覽至 [身分 **識別** ] 索引標籤。請確定您的 VM 已將系統指派的身分識別設定為 [ **開啟**]。 
  
     ![Telegraf VM 身分識別預覽](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
@@ -113,7 +113,7 @@ sudo systemctl start telegraf
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。 
 
-1. 流覽至新的 [**監視**] 索引標籤。然後選取 [**計量**]。  
+1. 流覽至新的 [ **監視** ] 索引標籤。然後選取 [ **計量**]。  
 
      ![監視器 - 計量 (預覽)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
@@ -127,13 +127,13 @@ sudo systemctl start telegraf
 
 ## <a name="additional-configuration"></a>其他設定 
 
-上述逐步解說提供如何設定 Telegraf 代理程式以從幾個基本輸入外掛程式收集計量的資訊。Telegraf 代理程式支援超過150的輸入外掛程式，並提供一些支援的其他設定選項。 InfluxData 已發佈[支援的外掛程式清單](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) \(英文\) 以及[如何設定](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/) \(英文\) 的指示。  
+上述逐步解說提供如何設定 Telegraf 代理程式以從幾個基本輸入外掛程式收集計量的資訊。Telegraf 代理程式支援超過150的輸入外掛程式，並提供一些支援的其他設定選項。 InfluxData 已發佈[支援的外掛程式清單](https://docs.influxdata.com/telegraf/v1.15/plugins/inputs/) \(英文\) 以及[如何設定](https://docs.influxdata.com/telegraf/v1.15/administration/configuration/) \(英文\) 的指示。  
 
 此外，在此逐步解說中，您使用了 Telegraf 代理程式發出該代理程式部署所在 VM 的相關計量。 Telegraf 代理程式也可用來作為其他資源計量的收集器與轉寄站。 若要了解如何設定代理程式發出其他 Azure 資源的計量，請參閱 [Telegraf 的 Azure 監視器自訂計量輸出](https://github.com/influxdata/telegraf/blob/fb704500386214655e2adb53b6eb6b15f7a6c694/plugins/outputs/azure_monitor/README.md) \(英文\)。  
 
 ## <a name="clean-up-resources"></a>清除資源 
 
-若不再需要，您可以刪除資源群組、虛擬機器和所有相關資源。 若要這麼做，請選取虛擬機器的資源群組，然後選取 [**刪除**]。 然後確認要刪除的資源群組名稱。 
+若不再需要，您可以刪除資源群組、虛擬機器和所有相關資源。 若要這麼做，請選取虛擬機器的資源群組，然後選取 [ **刪除**]。 然後確認要刪除的資源群組名稱。 
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解[自訂計量](metrics-custom-overview.md)。

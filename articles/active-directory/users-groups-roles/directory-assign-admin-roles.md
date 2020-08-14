@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 06/15/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09050bc6895076994baf1c98c65aa87672a5652e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 03a51cc8aa86f40b5333bd79e95e6d02be1adfc4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066061"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213847"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -89,11 +89,11 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 > [!IMPORTANT]
 > 對於可存取機密或私人資訊或 Azure Active Directory 內外重要組態的人員，具備此角色的使用者可以變更認證。 變更使用者的認證表示可承擔該使用者身分識別和權限。 例如：
 >
->- 應用程式註冊和企業應用程式擁有者，他們可以管理他們自己的應用程式認證。 這些應用程式在 Azure AD 中可能有特殊權限，而在其他地方未授與驗證系統管理員。 驗證管理員可以透過此路徑承擔應用程式擁有者的身分識別，然後藉由更新應用程式的認證，進一步承擔特殊權限應用程式的身分識別。
->- Azure 訂用帳戶擁有者，他們具有機密或私人資訊或者 Azure 中重要組態的存取權。
->- 安全性群組和 Office 365 群組擁有者，他們可以管理群組成員資格。 這個群組可以存取機密或私人資訊或者 Azure AD 和其他位置中的重要組態。
->- Azure AD 外部其他服務 (例如，Exchange Online、Office 安全性與合規性中心和人力資源系統) 中的系統管理員。
->- 非系統管理員，例如主管、法律顧問和人力資源員工，他們可以存取機密或私人資訊。
+>* 應用程式註冊和企業應用程式擁有者，他們可以管理他們自己的應用程式認證。 這些應用程式在 Azure AD 中可能有特殊權限，而在其他地方未授與驗證系統管理員。 驗證管理員可以透過此路徑承擔應用程式擁有者的身分識別，然後藉由更新應用程式的認證，進一步承擔特殊權限應用程式的身分識別。
+>* Azure 訂用帳戶擁有者，他們具有機密或私人資訊或者 Azure 中重要組態的存取權。
+>* 安全性群組和 Microsoft 365 群組擁有者，他們可以管理群組成員資格。 這個群組可以存取機密或私人資訊或者 Azure AD 和其他位置中的重要組態。
+>* Azure AD 外部其他服務 (例如，Exchange Online、Office 安全性與合規性中心和人力資源系統) 中的系統管理員。
+>* 非系統管理員，例如主管、法律顧問和人力資源員工，他們可以存取機密或私人資訊。
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps 管理員](#azure-devops-administrator-permissions)
 
@@ -195,7 +195,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 請勿使用。 此角色會自動指派給 Azure AD Connect 服務，不適用於也不支援任何其他用途。
 
 ### <a name="directory-writers"></a>[目錄寫入者](#directory-writers-permissions)
-此角色的使用者可以讀取和更新使用者、群組和服務主體的基本資訊。 僅將此角色指派給不支援[同意架構](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的應用程式。 不應將它指派給任何使用者。
+此角色的使用者可以讀取和更新使用者、群組和服務主體的基本資訊。 僅將此角色指派給不支援 [同意架構](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的應用程式。 不應將它指派給任何使用者。
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365 管理員/CRM 管理員](#crm-service-administrator-permissions)
 
@@ -206,7 +206,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="exchange-administrator"></a>[Exchange 管理員](#exchange-service-administrator-permissions)
 
-此角色的使用者具有 Microsoft Exchange Online (如其存在) 的全域權限。 此外，也具備建立和管理所有「Office 365 群組」、管理支援票證，以及監視服務健康情況的能力。 如需詳細資訊，請參閱 [關於 Office 365 管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)。
+此角色的使用者具有 Microsoft Exchange Online (如其存在) 的全域權限。 也能夠建立和管理所有的 Microsoft 365 群組、管理支援票證，以及監視服務健康情況。 如需詳細資訊，請參閱 [關於 Office 365 管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)。
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，會將此角色識別為「Exchange 服務管理員」。 在 [Azure 入口網站](https://portal.azure.com)中則是「Exchange 管理員」。 在 [Exchange 系統管理中心](https://go.microsoft.com/fwlink/p/?LinkID=529144)中則是「Exchange Online 管理員」。
@@ -229,7 +229,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 ### <a name="global-administrator--company-administrator"></a>[全域管理員 / 公司管理員](#company-administrator-permissions)
 
-具有此角色的使用者可以存取 Azure Active Directory 中所有的系統管理功能，以及使用 Azure Active Directory 身分識別的服務，例如 Microsoft 365 資訊安全中心、Microsoft 365 合規性中心、Exchange Online、SharePoint Online 和商務用 Skype Online。 此外，全域管理員可以[提升其存取權](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)，以管理所有 Azure 訂用帳戶和管理群組。 這可讓全域管理員使用各自的 Azure AD 租使用者，取得所有 Azure 資源的完整存取權。 註冊 Azure AD 組織的人員會變成全域管理員。 您的公司可以有多位全域管理員。 全域系統管理員可以為任何使用者和所有其他系統管理員重設密碼。
+具有此角色的使用者可以存取 Azure Active Directory 中所有的系統管理功能，以及使用 Azure Active Directory 身分識別的服務，例如 Microsoft 365 資訊安全中心、Microsoft 365 合規性中心、Exchange Online、SharePoint Online 和商務用 Skype Online。 此外，全域管理員可以 [提升其存取權](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin) ，以管理所有 Azure 訂用帳戶和管理群組。 這可讓全域管理員使用各自的 Azure AD 租使用者，取得所有 Azure 資源的完整存取權。 註冊 Azure AD 組織的人員會變成全域管理員。 您的公司可以有多位全域管理員。 全域系統管理員可以為任何使用者和所有其他系統管理員重設密碼。
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，會將此角色識別為「公司管理員」。 它是 [Azure 入口網站](https://portal.azure.com)中的「全域管理員」。
@@ -243,7 +243,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 > [!NOTE]
 > 全域讀取者角色現在有幾項限制：
 >
->- [Onedrive 系統管理中心](https://admin.onedrive.com/)-onedrive 系統管理中心不支援全域讀取者角色
+>- [Onedrive 系統管理中心](https://admin.onedrive.com/) -onedrive 系統管理中心不支援全域讀取者角色
 >- [M365 系統管理中心](https://admin.microsoft.com/Adminportal/Home#/homepage) - 全域讀取者無法讀取客戶加密箱要求。 在 M365 系統管理中心的左窗格中，您找不到 [支援] 底下的 [客戶加密箱要求] 索引標籤。
 >- [Office 安全性與合規性中心](https://sip.protection.office.com/homepage) - 全域讀取者無法讀取 SCC 稽核記錄、進行內容搜尋，或查看安全分數。
 >- [Teams 系統管理中心](https://admin.teams.microsoft.com) - 全域讀取者無法讀取 **Teams 生命週期**、**分析與報告**、**IP 電話裝置管理**和**應用程式目錄**。
@@ -277,7 +277,7 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 >
 >- 應用程式註冊和企業應用程式擁有者，他們可以管理他們自己的應用程式認證。 這些應用程式在 Azure AD 中可能有特殊權限，而在其他地方未授與技術支援中心系統管理員。 技術支援中心系統管理員可以透過此路徑承擔應用程式擁有者的身分識別，然後藉由更新應用程式的認證，進一步承擔特殊權限應用程式的身分識別。
 >- Azure 訂用帳戶擁有者，他們具有機密或私人資訊或者 Azure 中重要組態的存取權。
->- 安全性群組和 Office 365 群組擁有者，他們可以管理群組成員資格。 這個群組可以存取機密或私人資訊或者 Azure AD 和其他位置中的重要組態。
+>- 安全性群組和 Microsoft 365 群組擁有者，他們可以管理群組成員資格。 這個群組可以存取機密或私人資訊或者 Azure AD 和其他位置中的重要組態。
 >- Azure AD 外部其他服務 (例如，Exchange Online、Office 安全性與合規性中心和人力資源系統) 中的系統管理員。
 >- 非系統管理員，例如主管、法律顧問和人力資源員工，他們可以存取機密或私人資訊。
 
@@ -290,10 +290,10 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 具備此角色的使用者可以啟用、設定及管理與在 Azure AD 中啟用混合式身分識別相關的服務和設定。 此角色能夠將 Azure AD 設定為三種支援的驗證方法之一 (密碼雜湊同步處理 (PHS)、傳遞驗證 (PTA) 或同盟 (AD FS 或第三方同盟提供者))，以及部署相關的內部部署基礎結構來啟用這些驗證方法。 內部部署基礎結構包含佈建和 PTA 代理程式。 此角色能夠啟用無縫單一登入 (SSO)，以在非 Windows 10 裝置或非 Windows Server 2016 電腦上啟用無縫驗證。 此外，此角色還能夠查看登入記錄，以及存取健康情況和分析，以供監視和疑難排解之用。 
 
 ### <a name="insights-administrator"></a>[Insights 管理員](#insights-administrator-permissions)
-此角色中的使用者可以存取[M365 Insights 應用程式](https://go.microsoft.com/fwlink/?linkid=2129521)中的一組完整系統管理功能。 此角色能夠讀取目錄資訊、監視服務健全狀況、檔案支援票證，以及存取深入解析系統管理員設定的層面。
+此角色中的使用者可以存取 [M365 Insights 應用程式](https://go.microsoft.com/fwlink/?linkid=2129521)中的一組完整系統管理功能。 此角色能夠讀取目錄資訊、監視服務健全狀況、檔案支援票證，以及存取深入解析系統管理員設定的層面。
 
 ### <a name="insights-business-leader"></a>[深入解析商務領導人](#insights-business-leader-permissions)
-此角色中的使用者可以透過[M365 insights 應用程式](https://go.microsoft.com/fwlink/?linkid=2129521)存取一組儀表板和深入解析。 這包括所有儀表板的完整存取權，以及呈現的深入解析和資料探索功能。 此角色中的使用者沒有存取產品設定的許可權，這是 Insights 管理員角色的責任。
+此角色中的使用者可以透過 [M365 insights 應用程式](https://go.microsoft.com/fwlink/?linkid=2129521)存取一組儀表板和深入解析。 這包括所有儀表板的完整存取權，以及呈現的深入解析和資料探索功能。 此角色中的使用者沒有存取產品設定的許可權，這是 Insights 管理員角色的責任。
 
 ### <a name="intune-administrator"></a>[Intune 管理員](#intune-service-administrator-permissions)
 
@@ -324,14 +324,14 @@ Azure AD 可能已新增一或多個角色，以提供更細微的權限，但�
 
 請勿使用。 此角色會從 Commerce 自動指派，不適用於、也不支援任何其他用途。 請參閱下面的詳細資料。
 
-新式商務使用者角色會授與特定使用者存取 Microsoft 365 系統管理中心的許可權，並查看**首頁**、**帳單**和**支援**的左側導覽專案。 這些區域中可用的內容是由指派給使用者的[商務專用角色](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles)所控制，以管理其為自己或貴組織所購買的產品。 這可能包括支付帳單之類的工作，或對計費帳戶和帳單設定檔的存取權。 
+新式商務使用者角色會授與特定使用者存取 Microsoft 365 系統管理中心的許可權，並查看 **首頁**、 **帳單**和 **支援**的左側導覽專案。 這些區域中可用的內容是由指派給使用者的[商務專用角色](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-mca-roles)所控制，以管理其為自己或貴組織所購買的產品。 這可能包括支付帳單之類的工作，或對計費帳戶和帳單設定檔的存取權。 
 
 具有新式商務使用者角色的使用者，在其他 Microsoft 購買系統中通常會有管理許可權，但沒有全域管理員或計費管理員用來存取系統管理中心的角色。 
 
 **何時會指派新式商務使用者角色？**
 
 * **Microsoft 365 系統管理中心的自助式採購** - 自助式採購讓使用者有機會藉由自行購買或註冊來試用新產品。 這些產品都是在系統管理中心進行管理。 進行自助式購買的使用者會被指派商務系統中的角色，以及現代化的商務使用者角色，讓他們可以在系統管理中心管理他們的購買專案。 系統管理員可透過 [PowerShell](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide) 來封鎖自助式採購 (針對 Power BI、Power Apps、Power Automate)。 如需詳細資訊，請參閱[自助式購買常見問題集](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide)。  
-* **從 Microsoft 商業 Marketplace 購買**-類似于自助購買，當使用者從 Microsoft AppSource 或 Azure Marketplace 購買產品或服務時，如果他們沒有全域管理員或計費管理員角色，則會指派新式商務使用者角色。 在某些情況下，使用者可能會遭到封鎖而無法進行採購。 如需詳細資訊，請參閱 [Microsoft 商業市集](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)。
+* **從 Microsoft 商業 Marketplace 購買**  -類似于自助購買，當使用者從 Microsoft AppSource 或 Azure Marketplace 購買產品或服務時，如果他們沒有全域管理員或計費管理員角色，則會指派新式商務使用者角色。 在某些情況下，使用者可能會遭到封鎖而無法進行採購。 如需詳細資訊，請參閱 [Microsoft 商業市集](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase)。
 * **Microsoft 的提案** – 提案是來自 Microsoft 的正式報價，可供貴組織購買 Microsoft 產品和服務。 當接受提案的人員在 Azure AD 中沒有全域系統管理員或計費管理員角色時，他們會獲派商業特定角色來完成提案和現代化商務使用者角色，以存取系統管理中心。 當他們存取系統管理中心時，只能使用其商務專用角色所授權的功能。
 * **商務專用角色** – 某些使用者會被指派商務專用角色。 如果使用者不是全域或計費管理員，他們會取得現代化的商務使用者角色，讓他們能夠存取系統管理中心。  
 
@@ -467,7 +467,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 ### <a name="sharepoint-administrator"></a>[SharePoint 管理員](#sharepoint-service-administrator-permissions)
 
-具備此角色的使用者在有 Microsoft SharePoint Online 服務時，於該服務內具有全域權限，以及建立和管理所有 Office 365 群組、管理支援票證和監控服務健康情況的能力。 如需詳細資訊，請參閱[關於管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)。
+具有此角色的使用者在有 Microsoft SharePoint Online 服務時，于該服務內具有全域許可權，以及建立和管理所有 Microsoft 365 群組、管理支援票證，以及監視服務健康情況的能力。 如需詳細資訊，請參閱[關於管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)。
 
 > [!NOTE]
 > 在 Microsoft Graph API 和 Azure AD PowerShell 中，會將此角色識別為「SharePoint 服務管理員」。 在 [Azure 入口網站](https://portal.azure.com)中則是「SharePoint 管理員」。
@@ -496,7 +496,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 
 ### <a name="teams-service-administrator"></a>[Teams 服務管理員](#teams-service-administrator-permissions)
 
-此角色的使用者可以透過 Microsoft Teams 和商務用 Skype 系統管理中心以及個別的 PowerShell 模組，管理 Microsoft Teams 工作負載的所有層面。 這包括所有與電話語音、傳訊、會議和小組本身相關的管理工具以及其他領域。 這個角色會額外獲得授與建立和管理所有 Office 365 群組、管理支援票證，以及監視服務健康情況的能力。
+此角色的使用者可以透過 Microsoft Teams 和商務用 Skype 系統管理中心以及個別的 PowerShell 模組，管理 Microsoft Teams 工作負載的所有層面。 這包括所有與電話語音、傳訊、會議和小組本身相關的管理工具以及其他領域。 此角色還會授與建立和管理所有 Microsoft 365 群組、管理支援票證，以及監視服務健康情況的能力。
 
 ### <a name="user-administrator"></a>[使用者管理員](#user-administrator-permissions)
 
@@ -513,7 +513,7 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 >
 >- 應用程式註冊和企業應用程式擁有者，他們可以管理他們自己的應用程式認證。 這些應用程式在 Azure AD 中可能有特殊權限，而在其他地方未授與使用者系統管理員。 使用者系統管理員可以透過此路徑承擔應用程式擁有者的身分識別，然後藉由更新應用程式的認證，進一步承擔特殊權限應用程式的身分識別。
 >- Azure 訂用帳戶擁有者，他們具有機密或私人資訊或者 Azure 中重要組態的存取權。
->- 安全性群組和 Office 365 群組擁有者，他們可以管理群組成員資格。 這個群組可以存取機密或私人資訊或者 Azure AD 和其他位置中的重要組態。
+>- 安全性群組和 Microsoft 365 群組擁有者，他們可以管理群組成員資格。 這個群組可以存取機密或私人資訊或者 Azure AD 和其他位置中的重要組態。
 >- Azure AD 外部其他服務 (例如，Exchange Online、Office 安全性與合規性中心和人力資源系統) 中的系統管理員。
 >- 非系統管理員，例如主管、法律顧問和人力資源員工，他們可以存取機密或私人資訊。
 
@@ -1030,7 +1030,6 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft 目錄/使用者/reprocessLicenseAssignment | 在 Azure Active Directory 中重新處理使用者的授權指派。 |
 | microsoft 目錄/使用者/userPrincipalName/update | 更新 Azure Active Directory 中的 [使用者. userPrincipalName] 屬性。 |
 
-
 ### <a name="exchange-service-administrator-permissions"></a>Exchange 服務管理員權限
 
 可管理 Exchange 產品的所有層面。
@@ -1045,11 +1044,11 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 屬性。 |
-| microsoft.directory/groups/unified/basic/update | 更新 Office 365 群組的基本屬性。 |
-| microsoft.directory/groups/unified/create | 建立 Office 365 群組。 |
-| microsoft.directory/groups/unified/delete | 刪除 Office 365 群組。 |
-| microsoft.directory/groups/unified/members/update | 更新 Office 365 群組的成員資格。 |
-| microsoft.directory/groups/unified/owners/update | 更新 Office 365 群組的擁有權。 |
+| microsoft.directory/groups/unified/basic/update | 更新 Microsoft 365 群組的基本屬性。 |
+| microsoft.directory/groups/unified/create | 建立 Microsoft 365 群組。 |
+| microsoft.directory/groups/unified/delete | 刪除 Microsoft 365 群組。 |
+| microsoft.directory/groups/unified/members/update | 更新 Microsoft 365 群組的成員資格。 |
+| microsoft.directory/groups/unified/owners/update | 更新 Microsoft 365 群組的擁有權。 |
 | microsoft.office365.exchange/allEntities/allTasks | 管理 Exchange Online 的所有層面。 |
 | microsoft.office365.network/performance/allProperties/read | 讀取 M365 系統管理中心中的網路效能頁面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
@@ -1759,11 +1758,11 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 屬性。 |
-| microsoft.directory/groups/unified/basic/update | 更新 Office 365 群組的基本屬性。 |
-| microsoft.directory/groups/unified/create | 建立 Office 365 群組。 |
-| microsoft.directory/groups/unified/delete | 刪除 Office 365 群組。 |
-| microsoft.directory/groups/unified/members/update | 更新 Office 365 群組的成員資格。 |
-| microsoft.directory/groups/unified/owners/update | 更新 Office 365 群組的擁有權。 |
+| microsoft.directory/groups/unified/basic/update | 更新 Microsoft 365 群組的基本屬性。 |
+| microsoft.directory/groups/unified/create | 建立 Microsoft 365 群組。 |
+| microsoft.directory/groups/unified/delete | 刪除 Microsoft 365 群組。 |
+| microsoft.directory/groups/unified/members/update | 更新 Microsoft 365 群組的成員資格。 |
+| microsoft.directory/groups/unified/owners/update | 更新 Microsoft 365 群組的擁有權。 |
 | microsoft.office365.network/performance/allProperties/read | 讀取 M365 系統管理中心中的網路效能頁面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.sharepoint/allEntities/allTasks | 建立和刪除所有資源，以及讀取和更新 microsoft.office365.sharepoint 中的標準屬性。 |
@@ -1834,11 +1833,11 @@ Windows Defender ATP 和 EDR | 檢視和調查警示。 當您在 Windows Defend
 | microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
 | microsoft.directory/groups/hiddenMembers/read | 讀取 Azure Active Directory 中的 groups.hiddenMembers 屬性。 |
 | microsoft.directory/groups/unified/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.unified 屬性。 |
-| microsoft.directory/groups/unified/basic/update | 更新 Office 365 群組的基本屬性。 |
-| microsoft.directory/groups/unified/create | 建立 Office 365 群組。 |
-| microsoft.directory/groups/unified/delete | 刪除 Office 365 群組。 |
-| microsoft.directory/groups/unified/members/update | 更新 Office 365 群組的成員資格。 |
-| microsoft.directory/groups/unified/owners/update | 更新 Office 365 群組的擁有權。 |
+| microsoft.directory/groups/unified/basic/update | 更新 Microsoft 365 群組的基本屬性。 |
+| microsoft.directory/groups/unified/create | 建立 Microsoft 365 群組。 |
+| microsoft.directory/groups/unified/delete | 刪除 Microsoft 365 群組。 |
+| microsoft.directory/groups/unified/members/update | 更新 Microsoft 365 群組的成員資格。 |
+| microsoft.directory/groups/unified/owners/update | 更新 Microsoft 365 群組的擁有權。 |
 | microsoft.office365.network/performance/allProperties/read | 讀取 M365 系統管理中心中的網路效能頁面。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
@@ -1994,4 +1993,4 @@ User | 未顯示，因為不能使用 | NA
 
 * 若要深入了解如何將使用者指派為 Azure 訂用帳戶的系統管理員，請參閱[使用 Azure 角色 (Azure RBAC) 管理存取權](../../role-based-access-control/role-assignments-portal.md)
 * 若要深入了解如何在 Microsoft Azure 中控制資源存取，請參閱[了解不同角色](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* 如需訂用帳戶和 Azure AD 租使用者之間關聯性的詳細資訊，或如需相關指示或新增訂閱的指示，請參閱[將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租使用者](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* 如需訂用帳戶和 Azure AD 租使用者之間關聯性的詳細資訊，或如需相關指示或新增訂閱的指示，請參閱 [將 Azure 訂用帳戶關聯或新增至您的 Azure Active Directory 租使用者](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

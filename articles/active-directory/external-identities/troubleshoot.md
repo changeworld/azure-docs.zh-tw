@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 824520e04bd4a98b1a00c8369848163a38bcf54b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908174"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206293"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>針對 Azure Active Directory B2B 共同作業問題進行疑難排解
 
@@ -93,7 +93,7 @@ ms.locfileid: "87908174"
 
 使用者具有 Azure 使用者帳戶，而且是已被放棄或未受管理的病毒租使用者。 此外，租使用者中沒有全域或公司系統管理員。
 
-若要解決此問題，您必須接管放棄的租使用者。 請參閱[Azure Active Directory 中以系統管理員身分接管非受控目錄](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 您也必須針對有問題的網域尾碼存取網際網路對向 DNS，才能提供您控制命名空間的直接辨識項。 當租使用者回到受管理的狀態之後，請與客戶討論是否讓使用者和已驗證的功能變數名稱是其組織的最佳選項。
+若要解決此問題，您必須接管放棄的租使用者。 請參閱  [Azure Active Directory 中以系統管理員身分接管非受控目錄](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 您也必須針對有問題的網域尾碼存取網際網路對向 DNS，才能提供您控制命名空間的直接辨識項。 當租使用者回到受管理的狀態之後，請與客戶討論是否讓使用者和已驗證的功能變數名稱是其組織的最佳選項。
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>具有 Just-In-Time (JIT) 或「病毒式」租用戶的來賓使用者無法重設其密碼
 
@@ -101,12 +101,12 @@ ms.locfileid: "87908174"
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>來賓使用者無法使用 AzureAD PowerShell V1 模組
 
-自2019年11月18日起，您目錄中的來賓使用者 (定義為使用者帳戶，其中**userType**屬性等於**來賓**) 遭到封鎖而無法使用 AzureAD PowerShell V1 模組。 接下來，使用者必須是成員使用者 (在其中， **userType**等於**member**) 或使用 AzureAD PowerShell V2 模組。
+自2019年11月18日起，您目錄中的來賓使用者 (定義為使用者帳戶，其中 **userType** 屬性等於 **來賓**) 遭到封鎖而無法使用 AzureAD PowerShell V1 模組。 接下來，使用者必須是成員使用者 (在其中， **userType** 等於 **member**) 或使用 AzureAD PowerShell V2 模組。
 
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美國政府租使用者中，我無法邀請 B2B 共同作業來賓使用者
 
-在 Azure 美國政府雲端中，目前只有在 Azure 美國政府雲端內的租使用者，以及同時支援 B2B 共同作業的租使用者之間，才支援 B2B 共同作業。 如果您邀請的租使用者不屬於 Azure 美國政府雲端的一部分，或是尚未支援 B2B 共同作業，您將會收到錯誤。 如需詳細資訊和限制，請參閱[Azure Active Directory Premium P1 和 P2 變化](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
+在 Azure 美國政府雲端中，目前只有在 Azure 美國政府雲端內的租使用者，以及同時支援 B2B 共同作業的租使用者之間，才支援 B2B 共同作業。 如果您邀請的租使用者不屬於 Azure 美國政府雲端的一部分，或是尚未支援 B2B 共同作業，您將會收到錯誤。 如需詳細資訊和限制，請參閱 [Azure Active Directory Premium P1 和 P2 變化](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
 
 ## <a name="next-steps"></a>後續步驟
 
-[取得 B2B 共同作業的支援](/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md)
+[取得 B2B 共同作業的支援](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto)

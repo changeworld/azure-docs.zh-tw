@@ -10,17 +10,18 @@ editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64b9176a16f4d8d2b7ee7f33e00714d811c5f070
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537605"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209090"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>針對 Windows 部署適用於 IoT 的 Azure 資訊安全中心 (以 C# 為基礎) 安全性代理程式
 
@@ -34,9 +35,9 @@ ms.locfileid: "81537605"
 > * 解除安裝代理程式
 > * 疑難排解
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-如需其他平臺和代理程式類別，請參閱[選擇正確的安全性代理程式](how-to-deploy-agent.md)。
+如需其他平臺和代理程式類別，請參閱 [選擇正確的安全性代理程式](how-to-deploy-agent.md)。
 
 1. 您想要安裝的電腦上的本機系統管理員許可權。
 
@@ -69,18 +70,18 @@ ms.locfileid: "81537605"
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
     ```
 
-    如需驗證參數的詳細資訊，請參閱[如何設定驗證](concept-security-agent-authentication-methods.md)。
+    如需驗證參數的詳細資訊，請參閱 [如何設定驗證](concept-security-agent-authentication-methods.md)。
 
 此腳本會執行下列動作：
 
 * 安裝必要條件。
-* 新增服務使用者（已停用互動式登入）。
+* 新增已停用) 互動式登入的服務使用者 (。
 * 將代理程式安裝為**系統服務**。
 * 使用所提供的驗證參數來設定代理程式。
 
 如需其他協助，請在 PowerShell 中使用 Get-help 命令。
 
-Get-help 範例：```Get-Help .\InstallSecurityAgent.ps1```
+Get-help 範例：    ```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>確認部署狀態
 
@@ -104,7 +105,7 @@ Get-help 範例：```Get-Help .\InstallSecurityAgent.ps1```
 
 若要開啟記錄：
 
-1. 開啟設定檔（General.config），以使用標準的檔案編輯器進行編輯。
+1. 使用標準的檔案編輯器，開啟設定檔案 ( # A0) 進行編輯。
 
 1. 編輯下列值：
 
@@ -141,8 +142,8 @@ Get-help 範例：```Get-Help .\InstallSecurityAgent.ps1```
 
 ## <a name="next-steps"></a>後續步驟
 
-* 閱讀 IoT 服務的 Azure 資訊安全中心[總覽](overview.md)
+* 閱讀 IoT 服務的 Azure 資訊安全中心 [總覽](overview.md)
 * 深入瞭解 IoT[架構](architecture.md)的 Azure 資訊安全中心
 * 啟用[服務](quickstart-onboard-iot-hub.md)
-* 閱讀[常見問題](resources-frequently-asked-questions.md)
+* 閱讀 [常見問題](resources-frequently-asked-questions.md)
 * 了解[警示](concept-security-alerts.md)

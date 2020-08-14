@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: 1a0bcfadb79d6d2cb13c67b3ebadfcba97bc1fb9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010276"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211305"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure Cache for Redis 開發常見問題
 
@@ -135,10 +136,10 @@ Microsoft Azure Cache for Redis 是以熱門的開放原始碼記憶體內部資
 Redis 資料庫就是相同 Redis 執行個體內的資料邏輯分隔。 所有資料庫之間會共用快取記憶體，給定資料庫的實際記憶體耗用量取決於該資料庫中儲存的索引鍵/值。 例如，假設 C6 快取有 53 GB 的記憶體，而 P5 有 120 GB。 您可以選擇將 53 GB / 120 GB 全部放入一個資料庫，或分割給多個資料庫。 
 
 > [!NOTE]
-> 使用已啟用叢集功能的「進階 Azure Redis 快取」時，只有資料庫 0 可供使用。 這項限制是固有的 Redis 限制，並非特別針對「Azure Redis 快取」。 如需詳細資訊，請參閱[我需要對我的用戶端應用程式進行任何變更才能使用叢集嗎？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)。
+> 使用已啟用叢集功能的「進階 Azure Redis 快取」時，只有資料庫 0 可供使用。 這項限制是固有的 Redis 限制，並非特別針對「Azure Redis 快取」。 如需詳細資訊，請參閱 [我需要對我的用戶端應用程式進行任何變更才能使用叢集嗎？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)。
 > 
 > 
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解其他[Azure Cache For Redis 常見問題](cache-faq.md)。
+深入瞭解其他 [Azure Cache For Redis 常見問題](cache-faq.md)。

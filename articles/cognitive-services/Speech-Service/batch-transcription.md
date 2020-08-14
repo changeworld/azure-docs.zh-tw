@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053911"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214054"
 ---
 # <a name="what-is-batch-transcription"></a>什麼是批次轉譯？
 
@@ -31,14 +31,14 @@ ms.locfileid: "88053911"
 |    抓取已驗證之訂用帳戶的轉譯清單。    |    GET       |    speechtotext/v3.0/轉譯            |
 |    取得離線轉譯支援的地區設定清單。              |    GET       |    speechtotext/v3.0/轉譯/地區設定    |
 |    更新識別碼所識別之轉譯的可變詳細資料。    |    PATCH     |    speechtotext/v3.0/轉譯/{id}       |
-|    刪除指定的轉譯工作。                                 |    DELETE    |    speechtotext/v3.0/轉譯/{id}       |
+|    刪除指定的轉譯工作。                                 |    刪除    |    speechtotext/v3.0/轉譯/{id}       |
 |    取得指定識別碼所識別的轉譯。                        |    GET       |    speechtotext/v3.0/轉譯/{id}       |
 |    取得指定識別碼所識別之轉譯的結果檔案。    |    GET       |    speechtotext/v3.0/轉譯/{id}/files |
 
 
 
 
-您可以檢查並測試詳細的 API，這是以[Swagger 檔](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)的形式提供。
+您可以檢查並測試詳細的 API，這是以 [Swagger 檔](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)的形式提供。
 
 批次轉譯作業是以最大的方式排定。 目前，當作業變更為執行中狀態時，不會有任何估計值。 在一般系統負載下，應該會在幾分鐘內發生。 一旦處於 [執行中] 狀態，實際轉譯的處理速度會比音訊即時長。
 
@@ -51,11 +51,11 @@ ms.locfileid: "88053911"
 如同語音服務的所有功能，您可以依照我們的[快速入門指南](get-started.md)從 [Azure 入口網站](https://portal.azure.com)建立訂用帳戶金鑰。
 
 >[!NOTE]
-> 需要「語音服務」的標準訂用帳戶 (S0) 才能使用批次轉譯。 免費的訂用帳戶金鑰 (F0) 無法使用。 如需詳細資訊，請參閱[定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+> 需要「語音服務」的標準訂用帳戶 (S0) 才能使用批次轉譯。 免費的訂用帳戶金鑰 (F0) 無法使用。 如需詳細資訊，請參閱 [定價和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 ### <a name="custom-models"></a>自訂模型
 
-如果您打算自訂模型，請遵循聲場[自訂](how-to-customize-acoustic-models.md)和[語言自訂](how-to-customize-language-model.md)中的步驟。 若要在批次轉譯中使用已建立的模型，您需要其模型位置。 當您檢查模型的詳細資料時，您可以 (屬性) ，來取得模型位置 `self` 。 批次轉譯服務*不需要*已部署的自訂端點。
+如果您打算自訂模型，請遵循聲場 [自訂](how-to-customize-acoustic-models.md) 和 [語言自訂](how-to-customize-language-model.md)中的步驟。 若要在批次轉譯中使用已建立的模型，您需要其模型位置。 當您檢查模型的詳細資料時，您可以 (屬性) ，來取得模型位置 `self` 。 批次轉譯服務 *不需要* 已部署的自訂端點。
 
 ## <a name="the-batch-transcription-api"></a>Batch 轉譯 API
 
@@ -63,7 +63,7 @@ ms.locfileid: "88053911"
 
 Batch 轉譯 API 支援下列格式：
 
-| 格式 | 轉碼器 | Bitrate | 採樣速率                     |
+| 格式 | 轉碼器 | 每個樣本的位數 | 採樣速率             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16 位元  | 8 kHz 或 16 kHz、單聲道或身歷聲 |
 | MP3    | PCM   | 16 位元  | 8 kHz 或 16 kHz、單聲道或身歷聲 |
@@ -71,7 +71,7 @@ Batch 轉譯 API 支援下列格式：
 
 針對身歷聲音訊資料流程，左右聲道會在轉譯期間分割。 針對每個通道，會建立 JSON 結果檔案。 每個語句產生的時間戳記可讓開發人員建立排序的最終文字記錄。
 
-### <a name="configuration"></a>設定
+### <a name="configuration"></a>組態
 
 設定參數提供為 JSON (一或多個個別檔案) ：
 
@@ -178,16 +178,16 @@ Batch 轉譯 API 支援下列格式：
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      選擇性的 URL，其中包含[服務 SAS](../../storage/common/storage-sas-overview.md)至 Azure 中可寫入的容器。 結果會儲存在此容器中。 當未指定時，Microsoft 會將結果儲存在由 Microsoft 管理的儲存體容器中。 藉由呼叫[刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)轉譯來刪除轉譯時，也會一併刪除結果資料。
+      選擇性的 URL，其中包含 [服務 SAS](../../storage/common/storage-sas-overview.md) 至 Azure 中可寫入的容器。 結果會儲存在此容器中。 當未指定時，Microsoft 會將結果儲存在由 Microsoft 管理的儲存體容器中。 藉由呼叫 [刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)轉譯來刪除轉譯時，也會一併刪除結果資料。
 :::row-end:::
 
 ### <a name="storage"></a>儲存體
 
-批次轉譯支援[Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)來讀取音訊，並將轉譯寫入儲存體。
+批次轉譯支援 [Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) 來讀取音訊，並將轉譯寫入儲存體。
 
 ## <a name="the-batch-transcription-result"></a>批次轉譯結果
 
-針對每個輸入音訊，會建立一個轉譯結果檔案。 您可以藉由呼叫[get 轉譯 files](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)來取得結果檔案清單。 這個方法會傳回此轉譯結果檔案的清單。 若要尋找特定輸入檔的轉譯檔案，請使用和來篩選所有傳回的檔案 `kind`  ==  `Transcription` `name`  ==  `{originalInputName.suffix}.json` 。
+針對每個輸入音訊，會建立一個轉譯結果檔案。 您可以藉由呼叫 [get 轉譯 files](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)來取得結果檔案清單。 這個方法會傳回此轉譯結果檔案的清單。 若要尋找特定輸入檔的轉譯檔案，請使用和來篩選所有傳回的檔案 `kind`  ==  `Transcription` `name`  ==  `{originalInputName.suffix}.json` 。
 
 每個轉譯結果檔案的格式如下：
 
@@ -317,11 +317,11 @@ Diarization 是在一段音訊中分隔喇叭的程式。 我們的批次管線�
 
 ## <a name="best-practices"></a>最佳作法
 
-轉譯服務可以處理大量的已提交轉譯。 您可以透過 `GET` [Get 轉譯](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)查詢轉譯的狀態。 一旦您取得結果之後，請定期從服務呼叫[刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)轉譯。 或者，將 `timeToLive` 屬性設定為合理的值，以確保最終刪除結果。
+轉譯服務可以處理大量的已提交轉譯。 您可以透過 `GET` [Get 轉譯](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)查詢轉譯的狀態。 一旦您取得結果之後，請定期從服務呼叫 [刪除](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) 轉譯。 或者，將 `timeToLive` 屬性設定為合理的值，以確保最終刪除結果。
 
 ## <a name="sample-code"></a>範例程式碼
 
-您可以在子目錄內的[GitHub 範例存放庫](https://aka.ms/csspeech/samples)中取得完整範例 `samples/batch` 。
+您可以在子目錄內的 [GitHub 範例存放庫](https://aka.ms/csspeech/samples) 中取得完整範例 `samples/batch` 。
 
 請以您的訂用帳戶資訊、服務區域、指向要轉譯之音訊檔案的 SAS URI 來更新範例程式碼，以及在您想要使用自訂模型的情況下建立模型位置。
 
@@ -331,7 +331,7 @@ Diarization 是在一段音訊中分隔喇叭的程式。 我們的批次管線�
 
 [!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptionstatus)]
 
-如需上述呼叫的完整詳細資料，請參閱我們的[Swagger 檔](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)。 如需此處所顯示的完整範例，請前往 `samples/batch` 子目錄中的 [GitHub](https://aka.ms/csspeech/samples)。
+如需上述呼叫的完整詳細資料，請參閱我們的 [Swagger 檔](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)。 如需此處所顯示的完整範例，請前往 `samples/batch` 子目錄中的 [GitHub](https://aka.ms/csspeech/samples)。
 
 請留意張貼音訊和接收轉譯狀態的非同步設定。 您建立的用戶端是 .NET HTTP 用戶端。 有一 `PostTranscriptions` 種方法可傳送音訊檔案詳細資料，以及用 `GetTranscriptions` 來接收狀態的方法。 `PostTranscriptions` 會傳回控制代碼，然後 `GetTranscriptions` 使用它來取得轉譯狀態。
 

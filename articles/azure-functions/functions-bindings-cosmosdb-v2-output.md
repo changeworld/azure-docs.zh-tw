@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 5ac7f5819f07309c319d290f4869707eabb688f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 6a75b0c5b30f60afe51eebc395d21b7c05e8af7f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848463"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212751"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Functions 2.x 和更新版本的 Azure Cosmos DB 輸出系結
 
@@ -307,7 +307,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 
 下列範例示範如何將檔寫入 Azure CosmosDB 資料庫，做為函數的輸出。
 
-系結定義定義于的*function.js上*，其*類型*設定為 `cosmosDB` 。
+系結定義定義于的 *function.js上* ，其 *類型* 設定為 `cosmosDB` 。
 
 ```json
 {
@@ -573,14 +573,14 @@ Python 指令碼不支援屬性。
 |**collectionName** |**CollectionName**  | 包含其中將建立文件之集合的名稱。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一個布林值，用來指出當集合不存在時，是否要建立集合。 預設是 false**，因為會使用保留的輸送量來建立新集合，可能會涉及成本。 如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
 |**partitionKey**|**PartitionKey** |當 `CreateIfNotExists` 為 true 時，它會定義所建立集合的分割區索引鍵路徑。|
-|**collectionThroughput**|**CollectionThroughput**| 當 `CreateIfNotExists` 為 true 時，它會定義所建立集合的[輸送量](../cosmos-db/set-throughput.md)。|
+|**collectionThroughput**|**CollectionThroughput**| 當 `CreateIfNotExists` 為 true 時，它會定義所建立集合的 [輸送量](../cosmos-db/set-throughput.md) 。|
 |**connectionStringSetting**    |**ConnectionStringSetting** |包含 Azure Cosmos DB 連接字串的應用程式設定名稱。        |
 |**preferredLocations**| **PreferredLocations**|  (選擇性) 會針對 Azure Cosmos DB 服務中異地複寫的資料庫帳戶定義慣用位置 (區域) 。 值應該以逗號分隔。 例如，「美國東部、美國中南部、北歐」。 |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**|  (選擇性) 當設定為時 `true` `PreferredLocations` ，它可以利用 Azure Cosmos DB 服務中的[多區域寫入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions)。 |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**|  (選擇性) 當設定為時 `true` `PreferredLocations` ，它可以利用 Azure Cosmos DB 服務中的 [多區域寫入](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) 。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 根據預設，當您在函式中寫入輸出參數時，會在資料庫中建立文件。 這份文件已自動產生 GUID 作為文件識別碼。 您可以藉由在傳遞至輸出參數的 JSON 物件中指定 `id` 屬性，來指定輸出文件的文件識別碼。
 

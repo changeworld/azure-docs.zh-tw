@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 1dc9521555f2eb158209b494e43fd815e6bab6e8
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: efb793898da03d2a024b559075a2d55e79b20d65
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141188"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208525"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -95,8 +95,10 @@ Set-AzFirewall -AzureFirewall $azfw
 
 $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
-$publicip = Get-AzPublicIpAddress -Name "Public IP Name" -ResourceGroupName "RG Name"
-$azfw.Allocate($vnet, $publicip)
+$publicip1 = Get-AzPublicIpAddress -Name "Public IP1 Name" -ResourceGroupName "RG Name"
+$publicip2 = Get-AzPublicIpAddress -Name "Public IP2 Name" -ResourceGroupName "RG Name"
+$azfw.Allocate($vnet,@($publicip,$publicip2))
+
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
@@ -137,7 +139,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>如何在應用程式規則中將萬用字元用於目標 FQDN？
 
-目前只能在 FQDN 的左邊使用萬用字元。 例如，***. contoso.com**和 ***contoso.com**。
+目前只能在 FQDN 的左邊使用萬用字元。 例如，***. contoso.com** 和 ***contoso.com**。
 
 如果您設定 ***contoso.com**，其會允許*任何值*.contoso.com，但不包含 contoso.com (網域頂點)。 如果您想要允許網域頂點，您必須明確地將其設定為目標 FQDN。
 
@@ -215,7 +217,7 @@ TCP Ping 不會實際連線到目標 FQDN。 這是因為 Azure 防火牆的背�
 
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure 防火牆的 TCP 閒置超時為何？
 
-網路防火牆的標準行為是確保 TCP 連線保持運作狀態，並在沒有活動時立即關閉。 Azure 防火牆 TCP 閒置超時時間為4分鐘。 這是無法設定的。 如果閒置時間超過超時值，則不保證會維護 TCP 或 HTTP 會話。 常見作法是使用 TCP Keep-Alive。 此作法可讓連線保持長時間連線。 如需詳細資訊，請參閱[.net 範例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
+網路防火牆的標準行為是確保 TCP 連線保持運作狀態，並在沒有活動時立即關閉。 Azure 防火牆 TCP 閒置超時時間為4分鐘。 這是無法設定的。 如果閒置時間超過超時值，則不保證會維護 TCP 或 HTTP 會話。 常見作法是使用 TCP Keep-Alive。 此作法可讓連線保持長時間連線。 如需詳細資訊，請參閱 [.net 範例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
 
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>我可以在沒有公用 IP 位址的情況下部署 Azure 防火牆嗎？
 

@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/20/2020
-ms.openlocfilehash: 7e2b655b344af90c4555beb0af85fa11cbc6d1c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: f522812f762b55ec61794101e6cd1ec15fb171ca
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85126156"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212111"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>對應資料流程中的組建運算式
 
@@ -24,7 +24,7 @@ ms.locfileid: "85126156"
 
 ## <a name="open-expression-builder"></a>Open 運算式產生器
 
-Azure Data Factory 使用者體驗中的運算式編輯介面稱為「運算式產生器」。 當您輸入運算式邏輯時，Data Factory 會使用[IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019)程式碼完成來進行反白顯示、語法檢查和自動完成。
+Azure Data Factory 使用者體驗中的運算式編輯介面稱為「運算式產生器」。 當您輸入運算式邏輯時，Data Factory 會使用 [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019) 程式碼完成來進行反白顯示、語法檢查和自動完成。
 
 ![運算式產生器](media/data-flow/xpb1.png "運算式產生器")
 
@@ -32,17 +32,17 @@ Azure Data Factory 使用者體驗中的運算式編輯介面稱為「運算式�
 
 ![藍色運算式方塊](media/data-flow/expressionbox.png "運算式產生器")
 
-當您參考相符或群組依據條件中的資料行時，運算式可以從資料行提取值。 若要建立運算式，請選取 [**計算資料行**]。
+當您參考相符或群組依據條件中的資料行時，運算式可以從資料行提取值。 若要建立運算式，請選取 [ **計算資料行**]。
 
 ![計算資料行選項](media/data-flow/computedcolumn.png "運算式產生器")
 
-在運算式或常值是有效輸入的情況下，選取 [**新增動態內容**] 以建立評估為常值的運算式。
+在運算式或常值是有效輸入的情況下，選取 [ **新增動態內容** ] 以建立評估為常值的運算式。
 
 ![新增動態內容選項](media/data-flow/add-dynamic-content.png "運算式產生器")
 
 ## <a name="expression-language-reference"></a>運算式語言參考
 
-對應的資料流程具有內建函數和運算子，可用於運算式中。 如需可用函數的清單，請參閱[對應資料流程中的運算式函數](data-flow-expression-functions.md)。
+對應的資料流程具有內建函數和運算子，可用於運算式中。 如需可用函數的清單，請參閱 [對應資料流程中的運算式函數](data-flow-expression-functions.md)。
 
 ## <a name="column-names-with-special-characters"></a>含特殊字元的資料行名稱
 
@@ -52,13 +52,13 @@ Azure Data Factory 使用者體驗中的運算式編輯介面稱為「運算式�
 
 ## <a name="preview-expression-results"></a>預覽運算式結果
 
-如果已開啟 [[偵錯工具] 模式](concepts-data-flow-debug-mode.md)，您可以使用即時 Spark 叢集查看運算式評估結果的進行中預覽。 當您建立邏輯時，您可以即時地對運算式進行偵錯工具。 
+如果已開啟 [ [偵錯工具] 模式](concepts-data-flow-debug-mode.md) ，您可以使用即時 Spark 叢集查看運算式評估結果的進行中預覽。 當您建立邏輯時，您可以即時地對運算式進行偵錯工具。 
 
 ![進行中預覽](media/data-flow/exp4b.png "運算式資料預覽")
 
 選取 **[** 重新整理]，以針對您的來源即時取樣來更新運算式的結果。
 
-![[重新整理] 按鈕](media/data-flow/exp5.png "運算式資料預覽")
+![重新整理按鈕](media/data-flow/exp5.png "運算式資料預覽")
 
 ## <a name="string-interpolation"></a>字串插補
 
@@ -89,7 +89,7 @@ Azure Data Factory 使用者體驗中的運算式編輯介面稱為「運算式�
 
 ## <a name="regular-expressions"></a>規則運算式
 
-許多運算式語言函數使用正則運算式語法。 當您使用正則運算式函數時，運算式產生器會嘗試將反斜線（ \\ ）解讀為 escape 字元序列。 當您在正則運算式中使用反斜線時，請以倒引號（）括住整個 RegEx， \` 或使用雙反斜線。
+許多運算式語言函數使用正則運算式語法。 當您使用正則運算式函數時，運算式產生器會嘗試將反斜線 (\\) 成逸出字元序列。 當您在正則運算式中使用反斜線時，請將整個 RegEx 括在倒引號 () 中， \` 或使用雙反斜線。
 
 使用倒引號的範例：
 
@@ -105,7 +105,7 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ## <a name="address-array-indexes"></a>位址陣列索引
 
-如果運算式函式傳回陣列，請使用方括弧（[]）來定址傳回陣列物件內的特定索引。 陣列是以其為基礎。
+如果運算式函式傳回陣列，請使用括弧 ( [] ) 來定址傳回陣列物件內的特定索引。 陣列是以其為基礎。
 
 ![運算式產生器陣列](media/data-flow/expb2.png "運算式資料預覽")
 
@@ -132,7 +132,7 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ## <a name="find-time-from-epoch-or-unix-time"></a>從 epoch 或 Unix 時間尋找時間
 
-toLong （currentTimestamp （）-toTimestamp （' 1970-01-01 00：00： 00.000 '，' yyyy-MM-dd HH： MM： ss。SSS '）） * 1000l
+toLong ( currentTimestamp ( # A2-toTimestamp ( ' 1970-01-01 00：00： 00.000 '，' yyyy-MM-dd HH： MM： ss。SSS ' ) ) * 1000l
 
 ## <a name="next-steps"></a>後續步驟
 

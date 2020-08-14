@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 04/11/2017
-ms.openlocfilehash: fe725f3e4571f5b1f646b320e8c669e663c657e0
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: e780ef0b82240ac6771059f8bd239b90395135d9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004690"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213343"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何調整 Azure Redis 快取的規模
 「Azure Redis 快取」具有各種不同的快取供應項目，可讓您彈性選擇快取大小和功能。 建立快取之後，如果您應用程式的需求改變，您可以調整快取的大小和定價層。 本文說明如何使用 Azure 入口網站和 Azure PowerShell 與 Azure CLI 之類的工具來調整快取。
@@ -26,7 +27,7 @@ ms.locfileid: "88004690"
 * 網路頻寬
 * CPU 使用率
 
-如果您判斷快取不再符合您應用程式的需求，則可以調整為適合您應用程式的較大或較小快取定價層。 如需判斷所要使用之快取定價層的詳細資訊，請參閱[選擇正確的層級](cache-overview.md#choosing-the-right-tier)。
+如果您判斷快取不再符合您應用程式的需求，則可以調整為適合您應用程式的較大或較小快取定價層。 如需判斷所要使用之快取定價層的詳細資訊，請參閱 [選擇正確的層級](cache-overview.md#choosing-the-right-tier)。
 
 ## <a name="scale-a-cache"></a>調整快取
 若要調整快取，在 [Azure 入口網站](https://portal.azure.com)中[瀏覽至快取](cache-configure.md#configure-azure-cache-for-redis-settings)，然後按一下 **[資源]** 功能表中的 **[調整]**。
@@ -70,7 +71,7 @@ ms.locfileid: "88004690"
    Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 ```
 
-如需有關使用 PowerShell 進行調整的詳細資訊，請參閱[使用 Powershell 來調整 Azure Cache For Redis](cache-how-to-manage-redis-cache-powershell.md#scale)。
+如需有關使用 PowerShell 進行調整的詳細資訊，請參閱 [使用 Powershell 來調整 Azure Cache For Redis](cache-how-to-manage-redis-cache-powershell.md#scale)。
 
 ### <a name="scale-using-azure-cli"></a>使用 Azure CLI 進行調整
 若要使用 Azure CLI 來調整「Azure Redis 快取」執行個體的規模，請呼叫 `azure rediscache set` 命令，並視所需的調整作業而定，傳入所需的設定變更，包括新的大小、SKU 或叢集大小。
@@ -130,7 +131,7 @@ ms.locfileid: "88004690"
 ### <a name="how-does-scaling-work"></a>調整運作方式如何？
 * **基本** 快取在調整為不同的大小時會關閉，並會使用新的大小佈建新的快取。 在此期間，快取無法使用，而且快取中的所有資料都會遺失。
 * **基本**快取在調整為**標準**快取時，會佈建複本快取，且會從主要快取將資料複製到複本快取。 調整程序期間仍可使用快取。
-* 當**標準**快取調整為**不同的大小**或高階快取時，會關閉其中一個複本，並將其重新布建至新的大小並傳輸資料，然後另一個複本會先執行容錯移轉，再進行重新布建，類似于其中一個快取節點失敗期間發生的進程。
+* 當 **標準** 快取調整為 **不同的大小** 或高階快取時，會關閉其中一個複本，並將其重新布建至新的大小並傳輸資料，然後另一個複本會先執行容錯移轉，再進行重新布建，類似于其中一個快取節點失敗期間發生的進程。
 
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>我是否會在調整期間遺失快取中的資料？
 * **基本** 快取調整為新的大小時，會遺失所有資料，且無法在調整作業期間使用快取。
