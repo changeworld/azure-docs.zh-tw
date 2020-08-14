@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 48e3f895fb123429f1bedd106bd92113533c84ae
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8ed9f6565da55d3ffbe522bbdf404265c487f67c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055797"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225609"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp Files 的方案架構
 本文提供最佳做法的參考，可協助您瞭解使用 Azure NetApp Files 的解決方案架構。  
@@ -85,6 +85,7 @@ ms.locfileid: "88055797"
 
 ### <a name="windows-virtual-desktop"></a>Windows 虛擬桌面
 
+* [搭配使用 Windows 虛擬桌面與 Azure NetApp Files](solutions-windows-virtual-desktop.md)
 * [Windows 虛擬桌面中 FSLogix 設定檔容器的儲存體選項](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [使用 Azure NetApp Files 建立主機集區的 FSLogix 設定檔容器](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 * [企業規模的 Windows 虛擬桌面](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)

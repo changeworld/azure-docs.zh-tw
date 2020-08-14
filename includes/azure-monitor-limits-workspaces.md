@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 6979ce65022f350a93f533951d634b8e436283bc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 91adafedfc8f4e6b4948b0dcfe541e2754b47556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186362"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226263"
 ---
 **資料收集磁碟區和保留** 
 
@@ -64,7 +64,7 @@ ms.locfileid: "88186362"
 | 資料行名稱的字元數上限 | 500 | |
 | 資料匯出 | 目前無法使用 | 使用 Azure 函式或邏輯應用程式來彙總和匯出資料。 | 
 
-**資料擷取磁碟區速率**
+**<a name="data-ingestion-volume-rate">資料擷取磁碟區速率</a>**
 
 Azure 監視器是一種大規模的資料服務，服務對象為每月需傳送數 TB 資料 (且不斷成長) 的上千名客戶。 磁碟區速率限制旨在保護 Azure 監視器客戶，避免其受到多租用戶環境中突然激增的尖峰所影響。 適用於工作區的預設擷取磁碟區速率閾值為 500 MB (已壓縮) ，解壓縮大約 **6 GB/分鐘** -- 根據記錄長度和其壓縮率的不同，實際大小在資料類型之間可能會有所不同。 不論是使用[診斷設定](../articles/azure-monitor/platform/diagnostic-settings.md)、[資料收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 或代理程式，從 Azure 資源傳送的所有內嵌資料皆適用此閾值。
 

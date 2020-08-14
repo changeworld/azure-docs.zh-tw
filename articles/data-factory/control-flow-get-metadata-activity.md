@@ -10,16 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 08/14/2020
 ms.author: jingwang
-ms.openlocfilehash: a5d203664520aebadefd16c19813d7957dd37fc4
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 26d52eed02c9d25ed2f18afa3a5262ba9224b0ba
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171250"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224844"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>取得 Azure Data Factory 中的中繼資料活動
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 您可以使用 [取得中繼資料] 活動來抓取 Azure Data Factory 中任何資料的中繼資料。 您可以在下列案例中使用此活動：
@@ -58,11 +59,11 @@ ms.locfileid: "87171250"
 - 針對資料夾使用 [取得中繼資料] 活動時，請確定您具有指定資料夾的 [清單/執行] 許可權。
 - 針對 Amazon S3 和 Google Cloud Storage， `lastModified` 會套用至 bucket 和金鑰，但不適用於虛擬資料夾，並適用于值區 `exists` 和金鑰，但不會套用至前置詞或虛擬資料夾。
 - 針對 Azure Blob 儲存體， `lastModified` 會套用至容器和 Blob，但不適用於虛擬資料夾。
-- `lastModified`篩選目前適用于篩選子專案，而不是指定的資料夾/檔案本身。
+- `lastModified` 篩選目前適用于篩選子專案，而不是指定的資料夾/檔案本身。
 - 取得中繼資料活動不支援資料夾/檔案上的萬用字元篩選。
 - `structure``columnCount`從二進位、JSON 或 XML 檔案取得中繼資料時，不支援和。
 
-**關聯式資料庫**
+**關係資料庫**
 
 | 連接器/中繼資料 | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
@@ -100,13 +101,36 @@ ms.locfileid: "87171250"
 
 ```json
 {
-    "name": "MyActivity",
-    "type": "GetMetadata",
-    "typeProperties": {
-        "fieldList" : ["size", "lastModified", "structure"],
-        "dataset": {
-            "referenceName": "MyDataset",
-            "type": "DatasetReference"
+    "name":"MyActivity",
+    "type":"GetMetadata",
+    "dependsOn":[
+
+    ],
+    "policy":{
+        "timeout":"7.00:00:00",
+        "retry":0,
+        "retryIntervalInSeconds":30,
+        "secureOutput":false,
+        "secureInput":false
+    },
+    "userProperties":[
+
+    ],
+    "typeProperties":{
+        "dataset":{
+            "referenceName":"MyDataset",
+            "type":"DatasetReference"
+        },
+        "fieldList":[
+            "size",
+            "lastModified",
+            "structure"
+        ],
+        "storeSettings":{
+            "type":"AzureBlobStorageReadSettings"
+        },
+        "formatSettings":{
+            "type":"JsonReadSettings"
         }
     }
 }
@@ -116,18 +140,22 @@ ms.locfileid: "87171250"
 
 ```json
 {
-    "name": "MyDataset",
-    "properties": {
-    "type": "AzureBlob",
-        "linkedService": {
-            "referenceName": "StorageLinkedService",
-            "type": "LinkedServiceReference"
+    "name":"MyDataset",
+    "properties":{
+        "linkedServiceName":{
+            "referenceName":"AzureStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "typeProperties": {
-            "folderPath":"container/folder",
-            "filename": "file.json",
-            "format":{
-                "type":"JsonFormat"
+        "annotations":[
+
+        ],
+        "type":"Json",
+        "typeProperties":{
+            "location":{
+                "type":"AzureBlobStorageLocation",
+                "fileName":"file.json",
+                "folderPath":"folder",
+                "container":"container"
             }
         }
     }
@@ -140,8 +168,8 @@ ms.locfileid: "87171250"
 
 屬性 | 描述 | 必要
 -------- | ----------- | --------
-欄位清單 | 所需的中繼資料資訊類型。 如需所支援中繼資料的詳細資訊，請參閱本文的[中繼資料選項](#metadata-options)一節。 | 是 
-資料集 | 要由「取得中繼資料」活動抓取其中繼資料的參考資料集。 如需所支援連接器的詳細資訊，請參閱[功能](#capabilities)一節。 如需資料集語法的詳細資訊，請參閱特定的連接器主題。 | 是
+欄位清單 | 所需的中繼資料資訊類型。 如需所支援中繼資料的詳細資訊，請參閱本文的 [中繼資料選項](#metadata-options) 一節。 | 是 
+資料集 | 要由「取得中繼資料」活動抓取其中繼資料的參考資料集。 如需所支援連接器的詳細資訊，請參閱 [功能](#capabilities) 一節。 如需資料集語法的詳細資訊，請參閱特定的連接器主題。 | 是
 formatSettings | 適用于使用格式類型資料集時。 | 否
 storeSettings | 適用于使用格式類型資料集時。 | 否
 

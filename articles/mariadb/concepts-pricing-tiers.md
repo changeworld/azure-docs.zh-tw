@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/9/2020
-ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 8/13/2020
+ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954189"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225711"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>適用於 MariaDB 的 Azure 資料庫定價層
 
@@ -33,7 +33,7 @@ ms.locfileid: "85954189"
 | 一般用途 | 需要平衡的計算和記憶體以及可擴充 I/O 輸送量的大多數商務工作負載。 範例包括用於裝載 Web 和行動應用程式的伺服器，以及其他企業應用程式。|
 | 記憶體最佳化 | 需要記憶體內效能來提供更快速交易處理和更高並行性的高效能資料庫工作負載。 範例包括用於處理即時資料的伺服器，以及高效能交易式或分析應用程式。|
 
-建立伺服器之後，虛擬核心數目和定價層 (基本層的來回除外) 可在幾秒內上下變動。 您可以也單獨調高儲存體的數量及延長或縮短備份保留期限，而無須中斷應用程式。 但您無法在建立伺服器之後，變更備份儲存體類型。 如需詳細資訊，請參閱[調整資源](#scale-resources)一節。
+建立伺服器之後，虛擬核心數目和定價層 (基本層的來回除外) 可在幾秒內上下變動。 您可以也單獨調高儲存體的數量及延長或縮短備份保留期限，而無須中斷應用程式。 但您無法在建立伺服器之後，變更備份儲存體類型。 如需詳細資訊，請參閱 [調整資源](#scale-resources) 一節。
 
 ## <a name="compute-generations-and-vcores"></a>計算世代和虛擬核心
 
@@ -57,9 +57,9 @@ ms.locfileid: "85954189"
 
 基本層不提供 IOPS 保證。 在一般用途和記憶體最佳化定價層中，IOPS 與佈建的儲存體大小會以 3:1 的比例調整。
 
-您可以在 Azure 入口網站或使用 Azure CLI 命令來監視 I/O 耗用量。 要監視的相關計量包括[儲存體限制、儲存體百分比、使用的儲存體和 IO 百分比](concepts-monitoring.md)。
+您可以在 Azure 入口網站或使用 Azure CLI 命令來監視 I/O 耗用量。 要監視的相關計量包括 [儲存體限制、儲存體百分比、使用的儲存體和 IO 百分比](concepts-monitoring.md)。
 
-### <a name="large-storage-preview"></a>大型儲存體（預覽）
+### <a name="large-storage-preview"></a>大型儲存體 (預覽) 
 
 我們會在我們的一般用途和記憶體優化層中增加儲存體限制。 加入宣告預覽版的新建立伺服器可以布建多達 16 TB 的儲存空間。 IOPS 的比例為3:1，最高為 20000 IOPS。 如同目前正式推出的儲存體，您可以在建立伺服器之後新增額外的儲存體容量，並允許系統根據您工作負載的儲存體耗用量自動增加儲存體。
 
@@ -91,15 +91,13 @@ ms.locfileid: "85954189"
 
 請記住，儲存體只能相應增加，而不能相應縮小。
 
-## <a name="backup"></a>備份
+## <a name="backup"></a>Backup
 
-服務會自動採用伺服器的備份。 您可以選取介於7到35天的保留期間。 一般用途和記憶體優化伺服器可以選擇使用異地多餘的儲存空間來進行備份。 若要深入瞭解備份，請參閱[概念文章](concepts-backup.md)。
+適用於 MariaDB 的 Azure 資料庫可提供高達 100% 的已佈建伺服器儲存體作為備份儲存體，且不須支付額外費用。 您所使用的任何備份儲存體若超過此數量，將以每月 GB 為單位收費。 例如，如果您布建的伺服器具有 250 GB 的儲存空間，您將有 250 GB 的額外儲存體可供伺服器備份免費使用。 超過 250 GB 的備份儲存體會依 [定價模式](https://azure.microsoft.com/pricing/details/mariadb/)收費。 若要瞭解影響備份存放裝置使用量、監視和控制備份儲存體成本的因素，您可以參閱 [備份檔案](concepts-backup.md)。
 
 ## <a name="scale-resources"></a>調整資源
 
 建立伺服器之後，您可以單獨變更虛擬核心、定價層 (基本層的來回除外)、儲存體數量及備份保留期限。 但您無法在建立伺服器之後，變更備份儲存體類型。 虛擬核心數目可相應增加或減少。 備份保留期可在 7 到 35 天的範圍內相應增加或減少。 儲存體大小只能增加。 您可以透過入口網站或 Azure CLI 來調整資源。 
-
-<!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
 
 當您變更虛擬核心數目或定價層時，系統會以新的計算配置建立一個原始伺服器複本。 當新伺服器已啟動並執行之後，連線就會切換到新的伺服器。 在系統切換到新伺服器的期間，您無法建立任何新的連線，且所有未認可的交易皆會復原。 此期間長短可能有所不同，但大部分情況下是少於一分鐘。
 
@@ -110,8 +108,5 @@ ms.locfileid: "85954189"
 如需最新的定價資訊，請參閱服務的[定價頁面](https://azure.microsoft.com/pricing/details/mariadb/)。 若要查看您所需的設定成本，[Azure 入口網站](https://portal.azure.com/#create/Microsoft.MariaDBServer)會根據您選取的選項，在 [定價層]**** 索引標籤中顯示每月成本。 如果您沒有 Azure 訂用帳戶，則可以使用 Azure 價格計算機來取得估計的價格。 在 [Azure 價格計算機](https://azure.microsoft.com/pricing/calculator/)網站上選取 [新增項目]****，展開 [資料庫]**** 類別，並選擇 [適用於 MariaDB 的 Azure 資料庫]**** 以自訂選項。
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解[服務限制](concepts-limits.md)。
+- 瞭解 [服務限制](concepts-limits.md)。
 - 了解如何[在 Azure 入口網站中建立 MariaDB 伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)。
-
-<!--
-- Learn how to [monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->

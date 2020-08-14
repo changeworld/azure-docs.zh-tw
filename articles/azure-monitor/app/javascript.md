@@ -4,23 +4,23 @@ description: 取得頁面流覽和會話計數、web 用戶端資料、單一頁
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905820"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224847"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
-了解您的網頁或應用程式的效能和使用量。 如果您將[Application Insights](app-insights-overview.md)新增至頁面腳本，您會取得頁面載入和 ajax 呼叫、計數和瀏覽器例外狀況與 ajax 失敗的詳細資料，以及使用者和會話計數的時間。 這些項目可以依據頁面、用戶端作業系統和瀏覽器版本、地區位置和其他維度分割。 您可以對失敗計數或緩慢頁面載入設定警示。 而在 JavaScript 程式碼中插入追蹤呼叫，即可追蹤網頁應用程式的各種功能使用方式。
+了解您的網頁或應用程式的效能和使用量。 如果您將 [Application Insights](app-insights-overview.md) 新增至頁面腳本，您會取得頁面載入和 ajax 呼叫、計數和瀏覽器例外狀況與 ajax 失敗的詳細資料，以及使用者和會話計數的時間。 這些項目可以依據頁面、用戶端作業系統和瀏覽器版本、地區位置和其他維度分割。 您可以對失敗計數或緩慢頁面載入設定警示。 而在 JavaScript 程式碼中插入追蹤呼叫，即可追蹤網頁應用程式的各種功能使用方式。
 
-Application Insights 可以使用於任何網頁 - 您剛剛新增 JavaScript 的簡短片段。 如果您的 web 服務是[JAVA](java-get-started.md)或[ASP.NET](asp-net.md)，您可以使用伺服器端 Sdk 搭配用戶端 JavaScript SDK 來取得應用程式效能的端對端瞭解。
+Application Insights 可以使用於任何網頁 - 您剛剛新增 JavaScript 的簡短片段。 如果您的 web 服務是 [JAVA](java-get-started.md) 或 [ASP.NET](asp-net.md)，您可以使用伺服器端 Sdk 搭配用戶端 JavaScript SDK 來取得應用程式效能的端對端瞭解。
 
 ## <a name="adding-the-javascript-sdk"></a>新增 JavaScript SDK
 
-1. 首先，您需要 Application Insights 資源。 如果您還沒有資源和檢測金鑰，請遵循[建立新的資源指示](create-new-resource.md)。
-2. 針對您想要在步驟 1 (傳送 JavaScript 遙測的資源，複製_檢測金鑰_ (也稱為 "iKey" ) 。 ) 您會將它新增至 `instrumentationKey` Application Insights JavaScript SDK 的設定。
+1. 首先，您需要 Application Insights 資源。 如果您還沒有資源和檢測金鑰，請遵循 [建立新的資源指示](create-new-resource.md)。
+2. 針對您想要在步驟 1 (傳送 JavaScript 遙測的資源，複製 _檢測金鑰_ (也稱為 "iKey" ) 。 ) 您會將它新增至 `instrumentationKey` Application Insights JavaScript SDK 的設定。
 3. 透過下列兩個選項的其中一個，將 Application Insights JavaScript SDK 新增至您的網頁或應用程式：
     * [npm 設定](#npm-based-setup)
     * [JavaScript 程式碼片段](#snippet-based-setup)
@@ -40,7 +40,7 @@ npm i --save @microsoft/applicationinsights-web
 ```
 
 > [!Note]
-> **Typings 隨附于此封裝**，因此您**不**需要安裝個別的 Typings 套件。
+> **Typings 隨附于此封裝**，因此您 **不** 需要安裝個別的 Typings 套件。
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -87,11 +87,11 @@ cfg: { // Application Insights Configuration
 - 您的終端使用者如何使用您的網站缺少遙測;
 - 缺少 JavaScript 錯誤，可能會封鎖您的終端使用者，使其無法成功使用您的網站。
 
-如需此例外狀況的詳細資訊，請參閱[SDK 載入失敗](javascript-sdk-load-failure.md)疑難排解頁面。
+如需此例外狀況的詳細資訊，請參閱 [SDK 載入失敗](javascript-sdk-load-failure.md) 疑難排解頁面。
 
 將此錯誤報表為入口網站的例外狀況，並不會使用 application insights 設定中的設定選項 ```disableExceptionTracking``` ，因此如果發生此失敗，它一律會由程式碼片段報告，即使已停用 windows onerror 支援也一樣。
 
-IE 8 (或更少的) 上特別不支援 SDK 載入失敗的報告。 這有助於減少程式碼片段的縮減大小，方法是假設大部分的環境不是專門的 IE 8 或更少。 如果您有此需求，而且想要收到這些例外狀況，您將需要包含提取 poly 填滿或建立使用的程式碼片段版本（ ```XDomainRequest``` 而不是 ```XMLHttpRequest``` ），建議您使用[提供的程式碼片段原始程式碼](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js)做為起點。
+IE 8 (或更少的) 上特別不支援 SDK 載入失敗的報告。 這有助於減少程式碼片段的縮減大小，方法是假設大部分的環境不是專門的 IE 8 或更少。 如果您有此需求，而且想要收到這些例外狀況，您將需要包含提取 poly 填滿或建立使用的程式碼片段版本（ ```XDomainRequest``` 而不是 ```XMLHttpRequest``` ），建議您使用 [提供的程式碼片段原始程式碼](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js) 做為起點。
 
 > [!NOTE]
 > 如果您使用的是舊版程式碼片段，則強烈建議您將更新為最新版本，以便收到先前未報告的問題。
@@ -163,9 +163,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | maxBatchInterval | 15000 | 傳送 (毫秒之前，批次遙測的時間長度)  |
 | disableExceptionTracking | false | 若為 true，則不會實驗自動收集例外狀況。 預設值為 false。 |
 | disableTelemetry | false | 若為 true，則不會收集或傳送遙測。 預設值為 false。 |
-| enableDebug | false | 若為 true，則不論 SDK 記錄設定為何，**內部**的偵錯工具資料都會擲回為例外狀況，**而不**是記錄。 預設值為 false。 <br>***注意：*** 啟用此設定將會在發生內部錯誤時產生已捨棄的遙測。 這有助於快速找出您的設定或使用 SDK 的問題。 如果您不想在進行調試時遺失遙測，請考慮使用 `consoleLoggingLevel` 或， `telemetryLoggingLevel` 而不是 `enableDebug` 。 |
-| loggingLevelConsole | 0 | 將**內部**Application Insights 錯誤記錄到主控台。 <br>0：關閉， <br>1：只有嚴重錯誤， <br>2： & 警告的所有 (錯誤)  |
-| loggingLevelTelemetry | 1 | 將**內部**Application Insights 錯誤當做遙測傳送。 <br>0：關閉， <br>1：只有嚴重錯誤， <br>2： & 警告的所有 (錯誤)  |
+| enableDebug | false | 若為 true，則不論 SDK 記錄設定為何， **內部** 的偵錯工具資料都會擲回為例外狀況， **而不** 是記錄。 預設值為 false。 <br>***注意：*** 啟用此設定將會在發生內部錯誤時產生已捨棄的遙測。 這有助於快速找出您的設定或使用 SDK 的問題。 如果您不想在進行調試時遺失遙測，請考慮使用 `consoleLoggingLevel` 或， `telemetryLoggingLevel` 而不是 `enableDebug` 。 |
+| loggingLevelConsole | 0 | 將 **內部** Application Insights 錯誤記錄到主控台。 <br>0：關閉， <br>1：只有嚴重錯誤， <br>2： & 警告的所有 (錯誤)  |
+| loggingLevelTelemetry | 1 | 將 **內部** Application Insights 錯誤當做遙測傳送。 <br>0：關閉， <br>1：只有嚴重錯誤， <br>2： & 警告的所有 (錯誤)  |
 | diagnosticLogInterval | 10000 |  (內部記錄佇列的內部) 輪詢間隔 (毫秒)  |
 | samplingPercentage | 100 | 將傳送的事件百分比。 預設值為100，表示傳送所有事件。 如果您想要保留大型應用程式的資料上限，請設定此設定。 |
 | autoTrackPageVisitTime | false | 若為 true，則在 pageview 上，會追蹤先前檢測的頁面的視圖時間並以遙測的形式傳送，並針對目前的 pageview 啟動新的計時器。 預設值為 false。 |
@@ -186,39 +186,39 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | isBeaconApiDisabled | true | 若為 false，SDK 會使用指標[API](https://www.w3.org/TR/beacon)傳送所有遙測 |
 | onunloadDisableBeacon | false | 預設值為 false。 當索引標籤關閉時，SDK 會使用指標[API](https://www.w3.org/TR/beacon)傳送所有剩餘的遙測 |
 | sdkExtension | null | 設定 sdk 延伸模組名稱。 只允許字母字元。 擴充功能名稱會新增為 ' sdkVersion ' 標籤的前置詞， (例如 ' ext_javascript： 2.0.0 ' ) 。 預設為 Null。 |
-| isBrowserLinkTrackingEnabled | false | 預設值為 false。 若為 true，SDK 將會追蹤所有[瀏覽器連結](/aspnet/core/client-side/using-browserlink)要求。 |
+| isBrowserLinkTrackingEnabled | false | 預設值為 false。 若為 true，SDK 將會追蹤所有 [瀏覽器連結](/aspnet/core/client-side/using-browserlink) 要求。 |
 | appId | null | AppId 會用於用戶端上發生的 AJAX 相依性與伺服器端要求之間的相互關聯。 啟用「指標 API」時，無法自動使用它，但可在設定中手動設定。 預設值為 null |
 | enableCorsCorrelation | false | 若為 true，SDK 會將 ( 「要求-識別碼」和「要求內容」 ) 的兩個標頭加入至所有 CORS 要求，以將外寄 AJAX 相依性與伺服器端上的對應要求相互關聯。 預設值為 false。 |
 | namePrefix | 未定義 | 選擇性值，將會作為 localStorage 和 cookie 名稱的名稱後置詞使用。
 | enableAutoRouteTracking | false | 自動追蹤單一頁面應用程式中的路由變更 (SPA) 。 若為 true，則每個路由變更都會將新的 Pageview 傳送至 Application Insights。  () 的雜湊路由變更 `example.com/foo#bar` 也會記錄為新的頁面流覽。
 | enableRequestHeaderTracking | false | 若為 true，則會追蹤 AJAX & 提取要求標頭，預設值為 false。
 | enableResponseHeaderTracking | false | 若為 true，則會追蹤 AJAX & 提取要求的回應標頭，預設值為 false。
-| distributedTracingMode | `DistributedTracingModes.AI` | 設定分散式追蹤模式。 如果設定 AI_AND_W3C 模式或 W3C 模式，則會產生 W3C 追蹤內容標頭 (traceparent/tracestate) ，並將其包含在所有傳出的要求中。 AI_AND_W3C 是針對與任何舊版 Application Insights 檢測服務的回溯相容性而提供的。 請參閱[這裡](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的範例。
+| distributedTracingMode | `DistributedTracingModes.AI` | 設定分散式追蹤模式。 如果設定 AI_AND_W3C 模式或 W3C 模式，則會產生 W3C 追蹤內容標頭 (traceparent/tracestate) ，並將其包含在所有傳出的要求中。 AI_AND_W3C 是針對與任何舊版 Application Insights 檢測服務的回溯相容性而提供的。 請參閱 [這裡](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的範例。
 | enableAjaxErrorStatusText | false | 預設值為 false。 若為 true，則在失敗的 AJAX 要求上包含相依性事件中的回應錯誤資料文字。
 | enableAjaxPerfTracking | false | 預設值為 false。 用來啟用查詢和包含其他瀏覽器視窗的旗標。回報的 (中的效能時間 `ajax` XHR 和提取) 回報的計量。
-| maxAjaxPerfLookupAttempts | 3 | 預設值為3。 要尋找視窗的最大次數。效能時間 (如果可用) ，就必須這麼做，因為並非所有的瀏覽器都會填入視窗。在報告 XHR 要求結束之前的效能，以及針對提取要求，這會在其完成後新增。
+| maxAjaxPerfLookupAttempts | 3 | 預設值為 3。 要尋找視窗的最大次數。效能時間 (如果可用) ，就必須這麼做，因為並非所有的瀏覽器都會填入視窗。在報告 XHR 要求結束之前的效能，以及針對提取要求，這會在其完成後新增。
 | ajaxPerfLookupDelay | 25 | 預設為25毫秒。 重新嘗試尋找 windows 之前等待的時間量。要求的效能 `ajax` 時間（以毫秒為單位），並會直接傳遞至 setTimeout ( # A1。
 | enableUnhandledPromiseRejectionTracking | false | 若為 true，未處理的承諾拒絕將會實驗自動收集，並回報為 JavaScript 錯誤。 當 disableExceptionTracking 為 true 時 (不追蹤例外狀況) ，將會忽略設定值，而且不會回報未處理的承諾拒絕。
 
 ## <a name="single-page-applications"></a>單一頁面應用程式
 
-根據預設，此 SDK**不**會處理在單一頁面應用程式中發生的狀態型路由變更。 若要為您的單一頁面應用程式啟用自動路由變更追蹤，您可以將新增 `enableAutoRouteTracking: true` 到您的安裝程式設定。
+根據預設，此 SDK **不** 會處理在單一頁面應用程式中發生的狀態型路由變更。 若要為您的單一頁面應用程式啟用自動路由變更追蹤，您可以將新增 `enableAutoRouteTracking: true` 到您的安裝程式設定。
 
-目前，我們提供了個別的[回應外掛程式](#react-extensions)，您可以使用這個 SDK 來初始化。 它也會為您完成路由變更追蹤，並收集[其他回應特定的遙測](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)。
+目前，我們提供了個別的 [回應外掛程式](#react-extensions)，您可以使用這個 SDK 來初始化。 它也會為您完成路由變更追蹤，並收集 [其他回應特定的遙測](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)。
 
 > [!NOTE]
 > `enableAutoRouteTracking: true`只有在您**未**使用「回應」外掛程式時，才使用。 這兩者都能夠在路由變更時傳送新的 PageViews。 如果兩者都已啟用，可能會傳送重複的 PageViews。
 
 ## <a name="configuration-autotrackpagevisittime"></a>設定： autoTrackPageVisitTime
 
-藉由設定 `autoTrackPageVisitTime: true` ，會追蹤使用者在每個頁面上花費的時間。 在每個新的 PageView 上，使用者花費在*上一頁*的持續時間會當做名為的[自訂](../platform/metrics-custom-overview.md)計量傳送 `PageVisitTime` 。 此自訂計量可在[計量瀏覽器](../platform/metrics-getting-started.md)中看到為「記錄式計量」。
+藉由設定 `autoTrackPageVisitTime: true` ，會追蹤使用者在每個頁面上花費的時間。 在每個新的 PageView 上，使用者花費在 *上一頁* 的持續時間會當做名為的 [自訂](../platform/metrics-custom-overview.md) 計量傳送 `PageVisitTime` 。 此自訂計量可在 [計量瀏覽器](../platform/metrics-getting-started.md) 中看到為「記錄式計量」。
 
 ## <a name="react-extensions"></a>回應延伸模組
 
 | 延伸模組 |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md) \(英文\)|
+| [React](javascript-react-plugin.md)|
+| [React Native](javascript-react-native-plugin.md) \(英文\)|
 
 ## <a name="correlation"></a>相互關聯
 
@@ -227,7 +227,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 - XHR/AJAX 要求 
 - 提取要求 
 
-和要求**不支援**用戶端對伺服器端的相互關聯 `GET` `POST` 。
+和要求 **不支援** 用戶端對伺服器端的相互關聯 `GET` `POST` 。
 
 ### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>啟用用戶端 AJAX 與伺服器要求之間的跨元件相互關聯
 
@@ -235,7 +235,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 視 `Access-Control-Allow-Headers` 伺服器端上的設定而定，通常需要手動新增和來擴充伺服器端清單 `Request-Id` `Request-Context` 。
 
-存取控制-允許-標頭： `Request-Id` 、 `Request-Context` 、`<your header>`
+存取控制-允許-標頭： `Request-Id` 、 `Request-Context` 、 `<your header>`
 
 如果用戶端與其通訊的任何協力廠商伺服器無法接受 `Request-Id` 和 `Request-Context` 標頭，而且您無法更新其設定，則您必須透過 configuration 屬性將它們放入排除清單中 `correlationHeaderExcludeDomains` 。 此屬性支援萬用字元。
 
@@ -254,13 +254,13 @@ cfg: { // Application Insights Configuration
 
 ## <a name="explore-browserclient-side-data"></a>探索瀏覽器/用戶端資料
 
-瀏覽器/用戶端資料可透過前往 [**計量**] 來查看，並新增您感興趣的個別計量：
+瀏覽器/用戶端資料可透過前往 [ **計量** ] 來查看，並新增您感興趣的個別計量：
 
 ![Application Insights 中 [計量] 頁面的螢幕擷取畫面，其中顯示 web 應用程式的度量資料圖形顯示。](./media/javascript/page-view-load-time.png)
 
 您也可以透過入口網站中的瀏覽器體驗，從 JavaScript SDK 來查看您的資料。
 
-選取 [**瀏覽器**]，然後選擇 [**失敗**] 或 [**效能**]。
+選取 [ **瀏覽器** ]，然後選擇 [ **失敗** ] 或 [ **效能**]。
 
 ![[瀏覽器] 頁面的螢幕擷取畫面，其中 Application Insights 顯示如何將瀏覽器失敗或瀏覽器效能新增至您可以為 web 應用程式查看的度量。](./media/javascript/browser.png)
 
@@ -274,7 +274,7 @@ cfg: { // Application Insights Configuration
 
 ### <a name="analytics"></a>分析
 
-若要查詢 JavaScript SDK 所收集的遙測資料，請選取 [**記錄 (分析) ** ] 按鈕中的 [查看]。 藉由新增的 `where` 語句 `client_Type == "Browser"` ，您只會看到來自 JavaScript SDK 的資料，而其他 sdk 所收集的任何伺服器端遙測也會被排除。
+若要查詢 JavaScript SDK 所收集的遙測資料，請選取 [ **記錄 (分析) ** ] 按鈕中的 [查看]。 藉由新增的 `where` 語句 `client_Type == "Browser"` ，您只會看到來自 JavaScript SDK 的資料，而其他 sdk 所收集的任何伺服器端遙測也會被排除。
  
 ```kusto
 // average pageView duration by name
@@ -297,12 +297,12 @@ dataset
 
 #### <a name="link-to-blob-storage-account"></a>連結至 Blob 儲存體帳戶
 
-您可以將 Application Insights 資源連結至您自己的 Azure Blob 儲存體容器，以自動 unminify 呼叫堆疊。 若要開始使用，請參閱[自動來源對應支援](./source-map-support.md)。
+您可以將 Application Insights 資源連結至您自己的 Azure Blob 儲存體容器，以自動 unminify 呼叫堆疊。 若要開始使用，請參閱 [自動來源對應支援](./source-map-support.md)。
 
 ### <a name="drag-and-drop"></a>拖放
 
 1. 在 [Azure 入口網站中選取例外狀況遙測專案，以查看其「端對端交易詳細資料」
-2. 識別與此呼叫堆疊對應的來源對應。 來源對應必須符合堆疊框架的原始程式檔，但尾碼為`.map`
+2. 識別與此呼叫堆疊對應的來源對應。 來源對應必須符合堆疊框架的原始程式檔，但尾碼為 `.map`
 3. 將來源對應拖放到 Azure 入口網站動畫影像中的呼叫堆疊，示範 ![ 如何從組建資料夾將來源對應檔案拖放到 Azure 入口網站的 [呼叫堆疊] 視窗中。](https://i.imgur.com/Efue9nU.gif)
 
 ### <a name="application-insights-web-basic"></a>Application Insights Web 基本
@@ -315,7 +315,7 @@ npm i --save @microsoft/applicationinsights-web-basic
 
 ## <a name="examples"></a>範例
 
-如需可執行檔範例，請參閱[Application Insights JAVASCRIPT SDK 範例](https://github.com/topics/applicationinsights-js-demo)
+如需可執行檔範例，請參閱 [Application Insights JAVASCRIPT SDK 範例](https://github.com/topics/applicationinsights-js-demo)
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>從舊版本的 Application Insights 升級
 
@@ -354,7 +354,7 @@ SDK V2 版本中的重大變更：
 > 摘要：
 > - ![npm 版本](https://badge.fury.io/js/%40microsoft%2Fapplicationinsights-web.svg)
 > - ![gzip 壓縮大小](https://img.badgesize.io/https://js.monitor.azure.com/scripts/b/ai.2.min.js.svg?compression=gzip)
-> - **15 毫秒**的整體初始化時間
+> - **15 毫秒** 的整體初始化時間
 > - 在頁面生命週期期間遺漏了**零**追蹤
 
 ## <a name="browser-support"></a>瀏覽器支援
@@ -373,9 +373,9 @@ Chrome 最新✔ |  Firefox 最新✔ | IE 9 + & Edge ✔<br>IE 8 相容 | Opera
 
 ## <a name="open-source-sdk"></a>開放原始碼 SDK
 
-Application Insights JavaScript SDK 是開放原始碼，可供您查看原始程式碼或參與專案，請造訪官方的[GitHub 存放庫](https://github.com/Microsoft/ApplicationInsights-JS)。 
+Application Insights JavaScript SDK 是開放原始碼，可供您查看原始程式碼或參與專案，請造訪官方的 [GitHub 存放庫](https://github.com/Microsoft/ApplicationInsights-JS)。 
 
-如需最新的更新和錯誤修正，[請參閱版本](./release-notes.md)資訊。
+如需最新的更新和錯誤修正， [請參閱版本](./release-notes.md)資訊。
 
 ## <a name="next-steps"></a><a name="next"></a> 後續步驟
 * [追蹤流量](usage-overview.md)

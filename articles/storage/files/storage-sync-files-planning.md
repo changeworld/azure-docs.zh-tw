@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 17274c2b5308b1e5069370400895c001dc03e5bb
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030652"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224436"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>規劃 Azure 檔案同步部署
 
@@ -255,7 +255,7 @@ Azure 檔案同步代理程式會使用 Azure 檔案同步 REST 通訊協定和 
 - 設定 Azure 檔案同步，以在您的環境中支援您的 Proxy。
 - 節流來自 Azure 檔案同步的網路活動。
 
-若要深入瞭解 Azure 檔案同步和網路功能，請參閱[Azure 檔案同步網路功能考慮](storage-sync-files-networking-overview.md)。
+若要深入瞭解 Azure 檔案同步和網路功能，請參閱 [Azure 檔案同步網路功能考慮](storage-sync-files-networking-overview.md)。
 
 ## <a name="encryption"></a>加密
 使用 Azure 檔案同步時，需要考慮三個不同層級的加密：在 Windows Server 的待用儲存體加密、在 Azure 檔案同步代理程式與 Azure 之間的傳輸中加密，以及在 Azure 檔案共用中資料的待用加密。 
@@ -357,7 +357,7 @@ Azure 檔案同步僅支援與位於和儲存體同步服務相同之區域中�
 
 您也可以使用資料箱，將資料遷移至 Azure 檔案同步部署。 在大部分的時候，當客戶想要使用資料箱來內嵌資料時，這麼做的原因是認為其會增加部署速度，或有助於頻寬受限的案例。 雖然使用資料箱將資料內嵌到您的 Azure 檔案同步部署的確會降低頻寬使用率，但在大部分的情況下，透過上述其中一種方法來執行線上資料上傳可能會更快。 若要深入了解如何使用資料箱將資料內嵌至您的 Azure 檔案同步部署，請參閱[使用 Azure 資料箱將資料遷移到 Azure 檔案同步](storage-sync-offline-data-transfer.md)。
 
-客戶在將資料遷移至新的 Azure 檔案同步部署時，常見的錯誤是將資料直接複製到 Azure 檔案共用，而不是其 Windows 檔案伺服器。 雖然 Azure 檔案同步會識別 Azure 檔案共用上的所有新檔案，並將其同步回您的 Windows 檔案共用，但這通常會比透過 Windows 檔案伺服器載入資料的速度慢很多。 使用 Azure 複製工具（例如 AzCopy）時，請務必使用最新版本。 請檢查檔案[複製工具資料表](storage-files-migration-overview.md#file-copy-tools)以取得 Azure 複製工具的總覽，以確保您可以複製檔案的所有重要中繼資料，例如時間戳記和 acl。
+客戶在將資料遷移至新的 Azure 檔案同步部署時，常見的錯誤是將資料直接複製到 Azure 檔案共用，而不是其 Windows 檔案伺服器。 雖然 Azure 檔案同步會識別 Azure 檔案共用上的所有新檔案，並將其同步回您的 Windows 檔案共用，但這通常會比透過 Windows 檔案伺服器載入資料的速度慢很多。 使用 Azure 複製工具（例如 AzCopy）時，請務必使用最新版本。 請檢查檔案 [複製工具資料表](storage-files-migration-overview.md#file-copy-tools) 以取得 Azure 複製工具的總覽，以確保您可以複製檔案的所有重要中繼資料，例如時間戳記和 acl。
 
 ## <a name="antivirus"></a>防毒
 因為防毒軟體的運作方式是掃描檔案中的已知惡意程式碼，所以防毒軟體產品可能會導致重新叫用階層式檔案，因而產生高輸出費用。 在 4.0 版和更新版本的 Azure 檔案同步代理程式中，階層式檔案已設定安全的 Windows 屬性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 建議您洽詢您的軟體廠商，以了解如何設定其解決方案來略過讀取已設定此屬性的檔案 (很多軟體會自動這麼做)。 
@@ -368,7 +368,7 @@ Azure 檔案同步僅支援與位於和儲存體同步服務相同之區域中�
 > 防毒軟體廠商可以使用 [Azure 檔案同步防毒相容性測試套件](https://www.microsoft.com/download/details.aspx?id=58322) (可從 Microsoft 下載中心下載)，檢查其產品與 Azure 檔案同步之間的相容性。
 
 ## <a name="backup"></a>Backup 
-如果已啟用雲端階層處理，則不應使用直接備份伺服器端點或伺服器端點所在之 VM 的解決方案。 雲端階層處理只會使您的資料子集儲存在伺服器端點上，而完整資料集則位於 Azure 檔案共用中。 視所使用的備份解決方案而定，階層式檔案會被略過且不會備份 (因為它們已設定 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性) ，或將其重新叫用到磁片，因而產生高輸出費用。 我們建議使用雲端備份解決方案，直接備份 Azure 檔案共用。 如需詳細資訊，請參閱[關於 azure 檔案共用備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)或請洽詢您的備份提供者，以查看其是否支援備份 Azure 檔案共用。
+如果已啟用雲端階層處理，則不應使用直接備份伺服器端點或伺服器端點所在之 VM 的解決方案。 雲端階層處理只會使您的資料子集儲存在伺服器端點上，而完整資料集則位於 Azure 檔案共用中。 視所使用的備份解決方案而定，階層式檔案會被略過且不會備份 (因為它們已設定 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性) ，或將其重新叫用到磁片，因而產生高輸出費用。 我們建議使用雲端備份解決方案，直接備份 Azure 檔案共用。 如需詳細資訊，請參閱 [關於 azure 檔案共用備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) 或請洽詢您的備份提供者，以查看其是否支援備份 Azure 檔案共用。
 
 如果您想要使用內部部署備份解決方案，應在已停用雲端階層處理的同步群組中的伺服器上執行備份。 執行還原時，請使用磁碟區層級或檔案層級的還原選項。 使用檔案層級還原選項進行還原的檔案會同步至同步群組中的所有端點，並使用從備份還原過來的版本取代現有檔案。  磁碟區層級還原將不會取代 Azure 檔案共用或其他伺服器端點中的較新檔案版本。
 
@@ -376,7 +376,7 @@ Azure 檔案同步僅支援與位於和儲存體同步服務相同之區域中�
 > 裸機 (BMR) 還原可能會導致非預期的結果，且目前不受支援。
 
 > [!Note]  
-> 搭配第 9 版的 Azure 檔案同步代理程式，已啟用雲端階層處理的磁碟區現在支援 VSS 快照集 (包括 [舊版] 索引標籤)。 不過，您必須透過 PowerShell 啟用舊版相容性。 [了解作法](storage-files-deployment-guide.md)。
+> 搭配第 9 版的 Azure 檔案同步代理程式，已啟用雲端階層處理的磁碟區現在支援 VSS 快照集 (包括 [舊版] 索引標籤)。 不過，您必須透過 PowerShell 啟用舊版相容性。 [了解作法](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service)。
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure 檔案同步代理程式更新原則
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

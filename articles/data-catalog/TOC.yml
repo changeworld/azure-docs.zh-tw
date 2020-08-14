@@ -1,4 +1,4 @@
-- name: 資料目錄文件
+- name: Azure 資料目錄文件
   href: index.yml
 - name: 概觀
   items:
@@ -23,7 +23,7 @@
       href: data-catalog-adopting-data-catalog.md
     - name: 常見問題集
       href: data-catalog-frequently-asked-questions.md
-- name: 如何
+- name: 操作指南
   items:
     - name: 註冊資料來源
       href: data-catalog-how-to-register.md

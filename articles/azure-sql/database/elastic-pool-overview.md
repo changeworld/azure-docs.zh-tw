@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 33f87bf6f030adb48f2c4f8eb45027c1b298d812
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c36a8e6f2e104d91bd7738849918c46802cd0dca
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419711"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225915"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>彈性集區可協助您管理和擴充中的多個資料庫 Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -35,7 +35,7 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 > [!IMPORTANT]
 > 彈性集區沒有每一資料庫的費用。 對於集區存在的每個小時，您均需要支付最高的 eDTU 或 vCore，不論使用量多高，或使用集區的時間是否少於一小時。
 
-彈性集區可讓開發人員為由多個資料庫共用的集區購買資源，以容納個別資料庫無法預期的使用量期間。 您可以根據[以 DTU 為基礎的購買模型](service-tiers-dtu.md)或[以虛擬核心為基礎的購買模型](service-tiers-vcore.md)，為集區設定資源。 集區的資源需求取決於其資料庫的彙總使用量。 集區可用的資源數量是由開發人員預算控制。 開發人員只需將資料庫新增至集區，即可選擇性地設定資料庫的最小和最大資源（根據您選擇的資源模型，最小和最大 Dtu 或最小或最大虛擬核心），然後根據其預算設定集區的資源。 開發人員可以使用集區順暢地擴大其服務，以漸增的規模從精簡的新創公司到成熟的企業。
+彈性集區可讓開發人員為由多個資料庫共用的集區購買資源，以容納個別資料庫無法預期的使用量期間。 您可以根據[以 DTU 為基礎的購買模型](service-tiers-dtu.md)或[以虛擬核心為基礎的購買模型](service-tiers-vcore.md)，為集區設定資源。 集區的資源需求取決於其資料庫的彙總使用量。 集區可用的資源數量是由開發人員預算控制。 開發人員只需將資料庫新增至集區，即可根據您選擇的資源模型) ，選擇性地設定資料庫的最小和最大資源 (最小值和最大值或最大值虛擬核心，然後根據其預算設定集區的資源。 開發人員可以使用集區順暢地擴大其服務，以漸增的規模從精簡的新創公司到成熟的企業。
 
 在集區內，會給予個別資料庫彈性以在設定的參數內自動調整。 負載量大時，資料庫可以取用更多的資源以滿足需求。 負載較輕的資料庫取用較少的資源，而完全無負載的資料庫不會取用任何資源。 針對整個集區佈建資源，而不是針對單一資料庫佈建資源，可簡化管理工作。 此外，您還可以有可預測的集區預算。 其他資源可以新增至具有最短停機時間的現有集區。 同樣地，如果不再需要額外資源，則隨時可以從現有集區中移除。 而且您可以在集區中新增或移除資料庫。 如果可以預測資料庫使用少量資源，則將它移出。
 
@@ -44,7 +44,7 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>何時該考慮使用 SQL Database 彈性集區
 
-集區很適合具備特定使用模式的大量資料庫。 針對指定的資料庫，此模式的特徵是低平均使用量與相對不頻繁的使用量高峰。 相反地，具有持續性中等高使用率的多個資料庫不應放在相同的彈性集區中。
+集區非常適合大量具有特定使用模式的資料庫。 針對指定的資料庫，此模式的特徵是低平均使用量與相對不頻繁的使用量高峰。 相反地，具有持續性中等高使用率的多個資料庫不應放在相同的彈性集區中。
 
 您可以加入集區的資料庫愈多，可獲得的節約就愈高。 根據您的應用程式使用模式，您可以只使用兩個 S3 資料庫來查看節省的費用。
 
@@ -102,10 +102,10 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 集區的最佳大小取決於集區中所有資料庫所需的彙總資源。 這牽涉到決定下列各項：
 
-- 集區中所有資料庫利用的資源上限（Dtu 上限或最大虛擬核心，視您選擇的購買模型而定）。
+- 集區中所有資料庫利用的資源上限 (Dtu 上限或最大虛擬核心，視您選擇的購買模型) 而定。
 - 集區中所有資料庫使用的最大儲存體位元組。
 
-如需每個資源模型的可用服務層級和限制，請參閱以[DTU 為基礎的購買模型](service-tiers-dtu.md)或[vCore 為基礎的購買模型](service-tiers-vcore.md)。
+如需每個資源模型的可用服務層級和限制，請參閱以 [DTU 為基礎的購買模型](service-tiers-dtu.md) 或 [vCore 為基礎的購買模型](service-tiers-vcore.md)。
 
 下列步驟可協助您評估集區是否比單一資料庫更符合成本效益：
 
@@ -113,11 +113,11 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 對於以 DTU 為基礎的購買模型：
 
-最大值（<資料庫*總數*x*每個 DB 的平均 DTU 使用量*>，<*並行尖峰 DB 數*x*每個 db 的尖峰 dtu 使用量*）
+最大 ( # B0 資料庫 *總數* X *每個 DB 的平均 DTU 使用量*>，<*並行尖峰 DB 數* x *每個 db> 的尖峰 dtu 使用量*) 
 
 對於以虛擬核心為基礎的購買模型：
 
-最大值（<資料庫*總數*x*每個 Db 的平均 vCore 使用量*>，<*並行的尖峰 db* x*每個 db 的尖峰 vCore 使用量*）
+最大 ( # B0 資料庫 *總數* x *每個 Db 的平均 vCore 使用率*>，<*並行尖峰 DB 數目* x *每個 db> 的尖峰 vCore 使用量*) 
 
 2. 加總集區中所有資料庫所需的位元組數目，以估計集區所需的儲存空間。 然後判斷可提供此儲存體數量的 eDTU 集區大小。
 3. 針對以 DTU 為基礎的購買模型，採用步驟 1 和步驟 2 中較大的 eDTU 估計值。 針對以虛擬核心為基礎的購買模型，採用步驟 1 中的虛擬核心估計值。
@@ -125,7 +125,7 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 5. 將步驟 5 的集區價格與單一資料庫適當計算大小的價格相比較。
 
 > [!IMPORTANT]
-> 如果集區中的資料庫數目接近支援的最大值，請務必考慮[密集彈性集區中的資源管理](elastic-pool-resource-management.md)。
+> 如果集區中的資料庫數目接近支援的最大值，請務必考慮 [密集彈性集區中的資源管理](elastic-pool-resource-management.md)。
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>搭配彈性集區使用其他的 SQL Database 功能
 
@@ -155,13 +155,13 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 在 Azure 入口網站中建立彈性集區的方式有兩種。
 
-1. 移至[Azure 入口網站](https://portal.azure.com)以建立彈性集區。 搜尋並選取 **[Azure SQL**]。
+1. 移至 [Azure 入口網站](https://portal.azure.com) 以建立彈性集區。 搜尋並選取 **[Azure SQL**]。
 2. 選取 [+ 新增] 以開啟 [選取 SQL 部署選項] 頁面。 您可以選取 [**資料庫**] 磚上的 [**顯示詳細資料**]，以查看有關彈性集區的其他資訊。
 3. 在 [**資料庫**] 磚的 [**資源類型**] 下拉式清單中，選取 [**彈性集**區]，然後選取 [**建立**]：
 
    ![建立彈性集區](./media/elastic-pool-overview/create-elastic-pool.png)
 
-4. 或者，您可以流覽至現有伺服器，然後按一下 [ **+ 新增集**區]，直接在該伺服器中建立集區，以建立彈性集區。
+4. 或者，您可以流覽至現有伺服器，然後按一下 [ **+ 新增集** 區]，直接在該伺服器中建立集區，以建立彈性集區。
 
 > [!NOTE]
 > 您可以在伺服器上建立多個集區，但無法將來自不同伺服器的資料庫新增到相同的集區。
@@ -221,8 +221,8 @@ SaaS 開發人員會在由多個資料庫組成的大規模資料層上建置應
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需定價資訊，請參閱[彈性集區定價](https://azure.microsoft.com/pricing/details/sql-database/elastic)。
+- 如需定價資訊，請參閱 [彈性集區定價](https://azure.microsoft.com/pricing/details/sql-database/elastic)。
 - 若要調整彈性集區，請參閱[調整彈性集區](elastic-pool-scale.md)和[調整彈性集區 - 範例程式碼](scripts/monitor-and-scale-pool-powershell.md)
 - 若要深入了解使用彈性集區的 SaaS 應用程式的設計模式，請參閱 [採用 Azure SQL Database 的多租用戶 SaaS 應用程式的設計模式](saas-tenancy-app-design-patterns.md)。
 - 如需使用彈性集區的 SaaS 教學課程，請參閱 [Wingtip SaaS 應用程式簡介](saas-dbpertenant-wingtip-app-overview.md)。
-- 若要瞭解具有許多資料庫的彈性集區中的資源管理，請參閱[密集彈性集區中的資源管理](elastic-pool-resource-management.md)。
+- 若要瞭解具有許多資料庫的彈性集區中的資源管理，請參閱 [密集彈性集區中的資源管理](elastic-pool-resource-management.md)。

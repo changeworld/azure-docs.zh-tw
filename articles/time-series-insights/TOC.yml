@@ -156,7 +156,7 @@
         - name: 資料存取 Gen1
           items:
             - name: 概觀
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga'
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1'
             - name: 查詢
               items:
                 - name: 查詢

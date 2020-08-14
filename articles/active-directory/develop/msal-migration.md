@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: fd19b451638eacbf0d6174154a2688b3523ca4d2
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: ac9264ea8d6cc71d19d2c9bbd23b2123bdf1f924
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183865"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224351"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>將應用程式遷移至 Microsoft 驗證程式庫 (MSAL) 
 
@@ -63,6 +63,9 @@ __問：如何? 知道哪些應用程式使用 ADAL？__
 __問：為什麼要投入 MSAL？__  
 答： MSAL 包含不在 ADAL 中的新功能，包括累加式同意、單一登入和權杖快取管理。 此外，與 ADAL 不同的是，MSAL 會繼續接收2022年6月30日以外的安全性修補程式。 [深入了解](msal-overview.md)。
 
+__問： Microsoft 會將自己的應用程式更新為 MSAL 嗎？__  
+是。 Microsoft 正在將其應用程式遷移至 MSAL，並依支援期限結束，確保其受益于 MSAL 持續的安全性和功能改進。
+
 __問：您是否發行可協助我將應用程式從 ADAL 移至 MSAL 的工具？__  
 答：否。 程式庫之間的差異需要專門用來開發和維護工具的資源，否則會花在改善 MSAL。 不過，我們提供了前述的一組遷移指南，協助您在應用程式中進行必要的變更。
 
@@ -70,7 +73,7 @@ __問： MSAL 如何與 AD FS 搭配運作？__
 答： MSAL.NET 支援針對 AD FS 2019 進行驗證的特定案例。 如果您的應用程式需要直接從舊版 AD FS 取得權杖，您應該保留在 ADAL 上。 [深入了解](msal-net-adfs-support.md)。
 
 __問：如何? 取得遷移應用程式的協助嗎？__  
-答：請參閱本文的[遷移指引](#migration-guidance)一節。 如果在閱讀您應用程式平臺的指南之後，有其他問題，您可以在 Stack Overflow 上張貼標記， `[adal-deprecation]` 或在程式庫的 GitHub 存放庫中提出問題。 請參閱 MSAL 總覽文章的[語言和](msal-overview.md#languages-and-frameworks)架構一節，以取得每個程式庫儲存機制的連結。
+答：請參閱本文的 [遷移指引](#migration-guidance) 一節。 如果在閱讀您應用程式平臺的指南之後，有其他問題，您可以在 Stack Overflow 上張貼標記， `[adal-deprecation]` 或在程式庫的 GitHub 存放庫中提出問題。 請參閱 MSAL 總覽文章的 [語言和](msal-overview.md#languages-and-frameworks) 架構一節，以取得每個程式庫儲存機制的連結。
 
 ## <a name="next-steps"></a>後續步驟
 

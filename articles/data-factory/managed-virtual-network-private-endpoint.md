@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: c0f23c864430b6cb2f49f924d5aaa8bde296037c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135958"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225677"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory 受控虛擬網路 (preview) 
 
@@ -82,17 +82,13 @@ Azure Data Factory 支援私用連結。 私人連結可讓您存取 Azure (PaaS
 - Azure Synapse Analytics (先前稱為 Azure SQL 資料倉儲)
 - Azure CosmosDB SQL
 - Azure 金鑰保存庫
-- Azure Private Link
+- Azure 私人連結服務
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>透過來自 ADF 受控虛擬網路的公用端點輸出通訊
 - 僅針對輸出通訊開啟埠443。
 - Azure 儲存體和 Azure Data Lake Gen2 不支援透過來自 ADF 受控虛擬網路的公用端點連線。
 
-### <a name="other-known-issues"></a>其他已知問題
-CosmosDB 連線的 Debug 執行無法運作，包括資料流程 debug 和管線 debug。
-
-
 ## <a name="next-steps"></a>後續步驟
 
-- 教學課程：[使用受控虛擬網路和私人端點建立複製管線](tutorial-copy-data-portal-private.md) 
-- 教學課程：[使用受控虛擬網路和私人端點建立對應資料流程管線](tutorial-data-flow-private.md)
+- 教學課程： [使用受控虛擬網路和私人端點建立複製管線](tutorial-copy-data-portal-private.md) 
+- 教學課程： [使用受控虛擬網路和私人端點建立對應資料流程管線](tutorial-data-flow-private.md)
