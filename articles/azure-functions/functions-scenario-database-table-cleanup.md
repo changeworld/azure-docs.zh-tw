@@ -3,31 +3,32 @@ title: 使用 Azure Functions 執行資料庫清除工作
 description: 使用 Azure Functions 排程可連接到 Azure SQL Database 以定期清除資料列的工作。
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 10/02/2019
-ms.openlocfilehash: 29e90838d91de69af43ae9cf8ec0d99b534f66be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0b5e255d7d108eb063ece4e5489a8762261a0bed
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506072"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207264"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 連接到 Azure SQL Database
 
-本文說明如何使用 Azure Functions 建立連接至 Azure SQL Database 或 Azure SQL 受控執行個體的排程工作。 函式程式碼會清除資料庫中資料表中的資料列。 新的 c # 函數是根據 Visual Studio 2019 中預先定義的計時器觸發程式範本所建立。 若要支援此案例，您也必須在函式應用程式中設定資料庫連接字串以作為設定。 針對 Azure SQL 受控執行個體您必須[啟用公用端點](../azure-sql/managed-instance/public-endpoint-configure.md)，才能從 Azure Functions 連接。 此案例會對資料庫使用大量作業。 
+本文說明如何使用 Azure Functions 建立連接至 Azure SQL Database 或 Azure SQL 受控執行個體的排程工作。 函式程式碼會清除資料庫中資料表中的資料列。 新的 c # 函數是根據 Visual Studio 2019 中預先定義的計時器觸發程式範本所建立。 若要支援此案例，您也必須在函式應用程式中設定資料庫連接字串以作為設定。 針對 Azure SQL 受控執行個體您必須 [啟用公用端點](../azure-sql/managed-instance/public-endpoint-configure.md) ，才能從 Azure Functions 連接。 此案例會對資料庫使用大量作業。 
 
 如果這是您第一次使用 C# Functions，則您應該先閱讀 [Azure Functions C# 開發人員參考資料](functions-dotnet-class-library.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-+ 完成[使用 Visual Studio 建立您的第一個](functions-create-your-first-function-visual-studio.md)函式一文中的步驟，以建立以2.x 版或更新版本的執行時間為目標的區域函式應用程式。 您還必須已將專案發佈至 Azure 中的函數應用程式。
++ 完成 [使用 Visual Studio 建立您的第一個](functions-create-your-first-function-visual-studio.md) 函式一文中的步驟，以建立以2.x 版或更新版本的執行時間為目標的區域函式應用程式。 您還必須已將專案發佈至 Azure 中的函數應用程式。
 
-+ 本文章將示範在 AdventureWorksLT 範例資料庫的 **SalesOrderHeader** 資料表中執行大量清除作業的 Transact-SQL 命令。 若要建立 AdventureWorksLT 範例資料庫，請完成[使用 Azure 入口網站在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文中的步驟。
++ 本文章將示範在 AdventureWorksLT 範例資料庫的 **SalesOrderHeader** 資料表中執行大量清除作業的 Transact-SQL 命令。 若要建立 AdventureWorksLT 範例資料庫，請完成 [使用 Azure 入口網站在 Azure SQL Database 中建立資料庫](../azure-sql/database/single-database-create-quickstart.md)一文中的步驟。
 
 + 在此快速入門中，您必須加入您所使用電腦的公用 IP 位址[伺服器層級防火牆規則](../azure-sql/database/firewall-create-server-level-portal-quickstart.md)。 需要此規則才能從您的本機電腦存取 SQL Database 實例。  
 
 ## <a name="get-connection-information"></a>取得連線資訊
 
-當您[使用 Azure 入口網站在 Azure SQL Database 中完成建立資料庫](../azure-sql/database/single-database-create-quickstart.md)時，您必須取得所建立資料庫的連接字串。
+當您 [使用 Azure 入口網站在 Azure SQL Database 中完成建立資料庫](../azure-sql/database/single-database-create-quickstart.md)時，您必須取得所建立資料庫的連接字串。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 

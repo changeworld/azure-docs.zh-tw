@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 19c08029e78e68273298e76635136ff35ae724e0
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c242b08c598b04c84ab330e846704eace23c4858
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924116"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205482"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 虛擬網路的常見問題 (FAQ)
 
@@ -36,7 +36,7 @@ Azure 虛擬網路 (VNet) 是您的網路在雲端中的身分。 它是專屬�
 * 啟用混合式雲端案例。 VNet 可讓您彈性地支援許多混合式雲端案例。 您可以將雲端型應用程式安全地連接到任何類型的內部部署系統，例如大型主機和 Unix 系統。
 
 ### <a name="how-do-i-get-started"></a>如何開始？
-請造訪[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)以開始使用。 本內容提供所有 VNet 功能的概觀和部署資訊。
+請造訪 [虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/) 以開始使用。 本內容提供所有 VNet 功能的概觀和部署資訊。
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>我可以使用不包含跨單位連線的 VNet 嗎？
 是。 您可以使用 VNet，而不用將它連線到您的單位。 例如，您可以在 Azure VNet 中單獨執行 Microsoft Windows Server Active Directory 網域控制站和 SharePoint 伺服器陣列。
@@ -55,7 +55,7 @@ Azure 虛擬網路 (VNet) 是您的網路在雲端中的身分。 它是專屬�
 * 網路組態檔 (netcfg - 僅適用於傳統 VNet)。 請參閱[使用網路組態檔設定 VNet](virtual-networks-using-network-configuration-file.md)一文。
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>我可以在 VNet 中使用哪些位址範圍？
-建議您使用[RFC 1918](https://tools.ietf.org/html/rfc1918)中列舉的位址範圍，這是由 IETF 針對私用、無法路由傳送的位址空間所設定：
+建議您使用 [RFC 1918](https://tools.ietf.org/html/rfc1918)中列舉的位址範圍，這是由 IETF 針對私用、無法路由傳送的位址空間所設定：
 * 10.0.0.0 - 10.255.255.255 (10/8 首碼)
 * 172.16.0.0-172.31.255.255 (172.16./12 前置詞) 
 * 192.168.0.0 - 192.168.255.255 (192.168/16 首碼)
@@ -86,22 +86,22 @@ Azure 虛擬網路 (VNet) 是您的網路在雲端中的身分。 它是專屬�
 支援的最小 IPv4 子網為/29，而最大的是/8 (使用 CIDR 子網定義) 。  IPv6 子網的大小必須完全為/64。  
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>我可以使用 VNet 將 VLAN 帶到 Azure 嗎？
-否。 VNet 是 Layer-3 重疊。 Azure 不支援任何 Layer-2 語意。
+不正確。 VNet 是 Layer-3 重疊。 Azure 不支援任何 Layer-2 語意。
 
 ### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>可以在我的 Vnet 和子網路上指定自訂路由原則嗎？
 是。 您可以建立路由表，並且將它與子網路產生關聯。 如需 Azure 中路由的詳細資訊，請參閱[路由概觀](virtual-networks-udr-overview.md#custom-routes)。
 
 ### <a name="do-vnets-support-multicast-or-broadcast"></a>VNet 是否支援多點傳送或廣播？
-否。 不支援多點傳送與廣播。
+不正確。 不支援多點傳送與廣播。
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>我可以在 VNet 中使用哪些通訊協定？
 您可以在 VNet 中使用 TCP、UDP 和 ICMP TCP/IP 通訊協定。 Vnet 內支援單播，但動態主機設定通訊協定除外 (DHCP) 透過單播 (來源埠 UDP/68/目的地埠 UDP/67) 和為主機保留的 UDP 來源埠65330。 多點傳送、廣播、IP-in-IP 封裝式封包和 Generic Routing Encapsulation (GRE) 封包在 VNet 內會遭到封鎖。 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>我可以在 VNet 中偵測我的預設路由器嗎？
-否。
+不正確。
 
 ### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>我可以使用 tracert 來診斷連線嗎？
-否。
+不正確。
 
 ### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>我可以在建立 VNet 之後新增子網路嗎？
 是。 只要子網路位址範圍不是其他子網路的一部分，而且虛擬網路的位址範圍中有可用空間，子網路就可以隨時新增至 VNet。
@@ -116,10 +116,10 @@ Azure 虛擬網路 (VNet) 是您的網路在雲端中的身分。 它是專屬�
 是。 部署在 VNet 中的所有服務皆可輸出連線到網際網路。 若要深入了解 Azure 中的輸出網際網路連線，請參閱[輸出連線](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 如果您想要輸入連線到透過 Resource Manager 所部署的資源，該資源必須已獲派公用 IP 位址。 若要深入了解公用 IP 位址，請參閱[公用 IP 位址](virtual-network-public-ip-address.md)。 Azure 中部署的每個 Azure 雲端服務皆已指派公開可定址的 VIP。 您必須定義 PaaS 角色的輸入端點和虛擬機器的端點，啟用這些服務以接受來自網際網路的連接。
 
 ### <a name="do-vnets-support-ipv6"></a>VNet 是否支援 IPv6？
-是，Vnet 可以是僅限 IPv4 或雙堆疊 (IPv4 + IPv6) 。  如需詳細資訊，請參閱[Azure 虛擬網路的 IPv6 總覽](./ipv6-overview.md)。
+是，Vnet 可以是僅限 IPv4 或雙堆疊 (IPv4 + IPv6) 。  如需詳細資訊，請參閱 [Azure 虛擬網路的 IPv6 總覽](./ipv6-overview.md)。
 
 ### <a name="can-a-vnet-span-regions"></a>VNet 可以跨區域嗎？
-否。 VNet 僅限於單一區域。 不過，虛擬網路可以跨越可用性區域。 若要深入了解可用性區域，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 您可以使用虛擬網路對等互連，與不同區域中的虛擬網路連線。 如需詳細資訊，請參閱[虛擬網路對等互連概觀](virtual-network-peering-overview.md)
+不正確。 VNet 僅限於單一區域。 不過，虛擬網路可以跨越可用性區域。 若要深入了解可用性區域，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 您可以使用虛擬網路對等互連，與不同區域中的虛擬網路連線。 如需詳細資訊，請參閱[虛擬網路對等互連概觀](virtual-network-peering-overview.md)
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>我可以將 VNet 連線到 Azure 中的另一個 VNet 嗎？
 是。 您可以使用下列其中一個項目，將一個 VNet 連線到另一個 VNet︰
@@ -149,7 +149,7 @@ VNet 中的前 100 個雲端服務具有使用 Azure 所提供 DNS 進行跨租�
 是。 您可以根據每個虛擬機器或雲端服務設定 DNS 伺服器，以便覆寫預設網路設定。 不過，建議您盡可能使用全網路 DNS。
 
 ### <a name="can-i-bring-my-own-dns-suffix"></a>我可以加上自己的 DNS 尾碼嗎？
-否。 您無法針對 VNet 指定自訂的 DNS 尾碼。
+不正確。 您無法針對 VNet 指定自訂的 DNS 尾碼。
 
 ## <a name="connecting-virtual-machines"></a>連接虛擬機器
 
@@ -165,7 +165,7 @@ VNet 中的前 100 個雲端服務具有使用 Azure 所提供 DNS 進行跨租�
 * **公用︰** 選擇性地指派至與透過 Azure Resource Manager 部署模型部署的 VM 所連接的 NIC。 您可使用靜態或動態配置方法來指派位址。 所有透過傳統部署模型部署的 VM 與雲端服務角色執行個體，皆存在於受指派動態** 公用虛擬 IP (VIP) 位址的雲端服務內。 公用*靜態* IP 位址，稱為[保留的 IP 位址](virtual-networks-reserved-public-ip.md)，可選擇性地被指派為 VIP。 您可以將公用 IP 位址指派至透過傳統部署模型部署的個別 VM 或雲端服務角色執行個體。 這些位址稱為[執行個體層級公用 IP (ILPIP](virtual-networks-instance-level-public-ip.md)位址，並可動態指派。
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>我可以為稍後建立的 VM 保留私人 IP 位址嗎？
-否。 您不能保留私人 IP 位址。 如果有可用的私人 IP 位址，則會由 DHCP 伺服器指派至虛擬機器或角色執行個體。 該虛擬機器可能不是您想要指派私人 IP 位址的目的地。 不過，您可以將已建立虛擬機器的私人 IP 位址變更為任何可用的私人 IP 位址。
+不正確。 您不能保留私人 IP 位址。 如果有可用的私人 IP 位址，則會由 DHCP 伺服器指派至虛擬機器或角色執行個體。 該虛擬機器可能不是您想要指派私人 IP 位址的目的地。 不過，您可以將已建立虛擬機器的私人 IP 位址變更為任何可用的私人 IP 位址。
 
 ### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>VNet 中的私人 IP 位址會根據 VM 進行變更嗎？
 要看情況而定。 如果是透過 Resource Manager 來部署 VM，不論 IP 位址是使用靜態還是動態配置方法指派的，都不會變更。 如果虛擬機器是透過傳統部署模型所部署的，當虛擬機器在處於已停止 (已解除配置) 狀態之後又啟動，動態 IP 位址會變更。 當虛擬機器遭到刪除時，位址會從透過任一種部署模型所部署的虛擬機器中釋放出來。
@@ -180,7 +180,7 @@ VNet 中的前 100 個雲端服務具有使用 Azure 所提供 DNS 進行跨租�
 是。 您可以在[如何將 VM 或角色執行個體移至不同的子網路](virtual-networks-move-vm-role-to-subnet.md)一文內找到更多資訊。
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>我可以針對 VM 設定靜態 MAC 位址嗎？
-否。 MAC 位址無法以靜態方式設定。
+不正確。 MAC 位址無法以靜態方式設定。
 
 ### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>當我建立虛擬機器之後 MAC 位址會保持相同的狀態嗎？
 是，若是建立透過 Resource Manager 和傳統部署模型部署的 VM，MAC 位址會維持不變，直至刪除為止。 以往，當 VM 狀態為已停止 (已重新分配) 時，系統會釋放 MAC 位址，但現在即使 VM 狀態為重新分配時，MAC 位址仍會保持不變。 在網路介面遭到刪除或指派給主要網路介面之主要 IP 組態的私人 IP 位址遭到變更之前，MAC 位址會保持指派給網路介面。 
@@ -209,10 +209,10 @@ VNet 中的前 100 個雲端服務具有使用 Azure 所提供 DNS 進行跨租�
 
 ### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>如何限制從 VNet 存取 Azure PaaS 資源？
 
-透過某些 Azure PaaS (服務（例如 Azure 儲存體和 Azure SQL Database) ）部署的資源，可以透過使用虛擬網路服務端點或 Azure 私人連結來限制對 VNet 的網路存取。 如需詳細資訊，請參閱[虛擬網路服務端點總覽](virtual-network-service-endpoints-overview.md)、 [Azure 私用連結總覽](../private-link/private-link-overview.md)
+透過某些 Azure PaaS (服務（例如 Azure 儲存體和 Azure SQL Database) ）部署的資源，可以透過使用虛擬網路服務端點或 Azure 私人連結來限制對 VNet 的網路存取。 如需詳細資訊，請參閱 [虛擬網路服務端點總覽](virtual-network-service-endpoints-overview.md)、 [Azure 私用連結總覽](../private-link/private-link-overview.md)
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>我可以將服務移入和移出 VNet 嗎？
-否。 您無法將服務移入和移出 VNet。 若要將資源移至另一個 VNet，您必須刪除並重新部署資源。
+不正確。 您無法將服務移入和移出 VNet。 若要將資源移至另一個 VNet，您必須刪除並重新部署資源。
 
 ## <a name="security"></a>安全性
 
@@ -231,7 +231,7 @@ VNet 會與另一個 VNet，以及其他裝載於 Azure 基礎結構中的服務
 ## <a name="apis-schemas-and-tools"></a>API、結構描述和工具
 
 ### <a name="can-i-manage-vnets-from-code"></a>我可以從程式碼管理 VNet 嗎？
-是。 您可以在[Azure Resource Manager](/rest/api/virtual-network)和[傳統](https://go.microsoft.com/fwlink/?LinkId=296833)部署模型中使用適用于 vnet 的 REST api。
+是。 您可以在 [Azure Resource Manager](/rest/api/virtual-network) 和 [傳統](https://go.microsoft.com/fwlink/?LinkId=296833) 部署模型中使用適用于 vnet 的 REST api。
 
 ### <a name="is-there-tooling-support-for-vnets"></a>是否有工具支援 VNet？
 是。 深入了解如何使用：
@@ -269,34 +269,34 @@ VNet 對等互連 (或虛擬網路對等互連) 可讓您將虛擬網路連線�
 是。 如果您的訂用帳戶屬於不同的 Azure Active Directory 租用戶，則無法建立 VNet 對等互連 (不論是本機還是全域)。 您可以透過 PowerShell 或 CLI 執行此動作。 尚不支援入口網站。
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>我的 VNet 對等互連連線處於「已起始」** 狀態，但為何無法連線？
-如果您的對等互連連線處於*起始*狀態，這表示您只建立了一個連結。 必須建立雙向連結，才能建立成功的連線。 例如，若要建立 VNet A 對 VNet B 的對等互連，則必須建立從 VNetA 到 VNetB 和從 VNetB 到 VNetA 的連結。 建立這兩個連結會將狀態變更為 [*已連線*]。
+如果您的對等互連連線處於 *起始* 狀態，這表示您只建立了一個連結。 必須建立雙向連結，才能建立成功的連線。 例如，若要建立 VNet A 對 VNet B 的對等互連，則必須建立從 VNetA 到 VNetB 和從 VNetB 到 VNetA 的連結。 建立這兩個連結會將狀態變更為 [ *已連線*]。
 
 ### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>我的 VNet 對等互連連線處於「已中斷連線」** 狀態，為何我無法將連線對等互連？
-如果您的 VNet 對等互連連線處於*中斷*連線的狀態，則表示已刪除其中一個已建立的連結。 若要重新建立對等互連連線，您必須刪除該連結並加以重新建立。
+如果您的 VNet 對等互連連線處於 *中斷* 連線的狀態，則表示已刪除其中一個已建立的連結。 若要重新建立對等互連連線，您必須刪除該連結並加以重新建立。
 
 ### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>我的 VNet 是否可與不同訂用帳戶中的 VNet 對等互連？
 是。 您可以跨訂用帳戶和跨區域建立 VNet 的對等互連。
 
 ### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>我是否可將兩個具有相同或重疊位址範圍的 VNet 對等互連？
-否。 位址空間不可重疊，才能啟用 VNet 對等互連。
+不正確。 位址空間不可重疊，才能啟用 VNet 對等互連。
 
 ### <a name="how-much-do-vnet-peering-links-cost"></a>VNet 對等互連連結的費用為何？
 建立 VNet 對等互連連線無需收費。 透過對等互連連線的資料傳輸才會收費。 [請參閱這裡](https://azure.microsoft.com/pricing/details/virtual-network/)。
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet 對等互連流量是否會加密？
-否。 在對等互連的 VNet 中，資源之間的流量是私人且隔離的。 流量會完全保留在 Microsoft 骨幹上。
+不正確。 在對等互連的 VNet 中，資源之間的流量是私人且隔離的。 流量會完全保留在 Microsoft 骨幹上。
 
-### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>為什麼我的對等互連連線處於*中斷*線上狀態？
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>為什麼我的對等互連連線處於 *中斷* 線上狀態？
 一個 VNet 對等互連連結遭到刪除時，VNet 對等互連連線即會進入「中斷連線」** 狀態。 您必須將兩個連結都刪除，以重新建立成功的對等互連連線。
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>如果我建立 VNetA 到 VNetB 的對等互連，然後又建立 VNetB 到 VNetC 的對等互連，這是否表示 VNetA 與 VNetC 之間會有對等互連？
-否。 目前不支援轉移的對等互連。 為此，您必須直接建立 VNetA 與 VNetC 的對等互連。
+不正確。 目前不支援轉移的對等互連。 為此，您必須直接建立 VNetA 與 VNetC 的對等互連。
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>對等互連連線是否有任何頻寬限制？
-否。 VNet 對等互連 (不論本機或全域) 並未施加任何頻寬限制。 頻寬只受限於 VM 或計算資源。
+不正確。 VNet 對等互連 (不論本機或全域) 並未施加任何頻寬限制。 頻寬只受限於 VM 或計算資源。
 
 ### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>如何對 VNet 對等互連問題進行疑難排解？
-以下是您可以嘗試的[疑難排解員指南](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues)。
+以下是您可以嘗試的 [疑難排解員指南](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues) 。
 
 ## <a name="virtual-network-tap"></a>虛擬網路 TAP
 
@@ -307,7 +307,7 @@ VNet 對等互連 (或虛擬網路對等互連) 可讓您將虛擬網路連線�
 虛擬網路 TAP 預覽版不支援篩選功能。 將 TAP 設定新增到網路介面時，網路介面上所有連入和連出流量的深層複本將會串流處理到 TAP 目的地。
 
 ### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>是否可以將多個 TAP 設定新增到受監視的網路介面？
-受監視的網路介面只能有一個 TAP 設定。 請洽詢個別的[合作夥伴解決方案](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)，以取得將流量分散到您選擇之分析工具的多個複本的功能。
+受監視的網路介面只能有一個 TAP 設定。 請洽詢個別的 [合作夥伴解決方案](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) ，以取得將流量分散到您選擇之分析工具的多個複本的功能。
 
 ### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>相同的虛擬網路 TAP 資源，是否可以彙總來自多個虛擬網路中受監視的網路介面的流量？
 是。 相同的虛擬網路 TAP 資源可用來在相同訂用帳戶或不同訂用帳戶中，彙總對等互連虛擬網路中之受監視的網路介面的鏡像流量。 虛擬網路 TAP 資源和目的地負載平衡器或目的地網路介面，必須位於相同的訂用帳戶中。 所有訂用帳戶都必須位於相同的 Azure Active Directory 租用戶下。
@@ -332,7 +332,7 @@ VNet 對等互連 (或虛擬網路對等互連) 可讓您將虛擬網路連線�
 >[!NOTE]
 > 您必須先完成上述兩個作業，才能限制 Azure 服務存取所允許的 VNet 和子網路。 只在網路端針對 Azure 服務開啟服務端點不能提供您受限制的存取。 此外，您也必須在 Azure 服務端設定 VNet ACL。
 
-某些服務 (例如 SQL 和 CosmosDB) 允許上述序列的例外狀況通過**IgnoreMissingVnetServiceEndpoint**旗標。 一旦將旗標設定為**True**，就可以在 Azure 服務端設定 VNet acl，再于網路端設定服務端點。 Azure 服務提供此旗標來協助客戶避免連線中斷，若 IP 防火牆是設定在 Azure 服務上，在網路端開啟服務端點可能會導致連線中斷，因為來源 IP 從公用 IPv4 位址變更為私人位址。 先在 Azure 服務端設定 VNet ACL，再於網路端設定服務端點有助於避免連線中斷。
+某些服務 (例如 SQL 和 CosmosDB) 允許上述序列的例外狀況通過 **IgnoreMissingVnetServiceEndpoint** 旗標。 一旦將旗標設定為 **True**，就可以在 Azure 服務端設定 VNet acl，再于網路端設定服務端點。 Azure 服務提供此旗標來協助客戶避免連線中斷，若 IP 防火牆是設定在 Azure 服務上，在網路端開啟服務端點可能會導致連線中斷，因為來源 IP 從公用 IPv4 位址變更為私人位址。 先在 Azure 服務端設定 VNet ACL，再於網路端設定服務端點有助於避免連線中斷。
 
 ### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>是否所有的 Azure 服務都位在客戶提供的 Azure 虛擬網路中？ VNet 服務端點如何與 Azure 服務搭配運作？
 
@@ -356,7 +356,7 @@ VNet 服務端點是協助保護 Azure 服務資源。 VNet 資源是由「網�
 是，可以的。 虛擬網路和 Azure 服務資源可以位在相同或不同的訂用帳戶中。 唯一的需求是虛擬網路和 Azure 服務資源必須在相同的 Active Directory (AD) 租用戶下。
 
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>如果虛擬網路和 Azure 服務資源屬於不同 AD 租用戶，是否可開啟 VNet 服務端點並設定 VNet ACL？
-否，跨 AD 租用戶的情況不支援 VNet 服務端點和 VNet ACL。
+是的，在使用 Azure 儲存體和 Azure Key Vault 的服務端點時，是可行的。 對於服務的其餘部分，AD 租使用者不支援 VNet 服務端點和 VNet Acl。
 
 ### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>透過 Azure 虛擬網路閘道連線的內部部署裝置 IP 位址 (VPN) 或 ExpressRoute 閘道會透過 VNet 服務端點存取 Azure PaaS 服務嗎？
 根據預設，從內部部署網路無法觸達放到虛擬網路保護的 Azure 服務資源。 如果需要允許來自內部部署的流量，您也必須允許內部部署或 ExpressRoute 中的公用 (通常是 NAT) IP 位址。 透過 Azure 服務資源的 IP 防火牆設定，可以新增這些 IP 位址。
@@ -386,13 +386,13 @@ Azure 服務帳戶的刪除是獨立的作業，即使已在網路端啟用服�
 當虛擬網路服務端點啟用時，您虛擬網路中的資源用來傳送流量至 Azure 服務的來源 IP 位址，會從使用公用 IPV4 位址切換為使用 Azure 虛擬網路的私人位址。 請注意，這可能會導致先前在 Azure 服務上設定為公用 IPV4 位址的特定 IP 防火牆失敗。 
 
 ### <a name="does-the-service-endpoint-route-always-take-precedence"></a>服務端點路由是否一律會優先處理？
-服務端點會新增系統路由，其優先順序高於 BGP 路由，並提供服務端點流量的最佳路由。 服務端點接受的服務流量，一律都是直接從您的虛擬網路到 Microsoft Azure 骨幹網路上的服務。 如需 Azure 如何選取路由的詳細資訊，請參閱[Azure 虛擬網路流量路由](virtual-networks-udr-overview.md)。
+服務端點會新增系統路由，其優先順序高於 BGP 路由，並提供服務端點流量的最佳路由。 服務端點接受的服務流量，一律都是直接從您的虛擬網路到 Microsoft Azure 骨幹網路上的服務。 如需 Azure 如何選取路由的詳細資訊，請參閱 [Azure 虛擬網路流量路由](virtual-networks-udr-overview.md)。
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>子網路上的 NSG 如何搭配服務端點運作？
 為了與 Azure 服務建立連線，NSG 需要允許輸出連線。 如果您的 NSG 對所有網際網路輸出流量都是開放的，服務端點流量應該就能運作。 您也可以使用「服務」標籤，限制輸出流量只有流向服務 IP 的流量。  
  
 ### <a name="what-permissions-do-i-need-to-set-up-service-endpoints"></a>設定服務端點需要哪些權限？
-擁有虛擬網路寫入權的使用者，可以在虛擬網路上個別設定服務端點。 若要保護 VNet 的 Azure 服務資源，使用者必須擁有所要新增之子網的**virtualNetworks/subnet/joinViaServiceEndpoint/action**許可權。 此權限預設會隨附在內建的服務管理員角色中，可藉由建立自訂角色加以修改。 深入了解內建角色以及如何將特定權限指派給[自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+擁有虛擬網路寫入權的使用者，可以在虛擬網路上個別設定服務端點。 若要保護 VNet 的 Azure 服務資源，使用者必須擁有所要新增之子網的 **virtualNetworks/subnet/joinViaServiceEndpoint/action** 許可權。 此權限預設會隨附在內建的服務管理員角色中，可藉由建立自訂角色加以修改。 深入了解內建角色以及如何將特定權限指派給[自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles?toc=%2fazure%2fvirtual-network%2ftoc.json)。
  
 
 ### <a name="can-i-filter-virtual-network-traffic-to-azure-services-allowing-only-specific-azure-service-resources-over-vnet-service-endpoints"></a>是否能篩選流向 Azure 服務的虛擬網路流量，僅允許特定 Azure 服務資源的流量經過 VNet 服務端點？ 
@@ -401,7 +401,7 @@ Azure 服務帳戶的刪除是獨立的作業，即使已在網路端啟用服�
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory (Azure AD) 支援 VNet 服務端點嗎？
 
-Azure Active Directory (Azure AD) 不會以原生方式支援服務端點。 您可以在[這裡](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)看到支援 VNet 服務端點的 Azure 服務完整清單。 請注意，[支援服務端點的服務] 底下所列的 "AzureActiveDirectory" 標記會用來支援服務端點，以 ADLS Gen 1。 對於 ADLS Gen 1，Azure Data Lake Storage Gen1 的虛擬網路整合會在您的虛擬網路與 Azure Active Directory (Azure AD) 之間使用虛擬網路服務端點安全性，以在存取權杖中產生額外的安全性宣告。 這些宣告隨後會用來對 Data Lake Storage Gen1 帳戶驗證虛擬網路並允許存取。 深入瞭解[Azure Data Lake Store Gen 1 VNet 整合](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+Azure Active Directory (Azure AD) 不會以原生方式支援服務端點。 您可以在 [這裡](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)看到支援 VNet 服務端點的 Azure 服務完整清單。 請注意，[支援服務端點的服務] 底下所列的 "AzureActiveDirectory" 標記會用來支援服務端點，以 ADLS Gen 1。 對於 ADLS Gen 1，Azure Data Lake Storage Gen1 的虛擬網路整合會在您的虛擬網路與 Azure Active Directory (Azure AD) 之間使用虛擬網路服務端點安全性，以在存取權杖中產生額外的安全性宣告。 這些宣告隨後會用來對 Data Lake Storage Gen1 帳戶驗證虛擬網路並允許存取。 深入瞭解 [Azure Data Lake Store Gen 1 VNet 整合](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>從我的 VNet 能設定的 VNet 服務端點數量是否有限制？
 虛擬網路中的 VNet 服務端點總數沒有限制。 對於 Azure 服務資源 (例如 Azure 儲存體帳戶) ，服務可能會強制執行用來保護資源的子網數目限制。 下表顯示一些範例限制： 

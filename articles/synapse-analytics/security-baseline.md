@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2cd42d8d4ba1ecabc1b87942536e2ef9a9017b22
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7f05e4fb0443107370f9182706bd35b45771e0f2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501945"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210889"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>適用于 Synapse 分析的 Azure 安全性基準
 
@@ -46,7 +46,7 @@ ms.locfileid: "87501945"
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：監視和記錄虛擬網路、子網和網路介面的設定和流量
 
-**指引**.. 連線到您的 AZURE Synapse SQL 集區，而且您已啟用網路安全性群組（NSG）流量記錄時，請將記錄傳送到 Azure 儲存體帳戶以進行流量審核。
+**指引**.. 連接到您的 AZURE Synapse SQL 集區，並已啟用網路安全性群組 (NSG) 流量記錄，請將記錄傳送到 Azure 儲存體帳戶以進行流量的審核。
 
 您也可將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供對 Azure 雲端流量的見解。 流量分析的優點包括能將網路活動視覺化並找出作用點、識別安全性威脅、了解流量模式並找到錯誤的網路設定。
 
@@ -72,7 +72,7 @@ ms.locfileid: "87501945"
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指引**：針對 AZURE Synapse SQL 使用先進的威脅防護（ATP）。 ATP 會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫，而且它可以觸發各種警示，例如「潛在的 SQL 插入式」和「從不尋常的位置存取」。 ATP 是 Advanced data security （ADS）供應專案的一部分，可以透過中央 SQL ADS 入口網站存取及管理。
+**指導**方針：針對 AZURE Synapse SQL 使用 Advanced 威脅防護 (ATP) 。 ATP 會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫，而且它可以觸發各種警示，例如「潛在的 SQL 插入式」和「從不尋常的位置存取」。 ATP 是 Advanced data security (ADS) 供應專案的一部分，而且可以透過中央 SQL ADS 入口網站存取及管理。
 
 在與 Azure Synapse SQL 相關聯的虛擬網路上啟用 DDoS 保護標準，以防止分散式阻斷服務攻擊。 使用 Azure 資訊安全中心的整合式威脅情報，以拒絕與已知為惡意或未使用的網際網路 IP 位址通訊。
 
@@ -92,7 +92,7 @@ ms.locfileid: "87501945"
 
 ### <a name="15-record-network-packets"></a>1.5：記錄網路封包
 
-**指引**.. 連線到您的 AZURE Synapse SQL 集區，而且您已啟用網路安全性群組（NSG）流量記錄時，請將記錄傳送到 Azure 儲存體帳戶以進行流量審核。 您也可以將流量記錄傳送到 Log Analytics 工作區，或將它們串流至事件中樞。 如果需要調查異常活動，請啟用網路監看員封包捕捉。
+**指引**.. 連接到您的 AZURE Synapse SQL 集區，並已啟用網路安全性群組 (NSG) 流量記錄，請將記錄傳送到 Azure 儲存體帳戶以進行流量的審核。 您也可以將流量記錄傳送到 Log Analytics 工作區，或將它們串流至事件中樞。 如果需要調查異常活動，請啟用網路監看員封包捕捉。
 
 * [如何啟用 NSG 流量記錄](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
 
@@ -102,9 +102,9 @@ ms.locfileid: "87501945"
 
 **責任**：客戶
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署網路型入侵偵測/入侵預防系統（IDS/IPS）
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統 (IDS/IPS) 
 
-**指引**：針對 AZURE Synapse SQL 使用先進的威脅防護（ATP）。 ATP 會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫，而且它可以觸發各種警示，例如「潛在的 SQL 插入式」和「從不尋常的位置存取」。 ATP 是 Advanced data security （ADS）供應專案的一部分，可以透過中央 SQL ADS 入口網站存取及管理。 ATP 也會將警示與 Azure 資訊安全中心整合。
+**指導**方針：針對 AZURE Synapse SQL 使用 Advanced 威脅防護 (ATP) 。 ATP 會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫，而且它可以觸發各種警示，例如「潛在的 SQL 插入式」和「從不尋常的位置存取」。 ATP 是 Advanced data security (ADS) 供應專案的一部分，而且可以透過中央 SQL ADS 入口網站存取及管理。 ATP 也會將警示與 Azure 資訊安全中心整合。
 
 * [瞭解 Azure Synapse SQL 的 ATP](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 
@@ -124,7 +124,7 @@ ms.locfileid: "87501945"
 
 **指導**方針：使用虛擬網路服務標籤來定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 在規則的適當來源或目的地欄位中指定服務標籤名稱 (例如 ApiManagement)，即可允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤包含的位址前置詞，並隨著位址變更自動更新服務標籤。
 
-使用 Azure Synapse SQL 集區的服務端點時，需要輸出至 Azure SQL database 公用 IP 位址：必須開啟網路安全性群組（Nsg），才能 Azure SQL Database Ip 來允許連線。 您可以使用 Azure SQL Database 的 NSG 服務標記來執行這項操作。
+使用 Azure Synapse SQL 集區的服務端點時，需要輸出至 Azure SQL database 公用 IP 位址：必須開啟網路安全性群組 (Nsg) ，才能 Azure SQL Database Ip 來允許連線。 您可以使用 Azure SQL Database 的 NSG 服務標記來執行這項操作。
 
 * [瞭解 Azure SQL Database 服務端點的服務標記](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview#limitations)
 
@@ -138,7 +138,7 @@ ms.locfileid: "87501945"
 
 **指導**方針：使用 Azure 原則，為與您的 SQL 集區相關的資源定義和執行網路安全性設定。 您可以使用 "Microsoft .Sql" 命名空間來定義自訂原則定義，或使用針對 Azure SQL database/伺服器網路保護所設計的任何內建原則定義。 Azure SQL Database 伺服器適用的內建網路安全性原則範例如下：「SQL Server 應該使用虛擬網路服務端點」。
 
-使用 Azure 藍圖，藉由在單一藍圖定義中封裝金鑰環境成品（例如 Azure 資源管理範本、角色型存取控制（RBAC）和原則），以簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
+使用 Azure 藍圖，藉由在單一藍圖定義中封裝金鑰環境成品（例如 Azure 資源管理範本、角色型存取控制 (RBAC) 和原則），以簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂閱、環境，以及透過版本控制來微調控制和管理。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -150,7 +150,7 @@ ms.locfileid: "87501945"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：文件流量設定規則
 
-**指導**方針：使用網路安全性群組（NSG）的標記，以及與網路安全性和流量相關的其他資源。 對於個別的 NSG 規則，使用 [描述] 欄位，針對允許進出網路流量的任何規則指定商務需求和/或持續時間 (等等)。
+**指導**方針：使用網路安全性群組的標籤 (NSG) 以及與網路安全性和流量相關的其他資源。 對於個別的 NSG 規則，使用 [描述] 欄位，針對允許進出網路流量的任何規則指定商務需求和/或持續時間 (等等)。
 
 使用與標記相關的任何內建 Azure 原則定義（例如「需要標記和其值」），以確保所有資源都是以標籤建立，並通知您現有的未標記資源。
 
@@ -190,7 +190,7 @@ ms.locfileid: "87501945"
 
 ### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指導**方針：您可以針對特定資料庫定義稽核原則，或為 azure 中的預設伺服器原則（裝載 azure Synapse）。 伺服器原則會套用至伺服器上所有現有和新建立的資料庫。
+**指引**：您可以針對特定資料庫定義稽核原則，或為裝載 azure Synapse) 的 azure (中的預設伺服器原則。 伺服器原則會套用至伺服器上所有現有和新建立的資料庫。
 
 如果已啟用伺服器審核，它一律會套用到資料庫。 不論資料庫稽核資料是什麼，都會稽核資料庫。
 
@@ -208,7 +208,7 @@ ms.locfileid: "87501945"
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的稽核記錄
 
-**指引**：在 Azure sql 伺服器層級上啟用 Synapse SQL 集區的審核，並為 audit 記錄（Azure 儲存體、Log Analytics 或事件中樞）選擇儲存位置。
+**指引**：在您的 Synapse SQL 集區的 Azure sql 伺服器層級上啟用審核，並為 audit 記錄選擇儲存位置 (Azure 儲存體、Log Analytics 或事件中樞) 。
 
 您可以在資料庫或伺服器層級上啟用審核，而且建議只在伺服器層級上啟用，除非您需要為特定資料庫設定個別的資料接收或保留。
 
@@ -264,7 +264,7 @@ ms.locfileid: "87501945"
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2.7：啟用異常活動的警示
 
-**指導**方針：使用 Advanced 威脅防護（ATP）搭配 Azure 資訊安全中心來監視及警示異常活動的 Azure SQL Database。 ATP 是 Advanced data security （ADS）供應專案的一部分，可以透過入口網站中的中央 SQL ADS 來存取和管理。 ADS 包含探索和分類敏感性資料、呈現和減輕潛在資料庫弱點，以及偵測可能表示對資料庫有威脅之異常活動的功能。
+**指導**方針：使用 Advanced 威脅防護 (ATP Azure SQL Database) 搭配 Azure 資訊安全中心來監視及警示異常活動。 ATP 屬於先進的資料安全性 (ADS) 供應專案，而且可以透過入口網站中的中央 SQL ADS 存取和管理。 ADS 包含探索和分類敏感性資料、呈現和減輕潛在資料庫弱點，以及偵測可能表示對資料庫有威脅之異常活動的功能。
 
 或者，您可以啟用和麵板上的資料來 Azure Sentinel。
 
@@ -328,7 +328,7 @@ ms.locfileid: "87501945"
 
 * [如何管理 Azure SQL 中的現有登入和系統管理員帳戶](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Azure 內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (機器翻譯)
+* [Azure 內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -336,7 +336,7 @@ ms.locfileid: "87501945"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在適用的情況下變更預設密碼
 
-**指導**方針： Azure Active Directory 沒有預設密碼的概念。 布建 Azure Synapse SQL 集區時，建議您選擇整合驗證與 Azure Active Directory。 使用此驗證方法時，使用者會提交使用者帳戶名稱，並要求服務使用儲存在 Azure Active Directory （Azure AD）中的認證資訊。
+**指導**方針： Azure Active Directory 沒有預設密碼的概念。 布建 Azure Synapse SQL 集區時，建議您選擇整合驗證與 Azure Active Directory。 使用此驗證方法時，使用者會提交使用者帳戶名稱，並要求服務使用儲存在 Azure Active Directory (Azure AD) 中的認證資訊。
 
 * [如何使用 Azure SQL 設定和管理 Azure Active Directory 驗證](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#active-directory-password-authentication)
 
@@ -360,13 +360,13 @@ ms.locfileid: "87501945"
 
 **責任**：客戶
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入（SSO）
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 單一登入 (SSO) 
 
-**指引**：使用 Azure 應用程式註冊（服務主體）來抓取權杖，其可透過 API 呼叫在控制平面（Azure 入口網站）上用來與您的資料倉儲互動。
+**指引**：使用 Azure 應用程式註冊 (服務主體) 來抓取可在控制平面上用來與資料倉儲互動的權杖， (Azure 入口網站) 透過 API 呼叫。
 
 * [如何呼叫 Azure REST Api](https://docs.microsoft.com/rest/api/azure/#how-to-call-azure-rest-apis-with-postman)
 
-* [如何向 Azure AD 註冊您的用戶端應用程式（服務主體）](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
+* [如何向 Azure AD 註冊用戶端應用程式 (服務主體) ](https://docs.microsoft.com/rest/api/azure/#register-your-client-application-with-azure-ad)
 
 * [Azure Synapse SQL REST API 資訊](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api)
 
@@ -390,7 +390,7 @@ ms.locfileid: "87501945"
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：使用安全、受 Azure 管理的工作站來進行系統管理工作
 
-**指導**方針：使用已設定多重要素驗證（MFA）的特殊許可權存取工作站（PAW）來登入及設定 Azure 資源。
+**指導**方針：使用特殊許可權存取工作站 (PAW) 搭配多重要素驗證 (MFA) 設定為登入和設定 Azure 資源。
 
 * [瞭解特殊權限存取工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -434,7 +434,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指引**：在 Synapse SQL 集區中建立 Azure SQL Database 伺服器的 AZURE ACTIVE DIRECTORY （AD）系統管理員。
+**指引**：在 Synapse SQL 集區中為 Azure SQL Database 伺服器建立 AZURE ACTIVE DIRECTORY (AD) 系統管理員。
 
 * [如何使用 Azure SQL 設定和管理 Azure AD 驗證](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
 
@@ -460,7 +460,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3.11：監視嘗試存取已停用的認證
 
-**指導**方針：使用 Azure SQL 設定 AZURE ACTIVE DIRECTORY （AD）驗證，並啟用 Azure Active Directory 使用者帳戶的診斷設定，將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 在 Log Analytics 中設定所需的警示。
+**指引**：使用 Azure SQL 設定 AZURE ACTIVE DIRECTORY (AD) 驗證，並啟用 Azure Active Directory 使用者帳戶的診斷設定，並將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 在 Log Analytics 中設定所需的警示。
 
 使用 SQL 驗證時，請在資料庫中建立自主資料庫使用者。 請確定您將一個或多個資料庫使用者放入自訂資料庫角色，並具有適合該使用者群組的特定許可權。
 
@@ -478,7 +478,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12：帳戶登入行為偏差的警示
 
-**指導**方針：使用 Azure Active Directory （Azure AD）身分識別保護和風險偵測功能，針對偵測到與使用者身分識別相關的可疑動作設定自動回應。 此外，您還可以將資料內嵌到 Azure Sentinel 以進一步調查。
+**指導**方針：使用 Azure Active Directory (Azure AD) Identity Protection 和風險偵測功能，針對偵測到與使用者身分識別相關的可疑動作設定自動回應。 此外，您還可以將資料內嵌到 Azure Sentinel 以進一步調查。
 
 使用 SQL 驗證時，請在資料庫中建立自主資料庫使用者。 請確定您將一個或多個資料庫使用者放入自訂資料庫角色，並具有適合該使用者群組的特定許可權。
 
@@ -540,7 +540,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的敏感性資訊傳輸
 
-**指導**方針：針對 Synapse SQL 集區中儲存或處理敏感資訊的任何 Azure SQL Database，請使用標記，將資料庫和相關資源標示為機密。 在 Azure SQL Database 實例上，將私人連結與網路安全性群組（NSG）服務標籤搭配，以防止外泄機密資訊。
+**指導**方針：針對 Synapse SQL 集區中儲存或處理敏感資訊的任何 Azure SQL Database，請使用標記，將資料庫和相關資源標示為機密。 將私人連結與網路安全性群組搭配使用 (NSG Azure SQL Database 實例上的) 服務標籤，以防止機密資訊的外泄。
 
 此外，Azure SQL Database 的先進威脅防護、Azure SQL 受控執行個體和 Azure Synapse 會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫。
 
@@ -558,7 +558,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有敏感性資訊
 
-**指導**方針： Azure SQL Database 使用傳輸層安全性來加密移動中的資料，以保護您的資料。 SQL Server 會隨時對所有連線強制執行加密（SSL/TLS）。 這可確保所有資料都會在用戶端與伺服器之間「傳輸中」加密，而不論連接字串中的 [加密] 或 [TrustServerCertificate] 設定。
+**指導**方針： Azure SQL Database 使用傳輸層安全性來加密移動中的資料，以保護您的資料。 SQL Server 會隨時針對所有連線強制執行加密 (SSL/TLS) 。 這可確保所有資料都會在用戶端與伺服器之間「傳輸中」加密，而不論連接字串中的 [加密] 或 [TrustServerCertificate] 設定。
 
 * [瞭解傳輸中的 Azure SQL 加密](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview#information-protection-and-encryption)
 
@@ -572,7 +572,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 資料探索 &amp; 分類是 Advanced Data security 供應專案的一部分，它是先進 SQL 安全性功能的整合套件。 資料探索 &amp; 分類可以透過中央 SQL ADS 入口網站存取及管理。
 
-此外，您可以在 Azure 入口網站中設定動態資料遮罩（DDM）原則。 DDM 建議引擎會將您資料庫中的特定欄位標示為潛在的敏感性欄位，這可能適合用來進行遮罩。
+此外，您可以在 Azure 入口網站中 (DDM) 原則設定動態資料遮罩。 DDM 建議引擎會將您資料庫中的特定欄位標示為潛在的敏感性欄位，這可能適合用來進行遮罩。
 
 * [如何使用 Azure SQL Server 的資料探索和分類](https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification)
 
@@ -584,7 +584,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用以角色為基礎的存取控制來控制對資源的存取
 
-**指引**：使用 azure 角色型存取控制（azure RBAC）來管理 Synapse SQL 集區中 azure SQL 資料庫的存取權。
+**指導**方針：使用 azure 角色型存取控制 (azure RBAC) 來管理 Synapse SQL 集區中 azure SQL 資料庫的存取權。
 
 授權是由使用者帳戶的資料庫角色成員資格和物件層級許可權所控制。 最好的作法是，您應該授與使用者所需的最低權限。
 
@@ -610,7 +610,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密待用的敏感性資訊
 
-**指引**：透明資料加密（TDE）可透過加密待用資料，協助保護 AZURE Synapse SQL 免于惡意離線活動的威脅。 它會對資料庫、相關聯的備份和待用的交易記錄檔執行即時加密和解密，而不需變更應用程式。 在 Azure 中，TDE 的預設設定是由內建的伺服器憑證來保護 DEK。 或者，您可以使用客戶管理的 TDE （也稱為攜帶您自己的金鑰（BYOK）支援 TDE。 在此案例中，加密 DEK 的 TDE 保護裝置是客戶管理的非對稱金鑰，它會儲存在客戶擁有和受控 Azure Key Vault （Azure 的雲端式外部金鑰管理系統）中，而且永遠不會離開金鑰保存庫。
+**指引**：透明資料加密 (TDE) 有助於保護 AZURE Synapse SQL 免于惡意的離線活動的威脅，方法是加密待用資料。 它會對資料庫、相關聯的備份和待用的交易記錄檔執行即時加密和解密，而不需變更應用程式。 在 Azure 中，TDE 的預設設定是由內建的伺服器憑證來保護 DEK。 或者，您可以使用客戶管理的 TDE，也稱為攜帶您自己的金鑰 (BYOK) TDE 支援。 在此案例中，加密 DEK 的 TDE 保護裝置是客戶管理的非對稱金鑰，它會儲存在客戶擁有和受控 Azure Key Vault (Azure 的雲端式外部金鑰管理系統) 且永遠不會離開金鑰保存庫。
 
 * [瞭解服務管理的透明資料加密](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-tde-overview?tabs=azure-portal)
 
@@ -672,7 +672,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較連續性弱點掃描
 
-**指引**：弱點評定是 AZURE Synapse SQL 內建的掃描服務。 服務會採用旗標安全性弱點的規則知識庫。 它會反白顯示與最佳作法的偏差，例如錯誤配置、過多的許可權，以及未受保護的敏感性資料。 您可以透過中央 SQL Advanced Data Security （ADS）入口網站存取及管理弱點評定。
+**指引**：弱點評定是 AZURE Synapse SQL 內建的掃描服務。 服務會採用旗標安全性弱點的規則知識庫。 它會反白顯示與最佳作法的偏差，例如錯誤配置、過多的許可權，以及未受保護的敏感性資料。 弱點評定可以透過中央 SQL Advanced Data Security (ADS) 入口網站來存取及管理。
 
 * [在 SQL ADS 入口網站中管理和匯出弱點評定掃描](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
@@ -682,7 +682,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程序來排定所發現弱點的補救優先順序
 
-**指導**方針：使用 Azure 資訊安全中心所提供的預設風險評等（安全分數）。
+**指導**方針：使用預設風險分級 (Azure 資訊安全中心所提供的安全分數) 。
 
 資料探索 &amp; 分類已內建于 Azure SYNAPSE SQL 中。 它提供先進的功能來探索、分類、標記和報告您資料庫中的敏感性資料。
 
@@ -700,7 +700,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自動化資產探索解決方案
 
-**指引**：使用 Azure Resource Graph 來查詢和探索與您的訂用帳戶內 Synapse SQL 集區相關的所有資源。 確保租用戶中有適當的 (讀取) 權限，且能列舉所有 Azure 訂用帳戶以及訂用帳戶中的資源。
+**指導**方針：使用 Azure Resource Graph 來查詢和探索您的訂用帳戶 (s) 中與 Synapse SQL 集區相關的所有資源。 確保租用戶中有適當的 (讀取) 權限，且能列舉所有 Azure 訂用帳戶以及訂用帳戶中的資源。
 
 雖然可透過 Azure Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
 
@@ -788,11 +788,11 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
-**指引**：使用下列內建原則定義，利用 Azure 原則來對可在客戶訂用帳戶中建立的資源類型施加限制：
+**指引**：使用 Azure 原則來對可在客戶訂用帳戶中建立的資源類型（使用下列內建原則定義）進行限制 (s) ：
 - 不允許的資源類型
 - 允許的資源類型
 
-使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。 確保已核准環境中的所有 Azure 資源。
+使用 Azure Resource Graph 來查詢/探索訂用帳戶 (s) 內的資源。 確保已核准環境中的所有 Azure 資源。
 
 * [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -942,7 +942,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 祕密
 
-**指引**：在 Azure Key Vault 中使用客戶管理的金鑰透明資料加密（TDE），可讓使用客戶管理的非對稱金鑰（稱為 TDE 保護裝置）來加密自動產生的資料庫加密金鑰（DEK）。 這通常也稱為透明資料加密的攜帶您自己的金鑰 (BYOK) 支援。 在 BYOK 案例中，TDE 保護裝置會儲存在客戶擁有和受控 Azure Key Vault 中。 此外，請確定已在 Azure Key Vault 中啟用虛刪除。
+**指導**方針：在 Azure Key Vault 中透明資料加密 (TDE) 與客戶管理的金鑰，可讓使用客戶管理的非對稱金鑰（稱為 TDE 保護裝置）來加密自動產生的資料庫加密金鑰 (DEK) 。 這通常也稱為透明資料加密的攜帶您自己的金鑰 (BYOK) 支援。 在 BYOK 案例中，TDE 保護裝置會儲存在客戶擁有和受控 Azure Key Vault 中。 此外，請確定已在 Azure Key Vault 中啟用虛刪除。
 
 * [如何從 Azure Key Vault 使用客戶管理的金鑰來啟用 TDE](https://docs.microsoft.com/azure/azure-sql/database/transparent-data-encryption-byok-configure?tabs=azure-powershell)
 
@@ -954,7 +954,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指引**：在 AZURE ACTIVE DIRECTORY （AD）中使用受控識別，以自動管理的身分識別來提供 Azure 服務。 受控識別可讓您向任何支援 Azure AD 驗證的服務進行驗證，包括 Azure Key Vault，而您的程式碼中沒有任何認證。
+**指導**方針：使用受控識別，在 AZURE ACTIVE DIRECTORY (AD) 中，為 Azure 服務提供自動受控識別。 受控識別可讓您向任何支援 Azure AD 驗證的服務進行驗證，包括 Azure Key Vault，而您的程式碼中沒有任何認證。
 
 * [教學課程：使用 Windows VM 系統指派的受控識別來存取 Azure SQL](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql)
 
@@ -988,7 +988,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指導**方針：支援 azure 服務的基礎主機上已啟用 Microsoft 反惡意程式碼（例如 AZURE Synapse SQL）;不過，它不會對客戶內容執行。
+**指引**：在支援 azure 服務 (的基礎主機上啟用 Microsoft 反惡意程式碼，例如 AZURE Synapse SQL) ;不過，它不會對客戶內容執行。
 
 預先掃描要上傳至非計算 Azure 資源的任何內容，例如 App Service、Data Lake Storage、Blob 儲存體、Azure SQL Server 等等。Microsoft 無法存取您在這些實例中的資料。
 
@@ -1012,7 +1012,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保週期性自動化備份
 
-**指引**： Synapse SQL 集區的快照集會在每天自動進行，建立可供七天使用的還原點。 此保留期無法變更。 SQL 集區支援八小時的復原點目標（RPO）。 您可以透過過去七天內所建立的任一個快照集，在主要區域中還原資料倉儲。 請注意，您也可以視需要手動觸發快照集。
+**指引**： Synapse SQL 集區的快照集會在每天自動進行，建立可供七天使用的還原點。 此保留期無法變更。 SQL 集區支援八小時的復原點目標， (RPO) 。 您可以透過過去七天內所建立的任一個快照集，在主要區域中還原資料倉儲。 請注意，您也可以視需要手動觸發快照集。
 
 * [Azure Synapse SQL 集區中的備份與還原](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
@@ -1022,7 +1022,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份任何客戶管理的金鑰
 
-**指引**：資料倉儲的快照集會在一天內自動進行，建立可供7天使用的還原點。 此保留期無法變更。 SQL 集區支援八小時的復原點目標（RPO）。 您可以透過過去七天內所建立的任一個快照集，在主要區域中還原資料倉儲。 請注意，您也可以視需要手動觸發快照集。
+**指引**：資料倉儲的快照集會在一天內自動進行，建立可供7天使用的還原點。 此保留期無法變更。 SQL 集區支援八小時的復原點目標， (RPO) 。 您可以透過過去七天內所建立的任一個快照集，在主要區域中還原資料倉儲。 請注意，您也可以視需要手動觸發快照集。
 
 如果您使用客戶管理的金鑰來加密資料庫加密金鑰，請確定您的金鑰已備份。
 
@@ -1040,7 +1040,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 * [如何還原 Azure Key Vault 金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Azure Synapse SQL 集區中的備份與還原](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure Synapse SQL 集區中的備份與還原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [如何還原現有的 SQL 集區](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
 
@@ -1050,7 +1050,7 @@ SQL Server 稽核可讓您建立伺服器稽核，其中可能包含伺服器等
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理金鑰的保護
 
-**指引**：在 Azure SQL Database 中，您可以使用長期備份保留原則（LTR）來設定單一或集區資料庫，以自動將資料庫備份保留在不同的 Azure Blob 儲存體容器中長達10年。 Azure 儲存體中的資料會使用256位 AES 加密（可用的最強區塊密碼之一），以透明的方式進行加密和解密，且符合 FIPS 140-2 標準。
+**指引**：在 Azure SQL Database 中，您可以設定具有長期備份保留原則的單一或集區資料庫 (LTR) ，自動將資料庫備份保留在不同的 Azure Blob 儲存體容器中長達10年。 Azure 儲存體中的資料會使用256位 AES 加密（可用的最強區塊密碼之一），以透明的方式進行加密和解密，且符合 FIPS 140-2 標準。
 
 根據預設，儲存體帳戶中的資料會使用 Microsoft 管理的金鑰進行加密。 您可以依賴 Microsoft 管理的金鑰來加密您的資料，也可以使用您自己的金鑰來管理加密。 如果您使用 Key Vault 管理自己的金鑰，請確定已啟用虛刪除。
 

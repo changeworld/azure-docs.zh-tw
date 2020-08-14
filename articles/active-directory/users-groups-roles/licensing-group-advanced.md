@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727665"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209462"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>使用群組來管理 Azure Active Directory 授權的案例、限制及已知問題
 
@@ -28,7 +28,7 @@ ms.locfileid: "84727665"
 
 ## <a name="usage-location"></a>使用位置
 
-並非所有位置都可使用某些 Microsoft 服務。 系統管理員必須指定使用者的 [使用位置]**** 屬性，才能將授權指派給使用者。 在[[Azure 入口網站](https://portal.azure.com)中，您可以在 [**使用者** &gt; **設定檔** &gt; **設定**] 中指定使用位置。
+並非所有位置都可使用某些 Microsoft 服務。 系統管理員必須指定使用者的 [使用位置]**** 屬性，才能將授權指派給使用者。 在 [[Azure 入口網站](https://portal.azure.com)中，您可以在 [ **使用者** &gt; **設定檔** &gt; **設定**] 中指定使用位置。
 
 如果是群組授權指派，未指定使用位置的任何使用者會繼承目錄的位置。 如果您的使用者位於多個位置，請務必在將使用者新增至具有授權的群組之前，在使用者資源中正確反映該功能。
 
@@ -76,7 +76,7 @@ ms.locfileid: "84727665"
 
   因此，使用者在產品的 12 項服務中已啟用 7 項，但只對此產品使用一個授權。
 
-- 選取*E3*授權會顯示更多詳細資料，包括群組授權指派針對使用者啟用哪些服務的相關資訊。
+- 選取 *E3* 授權會顯示更多詳細資料，包括群組授權指派針對使用者啟用哪些服務的相關資訊。
 
 ## <a name="direct-licenses-coexist-with-group-licenses"></a>直接授權與群組授權共存
 
@@ -86,9 +86,9 @@ ms.locfileid: "84727665"
 
 可以移除直接指派的授權，而不會影響繼承的授權。 假設使用者從群組繼承 Office 365 企業版 E3 授權。
 
-一開始，使用者只會從「 *E3 基本服務*」群組繼承授權，這會啟用四個服務方案。
+一開始，使用者只會從「 *E3 基本服務* 」群組繼承授權，這會啟用四個服務方案。
 
-1. 選取 [**指派**]，直接將 E3 授權指派給使用者。 在此案例中，您準備停用 Yammer Enterprise 以外的所有服務方案。
+1. 選取 [ **指派** ]，直接將 E3 授權指派給使用者。 在此案例中，您準備停用 Yammer Enterprise 以外的所有服務方案。
 
     因此，使用者仍然只使用 E3 產品的一個授權。 但是，直接指派只會針對該使用者啟用 Yammer Enterprise 服務。 您可以查看群組成員資格所啟用的服務與直接指派。
 
@@ -112,7 +112,7 @@ ms.locfileid: "84727665"
 
 3. 移至 [[Azure Active Directory] > [授權] > [所有產品]****](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) 刀鋒視窗並選取 [Office 365 企業版 E5]**，然後選取 [經過授權的群組]**** 以檢視該產品的所有群組清單。
 
-4. 按一下您要檢閱的群組 (在本例中為「O365 E5 - 僅 Exchange」**)。 這會開啟 [**授權**] 索引標籤。按一下 E5 授權將會開啟一個分頁，其中列出所有已啟用的服務。
+4. 按一下您要檢閱的群組 (在本例中為「O365 E5 - 僅 Exchange」**)。 這會開啟 [ **授權** ] 索引標籤。按一下 E5 授權將會開啟一個分頁，其中列出所有已啟用的服務。
    > [!NOTE]
    > 在此群組中，除了 *Exchange Online* 服務，還會自動新增並啟用 *Microsoft Stream* 服務：
 
@@ -130,7 +130,7 @@ ms.locfileid: "84727665"
 
 1. 執行 `connect-msolservice` Cmdlet 來驗證並聯機到您的組織。
 
-2. `Get-MsolAccountSku`可以用來探索 Azure AD 組織中所有已布建的產品授權。
+2. `Get-MsolAccountSku` 可以用來探索 Azure AD 組織中所有已布建的產品授權。
 
    ![Get-Msolaccountsku Cmdlet 的螢幕擷取畫面](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 
@@ -205,7 +205,7 @@ ms.locfileid: "84727665"
 
 - 群組型授權目前不支援包含其他群組的群組 (巢狀群組)。 如果您將授權套用至巢狀群組，則只有群組的直接第一層級使用者成員會套用授權。
 
-- 只有安全性群組和 securityEnabled = TRUE 的 Office 365 群組才能使用此功能。
+- 此功能僅能與安全性群組和 securityEnabled = TRUE 的 Microsoft 365 群組搭配使用。
 
 - [Microsoft 365 系統管理中心](https://admin.microsoft.com)目前不支援以群組為基礎的授權。 如果使用者從群組繼承授權，此授權在 Office 系統管理入口網站中會顯示為一般使用者授權。 如果您嘗試修改該授權或嘗試移除授權，入口網站會傳回錯誤訊息。 無法直接修改使用者繼承的群組授權。
 

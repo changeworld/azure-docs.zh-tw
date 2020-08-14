@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解在啟用和使用 Azure Dev Spaces 時，如何針對常見問題進行疑難排解並加以解決
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077028"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210829"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 疑難排解
 
@@ -55,8 +55,6 @@ azds remove -g <resource group name> -n <cluster name>
 ```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
-
-重新建立控制器的程序可透過 CLI 或 Visual Studio 來完成。 如需範例，請參閱[小組開發](quickstart-team-development.md)或 [.NET Core 開發](quickstart-netcore-visualstudio.md)快速入門。
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>建立控制器時因控制器名稱長度而失敗
 
@@ -105,7 +103,7 @@ azure-cli                         2.0.60 *
 
 當 Azure Dev Spaces 無法連接到 AKS 叢集的 API 伺服器時，您可能會看到此錯誤。
 
-如果您的 AKS 叢集 API 伺服器的存取權已遭鎖定，或您已為您的 AKS 叢集啟用[API 伺服器授權的 IP 位址範圍](../aks/api-server-authorized-ip-ranges.md)，則您也必須[建立](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)或[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)叢集，以[允許根據您區域的其他範圍](configure-networking.md#aks-cluster-network-requirements)
+如果您的 AKS 叢集 API 伺服器的存取權已遭鎖定，或您已為您的 AKS 叢集啟用 [API 伺服器授權的 IP 位址範圍](../aks/api-server-authorized-ip-ranges.md) ，則您也必須 [建立](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) 或 [更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) 叢集，以 [允許根據您區域的其他範圍](configure-networking.md#aks-cluster-network-requirements)
 
 執行 kubectl 命令以確定 API 伺服器可供使用。 如果 API 伺服器無法使用，請洽詢 AKS 支援服務，並在 API 伺服器運作時再試一次。
 
@@ -282,7 +280,7 @@ Service cannot be started.
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>錯誤「找不到 pod 的 AzureAssignedIdentity： azds/azds-webhook-部署- \<id\> 處於指派的狀態」
 
-在已安裝[受控識別](../aks/use-managed-identity.md)的 AKS 叢集上執行具有 Azure Dev Spaces 的服務，並已安裝[pod 受控](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities)識別時，進程可能會在*圖表安裝*步驟之後停止回應。 如果您檢查 *azds* 命名空間中的 *azds-injector-webhook*，您可能會看到此錯誤。
+在已安裝 [受控識別](../aks/use-managed-identity.md) 的 AKS 叢集上執行具有 Azure Dev Spaces 的服務，並已安裝 [pod 受控](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) 識別時，進程可能會在 *圖表安裝* 步驟之後停止回應。 如果您檢查 *azds* 命名空間中的 *azds-injector-webhook*，您可能會看到此錯誤。
 
 在您的叢集上執行的服務 Azure Dev Spaces 會使用叢集的受控識別，與叢集外的 Azure Dev Spaces 後端服務溝通。 安裝 Pod 受控身分識別時，會在叢集的節點上設定網路規則，以便將受控識別認證的所有呼叫重新導向至叢集上安裝的 [Node 受控識別 (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI DaemonSet 會識別呼叫的 Pod，並確保 Pod 已妥善標示為可存取要求的受控識別。 Azure Dev Spaces 無法偵測叢集是否已安裝 Pod 受控識別，且無法執行必要的設定，以允許 Azure Dev Spaces 服務存取叢集的受控識別。 由於 Azure Dev Spaces 服務尚未設定為可存取叢集的受控識別，因此 NMI DaemonSet 將不會允許它們取得受控識別的 Azure AD 權杖，也無法與 Azure Dev Spaces 後端服務進行通訊。
 
@@ -498,7 +496,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 ### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>呼叫 Dev Spaces 控制器和 API 的 RBAC 權限不正確
 
-存取 Azure Dev Spaces 控制器的使用者必須擁有讀取 AKS 叢集上的系統管理員 kubeconfig 所需的存取權。 例如，[內建 Azure Kubernetes Service 叢集系統管理員角色](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)提供此權限。 存取 Azure Dev Spaces 控制器的使用者也必須擁有該控制器的「*參與者*」或「*擁有*者」 Azure 角色。 如需更新 AKS 叢集使用者權限的詳細資訊，請參閱[這裡](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)。
+存取 Azure Dev Spaces 控制器的使用者必須擁有讀取 AKS 叢集上的系統管理員 kubeconfig 所需的存取權。 例如，[內建 Azure Kubernetes Service 叢集系統管理員角色](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)提供此權限。 存取 Azure Dev Spaces 控制器的使用者也必須擁有該控制器的「 *參與者* 」或「 *擁有* 者」 Azure 角色。 如需更新 AKS 叢集使用者權限的詳細資訊，請參閱[這裡](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)。
 
 若要更新該控制器的使用者 Azure 角色：
 
@@ -598,7 +596,7 @@ kubectl -n my-namespace delete pod --all
 | gcr.io | HTTP:443 | 提取 helm/tiller 映射|
 | storage.googleapis.com | HTTP:443 | 提取 helm/tiller 映射|
 
-更新您的防火牆或安全性設定，以允許進出上述所有 Fqdn 和[Azure Dev Spaces 基礎結構服務](../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations)的網路流量。
+更新您的防火牆或安全性設定，以允許進出上述所有 Fqdn 和 [Azure Dev Spaces 基礎結構服務](../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations)的網路流量。
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>錯誤「找不到 \<cluster\> 訂用帳戶中的叢集」 \<subscriptionId\>
 

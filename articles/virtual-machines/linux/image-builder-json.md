@@ -3,17 +3,17 @@ title: 建立 Azure Image Builder 範本 (預覽)
 description: 了解如何建立範本以搭配 Azure Image Builder 使用。
 author: danielsollondon
 ms.author: danis
-ms.date: 08/03/2020
+ms.date: 08/13/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 095aa4ddbdc9ceb04c65d8c896642a0f1a91e547
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830337"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205542"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure Image Builder 範本 
 
@@ -87,7 +87,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-根據預設，Image Builder 不會變更映像的大小，其會使用來源映像的大小。 您**只能**增加 OS 磁片的大小 (Win 和 Linux) ，這是選擇性的，值為0表示保留與來源映射相同的大小。 您無法將 OS 磁片大小減少為小於來源映射的大小。
+根據預設，Image Builder 不會變更映像的大小，其會使用來源映像的大小。 您 **只能** 增加 OS 磁片的大小 (Win 和 Linux) ，這是選擇性的，值為0表示保留與來源映射相同的大小。 您無法將 OS 磁片大小減少為小於來源映射的大小。
 
 ```json
  {
@@ -120,7 +120,7 @@ Azure Image Builder 會使用 .json 檔案，將資訊傳遞至 Image Builder �
 
 ## <a name="identity"></a>身分識別
 
-必要-若要讓映射產生器擁有讀取/寫入映射的許可權，請從 Azure 儲存體讀取腳本，您必須建立具有個別資源許可權的 Azure 使用者指派身分識別。 如需有關「映射產生器」許可權的工作方式和相關步驟的詳細資訊，請參閱[檔](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)。
+必要-若要讓映射產生器擁有讀取/寫入映射的許可權，請從 Azure 儲存體讀取腳本，您必須建立具有個別資源許可權的 Azure 使用者指派身分識別。 如需有關「映射產生器」許可權的工作方式和相關步驟的詳細資訊，請參閱 [檔](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)。
 
 
 ```json
@@ -151,7 +151,7 @@ API 需要可定義映像建置來源的 'SourceType'，目前有三種類型：
 
 
 > [!NOTE]
-> 使用現有的 Windows 自訂映射時，您可以在單一 Windows 映像上執行 Sysprep 命令最多8次，如需詳細資訊，請參閱[Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)檔。
+> 使用現有的 Windows 自訂映射時，您可以在單一 Windows 映像上執行 Sysprep 命令最多8次，如需詳細資訊，請參閱 [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) 檔。
 
 ### <a name="platformimage-source"></a>PlatformImage 來源 
 Azure Image Builder 支援 Windows Server 和用戶端，以及 Linux Azure Marketplace 映像，請參閱[這裡](../windows/image-builder-overview.md#os-support)以取得完整清單。 
@@ -435,7 +435,8 @@ Customize 屬性：
 - **filters** – 選擇性，可讓您指定用以包含或排除更新的篩選條件。
 - **updateLimit** – 選擇性，定義可安裝的更新數目，預設值為 1000。
  
- 
+> [!NOTE]
+> 如果有任何未完成的 Windows 重新開機，或仍在執行中的應用程式安裝，則 Windows Update 自訂者可能會失敗，通常您可能會在自訂記錄檔中看到此錯誤 `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` 。 我們強烈建議您考慮在 Windows 重新開機中新增，並（或）允許應用程式在執行 Windows Update 之前，使用 [睡眠] 或 [等候] 命令，在 https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) 內嵌命令或腳本中 (，來完成安裝。
 
 ### <a name="generalize"></a>一般化 
 根據預設，Azure Image Builder 也會在每個映像自訂階段結束時執行 ‘deprovision’ 程式碼，以將映像「一般化」。 一般化是設定映像的程序，因此可重複用於建立多個 VM。 對於 Windows VM，Azure Image Builder 會使用 Sysprep。 對於 Linux，Azure Image Builder 會執行 ‘waagent -deprovision’。 
@@ -590,7 +591,7 @@ Azure 共用映像庫是新的映像管理服務，可讓您管理映像區域�
 - **type** - sharedImage  
 - **galleryImageId** –共用映射資源庫的識別碼，可以用兩種格式來指定：
     * 自動版本設定-影像產生器會為您產生單純版本號碼，這適用于當您想要從相同的範本中重建映射時：格式為： `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` 。
-    * 明確版本控制-您可以傳入想要讓「映射產生器」使用的版本號碼。 格式為：`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+    * 明確版本控制-您可以傳入想要讓「映射產生器」使用的版本號碼。 格式為： `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
 
 - **runOutputName**– 用於識別散發的唯一名稱。  
 - **artifactTags** - 選擇性使用者指定的索引鍵/值組標記。
@@ -658,7 +659,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>取消映射組建
 如果您執行的是您認為不正確的映射組建、等待使用者輸入，或您覺得無法成功完成，則可以取消組建。
 
-您可以隨時取消組建。 如果發佈階段已啟動，您仍然可以取消，但您將需要清除任何可能未完成的映射。 [取消] 命令不會等待 [取消] 完成，請 `lastrunstatus.runstate` 使用這些狀態[命令](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)來監視是否有取消進度。
+您可以隨時取消組建。 如果發佈階段已啟動，您仍然可以取消，但您將需要清除任何可能未完成的映射。 [取消] 命令不會等待 [取消] 完成，請 `lastrunstatus.runstate` 使用這些狀態 [命令](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)來監視是否有取消進度。
 
 
 命令範例 `cancel` ：

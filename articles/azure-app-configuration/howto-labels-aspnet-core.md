@@ -5,37 +5,38 @@ description: 使用標籤來提供每個環境的設定值。
 ms.service: azure-app-configuration
 author: lisaguthrie
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: 465ae86c5732c9dd54ade1b7096fa8415dfca513
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 689fdbd444aa4b20f5bef225faa259788c47cf9d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83118554"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206664"
 ---
 # <a name="use-labels-to-enable-configurations-for-different-environments"></a>使用標籤來啟用不同環境的設定
 
 許多應用程式都需要針對不同的環境使用不同的設定。 假設應用程式具有設定值，可定義要用於其後端資料庫的連接字串。 應用程式開發人員使用的資料庫與生產環境中所使用的不同。 應用程式使用的資料庫連接字串必須在應用程式從開發移至生產環境時變更。
 
-在 Azure 應用程式組態中，您可以使用*標籤*來定義相同索引鍵的不同值。 例如，您可以針對開發和生產環境定義具有不同值的單一索引鍵。 您可以指定連接到應用程式組態時要載入的標籤。
+在 Azure 應用程式組態中，您可以使用 *標籤* 來定義相同索引鍵的不同值。 例如，您可以針對開發和生產環境定義具有不同值的單一索引鍵。 您可以指定連接到應用程式組態時要載入的標籤。
 
-為了示範這項功能，您將修改在[快速入門：使用 Azure 應用程式組態建立 ASP.NET Core 應用程式](./quickstart-aspnet-core-app.md)中建立的 web 應用程式，以將不同的設定用於開發與生產環境。 繼續進行之前，請先完成快速入門。
+為了示範這項功能，您將修改在 [快速入門：使用 Azure 應用程式組態建立 ASP.NET Core 應用程式](./quickstart-aspnet-core-app.md) 中建立的 web 應用程式，以將不同的設定用於開發與生產環境。 繼續進行之前，請先完成快速入門。
 
 ## <a name="specify-a-label-when-adding-a-configuration-value"></a>新增設定值時指定標籤
 
-在 Azure 入口網站中，移至 [ **Configuration Explorer** ]，並尋找您在快速入門中建立的*TestApp： Settings： FontColor*金鑰。 選取其內容功能表，然後選取 [**新增值**]。
+在 Azure 入口網站中，移至 [ **Configuration Explorer** ]，並尋找您在快速入門中建立的 *TestApp： Settings： FontColor* 金鑰。 選取其內容功能表，然後選取 [ **新增值**]。
 
 > [!div class="mx-imgBorder"]
 > ![[加入值] 功能表項目](media/labels-add-value.png)
 
-在 [**加入值**] 畫面上，輸入**紅色**的**值**和 [**開發**]**標籤**。 將 [**內容類型**] 保留空白。 選取 [套用]。
+在 [**加入值**] 畫面上，輸入**紅色**的**值**和 [**開發**]**標籤**。 將 [ **內容類型** ] 保留空白。 選取 [套用]。
 
 ## <a name="load-configuration-values-with-a-specified-label"></a>使用指定的標籤載入設定值
 
 根據預設，Azure 應用程式組態只會載入沒有標籤的設定值。 如果您已定義設定值的標籤，您會想要指定連接到應用程式組態時要使用的標籤。
 
-在上一節中，您為開發環境建立了不同的設定值。 您可以使用 `HostingEnvironment.EnvironmentName` 變數，以動態方式判斷應用程式目前執行的環境。 若要深入瞭解，請參閱[在 ASP.NET Core 中使用多個環境](/aspnet/core/fundamentals/environments)。
+在上一節中，您為開發環境建立了不同的設定值。 您可以使用 `HostingEnvironment.EnvironmentName` 變數，以動態方式判斷應用程式目前執行的環境。 若要深入瞭解，請參閱 [在 ASP.NET Core 中使用多個環境](/aspnet/core/fundamentals/environments)。
 
 藉由將環境名稱傳遞至方法，以對應至目前環境的標籤載入設定值 `Select` ：
 

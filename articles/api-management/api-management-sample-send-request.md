@@ -9,17 +9,18 @@ editor: ''
 ms.assetid: 4539c0fa-21ef-4b1c-a1d4-d89a38c242fa
 ms.service: api-management
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: ac5f6b4d2d197bbd4f4aff9236837eab062b4a63
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 10beee563e4a93332cd817ee04c1e74bda6e9c51
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243302"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210356"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>使用來自 Azure API 管理服務的外部服務
 Azure API 管理服務中可用的原則可純粹根據傳入的要求、傳出的回應及基本組態資訊來進行各式各樣的有用工作。 不過，能夠與來自 API 管理原則的外部服務進行互動，可開啟更多的機會。
@@ -285,5 +286,5 @@ API 管理的主要功能是保護後端資源。 如果您的 API 所使用的�
 
 在預留位置作業的組態中，您可以設定要快取儀表板資源至少一小時。 
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 Azure API 管理服務提供彈性的原則，可以選擇性地套用到 HTTP 流量，並且能夠組合後端服務。 不論您是否想要使用警示功能、確認、驗證功能或根據多個後端服務建立新的複合資源來增強您的 API 閘道器， `send-request` 及相關原則都會開啟各種可能性。

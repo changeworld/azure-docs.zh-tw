@@ -4,15 +4,16 @@ description: 了解如何將受控快取服務和 In-Role Cache 應用程式移�
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/23/2020
 ms.author: yegu
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4e867f28209230cf33b0f94e7cc8ca12d015ff15
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: beb6014a9b6d90d1bc9a3c3236877a720a44a0c4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008554"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211126"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>從受控快取服務遷移至 Azure Cache for Redis (已淘汰) 
 若想將使用 Azure 受控快取服務的應用程式移轉至 Azure Cache for Redis，您幾乎不需要變更應用程式就可達成，詳細情形取決於快取應用程式所使用的受控快取服務功能。 API 雖非完全相同，但卻極為類似，而且您現有使用受控快取服務來存取快取的程式碼，大多只需要略做變更即可重複使用。 本文說明如何對設定和應用程式進行必要的變更，以將受控快取服務應用程式移轉為使用 Azure Cache for Redis，並說明如何使用 Azure Cache for Redis 的某些功能，來實作受控快取服務快取的功能。
@@ -48,7 +49,7 @@ Azure 受控快取服務與 Azure Cache for Redis 類似，但兩者在實作某
 | 到期原則 |預設的到期原則為「絕對」，預設的到期間隔為 10 分鐘。 另外也提供 [滑動] 和 [永不] 原則。 |依預設，快取中的項目不會到期，但可以使用快取集多載，對每筆寫入作業設定到期時間。 |
 | 區域和標記 |區域是快取項目的子群組。 區域也支援以稱為標記的額外描述性字串，來為快取項目加上註解。 區域支援對該區域內的任何標記項目執行搜尋作業的能力。 區域內的所有項目都位於單一快取叢集節點內。 |Azure Cache for Redis 由單一節點所組成 (除非已啟用 Redis 叢集)，因此不適用受控快取服務區域的概念。 Redis 支援在擷取索引鍵時執行搜尋和萬用字元作業，讓描述性標記可以內嵌在索引鍵名稱內並於稍後用來擷取項目。 如需使用 Redis 實作標記解決方案的範例，請參閱 [使用 Redis 實作快取標記](https://stackify.com/implementing-cache-tagging-redis/)。 |
 | 序列化 |受控快取支援 NetDataContractSerializer 和 BinaryFormatter，也支援使用自訂序列化程式。 預設值為 NetDataContractSerializer。 |由用戶端應用程式負責先將 .NET 物件序列化再將它們放入快取中，至於要選擇使用哪個序列化程式則由用戶端應用程式的開發人員決定。 如需詳細資訊和範例程式碼，請參閱 [在快取中使用 .NET 物件](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)。 |
-| 快取模擬器 |受控快取提供本機快取模擬器。 |Azure Cache for Redis 沒有模擬器，但您可以在[本機執行 Redis](cache-development-faq.md#is-there-a-local-emulator-for-azure-cache-for-redis) ，以提供模擬器體驗。 |
+| 快取模擬器 |受控快取提供本機快取模擬器。 |Azure Cache for Redis 沒有模擬器，但您可以在 [本機執行 Redis](cache-development-faq.md#is-there-a-local-emulator-for-azure-cache-for-redis) ，以提供模擬器體驗。 |
 
 ## <a name="choose-a-cache-offering"></a>選擇快取供應項目
 Microsoft Azure Cache for Redis 可在以下層級使用：
@@ -59,7 +60,7 @@ Microsoft Azure Cache for Redis 可在以下層級使用：
 
 每一個階層都有不同的功能和價格。 本指南稍後將探討這些功能，如需定價的詳細資訊，請參閱 [快取定價詳細資料](https://azure.microsoft.com/pricing/details/cache/)。
 
-移轉作業的第一步是挑選符合先前受控快取服務快取大小的容量，然後再依據應用程式的需求擴大或縮小規模。 如需選擇正確 Azure Cache for Redis 供應專案的詳細資訊，請參閱[選擇正確的層級](cache-overview.md#choosing-the-right-tier)。
+移轉作業的第一步是挑選符合先前受控快取服務快取大小的容量，然後再依據應用程式的需求擴大或縮小規模。 如需選擇正確 Azure Cache for Redis 供應專案的詳細資訊，請參閱 [選擇正確的層級](cache-overview.md#choosing-the-right-tier)。
 
 ## <a name="create-a-cache"></a>建立快取
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -123,7 +124,7 @@ StackExchange.Azure Cache for Redis 用戶端的 API 類似於受控快取服務
 using StackExchange.Redis
 ```
 
-如果此命名空間並未解析，請確定您已如[快速入門：搭配使用 Azure Cache For Redis 與 .net 應用程式](cache-dotnet-how-to-use-azure-redis-cache.md)中所述，新增 stackexchange.redis NuGet 套件。
+如果此命名空間並未解析，請確定您已如 [快速入門：搭配使用 Azure Cache For Redis 與 .net 應用程式](cache-dotnet-how-to-use-azure-redis-cache.md)中所述，新增 stackexchange.redis NuGet 套件。
 
 > [!NOTE]
 > 請注意，StackExchange.Redis 用戶端需要 .NET Framework 4 或更高版本。

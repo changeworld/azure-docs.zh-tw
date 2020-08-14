@@ -4,12 +4,12 @@ description: 瞭解如何在不同案例的 App Service 中自訂驗證和授權
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 52213999ae0ec9f6891c8ec10ab65471926e87d2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078388"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208023"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -121,7 +121,7 @@ GET /.auth/logout?post_logout_redirect_uri=/index.html
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-在[Azure Cloud Shell](../cloud-shell/quickstart.md)中執行下列命令：
+在 [Azure Cloud Shell](../cloud-shell/quickstart.md)中執行下列命令：
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -144,7 +144,7 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 * X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
-以任何語言或架構撰寫的程式碼可以從這些標頭中取得所需的資訊。 針對 ASP.NET 4.6 應用程式， **ClaimsPrincipal** 會自動設定適當的值。 不過，ASP.NET Core 不會提供與 App Service 使用者宣告整合的驗證中介軟體。 如需因應措施，請參閱[MaximeRouiller. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
+以任何語言或架構撰寫的程式碼可以從這些標頭中取得所需的資訊。 針對 ASP.NET 4.6 應用程式， **ClaimsPrincipal** 會自動設定適當的值。 不過，ASP.NET Core 不會提供與 App Service 使用者宣告整合的驗證中介軟體。 如需因應措施，請參閱 [MaximeRouiller. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
 
 您的應用程式也可以藉由呼叫 `/.auth/me` 來取得關於已驗證使用者的其他詳細資料。 Mobile Apps 伺服器 SDK 提供 Helper 方法來處理此資料。 如需詳細資訊，請參閱[如何使用 Azure Mobile Apps Node.js SDK ](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)和[使用適用於 Azure Mobile Apps 的 .NET 後端伺服器 SDK](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)。
 
@@ -247,13 +247,13 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 ### <a name="server-level-windows-apps-only"></a>伺服器層級 (僅限 Windows 應用程式) 
 
-針對任何 Windows 應用程式，您可以藉由編輯*Web.config*檔案來定義 IIS web 伺服器的授權行為。 Linux 應用程式不會使用 IIS，而且無法透過*Web.config*來設定。
+針對任何 Windows 應用程式，您可以藉由編輯 *Web.config* 檔案來定義 IIS web 伺服器的授權行為。 Linux 應用程式不會使用 IIS，而且無法透過 *Web.config*來設定。
 
 1. 巡覽到 `https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
 1. 在 App Service 檔案的瀏覽器中，流覽至 [ *site/wwwroot*]。 如果*Web.config*不存在，請選取 [新增檔案] 加以建立 **+**  >  ** **。 
 
-1. 選取*Web.config*的鉛筆來編輯它。 新增下列設定程式碼，然後按一下 [**儲存**]。 如果*Web.config*已經存在，只需要 `<authorization>` 在其中新增專案。 在元素中新增您想要允許的帳戶 `<allow>` 。
+1. 選取 *Web.config* 的鉛筆來編輯它。 新增下列設定程式碼，然後按一下 [ **儲存**]。 如果 *Web.config* 已經存在，只需要 `<authorization>` 在其中新增專案。 在元素中新增您想要允許的帳戶 `<allow>` 。
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -271,12 +271,12 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 識別提供者可能會提供特定的「金鑰授權」。 例如：
 
-- 針對[Azure App Service](configure-authentication-provider-aad.md)，您可以直接在 Azure AD 中[管理企業層級的存取](../active-directory/manage-apps/what-is-access-management.md)。 如需指示，請參閱[如何移除使用者對應用程式的存取權](../active-directory/manage-apps/methods-for-removing-user-access.md)。
-- 對於[google](configure-authentication-provider-google.md)，屬於[組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 google API 專案可以設定為只允許您組織中的使用者存取 (請參閱[Google 的**設定 OAuth 2.0**支援頁面](https://support.google.com/cloud/answer/6158849?hl=en)) 。
+- 針對 [Azure App Service](configure-authentication-provider-aad.md)，您可以直接在 Azure AD 中 [管理企業層級的存取](../active-directory/manage-apps/what-is-access-management.md) 。 如需指示，請參閱 [如何移除使用者對應用程式的存取權](../active-directory/manage-apps/methods-for-removing-user-access.md)。
+- 對於 [google](configure-authentication-provider-google.md)，屬於 [組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) 的 google API 專案可以設定為只允許您組織中的使用者存取 (請參閱 [Google 的 **設定 OAuth 2.0** 支援頁面](https://support.google.com/cloud/answer/6158849?hl=en)) 。
 
 ### <a name="application-level"></a>應用程式層級
 
-如果其中一個層級未提供您所需的授權，或如果您的平臺或身分識別提供者不受支援，則您必須撰寫自訂程式碼，以根據[使用者宣告](#access-user-claims)來授權使用者。
+如果其中一個層級未提供您所需的授權，或如果您的平臺或身分識別提供者不受支援，則您必須撰寫自訂程式碼，以根據 [使用者宣告](#access-user-claims)來授權使用者。
 
 ## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>使用檔案 (預覽進行設定) 
 
@@ -290,19 +290,22 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 > [!CAUTION]
 > 在預覽期間，啟用以檔案為基礎的設定將會停用透過某些用戶端（例如 Azure 入口網站、Azure CLI 和 Azure PowerShell）來管理應用程式的 App Service 驗證/授權功能。
 
-1. 在專案的根目錄建立新的 JSON 檔案， (部署至 web/函式應用程式) 中的 D:\home\site\wwwroot。 根據以檔案為基礎的設定[參考](#configuration-file-reference)，填入所需的設定。 如果修改現有的 Azure Resource Manager 設定，請務必將集合中所捕獲的屬性轉譯 `authsettings` 成您的設定檔。
+1. 在專案的根目錄建立新的 JSON 檔案， (部署至 web/函式應用程式) 中的 D:\home\site\wwwroot。 根據以檔案為基礎的設定 [參考](#configuration-file-reference)，填入所需的設定。 如果修改現有的 Azure Resource Manager 設定，請務必將集合中所捕獲的屬性轉譯 `authsettings` 成您的設定檔。
 
-2. 修改現有的設定，此設定會在下的[Azure Resource Manager](../azure-resource-manager/management/overview.md) api 中加以捕捉 `Microsoft.Web/sites/<siteName>/config/authsettings` 。 若要修改此程式，您可以使用[Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)或[Azure 資源總管](https://resources.azure.com/)之類的工具。 在 authsettings 集合中，您必須 (設定三個屬性，而且可能會移除其他) ：
+2. 修改現有的設定，此設定會在下的 [Azure Resource Manager](../azure-resource-manager/management/overview.md) api 中加以捕捉 `Microsoft.Web/sites/<siteName>/config/authsettings` 。 若要修改此程式，您可以使用 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md) 或 [Azure 資源總管](https://resources.azure.com/)之類的工具。 在 authsettings 集合中，您必須 (設定三個屬性，而且可能會移除其他) ：
 
     1.  設定 `enabled` 為 "true"
     2.  設定 `isAuthFromFile` 為 "true"
     3.  將設定 `authFilePath` 為 (的檔案名，例如 "auth.json" ) 
 
+> [!NOTE]
+> 的格式會 `authFilePath` 因平臺而異。 在 Windows 上，會同時支援相對和絕對路徑。 建議使用 [相對]。 針對 Linux，目前僅支援絕對路徑，因此設定的值應為 "/home/site/wwwroot/auth.json" 或類似。
+
 進行此設定更新之後，檔案的內容將用來定義該網站 App Service 驗證/授權的行為。 如果您想要回到 Azure Resource Manager 設定，可以將設 `isAuthFromFile` 回 "false" 來執行這項操作。
 
 ### <a name="configuration-file-reference"></a>設定檔案參考
 
-將從您的設定檔中參照的任何秘密，都必須儲存為[應用程式設定](./configure-common.md#configure-app-settings)。 您可以將設定命名為任何您想要的名稱。 只需確定來自設定檔案的參考會使用相同的金鑰。
+將從您的設定檔中參照的任何秘密，都必須儲存為 [應用程式設定](./configure-common.md#configure-app-settings)。 您可以將設定命名為任何您想要的名稱。 只需確定來自設定檔案的參考會使用相同的金鑰。
 
 下列耗盡檔案中可能的設定選項：
 
@@ -470,7 +473,7 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 ## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>將您的應用程式釘選到特定的驗證執行階段版本
 
-當您啟用驗證/授權時，平臺中介軟體會插入您的 HTTP 要求管線中，如[功能總覽](overview-authentication-authorization.md#how-it-works)中所述。 此平臺中介軟體會定期更新為例行平臺更新中的新功能和改進。 根據預設，您的 web 或函數應用程式會在此平臺中介軟體的最新版本上執行。 這些自動更新一律是回溯相容的。 不過，在罕見的情況下，此自動更新會為您的 web 或函式應用程式引進執行時間問題，您可以暫時復原到先前的中介軟體版本。 本文說明如何將應用程式暫時釘選到特定版本的驗證中介軟體。
+當您啟用驗證/授權時，平臺中介軟體會插入您的 HTTP 要求管線中，如 [功能總覽](overview-authentication-authorization.md#how-it-works)中所述。 此平臺中介軟體會定期更新為例行平臺更新中的新功能和改進。 根據預設，您的 web 或函數應用程式會在此平臺中介軟體的最新版本上執行。 這些自動更新一律是回溯相容的。 不過，在罕見的情況下，此自動更新會為您的 web 或函式應用程式引進執行時間問題，您可以暫時復原到先前的中介軟體版本。 本文說明如何將應用程式暫時釘選到特定版本的驗證中介軟體。
 
 ### <a name="automatic-and-manual-version-updates"></a>自動和手動版本更新 
 
@@ -486,7 +489,7 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 ##### <a name="from-the-azure-cli"></a>從 Azure CLI
 
-使用 Azure CLI，以[az webapp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show)命令來查看目前中介軟體版本。
+使用 Azure CLI，以 [az webapp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) 命令來查看目前中介軟體版本。
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -517,7 +520,7 @@ az webapp auth show --name <my_app_name> \
 
 #### <a name="update-the-current-runtime-version"></a>更新目前的執行階段版本
 
-使用 Azure CLI，您可以使用 `runtimeVersion` [az webapp auth update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update)命令來更新應用程式中的設定。
+使用 Azure CLI，您可以使用 `runtimeVersion` [az webapp auth update](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) 命令來更新應用程式中的設定。
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \

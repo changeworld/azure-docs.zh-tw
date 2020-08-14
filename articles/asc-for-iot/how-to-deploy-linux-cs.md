@@ -10,17 +10,18 @@ editor: ''
 ms.assetid: b0982203-c3c8-4a0b-8717-5b5ac4038d8c
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 40c6ea91fd84a0f088ed770cd7c4c3ea7b8b1c91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 460e3f3955778945600bb3a1f9762a0ac50f5805
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311135"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205910"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>針對 Linux 部署適用於 IoT 的 Azure 資訊安全中心 (以 C# 為基礎) 安全性代理程式
 
@@ -34,9 +35,9 @@ ms.locfileid: "81311135"
 > * 解除安裝代理程式
 > * 疑難排解
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
-如需其他平臺和代理程式類別，請參閱[選擇正確的安全性代理程式](how-to-deploy-agent.md)。
+如需其他平臺和代理程式類別，請參閱 [選擇正確的安全性代理程式](how-to-deploy-agent.md)。
 
 1. 若要部署安全性代理程式，您必須在將要用來安裝代理程式的電腦上，擁有其本機系統管理員的權限。
 
@@ -46,29 +47,29 @@ ms.locfileid: "81311135"
 
 若要部署安全性代理程式，請使用下列步驟：
 
-1. 從[GitHub](https://aka.ms/iot-security-github-cs)下載最新版本到您的電腦。
+1. 從 [GitHub](https://aka.ms/iot-security-github-cs)下載最新版本到您的電腦。
 
-1. 將套件的內容解壓縮，並流覽至 _/Install_資料夾。
+1. 將套件的內容解壓縮，並流覽至 _/Install_ 資料夾。
 
 1. 執行 `chmod +x InstallSecurityAgent.sh` 將執行權限新增至 **InstallSecurityAgent** 指令碼
 
-1. 接下來，以**根許可權**執行下列命令：
+1. 接下來，以 **根許可權**執行下列命令：
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
    ```
 
-   如需驗證參數的詳細資訊，請參閱[如何設定驗證](concept-security-agent-authentication-methods.md)。
+   如需驗證參數的詳細資訊，請參閱 [如何設定驗證](concept-security-agent-authentication-methods.md)。
 
 此指令碼會執行下列動作：
 
 - 安裝必要條件。
 
-- 新增服務使用者（已停用互動式登入）。
+- 新增已停用) 互動式登入的服務使用者 (。
 
-- 將代理程式安裝為**Daemon** -假設裝置針對傳統部署模型使用**systemd** 。
+- 將代理程式安裝為 **Daemon** -假設裝置針對傳統部署模型使用 **systemd** 。
 
-- 設定**sudoers**以允許代理程式以 root 身分執行特定工作。
+- 設定 **sudoers** 以允許代理程式以 root 身分執行特定工作。
 
 - 使用所提供的驗證參數來設定代理程式。
 
@@ -122,8 +123,8 @@ ms.locfileid: "81311135"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 閱讀 IoT 服務的 Azure 資訊安全中心[總覽](overview.md)
+- 閱讀 IoT 服務的 Azure 資訊安全中心 [總覽](overview.md)
 - 深入瞭解 IoT[架構](architecture.md)的 Azure 資訊安全中心
 - 啟用[服務](quickstart-onboard-iot-hub.md)
-- 閱讀[常見問題](resources-frequently-asked-questions.md)
+- 閱讀 [常見問題](resources-frequently-asked-questions.md)
 - 了解[警示](concept-security-alerts.md)

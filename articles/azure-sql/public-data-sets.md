@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 6e38be4a97678ce749e32ca31c0703ed9d786d76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84033569"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209537"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>用於測試和建立原型的公用資料集
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -30,10 +30,10 @@ ms.locfileid: "84033569"
 | [US Gov 資料](https://catalog.data.gov/dataset) | 超過250000的資料集，涵蓋了農業、氣候、消費者、生態系統、教育、能源、財務、醫療、當地政府、製造、maritime、海運、公共安全，以及美國的科學和研究 | 各種格式 (包括 HTML、XML、CSV、JSON、Excel 和其他許多格式)、各種大小的檔案。 您可以依照檔案格式篩選可用的資料集。 |
 | [美國人口普查資料](https://www.census.gov/data.html) | 有關美國人口的統計資料 | 資料集採用各種格式。 |
 | [來自 NASA 的地球科學資料](https://earthdata.nasa.gov/) | 超過 32,000 個資料集合，涵蓋農業、大氣、生物圈、氣候、冰雪圈、人類範圍、水圈、地表、海洋、太陽與地球互動等資料。 | 資料集採用各種格式。 |
-| [航班延遲和其他運輸資料](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | 「美國運輸的（點）運輸統計部門（BTS）部門，會追蹤由大型空中營運之國內航班的準時效能。 這個網站上公布的摘要表會顯示準時、延遲、取消和轉降航班數目的摘要資訊。」 | 檔案採用 CSV 格式。 |
+| [航班延遲和其他運輸資料](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | 「美國運輸的 (點) 部門的運輸統計 (BTS) 會追蹤由大型空中營運的國內航班的準時效能。 這個網站上公布的摘要表會顯示準時、延遲、取消和轉降航班數目的摘要資訊。」 | 檔案採用 CSV 格式。 |
 | [交通事故死亡率 - 美國事故死亡率分析報告系統 (FARS)](https://www.nhtsa.gov/FARS) | 「FARS 是一項全國人口普查，提供 NHTSA、美國國會和美國大眾有關在汽機車交通碰撞中遭受嚴重傷害的年度資料。」 | 「使用 FARS 查詢系統建立自己線上執行的事故死亡率資料。 或從 FTP 網站下載自 1975 年起的所有 FARS 資料。」 |
-| [有毒化學資料-EPA 毒性 ForeCaster （ToxCast &trade; ）資料](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | 「EPA 針對數千種化學物質所提供之可公開取得的最新高通量毒性資料。 這項資料是透過 EPA 的 ToxCast 研究技術產生。」 | 資料集是以各種格式提供，包括試算表、R 套件和 MySQL 資料庫檔案。 |
-| [有毒化學物質資料 - NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | 「2014 Tox21 Data Challenge 主要是為了幫助科學家了解經由「21 世紀毒理學 (Toxicology in the 21st Century)」計畫測試之化學物質和化合物的潛能，進而以可能導致毒效應的方式來擾亂生物路徑。」 | 資料集是以 SMILES 和 SDF 格式提供。 此資料提供「檢驗活動資料和多達 10,000 種化合物之 Tox21 集合 (Tox21 10k) 的化學結構。」 |
+| [有毒化學資料-EPA 毒性 ForeCaster (ToxCast &trade;) 資料](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | 「EPA 針對數千種化學物質所提供之可公開取得的最新高通量毒性資料。 這項資料是透過 EPA 的 ToxCast 研究技術產生。」 | 資料集是以各種格式提供，包括試算表、R 套件和 MySQL 資料庫檔案。 |
+| [有毒化學物質資料 - NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21) | 「2014 Tox21 Data Challenge 主要是為了幫助科學家了解經由「21 世紀毒理學 (Toxicology in the 21st Century)」計畫測試之化學物質和化合物的潛能，進而以可能導致毒效應的方式來擾亂生物路徑。」 | 資料集是以 SMILES 和 SDF 格式提供。 此資料提供「檢驗活動資料和多達 10,000 種化合物之 Tox21 集合 (Tox21 10k) 的化學結構。」 |
 | [來自 NCBI 的生物技術和基因體資料](https://www.ncbi.nlm.nih.gov/guide/data-software/) | 涵蓋基因、基因體和蛋白質的多個資料集。 | 資料集採用文字、XML、BLAST 和其他格式。 可以使用 BLAST 應用程式。 |
 
 ## <a name="other-statistical-and-scientific-data"></a>其他統計和科學資料

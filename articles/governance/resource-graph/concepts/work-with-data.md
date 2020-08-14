@@ -3,12 +3,12 @@ title: 使用大型資料集
 description: 了解如何在使用 Azure Resource Graph 時取得、格式化、分頁及略過大型資料集中的記錄。
 ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 2de62af5f7a59837876ed3348bc14de232fdee38
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056401"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206359"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>使用大型 Azure 資源資料集
 
@@ -33,7 +33,7 @@ az graph query -q "Resources | project name | order by name asc" --first 200 --o
 Search-AzGraph -Query "Resources | project name | order by name asc" -First 200
 ```
 
-在 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 中，此控制項為 **$top** 且屬於 **QueryRequestOptions**。
+在 [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 中，此控制項為 **$top** 且屬於 **QueryRequestOptions**。
 
 「限制最嚴格」的控制項將會勝出。 例如，如果您的查詢會使用 **top** 或 **limit** 運算子並產生比 **First** 還多的記錄，則傳回的記錄數目上限會等於 **First**。 同樣地，如果 **top** 或 **limit** 小於 **First**，傳回的記錄集會是小於 **top** 或 **limit** 所設定的值。
 
@@ -59,14 +59,14 @@ az graph query -q "Resources | project name | order by name asc" --skip 10 --out
 Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 ```
 
-在 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 中，此控制項為 **$skip** 且屬於 **QueryRequestOptions**。
+在 [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 中，此控制項為 **$skip** 且屬於 **QueryRequestOptions**。
 
 ## <a name="paging-results"></a>分頁結果
 
-如果需要將結果集分解為較小的記錄集以進行處理，或者因為結果集可能超過 _1000_ 筆傳回記錄的允許值上限，請使用分頁。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 
+如果需要將結果集分解為較小的記錄集以進行處理，或者因為結果集可能超過 _1000_ 筆傳回記錄的允許值上限，請使用分頁。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources) 
  **QueryResponse**會提供值，以指出結果集已被分解： **resultTruncated**和 **$skipToken**。 **resultTruncated** 是一個布林值，如果回應中有其他未傳回的記錄，則會通知取用者。 在 **count** 屬性小於 **totalRecords** 屬性時，也可識別出此條件。 **totalRecords** 會定義符合查詢的記錄筆數。
 
- 當任何一個分頁已停用或無法使用時， **resultTruncated**為**true** ，因為沒有資料 `id` 行，或當查詢所要求的資源不足時。 當**resultTruncated**為**true**時，不會設定 **$skipToken**屬性。
+ 當任何一個分頁已停用或無法使用時， **resultTruncated**為**true** ，因為沒有資料 `id` 行，或當查詢所要求的資源不足時。 當 **resultTruncated** 為 **true**時，不會設定 **$skipToken** 屬性。
 
 下列範例示範如何**略過**前 3000 筆記錄，並在使用 Azure CLI 和 Azure PowerShell 略過這些記錄之後，傳回 **前** 1000 筆記錄：
 
@@ -81,7 +81,7 @@ Search-AzGraph -Query "Resources | project id, name | order by id asc" -First 10
 > [!IMPORTANT]
 > 查詢必須**投影** **識別碼**欄位，才能使分頁運作。 如果查詢中遺漏了 Skip，回應將不會包含 **$skipToken**。
 
-如需範例，請參閱 REST API 文件中的[下一頁查詢](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources#next-page-query)。
+如需範例，請參閱 REST API 文件中的[下一頁查詢](/rest/api/azureresourcegraph/resourcegraph(2019-04-01)/resources/resources#next-page-query)。
 
 ## <a name="formatting-results"></a>格式化結果
 

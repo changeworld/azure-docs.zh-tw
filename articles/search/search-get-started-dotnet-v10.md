@@ -9,24 +9,24 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 4d8a38666991760fbb133e617984ba23788034ca
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4a8a2455ea3e5889293cb8285f36699942a46437
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908884"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209333"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>快速入門：使用 Microsoft. Azure 搜尋服務 v10 用戶端程式庫來建立搜尋索引
 
 本文是舊版 Microsoft. Azure 搜尋服務的 c # 快速入門 (版本 10) 用戶端程式庫，現在已由 Azure.Search.Documents (版本 11) 用戶端程式庫取代。 如果您有使用 Microsoft. Azure 搜尋程式庫的現有搜尋解決方案，您可以使用本快速入門來瞭解這些 Api。 
 
-針對新的解決方案，我們建議新的 Azure.Search.Documents 程式庫。 如需簡介，請參閱[快速入門：使用 Azure.Search.Documents 程式庫建立搜尋索引](search-get-started-dotnet.md)。
+針對新的解決方案，我們建議新的 Azure.Search.Documents 程式庫。 如需簡介，請參閱 [快速入門：使用 Azure.Search.Documents 程式庫建立搜尋索引](search-get-started-dotnet.md)。
 
 ## <a name="about-this-quickstart"></a>關於本快速入門
 
-在 c # 中建立 .NET Core 主控台應用程式，以使用 Visual Studio 和[Microsoft. Azure 搜尋用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/search/client10?view=azure-dotnet)來建立、載入和查詢 Azure 認知搜尋索引。 
+在 c # 中建立 .NET Core 主控台應用程式，以使用 Visual Studio 和 [Microsoft. Azure 搜尋用戶端程式庫](https://docs.microsoft.com/dotnet/api/overview/azure/search/client10?view=azure-dotnet)來建立、載入和查詢 Azure 認知搜尋索引。 
 
-本文說明如何建立應用程式。 您也可以[下載並執行完整的應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)。
+本文說明如何建立應用程式。 您也可以 [下載並執行完整的應用程式](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)。
 
 > [!NOTE]
 > 本文中的示範程式碼會使用 Azure 認知搜尋第10版 .NET SDK 的同步方法來簡化。 不過，針對生產案例，我們建議您在您自己的應用程式中使用非同步方法，讓應用程式保有可擴充性且回應靈敏。 例如，您可以使用 `CreateAsync` 與 `DeleteAsync`，而非 `Create` 與 `Delete`。
@@ -63,7 +63,7 @@ ms.locfileid: "87908884"
 
 ### <a name="install-nuget-packages"></a>安裝 NuGet 套件
 
-「 [Microsoft Azure 搜尋套件](https://www.nuget.org/packages/Microsoft.Azure.Search/)」是由幾個以 NuGet 套件形式散發的用戶端程式庫所組成。
+「 [Microsoft Azure 搜尋套件](https://www.nuget.org/packages/Microsoft.Azure.Search/) 」是由幾個以 NuGet 套件形式散發的用戶端程式庫所組成。
 
 針對此專案，請使用版本10的 `Microsoft.Azure.Search` nuget 套件和最新的 `Microsoft.Extensions.Configuration.Json` nuget 套件。
 
@@ -106,9 +106,9 @@ ms.locfileid: "87908884"
 
 1. 新增兩個空類別定義到您的專案：Address.Methods.cs、Hotel.Methods.cs
 
-1. 在 Address.Methods.cs 中，藉由下列程式碼來覆寫預設內容，[lines 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25)。
+1. 在 Address.Methods.cs 中，藉由下列程式碼來覆寫預設內容，[lines 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)。
 
-1. 在 Hotel.Methods.cs 中，複製 [lines 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68)。
+1. 在 Hotel.Methods.cs 中，複製 [lines 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)。
 
 ## <a name="1---create-index"></a>1 - 建立索引
 

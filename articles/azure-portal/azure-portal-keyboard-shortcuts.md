@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d9bc6365070c0aec96def2f55758204925fe7ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75641328"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205951"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure 入口網站的鍵盤快速鍵
 
@@ -31,13 +31,13 @@ ms.locfileid: "75641328"
 |若要執行這項操作 |按鍵 |
 | --- | --- |
 |建立資源|G+N|
-|開啟**所有服務**|G+B|
+|開啟 **所有服務**|G+B|
 |搜尋資源、服務及文件|G+/|
 |搜尋資源功能表項目|CTRL+/ |
 |上移選取的左邊欄專案 |ALT+Shift+向上鍵|
 |將選取的左提要欄位向下移動 |ALT+Shift+向下鍵|
 
-## <a name="navigation"></a>瀏覽
+## <a name="navigation"></a>巡覽
 
 |若要進行此導覽 |按鍵 |
 | --- | --- |
@@ -48,12 +48,12 @@ ms.locfileid: "75641328"
 
 |前往此位置 |按鍵 |
 | --- | --- |
-|前往**儀表板** |G+D |
+|前往 **儀表板** |G+D |
 |移至 [**所有資源**]|G+A |
-|前往**資源群組**|G+R |
+|前往 **資源群組**|G+R |
 |在此位置開啟左側邊欄專案 |G+number|
 
 ## <a name="next-steps"></a>後續步驟
 
-- [開啟高對比或變更佈景主題](azure-portal-change-theme-high-contrast.md)
-- [支援的瀏覽器和裝置](../azure-preview-portal-supported-browsers-devices.md)
+- [開啟高對比或變更佈景主題](set-preferences.md#choose-a-theme-or-enable-high-contrast)
+- [支援的瀏覽器和裝置](azure-portal-supported-browsers-devices.md)

@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 說明如何設定適用於 Azure Dev Spaces 的 Azure Kubernetes Service 叢集
 keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
-ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995882"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207957"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>如何設定 Azure Dev Spaces 叢集的運作方式
 
@@ -19,8 +19,6 @@ Azure Dev Spaces 提供了多種方式，可供迅速逐一查看 Kubernetes 應
 ## <a name="prepare-your-aks-cluster"></a>準備您的 AKS 叢集
 
 若要準備適用於 Dev Spaces 的 AKS 叢集，請確認您的 AKS 叢集位於 [Azure Dev Spaces 支援的區域][supported-regions]，且目前執行的是 Kubernetes 1.10.3 或更新版本。 您可以藉由執行，從 Azure CLI 啟用 Azure Dev Spaces `az aks use-dev-spaces` 。
-
-如需為 Dev Spaces 設定 AKS 叢集的範例，請參閱[小組開發快速入門][quickstart-team]。
 
 在 AKS 叢集上啟用 Azure Dev Spaces 時，會為您的叢集安裝控制器。 控制器位於您的 AKS 叢集範圍之外。 控制器會驅動用戶端工具與 AKS 叢集之間的行為和通訊。 一旦啟用後，就可以透過用戶端工具與控制器進行互動。
 
@@ -92,10 +90,8 @@ Kubernetes Webhook 許可伺服器會接聽在 AKS 叢集中建立的任何新 P
 
 若要深入瞭解如何使用用戶端工具來準備和執行開發空間中的程式碼，請參閱[準備 Azure Dev Spaces 的專案的運作方式][how-it-works-prep]。
 
-若要開始使用 Azure Dev Spaces 進行小組開發，請參閱 [Azure Dev Spaces 快速入門中的小組開發][quickstart-team]。
 
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
 [how-it-works-up]: how-dev-spaces-works-up.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[quickstart-team]: quickstart-team-development.md

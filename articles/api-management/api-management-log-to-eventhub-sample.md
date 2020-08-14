@@ -12,15 +12,16 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: ace0ef2660a44af41d8942cfe4d225bc1a03228e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254583"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205516"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>利用 Azure API 管理、事件中樞與 Moesif 監視您的 API
 [API 管理服務](api-management-key-concepts.md) 提供許多功能，以增強傳送至 HTTP API 之 HTTP 要求的處理。 不過，要求和回應的存在都是暫時的。 提出要求並透過 API 管理服務送到您的後端 API。 您的 API 會處理此要求，而回應會傳回給 API 取用者。 API 管理服務會保留一些有關 API 的重要統計資料，以顯示在 Azure 入口網站儀表板上，但除此之外，詳細資料會消失。
@@ -79,7 +80,7 @@ Azure 事件中樞已設計用來輸入大量資料，其能夠處理的事件�
 ### <a name="policy-declaration"></a>原則宣告
 此原則運算式有一些值得一提的特別之處。 log-to-eventhub 原則有一個名為 logger-id 的屬性，這是指已在 API 管理服務中建立的記錄器名稱。 在 [如何在 Azure API 管理中將事件記錄至 Azure 事件中樞](api-management-howto-log-event-hubs.md)文件中可以找到如何在 API 管理服務中設定事件中樞記錄器的詳細資訊。 第二個屬性是一個選擇性參數，其指示事件中樞要在哪個資料分割中儲存訊息。 事件中樞使用資料分割來達到延展性，而且需要至少兩個資料分割。 只保證在一個資料分割內的訊息會依序傳遞。 如果我們未指示事件中樞要在哪一個資料分割中放置訊息，它會使用循環配置資源演算法來分散負載。 不過，這可能導致一些訊息未依順序處理。
 
-### <a name="partitions"></a>資料分割
+### <a name="partitions"></a>分割區
 若要確保我們的訊息依序傳遞給取用者並利用資料分割的負載分散功能，我選擇將 HTTP 要求訊息傳送到一個資料分割，將 HTTP 回應訊息傳送到第二個資料分割。 如此可確保負載平均分散，而且我們可以保證所有要求和所有回應都會依序取用。 回應有可能在對應要求之前取用，但這不成問題，因為我們有不同的機制可讓要求與回應相互關聯，而且我們知道要求一律會出現在回應之前。
 
 ### <a name="http-payloads"></a>HTTP 裝載
@@ -305,7 +306,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 
 ![示範將要求轉送到 Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 Azure API 管理服務提供了一個理想位置，可供擷取您的 API 的雙向 HTTP 流量。 Azure 事件中樞是一個可高度擴充、低成本的解決方案，用來擷取該流量並將它饋送到次要處理系統中，以便進行記錄、監視和其他複雜的分析。 連線到第三方監視系統 (像是 Moesif) 就像數十行程式碼一樣簡單。
 
 ## <a name="next-steps"></a>後續步驟

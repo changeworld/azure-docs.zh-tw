@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 902dfc924fdac28c0aed46745604c5d4d19f084b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 158715a312af5d368b6f1125a7f1acc36dbefe51
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920325"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207515"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>使用 C 從 Azure 時間序列深入解析 Gen2 環境查詢資料#
 
-此 c # 範例示範如何在 Azure 時間序列深入解析 Gen2 環境中，從[Gen2 資料存取 api](https://docs.microsoft.com/rest/api/time-series-insights/preview)查詢資料。
+此 c # 範例示範如何在 Azure 時間序列深入解析 Gen2 環境中，從 [Gen2 資料存取 api](https://docs.microsoft.com/rest/api/time-series-insights/preview) 查詢資料。
 
 > [!TIP]
-> View Gen2 c # 程式碼範例，網址為 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) 。
+> View Gen2 c # 程式碼範例，網址為 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) 。
 
 ## <a name="summary"></a>摘要
 
@@ -50,7 +50,7 @@ ms.locfileid: "87920325"
 
 1. 布建[Gen2 Azure 時間序列深入解析](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment)環境。
 1. 針對 Azure Active Directory 設定 Azure 時間序列見解環境，如[驗證和授權](time-series-insights-authentication-and-authorization.md)中所述。 
-1. 執行[Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md)中指定的[GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) ，以產生 Azure 時間序列深入解析 Gen2 用戶端相依性。
+1. 執行[Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/Readme.md)中指定的[GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClient/GenerateCode.bat) ，以產生 Azure 時間序列深入解析 Gen2 用戶端相依性。
 1. 在 Visual Studio 中開啟 `TSIPreviewDataPlaneclient.sln` 方案，並將 `DataPlaneClientSampleApp` 設定為預設專案。
 1. 使用[以下](#project-dependencies)所述步驟來安裝必要的專案相依性，並將範例編譯為可執行檔 `.exe`。
 1. 按兩下 `.exe` 檔案加以執行。
@@ -61,7 +61,7 @@ ms.locfileid: "87920325"
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - Version 16.4.2+
 
-本範例程式碼有數個必要的相依性，您可在 [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) 檔案中檢視這些相依性。
+本範例程式碼有數個必要的相依性，您可在 [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/packages.config) 檔案中檢視這些相依性。
 
 選取 [建置] > [建置方案]，以下載 Visual Studio 2019 中的套件。 
 
@@ -81,4 +81,4 @@ ms.locfileid: "87920325"
 
 - 若要深入了解查詢，請參閱[查詢 API 參考](https://docs.microsoft.com/rest/api/time-series-insights/preview-query) (機器翻譯)。
 
-- 閱讀如何[使用用戶端 SDK 將 JavaScript 應用程式連接](https://github.com/microsoft/tsiclient)到 Azure 時間序列深入解析。
+- 閱讀如何 [使用用戶端 SDK 將 JavaScript 應用程式連接](https://github.com/microsoft/tsiclient) 到 Azure 時間序列深入解析。

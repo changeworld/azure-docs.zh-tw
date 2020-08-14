@@ -7,18 +7,19 @@ manager: gwallace
 keywords: azure 函式，函數，事件處理，準備，冷啟動，premium，動態計算，無伺服器架構
 ms.service: azure-functions
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: dade31fd9a5a75c875274ea45607fea81a2de027
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383710"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206575"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 準備觸發程式
 
-本文說明如何在 Azure Functions 中使用準備觸發程式。 只有在高階[方案](functions-premium-plan.md)中執行的函數應用程式才支援準備觸發程式。 新增實例以調整執行中函式應用程式時，會叫用準備觸發程式。 您可以使用準備觸發程式在[預先準備程式](./functions-premium-plan.md#pre-warmed-instances)期間預先載入自訂相依性，讓您的函式可以立即開始處理要求。 
+本文說明如何在 Azure Functions 中使用準備觸發程式。 只有在高階 [方案](functions-premium-plan.md)中執行的函數應用程式才支援準備觸發程式。 新增實例以調整執行中函式應用程式時，會叫用準備觸發程式。 您可以使用準備觸發程式在 [預先準備程式](./functions-premium-plan.md#pre-warmed-instances) 期間預先載入自訂相依性，讓您的函式可以立即開始處理要求。 
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -40,10 +41,10 @@ ms.locfileid: "87383710"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-下列範例顯示[c #](functions-dotnet-class-library.md)函式，該函式會在新增至您的應用程式時，在每個新的實例上執行。 不需要傳回值屬性。
+下列範例顯示 [c #](functions-dotnet-class-library.md) 函式，該函式會在新增至您的應用程式時，在每個新的實例上執行。 不需要傳回值屬性。
 
 
-* 您的函式必須命名為（不區分 ```warmup``` 大小寫），而且每個應用程式只能有一個準備函數。
+* 您的函式必須命名為 (不區分 ```warmup``` 大小寫) ，而且每個應用程式只能有一個準備函數。
 * 若要使用準備做為 .NET 類別庫函式，請確定您有3.0.5 的套件參考 **>。**
     * ```<PackageReference Include="Microsoft.Azure.WebJobs.Extensions" Version="3.0.5" />```
 
@@ -76,9 +77,9 @@ namespace WarmupSample
 # <a name="c-script"></a>[C# 指令碼](#tab/csharp-script)
 
 
-下列範例顯示在檔案的*function.js*中的準備觸發程式，以及將在每個新實例上執行的[c # 腳本](functions-reference-csharp.md)函式（當它新增至您的應用程式時）。
+下列範例顯示在檔案的 *function.js* 中的準備觸發程式，以及將在每個新實例上執行的 [c # 腳本](functions-reference-csharp.md) 函式（當它新增至您的應用程式時）。
 
-您的函式必須命名為（不區分 ```warmup``` 大小寫），而且每個應用程式只能有一個準備函數。
+您的函式必須命名為 (不區分 ```warmup``` 大小寫) ，而且每個應用程式只能有一個準備函數。
 
 以下是 *function.json* 檔案：
 
@@ -107,9 +108,9 @@ public static void Run(ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-下列範例示範檔案中*function.js*的準備觸發程式，以及將在每個新實例上執行的[JavaScript](functions-reference-node.md)函式（當它新增至您的應用程式時）。
+下列範例示範檔案中 *function.js* 的準備觸發程式，以及將在每個新實例上執行的 [JavaScript](functions-reference-node.md)  函式（當它新增至您的應用程式時）。
 
-您的函式必須命名為（不區分 ```warmup``` 大小寫），而且每個應用程式只能有一個準備函數。
+您的函式必須命名為 (不區分 ```warmup``` 大小寫) ，而且每個應用程式只能有一個準備函數。
 
 以下是 *function.json* 檔案：
 
@@ -137,9 +138,9 @@ module.exports = async function (context, warmupContext) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下列範例顯示在檔案的*function.js*中的準備觸發程式，以及將在每個新實例上執行的[Python](functions-reference-python.md)函式（當它新增至您的應用程式時）。
+下列範例顯示在檔案的 *function.js* 中的準備觸發程式，以及將在每個新實例上執行的 [Python](functions-reference-python.md) 函式（當它新增至您的應用程式時）。
 
-您的函式必須命名為（不區分 ```warmup``` 大小寫），而且每個應用程式只能有一個準備函數。
+您的函式必須命名為 (不區分 ```warmup``` 大小寫) ，而且每個應用程式只能有一個準備函數。
 
 以下是 *function.json* 檔案：
 
@@ -172,7 +173,7 @@ def main(warmupContext: func.Context) -> None:
 
 下列範例顯示在每個新的實例新增至您的應用程式時，所執行的準備觸發程式。
 
-您的函式必須命名為（不區分 `warmup` 大小寫），而且每個應用程式只能有一個準備函數。
+您的函式必須命名為 (不區分 `warmup` 大小寫) ，而且每個應用程式只能有一個準備函數。
 
 ```java
 @FunctionName("Warmup")
@@ -185,7 +186,7 @@ public void run( ExecutionContext context) {
 
 ## <a name="trigger---attributes"></a>觸發程序 - 屬性
 
-在[c # 類別庫](functions-dotnet-class-library.md)中， `WarmupTrigger` 可以使用屬性來設定函式。
+在 [c # 類別庫](functions-dotnet-class-library.md)中， `WarmupTrigger` 可以使用屬性來設定函式。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -238,7 +239,7 @@ JAVA 中不支援準備觸發程式做為屬性。
 
 ## <a name="trigger---limits"></a>觸發程序的 - 限制
 
-* 準備觸發程式僅適用于高階[方案](./functions-premium-plan.md)上執行的應用程式。
+* 準備觸發程式僅適用于高階 [方案](./functions-premium-plan.md)上執行的應用程式。
 * 只有在向外延展作業期間才會呼叫準備觸發程式，而不是在重新開機或其他非規模的新創公司。 您必須確保邏輯可以載入所有必要的相依性，而不需使用準備觸發程式。 消極式載入是達成此目標的良好模式。
 * 一旦實例已經在執行中，就無法叫用準備觸發程式。
 * 每個函式應用程式只能有一個預熱觸發函式。

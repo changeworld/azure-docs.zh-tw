@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: a7307a5ecdc5f6aa4b90480fa769f87317605a61
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 0e1976f51251913197eeec1a342eb1e891ddcaa6
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168060"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206303"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>使用 C 銳利查詢 Azure 時間序列深入解析 Gen1 環境中的資料
 
-此 c # 範例示範如何使用[Gen1 查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query)來查詢來自 Azure 時間序列深入解析 Gen1 環境的資料。
+此 c # 範例示範如何使用 [Gen1 查詢 api](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) 來查詢來自 Azure 時間序列深入解析 Gen1 環境的資料。
 
 > [!TIP]
-> View Gen1 c # 程式碼範例，網址為 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 。
+> View Gen1 c # 程式碼範例，網址為 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) 。
 
 ## <a name="summary"></a>摘要
 
@@ -34,9 +34,9 @@ ms.locfileid: "88168060"
 * 如何在 `Authorization` 後續的查詢 API 要求的標頭中傳遞該取得的存取權杖。
 
 * 此範例會呼叫每個 Gen1 查詢 Api，以示範如何對進行 HTTP 要求：
-  * [取得環境 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environments-api)以傳回使用者可存取的環境
+  * [取得環境 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environments-api) 以傳回使用者可存取的環境
   * [取得環境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-availability-api)
-  * [取得環境中繼資料 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api)以取出環境中繼資料
+  * [取得環境中繼資料 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-metadata-api) 以取出環境中繼資料
   * [取得環境事件 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-events-api)
   * [取得環境匯總 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api)
 
@@ -68,7 +68,7 @@ ms.locfileid: "88168060"
 
 選取 [建置] > [建置方案]，以下載 Visual Studio 2019 中的套件。
 
-或者，使用[NuGet 2.12 +](https://www.nuget.org/)新增套件：
+或者，使用 [NuGet 2.12 +](https://www.nuget.org/)新增套件：
 
 * `dotnet add package Newtonsoft.Json --version 9.0.1`
 * `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 3.13.9`

@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7616f6c502f0b5402aa784f707d0dafa31268d78
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 2f4647f4e13677d9136ce7fdb090e809943cdf0d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853053"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206697"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 資料表儲存體繫結
 
@@ -68,7 +68,7 @@ public class TableStorage
 
 ### <a name="iqueryable"></a>IQueryable
 
-下列範例顯示的[c #](functions-dotnet-class-library.md)函式會讀取類別衍生自的多個資料表資料列 `MyPoco` `TableEntity` 。
+下列範例顯示的 [c #](functions-dotnet-class-library.md) 函式會讀取類別衍生自的多個資料表資料列 `MyPoco` `TableEntity` 。
 
 ```csharp
 public class TableStorage
@@ -249,7 +249,7 @@ public class Person : TableEntity
 
 ### <a name="cloudtable"></a>CloudTable
 
-`IQueryable`在 2.x[版和更高版本](functions-versions.md)的函數執行時間中不支援) 。 替代方式是使用 Azure 儲存體 SDK，藉此利用 `CloudTable` 方法參數來讀取資料表。 以下是查詢 Azure Functions 記錄資料表的函數範例：
+`IQueryable` 在 2.x [版和更高版本 ](functions-versions.md)的函數執行時間中不支援) 。 替代方式是使用 Azure 儲存體 SDK，藉此利用 `CloudTable` 方法參數來讀取資料表。 以下是查詢 Azure Functions 記錄資料表的函數範例：
 
 ```json
 {
@@ -603,7 +603,7 @@ Python 指令碼不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-資料表資料會當做 JSON 字串傳遞至函數。 藉由呼叫來還原序列化訊息， `json.loads` 如輸入[範例](#input)中所示。
+資料表資料會當做 JSON 字串傳遞至函數。 藉由呼叫來還原序列化訊息， `json.loads` 如輸入 [範例](#input)中所示。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -914,7 +914,7 @@ public static MyPoco TableOutput(
 }
 ```
 
-如需完整範例，請參閱[輸出-c # 範例](#output)。
+如需完整範例，請參閱 [輸出-c # 範例](#output)。
 
 您可以使用 `StorageAccount` 屬性來指定類別、方法或參數層級的儲存體帳戶。 如需詳細資訊，請參閱[輸入 - 屬性](#input---attributes-and-annotations)。
 
@@ -932,9 +932,9 @@ Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在 JAVA 函式執行時間連結[庫](/java/api/overview/azure/functions/runtime)中，在參數上使用[TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/)注釋，將值寫入資料表儲存體。
+在 JAVA 函式執行時間連結 [庫](/java/api/overview/azure/functions/runtime)中，在參數上使用 [TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/) 注釋，將值寫入資料表儲存體。
 
-如需[詳細資訊](#output)，請參閱範例。
+如需 [詳細資訊](#output)，請參閱範例。
 
 ---
 
@@ -948,8 +948,8 @@ Python 指令碼不支援屬性。
 |**direction** | n/a | 必須設為 `out`。 當您在 Azure 入口網站中建立繫結時，會自動設定此屬性。 |
 |**name** | n/a | 函式程式碼中所使用的變數名稱，代表資料表或實體。 設為 `$return` 以參考函式傳回值。| 
 |**tableName** |**TableName** | 資料表的名稱。| 
-|**partitionKey** |**PartitionKey** | 要寫入之資料表實體的分割區索引鍵。 如需如何使用此屬性的指引，請參閱[使用方式一節](#output---usage)。| 
-|**rowKey** |**RowKey** | 要寫入之資料表實體的資料列索引鍵。 如需如何使用此屬性的指引，請參閱[使用方式一節](#output---usage)。| 
+|**partitionKey** |**PartitionKey** | 要寫入之資料表實體的分割區索引鍵。 如需如何使用此屬性的指引，請參閱 [使用方式一節](#output---usage) 。| 
+|**rowKey** |**RowKey** | 要寫入之資料表實體的資料列索引鍵。 如需如何使用此屬性的指引，請參閱 [使用方式一節](#output---usage) 。| 
 |**connection** |**[連接]** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定 `connection` 為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -982,7 +982,7 @@ Python 指令碼不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-有兩個選項可使用[TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet)注釋，從函式輸出資料表儲存體資料列：
+有兩個選項可使用 [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) 注釋，從函式輸出資料表儲存體資料列：
 
 - 傳回**值**：藉由將注釋套用至函數本身，函數的傳回值會保存為數據表儲存體資料列。
 
@@ -994,7 +994,7 @@ Python 指令碼不支援屬性。
 
 | 繫結 | 參考 |
 |---|---|
-| 資料表 | [資料表錯誤碼](/rest/api/storageservices/fileservices/table-service-error-codes) |
+| Table | [資料表錯誤碼](/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Bob、資料表、佇列 | [儲存體錯誤碼](/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | Bob、資料表、佇列 | [疑難排解](/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 

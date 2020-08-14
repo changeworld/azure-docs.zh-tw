@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 6a8cc588ff7325242e7e010e9869eaa9a24f6fc2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033331"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205937"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>重新導向 URI (回復 URL) 限制和限制
 
@@ -43,15 +43,15 @@ ms.locfileid: "88033331"
 
 ## <a name="supported-schemes"></a>支援的配置
 
-Azure Active Directory (Azure AD) 應用程式模型目前針對登入任何組織之 Azure AD 租使用者中工作或學校帳戶的應用程式，同時支援 HTTP 和 HTTPS 架構。 這些帳戶類型是由 `AzureADMyOrg` `AzureADMultipleOrgs` `signInAudience` 應用程式資訊清單的欄位中的和值所指定。 對於登入個人 Microsoft 帳戶的應用程式 (MSA) *和*公司和學校帳戶 (也就是 `signInAudience` 設定為 `AzureADandPersonalMicrosoftAccount`) ，只允許 HTTPS 配置。
+Azure Active Directory (Azure AD) 應用程式模型目前針對登入任何組織之 Azure AD 租使用者中工作或學校帳戶的應用程式，同時支援 HTTP 和 HTTPS 架構。 這些帳戶類型是由 `AzureADMyOrg` `AzureADMultipleOrgs` `signInAudience` 應用程式資訊清單的欄位中的和值所指定。 對於登入個人 Microsoft 帳戶的應用程式 (MSA) *和* 公司和學校帳戶 (也就是 `signInAudience` 設定為 `AzureADandPersonalMicrosoftAccount`) ，只允許 HTTPS 配置。
 
-若要將具有 HTTP 配置的重新導向 Uri 新增至登入工作或學校帳戶的應用程式註冊，您必須在 Azure 入口網站的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)中使用應用程式資訊清單編輯器。 不過，雖然您可以使用資訊清單編輯器來設定以 HTTP 為基礎的重新導向 URI，但我們*強烈*建議您針對重新導向 URI 使用 HTTPS 配置。
+若要將具有 HTTP 配置的重新導向 Uri 新增至登入工作或學校帳戶的應用程式註冊，您必須在 Azure 入口網站的 [應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908) 中使用應用程式資訊清單編輯器。 不過，雖然您可以使用資訊清單編輯器來設定以 HTTP 為基礎的重新導向 URI，但我們 *強烈* 建議您針對重新導向 URI 使用 HTTPS 配置。
 
 ## <a name="localhost-exceptions"></a>Localhost 例外狀況
 
-根據[RFC 8252 區段 8.3](https://tools.ietf.org/html/rfc8252#section-8.3)和[7.3](https://tools.ietf.org/html/rfc8252#section-7.3)，「回送」或「Localhost」重新導向 uri 有兩個特殊考慮：
+根據 [RFC 8252 區段 8.3](https://tools.ietf.org/html/rfc8252#section-8.3) 和 [7.3](https://tools.ietf.org/html/rfc8252#section-7.3)，「回送」或「Localhost」重新導向 uri 有兩個特殊考慮：
 
-1. `http`URI 配置是可接受的，因為重新導向絕不會離開裝置。 因此，這兩個都是可接受的：
+1. `http` URI 配置是可接受的，因為重新導向絕不會離開裝置。 因此，這兩個都是可接受的：
     - `http://127.0.0.1/myApp`
     - `https://127.0.0.1/myApp`
 1. 由於原生應用程式通常需要暫時埠範圍，因此會忽略通訊埠元件 (例如， `:5001` 或 `:443`) 因比對重新導向 URI 的目的而略過。 因此，所有這些都視為相等：
@@ -62,9 +62,9 @@ Azure Active Directory (Azure AD) 應用程式模型目前針對登入任何組�
 
 從開發的觀點來看，這表示幾件事：
 
-1. 請勿註冊多個重新導向 Uri，其中只有埠不同。 登入伺服器會任意挑選其中一個，並使用與該重新導向 URI 相關聯的行為 (例如，其是否為 `web` -、 `native` -或 `spa` -類型重新導向) 。
-1. 如果您需要在 localhost 上註冊多個重新導向 Uri，以便在開發期間測試不同的流程，請使用 URI 的*路徑*元件來區分它們。 例如， `http://127.0.0.1/MyWebApp` 不符合 `http://127.0.0.1/MyNativeApp` 。
-1. 根據 RFC 指導方針，您不應該 `localhost` 在重新導向 URI 中使用。 相反地，請使用實際的回送 IP 位址 `127.0.0.1` 。 這可防止您的應用程式因設定錯誤的防火牆或重新命名的網路介面而中斷。
+* 請勿註冊多個重新導向 Uri，其中只有埠不同。 登入伺服器會任意挑選其中一個，並使用與該重新導向 URI 相關聯的行為 (例如，其是否為 `web` -、 `native` -或 `spa` -類型重新導向) 。
+* 如果您需要在 localhost 上註冊多個重新導向 Uri，以便在開發期間測試不同的流程，請使用 URI 的 *路徑* 元件來區分它們。 例如， `http://127.0.0.1/MyWebApp` 不符合 `http://127.0.0.1/MyNativeApp` 。
+* 根據 RFC 指導方針，您不應該 `localhost` 在重新導向 URI 中使用。 相反地，請使用實際的回送 IP 位址 `127.0.0.1` 。 這可防止您的應用程式因設定錯誤的防火牆或重新命名的網路介面而中斷。
 
     目前不支援 () 的 IPv6 回送位址 `[::1]` 。
 
@@ -74,9 +74,9 @@ Azure Active Directory (Azure AD) 應用程式模型目前針對登入任何組�
 
 在設定用來登入個人 Microsoft 帳戶和公司或學校帳戶的應用程式註冊中，目前不支援萬用字元 Uri。 不過，如果應用程式設定為只登入組織 Azure AD 租使用者中的公司或學校帳戶，則允許使用萬用字元 Uri。
 
-若要將具有萬用字元的重新導向 Uri 新增至登入工作或學校帳戶的應用程式註冊，您必須在 Azure 入口網站的[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)中使用應用程式資訊清單編輯器。 雖然您可以使用資訊清單編輯器來設定具有萬用字元的重新導向 URI，但我們*強烈*建議您遵守[RFC 6749 的區段 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) ，並且只使用絕對 uri。
+若要將具有萬用字元的重新導向 Uri 新增至登入工作或學校帳戶的應用程式註冊，您必須在 Azure 入口網站的 [應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908) 中使用應用程式資訊清單編輯器。 雖然您可以使用資訊清單編輯器來設定具有萬用字元的重新導向 URI，但我們 *強烈* 建議您遵守 [RFC 6749 的區段 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) ，並且只使用絕對 uri。
 
-如果您的案例所需的重新導向 Uri 數目超過允許的上限，請考慮[下列方法](#use-a-state-parameter)，而不是新增萬用字元重新導向 URI。
+如果您的案例所需的重新導向 Uri 數目超過允許的上限，請考慮 [下列方法](#use-a-state-parameter) ，而不是新增萬用字元重新導向 URI。
 
 ### <a name="use-a-state-parameter"></a>使用狀態參數
 
@@ -95,4 +95,4 @@ Azure Active Directory (Azure AD) 應用程式模型目前針對登入任何組�
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解應用[程式註冊應用程式資訊清單](reference-app-manifest.md)。
+瞭解應用 [程式註冊應用程式資訊清單](reference-app-manifest.md)。

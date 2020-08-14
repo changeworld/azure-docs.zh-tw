@@ -1,18 +1,18 @@
 ---
 title: 大規模將混合式機器連線至 Azure
-description: 在本文中，您將了解如何使用服務主體，使用適用於伺服器的 Azure Arc (預覽) 將機器連線至 Azure。
+description: 在本文中，您將瞭解如何使用已啟用 Azure Arc 的伺服器，將機器連線至 Azure (預覽) 使用服務主體。
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f599ae6bab8a2b1ce442df677ba5de206d11ab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 07266ce7fb9579e1d4fb1b65394e0b7fdf7aa13d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121811"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211406"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>大規模將混合式機器連線至 Azure
 
-您可以根據您的需求，使用數個彈性選項，針對您環境中的多部 Windows 或 Linux 機器，啟用適用於伺服器的 Azure Arc (預覽)。 使用我們提供的範本指令碼，您可以讓安裝的每個步驟自動化，包括建立與 Azure Arc 的連線。不過，您必須與目標機器和 Azure 中具有提升權限的帳戶，以互動方式執行此指令碼。 若要將電腦連線到 Azure Arc 伺服器，您可以使用 Azure Active Directory [服務主體](../../active-directory/develop/app-objects-and-service-principals.md)，而不是使用您的特殊權限身分識別[以互動方式連線機器](onboard-portal.md)。 服務主體是特殊的有限管理身分識別，僅可獲得使用 `azcmagent` 命令將機器連線至 Azure 所需的最小權限。 這是比使用較高權限帳戶 (例如租用戶系統管理員) 更安全的做法，並且遵循我們的存取控制安全性最佳做法。 服務主體只會在上線期間使用，不會用於任何其他用途。  
+您可以根據您的需求，為您環境中的多部 Windows 或 Linux 電腦啟用已啟用 Azure Arc 的伺服器 (預覽) 。 使用我們提供的範本指令碼，您可以讓安裝的每個步驟自動化，包括建立與 Azure Arc 的連線。不過，您必須與目標機器和 Azure 中具有提升權限的帳戶，以互動方式執行此指令碼。 若要將電腦連線到已啟用 Azure Arc 的伺服器 (preview) ，您可以使用 Azure Active Directory [服務主體](../../active-directory/develop/app-objects-and-service-principals.md) ，而不是使用您的特殊許可權身分識別，以 [互動方式](onboard-portal.md)連線到電腦。 服務主體是特殊的有限管理身分識別，僅可獲得使用 `azcmagent` 命令將機器連線至 Azure 所需的最小權限。 這是比使用較高權限帳戶 (例如租用戶系統管理員) 更安全的做法，並且遵循我們的存取控制安全性最佳做法。 服務主體只會在上線期間使用，不會用於任何其他用途。  
 
 用來安裝和設定 Connected Machine 代理程式的安裝方法，需要您使用的自動化方法具有機器的系統管理員權限。 在 Linux 上請使用根帳戶，在 Windows 上則必須是本機系統管理員群組的成員。
 
@@ -20,7 +20,7 @@ ms.locfileid: "88121811"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-在此程序結束時，您已成功將混合式機器連線到適用於伺服器的 Azure Arc。
+在此程式結束時，您已成功將混合式機器連線到已啟用 Azure Arc 的伺服器 (預覽) 。
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>建立服務主體以進行大規模上線
 
@@ -131,9 +131,9 @@ azcmagent connect \
 ```
 
 >[!NOTE]
->您必須具備 Linux 電腦的*根*存取權限，才能執行**azcmagent**。
+>您必須具備 Linux 電腦的 *根* 存取權限，才能執行 **azcmagent**。
 
-在安裝好代理程式並將其設定為連線至適用於伺服器的 Azure Arc (預覽) 之後，請移至 Azure 入口網站以確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
+在您安裝代理程式並將其設定為連線至已啟用 Azure Arc 的伺服器後 (預覽) ]，請移至 Azure 入口網站，確認伺服器已成功連線。 在 [Azure 入口網站](https://aka.ms/hybridmachineportal)中檢視您的機器。
 
 ![成功的伺服器連線](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

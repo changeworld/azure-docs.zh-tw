@@ -3,16 +3,16 @@ title: Azure 中支援的叢集版本 Service Fabric
 description: 瞭解 Azure Service Fabric 中的叢集版本，包括來自 Service Fabric team blog 的最新發行連結。
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 728d7403ee8e0ac9ccbd69260a718c65389adc43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 9a2278769d75de19a3006e3a9f39b424dbc02b1f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433199"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205899"
 ---
 # <a name="supported-service-fabric-versions"></a>支援的 Service Fabric 版本
 
-請確定您的叢集一律執行支援的 Azure Service Fabric 版本。 在我們宣佈發行新版本的 Service Fabric 之後，最少60天，對舊版的支援結束。 您會在[Service Fabric 小組的 blog](https://azure.microsoft.com/updates/?product=service-fabric)中找到新版本的公告。
+請確定您的叢集一律執行支援的 Azure Service Fabric 版本。 在我們宣佈發行新版本的 Service Fabric 之後，最少60天，對舊版的支援結束。 您會在 [Service Fabric 小組的 blog](https://azure.microsoft.com/updates/?product=service-fabric)中找到新版本的公告。
 
 針對特定版本的 Service Fabric 執行時間，您可以使用 SDK/NuGet 套件的指定或較舊版本。 不支援較新版本的套件，而且可能會有以較舊叢集為目標的問題，因為這些環境可能會有不支援的功能或通訊協定變更。
 
@@ -39,13 +39,14 @@ ms.locfileid: "87433199"
 | 6.3.* | 6.1.480.* |小於或等於 3.2 版 |2019年3月31日  |
 | 6.4.* | 6.2.301.* |小於或等於 3.3 版 |2019年9月15日 |
 | 6.5. * | 6.4.617.* |小於或等於版本3。4 |2020年8月1日 |
-| 7.0.466.* | 6.4.664.* |小於或等於版本4。0|2020年8月1日  |
-| 7.0.466.* | 6.5. * |小於或等於版本4。0|2020年8月1日 |
-| 7.0.470.* | 7.0.466.* |小於或等於版本4。0 |2020年8月1日  |
-| 7.0.472.* | 7.0.466.* |小於或等於版本4。0 |2020年8月1日  |
+| 7.0.466.* | 6.4.664.* |小於或等於版本4。0|2020年11月1日  |
+| 7.0.466.* | 6.5. * |小於或等於版本4。0|2020年11月1日 |
+| 7.0.470.* | 7.0.466.* |小於或等於版本4。0 |2020年11月1日  |
+| 7.0.472.* | 7.0.466.* |小於或等於版本4。0 |2020年11月1日  |
 | 7.1.409.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
 | 7.1.417.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
 | 7.1.428.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
+| 7.1.456.* | 7.0.466.* |小於或等於版本4。1 |目前的版本，因此沒有結束日期 |
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
@@ -117,4 +118,5 @@ ms.locfileid: "87433199"
 | 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |
 | 7.1 CU1 | 7.1.417.9590 | 7.1.418.1 |
 | 7.1 CU2 | 7.1.428.9590 | 7.1.428.1 |
+| 7.1 CU3 | 7.1.456.9590 | 7.1.452.1 |
 
