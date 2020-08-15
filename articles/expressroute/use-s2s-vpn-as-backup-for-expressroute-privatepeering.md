@@ -7,16 +7,16 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: rambala
-ms.openlocfilehash: df4108604c656cd6383bd57b462c0f12f31bdd7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 68596b881ef1b62187bdb7194b364c9477b4e04d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206866"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244766"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>使用 S2S VPN 做為 ExpressRoute 私用對等互連的備份
 
-在標題為[使用 expressroute 私用對等互連進行嚴重損壞修復設計][DR-PP]的文章中，我們已討論過 expressroute 私用對等互連連線的備份連線解決方案需求，以及如何針對目的使用異地多餘的 ExpressRoute 線路。 在本文中，讓我們考慮如何利用和維護站對站 (S2S) VPN 作為 ExpressRoute 私用對等互連的背面。 
+在標題為 [使用 expressroute 私用對等互連進行嚴重損壞修復設計][DR-PP]的文章中，我們已討論過 expressroute 私用對等互連連線的備份連線解決方案需求，以及如何針對目的使用異地多餘的 ExpressRoute 線路。 在本文中，讓我們考慮如何利用和維護站對站 (S2S) VPN 作為 ExpressRoute 私用對等互連的備份。 
 
 不同于異地多餘的 ExpressRoute 線路，您只能在主動-被動模式中使用 ExpressRoute-VPN 嚴重損壞修復組合。 在被動模式中使用任何備份網路連線的主要挑戰是，被動連線通常會與主要連線一起失敗。 被動連線失敗的常見原因是缺少主動維護。 因此，在本文中，我們將焦點放在如何驗證和主動維護備份 ExpressRoute 私人對等互連的 S2S VPN 連線能力。
 
@@ -36,7 +36,7 @@ ms.locfileid: "86206866"
 
 下表列出拓撲的金鑰 IP 首碼：
 
-| **實體** | **前置詞** |
+| **實體** | **Prefix** |
 | --- | --- |
 | 內部部署 LAN | 10.1.11.0/25 |
 | Azure 中樞 VNet | 10.17.11.0/25 |
@@ -67,7 +67,7 @@ ms.locfileid: "86206866"
 
 ### <a name="configuring-for-high-availability"></a>設定高可用性
 
-[設定 ExpressRoute 和站對站][Conf-CoExist]並存連線討論如何設定並存的 ExpressRoute 線路和 S2S VPN 連接。 如我們在[使用 Expressroute 設計高可用性][HA]中所討論，為了改善 expressroute 高可用性，我們的安裝程式會維護網路冗余 (避免單一失敗點) 直到端點為止。 此外，ExpressRoute 線路的主要和次要連線都會設定為以主動-主動模式運作，方法是透過這兩個連線的相同方式來公告內部部署首碼。 
+[設定 ExpressRoute 和站對站][Conf-CoExist] 並存連線討論如何設定並存的 ExpressRoute 線路和 S2S VPN 連接。 如我們在 [使用 Expressroute 設計高可用性][HA]中所討論，為了改善 expressroute 高可用性，我們的安裝程式會維護網路冗余 (避免單一失敗點) 直到端點為止。 此外，ExpressRoute 線路的主要和次要連線都會設定為以主動-主動模式運作，方法是透過這兩個連線的相同方式來公告內部部署首碼。 
 
 透過 ExpressRoute 線路主要連線的主要 CE 路由器的內部部署路由通告，如下 (Junos 命令) 所示：
 
@@ -242,7 +242,7 @@ Network         NextHop     AsPath Weight
 10.17.11.128/26 10.17.11.77 65515       0
 ```
 
-若無法查看路由交換，即表示連接失敗。 請參閱[疑難排解： Azure 站對站 VPN 連線無法連線並停止運作][VPN Troubleshoot]，以取得疑難排解 VPN 連接的協助。
+若無法查看路由交換，即表示連接失敗。 請參閱 [疑難排解： Azure 站對站 VPN 連線無法連線並停止運作][VPN Troubleshoot] ，以取得疑難排解 VPN 連接的協助。
 
 ## <a name="testing-failover"></a>測試容錯移轉
 
@@ -270,7 +270,7 @@ Trace complete.
 
 我們的設定的主要和次要 ExpressRoute 點對點連線子網分別是 192.168.11.16/30 和 192.168.11.20/30。 在上述追蹤路由的步驟3中，我們看到我們遇到192.168.11.18，也就是主要 MSEE 的介面 IP。 出現 MSEE 介面時，確認我們目前的路徑是透過 ExpressRoute。
 
-如[重設 expressroute 線路對等互連][RST]中所報告，讓我們使用下列 powershell 命令來停用 ExpressRoute 線路的主要和次要對等互連。
+如 [重設 expressroute 線路對等互連][RST]中所報告，讓我們使用下列 powershell 命令來停用 ExpressRoute 線路的主要和次要對等互連。
 
 ```powershell
 $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
@@ -306,9 +306,9 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 ExpressRoute 是針對高可用性而設計的，在 Microsoft 網路內不會有單一失敗點。 仍然，ExpressRoute 線路僅限於單一地理區域和服務提供者。 S2S VPN 可能是 ExpressRoute 線路的良好嚴重損壞修復被動備份解決方案。 針對可靠的被動備份連線解決方案，定期維護被動設定和定期驗證連線非常重要。 請務必讓 VPN 設定變得過時，並定期 (每季) 在維護期間重複本文中所述的驗證和容錯移轉測試步驟。
 
-若要啟用以 VPN 閘道計量為基礎的監視和警示，請參閱[設定 VPN 閘道計量的警示][VPN-alerts]。
+若要啟用以 VPN 閘道計量為基礎的監視和警示，請參閱 [設定 VPN 閘道計量的警示][VPN-alerts]。
 
-若要加速 ExpressRoute 失敗後的 BGP 聚合，請透過[Expressroute 設定 BFD][BFD]。
+若要加速 ExpressRoute 失敗後的 BGP 聚合，請透過 [Expressroute 設定 BFD][BFD]。
 
 <!--Image References-->
 [1]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/topology.png "考慮的拓撲"

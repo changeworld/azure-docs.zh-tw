@@ -10,26 +10,26 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 15204a081f001d421574daa7f5ec2bac40152a19
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995746"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244307"
 ---
 # <a name="how-to-sign-up-for-translator"></a>如何註冊 Translator
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-- 還沒有帳戶嗎？ 您可以建立[免費帳戶](https://azure.microsoft.com/free/)進行實驗，完全不需付費。
+- 還沒有帳戶嗎？ 您可以建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services)進行實驗，完全不需付費。
 - 已經有帳戶了嗎? [登入](https://ms.portal.azure.com/)
 
 ## <a name="create-a-subscription-for-translator"></a>建立 Translator 的訂用帳戶
 
 登入入口網站之後，您可以建立翻譯工具的訂用帳戶，如下所示：
 
-1. 選取 [ **+ 建立資源**]。
-1. 在 [**搜尋 Marketplace** ] 搜尋方塊中，輸入**Translator** ，然後從結果中選取。
+1. 選取 [+ 建立資源]。
+1. 在 [ **搜尋 Marketplace** ] 搜尋方塊中，輸入 **Translator** ，然後從結果中選取。
 1. 選取 [建立]**** 定義訂用帳戶的詳細資料。
 1. 從 [定價層]**** 清單中，選取最符合您需求的定價層。
     1. 每個訂用帳戶都有一個免費層。 免費層與付費方案的特色與功能都相同，但是不會過期。

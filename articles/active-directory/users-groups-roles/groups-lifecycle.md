@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff0a1fb386776a3ab1a3b7689c69dea7dc717d1e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: afc9a32c4f0fa5b4b6a2f6c0ec56bbc35b6dde68
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213787"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244477"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>為 Microsoft 365 群組設定到期原則
 
@@ -65,7 +65,7 @@ ms.locfileid: "88213787"
 角色 | 權限
 -------- | --------
 全域管理員、群組系統管理員或使用者系統管理員 | 可建立、讀取、更新或刪除 Microsoft 365 群組到期原則設定<br>可以更新任何 Microsoft 365 群組
-User | 可以更新他們所擁有的 Microsoft 365 群組<br>可以還原他們所擁有的 Microsoft 365 群組<br>可以讀取到期原則設定
+使用者 | 可以更新他們所擁有的 Microsoft 365 群組<br>可以還原他們所擁有的 Microsoft 365 群組<br>可以讀取到期原則設定
 
 如需還原已刪除群組之許可權的詳細資訊，請參閱 [Azure Active Directory 中的還原已刪除的 Microsoft 365 群組](groups-restore-deleted.md)。
 
@@ -79,7 +79,7 @@ User | 可以更新他們所擁有的 Microsoft 365 群組<br>可以還原他們
 
 3. 在 [ **到期** ] 頁面上，您可以：
 
-    - 設定群組的存留期 (以天為單位)。 您可以選取其中一個預設值或自訂值 (應為 31 天或更多)。
+    - 設定群組的存留期 (以天為單位)。 您可以選取其中一個預設值，或自訂值 (應為30天或更多) 。
     - 指定當群組沒有擁有者時應該傳送續訂和到期通知的電子郵件地址。
     - 選取哪些 Microsoft 365 群組過期。 您可以設定到期日：
       - **全部** Microsoft 365 群組

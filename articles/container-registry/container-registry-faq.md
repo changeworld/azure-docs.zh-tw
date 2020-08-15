@@ -5,16 +5,21 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836389"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245361"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題集
 
 本文說明 Azure Container Registry 的常見問題和已知問題。
+
+如需登錄疑難排解指導方針，請參閱：
+* [針對登錄登入進行疑難排解](container-registry-troubleshoot-login.md)
+* [針對登錄的網路問題進行疑難排解](container-registry-troubleshoot-access.md)
+* [針對登錄效能進行疑難排解](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>資源管理
 
@@ -254,7 +259,7 @@ ACR 支援提供不同權限層級的[自訂角色](container-registry-roles.md)
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>如何啟用匿名提取存取？
 
-設定匿名 (公用) 提取存取的 Azure 容器登錄目前為預覽功能。 如果您的登錄中有任何[範圍對應 (使用者) 或權杖資源](https://aka.ms/acr/repo-permissions)，請先將其刪除，再提出支援票證 (系統範圍對應可以忽略) 。 若要啟用公用存取，請在 https://aka.ms/acr/support/create-ticket 開啟支援票證。 如需詳細資訊，請參閱 [Azure 意見反應論壇](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+設定匿名 (公用) 提取存取的 Azure 容器登錄目前為預覽功能。 如果您的登錄中有任何 [範圍對應 (使用者) 或權杖資源](https://aka.ms/acr/repo-permissions) ，請先將其刪除，再提出支援票證 (系統範圍對應可以忽略) 。 若要啟用公用存取，請在 https://aka.ms/acr/support/create-ticket 開啟支援票證。 如需詳細資訊，請參閱 [Azure 意見反應論壇](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
 
 
 
@@ -441,13 +446,13 @@ curl $redirect_url
 * 已不再支援傳統登錄。 請使用 [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update) 或 Azure 入口網站升級至支援的[服務層級](https://aka.ms/acr/skus)。
 * 映像或存放庫可能已鎖定，所以無法刪除或更新。 您可以使用 [az acr show repository](./container-registry-image-lock.md) 命令來查看目前的屬性。
 * 如果映像處於隔離中，則不允許某些作業。 深入瞭解[隔離](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)。
-* 您的登錄可能已達到其[儲存空間限制](container-registry-skus.md#service-tier-features-and-limits)。
+* 您的登錄可能已達到其 [儲存空間限制](container-registry-skus.md#service-tier-features-and-limits)。
 
 ### <a name="repository-format-is-invalid-or-unsupported"></a>存放庫格式無效或不受支援
 
 如果您在存放庫作業中指定存放庫名稱時看到「不支援的存放庫格式」、「不正確格式」或「要求的資料不存在」之類的錯誤，請檢查名稱的拼寫和大小寫。 有效的存放庫名稱只能包含小寫英數位元、句號、破折號、底線和正斜線。 
 
-如需完整的存放庫命名規則，請參閱[Open Container 方案散發規格](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)。
+如需完整的存放庫命名規則，請參閱 [Open Container 方案散發規格](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>如何在 Windows 上收集 HTTP 追蹤？
 

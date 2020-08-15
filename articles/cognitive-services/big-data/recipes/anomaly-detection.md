@@ -11,35 +11,35 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: b29fa17c21b2cdb2e764c905af3819142d8c341e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 823d61d94913122fc279e81698933b7e648dd114
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844060"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244341"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>配方：具有 Big Data 認知服務的預測性維護
 
-此配方會顯示如何使用 Azure Synapse 分析和 Spark 上的認知服務，來進行 IoT 裝置的預測性維護。 我們將遵循[CosmosDB 和 Synapse 連結](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples)範例。 為了簡單起見，在此配方中，我們將直接從 CSV 檔案讀取資料，而不是透過 CosmosDB 和 Synapse 連結取得資料流程資料。 我們強烈建議您查看 Synapse 連結範例。
+此配方會顯示如何使用 Azure Synapse 分析和 Spark 上的認知服務，來進行 IoT 裝置的預測性維護。 我們將遵循 [CosmosDB 和 Synapse 連結](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples) 範例。 為了簡單起見，在此配方中，我們將直接從 CSV 檔案讀取資料，而不是透過 CosmosDB 和 Synapse 連結取得資料流程資料。 我們強烈建議您查看 Synapse 連結範例。
 
 ## <a name="hypothetical-scenario"></a>假設案例
 
-假設的案例是一種電源工廠，IoT 裝置會在其中監視[流渦輪機](https://en.wikipedia.org/wiki/Steam_turbine)。 IoTSignals 集合的每分鐘 (RPM) 和 Megawatts (MW) 資料。 正在分析來自串流渦輪機的信號，並偵測到異常信號。
+假設的案例是一種電源工廠，IoT 裝置會在其中監視 [流渦輪機](https://en.wikipedia.org/wiki/Steam_turbine)。 IoTSignals 集合的每分鐘 (RPM) 和 Megawatts (MW) 資料。 正在分析來自串流渦輪機的信號，並偵測到異常信號。
 
 資料中可能會有隨機頻率的極端值。 在這些情況下，RPM 值會增加，而 MW 輸出將會關閉，以進行線路保護。 其概念是要同時查看資料變化，但使用不同的信號。
 
 ## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * 使用[Spark 集](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool)區設定的[Azure Synapse 工作區](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace)
 
 ## <a name="setup"></a>安裝程式
 
 ### <a name="create-an-anomaly-detector-resource"></a>建立 Anomaly Detector 資源
 
-Azure 認知服務會由您訂閱的 Azure 資源呈現。 使用[Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)或[Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)，建立 Translator 的資源。 您也可以：
+Azure 認知服務會由您訂閱的 Azure 資源呈現。 使用 [Azure 入口網站](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) 或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)，建立 Translator 的資源。 您也可以：
 
-- 在[Azure 入口網站](https://portal.azure.com/)中，查看現有的資源。
+- 在  [Azure 入口網站](https://portal.azure.com/)中，查看現有的資源。
 
 請記下此資源的端點和金鑰，您將在本指南中需要它。
 
@@ -151,4 +151,4 @@ plt.show()
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用 Azure 認知服務、Azure Synapse Analytics 和 Azure CosmosDB，大規模進行預測性維護。 如需詳細資訊，請參閱[GitHub](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples/tree/master/IoT)上的完整範例。
+瞭解如何使用 Azure 認知服務、Azure Synapse Analytics 和 Azure CosmosDB，大規模進行預測性維護。 如需詳細資訊，請參閱 [GitHub](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples/tree/master/IoT)上的完整範例。

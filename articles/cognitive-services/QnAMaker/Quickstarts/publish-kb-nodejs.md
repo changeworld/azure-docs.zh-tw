@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: 18ccec5332e3751a86225ab087a1f68b0577cf96
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 447b8a07f6bbda42be4def96ee8f1244fa752526
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406090"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245582"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入門： QnA Maker Node.js 的 REST Api
 
@@ -29,9 +29,9 @@ ms.locfileid: "87406090"
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * 最新版的 [Node.js](https://nodejs.org)。
 * 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
 
@@ -88,7 +88,7 @@ const request = require("requestretry");
 
 設定下列環境值：
 
-* `QNAMAKER_RESOURCE_KEY`-**金鑰**是32字元字串，而且可以在 Azure 入口網站的 [**快速入門**] 頁面上的 [QnA Maker 資源] 上取得。 這與預測端點金鑰不同。
+* `QNAMAKER_RESOURCE_KEY` - **金鑰** 是32字元字串，而且可以在 Azure 入口網站的 [ **快速入門** ] 頁面上的 [QnA Maker 資源] 上取得。 這與預測端點金鑰不同。
 * `QNAMAKER_AUTHORING_ENDPOINT` - 您的撰寫端點 (格式為 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`) 包含您的**資源名稱**。 這與用於查詢預測端點的 URL 不同。
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]

@@ -1,5 +1,5 @@
 ---
-title: 適用於 SAP 工作負載的 IBM Db2 Azure 虛擬機器 DBMS 部署 | Microsoft Docs
+title: 適用于 SAP 工作負載的 IBM Db2 Azure 虛擬機器 DBMS 部署 |Microsoft Docs
 description: 適用於 SAP 工作負載的 IBM DB2 Azure 虛擬機器 DBMS 部署
 services: virtual-machines-linux,virtual-machines-windows
 author: msjuergent
@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 08/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 366a302e4683c74e2ba62d76c066365a3c81b045
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ea95603ea630a1320db5698092f6748e36a9934
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051877"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245752"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 IBM DB2 Azure 虛擬機器 DBMS 部署
 
@@ -30,8 +30,8 @@ ms.locfileid: "87051877"
 
 下列的 SAP 附註，在本文所討論的領域上與 Azure 上的 SAP 有關：
 
-| 附註編號 | Title |
-| --- | --- |
+| 附註編號 |Title |
+| --- |--- |
 | [1928533] |Azure 上的 SAP 應用程式：支援的產品和 Azure VM 類型 |
 | [2015553] |Microsoft Azure 上的 SAP：支援必要條件 |
 | [1999351] |疑難排解適用於 SAP 且已強化的 Azure 監視功能 |
@@ -54,10 +54,10 @@ ms.locfileid: "87051877"
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>在 Azure VM 中安裝 SAP 的 IBM Db2 for Linux, UNIX, and Windows 組態指導方針
 ### <a name="storage-configuration"></a>儲存體組態
-所有的資料庫檔案都必須儲存於以直接連接磁碟為基礎的 NTFS 檔案系統上。 這些磁碟會掛接到 Azure VM，並且以 Azure 分頁 Blob 儲存體 (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) 或受控磁碟 (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>) 為基礎。 針對資料庫檔案，「不」  支援任何類型的網路磁碟機或遠端共用 (例如下列的 Azure 檔案服務)︰ 
+如需瞭解適用于 SAP 工作負載的 Azure 儲存體類型，請參閱 [AZURE 儲存體 sap 工作負載的類型](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) 一文。所有資料庫檔案都必須儲存在 Azure 區塊儲存體 (WINDOWS： NFFS、Linux： xfs、ext4 或 ext3) 的裝載磁片上。 資料庫檔案 **不** 支援任何類型的網路磁碟機機或遠端共用（例如下列 Azure 服務）： 
 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+* [Microsoft Azure 檔案服務](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
 
 使用以 Azure 分頁 Blob 儲存體或受控磁碟為基礎的磁碟時，[針對 SAP 工作負載而部署 Azure 虛擬機器 DBMS 時的考量](dbms_guide_general.md)中的描述，同樣適用於利用 Db2 DBMS 所做的部署。
 
@@ -67,13 +67,65 @@ ms.locfileid: "87051877"
 
 針對效能考量，也請參閱 SAP 安裝指南中的＜適用於資料庫目錄的資料安全性和效能考量＞章節。
 
-或者，如同[針對 SAP 工作負載而部署 Azure 虛擬機器 DBMS 時的考量](dbms_guide_general.md)所述，您也可以使用「Windows 儲存集區」(僅適用於 Windows Server 2012 和更新版本)，在多個磁碟上建立一個大型邏輯裝置。
+或者，您可以使用 Windows 儲存集區 (僅適用于 Windows Server 2012 和更新版本) 如適用于 [SAP 工作負載的 Azure 虛擬機器 DBMS 部署的考慮](dbms_guide_general.md) 和在 Linux 上的 LVM 或 mdadm，在多個磁片上建立一個大型邏輯裝置。
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 如果磁碟包含適用於您 sapdata 和 saptmp 目錄的 Db2 儲存路徑，您必須將實體磁碟磁區大小指定為 512 KB。 使用 Windows 儲存集區時，您必須透過命令列介面，使用參數 `-LogicalSectorSizeDefault`，以手動方式建立儲存集區。 如需詳細資訊，請參閱 <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>。
 
 和「Azure 進階儲存體」相比之下，使用 Azure 寫入加速器時，會有諸多因素造成寫入交易記錄的延遲時間被縮短。 因此，您應該針對組成 Db2 交易記錄磁碟區的 VHD 來部署 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../windows/how-to-enable-write-accelerator.md)文件。
+
+## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>適用于 IBM Db2 部署的 VM 和磁片結構建議
+
+SAP 支援附注 [1928533]中列出的任何 VM 類型都支援 IBM DB2 For SAP NetWeaver 應用程式。  執行 IBM Db2 資料庫的建議 VM 系列是 Esd_v4/Eas_v4/Es_v3，以及 M/M_v2 系列，適用于大型的多 tb 資料庫。 藉由啟用 M 系列寫入加速器，可以改善 IBM Db2 交易記錄磁片寫入效能。 
+
+以下是各種大小和使用 SAP on Db2 部署的基準設定，從小規模到非常大：
+
+#### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>額外的小型 SAP 系統：資料庫大小 50-200 GB：範例解決方案管理員
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/秒] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  ||  |
+|vCPU：4 |/db2/ <SID> /sapdata |P6 |4 |960  |200  |256  |14.000  |680  |256 KB |唯讀 |
+|RAM： 32 GiB |/db2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7.000  |340  |128 KB ||
+| |/db2/ <SID> /log_dir |P6 |2 |480  |100  |128  |7.000  |340  |64 KB ||
+| |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  || |
+
+#### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小型 SAP 系統：資料庫大小 200-750 GB：小型企業套件
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/秒] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
+|vCPU：16 |/db2/ <SID> /sapdata |P15 |4 |4.400  |500  |1.024  |14.000  |680  |256 KB |唯讀 |
+|RAM： 128 GiB |/db2/ <SID> /saptmp |P6 |2 |480  |100  |128  |7.000  |340  |128 KB ||
+| |/db2/ <SID> /log_dir |P15 |2 |2.200  |250  |512  |7.000  |340  |64 KB ||
+| |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  ||| 
+
+#### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中型 SAP 系統：資料庫大小 500-1000 GB：小型企業套件
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/秒] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
+|vCPU：32 |/db2/ <SID> /sapdata |P30 |2 |10.000  |400  |2.048  |10.000  |400  |256 KB |唯讀 |
+|RAM： 256 GiB |/db2/ <SID> /saptmp |P10 |2 |1.000  |200  |256  |7.000  |340  |128 KB ||
+| |/db2/ <SID> /log_dir |P20 |2 |4.600  |300  |1.024  |7.000  |340  |64 KB ||
+| |/db2/ <SID> /offline_log_dir |P15 |1 |1.100  |125  |256  |3.500  |170  ||| 
+
+#### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大型 SAP 系統：資料庫大小 750-2000 GB：商務套件
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/秒] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
+|vCPU：64 |/db2/ <SID> /sapdata |P30 |4 |20.000  |800  |4.096  |20.000  |800  |256 KB |唯讀 |
+|RAM： 504 GiB |/db2/ <SID> /saptmp |P15 |2 |2.200  |250  |512  |7.000  |340  |128 KB ||
+| |/db2/ <SID> /log_dir |P20 |4 |9.200  |600  |2.048  |14.000  |680  |64 KB ||
+| |/db2/ <SID> /offline_log_dir |P20 |1 |2.300  |150  |512  |3.500  |170  || |
+
+#### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>大型多 tb 的 SAP 系統：資料庫大小 2TB +：通用 Business Suite 系統
+| VM 名稱/大小 |Db2 掛接點 |Azure 進階磁碟 |磁片的 NR |IOPS |輸送量 [MB/秒] |大小 [GB] |高載 IOPS |高載指派 [GB] | 等量大小 | Caching |
+| --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|M128s |/db2 |P10 |1 |500  |100  |128  |3.500  |170  || |
+|vCPU：128 |/db2/ <SID> /sapdata |P40 |4 |30.000  |1.000  |8.192  |30.000  |1.000  |256 KB |唯讀 |
+|RAM： 2048 GiB |/db2/ <SID> /saptmp |P20 |2 |4.600  |300  |1.024  |7.000  |340  |128 KB ||
+| |/db2/ <SID> /log_dir |P30 |4 |20.000  |800  |4.096  |20.000  |800  |64 KB |WriteAccelerator |
+| |/db2/ <SID> /offline_log_dir |P30 |1 |5.000  |200  |1.024  |5.000  |200  || |
+
 
 ### <a name="backuprestore"></a>備份/還原
 針對 IBM Db2 for LUW 的備份/還原功能，是利用與標準 Windows Server 作業系統和 Hyper-V 上所做的相同方式來支援。
@@ -95,6 +147,15 @@ ms.locfileid: "87051877"
 >在 Windows 上的 Db2 不支援 Windows VSS 技術。 如此一來，Azure 備份服務的應用程式一致 VM 備份，便不能用於部署了 Db2 DBMS 的 VM。
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性和災害復原
+
+#### <a name="linux-pacemaker"></a>Linux Pacemaker
+
+支援 Db2 高可用性嚴重損壞修復 (HADR) with pacemaker。 支援 SLES 和 RHEL 作業系統。 此設定可啟用 IBM Db2 for SAP 的高可用性。 部署指南：
+* SLES： [SUSE Linux Enterprise Server 上具有 Pacemaker 的 Azure vm 上的 IBM DB2 LUW 高可用性](dbms-guide-ha-ibm.md) 
+* RHEL： [Red Hat Enterprise Linux Server 上 Azure vm 上的 IBM DB2 LUW 高可用性](high-availability-guide-rhel-ibm-db2-luw.md)
+
+#### <a name="windows-cluster-server"></a>Windows 叢集伺服器
+
 不支援 Microsoft Cluster Server (MSCS)。
 
 支援 Db2 高可用性災害復原 (HADR)。 如果 HA 組態的虛擬機器具有運作中的名稱解析，則 Azure 中的設定與內部部署中完成的任何設定並無任何差別。 不建議只依賴 IP 解析。

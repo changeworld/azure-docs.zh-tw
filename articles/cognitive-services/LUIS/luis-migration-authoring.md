@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: 390080fecefcc22decd8bec70d043b28311a725d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4c9dc04770e5fadd72c5460a4b44c05ffda47cb7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212646"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245446"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>遷移至 Azure 資源撰寫金鑰
 
@@ -52,15 +52,15 @@ Language Understanding (LUIS) 撰寫驗證從電子郵件帳戶變更為 Azure �
 
 ## <a name="migration-prerequisites"></a>移轉必要條件
 
-* 您必須與有效的 Azure 訂用帳戶相關聯。 請要求您的租使用者系統管理員將您新增到訂用帳戶，或 [註冊免費](https://azure.microsoft.com/free/)帳戶。
+* 您必須與有效的 Azure 訂用帳戶相關聯。 請要求您的租使用者系統管理員將您新增到訂用帳戶，或 [註冊免費](https://azure.microsoft.com/free/cognitive-services)帳戶。
 * 您必須從 LUIS 入口網站或從 Azure 入口網站建立 LUIS Azure 撰寫資源。 從 LUIS 入口網站建立撰寫資源屬於遷移流程的一部分，將在下一節中討論。
 * 如果您是應用程式的共同作業者，應用程式不會自動遷移。 我們建議您將這些應用程式匯出或使用 [匯出 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)來進行備份。 您可以在遷移之後，將應用程式匯回 LUIS。 匯入程式會使用新的應用程式識別碼來建立新的應用程式，您是擁有者。
 * 如果您是應用程式的擁有者，則不需要匯出應用程式，因為它們會自動遷移。 我們建議您儲存每個應用程式的共同作業者清單。 包含此清單的電子郵件範本會在遷移過程中選擇性地提供。
 
 
-|入口網站|目的|
+|入口網站|用途|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)| 建立預測和撰寫資源。<br> 指派資源的參與者。|
+|[Azure](https://azure.microsoft.com/free/cognitive-services)| 建立預測和撰寫資源。<br> 指派資源的參與者。|
 |[LUIS](https://www.luis.ai)| 遷移至新的撰寫資源。<br> 在遷移流程中建立新的撰寫資源。<br> 從 [**管理**  >  **Azure 資源**] 頁面，將預測和撰寫資源指派或取消指派給應用程式。 <br> 將應用程式從一個撰寫資源移到另一個。  |
 
 > [!Note]

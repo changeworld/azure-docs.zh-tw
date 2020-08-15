@@ -12,22 +12,22 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826529"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245565"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自動容錯移轉群組可以啟用多個資料庫透明且協調的容錯移轉
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-自動容錯移轉群組可讓您管理伺服器上的一組資料庫，或受控實例中的所有資料庫到另一個區域的複寫和容錯移轉。 它是現有[主動式異地](active-geo-replication-overview.md)複寫功能之上的宣告式抽象概念，其設計目的是為了簡化大規模異地複寫資料庫的部署和管理。 您可以手動起始容錯移轉，也可以根據使用者定義的原則將其委派給 Azure 服務。 第二個選項可讓您在主要區域中造成 SQL Database 或 SQL 受控執行個體可用性完全或部分遺失的嚴重失敗或其他非計畫事件之後，自動復原次要地區中的多個相關資料庫。 容錯移轉群組可以包含一個或多個資料庫，通常是由相同的應用程式所使用。 此外，您可以使用可讀取次要資料庫來卸載唯讀查詢工作負載。 因為自動容錯移轉群組牽涉到多個資料庫，所以這些資料庫必須在主要伺服器上進行設定。 自動容錯移轉群組支援將群組中的所有資料庫複寫至不同區域中的一個次要伺服器或實例。
+自動容錯移轉群組功能可讓您管理伺服器上的一組資料庫，或受控實例中的所有資料庫到另一個區域的複寫和容錯移轉。 它是現有 [主動式異地](active-geo-replication-overview.md) 複寫功能之上的宣告式抽象概念，其設計目的是為了簡化大規模異地複寫資料庫的部署和管理。 您可以手動起始容錯移轉，也可以根據使用者定義的原則將其委派給 Azure 服務。 第二個選項可讓您在主要區域中造成 SQL Database 或 SQL 受控執行個體可用性完全或部分遺失的嚴重失敗或其他非計畫事件之後，自動復原次要地區中的多個相關資料庫。 容錯移轉群組可以包含一個或多個資料庫，通常是由相同的應用程式所使用。 此外，您可以使用可讀取次要資料庫來卸載唯讀查詢工作負載。 因為自動容錯移轉群組牽涉到多個資料庫，所以這些資料庫必須在主要伺服器上進行設定。 自動容錯移轉群組支援將群組中的所有資料庫複寫至不同區域中的一個次要伺服器或實例。
 
 > [!NOTE]
-> 如果您想要在相同或不同區域中有多個 Azure SQL Database 次要複本，請使用[主動式異地](active-geo-replication-overview.md)複寫。
+> 如果您想要在相同或不同區域中有多個 Azure SQL Database 次要複本，請使用 [主動式異地](active-geo-replication-overview.md)複寫。
 
-當您使用自動容錯移轉群組與自動容錯移轉原則時，影響群組中一或多個資料庫的任何中斷，都會導致自動容錯移轉。 這些事件通常無法由內建的自動高可用性作業自行緩和。 容錯移轉觸發程式的範例包括因數個計算節點上的作業系統核心記憶體流失而導致 SQL Database 的租使用者通道或控制環已關閉的事件，或因為在例行硬體解除委任期間，因為錯誤的網路纜線已關閉，而造成一或多個租使用者環形的事件。  如需詳細資訊，請參閱[SQL Database 高可用性](high-availability-sla.md)。
+當您使用自動容錯移轉群組與自動容錯移轉原則時，影響群組中一或多個資料庫的任何中斷，都會導致自動容錯移轉。 這些事件通常無法由內建的自動高可用性作業自行緩和。 容錯移轉觸發程式的範例包括因數個計算節點上的作業系統核心記憶體流失而導致 SQL Database 的租使用者通道或控制環已關閉的事件，或因為在例行硬體解除委任期間，因為錯誤的網路纜線已關閉，而造成一或多個租使用者環形的事件。  如需詳細資訊，請參閱 [SQL Database 高可用性](high-availability-sla.md)。
 
 此外，自動容錯移轉群組還提供在容錯移轉期間仍保持不變的讀寫和唯讀接聽程式端點。 無論您使用手動或自動啟動容錯移轉，容錯移轉都會將群組中所有次要資料庫切換到主要資料庫。 資料庫容錯移轉完成後，DNS 記錄會自動更新以將端點重新導向至新的區域。 針對特定的 RPO 和 RTO 資料，請參閱[商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)。
 
@@ -40,7 +40,7 @@ ms.locfileid: "87826529"
 
 容錯移轉之後，請確定已在新的主要複本上設定資料庫和伺服器的驗證需求，或實例。 如需詳細資訊，請參閱 [災害復原後的 SQL Database 安全性](active-geo-replication-security-configure.md)。
 
-若要達到真正的業務持續性，新增資料中心之間的資料庫備援只是解決方案的一部分。 在災難性失敗後要端對端復原應用程式 (服務) 需要復原構成服務的所有元件和任何相依的服務。 這些元件的範例包括用戶端軟體 (例如自訂 JavaScript 的瀏覽器)、web 前端、儲存體和 DNS。 所有元件都必須對相同的失敗具有恢復功能，並且在應用程式的復原時間目標 (RTO) 內可供使用。 因此，您需要識別所有相依服務並了解其提供的保證與功能。 然後，您必須採取適當步驟以確保服務功能在它所依賴的服務容錯移轉期間都正常。 如需設計嚴重損壞修復之解決方案的詳細資訊，請參閱[使用主動式異地複寫設計嚴重損壞修復的雲端解決方案](designing-cloud-solutions-for-disaster-recovery.md)。
+若要達到真正的業務持續性，新增資料中心之間的資料庫備援只是解決方案的一部分。 在災難性失敗後要端對端復原應用程式 (服務) 需要復原構成服務的所有元件和任何相依的服務。 這些元件的範例包括用戶端軟體 (例如自訂 JavaScript 的瀏覽器)、web 前端、儲存體和 DNS。 所有元件都必須對相同的失敗具有恢復功能，並且在應用程式的復原時間目標 (RTO) 內可供使用。 因此，您需要識別所有相依服務並了解其提供的保證與功能。 然後，您必須採取適當步驟以確保服務功能在它所依賴的服務容錯移轉期間都正常。 如需設計嚴重損壞修復之解決方案的詳細資訊，請參閱 [使用主動式異地複寫設計嚴重損壞修復的雲端解決方案](designing-cloud-solutions-for-disaster-recovery.md)。
 
 ## <a name="terminology-and-capabilities"></a>術語和功能
 
@@ -97,7 +97,7 @@ ms.locfileid: "87826529"
 
 - **自動容錯移轉原則**
 
-  容錯移轉群組預設是利用自動容錯移轉原則設定。 Azure 會在偵測到失敗且寬限期已過期之後觸發容錯移轉。 系統必須確認內建的[高可用性基礎結構](high-availability-sla.md)因影響的規模而無法減輕中斷情形。 如果您想要控制應用程式的容錯移轉工作流程，可以關閉自動容錯移轉。
+  容錯移轉群組預設是利用自動容錯移轉原則設定。 Azure 會在偵測到失敗且寬限期已過期之後觸發容錯移轉。 系統必須確認內建的 [高可用性基礎結構](high-availability-sla.md) 因影響的規模而無法減輕中斷情形。 如果您想要控制應用程式的容錯移轉工作流程，可以關閉自動容錯移轉。
   
   > [!NOTE]
   > 因為驗證中斷的規模，以及可以減輕其緩和的速度，涉及營運小組的人工動作，所以寬限期無法在一小時內設定。 這項限制適用于容錯移轉群組中的所有資料庫，而不論其資料同步處理狀態為何。
@@ -135,7 +135,7 @@ ms.locfileid: "87826529"
   
 ## <a name="permissions"></a>權限
 
-容錯移轉群組的許可權是透過[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)進行管理。 [ [SQL Server 參與者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)] 角色具有管理容錯移轉群組的所有必要許可權。
+容錯移轉群組的許可權是透過 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)進行管理。 [ [SQL Server 參與者](../../role-based-access-control/built-in-roles.md#sql-server-contributor) ] 角色具有管理容錯移轉群組的所有必要許可權。
 
 ### <a name="create-failover-group"></a>建立容錯移轉群組
 
@@ -156,7 +156,7 @@ ms.locfileid: "87826529"
 ![自動容錯移轉](./media/auto-failover-group-overview/auto-failover-group.png)
 
 > [!NOTE]
-> 如需將 SQL Database 中的資料庫新增至容錯移轉群組的詳細逐步教學課程，請參閱[將 SQL Database 新增至容錯移轉群組](failover-group-add-single-database-tutorial.md)。
+> 如需將 SQL Database 中的資料庫新增至容錯移轉群組的詳細逐步教學課程，請參閱 [將 SQL Database 新增至容錯移轉群組](failover-group-add-single-database-tutorial.md) 。
 
 在商務持續性前提下設計服務時，請遵循這些一般指導方針：
 
@@ -177,7 +177,7 @@ ms.locfileid: "87826529"
 
 ### <a name="preparing-for-performance-degradation"></a>準備效能降低
 
-典型的 Azure 應用程式會使用多個 Azure 服務，並由多個元件所組成。 容錯移轉群組的自動容錯移轉是根據 Azure SQL 元件本身的狀態來觸發。 主要區域中的其他 Azure 服務可能不會受到中斷影響，而且其元件可能仍可在該區域中使用。 主資料庫切換到 DR 區域之後，相依元件之間的延遲可能會增加。 若要避免對應用程式效能造成較高延遲的影響，請確定 DR 區域中所有應用程式元件的冗余，並遵循這些[網路安全性指導方針](#failover-groups-and-network-security)。
+典型的 Azure 應用程式會使用多個 Azure 服務，並由多個元件所組成。 容錯移轉群組的自動容錯移轉是根據 Azure SQL 元件本身的狀態來觸發。 主要區域中的其他 Azure 服務可能不會受到中斷影響，而且其元件可能仍可在該區域中使用。 主資料庫切換到 DR 區域之後，相依元件之間的延遲可能會增加。 若要避免對應用程式效能造成較高延遲的影響，請確定 DR 區域中所有應用程式元件的冗余，並遵循這些 [網路安全性指導方針](#failover-groups-and-network-security)。
 
 ### <a name="preparing-for-data-loss"></a>準備資料遺失
 
@@ -190,7 +190,7 @@ ms.locfileid: "87826529"
 
 為了說明變更順序，我們將假設伺服器 A 是主伺服器，伺服器 B 是現有的次要伺服器，而伺服器 C 是第三個區域中的新次要資料庫。  若要進行轉換，請遵循下列步驟：
 
-1. 使用[主動式異地](active-geo-replication-overview.md)複寫，為伺服器 A 上的每個資料庫建立額外的次要複本。 伺服器 A 上的每個資料庫都有兩個次要複本，一個在伺服器 B 上，另一個在伺服器 C 上。這可確保主資料庫在轉換期間仍受到保護。
+1. 使用 [主動式異地](active-geo-replication-overview.md)複寫，為伺服器 A 上的每個資料庫建立額外的次要複本。 伺服器 A 上的每個資料庫都有兩個次要複本，一個在伺服器 B 上，另一個在伺服器 C 上。這可確保主資料庫在轉換期間仍受到保護。
 2. 刪除容錯移轉群組。 此時登入將會失敗。 這是因為容錯移轉群組接聽程式的 SQL 別名已刪除，閘道將無法辨識容錯移轉組名。
 3. 在伺服器 A 和 C 之間重新建立具有相同名稱的容錯移轉群組。此時，登入將會停止失敗。
 4. 將伺服器 A 上的所有主資料庫新增到新的容錯移轉群組。
@@ -201,9 +201,9 @@ ms.locfileid: "87826529"
 為了說明變更順序，我們將假設伺服器 A 是主伺服器，伺服器 B 是現有的次要伺服器，而伺服器 C 是第三個區域中的新主要複本。  若要進行轉換，請遵循下列步驟：
 
 1. 執行計畫的容錯移轉，將主伺服器切換為 B。伺服器 A 將會成為新的次要伺服器。 容錯移轉可能會導致幾分鐘的停機時間。 實際時間會視容錯移轉群組的大小而定。
-2. 使用[主動式異地](active-geo-replication-overview.md)複寫，為伺服器 B 上的每個資料庫建立額外的次要複本。 伺服器 B 上的每個資料庫都有兩個次要複本，一個在伺服器 A 上，另一個在伺服器 C 上。這可確保主資料庫在轉換期間仍受到保護。
+2. 使用 [主動式異地](active-geo-replication-overview.md)複寫，為伺服器 B 上的每個資料庫建立額外的次要複本。 伺服器 B 上的每個資料庫都有兩個次要複本，一個在伺服器 A 上，另一個在伺服器 C 上。這可確保主資料庫在轉換期間仍受到保護。
 3. 刪除容錯移轉群組。 此時登入將會失敗。 這是因為容錯移轉群組接聽程式的 SQL 別名已刪除，閘道將無法辨識容錯移轉組名。
-4. 在伺服器 A 和 C 之間重新建立具有相同名稱的容錯移轉群組。此時，登入將會停止失敗。
+4. 在伺服器 B 和 C 之間重新建立具有相同名稱的容錯移轉群組。此時，登入將會停止失敗。
 5. 將 B 上的所有主資料庫新增至新的容錯移轉群組。
 6. 執行容錯移轉群組的規劃容錯移轉，以切換 B 和 C。現在，伺服器 C 會變成主要和 B-次要。 伺服器 A 上的所有次要資料庫都會自動連結到 C 上的主要複本。如步驟1所示，容錯移轉可能會導致幾分鐘的停機時間。
 7. 捨棄伺服器 A。上的所有資料庫都會自動刪除。
@@ -220,7 +220,7 @@ ms.locfileid: "87826529"
 ![自動容錯移轉](./media/auto-failover-group-overview/auto-failover-group-mi.png)
 
 > [!NOTE]
-> 如需將 SQL 受控執行個體新增至使用容錯移轉群組的詳細逐步教學課程，請參閱[將受控實例新增至容錯移轉群組](../managed-instance/failover-group-add-instance-tutorial.md)。
+> 如需將 SQL 受控執行個體新增至使用容錯移轉群組的詳細逐步教學課程，請參閱 [將受控實例新增至容錯移轉群組](../managed-instance/failover-group-add-instance-tutorial.md) 。
 
 如果您的應用程式使用 SQL 受控執行個體做為資料層，請在設計商務持續性時遵循下列一般指導方針：
 
@@ -231,7 +231,7 @@ ms.locfileid: "87826529"
 > [!IMPORTANT]
 > 在子網中建立的第一個受控實例會針對相同子網中的所有後續實例決定 DNS 區域。 這表示來自相同子網的兩個實例不能屬於不同的 DNS 區域。
 
-如需有關在與主要實例相同的 DNS 區域中建立次要 SQL 受控執行個體的詳細資訊，請參閱[建立次要受控實例](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance)。
+如需有關在與主要實例相同的 DNS 區域中建立次要 SQL 受控執行個體的詳細資訊，請參閱 [建立次要受控實例](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance)。
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>啟用兩個實例之間的複寫流量
 
@@ -239,7 +239,7 @@ ms.locfileid: "87826529"
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>在不同訂用帳戶中的受控實例之間建立容錯移轉群組
 
-只要訂用帳戶與相同的[Azure Active Directory 租](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)使用者相關聯，您就可以在兩個不同的訂用帳戶中，建立 SQL 受控實例之間的容錯移轉群組。 使用 PowerShell API 時，您可以藉由指定次要 SQL 受控執行個體的參數來執行此動作 `PartnerSubscriptionId` 。 使用 REST API 時，包含在參數中的每個實例識別碼都 `properties.managedInstancePairs` 可以有自己的 subscriptionID。
+只要訂用帳戶與相同的 [Azure Active Directory 租](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)使用者相關聯，您就可以在兩個不同的訂用帳戶中，建立 SQL 受控實例之間的容錯移轉群組。 使用 PowerShell API 時，您可以藉由指定次要 SQL 受控執行個體的參數來執行此動作 `PartnerSubscriptionId` 。 使用 REST API 時，包含在參數中的每個實例識別碼都 `properties.managedInstancePairs` 可以有自己的 subscriptionID。
   
 > [!IMPORTANT]
 > Azure 入口網站不支援在不同的訂用帳戶之間建立容錯移轉群組。 此外，針對不同訂用帳戶和/或資源群組的現有容錯移轉群組，無法透過入口網站從主要 SQL 受控執行個體手動起始容錯移轉。 改為從地理位置次要實例起始它。
@@ -260,14 +260,14 @@ ms.locfileid: "87826529"
 如果您有容忍某些過時資料的邏輯隔離唯讀工作負載，則可以使用應用程式中的次要資料庫。 若要直接連接到異地複寫的次要執行個體，請使用 `server.secondary.zone_id.database.windows.net` 作為伺服器 URL，並直接連接到異地複寫的次要執行個體。
 
 > [!NOTE]
-> 在某些服務層級中，SQL Database 支援使用[唯讀](read-scale-out.md)複本，以使用一個唯讀複本的容量來平衡唯讀查詢工作負載的負載，並在 `ApplicationIntent=ReadOnly` 連接字串中使用參數。 當您已設定異地複寫的次要執行個體時，可以使用此功能連接至主要位置或異地複寫位置中的唯讀複本。
+> 在某些服務層級中，SQL Database 支援使用 [唯讀](read-scale-out.md) 複本，以使用一個唯讀複本的容量來平衡唯讀查詢工作負載的負載，並在 `ApplicationIntent=ReadOnly` 連接字串中使用參數。 當您已設定異地複寫的次要執行個體時，可以使用此功能連接至主要位置或異地複寫位置中的唯讀複本。
 >
 > - 若要連線至主要位置的唯讀複本，請使用 `<fog-name>.zone_id.database.windows.net`。
 > - 若要連接到次要位置中的唯讀複本，請使用 `<fog-name>.secondary.zone_id.database.windows.net` 。
 
 ### <a name="preparing-for-performance-degradation"></a>準備效能降低
 
-典型的 Azure 應用程式會使用多個 Azure 服務，並由多個元件所組成。 容錯移轉群組的自動容錯移轉是根據 Azure SQL 元件本身的狀態來觸發。 主要區域中的其他 Azure 服務可能不會受到中斷影響，而且其元件可能仍可在該區域中使用。 主資料庫切換到 DR 區域之後，相依元件之間的延遲可能會增加。 若要避免對應用程式效能造成較高延遲的影響，請確定 DR 區域中所有應用程式元件的冗余，並遵循這些[網路安全性指導方針](#failover-groups-and-network-security)。
+典型的 Azure 應用程式會使用多個 Azure 服務，並由多個元件所組成。 容錯移轉群組的自動容錯移轉是根據 Azure SQL 元件本身的狀態來觸發。 主要區域中的其他 Azure 服務可能不會受到中斷影響，而且其元件可能仍可在該區域中使用。 主資料庫切換到 DR 區域之後，相依元件之間的延遲可能會增加。 若要避免對應用程式效能造成較高延遲的影響，請確定 DR 區域中所有應用程式元件的冗余，並遵循這些 [網路安全性指導方針](#failover-groups-and-network-security)。
 
 ### <a name="preparing-for-data-loss"></a>準備資料遺失
 
@@ -284,7 +284,7 @@ ms.locfileid: "87826529"
 
 1. 在相同的 DNS 區域中建立實例 C，其大小與和相同。
 2. 刪除實例 A 和 B 之間的容錯移轉群組。此時，登入將會失敗，因為容錯移轉群組接聽程式的 SQL 別名已刪除，而且閘道將無法辨識容錯移轉組名。 次要資料庫將會與主要複本中斷連線，而且會變成讀寫資料庫。
-3. 在實例 A 和 C 之間建立具有相同名稱的容錯移轉群組。請遵循[使用 SQL 受控執行個體的容錯移轉群組教學](../managed-instance/failover-group-add-instance-tutorial.md)課程中的指示。 這是資料大小的作業，而且會在實例 A 的所有資料庫植入並同步處理時完成。
+3. 在實例 A 和 C 之間建立具有相同名稱的容錯移轉群組。請遵循 [使用 SQL 受控執行個體的容錯移轉群組教學](../managed-instance/failover-group-add-instance-tutorial.md)課程中的指示。 這是資料大小的作業，而且會在實例 A 的所有資料庫植入並同步處理時完成。
 4. 如果不需要，請刪除實例 B 以避免不必要的費用。
 
 > [!NOTE]
@@ -297,7 +297,7 @@ ms.locfileid: "87826529"
 1. 在相同的 DNS 區域中建立實例 C，其大小與 B 相同。
 2. 連接到實例 B 並手動容錯移轉，以將主要實例切換為 B。實例 A 會自動成為新的次要實例。
 3. 刪除實例 A 和 B 之間的容錯移轉群組。此時，登入將會失敗，因為容錯移轉群組接聽程式的 SQL 別名已刪除，而且閘道將無法辨識容錯移轉組名。 次要資料庫將會與主要複本中斷連線，而且會變成讀寫資料庫。
-4. 在實例 A 和 C 之間建立具有相同名稱的容錯移轉群組。請遵循[使用受控實例的容錯移轉群組教學](../managed-instance/failover-group-add-instance-tutorial.md)課程中的指示。 這是資料大小的作業，而且會在實例 A 的所有資料庫植入並同步處理時完成。
+4. 在實例 A 和 C 之間建立具有相同名稱的容錯移轉群組。請遵循 [使用受控實例的容錯移轉群組教學](../managed-instance/failover-group-add-instance-tutorial.md)課程中的指示。 這是資料大小的作業，而且會在實例 A 的所有資料庫植入並同步處理時完成。
 5. 刪除實例 A （如果不需要）以避免不必要的費用。
 
 > [!CAUTION]
@@ -320,7 +320,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ### <a name="using-failover-groups-and-virtual-network-rules"></a>使用容錯移轉群組和虛擬網路規則
 
-如果您使用[虛擬網路服務端點和規則](vnet-service-endpoint-rule-overview.md)來限制 SQL DATABASE 或 SQL 受控執行個體中的資料庫存取，請注意每個虛擬網路服務端點只適用于一個 Azure 區域。 端點無法讓其他區域接受來自子網路的通訊。 因此，只有部署到相同區域中的用戶端應用程式可以連線到主要資料庫。 因為容錯移轉會導致 SQL Database 的用戶端會話重新路由至不同 (次要) 區域中的伺服器，所以如果來自該區域外的用戶端，這些會話將會失敗。 基於這個理由，如果參與的伺服器或實例包含在虛擬網路規則中，就無法啟用自動容錯移轉原則。 若要支援手動容錯移轉，請遵循下列步驟：
+如果您使用 [虛擬網路服務端點和規則](vnet-service-endpoint-rule-overview.md) 來限制 SQL DATABASE 或 SQL 受控執行個體中的資料庫存取，請注意每個虛擬網路服務端點只適用于一個 Azure 區域。 端點無法讓其他區域接受來自子網路的通訊。 因此，只有部署到相同區域中的用戶端應用程式可以連線到主要資料庫。 因為容錯移轉會導致 SQL Database 的用戶端會話重新路由至不同 (次要) 區域中的伺服器，所以如果來自該區域外的用戶端，這些會話將會失敗。 基於這個理由，如果參與的伺服器或實例包含在虛擬網路規則中，就無法啟用自動容錯移轉原則。 若要支援手動容錯移轉，請遵循下列步驟：
 
 1. 在次要地區中佈建您應用程式 (Web 服務、虛擬機器等) 前端元件的備援副本
 2. 分別設定主要和次要伺服器的[虛擬網路規則](vnet-service-endpoint-rule-overview.md)
@@ -338,10 +338,10 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 2. [建立公用負載平衡器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)並為其指派公用 IP。
 3. [建立虛擬網路和虛擬機器](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)以用於前端元件
 4. [建立網路安全性群組](../../virtual-network/security-overview.md)並設定輸入連線。
-5. 使用 ' Sql '[服務](../../virtual-network/security-overview.md#service-tags)標籤，確定輸出連線已開放給 Azure SQL Database。
-6. 建立[SQL Database 防火牆規則](firewall-configure.md)，以允許來自您在步驟1中建立之公用 IP 位址的輸入流量。
+5. 使用 ' Sql ' [服務](../../virtual-network/security-overview.md#service-tags)標籤，確定輸出連線已開放給 Azure SQL Database。
+6. 建立 [SQL Database 防火牆規則](firewall-configure.md) ，以允許來自您在步驟1中建立之公用 IP 位址的輸入流量。
 
-如需有關如何設定輸出存取，以及要在防火牆規則中使用哪個 IP 的詳細資訊，請參閱[負載平衡器輸出連接](../../load-balancer/load-balancer-outbound-connections.md)。
+如需有關如何設定輸出存取，以及要在防火牆規則中使用哪個 IP 的詳細資訊，請參閱 [負載平衡器輸出連接](../../load-balancer/load-balancer-outbound-connections.md)。
 
 上述組態可確保自動容錯移轉不會封鎖來自前端元件的連線，並假設應用程式可以容忍前端與資料層之間較長的延遲。
 
@@ -355,7 +355,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - SQL 受控執行個體的兩個實例必須位於不同的 Azure 區域中。
 - 兩個 SQL 受控執行個體實例必須是相同的服務層級，而且具有相同的儲存體大小。
 - 您的 SQL 受控執行個體的次要實例必須是空的， (沒有任何使用者資料庫) 。
-- SQL 受控執行個體實例所使用的虛擬網路必須透過[VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md)或[Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)來連接。 當兩個虛擬網路透過內部部署網路連線時，請確定沒有防火牆規則封鎖埠5022和11000-11999。 目前不支援轉移的全域 VNet 對等互連。
+- SQL 受控執行個體實例所使用的虛擬網路必須透過 [VPN 閘道](../../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [Express Route](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)來連接。 當兩個虛擬網路透過內部部署網路連線時，請確定沒有防火牆規則封鎖埠5022和11000-11999。 目前不支援轉移的全域 VNet 對等互連。
 - 這兩個 SQL 受控執行個體 Vnet 不能有重迭的 IP 位址。
 - 您必須設定網路安全性群組 (NSG) 讓埠5022，而 11000 ~ 12000 的範圍會針對來自其他受控實例之子網的連線開啟輸入和輸出。 這是為了允許實例之間的複寫流量。
 
@@ -365,7 +365,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 - 次要 SQL 受控執行個體會使用正確的 DNS 區域識別碼來設定。 DNS 區域是 SQL 受控執行個體和基礎虛擬叢集的屬性，而且其識別碼會包含在主機名稱位址中。 在每個 VNet 中建立第一個 SQL 受控執行個體，且相同的識別碼已指派給相同子網中的所有其他實例時，會以隨機字串的形式產生區域識別碼。 一旦指派之後，就無法修改 DNS 區域。 包含在同一個容錯移轉群組中的 SQL 受控實例必須共用 DNS 區域。 若要完成這項操作，請在建立次要實例時，將主要實例的區域識別碼傳遞為 DnsZonePartner 參數的值。
 
    > [!NOTE]
-   > 如需使用 SQL 受控執行個體設定容錯移轉群組的詳細教學課程，請參閱[將 sql 受控執行個體加入至容錯移轉群組](../managed-instance/failover-group-add-instance-tutorial.md)。
+   > 如需使用 SQL 受控執行個體設定容錯移轉群組的詳細教學課程，請參閱 [將 sql 受控執行個體加入至容錯移轉群組](../managed-instance/failover-group-add-instance-tutorial.md)。
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>升級或降級主要資料庫
 
@@ -378,10 +378,10 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="preventing-the-loss-of-critical-data"></a>防止重要資料遺失
 
-由於廣域網路的高度延遲，連續複製採用非同步複寫機制。 如果發生失敗，非同步複寫導致部分資料遺失是無法避免的。 不過，有些應用程式可能會要求資料不能遺失。 若要保護這些重大更新，應用程式開發人員可以在認可交易後立即呼叫 [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) 系統程序。 呼叫會 `sp_wait_for_database_copy_sync` 封鎖呼叫執行緒，直到最後認可的交易傳輸到次要資料庫為止。 不過，它不會等候在次要資料庫上重新執行和認可傳輸的交易。 `sp_wait_for_database_copy_sync`的範圍設定為特定的連續複製連結。 任何具備主要資料庫連接權限的使用者都可以呼叫此程序。
+由於廣域網路的高度延遲，連續複製採用非同步複寫機制。 如果發生失敗，非同步複寫導致部分資料遺失是無法避免的。 不過，有些應用程式可能會要求資料不能遺失。 若要保護這些重大更新，應用程式開發人員可以在認可交易後立即呼叫 [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) 系統程序。 呼叫會 `sp_wait_for_database_copy_sync` 封鎖呼叫執行緒，直到最後認可的交易傳輸到次要資料庫為止。 不過，它不會等候在次要資料庫上重新執行和認可傳輸的交易。 `sp_wait_for_database_copy_sync` 的範圍設定為特定的連續複製連結。 任何具備主要資料庫連接權限的使用者都可以呼叫此程序。
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync`防止在容錯移轉之後遺失資料，但不保證讀取權限的完整同步處理。 程序呼叫所造成的延遲 `sp_wait_for_database_copy_sync` 可能會很重要，並取決於呼叫時的交易記錄大小。
+> `sp_wait_for_database_copy_sync` 防止在容錯移轉之後遺失資料，但不保證讀取權限的完整同步處理。 程序呼叫所造成的延遲 `sp_wait_for_database_copy_sync` 可能會很重要，並取決於呼叫時的交易記錄大小。
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>容錯移轉群組和時間點還原
 
@@ -398,7 +398,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>以程式設計方式管理容錯移轉群組
 
-如前所述，自動容錯移轉群組和主動式異地複寫也可以使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需如何執行存取角色的詳細資訊，請參閱[azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
+如前所述，自動容錯移轉群組和主動式異地複寫也可以使用 Azure PowerShell 和 REST API，以程式設計的方式管理。 下表描述可用的命令集。 主動式異地複寫包含一組可管理的 Azure Resource Manager API，包括 [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/)。 這些 API 需要使用資源群組，並支援以角色為基礎的安全性 (RBAC)。 如需如何執行存取角色的詳細資訊，請參閱 [azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 
 ### <a name="manage-sql-database-failover"></a>管理 SQL Database 容錯移轉
 
@@ -485,6 +485,6 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
   - [使用 PowerShell 為 Azure SQL Database 中的集區資料庫設定作用中異地複寫](scripts/setup-geodr-and-failover-elastic-pool-powershell.md)
   - [使用 PowerShell 將 Azure SQL Database 新增至容錯移轉群組](scripts/add-database-to-failover-group-powershell.md)
 - 如需商務持續性概觀和案例，請參閱 [商務持續性概觀](business-continuity-high-availability-disaster-recover-hadr-overview.md)
-- 若要瞭解 Azure SQL Database 自動備份，請參閱[SQL Database 自動備份](automated-backups-overview.md)。
-- 若要瞭解如何使用自動備份進行復原，請參閱[從服務起始的備份還原資料庫](recovery-using-backups.md)。
+- 若要瞭解 Azure SQL Database 自動備份，請參閱 [SQL Database 自動備份](automated-backups-overview.md)。
+- 若要瞭解如何使用自動備份進行復原，請參閱 [從服務起始的備份還原資料庫](recovery-using-backups.md)。
 - 若要深入了解新的主要伺服器和資料庫的驗證需求，請參閱 [災害復原後的 SQL Database 安全性](active-geo-replication-security-configure.md)。

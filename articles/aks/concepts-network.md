@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes Service (AKS) 中的網路功能，包括 k
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387756"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243899"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路概念
 
@@ -73,6 +73,8 @@ Azure 平台也有助於簡化 AKS 叢集的虛擬網路。 當您建立 Kuberne
 
 使用 Azure CNI，每個 Pod 都從子網路取得 IP 位址，並且可以直接存取。 這些 IP 位址在您的網路空間中必須是唯一的，且必須事先規劃。 每個節點都有一個組態參數，用於所支援的最大 Pod 數目。 然後，為該節點預先保留每個節點的相同 IP 位址數目。 這種方法需要更多的規劃，因為可能會導致 IP 位址耗盡，或需要在較大的子網中重建叢集，因為您的應用程式需求成長。
 
+不同于 kubenet，相同虛擬網路中端點的流量不會以 NAT 的方式傳送至節點的主要 IP。 虛擬網路內流量的來源位址是 pod IP。 虛擬網路外部的流量仍會 Nat 至節點的主要 IP。
+
 節點會使用 [Azure 容器網路介面 (CNI)][cni-networking] Kubernetes 外掛程式。
 
 ![此圖表顯示兩個節點，且各有橋接器將其連線至單一 Azure VNet][advanced-networking-diagram]
@@ -86,7 +88,7 @@ Kubenet 和 Azure CNI 都可為您的 AKS 叢集提供網路連線能力。 不�
 * **kubenet**
     * 節省 IP 位址空間。
     * 會使用 Kubernetes 內部或外部負載平衡器，從叢集外部到達 pod。
-    * 您必須手動管理和維護使用者定義的路由（Udr）。
+    * 您必須手動管理和維護使用者定義的路由， (Udr) 。
     * 每個叢集最多400個節點。
 * **Azure CNI**
     * Pod 會取得完整的虛擬網路連線，並可透過其私人 IP 位址從連線的網路直接取得。
@@ -105,7 +107,7 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 | 使用負載平衡器服務、應用程式閘道或輸入控制器來公開 Kubernetes 服務 | 支援 | 支援 |
 | 預設 Azure DNS 和私人區域                                                          | 支援 | 支援 |
 
-關於 DNS，使用 kubenet 和 Azure CNI 外掛程式 DNS 是由 CoreDNS 所提供，在 AKS 中執行的部署會有自己的自動調整程式。 如需有關 Kubernetes 上 CoreDNS 的詳細資訊，請參閱[自訂 DNS 服務](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)。 CoreDNS 是根據預設值來設定，以將未知的網域轉送到節點 DNS 伺服器，換句話說，是在部署 AKS 叢集的 Azure 虛擬網路的 DNS 功能。 因此，Azure DNS 和私人區域將適用于在 AKS 中執行的 pod。
+關於 DNS，使用 kubenet 和 Azure CNI 外掛程式 DNS 是由 CoreDNS 所提供，在 AKS 中執行的部署會有自己的自動調整程式。 如需有關 Kubernetes 上 CoreDNS 的詳細資訊，請參閱 [自訂 DNS 服務](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)。 CoreDNS 是根據預設值來設定，以將未知的網域轉送到節點 DNS 伺服器，換句話說，是在部署 AKS 叢集的 Azure 虛擬網路的 DNS 功能。 因此，Azure DNS 和私人區域將適用于在 AKS 中執行的 pod。
 
 ### <a name="support-scope-between-network-models"></a>網路模型之間的支援範圍
 
@@ -114,7 +116,7 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 * 當您建立 AKS 叢集時，Azure 平臺可以自動建立和設定虛擬網路資源。
 * 當您建立 AKS 叢集時，可以手動建立和設定虛擬網路資源，並連結至這些資源。
 
-雖然 kubenet 和 Azure CNI 都支援服務端點或 Udr 之類的功能，但[AKS 的支援原則][support-policies]會定義您可以進行的變更。 例如：
+雖然 kubenet 和 Azure CNI 都支援服務端點或 Udr 之類的功能，但 [AKS 的支援原則][support-policies] 會定義您可以進行的變更。 例如：
 
 * 如果您手動建立 AKS 叢集的虛擬網路資源，當您設定自己的 Udr 或服務端點時，就會支援。
 * 如果 Azure 平臺自動為您的 AKS 叢集建立虛擬網路資源，則不支援手動變更這些 AKS 管理的資源，以設定您自己的 Udr 或服務端點。
@@ -129,11 +131,11 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 
 在 AKS 中，您可以使用 NGINX 之類的功能建立輸入資源，或是使用 AKS HTTP 應用程式路由功能。 當您為 AKS 叢集啟用 HTTP 應用程式路由時，Azure 平台會建立輸入控制器和 *External-DNS* 控制器。 在 Kubernetes 中建立新的輸入資源時，會在叢集特定的 DNS 區域中建立所需的 DNS A 記錄。 如需詳細資訊，請參閱[部署 HTTP 應用程式路由][aks-http-routing]。
 
-應用程式閘道輸入控制器（AGIC）附加元件可讓 AKS 客戶利用 Azure 的原生應用程式閘道層級7負載平衡器，將雲端軟體公開到網際網路。 AGIC 會監視其裝載所在的 Kubernetes 叢集，並持續更新應用程式閘道，讓選取的服務向網際網路公開。 若要深入瞭解適用于 AKS 的 AGIC 附加元件，請參閱[什麼是應用程式閘道輸入控制器？][agic-overview]
+應用程式閘道輸入控制器 (AGIC) 附加元件可讓 AKS 客戶利用 Azure 的原生應用程式閘道層級7負載平衡器，將雲端軟體公開至網際網路。 AGIC 會監視其裝載所在的 Kubernetes 叢集，並持續更新應用程式閘道，讓選取的服務向網際網路公開。 若要深入瞭解適用于 AKS 的 AGIC 附加元件，請參閱 [什麼是應用程式閘道輸入控制器？][agic-overview]
 
 輸入的另一個常見功能是終止 SSL/TLS。 在透過 HTTPS 存取的大型 Web 應用程式上，可由輸入資源來處理 TLS 終止，而無須由應用程式本身處理。 若要提供自動 TLS 憑證產生和設定的功能，您可以將輸入資源設定為使用 Let's Encrypt 之類的資源提供者。 如需為 NGINX 輸入控制器設定 Let's Encrypt 的詳細資訊，請參閱[輸入和 TLS][aks-ingress-tls]。
 
-您也可以設定輸入控制器，在 AKS 叢集中的容器要求上保留用戶端來源 IP。 當用戶端的要求透過輸入控制器路由至 AKS 叢集中的容器時，該要求的原始來源 IP 將無法供目標容器使用。 當您啟用*用戶端來源 ip 保留*時，用戶端的來源 ip 會在要求標頭中的 [ *X-轉送-針對*] 下提供。 如果您要在輸入控制器上使用用戶端來源 IP 保留，則無法使用 TLS 傳遞。 用戶端來源 IP 保留和 TLS 傳遞可以與其他服務搭配使用，例如*LoadBalancer*類型。
+您也可以設定輸入控制器，在 AKS 叢集中的容器要求上保留用戶端來源 IP。 當用戶端的要求透過輸入控制器路由至 AKS 叢集中的容器時，該要求的原始來源 IP 將無法供目標容器使用。 當您啟用 *用戶端來源 ip 保留*時，用戶端的來源 ip 會在要求標頭中的 [ *X-轉送-針對*] 下提供。 如果您要在輸入控制器上使用用戶端來源 IP 保留，則無法使用 TLS 傳遞。 用戶端來源 IP 保留和 TLS 傳遞可以與其他服務搭配使用，例如 *LoadBalancer* 類型。
 
 ## <a name="network-security-groups"></a>網路安全性群組
 
@@ -151,7 +153,7 @@ Kubenet 與 Azure CNI 之間存在下列行為差異：
 
 若要開始使用 AKS 網路功能，請使用 [kubenet][aks-configure-kubenet-networking] 或 [Azure CNI][aks-configure-advanced-networking] 以您自己的 IP 位址範圍建立及設定 AKS 叢集。
 
-如需相關的最佳作法，請參閱[AKS 中網路連線和安全性的最佳作法][operator-best-practices-network]。
+如需相關的最佳作法，請參閱 [AKS 中網路連線和安全性的最佳作法][operator-best-practices-network]。
 
 如需關於 Kubernetes 及 AKS 核心概念的詳細資訊，請參閱下列文章：
 

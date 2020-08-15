@@ -8,18 +8,18 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985421"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245847"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 虛擬機器上的解決方案
 
 此文章涵蓋部署 Azure 機密運算虛擬機器 (VM) 的相關資訊，這類虛擬機器會執行 [Intel Software Guard Extensions](https://software.intel.com/sgx) \(Intel SGX\) 所支援的 Intel 處理器。 
 
-## <a name="azure-confidential-computing-vm-sizes"></a>Azure 機密運算 VM 大小
+## <a name="azure-confidential-computing-vm-sizes"></a>Azure 機密計算 VM 大小
 
 Azure 機密運算虛擬機器的設計目的是，在雲端中處理資料與程式碼時，保護其機密性和完整性 
 
@@ -32,45 +32,22 @@ Azure 機密運算虛擬機器的設計目的是，在雲端中處理資料與�
 若要取得可用區域和可用性區域中所有正式發行的機密運算 VM 大小清單，請在 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) 中執行下列命令：
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
-    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" 
-    --all 
+az vm list-skus `
+    --size dc `
+    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" `
+    --all `
     --output table
-```
-
-截至 2020 年 5 月，已於下列區域和可用性區域中提供這些 SKU：
-
-```output
-Name              Locations      AZ_a
-----------------  -------------  ------
-Standard_DC8_v2   eastus         2
-Standard_DC1s_v2  eastus         2
-Standard_DC2s_v2  eastus         2
-Standard_DC4s_v2  eastus         2
-Standard_DC8_v2   CanadaCentral
-Standard_DC1s_v2  CanadaCentral
-Standard_DC2s_v2  CanadaCentral
-Standard_DC4s_v2  CanadaCentral
-Standard_DC8_v2   uksouth        3
-Standard_DC1s_v2  uksouth        3
-Standard_DC2s_v2  uksouth        3
-Standard_DC4s_v2  uksouth        3
-Standard_DC8_v2   CentralUSEUAP
-Standard_DC1s_v2  CentralUSEUAP
-Standard_DC2s_v2  CentralUSEUAP
-Standard_DC4s_v2  CentralUSEUAP
 ```
 
 如需上述大小的更詳細資訊，請執行下列命令：
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
+az vm list-skus `
+    --size dc `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>專用主機需求
-在 DCSv2 系列的 VM 系列中部署**Standard_DC8_v2**虛擬機器大小將會佔用完整的主機，且不會與其他租使用者或訂用帳戶共用。 此 VM SKU 系列會提供您所需的隔離，以符合通常藉由擁有專用主機服務的合規性和安全性法規需求。 當您選擇**Standard_DC8_v2** SKU 時，實體主機伺服器會將所有可用的硬體資源（包括僅限 EPC 記憶體）配置給您的虛擬機器。 請注意，這項功能是由基礎結構設計所存在，而且會支援**Standard_DC8_v2**的所有功能。 此部署與其他 Azure VM 系列所提供的[Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)服務不同。
+在 DCSv2 系列的 VM 系列中部署 **Standard_DC8_v2** 虛擬機器大小將會佔用完整的主機，且不會與其他租使用者或訂用帳戶共用。 此 VM SKU 系列會提供您所需的隔離，以符合通常藉由擁有專用主機服務的合規性和安全性法規需求。 當您選擇 **Standard_DC8_v2** SKU 時，實體主機伺服器會將所有可用的硬體資源（包括僅限 EPC 記憶體）配置給您的虛擬機器。 請注意，這項功能是由基礎結構設計所存在，而且會支援 **Standard_DC8_v2** 的所有功能。 此部署與其他 Azure VM 系列所提供的 [Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) 服務不同。
 
 
 ## <a name="deployment-considerations"></a>部署考量因素
@@ -101,17 +78,17 @@ az vm list-skus
 
 Azure 機密運算目前不支援透過可用性區域進行區域備援。 若要取得適用於機密運算的最高可用性與備援，請使用[可用性設定組](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。 由於硬體限制，機密運算執行個體的可用性設定組最多只能有 10 個更新網域。 
 
-## <a name="deploying-via-an-azure-resource-manager-template"></a>透過 Azure Resource Manager 範本部署 
+## <a name="deployment-with-azure-resource-manager-arm-template"></a>使用 Azure Resource Manager (ARM) 範本進行部署
 
 Azure Resource Manager 是 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 訂用帳戶中的資源。 您可以使用存取控制、鎖定和標記等管理功能，在部署後保護及組織您的資源。
 
-若要了解 Azure Resource Manager 範本，請參閱[範本部署概觀](../azure-resource-manager/templates/overview.md)。
+若要深入瞭解 ARM 範本，請參閱 [範本部署總覽](../azure-resource-manager/templates/overview.md)。
 
-為了在 Azure Resource Manager 範本中部署 DCsv2 系列的 VM，您將運用[虛擬機器資源](../virtual-machines/windows/template-description.md)。 請務必為 **vmSize** 和您的 **imageReference** 指定正確屬性。
+若要在 ARM 範本中部署 DCsv2 系列 VM，您將使用 [虛擬機器資源](../virtual-machines/windows/template-description.md)。 請務必為 **vmSize** 和您的 **imageReference** 指定正確屬性。
 
 ### <a name="vm-size"></a>VM 大小
 
-在虛擬機器資源的 Azure Resource Manager 範本中，指定下列其中一種大小。 這個字串會以 **vmSize** 形式放在 **properties** 中。
+在虛擬機器資源的 ARM 範本中指定下列其中一種大小。 這個字串會以 **vmSize** 形式放在 **properties** 中。
 
 ```json
   [
@@ -122,7 +99,7 @@ Azure Resource Manager 是 Azure 的部署和管理服務。 其提供管理層�
       ],
 ```
 
-### <a name="gen2-os-image"></a>Gen2 OS 映像
+### <a name="gen2-os-image"></a>Gen2 OS 映射
 
 在 **properties** 底下，您也必須參考 **storageProfile** 底下的映像。 針對您的 **imageReference**，「僅使用一個」下列映像。
 
