@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 0bdc9451f0dbc32e14197cde48a3613196b864c0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e0670aeb3a41506ef302364c6eeaff332520abc5
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037128"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245429"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>關於 Azure 檔案服務的常見問題集 (FAQ)
 [Azure 檔案](storage-files-introduction.md)提供雲端中完全受控的檔案共用，可透過業界標準[伺服器訊息區 (SMB) 通訊協定](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)來存取。 您可以同時在 Windows、Linux 和 macOS 的雲端或內部部署上掛接 Azure 檔案共用。 您也可以使用 Azure 檔案同步，在接近使用資料之處進行快速存取，藉以在 Windows Server 電腦上快取 Azure 檔案共用。
@@ -77,13 +77,14 @@ ms.locfileid: "88037128"
     > [!NOTE]
     > 您無法從 Blob 儲存體帳戶或「進階」一般用途 (GPv1 或 GPv2) 儲存體帳戶建立 Azure 檔案共用。 標準 Azure 檔案共用僅能在*標準*一般用途帳戶中建立，而進階檔案共用只能在 FileStorage 儲存體帳戶中建立。 *進階*一般用途 (GPv1 和 GPv2) 儲存體帳戶僅適用於進階分頁 Blob。 
 
+* <a id="file-locking"></a>
+  **Azure 檔案儲存體是否支援檔案鎖定？**  
+    是，Azure 檔案儲存體完全支援 SMB/Windows 樣式檔案鎖定，[請參閱詳細資料](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks)。
+
 * <a id="give-us-feedback"></a>
   **我真的希望 Azure 檔案服務中能加入某個特定功能。是否有此可能？**  
     Azure 檔案服務小組很樂意聽到您對於我們所提供之服務的所有意見反應。 請在 [Azure 檔案服務 UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) \(英文\) 上投票支持您認同的功能要求！ 我們期待能透過諸多新的功能讓您感到滿意。
 
-  **Azure 檔案儲存體是否支援檔案鎖定？**  
-    是，Azure 檔案儲存體完全支援 SMB/Windows 樣式檔案鎖定，[請參閱詳細資料](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks)。 
-    
 ## <a name="azure-file-sync"></a>Azure 檔案同步
 
 * <a id="afs-region-availability"></a>
@@ -102,10 +103,10 @@ ms.locfileid: "88037128"
 * <a id="afs-sync-time"></a>
   **Azure 檔案同步上傳資料的1TiB 需要多久的時間？**
   
-    效能會根據您的環境設定、設定，以及這是初始同步處理還是進行中的同步處理而有所不同。如需詳細資訊，請參閱[Azure 檔案同步效能計量](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
+    效能會根據您的環境設定、設定，以及這是初始同步處理還是進行中的同步處理而有所不同。如需詳細資訊，請參閱 [Azure 檔案同步效能計量](storage-files-scale-targets.md#azure-file-sync-performance-metrics)
 
 * <a id="afs-conflict-resolution"></a>**如果同一個檔案近乎同時地在兩部伺服器上進行變更，會發生什麼事？**  
-    Azure 檔案同步使用簡單的衝突解決策略：我們會同時對兩個端點中變更的檔案保留兩項變更。 最新寫入的變更會保留原始檔案名稱。 較舊的檔案 (由 LastWriteTime 決定) 會將端點名稱和衝突號碼附加至檔案名。 針對伺服器端點，端點名稱是伺服器的名稱。 針對雲端端點，端點名稱為 [**雲端**]。 此名稱會遵循此分類法： 
+    Azure 檔案同步使用簡單的衝突解決策略：我們會同時對兩個端點中變更的檔案保留兩項變更。 最新寫入的變更會保留原始檔案名稱。 較舊的檔案 (由 LastWriteTime 決定) 會將端點名稱和衝突號碼附加至檔案名。 針對伺服器端點，端點名稱是伺服器的名稱。 針對雲端端點，端點名稱為 [ **雲端**]。 此名稱會遵循此分類法： 
    
     \<FileNameWithoutExtension\>-\<endpointName\>\[-#\].\<ext\>  
 
@@ -156,7 +157,7 @@ ms.locfileid: "88037128"
     
 * <a id="afs-resource-move"></a>
   **我可以將儲存體同步服務及/或儲存體帳戶移至不同的資源群組、訂用帳戶或 Azure AD 租使用者嗎？**  
-   是，您可以將儲存體同步服務及/或儲存體帳戶移至不同的資源群組、訂用帳戶或 Azure AD 租使用者。 移動儲存體同步服務或儲存體帳戶之後，您必須將儲存體帳戶的存取權授與 Microsoft.storagesync 應用程式 (請參閱[確定 Azure 檔案同步能夠存取儲存體帳戶](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)) 。
+   是，您可以將儲存體同步服務及/或儲存體帳戶移至不同的資源群組、訂用帳戶或 Azure AD 租使用者。 移動儲存體同步服務或儲存體帳戶之後，您必須將儲存體帳戶的存取權授與 Microsoft.storagesync 應用程式 (請參閱 [確定 Azure 檔案同步能夠存取儲存體帳戶](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)) 。
 
     > [!Note]  
     > 建立雲端端點時，儲存體同步服務和儲存體帳戶必須位於相同的 Azure AD 租用戶中。 建立雲端端點之後，可以將儲存體同步服務和儲存體帳戶移至不同的 Azure AD 租用戶。
@@ -164,7 +165,7 @@ ms.locfileid: "88037128"
 * <a id="afs-ntfs-acls"></a>
   **Azure 檔案同步是否會在 Azure 檔案中隨著資料保留目錄/檔案層級 NTFS AC？**
 
-    從 2020 年 2 月 24 日起，Azure 檔案同步所分層的新和現有 ACL 會以 NTFS 格式保存，而且直接對 Azure 檔案共用所做的 ACL 修改將會同步至同步群組中的所有伺服器。 對 Azure 檔案儲存體的 Acl 進行的任何變更，都會透過 Azure 檔案同步進行同步處理。將資料複製到 Azure 檔案儲存體時，請確定您使用的是支援必要「精確度」的複製工具，將屬性、時間戳記和 Acl 複製到 Azure 檔案共用中，不論是透過 SMB 或 REST。 使用 Azure 複製工具（例如 AzCopy）時，請務必使用最新版本。 請檢查檔案[複製工具資料表](storage-files-migration-overview.md#file-copy-tools)以取得 Azure 複製工具的總覽，以確保您可以複製檔案的所有重要中繼資料。
+    從 2020 年 2 月 24 日起，Azure 檔案同步所分層的新和現有 ACL 會以 NTFS 格式保存，而且直接對 Azure 檔案共用所做的 ACL 修改將會同步至同步群組中的所有伺服器。 對 Azure 檔案儲存體的 Acl 進行的任何變更，都會透過 Azure 檔案同步進行同步處理。將資料複製到 Azure 檔案儲存體時，請確定您使用的是支援必要「精確度」的複製工具，將屬性、時間戳記和 Acl 複製到 Azure 檔案共用中，不論是透過 SMB 或 REST。 使用 Azure 複製工具（例如 AzCopy）時，請務必使用最新版本。 請檢查檔案 [複製工具資料表](storage-files-migration-overview.md#file-copy-tools) 以取得 Azure 複製工具的總覽，以確保您可以複製檔案的所有重要中繼資料。
 
     如果您已在檔案同步受控檔案共用上啟用 Azure 備份，則檔案 ACL 可以繼續進行還原，做為備份還原工作流程的一部分。 這適用於整個共用或個別檔案/目錄。
 
@@ -208,6 +209,13 @@ ms.locfileid: "88037128"
 **Azure 檔案服務支援哪些資料合規性原則？**  
 
    Azure 檔案服務和 Azure 儲存體的其他儲存體中所使用的服務都是在相同的儲存體架構上運作。 Azure 檔案服務會套用其他 Azure 儲存體服務中所使用的相同資料合規性原則。 如需 Azure 儲存體資料合規性的詳細資訊，您可以參閱 [Azure 儲存體合規性供應項目](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)，並前往 [Microsoft 信任中心](https://microsoft.com/trustcenter/default.aspx)。
+
+* <a id="file-auditing"></a>
+**如何在 Azure 檔案儲存體中審計檔案存取和變更？**
+
+  有兩個選項可提供 Azure 檔案儲存體的審核功能：
+  - 如果使用者直接存取 Azure 檔案共用， [Azure 儲存體記錄 (預覽) ](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) 可以用來追蹤檔案變更和使用者存取權。 這些記錄可用於疑難排解目的，並以最大的方式記錄要求。
+  - 如果使用者是透過已安裝 Azure 檔案同步代理程式的 Windows Server 存取 Azure 檔案共用，請使用 [稽核原則](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) 或協力廠商產品來追蹤檔案變更和 windows 伺服器上的使用者存取權。 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS & Azure AD DS 驗證
 * <a id="ad-support-devices"></a>
@@ -274,7 +282,6 @@ ms.locfileid: "88037128"
 **是否有 REST Api 可支援取得/設定/複製目錄/檔案 Windows Acl？**
 
     是，我們支援在使用 [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (或更新版本) REST API 時，針對目錄或檔案取得、設定或複製 NTFS ACL 的 REST API。 我們也支援以 REST 為基礎的工具保存 Windows Acl： [AzCopy v 10.4 +](https://github.com/Azure/azure-storage-azcopy/releases)。
-
 
 ## <a name="on-premises-access"></a>內部部署存取
 
