@@ -22,11 +22,7 @@
     - name: 使用瀏覽器
       href: luis-get-started-get-intent-from-browser.md
     - name: 使用 SDK
-      items:
-        - name: 編寫應用程式
-          href: sdk-authoring.md
-        - name: 查詢預測端點
-          href: sdk-query-prediction-endpoint.md
+      href: quickstart-sdk.md
     - name: 使用 REST API
       items:
         - name: 取得意圖
