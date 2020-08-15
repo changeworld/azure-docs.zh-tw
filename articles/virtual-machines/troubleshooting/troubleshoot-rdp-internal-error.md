@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4831a084153c28576cca7c40dfefeb8c5ff3c4e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036381"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235157"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>嘗試透過遠端桌面連線至 Azure VM 時發生內部錯誤
 
@@ -41,7 +41,7 @@ ms.locfileid: "87036381"
 - TLS 通訊協定已停用。
 - 憑證損毀或過期。
 
-## <a name="solution"></a>解決方案
+## <a name="solution"></a>解決方法
 
 在遵循下列步驟之前，請擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
 
@@ -55,13 +55,13 @@ ms.locfileid: "87036381"
 
 #### <a name="step-1-check-the-rdp-port"></a>步驟 1：檢查 RDP 連接埠
 
-1. 在 PowerShell 執行個體中，使用 [NETSTAT](/windows-server/administration/windows-commands/netstat) 來檢查是否有其他應用程式正在使用連接埠 8080：
+1. 在 PowerShell 實例中，使用 [NETSTAT](/windows-server/administration/windows-commands/netstat) 來檢查其他應用程式是否使用埠3389：
 
     ```powershell
     Netstat -anob |more
     ```
 
-2. 如果 Termservice.exe 正在使用 8080 連接埠，請移至步驟 2。 如果 Termservice.exe 以外的另一個服務或應用程式正在使用 8080 連接埠，則請遵循下列步驟：
+2. 如果 Termservice.exe 使用3389埠，請移至步驟2。 如果 Termservice.exe 以外的其他服務或應用程式使用3389埠，請遵循下列步驟：
 
     1. 針對正在使用 3389 服務的應用程式停止服務：
 
@@ -193,7 +193,7 @@ RDP 用戶端會使用 TLS 1.0 作為預設通訊協定。 不過，您也可以
 
 若要啟用傾印記錄檔與序列主控台，請執行下列指令碼。
 
-1. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。
+1. 開啟提升許可權的命令提示字元會話 **， (以系統管理員身分執行**) 。
 2. 執行下列指令碼：
 
     在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
@@ -222,7 +222,7 @@ RDP 用戶端會使用 TLS 1.0 作為預設通訊協定。 不過，您也可以
 
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>重設 MachineKeys 資料夾的權限
 
-1. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。
+1. 開啟提升許可權的命令提示字元會話 **， (以系統管理員身分執行**) 。
 2. 執行下列指令碼。 在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
 
     ```console

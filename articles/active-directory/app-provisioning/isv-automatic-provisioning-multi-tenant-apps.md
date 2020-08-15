@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 479bbe2dbef2d28a2744b667184c45e85faf9adc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283090"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235633"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>為您的多租使用者應用程式啟用自動使用者布建
 
@@ -32,11 +32,11 @@ ms.locfileid: "87283090"
 
 * 減少實際和認知的客戶工作，以採用您的應用程式。
 
-* 藉由使用系統進行跨網域身分識別管理（SCIM）型布建，降低與多個身分識別提供者（Idp）整合的成本，以自動布建使用者。
+* 藉由使用系統進行跨網域身分識別管理 (SCIM) 型布建，降低您與多個身分識別提供者整合的成本 (Idp) 進行自動使用者布建。
 
 * 提供豐富的記錄來協助客戶疑難排解使用者布建問題，以降低支援成本。
 
-* 在[Azure AD 應用程式庫](https://azuremarketplace.microsoft.com/marketplace/apps)中提高應用程式的可見度。
+* 在 [Azure AD 應用程式庫](https://azuremarketplace.microsoft.com/marketplace/apps)中提高應用程式的可見度。
 
 * 取得應用程式教學課程頁面中的優先順序清單。
 
@@ -52,32 +52,32 @@ ms.locfileid: "87283090"
 
 Azure AD 提供數個整合路徑來為您的應用程式啟用自動使用者布建。
 
-* Azure AD 布建[服務](../app-provisioning/user-provisioning.md)會管理布建和解除布建使用者，從 Azure AD 應用程式（輸出布建），以及從您的應用程式到 Azure AD （輸入布建）。 此服務會連接到系統，以供您的應用程式所提供的跨網域身分識別管理（SCIM）使用者管理 API 端點使用。
+* Azure AD 布建 [服務](../app-provisioning/user-provisioning.md) 會管理布建和解除布建使用者，從 Azure AD 到您的應用程式 (輸出布建) ，以及從您的應用程式到 Azure AD (輸入布建) 。 服務會連接到系統，以進行跨網域身分識別管理 (SCIM) 應用程式所提供的使用者管理 API 端點。
 
-* 使用[Microsoft Graph](https://docs.microsoft.com/graph/)時，您的應用程式會藉由查詢 Microsoft Graph API，來管理使用者和群組的輸入和輸出布建，使其無法從 Azure AD 到您的應用程式。
+* 使用 [Microsoft Graph](/graph/)時，您的應用程式會藉由查詢 Microsoft Graph API，來管理使用者和群組的輸入和輸出布建，使其無法從 Azure AD 到您的應用程式。
 
-* 如果您的應用程式使用 SAML 進行同盟，就可以啟用安全性聲明標記語言的即時（SAML JIT）使用者布建。 它會使用 SAML 權杖中傳送的宣告資訊來布建使用者。
+* 如果您的應用程式使用 SAML 進行同盟，就可以啟用安全性聲明標記語言及時 (SAML JIT) 使用者布建。 它會使用 SAML 權杖中傳送的宣告資訊來布建使用者。
 
 若要協助判斷您的應用程式要使用哪一個整合選項，請參閱高階比較表，然後查看每個選項的詳細資訊。
 
-| 自動布建已啟用或增強的功能| Azure AD 布建服務（SCIM 2.0）| Microsoft Graph API （OData v4.0）| SAML JIT |
+| 自動布建已啟用或增強的功能| Azure AD 布建服務 (SCIM 2.0) | Microsoft Graph API (OData v4.0) | SAML JIT |
 |---|---|---|---|
 | Azure AD 中的使用者和群組管理| √| √| 僅限使用者 |
 | 管理從內部部署 Active Directory 同步處理的使用者和群組| √*| √*| 僅限使用者 * |
-| 在布建存取 O365 資料（小組、SharePoint、電子郵件、行事曆、檔等）期間，存取使用者和群組以外的資料| X+| √| X |
+| 在布建存取 O365 資料時，存取使用者和群組以外的資料 (小組、SharePoint、電子郵件、行事曆、檔等等 ) | X+| √| X |
 | 根據商務規則建立、讀取和更新使用者| √| √| √ |
 | 根據商務規則刪除使用者| √| √| X |
 | 從 Azure 入口網站管理所有應用程式的自動使用者布建| √| X| √ |
 | 支援多個身分識別提供者| √| X| √ |
-| 支援來賓帳戶（B2B）| √| √| √ |
-| 支援非企業帳戶（B2C）| X| √| √ |
+| 支援 B2B) 的來賓帳戶 (| √| √| √ |
+| 支援 B2C) 的非企業帳戶 (| X| √| √ |
 
-<sup>*</sup>–需要 Azure AD Connect 設定，才能將使用者從 AD 同步到 Azure AD。  
-<sup>+</sup >–使用 SCIM 進行布建時，不會妨礙您將應用程式與 MIcrosoft Graph 整合以供其他用途。
+<sup>*</sup> –需要 Azure AD Connect 設定，才能將使用者從 AD 同步到 Azure AD。  
+<sup>+</sup >–使用 SCIM 進行布建並不會讓您將應用程式與 Microsoft Graph 整合，以供其他用途之用。
 
-## <a name="azure-ad-provisioning-service-scim"></a>Azure AD 布建服務（SCIM）
+## <a name="azure-ad-provisioning-service-scim"></a>Azure AD 布建服務 (SCIM) 
 
-Azure AD 布建服務會使用[SCIM](https://aka.ms/SCIMOverview)，這是許多身分識別提供者（idp）以及應用程式（例如，時差、g Suite、Dropbox）所支援之布建的業界標準。 如果除了 Azure AD 之外，您還想要支援 Idp，建議您使用 Azure AD 布建服務，因為任何 SCIM 相容的 IdP 都可以連接到您的 SCIM 端點。 建立簡單的/User 端點，您可以啟用布建，而不必維護自己的同步處理引擎。 
+Azure AD 布建服務使用 [SCIM](https://aka.ms/SCIMOverview)，這是許多身分識別提供者所支援的業界標準， (idp) 以及應用程式 (例如，時差、g Suite、Dropbox) 。 如果除了 Azure AD 之外，您還想要支援 Idp，建議您使用 Azure AD 布建服務，因為任何 SCIM 相容的 IdP 都可以連接到您的 SCIM 端點。 建立簡單的/User 端點，您可以啟用布建，而不必維護自己的同步處理引擎。 
 
 如需有關 Azure AD 布建服務使用者如何 SCIM 的詳細資訊，請參閱： 
 
@@ -89,17 +89,17 @@ Azure AD 布建服務會使用[SCIM](https://aka.ms/SCIMOverview)，這是許多
 
 ## <a name="microsoft-graph-for-provisioning"></a>布建的 Microsoft Graph
 
-當您使用 Microsoft Graph 進行布建時，可以存取 Graph 中所有可用的豐富使用者資料。 除了使用者和群組的詳細資料之外，您也可以提取其他資訊，例如使用者的角色、管理員和直屬員工、擁有與已註冊的裝置，以及[Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)中提供的數百個其他資料片段。 
+當您使用 Microsoft Graph 進行布建時，可以存取 Graph 中所有可用的豐富使用者資料。 除了使用者和群組的詳細資料之外，您也可以提取其他資訊，例如使用者的角色、管理員和直屬員工、擁有與已註冊的裝置，以及 [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0)中提供的數百個其他資料片段。 
 
-在訂閱 Microsoft 雲端服務（例如 Office 365、Microsoft Azure、企業行動化套件或 Microsoft 365）的同時，有超過15000000個組織和90% 的財富500公司使用 Azure AD。 您可以使用 Microsoft Graph，將您的應用程式與系統管理工作流程（例如員工上線（和終止）、設定檔維護等等）整合。 
+在訂閱 Microsoft 雲端服務（例如 Office 365、Microsoft Azure、企業行動化套件或 Microsoft 365）的同時，有超過15000000個組織和90% 的財富500公司使用 Azure AD。 您可以使用 Microsoft Graph 來整合您的應用程式與系統管理工作流程，例如員工上線 (和終止) 、設定檔維護等等。 
 
 深入瞭解如何使用 Microsoft Graph 進行布建：
 
 * [Microsoft Graph 首頁](https://developer.microsoft.com/graph)
 
-* [Microsoft Graph 概觀](https://docs.microsoft.com/graph/overview)
+* [Microsoft Graph 概觀](/graph/overview)
 
-* [Microsoft Graph Auth 總覽](https://docs.microsoft.com/graph/auth/)
+* [Microsoft Graph Auth 總覽](/graph/auth/)
 
 * [開始使用 Microsoft Graph](https://developer.microsoft.com/graph/get-started)
 
@@ -115,4 +115,4 @@ SAML JIT 會使用 SAML 權杖中的宣告資訊，在應用程式中建立和�
 
 * 向 Microsoft[提交您的應用程式清單](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)和合作夥伴，以在 microsoft 網站上建立檔。
 
-* [加入 Microsoft 合作夥伴網路（免費），並建立您的進入市場計畫](https://partner.microsoft.com/explore/commercial)。
+* [加入 Microsoft 合作夥伴網路 (免費) ，並建立您的「移至市場」方案](https://partner.microsoft.com/explore/commercial)。

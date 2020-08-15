@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: d1cd4a25a2a9f07c75976d5eb5c97ba450ffdabb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e579223691ed7593d04c3b67004a6dd511f72c78
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284637"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236602"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>在 Azure 中建立一般化 VM 的受控映像
 
@@ -39,13 +39,15 @@ Sysprep 會移除您的所有個人帳戶與安全性資訊，然後準備使用
 
 1. 登入您的 Windows VM。
    
-2. 以系統管理員身分開啟 [命令提示字元] 視窗。 將目錄變更到 %windir%\system32\sysprep，然後執行 `sysprep.exe`。
+2. 以系統管理員身分開啟 [命令提示字元] 視窗。 
+
+3.  (C:\Windows\Panther) 中刪除 panther 目錄。 然後將目錄變更為%windir%\system32\sysprep，然後執行 `sysprep.exe` 。
    
-3. 在 [系統準備工具] 對話方塊中，選取 [進入系統全新體驗 (OOBE)]，然後選取 [一般化] 核取方塊。
+4. 在 [系統準備工具] 對話方塊中，選取 [進入系統全新體驗 (OOBE)]，然後選取 [一般化] 核取方塊。
    
-4. 針對 [關機選項]，選取 [關機]。
+5. 針對 [關機選項]，選取 [關機]。
    
-5. 選取 [確定]。
+6. 選取 [確定]。
    
     ![啟動 Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
 

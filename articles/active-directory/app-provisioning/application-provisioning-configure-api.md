@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 01d4475e73fd436fd0cd2a8aca1e7a946cdd7562
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17660df34c8039ae96440c417aef051d51a5c91c
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782053"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234742"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>使用 Microsoft Graph Api 設定布建
 
-Azure 入口網站是一次為個別應用程式設定布建的便利方式。 但是，如果您要建立應用程式的數個（甚至上百個）實例，使用 Microsoft Graph Api 來自動化建立和設定應用程式會變得更容易。 本文概述如何透過 Api 將布建設定自動化。 這個方法通常用於[Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso)之類的應用程式。
+Azure 入口網站是一次為個別應用程式設定布建的便利方式。 但是，如果您要建立應用程式的數個（甚至上百個）實例，使用 Microsoft Graph Api 來自動化建立和設定應用程式會變得更容易。 本文概述如何透過 Api 將布建設定自動化。 這個方法通常用於 [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso)之類的應用程式。
 
 **使用 Microsoft Graph Api 將布建設定自動化的步驟總覽**
 
@@ -48,7 +48,7 @@ Azure 入口網站是一次為個別應用程式設定布建的便利方式。 �
 1. 成功登入時，您會在左側窗格中看到使用者帳戶詳細資料。
 
 ### <a name="retrieve-the-gallery-application-template-identifier"></a>擷取資源庫應用程式範本識別碼
-Azure AD 應用程式資源庫中的應用程式都有一個[應用程式範本](https://docs.microsoft.com/graph/api/applicationtemplate-list?view=graph-rest-beta&tabs=http) \(英文\)，可描述該應用程式的中繼資料。 使用此範本，您可以在租用戶中建立應用程式和服務主體的執行個體以進行管理。
+Azure AD 應用程式資源庫中的應用程式都有一個[應用程式範本](/graph/api/applicationtemplate-list?tabs=http&view=graph-rest-beta) \(英文\)，可描述該應用程式的中繼資料。 使用此範本，您可以在租用戶中建立應用程式和服務主體的執行個體以進行管理。
 
 #### <a name="request"></a>*要求*
 
@@ -100,7 +100,7 @@ Content-type: application/json
 
 ### <a name="create-the-gallery-application"></a>建立資源庫應用程式
 
-在最後一個步驟中，使用為您的應用程式抓取的範本識別碼，以在您的租使用者中建立應用程式和服務主體的[實例](https://docs.microsoft.com/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)。
+在最後一個步驟中，使用為您的應用程式抓取的範本識別碼，以在您的租使用者中建立應用程式和服務主體的 [實例](/graph/api/applicationtemplate-instantiate?tabs=http&view=graph-rest-beta) 。
 
 #### <a name="request"></a>*要求*
 
@@ -169,7 +169,7 @@ Content-type: application/json
 
 ### <a name="retrieve-the-template-for-the-provisioning-connector"></a>取得布建連接器的範本
 
-資源庫中啟用布建的應用程式具有可簡化設定的範本。 使用下列要求來抓取布建設定的[範本](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http)。 請注意，您將需要提供識別碼。 此識別碼是指先前的資源，在此案例中為 ServicePrincipal。 
+資源庫中啟用布建的應用程式具有可簡化設定的範本。 使用下列要求來抓取布建設定的 [範本](/graph/api/synchronization-synchronizationtemplate-list?tabs=http&view=graph-rest-beta)。 請注意，您將需要提供識別碼。 此識別碼是指先前的資源，在此案例中為 ServicePrincipal。 
 
 #### <a name="request"></a>*要求*
 
@@ -207,7 +207,7 @@ HTTP/1.1 200 OK
 ```
 
 ### <a name="create-the-provisioning-job"></a>建立布建作業
-若要啟用布建，您需要先[建立作業](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-post?view=graph-rest-beta&tabs=http)。 請使用下方的要求來建立布建作業。 指定要用於作業的範本時，請使用上一個步驟中的 templateId。
+若要啟用布建，您需要先 [建立作業](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta)。 請使用下方的要求來建立布建作業。 指定要用於作業的範本時，請使用上一個步驟中的 templateId。
 
 #### <a name="request"></a>*要求*
 <!-- {
@@ -261,7 +261,7 @@ Content-type: application/json
 
 ### <a name="test-the-connection-to-the-application"></a>測試應用程式的連接
 
-測試與協力廠商應用程式的連接。 下列範例適用于需要 clientSecret 和 secretToken 的應用程式。 每個應用程式都有其需求。 應用程式通常會使用 BaseAddress 來取代 ClientSecret。 若要判斷您的應用程式需要哪些認證，請流覽至應用程式的 [布建設定] 頁面，然後在開發人員模式中按一下 [測試連線] 網路流量會顯示認證所使用的參數。 您可以在[這裡](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)找到完整的認證清單。 
+測試與協力廠商應用程式的連接。 下列範例適用于需要 clientSecret 和 secretToken 的應用程式。 每個應用程式都有其需求。 應用程式通常會使用 BaseAddress 來取代 ClientSecret。 若要判斷您的應用程式需要哪些認證，請流覽至應用程式的 [布建設定] 頁面，然後在開發人員模式中按一下 [測試連線] 網路流量會顯示認證所使用的參數。 您可以在 [這裡](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta)找到完整的認證清單。 
 
 #### <a name="request"></a>*要求*
 ```msgraph-interactive
@@ -285,7 +285,7 @@ HTTP/1.1 204 No Content
 
 ### <a name="save-your-credentials"></a>儲存您的認證
 
-設定布建需要在 Azure AD 和應用程式之間建立信任。 授權協力廠商應用程式的存取權。 下列範例適用于需要 clientSecret 和 secretToken 的應用程式。 每個應用程式都有其需求。 若要查看可用的選項，請參閱[API 檔](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http)。 
+設定布建需要在 Azure AD 和應用程式之間建立信任。 授權協力廠商應用程式的存取權。 下列範例適用于需要 clientSecret 和 secretToken 的應用程式。 每個應用程式都有其需求。 若要查看可用的選項，請參閱 [API 檔](/graph/api/synchronization-synchronizationjob-validatecredentials?tabs=http&view=graph-rest-beta) 。 
 
 #### <a name="request"></a>*要求*
 ```msgraph-interactive
@@ -310,7 +310,7 @@ HTTP/1.1 204 No Content
 ```
 
 ## <a name="step-4-start-the-provisioning-job"></a>步驟4：啟動布建作業
-現在已設定布建作業，請使用下列命令來[啟動作業](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-start?view=graph-rest-beta&tabs=http)。 
+現在已設定布建作業，請使用下列命令來 [啟動作業](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta)。 
 
 
 #### <a name="request"></a>*要求*
@@ -392,7 +392,7 @@ Content-length: 2577
 
 
 ### <a name="monitor-provisioning-events-using-the-provisioning-logs"></a>使用布建記錄監視布建事件
-除了監視布建作業的狀態，您可以使用布建[記錄](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)來查詢所有發生的事件（例如，查詢特定使用者並判斷是否已成功布建）。
+除了監視布建作業的狀態以外，您還可以使用布建 [記錄](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta) 來查詢發生 (的所有事件，例如，查詢特定使用者，並判斷是否已成功將其布建) 。
 
 #### <a name="request"></a>*要求*
 ```msgraph-interactive
@@ -526,5 +526,5 @@ Content-type: application/json
 ```
 ## <a name="related-articles"></a>相關文章
 
-- [查看同步處理 Microsoft Graph 檔](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [查看同步處理 Microsoft Graph 檔](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [整合自訂 SCIM 應用程式與 Azure AD](use-scim-to-provision-users-and-groups.md)

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.openlocfilehash: 8afe6ad23f0e23e2b9ab772f5526c63d307fa88b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: d454ab3ad382c6237ab9f8c215473801285ba3c9
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003240"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235667"
 ---
 # <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>如何：在 Azure AD 中撰寫屬性對應的運算式
 
@@ -27,7 +27,7 @@ ms.locfileid: "88003240"
 
 * 整個運算式必須以函式定義，由函式名稱後面接著以括號括住的引數組成： <br>
   *FunctionName (`<<argument 1>>` ， `<<argument N>>`) *
-* 您可以在函式內互相巢狀函式。 例如： <br> *FunctionOne (FunctionTwo (`<<argument1>>`) # B3*
+* 您可以在函式內互相巢狀函式。 例如： <br> *FunctionOne (FunctionTwo (`<<argument1>>`) # B3 *
 * 您可以將三種不同類型的引數傳入函式：
   
   1. 屬性，必須以方括弧括住。 例如：[attributeName]
@@ -175,7 +175,7 @@ CStr([dn])
 
 | 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **value** |必要 | Date | 要轉換成日期時間類型的 AD 日期 |
+| **value** |必要 | 日期 | 要轉換成日期時間類型的 AD 日期 |
 
 **範例︰**<br>
 DateFromNum([lastLogonTimestamp])                                                                                                   
@@ -193,7 +193,7 @@ DateFromNum(129699324000000000)
 | 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為 source 物件的屬性名稱。 |
-| **inputFormat** |必要 |String |source 值的預期格式。 如需支援的格式，請參閱 [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) 。 |
+| **inputFormat** |必要 |String |source 值的預期格式。 如需支援的格式，請參閱 [/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 | **outputFormat** |必要 |String |輸出日期的格式。 |
 
 ---
@@ -232,7 +232,7 @@ IIF ( [country] = "USA"，[country]，[部門] )
 | **value1** |必要 |String |要搜尋的字串 |
 | **value2** |必要 |String |要尋找的字串 |
 | **開始** |選用 |整數 |尋找子字串的開始位置|
-| **compareType** |選擇性 |列舉 |可以是 vbTextCompare 或 vbBinaryCompare |
+| **compareType** |選擇性 |例舉 |可以是 vbTextCompare 或 vbBinaryCompare |
 
 **範例︰**<br>
 InStr("The quick brown fox","quick")                                                                             
@@ -363,8 +363,8 @@ Left ( "John Doe"，3)
 | 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
 | **source** |必要 |String |通常為屬性的名稱。 |
-| **開始** |必要 |整數 |**來源**字串中的索引，代表子字串的開頭。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
-| **length** |必要 |整數 |子字串的長度。 如果長度超出 **source** 字串結尾，函式會傳回從 **start** 索引一直到 **source** 字串結尾的子字串。 |
+| **開始** |必要 |integer |**來源**字串中的索引，代表子字串的開頭。 字串第一個字元的索引為 1，第二個字元的索引為 2，依此類推。 |
+| **length** |必要 |integer |子字串的長度。 如果長度超出 **source** 字串結尾，函式會傳回從 **start** 索引一直到 **source** 字串結尾的子字串。 |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -394,7 +394,7 @@ Left ( "John Doe"，3)
 ### <a name="numfromdate"></a>NumFromDate
 **函數**<br> NumFromDate (值) 
 
-**描述:**<br> NumFromDate 函數會將日期時間值轉換成設定屬性（例如[accountExpires](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires)）所需的 Active Directory 格式。 使用此函式，將從雲端 HR 應用程式（例如 Workday 和 SuccessFactors）接收的日期時間值轉換為其對等的廣告表示。 
+**描述:**<br> NumFromDate 函數會將日期時間值轉換成設定屬性（例如 [accountExpires](/windows/win32/adschema/a-accountexpires)）所需的 Active Directory 格式。 使用此函式，將從雲端 HR 應用程式（例如 Workday 和 SuccessFactors）接收的日期時間值轉換為其對等的廣告表示。 
 
 **參數**<br> 
 
@@ -404,11 +404,11 @@ Left ( "John Doe"，3)
 
 **範例︰**<br>
 * Workday 範例 <br>
-  假設您想要將從 Workday *ContractEndDate*的屬性對應至 AD 中的 [ *2020-12-31-08:00*到*accountExpires* ] 欄位，以下是您可以如何使用此函式，並將時區位移變更為符合您的地區設定。 
+  假設您想要將從 Workday *ContractEndDate* 的屬性對應至 AD 中的 [ *2020-12-31-08:00* 到 *accountExpires* ] 欄位，以下是您可以如何使用此函式，並將時區位移變更為符合您的地區設定。 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
 * SuccessFactors 範例 <br>
-  假設您想要將來自 SuccessFactors 的屬性*結束*日期（格式為*M/d/yyyy hh： mm： ss tt* ）對應到 AD 中的*accountExpires*欄位，以下是您可以如何使用此函式並變更時區時差以符合您的地區設定。
+  假設您想要將來自 SuccessFactors 的屬性 *結束* 日期（格式為 *M/d/yyyy hh： mm： ss tt* ）對應到 AD 中的 *accountExpires* 欄位，以下是您可以如何使用此函式並變更時區時差以符合您的地區設定。
   `NumFromDate(Join("",FormatDateTime([endDate],"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
 
 
@@ -456,13 +456,13 @@ RemoveDuplicates([proxyAddresses])
 
 | 名稱 | 必要 / 重複 | 類型 | 注意 |
 | --- | --- | --- | --- |
-| **source** |必要 |String |通常是來自**來源**物件的屬性名稱。 |
+| **source** |必要 |String |通常是來自 **來源** 物件的屬性名稱。 |
 | **oldValue** |選用 |String |在 **source** 或 **template** 中要被取代的值。 |
 | **regexPattern** |選用 |String |用於比對**來源**中要取代之值的 Regex 模式。 或者，如果使用了 **replacementPropertyName**，則為從 **replacementPropertyName** 擷取值的模式。 |
 | **regexGroupName** |選用 |String |**regexPattern**內的群組名稱。 只有在使用了 **replacementPropertyName** 時，我們才會從 **replacementPropertyName** 擷取此群組的值作為 **replacementValue**。 |
 | **replacementValue** |選用 |String |要取代舊值的新值。 |
 | **replacementAttributeName** |選用 |String |要用於取代值的屬性名稱 |
-| **template** |選用 |String |當提供**範本**值時，我們會尋找範本內部的**oldValue** ，並將其取代為**來源**值。 |
+| **template** |選用 |String |當提供 **範本** 值時，我們會尋找範本內部的 **oldValue** ，並將其取代為 **來源** 值。 |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue

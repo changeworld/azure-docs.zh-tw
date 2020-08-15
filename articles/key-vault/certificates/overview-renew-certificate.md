@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: beea6f7472d6bc871b4a2df323445b05671a621f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: bbd65cdfc7c8ebbc08b914158577337cc49ec887
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224555"
+ms.locfileid: "88236058"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>關於 Azure Key Vault 憑證更新
 
@@ -64,7 +64,7 @@ Azure key vault 可讓其使用者從任何 CA 匯入憑證，以允許其使用
   建立有效期為1個月的憑證，然後將 [旋轉的存留時間] 動作設定為1%。 這項設定會將憑證旋轉7.2 小時。
   
 * 會在自動更新憑證後複寫標記嗎？
-  否，除非使用者手動複製標記，否則標記不會複寫。
+  是，標記會在自動更新後進行複寫。
 
 ### <a name="see-also"></a>另請參閱
 *   [將 Key Vault 與 DigiCert 憑證授權單位整合](how-to-integrate-certificate-authority.md)

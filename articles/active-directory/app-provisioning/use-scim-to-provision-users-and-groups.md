@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 70938bf1dcd06ce9936767c66ffead0f8627c5a7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829691"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235463"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>建置 SCIM 端點並設定使用 Azure AD 的使用者佈建
 
@@ -745,13 +745,13 @@ TLS 1.2 加密套件的最低標準：
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 範圍
-Azure AD 布建服務目前會在 AzureActiveDirectory 和 AzureActiveDirectoryDomainServices 的 IP 範圍下運作，如[這裡](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)所列。 工作正在進行中，只會合並到 AzureActiveDirectory 下的 IP 範圍。 
+Azure AD 布建服務目前會在 AzureActiveDirectory 和 AzureActiveDirectoryDomainServices 的 IP 範圍下運作，如 [這裡](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)所列。 工作正在進行中，只會合並到 AzureActiveDirectory 下的 IP 範圍。 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>步驟 3：建置 SCIM 端點
 
 現在，您已設計結構描述並了解 Azure AD SCIM 實作，接著即可開始開發您的 SCIM 端點。 您可以利用 SCIM 社群所發佈的一些開放原始碼 SCIM 程式庫，而不要從頭開始完全靠自己建置實作。
 
-開放原始碼 .NET Core [參考程式碼](https://aka.ms/SCIMReferenceCode)由 Azure AD 佈建小組所發佈，這項資源可讓您立即開始進行開發。 建置 SCIM 端點後，您會想要加以測試。您可以使用在參考程式碼中提供的 [postman 測試](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)集合，或透過[上方](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)提供的範例要求/回應來執行。  
+開放原始碼 .NET Core [參考程式碼](https://aka.ms/SCIMReferenceCode)由 Azure AD 佈建小組所發佈，這項資源可讓您立即開始進行開發。 建置 SCIM 端點後，您會想要加以測試。您可以使用在參考程式碼中提供的 [postman 測試](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)集合，或透過[上方](#user-operations)提供的範例要求/回應來執行。  
 
    > [!Note]
    > 參考程式碼以「原狀」提供，目的是要協助您開始建置 SCIM 端點。 歡迎社群供稿，以協助建置和維護程式碼。
@@ -799,7 +799,7 @@ SCIM 服務必須具有 HTTP 位址，而其伺服器驗證憑證的根憑證授
 * Microsoft.SCIM.WebHostSample： https://localhost:5001
 * IIS Express： https://localhost:44359/
 
-若要進一步了解 ASP.NET Core 中的 HTTPS，請使用下列連結：[在 ASP.NET Core 中強制執行 HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl)
+若要進一步了解 ASP.NET Core 中的 HTTPS，請使用下列連結：[在 ASP.NET Core 中強制執行 HTTPS](/aspnet/core/security/enforcing-ssl)
 
 ### <a name="handling-endpoint-authentication"></a>處理端點驗證
 
@@ -918,7 +918,7 @@ https://docs.microsoft.com/aspnet/core/fundamentals/environments)
 Azure Active Directory 查詢服務的使用者，其 `externalId` 屬性值符合 Azure AD 中使用者的 mailNickname 屬性值。 查詢會以類似於此範例的超文字傳輸通訊協定 (HTTP) 要求表示，其中，jyoung 是 Azure Active Directory 中使用者的 mailNickname 範例。
 
 >[!NOTE]
-> 這只是範例。 並非所有使用者都有 mailNickname 屬性，且使用者的值在目錄中可能不是唯一的。 此外，用於比對 (的屬性（在此案例中為 `externalId`) 可在[Azure AD 屬性](customize-application-attributes.md)對應中設定）。
+> 這只是範例。 並非所有使用者都有 mailNickname 屬性，且使用者的值在目錄中可能不是唯一的。 此外，用於比對 (的屬性（在此案例中為 `externalId`) 可在 [Azure AD 屬性](customize-application-attributes.md)對應中設定）。
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
@@ -1168,12 +1168,12 @@ Azure AD 可設定為將已指派的使用者和群組自動佈建至實作 [SCI
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>步驟 5：將您的應用程式發佈至 Azure AD 應用程式庫
 
-如果您要建立將由多個租用戶使用的應用程式，您可以在 Azure AD 應用程式庫中加以提供。 這可讓組織輕鬆地探索應用程式和設定佈建。 在 Azure AD 資源庫中發佈您的應用程式並供其他人佈建，是很簡單的作業。 請在 [這裡](../develop/howto-app-gallery-listing.md)查明步驟。 Microsoft 會與您合作，將您的應用程式整合到我們的資源庫中、測試您的端點，以及發行上線[文件](../saas-apps/tutorial-list.md)供客戶使用。 
+如果您要建立將由多個租用戶使用的應用程式，您可以在 Azure AD 應用程式庫中加以提供。 這可讓組織輕鬆地探索應用程式和設定佈建。 在 Azure AD 資源庫中發佈您的應用程式並供其他人佈建，是很簡單的作業。 請在 [這裡](../azuread-dev/howto-app-gallery-listing.md)查明步驟。 Microsoft 會與您合作，將您的應用程式整合到我們的資源庫中、測試您的端點，以及發行上線[文件](../saas-apps/tutorial-list.md)供客戶使用。 
 
 ### <a name="gallery-onboarding-checklist"></a>資源庫上線檢查清單
 請依照下列檢查清單操作，以確保您的應用程式可快速上線，且客戶會有順暢的部署體驗。 當您上線至資源庫時，系統將會向您收集資訊。 
 > [!div class="checklist"]
-> * 支援 [SCIM 2.0 ](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) 使用者和群組端點 (只需要一個，但建議兩者都使用)
+> * 支援 [SCIM 2.0 ](#step-2-understand-the-azure-ad-scim-implementation) 使用者和群組端點 (只需要一個，但建議兩者都使用)
 > * 支援每個租用戶每秒至少有 25 個要求 (必要)
 > * 建立工程和支援連絡人，以便在資源庫上線後引導客戶 (必要)
 > * 應用程式有 3 個未過期的測試認證可使用 (必要)

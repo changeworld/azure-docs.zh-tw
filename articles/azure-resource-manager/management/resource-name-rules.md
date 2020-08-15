@@ -3,18 +3,18 @@ title: 資源命名限制
 description: 顯示命名 Azure 資源的規則和限制。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554336"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235973"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure 資源的命名規則和限制
 
 本文摘要說明 Azure 資源的命名規則和限制。 如需如何命名資源的建議，請參閱[建議的命名和標記慣例](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
 
-本文依資源提供者命名空間列出資源。 如需資源提供者如何與 Azure 服務相符的清單，請參閱[azure 服務的資源提供者](azure-services-resource-providers.md)。
+本文依資源提供者命名空間列出資源。 如需資源提供者如何與 Azure 服務相符的清單，請參閱 [azure 服務的資源提供者](azure-services-resource-providers.md)。
 
 除非在 [有效字元] 資料行中特別註明，否則資源名稱不區分大小寫。
 
@@ -392,6 +392,7 @@ ms.locfileid: "85554336"
 > [!div class="mx-tableFixed"]
 > | 單位 | 影響範圍 | 長度 | 有效字元 |
 > | --- | --- | --- | --- |
+> | actionGroups | 資源群組 | 1-260 | 不能使用：<br>`/` <br><br>不能以空格或句號結尾。  |
 > | components | 資源群組 | 1-260 | 不能使用：<br>`%&\?/` <br><br>不能以空格或句號結尾。  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
@@ -695,6 +696,7 @@ ms.locfileid: "85554336"
 > [!div class="mx-tableFixed"]
 > | 單位 | 影響範圍 | 長度 | 有效字元 |
 > | --- | --- | --- | --- |
+> | certificates | 資源群組 | 1-260 | 不能使用：<br>`/` <br><br>不能以空格或句號結尾。  | 
 > | serverfarms | 資源群組 | 1-40 | 英數字元和連字號。 |
 > | sites | 全域 | 2-60 | 包含英數字元和連字號。<br><br>不能以連字號開頭或結尾。 |
 > | sites / slots | site | 2-59 | 英數字元和連字號。 |

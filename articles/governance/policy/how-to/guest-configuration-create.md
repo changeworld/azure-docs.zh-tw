@@ -3,12 +3,12 @@ title: 如何建立 Windows 的客體設定原則
 description: 了解如何建立 Windows 的 Azure 原則客體設定原則。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: b53c8ec8189516305de8b0b8c05b2be8ea49f7f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045122"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236534"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 的客體設定原則
 
@@ -90,7 +90,7 @@ ms.locfileid: "86045122"
 1. 函式所傳回布林值會判斷客體指派的 Azure Resource Manager 狀態是否符合規範。
 1. 提供者會執行 `Get-TargetResource` 以傳回每個設定的目前狀態，藉此得知為何電腦不符合規範以及確認目前的狀態是否符合規範，這兩項詳細資料。
 
-在 Azure 原則中，將值傳遞給來賓設定指派的參數必須是_字串_類型。
+在 Azure 原則中，將值傳遞給來賓設定指派的參數必須是 _字串_ 類型。
 即使 DSC 資源支援陣列，也無法透過參數傳遞陣列。
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource 需求
@@ -141,7 +141,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="configuration-requirements"></a>組態需求
 
-自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔案名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本（ARM 範本）中的來賓指派名稱必須相同。
+自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔案名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本 (ARM 範本) 中的來賓指派名稱必須相同。
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>為客體設定專案建立結構
 
@@ -307,6 +307,8 @@ $uri = publish `
 - **版本**：原則版本。
 - **路徑**：建立原則定義的目的地路徑。
 - **平台**：客體設定原則和內容套件的目標平台 (Windows/Linux)。
+- **Tag** 會將一或多個標籤篩選新增至原則定義
+- **Category** 會在原則定義中，設定類別中繼資料欄位
 
 下列範例會從自訂原則套件在指定的路徑中建立原則定義：
 
@@ -328,14 +330,6 @@ New-GuestConfigurationPolicy `
 - **Initiative.json**
 
 Cmdlet 輸出會傳回物件，其中包含原則檔案的方案顯示名稱和路徑。
-
-> [!Note]
-> 最新的客體設定模組會包含新參數：
-> - **Tag** 會將一或多個標籤篩選新增至原則定義
->   - 請參閱＜[使用標籤來篩選客體設定原則](#filtering-guest-configuration-policies-using-tags)＞一節。
-> - **Category** 會在原則定義中，設定類別中繼資料欄位
->   - 如果未包含此參數，則類別會預設為客體設定。
-> 這些功能皆處於預覽狀態，且需要客體設定模組版本 1.20.1，此版本可使用 `Install-Module GuestConfiguration -AllowPrerelease` 來安裝。
 
 最後，使用 `Publish-GuestConfigurationPolicy` Cmdlet 來發佈原則定義。 此 Cmdlet 只有 **Path** 參數，該參數會指向由 `New-GuestConfigurationPolicy` 所建立的 JSON 檔案位置。
 
@@ -378,9 +372,6 @@ New-AzRoleDefinition -Role $role
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>使用標籤來篩選客體設定原則
 
-> [!Note]
-> 此功能處於預覽狀態，且需要客體設定模組版本 1.20.1，此版本可使用 `Install-Module GuestConfiguration -AllowPrerelease` 來安裝。
-
 在客體設定模組中，由 Cmdlet 所建立的原則定義可選擇性地包含標籤篩選。 `New-GuestConfigurationPolicy` 的 **Tag** 參數支援包含個別標籤項目的雜湊表陣列。 標籤會新增至原則定義的 `If` 區段，且無法由原則指派加以修改。
 
 以下提供篩選標籤的原則定義範例程式碼片段。
@@ -411,7 +402,7 @@ New-AzRoleDefinition -Role $role
 
 客體設定支援在執行階段覆寫設定的屬性。 這項功能表示套件中 MOF 檔案的值不一定要被視為靜態。 覆寫值是透過 Azure 原則提供，且不會影響撰寫或編譯設定的方式。
 
-Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名為**參數**的參數。 此參數會採納雜湊表定義，包括每個參數的所有詳細資料，並為每個檔案建立必要區段，以用於 Azure 原則定義。
+Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名為 **參數**的參數。 此參數會採納雜湊表定義，包括每個參數的所有詳細資料，並為每個檔案建立必要區段，以用於 Azure 原則定義。
 
 下列範例會建立原則定義來稽核服務，使用者可在原則指派時從清單中進行選取。
 
@@ -439,10 +430,6 @@ New-GuestConfigurationPolicy
 ```
 
 ## <a name="extending-guest-configuration-with-third-party-tools"></a>使用第三方工具來擴充客體設定
-
-> [!Note]
-> 這項功能目前為預覽狀態，需要來賓設定模組版本1.20.3，可以使用進行安裝 `Install-Module GuestConfiguration -AllowPrerelease` 。
-> 在 [版本 1.20.3] 中，這項功能僅適用于用於審查 Windows 機器的原則定義
 
 您可擴充客體設定的成品套件，以包含第三方工具。
 擴充客體設定需要開發兩種元件。
@@ -574,11 +561,6 @@ New-GuestConfigurationPackage `
 - **contentHash**：`New-GuestConfigurationPolicy` Cmdlet 會自動更新此屬性。 此為 `New-GuestConfigurationPackage` 所建立套件的雜湊值。 針對您發佈的 `.zip` 檔案而言，此屬性必須是正確的。 如果只更新 **contentUri** 屬性，延伸模組就不會接受內容套件。
 
 發行更新套件的最簡單方式就是重複本文中所述程序，並提供更新的版本號碼。 此程序可確保所有屬性都已正確更新。
-
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>將 Windows 群組原則內容轉換為 Azure 原則客體設定
-
-在稽核 Windows 電腦時，客體設定是 PowerShell 預期狀態設定語法的實作。 DSC 社群已發佈工具，可將匯出的群組原則範本轉換成 DSC 格式。 將此工具與上述的客體設定 Cmdlet 搭配使用，即可轉換 Windows 群組原則內容，並將其封裝/發佈以供 Azure 原則進行稽核。 如需使用此工具的詳細資料，請參閱[快速入門：將群組原則轉換至 DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart)。
-內容經轉換後，如同所有 DSC 內容的步驟，上述步驟會建立套件，並將其發佈為 Azure 原則。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>選擇性：簽署客體設定套件
 

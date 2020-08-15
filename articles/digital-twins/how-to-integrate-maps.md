@@ -1,37 +1,37 @@
 ---
-title: 使用 Azure 數位 Twins 來更新 Azure 地圖服務室內地圖
+title: 與 Azure 地圖服務整合
 titleSuffix: Azure Digital Twins
-description: 請參閱如何建立可使用對應項圖形和 Azure 數位 Twins 通知的 Azure 函式，以更新 Azure 地圖服務中顯示的資訊。
+description: 請參閱如何建立可使用對應項圖形和 Azure 數位 Twins 通知來更新 Azure 地圖服務室內地圖的 Azure 函式。
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a2dff1ea9c830fa48545dc25654cc3c5318c3415
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131407"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235905"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>使用 Azure 數位 Twins 來更新 Azure 地圖服務室內地圖
 
-本文逐步解說使用 Azure 數位 Twins 資料來更新*室內地圖*上顯示的資訊時，使用[Azure 地圖服務](../azure-maps/about-azure-maps.md)所需的步驟。 Azure 數位 Twins 會儲存您 IoT 裝置關聯性的圖形，並將遙測路由傳送至不同的端點，使其成為在地圖上更新資訊重迭的絕佳服務。
+本文逐步解說使用 Azure 數位 Twins 資料來更新 *室內地圖* 上顯示的資訊時，使用 [Azure 地圖服務](../azure-maps/about-azure-maps.md)所需的步驟。 Azure 數位 Twins 會儲存您 IoT 裝置關聯性的圖形，並將遙測路由傳送至不同的端點，使其成為在地圖上更新資訊重迭的絕佳服務。
 
 本操作說明將涵蓋：
 
-1. 設定您的 Azure 數位 Twins 實例，以將對應項更新事件傳送至[Azure Functions](../azure-functions/functions-overview.md)中的函式。
+1. 設定您的 Azure 數位 Twins 實例，以將對應項更新事件傳送至 [Azure Functions](../azure-functions/functions-overview.md)中的函式。
 2. 建立 Azure 函式以更新 Azure 地圖服務室內地圖功能 stateset。
 3. 如何在 Azure 數位 Twins 圖形中儲存地圖識別碼和功能 stateset 識別碼。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
-* 遵循 Azure 數位 Twins[*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)。
+* 遵循 Azure 數位 Twins [*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)。
     * 您將會使用額外的端點和路由來擴充此對應項。 您也會從該教學課程將另一個函式新增至函數應用程式。 
-* 遵循 Azure 地圖服務[*教學課程：使用 Azure 地圖服務 Creator 建立室內地圖*](../azure-maps/tutorial-creator-indoor-maps.md)，以建立具有*功能 stateset*的 Azure 地圖服務室內地圖。
-    * [功能 statesets](../azure-maps/creator-indoor-maps.md#feature-statesets)是指派給資料集功能（例如房間或設備）的動態屬性（狀態）集合。 在上述 Azure 地圖服務教學課程中，功能 stateset 會儲存您將顯示在地圖上的房間狀態。
-    * 您將需要功能*STATESET 識別碼*和 Azure 地圖服務訂用帳戶*識別碼*。
+* 遵循 Azure 地圖服務 [*教學課程：使用 Azure 地圖服務 Creator 建立室內地圖*](../azure-maps/tutorial-creator-indoor-maps.md) ，以建立具有 *功能 stateset*的 Azure 地圖服務室內地圖。
+    * [功能 statesets](../azure-maps/creator-indoor-maps.md#feature-statesets) 是動態屬性的集合， (狀態) 指派給房間或設備等資料集功能。 在上述 Azure 地圖服務教學課程中，功能 stateset 會儲存您將顯示在地圖上的房間狀態。
+    * 您將需要功能 *STATESET 識別碼* 和 Azure 地圖服務訂用帳戶 *識別碼*。
 
 ### <a name="topology"></a>拓撲
 
@@ -45,7 +45,7 @@ ms.locfileid: "87131407"
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>建立路由並篩選對應項更新通知
 
-每當更新對應項的狀態時，Azure 數位 Twins 實例就可以發出對應項更新事件。 Azure 數位 Twins[*教學課程：連接上述的端對端解決方案*](./tutorial-end-to-end.md)會逐步解說一個案例，其中的溫度計是用來更新附加至房間對應項的溫度屬性。 您將會訂閱 twins 的更新通知，並使用該資訊來更新您的對應，以擴充該解決方案。
+每當更新對應項的狀態時，Azure 數位 Twins 實例就可以發出對應項更新事件。 Azure 數位 Twins [*教學課程：連接上述的端對端解決方案*](./tutorial-end-to-end.md) 會逐步解說一個案例，其中的溫度計是用來更新附加至房間對應項的溫度屬性。 您將會訂閱 twins 的更新通知，並使用該資訊來更新您的對應，以擴充該解決方案。
 
 此模式會直接讀取房間對應項，而不是 IoT 裝置，這可讓您彈性地變更溫度的基礎資料來源，而不需要更新您的對應邏輯。 例如，您可以新增多個溫度計，或將此房間設定為與另一個房間共用溫度計，而不需要更新您的對應邏輯。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87131407"
 
 ## <a name="create-an-azure-function-to-update-maps"></a>建立 Azure 函數來更新對應
 
-您將會從端對端教學課程（[*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)），在函式應用程式內建立事件方格觸發函數。 此函式會將這些通知解壓縮，並將更新傳送至 Azure 地圖服務功能 stateset，以更新一個房間的溫度。 
+您將從端對端教學課程中，在函式應用程式內建立事件方格觸發函式 ([*教學課程：將端對端解決方案連接*](./tutorial-end-to-end.md)) 。 此函式會將這些通知解壓縮，並將更新傳送至 Azure 地圖服務功能 stateset，以更新一個房間的溫度。 
 
 如需參考資訊，請參閱下列檔： [*Azure Functions 的 Azure Event Grid 觸發程式*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger)。
 
@@ -127,7 +127,7 @@ namespace SampleFunctionsApp
 }
 ```
 
-您必須在函數應用程式中設定兩個環境變數。 其中一個是您[Azure 地圖服務的主要訂](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)用帳戶金鑰，而其中一個是您[AZURE 地圖服務的 stateset 識別碼](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)。
+您必須在函數應用程式中設定兩個環境變數。 其中一個是您 [Azure 地圖服務的主要訂](../azure-maps/quick-demo-map-app.md#get-the-primary-key-for-your-account)用帳戶金鑰，而其中一個是您 [AZURE 地圖服務的 stateset 識別碼](../azure-maps/tutorial-creator-indoor-maps.md#create-a-feature-stateset)。
 
 ```azurecli-interactive
 az functionapp config appsettings set --settings "subscription-key=<your-Azure-Maps-primary-subscription-key> -g <your-resource-group> -n <your-App-Service-(function-app)-name>"
@@ -138,10 +138,10 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 若要查看即時更新溫度，請遵循下列步驟：
 
-1. 從 Azure 數位 Twins[*教學課程：連接端對端解決方案*](tutorial-end-to-end.md) **，開始傳送模擬的 IoT**資料。 這項操作的指示位於[*設定和執行模擬*](././tutorial-end-to-end.md#configure-and-run-the-simulation)一節中。
-2. 使用[ **Azure 地圖服務室內**模組](../azure-maps/how-to-use-indoor-module.md)來轉譯在 Azure 地圖服務 Creator 建立的室內地圖。
-    1. 複製下列範例中的 HTML：使用室內 maps 教學課程的[*室內 Maps 模組*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)一節[*：使用 Azure 地圖服務室內 maps 模組*](../azure-maps/how-to-use-indoor-module.md)至本機檔案。
-    1. 將本機 HTML 檔案中的*tilesetId*和*statesetID*取代為您的值。
+1. 從 Azure 數位 Twins[*教學課程：連接端對端解決方案*](tutorial-end-to-end.md) **，開始傳送模擬的 IoT**資料。 這項操作的指示位於 [*設定和執行模擬*](././tutorial-end-to-end.md#configure-and-run-the-simulation) 一節中。
+2. 使用 [ **Azure 地圖服務室內** 模組](../azure-maps/how-to-use-indoor-module.md) 來轉譯在 Azure 地圖服務 Creator 建立的室內地圖。
+    1. 複製下列範例中的 HTML：使用室內 maps 教學課程的 [*室內 Maps 模組*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module) 一節 [*：使用 Azure 地圖服務室內 maps 模組*](../azure-maps/how-to-use-indoor-module.md) 至本機檔案。
+    1. 將本機 HTML 檔案中的 *tilesetId* 和 *statesetID* 取代為您的值。
     1. 在您的瀏覽器中開啟該檔案。
 
 這兩個範例都會在相容的範圍內傳送溫度，因此您應該會在地圖上看到房間121更新的色彩大約每30秒一次。

@@ -3,12 +3,12 @@ title: 如何建立 Linux 的客體設定原則
 description: 了解如何建立 Linux 的 Azure 原則客體設定原則。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026707"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236585"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何建立 Linux 的客體設定原則
 
@@ -51,6 +51,10 @@ ms.locfileid: "86026707"
 - macOS
 - Windows
 
+> [!NOTE]
+> Cmdlet ' GuestConfigurationPackage ' 需要 OpenSSL 版本1.0，因為 OMI 的相依性。
+> 這會導致任何具有 OpenSSL 1.1 或更新版本的環境發生錯誤。
+
 客體設定資源模組需要下列軟體：
 
 - PowerShell 6.2 或更新版本。 如果尚未安裝，請依照[這些指示](/powershell/scripting/install/installing-powershell)操作。
@@ -59,7 +63,7 @@ ms.locfileid: "86026707"
 
 ### <a name="install-the-module"></a>安裝模組
 
-若要在 PowerShell 中安裝 **GuestConfiguration** 模組：
+若要在 PowerShell 中安裝**GuestConfiguration**模組：
 
 1. 從 PowerShell 提示字元中執行下列命令：
 
@@ -81,7 +85,7 @@ ms.locfileid: "86026707"
 
 #### <a name="configuration-requirements"></a>組態需求
 
-自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔案名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本（ARM 範本）中的來賓指派名稱必須相同。
+自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔案名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本 (ARM 範本) 中的來賓指派名稱必須相同。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自訂客體設定組態
 
@@ -193,7 +197,7 @@ Test-GuestConfigurationPackage `
 New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
 ```
 
-下一個步驟是將檔案發佈至 Blob 儲存體。 下列指令碼包含可供用來自動執行這項工作的函式。 `publish` 函式中使用的命令需要 `Az.Storage` 模組。
+下一個步驟是將檔案發佈至 blob 儲存體。 下列指令碼包含可供用來自動執行這項工作的函式。 `publish` 函式中使用的命令需要 `Az.Storage` 模組。
 
 ```azurepowershell-interactive
 function publish {
@@ -260,6 +264,8 @@ $uri = publish `
 - **版本**：原則版本。
 - **路徑**：建立原則定義的目的地路徑。
 - **平台**：客體設定原則和內容套件的目標平台 (Windows/Linux)。
+- **Tag** 會將一或多個標籤篩選新增至原則定義
+- **Category** 會在原則定義中，設定類別中繼資料欄位
 
 下列範例會從自訂原則套件在指定的路徑中建立原則定義：
 
@@ -281,14 +287,6 @@ New-GuestConfigurationPolicy `
 - **Initiative.json**
 
 Cmdlet 輸出會傳回物件，其中包含原則檔案的方案顯示名稱和路徑。
-
-> [!Note]
-> 最新的客體設定模組會包含新參數：
-> - **Tag** 會將一或多個標籤篩選新增至原則定義
->   - 請參閱[使用標籤來篩選客體設定原則](#filtering-guest-configuration-policies-using-tags)一節。
-> - **Category** 會在原則定義中，設定類別中繼資料欄位
->   - 如果未包含此參數，則類別會預設為客體設定。
-> 這些功能目前皆處於預覽狀態，且需要客體設定模組版本 1.20.1，此版本可使用 `Install-Module GuestConfiguration -AllowPrerelease` 來安裝。
 
 最後，使用 `Publish-GuestConfigurationPolicy` Cmdlet 來發佈原則定義。
 此 Cmdlet 只有 **Path** 參數，該參數會指向由 `New-GuestConfigurationPolicy` 所建立的 JSON 檔案位置。
@@ -347,7 +345,7 @@ describe file(attr_path) do
 end
 ```
 
-Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名為**參數**的參數。 此參數會使用雜湊表定義，包括每個參數的所有詳細資料，並為用來建立每個 Azure 原則定義的檔案建立所有必要區段。
+Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名為 **參數**的參數。 此參數會使用雜湊表定義，包括每個參數的所有詳細資料，並為用來建立每個 Azure 原則定義的檔案建立所有必要區段。
 
 下列範例會建立原則定義來稽核檔案路徑，使用者可在原則指派時提供路徑。
 
@@ -398,15 +396,12 @@ Configuration AuditFilePathExists
 要將更新發行至原則定義，則需要注意兩個欄位。
 
 - **版本**：當執行 `New-GuestConfigurationPolicy` Cmdlet 時，您必須指定大於目前發佈的版本號碼。 屬性會更新客體設定指派的版本，讓代理程式能夠辨識更新的套件。
-- **contentHash**：`New-GuestConfigurationPolicy` Cmdlet 會自動更新此屬性。 此為 `New-GuestConfigurationPackage` 所建立套件的雜湊值。 針對您發佈的 `.zip` 檔案而言，此屬性必須是正確的。 如果只更新 **contentUri** 屬性，擴充功能就不會接受內容套件。
+- **contentHash**：`New-GuestConfigurationPolicy` Cmdlet 會自動更新此屬性。 此為 `New-GuestConfigurationPackage` 所建立套件的雜湊值。 針對您發佈的 `.zip` 檔案而言，此屬性必須是正確的。 如果只更新 **contentUri** 屬性，延伸模組就不會接受內容套件。
 
 發行更新套件的最簡單方式就是重複本文中所述程序，並提供更新的版本號碼。 此程序可確保所有屬性都已正確更新。
 
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>使用標籤來篩選客體設定原則
-
-> [!Note]
-> 此功能目前處於預覽狀態，且需要客體設定模組版本 1.20.1，此版本可使用 `Install-Module GuestConfiguration -AllowPrerelease` 來安裝。
 
 在客體設定模組中，由 Cmdlet 所建立的原則可選擇性地包含標籤篩選。 `New-GuestConfigurationPolicy` 的 **-Tag** 參數支援包含個別標籤項目的雜湊表陣列。 標籤會新增至原則定義的 `If` 區段，且無法由原則指派加以修改。
 
@@ -437,7 +432,7 @@ Configuration AuditFilePathExists
 ## <a name="optional-signing-guest-configuration-packages"></a>選擇性：簽署客體設定套件
 
 使用 SHA256 雜湊來驗證原則套件的客體設定自訂原則並未變更。
-客戶也可選擇性地使用憑證來簽署套件，並強制客體設定Extension只允許已簽署的內容。
+客戶也可選擇性地使用憑證來簽署套件，並強制客體設定延伸模組只允許已簽署的內容。
 
 若要啟用此案例，您需要完成兩個步驟。 執行 Cmdlet 來簽署內容套件，並將標籤附加至需要簽署程式碼的電腦上。
 
@@ -453,7 +448,7 @@ GitHub 上的[產生新的 GPG 金鑰](https://help.github.com/en/articles/gener
 GuestConfiguration 代理程式預期憑證公開金鑰會出現在 Linux 電腦上的 `/usr/local/share/ca-certificates/extra` 路徑中。 若要讓節點驗證已簽署的內容，請先在電腦上安裝憑證公開金鑰，再套用自訂原則。 此流程可使用 VM 內的任何技術、或使用 Azure 原則來完成。 請參閱[這裡](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)的範例範本。
 Key Vault 存取原則必須允許計算資源提供者在部署期間存取憑證。 如需詳細步驟，請參閱[在 Azure Resource Manager 中設定虛擬機器的 Key Vault](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)。
 
-發佈內容之後，請將標籤 (名稱為 `GuestConfigPolicyCertificateValidation` 且值為 `enabled`) 附加至需要程式碼簽署的所有虛擬機器。 如需如何使用 Azure 原則大規模傳遞標籤的詳細說明，請參閱[標籤範例](../samples/built-in-policies.md#tags)。 備妥此標籤後，使用 `New-GuestConfigurationPolicy` Cmdlet 產生的原則定義就會透過客體設定Extension來啟用需求。
+發佈內容之後，請將標籤 (名稱為 `GuestConfigPolicyCertificateValidation` 且值為 `enabled`) 附加至需要程式碼簽署的所有虛擬機器。 如需如何使用 Azure 原則大規模傳遞標籤的詳細說明，請參閱[標籤範例](../samples/built-in-policies.md#tags)。 備妥此標籤後，使用 `New-GuestConfigurationPolicy` Cmdlet 產生的原則定義就會透過客體設定延伸模組來啟用需求。
 
 ## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>針對客體設定原則指派進行疑難排解 (預覽)
 

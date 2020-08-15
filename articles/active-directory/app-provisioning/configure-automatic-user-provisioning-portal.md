@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7e7f8ded24e71fec8ed6bfbc78f9057ddb98dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781985"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234834"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 入口網站中管理企業應用程式的使用者帳戶佈建
 
 本文描述針對受支援應用程式管理自動使用者帳戶佈建和解除佈建的一般步驟。 *使用者帳戶佈建*是指在應用程式的本機使用者設定檔儲存中建立、更新及/或停用使用者帳戶記錄的動作。 大部分雲端和 SaaS 應用程式都會在使用者的本機使用者設定檔儲存中儲存使用者角色和權限，而這類使用者記錄「必須」存在於使用者本機存放區中，才能讓單一登入和存取運作。 如需深入了解自動使用者佈建，請參閱[使用 Azure Active Directory 對 SaaS 應用程式的自動使用者佈建和解除佈建](user-provisioning.md)。
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) 資源庫包含數千個預先整合的應用程式，且能夠搭配 Azure AD 使用自動佈建。 建議先在[如何整合 SaaS 應用程式與 Azure Active Directory 教學課程清單](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)中尋找應用程式特定的佈建設定教學課程。 您或許可找到設定應用程式和 Azure AD 來建立佈建連線的逐步指引。
+> Azure Active Directory (Azure AD) 資源庫包含數千個預先整合的應用程式，且能夠搭配 Azure AD 使用自動佈建。 建議先在[如何整合 SaaS 應用程式與 Azure Active Directory 教學課程清單](../saas-apps/tutorial-list.md)中尋找應用程式特定的佈建設定教學課程。 您或許可找到設定應用程式和 Azure AD 來建立佈建連線的逐步指引。
 
 ## <a name="finding-your-apps-in-the-portal"></a>在入口網站中尋找您的應用程式
 
@@ -85,4 +85,4 @@ ms.locfileid: "84781985"
 
 將 [佈建狀態] 變更為 [關閉] 以暫停佈建服務。 在此狀態下，Azure 不會建立、更新或移除應用程式中的任何使用者或群組物件。 將狀態變更回 [開啟]，服務就會從中斷處繼續進行。
 
-[清除目前狀態並重新啟動同步] 會觸發初始週期。 服務接著會再次評估來源系統中的所有使用者，並判斷這些使用者是否在佈建範圍內。 當應用程式目前在隔離中，或您需要變更屬性對應時，這會很有幫助。 請注意，由於需要評估的物件數目，初始週期需要比一般累加週期花費更長的時間才能完成。 您可在[這裡](application-provisioning-when-will-provisioning-finish-specific-user.md)深入了解初始和累加週期的效能。 
+[清除目前狀態並重新啟動同步] 會觸發初始週期。 服務接著會再次評估來源系統中的所有使用者，並判斷這些使用者是否在佈建範圍內。 當應用程式目前在隔離中，或您需要變更屬性對應時，這會很有幫助。 請注意，由於需要評估的物件數目，初始週期需要比一般累加週期花費更長的時間才能完成。 您可在[這裡](application-provisioning-when-will-provisioning-finish-specific-user.md)深入了解初始和累加週期的效能。

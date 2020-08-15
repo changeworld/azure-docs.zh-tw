@@ -11,20 +11,20 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0f7571cf9f8d355330c4acf425e38ce215e840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68419c33286457a770a9988f1f00cc0b5e1f91bc
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050874"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235293"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>使用 Azure Active Directory 密碼保護排除不正確的密碼
 
-有很多安全性指引，建議您不要在多個位置使用相同的密碼，讓它變得複雜，以及避免簡單的密碼，例如*Password123*。 您可以為使用者提供[如何選擇密碼的指引](https://www.microsoft.com/research/publication/password-guidance)，但通常還是會使用弱式或不安全的密碼。 Azure AD 密碼保護會偵測並封鎖已知的弱式密碼及其變體，同時也會封鎖貴組織特定的其他弱式詞彙。
+有很多安全性指引，建議您不要在多個位置使用相同的密碼，讓它變得複雜，以及避免簡單的密碼，例如 *Password123*。 您可以為使用者提供 [如何選擇密碼的指引](https://www.microsoft.com/research/publication/password-guidance)，但通常還是會使用弱式或不安全的密碼。 Azure AD 密碼保護會偵測並封鎖已知的弱式密碼及其變體，同時也會封鎖貴組織特定的其他弱式詞彙。
 
-使用 Azure AD 密碼保護時，預設的全域禁用密碼清單會自動套用至所有雲端使用者。 若要支援您自己的商務和安全性需求，您可以在自訂的禁用密碼清單中定義專案。 當使用者變更或重設其密碼時，系統會檢查這些禁用的密碼清單，以強制使用強式密碼。
+使用 Azure AD 密碼保護時，預設的全域禁用密碼清單會自動套用至 Azure AD 租使用者中的所有使用者。 若要支援您自己的商務和安全性需求，您可以在自訂的禁用密碼清單中定義專案。 當使用者變更或重設其密碼時，系統會檢查這些禁用的密碼清單，以強制使用強式密碼。
 
-您應該使用[Azure 多重要素驗證](concept-mfa-howitworks.md)之類的其他功能，而不只是依賴 Azure AD 密碼保護所強制執行的強式密碼。 如需針對登入事件使用多層安全性的詳細資訊，請參閱[您的 Pa $ $word 並不重要](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)。
+您應該使用 [Azure 多重要素驗證](concept-mfa-howitworks.md)之類的其他功能，而不只是依賴 Azure AD 密碼保護所強制執行的強式密碼。 如需針對登入事件使用多層安全性的詳細資訊，請參閱 [您的 Pa $ $word 並不重要](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)。
 
 > [!IMPORTANT]
 > 本概念性文章會向系統管理員說明 Azure AD 密碼保護的運作方式。 如果您是已註冊自助式密碼重設的使用者，而且需要取回您的帳戶，請移至 [https://aka.ms/sspr](https://aka.ms/sspr) 。
@@ -33,35 +33,35 @@ ms.locfileid: "87050874"
 
 ## <a name="global-banned-password-list"></a>全域禁用密碼清單
 
-Azure AD Identity Protection 小組會持續分析 Azure AD 的安全性遙測資料，尋找經常使用的弱式或洩露密碼。 具體而言，分析會尋找通常用來做為弱式密碼基礎的基本詞彙。 找到弱式詞彙時，會將它們新增至*全域禁用密碼清單*。 全域禁用密碼清單的內容不是以任何外部資料源為基礎，而是在 Azure AD 安全性遙測和分析的結果上。
+Azure AD Identity Protection 小組會持續分析 Azure AD 的安全性遙測資料，尋找經常使用的弱式或洩露密碼。 具體而言，分析會尋找通常用來做為弱式密碼基礎的基本詞彙。 找到弱式詞彙時，會將它們新增至 *全域禁用密碼清單*。 全域禁用密碼清單的內容不是以任何外部資料源為基礎，而是在 Azure AD 安全性遙測和分析的結果上。
 
 當 Azure AD 租使用者中的任何使用者變更或重設密碼時，會使用目前版本的全域禁用密碼清單來驗證密碼的強度。 這項驗證檢查會為所有 Azure AD 客戶帶來更強的密碼。
 
-全域禁用密碼清單會自動套用至 Azure AD 租使用者中的所有雲端使用者。 不需要啟用或設定，且無法停用。
+全域禁用密碼清單會自動套用至 Azure AD 租使用者中的所有使用者。 不需要啟用或設定，且無法停用。 當使用者透過 Azure AD 變更或重設自己的密碼時，就會套用此全域禁用密碼清單。
 
 > [!NOTE]
 > 網路罪犯也會在其攻擊中使用類似的策略，以識別常見的弱式密碼和變化。 為了提升安全性，Microsoft 不會發佈全域禁用密碼清單的內容。
 
 ## <a name="custom-banned-password-list"></a>自訂禁用密碼清單
 
-有些組織想要改善安全性，並在全域禁用密碼清單之上新增自己的自訂專案。 若要新增您自己的專案，您可以使用*自訂的禁用密碼清單*。 新增至自訂禁用密碼清單的條款應該著重于組織特定的詞彙，例如下列範例：
+有些組織想要改善安全性，並在全域禁用密碼清單之上新增自己的自訂專案。 若要新增您自己的專案，您可以使用 *自訂的禁用密碼清單*。 新增至自訂禁用密碼清單的條款應該著重于組織特定的詞彙，例如下列範例：
 
 - 品牌名稱
 - 產品名稱
 - 位置，例如公司總部
-- 公司特定的內部詞彙
+- 公司特有的內部字詞
 - 具有特定公司意義的縮寫
 
 當條款新增至自訂禁用密碼清單時，會與全域禁用密碼清單中的條款結合。 然後，密碼變更或重設事件會根據這些禁用密碼清單的組合來進行驗證。
 
 > [!NOTE]
-> 自訂的禁用密碼清單限制為最多1000個詞彙。 它不是專門用來封鎖非常大的密碼清單。
+> 自訂禁用密碼清單的上限為 1000 個字詞。 它不是專門用來封鎖非常大的密碼清單。
 >
-> 若要充分利用自訂禁用密碼清單的優點，請先瞭解[如何評估密碼](#how-are-passwords-evaluated)，再將詞彙新增至自訂禁用清單。 這種方法可讓您有效地偵測並封鎖大量弱式密碼及其變體。
+> 若要充分利用自訂禁用密碼清單的優點，請先瞭解 [如何評估密碼](#how-are-passwords-evaluated) ，再將詞彙新增至自訂禁用清單。 這種方法可讓您有效地偵測並封鎖大量弱式密碼及其變體。
 
 ![在 [驗證方法] 下修改自訂禁用密碼清單](./media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png)
 
-讓我們來看一個名為*Contoso*的客戶。 該公司以倫敦為基礎，並製作名為*Widget*的產品。 針對此範例客戶，嘗試封鎖這些詞彙的特定變化（例如下列各項）會造成浪費，而且較不安全：
+讓我們來看一個名為 *Contoso*的客戶。 該公司以倫敦為基礎，並製作名為 *Widget*的產品。 針對此範例客戶，嘗試封鎖這些詞彙的特定變化（例如下列各項）會造成浪費，而且較不安全：
 
 - "Contoso！ 1"
 - "Contoso@London"
@@ -99,9 +99,9 @@ Azure AD 密碼保護會有效率地封鎖可能在密碼噴灑攻擊中使用�
 
 ## <a name="on-premises-hybrid-scenarios"></a>內部部署混合式案例
 
-許多組織都具有混合式身分識別模型，其中包含內部部署 Active Directory Domain Services （AD DS）環境。 若要將 Azure AD 密碼保護的安全性優點擴充至您的 AD DS 環境，您可以在內部部署伺服器上安裝元件。 這些代理程式需要內部部署 AD DS 環境中的密碼變更事件，以符合與僅限雲端使用者相同的密碼原則。
+許多組織都有混合式身分識別模型，其中包含內部部署 Active Directory Domain Services (AD DS) 環境中。 若要將 Azure AD 密碼保護的安全性優點擴充至您的 AD DS 環境，您可以在內部部署伺服器上安裝元件。 這些代理程式需要內部部署 AD DS 環境中的密碼變更事件，以符合 Azure AD 中的相同密碼原則。
 
-如需詳細資訊，請參閱[強制執行 AD DS 的 Azure AD 密碼保護](concept-password-ban-bad-on-premises.md)。
+如需詳細資訊，請參閱 [強制執行 AD DS 的 Azure AD 密碼保護](concept-password-ban-bad-on-premises.md)。
 
 ## <a name="how-are-passwords-evaluated"></a>如何評估密碼
 
@@ -145,9 +145,9 @@ Azure AD 密碼保護會有效率地封鎖可能在密碼噴灑攻擊中使用�
 * 已禁止 "abcdef" 密碼。
 * 使用者嘗試將其密碼變更為下列其中一項：
 
-   * ' abcdeg '-*最後一個字元已從 ' f ' 變更為 ' g '*
+   * ' abcdeg '- *最後一個字元已從 ' f ' 變更為 ' g '*
    * ' abcdefg '- *' g ' 附加至結尾*
-   * ' abcde '-*尾端 ' f ' 已從結尾刪除*
+   * ' abcde '- *尾端 ' f ' 已從結尾刪除*
 
 * 上述每個密碼都不會特別符合禁用的密碼 "abcdef"。
 
@@ -175,7 +175,7 @@ Azure AD 密碼保護會有效率地封鎖可能在密碼噴灑攻擊中使用�
 
 1. 在使用者密碼中找到的每個禁用密碼都會提供一個點。
 1. 每個剩餘的唯一字元會得到一分。
-1. 密碼必須至少要有五（5）個點才會被接受。
+1. 密碼至少必須有五個 (5) 點才會被接受。
 
 在接下來的兩個範例案例中，Contoso 會使用 Azure AD 密碼保護，並在其自訂禁用密碼清單中包含 "Contoso"。 我們也假設「空白」位於全域清單上。
 
@@ -187,7 +187,7 @@ Azure AD 密碼保護會有效率地封鎖可能在密碼噴灑攻擊中使用�
 
     *[contoso] + [空白] + [1] + [2] = 4 點*
 
-* 因為此密碼會在五個（5）點底下，所以會遭到拒絕。
+* 因為此密碼在五個 (5) 點，所以會遭到拒絕。
 
 讓我們看一下稍微不同的範例，示範密碼中額外的複雜性如何建立要接受的必要點數。 在下列範例案例中，使用者將其密碼變更為 " ContoS0Bl@nkf9 ！"：
 
@@ -197,7 +197,7 @@ Azure AD 密碼保護會有效率地封鎖可能在密碼噴灑攻擊中使用�
 
     *[contoso] + [空白] + [f] + [9] + [！] = 5 點*
 
-* 因為此密碼至少為五（5）個點，所以已接受。
+* 因為此密碼至少是五個 (5) 點，所以已接受。
 
 > [!IMPORTANT]
 > 「禁用密碼」演算法以及全域禁用密碼清單，可以隨時在 Azure 中根據持續的安全性分析和研究來進行變更。
@@ -229,4 +229,4 @@ Azure AD 密碼保護會有效率地封鎖可能在密碼噴灑攻擊中使用�
 > [!div class="nextstepaction"]
 > [教學課程：設定自訂的禁用密碼](tutorial-configure-custom-password-protection.md)
 
-然後，您也可以[啟用內部部署 Azure AD 密碼保護](howto-password-ban-bad-on-premises-deploy.md)。
+然後，您也可以 [啟用內部部署 Azure AD 密碼保護](howto-password-ban-bad-on-premises-deploy.md)。

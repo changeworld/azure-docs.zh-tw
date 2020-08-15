@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809998"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236092"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>應用程式閘道相關的常見問題集
 
@@ -259,7 +259,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="what-certificates-does-application-gateway-support"></a>應用程式閘道支援哪些憑證？
 
-應用程式閘道支援自我簽署憑證、憑證授權單位 (CA) 憑證、擴充功能驗證 (EV) 憑證和萬用字元憑證。
+應用程式閘道支援自我簽署憑證、憑證授權單位單位 (CA) 憑證、擴充驗證 (EV) 憑證、多網域 (SAN) 憑證和萬用字元憑證。
 
 ### <a name="what-cipher-suites-does-application-gateway-support"></a>應用程式閘道支援哪些加密套件？
 
@@ -344,9 +344,9 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 * [Bug 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [Bug 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-根據產業的合規性需求，CA 廠商開始撤銷不符合規範的 Ca，併發行符合規範的 Ca，要求客戶重新發行其憑證。Microsoft 與這些廠商密切合作，以將 Azure 服務的潛在影響降至最低，**但您自行發行的憑證或用於「自備憑證」 (BYOC) 案例的憑證，仍有意外撤銷的風險**。
+根據產業的合規性需求，CA 廠商開始撤銷不符合規範的 Ca，併發行符合規範的 Ca，要求客戶重新發行其憑證。Microsoft 與這些廠商密切合作，以將 Azure 服務的潛在影響降至最低， **但您自行發行的憑證或用於「自備憑證」 (BYOC) 案例的憑證，仍有意外撤銷的風險**。
 
-若要檢查您的應用程式所使用的憑證是否已被撤銷，請參考[DigiCert 的公告](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement)和[憑證撤銷追蹤](https://misissued.com/#revoked)器。 如果您的憑證已撤銷或將被撤銷，您就必須向應用程式中使用的 CA 廠商要求新憑證。 若要避免因為憑證意外撤銷而中斷應用程式的可用性，或要更新已撤銷的憑證，請參閱我們的 Azure 更新文章，以取得支援 BYOC 之各種 Azure 服務的補救連結：https://azure.microsoft.com/updates/certificateauthorityrevocation/
+若要檢查您的應用程式所使用的憑證是否已被撤銷，請參考 [DigiCert 的公告](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement) 和 [憑證撤銷追蹤](https://misissued.com/#revoked)器。 如果您的憑證已撤銷或將被撤銷，您就必須向應用程式中使用的 CA 廠商要求新憑證。 若要避免因為憑證意外撤銷而中斷應用程式的可用性，或要更新已撤銷的憑證，請參閱我們的 Azure 更新文章，以取得支援 BYOC 之各種 Azure 服務的補救連結： https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
 如需應用程式閘道特定資訊，請參閱下方-
 
@@ -359,33 +359,33 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 若要避免因為此問題而造成應用程式中斷，或重新發行已被撤銷的 CA，您必須採取下列動作： 
 
 1.  請洽詢您的憑證提供者，以瞭解如何重新發行您的憑證
-2.  一旦重新發出，請使用完整[的信任鏈](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (分葉、中繼、根憑證) ，更新 Azure 應用程式 GATEWAY/WAF 上的憑證。 根據您使用憑證的位置，在應用程式閘道的接聽程式或 HTTP 設定中，遵循下列步驟來更新憑證，並查看所述的檔連結以取得詳細資訊。
+2.  一旦重新發出，請使用完整 [的信任鏈](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (分葉、中繼、根憑證) ，更新 Azure 應用程式 GATEWAY/WAF 上的憑證。 根據您使用憑證的位置，在應用程式閘道的接聽程式或 HTTP 設定中，遵循下列步驟來更新憑證，並查看所述的檔連結以取得詳細資訊。
 3.  更新您的後端應用程式伺服器，以使用重新發行的憑證。 根據您使用的後端伺服器，您的憑證更新步驟可能會有所不同。 請查看廠商提供的檔。
 
 若要更新接聽程式中的憑證：
 
-1.  在[Azure 入口網站](https://portal.azure.com/)中，開啟您的應用程式閘道資源
+1.  在 [Azure 入口網站](https://portal.azure.com/)中，開啟您的應用程式閘道資源
 2.  開啟與您的憑證相關聯的接聽程式設定
 3.  按一下 [更新或編輯選取的憑證]
 4.  使用密碼上傳新的 PFX 憑證，然後按一下 [儲存]
-5.  存取網站，並確認網站是否如預期般運作。如需詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/application-gateway/renew-certificates)的檔。
+5.  存取網站，並確認網站是否如預期般運作。如需詳細資訊，請參閱 [這裡](https://docs.microsoft.com/azure/application-gateway/renew-certificates)的檔。
 
 如果您要從應用程式閘道接聽程式中的 Azure KeyVault 參考憑證，建議您遵循下列步驟進行快速變更–
 
 1.  在 [ [Azure 入口網站](https://portal.azure.com/)中，流覽至已與應用程式閘道相關聯的 Azure KeyVault 設定
-2.  在您的存放區中新增/匯入重新頒發證書。 如需如何進行的詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal)的檔。
+2.  在您的存放區中新增/匯入重新頒發證書。 如需如何進行的詳細資訊，請參閱 [這裡](https://docs.microsoft.com/azure/key-vault/certificates/quick-create-portal) 的檔。
 3.  憑證匯入之後，流覽至您的應用程式閘道接聽程式設定，然後在 [從 Key Vault 選擇憑證] 底下，按一下 [憑證] 下拉式選，然後選擇最近新增的憑證
-4.  按一下 [儲存] 以取得應用程式閘道上具有 Key Vault 憑證之 TLS 終止的詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)的檔。
+4.  按一下 [儲存] 以取得應用程式閘道上具有 Key Vault 憑證之 TLS 終止的詳細資訊，請參閱 [這裡](https://docs.microsoft.com/azure/application-gateway/key-vault-certs)的檔。
 
 
 若要更新 HTTP 設定中的憑證：
 
 如果您使用應用程式閘道/WAF 服務的 V1 SKU，則必須將新憑證上傳為後端驗證憑證。
-1.  在[Azure 入口網站](https://portal.azure.com/)中，開啟您的應用程式閘道資源
+1.  在 [Azure 入口網站](https://portal.azure.com/)中，開啟您的應用程式閘道資源
 2.  開啟與您的憑證相關聯的 HTTP 設定
 3.  按一下 [新增憑證] 並上傳重新頒發證書，然後按一下 [儲存]
 4.  您之後可以按一下 [...] 來移除舊憑證 舊憑證旁的 [選項] 按鈕，然後選取 [刪除]，再按一下 [儲存]。
-如需詳細資訊，請參閱[這裡](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers)的檔。
+如需詳細資訊，請參閱 [這裡](https://docs.microsoft.com/azure/application-gateway/end-to-end-ssl-portal#add-authenticationtrusted-root-certificates-of-back-end-servers)的檔。
 
 如果您使用應用程式閘道/WAF 服務的 V2 SKU，則不需要上傳 HTTP 設定中的新憑證，因為 V2 SKU 會使用「信任的根憑證」，而在此不需要採取任何動作。
 
@@ -396,7 +396,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 Kubernetes 可讓您建立 `deployment` 和 `service` 資源，以在叢集內部公開一組 Pod。 為了對外公開同樣的服務，已定義一項 [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) 資源，可提供負載平衡、TLS 終止和以名稱為基礎的虛擬裝載。
 為了滿足此 `Ingress` 資源，需要輸入控制器，以接聽 `Ingress` 資源的任何變更，並設定負載平衡器原則。
 
-應用程式閘道輸入控制器 (AGIC) 允許使用[Azure 應用程式閘道](https://azure.microsoft.com/services/application-gateway/)作為[Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/)的輸入，也稱為 AKS 叢集。
+應用程式閘道輸入控制器 (AGIC) 允許使用 [Azure 應用程式閘道](https://azure.microsoft.com/services/application-gateway/) 作為 [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) 的輸入，也稱為 AKS 叢集。
 
 ### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>單一輸入控制器執行個體可以管理多個應用程式閘道嗎？
 
@@ -404,7 +404,7 @@ Kubernetes 可讓您建立 `deployment` 和 `service` 資源，以在叢集內�
 
 ### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>為什麼我的 AKS 叢集搭配 kubenet 無法使用 AGIC？
 
-AGIC 會嘗試自動建立路由表資源與應用程式閘道子網的關聯，但因為沒有 AGIC 的許可權，所以可能無法執行此動作。 如果 AGIC 無法建立路由表與應用程式閘道子網的關聯，AGIC 記錄中將會有錯誤指出，在此情況下，您必須手動將 AKS 叢集所建立的路由表與應用程式閘道的子網建立關聯。 如需詳細資訊，請參閱[這裡](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)的指示。
+AGIC 會嘗試自動建立路由表資源與應用程式閘道子網的關聯，但因為沒有 AGIC 的許可權，所以可能無法執行此動作。 如果 AGIC 無法建立路由表與應用程式閘道子網的關聯，AGIC 記錄中將會有錯誤指出，在此情況下，您必須手動將 AKS 叢集所建立的路由表與應用程式閘道的子網建立關聯。 如需詳細資訊，請參閱 [這裡](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)的指示。
 
 ### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>我可以在不同的虛擬網路中連接我的 AKS 叢集和應用程式閘道嗎？ 
 
@@ -416,7 +416,7 @@ AGIC 會嘗試自動建立路由表資源與應用程式閘道子網的關聯，
 
 ### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>何時應該使用附加元件與 Helm 部署？ 
 
-請參閱這裡透過 Helm 部署的 AGIC 與在[這裡](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)部署為 AKS 附加元件的差異，特別是記載 (s) 的案例是透過 Helm 部署的 AGIC 所支援，而不是 AKS 附加元件。 一般來說，透過 Helm 進行部署，可讓您在正式發行之前，先測試搶鮮版（Beta）功能和發行候選版本。 
+請參閱這裡透過 Helm 部署的 AGIC 與在 [這裡](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)部署為 AKS 附加元件的差異，特別是記載 (s) 的案例是透過 Helm 部署的 AGIC 所支援，而不是 AKS 附加元件。 一般來說，透過 Helm 進行部署，可讓您在正式發行之前，先測試搶鮮版（Beta）功能和發行候選版本。 
 
 ### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>我可以控制要將哪個版本的 AGIC 與附加元件一起部署？
 

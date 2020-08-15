@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40809fae312401cb62fabb10140b9bb7f60e3715
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743570"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234766"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>針對常見路由問題進行疑難排解
 
@@ -29,17 +29,17 @@ ms.locfileid: "84743570"
 
 - 傳送至後端的一般要求若未通過 Front，就會繼續進行，但透過 Front 大門會產生503錯誤回應。
 
-- Front 門板的失敗會在幾秒後顯示（通常約在30秒之後）
+- Front 門板的失敗會在幾秒後顯示 (通常會在30秒後) 
 
 ### <a name="cause"></a>原因
 
-當您的後端超過超時設定（預設值為30秒），以接收來自 Front 的要求，或超出此超時值來傳送來自 Front 的要求的回應時，就會發生此徵兆。 
+當您的後端超過超時設定時，就會發生此徵兆 (預設值為30秒，) 接收來自 Front 的要求，或超出此超時值，以將回應傳送至來自 Front 門的要求。 
 
 ### <a name="troubleshooting-steps"></a>疑難排解步驟
 
-- 直接將要求傳送給您的後端（不需要透過 Front），並查看您的後端需要什麼時間來回應。
+- 直接將要求傳送給您的後端 (而不需要透過 Front) ，並查看您的後端需要多久的時間才會回應。
 - 透過前門傳送要求，並查看您是否看到任何503回應。 如果沒有，則這可能不是超時問題。 請聯絡支援人員。
-- 如果透過 Front 門板進行，會產生503錯誤回應碼，然後設定您的前門的 sendReceiveTimeout 欄位，將預設的超時時間延長為4分鐘（240秒）。 設定位於底下 `backendPoolSettings` ，而且會呼叫 `sendRecvTimeoutSeconds` 。 
+- 如果透過 Front 門板進行，會產生503錯誤回應碼，然後設定 Front sendReceiveTimeout 欄位以將預設的超時時間延長為4分鐘， (240 秒) 。 設定位於底下 `backendPoolSettings` ，而且會呼叫 `sendRecvTimeoutSeconds` 。 
 
 ## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>傳送至自訂網域的要求會傳回400狀態碼
 
@@ -80,7 +80,7 @@ ms.locfileid: "84743570"
 這個徵狀的可能原因有幾個，包括︰
 
 - 後端不是公開的後端，因此不會顯示在 Front 中。
-- 後端設定錯誤，這會導致前門傳送錯誤的要求（也就是，您的後端只接受 HTTP，但您並未取消核取允許 HTTPS，因此 Front 會嘗試轉送 HTTPS 要求）。
+- 後端設定錯誤，這會導致前門傳送錯誤的要求 (也就是說，您的後端只接受 HTTP，但未核取 [允許 HTTPS]，因此 Front 門會嘗試將 HTTPS 要求轉送) 。
 - 後端會拒絕已透過要求轉送至後端的主機標頭。
 - 尚未完整部署後端的組態。
 
@@ -98,11 +98,11 @@ ms.locfileid: "84743570"
 
 
 3. 檢查路由規則設定
-    - 瀏覽到應會從有問題的前端主機名稱路由傳送至後端集區的路由規則。 確定接受的通訊協定設定正確，若非如此，請確定已正確設定 Front Door 在轉送要求時會使用的通訊協定。 [_接受的通訊協定_] 欄位會決定 front 門板應接受的要求，而_轉送通訊協定_則決定 front 門板應使用哪一個通訊協定來將要求轉送至後端。
+    - 瀏覽到應會從有問題的前端主機名稱路由傳送至後端集區的路由規則。 確定接受的通訊協定設定正確，若非如此，請確定已正確設定 Front Door 在轉送要求時會使用的通訊協定。 [ _接受的通訊協定_ ] 欄位會決定 front 門板應接受的要求，而 _轉送通訊協定_ 則決定 front 門板應使用哪一個通訊協定來將要求轉送至後端。
          - 例如，如果後端只接受 HTTP 要求，則下列組態會有效：
             - [接受的通訊協定]__ 為 HTTP 和 HTTPS。 [轉送通訊協定]__ 為 HTTP。 比對要求無法運作，因為 HTTPS 是允許的通訊協定，而如果要求以 HTTPS 形式傳入，Front Door 會嘗試使用 HTTPS 轉送它。
 
-            - [接受的通訊協定]__ 為 HTTP。 [轉送通訊協定]__ 為比對要求或 HTTPS。
+            - [接受的通訊協定]__ 為 HTTP。 _轉送通訊協定_ 可能符合要求或 HTTP。
 
     - 預設會停用 [URL 重寫]__，而如果您想要縮小您要提供的後端裝載資源範圍，則應該只使用此欄位。 停用時，Front Doo 會轉送它所接收的相同要求路徑。 此欄位可能設定不正確，而 Front Door 向無法使用的後端要求資源，因而傳回 HTTP 404 狀態碼。
 

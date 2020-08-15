@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445620"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235718"
 ---
 # <a name="how-provisioning-works"></a>佈建運作方式
 
@@ -44,7 +44,7 @@ Azure AD 佈建服務會使用 [SCIM 2.0 通訊協定](https://techcommunity.mic
 
 Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在設定應用程式的自動使用者佈建時，您必須輸入有效的認證。 您可以參考應用程式教學課程，以尋找應用程式的認證類型和需求。 在 Azure 入口網站中，您可以讓 Azure AD 使用提供的認證嘗試連線至應用程式的佈建應用程式，以測試認證。
 
-如果應用程式也設定了 SAML 型單一登入，Azure AD 的內部、每個應用程式的儲存體限制將是 1024 個位元組。 此限制包含所有憑證、祕密權杖、認證，以及與單一應用程式執行個體關聯的相關設定資料 (在 Azure AD 中也稱為服務主體記錄)。 在設定了 SAML 型單一登入時，用來簽署 SAML 權杖的憑證通常會耗用超過 50% 的空間。 您在使用者佈建設定期間輸入的任何其他項目 (秘密權杖、URI、通知電子郵件地址、使用者名稱和密碼) 都可能超過儲存體限制。 如需詳細資訊，請參閱[在設定使用者佈建期間儲存管理員認證時發生問題](../manage-apps/application-provisioning-config-problem-storage-limit.md)。
+如果應用程式也設定了 SAML 型單一登入，Azure AD 的內部、每個應用程式的儲存體限制將是 1024 個位元組。 此限制包含所有憑證、祕密權杖、認證，以及與單一應用程式執行個體關聯的相關設定資料 (在 Azure AD 中也稱為服務主體記錄)。 在設定了 SAML 型單一登入時，用來簽署 SAML 權杖的憑證通常會耗用超過 50% 的空間。 您在使用者佈建設定期間輸入的任何其他項目 (秘密權杖、URI、通知電子郵件地址、使用者名稱和密碼) 都可能超過儲存體限制。 如需詳細資訊，請參閱[在設定使用者佈建期間儲存管理員認證時發生問題](./application-provisioning-config-problem-storage-limit.md)。
 
 ## <a name="mapping-attributes"></a>對應屬性
 
@@ -54,7 +54,7 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 
 在設定佈建時，請務必檢視和設定屬性 (Attribute) 對應，以及定義哪些使用者 (或群組) 屬性 (Property) 會從 Azure AD 流向應用程式的工作流程。 請檢視並設定在兩個系統之間用來唯一識別和比對使用者/群組的比對屬性 (**使用此屬性來比對物件**)。
 
-您可以根據您的業務需求自訂預設的屬性對應。 因此，您可以變更或刪除現有的屬性對應，或建立新的屬性對應。 如需詳細資訊，請參閱[自訂 SaaS 應用程式的使用者佈建屬性對應](../manage-apps/customize-application-attributes.md)。
+您可以根據您的業務需求自訂預設的屬性對應。 因此，您可以變更或刪除現有的屬性對應，或建立新的屬性對應。 如需詳細資訊，請參閱[自訂 SaaS 應用程式的使用者佈建屬性對應](./customize-application-attributes.md)。
 
 當您設定佈建到 SaaS 應用程式時，您可以指定的其中一種屬性對應類型是運算式對應。 針對這些對應，您必須撰寫類似指令碼的運算式，以便將使用者的資料轉換為 SaaS 應用程式更能接受的格式。 如需詳細資訊，請參閱[撰寫屬性對應的運算式](functions-for-customizing-application-data.md)。
 
@@ -81,13 +81,13 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 
 ### <a name="b2b-guest-users"></a>B2B (來賓) 使用者
 
-您可以使用 Azure AD 使用者佈建服務，將 Azure AD 中的 B2B (或來賓) 使用者佈建到 SaaS 應用程式。 不過，若要讓 B2B 使用者使用 Azure AD 登入 SaaS 應用程式，SaaS 應用程式必須以特定方式設定其 SAML 型單一登入功能。 若想進一步了解如何設定 SaaS 應用程式以支援 B2B 使用者的登入，請參閱[設定適用於 B2B 共同作業的 SaaS 應用程式](../b2b/configure-saas-apps.md)。
+您可以使用 Azure AD 使用者佈建服務，將 Azure AD 中的 B2B (或來賓) 使用者佈建到 SaaS 應用程式。 不過，若要讓 B2B 使用者使用 Azure AD 登入 SaaS 應用程式，SaaS 應用程式必須以特定方式設定其 SAML 型單一登入功能。 若想進一步了解如何設定 SaaS 應用程式以支援 B2B 使用者的登入，請參閱[設定適用於 B2B 共同作業的 SaaS 應用程式](../external-identities/configure-saas-apps.md)。
 
 請注意，來賓使用者的 userPrincipalName 通常會儲存為 "alias#EXT#@domain.com"。 如果您的屬性對應中包含 userPrincipalName 作為來源屬性時，則會從 userPrincipalName 中去除 #EXT#。 如果需要有 #EXT# 存在，請將 userPrincipalName 取代為作為來源屬性的 originalUserPrincipalName。 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>佈建週期：初始和增量
 
-如果 Azure AD 是來源系統，則佈建服務會使用[使用差異查詢來追蹤 Microsoft Graph 資料中的變更](https://docs.microsoft.com/graph/delta-query-overview)，以監視使用者和群組。 佈建服務會先對來源系統和目標系統執行初始週期，後續再執行定期增量週期。
+如果 Azure AD 是來源系統，則佈建服務會使用[使用差異查詢來追蹤 Microsoft Graph 資料中的變更](/graph/delta-query-overview)，以監視使用者和群組。 佈建服務會先對來源系統和目標系統執行初始週期，後續再執行定期增量週期。
 
 ### <a name="initial-cycle"></a>初始週期
 
@@ -154,11 +154,11 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 
 ### <a name="quarantine"></a>隔離
 
-如果對目標系統進行的多數或所有呼叫持續因錯誤而失敗 (例如，管理員認證無效)，佈建作業就會進入「隔離」狀態。 在[佈建摘要報告](../manage-apps/check-status-user-account-provisioning.md)中會指出此狀態，或如果已在 Azure 入口網站中設定電子郵件通知，則會透過電子郵件指出。
+如果對目標系統進行的多數或所有呼叫持續因錯誤而失敗 (例如，管理員認證無效)，佈建作業就會進入「隔離」狀態。 在[佈建摘要報告](./check-status-user-account-provisioning.md)中會指出此狀態，或如果已在 Azure 入口網站中設定電子郵件通知，則會透過電子郵件指出。
 
 處於隔離狀態時，增量週期的頻率會逐漸降低成一天一次。
 
-在修正所有違規錯誤之後，佈建作業就會脫離隔離狀態，並開始下一個資料同步週期。 如果佈建作業處於隔離狀態超過四週，系統就會將它停用。 若要深入了解隔離狀態，請參閱[這裡](../manage-apps/application-provisioning-quarantine-status.md)。
+在修正所有違規錯誤之後，佈建作業就會脫離隔離狀態，並開始下一個資料同步週期。 如果佈建作業處於隔離狀態超過四週，系統就會將它停用。 若要深入了解隔離狀態，請參閱[這裡](./application-provisioning-quarantine-status.md)。
 
 ### <a name="how-long-provisioning-takes"></a>佈建時間長短
 
@@ -166,13 +166,13 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>如何判斷是否已正確佈建使用者
 
-使用者佈建服務所執行的所有作業，都會記錄在 Azure AD [佈建記錄 (預覽)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 中。 這些記錄包含對來源和目標系統所做的所有讀取和寫入作業，以及在每次作業期間讀取或寫入的使用者資料。 如需如何在 Azure 入口網站中讀取佈建記錄的相關資訊，請參閱[佈建報告指南](../manage-apps/check-status-user-account-provisioning.md)。
+使用者佈建服務所執行的所有作業，都會記錄在 Azure AD [佈建記錄 (預覽)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) 中。 這些記錄包含對來源和目標系統所做的所有讀取和寫入作業，以及在每次作業期間讀取或寫入的使用者資料。 如需如何在 Azure 入口網站中讀取佈建記錄的相關資訊，請參閱[佈建報告指南](./check-status-user-account-provisioning.md)。
 
 ## <a name="de-provisioning"></a>取消佈建
 
 當使用者不應再有存取權時，Azure AD 佈建服務會藉由取消佈建帳戶，將來源和目標系統保持同步。 
 
-當應用程式支援虛刪除（具有 active = false 的 update 要求）且發生下列任何事件時，Azure AD 布建服務會將應用程式中的使用者虛刪除：
+Azure AD 布建服務會在應用程式支援虛刪除時，虛刪除應用程式中的使用者， (update 要求使用 active = false) 併發生下列任何事件：
 
 * 在中 Azure AD 刪除使用者帳戶
 *   從應用程式取消指派使用者
@@ -190,8 +190,8 @@ Azure AD 連線至應用程式的使用者管理 API 時所需的認證。 在�
 
 [規劃自動使用者佈建部署](../app-provisioning/plan-auto-user-provisioning.md)
 
-[設定資源庫應用程式的佈建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+[設定資源庫應用程式的佈建](./configure-automatic-user-provisioning-portal.md)
 
 [在建立您自己的應用程式時建置 SCIM 端點並設定佈建](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[對設定使用者並將其佈建至應用程式時的問題進行疑難排解](../manage-apps/application-provisioning-config-problem.md)。
+[對設定使用者並將其佈建至應用程式時的問題進行疑難排解](./application-provisioning-config-problem.md)。

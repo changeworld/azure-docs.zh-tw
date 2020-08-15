@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d4cb24a89d19abb753e2be704dbad7fd5b2ddcad
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423604"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236551"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>在 Azure Active Directory 中大量建立使用者
 
@@ -34,6 +34,9 @@ Azure Active Directory (Azure AD) 支援大量使用者建立和刪除作業，�
 
 ![要上傳的試算表，以及說明每列與每行之用途與值的圖說文字](./media/users-bulk-add/create-template-example.png)
 
+> [!WARNING]
+> 如果您嘗試在 CSV 範本中只新增一個專案，您必須保留第3列，並將新的專案加入至資料列4。 
+
 ### <a name="csv-template-structure"></a>CSV 範本結構
 
 下載的 CSV 範本中的列如下所示：
@@ -48,7 +51,7 @@ Azure Active Directory (Azure AD) 支援大量使用者建立和刪除作業，�
 - 首先會列出必要的欄。
 - 我們不建議您將新的欄新增至範本。 您額外新增的任何欄都會被忽略，且不會進行處理。
 - 我們建議您盡可能頻繁下載最新版的 CSV 範本。
-- 請務必檢查任何欄位之前/之後沒有任何非預期的空白字元。 對於**使用者主體名稱**，有這類空白字元會導致匯入失敗。
+- 請務必檢查任何欄位之前/之後沒有任何非預期的空白字元。 對於 **使用者主體名稱**，有這類空白字元會導致匯入失敗。
 
 ## <a name="to-create-users-in-bulk"></a>大量建立使用者
 
