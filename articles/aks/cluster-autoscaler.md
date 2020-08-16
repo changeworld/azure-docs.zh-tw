@@ -4,12 +4,12 @@ description: 了解如何使用叢集自動調整程式，根據 Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: af09d594dd745b64901965499df4245fa2e6a85f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130829"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257520"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自動調整叢集以符合 Azure Kubernetes Service (AKS) 的應用程式需求
 
@@ -20,12 +20,6 @@ ms.locfileid: "87130829"
 ## <a name="before-you-begin"></a>開始之前
 
 本文需要您執行 Azure CLI 2.0.76 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
-
-## <a name="limitations"></a>限制
-
-您建立和管理可使用叢集自動調整程式的 AKS 叢集時，需遵守下列限制：
-
-* 無法使用 HTTP 應用程式路由附加元件。
 
 ## <a name="about-the-cluster-autoscaler"></a>關於叢集自動調整程式
 
@@ -44,7 +38,7 @@ ms.locfileid: "87130829"
 
 如需更多叢集自動調整程式可能無法縮小的相關資訊，請參閱[哪些類型的 Pod 可以防止叢集自動調整程式移除節點？][autoscaler-scaledown](英文)。
 
-叢集自動調整程式會使用啟動參數來處理調整事件和資源閾值之間的時間間隔。 如需叢集自動調整程式所使用之參數的詳細資訊，請參閱[什麼是叢集自動調整程式參數？][autoscaler-parameters]
+叢集自動調整程式會使用啟動參數來處理調整事件和資源閾值之間的時間間隔。 如需叢集自動調整程式所使用之參數的詳細資訊，請參閱 [使用自動調整程式設定檔](#using-the-autoscaler-profile)。
 
 叢集和水平 Pod 自動調整程式可以搭配運作，而且通常會同時部署在一個叢集中。 當兩者組合時，水平 Pod 自動調整程式著重於執行符合應用程式需求的 Pod 數目。 叢集自動調整程式著重於執行支援排程 Pod 所需的節點數目。
 
@@ -80,12 +74,12 @@ az aks create \
 
 ## <a name="update-an-existing-aks-cluster-to-enable-the-cluster-autoscaler"></a>更新現有的 AKS 叢集以啟用叢集自動調整程式
 
-使用[az aks update][az-aks-update]命令，在現有叢集的節點集區上啟用和設定叢集自動調整程式。 使用 *--enable-cluster-自動調整程式*參數，並指定節點 *--min-count*和 *--max 計數*。
+使用 [az aks update][az-aks-update] 命令，在現有叢集的節點集區上啟用和設定叢集自動調整程式。 使用 *--enable-cluster-自動調整程式* 參數，並指定節點 *--min-count* 和 *--max 計數*。
 
 > [!IMPORTANT]
 > 叢集自動調整程式是一項 Kubernetes 元件。 雖然 AKS 叢集會將虛擬機器擴展集用於節點，但請勿手動在 Azure 入口網站中或使用 Azure CLI 啟用或編輯擴展集自動調整的設定。 請讓 Kubernetes 叢集自動調整程式管理所需的調整設定。 如需詳細資訊，請參閱[我可以在節點資源群組中修改 AKS 資源嗎？][aks-faq-node-resource-group]
 
-下列範例會更新現有的 AKS 叢集，以在叢集的節點集區上啟用叢集自動調整程式，並設定最少*1*個和最多*3*個節點：
+下列範例會更新現有的 AKS 叢集，以在叢集的節點集區上啟用叢集自動調整程式，並設定最少 *1* 個和最多 *3* 個節點：
 
 ```azurecli-interactive
 az aks update \
@@ -165,7 +159,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-您在叢集中的節點集區上啟用叢集自動調整程式時，這些叢集也會使用叢集自動調整程式設定檔。 例如:
+您在叢集中的節點集區上啟用叢集自動調整程式時，這些叢集也會使用叢集自動調整程式設定檔。 例如：
 
 ```azurecli-interactive
 az aks nodepool update \

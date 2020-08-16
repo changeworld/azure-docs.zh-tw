@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 08/14/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ef42dbb4cad1d40a35af28845baa402763acfc9b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6cf9f7a005a80ab34e05ee293c20209e9d0b3f01
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119618"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258577"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 授權碼流程
 
@@ -36,7 +36,7 @@ OAuth 2.0 授權碼授與可用於裝置上所安裝的應用程式中，以存�
 
 ## <a name="redirect-uri-setup-required-for-single-page-apps"></a>單一頁面應用程式所需的重新導向 URI 設定
 
-單頁應用程式的授權碼流程需要一些額外的設定。  依照指示來[建立單一頁面應用程式](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow)，以正確地將重新導向 URI 標示為已針對 CORS 啟用。 若要更新現有的重新導向 URI 以啟用 CORS，請開啟資訊清單編輯器，並 `type` `spa` 在區段中將重新導向 uri 的欄位設定為 `replyUrlsWithType` 。 您也可以在 [驗證] 索引標籤的 [Web] 區段中，按一下 [重新導向 URI]，然後選取您想要使用授權碼流程遷移到的 Uri。
+單頁應用程式的授權碼流程需要一些額外的設定。  依照指示來 [建立單一頁面應用程式](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow) ，以正確地將重新導向 URI 標示為已針對 CORS 啟用。 若要更新現有的重新導向 URI 以啟用 CORS，請開啟資訊清單編輯器，並 `type` `spa` 在區段中將重新導向 uri 的欄位設定為 `replyUrlsWithType` 。 您也可以在 [驗證] 索引標籤的 [Web] 區段中，按一下 [重新導向 URI]，然後選取您想要使用授權碼流程遷移到的 Uri。
 
 重新 `spa` 導向類型與隱含流程具有回溯相容性。 目前使用隱含流程來取得權杖的應用程式，可以移至重新 `spa` 導向 URI 類型而不會發生問題，並繼續使用隱含流程。
 
@@ -60,13 +60,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_mode=query
 &scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &state=12345
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
 ```
 
 > [!TIP]
 > 按一下下面的連結以執行此要求！ 登入之後，您的瀏覽器應重新導向至在位址列中有 `code` 的 `https://localhost/myapp/`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| 參數    | 必要/選用 | 描述 |
+| 參數    | 必要條件/選擇性 | 描述 |
 |--------------|-------------|--------------|
 | `tenant`    | required    | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id`   | required    | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。  |
@@ -79,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `login_hint`  | 選用    | 如果您事先知道其使用者名稱，可用來預先填入使用者登入頁面的使用者名稱/電子郵件地址欄位。 通常應用程式會在重新驗證期間使用此參數，已經使用 `preferred_username` 宣告從上一個登入擷取使用者名稱。   |
 | `domain_hint`  | 選用    | 如果包含，它會略過使用者在登入頁面上以電子郵件為基礎的探索程序，藉以提供稍微更有效率的使用者體驗，例如，將使用者傳送到同盟識別提供者。 通常應用程式會在重新驗證 (擷取上一次登入的 `tid` ) 期間使用此參數。 如果 `tid` 宣告值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，您應該使用 `domain_hint=consumers`。 否則，使用 `domain_hint=organizations`。  |
 | `code_challenge`  | 建議 / 必要 | 用來透過「代碼交換的證明金鑰」(PKCE) 保護授權碼授與。 如果包含 `code_challenge_method`，則為必要參數。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 現在建議所有的應用程式類型，包括原生應用程式、SPA 和機密用戶端 (例如 Web 應用程式)。 |
-| `code_challenge_method` | 建議 / 必要 | 用來為 `code_challenge` 參數編碼 `code_verifier` 的方法。 可以是下列其中一個值：<br/><br/>- `plain` <br/>- `S256`<br/><br/>如果排除，則當包含 `code_challenge` 時，會假設 `code_challenge` 是純文字。 Microsoft 身分識別平台同時支援 `plain` 和 `S256`。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 這是使用[授權碼流程單頁應用程式](reference-third-party-cookies-spas.md)所需的必要條件。|
+| `code_challenge_method` | 建議 / 必要 | 用來為 `code_challenge` 參數編碼 `code_verifier` 的方法。 這 *應該* 是 `S256` ，但 `plain` 如果基於某些原因而導致用戶端無法支援 SHA256，則此規格允許使用。 <br/><br/>如果排除，則當包含 `code_challenge` 時，會假設 `code_challenge` 是純文字。 Microsoft 身分識別平台同時支援 `plain` 和 `S256`。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 這是使用[授權碼流程單頁應用程式](reference-third-party-cookies-spas.md)所需的必要條件。|
 
 
 此時，會要求使用者輸入其認證並完成驗證。 Microsoft 身分識別平台端點也會確認使用者已經同意 `scope` 查詢參數所指出的權限。 如果使用者未曾同意這些權限的任何一項，就會要求使用者同意要求的權限。 [這裡提供權限、同意與多租用戶應用程式](v2-permissions-and-consent.md)的詳細資料。
@@ -150,13 +152,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
+&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong 
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps. This secret needs to be URL-Encoded.
 ```
 
 > [!TIP]
 > 嘗試在 Postman 中執行這項要求！ (別忘了取代 `code`) [![請嘗試在 Postman 中執行此要求](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| 參數  | 必要/選用 | 描述     |
+| 參數  | 必要條件/選擇性 | 描述     |
 |------------|-------------------|----------------|
 | `tenant`   | required   | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | required  | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |
@@ -169,7 +172,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 ### <a name="successful-response"></a>成功回應
 
-成功的權杖回應如下：
+成功的權杖回應看起來會像這樣：
 
 ```json
 {
@@ -288,7 +291,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 #### <a name="successful-response"></a>成功回應
 
-成功的權杖回應如下：
+成功的權杖回應看起來會像這樣：
 
 ```json
 {

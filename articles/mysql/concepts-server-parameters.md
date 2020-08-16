@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: de1345fca418118e88929870cd2f4007dd36b3a4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835981"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258551"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>適用於 MySQL 的 Azure 資料庫中的伺服器參數
 
@@ -21,7 +21,7 @@ ms.locfileid: "87835981"
 
 MySQL 引擎提供許多不同的伺服器變數/參數，可以用來設定和微調引擎行為。 有些參數可以在執行時間以動態方式設定，有些則是「靜態」，需要重新開機伺服器才能套用。
 
-適用於 MySQL 的 Azure 資料庫會使用[Azure 入口網站](./howto-server-parameters.md)、 [Azure CLI](./howto-configure-server-parameters-using-cli.md)和[PowerShell](./howto-configure-server-parameters-using-powershell.md)來公開變更各種 MySQL 伺服器參數值的功能，以符合您的工作負載需求。
+適用於 MySQL 的 Azure 資料庫會使用 [Azure 入口網站](./howto-server-parameters.md)、 [Azure CLI](./howto-configure-server-parameters-using-cli.md)和 [PowerShell](./howto-configure-server-parameters-using-powershell.md) 來公開變更各種 MySQL 伺服器參數值的功能，以符合您的工作負載需求。
 
 ## <a name="configurable-server-parameters"></a>可設定的伺服器參數
 
@@ -98,7 +98,7 @@ MySQL 傳統上會為每個用戶端連接指派一個執行緒。 當並行使�
 ### <a name="innodb_file_per_table"></a>innodb_file_per_table
 
 > [!NOTE]
-> `innodb_file_per_table`只能在一般用途和記憶體優化定價層中更新。
+> `innodb_file_per_table` 只能在一般用途和記憶體優化定價層中更新。
 
 MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表儲存在不同的資料表空間中。 [系統資料表空間](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) \(英文\) 是 InnoDB 資料字典的儲存區域。 [file-per-table 資料表空間](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) \(英文\) 包含單一 InnoDB 資料表的資料和索引，且會獨自儲存在檔案系統的資料檔中。 這個行為是由 `innodb_file_per_table` 伺服器參數所控制。 將 `innodb_file_per_table` 設定為 `OFF` 會導致 InnoDB 在系統資料表空間中建立資料表。 否則，InnoDB 會在 file-per-table 資料表空間中建立資料表。
 
@@ -151,7 +151,7 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 建立 MySQL 的新用戶端連線需要一段時間，且在建立之後，這些連線會佔用資料庫資源，即使閒置時也一樣。 大部分應用程式會要求許多短期連線，這會加重這種情況。 結果會減少實際工作負載的可用資源，因而導致效能降低。 減少閒置連線並重複使用現有連線的連接共用器，有助於避免這種情況。 若要了解如何設定 ProxySQL，請前往[部落格文章](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) \(英文\)。
 
 >[!Note]
->ProxySQL 是一個開放原始碼的社區工具。 Microsoft 會盡最大的支援。 若要取得具有授權指引的生產環境支援，您可以評估並與[ProxySQL 產品支援人員](https://proxysql.com/services/support/)聯繫。
+>ProxySQL 是一個開放原始碼的社區工具。 Microsoft 會盡最大的支援。 若要取得具有授權指引的生產環境支援，您可以評估並與 [ProxySQL 產品支援人員](https://proxysql.com/services/support/)聯繫。
 
 ### <a name="max_heap_table_size"></a>max_heap_table_size
 
@@ -209,9 +209,12 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-如果您收到類似「資料列大小過大 ( # A0 8126) 」的錯誤，您可能會想要關閉參數**innodb_strict_mode**。 不允許在伺服器層級全域修改伺服器參數**innodb_strict_mode** ，因為如果資料列資料大小大於8k，資料將會被截斷，而不會造成資料遺失的錯誤。 我們建議您修改架構，使其符合頁面大小限制。 
+如果您收到類似「資料列大小過大 ( # A0 8126) 」的錯誤，您可能會想要關閉參數 **innodb_strict_mode**。 不允許在伺服器層級全域修改伺服器參數 **innodb_strict_mode** ，因為如果資料列資料大小大於8k，資料將會被截斷，而不會造成資料遺失的錯誤。 我們建議您修改架構，使其符合頁面大小限制。 
 
-您可以使用，在工作階段層級設定這個參數 `init_connect` 。 若要設定工作階段層級的**innodb_strict_mode** ，請參閱[未列出的設定參數](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)。
+您可以使用，在工作階段層級設定這個參數 `init_connect` 。 若要設定工作階段層級的 **innodb_strict_mode** ，請參閱 [未列出的設定參數](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)。
+
+> [!NOTE]
+> 如果您有讀取複本伺服器，在主伺服器的工作階段層級將 **innodb_strict_mode** 設定為 OFF，將會中斷複寫。 如果您有讀取複本，建議您將參數保持設定為 [關閉]。
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 
@@ -269,10 +272,10 @@ MySQL 會根據在建立資料表期間所提供的設定，將 InnoDB 資料表
 |innodb_log_file_size|256MB|
 |innodb_log_files_in_group|2|
 
-此處未列出的其他變數會設定為預設的 MySQL 現成值。 如需預設值，請參閱適用于版本[8.0](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html)、 [5.7](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)和[5.6](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html)的 MySQL 檔。 
+此處未列出的其他變數會設定為預設的 MySQL 現成值。 如需預設值，請參閱適用于版本 [8.0](https://dev.mysql.com/doc/refman/8.0/en/server-system-variables.html)、 [5.7](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html)和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/server-system-variables.html) 的 MySQL 檔。 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何[使用 Azure 入口網站設定伺服器參數](./howto-server-parameters.md)
-- 瞭解如何[使用 Azure CLI 設定伺服器參數](./howto-configure-server-parameters-using-cli.md)
-- 瞭解如何[使用 PowerShell 設定伺服器參數](./howto-configure-server-parameters-using-powershell.md)
+- 瞭解如何 [使用 Azure 入口網站設定伺服器參數](./howto-server-parameters.md)
+- 瞭解如何 [使用 Azure CLI 設定伺服器參數](./howto-configure-server-parameters-using-cli.md)
+- 瞭解如何 [使用 PowerShell 設定伺服器參數](./howto-configure-server-parameters-using-powershell.md)

@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 07/30/2020
-ms.openlocfilehash: 0fb2f9dd156d18705308b41ef8d6b015b3b6d71b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.date: 08/14/2020
+ms.openlocfilehash: c68c9dc961475d6916b1f00e7d4f596bfd8c77dd
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534442"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257801"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>針對 Azure 資料共用中的常見問題進行疑難排解 
 
@@ -31,10 +31,10 @@ ms.locfileid: "87534442"
     1. 在 Azure 入口網站中，瀏覽到 [訂用帳戶]****。
     1. 選取您想要用來建立 Azure 資料共用資源的訂用帳戶
     1. 按一下 [資源提供者]****
-    1. 搜尋**DataShare**
+    1. 搜尋 **DataShare**
     1. 按一下 [註冊] 
 
-    您必須具有[參與者 Azure 角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)，才能完成這些步驟。 
+    您必須擁有 azure 訂用帳戶的 [Azure 參與者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) ，才能完成這些步驟。 
 
 * **邀請會傳送至您的電子郵件別名，而不是您的 Azure 登入電子郵件。** 如果您已註冊 Azure 資料共用服務，或已在 Azure 租使用者中建立資料共用資源，但仍無法看到邀請，可能是因為提供者已將您的電子郵件別名輸入為收件者，而不是您的 Azure 登入電子郵件地址。 請洽詢您的資料提供者，並確定他們已將邀請傳送至您的 Azure 登入電子郵件地址，而不是您的電子郵件別名。
 
@@ -52,11 +52,11 @@ ms.locfileid: "87534442"
 
 「我們無法將 Azure 資料共用帳戶的寫入權限新增到一或多個選取的資源」
 
-如果您在建立新的共用或對應資料集時收到上述任何錯誤，可能是因為 Azure 資料存放區的許可權不足。 如需必要許可權，請參閱[角色和需求](concepts-roles-permissions.md)。 
+如果您在建立新的共用或對應資料集時收到上述任何錯誤，可能是因為 Azure 資料存放區的許可權不足。 如需必要許可權，請參閱 [角色和需求](concepts-roles-permissions.md) 。 
 
 您需要有寫入權限，才能共用或接收 Azure 資料存放區中的資料，這通常存在於參與者角色中。 
 
-如果這是您第一次從 Azure 資料存放區共用或接收資料，您也需要有*Microsoft 授權/角色指派/寫入*許可權，這通常存在於擁有者角色中。 即使您已建立 Azure 資料存放區資源，也不會自動將您設為資源的擁有者。 有了適當的許可權，Azure 資料共用服務就會自動授與資料共用資源的受控識別對資料存放區的存取權。 此程式可能需要幾分鐘的時間才會生效。 如果您因為這項延遲而遇到失敗，請在幾分鐘後再試一次。
+如果這是您第一次從 Azure 資料存放區共用或接收資料，您也需要有 *Microsoft 授權/角色指派/寫入* 許可權，這通常存在於擁有者角色中。 即使您已建立 Azure 資料存放區資源，也不會自動將您設為資源的擁有者。 有了適當的許可權，Azure 資料共用服務就會自動授與資料共用資源的受控識別對資料存放區的存取權。 此程式可能需要幾分鐘的時間才會生效。 如果您因為這項延遲而遇到失敗，請在幾分鐘後再試一次。
 
 以 SQL 為基礎的共用需要額外的許可權。 如需詳細資訊，請參閱疑難排解以 SQL 為基礎的共用。
 
@@ -80,16 +80,16 @@ ms.locfileid: "87534442"
 ```
 請注意，*<share_acc_name>* 是您 Data Share 資源的名稱。      
 
-請確定您已遵循[共用資料](share-your-data.md)及[接受和接收資料](subscribe-to-data-share.md)教學課程中所列的所有必要條件。
+請確定您已遵循 [共用資料](share-your-data.md) 及 [接受和接收資料](subscribe-to-data-share.md) 教學課程中所列的所有必要條件。
 
 ## <a name="snapshot-failed"></a>快照集失敗
 快照集可能會因為各種原因而失敗。 若要尋找詳細的錯誤訊息，請按一下快照的開始時間，然後按每個資料集的狀態。 
 
-如果錯誤訊息與許可權相關，請確認資料共用服務具有必要的許可權。 如需詳細資訊，請參閱[角色和需求](concepts-roles-permissions.md)。 如果這是您第一次建立快照集，可能需要幾分鐘的時間，才會將 Azure 資料存放區的存取權授與資料共用資源。 請稍候幾分鐘，然後再試一次。
+如果錯誤訊息與許可權相關，請確認資料共用服務具有必要的許可權。 如需詳細資訊，請參閱 [角色和需求](concepts-roles-permissions.md) 。 如果這是您第一次建立快照集，可能需要幾分鐘的時間，才會將 Azure 資料存放區的存取權授與資料共用資源。 請稍候幾分鐘，然後再試一次。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要了解如何開始共用資料，請繼續進行[共用資料](share-your-data.md)教學課程。 
 
-若要瞭解如何接收資料，請繼續進行[接受和接收資料](subscribe-to-data-share.md)教學課程。
+若要瞭解如何接收資料，請繼續進行 [接受和接收資料](subscribe-to-data-share.md) 教學課程。
 

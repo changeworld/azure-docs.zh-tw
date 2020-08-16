@@ -4,12 +4,12 @@ description: Azure 應用程式服務的應用程式效能監視。 圖表載入
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0921d7bbba90fa2199ea212bae6ad4c35e0fb051
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 33ad4503b744b4737c2d63f74e146a79d36080e1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245480"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258736"
 ---
 # <a name="monitor-azure-app-service-performance"></a>監視 Azure App Service 效能
 
@@ -123,8 +123,6 @@ ms.locfileid: "88245480"
 
    * **儲存**設定並**重新啟動**您的應用程式。
 
-![應用程式設定 UI 的螢幕擷取畫面](./media/azure-web-apps/appinsights-javascript-enabled.png)
-
 若要停用用戶端監視，請從應用程式設定中移除相關聯的機碼值組，或將值設定為 false。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
@@ -141,8 +139,6 @@ ms.locfileid: "88245480"
      值：`false`
 
    * **儲存**設定並**重新啟動**您的應用程式。
-
-![應用程式設定 UI 的螢幕擷取畫面](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 

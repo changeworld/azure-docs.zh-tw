@@ -3,31 +3,16 @@ title: 使用 Advisor 改善應用程式的可靠性
 description: 使用 Azure Advisor 來確保並改善您的業務關鍵 Azure 部署中的可靠性。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057677"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258505"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure Advisor 改善應用程式的可靠性
 
-Azure Advisor 可協助您確保和改善業務關鍵應用程式的持續性。 您可以在 Advisor 儀表板的 [**可靠性**] 索引標籤上，從 [advisor] 取得可靠性建議。
-
-## <a name="ensure-virtual-machine-fault-tolerance"></a>確保虛擬機器的容錯
-
-若要為您的應用程式提供冗余，建議您在可用性設定組中，將兩部以上的虛擬機器組成群組。 Advisor 會識別不屬於可用性設定組的虛擬機器，並建議將它們移至其中。 此設定可確保在規劃或非計畫中的維護期間，至少有一部虛擬機器可供使用，且符合 Azure 虛擬機器 SLA。 您可以選擇為虛擬機器建立可用性設定組，或是將虛擬機器新增至現有的可用性設定組。
-
-> [!NOTE]
-> 如果您選擇建立可用性設定組，則需要在其中新增至少一部虛擬機器。 我們建議讓兩部或多部虛擬機器組成一個可用性設定組，以確保至少有一部機器可用於中斷期間。
-
-## <a name="ensure-availability-set-fault-tolerance"></a>確保可用性設定組的容錯
-
-若要為您的應用程式提供冗余，建議您在可用性設定組中，將兩部以上的虛擬機器組成群組。 Advisor 會識別包含單一虛擬機器的可用性設定組，並建議將一部或多部虛擬機器新增至該可用性設定組。此設定可確保在規劃或非計畫中的維護期間，至少有一部虛擬機器可供使用，且符合 Azure 虛擬機器 SLA。您可以選擇建立虛擬機器，或是將現有的虛擬機器新增至可用性設定組。  
-
-## <a name="use-managed-disks-to-improve-data-reliability"></a>使用受控磁片來改善資料可靠性
-
-可用性設定組中的虛擬機器若具有共用儲存體帳戶或儲存體縮放單位的磁片，在中斷期間無法復原到單一儲存體縮放單位的失敗。 Advisor 會識別這些可用性設定組，並建議遷移至 Azure 受控磁片。 這項遷移會確保可用性設定組中虛擬機器的磁片可充分隔離，以避免發生單一失敗點。 
+Azure Advisor 可協助您確保和改善業務關鍵應用程式的持續性。 您可以在 Advisor 儀表板的 [ **可靠性** ] 索引標籤上，從 [advisor] 取得可靠性建議。
 
 ## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>檢查檢查點網路虛擬裝置映射的版本
 
@@ -47,7 +32,7 @@ Advisor 可以識別您的虛擬機器是否執行的檢查點映射版本，在
 
 ## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-problems-affect-you"></a>建立 Azure 服務健康狀態警示，以在 Azure 問題影響您時收到通知
 
-我們建議您設定 Azure 服務健康狀態警示，讓您在 Azure 服務問題影響您時收到通知。 [Azure 服務健康狀態](https://azure.microsoft.com/features/service-health/)是一項免費服務，可在您受到 Azure 服務問題的影響時，提供個人化的指引和支援。 Advisor 會識別未設定警示的訂用帳戶，並建議您設定這些訂閱。
+我們建議您設定 Azure 服務健康狀態警示，讓您在 Azure 服務問題影響您時收到通知。 [Azure 服務健康狀態](https://azure.microsoft.com/features/service-health/) 是一項免費服務，可在您受到 Azure 服務問題的影響時，提供個人化的指引和支援。 Advisor 會識別未設定警示的訂用帳戶，並建議您設定這些訂閱。
 
 ## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>設定流量管理員端點以供復原
 
@@ -55,7 +40,7 @@ Advisor 可以識別您的虛擬機器是否執行的檢查點映射版本，在
 
 如果流量管理員設定檔中為鄰近路由設定的所有端點都位於相同的區域中，則來自其他區域的使用者可能會遇到連接延遲。 如果一個區域中的所有端點都失敗，則將端點新增或移動到另一個區域會改善整體效能，並提供更佳的可用性。 Advisor 會識別設定為近接路由 (其中所有的端點都位於相同區域) 的流量管理員設定檔。 建議將端點新增或移動到另一個 Azure 區域。
 
-如果流量管理員設定檔設定為地理路由，則會根據定義的區域將流量路由傳送至端點。 如果區域失敗，則沒有預先定義的容錯移轉。 如果您有一個端點，其中區域群組設定為 [**全部（全球）**]，您可以避免捨棄流量並改善服務可用性。 Advisor 會識別針對地理路由設定的流量管理員設定檔，其中沒有設定為將區域群組設為**全部（World）** 的端點。 建議您將設定變更為讓端點**全部（World）**。
+如果流量管理員設定檔設定為地理路由，則會根據定義的區域將流量路由傳送至端點。 如果區域失敗，則沒有預先定義的容錯移轉。 如果您有一個端點，其中區域群組已設定為 **所有 (世界) **，您可以避免捨棄流量並改善服務可用性。 Advisor 會識別設定為地理路由的流量管理員設定檔，其中沒有設定為將區域群組設為 **所有 (世界) **的端點。 建議您變更設定，讓端點成為 **所有 (世界) **。
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>在您的 Azure 儲存體帳戶上使用虛刪除來儲存及復原意外覆寫或刪除後的資料
 
@@ -73,6 +58,21 @@ Azure Advisor 會檢查是否有任何使用基本 SKU 的 VPN 閘道，並建�
 - 主動-主動設定選項。 
 - 自訂 Ipsec/IKE 原則。 
 - 更高的穩定性和可用性。
+
+## <a name="ensure-virtual-machine-fault-tolerance-temporarily-disabled"></a>請確認虛擬機器的容錯 (暫時停用) 
+
+若要為您的應用程式提供冗余，建議您在可用性設定組中，將兩部以上的虛擬機器組成群組。 Advisor 會識別不屬於可用性設定組的虛擬機器，並建議將它們移至其中。 此設定可確保在規劃或非計畫中的維護期間，至少有一部虛擬機器可供使用，且符合 Azure 虛擬機器 SLA。 您可以選擇為虛擬機器建立可用性設定組，或是將虛擬機器新增至現有的可用性設定組。
+
+> [!NOTE]
+> 如果您選擇建立可用性設定組，則需要在其中新增至少一部虛擬機器。 我們建議讓兩部或多部虛擬機器組成一個可用性設定組，以確保至少有一部機器可用於中斷期間。
+
+## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>確保暫時停用可用性設定組容錯 () 
+
+若要為您的應用程式提供冗余，建議您在可用性設定組中，將兩部以上的虛擬機器組成群組。 Advisor 會識別包含單一虛擬機器的可用性設定組，並建議將一部或多部虛擬機器新增至該可用性設定組。此設定可確保在規劃或非計畫中的維護期間，至少有一部虛擬機器可供使用，且符合 Azure 虛擬機器 SLA。您可以選擇建立虛擬機器，或是將現有的虛擬機器新增至可用性設定組。  
+
+## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>使用受控磁片可改善資料可靠性 (暫時停用) 
+
+可用性設定組中的虛擬機器若具有共用儲存體帳戶或儲存體縮放單位的磁片，在中斷期間無法復原到單一儲存體縮放單位的失敗。 Advisor 會識別這些可用性設定組，並建議遷移至 Azure 受控磁片。 這項遷移會確保可用性設定組中虛擬機器的磁片可充分隔離，以避免發生單一失敗點。 
 
 ## <a name="repair-invalid-log-alert-rules"></a>修復不正確記錄警示規則
 
@@ -113,9 +113,9 @@ Azure Advisor 可識別使用舊版 Azure Cosmos DB Spark 連接器的 Azure Cos
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後開啟 [Advisor](https://aka.ms/azureadvisordashboard)。
 
-2.  在 Advisor 儀表板上，選取 [**高可用性**] 索引標籤。
+2.  在 Advisor 儀表板上，選取 [ **高可用性** ] 索引標籤。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如需 Advisor 建議的詳細資訊，請參閱：
 * [Advisor 簡介](advisor-overview.md)

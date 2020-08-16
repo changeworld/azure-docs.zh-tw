@@ -5,37 +5,37 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/30/2020
-ms.openlocfilehash: 82de05e7169c5803dd999521f61a33b9dd17b567
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: eed3e8275400a3e677df53b9d62cf0e0bc70271c
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87511950"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257840"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>如何為 Azure 資料共用中已接收的共用設定資料集對應
 
-本文說明如何使用 Azure 資料共用來設定已接收共用的資料集對應。 如果您接受資料共用邀請，但選擇「接受並設定之後」，或如果資料是就地共用，則您會想要這麼做。 如果您需要變更與您共用之資料的目的地，或想要將資料接收到 SQL Server，您可能會想要設定資料集對應。 
+本文說明如何使用 Azure 資料共用來設定已接收共用的資料集對應。 您可能會想要設定資料集對應，以指定要接收資料的目標資料存放區，或者，如果您需要變更目標資料存放區。
 
 ## <a name="navigate-to-a-received-data-share"></a>流覽至接收的資料共用
 
-在 Azure 資料共用服務中，流覽至您收到的共用，然後選取 [**詳細資料**] 索引標籤。 
+在 Azure 資料共用服務中，流覽至您收到的共用，然後選取 [ **資料集** ] 索引標籤。 
 
 ![資料集對應](./media/dataset-mapping.png "資料集對應") 
 
-勾選您想要指派目的地的資料集旁的方塊。 選取 **[** 取消對應] 以取消現有對應的對應。 選取 [ **+ 對應至目標**] 以選擇新的目的地存放區。 
+勾選您想要指派目的地的資料集旁的方塊。 選取 [ **+ 對應至目標** ] 以選擇新的目的地存放區。 如果資料集已經對應，而您想要變更目標資料存放區 **，請選取** [取消對應]。
 
 ![對應至目標](./media/dataset-map-target.png "對應至目標") 
 
-## <a name="select-a-new-target-store"></a>選取新的目標存放區
+## <a name="select-a-target-store"></a>選取目標存放區
 
-選取您想要讓資料進入的目標資料類型。 針對以快照集為基礎的共用，任何先前對應的儲存體帳戶中現有的資料，都不會自動移至新的目標存放區。 針對 [就地共用]，請選取指定位置中的資料存放區。 位置是資料提供者的來源資料存放區所在的 Azure 資料中心。
+選取您想要讓資料進入的目標資料存放區類型。 針對以快照集為基礎的共用，任何先前對應的儲存體帳戶中現有的資料，都不會自動移至新的目標存放區。 針對 [就地共用]，請選取指定位置中的資料存放區。 位置是資料提供者的來源資料存放區所在的 Azure 資料中心。
 
 ![目標儲存體帳戶](./media/dataset-map-target-sql.png "目標儲存體") 
 
-## <a name="select-a-file-format-sql-sources-only"></a>選取檔案格式（僅限 SQL 來源）
+## <a name="select-a-file-format-sql-sources-only"></a>選取僅 (SQL 來源的檔案格式) 
 
-如果來源資料來自于以 SQL 為基礎的來源，您可以選擇收到的格式。 
+如果來源資料來自于以 SQL 為基礎的來源，而您想要以檔案的形式接收它，您可以選擇接收的格式。 
 
 ![選擇格式](./media/sql-file-formats.png "SQL 檔案格式")
 
