@@ -1,14 +1,14 @@
 ---
 title: 在 Azure DevTest Labs 中將標記新增到實驗室 | Microsoft Docs
-description: 了解如何在 Azure DevTest Labs 中將標記新增到實驗室
+description: 瞭解如何在 Azure DevTest Labs 中建立自訂標記，並使用標記將資源分類。 您可以在訂用帳戶中查看具有標記的所有資源。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4d2b328626f0d0f096082fa88bb170894ccf3e4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287576"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270728"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中將標記新增到實驗室
 
@@ -30,7 +30,7 @@ ms.locfileid: "87287576"
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>在現有實驗室中管理標記的步驟
 
 1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 視需要選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。 您的實驗室可能已顯示在 [**所有資源**] 底下的 [儀表板] 中。
+1. 視需要選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。 您的實驗室可能已顯示在 [ **所有資源**] 底下的儀表板上。
 1. 從實驗室清單中，選取您想要新增或管理標記的實驗室。
 1. 在實驗室的 [概觀]**** 區域中選取 [組態和原則]****。
 
@@ -42,7 +42,7 @@ ms.locfileid: "87287576"
     ![管理標記](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
 
 > [!NOTE]
-> 在實驗室層級建立的標記會流經實驗室在您的訂用帳戶中啟動的所有可計費資源。 例如，實驗室層級標記會流向實驗室 Vm 的基礎計算 Vm。您可以在成本管理的內容中使用標記。 實驗室層級標記會顯示在成本管理的標記篩選中。
+> 在實驗室層級建立的標記會流經實驗室在您訂用帳戶中啟動的所有可計費資源。 例如，實驗室層級標記會流向實驗室 Vm 的基礎計算 Vm。您可以在成本管理的內容中使用標記。 實驗室層級標籤會顯示在「成本管理」的標記篩選中。
 
 ## <a name="understanding-limitations-to-tags"></a>了解標記的限制
 
@@ -58,4 +58,4 @@ ms.locfileid: "87287576"
 
 ## <a name="next-steps"></a>後續步驟
 * 您可以使用自訂原則，在訂用帳戶內套用限制和慣例。 您所定義的原則可能需要所有資源都具有特定標籤的值。 如需詳細資訊，請參閱[設定原則和排程](devtest-lab-set-lab-policy.md)。
-* 探索[DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索 [DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

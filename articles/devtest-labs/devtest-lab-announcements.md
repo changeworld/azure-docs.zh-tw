@@ -1,14 +1,14 @@
 ---
-title: 將公告張貼到 Azure DevTest Labs 中的實驗室 |Microsoft Docs
-description: 了解如何將公告張貼到 Azure DevTest Labs 中的實驗室
+title: 將公告張貼至 Azure DevTest Labs 中的實驗室 |Microsoft Docs
+description: 瞭解如何在現有的實驗室中張貼自訂公告，以針對 Azure DevTest Labs 中的實驗室通知使用者最近的變更或新增專案。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: bac2b0a4e33a01977418b36ce6e3726999d10ed5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72c6ed7ab691ece094673ff5a158ffa769a9f7a1
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478989"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270762"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>將公告張貼到 Azure DevTest Labs 中的實驗室
 
@@ -156,4 +156,4 @@ ms.locfileid: "85478989"
 
 ## <a name="next-steps"></a>後續步驟
 * 如果您變更或設定實驗室原則，您可以張貼公告來通知使用者。 [設定原則和排程](devtest-lab-set-lab-policy.md)提供的資訊是關於如何使用自訂的原則，在訂用帳戶內套用限制和慣例。
-* 探索[DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索 [DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

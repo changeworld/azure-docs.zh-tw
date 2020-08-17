@@ -1,14 +1,14 @@
 ---
 title: 為 DevTest Labs 虛擬機器建立自訂構件 | Microsoft Docs
-description: 了解如何撰寫自己的構件以用於 Azure DevTest Labs。
+description: 瞭解如何在布建虛擬機器之後，建立用來搭配 Azure DevTest Labs 的構件來部署和設定應用程式。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 775908749f52c71eeaf97eef25e3787f9b6794fc
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 85acfcc3811e671e58fadab08a23951778e1323d
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85857027"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270677"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>為 DevTest Labs 虛擬機器建立自訂構件
 
@@ -18,7 +18,7 @@ ms.locfileid: "85857027"
 >
 >
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 在佈建 VM 之後，您可以使用「構件」** 來部署和設定應用程式。 構件包含構件定義檔和其他儲存於 Git 存放庫之資料夾中的指令碼檔案。 構件定義檔是由 JSON 和可用來指定您想要在 VM 上安裝的運算式所組成。 例如，您可以定義構件名稱、要執行的命令，以及執行命令時可用的參數。 您可以依照名稱來參考構件定義檔中的其他指令碼檔案。
 
 ## <a name="artifact-definition-file-format"></a>構件定義檔格式
@@ -44,15 +44,15 @@ ms.locfileid: "85857027"
   }
 ```
 
-| 元素名稱 | 必要項？ | Description |
+| 元素名稱 | 必要？ | 描述 |
 | --- | --- | --- |
-| $schema |No |JSON 結構描述檔案的位置。 JSON 結構描述檔案可協助您測試定義檔是否有效。 |
-| title |Yes |實驗室中顯示的構件名稱。 |
-| description |Yes |實驗室中顯示的構件說明。 |
-| iconUri |No |實驗室中顯示的圖示 URI。 |
-| targetOsType |Yes |構件安裝所在之 VM 的作業系統。 支援的選項為 Windows 和 Linux。 |
-| 參數 |No |在電腦上執行構件安裝命令時所提供的值。 這可協助您自訂構件。 |
-| runCommand |Yes |在 VM 上執行的構件安裝命令。 |
+| $schema |否 |JSON 結構描述檔案的位置。 JSON 結構描述檔案可協助您測試定義檔是否有效。 |
+| title |是 |實驗室中顯示的構件名稱。 |
+| description |是 |實驗室中顯示的構件說明。 |
+| iconUri |否 |實驗室中顯示的圖示 URI。 |
+| targetOsType |是 |構件安裝所在之 VM 的作業系統。 支援的選項為 Windows 和 Linux。 |
+| 參數 |否 |在電腦上執行構件安裝命令時所提供的值。 這可協助您自訂構件。 |
+| runCommand |是 |在 VM 上執行的構件安裝命令。 |
 
 ### <a name="artifact-parameters"></a>構件參數
 在定義檔的參數區段中，指定可供使用者在安裝構件時輸入的值。 您可以在構件安裝命令中參考這些值。
@@ -69,11 +69,11 @@ ms.locfileid: "85857027"
   }
 ```
 
-| 元素名稱 | 必要項？ | 描述 |
+| 元素名稱 | 必要？ | 描述 |
 | --- | --- | --- |
-| type |Yes |參數值類型。 請參閱下列清單以了解允許的類型。 |
-| displayName |Yes |為實驗室中的使用者顯示的參數名稱。 |
-| description |Yes |在實驗室中顯示的參數說明。 |
+| type |是 |參數值類型。 請參閱下列清單以了解允許的類型。 |
+| displayName |是 |為實驗室中的使用者顯示的參數名稱。 |
+| description |是 |在實驗室中顯示的參數說明。 |
 
 允許的類型為：
 
@@ -82,8 +82,8 @@ ms.locfileid: "85857027"
 * bool (任何有效的 JSON 布林值)
 * array (任何有效的 JSON 陣列)
 
-## <a name="secrets-as-secure-strings"></a>安全字串形式的秘密
-將秘密宣告為安全字串。 以下是在 `parameters` **artifactfile.json**檔案的區段中宣告安全字串參數的語法：
+## <a name="secrets-as-secure-strings"></a>以安全字串形式的秘密
+將秘密宣告為安全字串。 以下是在檔案的artifactfile.js區段內宣告安全字串參數的語法 `parameters` ： **artifactfile.json**
 
 ```json
 
@@ -95,7 +95,7 @@ ms.locfileid: "85857027"
     },
 ```
 
-針對 [成品安裝] 命令，執行 PowerShell 腳本，以使用 Convertto-html-SecureString 命令所建立的安全字串。 
+針對成品安裝命令，執行使用 ConvertTo-SecureString 命令所建立之安全字串的 PowerShell 腳本。 
 
 ```json
   "runCommand": {
@@ -103,9 +103,9 @@ ms.locfileid: "85857027"
   }
 ```
 
-如需 artifactfile.js和 artifact.ps1 （PowerShell 腳本）的完整範例，請參閱[GitHub 上的此範例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
+如需 artifactfile.js和 artifact.ps1 (PowerShell 腳本) 的完整範例，請參閱 [GitHub 上的此範例](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes)。
 
-另一個要注意的重點是，不要將秘密記錄到主控台，因為已針對使用者的偵錯工具捕捉到輸出。 
+另一個值得注意的重點是，當針對使用者的偵測功能捕捉到輸出時，不會將秘密記錄到主控台。 
 
 ## <a name="artifact-expressions-and-functions"></a>構件運算式和函式
 您可以使用運算式和函式來建構構件安裝命令。

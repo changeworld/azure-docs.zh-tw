@@ -1,18 +1,18 @@
 ---
 title: Azure 防禦常見問題 |Microsoft Docs
-description: Azure 防禦的常見問題
+description: 解決 Azure 防禦的常見問題，例如可用性、支援的並行會話數目、設定方面的問題，以及定價。
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: charwen
-ms.openlocfilehash: a37ca4b9977a1d2bd51a6153f4da1b65c1c916be
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: e546888689ff290c750d594f1e737857049bf1ff
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276105"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270541"
 ---
 # <a name="azure-bastion-faq"></a>Azure Bastion 常見問題集
 

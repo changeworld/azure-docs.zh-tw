@@ -1,14 +1,14 @@
 ---
-title: 在 Azure DevTest Labs 中建立和管理可宣告 Vm |Microsoft Docs
-description: 了解如何在 Azure DevTest Labs 中對實驗室新增可宣告的虛擬機器
+title: 在 Azure DevTest Labs 中建立及管理可宣告 Vm |Microsoft Docs
+description: 瞭解如何使用 Azure 入口網站在 Azure DevTest Labs 中新增可宣告虛擬機器，並查看下列程式以宣告/取消認領虛擬機器。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7a4e465f0ba6c592f173a0c48aadd51f3e12ea07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe949d7104fe6437087e77c403cc0d921ebd025
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481301"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270973"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中建立和管理可認領 VM
 您可以從[自訂映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或 [Marketplace 映像](devtest-lab-configure-marketplace-images.md)等「基底」**，使用和[新增標準 VM](devtest-lab-add-vm.md) 相似的方法將可宣告 VM 新增至實驗室。 本教學課程會逐步引導您使用 Azure 入口網站，新增可認領 VM 至 DevTest Labs 中的實驗室，並為使用者示範認領與取消認領 VM 的流程。
@@ -61,7 +61,7 @@ ms.locfileid: "85481301"
   ![要求任何可宣告 VM。](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
-在使用者宣告 VM 之後，DevTest Labs 會啟動電腦，並將其移至實驗室使用者的「我的虛擬機器」清單。 這表示實驗室使用者現在會擁有這部電腦的擁有者許可權。 此步驟所需的時間可能會根據啟動時間以及在宣告事件期間執行的任何其他自訂動作而有所不同。 一旦宣告後，電腦就無法再于可宣告集區中使用。  
+在使用者宣告 VM 之後，DevTest Labs 將會啟動電腦，並將它移至實驗室使用者的「我的虛擬機器」清單中。 這表示實驗室使用者現在將擁有這部電腦上的擁有者許可權。 此步驟所需的時間可能會依啟動時間以及在宣告事件期間執行的任何其他自訂動作而有所不同。 宣告之後，可宣告集區中就無法再使用該機器。  
 
 ## <a name="unclaim-a-vm"></a>取消認領 VM
 
@@ -75,7 +75,7 @@ ms.locfileid: "85481301"
 
   ![在 VM 的管理窗格上取消認領 VM。](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
 
-當使用者 unclaims VM 時，他們不再具有該特定實驗室 VM 的擁有者許可權，且可供任何其他實驗室使用者在其傳回集區的狀態下宣告。 
+當使用者 unclaims VM 時，他們不再擁有該特定實驗室 VM 的擁有者許可權，而且可供任何其他實驗室使用者在其傳回集區的狀態中進行宣告。 
 
 ### <a name="transferring-the-data-disk"></a>傳送資料磁碟
 若可認領 VM 有附加資料磁碟，而使用者取消認領該 VM，資料磁碟會與該 VM 一同保留。 若有另一位使用者認領該 VM，則該名新使用者會連同 VM 一併認領資料磁碟。
@@ -88,4 +88,4 @@ ms.locfileid: "85481301"
 
 ## <a name="next-steps"></a>後續步驟
 * 建立完成後，您可選取其管理窗格上的 [連線]**** 來重新連線至 VM。
-* 探索[DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索 [DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
