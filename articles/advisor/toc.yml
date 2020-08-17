@@ -19,15 +19,15 @@
       href: advisor-get-started.md
 - name: 操作指南
   items:
-    - name: 提升 Azure 應用程式的可靠性
+    - name: 可靠性
       href: advisor-high-availability-recommendations.md
-    - name: 讓資源更安全
+    - name: 安全性
       href: advisor-security-recommendations.md
-    - name: 提高 Azure 應用程式的性能
+    - name: 效能效率
       href: advisor-performance-recommendations.md
-    - name: 降低服務成本
+    - name: 成本最佳化
       href: advisor-cost-recommendations.md
-    - name: 實現卓越的營運績效
+    - name: 卓越營運
       href: advisor-operational-excellence-recommendations.md
     - name: 設定建議
       href: view-recommendations.md
@@ -35,6 +35,8 @@
       href: permissions.md
     - name: 設定建議警示
       href: advisor-alerts-portal.md
+    - name: 設定建議摘要
+      href: advisor-recommendations-digest.md
     - name: 建議的大量補救
       href: advisor-quick-fix.md
     - name: Azure Resource Graph 中的 Advisor 資料

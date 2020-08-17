@@ -1,6 +1,6 @@
 ---
-title: 將受控磁碟的快照集複製到訂用帳戶 - CLl 範例
-description: Azure CLI 指令碼範例 - 使用 CLI 將受控磁碟快照集複製 (移動) 到相同或不同的訂用帳戶
+title: 將受控磁碟的快照集複製到訂用帳戶 - CLl 範例、Windows VM
+description: Azure CLI 指令碼範例 - 在 Windows VM 上使用 CLI 將受控磁碟快照集複製 (移動) 到相同或不同的訂用帳戶
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 54029e2ccbf592dfcde484728fa9cb969a668edd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05b73bf62bfce456e65fde153379690bc9823e6a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010084"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056732"
 ---
-# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>使用 CLI將受控磁碟快照集複製到相同或不同的訂用帳戶
+# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli-on-a-windows-vm"></a>在 Windows VM 上使用 CLI 將受控磁碟快照集複製到相同或不同的訂用帳戶
 
 此指令碼會將受控磁碟的快照集複製到相同或不同的訂用帳戶。 請對下列案例使用此指令碼：
 

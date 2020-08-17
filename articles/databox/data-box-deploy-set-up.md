@@ -1,6 +1,6 @@
 ---
 title: 設定 Azure 資料箱的教學課程 | Microsoft Docs
-description: 深入了解如何連接 Azure 資料箱的纜線並且連線
+description: 在本教學課程中，了解如何連接 Azure 資料箱纜線、連線 Azure 資料箱，以及開啟 Azure 資料箱。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c74b5ba5101dae9165898aeb4f265d449988ecab
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 53309023a838f4b256327a37866408f556c81d29
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205230"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924151"
 ---
 ::: zone target="docs"
 

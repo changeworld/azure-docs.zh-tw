@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 31aaa0134ffe34d0424868221f01b68b64e4b088
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5977aced8354694a631cce05bf6d6b913ea79118
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371153"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121590"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>教學課程：在 Java Spring 應用程式中使用 Key Vault 參考
 
@@ -102,7 +102,7 @@ ms.locfileid: "87371153"
 
     此作業會傳回一系列的金鑰/值組：
 
-    ```console
+    ```json
     {
     "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
     "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
@@ -118,31 +118,51 @@ ms.locfileid: "87371153"
 
 1. 執行下列命令，讓服務主體存取您的金鑰保存庫：
 
-    ```console
+    ```azurecli
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
 
 1. 執行下列命令以取得您的物件識別碼，然後將其新增至應用程式組態。
 
-    ```console
+    ```azurecli
     az ad sp show --id <clientId-of-your-service-principal>
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. 使用上一個步驟中顯示的服務主體值，建立下列環境變數：
+1. 建立環境變數 **AZURE_CLIENT_ID**、**AZURE_CLIENT_SECRET** 和 **AZURE_TENANT_ID**。 使用先前步驟中所顯示的服務主體值。 在命令列執行下列命令，然後重新啟動命令提示字元，讓變更生效：
 
-    * **AZURE_CLIENT_ID**：*clientId*
-    * **AZURE_CLIENT_SECRET**：*clientSecret*
-    * **AZURE_TENANT_ID**：*tenantId*
+    ```cmd
+    setx AZURE_CLIENT_ID "clientId"
+    setx AZURE_CLIENT_SECRET "clientSecret"
+    setx AZURE_TENANT_ID "tenantId"
+    ```
+
+    如果您使用 Windows PowerShell，請執行下列命令：
+
+    ```azurepowershell
+    $Env:AZURE_CLIENT_ID = "clientId"
+    $Env:AZURE_CLIENT_SECRET = "clientSecret"
+    $Env:AZURE_TENANT_ID = "tenantId"
+    ```
+
+    如果您使用 macOS 或 Linux，請執行下列命令：
+
+    ```cmd
+    export AZURE_CLIENT_ID ='clientId'
+    export AZURE_CLIENT_SECRET ='clientSecret'
+    export AZURE_TENANT_ID ='tenantId'
+    ```
+
 
 > [!NOTE]
 > 這些 Key Vault 認證只會在您的應用程式中使用。  您的應用程式會使用這些認證直接向 Key Vault 驗證，而不會涉及應用程式組態服務。  Key Vault 會為您的應用程式和應用程式組態服務提供驗證，而不需共用或公開金鑰。
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>更新您的程式碼以使用 Key Vault 參考
 
-1. 建立稱為 **APP_CONFIGURATION_ENDPOINT**的環境變數。 將其值設定為應用程式組態存放區的端點。 您可以在 Azure 入口網站中的 [存取金鑰]  刀鋒視窗上找到此端點。
+1. 建立稱為 **APP_CONFIGURATION_ENDPOINT**的環境變數。 將其值設定為應用程式組態存放區的端點。 您可以在 Azure 入口網站中的 [存取金鑰]  刀鋒視窗上找到此端點。 重新啟動命令提示字元，讓變更生效。 
 
-1. 在 *resources* 資料夾中開啟 *bootstrap.properties*。 更新這個檔案，以使用應用程式組態端點，而不是連接字串。
+
+1. 在 *resources* 資料夾中開啟 *bootstrap.properties*。 更新此檔案，以使用 **APP_CONFIGURATION_ENDPOINT** 值。 移除此檔案中連接字串的任何參考。 
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
@@ -218,7 +238,7 @@ ms.locfileid: "87371153"
     }
     ```
 
-1. 在資源的 META-INF 目錄中建立名為 *spring.factories* 的新檔案並新增。
+1. 在資源的 META-INF 目錄中建立名為 *spring.factories* 的新檔案並新增下列程式碼。
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\

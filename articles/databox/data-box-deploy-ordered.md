@@ -1,6 +1,6 @@
 ---
 title: 訂購 Azure 資料箱的教學課程 | Microsoft Docs
-description: 深入了解部署必要條件以及如何訂購 Azure 資料箱
+description: 在本教學課程中，了解 Azure 資料箱 (這是一種混合式解決方案，可讓您將內部部署資料匯入至 Azure)，以及如何訂購 Azure 資料箱。
 services: databox
 author: priestlg
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: v-grpr
-ms.openlocfilehash: fd841dee5f3a845d793255f5e13b416fb1add4f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f742af1a3c9ede4857e329697eb959a5a51dc95
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007259"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926360"
 ---
 # <a name="tutorial-order-azure-data-box"></a>教學課程：訂購 Azure 資料箱
 

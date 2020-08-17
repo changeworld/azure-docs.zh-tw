@@ -3,12 +3,12 @@ title: 使用管理群組來組織資源 - Azure Governance
 description: 了解管理群組及權限如何運作，以及如何使用。
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 787658cebcb8345edd616bcdde485883ea43e8dc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c1c054ab67a94b5782187092c572e1e73752c8c2
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529342"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920155"
 ---
 # <a name="what-are-azure-management-groups"></a>什麼是 Azure 管理群組？
 
@@ -25,7 +25,7 @@ ms.locfileid: "87529342"
 
 您可以建立套用原則的階層，例如將名為「生產」群組中的 VM 位置限制為美國西部區域。 此原則將會繼承管理群組底下的所有 Enterprise 合約 (EA) 訂用帳戶，並套用至那些訂用帳戶底下的所有 VM。 此安全性原則無法由資源或訂用帳戶擁有者改變，並能進一步提升治理能力。
 
-另一個案例是使用管理群組來向使用者提供多個訂用帳戶的存取權。 將多個訂用帳戶移至該管理群組底下，讓您能在管理群組上建立[角色型存取控制](../../role-based-access-control/overview.md) (RBAC) 指派；如此一來，所有訂用帳戶均能繼承該存取權。 只需要單獨對管理群組進行指派，使用者便能存取其所需要的所有內容，無需透過指令碼將 RBAC 指派給多個訂用帳戶。
+另一個案例是使用管理群組來向使用者提供多個訂用帳戶的存取權。 透過將多個訂用帳戶移至該管理群組底下，您可以在管理群組上建立一個 [Azure 角色指派](../../role-based-access-control/overview.md)，這會將該存取權繼承至所有的訂用帳戶。 只需要單獨對管理群組進行指派，使用者便能存取其所需要的所有內容，無需透過指令碼將 RBAC 指派給多個訂用帳戶。
 
 ### <a name="important-facts-about-management-groups"></a>關於管理群組的重要事實
 

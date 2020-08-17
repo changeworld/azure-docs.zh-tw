@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91b1be75b06b4281ee5d03675d9d33db00a5aaf7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 783a61c8e2b6c60b81e31d7771d3237c93be92a8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70013793"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055484"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Darwinbox 整合
 
@@ -30,7 +30,6 @@ ms.locfileid: "70013793"
 * 在 Azure AD 中控制可存取 Darwinbox 的人員。
 * 讓使用者使用其 Azure AD 帳戶自動登入 Darwinbox。
 * 在 Azure 入口網站集中管理您的帳戶。
-
 若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 
 ## <a name="prerequisites"></a>Prerequisites
@@ -39,6 +38,9 @@ ms.locfileid: "70013793"
 
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 * 已啟用 Darwinbox 單一登入 (SSO) 的訂用帳戶。
+> [!NOTE]
+> 也可以在 Azure AD 美國政府雲端環境中使用此整合。 您可以在 Azure AD 美國政府雲端應用程式庫中找到此應用程式，並以與公用雲端相同的方式進行設定。
+
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -51,11 +53,11 @@ ms.locfileid: "70013793"
 若要進行將 Darwinbox 整合到 Azure AD 中的設定，您必須從資源庫將 Darwinbox 新增至受控 SaaS 應用程式清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
-1. 若要新增應用程式，請選取 [新增應用程式]  。
-1. 在 [從資源庫新增]  區段的搜尋方塊中，輸入 **Darwinbox**。
-1. 從結果面板中選取 [Darwinbox]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
+1. 若要新增應用程式，請選取 [新增應用程式]。
+1. 在 [從資源庫新增]**** 區段的搜尋方塊中，輸入 **Darwinbox**。
+1. 從結果面板中選取 [Darwinbox]****，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-darwinbox"></a>設定及測試 Darwinbox 的 Azure AD 單一登入
@@ -75,20 +77,20 @@ ms.locfileid: "70013793"
 
 依照下列步驟在 Azure 入口網站中啟用 Azure AD SSO。
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Darwinbox]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Darwinbox]**** 應用程式整合頁面上，尋找 [管理]**** 區段並選取 [單一登入]****。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段上，輸入下列欄位的值：
+1. 在 [基本 SAML 組態] 區段上，輸入下列欄位的值：
 
-    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.darwinbox.in/`
+   1. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.darwinbox.in/`
 
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.darwinbox.in/adfs/module.php/saml/sp/metadata.php/<CUSTOMID>`
+   1. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<SUBDOMAIN>.darwinbox.in/adfs/module.php/saml/sp/metadata.php/<CUSTOMID>`
 
-    > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Darwinbox 用戶端支援小組](https://darwinbox.com/contact-us.php)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+      > [!NOTE]
+      > 這些都不是真正的值。 請使用實際的「登入 URL」及「識別碼」來更新這些值。 請連絡 [Darwinbox 用戶端支援小組](https://darwinbox.com/contact-us.php)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
@@ -141,6 +143,28 @@ ms.locfileid: "70013793"
 在本節中，您會使用存取面板來測試您的 Azure AD 單一登入設定。
 
 當您在存取面板中按一下 [Darwinbox] 圖格時，應該會自動登入您已設定 SSO 的 Darwinbox。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
+
+## <a name="test-sso-for-darwinbox-mobile"></a>測試 Darwinbox 的 SSO (行動裝置)
+
+1. 開啟 Darwinbox 行動應用程式。 按一下 [輸入組織 URL]，現在請在文字方塊中輸入您的組織 URL，然後按一下箭號按鈕。
+
+    ![Darwinbox 行動應用程式](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+
+1. 如果您有多個網域，請按一下您的網域。
+
+    ![Darwinbox 行動應用程式](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+
+1. 在 Darwinbox 應用程式中輸入您的 Azure AD 電子郵件，然後按 [下一步]。
+
+    ![Darwinbox 行動應用程式](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+
+1. 在 Darwinbox 應用程式中輸入您的 Azure AD 密碼，然後按一下 [登入]。
+
+    ![Darwinbox 行動應用程式](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+
+1. 最後，成功登入之後，應用程式首頁會隨即顯示。
+
+    ![Darwinbox 行動應用程式](media/darwinbox-tutorial/DarwinboxMobile05.jpg)
 
 ## <a name="additional-resources"></a>其他資源
 

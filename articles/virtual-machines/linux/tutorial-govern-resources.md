@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 487342fdacfcf8e321bb2a65b6bd6577fc67be36
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 890afadc82acc90ab0324058e07aa5c4d34d04e0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497948"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926139"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>教學課程：了解如何使用 Azure CLI 管理 Linux 虛擬機器
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location "East US"
 
 ## <a name="role-based-access-control"></a>角色型存取控制
 
-您想要確定組織中的使用者具有這些資源的正確存取權等級。 您不想要授與不受限制的存取權給使用者，但是您又必須確定他們可以執行其工作。 [角色型存取控制](../../role-based-access-control/overview.md)可讓您管理哪些使用者具有權限可以在一個範圍內完成特定動作。
+您想要確定組織中的使用者具有這些資源的正確存取權等級。 您不想要授與不受限制的存取權給使用者，但是您又必須確定他們可以執行其工作。 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 可讓您管理哪些使用者具有權限可以在一個範圍內完成特定動作。
 
 若要建立和移除角色指派，使用者必須具有 `Microsoft.Authorization/roleAssignments/*` 存取權。 此存取權是透過擁有者或使用者存取系統管理員角色來授與。
 

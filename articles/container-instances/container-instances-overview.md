@@ -2,14 +2,14 @@
 title: Azure 中的無伺服器容器
 description: Azure Container Instances 服務提供最簡單快速的方法，讓您無需管理虛擬機器或採用更高層級的協調器，就能在 Azure 中執行隔離的容器。
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498679"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121658"
 ---
 # <a name="what-is-azure-container-instances"></a>什麼是 Azure Container Instances？
 
@@ -35,10 +35,15 @@ Azure Container Instances 也會提供互動式殼層，讓您可以在執行中
 > [!IMPORTANT]
 > 從 2020 年 1 月 13 日開始，Azure Container Instances 將要求所有來自伺服器和應用程式的安全連線都使用 TLS 1.2。 TLS 1.0 和 1.1 的支援將會淘汰。
 
-## <a name="hypervisor-level-security"></a>Hypervisor 等級安全性
+## <a name="compliant-deployments"></a>符合規範的部署
+
+### <a name="hypervisor-level-security"></a>Hypervisor 等級安全性
 
 在過去，雖然容器提供應用程式相依性隔離和資源控管，但並沒有足夠的能力防範惡意的多租用戶使用方式。 Azure Container Instances 保證會將您的應用程式隔離在容器中，就像在 VM 中一樣。
 
+### <a name="customer-data"></a>客戶資料
+
+ACI 服務會儲存要確保容器群組如預期般執行所需的最少客戶資料。 將客戶資料儲存在單一區域中目前僅適用於亞太地區的東南亞區域 (新加坡)。 至於其他所有區域，客戶資料會儲存在[地區](https://azure.microsoft.com/global-infrastructure/geographies/)中。 若要深入了解，請與 Azure 支援人員連絡。
 
 ## <a name="custom-sizes"></a>自訂大小
 

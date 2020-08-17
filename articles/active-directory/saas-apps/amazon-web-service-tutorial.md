@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/20/2020
+ms.date: 07/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e16fdaed8ce7e73718569652e88e66844850175
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 79e23f516fe31b4a21232f75286540e6c0d9019d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416552"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922963"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Amazon Web Services (AWS) 整合
 
@@ -81,7 +81,7 @@ ms.locfileid: "87416552"
 1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Amazon Web Services (AWS)** 。
 1. 從結果面板選取 [Amazon Web Services (AWS)]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-amazon-web-services-aws"></a>設定和測試 Amazon Web Services (AWS) 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-amazon-web-services-aws"></a>設定和測試 Amazon Web Services (AWS) 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Amazon Web Services (AWS) 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Amazon Web Services (AWS) 中相關使用者之間的連結關聯性。
 
@@ -133,7 +133,7 @@ ms.locfileid: "87416552"
 
 1. 在 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
 
-    ![憑證下載連結](common/metadataxml.png)
+    ![憑證下載連結](./media/amazon-web-service-tutorial/certificate.png)
 
 1. 在**設定 Amazon Web Services (AWS)** 區段中，依據您的需求複製適當的 URL。
 

@@ -3,12 +3,12 @@ title: FedRAMP Moderate 藍圖範例控制項
 description: FedRAMP Moderate 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
 ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: 0115e3018b0e2510625f4eea6e163b51e1beb6d7
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0dae1e9482c198fed5f0b1b2e46d222c46ca5555
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495840"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921702"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate 藍圖範例的控制項對應
 
@@ -31,7 +31,7 @@ ms.locfileid: "87495840"
 
 ## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) 帳戶管理 | 角色型配置
 
-Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖還指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此外，此藍圖指派了一項 Azure 原則定義來稽核自訂 RBAC 規則的使用情形。 了解自訂 RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 RBAC 規則很容易發生錯誤。
+Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖還指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此外，此藍圖指派了一項 Azure 原則定義來稽核自訂 RBAC 規則的使用情形。 了解自訂 RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 RBAC 規則很容易發生錯誤。
 
 - 應針對 SQL 伺服器佈建 Azure Active Directory 管理員
 - 稽核自訂 RBAC 規則的使用方式

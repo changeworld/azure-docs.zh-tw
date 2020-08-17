@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 08/10/2020
 ms.author: banders
-ms.openlocfilehash: 8b0ba7b597921d82883f2c7ba505ebb10eee1876
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 592a5d9573cb4e475c5d1ca6b4f06002f949e197
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039745"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136247"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 訂用帳戶
 
@@ -32,10 +32,10 @@ ms.locfileid: "87039745"
 ## <a name="cancel-subscription-in-the-azure-portal"></a>在 Azure 入口網站中取消訂用帳戶
 
 1. 在 [Azure 入口網站的 [訂用帳戶] 頁面](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中選取您的訂用帳戶。
-2. 選取您要取消的訂用帳戶。
-3. 選取[概觀]，然後選取 [取消訂用帳戶]。
+1. 選取您要取消的訂用帳戶。
+1. 選取[概觀]，然後選取 [取消訂用帳戶]。
     ![顯示 [取消] 按鈕的螢幕擷取畫面](./media/cancel-azure-subscription/cancel_ibiza.png)
-3. 遵循提示並完成取消作業。
+1. 遵循提示並完成取消作業。
 
 ## <a name="who-can-cancel-a-subscription"></a>誰可以取消訂用帳戶？
 
@@ -49,11 +49,20 @@ ms.locfileid: "87039745"
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>取消訂用帳戶之後會發生什麼情況？
 
-在您取消之後，計費會立即停止。 不過，最多可能需要 10 分鐘，取消作業才會在入口網站中顯示。 如果您在計費期間中途取消訂用帳戶，我們會在該期間結束後的一般發票核發日傳送最後一張發票。 
+在您取消之後，計費會立即停止。 不過，最多可能需要 10 分鐘，取消作業才會在入口網站中顯示。 如果您在計費期間中途取消訂用帳戶，我們會在該期間結束後的一般發票核發日傳送最後一張發票。
 
 在您取消之後，您的服務就會停用。 這表示系統會解除配置您的虛擬機器、釋出暫時 IP 位址，且儲存體會變成唯讀。
 
-Microsoft 會等候 30 - 90 天才永久刪除您的資料，以防您需要存取該資料或改變心意。 我們不會向您收取保留資料的費用。 若要深入了解，請參閱 [Microsoft 信任中心 - 我們如何管理您的資料](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409) \(英文\)。
+訂用帳戶取消後，Microsoft 會等 30 到 90 天之後才永久刪除您的資料，以防您需要存取資料，或您改變心意。 我們不會向您收取保留資料的費用。 若要深入了解，請參閱 [Microsoft 信任中心 - 我們如何管理您的資料](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409) \(英文\)。
+
+## <a name="delete-free-trial-subscription"></a>刪除免費試用訂用帳戶
+
+如果您有免費試用訂用帳戶，則不需要等待 30 天的時間，訂用帳戶就會自動刪除。 在取消訂用帳戶後經過*三天*，就可以將其刪除。 在您取消訂用帳戶後，要經過三天才可使用 [刪除訂用帳戶] 選項。
+
+1. 因此，請在取消訂用帳戶後等候三天的時間。
+1. 在 Azure 入口網站的 [[訂用帳戶](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)] 頁面上選取您的訂用帳戶。
+1. 選取您要刪除的訂用帳戶。
+1. 選取[概觀]，然後選取 [刪除訂用帳戶]。
 
 ## <a name="reactivate-subscription"></a>重新啟動訂用帳戶
 

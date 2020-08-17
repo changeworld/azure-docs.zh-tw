@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce816b74c12333477203cce690c955d5aaf1cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a197c879e4c091c9b421c194e1f6a50b91d24bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093266"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007353"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Egress 整合
 
@@ -45,7 +45,7 @@ ms.locfileid: "87093266"
 
 * Egress 支援由 **SP 和 IDP** 起始的 SSO
 * Egress 支援 **Just In Time** 使用者佈建
-* 設定 Egress 之後，您可以強制執行工作階段控制項，以即時防止組織的敏感性資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 設定 Egress 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-egress-from-the-gallery"></a>從資源庫新增 Egress
 
@@ -130,7 +130,7 @@ ms.locfileid: "87093266"
 
 1. 在下列頁面上，執行下列步驟。
 
-    ![Egress 設定](./media/egress-tutorial/configure1.PNG)
+    ![Egress 設定](./media/egress-tutorial/configure-1.PNG)
 
     a. 在左側功能表中，按一下 [SSO Configuration] \(SSO 設定\)。
 
@@ -150,11 +150,11 @@ ms.locfileid: "87093266"
 
 1. 按一下左側功能表中的 [Invite Users] \(邀請使用者\)，然後按一下 [Invite Single User] \(邀請單一使用者\) 以新增使用者。
 
-    ![Egress 建立測試使用者](./media/egress-tutorial/createuser1.PNG)
+    ![Egress 建立測試使用者](./media/egress-tutorial/create-user-1.PNG)
 
 1. 填寫必要欄位，然後按一下 [Invite] \(邀請)。
 
-    ![Egress 建立測試使用者](./media/egress-tutorial/createuser2.PNG)
+    ![Egress 建立測試使用者](./media/egress-tutorial/create-user-2.PNG)
 
 ## <a name="test-sso"></a>測試 SSO 
 

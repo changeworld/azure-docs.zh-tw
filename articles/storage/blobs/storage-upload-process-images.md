@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 儲存體在雲端中上傳影像資料 | Microsoft Docs
-description: 使用 Azure Blob 儲存體搭配 Web 應用程式來儲存應用程式資料
+description: 使用 Azure Blob 儲存體搭配 Web 應用程式，將應用程式資料儲存至儲存體帳戶。 本教學課程會建立 Web 應用程式，以儲存和顯示 Azure 儲存體中的影像。
 author: mhopkins-msft
 ms.service: storage
 ms.subservice: blobs
@@ -9,12 +9,12 @@ ms.date: 06/24/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 15d18372b9123602e6d6f05b9259e50a74f7eb39
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 3ac1855c0cc72a3c4afc20598d023f0adce2bd76
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433268"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034136"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>教學課程：使用 Azure 儲存體在雲端中上傳影像資料
 

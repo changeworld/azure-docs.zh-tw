@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/5/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: a2864d610d71c6b3a86c131dabb3c0b9ed138bec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 653fcb6f6590fd503a97800ec8196025cf14a3b9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327917"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121556"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-java-spring-app"></a>教學課程：使用 Java Spring 應用程式中的動態組態
 
@@ -36,7 +36,7 @@ ms.locfileid: "87327917"
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.1.2</version>
+    <version>1.1.5</version>
 </dependency>
 ```
 
@@ -46,11 +46,33 @@ ms.locfileid: "87327917"
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>spring-cloud-azure-appconfiguration-config-web</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.7</version>
 </dependency>
 ```
 
-儲存檔案，然後如常建置並執行您的應用程式。
+## <a name="run-and-test-the-app-locally"></a>在本機執行和測試應用程式
+
+1. 使用 Maven 建置 Spring Boot 應用程式並加以執行。
+
+    ```shell
+    mvn clean package
+    mvn spring-boot:run
+    ```
+
+1. 開啟瀏覽器視窗並移至 URL：`http://localhost:8080`。  您會看到與金鑰相關聯的訊息。 
+
+    您也可以使用 *curl* 來測試您的應用程式，例如： 
+    
+    ```cmd
+    curl -X GET http://localhost:8080/
+    ```
+
+1. 若要測試動態設定，請開啟與應用程式相關聯的 Azure 應用程式組態入口網站。 選取 [組態總管]，然後更新所顯示金鑰的值，例如：
+    | 機碼 | 值 |
+    |---|---|
+    | application/config.message | Hello - 已更新 |
+
+1. 重新整理瀏覽器頁面，以查看所顯示的新訊息。
 
 ## <a name="next-steps"></a>後續步驟
 

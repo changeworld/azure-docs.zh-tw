@@ -1,6 +1,6 @@
 ---
 title: 教學課程：透過 REST API 將資料複製到 Azure 資料箱 Blob 儲存體
-description: 了解如何透過 REST API 將資料複製到您的 Azure Data Box Heavy Blob 儲存體
+description: 在本教學課程中，了解如何使用 REST API 透過 HTTP 或 HTTPS 連線到 Azure 資料箱 Blob 儲存體，然後從 Azure Data Box Heavy 複製資料。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a57dc6c57e10c82f9548490c4c2e98fd87f677af
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f9134b57d8a3e76417283e5d863724651b4f6a6f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849415"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921158"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教學課程：透過 REST API 將資料複製到 Azure 資料箱 Blob 儲存體  
 

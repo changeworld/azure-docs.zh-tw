@@ -3,12 +3,12 @@ title: 開始使用 IoT Edge 上的 Live Video Analytics - Azure
 description: 本快速入門說明如何在 IoT Edge 上開始使用 Live Video Analytics。 了解如何偵測即時影片串流中的動作。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090071"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067657"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>快速入門：開始使用 - IoT Edge 上的 Live Video Analytics
 
@@ -84,7 +84,7 @@ RTSP 模擬器模組會在您執行 [Live Video Analytics 資源設定指令碼]
 
 ![lva-sample-device 節點](./media/quickstarts/lva-sample-device-node.png)
 
-## <a name="use-direct-methods"></a>使用直接方法
+## <a name="use-direct-method-calls"></a>使用直接方法呼叫
 
 您可以使用模組，藉由叫用直接方法來分析即時影片串流。 如需詳細資訊，請參閱 [IoT Edge 上 Live Video Analytics 的直接方法](direct-methods.md)。 
 

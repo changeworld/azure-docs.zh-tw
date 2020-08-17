@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 9f95c3d03fed1950d6151ad1ed910bf2a8cd14f5
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ad99dc3dc17e81c3b5da144b21519781353baa47
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125253"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826818"
 ---
 # <a name="how-is-the-new-azure-digital-twins-different-from-the-previous-version-2018"></a>新版 Azure Digital Twins 與先前版本 (2018) 有何不同？
 
@@ -33,7 +33,7 @@ Azure Digital Twins 的第一個公開預覽版本已於 2018 年 10 月發行�
 | **拓撲**<br>*更有彈性*| 先前的版本支援針對智慧空間量身打造的樹狀資料結構。 數位分身已使用階層式關聯性進行連線。 | 藉由新版本，您的數位分身可以連線到任意的圖表拓撲，並以您想要的方式組織。 這可讓您更有靈活地表達現實環境的複雜關聯性。<br><br>若要深入了解，請參閱[*概念：數位分身和對應項圖形*](concepts-twins-graph.md)。 |
 | **計算**<br>*內容更豐富、更有彈性* | 在先前的版本中，處理事件和遙測的邏輯是在 JavaScript 使用者定義函式 (UDF) 中加以定義的。 使用 UDF 進行的偵錯受到限制。 | 新版本具有開放式計算模型：您可以藉由附加外部計算資源 (例如 [Azure Functions](../azure-functions/functions-overview.md)) 來提供自訂邏輯。 這可讓您使用自己選擇的程式設計語言、不受限制地存取自訂的程式碼資料庫，以及利用外部服務可能擁有的開發與偵測資源。<br><br>若要深入了解，請參閱[*操作說明：設定用來處理資料的 Azure 函式*](how-to-create-azure-function.md)。 |
 | **使用 IoT 中樞進行裝置管理**<br>*更便於存取* | 先前發行的受控裝置，以及 Azure Digital Twins 服務內部的 [IoT 中樞](../iot-hub/about-iot-hub.md) 執行個體。 開發人員無法完整存取此整合式中樞。 | 在新版本中，您會藉由附加獨立建立的 IoT 中樞執行個 (以及其已管理的任何裝置) 來「自備」 IoT 中樞。 這可讓您完整存取 IoT 中樞的功能，並讓您控制裝置管理。<br><br>若要深入了解，請參閱[*操作說明：從 IoT 中樞內嵌遙測*](how-to-ingest-iot-hub-data.md)。 |
-| **安全性**<br>*更多標準* | 先前的版本具有預先定義的角色，您可以用來管理執行個體的存取權。 | 新版本會與其他 Azure 服務所使用的相同 Azure [角色型存取控制 (RBAC)](../role-based-access-control/overview.md) 後端服務整合。 這可讓您以更簡便的方式，在解決方案中的其他 Azure 服務之間進行驗證，例如 IoT 中樞、Azure Functions、事件方格等等。<br>使用 RBAC，您仍然可以使用預先定義的角色，也可以建立和設定自訂角色。<br><br>若要深入了解，請參閱[*概念：Azure Digital Twins 解決方案的安全性*](concepts-security.md)。 |
+| **安全性**<br>*更多標準* | 先前的版本具有預先定義的角色，您可以用來管理執行個體的存取權。 | 新版本會與其他 Azure 服務所使用的相同 [Azure 角色型存取控制 (Azure RBAC)](../role-based-access-control/overview.md) 後端服務整合。 這可讓您以更簡便的方式，在解決方案中的其他 Azure 服務之間進行驗證，例如 IoT 中樞、Azure Functions、事件方格等等。<br>使用 RBAC，您仍然可以使用預先定義的角色，也可以建立和設定自訂角色。<br><br>若要深入了解，請參閱[*概念：Azure Digital Twins 解決方案的安全性*](concepts-security.md)。 |
 | **延展性**<br>*大於* | 先前的版本具有裝置、訊息、圖表和縮放單位的調整限制。 每個訂閱僅支援一個 Azure Digital Twins 執行個體。  | 新版本仰賴新的結構，並具有改良的可擴縮性，並更具計算能力。 新版本也支援每個訂閱每個區域 10 個執行個體。<br><br>請參閱[*參考：公開預覽服務的限制*](reference-service-limits.md)，立即取得公開預覽中限制的詳細資料。 |
 
 ## <a name="service-limits-in-public-preview"></a>公開預覽中的服務限制

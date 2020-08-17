@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: f89ab93820770eb8b5485bb7911c60fe2438454a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 94873a3ea1349a9dfac199d98fd109b1a97f72f9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026814"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904729"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>快速入門：搭配使用 REST API 與 cURL 將表單辨識器模型定型並擷取表單資料
 
@@ -26,7 +26,7 @@ ms.locfileid: "86026814"
 
 若要完成此快速入門，您必須：
 - 已安裝 [cURL](https://curl.haxx.se/windows/)。
-- 至少有六個相同類型的表單。 您將使用其中的五個來定型模型，然後使用第六個表單加以測試。 您的表單可以是不同的檔案類型，但必須是相同類型的文件。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。 您可以將測試檔案放在不同的資料夾中。
+- 至少有六個相同類型的表單。 您將使用其中的五個來定型模型，然後使用第六個表單加以測試。 您的表單可以是不同的檔案類型，但必須是相同類型的文件。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至標準效能層級 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。 您可以將測試檔案放在不同的資料夾中。
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 

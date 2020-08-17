@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/12/2019
+ms.date: 08/05/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: a7e81b636690ced9baafc79de110f78c7258c36e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509367"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056292"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教學課程：整合 Sage Intacct 與 Azure Active Directory
 
@@ -45,6 +44,7 @@ ms.locfileid: "84509367"
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
 
 * Sage Intacct 支援由 **IDP** 起始的 SSO
+* 設定 Sage Intacct 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-sage-intacct-from-the-gallery"></a>從資源庫新增 Sage Intacct
 
@@ -57,7 +57,7 @@ ms.locfileid: "84509367"
 1. 在 [從資源庫新增] 區段的搜尋方塊中輸入 **Sage Intacct**。
 1. 從結果面板選取 [Sage Intacct]，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sage-intacct"></a>設定及測試 Sage Intacct 的 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso-for-sage-intacct"></a>設定和測試 Sage Intacct 的 Azure AD SSO
 
 以名為 **B.Simon** 的測試使用者，設定及測試與 Sage Intacct 搭配運作的 Azure AD SSO。 若要讓 SSO 能夠運作，您必須建立 Azure AD 使用者與 Sage Intacct 中相關使用者之間的連結關聯性。
 
@@ -227,3 +227,4 @@ ms.locfileid: "84509367"
 
 - [什麼是 Azure Active Directory 中的條件式存取？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [什麼是 Microsoft Cloud App Security 中的工作階段控制項？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

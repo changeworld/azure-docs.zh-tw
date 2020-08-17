@@ -16,14 +16,14 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 8bbdf984311883006fcd6af16f42d7f7972cc169
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8c97710202a448c613ab685932cb335bbaed4953
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323310"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832649"
 ---
-# <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教學課程：使用 Azure 通知中樞和 Google 雲端通訊 (已淘汰) 將通知推送至 Android 裝置
+# <a name="tutorial-send-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教學課程：使用 Azure 通知中樞和 Google 雲端通訊 (已淘汰) 將推播通知傳送至 Android 裝置
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
@@ -98,6 +98,7 @@ ms.locfileid: "87323310"
     implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
+
 2. 將下列存放庫新增到 **dependencies** 區段之後。
 
     ```gradle
@@ -121,6 +122,7 @@ ms.locfileid: "87323310"
         </intent-filter>
     </service>
     ```
+
 2. 一旦應用程式從執行個體識別碼 API 收到 GCM 註冊權杖，就會使用權杖來 [向 Azure 通知中樞註冊](notification-hubs-push-notification-registration-management.md)。 系統會使用名為 `RegistrationIntentService` 的 `IntentService` 在背景完成註冊。 此服務負責[重新整理 GCM 註冊權杖](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)。
 
     將下列服務定義新增至 AndroidManifest.xml 檔案的 `<application>` 標籤內。 以 `AndroidManifest.xml` 檔案頂端顯示的實際套件名稱取代 `<your package>` 預留位置。
@@ -131,6 +133,7 @@ ms.locfileid: "87323310"
         android:exported="false">
     </service>
     ```
+
 3. 定義要接收通知的接收者。 將下列接收者定義新增至 AndroidManifest.xml 檔案的 `<application>` 標籤內。 以 `AndroidManifest.xml` 檔案頂端顯示的實際套件名稱取代 `<your package>` 預留位置。
 
     ```xml
@@ -142,9 +145,10 @@ ms.locfileid: "87323310"
         </intent-filter>
     </receiver>
     ```
-4. 在 `</application>` 標籤下面新增下列必要的 GCM 權限。 請以 `AndroidManifest.xml` 檔案頂端顯示的套件名稱取代 `<your package>`。
 
-    如需這些權限的詳細資訊，請參閱 [設定適用於 Android 的 GCM 用戶端應用程式](https://developers.google.com/cloud-messaging/)。
+4. 在 `<application>` 標籤下面新增下列必要的 GCM 權限。 請以 `AndroidManifest.xml` 檔案頂端顯示的套件名稱取代 `<your package>`。
+
+    如需這些權限的詳細資訊，請參閱[設定適用於 Android 的 GCM 用戶端應用程式](https://developers.google.com/cloud-messaging/)。
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -165,7 +169,7 @@ ms.locfileid: "87323310"
     請在 `NotificationSettings` 類別的下列程式碼中更新這三個預留位置：
 
    * `SenderId`:您稍早在 [Google Cloud Console](https://cloud.google.com/console) 中取得的專案編號。
-   * `HubListenConnectionString`:您中樞的 `DefaultListenAccessSignature` 連接字串。 在 [Azure 入口網站]中，按一下中樞 [設定]  頁面上的 [存取原則]  ，即可複製該連接字串。
+   * `HubListenConnectionString`:中樞的 **DefaultListenAccessSignature** 連接字串。 在 [Azure 入口網站]中，按一下中樞 [設定]  頁面上的 [存取原則]  ，即可複製該連接字串。
    * `HubName`:使用出現在 [Azure 入口網站]中樞頁面中的通知中樞名稱。
 
      `NotificationSettings` 程式碼︰
@@ -177,6 +181,7 @@ ms.locfileid: "87323310"
         public static String HubListenConnectionString = "<Your default listen connection string>";
      }
      ```
+
 2. 新增另一個名為 `MyInstanceIDService` 的新類別。 此類別是執行個體識別碼接聽程式服務實作。
 
     此類別的程式碼會呼叫 `IntentService` 以在背景[重新整理 GCM 權杖](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)。
@@ -200,7 +205,8 @@ ms.locfileid: "87323310"
         }
     };
     ```
-3. 將另一個新類別新增至名為 `RegistrationIntentService`的專案。 此類別會實作 `IntentService`，可處理[重新整理 GCM 權杖](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)和[向通知中樞註冊](notification-hubs-push-notification-registration-management.md)。
+
+3. 將另一個新類別新增至名為 `RegistrationIntentService` 的專案。 此類別會實作 `IntentService`，可處理[重新整理 GCM 權杖](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)和[向通知中樞註冊](notification-hubs-push-notification-registration-management.md)。
 
     針對此類別使用下列程式碼。
 
@@ -270,6 +276,7 @@ ms.locfileid: "87323310"
         }
     }
     ```
+
 4. 在 `MainActivity` 類別中，在類別的開頭新增下列 `import` 陳述式。
 
     ```java
@@ -282,6 +289,7 @@ ms.locfileid: "87323310"
     import android.widget.Toast;
     import android.content.Intent;
     ```
+
 5. 在類別頂端新增下列 Private 成員。 此程式碼會[檢查 Google 所建議的 Google Play Services 可用性](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk)。
 
     ```java
@@ -291,6 +299,7 @@ ms.locfileid: "87323310"
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     private static final String TAG = "MainActivity";
     ```
+
 6. 在 `MainActivity` 類別中，將下列方法新增至 Google Play 服務的可用性。
 
     ```java
@@ -316,6 +325,7 @@ ms.locfileid: "87323310"
         return true;
     }
     ```
+
 7. 在 `MainActivity` 類別中加入下列程式碼，以在呼叫 `IntentService` 之前檢查 Google Play Services，進而取得 GCM 註冊權杖並向通知中樞註冊。
 
     ```java
@@ -330,6 +340,7 @@ ms.locfileid: "87323310"
         }
     }
     ```
+
 8. 在 `MainActivity` 類別的 `OnCreate` 方法中，加入下列程式碼以便在活動建立時開始註冊程序。
 
     ```java
@@ -343,6 +354,7 @@ ms.locfileid: "87323310"
         registerWithNotificationHubs();
     }
     ```
+
 9. 將上述其他方法新增至 `MainActivity` ，以驗證應用程式狀態及報告您的應用程式狀態。
 
     ```java
@@ -381,12 +393,15 @@ ms.locfileid: "87323310"
         });
     }
     ```
+
 10. `ToastNotify` 方法會使用 *"Hello World"* `TextView` 控制項持續在應用程式中報告狀態和通知。 在 activity_main.xml 配置中，為該控制項加入下列識別碼。
 
     ```xml
     android:id="@+id/text_hello"
     ```
+
 11. 為在 AndroidManifest.xml 中定義的接收者新增一個子類別。 將另一個新類別新增至名為 `MyHandler`的專案。
+
 12. 在 `MyHandler.java` 頂端新增下列 import 陳述式：
 
     ```java
@@ -400,6 +415,7 @@ ms.locfileid: "87323310"
     import android.net.Uri;
     import android.media.RingtoneManager;
     ```
+
 13. 在 `MyHandler` 類別中新增下列程式碼，使其成為 `com.microsoft.windowsazure.notifications.NotificationsHandler` 的子類別。
 
     此程式碼會覆寫 `OnReceive` 方法，以便讓處理常式報告所收到的通知。 處理常式也會使用 `sendNotification()` 方法，將推播通知傳送給 Android 通知管理員。 當應用程式不在執行中並收到通知時，應該執行 `sendNotification()` 方法。
@@ -447,6 +463,7 @@ ms.locfileid: "87323310"
         }
     }
     ```
+
 14. 在 Android Studio 的功能表列上，按一下 [建置]   > [重新建置專案]  ，確保您的程式碼中未沒有任何錯誤。
 
 ## <a name="testing-your-app"></a>測試應用程式
@@ -508,12 +525,14 @@ ms.locfileid: "87323310"
     android:layout_marginBottom="42dp"
     android:hint="@string/notification_message_hint" />
     ```
+
 2. 在 [Android Studio 專案檢視] 中，展開 [App]   > [src]   > [main]   > [res]   > [values]  。 開啟 `strings.xml` 檔案並加入新的 `Button` 和 `EditText` 控制項所參考的字串值。 在檔案底部，將下列幾行加在 `</resources>` 之前。
 
     ```xml
     <string name="send_button">Send Notification</string>
     <string name="notification_message_hint">Enter notification message text</string>
     ```
+
 3. 在 `NotificationSetting.java` 檔案中，將下列設定新增至 `NotificationSettings` 類別。
 
     使用中樞的 **DefaultFullSharedAccessSignature** 連接字串更新 `HubFullAccess`。 按一下通知中樞 [設定]  頁面上的 [存取原則]  ，即可從 [Azure 入口網站]複製此連接字串。
@@ -521,6 +540,7 @@ ms.locfileid: "87323310"
     ```java
     public static String HubFullAccess = "<Enter Your DefaultFullSharedAccess Connection string>";
     ```
+
 4. 在 `MainActivity.java` 檔案中，在檔案的開頭新增下列 `import` 陳述式。
 
     ```java
@@ -537,6 +557,7 @@ ms.locfileid: "87323310"
     import android.view.View;
     import android.widget.EditText;
     ```
+
 5. 在 `MainActivity.java` 檔案中，將下列成員加在 `MainActivity` 類別的最上方。
 
     ```java
@@ -544,7 +565,8 @@ ms.locfileid: "87323310"
     private String HubSasKeyName = null;
     private String HubSasKeyValue = null;
     ```
-6. 建立軟體存取簽章 (SaS) 權杖來驗證 POST 要求，以將訊息傳送至您的通知中樞。 剖析連接字串中的金鑰資料，然後建立 [一般概念](/previous-versions/azure/reference/dn495627(v=azure.100)) REST API 參考中所提的 SaS 權杖。 下列程式碼是範例實作。
+
+6. 建立共用存取簽章 (SAS) 權杖來驗證 POST 要求，以將訊息傳送至您的通知中樞。 剖析連接字串中的金鑰資料，然後建立 [一般概念](/previous-versions/azure/reference/dn495627(v=azure.100)) REST API 參考中所提的 SaS 權杖。 下列程式碼是範例實作。
 
     在 `MainActivity.java` 中，將下列方法加入至 `MainActivity` 類別，以剖析連接字串。
 
@@ -575,6 +597,7 @@ ms.locfileid: "87323310"
         }
     }
     ```
+
 7. 在 `MainActivity.java` 中，將下列方法加入至 `MainActivity` 類別，以建立 SaS 驗證權杖。
 
     ```java
@@ -630,6 +653,7 @@ ms.locfileid: "87323310"
         return token;
     }
     ```
+
 8. 在 `MainActivity.java` 中，將下列方法新增至 `MainActivity` 類別，以使用內建 REST API 處理 [傳送通知]  按鈕點選，並將推播通知訊息傳送至中樞。
 
     ```java
@@ -738,7 +762,7 @@ ms.locfileid: "87323310"
 [31]: ./media/notification-hubs-android-get-started/notification-hubs-android-studio-add-ui.png
 
 <!-- URLs. -->
-[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
+[Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

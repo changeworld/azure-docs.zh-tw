@@ -1,5 +1,6 @@
 ---
-title: 快速入門：存取應用程式的 Web API - Microsoft 身分識別平台 | Azure
+title: 快速入門：設定應用程式以存取 Web API | Azure
+titleSuffix: Microsoft identity platform
 description: 在本快速入門中，您將設定向 Microsoft 身分識別平台註冊的應用程式，以納入用來存取 Web API 的重新導向 URI、認證或權限。
 services: active-directory
 author: rwike77
@@ -8,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082317"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120859"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入門：設定用戶端應用程式以存取 Web API
+# <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入門：設定用戶端應用程式以存取 Web API
 
 在本快速入門中，您會新增重新導向 URI、認證或權限來存取應用程式的 Web API。 Web 或機密用戶端應用程式必須建立安全認證，才能參與需要驗證的授權授與流程。 Azure 入口網站支援的預設驗證方法為用戶端識別碼 + 祕密金鑰。 應用程式會在此過程中取得存取權杖。
 
@@ -27,9 +28,8 @@ ms.locfileid: "82082317"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 完成[快速入門：向 Microsoft 身分識別平台註冊應用程式](quickstart-register-app.md)。
-* 檢閱 [Microsoft 身分識別平台端點中的權限和同意](v2-permissions-and-consent.md)。
-* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 完成[快速入門：設定應用程式以公開 Web API](quickstart-configure-app-expose-web-apis.md)。
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>登入 Azure 入口網站，然後選取應用程式
 
@@ -60,7 +60,7 @@ ms.locfileid: "82082317"
 1. 為您的應用程式選取一個或多個重新導向 URI。 您也可以輸入自訂重新導向 URI。 如果您不確定要使用的內容，請查看程式庫文件。
 1. 選取 [儲存]  。
 
-重新導向 URI 會有某些限制。 如需詳細資訊，請參閱[重新導向 URI/回覆 URL 的限制](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
+重新導向 URI 會有某些限制。 如需詳細資訊，請參閱[重新導向 URI/回覆 URL 的限制](./reply-url.md)。
 
 > [!NOTE]
 > 試用新的**驗證**設定體驗，您可以在其中根據您要設為目標的平台或裝置來設定應用程式的設定。
@@ -113,7 +113,7 @@ ms.locfileid: "82082317"
    | **行動應用程式與傳統型應用程式**  | 選擇性。 如果您要建立桌面和裝置的應用程式，請選取其中一個**建議的重新導向 URI**。<br/>選擇性。 輸入**自訂重新導向 URI**，作為回應驗證要求時，Azure AD 將會重新導向使用者的位置。 例如，針對您想要進行互動的 .NET Core 應用程式，請使用 `http://localhost`。 |
 
    > [!NOTE]
-   > 在 Active Directory 同盟服務 (AD FS) 和 Azure AD B2C 上，您也必須指定連接埠號碼。  例如： `http://localhost:1234` 。 
+   > 在 Active Directory 同盟服務 (AD FS) 和 Azure AD B2C 上，您也必須指定連接埠號碼。  例如： `http://localhost:1234` 。
 
    > [!IMPORTANT]
    > 對於未使用最新 Microsoft 驗證程式庫 (MSAL) 或未使用訊息代理程式的行動裝置應用程式，您必須在 [傳統型 + 裝置]  中設定這些應用程式的重新導向 URI。
@@ -200,16 +200,7 @@ ms.locfileid: "82082317"
 
 ## <a name="next-steps"></a>後續步驟
 
-前進到下一篇文章，以了解如何公開 Web API。
+前進到系列中的下一個快速入門，以了解如何設定哪些帳戶類型可以存取您的應用程式。 例如，您可以限制只有組織中的使用者 (單一租用戶) 能夠存取，或是允許其他 Azure AD 租用戶 (多租用戶) 中的使用者和具有個人 Microsoft 帳戶 (MSA) 的使用者進行存取。
+
 > [!div class="nextstepaction"]
-> [快速入門：設定應用程式以公開 Web API](quickstart-configure-app-expose-web-apis.md)
-
-* 若要了解代表已註冊的應用程式和它們之間關係的兩個 Azure AD 物件，請參閱[應用程式物件和服務主體物件](app-objects-and-service-principals.md)。
-
-* 若要了解使用 Azure Active Directory 開發應用程式時應使用的商標指導方針，請參閱[應用程式的商標指導方針](howto-add-branding-in-azure-ad-apps.md)。
-
-* [快速入門：使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)
-
-* [快速入門：修改應用程式所支援的帳戶](quickstart-modify-supported-accounts.md)
-
-* [快速入門：移除向 Microsoft 身分識別平台註冊的應用程式](quickstart-remove-app.md)
+> [修改應用程式所支援的帳戶](quickstart-modify-supported-accounts.md)

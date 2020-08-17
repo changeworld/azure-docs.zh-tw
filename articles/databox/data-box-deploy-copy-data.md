@@ -1,6 +1,6 @@
 ---
 title: 透過 SMB 在 Azure 資料箱上複製資料的教學課程 | Microsoft Docs
-description: 了解如何透過 SMB 將資料複製到您的 Azure 資料箱
+description: 在本教學課程中，了解如何使用 SMB 搭配本機 Web UI，來連線至主機電腦並將資料從中複製到 Azure 資料箱。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 82cdd8519f1e3fce80aaf051d6bc5fc40a9b8be9
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: a0622c7556896b7ae7201ffa3a7ecac8de1106a4
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959566"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053536"
 ---
 ::: zone target="docs"
 
@@ -107,7 +107,9 @@ ms.locfileid: "85959566"
     
 使用 Linux 用戶端時，請使用下列命令來掛接 SMB 共用。 下方的 "vers" 參數是您的 Linux 主機支援的 SMB 版本。 請在下列命令中插入適當的版本。 如需資料箱支援哪些 SMB 版本的相關資訊，請參閱 [Linux 用戶端支援的檔案系統](https://docs.microsoft.com/azure/databox/data-box-system-requirements#supported-file-systems-for-linux-clients) 
 
-    `sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox`
+```console
+sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home/databoxubuntuhost/databox
+```
 
 ## <a name="copy-data-to-data-box"></a>將資料複製到資料箱
 
@@ -127,10 +129,12 @@ ms.locfileid: "85959566"
 > 在確認資料箱已將您的資料移轉至 Azure 儲存體之前，請務必先保留一份來源資料複本。
 
 連線至 SMB 共用之後，開始複製資料。 您可以使用任何與 SMB 相容的檔案複製工具 (例如 Robocopy) 來複製資料。 使用 Robocopy 可起始多個複製作業。 使用下列命令：
-    
-    robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile> 
-  
- 下表說明這些屬性。
+
+```console
+robocopy <Source> <Target> * /e /r:3 /w:60 /is /nfl /ndl /np /MT:32 or 64 /fft /Log+:<LogFile>
+```
+
+下表說明這些屬性。
     
 |屬性  |描述  |
 |---------|---------|
@@ -150,38 +154,41 @@ ms.locfileid: "85959566"
 |log+:\<LogFile>| 將輸出附加至現有的記錄檔。|    
  
 下列範例顯示將檔案複製到資料箱的 robocopy 命令輸出。
-    
-    C:\Users>robocopy
-        -------------------------------------------------------------------------------
-        ROBOCOPY     ::     Robust File Copy for Windows
+
+```output
+C:\Users>robocopy
+
     -------------------------------------------------------------------------------
-    
+    ROBOCOPY     ::     Robust File Copy for Windows
+    -------------------------------------------------------------------------------
+
         Started : Thursday, March 8, 2018 2:34:53 PM
-            Simple Usage :: ROBOCOPY source destination /MIR
-    
-                    source :: Source Directory (drive:\path or \\server\share\path).
-            destination :: Destination Dir  (drive:\path or \\server\share\path).
-                    /MIR :: Mirror a complete directory tree.
-    
-        For more usage information run ROBOCOPY /?    
-    
+        Simple Usage :: ROBOCOPY source destination /MIR
+
+        source :: Source Directory (drive:\path or \\server\share\path).
+        destination :: Destination Dir  (drive:\path or \\server\share\path).
+                /MIR :: Mirror a complete directory tree.
+
+    For more usage information run ROBOCOPY /?
+
     ****  /MIR can DELETE files as well as copy them !
-    
-    C:\Users>Robocopy C:\Git\azure-docs-pr\contributor-guide \\10.126.76.172\devicemanagertest1_AzFile\templates /MT:32
+
+C:\Users>Robocopy C:\Git\azure-docs-pr\contributor-guide \\10.126.76.172\devicemanagertest1_AzFile\templates /MT:32
+
     -------------------------------------------------------------------------------
-        ROBOCOPY     ::     Robust File Copy for Windows
+    ROBOCOPY     ::     Robust File Copy for Windows
     -------------------------------------------------------------------------------
-    
+
         Started : Thursday, March 8, 2018 2:34:58 PM
         Source : C:\Git\azure-docs-pr\contributor-guide\
             Dest : \\10.126.76.172\devicemanagertest1_AzFile\templates\
-    
+
         Files : *.*
-    
+
         Options : *.* /DCOPY:DA /COPY:DAT /MT:32 /R:5 /W:60
-    
+
     ------------------------------------------------------------------------------
-    
+
     100%        New File                 206        C:\Git\azure-docs-pr\contributor-guide\article-metadata.md
     100%        New File                 209        C:\Git\azure-docs-pr\contributor-guide\content-channel-guidance.md
     100%        New File                 732        C:\Git\azure-docs-pr\contributor-guide\contributor-guide-index.md
@@ -200,12 +207,13 @@ ms.locfileid: "85959566"
     100%        New File                 212        C:\Git\azure-docs-pr\contributor-guide\syntax-highlighting-markdown.md
     100%        New File                 207        C:\Git\azure-docs-pr\contributor-guide\tools-and-setup.md
     ------------------------------------------------------------------------------
-    
-                    Total    Copied   Skipped  Mismatch    FAILED    Extras
-        Dirs :         1         1         1         0         0         0
-        Files :        17        17         0         0         0         0
-        Bytes :     3.9 k     3.9 k         0         0         0         0          
-    C:\Users>
+
+                Total    Copied   Skipped  Mismatch    FAILED    Extras
+    Dirs :         1         1         1         0         0         0
+    Files :        17        17         0         0         0         0
+    Bytes :     3.9 k     3.9 k         0         0         0         0
+C:\Users>
+```
 
 若要將效能最佳化，複製資料時請使用下列 robocopy 參數。
 

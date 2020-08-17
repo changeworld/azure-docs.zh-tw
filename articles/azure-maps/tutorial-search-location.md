@@ -1,6 +1,6 @@
 ---
 title: 教學課程：在地圖上搜尋附近位置 | Microsoft Azure 地圖服務
-description: 在本教學課程中，您將了解如何使用 Microsoft Azure 地圖服務在地圖上搜尋景點。
+description: 了解如何在地圖上搜尋景點。 請參閱如何使用 Azure 地圖服務 Web SDK，將搜尋功能和互動式快顯方塊新增至地圖。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4e16c4e88d749f6dbc4f6271a7ceaf77661a208c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8dc430febb25283ab5bd32496bb2f71ba19c895b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281526"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035853"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教學課程：使用 Azure 地圖服務來搜尋附近景點
 
@@ -38,15 +38,15 @@ ms.locfileid: "87281526"
 
 使用下列步驟建立新的地圖服務帳戶：
 
-1. 按一下 [Azure 入口網站](https://portal.azure.com)左上角的 [建立資源]  。
+1. 按一下 [Azure 入口網站](https://portal.azure.com)左上角的 [建立資源]。
 2. 在 [搜尋 Marketplace]  方塊中，輸入 **Maps**。
-3. 從 [結果]  中，選取 [地圖服務]  。 按一下地圖下方顯示的 [建立]  按鈕。
-4. 在 [建立地圖服務帳戶]  頁面上輸入下列值：
-    * 您想要使用於此帳戶的 [訂用帳戶]  。
-    * 此帳戶的 [資源群組]  名稱。 您可以選擇 [建立新的]  或 [使用現有的]  資源群組。
-    * 新帳戶的 [名稱]  。
-    * 此帳戶的 [定價層]  。
-    * 閱讀 [授權]  和 [隱私權聲明]  ，然後選取核取方塊以接受條款。
+3. 從 [結果]  中，選取 [地圖服務]  。 按一下地圖下方顯示的 [建立] 按鈕。
+4. 在 [建立地圖服務帳戶] 頁面上輸入下列值：
+    * 您想要使用於此帳戶的 [訂用帳戶]。
+    * 此帳戶的 [資源群組] 名稱。 您可以選擇 [建立新的] 或 [使用現有的] 資源群組。
+    * 新帳戶的 [名稱]。
+    * 此帳戶的 [定價層]。
+    * 閱讀 [授權] 和 [隱私權聲明]，然後選取核取方塊以接受條款。
     * 按一下 [ **建立** ] 按鈕。
 
 ![在 Azure 入口網站中建立 Azure 地圖服務帳戶](./media/tutorial-search-location/create-account.png)
@@ -58,8 +58,8 @@ ms.locfileid: "87281526"
 成功建立地圖服務帳戶後，擷取金鑰以便能查詢地圖服務 API。 我們建議在呼叫 Azure 地圖服務時，使用您帳戶的主要金鑰作為訂用帳戶金鑰。
 
 1. 在入口網站中開啟地圖服務帳戶。
-2. 在 [設定] 區段上，選取 [驗證]  。
-3. 將 [主索引鍵]  複製到剪貼簿。 將其儲存在本機，以供本教學課程稍後使用。
+2. 在 [設定] 區段上，選取 [驗證]。
+3. 將 [主索引鍵] 複製到剪貼簿。 將其儲存在本機，以供本教學課程稍後使用。
 
 ![在 Azure 入口網站中取得主要金鑰](./media/tutorial-search-location/get-key.png)
 
@@ -173,7 +173,7 @@ ms.locfileid: "87281526"
 
 ### <a name="service-module"></a>服務模組
 
-1. 在地圖 `ready` 事件處理常式中，藉由新增下列 Javascript 程式碼來建構搜尋服務 URL。
+1. 在地圖 `ready` 事件處理常式中，藉由新增下列 JavaScript 程式碼來建構搜尋服務 URL。
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key

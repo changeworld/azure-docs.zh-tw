@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-javascript
 ms.date: 06/16/2020
-ms.openlocfilehash: ff4af372fa0ec1b6b24698184eb3f52449e28d46
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6540b35925a92ebd6a8bcced427b5457785603db
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430817"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056902"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 串流分析中的 JavaScript 使用者定義函式
  
@@ -130,6 +130,60 @@ INTO
     output
 FROM
     input PARTITION BY PARTITIONID
+```
+
+### <a name="cast-string-to-json-object-to-process"></a>將字串轉換成 JSON 物件以供處理
+
+如果您有 JSON 字串欄位，而且想要將其轉換成 JSON 物件，以便在 JavaScript UDF 中進行處理，您可以使用 **JSON.parse()** 函式來建立可供使用的 JSON 物件。
+
+**JavaScript 使用者定義函式定義：**
+
+```javascript
+function main(x) {
+var person = JSON.parse(x);  
+return person.name;
+}
+```
+
+**範例查詢︰**
+```SQL
+SELECT
+    UDF.getName(input) AS Name
+INTO
+    output
+FROM
+    input
+```
+
+### <a name="use-trycatch-for-error-handling"></a>使用 try/catch 進行錯誤處理
+
+Try/catch 區塊可協助您識別傳遞至 JavaScript UDF 中的輸入資料格式不正確的問題。
+
+**JavaScript 使用者定義函式定義：**
+
+```javascript
+function main(input, x) {
+    var obj = null;
+
+    try{
+        obj = JSON.parse(x);
+    }catch(error){
+        throw input;
+    }
+    
+    return obj.Value;
+}
+```
+
+**範例查詢：將整個記錄當作第一個參數來傳遞，以便能在發生錯誤時傳回。**
+```SQL
+SELECT
+    A.context.company AS Company,
+    udf.getValue(A, A.context.value) as Value
+INTO
+    output
+FROM
+    input A
 ```
 
 ## <a name="next-steps"></a>後續步驟

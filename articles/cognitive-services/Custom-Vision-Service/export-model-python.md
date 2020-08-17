@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.custom: tracking-python
-ms.openlocfilehash: 8e2df90c2e0d3c0d6fd24884a46156de55ac55ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: af0e9cd66cf64366a6f563148fa6b075161151f4
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079211"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875433"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>教學課程：以 Python 執行 TensorFlow 模型
 
@@ -171,7 +171,7 @@ def update_orientation(image):
     return image
 ```
 
-## <a name="predict-an-image"></a>預測影像
+## <a name="classify-an-image"></a>分類影像
 
 將影像準備為張量之後，可以透過預測模型傳送它：
 

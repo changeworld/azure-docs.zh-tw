@@ -30,6 +30,11 @@
       href: event-based-video-recording-tutorial.md
     - name: 播放多日錄製
       href: playback-multi-day-recordings-tutorial.md
+    - name: 分析即時影片
+      items:
+        - name: 使用透過 HTTP 擴充功能的 OVMS
+          displayName: 'intel, OpenVINO'
+          href: use-intel-openvino-tutorial.md
 - name: 範例
   items:
     - name: IoT Edge C# 範例上的 Live Video Analytics

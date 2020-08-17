@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 指令碼範例 - 備份與還原服務 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 備份與還原服務
+description: 了解如何備份和還原 API 管理服務執行個體。 查看範例指令碼並檢視其他可用資源。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,16 +12,16 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 1c56aefb7b30026d1676e8a782fe2f6d394bd1ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d80a63b1a52d1ed7750d1a025eb8f4cd9f254a94
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008970"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851062"
 ---
 # <a name="backup-and-restore-service"></a>備份與還原服務
 
-本文所示的此範例會示範如何備份與還原 API 管理服務執行個體。 
+本文中的範例指令碼會示範如何備份與還原 API 管理服務執行個體。 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -1,6 +1,6 @@
 ---
 title: 透過 NFS 將資料複製到 Azure 資料箱的教學課程 | Microsoft Docs
-description: 了解如何透過 NFS 將資料複製到您的 Azure 資料箱
+description: 在本教學課程中，了解如何使用 NFS 搭配本機 Web UI，來連線至主機電腦並將資料從中複製到 Azure 資料箱。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 2b5789acfbb088ca8dbeb731b1ce7748041233cb
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 590a0a1ce474d48e95163081dcdcacb52233badf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960502"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926071"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>教學課程：透過 NFS 將資料複製到 Azure 資料箱
 

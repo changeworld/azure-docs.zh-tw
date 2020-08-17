@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 資料箱閘道傳輸資料 | Microsoft Docs
-description: 了解如何新增及連線到資料箱閘道裝置上的共用。
+description: 了解如何新增和連線到 Azure 資料箱閘道上的共用，然後您的資料箱閘道裝置就可以將資料傳輸到 Azure。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 4817db0ce9723f46ceac4f4720915a9bfddcf915
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 6db2d8fa6e957a63a4410f17b09a9f106bfba6e6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561746"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923470"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>教學課程：使用 Azure Data Box Gateway 轉送資料
 

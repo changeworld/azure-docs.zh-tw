@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 07/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffc9d3f4feb003d537b52cde15356e756aa11c0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd5e3e2a0e6d50340954600c5a452b6d026e5afc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500101"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987429"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Slack 整合
 
@@ -159,15 +159,15 @@ ms.locfileid: "86500101"
 
 2. 瀏覽至 [Microsoft Azure AD]，然後移至 [小組設定]。
 
-     ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-001.png)
+     ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. 在 [小組設定] 區段中，按一下 [驗證] 索引標籤，然後按一下 [變更設定]。
 
-    ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-002.png)
+    ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. 在 [SAML 驗證設定]  對話方塊上，執行下列步驟：
 
-    ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-003.png)
+    ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  在 [SAML 2.0 端點 (HTTP)] 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL] 值。
 
@@ -177,7 +177,7 @@ ms.locfileid: "86500101"
 
     d. 針對您的 Slack 小組適當地設定上述三個設定。 如需這些這設定的詳細資訊，請參閱這裡的 **Slack 的 SSO 設定指南**。 `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-004.png)
+    ![在應用程式端設定單一登入](./media/slack-tutorial/tutorial-slack-expand.png)
 
     e. 按一下 [展開]，然後在 [服務提供者簽發者] 文字方塊中輸入 `https://slack.com`。
 

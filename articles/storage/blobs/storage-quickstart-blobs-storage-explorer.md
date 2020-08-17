@@ -1,7 +1,7 @@
 ---
 title: 快速入門 - 使用 Azure 儲存體總管建立 Blob
 titleSuffix: Azure Storage
-description: 在本快速入門中，您將了解如何使用 Azure 儲存體總管來建立容器和 Blob、將 Blob 下載至本機電腦，以及檢視容器中的所有 Blob。
+description: 了解如何使用 Azure 儲存體總管來建立容器和 Blob、將 Blob 下載至本機電腦，以及檢視容器中的所有 Blob。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 3ed0885152b15ef365d0e02c198b684bedd2f95b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f8768a1b2542eb0461ef0c50c96e22c80eced57a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083645"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836457"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>快速入門：使用 Azure 儲存體總管建立 Blob
 

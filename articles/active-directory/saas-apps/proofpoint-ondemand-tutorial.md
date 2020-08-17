@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34bdd8561b30358e3cb5c9a64ed4405ba8d94588
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: db496ac504a48398ef7ab656cc5a6a890f882bab
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160150"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905477"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>教學課程：Azure Active Directory 與 Proofpoint on Demand 整合
 
@@ -41,6 +41,9 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
 * Azure AD 訂用帳戶。 如果您沒有 Azure AD 環境，您可以在[這裡](https://azure.microsoft.com/pricing/free-trial/)取得一個月的試用帳戶
 * 已啟用 Proofpoint on Demand 單一登入的訂用帳戶
+
+> [!NOTE]
+> 如果您要搭配使用 MFA 或無密碼驗證與 Azure AD，則請關閉 SAML 要求中的 AuthnContext 值。 否則，Azure AD 會在 AuthnContext 不相符時擲回錯誤，且不會將權杖傳回給應用程式。
 
 ## <a name="scenario-description"></a>案例描述
 
@@ -66,7 +69,7 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入 **Proofpoint on Demand**，從結果面板中選取 [Proofpoint on Demand]  ，然後按一下 [新增]  按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **Proofpoint on Demand**，從結果面板中選取 [Proofpoint on Demand]****，然後按一下 [新增]**** 按鈕以新增應用程式。
 
      ![結果清單中的 Proofpoint on Demand](common/search-new-app.png)
 
@@ -90,7 +93,7 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
 若要使用 Proofpoint on Demand 設定 Azure AD 單一登入，請執行下列步驟：
 
-1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Proofpoint on Demand]  應用程式整合頁面上，選取 [單一登入]  。
+1. 在 [Azure 入口網站](https://portal.azure.com/)的 [Proofpoint on Demand]**** 應用程式整合頁面上，選取 [單一登入]****。
 
     ![設定單一登入連結](common/select-sso.png)
 
@@ -98,28 +101,28 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
     ![單一登入選取模式](common/select-saml-option.png)
 
-3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。   
+3. 在 [以 SAML 設定單一登入] 頁面上，按一下 [編輯] 圖示以開啟 [基本 SAML 設定] 對話方塊。
 
     ![編輯基本 SAML 組態](common/edit-urls.png)
 
-4. 在 [基本 SAML 組態]  區段上，執行下列步驟：
+4. 在 [基本 SAML 組態] 區段上，執行下列步驟：
 
     ![Proofpoint on Demand 網域及 URL 單一登入資訊](common/sp-identifier-reply.png)
 
-    a. 在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<hostname>.pphosted.com/ppssamlsp_hostname`
+    a. 在 [登入 URL] 文字方塊中，以下列模式輸入 URL︰`https://<hostname>.pphosted.com/ppssamlsp_hostname`
 
-    b. 在 [識別碼]  方塊中，使用下列模式輸入 URL：`https://<hostname>.pphosted.com/ppssamlsp`
+    b. 在 [識別碼] 方塊中，使用下列模式輸入 URL：`https://<hostname>.pphosted.com/ppssamlsp`
 
-    c. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
+    c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
 
     > [!NOTE]
     > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Proofpoint on Demand 用戶端支援小組](https://www.proofpoint.com/us/support-services)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，按一下 [下載]  ，以依據您的需求從指定選項下載 [憑證 (Base64)]  ，並儲存在您的電腦上。
+5. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，按一下 [下載]，以依據您的需求從指定選項下載 [憑證 (Base64)]，並儲存在您的電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
-6. 在 [設定 Proofpoint on Demand]  區段上，依據您的需求複製適當的 URL。
+6. 在 [設定 Proofpoint on Demand]**** 區段上，依據您的需求複製適當的 URL。
 
     ![複製組態 URL](common/copy-configuration-urls.png)
 
@@ -137,11 +140,11 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  。
+2. 在畫面頂端選取 [新增使用者]。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -149,28 +152,28 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 Proofpoint on Demand 的存取權授與 Britta Simon，讓 Britta Simon 能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [Proofpoint on Demand]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [Proofpoint on Demand]****。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [Proofpoint on Demand]  。
+2. 在應用程式清單中，選取 [Proofpoint on Demand]****。
 
     ![應用程式清單中的 [Proofpoint on Demand] 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. 在左側功能表中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -178,11 +181,11 @@ Proofpoint on Demand 與 Azure AD 整合提供下列優點：
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
-7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ### <a name="create-proofpoint-on-demand-test-user"></a>建立 Proofpoint on Demand 測試使用者
 

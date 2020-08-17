@@ -1,18 +1,18 @@
 ---
 title: 適用於 Azure Blob 儲存體的 Azure PowerShell 範例 | Microsoft Docs
-description: 適用於搭配 Azure Blob 儲存體使用的 Azure PowerShell 範例
+description: 請參閱用於處理 Azure Blob 儲存體的 Azure PowerShell 指令碼範例連結，例如建立儲存體帳戶、跨帳戶遷移 Blob 等等。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 11/07/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
-ms.openlocfilehash: f66c188186c81e5a4d15c417a31ab096ba7ef598
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05f02fe5bd6d106e7187eea7600ffe0c7fc7e955
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020894"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828161"
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>適用於 Azure Blob 儲存體的 Azure PowerShell 範例
 

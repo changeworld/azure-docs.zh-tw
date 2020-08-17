@@ -1,6 +1,6 @@
 ---
 title: 教學課程：尋找前往位置的路線 | Microsoft Azure 地圖服務
-description: 本教學課程會示範如何使用 Microsoft Azure 地圖服務的路線服務，在地圖上呈現如何前往某個位置 (景點) 的路線。
+description: 了解如何尋找前往景點的路線。 請參閱如何設定地址座標和查詢 Azure 地圖服務路線規劃服務，以取得前往該景點的指示。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/14/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: d6a526e23be47c9e05de0c9064bdb4095a49d132
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0ff604e920ca3e0708fc21a1cadfe61646f4e30b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287420"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037570"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>教學課程：使用 Azure 地圖服務的景點路線
 
@@ -25,7 +25,7 @@ ms.locfileid: "87287420"
 > * 設定地址座標
 > * 查詢路線規劃服務，以了解如何前往景點
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在繼續作業之前，依照[建立帳戶](quick-demo-map-app.md#create-an-azure-maps-account)中的指示，您需要 S1 定價層的訂用帳戶。 請依照[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步驟取得帳戶的主要金鑰。 如需 Azure 地圖服務中驗證的詳細資訊，請參閱[管理 Azure 地圖服務中的驗證](how-to-manage-authentication.md)。
 
@@ -174,7 +174,7 @@ ms.locfileid: "87287420"
 
 ## <a name="get-directions"></a>取得指示
 
-本節說明如何使用 Azure 地圖服務的路線規劃服務 API。 路線規劃服務 API 會尋找從給定起點到終點的路線。 此服務中有相關 API 可用來規劃兩個位置之間「最快速」  、「最短」  、「最環保」  或「驚心動魄」  的路線。 此服務也可讓使用者使用 Azure 廣泛的歷史路況資料庫來規劃日後的路線。 使用者可以查看任何所選日期和時間的路線時間預測。 如需詳細資訊，請參閱[取得路線指示](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 以下所有功能都應該新增至**地圖備妥 eventListener 內**，以確保它們會在地圖資源可供存取之後載入。
+本節說明如何使用 Azure 地圖服務的路線規劃服務 API。 路線規劃服務 API 會尋找從給定起點到終點的路線。 此服務中有相關 API 可用來規劃兩個位置之間「最快速」**、「最短」**、「最環保」** 或「驚心動魄」** 的路線。 此服務也可讓使用者使用 Azure 廣泛的歷史路況資料庫來規劃日後的路線。 使用者可以查看任何所選日期和時間的路線時間預測。 如需詳細資訊，請參閱[取得路線指示](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 以下所有功能都應該新增至**地圖備妥 eventListener 內**，以確保它們會在地圖資源可供存取之後載入。
 
 1. 在 GetMap 函式中，將下列內容新增至 JavaScript 程式碼。
 

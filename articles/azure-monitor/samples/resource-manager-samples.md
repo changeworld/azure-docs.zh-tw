@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: ''
-ms.openlocfilehash: 4446eef481e8370f7457311f6eae6ce40f9e6727
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ab869fc8577d4d1934be96404ded5a2051237bbf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539256"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922723"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Azure 監視器的 Resource Manager 範本範例
 
@@ -49,7 +49,7 @@ az deployment group create \
 - 警示
   - [記錄警示規則](resource-manager-alerts-log.md) - 來自記錄查詢和 Azure 活動記錄的警示。
   - [計量警示規則](resource-manager-alerts-metric.md) - 來自計量、使用不同邏輯類型的警示。
-- Application Insights - 即將推出。
+- [Application Insights](resource-manager-app-resource.md)
 - [診斷設定](resource-manager-diagnostic-settings.md) - 建立診斷設定，以轉送來自不同資源類型的記錄和計量。
 - [記錄查詢](resource-manager-log-queries.md) - 在 Log Analytics 工作區中建立已儲存的記錄查詢。
 - [Log Analytics 工作區](resource-manager-workspace.md) - 建立 Log Analytics 工作區，並從 Log Analytics 代理程式設定不同資料來源的集合。

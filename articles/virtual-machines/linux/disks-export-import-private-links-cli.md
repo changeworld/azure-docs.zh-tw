@@ -1,23 +1,23 @@
 ---
-title: Azure CLI - 使用 Private Link 限制受控磁碟的匯入/匯出存取 (預覽)
-description: 使用 Azure CLI 為受控磁碟啟用 Private Link (預覽)。 只允許您在虛擬網路內安全地匯出和匯入磁碟。
+title: Azure CLI - 使用 Private Link 限制受控磁碟的匯入/匯出存取
+description: 使用 Azure CLI 為受控磁碟啟用 Private Link。 只允許您在虛擬網路內安全地匯出和匯入磁碟。
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5df11e704987098d61ced7afbff5e6234d4d5f04
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 009f8ec69261103faaa4de1e27ae7383257a13ca
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420274"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136400"
 ---
-# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure CLI - 使用 Private Link 限制受控磁碟的匯入/匯出存取 (預覽)
+# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - 使用 Private Link 限制受控磁碟的匯入/匯出存取
 
-您可以使用[私人端點](../../private-link/private-endpoint-overview.md) (預覽) 來限制受控磁碟的匯出和匯入，並透過 Azure 虛擬網路上用戶端的 [Private Link](../../private-link/private-link-overview.md) 安全地存取資料。 私人端點會使用來自虛擬網路位址空間的 IP 位址來處理您的受控磁碟服務。 虛擬網路上的用戶端與受控磁碟之間的網路流量會流經虛擬網路和 Microsoft 骨幹網路上的私人連結，以排除公開網際網路的風險。 
+受控磁碟的 Private Links 支援目前為預覽狀態。 您可以使用[私人端點](../../private-link/private-endpoint-overview.md)來限制受控磁碟的匯出和匯入，並透過 Azure 虛擬網路上用戶端的 [Private Link](../../private-link/private-link-overview.md) 安全地存取資料。 私人端點會使用來自虛擬網路位址空間的 IP 位址來處理您的受控磁碟服務。 虛擬網路上的用戶端與受控磁碟之間的網路流量僅會流經虛擬網路和 Microsoft 骨幹網路上的私人連結，以排除公開網際網路的風險。
 
 若要使用 Private Link 來匯出/匯入受控磁碟，請先建立一個磁碟存取資源，並藉由建立私人端點，將其連結至相同訂用帳戶中的虛擬網路。 然後，將磁碟或快照集與磁碟存取的執行個體產生關聯。 最後，將磁碟或快照集的 NetworkAccessPolicy 屬性設定為 `AllowPrivate`。 這會限制對您虛擬網路的存取。 
 

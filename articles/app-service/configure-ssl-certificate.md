@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: be490c5ec11ab4bafcd68731a535483d1803a8c7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0dd0b86a11c7060040f8734c0102252f18d9f114
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146421"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987166"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>在 Azure App Service 中新增 TLS/SSL 憑證
 
@@ -64,6 +64,7 @@ ms.locfileid: "86146421"
 - 不支援萬用字元憑證。
 - 不支援裸網域。
 - 不可匯出。
+- 在 App Service 環境 (ASE) 上不支援
 - 不支援 A 記錄。 例如，自動續約不適用於 A 記錄。
 
 > [!NOTE]
@@ -113,7 +114,7 @@ ms.locfileid: "86146421"
 
 使用下表來協助您設定憑證。 完成後，按一下 [建立]。
 
-| 設定 | 描述 |
+| 設定 | 說明 |
 |-|-|
 | 名稱 | App Service 憑證的易記名稱。 |
 | 裸網域主機名稱 | 在此處指定根網域。 根網域和 `www` 子網域*皆*受到發行憑證的保護。 在發行的憑證中，[一般名稱] 欄位包含根網域，[主體別名] 欄位則包含 `www` 網域。 若只要保護所有子網域，請在這裡指定子網域的完整網域名稱 (例如 `mysubdomain.contoso.com`)。|
@@ -134,7 +135,7 @@ ms.locfileid: "86146421"
 
 在 [Key Vault 狀態] 頁面中，按一下 [Key Vault 存放庫] 來建立新的保存庫或選擇現有的保存庫。 如果您選擇建立新的保存庫，請使用下表來協助您設定保存庫並按一下 [建立]。 在與 App Service 應用程式相同的訂用帳戶和資源群組內建立新的 Key Vault。
 
-| 設定 | 描述 |
+| 設定 | 說明 |
 |-|-|
 | 名稱 | 包含英數字元和虛線的唯一名稱。 |
 | 資源群組 | 建議選取相同的資源群組作為您的 App Service 憑證。 |

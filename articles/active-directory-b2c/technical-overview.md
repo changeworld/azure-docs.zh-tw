@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b96a8bb5460064d6f50f81809f7e3850b30a4c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281917"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921668"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技術和功能概觀
 
@@ -262,7 +262,4 @@ Azure AD B2C 可讓您探索人員何時註冊或登入您的 Web 應用程式�
 
 ## <a name="next-steps"></a>後續步驟
 
-您現在已深入了解 Azure Active Directory B2C 的功能和技術層面，請建立 B2C 租使用者以開始使用服務：
-
-> [!div class="nextstepaction"]
-> [教學課程：建立 Azure Active Directory B2C 租用戶 >](tutorial-create-tenant.md)
+您現已深入了解 Azure Active Directory B2C 的功能和技術層面，接下來請開始進行[用於建立 Azure Active Directory B2C 租用戶的教學課程](tutorial-create-tenant.md)。

@@ -503,9 +503,9 @@
                   href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
                 - name: 開發 Java MapReduce 程式
                   href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-            - name: 使用 Apache Hive 為擷取、 轉換和載入 (ETL) 工具
+            - name: 使用 Apache Hive 為擷取、轉換和載入 (ETL) 工具
               href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-            - name: 大規模擷取、 轉換和載入
+            - name: 大規模擷取、轉換和載入
               href: ./hadoop/apache-hadoop-etl-at-scale.md
             - name: 建立非互動式驗證 .NET HDInsight 應用程式
               href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
@@ -531,6 +531,8 @@
               items:
                 - name: 使用空白邊緣節點
                   href: ./hdinsight-apps-use-edge-node.md
+                - name: 使用邊緣節點來調整 HiveServer2
+                  href: ./hdinsight-apps-install-hiveserver2.md
         - name: 疑難排解
           items:
             - name: 常見問題

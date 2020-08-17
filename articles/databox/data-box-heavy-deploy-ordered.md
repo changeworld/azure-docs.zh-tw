@@ -1,6 +1,6 @@
 ---
 title: 訂購 Azure Data Box Heavy 的教學課程 | Microsoft Docs
-description: 深入了解部署必要條件以及如何訂購 Azure Data Box Heavy
+description: 在本教學課程中，了解 Azure Data Box Heavy (這是一種混合式解決方案，可讓您將內部部署資料匯入至 Azure)，以及如何訂購 Data Box Heavy。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 91d78975106299c3b3a6df6d8dee05f337dd339a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9b2b97f11c1493deca9b79907e894efbb7b9c456
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742981"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920988"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>教學課程：訂購 Azure Data Box Heavy
 

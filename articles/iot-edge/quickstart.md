@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 73d9eed757acb4c58052a34811c490a70d306995
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117246"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061484"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入門：將您的第一個 IoT Edge 模組部署至虛擬 Windows 裝置
 
@@ -65,7 +65,9 @@ IoT Edge 裝置：
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
   ```
 
-  建立和啟動新的虛擬機器可能需要幾分鐘的時間。 然後，在連接到您的虛擬機器時，您可以下載 RDP 檔案以便使用：
+  建立和啟動新的虛擬機器可能需要幾分鐘的時間。
+
+  虛擬機器啟動之後，您可以下載 RDP 檔案，以在連線到虛擬機器時使用：
 
   1. 巡覽至您在 Azure 入口網站中的第一個 Windows 虛擬機器。
   1. 選取 [連接]。
@@ -74,6 +76,8 @@ IoT Edge 裝置：
   使用您以 `az vm create`命令指定的系統管理員名稱和密碼，用遠端桌面連線連線到您的 Windows 虛擬機器，以開啟此檔案。
 
 > [!NOTE]
+> 您的 Windows 虛擬機器會從 Windows 1809 版 (組建 17763) 啟動，這是最新的 [Windows 長期支援組建](https://docs.microsoft.com/windows/release-information/)。 Windows 預設會每隔 22 小時自動檢查更新。 在虛擬機器上檢查過後，Windows 就會推送與 Windows 版 IoT Edge 不相容的版本更新，以防止進一步使用 Windows 版 IoT Edge 的功能。 建議您將虛擬機器的使用限制在 22 小時內，或[暫時暫停 Windows 更新](https://support.microsoft.com/help/4028233/windows-10-manage-updates)。
+>
 > 為了簡單起見，本快速入門使用的是 Windows 桌面虛擬機器。 如需正式生產情境下一般何種 Windows 作業系統可供使用的資訊，請參閱 [Azure IoT Edge 支援系統](support.md)。
 >
 > 如果您已經準備好為 IoT Edge 設定自己的 Windows 裝置，包括執行 IoT 核心版的裝置，請遵循[在 Windows 上安裝 Azure IoT Edge 執行階段](how-to-install-iot-edge-windows.md)中的步驟。

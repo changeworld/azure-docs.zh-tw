@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9a393e29c4b5b2faa48cbcd273c7bc7a46169ba3
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475646"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904185"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教學課程：建立 Azure Red Hat OpenShift 4 叢集
 
@@ -49,9 +49,9 @@ Red Hat 提取祕密可讓您的叢集存取 Red Hat 容器登錄及其他內容
 
    您必須登入 Red Hat 帳戶，或使用您的公司電子郵件建立新的 Red Hat 帳戶，並接受條款及條件。
 
-2. **按一下下載提取祕密。**
+2. 如果這是您第一次建立叢集，請移至 [**OpenShift 產品頁面**](https://developers.redhat.com/products/codeready-containers)。 註冊之後，請前往 [ **[Red Hat OpenShift 叢集管理員] 頁面**](https://cloud.redhat.com/openshift/)，在其中按一下 [下載提取祕密] 並下載要與 ARO 叢集搭配使用的提取祕密。
 
-將儲存的 `pull-secret.txt` 檔案保存在安全的地方 (建立每個叢集時都會用到此檔案)。
+將儲存的 `pull-secret.txt` 檔案保持在其他安全位置。 如果您需要建立叢集，且叢集內包含 Red Hat 或認證合作夥伴的範例或操作員，則會在每次建立叢集時使用此檔案。
 
 執行 `az aro create` 命令時，您可以使用 `--pull-secret @pull-secret.txt` 參數來參考您的提取祕密。 從您儲存 `pull-secret.txt` 檔案的目錄執行 `az aro create`。 否則，請將 `@pull-secret.txt` 取代為 `@<path-to-my-pull-secret-file>`。
 

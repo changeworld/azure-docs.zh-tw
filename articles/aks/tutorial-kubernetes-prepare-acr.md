@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
-ms.openlocfilehash: 991123b4373332503eff242315e1596a091473c1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 197e5c7bed569e67376f9c28fe0d2e050016cce8
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243659"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922399"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>教學課程：部署和使用 Azure Container Registry
 
@@ -60,9 +60,12 @@ az acr login --name <acrName>
 
 若要查看目前的本機映像清單，請使用 [docker images][docker-images] 命令：
 
-```
+```azurecli
 $ docker images
+```
+上述命令輸出會顯示您目前的本機映像清單：
 
+```
 REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front             latest              4675398c9172        13 minutes ago      694MB
 redis                        latest              a1b99da73d05        7 days ago          106MB
@@ -83,11 +86,15 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-若要確認標記是否已套用，請再次執行 [docker images][docker-images]。 映像會加上 ACR 執行個體位址和版本號碼的標記。
+若要確認標記是否已套用，請再次執行 [docker images][docker-images]。 
+
+```azurecli
+$ docker images
+```
+
+映像會加上 ACR 執行個體位址和版本號碼的標記。
 
 ```
-$ docker images
-
 REPOSITORY                                           TAG           IMAGE ID            CREATED             SIZE
 azure-vote-front                                     latest        eaf2b9c57e5e        8 minutes ago       716 MB
 mycontainerregistry.azurecr.io/azure-vote-front      v1            eaf2b9c57e5e        8 minutes ago       716 MB

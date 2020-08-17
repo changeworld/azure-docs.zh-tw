@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - 建立使用者流程 - Azure Active Directory B2C
-description: 了解如何在 Azure 入口網站中建立使用者流程，以在 Azure Active Directory B2C 中啟用應用程式的註冊、登入和使用者設定檔編輯功能。
+description: 遵循本教學課程來了解如何在 Azure 入口網站中建立使用者流程，以在 Azure Active Directory B2C 中啟用應用程式的註冊、登入和使用者設定檔編輯功能。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b13decc142328525376ca8b3a93c74b95c90dae6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 041b1766ae6a64f51d922de128ef316cc0ed8260
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87481856"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922164"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中建立使用者流程
 

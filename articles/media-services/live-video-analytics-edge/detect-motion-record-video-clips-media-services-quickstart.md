@@ -3,12 +3,12 @@ title: 偵測動作、將影片錄製到 Azure 媒體服務
 description: 本快速入門說明如何在 IoT Edge 上使用 Live Video Analytics，以偵測即時影片串流中的動作，並將視訊剪輯錄製到 Azure 媒體服務。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074411"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067643"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>快速入門：偵測動作、將影片錄製到媒體服務
 
@@ -29,13 +29,13 @@ ms.locfileid: "87074411"
 
 在設定 Azure 資源的上述步驟中，會將停車場的 (簡短) 影片複製到 Azure 中作為 IoT Edge 裝置使用的 Linux VM。 此影片檔案將用來模擬本教學課程的即時串流。
 
-您可以使用 [VLC Player](https://www.videolan.org/vlc/) 之類的應用程式、加以啟動、按 Control+N，然後將[此](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)連結貼到停車場影片以開始播放。 在大約 5 秒標記處，一輛白色汽車駛進停車場。
+您可以使用 [VLC Player](https://www.videolan.org/vlc/) 之類的應用程式、加以啟動、按 `Ctrl+N`，然後貼上[停車場影片範例](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)連結以開始播放。 在大約 5 秒標記處，一輛白色汽車駛進停車場。
 
 當您完成下列步驟時，將在 IoT Edge 上使用 Live Video Analytics 來偵測汽車的移動，並從大約 5 秒標記處開始錄製影片剪輯。 下圖是整體流程的視覺表示法。
 
 ![根據動作事件對資產進行以事件為基礎的影片錄製](./media/quickstarts/topology.png)
 
-## <a name="use-direct-methods"></a>使用直接方法
+## <a name="use-direct-method-calls"></a>使用直接方法呼叫
 
 您可以使用模組，藉由叫用直接方法來分析即時影片串流。 請參閱 [IoT Edge 上 Live Video Analytics 的直接方法](direct-methods.md)，以了解模組所提供的所有直接方法。 
 
@@ -46,35 +46,35 @@ ms.locfileid: "87074411"
 1. 您會在 Visual Studio Code 視窗的頂端中央看到快顯編輯方塊。 在編輯方塊中輸入 "GraphTopologyList"，然後按 Enter 鍵。
 1. 接下來，在編輯方塊中複製並貼上下列 JSON 承載，然後按 Enter 鍵。
     
-    ```
-    {
-        "@apiVersion" : "1.0"
-    }
-    ```
+```
+{
+    "@apiVersion" : "1.0"
+}
+```
 
-    在幾秒內，您會在 Visual Studio Code 快顯中看到 [輸出] 視窗，其中包含下列回應
+在幾秒內，您會在 Visual Studio Code 快顯中看到 [輸出] 視窗，其中包含下列回應
     
-    ```
-    [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
-    [DirectMethod] Response from [lva-sample-device/lvaEdge]:
-    {
-      "status": 200,
-      "payload": {
-        "value": []
-      }
-    }
-    ```
+```
+[DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
+[DirectMethod] Response from [lva-sample-device/lvaEdge]:
+{
+  "status": 200,
+  "payload": {
+    "value": []
+  }
+}
+```
     
-    預期會有上述回應，因為尚未建立任何圖表拓撲。
+預期會有上述回應，因為尚未建立任何圖表拓撲。
 
 ### <a name="invoke-graphtopologyset"></a>叫用 GraphTopologySet
 
-使用與叫用 GraphTopologyList 所概述的相同步驟，您可以使用下列 JSON 作為承載，來叫用 GraphTopologySet 以設定[圖表拓撲](media-graph-concept.md#media-graph-topologies-and-instances)。 您將會建立名為 "EVRtoAssetsOnMotionDetecion" 的圖表拓撲。
+使用與叫用 GraphTopologyList 所概述的相同步驟，您可以使用下列 JSON 作為承載，來叫用 GraphTopologySet 以設定[圖表拓撲](media-graph-concept.md#media-graph-topologies-and-instances)。 您將會建立名為 "EVRtoAssetsOnMotionDetection" 的圖表拓撲。
 
 ```
 {
     "@apiVersion": "1.0",
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -195,7 +195,7 @@ ms.locfileid: "87074411"
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to assets based on motion events",
       "parameters": [
@@ -312,7 +312,7 @@ ms.locfileid: "87074411"
 
 * 再次叫用 GraphTopologySet，並檢查傳回的狀態碼為 200。 狀態碼 200 表示已成功更新現有的圖表拓撲。
 * 再次叫用 GraphTopologySet，但變更描述字串。 檢查回應中的狀態碼是否為 200，且描述已更新為新的值。
-* 如前一節中所概述叫用 GraphTopologyList，並檢查您現在是否可以在傳回的承載中看到 "EVRtoAssetsOnMotionDetecion" 圖表拓撲。
+* 如前一節中所概述叫用 GraphTopologyList，並檢查您現在是否可以在傳回的承載中看到 "EVRtoAssetsOnMotionDetection" 圖表拓撲。
 
 ### <a name="invoke-graphtopologyget"></a>叫用 GraphTopologyGet
 
@@ -321,7 +321,7 @@ ms.locfileid: "87074411"
 
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 
@@ -337,7 +337,7 @@ ms.locfileid: "87074411"
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -466,7 +466,7 @@ ms.locfileid: "87074411"
     "@apiVersion" : "1.0",
     "name" : "Sample-Graph-2",
     "properties" : {
-        "topologyName" : "EVRtoAssetsOnMotionDetecion",
+        "topologyName" : "EVRtoAssetsOnMotionDetection",
         "description" : "Sample graph description",
         "parameters" : [
             { "name" : "rtspUrl", "value" : "rtsp://rtspsim:554/media/lots_015.mkv" }
@@ -477,7 +477,7 @@ ms.locfileid: "87074411"
 
 請注意：
 
-* 上述承載會指定需要建立圖表執行個體的圖表拓撲名稱 (EVRtoAssetsOnMotionDetecion)。
+* 上述承載會指定需要建立圖表執行個體的圖表拓撲名稱 (EVRtoAssetsOnMotionDetection)。
 * 此承載包含 "rtspUrl" 的參數值，在拓撲承載中沒有預設值。
 
 在幾秒內，您會在 [輸出] 視窗中看到下列回應：
@@ -496,7 +496,7 @@ ms.locfileid: "87074411"
     "properties": {
       "state": "Inactive",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -531,13 +531,13 @@ ms.locfileid: "87074411"
     
     在幾秒內，您會在 [輸出] 視窗中看到下列訊息：
 
-    ```
-    [IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
-    [IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
-    ```
+```
+[IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
+[IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
+```
 
 ### <a name="invoke-graphinstanceactivate"></a>叫用 GraphInstanceActivate
 
@@ -590,7 +590,7 @@ ms.locfileid: "87074411"
     "properties": {
       "state": "Active",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -738,7 +738,7 @@ ms.locfileid: "87074411"
 
 如果您讓圖表執行個體繼續執行，RTSP 模擬器會到達影片檔案的結尾，並停止/中斷連線。 然後，RTSP 來源節點會重新連線到模擬器，而此程序將會重複。
     
-## <a name="invoke-additional-direct-methods-to-clean-up"></a>叫用其他直接方法來清除
+## <a name="invoke-additional-direct-method-calls-to-clean-up"></a>叫用其他直接方法呼叫來清除
 
 現在，叫用直接方法來停用及刪除圖表執行個體 (依該順序)。
 
@@ -801,7 +801,7 @@ ms.locfileid: "87074411"
 ```
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 

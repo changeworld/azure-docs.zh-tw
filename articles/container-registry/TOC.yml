@@ -148,6 +148,12 @@
         - name: 疑難排解
           expanded: false
           items:
+            - name: 針對登入進行疑難排解
+              href: container-registry-troubleshoot-login.md
+            - name: 針對網路問題進行疑難排解
+              href: container-registry-troubleshoot-access.md
+            - name: 針對登錄效能進行疑難排解
+              href: container-registry-troubleshoot-performance.md
             - name: 偵測常見問題
               href: container-registry-check-health.md
             - name: 常見問題集

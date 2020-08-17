@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 74ffb54b13783b4945376e1717777fa1da39ab44
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543311"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136094"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (先前為 SQL DW) 的速查表
 
@@ -37,7 +37,7 @@ ms.locfileid: "87543311"
 
 ## <a name="data-migration"></a>資料移轉
 
-首先，請將資料載入 [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 Azure Blob 儲存體。 接下來，使用 PolyBase 將資料載入至暫存表格。 請使用下列組態︰
+首先，請將資料載入 [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) 或 Azure Blob 儲存體。 接下來，使用 [COPY 陳述式](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (預覽) 將資料載入暫存表格中。 請使用下列組態︰
 
 | 設計 | 建議 |
 |:--- |:--- |
@@ -109,7 +109,7 @@ ms.locfileid: "87543311"
 
 ## <a name="maintain-statistics"></a>維護統計資料
 
- 在正式推出自動統計資料之前，您必須手動維護統計資料。 對您的資料做重大變更  時，同時更新統計資料很重要。 這可協助最佳化您的查詢計劃。 如果您發現維護所有統計資料所需時間太長，可能要更謹慎選擇為哪些資料行統計資料。
+對您的資料做重大變更  時，同時更新統計資料很重要。 請參閱[更新統計資料](sql-data-warehouse-tables-statistics.md#update-statistics)，判斷是否已發生*重大*變更。 更新的統計資料會將查詢計劃最佳化。 如果您發現維護所有統計資料所需時間太長，可能要更謹慎選擇為哪些資料行統計資料。
 
 您也可以定義更新的頻率。 例如，您可能想要更新每天都要加入新值的日期資料行。 對於牽涉聯結的資料行、WHERE 子句中使用的資料行、在 GROUP BY 中找到的資料行，統計資料可以獲得最大效益。
 

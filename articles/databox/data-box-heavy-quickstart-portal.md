@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Data Box Heavy 的快速入門 | Microsoft Docs
-description: 了解如何在 Azure 入口網站中快速部署您的 Azure Data Box Heavy
+description: 在本快速入門中，了解如何使用 Azure 入口網站部署 Azure Data Box Heavy，包括如何接線、設定和複製資料以上傳至 Azure。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9d007f4fa8721214a7c97595fa297ef44199119f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199118"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920784"
 ---
 ::: zone target = "docs"
 

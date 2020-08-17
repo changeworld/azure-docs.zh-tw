@@ -3,12 +3,12 @@ title: ISO 27001 ASE/SQL 工作負載藍圖範例控制項
 description: ISO 27001 App Service 環境/SQL Database 工作負載藍圖範例對於 Azure 原則和 RBAC 的控制項對應。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 10bac1c8f018f28f62bb9d7cc179e4cc256732c6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b15b5407f749eb53e264eb14c5e50b7afc21ee5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006852"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920733"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作負載藍圖的控制項對應
 
@@ -34,7 +34,7 @@ Azure 的 [SQL 弱點評量服務](../../../../azure-sql/database/sql-vulnerabil
 
 ## <a name="a912-access-to-networks-and-network-services"></a>A.9.1.2 存取網路和網路服務
 
-Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-control/overview.md)，以管理有權存取 Azure 資源的人員。 此藍圖指派了七項 [Azure 原則](../../../policy/overview.md)定義以協助您控制對 Azure 資源的存取。 這些原則會稽核資源類型和組態的使用方式是否可能會允許更寬鬆資源存取。
+Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以管理有權存取 Azure 資源的人員。 此藍圖指派了七項 [Azure 原則](../../../policy/overview.md)定義以協助您控制對 Azure 資源的存取。 這些原則會稽核資源類型和組態的使用方式是否可能會允許更寬鬆資源存取。
 了解有哪些資源違反這些原則可協助您採取修正動作，以確保 Azure 資源僅限定給經授權的使用者存取。
 
 - 部署必要條件，以稽核有不具密碼帳戶的 Linux VM
@@ -69,7 +69,7 @@ Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-cont
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 檢閱使用者存取權限
 
-Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了四項 [Azure 原則](../../../policy/overview.md)定義來稽核應優先檢閱的帳戶，包括已停用的帳戶和已提高權限的外部帳戶。
+Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了四項 [Azure 原則](../../../policy/overview.md)定義來稽核應優先檢閱的帳戶，包括已停用的帳戶和已提高權限的外部帳戶。
 
 - 已取代帳戶應該從您的訂用帳戶中移除
 - 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除
@@ -78,7 +78,7 @@ Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-cont
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>A.9.2.6 移除或調整存取權限
 
-Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 使用 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) 和 RBAC，可更新使用者角色以反映組織變更。 必要時可以封鎖帳戶的登入 (或移除帳戶)，而立即移除對 Azure 資源的存取權限。 此藍圖指派了兩項 [Azure 原則](../../../policy/overview.md)定義來稽核應考慮移除的停用帳戶。
+Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 使用 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) 和 RBAC，可更新使用者角色以反映組織變更。 必要時可以封鎖帳戶的登入 (或移除帳戶)，而立即移除對 Azure 資源的存取權限。 此藍圖指派了兩項 [Azure 原則](../../../policy/overview.md)定義來稽核應考慮移除的停用帳戶。
 
 - 已取代帳戶應該從您的訂用帳戶中移除
 - 具有擁有者權限的已取代帳戶應該從您的訂用帳戶中移除

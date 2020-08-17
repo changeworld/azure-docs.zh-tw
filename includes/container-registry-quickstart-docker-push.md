@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 01/23/2019
+ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: b10bf18fde850223bda80a597f448747558113f1
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: 16c1dec9e52be98e5b4e0103a583bdc219bc2417
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752173"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031767"
 ---
 ## <a name="push-image-to-registry"></a>將映像推送至登錄
 
@@ -23,13 +23,20 @@ ms.locfileid: "84752173"
 docker pull hello-world
 ```
 
-您必須使用登錄登入伺服器的完整名稱來標記映像，才能將映像推送至您的登錄。 登入伺服器名稱的格式為 *\<registry-name\>.azurecr.io* (全部小寫)，例如 *mycontainerregistry007.azurecr.io*。
+您必須使用登錄登入伺服器的完整名稱來標記映像，才能將映像推送至您的登錄。 登入伺服器名稱的格式為 *\<registry-name\>.azurecr.io* (全部小寫)，例如 *mycontainerregistry.azurecr.io*。
 
 使用 [docker tag][docker-tag] 命令來標記映像。 將 `<login-server>` 取代為 ACR 執行個體的登入伺服器名稱。
 
 ```
 docker tag hello-world <login-server>/hello-world:v1
 ```
+
+範例：
+
+```
+docker tag hello-world mycontainerregistry.azurecr.io/hello-world:v1
+```
+
 
 最後，使用 [docker push][docker-push] 將映像推送到登錄執行個體。 將 `<login-server>` 取代為登錄執行個體的登入伺服器名稱。 此範例會建立 **hello-world** 存放庫，其中包含 `hello-world:v1` 映像。
 

@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: a6805fc686d0bc5bd0e2357828d59d40ba05f248
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "84870384"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852917"
 ---
 # <a name="testing-the-fhir-api"></a>測試 FHIR API
 在前兩個步驟中，您已部署 Azure API for FHIR 並註冊您的用戶端應用程式。 您現在已準備好要測試您的 Azure API for FHIR 是否已設定使用您的用戶端應用程式。 
@@ -41,8 +41,8 @@ ms.locfileid: "84870384"
 |權杖名稱           |您的權杖名稱                                               |
 |授與類型           |授權碼                                                  |
 |回呼 URL         |https://www.getpostman.com/oauth2/callback                          |
-|驗證 URL             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
-|存取權杖 URL     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/token|
+|驗證 URL             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID> /oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
+|存取權杖 URL     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID> /oauth2/token|
 |用戶端識別碼            |您在先前步驟中複製的用戶端識別碼             |
 |用戶端密碼        |\<BLANK>                                                            |
 |影響範圍                |\<BLANK>                                                            |

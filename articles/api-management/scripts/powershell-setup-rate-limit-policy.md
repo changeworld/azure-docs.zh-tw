@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 指令碼範例 - 設定速率限制原則 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 設定速率限制原則
+description: 了解如何使用 Azure PowerShell 設定速率限制原則。 查看範例指令碼並檢視其他可用資源。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 991a9fd9fa0717c97a549d371ca47c5b389d1a27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40bbd520eb265b70f95c6b365b590727af8ea144
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008708"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851285"
 ---
 # <a name="set-up-rate-limit-policy"></a>設定速率限制原則
 

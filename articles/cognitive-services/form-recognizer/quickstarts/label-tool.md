@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 234d6af25f37bf04d3240177142d5ef919e8dd2d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141886"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903471"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>使用範例標籤工具，以標籤定型表單辨識器模型
 
@@ -26,7 +26,7 @@ ms.locfileid: "84141886"
 
 若要完成此快速入門，您必須：
 
-- 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
+- 至少有六個相同類型的表單。 您將使用此資料來定型模型和測試表單。 您可以使用本快速入門的[範例資料集](https://go.microsoft.com/fwlink/?linkid=2090451)。 將訓練檔案上傳至標準效能層級 Azure 儲存體帳戶中 Blob 儲存體容器的根目錄。
 
 ## <a name="create-a-form-recognizer-resource"></a>建立表單辨識器資源
 
@@ -133,7 +133,7 @@ ms.locfileid: "84141886"
    1. 按一下 **+** 以建立新標記。
    1. 輸入標記名稱。
    1. 按 Enter 以儲存標記。
-1. 在主要編輯器中，按一下並拖曳以從反白顯示的文字元素中選取一或多個單字。
+1. 在主要編輯器中，按一下以從醒目提示的文字元素中選取字組。
 1. 按一下您要套用的標記，或按對應的鍵盤按鍵。 數字鍵會指派為前 10 個標記的快速鍵。 您可以使用標籤編輯器窗格中的向上和向下箭號圖示來重新排序標籤。
     > [!Tip]
     > 當您要標記表單時，請記住下列秘訣。
@@ -192,7 +192,7 @@ ms.locfileid: "84141886"
 
 按一下左窗格上的「訓練」圖示，以開啟 [訓練] 頁面。 然後，按一下 [訓練] 按鈕，開始對模型進行定型。 定型程序完成後，您會看到下列資訊：
 
-* **模型識別碼** - 已建立並定型之模型的識別碼。 每個定型呼叫都會以本身的識別碼建立新的模型。 請將此字串複製到安全之處；如果您想要透過 REST API 進行預測呼叫，就會需要此字串。
+* **模型識別碼** - 已建立並定型之模型的識別碼。 每個定型呼叫都會以本身的識別碼建立新的模型。 請將此字串複製到安全之處；如果您想要透過 [REST API](./curl-train-extract.md) 或[用戶端程式庫](./client-library.md)進行預測呼叫，就會需要此字串。
 * **平均精確度** - 模型的平均精確度。 您可以為其他表單加上標籤並再次定型以建立新的模型，進而改善模型的精確度。 建議您先為五個表單加上標籤，然後再視需要新增更多表單。
 * 標籤的清單，以及每個標籤的預估精確度。
 

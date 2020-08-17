@@ -1,20 +1,20 @@
 ---
 title: 教學課程：建立地理柵欄並在Microsoft Azure 地圖服務上追蹤裝置
-description: 了解如何使用 Microsoft Azure 地圖服務的空間服務來設定地理柵欄，並追蹤與地理柵欄相關的裝置。
+description: 了解如何設定地理柵欄。 請參閱如何使用 Azure 地圖服務空間服務來追蹤相對於地理柵欄的裝置。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 7/15/2020
+ms.date: 8/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 775d98b992f2bca4441c868873ceaeb2389db81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517328"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121233"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教學課程：使用 Azure 地圖服務設定地理柵欄
 
@@ -25,7 +25,7 @@ ms.locfileid: "86517328"
 Azure 地圖服務提供許多服務，以支援上述案例中在設備進入和離開建築區域時加以追蹤。 在本教學課程中，我們說明如何：
 
 > [!div class="checklist"]
-> * 上傳[Geoencing GeoJSON 資料](geofence-geojson.md)，以定義我們想要監視的工地區域。 我們將使用[資料上傳 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)，將地理柵欄當作多邊形座標上傳至您的 Azure 地圖服務帳戶。
+> * 上傳 [Geofencing GeoJSON 資料](geofence-geojson.md)，以定義我們想要監視的工地區域。 我們將使用[資料上傳 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)，將地理柵欄當作多邊形座標上傳至您的 Azure 地圖服務帳戶。
 > * 設定兩個[邏輯應用程式](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps)；當觸發時，會在設備進入並離開地理柵欄區域時，傳送電子郵件通知給網站建構的 Operations Manager。
 > * 使用 [Azure 事件方格](https://docs.microsoft.com/azure/event-grid/overview)來訂閱 Azure 地圖服務地理柵欄進入和退出事件。 我們將設定兩個 Web Hook 事件訂用帳戶，以呼叫您在兩個 Logic Apps 中定義的 HTTP 端點。 然後，Logic Apps 會在設備移動或進入地理柵欄時，傳送適當的電子郵件通知。
 > * 使用 [Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence)，在設備離開並進入地理柵欄區域時接收通知。

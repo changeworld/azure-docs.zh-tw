@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 45b535db9fccb41542ee74cb28845d49211e16ec
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0e17ecea6c85329b22310ebe1d06e2fe63cdd773
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281050"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042814"
 ---
 # <a name="what-is-azure-digital-twins"></a>什麼是 Azure Digital Twins？
 
-**Azure Digital Twins** 是一種平台即服務 (PaaS) 供應項目，可讓您建立整個環境的完整數位模型。 這些環境可能是大樓、工廠、農場、能源網路、鐵路、運動場等，甚至是整個城市。 這些數位模型可用來取得深入解析以推動更優秀的產品、優化作業、降低成本，以及突破性的客戶體驗。
+**Azure Digital Twins** 是一種平台即服務 (PaaS) 供應項目，可讓您根據整個環境的數位模型建立知識圖表。 這些環境可能是大樓、工廠、農場、能源網路、鐵路、運動場等，甚至是整個城市。 這些數位模型可用來取得深入解析以推動更優秀的產品、優化作業、降低成本，以及突破性的客戶體驗。
 
 在 Azure Digital Twins 上利用您所屬領域的專業知識，建立自訂的連線解決方案，如下所示：
 * 建立任何環境的模型，並以可擴充且安全的方式將數位分身融入生活

@@ -3,12 +3,12 @@ title: 使用您自己的模型分析即時影片 - Azure
 description: 在本快速入門中，您將套用電腦視覺來分析來自 (模擬) IP 攝影機的即時影片摘要。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: dc8c2d1f0620a92a13cb1f4c0b83c2452f964fd6
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 75e18917b0d44dc33999d17360cd66a538c83d2b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170623"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065194"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>快速入門：使用您自己的模型分析即時影片
 
@@ -31,7 +31,7 @@ ms.locfileid: "87170623"
 ## <a name="review-the-sample-video"></a>檢閱範例影片
 當您設定 Azure 資源時，系統會將高速公路車流的短片複製到 Azure 中您要作為 IoT Edge 裝置的 Linux VM。 本快速入門會使用影片檔案來模擬即時串流。
 
-開啟應用程式，例如 [VLC media player](https://www.videolan.org/vlc/)。 選取 Ctrl+N，然後貼上[影片](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv)的連結以開始播放。 您會看到許多車輛在高速公路車流中移動的畫面。
+開啟應用程式，例如 [VLC media player](https://www.videolan.org/vlc/)。 選取 `Ctrl+N`，然後貼上[高速公路交叉口範例影片](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv)的連結以便開始播放。 您會看到許多車輛在高速公路車流中移動的畫面。
 
 在本快速入門中，您將在 IoT Edge 上使用 Live Video Analytics 以偵測車輛和人員等物件。 您會將相關聯的推斷事件發佈到 IoT Edge 中樞。
 
@@ -107,9 +107,18 @@ HTTP 延伸模組節點扮演 Proxy 的角色。 其會將影片畫面轉換成�
 1. 當系統提示您選取 IoT 中樞裝置時，請選取 [lva-sample-device]。
 1. 大約 30 秒之後，請在視窗左下角重新整理 Azure IoT 中樞。 邊緣裝置現在會顯示下列已部署的模組：
 
-    * 名為 **lvaEdge** 的 Live Video Analytics 模組
-    * 名為 **rtspsim** 的模組，其會模擬 RTSP 伺服器並作為即時影片摘要的來源
-    * **yolov3** 模組，這是 YOLOv3 物件偵測模型，會將電腦視覺套用至映像並傳回多個物件類型類別
+    * 名為 `lvaEdge` 的 Live Video Analytics 模組
+    * 名為 `rtspsim` 的模組，其會模擬 RTSP 伺服器並作為即時影片摘要的來源
+    > [!NOTE]
+    > 如果您使用自己的邊緣裝置，而不是我們的設定指令碼所佈建的裝置，請移至您的邊緣裝置，並以**管理員權限**執行下列命令，以提取並儲存用於本快速入門的範例影片檔案：  
+
+    ```
+    mkdir /home/lvaadmin/samples
+    mkdir /home/lvaadmin/samples/input    
+    curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+    chown -R lvaadmin /home/lvaadmin/samples/  
+    ```
+    * `yolov3` 模組，這是 YoloV3 物件偵測模型，會將電腦視覺套用至映像並傳回多個物件類型類別
  
       ![部署在邊緣裝置中的模組](./media/quickstarts/yolov3.png)
 
@@ -284,7 +293,7 @@ HTTP 延伸模組處理器節點會接收來自 yolov3 模組的推斷結果。 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 試用[安全版的 YOLOv3 模型](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md)，並將其部署至 IOT 邊緣裝置。 
+* 試用[安全版的 YoloV3 模型](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md)，並將其部署至 IoT Edge 裝置。 
 
 檢閱進階使用者的其他挑戰：
 

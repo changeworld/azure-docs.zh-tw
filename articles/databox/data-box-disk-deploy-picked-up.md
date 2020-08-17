@@ -1,20 +1,20 @@
 ---
 title: 寄回 Azure 資料箱磁碟的教學課程 | Microsoft Docs
-description: 使用本教學課程以了解如何將您的 Azure 資料箱磁碟寄回給 Microsoft
+description: 在本教學課程中，了解如何送回 Azure 資料箱磁碟。 取貨指示取決於您寄回裝置的位置。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 62ab110a24bbf6b93f7f019c829222ca666ecfaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039458"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923776"
 ---
 ::: zone target="docs"
 
@@ -85,7 +85,7 @@ ms.locfileid: "87039458"
 
 1. 使用提供的退貨標籤，且務必在上面寫下 TAU 代碼 (參考編號)。 若提供的出貨標籤遺失或有其他問題，請寄電子郵件到[資料箱亞洲營運部門](mailto:adbo@microsoft.com)詢問。 請在主旨標題中提供訂單名稱，並詳細說明問題。
 2. 將標籤黏貼在箱子上。
-3. 按此連結 https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference 線上預約取貨服務。 
+3. 透過此連結 https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference 線上預約取貨服務。
 
 ### <a name="japan"></a>[日本](#tab/in-japan)
 
@@ -138,7 +138,7 @@ ms.locfileid: "87039458"
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - XZ00001234567
+    Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
      b.    Requestor contact number
@@ -155,6 +155,32 @@ ms.locfileid: "87039458"
    如果您遇到任何問題，請連絡 Data Box Operations Asia，位置是 adbo@microsoft.com。 請在主旨標頭中提供作業名稱，另外提供遇到的問題。
 
 3. 將貨交給快遞人員。
+
+### <a name="south-africa"></a>[南非](#tab/in-sa)
+
+如果在南非送回裝置，請執行下列步驟。
+
+1. 在箱子上貼上所提供的出貨標籤。 此標籤包含追蹤號碼。 如果出貨標籤遺失，您可以從 **概觀 > 下載出貨標籤**下載。
+
+2. 將包裹密封，並確定退貨標籤清楚可見。
+
+3. 若要預約 DHL 取貨：
+
+    * 致電客戶服務連絡中心 (電話是 +27(0) 11 9213600)、選取第 1 個選項，然後指定運貨單號碼。
+    * 您必須在南非標準時間 (ZA) 下午 2:00 之前致電以安排取貨。  
+    * 使用下列電子郵件範本，寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) 來組織取貨：
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject:Pickup request for Microsoft Azure
+    Body:  Need pick up for the below shipment
+    *  DHL tracking number (reference number/waybill number)
+    *  Requested pickup date：yyyy/mm/dd; time: HH MM
+    ```
+
+    * 或者，您也可以將包裹拿到最近的 DHL 服務據點。
+
+4. 如果您遇到任何問題，請寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)，並於其中詳述您遇到的問題，然後在 [主旨:] 行放入運貨單號碼。 您也可以致電 +27(0)119213902。
 
 ### <a name="china"></a>[中國](#tab/in-china)
 
@@ -231,7 +257,3 @@ ms.locfileid: "87039458"
 > [確認資料已從 Azure 資料箱磁碟上傳](./data-box-disk-deploy-upload-verify.md)
 
 ::: zone-end
-
-
-
-

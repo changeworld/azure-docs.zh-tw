@@ -27,20 +27,16 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: 操作指南
   items:
-    - name: 設定您的 Azure 入口網站喜好設定
+    - name: 管理 Azure 入口網站設定和喜好設定
       href: set-preferences.md
-    - name: 設定所有使用者的非使用中逾時設定
-      href: admin-timeout.md
-    - name: 開啟高對比或變更佈景主題
-      href: azure-portal-change-theme-high-contrast.md
     - name: 新增、移除及排序我的最愛
       href: azure-portal-add-remove-sort-favorites.md
-    - name: 建立和共用 Azure 儀表板
-      href: azure-portal-dashboards.md
-    - name: 使用自訂的 Markdown 圖格
-      href: azure-portal-markdown-tile.md
-    - name: 匯出或刪除使用者設定
-      href: azure-portal-export-delete-settings.md
+    - name: 建立 Azure 儀表板
+      items:
+        - name: 建立和共用 Azure 儀表板
+          href: azure-portal-dashboards.md
+        - name: 使用自訂的 Markdown 圖格
+          href: azure-portal-markdown-tile.md
     - name: Azure 入口網站操作說明影片系列
       href: azure-portal-video-series.md
     - name: 建立及管理支援要求

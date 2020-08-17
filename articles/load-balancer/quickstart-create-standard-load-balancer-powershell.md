@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/23/2020
+ms.date: 08/06/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: b8a95687b1567eb6e063ccc871a4a130c5f2db69
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bdacd752ab549d0caed4d3579ac8d0c3b2606477
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290351"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925684"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>快速入門：使用 Azure PowerShell 建立公用負載平衡器以平衡 VM 的負載
 
@@ -56,7 +56,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 ```
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[選項 1 (預設值)：建立負載平衡器 (標準 SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[選項 1 (預設值)：建立公用負載平衡器 (標準 SKU)](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >建議對生產環境工作負載使用標準 SKU 負載平衡器。 如需 SKU 的詳細資訊，請參閱 **[Azure Load Balancer 的標準 SKU](skus.md)** 。
@@ -219,7 +219,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 請先建立支援的虛擬網路資源，才可部署 VM 並測試您的負載平衡器。
 
-### <a name="create-a-virtual-network"></a>建立虛擬網路
+### <a name="create-a-virtual-network-and-azure-bastion-host"></a>建立虛擬網路和 Azure Bastion 主機
 
 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路：
 
@@ -228,124 +228,56 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 * 名為 **MyBackendSubnet** 的子網路。
 * 虛擬網路 **10.0.0.0/16**。
 * 子網路 **10.0.0.0/24**。
+* Bastion 子網路 **10.0.1.0/24**
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
+$bsub = 'AzureBastionSubnet'
 $spfx = '10.0.0.0/24'
+$bpfx = '10.0.1.0/24'
 $vnm = 'myVNet'
 $vpfx = '10.0.0.0/16'
 
-## Create subnet config ##
+
+## Create backend subnet config ##
 $subnetConfig = 
 New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
 
+## Create Bastion subnet config ##
+$bassubnetConfig =
+New-AzVirtualNetworkSubnetConfig -name $bsub -AddressPrefix $bpfx
+
 ## Create the virtual network ##
 $vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig
+New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig,$bassubnetConfig
 ```
-### <a name="create-public-ip-addresses-for-the-vms"></a>建立 VM 的公用 IP 位址
+使用 [New-AzBastion](/powershell/module/az.network/new-azbastion) 建立堡壘主機：
 
-若要使用 RDP 連線存取 VM，您需要 VM 的公用 IP 位址。 
-
-使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 建立為下列項目標準公用 IP 位址：
-
-#### <a name="vm1"></a>VM1
-
-* 具名 **myVMPubIP1**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 在 **eastus** 位置中。
-* **標準** SKU。
-* IP 位址的**靜態**配置。
+* 命名為 **myBastionHost**。
+* **myBastionIP** 的公用 IP。
 
 ```azurepowershell-interactive
-## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
-$ip1 = 'myVMPubIP1'
-$sku = 'Standard'
-$all = 'static'
+$bas = 'myBastionHost'
+$basip = 'myBastionIP'
+$all = 'Static'
+$sku 'Standard'
 
-$RdpPubIP1 = 
-New-AzPublicIpAddress -Name $ip1 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
+## Create public IP address for Bastion host ##
+$baspubip = 
+New-AzPublicIPAddress -ResourceGroupName $rg -Name $basip -Location $loc -AllocationMethod $all -Sku $sku
+
+## Create the bastion host using the $vnet variable from previous step ##
+New-AzBastion -ResourceGroupName $rg -Name $bas -PublicIpAddress $baspubip -VirtualNetwork $vnet
 ```
-
-#### <a name="vm2"></a>VM2
-
-* 具名 **myVMPubIP2**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 在 **eastus** 位置中。
-* **標準** SKU。
-* IP 位址的**靜態**配置。 
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$ip2 = 'myVMPubIP2'
-$sku = 'Standard'
-$all = 'static'
-
-$RdpPubIP2 = 
-New-AzPublicIpAddress -Name $ip2 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
-```
-
-#### <a name="vm3"></a>VM3
-
-* 具名 **myVMPubIP3**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 在 **eastus** 位置中。
-* **標準** SKU。
-* IP 位址的**靜態**配置。 
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$ip3 = 'myVMPubIP3'
-$sku = 'Standard'
-$all = 'static'
-
-$RdpPubIP3 = 
-New-AzPublicIpAddress -Name $ip3 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
-```
+將堡壘主機部署至虛擬網路需要幾分鐘的時間。
 
 ### <a name="create-network-security-group"></a>建立網路安全性群組
 建立網路安全性群組，以定義虛擬網路的輸入連線。
-
-#### <a name="create-a-network-security-group-rule-for-port-3389"></a>建立連接埠 3389 的網路安全性群組規則
-
-使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 建立網路安全性群組：
-
-* 具名 **myNSGRuleRDP**。
-* **允許 RDP** 的描述。
-* **允許**的存取權。
-* 通訊協定 **TCP**。
-* 方向**輸入**。
-* 優先順序 **1000**。
-* **網際網路**的來源。
-* **(*)** 的來源連接埠範圍。
-* **(*)** 摸目的地位址前置詞。
-* 目的地**連接埠 3389**。
-
-```azurepowershell-interactive
-## Variables for command ##
-$rnm = 'myNSGRuleRDP'
-$des = 'Allow RDP'
-$acc = 'Allow'
-$pro = 'Tcp'
-$dir = 'Inbound'
-$pri = '1000'
-$spfx = 'Internet'
-$spr = '*'
-$dpfx = '*'
-$dpr = '3389'
-
-$rule1 = 
-New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Protocol $pro -Direction $dir -Priority $pri -SourceAddressPrefix $spfx -SourcePortRange $spr -DestinationAddressPrefix $dpfx -DestinationPortRange $dpr
-```
 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>建立連接埠 80 的網路安全性群組規則
 使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 建立網路安全性群組規則：
@@ -374,7 +306,7 @@ $spr = '*'
 $dpfx = '*'
 $dpr = '80'
 
-$rule2 = 
+$rule1 = 
 New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Protocol $pro -Direction $dir -Priority $pri -SourceAddressPrefix $spfx -SourcePortRange $spr -DestinationAddressPrefix $dpfx -DestinationPortRange $dpr
 ```
 
@@ -393,9 +325,9 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nmn = 'myNSG'
 
-## $rule1 and $rule2 are variables with configuration information from the previous steps. ##
+## $rule1 contains configuration information from the previous steps. ##
 $nsg = 
-New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -SecurityRules $rule1,$rule2
+New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -SecurityRules $rule1
 ```
 
 ### <a name="create-network-interfaces"></a>建立網路介面
@@ -418,17 +350,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic1 = 'myNicVM1'
 $vnt = 'myVNet'
-$ip1 = 'myVMPubIP1'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM1 ##
-$pub1 = 
-Get-AzPublicIPAddress -Name $ip1 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -440,7 +367,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM1 ##
 $nicVM1 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -PublicIpAddress $pub1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 
 #### <a name="vm-2"></a>VM 2
@@ -459,17 +386,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic2 = 'myNicVM2'
 $vnt = 'myVNet'
-$ip2 = 'myVMPubIP2'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM2 ##
-$pub2 = 
-Get-AzPublicIPAddress -Name $ip2 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -481,7 +403,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM2 ##
 $nicVM2 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -PublicIpAddress $pub2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 
 #### <a name="vm-3"></a>VM 3
@@ -500,17 +422,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic3 = 'myNicVM3'
 $vnt = 'myVNet'
-$ip3 = 'myVMPubIP3'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM3 ##
-$pub3 = 
-Get-AzPublicIPAddress -Name $ip3 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -522,7 +439,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM3 ##
 $nicVM3 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -PublicIpAddress $pub3 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 ### <a name="create-virtual-machines"></a>建立虛擬機器
 
@@ -631,8 +548,6 @@ New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -Comp
 ## Create the virtual machine ##
 New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 ```
-
-建立及設定這三部 VM 需要幾分鐘的時間。
 
 ## <a name="create-outbound-rule-configuration"></a>建立輸出規則設定
 負載平衡器輸出規則會在後端集區中設定 VM 的輸出來源網路位址轉譯 (SNAT)。 
@@ -763,7 +678,7 @@ $nic =
 Get-AzNetworkInterface -Name $nic1 -ResourceGroupName $rg
 
 ## Apply the backend to the network interface ##
-$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[0].id,$lb.BackendAddressPools[1].id | Set-AzNetworkInterface
 ```
 
 #### <a name="vm2"></a>VM2
@@ -789,7 +704,7 @@ $nic =
 Get-AzNetworkInterface -Name $nic2 -ResourceGroupName $rg
 
 ## Apply the backend to the network interface ##
-$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[0].id,$lb.BackendAddressPools[1].id | Set-AzNetworkInterface
 ```
 
 #### <a name="vm3"></a>VM3
@@ -815,11 +730,11 @@ $nic =
 Get-AzNetworkInterface -Name $nic3 -ResourceGroupName $rg
 
 ## Apply the backend to the network interface ##
-$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[1].id | Set-AzNetworkInterface
+$nic | Set-AzNetworkInterfaceIpConfig -Name $ipc -LoadBalancerBackendAddressPoolId $lb.BackendAddressPools[0].id,$lb.BackendAddressPools[1].id | Set-AzNetworkInterface
 
 ```
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[選項 2：建立負載平衡器 (基本 SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[選項 2：建立公用負載平衡器 (基本 SKU)](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >建議對生產環境工作負載使用標準 SKU 負載平衡器。 如需 SKU 的詳細資訊，請參閱 **[Azure Load Balancer 的標準 SKU](skus.md)** 。
@@ -970,7 +885,7 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 
 請先建立支援的虛擬網路資源，才可部署 VM 並測試您的負載平衡器。
 
-### <a name="create-a-virtual-network"></a>建立虛擬網路
+### <a name="create-a-virtual-network-and-azure-bastion-host"></a>建立虛擬網路和 Azure Bastion 主機
 
 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路：
 
@@ -979,124 +894,53 @@ New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -F
 * 名為 **MyBackendSubnet** 的子網路。
 * 虛擬網路 **10.0.0.0/16**。
 * 子網路 **10.0.0.0/24**。
+* Bastion 子網路 **10.0.1.0/24**
 
 ```azurepowershell-interactive
 ## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $sub = 'myBackendSubnet'
+$bsub = 'AzureBastionSubnet'
 $spfx = '10.0.0.0/24'
+$bpfx = '10.0.1.0/24'
 $vnm = 'myVNet'
 $vpfx = '10.0.0.0/16'
 
-## Create subnet config ##
+
+## Create backend subnet config ##
 $subnetConfig = 
 New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
 
+## Create Bastion subnet config ##
+$bassubnetConfig =
+New-AzVirtualNetworkSubnetConfig -name $bsub -AddressPrefix $bpfx
+
 ## Create the virtual network ##
 $vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig
+New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig,$bassubnetConfig
 ```
-### <a name="create-public-ip-addresses-for-the-vms"></a>建立 VM 的公用 IP 位址
+使用 [New-AzBastion](/powershell/module/az.network/new-azbastion) 建立堡壘主機：
 
-若要使用 RDP 連線存取 VM，您需要 VM 的公用 IP 位址。 
-
-使用 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) 建立為下列項目標準公用 IP 位址：
-
-#### <a name="vm1"></a>VM1
-
-* 具名 **myVMPubIP1**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 在 **eastus** 位置中。
-* **標準** SKU。
-* IP 位址的**靜態**配置。
+* 命名為 **myBastionHost**。
+* **myBastionIP** 的公用 IP。
 
 ```azurepowershell-interactive
-## Variables for the command ##
 $rg = 'myResourceGroupLB'
 $loc = 'eastus'
-$ip1 = 'myVMPubIP1'
-$sku = 'Basic'
-$all = 'static'
+$bas = 'myBastionHost'
+$basip = 'myBastionIP'
 
-$RdpPubIP1 = 
-New-AzPublicIpAddress -Name $ip1 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
-```
+## Create public IP address for Bastion host ##
+$basip = 
+New-AzPublicIPAddress -ResourceGroupName $rg -Location $loc
 
-#### <a name="vm2"></a>VM2
-
-* 具名 **myVMPubIP2**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 在 **eastus** 位置中。
-* **標準** SKU。
-* IP 位址的**靜態**配置。 
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$ip2 = 'myVMPubIP2'
-$sku = 'Basic'
-$all = 'static'
-
-$RdpPubIP2 = 
-New-AzPublicIpAddress -Name $ip2 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
-```
-
-#### <a name="vm3"></a>VM3
-
-* 具名 **myVMPubIP3**。
-* 在 **myResourceGroupLB** 資源群組中。
-* 在 **eastus** 位置中。
-* **標準** SKU。
-* IP 位址的**靜態**配置。 
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'myResourceGroupLB'
-$loc = 'eastus'
-$ip3 = 'myVMPubIP3'
-$sku = 'Basic'
-$all = 'static'
-
-$RdpPubIP2 = 
-New-AzPublicIpAddress -Name $ip3 -ResourceGroupName $rg -Location $loc -SKU $sku -AllocationMethod $all
+## Create the bastion host using the $vnet variable from previous step ##
+New-AzBastion -ResourceGroupName $rg -Name $bas -PublicIpAddress $basip -VirtualNetwork $vnet
 ```
 
 ### <a name="create-network-security-group"></a>建立網路安全性群組
 建立網路安全性群組，以定義虛擬網路的輸入連線。
-
-#### <a name="create-a-network-security-group-rule-for-port-3389"></a>建立連接埠 3389 的網路安全性群組規則
-
-使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 建立網路安全性群組：
-
-* 具名 **myNSGRuleRDP**。
-* **允許 RDP** 的描述。
-* **允許**的存取權。
-* 通訊協定 **TCP**。
-* 方向**輸入**。
-* 優先順序 **1000**。
-* **網際網路**的來源。
-* **(*)** 的來源連接埠範圍。
-* **(*)** 摸目的地位址前置詞。
-* 目的地**連接埠 3389**。
-
-```azurepowershell-interactive
-## Variables for command ##
-$rnm = 'myNSGRuleRDP'
-$des = 'Allow RDP'
-$acc = 'Allow'
-$pro = 'Tcp'
-$dir = 'Inbound'
-$pri = '1000'
-$spfx = 'Internet'
-$spr = '*'
-$dpfx = '*'
-$dpr = '3389'
-
-$rule1 = 
-New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Protocol $pro -Direction $dir -Priority $pri -SourceAddressPrefix $spfx -SourcePortRange $spr -DestinationAddressPrefix $dpfx -DestinationPortRange $dpr
-```
 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>建立連接埠 80 的網路安全性群組規則
 使用 [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) 建立網路安全性群組規則：
@@ -1169,17 +1013,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic1 = 'myNicVM1'
 $vnt = 'myVNet'
-$ip1 = 'myVMPubIP1'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM1 ##
-$pub1 = 
-Get-AzPublicIPAddress -Name $ip1 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -1191,7 +1030,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM1 ##
 $nicVM1 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -PublicIpAddress $pub1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 
 #### <a name="vm-2"></a>VM 2
@@ -1210,17 +1049,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic2 = 'myNicVM2'
 $vnt = 'myVNet'
-$ip2 = 'myVMPubIP2'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM2 ##
-$pub2 = 
-Get-AzPublicIPAddress -Name $ip2 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -1232,7 +1066,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM2 ##
 $nicVM2 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -PublicIpAddress $pub2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 
 #### <a name="vm-3"></a>VM 3
@@ -1251,17 +1085,12 @@ $rg = 'myResourceGroupLB'
 $loc = 'eastus'
 $nic3 = 'myNicVM3'
 $vnt = 'myVNet'
-$ip3 = 'myVMPubIP3'
 $lb = 'myLoadBalancer'
 $ngn = 'myNSG'
 
 ## Command to get virtual network configuration. ##
 $vnet = 
 Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get public ip address for VM3 ##
-$pub3 = 
-Get-AzPublicIPAddress -Name $ip3 -ResourceGroupName $rg
 
 ## Command to get load balancer configuration
 $bepool = 
@@ -1273,7 +1102,7 @@ Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
 
 ## Command to create network interface for VM3 ##
 $nicVM3 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -PublicIpAddress $pub3 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
+New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
 ```
 
 ### <a name="create-availability-set-for-virtual-machines"></a>建立虛擬機器的可用性設定組
@@ -1405,70 +1234,55 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetNam
 
 ---
 
-### <a name="install-iis-with-a-custom-web-page"></a>使用自訂網頁安裝 IIS
+## <a name="install-iis"></a>安裝 IIS
 
-使用自訂網頁在兩部後端 VM 上安裝 IIS，如下所示：
+1. [登入](https://portal.azure.com) Azure 入口網站。
 
-1. 使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) 取得三部 VM 的公用 IP 位址。
+2. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單選取 **myResourceGroupLB** 資源群組中的 [myVM1]。
 
-   ```azurepowershell-interactive
-   ## Variables for commands. ##
-   $rg = 'myResourceGroupLB'
-   $ip1 = 'myVMPubIP1'
-   $ip2 = 'myVMPubIP2'
-   $ip3 = 'myVMPubIP3'
+3. 在 [概觀] 頁面上，選取 [連線]，然後選 [Bastion]。
 
-   ## VM1 ##
-   (Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ip1).IpAddress
+4. 輸入在 VM 建立期間輸入的使用者名稱和密碼。
 
-   ## VM2 ##
-   (Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ip2).IpAddress
+5. 選取 [連接]。
 
-   ## VM3 ##
-   (Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ip3).IpAddress
-   ```
-   
-2. 使用 VM 的公用 IP 位址，建立與 **myVM1**、**myVM2** 和 **myVM3** 的遠端桌面連線。
+6. 在伺服器桌面上，瀏覽至 [Windows 系統管理工具] > [Windows PowerShell]。
 
-3. 輸入每部 VM 的認證以啟動 RDP 工作階段。
+7. 在 PowerShell 視窗中執行下列命令，以便：
 
-4. 啟動每部 VM 上的 Windows PowerShell 上，並使用下列命令來安裝 IIS 伺服器及更新預設 htm 檔。
+    * 安裝 IIS 伺服器
+    * 移除預設的 iisstart.htm 檔案
+    * 新增顯示 VM 名稱的新 iisstart.htm 檔案：
 
    ```powershell
-   # Install IIS
-   Install-WindowsFeature -name Web-Server -IncludeManagementTools
-
-   # Remove default htm file
-   remove-item  C:\inetpub\wwwroot\iisstart.htm
     
-   #Add custom htm file
-   Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from host " + $env:computername)
+    # install IIS server role
+     Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    
+    # remove default htm file
+     Remove-Item  C:\inetpub\wwwroot\iisstart.htm
+    
+    # Add a new htm file that displays server name
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
    ```
+8. 關閉 **myVM1** 的 Bastion 工作階段。
 
-5. 關閉與 **myVM1**、**myVM2** 和 **myVM3** 的 RDP 連線。
-
+9. 重複步驟 1 到 8，在 myVM2 和 myVM3 上安裝 IIS 和更新的 iisstart.htm 檔案。
 
 ## <a name="test-the-load-balancer"></a>測試負載平衡器
-若要取得負載平衡器的公用 IP 位址，請使用 [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress)：
 
-* 具名 **MyPublicIP**
-* 在 **myResourceGroupLB** 資源群組中。
+1. 在 Azure 入口網站中，從 [概觀] 畫面上尋找負載平衡器的公用 IP 位址。 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後選取 [myPublicIP]。
 
-```azurepowershell-interactive
-## Variables for command. ##
-$rg = 'myResourceGroupLB'
-$ipn = 'myPublicIP'
+2. 將公用 IP 位址複製並貼到您瀏覽器的網址列。 IIS Web 伺服器的預設頁面會顯示在瀏覽器上。
 
-Get-AzPublicIPAddress -ResourceGroupName $rg -Name $ipn | select IpAddress
-```
+   ![IIS Web 伺服器](./media/tutorial-load-balancer-standard-zonal-portal/load-balancer-test.png)
 
-將公用 IP 位址複製並貼到您瀏覽器的網址列。
+若要讓負載平衡器將流量分散到這三個 VM，您可以為每個 VM 的 IIS Web 伺服器自訂預設頁面，然後從用戶端機器強制重新整理您的網頁瀏覽器。
 
-![測試負載平衡器](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當不再需要時，您可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組、負載平衡器和所有 
+當不再需要時，您可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 命令來移除資源群組、負載平衡器和其餘資源。
 
 ```azurepowershell-interactive
 ## Variable for command. ##
@@ -1488,4 +1302,6 @@ Remove-AzResourceGroup -Name $rg
 
 如需 Azure Load Balancer 的詳細資訊，請繼續參閱[什麼是 Azure Load Balancer？](load-balancer-overview.md)和 [Load Balancer 常見問題集](load-balancer-faqs.md)。
 
-深入了解 [Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。
+* 深入了解 [Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。
+* 如需 Azure Bastion 的詳細資訊，請參閱[何謂 Azure Bastion？](https://docs.microsoft.com/azure/bastion/bastion-overview)。
+

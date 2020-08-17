@@ -3,12 +3,12 @@ title: 在邊緣裝置上偵測動作及錄製影片 - Azure
 description: 本快速入門說明如何在 IoT Edge 上使用 Live Video Analytics，從 (模擬的) IP 攝影機分析即時影片摘要、偵測是否有任何動作，如果有，則將 MP4 視訊剪輯錄製到邊緣裝置上的本機檔案系統。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 14dcc7b298244a1d53a9b820c641ea87c4f9a016
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 796def7cad3632dd50184bea751dc9f348569216
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091856"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067658"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>快速入門：在邊緣裝置上偵測動作及錄製影片
  
@@ -89,11 +89,20 @@ ms.locfileid: "87091856"
 
 在[產生和部署 IoT Edge 部署資訊清單](detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest)步驟中，於 Visual Studio Code 中展開 [AZURE IOT 中樞] 底下的 [lva-sample-device] 節點 (位於左下方區段)。 您應該會看到下列部署的模組：
 
-* 名為 **lvaEdge** 的 Live Video Analytics 模組
-* 名為 **rtspsim** 的模組，其會模擬作為即時影片摘要來源的 RTSP 伺服器
+* 名為 `lvaEdge` 的 Live Video Analytics 模組
+* 名為 `rtspsim` 的模組，其會模擬作為即時影片摘要來源的 RTSP 伺服器
 
   ![模組](./media/quickstarts/lva-sample-device-node.png)
 
+> [!NOTE]
+> 如果您使用自己的邊緣裝置，而不是我們的設定指令碼所佈建的裝置，請移至您的邊緣裝置，並以**管理員權限**執行下列命令，以提取並儲存用於本快速入門的範例影片檔案：  
+
+```
+mkdir /home/lvaadmin/samples
+mkdir /home/lvaadmin/samples/input    
+curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+chown -R lvaadmin /home/lvaadmin/samples/  
+```
 
 ## <a name="review---prepare-for-monitoring-events"></a>檢閱 - 準備監視事件
 請確定您已完成[準備監視事件](detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)的步驟。
@@ -105,54 +114,55 @@ ms.locfileid: "87091856"
 1. 選取 F5 來啟動偵錯工作階段。 [終端機] 視窗會列印一些訊息。
 1. *operations.json* 程式碼會呼叫直接方法 `GraphTopologyList` 和 `GraphInstanceList`。 如果您在完成先前的快速入門之後清除了資源，則此程序會傳回空的清單，然後暫停。 選取 Enter 鍵。
 
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
+```
+--------------------------------------------------------------------------
+Executing operation GraphTopologyList
+-----------------------  Request: GraphTopologyList  --------------------------------------------------
+{
+  "@apiVersion": "1.0"
+}
+---------------  Response: GraphTopologyList - Status: 200  ---------------
+{
+  "value": []
+}
+--------------------------------------------------------------------------
+Executing operation WaitForInput
+Press Enter to continue
+```
 
-    [終端機] 視窗會顯示下一組直接方法呼叫：
+  [終端機] 視窗會顯示下一組直接方法呼叫：  
+  * 呼叫 `topologyUrl` 以使用 `GraphTopologySet` 
+  * 呼叫 `GraphInstanceSet` 以使用下列主體：
 
-     * 呼叫 `topologyUrl` 以使用 `GraphTopologySet` 
-     * 呼叫 `GraphInstanceSet` 以使用下列主體：
+```
+{
+  "@apiVersion": "1.0",
+  "name": "Sample-Graph",
+  "properties": {
+    "topologyName": "EVRToFilesOnMotionDetection",
+    "description": "Sample graph description",
+    "parameters": [
+      {
+        "name": "rtspUrl",
+        "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+      },
+      {
+        "name": "rtspUserName",
+        "value": "testuser"
+      },
+      {
+        "name": "rtspPassword",
+        "value": "testpassword"
+      }
+    ]
+  }
+}
+```
 
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph",
-           "properties": {
-             "topologyName": "EVRToFilesOnMotionDetection",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
-               }
-             ]
-           }
-         }
-         ```
-     * 呼叫 `GraphInstanceActivate` 以啟動圖表執行個體和影片流程
-     * 第二次呼叫 `GraphInstanceList` 以顯示圖表執行個體處於執行中狀態
-1. [終端機] 視窗中的輸出會在 `Press Enter to continue` 暫停。 還不要選取 Enter 鍵。 請向上捲動，查看您所叫用直接方法的 JSON 回應承載。
+  * 會啟動圖表執行個體和影片流程的對 `GraphInstanceActivate` 呼叫
+  * 對 `GraphInstanceList` 的第二個呼叫，會顯示處於執行中狀態的圖表執行個體  
+
+3. [終端機] 視窗中的輸出會在 `Press Enter to continue` 暫停。 還不要選取 Enter 鍵。 請向上捲動，查看您所叫用直接方法的 JSON 回應承載。
 1. 切換至 Visual Studio Code 中的 [輸出] 視窗。 您會看到訊息指出 IoT Edge 模組上的 Live Video Analytics 正在傳送到 IoT 中樞。 本快速入門的下一節會討論這些訊息。
 
 1. 媒體圖表會繼續執行並列印結果。 RTSP 模擬器會持續循環播放來源影片。 若要停止媒體圖表，請返回 [終端機] 視窗，然後選取 Enter 鍵。 
@@ -239,7 +249,7 @@ ms.locfileid: "87091856"
 
 ## <a name="play-the-mp4-clip"></a>播放 MP4 剪輯
 
-MP4 檔案會寫入您使用 OUTPUT_VIDEO_FOLDER_ON_DEVICE 機碼在 *.env* 檔案中設定的邊緣裝置目錄。 如果您使用預設值，則結果應該會在 */home/lvaadmin/samples/output/* 資料夾中。
+MP4 檔案會寫入您使用 OUTPUT_VIDEO_FOLDER_ON_DEVICE 機碼在 *.env* 檔案中設定的邊緣裝置目錄。 如果您使用預設值，則結果應該會在 */var/media/* 資料夾中。
 
 若要播放 MP4 剪輯：
 
@@ -250,7 +260,7 @@ MP4 檔案會寫入您使用 OUTPUT_VIDEO_FOLDER_ON_DEVICE 機碼在 *.env* 檔�
     ![VM](./media/quickstarts/virtual-machine.png)
 
 1. 使用您在[設定 Azure 資源](detect-motion-emit-events-quickstart.md#set-up-azure-resources)時所產生的認證來登入。 
-1. 在命令提示字元中，移至相關目錄。 預設位置為 */home/lvaadmin/samples/output*。 您應該會在目錄中看到 MP4 檔案。
+1. 在命令提示字元中，移至相關目錄。 預設位置是 */var/media*。 您應該會在目錄中看到 MP4 檔案。
 
     ![輸出](./media/quickstarts/samples-output.png) 
 

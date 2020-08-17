@@ -1,6 +1,6 @@
 ---
 title: 寄回 Azure Data Box Heavy 的教學課程 | Microsoft Docs
-description: 了解如何將您的 Azure Data Box Heavy 寄送給 Microsoft
+description: 在本教學課程中，您將了解如何送回 Azure Data Box Heavy，包括準備寄送、寄回 Data Box Heavy、驗證資料上傳，以及清除資料。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3aedfed980a61ea6718a02a188ff88d4941026d9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa4df7119763e835cf62e67512105b748c7e2265
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199184"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921005"
 ---
 ::: zone target = "docs"
 

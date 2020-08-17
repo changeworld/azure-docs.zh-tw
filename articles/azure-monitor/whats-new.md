@@ -6,16 +6,74 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: b36469a89c7bae39ae3c2d62792c2ccde0fcfda9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 10d4cb8160d0bf9111903b193574e9e820ded221
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799322"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827736"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure 監視器文件的最新動向
 
 本文提供新增或已大幅更新的 Azure 監視器文章清單。 該清單會在每個月的第一週重新整理，以納入上個月的文章更新。
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="general"></a>一般
+- [部署 Azure 監視器](deploy-scale.md) - 重新建構適用於 VM 的 Azure 監視器上線內容。
+- [使用 Azure 私人連結將網路安全地連線到 Azure 監視器](platform/private-link-security.md) - 新增了關於限制的章節。
+
+### <a name="alerts"></a>警示
+- [Azure 監視器警示的動作規則](platform/alerts-action-rules.md) - 新增了 CLI 程序。
+- [在 Azure 入口網站中建立和管理動作群組](platform/action-groups.md) - 有所更新以反映 UI 中的變更。
+- [Azure 監視器 Log Analytics 中儲存的查詢](log-query/saved-queries.md) - 新文章。
+- [針對 Azure 監視器中的記錄警示進行疑難排解](platform/alerts-troubleshoot-log.md) - 新增了關於警示規則配額的章節。
+- [針對 Azure 計量警示進行疑難排解](platform/alerts-troubleshoot-metric.md) - 新增了關於尚未發出的自訂計量上警示規則的章節。
+- [了解計量警示在 Azure 監視器中的運作方式。](platform/alerts-metric-overview.md) - 新增了彙總細微性的選取建議。
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Web 應用程式擴充功能的版本資訊 - Application Insights](app/web-app-extension-release-notes.md) - 新文章。
+- [Application Insights 資源的 Resource Manager 範本範例](samples/resource-manager-app-resource.md) - 新文章。
+- [針對 Azure Application Insights Profiler 的問題進行疑難排解](app/profiler-troubleshooting.md) - 針對在 Azure App Service 上執行 ASP.NET Core 應用程式分析工具時所發生的錯誤新增了附註。 
+
+### <a name="containers"></a>容器
+- [Azure 監視器針對容器所發出的記錄警示](insights/container-insights-log-alerts.md) - 新文章。
+- [Azure 監視器針對容器所發出的計量警示](insights/container-insights-metric-alerts.md) - 新文章。
+
+### <a name="logs"></a>記錄
+- [Azure 監視器客戶自控金鑰](platform/customer-managed-keys.md) - 新增了錯誤訊息和查詢的區段 CMK 設定。
+- [Azure 監視器 HTTP 資料收集器 API](platform/data-collector-api.md) - 新增了 Python 3 範例。
+- [將 Azure 監視器中的記錄查詢最佳化](log-query/query-optimization.md) - 新增了關於在使用子查詢時避免多個資料掃描的章節。
+- [教學課程：開始使用 Log Analytics 查詢](log-query/get-started-portal.md) - 新增了影片。
+
+### <a name="platform-logs"></a>平台記錄
+- [建立診斷設定以將平台記錄和計量傳送至不同目的地](platform/diagnostic-settings.md) - 新增了影片。
+- [Azure 監視器的 Resource Manager 範本範例](samples/resource-manager-samples.md) - 新增了使用記錄目的地類型的 ARM 範例。 
+
+### <a name="solutions"></a>方案
+- [Azure 監視器中的監視解決方案](insights/solutions.md) - 新增了 CLI 程序。
+- [Azure 中的 Office 365 管理解決方案](insights/solution-office-365.md) - 變更了停用日期。
+
+### <a name="virtual-machines"></a>虛擬機器
+
+來自重新建構「適用於 VM 的 Azure 監視器」內容的新文章和更新文章
+
+- [什麼是適用於 VM 的 Azure 監視器？](insights/vminsights-overview.md)
+- [針對適用於 VM 的 Azure 監視器來設定 Log Analytics 工作區](insights/vminsights-configure-workspace.md)
+- [將 Linux 電腦連線至 Azure 監視器](platform/agent-linux.md)
+- [針對混合式環境啟用 Azure 監視器](insights/vminsights-enable-hybrid.md)
+- [針對 Azure 入口網站中的單一虛擬機器或虛擬機器擴展集啟用 Azure 監視器](insights/vminsights-enable-portal.md)
+- [使用 Azure 原則啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-at-scale-policy.md)
+- [啟用適用於 VM 的 Azure 監視器概觀](insights/vminsights-enable-overview.md)
+- [使用 PowerShell 啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-powershell.md)
+- [使用 Resource Manager 範本啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-resource-manager.md)
+- [使用 PowerShell 或範本啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-at-scale-powershell.md)
+
+
+### <a name="visualizations"></a>視覺效果
+- [升級您的 Log Analytics 儀表板視覺效果](log-query/dashboard-upgrade.md) - 更新了重新整理的頻率。
+- [將來自 Azure 監視器的資料視覺化](visualizations.md) - 新增了影片。
+
 
 ## <a name="june-2020"></a>2020 年 6 月
 
@@ -66,7 +124,8 @@ ms.locfileid: "87799322"
 - [使用 Azure 入口網站將 Azure 活動記錄傳送至 Log Analytics 工作區](learn/quick-collect-activity-log-portal.md) - 新文章
 - [使用 Azure Resource Manager 範本將 Azure 活動記錄傳送至 Log Analytics 工作區](learn/quick-collect-activity-log-arm.md) - 新文章。
 
-#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>平台記錄內容重構和彙總的最新和更新文章
+平台記錄內容重構和彙總的最新和更新文章
+
 - [將 Azure 資源記錄封存到儲存體帳戶](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure 活動記錄事件結構描述](platform/activity-log-schema.md)
 - [Azure 活動記錄](platform/activity-log.md)
@@ -84,7 +143,7 @@ ms.locfileid: "87799322"
 - [在 Azure 監視器中檢視 Azure 活動記錄](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>虛擬機器
-- [在 Azure 入口網站中啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-single-vm.md) - 已更新為包含 Azure Arc。
+- [在 Azure 入口網站中啟用適用於 VM 的 Azure 監視器](./insights/vminsights-enable-portal.md) - 已更新為包含 Azure Arc。
 - [啟用適用於 VM 的 Azure 監視器概觀](insights/vminsights-enable-overview.md) - 已更新為包含 Azure Arc。
 - [什麼是適用於 VM 的 Azure 監視器？](insights/vminsights-overview.md) - 已更新為包含 Azure Arc。
 
@@ -293,7 +352,7 @@ ms.locfileid: "87799322"
 
 - [什麼是適用於 VM 的 Azure 監視器？](insights/vminsights-overview.md)
 - [適用於 VM 的 Azure 監視器 (GA) 常見問題集](insights/vminsights-ga-release-faq.md) 
-- [使用 Azure 原則啟用適用於 VM 的 Azure 監視器](insights/vminsights-enable-at-scale-policy.md) 
+- [使用 Azure 原則啟用適用於 VM 的 Azure 監視器](./insights/vminsights-enable-policy.md) 
 - [如何使用適用於 VM 的 Azure 監視器來繪製效能圖表](insights/vminsights-performance.md)
 - [如何從適用於 VM 的 Azure 監視器查詢記錄](insights/vminsights-log-search.md)
 - [使用適用於 VM 的 Azure 監視器檢視應用程式相依性](insights/vminsights-maps.md) 

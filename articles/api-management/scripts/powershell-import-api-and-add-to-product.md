@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 指令碼範例 - 匯入 API | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 匯入 API
+description: 了解如何匯入 API，並將其新增至 API 管理產品。 查看範例指令碼並檢視其他可用資源。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 2461db160b7d4cd56e51f6f027a67cdf27db538d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3644eda24790b9f711d6584b05a18eba23f227ba
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008837"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850928"
 ---
 # <a name="import-an-api"></a>匯入 API
 

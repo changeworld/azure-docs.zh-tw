@@ -1,6 +1,6 @@
 ---
 title: 什麼是Azure 單一登入 (SSO)？
-description: 了解在 Azure Active Directory (Azure AD) 中設定應用程式時，如何選擇單一登入方法。 使用單一登入使用者就不需要記住每個應用程式的密碼，且可以簡化帳戶管理。
+description: 了解單一登入 (SSO) 如何與 Azure Active Directory 搭配運作。 請使用 SSO 讓使用者不需要記住每個應用程式的密碼。 也請使用 SSO 來簡化帳戶管理作業。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,23 +11,39 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b641437b7e15334d59c544b95d5be0f20f2a8df
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6f3c6351a7bcd87ae25dfae53cb17f634bbef146
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387535"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121505"
 ---
 # <a name="what-is-single-sign-on-sso"></a>什麼是單一登入 (SSO)？
 
-當使用者登入 Azure Active Directory (Azure AD) 中的應用程式時，單一登入 (SSO) 可增加安全性及便利性。 本文描述單一登入方法，並協助您在設定應用程式時，選擇最適當的 SSO 方法。
+單一登入表示使用者不需要登入其使用的每個應用程式。 使用者登入一次後，該認證也會用於其他應用程式。
+
+如果您是終端使用者，很可能並不在意 SSO 的詳情。 您只想要使用應用程式來提高生產力，而不需要這麼頻繁地輸入密碼。 您可以在下列位置找到您的應用程式： https://myapps.microsoft.com 。
+ 
+如果您是系統管理員或 IT 專業人員，請繼續閱讀以深入了解如何在 Azure 中實作 SSO。
+
+## <a name="single-sign-on-basics"></a>單一登入基本概念
+單一登入在使用者登入和使用應用程式的方式上提供了長足進步。 單一登入型驗證系統通常稱為「新式驗證」。 若要了解如何實現單一登入，請參閱這段影片。
+> [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
+
+## <a name="understanding-where-an-app-is-hosted"></a>了解應用程式的裝載位置
+為應用程式實作單一登入的方式與應用程式的裝載位置有很大的關係。 為了存取應用程式而路由傳送網路流量的方式，讓裝載動作變得很重要。 如果應用程式透過區域網路 (稱為內部部署應用程式) 來裝載和存取，則使用者不需要存取網際網路就能使用應用程式。 如果應用程式裝載於其他位置 (稱為雲端託管應用程式)，使用者就必須存取網際網路才能使用應用程式。
+
+> [!TIP]
+> 雲端應用程式也稱為軟體即服務 (SaaS) 應用程式。 
+
+> [!TIP]
+> 雲端和網際網路這兩個詞通常可交換使用。 之所以如此與網路圖有關。 圖上常會用雲的圖形來代表大型電腦網路，因為在實務上，我們不可能畫出每個元件。 網際網路是最知名的網路，因此很容易就會交換使用這些詞。 不過，任何電腦網路都可以創造出雲端。
+
+## <a name="choosing-a-single-sign-on-method"></a>選擇單一登入方法
 
 - **使用單一登入**，使用者使用一個帳戶登入一次，就能存取已加入網域的裝置、公司資源、軟體即服務 (SaaS) 應用程式和 Web 應用程式。 登入之後，使用者可以從 Office 365 入口網站或 Azure AD MyApps 存取面板啟動應用程式。 系統管理員可將使用者帳戶集中管理，並根據群組成員資格自動新增或移除使用者的應用程式存取權。
 
 - **沒有單一登入**，使用者必須記住應用程式特定的密碼並登入每個應用程式。 IT 人員需要針對每個應用程式 (如 Office 365、Box 和 Salesforce) 建立及更新使用者帳戶。 使用者需要記住其密碼，還要花費時間登入每個應用程式。
-
-## <a name="choosing-a-single-sign-on-method"></a>選擇單一登入方法
 
 有幾種方式可以為應用程式設定單一登入。 選擇單一登入方法會取決於為應用程式設定的驗證方式。
 
@@ -42,7 +58,7 @@ ms.locfileid: "87387535"
 
 | 單一登入方法 | 應用程式類型 | 使用時機 |
 | :------ | :------- | :----- |
-| [OpenID Connect 和 OAuth](#openid-connect-and-oauth) | 僅限雲端 | 開發新的應用程式時，請使用 OpenID Connect 和 OAuth。 此通訊協定可簡化應用程式設定、具備容易使用的 SDK，而且可讓您的應用程式使用 MS Graph。
+| [OpenID Connect 和 OAuth](#openid-connect-and-oauth) | 雲端和內部部署 | 開發新的應用程式時，請使用 OpenID Connect 和 OAuth。 此通訊協定可簡化應用程式設定、具備容易使用的 SDK，而且可讓您的應用程式使用 MS Graph。
 | [SAML](#saml-sso) | 雲端和內部部署 | 請盡可能為不使用 OpenID Connect 或 OAuth 的現有應用程式選擇 SAML。 SAML 適用於使用其中一個 SAML 通訊協定進行驗證的應用程式。|
 | [密碼式](#password-based-sso) | 雲端和內部部署 | 當應用程式使用使用者名稱和密碼進行驗證時，請選擇密碼式。 密碼式單一登入可以使用網頁瀏覽器擴充功能或行動應用程式，安全儲存應用程式的密碼以及重新執行。 此方法會使用應用程式提供的現有登入程序，但讓系統管理員可以管理密碼。 |
 | [已連結](#linked-sign-on) | 雲端和內部部署 | 當應用程式已經在其他識別提供者服務中設定單一登入時，選擇已連結的登入。 此選項不會將單一登入新增至應用程式。 不過，應用程式可能已經使用另一個服務 (例如 Active Directory 同盟服務) 來實作單一登入。|
@@ -197,10 +213,5 @@ ms.locfileid: "87387535"
 
 如需詳細資訊，請參閱 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。
 
-## <a name="related-articles"></a>相關文章
+## <a name="next-steps"></a>後續步驟
 * [應用程式管理快速入門系列](view-applications-portal.md)
-* [整合 SaaS 應用程式與 Azure Active Directory 的教學課程](../saas-apps/tutorial-list.md)
-* [設定密碼式單一登入](configure-password-single-sign-on-non-gallery-applications.md)
-* [設定連結型登入](configure-linked-sign-on.md)
-* [管理應用程式存取簡介](what-is-access-management.md)
-* 下載連結：[單一登入部署計劃](https://aka.ms/SSODeploymentPlan) \(英文\)。

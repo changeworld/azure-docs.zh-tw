@@ -287,8 +287,10 @@
       items:
         - name: 概觀
           href: offline-backup-overview.md
-        - name: 使用 Azure 資料箱進行離線備份
+        - name: 使用 Azure 資料箱進行離線備份 (MARS)
           href: offline-backup-azure-data-box.md
+        - name: 使用 Azure 資料箱進行離線備份 (DPM/MABS)
+          href: offline-backup-azure-data-box-dpm-mabs.md
         - name: 使用匯入/匯出 (MARS) 進行離線備份
           href: backup-azure-backup-import-export.md
         - name: 使用匯入/匯出 (DPM/MABS) 進行離線備份

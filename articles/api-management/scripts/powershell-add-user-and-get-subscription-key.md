@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 指令碼範例 - 新增使用者 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 新增使用者
+description: 了解如何在 API 管理中新增使用者，並取得訂用帳戶金鑰。 查看範例指令碼並檢視其他可用資源。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 2cfbfdfc4374d528159e9e026016a0583a1a9ac9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0573097d9821b8cf14573f2e5c5291461c2c7ed7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009062"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843839"
 ---
 # <a name="add-a-user"></a>新增使用者
 

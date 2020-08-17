@@ -12,16 +12,16 @@ ms.date: 04/09/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: dce579596563855022f14bb2c07353b84d1e6127
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 8f6d9c3409e0b91b6744d406fb1af674f73dbe3c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808366"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117884"
 ---
 # <a name="quickstart-view-the-list-of-applications-that-are-using-your-azure-active-directory-azure-ad-tenant-for-identity-management"></a>快速入門：檢視使用您 Azure Active Directory (Azure AD) 租用戶進行身分識別管理的應用程式清單
 
-開始使用 Azure AD 作為您組織所用應用程式的身分識別和存取管理 (IAM) 系統。 在本快速入門中，您將會檢視已設定為使用 Azure AD 租用戶作為其身分識別提供者的應用程式 (也稱為 APP)。
+開始使用 Azure AD 作為您組織所用應用程式的身分識別和存取管理 (IAM) 系統。 在本快速入門中，您將會檢視已設定為使用 Azure AD 租用戶作為其識別提供者 (IdP) 的應用程式 (也稱為 APP)。
 
 ## <a name="prerequisites"></a>必要條件
 

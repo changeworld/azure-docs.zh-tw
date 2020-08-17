@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio 對 Azure Kubernetes Service 上的 .NET Core 應用程式進行偵錯和快速反覆運算
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
-ms.openlocfilehash: 1ce2647e89915dd581b0b5ad9fc75a9f2fe840de
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 436ef1b83bd23c78aed6e793e237423110ca6bc6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499104"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077698"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>建立 Kubernetes 開發人員空間：搭配 Azure Dev Spaces 使用 Visual Studio 和 .NET Core
 
@@ -179,8 +179,10 @@ Azure 開發人員空間會以累加方式重新編譯現有容器中的程式�
 
 ## <a name="next-steps"></a>後續步驟
 
+深入了解 Azure Dev Spaces 的運作方式。
+
 > [!div class="nextstepaction"]
-> [了解多重服務開發](multi-service-netcore-visualstudio.md)
+> [Azure Dev Spaces 如何運作](how-dev-spaces-works.md)
 
 
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4bed27654b3482300d3d102d545b44373c53dde0
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: cf9fb8a95be9a5ba025534508139a0e300036542
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439798"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064837"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 C IoT Edge 模組
 
@@ -57,6 +57,8 @@ ms.locfileid: "87439798"
 若要以 C 開發 IoT Edge 模組，請在您的開發機器上安裝下列其他必要條件：
 
 * 適用於 Visual Studio Code 的 [C/C++ 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)。
+
+本教學課程不需要安裝 Azure IoT C SDK，但如果有安裝，則可以提供有用的功能，例如 intellisense 和讀取程式定義。 如需安裝資訊，請參閱 [Azure IoT C SDK 和程式庫](https://github.com/Azure/azure-iot-sdk-c)。
 
 ## <a name="create-a-module-project"></a>建立模組專案
 

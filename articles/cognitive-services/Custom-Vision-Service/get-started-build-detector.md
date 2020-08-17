@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: ba121400368f37c4a562a9c34e209c59d15b173c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 01a5714cb78959a982ad73deb401edbafeebe8f9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404101"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834451"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>快速入門：如何使用自訂視覺建置物件偵測器
 
@@ -55,9 +55,10 @@ ms.locfileid: "81404101"
     |---|---|
     |__一般__| 已針對廣泛的物件偵測工作進行最佳化。 如果沒有其他適用的領域，或您不確定要選擇哪一個領域，請選取「泛型」領域。 |
     |__標誌__|已針對尋找影像中的品牌標誌進行最佳化。|
+    |__貨架上的產品__|已針對在貨架上偵測和分類產品進行最佳化。|
     |__精簡領域__| 已針對行動裝置上的即時物件偵測條件約束進行最佳化。 精簡領域所產生的模型可以匯出到本機執行。|
 
-1. 最後，選取 [建立專案]  。
+1. 最後，選取 [建立專案]____。
 
 ## <a name="choose-training-images"></a>選擇定型影像
 
@@ -67,11 +68,11 @@ ms.locfileid: "81404101"
 
 在本節中，您將上傳並手動標記影像，以便定型偵測器。 
 
-1. 若要新增影像，請按一下 [新增影像]  按鈕，然後選取 [瀏覽本機檔案]  。 選取 [開啟]  以上傳影像。
+1. 若要新增影像，請按一下 [新增影像]____ 按鈕，然後選取 [瀏覽本機檔案]____。 選取 [開啟]____ 以上傳影像。
 
     ![[新增影像] 控制項會顯示於左上方，並在正下方顯示為按鈕。](./media/get-started-build-detector/add-images.png)
 
-1. 您會在 UI 的 [未標記]  區段中看到您上傳的影像。 下一步是手動標記您希望偵測器學會辨識的物件。 按一下第一個影像以開啟標記對話方塊視窗。 
+1. 您會在 UI 的 [未標記]**** 區段中看到您上傳的影像。 下一步是手動標記您希望偵測器學會辨識的物件。 按一下第一個影像以開啟標記對話方塊視窗。 
 
     ![在 [未標記] 區段中上傳的影像](./media/get-started-build-detector/images-untagged.png)
 
@@ -83,11 +84,11 @@ ms.locfileid: "81404101"
 
 ## <a name="train-the-detector"></a>定型偵測器
 
-若要將偵測器模型定型，請選取 [定型]  按鈕。 偵測器會使用所有目前的影像及其標記來建立模型，以識別每個標記的物件。
+若要將偵測器模型定型，請選取 [定型]**** 按鈕。 偵測器會使用所有目前的影像及其標記來建立模型，以識別每個標記的物件。
 
 ![網頁標題工具列右上角的 [定型] 按鈕](./media/getting-started-build-a-classifier/train01.png)
 
-此定型程序應該只需要幾分鐘的時間。 在此期間，[效能]  索引標籤會顯示定型程序的相關資訊。
+此定型程序應該只需要幾分鐘的時間。 在此期間，[效能]**** 索引標籤會顯示定型程序的相關資訊。
 
 ![定型對話方塊出現在主要區段的瀏覽器視窗](./media/get-started-build-detector/training.png)
 
@@ -106,7 +107,7 @@ ms.locfileid: "81404101"
 
 ## <a name="manage-training-iterations"></a>管理定型反覆項目
 
-每次您定型偵測器時，都會使用更新的效能度量建立新「反覆項目」  。 您可以在 [效能]  索引標籤的左窗格中檢視所有的反覆項目。在左窗格中，您也可以找到 [刪除]  按鈕，可用來刪除已經過時的反覆項目。 您刪除反覆項目時，會刪除唯一與它相關聯的任何影像。
+每次您定型偵測器時，都會使用更新的效能度量建立新「反覆項目」__。 您可以在 [效能] 索引標籤的左窗格中檢視所有的反覆項目。在左窗格中，您也可以找到 [刪除] 按鈕，可用來刪除已經過時的反覆項目。 您刪除反覆項目時，會刪除唯一與它相關聯的任何影像。
 
 若要了解如何以程式設計方式存取已定型的模型，請參閱[使用您的模型搭配預測 API](./use-prediction-api.md)。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131730"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827306"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>建置端對端解決方案
 
@@ -95,6 +95,20 @@ Query
 
 在本節中，您要發佈預先撰寫的函數應用程式，並確保此函數應用程式可以藉由指派 Azure Active Directory (Azure AD) 身分識別來存取 Azure Digital Twins。 完成這些步驟，即可讓教學課程的其餘部分使用函數應用程式內的函式。 
 
+回到 Visual Studio 視窗，其中 _**AdtE2ESample**_ 專案已開啟，且函式應用程式位於 _**SampleFunctionsApp**_ 專案檔中。 您可以在 [方案總管] 窗格中進行檢視。
+
+### <a name="update-dependencies"></a>更新相依性
+
+在發佈應用程式之前，最好先確定您有最新的相依性，並確定您已包含的所有套件都是最新版本。
+
+在 [方案總管] 窗格中，展開 [SampleFunctionsApp] > [相依性]。 以滑鼠右鍵選取 [套件]，然後選擇 [管理 NuGet 套件...]。
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio：管理 SampleFunctionsApp 專案的 NuGet 套件" border="false":::
+
+這會開啟 NuGet 套件管理員。 選取 [更新] 索引標籤，如果有任何套件要更新，請核取方塊以 [選取所有套件]。 然後點擊 [更新]。
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio：選取要更新 NuGet 套件管理員中的所有套件":::
+
 ### <a name="publish-the-app"></a>發佈應用程式
 
 回到開啟 _**AdtE2ESample**_ 專案的 Visual Studio 視窗中，從 [方案總管] 窗格中，按一下滑鼠右鍵選取 _**SampleFunctionsApp**_ 專案檔案，然後按 [發佈]。
@@ -134,19 +148,21 @@ Query
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="在 Visual Studio 中發佈 Azure 函式：發佈":::
 
 > [!NOTE]
-> 您可能會看到如下的快顯畫面：:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="在 Visual Studio 中發佈 Azure 函式：發佈認證" border="false":::
-> 若是如此，請選取 [嘗試從 Azure 擷取認證] 和 [儲存]。
+> 如果您看到如下的快顯：:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="在 Visual Studio 中發佈 Azure 函式：發佈認證" border="false":::
+> 請選取 [嘗試從 Azure 擷取認證] 和 [儲存]。
 >
-> 如果您看到*您的函式執行階段版本不符合 Azure 中執行的版本*的警告，請遵循提示以升級至最新的 Azure Functions 執行階段版本。 如果您使用的 Visual Studio 版本比本教學課程開頭的*必要條件*一節中所建議的版本還舊，就可能會發生此問題。
+> 如果您看到關於*升級 Azure 上的 Azure Functions 版本*或*您的函式執行階段版本不符合 Azure 中執行的版本*的警告：
+>
+> 請遵循提示來升級至最新的 Azure Functions 執行階段版本。 如果您使用的 Visual Studio 版本比本教學課程開頭的*必要條件*一節中所建議的版本還舊，就可能會發生此問題。
 
 ### <a name="assign-permissions-to-the-function-app"></a>將權限指派給函數應用程式
 
-若要讓函數應用程式能夠存取 Azure Digital Twins，下一個步驟是設定應用程式設定，為應用程式指派系統管理的 Azure AD 身分識別，並授與此身分識別 Azure Digital Twins 執行個體的「擁有者」權限。
+若要讓函數應用程式能夠存取 Azure Digital Twins，下一個步驟是設定應用程式設定，為應用程式指派系統管理的 Azure AD 身分識別，並授與此身分識別 Azure Digital Twins 執行個體中的 *Azure Digital Twins 擁有者 (預覽)* 角色。 想要在執行個體上執行許多資料平面活動的使用者或函式都必須有此角色。 如需安全性和角色指派的詳細資訊，請參閱[*概念：Azure Digital Twins 解決方案的安全性*](concepts-security.md)。
 
-在 Azure Cloud Shell 中，使用下列命令，設定函數應用程式將用以參考數位身分執行個體的應用程式設定。
+在 Azure Cloud Shell 中，使用下列命令，設定函式應用程式將用以參考 Azure Digital Twins 執行個體的應用程式設定。
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-digital-twin-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 使用下列命令建立系統管理的身分識別。 記下輸出中的 *principalId* 欄位。
@@ -155,7 +171,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-在下列命令中，使用 *principalId* 值將函數應用程式的身分識別指派給 Azure Digital Twins 執行個體的「擁有者」角色：
+在下列命令中，使用輸出中的 *principalId* 值將函式應用程式的身分識別指派給 Azure Digital Twins 執行個體的 *Azure Digital Twins 擁有者 (預覽)* 角色：
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
@@ -339,7 +355,7 @@ az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
-查閱輸出的 `provisioningState` 欄位，檢查其值是否為 "Succeeded"。
+查閱輸出的 `provisioningState` 欄位，檢查其值是否為 "Succeeded"。 其也可能指出「佈建中」，這表示端點仍在建立中。 在此情況下，請等候幾秒鐘，然後再次執行命令，以檢查其是否已順利完成。
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="端點查詢的結果，顯示 provisioningState 為 Succeeded 的端點":::
 
@@ -354,6 +370,9 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 ```
 
 此命令的輸出是您所建立路由的部分資訊。
+
+>[!NOTE]
+>端點 (來自上一個步驟) 必須先完成佈建，您才能設定使用這些端點的事件路由。 如果因為端點尚未就緒而導致路由建立失敗，請等候幾分鐘，然後再試一次。
 
 #### <a name="connect-the-function-to-event-grid"></a>將函式連線至事件方格
 

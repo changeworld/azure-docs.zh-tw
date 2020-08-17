@@ -1,6 +1,6 @@
 ---
 title: 快速入門：使用 Azure 地圖服務的互動式地圖搜尋
-description: 了解如何使用 Microsoft Azure Maps Web SDK 建立互動式地圖搜尋的示範 Web 應用程式。
+description: 了解如何建立互動式、可搜尋的地圖。 了解如何建立 Azure 地圖服務帳戶、取得主要金鑰，以及使用 Web SDK 來設定地圖應用程式。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/10/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: bb6c5ee48e22e0c913e7fc6150d3986af805a08f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa5cab35416f2629d39ec04803f90fae1a2e5f6d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004595"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031041"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>快速入門：使用 Azure 地圖服務建立互動式地圖搜尋
 

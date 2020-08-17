@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0cde9caa2f2b68b1e75eac635a81865cc4b6b33c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 571f0e0ceff0adfbf1814abc627fcab6b23acbe1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351766"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905849"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-python"></a>教學課程：將範例 IoT 隨插即用預覽多個元件裝置應用程式連線至 IoT 中樞 (Python)
 
@@ -86,26 +86,26 @@ git clone https://github.com/Azure/azure-iot-sdk-python
 
 1. 匯入 `pnp_helper_preview_refresh.py` 以取得協助程式方法的存取權。
 
-1. 定義兩個 Digital Twins 模型識別碼 (DTMI)，其能唯一代表 DTDL 模型中所定義的兩個不同介面。 實際溫度控制器中的元件應該要實作這兩個介面。 這兩個介面已在中央存放庫中發佈。 使用者必須知道這些 DTMI，且這些介面也會取決於裝置實作的案例。 針對目前的範例，這兩個介面代表：
+2. 定義兩個 Digital Twins 模型識別碼 (DTMI)，其能唯一代表 DTDL 模型中所定義的兩個不同介面。 實際溫度控制器中的元件應該要實作這兩個介面。 這兩個介面已在中央存放庫中發佈。 使用者必須知道這些 DTMI，且這些介面也會取決於裝置實作的案例。 針對目前的範例，這兩個介面代表：
 
   - 控溫器
   - Azure 所開發的裝置資訊。
 
-. 定義正在實作之裝置的 DTMI `model_id`。 DTMI 是使用者定義的，而且必須符合 DTDL 模型檔案中的 DTMI。
+3. 定義正在實作之裝置的 DTMI `model_id`。 DTMI 是使用者定義的，而且必須符合 DTDL 模型檔案中的 DTMI。
 
-1. 定義提供給 DTDL 檔案中元件的名稱。 DTDL 中有兩個控溫器和一個裝置資訊元件。 名為 `serial_number` 的常數也會定義於根介面中。 無法變更裝置的 `serial_number`。
+4. 定義提供給 DTDL 檔案中元件的名稱。 DTDL 中有兩個控溫器和一個裝置資訊元件。 名為 `serial_number` 的常數也會定義於根介面中。 無法變更裝置的 `serial_number`。
 
-1. 定義命令處理常式實作。 這些會定義裝置接收到命令要求時的行為。
+5. 定義命令處理常式實作。 這些會定義裝置接收到命令要求時的行為。
 
-1. 定義函式以建立命令回應。 這些會定義裝置如何回應命令要求。 如果命令需要將自訂回應傳送回 IoT 中樞，您會建立命令回應函式。 如果未提供命令的回應函式，則會傳送一般回應。 在此範例中，只有 **getMaxMinReport** 命令具有自訂回應。
+6. 定義函式以建立命令回應。 這些會定義裝置如何回應命令要求。 如果命令需要將自訂回應傳送回 IoT 中樞，您會建立命令回應函式。 如果未提供命令的回應函式，則會傳送一般回應。 在此範例中，只有 **getMaxMinReport** 命令具有自訂回應。
 
-1. 定義函式以從此裝置傳送遙測。 控溫器和根介面都會傳送遙測。 此函式會採用選擇性元件名稱參數，讓其能夠識別傳送遙測的元件。
+7. 定義函式以從此裝置傳送遙測。 控溫器和根介面都會傳送遙測。 此函式會採用選擇性元件名稱參數，讓其能夠識別傳送遙測的元件。
 
-1. 定義命令要求的接聽程式。
+8. 定義命令要求的接聽程式。
 
-1. 定義所需屬性更新的接聽程式。
+9. 定義所需屬性更新的接聽程式。
 
-1. 具有 `main` 函式，其能夠：
+10. 具有 `main` 函式，其能夠：
 
     1. 使用裝置 SDK 來建立裝置用戶端，並連線到您的 IoT 中樞。 裝置會傳送 `model_id`，讓 IoT 中樞可以將裝置識別為 IoT 隨插即用裝置。
 

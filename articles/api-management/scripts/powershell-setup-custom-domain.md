@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 指令碼範例 - 設定自訂網域 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 設定自訂網域
+description: 了解如何在 API 管理服務的 Proxy 或入口網站端點上設定自訂網域。 查看範例指令碼並檢視其他可用資源。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 12/14/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: fedeb9fd1b2dd3bd47f3d950d506e2b2854bfd82
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16da7891b5321006708dc59ec8d482754beb7d9e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008774"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853257"
 ---
 # <a name="set-up-custom-domain"></a>設定自訂網域
 

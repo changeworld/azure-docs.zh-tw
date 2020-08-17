@@ -1,20 +1,18 @@
 ---
 title: Windows 虛擬桌面的新增功能？ - Azure
 description: Windows 虛擬桌面的新功能和產品更新。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 06/15/2020
+ms.date: 08/07/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
-ms.openlocfilehash: 9be1053600ab89a7879a04a7c08a44ddf3bc862a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8663fc3f016fadcd4f4c99acd800cd0ccf8844f8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291236"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003523"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows 虛擬桌面的新增功能？
 
@@ -27,13 +25,48 @@ Windows 虛擬桌面會定期更新。 本文可讓您了解：
 
 本文每月更新。 務必經常回到這裡查看，以掌握新的更新。
 
+## <a name="july-2020"></a>2020 年 7 月  
+
+7 月時就已正式推出與 Azure 資源管理整合的 Windows 虛擬桌面。
+
+以下是這個新版本的變更內容： 
+
+- 「2019 年秋季版本」現在稱為「Windows 虛擬桌面 (傳統)」，而「2020 年春季版本」現在則只是「Windows 虛擬桌面。」 如需詳細資訊，請參閱[此部落格文章](https://azure.microsoft.com/blog/new-windows-virtual-desktop-capabilities-now-generally-available/)。 
+
+若要深入了解新功能，請參閱[此部落格文章](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245)。 
+
+### <a name="autoscaling-tool-update"></a>自動調整工具更新
+
+原本處於預覽狀態的最新版自動調整工具現已正式推出。 此工具會使用 Azure 自動化帳戶和 Azure 邏輯應用程式來自動關閉並重新啟動主機集區內的工作階段主機虛擬機器 (VM)，以降低基礎結構成本。 若要深入了解，請參閱[使用 Azure 自動化調整工作階段主機](set-up-scaling-script.md)。
+
+### <a name="azure-portal"></a>Azure 入口網站
+
+您現在可以使用 Windows 虛擬桌面中的 Azure 入口網站來執行下列操作： 
+
+- 直接將使用者指派給個人桌面工作階段主機  
+- 變更主機集區的驗證環境設定 
+
+### <a name="diagnostics"></a>診斷
+
+我們已針對 Log Analytics 工作區發行一些新的預建查詢。 若要存取這些查詢，請移至 [記錄]，然後在 [類別] 底下選取 [Windows 虛擬桌面]。 若要深入了解，請參閱[使用 Log Analytics 來執行診斷功能](diagnostics-log-analytics.md)。
+
+### <a name="update-for-remote-desktop-client-for-android"></a>Android 版遠端桌面用戶端的更新
+
+[Android 版遠端桌面用戶端](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx)現在支援 Windows 虛擬桌面連線。 從 10.0.7 版開始，Android 用戶端便提供新的 UI 來改善使用者體驗。 用戶端也會與 Android 裝置上的 Microsoft Authenticator 整合，以在訂閱 Windows 虛擬桌面工作區時啟用條件式存取。  
+
+先前的遠端桌面用戶端版本現在稱為「遠端桌面 8」。 您在舊版用戶端中擁有的任何現有連線將會順暢地轉移到新用戶端。 新用戶端已經重新編寫至與 iOS 和 macOS 用戶端相同的基礎 RDP 核心引擎，可讓新功能更快地發行到所有平台上。 
+
+### <a name="teams-update"></a>Teams 更新
+
+我們已對 Windows 虛擬桌面的 Microsoft Teams 做了一些改進。 最重要的是，Windows 虛擬桌面現在可為 Windows 桌面用戶端支援音訊和視訊最佳化。 重新導向會在使用者使用音訊或視訊進行通話和會議時在使用者之間建立直接路徑，藉此改善延遲。 更短的距離表示更少的躍點，讓通話的外觀和聲音更順暢。 若要深入了解，請參閱[在 Windows 虛擬桌面上使用 Teams](teams-on-wvd.md)。
+
 ## <a name="june-2020"></a>2020 年 6 月
 
 上個月，我們在預覽版中引進了 Windows 虛擬桌面與 Azure Resource Manager 的整合。 這項更新有許多令人興奮的新功能，我們很樂意告知您相關資訊。 以下是此版 Windows 虛擬桌面的新功能。
 
-### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager-preview"></a>Windows 虛擬桌面現在與 Azure Resource Manager 整合 (預覽)
+### <a name="windows-virtual-desktop-is-now-integrated-with-azure-resource-manager"></a>Windows 虛擬桌面現在與 Azure Resource Manager 整合
 
-Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新中，所有 Windows 虛擬桌面物件現在都是 Azure Resource Manager 資源。 這項更新也會與 Azure 角色型存取控制 (RBAC) 整合。 若要深入了解，請參閱[什麼是 Azure Resource Manager？](../azure-resource-manager/management/overview.md)。
+Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新中，所有 Windows 虛擬桌面物件現在都是 Azure Resource Manager 資源。 這項更新也會與 Azure 角色型存取控制 (Azure RBAC) 整合。 若要深入了解，請參閱[什麼是 Azure Resource Manager？](../azure-resource-manager/management/overview.md)。
 
 以下是此變更為您做的事：
 
@@ -41,7 +74,7 @@ Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新
 
 - 在此更新之前，您只能將 RemoteApp 和桌面發佈給個別使用者。 使用 Azure Resource Manager，您現在可以將資源發佈給 Azure Active Directory 群組。
 
-- 舊版 Windows 虛擬桌面有四個內建的管理員角色，您可以將其指派給租用戶或主機集區。 這些角色目前在[角色型存取控制](../role-based-access-control/overview.md)中。 您可以將這些角色套用到每個 Windows 虛擬桌面 Azure Resource Manager 物件，讓您擁有完整的豐富委派模型。
+- 舊版 Windows 虛擬桌面有四個內建的管理員角色，您可以將其指派給租用戶或主機集區。 這些角色目前在 [Azure 角色型存取控制 (Azure RBAC)](../role-based-access-control/overview.md) 中。 您可以將這些角色套用到每個 Windows 虛擬桌面 Azure Resource Manager 物件，讓您擁有完整的豐富委派模型。
 
 - 在此更新中，您不再需要重複執行 Azure Marketplace 或 GitHub 範本來展開主機集區。 您只需要展開主機集區，就可以移至 Azure 入口網站中的主機集區，然後選取 [+ 新增] 來部署額外的工作階段主機。
 
@@ -49,7 +82,7 @@ Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新
 
 - 透過 PowerShell 或診斷服務 Web 應用程式完成的監視功能現在已移至 Azure 入口網站中的 Log Analytics。 您現在也有兩個選項可將報告視覺化。 您可以執行 Kusto 查詢，並使用活頁簿來建立視覺效果報告。
 
-- 您不再需要完成 Azure Active Directory (Azure AD) 同意，即可使用 Windows 虛擬桌面。 在此更新中，Azure 訂用帳戶上的 Azure AD 租用戶會驗證您的使用者，並為您的管理員提供 RBAC 控制項。
+- 您不再需要完成 Azure Active Directory (Azure AD) 同意，即可使用 Windows 虛擬桌面。 在此更新中，Azure 訂用帳戶上的 Azure AD 租用戶會驗證您的使用者，並為您的管理員提供 Azure RBAC 控制項。
 
 
 ### <a name="powershell-support"></a>PowerShell 支援
@@ -60,7 +93,7 @@ Windows 虛擬桌面現在整合至 Azure Resource Manager。 在最新的更新
 
 您也可以在 [AzWvd PowerShell 參考](/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization)中查看可用命令的清單。
 
-如需有關新功能的詳細資訊，請參閱[我們的部落格文章](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245)。 
+如需有關新功能的詳細資訊，請參閱[我們的部落格文章](https://techcommunity.microsoft.com/t5/itops-talk-blog/windows-virtual-desktop-spring-update-enters-public-preview/ba-p/1340245)。
 
 ### <a name="additional-gateways"></a>其他閘道
 

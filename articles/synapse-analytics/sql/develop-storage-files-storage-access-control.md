@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534765"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987132"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 隨選 (預覽版) 的儲存體帳戶存取
 
@@ -81,12 +81,13 @@ SQL 隨選查詢會直接從 Azure 儲存體讀取檔案。 存取 Azure 儲存�
 
 您可以使用下列的授權和 Azure 儲存體類型組合：
 
-|                     | Blob 儲存體   | ADLS Gen1        | ADLS Gen2     |
+| 授權類型  | Blob 儲存體   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| SAS               | 支援      | 不支援   | 支援     |
-| 受控識別 | 支援      | 支援        | 支援     |
-| 使用者身分識別    | 支援      | 支援        | 支援     |
+| SAS    | 支援\*      | 不支援   | 支援\*     |
+| [受控身分識別](?tabs=managed-identity#supported-storage-authorization-types) | 支援      | 支援        | 支援     |
+| [使用者身分識別](?tabs=user-identity#supported-storage-authorization-types)    | 支援\*      | 支援\*        | 支援\*     |
 
+\* SAS 權杖和 Azure AD 身分識別可用來存取未受防火牆保護的儲存體。
 
 > [!IMPORTANT]
 > 存取受防火牆保護的儲存體時，只能使用受控識別。 您必須[允許受信任的 Microsoft 服務... 設定](../../storage/common/storage-network-security.md#trusted-microsoft-services)，並針對該資源執行個體明確[指派 Azure 角色](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)給[系統指派的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 在此情況下，執行個體的存取範圍會對應至指派給受控識別的 Azure 角色。
@@ -177,27 +178,46 @@ WITH IDENTITY='Managed Identity'
 
 Azure AD 使用者若至少具有 `Storage Blob Data Owner`、`Storage Blob Data Contributor` 或 `Storage Blob Data Reader` 角色，即可存取 Azure 儲存體上的任何檔案。 Azure AD 使用者不需要認證即可存取儲存體。
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
+)
+```
+
 SQL 使用者無法使用 Azure AD 驗證來存取儲存體。
 
 ### <a name="shared-access-signature"></a>[共用存取簽章](#tab/shared-access-signature)
 
-下列指令碼會建立認證，以使用認證中指定的 SAS 權杖來存取儲存體上的檔案。
+下列指令碼會建立認證，以使用認證中指定的 SAS 權杖來存取儲存體上的檔案。 此指令碼會建立使用此 SAS 權杖來存取儲存體的範例外部資料來源。
 
 ```sql
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>'
+GO
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
      SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SasToken
+)
 ```
 
 ### <a name="managed-identity"></a>[受控身分識別](#tab/managed-identity)
 
-下列指令碼會建立資料庫範圍認證，以用來將目前的 Azure AD 使用者模擬為服務的受控識別。 
+下列指令碼會建立資料庫範圍認證，以用來將目前的 Azure AD 使用者模擬為服務的受控識別。 此指令碼會建立使用工作區身分識別來存取儲存體的範例外部資料來源。
 
 ```sql
-CREATE DATABASE SCOPED CREDENTIAL [SynapseIdentity]
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>
+CREATE DATABASE SCOPED CREDENTIAL SynapseIdentity
 WITH IDENTITY = 'Managed Identity';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SynapseIdentity
+)
 ```
 
 資料庫範圍認證不需要符合儲存體帳戶的名稱，因為其會在定義儲存體位置的 DATA SOURCE 中明確地使用。
@@ -206,6 +226,11 @@ GO
 
 存取公用檔案不需要資料庫範圍認證。 建立[不含資料庫範圍認證的資料來源](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source)，以存取 Azure 儲存體上的公用檔案。
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.blob.core.windows.net/<container>/<path>'
+)
+```
 ---
 
 資料庫範圍認證會用於外部資料源中，其用途是指定將用來存取此儲存體的驗證方法：

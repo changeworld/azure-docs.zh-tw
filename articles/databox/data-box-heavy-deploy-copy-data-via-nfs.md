@@ -1,6 +1,6 @@
 ---
 title: 透過 NFS 將資料複製到 Azure Data Box Heavy 的教學課程 | Microsoft Docs
-description: 了解如何透過 NFS 將資料複製到您的 Azure Data Box Heavy
+description: 在本教學課程中，了解如何使用 NFS 搭配本機 Web UI，來連線至主機電腦並將資料從中複製到 Azure Data Box Heavy。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 047c4649da298e1dcb74ec1910a49353d8be534a
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a8199039ea803d5919e168edccaaa03c18985725
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206651"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921022"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-nfs"></a>教學課程：透過 NFS 將資料複製到 Azure Data Box Heavy
 

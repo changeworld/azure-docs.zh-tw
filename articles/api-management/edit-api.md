@@ -1,6 +1,6 @@
 ---
 title: 透過 Azure 入口網站編輯 API | Microsoft Docs
-description: 本教學課程會示範如何使用 API 管理 (APIM) 來編輯 API。
+description: 了解如何使用 API 管理 (APIM) 來編輯 API。 新增、刪除或重新命名 APIM 執行個體中的作業，或編輯 API 的 Swagger。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8d3f476f4a6ecf05d63223f3ba2c2b5173e1d0bf
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70072161"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905154"
 ---
 # <a name="edit-an-api"></a>編輯 API
 
@@ -26,7 +26,7 @@ ms.locfileid: "70072161"
 + 您可以透過新增、刪除或重新命名 APIM 執行個體中的作業來執行此動作。 
 + 您可以編輯您 API 的 Swagger。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 + [建立 Azure API 管理執行個體](get-started-create-service-instance.md)
 + [匯入和發佈您的第一個 API](import-and-publish.md)
@@ -37,18 +37,18 @@ ms.locfileid: "70072161"
 
 ![編輯 API](./media/edit-api/edit-api001.png)
 
-1. 按一下 [API]  索引標籤。
+1. 按一下 [API]**** 索引標籤。
 2. 選取其中一個您先前匯入的 API。
-3. 選取 [設計]  索引標籤。
+3. 選取 [設計] 索引標籤。
 4. 選取您想要編輯的作業。
-5. 若要重新命名作業，請選取 [前端]視窗中的**鉛筆**。
+5. 若要重新命名作業，請選取 [前端]**** 視窗中的**鉛筆**。
 
 ## <a name="update-the-swagger"></a>更新 Swagger
 
 若要從 Azure 入口網站更新您的後端 API，您可以遵循下列步驟：
 
-1. 選取 [所有作業] 
-2. 按一下 [前端]  視窗中的鉛筆。
+1. 選取 [所有作業]
+2. 按一下 [前端]**** 視窗中的鉛筆。
 
     ![編輯 API](./media/edit-api/edit-api002.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "70072161"
     ![編輯 API](./media/edit-api/edit-api003.png)
 
 3. 更新 Swagger。
-4. 按下 [儲存]  。
+4. 按下 [儲存] 。
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

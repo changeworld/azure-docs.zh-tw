@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e70ee75344a939ea1632df3549d796617c7596af
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921563"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901992"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教學課程：在 Kubernetes 上，為祕密存放區 CSI 驅動程式設定及執行 Azure Key Vault 提供者
 
@@ -71,7 +71,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. 若要顯示所建立 AKS 叢集的中繼資料，請使用下列命令。 複製 **principalId**、**clientId**、**subscriptionId** 與 **nodeResourceGroup** 以供稍後使用。
+1. 若要顯示所建立 AKS 叢集的中繼資料，請使用下列命令。 複製 **principalId**、**clientId**、**subscriptionId** 與 **nodeResourceGroup** 以供稍後使用。 如果未建立啟用受控識別的 ASK 叢集，則 **principalId** 和 **clientId** 會是 Null。 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -166,7 +166,7 @@ spec:
 
 ### <a name="assign-a-service-principal"></a>指派服務主體
 
-如果您要使用服務主體，請授與權限以使其能夠存取您的金鑰保存庫並擷取秘密。 執行下列動作，以指派*讀者*角色，並向服務主體授與可從金鑰保存庫*取得*祕密的權限：
+如果您要使用服務主體，請授與權限以使其能夠存取您的金鑰保存庫並擷取秘密。 執行下列命令，以指派*讀者*角色，並向服務主體授與可從金鑰保存庫*取得*祕密的權限：
 
 1. 將服務主體指派給現有的金鑰保存庫。 **$AZURE_CLIENT_ID** 參數是您在建立服務主體之後複製的**應用程式識別碼**。
     ```azurecli
@@ -204,10 +204,10 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 若要使用受控識別，請為您建立的 AKS 叢集，指派特定的角色。 
 
-1. 若要建立、列出或讀取使用者指派的受控識別，您必須為 AKS 叢集指派[受控識別參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色。 請確定 **$clientId** 是 Kubernetes 叢集的 clientId。
+1. 若要建立、列出或讀取使用者指派的受控識別，您必須為 AKS 叢集指派[受控識別操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色。 請確定 **$clientId** 是 Kubernetes 叢集的 clientId。 至於範圍，其會在您的 Azure 訂用帳戶服務下，特別是建立 AKS 叢集時所建立的節點資源群組。 此範圍會確保只有該群組內的資源會受到下列指派角色所影響。 
 
     ```azurecli
-    az role assignment create --role "Managed Identity Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```

@@ -3,12 +3,12 @@ title: IRS 1075 藍圖範例控制項
 description: IRS 1075 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
 ms.date: 05/13/2020
 ms.topic: sample
-ms.openlocfilehash: 0cd69a35cb4ad30a565a2392f7109c74d75de4d7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ce753ff1a7c6dd0029f3d6ee773ae40ab4cc78e9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659820"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920767"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>IRS 1075 藍圖範例的控制項對應
 
@@ -31,7 +31,7 @@ ms.locfileid: "83659820"
 
 ## <a name="9321-ac-2-7-account-management--role-based-schemes"></a>9.3.2.1 AC-2 (7) 帳戶管理 | 角色型配置
 
-Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖還指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此外，此藍圖指派了一項 Azure 原則定義來稽核自訂 RBAC 規則的使用情形。 了解自訂 RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 RBAC 規則很容易發生錯誤。
+Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖還指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此外，此藍圖指派了一項 Azure 原則定義來稽核自訂 RBAC 規則的使用情形。 了解自訂 RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 RBAC 規則很容易發生錯誤。
 
 - 應針對 SQL 伺服器佈建 Azure Active Directory 管理員
 - 稽核自訂 RBAC 規則的使用方式
@@ -63,7 +63,7 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 
 ## <a name="9316-ac-6-7-least-privilege--review-of-user-privileges"></a>9.3.1.6 AC-6 (7) 最低權限 | 使用者權限檢閱
 
-Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核應該優先檢閱的帳戶。 檢閱這些帳戶指標，可協助您確保會實作最低權限控制措施。
+Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核應該優先檢閱的帳戶。 檢閱這些帳戶指標，可協助您確保會實作最低權限控制措施。
 
 - 應針對您的訂用帳戶指定最多 3 位擁有者
 - 稽核其中 Administrators 群組包含了任一指定成員的 Windows VM

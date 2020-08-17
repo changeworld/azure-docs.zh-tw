@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Site Recovery 服務將 AWS VM 移轉至 Azure | Microsoft Docs
-description: 本文說明如何使用 Azure Site Recovery 將 Amazon Web Services (AWS) 中執行的 Windows VM 移轉至 Azure。
+title: 使用 Azure Migrate 將 AWS VM 遷移至 Azure
+description: 本文說明可將 AWS 執行個體遷移至 Azure 的選項，並建議使用 Azure Migrate。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/27/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: dd91e99b45405cca10b9ddc2982674e72ad6bf86
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 83d8106b9f206da9095c37b6179bdda8001b439c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281288"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852764"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>將 Amazon Web Services (AWS) VM 移轉至 Azure
 
@@ -22,7 +22,7 @@ ms.locfileid: "87281288"
 
 ## <a name="migrate-with-azure-migrate"></a>使用 Azure Migrate 遷移
 
-建議您使用 [Azure Migrate](../migrate/migrate-services-overview.md) 服務，將 AWS 執行個體遷移至 Azure。 Azure Migrate 提供使用 Azure Migrate、其他 Azure 服務及協力廠商工具，來評估內部部署機器並將其遷移至 Azure 的集中式中樞。
+建議您使用 [Azure Migrate](../migrate/migrate-services-overview.md) 服務，將 AWS EC2 執行個體遷移至 Azure。 Azure Migrate 是專為伺服器移轉而建置的。 Azure Migrate 提供集中式中樞，可探索、評量並將內部部署機器移轉到 Azure。
 
 [了解如何](../migrate/tutorial-migrate-aws-virtual-machines.md)使用 Azure Migrate 遷移 AWS 執行個體。 
 

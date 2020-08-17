@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 03fdbf6979db3249d1322a3025b48de81b953ae1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b1357c9bb125cb881ac4aa6dd31c9dcaf53954f0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856222"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919934"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>以資料科學虛擬機器為基礎的團隊分析和 AI 環境 
 [資料科學虛擬機器](overview.md) (DSVM) 在 Azure 平台中提供豐富的環境，其中包含了適用於人工智慧 (AI) 和資料分析的預先建立軟體。
@@ -40,7 +40,7 @@ ms.locfileid: "82856222"
 * [網路安全性](https://docs.microsoft.com/azure/security/fundamentals/network-security)
 * [監視](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)和[管理](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [記錄與稽核](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure 角色型存取控制 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [原則設定和強制執行](../../governance/policy/overview.md)
 * [反惡意程式碼](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [加密](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)

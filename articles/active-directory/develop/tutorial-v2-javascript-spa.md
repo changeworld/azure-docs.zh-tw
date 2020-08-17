@@ -1,6 +1,7 @@
 ---
-title: JavaScript 單頁應用程式教學課程 - Microsoft 身分識別平台 | Azure
-description: JavaScript SPA 應用程式如何呼叫需要來自 Azure Active Directory v2.0 端點存取權杖的 API
+title: JavaScript 單頁應用程式教學課程 | Azure
+titleSuffix: Microsoft identity platform
+description: 在本教學課程中，您會了解 JavaScript 單頁應用程式 (SPA) 如何呼叫需要 Microsoft 身分識別平台所簽發存取權杖的 API。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 745132284ee48270b46b6bd2f785d8bec19404fb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129673"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118190"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft 圖形 API
 
@@ -25,8 +26,8 @@ ms.locfileid: "87129673"
 - 取得存取權杖
 - 呼叫 Microsoft Graph API 或其他需要 Microsoft 身分識別平台端點中存取權杖的 API
 
->[!NOTE]
-> 如果您不熟悉 Microsoft 身分識別平台，建議您先參閱[登入使用者並取得 JavaScript SPA 中的存取權杖快速入門](quickstart-v2-javascript.md)。
+>[!TIP]
+> 本教學課程使用 MSAL.js v1.x，其僅限於使用單頁應用程式的隱含授與流程。 建議所有新應用程式改用[具有 PKCE 和 CORS 支援的 MSAL.js 2.x 和授權碼流程](tutorial-v2-javascript-auth-code.md)。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南產生之範例應用程式的運作方式
 
@@ -321,8 +322,8 @@ ms.locfileid: "87129673"
 ```
 
  其中：
- - *\<Enter_the_Application_Id_Here>* 是您所註冊應用程式的**應用程式 (用戶端) 識別碼**。
- - *\<Enter_the_Cloud_Instance_Id_Here>* 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，只要輸入 *https://login.microsoftonline.com* 即可。 針對**國家**雲端 (例如中國)，請參閱[國家雲端](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。
+ - *\<Enter_the_Application_Id_Here>* 是您註冊之應用程式的 **應用程式 (用戶端) 識別碼**。
+ - *\<Enter_the_Cloud_Instance_Id_Here>* 是 Azure 雲端的執行個體。 針對主要或全域 Azure 雲端，只要輸入 *https://login.microsoftonline.com* 即可。 針對**國家**雲端 (例如中國)，請參閱[國家雲端](./authentication-national-cloud.md)。
  - *\<Enter_the_Tenant_info_here>* 設定為下列其中一個選項：
    - 如果您的應用程式支援「此組織目錄中的帳戶」，請將此值取代為 [租用戶識別碼] 或 [租用戶名稱] \(例如 *contoso.microsoft.com*\)。
    - 如果您的應用程式支援「任何組織目錄中的帳戶」，請將此值取代為 [組織]。
@@ -446,7 +447,7 @@ ms.locfileid: "87129673"
    ```
 
    其中：
-   - *\<Enter_the_Graph_Endpoint_Here>* 是 MS 圖形 API 的執行個體。 若為全域 MS 圖形 API 端點，只要將此字串取代為 `https://graph.microsoft.com` 即可。 若為國家雲端部署，請參閱[圖形 API 文件](https://docs.microsoft.com/graph/deployments)。
+   - *\<Enter_the_Graph_Endpoint_Here>* 是 MS 圖形 API 的執行個體。 若為全域 MS 圖形 API 端點，只要將此字串取代為 `https://graph.microsoft.com` 即可。 若為國家雲端部署，請參閱[圖形 API 文件](/graph/deployments)。
 
 1. 接下來，建立名為 `graph.js` 的 .js 檔案以針對 Microsoft 圖形 API 發出 REST 呼叫，然後新增下列程式碼：
 

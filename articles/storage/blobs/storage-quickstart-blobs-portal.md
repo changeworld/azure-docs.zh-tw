@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: tamram
-ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f2e18b060aabcb849fb8e17722c530d199ebdbb8
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535159"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067736"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>快速入門：使用 Azure 入口網站上傳、下載及列出 Blob
 
@@ -45,7 +45,7 @@ ms.locfileid: "81535159"
 
 1. 在 Azure 入口網站中，瀏覽至您在上一節中建立的容器。
 1. 選取容器以顯示它所包含的 Blob 清單。 此容器是新的，因此尚未包含任何 Blob。
-1. 選取 [上傳]  按鈕以開啟 [上傳] 刀鋒視窗，然後瀏覽您的本機檔案系統，尋找要上傳做為區塊 blob 的檔案。 您可以選擇性地展開進階區段，進行上傳作業的其他設定。
+1. 選取 [上傳]  按鈕以開啟 [上傳] 刀鋒視窗，然後瀏覽您的本機檔案系統，尋找要上傳做為區塊 blob 的檔案。 您可以選擇性地展開 [進階] 區段，進行上傳作業的其他設定。
 
     ![顯示如何從本機磁碟機上傳 Blob 的螢幕擷取畫面](media/storage-quickstart-blobs-portal/upload-blob.png)
 
@@ -59,9 +59,18 @@ ms.locfileid: "81535159"
 1. 瀏覽至您在上一節中上傳的 Blob 清單。
 1. 以滑鼠右鍵按一下您要下載的 Blob，然後選取 [下載]  。
 
+    ![顯示如何下載 Blob 的螢幕擷取畫面](media/storage-quickstart-blobs-portal/download-blob.png)
+
+## <a name="delete-a-block-blob"></a>刪除區塊 Blob
+
+您可以下載區塊 Blob，以在瀏覽器中顯示或儲存到本機檔案系統。 若要下載區塊 Blob，請遵循下列步驟：
+
+1. 瀏覽至您在上一節中上傳的 Blob 清單。
+1. 選取您想要刪除的 Blob，然後選取頂端動作列中的 [刪除]。
+
 ## <a name="clean-up-resources"></a>清除資源
 
-若要移除您在本快速入門中建立的資源，您可以刪除容器。 容器中的所有 Blob 也會遭到刪除。
+若要移除您在本快速入門中建立的所有資源，只要刪除容器即可。 容器中的所有 Blob 也會遭到刪除。
 
 若要刪除容器：
 

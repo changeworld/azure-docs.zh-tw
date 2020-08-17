@@ -1,18 +1,17 @@
 ---
-title: 透過 Azure Site Recovery 遷移內部部署機器
-description: 本文說明如何使用 Azure Site Recovery 將內部部署機器移轉至 Azure。
-author: rayne-wiselman
+title: 使用 Azure Migrate 服務移轉內部部署機器
+description: 本文摘要說明如何將內部部署機器遷移至 Azure，並建議使用 Azure Migrate。
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
-ms.openlocfilehash: 3c421845d4e15ef13ce98d0de111270159f564fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0e60ee346d20113b2ec7970390d9874522cc770
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285351"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847307"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>將內部部署機器移轉至 Azure
 
@@ -20,7 +19,7 @@ ms.locfileid: "87285351"
 
 ## <a name="migrate-with-azure-migrate"></a>使用 Azure Migrate 遷移
 
-建議您使用 [Azure Migrate](../migrate/migrate-services-overview.md) 服務，將機器移轉到 Azure。 Azure Migrate 提供使用 Azure Migrate、其他 Azure 服務及協力廠商工具，來評估內部部署機器並將其移轉到 Azure 的集中式中樞。
+建議您使用 [Azure Migrate](../migrate/migrate-services-overview.md) 服務，將機器移轉到 Azure。 Azure Migrate 是專為伺服器移轉而建置的。 Azure Migrate 提供集中式中樞，可探索、評量並將內部部署機器移轉到 Azure。
 
 請遵循下列連結，以 Azure Migrate 進行遷移：
 

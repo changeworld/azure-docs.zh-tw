@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8ff431c27dd53e82f9003b658c82ceb3efb5d320
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77615161"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810015"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>教學課程：跨工作階段和裝置與 Azure Cosmos DB 後端共用 Azure Spatial Anchors
 
@@ -21,7 +21,7 @@ ms.locfileid: "77615161"
 
 ![說明物件持續性的 GIF](./media/persistence.gif)
 
-應注意的是，雖然您在本教學課程中將使用 Unity 和 Azure Cosmos DB，但這只為了提供範例，說明如何跨裝置共用 Spatial Anchors 識別碼。 您可以使用其他語言和後端技術來達到相同的目標。 此外，本教學課程所使用的 ASP.NET Core Web 應用程式需要 .NET Core 2.2 SDK。 它在「適用於 Windows 的 Web 應用程式」上可正常執行，但目前無法在「適用於 Linux 的 Web 應用程式」上執行。
+應注意的是，雖然您在本教學課程中將使用 Unity 和 Azure Cosmos DB，但這只為了提供範例，說明如何跨裝置共用 Spatial Anchors 識別碼。 您可以使用其他語言和後端技術來達到相同的目標。
 
 ## <a name="create-a-database-account"></a>建立資料庫帳戶
 
@@ -42,14 +42,6 @@ ms.locfileid: "77615161"
 找出 `StorageConnectionString` 屬性，並將其值設為您在[建立資料庫帳戶步驟](#create-a-database-account)中記下的 `Connection String` 值。 儲存檔案。
 
 您可以再次發佈共用服務，並執行範例應用程式。
-
-## <a name="troubleshooting"></a>疑難排解
-
-### <a name="unity-20193"></a>Unity 2019.3
-
-由於有重大變更，目前不支援 Unity 2019.3。 請使用 Unity 2019.1 或 2019.2。
-
-[!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

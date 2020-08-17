@@ -4,15 +4,15 @@ description: 了解如何在 Azure 中從 Node.js 應用程式透過 azure/servi
 author: spelluru
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 06/23/2020
+ms.date: 08/09/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 9d4a3a66d967bd003534c7931091979d1667526c
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 8a86a1bd9a312f3b1c6d94914d426422687b25a6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432792"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077011"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>快速入門：如何透過 Node.js 和 azure-sb 套件使用服務匯流排主題和訂用帳戶
 在本教學課程中，您將了解如何建立 Node.js 應用程式，以使用 [azure-sb](https://www.npmjs.com/package/azure-sb) 套件將訊息傳送至服務匯流排主題，以及接收來自服務匯流排訂用帳戶的訊息。 範例均以 JavaScript 撰寫，並使用在內部使用 `azure-sb` 套件的 Node.js [Azure 模組](https://www.npmjs.com/package/azure)。
@@ -20,7 +20,7 @@ ms.locfileid: "87432792"
 > [!IMPORTANT]
 > [azure-sb](https://www.npmjs.com/package/azure-sb) 套件會使用[服務匯流排 REST 執行階段 API](/rest/api/servicebus/service-bus-runtime-rest)。 您可以使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 套件 (採用更快速的 [AMQP 1.0 通訊協定](service-bus-amqp-overview.md))，以獲得更快速的體驗。 
 > 
-> 若要深入了解新的套件，請參閱[如何透過 Node.js 和 @azure/service-bus 套件使用服務匯流排主題和訂用帳戶](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions-new-package)，否則，請繼續閱讀以了解如何使用 [Azure](https://www.npmjs.com/package/azure) 套件。
+> 若要深入了解新的套件，請參閱[如何透過 Node.js 和 @azure/service-bus 套件使用服務匯流排主題和訂用帳戶](./service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md)，否則，請繼續閱讀以了解如何使用 [Azure](https://www.npmjs.com/package/azure) 套件。
 
 此處涵蓋的案例包括：
 
@@ -40,7 +40,7 @@ ms.locfileid: "87432792"
     > 您將會在本快速入門中使用 **Node.js**，建立**主題**和主題的**訂用帳戶**。 
 
 ## <a name="create-a-nodejs-application"></a>建立 Node.js 應用程式
-建立空白的 Node.js 應用程式。 如需建立 Node.js 應用程式的相關指示，請參閱[建立 Node.js 應用程式並將其部署到 Azure 網站]、[Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell) 或使用 WebMatrix 的網站。
+建立空白的 Node.js 應用程式。 如需有關建立 Node.js 應用程式的指示，請參閱 [建立 Node.js 應用程式並將其部署到 Azure 網站]、[Node.js 雲端服務][Node.js Cloud Service] (使用 Windows PowerShell) 或使用 WebMatrix 的網站。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>設定應用程式以使用服務匯流排
 若要使用服務匯流排，請下載 Node.js Azure 封裝。 此封裝含有一組能與服務匯流排 REST 服務通訊的便利程式庫。
@@ -142,7 +142,7 @@ var serviceBusService = azure.createServiceBusService().withFilter(retryOperatio
 > [!NOTE]
 > 根據預設，訂用帳戶是持續性的，會持續到本身或其相關聯的主題遭到刪除為止。 如果應用程式含有建立訂用帳戶的邏輯，它應該會先使用 `getSubscription` 方法檢查訂用帳戶是否存在。
 >
-> 您可以藉由設定 [AutoDeleteOnIdle 屬性](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)，將訂用帳戶自動刪除。
+> 您可以藉由設定 [AutoDeleteOnIdle 屬性](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)，將訂用帳戶自動刪除。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>使用預設 (MatchAll) 篩選器建立訂用帳戶
 **MatchAll** 篩選器是訂用帳戶建立時使用的預設篩選器。 使用 **MatchAll** 篩選器時，所有發佈至主題的訊息都會被置於訂用帳戶的虛擬佇列中。 下列範例將建立名為 AllMessages 的訂用帳戶，並使用預設的 **MatchAll** 篩選器。
@@ -254,7 +254,7 @@ var message = {
     }
 }
 
-for (i = 0;i < 5;i++) {
+for (var i = 0; i < 5; i++) {
     message.customProperties.messagenumber=i;
     message.body='This is Message #'+i;
     serviceBusService.sendTopicMessage(topic, message, function(error) {
@@ -306,7 +306,7 @@ serviceBusService.receiveSubscriptionMessage('MyTopic', 'HighMessages', { isPeek
 如果應用程式在處理訊息之後，尚未呼叫 `deleteMessage` 方法時當機，則會在應用程式重新啟動時將訊息重新傳遞給該應用程式。 這種行為通常稱為*至少處理一次*。 也就是說，每則訊息至少會處理一次；但在特定狀況下，可能會重新傳遞相同訊息。 如果案例無法容許重複處理，則您應在應用程式中加入邏輯，以處理重複的訊息傳遞。 您可使用訊息的 **MessageId** 屬性，該屬性在各個傳遞嘗試中會保持不變。
 
 ## <a name="delete-topics-and-subscriptions"></a>刪除主題和訂用帳戶
-主題和訂用帳戶在未設定 [autoDeleteOnIdle 屬性](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)的情況下是持續性的，且必須透過 [Azure 入口網站][Azure portal]或以程式設計方式明確地刪除。
+主題和訂用帳戶在未設定 [AutoDeleteOnIdle 屬性](/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)的情況下是持續性的，且必須透過 [Azure 入口網站][Azure portal]或以程式設計方式明確地刪除。
 下列範例示範如何刪除名為 `MyTopic` 的主題：
 
 ```javascript
@@ -343,6 +343,6 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /javascript/api/@azure/arm-servicebus/sqlfilter?view=azure-node-latest
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[建立 Node.js 應用程式並將其部署到 Azure 網站]: ../app-service/app-service-web-get-started-nodejs.md
+[Create and deploy a Node.js application to Azure App Service]: ../app-service/quickstart-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

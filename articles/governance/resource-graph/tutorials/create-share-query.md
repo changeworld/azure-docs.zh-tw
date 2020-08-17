@@ -3,16 +3,16 @@ title: 教學課程：在 Azure 入口網站中管理查詢
 description: 在本教學課程中，您將建立 Resource Graph 查詢，並在 Azure 入口網站中與其他人共用新查詢。
 ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: c3da623e8bea44cc49e4ef46517ce461459405a9
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970581"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005185"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>教學課程：在 Azure 入口網站中建立和共用 Azure Resource Graph 查詢
 
-Azure Resource Graph Explorer 可讓您直接在 Azure 入口網站中儲存 Resource Graph 查詢。 查詢分成兩種類型：_私人_和_共用_。 私人查詢會儲存在您的 Azure 入口網站設定中。 共用查詢是一種 Azure Resource Manager 資源，可以使用角色型存取控制 (RBAC) 來管理，並使用資源鎖定加以保護。 這兩種類型的查詢都會在待用時加密。
+Azure Resource Graph Explorer 可讓您直接在 Azure 入口網站中儲存 Resource Graph 查詢。 查詢分成兩種類型：_私人_和_共用_。 私人查詢會儲存在您的 Azure 入口網站設定中。 共用查詢是一種 Azure Resource Manager 資源，可以使用 Azure 角色型存取控制 (Azure RBAC) 來管理，並使用資源鎖定加以保護。 這兩種類型的查詢都會在待用時加密。
 
 將查詢儲存在 Azure 入口網站中，可讓您省下在尋找慣用或常用查詢時可能耗費的時間。 在共用查詢時，您將協助小組成員透過重複的動作實現一致性和效率的目標。
 
@@ -60,7 +60,7 @@ Azure Resource Graph Explorer 可讓您直接在 Azure 入口網站中儲存 Res
 
 ## <a name="create-a-shared-query"></a>建立共用查詢
 
-不同於私人查詢，共用查詢是 Resource Manager 資源。 這表示查詢會儲存至資源群組、可透過 RBAC 來管理和控制，甚至可使用資源鎖定加以保護。 作為資源，任何人只要具有適當的權限，即可加以檢視和使用。
+不同於私人查詢，共用查詢是 Resource Manager 資源。 這表示查詢會儲存至資源群組、可透過 Azure RBAC 來管理和控制，甚至可使用資源鎖定加以保護。 作為資源，任何人只要具有適當的權限，即可加以檢視和使用。
 若要建立新的共用查詢，請執行下列步驟：
 
 1. 從入口網站功能表中選取 [所有服務]，或使用所有頁面頂端的 Azure 搜尋方塊，來搜尋並選取 [Resource Graph Explorer]。

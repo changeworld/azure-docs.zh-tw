@@ -11,13 +11,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: 497de36d63a909d2c53374482dfe09d1f19dfded
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/10/2020
+ms.openlocfilehash: ed0ad6c5597d63c411eeb323cf00dcb7f044f667
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033100"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067812"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入門：在 Visual Studio 中使用 .NET 及 C#，連線到 Azure SQL Database 資料庫或 Azure SQL 受控執行個體，並進行查詢
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -62,17 +62,17 @@ ms.locfileid: "87033100"
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>建立查詢 Azure SQL Database 中資料庫的程式碼
 
-1. 在 Visual Studio 中，選取 [檔案] >  [新增] >  [專案]。 
+1. 在 Visual Studio 中，建立新專案。 
    
-1. 在 [新增專案]對話方塊中，選取 [Visual C#]，然後選取 [主控台應用程式 (.NET Framework)]。
+1. 在 [新增專案]對話方塊中，選取 [Visual C#]、[主控台應用程式 (.NET Framework)]。
    
 1. 輸入 *sqltest* 作為專案名稱，然後選取 [確定]。 隨即建立新專案。 
    
 1. 選取 [專案] > [管理 NuGet 套件]。 
    
-1. 在 [NuGet 套件管理員] 中，選取 [瀏覽] 索引標籤，然後搜尋並選取 **System.Data.SqlClient**。
+1. 在 [NuGet 套件管理員] 中，選取 [瀏覽] 索引標籤，然後搜尋並選取 **Microsoft.Data.SqlClient**。
    
-1. 在 **System.Data.SqlClient** 頁面上，選取 [安裝]。 
+1. 在 **Microsoft.Data.SqlClient** 頁面上，選取 [安裝]。 
    - 出現提示時，選取 [確定]以繼續安裝。 
    - 如果 [接受授權]視窗出現時，選取 [我接受]。
    
@@ -85,7 +85,7 @@ ms.locfileid: "87033100"
    
    ```csharp
    using System;
-   using System.Data.SqlClient;
+   using Microsoft.Data.SqlClient;
    using System.Text;
    
    namespace sqltest

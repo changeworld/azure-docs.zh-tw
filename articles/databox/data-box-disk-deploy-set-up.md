@@ -1,6 +1,6 @@
 ---
 title: 將 Azure 資料箱磁碟解除封裝、連接、解除鎖定的教學課程 | Microsoft Docs
-description: 使用本教學課程以了解如何設定您的 Azure 資料箱磁碟
+description: 在本教學課程中，了解如何開箱 Azure 資料箱磁碟、連接到磁碟、取得通行金鑰，以及將 Windows 和 Linux 用戶端上的磁碟解除鎖定。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/04/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1fbd99e8233b068efda4d0fb87e87788f49835cf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 570653d620c5e314db9e6a0bc56d731f8acf9296
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214355"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925646"
 ---
 ::: zone target="docs"
 

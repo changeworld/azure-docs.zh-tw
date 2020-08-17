@@ -1,5 +1,5 @@
 ---
-title: 在 Azure VMSS 上設定受控識別-Azure AD
+title: 在 Azure VMSS 上設定受控識別 - Azure AD
 description: 使用 Azure 入口網站在虛擬機器擴展集上設定 Azure 資源受控識別的逐步指示。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e2d72ba63633d7c5d3da3094cfa00e076513af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d05ee1be18b315c63ccf9d564ea95391a163826e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609107"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924490"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>使用 Azure 入口網站在虛擬機器擴展集上設定 Azure 資源受控識別
 
@@ -32,7 +32,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
-- 若要執行本文中的管理作業，您的帳戶需要下列 Azure 角色型存取控制指派：
+- 若要執行本文中的管理作業，您的帳戶需要下列 Azure 角色指派：
 
     > [!NOTE]
     > 不需要其他 Azure AD 目錄角色指派。
@@ -105,5 +105,3 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 ## <a name="next-steps"></a>後續步驟
 
 - 使用 Azure 入口網站，提供虛擬機器擴展集的受控識別[存取權給另一個 Azure 資源](howto-assign-access-portal.md)。
-
-

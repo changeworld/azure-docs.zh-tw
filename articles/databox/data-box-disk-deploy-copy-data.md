@@ -1,6 +1,6 @@
 ---
 title: 將資料複製到 Azure 資料箱磁碟的教學課程 | Microsoft Docs
-description: 使用本教學課程以了解如何將資料複製到您的 Azure 資料箱磁碟
+description: 在本教學課程中，了解如何將資料從主機電腦複製到 Azure 資料箱磁碟，然後產生總和檢查碼來確認資料完整性。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d33f53ef3d6ea0ef6a3040a82ec17b3089075949
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231534"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927108"
 ---
 ::: zone target="docs"
 

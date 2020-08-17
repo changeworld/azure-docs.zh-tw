@@ -1,6 +1,7 @@
 ---
-title: 設定應用程式以公開 Web API - Microsoft 身分識別平台 | Azure
-description: 了解如何設定應用程式來公開新的權限/範圍和角色，以便讓應用程式可供用戶端應用程式使用。
+title: 快速入門：設定應用程式以公開 Web API | Azure
+titleSuffix: Microsoft identity platform
+description: 在本快速入門中，您會了解如何設定應用程式來公開新的權限/範圍和角色，以便讓應用程式可供用戶端應用程式使用。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/14/2019
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 263eb531466e26ed6069dc889c17e2632aa9ed20
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 93b0c3392a32a6ff18a285d34fdaede6ceea6528
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799407"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830286"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>快速入門：設定應用程式以公開 Web API
+# <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>快速入門：設定應用程式以公開 Web API
 
 您可以開發 Web API，並藉由公開[權限/範圍](developer-glossary.md#scopes)和[角色](developer-glossary.md#roles)，使其可供用戶端應用程式使用。 正確設定的 web API 即可供使用，就像其他 Microsoft web API 一樣，包括 Graph API 和 Office 365 API。
 
@@ -27,11 +28,8 @@ ms.locfileid: "87799407"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-開始之前，請先確定您已完成以下先決條件：
-
-* 了解所支援的[權限和同意](v2-permissions-and-consent.md)，在建置其他使用者或應用程式需要使用的應用程式時，這些是務必了解的重要資訊。
-* 擁有已有應用程式在其中註冊的租用戶。
-  * 如果您尚未註冊應用程式，請[了解如何使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)。
+* 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 完成[快速入門：向 Microsoft 身分識別平台註冊應用程式](quickstart-register-app.md)。
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>登入 Azure 入口網站，然後選取應用程式
 
@@ -86,13 +84,17 @@ ms.locfileid: "87799407"
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>透過應用程式資訊清單公開新的範圍或角色
 
+應用程式資訊清單可作為用於更新應用程式實體的機制，以定義 Azure AD 應用程式註冊的屬性。
+
 [![使用資訊清單中的 oauth2Permissions 集合來公開新的範圍](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
 
-若要透過應用程式資訊清單公開新的範圍：
+若要藉由編輯應用程式資訊清單來公開新的範圍：
 
 1. 從應用程式的 [概觀] 頁面，選取 [資訊清單] 區段。 Web 式的資訊清單編輯器隨即開啟，以供您在入口網站內**編輯**資訊清單。 或者，您也可以選取 [下載] 並在本機編輯資訊清單，然後使用 [上傳] 以將其重新套用到您的應用程式。
 
     下列範例說明如何藉由將下列 JSON 元素新增至 `oauth2Permissions` 集合，從而在資源/API 上公開稱為 `Employees.Read.All` 的新範圍。
+
+    以程式設計方式或使用 [guidgen](https://www.microsoft.com/download/details.aspx?id=55984) 之類的 GUID 產生工具來產生 `id` 值。
 
       ```json
       {
@@ -107,13 +109,12 @@ ms.locfileid: "87799407"
       }
       ```
 
-   > [!NOTE]
-   > `id` 的值必須以程式設計的方式產生，或使用 GUID 產生工具 (例如 [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)) 產生。 `id` 代表由 Web API 所公開之範圍的唯一識別碼。 一旦為用戶端設定了適當的 Web API 存取權限，Azure AD 便會對用戶端發出 OAuth 2.0 存取權杖。 用戶端在呼叫 Web API 時會出示存取權杖，此權杖的範圍 (scp) 宣告已設定為其應用程式註冊中所要求的權限。
-   >
-   > 稍後您可以視需要公開其他範圍。 請考慮您的 Web API 可能會公開多個與各種不同功能相關聯的範圍。 在執行階段，您的資源可藉由評估所收到之 OAuth 2.0 存取權杖中的範圍 (`scp`) 宣告，來控制 Web API 的存取。
-
 1. 完成時，按一下 [儲存]。 您的 Web API 現在已設定為可供目錄中的其他應用程式使用。
 1. 遵循相關步驟來[確認已向其他應用程式公開 Web API](#verify-the-web-api-is-exposed-to-other-applications)。
+
+如需應用程式實體及其結構描述的詳細資訊，請參閱 Microsoft Graph 的[應用程式][ms-graph-application]資源類型參考文件。
+
+如需應用程式資訊清單的詳細資訊，包括其結構描述參考，請參閱[了解 Azure AD 應用程式資訊清單](reference-app-manifest.md)。
 
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>確認已向其他應用程式公開 Web API
 
@@ -125,24 +126,24 @@ ms.locfileid: "87799407"
 
 一旦選取了 Web API 資源，您應該會看到可供用戶端權限要求使用的新範圍。
 
-## <a name="more-on-the-application-manifest"></a>應用程式資訊清單的詳細資料
+## <a name="using-the-exposed-scopes"></a>使用公開的範圍
 
-應用程式資訊清單可作為更新應用程式實體的一種機制，其可定義 Azure AD 應用程式身分識別設定的所有屬性。 如需應用程式實體和其結構描述的詳細資訊，請參閱[圖形 API 應用程式實體文件](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)。 該文章包含可用來指定您 API 權限之應用程式實體成員的完整參考資訊，包括：
+一旦為用戶端設定了適當的 Web API 存取權限，Azure AD 便會對用戶端發出 OAuth 2.0 存取權杖。 用戶端在呼叫 Web API 時會出示存取權杖，此權杖的範圍 (`scp`) 宣告已設定為其應用程式註冊中所要求的權限。
 
-* appRoles 成員，此成員為 [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) 實體的集合，可用來定義 Web API 的[應用程式權限](developer-glossary.md#permissions)。
-* oauth2Permissions 成員，此成員為 [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) 實體的集合，可用來定義 Web API 的[委派的權限](developer-glossary.md#permissions)。
+稍後您可以視需要公開其他範圍。 請考慮您的 Web API 可能會公開多個與各種不同功能相關聯的範圍。 在執行階段，您的資源可藉由評估所收到之 OAuth 2.0 存取權杖中的範圍 (`scp`) 宣告，來控制 Web API 的存取。
 
-如需應用程式資訊清單一般概念的詳細資訊，請參閱[了解 Azure Active Directory 應用程式資訊清單](reference-app-manifest.md)。
+在您的應用程式中，完整範圍值是 Web API 的**應用程式識別碼 URI** (資源) 和**範圍名稱**的串連。
+
+例如，如果您 Web API 的應用程式識別碼 URI 是 `https://contoso.com/api`，而您的範圍名稱是 `Employees.Read.All`，則完整範圍是：
+
+`https://contoso.com/api/Employees.Read.All`
 
 ## <a name="next-steps"></a>後續步驟
 
-了解與應用程式相關的下列其他應用程式管理快速入門：
+您現已藉由設定 Web API 的範圍來將其公開，接下來請使用可存取這些範圍的權限來設定用戶端應用程式的註冊。
 
-* [使用 Microsoft 身分識別平台來註冊應用程式](quickstart-register-app.md)
-* [設定用戶端應用程式以存取 Web API](quickstart-configure-app-access-web-apis.md)
-* [修改應用程式所支援的帳戶](quickstart-modify-supported-accounts.md)
-* [移除使用 Microsoft 身分識別平台所註冊的應用程式](quickstart-remove-app.md)
+> [!div class="nextstepaction"]
+> [設定 Web API 存取的應用程式註冊](quickstart-configure-app-access-web-apis.md)
 
-若要了解代表已註冊的應用程式和它們之間關係的兩個 Azure AD 物件，請參閱[應用程式物件和服務主體物件](app-objects-and-service-principals.md)。
-
-若要了解使用 Azure Active Directory 開發應用程式時應使用的商標指導方針，請參閱[應用程式的商標指導方針](howto-add-branding-in-azure-ad-apps.md)。
+<!-- REF LINKS -->
+[ms-graph-application]: /graph/api/resources/application

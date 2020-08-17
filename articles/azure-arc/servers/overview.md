@@ -1,20 +1,16 @@
 ---
 title: 適用於伺服器的 Azure Arc (預覽) 概觀
 description: 了解如何使用適用於伺服器的 Azure Arc 來管理裝載於 Azure 外部的機器，就如同管理 Azure 資源一樣。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新管理, 變更追蹤, 清查, Runbook, python, 圖形, 混合式
-ms.date: 03/24/2020
+ms.custom: references_regions
+ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: e775945526a5453085946ed4eea2a2e19761ba78
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: f11eedaf5f70cb24fa6c1588b7f26b2eed4734ce
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482185"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121794"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什麼是適用於伺服器的 Azure Arc (預覽)？
 
@@ -28,10 +24,15 @@ ms.locfileid: "85482185"
 
 ## <a name="supported-scenarios"></a>支援的案例
 
-適用於伺服器的 Azure Arc (預覽) 支援對已連線的機器執行下列案例：
+當您將機器連線到適用於伺服器的 Azure Arc (預覽) 時，其可讓您執行下列設定管理工作：
 
 - 使用與 Azure 虛擬機器原則指派相同的體驗來指派 [Azure 原則客體設定](../../governance/policy/concepts/guest-configuration.md)。
-- Log Analytics 代理程式所收集的記錄資料 (儲存在電腦己註冊的 Log Analytics 工作區中)。 來自混合式電腦的記錄資料現在包含電腦特有的屬性，例如可用來支援[資源內容](../../azure-monitor/platform/design-logs-deployment.md#access-mode)記錄存取的資源識別碼。
+
+- 監視已連線機器的客體作業系統效能，並探索應用程式元件，以使用[適用於 VM 的 Azure 監視器](../../azure-monitor/insights/vminsights-overview.md)來監視其程序以及與應用程式所通訊的其他資源相依性。
+
+- 使用適用於非 Azure Windows 或 Linux 機器的受支援 [Azure VM 擴充功能](manage-vm-extensions.md)，簡化其他 Azure 服務 (例如 Azure 自動化狀態設定和 Azure 監視器 Log Analytics 工作區) 的部署。 這包括使用自訂指令碼擴充功能來執行部署後設定或軟體安裝。
+
+從混合式機器收集並儲存在 Log Analytics 工作區中的記錄資料，現在會包含機器特有的屬性，例如資源識別碼。 這可以用來支援[資源內容](../../azure-monitor/platform/design-logs-deployment.md#access-mode)記錄存取。
 
 ## <a name="supported-regions"></a>支援區域
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 56a2246b4f1da51d9b18a34279eff04264530ef5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 770353f893762f0f35d744fe1e7a5e4de4a671ce
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160080"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808757"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教學課程：在 Front Door 自訂網域上設定 HTTPS
 
@@ -68,6 +68,9 @@ ms.locfileid: "82160080"
 4. 按一下 [儲存]。
 
 5. 繼續[驗證網域](#validate-the-domain)。
+
+> [!NOTE]
+> 針對 AFD 受控憑證，會強制執行 DigiCert 的 64 字元限制。 如果超出該限制，驗證將會失敗。
 
 
 ### <a name="option-2-use-your-own-certificate"></a>選項 2：使用您自己的憑證

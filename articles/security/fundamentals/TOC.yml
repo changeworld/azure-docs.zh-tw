@@ -78,12 +78,16 @@
   items:
     - name: 資料安全性與加密
       href: encryption-overview.md
+    - name: 雙重加密
+      href: double-encryption.md
     - name: 磁碟加密
       items:
         - name: 最佳作法
           href: data-encryption-best-practices.md
-        - name: 資料靜態加密
+        - name: 待用資料加密
           href: encryption-atrest.md
+        - name: 資料加密模型
+          href: encryption-models.md
         - name: 適用於虛擬機器的 Azure 磁碟加密
           href: azure-disk-encryption-vms-vmss.md
     - name: 資料庫安全性

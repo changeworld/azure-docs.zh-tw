@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure 資料箱的快速入門 | Microsoft Docs
-description: 了解如何在 Azure 入口網站中快速部署您的 Azure 資料箱
+description: 在本快速入門中，了解如何針對匯入訂單，使用 Azure 入口網站來部署 Azure 資料箱。 設定 Azure 資料箱並複製要上傳至 Azure 的資料。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201088"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924507"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>開始使用 Azure 資料箱將資料匯入至 Azure
 

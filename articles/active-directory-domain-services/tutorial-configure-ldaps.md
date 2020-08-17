@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 61e2d4607ebe1b688b2874220a170b2539a2226e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404169"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054335"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>教學課程：為 Azure Active Directory Domain Services 受控網域設定安全 LDAP
 
@@ -265,7 +265,7 @@ CER 憑證檔案現在可以散發到用戶端電腦，因為這些電腦必須�
 接著，繫結至您的受控網域。 如果您已在受控網域上停用 NTLM 密碼雜湊同步，使用者 (和服務帳戶) 就無法執行 LDAP 簡單繫結。 如需有關停用 NTLM 密碼雜湊同步的詳細資訊，請參閱[保護您的受控網域][secure-domain]。
 
 1. 選取 [連線] 功能表選項，然後選擇 [繫結...]。
-1. 提供屬於「AAD DC 系統管理員」群組 (例如 contosoadmin) 的使用者帳戶認證。 輸入使用者帳戶的密碼，然後輸入您的網域，例如 aaddscontoso.com。
+1. 提供屬於受控網域的使用者帳號認證。 輸入使用者帳戶的密碼，然後輸入您的網域，例如 aaddscontoso.com。
 1. 針對 [繫結類型]，選擇 [與認證繫結] 的選項。
 1. 選取 [確認] 以繫結至您的受控網域。
 

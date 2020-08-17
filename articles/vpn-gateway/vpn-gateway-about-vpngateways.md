@@ -1,6 +1,6 @@
 ---
 title: 關於 Azure VPN 閘道
-description: 深入了解 VPN 閘道是什麼，以及您可以使用 VPN 閘道連線到 Azure 虛擬網路的方式。 包括 IPsec/IKE 站對站跨單位和 VNet 對 VNet 解決方案，以及點對站 VPN。
+description: 了解什麼是 VPN 閘道，以及如何使用 VPN 閘道連線到 IPsec IKE 站對站、VNet 對 VNet 和點對站 VPN 虛擬網路。
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ec008fa97c75f5ae7c79e2b98efc9005df1014f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c195fd3c6d3de518a70070327de5c12d5d210b6a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300042"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036873"
 ---
 # <a name="what-is-vpn-gateway"></a>什麼是 VPN 閘道？
 

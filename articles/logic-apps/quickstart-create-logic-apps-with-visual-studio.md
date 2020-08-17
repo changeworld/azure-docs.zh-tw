@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/22/2020
-ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/07/2020
+ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132359"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008877"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入門：使用 Azure Logic Apps 建立自動化工作、程序和工作流程 - Visual Studio
 
@@ -28,7 +28,7 @@ ms.locfileid: "87132359"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
+* Azure 帳戶和訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 如果您有 Azure Government 訂用帳戶，請遵循這些額外步驟來[針對 Azure Government 雲端設定 Visual Studio](#azure-government)。
 
 * 如果您還沒有以下這些工具，請加以下載並安裝：
 
@@ -51,12 +51,6 @@ ms.locfileid: "87132359"
   
     您可以直接從 Visual Studio Marketplace 下載並安裝 Azure Logic Apps Tools，或了解[如何從 Visual Studio 內部安裝此擴充功能](/visualstudio/ide/finding-and-using-visual-studio-extensions)。 請務必在完成安裝之後重新啟動 Visual Studio。
 
-  * 若要搭配 Visual Studio 使用 Azure Government 訂用帳戶，請參閱下列主題以進行額外的設定：
-
-    * Visual Studio 2019：[快速入門：使用 Visual Studio 連線到 Azure Government](../azure-government/documentation-government-connect-vs.md)
-
-    * Visual Studio 2017：[介紹 Azure Environment Selector Visual Studio 擴充功能](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/)，您可以從 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) 下載並安裝此功能。
-
 * 使用內嵌的邏輯應用程式設計工具時能夠存取 Web
 
   設計工具需要網際網路連線才能在 Azure 中建立資源，以及從邏輯應用程式中的連接器讀取屬性和資料。
@@ -65,6 +59,34 @@ ms.locfileid: "87132359"
 
   > [!IMPORTANT]
   > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+
+<a name="azure-government"></a>
+
+## <a name="set-up-visual-studio-for-azure-government"></a>設定適用於 Azure Government 的 Visual Studio
+
+### <a name="visual-studio-2017"></a>Visual Studio 2017
+
+您可以使用 [Azure Environment Selector Visual Studio 擴充功能](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/)，您可以從 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) 下載並安裝此功能。
+
+### <a name="visual-studio-2019"></a>Visual Studio 2019
+
+若要在 Azure Logic Apps 中使用 Azure Government 訂用帳戶，您必須[將 Azure Government 雲端的探索端點新增至 Visual Studio](../azure-government/documentation-government-connect-vs.md)。 不過，*在使用 Azure Government 帳戶登入 Visual Studio 之前*，您必須先遵循下列步驟來重新命名您在新增探索端點後所產生的 JSON 檔案：
+
+1. 關閉 Visual Studio。
+
+1. 在此位置尋找名為 `Azure U.S. Government-A3EC617673C6C70CC6B9472656832A26.Configuration` 的已產生 JSON 檔案：
+
+   `%localappdata%\.IdentityService\AadConfigurations`
+ 
+1. 將 JSON 檔案重新命名為 `AadProvider.Configuration.json`。
+
+1. 重新啟動 Visual Studio。
+
+1. 繼續進行使用 Azure Government 帳戶來登入的步驟。
+
+若要還原此設定，請刪除位於下列位置的 JSON 檔案，然後重新啟動 Visual Studio：
+
+`%localappdata%\.IdentityService\AadConfigurations\AadProvider.Configuration.json`
 
 <a name="create-resource-group-project"></a>
 

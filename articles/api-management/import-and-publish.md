@@ -1,6 +1,6 @@
 ---
 title: 在 Azure API 管理中匯入和發佈您的第一個 API
-description: 了解如何將 OpenAPI 規格 API 匯入至 Azure API 管理，並在 Azure 入口網站中測試您的 API。
+description: 了解如何將 OpenAPI 規格 API 匯入至 Azure API 管理，然後在 Azure 入口網站中測試您的 API。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 38b723cb823547d4737a68576575c2b629f5eb67
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 71a239393c61dccf39ed505aa2b08d7612b7e370
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206270"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905545"
 ---
 # <a name="import-and-publish-your-first-api"></a>匯入和發佈您的第一個 API
 

@@ -153,7 +153,7 @@
       href: 'https://azure.microsoft.com/pricing/details/app-configuration/'
     - name: 影片
       items:
-        - name: 開始使用
+        - name: 開始使用應用程式組態
           href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
         - name: 功能管理
           href: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
@@ -161,5 +161,7 @@
           href: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
         - name: 在雲端原生節目 (Cloud Native Show) 上的 Azure 應用程式組態
           href: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
+        - name: Azure Friday 的功能篩選
+          url: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
     - name: 提供產品意見反應
       href: 'https://github.com/Azure/AppConfiguration/issues'

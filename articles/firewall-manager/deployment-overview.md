@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8cca982e291d5d4caf7856e0d807515511c41dc8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372360"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055032"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure 防火牆管理員部署概觀
 
@@ -65,6 +65,8 @@ ms.locfileid: "87372360"
 > - 每個區域的每個虛擬 WAN 上不能有超過一個中樞。 但是，您可以在區域中新增多個虛擬 WAN 來達成此目的。
 > - vWAN 中的中樞不能有重疊的 IP 空間。
 > - 您的中樞 VNet 連線必須與中樞位於相同的區域。
+>
+> 如需更多已知問題，請參閱[什麼是 Azure 防火牆管理員？](overview.md#known-issues)
 
 ## <a name="convert-virtual-networks"></a>轉換虛擬網路
 

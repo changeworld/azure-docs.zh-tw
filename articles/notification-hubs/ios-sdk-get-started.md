@@ -3,17 +3,17 @@ title: 使用 Azure 通知中樞和 iOS SDK 將推播通知傳送至 iOS
 description: 在本教學課程中，您將了解如何使用 Azure 通知中樞和 Apple Push Notification Service 將推播通知傳送至 iOS 裝置。
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/19/2020
+ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022424"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042440"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至 iOS 應用程式
 
@@ -102,6 +102,9 @@ Apple Push Notification Service (APNS) 使用憑證來驗證您的通知服務�
 4. 在 **[憑證、識別碼與設定檔]**  頁面的 **[識別碼]** 底下，找出您剛才建立的應用程式識別碼明細項目，然後選取其資料列以顯示 **[編輯您的應用程式識別碼設定]**  畫面。
 
 ## <a name="create-a-certificate-for-notification-hubs"></a>建立通知中樞的憑證
+
+> [!NOTE]
+> 隨著 iOS 13 的發行，您只能使用權杖型驗證來接收無訊息通知。 如果您要針對 APNS 認證使用憑證型驗證，則必須切換為使用權杖型驗證。
 
 需要憑證才能搭配使用通知中樞與 **APNS**。 完成此步驟的方式有兩種：
 

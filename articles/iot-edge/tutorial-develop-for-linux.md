@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c6cdde3ae63a2f816db7a978557f72b4b60d2677
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439140"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056222"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 IoT Edge 模組
 
@@ -151,6 +151,9 @@ Visual Studio Code 視窗中載入您的新解決方案後，請花點時間熟�
 ### <a name="provide-your-registry-credentials-to-the-iot-edge-agent"></a>對 IoT Edge 代理程式提供登錄認證
 
 環境檔案會儲存容器登錄的認證，並與 IoT Edge 執行階段共用這些認證。 執行階段需要有這些認證才能將容器映像提取到 IoT Edge 裝置。
+
+>[!NOTE]
+>如果您未將 **localhost:5000** 值取代為 Azure 容器登錄中的登入伺服器值，則在[**建立專案範本**](#create-a-project-template)步驟中， **.env** 檔案和部署資訊清單的 registryCredentials 區段將會遺失。 
 
 IoT Edge 擴充功能會嘗試從 Azure 提取您的容器登錄認證，並將這些認證填入到環境檔案中。 請查看您的認證是否已包含其中。 如果沒有，請立即新增：
 

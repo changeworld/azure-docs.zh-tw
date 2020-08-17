@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 8ba6141bddd60c2bdc2fdf17845e8f470dd6ef55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: ff23a42d9b96b8411d8b2f82ab8303e2a8a69953
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520522"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852713"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>教學課程：使用 Python SDK 開始建立您的第一個 ML 實驗
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -97,7 +97,7 @@ Azure Machine Learning 工作區是雲端中您用來實驗、定型及部署機
         + 名稱應以字母開頭 (不是數字或虛線字元)。
         + 如果使用虛線字元，則虛線後面必須至少接續一個字母。 範例：Test-、test-0、test-01 為無效名稱，而 test-a0、test-0a 才是有效執行個體。
 
-    1.  從可用的選項中選取虛擬機器大小。
+    1.  從可用的選項中選取虛擬機器大小。 在教學課程中，預設 VM 是不錯的選擇。
 
     1. 然後選取 [建立]。 設定 VM 大約需要 5 分鐘的時間。
 

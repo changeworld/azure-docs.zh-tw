@@ -4,12 +4,12 @@ description: 本文說明如何使用 Azure Migrate 將 AWS VM 遷移至 Azure�
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534819"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066639"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>探索、評估 Amazon Web Services (AWS) VM，並將其遷移至 Azure
 
@@ -99,7 +99,7 @@ Azure Migrate：伺服器移轉會使用複寫設備將機器複寫至 Azure。 
 準備設備部署，如下所示：
 
 - 設定個別的 EC2 VM 來裝載複寫設備。 此執行個體必須執行 Windows Server 2012 R2 或 Windows Server 2016。 [請參閱](./migrate-replication-appliance.md#appliance-requirements)設備的硬體、軟體和網路需求。
-- 設備不應該安裝在您想要複寫的來源 VM 上。 應該部署在不同的 VM 上。
+- 設備不應該安裝在您想要複寫的來源 VM 上，也不應該安裝在您先前已安裝的 Azure Migrate 探索和評估設備上。 應該部署在不同的 VM 上。
 - 要遷移的來源 AWS VM 應該能透過網路直達複寫設備。 設定必要的安全性群組規則以啟用此動作。 建議您將複寫設備和要遷移的來源 VM 部署在相同的 VPC 中。 如果複寫設備必須位於不同的 VPC，則這些 VPC 必須透過 VPC 對等互連來連線。
 - 來源 AWS VM 會在連接埠 HTTPS 443 (控制通道協調流程) 和用於輸入的 TCP 9443 (資料傳輸) 上與複寫設備通訊，以管理複寫和傳輸複寫資料。 複寫設備接著會透過連接埠 HTTPS 443 (輸出) 來協調複寫資料，並將其傳送至 Azure。 若要設定這些規則，請使用適當的連接埠和來源 IP 資訊來編輯安全性群組的輸入/輸出規則。
 

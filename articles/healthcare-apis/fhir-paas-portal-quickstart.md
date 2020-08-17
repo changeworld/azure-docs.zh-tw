@@ -2,18 +2,18 @@
 title: 快速入門：使用 Azure 入口網站部署 Azure API for FHIR
 description: 在本快速入門中，您將了解如何使用 Azure 入口網站部署 Azure API for FHIR 並進行設定。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: e729597e9d83c4e6096fe52b577b052d94ca4799
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 03/15/2020
+ms.author: matjazl
+ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "84820016"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851931"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>快速入門：使用 Azure 入口網站部署 Azure API for FHIR
 
@@ -31,34 +31,31 @@ ms.locfileid: "84820016"
 
 您可以在搜尋方塊中輸入 "FHIR" 來尋找 Azure API for FHIR：
 
-![搜尋健康照護 API](media/quickstart-paas-portal/portal-search-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-search-healthcare-apis.png" alt-text="搜尋健康照護 API":::
 
 ## <a name="create-azure-api-for-fhir-account"></a>建立 Azure API for FHIR 帳戶
 
 選取 [建立]**** 以建立新的 Azure API for FHIR 帳戶：
 
-![建立 Azure API for FHIR 帳戶](media/quickstart-paas-portal/portal-create-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="建立 Azure API for FHIR 帳戶":::
 
 ## <a name="enter-account-details"></a>輸入帳戶詳細資料
 
 選取現有的資源群組或建立新的資源群組，選擇帳戶的名稱，最後按一下 [檢閱 + 建立]****：
 
-![新的健康照護 API 詳細資料](media/quickstart-paas-portal/portal-new-healthcareapi-details.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="新的健康照護 API 詳細資料":::
 
 確認建立並等待 FHIR API 部署。
 
-## <a name="additional-settings"></a>其他設定
+## <a name="additional-settings-optional"></a>其他設定 (選擇性)
 
-按一下 **[下一步**其他設定] 以設定應獲准存取此 Azure API for FHIR 的授權單位、對象、身分識別物件識別碼，視需要啟用 SMART on FHIR，以及設定資料庫輸送量：
+您也可以按 [下一步:其他設定] 來檢視驗證設定。 Azure API for FHIR 的預設設定是要[使用 Azure RBAC 來指派資料平面角色](configure-azure-rbac.md)。 在此模式中設定時，FHIR 服務的「授權單位」將會設定為訂用帳戶的 Azure Active Directory 租用戶：
 
-- **授權單位：** 您可以指定與您登入為服務的驗證授權單位不同的 Azure AD 租用戶。
-- **對象：** 最佳做法和預設設定，是將對象設定為 FHIR 伺服器的 URL。 您可以在此進行變更。 對象可識別適用權杖的收件者。 在此內容中，應將其設定為代表 FHIR API 本身的項目。
-- **允許的物件識別碼：** 您可以指定應獲准存取此 Azure API for FHIR 的身分識別物件識別碼。 您可以在[尋找身分識別物件識別碼](find-identity-object-ids.md)操作指南中，深入了解如何尋找使用者和服務主體的物件識別碼。  
-- **Smart On FHIR Proxy：** 您可以啟用 SMART on FHIR Proxy。 如需如何設定 Azure API for FHIR v的詳細資訊，請參閱教學課程 [Azure API for FHIR SMART on FHIR Proxy](https://docs.microsoft.com/azure/healthcare-apis/use-smart-on-fhir-proxy)  
-- **佈建的輸送量 (RU/秒)：** 您可以在此為 Azure API for FHIR 指定基礎資料庫的輸送量設定。 您稍後可以在 [資料庫] 刀鋒視窗中變更此設定。 如需詳細資訊，請參閱[設定資料庫設定](configure-database.md)頁面。
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="預設驗證設定":::
 
+請注意，用於輸入允許物件識別碼的方塊會呈現灰色，因為我們在此案例中使用 Azure RBAC 來設定角色指派。
 
-![設定允許的物件識別碼](media/quickstart-paas-portal/configure-audience.png)
+如果您想要將 FHIR 服務設定為使用外部或次要 Azure Active Directory 租用戶，則可以變更授權單位，並為應該允許存取伺服器的使用者和群組輸入物件識別碼。 如需詳細資訊，請參閱[本機 RBAC 設定](configure-local-rbac.md)指南。
 
 ## <a name="fetch-fhir-api-capability-statement"></a>擷取 FHIR API 功能陳述式
 

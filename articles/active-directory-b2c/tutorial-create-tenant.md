@@ -1,6 +1,6 @@
 ---
 title: 教學課程 - 建立 Azure Active Directory B2C 租用戶
-description: 了解如何使用 Azure 入口網站建立 Azure Active Directory B2C 租用戶，以準備註冊應用程式。
+description: 請遵循本教學課程以了解如何使用 Azure 入口網站建立 Azure Active Directory B2C 租用戶，以準備註冊應用程式。
 services: B2C
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 044a2d2cb23e36234256b9b19363462e542176fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbccbcf1ac85b63c5610b9904a84e5e6e3fb6c63
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806845"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922188"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>教學課程：建立 Active Directory B2C 租用戶
 
@@ -30,6 +30,8 @@ ms.locfileid: "85806845"
 > * 將 Azure AD B2C 資源新增為 Azure 入口網站中的 [我的最愛]
 
 您會在下一個教學課程中了解如何註冊應用程式。
+
+## <a name="prerequisites"></a>必要條件
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

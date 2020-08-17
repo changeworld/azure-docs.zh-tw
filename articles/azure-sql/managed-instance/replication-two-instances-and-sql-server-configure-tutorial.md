@@ -10,15 +10,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532521"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920138"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>教學課程：設定 Azure SQL 受控執行個體與 SQL Server 之間的異動複寫
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
+
+異動複寫可讓您將資料從某個資料庫複寫至裝載於 SQL Server 或 [Azure SQL 受控執行個體](sql-managed-instance-paas-overview.md)上的另一個資料庫。 SQL 受控執行個體可以是複寫拓撲中的發行者、散發者或訂閱者。 如需可用設定的相關資訊，請參閱[異動複寫設定](replication-transactional-overview.md#common-configurations)。 
+
+SQL 受控執行個體的異動複寫目前處於公開預覽狀態。 
 
 在本教學課程中，您會了解如何：
 
@@ -30,11 +34,11 @@ ms.locfileid: "87532521"
 
 ![受控執行個體發行者、受控執行個體散發者和 SQL Server 訂閱者之間的複寫](./media/replication-two-instances-and-sql-server-configure-tutorial/sqlmi-to-sql-replication.png)
 
-本教學課程適用於有經驗的對象，並假設使用者熟知如何部署和連線至受控執行個體和 Azure 中的 SQL Server VM。 因此，本教學課程中的特定步驟只會略為帶過。
+本教學課程適用於有經驗的對象，並假設使用者熟知如何部署和連線至受控執行個體和 Azure 中的 SQL Server VM。 
 
-若要深入了解，請參閱 [Azure SQL 受控執行個體概觀](sql-managed-instance-paas-overview.md)和 [SQL 異動複寫](replication-transactional-overview.md)等文章。
 
-若要設定受控執行個體發行者與受控執行個體訂閱者之間的複寫，請參閱[設定兩個受控執行個體之間的異動複寫](replication-between-two-instances-configure-tutorial.md)。
+> [!NOTE]
+> 本文說明如何在 Azure SQL 受控執行個體中使用[異動複寫](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 這與[容錯移轉群組](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)無關，後者是一種 Azure SQL 受控執行個體功能，可讓您建立個別執行個體的完整可讀取複本。 在設定[容錯移轉群組的異動複寫](replication-transactional-overview.md#with-failover-groups)時，還要考慮其他事項。
 
 ## <a name="prerequisites"></a>必要條件
 

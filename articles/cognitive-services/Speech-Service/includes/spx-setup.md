@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: abfb4f6ba9452581811db1f462089cbafc771266
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544608"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88068605"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -51,6 +51,58 @@ ms.locfileid: "86544608"
 
 輸入 `spx` 以查看語音 CLI 的說明。
 
+#### <a name="docker-install"></a>[Docker 安裝](#tab/dockerinstall)
+
+請遵循下列步驟，在 Docker 容器中安裝語音 CLI：
+
+1. 安裝並執行[您的平台適用的 Docker Desktop](https://www.docker.com/get-started)。
+1. 在新的命令提示字元或終端機中，輸入下列命令：`docker pull msftspeech/spx`
+1. 輸入此命令。 您應該會看到語音 CLI 的說明資訊：`docker run -it --rm msftspeech/spx help`
+
+### <a name="mount-a-directory-in-the-container"></a>在容器中掛接目錄
+
+語音 CLI 工具會將組態設定儲存為檔案，並在執行任何命令 (help 命令除外) 時載入這些檔案。
+在 Docker 容器內使用語音 CLI 時，您必須從容器掛接本機目錄，如此一來，工具就可以儲存或尋找組態設定，也可以讀取或寫入命令所需的任何檔案，例如語音的音訊檔案。
+
+在 Windows 上，輸入此命令來建立可供語音 CLI 從容器內使用的本機目錄：
+
+`mkdir c:\spx-data`
+
+或者在 Linux 或 Mac 上，於終端機中輸入此命令來建立目錄，並查看其絕對路徑：
+
+```bash
+mkdir ~/spx-data
+cd ~/spx-data
+pwd
+```
+
+當您呼叫語音 CLI 時，將會使用絕對路徑。
+
+### <a name="run-speech-cli-in-the-container"></a>在容器中執行語音 CLI
+
+本文件顯示在非 Docker 安裝中使用的語音 CLI `spx` 命令。
+在 Docker 容器中呼叫 `spx` 命令時，您必須將容器中的目錄掛接至您的檔案系統，讓語音 CLI 可以在其中儲存和尋找設定值，並讀取和寫入檔案。
+在 Windows 上，命令的開頭會如下所示：
+
+`docker run -it -v c:\spx-data:/data --rm msftspeech/spx`
+
+在 Linux 或 Mac 上，命令的開頭會如下所示：
+
+`sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx`
+
+> [!NOTE]
+> 將 `/ABSOLUTE_PATH` 取代為上一節中 `pwd` 命令所顯示的絕對路徑。
+
+若要使用容器中安裝的 `spx` 命令，請一律輸入如上所示的完整命令，後面接著您的要求參數。
+例如，在 Windows 上，此命令會設定您的金鑰：
+
+`docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY`
+
+> [!NOTE]
+> 在 Docker 容器內執行語音 CLI 時，無法使用電腦的麥克風或喇叭。
+> 若要使用這些裝置，請將音訊檔案傳入和傳出語音 CLI，以在 Docker 容器外錄製/播放。
+> 語音 CLI 工具可以存取您在上述步驟中設定的本機目錄。
+
 ***
 
 ## <a name="create-subscription-config"></a>建立訂用帳戶設定
@@ -58,8 +110,8 @@ ms.locfileid: "86544608"
 若要開始使用語音 CLI，您必須先輸入語音訂用帳戶金鑰和區域資訊。 請參閱[區域支援](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)頁面，以尋找您的區域識別碼。 一旦您擁有訂用帳戶金鑰和區域識別碼 (例如， `eastus`、`westus`)，請執行下列命令。
 
 ```shell
-spx config @key --set YOUR-SUBSCRIPTION-KEY
-spx config @region --set YOUR-REGION-ID
+spx config @key --set SUBSCRIPTION-KEY
+spx config @region --set REGION
 ```
 
 現在會儲存您的訂用帳戶驗證以供未來的 SPX 要求之用。 如果您需要移除其中一個儲存的值，請執行 `spx config @region --clear` 或 `spx config @key --clear`。

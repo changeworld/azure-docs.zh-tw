@@ -2,15 +2,15 @@
 title: 建立範本 - Visual Studio Code
 description: 利用 Visual Studio Code 和 Azure Resource Manager Tools 擴充功能來使用 Resource Manager 範本。
 author: neilpeterson
-ms.date: 04/17/2020
+ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040510"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034971"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>快速入門：使用 Visual Studio Code 建立 Azure Resource Manager 範本
 
@@ -26,7 +26,7 @@ ms.locfileid: "87040510"
 
 選取 `arm!` 以建立 Azure 資源群組部署範圍內的範本。
 
-![顯示 Azure Resource Manager Scaffolding 的影像](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![顯示 Azure Resource Manager Scaffolding 程式碼片段的影像](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
 此程式碼片段會建立 ARM 範本的基本構成要素。
 
@@ -68,7 +68,7 @@ ms.locfileid: "87040510"
 
 現在，請建立並使用參數來指定儲存體帳戶名稱。
 
-將游標放在參數區塊中，新增一個歸位字元，輸入 `par`，然後選取 `arm-param-value` 程式碼片段。 此動作會將泛型參數新增至範本。
+將游標放在參數區塊中，新增一個歸位字元，輸入 `"`，然後選取 `new-parameter` 程式碼片段。 此動作會將泛型參數新增至範本。
 
 ![顯示參數新增至 ARM 範本的影像](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 

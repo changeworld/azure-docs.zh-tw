@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 43172cb08bb1e31c8cff891628ca6ef85cb8c864
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 68dd2ae09c5d6ad5e510fb3beb532b235f83fc8d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404419"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87834689"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>教學課程：使用電腦視覺在 Azure 儲存體中產生影像中繼資料
 
@@ -59,7 +59,7 @@ ms.locfileid: "81404419"
 
 ## <a name="add-computer-vision-credentials"></a>新增電腦視覺認證
 
-接著，您會將必要的認證新增至您的應用程式，使其可存取電腦視覺資源
+接著，您會將必要的認證新增至您的應用程式，使其可存取電腦視覺資源。
 
 在 Visual Studio 中開啟您的 ASP.NET Web 應用程式，並瀏覽至位於專案根目錄的 **Web.config** 檔案。 在檔案的 `<appSettings>` 區段中新增下列陳述式，並將 `VISION_KEY` 取代為您在上一個步驟中複製的金鑰，同時將 `VISION_ENDPOINT` 取代為您在之前的步驟中儲存的 URL。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 99d9988a02b046562c2517df8a81b8ef5c778ef2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 330066a950165d3424ca7900493ac89ce746b309
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683525"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904525"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 PagerDuty 整合
 
@@ -39,6 +39,9 @@ ms.locfileid: "81683525"
 * Azure AD 訂用帳戶。 如果沒有訂用帳戶，您可以取得[免費帳戶](https://azure.microsoft.com/free/)。
 * 已啟用 PagerDuty 單一登入 (SSO) 的訂用帳戶。
 
+> [!NOTE]
+> 如果您要搭配使用 MFA 或無密碼驗證與 Azure AD，則請關閉 SAML 要求中的 AuthnContext 值。 否則，Azure AD 會在 AuthnContext 不相符時擲回錯誤，且不會將權杖傳回給應用程式。
+
 ## <a name="scenario-description"></a>案例描述
 
 在本教學課程中，您會在測試環境中設定和測試 Azure AD SSO。
@@ -51,8 +54,8 @@ ms.locfileid: "81683525"
 若要設定將 PagerDuty 整合到 Azure AD 中，您需要從資源庫將 PagerDuty 新增到受控 SaaS 應用程式清單。
 
 1. 使用公司或學校帳戶或個人的 Microsoft 帳戶登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在左方瀏覽窗格上，選取 [Azure Active Directory]  服務。
-1. 巡覽至 [企業應用程式]  ，然後選取 [所有應用程式]  。
+1. 在左方瀏覽窗格上，選取 [Azure Active Directory] 服務。
+1. 巡覽至 [企業應用程式]，然後選取 [所有應用程式]。
 1. 若要新增應用程式，請選取 [新增應用程式]  。
 1. 在 [從資源庫新增]  區段的搜尋方塊中輸入 **PagerDuty**。
 1. 從結果面板選取 [PagerDuty]  ，然後新增應用程式。 當應用程式新增至您的租用戶時，請等候幾秒鐘。
@@ -76,22 +79,22 @@ ms.locfileid: "81683525"
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)的 [PagerDuty]  應用程式整合頁面上，尋找 [管理]  區段並選取 [單一登入]  。
 1. 在 [**選取單一登入方法**] 頁面上，選取 [**SAML**]。
-1. 在 [以 SAML 設定單一登入]  頁面上，按一下 [基本 SAML 設定]  的編輯/畫筆圖示，以編輯設定。
+1. 在 [以 SAML 設定單一登入] 頁面上，按一下 [基本 SAML 設定] 的編輯/畫筆圖示，以編輯設定。
 
    ![編輯基本 SAML 組態](common/edit-urls.png)
 
-1. 在 [基本 SAML 組態]  區段上，執行下列步驟：
+1. 在 [基本 SAML 組態] 區段上，執行下列步驟：
 
-    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：`https://<tenant-name>.pagerduty.com`
+    a. 在 [登入 URL] 文字方塊中，使用下列模式輸入 URL：`https://<tenant-name>.pagerduty.com`
 
-    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：`https://<tenant-name>.pagerduty.com`
+    b. 在 [識別碼 (實體識別碼)] 文字方塊中，使用下列模式輸入 URL：`https://<tenant-name>.pagerduty.com`
 
-    c. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<tenant-name>.pagerduty.com`
+    c. 在 [回覆 URL] 文字方塊中，使用下列模式來輸入 URL：`https://<tenant-name>.pagerduty.com`
 
     > [!NOTE]
     > 這些都不是真正的值。 請使用實際的「登入 URL」、「識別碼」和「回覆 URL」來更新這些值。 請連絡 [PagerDuty 用戶端支援小組](https://www.pagerduty.com/support/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/certificatebase64.png)
 
@@ -103,13 +106,13 @@ ms.locfileid: "81683525"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
-1. 在畫面頂端選取 [新增使用者]  。
-1. 在 [使用者]  屬性中，執行下列步驟：
-   1. 在 [名稱]  欄位中，輸入 `B.Simon`。  
-   1. 在 [使用者名稱]  欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
-   1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
-   1. 按一下頁面底部的 [新增]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在畫面頂端選取 [新增使用者]。
+1. 在 [使用者] 屬性中，執行下列步驟：
+   1. 在 [名稱] 欄位中，輸入 `B.Simon`。  
+   1. 在 [使用者名稱] 欄位中，輸入 username@companydomain.extension。 例如： `B.Simon@contoso.com` 。
+   1. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
+   1. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
@@ -121,12 +124,12 @@ ms.locfileid: "81683525"
 
    ![[使用者和群組] 連結](common/users-groups-blade.png)
 
-1. 選取 [新增使用者]  ，然後在 [新增指派]  對話方塊中選取 [使用者和群組]  。
+1. 選取 [新增使用者]，然後在 [新增指派] 對話方塊中選取 [使用者和群組]。
 
     ![[新增使用者] 連結](common/add-assign-user.png)
 
-1. 在 [使用者和群組]  對話方塊的 [使用者] 清單中選取 [B.Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
-1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色]  對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取]  按鈕。
+1. 在 [使用者和群組] 對話方塊的 [使用者] 清單中選取 [B.Simon]，然後按一下畫面底部的 [選取] 按鈕。
+1. 如果您在 SAML 判斷提示中需要任何角色值，請在 [選取角色] 對話方塊的清單中為使用者選取適當的角色，然後按一下畫面底部的 [選取] 按鈕。
 1. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
 
 ## <a name="configure-pagerduty-sso"></a>設定 PagerDuty SSO

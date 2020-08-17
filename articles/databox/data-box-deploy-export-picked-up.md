@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7023d29bcb559f4edf11b374b9bfb959e968f626
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 332b4fdb6e0a26437edbf4309ee0b89b79f7eb23
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208764"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845794"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>教學課程：送回 Azure 資料箱 (預覽)
-
 
 本教學課程將說明如何送回 Azure 資料箱，並在裝置收到 Azure 資料之後清除資料。
 
 在本教學課程中，您將了解如下所列的主題：
 
 > [!div class="checklist"]
+>
 > * 必要條件
 > * 準備寄送
 > * 將資料箱寄送給 Microsoft
@@ -34,8 +34,8 @@ ms.locfileid: "86208764"
 
 在您開始前，請確定：
 
-- 您已完成[教學課程：從 Azure 資料箱複製資料](data-box-deploy-export-copy-data.md)。 
-- 複製作業已完成。 如果複製作業正在進行，則無法執行寄送準備。
+* 您已完成[教學課程：從 Azure 資料箱複製資料](data-box-deploy-export-copy-data.md)。
+* 複製作業已完成。 如果複製作業正在進行，則無法執行寄送準備。
 
 ## <a name="prepare-to-ship"></a>準備寄送
 
@@ -47,7 +47,7 @@ ms.locfileid: "86208764"
 
 確保裝置的資料複製已完成且 [準備寄送] 執行成功。 根據您寄送裝置的區域，程序會有所不同。
 
-## <a name="in-us-canada-europe"></a>[美國、加拿大、歐洲](#tab/in-us-canada-europe)
+## <a name="us-canada-europe"></a>[美國、加拿大、歐洲](#tab/in-us-canada-europe)
 
 如果在美國、加拿大或歐洲退回裝置，請執行下列步驟。
 
@@ -63,11 +63,9 @@ ms.locfileid: "86208764"
     除了排定取貨時間，您也可以在最接近的托運地點托運該資料箱。
 4. 一旦貨運業者收取資料箱並進行掃描，入口網站的訂單狀態會更新為 [已取貨]。 此外，也會顯示追蹤識別碼。
 
-
-## <a name="in-australia"></a>[澳大利亞](#tab/in-australia)
+## <a name="australia"></a>[澳大利亞](#tab/in-australia)
 
 澳洲的 Azure 資料中心有額外的安全性通知。 所有送達的貨物都必須有預先通知。 在澳洲寄送可採取下列步驟。
-
 
 1. 保留用來寄送裝置以供退貨的原始外盒。
 2. 確保裝置的資料副本完整且 [準備寄送] 執行成功。
@@ -75,7 +73,7 @@ ms.locfileid: "86208764"
 4. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
 5. 透過 [DHL 連結](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference)線上預約取貨服務。
 
-## <a name="in-japan"></a>[日本](#tab/in-japan) 
+## <a name="japan"></a>[日本](#tab/in-japan)
 
 1. 保留用來寄送裝置以供退貨的原始外盒。
 2. 關閉裝置電源並移除纜線。
@@ -83,8 +81,8 @@ ms.locfileid: "86208764"
 4. 在理貨單上寫下貴公司名稱和地址資訊，作為您的寄件者資訊。
 5. 使用下列電子郵件範本傳送電子郵件給 Quantium Solutions。
 
-    - 如果日本郵局運費到付託運單未隨附或遺失，請在這封電子郵件註明。 Quantium Solutions (Japan) 會要求日本郵局在取貨時提供理貨單。
-    - 如果您有多個訂單，請透過電子郵件確保每件都會順利取貨。
+    * 如果日本郵局運費到付託運單未隨附或遺失，請在這封電子郵件註明。 Quantium Solutions (Japan) 會要求日本郵局在取貨時提供理貨單。
+    * 如果您有多個訂單，請透過電子郵件確保每件都會順利取貨。
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -98,25 +96,24 @@ ms.locfileid: "86208764"
     d. 17：00-19：00 
     ```
 
-3. 在預約取貨時間後，接收來自 Quantium Solutions 的電子郵件確認。 電子郵件確認也會包含運費到付理貨單的資訊。
+6. 在預約取貨時間後，接收來自 Quantium Solutions 的電子郵件確認。 電子郵件確認也會包含運費到付理貨單的資訊。
 
 如有需要，您可以透過下列資訊連絡 Quantium Solutions 支援人員 (日文)： 
 
-- 電子郵件：Customerservice.JP@quantiumsolutions.com 
-- 電話：03-5755-0150 
+* 電子郵件：Customerservice.JP@quantiumsolutions.com
+* 電話：03-5755-0150
 
-
-## <a name="in-singapore"></a>[新加坡](#tab/in-singapore) 
+## <a name="singapore"></a>[新加坡](#tab/in-singapore)
 
 1. 保留用來寄送裝置以供退貨的原始外盒。
-2. 記下追蹤號碼 (您可以在資料箱本機 Web UI 的 [準備寄送] 頁面上看到參考編號)。 準備出貨步驟成功完成之後，即會顯示此號碼。 從此頁面下載出貨標籤，並貼到包裝盒上。 
+2. 記下追蹤號碼 (您可以在資料箱本機 Web UI 的 [準備寄送] 頁面上看到參考編號)。 準備出貨步驟成功完成之後，即會顯示此號碼。 從此頁面下載出貨標籤，並貼到包裝盒上。
 3. 關閉裝置電源並移除纜線。
 4. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。 
 5. 使用下列包含追蹤號碼的電子郵件範本，傳送電子郵件給 SingPost 客戶服務。
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - OrderName 
+    Subject: Microsoft Azure Pickup - OrderName 
     Body: 
         1. Requestor name  
         2. Requestor contact number
@@ -126,13 +123,60 @@ ms.locfileid: "86208764"
 
    > [!NOTE]
    > 針對在工作天收到的預約要求：
-   > - 在下午 3 點之前，取貨是在下一個工作天上午 9 點到下午 1 點。
-   > - 在下午 3 點之後，取貨是在下一個工作天下午 2 點到下午 6 點。  
+   >
+   > * 在下午 3 點之前，取貨是在下一個工作天上午 9 點到下午 1 點。
+   > * 在下午 3 點之後，取貨是在下一個工作天下午 2 點到下午 6 點。  
 
+## <a name="south-africa"></a>[南非](#tab/in-sa)
 
-## <a name="self-managed"></a>[自我管理](#tab/in-selfmanaged) 
+1. 保留用來包裝裝置以供送回的原始外盒。
+2. 記下裝置的本機 Web UI 上所顯示的參考編號 (運貨單號碼)。 [準備寄送執行] 成功之後，就會顯示此編號。
+3. 下載並列印可於裝置本機 Web UI 上找到的出貨標籤，並將其貼到運送包裹上。
+4. 若要預約 DHL 取貨，請選擇下列其中一個選項：
 
-如果您在日本、新加坡、韓國和西歐使用資料箱，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。 
+    * 於下午 2:00 之前致電客戶服務連絡中心 (電話是 **+27(0) 11 9213600**)、選取第 1 個選項，然後指定運貨單號碼。
+    * 使用下列範本，寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)：
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject: Pickup request for Microsoft Azure
+    Body: Need pick up for the below shipment
+      *  DHL tracking number (reference number/waybill number)
+      *  Requested pickup date: yyyy/mm/dd;time:HH MM
+    ```
+
+    * 或者，您也可以將包裹拿到最近的 DHL 服務據點。
+
+5. 如果您遇到任何問題，請寄送電子郵件至 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)，並於其中詳述您遇到的問題，然後在 [主旨:] 行放入運貨單號碼。 您也可以致電 +27(0)119213902。
+
+## <a name="hong-kong"></a>[香港](#tab/in-hk)
+
+1. 將要送回的裝置包裝到原始外盒內。
+2. 記下裝置的本機 Web UI 上顯示的參考編號 (反向出貨追蹤號碼)。 [準備寄送執行] 成功之後，就會顯示此編號。
+3. 下載並列印可於裝置本機 Web UI 上找到的出貨標籤，並將其貼到運送包裹上。
+4. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
+5. 在上班時間 (星期一到星期五上午 9 點到下午 6 點) 撥打 **Quantium Solutions** 熱線，號碼是 **(852) 2318 1213**。  
+6. 報上送回出貨標籤上的 Microsoft Azure Pickup 和參考編號與追蹤號碼 (位於條碼上方) 以便安排收貨。
+7. 您會獲得排定取貨時間的口頭確認。 如果快遞人員未到府收貨，請撥打 Quantium Solutions 熱線以便尋求替代安排。
+8. 在向 Quantium 預約取貨後，請使用下列範本向 [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) 進行確認：
+
+    ```output
+    To: adbo@microsoft.com
+    Subject: Microsoft Data Box Job: [order name] has completed copy
+    Body:
+    We have confirmed the pickup details with Quantium.
+
+       * Requestor name:
+       * Requestor contact number:
+       * Pickup Date:  
+       * Pickup time:
+    ```
+
+如果您遇到任何問題，請寄送電子郵件給 Data Box Operations Asia [adbo@microsoft.com](mailto:adbo@microsoft.com) 並於主旨標頭中提供工作名稱和所遇到的問題。
+
+## <a name="self-managed"></a>[自我管理](#tab/in-selfmanaged)
+
+如果您在日本、新加坡、韓國和西歐使用資料箱，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。
 
 1. 在此步驟成功完成之後，請記下資料箱本機 Web UI [準備寄送] 頁面上所顯示的授權碼。
 2. 關閉裝置電源並移除纜線。 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
@@ -146,6 +190,7 @@ ms.locfileid: "86208764"
         2. Authorization code available after Prepare to Ship has completed [Yes/No]  
         3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
     ```
+
 ---
 
 ## <a name="erasure-of-data-from-data-box"></a>清除資料箱的資料

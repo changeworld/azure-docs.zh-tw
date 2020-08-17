@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7bcda79403e021384fc987a67865441dd8732885
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448158"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927448"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>什麼是筆跡辨識器 API？
 
@@ -43,7 +43,7 @@ ms.locfileid: "75448158"
 
 在註冊後：
 
-1. 取得筆跡筆觸資料並[將其格式化](concepts/send-ink-data.md#sending-ink-data)為有效的 JSON。
+1. 取得筆跡筆觸資料並[將其格式化](concepts/send-ink-data.md#sending-ink-data)為有效的 JSON。 API 最多可針對每個要求接受 1500 個筆墨筆劃。 
 1. 將資料透過要求傳送給筆跡辨識器 API。
 1. 剖析傳回的 JSON 訊息以處理 API 回應。
 

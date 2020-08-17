@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 管理 Azure 檔案共用的快速入門
-description: 使用此快速入門了解如何使用 Azure CLI 來管理 Azure 檔案服務。
+description: 在本快速入門中，了解如何使用 Azure CLI 來管理 Azure 檔案服務。 建立資源群組和儲存體帳戶，然後建立並使用 Azure 檔案共用。
 author: roygara
 ms.service: storage
 ms.topic: quickstart
@@ -8,12 +8,12 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0d9d0bad982a12e3b96bdbe4f680f2501b33ec67
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 149481f9cae535fa53f94a876e1f52e813b3838b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495786"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034561"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>快速入門：使用 Azure CLI 建立及管理 Azure 檔案共用
 本指南會逐步說明透過 Azure CLI 來使用 [Azure 檔案共用](storage-files-introduction.md)的基本概念。 Azure 檔案共用與其他檔案共用類似，但它儲存在雲端中，並且由 Azure 平台支援。 Azure 檔案共用支援業界標準 SMB 通訊協定，並可在多個機器、應用程式及執行個體上啟用檔案共用。 
@@ -24,7 +24,7 @@ ms.locfileid: "87495786"
 
 如果您決定在本機安裝及使用 Azure CLI，您必須執行 2.0.4 或更新版本的 Azure CLI，以便進行本文中的步驟。 執行 **az --version** 可找出 Azure CLI 版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI 2.0](/cli/azure/install-azure-cli)。 
 
-Azure CLI 命令預設會傳回 JavaScript 物件標記法 (JSON)。 JSON 是從 REST API 傳送和接收訊息的標準方式。 為了方便處理 JSON 回應，本文中有些範例會在 Azure CLI 命令上使用「查詢」  參數。 這個參數會使用 [JMESPath 查詢語言](http://jmespath.org/) 來剖析 JSON。 若要進一步了解如何依照 JMESPath 查詢語言來使用 Azure CLI 命令的結果，請參閱 [JMESPath 教學課程](http://jmespath.org/tutorial.html)。
+Azure CLI 命令預設會傳回 JavaScript 物件標記法 (JSON)。 JSON 是從 REST API 傳送和接收訊息的標準方式。 為了方便處理 JSON 回應，本文中有些範例會在 Azure CLI 命令上使用「查詢」** 參數。 這個參數會使用 [JMESPath 查詢語言](http://jmespath.org/) 來剖析 JSON。 若要進一步了解如何依照 JMESPath 查詢語言來使用 Azure CLI 命令的結果，請參閱 [JMESPath 教學課程](http://jmespath.org/tutorial.html)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 資源群組是一種邏輯容器，您會在其中部署與管理 Azure 資源。 如果您還沒有 Azure 資源群組，您可以使用 [az group create](/cli/azure/group) 命令建立一個。 
@@ -73,7 +73,7 @@ export storageAccountKey=$(az storage account keys list \
 ```
 
 ## <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
-現在，您可以建立第一個 Azure 檔案共用。 使用 [az storage share create](/cli/azure/storage/share) 命令來建立檔案共用。 此範例會建立名為 myshare  的 Azure 檔案共用： 
+現在，您可以建立第一個 Azure 檔案共用。 使用 [az storage share create](/cli/azure/storage/share) 命令來建立檔案共用。 此範例會建立名為 myshare** 的 Azure 檔案共用： 
 
 ```azurecli-interactive
 shareName="myshare"

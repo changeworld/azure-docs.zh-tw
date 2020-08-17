@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: fb0a5c06c8b7bdbb62e937e865e6bb2fd4000f2d
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 1a7511ed0e7bb1d9032331efa87f0d61a99cf5dc
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87462423"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065228"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站來建立內部負載平衡器以平衡 VM 的負載
 
@@ -51,20 +51,56 @@ ms.locfileid: "87462423"
 
 前端公用 IP 位址可以是**靜態**或**動態**。
 
-## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
+## <a name="create-the-virtual-network"></a>建立虛擬網路
 
-在本節中，您需要使用下列資訊來取代步驟中的參數：
+在本節中，您會建立虛擬網路和子網路。
 
-| 參數                   | 值                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | 西歐      |
-| **\<IPv4-address-space>**   | 10.1.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0\24          |
+1. 在畫面的左上方，選取 [建立資源] > [網路] > [虛擬網路]，或在搜尋方塊中搜尋 [虛擬網路]。
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. 在 [建立虛擬網路] 中，在 [基本] 索引標籤中輸入或選取這項資訊：
+
+    | **設定**          | **值**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **專案詳細資料**  |                                                                 |
+    | 訂用帳戶     | 選取您的 Azure 訂用帳戶                                  |
+    | 資源群組   | 選取 [myResourceGroupLB] |
+    | **執行個體詳細資料** |                                                                 |
+    | 名稱             | 輸入 **myVNet**                                    |
+    | 區域           | 選取 [西歐] |
+
+3. 選取 [IP 位址] 索引標籤，或選取頁面底部的 [下一步：IP 位置] 按鈕。
+
+4. 在 [IP 位址] 索引標籤中，輸入這項資訊：
+
+    | 設定            | 值                      |
+    |--------------------|----------------------------|
+    | IPv4 位址空間 | 輸入 **10.1.0.0/16** |
+
+5. 在 [子網路名稱] 下，選取 [預設] 字組。
+
+6. 在 [編輯子網路] 中，輸入這項資訊：
+
+    | 設定            | 值                      |
+    |--------------------|----------------------------|
+    | 子網路名稱 | 輸入 **myBackendSubnet** |
+    | 子網路位址範圍 | 輸入 **10.1.0.0/24** |
+
+7. 選取 [儲存]。
+
+8. 選取 [安全性]**** 索引標籤。
+
+9. 在 [BastionHost] 底下，選取 [啟用]。 輸入此資訊：
+
+    | 設定            | 值                      |
+    |--------------------|----------------------------|
+    | Bastion 名稱 | 輸入 **myBastionHost** |
+    | AzureBastionSubnet 位址空間 | 輸入 **10.1.1.0/24** |
+    | 公用 IP 位址 | 選取 [建立新的]。 </br> 在 [名稱] 中，輸入 myBastionIP。 </br> 選取 [確定]。 |
+
+
+8. 選取 [檢閱 + 建立] 索引標籤，或選取 [檢閱 + 建立] 按鈕。
+
+9. 選取 [建立]。
 
 ## <a name="create-load-balancer"></a>建立負載平衡器
 
@@ -165,6 +201,9 @@ ms.locfileid: "87462423"
 
 4. 保留其餘的預設值，然後選取 [確定]。
 
+>[!NOTE]
+>後端集區中的虛擬機器將不會有使用此設定的輸出網際網路連線。 </br> 如需有關提供輸出連線的詳細資訊，請參閱： </br> **[Azure 中的輸出連線](load-balancer-outbound-connections.md)**</br> 提供連線的選項： </br> **[僅輸出負載平衡器組態](egress-only.md)** </br> **[什麼是虛擬網路 NAT？](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
+
 ## <a name="create-backend-servers"></a>建立後端伺服器
 
 在本節中，您可：
@@ -256,20 +295,56 @@ ms.locfileid: "87462423"
 
 前端公用 IP 位址可以是**靜態**或**動態**。
 
-## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
+## <a name="create-the-virtual-network"></a>建立虛擬網路
 
-在本節中，您需要使用下列資訊來取代步驟中的參數：
+在本節中，您會建立虛擬網路和子網路。
 
-| 參數                   | 值                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | 西歐      |
-| **\<IPv4-address-space>**   | 10.1.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0\24          |
+1. 在畫面的左上方，選取 [建立資源] > [網路] > [虛擬網路]，或在搜尋方塊中搜尋 [虛擬網路]。
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. 在 [建立虛擬網路] 中，在 [基本] 索引標籤中輸入或選取這項資訊：
+
+    | **設定**          | **值**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **專案詳細資料**  |                                                                 |
+    | 訂用帳戶     | 選取您的 Azure 訂用帳戶                                  |
+    | 資源群組   | 選取 [myResourceGroupLB] |
+    | **執行個體詳細資料** |                                                                 |
+    | 名稱             | 輸入 **myVNet**                                    |
+    | 區域           | 選取 [西歐] |
+
+3. 選取 [IP 位址] 索引標籤，或選取頁面底部的 [下一步：IP 位置] 按鈕。
+
+4. 在 [IP 位址] 索引標籤中，輸入這項資訊：
+
+    | 設定            | 值                      |
+    |--------------------|----------------------------|
+    | IPv4 位址空間 | 輸入 **10.1.0.0/16** |
+
+5. 在 [子網路名稱] 下，選取 [預設] 字組。
+
+6. 在 [編輯子網路] 中，輸入這項資訊：
+
+    | 設定            | 值                      |
+    |--------------------|----------------------------|
+    | 子網路名稱 | 輸入 **myBackendSubnet** |
+    | 子網路位址範圍 | 輸入 **10.1.0.0/24** |
+
+7. 選取 [儲存]。
+
+8. 選取 [安全性]**** 索引標籤。
+
+9. 在 [BastionHost] 底下，選取 [啟用]。 輸入此資訊：
+
+    | 設定            | 值                      |
+    |--------------------|----------------------------|
+    | Bastion 名稱 | 輸入 **myBastionHost** |
+    | AzureBastionSubnet 位址空間 | 輸入 **10.1.1.0/24** |
+    | 公用 IP 位址 | 選取 [建立新的]。 </br> 在 [名稱] 中，輸入 myBastionIP。 </br> 選取 [確定]。 |
+
+
+8. 選取 [檢閱 + 建立] 索引標籤，或選取 [檢閱 + 建立] 按鈕。
+
+9. 選取 [建立]。
 
 ## <a name="create-load-balancer"></a>建立負載平衡器
 
@@ -425,7 +500,7 @@ ms.locfileid: "87462423"
     | **網路介面** |  |
     | 虛擬網路 | 選取 [myVNet] |
     | 子網路 | 選取 [myBackendSubnet]。 |
-    | 公用 IP | 選取 [建立新的] </br> 在名稱中輸入 **myVM-ip**。 </br> 選取 [確定] |
+    | 公用 IP | 選取 [無] |
     | NIC 網路安全性群組 | 選取 [進階]|
     | 設定網路安全性群組 | 選取 [建立新的]。 </br> 在 [建立網路安全性群組] 的 [名稱] 中，輸入 **myNSG**。 </br> 選取 [確定] |
     | **負載平衡**  |
@@ -434,9 +509,10 @@ ms.locfileid: "87462423"
 5. 選取 [管理] 索引標籤，或選取 [下一步] > [管理]。
 
 6. 在 [管理] 索引標籤中，選取或輸入：
+    
     | 設定 | 值 |
     |-|-|
-    | **監視** | |
+    | **監視** |  |
     | 開機診斷 | 選取 [關閉] |
 
 7. 選取 [檢閱 + 建立]。 
@@ -487,7 +563,6 @@ ms.locfileid: "87462423"
     | 虛擬機器名稱 | 輸入 **myTestVM** |
     | 區域 | 選取 [西歐] |
     | 可用性選項 | 選取 [不需要基礎結構備援] |
-    | 可用性區域 | 選取 [區域備援] |
     | 映像 | 選取 [Windows Server 2019 Datacenter] |
     | Azure Spot 執行個體 | 選取 [否] |
     | 大小 | 選擇 VM 大小或接受預設設定 |
@@ -505,7 +580,7 @@ ms.locfileid: "87462423"
     | **網路介面** |  |
     | 虛擬網路 | **myVNet** |
     | 子網路 | **myBackendSubnet** |
-    | 公用 IP | 接受預設值 **myTestVM-ip**。 |
+    | 公用 IP | 選取 [無]。 |
     | NIC 網路安全性群組 | 選取 [進階]|
     | 設定網路安全性群組 | 選取您在上一個步驟中建立的 **MyNSG**。|
     
@@ -526,15 +601,15 @@ ms.locfileid: "87462423"
 
 1. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單選取 **myResourceGroupLB** 資源群組中的 [myVM1]。
 
-2. 在 [概觀] 頁面上，選取 [連線]，以下載 VM 的 RDP 檔案。
+2. 在 [概觀] 頁面上，選取 [連線]，然後選 [Bastion]。
 
-3. 開啟 RDP 檔案。
+4. 輸入在 VM 建立期間輸入的使用者名稱和密碼。
 
-4. 使用您在此 VM 建立期間提供的認證登入 VM。
+5. 選取 [連接]。
 
-5. 在伺服器桌面上，瀏覽至 [Windows 系統管理工具]>[Windows PowerShell]。
+6. 在伺服器桌面上，瀏覽至 [Windows 系統管理工具] > [Windows PowerShell]。
 
-6. 在 PowerShell 視窗中執行下列命令，以便：
+7. 在 PowerShell 視窗中執行下列命令，以便：
 
     * 安裝 IIS 伺服器
     * 移除預設的 iisstart.htm 檔案
@@ -546,14 +621,15 @@ ms.locfileid: "87462423"
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     
     # remove default htm file
-    remove-item  C:\inetpub\wwwroot\iisstart.htm
+     remove-item  C:\inetpub\wwwroot\iisstart.htm
     
     # Add a new htm file that displays server name
-    Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
+     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
    ```
-7. 使用 myVM1 關閉 RDP 工作階段。
+8. 關閉 **myVM1** 的 Bastion 工作階段。
 
-8. 重複步驟 1 到 6，在 myVM2 上安裝 IIS 和更新的 iisstart.htm 檔案。
+9. 重複步驟 1 到 6，在 myVM2 上安裝 IIS 和更新的 iisstart.htm 檔案。
+
 
 ## <a name="test-the-load-balancer"></a>測試負載平衡器
 
@@ -563,15 +639,13 @@ ms.locfileid: "87462423"
 
 3. 選取左側功能表中的 [所有服務]、選取 [所有資源]，然後從資源清單選取 **myResourceGroupLB** 資源群組中的 [myTestVM]。
 
-4. 在 [概觀] 頁面上，選取 [連線]，以下載 VM 的 RDP 檔案。
+4. 在 [概觀] 頁面上，選取 [連線]，然後選 [Bastion]。
 
-5. 開啟 RDP 檔案。
-
-6. 使用您在此 VM 建立期間提供的認證登入 VM。
+6. 輸入在 VM 建立期間輸入的使用者名稱和密碼。
 
 7. 在 **myTestVM** 上開啟 **Internet Explorer**。
 
-4. 將私人 IP 位址複製並貼到您瀏覽器的網址列。 IIS Web 伺服器的預設頁面會顯示在瀏覽器上。
+8. 在瀏覽器的網址列中，輸入上一個步驟中的 IP 位址。 IIS Web 伺服器的預設頁面會顯示在瀏覽器上。
 
     :::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/load-balancer-test.png" alt-text="建立標準內部負載平衡器" border="true":::
    
@@ -591,4 +665,5 @@ ms.locfileid: "87462423"
 
 如需 Azure Load Balancer 的詳細資訊，請繼續參閱[什麼是 Azure Load Balancer？](load-balancer-overview.md)和 [Load Balancer 常見問題集](load-balancer-faqs.md)。
 
-深入了解 [Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。
+* 深入了解 [Load Balancer 和可用性區域](load-balancer-standard-availability-zones.md)。
+* 深入了解 [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview)。

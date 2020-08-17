@@ -494,6 +494,8 @@
               href: platform/alerts-metric.md
             - name: 使用動態閾值
               href: platform/alerts-dynamic-thresholds.md
+            - name: 許多時間序列的單一警示
+              href: platform/alerts-metric-multiple-time-series-single-rule.md
             - name: 記錄上的計量警示
               href: platform/alerts-metric-logs.md
             - name: 使用 Resource Manager 範本

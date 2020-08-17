@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921128"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135992"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>教學課程：使用 SQL API 查詢 Azure Cosmos DB
 
@@ -113,7 +113,7 @@ Azure Cosmos DB [SQL API](documentdb-introduction.md) 支援使用 SQL 來查詢
 
 ## <a name="example-query-2"></a>範例查詢 2
 
-下一個查詢會傳回家族中識別碼符合 `WakefieldFamily` 的小孩名字，並依年級排序。
+下一個查詢會傳回家族中識別碼符合 `WakefieldFamily` 的小孩名字。
 
 **查詢**
 

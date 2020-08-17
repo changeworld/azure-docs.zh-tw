@@ -57,7 +57,9 @@
           href: export-import-provisioning-configuration.md
     - name: 對應用程式佈建進行疑難排解
       items:
-        - name: T應用程式佈建疑難排解
+        - name: 已知問題
+          href: known-issues.md
+        - name: 針對設定問題進行疑難排解
           href: application-provisioning-config-problem.md
         - name: 隔離狀態
           href: application-provisioning-quarantine-status.md

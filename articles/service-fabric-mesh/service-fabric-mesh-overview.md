@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: e64cc158a18e604cbd022be5c91350c95258272c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7061a178a3f5a9d126afab3fc1f9aa77d5cc050
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257798"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927023"
 ---
 # <a name="what-is-service-fabric-mesh"></a>什麼是 Service Fabric Mesh？
 
@@ -42,7 +42,7 @@ Service Fabric Mesh 支援任何可在容器中執行的程式設計語言或架
 
 - 部署及管理應用程式，而無須明確佈建和管理基礎結構。  Service Fabric Mesh 可為您佈建、升級、修補和維護基礎結構。
 - 使用整合式工具輕鬆地封裝及部署應用程式，以設定持續整合。
-- 運用 Azure Resource Manager 資源的所有功能。 這些功能的範例包括稽核線索和[角色型存取控制](../role-based-access-control/overview.md))。 您部署到 Azure 中 Service Fabric Mesh 服務的所有資源都是 Azure Resource Manager 資源。 這些資源包括應用程式、服務和秘密等等。
+- 運用 Azure Resource Manager 資源的所有功能。 這些功能的範例包括稽核線索和 [Azure 角色型存取控制 (Azure RBAC)](../role-based-access-control/overview.md))。 您部署到 Azure 中 Service Fabric Mesh 服務的所有資源都是 Azure Resource Manager 資源。 這些資源包括應用程式、服務和秘密等等。
 - 使用 [Azure 入口網站](https://portal.azure.com)、Resource Manager 範本或 Azure CLI/PowerShell 程式庫來部署和管理資源。
 - 使用 [Application Insights](/azure/application-insights/) (或您選擇的工具) 設定作業監視和警示，以從平台擷取作業和診斷追蹤。
 - 使用 [Application Insights](/azure/application-insights/) 或您選擇的工具，從應用程式模型存取應用程式診斷資訊。

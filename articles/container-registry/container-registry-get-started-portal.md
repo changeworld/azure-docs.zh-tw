@@ -1,17 +1,17 @@
 ---
 title: 快速入門 - 在入口網站中建立登錄
-description: 快速了解如何使用 Azure 入口網站在 Azure Container Registry 中建立私人 Docker 登錄。
+description: 快速了解如何使用 Azure 入口網站建立私用的 Azure 容器登錄。
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 08/04/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82f9a6b02832b718d5b4e7b662c590f1992af595
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752825"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031768"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立私人容器登錄
+# <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure Container Registry
 
 Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其中儲存並管理私人 Docker 容器映像及相關成品。 在本快速入門中，您會使用 Azure 入口網站建立容器登錄。 然後，使用 Docker 命令將容器映像推送到登錄中，最後從您的登錄中提取映像並加以執行。
 
@@ -41,14 +41,20 @@ Azure Container Registry 是 Azure 中的私人 Docker 登錄，您可以在其�
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="入口網站中的容器登錄概觀":::
 
-記下 [登入伺服器]**** 的值。 當您使用 Docker 推送和提取映像時，您會在下列步驟中使用此值。
+記下登錄名稱和 [登入伺服器] 的值。 當您使用 Docker 推送和提取映像時，您會在下列步驟中使用這些值。
 
 ## <a name="log-in-to-registry"></a>登入登錄
 
-推送和提取容器映像之前，您必須先登入登錄執行個體。 在本機電腦上[登入 Azure CLI][get-started-with-azure-cli]，然後執行 [az acr login][az-acr-login] 命令。 (透過 Azure CLI 登入時僅指定登錄名稱。 請勿包含 'azurecr.io' 尾碼。)
+推送和提取容器映像之前，您必須先登入登錄執行個體。 在本機電腦上[登入 Azure CLI][get-started-with-azure-cli]，然後執行 [az acr login][az-acr-login] 命令。 (透過 Azure CLI 登入時僅指定登錄名稱。 請勿包含 'azurecr.io' 網域尾碼。)
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+範例：
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 完成後，此命令會傳回 `Login Succeeded`。 

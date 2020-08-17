@@ -163,10 +163,6 @@
               href: concepts-read-replicas.md
             - name: 邏輯解碼
               href: concepts-logical.md
-        - name: 在區域間移動
-          items:
-            - name: Azure 入口網站
-              href: howto-move-regions-portal.md
     - name: 超大規模資料庫 (Citus)
       items:
         - name: 分散式資料
@@ -339,6 +335,10 @@
               href: howto-read-replicas-cli.md
             - name: 管理讀取複本 Azure PowerShell
               href: howto-read-replicas-powershell.md
+        - name: 在區域間移動
+          items:
+            - name: Azure 入口網站
+              href: howto-move-regions-portal.md
     - name: 超大規模資料庫 (Citus)
       items:
         - name: 建立使用者

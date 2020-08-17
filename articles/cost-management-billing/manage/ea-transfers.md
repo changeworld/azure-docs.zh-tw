@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: c49894c722897233afa6325def1d3e17562d2dab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a770fe2362e1e1c98c683f694f7f834ac6f4ea6c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075105"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836848"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise 傳輸
 
@@ -98,7 +98,7 @@ Azure EA 入口網站可以將訂用帳戶從一個帳戶擁有者轉移至另�
 
 ## <a name="subscription-transfer-effects"></a>訂用帳戶轉移效果
 
-當 Azure 訂用帳戶轉移到相同 Azure Active Directory 租用戶中的帳戶時，具有[角色型存取控制 (RBAC)](../../role-based-access-control/overview.md) 可管理資源的所有使用者、群組和服務主體都會保留其存取權。
+當 Azure 訂用帳戶轉移到相同 Azure Active Directory 租用戶中的帳戶時，具有 [Azure 角色型存取控制 (Azure RBAC)](../../role-based-access-control/overview.md) 可管理資源的所有使用者、群組和服務主體都會保留其存取權。
 
 若要檢視訂用帳戶上具有 RBAC 存取權的使用者：
 

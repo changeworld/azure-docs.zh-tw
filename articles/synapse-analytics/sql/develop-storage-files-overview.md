@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 3c33e2152fc120d406886d89adda26603126a8ba
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2a0751f12f33a36d9e0003977bcf40b66d715615
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483547"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986945"
 ---
 # <a name="access-external-storage-in-synapse-sql-on-demand"></a>存取 Synapse SQL 中的外部儲存體 (隨選)
 
@@ -25,11 +25,7 @@ ms.locfileid: "87483547"
 
 使用者可以使用[不同的驗證方法](develop-storage-files-storage-access-control.md)，例如 Azure AD 傳遞驗證 (Azure AD 主體的預設值) 和 SAS 驗證 (SQL 主體的預設值)。
 
-## <a name="openrowset"></a>OPENROWSET
-
-[OPENROWSET](develop-openrowset.md) 函式可讓使用者從 Azure 儲存體讀取檔案。
-
-### <a name="query-files-using-openrowset"></a>使用 OPENROWSET 查詢檔案
+## <a name="query-files-using-openrowset"></a>使用 OPENROWSET 查詢檔案
 
 OPENROWSET 可讓使用者在 Azure 儲存體上查詢外部檔案 (如果他們具有儲存體的存取權)。 連線到 Synapse SQL 隨選端點的使用者應該使用下列查詢來讀取 Azure 儲存體上的檔案內容：
 
@@ -40,8 +36,10 @@ SELECT * FROM
 
 使用者可以使用下列存取規則來存取儲存體：
 
-- Azure AD 使用者 - OPENROWSET 會使用呼叫者的 Azure AD 身分識別存取 Azure 儲存體，或以匿名存取方式存取儲存體。
-- SQL 使用者 – OPENROWSET 以匿名存取的方式存取儲存體。
+- Azure AD 使用者 - `OPENROWSET` 會使用呼叫者的 Azure AD 身分識別存取 Azure 儲存體，或以匿名存取方式存取儲存體。
+- SQL 使用者 - `OPENROWSET` 將會以匿名存取來存取儲存體，或者可以使用 SAS 權杖或工作區的受控識別來進行模擬。
+
+### <a name="impersonation"></a>[模擬](#tab/impersonation)
 
 SQL 主體也可以使用 OPENROWSET 來直接查詢以 SAS 權杖或工作區受控識別保護的檔案。 如果 SQL 使用者執行此函式，具有 `ALTER ANY CREDENTIAL` 權限的進階使用者就必須建立符合函式中 URL 的伺服器範圍認證 (使用儲存體名稱和容器)，並將此認證的 REFERENCES 授權授與 OPENROWSET 函式的呼叫者：
 
@@ -56,10 +54,17 @@ GRANT REFERENCES CREDENTIAL::[https://<storage_account>.dfs.core.windows.net/<co
 
 如果沒有符合 URL 的伺服器層級認證，或 SQL 使用者沒有此認證的參考權限，則會傳回錯誤。 SQL 主體無法使用某些 Azure AD 身分識別進行模擬。
 
+### <a name="direct-access"></a>[直接存取](#tab/direct-access)
+
+不需要進行額外的設定，即可讓 Azure AD 使用者使用其身分識別來存取檔案。
+任何使用者都可以存取允許匿名存取的 Azure 儲存體 (不需要進行額外的設定)。
+
+---
+
 > [!NOTE]
 > 此版 OPENROWSET 的設計訴求是使用預設驗證快速且輕鬆進行資料探索。 若要利用模擬或受控識別，請使用 OPENROWSET 搭配 DATASOURCE，如下一節所述。
 
-### <a name="query-data-sources-using-openrowset"></a>使用 OPENROWSET 查詢資料來源
+## <a name="query-data-sources-using-openrowset"></a>使用 OPENROWSET 查詢資料來源
 
 OPENROWSET 可讓使用者查詢放在某些外部資料來源上的檔案：
 
@@ -70,9 +75,18 @@ SELECT * FROM
  FORMAT= 'parquet') as rows
 ```
 
-具有 CONTROL DATABASE 權限的進階使用者必須建立用來存取儲存區的 DATABASE SCOPED CREDENTIAL，以及建立 EXTERNAL DATA SOURCE 以指定應使用的資料來源 URL 和認證：
+執行此查詢的使用者必須能夠存取這些檔案。 如果使用者無法使用其 [Azure AD 身分識別](develop-storage-files-storage-access-control.md?tabs=user-identity)或[匿名存取](develop-storage-files-storage-access-control.md?tabs=public-access)來直接存取檔案，就必須使用 [SAS 權杖](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)或[工作區的受控識別](develop-storage-files-storage-access-control.md?tabs=managed-identity)來模擬使用者。
+
+### <a name="impersonation"></a>[模擬](#tab/impersonation)
+
+`DATABASE SCOPED CREDENTIAL` 會指定如何存取參考資料來源 (目前為 SAS 和受控識別) 上的檔案。 具有 `CONTROL DATABASE` 權限的進階使用者必須建立 `DATABASE SCOPED CREDENTIAL` 以供用來存取儲存體，以及建立 `EXTERNAL DATA SOURCE` 以指定應使用的資料來源和認證 URL：
 
 ```sql
+EXECUTE AS somepoweruser;
+
+-- Create MASTER KEY if it doesn't exists in database
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'some very strong password';
+
 CREATE DATABASE SCOPED CREDENTIAL AccessAzureInvoices
  WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
  SECRET = '******srt=sco&amp;sp=rwac&amp;se=2017-02-01T00:55:34Z&amp;st=201********' ;
@@ -82,16 +96,14 @@ CREATE EXTERNAL DATA SOURCE MyAzureInvoices
  CREDENTIAL = AccessAzureInvoices) ;
 ```
 
-DATABASE SCOPED CREDENTIAL 會指定如何存取參考資料來源 (目前為 SAS 和受控識別) 上的檔案。
-
 呼叫者必須具有下列其中一個權限，才能執行 OPENROWSET 函式：
 
 - 執行 OPENROWSET 的其中一個權限：
   - `ADMINISTER BULK OPERATIONS` 可讓登入執行 OPENROWSET 函式。
   - `ADMINISTER DATABASE BULK OPERATIONS` 可讓資料庫範圍的使用者執行 OPENROWSET 函式。
-- EXTERNAL DATA SOURCE 中所參考認證的 REFERENCES DATABASE SCOPED CREDENTIAL
+- `REFERENCES DATABASE SCOPED CREDENTIAL`，`EXTERNAL DATA SOURCE` 中所參考的認證。
 
-#### <a name="access-anonymous-data-sources"></a>存取匿名資料來源
+### <a name="direct-access"></a>[直接存取](#tab/direct-access)
 
 使用者可以在沒有 CREDENTIAL 可參考公用存取儲存體或使用 Azure AD 傳遞驗證的情況下，建立 EXTERNAL DATA SOURCE：
 
@@ -99,7 +111,7 @@ DATABASE SCOPED CREDENTIAL 會指定如何存取參考資料來源 (目前為 SA
 CREATE EXTERNAL DATA SOURCE MyAzureInvoices
  WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
 ```
-
+---
 ## <a name="external-table"></a>EXTERNAL TABLE
 
 具有讀取資料表權限的使用者可以使用 EXTERNAL TABLE 存取外部檔案，該資料表會建立在 Azure 儲存體資料夾和檔案集合的上方。
@@ -117,9 +129,18 @@ FILE_FORMAT = TextFileFormat
 ) ;
 ```
 
-具有 CONTROL DATABASE 權限的使用者必須建立用來存取儲存區的 DATABASE SCOPED CREDENTIAL，以及建立 EXTERNAL DATA SOURCE 以指定應使用的資料來源 URL 和認證：
+從這個資料表讀取資料的使用者必須能夠存取這些檔案。 如果使用者無法使用其 [Azure AD 身分識別](develop-storage-files-storage-access-control.md?tabs=user-identity)或[匿名存取](develop-storage-files-storage-access-control.md?tabs=public-access)來直接存取檔案，就必須使用 [SAS 權杖](develop-storage-files-storage-access-control.md?tabs=shared-access-signature)或[工作區的受控識別](develop-storage-files-storage-access-control.md?tabs=managed-identity)來模擬使用者。
+
+### <a name="impersonation"></a>[模擬](#tab/impersonation)
+
+DATABASE SCOPED CREDENTIAL 會指定如何存取參考資料來源上的檔案。 具有 CONTROL DATABASE 權限的使用者必須建立用來存取儲存區的 DATABASE SCOPED CREDENTIAL，以及建立 EXTERNAL DATA SOURCE 以指定應使用的資料來源 URL 和認證：
 
 ```sql
+EXECUTE AS somepoweruser;
+
+-- Create MASTER KEY if it doesn't exists in database
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'some very strong password';
+
 CREATE DATABASE SCOPED CREDENTIAL cred
  WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
  SECRET = '******srt=sco&sp=rwac&se=2017-02-01T00:55:34Z&st=201********' ;
@@ -130,7 +151,15 @@ CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
  ) ;
 ```
 
-DATABASE SCOPED CREDENTIAL 會指定如何存取參考資料來源上的檔案。
+### <a name="direct-access"></a>[直接存取](#tab/direct-access)
+
+使用者可以在沒有 CREDENTIAL 可參考公用存取儲存體或使用 Azure AD 傳遞驗證的情況下，建立 EXTERNAL DATA SOURCE：
+
+```sql
+CREATE EXTERNAL DATA SOURCE MyAzureInvoices
+ WITH ( LOCATION = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>') ;
+```
+---
 
 ### <a name="read-external-files-with-external-table"></a>使用 EXTERNAL TABLE 讀取外部檔案
 
@@ -167,14 +196,14 @@ FROM dbo.DimProductsExternal
 
 - [查詢 CSV 檔案](query-single-csv-file.md)
 
-- [查詢資料夾和多個檔案](query-folders-multiple-csv-files.md)
-
-- [查詢特定檔案](query-specific-files.md)
-
 - [查詢 Parquet 檔案](query-parquet-files.md)
 
-- [查詢巢狀型別](query-parquet-nested-types.md)
-
 - [查詢 JSON 檔案](query-json-files.md)
+
+- [查詢資料夾和多個檔案](query-folders-multiple-csv-files.md)
+
+- [使用資料分割和中繼資料函式](query-specific-files.md)
+
+- [查詢巢狀型別](query-parquet-nested-types.md)
 
 - [建立和使用檢視](create-use-views.md)

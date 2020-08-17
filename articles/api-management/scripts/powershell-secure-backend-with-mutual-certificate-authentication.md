@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 指令碼範例 - 保護後端 | Microsoft Docs
-description: Azure PowerShell 指令碼範例 - 保護後端
+description: 了解如何使用 Azure PowerShell 指令碼範例，以相互憑證驗證來保護後端。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 00198d4b4a5268a112b097c17f6a97aa02f6f0f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cb6b1cfcb6a8f482bdcbc9d6befc99197f024f4a
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008777"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905630"
 ---
 # <a name="secure-back-end"></a>保護後端
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ca6e7fa6e02ff6c5e49185c2fb02f9bc5a16d9c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134030"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927295"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>在 Azure Government 和公用區域之間移動 Azure VM 
 
@@ -53,7 +53,7 @@ ms.locfileid: "86134030"
 請確定您的 Azure 帳戶具有權限將 VM 複寫至 Azure。
 
 - 檢閱您將機器複寫至 Azure 所需的[權限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
-- 驗證並修改[角色型存取](../role-based-access-control/role-assignments-portal.md)權限。 
+- 確認及修改 [Azure 角色型存取控制 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) 權限。 
 
 ### <a name="set-up-an-azure-network"></a>設定 Azure 網路
 

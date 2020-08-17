@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 1af549feb551eca02bb1ef8df6481eceb959f6d1
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337172"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042712"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -34,10 +34,10 @@ Web UI 可讓您監視裝置狀況、建立規則，以及在數百萬個裝置�
 
 IoT Central 文件提及四個會與 IoT Central 應用程式互動的角色：
 
-- 「解決方案建置者」負責定義連線至應用程式的裝置類型，以及為操作員自訂應用程式。
-- 「操作員」管理已連線到應用程式的裝置。
+- 「解決方案建置者」負責[定義連線至應用程式的裝置類型](howto-set-up-template.md)，以及為操作員自訂應用程式。
+- 「操作員」[管理已連線到應用程式的裝置](howto-manage-devices.md)。
 - 「管理員」負責進行管理工作，例如管理應用程式內的[使用者角色和權限](howto-administer.md)。
-- 「裝置開發人員」會為連線到您應用程式的裝置或 IoT Edge 模組，建立可在其中執行的程式碼。
+- 「裝置開發人員」會為連線到您應用程式的[裝置](concepts-telemetry-properties-commands.md)或 [IoT Edge 模組](concepts-iot-edge.md)，建立可在其中執行的程式碼。
 
 ## <a name="create-your-iot-central-application"></a>建立您的 IoT Central 應用程式
 
@@ -55,7 +55,7 @@ IoT Central 文件提及四個會與 IoT Central 應用程式互動的角色：
 - 由裝置設定而且在應用程式中唯讀的裝置屬性。
 - 屬性由操作員所設定，會決定裝置的行為。
 
-此裝置範本包含：
+此[裝置範本](howto-set-up-template.md)包含：
 
 - 一個_裝置功能模型_，說明裝置所應實作的功能，例如它所傳送的遙測資料和它所報告的屬性。
 - 未儲存在裝置上的雲端屬性。
@@ -83,13 +83,13 @@ IoT Central 文件提及四個會與 IoT Central 應用程式互動的角色：
 
 ## <a name="manage-your-devices"></a>管理您的裝置
 
-操作員可以使用 IoT Central 應用程式來管理您 IoT Central 解決方案中的裝置。 操作員會執行下列工作：
+操作員可以使用 IoT Central 應用程式來[管理您 IoT Central 解決方案中的裝置](howto-manage-devices.md)。 操作員會執行下列工作：
 
 - 監視已連線到應用程式的裝置。
 - 針對裝置問題進行移難排解並修復。
 - 佈建新裝置。
 
-身為解決方案建置者，您可以定義對來自所連線裝置之資料串流操作的自訂規則和動作。 操作員可以在裝置層級啟用或停用這些規則，以控制和自動執行應用程式內的工作。
+身為解決方案建置者，您可以[定義對來自所連線裝置之資料串流操作的自訂規則和動作](howto-configure-rules.md)。 操作員可以在裝置層級啟用或停用這些規則，以控制和自動執行應用程式內的工作。
 
 在使用專為大規模運作而設計的 IoT 解決方案時，結構化的裝置管理方法便顯得重要。 只是將裝置連線至雲端並不夠，您還必須讓裝置能夠保持連線且狀況良好。 操作員可以使用下列 IoT Central 功能，在整個應用程式生命週期中管理裝置：
 

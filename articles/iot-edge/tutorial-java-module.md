@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 86c2bc86a4eeea8b04c4f22c20edade2eac2a811
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: ef4b42b56ea3e9e73de6d5bc793b2f1b206f34f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439039"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829980"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>教學課程：開發適用於 Linux 裝置的 Java IoT Edge 模組
 
@@ -62,7 +62,7 @@ ms.locfileid: "87439039"
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
-   >系統會在安裝過程中新增 Java 和 Maven 的環境變數。 新增這些環境變數時，建議您將任何已開啟的 Visual Studio Code 終端機、PowerShell 或命令提示字元執行個體重新開機。 如此可確保這些公用程式可繼續使用 Java 和 Maven 命令。
+   >Java 和 Maven 安裝程序會將環境變數新增至您的系統。 完成安裝之後，請重新啟動任何已開啟的 Visual Studio Code 終端機、PowerShell 或命令提示字元執行個體。 此步驟可確保這些公用程式往後可以辨識 Java 和 Maven 命令。
 
 ## <a name="create-a-module-project"></a>建立模組專案
 

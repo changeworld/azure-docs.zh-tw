@@ -6,12 +6,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: 1543c0daae7d637730a5f8f9da2305423ba7f84e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76932411"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924269"
 ---
 # <a name="what-is-azure-dns"></a>什麼是 Azure DNS？
 
@@ -29,7 +29,7 @@ Azure DNS 中的 DNS 網域裝載於 Azure 的 DNS 名稱伺服器全球網路�
 
  Azure DNS 以 Azure Resource Manager 為基礎，可提供下功能：
 
-* [角色型存取控制](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，用以控制哪些人能存取組織的特定動作。
+* [Azure 角色型存取控制 (Azure RBAC)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，用以控制哪些人能存取組織的特定動作。
 
 * [活動記錄](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)，用以監視組織中的使用者修改資源的情形，或在進行疑難排解時找出錯誤。
 
@@ -70,4 +70,3 @@ Azure DNS 支援別名記錄集。 您可以使用別名記錄集以參考 Azure
 * 若要了解如何在 Azure DNS 中建立區域，請參閱[建立 DNS 區域](./dns-getstarted-create-dnszone-portal.md)。
 
 * 如需有關 Azure DNS 的常見問題集，請參閱 [Azure DNS 常見問題集](dns-faq.md)。
-

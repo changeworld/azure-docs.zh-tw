@@ -2,19 +2,19 @@
 title: Azure Key Vault - 如何以 CLI 使用虛刪除
 description: 以 CLI 程式碼片段進行虛刪除的使用案例範例
 services: key-vault
-author: msmbaldwin
-manager: rkarlin
+author: ShaneBala-keyvault
+manager: ravijan
 ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
-ms.date: 08/12/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 7023a2301b6b6137f7a0485523c68f21d72d67a9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 08/11/2020
+ms.author: sudbalas
+ms.openlocfilehash: 8f32fcc319c3bffd9089d894c5376268227a0151
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385733"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135924"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何以 CLI 使用金鑰保存庫虛刪除
 
@@ -58,11 +58,7 @@ az keyvault update -n ContosoVault --enable-soft-delete true
 
 ### <a name="new-key-vault"></a>新的金鑰保存庫
 
-為新的金鑰保存庫啟用虛刪除是在建立時完成，方法是新增虛刪除啟用旗標到您的 create 命令。
-
-```azurecli
-az keyvault create --name ContosoVault --resource-group ContosoRG --enable-soft-delete true --location westus
-```
+預設會在所有金鑰保存庫上自動啟用虛刪除。 2020 年 12 月 31 日之後，就不能再建立未啟用虛刪除的新金鑰保存庫。
 
 ### <a name="verify-soft-delete-enablement"></a>驗證啟用虛刪除
 

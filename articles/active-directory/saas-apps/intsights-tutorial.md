@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 08/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ef70535ecd84a97bde9650eb8a3ea3b9406bd2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 291a9016c01e7d618cbfdd556a482ec77f173ab9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093265"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003605"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intsights"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 IntSights 整合
 
@@ -105,6 +105,9 @@ ms.locfileid: "87093265"
     | lastName | user.surname |
     | intsightsAccountId | < intsightsAccountId > |
     | intsightsRole | < intsightsRole > |
+
+    > [!NOTE]
+    > **intsightsAccountId** 和 **intsightsRole** 是選擇性的宣告，不會預設新增，而且只有在啟用 **Just In Time** 使用者佈建時，才會手動新增。
 
 1. 在 [以 SAML 設定單一登入] 頁面的 [SAML 簽署憑證] 區段中，尋找 [憑證 (Base64)] 並選取 [下載]，以下載憑證並將其儲存在電腦上。
 
