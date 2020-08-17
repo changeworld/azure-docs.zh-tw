@@ -1,59 +1,57 @@
 ---
 title: Azure Dev Spaces 如何運作
 services: azure-dev-spaces
-ms.date: 03/24/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
-description: 描述為 Azure 開發空間供電的過程
-keywords: Azure 開發空間、開發空間、Docker、庫伯奈斯、Azure、AKS、Azure 庫伯奈斯服務、容器
-ms.openlocfilehash: 99b0b3309d115b450bfca94871b6defd885349fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+description: 描述 power Azure Dev Spaces 的處理常式
+keywords: Azure Dev Spaces、Dev Spaces、Docker、Kubernetes、Azure、AKS、Azure Kubernetes Service、容器
+ms.openlocfilehash: 48bde5f3cc6f397d51a31f80f41ab299ba8866ee
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234974"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212532"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Azure Dev Spaces 如何運作
 
-開發 Kubernetes 應用程式可能具有挑戰性。 您需要 Docker 和庫伯奈斯設定檔。 您需要瞭解如何在本地測試應用程式並與其他從屬服務進行交互。 您可能需要與開發人員團隊一起同時處理開發和測試多個服務。
+開發 Kubernetes 應用程式可能是一項挑戰。 您需要 Docker 和 Kubernetes 設定檔。 您必須瞭解如何在本機測試您的應用程式，並與其他相依服務互動。 您可能需要一次處理多個服務的開發和測試，以及一小組開發人員。
 
-Azure 開發人員空間為您提供了多種方法來快速反覆運算和調試 Kubernetes 應用程式並與您的團隊協作。 本文介紹了 Azure 開發空間可以做什麼以及其工作原理。
+Azure Dev Spaces 可讓您透過多種方式快速地逐一查看和 Kubernetes 應用程式，並與您的小組共同作業。 本文說明 Azure Dev Spaces 可以做什麼，以及它的運作方式。
 
-## <a name="rapidly-iterate-and-debug-your-kubernetes-application"></a>快速反覆運算和調試庫伯奈斯應用程式
+## <a name="rapidly-iterate-and-debug-your-kubernetes-application"></a>快速逐一查看和 Kubernetes 應用程式
 
-Azure 開發人員空間減少了在 AKS 群集上下文中開發、測試和反覆運算 Kubernetes 應用程式的工作。 這種工作量的減少使開發人員能夠專注于其應用程式的業務邏輯，而不是將其服務配置為在 Kubernetes 中運行。
+Azure Dev Spaces 可減少在 AKS 叢集的環境中開發、測試和反覆運算 Kubernetes 應用程式的工作。 這項縮減可讓開發人員專注于其應用程式的商務邏輯，而不會將其服務設定為在 Kubernetes 中執行。
 
-### <a name="connect-your-development-machine-to-aks"></a>將開發電腦連接到 AKS
+### <a name="local-process-with-kubernetes"></a>Local Process with Kubernetes
 
-使用 Azure 開發人員空間，可以將開發電腦連接到 AKS 群集，從而可以在開發電腦上運行和調試代碼，就像它在群集上運行一樣。 Azure 開發人員空間通過在群集上運行充當遠端代理的 Pod 來重定向連接的 AKS 群集之間的流量，從而在開發電腦和群集之間重定向流量。 此流量重定向允許開發電腦上的代碼和在 AKS 群集中運行的服務進行通信，就像它們位於同一 AKS 群集中一樣。 有關將開發電腦連接到 AKS 的詳細資訊，請參閱[將開發電腦連接到 AKS 群集的工作原理][how-it-works-connect]。
+透過 Kubernetes 的本機進程，您可以將開發電腦連接到 Kubernetes 叢集，讓您在開發電腦上執行和偵測程式碼，就像在叢集上執行一樣。 Azure Dev Spaces 在您的叢集上執行 pod 來重新導向連線叢集之間的流量，以作為遠端代理程式來重新導向開發電腦與叢集之間的流量。 此流量重新導向可讓您開發電腦上的程式碼和在叢集中執行的服務進行通訊，就像是在相同的叢集中一樣。 如需將您的開發電腦連接到 Kubernetes 叢集的詳細資訊，請參閱 [使用 Kubernetes 的本機程式如何運作][how-it-works-local-process-kubernetes]。
 
-### <a name="run-your-code-in-aks"></a>在 AKS 中運行代碼
+### <a name="run-your-code-in-aks"></a>在 AKS 中執行您的程式碼
 
-除了在開發電腦和 AKS 群集之間重定向流量外，借助 Azure 開發人員空間，您還可以直接在 AKS 中配置和快速運行代碼。 借助視覺化工作室、視覺化工作室代碼或 Azure 開發空間 CLI，Azure 開發人員空間將上載代碼到群集，然後生成並運行它。 Azure 開發人員空間還可以智慧地同步代碼更改並重新啟動服務，以便根據需要反映更改。 運行代碼時，生成日誌和 HTTP 跟蹤將資料流回用戶端，以便您可以監視進度並診斷任何問題。 您還可以使用 Azure 開發人員空間，將視覺化工作室和視覺化工作室代碼中的調試器附加到 JAVA、Node.js 和 .NET 核心服務。 有關詳細資訊，請參閱為[Azure 開發人員空間準備專案的工作原理][how-it-works-prep]、使用[Azure 開發人員空間運行代碼的工作原理][how-it-works-up]，以及使用[Azure 開發人員空間遠端偵錯代碼的工作原理][how-it-works-remote-debugging]。
+除了在您的開發電腦與 AKS 叢集之間重新導向流量之外，您還可以使用 Azure Dev Spaces，直接在 AKS 中設定和快速執行您的程式碼。 使用 Visual Studio、Visual Studio Code 或 Azure Dev Spaces CLI 時，Azure Dev Spaces 會將您的程式碼上傳至叢集，然後建立並執行它。 Azure Dev spaces 也可以明智地同步程式碼變更並重新啟動您的服務，以反映所需的變更。 執行您的程式碼時，組建記錄檔和 HTTP 追蹤會串流回用戶端，讓您可以監視進度及診斷任何問題。 您也可以使用 Azure Dev Spaces，在 Visual Studio 和 Visual Studio Code 中附加偵錯工具至 JAVA、Node.js 和 .NET Core 服務。 如需詳細資訊，請參閱 [準備 Azure Dev Spaces 的專案如何運作][how-it-works-prep]、 [如何使用 Azure Dev Spaces 執行程式碼的運作][how-it-works-up]方式，以及如何 [使用 Azure Dev Spaces 來遠端偵錯程式碼的運作方式][how-it-works-remote-debugging]。
 
 ## <a name="team-development"></a>小組開發
 
-Azure 開發人員空間可説明團隊在同一 AKS 群集上高效地處理其應用程式，而不會造成中斷。
+Azure Dev Spaces 可協助小組在相同的 AKS 叢集上有效率地處理其應用程式，而不會造成干擾。
 
-### <a name="intelligent-routing-between-dev-spaces"></a>開發空間之間的智慧路由
+### <a name="intelligent-routing-between-dev-spaces"></a>開發人員空間之間的智慧型路由
 
-使用 Azure 開發人員空間，團隊可以共用運行雲原生應用程式的單個 AKS 群集，並創建獨立的開發空間，團隊可以在其中開發、測試和調試，而不會干擾其他開發空間。 應用程式的基準版本在根開發空間中運行。 然後，團隊成員根據應用程式的根空間創建獨立的子開發空間，以便進行開發、測試和調試更改。 通過 Dev Spaces 中的路由功能，子開發空間可以在子開發空間和父開發空間中運行的服務之間路由請求。 此路由允許開發人員在重用父空間中的從屬服務時運行自己的服務版本。 每個子空間都有其自己獨特的 URL，其他人可以共用和訪問該 URL 進行協作。 有關路由在 Azure 開發空間中的工作方式的詳細資訊，請參閱[路由如何與 Azure 開發空間一起工作][how-it-works-routing]。
+藉由 Azure Dev Spaces，小組可以共用執行雲端原生應用程式的單一 AKS 叢集，並建立可供小組開發、測試和錯的獨立開發空間，而不會干擾其他開發人員空間。 應用程式的基準版本會在根開發人員空間中執行。 小組成員接著會根據根空間建立獨立的子開發空間，以進行應用程式的開發、測試和偵錯工具變更。 透過開發人員空間中的路由功能，子開發空間可在子開發空間中執行的服務與父開發空間之間路由傳送要求。 此路由可讓開發人員執行自己的服務版本，同時從父空間重複使用相依的服務。 每個子空間都有自己的唯一 URL，可供其他人共用及存取以進行共同作業。 如需有關路由如何在 Azure Dev Spaces 中運作的詳細資訊，請參閱 [路由如何搭配 Azure Dev Spaces 運作][how-it-works-routing]。
 
-### <a name="live-testing-an-open-pull-request"></a>即時測試打開拉取請求
+### <a name="live-testing-an-open-pull-request"></a>即時測試開啟的提取要求
 
-還可以將 GitHub 操作與 Azure 開發空間一起使用，在合併之前直接在群集中的拉取請求中測試對應用程式的更改。 Azure 開發人員空間可以自動將應用程式的審閱版本部署到群集，從而允許作者和其他團隊成員查看整個應用程式上下文中的更改。 使用 Azure 開發人員空間的路由功能，應用程式的此審閱版本也會部署到群集，而不會影響其他開發空間。 所有這些功能都允許您自信地批准和合併拉取請求。 要查看 GitHub 操作和 Azure 開發空間的示例，請參閱[GitHub 操作& Azure 庫伯奈斯服務][pr-flow]。
+您也可以使用 GitHub Actions 搭配 Azure Dev Spaces，直接在您的叢集中的提取要求中測試應用程式的變更，然後再進行合併。 Azure Dev Spaces 可以將應用程式的審核版本自動部署到您的叢集，讓作者和其他小組成員可以檢查整個應用程式內容中的變更。 使用 Azure Dev Spaces 的路由功能，此應用程式的審核版本也會部署到您的叢集，而不會影響到其他開發人員空間。 所有這些功能都可讓您安心地核准和合併提取要求。 若要查看 GitHub Actions 和 Azure Dev Spaces 的範例，請參閱 [GitHub Actions & Azure Kubernetes Service][pr-flow]。
 
 ## <a name="next-steps"></a>後續步驟
 
-要開始將本地開發電腦連接到 AKS 群集，請參閱[將開發電腦連接到 AKS 群集][connect]。
+若要開始將您的本機開發電腦連線到 AKS 叢集，請參閱 [將您的開發電腦連線至 AKS][connect]叢集。
 
-要開始使用 Azure 開發人員空間進行團隊開發，請參閱[Azure 開發人員空間中的團隊開發][quickstart-team]快速入門。
 
-[connect]: how-to/connect.md
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[connect]: https://code.visualstudio.com/docs/containers/local-process-kubernetes
+[how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
 [how-it-works-up]: how-dev-spaces-works-up.md
 [pr-flow]: how-to/github-actions.md
-[quickstart-team]: quickstart-team-development.md
 [routing]: #team-development

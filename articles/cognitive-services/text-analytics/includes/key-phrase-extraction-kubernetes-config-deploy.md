@@ -1,7 +1,7 @@
 ---
-title: 關鍵片語擷取 Kubernetes config 和 deploy 步驟
+title: 關鍵片語擷取 Kubernetes config and 部署步驟
 titleSuffix: Azure Cognitive Services
-description: 關鍵片語擷取 Kubernetes config 和 deploy 步驟
+description: 關鍵片語擷取 Kubernetes config and 部署步驟
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -16,7 +16,7 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877800"
 ---
-### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>將關鍵片語擷取容器部署至 AKS 叢集
+### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>將關鍵片語擷取容器部署到 AKS 叢集
 
 1. 開啟 Azure CLI，然後登入 Azure。
 
@@ -30,14 +30,14 @@ ms.locfileid: "80877800"
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    執行此命令之後，它會報告類似下列的訊息：
+    執行此命令之後，它會報告類似以下的訊息：
 
     ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > 如果您的 Azure 帳戶有多個可用的訂用帳戶，且該 `az aks get-credentials` 命令傳回錯誤，則常見的問題是您使用了錯誤的訂閱。 將 Azure CLI 會話的內容設定為使用您用來建立資源的相同訂用帳戶，然後再試一次。
+    > 如果您的 Azure 帳戶有多個可用的訂用帳戶，而且 `az aks get-credentials` 命令傳回錯誤，表示您使用了錯誤的訂用帳戶。 將 Azure CLI 會話的內容設定為使用您用來建立資源的相同訂用帳戶，然後再試一次。
     > ```azurecli
     >  az account set -s subscription-id
     > ```
@@ -48,7 +48,7 @@ ms.locfileid: "80877800"
     code .
     ```
 
-1. 在文字編輯器中，建立名為*keyphrase*的新檔案，並在其中貼上下列 yaml。 請務必將和取代為 `billing/value` `apikey/value` 您自己的資訊。
+1. 在文字編輯器中，建立名為 *keyphrase*的新檔案，並在其中貼上下列 yaml。 請務必將和取代為 `billing/value` `apikey/value` 您自己的資訊。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -95,13 +95,13 @@ ms.locfileid: "80877800"
     ```
 
 1. 儲存檔案，然後關閉文字編輯器。
-1. 以 `apply` *keyphrase. yaml*檔案作為目標來執行 Kubernetes 命令：
+1. `apply`使用*keyphrase yaml*檔案作為其目標來執行 Kubernetes 命令：
 
     ```console
     kubectl apply -f keyphrase.yaml
     ```
 
-    命令成功套用部署設定後，會出現類似下列輸出的訊息：
+    命令成功套用部署設定之後，會出現類似下列輸出的訊息：
 
     ```output
     deployment.apps "keyphrase" created
@@ -126,7 +126,7 @@ ms.locfileid: "80877800"
     kubectl get services
     ```
 
-    Pod 中*keyphrase*服務執行狀態的輸出：
+    Pod 中 *keyphrase* 服務的執行狀態輸出：
 
     ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

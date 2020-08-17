@@ -18,14 +18,14 @@ ms.locfileid: "80876396"
 ---
 ### <a name="verify-the-language-detection-container-instance"></a>確認語言偵測的容器實例
 
-1. 選取 [**總覽**] 索引標籤，然後複製 [IP 位址]。
-1. 開啟新的瀏覽器索引標籤，並輸入 IP 位址。 例如，輸入 `http://<IP-address>:5000 (http://55.55.55.55:5000` ）。 容器的首頁隨即顯示，讓您知道容器正在執行。
+1. 選取 [ **總覽** ] 索引標籤，然後複製 IP 位址。
+1. 開啟新的瀏覽器索引標籤，然後輸入 IP 位址。 例如，輸入 `http://<IP-address>:5000 (http://55.55.55.55:5000`) 。 容器的首頁隨即顯示，讓您知道容器正在執行。
 
-    ![查看容器首頁以確認它正在執行](../media/how-tos/container-instance/swagger-docs-on-container.png)
+    ![查看容器首頁以確認其正在執行](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
-1. 選取 [**服務 API 描述**] 連結，以移至容器的 Swagger 頁面。
+1. 選取 [ **服務 API 描述** ] 連結，以移至容器的 Swagger 頁面。
 
-1. 選擇任何**張貼**api，然後選取 [立即**試用**]。會顯示參數，其中包括下列範例輸入：
+1. 選擇任何 **貼** 文 api，然後選取 [立即 **試用**]。系統會顯示參數，其中包括下列範例輸入：
 
     ```json
     {
@@ -49,11 +49,11 @@ ms.locfileid: "80876396"
     }
     ```
 
-1. 將**showStats**設定為 `true` 。
+1. 將 **showStats** 設定為 `true` 。
 
-1. 選取 [**執行**] 以決定文字的情感。
+1. 選取 [ **執行** ] 來判斷文字的情感。
 
-    封裝在容器中的模型會產生範圍從0到1的分數，其中0是負情感，而1是正向情感。
+    封裝在容器中的模型會產生範圍從0到1的分數，其中0是負面情感，1是正面的情感。
 
     傳回的 JSON 回應包含更新文字輸入的情感：
 
@@ -127,4 +127,4 @@ ms.locfileid: "80876396"
     }
     ```
 
-我們現在可以依據對應的，將回應承載的 JSON 資料檔案與原始要求承載檔相互關聯 `id` 。 每份檔都會獨立處理，其中包含各種統計資料 `characterCount` ，例如和 `transactionCount` 。 此外，每個產生的檔都有 `detectedLanguages` 陣列 `name` ，其中每個偵測到的語言都有、 `iso6391Name` 和 `score` 。 當偵測到多個語言時， `score` 會使用來判斷最可能的語言。
+我們現在可以依對應的方式，將回應承載的 JSON 資料的檔與原始的要求裝載檔產生關聯 `id` 。 每份檔都會個別處理，包含各種不同的統計資料 `characterCount` ，例如和 `transactionCount` 。 此外，每個產生的檔都有 `detectedLanguages` 每個偵測到的語言的陣列，以及的、 `name` `iso6391Name` 和 `score` 。 偵測到多個語言時， `score` 會使用來決定最可能的語言。

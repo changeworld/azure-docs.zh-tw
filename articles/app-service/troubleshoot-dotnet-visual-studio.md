@@ -38,7 +38,7 @@ ms.locfileid: "88211983"
 串流記錄功能僅適用於鎖定 .NET Framework 4 或更新版本的應用程式。
 
 ## <a name="app-configuration-and-management"></a><a name="sitemanagement"></a>應用程式組態與管理
-Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwlink/?LinkId=529715)中可用的應用程式管理功能與組態設定的子集。 在本節中，您會看到使用 **伺服器總管**可用的內容。 若要查看最新的 Azure 整合功能，也請試試 **雲端總管** 。 您可以同時從 [檢視] **** 功能表開啟這兩個視窗。
+Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwlink/?LinkId=529715)中可用的應用程式管理功能與組態設定的子集。 在本節中，您會看到使用 **伺服器總管**可提供的功能。 若要查看最新的 Azure 整合功能，也請試試 **雲端總管** 。 您可以同時從 [檢視] **** 功能表開啟這兩個視窗。
 
 1. 如果您尚未在 Visual Studio 中登入 Azure，請在 [伺服器總管]**** 中以滑鼠右鍵按一下 [Azure]****，然後選取 [連接到 Microsoft Azure 訂用帳戶]****。
 
@@ -61,14 +61,14 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
     在本教學課程中，您將使用記錄與追蹤下拉式清單。 您也會使用遠端偵錯功能，但是將以不同的方式來加以啟用。
 
-    如需此視窗中 [應用程式設定] 和 [連接字串] 方塊的詳細資訊，請參閱 [Azure App Service：應用程式字串和連接字串的工作方式](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)。
+    如需此視窗中 [應用程式設定] 和 [連接字串] 方塊的詳細資訊，請參閱 [Azure App Service：應用程式字串與連接字串的運作方式](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)。
 
     若您想要執行無法在此視窗中完成的應用程式管理工作，請按一下 [在管理入口網站中開啟]****，以開啟 Azure 入口網站的瀏覽器視窗。
 
 ## <a name="access-app-files-in-server-explorer"></a><a name="remoteview"></a>在伺服器總管中存取應用程式檔案
 部署 Web 專案時，通常會將 Web.config 檔案中的 `customErrors` 旗標設為 `On` 或 `RemoteOnly`，這表示出現問題時，您將不會收到有用的錯誤訊息。 對許多錯誤而言，您只會看到如下列之一的頁面：
 
-**'/' 應用程式中的伺服器錯誤：**
+**'/' 應用程式中發生伺服器錯誤：**
 
 ![Unhelpful error page](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
 
@@ -622,7 +622,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 如需特定疑難排解問題的說明，請在下列任一個論壇中開啟一段討論串：
 
 * [ASP.NET 網站上的 Azure 論壇](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET)。
-* [Microsoft Q 上的 Azure 論壇&A](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
+* [Microsoft Q&上的 Azure 論壇](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
 * [StackOverflow.com](https://www.stackoverflow.com)。
 
 ### <a name="debugging-in-visual-studio"></a>Visual Studio 偵錯
@@ -678,7 +678,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   用於檢視 Web 伺服器記錄 (*.log* 檔案) 中資料的工具。
-* [針對 IIS 效能問題或使用 LogParser 的應用程式錯誤進行疑難排解](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [使用 LogParser 針對 IIS 效能問題或應用程式錯誤進行疑難排解](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
    此篇介紹可以用來分析 Web 伺服器記錄的 Log Parser 工具。
 * [Robert McMurray 關於使用 LogParser 的部落格文章](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [IIS 7.0、IIS 7.5 與 IIS 8.0 中的 HTTP 狀態碼](https://support.microsoft.com/kb/943891)

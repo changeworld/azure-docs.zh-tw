@@ -17,9 +17,9 @@ ms.contentlocale: zh-TW
 ms.lasthandoff: 08/15/2020
 ms.locfileid: "88243763"
 ---
-# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>將文字分析容器部署至 Azure Kubernetes Service
+# <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>將文字分析容器部署到 Azure Kubernetes Service
 
-瞭解如何將 Azure 認知服務 [文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) 容器映射部署至 AZURE KUBERNETES SERVICE (AKS) 。 此程式會示範如何建立文字分析資源、如何建立相關聯的情感分析影像，以及如何從瀏覽器執行這兩個協調流程。 使用容器可以將您的注意力轉移到管理基礎結構之外，改為專注于應用程式開發。
+瞭解如何將 Azure 認知服務 [文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers) 容器映射部署至 AZURE KUBERNETES SERVICE (AKS) 。 此程式示範如何建立文字分析資源、如何建立相關聯的情感分析影像，以及如何在瀏覽器中執行這兩個的協調流程。 使用容器可讓您的注意力遠離管理基礎結構，而改為專注于應用程式開發。
 
 ## <a name="prerequisites"></a>先決條件
 
@@ -27,7 +27,7 @@ ms.locfileid: "88243763"
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services)。
 * 文字編輯器，例如 [Visual Studio Code](https://code.visualstudio.com/download)。
-* 已安裝 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 。
+* 安裝的 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 。
 * 已安裝 [KUBERNETES CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 。
 * 具有正確定價層的 Azure 資源。 並非所有的定價層都會使用這個容器︰
     * 只有 F0 或標準定價層的**Azure 文字分析**資源。

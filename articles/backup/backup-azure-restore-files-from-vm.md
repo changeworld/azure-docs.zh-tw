@@ -4,12 +4,12 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236296"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262665"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -30,9 +30,9 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 
     ![開啟復原服務保存庫備份項目](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. 在 [備份] 儀表板功能表中 **，選取 [** 檔案復原]。
+3. 在 [備份儀表板] 功能表中 **，選取 [** 檔案復原]。
 
-    ![[檔案復原] 按鈕](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![選取檔案復原](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
     [檔案復原] 功能表隨即開啟。
 
@@ -40,9 +40,9 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 
 4. 從 [選取復原點] 下拉式選單中，選取包含您所需檔案的復原點。 根據預設，已選取最近的復原點。
 
-5. 若要下載用來從復原點複製檔案的軟體，請選取 [下載適用于 Windows Azure Vm 的 **可執行** 檔 (]) 或下載 Linux Azure Vm 的 **腳本** (，會) 產生 python 腳本。
+5. 若要下載用來從復原點複製檔案的軟體，請選取 [下載 Windows Azure Vm 的 **可執行** 檔 (]) 或下載 Linux azure Vm 的 **腳本** (，) 產生 python 腳本。
 
-    ![產生的密碼](./media/backup-azure-restore-files-from-vm/download-executable.png)
+    ![下載可執行檔](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
     Azure 會將可執行檔或指令碼下載到本機電腦。
 
@@ -50,13 +50,13 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 
     若要以系統管理員的身分執行可執行檔或指令碼，建議先將下載的檔案儲存到電腦上。
 
-6. 可執行檔或指令碼受到密碼保護，因此需輸入密碼。 **在 [檔案**復原] 功能表中，選取 [複製] 按鈕，將密碼載入至記憶體。
+6. 可執行檔或指令碼受到密碼保護，因此需輸入密碼。 在 [檔案復原 **] 功能表中** ，選取 [複製] 按鈕，將密碼載入至記憶體。
 
     ![產生的密碼](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
 7. 請確定[您擁有適當的電腦](#selecting-the-right-machine-to-run-the-script)可以執行指令碼。 如果適當的電腦就是您下載指令碼所在的相同電腦，則您可以繼續進行下載一節。 從下載位置 (通常是 [下載] 資料夾)，在可執行檔或指令碼上按一下滑鼠右鍵，並以系統管理員認證執行。 出現提示時，請輸入密碼或從記憶體中貼上密碼，然後按 **Enter** 鍵。 輸入有效的密碼後，指令碼會連線至復原點。
 
-    ![[檔案復原] 功能表](./media/backup-azure-restore-files-from-vm/executable-output.png)
+    ![可執行檔輸出](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
 8. 針對 Linux 電腦，則會產生 Python 指令碼。 您需要下載指令碼，並將其複製到相關/相容的 Linux 伺服器。 您可能必須修改權限，才能以 ```chmod +x <python file name>``` 執行。 接著，使用 ```./<python file name>``` 執行 Python 檔案。
 
@@ -78,7 +78,7 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 
 ## <a name="closing-the-connection"></a>關閉連線
 
-在識別檔案並將它們複製到本機儲存體位置之後，移除 (或卸載) 其他磁碟機。 若要卸載磁片磁碟機，請 **在 [Azure 入口網站的 [檔案** 復原] 功能表上，選取 [ **卸載磁片**]。
+在識別檔案並將它們複製到本機儲存體位置之後，移除 (或卸載) 其他磁碟機。 若要卸載磁片磁碟機，請在 Azure 入口網站的 [檔案復原 **] 功能表上，選取 [** **卸載磁片**]。
 
 ![取消掛接磁碟](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
@@ -87,7 +87,7 @@ Azure 備份可從 Azure 虛擬機器 (VM) 備份 (又稱復原點) 還原 [Azur
 在 Linux 中，復原點的連線嚴重損毀之後，作業系統並不會自動移除對應的掛接路徑。 這些掛接路徑會以「孤立」磁碟區的形式存在。雖然您看得見，但是存取/寫入檔案時會擲回錯誤。 可以手動移除它們。 指令碼執行時，會從任何先前的復原點識別任何這類現有的磁碟區，並在同意下將它們清除。
 
 > [!NOTE]
-> 請確定在還原必要的檔案之後，連接已關閉。 這一點很重要，尤其是在執行腳本的電腦也設定為進行備份的情況下。 如果連接仍為開啟狀態，則後續的備份可能會失敗，並出現錯誤「UserErrorUnableToOpenMount」。 發生這種情況的原因是已掛接的磁片磁碟機/磁片區已被假設為可用，而且存取時可能會失敗，因為基礎存放裝置（亦即，iSCSI 目標伺服器可能無法使用）。 清除連接將會移除這些磁片磁碟機/磁片區，因此在備份期間將無法使用它們。
+> 在還原必要的檔案之後，請確定連接已關閉。 這一點很重要，尤其是在執行腳本的電腦也設定為備份的情況下。 如果連接仍處於開啟狀態，後續備份可能會失敗，並出現錯誤「UserErrorUnableToOpenMount」。 發生這種情況是因為載入的磁片磁碟機/磁片區假設可用，而且存取時可能會失敗，因為基礎儲存體（也就是，iSCSI 目標伺服器可能無法使用）。 清除連接將會移除這些磁片磁碟機/磁片區，因此在備份期間將無法使用它們。
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>選取適當的電腦以執行指令碼
 
@@ -135,21 +135,21 @@ Windows 儲存空間是一種可將儲存體虛擬化的 Windows 技術。 您�
 
 #### <a name="for-lvm-partitions"></a>若為 LVM 磁碟分割
 
-執行腳本之後，LVM 磁碟分割會掛接在實體磁片區中， (s) /disk (s) 在腳本輸出中指定。 處理常式是
+執行腳本之後，LVM 分割區會裝載于實體磁片區 (s) /disk (s) 在腳本輸出中指定。 流程是
 
-1. 從實體磁片區或磁片取得唯一的磁片區組名清單
-2. 然後列出那些磁片區群組中的邏輯磁片區
-3. 然後將邏輯磁片區掛接到所需的路徑。
+1. 從實體磁片區或磁片取得磁片區組名的唯一清單
+2. 然後列出這些磁片區群組中的邏輯磁片區
+3. 然後將邏輯磁片區掛接至所需的路徑。
 
 ##### <a name="listing-volume-group-names-from-physical-volumes"></a>列出實體磁片區的磁片區組名
 
-若要列出磁片區組名：
+列出磁片區組名：
 
 ```bash
 pvs -o +vguuid
 ```
 
-此命令會列出所有實體磁片區， (包括執行腳本) 、其對應的磁片區組名，以及磁片區群組的唯一使用者識別碼 (Uuid) 中的現有磁片區。 命令的範例輸出如下所示。
+此命令會列出所有實體磁片區 (包括執行腳本) 之前的磁片區、對應的磁片區組名，以及磁片區群組的唯一使用者識別碼 (Uuid) 。 命令的範例輸出如下所示。
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -165,11 +165,11 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
 ```
 
-第一個資料行 (PV) 顯示實體磁片區，後續的資料行則顯示相關的磁片區組名、格式、屬性、大小、可用空間，以及磁片區群組的唯一識別碼。 命令輸出會顯示所有實體磁片區。 請參閱腳本輸出，並找出與備份相關的磁片區。 在上述範例中，腳本輸出會顯示/dev/sdf 和/dev/sdd。 因此， *datavg_db* 磁片區群組屬於腳本，而 *Appvg_new* 磁片區群組屬於該機器。 最後的想法是確保唯一的磁片區組名應該有一個唯一的識別碼。
+第一個資料行 (PV) 顯示實體磁片區，後續的資料行則顯示相關的磁片區組名、格式、屬性、大小、可用空間，以及磁片區群組的唯一識別碼。 命令輸出會顯示所有實體磁片區。 請參閱腳本輸出，並找出與備份相關的磁片區。 在上述範例中，腳本輸出會顯示/dev/sdf 和/dev/sdd。 因此， *datavg_db* 磁片區群組屬於腳本，而 *Appvg_new* 磁片區群組則屬於該機器。 最後的概念是確保唯一的磁片區組名應該有一個唯一識別碼。
 
 ###### <a name="duplicate-volume-groups"></a>重複的磁片區群組
 
-在某些情況下，在執行腳本之後，磁片區組名可以有2個 Uuid。 這表示在執行腳本的電腦和備份的 VM 中，磁片區組名會相同。 然後，我們需要重新命名已備份的 Vm 磁片區群組。 請看下面的範例。
+在某些情況下，磁片區組名在執行腳本之後可以有2個 Uuid。 這表示執行腳本的電腦和備份的 VM 中的磁片區組名相同。 接著，我們必須重新命名備份的 Vm 磁片區群組。 請參閱下列範例。
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -187,26 +187,26 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
 ```
 
-腳本輸出會將/dev/sdg、/dev/sdh、/dev/sdm2 顯示為已附加。 因此，對應的 VG 名稱會 Appvg_new 和 rootvg。 但相同的名稱也會出現在電腦的 VG 清單中。 我們可以驗證一個 VG 名稱有兩個 Uuid。
+腳本輸出會顯示已附加的/dev/sdg、/dev/sdh、/dev/sdm2。 因此，對應的 VG 名稱是 Appvg_new 和 rootvg。 但相同的名稱也會出現在電腦的 VG 清單中。 我們可以確認一個 VG 名稱有兩個 Uuid。
 
-現在，我們需要為以腳本為基礎的磁片區重新命名 VG 的名稱，例如：/dev/sdg、/dev/sdh、/dev/sdm2。 若要重新命名磁片區群組，請使用下列命令
+現在，我們需要為以腳本為基礎的磁片區重新命名 VG 名稱，例如：/dev/sdg、/dev/sdh、/dev/sdm2。 若要重新命名磁片區群組，請使用下列命令
 
 ```bash
 vgimportclone -n rootvg_new /dev/sdm2
 vgimportclone -n APPVg_2 /dev/sdg /dev/sdh
 ```
 
-現在，我們有具有唯一識別碼的所有 VG 名稱。
+現在我們已有唯一識別碼的 VG 名稱。
 
 ###### <a name="active-volume-groups"></a>作用中磁片區群組
 
-請確定對應到腳本磁片區的磁片區群組為作用中。 下列命令可用來顯示作用中的磁片區群組。 檢查腳本的相關磁片區群組是否存在於此清單中。
+請確定對應到腳本磁片區的磁片區群組是作用中的。 下列命令可用來顯示作用中的磁片區群組。 檢查腳本的相關磁片區群組是否出現在這份清單中。
 
 ```bash
 vgdisplay -a
 ```  
 
-否則，請使用下列命令來啟動磁片區群組。
+否則，請使用下列命令來啟用磁片區群組。
 
 ```bash
 #!/bin/bash
@@ -215,7 +215,7 @@ vgchange –a y  <volume-group-name>
 
 ##### <a name="listing-logical-volumes-within-volume-groups"></a>列出磁片區群組內的邏輯磁片區
 
-一旦取得與腳本相關的唯一、作用中的 VGs 清單，就可以使用下列命令來列出這些磁片區群組中的邏輯磁片區。
+一旦取得與腳本相關的唯一、有效的 VGs 清單，就可以使用下列命令來列出這些磁片區群組中的邏輯磁片區。
 
 ```bash
 #!/bin/bash
@@ -234,7 +234,7 @@ mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 > [!WARNING]
-> 請勿使用「掛接-a」。 此命令會掛接 '/etc/fstab ' 中所述的所有裝置。 這可能表示可以裝載重複的裝置。 資料可以重新導向至腳本所建立的裝置，這不會保存資料，因此可能會導致資料遺失。
+> 請勿使用 ' mount-a '。 此命令會裝載 '/etc/fstab ' 中所述的所有裝置。 這可能表示可以裝載重複的裝置。 資料可以重新導向至腳本所建立的裝置，而不會保存資料，因此可能會導致資料遺失。
 
 #### <a name="for-raid-arrays"></a>若為 RAID 陣列
 
@@ -299,7 +299,7 @@ mount [RAID Disk Path] [/mountpath]
 
 ## <a name="access-requirements"></a>存取權需求
 
-如果您在具有限制存取的電腦上執行腳本，請確定有存取權：
+如果您在具有限制存取的電腦上執行腳本，請確定有下列存取權：
 
 - `download.microsoft.com`
 - 復原服務 URL (geo-name 是指復原服務保存庫所在的區域)
@@ -311,7 +311,7 @@ mount [RAID Disk Path] [/mountpath]
 
 > [!NOTE]
 >
-> - 下載的指令碼檔案名稱將會在 URL 中填入 **geo-name**。 例如：下載的腳本名稱以 \' VMname \' \_ \' geoname \' _ GUID 開頭 \' \' ，例如*ContosoVM_wcus_12345678*
+> - 下載的指令碼檔案名稱將會在 URL 中填入 **geo-name**。 例如：下載的腳本名稱開頭為 \' VMname \' \_ \' geoname \' _ \' GUID \' ，例如*ContosoVM_wcus_12345678*
 > - URL 會是 <https://pod01-rec2.wcus.backup.windowsazure.com>」
 >
 
@@ -321,9 +321,9 @@ mount [RAID Disk Path] [/mountpath]
 
 ## <a name="file-recovery-from-virtual-machine-backups-having-large-disks"></a>從具有大型磁碟的虛擬機器備份進行檔案復原
 
-本節說明如何從具有超過16個磁片的 Azure 虛擬機器備份執行檔案復原，或每個磁片大小大於 4 TB。
+本節說明如何從有超過16個磁片的 Azure 虛擬機器備份執行檔復原，或每個磁片大小大於 4 TB。
 
-由於檔案復原程式會從備份附加所有磁片，因此當大量磁片 ( # B0 16) 或大型磁片 ( # A1 4) TB 時，建議使用下列動作點：
+由於檔案復原程式會將備份中的所有磁片附加到磁片上，因此當大量磁片 ( # B0 16) 或大型磁片 ( # A1 4) TB 時，建議使用下列動作點：
 
 - 保留一部還原伺服器 (Azure VM D2v3 VM) 以進行檔案復原。 您僅能針對檔案復原使用該伺服器，然後在不需要時將其關機。 不建議在原始電腦上還原，因為這對 VM 本身會有顯著的影響。
 - 接著，執行指令碼一次，以檢查檔案復原作業是否成功。
@@ -346,7 +346,7 @@ mount [RAID Disk Path] [/mountpath]
     - node.conn[0].timeo.noop_out_timeout = 5 變更為 node.conn[0].timeo.noop_out_timeout = 30
 - 進行上述變更之後，再次執行指令碼。 進行這些變更之後，檔案復原很可能會成功。
 - 每次使用者下載指令碼時，Azure 備份會起始準備復原點以進行下載的程序。 若使用大型磁碟，此程序將需要相當長的時間。 如果有連續要求暴增，則目標準備將進入下載螺旋。 因此，建議您從入口網站/PowerShell/CLI 下載指令碼、等待 20-30 分鐘 (啟發學習法)，然後執行該指令碼。 此時，目標應該已準備好從指令碼連線。
-- 在檔案復原之後，請確定您回到入口網站，並選取您無法掛接磁片區之復原點的 [ **卸載磁片** ]。 基本上，此步驟將會清除任何現有的程序/工作階段，並增加復原的機會。
+- 在檔案復原之後，請務必返回入口網站，並針對無法裝載磁片區的復原點選取 [ **卸載磁片** ]。 基本上，此步驟將會清除任何現有的程序/工作階段，並增加復原的機會。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -360,7 +360,7 @@ mount [RAID Disk Path] [/mountpath]
 | 在執行 exe 的電腦上：按一下 [卸載] 按鈕之後不會卸載新的磁碟區 | 電腦上的 iSCSI 啟動器沒有回應/重新整理與目標的連線並維護快取。 |  按一下 [卸載] 後，請稍候幾分鐘。 如果新磁碟區並未卸載，請瀏覽所有磁碟區。 瀏覽所有磁碟區會強制啟動器重新整理連線，且會卸載磁碟區，並出現磁碟無法使用的錯誤訊息。|
 | Exe 輸出：指令碼成功執行，但指令碼輸出上不會顯示「已連結新磁碟區」 |    這是暫時性的錯誤    | 磁碟區將已經連結。 開啟檔案總管以瀏覽。 如果您每次都使用同一部電腦執行指令碼，請考慮重新啟動電腦，清單應該會顯示在後續的 exe 執行中。 |
 | Linux 特定︰無法檢視所需的磁碟區 | 執行指令碼所在電腦的作業系統可能無法辨識受保護 VM 的底層檔案系統 | 檢查復原點是絕對一致還是檔案一致。 如果是檔案一致，請在其作業系統可辨識受保護 VM 檔案系統的其他電腦上執行指令碼。 |
-| Windows 特定︰無法檢視所需的磁碟區 | 可能已連結磁碟，但未設定磁碟區 | 從 [磁碟管理] 畫面上，找出與復原點相關的其他磁碟。 如果其中有任何磁片處於離線狀態，請嘗試在磁片上按一下滑鼠右鍵，然後選取 [ **線上**]，以將其上線。|
+| Windows 特定︰無法檢視所需的磁碟區 | 可能已連結磁碟，但未設定磁碟區 | 從 [磁碟管理] 畫面上，找出與復原點相關的其他磁碟。 如果有任何磁片處於離線狀態，請在磁片上按一下滑鼠右鍵，然後選取 [ **連線**]，以嘗試將它們上線。|
 
 ## <a name="security"></a>安全性
 
@@ -386,7 +386,7 @@ mount [RAID Disk Path] [/mountpath]
 
 只有系統管理員可以執行指令碼，而且應該在提高權限的模式下執行。 指令碼只會執行一組預先產生的步驟，而且不接受來自任何外部來源的輸入。
 
-若要執行指令碼，只需要在 Azure 入口網站或 PowerShell/CLI 中產生指令碼時，才向獲授權的使用者顯示的密碼。 這是為了確保下載腳本的授權使用者也會負責執行腳本。
+若要執行指令碼，只需要在 Azure 入口網站或 PowerShell/CLI 中產生指令碼時，才向獲授權的使用者顯示的密碼。 這是為了確保下載腳本的授權使用者也負責執行腳本。
 
 #### <a name="browse-files-and-folders"></a>瀏覽檔案和資料夾
 
@@ -396,7 +396,7 @@ mount [RAID Disk Path] [/mountpath]
 
 復原服務與電腦之間的資料流程會藉由透過 TCP 建立安全的 TLS 通道而受到保護 (執行指令碼所在的電腦[應該支援 TLS 1.2](#system-requirements))。
 
-所有位於父系/備份 VM 中的檔案存取控制清單 (ACL) 也會保留在掛接的檔案系統中。
+任何檔案存取控制清單 (ACL) 存在於父/備份 VM 中，也會保留在裝載的檔案系統中。
 
 此指令碼會對復原點提供唯讀存取權，且只在 12 小時內有效。 如果您想要更早移除存取權，請登入 Azure 入口網站/PowerShell/CLI，並針對該特定復原點執行**卸載磁碟**。 此指令碼將會立即失效。
 
