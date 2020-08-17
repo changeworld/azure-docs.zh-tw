@@ -4,12 +4,12 @@ description: 本文討論有關 Azure Site Recovery 的一般熱門問題。
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083730"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263370"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>關於 Azure Site Recovery 的一般問題
 
@@ -29,9 +29,9 @@ Site Recovery 可協調並自動執行區域、內部部署虛擬機器和實體
 
 否，這是不支援的案例。
 
-### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Site Recovery 如何確保資料完整性？
+### <a name="what-does-site-recovery-do-to-ensure-data-integrity"></a>Site Recovery 如何確保資料的完整性？
 
-Site Recovery 採取各種不同的措施，以確保資料的完整性。 使用 HTTPS 通訊協定，在所有服務之間建立安全連線。 這可確保任何惡意程式碼或外部實體無法篡改資料。 所採用的另一個量值是使用總和檢查碼。 來源與目標之間的資料傳輸是透過計算兩者之間的資料總和檢查碼來執行。 這可確保傳輸的資料一致。
+Site Recovery 會採用各種量值來確保資料的完整性。 使用 HTTPS 通訊協定在所有服務之間建立安全連線。 這可確保任何惡意程式碼或外部實體都無法篡改資料。 另一個採用的量值是使用總和檢查碼。 來源與目標之間的資料傳輸是藉由計算其間資料的總和檢查碼來執行。 這可確保傳輸的資料一致。
 
 ## <a name="service-providers"></a>服務提供者
 
@@ -39,7 +39,7 @@ Site Recovery 採取各種不同的措施，以確保資料的完整性。 使�
 是，Site Recovery 同時支援專用與共用的基礎結構模型。
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>對服務提供者而言，租用戶的身分識別是否會與 Site Recovery 服務共用？
-不可以。 租用戶身分識別會保持匿名。 您的租用戶不需要存取 Site Recovery 入口網站。 只有服務提供者系統管理員會與入口網站互動。
+否。 租用戶身分識別會保持匿名。 您的租用戶不需要存取 Site Recovery 入口網站。 只有服務提供者系統管理員會與入口網站互動。
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>租用戶應用程式資料是否會傳送到 Azure？
 在服務提供者擁有的站台之間進行複寫時，永遠不會將應用程式資料傳送到 Azure。 資料會在傳輸中加密，並且會在服務提供者站台之間直接進行複寫。
@@ -116,13 +116,13 @@ Site Recovery 已通過 ISO 27001:2013、27018、HIPAA、DPA 認證，並且正�
 ### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>如何在 HyperV 到 Azure Site Recovery 案例上強制執行 TLS 1.2？
 Azure Site Recovery 微服務之間的所有通訊都會在 TLS 1.2 通訊協定上發生。 Site Recovery 會使用系統 (OS) 中設定的安全性提供者，並使用最新可用的 TLS 通訊協定。 其中一個必須在登錄中明確啟用 TLS 1.2，然後 Site Recovery 就會開始使用 TLS 1.2 進行與服務的通訊。 
 
-### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>如何在我的儲存體帳戶上強制執行限制存取，以 Site Recovery 服務存取來讀取/寫入複寫資料？
-您可以前往 [身分*識別*] 設定來切換復原服務保存庫的受控識別。 當保存庫向 Azure Active Directory 註冊後，您就可以移至您的儲存體帳戶，並將下列角色指派授與保存庫：
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>如何在我的儲存體帳戶上強制執行限制存取，Site Recovery 服務存取這些帳戶以讀取/寫入複寫資料？
+您可以前往身分 *識別* 設定，切換復原服務保存庫的受控識別。 當保存庫向 Azure Active Directory 註冊之後，您就可以移至您的儲存體帳戶，並提供下列角色指派給保存庫：
 
-- 以 Resource Manager 為基礎的儲存體帳戶（標準類型）：
+- 以 Resource Manager 為基礎的儲存體帳戶 (標準類型) ：
   - [參與者](../role-based-access-control/built-in-roles.md#contributor)
   - [儲存體 Blob 資料參與者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
-- 以 Resource Manager 為基礎的儲存體帳戶（Premium 類型）：
+- 以 Resource Manager 為基礎的儲存體帳戶 (Premium 類型) ：
   - [參與者](../role-based-access-control/built-in-roles.md#contributor)
   - [儲存體 Blob 資料擁有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
 - 傳統儲存體帳戶：
@@ -146,7 +146,7 @@ Azure Site Recovery 微服務之間的所有通訊都會在 TLS 1.2 通訊協定
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>是否支援 Azure VM 的災害復原？
 
-是，Site Recovery 支援 Azure 區域之間 Azure VM 的災害復原。 檢閱有關 Azure VM 災害復原的[常見問題](azure-to-azure-common-questions.md)。 如果您想要在相同大陸上的兩個 Azure 區域之間進行複寫，請使用我們的 Azure 至 Azure DR 供應專案。 不需要安裝設定伺服器/進程伺服器和 ExpressRoute 連線。
+是，Site Recovery 支援 Azure 區域之間 Azure VM 的災害復原。 檢閱有關 Azure VM 災害復原的[常見問題](azure-to-azure-common-questions.md)。 如果您想要在相同大陸上的兩個 Azure 區域之間進行複寫，請使用 azure 至 Azure DR 供應專案。 不需要設定伺服器/進程伺服器和 ExpressRoute 連線。
 
 ### <a name="is-disaster-recovery-supported-for-vmware-vms"></a>是否支援 VMware VM 的災害復原？
 
@@ -213,18 +213,18 @@ Azure Site Recovery 會透過公用端點，將資料複製到 Azure 儲存體�
 * [適用於複寫 VMware VM 和實體伺服器的容量規劃](site-recovery-plan-capacity-vmware.md)
 * [適用於將 Hyper-V VM 複寫至 Azure 的容量規劃](./hyper-v-deployment-planner-overview.md)
 
-### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>我可以在 Linux 伺服器中使用應用程式一致性來啟用複寫嗎？ 
-是。 適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式的自訂腳本，以進行應用程式一致性。 具有前置和後置選項的自訂腳本，會在應用程式一致性期間由 Azure Site Recovery 行動代理程式使用。 以下是啟用它的步驟。
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>是否可以在 Linux 伺服器中啟用具有應用程式一致性的複寫？ 
+是。 適用于 Linux 作業系統的 Azure Site Recovery 支援應用程式自訂腳本以進行應用程式一致性。 使用前置和後置選項的自訂腳本，將會由 Azure Site Recovery 行動代理程式在應用程式一致性期間使用。 以下是啟用它的步驟。
 
-1. 以 root 身分登入電腦。
-2. 將目錄變更為 Azure Site Recovery 行動代理程式安裝位置。 預設值為 "/usr/local/ASR"<br>
+1. 以 root 身份登入電腦。
+2. 變更目錄以 Azure Site Recovery 行動代理程式安裝位置。 預設值為 "/usr/local/ASR"<br>
     `# cd /usr/local/ASR`
-3. 在 [安裝位置] 底下，將目錄變更為 "VX/scripts"<br>
+3. 將目錄變更為安裝位置下的 "VX/scripts"<br>
     `# cd VX/scripts`
-4. 建立名為 "customscript.sh" 的 bash shell 腳本，其具有 root 使用者的執行許可權。<br>
-    a. 腳本應該支援 "--pre" 和 "--post" （請注意雙虛線）命令列選項<br>
-    b. 以預先選項呼叫腳本時，它應該會凍結應用程式的輸入/輸出，並在使用 post 選項呼叫時，應該解除凍結應用程式的輸入/輸出。<br>
-    c. 範例範本-<br>
+4. 使用 root 使用者的 execute 許可權，建立名為 "customscript.sh" 的 bash shell 腳本。<br>
+    a. 腳本應該支援 "--pre" 和 "--post" (請注意雙虛線) 命令列選項<br>
+    b. 使用預先選項來呼叫腳本時，它應該凍結應用程式輸入/輸出，並在使用後置選項呼叫它時，將應用程式的輸入/輸出解除凍結。<br>
+    c. 範本範例-<br>
 
     `# cat customscript.sh`<br>
 
@@ -243,10 +243,79 @@ Azure Site Recovery 會透過公用端點，將資料複製到 Azure 儲存體�
     fi
 ```
 
-5. 在前置和後置步驟中，針對需要應用程式一致性的應用程式新增凍結和取消凍結輸入/輸出命令。 您可以選擇新增另一個腳本來指定這些檔案，並使用前置和後置選項從 "customscript.sh" 加以叫用。
+5. 針對需要應用程式一致性的應用程式，在前置和後續步驟中新增凍結和解除凍結輸入/輸出命令。 您可以選擇新增另一個腳本來指定這些腳本，並使用前置和後置選項從 "customscript.sh" 叫用它。
 
 >[!Note]
 >Site Recovery 代理程式版本應該是9.24 或更新版本，才能支援自訂腳本。
+
+## <a name="replication-policy"></a>複寫原則
+
+### <a name="what-is-a-replication-policy"></a>什麼是複寫原則？
+
+複寫原則會定義復原點保留歷程記錄的設定。 此原則也會應用程式一致快照集的頻率。 Azure Site Recovery 預設會建立具有下列預設設定的新複寫原則：
+
+- 復原點的保留歷程記錄為 24 小時。
+- 應用程式一致快照的頻率為4小時。
+
+[深入了解複寫設定](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings)。
+
+### <a name="what-is-a-crash-consistent-recovery-point"></a>什麼是當機時保持一致復原點？
+
+當機時保持一致復原點具有磁碟上的資料，就像您在擷取快照集期間從伺服器拔掉電源線一樣。 當機時保持一致復原點不包含擷取快照集時記憶體內的任何資料。
+
+現今，大多數應用程式都可以妥善地從當機時保持一致快照集復原。 對無資料庫作業系統及檔案伺服器、DHCP 伺服器和列印伺服器之類的應用程式而言，通常使用當機時保持一致復原點就已足夠。
+
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>當機時保持一致復原點產生的頻率為何？
+
+Site Recovery 會每 5 分鐘建立一次當機時保持一致復原點。
+
+### <a name="what-is-an-application-consistent-recovery-point"></a>什麼是應用程式一致復原點？
+
+應用程式一致復原點是從應用程式一致快照集建立的。 應用程式一致快照集所擷取的資料與當機時保持一致復原點相同，同時也會擷取記憶體內的所有資料，以及所有進行中的交易。
+
+由於有這些額外的內容，因此應用程式一致快照集包含最多內容，且需要最長的時間。 建議您針對資料庫作業系統和 SQL Server 之類的應用程式，使用應用程式一致復原點。
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>應用程式一致復原點對應用程式效能有何影響？
+
+應用程式一致復原點會擷取記憶體內的所有資料和進行中的所有資料。 因為復原點會擷取該資料，所以需要類似 Windows 上磁碟區陰影複製服務的架構，來停止應用程式。 如果擷取程序頻繁執行，則當工作負載忙碌時，可能會影響效能。 我們不建議針對非資料庫工作負載的應用程式一致復原點使用低頻率。 即使是針對資料庫工作負載，1 小時就夠了。
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>應用程式一致復原點產生的最小頻率為何？
+
+Site Recovery 可以建立最小頻率為 1 小時的應用程式一致復原點。
+
+### <a name="how-are-recovery-points-generated-and-saved"></a>復原點要如何產生和儲存？
+
+若要了解 Site Recovery 如何產生復原點，讓我們看看複寫原則的範例。 此複寫原則具有保留時間範圍為 24 小時，且應用程式一致頻率快照集為 1 小時的復原點。
+
+Site Recovery 會每 5 分鐘建立一次當機時保持一致復原點。 您無法變更此頻率。 在過去一小時內，您可以從 12 個當機時保持一致點和 1 個應用程式一致點中進行選擇。 隨著時間過去，Site Recovery 會將過去 1 小時以外的所有復原點剪除，只儲存每小時 1 個復原點。
+
+以下螢幕擷取畫面說明此範例。 在螢幕擷取畫面中：
+
+- 在過去 1 小時內，每 5 分鐘就有一個復原點。
+- 在過去 1 小時以外的時間，Site Recovery 則只會保留 1 個復原點。
+
+   ![產生的復原點清單](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+
+### <a name="how-far-back-can-i-recover"></a>最多可復原至多久之前？
+
+您可以使用的最舊復原點為 72 小時。
+
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>我有 24 小時的複寫原則。 如果某個問題導致 Site Recovery 超過 24 小時無法產生復原點，會發生什麼情況？ 我先前的復原點是否會遺失？
+
+不會，Site Recovery 會保留您先前所有的復原點。 根據復原點的保留時間範圍，Site Recovery 只會在產生新的復原點時，才會取代最舊的復原點。 由於發生問題，Site Recovery 無法產生任何新的復原點。 直到新的復原點出現之前，所有舊的復原點在您達到保留時間範圍之後仍會保留。
+
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>在 VM 上啟用複寫之後，我要如何變更複寫原則？
+
+移至 [Site Recovery 保存庫] > [Site Recovery 基礎結構] > [複寫原則]。 選取您想要編輯的原則，然後儲存變更。 此外，任何變更都會套用到現有的所有複寫。
+
+### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>所有復原點都是 VM 的完整複本？還是會有差異？
+
+所產生的第一個復原點會具有完整複本。 所有後續復原點則具有差異變更。
+
+### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>增長復原點的保留週期是否會增加儲存體成本？
+
+是，如果您將保留週期從 24 小時增加到 72 小時，Site Recovery 將把復原點再多儲存 48 小時。 增加的時間將產生儲存體費用。 例如，單一復原點可能會有 10 GB 的差異變更，每個月的每 GB 成本為 $0.16。 額外費用將是每月 $1.60 × 48。
+
 
 ## <a name="failover"></a>容錯移轉
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>如果容錯移轉到 Azure，在容錯移轉之後，我要如何存取存取 Azure VM？

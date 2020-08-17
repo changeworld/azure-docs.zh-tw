@@ -3,12 +3,12 @@ title: 使用 Azure 備份伺服器來備份 VMware VM
 description: 在本文中，您將瞭解如何使用 Azure 備份伺服器來備份在 VMware vCenter/ESXi 伺服器上執行的 VMware Vm。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: c9868012698fcdf5a2352c289de85261b6899dc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 892d308df15ef745f34419ec315e2c5000b0852c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497908"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263532"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 備份伺服器來備份 VMware VM
 
@@ -22,9 +22,9 @@ ms.locfileid: "86497908"
 - 將 vCenter 或 ESXi 伺服器新增至 Azure 備份伺服器。
 - 設定包含您要備份之 VMware VM 的保護群組、指定備份設定和排程備份。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
-- 請確認您正在執行支援備份的 vCenter/ESXi 版本。 請參閱[這裡](./backup-mabs-protection-matrix.md)的支援矩陣。
+- 確認您正在執行支援備份的 vCenter/ESXi 版本。 請參閱 [這裡](./backup-mabs-protection-matrix.md)的支援矩陣。
 - 確定您已設定 Azure 備份伺服器。 如果還沒，請在開始之前[進行設定](backup-azure-microsoft-azure-backup.md)。 您應該執行具有最新更新的 Azure 備份伺服器。
 - 確認下列網路連接埠已開放：
   - MABS 與 vCenter 之間的 TCP 443
@@ -36,7 +36,7 @@ ms.locfileid: "86497908"
 
 ### <a name="before-you-begin"></a>開始之前
 
-- 如果您不想使用 HTTPS，則可以[停用所有 VMware 伺服器的 HTTPs 憑證驗證](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
+- 如果您不想要使用 HTTPS，則可以 [停用所有 VMware 伺服器的 HTTPs 憑證驗證](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
 - 通常您會使用 vSphere Web 用戶端，從 Azure 備份伺服器電腦上的瀏覽器連線到 vCenter/ESXi 伺服器。 當您第一次執行此動作時，連接並不安全，而且會顯示下列各項。
 - 請務必了解 Azure 備份伺服器處理備份的方式。
   - 作為第一個步驟，Azure 備份伺服器會將資料備份到本機磁碟儲存體上。 Azure 備份伺服器使用儲存體集區，這是一組磁碟，而 Azure 備份伺服器可在磁碟上的磁碟區儲存受保護資料的磁碟復原點。 儲存體集區可直接連結儲存體 (DAS)、光纖通道 SAN，或 iSCSI 存放裝置或 SAN。 請務必確定您有足夠的儲存空間來進行 VMware VM 資料的本機備份。
@@ -51,7 +51,7 @@ ms.locfileid: "86497908"
 
     ![vSphere Web 用戶端](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
 
-2. 在 vSphere Web 用戶端登入頁面上，按一下 [下載信任的根 CA 憑證]****。
+2. 在 vSphere Web 用戶端登入頁面上，選取 [ **下載受信任的根 CA 憑證**]。
 
     ![下載信任的根 CA 憑證](./media/backup-azure-backup-server-vmware/vmware-download-ca-cert-prompt.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "86497908"
 
 4. 使用 .zip 副檔名，將檔案儲存在 Azure 備份伺服器電腦上。
 
-5. 以滑鼠右鍵按一下**download.zip**[  >  **全部解壓縮**]。 .zip 檔案會將其內容解壓縮到 **certs** 資料夾，其中包含：
+5. 以滑鼠右鍵按一下 [ **download.zip**  >  **全部解壓縮**]。 .zip 檔案會將其內容解壓縮到 **certs** 資料夾，其中包含：
    - 根憑證檔案，其副檔名的開頭是編號序列，例如 .0 和 .1。
    - CRL 檔案，其副檔名的開頭是序列，例如 .r0 和 .r1。 與憑證相關聯的 CRL 檔案。
 
@@ -75,19 +75,19 @@ ms.locfileid: "86497908"
 
 8. 以滑鼠右鍵按一下根憑證，然後從快顯功能表中選取 [安裝憑證]****。
 
-9. 在 [憑證匯入精靈]**** 中，選取 [本機電腦]**** 作為憑證目的地，然後按 [下一步]**** 繼續執行。 如果系統詢問您是否要允許對電腦進行變更，請確認變更。
+9. 在 [ **憑證匯入嚮導]** 中，選取 [ **本機電腦** ] 作為憑證的目的地，然後選取 **[下一步]**。 如果系統詢問您是否要允許對電腦進行變更，請確認變更。
 
     ![精靈歡迎畫面](./media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
-10. 在 [憑證存放區]**** 頁面上，選取 [將所有憑證放入以下的存放區]****，然後按一下 [瀏覽]**** 來選擇憑證存放區。
+10. 在 [ **憑證存放區** ] 頁面上，選取 [ **將所有憑證放入以下的存放區**]，然後選取 **[流覽]** 以選擇憑證存放區。
 
     ![憑證存放區](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
-11. 在 [選取憑證存放區]**** 中，選取 [信任的根憑證授權]**** 作為憑證的目的地資料夾，然後按一下 [確定]****。
+11. 在 [ **選取證書存儲**] 中，選取 [ **信任的根憑證授權** 單位] 作為憑證的目的地資料夾，然後選取 **[確定]**。
 
     ![憑證目的資料夾](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-12. 在 [完成憑證匯入精靈]**** 中確認資料夾，然後按一下 [完成]****。
+12. 在 **[完成憑證匯入嚮導]** 中，確認資料夾，然後選取 **[完成]**。
 
     ![確認憑證位於適當的資料夾](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "86497908"
 
 ### <a name="disable-https-certificate-validation"></a>停用 HTTPS 憑證驗證
 
-如果您的組織中有安全的界限，而且不想在 VMware 伺服器與 Azure 備份伺服器機器之間使用 HTTPS 通訊協定，請停用 HTTPS，如下所示：
+如果您的組織內有安全的界限，而且不想要在 VMware 伺服器與 Azure 備份伺服器電腦之間使用 HTTPS 通訊協定，請停用 HTTPS，如下所示：
 
 1. 複製下列文字並貼至 .txt 檔案。
 
@@ -114,18 +114,18 @@ ms.locfileid: "86497908"
 Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使用者帳戶。 建立具有特定權限的 VMware 角色，然後將使用者帳戶與該角色建立關聯。
 
 1. 登入 vCenter Server (或 ESXi 主機，如果您並非使用 vCenter Server)。
-2. 在 [導覽器]**** 面板中，按一下 [系統管理]****。
+2. 在 [導覽 **器** ] 面板中，選取 [ **管理**]。
 
     ![系統管理](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. 在 [**管理**  >  **角色**] 中，按一下 [新增角色] 圖示（+ 符號）。
+3. 在 [**管理**  >  **角色**] 中，選取 [新增角色] 圖示 (+ 符號) 。
 
     ![新增角色](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
 4. 在 [**建立角色**  >  **角色名稱**] 中，輸入*BackupAdminRole*。 角色名稱可以是您喜歡的名稱，但它應該是可辨識該角色的用途。
 
-5. 選取如下表摘要說明的權限，然後按一下 [確定]****。  新的角色會出現在 [角色]**** 面板上的清單中。
-   - 按一下父標籤旁的圖示，以展開父權限並檢視子權限。
+5. 選取下表中摘要說明的許可權，然後選取 **[確定]**。  新的角色會出現在 [角色]**** 面板上的清單中。
+   - 選取父標籤旁的圖示，以展開父許可權並查看子許可權。
    - 若要選取 VirtualMachine 權限，您必須深入父子式階層中的好幾層。
    - 您不需要選取父代權限內的所有子權限。
 
@@ -205,13 +205,13 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 ## <a name="create-a-vmware-account"></a>建立 VMware 帳戶
 
-1. 在 vCenter Server 的 [導覽]**** 面板中按一下 [使用者和群組]****。 如果您不是使用 vCenter Server，請在適當的 ESXi 主機上建立帳戶。
+1. 在 vCenter Server 導覽 **器** ] 面板中，選取 [ **使用者和群組**]。 如果您不是使用 vCenter Server，請在適當的 ESXi 主機上建立帳戶。
 
     ![[使用者和群組] 選項](./media/backup-azure-backup-server-vmware/vmware-userandgroup-panel.png)
 
-    [ **VCenter 使用者和群組**] 面板隨即出現。
+    [ **VCenter 使用者和群組** ] 面板隨即出現。
 
-2. 在 [vCenter 使用者和群組]**** 面板中，選取 [使用者]**** 索引標籤，然後按一下 [新增使用者] 圖示 (+ 符號)。
+2. 在 [ **VCenter 使用者和群組** ] 面板中，選取 [ **使用者** ] 索引標籤，然後選取 [新增使用者] 圖示 (+ 符號) 。
 
     ![[vCenter 使用者和群組] 面板](./media/backup-azure-backup-server-vmware/usersandgroups.png)
 
@@ -219,15 +219,15 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![[新增使用者] 對話方塊](./media/backup-azure-backup-server-vmware/vmware-new-user-account.png)
 
-4. 若要讓使用者帳戶與角色產生關聯，請在 [導覽]**** 面板中按一下 [通用權限]****。 在 [通用權限]**** 面板中，選取 [管理]**** 索引標籤，然後按一下 [新增] 圖示 (+ 符號)。
+4. 若要將使用者帳戶與角色產生關聯，請在 [導覽 **器** ] 面板中選取 [ **全域許可權**]。 在 [ **通用許可權** ] 面板中，選取 [ **管理** ] 索引標籤，然後選取 [新增] 圖示 (+ 符號) 。
 
     ![[通用權限] 面板](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
 
-5. 在 [通用權限根目錄 - 新增權限]**** 中，按一下 [新增]**** 來選擇使用者或群組。
+5. 在 [ **通用許可權根目錄-新增許可權**] 中，選取 [ **新增** ] 以選擇使用者或群組。
 
     ![選擇使用者或群組](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. 在 [選取使用者/群組]**** 中，選擇 [BackupAdmin]**** > [新增]****。 在 [使用者]**** 中，使用者帳戶會使用「網域\使用者名稱」** 格式。 如果您想要使用不同的網域，請從 [網域]**** 清單中選擇。 按一下 [確定]**** 將選取的使用者新增至 [新增權限]**** 對話方塊。
+6. 在 [選取使用者/群組]**** 中，選擇 [BackupAdmin]**** > [新增]****。 在 [使用者]**** 中，使用者帳戶會使用「網域\使用者名稱」** 格式。 如果您想要使用不同的網域，請從 [網域]**** 清單中選擇。 選取 **[確定]** ，將選取的使用者新增至 [ **新增許可權** ] 對話方塊。
 
     ![新增 BackupAdmin 使用者](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
@@ -243,31 +243,31 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![Azure 備份伺服器圖示](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. 在 Azure 備份伺服器主控台中，按一下 [**管理**] [  >   **生產伺服器**] [  >  **管理 VMware**]。
+2. 在 Azure 備份伺服器主控台中，選取 [**管理**  >   **生產伺服器**  >  **管理 VMware**]。
 
     ![Azure 備份伺服器主控台](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
-3. 在 [管理認證]**** 對話方塊中，按一下 [新增]****。
+3. 在 [ **管理認證** ] 對話方塊中，選取 [ **新增**]。
 
-    ![Azure 備份伺服器的 [管理認證] 對話方塊](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
+    ![[管理認證] 對話方塊](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
-4. 在 [新增**認證**] 中，輸入新認證的名稱和描述，並指定您在 VMware 伺服器上定義的使用者名稱和密碼。 我們會使用「Contoso Vcenter 認證」** 這個名稱來識別此程序中的認證。 如果 VMware 伺服器和 Azure 備份伺服器不在相同網域中，請在使用者名稱中指定網域。
+4. 在 [新增 **認證**] 中，輸入新認證的名稱和描述，並指定您在 VMware 伺服器上定義的使用者名稱和密碼。 我們會使用「Contoso Vcenter 認證」** 這個名稱來識別此程序中的認證。 如果 VMware 伺服器和 Azure 備份伺服器不在相同網域中，請在使用者名稱中指定網域。
 
     ![Azure 備份伺服器的 [新增認證] 對話方塊](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
-5. 按一下 [新增]**** 來新增新認證。
+5. 選取 **[新增]** 以新增認證。
 
-    ![Azure 備份伺服器的 [管理認證] 對話方塊](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
+    ![新增認證](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 ## <a name="add-the-vcenter-server"></a>新增 vCenter Server
 
 將 vCenter Server 新增至 Azure 備份伺服器。
 
-1. 在 Azure 備份伺服器主控台中，按一下 [**管理**] [  >  **實際執行伺服器**] [  >  **新增**]。
+1. 在 Azure 備份伺服器主控台中，選取 [**管理**  >  **生產伺服器**  >  **新增**]。
 
     ![開啟「生產伺服器新增精靈」](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. 在 [**生產伺服器]**  >  中，選取 [**生產伺服器類型**] 頁面，選取 [ **VMware 伺服器**]，然後按 **[下一步]**。
+2. 在 [**生產伺服器新增嚮導]** 中  >  **選取 [生產伺服器類型**] 頁面，選取 [ **VMware 伺服器**]，然後選取 **[下一步]**
 
     ![生產伺服器新增精靈](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
@@ -281,11 +281,11 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![指定認證](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. 按一下 [新增]**** 以將 VMware 伺服器新增到伺服器清單。 然後按一下 [下一步]。
+6. 選取 [ **新增** ]，將 VMware 伺服器新增至 [伺服器] 清單。 然後選取 [下一步]  。
 
     ![新增 VMWare 伺服器和認證](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
-7. 在 [摘要]**** 頁面中，按一下 [新增]**** 將 VMware 伺服器新增至 Azure 備份伺服器。 新伺服器會立即新增，不需要 VMware 伺服器上的代理程式。
+7. 在 [ **摘要** ] 頁面中，選取 [ **新增** ]，將 VMware 伺服器新增至 Azure 備份伺服器。 新伺服器會立即新增，不需要 VMware 伺服器上的代理程式。
 
     ![將 VMware 伺服器新增至 Azure 備份伺服器](./media/backup-azure-backup-server-vmware/tasks-screen.png)
 
@@ -299,77 +299,77 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 新增 VMware VM 以進行備份。 保護群組會收集多個 VM，並將相同的資料保留和備份設定套用至群組中的所有 VM。
 
-1. 在 Azure 備份伺服器主控台中，按一下 [保護]**** > [新增]****。
+1. 在 Azure 備份伺服器主控台中，選取 [ **保護**]，> [ **新增**]。
 
     ![開啟「建立新保護群組」精靈](./media/backup-azure-backup-server-vmware/open-protection-wizard.png)
 
-1. 在 [建立新保護群組]**** 精靈的歡迎頁面中，按一下 [下一步]****。
+1. 在 [ **建立新保護組** 嚮導] 歡迎頁面中，選取 **[下一步]**。
 
     ![[建立新保護群組] 精靈對話方塊](./media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-1. 在 [選取保護群組類型]**** 頁面上，選取 [伺服器]****，然後按 [下一步]****。 [選取群組成員]**** 頁面隨即出現。
+1. 在 [ **選擇保護群組類型** ] 頁面上，選取 [ **伺服器** ]，然後選取 **[下一步]**。 [選取群組成員]**** 頁面隨即出現。
 
-1. 在 [**選取群組成員**] 中，選取您想要備份的 vm （或 vm 資料夾）。 然後按一下 [下一步]。
+1. 在 [ **選擇群組成員**] 中，選取您要備份的 vm (或 vm 資料夾) 。 然後選取 [下一步]  。
 
     - 當您選取資料夾時，也會選取該資料夾內的 VM 或資料夾以進行備份。 您可以將不想備份的資料夾或 VM 取消選取。
 1. 如果 VM 或資料夾已經過備份，您就無法加以選取。 這可確保不會為 VM 建立重複的復原點。
 
     ![選擇群組成員](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. 在 [選取資料保護方法]**** 頁面上，輸入保護群組的名稱和保護設定。 若要備份至 Azure，請將短期保護設定為 [磁碟]****，並啟用線上保護。 然後按一下 [下一步]。
+1. 在 [選取資料保護方法]**** 頁面上，輸入保護群組的名稱和保護設定。 若要備份至 Azure，請將短期保護設定為 [磁碟]****，並啟用線上保護。 然後選取 [下一步]  。
 
     ![選擇資料保護方式](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. 在 [指定短期目標]**** 中，指定備份至磁碟之資料要保留的時間長度。
    - 在 [保留範圍]**** 中，指定磁碟復原點應保留的天數。
    - 在 [同步處理頻率]**** 中，指定擷取磁碟復原點的頻率。
-       - 如果您不想要設定備份間隔，您可以在**復原點之前**進行檢查，讓備份在每個復原點排定之前就執行。
+       - 如果您不想設定備份間隔，您可以在 **復原點之前** 檢查，讓備份在每個復原點排定之前執行。
        - 短期備份是完整備份且不會累加。
-       - 當發生短期備份時，按一下 [修改]**** 以變更時間/日期。
+       - 選取 [ **修改** ] 以變更短期備份發生的時間/日期。
 
          ![指定短期目標](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
 1. 在 [檢閱磁碟配置]**** 中，檢閱提供給 VM 備份的磁碟空間。 針對 VM。
 
-   - 建議的磁碟配置是根據您指定的保留範圍、工作負載的類型和所保護資料的大小。 進行任何必要的變更，然後按一下 [下一步]****。
+   - 建議的磁碟配置是根據您指定的保留範圍、工作負載的類型和所保護資料的大小。 進行任何必要的變更，然後選取 **[下一步]**。
    - **資料大小：** 保護群組中的資料大小。
    - **磁碟空間：** 保護群組的建議磁碟空間數量。 如果您想要修改此設定，您配置的總空間應該稍微大於您預估每個資料來源將成長的數量。
    - **共置資料：** 如果您開啟共置功能，受保護的多個資料來源可以對應至單一複本和復原點磁碟區。 不支援所有工作負載的共置。
-   - **自動成長：** 如果您開啟此設定，如果受保護群組中的資料成長到超過初始配置，Azure 備份伺服器會嘗試增加25% 的磁片大小。
+   - **自動成長：** 如果您開啟此設定，則如果受保護群組中的資料成長到超過初始配置，Azure 備份伺服器會嘗試增加25% 的磁片大小。
    - **儲存集區詳細資料：** 顯示儲存體集區的狀態，包括總計和剩餘的磁碟大小。
 
     ![檢閱磁碟配置](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
-1. 在 [選擇複本的建立方式]**** 頁面中，指定您要如何進行初始備份，然後按一下 [下一步]****。
+1. 在 **[選擇複本的建立方式** ] 頁面中，指定您要如何進行初始備份，然後選取 **[下一步]**。
    - 預設值是 [自動透過網路]**** 和 [立即]****。
    - 如果您使用預設值，建議您指定離峰時間。 選擇 [稍後]**** 並指定日期與時間。
    - 對於大量資料或較差的網路狀況，請考慮使用卸除式媒體來離線複寫資料。
 
     ![選擇複本的建立方式](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. 在 [一致性檢查選項]**** 中，選取如何及何時自動執行一致性檢查。 然後按一下 [下一步]。
+1. 在 [一致性檢查選項]**** 中，選取如何及何時自動執行一致性檢查。 然後選取 [下一步]  。
       - 當複本資料變得不一致時，或依據設定的排程，您可以執行一致性檢查。
       - 如果您不想設定自動一致性檢查，可以執行手動檢查。 若要這樣做，以滑鼠右鍵按一下保護群組 > [執行一致性檢查]****。
 
-1. 在 [指定線上保護資料]**** 頁面中，選取要備份的 VM 或 VM 資料夾。 您可以個別地選取成員，或按一下 [全選]**** 來選擇所有成員。 然後按一下 [下一步]。
+1. 在 [指定線上保護資料]**** 頁面中，選取要備份的 VM 或 VM 資料夾。 您可以個別選取成員，或選取 [全 **選** ] 來選擇所有成員。 然後選取 [下一步]  。
 
     ![指定線上保護資料](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. 在 [指定線上備份排程]**** 頁面上，指定要從本機儲存體將資料備份至 Azure 的頻率。
 
-    - 資料的雲端復原點將會根據排程來產生。 然後按一下 [下一步]。
-    - 復原點在產生後會傳輸至 Azure 中的復原服務保存庫。
+    - 資料的雲端復原點將會根據排程來產生。 然後選取 [下一步]  。
+    - 產生復原點之後，它會傳輸到 Azure 中的復原服務保存庫。
 
     ![指定線上備份排程](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. 在 [指定線上保留原則]**** 頁面上，指定從每日/每週/每月/每年備份至 Azure 所建立的資料復原點要保留的時間長度。 然後按 **[下一步]**。
+1. 在 [指定線上保留原則]**** 頁面上，指定從每日/每週/每月/每年備份至 Azure 所建立的資料復原點要保留的時間長度。 然後選取 **[下一步]**。
 
     - 您可以在 Azure 中保留資料的時間長度沒有限制。
     - 唯一的限制是每個受保護的執行個體不能有超過 9999 個復原點。 在此範例中，受保護的執行個體是 VMware 伺服器。
 
     ![指定線上保留期原則](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
-1. 在 [摘要]**** 頁面上檢閱設定，然後按一下 [建立群組]****。
+1. 在 [ **摘要** ] 頁面上，檢查設定，然後選取 [ **建立群組**]。
 
     ![保護群組成員和設定的摘要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
@@ -378,15 +378,15 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 >[!NOTE]
 > 這項功能適用于 MABS V3 UR1。
 
-使用舊版的 MABS，只會跨保護群組執行平行備份。 使用 MABS V3 UR1，單一保護群組內的所有 VMWare Vm 備份都是平行的，因而導致 VM 備份速度更快。 所有 VMWare 差異複寫作業會以平行方式執行。 根據預設，要平行執行的作業數目會設定為8。
+使用舊版的 MABS 時，只會在保護群組上執行平行備份。 使用 MABS V3 UR1，單一保護群組中的所有 VMWare Vm 備份都是平行的，可加快 VM 備份的速度。 所有 VMWare 差異複寫作業都會以平行方式執行。 依預設，要平行執行的工作數目會設定為8。
 
-您可以使用如下所示的登錄機碼來修改作業的數目（預設不存在，您需要將它新增）：
+您可以使用登錄機碼來修改作業數目，如下所示 (預設不存在，您必須將它新增) ：
 
 機**碼路徑**：`Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
-**金鑰類型**： DWORD （32-位）值。
+索引**鍵類型**： DWORD (32 位) 值。
 
 > [!NOTE]
-> 您可以將作業數修改為較高的值。 如果您將作業編號設定為1，則複寫作業會以序列循序執行。 若要將數目增加至較高的值，您必須考慮 VMWare 的效能。 請考慮使用中的資源數目和 VMWare vSphere 伺服器上所需的額外使用量，並決定要平行執行的差異複寫作業數目。 此外，這種變更只會影響新建立的保護群組。 針對現有的保護群組，您必須暫時將另一個 VM 新增至保護群組。 這應該會據以更新保護群組設定。 完成此程式之後，您可以從保護群組中移除此 VM。
+> 您可以將作業數修改為較高的值。 如果您將作業數目設定為1，則會循序執行複寫作業。 若要將數目增加至較高的值，您必須考慮 VMWare 的效能。 請考慮使用中的資源數目，以及 VMWare vSphere Server 所需的其他使用方式，並判斷要以平行方式執行的差異複寫作業數目。 此外，此變更只會影響新建立的保護群組。 針對現有的保護群組，您必須暫時將其他 VM 新增至保護群組。 這應該會據以更新保護群組設定。 在程式完成之後，您可以從保護群組中移除此 VM。
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
 
@@ -395,7 +395,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 - 在 DPM Server 上啟用 TLS 1.2
 
 >[!NOTE]
->VMWare 6.7 開始已將 TLS 啟用為通訊協定。
+>VMWare 6.7 已將 TLS 啟用為通訊協定。
 
 - 設定登錄機碼，如下所示：
 
@@ -424,13 +424,13 @@ Windows Registry Editor Version 5.00
 > [!NOTE]
 > 這項功能適用于 MABS V3 UR1。
 
-透過 MABS V3 UR1，您可以從 VMware VM 備份中排除特定的磁片。 設定腳本**ExcludeDisk.ps1**位於 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` 。
+使用 MABS V3 UR1，您可以從 VMware VM 備份中排除特定磁片。 設定腳本 **ExcludeDisk.ps1** 位於 `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` 。
 
 若要設定磁碟排除，請依照下列步驟執行：
 
 ### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>識別要排除的 VMWare VM 與磁碟詳細資料
 
-  1. 在 VMware 主控台上，移至您想要排除磁片的 VM 設定。
+  1. 在 VMware 主控台上，移至您要排除磁片的 VM 設定。
   2. 選取您要排除的磁碟，並記下該磁碟的路徑。
 
         例如，若要從 TestVM4 排除硬碟 2，硬碟 2 的路徑是 **[datastore1] TestVM4/TestVM4\_1.vmdk**。
@@ -439,9 +439,9 @@ Windows Registry Editor Version 5.00
 
 ### <a name="configure-mabs-server"></a>設定 MABS 伺服器
 
-流覽至 MABS 伺服器，其中 VMware VM 已設定為要保護以設定磁片排除。
+流覽至已設定 VMware VM 進行保護的 MABS 伺服器，以設定磁片排除。
 
-  1. 取得 MABS 伺服器上受保護之 VMware 主機的詳細資料。
+  1. 取得受 MABS 伺服器保護之 VMware 主機的詳細資料。
 
         ```powershell
         $psInfo = get-DPMProductionServer
@@ -481,10 +481,10 @@ Windows Registry Editor Version 5.00
         Vcentervm1   TestVM4   VMware
         ```
 
-  4. 若要排除磁片，請流覽至 `Bin` 資料夾，然後使用下列參數執行*ExcludeDisk.ps1*腳本：
+  4. 若要排除磁片，請流覽至 `Bin` 資料夾，然後使用下列參數執行 *ExcludeDisk.ps1* 腳本：
 
         > [!NOTE]
-        > 執行此命令之前，請先停止 MABS 伺服器上的 DPMRA 服務。 否則，腳本會傳回 success，但不會更新排除清單。 在停止服務之前，請確定沒有進行中的作業。
+        > 執行此命令之前，請先停止 MABS 伺服器上的 DPMRA 服務。 否則，腳本會傳回成功，但不會更新排除清單。 在停止服務之前，請確定沒有進行中的作業。
 
      **若要新增/移除要排除的磁碟，請執行下列命令：**
 
@@ -505,7 +505,7 @@ Windows Registry Editor Version 5.00
        Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
       ```
 
-  5. 確認已新增磁片以供排除。
+  5. 確認已為排除新增磁片。
 
      **若要檢視特定 VM 的現有排除，請執行下列命令：**
 
@@ -526,10 +526,10 @@ Windows Registry Editor Version 5.00
         </VirtualMachine>
         ```
 
-     一旦您設定此 VM 的保護，在保護期間將不會列出排除的磁片。
+     設定此 VM 的保護之後，將不會在保護期間列出排除的磁片。
 
         > [!NOTE]
-        > 如果您要針對已受保護的 VM 執行這些步驟，您必須在新增磁片以供排除之後，手動執行一致性檢查。
+        > 如果您要針對已受保護的 VM 執行這些步驟，您必須在新增要排除的磁片之後，手動執行一致性檢查。
 
 ### <a name="remove-the-disk-from-exclusion"></a>從排除移除磁碟
 

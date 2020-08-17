@@ -1,18 +1,18 @@
 ---
 title: 將 Windows 系統狀態備份至 Azure
-description: 了解如何將 Windows Server 和/或 Windows 電腦的系統狀態備份至 Azure。
+description: 瞭解如何將 Windows Server 電腦的系統狀態備份至 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003714"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263039"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>將 Windows 系統狀態備份至 Azure
 
-本文說明如何將 Windows Server 的系統狀態備份至 Azure。 它的目的是要引導您瞭解基本概念。
+本文說明如何將 Windows Server 的系統狀態備份至 Azure。 它的目的是要讓您逐步瞭解基本概念。
 
 如果您想要深入了解 Azure 備份，請閱讀此 [概觀](backup-overview.md)。
 
@@ -24,21 +24,21 @@ ms.locfileid: "87003714"
 
 當您建立復原服務保存庫時，務必以您想要的方式設定儲存體備援。
 
-1. 從 [復原服務保存庫] 刀鋒視窗，按一下 [新增保存庫]。
+1. 從 [復原 **服務保存庫** ] 窗格中，選取新的保存庫。
 
     ![從復原服務保存庫清單中選取新的保存庫](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    當您選取保存庫時，[復原服務保存庫]**** 刀鋒視窗會縮小﹐而 [設定] 刀鋒視窗 (頂端有保存庫名稱**) 和 [保存庫詳細資料] 刀鋒視窗隨即開啟。
+    當您選取保存庫時，[復原 **服務保存庫** ] 窗格會縮小，且 [設定] 窗格 (， *其中包含保存庫在頂端*) 的名稱，而 [保存庫詳細資料] 窗格會開啟。
 
     ![檢視新保存庫的儲存體組態](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
-2. 在新保存庫的 [設定] 刀鋒視窗中，使用垂直滑桿捲動至 [管理] 區段，然後按一下 [備份基礎結構]****。
-    [備份基礎結構] 刀鋒視窗隨即開啟。
-3. 在 [備份基礎結構] 刀鋒視窗中，按一下 [備份設定]**** 開啟 [備份設定]**** 刀鋒視窗。
+2. 在新保存庫的 [設定] 窗格中，使用垂直投影片向下滾動至 [管理] 區段，然後選取 [ **備份基礎結構**]。
+    [備份基礎結構] 窗格隨即開啟。
+3. 在 [備份基礎結構] 窗格中，選取 [ **備份** 設定] 以開啟 [ **備份** 設定] 窗格。
 
     ![為新保存庫設定儲存體組態](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. 為保存庫選擇適當的儲存體複寫選項。
 
-    ![儲存體組態選項](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
+    ![儲存體設定選項](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
     根據預設，保存庫具有異地備援儲存體。 如果您使用 Azure 做為主要的備份儲存體端點，請繼續使用 [異地備援]****。 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]****，以減少 Azure 儲存體成本。 在此[儲存體備援概觀](../storage/common/storage-redundancy.md)中，深入了解[異地備援](../storage/common/storage-redundancy.md)和[本地備援](../storage/common/storage-redundancy.md)儲存體選項。
 
@@ -46,47 +46,47 @@ ms.locfileid: "87003714"
 
 ## <a name="configure-the-vault"></a>設定保存庫
 
-1. 在 [復原服務保存庫] 刀鋒視窗上 (針對剛建立的保存庫)，在 [開始使用] 區段中按一下 [備份]****，然後在 [開始使用備份功能]**** 刀鋒視窗上，選取 [備份目標]****。
+1. 在 [復原服務保存庫] 窗格上 (您剛才建立的保存庫) 的 [消費者入門] 區段中，選取 [ **備份**]，然後在 [備份] 窗格的 [ **消費者入門** ] 中選取 [ **備份目標**]。
 
-    ![開啟備份目標刀鋒視窗](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
+    ![開啟備份設定](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-    [備份目標]**** 刀鋒視窗隨即開啟。
+    [ **備份目標** ] 窗格隨即開啟。
 
-    ![開啟備份目標刀鋒視窗](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
+    ![開啟備份目標窗格](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
 2. 從 [您的工作負載在何處執行?]**** 下拉式功能表中，選取 [內部部署]****。
 
-    因為您的 Windows Server 或 Windows 電腦是不在 Azure 中的實體電腦，所以您選擇 [內部部署]****。
+    因為您的 Windows Server 或 Windows 電腦是不在 Azure 中的實體機器，所以您可以選擇 [ **內部部署** ]。
 
-3. 從 [**您要備份什麼？** ] 功能表中，選取 [**系統狀態**]，然後按一下 **[確定]**。
+3. 從 [ **您要備份什麼？** ] 功能表，選取 [ **系統狀態**]，然後選取 **[確定]**。
 
     ![設定檔案和資料夾](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    按一下 [確定] 後，[備份目標]**** 旁會出現勾選記號，且 [準備基礎結構]**** 刀鋒視窗隨即開啟。
+    按一下 [確定] 之後，[ **備份目標**] 旁邊會出現核取記號，[ **準備基礎結構** ] 窗格隨即開啟。
 
     ![已設定備份目標，接下來是準備基礎結構](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
-4. 在 [準備基礎結構]**** 刀鋒視窗上，按 [下載 Windows Server 或 Windows Client 的代理程式]****。
+4. 在 [ **準備基礎結構** ] 窗格中，選取 [ **下載 Windows Server 或 windows 用戶端的代理程式**]。
 
     ![準備基礎結構](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
-    如果您使用 Windows Server Essential，請選擇下載 Windows Server Essential 的代理程式。 快顯功能表會提示您執行或儲存 MARSAgentInstaller.exe。
+    如果您使用的是 Windows Server，請選擇下載適用于 Windows Server 的代理程式。 快顯功能表會提示您執行或儲存 MARSAgentInstaller.exe。
 
     ![MARSAgentInstaller dialog](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
 
-5. 在下載快顯功能表中，按一下 [儲存]****。
+5. 在 [下載] 快顯功能表中，選取 [ **儲存**]。
 
-    根據預設，**MARSagentinstaller.exe** 檔案會儲存至 [下載] 資料夾。 安裝程式完成時，您會看到快顯視窗，詢問您是否要執行安裝程式，或開啟資料夾。
+    根據預設，**MARSagentinstaller.exe** 檔案會儲存至 [下載] 資料夾。 當安裝程式完成時，您會看到快顯視窗，詢問您是否要執行安裝程式，或開啟資料夾。
 
-    ![準備基礎結構](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
+    ![MARS 安裝程式已完成](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
     您還不需要安裝代理程式。 您可以在下載保存庫認證之後﹐安裝代理程式。
 
-6. 在 [準備基礎結構]**** 刀鋒視窗上，按 [下載]****。
+6. 在 [ **準備基礎結構** ] 窗格中，選取 [ **下載**]。
 
     ![下載保存庫認證](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    保存庫認證會下載至「下載」資料夾。 保存庫認證下載完成之後，您會看到快顯視窗，詢問您是否要開啟或儲存認證。 按一下 [檔案] 。 如果您不小心按到 [開啟]****，請讓嘗試開啟保存庫認證的對話方塊失敗。 您無法開啟保存庫認證。 請繼續進行下一個步驟。 保存庫認證位於 [下載] 資料夾中。
+    保存庫認證會下載到您的 [ **下載** ] 資料夾。 保存庫認證下載完成之後，您會看到快顯視窗，詢問您是否要開啟或儲存認證。 選取 [儲存]。 如果您不小心選取 [ **開啟**]，請讓嘗試開啟保存庫認證的對話方塊失敗。 您將無法開啟保存庫認證。 繼續進行下一個步驟。 保存庫認證位於 [ **下載** ] 資料夾中。
 
     ![保存庫認證下載完成](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -142,48 +142,48 @@ ms.locfileid: "87003714"
 
     ![啟動 Azure 復原服務代理程式](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 
-2. 在復原服務代理程式中，按一下 [排程備份] ****。
+2. 在 [復原服務代理程式] 中，選取 [ **排程備份**]。
 
     ![Windows Server 備份排程](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
-3. 在排程備份精靈的 [開始使用] 頁面上，按 [下一步] ****。
+3. 在 [排程備份] 的 [開始使用 **] 頁面上** ，選取 **[下一步**]。
 
-4. 在 [選取要備份的項目] 頁面上，按一下 [新增項目] ****。
+4. 在 [ **選取要備份的專案** ] 頁面上，選取 [ **加入專案**]。
 
-5. 選取 [系統狀態]****，然後按一下 [確定]****。
+5. 選取 [ **系統狀態** ]，然後選取 **[確定]**。
 
-6. 按 [下一步]  。
+6. 選取 [下一步] 。
 
 7. 在後續頁面中針對系統狀態備份選取所需的備份頻率和保留原則。
 
-8. 在 [確認] 頁面上檢閱資訊，然後按一下 [完成] ****。
+8. 在 [確認] 頁面上，檢查資訊，然後選取 **[完成]**。
 
-9. 當精靈建立好備份排程時，請按一下 [關閉] ****。
+9. 在嚮導完成建立備份排程之後，請選取 [ **關閉**]。
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>第一次備份 Windows Server 系統狀態
 
 1. 確定 Windows Server 沒有需要重新啟動的擱置中更新。
 
-2. 在復原服務代理程式中按一下 [立即備份] **** ，以透過網路完成初始植入。
+2. 在 [復原服務代理程式] 中，選取 [ **立即備份** ] 以完成網路的初始植入。
 
     ![立即備份 Windows Server](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. 在出現的 [選取備份項目]**** 畫面上選取 [系統狀態]****，然後按一下 [下一步]****。
+3. 在 [**選取備份專案**] 畫面上選取 [**系統狀態**]，然後選取 [**下一步]**。
 
-4. 在 [確認] 頁面上，檢閱立即備份精靈將用於備份電腦的設定。 然後按一下 [備份] ****。
+4. 在 [確認] 頁面上，檢閱立即備份精靈將用於備份電腦的設定。 然後選取 [ **備份**]。
 
-5. 按一下 [關閉]**** 以關閉精靈。 如果您在備份程序完成之前關閉精靈，精靈會繼續在背景中執行。
+5. 選取 [ **關閉** ] 以關閉嚮導。 如果您在備份程序完成之前關閉精靈，精靈會繼續在背景中執行。
     > [!NOTE]
-    > MARS 代理程式會在每個系統狀態備份之前，觸發 SFC/verifyonly 作為前置檢查的一部分。 這是為了確保在系統狀態中備份的檔案具有對應于 Windows 版本的正確版本。 如需深入瞭解系統檔案檢查程式（SFC），請參閱[這篇文章](/windows-server/administration/windows-commands/sfc)。
+    > MARS 代理程式會在 `SFC /verifyonly` 每個系統狀態備份之前觸發為前置檢查的一部分。 這是為了確保備份為系統狀態一部分的檔案具有對應至 Windows 版本的正確版本。 在 [本文](/windows-server/administration/windows-commands/sfc)中深入瞭解系統檔案檢查工具 (SFC) 。
     >
 
 完成初始備份之後，備份主控台中會顯示 [作業已完成] **** 狀態。
 
   ![IR 已完成](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## <a name="questions"></a>有任何問題嗎？
+## <a name="questions"></a>有問題嗎？
 
-如果您有問題，或希望我們加入任何功能，請 [傳送意見反應給我們](https://feedback.azure.com/forums/258995-azure-backup)。
+如果您有任何問題，請 [傳送意見](https://feedback.azure.com/forums/258995-azure-backup)反應給我們。
 
 ## <a name="next-steps"></a>後續步驟
 

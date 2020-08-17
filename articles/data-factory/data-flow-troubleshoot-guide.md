@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/27/2020
-ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 08/16/2020
+ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829115"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263464"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>針對 Azure Data Factory 中的資料流程進行疑難排解
 
@@ -70,6 +70,13 @@ ms.locfileid: "83829115"
 - **原因**：這是後端服務錯誤。 您可以重試此作業，也可以重新啟動您的偵錯工作階段。
 - **建議**：如果重試和重新啟動無法解決問題，請連絡客戶支援。
 
+### <a name="error-code-debug-data-preview-no-output-data-on-join"></a>錯誤碼： Debug data preview 在聯結上沒有輸出資料
+
+- **Message**：有大量的 null 值或遺漏值，可能是因為取樣的資料列數目太少所造成。 請嘗試更新調試資料列限制並重新整理資料。
+- **原因**：聯結條件不符合任何資料列，或在資料預覽期間導致大量的 null。
+- **建議**：移至 [Debug 設定]，並增加來源資料列限制中的資料列數目。 確定您已選取並 Azure IR 具有夠大的資料流程叢集，以處理更多資料。
+
+
 ## <a name="general-troubleshooting-guidance"></a>一般疑難排解指引
 
 1. 檢查資料集連線狀態。 在每個「來源」和「接收」轉換中，瀏覽每個所使用資料集的連結服務，並測試連線。
@@ -79,9 +86,9 @@ ms.locfileid: "83829115"
 ## <a name="next-steps"></a>後續步驟
 
 如需更多疑難排解的協助，請嘗試下列資源：
-*  [Data Factory 部落格](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory 部落格](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [Data Factory 功能要求](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure 影片](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure 影片](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
 *  [Microsoft 問與答頁面](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Data Factory 的 Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [關於 Data Factory 的 Twitter 資訊](https://twitter.com/hashtag/DataFactory)

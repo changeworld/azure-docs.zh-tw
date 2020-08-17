@@ -3,12 +3,12 @@ title: 在 Azure Stack 上安裝 Azure 備份伺服器
 description: 在本文中，您將了解如何使用 Azure 備份伺服器來保護或備份 Azure Stack 中的工作負載。
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 634f560174413dd75bebdee6513160a3700df9a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5b6ae97f30bf704e5bc495cc8020e8bcb0e30ce3
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513892"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263056"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安裝 Azure 備份伺服器
 
@@ -69,7 +69,7 @@ Azure 備份伺服器會將備份資料儲存在連結至虛擬機器的 Azure �
 
 將備份資料儲存在 Azure 中，會縮小 Azure Stack 上的備份基礎結構。 如果資料超過五天，請儲存到 Azure 中。
 
-若要將備份資料儲存在 Azure 中，請建立或使用復原服務保存庫。 在準備 Azure 備份伺服器工作負載的備份作業時，需[設定復原服務保存庫](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault)。 設定完成後，每次執行備份作業時，系統就會在保存庫中建立復原點。 每個復原服務保存庫可保留最多 9999 個復原點。 您可以保留備份資料多年，視復原點建立的數目及保留的天數而定。 例如，您可以建立每月復原點，並保留復原點五年。
+若要將備份資料儲存在 Azure 中，請建立或使用復原服務保存庫。 在準備 Azure 備份伺服器工作負載的備份作業時，需[設定復原服務保存庫](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault)。 設定完成後，每次執行備份作業時，系統就會在保存庫中建立復原點。 每個復原服務保存庫可保留最多 9999 個復原點。 根據建立的復原點數目以及保留的時間長度，您可以保留備份資料多年。 例如，您可以建立每月復原點，並保留復原點五年。
 
 ### <a name="scaling-deployment"></a>調整部署
 
@@ -111,14 +111,14 @@ Azure 備份伺服器一律加入網域。 如果您需要將 Azure 備份伺服
 
 若要編輯儲存體複寫設定︰
 
-1. 選取保存庫以開啟保存庫儀表板和 [設定] 功能表。 如果 [設定] 功能表未開啟，請按一下保存庫儀表板中的 [所有設定]。
-2. 在 [設定] 功能表上按一下 [備份基礎結構] > [備份組態]，開啟 [備份組態] 功能表。 在 [備份組態]  功能表上，選擇保存庫的儲存體複寫選項。
+1. 選取保存庫以開啟保存庫儀表板和 [設定] 功能表。 如果未開啟 [ **設定** ] 功能表，請選取保存庫儀表板中的 **所有設定** 。
+2. 在 [**設定**] 功能表上，選取 [**備份基礎結構**  >  **備份**設定] 以開啟 [**備份**設定] 功能表。 在 [備份組態]  功能表上，選擇保存庫的儲存體複寫選項。
 
     ![備份保存庫的清單](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
 ## <a name="download-azure-backup-server-installer"></a>下載 Azure 備份伺服器安裝程式
 
-有兩種方式可以下載 Azure 備份伺服器安裝程式。 您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=55269)下載 Azure 備份安裝程式。 當您在設定復原服務保存庫時，也可以下載 Azure 備份伺服器安裝程式。 設定復原服務保存庫時，下列步驟會引導您從 Azure 入口網站下載安裝程式。
+有兩種方式可以下載 Azure 備份伺服器安裝程式。 您可以從 [Microsoft 下載中心](https://www.microsoft.com/download/details.aspx?id=55269)下載 Azure 備份安裝程式。 您也可以在設定復原服務保存庫時，下載 Azure 備份伺服器安裝程式。 設定復原服務保存庫時，下列步驟會引導您從 Azure 入口網站下載安裝程式。
 
 1. 請由您的 Azure Stack 虛擬機器，[在 Azure 入口網站中登入您的 Azure 訂用帳戶](https://portal.azure.com/)。
 2. 在左側功能表中，選取 [所有服務]。
@@ -133,9 +133,9 @@ Azure 備份伺服器一律加入網域。 如果您需要將 Azure 備份伺服
 
 4. 在復原服務保存庫清單中，選取您的保存庫以開啟其儀表板。
 
-    ![在 [所有服務] 對話方塊中，輸入 Recovery Services](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
+    ![選取您的保存庫以開啟儀表板](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
 
-5. 在保存庫的 [開始使用] 功能表中，按一下 [備份] 以開啟「開始使用」精靈。
+5. 在保存庫的 [消費者入門] 功能表中，選取 [ **備份** ] 以開啟消費者入門 wizard。
 
     ![備份開始使用](./media/backup-mabs-install-azure-stack/getting-started-backup.png)
 
@@ -143,25 +143,25 @@ Azure 備份伺服器一律加入網域。 如果您需要將 Azure 備份伺服
 
     ![Backup-goals-default-opened](./media/backup-mabs-install-azure-stack/getting-started-menu.png)
 
-6. 在備份功能表中，從 [您的工作負載在何處執行] 功能表，選取 [內部部署]。 從 [你想要備份哪些項目？] 下拉式功能表中，選取您要使用 Azure 備份伺服器保護的工作負載。 如果您不確定要選取哪一項工作負載，請選擇 [Hyper-V 虛擬機器]，然後按一下 [準備基礎結構]。
+6. 在備份功能表中，從 [您的工作負載在何處執行] 功能表，選取 [內部部署]。 從 [你想要備份哪些項目？] 下拉式功能表中，選取您要使用 Azure 備份伺服器保護的工作負載。 如果您不確定要選取哪些工作負載，請選擇 [ **Hyper-v 虛擬機器** ]，然後選取 [ **準備基礎結構**]。
 
     ![內部部署和做為目標的工作負載](./media/backup-mabs-install-azure-stack/getting-started-menu-onprem-hyperv.png)
 
     [準備基礎結構] 功能表隨即開啟。
 
-7. 在 [準備基礎結構] 功能表中，按一下 [下載] 可開啟網頁，以下載 Azure 備份伺服器安裝檔案。
+7. 在 [ **準備基礎結構** ] 功能表中，選取 [ **下載** ] 以開啟網頁，以下載 Azure 備份伺服器安裝檔案。
 
     ![開始使用精靈變更](./media/backup-mabs-install-azure-stack/prepare-infrastructure.png)
 
     內有 Azure 備份伺服器的可下載檔案的 Microsoft 網頁隨即開啟。
 
-8. 在 Microsoft Azure 備份伺服器下載頁面中，選取語言，然後按一下 [下載]。
+8. 在 Microsoft Azure 備份伺服器下載] 頁面中，選擇語言，然後選取 [ **下載**]。
 
     ![下載中心隨即開啟](./media/backup-mabs-install-azure-stack/mabs-download-center-page.png)
 
-9. Azure 備份伺服器安裝程式是由八個檔案組成，共有一個安裝程式和七個 .bin 檔案。 請檢查 [檔案名稱]，選取所有必要的檔案，然後按 [下一步]。 將所有檔案下載至相同的資料夾。
+9. Azure 備份伺服器安裝程式是由八個檔案組成，共有一個安裝程式和七個 .bin 檔案。 檢查 **檔案名** 以選取所有必要的檔案，然後選取 **[下一步]**。 將所有檔案下載至相同的資料夾。
 
-    ![下載中心 1](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
+    ![下載中心，選取的檔案](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
     所有安裝檔案的下載大小超過 3 GB。 在 10 Mbps 下載連結中，下載所有安裝檔案可能需要長達 60 分鐘。 檔案會下載到您指定的下載位置。
 
@@ -169,141 +169,141 @@ Azure 備份伺服器一律加入網域。 如果您需要將 Azure 備份伺服
 
 將所有檔案下載到您的 Azure Stack 虛擬機器之後，請移至下載位置。 安裝 Azure 備份伺服器的第一步是解壓縮檔案。
 
-![下載中心 1](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
+![下載 MABS 安裝程式](./media/backup-mabs-install-azure-stack/download-mabs-installer.png)
 
-1. 若要開始進行安裝，請從下載的檔案清單中，按一下 [MicrosoftAzureBackupserverInstaller.exe]。
+1. 若要開始安裝，請從下載的檔案清單中選取 [ **MicrosoftAzureBackupserverInstaller.exe**]。
 
     > [!WARNING]
     > 至少 4 GB 的可用空間，才能將安裝程式檔案解壓縮。
     >
 
-2. 在 Azure 備份伺服器精靈中，按 [下一步] 以繼續。
+2. 在 Azure 備份伺服器 wizard 中選取 **[下一步** ] 以繼續。
 
     ![Microsoft Azure 備份安裝精靈](./media/backup-mabs-install-azure-stack/mabs-install-wiz-1.png)
 
-3. 選擇 Azure 備份伺服器檔案的路徑，然後按 [下一步]。
+3. 選擇 Azure 備份伺服器檔案的路徑，然後選取 [ **下一步]**。
 
-   ![Microsoft Azure 備份安裝精靈](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
+   ![選取檔案的目的地](./media/backup-mabs-install-azure-stack/mabs-install-wizard-select-destination-1.png)
 
-4. 確認擷取的位置，然後按一下 [擷取]。
+4. 確認解壓縮位置，然後選取 [ **解壓縮**]。
 
-   ![Microsoft Azure 備份安裝精靈](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
+   ![確認解壓縮位置](./media/backup-mabs-install-azure-stack/mabs-install-wizard-extract-2.png)
 
 5. 精靈會擷取檔案並準備安裝過程。
 
-   ![Microsoft Azure 備份安裝精靈](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
+   ![Wizard 解壓縮檔案](./media/backup-mabs-install-azure-stack/mabs-install-wizard-install-3.png)
 
-6. 擷取程序完成之後，按一下 [完成]。 依預設，已選取 [執行 setup.exe]。 當您按一下 [完成]，Setup.exe 會將 Microsoft Azure 備份伺服器安裝到指定的位置。
+6. 在解壓縮程式完成之後，請選取 **[完成]**。 依預設，已選取 [執行 setup.exe]。 當您選取 **[完成]** 時，Setup.exe 會將 Microsoft Azure 備份伺服器安裝至指定的位置。
 
-   ![Microsoft Azure 備份安裝精靈](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
+   ![安裝程式會將 Microsoft Azure 備份的伺服器檔案解壓縮](./media/backup-mabs-install-azure-stack/mabs-install-wizard-finish-4.png)
 
 ## <a name="install-the-software-package"></a>安裝軟體封裝
 
-在上一個步驟中，您已按下 [完成]，結束了擷取的階段，也啟動 Azure 備份伺服器安裝精靈。
+在上一個步驟中，您選取 **[完成] 結束** 解壓縮階段，然後啟動 Azure 備份伺服器安裝程式]。
 
-![Microsoft Azure 備份安裝精靈](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
+![Microsoft Azure 備份安裝 Wizard 啟動](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Azure 備份伺服器與 Data Protection Manager 共用程式碼。 您會在 Azure 備份伺服器安裝程式中發現對 Data Protection Manager 和 DPM 的參考。 雖然 Azure 備份伺服器與 Data Protection Manager 是個別產品，但是這些產品息息相關。
+Azure 備份伺服器與 Data Protection Manager 共用程式碼。 您會在 Azure 備份伺服器安裝程式中看到 Data Protection Manager 和 DPM 的參考。 雖然 Azure 備份伺服器與 Data Protection Manager 是個別產品，但是這些產品息息相關。
 
-1. 若要啟動安裝精靈，請按一下 [Microsoft Azure 備份伺服器]。
+1. 若要啟動安裝程式，請選取 [ **Microsoft Azure 備份 Server**]。
 
-   ![Microsoft Azure 備份安裝精靈](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
+   ![選取 Microsoft Azure 備份 Server](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5b.png)
 
-2. 在 [歡迎使用] 畫面中，按 [下一步]。
+2. 在 [ **歡迎使用** ] 畫面上，選取 **[下一步]**。
 
-    ![Azure 備份伺服器 - 歡迎使用和必要條件檢查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
+    ![Azure 備份伺服器-歡迎使用](./media/backup-mabs-install-azure-stack/mabs-install-wizard-setup-6.png)
 
-3. 在 [必要條件檢查] 畫面中，按一下 [檢查]，以判斷是否符合 Azure 備份伺服器的硬體和軟體必要條件。
+3. 在 [必要條件 **檢查** ] 畫面上，選取 [ **檢查** ] 以判斷是否已符合 Azure 備份伺服器的硬體和軟體必要條件。
 
-    ![Azure 備份伺服器 - 歡迎使用和必要條件檢查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
+    ![Azure 備份伺服器-必要條件檢查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    如果您的環境具有所需的必要條件，就會看到訊息指出機器符合需求。 按 [下一步] 。  
+    如果您的環境具有必要的必要條件，您會看到一則訊息，指出電腦符合需求。 選取 [下一步] 。  
 
     ![Azure 備份伺服器 - 必要條件檢查通過](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
-    如果您的環境不符合所需的必要條件，則會指出相關問題。 不符合的必要條件也會列在 DpmSetup.log。 請解決必要條件方面的錯誤，然後執行 [再檢查一次]。 除非符合所有必要條件，否則無法繼續安裝。
+    如果您的環境不符合所需的必要條件，則會指出相關問題。 不符合的必要條件也會列在需 dpmsetup.ini 中。 請解決必要條件方面的錯誤，然後執行 [再檢查一次]。 在符合所有必要條件之前，無法繼續安裝。
 
     ![Azure 備份伺服器 - 不符合安裝必要條件](./media/backup-mabs-install-azure-stack/installation-errors.png)
 
-4. Microsoft Azure 備份伺服器需要 SQL Server。 Azure 備份伺服器安裝封裝隨附適當的 SQL Server 二進位檔。 您也可以使用您自己的 SQL 安裝。 不過，建議選擇讓安裝程式新增 SQL Server 新執行個體。 為了確保您的選擇適合您的環境，請按一下 [檢查並安裝]。
+4. Microsoft Azure 備份伺服器需要 SQL Server。 Azure 備份伺服器安裝封裝隨附適當的 SQL Server 二進位檔。 您也可以使用您自己的 SQL 安裝。 不過，建議選擇讓安裝程式新增 SQL Server 新執行個體。 若要確保您的選擇可與您的環境搭配運作，請選取 [ **檢查並安裝**]。
 
    > [!NOTE]
    > Azure 備份伺服器不會使用遠端 SQL Server 執行個體。 Azure 備份伺服器所使用的執行個體必須位於本機。
    >
 
-    ![Azure 備份伺服器 - 歡迎使用和必要條件檢查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
+    ![Azure 備份伺服器-SQL 設定](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-install-9.png)
 
-    檢查之後，如果虛擬機器具有安裝 Azure 備份伺服器所需的必要條件，請按 [下一步]。
+    檢查之後，如果虛擬機器具有安裝 Azure 備份伺服器所需的必要條件，請選取 **[下一步]**。
 
-    ![Azure 備份伺服器 - 歡迎使用和必要條件檢查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
+    ![符合 Azure 備份伺服器需求](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-ready-10.png)
 
-    如果發生失敗且建議您重新啟動電腦，請重新啟動電腦。 重新啟動電腦之後，請重新啟動安裝程式，當您進入 [SQL 設定] 畫面時，按一下 [再檢查一次]。
+    如果發生失敗且建議您重新啟動電腦，請重新啟動電腦。 重新開機電腦之後，請重新開機安裝程式，當您進入 [ **SQL 設定** ] 畫面時，請選取 [ **檢查**]。
 
-5. 在 [安裝設定] 中，提供 Microsoft Azure 備份伺服器檔案的安裝位置，然後按 [下一步]。
+5. 在 [ **安裝設定**] 中，提供安裝 Microsoft Azure 備份伺服器檔案的位置，然後選取 **[下一步]**。
 
-    ![Microsoft Azure 備份必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
+    ![提供安裝檔案的位置](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    需要暫存位置，才能備份至 Azure。 請確保暫存位置的大小至少等於為打算備份至 Azure 之資料的 5%。 在磁碟保護方面，安裝完成之後必須設定獨立的磁碟。 如需有關存放集區的詳細資訊，請參閱[準備資料儲存體](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)。
+    需要暫存位置，才能備份至 Azure。 請確保暫存位置的大小至少等於為打算備份至 Azure 之資料的 5%。 在磁碟保護方面，安裝完成之後必須設定獨立的磁碟。 如需有關儲存集區的詳細資訊，請參閱 [準備資料存放區](/system-center/dpm/plan-long-and-short-term-data-storage?view=sc-dpm-2019)。
 
-6. 在 [安全性設定] 畫面中，為受限的本機使用者帳戶提供強式密碼，然後按 [下一步]。
+6. 在 [ **安全性設定** ] 畫面上，為受限的本機使用者帳戶提供強式密碼，然後選取 **[下一步]**。
 
-    ![Microsoft Azure 備份必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
+    ![Security settings screen](./media/backup-mabs-install-azure-stack/mabs-install-wizard-security-12.png)
 
-7. 在 [Microsoft Update 選擇加入] 畫面中，選取是否要使用 *Microsoft Update* 檢查更新，然後按 [下一步]。
+7. 在 **Microsoft Update 加入宣告** ] 畫面上，選取您是否要使用 *Microsoft Update* 來檢查更新，然後選取 **[下一步]**。
 
    > [!NOTE]
    > 建議讓 Windows Update 重新導向至 Microsoft Update，此網站為 Windows 和 Microsoft Azure 備份伺服器等其他產品提供安全性和重要更新。
    >
 
-    ![Microsoft Azure 備份必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
+    ![Microsoft Update 加入宣告畫面](./media/backup-mabs-install-azure-stack/mabs-install-wizard-update-13.png)
 
-8. 檢閱「設定值摘要」，按一下 [安裝]。
+8. 檢查 *設定的摘要* ，然後選取 [ **安裝**]。
 
-    ![Microsoft Azure 備份必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
+    ![設定摘要](./media/backup-mabs-install-azure-stack/mabs-install-wizard-summary-14.png)
 
     當 Azure 備份伺服器完成安裝時，安裝程式會立即啟動 Microsoft Azure 復原服務代理程式安裝程式。
 
-9. Microsoft Azure 復原服務代理程式安裝程式隨即開啟，並開始檢查網際網路連線。 如果有網際網路連線可用，請繼續進行安裝。 如果沒有連線，請提供連線至網際網路的 Proxy 詳細資料。 一旦您已指定您的 Proxy 設定，請按 [下一步]。
+9. Microsoft Azure 復原服務代理程式安裝程式隨即開啟，並開始檢查網際網路連線。 如果有網際網路連線可用，請繼續進行安裝。 如果沒有連線能力，請提供 proxy 詳細資料來連線到網際網路。 指定 proxy 設定之後，請選取 **[下一步]**。
 
-    ![Microsoft Azure 備份必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
+    ![Proxy 組態](./media/backup-mabs-install-azure-stack/mabs-install-wizard-proxy-15.png)
 
-10. 若要安裝 Microsoft Azure 復原服務代理程式，請按一下 [安裝]。
+10. 若要安裝 Microsoft Azure 復原服務代理程式，請選取 [ **安裝**]。
 
-    ![Azure 備份伺服器必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-mars-agent-16.png)
+    ![代理程式安裝](./media/backup-mabs-install-azure-stack/mabs-install-wizard-mars-agent-16.png)
 
-    Microsoft Azure 復原服務代理程式 (也稱為「Azure 備份代理程式」) 可將 Azure 備份伺服器設為復原服務保存庫。 設定完成後，Azure 備份伺服器一律會將資料備份到相同的復原服務保存庫。
+    Microsoft Azure 復原服務代理程式 (也稱為「Azure 備份代理程式」) 可將 Azure 備份伺服器設為復原服務保存庫。 一旦設定之後，Azure 備份伺服器一律會將資料備份至相同的復原服務保存庫。
 
-11. 當 Microsoft Azure 復原服務代理程式完成安裝後，按 [下一步] 以啟動下一個階段：向復原服務保存庫註冊 Azure 備份伺服器。
+11. Microsoft Azure 復原服務代理程式完成安裝之後，請選取 **[下一步** ] 以啟動下一個階段：向復原服務保存庫註冊 Azure 備份伺服器。
 
-    ![Azure 備份伺服器必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
+    ![代理程式安裝已成功完成](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
 
     安裝程式會啟動**註冊伺服器精靈**。
 
-12. 切換至您的 Azure 訂用帳戶和您的復原服務保存庫。 在 [準備基礎結構] 功能表上，按一下 [下載]，以下載保存庫認證。 如果步驟 2 中的 [下載] 按鈕未處於使用中狀態，請選取 [已下載或使用最新的 Azure 備份伺服器安裝] 以啟動按鈕。 保存庫認證會下載到您儲存下載項目的位置。 請注意此位置，因為下一個步驟需要此位置。
+12. 切換至您的 Azure 訂用帳戶和您的復原服務保存庫。 在 [ **準備基礎結構** ] 功能表中，選取 [ **下載** ] 以下載保存庫認證。 如果步驟2中的 [ **下載** ] 按鈕未啟用，請選取 **[已下載] 或使用最新的 Azure 備份伺服器安裝** 來啟用按鈕。 保存庫認證會下載到您儲存下載項目的位置。 請注意此位置，因為下一個步驟需要此位置。
 
-    ![Azure 備份伺服器必要條件 2](./media/backup-mabs-install-azure-stack/download-mars-credentials-17.png)
+    ![下載保存庫認證](./media/backup-mabs-install-azure-stack/download-mars-credentials-17.png)
 
-13. 在 [保存庫識別] 功能表中，按一下 [瀏覽] 以尋找復原服務保存庫認證。
+13. 在 [保存 **庫識別** ] 功能表中，選取 **[流覽]** 以尋找復原服務保存庫認證。
 
-    ![Azure 備份伺服器必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-vault-id-18.png)
+    ![保存庫識別功能表](./media/backup-mabs-install-azure-stack/mabs-install-wizard-vault-id-18.png)
 
-    在 [選取保存庫認證] 對話方塊中，移至下載位置，選取您的保存庫認證，然後按一下 [開啟]。
+    在 [ **選取保存庫認證** ] 對話方塊中，移至 [下載位置]，選取您的保存庫認證，然後選取 [ **開啟**]。
 
-    認證的路徑會出現在 [保存庫識別] 功能表中。 按 [下一步] 進入 [加密設定]。
+    認證的路徑會出現在 [保存庫識別] 功能表中。 選取 **[下一步]** 繼續進行 **加密設定**。
 
-14. 在 [加密設定] 對話方塊中，為備份加密提供複雜密碼，並提供位置以儲存複雜密碼，然後按 [下一步]。
+14. 在 [ **加密設定** ] 對話方塊中，提供備份加密的複雜密碼，以及用來儲存複雜密碼的位置，然後選取 **[下一步]**。
 
-    ![Azure 備份伺服器必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
+    ![加密設定](./media/backup-mabs-install-azure-stack/mabs-install-wizard-encryption-19.png)
 
-    您可以提供您自己的複雜密碼，或使用複雜密碼產生器以建立一個密碼。 這個複雜密碼是屬於您的，Microsoft 不會儲存或管理此複雜密碼。 為了應對發生毀損的情況，請將您的複雜密碼儲存至可存取的位置。
+    您可以提供您自己的複雜密碼，或使用複雜密碼產生器以建立一個密碼。 複雜密碼是您的，Microsoft 不會儲存或管理此複雜密碼。 若要為嚴重損壞做好準備，請將您的複雜密碼儲存在可存取的位置。
 
-    一旦您按 [下一步]，會向復原服務保存庫註冊 Azure 備份伺服器。 安裝程式會繼續安裝 SQL Server 和 Azure 備份伺服器。
+    選取 [ **下一步]** 之後，Azure 備份伺服器就會向復原服務保存庫註冊。 安裝程式會繼續安裝 SQL Server 和 Azure 備份伺服器。
 
-    ![Azure 備份伺服器必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-still-installing-20.png)
+    ![安裝程式會安裝 SQL 和 Azure 備份伺服器](./media/backup-mabs-install-azure-stack/mabs-install-wizard-sql-still-installing-20.png)
 
-15. 安裝程式完成時，狀態會顯示所有軟體已成功安裝。
+15. 當安裝程式完成時， **狀態** 會顯示已成功安裝所有軟體。
 
-    ![Azure 備份伺服器必要條件 2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-done-22.png)
+    ![軟體已安裝成功](./media/backup-mabs-install-azure-stack/mabs-install-wizard-done-22.png)
 
     安裝完成時，會在伺服器桌面上建立 Azure 備份伺服器主控台和 Azure 備份伺服器 PowerShell 圖示。
 
@@ -318,7 +318,7 @@ Azure 備份伺服器與 Data Protection Manager 共用程式碼。 您會在 Az
 
 ## <a name="network-connectivity"></a>網路連線
 
-Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運作。 若要驗證機器是否連接至 Azure，請在Azure 備份伺服器 PowerShell 主控台中使用 ```Get-DPMCloudConnection``` Cmdlet。 如果 Cmdlet 的輸出為 TRUE，表示連線存在，否則沒有連線。
+Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運作。 若要驗證機器是否連接至 Azure，請在Azure 備份伺服器 PowerShell 主控台中使用 ```Get-DPMCloudConnection``` Cmdlet。 如果 Cmdlet 的輸出為 TRUE，表示連線存在，否則就不會有連線能力。
 
 同時，Azure 訂用帳戶也必須處於狀況良好狀態。 若要了解訂用帳戶狀態並加以管理，請登入[訂用帳戶入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
 
@@ -347,10 +347,10 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
 ### <a name="handling-subscription-states"></a>處理訂用帳戶狀態
 
-您可以將 Azure 訂用帳戶從 [已過期] 或 [已取消佈建] 狀態變更為 [使用中] 狀態。 此訂用帳戶狀態並非 [使用中]：
+您可以將 Azure 訂用帳戶從 [已過期] 或 [已取消佈建] 狀態變更為 [使用中] 狀態。 當訂用帳戶狀態 *為非作用*中時：
 
 - 訂用帳戶為 [已取消佈建]，其功能無法運作。 將訂用帳戶還原至 [使用中]，恢復備份/還原功能。 如果本機磁碟上的備份資料保留了足夠長的保留期限，可以擷取備份資料。 不過，一旦訂用帳戶進入 [已取消佈建] 狀態，Azure 中的備份資料便會遺失而無法復原。
-- 訂用帳戶為 [已過期]，其功能無法運作。 當訂用帳戶為 [已過期]，無法執行排定的備份。
+- 訂用帳戶為 [已過期]，其功能無法運作。 排程的備份在訂用帳戶 *過期*時不會執行。
 
 ## <a name="troubleshooting"></a>疑難排解
 

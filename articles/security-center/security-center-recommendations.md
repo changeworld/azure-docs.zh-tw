@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6363100c844d071a3bb47521cec6ff7e988f6af8
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791379"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263198"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 資訊安全中心的安全性建議 
-本主題說明如何在 Azure 資訊安全中心中查看及瞭解建議，以協助您保護 Azure 資源。
+本主題說明如何查看並瞭解 Azure 資訊安全中心中的建議，以協助保護您的 Azure 資源。
 
 > [!NOTE]
 > 本文件將使用範例部署來介紹服務。  本文件不是一份逐步解說指南。
@@ -29,48 +29,49 @@ ms.locfileid: "84791379"
 
 ## <a name="what-are-security-recommendations"></a>有哪些安全性建議？
 
-建議是為了保護您的資源而採取的動作。
+建議是讓您採取的動作，以便保護您的資源。
 
-資訊安全中心定期分析 Azure 資源的安全性狀態，以找出潛在的安全性弱點。 接著，它會提供您有關如何移除它們的建議。
+安全中心會定期分析 Azure 資源的安全性狀態，以找出潛在的安全性弱點。 接著，它會提供有關如何補救這些弱點的建議。
 
-每個建議都會提供下列各項：
+每項建議都會提供：
 
-- 建議的簡短描述。
-- 要執行的補救步驟，以便執行建議。 <!-- In some cases, Quick Fix remediation is available. -->
-- 您需要對這些資源執行建議的動作。
-- **安全分數會影響**，這是您執行此建議時，您的安全分數將會增加的數量。
+- 問題的簡短描述。
+- 執行建議所需執行的補救步驟。
+- 受影響的資源。
 
-## <a name="monitor-recommendations"></a>監視建議<a name="monitor-recommendations"></a>
+## <a name="monitor-recommendations"></a>監視建議 <a name="monitor-recommendations"></a>
 
-資訊安全中心會分析您資源的安全性狀態，以找出潛在的弱點。 [**總覽**] 底下的 [**建議**] 圖格會顯示資訊安全中心所識別的建議總數。
+安全性中心會分析您資源的安全性狀態，以找出潛在的弱點。 [ **建議** ] 圖格底下的 [建議] 磚 **會顯示安全性** 中心所識別的建議總數。
 
 ![安全性中心總覽](./media/security-center-recommendations/asc-overview.png)
 
-1. 選取 [**總覽**] 底下的 [**建議] 圖**格。 [**建議**] 清單隨即開啟。
+1. 選取 [**總覽**] 下的 [**建議] 磚**。 **建議**清單隨即開啟。
 
-      ![檢視建議](./media/security-center-recommendations/view-recommendations.png)
+1. 建議會分組為安全性控制項。
 
-    您可以篩選建議。 若要篩選建議，請選取 [建議]**** 刀鋒視窗上的 [篩選]****。 即會開啟 [篩選] **** 刀鋒視窗，您可以選取想要查看的嚴重性和狀態值。
+      ![依安全性控制分組的建議](./media/security-center-recommendations/view-recommendations.png)
 
-   * **建議**：建議。
-   * **安全分數的影響**：資訊安全中心使用您的安全性建議所產生的分數，並套用先進的演算法來判斷每個建議的重要程度。 如需詳細資訊，請參閱[安全分數計算](secure-score-security-controls.md#how-your-secure-score-is-calculated)。
-   * **資源**：列出這個建議適用的資源。
-   * **狀態列**：描述該特定建議的嚴重性：
-       * **高（紅色）**：有意義的資源（例如應用程式、VM 或網路安全性群組）有弱點存在，並且需要注意。
-       * **中（橙色）**：有弱點存在，需要非關鍵性或額外的步驟，才能將其排除或完成處理常式。
-       * **低（藍色）**：應該解決但不需要立即注意的弱點存在。 (預設不會顯示嚴重性低的建議，但是如果您要查看它們，則可以篩選嚴重性低的建議。) 
-       * **狀況良好（綠色）**：
-       * **無法使用（灰色）**：
+1. 展開控制項，然後選取特定建議以查看建議頁面。
 
-1. 若要查看每個建議的詳細資料，請按一下 [建議]。
+    :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="建議詳細資料頁面。" lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
-    ![建議的詳細資料](./media/security-center-recommendations/recommendation-details.png)
+    此頁面包含：
 
->[!NOTE] 
-> 請參閱適用于 Azure 資源的[傳統和 Resource Manager 部署模型](../azure-classic-rm.md)。
+    - **嚴重性指標**
+    - 相關) 的有效**時間間隔** ( 
+    - **描述** -問題的簡短描述
+    - **補救步驟** -在受影響的資源上補救安全性問題時所需的手動步驟的說明。 如需「快速修正」的建議，您可以選取 [ **View 補救邏輯** ]，然後再將建議的修正套用至您的資源。 
+    - **受影響的資源** -您的資源會分組到索引標籤中：
+        - **狀況良好的資源** -可能不會影響或已補救問題的相關資源。
+        - **狀況不良的資源** –仍受識別問題影響的資源。
+        - **不適用的資源** –建議無法提供明確答案的資源。 [不適用] 索引標籤也包含每個資源的原因。 
+
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="不適用資源，原因如下。":::
+
+
  
 ## <a name="next-steps"></a>後續步驟
 
-在本文件中，已向您介紹「資訊安全中心」的安全性建議。 若要瞭解如何修復建議：
+在本文件中，已向您介紹「資訊安全中心」的安全性建議。 若要瞭解如何補救建議：
 
-* [補救建議](security-center-remediate-recommendations.md)：瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
+* [補救建議](security-center-remediate-recommendations.md) -瞭解如何為您的 Azure 訂用帳戶和資源群組設定安全性原則。
