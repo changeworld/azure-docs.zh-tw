@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534476"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272894"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中樞利用 Private Link 和受控識別支援虛擬網路
 
@@ -48,7 +48,7 @@ IoT 中樞功能 (包括[訊息路由](./iot-hub-devguide-messages-d2c.md)、[�
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>設定用於 IoT 中樞輸入的私人端點
 
-私用端點適用于 IoT 中樞裝置 Api （例如裝置到雲端訊息）以及服務 Api （例如建立和更新裝置）。
+私人端點適用于 IoT 中樞裝置 Api (例如裝置到雲端訊息) 和服務 Api (例如) 建立和更新裝置。
 
 1. 在 Azure 入口網站中，選取 [網路]、[私人端點連線]，然後按一下 [+ 私人端點]。
 
@@ -71,8 +71,8 @@ IoT 中樞功能 (包括[訊息路由](./iot-hub-devguide-messages-d2c.md)、[�
 IoT 中樞的 [IP 篩選器](iot-hub-ip-filtering.md) 也不會控制對內建端點進行公用存取。 若要完全封鎖對 IoT 中樞的公用網路存取，您必須： 
 
 1. 設定 IoT 中樞的私人端點存取
-1. 關閉[公用網路存取權](iot-hub-public-network-access.md)，或使用 IP 篩選器來封鎖所有 IP
-1. [將路由設定為不傳送資料給它，以](iot-hub-devguide-messages-d2c.md)停止使用內建的事件中樞端點
+1. 關閉[公用網路存取](iot-hub-public-network-access.md)，或使用 ip 篩選器來封鎖所有 IP
+1. 藉由[設定路由不要傳送資料給它](iot-hub-devguide-messages-d2c.md)，停止使用內建的事件中樞端點
 1. 關閉[後援路由](iot-hub-devguide-messages-d2c.md#fallback-route)
 1. 使用[信任的 Microsoft 服務](#egress-connectivity-from-iot-hub-to-other-azure-resources)來設定其他 Azure 資源的輸出
 
@@ -94,9 +94,9 @@ IoT 中樞可連線到 Azure Blob 儲存體、事件中樞、服務匯流排資�
 
     :::image type="content" source="media/virtual-network-support/managed-identity.png" alt-text="顯示如何為 IoT 中樞開啟受控識別的螢幕擷取畫面":::
 
-### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>使用 ARM 範本在建立期間將受控識別指派給您的 IoT 中樞
+### <a name="assign-managed-identity-to-your-iot-hub-at-creation-time-using-arm-template"></a>使用 ARM 範本在建立時將受控識別指派給您的 IoT 中樞
 
-若要在資源布建時間將受控識別指派給您的 IoT 中樞，請使用下列 ARM 範本：
+若要在資源布建時將受控識別指派給您的 IoT 中樞，請使用下列 ARM 範本：
 
 ```json
 {
@@ -152,13 +152,13 @@ IoT 中樞可連線到 Azure Blob 儲存體、事件中樞、服務匯流排資�
 }
 ```
 
-取代您的資源、和的值之後， `name` `location` `SKU.name` `SKU.tier` 您可以使用 Azure CLI，在現有的資源群組中部署資源，使用：
+以您的資源、和的值取代之後 `name` `location` `SKU.name` `SKU.tier` ，您可以使用 Azure CLI，在現有的資源群組中部署資源：
 
 ```azurecli-interactive
 az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
 ```
 
-建立資源之後，您可以使用 Azure CLI 來抓取指派給中樞的受控服務識別：
+建立資源之後，您可以使用 Azure CLI，來取得指派給您中樞的受控服務身分識別：
 
 ```azurecli-interactive
 az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resource-name> --resource-group <resource-group-name>
@@ -182,7 +182,7 @@ IoT 中樞可將訊息路由傳送至客戶擁有的儲存體帳戶。 若要在
 
 5. 巡覽至 [自訂端點] 區段，然後按一下 [新增]。 選取 [儲存體] 作為 [端點類型]。
 
-6. 在顯示的頁面上提供端點的名稱，選取想要在 blob 儲存體中使用的容器，並提供編碼和檔案名稱格式。 選取 [系統指派] 作為儲存體帳戶的 [驗證類型]。 按一下 [ **建立** ] 按鈕。
+6. 在顯示的頁面上提供端點的名稱，選取想要在 blob 儲存體中使用的容器，並提供編碼和檔案名稱格式。 選取 [以身分 **識別為基礎** ] 作為儲存體端點的 **驗證類型** 。 按一下 [ **建立** ] 按鈕。
 
 現在，自訂儲存體端點已設定為使用中樞系統指派的身分識別，且即使有防火牆限制，也有權存取儲存體資源。 您現在可使用此端點來設定路由規則。
 
@@ -234,7 +234,7 @@ IoT 中樞的檔案上傳功能可讓裝置將檔案上傳至客戶所擁有儲�
 
 4. 在 IoT 中樞的資源頁面上，巡覽至 [檔案上傳] 索引標籤。
 
-5. 在顯示的頁面上，選取想要在 blob 儲存體中使用的容器，然後視需要設定 [檔案通知設定]、[SAS TTL]、[預設 TTL] 和 [最大傳遞計數]。 選取 [系統指派] 作為儲存體帳戶的 [驗證類型]。 按一下 [ **建立** ] 按鈕。
+5. 在顯示的頁面上，選取想要在 blob 儲存體中使用的容器，然後視需要設定 [檔案通知設定]、[SAS TTL]、[預設 TTL] 和 [最大傳遞計數]。 選取 [以身分 **識別為基礎** ] 作為儲存體端點的 **驗證類型** 。 按一下 [ **建立** ] 按鈕。
 
 現在，您用於檔案上傳的儲存體端點已設定為使用中樞系統所指派身分識別，且即使有防火牆限制，也有權存取儲存體資源。
 

@@ -1,14 +1,14 @@
 ---
 title: 在 Azure DevTest Labs 中對實驗室新增 VM | Microsoft Docs
-description: 了解如何在 Azure DevTest Labs 中對實驗室新增虛擬機器
+description: 瞭解如何使用 Azure 入口網站在 Azure DevTest Labs 中將虛擬機器新增至實驗室。 您可以選擇自訂映射或公式的基底。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a872fdaa3d7d5b2cf5aff17ea15d07604dc287b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c61e6e685a52ac3658cb9b9ca37f64fc51f3ce1e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483953"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270711"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中對實驗室新增 VM
 如果您已經[建立您的第一個 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)，您很有可能是透過預先載入的 [Marketplace 映像](devtest-lab-configure-marketplace-images.md)來完成的。 現在，如果您想要將後續的 VM 新增至您的實驗室，您也可以選擇一個「基底」**，它可以是[自訂映像](devtest-lab-create-template.md)或[公式](devtest-lab-manage-formulas.md)。 本教學課程會逐步引導您使用 Azure 入口網站，在 DevTest Labs 中對實驗室新增 VM。
@@ -55,7 +55,7 @@ ms.locfileid: "85483953"
 建立 VM 時，您可以加入現有的構件。 每個實驗室都會包括來自公用研發/測試實驗室構件儲存機制的構件，以及您已建立並加入至您自己之構件儲存機制的構件。
 
 * Azure DevTest Labs「構件」** 可讓您指定會在 VM 佈建時執行的「動作」**，例如執行 Windows PowerShell 指令碼、執行 Bash 命令，以及安裝軟體。
-* 成品*參數*可讓您自訂特定案例的構件
+* 成品 *參數* 可讓您針對特定案例自訂構件
 
 若要了解如何建立構件，請參閱 [了解如何撰寫您自己的構件以用於研發/測試實驗室](devtest-lab-artifact-author.md)文章。
 
@@ -111,4 +111,4 @@ Azure Resource Manager 範本提供宣告式方法來定義可重複的部署。
 ## <a name="next-steps"></a>後續步驟
 * 一旦建立 VM 之後，您可以選取 VM 窗格上的 [連線]**** 來連線至 VM。
 * 了解如何 [為您的 DevTest Labs VM 建立自訂構件](devtest-lab-artifact-author.md)。
-* 探索[DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索 [DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8038ace4469123e50d98d9296a1aecf0107efbf2
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 1609fc720474f92b3a3fa8c0631452164a7e4d0f
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262546"
+ms.locfileid: "88272021"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全性建議 - 參考指南
 
@@ -181,6 +181,7 @@ ms.locfileid: "88262546"
 |**應針對您的訂用帳戶指定最多 3 位擁有者**|指定少於三位的訂閱擁有者，以降低遭入侵擁有者導致資料外洩的可能。<br>(相關原則：應針對您的訂閱指定最多 3 位擁有者)|高|N|訂用帳戶|
 |**應在 Azure Key Vault 保存庫上啟用進階威脅防護**|Azure 資訊安全中心包含適用於 Azure Key Vault 的 Azure 原生進階威脅防護，可額外提供多一層的安全情報。<br>重要：修復這項建議會導致保護 AKV 保存庫的費用。 如果您在此訂用帳戶中沒有任何 AKV 保存庫，將不會產生任何費用。 如果您未來在此訂用帳戶上建立任何 AKV 保存庫，系統會自動將其受保護，並會在該時間開始收費。<br> (相關原則： [應在 Azure Key Vault 保存庫上啟用「Advanced 威脅防護](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047) 」) |高|**Y**|訂用帳戶|
 |**應啟用 Key Vault 中的診斷記錄**|啟用記錄並保留最多一年。 這可讓您在發生安全性事件或網路遭到損害時，重新建立活動線索供調查之用。<br>(相關原則：應啟用 Key Vault 中的診斷記錄)|低|**Y**|Key Vault|
+|**應使用服務主體來保護您的訂用帳戶，而不是管理憑證**|管理憑證可讓與他們一起進行驗證的任何人，都能管理與它們相關聯的 () 的訂用帳戶。 若要更安全地管理訂用帳戶，建議使用具有 Resource Manager 的服務主體，以在憑證洩漏的情況下限制群發半徑。 它也會自動進行資源管理。|中型|否|訂用帳戶|
 ||||||
 
 

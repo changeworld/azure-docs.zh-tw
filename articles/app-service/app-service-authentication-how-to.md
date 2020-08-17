@@ -1,15 +1,15 @@
 ---
-title: 驗證/AuthZ 的先進使用量
-description: 瞭解如何在不同案例的 App Service 中自訂驗證和授權功能，以及取得使用者宣告和不同的權杖。
+title: 驗證/AuthZ 的 Advanced 使用
+description: 瞭解如何針對不同的案例自訂 App Service 中的驗證和授權功能，以及取得使用者宣告和不同的權杖。
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 52213999ae0ec9f6891c8ec10ab65471926e87d2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7ec16b5de6053256fa6565db510ee94776def2c4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208023"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272309"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>在 Azure App Service 中進階使用驗證和授權
 
@@ -23,7 +23,7 @@ ms.locfileid: "88208023"
 * [如何設定 App 以使用 Google 登入](configure-authentication-provider-google.md)
 * [如何設定 App 使用 Microsoft 帳戶登入](configure-authentication-provider-microsoft.md)
 * [如何設定 App 以使用 Twitter 登入](configure-authentication-provider-twitter.md)
-* [如何設定應用程式以使用 OpenID Connect 提供者登入 (預覽) ](configure-authentication-provider-openid-connect.md)
+* [如何設定您的應用程式使用 OpenID Connect 提供者登入 (預覽) ](configure-authentication-provider-openid-connect.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>使用多個登入提供者
 
@@ -144,9 +144,9 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 * X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
-以任何語言或架構撰寫的程式碼可以從這些標頭中取得所需的資訊。 針對 ASP.NET 4.6 應用程式， **ClaimsPrincipal** 會自動設定適當的值。 不過，ASP.NET Core 不會提供與 App Service 使用者宣告整合的驗證中介軟體。 如需因應措施，請參閱 [MaximeRouiller. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
+以任何語言或架構撰寫的程式碼可以從這些標頭中取得所需的資訊。 針對 ASP.NET 4.6 應用程式， **ClaimsPrincipal** 會自動設定適當的值。 不過，ASP.NET Core 不會提供與 App Service 使用者宣告整合的驗證中介軟體。 如需因應措施，請參閱 [MaximeRouiller AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)。
 
-您的應用程式也可以藉由呼叫 `/.auth/me` 來取得關於已驗證使用者的其他詳細資料。 Mobile Apps 伺服器 SDK 提供 Helper 方法來處理此資料。 如需詳細資訊，請參閱[如何使用 Azure Mobile Apps Node.js SDK ](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)和[使用適用於 Azure Mobile Apps 的 .NET 後端伺服器 SDK](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)。
+如果您的應用程式已啟用 [權杖存放區](overview-authentication-authorization.md#token-store) ，您也可以藉由呼叫來取得已驗證使用者的其他詳細資料 `/.auth/me` 。 Mobile Apps 伺服器 SDK 提供 Helper 方法來處理此資料。 如需詳細資訊，請參閱[如何使用 Azure Mobile Apps Node.js SDK ](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)和[使用適用於 Azure Mobile Apps 的 .NET 後端伺服器 SDK](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)。
 
 ## <a name="retrieve-tokens-in-app-code"></a>在應用程式程式碼中取出權杖
 
@@ -161,14 +161,14 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-從用戶端程式碼 (例如行動應用程式或瀏覽器內的 JavaScript) 將 HTTP `GET` 要求傳送至 `/.auth/me`。 傳回的 JSON 具有提供者專屬權杖。
+從您的用戶端程式代碼 (例如行動應用程式或在瀏覽器中的 JavaScript) ，將 HTTP `GET` 要求傳送至 `/.auth/me` (的 [權杖存放區](overview-authentication-authorization.md#token-store) 必須) 啟用。 傳回的 JSON 具有提供者專屬權杖。
 
 > [!NOTE]
 > 存取權杖是用於存取提供者資源，因此僅在您使用用戶端密碼設定您的提供者時，這些權杖才會出現。 若要了解如何取得重新整理權杖，請參閱「重新整理存取權杖」。
 
 ## <a name="refresh-identity-provider-tokens"></a>重新整理識別提供者權杖
 
-當提供者的存取權杖 (而非[工作階段權杖](#extend-session-token-expiration-grace-period)) 到期時，您必須於再次使用該權杖之前重新驗證使用者。 您可以向應用程式的 `/.auth/refresh` 端點發出 `GET` 呼叫，以避免權杖到期。 一經呼叫，App Service 就會自動重新整理已驗證使用者在權杖放區中的存取權杖。 您應用程式程式碼的後續權杖要求會取得重新整理過的權杖。 不過，若要進行權杖重新整理，權杖存放區必須包含您提供者的[重新整理權杖](https://auth0.com/learn/refresh-tokens/)。 每個提供者會記載其重新整理權杖的取得方法，而下列清單僅為簡短摘要：
+當提供者的存取權杖 (而非[工作階段權杖](#extend-session-token-expiration-grace-period)) 到期時，您必須於再次使用該權杖之前重新驗證使用者。 您可以向應用程式的 `/.auth/refresh` 端點發出 `GET` 呼叫，以避免權杖到期。 當呼叫時，App Service 會自動重新整理已驗證使用者的 [權杖存放區](overview-authentication-authorization.md#token-store) 中的存取權杖。 您應用程式程式碼的後續權杖要求會取得重新整理過的權杖。 不過，若要進行權杖重新整理，權杖存放區必須包含您提供者的[重新整理權杖](https://auth0.com/learn/refresh-tokens/)。 每個提供者會記載其重新整理權杖的取得方法，而下列清單僅為簡短摘要：
 
 - **Google**：將 `access_type=offline` 查詢字串參數附加至您的 `/.auth/login/google` API 呼叫。 如果是使用 Mobile Apps SDK，您可以將參數新增至其中一個 `LogicAsync` 多載 (請參閱 [Google 重新整理權杖](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens))。
 - **Facebook**：不提供重新整理權杖。 長時間執行的權杖會在 60 天內到期 (請參閱 [Facebook 到期和存取權杖的擴充功能](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension))。
@@ -176,9 +176,9 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 - **Microsoft 帳戶**：當您[設定 Microsoft 帳戶驗證設定](configure-authentication-provider-microsoft.md)時，請選取 `wl.offline_access` 範圍。
 - **Azure Active Directory**：在 [https://resources.azure.com](https://resources.azure.com) 中，執行下列步驟：
     1. 在頁面的頂端，選取 [讀取/寫入]****。
-    2. 在左側瀏覽器中，流覽**至 [** 訂用帳戶] > * *_ \<subscription\_name_** > **resourceGroups** > *_* * * \<resource\_group\_name> _>**提供者**  >  **Microsoft**  >  **網站**> * *_ \<app\_name> _ * * > **config**  >  **authsettings**。 
+    2. 在左側瀏覽器中，流覽至 [訂用帳戶 **] > *** *_ \<subscription\_name_** > **resourceGroups** > *_* * * [ \<resource\_group\_name> _>**提供者**]  >  **Microsoft.Web**  >  **sites** > * *_ \<app\_name> _ * * > 設定**config**  >  **[authsettings**。 
     3. 按一下 **[編輯]** 。
-    4. 修改下列屬性。 將取代 _\<app\_id>_ 為您想要存取之服務的 Azure Active Directory 應用程式識別碼。
+    4. 修改下列屬性。 取代 _\<app\_id>_ 為您要存取之服務的 Azure Active Directory 應用程式識別碼。
 
         ```json
         "additionalLoginParams": ["response_type=code id_token", "resource=<app_id>"]
@@ -188,7 +188,7 @@ App Service 會使用特殊標頭，將使用者宣告傳遞至您的應用程�
 
 設定好提供者之後，您可以在權杖存放區中[尋找重新整理權杖和存取權杖的到期時間](#retrieve-tokens-in-app-code)。 
 
-若要隨時重新整理您的存取權杖，只要 `/.auth/refresh` 以任何語言呼叫即可。 下列程式碼片段會使用 jQuery 來重新整理 JavaScript 用戶端的存取權杖。
+若要隨時重新整理您的存取權杖，只要以 `/.auth/refresh` 任何語言呼叫即可。 下列程式碼片段會使用 jQuery 來重新整理 JavaScript 用戶端的存取權杖。
 
 ```javascript
 function refreshTokens() {
@@ -223,7 +223,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 例如，Microsoft 帳戶允許 _outlook.com_、_live.com_ 和 _hotmail.com_ 帳戶。 Azure AD 允許登入帳戶有任意數目的自訂網域。 不過，您可能會想要將使用者直接帶到您自己的品牌 Azure AD 登入頁面 (例如 `contoso.com`) 。 若要建議登入帳戶的功能變數名稱，請遵循下列步驟。
 
-在中，流覽至 [訂用帳戶] [https://resources.azure.com](https://resources.azure.com) > * *_ \<subscription\_name_** > **resourceGroups** > *_* * * **subscriptions** \<resource\_group\_name> _>**提供者**  >  **Microsoft**  >  **網站**> * *_ \<app\_name> _ * * > **config**  >  **authsettings**。 
+在中，流覽至 [訂用帳戶] [https://resources.azure.com](https://resources.azure.com) > * *_ \<subscription\_name_** > **resourceGroups** > *_* * * [ **subscriptions** \<resource\_group\_name> _>**提供者**]  >  **Microsoft.Web**  >  > * *** ** _ \<app\_name> _ * * > 設定**config**  >  **[authsettings**。 
 
 按一下 [編輯]****、修改下列屬性，然後按一下 [放置]****。 請務必將取代為 _\<domain\_name>_ 您想要的網域。
 
@@ -234,26 +234,26 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 此設定會將 `domain_hint` 查詢字串參數附加至登入重新導向 URL。 
 
 > [!IMPORTANT]
-> 用戶端可以 `domain_hint` 在收到重新導向 URL 之後移除參數，然後再以不同的網域登入。 因此，雖然此函式很方便，但它並不是安全性功能。
+> 用戶端可能會 `domain_hint` 在收到重新導向 URL 之後移除參數，然後以不同的網域登入。 因此，雖然此函式很方便，但它並不是安全性功能。
 >
 
 ## <a name="authorize-or-deny-users"></a>授權或拒絕使用者
 
-雖然 App Service 會負責處理最簡單的授權案例 (也就是拒絕未經驗證的要求) ，您的應用程式可能需要更精細的授權行為，例如限制只有特定使用者群組的存取權。 在某些情況下，您需要撰寫自訂應用程式代碼，以允許或拒絕存取已登入的使用者。 在其他情況下，App Service 或您的身分識別提供者可能可以協助，而不需要變更程式碼。
+雖然 App Service 會處理最簡單的授權案例 (亦即拒絕未經驗證的要求) ，但您的應用程式可能需要更細緻的授權行為，例如限制只能存取特定的使用者群組。 在某些情況下，您需要撰寫自訂的應用程式程式碼，以允許或拒絕存取已登入的使用者。 在其他情況下，App Service 或您的身分識別提供者可能可以在不需要變更程式碼的情況下協助您。
 
 - [伺服器層級](#server-level-windows-apps-only)
-- [識別提供者層級](#identity-provider-level)
+- [身分識別提供者層級](#identity-provider-level)
 - [應用層級](#application-level)
 
 ### <a name="server-level-windows-apps-only"></a>伺服器層級 (僅限 Windows 應用程式) 
 
-針對任何 Windows 應用程式，您可以藉由編輯 *Web.config* 檔案來定義 IIS web 伺服器的授權行為。 Linux 應用程式不會使用 IIS，而且無法透過 *Web.config*來設定。
+針對任何 Windows 應用程式，您可以藉由編輯 *Web.config* 檔案來定義 IIS web 伺服器的授權行為。 Linux 應用程式不會使用 IIS，也無法透過 *Web.config*設定。
 
 1. 巡覽到 `https://<app-name>.scm.azurewebsites.net/DebugConsole`
 
-1. 在 App Service 檔案的瀏覽器中，流覽至 [ *site/wwwroot*]。 如果*Web.config*不存在，請選取 [新增檔案] 加以建立 **+**  >  ** **。 
+1. 在 App Service 檔案的瀏覽器瀏覽器中，流覽至 *site/wwwroot*。 如果*Web.config*不存在，請選取 [新增檔案] 加以建立 **+**  >  ** **。 
 
-1. 選取 *Web.config* 的鉛筆來編輯它。 新增下列設定程式碼，然後按一下 [ **儲存**]。 如果 *Web.config* 已經存在，只需要 `<authorization>` 在其中新增專案。 在元素中新增您想要允許的帳戶 `<allow>` 。
+1. 選取 *Web.config* 的鉛筆來編輯它。 新增下列設定程式碼，然後按一下 [ **儲存**]。 如果 *Web.config* 已存在，只要 `<authorization>` 在其中新增專案。 在元素中新增您想要允許的帳戶 `<allow>` 。
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -267,47 +267,47 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
     </configuration>
     ```
 
-### <a name="identity-provider-level"></a>識別提供者層級
+### <a name="identity-provider-level"></a>身分識別提供者層級
 
-識別提供者可能會提供特定的「金鑰授權」。 例如：
+身分識別提供者可能會提供特定的金鑰授權。 例如：
 
-- 針對 [Azure App Service](configure-authentication-provider-aad.md)，您可以直接在 Azure AD 中 [管理企業層級的存取](../active-directory/manage-apps/what-is-access-management.md) 。 如需指示，請參閱 [如何移除使用者對應用程式的存取權](../active-directory/manage-apps/methods-for-removing-user-access.md)。
-- 對於 [google](configure-authentication-provider-google.md)，屬於 [組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) 的 google API 專案可以設定為只允許您組織中的使用者存取 (請參閱 [Google 的 **設定 OAuth 2.0** 支援頁面](https://support.google.com/cloud/answer/6158849?hl=en)) 。
+- 針對 [Azure App Service](configure-authentication-provider-aad.md)，您可以直接在 Azure AD 中 [管理企業層級的存取權](../active-directory/manage-apps/what-is-access-management.md) 。 如需相關指示，請參閱 [如何移除使用者的應用程式存取權](../active-directory/manage-apps/methods-for-removing-user-access.md)。
+- 針對 [google](configure-authentication-provider-google.md)，屬於 [組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) 的 google API 專案可以設定為只允許您組織中的使用者存取 (請參閱 [Google 的 **設定 OAuth 2.0** 支援頁面](https://support.google.com/cloud/answer/6158849?hl=en)) 。
 
 ### <a name="application-level"></a>應用程式層級
 
-如果其中一個層級未提供您所需的授權，或如果您的平臺或身分識別提供者不受支援，則您必須撰寫自訂程式碼，以根據 [使用者宣告](#access-user-claims)來授權使用者。
+如果其中一個層級未提供您所需的授權，或您的平臺或身分識別提供者不受支援，則您必須撰寫自訂程式碼，以根據 [使用者宣告](#access-user-claims)來授權使用者。
 
-## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>使用檔案 (預覽進行設定) 
+## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>使用檔案 (預覽設定) 
 
-您可以選擇性地透過部署所提供的檔案來設定您的驗證設定。 App Service 驗證/授權的某些預覽功能可能需要此項。
+您可以選擇性地透過部署所提供的檔案來設定您的驗證設定。 App Service 驗證/授權的某些預覽功能可能需要這項功能。
 
 > [!IMPORTANT]
-> 請記住，您的應用程式承載（因此此檔案）在環境中可能會隨著[位置而移動。](./deploy-staging-slots.md) 您可能想要將不同的應用程式註冊釘選到每個位置，而在這些情況下，您應該繼續使用標準的設定方法，而不是使用設定檔。
+> 請記住，您的應用程式裝載（因此此檔案）可能會在環境之間移動，就像使用 [插槽](./deploy-staging-slots.md)一樣。 您可能會想要將不同的應用程式註冊釘選到每個位置，在這些情況下，您應該繼續使用標準的設定方法，而不是使用設定檔案。
 
 ### <a name="enabling-file-based-configuration"></a>啟用以檔案為基礎的設定
 
 > [!CAUTION]
-> 在預覽期間，啟用以檔案為基礎的設定將會停用透過某些用戶端（例如 Azure 入口網站、Azure CLI 和 Azure PowerShell）來管理應用程式的 App Service 驗證/授權功能。
+> 在預覽期間，啟用檔案型設定將會停用透過某些用戶端（例如 Azure 入口網站、Azure CLI 和 Azure PowerShell）來管理應用程式的 App Service 驗證/授權功能。
 
-1. 在專案的根目錄建立新的 JSON 檔案， (部署至 web/函式應用程式) 中的 D:\home\site\wwwroot。 根據以檔案為基礎的設定 [參考](#configuration-file-reference)，填入所需的設定。 如果修改現有的 Azure Resource Manager 設定，請務必將集合中所捕獲的屬性轉譯 `authsettings` 成您的設定檔。
+1. 在您的專案根目錄中為您的設定建立新的 JSON 檔案 (部署至 web/函數應用程式) 中的 D:\home\site\wwwroot。 根據以檔案為基礎的設定 [參考](#configuration-file-reference)，填入所需的設定。 如果修改現有的 Azure Resource Manager 設定，請務必將集合中所捕獲的屬性轉譯為 `authsettings` 您的設定檔。
 
-2. 修改現有的設定，此設定會在下的 [Azure Resource Manager](../azure-resource-manager/management/overview.md) api 中加以捕捉 `Microsoft.Web/sites/<siteName>/config/authsettings` 。 若要修改此程式，您可以使用 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md) 或 [Azure 資源總管](https://resources.azure.com/)之類的工具。 在 authsettings 集合中，您必須 (設定三個屬性，而且可能會移除其他) ：
+2. 修改現有的設定，此設定是在的 [Azure Resource Manager](../azure-resource-manager/management/overview.md) api 中所捕捉 `Microsoft.Web/sites/<siteName>/config/authsettings` 。 若要修改此程式，您可以使用 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md) 或 [Azure 資源總管](https://resources.azure.com/)之類的工具。 在 [authsettings 集合中，您必須 (設定三個屬性，而且可能會將其他屬性) 移除：
 
     1.  設定 `enabled` 為 "true"
     2.  設定 `isAuthFromFile` 為 "true"
-    3.  將設定 `authFilePath` 為 (的檔案名，例如 "auth.json" ) 
+    3.  設定 `authFilePath` 為檔案名 (例如「auth.js開啟」 ) 
 
 > [!NOTE]
-> 的格式會 `authFilePath` 因平臺而異。 在 Windows 上，會同時支援相對和絕對路徑。 建議使用 [相對]。 針對 Linux，目前僅支援絕對路徑，因此設定的值應為 "/home/site/wwwroot/auth.json" 或類似。
+> 的格式會 `authFilePath` 因平臺而異。 在 Windows 中，支援相對路徑和絕對路徑。 建議使用相對的。 針對 Linux，目前僅支援絕對路徑，因此設定的值應為 "/home/site/wwwroot/auth.json" 或類似。
 
-進行此設定更新之後，檔案的內容將用來定義該網站 App Service 驗證/授權的行為。 如果您想要回到 Azure Resource Manager 設定，可以將設 `isAuthFromFile` 回 "false" 來執行這項操作。
+當您進行此設定更新之後，檔案的內容就會用來定義該網站 App Service 驗證/授權的行為。 如果您想要回到 Azure Resource Manager 設定，可以將設定 `isAuthFromFile` 回「false」。
 
 ### <a name="configuration-file-reference"></a>設定檔案參考
 
-將從您的設定檔中參照的任何秘密，都必須儲存為 [應用程式設定](./configure-common.md#configure-app-settings)。 您可以將設定命名為任何您想要的名稱。 只需確定來自設定檔案的參考會使用相同的金鑰。
+將從設定檔中參考的任何秘密都必須儲存為 [應用程式設定](./configure-common.md#configure-app-settings)。 您可以將設定命名為任何您想要的名稱。 請確定來自設定檔的參考使用相同的金鑰。
 
-下列耗盡檔案中可能的設定選項：
+下列耗盡檔案內可能的設定選項：
 
 ```json
 {
@@ -473,11 +473,11 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 ## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>將您的應用程式釘選到特定的驗證執行階段版本
 
-當您啟用驗證/授權時，平臺中介軟體會插入您的 HTTP 要求管線中，如 [功能總覽](overview-authentication-authorization.md#how-it-works)中所述。 此平臺中介軟體會定期更新為例行平臺更新中的新功能和改進。 根據預設，您的 web 或函數應用程式會在此平臺中介軟體的最新版本上執行。 這些自動更新一律是回溯相容的。 不過，在罕見的情況下，此自動更新會為您的 web 或函式應用程式引進執行時間問題，您可以暫時復原到先前的中介軟體版本。 本文說明如何將應用程式暫時釘選到特定版本的驗證中介軟體。
+當您啟用驗證/授權時，會將平臺中介軟體插入至您的 HTTP 要求管線，如 [功能總覽](overview-authentication-authorization.md#how-it-works)中所述。 此平臺中介軟體會定期以新功能和改良功能更新，以做為例行平臺更新的一部分。 根據預設，您的 web 或函數應用程式將會在此平臺中介軟體的最新版本上執行。 這些自動更新一律是回溯相容。 不過，在罕見的情況下，此自動更新會為您的 web 或函數應用程式導入執行時間問題，您可以暫時回復為先前的中介軟體版本。 本文說明如何將應用程式暫時釘選至特定版本的驗證中介軟體。
 
 ### <a name="automatic-and-manual-version-updates"></a>自動和手動版本更新 
 
-您可以藉由設定應用程式的設定，將應用程式釘選到平臺中介軟體的特定版本 `runtimeVersion` 。 您的應用程式一律會在最新版本上執行，除非您選擇明確地將其釘選回特定版本。 一次只支援幾個版本。 如果您釘選到已不再支援的無效版本，您的應用程式將會改為使用最新版本。 若要一律執行最新版本，請將設定 `runtimeVersion` 為 ~ 1。 
+您可以藉由設定應用程式的設定，將應用程式釘選至特定版本的平臺中介軟體 `runtimeVersion` 。 除非您選擇將應用程式明確地釘選回特定版本，否則您的應用程式一律會在最新版本上執行。 每次都支援數個版本。 如果您釘選到已不再支援的無效版本，您的應用程式將會改用最新版本。 若要一律執行最新版本，請將設定 `runtimeVersion` 為 ~ 1。 
 
 ### <a name="view-and-update-the-current-runtime-version"></a>檢視並更新目前的執行階段版本
 
@@ -485,20 +485,20 @@ Microsoft 帳戶和 Azure Active Directory 都可讓您從多個網域登入。 
 
 #### <a name="view-the-current-runtime-version"></a>檢視目前的執行階段版本
 
-您可以使用 Azure CLI 或透過應用程式中的其中一個 built0 版本 HTTP 端點，來查看平臺驗證中介軟體的目前版本。
+您可以使用 Azure CLI，或透過您應用程式中的其中一個 built0 版本 HTTP 端點，來查看平臺驗證中介軟體的目前版本。
 
 ##### <a name="from-the-azure-cli"></a>從 Azure CLI
 
-使用 Azure CLI，以 [az webapp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) 命令來查看目前中介軟體版本。
+使用 Azure CLI，使用 [az webapp auth show](https://docs.microsoft.com/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) 命令來查看目前的中介軟體版本。
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
 --resource-group <my_resource_group>
 ```
 
-在此程式碼中， `<my_app_name>` 將取代為您的應用程式名稱。 也請將取代為 `<my_resource_group>` 您應用程式的資源組名。
+在此程式碼中， `<my_app_name>` 將取代為您的應用程式名稱。 也請 `<my_resource_group>` 以您應用程式的資源組名取代。
 
-您會 `runtimeVersion` 在 CLI 輸出中看到此欄位。 它看起來類似下列範例輸出，已截斷以清楚明瞭： 
+您將會 `runtimeVersion` 在 CLI 輸出中看到欄位。 它會類似下列範例輸出，為了清楚起見，已截斷這些輸出： 
 ```output
 {
   "additionalLoginParams": null,
@@ -528,7 +528,7 @@ az webapp auth update --name <my_app_name> \
 --runtime-version <version>
 ```
 
-將取代 `<my_app_name>` 為您的應用程式名稱。 也請將取代為 `<my_resource_group>` 您應用程式的資源組名。 此外，請 `<version>` 以1.x 執行時間的有效版本或 `~1` 最新版本取代。 您可以在不同的執行階段版本 [這裡] (找到版本 https://github.com/Azure/app-service-announcements) 資訊，以協助判斷要釘選到的版本。
+`<my_app_name>`以您的應用程式名稱取代。 也請 `<my_resource_group>` 以您應用程式的資源組名取代。 此外，請 `<version>` 以1.x 執行時間的有效版本或 `~1` 最新版本取代。 您可以在 [這裡 (] 的不同執行階段版本上找到版本 https://github.com/Azure/app-service-announcements) 資訊，以協助判斷要釘選的版本。
 
 您可以選擇上述程式碼範例中的 [試試看]****，從 [Azure Cloud Shell](../cloud-shell/overview.md) 執行此命令。 在執行 [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login) 登入之後，您也可以使用[本機 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 來執行此命令。
 

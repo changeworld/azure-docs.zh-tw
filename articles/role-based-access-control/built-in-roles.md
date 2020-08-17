@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/29/2020
+ms.date: 08/16/2020
 ms.custom: generated
-ms.openlocfilehash: edf0d0085a8f1f9446e9c699c15b1eebb0a2d004
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 44b4134404d5af3a8dde7028ffa1b43258df7558
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448889"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271986"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -30,9 +30,9 @@ ms.locfileid: "87448889"
 > | 內建角色 | 描述 | ID |
 > | --- | --- | --- |
 > | **一般** |  |  |
-> | [參與者](#contributor) | 可讓您管理一切，但授與對資源的存取除外。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
-> | [擁有者](#owner) | 可讓您管理一切，包括對資源的存取。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
-> | [讀取者](#reader) | 可讓您檢視所有項目，但是無法進行變更。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | [參與者](#contributor) | 授與管理所有資源的完整存取權，但不允許您在 Azure RBAC 中指派角色。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [擁有者](#owner) | 授與管理所有資源的完整存取權，包括在 Azure RBAC 中指派角色的能力。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | [讀取者](#reader) | 查看所有資源，但不允許您進行任何變更。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [使用者存取系統管理員](#user-access-administrator) | 可讓您管理 Azure 資源的使用者存取。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **計算** |  |  |
 > | [傳統虛擬機器參與者](#classic-virtual-machine-contributor) | 可讓您管理傳統虛擬機器 (不含虛擬機器所連接的虛擬網路或儲存體帳戶)，但無法存取它們。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
@@ -47,7 +47,7 @@ ms.locfileid: "87448889"
 > | [傳統網路參與者](#classic-network-contributor) | 可讓您管理傳統網路，但無法存取它們。 | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 > | [DNS 區域參與者](#dns-zone-contributor) | 可讓您管理 Azure DNS 中的 DNS 區域與記錄集，但無法讓您控制誰可存取它們。 | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | [網路參與者](#network-contributor) | 可讓您管理網路，但無法存取它們。 | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
-> | [私人 DNS 區域參與者](#private-dns-zone-contributor) | 可讓您管理私人 DNS 區域資源，而不是其所連結的虛擬網路。 | b12aa53e-6015-4669-85d0-8515ebb3ae7f |
+> | [私人 DNS 區域參與者](#private-dns-zone-contributor) | 可讓您管理私人 DNS 區域資源，但不能管理它們所連結的虛擬網路。 | b12aa53e-6015-4669-85d0-8515ebb3ae7f |
 > | [流量管理員參與者](#traffic-manager-contributor) | 可讓您管理「流量管理員」設定檔，但無法控制誰可以存取它們。 | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
 > | **Storage** |  |  |
 > | [Avere 參與者](#avere-contributor) | 可以建立和管理 Avere vFXT 叢集。 | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
@@ -90,9 +90,9 @@ ms.locfileid: "87448889"
 > | [Azure Kubernetes Service 叢集使用者角色](#azure-kubernetes-service-cluster-user-role) | 列出叢集使用者認證動作。 | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | [Azure Kubernetes Service 參與者角色](#azure-kubernetes-service-contributor-role) | 授與讀取和寫入 Azure Kubernetes Service 叢集的存取權 | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
 > | [Azure Kubernetes Service RBAC 管理員](#azure-kubernetes-service-rbac-admin) | 可讓您管理叢集/命名空間下的所有資源，但更新或刪除資源配額和命名空間除外。 | 3498e952-d568-435e-9b2c-8d77e338d7f7 |
-> | [Azure Kubernetes Service RBAC 叢集系統管理員](#azure-kubernetes-service-rbac-cluster-admin) | 可讓您管理叢集中的所有資源。 | b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b |
-> | [Azure Kubernetes Service RBAC 讀取器](#azure-kubernetes-service-rbac-reader) | 可讓您查看叢集/命名空間中的所有資源（秘密除外）。 | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
-> | [Azure Kubernetes Service RBAC 寫入器](#azure-kubernetes-service-rbac-writer) | 可讓您更新叢集/命名空間中的所有專案，但資源配額、命名空間、pod 安全性原則、憑證簽署要求、（叢集）角色和（叢集）角色系結除外。 | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
+> | [Azure Kubernetes Service RBAC 叢集管理員](#azure-kubernetes-service-rbac-cluster-admin) | 可讓您管理叢集中的所有資源。 | b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b |
+> | [Azure Kubernetes Service RBAC 讀者](#azure-kubernetes-service-rbac-reader) | 可讓您查看叢集/命名空間中的所有資源，但秘密除外。 | 7f6c6a51-bcf8-42ba-9220-52d62157d7db |
+> | [Azure Kubernetes Service RBAC 寫入器](#azure-kubernetes-service-rbac-writer) | 可讓您更新叢集/命名空間中的所有專案，但資源配額、命名空間、pod 安全性原則、憑證簽署要求、 (叢集) 角色和 (叢集) 角色系結除外。 | a7ffa36f-339b-4b5c-8bdf-e2c188b2c0eb |
 > | **資料庫** |  |  |
 > | [Cosmos DB 帳戶讀者角色](#cosmos-db-account-reader-role) | 可以讀取 Azure Cosmos DB 帳戶資料。 請參閱 [DocumentDB 帳戶參與者](#documentdb-account-contributor)以管理 Azure Cosmos DB 帳戶。 | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB 操作員](#cosmos-db-operator) | 可讓您管理 Azure Cosmos DB 帳戶，但無法存取其中的資料。 防止存取帳戶金鑰和連接字串。 | 230815da-be43-4aae-9cb4-875f7bd000aa |
@@ -120,8 +120,8 @@ ms.locfileid: "87448889"
 > | [認知服務資料讀者 (預覽)](#cognitive-services-data-reader-preview) | 可讓您讀取認知服務資料。 | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [認知服務使用者](#cognitive-services-user) | 可讓您讀取和列出認知服務的金鑰。 | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **混合實境** |  |  |
-> | [遠端呈現系統管理員](#remote-rendering-administrator) | 為使用者提供轉換、管理會話、轉譯和診斷功能，以進行 Azure 遠端呈現 | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
-> | [遠端呈現用戶端](#remote-rendering-client) | 為使用者提供 Azure 遠端呈現的管理會話、轉譯和診斷功能。 | d39065c4-c120-43c9-ab0a-63eed9795f0a |
+> | [遠端呈現系統管理員](#remote-rendering-administrator) | 為使用者提供轉換、管理會話、轉譯和診斷功能，以供 Azure 遠端轉譯 | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
+> | [遠端呈現用戶端](#remote-rendering-client) | 為使用者提供 Azure 遠端轉譯管理會話、轉譯及診斷功能。 | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [空間錨點帳戶參與者](#spatial-anchors-account-contributor) | 可讓您管理帳戶中的空間錨點，但無法刪除 | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | [空間錨點帳戶擁有者](#spatial-anchors-account-owner) | 可讓您管理帳戶中的空間錨點，包含刪除 | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | [空間錨點帳戶讀者](#spatial-anchors-account-reader) | 可讓您尋找和讀取帳戶中空間錨點的屬性 | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
@@ -137,7 +137,7 @@ ms.locfileid: "87448889"
 > | [Azure Stack 註冊擁有者](#azure-stack-registration-owner) | 可讓您管理 Azure Stack 註冊。 | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | [EventGrid EventSubscription 參與者](#eventgrid-eventsubscription-contributor) | 可讓您管理 EventGrid 事件訂用帳戶作業。 | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | [EventGrid EventSubscription 讀者](#eventgrid-eventsubscription-reader) | 可讓您讀取 EventGrid 事件訂用帳戶。 | 2414bbcf-6497-4faf-8c65-045460748405 |
-> | [FHIR 資料參與者](#fhir-data-contributor) | 角色可讓使用者或主體擁有 FHIR 資料的完整存取權 | 5a1fc7df-4bf1-4951-a576-89034ee01acd |
+> | [FHIR 資料參與者](#fhir-data-contributor) | 角色可讓使用者或主體完整存取 FHIR 資料 | 5a1fc7df-4bf1-4951-a576-89034ee01acd |
 > | [FHIR 資料匯出工具](#fhir-data-exporter) | 角色可讓使用者或主體讀取和匯出 FHIR 資料 | 3db33094-8700-4567-8da5-1501d4e7e843 |
 > | [FHIR 資料讀取器](#fhir-data-reader) | 角色可讓使用者或主體讀取 FHIR 資料 | 4c8d0bbc-75d3-4935-991f-5f3c56d81508 |
 > | [FHIR 資料寫入器外掛程式](#fhir-data-writer) | 角色可讓使用者或主體讀取和寫入 FHIR 資料 | 3f88fce4-5892-4214-ae73-ba5294559913 |
@@ -160,7 +160,7 @@ ms.locfileid: "87448889"
 > | [安全性讀取者](#security-reader) | 資訊安全中心的檢視權限。 可以檢視建議、警示、安全性原則和安全性狀態，但無法變更。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [DevTest Labs 使用者](#devtest-labs-user) | 可讓您連線、啟動、重新啟及關閉您 Azure DevTest Labs 中的虛擬機器。 | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
-> | [實驗室建立者](#lab-creator) | 可讓您在 Azure 實驗室帳戶底下建立新的實驗室。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
+> | [實驗室建立者](#lab-creator) | 可讓您在 Azure 實驗室帳戶下建立新的實驗室。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **監視** |  |  |
 > | [Application Insights 元件參與者](#application-insights-component-contributor) | 可以管理 Application Insights 元件 | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights 快照集偵錯工具](#application-insights-snapshot-debugger) | 給予使用者權限，以便檢視及下載使用 Application Insights 快照偵錯工具所收集的偵錯快照。 請注意，[擁有者](#owner)或[參與者](#contributor)角色未包含這些權限。 將 Application Insights 快照偵錯者角色指派給使用者時，您必須直接將此角色授與使用者。 此角色若新增至自訂角色，則無法辨識。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
@@ -181,7 +181,7 @@ ms.locfileid: "87448889"
 > | [成本管理參與者](#cost-management-contributor) | 可檢視成本和管理成本組態 (例如預算、匯出) | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | [成本管理讀者](#cost-management-reader) | 可檢視成本資料和組態 (例如預算、匯出) | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | [階層設定管理員](#hierarchy-settings-administrator) | 允許使用者編輯和刪除階層設定 | 350f8d15-c687-4448-8ae1-157740a3936d |
-> | [Kubernetes 叢集-Azure Arc 上架](#kubernetes-cluster---azure-arc-onboarding) | 用來授權任何使用者/服務建立 connectedClusters 資源的角色定義 | 34e09817-6cbe-4d01-b1a2-e0eac5743d41 |
+> | [Kubernetes Cluster-Azure Arc 上架](#kubernetes-cluster---azure-arc-onboarding) | 用以授權任何使用者/服務建立 connectedClusters 資源的角色定義 | 34e09817-6cbe-4d01-b1a2-e0eac5743d41 |
 > | [受控應用程式參與者角色](#managed-application-contributor-role) | 允許建立受控應用程式資源。 | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [受控應用程式操作員角色](#managed-application-operator-role) | 可讓您讀取受控應用程式資源及對其執行動作 | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [受控應用程式讀者](#managed-applications-reader) | 可讓您讀取受控應用程式中的資源及要求 JIT 存取權。 | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
@@ -198,7 +198,7 @@ ms.locfileid: "87448889"
 > | [標記參與者](#tag-contributor) | 可讓您管理實體上的標記，無需提供對實體本身的存取。 | 4a9ae827-6dc8-4573-8ac7-8239d42aa03f |
 > | **其他** |  |  |
 > | [BizTalk 參與者](#biztalk-contributor) | 可讓您管理 BizTalk 服務，但無法存取它們。 | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
-> | [桌面虛擬化使用者](#desktop-virtualization-user) | 可讓使用者使用應用程式群組中的應用程式。 | 1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63 |
+> | [桌面虛擬化使用者](#desktop-virtualization-user) | 允許使用者使用應用程式群組中的應用程式。 | 1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63 |
 > | [排程器工作集合參與者](#scheduler-job-collections-contributor) | 可讓您管理「排程器」工作集合，但無法存取它們。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 
 
@@ -207,18 +207,18 @@ ms.locfileid: "87448889"
 
 ### <a name="contributor"></a>參與者
 
-可讓您管理一切，但授與對資源的存取除外。 [深入了解](rbac-and-directory-admin-roles.md)
+授與管理所有資源的完整存取權，但不允許您在 Azure RBAC 中指派角色。 [深入了解](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | * | 建立和管理所有類型的資源 |
 > | **NotActions** |  |
-> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/delete | 刪除角色、原則指派、原則定義和原則集定義 |
+> | [Microsoft. 授權](resource-provider-operations.md#microsoftauthorization)/*/delete | 刪除角色、原則指派、原則定義和原則集定義 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/Write | 建立角色、角色指派、原則指派、原則定義和原則集定義 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/elevateAccess/Action | 授與呼叫者租用戶範圍的使用者存取管理員存取 |
-> | [Microsoft. 藍圖](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/write | 建立或更新任何藍圖指派 |
-> | [Microsoft. 藍圖](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/delete | 刪除任何藍圖指派 |
+> | [Microsoft 藍圖](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/write | 建立或更新任何藍圖指派 |
+> | [Microsoft 藍圖](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/delete | 刪除任何藍圖指派 |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -229,7 +229,7 @@ ms.locfileid: "87448889"
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything except access to resources.",
+  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
   "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
   "permissions": [
@@ -256,7 +256,7 @@ ms.locfileid: "87448889"
 
 ### <a name="owner"></a>擁有者
 
-可讓您管理一切，包括對資源的存取。 [深入了解](rbac-and-directory-admin-roles.md)
+授與管理所有資源的完整存取權，包括在 Azure RBAC 中指派角色的能力。 [深入了解](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -274,7 +274,7 @@ ms.locfileid: "87448889"
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything, including access to resources.",
+  "description": "Grants full access to manage all resources, including the ability to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "name": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "permissions": [
@@ -295,7 +295,7 @@ ms.locfileid: "87448889"
 
 ### <a name="reader"></a>讀取者
 
-可讓您檢視所有項目，但是無法進行變更。 [深入了解](rbac-and-directory-admin-roles.md)
+查看所有資源，但不允許您進行任何變更。 [深入了解](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -313,7 +313,7 @@ ms.locfileid: "87448889"
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you view everything, but not make any changes.",
+  "description": "View all resources, but does not allow you to make any changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "permissions": [
@@ -340,7 +340,7 @@ ms.locfileid: "87448889"
 > | 動作 | 描述 |
 > | --- | --- |
 > | */read | 讀取密碼以外的所有類型的資源。 |
-> | [Microsoft。授權](resource-provider-operations.md#microsoftauthorization)/* | 管理授權 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/* | 管理授權 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -386,21 +386,21 @@ ms.locfileid: "87448889"
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft.classiccompute](resource-provider-operations.md#microsoftclassiccompute)/domainNames/* | 建立和管理傳統運算網域名稱 |
-> | [Microsoft.classiccompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/* | 建立和管理虛擬機器 |
-> | [Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/networkSecurityGroups/join/action |  |
-> | [Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/reservedIps/link/action | 連結保留的 IP |
-> | [Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/reservedIps/read | 取得保留的 IP |
-> | [Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/virtualNetworks/join/action | 加入虛擬網路。 |
-> | [Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/virtualNetworks/read | 取得虛擬網路。 |
-> | [Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/disks/read | 傳回儲存體帳戶磁碟。 |
-> | [Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/images/read | 傳回儲存體帳戶映像。 (已淘汰。 使用 'Microsoft.ClassicStorage/storageAccounts/vmImages') |
-> | [Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/action | 列出儲存體帳戶的存取金鑰。 |
-> | [Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/read | 傳回具有給定帳戶的儲存體帳戶。 |
+> | [Microsoft. Microsoft.classiccompute](resource-provider-operations.md#microsoftclassiccompute)/domainNames/* | 建立和管理傳統運算網域名稱 |
+> | [Microsoft. Microsoft.classiccompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/* | 建立和管理虛擬機器 |
+> | [Microsoft. Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/networkSecurityGroups/join/action |  |
+> | [Microsoft. Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/reservedIps/link/action | 連結保留的 IP |
+> | [Microsoft. Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/reservedIps/read | 取得保留的 IP |
+> | [Microsoft. Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/virtualNetworks/join/action | 加入虛擬網路。 |
+> | [Microsoft. Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/virtualNetworks/read | 取得虛擬網路。 |
+> | [Microsoft. Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/disks/read | 傳回儲存體帳戶磁碟。 |
+> | [Microsoft. Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/images/read | 傳回儲存體帳戶映像。 (已淘汰。 使用 'Microsoft.ClassicStorage/storageAccounts/vmImages') |
+> | [Microsoft. Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/action | 列出儲存體帳戶的存取金鑰。 |
+> | [Microsoft. Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/read | 傳回具有給定帳戶的儲存體帳戶。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -451,7 +451,7 @@ ms.locfileid: "87448889"
 
 ### <a name="virtual-machine-administrator-login"></a>虛擬機器系統管理員登入
 
-在入口網站中查看虛擬機器，並以系統管理員身分登入[深入瞭解](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
+在入口網站中查看虛擬機器，並以系統管理員身分登入 [深入瞭解](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -464,8 +464,8 @@ ms.locfileid: "87448889"
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | 以一般使用者身分登入虛擬機器 |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/loginAsAdmin/action | 以 Windows 系統管理員或 Linux 根使用者權限登入虛擬機器 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | 以一般使用者身分登入虛擬機器 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/virtualMachines/loginAsAdmin/action | 以 Windows 系統管理員或 Linux 根使用者權限登入虛擬機器 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -512,10 +512,10 @@ ms.locfileid: "87448889"
 > | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/locations/* | 建立和管理運算位置 |
 > | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | 建立和管理虛擬機器 |
 > | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | 建立和管理虛擬機器擴展集 |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/disks/write | 建立新的磁碟，或更新現有磁碟 |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/disks/read | 取得磁碟的屬性 |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/disks/delete | 刪除磁碟 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/schedules/* |  |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/disks/write | 建立新的磁碟，或更新現有磁碟 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/disks/read | 取得磁碟的屬性 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/disks/delete | 刪除磁碟 |
+> | [Microsoft. microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/schedules/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/applicationGateways/backendAddressPools/join/action | 加入應用程式閘道後端位址集區。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/backendAddressPools/join/action | 加入負載平衡器後端位址集區。 不可警示。 |
@@ -523,30 +523,30 @@ ms.locfileid: "87448889"
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/inboundNatRules/join/action | 加入負載平衡器輸入 nat 規則。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/probes/join/action | 允許使用負載平衡器的探查。 例如，使用此權限，VM 擴展集的 healthProbe 屬性就可以參考探查。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | 取得負載平衡器定義 |
-> | [/Locations/*](resource-provider-operations.md#microsoftnetwork) | 建立和管理網路位置 |
-> | [/NetworkInterfaces/*](resource-provider-operations.md#microsoftnetwork) | 建立和管理網路介面 |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/locations/* | 建立和管理網路位置 |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/* | 建立和管理網路介面 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/join/action | 加入網路安全性群組。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/read | 取得網路安全性群組定義 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/join/action | 加入公用 IP 位址。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/read | 取得公用 IP 位址定義。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 取得虛擬網路定義 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/join/action | 加入虛擬網路。 不可警示。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/* |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/write | 建立備份保護用途 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/read | 傳回受保護項目的物件詳細資料 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/write | 建立備用的受保護項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/read | 傳回所有保護原則 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/write | 建立保護原則 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/write | 「建立保存庫」作業會建立 'vault' 類型的 Azure 資源 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/* |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/write | 建立備份保護用途 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/read | 傳回受保護項目的物件詳細資料 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/write | 建立備用的受保護項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/read | 傳回所有保護原則 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/write | 建立保護原則 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/write | 「建立保存庫」作業會建立 'vault' 類型的 Azure 資源 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft.sqlvirtualmachine](resource-provider-operations.md#microsoftsqlvirtualmachine)/* |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -634,7 +634,7 @@ ms.locfileid: "87448889"
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | 以一般使用者身分登入虛擬機器 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | 以一般使用者身分登入虛擬機器 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -679,12 +679,12 @@ ms.locfileid: "87448889"
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft. Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
-> | [Microsoft. Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
-> | [Microsoft. Cdn](resource-provider-operations.md#microsoftcdn)/profiles/endpoints/* |  |
+> | [Microsoft Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
+> | [Microsoft Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft Cdn](resource-provider-operations.md#microsoftcdn)/profiles/endpoints/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -732,12 +732,12 @@ ms.locfileid: "87448889"
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft. Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
-> | [Microsoft. Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
+> | [Microsoft Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
 > | [/Profiles/endpoints/*](resource-provider-operations.md#microsoftcdn)/read |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -785,12 +785,12 @@ ms.locfileid: "87448889"
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft. Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
-> | [Microsoft. Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
-> | [Microsoft. Cdn](resource-provider-operations.md#microsoftcdn)/profiles/* |  |
+> | [Microsoft Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
+> | [Microsoft Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft Cdn](resource-provider-operations.md#microsoftcdn)/profiles/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -838,12 +838,12 @@ ms.locfileid: "87448889"
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft. Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
-> | [Microsoft. Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft Cdn](resource-provider-operations.md#microsoftcdn)/edgenodes/read |  |
+> | [Microsoft Cdn](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
 > | [/Profiles/*](resource-provider-operations.md#microsoftcdn)/read |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -893,9 +893,9 @@ ms.locfileid: "87448889"
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/* | 建立和管理傳統網路 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -943,10 +943,10 @@ ms.locfileid: "87448889"
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/DnsZones/*](resource-provider-operations.md#microsoftnetwork) | 建立和管理 DNS 區域和記錄 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/dnsZones/* | 建立和管理 DNS 區域和記錄 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -995,9 +995,9 @@ ms.locfileid: "87448889"
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft 網路](resource-provider-operations.md#microsoftnetwork)/* | 建立和管理網路 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -1038,18 +1038,18 @@ ms.locfileid: "87448889"
 
 ### <a name="private-dns-zone-contributor"></a>私人 DNS 區域參與者
 
-可讓您管理私人 DNS 區域資源，而不是其所連結的虛擬網路。 [深入了解](../dns/dns-protect-private-zones-recordsets.md)
+可讓您管理私人 DNS 區域資源，但不能管理它們所連結的虛擬網路。 [深入了解](../dns/dns-protect-private-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [/PrivateDnsZones/*](resource-provider-operations.md#microsoftnetwork) |  |
-> | [/PrivateDnsOperationResults/*](resource-provider-operations.md#microsoftnetwork) |  |
-> | [/PrivateDnsOperationStatuses/*](resource-provider-operations.md#microsoftnetwork) |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/privateDnsZones/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/privateDnsOperationResults/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/privateDnsOperationStatuses/* |  |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 取得虛擬網路定義 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/join/action | 加入虛擬網路。 不可警示。 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
@@ -1102,10 +1102,10 @@ ms.locfileid: "87448889"
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/TrafficManagerProfiles/*](resource-provider-operations.md#microsoftnetwork) |  |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/trafficManagerProfiles/* |  |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -1155,31 +1155,31 @@ ms.locfileid: "87448889"
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft。 Compute](resource-provider-operations.md#microsoftcompute)/*/read |  |
+> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/*/read |  |
 > | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* |  |
 > | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/proximityPlacementGroups/* |  |
 > | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* |  |
 > | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/disks/* |  |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/*/read |  |
-> | [/NetworkInterfaces/*](resource-provider-operations.md#microsoftnetwork) |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/* |  |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 取得虛擬網路定義 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/read | 取得虛擬網路子網路定義 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/join/action | 加入虛擬網路。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/action | 將資源 (例如，儲存體帳戶或 SQL Database) 加入至子網路。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/join/action | 加入網路安全性群組。 不可警示。 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/*/read |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/* | 建立及管理儲存體帳戶 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/* | 建立及管理儲存體帳戶 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | /Subscriptions/resourceGroups/resources/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得資源群組的資源。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/resources/read | 取得資源群組的資源。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | 傳回刪除 Blob 的結果 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | 傳回 Blob 或 Blob 清單 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | 傳回寫入 Blob 的結果 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | 傳回刪除 Blob 的結果 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | 傳回 Blob 或 Blob 清單 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | 傳回寫入 Blob 的結果 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -1232,28 +1232,28 @@ ms.locfileid: "87448889"
 
 ### <a name="avere-operator"></a>Avere 操作員
 
-Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-manage-cluster.md)
+Avere vFXT 叢集用來管理叢集的 [深入瞭解](../avere-vfxt/avere-vfxt-manage-cluster.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/read | 取得虛擬機器的屬性 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/virtualMachines/read | 取得虛擬機器的屬性 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | 取得網路介面定義。  |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/write | 建立網路介面，或更新現有的網路介面。  |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 取得虛擬網路定義 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/read | 取得虛擬網路子網路定義 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/join/action | 加入虛擬網路。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/join/action | 加入網路安全性群組。 不可警示。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/delete | 傳回刪除容器的結果 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | 傳回容器的清單 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/write | 傳回放置 Blob 容器的結果 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/delete | 傳回刪除容器的結果 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | 傳回容器的清單 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/write | 傳回放置 Blob 容器的結果 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | 傳回刪除 Blob 的結果 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | 傳回 Blob 或 Blob 清單 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | 傳回寫入 Blob 的結果 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | 傳回刪除 Blob 的結果 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | 傳回 Blob 或 Blob 清單 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | 傳回寫入 Blob 的結果 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -1297,51 +1297,51 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 
 ### <a name="backup-contributor"></a>備份參與者
 
-可讓您管理備份服務，但無法建立保存庫並將存取權授與其他人[深入瞭解](../backup/backup-rbac-rs-vault.md)
+可讓您管理備份服務，但無法建立保存庫並將存取權授與其他人 [深入瞭解](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 取得虛擬網路定義 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/* |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/* | 管理備份管理上作業的結果 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/* | 在復原服務保存庫的備份網狀架構內建立和管理備份容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/refreshContainers/action | 重新整理容器清單 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/* | 建立和管理備份作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/action | 匯出作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/* | 建立和管理備份管理作業的結果 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/* | 建立和管理備份原則 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectableItems/* | 建立和管理可以備份的項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/* | 建立和管理備份項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/* | 建立和管理保存備份項目的容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupSecurityPIN/* |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupUsageSummaries/read | 傳回復原服務之受保護項目和受保護伺服器的摘要。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/certificates/* | 建立和管理備份復原服務保存庫中與備份相關的憑證 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/* | 建立和管理與保存庫相關的擴充資訊 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/read | 取得復原服務保存庫的警示。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/* | 建立和管理註冊的身分識別 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/* | 建立和管理復原服務保存庫的使用方式 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/* |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupconfig/* |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupValidateOperation/action | 驗證受保護項目上的作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/write | 「建立保存庫」作業會建立 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/read | 傳回復原服務保存庫的備份作業狀態。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngines/read | 傳回已向保存庫註冊的所有備份管理伺服器。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/* |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectableContainers/read | 取得所有可保護的容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | 檢查復原服務保存庫的備份狀態 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupPreValidateProtection/action |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | 驗證功能 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/write | 解決警示。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/operations/read | 作業會傳回資源提供者的作業清單 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 取得給定作業的作業狀態 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | 列出所有的備份保護用途 |
+> | [Microsoft. az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/* |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/* | 管理備份管理上作業的結果 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/* | 在復原服務保存庫的備份網狀架構內建立和管理備份容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/refreshContainers/action | 重新整理容器清單 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/* | 建立和管理備份作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/action | 匯出作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/* | 建立和管理備份管理作業的結果 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/* | 建立和管理備份原則 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectableItems/* | 建立和管理可以備份的項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/* | 建立和管理備份項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/* | 建立和管理保存備份項目的容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupSecurityPIN/* |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupUsageSummaries/read | 傳回復原服務之受保護項目和受保護伺服器的摘要。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/certificates/* | 建立和管理備份復原服務保存庫中與備份相關的憑證 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/* | 建立和管理與保存庫相關的擴充資訊 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/read | 取得復原服務保存庫的警示。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/* | 建立和管理註冊的身分識別 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/* | 建立和管理復原服務保存庫的使用方式 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/* |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupconfig/* |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupValidateOperation/action | 驗證受保護項目上的作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/write | 「建立保存庫」作業會建立 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/read | 傳回復原服務保存庫的備份作業狀態。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngines/read | 傳回已向保存庫註冊的所有備份管理伺服器。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/* |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectableContainers/read | 取得所有可保護的容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | 檢查復原服務保存庫的備份狀態 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupPreValidateProtection/action |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | 驗證功能 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/write | 解決警示。 |
+> | [Microsoft. az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/operations/read | 作業會傳回資源提供者的作業清單 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 取得給定作業的作業狀態 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | 列出所有的備份保護用途 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -1416,66 +1416,66 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 
 ### <a name="backup-operator"></a>備份操作員
 
-可讓您管理備份服務，但移除備份、建立保存庫，並將存取權提供給其他人[深入瞭解](../backup/backup-rbac-rs-vault.md)
+可讓您管理備份服務，但移除備份、建立保存庫以及為其他人提供存取權的 [詳細資訊](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 取得虛擬網路定義 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/read | 傳回作業的狀態 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/operationResults/read | 取得對保護容器執行之作業的結果。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 對受保護的項目執行備份。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 取得對受保護項目執行之作業的結果。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 傳回對受保護項目執行之作業的狀態。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/read | 傳回受保護項目的物件詳細資料 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 為受保護的項目佈建即時項目復原 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 取得受保護項目的復原點。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 還原受保護項目的復原點。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 為受保護的項目撤銷即時項目復原 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/write | 建立備用的受保護項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/read | 傳回所有已註冊的容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/refreshContainers/action | 重新整理容器清單 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/* | 建立和管理備份作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/action | 匯出作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/* | 建立和管理備份管理作業的結果 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operationResults/read | 取得原則作業的結果。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/read | 傳回所有保護原則 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectableItems/* | 建立和管理可以備份的項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/read | 傳回所有受保護項目的清單。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/read | 傳回屬於訂用帳戶的所有容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupUsageSummaries/read | 傳回復原服務之受保護項目和受保護伺服器的摘要。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/certificates/write | 「更新資源憑證」作業會更新資源/保存庫的認證憑證。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/write | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/read | 取得復原服務保存庫的警示。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/read | 「取得作業結果」作業可用來取得以非同步方式提交之作業的作業狀態和結果 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/write | 「註冊服務容器」作業可用來向復原服務註冊容器。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/* |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupValidateOperation/action | 驗證受保護項目上的作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/read | 傳回復原服務保存庫的備份作業狀態。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operations/read | 取得原則作業的狀態。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/write | 建立已註冊的容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/inquire/action | 執行容器內工作負載的查詢 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngines/read | 傳回已向保存庫註冊的所有備份管理伺服器。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/write | 建立備份保護用途 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/read | 取得備份保護用途 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectableContainers/read | 取得所有可保護的容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/items/read | 取得容器中的所有項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | 檢查復原服務保存庫的備份狀態 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupPreValidateProtection/action |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | 驗證功能 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/write | 解決警示。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/operations/read | 作業會傳回資源提供者的作業清單 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 取得給定作業的作業狀態 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | 列出所有的備份保護用途 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/read | 傳回作業的狀態 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/operationResults/read | 取得對保護容器執行之作業的結果。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 對受保護的項目執行備份。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 取得對受保護項目執行之作業的結果。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 傳回對受保護項目執行之作業的狀態。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/read | 傳回受保護項目的物件詳細資料 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 為受保護的項目佈建即時項目復原 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 取得受保護項目的復原點。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 還原受保護項目的復原點。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 為受保護的項目撤銷即時項目復原 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/write | 建立備用的受保護項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/read | 傳回所有已註冊的容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/refreshContainers/action | 重新整理容器清單 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/* | 建立和管理備份作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/action | 匯出作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/* | 建立和管理備份管理作業的結果 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operationResults/read | 取得原則作業的結果。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/read | 傳回所有保護原則 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectableItems/* | 建立和管理可以備份的項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/read | 傳回所有受保護項目的清單。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/read | 傳回屬於訂用帳戶的所有容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupUsageSummaries/read | 傳回復原服務之受保護項目和受保護伺服器的摘要。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/certificates/write | 「更新資源憑證」作業會更新資源/保存庫的認證憑證。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/write | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/read | 取得復原服務保存庫的警示。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/read | 「取得作業結果」作業可用來取得以非同步方式提交之作業的作業狀態和結果 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/write | 「註冊服務容器」作業可用來向復原服務註冊容器。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/* |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupValidateOperation/action | 驗證受保護項目上的作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/read | 傳回復原服務保存庫的備份作業狀態。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operations/read | 取得原則作業的狀態。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/write | 建立已註冊的容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/inquire/action | 執行容器內工作負載的查詢 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngines/read | 傳回已向保存庫註冊的所有備份管理伺服器。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/write | 建立備份保護用途 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/read | 取得備份保護用途 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectableContainers/read | 取得所有可保護的容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/items/read | 取得容器中的所有項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | 檢查復原服務保存庫的備份狀態 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupPreValidateProtection/action |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | 驗證功能 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/write | 解決警示。 |
+> | [Microsoft. az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/operations/read | 作業會傳回資源提供者的作業清單 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 取得給定作業的作業狀態 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | 列出所有的備份保護用途 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -1565,49 +1565,49 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 
 ### <a name="backup-reader"></a>備份讀取者
 
-可以查看備份服務，但無法進行變更[深入瞭解](../backup/backup-rbac-rs-vault.md)
+可以查看備份服務，但無法進行變更 [深入瞭解](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp 是服務所使用的內部作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/read | 傳回作業的狀態 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/operationResults/read | 取得對保護容器執行之作業的結果。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 取得對受保護項目執行之作業的結果。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 傳回對受保護項目執行之作業的狀態。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/read | 傳回受保護項目的物件詳細資料 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 取得受保護項目的復原點。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/read | 傳回所有已註冊的容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/operationResults/read | 傳回作業的作業結果。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/read | 傳回所有作業物件 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/action | 匯出作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/read | 傳回復原服務保存庫的備份作業結果。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operationResults/read | 取得原則作業的結果。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/read | 傳回所有保護原則 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/read | 傳回所有受保護項目的清單。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/read | 傳回屬於訂用帳戶的所有容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupUsageSummaries/read | 傳回復原服務之受保護項目和受保護伺服器的摘要。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/read | 取得復原服務保存庫的警示。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/read | 「取得作業結果」作業可用來取得以非同步方式提交之作業的作業狀態和結果 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/read | 傳回復原服務保存庫的儲存體組態。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupconfig/read | 傳回復原服務保存庫的組態。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/read | 傳回復原服務保存庫的備份作業狀態。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operations/read | 取得原則作業的狀態。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngines/read | 傳回已向保存庫註冊的所有備份管理伺服器。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/read | 取得備份保護用途 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/items/read | 取得容器中的所有項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | 檢查復原服務保存庫的備份狀態 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/write | 解決警示。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/operations/read | 作業會傳回資源提供者的作業清單 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 取得給定作業的作業狀態 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | 列出所有的備份保護用途 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | 驗證功能 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp 是服務所使用的內部作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/read | 傳回作業的狀態 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/operationResults/read | 取得對保護容器執行之作業的結果。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 取得對受保護項目執行之作業的結果。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 傳回對受保護項目執行之作業的狀態。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/read | 傳回受保護項目的物件詳細資料 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 取得受保護項目的復原點。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/read | 傳回所有已註冊的容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/operationResults/read | 傳回作業的作業結果。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/read | 傳回所有作業物件 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/action | 匯出作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/read | 傳回復原服務保存庫的備份作業結果。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operationResults/read | 取得原則作業的結果。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/read | 傳回所有保護原則 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/read | 傳回所有受保護項目的清單。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/read | 傳回屬於訂用帳戶的所有容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupUsageSummaries/read | 傳回復原服務之受保護項目和受保護伺服器的摘要。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/read | 取得復原服務保存庫的警示。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/read | 「取得作業結果」作業可用來取得以非同步方式提交之作業的作業狀態和結果 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/read | 傳回復原服務保存庫的儲存體組態。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupconfig/read | 傳回復原服務保存庫的組態。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/read | 傳回復原服務保存庫的備份作業狀態。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operations/read | 取得原則作業的狀態。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngines/read | 傳回已向保存庫註冊的所有備份管理伺服器。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/read | 取得備份保護用途 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/items/read | 取得容器中的所有項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | 檢查復原服務保存庫的備份狀態 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/write | 解決警示。 |
+> | [Microsoft. az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/operations/read | 作業會傳回資源提供者的作業清單 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | 取得給定作業的作業狀態 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | 列出所有的備份保護用途 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | 驗證功能 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -1684,11 +1684,11 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/* | 建立及管理儲存體帳戶 |
+> | [Microsoft. Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/* | 建立及管理儲存體帳戶 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -1729,13 +1729,13 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 
 ### <a name="classic-storage-account-key-operator-service-role"></a>傳統儲存體帳戶金鑰操作員服務角色
 
-傳統儲存體帳戶金鑰操作員可在傳統儲存體帳戶上列出及重新產生金鑰[深入瞭解](../key-vault/secrets/overview-storage-keys.md)
+您可以使用傳統儲存體帳戶金鑰操作員，在傳統儲存體帳戶上列出和重新產生金鑰。 [深入瞭解](../key-vault/secrets/overview-storage-keys.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listkeys/action | 列出儲存體帳戶的存取金鑰。 |
-> | [Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/regeneratekey/action | 重新產生儲存體帳戶的現有存取金鑰。 |
+> | [Microsoft. Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listkeys/action | 列出儲存體帳戶的存取金鑰。 |
+> | [Microsoft. Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/regeneratekey/action | 重新產生儲存體帳戶的現有存取金鑰。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -1776,11 +1776,11 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [Databox](resource-provider-operations.md#microsoftdatabox)/* |  |
+> | [資料箱](resource-provider-operations.md#microsoftdatabox)/* |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -1825,14 +1825,14 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Databox](resource-provider-operations.md#microsoftdatabox)/*/read |  |
-> | [Databox](resource-provider-operations.md#microsoftdatabox)/jobs/listsecrets/action |  |
-> | [Databox](resource-provider-operations.md#microsoftdatabox)/jobs/listcredentials/action | 列出與訂單相關的未加密認證。 |
-> | [Databox](resource-provider-operations.md#microsoftdatabox)/locations/availableSkus/action | 此方法會傳回可用的 SKU 清單。 |
-> | [Databox](resource-provider-operations.md#microsoftdatabox)/locations/validateInputs/action | 此方法會執行所有類型的驗證。 |
-> | [Databox](resource-provider-operations.md#microsoftdatabox)/locations/regionConfiguration/action | 此方法會傳回區域的設定。 |
-> | [Databox](resource-provider-operations.md#microsoftdatabox)/locations/validateAddress/action | 驗證出貨地址，並提供備用的地址 (若有的話)。 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [資料箱](resource-provider-operations.md#microsoftdatabox)/*/read |  |
+> | [Microsoft. 資料箱](resource-provider-operations.md#microsoftdatabox)/jobs/listsecrets/action |  |
+> | [Microsoft. 資料箱](resource-provider-operations.md#microsoftdatabox)/jobs/listcredentials/action | 列出與訂單相關的未加密認證。 |
+> | [Microsoft. 資料箱](resource-provider-operations.md#microsoftdatabox)/locations/availableSkus/action | 此方法會傳回可用的 SKU 清單。 |
+> | [Microsoft. 資料箱](resource-provider-operations.md#microsoftdatabox)/locations/validateInputs/action | 此方法會執行所有類型的驗證。 |
+> | [Microsoft. 資料箱](resource-provider-operations.md#microsoftdatabox)/locations/regionConfiguration/action | 此方法會傳回區域的設定。 |
+> | [Microsoft. 資料箱](resource-provider-operations.md#microsoftdatabox)/locations/validateAddress/action | 驗證出貨地址，並提供備用的地址 (若有的話)。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -1883,27 +1883,27 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | Microsoft.BigAnalytics/accounts/* |  |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/* |  |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | Microsoft.BigAnalytics/accounts/Delete |  |
 > | Microsoft.BigAnalytics/accounts/TakeOwnership/action |  |
 > | Microsoft.BigAnalytics/accounts/Write |  |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/Delete | 刪除 DataLakeAnalytics 帳戶。 |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/TakeOwnership/action | 授與權限以取消其他使用者所提交的作業。 |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/Write | 建立或更新 DataLakeAnalytics 帳戶。 |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/dataLakeStoreAccounts/Write | 建立或更新 DataLakeAnalytics 帳戶所連結的 DataLakeStore 帳戶。 |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/dataLakeStoreAccounts/Delete | 取消 DataLakeStore 帳戶與 DataLakeAnalytics 帳戶的連結。 |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/storageAccounts/Write | 建立或更新 DataLakeAnalytics 帳戶所連結的儲存體帳戶。 |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/storageAccounts/Delete | 取消儲存體帳戶與 DataLakeAnalytics 帳戶的連結。 |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/firewallRules/Write | 建立或更新防火牆規則。 |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/firewallRules/Delete | 刪除防火牆規則。 |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/computePolicies/Write | 建立或更新計算原則。 |
-> | [DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/computePolicies/Delete | 刪除計算原則。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/Delete | 刪除 DataLakeAnalytics 帳戶。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/TakeOwnership/action | 授與權限以取消其他使用者所提交的作業。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/Write | 建立或更新 DataLakeAnalytics 帳戶。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/dataLakeStoreAccounts/Write | 建立或更新 DataLakeAnalytics 帳戶所連結的 DataLakeStore 帳戶。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/dataLakeStoreAccounts/Delete | 取消 DataLakeStore 帳戶與 DataLakeAnalytics 帳戶的連結。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/storageAccounts/Write | 建立或更新 DataLakeAnalytics 帳戶所連結的儲存體帳戶。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/storageAccounts/Delete | 取消儲存體帳戶與 DataLakeAnalytics 帳戶的連結。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/firewallRules/Write | 建立或更新防火牆規則。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/firewallRules/Delete | 刪除防火牆規則。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/computePolicies/Write | 建立或更新計算原則。 |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/accounts/computePolicies/Delete | 刪除計算原則。 |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -1962,9 +1962,9 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/ListAccountSas/action | 傳回指定儲存體帳戶的帳戶 SAS 權杖。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/ListAccountSas/action | 傳回指定儲存體帳戶的帳戶 SAS 權杖。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2009,10 +2009,10 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | 建立、更新或讀取 Analysis Server 的診斷設定 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/action | 將資源 (例如，儲存體帳戶或 SQL Database) 加入至子網路。 不可警示。 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/* | 建立及管理儲存體帳戶 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/* | 建立及管理儲存體帳戶 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -2060,8 +2060,8 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/regeneratekey/action | 重新產生指定儲存體帳戶的存取金鑰。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/regeneratekey/action | 重新產生指定儲存體帳戶的存取金鑰。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2101,17 +2101,17 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/delete | 刪除容器。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | 傳回一個容器或一份容器清單。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/write | 修改容器的中繼資料或屬性。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 傳回 Blob 服務的使用者委派金鑰。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/delete | 刪除容器。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | 傳回一個容器或一份容器清單。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/write | 修改容器的中繼資料或屬性。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 傳回 Blob 服務的使用者委派金鑰。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | 刪除 Blob。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | 傳回一個 blob 或一份 blob 清單。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/move/action | 將 blob 從一個路徑移到另一個路徑 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | 寫入 blob。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/delete | 刪除 Blob。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | 傳回一個 blob 或一份 blob 清單。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/move/action | 將 blob 從一個路徑移到另一個路徑 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/write | 寫入 blob。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2154,12 +2154,12 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/* | 容器的完整權限。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 傳回 Blob 服務的使用者委派金鑰。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/* | 容器的完整權限。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 傳回 Blob 服務的使用者委派金鑰。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/* | Blob 的完整權限。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/* | Blob 的完整權限。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2197,12 +2197,12 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | 傳回一個容器或一份容器清單。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 傳回 Blob 服務的使用者委派金鑰。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/read | 傳回一個容器或一份容器清單。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 傳回 Blob 服務的使用者委派金鑰。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | 傳回一個 blob 或一份 blob 清單。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/containers/blobs/read | 傳回一個 blob 或一份 blob 清單。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2240,7 +2240,7 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 傳回 Blob 服務的使用者委派金鑰。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/action | 傳回 Blob 服務的使用者委派金鑰。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2283,9 +2283,9 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/read | 傳回一個檔案/資料夾，或一份檔案/資料夾清單。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/write | 傳回寫入檔案或建立資料夾的結果。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/delete | 傳回刪除檔案/資料夾的結果。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/read | 傳回一個檔案/資料夾，或一份檔案/資料夾清單。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/write | 傳回寫入檔案或建立資料夾的結果。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/delete | 傳回刪除檔案/資料夾的結果。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2326,10 +2326,10 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/read | 傳回一個檔案/資料夾，或一份檔案/資料夾清單。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/write | 傳回寫入檔案或建立資料夾的結果。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/delete | 傳回刪除檔案/資料夾的結果。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/modifypermissions/action | 傳回修改檔案/資料夾權限的結果。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/read | 傳回一個檔案/資料夾，或一份檔案/資料夾清單。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/write | 傳回寫入檔案或建立資料夾的結果。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/delete | 傳回刪除檔案/資料夾的結果。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/modifypermissions/action | 傳回修改檔案/資料夾權限的結果。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2371,7 +2371,7 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/read | 傳回一個檔案/資料夾，或一份檔案/資料夾清單。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/read | 傳回一個檔案/資料夾，或一份檔案/資料夾清單。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2406,15 +2406,15 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/delete | 刪除佇列。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | 傳回一個佇列或一份佇列清單。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/write | 修改佇列中繼資料或屬性。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/delete | 刪除佇列。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | 傳回一個佇列或一份佇列清單。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/write | 修改佇列中繼資料或屬性。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/delete | 從佇列中刪除一或多個訊息。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/read | 從佇列中瞄核或取出一或多個訊息。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/write | 將訊息新增至佇列。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/delete | 從佇列中刪除一或多個訊息。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/read | 從佇列中瞄核或取出一或多個訊息。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/write | 將訊息新增至佇列。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2459,8 +2459,8 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/read | 瞄核訊息。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/process/action | 取出和刪除訊息。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/read | 瞄核訊息。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/process/action | 取出和刪除訊息。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2500,7 +2500,7 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/add/action | 將訊息新增至佇列。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/add/action | 將訊息新增至佇列。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2535,11 +2535,11 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | 傳回佇列或佇列清單。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/read | 傳回佇列或佇列清單。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/read | 從佇列中瞄核或取出一或多個訊息。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/queues/messages/read | 從佇列中瞄核或取出一或多個訊息。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2583,7 +2583,7 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/read |  |
+> | [Microsoft. Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/read |  |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -2620,10 +2620,10 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft 搜尋](resource-provider-operations.md#microsoftsearch)/searchServices/* | 建立和管理搜尋服務 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. Search](resource-provider-operations.md#microsoftsearch)/searchServices/* | 建立和管理搜尋服務 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -2671,12 +2671,12 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [/ServerFarms/*](resource-provider-operations.md#microsoftweb) | 建立和管理伺服器陣列 |
-> | [Microsoft Web](resource-provider-operations.md#microsoftweb)/hostingEnvironments/Join/Action | 加入 App Service 環境 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/* | 建立和管理伺服器陣列 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/hostingEnvironments/Join/Action | 加入 App Service 環境 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2725,15 +2725,15 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/components/* | 建立和管理 Insights 元件 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [/Certificates/*](resource-provider-operations.md#microsoftweb) | 建立和管理網站憑證 |
-> | [Microsoft Web](resource-provider-operations.md#microsoftweb)/listSitesAssignedToHostName/read | 取得指派給主機名稱之網站的名稱。 |
-> | [Microsoft Web](resource-provider-operations.md#microsoftweb)/serverFarms/join/action | 加入 App Service 計畫 |
-> | [Microsoft Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | 取得 App Service 方案的屬性 |
-> | [/Sites/*](resource-provider-operations.md#microsoftweb) | 建立和管理網站 (建立網站也需要相關聯應用程式服務方案的寫入權限) |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/certificates/* | 建立和管理網站憑證 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/listSitesAssignedToHostName/read | 取得指派給主機名稱之網站的名稱。 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/join/action | 加入 App Service 計畫 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | 取得 App Service 方案的屬性 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/sites/* | 建立和管理網站 (建立網站也需要相關聯應用程式服務方案的寫入權限) |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2781,12 +2781,12 @@ Avere vFXT 叢集用來管理叢集的[深入瞭解](../avere-vfxt/avere-vfxt-ma
 
 ### <a name="acrdelete"></a>AcrDelete
 
-acr 刪除[深入瞭解](../container-registry/container-registry-roles.md)
+acr 刪除 [深入瞭解](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/artifacts/delete | 刪除容器登錄中的成品。 |
+> | [Microsoft. >microsoft.containerregistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/artifacts/delete | 刪除容器登錄中的成品。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2820,12 +2820,12 @@ acr 刪除[深入瞭解](../container-registry/container-registry-roles.md)
 
 ### <a name="acrimagesigner"></a>AcrImageSigner
 
-acr 影像簽署者[深入瞭解](../container-registry/container-registry-roles.md)
+acr 影像簽署者 [深入瞭解](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/sign/write | 推送/提取容器登錄的內容信任中繼資料。 |
+> | [Microsoft. >microsoft.containerregistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/sign/write | 推送/提取容器登錄的內容信任中繼資料。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2859,12 +2859,12 @@ acr 影像簽署者[深入瞭解](../container-registry/container-registry-roles
 
 ### <a name="acrpull"></a>AcrPull
 
-acr pull[深入瞭解](../container-registry/container-registry-roles.md)
+acr 提取 [深入瞭解](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/read | 從容器登錄中提取或取得映像。 |
+> | [Microsoft. >microsoft.containerregistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/read | 從容器登錄中提取或取得映像。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2898,13 +2898,13 @@ acr pull[深入瞭解](../container-registry/container-registry-roles.md)
 
 ### <a name="acrpush"></a>AcrPush
 
-acr push[深入瞭解](../container-registry/container-registry-roles.md)
+acr push [深入瞭解](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/read | 從容器登錄中提取或取得映像。 |
-> | [ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/push/write | 將映像推送或寫入至容器登錄。 |
+> | [Microsoft. >microsoft.containerregistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/pull/read | 從容器登錄中提取或取得映像。 |
+> | [Microsoft. >microsoft.containerregistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/push/write | 將映像推送或寫入至容器登錄。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2944,7 +2944,7 @@ ACR 隔離資料讀取者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/read | 從容器登錄中提取或取得隔離的映像 |
+> | [Microsoft. >microsoft.containerregistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/read | 從容器登錄中提取或取得隔離的映像 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -2983,8 +2983,8 @@ ACR 隔離資料寫入者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/read | 從容器登錄中提取或取得隔離的映像 |
-> | [ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/write | 寫入/修改已隔離映像的隔離狀態 |
+> | [Microsoft. >microsoft.containerregistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/read | 從容器登錄中提取或取得隔離的映像 |
+> | [Microsoft. >microsoft.containerregistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/quarantine/write | 寫入/修改已隔離映像的隔離狀態 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -3024,8 +3024,9 @@ ACR 隔離資料寫入者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/action | 列出受控叢集的 clusterAdmin 認證 |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/action | 使用清單認證依角色名稱取得受控叢集存取設定檔 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/action | 列出受控叢集的 clusterAdmin 認證 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/action | 使用清單認證依角色名稱取得受控叢集存取設定檔 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | 取得受控叢集 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -3045,7 +3046,8 @@ ACR 隔離資料寫入者
     {
       "actions": [
         "Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action",
-        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action"
+        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -3065,7 +3067,8 @@ ACR 隔離資料寫入者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | 取得受控叢集 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -3084,7 +3087,8 @@ ACR 隔離資料寫入者
   "permissions": [
     {
       "actions": [
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -3099,14 +3103,14 @@ ACR 隔離資料寫入者
 
 ### <a name="azure-kubernetes-service-contributor-role"></a>Azure Kubernetes Service 參與者角色
 
-授與讀取和寫入 Azure Kubernetes Service 叢集的存取權[深入瞭解](../aks/concepts-identity.md)
+授與讀取和寫入 Azure Kubernetes Service 叢集的存取權 [深入瞭解](../aks/concepts-identity.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | 取得受控叢集 |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/write | 建立新的受控叢集，或更新現有的受控叢集 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | 取得受控叢集 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/write | 建立新的受控叢集，或更新現有的受控叢集 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -3149,21 +3153,21 @@ ACR 隔離資料寫入者
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | /Deployments/write[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 建立或更新部署。 |
-> | /Subscriptions/operationresults/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶作業結果。 |
-> | /Subscriptions/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶清單。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/write | 建立或更新部署。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
 > | **NotDataActions** |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | 寫入 resourcequotas |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/delete | 刪除 resourcequotas |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | 寫入命名空間 |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/delete | 刪除命名空間 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | 寫入 resourcequotas |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/delete | 刪除 resourcequotas |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | 寫入命名空間 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/delete | 刪除命名空間 |
 
 ```json
 {
@@ -3203,7 +3207,7 @@ ACR 隔離資料寫入者
 }
 ```
 
-### <a name="azure-kubernetes-service-rbac-cluster-admin"></a>Azure Kubernetes Service RBAC 叢集系統管理員
+### <a name="azure-kubernetes-service-rbac-cluster-admin"></a>Azure Kubernetes Service RBAC 叢集管理員
 
 可讓您管理叢集中的所有資源。 [深入了解](../aks/manage-azure-rbac.md)
 
@@ -3212,16 +3216,16 @@ ACR 隔離資料寫入者
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | /Deployments/write[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 建立或更新部署。 |
-> | /Subscriptions/operationresults/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶作業結果。 |
-> | /Subscriptions/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶清單。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/write | 建立或更新部署。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/* |  |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -3258,29 +3262,29 @@ ACR 隔離資料寫入者
 }
 ```
 
-### <a name="azure-kubernetes-service-rbac-reader"></a>Azure Kubernetes Service RBAC 讀取器
+### <a name="azure-kubernetes-service-rbac-reader"></a>Azure Kubernetes Service RBAC 讀者
 
-可讓您查看叢集/命名空間中的所有資源（秘密除外）。 [深入了解](../aks/manage-azure-rbac.md)
+可讓您查看叢集/命名空間中的所有資源，但秘密除外。 [深入了解](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | /Deployments/write[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 建立或更新部署。 |
-> | /Subscriptions/operationresults/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶作業結果。 |
-> | /Subscriptions/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶清單。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/write | 建立或更新部署。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/read |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/read |  |
 > | **NotDataActions** |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/read |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/write |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/secrets/* |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/read |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/write |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/secrets/* |  |
 
 ```json
 {
@@ -3321,31 +3325,31 @@ ACR 隔離資料寫入者
 
 ### <a name="azure-kubernetes-service-rbac-writer"></a>Azure Kubernetes Service RBAC 寫入器
 
-可讓您更新叢集/命名空間中的所有專案，但資源配額、命名空間、pod 安全性原則、憑證簽署要求、（叢集）角色和（叢集）角色系結除外。 [深入了解](../aks/manage-azure-rbac.md)
+可讓您更新叢集/命名空間中的所有專案，但資源配額、命名空間、pod 安全性原則、憑證簽署要求、 (叢集) 角色和 (叢集) 角色系結除外。 [深入了解](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | /Deployments/write[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 建立或更新部署。 |
-> | /Subscriptions/operationresults/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶作業結果。 |
-> | /Subscriptions/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶清單。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/write | 建立或更新部署。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 列出受控叢集的 clusterUser 認證 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/read |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/write |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/read |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/*/write |  |
 > | **NotDataActions** |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/read |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/write |  |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | 寫入命名空間 |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | 寫入 resourcequotas |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/certificates.k8s.io/certificatesigningrequests/write | 寫入 certificatesigningrequests |
-> | [Microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/policy/podsecuritypolicies/write | 寫入 podsecuritypolicies |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/read |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/rbac.authorization.k8s.io/*/write |  |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/write | 寫入命名空間 |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/resourcequotas/write | 寫入 resourcequotas |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/certificates.k8s.io/certificatesigningrequests/write | 寫入 certificatesigningrequests |
+> | [Microsoft. >microsoft.containerservice](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/policy/podsecuritypolicies/write | 寫入 podsecuritypolicies |
 
 ```json
 {
@@ -3403,7 +3407,7 @@ ACR 隔離資料寫入者
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/readonlykeys/action | 讀取資料庫帳戶的唯讀金鑰。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/read | 讀取計量定義 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/Metrics/read | 讀取計量 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -3452,9 +3456,9 @@ ACR 隔離資料寫入者
 > | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/action | 將資源 (例如，儲存體帳戶或 SQL Database) 加入至子網路。 不可警示。 |
 > | **NotActions** |  |
@@ -3505,7 +3509,7 @@ ACR 隔離資料寫入者
 
 ### <a name="cosmosbackupoperator"></a>CosmosBackupOperator
 
-可以提交 Cosmos DB 資料庫或帳戶容器的還原要求[深入瞭解](../cosmos-db/role-based-access-control.md)
+可以提交 Cosmos DB 資料庫或帳戶的容器的還原要求 [深入瞭解](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -3554,9 +3558,9 @@ ACR 隔離資料寫入者
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/* | 建立及管理 Azure Cosmos DB 帳戶 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/action | 將資源 (例如，儲存體帳戶或 SQL Database) 加入至子網路。 不可警示。 |
 > | **NotActions** |  |
@@ -3606,11 +3610,11 @@ ACR 隔離資料寫入者
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft. Cache](resource-provider-operations.md#microsoftcache)/register/action | 向訂用帳戶註冊 'Microsoft.Cache' 資源提供者 |
-> | [/Redis/*](resource-provider-operations.md#microsoftcache) | 建立和管理 Redis 快取 |
+> | [Microsoft. Cache](resource-provider-operations.md#microsoftcache)/redis/* | 建立和管理 Redis 快取 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -3659,12 +3663,12 @@ ACR 隔離資料寫入者
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [/Locations/*](resource-provider-operations.md#microsoftsql)/read |  |
 > | [/Servers/databases/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL 資料庫 |
-> | [/Servers/read](resource-provider-operations.md#microsoftsql) | 傳回伺服器清單，或取得指定伺服器的屬性。 |
+> | [Microsoft .sql](resource-provider-operations.md#microsoftsql)/servers/read | 傳回伺服器清單，或取得指定伺服器的屬性。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 讀取計量 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | 讀取計量定義 |
@@ -3679,7 +3683,7 @@ ACR 隔離資料寫入者
 > | [/ManagedInstances/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/databases/auditingPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯稽核原則 |
 > | [/Servers/databases/auditingSettings/*](resource-provider-operations.md#microsoftsql) | 編輯稽核設定 |
-> | [/Servers/databases/auditRecords/read](resource-provider-operations.md#microsoftsql) | 擷取資料庫 Blob 稽核記錄 |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/read | 擷取資料庫 Blob 稽核記錄 |
 > | [/Servers/databases/connectionPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯連接原則 |
 > | [/Servers/databases/currentSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/databases/dataMaskingPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯資料遮罩原則 |
@@ -3764,17 +3768,17 @@ ACR 隔離資料寫入者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [/NetworkSecurityGroups/*](resource-provider-operations.md#microsoftnetwork) |  |
-> | [/RouteTables/*](resource-provider-operations.md#microsoftnetwork) |  |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/routeTables/* |  |
 > | [/Locations/*](resource-provider-operations.md#microsoftsql)/read |  |
 > | [/Locations/instanceFailoverGroups/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/*](resource-provider-operations.md#microsoftsql) |  |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [/VirtualNetworks/subnets/*](resource-provider-operations.md#microsoftnetwork) |  |
-> | [/VirtualNetworks/*](resource-provider-operations.md#microsoftnetwork) |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/* |  |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 讀取計量 |
@@ -3834,9 +3838,9 @@ ACR 隔離資料寫入者
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/action | 將資源 (例如，儲存體帳戶或 SQL Database) 加入至子網路。 不可警示。 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [/ManagedInstances/databases/currentSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/databases/recommendedSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/ManagedInstances/databases/schemas/tables/columns/sensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
@@ -3848,20 +3852,20 @@ ACR 隔離資料寫入者
 > | [/ManagedInstances/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/auditingPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 稽核原則 |
 > | [/Servers/auditingSettings/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 稽核設定 |
-> | [/Servers/extendedAuditingSettings/read](resource-provider-operations.md#microsoftsql) | 擷取指定伺服器上所設定之擴充伺服器 Blob 稽核原則的詳細資料 |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/extendedAuditingSettings/read | 擷取指定伺服器上所設定之擴充伺服器 Blob 稽核原則的詳細資料 |
 > | [/Servers/databases/auditingPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 資料庫稽核原則 |
 > | [/Servers/databases/auditingSettings/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 資料庫稽核設定 |
-> | [/Servers/databases/auditRecords/read](resource-provider-operations.md#microsoftsql) | 擷取資料庫 Blob 稽核記錄 |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/read | 擷取資料庫 Blob 稽核記錄 |
 > | [/Servers/databases/connectionPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 資料庫連接原則 |
 > | [/Servers/databases/currentSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/databases/dataMaskingPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 資料庫資料遮罩原則 |
-> | [/Servers/databases/extendedAuditingSettings/read](resource-provider-operations.md#microsoftsql) | 擷取指定資料庫上所設定之擴充 Blob 稽核原則的詳細資料 |
-> | [/Servers/databases/read](resource-provider-operations.md#microsoftsql) | 傳回資料庫清單，或取得指定資料庫的屬性。 |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/databases/extendedAuditingSettings/read | 擷取指定資料庫上所設定之擴充 Blob 稽核原則的詳細資料 |
+> | [Microsoft .sql](resource-provider-operations.md#microsoftsql)/servers/databases/read | 傳回資料庫清單，或取得指定資料庫的屬性。 |
 > | [/Servers/databases/recommendedSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
-> | [/Servers/databases/schemas/read](resource-provider-operations.md#microsoftsql) | 取得資料庫結構描述。 |
-> | [/Servers/databases/schemas/tables/columns/read](resource-provider-operations.md#microsoftsql) | 取得資料庫資料行。 |
+> | [Microsoft .sql](resource-provider-operations.md#microsoftsql)/servers/databases/schemas/read | 取得資料庫結構描述。 |
+> | [Microsoft .sql](resource-provider-operations.md#microsoftsql)/servers/databases/schemas/tables/columns/read | 取得資料庫資料行。 |
 > | [/Servers/databases/schemas/tables/columns/sensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
-> | [/Servers/databases/schemas/tables/read](resource-provider-operations.md#microsoftsql) | 取得資料庫資料表。 |
+> | [Microsoft .sql](resource-provider-operations.md#microsoftsql)/servers/databases/schemas/tables/read | 取得資料庫資料表。 |
 > | [/Servers/databases/securityAlertPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 資料庫安全性警示原則 |
 > | [/Servers/databases/securityMetrics/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 資料庫安全性度量 |
 > | [/Servers/databases/sensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
@@ -3870,7 +3874,7 @@ ACR 隔離資料寫入者
 > | [/Servers/databases/vulnerabilityAssessmentScans/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/databases/vulnerabilityAssessmentSettings/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/firewallRules/*](resource-provider-operations.md#microsoftsql) |  |
-> | [/Servers/read](resource-provider-operations.md#microsoftsql) | 傳回伺服器清單，或取得指定伺服器的屬性。 |
+> | [Microsoft .sql](resource-provider-operations.md#microsoftsql)/servers/read | 傳回伺服器清單，或取得指定伺服器的屬性。 |
 > | [/Servers/securityAlertPolicies/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server 安全性警示原則 |
 > | [/Servers/vulnerabilityAssessments/*](resource-provider-operations.md#microsoftsql) |  |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
@@ -3956,9 +3960,9 @@ ACR 隔離資料寫入者
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [/Locations/*](resource-provider-operations.md#microsoftsql)/read |  |
 > | [/Servers/*](resource-provider-operations.md#microsoftsql) | 建立和管理 SQL Server |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
@@ -3977,7 +3981,7 @@ ACR 隔離資料寫入者
 > | [/Servers/auditingSettings/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 稽核設定 |
 > | [/Servers/databases/auditingPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 資料庫稽核原則 |
 > | [/Servers/databases/auditingSettings/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 資料庫稽核設定 |
-> | [/Servers/databases/auditRecords/read](resource-provider-operations.md#microsoftsql) | 擷取資料庫 Blob 稽核記錄 |
+> | [Microsoft .Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/read | 擷取資料庫 Blob 稽核記錄 |
 > | [/Servers/databases/connectionPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 資料庫連接原則 |
 > | [/Servers/databases/currentSensitivityLabels/*](resource-provider-operations.md#microsoftsql) |  |
 > | [/Servers/databases/dataMaskingPolicies/*](resource-provider-operations.md#microsoftsql) | 編輯 SQL Server 資料庫資料遮罩原則 |
@@ -4194,14 +4198,14 @@ ACR 隔離資料寫入者
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [DataFactory](resource-provider-operations.md#microsoftdatafactory)/dataFactories/* | 建立和管理 Data Factory 以及其中的子資源。 |
-> | [DataFactory](resource-provider-operations.md#microsoftdatafactory)/factories/* | 建立和管理 Data Factory 以及其中的子資源。 |
+> | [Microsoft. DataFactory](resource-provider-operations.md#microsoftdatafactory)/dataFactories/* | 建立和管理 Data Factory 以及其中的子資源。 |
+> | [Microsoft. DataFactory](resource-provider-operations.md#microsoftdatafactory)/factories/* | 建立和管理 Data Factory 以及其中的子資源。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/write | 建立或更新 eventSubscription |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/write | 建立或更新 eventSubscription |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -4243,15 +4247,15 @@ ACR 隔離資料寫入者
 
 ### <a name="data-purger"></a>資料清除者
 
-可以清除分析資料[深入瞭解](../azure-monitor/platform/personal-data-mgmt.md)
+可以清除分析資料 [深入瞭解](../azure-monitor/platform/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/components/*/read |  |
+> | [/Components/*](resource-provider-operations.md#microsoftinsights)/read |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/components/purge/action | 從 Application Insights 清除資料 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/purge/action | 從工作區刪除指定的資料 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/purge/action | 從工作區刪除指定的資料 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -4296,9 +4300,9 @@ ACR 隔離資料寫入者
 > | [Microsoft HDInsight](resource-provider-operations.md#microsofthdinsight)/*/read |  |
 > | [Microsoft HDInsight](resource-provider-operations.md#microsofthdinsight)/clusters/getGatewaySettings/action | 取得 HDInsight 叢集的閘道設定 |
 > | [Microsoft HDInsight](resource-provider-operations.md#microsofthdinsight)/clusters/updateGatewaySettings/action | 更新 HDInsight 叢集的閘道設定 |
-> | [/Clusters/configurations/*](resource-provider-operations.md#microsofthdinsight) |  |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | /Deployments/operations/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出部署作業。 |
+> | [Microsoft HDInsight](resource-provider-operations.md#microsofthdinsight)/clusters/configurations/* |  |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | 取得或列出部署作業。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
@@ -4343,14 +4347,14 @@ ACR 隔離資料寫入者
 
 ### <a name="hdinsight-domain-services-contributor"></a>HDInsight 網域服務參與者
 
-可以讀取、建立、修改和刪除 HDInsight 所需的網域服務相關作業企業安全性套件[深入瞭解](../hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds.md)
+可以讀取、建立、修改和刪除 HDInsight 所需的網域服務相關作業企業安全性套件 [深入瞭解](../hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [MICROSOFT AAD](resource-provider-operations.md#microsoftaad)/*/read |  |
-> | [/DomainServices/*](resource-provider-operations.md#microsoftaad)/read |  |
-> | [/DomainServices/oucontainer/*](resource-provider-operations.md#microsoftaad) |  |
+> | [MICROSOFT AAD](resource-provider-operations.md#microsoftaad)/domainServices/*/read |  |
+> | [MICROSOFT AAD](resource-provider-operations.md#microsoftaad)/domainServices/oucontainer/* |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -4392,18 +4396,18 @@ ACR 隔離資料寫入者
 > | 動作 | 描述 |
 > | --- | --- |
 > | */read | 讀取密碼以外的所有類型的資源。 |
-> | [/AutomationAccounts/*](resource-provider-operations.md#microsoftautomation) |  |
-> | [Microsoft.classiccompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/extensions/* |  |
-> | [Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/action | 列出儲存體帳戶的存取金鑰。 |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/* |  |
+> | [Microsoft. Microsoft.classiccompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/extensions/* |  |
+> | [Microsoft. Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/action | 列出儲存體帳戶的存取金鑰。 |
 > | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/extensions/* |  |
-> | [HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | 安裝或更新 Azure Arc 擴充 |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | 安裝或更新 Azure Arc 擴充 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | 建立、更新或讀取 Analysis Server 的診斷設定 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/* |  |
+> | [OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/* |  |
 > | [Microsoft.operationsmanagement](resource-provider-operations.md#microsoftoperationsmanagement)/* |  |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | [/Subscriptions/resourcegroups/deployments/*](resource-provider-operations.md#microsoftresources) |  |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourcegroups/deployments/* |  |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -4457,11 +4461,11 @@ ACR 隔離資料寫入者
 > | 動作 | 描述 |
 > | --- | --- |
 > | */read | 讀取密碼以外的所有類型的資源。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 執行搜尋查詢 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 執行搜尋查詢 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/read | 擷取工作區的共用金鑰。 這些金鑰可用來將 Microsoft Operational Insights 代理程式連線到工作區。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/read | 擷取工作區的共用金鑰。 這些金鑰可用來將 Microsoft Operational Insights 代理程式連線到工作區。 |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -4501,16 +4505,16 @@ ACR 隔離資料寫入者
 
 ### <a name="blockchain-member-node-access-preview"></a>區塊鏈成員節點存取 (預覽)
 
-允許存取區塊鏈成員節點[深入瞭解](../blockchain/service/configure-aad.md)
+允許存取區塊鏈成員節點 [深入瞭解](../blockchain/service/configure-aad.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [區塊鏈](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/read | 取得或列出現有的區塊鏈成員交易節點。 |
+> | [Microsoft. 區塊鏈](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/read | 取得或列出現有的區塊鏈成員交易節點。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [區塊鏈](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/connect/action | 連線至區塊鏈成員交易節點。 |
+> | [Microsoft. 區塊鏈](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/connect/action | 連線至區塊鏈成員交易節點。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -4552,20 +4556,20 @@ ACR 隔離資料寫入者
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
-> | [Microsoft. Features](resource-provider-operations.md#microsoftfeatures)/features/read | 取得訂用帳戶的功能。 |
-> | [Microsoft. Features](resource-provider-operations.md#microsoftfeatures)/providers/features/read | 取得給定資源提供者中某個訂用帳戶的功能。 |
+> | [Microsoft. 功能](resource-provider-operations.md#microsoftfeatures)/features/read | 取得訂用帳戶的功能。 |
+> | [Microsoft. 功能](resource-provider-operations.md#microsoftfeatures)/providers/features/read | 取得給定資源提供者中某個訂用帳戶的功能。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | 建立、更新或讀取 Analysis Server 的診斷設定 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/read | 讀取記錄定義 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metricdefinitions/read | 讀取計量定義 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 讀取計量 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Deployments/operations/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出部署作業。 |
-> | /Subscriptions/operationresults/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶作業結果。 |
-> | /Subscriptions/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶清單。 |
-> | [/Subscriptions/resourcegroups/deployments/*](resource-provider-operations.md#microsoftresources) |  |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | 取得或列出部署作業。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourcegroups/deployments/* |  |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -4661,17 +4665,17 @@ ACR 隔離資料寫入者
 > | 動作 | 描述 |
 > | --- | --- |
 > | [CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/*/read |  |
-> | [CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/action | 列出金鑰 |
+> | [Microsoft. CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/action | 列出金鑰 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/read | 讀取傳統計量警示 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/read | 讀取資源診斷設定 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/read | 讀取記錄定義 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metricdefinitions/read | 讀取計量定義 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | 讀取計量 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | /Deployments/operations/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出部署作業。 |
-> | /Subscriptions/operationresults/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶作業結果。 |
-> | /Subscriptions/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶清單。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | 取得或列出部署作業。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -4723,7 +4727,7 @@ ACR 隔離資料寫入者
 
 ### <a name="remote-rendering-administrator"></a>遠端呈現系統管理員
 
-為使用者提供轉換、管理會話、轉譯和診斷功能，以進行 Azure 遠端轉譯[深入瞭解](../remote-rendering/how-tos/authentication.md)
+提供使用者轉換、管理會話、轉譯和診斷功能，以 Azure 遠端轉譯 [深入瞭解](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4732,14 +4736,14 @@ ACR 隔離資料寫入者
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/convert/action | 開始資產轉換 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/convert/read | 取得資產轉換屬性 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/convert/delete | 停止資產轉換 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/read | 取得會話屬性 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/action | 啟動會話 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/delete | 停止會話 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/render/read | 連接到會話 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/diagnostic/read | 連接到遠端轉譯檢查器 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/convert/action | 開始資產轉換 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/convert/read | 取得資產轉換屬性 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/convert/delete | 停止資產轉換 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/read | 取得會話屬性 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/action | 開始會話 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/delete | 停止會話 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/render/read | 連接至會話 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/diagnostic/read | 連接至遠端轉譯檢查 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -4776,7 +4780,7 @@ ACR 隔離資料寫入者
 
 ### <a name="remote-rendering-client"></a>遠端呈現用戶端
 
-為使用者提供 Azure 遠端呈現的管理會話、轉譯和診斷功能。 [深入了解](../remote-rendering/how-tos/authentication.md)
+為使用者提供 Azure 遠端轉譯管理會話、轉譯及診斷功能。 [深入了解](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4785,11 +4789,11 @@ ACR 隔離資料寫入者
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/read | 取得會話屬性 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/action | 啟動會話 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/delete | 停止會話 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/render/read | 連接到會話 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/diagnostic/read | 連接到遠端轉譯檢查器 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/read | 取得會話屬性 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/action | 開始會話 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/delete | 停止會話 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/render/read | 連接至會話 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/diagnostic/read | 連接至遠端轉譯檢查 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -4823,7 +4827,7 @@ ACR 隔離資料寫入者
 
 ### <a name="spatial-anchors-account-contributor"></a>空間錨點帳戶參與者
 
-可讓您管理帳戶中的空間錨點，但不能刪除它們[深入瞭解](../spatial-anchors/concepts/authentication.md)
+可讓您管理帳戶中的空間錨點，但不能刪除它們。 [深入瞭解](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4832,12 +4836,12 @@ ACR 隔離資料寫入者
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/create/action | 建立空間錨點 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | 探索附近的空間錨點 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/properties/read | 取得空間錨點的屬性 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | 找出空間錨點 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | 提交診斷資料，以協助改善 Azure 空間錨點服務的品質 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/write | 更新空間錨點屬性 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/create/action | 建立空間錨點 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | 探索附近的空間錨點 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/properties/read | 取得空間錨點的屬性 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | 找出空間錨點 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | 提交診斷資料，以協助改善 Azure 空間錨點服務的品質 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/write | 更新空間錨點屬性 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -4872,7 +4876,7 @@ ACR 隔離資料寫入者
 
 ### <a name="spatial-anchors-account-owner"></a>空間錨點帳戶擁有者
 
-可讓您管理帳戶中的空間錨點，包括刪除它們[深入瞭解](../spatial-anchors/concepts/authentication.md)
+可讓您管理帳戶中的空間錨點，包括刪除它們。 [深入瞭解](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4881,13 +4885,13 @@ ACR 隔離資料寫入者
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/create/action | 建立空間錨點 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/delete | 刪除空間錨點 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | 探索附近的空間錨點 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/properties/read | 取得空間錨點的屬性 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | 找出空間錨點 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | 提交診斷資料，以協助改善 Azure 空間錨點服務的品質 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/write | 更新空間錨點屬性 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/create/action | 建立空間錨點 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/delete | 刪除空間錨點 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | 探索附近的空間錨點 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/properties/read | 取得空間錨點的屬性 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | 找出空間錨點 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | 提交診斷資料，以協助改善 Azure 空間錨點服務的品質 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/write | 更新空間錨點屬性 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -4923,7 +4927,7 @@ ACR 隔離資料寫入者
 
 ### <a name="spatial-anchors-account-reader"></a>空間錨點帳戶讀者
 
-可讓您找出並讀取您帳戶中的空間錨點屬性[深入瞭解](../spatial-anchors/concepts/authentication.md)
+讓您找出並讀取帳戶中空間錨點的屬性 [瞭解更多](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -4932,10 +4936,10 @@ ACR 隔離資料寫入者
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | 探索附近的空間錨點 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/properties/read | 取得空間錨點的屬性 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | 找出空間錨點 |
-> | [MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | 提交診斷資料，以協助改善 Azure 空間錨點服務的品質 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | 探索附近的空間錨點 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/properties/read | 取得空間錨點的屬性 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | 找出空間錨點 |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | 提交診斷資料，以協助改善 Azure 空間錨點服務的品質 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -4971,17 +4975,17 @@ ACR 隔離資料寫入者
 
 ### <a name="api-management-service-contributor"></a>API 管理服務參與者
 
-可以管理服務和 Api[深入瞭解](../api-management/api-management-role-based-access-control.md)
+可以管理服務和 Api [深入瞭解](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/* | 建立和管理 API 管理服務 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/* | 建立和管理 API 管理服務 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -5022,28 +5026,28 @@ ACR 隔離資料寫入者
 
 ### <a name="api-management-service-operator-role"></a>API 管理服務操作員角色
 
-可以管理服務，但不能[深入瞭解](../api-management/api-management-role-based-access-control.md)api
+可管理服務，但 Api 無法 [深入瞭解](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/read | 讀取 API 管理服務執行個體 |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/backup/action | 將 API 管理服務備份到使用者所提供之儲存體帳戶中的指定容器 |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/delete | 刪除 API 管理服務執行個體 |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/managedeployments/action | 變更 SKU/單位、新增/移除 API 管理服務的區域部署 |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/read | 讀取 API 管理服務執行個體的中繼資料 |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/restore/action | 從使用者所提供之儲存體帳戶中的指定容器來還原 API 管理服務 |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/updatecertificate/action | 上傳 API 管理服務的 TLS/SSL 憑證 |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/updatehostname/action | 設定、更新或移除 API 管理服務的自訂網域名稱 |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/write | 建立或更新 API 管理服務執行個體 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/read | 讀取 API 管理服務執行個體 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/backup/action | 將 API 管理服務備份到使用者所提供之儲存體帳戶中的指定容器 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/delete | 刪除 API 管理服務執行個體 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/managedeployments/action | 變更 SKU/單位、新增/移除 API 管理服務的區域部署 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/read | 讀取 API 管理服務執行個體的中繼資料 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/restore/action | 從使用者所提供之儲存體帳戶中的指定容器來還原 API 管理服務 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/updatecertificate/action | 上傳 API 管理服務的 TLS/SSL 憑證 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/updatehostname/action | 設定、更新或移除 API 管理服務的自訂網域名稱 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/write | 建立或更新 API 管理服務執行個體 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/users/keys/read | 取得與使用者相關聯的金鑰 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/users/keys/read | 取得與使用者相關聯的金鑰 |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -5091,21 +5095,21 @@ ACR 隔離資料寫入者
 
 ### <a name="api-management-service-reader-role"></a>API 管理服務讀取者角色
 
-服務和 Api 的唯讀存取[深入瞭解](../api-management/api-management-role-based-access-control.md)
+服務和 Api 的唯讀存取權 [深入瞭解](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/read | 讀取 API 管理服務執行個體 |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/read | 讀取 API 管理服務執行個體的中繼資料 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/read | 讀取 API 管理服務執行個體 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/read | 讀取 API 管理服務執行個體的中繼資料 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
-> | [ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/users/keys/read | 取得與使用者相關聯的金鑰 |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/users/keys/read | 取得與使用者相關聯的金鑰 |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -5155,9 +5159,9 @@ ACR 隔離資料寫入者
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/read |  |
-> | [AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/write |  |
-> | [AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/delete |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/read |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/write |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/delete |  |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -5198,7 +5202,7 @@ ACR 隔離資料寫入者
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/read |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/read |  |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -5233,11 +5237,11 @@ ACR 隔離資料寫入者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 的匯流排](resource-provider-operations.md#microsoftservicebus)/* |  |
+> | [Microsoft。](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft 的匯流排](resource-provider-operations.md#microsoftservicebus)/* |  |
+> | [Microsoft。](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -5274,13 +5278,13 @@ ACR 隔離資料寫入者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft. 匯流排](resource-provider-operations.md#microsoftservicebus)/*/queues/read |  |
-> | [Microsoft. 匯流排](resource-provider-operations.md#microsoftservicebus)/*/topics/read |  |
-> | [Microsoft. 匯流排](resource-provider-operations.md#microsoftservicebus)/*/topics/subscriptions/read |  |
+> | [Microsoft](resource-provider-operations.md#microsoftservicebus)/queues/read |  |
+> | [Microsoft](resource-provider-operations.md#microsoftservicebus)/topics/read |  |
+> | [Microsoft](resource-provider-operations.md#microsoftservicebus)/topics/subscriptions/read |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft. 匯流排](resource-provider-operations.md#microsoftservicebus)/*/receive/action |  |
+> | [Microsoft](resource-provider-operations.md#microsoftservicebus)/receive/action |  |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -5319,13 +5323,13 @@ ACR 隔離資料寫入者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft. 匯流排](resource-provider-operations.md#microsoftservicebus)/*/queues/read |  |
-> | [Microsoft. 匯流排](resource-provider-operations.md#microsoftservicebus)/*/topics/read |  |
-> | [Microsoft. 匯流排](resource-provider-operations.md#microsoftservicebus)/*/topics/subscriptions/read |  |
+> | [Microsoft](resource-provider-operations.md#microsoftservicebus)/queues/read |  |
+> | [Microsoft](resource-provider-operations.md#microsoftservicebus)/topics/read |  |
+> | [Microsoft](resource-provider-operations.md#microsoftservicebus)/topics/subscriptions/read |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft. 匯流排](resource-provider-operations.md#microsoftservicebus)/*/send/action |  |
+> | [Microsoft](resource-provider-operations.md#microsoftservicebus)/send/action |  |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -5364,10 +5368,10 @@ ACR 隔離資料寫入者
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read | 取得 Azure Stack Edge 訂用帳戶的屬性 |
-> | [AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/*/action |  |
-> | [AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | 取得 Azure Stack Marketplace 產品的屬性 |
-> | [AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/read | 取得 Azure Stack 註冊的屬性 |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/edgeSubscriptions/read | 取得 Azure Stack Edge 訂用帳戶的屬性 |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/*/action |  |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/products/read | 取得 Azure Stack Marketplace 產品的屬性 |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/read | 取得 Azure Stack 註冊的屬性 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -5410,13 +5414,13 @@ ACR 隔離資料寫入者
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* |  |
-> | [EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | 依主題類型列出全域事件訂用帳戶 |
-> | [EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/eventSubscriptions/read | 列出區域事件訂用帳戶 |
-> | [EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/topicTypes/eventSubscriptions/read | 依主題類型列出區域事件訂用帳戶 |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* |  |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | 依主題類型列出全域事件訂用帳戶 |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/eventSubscriptions/read | 列出區域事件訂用帳戶 |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/topicTypes/eventSubscriptions/read | 依主題類型列出區域事件訂用帳戶 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -5465,11 +5469,11 @@ ACR 隔離資料寫入者
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/read | 讀取 eventSubscription |
-> | [EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | 依主題類型列出全域事件訂用帳戶 |
-> | [EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/eventSubscriptions/read | 列出區域事件訂用帳戶 |
-> | [EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/topicTypes/eventSubscriptions/read | 依主題類型列出區域事件訂用帳戶 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/read | 讀取 eventSubscription |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | 依主題類型列出全域事件訂用帳戶 |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/eventSubscriptions/read | 列出區域事件訂用帳戶 |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/topicTypes/eventSubscriptions/read | 依主題類型列出區域事件訂用帳戶 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -5508,7 +5512,7 @@ ACR 隔離資料寫入者
 
 ### <a name="fhir-data-contributor"></a>FHIR 資料參與者
 
-角色可讓使用者或主體完整存取 FHIR 資料[深入瞭解](../healthcare-apis/configure-azure-rbac.md)
+角色可讓使用者或主體完整存取 FHIR 資料。 [深入瞭解](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -5547,7 +5551,7 @@ ACR 隔離資料寫入者
 
 ### <a name="fhir-data-exporter"></a>FHIR 資料匯出工具
 
-角色可讓使用者或主體讀取和匯出 FHIR 資料[深入瞭解](../healthcare-apis/configure-azure-rbac.md)
+角色可讓使用者或主體讀取和匯出 FHIR 資料 [深入瞭解](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -5556,8 +5560,8 @@ ACR 隔離資料寫入者
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | HealthcareApis/services/fhir/resources/read | 讀取 FHIR 資源（包括搜尋和版本設定歷程記錄）。  |
-> | HealthcareApis/services/fhir/resources/export/action | 匯出作業（$export）。 |
+> | HealthcareApis/services/fhir/resources/read | 讀取 FHIR 資源 (包括搜尋和建立版本的歷程記錄) 。  |
+> | HealthcareApis/services/fhir/resources/export/action |  ($export) 的匯出作業。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -5588,7 +5592,7 @@ ACR 隔離資料寫入者
 
 ### <a name="fhir-data-reader"></a>FHIR 資料讀取器
 
-角色可讓使用者或主體讀取 FHIR 資料[深入瞭解](../healthcare-apis/configure-azure-rbac.md)
+角色可讓使用者或主體讀取 FHIR 資料 [瞭解更多](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -5597,7 +5601,7 @@ ACR 隔離資料寫入者
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | HealthcareApis/services/fhir/resources/read | 讀取 FHIR 資源（包括搜尋和版本設定歷程記錄）。  |
+> | HealthcareApis/services/fhir/resources/read | 讀取 FHIR 資源 (包括搜尋和建立版本的歷程記錄) 。  |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -5627,7 +5631,7 @@ ACR 隔離資料寫入者
 
 ### <a name="fhir-data-writer"></a>FHIR 資料寫入器外掛程式
 
-角色可讓使用者或主體讀取及寫入 FHIR 資料[深入瞭解](../healthcare-apis/configure-azure-rbac.md)
+角色可讓使用者或主體讀取和寫入 FHIR 資料 [深入瞭解](../healthcare-apis/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -5638,7 +5642,7 @@ ACR 隔離資料寫入者
 > | **DataActions** |  |
 > | HealthcareApis/services/fhir/resources/* |  |
 > | **NotDataActions** |  |
-> | HealthcareApis/services/fhir/resources/hardDelete/action | 實刪除（包括版本歷程記錄）。 |
+> | HealthcareApis/services/fhir/resources/hardDelete/action | 實刪除 (包括版本歷程記錄) 。 |
 
 ```json
 {
@@ -5764,9 +5768,9 @@ ACR 隔離資料寫入者
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | Microsoft.IntelligentSystems/accounts/* | 建立及管理 Intelligent Systems 帳戶 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -5813,26 +5817,26 @@ ACR 隔離資料寫入者
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/action | 列出儲存體帳戶的存取金鑰。 |
-> | [Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/read | 傳回具有給定帳戶的儲存體帳戶。 |
+> | [Microsoft. Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/action | 列出儲存體帳戶的存取金鑰。 |
+> | [Microsoft. Microsoft.classicstorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/read | 傳回具有給定帳戶的儲存體帳戶。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | 建立、更新或讀取 Analysis Server 的診斷設定 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/logdefinitions/* | 此為使用者需要透過入口網站存取活動記錄時所需的權限。 列出活動記錄檔中的記錄檔分類。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/* | 讀取度量定義 (可用資源的度量類型清單)。 |
 > | [Microsoft. 邏輯](resource-provider-operations.md#microsoftlogic)/* | 管理 Logic Apps 資源。 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/operationresults/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶作業結果。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [/ConnectionGateways/*](resource-provider-operations.md#microsoftweb) | 建立及管理「連線閘道」。 |
-> | [/Connections/*](resource-provider-operations.md#microsoftweb) | 建立及管理「連線」。 |
-> | [/CustomApis/*](resource-provider-operations.md#microsoftweb) | 建立及管理「自訂 API」。 |
-> | [Microsoft Web](resource-provider-operations.md#microsoftweb)/serverFarms/join/action | 加入 App Service 計畫 |
-> | [Microsoft Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | 取得 App Service 方案的屬性 |
-> | [Microsoft Web](resource-provider-operations.md#microsoftweb)/sites/functions/listSecrets/action | 列出函式秘密。 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/connectionGateways/* | 建立及管理「連線閘道」。 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/connections/* | 建立及管理「連線」。 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/customApis/* | 建立及管理「自訂 API」。 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/join/action | 加入 App Service 計畫 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | 取得 App Service 方案的屬性 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/sites/functions/listSecrets/action | 列出函式秘密。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -5892,22 +5896,22 @@ ACR 隔離資料寫入者
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/*/read | 讀取 Insights 警示規則 |
-> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/*/read |  |
-> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/*/read | 取得 Logic Apps 的診斷設定 |
-> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/*/read | 取得 Logic Apps 的可用計量。 |
+> | [/AlertRules/*](resource-provider-operations.md#microsoftinsights)/read | 讀取 Insights 警示規則 |
+> | [/MetricAlerts/*](resource-provider-operations.md#microsoftinsights)/read |  |
+> | [/DiagnosticSettings/*](resource-provider-operations.md#microsoftinsights)/read | 取得 Logic Apps 的診斷設定 |
+> | [/MetricDefinitions/*](resource-provider-operations.md#microsoftinsights)/read | 取得 Logic Apps 的可用計量。 |
 > | [Microsoft. 邏輯](resource-provider-operations.md#microsoftlogic)/*/read | 讀取 Logic Apps 資源。 |
 > | [Microsoft. 邏輯](resource-provider-operations.md#microsoftlogic)/workflows/disable/action | 停用工作流程。 |
 > | [Microsoft. 邏輯](resource-provider-operations.md#microsoftlogic)/workflows/enable/action | 啟用工作流程。 |
 > | [Microsoft. 邏輯](resource-provider-operations.md#microsoftlogic)/workflows/validate/action | 驗證工作流程。 |
-> | /Deployments/operations/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出部署作業。 |
-> | /Subscriptions/operationresults/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶作業結果。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | 取得或列出部署作業。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [/ConnectionGateways/*](resource-provider-operations.md#microsoftweb)/read | 讀取「連線閘道」。 |
-> | [/Connections/*](resource-provider-operations.md#microsoftweb)/read | 讀取「連線」。 |
-> | [/CustomApis/*](resource-provider-operations.md#microsoftweb)/read | 讀取「自訂 API」。 |
-> | [Microsoft Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | 取得 App Service 方案的屬性 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/connectionGateways/*/read | 讀取「連線閘道」。 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/connections/*/read | 讀取「連線」。 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/customApis/*/read | 讀取「自訂 API」。 |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | 取得 App Service 方案的屬性 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -5960,18 +5964,18 @@ ACR 隔離資料寫入者
 
 ### <a name="managed-identity-contributor"></a>受控身分識別參與者
 
-建立、讀取、更新和刪除使用者指派的身分識別[深入瞭解](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
+建立、讀取、更新及刪除使用者指派的身分識別 [深入瞭解](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft.managedidentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/read | 取得現有已指派使用者的身分識別 |
-> | [Microsoft.managedidentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/write | 建立新的已指派使用者的身分識別，或更新與現有已指派使用者之身分識別相關聯的標記 |
-> | [Microsoft.managedidentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/delete | 刪除現有已指派使用者的身分識別 |
+> | [Microsoft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/read | 取得現有已指派使用者的身分識別 |
+> | [Microsoft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/write | 建立新的已指派使用者的身分識別，或更新與現有已指派使用者之身分識別相關聯的標記 |
+> | [Microsoft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/delete | 刪除現有已指派使用者的身分識別 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6013,17 +6017,17 @@ ACR 隔離資料寫入者
 
 ### <a name="managed-identity-operator"></a>受控身分識別操作員
 
-讀取及指派使用者指派的身分識別[深入瞭解](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
+讀取及指派使用者指派的身分識別 [深入瞭解](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft.managedidentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/read |  |
-> | [Microsoft.managedidentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/assign/action |  |
+> | [Microsoft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/read |  |
+> | [Microsoft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/assign/action |  |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6067,24 +6071,24 @@ ACR 隔離資料寫入者
 
 ### <a name="azure-sentinel-contributor"></a>Azure Sentinel 參與者
 
-Azure Sentinel 參與者[深入瞭解](../sentinel/roles.md)
+Azure Sentinel 參與者 [深入瞭解](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/* |  |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/* |  |
-> | [Microsoft.operationsmanagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | 取得現有的 OMS 解決方案 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | 針對工作區中的資料執行查詢 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/* |  |
+> | [Microsoft. microsoft.operationsmanagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | 取得現有的 OMS 解決方案 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | 針對工作區中的資料執行查詢 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/workbooks/* |  |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6132,26 +6136,26 @@ Azure Sentinel 參與者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="azure-sentinel-reader"></a>Azure Sentinel 讀者
 
-Azure Sentinel 閱讀程式[深入瞭解](../sentinel/roles.md)
+Azure Sentinel 讀者 [深入瞭解](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
-> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 檢查使用者授權和使用權 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/LinkedServices/read | 取得指定工作區下已連結的服務。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/read | 取得已儲存的搜尋查詢 |
-> | [Microsoft.operationsmanagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | 取得現有的 OMS 解決方案 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | 針對工作區中的資料執行查詢 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 檢查使用者授權和使用權 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/LinkedServices/read | 取得指定工作區下已連結的服務。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/read | 取得已儲存的搜尋查詢 |
+> | [Microsoft. microsoft.operationsmanagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | 取得現有的 OMS 解決方案 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | 針對工作區中的資料執行查詢 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | 讀取活頁簿 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6201,28 +6205,28 @@ Azure Sentinel 閱讀程式[深入瞭解](../sentinel/roles.md)
 
 ### <a name="azure-sentinel-responder"></a>Azure Sentinel 回應者
 
-Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
+Azure Sentinel 回應者 [深入瞭解](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/read |  |
-> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 檢查使用者授權和使用權 |
-> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
-> | [SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/read | 取得已儲存的搜尋查詢 |
-> | [Microsoft.operationsmanagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | 取得現有的 OMS 解決方案 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | 針對工作區中的資料執行查詢 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | 檢查使用者授權和使用權 |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | 使用新的引擎進行搜尋。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/read | 取得已儲存的搜尋查詢 |
+> | [Microsoft. microsoft.operationsmanagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | 取得現有的 OMS 解決方案 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | 針對工作區中的資料執行查詢 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | 取得工作區下的資料來源。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | 讀取活頁簿 |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6282,12 +6286,12 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/* |  |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/deletedVaults/purge/action | 清除虛刪除的 Key Vault |
-> | [KeyVault](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
+> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/deletedVaults/purge/action | 清除虛刪除的 Key Vault |
+> | [Microsoft. KeyVault](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -6333,15 +6337,15 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | 建立及管理原則指派 |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | 建立及管理原則定義 |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | 建立及管理原則集合 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | 建立及管理原則指派 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | 建立及管理原則定義 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | 建立及管理原則集合 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft。安全性](resource-provider-operations.md#microsoftsecurity)/* | 建立和管理安全性元件和原則 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
+> | [Microsoft. operationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft 安全性](resource-provider-operations.md#microsoftsecurity)/* | 建立和管理安全性元件和原則 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6391,7 +6395,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/assessments/write | 在您的訂用帳戶上建立或更新安全性評量 |
+> | [Microsoft. 安全性](resource-provider-operations.md#microsoftsecurity)/assessments/write | 在您的訂用帳戶上建立或更新安全性評量 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -6432,13 +6436,13 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft.classiccompute](resource-provider-operations.md#microsoftclassiccompute)/*/read | 讀取傳統虛擬機器的設定資訊 |
-> | [Microsoft.classiccompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/*/write | 撰寫傳統虛擬機器的設定 |
+> | [Microsoft. Microsoft.classiccompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/*/write | 撰寫傳統虛擬機器的設定 |
 > | [Microsoft.classicnetwork](resource-provider-operations.md#microsoftclassicnetwork)/*/read | 讀取傳統網路的組態資訊 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft。安全性](resource-provider-operations.md#microsoftsecurity)/* | 建立和管理安全性元件和原則 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft 安全性](resource-provider-operations.md#microsoftsecurity)/* | 建立和管理安全性元件和原則 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6489,12 +6493,12 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/read | 讀取傳統計量警示 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources)/read |  |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. operationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | 檢視記錄分析資料 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/*/read |  |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/read | 讀取安全性元件和原則 |
-> | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/*/read |  |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
+> | [Microsoft. Support](resource-provider-operations.md#microsoftsupport)/*/read |  |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -6544,39 +6548,39 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/read | 取得可用性設定組的屬性 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/availabilitySets/read | 取得可用性設定組的屬性 |
 > | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read | 讀取虛擬機器的屬性 (VM 大小、執行階段狀態、VM 擴充功能等) |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/deallocate/action | 關閉虛擬機器的電源，並將計算資源釋出 |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/read | 取得虛擬機器的屬性 |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/restart/action | 重新啟動虛擬機器 |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/start/action | 啟動虛擬機器 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/virtualMachines/deallocate/action | 關閉虛擬機器的電源，並將計算資源釋出 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/virtualMachines/read | 取得虛擬機器的屬性 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/virtualMachines/restart/action | 重新啟動虛擬機器 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/virtualMachines/start/action | 啟動虛擬機器 |
 > | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/*/read | 讀取實驗室的屬性 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/claimAnyVm/action | 在實驗室中宣告隨機的可宣告虛擬機器。 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/createEnvironment/action | 在實驗室中建立虛擬機器。 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/ensureCurrentUserProfile/action | 請確認目前的使用者在實驗室中具備有效的設定檔。 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/formulas/delete | 刪除公式。 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/formulas/read | 讀取公式。 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/formulas/write | 新增或修改公式。 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/policySets/evaluatePolicies/action | 評估實驗室原則。 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/virtualMachines/claim/action | 取得現有虛擬機器的擁有權 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/virtualmachines/listApplicableSchedules/action | 列出適用的啟動/停止排程 (若有的話)。 |
-> | [Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/virtualMachines/getRdpFileContents/action | 取得代表虛擬機器 RDP 檔案內容的字串 |
+> | [Microsoft. Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/claimAnyVm/action | 在實驗室中宣告隨機的可宣告虛擬機器。 |
+> | [Microsoft. Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/createEnvironment/action | 在實驗室中建立虛擬機器。 |
+> | [Microsoft. Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/ensureCurrentUserProfile/action | 請確認目前的使用者在實驗室中具備有效的設定檔。 |
+> | [Microsoft. microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/formulas/delete | 刪除公式。 |
+> | [Microsoft. microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/formulas/read | 讀取公式。 |
+> | [Microsoft. microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/formulas/write | 新增或修改公式。 |
+> | [Microsoft. Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/policySets/evaluatePolicies/action | 評估實驗室原則。 |
+> | [Microsoft. Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/virtualMachines/claim/action | 取得現有虛擬機器的擁有權 |
+> | [Microsoft. Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/virtualmachines/listApplicableSchedules/action | 列出適用的啟動/停止排程 (若有的話)。 |
+> | [Microsoft. Microsoft.devtestlab](resource-provider-operations.md#microsoftdevtestlab)/labs/virtualMachines/getRdpFileContents/action | 取得代表虛擬機器 RDP 檔案內容的字串 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/backendAddressPools/join/action | 加入負載平衡器後端位址集區。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/inboundNatRules/join/action | 加入負載平衡器輸入 nat 規則。 不可警示。 |
-> | [/NetworkInterfaces/*](resource-provider-operations.md#microsoftnetwork)/read | 讀取網路介面的屬性 (例如網路介面所屬的所有負載平衡器) |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/*/read | 讀取網路介面的屬性 (例如網路介面所屬的所有負載平衡器) |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/join/action | 將虛擬機器加入網路介面。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | 取得網路介面定義。  |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/write | 建立網路介面，或更新現有的網路介面。  |
-> | [/PublicIPAddresses/*](resource-provider-operations.md#microsoftnetwork)/read | 讀取公用 IP 位址的屬性 |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/*/read | 讀取公用 IP 位址的屬性 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/join/action | 加入公用 IP 位址。 不可警示。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/read | 取得公用 IP 位址定義。 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/join/action | 加入虛擬網路。 不可警示。 |
-> | /Deployments/operations/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出部署作業。 |
-> | /Deployments/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出部署。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | 取得或列出部署作業。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/read | 取得或列出部署。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/action | 傳回指定儲存體帳戶的存取金鑰。 |
 > | **NotActions** |  |
-> | [Microsoft. Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/vmSizes/read | 列出虛擬機器所能更新成的大小 |
+> | [Microsoft. 計算](resource-provider-operations.md#microsoftcompute)/virtualMachines/vmSizes/read | 列出虛擬機器所能更新成的大小 |
 > | **DataActions** |  |
 > | 無 |  |
 > | **NotDataActions** |  |
@@ -6641,17 +6645,17 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="lab-creator"></a>實驗室建立者
 
-可讓您在 Azure 實驗室帳戶底下建立新的實驗室。 [深入了解](../lab-services/add-lab-creator.md)
+可讓您在 Azure 實驗室帳戶下建立新的實驗室。 [深入了解](../lab-services/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/*/read |  |
-> | [LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/createLab/action | 在實驗室帳戶中建立實驗室。 |
-> | [LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getPricingAndAvailability/action | 依大小、地理位置和作業系統的各種組合，取得實驗室帳戶的價格和可用性。 |
-> | [LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRestrictionsAndUsage/action | 取得此訂用帳戶的核心限制及使用量 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/*/read |  |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/createLab/action | 在實驗室帳戶中建立實驗室。 |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getPricingAndAvailability/action | 依大小、地理位置和作業系統的各種組合，取得實驗室帳戶的價格和可用性。 |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRestrictionsAndUsage/action | 取得此訂用帳戶的核心限制及使用量 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6695,7 +6699,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="application-insights-component-contributor"></a>Application Insights 元件參與者
 
-可以管理 Application Insights 元件[深入瞭解](../azure-monitor/app/resources-roles-access-control.md)
+可以管理 Application Insights 元件 [深入瞭解](../azure-monitor/app/resources-roles-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -6705,9 +6709,9 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/* | 建立和管理新的警示規則 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/components/* | 建立和管理 Insights 元件 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/webtests/* | 建立和管理 Insights web 測試 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6757,9 +6761,9 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/components/*/read |  |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [/Components/*](resource-provider-operations.md#microsoftinsights)/read |  |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -6805,12 +6809,14 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | */read | 讀取密碼以外的所有類型的資源。 |
-> | [Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/alerts/* |  |
-> | [Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/alertsSummary/* |  |
+> | [Microsoft. microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/alerts/* |  |
+> | [Microsoft. Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/alertsSummary/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/actiongroups/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/activityLogAlerts/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/AlertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/components/* | 建立和管理 Insights 元件 |
+> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRules/* |  |
+> | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRuleAssociations/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | 建立、更新或讀取 Analysis Server 的診斷設定 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/eventtypes/* | 列出訂用帳戶中的活動記錄檔事件 (管理事件)。 此權限適用於以程式設計方式存取和入口網站存取活動記錄檔。 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/LogDefinitions/* | 此為使用者需要透過入口網站存取活動記錄時所需的權限。 列出活動記錄檔中的記錄檔分類。 |
@@ -6823,18 +6829,18 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/workbooks/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/privateLinkScopes/* |  |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/privateLinkScopeOperationStatuses/* |  |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/write | 建立新的工作區，或藉由提供來自現有工作區的客戶識別碼來連結至現有工作區。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/intelligencepacks/* | 讀取/寫入/刪除記錄分析解決方案套件。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/* | 讀取/寫入/刪除記錄分析已儲存的搜尋。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 執行搜尋查詢 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/action | 擷取工作區的共用金鑰。 這些金鑰可用來將 Microsoft Operational Insights 代理程式連線到工作區。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/storageinsightconfigs/* | 讀取/寫入/刪除記錄分析儲存體深入解析設定。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/write | 建立新的工作區，或藉由提供來自現有工作區的客戶識別碼來連結至現有工作區。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/intelligencepacks/* | 讀取/寫入/刪除記錄分析解決方案套件。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/* | 讀取/寫入/刪除記錄分析已儲存的搜尋。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 執行搜尋查詢 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/action | 擷取工作區的共用金鑰。 這些金鑰可用來將 Microsoft Operational Insights 代理程式連線到工作區。 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/storageinsightconfigs/* | 讀取/寫入/刪除記錄分析儲存體深入解析設定。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* |  |
-> | [WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/notificationSettings/* |  |
-> | [Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
-> | [Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
-> | [Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |
+> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* |  |
+> | [Microsoft. WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/notificationSettings/* |  |
+> | [Microsoft. Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
+> | [Microsoft. Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
+> | [Microsoft. Microsoft.alertsmanagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -6860,6 +6866,8 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
         "Microsoft.Insights/activityLogAlerts/*",
         "Microsoft.Insights/AlertRules/*",
         "Microsoft.Insights/components/*",
+        "Microsoft.Insights/dataCollectionRules/*",
+        "Microsoft.Insights/dataCollectionRuleAssociations/*",
         "Microsoft.Insights/DiagnosticSettings/*",
         "Microsoft.Insights/eventtypes/*",
         "Microsoft.Insights/LogDefinitions/*",
@@ -6898,14 +6906,14 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="monitoring-metrics-publisher"></a>監視計量發行者
 
-針對 Azure 資源啟用發佈計量[深入瞭解](../azure-monitor/insights/container-insights-update-metrics.md)
+針對 Azure 資源啟用發佈計量 [深入瞭解](../azure-monitor/insights/container-insights-update-metrics.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/Register/Action | 註冊 Microsoft Insights 提供者 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -6949,7 +6957,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | */read | 讀取密碼以外的所有類型的資源。 |
-> | [Microsoft.operationalinsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 執行搜尋查詢 |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | 執行搜尋查詢 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -7086,8 +7094,8 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobs/write | 建立 Azure 自動化作業 |
 > | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobs/output/read | 取得作業的輸出 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -7134,7 +7142,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="automation-operator"></a>自動化運算子
 
-自動化操作員能夠啟動、停止、暫停和繼續作業[深入瞭解](../automation/automation-role-based-access-control.md)
+自動化操作員能夠啟動、停止、暫停及繼續作業， [深入瞭解](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -7155,10 +7163,10 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/schedules/read | 取得 Azure 自動化排程資產 |
 > | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/schedules/write | 建立或更新 Azure 自動化排程資產 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobs/output/read | 取得作業的輸出 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -7221,8 +7229,8 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/runbooks/read | 取得 Azure 自動化 Runbook |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -7267,9 +7275,9 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | 讀取任何 Azure Arc 機器 |
-> | [HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | 寫入 Azure Arc 機器 |
-> | [GuestConfiguration](resource-provider-operations.md#microsoftguestconfiguration)/guestConfigurationAssignments/read | 取得來賓組態指派。 |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | 讀取任何 Azure Arc 機器 |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | 寫入 Azure Arc 機器 |
+> | [Microsoft. >microsoft.guestconfiguration](resource-provider-operations.md#microsoftguestconfiguration)/guestConfigurationAssignments/read | 取得來賓組態指派。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -7310,11 +7318,11 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | 讀取任何 Azure Arc 機器 |
-> | [HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | 寫入 Azure Arc 機器 |
-> | [HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | 刪除 Azure Arc 機器 |
-> | [HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/reconnect/action | 重新連接 Azure Arc 機器 |
-> | [HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | 安裝或更新 Azure Arc 擴充 |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | 讀取任何 Azure Arc 機器 |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | 寫入 Azure Arc 機器 |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | 刪除 Azure Arc 機器 |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/reconnect/action | 重新連接 Azure Arc 機器 |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | 安裝或更新 Azure Arc 擴充 |
 > | [HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/read |  |
 > | **NotActions** |  |
 > | 無 |  |
@@ -7354,7 +7362,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="billing-reader"></a>帳單讀取器
 
-允許對帳單資料的讀取存取[深入瞭解](../cost-management-billing/manage/manage-billing-access.md)
+允許帳單資料的讀取存取權 [深入瞭解](../cost-management-billing/manage/manage-billing-access.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -7363,7 +7371,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft 帳單](resource-provider-operations.md#microsoftbilling)/*/read | 讀取帳單資訊 |
 > | [Microsoft Commerce](resource-provider-operations.md#microsoftcommerce)/*/read |  |
 > | [Microsoft. 耗用量](resource-provider-operations.md#microsoftconsumption)/*/read |  |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
 > | [CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/read |  |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
@@ -7411,9 +7419,9 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft. 藍圖](resource-provider-operations.md#microsoftblueprint)/blueprints/* | 建立和管理藍圖定義或藍圖成品。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
+> | [Microsoft 藍圖](resource-provider-operations.md#microsoftblueprint)/blueprints/* | 建立和管理藍圖定義或藍圖成品。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -7458,9 +7466,9 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Microsoft. 藍圖](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/* | 建立和管理藍圖指派。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
+> | [Microsoft 藍圖](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/* | 建立和管理藍圖指派。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -7499,20 +7507,20 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="cost-management-contributor"></a>成本管理參與者
 
-可查看成本和管理成本設定（例如預算、匯出）[深入瞭解](../cost-management-billing/costs/understand-work-scopes.md)
+可以查看成本及管理成本設定 (例如預算、匯出) [深入瞭解](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft。耗用量](resource-provider-operations.md#microsoftconsumption)/* |  |
+> | [Microsoft 耗用量](resource-provider-operations.md#microsoftconsumption)/* |  |
 > | [CostManagement](resource-provider-operations.md#microsoftcostmanagement)/* |  |
 > | [Microsoft 帳單](resource-provider-operations.md#microsoftbilling)/billingPeriods/read |  |
-> | /Subscriptions/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶清單。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [/Configurations/read](resource-provider-operations.md#microsoftadvisor) | 取得組態 |
-> | [/Recommendations/read](resource-provider-operations.md#microsoftadvisor) | 讀取建議 |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
+> | [Microsoft Advisor](resource-provider-operations.md#microsoftadvisor)/configurations/read | 取得組態 |
+> | [Microsoft Advisor](resource-provider-operations.md#microsoftadvisor)/recommendations/read | 讀取建議 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -7554,7 +7562,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="cost-management-reader"></a>成本管理讀者
 
-可查看成本資料和設定（例如預算、匯出）[深入瞭解](../cost-management-billing/costs/understand-work-scopes.md)
+可以查看成本資料和設定 (例如預算、匯出) [深入瞭解](../cost-management-billing/costs/understand-work-scopes.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -7562,12 +7570,12 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft. 耗用量](resource-provider-operations.md#microsoftconsumption)/*/read |  |
 > | [CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/read |  |
 > | [Microsoft 帳單](resource-provider-operations.md#microsoftbilling)/billingPeriods/read |  |
-> | /Subscriptions/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶清單。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [/Configurations/read](resource-provider-operations.md#microsoftadvisor) | 取得組態 |
-> | [/Recommendations/read](resource-provider-operations.md#microsoftadvisor) | 讀取建議 |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
+> | [Microsoft Advisor](resource-provider-operations.md#microsoftadvisor)/configurations/read | 取得組態 |
+> | [Microsoft Advisor](resource-provider-operations.md#microsoftadvisor)/recommendations/read | 讀取建議 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -7614,8 +7622,8 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/settings/write | 建立或更新管理群組階層設定。 |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/settings/delete | 刪除管理群組階層設定。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/settings/write | 建立或更新管理群組階層設定。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/settings/delete | 刪除管理群組階層設定。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -7648,21 +7656,21 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 }
 ```
 
-### <a name="kubernetes-cluster---azure-arc-onboarding"></a>Kubernetes 叢集-Azure Arc 上架
+### <a name="kubernetes-cluster---azure-arc-onboarding"></a>Kubernetes Cluster-Azure Arc 上架
 
-用來授權任何使用者/服務建立 connectedClusters 資源的角色定義[深入瞭解](../azure-arc/kubernetes/connect-cluster.md)
+角色定義，用以授權任何使用者/服務建立 connectedClusters 資源， [深入瞭解](../azure-arc/kubernetes/connect-cluster.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | /Deployments/write[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 建立或更新部署。 |
-> | /Subscriptions/operationresults/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶作業結果。 |
-> | /Subscriptions/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶清單。 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | 寫入 connectedClusters |
-> | [Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/read | 閱讀 connectedClusters |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/write | 建立或更新部署。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | 取得訂用帳戶作業結果。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | 取得訂用帳戶清單。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | 寫入 connectedClusters |
+> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/read | 讀取 connectedClusters |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -7711,10 +7719,10 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | */read | 讀取密碼以外的所有類型的資源。 |
-> | [Microsoft 解決方案](resource-provider-operations.md#microsoftsolutions)/applications/* |  |
-> | [Microsoft. 解決方案](resource-provider-operations.md#microsoftsolutions)/register/action | 向 Solutions 註冊。 |
-> | [/Subscriptions/resourceGroups/*](resource-provider-operations.md#microsoftresources) |  |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
+> | [Microsoft 方案](resource-provider-operations.md#microsoftsolutions)/applications/* |  |
+> | [Microsoft 方案](resource-provider-operations.md#microsoftsolutions)/register/action | 向 Solutions 註冊。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/* |  |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -7758,7 +7766,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | */read | 讀取密碼以外的所有類型的資源。 |
-> | [Microsoft. 解決方案](resource-provider-operations.md#microsoftsolutions)/applications/read | 擷取應用程式清單。 |
+> | [Microsoft 方案](resource-provider-operations.md#microsoftsolutions)/applications/read | 擷取應用程式清單。 |
 > | [Microsoft 解決方案](resource-provider-operations.md#microsoftsolutions)/*/action |  |
 > | **NotActions** |  |
 > | 無 |  |
@@ -7801,8 +7809,8 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | */read | 讀取密碼以外的所有類型的資源。 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | [Microsoft 解決方案](resource-provider-operations.md#microsoftsolutions)/jitRequests/* |  |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft 方案](resource-provider-operations.md#microsoftsolutions)/jitRequests/* |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -7843,9 +7851,9 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/read | 取出受控服務註冊指派的清單。 |
-> | [ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/delete | 移除受控服務註冊指派。 |
-> | [ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/operationStatuses/read | 讀取資源的作業狀態。 |
+> | [Microsoft. >microsoft.managedservices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/read | 取出受控服務註冊指派的清單。 |
+> | [Microsoft. >microsoft.managedservices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/delete | 移除受控服務註冊指派。 |
+> | [Microsoft. >microsoft.managedservices](resource-provider-operations.md#microsoftmanagedservices)/operationStatuses/read | 讀取資源的作業狀態。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -7881,17 +7889,17 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="management-group-contributor"></a>管理群組參與者
 
-管理群組參與者角色[深入瞭解](../governance/management-groups/overview.md)
+管理群組參與者角色 [深入瞭解](../governance/management-groups/overview.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/delete | 刪除管理群組。 |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/delete | 從管理群組中取消訂用帳戶的關聯。 |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/write | 將現有的訂用帳戶關聯至管理群組。 |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/write | 建立或更新管理群組。 |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/read | 列出指定之管理群組下的訂用帳戶。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/delete | 刪除管理群組。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/delete | 從管理群組中取消訂用帳戶的關聯。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/write | 將現有的訂用帳戶關聯至管理群組。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/write | 建立或更新管理群組。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/read | 列出指定管理群組底下的訂用帳戶。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -7935,8 +7943,8 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
-> | [Microsoft 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/read | 列出指定之管理群組下的訂用帳戶。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 列出已驗證之使用者的管理群組。 |
+> | [Microsoft. 管理](resource-provider-operations.md#microsoftmanagement)/managementGroups/subscriptions/read | 列出指定管理群組底下的訂用帳戶。 |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -7978,9 +7986,9 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | NewRelic.APM/accounts/* |  |
 > | **NotActions** |  |
@@ -8033,8 +8041,8 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
-> | [Microsoft.policyinsights](resource-provider-operations.md#microsoftpolicyinsights)/checkDataPolicyCompliance/action | 根據資料原則檢查給定元件的合規性狀態。 |
-> | [Microsoft.policyinsights](resource-provider-operations.md#microsoftpolicyinsights)/policyEvents/logDataEvents/action | 記錄資源元件原則事件。 |
+> | [Microsoft. Microsoft.policyinsights](resource-provider-operations.md#microsoftpolicyinsights)/checkDataPolicyCompliance/action | 根據資料原則檢查給定元件的合規性狀態。 |
+> | [Microsoft. Microsoft.policyinsights](resource-provider-operations.md#microsoftpolicyinsights)/policyEvents/logDataEvents/action | 記錄資源元件原則事件。 |
 > | **NotDataActions** |  |
 > | 無 |  |
 
@@ -8075,9 +8083,9 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | */read | 讀取密碼以外的所有類型的資源。 |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | 建立及管理原則指派 |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | 建立及管理原則定義 |
-> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | 建立及管理原則集合 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | 建立及管理原則指派 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | 建立及管理原則定義 |
+> | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | 建立及管理原則集合 |
 > | [Microsoft.policyinsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
@@ -8118,7 +8126,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="site-recovery-contributor"></a>Site Recovery 參與者
 
-可讓您管理 Site Recovery 服務，但不包括保存庫建立和角色指派[深入瞭解](../site-recovery/site-recovery-role-based-linked-access-control.md)
+可讓您管理 Site Recovery 服務，但保存庫建立和角色指派 [更深入瞭解](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -8126,30 +8134,30 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 取得虛擬網路定義 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp 是服務所使用的內部作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocateStamp/action | AllocateStamp 是服務所使用的內部作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/certificates/write | 「更新資源憑證」作業會更新資源/保存庫的認證憑證。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/* | 建立和管理與保存庫相關的擴充資訊 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshContainers/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/* | 建立和管理註冊的身分識別 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationAlertSettings/* | 建立或更新複寫警示設定 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationEvents/read | 讀取任何事件 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/* | 建立和管理複寫網狀架構 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/* | 建立和管理複寫作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/* | 建立和管理複寫原則 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/* | 建立和管理復原計劃 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/* | 建立和管理復原服務保存庫的儲存體設定 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaultTokens/read | 「保存庫權杖」作業可用來取得保存庫層級後端作業的保存庫權杖。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/* | 讀取復原服務保存庫的警示 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationOperationStatus/read | 讀取任何保存庫複寫作業狀態 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp 是服務所使用的內部作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocateStamp/action | AllocateStamp 是服務所使用的內部作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/certificates/write | 「更新資源憑證」作業會更新資源/保存庫的認證憑證。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/* | 建立和管理與保存庫相關的擴充資訊 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshContainers/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/* | 建立和管理註冊的身分識別 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationAlertSettings/* | 建立或更新複寫警示設定 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationEvents/read | 讀取任何事件 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/* | 建立和管理複寫網狀架構 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/* | 建立和管理複寫作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/* | 建立和管理複寫原則 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/* | 建立和管理復原計劃 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/* | 建立和管理復原服務保存庫的儲存體設定 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaultTokens/read | 「保存庫權杖」作業可用來取得保存庫層級後端作業的保存庫權杖。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/* | 讀取復原服務保存庫的警示 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationOperationStatus/read | 讀取任何保存庫複寫作業狀態 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -8211,7 +8219,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="site-recovery-operator"></a>Site Recovery 操作員
 
-可讓您容錯移轉及容錯回復，但不會執行其他 Site Recovery 管理作業[深入瞭解](../site-recovery/site-recovery-role-based-linked-access-control.md)
+可讓您容錯移轉和容錯回復，但無法執行其他 Site Recovery 管理作業 [深入瞭解](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -8219,60 +8227,60 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | 取得虛擬網路定義 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp 是服務所使用的內部作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocateStamp/action | AllocateStamp 是服務所使用的內部作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshContainers/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/read | 「取得作業結果」作業可用來取得以非同步方式提交之作業的作業狀態和結果 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationAlertSettings/read | 讀取任何警示設定 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationEvents/read | 讀取任何事件 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/checkConsistency/action | 檢查網狀架構的一致性 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/read | 讀取任何網狀架構 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/reassociateGateway/action | 重新關聯閘道 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/renewcertificate/action | 更新網狀架構的憑證 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/read | 讀取任何網路 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/read | 讀取任何網路對應 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/read | 讀取任何保護容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | 讀取任何可保護的項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | 套用復原點 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | 容錯移轉認可 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | 計劃性容錯移轉 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | 讀取任何受保護的項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | 讀取任何複寫復原點 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/action | 修復複寫 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | 重新保護受保護的項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/switchprotection/action | 切換保護容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | Test Failover |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | 測試容錯移轉清理 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | 容錯移轉 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | 更新行動服務 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | 讀取任何保護容器對應 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | 讀取任何復原服務提供者 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/action | 重新整理提供者 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/read | 讀取任何存放裝置分類 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | 讀取任何存放裝置分類對應 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationvCenters/read | 讀取任何 vCenter |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/* | 建立和管理複寫作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/read | 讀取任何原則 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/failoverCommit/action | 容錯移轉認可復原方案 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/plannedFailover/action | 計劃性容錯移轉復原方案 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/read | 讀取任何復原方案 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/reProtect/action | 重新保護復原方案 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailover/action | 測試容錯移轉復原方案 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailoverCleanup/action | 測試容錯移轉清理復原方案 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/unplannedFailover/action | 容錯移轉復原方案 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/* | 讀取復原服務保存庫的警示 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaultTokens/read | 「保存庫權杖」作業可用來取得保存庫層級後端作業的保存庫權杖。 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | [Microsoft 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp 是服務所使用的內部作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocateStamp/action | AllocateStamp 是服務所使用的內部作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshContainers/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/read | 「取得作業結果」作業可用來取得以非同步方式提交之作業的作業狀態和結果 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationAlertSettings/read | 讀取任何警示設定 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationEvents/read | 讀取任何事件 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/checkConsistency/action | 檢查網狀架構的一致性 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/read | 讀取任何網狀架構 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/reassociateGateway/action | 重新關聯閘道 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/renewcertificate/action | 更新網狀架構的憑證 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/read | 讀取任何網路 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/read | 讀取任何網路對應 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/read | 讀取任何保護容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | 讀取任何可保護的項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | 套用復原點 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | 容錯移轉認可 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | 計劃性容錯移轉 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | 讀取任何受保護的項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | 讀取任何複寫復原點 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/action | 修復複寫 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | 重新保護受保護的項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/switchprotection/action | 切換保護容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | Test Failover |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | 測試容錯移轉清理 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | 容錯移轉 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | 更新行動服務 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | 讀取任何保護容器對應 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | 讀取任何復原服務提供者 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/action | 重新整理提供者 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/read | 讀取任何存放裝置分類 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | 讀取任何存放裝置分類對應 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationvCenters/read | 讀取任何 vCenter |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/* | 建立和管理複寫作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/read | 讀取任何原則 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/failoverCommit/action | 容錯移轉認可復原方案 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/plannedFailover/action | 計劃性容錯移轉復原方案 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/read | 讀取任何復原方案 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/reProtect/action | 重新保護復原方案 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailover/action | 測試容錯移轉復原方案 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailoverCleanup/action | 測試容錯移轉清理復原方案 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/unplannedFailover/action | 容錯移轉復原方案 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/* | 讀取復原服務保存庫的警示 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaultTokens/read | 「保存庫權杖」作業可用來取得保存庫層級後端作業的保存庫權杖。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft. 儲存體](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | 傳回儲存體帳戶清單，或取得指定儲存體帳戶的屬性。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -8364,41 +8372,41 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="site-recovery-reader"></a>Site Recovery 讀取者
 
-可讓您查看 Site Recovery 狀態，但不能執行其他管理作業[深入瞭解](../site-recovery/site-recovery-role-based-linked-access-control.md)
+可讓您查看 Site Recovery 狀態，但不能執行其他管理作業 [深入瞭解](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp 是服務所使用的內部作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/read | 取得復原服務保存庫的警示。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshContainers/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/read | 「取得作業結果」作業可用來取得以非同步方式提交之作業的作業狀態和結果 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationAlertSettings/read | 讀取任何警示設定 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationEvents/read | 讀取任何事件 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/read | 讀取任何網狀架構 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/read | 讀取任何網路 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/read | 讀取任何網路對應 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/read | 讀取任何保護容器 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | 讀取任何可保護的項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | 讀取任何受保護的項目 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | 讀取任何複寫復原點 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | 讀取任何保護容器對應 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | 讀取任何復原服務提供者 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/read | 讀取任何存放裝置分類 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | 讀取任何存放裝置分類對應 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationvCenters/read | 讀取任何 vCenter |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/read | 讀取任何作業 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/read | 讀取任何原則 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/read | 讀取任何復原方案 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
-> | [Azurerm.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaultTokens/read | 「保存庫權杖」作業可用來取得保存庫層級後端作業的保存庫權杖。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp 是服務所使用的內部作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | 「取得延伸資訊」作業會取得物件的延伸資訊，此延伸資訊代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/read | 取得復原服務保存庫的警示。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | 「取得保存庫」作業會取得物件，此物件代表 'vault' 類型的 Azure 資源 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshContainers/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/read | 「取得作業結果」作業可用來取得以非同步方式提交之作業的作業狀態和結果 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/read | 「取得容器」作業可用來取得為資源註冊的容器。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationAlertSettings/read | 讀取任何警示設定 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationEvents/read | 讀取任何事件 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/read | 讀取任何網狀架構 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/read | 讀取任何網路 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/read | 讀取任何網路對應 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/read | 讀取任何保護容器 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | 讀取任何可保護的項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | 讀取任何受保護的項目 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | 讀取任何複寫復原點 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | 讀取任何保護容器對應 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | 讀取任何復原服務提供者 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/read | 讀取任何存放裝置分類 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | 讀取任何存放裝置分類對應 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationvCenters/read | 讀取任何 vCenter |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/read | 讀取任何作業 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/read | 讀取任何原則 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/read | 讀取任何復原方案 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | 傳回復原服務保存庫的使用量詳細資料。 |
+> | [Microsoft. Az.recoveryservices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaultTokens/read | 「保存庫權杖」作業可用來取得保存庫層級後端作業的保存庫權杖。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -8463,13 +8471,13 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="support-request-contributor"></a>支援要求參與者
 
-可讓您建立及管理支援要求[深入瞭解](../azure-portal/supportability/how-to-create-azure-support-request.md)
+可讓您建立及管理支援要求 [深入瞭解](../azure-portal/supportability/how-to-create-azure-support-request.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -8512,13 +8520,13 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | 動作 | 描述 |
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
-> | /Subscriptions/resourceGroups/resources/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得資源群組的資源。 |
-> | /Subscriptions/resources/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得訂用帳戶的資源。 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/resources/read | 取得資源群組的資源。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/subscriptions/resources/read | 取得訂用帳戶的資源。 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
-> | [/Tags/*](resource-provider-operations.md#microsoftresources) |  |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/tags/* |  |
 > | **NotActions** |  |
 > | 無 |  |
 > | **DataActions** |  |
@@ -8570,9 +8578,9 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | Microsoft.BizTalkServices/BizTalk/* | 建立和管理 BizTalk 服務 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |
 > | 無 |  |
@@ -8613,7 +8621,7 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 
 ### <a name="desktop-virtualization-user"></a>桌面虛擬化使用者
 
-可讓使用者使用應用程式群組中的應用程式。 [深入了解](../virtual-desktop/delegated-access-virtual-desktop.md)
+允許使用者使用應用程式群組中的應用程式。 [深入了解](../virtual-desktop/delegated-access-virtual-desktop.md)
 
 > [!div class="mx-tableFixed"]
 > | 動作 | 描述 |
@@ -8659,9 +8667,9 @@ Azure Sentinel 回應者[深入瞭解](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft 授權](resource-provider-operations.md#microsoftauthorization)/*/read | 讀取角色和角色指派 |
 > | [Microsoft Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | 建立和管理傳統計量警示 |
-> | [ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
-> | [/Deployments/*](resource-provider-operations.md#microsoftresources) | 建立和管理部署 |
-> | /Subscriptions/resourceGroups/read[的 Microsoft 資源](resource-provider-operations.md#microsoftresources) | 取得或列出資源群組。 |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | 取得指定範圍中所有資源的可用性狀態 |
+> | [Microsoft .resources](resource-provider-operations.md#microsoftresources)/deployments/* | 建立和管理部署 |
+> | [Microsoft .Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | 取得或列出資源群組。 |
 > | [Microsoft.](resource-provider-operations.md#microsoftscheduler)排程器/jobcollections/* | 建立和管理工作集合 |
 > | [Microsoft 支援](resource-provider-operations.md#microsoftsupport)/* | 建立和更新支援票證 |
 > | **NotActions** |  |

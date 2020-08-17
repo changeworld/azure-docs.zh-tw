@@ -1,17 +1,17 @@
 ---
 title: 適用於 Azure 的 Avere vFXT 示範專案
-description: 連結至 Avere vFXT 的程式碼示範教學課程
+description: 這些範例顯示 Avere vFXT for Azure 的主要功能和使用案例：影片轉譯、高效能運算、vFXT 效能及用戶端設定。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31e32bfc0a2c3279375148bdf3da7d4a4829af1c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153695"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271068"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Avere vFXT 示範專案
 
@@ -19,13 +19,13 @@ ms.locfileid: "76153695"
 
 ## <a name="video-rendering"></a>影片轉譯
 
-* [使用 Azure Batch 和 Avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md)的轉譯-60 分鐘專案，示範如何使用 Autodesk Maya 搭配 Azure Batch 和 Avere vFXT 叢集來產生動畫電影
+* [使用 Azure Batch 和 Avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) 的60分鐘專案進行轉譯，示範如何使用 Autodesk Maya 搭配 Azure Batch 和 Avere vFXT 叢集來產生動畫電影
 
-* [為什麼要使用 Avere vFXT 進行轉譯？](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -此示範會比較網路連接儲存裝置的轉譯時間與不含 Avere vFXT 叢集
+* [為什麼要使用 Avere vFXT 進行轉譯？](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -一種示範，可比較網路連接儲存體的轉譯時間與無 Avere vFXT 叢集
 
 ## <a name="high-performance-computing"></a>高效能運算
 
-* [改善 Azure 虛擬機器（VM）開機時間的最佳做法](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md)-一種可重現的測試，使用 Avere vFXT for Azure 在快速啟動數千個計算用戶端時改善開機時間
+* [改善 Azure 虛擬機器 (VM) 開機時間的最佳作法](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) -可重現的測試，可在快速啟動數千個計算用戶端時，使用 Avere vFXT for Azure 來改善開機時間
 
 ## <a name="vfxt-performance"></a>vFXT 效能
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: d6a25e7c36118f6a11bd1a177159bc9050ee69ca
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 8d48a8a9f52c3edb4350c16a25deda9894dcdda1
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431018"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271153"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 將 API 新增至 Azure 靜態 Web Apps 預覽版
 
@@ -22,30 +22,30 @@ ms.locfileid: "87431018"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 具有有效訂用帳戶的 Azure 帳戶。
-  - 如果您沒有帳戶，可以[免費建立一個](https://azure.microsoft.com/free)。
+  - 如果您沒有帳戶，可以 [免費建立一個](https://azure.microsoft.com/free)帳戶。
 - [Visual Studio Code](https://code.visualstudio.com/)
 - 適用於 Visual Studio Code 的 [Azure Functions 擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
 - [Live Server Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) 擴充功能。
-- [Node.js](https://nodejs.org/download/)在本機執行 API 應用程式
+- [Node.js](https://nodejs.org/download/) 在本機執行 API 應用程式
 
 ## <a name="create-a-git-repository"></a>建立 Git 存放庫
 
 下列步驟示範如何建立新的存放庫，並將檔案複製到您的電腦。
 
-1. 請確定您已登入 GitHub 並流覽至， https://github.com/staticwebdev/vanilla-basic/generate 以建立新的存放庫。
+1. 請確定您已登入 GitHub，然後流覽至 https://github.com/staticwebdev/vanilla-basic/generate 以建立新的存放庫。
 1. 在 [存放庫名稱] 方塊中，輸入 **my-vanilla-api**。
 1. 按一下 [從範本建立存放庫]。
 
    :::image type="content" source="media/add-api/create-repository.png" alt-text="從 vanilla-basic 建立新的存放庫":::
 
-建立專案之後，請在瀏覽器中為新的存放庫複製 URL。 您會在 Visual Studio Code 中使用此 URL 來複製 Git 存放庫。
+建立專案之後，請在瀏覽器中複製新存放庫的 URL。 您可以在 Visual Studio Code 中使用此 URL，以複製 Git 存放庫。
 
 1. 按 **F1** 鍵，在命令選擇區中開啟命令。
 1. 將 URL 貼到 _Git：複製_  提示字元，然後按 **Enter** 鍵。
 
    :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="使用 Visual Studio Code 複製 GitHub 專案":::
 
-    依照提示來選取要複製專案的存放庫位置。
+    遵循提示來選取要複製專案的存放庫位置。
 
 ## <a name="create-the-api"></a>建立 API
 
@@ -63,13 +63,13 @@ ms.locfileid: "87431018"
 
 1. 依照提示提供下列資訊：
 
-    - _選取語言_：選擇 [ **JavaScript** ]
+    - _選取語言_：選擇 **JavaScript**
     - _選取您的專案第一個函式的範本_：選擇 **HTTP 觸發程序**
-    - _提供函數名稱_：輸入**GetMessage**
+    - _提供_函式名稱：輸入 **GetMessage**
     - _授權層級_選擇 [匿名]，讓任何人都能呼叫您的函式端點。
         - 若要了解授權層級，請參閱[授權金鑰](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys)。
 
-Visual Studio Code 會使用 HTTP 觸發的函式產生 Azure Functions 專案。
+Visual Studio Code 會產生具有 HTTP 觸發函式的 Azure Functions 專案。
 
 您的應用程式現在具有類似下列範例的專案結構。
 
@@ -90,7 +90,7 @@ Visual Studio Code 會使用 HTTP 觸發的函式產生 Azure Functions 專案�
 
 接下來，您將變更函式， `GetMessage` 以將訊息傳回至前端。
 
-1. `GetMessage`使用下列程式碼，更新_Api/GetMessage/index.js_下的函式。
+1. `GetMessage`使用下列程式碼更新_Api/GetMessage/index.js_下的函式。
 
     ```javascript
     module.exports = async function (context, req) {
@@ -137,27 +137,27 @@ Visual Studio Code 會使用 HTTP 觸發的函式產生 Azure Functions 專案�
 Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functions-run-local.md) 整合，讓您能夠先在本機開發電腦上執行此專案，再發佈至 Azure。
 
 > [!TIP]
-> 請先確定您已安裝[必要條件](#prerequisites)一節中列出的所有資源，再繼續進行。
+> 在繼續之前，請確定您已安裝 [必要條件](#prerequisites) 區段中所列的所有資源。
 
-1. 按**F5**鍵以啟動函式應用程式，以執行函數。
+1. 按 **F5** 以啟動函式應用程式來執行函式。
 
 1. 如果您尚未安裝 Azure Functions Core Tools，請在提示字元中選取 [安裝]。
 
-    核心工具會在_終端_機面板中顯示執行中應用程式的輸出。 在輸出中，您可以查看在本機執行之 HTTP 觸發函式的 URL 端點。
+    Core Tools 會在 _終端_ 機面板中顯示正在執行之應用程式的輸出。 在輸出中，您可以查看在本機執行之 HTTP 觸發函式的 URL 端點。
 
     :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="使用 Visual Studio Code 來建立新的 Azure Functions":::
 
-1. 執行核心工具之後，請流覽至下列 URL，確認 API 是否正常運作： <http://localhost:7071/api/message> 。
+1. 當核心工具執行時，流覽至下列 URL，以確認 API 是否正確執行： <http://localhost:7071/api/message> 。
 
    瀏覽器中的回應看起來應該類似下列範例：
 
    :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="使用 Visual Studio Code 來建立新的 Azure Functions":::
 
-1. 按**Shift + F5**停止調試進程。
+1. 按 **Shift + F5** 以停止調試會話。
 
 ### <a name="call-the-api-from-the-application"></a>從應用程式呼叫 API
 
-部署至 Azure 時，對 API 的要求會自動路由傳送至函式應用程式，以取得傳送至路由的要求 `api` 。 在本機工作時，您必須設定應用程式設定，以將要求 proxy 至本機 API。
+當部署至 Azure 時，對 API 的要求會自動路由傳送至函式應用程式，以取得傳送至路由的要求 `api` 。 在本機工作時，您必須將應用程式設定設定為對本機 API 的 proxy 要求。
 
 [!INCLUDE [static-web-apps-local-proxy](../../includes/static-web-apps-local-proxy.md)]
 
@@ -193,7 +193,7 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
    </html>
    ```
 
-1. 按**F5**啟動 API 專案。
+1. 按 **F5** 以啟動 API 專案。
 
 1. 按 **F1** 鍵，然後選擇 [Live Server：**開啟即時伺服器]** ，以啟動即時伺服器。
 
@@ -204,7 +204,7 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
    > [!NOTE]
    > 您可以使用其他 HTTP 伺服器或 Proxy 來提供 `index.html` 檔案。 將無法從 `file:///` 存取 `index.html`。
 
-1. 按**Shift + F5**停止 API 專案。
+1. 按 **Shift + F5** 以停止 API 專案。
 
 ### <a name="commit-and-push-your-changes-to-github"></a>認可及推送您對 GitHub 的變更
 
@@ -212,16 +212,16 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 
 1. 按 **F1** 鍵以開啟命令選擇區
 1. 輸入 **Git：全部認可**
-1. 新增認可訊息，然後按**enter**鍵
-1. 按**F1**鍵
-1. 輸入**Git： push** ，然後按**enter**鍵
+1. 新增認可訊息，然後按 **enter**
+1. 按下 **F1**
+1. 在**Git： push**中輸入，然後按**enter**鍵
 
 ## <a name="create-a-static-web-app"></a>建立靜態 Web 應用程式
 
 1. 瀏覽至 [Azure 入口網站](https://portal.azure.com)
 1. 按一下 [建立資源]
-1. 搜尋**靜態 Web 應用程式**
-1. 按一下 **[靜態 Web 應用程式（預覽）** ]
+1. 搜尋 **靜態 Web 應用程式**
+1. 按一下 [ **靜態 Web 應用程式 (預覽]) **
 1. 按一下 [建立]
 
 接下來，新增應用程式特定的設定。
@@ -239,21 +239,21 @@ Visual Studio Code 可與 [Azure Functions Core Tools](../azure-functions/functi
 
 接下來，新增下列組建詳細資料。
 
-1. **/** 針對_應用程式位置_輸入。
+1. 輸入 **/** _應用程式位置_。
 1. 在 [API 位置] 方塊中，輸入 **api**。
 1. 清除 [應用程式成品位置] 的預設值，並將此方塊保留空白。
 1. 按一下 [檢閱 + 建立]。
 1. 按一下 [建立] 按鈕
 
-    一旦您按一下 [_建立_] 按鈕，Azure 就會執行兩項工作。 首先，會建立基礎雲端服務來支援應用程式。 接下來，背景進程會開始建立和部署應用程式。
+    一旦您按一下 [ _建立_ ] 按鈕，Azure 就會執行兩項作業。 首先，會建立基礎雲端服務以支援應用程式。 接下來，背景進程會開始建立及部署應用程式。
 
-1. 按一下 [**移至資源**] 按鈕，將您帶到 web 應用程式的 _[總覽_] 頁面。
+1. 按一下 [ **移至資源** ] 按鈕，以帶您前往 web 應用程式的 _[總覽_ ] 頁面。
 
-    當應用程式在背景中建立時，您可以按一下包含連結的橫幅，以查看組建狀態。
+    當應用程式是在背景中建立時，您可以按一下包含連結的橫幅來查看組建狀態。
 
     :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub 工作流程":::
 
-1. 部署完成後，ou 可以流覽至 web 應用程式，方法是按一下 [_總覽_] 頁面上顯示的 [ _URL_ ] 連結。
+1. 部署完成後，ou 可以按一下 [_總覽_] 頁面上顯示的_URL_連結，以流覽至 web 應用程式。
 
     :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="從 Azure 入口網站存取靜態應用程式 URL":::
 

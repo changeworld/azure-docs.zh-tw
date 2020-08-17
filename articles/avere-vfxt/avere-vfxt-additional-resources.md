@@ -1,17 +1,17 @@
 ---
 title: 關於 Avere vFXT for Azure 的其他連結
-description: 關於 Avere vFXT for Azure 的其他資訊的連結
+description: 使用這些資源來取得 Avere vFXT for Azure 的其他資訊，包括 Avere 叢集檔和 vFXT 管理檔。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f9a9f8e6d2a279871ded3dff614be99dd2901df
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76153763"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271085"
 ---
 # <a name="additional-documentation"></a>其他文件
 
@@ -25,7 +25,7 @@ ms.locfileid: "76153763"
   * [自訂支援和監視設定](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>)說明如何自訂支援上傳設定，並啟用遠端監視。
   * [設定 VServers 和全域命名空間](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>)提供建立用戶端面向命名空間的相關資訊。
   * [設定 Avere 叢集的 DNS](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) 說明如何設定循環配置資源 DNS。
-  * [新增後端儲存體](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>)檔如何新增核心檔。
+  * [新增後端儲存體](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) 檔如何新增核心檔存放區。
 
 * [叢集設定指南](<https://azure.github.io/Avere/#operations>)是 Avere 叢集設定和選項的完整參考。 vFXT 叢集會使用這些選項的子集，但大部分相同的設定頁面都適用。
 
@@ -33,4 +33,4 @@ ms.locfileid: "76153763"
 
 ## <a name="vfxt-creation-and-management-documentation"></a>vFXT 建立和管理文件
 
-GitHub 上提供使用 vfxt.py （以腳本為基礎的雲端叢集建立和管理公用程式）的完整指南：[使用 vfxt.py 進行雲端叢集管理](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)。
+GitHub 上提供使用 vfxt.py （以腳本為基礎的雲端叢集建立與管理公用程式）的完整指南：使用 [vfxt.py 的雲端叢集管理](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)。

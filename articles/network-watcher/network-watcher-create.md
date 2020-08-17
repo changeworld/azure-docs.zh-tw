@@ -1,6 +1,6 @@
 ---
 title: 建立 Azure 網路監看員執行個體 | Microsoft Docs
-description: 了解如何在 Azure 區域中啟用網路監看員。
+description: 瞭解如何使用 Azure 入口網站或其他技術，在 Azure 區域中建立 Azure 網路監看員，以及如何刪除網路監看員。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 03fe71855c43ba831f4b7a4ab746f05bd3bbb4a3
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6809e8a44120eddbae4965bff30f80b617bdd024
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846848"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272156"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>建立 Azure 網路監看員執行個體
 
@@ -49,7 +49,7 @@ az provider register -n Microsoft.Network
 
 ## <a name="create-a-network-watcher-in-the-portal"></a>在入口網站中建立網路監看員
 
-流覽至 [**所有服務**] [網路] [  >  **Networking**  >  **網路監看員**]。 您可以選取要啟用網路監看員的所有訂用帳戶。 此動作會在每個可用區域建立網路監看員。
+流覽至**所有服務**  >  **網路**  >  **網路**監看員。 您可以選取要啟用網路監看員的所有訂用帳戶。 此動作會在每個可用區域建立網路監看員。
 
 ![建立網路監看員](./media/network-watcher-create/figure1.png)
 
@@ -57,7 +57,7 @@ az provider register -n Microsoft.Network
 
 網路監看員執行個體會自動在名為 NetworkWatcherRG** 的資源群組中建立。 如果該資源群組尚未存在，系統就會加以建立。
 
-如果您想要自訂網路監看員實例的名稱，以及它放入其中的資源群組，您可以使用 PowerShell、Azure CLI、REST API 或 ARMClient 方法，如下節所述。 在每個選項中，都必須先有資源群組，才能在其中建立網路監看員。  
+如果您想要自訂網路監看員實例的名稱，以及它所放置的資源群組，您可以使用 PowerShell、Azure CLI、REST API 或 ARMClient 方法，如下一節所述。 在每個選項中，都必須先有資源群組，才能在其中建立網路監看員。  
 
 ## <a name="create-a-network-watcher-with-powershell"></a>使用 PowerShell 建立網路監看員
 
@@ -103,16 +103,16 @@ armclient put "https://management.azure.com/subscriptions/${subscriptionId}/reso
 
 ## <a name="create-a-network-watcher-using-azure-quickstart-template"></a>使用 Azure 快速入門範本建立網路監看員
 
-若要建立網路監看員的實例，請參閱此[快速入門範本](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/)
+若要建立網路監看員的實例，請參閱此 [快速入門範本](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/)
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>在入口網站中刪除網路監看員
 
-流覽至 [**所有服務**] [網路] [  >  **Networking**  >  **網路監看員**]。
+流覽至**所有服務**  >  **網路**  >  **網路**監看員。
 
-如果您還沒有的話，請選取 [總覽] 索引標籤。 使用下拉式清單來選取您想要在其中停用網路監看員的訂用帳戶。
-按一下箭號，以展開所選訂用帳戶的區域清單。 針對任何指定的，請使用右邊的3個點來存取內容功能表。
+如果您還沒有的話，請選取 [總覽] 索引標籤。 使用下拉式清單來選取您要在其中停用網路監看員的訂用帳戶。
+按一下箭號，展開您所選訂用帳戶的區域清單。 針對任何指定的，使用右邊的3個點來存取內容功能表。
 按一下 [停用網路監看員] 以開始停用。 系統會要求您確認此步驟。 按一下 [是] 繼續。
-在入口網站上，您必須針對每個訂用帳戶中的每個區域個別執行此動作。
+在入口網站上，您必須針對每個訂用帳戶中的每個區域個別進行這項作業。
 
 
 ## <a name="delete-a-network-watcher-with-powershell"></a>使用 PowerShell 刪除網路監看員

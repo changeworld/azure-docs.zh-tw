@@ -1,7 +1,7 @@
 ---
 title: 視覺化 Azure NSG 流量記錄-Power BI
 titleSuffix: Azure Network Watcher
-description: 此頁面說明如何使用 Power BI 將 NSG 流程記錄視覺化。
+description: 瞭解如何使用 Power BI 將網路安全性群組流量記錄視覺化，讓您可以在 Azure 網路監看員中查看 IP 流量的相關資訊。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 1ef2e32614b5a57208f91ac0fe5a4c17affa38e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738544"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272632"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>使用 Power BI 將網路安全性群組流程記錄視覺化
 
@@ -28,7 +28,7 @@ ms.locfileid: "84738544"
 > [!Warning]  
 > 下列步驟適用於流量記錄第 1 版。 如需詳細資訊，請參閱[網路安全性群組流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。 下列指示若未經修改，則不適用於第 2 版的記錄檔。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 在下列案例中，我們將 Power BI Desktop 連線至我們已設定的儲存體帳戶，做為 NSG 流程記錄資料的接收器。 當我們連線至儲存體帳戶之後，Power BI 會下載並剖析記錄，以視覺表示法呈現網路安全性群組所記錄的流量。
 
@@ -109,7 +109,7 @@ ms.locfileid: "84738544"
 
 請儘管自訂此範本以符合您的需求。 Power BI 和網路安全性群組流程記錄互相搭配有許多做法。 
 
-## <a name="notes"></a>備註
+## <a name="notes"></a>注意
 
 * 記錄依預設儲存於 `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 

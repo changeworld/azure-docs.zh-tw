@@ -1,6 +1,6 @@
 ---
 title: Azure 資料表儲存體設計中的模型關聯性 |Microsoft Docs
-description: 瞭解設計 Azure 資料表儲存體解決方案時的模型化程式。 閱讀一對多、一對一和繼承關聯性的相關資訊。
+description: 瞭解設計 Azure 資料表儲存體解決方案時的模型處理常式。 深入瞭解一對多、一對一和繼承關聯性。
 services: storage
 ms.service: storage
 author: tamram
@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a7316bc60ea26968e30bb11ef97d63bddb33895a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235956"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271187"
 ---
 # <a name="modeling-relationships"></a>將關聯性模型化
 本文討論的模型化程序有助於您設計 Azure 表格儲存體解決方案。
@@ -51,7 +51,7 @@ ms.locfileid: "88235956"
 <td>
 <ul>
 <li>您可以使用單一作業更新部門實體。</li>
-<li>如果您需要在每次更新/插入/刪除員工實體時修改部門實體，您可以使用 EGT 來維持一致性。 例如，假設您維護每個部門的部門員工計數。</li>
+<li>如果您在每次更新/插入/刪除員工實體時都需要修改部門實體，您可以使用實體群組交易 * (EGT) 來維持一致性。 例如，假設您維護每個部門的部門員工計數。</li>
 </ul>
 </td>
 <td>
@@ -92,6 +92,9 @@ ms.locfileid: "88235956"
 </td>
 </tr>
 </table>
+
+* 如需詳細資訊，請參閱 [實體群組交易](table-storage-design.md#entity-group-transactions)  
+
 
 您選擇這些選項的方式及其優缺點是最重要的，這取決於您的應用程式案例。 例如，您多久修改一次部門實體；您所有的員工查詢是否都需要其他部門資訊；您的磁碟分割或儲存體帳戶有多接近延展性限制？  
 
