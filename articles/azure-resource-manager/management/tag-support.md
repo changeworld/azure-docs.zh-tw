@@ -3,15 +3,15 @@ title: 資源的標記支援
 description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure 服務的詳細資料。
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 2ebf55a15233c401904460d459a118fc46142ac3
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: e3a51bb7c21b6ea2e8baa86fe2981184c41d7d69
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337988"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272428"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
-本文將說明資源類型是否支援[標記](tag-resources.md)。 標記為 [**支援標記**] 的資料行指出資源類型是否有標記的屬性。 [**成本報表] 中**標示為 [標記] 的資料行指出該資源類型是否會將標記傳遞至成本報表。 您可以在 [[成本管理成本分析](../../cost-management-billing/costs/group-filter.md)] 和 [ [Azure 帳單發票] 和 [每日使用量] 資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中依標記來查看成本。
+本文將說明資源類型是否支援[標記](tag-resources.md)。 標示為 [ **支援** 標籤] 的資料行會指出資源類型是否有標記的屬性。 在 [ **成本] 報表中** 標示為 [標籤] 的資料行會指出該資源類型是否要將標記傳遞給成本報告。 您可以依 [成本管理成本分析](../../cost-management-billing/costs/group-filter.md) 和 [Azure 計費發票及每日使用量資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中的標記來查看成本。
 
 若要以逗號區隔值檔案的形式取得相同資料，請下載 [tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv)。
 
@@ -320,7 +320,7 @@ ms.locfileid: "87337988"
 > | automationAccounts/privateEndpointConnections | 否 | 否 |
 > | automationAccounts/privateLinkResources | 否 | 否 |
 > | automationAccounts / runbooks | 是 | 是 |
-> | automationAccounts/softwareUpdateConfigurations | 否 | 否 |
+> | automationAccounts/>softwareupdateconfigurations | 否 | 否 |
 > | automationAccounts / webhooks | 否 | 否 |
 
 >[!NOTE]
@@ -400,80 +400,80 @@ ms.locfileid: "87337988"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | billingAccounts | 否 | 否 |
-> | billingAccounts/合約 | 否 | 否 |
-> | billingAccounts / billingPermissions | 否 | 否 |
-> | billingAccounts / billingProfiles | 否 | 否 |
-> | billingAccounts / billingProfiles / billingPermissions | 否 | 否 |
-> | billingAccounts / billingProfiles / billingRoleAssignments | 否 | 否 |
-> | billingAccounts / billingProfiles / billingRoleDefinitions | 否 | 否 |
-> | billingAccounts / billingProfiles / billingSubscriptions | 否 | 否 |
-> | billingAccounts / billingProfiles / createBillingRoleAssignment | 否 | 否 |
+> | billingAccounts/協定 | 否 | 否 |
+> | billingAccounts/billingPermissions | 否 | 否 |
+> | billingAccounts/billingProfiles | 否 | 否 |
+> | billingAccounts/billingProfiles/billingPermissions | 否 | 否 |
+> | billingAccounts/billingProfiles/billingRoleAssignments | 否 | 否 |
+> | billingAccounts/billingProfiles/billingRoleDefinitions | 否 | 否 |
+> | billingAccounts/billingProfiles/billingSubscriptions | 否 | 否 |
+> | billingAccounts/billingProfiles/createBillingRoleAssignment | 否 | 否 |
 > | billingAccounts/billingProfiles/客戶 | 否 | 否 |
 > | billingAccounts/billingProfiles/指示 | 否 | 否 |
 > | billingAccounts/billingProfiles/發票 | 否 | 否 |
 > | billingAccounts/billingProfiles/發票/pricesheet | 否 | 否 |
 > | billingAccounts/billingProfiles/發票/交易 | 否 | 否 |
-> | billingAccounts / billingProfiles / invoiceSections | 否 | 否 |
-> | billingAccounts / billingProfiles / invoiceSections / billingPermissions | 否 | 否 |
-> | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | 否 | 否 |
-> | billingAccounts / billingProfiles / invoiceSections / billingRoleDefinitions | 否 | 否 |
-> | billingAccounts / billingProfiles / invoiceSections / billingSubscriptions | 否 | 否 |
-> | billingAccounts / billingProfiles / invoiceSections / createBillingRoleAssignment | 否 | 否 |
-> | billingAccounts / billingProfiles / invoiceSections / initiateTransfer | 否 | 否 |
+> | billingAccounts/billingProfiles/invoiceSections | 否 | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingPermissions | 否 | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleAssignments | 否 | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingRoleDefinitions | 否 | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/billingSubscriptions | 否 | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/createBillingRoleAssignment | 否 | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/initiateTransfer | 否 | 否 |
 > | billingAccounts/billingProfiles/invoiceSections/products | 否 | 否 |
 > | billingAccounts/billingProfiles/invoiceSections/products/transfer | 否 | 否 |
 > | billingAccounts/billingProfiles/invoiceSections/products/updateAutoRenew | 否 | 否 |
-> | billingAccounts/billingProfiles/invoiceSections/筆交易 | 否 | 否 |
+> | billingAccounts/billingProfiles/invoiceSections/交易 | 否 | 否 |
 > | billingAccounts/billingProfiles/invoiceSections/transfer | 否 | 否 |
-> | billingAccounts / BillingProfiles / patchOperations | 否 | 否 |
-> | billingAccounts / billingProfiles / paymentMethods | 否 | 否 |
+> | billingAccounts/BillingProfiles/patchOperations | 否 | 否 |
+> | billingAccounts/billingProfiles/paymentMethods | 否 | 否 |
 > | billingAccounts/billingProfiles/原則 | 否 | 否 |
 > | billingAccounts/billingProfiles/pricesheet | 否 | 否 |
-> | billingAccounts / billingProfiles / pricesheetDownloadOperations | 否 | 否 |
+> | billingAccounts/billingProfiles/pricesheetDownloadOperations | 否 | 否 |
 > | billingAccounts/billingProfiles/products | 否 | 否 |
-> | billingAccounts/billingProfiles/筆交易 | 否 | 否 |
-> | billingAccounts / billingRoleAssignments | 否 | 否 |
-> | billingAccounts / billingRoleDefinitions | 否 | 否 |
-> | billingAccounts / billingSubscriptions | 否 | 否 |
+> | billingAccounts/billingProfiles/交易 | 否 | 否 |
+> | billingAccounts/billingRoleAssignments | 否 | 否 |
+> | billingAccounts/billingRoleDefinitions | 否 | 否 |
+> | billingAccounts/billingSubscriptions | 否 | 否 |
 > | billingAccounts/billingSubscriptions/發票 | 否 | 否 |
-> | billingAccounts / createBillingRoleAssignment | 否 | 否 |
-> | billingAccounts / createInvoiceSectionOperations | 否 | 否 |
+> | billingAccounts/createBillingRoleAssignment | 否 | 否 |
+> | billingAccounts/createInvoiceSectionOperations | 否 | 否 |
 > | billingAccounts/客戶 | 否 | 否 |
 > | billingAccounts/customers/billingPermissions | 否 | 否 |
 > | billingAccounts/customers/billingSubscriptions | 否 | 否 |
 > | billingAccounts/customers/initiateTransfer | 否 | 否 |
 > | billingAccounts/customers/原則 | 否 | 否 |
 > | billingAccounts/customers/products | 否 | 否 |
-> | billingAccounts/customers/交易所 | 否 | 否 |
-> | billingAccounts/客戶/傳輸 | 否 | 否 |
+> | billingAccounts/customers/交易 | 否 | 否 |
+> | billingAccounts/客戶/轉移 | 否 | 否 |
 > | billingAccounts/部門 | 否 | 否 |
 > | billingAccounts/部門/billingPermissions | 否 | 否 |
 > | billingAccounts/部門/billingRoleAssignments | 否 | 否 |
 > | billingAccounts/部門/billingRoleDefinitions | 否 | 否 |
-> | billingAccounts / enrollmentAccounts | 否 | 否 |
-> | billingAccounts / enrollmentAccounts / billingPermissions | 否 | 否 |
-> | billingAccounts / enrollmentAccounts / billingRoleAssignments | 否 | 否 |
-> | billingAccounts / enrollmentAccounts / billingRoleDefinitions | 否 | 否 |
+> | billingAccounts/enrollmentAccounts | 否 | 否 |
+> | billingAccounts/enrollmentAccounts/billingPermissions | 否 | 否 |
+> | billingAccounts/enrollmentAccounts/billingRoleAssignments | 否 | 否 |
+> | billingAccounts/enrollmentAccounts/billingRoleDefinitions | 否 | 否 |
 > | billingAccounts/發票 | 否 | 否 |
 > | billingAccounts/發票/交易 | 否 | 否 |
-> | billingAccounts / invoiceSections | 否 | 否 |
-> | billingAccounts / invoiceSections / billingSubscriptionMoveOperations | 否 | 否 |
-> | billingAccounts / invoiceSections / billingSubscriptions | 否 | 否 |
+> | billingAccounts/invoiceSections | 否 | 否 |
+> | billingAccounts/invoiceSections/billingSubscriptionMoveOperations | 否 | 否 |
+> | billingAccounts/invoiceSections/billingSubscriptions | 否 | 否 |
 > | billingAccounts/invoiceSections/billingSubscriptions/transfer | 否 | 否 |
-> | billingAccounts/invoiceSections/提升許可權 | 否 | 否 |
-> | billingAccounts / invoiceSections / initiateTransfer | 否 | 否 |
-> | billingAccounts / invoiceSections / patchOperations | 否 | 否 |
-> | billingAccounts / invoiceSections / productMoveOperations | 否 | 否 |
+> | billingAccounts/invoiceSections/提升 | 否 | 否 |
+> | billingAccounts/invoiceSections/initiateTransfer | 否 | 否 |
+> | billingAccounts/invoiceSections/patchOperations | 否 | 否 |
+> | billingAccounts/invoiceSections/productMoveOperations | 否 | 否 |
 > | billingAccounts/invoiceSections/products | 否 | 否 |
 > | billingAccounts/invoiceSections/products/transfer | 否 | 否 |
 > | billingAccounts/invoiceSections/products/updateAutoRenew | 否 | 否 |
-> | billingAccounts/invoiceSections/筆交易 | 否 | 否 |
-> | billingAccounts/invoiceSections/transfer | 否 | 否 |
-> | billingAccounts / lineOfCredit | 否 | 否 |
-> | billingAccounts / patchOperations | 否 | 否 |
-> | billingAccounts / paymentMethods | 否 | 否 |
-> | billingAccounts/products | 否 | 否 |
-> | billingAccounts/筆交易 | 否 | 否 |
+> | billingAccounts/invoiceSections/交易 | 否 | 否 |
+> | billingAccounts/invoiceSections/傳輸 | 否 | 否 |
+> | billingAccounts/lineOfCredit | 否 | 否 |
+> | billingAccounts/patchOperations | 否 | 否 |
+> | billingAccounts/paymentMethods | 否 | 否 |
+> | billingAccounts/產品 | 否 | 否 |
+> | billingAccounts/交易 | 否 | 否 |
 > | billingPeriods | 否 | 否 |
 > | billingPermissions | 否 | 否 |
 > | billingProperty | 否 | 否 |
@@ -486,7 +486,7 @@ ms.locfileid: "87337988"
 > | transfers | 否 | 否 |
 > | 傳輸/acceptTransfer | 否 | 否 |
 > | 傳輸/declineTransfer | 否 | 否 |
-> | 傳輸/operationStatus | 否 | 否 |
+> | 傳輸/>operationstatus | 否 | 否 |
 > | 傳輸/validateTransfer | 否 | 否 |
 > | validateAddress | 否 | 否 |
 
@@ -538,7 +538,7 @@ ms.locfileid: "87337988"
 > | ------------- | ----------- | ----------- |
 > | botServices | 是 | 是 |
 > | botServices / channels | 否 | 否 |
-> | botServices/connections | 否 | 否 |
+> | >botservices.cs/連接 | 否 | 否 |
 > | 語言 | 否 | 否 |
 > | 範本 | 否 | 否 |
 
@@ -575,8 +575,8 @@ ms.locfileid: "87337988"
 > | reservationOrders/保留 | 否 | 否 |
 > | reservationOrders/保留/修訂 | 否 | 否 |
 > | reservationOrders/return | 否 | 否 |
-> | reservationOrders/split | 否 | 否 |
-> | reservationOrders/swap | 否 | 否 |
+> | reservationOrders/分割 | 否 | 否 |
+> | reservationOrders/交換 | 否 | 否 |
 > | reservations | 否 | 否 |
 > | resourceProviders | 否 | 否 |
 > | resources | 否 | 否 |
@@ -625,9 +625,9 @@ ms.locfileid: "87337988"
 > | domainNames/internalLoadBalancers | 否 | 否 |
 > | domainNames/serviceCertificates | 否 | 否 |
 > | domainNames/插槽 | 否 | 否 |
-> | domainNames/位置/角色 | 否 | 否 |
-> | domainNames/位置/角色/Metricdefinitions.listasync | 否 | 否 |
-> | domainNames/位置/角色/計量 | 否 | 否 |
+> | domainNames/插槽/角色 | 否 | 否 |
+> | domainNames/插槽/角色/metricDefinitions | 否 | 否 |
+> | domainNames/插槽/角色/計量 | 否 | 否 |
 > | moveSubscriptionResources | 否 | 否 |
 > | operatingSystemFamilies | 否 | 否 |
 > | operatingSystems | 否 | 否 |
@@ -636,7 +636,7 @@ ms.locfileid: "87337988"
 > | validateSubscriptionMoveAvailability | 否 | 否 |
 > | virtualMachines | 否 | 否 |
 > | virtualMachines/diagnosticSettings | 否 | 否 |
-> | virtualMachines/Metricdefinitions.listasync | 否 | 否 |
+> | virtualMachines/metricDefinitions | 否 | 否 |
 > | virtualMachines/計量 | 否 | 否 |
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
@@ -677,12 +677,12 @@ ms.locfileid: "87337988"
 > | storageAccounts | 否 | 否 |
 > | storageAccounts / blobServices | 否 | 否 |
 > | storageAccounts / fileServices | 否 | 否 |
-> | storageAccounts/Metricdefinitions.listasync | 否 | 否 |
+> | storageAccounts/metricDefinitions | 否 | 否 |
 > | storageAccounts/計量 | 否 | 否 |
 > | storageAccounts/queueServices | 否 | 否 |
 > | storageAccounts/服務 | 否 | 否 |
 > | storageAccounts/services/diagnosticSettings | 否 | 否 |
-> | storageAccounts/services/Metricdefinitions.listasync | 否 | 否 |
+> | storageAccounts/services/metricDefinitions | 否 | 否 |
 > | storageAccounts/服務/計量 | 否 | 否 |
 > | storageAccounts/tableServices | 否 | 否 |
 > | storageAccounts/vmImages | 否 | 否 |
@@ -730,18 +730,18 @@ ms.locfileid: "87337988"
 > | snapshots | 是 | 是 |
 > | sshPublicKeys | 是 | 是 |
 > | virtualMachines | 是 | 是 |
-> | virtualMachines/extensions | 是 | 是 |
-> | virtualMachines/Metricdefinitions.listasync | 否 | 否 |
+> | virtualMachines/擴充功能 | 是 | 是 |
+> | virtualMachines/metricDefinitions | 否 | 否 |
 > | virtualMachines/runCommands | 是 | 是 |
 > | virtualMachineScaleSets | 是 | 是 |
-> | virtualMachineScaleSets/extensions | 否 | 否 |
+> | virtualMachineScaleSets/擴充功能 | 否 | 否 |
 > | virtualMachineScaleSets/networkInterfaces | 否 | 否 |
 > | virtualMachineScaleSets/publicIPAddresses | 否 | 否 |
 > | virtualMachineScaleSets/virtualMachines | 否 | 否 |
 > | virtualMachineScaleSets/virtualMachines/networkInterfaces | 否 | 否 |
 
 > [!NOTE]
-> 您無法將標記新增至已標示為一般化的虛擬機器。 您可以使用[update-azvm-一般化](/powershell/module/Az.Compute/Set-AzVM)或[az vm 一般化](/cli/azure/vm#az-vm-generalize)，將虛擬機器標示為一般化。
+> 您無法將標記新增至已標示為一般化的虛擬機器。 您可以使用 [new-azvm-一般化](/powershell/module/Az.Compute/Set-AzVM) 或 [az vm 一般化](/cli/azure/vm#az-vm-generalize)將虛擬機器標示為一般化。
 
 ## <a name="microsoftconnectedcache"></a>ConnectedCache
 
@@ -848,7 +848,7 @@ ms.locfileid: "87337988"
 > | 部門 | 否 | 否 |
 > | 維度 | 否 | 否 |
 > | EnrollmentAccounts | 否 | 否 |
-> | 多餘 | 否 | 否 |
+> | 出口 | 否 | 否 |
 > | ExternalBillingAccounts | 否 | 否 |
 > | ExternalBillingAccounts/警示 | 否 | 否 |
 > | ExternalBillingAccounts/維度 | 否 | 否 |
@@ -902,7 +902,7 @@ ms.locfileid: "87337988"
 > [!div class="mx-tableFixed"]
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
-> | workspaces | 是 | 否 |
+> | workspaces | 是 | 是 |
 > | 工作區/dbWorkspaces | 否 | 否 |
 > | 工作區/storageEncryption | 否 | 否 |
 > | 工作區/virtualNetworkPeerings | 否 | 否 |
@@ -925,8 +925,8 @@ ms.locfileid: "87337988"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | dataFactories | 是 | 否 |
-> | Microsoft.azure.management.datafactories/diagnosticSettings | 否 | 否 |
-> | Microsoft.azure.management.datafactories/Metricdefinitions.listasync | 否 | 否 |
+> | dataFactories/diagnosticSettings | 否 | 否 |
+> | dataFactories/metricDefinitions | 否 | 否 |
 > | dataFactorySchema | 否 | 否 |
 > | factories | 是 | 否 |
 > | factories / integrationRuntimes | 否 | 否 |
@@ -991,14 +991,14 @@ ms.locfileid: "87337988"
 > | servers | 是 | 是 |
 > | servers / advisors | 否 | 否 |
 > | servers / keys | 否 | 否 |
-> | 伺服器/privateEndpointConnectionProxies | 否 | 否 |
-> | 伺服器/privateEndpointConnections | 否 | 否 |
-> | 伺服器/privateLinkResources | 否 | 否 |
-> | 伺服器/queryTexts | 否 | 否 |
-> | 伺服器/recoverableServers | 否 | 否 |
-> | 伺服器/topQueryStatistics | 否 | 否 |
+> | servers/privateEndpointConnectionProxies | 否 | 否 |
+> | servers/privateEndpointConnections | 否 | 否 |
+> | servers/privateLinkResources | 否 | 否 |
+> | servers/queryTexts | 否 | 否 |
+> | servers/recoverableServers | 否 | 否 |
+> | servers/topQueryStatistics | 否 | 否 |
 > | servers / virtualNetworkRules | 否 | 否 |
-> | 伺服器/waitStatistics | 否 | 否 |
+> | servers/waitStatistics | 否 | 否 |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
@@ -1008,14 +1008,14 @@ ms.locfileid: "87337988"
 > | servers | 是 | 是 |
 > | servers / advisors | 否 | 否 |
 > | servers / keys | 否 | 否 |
-> | 伺服器/privateEndpointConnectionProxies | 否 | 否 |
-> | 伺服器/privateEndpointConnections | 否 | 否 |
-> | 伺服器/privateLinkResources | 否 | 否 |
-> | 伺服器/queryTexts | 否 | 否 |
-> | 伺服器/recoverableServers | 否 | 否 |
-> | 伺服器/topQueryStatistics | 否 | 否 |
+> | servers/privateEndpointConnectionProxies | 否 | 否 |
+> | servers/privateEndpointConnections | 否 | 否 |
+> | servers/privateLinkResources | 否 | 否 |
+> | servers/queryTexts | 否 | 否 |
+> | servers/recoverableServers | 否 | 否 |
+> | servers/topQueryStatistics | 否 | 否 |
 > | servers / virtualNetworkRules | 否 | 否 |
-> | 伺服器/waitStatistics | 否 | 否 |
+> | servers/waitStatistics | 否 | 否 |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
@@ -1026,14 +1026,14 @@ ms.locfileid: "87337988"
 > | servers | 是 | 是 |
 > | servers / advisors | 否 | 否 |
 > | servers / keys | 否 | 否 |
-> | 伺服器/privateEndpointConnectionProxies | 否 | 否 |
-> | 伺服器/privateEndpointConnections | 否 | 否 |
-> | 伺服器/privateLinkResources | 否 | 否 |
-> | 伺服器/queryTexts | 否 | 否 |
-> | 伺服器/recoverableServers | 否 | 否 |
-> | 伺服器/topQueryStatistics | 否 | 否 |
+> | servers/privateEndpointConnectionProxies | 否 | 否 |
+> | servers/privateEndpointConnections | 否 | 否 |
+> | servers/privateLinkResources | 否 | 否 |
+> | servers/queryTexts | 否 | 否 |
+> | servers/recoverableServers | 否 | 否 |
+> | servers/topQueryStatistics | 否 | 否 |
 > | servers / virtualNetworkRules | 否 | 否 |
-> | 伺服器/waitStatistics | 否 | 否 |
+> | servers/waitStatistics | 否 | 否 |
 > | serversv2 | 是 | 是 |
 > | singleServers | 是 | 是 |
 
@@ -1100,8 +1100,8 @@ ms.locfileid: "87337988"
 > | labcenters | 是 | 是 |
 > | labs | 是 | 是 |
 > | labs / environments | 是 | 是 |
-> | 實驗室/serviceRunners | 是 | 是 |
-> | 實驗室/virtualMachines | 是 | 是 |
+> | labs/serviceRunners | 是 | 是 |
+> | labs/virtualMachines | 是 | 是 |
 > | schedules | 是 | 是 |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
@@ -1272,7 +1272,7 @@ ms.locfileid: "87337988"
 > | ------------- | ----------- | ----------- |
 > | 服務 | 是 | 是 |
 > | 服務/iomtconnectors | 否 | 否 |
-> | 服務/iomtconnectors/連線 | 否 | 否 |
+> | 服務/iomtconnectors/連接 | 否 | 否 |
 > | 服務/iomtconnectors/對應 | 否 | 否 |
 > | 服務/privateEndpointConnectionProxies | 否 | 否 |
 > | 服務/privateEndpointConnections | 是 | 是 |
@@ -1410,7 +1410,7 @@ ms.locfileid: "87337988"
 > | clusters / databases / dataconnections | 否 | 否 |
 > | clusters / databases / eventhubconnections | 否 | 否 |
 > | clusters / databases / principalassignments | 否 | 否 |
-> | 叢集/dataconnections | 否 | 否 |
+> | 叢集/dataconnection | 否 | 否 |
 > | clusters / principalassignments | 否 | 否 |
 > | 叢集/sharedidentities | 否 | 否 |
 
@@ -1520,9 +1520,9 @@ ms.locfileid: "87337988"
 > | offerTypes/發行者 | 否 | 否 |
 > | offerTypes/發行者/優惠 | 否 | 否 |
 > | offerTypes/發行者/優惠/方案 | 否 | 否 |
-> | offerTypes/發行者/優惠/方案/合約 | 否 | 否 |
-> | offerTypes/發行者/供應專案/方案/專案 | 否 | 否 |
-> | offerTypes/發行者/優惠/方案/importImage | 否 | 否 |
+> | offerTypes/發行者/優惠/方案/協定 | 否 | 否 |
+> | offerTypes/發行者/優惠/方案/各專案 | 否 | 否 |
+> | offerTypes/發行者/優惠/方案/各專案/importImage | 否 | 否 |
 > | privategalleryitems | 否 | 否 |
 > | privateStoreClient | 否 | 否 |
 > | privateStores | 否 | 否 |
@@ -1555,23 +1555,23 @@ ms.locfileid: "87337988"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | mediaservices | 是 | 是 |
-> | windowsazure.mediaservices.extensions/accountFilters | 否 | 否 |
+> | windowsazure.mediaservices/accountFilters | 否 | 否 |
 > | mediaservices / assets | 否 | 否 |
-> | windowsazure.mediaservices.extensions/資產/Assetfilter | 否 | 否 |
-> | windowsazure.mediaservices.extensions/contentKeyPolicies | 否 | 否 |
-> | windowsazure.mediaservices.extensions/eventGridFilters | 否 | 否 |
-> | windowsazure.mediaservices.extensions/liveEventOperations | 否 | 否 |
+> | windowsazure.mediaservices/資產/區域 assetfilter | 否 | 否 |
+> | windowsazure.mediaservices/contentKeyPolicies | 否 | 否 |
+> | windowsazure.mediaservices/eventGridFilters | 否 | 否 |
+> | windowsazure.mediaservices/liveEventOperations | 否 | 否 |
 > | mediaservices / liveEvents | 是 | 是 |
 > | mediaservices / liveEvents / liveOutputs | 否 | 否 |
-> | windowsazure.mediaservices.extensions/Liveevent/privateEndpointConnectionProxies | 否 | 否 |
-> | windowsazure.mediaservices.extensions/liveOutputOperations | 否 | 否 |
-> | windowsazure.mediaservices.extensions/mediaGraphs | 否 | 否 |
-> | windowsazure.mediaservices.extensions/streamingEndpointOperations | 否 | 否 |
+> | windowsazure.mediaservices/Liveevent/privateEndpointConnectionProxies | 否 | 否 |
+> | windowsazure.mediaservices/liveOutputOperations | 否 | 否 |
+> | windowsazure.mediaservices/mediaGraphs | 否 | 否 |
+> | windowsazure.mediaservices/streamingEndpointOperations | 否 | 否 |
 > | mediaservices / streamingEndpoints | 是 | 是 |
-> | windowsazure.mediaservices.extensions/Streamingendpoint/privateEndpointConnectionProxies | 否 | 否 |
-> | windowsazure.mediaservices.extensions/Streaminglocator | 否 | 否 |
-> | windowsazure.mediaservices.extensions/streamingPolicies | 否 | 否 |
-> | windowsazure.mediaservices.extensions/streamingPrivateEndpointConnectionProxyOperations | 否 | 否 |
+> | windowsazure.mediaservices/Streamingendpoint/privateEndpointConnectionProxies | 否 | 否 |
+> | windowsazure.mediaservices/streamingLocators | 否 | 否 |
+> | windowsazure.mediaservices/streamingPolicies | 否 | 否 |
+> | windowsazure.mediaservices/streamingPrivateEndpointConnectionProxyOperations | 否 | 否 |
 > | mediaservices / transforms | 否 | 否 |
 > | mediaservices / transforms / jobs | 否 | 否 |
 
@@ -1648,9 +1648,9 @@ ms.locfileid: "87337988"
 > | expressRoutePorts | 是 | 是 |
 > | expressRouteServiceProviders | 否 | 否 |
 > | firewallPolicies | 是 | 是 |
-> | frontdoors | 是，但有限制（請參閱[下面的附注](#frontdoor)） | 是 |
-> | frontdoorWebApplicationFirewallManagedRuleSets | 是，但有限制（請參閱[下面的附注](#frontdoor)） | 否 |
-> | frontdoorWebApplicationFirewallPolicies | 是，但有限制（請參閱[下面的附注](#frontdoor)） | 是 |
+> | frontdoors | 是，但 (請參閱 [以下附注](#frontdoor))  | 是 |
+> | frontdoorWebApplicationFirewallManagedRuleSets | 是，但 (請參閱 [以下附注](#frontdoor))  | 否 |
+> | frontdoorWebApplicationFirewallPolicies | 是，但 (請參閱 [以下附注](#frontdoor))  | 是 |
 > | getDnsResourceReference | 否 | 否 |
 > | internalNotify | 否 | 否 |
 > | loadBalancers | 是 | 是 |
@@ -1702,7 +1702,7 @@ ms.locfileid: "87337988"
 <a id="frontdoor"></a>
 
 > [!NOTE]
-> 針對 Azure Front 門板服務，您可以在建立資源時套用標記，但目前不支援更新或新增標籤。
+> 針對 Azure Front Door Service，您可以在建立資源時套用標記，但目前不支援更新或新增標記。
 
 
 ## <a name="microsoftnotebooks"></a>Microsoft 筆記本
@@ -2102,7 +2102,7 @@ ms.locfileid: "87337988"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | 是 | 是 |
-> | managedInstances/資料庫 | 是（請參閱[下面的附注](#sqlnote)） | 是 |
+> | managedInstances/資料庫 | 是 (請參閱 [下面的附注](#sqlnote))  | 是 |
 > | managedInstances/資料庫/backupShortTermRetentionPolicies | 否 | 否 |
 > | managedInstances/資料庫/架構/資料表/資料行/sensitivityLabels | 否 | 否 |
 > | managedInstances/資料庫/vulnerabilityAssessments | 否 | 否 |
@@ -2113,20 +2113,20 @@ ms.locfileid: "87337988"
 > | managedInstances/vulnerabilityAssessments | 否 | 否 |
 > | servers | 是 | 是 |
 > | servers / administrators | 否 | 否 |
-> | 伺服器/communicationLinks | 否 | 否 |
-> | servers / databases | 是（請參閱[下面的附注](#sqlnote)） | 是 |
-> | 伺服器/encryptionProtector | 否 | 否 |
+> | servers/communicationLinks | 否 | 否 |
+> | servers / databases | 是 (請參閱 [下面的附注](#sqlnote))  | 是 |
+> | servers/encryptionProtector | 否 | 否 |
 > | servers / firewallRules | 否 | 否 |
 > | servers / keys | 否 | 否 |
-> | 伺服器/restorableDroppedDatabases | 否 | 否 |
+> | servers/restorableDroppedDatabases | 否 | 否 |
 > | servers / serviceobjectives | 否 | 否 |
-> | 伺服器/tdeCertificates | 否 | 否 |
+> | servers/tdeCertificates | 否 | 否 |
 > | virtualClusters | 否 | 否 |
 
 <a id="sqlnote"></a>
 
 > [!NOTE]
-> Master 資料庫不支援標記，但其他資料庫（包括 Azure Synapse 分析資料庫）支援標記。 Azure Synapse 分析資料庫必須處於作用中（未暫停）狀態。
+> Master 資料庫不支援標記，但其他資料庫（包括 Azure Synapse Analytics 資料庫）則支援標記。 Azure Synapse Analytics 資料庫必須處於作用中狀態 (未暫停) 狀態。
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
@@ -2147,7 +2147,7 @@ ms.locfileid: "87337988"
 > | storageAccounts / fileServices | 否 | 否 |
 > | storageAccounts/queueServices | 否 | 否 |
 > | storageAccounts/服務 | 否 | 否 |
-> | storageAccounts/services/Metricdefinitions.listasync | 否 | 否 |
+> | storageAccounts/services/metricDefinitions | 否 | 否 |
 > | storageAccounts/tableServices | 否 | 否 |
 > | usages | 否 | 否 |
 
@@ -2261,7 +2261,7 @@ ms.locfileid: "87337988"
 > | 資源類型 | 支援標記 | 成本報告中的標記 |
 > | ------------- | ----------- | ----------- |
 > | stores | 是 | 是 |
-> | 存放區/accessPolicies | 否 | 否 |
+> | 商店/accessPolicies | 否 | 否 |
 > | stores / services | 否 | 否 |
 > | stores / services / tokens | 否 | 否 |
 
@@ -2333,11 +2333,11 @@ ms.locfileid: "87337988"
 > | apiManagementAccounts/api | 否 | 否 |
 > | apiManagementAccounts/api/Apiacl | 否 | 否 |
 > | apiManagementAccounts/api/Connectionacl | 否 | 否 |
-> | apiManagementAccounts/api/連線 | 否 | 否 |
+> | apiManagementAccounts/api/連接 | 否 | 否 |
 > | apiManagementAccounts/api/connections/Connectionacl | 否 | 否 |
 > | apiManagementAccounts/api/localizedDefinitions | 否 | 否 |
 > | apiManagementAccounts/Connectionacl | 否 | 否 |
-> | apiManagementAccounts/connections | 否 | 否 |
+> | apiManagementAccounts/連接 | 否 | 否 |
 > | billingMeters | 否 | 否 |
 > | certificates | 是 | 是 |
 > | connectionGateways | 是 | 是 |
@@ -2356,15 +2356,15 @@ ms.locfileid: "87337988"
 > | serverFarms | 是 | 是 |
 > | serverFarms/eventGridFilters | 否 | 否 |
 > | sites | 是 | 是 |
-> | sites/config  | 否 | 否 |
+> | 網站/設定  | 否 | 否 |
 > | sites/eventGridFilters | 否 | 否 |
 > | sites/hostNameBindings | 否 | 否 |
 > | sites/Networkconfig.netcfg | 否 | 否 |
 > | sites / premieraddons | 是 | 是 |
 > | sites / slots | 是 | 是 |
-> | sites/位置/eventGridFilters | 否 | 否 |
-> | sites/位置/hostNameBindings | 否 | 否 |
-> | sites/位置/Networkconfig.netcfg | 否 | 否 |
+> | 網站/插槽/eventGridFilters | 否 | 否 |
+> | 網站/插槽/hostNameBindings | 否 | 否 |
+> | 網站/插槽/Networkconfig.netcfg | 否 | 否 |
 > | sourceControls | 否 | 否 |
 > | staticSites | 是 | 是 |
 > | validate | 否 | 否 |

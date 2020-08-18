@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: f86400f1fb45217133bbd715788986994f5f77cc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f6dc732a512368b007a289c3aaabc3123a696d96
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836253"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505252"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
-Mv2 系列提供高輸送量、低延遲的平臺，在超執行緒 Intel®的®白金 8180M 2.5 GHz (Skylake) 處理器，並將所有核心基本頻率 2.5 GHz 和最大 turbo 頻率 3.8 GHz。 所有 Mv2 系列的虛擬機器大小都可以同時使用標準和 premium 持續性磁片。 Mv2 系列實例是記憶體優化的 VM 大小，可提供無與倫比的計算效能，以支援大型記憶體內部資料庫和工作負載，並具有高記憶體對 CPU 比例，適用于關係資料庫伺服器、大型快取和記憶體內部分析。
+Mv2 系列提供高輸送量、低延遲的平臺，在超執行緒 Intel®的®白金 GHz 上執行，並以 2.5 GHz 的最大 turbo 頻率和 3.8 GHz 的最大 turbo 頻率 (Skylake) 處理器。 所有的 Mv2 系列虛擬機器大小都可以同時使用標準和 premium 的持續性磁片。 Mv2 系列實例是記憶體優化的 VM 大小，可提供無與倫比的計算效能，以支援大型記憶體內部資料庫和工作負載，且具有高記憶體與 CPU 的比例，適用于關係資料庫伺服器、大型快取，以及記憶體內部分析。
 
 Mv2 系列 VM 的功能 Intel®超執行緒技術
 
@@ -28,7 +28,7 @@ Mv2 系列 VM 的功能 Intel®超執行緒技術
 
 記憶體保留更新：不支援
 
-寫入加速器：[支援](./windows/how-to-enable-write-accelerator.md)
+寫入加速器： [支援](./how-to-enable-write-accelerator.md)
 
 |大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
@@ -37,7 +37,7 @@ Mv2 系列 VM 的功能 Intel®超執行緒技術
 | Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080)  | 80000/2000 | 8 | 32000 |
 | Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080)  | 80000/2000 | 8 | 32000 |
 
-<sup>1</sup> Mv2 系列 vm 僅限第2代，並支援第2代支援映射的子集。 如需 Mv2 系列所支援映射的完整清單，請參閱下文。 如果您使用 Linux，請參閱[Azure 上的第2代 Vm 支援](./linux/generation-2.md)，以取得如何尋找和選取映射的指示。 如果您使用的是 Windows，請參閱[Azure 上第2代 vm 的支援](./windows/generation-2.md)，以取得如何尋找及選取映射的指示。 
+<sup>1</sup> Mv2 系列 vm 僅限第2代，並支援第2代支援映射的子集。 如需 Mv2 系列支援的映射完整清單，請參閱下方。 如果您使用 Linux，請參閱 [Azure 上的第2代 Vm 支援](./linux/generation-2.md) ，以取得如何尋找和選取映射的指示。 如果您使用的是 Windows，請參閱 [Azure 上的第2代 Vm 支援](./windows/generation-2.md) ，以取得如何尋找和選取映射的指示。 
 
 - Windows Server 2019 或更新版本
 - SUSE Linux Enterprise Server 12 SP4 和更新版本，或 SUSE Linux Enterprise Server 15 SP1 和更新版本
@@ -57,9 +57,9 @@ Mv2 系列 VM 的功能 Intel®超執行緒技術
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
 
-定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+定價計算機： [定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
+磁片類型的詳細資訊： [磁片類型](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>後續步驟

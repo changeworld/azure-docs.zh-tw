@@ -1,7 +1,7 @@
 ---
-title: OAuth 2.0 裝置程式碼流程 |Azure
+title: OAuth 2.0 裝置程式碼流程 |蔚藍
 titleSuffix: Microsoft identity platform
-description: 不使用瀏覽器登入使用者。 使用裝置授權授與，建立內嵌和無瀏覽器的驗證流程。
+description: 不使用瀏覽器登入使用者。 使用裝置授權授與來建立內嵌且不使用瀏覽器的驗證流程。
 services: active-directory
 author: hpsin
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c757f3e067aeac5d8145ca47b2eac145daba574
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82689770"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272445"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 裝置授權授與流程
 
-Microsoft 身分識別平臺支援「[裝置授權授](https://tools.ietf.org/html/rfc8628)與」，可讓使用者登入受輸入限制的裝置，例如智慧型電視、IoT 裝置或印表機。  若要啟用此流程，裝置會讓使用者在其他裝置的瀏覽器中造訪網頁以進行登入。  使用者登入後，裝置就能夠視需要取得存取權杖和重新整理權杖。
+Microsoft 身分識別平臺支援 [裝置授權授](https://tools.ietf.org/html/rfc8628)與，可讓使用者登入輸入限制的裝置，例如智慧型電視、IoT 裝置或印表機。  若要啟用此流程，裝置會讓使用者在其他裝置的瀏覽器中造訪網頁以進行登入。  使用者登入後，裝置就能夠視需要取得存取權杖和重新整理權杖。
 
 本文說明如何在您的應用程式中直接針對通訊協定進行程式設計。  可能的話，建議您改為使用支援的 Microsoft 驗證程式庫 (MSAL)，以[取得權杖並呼叫受保護的 Web API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另請參閱[使用 MSAL 的範例應用程式](sample-v2-code.md)。
 
@@ -53,9 +53,9 @@ scope=user.read%20openid%20profile
 
 | 參數 | 條件 | 描述 |
 | --- | --- | --- |
-| `tenant` | 必要 | 可以是/common、/consumers 或/organizations。  它也可以是您想要以 GUID 或易記名稱格式來要求許可權的目錄租使用者。  |
+| `tenant` | 必要 | 可以是/common、/consumers 或/organizations。  它也可以是您想要從 GUID 或易記名稱格式要求許可權的目錄租使用者。  |
 | `client_id` | 必要 | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗指派給您應用程式的**應用程式 (用戶端) 識別碼**。 |
-| `scope` | 建議 | 您要使用者同意的 [範圍](v2-permissions-and-consent.md) 空格分隔清單。  |
+| `scope` | 必要 | 您要使用者同意的 [範圍](v2-permissions-and-consent.md) 空格分隔清單。  |
 
 ### <a name="device-authorization-response"></a>裝置授權回應
 
@@ -71,13 +71,13 @@ scope=user.read%20openid%20profile
 | `message`        | String | 人類看得懂的字串，其中包含使用者的指示。 在 `?mkt=xx-XX` 形式的要求中加入 ** 查詢參數**、填寫適當的語言文化代碼，即可進行當地語系化。 |
 
 > [!NOTE]
-> 此時 `verification_uri_complete` 不會包含或支援 [回應] 欄位。  我們提過這是因為如果您閱讀[標準](https://tools.ietf.org/html/rfc8628)，就 `verification_uri_complete` 會將其列為裝置程式碼流程標準的選擇性部分。
+> 目前 `verification_uri_complete` 不包含或支援回應欄位。  我們提過這是因為如果您讀取的是 [標準](https://tools.ietf.org/html/rfc8628) ，您會看到它 `verification_uri_complete` 列為裝置程式碼流程標準的選擇性部分。
 
 ## <a name="authenticating-the-user"></a>驗證使用者
 
-收到和之後 `user_code` ， `verification_uri` 用戶端會向使用者顯示這些專案，指示他們使用其行動電話或電腦瀏覽器登入。
+收到和之後 `user_code` `verification_uri` ，用戶端會向使用者顯示這些使用者，指示他們使用行動電話或電腦瀏覽器登入。
 
-如果使用者使用個人帳戶（在/common 或/consumers 上）進行驗證，系統會要求他們重新登入，以便將驗證狀態傳送至裝置。  系統也會要求他們提供同意，以確保他們知道所授與的許可權。  這不適用於用於驗證的公司或學校帳戶。
+如果使用者使用個人帳戶進行驗證 (在/common 或/consumers) 上，系統會要求他們再次登入，才能將驗證狀態傳送至裝置。  系統也會要求他們提供同意，以確保他們知道所授與的許可權。  這不適用於用來驗證的公司或學校帳戶。
 
 使用者在 `verification_uri`進行驗證時，用戶端應使用 `device_code` 輪詢 `/token` 端點，以取得要求的權杖。
 
@@ -90,23 +90,23 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| 參數 | 必要 | 說明|
+| 參數 | 必要 | 描述|
 | -------- | -------- | ---------- |
-| `tenant`  | 必要 | 初始要求中使用的相同租使用者或租使用者別名。 |
+| `tenant`  | 必要 | 在初始要求中使用的相同租使用者或租使用者別名。 |
 | `grant_type` | 必要 | 必須是 `urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | 必要 | 必須符合初始要求中使用的 `client_id`。 |
 | `device_code`| 必要 | 裝置授權要求傳回的 `device_code`。  |
 
 ### <a name="expected-errors"></a>預期的錯誤
 
-裝置程式碼流程是一種輪詢通訊協定，因此您的用戶端在使用者完成驗證之前，必須預期會收到錯誤。
+裝置程式碼流程是輪詢通訊協定，因此您的用戶端必須預期會在使用者完成驗證之前收到錯誤。
 
 | 錯誤 | 描述 | 用戶端動作 |
 | ------ | ----------- | -------------|
 | `authorization_pending` | 使用者尚未完成驗證，但尚未取消流程。 | 經過至少 `interval` 秒後，重複要求流程。 |
 | `authorization_declined` | 終端使用者拒絕了授權要求。| 停止輪詢，並還原到未驗證的狀態。  |
-| `bad_verification_code`| `device_code`無法辨識傳送至 `/token` 端點的。 | 確認用戶端是否在要求中傳送正確的 `device_code`。 |
-| `expired_token` | 已經過了至少 `expires_in` 秒，`device_code` 也無法再進行驗證。 | 停止輪詢，並還原到未驗證的狀態。 |
+| `bad_verification_code`| `device_code`無法識別傳送至 `/token` 端點的。 | 確認用戶端是否在要求中傳送正確的 `device_code`。 |
+| `expired_token` | 已經過了至少 `expires_in` 秒，`device_code` 也無法再進行驗證。 | 停止輪詢並還原為未經過驗證的狀態。 |
 
 ### <a name="successful-authentication-response"></a>成功的驗證回應
 
@@ -132,4 +132,4 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 | `id_token`   | JWT | 原始 `scope` 參數包含 `openid` 範圍時發出。  |
 | `refresh_token` | 不透明字串 | 原始 `scope` 參數包含 `offline_access` 時發出。  |
 
-您可以使用重新整理權杖來取得新的存取權杖，並使用[OAuth 程式碼流程檔](v2-oauth2-auth-code-flow.md#refresh-the-access-token)中記載的相同流程來重新整理權杖。
+您可以使用重新整理權杖來取得新的存取權杖，並使用 [OAuth 程式碼流程檔](v2-oauth2-auth-code-flow.md#refresh-the-access-token)中記載的相同流程來重新整理權杖。

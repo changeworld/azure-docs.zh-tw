@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832258"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504937"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署
 
@@ -404,7 +404,7 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 
 
 #### <a name="write-accelerator"></a>寫入加速器
-針對 Azure M 系列的 VM，和 Azure 進階儲存體效能相比，寫入線上重做記錄的延遲將會大幅降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../linux/how-to-enable-write-accelerator.md)。
+針對 Azure M 系列的 VM，和 Azure 進階儲存體效能相比，寫入線上重做記錄的延遲將會大幅降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../how-to-enable-write-accelerator.md)。
 
 
 ### <a name="backuprestore"></a>備份/還原
@@ -498,7 +498,7 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 
 
 #### <a name="write-accelerator"></a>寫入加速器
-針對 Azure M 系列的 VM，當您使用 Azure 寫入加速器時，和 Azure 進階儲存體效能相比，寫入線上重做記錄的延遲將會大幅降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../linux/how-to-enable-write-accelerator.md)。
+針對 Azure M 系列的 VM，當您使用 Azure 寫入加速器時，和 Azure 進階儲存體效能相比，寫入線上重做記錄的延遲將會大幅降低。 請針對以 Azure 進階儲存體為基礎並用於線上重做記錄檔的磁碟 (VHD) 啟用 Azure 寫入加速器。 如需詳細資訊，請參閱[寫入加速器](../../how-to-enable-write-accelerator.md)。
 
 
 ### <a name="backuprestore"></a>備份/還原

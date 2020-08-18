@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831051"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505553"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>適用於 SAP NetWeaver 的 SQL Server Azure 虛擬機器 DBMS 部署
 
@@ -355,7 +355,7 @@ ms.locfileid: "87831051"
 
 
 ### <a name="special-for-m-series-vms"></a>M 系列 VM 的特殊情況
-和 Azure 進階儲存體 相比之下，使用 Azure Write Accelerator 時，會有諸多因素造成寫入交易日誌的延遲時間被縮短。 因此，您應該為組成 SQL Server 交易記錄檔之磁碟區的 VHD，部署 Azure Write Accelerator。 如需詳細資訊，請參閱[寫入加速器](../../windows/how-to-enable-write-accelerator.md)文件。
+和 Azure 進階儲存體 相比之下，使用 Azure Write Accelerator 時，會有諸多因素造成寫入交易日誌的延遲時間被縮短。 因此，您應該為組成 SQL Server 交易記錄檔之磁碟區的 VHD，部署 Azure Write Accelerator。 如需詳細資訊，請參閱[寫入加速器](../../how-to-enable-write-accelerator.md)文件。
   
 
 ### <a name="formatting-the-disks"></a>將磁碟格式化

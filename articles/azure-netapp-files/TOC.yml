@@ -43,7 +43,7 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: 使用 Azure NetApp Files 進行電子設計自動化的優點
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
-            - name: 搭配使用 Windows 虛擬桌面與 Azure NetApp Files
+            - name: 搭配使用 Azure NetApp Files 和 Windows 虛擬桌面的優點
               href: solutions-windows-virtual-desktop.md
     - name: 關於 Azure NetApp 檔案的常見問題集
       href: azure-netapp-files-faqs.md

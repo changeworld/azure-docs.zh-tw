@@ -138,6 +138,8 @@
           href: concepts-server-parameters.md
     - name: 部署
       items:
+        - name: 應用程式最佳做法
+          href: app-development-best-practices.md
         - name: 驅動程式和工具相容性
           href: concepts-compatibility.md
         - name: XBOX Video Application Development

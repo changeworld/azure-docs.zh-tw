@@ -1,20 +1,20 @@
 ---
-title: 常見問題集 - 自訂翻譯工具
+title: 常見問題-自訂翻譯
 titleSuffix: Azure Cognitive Services
 description: 本文包含有關 Azure 認知服務自訂翻譯常見問題的解答。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 2edc5e9e255af321a30521ba1e707eea30d81f73
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957591"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507224"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>自訂翻譯常見問題
 
@@ -41,7 +41,7 @@ ms.locfileid: "85957591"
 
 ## <a name="how-do-you-access-a-deployed-system"></a>如何存取已部署的系統？
 
-您可以藉由指定 [類別]，透過 Translator 存取已部署的系統。 如需有關 Translator 的詳細資訊，請參閱[API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)網頁。
+已部署的系統可透過 Microsoft Translator Text API V3 (藉由指定 CategoryID) 來存取。 如需翻譯工具文字 API 的詳細資訊，請參閱 [API 參考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)網頁。
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>如果我的資料已將句子對齊，如何略過對齊和斷句？
 
@@ -49,6 +49,7 @@ ms.locfileid: "85957591"
 
 如果已擷取的句數不符合具有相同基底名稱的兩個檔案，自訂翻譯工具仍會對 `.align` 檔案執行句子對齊工具。
 
-## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>我嘗試上傳 TMX，但有訊息指出「文件處理失敗」。
+## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>我試過上傳我的 TMX，但它顯示「檔處理失敗」
+
 
 請確定 TMX 符合 <https://www.gala-global.org/tmx-14b> 上的 TMX 1.4b 規格。

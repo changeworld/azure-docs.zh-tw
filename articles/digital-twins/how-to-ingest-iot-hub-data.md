@@ -1,50 +1,50 @@
 ---
 title: 從 IoT 中樞內嵌遙測
 titleSuffix: Azure Digital Twins
-description: 請參閱如何從 IoT 中樞內嵌裝置遙測訊息。
+description: 瞭解如何從 IoT 中樞內嵌裝置遙測訊息。
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 8/11/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5209ffb0328e90fb2ca9b91773cbf18dd4ed2916
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 47e4bb291d031c41c89c88435a795004490e20a1
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163595"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505320"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>將 IoT 中樞遙測內嵌到 Azure 數位 Twins
 
-Azure 數位 Twins 是由 IoT 裝置和其他來源的資料所驅動。 要在 Azure 數位 Twins 中使用之裝置資料的常見來源是[IoT 中樞](../iot-hub/about-iot-hub.md)。
+Azure 數位 Twins 是由來自 IoT 裝置和其他來源的資料所驅動。 Azure 數位 Twins 中要使用之裝置資料的常見來源為 [IoT 中樞](../iot-hub/about-iot-hub.md)。
 
-將資料內嵌到 Azure 數位 Twins 的程式是設定外部計算資源（例如[Azure](../azure-functions/functions-overview.md)函式），以接收資料並使用[選取 api](how-to-use-apis-sdks.md)來設定屬性，或在[數位 Twins](concepts-twins-graph.md)上引發遙測事件。 
+將資料擷取至 Azure 數位 Twins 的程式是設定可接收資料的外部計算資源，例如 [Azure](../azure-functions/functions-overview.md)函式，並使用 [DigitalTwins api](how-to-use-apis-sdks.md) 來設定屬性，或在 [數位 Twins](concepts-twins-graph.md) 上引發遙測事件。 
 
-本操作說明文件將逐步解說如何撰寫可從 IoT 中樞內嵌遙測的 Azure 函式。
+此操作說明文件將逐步解說撰寫可從 IoT 中樞內嵌遙測資料的 Azure 函式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-繼續執行此範例之前，您必須先完成下列必要條件。
-* **IoT 中樞**。 如需相關指示，請參閱[本 IoT 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的*建立 IoT 中樞*一節。
-* 具有正確許可權的**Azure 函式**，可呼叫您的數位對應項實例。 如需相關指示，請參閱[*如何：設定用來處理資料的 Azure 函數*](how-to-create-azure-function.md)。 
-* **數位 Twins 實例**，將會接收您的裝置遙測。 請參閱[*如何：設定 Azure 數位 Twins 實例和驗證*](./how-to-set-up-instance-portal.md) 
+繼續進行此範例之前，您必須將下列資源設定為必要條件：
+* **IoT 中樞**。 如需相關指示，請參閱[此 Iot 中樞快速入門](../iot-hub/quickstart-send-telemetry-cli.md)的*建立 iot 中樞*一節。
+* 具有正確許可權可呼叫數位對應項實例的**Azure 函數**。 如需相關指示，請參閱作法 [*：設定 Azure 函式來處理資料*](how-to-create-azure-function.md)。 
+* 將會收到您裝置遙測的**Azure 數位 Twins 實例**。 如需指示，請參閱作法 [*：設定 Azure 數位 Twins 實例和驗證*](./how-to-set-up-instance-portal.md)。
 
 ### <a name="example-telemetry-scenario"></a>範例遙測案例
 
-本操作說明概述如何使用 Azure function，將訊息從 IoT 中樞傳送至 Azure 數位 Twins。 有許多可能的設定和相符的策略可供您使用，但本文的範例包含下列部分：
-* IoT 中樞中的溫度計裝置，具有已知的裝置識別碼。
+此操作說明概述如何使用 Azure 函式，將訊息從 IoT 中樞傳送至 Azure 數位 Twins。 有許多可能的設定和符合的策略可供您使用，但本文的範例包含下列部分：
+* IoT 中樞內具有已知裝置識別碼的溫度計裝置。
 * 代表裝置的數位對應項，具有相符的識別碼
 
 > [!NOTE]
-> 這個範例會在裝置識別碼與相對應的數位對應項識別碼之間使用簡單的識別碼比對，但是可以提供更複雜的對應，從裝置到其對應項 (例如對應資料表) 。
+> 此範例會在裝置識別碼和對應的數位對應項識別碼之間使用簡單的識別碼比對，但您可以提供從裝置到其對應項 (的更精密對應，例如使用對應資料表) 。
 
-當溫度計裝置傳送溫度遙測事件時，數位對應項的*溫度*屬性應會更新。 下圖概述此案例：
+當溫度計裝置傳送溫度遙測事件時，數位對應項的 *溫度* 屬性應會更新。 下圖概述此案例：
 
-:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="顯示流程圖的圖表。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。" border="false":::
+:::image type="content" source="media/how-to-ingest-iot-hub-data/events.png" alt-text="此圖表顯示流程圖。在圖表中，IoT 中樞裝置會透過 IoT 中樞將溫度遙測傳送至 Azure 函式，以更新 Azure 數位 Twins 中對應項的溫度屬性。" border="false":::
 
-## <a name="add-a-model-and-twin"></a>加入模型和對應項
+## <a name="add-a-model-and-twin"></a>新增模型和對應項
 
-您需要有對應項，才能使用 IoT 中樞資訊進行更新。
+您需要有對應項才能以 IoT 中樞資訊進行更新。
 
 模型看起來像這樣：
 ```JSON
@@ -62,17 +62,17 @@ Azure 數位 Twins 是由 IoT 裝置和其他來源的資料所驅動。 要在 
 }
 ```
 
-若要將**此模型上傳到您的 twins 實例**，請開啟 Azure CLI 並執行下列命令：
+若要將 **此模型上傳至您的 twins 實例**，請開啟 Azure CLI，然後執行下列命令：
 ```azurecli-interactive
 az dt model create --models '{  "@id": "dtmi:contosocom:DigitalTwins:Thermostat;1",  "@type": "Interface",  "@context": "dtmi:dtdl:context;2",  "contents": [    {      "@type": "Property",      "name": "Temperature",      "schema": "double"    }  ]}' -n {digital_twins_instance_name}
 ```
 
-接著，您必須**使用此模型建立一個對應項**。 使用下列命令來建立對應項，並將0.0 設定為初始溫度值。
+然後，您必須 **使用此模型建立一個對應項**。 使用下列命令建立對應項，並將0.0 設定為初始溫度值。
 ```azurecli-interactive
 az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id thermostat67 --properties '{"Temperature": 0.0,}' --dt-name {digital_twins_instance_name}
 ```
 
-成功的對應項 create 命令的輸出應該如下所示：
+成功對應項 create 命令的輸出看起來應該像這樣：
 ```json
 {
   "$dtId": "thermostat67",
@@ -93,17 +93,17 @@ az dt twin create --dtmi "dtmi:contosocom:DigitalTwins:Thermostat;1" --twin-id t
 
 ## <a name="create-an-azure-function"></a>建立 Azure 函式
 
-本節使用相同的 Visual Studio 啟動步驟和 Azure 函式基本架構，從[*如何：設定 azure 函數來處理資料*](how-to-create-azure-function.md)。 此基本架構會處理驗證並建立服務用戶端，以供您處理資料和呼叫 Azure 數位 Twins Api 以進行回應。 
+本節使用相同的 Visual Studio 啟動步驟和 Azure 函式基本架構，從 [*操作說明：設定用來處理資料的 azure 函數*](how-to-create-azure-function.md)。 此基本架構會處理驗證並建立服務用戶端，以供您處理資料並呼叫 Azure 數位 Twins Api 以回應。 
 
-在接下來的步驟中，您將會在其中新增特定程式碼，以便處理來自 IoT 中樞的 IoT 遙測事件。  
+在接下來的步驟中，您將新增特定程式碼來處理來自 IoT 中樞的 IoT 遙測事件。  
 
 ### <a name="add-telemetry-processing"></a>新增遙測處理
     
-遙測事件的形式來自裝置的訊息。 新增遙測處理常式代碼的第一個步驟，是從事件方格事件中，將此裝置訊息的相關部分解壓縮。 
+遙測事件是來自裝置的訊息形式。 新增遙測處理常式代碼的第一個步驟，是從事件方格事件中解壓縮此裝置訊息的相關部分。 
 
-不同的裝置可能會以不同的方式來結構其訊息，因此此步驟的程式碼**取決於已連線的裝置。** 
+不同的裝置可能會以不同的結構來建立訊息的結構，因此這個步驟的程式碼 **取決於已連線的裝置。** 
 
-下列程式碼顯示將遙測當做 JSON 傳送的簡單裝置範例。 此範例已在教學課程[*：連接端對端解決方案*](./tutorial-end-to-end.md)中完整探索。 下列程式碼會尋找傳送訊息之裝置的裝置識別碼，以及溫度值。
+下列程式碼顯示將遙測傳送為 JSON 的簡單裝置範例。 此範例完整地在 [*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)中進行探索。 下列程式碼會尋找傳送訊息之裝置的裝置識別碼，以及溫度值。
 
 ```csharp
 JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
@@ -111,7 +111,7 @@ string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-d
 var temperature = deviceMessage["body"]["Temperature"];
 ```
 
-下一個程式碼範例會採用識別碼和溫度值，並使用它們來「修補」 (進行更新以) 該對應項。
+下一個程式碼範例會採用識別碼和溫度值，並使用它們來「patch」 (進行更新以) 該對應項。
 
 ```csharp
 //Update twin using device temperature
@@ -121,7 +121,7 @@ await client.UpdateDigitalTwinAsync(deviceId, uou.Serialize());
 ...
 ```
 
-### <a name="update-your-azure-function-code"></a>更新您的 Azure function 程式碼
+### <a name="update-your-azure-function-code"></a>更新您的 Azure 函式程式碼
 
 既然您已瞭解先前範例中的程式碼，請開啟 Visual Studio，並將您的 Azure 函式程式碼取代為此範例程式碼。
 
@@ -186,24 +186,24 @@ namespace IotHubtoTwins
 }
 ```
 
-## <a name="connect-your-function-to-iot-hub"></a>將您的函式連線至 IoT 中樞
+## <a name="connect-your-function-to-iot-hub"></a>將您的函式連線到 IoT 中樞
 
-1. 設定中樞資料的事件目的地。 在 [ [Azure 入口網站](https://portal.azure.com/)中，流覽至您的 IoT 中樞實例。 在 [**事件**] 底下，為您的 Azure function 建立訂用帳戶。 
+1. 設定中樞資料的事件目的地。 在 [Azure 入口網站](https://portal.azure.com/)中，流覽至您的 IoT 中樞實例。 在 [ **事件**] 下，為您的 Azure function 建立訂用帳戶。 
 
     :::image type="content" source="media/how-to-ingest-iot-hub-data/add-event-subscription.png" alt-text="顯示新增事件訂閱之 Azure 入口網站的螢幕擷取畫面。":::
 
-2. 在 [**建立事件訂**用帳戶] 頁面中，填寫欄位，如下所示：
-    1. 在 [**名稱**] 底下，將訂用帳戶命名為您想要的名稱。
-    2. 在 [**事件架構**] 底下，選擇 [**事件方格架構**]。
-    3. 在 [**系統主題名稱**] 下，選擇唯一的名稱。
-    4. 在 [**事件種類**] 底下，選擇 [**裝置遙測**] 做為要篩選的事件種類。
-    5. 在 [**端點詳細資料**] 底下，選取您的 Azure 函式作為端點。
+2. 在 [ **建立事件訂** 用帳戶] 頁面中，填寫欄位，如下所示：
+    1. 在 [ **名稱**] 底下，將訂用帳戶命名為您要的名稱。
+    2. 在 [ **事件架構**] 下，選擇 [ **事件方格架構**]。
+    3. 在 [ **系統主題名稱**] 底下，選擇唯一的名稱。
+    4. 在 [ **事件種類**] 下，選擇 [ **裝置遙測** ] 作為要篩選的事件種類。
+    5. 在 [ **端點詳細資料**] 底下，選取您的 Azure function 作為端點。
 
-    :::image type="content" source="media/how-to-ingest-iot-hub-data/event-subscription-2.png" alt-text="顯示事件訂用帳戶詳細資料之 Azure 入口網站的螢幕擷取畫面":::
+    :::image type="content" source="media/how-to-ingest-iot-hub-data/event-subscription-2.png" alt-text="顯示事件訂用帳戶詳細資料 Azure 入口網站的螢幕擷取畫面":::
 
 ## <a name="send-simulated-iot-data"></a>傳送模擬的 IoT 資料
 
-若要測試新的輸入函式，請使用[*教學課程：連接端對端解決方案*](./tutorial-end-to-end.md)中的裝置模擬器。 該教學課程是由以 c # 撰寫的範例專案所驅動。 範例程式碼位於： [Azure 數位 Twins 範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 您將使用該存放庫中的**devicesimulator.exe**專案。
+若要測試新的輸入函式，請使用教學課程中的裝置模擬器 [*：連接端對端解決方案*](./tutorial-end-to-end.md)。 該教學課程是以 c # 撰寫的範例專案所驅動。 範例程式碼位於： [Azure 數位 Twins 範例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 您將會在該存放庫中使用 **devicesimulator.exe** 專案。
 
 在端對端教學課程中，完成下列步驟：
 1. [*向 IoT 中樞註冊模擬裝置*](./tutorial-end-to-end.md#register-the-simulated-device-with-iot-hub)
@@ -241,7 +241,7 @@ az dt twin query -q "select * from digitaltwins" -n {digital_twins_instance_name
 }
 ```
 
-若要查看值變更，請重複執行上面的查詢命令。
+若要查看值變更，請重複執行上述查詢命令。
 
 ## <a name="next-steps"></a>後續步驟
 

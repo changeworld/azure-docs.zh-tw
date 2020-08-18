@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e01eecf24802bc43aebfa7b02105a2b1aa679a52
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 93587c6bbed20982bd96d04f58106ec1617542d3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051936"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506425"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA 在 Azure 上的基礎結構設定和作業
 此文件提供設定 Azure 基礎結構和已部署在 Azure 原生虛擬機器 (VM) 上之 SAP Hana 系統的作業指導方針。 此文件也包含 M128s VM SKU 的 SAP HANA 相應放大設定資訊。 這份文件並非用以取代標準 SAP 文件，包含下列內容：
@@ -259,7 +259,7 @@ M64-32ms VM 有很多記憶體，因此 IO 負載可能無法達到特別為讀�
 
 特別是在工作負載為密集讀取的情況下，可以提升 IO 效能，進而為資料庫軟體的資料磁碟區開啟 Azure 主機快取「唯讀」 (建議做法)。 而對於交易記錄，Azure 主機磁碟快取必須是「無」。 
 
-就記錄磁碟區的大小而論，建議的起始點為 15% 資料大小的啟發學習法。 根據成本和輸送量需求，使用不同的 Azure 磁碟類型，即可完成記錄磁碟區建立。 針對記錄磁碟區，需要高 I/O 輸送量。  如果使用 VM 類型 M64-32ms，就會強制啟用[寫入加速器](../../linux/how-to-enable-write-accelerator.md) \(部分機器翻譯\)。 Azure 寫入加速器可為交易記錄提供最佳的磁碟寫入延遲 (僅適用於 M 系列)。 此外，還有一些需要考量的事項，像是每個 VM 類型的磁碟數目上限。 在[這裡](../../windows/how-to-enable-write-accelerator.md)可以找到寫入加速器的詳細資訊
+就記錄磁碟區的大小而論，建議的起始點為 15% 資料大小的啟發學習法。 根據成本和輸送量需求，使用不同的 Azure 磁碟類型，即可完成記錄磁碟區建立。 針對記錄磁碟區，需要高 I/O 輸送量。  如果使用 VM 類型 M64-32ms，就會強制啟用[寫入加速器](../../how-to-enable-write-accelerator.md) \(部分機器翻譯\)。 Azure 寫入加速器可為交易記錄提供最佳的磁碟寫入延遲 (僅適用於 M 系列)。 此外，還有一些需要考量的事項，像是每個 VM 類型的磁碟數目上限。 在[這裡](../../how-to-enable-write-accelerator.md)可以找到寫入加速器的詳細資訊
 
 
 以下是一些關於調整記錄磁碟區大小的範例：

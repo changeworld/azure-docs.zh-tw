@@ -1,20 +1,20 @@
 ---
 title: 文件的格式和命名慣例 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
-description: 本文說明自訂翻譯工具中的文件格式和命名慣例。 此概念可協助您妥善管理文件名稱並避免發生命名衝突。
+description: 本文說明自訂翻譯工具中的文件格式和命名慣例。 這個概念有助於更妥善地管理檔案名稱，並避免命名衝突。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e976b59c0128adef6536e78985e7cf89d256062c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 46a19cd4396e598a74f9099727ac80d44c0a44f5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992703"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507241"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文件格式和命名慣例指引
 
@@ -31,13 +31,13 @@ ms.locfileid: "83992703"
 | Microsoft Word    | .DOCX        | Microsoft Word 文件                                                                                                                                                                                                                                                        |
 | Adobe Acrobat     | .PDF         | Adobe Acrobat 可攜式文件                                                                                                                                                                                                                                                |
 | HTML              | .HTML、.HTM  | HTML 文件                                                                                                                                                                                                                                                                  |
-| 文字檔         | .TXT         | UTF-16 或 UTF-8 編碼的文字檔。 檔案名不能包含日文字元。                                                                                                                                                                                        |
+| 文字檔         | .TXT         | UTF-16 或 UTF-8 編碼的文字檔。 檔案名不得包含日文字元。                                                                                                                                                                                        |
 | 對齊的文字檔 | .ALIGN       | 副檔名 `.ALIGN` 是一種特殊的副檔名，可供您在確知文件組中的句子已適當對齊時使用。 如果您提供 `.ALIGN` 檔案，自訂翻譯工具就不會為您對齊句子。 |
 | Excel 檔案        | .XLSX        | Excel 檔案 (2013 或更新版本)。 試算表的第一行/列應為語言代碼。                                                                                                                                                                                                                                                      |
 
 ## <a name="dictionary-formats"></a>字典格式
 
-針對字典，自訂翻譯支援定型集支援的所有檔案格式。 如果您使用 Excel 字典，試算表的第一行/列應為語言代碼。
+針對字典，自訂翻譯支援定型集支援的所有檔案格式。 如果您使用的是 Excel 字典，試算表的第一行/列應為語言代碼。
 
 ## <a name="zip-file-formats"></a>ZIP 檔案格式
 
@@ -47,7 +47,7 @@ ms.locfileid: "83992703"
 
 {文件名稱}\_{語言代碼}，其中，{文件名稱} 是您的文件名稱，{語言代碼} 是 ISO LanguageID (兩個字元)，表示文件包含該語言的句子。 語言代碼前面必須要有底線 (_)。
 
-例如，若要在英文到西班牙文系統的 zip 中上傳兩個平行檔，檔案應該命名為 "data_en" 和 "data_es"。
+例如，若要為英文翻譯成西班牙文的系統上傳 ZIP 檔案內的兩個平行文件，檔案應命名為 “data_en” 和 “data_es”。
 
 翻譯記憶體檔案 (TMX、XLF、XLIFF、LCL、XLSX) 不需要遵循特定語言的命名慣例。  
 

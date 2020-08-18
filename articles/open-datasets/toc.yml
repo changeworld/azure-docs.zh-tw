@@ -15,7 +15,7 @@
 - name: 操作指南
   items:
     - name: Azure Machine Learning 中的資料集
-      href: how-to-create-dataset-from-open-dataset.md
+      href: how-to-create-azure-machine-learning-dataset-from-open-dataset.md
 - name: 範例
   displayName: 'example, examples, Jupyter, azure notebooks, python, notebook, GitHub'
   href: samples.md

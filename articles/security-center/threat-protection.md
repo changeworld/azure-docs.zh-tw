@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041981"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272496"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 資訊安全中心內的威脅防護
 
@@ -54,15 +54,15 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 
     Microsoft Defender ATP 在偵測到威脅時，會觸發警示。 警示會顯示在 [資訊安全中心] 儀表板上。 在儀表板中，您可以切換至 Microsoft Defender ATP 主控台並執行詳細的調查，以找出攻擊的範圍。 如需 Microsoft Defender ATP 的詳細資訊，請參閱[將伺服器上線至 Microsoft Defender ATP 服務](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)。
 
-* **Fileless 攻擊偵測** <a name="windows-fileless"></a>-Fileless 攻擊會將惡意承載插入記憶體中，以避免以磁片為基礎的掃描技術來偵測。 然後，攻擊者的承載會保存在遭入侵的進程記憶體中，並執行各式各樣的惡意活動。
+* **無檔案攻擊偵測** <a name="windows-fileless"></a> -無檔案攻擊會將惡意承載插入記憶體中，以避免以磁片為基礎的掃描技術偵測。 攻擊者的承載接著會在遭入侵的進程記憶體中保存，並執行各式各樣的惡意活動。
 
-    透過無檔案攻擊偵測，自動化記憶體鑑識技術可識別無檔案攻擊的工具組、技術和行為。 此解決方案會在執行時間定期掃描您的電腦，並直接從處理常式的記憶體中提取見解。 Linux 的特定深入解析包括下列各項的識別： 
+    透過無檔案攻擊偵測，自動化記憶體鑑識技術可識別無檔案攻擊的工具組、技術和行為。 此解決方案會在執行時間定期掃描您的機器，並直接從進程的記憶體中將見解解壓縮。 Linux 的特定深入解析包含下列各項的識別： 
 
-    - 知名的工具組和加密軟體 
-    - 腳本，這是一小段程式碼，通常用來做為惡意探索軟體弱點的承載。
-    - 進程記憶體中插入的惡意可執行檔
+    - 知名的工具組和加密的挖掘軟體 
+    - 程式碼外殼，這是一小段程式碼，通常是用來做為惡意探索軟體弱點的弱點。
+    - 在進程記憶體中插入惡意可執行檔
 
-    Fileless 攻擊偵測會產生包含其他進程中繼資料（例如網路活動）描述的詳細安全性警示。 這會加速警示分級、相互關聯和下游回應時間。 這種方法可補充以事件為基礎的 EDR 解決方案，並提供更高的偵測涵蓋範圍。
+    無檔案攻擊偵測會產生包含其他進程中繼資料（例如網路活動）描述的詳細安全性警示。 這會加速警示分級、相互關聯和下游回應時間。 這種方法可補充以事件為基礎的 EDR 解決方案，並提供更高的偵測涵蓋範圍。
 
     如需無檔案攻擊偵測警示的詳細資訊，請參閱[警示的參考資料表](alerts-reference.md#alerts-windows)。
 
@@ -110,16 +110,16 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 
 
 
-## <a name="threat-protection-for-containers"></a>容器的威脅防護<a name="azure-containers"></a>
+## <a name="threat-protection-for-containers"></a>容器的威脅防護 <a name="azure-containers"></a>
 
 ### <a name="availability"></a>可用性
 
 |層面|詳細資料|
 |----|:----|
-|發行狀態：|正式推出|
-|標價|標準層|
-|必要的角色和許可權：|**安全性系統管理員**可以關閉警示。<br>**安全性讀取者**可以查看結果。|
-|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 國家/地區/主權 (US Gov、中國 Gov、其他 Gov) |
+|釋放狀態：|正式推出|
+|定價：|標準層|
+|必要的角色和許可權：|**安全性系統管理員** 可以關閉警示。<br>**安全性讀取者**可以查看結果。|
+|雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![否](./media/icons/no-icon.png) 全國/主權 (US Gov、中國 Gov、其他 Gov) |
 |||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
@@ -137,7 +137,7 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 
 有可疑的資料庫活動、潛在弱點或 SQL 插入式攻擊，以及異常的資料庫存取和查詢模式時，您將會看到警示。
 
-適用于 Azure SQL Database 和 SQL 的先進威脅防護屬於先進的[資料安全性 (ADS) ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)整合套件，適用于高階 SQL 安全性功能，涵蓋 Azure SQL Database、Azure SQL 受控實例、Azure SQL 資料倉儲資料庫和 azure 虛擬機器上的 SQL server。
+Azure SQL Database 和 SQL 的 advanced 威脅防護是 [Advanced Data Security (ADS ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) 的一部分，) 統一的 SQL 安全性功能的整合套件，涵蓋 Azure SQL Database、Azure Sql 受控實例、Azure Sql 資料倉儲資料庫，以及 Azure 虛擬機器上的 sql server。
 
 如需詳細資訊，請參閱
 
@@ -153,35 +153,35 @@ Azure 資訊安全中心可與 Azure 服務整合，用以監視及保護您的 
 
 |層面|詳細資料|
 |----|:----|
-|發行狀態：|[Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) (公開上市) <br>[Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (預覽) <br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (預覽) |
-|標價|標準層|
+|釋放狀態：|[Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/) (公開上市) <br>[Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (preview) <br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (preview) |
+|定價：|標準層|
 |雲端：|![是](./media/icons/yes-icon.png) 商業雲端<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中國 Gov，其他 Gov|
 |||
 
 
-### <a name="whats-protected"></a>受保護的內容為何？
+### <a name="whats-protected"></a>受保護的專案
 
-Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的活動。 您的資料可以受到保護，不論其儲存為 blob 容器、檔案共用或資料 lake。
+Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶可能有害的活動。 無論您的資料是儲存為 blob 容器、檔案共用或資料 lake，都可以受到保護。
 
-這一層保護可讓您解決威脅，*而不*需要您成為安全性專家，並協助您管理安全性監視系統。
+這一層保護可讓您在不需要成為安全性專家的 *情況* 下解決威脅，並協助您管理安全性監視系統。
 
 您的儲存體帳戶受到保護 
 
-### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Azure 儲存體提供威脅防護的警示類型為何？
+### <a name="what-kind-of-alerts-does-threat-protection-for-azure-storage-provide"></a>Azure 儲存體提供威脅防護的警示類型有哪些？
 
-當有下列情況時，會觸發安全性警示：
+當發生下列情況時，就會觸發安全性警示：
 
-- **可疑活動**-例如，已成功從 Tor 的 active exit 節點的 IP 位址存取儲存體帳戶
-- **異常行為**-例如，對儲存體帳戶的存取模式變更
-- **潛在的惡意程式碼上傳**-雜湊信譽分析指出上傳的檔案包含惡意程式碼
+- **可疑的活動** -例如，已成功存取儲存體帳戶的 IP 位址，該 IP 位址稱為 Tor 的 active exit 節點
+- **異常行為** -例如，對儲存體帳戶的存取模式變更
+- **可能上傳的惡意** 代碼-雜湊信譽分析指出上傳的檔案包含惡意程式碼
 
-警示包含觸發它們的事件詳細資料，以及如何調查和修復威脅的建議。
+警示包含觸發警示的事件詳細資料，以及如何調查和修復威脅的建議。
 
-### <a name="what-is-hash-reputation-analysis-for-malware"></a>什麼是適用于惡意程式碼的雜湊信譽分析？
+### <a name="what-is-hash-reputation-analysis-for-malware"></a>惡意程式碼的雜湊信譽分析是什麼？
 
-若要判斷上傳的檔案是否可疑，Azure 儲存體的威脅防護會使用[Microsoft 威脅情報](https://go.microsoft.com/fwlink/?linkid=2128684)所支援的雜湊信譽分析。 威脅防護工具不會掃描已上傳的檔案，而是會檢查存放裝置記錄，並將新上傳檔案的雜湊與已知病毒、特洛伊程式、間諜軟體和勒索軟體的雜湊進行比較。 
+若要判斷上傳的檔案是否可疑，Azure 儲存體的威脅防護會使用 [Microsoft 威脅情報](https://go.microsoft.com/fwlink/?linkid=2128684)所支援的雜湊信譽分析。 威脅防護工具不會掃描上傳的檔案，而是會檢查儲存體記錄，並將新上傳檔案的雜湊與已知病毒、特洛伊木馬程式、間諜軟體及勒索軟體的雜湊進行比較。 
 
-當可疑檔案包含惡意程式碼時，資訊安全中心會顯示警示，並可選擇性地以電子郵件傳送給存放裝置擁有者，以核准刪除可疑的檔案。 若要設定這項自動移除雜湊信譽分析指出包含惡意程式碼的檔案，請部署[工作流程自動化，以觸發包含「已上傳至儲存體帳戶的潛在惡意](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005)代碼」的警示。
+當檔案被懷疑包含惡意程式碼時，[安全性中心] 會顯示警示，並可選擇性地以電子郵件傳送儲存體擁有者，以核准刪除可疑的檔案。 若要設定自動移除雜湊信譽分析指出包含惡意程式碼的檔案，請部署 [工作流程自動化，以在包含「可能已上傳至儲存體帳戶的惡意程式碼」的警示上觸發](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-respond-to-potential-malware-uploaded-to-azure-storage/ba-p/1452005)。
 
 
 
@@ -196,7 +196,7 @@ Azure 儲存體的威脅防護會偵測 Azure 儲存體帳戶上可能有害的�
 * [Microsoft 的威脅情報功能](https://go.microsoft.com/fwlink/?linkid=2128684)
 
 > [!TIP]
-> 您可以遵循[這篇 blog 文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的指示來模擬儲存體警示。
+> 您可以遵循 [此 blog 文章](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)中的指示來模擬儲存體警示。
 
 
 
@@ -230,7 +230,6 @@ Azure Cosmos DB 警示是因為以不尋常且有危害意圖的方式嘗試存�
 
 如需 Azure 網路層警示的清單，請參閱[警示的參考資料表](alerts-reference.md#alerts-azurenetlayer)。
 
-如需資訊安全中心如何使用網路相關訊號來套用威脅防護的詳細資訊，請參閱[資訊安全中心的啟發式 DNS 偵測](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)。
 
 
 
@@ -247,17 +246,17 @@ Azure Cosmos DB 警示是因為以不尋常且有危害意圖的方式嘗試存�
 >[!NOTE]
 > 前述的幾項分析由 Microsoft Cloud App Security 提供技術支援。 若要受益於這些分析，您必須啟用 Cloud App Security 授權。 如果您有 Cloud App Security 授權，則依預設會啟用這些警示。 若要停用警示：
 >
-> 1. 從資訊安全中心的功能表中，選取 [**定價] & 設定**]。
+> 1. 在 [安全性中心] 功能表中，選取 [ **定價 & 設定**]。
 > 1. 選取您想變更的訂用帳戶。
 > 1. 選取 [威脅偵測]。
-> 1. 清除 [**允許 Microsoft Cloud App Security 存取我的資料**]，然後選取 [**儲存**]。
+> 1. 清除 [ **允許 Microsoft Cloud App Security 存取我的資料**]，然後選取 [ **儲存**]。
 
 >[!NOTE]
 >資訊安全中心會將關乎安全性的客戶資料儲存在與其資源相同的地理位置。 如果 Microsoft 尚未在資源的地理位置部署資訊安全中心，則會將資料儲存在美國。 啟用 Cloud App Security 時，會根據 Cloud App Security 的地理位置規則來儲存這項資訊。 如需詳細資訊，請參閱[非區域服務的資料儲存體](https://azuredatacentermap.azurewebsites.net/)。
 
-1. 設定您要安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
+1. 設定您要在其上安裝代理程式的工作區。 請確定工作區位於您在資訊安全中心使用的相同訂用帳戶中，而且您具備工作區的讀取/寫入權限。
 
-1. 設定標準定價層，然後選取 [**儲存**]。
+1. 設定標準定價層，然後選取 [ **儲存**]。
 
 
 

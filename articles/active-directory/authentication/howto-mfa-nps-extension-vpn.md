@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848731"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507173"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 的網路原則伺服器擴充功能來整合您的 VPN 基礎結構與 Azure MFA
 
@@ -228,9 +228,9 @@ NPS 擴充功能需要 Windows Server 2008 R2 SP1 或更新版本，並安裝網
 
 2. 在 [伺服器管理員] 中選取 [工具]，然後選取 [路由及遠端存取]。
 
-3. 在 [**路由及遠端存取**] 視窗中，以滑鼠右鍵按一下** \<server name> [（本機）**]，然後選取 [**屬性**]。
+3. 在 [**路由及遠端存取**] 視窗中，以滑鼠右鍵按一下 [ ** \<server name> (本機) **]，然後選取 [**屬性**]。
 
-4. 在 [ ** \<server name> （本機）屬性**] 視窗中，選取 [**安全性**] 索引標籤。
+4. 在 [ ** \<server name> (本機) 屬性**] 視窗中，選取 [**安全性**] 索引標籤。
 
 5. 在 [安全性] 索引標籤的 [驗證提供者] 底下選取 [RADIUS 驗證]，然後按選取 [設定]。
 
@@ -308,25 +308,31 @@ NPS 擴充功能需要 Windows Server 2008 R2 SP1 或更新版本，並安裝網
 
 本節會提供指示，以引導您將 VPN 設定為使用 MFA 讓用戶端向 VPN 伺服器進行驗證。
 
+> [!NOTE]
+> REQUIRE_USER_MATCH 登錄機碼區分大小寫。 所有值都必須以大寫格式設定。
+>
+
 在安裝並設定了 NPS 擴充功能後，由此伺服器負責處理的所有 RADIUS 型用戶端驗證都必須使用 MFA。 如果所有的 VPN 使用者都未在 Azure Multi-Factor Authentication 中註冊，您可以執行下列其中一項：
 
 * 設定另一部 RADIUS 伺服器來驗證尚未設定為使用 MFA 的使用者。
 
 * 建立登錄項目，來允許受到挑戰的使用者提供第二個驗證要素，但前提是他們必須已在 Azure Multi-Factor Authentication 中註冊。
 
-在 HKLM\SOFTWARE\Microsoft\AzureMfa 中建立名為「REQUIRE_USER_MATCH」的新字串值，然後將該值設為 *TRUE* 或 *FALSE*。
+_在 HKLM\SOFTWARE\Microsoft\AzureMfa 中_建立名為 REQUIRE_USER_MATCH 的新字串值，並將值設定為*TRUE*或*FALSE*。
 
 ![「需要使用者比對」設定](./media/howto-mfa-nps-extension-vpn/image34.png)
 
-如果值設為 *TRUE* 或空白，則所有驗證要求都由 MFA 挑戰來決定。 如果值設為 *FALSE*，則只有已在 Azure Multi-Factor Authentication 中註冊的使用者會收到 MFA 挑戰。 在測試或生產環境中，請只在上架期間使用 *FALSE* 設定。
+如果值設定為 *TRUE* 或空白，則所有驗證要求都受限於 MFA 挑戰。 如果值設定為 *FALSE*，MFA 挑戰只會發給在 Azure Multi-Factor Authentication 中註冊的使用者。 在上架期間，只能在測試或生產環境中使用 [ *FALSE* ] 設定。
 
-### <a name="obtain-the-azure-active-directory-tenant-id"></a>取得 Azure Active Directory 的租使用者識別碼
+
+
+### <a name="obtain-the-azure-active-directory-tenant-id"></a>取得 Azure Active Directory 租使用者識別碼
 
 在設定 NPS 擴充功能期間，您必須為 Azure AD 租用戶提供系統管理員認證和識別碼。 若要取得租使用者識別碼，請完成下列步驟：
 
 1. 以 Azure 租用戶的全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
 1. 在 Azure 入口網站功能表中，選取 [Azure Active Directory]，或從任何頁面搜尋並選取 [Azure Active Directory]。
-1. 在 [**總覽**] 頁面上，會顯示*租使用者資訊*。 在 [*租使用者識別碼*] 旁，選取**複製**圖示，如下列範例螢幕擷取畫面所示：
+1. 在 [ **總覽** ] 頁面上會顯示 *租使用者資訊* 。 在租使用者 *識別碼*旁邊，選取 **複製** 圖示，如下列範例螢幕擷取畫面所示：
 
    ![從 Azure 入口網站取得租使用者識別碼](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 

@@ -11,22 +11,22 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a35662a3f21aec1306b7b6994e7a08f9cbd467e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f3cd5c3280308f6da15a52361857fa02567d595
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389525"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505456"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來管理 SSO 和權杖自訂
 
-本文提供有關如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)來管理權杖、會話及單一登入（SSO）設定的資訊。
+本文提供有關如何使用 Azure Active Directory B2C (Azure AD B2C) 中的 [自訂原則](custom-policy-overview.md) ，來管理權杖、會話及單一登入 (SSO) 設定的資訊。
 
-## <a name="jtw-token-lifetimes-and-claims-configuration"></a>JTW 權杖存留期和宣告設定
+## <a name="jwt-token-lifetimes-and-claims-configuration"></a>JWT 權杖存留期和宣告設定
 
 若要變更權杖存留期的設定，您可以在想要影響的原則信賴憑證者中，新增 [ClaimsProviders](claimsproviders.md) 元素。  **ClaimsProviders** 元素是 [TrustFrameworkPolicy](trustframeworkpolicy.md) 元素的子系。
 
-在 BasePolicy 元素與信賴憑證者檔案的 RelyingParty 專案之間插入 ClaimsProviders 元素。
+在 BasePolicy 元素和信賴憑證者檔案的 RelyingParty 專案之間插入 Claimsprovider 元素。
 
 您必須在其中放入會影響權杖存留期的資訊。 XML 看起來像這個範例：
 
@@ -90,6 +90,6 @@ ms.locfileid: "85389525"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解[Azure AD B2C 的會話](session-overview.md)。
-- 瞭解如何[在自訂原則中設定會話行為](session-behavior-custom-policy.md)。
+- 深入瞭解 [Azure AD B2C 會話](session-overview.md)。
+- 瞭解如何 [設定自訂原則中的會話行為](session-behavior-custom-policy.md)。
 - 參考： [JwtIssuer](jwt-issuer-technical-profile.md)。
