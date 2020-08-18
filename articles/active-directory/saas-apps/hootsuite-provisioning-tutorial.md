@@ -2,25 +2,21 @@
 title: 教學課程：以 Azure Active Directory 設定 Hootsuite 來自動佈建使用者 | Microsoft Docs
 description: 了解如何將使用者帳戶從 Azure AD 針對 Hootsuite 進行自動佈建和取消佈建。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: fbbee24e-272f-4fa6-819c-10c548bf0215
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2c31aabb57a9e1f4b29f535271691e17ea4f8559
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 83b2a497cbeda188a4329e634256746f48984a89
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924099"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521928"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>教學課程：設定 Hootsuite 來自動佈建使用者
 

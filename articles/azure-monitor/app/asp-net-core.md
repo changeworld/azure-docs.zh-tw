@@ -3,12 +3,12 @@ title: ASP.NET Core 應用程式 Azure 應用程式見解 |Microsoft Docs
 description: 監視 ASP.NET Core Web 應用程式的可用性、效能和使用方式。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 99d2a85e96aff650573e142368a136886945dcb0
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270915"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518079"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core 應用程式的 Application Insights
 
@@ -30,12 +30,14 @@ ms.locfileid: "88270915"
 > [!NOTE]
 > ASP.NET Core 3.x 需要 [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 或更新版本。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 正常運作的 ASP.NET Core 應用程式。 如果您需要建立 ASP.NET Core 應用程式，請遵循此 [ASP.NET Core 教學](/aspnet/core/getting-started/)課程。
 - 有效的 Application Insights 檢測金鑰。 需要有此金鑰才能將任何遙測資料傳送至 Application Insights。 如果您需要建立新的 Application Insights 資源以取得檢測金鑰，請參閱 [建立 Application Insights 資源](./create-new-resource.md)。
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>啟用 Application Insights 伺服器端遙測 (Visual Studio) 
+
+針對 Visual Studio for Mac 請使用 [手動指引](#enable-application-insights-server-side-telemetry-no-visual-studio)。 只有 Visual Studio 的 Windows 版本支援此程式。
 
 1. 在 Visual Studio 中，開啟您的專案。
 
@@ -463,7 +465,7 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 如需最新的更新和錯誤修正， [請參閱版本](./release-notes.md)資訊。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 * [探索使用者流程](./usage-flows.md) ，以瞭解使用者如何流覽您的應用程式。
 * [設定快照集集合](./snapshot-debugger.md) ，以查看擲回例外狀況時的原始程式碼和變數狀態。

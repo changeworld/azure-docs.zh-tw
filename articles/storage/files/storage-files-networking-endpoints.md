@@ -4,18 +4,19 @@ description: Azure 檔案儲存體的網路功能選項概觀。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 3/19/2020
+ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cef1aab42eea84c737d5c0173bd4d0e0aa509fe4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
-ms.translationtype: HT
+ms.openlocfilehash: c144442ecd93ca87683179adef496a5d68cce98e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497761"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525892"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>設定 Azure 檔案儲存體網路端點
+
 Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共用： 
 - 公用端點，具有公用 IP 位址，並可從全球任何地方存取。
 - 私人端點，存在於虛擬網路內，並具有該虛擬網路位址空間內的私人 IP 位址。
@@ -27,12 +28,21 @@ Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共�
 閱讀本操作說明指南之前，建議您先閱讀 [Azure 檔案儲存體的網路功能可量](storage-files-networking-overview.md)。
 
 ## <a name="prerequisites"></a>必要條件
+
 - 本文會假設您已經建立 Azure 訂用帳戶。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
-- 本文會假設在您想從內部部署環境連線的儲存體帳戶中，您已建立 Azure 檔案共用。 若要了解如何建立 Azure 檔案共用，請參閱[建立 Azure 檔案共用](storage-how-to-create-file-share.md)。
+- 本文假設您已在儲存體帳戶中建立 Azure 檔案共用，而您想要從內部部署連接到該儲存體帳戶。 若要了解如何建立 Azure 檔案共用，請參閱[建立 Azure 檔案共用](storage-how-to-create-file-share.md)。
 - 如果您想要使用 Azure PowerShell，請[安裝最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 - 如果您想要使用 Azure CLI，請[安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="create-a-private-endpoint"></a>建立私人端點
+## <a name="endpoint-configurations"></a>端點設定
+
+您可以設定端點，以限制對儲存體帳戶的網路存取。 有兩種方法可以將對於儲存體帳戶的存取限制在虛擬網路內：
+
+- [為儲存體帳戶建立一個或多個私人端點](#create-a-private-endpoint)，並限制所有對公用端點的存取。 這可確保只有來自所要虛擬網路內的流量，才能存取儲存體帳戶內的 Azure 檔案共用。
+- 將[公用端點限制為一或多個虛擬網路](#restrict-public-endpoint-access)。 其運作方式是使用稱為「服務端點」的虛擬網路功能。 當您透過服務端點來限制對儲存體帳戶的流量時，仍會透過公用 IP 位址存取儲存體帳戶，但只能從您在設定中指定的位置存取。
+
+### <a name="create-a-private-endpoint"></a>建立私人端點
+
 為您的儲存體帳戶建立私人端點時會部署下列 Azure 資源：
 
 - **私人端點**：代表儲存體帳戶私人端點的 Azure 資源。 您可以將此視為連線儲存體帳戶和網路介面的資源。
@@ -106,7 +116,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-如果一切都已成功運作，您應該會看到下列輸出，其中 `192.168.0.5` 是虛擬網路中私人端點的私人 IP 位址。 請注意，您仍然應該使用 storageaccount.file.core.windows.net 來裝載檔案共用，而不是 `privatelink` 路徑。
+如果一切都已成功運作，您應該會看到下列輸出，其中 `192.168.0.5` 是虛擬網路中私人端點的私人 IP 位址。 您仍然應該使用 storageaccount.file.core.windows.net 來掛接您的檔案共用，而不是 `privatelink` 路徑。
 
 ```Output
 Server:         127.0.0.53
@@ -120,13 +130,12 @@ Address: 192.168.0.5
 
 ---
 
-## <a name="restrict-access-to-the-public-endpoint"></a>限制公用端點的存取
-您可以使用儲存體帳戶防火牆設定來限制公用端點的存取。 一般而言，大部分的儲存體帳戶防火牆原則都會將網路存取限制在一或多個虛擬網路內。 有兩種方法可以將對於儲存體帳戶的存取限制在虛擬網路內：
+### <a name="restrict-public-endpoint-access"></a>限制公用端點存取
 
-- [為儲存體帳戶建立一個或多個私人端點](#create-a-private-endpoint)，並限制所有對公用端點的存取。 這可確保只有來自所要虛擬網路內的流量，才能存取儲存體帳戶內的 Azure 檔案共用。
-- 將公用端點限制在一或多個虛擬網路內。 其運作方式是使用稱為「服務端點」的虛擬網路功能。 當您透過服務端點來限制流往儲存體帳戶的流量時，您仍然可以透過公用 IP 位址來存取儲存體帳戶。
+限制公用端點存取首先需要您停用公用端點的一般存取。 停用對公用端點的存取並不會影響私人端點。 停用公用端點之後，您可以選取可繼續存取的特定網路或 IP 位址。 一般而言，儲存體帳戶的大部分防火牆原則會限制對一或多個虛擬網路的網路存取。
 
-### <a name="disable-access-to-the-public-endpoint"></a>停用公用端點的存取權
+#### <a name="disable-access-to-the-public-endpoint"></a>停用公用端點的存取權
+
 當公用端點的存取權停用時，仍然可以透過其私人端點來存取儲存體帳戶。 否則，以儲存體帳戶公用端點為目標的有效要求將會遭到拒絕。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
@@ -140,7 +149,8 @@ Address: 192.168.0.5
 
 ---
 
-### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>將公用端點的存取限制在特定虛擬網路
+#### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>將公用端點的存取限制在特定虛擬網路
+
 如果您將儲存體帳戶限制為允許特定虛擬網路的存取，表示您允許來自指定虛擬網路內的公用端點要求。 其運作方式是使用稱為「服務端點」的虛擬網路功能。 這可以搭配使用或不搭配使用私人端點。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
@@ -155,6 +165,7 @@ Address: 192.168.0.5
 ---
 
 ## <a name="see-also"></a>另請參閱
+
 - [Azure 檔案儲存體的網路功能考量](storage-files-networking-overview.md)
 - [設定 Azure 檔案儲存體的 DNS 轉送](storage-files-networking-dns.md)
 - [設定 Azure 檔案儲存體的 S2S VPN](storage-files-configure-s2s-vpn.md)

@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8c4e65c7ee97b33acbd68bfd8267a334508e25c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203736"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521258"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**RelyingParty**元素會指定要對目前要求強制執行 Azure Active Directory B2C （Azure AD B2C）的使用者旅程圖。 它也會指定信賴憑證者 (RP) 應用程式需要用來作為所發出權杖一部分的宣告清單。 RP 應用程式 (例如 Web、行動或傳統型應用程式) 會呼叫 RP 原則檔。 RP 原則檔會執行特定工作，例如登入、重設密碼或編輯設定檔。 多個應用程式可以使用相同的 RP 原則，而單一應用程式可以使用多個原則。 所有的 RP 應用程式都會透過宣告接收相同的權杖，而使用者會經歷相同的使用者旅程圖。
+**RelyingParty**元素會指定要對目前要求強制執行 Azure Active Directory B2C (Azure AD B2C) 的使用者旅程圖。 它也會指定信賴憑證者 (RP) 應用程式需要用來作為所發出權杖一部分的宣告清單。 RP 應用程式 (例如 Web、行動或傳統型應用程式) 會呼叫 RP 原則檔。 RP 原則檔會執行特定工作，例如登入、重設密碼或編輯設定檔。 多個應用程式可以使用相同的 RP 原則，而單一應用程式可以使用多個原則。 所有的 RP 應用程式都會透過宣告接收相同的權杖，而使用者會經歷相同的使用者旅程圖。
 
 下列範例顯示 *B2C_1A_signup_signin* 原則檔中的 **RelyingParty** 元素：
 
@@ -102,7 +102,7 @@ ms.locfileid: "85203736"
 
 **DefaultUserJourney** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ReferenceId | Yes | 原則中使用者旅程圖的識別碼。 如需詳細資訊，請參閱[使用者旅程圖](userjourneys.md) |
 
@@ -117,24 +117,24 @@ ms.locfileid: "85203736"
 | SessionExpiryInSeconds | 0:1 | Azure AD B2C 工作階段 Cookie 的存留期，會以成功驗證時儲存於使用者瀏覽器上的整數來指定。 |
 | JourneyInsights | 0:1 | 要使用的 Azure Application Insights 檢測金鑰。 |
 | ContentDefinitionParameters | 0:1 | 要附加至內容定義負載 URI 的金鑰值組清單。 |
-|ScriptExecution| 0:1| 支援的[JavaScript](javascript-samples.md)執行模式。 可能的值： `Allow` 或 `Disallow` （預設）。
+|ScriptExecution| 0:1| 支援的 [JavaScript](javascript-samples.md) 執行模式。 可能的值： `Allow` 或 `Disallow` (預設) 。
 
 ### <a name="singlesignon"></a>SingleSignOn
 
 **SingleSignOn** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 影響範圍 | Yes | 單一登入行為的範圍。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 此 `Suppressed` 值表示會隱藏行為，而且一律會提示使用者選取識別提供者。  `Tenant` 值表示會將行為套用到租用戶中的所有原則。 例如，如果使用者瀏覽租用戶的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Application` 值表示會將行為套用到適用於提出要求之應用程式的所有原則。 例如，如果使用者瀏覽應用程式的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Policy` 值表示只會將行為套用到某個原則。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統會在該使用者於原則之間進行切換時提示其選取識別提供者。 |
+| 影響範圍 | Yes | 單一登入行為的範圍。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 此 `Suppressed` 值表示隱藏行為，且一律會提示使用者輸入識別提供者選取專案。  `Tenant` 值表示會將行為套用到租用戶中的所有原則。 例如，如果使用者瀏覽租用戶的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Application` 值表示會將行為套用到適用於提出要求之應用程式的所有原則。 例如，如果使用者瀏覽應用程式的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Policy` 值表示只會將行為套用到某個原則。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統會在該使用者於原則之間進行切換時提示其選取識別提供者。 |
 | KeepAliveInDays | Yes | 會控制使用者保持登入的時間長度。 將值設為 0 會關閉 KMSI 功能。 如需詳細資訊，請參閱[讓我保持登入](custom-policy-keep-me-signed-in.md)。 |
-|EnforceIdTokenHintOnLogout| No|  強制將先前發行的識別碼權杖傳遞至登出端點，以做為與用戶端目前已驗證的會話相關的提示。 可能的值：`false` (預設) 或 `true`。 如需詳細資訊，請參閱[使用 OpenID connect 的 Web 登入](openid-connect.md)。  |
+|EnforceIdTokenHintOnLogout| No|  強制將先前發行的識別碼權杖傳遞給登出端點，作為與用戶端目前已驗證的會話相關的提示。 可能的值：`false` (預設) 或 `true`。 如需詳細資訊，請參閱 [使用 OpenID Connect 的 Web 登入](openid-connect.md)。  |
 
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
 **JourneyInsights** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | TelemetryEngine | Yes | 值必須是 `ApplicationInsights`。 |
 | InstrumentationKey | Yes | 字串，其中包含 Application Insights 元素的檢測金鑰。 |
@@ -143,7 +143,7 @@ ms.locfileid: "85203736"
 | ServerEnabled | Yes | 可能的值：`true` 或 `false`。 如果是 `true`，則將現有的 UserJourneyRecorder JSON 當作自訂事件傳送至 Application Insights。 |
 | TelemetryVersion | Yes | 值必須是 `1.0.0`。 |
 
-如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)
+如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)檔
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
@@ -161,7 +161,7 @@ ms.locfileid: "85203736"
 
 **ContentDefinitionParameter** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Name | Yes | 金鑰值組的名稱。 |
 
@@ -171,7 +171,7 @@ ms.locfileid: "85203736"
 
 **TechnicalProfile** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Id | Yes | 值必須是 `PolicyProfile`。 |
 
@@ -188,11 +188,19 @@ ms.locfileid: "85203736"
 
 **Protocol** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | Name | Yes | Azure AD B2C 所支援的有效通訊協定名稱，可用來作為技術設定檔的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值代表以每個 OpenID 基礎規格為依據的 OpenID Connect 1.0 通訊協定標準。 `SAML2` 代表以每個 OASIS 規格為依據的 SAML 2.0 通訊協定標準。 |
 
-## <a name="outputclaims"></a>OutputClaims
+### <a name="metadata"></a>中繼資料
+
+當通訊協定為時 `SAML` ，中繼資料元素就會包含下列元素。
+
+| 屬性 | 必要 | 描述 |
+| --------- | -------- | ----------- |
+| XmlSignatureAlgorithm | No | Azure AD B2C 用來簽署 SAML 回應的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 請確定您會使用相同的值來設定這兩端的簽章演算法。 僅使用您憑證支援的演算法。 若要設定 SAML 判斷提示，請參閱 [saml 簽發者技術設定檔中繼資料](saml-issuer-technical-profile.md#metadata)。 |
+
+### <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 元素包含下列元素：
 
@@ -202,7 +210,7 @@ ms.locfileid: "85203736"
 
 **OutputClaim** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Yes | 對已經定義於原則檔 **ClaimsSchema** 區段中之 **ClaimType** 的參考。 |
 | DefaultValue | No | 如果宣告值是空的時可以使用的預設值。 |
@@ -211,16 +219,17 @@ ms.locfileid: "85203736"
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 使用 **SubjectNameingInfo** 元素，您可以控制權杖主體的值：
-- **JWT 權杖**-宣告 `sub` 。 這是權杖判斷資訊時所針對的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 它可用來執行安全的授權檢查，例如，將權杖用於存取資源時。 根據預設，主體宣告會填入目錄中使用者的物件識別碼。 如需詳細資訊，請參閱[權杖、工作階段及單一登入設定](session-behavior.md)。
-- **SAML 權杖**：可識別主體元素的 `<Subject><NameID>` 元素。
+- **JWT 權杖** -宣告 `sub` 。 這是權杖判斷資訊時所針對的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 它可用來執行安全的授權檢查，例如，將權杖用於存取資源時。 根據預設，主體宣告會填入目錄中使用者的物件識別碼。 如需詳細資訊，請參閱[權杖、工作階段及單一登入設定](session-behavior.md)。
+- **SAML 權杖**：可識別主體元素的 `<Subject><NameID>` 元素。 NameId 格式可以修改。
 
 **SubjectNamingInfo** 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ClaimType | Yes | 對輸出宣告之 **PartnerClaimType** 的參考。 輸出宣告必須定義於信賴憑證者原則 **OutputClaims** 集合中。 |
+| 格式 | No | 用於 SAML 信賴憑證者，以設定 SAML 判斷提示中傳回的 **NameId 格式** 。 |
 
-下列範例顯示如何定義 OpenID Connect 信賴憑證者。 主體名稱資訊會設定為 `objectId`：
+下列範例顯示如何定義 OpenID Connect 的信賴憑證者。 主體名稱資訊會設定為 `objectId`：
 
 ```xml
 <RelyingParty>
@@ -248,4 +257,25 @@ JWT 權杖包含具使用者 objectId 的 `sub` 宣告：
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   ...
 }
+```
+
+下列範例顯示如何定義 SAML 信賴憑證者。 主體名稱資訊已設定為 `objectId` ，且已 `format` 提供 NameId：
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
+  </TechnicalProfile>
+</RelyingParty>
 ```

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 669c5f1ae6b667073e885a0077e9f3130ba3c4f0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 3df1ccadb69f02272c44a0ba574805c816151dc7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405971"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520935"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>使用 Node.js 以程式設計方式建置 LUIS 應用程式
 
@@ -27,12 +27,12 @@ LUIS 提供一個具備 [LUIS](luis-reference-regions.md) 網站所有功能的�
 ## <a name="prerequisites"></a>必要條件
 
 * 登入 [LUIS](luis-reference-regions.md) 網站，然後在 [帳戶設定] 中尋找您的[撰寫金鑰](luis-how-to-azure-subscription.md#authoring-key)。 您可以使用此金鑰來呼叫「撰寫 API」。
-* 如尚未擁有 Azure 訂用帳戶，請在開始之前先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 這篇文章的開頭是一個 CSV，適用于假設公司的使用者要求記錄檔。 在 [這裡](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)下載。
+* 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
+* 本文一開始會提供假設公司的使用者要求記錄檔的 CSV。 在 [這裡](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)下載。
 * 安裝含有 NPM 的最新 Node.js。 請從[這裡](https://nodejs.org/en/download/)下載。
 * **[建議使用]** 適用於 IntelliSense 和偵錯的 Visual Studio Code，請從[這裡](https://code.visualstudio.com/)免費下載。
 
-本文中的所有程式碼都可以在[Azure 範例 Language Understanding GitHub 存放庫](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)中取得。
+本文中的所有程式碼都可在 [Azure 範例 Language Understanding GitHub 存放庫](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)中取得。
 
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>將既有資料對應至意圖和實體
 即使您的系統在建立時並未將 LUIS 納入考量，只要它包含與使用者所要執行之各種不同工作對應的文字資料，您便可能得以提供一個現有使用者輸入分類與 LUIS 中意圖的對應。 如果您可以識別出使用者話語中的重要單字或片語，這些單字便可能對應至實體。
@@ -186,7 +186,7 @@ upload done
 ![TurnOn 意圖](./media/luis-tutorial-node-import-utterances-csv/imported-utterances-661.png)
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 > [!div class="nextstepaction"]
 > [在 LUIS 網站中進行應用程式測試和定型](luis-interactive-test.md)

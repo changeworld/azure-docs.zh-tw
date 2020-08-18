@@ -4,12 +4,12 @@ description: 針對安裝、註冊「Azure 備份伺服器」以及備份和還�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: a4882867f9bbe5123df275b8d1c69fe4e163f294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054827"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522839"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>針對 Azure 備份伺服器進行疑難排解
 
@@ -20,13 +20,46 @@ ms.locfileid: "87054827"
 在開始對 Microsoft Azure 備份伺服器 (MABS) 進行疑難排解之前，建議您先執行下列驗證：
 
 - [確定 Microsoft Azure 復原服務 (MARS) 代理程式是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [確保 MARS 代理程式和 Azure 之間具有網路連線能力](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [確定 MARS 代理程式與 Azure 之間有網路連線能力](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - 確保 Microsoft Azure 復原服務正在執行中 (在服務主控台中)。 如有必要，請重新開機，然後重試作業
 - [確保草稿資料夾位置具有 5-10% 的磁碟區空間可供使用](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
-- 如果註冊失敗，請確定您嘗試安裝的 Azure 備份伺服器的伺服器，並未向另一個保存庫註冊
+- 如果註冊失敗，請確定您嘗試安裝的伺服器 Azure 備份伺服器尚未向另一個保存庫註冊
 - 若推送安裝失敗，請檢查是否已有 DPM 代理程式。 若已有，請解除安裝代理程式，然後重試安裝
 - [確保沒有其他程序或防毒軟體干擾 Azure 備份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - 在 MABS 伺服器中，確定 SQL Agent 服務正在執行且設定為自動<br>
+
+## <a name="configure-antivirus-for-mabs-server"></a>設定 MABS 伺服器的防毒軟體
+
+MABS 與最受歡迎的防毒軟體產品相容。 建議您執行下列步驟以避免發生衝突：
+
+1. **停用即時監視** -停用防毒軟體的即時監視，如下所示：
+    - `C:\Program Files<MABS Installation path>\XSD` 資料夾
+    - `C:\Program Files<MABS Installation path>\Temp` 資料夾
+    - Modern Backup Storage 磁碟區的磁碟機字母
+    - 複本和傳輸記錄檔：若要這樣做，請停用 **dpmra.exe**的即時監視（位於資料夾中） `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` 。 即時監視會降低效能，因為防毒軟體會在每次 MABS 與受保護的伺服器同步處理時掃描複本，並在每次 MABS 將變更套用至複本時掃描所有受影響的檔案。
+    - 系統管理員主控台：若要避免對效能造成影響，請停用 **csc.exe** 進程的即時監視。 **csc.exe**程式是 C \# 編譯器，而即時監視可能會降低效能，因為防毒軟體會在產生 XML 訊息時掃描**csc.exe**進程發出的檔案。 **CSC.exe** 位於下列路徑：
+        - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
+        - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
+    - 針對安裝在 MABS 伺服器上的 MARS 代理程式，建議您排除下列檔案和位置：
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` 作為進程
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
+        - 臨時位置 (若未正在使用標準位置)
+2. **停用受保護伺服器上的即時監視**：停用受保護伺服器上的 **dpmra.exe**的即時監視（位於資料夾中 `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` ）。
+3. **設定防毒軟體來刪除受保護伺服器和 MABS 伺服器上受感染的**檔案：若要防止複本和復原點的資料損毀，請將防毒軟體設定成刪除受感染的檔案，而不是自動清除或隔離檔案。 自動清除和隔離可能會導致防毒軟體修改檔案，而使 MABS 無法偵測到的變更。
+
+您應該以一致的方式執行手動同步處理。 每次防毒軟體從複本中刪除檔案時，檢查此作業，即使複本標示為不一致也一樣。
+
+### <a name="mabs-installation-folders"></a>MABS 安裝資料夾
+
+DPM 的預設安裝資料夾如下：
+
+- `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
+
+您也可以執行下列命令來尋找安裝資料夾路徑：
+
+```cmd
+Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
+```
 
 ## <a name="invalid-vault-credentials-provided"></a>提供的保存庫認證無效
 

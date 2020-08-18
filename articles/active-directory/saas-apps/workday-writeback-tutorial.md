@@ -1,48 +1,44 @@
 ---
 title: 教學課程：在 Azure Active Directory 中設定 Workday 回寫 |Microsoft Docs
-description: 瞭解如何將屬性回寫從 Azure AD 設定為 Workday
+description: 瞭解如何設定從 Azure AD 到 Workday 的屬性回寫
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215867b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 1d76fb96676ad49ce28ff4ef0d6c4fbc84636638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026469"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526825"
 ---
-# <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>教學課程：將屬性回寫從 Azure AD 設定為 Workday
+# <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>教學課程：設定從 Azure AD 到 Workday 的屬性回寫
 本教學課程的目的是要說明從 Azure AD 到 Workday 的回寫屬性所需執行的步驟。 Workday 回寫布建應用程式支援將值指派給下列 Workday 屬性：
 * 公司電子郵件 
 * Workday 使用者名稱
-* Work 有線電話電話號碼（包括國家/地區代碼、區碼、數位和分機）
+* 公司有線電話電話號碼 (包括國家/地區代碼、區碼、數位和分機) 
 * Work 有線電話電話號碼主要旗標
-* 工作行動電話號碼（包括國家/地區代碼、區碼、數位）
-* 工作 mobile 主要旗標
+* 工作行動電話號碼 (包括國家/地區代碼、區碼、數位) 
+* 工作移動主要旗標
 
 ## <a name="overview"></a>總覽
 
-在您設定使用[Workday 對內部部署 AD 布建](workday-inbound-tutorial.md)應用程式或 workday 的輸入布建整合[來 Azure AD](workday-inbound-cloud-only-tutorial.md)布建應用程式之後，您可以選擇性地設定 workday 回寫應用程式，將連絡人資訊（例如工作電子郵件和電話號碼）寫入 workday。 
+將使用 Workday 的輸入布建整合設定為內部 [部署 AD 布建](workday-inbound-tutorial.md) 應用程式或 [workday 來 Azure AD](workday-inbound-cloud-only-tutorial.md) 布建應用程式之後，您可以選擇性地設定 workday 回寫應用程式，以將公司電子郵件和電話號碼等連絡人資訊寫入 Workday。 
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>誰最適合使用此使用者佈建解決方案？
 
-這種 Workday 回寫使用者布建解決方案非常適合下列情況：
+這項 Workday 回寫使用者布建解決方案最適合用於：
 
-* 使用 Office 365 的組織，想要將其所管理的授權屬性（例如電子郵件地址、使用者名稱和電話號碼）回寫到 Workday
+* 使用 Office 365 的組織想要回寫受 IT 管理的授權屬性 (例如電子郵件地址、使用者名稱和電話號碼) 回 Workday
 
 ## <a name="configure-integration-system-user-in-workday"></a>在 Workday 中設定整合系統使用者
 
-請參閱[設定整合系統使用者](workday-inbound-tutorial.md#configure-integration-system-user-in-workday)以建立 Workday 整合系統使用者帳戶一節，其具有取得背景工作資料的許可權。 
+請參閱 [設定整合系統使用者](workday-inbound-tutorial.md#configure-integration-system-user-in-workday) ，以建立具有取得背景工作資料許可權的 Workday 整合系統使用者帳戶。 
 
 ## <a name="configuring-azure-ad-attribute-writeback-to-workday"></a>設定 Azure AD 屬性回寫至 Workday
 
@@ -86,9 +82,9 @@ ms.locfileid: "84026469"
 
 在本節中，您將設定回寫屬性從 Azure AD 流向 Workday 的方式。 
 
-1. 在 [對應] 底下的 [布建] 索引標籤**上，按一下**對應名稱。
+1. 在 [布建] 索引標籤的 [對應] **底下，按一下**[對應名稱]。
 
-2. 在 [**來源物件範圍**] 欄位中，您可以選擇篩選，Azure Active Directory 中的哪些使用者集合應該是回寫的一部分。 預設範圍是「Azure AD 中的所有使用者」。
+2. 在 [ **來源物件範圍** ] 欄位中，您可以選擇性地篩選 Azure Active Directory 應該是回寫一部分的使用者集合。 預設範圍是「Azure AD 中的所有使用者」。
 
 3. 在 [屬性對應] 區段中，更新相符的識別碼，代表 Azure Active Directory 中儲存了 Workday 人員識別碼或員工識別碼的屬性。 常用的比對方法是將 Workday 人員識別碼或員工識別碼同步至 Azure AD 中的 extensionAttribute1-15，然後在 Azure AD 中使用此屬性再次比對 Workday 的使用者。
 
@@ -97,32 +93,32 @@ ms.locfileid: "84026469"
      >[!div class="mx-imgBorder"]
      >![Azure 入口網站](./media/workday-inbound-tutorial/workday-writeback-mapping.png)
 
-5. 使用以下共用的指導方針，將電話號碼屬性值從 Azure AD 對應到 Workday。 
+5. 使用下面所共用的指導方針，將電話號碼屬性值從 Azure AD 對應到 Workday。 
 
      | Workday 電話屬性 | 預期值 | 對應指引 |
      |-------------------------|----------------|------------------|
      | WorkphoneLandlineIsPrimary | true/false | 其輸出為 "true" 或 "false" 字串值的常數或運算式對應。 |
      | WorkphoneLandlineCountryCodeName | [三個字母的 ISO 3166-1 國家/地區代碼](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | 常數或運算式對應，其輸出為三個字母的國家/地區代碼。 |
-     | WorkphoneLandlineCountryCodeNumber | [國際國家/地區呼叫程式碼](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 常數或運算式對應，其輸出為有效的國家（地區）代碼（不含 + 符號）。 |
-     | WorkphoneLandlineNumber | 完整的電話號碼，包括區碼 | 對應至*telephoneNumber*屬性。 使用 RegEx 移除空白字元、括弧和國家/地區代碼。 請參閱以下的範例。 |
-     | WorkphoneLandlineExtension | 分機號碼 | 如果*telephoneNumber*包含延伸模組，請使用 RegEx 來將值解壓縮。 |
-     | WorkphoneMobileIsPrimary | true/false | 常數對應或運算式對應，其輸出為 "true" 或 "false" 字串值 |
+     | WorkphoneLandlineCountryCodeNumber | [國際國家/地區呼叫程式碼](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 常數或運算式對應，其輸出為有效的國家/地區代碼 (沒有 + 符號) 。 |
+     | WorkphoneLandlineNumber | 完整的電話號碼，包括區碼 | 對應至 *telephoneNumber* 屬性。 使用 RegEx 來移除空格、括弧和國家/地區代碼。 請參閱以下的範例。 |
+     | WorkphoneLandlineExtension | 分機號碼 | 如果 *telephoneNumber* 包含擴充功能，請使用 RegEx 來將值解壓縮。 |
+     | WorkphoneMobileIsPrimary | true/false | 輸出為 "true" 或 "false" 字串值的常數對應或運算式對應 |
      | WorkphoneMobileCountryCodeName | [三個字母的 ISO 3166-1 國家/地區代碼](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | 常數或運算式對應，其輸出為三個字母的國家/地區代碼。 |
-     | WorkphoneMobileCountryCodeNumber | [國際國家/地區呼叫程式碼](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 常數或運算式對應，其輸出為有效的國家（地區）代碼（不含 + 符號）。 |
-     | WorkphoneMobileNumber | 完整的電話號碼，包括區碼 | 對應至*mobile*屬性。 使用 RegEx 移除空白字元、括弧和國家/地區代碼。 請參閱以下的範例。 |
+     | WorkphoneMobileCountryCodeNumber | [國際國家/地區呼叫程式碼](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 常數或運算式對應，其輸出為有效的國家/地區代碼 (沒有 + 符號) 。 |
+     | WorkphoneMobileNumber | 完整的電話號碼，包括區碼 | 對應至 *行動* 裝置屬性。 使用 RegEx 來移除空格、括弧和國家/地區代碼。 請參閱以下的範例。 |
 
      > [!NOTE]
-     > 叫用 Change_Work_Contact Workday web 服務時，Azure AD 傳送下列常數值： <br>
-     > * **Communication_Usage_Type_ID**設定為常數位串 "WORK" <br>
-     > * 針對行動電話號碼， **Phone_Device_Type_ID**設定為常數位串 "mobile"，而針對有線電話電話號碼則設為 "有線電話"。 <br>
+     > 當叫用 Change_Work_Contact Workday web 服務時，Azure AD 會傳送下列常數值： <br>
+     > * **Communication_Usage_Type_ID** 設定為常數位串 "WORK" <br>
+     > * **Phone_Device_Type_ID** 設定為行動電話號碼的常數位串 "mobile"，以及有線電話電話號碼的 "有線電話"。 <br>
      > 
-     > 如果您的 Workday 租使用者使用不同的 Type_IDs，您將會遇到回寫失敗。 若要避免這類失敗，您可以使用 Workday**維護參考識別碼**工作，並更新 Type_IDs 以符合 Azure AD 所使用的值。 <br>
+     > 如果您的 Workday 租使用者使用不同的 Type_IDs，您將會遇到回寫失敗。 若要避免這類失敗，您可以使用 Workday **維護參考識別碼** 工作，並更新 Type_IDs 以符合 Azure AD 所使用的值。 <br>
      >  
 
      **參考 RegEx 運算式-範例1**
 
-     如果 Azure AD 中的電話號碼是使用「自助式密碼重設」（SSPR）所需的格式來設定，請使用下面的正則運算式。 <br>
-     範例：如果電話號碼的值是 + 1 1112223333-> 則 RegEx 運算式會輸出1112223333
+     如果 Azure AD 中的電話號碼設定為使用自助式密碼重設所需的格式 (SSPR) ，請使用下面的正則運算式。 <br>
+     範例：如果電話號碼值為 + 1 1112223333->，則 RegEx 運算式將輸出1112223333
 
      ```C#
      Replace([telephoneNumber], , "\\+(?<isdCode>\\d* )(?<phoneNumber>\\d{10})", , "${phoneNumber}", , )
@@ -130,8 +126,8 @@ ms.locfileid: "84026469"
 
      **參考 RegEx 運算式-範例2**
 
-     如果 Azure AD 中的電話號碼是使用格式（XXX） XXX-XXXX 來設定，請使用下面的正則運算式。 <br>
-     範例：如果電話號碼值為（111） 222-3333-> 則 RegEx 運算式會輸出1112223333
+     如果 Azure AD 中的電話號碼是以 (XXX) XXX 的格式設定，請使用下面的正則運算式。 <br>
+     範例：如果電話號碼值是 (111) 222-3333-> 則 RegEx 運算式將輸出1112223333
 
      ```C#
      Replace([mobile], , "[()\\s-]+", , "", , )
@@ -150,11 +146,11 @@ ms.locfileid: "84026469"
 
 2. 按一下 [檔案] 。
 
-3. 這項作業會啟動初始同步，視來原始目錄中有多少使用者而定，這可能會花費數小時的時間。 您可以檢查進度列以追蹤同步處理週期的進度。 
+3. 這項作業會啟動初始同步，視來原始目錄中的使用者數目而定，這可能需要幾小時的時間。 您可以檢查進度列，以追蹤同步處理週期的進度。 
 
-4. 您可隨時檢查 Azure 入口網站中的 [稽核記錄] 索引標籤，查看佈建服務執行了哪些動作。 Audit 記錄會列出布建服務所執行的所有個別同步事件，例如從來源匯入並匯出至目標應用程式的使用者。  
+4. 您可隨時檢查 Azure 入口網站中的 [稽核記錄] 索引標籤，查看佈建服務執行了哪些動作。 Audit 記錄檔會列出布建服務所執行的所有個別同步事件，例如從來源匯入並匯出至目標應用程式的使用者。  
 
-5. 完成初始同步處理之後，它**會在 [布建] 索引**標籤中寫入摘要報告，如下所示。
+5. 初始同步處理完成後，它 **會在 [布建] 索引** 標籤中寫入摘要報告，如下所示。
 
      > [!div class="mx-imgBorder"]
      > ![布建進度列](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
@@ -164,5 +160,5 @@ ms.locfileid: "84026469"
 * [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何設定 Workday 與 Azure Active Directory 之間的單一登入](workday-tutorial.md)
 * [了解如何將其他 SaaS 應用程式與 Azure Active Directory 整合](tutorial-list.md)
-* [瞭解如何匯出和匯入您的布建設定](../app-provisioning/export-import-provisioning-configuration.md)
+* [瞭解如何匯出和匯入布建設定](../app-provisioning/export-import-provisioning-configuration.md)
 

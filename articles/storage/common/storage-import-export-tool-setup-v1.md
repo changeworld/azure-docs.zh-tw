@@ -1,6 +1,6 @@
 ---
 title: 設定 Azure 匯入/匯出工具 v1 | Microsoft Docs
-description: 了解如何設定 Azure 匯入/匯出服務的磁碟機準備及修復工具。 這是指 v1 的匯入/匯出工具。
+description: 了解如何設定 Azure 匯入/匯出服務的磁碟機準備及修復工具。 本文是指匯入/匯出工具的第1版。
 author: twooley
 services: storage
 ms.service: storage
@@ -8,28 +8,28 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077818"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530795"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>設定 Azure 匯入/匯出工具 v1
 Microsoft Azure 匯入/匯出工具是磁碟機準備及修復工具，可搭配 Microsoft Azure 匯入/匯出服務使用。 您可以使用此工具來執行下列功能︰  
 
--   在建立匯入工作之前，您可以使用此工具，將資料複製到要寄送至 Windows Azure 資料中心的硬碟。  
+-   在建立匯入作業之前，您可以使用此工具，將資料複製到您要寄送至 Windows Azure 資料中心的硬碟。  
 
 -   匯入工作完成後，您可以使用此工具來修復損毀、遺漏或與其他 Blob 衝突的任何 Blob。  
 
 -   當您收到已完成的匯出工作中的磁碟機後，您可以使用此工具來修復磁碟機上損毀或遺漏的任何檔案。  
 
 ## <a name="prerequisites"></a>必要條件  
-如果您要準備匯入作業的磁碟機，您必須符合下列必要條件︰  
+如果您要準備匯入作業的磁片磁碟機，您必須符合下列必要條件：  
 
 -   您必須擁有有效的 Azure 訂用帳戶。  
 
--   您的訂用帳戶必須包含可用空間足夠儲存您要匯入之檔案的儲存體帳戶。  
+-   您的訂用帳戶必須包含有足夠可用空間的儲存體帳戶，才能儲存您要匯入的檔案。  
 
 -   您需要至少一個儲存體帳戶的帳戶金鑰。  
 
@@ -39,7 +39,7 @@ Microsoft Azure 匯入/匯出工具是磁碟機準備及修復工具，可搭配
 
 -   複製電腦上必須啟用 BitLocker。  
 
--   您將需要一個或多個包含要匯入資料的磁碟機，或連接至複製電腦的空白 3.5 吋 SATA 硬碟。  
+-   您將需要一或多個包含要匯入之資料的磁片磁碟機，或連接至複製電腦的空白 3.5-英寸 SATA 硬碟。  
 
 -   您想匯入的檔案必須可從複製機器上存取，無論它們是在網路共用或本機硬碟上。
 
@@ -72,7 +72,7 @@ Microsoft Azure 匯入/匯出工具是磁碟機準備及修復工具，可搭配
 
 - Hddid.dll  
 
-  將這些檔案複製到工作目錄，例如，`c:\WAImportExport`。 接下來，在系統管理員模式中開啟命令列視窗，並將上述目錄設為目前的目錄。  
+  將這些檔案複製到工作目錄，例如，`c:\WAImportExport`。 接下來，以系統管理員模式開啟命令列視窗，並將上述目錄設定為目前的目錄。  
 
   若要輸出命令的說明，執行此工具而不包含參數︰  
 
@@ -247,11 +247,10 @@ Examples:
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* [準備匯入工作的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [準備匯入作業的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [預覽匯出作業的磁片磁碟機使用量](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [使用複製記錄檔來檢查作業狀態](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [修復匯入作業](../storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [修復匯出作業](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [針對 Azure 匯入/匯出工具進行疑難排解](storage-import-export-tool-troubleshooting-v1.md)
+* [修復匯出作業](../storage-import-export-tool-repairing-an-export-job-v1.md)

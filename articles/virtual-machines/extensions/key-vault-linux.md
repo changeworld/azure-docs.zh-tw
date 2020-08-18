@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2deb59b5a10177b1a6e57046c013ec9dac0fb06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5056f453580ef3e4549a0d8ee5b59e893d8c56bf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010796"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522286"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>適用於 Linux 的金鑰保存庫虛擬機器擴充功能
 
@@ -73,9 +73,9 @@ Key Vault VM 擴充功能支援下列 Linux 發行版本：
 > 
 > 這是因為 `/secrets` 路徑會傳回完整憑證，私密金鑰也包括在內，`/certificates` 路徑則不會。 可以在這裡找到憑證的詳細資訊：[Key Vault 憑證](../../key-vault/general/about-keys-secrets-certificates.md)
 
-> [!NOTE]
-> 當 VM 具有多個指派的身分識別時，' Authenticationsettings.instance.setsecretkey ' 屬性是選擇性的。
-> 它可讓指定身分識別用來驗證 Key Vault。
+> [!IMPORTANT]
+> 只有具有**使用者指派**身分識別的 vm 才**需要**' authenticationsettings.instance.setsecretkey ' 屬性。
+> 它會指定要用於驗證 Key Vault 的身分識別。
 
 
 ### <a name="property-values"></a>屬性值
@@ -87,7 +87,7 @@ Key Vault VM 擴充功能支援下列 Linux 發行版本：
 | type | KeyVaultForLinux | 字串 |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | 字串 |
-| certificateStoreName | 在 Linux 上會忽略它 | 字串 |
+| certificateStoreName | 它會在 Linux 上忽略 | 字串 |
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | 字串 |
 | requiredInitialSync | true | boolean |

@@ -1,18 +1,19 @@
 ---
 title: 使用 Azure DPS Sdk 管理裝置註冊
-description: 如何使用服務 Sdk 管理 IoT 中樞裝置佈建服務（DPS）中的裝置註冊
+description: '如何使用服務 Sdk 在 IoT 中樞裝置布建服務中管理裝置註冊 (DPS) '
 author: robinsh
 ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
+ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975069"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520651"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 裝置佈建服務 SDK 管理裝置註冊
 「裝置註冊」** 會建立單一裝置或裝置群組的記錄，這些裝置可能會在某個時間點向裝置佈建服務進行註冊。 註冊記錄包含屬於該註冊一部分之裝置一開始所需的設定，包括所需的 IoT 中樞。 本文會示範如何針對您的佈建服務使用 Azure IoT 佈建服務 SDK，以程式設計方式管理裝置註冊。  這些 SDK 可從 GitHub 上取得，其位在與 Azure IoT SDK 相同的存放庫中。
@@ -20,7 +21,7 @@ ms.locfileid: "74975069"
 ## <a name="prerequisites"></a>必要條件
 * 從裝置佈建服務執行個體取得連接字串。
 * 取得所使用之[證明機制](concepts-security.md#attestation-mechanism)的裝置安全性構件：
-    * [**信賴平臺模組（TPM）**](/azure/iot-dps/concepts-security#trusted-platform-module)：
+    * [**信賴平臺模組 (TPM) **](/azure/iot-dps/concepts-security#trusted-platform-module)：
         * 個別註冊：來自實體裝置或 TPM 模擬器的註冊識別碼和 TPM 簽署金鑰。
         * 註冊群組不適用 TPM 證明。
     * [**X.509**](/azure/iot-dps/concepts-security)：
@@ -39,7 +40,7 @@ ms.locfileid: "74975069"
     您可以依照此工作流程使用 SDK 建立註冊群組：
 
     1. 註冊群組的證明機制使用 X.509 根憑證。  使用根憑證呼叫服務 SDK API ```X509Attestation.createFromRootCertificate``` 以建立註冊的證明。  X.509 根憑證會以 PEM 檔案或以字串形式提供。
-    1. 使用已建立的 ```attestation``` 及唯一的 ```enrollmentGroupId``` 建立新 ```EnrollmentGroup``` 變數。  (選擇性) 您可以設定參數如 ```Device ID```、```IoTHubHostName```、```ProvisioningStatus```。
+    1. 使用已建立的 ```attestation``` 及唯一的 ```enrollmentGroupId``` 建立新 ```EnrollmentGroup``` 變數。  （選擇性）您可以設定參數 ```IoTHubHostName``` ，例如， ```ProvisioningStatus``` 。
     2. 使用 ```EnrollmentGroup``` 在後端應用程式中呼叫服務 SDK API ```createOrUpdateEnrollmentGroup```，以建立註冊群組。
 
 * **個別註冊**是可能會註冊之單一裝置的項目。 個別註冊可使用 X.509 憑證或 SAS 權杖 (從實際或虛擬的 TPM) 來作為證明機制。 對於需要唯一初始設定的裝置，或是只能透過 TPM 或虛擬 TPM 使用 SAS 權杖作為證明機制的裝置，建議您使用個別註冊。 個別申請可能會指定所需的 IoT 中樞裝置識別碼。

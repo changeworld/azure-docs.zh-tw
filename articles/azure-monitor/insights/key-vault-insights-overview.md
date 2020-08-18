@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498945"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531254"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>使用 Key Vault 的 Azure 監視器 (預覽) 來監視您的金鑰保存庫服務
 Key Vault 的 Azure 監視器 (預覽) 可針對您的 Key Vault 要求、效能、失敗和延遲提供統合檢視，讓您能夠全面監視金鑰保存庫。
@@ -45,7 +45,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 在 Azure 監視器中，您可以檢視來自訂用帳戶中多個金鑰保存庫的要求、延遲和失敗詳細資料，並識別效能問題和節流案例。
 
-若要檢視您所有訂用帳戶的儲存體帳戶使用率和作業，請執行下列步驟：
+若要查看您在所有訂用帳戶中的金鑰保存庫的使用量和作業，請執行下列步驟：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)
 
@@ -158,7 +158,7 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如需一般疑難排解指導方針，請參閱專用的活頁簿型深入解析[疑難排解文章](troubleshoot-workbooks.md)。
+如需一般疑難排解指引，請參閱專用的以活頁簿為基礎的深入解析 [疑難排解文章](troubleshoot-workbooks.md)。
 
 本節將協助您診斷在使用 Key Vault 的 Azure 監視器 (預覽) 時可能遇到的一些常見問題，並進行疑難排解。 請使用下列清單，找到與您的特定問題相關的資訊。
 
@@ -170,39 +170,39 @@ Key Vault 的 Azure 監視器結合了記錄和計量，以提供全域監視解
 
 可選取和檢視的金鑰保存庫數目限定為 200 個。 無論選取多少個訂用帳戶，選取的金鑰保存庫數目均限定為 200 個。
 
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>為什麼我在訂用帳戶選擇器中看不到我的所有訂用帳戶
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>為什麼我在訂用帳戶選擇器中看不到我的所有訂閱
 
 我們只會顯示從選取的訂用帳戶篩選器中選擇、且包含金鑰保存庫的訂用帳戶；您可以在 Azure 入口網站標頭的 [目錄 + 訂用帳戶] 中選取該篩選器。
 
 ![訂用帳戶篩選器的螢幕擷取畫面](./media/key-vaults-insights-overview/Subscriptions.png)
 
-### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>我收到一則錯誤訊息，指出「查詢超過允許的工作區/區域數目上限」，現在該怎麼做
+### <a name="i-am-getting-an-error-message-that-the-query-exceeds-the-maximum-number-of-workspacesregions-allowed-what-to-do-now"></a>我收到一則錯誤訊息，指出「查詢超過允許的工作區/區域數目上限」、現在該怎麼做
 
 目前有 25 個區域和 200 個工作區的限制，若要檢視您的資料，您必須減少訂用帳戶和/或資源群組的數目。
 
-### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>我想要進行變更或新增其他視覺效果以 Key Vault 深入解析，我該怎麼做
+### <a name="i-want-to-make-changes-or-add-additional-visualizations-to-key-vault-insights-how-do-i-do-so"></a>我想要進行變更，或將其他視覺效果新增至 Key Vault 見解，該怎麼做
 
 若要進行變更，請選取 [編輯模式] 以修改活頁簿，然後，您可以將工作儲存為新的活頁簿，並繫結至指定的訂用帳戶和資源群組。
 
-### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>當我們釘選活頁簿的任何部分時，會發生什麼事？
+### <a name="what-is-the-time-grain-once-we-pin-any-part-of-the-workbooks"></a>釘選活頁簿的任何部分之後的時間細微性為何
 
 我們採用「自動」時間精細度，這具體上取決於選取的時間範圍。
 
-### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>釘選活頁簿的任何部分時的時間範圍為何
+### <a name="what-is-the-time-range-when-any-part-of-the-workbook-is-pinned"></a>當活頁簿的任何部分釘選時的時間範圍
 
 時間範圍將取決於儀表板設定。
 
-### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>為什麼我在 [作業 & 延遲] 區段底下看不到我的 Key Vault 的任何資料
+### <a name="why-do-i-not-see-any-data-for-my-key-vault-under-the-operations--latency-sections"></a>為什麼我在 [作業 & 延遲] 區段下找不到 Key Vault 的任何資料
 
 若要檢視以記錄為基礎的資料，您必須為要監視的每個金鑰保存庫啟用記錄。 此作業可在每個金鑰保存庫的診斷設定下完成。 您必須將資料傳送至指定的 Log Analytics 工作區。
 
-### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>我已經為我的 Key Vault 啟用記錄，為什麼我在作業 & 延遲時仍無法看到我的資料
+### <a name="i-have-already-enabled-logs-for-my-key-vault-why-am-i-still-unable-to-see-my-data-under-operations--latency"></a>我已啟用 Key Vault 的記錄，為什麼仍無法在作業中看到我的資料 & 延遲
 
 目前，診斷記錄無法回溯，因此只有對金鑰保存庫執行動作後，才會顯示資料。 這可能需要一些時間，從小時到一天不等，視金鑰保存庫的使用程度而定。
 
 此外，如果您選取了大量的金鑰保存庫和訂用帳戶，則可能因查詢限制而無法檢視您的資料。 若要檢視您的資料，您可能必須減少所選訂用帳戶或金鑰保存庫的數目。 
 
-### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>如果我想要查看其他資料或建立自己的視覺效果，該怎麼做？ 如何對 Key Vault 深入解析進行變更
+### <a name="what-if-i-want-to-see-other-data-or-make-my-own-visualizations-how-can-i-make-changes-to-the-key-vault-insights"></a>如果我想要查看其他資料或建立自己的視覺效果，該怎麼做？ 如何對 Key Vault 的見解進行變更
 
 您可以使用編輯模式來編輯現有的活頁簿，然後將您的工作儲存為新的活頁簿，其中將包含您所有的新變更。
 

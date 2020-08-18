@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873328"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522601"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>如何在法規合規性儀表板中自訂一組標準
 
@@ -73,6 +73,8 @@ Microsoft 也會追蹤法規標準本身，並隨著時間自動改善某些套�
     - **加拿大 PBMM**
     
     ![將法規套件新增至 Azure 資訊安全中心的法規合規性儀表板](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+
+1. 選取 [ **新增** ]，然後輸入特定方案的所有必要詳細資料，例如範圍、參數和補救。
 
 1. 從資訊安全中心的資訊看板中，再次選取 [法規合規性] 以返回法規合規性儀表板。
     * 您的新標準會出現在您的業界和法規標準清單中。 

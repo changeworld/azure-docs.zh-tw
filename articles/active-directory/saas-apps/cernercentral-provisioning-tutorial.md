@@ -2,25 +2,20 @@
 title: 教學課程： Cerner Central 的使用者布建-Azure AD
 description: 了解如何設定 Azure Active Directory 以自動佈建使用者至 Cerner Central 中的名冊。
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ed04d8fdcc2d79c66e2ebc53c737c78664e4621
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058311"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529860"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>教學課程︰設定 Cerner Central 來自動佈建使用者
 
@@ -57,7 +52,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 本節會引導您使用 Cerner 的 SCIM 使用者帳戶佈建 API，將 Azure AD 連線至 Cerner Central 的使用者名冊，以及根據 Azure AD 中的使用者和群組指派，設定佈建服務以在 Cerner Central 中建立、更新和停用已指派的使用者帳戶。
 
 > [!TIP]
-> 您也可以選擇啟用 Cerner Central 的 SAML 型單一登入，請遵循[Azure 入口網站](https://portal.azure.com)中提供的指示。 可以獨立設定自動佈建的單一登入，雖然這兩個功能彼此補充。 如需詳細資訊，請參閱 [Cerner Central 單一登入教學課程](cernercentral-tutorial.md)。
+> 您也可以選擇啟用 Cerner Central 的 SAML 型單一登入，請遵循 [Azure 入口網站](https://portal.azure.com)中提供的指示。 可以獨立設定自動佈建的單一登入，雖然這兩個功能彼此補充。 如需詳細資訊，請參閱 [Cerner Central 單一登入教學課程](cernercentral-tutorial.md)。
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>若要在 Azure AD 中設定自動使用者帳戶佈建至 Cerner Central：
 

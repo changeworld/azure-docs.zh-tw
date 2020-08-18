@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020061"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520204"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>在 Azure AD B2C 中註冊 SAML 應用程式
 
@@ -354,10 +354,10 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 
 選取 [登入]，您應該會看到使用者登入畫面。 登入時，SAML 判斷提示會回傳給範例應用程式。
 
-## <a name="enable-encypted-assertions"></a>啟用加密判斷提示
-若要加密傳回給服務提供者的 SAML 判斷提示，Azure AD B2C 將使用服務提供者公開金鑰憑證。 公用金鑰必須存在於上述["samlMetadataUrl"](#samlmetadataurl)中所述的 SAML 中繼資料中，做為使用 ' Encryption ' 的 KeyDescriptor。
+## <a name="enable-encypted-assertions"></a>啟用 Encypted 判斷提示
+若要加密傳回給服務提供者的 SAML 判斷提示，Azure AD B2C 將會使用服務提供者公開金鑰憑證。 公開金鑰必須存在於上述 ["samlMetadataUrl"](#samlmetadataurl) 中所述的 SAML 中繼資料中，做為使用 ' Encryption ' 的 >keydescriptor。
 
-以下是使用設定為加密之 SAML 中繼資料 KeyDescriptor 的範例：
+以下是使用 set to Encryption >keydescriptor 的 SAML 中繼資料的範例：
 
 ```xml
 <KeyDescriptor use="encryption">
@@ -369,7 +369,7 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 </KeyDescriptor>
 ```
 
-若要讓 Azure AD B2C 傳送加密的判斷提示，請將信賴憑證者技術設定檔中的**WantsEncryptedAssertion**中繼資料專案設定為 true，如下所示：
+若要啟用 Azure AD B2C 傳送加密的判斷提示，請將 **WantsEncryptedAssertion** 中繼資料專案設定為信賴憑證者技術設定檔中的 true，如下所示：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -414,6 +414,10 @@ Azure AD B2C 原則 IDP 中繼資料是 SAML 通訊協定中用來公開 SAML �
 * 應用程式/服務主體物件中的多個登出 URL 或用於登出 URL 的 POST 繫結。
 * 指定簽署金鑰以驗證應用程式/服務主體物件中的 RP 要求。
 * 在應用程式/服務主體物件中指定權杖加密金鑰。
+* 身分識別提供者起始登入，其中 Azure AD B2C 身分識別提供者。
+
+目前不支援下列 SAML 信賴憑證者 (RP) 案例：
+* 身分識別提供者起始登入，其中身分識別提供者是外部識別提供者（例如 ADFS）。
 
 ## <a name="next-steps"></a>後續步驟
 

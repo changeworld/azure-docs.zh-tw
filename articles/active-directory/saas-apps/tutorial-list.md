@@ -2,27 +2,22 @@
 title: 與 Azure AD 搭配使用的 SaaS 應用程式整合教學課程 | Microsoft Docs
 description: 設定以各種第三方軟體即服務的應用程式來進行的 Azure Active Directory 單一登入整合。
 services: active-directory
-documentationcenter: ''
 author: jeevansd
-manager: daveba
-ms.assetid: 08c0c52b-76d9-4250-936a-6bec0edb8816
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
-ms.reviewer: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a63527ce6fcb334d5a6f6c790f090bc39d702f66
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.reviewer: celested
+ms.openlocfilehash: 6d5632e6c50b33396eee5b476281c7a2c0a8366e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86167533"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534008"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>整合 SaaS 應用程式與 Azure Active Directory 的教學課程
 
@@ -30,7 +25,7 @@ ms.locfileid: "86167533"
 
 如需已預先整合到 Azure AD 的所有 SaaS 應用程式清單，請參閱 [Active Directory Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)。
 
-使用[應用程式網路入口網站](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)，要求將啟用[SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)的應用程式新增至資源庫以進行自動布建，或將啟用 SAML/OIDC 的應用程式新增至資源庫以進行 SSO。
+使用 [應用程式網路入口網站](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) ，要求將啟用 [SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups) 的應用程式新增至資源庫以進行自動布建，或將啟用 SAML/OIDC 的應用程式新增至 SSO 的資源庫。
 
 ## <a name="quick-links"></a>快速連結
 
@@ -49,7 +44,7 @@ ms.locfileid: "86167533"
 | 標誌 | 單一登入的應用程式教學課程 | 使用者佈建的應用程式教學課程 |
 | :--- | :--- | :--- |
 | ![標誌](./media/tutorial-list/active-directory-saas-amazon-web-service-tutorial.png)| [Amazon Web Services (AWS) 主控台](amazon-web-service-tutorial.md)| [Amazon Web Services (AWS) 主控台-角色布建](amazon-web-service-tutorial.md#configure-azure-ad-sso) |
-| ![標誌](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba 雲端服務 (角色基底 SSO) ](alibaba-cloud-service-role-based-sso-tutorial.md)| |
+| ![標誌](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud Service (角色基底 SSO) ](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![標誌](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform-使用者布建](google-apps-provisioning-tutorial.md) |
 | ![標誌](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce - 使用者佈建](salesforce-provisioning-tutorial.md) |
 | ![標誌](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP 雲端身分識別平臺](saphana-tutorial.md)|[SAP 雲端身分識別平臺-布建](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial) |
@@ -116,6 +111,6 @@ ms.locfileid: "86167533"
 | ![標誌](./media/tutorial-list/active-directory-saas-zscaler-two-tutorial.png)| [Zscaler Two](zscaler-two-tutorial.md)|  
 | ![標誌](./media/tutorial-list/active-directory-saas-zscaler-zscloud-tutorial.png)| [Zscaler ZSCloud](zscaler-zscloud-tutorial.md)|
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 若要深入了解應用程式管理，請參閱[什麼是應用程式管理](../manage-apps/what-is-application-management.md)。
