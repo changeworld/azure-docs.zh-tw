@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 22c982babbed1322e97127379be75e7b070ed81f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 87b999069ef9088a731a4e972c5d548cac0b917c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994237"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509551"
 ---
 # <a name="view-document-details"></a>檢視文件詳細資料
 
@@ -22,7 +22,7 @@ ms.locfileid: "83994237"
 
 按一下個別文件，可檢視文件的詳細資料頁面。 文件的詳細資料頁面會顯示從文件中擷取的句子清單。
 
-- 根據預設，下拉式欄位中會選取「來源」語言，但是您可以切換成以目的語言來查看句子。
+- 依預設，會在下拉式欄位中選取 [並存] 來源和目的語言顯示，但是您可以切換以在來源或目的語言中看到句子。
 - 根據預設，每頁會顯示 20 個句子。 您可以使用分頁控制項在頁面之間瀏覽。
 
 ![文件詳細資料](media/how-to/how-to-view-document-details.png)
@@ -32,11 +32,11 @@ ms.locfileid: "83994237"
 使用者必須是工作區擁有者才能刪除文件。 此外，如果文件由某個模型使用中，且該模型屬於定型程序或部署程序的一部分，文件即無法刪除。
 
 1. 移至文件頁面
-2.  將滑鼠停留在任何文件記錄上方，然後按一下垃圾桶圖示。
+2. 將滑鼠停留在任何文件記錄上方，然後按一下垃圾桶圖示。
 
     ![刪除文件](media/how-to/how-to-delete-document-1.png)
 
-3.  確認刪除。
+3. 確認刪除。
 
     ![刪除確認](media/how-to/how-to-delete-document-confirm.png)
 

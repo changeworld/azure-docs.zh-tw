@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563265"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509275"
 ---
 # <a name="troubleshoot"></a>疑難排解
 
@@ -105,9 +105,9 @@ ms.locfileid: "85563265"
 
 **此模型超過所選 VM 的限制，尤其是多邊形的最大數目：**
 
-請參閱特定的[VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
+請參閱特定 [伺服器大小限制](../reference/limits.md#overall-number-of-polygons)。
 
-**此模型不在相機的截錐內：**
+**此模型不在相機的截錐中：**
 
 在許多情況下，此模型會正確顯示，但卻位於相機的視體之外。 其中一個常見的原因是已使用十分偏離中央位置的樞紐來匯出模型，因此會由相機的遠裁剪平面來裁剪。 這種方式有助於以程式設計方式查詢模型的周框方塊，並使用 Unity 作為線條方塊將方塊視覺化，或將其值列印到偵錯工具記錄。
 
@@ -142,19 +142,19 @@ ms.locfileid: "85563265"
 
 **Unity 管線不包含轉譯勾點：**
 
-Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫面以進行重新投影。 若要確認這些勾點是否存在，請開啟功能表 *:::no-loc text="Window > Analysis > Frame debugger":::* 。 請加以啟用，並確定管線中的 `HolographicRemotingCallbackPass` 有兩個項目：
+Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫面以進行重新投影。 若要確認這些攔截是否存在，請開啟功能表 *:::no-loc text="Window > Analysis > Frame debugger":::* 。 請加以啟用，並確定管線中的 `HolographicRemotingCallbackPass` 有兩個項目：
 
 ![Unity 畫面偵錯工具](./media/troubleshoot-unity-pipeline.png)
 
-## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>在模型載入後呈現棋盤圖樣
+## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>在模型載入之後轉譯棋盤模式
 
-如果呈現的影像看起來像這樣： ![ 棋盤 ](../reference/media/checkerboard.png) 之後，轉譯器就會達到[標準 VM 大小的多邊形限制](../reference/vm-sizes.md)。 若要減輕問題，請切換至**PREMIUM VM**大小或減少可見多邊形的數目。
+如果呈現的影像看起來像這樣：棋盤之後，轉譯器就會叫用 ![ ](../reference/media/checkerboard.png) [標準設定大小的多邊形限制](../reference/vm-sizes.md)。 若要減輕問題，請切換至 **premium** 設定大小或減少可見的多邊形數目。
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity 中轉譯的影像是倒置的
 
-請務必遵循[Unity 教學課程：完全查看遠端模型](../tutorials/unity/view-remote-models/view-remote-models.md)。 「向下」影像表示必須要有 Unity，才能建立螢幕上的呈現目標。 目前不支援此行為，而且會對 HoloLens 2 產生巨大的效能影響。
+請務必遵循 [Unity 教學課程：完全查看遠端模型](../tutorials/unity/view-remote-models/view-remote-models.md) 。 [倒置] 影像表示必須有 Unity 才能建立非螢幕呈現目標。 此行為目前不受支援，而且會對 HoloLens 2 產生相當大的效能影響。
 
-此問題的原因可能是 MSAA、HDR 或啟用後置處理。 請確定已選取低品質設定檔，並將其設定為 Unity 中的預設值。 若要這麼做，請移至 [*編輯] > 專案設定 ... > 品質*]。
+此問題的原因可能是 MSAA、HDR 或啟用 post 處理。 確定已選取低品質的設定檔，並將其設為 Unity 中的預設值。 若要這樣做，請移至 *編輯 > 專案設定 ... > 品質*。
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>使用遠端轉譯 API 的 Unity 程式碼不會進行編譯
 
@@ -172,9 +172,9 @@ Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫�
     reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
     ```
     
-### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Unity 專案的 Arm64 組建失敗，因為 AudioPluginMsHRTF.dll 遺失
+### <a name="arm64-builds-for-unity-projects-fail-because-audiopluginmshrtfdll-is-missing"></a>Unity 專案的 Arm64 組建失敗，因為遺漏 AudioPluginMsHRTF.dll
 
-`AudioPluginMsHRTF.dll`Arm64 的已新增至版本3.0.1 中的*Windows Mixed Reality*套件 *（xr. windowsmr）* 。 請確定您已透過 Unity 套件管理員安裝3.0.1 版或更新版本。 從 Unity 功能表列，流覽至 [*視窗] > [封裝管理員]* ，然後尋找 [ *Windows Mixed Reality* ] 套件。
+`AudioPluginMsHRTF.dll`Arm64 已新增至3.0.1 版中的*Windows Mixed Reality*套件* (xr. windowsmr. metro) * 。 確定您已透過 Unity 封裝管理員安裝3.0.1 版或更新版本。 從 Unity 功能表列，流覽至 [ *Window >] 封裝管理員* ，然後尋找 *Windows Mixed Reality* 套件。
 
 ## <a name="unstable-holograms"></a>不穩定的全像投影
 
@@ -188,51 +188,51 @@ Azure 遠端轉譯會在 Unity 轉譯管線中執行勾點，組合影片的畫�
 
 ## <a name="z-fighting"></a>Z-fighting
 
-雖然 ARR 提供了[z 對抗的緩和功能](../overview/features/z-fighting-mitigation.md)，但仍會在場景中顯示 z 對抗。 本指南的目的是針對這些剩餘的問題進行疑難排解。
+雖然 ARR 提供了 [z 對抗的緩和功能](../overview/features/z-fighting-mitigation.md)，但仍會在場景中顯示 z 對抗。 本指南的目標是針對這些剩餘的問題進行疑難排解。
 
 ### <a name="recommended-steps"></a>建議的步驟
 
-使用下列工作流程來減輕 z 對抗：
+您可以使用下列工作流程來減少 z 時：
 
-1. 使用 ARR 的預設設定來測試場景（z-對抗緩和措施）
+1. 在) 上使用 ARR 的預設設定來測試場景 (z-對抗緩和措施
 
-1. 透過其[API](../overview/features/z-fighting-mitigation.md)停用 z 對抗緩和功能 
+1. 透過其[API](../overview/features/z-fighting-mitigation.md)停用 z 減少緩和措施 
 
-1. 將相機的近向和最遠的平面變更為較接近的範圍
+1. 將相機近和遠的平面變更為較接近的範圍
 
 1. 透過下一節針對場景進行疑難排解
 
-### <a name="investigating-remaining-z-fighting"></a>調查剩餘的 z 對抗
+### <a name="investigating-remaining-z-fighting"></a>調查剩餘的 z-對抗
 
-如果上述步驟已用盡，而其餘的 z 對抗無法接受，則需要調查 z 操作的根本原因。 如在[z 對抗風險降低功能頁面](../overview/features/z-fighting-mitigation.md)中所述，在深度範圍的最結尾有兩個主要原因：深度精確度遺失，而在共置的表面則為交集。 深度精確度遺失是數學可能性，只有在上述步驟3之後才可以緩和。 共面表面表示來源資產的瑕疵，而且在來源資料中的修正較佳。
+如果上述步驟已經用盡，而且無法接受剩餘的 z 操作，就必須調查 z 的根本原因。 如同在 [ [z-對抗緩和功能] 頁面](../overview/features/z-fighting-mitigation.md)中所述，有兩個主要原因： z：深度範圍最一端的深度精確度遺失，以及在共置時相交的表面。 深度精確度遺失是數學可能性，而且只有在上述步驟3之後才能緩和。 共面表面表示來源資產的瑕疵，並且在來源資料中更妥善修正。
 
-ARR 具有一項功能，可判斷表面是否可以進行 z 反白[顯示](../overview/features/z-fighting-mitigation.md)。 您也可以在視覺上判斷造成 z 對抗的原因。 下列第一個動畫顯示距離中深度精確度遺失的範例，第二個則顯示幾乎共面表面的範例：
+ARR 有一項功能，可用來判斷表面是否可以進行 z 打擊：棋盤反白 [顯示](../overview/features/z-fighting-mitigation.md)。 您也可以在視覺上判斷造成 z 向的原因。 下列第一個動畫顯示距離的深度精確度遺失範例，而第二個動畫顯示近接面表面的範例：
 
-![深度-精確度-z-a](./media/depth-precision-z-fighting.gif)  ![共置 z-對抗](./media/coplanar-z-fighting.gif)
+![深度-精確度-z-對抗](./media/depth-precision-z-fighting.gif)  ![共迭-z-對抗](./media/coplanar-z-fighting.gif)
 
-請將這些範例與您的 z 操作進行比較，以判斷原因，或選擇性地遵循下列逐步工作流程：
+將這些範例與您的 z 進行比較，以判斷原因，或選擇性地遵循這個逐步工作流程：
 
-1. 將相機放在 z 對抗表面上方，以直接查看表面。
-1. 慢慢地將相機向後移動，遠離表面。
-1. 如果所有時間都看得到 z 對抗，表面就會完全共置。 
-1. 如果大部分的時間都可以看到 z 對抗，表面幾乎是共置的。
-1. 如果只有從最遠的地方才看得到 z-a，則原因缺少深度精確度。
+1. 將相機定位在 z 對抗表面上方，以直接查看介面。
+1. 慢慢地將相機移離表面。
+1. 如果所有時間都可以看見 z 對，表面就是完全共置。 
+1. 如果大部分的時間都能看到 z 對，表面幾乎是共置的。
+1. 如果從最遠的程度來看，無法進行 z 對向，原因是缺乏深度精確度。
 
-共面表面可能會有許多不同的原因：
+共面表面可能有許多不同的原因：
 
-* 因為有錯誤或不同的工作流程方法，所以匯出應用程式已複製物件。
+* 由於發生錯誤或不同的工作流程方法，匯出應用程式複製了物件。
 
     請使用個別的應用程式和應用程式支援來檢查這些問題。
 
-* 表面會複製並翻轉，以在使用正面或背面剔除的轉譯器中出現雙面顯示。
+* 介面會複製並翻轉，以在使用正面臉部或背面剔除的轉譯器中出現。
 
-    透過[模型轉換](../how-tos/conversion/model-conversion.md)來匯入，會決定模型的主要 sidedness。 Sidedness 會假設為預設值。 表面會呈現為具有實際正確光源的瘦牆。 來源資產中的旗標可以隱含單一 sidedness，或在[模型轉換](../how-tos/conversion/model-conversion.md)期間明確強制執行。 此外，您可以選擇性地將[單側模式](../overview/features/single-sided-rendering.md)設定為「正常」。
+    透過 [模型轉換](../how-tos/conversion/model-conversion.md) 匯入會決定模型的主體 sidedness。 雙 sidedness 會假設為預設值。 介面將會轉譯為具有從兩端實際正確光源的細牆。 單一 sidedness 可由來源資產中的旗標隱含，或在 [模型轉換](../how-tos/conversion/model-conversion.md)期間明確強制執行。 此外，您可以選擇性地將 [單面模式](../overview/features/single-sided-rendering.md) 設定為 [正常]。
 
 * 來源資產中的物件交集。
 
-     以某種方式轉換的物件會重迭，因此也會建立 z 對抗。 在 ARR 的匯入場景中轉換場景樹狀結構的某些部分，也可能會造成此問題。
+     以某些表面重迭的方式轉換的物件也會建立 z 的轉換。 在 ARR 的匯入場景中轉換場景樹狀結構的元件也會產生這個問題。
 
-* 表面是以觸控方式撰寫的特意，例如 decals 或牆上的文字。
+* 表面是以觸控形式特意撰寫的，例如 decals 或牆上的文字。
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理快取原則 | Microsoft Docs
-description: 了解可在 Azure API 管理中使用的快取原則。 請參閱範例，並查看其他可用的資源。
+description: 了解可在 Azure API 管理中使用的快取原則。 查看範例並查看其他可用的資源。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: fc5298b85af4eaa6cd84c871d38ea1c773abe0b4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f0aeef7bc67f5c59bb80d5ff24a97be737447a81
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851591"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510176"
 ---
 # <a name="api-management-caching-policies"></a>API 管理快取原則
 本主題提供下列 API 管理原則的參考。 如需有關新增和設定原則的資訊，請參閱 [API 管理中的原則](https://go.microsoft.com/fwlink/?LinkID=398186)。
 
-## <a name="caching-policies"></a><a name="CachingPolicies"></a>快取原則
+## <a name="caching-policies"></a><a name="CachingPolicies"></a> 快取原則
 
 - 回應快取原則
     - [從快取中取得](api-management-caching-policies.md#GetFromCache) - 執行快取查閱並傳回有效的快取回應 (如果有的話)。
@@ -33,7 +33,7 @@ ms.locfileid: "87851591"
     - [儲存快取中的值](#StoreToCacheByKey) -依金鑰儲存快取中的項目。
     - [移除快取中的值](#RemoveCacheByKey) - 依金鑰移除快取中的項目。
 
-## <a name="get-from-cache"></a><a name="GetFromCache"></a>從快取取得
+## <a name="get-from-cache"></a><a name="GetFromCache"></a> 從快取取得
 使用 `cache-lookup` 原則來執行快取查閱並傳回有效的快取回應 (如果有的話)。 此原則可於回應內容在一段期間維持靜態時套用。 回應快取可降低加諸於後端 Web 伺服器的頻寬和處理需求，並縮短 API 取用者所感受的延遲時間。
 
 > [!NOTE]
@@ -114,7 +114,7 @@ ms.locfileid: "87851591"
 | 快取類型               | 選擇下列屬性值：<br />- `internal`，使用內建 API 管理快取，<br />- `external`，使用外部快取，如[在 Azure API 管理中使用外部 Azure Redis 快取](api-management-howto-cache-external.md)中所述，<br />- `prefer-external`。如有設定，則使用外部快取；否則使用內部快取。 | 否       | `prefer-external` |
 | downstream-caching-type        | 此屬性必須設為下列其中一個值。<br /><br /> -   none - 不允許下游快取。<br />-   private - 允許下游私人快取。<br />-   public - 允許私人和共用下游快取。                                                                                                          | 否       | 無              |
 | must-revalidate                | 當下游快取啟用時，此屬性會開啟或關閉閘道回應中的 `must-revalidate` 快取控制指示詞。                                                                                                                                                                                                                      | 否       | true              |
-| vary-by-developer              | 設定為 `true` 可根據[訂用帳戶金鑰](./api-management-subscriptions.md)來快取回應。                                                                                                                                                                                                                                                                                                         | 是      |         否          |
+| vary-by-developer              | 若 `true` 為，則會將每個開發人員帳戶的回應快取到要求中所包含的 [訂](./api-management-subscriptions.md) 用帳戶金鑰。                                                                                                                                                                                                                                                                                                  | 是      |         否          |
 | vary-by-developer-groups       | 設定為 `true` 可按照[使用者群組](./api-management-howto-create-groups.md)來快取回應。                                                                                                                                                                                                                                                                                                             | 是      |       否            |
 
 ### <a name="usage"></a>使用量

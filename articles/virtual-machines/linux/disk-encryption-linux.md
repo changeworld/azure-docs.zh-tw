@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7452a08125008e3d25ffb7d0eff59f55ca9be0b1
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 88a0239409d29700d95b8949c1499dd30f50bb5f
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372649"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510720"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
@@ -38,7 +38,7 @@ Azure 磁碟加密會與 [Azure Key Vault](disk-encryption-key-vault.md) 整合�
 
 ## <a name="install-tools-and-connect-to-azure"></a>安裝工具並連線至 Azure
 
-Azure 磁碟加密可以透過 [Azure CLI](/cli/azure) 和 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 來加以啟用及管理。 若要這樣做，您必須在本機安裝這些工具，並聯機到您的 Azure 訂用帳戶。
+Azure 磁碟加密可以透過 [Azure CLI](/cli/azure) 和 [Azure PowerShell](/powershell/azure/new-azureps-module-az) 來加以啟用及管理。 若要這樣做，您必須在本機安裝這些工具，並連接到您的 Azure 訂用帳戶。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -396,7 +396,7 @@ Azure 磁碟加密不適用於下列 Linux 案例、功能和技術：
 
 - 將基本層 VM 或透過傳統 VM 建立方法所建立的 VM 加密。
 - 在加密 OS 磁碟機時，於 OS 磁碟機或 Linux VM 的資料磁碟機上停用加密。
-- 將 Linux 虛擬機器擴展集的 OS 磁片磁碟機加密。
+- 加密 Linux 虛擬機器擴展集的 OS 磁片磁碟機。
 - 加密 Linux VM 上的自訂映像。
 - 與內部部署金鑰管理系統整合。
 - Azure 檔案 (共用檔案系統)。
@@ -404,17 +404,17 @@ Azure 磁碟加密不適用於下列 Linux 案例、功能和技術：
 - 動態磁碟區。
 - 暫時性 OS 磁碟。
 - 加密共用/分散式檔案系統，例如 (但不限於)：DFS、GFS、DRDB 和 CephFS。
-- 將已加密的 VM 移到另一個訂用帳戶或區域。
-- 建立已加密 VM 的映射或快照集，並使用它來部署額外的 Vm。
+- 將已加密的 VM 移至另一個訂用帳戶或區域。
+- 建立已加密 VM 的映射或快照，並使用它來部署額外的 Vm。
 - 核心損毀傾印 (kdump)。
 - Oracle ACFS (ASM 叢集檔案系統)。
 - Gen2 VM (請參閱：[Azure 上第 2 代 VM 的支援](generation-2.md#generation-1-vs-generation-2-capabilities)。
-- Lsv2 系列 Vm 的 NVMe 磁片（請參閱： [Lsv2 系列](../lsv2-series.md)）。
+- Lsv2 系列 Vm 的 NVMe 磁片 (請參閱： [Lsv2 系列](../lsv2-series.md)) 。
 - 具有「巢狀掛接點」的 VM；也就是在單一路徑中有多個掛接點 (例如 "/1stmountpoint/data/2stmountpoint")。
-- 將資料磁片磁碟機掛接在 OS 資料夾頂端的 VM。
+- 將資料磁片磁碟機掛接在 OS 資料夾上方的 VM。
 - 具有寫入加速器磁片的 M 系列 Vm。
-- 將 ADE 套用至具有以[客戶管理的金鑰](disk-encryption.md)（SSE + CMK）加密之資料磁片的 vm，或將 SSE + CMK 套用至以 ADE 加密之 VM 上的資料磁片。
-- 將使用 ADE 加密的 VM 遷移至[使用客戶管理金鑰的伺服器端加密](disk-encryption.md)。
+- 將 ADE 套用至具有（或 *曾經* 擁有）使用 [客戶管理金鑰進行伺服器端加密](disk-encryption.md) 的磁片加密 (SSE + CMK) 。 將 SSE + CMK 套用至以 ADE 加密的 VM 上的資料磁片也是不支援的案例。
+- [使用客戶管理的金鑰](disk-encryption.md)，將使用 ADE 加密的 VM 遷移至伺服器端加密。
 
 ## <a name="next-steps"></a>後續步驟
 

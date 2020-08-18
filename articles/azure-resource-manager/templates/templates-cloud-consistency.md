@@ -6,23 +6,23 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: f7295515b75ba7e26454f8b6ce6e0d660657ec4e
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 9355482c26cabb96fc6292bab5d542f36aec6a8c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86055234"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509751"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>開發適用于雲端一致性的 ARM 範本
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure 的主要優點在於一致性。 對某個位置的開發投資可重複用在另一個位置。 Azure Resource Manager （ARM）範本可讓您的部署在各種環境中一致且重複，包括全域 Azure、Azure 主權雲端和 Azure Stack。 但若要跨雲端重複使用範本，您需要考慮雲端特定的相依性，如本指南所述。
+Azure 的主要優點在於一致性。 對某個位置的開發投資可重複用在另一個位置。 Azure Resource Manager (ARM) 範本可讓您的部署在各環境之間保持一致且可重複使用，包括全域 Azure、Azure 主權雲端和 Azure Stack。 但若要跨雲端重複使用範本，您需要考慮雲端特定的相依性，如本指南所述。
 
 Microsoft 在許多位置提供符合企業需求的智慧型雲端服務，包括：
 
 * Microsoft 受控之全球各區域資料中心中不斷成長的網路，支援全球 Azure 平台。
-* 獨立的主權雲端，例如 Azure 德國、Azure Government 和 Azure 中國世紀。 主權雲端提供一致的平台和大多數全球 Azure 客戶都能存取的相同絕佳功能。
+* 隔離的主權雲端，例如 Azure 德國、Azure Government 和 Azure 中國的世紀。 主權雲端提供一致的平台和大多數全球 Azure 客戶都能存取的相同絕佳功能。
 * Azure Stack 是混合式雲端平台，可讓您從貴組織的資料中心提供 Azure 服務。 企業可以在自己的資料中心設定 Azure Stack，或從服務提供者取用 Azure 服務，在其設備 (有時稱為代管區域) 中執行 Azure Stack。
 
 在所有這些雲端的核心，Azure Resource Manager 提供一個 API 讓各種不同的使用者介面都能與 Azure 平台通訊。 此 API 提供您強大的基礎結構即程式碼功能。 您可以使用 Azure Resource Manager 在 Azure 雲端平台上部署並設定任何類型的可用資源。 使用單一範本，您可以將完成的應用程式部署及設定成作業結束狀態。
@@ -33,7 +33,7 @@ Microsoft 在許多位置提供符合企業需求的智慧型雲端服務，包�
 
 不過，雖然全球、主權、託管和混合式雲端能提供一致的服務，但並非所有的雲端都相同。 因此，您可以建立具有僅特定雲端所提供功能之相依性的範本。
 
-本指南的其餘部分將說明規劃開發新的或更新現有 ARM 範本以進行 Azure Stack 時要考慮的領域。 您的檢查清單一般應包含下列項目：
+本指南的其餘部分將說明在規劃為 Azure Stack 開發新的 ARM 範本或更新現有的 ARM 範本時所要考慮的領域。 您的檢查清單一般應包含下列項目：
 
 * 確認目標部署位置可以使用您範本中的函式、端點、服務和其他資源。
 * 將巢狀範本和設定成品儲存在可存取的位置，確保跨雲端的存取。
@@ -41,17 +41,17 @@ Microsoft 在許多位置提供符合企業需求的智慧型雲端服務，包�
 * 請確定您使用的範本參數能在目標雲端中運作。
 * 確認目標雲端可以使用資源特有的屬性。
 
-如需 ARM 範本的簡介，請參閱[範本部署](overview.md)。
+如需 ARM 範本的簡介，請參閱 [範本部署](overview.md)。
 
 ## <a name="ensure-template-functions-work"></a>確定範本函式都能運作
 
-ARM 範本的基本語法是 JSON。 範本使用 JSON 的超集，擴展運算式和函式的語法。 範本語言處理器經常更新，以支援額外的範本函式。 如需可用範本函式的詳細說明，請參閱[ARM 範本](template-functions.md)函式。
+ARM 範本的基本語法是 JSON。 範本使用 JSON 的超集，擴展運算式和函式的語法。 範本語言處理器經常更新，以支援額外的範本函式。 如需可用範本函式的詳細說明，請參閱 [ARM 範本](template-functions.md)函式。
 
 Azure Resource Manager 中引入的新範本函式，不能立即提供主權雲端或 Azure Stack 使用。 若要成功部署範本，範本中參考的所有函式都必須能在目標雲端中使用。
 
 Azure Resource Manager 功能一律先引入全球 Azure。 您可以使用下列 PowerShell 指令碼確認 Azure Stack 是否可以使用新引入的範本函式：
 
-1. 複製 GitHub 存放庫： [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions) 。
+1. 建立 GitHub 存放庫的複本： [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions) 。
 
 1. 一旦您有存放庫的本機複製品，請使用 PowerShell 連線至目的地的 Azure Resource Manager。
 
@@ -444,7 +444,7 @@ API 設定檔不是範本中的必要項目。 即使您新增項目，它也只
 在範本中，一般會避免硬式編碼的端點。 最佳做法是使用參考範本函式動態擷取端點。 例如，最常見的硬式編碼端點是儲存體帳戶的端點命名空間。 每個儲存體帳戶都有唯一的 FQDN，透過串連儲存體帳戶的名稱和端點命名空間所建構。 名為 mystorageaccount1 的 Blob 儲存體帳戶會導致不同的 FQDN，視雲端而定：
 
 * 在全球 Azure 雲端上建立時，**mystorageaccount1.Blob.core.windows.net**。
-* 在 Azure 中國世紀雲端中建立時的**mystorageaccount1.blob.core.chinacloudapi.cn** 。
+* 在 Azure 中國的世紀雲端建立的**mystorageaccount1.blob.core.chinacloudapi.cn** 。
 
 下列參考範本函式會從儲存體資源提供者擷取端點命名空間：
 
@@ -570,7 +570,7 @@ Get-AzureRmVMSize -Location "West Europe"
 }
 ```
 
-相同的變更也適用於[資料磁碟](../../virtual-machines/windows/using-managed-disks-template-deployments.md)。
+相同的變更也適用於[資料磁碟](../../virtual-machines/using-managed-disks-template-deployments.md)。
 
 ### <a name="verify-that-vm-extensions-are-available-in-azure-stack"></a>請確認 Azure Stack 中可以使用 VM 延伸模組
 
@@ -668,4 +668,4 @@ Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerS
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Resource Manager 範本考量](/azure-stack/user/azure-stack-develop-templates)
-* [ARM 範本的最佳做法](template-syntax.md)
+* [ARM 範本的最佳作法](template-syntax.md)

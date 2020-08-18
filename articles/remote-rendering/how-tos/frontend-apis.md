@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: c43ed412116d0cb30f7d06ba65467fd529f367ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcff550b5411ac00dc54d2103278812f32f56543
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552700"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509972"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>使用 Azure 前端 API 進行驗證
 
@@ -64,7 +64,7 @@ struct AzureFrontendAccountInfo
 
 每個已開啟/已建立 ```AzureSession``` 都會保留對於前端 (建立工作階段) 的參考。 若要完全關閉，必須先解除配置所有工作階段，然後才會解除配置前端。
 
-解除配置工作階段並不會停止 Azure 上的 VM，`AzureSession.StopAsync` 必須明確地呼叫。
+解除配置會話不會停止 Azure 上的伺服器， `AzureSession.StopAsync` 必須明確呼叫。
 
 一旦建立工作階段且其狀態已標示為就緒，就可以使用 `AzureSession.ConnectToRuntime` 連線到遠端轉譯執行階段。
 

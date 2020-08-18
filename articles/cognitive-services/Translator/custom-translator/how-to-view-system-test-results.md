@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3361241bf0a330abc18701f93460208b8804a7dc
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994254"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509631"
 ---
 # <a name="view-system-test-results"></a>檢視系統測試結果
 
@@ -26,7 +26,7 @@ ms.locfileid: "83994254"
 
 測試索引標籤會顯示：
 
-1.  **系統測試結果：** 定型中的測試程式結果。 測試程序會產生 BLEU 分數。
+1.  **系統測試結果：** 訓練中測試程式的結果。 測試程序會產生 BLEU 分數。
 
     **句子計數：** 在測試集中使用了多少個平行句子。
 
@@ -54,11 +54,11 @@ ms.locfileid: "83994254"
 
 這個下載的 ZIP 封存檔包含三個檔案。
 
-1.  **自訂 mt .txt：** 此檔案包含來源語言句子的機器翻譯，其目的語言是以使用者資料定型的模型完成。
+1.  **custom.mt.txt：** 此檔案包含以使用者的資料定型的模型所完成之目的語言中來源語言句子的機器翻譯。
 
-2.  **ref .txt：** 此檔案包含使用者在目的語言中提供之來源語言句子的翻譯。
+2.  **ref.txt：** 此檔案包含使用者以目的語言為來源語言句子提供的翻譯。
 
-3.  **來源 .txt：** 此檔案包含來源語言中的句子。
+3.  **source.txt：** 此檔案包含來源語言的句子。
 
     ![下載系統測試結果](media/how-to/how-to-download-system-test.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "83994254"
 
 1.  選取專案，移至 [模型] 索引標籤。
 
-2. 若為成功定型的模型，則會顯示 [部署] 按鈕（如果未部署）。
+2. 針對成功定型的模型會顯示 [部署] 按鈕 (若尚未部署)。
 
     ![部署模型](media/how-to/how-to-deploy-model.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "83994254"
 
     ![部署模型](media/how-to/how-to-deploy-model-regions.png)
 
-5.  您可以在 [狀態] 資料行中，查看模型的狀態。
+5.  您可以在 [狀態] 資料行中檢視模型的狀態。
 
 >[!Note]
 >自訂翻譯在任何時間點都支援工作區中10個已部署的模型。
@@ -102,6 +102,6 @@ ms.locfileid: "83994254"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 從[Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)開始使用您已部署的自訂翻譯模型。
+- 透過 [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) 開始使用您已部署的自訂翻譯模型。
 - 了解[如何管理設定](how-to-manage-settings.md)以共用您的工作區，和管理訂用帳戶金鑰。
 - 了解[如何移轉您的工作區和專案](how-to-migrate.md) (從 [Microsoft Translator 中樞](https://hub.microsofttranslator.com))

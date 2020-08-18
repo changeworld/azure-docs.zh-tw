@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507925"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510006"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中設計和實作 Oracle 資料庫
 
 ## <a name="assumptions"></a>假設
 
 - 您打算將 Oracle 資料庫從內部部署環境移轉至 Azure。
-- 您想要遷移的 Oracle Database 有[診斷套件](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm)
+- 您的 [診斷套件](https://docs.oracle.com/cd/E11857_01/license.111/e11987/database_management.htm) 適用于您想要遷移的 Oracle Database
 - 您已了解 Oracle AWR 報表中的各種計量。
 - 您已基本了解應用程式效能和平台使用量。
 
@@ -46,10 +46,10 @@ ms.locfileid: "86507925"
 
 |  | 內部部署實作 | Azure 實作 |
 | --- | --- | --- |
-| **網路** |LAN/WAN  |SDN (軟體定義網路)|
-| **安全性群組** |IP/連接埠限制工具 |[網路安全性群組（NSG）](https://azure.microsoft.com/blog/network-security-groups) |
+| **網路功能** |LAN/WAN  |SDN (軟體定義網路)|
+| **安全性群組** |IP/連接埠限制工具 |[ (NSG) 的網路安全性群組 ](https://azure.microsoft.com/blog/network-security-groups) |
 | **恢復功能** |MTBF (平均失敗時間) |MTTR (平均復原時間)|
-| **規劃的維護** |修補/升級|[可用性設定組](../../windows/infrastructure-example.md) (Azure 所管理的修補/升級) |
+| **預定的維修** |修補/升級|[可用性設定組](../../windows/infrastructure-example.md) (Azure 所管理的修補/升級) |
 | **Resource** |專用  |與其他用戶端共用|
 | **區域** |資料中心 |[區域配對](../../regions.md#region-pairs)|
 | **Storage** |SAN/實體磁碟 |[Azure 受控儲存體](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
@@ -72,11 +72,11 @@ ms.locfileid: "86507925"
 
 ### <a name="generate-an-awr-report"></a>產生 AWR 報表
 
-如果您目前已有 Oracle 資料庫，且打算移轉至 Azure，您會有數個選項。 如果您有 Oracle 實例的[診斷套件](https://www.oracle.com/technetwork/oem/pdf/511880.pdf)，您可以執行 oracle AWR 報表來取得計量（IOPS、Mbps、gib 等等）。 然後根據收集到的計量選擇 VM。 或者，連絡基礎結構小組，取得類似的資訊。
+如果您目前已有 Oracle 資料庫，且打算移轉至 Azure，您會有數個選項。 如果您有 Oracle 實例的 [診斷套件](https://www.oracle.com/technetwork/oem/pdf/511880.pdf) ，您可以執行 oracle AWR 報表，以取得度量 (IOPS、Mbps、gib 等) 。 然後根據收集到的計量選擇 VM。 或者，連絡基礎結構小組，取得類似的資訊。
 
 您可以考慮在一般和尖峰工作負載期間執行 AWR 報表，以進行比較。 根據這些報表，您可以根據平均工作負載或最大工作負載來調整 VM 大小。
 
-以下是如何產生 AWR 報表的範例（如果您目前的安裝有一個，請使用您的 Oracle Enterprise Manager 產生 AWR 報表）：
+以下是如何產生 AWR 報表 (使用 Oracle Enterprise Manager 產生 AWR 報表的範例，如果您目前的安裝有一個) ：
 
 ```bash
 $ sqlplus / as sysdba
@@ -102,7 +102,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 ### <a name="virtual-machine-size"></a>虛擬機器大小
 
-#### <a name="1-estimate-vm-size-based-on-cpu-memory-and-io-usage-from-the-awr-report"></a>1. 根據 AWR 報表中的 CPU、記憶體和 i/o 使用量來估計 VM 大小
+#### <a name="1-estimate-vm-size-based-on-cpu-memory-and-io-usage-from-the-awr-report"></a>1. 根據 AWR 報表中的 CPU、記憶體和 i/o 使用量來預估 VM 大小
 
 您可以查看的一個事項是前五個定時前景事件，其指出系統瓶頸位置。
 
@@ -118,7 +118,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 根據您從 AWR 報表收集到的資訊，下一個步驟是選擇符合您需求且大小類似的 VM。 您可以在[記憶體最佳化](../../sizes-memory.md)一文中找到可用 VM 的清單。
 
-#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. 使用以 ACU 為基礎的類似 VM 系列來微調 VM 大小
+#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3. 根據 ACU 以類似的 VM 系列微調 VM 大小調整
 
 在您選擇 VM 之後，請注意 VM 的 ACU。 您可以根據較適合您需求的 ACU 值，選擇不同的 VM。 如需詳細資訊，請參閱 [Azure 計算單位](../../acu.md)。
 
@@ -143,10 +143,10 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - 與內部部署相較之下，網路延遲較高。 減少網路來回行程可以大幅改善效能。
 - 若要減少來回行程，請合併相同虛擬機器上具有高交易或 “Chatty” 應用程式的應用程式。
-- 使用具有[加速網路](../../../virtual-network/create-vm-accelerated-networking-cli.md)的虛擬機器，以獲得更好的網路效能。
-- 針對特定 Linux 散發套件，請考慮啟用[修剪/](../../linux/configure-lvm.md#trimunmap-support)取消對應支援。
-- 在個別的虛擬機器上安裝[Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
-- 在 linux 上，預設不會啟用大量頁面。 請考慮啟用龐大的頁面，並 `use_large_pages = ONLY` 在 Oracle DB 上設定。 這可能有助於提升效能。 您可以在[這裡](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到詳細資訊。
+- 使用具有 [加速網路](../../../virtual-network/create-vm-accelerated-networking-cli.md) 的虛擬機器，以獲得更佳的網路效能。
+- 針對某些 Linux 發行版本，請考慮啟用 [TRIM/](../../linux/configure-lvm.md#trimunmap-support)取消對應支援。
+- 在不同的虛擬機器上安裝 [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 。
+- 預設不會在 linux 上啟用大量頁面。 請考慮啟用大量頁面並設定 `use_large_pages = ONLY` Oracle DB。 這可能有助於提升效能。 您可以在[這裡](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)找到詳細資訊。
 
 ### <a name="disk-types-and-configurations"></a>磁碟類型和設定
 
@@ -187,7 +187,7 @@ IOPS 是 12,200,000 / 2,358 = 5,174。
 - 使用資料壓縮來減少 I/O (適用於資料和索引)。
 - 區隔不同資料磁碟上的重做記錄、系統、暫時和重做 TS。
 - 不要將任何應用程式檔案放在預設 OS 磁碟 (/dev/sda)。 這些磁碟不適合用於快速 VM 啟動階段，因此可能不會為您的應用程式提供良好的效能。
-- 使用 Premium 儲存體上的 M 系列 Vm 時，請在重做記錄磁片上啟用[寫入加速器](../../linux/how-to-enable-write-accelerator.md)。
+- 在 Premium 儲存體上使用 M 系列 Vm 時，請啟用 [重做記錄磁片] [寫入加速器](../../how-to-enable-write-accelerator.md) 。
 
 ### <a name="disk-cache-settings"></a>磁碟快取設定
 
@@ -201,7 +201,7 @@ IOPS 是 12,200,000 / 2,358 = 5,174。
 
 **建議**
 
-若要將輸送量最大化，建議您從 [**無**] 開始進行主機快取。 針對進階儲存體，請記住您必須在使用 [唯讀]**** 或 [無]**** 選項掛接檔案系統時停用「屏障」。 將具有 UUID 的 /etc/fstab 檔案更新到磁碟。
+若要將輸送量最大化，我們建議您從「 **無** 」進行主機快取。 針對進階儲存體，請記住您必須在使用 [唯讀]**** 或 [無]**** 選項掛接檔案系統時停用「屏障」。 將具有 UUID 的 /etc/fstab 檔案更新到磁碟。
 
 ![受控磁碟頁面的螢幕擷取畫面](./media/oracle-design/premium_disk02.png)
 
@@ -215,7 +215,7 @@ IOPS 是 12,200,000 / 2,358 = 5,174。
 
 在安裝並設定 Azure 環境之後，下一個步驟是保護您的網路。 以下是一些建議：
 
-- NSG 原則**：可以透過子網路或 NIC 來定義 NSG。 在子網層級上控制存取比較簡單，這兩者都是為了安全性和強制路由傳送應用程式防火牆之類的專案。
+- NSG 原則**：可以透過子網路或 NIC 來定義 NSG。 在子網層級控制存取是比較簡單的方式，可用於安全性和強制路由傳送應用程式防火牆等專案。
 
 - Jumpbox**：基於更安全的存取，系統管理員不應該直接連線至應用程式服務或資料庫。 Jumpbox 作為系統管理員機器與 Azure 資源之間的媒體。
 ![Jumpbox 拓撲頁面的螢幕擷取畫面](./media/oracle-design/jumpbox.png)

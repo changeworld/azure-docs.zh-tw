@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698762"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509073"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect 的拓撲
 本文說明使用 Azure AD Connect 同步處理做為重要整合解決方案的各種內部部署和 Azure Active Directory (Azure AD) 拓撲。 本文包含受支援和不受支援的組態。
@@ -29,7 +29,7 @@ ms.locfileid: "84698762"
 
 以下是文章中圖片的圖例︰
 
-| Description | 符號 |
+| 描述 | 符號 |
 | --- | --- |
 | 內部部署 Active Directory 樹系 |![內部部署 Active Directory 樹系](./media/plan-connect-topologies/LegendAD1.png) |
 | 內含篩選匯入的內部部署 Active Directory |![內含篩選匯入的 Active Directory](./media/plan-connect-topologies/LegendAD2.png) |
@@ -42,7 +42,7 @@ ms.locfileid: "84698762"
 
 
 > [!IMPORTANT]
-> Microsoft 不支援在正式記載的組態或動作以外修改和操作 Azure AD Connect 同步處理。 這些設定或動作中的任何一項可能會導致 Azure AD Connect 同步的狀態不一致或不受支援。因此，Microsoft 無法提供這類部署的技術支援。
+> Microsoft 不支援在正式記載的組態或動作以外修改和操作 Azure AD Connect 同步處理。 任何這些設定或動作可能會導致 Azure AD Connect 同步的狀態不一致或不受支援。因此，Microsoft 無法針對這類部署提供技術支援。
 
 
 ## <a name="single-forest-single-azure-ad-tenant"></a>單一樹系、單一 Azure AD 租用戶
@@ -64,7 +64,7 @@ ms.locfileid: "84698762"
 
 Azure AD Connect 安裝精靈會提供數個選項以合併多個樹系中表示的使用者。 目標是使用者只會在 Azure AD 中顯示一次。 有一些常見的拓撲，您可以在安裝精靈中的自訂安裝路徑中設定。 在 [專門識別您的使用者]**** 頁面上，選取表示拓撲的對應選項。 只對使用者設定合併。 重複群組不會和預設組態合併。
 
-常見的拓撲將在個別拓撲、[完整網狀](#multiple-forests-full-mesh-with-optional-galsync)和[帳戶資源拓撲](#multiple-forests-account-resource-forest)的相關章節中討論。
+有關個別拓撲、 [完整網格](#multiple-forests-full-mesh-with-optional-galsync)及 [帳戶資源拓撲](#multiple-forests-account-resource-forest)的各節中會討論常見的拓撲。
 
 Azure AD Connect 同步處理中的預設組態假設：
 
@@ -113,7 +113,7 @@ Azure AD Connect 同步處理中的預設組態假設：
 
 ![多個樹系的帳戶資源樹系拓撲](./media/plan-connect-topologies/MultiForestAccountResource.png)
 
-在帳戶資源樹系拓撲中，您會有一個以上的*帳戶*樹系內含作用中的使用者帳戶。 您也會有一或多個已停用帳戶的*資源*樹系。
+在帳戶資源樹系拓撲中，您會有一個以上的*帳戶*樹系內含作用中的使用者帳戶。 您也會有一或多個已停用帳戶的 *資源* 樹系。
 
 在此案例中，一個 (或多個) 資源樹系信任所有帳戶樹系。 此資源樹系通常具有擴充的 Active Directory 結構描述與 Exchange 和 Lync。 所有的 Exchange 和 Lync 服務以及其他共用的服務都位於此樹系。 使用者在此樹系中擁有停用的使用者帳戶，而信箱會連結至帳戶樹系。
 
@@ -192,9 +192,14 @@ Azure AD 租用戶在設計上是隔離的。 下列工作不受支援：
 
 您可以使用 FIM 2010 或 MIM 2016 內部部署來同步處理兩個 Exchange 組織之間的使用者 (透過 GALSync)。 一個組織中的使用者將會顯示為其他組織中的外部使用者/連絡人。 這些不同的內部部署 Active Directory 執行個體可同步處理至它們自己的 Azure AD 租用戶。
 
+### <a name="using-unauthorized-clients-to-access-the-azure-ad-connect-backend"></a>使用未經授權的用戶端存取 Azure AD Connect 後端
+![使用未經授權的用戶端存取 Azure AD Connect 後端](./media/plan-connect-topologies/other-client-unsupported.png)
+
+Azure Active Directory Connect 伺服器會透過 Azure Active Directory Connect 後端與 Azure Active Directory 進行通訊。 唯一可以用來與此後端通訊的軟體是 Azure Active Directory Connect。 不支援使用任何其他軟體或方法與 Azure Active Directory Connect 後端通訊。 
+
 ## <a name="next-steps"></a>後續步驟
 若要了解如何安裝這些案例的 Azure AD Connect，請參閱[自訂 Azure AD Connect 安裝](how-to-connect-install-custom.md)。
 
 深入了解 [Azure AD Connect 同步](how-to-connect-sync-whatis.md) 組態。
 
-深入瞭解如何[整合您的內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。
+深入瞭解如何 [整合您](whatis-hybrid-identity.md)的內部部署身分識別與 Azure Active Directory。

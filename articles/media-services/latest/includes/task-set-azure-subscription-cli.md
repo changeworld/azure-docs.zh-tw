@@ -1,0 +1,21 @@
+---
+author: IngridAtMicrosoft
+ms.service: media-services
+ms.topic: include
+ms.date: 08/17/2020
+ms.author: inhenkel
+ms.custom: CLI
+ms.openlocfilehash: 3c05025ecf6ea4de6485264e13c4d568e1222710
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: MT
+ms.contentlocale: zh-TW
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539103"
+---
+<!-- ### Set the Azure subscription -->
+
+在下列命令中，提供您要用於媒體服務帳戶的 Azure 訂用帳戶識別碼。 您可以瀏覽至[訂閱](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，以查看可以存取的訂用帳戶。
+
+```azurecli
+az account set --subscription mySubscriptionId
+```

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 03f6f045e0809f79117518a22abfd74520b6d0a6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 3043ec0600f802a409387f0114aae5f56151da16
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992771"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510964"
 ---
 # <a name="create-a-project"></a>建立專案
 
@@ -52,7 +52,7 @@ ms.locfileid: "83992771"
 
 選取專案之後，您會在專案頁面上看到下列項目：
 
-- CategoryID：CategoryID 是由 WorkspaceID、專案標籤和類別代碼組成。 您可以使用 [類別] 搭配文字翻譯工具來取得自訂翻譯。
+- CategoryID：CategoryID 是由 WorkspaceID、專案標籤和類別代碼組成。 您會使用 CategoryID 和文字翻譯工具 API 來取得自訂翻譯。 若要複製，請按一下 [複製] 圖示。
 
 - [訓練] 按鈕：使用此按鈕來啟動[訓練模型](how-to-train-model.md)。
 

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: c8c4bbcfdd8f06d4c2b4759b84a72c5b3cff5a5d
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 97327517b40e715294393a97e8a26c078173e762
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996341"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510839"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>平行文件中的句子配對與對齊
 
@@ -32,7 +32,7 @@ ms.locfileid: "83996341"
 
 ## <a name="suggested-minimum-number-of-sentences"></a>建議的最小句子數目
 
-為了讓定型成功，下表顯示每種檔案類型中所需的最小句子數目。這項限制是安全的網路，可確保您的平行句子包含足夠的唯一詞彙，以成功訓練翻譯模型。 一般的指導方針是擁有更多的人力轉譯品質的跨領域平行句子，應該會產生高品質的模型。
+為了讓定型成功，下表顯示每個檔案類型所需的最小句子數目。這項限制是安全的網路，可確保您的並行句子包含足夠的獨特詞彙來成功定型轉譯模型。 一般的指導方針是讓人工翻譯品質的多網域平行處理句子產生更高品質的模型。
 
 | 文件型別   | 建議的最小句子計數 | 最大句子計數 |
 |------------|--------------------------------------------|--------------------------------|
@@ -42,9 +42,9 @@ ms.locfileid: "83996341"
 | 字典 | 0                                          | 沒有上限                 |
 
 > [!NOTE]
-> - 如果不符合定型的10000最小句子計數，訓練將不會啟動，且將會失敗。 
-> - 微調和測試是選擇性的。 如果您未提供這些值，系統將會移除定型的適當百分比，以用於驗證和測試。 
-> - 您可以只使用字典資料來定型模型。 請參閱[什麼是字典](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)。
+> - 如果未符合定型的10000最小句子計數，定型將不會啟動，而且將會失敗。 
+> - 調整和測試是選擇性的。 如果您未提供這些值，系統會從定型中移除適當的百分比，以用於驗證和測試。 
+> - 您可以只使用字典資料來定型模型。 請參閱 [什麼是字典](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)。
 
 ## <a name="next-steps"></a>後續步驟
 

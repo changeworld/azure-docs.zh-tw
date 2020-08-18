@@ -1,7 +1,7 @@
 ---
 title: 語言支援-Translator
 titleSuffix: Azure Cognitive Services
-description: 認知服務 Translator 支援下列使用類神經機器翻譯（NMT）之文字到文字翻譯的語言。
+description: 認知服務 Translator 使用類神經機器翻譯 (NMT) ，支援下列語言的文字轉換文字翻譯。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,29 +10,29 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888309"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510788"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
-使用翻譯工具，從60種以上的文字翻譯語言轉譯成和。 類神經機器翻譯（NMT）是適用于高品質 AI 電腦翻譯的新標準，並可在類神經系統可用時，使用翻譯工具 V3 作為預設值。
+使用翻譯工具，翻譯為70種以上的文字翻譯語言。 類神經機器翻譯 (NMT) 是適用于高品質 AI 型機器翻譯的新標準，而且可在有神經系統可用時，使用翻譯工具的 V3 作為預設值。
 
-您也可以搭配自訂翻譯使用 Translator 來建立類神經翻譯系統，以瞭解您自己的企業和產業中使用的術語，並透過 Microsoft 語音服務將語音翻譯新增至您的應用程式。
+您也可以搭配使用 Translator 與自訂翻譯來建立類神經翻譯系統，以瞭解您自己的企業和產業中所使用的術語，以及使用 Microsoft 語音服務將語音翻譯新增至您的應用程式。
 
 [深入了解機器翻譯的運作方式](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="text-translation"></a>文字翻譯
-您可以使用轉譯作業，或翻譯工具中提供的任何語言來翻譯文字。 此 API 也會使用「偵測」作業來提供語言偵測、使用直譯作業音譯，以及使用「字典查閱」和「字典範例」作業來進行雙語字典。 以下列出每個作業的可用語言。 
+翻譯中提供的任何語言都可以使用翻譯作業來提供文字翻譯。 此 API 也使用偵測作業、使用直譯作業音譯，以及使用字典查閱和字典範例作業的雙語字典，提供語言偵測。 以下列出每個作業的可用語言。 
 
 ### <a name="translate"></a>Translate
 
-翻譯工具支援文字轉換文字的下列語言。 
+Translator 支援下列適用于文字到文字翻譯的語言。 
 
-[視圖轉譯作業參考檔](reference/v3-0-translate.md)
+[查看轉譯作業參考檔](reference/v3-0-translate.md)
 
 |Language|  語言代碼|
 |:-----|:-----:|
@@ -47,6 +47,7 @@ ms.locfileid: "84888309"
 |繁體中文|   `zh-Hant`       |
 |克羅埃西亞文|  `hr`    |
 |捷克文| `cs`    |
+|達利文|  `prs`   |
 |丹麥文|    `da`        |
 |荷蘭文| `nl`|
 |英文|   `en`    |
@@ -83,6 +84,8 @@ ms.locfileid: "84888309"
 |毛利文| `mi`  |
 |馬拉地文| `mr`  |
 |挪威文| `nb`    |
+|歐迪亞文|  `or`    |
+|普什圖文|    `ps`    |
 |波斯文|   `fa`    |
 |波蘭文|    `pl`    |
 |葡萄牙文 (巴西)|   `pt-br` |
@@ -111,11 +114,11 @@ ms.locfileid: "84888309"
 |猶加敦馬雅文|  `yua`   |
 
 > [!NOTE]
-> 語言代碼 `pt` 會預設為 `pt-br` ，葡萄牙文（巴西）。
+> 語言代碼 `pt` 會預設為 `pt-br` ，葡萄牙文 (巴西) 。
 
 ### <a name="detect"></a>Detect
 
-Translator 會偵測下列用於轉譯和音譯的語言。
+Translator 會偵測下列翻譯和音譯語言。
 
 [View 偵測作業參考檔](reference/v3-0-detect.md)
 
@@ -210,7 +213,7 @@ Translator 會偵測下列用於轉譯和音譯的語言。
 
 字典支援使用查閱與範例方法來查詢下列語言的英文譯文，或英文的下列語言譯文。
 
-查看[字典查閱](reference/v3-0-dictionary-lookup.md)和[字典範例](reference/v3-0-dictionary-examples.md)作業的參考檔。
+[字典查閱](reference/v3-0-dictionary-lookup.md)和[字典範例](reference/v3-0-dictionary-examples.md)作業的視圖參考檔。
 
 | Language    | 語言代碼 |
 |:----------- |:-------------:|
@@ -267,13 +270,13 @@ Translator 會偵測下列用於轉譯和音譯的語言。
 
 ### <a name="access-the-translator-language-list-programmatically"></a>以程式設計方式存取翻譯工具語言清單
 
-您可以使用 [語言] 方法來抓取翻譯工具的支援語言清單。 您可以依特色、語言代碼，以及該語言的英文名稱或任何其他受支援語言的名稱，來檢視清單。 當我們提供新語言時，Microsoft Translator 服務會自動更新此清單。
+您可以使用語言方法，來取得翻譯工具的支援語言清單。 您可以依特色、語言代碼，以及該語言的英文名稱或任何其他受支援語言的名稱，來檢視清單。 當我們提供新語言時，Microsoft Translator 服務會自動更新此清單。
 
 [檢視語言作業參考文件](reference/v3-0-languages.md)
 
 ## <a name="customization"></a>自訂
 
-下列語言可使用[自訂翻譯](https://aka.ms/CustomTranslator)自訂或英文。
+下列語言可使用 [自訂翻譯](https://aka.ms/CustomTranslator)，從英文進行自訂。
 
 | Language    | 語言代碼 |
 |:----------- |:-------------:|
@@ -326,10 +329,10 @@ Translator 會偵測下列用於轉譯和音譯的語言。
 | 威爾斯文 | `cy` |
 
 ## <a name="speech-translation"></a>語音翻譯
-語音翻譯可透過認知服務語音服務使用 Translator 來取得。 請參閱[語音服務檔](https://docs.microsoft.com/azure/cognitive-services/speech-service/)以深入瞭解如何使用語音翻譯，以及如何查看所有[可用的語言選項](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)。
+語音翻譯可透過使用 Translator 與認知服務語音服務來取得。 查看 [語音服務檔](https://docs.microsoft.com/azure/cognitive-services/speech-service/) ，以深入瞭解如何使用語音翻譯和查看所有可用的 [語言選項](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)。
 
 ### <a name="speech-to-text"></a>語音轉文字
-將語音轉換成文字，以便轉譯成您選擇的文字語言。 語音轉換文字用於語音轉換文字翻譯，或用於與語音合成搭配使用時的語音轉換語音翻譯。
+將語音轉換成文字，以轉譯成您選擇的文字語言。 語音轉換文字用於語音轉換文字翻譯，或用於與語音合成搭配使用的語音轉換語音翻譯。
 
 | Language    |
 |:----------- |
@@ -363,7 +366,7 @@ Translator 會偵測下列用於轉譯和音譯的語言。
 |土耳其文|
 
 ### <a name="text-to-speech"></a>文字轉換語音
-將文字轉換成語音。 文字轉換語音是用來新增可聽見的翻譯結果輸出，或在與語音轉換文字搭配使用時，用於語音轉換語音翻譯。 
+將文字轉換成語音。 文字轉換語音是用來在搭配語音轉換文字使用時，新增聲音轉換結果的聲音輸出，或語音轉換語音翻譯的輸出。 
 
 | Language    |
 |:----------- |
@@ -408,6 +411,6 @@ Translator 會偵測下列用於轉譯和音譯的語言。
 
 ## <a name="view-the-language-list-on-the-microsoft-translator-website"></a>查看 Microsoft Translator 網站上的語言清單
 
-若要快速流覽語言，Microsoft Translator 網站會顯示翻譯工具針對文字翻譯和語音服務進行語音翻譯所支援的所有語言。 這份清單不含開發人員特定資訊，例如語言代碼。
+為了快速查看這些語言，Microsoft Translator 網站會顯示翻譯工具針對語音翻譯進行文字翻譯和語音服務所支援的所有語言。 這份清單不含開發人員特定資訊，例如語言代碼。
 
 [查看語言清單](https://www.microsoft.com/translator/languages.aspx) \(英文\)

@@ -6,19 +6,19 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: af46b48d47a53d5a8a19db7c50a9356824607a5d
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962946"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510452"
 ---
 # <a name="how-to-manage-settings"></a>如何管理設定
 
-在 [自訂翻譯工具設定] 頁面中，您可以建立新的工作區、共用您的工作區，以及新增或修改您的 Microsoft 翻譯訂用帳戶金鑰。
+在 [自訂翻譯設定] 頁面中，您可以共用您的工作區、修改 Translator 訂用帳戶金鑰，以及刪除工作區。
 
 若要存取設定頁面：
 
@@ -27,80 +27,92 @@ ms.locfileid: "85962946"
 
     ![設定連結](media/how-to/how-to-settings.png)
 
-## <a name="associating-translator-subscription"></a>建立 Translator 訂閱的關聯
+## <a name="associating-translator-subscription"></a>建立 Translator 訂用帳戶的關聯
 
-您需要有與工作區相關聯的 Translator 訂用帳戶金鑰，才能定型或部署模型。
+您必須擁有與工作區相關聯的 Translator 訂用帳戶金鑰，才能定型或部署模型。
 
-如果您沒有訂用帳戶，請依照下列步驟執行：
+如果您沒有訂用帳戶，請遵循下列步驟：
 
-1. 訂閱翻譯工具。 本文說明如何訂閱翻譯工具。
-2. 記下翻譯工具訂用帳戶的金鑰。 可用的值為 Key1 或 Key2。
+1. 訂閱以建立翻譯工具資源。 請依照 [如何註冊 translator](https://docs.microsoft.com/azure/cognitive-services/translator/translator-how-to-signup) 來訂閱和取得 translator 金鑰。
+2. 記下 Translator 訂用帳戶的金鑰。 可用的值為 Key1 或 Key2。
 3. 瀏覽回自訂翻譯工具入口網站。
 
-### <a name="add-existing-key"></a>新增現有金鑰
+## <a name="create-a-new-workspace"></a>建立新的工作區
 
-1.    流覽至工作區的 [設定] 頁面。
-2.    按一下 [新增金鑰]
+1. 按一下「自訂翻譯」提要欄位中的 [+ 建立工作區] 按鈕。
 
-   ![如何新增訂用帳戶金鑰](media/how-to/how-to-add-subscription-key.png)
+    ![建立新的工作區](media/how-to/create-new-workspace.png)
 
-3. 在對話方塊中，輸入翻譯工具訂用帳戶的金鑰，然後按一下 [新增] 按鈕。
+2. 在對話方塊中，輸入新工作區的名稱。
+3. 按一下 [下一步]。
+4. 選擇訂用帳戶類型。
+5. 選取訂用帳戶區域。 建立 Translator 資源金鑰時，區域必須符合選取的區域。
+6. 輸入 translator 訂用帳戶的金鑰，然後按一下 [儲存] 按鈕。
+
+    ![建立新的工作區對話方塊](media/how-to/create-new-workspace-dialog.png)
+
+
+### <a name="modify-existing-key"></a>修改現有金鑰
+
+1. 瀏覽至工作區的 [設定] 頁面。
+2. 按一下 [變更金鑰]
+
+    ![如何新增訂用帳戶金鑰](media/how-to/how-to-add-subscription-key.png)
+
+3. 在對話方塊中，輸入 Translator 訂用帳戶的金鑰，然後按一下 [儲存] 按鈕。
 
     ![如何新增訂用帳戶金鑰](media/how-to/how-to-add-subscription-key-dialog.png)
-4.    新增金鑰之後，您可以隨時修改或刪除金鑰。
 
-   ![新增之後的訂用帳戶金鑰](media/how-to/subscription-key-after-add.png)
-
-## <a name="manage-your-workspace"></a>管理您的工作區
+## <a name="manage-your-workspace"></a>管理工作區
 
 工作區是用來撰寫和建置自訂翻譯系統的工作區域。 工作區可包含多個專案、模型和文件。
 
 如果您工作的不同部分需要與不同的人員共用，建立多個工作區可能有所幫助。
 
-## <a name="create-a-new-workspace"></a>建立新的工作區
-
-1.    流覽至工作區的 [設定] 頁面。
-2.    按一下 [建立新的工作區] 區段中的 [新增工作區] 按鈕。
-
-   ![建立新的工作區](media/how-to/create-new-workspace.png)
-
-4.    在對話方塊中，輸入新工作區的名稱。
-5.    按一下 [建立]。
-
-   ![建立新的工作區對話方塊](media/how-to/create-new-workspace-dialog.png)
-
 ## <a name="share-your-workspace"></a>共用您的工作區
 
 在「自訂翻譯工具」中，如果您工作的不同部分需要與不同的人員共用，您可以與他人共用您的工作區。
 
-1.    流覽至工作區的 [設定] 頁面。
-2.    按一下 [共用設定] 區段中的 [共用] 按鈕。
+1. 瀏覽至工作區的 [設定] 頁面。
+2. 按一下 [共用設定] 區段中的 [新增人員] 按鈕。
 
-   ![共用工作區](media/how-to/share-workspace.png)
+    ![共用工作區](media/how-to/share-workspace.png)
 
-3.    在對話方塊中，輸入可共用此工作區的電子郵件地址清單 (以逗點分隔)。 請確實以人員用來登入自訂翻譯工具的電子郵件地址作為您的共用對象。 然後，選取共用權限的適當層級。
+3. 在對話方塊中，輸入可共用此工作區的電子郵件地址清單 (以逗點分隔)。 請確實以人員用來登入自訂翻譯工具的電子郵件地址作為您的共用對象。 然後，選取適當的共用許可權層級，然後按一下 [儲存] 按鈕。
 
-4.    如果您的工作區仍然具有預設名稱「我的工作區」，您必須在共用您的工作區之前，先加以變更。
-5.    按一下 [儲存]。
+    ![[共用工作區] 對話方塊](media/how-to/share-workspace-dialog.png)
+
+4. 如果您的工作區仍使用預設名稱「我的工作區」，您必須先加以變更，再共用您的工作區。
+5. 按一下 [儲存]。
 
 ## <a name="sharing-permissions"></a>共用權限
 
-1.    **讀取者：** 工作區中的讀取者將可檢視工作區中的所有資訊。
+1. **讀取者：** 工作區中的讀取者將可檢視工作區中的所有資訊。
 
-2.    **編輯者：** 工作區中的編輯者將可新增文件、定型模型，以及刪除文件和專案。 他們可以新增訂用帳戶金鑰，但無法修改工作區的共用對象、刪除工作區或變更工作區名稱。
+2. **編輯者：** 工作區中的編輯者將可新增文件、定型模型，以及刪除文件和專案。 他們可以新增訂用帳戶金鑰，但無法修改工作區的共用對象、刪除工作區或變更工作區名稱。
 
-3.    **擁有者：** 擁有者具有工作區的完整權限。
+3. **擁有者：** 擁有者具有工作區的完整權限。
 
 ## <a name="change-sharing-permission"></a>變更共用權限
 
 共用工作區時，[共用設定] 區段會顯示與此工作區共用的所有電子郵件地址。 如果您具有工作區的擁有者存取權，您可以變更每個電子郵件地址的現有共用權限。
 
-1.    在每個電子郵件的 [共用設定] 區段中，下拉式功能表會顯示目前的許可權等級。
+1. 在每個電子郵件的 [共用設定] 區段中，下拉式功能表會顯示目前的許可權層級。
 
-2.    按一下下拉式功能表，然後選取要指派給該電子郵件地址的新權限層級。
+2. 按一下下拉式功能表，然後選取要指派給該電子郵件地址的新權限層級。
 
-   ![共用權限設定](media/how-to/sharing-permission-settings.png)
+    ![共用權限設定](media/how-to/sharing-permission-settings.png)
+
+## <a name="pin-your-workspace"></a>釘選您的工作區
+
+您的第一個建立的工作區預設為釘選。 每次登入時，您釘選的工作區都會顯示在網站負載上。 如果您已建立許多工作區，而且想要在登入時將其中一個預設值設為預設值，您必須將其釘選。
+
+1. 在提要欄位中，按一下您要釘選的工作區名稱。
+2. 流覽至工作區的 [設定] 頁面。
+3. 按一下釘選圖示。
+
+    ![釘選工作區](media/how-to/how-to-pin-workspace.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- 了解[如何移轉您的工作區和專案](how-to-migrate.md) (從 [Microsoft Translator 中樞](https://hub.microsofttranslator.com))
+- 瞭解 [如何建立您的工作區和專案](workspace-and-project.md)

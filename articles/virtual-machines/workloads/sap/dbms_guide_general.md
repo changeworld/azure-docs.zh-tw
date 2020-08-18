@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827413"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510227"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -221,7 +221,7 @@ Azure 儲存體帳戶是系統管理建構，也是限制的緣由。 標準儲�
 
 針對進階儲存體，建議使用 SAP 資料庫的 [資料檔案讀取快取]，並選擇 [No caching for the disks of log file] \(不快取記錄檔磁碟\)。
 
-針對 M 系列部署，建議對 DBMS 部署使用 Azure 寫入加速器。 如需 Azure 寫入加速器的詳細資料、限制和部署，請參閱[啟用寫入加速器](../../windows/how-to-enable-write-accelerator.md) (機器翻譯)。
+針對 M 系列部署，建議對 DBMS 部署使用 Azure 寫入加速器。 如需 Azure 寫入加速器的詳細資料、限制和部署，請參閱[啟用寫入加速器](../../how-to-enable-write-accelerator.md) (機器翻譯)。
 
 
 ### <a name="azure-nonpersistent-disks"></a>Azure 非永久性磁碟

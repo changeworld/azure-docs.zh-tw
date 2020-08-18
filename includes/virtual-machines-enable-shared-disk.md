@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/30/2020
+ms.date: 08/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 77c21dab8c1a4c2643db0a56b5052f33243f2f56
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 37d9cf0b0ac7145e389f9fc768ff0b593b27ae1a
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460046"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88515232"
 ---
 ## <a name="limitations"></a>限制
 
@@ -21,7 +21,7 @@ ms.locfileid: "87460046"
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
-共用磁片支援數個作業系統。 請參閱概念性文章的[Windows](../articles/virtual-machines/windows/disks-shared.md#windows)和[Linux](../articles/virtual-machines/linux/disks-shared.md#linux)小節，以瞭解支援的作業系統。
+共用磁片支援數個作業系統。 如需支援的作業系統，請參閱概念文章的 [Windows](../articles/virtual-machines/windows/disks-shared.md#windows) 和 [Linux](../articles/virtual-machines/linux/disks-shared.md#linux) 章節。
 
 ## <a name="disk-sizes"></a>磁碟大小
 
@@ -29,23 +29,23 @@ ms.locfileid: "87460046"
 
 ## <a name="deploy-shared-disks"></a>部署共用磁片
 
-### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>將 premium SSD 部署為共用磁片
+### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>部署 premium SSD 作為共用磁片
 
-若要部署已啟用共用磁片功能的受控磁片，請使用新的屬性 `maxShares` 並定義大於1的值。 這可讓您跨多個 Vm 共用該磁片。
+若要部署已啟用共用磁片功能的受控磁片，請使用新的屬性 `maxShares` ，並定義大於1的值。 這可讓磁片跨多個 Vm 共用。
 
 > [!IMPORTANT]
-> `maxShares`只有當磁片從所有 vm 卸載時，才可以設定或變更的值。 如需的允許值，請參閱[磁片大小](#disk-sizes) `maxShares` 。
+> `maxShares`只有從所有 vm 卸載磁片時，才可以設定或變更的值。 如需允許的值，請參閱 [磁片大小](#disk-sizes) `maxShares` 。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku PremiumSSD_LRS --max-shares 2
+az disk create -g myResourceGroup -n mySharedDisk --size-gb 1024 -l westcentralus --sku Premium_LRS --max-shares 2
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
-$dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType PremiumSSD_LRS -CreateOption Empty -MaxSharesCount 2
+$dataDiskConfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType Premium_LRS -CreateOption Empty -MaxSharesCount 2
 
 New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $dataDiskConfig
 ```
@@ -60,10 +60,10 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 
 ### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>將 ultra 磁片部署為共用磁片
 
-若要部署已啟用共用磁片功能的受控磁片，請將 `maxShares` 參數變更為大於1的值。 這可讓您跨多個 Vm 共用該磁片。
+若要部署已啟用共用磁片功能的受控磁片，請將 `maxShares` 參數變更為大於1的值。 這可讓磁片跨多個 Vm 共用。
 
 > [!IMPORTANT]
-> `maxShares`只有當磁片從所有 vm 卸載時，才可以設定或變更的值。 如需的允許值，請參閱[磁片大小](#disk-sizes) `maxShares` 。
+> `maxShares`只有從所有 vm 卸載磁片時，才可以設定或變更的值。 如需允許的值，請參閱 [磁片大小](#disk-sizes) `maxShares` 。
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -83,7 +83,7 @@ az disk show -g rg1 -n clidisk
 
 ##### <a name="zonal-disk-example"></a>區域性磁片範例
 
-這個範例幾乎與先前的相同，不同之處在于它會在可用性區域1中建立磁片。
+此範例與上一個範例幾乎相同，不同之處在于它會在「可用性區域1」中建立磁片。
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -108,7 +108,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 
 ##### <a name="zonal-disk-example"></a>區域性磁片範例
 
-這個範例幾乎與先前的相同，不同之處在于它會在可用性區域1中建立磁片。
+此範例與上一個範例幾乎相同，不同之處在于它會在「可用性區域1」中建立磁片。
 
 ```azurepowershell-interactive
 $datadiskconfig = New-AzDiskConfig -Location 'WestCentralUS' -DiskSizeGB 1024 -AccountType UltraSSD_LRS -CreateOption Empty -DiskIOPSReadWrite 2000 -DiskMBpsReadWrite 200 -DiskIOPSReadOnly 100 -DiskMBpsReadOnly 1 -MaxSharesCount 5 -Zone 1
@@ -134,10 +134,10 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 
 ## <a name="using-azure-shared-disks-with-your-vms"></a>將 Azure 共用磁片與您的 Vm 搭配使用
 
-當您使用部署共用磁片之後 `maxShares>1` ，就可以將該磁片掛接到一或多個 vm。
+使用部署共用磁片之後 `maxShares>1` ，您就可以將磁片掛接到您的一或多個 vm。
 
 > [!NOTE]
-> 如果您要部署 ultra 磁片，請確定它符合必要的需求。 如需詳細資訊，請參閱 ultra 磁片一文的[PowerShell](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1)或[CLI](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm)一節。
+> 如果您要部署 ultra 磁片，請確定它符合必要的需求。 如需詳細資料，請參閱 ultra 磁片文章的 [PowerShell](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) 或 [CLI](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) 一節。
 
 ```azurepowershell-interactive
 
@@ -155,7 +155,7 @@ update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="supported-scsi-pr-commands"></a>支援的 SCSI PR 命令
 
-將共用磁片掛接到叢集中的 Vm 之後，您可以使用 SCSI PR 來建立仲裁併讀取/寫入至磁片。 使用 Azure 共用磁片時，可使用下列 PR 命令：
+當您將共用磁片掛接至叢集中的 Vm 之後，您可以使用 SCSI PR 建立仲裁以及對磁片進行讀取/寫入。 使用 Azure 共用磁片時，可使用下列 PR 命令：
 
 若要與磁片互動，請從持續保留-動作清單開始：
 
@@ -175,7 +175,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-使用 PR_RESERVE、PR_PREEMPT_RESER加值稅ION 或 PR_RELEASE_RESER加值稅ION 時，請提供下列其中一種持續性保留類型：
+使用 PR_RESERVE、PR_PREEMPT_RESER加值稅ION 或 PR_RELEASE_RESER加值稅ION 時，請提供下列其中一種持續保留類型：
 
 ```
 PR_NONE 
@@ -193,12 +193,12 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-使用 PR_RESERVE、PR_REGISTER_AND_IGNORE、PR_REGISTER_KEY、PR_PREEMPT_RESER加值稅ION、PR_CLEAR_RESER加值稅ION 或 PR_RELEASE 保留時，您也需要提供持續保留金鑰。
+使用 PR_RESERVE、PR_REGISTER_AND_IGNORE、PR_REGISTER_KEY、PR_PREEMPT_RESER加值稅ION、PR_CLEAR_RESER加值稅ION 或 PR_RELEASE 保留時，您也需要提供持續保留索引鍵。
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-如果您想要使用 Azure Resource Manager 範本來部署您的磁片，則可使用下列範例範本：
+如果您想要使用 Azure Resource Manager 範本來部署磁片，則可以使用下列範例範本：
 - [進階 SSD](https://aka.ms/SharedPremiumDiskARMtemplate)
 - [區域 ultra 磁片](https://aka.ms/SharedUltraDiskARMtemplateRegional)
 - [區域性 ultra 磁片](https://aka.ms/SharedUltraDiskARMtemplateZonal)

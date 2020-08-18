@@ -8,17 +8,17 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 14beaf4fc0f207abe652a9ed62c974f7ab4b8e79
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: dc8279f8227c437a09a61fad2b84c5b061257eb5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449093"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510210"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-windows"></a>規劃將 IaaS 資源從傳統遷移至 Windows 中的 Azure Resource Manager
 
 > [!IMPORTANT]
-> 目前，大約有90% 的 IaaS Vm 正在使用[Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)。 從2020年2月28日起，傳統 Vm 已淘汰，並將于2023年3月1日完全淘汰。 [深入瞭解]( https://aka.ms/classicvmretirement)此淘汰及其對[您的影響](../classic-vm-deprecation.md#how-does-this-affect-me)。
+> 目前，大約90% 的 IaaS Vm 使用 [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/)。 從2020年2月28日起，傳統 Vm 已被取代，並將于2023年3月1日完全淘汰。 [深入瞭解]( https://aka.ms/classicvmretirement) 此淘汰，以及 [它對您的影響](../classic-vm-deprecation.md#how-does-this-affect-me)。
 
 雖然 Azure Resource Manager 提供了許多令人讚嘆的功能，但請務必詳加規劃您的移轉作業，以確保一切順利進行。 詳細規劃可確保您在執行移轉活動期間不會遇到問題。
 
@@ -49,13 +49,13 @@ ms.locfileid: "87449093"
 成功的客戶會進行詳細的規劃，並針對上述問題進行討論、記載和控管。  請務必與贊助者和專案關係人廣泛地溝通移轉規劃。  讓自己具備有關移轉選項的知識；強烈建議您閱讀以下的移轉文件集。
 
 * [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](../migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [將 IaaS 資源從傳統移轉至 Azure Resource Manager 的規劃](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [使用 PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [使用 CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [用於協助將 IaaS 資源從傳統移轉至 Azure Resource Manager 的社群工具](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [檢閱最常見的移轉錯誤](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [檢閱有關將 IaaS 資源從傳統移轉至 Azure Resource Manager 的常見問題集](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [檢閱有關將 IaaS 資源從傳統移轉至 Azure Resource Manager 的常見問題集](../migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ### <a name="pitfalls-to-avoid"></a>要避免的陷阱
 
@@ -108,7 +108,7 @@ ms.locfileid: "87449093"
 
 - **可用性設定組** - 若要將虛擬網路 (vNet) 移轉到 Azure Resource Manager，傳統部署 (也就是雲端服務) 所包含的 VM 必須全部位在一個可用性設定組中，或是所有 VM 均不能在任何可用性設定組中。 雲端服務中有一個以上的可用性設定組與 Azure Resource Manager 不相容，將會中止移轉。  此外，不能有一些 VM 在可用性設定組中，而一些 VM 則不在可用性設定組中。 若要解決此問題，您必須修復或重新改組雲端服務。  因為這可能會耗費大量時間，請詳細規劃。
 
-- **Web/背景工作角色部署** - 無法將包含 Web 和背景工作角色的雲端服務移轉至 Azure Resource Manager。 若要遷移 web 和背景工作角色的內容，您必須將程式碼本身遷移至較新的 PaaS 應用程式服務（此討論已超出本檔的範圍）。 如果您想要將 web/背景工作角色保持原狀，但將傳統 Vm 遷移至 Resource Manager 部署模型，則必須先從虛擬網路移除 web/背景工作角色，才能開始進行遷移。  一般的解決方法是將 web/背景工作角色實例移至另一個也連結到 ExpressRoute 線路的傳統虛擬網路。 在先前的重新部署案例中，建立新的傳統虛擬網路，將 web/背景工作角色移動/重新部署到新的虛擬網路，然後從要移動的虛擬網路刪除部署。 不需要變更程式碼。 新的[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)功能可用來將包含 Web/背景工作角色的傳統虛擬網路與在相同 Azure 區域中的其他虛擬網路 (例如要移轉的虛擬網路) 形成對等互連 (**在虛擬網路移轉完成之後，因為不能移轉已形成對等互連的虛擬網路**)，因此可提供相同功能，而不會損失效能且沒有延遲/頻寬罰則。 由於新增了[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)，現在可輕鬆地移轉Web/背景工作角色部署，而不會封鎖對 Azure Resource Manager 的移轉。
+- **Web/背景工作角色部署** - 無法將包含 Web 和背景工作角色的雲端服務移轉至 Azure Resource Manager。 若要遷移 web 角色和背景工作角色的內容，您必須將程式碼本身遷移至較新的 PaaS 應用程式服務 (此討論已超出本檔) 的範圍。 如果您想要讓 web/背景工作角色保持原狀，但將傳統 Vm 遷移至 Resource Manager 部署模型，則必須先從虛擬網路移除 web/背景工作角色，才能開始遷移。  一般的解決方案是將 web/背景工作角色實例移至另一個也連結至 ExpressRoute 線路的傳統虛擬網路。 在先前的重新部署案例中，建立新的傳統虛擬網路、將 web/背景工作角色移動/重新部署至新的虛擬網路，然後從正在移動的虛擬網路中刪除部署。 不需要變更程式碼。 新的[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)功能可用來將包含 Web/背景工作角色的傳統虛擬網路與在相同 Azure 區域中的其他虛擬網路 (例如要移轉的虛擬網路) 形成對等互連 (**在虛擬網路移轉完成之後，因為不能移轉已形成對等互連的虛擬網路**)，因此可提供相同功能，而不會損失效能且沒有延遲/頻寬罰則。 由於新增了[虛擬網路對等互連](../../virtual-network/virtual-network-peering-overview.md)，現在可輕鬆地移轉Web/背景工作角色部署，而不會封鎖對 Azure Resource Manager 的移轉。
 
 - **Azure Resource Manager 配額** - Azure 區域對於傳統和 Azure Resource Manager 有個別的配額/限制。 即使在未取用新硬體的移轉案例中 *(我們正在將現有的 VM 從傳統交換至 Azure Resource Manager)*，Azure Resource Manager 配額仍必須具有足夠的容量，才可開始進行移轉。 下列是我們發現會造成問題的主要限制。  開啟配額支援票證來提高限制。
 
@@ -160,7 +160,7 @@ ms.locfileid: "87449093"
 - 請勿採取捷徑而略過驗證/準備/中止試執行移轉。
 - 在驗證/準備/中止步驟期間，您可能發生的問題，幾乎全都會浮現。
 
-## <a name="migration"></a>遷移
+## <a name="migration"></a>移轉
 
 ### <a name="technical-considerations-and-tradeoffs"></a>技術考量和取捨
 
@@ -197,7 +197,7 @@ ms.locfileid: "87449093"
 
 現在請明確設定要在 Azure Resource Manager 中啟用的服務。  許多客戶發現下列各個項目對其 Azure 環境深具吸引力：
 
-- [Azure 角色型存取控制（AZURE RBAC）](../../role-based-access-control/overview.md)。
+- [Azure 角色型存取控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)。
 - [Azure Resource Manager 範本使得部署更容易且更受控制](../../azure-resource-manager/templates/overview.md)。
 - [標籤](../../azure-resource-manager/management/tag-resources.md)。
 - [活動控制](../../azure-resource-manager/management/view-activity-logs.md)
@@ -211,11 +211,11 @@ ms.locfileid: "87449093"
 ## <a name="next-steps"></a>後續步驟
 
 * [平台支援的 IaaS 資源移轉 (從傳統移轉至 Azure Resource Manager) 的概觀](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [平台支援的從傳統移轉至 Azure Resource Manager 的技術深入探討](../migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [使用 PowerShell 將 IaaS 資源從傳統移轉至 Azure Resource Manager](migration-classic-resource-manager-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [使用 CLI 將 IaaS 資源從傳統移轉至 Azure Resource Manager](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [從傳統 VPN 閘道到 Resource Manager 的移轉](../../vpn-gateway/vpn-gateway-classic-resource-manager-migration.md)
 * [將 ExpressRoute 線路和相關聯的虛擬網路從傳統部署模型遷移至 Resource Manager 部署模型](../../expressroute/expressroute-migration-classic-resource-manager.md)
 * [用於協助將 IaaS 資源從傳統移轉至 Azure Resource Manager 的社群工具](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [檢閱最常見的移轉錯誤](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [檢閱有關將 IaaS 資源從傳統移轉至 Azure Resource Manager 的常見問題集](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [檢閱有關將 IaaS 資源從傳統移轉至 Azure Resource Manager 的常見問題集](../migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
