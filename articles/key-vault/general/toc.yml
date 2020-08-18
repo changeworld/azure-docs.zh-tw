@@ -138,6 +138,8 @@
           href: move-region.md
 - name: 參考
   items:
+    - name: 用戶端程式庫
+      href: client-libraries.md
     - name: REST API 錯誤碼 - Azure Key Vault
       href: rest-error-codes.md
     - name: 通用參數和標頭

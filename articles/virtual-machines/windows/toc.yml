@@ -423,7 +423,7 @@
         - name: 移轉概觀
           href: migration-classic-resource-manager-overview.md
         - name: 深入了解移轉
-          href: migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md
         - name: 規劃移轉
           href: migration-classic-resource-manager-plan.md
         - name: 使用 Powershell 進行移轉
@@ -433,7 +433,7 @@
         - name: 適用於移轉的社群工具
           href: migration-classic-resource-manager-community-tools.md
         - name: 常見問題集
-          href: migration-classic-resource-manager-faq.md
+          href: ../migration-classic-resource-manager-faq.md
     - name: 使用映像
       displayName: 'SIG, AMI, image'
       items:
@@ -661,7 +661,7 @@
       items:
         - name: 維修通知
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../maintenance-notifications.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -671,7 +671,7 @@
               href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 維修控制
           items:
-            - name: 概觀
+            - name: 總覽
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -853,7 +853,7 @@
           href: detach-disk.md
         - name: 透過 ARM 範本部署磁碟
           displayName: Azure Resource Manager
-          href: using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md
         - name: 啟用共用磁碟
           href: disks-shared-enable.md
         - name: 將 VHD 上傳到磁碟 - PowerShell
@@ -901,7 +901,7 @@
         - name: 效能
           items:
             - name: 啟用寫入加速器
-              href: how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md
             - name: 使用 Ultra 磁碟
               href: disks-enable-ultra-ssd.md
             - name: 基準測試磁碟

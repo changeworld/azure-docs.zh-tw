@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概觀
   items:
-    - name: 什麼是 Azure AD Identity Protection？
+    - name: 什麼是 Identity Protection？
       href: overview-identity-protection.md
 - name: 概念
   expanded: false

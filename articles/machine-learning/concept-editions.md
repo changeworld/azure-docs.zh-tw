@@ -8,22 +8,22 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927414"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508597"
 ---
-# <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Enterprise 和 Basic 版本的 Azure Machine Learning 
+# <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>Enterprise (preview) 和基本版本的 Azure Machine Learning 
 
-Azure Machine Learning 提供針對您的機器學習服務需求量身打造的兩個版本。 這些版本會決定開發人員和資料科學家可在其工作區中使用哪些機器學習工具。
+Azure Machine Learning 針對您的機器學習服務需求提供兩種版本。 這些版本會決定開發人員和資料科學家可在其工作區中使用哪些機器學習工具。
 
 ## <a name="choose-an-edition"></a>選擇版本
 
-您會在建立工作區時指派此版本。 客戶須負責支付計算和其他 Azure 資源在這段期間所產生的成本。 瞭解如何[管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)。
+您會在建立工作區時指派此版本。 客戶須負責支付計算和其他 Azure 資源在這段期間所產生的成本。 瞭解如何 [管理 Azure Machine Learning 的成本](concept-plan-manage-cost.md)。
 
-了解如何[將基本工作區升級為 Enterprise 版](how-to-manage-workspace.md#upgrade)。 
+瞭解如何將 [基本工作區升級為 Enterprise (preview) edition](how-to-manage-workspace.md#upgrade)。 
 
 ## <a name="whats-in-each-edition"></a>每個版本的內容
 
@@ -31,14 +31,14 @@ Azure Machine Learning 提供針對您的機器學習服務需求量身打造的
 
 | 功能                     | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| 標籤：在 studio 中[建立和管理標記專案](tutorial-labeling.md) (Web)                                                 | 全部                     |
-| 標記： (Web) studio 中的 Labeler                                    | 全部                     |
-| 標記：使用私用工作人力                               | 全部                     |
-| 標籤： [ML 輔助影像分類和物件偵測](how-to-label-images.md)                  | 僅限企業版 |
+| 標記：在 studio (Web) 中[建立和管理標記專案](tutorial-labeling.md)                                                | 全部                     |
+| 標記：在 studio 中標籤人員 (Web)                                     | 全部                     |
+| 標籤：使用私用員工                               | 全部                     |
+| 標記： [ML 輔助影像分類和物件偵測](how-to-label-images.md)                  | 僅限企業版 |
 | 資料集 + 資料存放區：在 Python 中建立和管理                       | 全部                     |
-| 資料集 + 資料存放區：在 studio 中建立和管理 (Web)                          | 全部                     |
-| 漂移：在 Python 中查看和管理資料集監視器                           | 全部                     |
-| 漂移：在 studio 中查看和管理資料集監視器 (Web)                             | 僅限企業版 |
+| 資料集 + 資料存放區：在 studio (Web) 中建立和管理                         | 全部                     |
+| 漂移：在 Python 中查看和管理資料集監視                           | 全部                     |
+| 漂移：在 studio (Web) 中查看和管理資料集監視器                            | 僅限企業版 |
 
 
 <br/>
@@ -48,23 +48,23 @@ Azure Machine Learning 提供針對您的機器學習服務需求量身打造的
 
 | 功能    | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| [在筆記本中](how-to-configure-auto-train.md)建立及執行 AutoML 實驗               | 全部                     |
-| [在 studio 中建立和執行 AutoML 實驗 (web) ](how-to-use-automated-ml-for-ml-models.md)   | 僅限企業版 |
+| [在筆記本中](how-to-configure-auto-train.md)建立和執行 AutoML 實驗               | 全部                     |
+| [在 studio (web) 中](how-to-use-automated-ml-for-ml-models.md)建立和執行 AutoML 實驗   | 僅限企業版 |
 | 領先業界的 AutoML 預測功能             | 僅限企業版 |
-| 支援深度學習和其他先進學習 | 僅限企業版 |
-| 大型資料支援分類和回歸工作 (最多 100 GB)                      | 僅限企業版 |
+| 深度學習和其他先進學習的支援 | 僅限企業版 |
+| 大型資料支援分類和回歸工作 (高達 100 GB)                      | 僅限企業版 |
 
 
 <br/>
 <br/>
 
-### <a name="responsible-machine-learning"></a>負責 Machine Learning
+### <a name="responsible-machine-learning"></a>負責任的 Machine Learning
 
 | 功能    | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
 | [模型說明特徵](how-to-machine-learning-interpretability-automl.md)                                              | 全部                     |
 | [差異隱私權](how-to-differential-privacy.md)                          | 全部                     |
-| 用於執行資料表的自訂標記    | 全部                     |
+| 用來執行資料表的自訂標記    | 全部                     |
 | 公平 AzureML 整合                                      | 全部                     |
 
 <br/>
@@ -82,10 +82,10 @@ Azure Machine Learning 提供針對您的機器學習服務需求量身打造的
 | Python SDK 支援                                                                 | 全部                     |
 | R SDK 支援                                                                      | 全部                     |
 | ML 管線：在 Python 中建立、執行及發佈                           | 全部                     |
-| ML 管線：在 Python 中建立、編輯和刪除排程的管線執行| 全部                     |
+| ML 管線：在 Python 中建立、編輯和刪除已排程的管線執行| 全部                     |
 | ML 管線：在 Python SDK 中建立管線端點                                   | 全部                     |
-| ML 管線：在 studio 中查看執行詳細資料 (web)                                               | 全部                     |
-| ML 管線：在設計工具中建立、執行、視覺化和發行                  | 僅限企業版 |
+| ML 管線：在 studio (web) 中查看執行詳細資料                                              | 全部                     |
+| ML 管線：在設計工具中建立、執行、視覺化及發佈                  | 僅限企業版 |
 | ML 管線：在設計工具中建立管線端點 | 僅限企業版 |
 | 整合式筆記本的受控計算實例                                 | 全部                     |
 
@@ -108,18 +108,18 @@ Azure Machine Learning 提供針對您的機器學習服務需求量身打造的
 <br/>
 <br/>
 
-### <a name="security-governance-and-control-capabilities"></a>安全性、治理和控制功能
+### <a name="security-governance-and-control-capabilities"></a>安全性、治理及控制功能
 
 | 功能     | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| Azure[角色型存取控制 (AZURE RBAC) ](how-to-assign-roles.md)支援                                           | 全部                     |
-| [虛擬網路 (VNet) ](how-to-enable-virtual-network.md)計算的支援                                         | 全部                     |
+| [Azure 角色型存取控制 (AZURE RBAC) ](how-to-assign-roles.md) 支援                                           | 全部                     |
+| [虛擬網路 (VNet) ](how-to-enable-virtual-network.md) 支援計算                                         | 全部                     |
 | 評分端點驗證                                                    | 全部                     |
 | [工作區私用連結](how-to-configure-private-link.md)                                                            | 全部                     |
 | 跨工作區的[配額管理](how-to-manage-quotas.md)                                                 | 僅限企業版 |
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 Azure Machine Learning[版本總覽和定價頁面](https://azure.microsoft.com/pricing/details/machine-learning/)中可用的內容。 
+深入瞭解 Azure Machine Learning [edition 總覽和定價頁面](https://azure.microsoft.com/pricing/details/machine-learning/)中的可用功能。 
 
 了解如何[將基本工作區升級為 Enterprise 版](how-to-manage-workspace.md#upgrade)。 

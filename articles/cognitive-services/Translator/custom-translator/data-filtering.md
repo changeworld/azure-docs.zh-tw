@@ -6,24 +6,24 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 67807e18559006b7d7eb6089a30370d614aefca3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 1076a4fe3a460fa07e061e9ec0ec41b088ec7eca
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992828"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507258"
 ---
 # <a name="data-filtering"></a>資料篩選
 
-當您提交要用於訓練自訂系統的文件時，文件會經歷一系列的處理和篩選步驟，準備進行訓練。 這些步驟如下詳述。 篩選的知識可協助您了解「自訂翻譯」中顯示的句子計數，以及您可自行採取哪些步驟來準備文件，以便使用「自訂翻譯」進行訓練。
+當您提交要用於訓練自訂系統的文件時，文件會經歷一系列的處理和篩選步驟，準備進行訓練。 這些步驟如下詳述。 篩選的知識可協助您瞭解自訂翻譯中顯示的句子計數，以及您可能會採取的步驟，以準備用來定型自訂翻譯的檔。
 
 ## <a name="sentence-alignment"></a>句子對齊
-如果文件不是 XLIFF、TMX 或 ALIGN 格式，則「自訂翻譯」會逐句對齊來源與目標文件的句子。 翻譯工具不會執行文件對齊，它會依照您的文件命名方式來尋找其他語言的相符文件。 在文件中，「自訂翻譯」會嘗試在其他語言中尋找對應的句子。 它會使用文件標記 (如內嵌 HTML 標記) 來協助對齊。  
+如果文件不是 XLIFF、TMX 或 ALIGN 格式，則「自訂翻譯」會逐句對齊來源與目標文件的句子。 自訂翻譯不會執行檔對齊–它會遵循您對檔的命名，以尋找其他語言的相符檔。 在文件中，「自訂翻譯」會嘗試在其他語言中尋找對應的句子。 它會使用文件標記 (如內嵌 HTML 標記) 來協助對齊。  
 
-如果來源和目標端檔中的句子數目不一致，您的檔可能不會在第一次進行平行處理，或因其他原因而無法對齊。 您需要再次查看每一端上句子差異很大 (> 10%) 的文件配對，以確保它們確實平行。 如果句子計數疑似不同，則「自訂翻譯」會在文件旁邊顯示警告。  
+如果來源和目標端檔中的句子數目有很大的差異，表示您的檔可能未在第一個位置進行平行處理，或因其他原因而無法對齊。 您需要再次查看每一端上句子差異很大 (> 10%) 的文件配對，以確保它們確實平行。 如果句子計數疑似不同，則「自訂翻譯」會在文件旁邊顯示警告。  
 
 
 ## <a name="deduplication"></a>重複資料刪除
@@ -45,7 +45,7 @@ ms.locfileid: "83992828"
 以單一執行個體取代多個句子結尾標點符號字元。  
 
 ## <a name="japanese-character-normalization"></a>日文字元正規化
-將全形字母和數位轉換為半形字元。
+將全形字母和數位轉換成半形字元。
 
 ## <a name="unescaped-xml-tags"></a>未逸出的 XML 標記
 篩選作業會將未逸出的標記轉換成逸出的標記：
