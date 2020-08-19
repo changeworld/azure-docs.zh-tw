@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 E Sales Manager Remix 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 E Sales Manager Remix 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
-ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82202391"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555384"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>整合 Azure Active Directory 與 E Sales Manager Remix
 
@@ -61,11 +56,11 @@ ms.locfileid: "82202391"
 ## <a name="add-e-sales-manager-remix-from-the-gallery"></a>從資源庫新增 E Sales Manager Remix
 若要設定 Azure AD 與 E Sales Manager Remix 的整合，請從資源庫將 E Sales Manager Remix 新增到受控 SaaS 應用程式清單中，做法如下：
 
-1. 在 [Azure 入口網站](https://portal.azure.com)的左側窗格中，選取 [Azure Active Directory]****。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)] 的左窗格中，選取 [ **Azure Active Directory**]。 
 
     ![Azure Active Directory 按鈕][1]
 
-1. 選取 [**企業應用程式**] [  >  **所有應用程式**]。
+1. 選取**企業應用**程式  >  的**所有應用程式**。
 
     ![企業應用程式視窗][2]
     
@@ -101,7 +96,7 @@ ms.locfileid: "82202391"
 
     ![E Sales Manager Remix 網域及 URL 單一登入資訊](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_url.png)
 
-    a. 在 [登入**url** ] 方塊中，以下列格式輸入 URL： *HTTPs:// \<Server-Based-URL> / \<sub-domain> /esales-pc*。
+    a. 在 [登**入 url** ] 方塊中，以下列格式輸入 URL： *HTTPs:// \<Server-Based-URL> / \<sub-domain> /esales-pc*。
 
     b. 在 [**識別碼**] 方塊中，以下列格式輸入 URL： *HTTPs:// \<Server-Based-URL> / \<sub-domain> / *。
 
@@ -120,7 +115,7 @@ ms.locfileid: "82202391"
 
     [編輯屬性]**** 視窗隨即開啟。
 
-1. 複製 [命名空間]**** 和 [名稱]**** 的值。 在模式中產生值 *\<Namespace>/\<Name>* ，並加以儲存以供稍後在本教學課程中使用。
+1. 複製 [命名空間]**** 和 [名稱]**** 的值。 以模式產生值 *\<Namespace>/\<Name>* ，並加以儲存，以供稍後在本教學課程中使用。
 
     ![編輯屬性視窗](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -142,7 +137,7 @@ ms.locfileid: "82202391"
 
     ![到系統管理功能表命令](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. 在左窗格中，選取 [**系統設定**] [  >  **與外部系統合作**]。
+1. 在左窗格中，選取**System settings**[  >  **與外部系統合作的**系統設定]。
 
     ![系統設定以及與外部系統合作連結](./media/esalesmanagerremix-tutorial/configure5.png)
     
@@ -166,7 +161,7 @@ ms.locfileid: "82202391"
 
     f. 在 [識別提供者登入 URL]**** 方塊中，貼上您之前從 Azure 入口網站複製的 SAML 單一登入服務 URL。
 
-    如 在 [識別提供者登出 URL]**** 方塊中，貼上您之前從 Azure 入口網站複製的登出 URL 值。
+    g. 在 [識別提供者登出 URL]**** 方塊中，貼上您之前從 Azure 入口網站複製的登出 URL 值。
 
     h. 選取 [設定完成]****。
 
@@ -180,11 +175,11 @@ ms.locfileid: "82202391"
 
 ![建立 Azure AD 測試使用者][100]
 
-1. 在 Azure 入口網站的左窗格中，選取 [ **Azure Active Directory**]。
+1. 在 [Azure 入口網站] 的左窗格中，選取 [ **Azure Active Directory**]。
 
     ![Azure Active Directory 連結](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. 若要顯示目前使用者的清單，請選取 [**使用者和群組**] [  >  **所有使用者**]。
+1. 若要顯示目前的使用者清單，請選取 [**使用者和群組**  >  **所有使用者**]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
@@ -202,7 +197,7 @@ ms.locfileid: "82202391"
 
     b. 在 [使用者名稱]**** 方塊中，輸入使用者 Britta Simon 的電子郵件地址。
 
-    c. 選取 [**顯示密碼**] 核取方塊，然後記下 [**密碼**] 方塊中顯示的值。
+    c. 選取 [ **顯示密碼** ] 核取方塊，然後記下 [ **密碼** ] 方塊中顯示的值。
 
     d. 選取 [建立]。
  
@@ -214,7 +209,7 @@ ms.locfileid: "82202391"
 
     ![E Sales Manager Remix 設定](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. 選取**您公司的**  >  **部門和員工設定維護**，然後選取 [**已註冊的員工**]。
+1. 選取**貴公司的**  >  **部門和員工設定維護**，然後選取 [**已註冊的員工**]。
 
     ![已註冊員工索引標籤](./media/esalesmanagerremix-tutorial/user1.png)
 
@@ -248,7 +243,7 @@ ms.locfileid: "82202391"
 
     ![E Sales Manager Remix 連結](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-1. 在左窗格中，選取 [**使用者和群組**]。
+1. 在左窗格中，選取 [ **使用者和群組**]。
 
     ![[使用者和群組] 連結][202]
 

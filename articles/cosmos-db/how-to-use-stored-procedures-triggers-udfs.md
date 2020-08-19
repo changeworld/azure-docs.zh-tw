@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: bceaf4fc4a17ddc6b2129d3b2e73eb3f0f00057e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fccd3209d88ecd0f7e2baa06a55555a1370c4ec4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034153"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586302"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中註冊和使用預存程序、觸發程序和使用者定義函式
 
-Azure Cosmos DB 中的 SQL API 支援註冊和叫用以 JavaScript 撰寫的預存程序、觸發程序和使用者定義函式 (UDF)。 您可以使用 SQL API [.net](sql-api-sdk-dotnet.md)、 [.Net Core](sql-api-sdk-dotnet-core.md)、 [JAVA](sql-api-sdk-java.md)、 [JavaScript](sql-api-sdk-node.md)、 [Node.js](sql-api-sdk-node.md)或[Python](sql-api-sdk-python.md) sdk 來註冊及叫用預存程式。 定義一或多個預存程式、觸發程式和使用者定義函數之後，您就可以使用資料總管在[Azure 入口網站](https://portal.azure.com/)中載入和查看它們。
+Azure Cosmos DB 中的 SQL API 支援註冊和叫用以 JavaScript 撰寫的預存程序、觸發程序和使用者定義函式 (UDF)。 您可以使用 SQL API [.net](sql-api-sdk-dotnet.md)、 [.Net Core](sql-api-sdk-dotnet-core.md)、 [JAVA](sql-api-sdk-java.md)、 [JavaScript](sql-api-sdk-node.md)、 [Node.js](sql-api-sdk-node.md)或 [Python](sql-api-sdk-python.md) sdk 來註冊及叫用預存程式。 定義一個或多個預存程式、觸發程式和使用者定義函數之後，您可以使用資料總管在 [Azure 入口網站](https://portal.azure.com/) 中載入和查看這些預存程式、觸發程式和使用者定義函數。
 
 ## <a name="how-to-run-stored-procedures"></a><a id="stored-procedures"></a>如何執行預存程序
 
@@ -29,7 +29,7 @@ Azure Cosmos DB 中的 SQL API 支援註冊和叫用以 JavaScript 撰寫的預�
 
 ### <a name="stored-procedures---net-sdk-v2"></a>預存程式-.NET SDK V2
 
-下列範例顯示如何使用 .NET SDK V2 來註冊預存程式：
+下列範例顯示如何使用 .NET SDK V2 註冊預存程式：
 
 ```csharp
 string storedProcedureId = "spCreateToDoItems";
@@ -43,7 +43,7 @@ var response = await client.CreateStoredProcedureAsync(containerUri, newStoredPr
 StoredProcedure createdStoredProcedure = response.Resource;
 ```
 
-下列程式碼說明如何使用 .NET SDK V2 呼叫預存程式：
+下列程式碼示範如何使用 .NET SDK V2 來呼叫預存程式：
 
 ```csharp
 dynamic[] newItems = new dynamic[]
@@ -69,7 +69,7 @@ var result = await client.ExecuteStoredProcedureAsync<string>(uri, options, new[
 
 ### <a name="stored-procedures---net-sdk-v3"></a>預存程式-.NET SDK V3
 
-下列範例顯示如何使用 .NET SDK V3 來註冊預存程式：
+下列範例顯示如何使用 .NET SDK V3 註冊預存程式：
 
 ```csharp
 string storedProcedureId = "spCreateToDoItems";
@@ -80,7 +80,7 @@ StoredProcedureResponse storedProcedureResponse = await client.GetContainer("myD
 });
 ```
 
-下列程式碼說明如何使用 .NET SDK V3 呼叫預存程式：
+下列程式碼示範如何使用 .NET SDK V3 來呼叫預存程式：
 
 ```csharp
 dynamic[] newItems = new dynamic[]
@@ -206,7 +206,7 @@ sproc_definition = {
     'id': 'spCreateToDoItems',
     'serverScript': file_contents,
 }
-client = CosmosClient(url, key)
+client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
 sproc = container.create_stored_procedure(container_link, sproc_definition)
@@ -370,7 +370,7 @@ trigger_definition = {
     'triggerType': documents.TriggerType.Pre,
     'triggerOperation': documents.TriggerOperation.Create
 }
-client = CosmosClient(url, key)
+client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
 trigger = container.create_trigger(container_link, trigger_definition)
@@ -392,7 +392,7 @@ container.create_item(container_link, item, {
 
 ### <a name="post-triggers---net-sdk-v2"></a>後續觸發程式-.NET SDK V2
 
-下列程式碼示範如何使用 .NET SDK V2 註冊後置觸發程式：
+下列程式碼說明如何使用 .NET SDK V2 註冊後續觸發程式：
 
 ```csharp
 string triggerId = "trgPostUpdateMetadata";
@@ -407,7 +407,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.CreateTriggerAsync(containerUri, trigger);
 ```
 
-下列程式碼說明如何使用 .NET SDK V2 呼叫後續觸發程式：
+下列程式碼示範如何使用 .NET SDK V2 呼叫後續觸發程式：
 
 ```csharp
 var newItem = { 
@@ -423,7 +423,7 @@ await client.createDocumentAsync(containerUri, newItem, options);
 
 ### <a name="post-triggers---net-sdk-v3"></a>後續觸發程式-.NET SDK V3
 
-下列程式碼示範如何使用 .NET SDK V3 註冊後置觸發程式：
+下列程式碼說明如何使用 .NET SDK V3 註冊後續觸發程式：
 
 ```csharp
 await client.GetContainer("database", "container").Scripts.CreateTriggerAsync(new TriggerProperties
@@ -520,7 +520,7 @@ trigger_definition = {
     'triggerType': documents.TriggerType.Post,
     'triggerOperation': documents.TriggerOperation.Create
 }
-client = CosmosClient(url, key)
+client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
 trigger = container.create_trigger(container_link, trigger_definition)
@@ -665,7 +665,7 @@ udf_definition = {
     'id': 'Tax',
     'serverScript': file_contents,
 }
-client = CosmosClient(url, key)
+client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
 udf = container.create_user_defined_function(container_link, udf_definition)

@@ -4,12 +4,12 @@ description: 與代理程式、延伸模組及磁碟相關之 Azure 備份失敗
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 99982af7f16431ac5b1c2c4a0e419d647d3d2ca0
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262852"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585555"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -65,7 +65,7 @@ Azure 備份使用 VM 快照集延伸模組來進行 Azure 虛擬機器的應用
 
 - 請**確認 vss 寫入器服務已啟動且在**執行中：請依照下列步驟進行[vss 寫入器問題的疑難排解](backup-azure-vms-troubleshoot.md#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state)。
 - **遵循備份最佳做法指導方針：請**參閱 [最佳做法來啟用 Azure VM 備份](backup-azure-vms-introduction.md#best-practices)。
-- **檢查加密磁片的指導方針**：如果您要為具有加密磁片的 vm 啟用備份，請確定您已提供所有必要的許可權。 若要深入瞭解，請參閱 [備份和還原已加密的 AZURE VM](backup-azure-vms-encryption.md#encryption-support)。
+- **檢查加密磁片的指導方針**：如果您要為具有加密磁片的 vm 啟用備份，請確定您已提供所有必要的許可權。 若要深入瞭解，請參閱 [備份和還原已加密的 AZURE VM](backup-azure-vms-encryption.md)。
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM 代理程式無法與 Azure 備份通訊
 
@@ -220,7 +220,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>VM 中安裝的代理程式已過時 (適用於 Linux VM)
 
-#### <a name="solution"></a>解決方法
+#### <a name="solution"></a>解決方案
 
 針對 Linux VM，與代理程式或擴充功能相關的多數失敗是由於會影響過時 VM 代理程式的問題所造成。 若要對此問題進行疑難排解，請遵循下列一般方針：
 
@@ -270,7 +270,7 @@ VM 備份仰賴發給底層儲存體帳戶的快照命令。 備份可能會失�
 
 下列狀況可能導致快照集工作失敗：
 
-| 原因 | 解決方法 |
+| 原因 | 解決方案 |
 | --- | --- |
 | 因為遠端桌面通訊協定 (RDP) 中的 VM 關機，而導致報告的 VM 狀態不正確。 | 如果您關閉 RDP 中的 VM，請檢查入口網站，以判斷 VM 狀態是否正確。 如果不正確，請使用 VM 儀表板上的 [ **關機** ] 選項來關閉入口網站中的 VM。 |
 | VM 無法從 DHCP 取得主機或網狀架構位址。 | 必須在來賓內啟用 DHCP，IaaS VM 備份才能運作。 如果 VM 無法從 DHCP 回應 245 取得主機或網狀架構位址，則無法下載或執行任何延伸模組。 如果您需要靜態私人 IP，您應該透過 **Azure 入口網站** 或 **PowerShell** 進行設定，並確定已啟用 VM 內的 DHCP 選項。 [深入瞭解](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) 如何使用 PowerShell 設定靜態 IP 位址。

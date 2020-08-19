@@ -2,24 +2,29 @@
 title: 備份和還原已加密的 Azure Vm
 description: 說明如何使用 Azure 備份服務來備份和還原已加密的 Azure Vm。
 ms.topic: conceptual
-ms.date: 07/29/2020
-ms.openlocfilehash: a5c12f9f9177c4495a82ced2b3c7d0c5edcdd78e
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.date: 08/18/2020
+ms.openlocfilehash: 304196f6b517c353cb4fc142129fa4d3007a1d9c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262784"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585318"
 ---
-# <a name="back-up-and-restore-encrypted-azure-vm"></a>備份和還原已加密的 Azure VM
+# <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>備份和還原已加密的 Azure 虛擬機器
 
-本文說明如何使用 [Azure 備份](backup-overview.md) 服務，來備份和還原 Windows 或 Linux Azure 虛擬機器 (vm) 具有加密磁片的 vm。
+本文說明如何使用 [Azure 備份](backup-overview.md) 服務，來備份和還原 Windows 或 Linux Azure 虛擬機器 (vm) 具有加密磁片的 vm。 如需詳細資訊，請參閱 [AZURE VM 備份的加密](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups)。
 
-如果您想要深入瞭解 Azure 備份在開始之前如何與 Azure Vm 互動，請參閱下列資源：
+## <a name="encryption-using-platform-managed-keys"></a>使用平臺管理的金鑰進行加密
 
-- [檢閱](backup-architecture.md#architecture-built-in-azure-vm-backup) Azure VM 備份架構。
-- [深入瞭解](backup-azure-vms-introduction.md) Azure VM 備份和 Azure 備份擴充功能。
+根據預設，Vm 中的所有磁片都會使用平臺管理的金鑰自動加密， (使用 [儲存體服務加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)的 PMK) 。 您可以使用 Azure 備份來備份這些 Vm，而不需要任何特定的動作，以在您的結尾支援加密。 如需使用平臺管理的金鑰進行加密的詳細資訊， [請參閱這篇文章](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)。
 
-## <a name="encryption-support"></a>加密支援
+![加密磁碟](./media/backup-encryption/encrypted-disks.png)
+
+## <a name="encryption-using-customer-managed-keys"></a>使用客戶管理的金鑰進行加密
+
+當您使用自訂管理的金鑰來加密磁片時 (CMK) ，用來加密磁片的金鑰會儲存在 Azure Key Vault 中，並由您管理。 儲存體服務加密使用 CMK (SSE) 不同于 Azure 磁碟加密 (ADE) 加密。 ADE 會使用作業系統的加密工具。 SSE 會加密儲存體服務中的資料，讓您可以使用 Vm 的任何 OS 或映射。 如需使用客戶管理的金鑰來加密受控磁片的詳細資訊，請參閱 [這篇文章](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)。
+
+## <a name="encryption-support-using-ade"></a>使用 ADE 的加密支援
 
 Azure 備份支援以 Azure 磁碟加密 (ADE) 加密其作業系統/資料磁片的 Azure Vm 備份。 ADE 使用 BitLocker 來加密 Windows Vm，並使用適用于 Linux Vm 的 dm crypt 功能。 ADE 會與 Azure Key Vault 整合，以管理磁片加密金鑰和秘密。 Key Vault 金鑰加密金鑰 (Kek) 可以用來新增額外的安全性層級，然後在將加密密碼寫入 Key Vault 之前，先將其加密。
 
@@ -119,11 +124,6 @@ Azure 備份需要唯讀存取權來備份金鑰和密碼，以及相關聯的 V
 1. 選取 [**存取**原則  >  **新增存取原則**]。
 
     ![新增存取原則](./media/backup-azure-vms-encryption/add-access-policy.png)
-
-1. 選取 [ **選取主體**]，然後輸入 **備份管理**。
-1. 選取 [**備份管理服務**]  >  ** **。
-
-    ![備份服務選取項目](./media/backup-azure-vms-encryption/select-backup-service.png)
 
 1. 在**Add access policy**[  >  **從範本設定] (選用) **的 [新增存取原則] 中，選取 [ **Azure 備份**]。
     - 該備份會在 [金鑰權限]**** 和 [祕密權限]**** 預先填入必要的權限。

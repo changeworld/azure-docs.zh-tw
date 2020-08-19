@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bfc18332553d1aee713ccb8fc269ba63d2b5af12
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540591"
+ms.locfileid: "88566058"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>設定區塊 Blob 的物件複寫 (預覽)
 
@@ -45,7 +45,7 @@ ms.locfileid: "88540591"
 
 1. 巡覽至 Azure 入口網站的 [來源儲存體帳戶]。
 1. 在 [ **Blob 服務**] 底下，選取 [ **物件**複寫]。
-1. 選取 [設定複寫]。
+1. 選取 [ **設定複寫規則**]。
 1. 選取 [目的地訂用帳戶] 和 [目的地儲存體帳戶]。
 1. 在 [容器配對] 區段中，從來源帳戶中選取 [來源容器]，並從目的地帳戶中選取 [目的地容器]。 每個複寫原則最多可建立 10 組容器配對。
 

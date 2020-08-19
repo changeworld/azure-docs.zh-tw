@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9d7e3b4f565fac42d0a91d155846e672c7437f2d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: c7cd3ed863153762e42a0b6420623fec52e779e1
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810457"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566313"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -49,7 +49,7 @@ ms.locfileid: "87810457"
 每月/每年備份| 在使用 Azure VM 擴充功能進行備份時不支援。 僅支援每日和每週備份。<br/><br/> 您可以設定依每月/每年的保留期間來保留每日/每週備份的原則。
 自動時鐘調整 | 不支援。<br/><br/> 在備份 VM 時，Azure 備份不會自動調整日光節約時間變更。<br/><br/>  請視需要手動修改原則。
 [混合式備份的安全性功能](./backup-azure-security-feature.md) |不支援停用安全性功能。
-備份其電腦時間已變更的 VM | 不支援。<br/><br/> 如果在啟用該 VM 的備份之後，電腦時間已變更為未來的日期時間，不過，即使還原時間變更，也無法保證成功的備份。
+備份其電腦時間已變更的 VM | 不支援。<br/><br/> 如果在啟用該 VM 的備份之後，電腦時間變更為未來的日期時間;但是，即使時間變更已還原，也不保證備份成功。
 [虛擬機器擴展集中](../virtual-machine-scale-sets/overview.md)的 Azure vm | [協調流程模式](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes)設定為3的 vm 支援備份和還原。 <br><br>不支援可用性設定組。
 
 ## <a name="operating-system-support-windows"></a>作業系統支援 (Windows)
@@ -81,7 +81,7 @@ Azure 備份不支援 32 位元作業系統。
 - Azure 備份不支援 Core OS Linux。
 - Azure 備份不支援 32 位元作業系統。
 - 只要 VM 上已有[適用於 Linux 的 Azure VM 代理程式](../virtual-machines/extensions/agent-linux.md) (機器翻譯)，且支援 Python，即可使用其他自備 Linux 發行版本。
-- 如果未安裝 Python 版本2.7，Azure 備份不支援已設定 proxy 的 Linux VM。
+- 如果未安裝 Python 2.7 版，Azure 備份不支援 proxy 設定的 Linux VM。
 
 ## <a name="backup-frequency-and-retention"></a>備份頻率和保留期
 
@@ -102,7 +102,7 @@ DPM/MABS 磁碟上的復原點 | 64 個 (檔案伺服器) 及 448 個 (應用程
 --- | ---
 **建立新的 VM** | 從還原點快速建立及啟動基本 VM 並加以執行。<br/><br/> 您可指定 VM 的名稱，選取要放置 VM 的資源群組和虛擬網路 (VNet)，以及為已還原的 VM 指定儲存體帳戶。 建立新 VM 的區域必須與來源 VM 相同。
 **還原磁碟** | 還原 VM 磁碟，以便後續用於建立新 VM。<br/><br/> Azure 備份提供一個範本，協助您自訂和建立 VM。 <br/><br> 還原作業會產生範本，您可以下載並使用該範本來指定自訂 VM 設定，並建立 VM。<br/><br/> 磁碟會複製到所指定的資源群組。<br/><br/> 或者，您可以將磁碟連結至現有 VM，或使用 PowerShell 建立新的 VM。<br/><br/> 此選項十分適用於自訂 VM、新增備份時沒有的組態設定，或新增必須使用範本或 PowerShell 來配置的設定。
-**取代現有的** | 您可以還原磁碟，然後使用該磁碟來取代現有 VM 上的磁碟。<br/><br/> 目前的 VM 必須存在。 如果已刪除，則無法使用此選項。<br/><br/> Azure 備份會在取代磁碟前，取得現有 VM 的快照集，並儲存於所指定的暫存位置， 然後使用所選還原點來取代連線到 VM 的現有磁碟。<br/><br/> 快照集會複製到保存庫，並根據保留原則加以保留。 <br/><br/> 完成取代磁碟作業之後，原始磁碟會保留在資源群組中。 如果不需要，您可以選擇手動刪除原始磁片。 <br/><br/>針對未加密的受控 VM 支援取代現有的項目。 不支援非受控磁碟、[一般化的 VM](../virtual-machines/windows/capture-image-resource.md) 或[使用自訂映像建立的](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) \(英文\) VM。<br/><br/> 如果還原點中的磁碟數目多於或少於目前的 VM，則還原點中的磁碟數目只會反映該 VM 組態。<br><br> 已連結資源的 Vm （例如[使用者指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md)和[Key Vault](../key-vault/general/overview.md)）也支援 [取代現有的]。
+**取代現有的** | 您可以還原磁碟，然後使用該磁碟來取代現有 VM 上的磁碟。<br/><br/> 目前的 VM 必須存在。 如果已刪除，則無法使用此選項。<br/><br/> Azure 備份會在取代磁碟前，取得現有 VM 的快照集，並儲存於所指定的暫存位置， 然後使用所選還原點來取代連線到 VM 的現有磁碟。<br/><br/> 快照集會複製到保存庫，並根據保留原則加以保留。 <br/><br/> 完成取代磁碟作業之後，原始磁碟會保留在資源群組中。 如果不需要，您可以選擇手動刪除原始磁片。 <br/><br/>針對未加密的受控 VM 支援取代現有的項目。 不支援非受控磁碟、[一般化的 VM](../virtual-machines/windows/capture-image-resource.md) 或[使用自訂映像建立的](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) \(英文\) VM。<br/><br/> 如果還原點中的磁碟數目多於或少於目前的 VM，則還原點中的磁碟數目只會反映該 VM 組態。<br><br> 具有連結資源的 Vm （例如 [使用者指派的受控識別](../active-directory/managed-identities-azure-resources/overview.md) 和 [Key Vault](../key-vault/general/overview.md)）也支援「取代現有」。
 **跨區域 (次要區域)** | 跨區域還原可用來還原次要區域 (即 [Azure 配對區域](../best-practices-availability-paired-regions.md#what-are-paired-regions) (機器翻譯)) 中的 Azure VM。<br><br> 如果備份是在次要區域中完成，即可將所有 Azure VM 還原至選取的復原點。<br><br> 這項功能適用於下列選項：<br> <li> [建立 VM](./backup-azure-arm-restore-vms.md#create-a-vm) <br> <li> [還原磁碟](./backup-azure-arm-restore-vms.md#restore-disks) (機器翻譯) <br><br> 目前不支援[取代現有磁碟](./backup-azure-arm-restore-vms.md#replace-existing-disks) (機器翻譯) 選項。<br><br> 權限<br> 次要地區的還原作業可由備份管理員和應用程式管理員執行。
 
 ## <a name="support-for-file-level-restore"></a>檔案層級還原的支援
@@ -140,28 +140,28 @@ DPM/MABS 磁碟上的復原點 | 64 個 (檔案伺服器) 及 448 個 (應用程
 VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<br/><br/> [深入了解。](../virtual-machines/sizes.md)
 備份[可用性設定組](../virtual-machines/availability.md#availability-sets)中的 VM | 支援。<br/><br/> 您無法使用快速建立 VM 的選項來還原可用性設定組中 VM。 在還原 VM 時，您必須還原磁碟並將其用來部署 VM，或還原磁碟並將其用來取代現有的磁碟。
 備份使用 [Hybrid Use Benefit (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) (機器翻譯) 部署的 VM | 支援。
-備份在[擴展集](../virtual-machine-scale-sets/overview.md)中部署的 VM |支援。 容錯網域的[協調流程模式](../virtual-machine-scale-sets/orchestration-modes.md)應設定為2。 不支援可用性設定組。
-備份從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) 部署的 VM<br/><br/> (由 Microsoft 或第三方發佈) |支援。<br/><br/> VM 必須執行支援的作業系統。<br/><br/> 復原 VM 上的檔案時，只能還原至相容的作業系統 (而非較舊或較新版的作業系統)。 我們不會還原做為 Vm 的 Azure Marketplace Vm，因為這些虛擬機器需要購買資訊。 它們只會還原為磁片。
+備份在[擴展集](../virtual-machine-scale-sets/overview.md)中部署的 VM |支援。 容錯網域的[協調流程模式](../virtual-machine-scale-sets/orchestration-modes.md)應該設定為2。 不支援可用性設定組。
+備份從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) 部署的 VM<br/><br/> (由 Microsoft 或第三方發佈) |支援。<br/><br/> VM 必須執行支援的作業系統。<br/><br/> 復原 VM 上的檔案時，只能還原至相容的作業系統 (而非較舊或較新版的作業系統)。 我們不會還原作為 Vm 的 Azure Marketplace Vm，因為這些 Vm 需要購買資訊。 它們只會還原為磁片。
 備份從自訂映像 (第三方) 部署的 VM |支援。<br/><br/> VM 必須執行支援的作業系統。<br/><br/> 復原 VM 上的檔案時，只能還原至相容的作業系統 (而非較舊或較新版的作業系統)。
 備份已移轉至 Azure 的 VM| 支援。<br/><br/> 若要備份 VM，必須在已移轉的機器上安裝 VM 代理程式。
-備份多部 VM 一致性 | Azure 備份不會跨多個 Vm 提供資料和應用程式的一致性。
+備份多部 VM 一致性 | Azure 備份不會跨多個 Vm 提供資料和應用程式一致性。
 使用[診斷設定](../azure-monitor/platform/platform-logs-overview.md) (機器翻譯) 進行備份  | 不支援。 <br/><br/> 如果使用 [[新建]](backup-azure-arm-restore-vms.md#create-a-vm) 選項來觸發透過診斷設定還原 Azure VM，則還原會失敗。
 還原區域固定的 VM | 支援 (適用於在 2019 年 1 月之後備份的 VM，以及支援[可用性區域](https://azure.microsoft.com/global-infrastructure/availability-zones/)的 VM)。<br/><br/>目前支援還原至固定在 VM 中的相同區域。 不過，如果該區域不受支援，則還原會失敗。
-第 2 代 VM | 支援 <br> Azure 備份支援[第 2 代 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) 的備份和還原。 當您從復原點還原這些 Vm 時，它們會還原為[Gen2 vm](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。
-使用鎖定來備份 Azure Vm | 不支援非受控 Vm。 <br><br> 支援受控 Vm。
-[Spot VM](../virtual-machines/windows/spot-vms.md) | 不支援。 Azure 備份會以一般 Azure Vm 的形式還原點 Vm。
+第 2 代 VM | 支援 <br> Azure 備份支援[第 2 代 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) 的備份和還原。 當這些 Vm 從復原點還原時，就會還原為 [Gen2 vm](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。
+使用鎖定備份 Azure Vm | 未受管理的 Vm 不支援。 <br><br> 受管理的 Vm 支援。
+[Spot VM](../virtual-machines/windows/spot-vms.md) | 不支援。 Azure 備份將現成的 Vm 還原為一般的 Azure Vm。
 
 ## <a name="vm-storage-support"></a>VM 儲存體支援
 
 **元件** | **支援**
 --- | ---
-Azure VM 資料磁碟 | 除了國家雲端 (Azure Government、Azure 中國的世紀和 Azure 德國) 以外，所有區域中的 Azure Vm 備份（最多32個磁片）都處於公開預覽狀態。<br><br> 使用非受控磁碟的 Azure VM 或傳統 VM 僅支援備份最多 16 個磁碟。
+Azure VM 資料磁碟 | 在所有區域中，支援最多32個磁片的 Azure Vm 備份都處於公開預覽狀態。<br><br> 使用非受控磁碟的 Azure VM 或傳統 VM 僅支援備份最多 16 個磁碟。
 資料磁碟大小 | 個別磁碟大小最高可達 32 TB，單一 VM 中所有磁碟大小最高可達 256 TB。
 儲存體類型 | 標準 HDD、標準 SSD、進階 SSD。
 受控磁碟 | 支援。
 加密磁碟 | 支援。<br/><br/> 可備份已啟用 Azure 磁碟加密的 Azure VM (無論是否具有 Azure AD 應用程式)。<br/><br/> 已加密的 VM 無法在檔案/資料夾層級復原。 您必須復原整部 VM。<br/><br/> 您可以對已受到 Azure 備份保護的 VM 啟用加密。
 已啟用寫入加速器的磁碟 | 不支援。<br/><br/> Azure 備份會在備份期間自動排除啟用寫入加速器 (WA) 的磁碟。 因為它們不會備份，所以您無法從 VM 的復原點還原這些磁片。 <br><br> **重要注意事項**：具有 WA 磁碟的虛擬機器需要網際網路連線才能成功備份 (即使這些磁碟已從備份中排除也一樣。)
-備份和還原已刪除重複資料的 VM/磁碟 | Azure 備份不支援重復資料刪除。 如需詳細資訊，請參閱這篇[文章](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  -Azure 備份不會在復原服務保存庫中的 Vm 之間刪除重複 <br/> <br/>  -如果還原期間有 Vm 處於重復資料刪除狀態，則無法還原檔案，因為保存庫不會瞭解格式。 不過，您可以成功執行完整的 VM 還原。
+備份和還原已刪除重複資料的 VM/磁碟 | Azure 備份不支援重復資料刪除。 如需詳細資訊，請參閱這篇[文章](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  -Azure 備份不會跨復原服務保存庫中的 Vm 刪除 <br/> <br/>  -如果在還原期間有 Vm 處於重復資料刪除狀態，則無法還原檔案，因為保存庫無法理解格式。 不過，您可以成功執行完整的 VM 還原。
 將磁碟新增至受保護的 VM | 支援。
 在受保護的 VM 上調整磁碟大小 | 支援。
 共用存放裝置| 不支援使用叢集共用磁碟區 (CSV) 或向外延展檔案伺服器備份 Vm。 CSV 寫入器可能會在備份期間失敗。 還原時，包含 CSV 磁碟區的磁碟可能無法執行。
@@ -194,7 +194,7 @@ Azure 備份支援傳輸中和待用資料的加密：
 - 從伺服器到復原服務保存庫的備份流量會使用進階加密標準 256 進行加密。
 - 備份資料會透過安全的 HTTPS 連結來傳送。
 - 備份資料會在復原服務保存庫中以加密格式儲存。
-- 只有加密金鑰可以解除鎖定此資料。 Microsoft 無法解密在任何時間點備份的資料。
+- 只有您擁有可解除鎖定此資料的加密金鑰。 Microsoft 無法解密在任何時間點備份的資料。
 
   > [!WARNING]
   > 在設定保存庫後，只有您能夠存取加密金鑰。 Microsoft 絕不會持有金鑰複本，也沒有存取金鑰的權限。 如果金鑰遺失，Microsoft 將無法復原備份資料。

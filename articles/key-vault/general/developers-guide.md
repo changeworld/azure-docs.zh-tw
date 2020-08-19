@@ -5,26 +5,26 @@ services: key-vault
 author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c1a5d302f63f57a142d014c8ef66d02405e119ea
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2f90ba0bb732930b4cf3b1c832c6954683119f5f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531161"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585860"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 金鑰保存庫開發人員指南
 
 Key Vault 可讓您從應用程式內安全地存取機密資訊︰
 
 - 不需要自行撰寫程式碼即可保護金鑰和密碼，而且也能輕易地從應用程式加以使用。
-- 可以讓客戶擁有及管理他們自己的金鑰，因此您可以致力於提供核心軟體功能。 如此一來，您的應用程式就不會對客戶的租使用者金鑰和密碼擁有責任或潛在責任。
+- 可以讓客戶擁有及管理他們自己的金鑰，因此您可以致力於提供核心軟體功能。 如此一來，您的應用程式就不會擁有客戶租使用者金鑰和秘密的責任或潛在責任。
 - 您的應用程式能使用金鑰進行簽署和加密，同時也能在應用程式外部管理金鑰，讓您的解決方案適用於位於不同地點的應用程式。
-- 管理 Key Vault 憑證。 如需詳細資訊，請參閱[憑證](../certificates/about-certificates.md)
+- 管理 Key Vault 憑證。 如需詳細資訊，請參閱 [憑證](../certificates/about-certificates.md)
 
-如需 Azure Key Vault 的一般資訊，請參閱[什麼是 Key Vault](overview.md)）。
+如需有關 Azure Key Vault 的一般資訊，請參閱 [Key Vault](overview.md)) 。
 
 ## <a name="public-previews"></a>公開預覽
 
@@ -34,25 +34,25 @@ Key Vault 可讓您從應用程式內安全地存取機密資訊︰
 
 Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的程式碼必須向 Key Vault 進行驗證，才可取得這些項目。 Azure 資源的受控識別可在 Azure Active Directory (Azure AD) 中將受控識別自動提供給 Azure 服務，而降低解決此問題的難度。 您可以使用此身分識別來完成任何支援 Azure AD 驗證的服務驗證 (包括 Key Vault)，不需要任何您程式碼中的認證。 
 
-如需 Azure 資源的受控識別有關的詳細資訊，請參閱[受控識別概觀](../../active-directory/managed-identities-azure-resources/overview.md)。 如需使用 Azure AD 的詳細資訊，請參閱[整合應用程式與 Azure Active Directory](../../active-directory/develop/active-directory-integrating-applications.md)。
+如需 Azure 資源的受控識別有關的詳細資訊，請參閱[受控識別概觀](../../active-directory/managed-identities-azure-resources/overview.md)。 如需有關使用 Azure AD 的詳細資訊，請參閱將 [應用程式與 Azure Active Directory 整合](../../active-directory/develop/active-directory-integrating-applications.md)。
 
 在您的金鑰保存庫中使用金鑰、密碼或憑證之前，要先透過 CLI、PowerShell、Resource Manager 範本或 REST 建立及管理金鑰保存庫，如以下文章所述︰
 
 - [使用 CLI 建立和管理金鑰保存庫](quick-create-cli.md)
 - [使用 PowerShell 建立和管理金鑰保存庫](quick-create-powershell.md)
-- [使用 Azure 入口網站建立及管理金鑰保存庫](quick-create-portal.md)
+- [使用 Azure 入口網站建立和管理金鑰保存庫](quick-create-portal.md)
 - [使用 REST 建立和管理金鑰保存庫](/rest/api/keyvault/vaults/createorupdate)
 
 ### <a name="set-and-retrieve-secrets"></a>設定和取出秘密
 
-- [使用 CLI 設定和取出秘密](../secrets/quick-create-cli.md)
+- [使用 CLI 設定及取出秘密](../secrets/quick-create-cli.md)
 - [使用 PowerShell 設定和取出秘密](../secrets/quick-create-powershell.md)
-- [使用 Azure 入口網站設定和取出秘密](../secrets/quick-create-portal.md)
+- [使用 Azure 入口網站設定及取出秘密](../secrets/quick-create-portal.md)
 - [使用 REST 的秘密作業](/rest/api/keyvault/#secret-operations)
 - [使用 Python 設定和取出秘密](../secrets/quick-create-python.md)
 - [使用 JAVA 設定和取出秘密](../secrets/quick-create-java.md)
-- [使用 Node.js設定和取出秘密](../secrets/quick-create-node.md)
-- [使用 .NET 設定和取出秘密（v4 SDK）](../secrets/quick-create-net.md)
+- [使用 Node.js設定及取出秘密 ](../secrets/quick-create-node.md)
+- [使用 .NET (v4 SDK 設定和取出秘密) ](../secrets/quick-create-net.md)
 - [透過 Azure Resource Manager 範本建立金鑰保存庫和新增祕密](../secrets/quick-create-template.md)
 
 ### <a name="set-and-retrieve-keys"></a>設定和取出金鑰
@@ -60,14 +60,14 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 - [使用 CLI 設定和取出金鑰](../keys/quick-create-cli.md)
 - [使用 PowerShell 設定和取出金鑰](../keys/quick-create-powershell.md)
 - [使用 Azure 入口網站設定和取出金鑰](../keys/quick-create-portal.md)
-- [使用 REST 的金鑰作業](/rest/api/keyvault/#key-operations)
+- [使用 REST 的按鍵作業](/rest/api/keyvault/#key-operations)
 - [使用 Python 設定和取出金鑰](../secrets/quick-create-python.md)
 
 ### <a name="set-and-retrieve-certificates"></a>設定和取出憑證
 - [使用 CLI 設定和取出憑證](../certificates/quick-create-cli.md)
 - [使用 PowerShell 設定和取出憑證](../certificates/quick-create-powershell.md)
-- [使用 Azure 入口網站設定和取出憑證](../certificates/quick-create-portal.md)
-- [使用 REST 的金鑰作業](/rest/api/keyvault/#certificate-operations)
+- [使用 Azure 入口網站設定及取出憑證](../certificates/quick-create-portal.md)
+- [使用 REST 的按鍵作業](/rest/api/keyvault/#certificate-operations)
 - [使用 Python 設定和取出憑證](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>撰寫金鑰保存庫的程式碼
@@ -134,13 +134,13 @@ Azure Key Vault 可安全地儲存認證和其他金鑰及密碼，但是您的�
 
 這些文章是關於其他可讓我們使用及整合 Key Vault 的案例和服務。
 
-- [Azure 磁碟加密](../../security/fundamentals/encryption-overview.md)利用 Windows 的業界標準[BitLocker](https://technet.microsoft.com/library/cc732774.aspx)功能和 Linux 的[DM Crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能，為 OS 和資料磁片提供磁片區加密。 此解決方案與 Azure 金鑰保存庫整合，可幫助您控制和管理您的金鑰保存庫訂用帳戶中的磁碟加密金鑰和密碼，同時確保虛擬機器磁碟中的所有資料會在您的 Azure 儲存體中輕鬆加密。
+- [Azure 磁碟加密](../../security/fundamentals/encryption-overview.md) 利用 Windows 的業界標準 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [DM Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能，為 OS 和資料磁片提供磁片區加密。 此解決方案與 Azure 金鑰保存庫整合，可幫助您控制和管理您的金鑰保存庫訂用帳戶中的磁碟加密金鑰和密碼，同時確保虛擬機器磁碟中的所有資料會在您的 Azure 儲存體中輕鬆加密。
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md) 會為帳戶中儲存的資料提供加密選項。 金鑰管理，如 Data Lake Store 會提供兩種模式用於管理您的主要加密金鑰 (MEK)，它是解密 Data Lake Store 中儲存任何資料所需。 您可以讓 Data Lake Store 管理 MEK，或使用 Azure 金鑰保存庫帳戶，選擇保留 MEK 的擁有權。 您會在建立 Data Lake Store 帳戶時指定金鑰管理的模式。
 - [Azure 資訊保護](/azure/information-protection/plan-implement-tenant-key)可讓您管理自己的租用戶金鑰。 例如，您可以管理自己的租用戶金鑰，以符合適用於貴組織的特定規範，而不需 Microsoft 管理您的租用戶金鑰 (預設值)。 管理自己的租用戶金鑰也稱為「自備金鑰」或 BYOK。
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 的概觀和概念
 
-- [Key Vault 虛刪除行為](soft-delete-overview.md)）描述一項功能，可讓您復原已刪除的物件，不論是意外或故意刪除。
+- [Key Vault 虛刪除行為](soft-delete-overview.md)) 描述可復原已刪除之物件的功能，不論是不慎或刻意刪除。
 - [Key Vault 用戶端節流](overview-throttling.md)可讓您了解節流的基本概念，並提供適用於您應用程式的方法。
 - [Key Vault 安全世界](overview-security-worlds.md)描述地區和安全區域之間的關聯性。
 
