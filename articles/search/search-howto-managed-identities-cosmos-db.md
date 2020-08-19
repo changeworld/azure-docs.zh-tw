@@ -9,22 +9,21 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 107cd113645a2cbd4b452f9350fa67d734ee6df8
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f65aa4b307108682fa6e190a229e9d82b6efdec0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143651"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553196"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>使用受控識別來設定與 Cosmos DB 資料庫的索引子連線 (預覽)
 
 > [!IMPORTANT] 
-> 使用受控識別來設定資料來源連線的支援目前處於受管制公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
-> 您可以填寫[此表單](https://aka.ms/azure-cognitive-search/mi-preview-request)來要求預覽的存取權。
+> 支援使用受控識別來設定與資料來源的連接，目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
 
 此頁面描述如何使用受控識別來設定 Azure Cosmos DB 資料庫的索引子連線，而不是在資料來源物件連接字串中提供認證。
 
-在深入了解此功能之前，建議您先了解索引子是什麼，以及如何設定資料來源的索引子。 您可以以在下列連結找到更多資訊：
+在深入了解此功能之前，建議您先了解索引子是什麼，以及如何設定資料來源的索引子。 您可以在下列連結找到更多資訊：
 * [索引子概觀](search-indexer-overview.md)
 * [Azure Cosmos DB 索引子](search-howto-index-cosmosdb.md)
 
@@ -32,7 +31,7 @@ ms.locfileid: "86143651"
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - 開啟系統指派的受控識別
 
-當系統指派的受控識別啟用時，Azure 會為您的搜尋服務建立身分識別，以便用來向相同租用戶與訂用帳戶內的其他 Azure 服務進行驗證。 接著，您可以在角色型存取控制 (RBAC) 指派中使用此身分識別，以允許在編製索引期間存取資料。
+當系統指派的受控識別啟用時，Azure 會為您的搜尋服務建立身分識別，以便用來向相同租用戶和訂用帳戶內的其他 Azure 服務進行驗證。 接著，您可以在角色型存取控制 (RBAC) 指派中使用此身分識別，以允許在編制索引期間存取資料。
 
 ![開啟系統指派的受控識別](./media/search-managed-identities/turn-on-system-assigned-identity.png "開啟系統指派的受控識別")
 
@@ -58,11 +57,9 @@ ms.locfileid: "86143651"
 
 ### <a name="3---create-the-data-source"></a>3 - 建立資料來源
 
-**資料來源**指定要編製索引的資料、認證，以及可識別資料是否變更 (例如修改或刪除集合內的文件) 的原則。 資料來源會被定義為獨立的資源，因此可供多個索引子使用。
+[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 和受控識別連接字串來編制 Cosmos DB 的資料索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
 
-使用受控識別來驗證資料來源時，**認證**將不包含帳戶金鑰。
-
-如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) \(部分機器翻譯\) 建立 Cosmos DB 資料來源物件的範例：
+使用受控識別進行驗證時， **認證** 將不會包含帳戶金鑰。
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -93,8 +90,6 @@ api-key: [Search service admin key]
 | **container** | 包含下列元素： <br/>**名稱**：必要。 指定要編製索引的資料庫集合識別碼。<br/>**查詢**：選擇性。 您可以指定查詢將任意 JSON 文件壓平合併成 Azure 認知搜尋可以編製索引的一般結構描述。<br/>針對 MongoDB API、Gremlin API 與 Cassandra API，則不支援查詢。 |
 | **dataChangeDetectionPolicy** | 建議 |
 |**dataDeletionDetectionPolicy** | 選用 |
-
-Azure 入口網站和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) \(英文\) 也支援受控識別連接字串。 Azure 入口網站需要一個功能旗標，當您使用此頁面頂端的連結來註冊預覽時，就會提供給您。 
 
 ### <a name="4---create-the-index"></a>4 - 建立索引
 

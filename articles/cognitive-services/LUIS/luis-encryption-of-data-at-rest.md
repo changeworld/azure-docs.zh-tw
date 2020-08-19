@@ -1,7 +1,7 @@
 ---
-title: 靜態資料的語言理解服務加密
+title: 靜態資料的 Language Understanding 服務加密
 titleSuffix: Azure Cognitive Services
-description: 語言理解服務對靜態資料進行加密。
+description: 靜態資料的 Language Understanding 服務加密。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
@@ -9,87 +9,85 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 59e066974f690bda2384504cc27af5aa94b7b75b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79372434"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052700"
 ---
-# <a name="language-understanding-service-encryption-of-data-at-rest"></a>靜態資料的語言理解服務加密
+# <a name="language-understanding-service-encryption-of-data-at-rest"></a>靜態資料的 Language Understanding 服務加密
 
-語言理解服務在資料保存到雲時會自動加密資料。 語言理解服務加密可保護您的資料，並説明您履行組織安全和合規性承諾。
+當您將資料保存到雲端時，Language Understanding 服務會自動將您的資料加密。 Language Understanding 服務加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。
 
 ## <a name="about-cognitive-services-encryption"></a>關於認知服務加密
 
-使用[FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2)相容[的 256 位 AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)加密對資料進行加密和解密。 加密和解密是透明的，這意味著加密和訪問是為您管理的。 預設情況下，您的資料是安全的，您無需修改代碼或應用程式就可以利用加密。
+資料會使用 [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) 相容 [的256位 AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 加密進行加密和解密。 加密和解密是透明的，這表示會為您管理加密和存取。 根據預設，您的資料會受到保護，因此您無須修改程式碼或應用程式來利用加密功能。
 
 ## <a name="about-encryption-key-management"></a>關於加密金鑰管理
 
-預設情況下，您的訂閱使用 Microsoft 管理的加密金鑰。 還有一個選項可以用自己的金鑰管理訂閱。 客戶管理的金鑰 （CMK） 提供了創建、旋轉、禁用和撤銷存取控制的更大靈活性。 您還可以審核用於保護資料的加密金鑰。
+根據預設，您的訂用帳戶會使用由 Microsoft 管理的加密金鑰。 您也可以選擇使用自己的金鑰來管理您的訂用帳戶。 客戶管理的金鑰 (CMK) ，可提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可稽核用來保護資料的加密金鑰。
 
-## <a name="customer-managed-keys-with-azure-key-vault"></a>使用 Azure 金鑰保存庫的客戶管理金鑰
+## <a name="customer-managed-keys-with-azure-key-vault"></a>客戶管理的金鑰與 Azure Key Vault
 
-還有一個選項可以用自己的金鑰管理訂閱。 客戶管理的金鑰 （CMK）也稱為"自帶金鑰 （BYOK"），為創建、旋轉、禁用和撤銷存取控制提供了更大的靈活性。 您還可以審核用於保護資料的加密金鑰。
+您也可以選擇使用自己的金鑰來管理您的訂用帳戶。 客戶管理的金鑰 (CMK) ，也稱為自備金鑰 (BYOK) ，可提供更大的彈性來建立、輪替、停用及撤銷存取控制。 您也可稽核用來保護資料的加密金鑰。
 
-您必須使用 Azure 金鑰保存庫來存儲客戶管理的金鑰。 您可以創建自己的金鑰並將其存儲在金鑰保存庫中，也可以使用 Azure 金鑰保存庫 API 生成金鑰。 認知服務資源和金鑰保存庫必須位於同一區域和同一 Azure 活動目錄 （Azure AD） 租戶中，但它們可以位於不同的訂閱中。 有關 Azure 金鑰保存庫的詳細資訊，請參閱[什麼是 Azure 金鑰保存庫？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+您必須使用 Azure Key Vault 儲存客戶管理的金鑰。 您可以建立自己的金鑰並將其儲存在金鑰保存庫中，或是使用 Azure Key Vault API 來產生金鑰。 認知服務資源和金鑰保存庫必須位於相同的區域中，且在相同的 Azure Active Directory (Azure AD) 租使用者中，但它們可以在不同的訂用帳戶中。 如需 Azure Key Vault 的詳細資訊，請參閱 [什麼是 Azure Key Vault？](https://docs.microsoft.com/azure/key-vault/key-vault-overview)。
 
-### <a name="customer-managed-keys-for-language-understanding"></a>客戶管理的語言理解金鑰
+### <a name="customer-managed-keys-for-language-understanding"></a>Language Understanding 客戶管理的金鑰
 
-要請求使用客戶管理的金鑰，請填寫並提交 [LUIS 服務客戶管理金鑰請求表](https://aka.ms/cogsvc-cmk)。 大約需要 3-5 個工作日才能回復您的請求狀態。 根據需求，您可能會被放置在佇列中，並在可用空間時獲得批准。 批准將 CMK 與 LUIS 一起使用後，您需要從 Azure 門戶創建新的語言理解資源，並選擇 E0 作為定價層。 除 CMK 外，新的 SKU 的功能與已可用的 F0 SKU 相同。 使用者將無法從 F0 升級到新的 E0 SKU。
+若要要求能夠使用客戶管理的金鑰，請填寫並提交 [LUIS Service 客戶管理的金鑰要求表單](https://aka.ms/cogsvc-cmk)。 大約需要3-5 個工作天的時間，才會收到要求的狀態。 視需求而定，您可能會被放入佇列中，並在可用的空間獲得核准。 核准使用 CMK 搭配 LUIS 之後，您必須從 Azure 入口網站建立新的 Language Understanding 資源，並選取 [E0] 作為定價層。 新的 SKU 運作方式與 F0 SKU 相同，除了 CMK 以外，已可供使用。 使用者將無法從 F0 升級至新的 E0 SKU。
 
-E0 資源僅適用于創作服務，E0 層最初僅在美國西部區域受支援。
-
-![LUIS 訂閱映射](../media/cognitive-services-encryption/luis-subscription.png)
+![LUIS 訂用帳戶影像](../media/cognitive-services-encryption/luis-subscription.png)
 
 ### <a name="regional-availability"></a>區域可用性
 
-客戶管理的金鑰目前**在美國西部**區域可用。
+客戶管理的金鑰可在所有 [撰寫區域](luis-reference-regions.md)中使用。 
 
 ### <a name="limitations"></a>限制
 
-將 E0 層與現有/以前創建的應用程式一起使用時存在一些限制：
+使用 E0 層搭配現有/先前建立的應用程式時，有一些限制：
 
-* 將阻止遷移到 E0 資源。 使用者只能將其應用遷移到 F0 資源。 將現有資源遷移到 F0 後，可以在 E0 層中創建新資源。 [在此處瞭解有關遷移的更多詳細資訊](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)。  
-* 將阻止將應用程式移動到或從 E0 資源移動到或從 E0 資源移動到。 此限制的解決方法是匯出現有應用程式，並將其導入為 E0 資源。
-* 不支援必應拼寫檢查功能。
-* 如果應用程式為 E0，則禁用日誌記錄最終使用者流量。
-* E0 層中的應用程式不支援 Azure Bot 服務中的語音準備功能。 此功能可通過不支援 CMK 的 Azure 機器人服務獲得。
-* 來自門戶的語音啟動功能需要 Azure Blob 存儲。 有關詳細資訊，請參閱[自帶存儲](../Speech-Service/speech-encryption-of-data-at-rest.md#bring-your-own-storage-byos-for-customization-and-logging)。
+* 將會封鎖遷移至 E0 資源。 使用者只能將其應用程式遷移至 F0 資源。 將現有資源遷移至 F0 之後，您可以在 E0 層中建立新的資源。 請 [在這裡](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring)深入瞭解遷移。  
+* 將應用程式移入或移出 E0 資源將會遭到封鎖。 這項限制的解決方式是匯出現有的應用程式，並將它匯入為 E0 資源。
+* 不支援 Bing 拼寫檢查功能。
+* 如果您的應用程式是 E0，則會停用記錄終端使用者流量。
+* E0 層中的應用程式不支援來自 Azure Bot service 的語音預備功能。 這項功能可透過 Azure Bot Service 取得，但不支援 CMK。
+* 入口網站中的語音預備功能需要 Azure Blob 儲存體。 如需詳細資訊，請參閱 [攜帶您自己的儲存體](../Speech-Service/speech-encryption-of-data-at-rest.md#bring-your-own-storage-byos-for-customization-and-logging)。
 
 ### <a name="enable-customer-managed-keys"></a>啟用客戶管理的金鑰
 
-新的認知服務資源始終使用 Microsoft 管理的金鑰進行加密。 在創建資源時無法啟用客戶管理的金鑰。 客戶管理的金鑰存儲在 Azure 金鑰保存庫中，並且必須預配金鑰保存庫，這些訪問策略向與認知服務資源關聯的託管標識授予金鑰許可權。 只有在使用 CMK 的定價層創建資源後，託管標識才可用。
+新的認知服務資源一律會使用 Microsoft 管理的金鑰進行加密。 建立資源時，無法啟用客戶管理的金鑰。 客戶管理的金鑰會儲存在 Azure Key Vault 中，而金鑰保存庫必須布建存取原則，以將金鑰許可權授與與認知服務資源相關聯的受控識別。 只有在使用 CMK 定價層建立資源之後，才可以使用受控識別。
 
-要瞭解如何將客戶管理的金鑰與 Azure 金鑰保存庫用於認知服務加密，請參閱：
+若要瞭解如何搭配 Azure Key Vault 使用客戶管理的金鑰進行認知服務加密，請參閱：
 
-- [使用金鑰保存庫配置客戶管理的金鑰，以便從 Azure 門戶進行認知服務加密](../Encryption/cognitive-services-encryption-keys-portal.md)
+- [使用 Azure 入口網站的認知服務加密 Key Vault 設定客戶管理的金鑰](../Encryption/cognitive-services-encryption-keys-portal.md)
 
-啟用客戶託管金鑰還將啟用系統分配的託管標識，這是 Azure AD 的一項功能。 啟用系統分配的託管標識後，此資源將註冊到 Azure 活動目錄。 註冊後，託管標識將有權訪問客戶託管金鑰設置期間選擇的金鑰保存庫。 您可以瞭解有關[託管標識的更多資訊](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
-
-> [!IMPORTANT]
-> 如果禁用系統分配的託管標識，將刪除對金鑰保存庫的訪問，並且將不再訪問使用客戶金鑰加密的任何資料。 依賴于此資料的任何功能都將停止工作。
+啟用客戶管理的金鑰也會啟用系統指派的受控識別，這是 Azure AD 的功能。 一旦啟用系統指派的受控識別，此資源就會向 Azure Active Directory 註冊。 註冊之後，受控識別將會獲得在客戶管理的金鑰設定期間選取的 Key Vault 存取權。 您可以深入瞭解 [受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別。
 
 > [!IMPORTANT]
-> 受控識別目前不支援跨目錄案例。 在 Azure 門戶中配置客戶託管金鑰時，託管標識將自動在封面下分配。 如果隨後將訂閱、資源組或資源從一個 Azure AD 目錄移動到另一個 Azure AD 目錄，則與資源關聯的託管標識不會傳輸到新租戶，因此客戶託管金鑰可能不再工作。 有關詳細資訊，請參閱在 FAQ 中的 Azure AD 目錄[和 Azure 資源的託管標識的已知問題](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)**之間傳輸訂閱**。  
+> 如果您停用系統指派的受控識別，將會移除對金鑰保存庫的存取權，而且將無法再存取使用客戶金鑰加密的任何資料。 相依于此資料的任何功能將會停止運作。
 
-### <a name="store-customer-managed-keys-in-azure-key-vault"></a>在 Azure 金鑰保存庫中存儲客戶管理的金鑰
+> [!IMPORTANT]
+> 受控識別目前不支援跨目錄案例。 當您在 Azure 入口網站中設定客戶管理的金鑰時，系統會自動在幕後指派受控識別。 如果您之後將訂用帳戶、資源群組或資源從某個 Azure AD 目錄移至另一個目錄，與該資源相關聯的受控識別不會傳送至新的租使用者，因此客戶管理的金鑰可能無法再運作。 如需詳細資訊，請參閱在[Azure 資源受控識別的常見問題和已知問題](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/known-issues#transferring-a-subscription-between-azure-ad-directories)中，**傳輸 Azure AD 目錄之間的訂**用帳戶。  
 
-要啟用客戶管理的金鑰，必須使用 Azure 金鑰保存庫來存儲金鑰。 您必須在金鑰保存庫中同時啟用 **"虛刪除****"和"不清除"** 屬性。
+### <a name="store-customer-managed-keys-in-azure-key-vault"></a>在 Azure Key Vault 中儲存客戶管理的金鑰
 
-認知服務加密僅支援大小為 2048 的 RSA 金鑰。 有關金鑰的詳細資訊，請參閱["關於 Azure 金鑰保存庫金鑰、機密和證書"](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)中的**金鑰保存庫金鑰**。
+若要啟用客戶管理的金鑰，您必須使用 Azure Key Vault 來儲存您的金鑰。 您必須同時啟用虛 **刪除** 和不 **清除** 金鑰保存庫的屬性。
 
-### <a name="rotate-customer-managed-keys"></a>旋轉客戶管理的金鑰
+認知服務加密只支援大小為2048的 RSA 金鑰。 如需有關金鑰的詳細資訊，請參閱[關於 Azure Key Vault 金鑰、秘密和憑證](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys)的**Key Vault 金鑰**。
 
-您可以根據合規性策略在 Azure 金鑰保存庫中輪換客戶管理的金鑰。 旋轉金鑰時，必須更新認知服務資源才能使用新的金鑰 URI。 要瞭解如何更新資源以在 Azure 門戶中使用金鑰的新版本，請參閱[使用 Azure 門戶在"配置認知服務的客戶管理金鑰"](../Encryption/cognitive-services-encryption-keys-portal.md)中**更新金鑰版本的**部分。
+### <a name="rotate-customer-managed-keys"></a>輪替客戶管理的金鑰
 
-旋轉金鑰不會觸發資源中資料的重新加密。 使用者無需執行進一步操作。
+您可以根據您的合規性原則，在 Azure Key Vault 中輪替客戶管理的金鑰。 輪替金鑰時，您必須更新認知服務資源，以使用新的金鑰 URI。 若要瞭解如何更新資源以在 Azure 入口網站中使用新版本的金鑰，請參閱標題為「[使用 Azure 入口網站為認知服務設定客戶管理的金鑰](../Encryption/cognitive-services-encryption-keys-portal.md)」中的「**更新金鑰版本**」一節。
 
-### <a name="revoke-access-to-customer-managed-keys"></a>撤銷對客戶管理金鑰的訪問
+輪替金鑰並不會觸發資源中資料的重新加密。 使用者不需要採取任何進一步的動作。
 
-要撤銷對客戶管理金鑰的存取權限，請使用 PowerShell 或 Azure CLI。 有關詳細資訊，請參閱[Azure 金鑰保存庫 PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//)或[Azure 金鑰保存庫 CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤銷訪問可有效地阻止對認知服務資源中的所有資料的訪問，因為認知服務無法訪問加密金鑰。
+### <a name="revoke-access-to-customer-managed-keys"></a>撤銷客戶管理金鑰的存取權
+
+若要撤銷客戶管理金鑰的存取權，請使用 PowerShell 或 Azure CLI。 如需詳細資訊，請參閱 [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault//) 或 [Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 撤銷存取權實際上會封鎖對認知服務資源中所有資料的存取，因為認知服務無法存取加密金鑰。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [LUIS 服務客戶管理的關鍵請求表](https://aka.ms/cogsvc-cmk)
-* [瞭解有關 Azure 金鑰保存庫的更多](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [LUIS Service 客戶管理的金鑰要求表單](https://aka.ms/cogsvc-cmk)
+* [深入瞭解 Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

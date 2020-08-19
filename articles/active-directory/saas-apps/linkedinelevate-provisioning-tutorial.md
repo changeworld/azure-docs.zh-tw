@@ -2,25 +2,20 @@
 title: 教學課程： LinkedIn 的使用者布建提升-Azure AD
 description: 了解如何設定 Azure Active Directory 來自動佈建並取消佈建使用者帳戶至 LinkedIn Elevate。
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49b35de5cce914edbd8db2ac0c0c8cccd5f811b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057408"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549767"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>教學課程︰設定 LinkedIn Elevate 來自動佈建使用者
 
@@ -84,7 +79,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 5. 按一下 [產生權杖]****。 您應該會看到您的存取權杖顯示在存取權杖]**** 欄位下。
 
-6. 在離開頁面之前，請先將您的存取權杖儲存到剪貼簿或電腦。
+6. 離開頁面之前，請先將您的存取權杖儲存到剪貼簿或電腦。
 
 7. 接下來，登入 [Azure 入口網站](https://portal.azure.com)中，瀏覽至 [Azure Active Directory] > [企業應用程式] > [所有應用程式]**** 區段。
 

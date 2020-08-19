@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dacfeeff06d58a084d4313ca50b51f262cf61381
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084070"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553075"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>使用受控識別來設定與 Azure 儲存體帳戶的連線 (預覽)
 
 > [!IMPORTANT] 
-> 使用受控識別來設定資料來源連線的支援目前處於閘道公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
-> 您可填寫[此表單](https://aka.ms/azure-cognitive-search/mi-preview-request)來要求預覽的存取權。
+> 支援使用受控識別來設定與資料來源的連接，目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
 
 此頁面描述如何使用受控識別來設定 Azure 儲存體帳戶的索引子連線，而不是在資料來源物件連接字串中提供認證。
 
@@ -53,11 +52,11 @@ ms.locfileid: "87084070"
     ![新增角色指派](./media/search-managed-identities/add-role-assignment-storage.png "新增角色指派")
 
 4. 根據您想要編制索引的儲存體帳戶類型，選取適當的角色：
-    1. Azure Blob 儲存體會要求您將搜尋服務新增至**儲存體 Blob 資料讀取器**角色。
-    1. Azure Data Lake Storage Gen2 需要您將搜尋服務新增至**儲存體 Blob 資料讀取器**角色。
-    1. Azure 表格儲存體會要求您將搜尋服務新增至 [**讀取器] 和 [資料存取**] 角色。
+    1. Azure Blob 儲存體會要求您將搜尋服務新增至 **儲存體 Blob 資料讀取器** 角色。
+    1. Azure Data Lake Storage Gen2 要求您將搜尋服務新增至 **儲存體 Blob 資料讀取器** 角色。
+    1. Azure 資料表儲存體會要求您將搜尋服務新增至 **讀取器和資料存取** 角色。
 5.  將 [存取權指派對象為] 保留為 [Azure AD 使用者、群組或服務主體]
-6.  搜尋並選取您的搜尋服務，然後選取 [儲存]
+6.  搜尋您的搜尋服務，加以選取，然後選取 [儲存]
 
     Azure Blob 儲存體和 Azure Data Lake Storage Gen2 的範例：
 
@@ -68,6 +67,8 @@ ms.locfileid: "87084070"
     ![新增讀者及資料存取角色指派](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "新增讀者及資料存取角色指派")
 
 ### <a name="3---create-the-data-source"></a>3 - 建立資料來源
+
+[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 和受控識別連接字串，從儲存體帳戶編制資料的索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
 
 從儲存體帳戶編製索引時，資料來源必須具有下列必要屬性︰
 
@@ -96,8 +97,6 @@ api-key: [admin key]
     "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
 }   
 ```
-
-Azure 入口網站和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) \(英文\) 也支援受控識別連接字串。 Azure 入口網站需要一個功能旗標，當您使用此頁面頂端的連結來註冊預覽時，就會提供給您。 
 
 ### <a name="4---create-the-index"></a>4 - 建立索引
 

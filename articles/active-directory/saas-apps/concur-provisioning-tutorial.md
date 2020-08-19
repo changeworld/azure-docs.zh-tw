@@ -2,25 +2,20 @@
 title: 教學課程︰以 Azure Active Directory 設定 Concur 來自動佈建使用者 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Concur 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: df47f55f-a894-4e01-a82e-0dbf55fc8af1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 678b7571d54c8938c163801a584ad813c6e5963f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "60280432"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551161"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>教學課程︰設定 Concur 來自動佈建使用者
 
@@ -93,7 +88,7 @@ Concur 顧問或用戶端系統管理員必須建立不同的 Web 服務系統�
    
     ![確認動作](./media/concur-provisioning-tutorial/ic721732.png "確認動作")
 
-6. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [ **Azure Active Directory > 企業應用程式] > [所有應用程式**] 區段。
+6. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至 **Azure Active Directory > 企業應用程式 > 所有應用程式** ] 區段。
 
 7. 如果您已經設定單一登入的 Concur，使用 [搜尋] 欄位搜尋您的 Concur 執行個體。 否則，請選取 [新增]****，並在應用程式庫中搜尋 [Concur]****。 從搜尋結果中選取 Concur，並將它新增至您的應用程式清單。
 

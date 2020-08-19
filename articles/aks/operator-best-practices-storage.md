@@ -1,16 +1,16 @@
 ---
-title: 儲存和備份的最佳作法
+title: 儲存體和備份的最佳作法
 titleSuffix: Azure Kubernetes Service
 description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中進行儲存、資料加密及備份時的最佳做法
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: c683cbf7802fbf5420ec95d49e2dfda624ce093f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562833"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551790"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中進行儲存和備份的最佳做法
 
@@ -40,7 +40,7 @@ ms.locfileid: "87562833"
 
 AKS 中針對磁碟區所提供的兩個主要儲存體類型，是由 Azure 磁碟或 Azure 檔案所支援。 為了提升安全性，這兩種儲存體預設都會使用 Azure 儲存體服務加密 (SSE) 來對待用資料進行加密。 目前磁碟無法在 AKS 節點層級使用 Azure 磁碟加密進行加密。
 
-Azure 檔案儲存體和 Azure 磁片都適用于 Standard 和 Premium 效能層級：
+在 Standard 和 Premium 效能層級中都有提供 Azure 檔案儲存體和 Azure 磁片：
 
 - 「進階」** 磁碟是由高效能固態硬碟 (SSD) 所支援。 針對所有生產環境工作負載，都建議使用進階磁碟。
 - 「標準」** 磁碟是由一般磁碟 (HDD) 所支援，且適用於封存或不常存取的資料。
@@ -76,7 +76,7 @@ AKS 節點會以 Azure VM 的形式執行。 有不同類型和大小的 VM 可�
 
 ![Azure Kubernetes Service (AKS) 叢集中的永續性磁碟區宣告](media/concepts-storage/persistent-volume-claims.png)
 
-永續性磁碟區宣告 (PVC) 可讓您視需求以動態方式建立儲存體。 基礎的 Azure 磁碟會在 Pod 要求它們時建立。 在 pod 定義中，您會要求建立磁片區，並將其附加至指定的掛接路徑。
+永續性磁碟區宣告 (PVC) 可讓您視需求以動態方式建立儲存體。 基礎的 Azure 磁碟會在 Pod 要求它們時建立。 在 pod 定義中，您需要建立磁片區，並將其附加至指定的掛接路徑。
 
 如需如何動態建立及使用磁碟區的概念，請參閱[永續性磁碟區宣告][aks-concepts-storage-pvcs]。
 
@@ -88,13 +88,13 @@ AKS 節點會以 Azure VM 的形式執行。 有不同類型和大小的 VM 可�
 
 ## <a name="secure-and-back-up-your-data"></a>保護並備份您的資料
 
-**最佳做法指引**-針對您的儲存體類型（例如 Velero 或 Azure Site Recovery）使用適當的工具來備份您的資料。 驗證那些備份的完整性及安全性。
+**最佳做法指引** -使用適用于儲存體類型的適當工具來備份您的資料，例如 Velero 或 Azure 備份。 驗證那些備份的完整性及安全性。
 
-當您的應用程式儲存及使用保存在磁碟上或檔案中的資料時，您必須對該資料進行定期備份或擷取快照集。 Azure 磁碟可以使用內建的快照集技術。 在執行快照集作業之前，您可能需要先尋找應用程式，將寫入排清至磁片。 [Velero][velero]可以備份持續性磁片區，以及其他叢集資源和設定。 如果您無法[從應用程式移除狀態][remove-state]，請備份來自永續性磁碟區的資料並定期測試還原作業，以確認資料完整性及必要的處理程序。
+當您的應用程式儲存及使用保存在磁碟上或檔案中的資料時，您必須對該資料進行定期備份或擷取快照集。 Azure 磁碟可以使用內建的快照集技術。 您可能需要尋找您的應用程式，以便在執行快照集作業之前排清寫入磁片。 [Velero][velero] 可以備份永久性磁片區，以及其他叢集資源和設定。 如果您無法[從應用程式移除狀態][remove-state]，請備份來自永續性磁碟區的資料並定期測試還原作業，以確認資料完整性及必要的處理程序。
 
 請了解不同資料備份方法的限制，以及您是否需要在擷取快照集之前使資料靜止。 資料備份並不一定能讓您還原您的叢集部署應用程式環境。 如需那些案例的詳細資訊，請參閱 [AKS 中商務持續性和災害復原的最佳做法][best-practices-multi-region]。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 本文著重於 AKS 中的儲存體最佳做法。 如需 Kubernetes 中儲存體基本概念的詳細資訊，請參閱 [AKS 中適用於應用程式的儲存體概念][aks-concepts-storage]。
 

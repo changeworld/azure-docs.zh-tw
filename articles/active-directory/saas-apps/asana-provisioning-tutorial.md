@@ -2,26 +2,21 @@
 title: 教學課程： Asana 的使用者布建-Azure AD
 description: 了解如何設定 Azure Active Directory 將使用者帳戶自動佈建及取消佈建至 Asana。
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.reviewer: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: celested
+ms.openlocfilehash: 11e0606568fdaad20f996a7ae20a622576acea15
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058902"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549461"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>教學課程︰設定 Asana 來自動佈建使用者
 
@@ -40,7 +35,7 @@ ms.locfileid: "77058902"
 
 ## <a name="assign-users-to-asana"></a>將使用者指派給 Asana
 
-Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者帳戶佈建的內容中，只有已指派至 Azure AD 中應用程式的使用者會進行同步處理。
+Azure AD 使用稱為「 *指派* 」的概念，來判斷哪些使用者應該會收到所選應用程式的存取權。 在自動使用者帳戶佈建的內容中，只有已指派至 Azure AD 中應用程式的使用者會進行同步處理。
 
 在您設定並啟用佈建服務之前，必須決定 Azure AD 中的哪些使用者需要存取 Asana 應用程式。 然後，您就可以遵循此處的指示，將這些使用者指派給 Asana 應用程式︰
 
@@ -83,7 +78,7 @@ Azure AD 使用稱為「*指派*」的概念，來判斷哪些使用者應接收
 
 1. 在 Azure 入口網站中，選取 [測試連線]****，以確保 Azure AD 可以連線至您的 Asana 應用程式。 如果連線失敗，請確定您的 Asana 帳戶具有系統管理員權限，並再試一次**測試連線**步驟。
 
-1. 在 [**通知電子郵件**] 中，輸入您想要收到布建錯誤通知之個人或群組的電子郵件地址。 選取下方的核取方塊。
+1. 輸入您想要接收  **通知電子郵件**中布建錯誤通知的個人或群組的電子郵件地址。 選取下方的核取方塊。
 
 1. 選取 [儲存]。
 

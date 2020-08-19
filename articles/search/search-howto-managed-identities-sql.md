@@ -1,7 +1,7 @@
 ---
-title: 使用受控識別來設定 Azure SQL Database 的連線（預覽）
+title: '使用受控識別 (預覽，設定與 Azure SQL Database 的連接) '
 titleSuffix: Azure Cognitive Search
-description: 瞭解如何使用受控識別（預覽）設定 Azure SQL Database 的索引子連接
+description: '瞭解如何使用受控識別 (預覽，設定 Azure SQL Database 的索引子連接) '
 manager: luisca
 author: markheff
 ms.author: maheff
@@ -9,20 +9,19 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559932"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553133"
 ---
-# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>使用受控識別來設定 Azure SQL Database 的索引子連線（預覽）
+# <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>使用受控識別 (預覽，設定與 Azure SQL Database 的索引子連接) 
 
 > [!IMPORTANT] 
-> 使用受控識別來設定資料來源連線的支援目前處於受限公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
-> 您可以填寫[此表單](https://aka.ms/azure-cognitive-search/mi-preview-request) \(英文\) 來要求預覽的存取權。
+> 支援使用受控識別來設定與資料來源的連接，目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
 
-此頁面描述如何使用受控識別設定 Azure SQL Database 的索引子連接，而不是在資料來源物件連接字串中提供認證。
+此頁面描述如何使用受控識別來設定 Azure SQL Database 的索引子連接，而不是在資料來源物件連接字串中提供認證。
 
 在深入了解此功能之前，建議您先了解索引子是什麼，以及如何設定資料來源的索引子。 您可以在下列連結找到更多資訊：
 
@@ -98,12 +97,14 @@ ms.locfileid: "85559932"
 
 ### <a name="5---create-the-data-source"></a>5 - 建立資料來源
 
-從 SQL 資料庫編製索引時，資料來源必須具有下列必要屬性︰
+[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure 入口網站和[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)都支援受控識別連接字串。 以下範例說明如何建立資料來源，以使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 和受控識別連接字串來編制 Azure SQL Database 的資料索引。 REST API、.NET SDK 和 Azure 入口網站的受控識別連接字串格式都相同。
+
+使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)建立資料來源時，資料來源必須具有下列必要屬性：
 
 * **名稱**是搜尋服務中資料來源的唯一名稱。
 * **type** 是 `azuresql`
 * **credentials**
-    * 使用受控識別進行驗證時，**credentials** 格式會與未使用受控身分識別時的格式不同。 在這裡，您將提供初始類別目錄或資料庫名稱，以及沒有帳戶金鑰或密碼的 ResourceId。 ResourceId 必須包含 Azure SQL Database 的訂用帳戶識別碼、SQL Database 的資源群組，以及 SQL 資料庫的名稱。 
+    * 使用受控識別進行驗證時，**credentials** 格式會與未使用受控身分識別時的格式不同。 在這裡，您將提供初始類別目錄或資料庫名稱，以及沒有帳戶金鑰或密碼的 ResourceId。 ResourceId 必須包含 Azure SQL Database 的訂用帳戶識別碼、SQL Database 的資源群組，以及 SQL Database 的名稱。 
     * 受控識別連接字串格式：
         * *初始類別目錄|資料庫=**資料庫名稱**;ResourceId=/訂用帳戶/**您的訂用帳戶識別碼**/resourceGroups/**您的資源群組名稱**/providers/Microsoft.Sql/servers/**SQL Server 名稱**/;連線逾時=**連線逾時時間長度**;*
 * **container** 指定您想要編制索引的資料表或檢視表的名稱。
@@ -122,8 +123,6 @@ api-key: [admin key]
     "container" : { "name" : "my-table" }
 } 
 ```
-
-Azure 入口網站和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) \(英文\) 也支援受控識別連接字串。 Azure 入口網站需要一個功能旗標，當您使用此頁面頂端的連結來註冊預覽時，就會提供給您。 
 
 ### <a name="6---create-the-index"></a>6 - 建立索引
 

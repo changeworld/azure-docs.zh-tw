@@ -1,18 +1,19 @@
 ---
 title: 規劃 Azure 檔案同步部署 | Microsoft Docs
-description: 規劃具有 Azure 檔案同步的部署，這項服務可讓您在內部部署 Windows Server 或雲端 VM 上快取一些 Azure 檔案共用。
+description: 規劃使用 Azure 檔案同步的部署，這項服務可讓您在內部部署 Windows Server 或雲端 VM 上快取數個 Azure 檔案共用。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 17274c2b5308b1e5069370400895c001dc03e5bb
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.custom: references_regions
+ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224436"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553102"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>規劃 Azure 檔案同步部署
 
@@ -357,10 +358,10 @@ Azure 檔案同步僅支援與位於和儲存體同步服務相同之區域中�
 
 您也可以使用資料箱，將資料遷移至 Azure 檔案同步部署。 在大部分的時候，當客戶想要使用資料箱來內嵌資料時，這麼做的原因是認為其會增加部署速度，或有助於頻寬受限的案例。 雖然使用資料箱將資料內嵌到您的 Azure 檔案同步部署的確會降低頻寬使用率，但在大部分的情況下，透過上述其中一種方法來執行線上資料上傳可能會更快。 若要深入了解如何使用資料箱將資料內嵌至您的 Azure 檔案同步部署，請參閱[使用 Azure 資料箱將資料遷移到 Azure 檔案同步](storage-sync-offline-data-transfer.md)。
 
-客戶在將資料遷移至新的 Azure 檔案同步部署時，常見的錯誤是將資料直接複製到 Azure 檔案共用，而不是其 Windows 檔案伺服器。 雖然 Azure 檔案同步會識別 Azure 檔案共用上的所有新檔案，並將其同步回您的 Windows 檔案共用，但這通常會比透過 Windows 檔案伺服器載入資料的速度慢很多。 使用 Azure 複製工具（例如 AzCopy）時，請務必使用最新版本。 請檢查檔案 [複製工具資料表](storage-files-migration-overview.md#file-copy-tools) 以取得 Azure 複製工具的總覽，以確保您可以複製檔案的所有重要中繼資料，例如時間戳記和 acl。
+客戶在將資料遷移至新的 Azure 檔案同步部署時，常見的錯誤是將資料直接複製到 Azure 檔案共用，而不是其 Windows 檔案伺服器。 雖然 Azure 檔案同步會識別 Azure 檔案共用上的所有新檔案，並將其同步回您的 Windows 檔案共用，但這通常會比透過 Windows 檔案伺服器載入資料的速度慢很多。 使用 Azure 複製工具（例如 AzCopy）時，請務必使用最新版本。 請檢查檔案 [複製工具表格](storage-files-migration-overview.md#file-copy-tools) ，以取得 Azure 複製工具的總覽，以確保您可以複製檔案的所有重要中繼資料，例如時間戳記和 acl。
 
 ## <a name="antivirus"></a>防毒
-因為防毒軟體的運作方式是掃描檔案中的已知惡意程式碼，所以防毒軟體產品可能會導致重新叫用階層式檔案，因而產生高輸出費用。 在 4.0 版和更新版本的 Azure 檔案同步代理程式中，階層式檔案已設定安全的 Windows 屬性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 建議您洽詢您的軟體廠商，以了解如何設定其解決方案來略過讀取已設定此屬性的檔案 (很多軟體會自動這麼做)。 
+由於防毒軟體的運作方式是掃描檔案中的已知惡意程式碼，因此，防毒軟體可能會導致重新叫用階層式檔案，因而產生高輸出費用。 在 4.0 版和更新版本的 Azure 檔案同步代理程式中，階層式檔案已設定安全的 Windows 屬性 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS。 建議您洽詢您的軟體廠商，以了解如何設定其解決方案來略過讀取已設定此屬性的檔案 (很多軟體會自動這麼做)。 
 
 作為 Microsoft 內部防毒解決方案的 Windows Defender 和 System Center Endpoint Protection (SCEP)，皆會自動略過讀取已設定此屬性的檔案。 我們已經測試這兩個解決方案並找到一個小問題：當您將伺服器新增至現有同步群組時，會在新的伺服器上重新叫用 (下載) 小於 800 個位元組的檔案。 這些檔案會保留在新的伺服器上，而且不會分層，因為這些檔案不符合階層處理大小需求 (> 64 kb)。
 
@@ -368,9 +369,9 @@ Azure 檔案同步僅支援與位於和儲存體同步服務相同之區域中�
 > 防毒軟體廠商可以使用 [Azure 檔案同步防毒相容性測試套件](https://www.microsoft.com/download/details.aspx?id=58322) (可從 Microsoft 下載中心下載)，檢查其產品與 Azure 檔案同步之間的相容性。
 
 ## <a name="backup"></a>Backup 
-如果已啟用雲端階層處理，則不應使用直接備份伺服器端點或伺服器端點所在之 VM 的解決方案。 雲端階層處理只會使您的資料子集儲存在伺服器端點上，而完整資料集則位於 Azure 檔案共用中。 視所使用的備份解決方案而定，階層式檔案會被略過且不會備份 (因為它們已設定 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性) ，或將其重新叫用到磁片，因而產生高輸出費用。 我們建議使用雲端備份解決方案，直接備份 Azure 檔案共用。 如需詳細資訊，請參閱 [關於 azure 檔案共用備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) 或請洽詢您的備份提供者，以查看其是否支援備份 Azure 檔案共用。
+如果已啟用雲端階層處理，則不應使用直接備份伺服器端點的解決方案，或不應使用伺服器端點所在的 VM。 雲端階層處理只會在伺服器端點上儲存您的資料子集，並將完整資料集放在您的 Azure 檔案共用中。 視所使用的備份解決方案而定，階層式檔案將會略過，而且不會備份 (因為它們已設定 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 屬性) ，或會將它們重新叫用到磁片，因而產生高輸出費用。 我們建議使用雲端備份解決方案來直接備份 Azure 檔案共用。 如需詳細資訊，請參閱 [關於 azure 檔案共用備份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) ，或洽詢您的備份提供者，查看是否支援備份 Azure 檔案共用。
 
-如果您想要使用內部部署備份解決方案，應在已停用雲端階層處理的同步群組中的伺服器上執行備份。 執行還原時，請使用磁碟區層級或檔案層級的還原選項。 使用檔案層級還原選項進行還原的檔案會同步至同步群組中的所有端點，並使用從備份還原過來的版本取代現有檔案。  磁碟區層級還原將不會取代 Azure 檔案共用或其他伺服器端點中的較新檔案版本。
+如果您想要使用內部部署備份解決方案，應該在已停用雲端階層處理的同步處理群組中的伺服器上執行備份。 執行還原時，請使用磁碟區層級或檔案層級的還原選項。 使用檔案層級還原選項進行還原的檔案會同步至同步群組中的所有端點，並使用從備份還原過來的版本取代現有檔案。  磁碟區層級還原將不會取代 Azure 檔案共用或其他伺服器端點中的較新檔案版本。
 
 > [!Note]  
 > 裸機 (BMR) 還原可能會導致非預期的結果，且目前不受支援。

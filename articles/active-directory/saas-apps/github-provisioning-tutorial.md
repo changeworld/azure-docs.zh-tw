@@ -1,26 +1,21 @@
 ---
-title: 教學課程：適用于 GitHub 的使用者布建-Azure AD
+title: 教學課程： GitHub 的使用者布建-Azure AD
 description: 了解如何設定 Azure Active Directory 將使用者帳戶自動佈建和取消佈建至 GitHub。
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82f7252f2d9cdd2c54fae593d8463bfe84bd6ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cfcf68b1e00e9f3333a8cd1fdb21ec71712f0e95
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057646"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550665"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教學課程︰設定 GitHub 來自動佈建使用者
 
@@ -32,11 +27,11 @@ ms.locfileid: "77057646"
 
 * Azure Active Directory 租用戶
 * 在 [GitHub Enterprise 雲端](https://help.github.com/articles/github-s-products/#github-enterprise)中建立的 GitHub 組織，需使用 [GitHub Enterprise 的計費方案](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
-* GitHub 中具有組織系統管理員許可權的使用者帳戶
-* 請確定已為您的組織提供 OAuth 存取權，如[這裡](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述
+* GitHub 中具有組織管理員許可權的使用者帳戶
+* 請確定已為您的組織提供 OAuth 存取權， [如下所述](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)
 
 > [!NOTE]
-> Azure AD 布建整合依賴[GITHUB SCIM API](https://developer.github.com/v3/scim/)，其可在[GitHub Enterprise 計費方案](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) [GitHub Enterprise 雲端](https://help.github.com/articles/github-s-products/#github-enterprise)客戶使用。
+> Azure AD 布建整合依賴 [GITHUB SCIM API](https://developer.github.com/v3/scim/)，此 API 可供 [GitHub Enterprise 雲端](https://help.github.com/articles/github-s-products/#github-enterprise) 客戶使用 [GitHub Enterprise 計費方案](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)。
 
 ## <a name="assigning-users-to-github"></a>將使用者指派給 GitHub
 
@@ -71,7 +66,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![GitHub 佈建](./media/github-provisioning-tutorial/GitHub1.png)
 
-5. 在 [系統管理員認證]**** 區段下，按一下 [授權]****。 此作業會在新的瀏覽器視窗中開啟 GitHub 授權對話方塊。 請注意，您必須確定您已核准授權存取。 請遵循[這裡](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述的指示。
+5. 在 [系統管理員認證]**** 區段下，按一下 [授權]****。 此作業會在新的瀏覽器視窗中開啟 GitHub 授權對話方塊。 請注意，您必須確定已核准授權存取權。 遵循 [此處](https://help.github.com/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述的指示。
 
 6. 在新視窗中，使用您的管理帳戶登入 GitHub。 在產生的授權對話方塊中，選取您想要啟用佈建的 GitHub 小組，然後選取 [授權]****。 一旦完成後，回到 Azure 入口網站以完成佈建組態。
 

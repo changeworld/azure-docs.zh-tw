@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 48b94b8cd047f62ea13bf4e062254088ea11840e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663596"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553159"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>使用受控識別 (預覽) 設定與資料來源的索引子連線
 
 > [!IMPORTANT] 
-> 使用受控識別來設定資料來源連線的支援目前處於閘道公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
-> 您可填寫[此表單](https://aka.ms/azure-cognitive-search/mi-preview-request)來要求預覽的存取權。
+> 支援使用受控識別來設定與資料來源的連接，目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
 
 Azure 認知搜尋中的[索引子](search-indexer-overview.md)是一種編目程式，其可供從資料來源將資料提取到 Azure 認知搜尋。 索引子會從所建立的資料來源物件取得資料來源連線。 資料來源物件通常包含目標資料來源的認證。 例如，如果想要編製 blob 儲存體容器資料的索引，則資料來源物件可包含 Azure 儲存體帳戶金鑰。
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/06/2020
-ms.openlocfilehash: 25378cc0510260a6ccd0a0bdb162b145cbae5c8e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.date: 08/18/2020
+ms.openlocfilehash: 542f9a95e4a124cb8b369dfc670fc85cd7e2a9d4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847834"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553218"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>使用 Azure Data Factory 將資料複製至或複製自 Azure Data Lake Storage Gen1
 
@@ -91,7 +91,7 @@ ms.locfileid: "87847834"
 | servicePrincipalId | 指定應用程式的用戶端識別碼。 | 是 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為 `SecureString`，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 是 |
 | tenant | 指定您的應用程式所在租用戶的資訊，例如網域名稱或租用戶識別碼。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
-| azureCloudType | 針對 [服務主體驗證]，指定您的 AAD 應用程式所註冊的 Azure 雲端環境類型。 <br/> 允許的值為**AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和**AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
+| azureCloudType | 針對服務主體驗證，請指定您的 Azure Active Directory 應用程式註冊所在的 Azure 雲端環境類型。 <br/> 允許的值為 **AzurePublic**、 **AzureChina**、 **AzureUsGovernment**和 **AzureGermany**。 根據預設，會使用 data factory 的雲端環境。 | 否 |
 
 **範例︰**
 
@@ -209,15 +209,15 @@ ms.locfileid: "87847834"
 | type                     | `storeSettings` 下的 type 屬性必須設定為 **AzureDataLakeStoreReadSettings**。 | 是                                          |
 | 尋找要複製的檔案： |  |  |
 | 選項 1：靜態路徑<br> | 請從資料集內的指定資料夾/檔案路徑複製。 若您想要複製資料夾中的所有檔案，請另外將 `wildcardFileName` 指定為 `*`。 |  |
-| 選項2：名稱範圍<br>- listAfter | 抓取資料夾/檔案，其名稱在此值之後會以字母 (獨佔) 。 它會利用 ADLS Gen1 的服務端篩選，提供比萬用字元篩選更好的效能。 <br/>Data factory 會將此篩選套用至資料集內所定義的路徑，而且只支援一個實體層級。 如需更多範例，請參閱[名稱範圍篩選器範例](#name-range-filter-examples)。 | 否 |
-| 選項2：名稱範圍<br/>- listBefore | 抓取資料夾/檔案，其名稱在此值之前會以字母順序 (包含) 。 它會利用 ADLS Gen1 的服務端篩選，提供比萬用字元篩選更好的效能。<br>Data factory 會將此篩選套用至資料集內所定義的路徑，而且只支援一個實體層級。 如需更多範例，請參閱[名稱範圍篩選器範例](#name-range-filter-examples)。 | 否 |
+| 選項2：名稱範圍<br>- listAfter | 依字母順序 (獨佔) 來抓取資料夾/檔案，其名稱會在此值之後。 它會利用 ADLS Gen1 的服務端篩選，提供比萬用字元篩選器更佳的效能。 <br/>Data factory 會將此篩選套用至資料集中定義的路徑，而且只支援一個實體層級。 請參閱 [名稱範圍篩選範例](#name-range-filter-examples)中的更多範例。 | No |
+| 選項2：名稱範圍<br/>- listBefore | 依字母順序 (內含) ，抓取名稱早于此值的資料夾/檔案。 它會利用 ADLS Gen1 的服務端篩選，提供比萬用字元篩選器更佳的效能。<br>Data factory 會將此篩選套用至資料集中定義的路徑，而且只支援一個實體層級。 請參閱 [名稱範圍篩選範例](#name-range-filter-examples)中的更多範例。 | 否 |
 | 選項 3：萬用字元<br>- wildcardFolderPath | 含有萬用字元的資料夾路徑，可用來篩選來源資料夾。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。 <br>如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 否                                            |
 | 選項 3：萬用字元<br>- wildcardFileName | 在指定 folderPath/wildcardFolderPath 之下，含有萬用字元的檔案名稱，可用來篩選來源檔案。 <br>允許的萬用字元為：`*` (比對零或多個字元) 和 `?` (比對零或單一字元)；如果您的實際資料夾名稱包含萬用字元或此逸出字元，請使用 `^` 來逸出。  如需更多範例，請參閱[資料夾和檔案篩選範例](#folder-and-file-filter-examples)。 | 是 |
-| 選項 4：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向包含您要複製之檔案清單的文字檔，每行一個檔案，這是在資料集中設定之路徑的相對路徑。<br/>使用此選項時，請勿指定資料集中的檔案名稱。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
+| 選項 4：檔案清單<br>- fileListPath | 表示要複製指定的檔案集。 指向文字檔，其中包含您要複製的檔案清單，每行一個檔案，也就是在資料集中設定之路徑的相對路徑。<br/>使用此選項時，請勿指定資料集中的檔案名稱。 [檔案清單範例](#file-list-examples) (英文) 有更多範例可供參閱。 |否 |
 | 其他設定： |  | |
 | 遞迴 | 指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 請注意，當遞迴設定為 true 且接收是檔案型存放區時，就不會在接收上複製或建立空的資料夾或子資料夾。 <br>允許的值為 **true** (預設值) 和 **false**。<br>設定 `fileListPath` 時，不適用此屬性。 |否 |
-| deleteFilesAfterCompletion | 指出在成功移至目的地存放區之後，是否會從來源存放區刪除二進位檔案。 檔案刪除是每個檔案，因此當複製活動失敗時，您會看到某些檔案已複製到目的地，並從來源刪除，而其他檔案仍在來源存放區上剩餘。 <br/>此屬性只在二進位複製案例中有效，其中資料來源存放區為 Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、File、Azure 檔案、SFTP 或 FTP。 預設值： false。 |否 |
-| modifiedDatetimeStart    | 檔案篩選會根據以下屬性：上次修改時間。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 Null，這表示不會將檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
+| deleteFilesAfterCompletion | 指出是否要在成功移至目的地存放區之後，從來源存放區刪除二進位檔案。 檔案刪除是針對每個檔案，因此當複製活動失敗時，您會看到部分檔案已複製到目的地並從來源刪除，其他檔案仍在來源存放區上。 <br/>這個屬性只適用于二進位複製案例，其中資料來源存放區為 Blob、ADLS Gen1、ADLS Gen2、S3、Google Cloud Storage、檔案、Azure 檔案、SFTP 或 FTP。 預設值： false。 |否 |
+| modifiedDatetimeStart    | 檔案篩選會根據以下屬性：上次修改時間。 <br>若檔案的上次修改時間在 `modifiedDatetimeStart` 與 `modifiedDatetimeEnd` 之間的時間範圍內，系統就會選取該檔案。 此時間會以 "2018-12-01T05:00:00Z" 格式套用至 UTC 時區。 <br> 屬性可以是 Null，這表示不會將任何檔案屬性篩選套用至資料集。  當 `modifiedDatetimeStart` 具有日期時間值，但 `modifiedDatetimeEnd` 為 NULL 時，意謂著系統將會選取上次更新時間屬性大於或等於此日期時間值的檔案。  當 `modifiedDatetimeEnd` 具有日期時間值，但 `modifiedDatetimeStart` 為 NULL 時，則意謂著系統將會選取上次更新時間屬性小於此日期時間值的檔案。<br/>設定 `fileListPath` 時，不適用此屬性。 | 否                                            |
 | modifiedDatetimeEnd      | 同上。                                               | 否                                           |
 | maxConcurrentConnections | 可同時連線到儲存體存放區的連線數目。 只有當您想要限制同時連線到資料存放區的連線數目時才指定。 | 否                                           |
 
@@ -264,7 +264,7 @@ ms.locfileid: "87847834"
 
 ### <a name="azure-data-lake-store-as-sink"></a>Azure Data Lake Store 作為接收器
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
 
 在格式型複製接收器內的 `storeSettings` 設定下，Azure Data Lake Store Gen1 支援  下列屬性：
 
@@ -309,13 +309,13 @@ ms.locfileid: "87847834"
     }
 ]
 ```
-### <a name="name-range-filter-examples"></a>名稱範圍篩選器範例
+### <a name="name-range-filter-examples"></a>名稱範圍篩選範例
 
 本節說明名稱範圍篩選器的結果行為。
 
 | 範例來源結構 | ADF 設定 | 結果 |
 |:--- |:--- |:--- |
-|root<br/>&nbsp;&nbsp;&nbsp;&nbsp;為<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;限於<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;位元組<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;bx.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;c<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;cx.csv| **在資料集內：**<br>- 資料夾路徑：`root`<br><br>**在複製活動來源內：**<br>-列出之後：`a`<br>-列出之前：`b`| 然後會複製下列檔案：<br><br>root<br/>&nbsp;&nbsp;&nbsp;&nbsp;限於<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;位元組<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv |
+|root<br/>&nbsp;&nbsp;&nbsp;&nbsp;的<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;斧頭<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;B<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;bx.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;C<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file4.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;cx.csv| **在資料集內：**<br>- 資料夾路徑：`root`<br><br>**在複製活動來源內：**<br>-列出之後： `a`<br>-之前的清單： `b`| 然後，將會複製下列檔案：<br><br>root<br/>&nbsp;&nbsp;&nbsp;&nbsp;斧頭<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file2.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;ax.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;B<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;file3.csv |
 
 ### <a name="folder-and-file-filter-examples"></a>資料夾和檔案篩選範例
 
@@ -360,18 +360,18 @@ ms.locfileid: "87847834"
 
 ## <a name="mapping-data-flow-properties"></a>對應資料流屬性
 
-當您要轉換對應資料流程中的資料時，您可以從下列格式的 Azure Data Lake Storage Gen1 讀取和寫入檔案：
+當您在對應資料流程中轉換資料時，可以透過下列格式的 Azure Data Lake Storage Gen1 讀取和寫入檔案：
 * [Avro](format-avro.md#mapping-data-flow-properties)
 * [分隔符號文字](format-delimited-text.md#mapping-data-flow-properties)
 * [Excel](format-excel.md#mapping-data-flow-properties)
 * [JSON](format-json.md#mapping-data-flow-properties)
 * [Parquet](format-parquet.md#mapping-data-flow-properties)
 
-格式特定設定位於該格式的檔中。 如需詳細資訊，請參閱對應資料流程中的對應資料流程和[接收轉換](data-flow-sink.md)[中的來源轉換](data-flow-source.md)。
+格式特定的設定位於該格式的檔中。 如需詳細資訊，請參閱對應資料流程中的對應資料流程和[接收轉換](data-flow-sink.md)的[來源轉換](data-flow-source.md)。
 
 ### <a name="source-transformation"></a>來源轉換
 
-在「來源」轉換中，您可以在 Azure Data Lake Storage Gen1 中讀取容器、資料夾或個別檔案。 [來源選項] 索引標籤可讓您管理檔案的讀取方式。 
+在來源轉換中，您可以從 Azure Data Lake Storage Gen1 中的容器、資料夾或個別檔案讀取。 [來源選項] 索引標籤可讓您管理檔案的讀取方式。 
 
 ![來源選項](media/data-flow/sourceOptions1.png "來源選項")
 
