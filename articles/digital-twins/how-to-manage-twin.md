@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8e0f0b37dd429578194c18e5a9a1f063b74fb693
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506527"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587594"
 ---
 # <a name="manage-digital-twins"></a>管理 Digital Twins
 
@@ -37,18 +37,22 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 （選擇性）您可以提供數位對應項之所有屬性的初始值。 
 
-模型和初始屬性值是透過參數提供的 `initData` ，這是包含相關資料的 JSON 字串。
+模型和初始屬性值是透過參數提供的 `initData` ，這是包含相關資料的 JSON 字串。 如需結構化此物件的詳細資訊，請繼續下一節。
 
 > [!TIP]
 > 建立或更新對應項之後，最多可能會有10秒的延遲時間，變更才會反映在 [查詢](how-to-query-graph.md)中。 本文 `GetDigitalTwin` [稍後](#get-data-for-a-digital-twin) 所述的 api () 不會遇到這種延遲，因此，如果您需要立即回應，請使用 api 呼叫而不是查詢來查看您新建立的 twins。 
 
-### <a name="initialize-properties"></a>初始化屬性
+### <a name="initialize-model-and-properties"></a>初始化模型和屬性
 
-對應項建立 API 接受的物件可以序列化為對應項屬性的有效 JSON 描述。 請參閱 [*概念：數位 twins 和*](concepts-twins-graph.md) 對應項圖表，以取得對應項的 JSON 格式描述。
+對應項建立 API 會接受序列化為對應項屬性之有效 JSON 描述的物件。 請參閱 [*概念：數位 twins 和*](concepts-twins-graph.md) 對應項圖表，以取得對應項的 JSON 格式描述。 
+
+首先，您將建立資料物件來代表對應項及其屬性資料。 然後，您可以使用 `JsonSerializer` 將此的序列化版本傳遞至參數的 API 呼叫 `initdata` 。
 
 您可以手動或使用所提供的 helper 類別來建立參數物件。 以下是每個範例。
 
 #### <a name="create-twins-using-manually-created-data"></a>使用手動建立的資料建立 twins
+
+若未使用任何自訂 helper 類別，您可以在中表示對應項的屬性 `Dictionary<string, object>` ，其中 `string` 是屬性的名稱，而 `object` 是代表屬性和其值的物件。
 
 ```csharp
 // Define the model type for the twin to be created
@@ -68,6 +72,8 @@ client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<stri
 
 #### <a name="create-twins-with-the-helper-class"></a>使用 helper 類別建立 twins
 
+的 helper 類別 `BasicDigitalTwin` 可讓您更直接將屬性欄位儲存在「對應項」物件中。 您仍可能會想要使用建立屬性清單 `Dictionary<string, object>` ，然後直接將其新增至對應項物件 `CustomProperties` 。
+
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
 twin.Metadata = new DigitalTwinMetadata();
@@ -80,6 +86,13 @@ twin.CustomProperties = props;
 
 client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
 ```
+
+>[!NOTE]
+> `BasicDigitalTwin` 物件會隨附一個 `Id` 欄位。 您可以將此欄位保留為空白，但如果您新增了識別碼值，它必須符合傳遞至呼叫的 ID 參數 `CreateDigitalTwin` 。 在上述範例中，這看起來像這樣：
+>
+>```csharp
+>twin.Id = "myNewRoomID";
+>```
 
 ## <a name="get-data-for-a-digital-twin"></a>取得數位對應項的資料
 

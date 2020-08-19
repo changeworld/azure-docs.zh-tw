@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f280e6754d40ad5dc8cbfa4b760e090d0b5b81aa
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 76671ba2dec2590baf4f3df38325b4cfb0129e8d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846474"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586098"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Node.js SDK：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "87846474"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
+> * [春季資料 v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -59,7 +60,7 @@ ms.locfileid: "87846474"
 * 修正使用者提供部份重試選項時的 Bug
 
 ### <a name="303"></a><a name="3.0.3"></a>3.0.3
-* 防止 webpack 解析以要求呼叫的模組
+* 防止 webpack 使用需要解析呼叫的模組
 
 ### <a name="302"></a><a name="3.0.2"></a>3.0.2
 * 修正長時間未處理的 Bug，其中 RU 一律會回報為 0 以進行彙總查詢
@@ -185,7 +186,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ```
 
 #### <a name="improved-browser-experience"></a>改善的瀏覽器體驗
-雖然可在瀏覽器中使用 v2 SDK，但這並不是理想的體驗。 您需要 polyfill 數個 node.js 內建程式庫，並使用 webpack 或包裹之類的搭配程式。 v3 SDK 讓瀏覽器使用者有更好的現成體驗。
+雖然可在瀏覽器中使用 v2 SDK，但這並不是理想的體驗。 您需要 polyfill 數個 node.js 內建程式庫，並使用搭配程式，例如 webpack 或包裹。 v3 SDK 讓瀏覽器使用者有更好的現成體驗。
 
 * 以 fetch 取代 request internals (#245)
 * 移除 Buffer 的使用 (#330)

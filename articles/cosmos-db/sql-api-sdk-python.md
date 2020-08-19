@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB SQL Python API、SDK 和資源
 description: 了解所有 SQL Python API 和 SDK 相關資訊，包括發行日期、停用日期及 Azure Cosmos DB Python SDK 每個版本之間所做的變更。
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 44d9521e9d02195cb1d4ff61fd519f31ce9c0018
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876252"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585979"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Python SDK：版本資訊和資源
 
@@ -27,7 +27,8 @@ ms.locfileid: "87876252"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
+> * [春季資料 v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,6 +46,20 @@ ms.locfileid: "87876252"
 |**目前支援的平台**|[Python 2.7](https://www.python.org/downloads/) 和 [Python 3.5.3+](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>版本歷程記錄
+
+### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10) 
+
+- 已新增「延遲」索引模式的淘汰警告。 後端不再允許使用此模式建立容器，而是將它們設定為一致。
+
+**新功能**
+- 已新增在建立新容器時設定分析儲存體 TTL 的功能。
+
+**錯誤修正**
+- 已將 dicts 的支援修正為 get_client Api 的輸入。
+- 修正查詢反覆運算器中的 Python 2/3 相容性。
+- Fixed type 提示錯誤 (#12570) 的問題。
+- 修正了選項標頭未新增至 upsert_item 函式的 bug。 問題 #11791-感謝您 @aalapatirvbd 。
+- 修正在專案中使用非字串識別碼時引發的錯誤。 它現在會引發 TypeError，而非 AttributeError (#11793) 的問題。
 
 ### <a name="400"></a>4.0.0
 
@@ -304,7 +319,7 @@ ms.locfileid: "87876252"
 Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。 新的功能與最佳化項目只會新增至目前的 SDK，因此建議您一律盡早升級至最新的 SDK 版本。
 
 > [!WARNING]
-> 2022年8月31日之後，Azure Cosmos DB 將不會再進行錯誤修正、新增功能，以及提供1.x 或2.x 版的支援（適用于 SQL API 的 Azure Cosmos DB Python SDK）。 如果您不想要升級，從版本1.x 和2.x （SDK）傳送的要求將會繼續由 Azure Cosmos DB 服務提供服務。
+> 2022年8月31日之後，Azure Cosmos DB 將不會再進行錯誤修正、新增功能，以及提供適用于 Azure Cosmos DB Python SDK for SQL API 1.x 或2.x 版的支援。 如果您不想要升級，Azure Cosmos DB 服務會繼續提供從1.x 版和2.x 版的 SDK 傳送的要求。
 
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |

@@ -7,24 +7,24 @@ manager: paulyuk
 editor: ''
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: cawa
-ms.openlocfilehash: bcacd5d2ed9e325383ec7ae75002ae0a6213111c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f20a40603916e703d6f3cfc13ee2d165675f3ca2
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81429755"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588495"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>安全地儲存 Web 應用程式的祕密應用程式設定
 
 ## <a name="overview"></a>概觀
 本文說明如何安全地儲存 Azure 應用程式的秘密應用程式組態設定。
 
-傳統上，所有的 web 應用程式設定都儲存在設定檔中，例如 Web.config。這種作法會導致將密碼設定（例如雲端認證）簽入到公用原始檔控制系統（例如 GitHub）。 同時，也可能會因為變更原始程式碼和重新設定開發設定所需的額外負荷，而難以遵循安全性最佳作法。
+傳統上，所有 web 應用程式設定都是儲存在設定檔中，例如 Web.config。這種作法會導致將秘密設定（例如雲端認證）簽入至公用原始檔控制系統（例如 GitHub）。 同時，也可能會因為變更原始程式碼和重新設定開發設定所需的額外負荷，而難以遵循安全性最佳作法。
 
-為了確保開發程式安全，會建立工具和架構程式庫，以最少或完全不變更原始程式碼的方式，安全地儲存應用程式秘密設定。
+為了確保開發程式的安全，會建立工具和架構程式庫以安全地儲存應用程式密碼設定，而不需要變更原始程式碼。
 
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET 和 .NET Core 應用程式
 
@@ -43,16 +43,16 @@ ms.locfileid: "81429755"
     ![建立 Azure Key Vault](../media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
 2. 為您和您的小組成員授與金鑰保存庫的存取權。 如果您的小組成員眾多，您可以建立 [Azure Active Directory 群組](../../active-directory/active-directory-groups-create-azure-portal.md)，然後新增該安全性群組對金鑰保存庫的存取權。 在 [秘密權限]** 下拉式清單中，核取 [秘密管理作業]** 下的 [取得]** 和 [清單]**。
-如果您已經建立 web 應用程式，請將 web 應用程式存取權授與 Key Vault，讓它可以存取金鑰保存庫，而不需要在應用程式設定或檔案中儲存秘密設定。 依其名稱搜尋您的 web 應用程式，並以您授與使用者存取權的相同方式來加入它。
+如果您已建立 web 應用程式，請將 Key Vault 的存取權授與 web 應用程式，讓它可以存取金鑰保存庫，而不需要在應用程式設定或檔案中儲存秘密設定。 依名稱搜尋您的 web 應用程式，並以您授與使用者存取權的相同方式加以新增。
 
     ![新增金鑰保存庫存取原則](../media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 
-3. 將您的密碼新增至 Azure 入口網站上的 Key Vault。 針對巢狀組態設定，請將 ':' 取代為 '--'，使金鑰保存庫密碼名稱成為有效的名稱。 金鑰保存庫密碼的名稱中不可包含 ':'。
+3. 將您的秘密新增至 Azure 入口網站上的 Key Vault。 針對巢狀組態設定，請將 ':' 取代為 '--'，使金鑰保存庫密碼名稱成為有效的名稱。 金鑰保存庫密碼的名稱中不可包含 ':'。
 
     ![新增金鑰保存庫密碼](../media/vs-secure-secret-appsettings/add-keyvault-secret.png)
 
     > [!NOTE]
-    > 在 Visual Studio 2017 V 15.6 版之前，我們建議您安裝適用于 Visual Studio 的 Azure 服務驗證延伸模組。 但它現在已被取代，因為功能已在 Visual Studio 內整合。 因此，如果您使用舊版的 visual Studio 2017，建議您至少更新為 VS 2017 15.6 或更新版本，讓您能夠以原生方式使用這項功能，並從使用 Visual Studio 登入身分識別本身存取金鑰保存庫。
+    > 在 Visual Studio 2017 V 15.6 版之前，我們建議您安裝適用于 Visual Studio 的 Azure 服務驗證延伸模組。 但現在已被取代，因為功能已在 Visual Studio 內整合。 因此，如果您使用舊版的 visual Studio 2017，建議您至少更新至 VS 2017 15.6 或更新版本，如此一來，您就能以原生方式使用這項功能，並從使用 Visual Studio 登入身分識別本身存取金鑰保存庫。
     >
 
 4. 將下列 NuGet 封裝新增至您的專案：
@@ -106,7 +106,7 @@ ms.locfileid: "81429755"
     Microsoft.Configuration.ConfigurationBuilders.Base
     ```
 
-2. 建立與下列類似的檔案。 請將其儲存在專案資料夾以外的位置。
+2. 建立如下所示的檔案。 請將其儲存在專案資料夾以外的位置。
 
     ```xml
     <root>
@@ -129,7 +129,7 @@ ms.locfileid: "81429755"
     </configBuilders>
     ```
 
-4. 指定 appSettings 區段會使用秘密組態產生器。 請確定密碼設定的專案具有虛擬值。
+4. 指定 appSettings 區段會使用秘密組態產生器。 請確定秘密設定的專案有虛擬值。
 
     ```xml
         <appSettings configBuilders="Secrets">
@@ -151,7 +151,7 @@ ms.locfileid: "81429755"
    Microsoft.Configuration.ConfigurationBuilders.UserSecrets
    ```
 
-2. 在 Web.config 中定義 Key Vault 的 configuration builder。將此區段放在*appSettings*區段前面。 如果您的金鑰保存庫是公用 Azure，請將 *vaultName* 取代為金鑰保存庫名稱；如果您使用 Sovereign 雲端，則取代為 URI。
+2. 在 Web.config 中定義 Key Vault configuration builder。將此區段放在 *appSettings* 區段之前。 如果您的金鑰保存庫是公用 Azure，請將 *vaultName* 取代為金鑰保存庫名稱；如果您使用 Sovereign 雲端，則取代為 URI。
 
     ```xml
     <configSections>

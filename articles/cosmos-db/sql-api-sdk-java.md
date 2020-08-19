@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: f36a4b223c12662eec1369bd4ec1a1175e459198
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851778"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586123"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>適用於 SQL API 的 Azure Cosmos DB Java SDK：版本資訊和資源
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "87851778"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
+> * [春季資料 v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -52,7 +53,7 @@ ms.locfileid: "87851778"
 
 ## <a name="release-notes"></a>版本資訊
 
-### <a name="251"></a><a name="2.5.1"></a>2.5.1
+### <a name="251"></a><a name="2.5.1"></a>版
 * 修正 documentCollection 查詢的主要分割區快取問題。
 
 ### <a name="250"></a><a name="2.5.0"></a>2.5.0
@@ -262,14 +263,14 @@ ms.locfileid: "87851778"
 Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。 新的功能與最佳化項目只會新增至目前的 SDK，因此建議您一律盡早升級至最新的 SDK 版本。
 
 > [!WARNING]
-> 2020 5 月30日之後，Azure Cosmos DB 將不再進行 bug 修正、新增功能，並提供支援給1.x 版的 Azure Cosmos DB JAVA SDK for SQL API。 如果您不想升級，從版本 1.x SDK 傳送的要求將會繼續由 Azure Cosmos DB 服務提供服務。
+> 30 2020 月30日之後，Azure Cosmos DB 將不會再進行錯誤修正、新增功能，以及提供1.x 版的 Azure Cosmos DB JAVA SDK for SQL API 支援。 如果您不想要進行升級，Azure Cosmos DB 服務會繼續提供從第1.x 版 SDK 傳送的要求。
 >
-> 2016年2月29日之後，Azure Cosmos DB 不會再進行 bug 修正、新增功能，以及為 SQL API 的 Azure Cosmos DB JAVA SDK 版本提供支援。 如果您不想升級，從版本 0. x SDK 傳送的要求將會繼續由 Azure Cosmos DB 服務提供服務。
+> 2016年2月29日之後，Azure Cosmos DB 將不再進行錯誤修正、新增功能，以及提供適用于 Azure Cosmos DB JAVA SDK for SQL API 版本的支援。 如果您不想要進行升級，則 Azure Cosmos DB 服務會繼續提供從版本 0. x 版的 SDK 傳送的要求。
 
 
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |
-| [2.5.1](#2.5.1) |2020年6月03日 |--- |
+| [版](#2.5.1) |2020年6月3日 |--- |
 | [2.5.0](#2.5.0) |2020 年 5 月 12 日 |--- |
 | [2.4.7](#2.4.7) |2020 年 2 月 20 日 |--- |
 | [2.4.6](#2.4.6) |2020 年 1 月 24 日 |--- |

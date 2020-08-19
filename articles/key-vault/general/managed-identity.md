@@ -1,27 +1,27 @@
 ---
 title: 使用系統指派的受控識別來存取 Azure Key Vault
-description: 瞭解如何為 App Service 應用程式建立受控識別，以及如何使用它來存取 Azure Key Vault
+description: 瞭解如何建立 App Service 應用程式的受控識別，以及如何使用它來存取 Azure Key Vault
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0aa9a9728c3a59b6f47ef1427cbcd368d4f1e77c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090615"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586115"
 ---
-# <a name="provide-key-vault-authentication-with-a-managed-identity"></a>提供受控識別的 Key Vault 驗證
+# <a name="provide-key-vault-authentication-with-a-managed-identity"></a>提供受控識別的 Key Vault authentication
 
-Azure Active Directory 的受控識別可讓您的應用程式輕鬆地存取其他 Azure AD 保護的資源。 身分識別由 Azure 平台負責管理，因此您不需要佈建或輪替任何密碼。 如需詳細資訊，請參閱[適用於 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 
+Azure Active Directory 的受控識別可讓您的應用程式輕鬆地存取其他受 Azure AD 保護的資源。 身分識別由 Azure 平台負責管理，因此您不需要佈建或輪替任何密碼。 如需詳細資訊，請參閱[適用於 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/overview.md)。 
 
-本文說明如何建立 App Service 應用程式的受控識別，並使用它來存取 Azure Key Vault。 針對 Azure Vm 中裝載的應用程式，請參閱[使用 WINDOWS VM 系統指派的受控識別來存取 Azure Key Vault](../../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md)。
+本文說明如何為 App Service 應用程式建立受控識別，並使用它來存取 Azure Key Vault。 針對裝載于 Azure Vm 中的應用程式，請參閱 [使用 WINDOWS VM 系統指派的受控識別來存取 Azure Key Vault](../../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-nonaad.md)。
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -34,8 +34,8 @@ Azure Active Directory 的受控識別可讓您的應用程式輕鬆地存取其
    - [使用 Azure CLI 建立金鑰保存庫](../secrets/quick-create-cli.md)
    - [使用 Azure PowerShell 建立金鑰保存庫](../secrets/quick-create-powershell.md)
    - [使用 Azure 入口網站建立金鑰保存庫](../secrets/quick-create-portal.md)。
-- 要對其授與金鑰保存庫存取權的現有 App Service 應用程式。 您可以遵循[App Service 檔](../../app-service/overview.md)中的步驟來快速建立一個。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)或[Azure PowerShell](/powershell/azure/)。 或者，您可以使用 [Azure 入口網站](https://portal.azure.com)。
+- 要對其授與 key vault 存取權的現有 App Service 應用程式。 您可以遵循 [App Service 檔](../../app-service/overview.md)中的步驟，快速建立一個。
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)。 或者，您可以使用 [Azure 入口網站](https://portal.azure.com)。
 
 
 ## <a name="adding-a-system-assigned-identity"></a>新增系統指派的身分識別 
@@ -56,17 +56,17 @@ Azure Active Directory 的受控識別可讓您的應用程式輕鬆地存取其
 
 ### <a name="azure-cli"></a>Azure CLI
 
-本快速入門需要 Azure CLI 版2.0.4 版或更新版本。 執行 `az --version` 來尋找您目前的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
+本快速入門需要 Azure CLI 2.0.4 版版或更新版本。 執行 `az --version` 來尋找您目前的版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
 
-若要以 Azure CLI 登入，請使用[az login](/cli/azure/reference-index?view=azure-cli-latest#az-login)命令：
+若要使用 Azure CLI 登入，請使用 [az login](/cli/azure/reference-index?view=azure-cli-latest#az-login) 命令：
 
 ```azurecli-interactive
 az login
 ```
 
-如需有關使用 Azure CLI 登入選項的詳細資訊，請參閱[使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。 
+如需有關使用 Azure CLI 登入選項的詳細資訊，請參閱 [使用 Azure CLI 登入](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。 
 
-若要建立此應用程式的身分識別，請使用 Azure CLI [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign)命令或[az functionapp identity assign](/cli/azure/functionapp/identity?view=azure-cli-latest#az-functionapp-identity-assign)命令：
+若要建立此應用程式的身分識別，請使用 Azure CLI [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) 命令或 [az functionapp identity assign](/cli/azure/functionapp/identity?view=azure-cli-latest#az-functionapp-identity-assign) 命令：
 
 
 ```azurecli-interactive
@@ -77,7 +77,7 @@ az webapp identity assign --name myApp --resource-group myResourceGroup
 az functionapp identity assign --name myApp --resource-group myResourceGroup
 ```
 
-記 `PrincipalId` 下，這將在下一節中需要。
+請記 `PrincipalId` 下下一節將需要的。
 
 ```json
 {
@@ -92,19 +92,19 @@ az functionapp identity assign --name myApp --resource-group myResourceGroup
 
 1.  流覽至 Key Vault 資源。 
 
-1.  選取 [**存取原則**]，然後按一下 [**新增存取原則**]。 
+1.  選取 [ **存取** 原則]，然後按一下 [ **新增存取原則**]。 
 
-1.  在 [**秘密許可權**] 中，選取 [**取得]、[清單**]。 
+1.  在 [ **秘密許可權**] 中，選取 [ **取得]、[清單**]。 
 
-1.  選擇 [**選取主體**]，然後在 [搜尋] 欄位中輸入應用程式的名稱。  在結果清單中選取應用程式，然後按一下 [**選取**]。 
+1.  選擇 [ **選取主體**]，然後在 [搜尋] 欄位中輸入應用程式的名稱。  在結果清單中選取應用程式，然後按一下 [ **選取**]。 
 
-1.  按一下 **[新增]** 完成新增存取原則的作業。
+1.  按一下 **[新增]** 以完成新增存取原則。
 
-    ![螢幕擷取畫面：顯示如何在 Azure 入口網站中新增存取原則。](../media/managed-identity-access-policy.png)
+    ![顯示在 Azure 入口網站中加入新存取原則的螢幕擷取畫面。](../media/managed-identity-access-policy.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要授與您的應用程式金鑰保存庫的存取權，請使用 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy)命令，並提供**ObjectId**參數與您先前記下的**principalId** 。
+若要將您的應用程式存取權授與您的金鑰保存庫，請使用 Azure CLI [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) 命令，並提供 **ObjectId** 參數與您在上面記下的 **principalId** 。
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-permissions get list 

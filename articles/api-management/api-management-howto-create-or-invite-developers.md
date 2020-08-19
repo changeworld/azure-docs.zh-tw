@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure API 管理中管理使用者帳戶 |Microsoft Docs
-description: 瞭解如何在 Azure API 管理中建立或邀請使用者。 建立開發人員帳戶之後，請查看要使用的其他資源。
+description: 瞭解如何在 Azure API 管理中建立或邀請使用者。 建立開發人員帳戶之後，請查看其他要使用的資源。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 9ec482af2878ba302a4658314723b96fb9a42999
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904882"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566126"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>如何在 Azure API 管理中管理使用者帳戶
 
-在 API 管理中，開發人員是指您使用 API 管理所公開之 API 的使用者。 本指南示範如何建立並邀請開發人員使用您以 API 管理執行個體提供給他們的 API 和產品。 如需以程式設計方式管理使用者帳戶的相關資訊，請參閱 [API 管理 REST](/rest/api/apimanagement/) 參考中的[使用者實體](/rest/api/apimanagement/2019-12-01/user)文件。
+在 API 管理中，開發人員是指您使用 API 管理所公開之 API 的使用者。 本指南說明如何建立和邀請開發人員使用您可透過 API 管理實例提供給他們使用的 Api 和產品。 如需以程式設計方式管理使用者帳戶的相關資訊，請參閱 [API 管理 REST](/rest/api/apimanagement/) 參考中的[使用者實體](/rest/api/apimanagement/2019-12-01/user)文件。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -38,11 +38,11 @@ ms.locfileid: "87904882"
 1. 選取畫面左側的 [使用者]**** 索引標籤。
 2. 按 [+新增]。
 3. 輸入使用者的適當資訊。
-4. 按 [**新增**]。
+4. 按下 [ **新增**]。
 
     ![新增使用者](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-根據預設，新建立的開發人員帳戶會處於作用中**狀態**，並與**開發人員**群組相關聯。 處於「作用中 **」狀態的**開發人員帳戶可用來存取其訂閱的所有 api。 若要將新建立的開發人員與其他群組建立關聯，請參閱 [如何將群組與開發人員建立關聯][How to associate groups with developers]。
+根據預設，新建立的開發人員 **帳戶為使用**中，並與 **開發人員** 群組相關聯。 **處於作用中狀態的**開發人員帳戶可以用來存取它們具有訂用帳戶的所有 api。 若要將新建立的開發人員與其他群組建立關聯，請參閱 [如何將群組與開發人員建立關聯][How to associate groups with developers]。
 
 ## <a name="invite-a-developer"></a><a name="invite-developer"> </a>邀請開發人員
 若要邀請開發人員，請遵循本節中的步驟：
@@ -68,10 +68,10 @@ ms.locfileid: "87904882"
 
 ## <a name="reset-a-user-password"></a>重設使用者密碼
 
-若要以程式設計方式使用使用者帳戶，請參閱[API 管理 REST API](/rest/api/apimanagement/)參考中的使用者實體檔。 若要將使用者帳戶密碼重設為特定值，您可以使用 [更新使用者](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) 作業並指定所要的密碼。
+若要以程式設計方式使用使用者帳戶，請參閱「 [API 管理](/rest/api/apimanagement/) 」中的使用者實體檔 REST API 參考。 若要將使用者帳戶密碼重設為特定值，您可以使用 [更新使用者](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) 作業並指定所要的密碼。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟
-建立開發人員帳戶之後，您可以將它與角色建立關聯，並讓它訂閱產品和 API。 如需詳細資訊，請參閱[如何建立和使用群組][How to create and use groups]。
+建立開發人員帳戶之後，您可以將它與角色建立關聯，並讓它訂閱產品和 API。 如需詳細資訊，請參閱 [如何建立和使用群組][How to create and use groups]。
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
 [api-management-add-new-user]: ./media/api-management-howto-create-or-invite-developers/api-management-add-new-user.png

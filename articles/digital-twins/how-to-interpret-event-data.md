@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d32ad29bf652cad62a5950859ebff0366e09fc6f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510023"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587628"
 ---
 # <a name="understand-event-data"></a>瞭解事件資料
 
@@ -30,7 +30,7 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 
 通知訊息標頭會以索引鍵/值組表示。 根據 (MQTT、AMQP 或 HTTP) 所使用的通訊協定而定，訊息標頭將會以不同的方式進行序列化。 本節將討論通知訊息的一般標頭資訊，而不論所選擇的特定通訊協定和序列化為何。
 
-某些通知符合 CloudEvents 標準。 CloudEvents 一致性如下所示。
+某些通知符合 [CloudEvents](https://cloudevents.io/) 標準。 CloudEvents 一致性如下所示。
 * 從裝置發出的通知會繼續遵循現有的通知規格
 * IoT 中樞所處理和發出的通知會繼續遵循現有的通知規格，但 IoT 中樞會選擇支援 CloudEvents，例如透過事件方格
 * 從 [數位 twins](concepts-twins-graph.md) 發出的通知與 [模型](concepts-models.md) 符合 CloudEvents
@@ -107,7 +107,7 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 | --- | --- |
 | `id` | 通知的識別碼，例如 UUID 或服務所維護的計數器。 `source` + `id` 對每個相異事件而言是唯一的。 |
 | `source` | IoT 中樞或 Azure 數位 Twins 實例的名稱，例如 *myhub.azure-devices.net* 或 *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | *1.0*<br>此訊息符合此版本的 CloudEvents 規格。 |
+| `specversion` | *1.0*<br>此訊息符合此版本的 [CloudEvents 規格](https://github.com/cloudevents/spec)。 |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | 數位對應項的識別碼 |
@@ -193,7 +193,7 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 | --- | --- |
 | `id` | 通知的識別碼，例如 UUID 或服務所維護的計數器。 `source` + `id` 對每個相異事件而言都是唯一的 |
 | `source` | Azure 數位 Twins 實例的名稱，例如 *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | *1.0*<br>此訊息符合此版本的 CloudEvents 規格。 |
+| `specversion` | *1.0*<br>此訊息符合此版本的 [CloudEvents 規格](https://github.com/cloudevents/spec)。 |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
 | `subject` | 關聯性的識別碼，例如 `<twinID>/relationships/<relationshipID>` |
@@ -249,7 +249,7 @@ Azure 數位 Twins 中的不同事件會產生 **通知**，這可讓解決方�
 | --- | --- |
 | `id` | 通知的識別碼，例如 UUID 或服務所維護的計數器。 `source` + `id` 對每個相異事件而言都是唯一的 |
 | `source` | IoT 中樞或 Azure 數位 Twins 實例的名稱，例如 *myhub.azure-devices.net* 或 *mydigitaltwins.westus2.azuredigitaltwins.net*
-| `specversion` | *1.0*<br>此訊息符合此版本的 CloudEvents 規格。 |
+| `specversion` | *1.0*<br>此訊息符合此版本的 [CloudEvents 規格](https://github.com/cloudevents/spec)。 |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | 數位對應項的識別碼 |

@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c57f23a5cad2f47311b54728d576eb810ad88a4
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506017"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586566"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中新增已連線的組織
 
@@ -131,6 +131,10 @@ Azure AD 目錄或網域驗證的使用者取決於驗證類型。 已連線組�
     目前，只有在沒有任何已連線的使用者時，您才能刪除已連線的組織。
 
     ![[已連線的組織刪除] 按鈕](./media/entitlement-management-organization/organization-delete.png)
+
+## <a name="managing-a-connected-organization-programmatically"></a>以程式設計方式管理已連線的組織
+
+您也可以使用 Microsoft Graph 來建立、列出、更新及刪除已連線的組織。 具有具有委派許可權之應用程式的適當角色使用者 `EntitlementManagement.ReadWrite.All` 可以呼叫 API 來管理 [connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta) 物件，並為其設定贊助者。
 
 ## <a name="next-steps"></a>後續步驟
 
