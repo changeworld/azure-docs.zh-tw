@@ -3,17 +3,16 @@ title: 了解如何稽核虛擬機器的內容
 description: 了解 Azure 原則如何使用「來賓設定」代理程式來稽核虛擬機器內的設定。
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987098"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544667"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure 原則的來賓設定
 
-Azure 原則可以針對在 Azure 中執行的機器和[Arc 連線的機器](../../../azure-arc/servers/overview.md)，在機器內進行設定。
-此驗證會由「來賓設定」延伸模組和用戶端執行。 透過用戶端的延伸模組會驗證下列設定：
+Azure 原則可以針對在 Azure 中執行的機器和 [Arc 連接的機器](../../../azure-arc/servers/overview.md)，在機器內進行設定。 此驗證會由「來賓設定」延伸模組和用戶端執行。 透過用戶端的延伸模組會驗證下列設定：
 
 - 作業系統的設定
 - 應用程式設定或目前狀態
@@ -24,35 +23,35 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 
 ## <a name="enable-guest-configuration"></a>啟用來賓設定
 
-若要在您的環境中審查電腦的狀態，包括 Azure 和 Arc 連線機器中的機器，請參閱下列詳細資料。
+若要在您的環境中審核機器的狀態，包括 Azure 中的機器和 Arc 連接的機器，請參閱下列詳細資料。
 
 ## <a name="resource-provider"></a>資源提供者
 
 您必須先註冊資源提供者，才能使用「來賓設定」。 如果透過入口網站來指派「來賓設定」原則，則會自動註冊資源提供者。 您可以透過[入口網站](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell) 或 [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)手動註冊。
 
-## <a name="deploy-requirements-for-azure-virtual-machines"></a>部署 Azure 虛擬機器的需求
+## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure 虛擬機器的部署需求
 
-若要在電腦內審核設定，會啟用[虛擬機器擴充](../../../virtual-machines/extensions/overview.md)功能，且該電腦必須具有系統管理的身分識別。 延伸模組會下載適用的原則指派及相對應的設定定義。 識別會在電腦讀取和寫入來賓設定服務時用來進行驗證。 Arc 連線的電腦不需要此延伸模組，因為它包含在 Arc 連線的機器代理程式中。
+若要在機器內審核設定，則會啟用 [虛擬機器擴充](../../../virtual-machines/extensions/overview.md) 功能，且電腦必須具有系統管理的身分識別。 延伸模組會下載適用的原則指派及相對應的設定定義。 當電腦讀取和寫入至來賓設定服務時，會使用身分識別來進行驗證。 因為已連接 Arc 的電腦代理程式中包含了 Arc 連接的機器，所以不需要此延伸模組。
 
 > [!IMPORTANT]
-> 需要來賓設定延伸模組和受控識別，才能審核 Azure 虛擬機器。 若要大規模部署擴充功能，請指派下列原則計畫：
+> 需要來賓設定延伸模組和受控識別，才能審核 Azure 虛擬機器。 若要大規模部署擴充功能，請指派下列原則方案：
 > 
 > - [部署必要條件，以在虛擬機器上啟用來賓設定原則](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>擴充模組上設定的限制
 
-若要限制擴充功能不會影響在機器內執行的應用程式，「來賓設定」不得超過 5% 的 CPU。 內建和自訂定義都有這項限制。 Arc 連線機器代理程式中的來賓設定服務也是如此。
+若要限制擴充功能不會影響在機器內執行的應用程式，「來賓設定」不得超過 5% 的 CPU。 內建和自訂定義都有這項限制。 這同樣適用于 Arc 連接電腦代理程式中的「來賓設定」服務。
 
 ### <a name="validation-tools"></a>驗證工具
 
 在機器內，「來賓設定」會使用本機工具來執行稽核。
 
-下表顯示每個支援的作業系統上所使用的本機工具清單。 對於內建內容，來賓設定會自動處理載入這些工具。
+下表顯示每個支援的作業系統上所使用的本機工具清單。 針對內建內容，來賓設定會自動處理載入這些工具。
 
 |作業系統|驗證工具|注意|
 |-|-|-|
-|Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| 側載至僅供 Azure 原則使用的資料夾。 不會與 Windows PowerShell DSC 衝突。 PowerShell Core 不會新增至系統路徑。|
-|Linux|[Chef InSpec](https://www.chef.io/inspec/)| 會在預設位置安裝 Chef InSpec 版本2.2.61，並將其新增至系統路徑。 InSpec 套件的相依性（包括 Ruby 和 Python）也會一併安裝。 |
+|Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| 側載至僅供 Azure 原則使用的資料夾。 不會與 Windows PowerShell DSC 發生衝突。 PowerShell Core 不會新增至系統路徑。|
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| 在預設位置中安裝 Chef InSpec 版本2.2.61，並新增至系統路徑。 也會安裝 InSpec 套件（包括 Ruby 和 Python）的相依性。 |
 
 ### <a name="validation-frequency"></a>驗證頻率
 
@@ -60,7 +59,7 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 
 ## <a name="supported-client-types"></a>支援的用戶端類型
 
-「來賓設定」原則包含在新版本中。 如果「來賓設定」代理程式不相容，則會排除 Azure Marketplace 中可用的舊版作業系統。
+「來賓設定」原則包含在新版本中。 如果來賓設定代理程式不相容，則會排除 Azure Marketplace 中可用的舊版作業系統。
 下表顯示 Azure 映像上的支援作業系統清單：
 
 |發行者|名稱|版本|
@@ -77,34 +76,33 @@ Azure 原則的「來賓設定」原則目前只會稽核機器內的設定。
 
 ## <a name="network-requirements"></a>網路需求
 
-Azure 中的虛擬機器可以使用其局域網路介面卡或私人連結，與來賓設定服務進行通訊。
+Azure 中的虛擬機器可以使用其局域網路介面卡或私人連結來與來賓設定服務進行通訊。
 
-Azure Arc 機器會使用內部部署網路基礎結構進行連線，以連線到 Azure 服務並報告合規性狀態。
+Azure Arc 的機器會使用內部部署網路基礎結構進行連線，以連線到 Azure 服務和報告合規性狀態。
 
 ### <a name="communicate-over-virtual-networks-in-azure"></a>透過 Azure 中的虛擬網路進行通訊
 
-使用虛擬網路進行通訊的虛擬機器將需要在埠上對 Azure 資料中心進行輸出存取 `443` 。 如果您使用 Azure 中不允許輸出流量的私人虛擬網路，請使用網路安全性群組規則來設定例外狀況。 服務標籤 "GuestAndHybridManagement" 可用於參照「來賓設定」服務。
+使用虛擬網路進行通訊的虛擬機器將需要在埠上對 Azure 資料中心進行輸出存取 `443` 。 如果您是在 Azure 中使用不允許輸出流量的私人虛擬網路，請使用網路安全性群組規則來設定例外狀況。 服務標籤 "GuestAndHybridManagement" 可用於參照「來賓設定」服務。
 
 ### <a name="communicate-over-private-link-in-azure"></a>透過 Azure 中的私人連結進行通訊
 
-虛擬機器可以使用[私人連結](../../../private-link/private-link-overview.md)來與來賓設定服務通訊。 將標記套用至名稱 `EnablePrivateNeworkGC` 和值， `TRUE` 以啟用此功能。 您可以在將來賓設定原則套用至電腦之前或之後套用此標記。
+虛擬機器可以使用 [私人連結](../../../private-link/private-link-overview.md) 來與來賓設定服務進行通訊。 套用具有名稱 `EnablePrivateNeworkGC` 和值的標記 `TRUE` 以啟用此功能。 在將來賓設定原則套用至電腦之前或之後，都可以套用標記。
 
-流量會使用 Azure[虛擬公用 IP 位址](../../../virtual-network/what-is-ip-address-168-63-129-16.md)來路由傳送，以使用 azure 平臺資源建立安全且已驗證的通道。
+使用 Azure [虛擬公用 IP 位址](../../../virtual-network/what-is-ip-address-168-63-129-16.md) 來路由傳送流量，以使用 azure 平臺資源建立安全、已驗證的通道。
 
-### <a name="azure-arc-connected-machines"></a>Azure Arc 連線的機器
+### <a name="azure-arc-connected-machines"></a>Azure Arc 連線的電腦
 
-Azure Arc 所連接的 Azure 外部節點需要與來賓設定服務的連線。
-有關[Azure Arc 檔](../../../azure-arc/servers/overview.md)中所提供的網路和 proxy 需求的詳細資料。
+位於 Azure 外部且由 Azure Arc 連接的節點需要連線至「來賓設定」服務。 [Azure Arc 檔](../../../azure-arc/servers/overview.md)中提供的網路和 proxy 需求的詳細資料。
 
 若要與 Azure 中的「來賓設定」資源提供者通訊，機器需要在連接埠 **443** 上對 Azure 資料中心進行輸出存取。 如果 Azure 中的網路不允許輸出流量，請使用[網路安全性群組](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)規則來設定例外狀況。 [服務標籤](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" 可用於參照「來賓設定」服務。
 
 ## <a name="managed-identity-requirements"></a>受控識別需求
 
-方案中的原則定義會[部署必要條件，以在虛擬機器上啟用來賓設定原則，以](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)啟用系統指派的受控識別（如果不存在的話）。 計畫中有兩個原則定義可管理身分識別建立。 原則定義中的 IF 條件會根據 Azure 中機器資源的目前狀態，確保正確的行為。
+在 [虛擬機器上啟用來賓設定原則的方案部署必要條件](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) 中的原則定義會啟用系統指派的受控識別（如果不存在的話）。 方案中有兩個原則定義可管理身分識別建立。 原則定義中的 IF 條件會根據 Azure 中電腦資源的目前狀態，來確保正確的行為。
 
-如果電腦目前沒有任何受控識別，則有效原則會是： [ \[ 預覽 \] ：新增系統指派的受控識別，以在沒有身分識別的虛擬機器上啟用來賓設定指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+如果電腦目前沒有任何受控識別，有效原則將會是： [ \[ 預覽 \] ：新增系統指派的受控識別，以在沒有身分識別的虛擬機器上啟用來賓設定指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
-如果電腦目前有使用者指派的系統識別，有效的原則會是： [ \[ 預覽 \] ：新增系統指派的受控識別，以在具有使用者指派身分識別的虛擬機器上啟用來賓設定指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+如果電腦目前有使用者指派的系統身分識別，有效的原則將會是： [ \[ 預覽 \] ：新增系統指派的受控識別，以在具有使用者指派身分識別的虛擬機器上啟用來賓設定指派](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>來賓設定定義需求
 

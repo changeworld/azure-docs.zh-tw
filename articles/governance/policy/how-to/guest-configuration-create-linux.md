@@ -1,14 +1,14 @@
 ---
 title: 如何建立 Linux 的客體設定原則
 description: 了解如何建立 Linux 的 Azure 原則客體設定原則。
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236585"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547715"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何建立 Linux 的客體設定原則
 
@@ -25,9 +25,8 @@ ms.locfileid: "88236585"
 > [!IMPORTANT]
 > 具有客體設定的自訂原則是一項預覽功能。
 >
-> 需要客體設定擴充功能，才能在 Azure 虛擬機器中執行稽核。
-> 若要在所有 Linux 電腦間大規模部署擴充功能，請指派下列原則定義：
->   - [部署必要條件，以在 Linux VM 上啟用客體設定原則。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> 需要客體設定擴充功能，才能在 Azure 虛擬機器中執行稽核。 若要在所有 Linux 電腦間大規模部署擴充功能，請指派下列原則定義：
+> - [部署必要條件，以在 Linux VM 上啟用客體設定原則。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>安裝 PowerShell 模組
 
@@ -52,14 +51,13 @@ ms.locfileid: "88236585"
 - Windows
 
 > [!NOTE]
-> Cmdlet ' GuestConfigurationPackage ' 需要 OpenSSL 版本1.0，因為 OMI 的相依性。
-> 這會導致任何具有 OpenSSL 1.1 或更新版本的環境發生錯誤。
+> 因為對 OMI 的相依性，所以 Cmdlet ' GuestConfigurationPackage ' 需要 OpenSSL 1.0 版。 這會導致 OpenSSL 1.1 或更新版本的任何環境發生錯誤。
 
 客體設定資源模組需要下列軟體：
 
 - PowerShell 6.2 或更新版本。 如果尚未安裝，請依照[這些指示](/powershell/scripting/install/installing-powershell)操作。
 - Azure PowerShell 1.5.0 或更新版本。 如果尚未安裝，請依照[這些指示](/powershell/azure/install-az-ps)操作。
-  - 只需要 AZ 模組的 'Az.Accounts' 與 'Az.Resources'。
+  - 只有 Az 模組 ' Az. Accounts ' 和 ' Az. Resources ' 是必要的。
 
 ### <a name="install-the-module"></a>安裝模組
 
@@ -81,11 +79,12 @@ ms.locfileid: "88236585"
 
 ## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>Linux 的客體設定成品和原則
 
-即使在 Linux 環境中，客體設定還是會使用 Desired State Configuration 作為語言抽象概念。 此實作以機器碼 (C++) 為基礎，因此不需要載入 PowerShell。 不過確實需要一個組態 MOF，以描述有關環境的詳細資料。 DSC 會作為 InSpec 的包裝函式，以將執行方式、參數提供方式，以及將輸出傳回至服務的方式標準化。 您不需要充份了解 DSC 也能使用自訂 InSpec 內容。
+即使在 Linux 環境中，客體設定還是會使用 Desired State Configuration 作為語言抽象概念。 此實作以機器碼 (C++) 為基礎，因此不需要載入 PowerShell。 不過確實需要一個組態 MOF，以描述有關環境的詳細資料。
+DSC 會作為 InSpec 的包裝函式，以將執行方式、參數提供方式，以及將輸出傳回至服務的方式標準化。 您不需要充份了解 DSC 也能使用自訂 InSpec 內容。
 
 #### <a name="configuration-requirements"></a>組態需求
 
-自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔案名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本 (ARM 範本) 中的來賓指派名稱必須相同。
+自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本 (ARM 範本) 的來賓指派名稱必須相同。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自訂客體設定組態
 
@@ -141,8 +140,6 @@ AuditFilePathExists -out ./Config
 將名為 `config.ps1` 的檔案儲存在專案資料夾中。 在終端機中執行 `./config.ps1`，以在 PowerShell 中執行該檔案。 將會建立 MOF 檔案。
 
 就技術上而言，`Node AuditFilePathExists` 命令不是必要的，但該命令會產生名為 `AuditFilePathExists.mof` 的檔案，而非預設的 `localhost.mof`。 使 MOF 檔案名稱遵循設定，以供在大規模作業時輕鬆地整理許多檔案。
-
-
 
 您現在應該具有如下所示的專案結構：
 
@@ -288,8 +285,7 @@ New-GuestConfigurationPolicy `
 
 Cmdlet 輸出會傳回物件，其中包含原則檔案的方案顯示名稱和路徑。
 
-最後，使用 `Publish-GuestConfigurationPolicy` Cmdlet 來發佈原則定義。
-此 Cmdlet 只有 **Path** 參數，該參數會指向由 `New-GuestConfigurationPolicy` 所建立的 JSON 檔案位置。
+最後，使用 `Publish-GuestConfigurationPolicy` Cmdlet 來發佈原則定義。 此 Cmdlet 只有 **Path** 參數，該參數會指向由 `New-GuestConfigurationPolicy` 所建立的 JSON 檔案位置。
 
 若要執行發佈命令，則需要在 Azure 中建立原則的存取權。 如需特定的授權需求，請參閱 [Azure 原則概觀](../overview.md)頁面。 最佳的內建角色為**資源原則參與者**。
 
@@ -345,9 +341,9 @@ describe file(attr_path) do
 end
 ```
 
-Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名為 **參數**的參數。 此參數會使用雜湊表定義，包括每個參數的所有詳細資料，並為用來建立每個 Azure 原則定義的檔案建立所有必要區段。
+Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含參數命名 **參數**。 此參數會使用雜湊表定義，包括每個參數的所有詳細資料，並為用來建立每個 Azure 原則定義的檔案建立所有必要區段。
 
-下列範例會建立原則定義來稽核檔案路徑，使用者可在原則指派時提供路徑。
+下列範例會建立原則定義來審核檔案路徑，其中使用者會在原則指派時提供路徑。
 
 ```azurepowershell-interactive
 $PolicyParameterInfo = @(
@@ -459,5 +455,5 @@ Key Vault 存取原則必須允許計算資源提供者在部署期間存取憑�
 ## <a name="next-steps"></a>後續步驟
 
 - 了解如何使用[客體設定](../concepts/guest-configuration.md)來稽核 VM。
-- 了解如何[以程式設計方式建立原則](programmatically-create.md)。
-- 了解如何[取得合規性資料](get-compliance-data.md)。
+- 了解如何[以程式設計方式建立原則](./programmatically-create.md)。
+- 了解如何[取得合規性資料](./get-compliance-data.md)。

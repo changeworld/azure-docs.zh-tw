@@ -1,17 +1,17 @@
 ---
 title: 高可用性-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 本文提供適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中高可用性的相關資訊
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 33c66fff681b0458d1cff1ff6176c34f4771b38e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508459"
+ms.locfileid: "88547676"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的高可用性–單一伺服器
 適用於 PostgreSQL 的 Azure 資料庫–單一伺服器服務可透過 [99.99%](https://azure.microsoft.com/support/legal/sla/postgresql) 執行時間的 SLA) ，提供保證的高可用性服務等級協定 (SLA。 適用於 PostgreSQL 的 Azure 資料庫在規劃的事件（例如，使用者初始化規模計算作業）期間提供高可用性，而且也會在發生非計畫的事件（例如基礎硬體、軟體或網路失敗）時提供高可用性。 適用於 PostgreSQL 的 Azure 資料庫可以從最重要的情況快速復原，以確保在使用此服務時幾乎不會有任何應用程式停機時間。
@@ -77,7 +77,7 @@ ms.locfileid: "88508459"
 
 適用於 PostgreSQL 的 Azure 資料庫可提供資料庫伺服器的快速重新開機功能、重複的儲存空間，以及從閘道有效率的路由。 針對額外的資料保護，您可以將備份設定為異地複寫，也可以在其他區域中部署一或多個讀取複本。 利用固有的高可用性功能，適用於 PostgreSQL 的 Azure 資料庫保護您的資料庫不受最常見的中斷影響，並提供領先業界的財務支援 [99.99% 的執行時間 SLA](https://azure.microsoft.com/support/legal/sla/postgresql)。 所有的可用性和可靠性功能都能讓 Azure 成為執行任務關鍵性應用程式的理想平臺。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 - 深入瞭解 [Azure 區域](../availability-zones/az-overview.md)
 - 了解如何[處理暫時性連線錯誤](concepts-connectivity.md)
 - 了解如何[使用讀取複本來複寫資料](howto-read-replicas-portal.md)

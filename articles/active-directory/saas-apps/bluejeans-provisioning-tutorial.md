@@ -2,26 +2,21 @@
 title: 教學課程︰以 Azure Active Directory 設定 BlueJeans 來自動佈建使用者 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 將使用者帳戶自動佈建和取消佈建至BlueJeans。
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb3fe009a6482c8e512899a952694beaed361a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b90389f6ae88a073f3961cc2f0957d22e190fe0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058972"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545449"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教學課程︰設定 BlueJeans 來自動佈建使用者
 
@@ -47,7 +42,7 @@ ms.locfileid: "77058972"
 
 **若要從 Azure AD 應用程式庫新增 BlueJeans，請執行下列步驟：**
 
-1. 在**[Azure 入口網站](https://portal.azure.com)** 的左側導覽窗格中，選取 [ **Azure Active Directory**]。
+1. 在 [ **[Azure 入口網站](https://portal.azure.com)** 的左側導覽面板中，選取 [ **Azure Active Directory**]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
@@ -55,11 +50,11 @@ ms.locfileid: "77058972"
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 若要新增新的應用程式，請選取窗格頂端的 [**新增應用程式**] 按鈕。
+3. 若要加入新的應用程式，請選取窗格頂端的 [ **新增應用程式** ] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜尋方塊中，輸入**BlueJeans**，在結果面板中選取 [ **BlueJeans** ]，然後選取 [**新增**] 按鈕以新增應用程式。
+4. 在搜尋方塊中，輸入 **BlueJeans**，在 [結果] 面板中選取 [ **BlueJeans** ]，然後選取 [ **新增** ] 按鈕以新增應用程式。
 
     ![結果清單中的 BlueJeans](common/search-new-app.png)
 
@@ -86,7 +81,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>在 Azure AD 中為 BlueJeans 設定自動使用者佈建：
 
-1. 登入[Azure 入口網站](https://portal.azure.com)並選取 [**企業應用程式**]，選取 [**所有應用程式**]，然後選取 [ **BlueJeans**]。
+1. 登入 [Azure 入口網站](https://portal.azure.com) 並選取 [ **企業應用程式**]，選取 [ **所有應用程式**]，然後選取 [ **BlueJeans**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 

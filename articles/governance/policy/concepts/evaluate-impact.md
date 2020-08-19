@@ -1,14 +1,14 @@
 ---
 title: 評估新 Azure 原則定義的影響
 description: 了解在 Azure 環境中導入新的原則定義時所須依循的程序。
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: d9844e8435452b388c934c5969898fe01d23fb47
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 243f04cc20e1fb7167306b925a0e494b34cf1267
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684297"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544697"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>評估新 Azure 原則定義的影響
 

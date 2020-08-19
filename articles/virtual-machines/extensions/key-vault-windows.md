@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d66ef8f142a72bfdea2dcf3eeb996b18173de04d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 18ca9244f818fa745725f13d79a23c1a232e01ed
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502957"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545381"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>適用於 Windows 的金鑰保存庫虛擬機器擴充功能
 
@@ -21,7 +21,7 @@ ms.locfileid: "86502957"
 
 ### <a name="operating-system"></a>作業系統
 
-Key Vault 的 VM 擴充功能支援下列版本的 Windows：
+Key Vault VM 擴充功能支援下列 Windows 版本：
 
 - Windows Server 2019
 - Windows Server 2016
@@ -34,7 +34,7 @@ Key Vault 的 VM 擴充功能支援下列版本的 Windows：
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 延伸模組不需要受保護的設定，其所有設定都會被視為公開資訊。 延伸模組需要受監視的憑證清單、輪詢頻率和目的地憑證存放區。 具體來說：  
+下列 JSON 顯示金鑰保存庫 VM 擴充功能的結構描述。 延伸模組不需要受保護的設定，所有的設定都會被視為公用資訊。 延伸模組需要受監視的憑證、輪詢頻率和目的地憑證存放區的清單。 具體來說：  
 
 ```json
     {
@@ -73,9 +73,9 @@ Key Vault 的 VM 擴充功能支援下列版本的 Windows：
 > 
 > 這是因為 `/secrets` 路徑會傳回完整憑證，私密金鑰也包括在內，`/certificates` 路徑則不會。 可以在這裡找到憑證的詳細資訊：[Key Vault 憑證](../../key-vault/general/about-keys-secrets-certificates.md)
 
-> [!NOTE]
-> 當 VM 具有多個指派的身分識別時，' Authenticationsettings.instance.setsecretkey ' 屬性是選擇性的。
-> 它可讓指定身分識別用來驗證 Key Vault。
+> [!IMPORTANT]
+> 只有具有**使用者指派**身分識別的 vm 才**需要**' authenticationsettings.instance.setsecretkey ' 屬性。
+> 它會指定要用於驗證 Key Vault 的身分識別。
 
 
 ### <a name="property-values"></a>屬性值
@@ -204,7 +204,7 @@ Azure CLI 可以用來將金鑰保存庫 VM 擴充功能部署到現有的虛擬
 請留意下列限制/需求：
 - 金鑰保存庫限制：
   - 部署時必須存在 
-  - 使用 MSI 為 VM/VMSS 身分識別設定 Key Vault 存取原則
+  - Key Vault 使用 MSI 為 VM/VMSS 身分識別設定的存取原則
 
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援

@@ -2,25 +2,21 @@
 title: 教學課程：以 Azure Active Directory 設定 MediusFlow 來自動佈建使用者 | Microsoft Docs
 description: 了解如何將使用者帳戶從 Azure AD 針對 MediusFlow 進行自動佈建和取消佈建。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: c6c65170-c5cb-44f6-81f8-25d972759e2c
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 724068950153e6bc4687679892edf55ab89f3bf2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e8a64b3f42e52363f70d536963594bb6083a0992
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927397"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548067"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教學課程：設定 MediusFlow 來自動佈建使用者
 
@@ -52,15 +48,15 @@ ms.locfileid: "87927397"
 
 ## <a name="step-2-configure-mediusflow-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 MediusFlow 以支援使用 Azure AD 進行佈建
 
-### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>在 MediusFlow 內啟動 Microsoft 365 應用程式
+### <a name="activate-the-microsoft-365-app-within-mediusflow"></a>在 MediusFlow 中啟用 Microsoft 365 應用程式
 藉由執行下列步驟，開始在 MediusFlow 內啟用 Azure AD 登入和 Azure AD 設定功能的存取權：
 
 #### <a name="user-login"></a>使用者登入
 若要啟用 Microsoft 365/Azure AD 的登入流程，請參閱 [this] (https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章。
 
 #### <a name="user-transfer-configuration"></a>使用者轉移設定
-若要啟用從 Azure AD 布建之使用者的設定入口網站，請參閱[這](
-https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup)篇文章。
+若要從 Azure AD 啟用使用者布建的設定入口網站，請參閱 [這](
+https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup) 篇文章。
 
 #### <a name="configure-user-provisioning"></a>設定使用者佈建
 
@@ -94,7 +90,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
     ![Authenticate](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
 
-8. 若要在 MediusFlow 中使用預先定義的角色、公司和其他一般設定來匯入使用者，您必須先設定此配置。 首先，按一下 [新增設定] 來新增設定。
+8. 若要使用 MediusFlow 中預先定義的一組角色、公司和其他一般設定來匯入使用者，您必須先進行設定。 首先，按一下 [新增設定] 來新增設定。
 
     ![設定使用者](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
 

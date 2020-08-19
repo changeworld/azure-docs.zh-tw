@@ -11,22 +11,22 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 6a2208fac98d3cd8e4ddcea887d9b8cf30fb6482
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f5409fea1cdbbc35e9068fae6b3ba7fbc2a95580
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524500"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547387"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安裝和執行 LUIS Docker 容器
 
-Language Understanding （LUIS）容器會載入您已定型或已發行的 Language Understanding 模型。 Docker 容器是[LUIS 應用程式](https://www.luis.ai)，可讓您從容器的 API 端點存取查詢預測。 您可以從容器收集查詢記錄，並將它們上傳回到 Language Understanding 應用程式，以改善應用程式的預測精確度。
+Language Understanding (LUIS) 容器會載入您已定型或已發佈的 Language Understanding 模型。 Docker 容器是 [LUIS 應用程式](https://www.luis.ai)，可讓您從容器的 API 端點存取查詢預測。 您可以從容器收集查詢記錄，並將其上傳回 Language Understanding 應用程式，以改善應用程式的預測精確度。
 
 以下影片將示範如何使用此容器。
 
 [![認知服務的容器示範](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -36,16 +36,16 @@ Language Understanding （LUIS）容器會載入您已定型或已發行的 Lang
 |--|--|
 |Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。|
-|Azure `Cognitive Services` 資源和 LUIS 已[封裝的應用程式](luis-how-to-start-new-app.md)檔 |若要使用此容器，您必須具備：<br><br>* A_認知服務_Azure 資源和相關聯的帳單金鑰計費端點 URI。 這兩個值都可在資源的 [總覽] 和 [金鑰] 頁面上取得，而且必須要有才能啟動容器。 <br>* 已定型或發佈的應用程式，並封裝為掛接形式連同相關聯的應用程式識別碼輸入容器中。 您可以從 LUIS 入口網站或撰寫 Api 取得封裝的檔案。 如果您要從[撰寫 api](#authoring-apis-for-package-file)取得 LUIS 的已封裝應用程式，則也需要您的_撰寫金鑰_。<br><br>這些需求可用來將命令列引數傳至下列變數：<br><br>**{AUTHORING_KEY}**：此金鑰是用來從雲端中的 LUIS 服務取得已封裝的應用程式，並將查詢記錄上傳回雲端。 格式為 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APP_ID}**：此識別碼是用來選取應用程式。 格式為 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{API_KEY}**：此金鑰可用來啟動容器。 您可以在兩個位置找到端點金鑰。 第一個是_認知服務_資源的 [金鑰] 清單中的 Azure 入口網站。 端點金鑰也可以在 LUIS 入口網站中的 [金鑰和端點] 設定頁面上取得。 請勿使用入門金鑰。<br><br>**{ENDPOINT_URI}**： [總覽] 頁面上所提供的端點。<br><br>[撰寫金鑰和端點金鑰](luis-limits.md#key-limits)有不同的用途。 請勿將其交替使用。 |
+|Azure `Cognitive Services` 資源和 LUIS [封裝的應用程式](luis-how-to-start-new-app.md) 檔 |若要使用此容器，您必須具備：<br><br>* _認知服務_ 的 Azure 資源，以及相關聯的計費金鑰和計費端點 URI。 這兩個值都可在資源的 [總覽] 和 [金鑰] 頁面上取得，而且必須要有這些值才能啟動容器。 <br>* 已定型或發佈的應用程式，並封裝為掛接形式連同相關聯的應用程式識別碼輸入容器中。 您可以從 LUIS 入口網站或撰寫 Api 取得封裝的檔案。 如果您是從 [撰寫 api](#authoring-apis-for-package-file)取得 LUIS 封裝的應用程式，您也將需要 _撰寫金鑰_。<br><br>這些需求可用來將命令列引數傳至下列變數：<br><br>**{AUTHORING_KEY}**：此金鑰是用來從雲端中的 LUIS 服務取得已封裝的應用程式，並將查詢記錄上傳回雲端。 格式為 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APP_ID}**：此識別碼是用來選取應用程式。 格式為 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{API_KEY}**：此金鑰可用來啟動容器。 您可以在兩個位置找到端點金鑰。 第一個是 _認知服務_ 資源的金鑰清單中的 Azure 入口網站。 端點金鑰也可以在 LUIS 入口網站中的 [金鑰和端點] 設定頁面上取得。 請勿使用入門金鑰。<br><br>**{ENDPOINT_URI}**：在 [總覽] 頁面上提供的端點。<br><br>[撰寫金鑰和端點金鑰](luis-limits.md#key-limits)有不同的用途。 請勿將其交替使用。 |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
-### <a name="authoring-apis-for-package-file"></a>撰寫套件檔案的 Api
+### <a name="authoring-apis-for-package-file"></a>編寫套件檔案的 Api
 
 撰寫適用于已封裝應用程式的 Api：
 
-* [已發佈的封裝 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip)
-* [未發佈，僅限定型的套件 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip)
+* [發佈的套件 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip)
+* [未發佈、已定型的套件 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip)
 
 ### <a name="the-host-computer"></a>主機電腦
 
@@ -53,9 +53,9 @@ Language Understanding （LUIS）容器會載入您已定型或已發行的 Lang
 
 ### <a name="container-requirements-and-recommendations"></a>容器的需求和建議
 
-下表列出容器主機的最小和建議值。 您的需求可能會隨著流量量而改變。
+下表列出容器主機的最小值和建議值。 您的需求可能會根據流量量而變更。
 
-|容器| 最小值 | 建議 | 本<br>（最小值，最大值）|
+|容器| 最小值 | 建議 | Tps<br> (最小值、最大值) |
 |-----------|---------|-------------|--|
 |LUIS|1核心，2 GB 記憶體|1核心，4 GB 記憶體|20，40|
 
@@ -83,13 +83,13 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ![使用 Language Understanding (LUIS) 容器的程序](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
 1. 從 LUIS 入口網站或 LUIS API 為容器[匯出套件](#export-packaged-app-from-luis)。
-1. 將套件檔案移至[主機電腦](#the-host-computer)上所需的**輸入**目錄中。 請勿重新命名、改變、覆寫或解壓縮 LUIS 套件檔案。
+1. 將套件檔案移至[主機電腦](#the-host-computer)上所需的**輸入**目錄中。 請勿重新命名、變更、覆寫或解壓縮 LUIS 封裝檔案。
 1. 使用所需的_輸入掛接_和計費設定[執行容器](#run-the-container-with-docker-run)。 `docker run` 命令有相關[範例](luis-container-configuration.md#example-docker-run-commands)可供參考。
 1. [查詢容器的預測端點](#query-the-containers-prediction-endpoint)。
 1. 容器使用完畢後，請從 LUIS 入口網站中的輸出掛接[匯入端點記錄](#import-the-endpoint-logs-for-active-learning)，並[停止](#stop-the-container)容器。
 1. 從 LUIS 入口網站使用 [檢閱端點語句]**** 頁面上的[主動式學習](luis-how-to-review-endpoint-utterances.md)，來改善應用程式。
 
-在容器中執行的應用程式無法變更。 若要變更容器中的應用程式，您必須使用[LUIS](https://www.luis.ai)入口網站變更 LUIS 服務中的應用程式，或使用 LUIS[撰寫 api](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)。 接著，請進行定型和 (或) 發佈，然後下載新套件並重新執行容器。
+在容器中執行的應用程式無法變更。 為了變更容器中的應用程式，您需要使用 [LUIS](https://www.luis.ai) 入口網站變更 LUIS 服務中的應用程式，或使用 LUIS [撰寫 api](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)。 接著，請進行定型和 (或) 發佈，然後下載新套件並重新執行容器。
 
 容器內的 LUIS 應用程式無法重新匯出至 LUIS 服務。 只有查詢記錄可供上傳。
 
@@ -103,16 +103,16 @@ LUIS 容器需要以已定型或發佈的 LUIS 應用程式來回應使用者語
 
 ### <a name="package-types"></a>套件類型
 
-輸入裝載目錄可同時包含應用程式的**生產環境**、**暫存**和**版本**設定模型。 所有套件都會掛接。
+輸入裝載目錄可以同時包含應用程式的 **生產環境**、 **預備**環境和已建立 **版本** 的模型。 所有套件都會掛接。
 
 |套件類型|查詢端點 API|查詢可用性|套件檔案名稱格式|
 |--|--|--|--|
-|變化|GET、POST|僅限容器|`{APP_ID}_v{APP_VERSION}.gz`|
+|版本|GET、POST|僅限容器|`{APP_ID}_v{APP_VERSION}.gz`|
 |預備|GET、POST|Azure 和容器|`{APP_ID}_STAGING.gz`|
-|生產|GET、POST|Azure 和容器|`{APP_ID}_PRODUCTION.gz`|
+|Production|GET、POST|Azure 和容器|`{APP_ID}_PRODUCTION.gz`|
 
 > [!IMPORTANT]
-> 請勿重新命名、改變、覆寫或解壓縮 LUIS 套件檔案。
+> 請勿重新命名、變更、覆寫或解壓縮 LUIS 封裝檔案。
 
 ### <a name="packaging-prerequisites"></a>封裝必要條件
 
@@ -120,7 +120,7 @@ LUIS 容器需要以已定型或發佈的 LUIS 應用程式來回應使用者語
 
 |封裝需求|詳細資料|
 |--|--|
-|Azure_認知服務_資源實例|支援的區域包括<br><br>美國西部 (`westus`)<br>西歐 (`westeurope`)<br>澳大利亞東部 (`australiaeast`)|
+|Azure _認知服務_ 資源實例|支援的區域包括<br><br>美國西部 (`westus`)<br>西歐 (`westeurope`)<br>澳大利亞東部 (`australiaeast`)|
 |已定型或發佈的 LUIS 應用程式|不含[不支援的相依性][unsupported-dependencies]。 |
 |可存取[主機電腦](#the-host-computer)的檔案系統 |主機電腦必須允許[輸入掛接](luis-container-configuration.md#mount-settings)。|
 
@@ -141,9 +141,9 @@ LUIS [入口網站](https://www.luis.ai)可讓您匯出已定型或發佈的應�
 
 ![從 [應用程式] 頁面的 [匯出] 功能表為容器匯出已發佈的套件](./media/luis-container-how-to/export-published-package-for-container.png)
 
-### <a name="export-versioned-apps-package-from-luis-portal"></a>從 LUIS 入口網站匯出已設定版本的應用程式套件
+### <a name="export-versioned-apps-package-from-luis-portal"></a>從 LUIS 入口網站匯出已建立版本的應用程式套件
 
-**版本**清單頁面中提供了已建立版本的應用程式套件。
+已建立版本的應用程式套件可從 [ **版本** ] 清單頁面取得。
 
 1. 登入 LUIS [入口網站](https://www.luis.ai)。
 1. 選取清單中的應用程式。
@@ -173,9 +173,9 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 | **{AUTHORING_KEY}** | 已發佈 LUIS 應用程式的 LUIS 帳戶所適用的撰寫金鑰。<br/>您可以從 LUIS 入口網站中的 [使用者設定]**** 頁面取得撰寫金鑰。 |
 | **{AZURE_REGION}** | 適當的 Azure 區域：<br/><br/>`westus` - 美國西部<br/>`westeurope` - 西歐<br/>`australiaeast` - 澳大利亞東部 |
 
-若要下載已發行的封裝，請參閱[這裡的 API 檔][download-published-package]。 如果成功下載，回應會是 LUIS 套件檔案。 請將此檔案儲存在為容器的輸入掛接指定的儲存位置中。
+若要下載已發佈的封裝，請參閱 [這裡的 API 檔][download-published-package]。 如果成功下載，回應會是 LUIS 套件檔案。 請將此檔案儲存在為容器的輸入掛接指定的儲存位置中。
 
-### <a name="export-versioned-apps-package-from-api"></a>從 API 匯出已設定版本的應用程式套件
+### <a name="export-versioned-apps-package-from-api"></a>從 API 匯出已建立版本的應用程式套件
 
 使用下列 REST API 方法，封裝您已[定型](luis-how-to-train.md)的 LUIS 應用程式。 使用 HTTP 規格下方的表格，以您自己的適當值取代 API 呼叫中的預留位置。
 
@@ -187,16 +187,16 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 
 | 預留位置 | 值 |
 |-------------|-------|
-| **{APP_ID}** | 定型 LUIS 應用程式的應用程式識別碼。 |
-| **{APP_VERSION}** | 已定型之 LUIS 應用程式的應用程式版本。 |
+| **{APP_ID}** | 已定型 LUIS 應用程式的應用程式識別碼。 |
+| **{APP_VERSION}** | 定型 LUIS 應用程式的應用程式版本。 |
 | **{AUTHORING_KEY}** | 已發佈 LUIS 應用程式的 LUIS 帳戶所適用的撰寫金鑰。<br/>您可以從 LUIS 入口網站中的 [使用者設定]**** 頁面取得撰寫金鑰。 |
 | **{AZURE_REGION}** | 適當的 Azure 區域：<br/><br/>`westus` - 美國西部<br/>`westeurope` - 西歐<br/>`australiaeast` - 澳大利亞東部 |
 
-若要下載已建立版本的套件，請參閱[這裡的 API 檔][download-versioned-package]。 如果成功下載，回應會是 LUIS 套件檔案。 請將此檔案儲存在為容器的輸入掛接指定的儲存位置中。
+若要下載已建立版本的套件，請參閱 [這裡的 API 檔][download-versioned-package]。 如果成功下載，回應會是 LUIS 套件檔案。 請將此檔案儲存在為容器的輸入掛接指定的儲存位置中。
 
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
 
-將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得和值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` 。
+將 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令執行容器。 如需如何取得和值的詳細資訊，請參閱 [收集必要參數](#gathering-required-parameters) `{ENDPOINT_URI}` `{API_KEY}` 。
 
 [Examples](luis-container-configuration.md#example-docker-run-commands)命令的範例 `docker run` 可供使用。
 
@@ -212,34 +212,34 @@ Billing={ENDPOINT_URI} ^
 ApiKey={API_KEY}
 ```
 
-* 這個範例會使用 `C:` 磁片磁碟機上的目錄，以避免在 Windows 上發生任何許可權衝突。 如果您需要使用特定目錄作為輸入目錄，您可能需要授與 Docker 服務權限。
+* 此範例會使用 `C:` 磁片磁碟機上的目錄，以避免在 Windows 上發生任何許可權衝突。 如果您需要使用特定目錄作為輸入目錄，您可能需要授與 Docker 服務權限。
 * 除非您熟悉 docker 容器，否則請勿變更引數的順序。
-* 如果您使用不同的作業系統，請使用正確的主控台/終端機、裝載的資料夾語法，以及系統的行接續字元。 這些範例假設 Windows 主控台包含行接續字元 `^` 。 因為容器是 Linux 作業系統，所以目標掛接會使用 Linux 樣式的資料夾語法。
+* 如果您使用的是不同的作業系統，請使用正確的主控台/終端機、適用于裝載的資料夾語法，以及您系統的行接續字元。 這些範例假設 Windows 主控台含有行接續字元 `^` 。 因為容器是 Linux 作業系統，所以目標裝載會使用 Linux 樣式的資料夾語法。
 
 此命令：
 
 * 從 LUIS 容器映像執行容器
-* 從位於容器主機上*C:\input*的輸入裝載載入 LUIS 應用程式
+* 從位於容器主機上 *C:\input*的輸入裝載載入 LUIS 應用程式
 * 配置兩個 CPU 核心和 4 GB 的記憶體
 * 公開 TCP 連接埠 5000，並為容器配置虛擬 TTY
-* 將容器和 LUIS 記錄儲存至位於容器主機上*C:\output*的輸出裝載
+* 將容器和 LUIS 記錄儲存至位於容器主機上 *C:\output*的輸出裝載
 * 在容器結束之後自動將其移除。 容器映像仍可在主機電腦上使用。
 
 `docker run` 命令有相關[範例](luis-container-configuration.md#example-docker-run-commands)可供參考。
 
 > [!IMPORTANT]
 > 必須指定 `Eula`、`Billing` 及 `ApiKey` 選項以執行容器，否則容器將不會啟動。  如需詳細資訊，請參閱[帳單](#billing)。
-> ApiKey 值是 LUIS 入口網站中 [ **Azure 資源**] 頁面的**金鑰**，也可以在 [azure `Cognitive Services` 資源金鑰] 頁面上取得。
+> ApiKey 值是 LUIS 入口網站中 [ **Azure 資源**] 頁面的**金鑰**，也可在 [azure `Cognitive Services` 資源金鑰] 頁面上取得。
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
 ## <a name="endpoint-apis-supported-by-the-container"></a>容器支援的端點 Api
 
-容器的 V2 和[V3](luis-migration-api-v3.md)版本都可供使用。
+API 的 V2 和 [V3](luis-migration-api-v3.md) 版本都可供容器使用。
 
 ## <a name="query-the-containers-prediction-endpoint"></a>查詢容器的預測端點
 
-容器會提供以 REST 為基礎的查詢預測端點 API。 已發佈（預備或生產）應用程式的端點與版本設定應用程式的端點具有_不同_的路由。
+容器會提供以 REST 為基礎的查詢預測端點 API。 已發佈 (預備或生產) 應用程式的端點，其路由與版本設定應用程式的端點 _不同_ 。
 
 請對容器 API 使用主機 `http://localhost:5000`。
 
@@ -248,7 +248,7 @@ ApiKey={API_KEY}
 |套件類型|HTTP 指令動詞|路由|查詢參數|
 |--|--|--|--|
 |已發行|GET、POST|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
-|變化|GET、POST|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
+|版本|GET、POST|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 
 查詢參數會設定傳回查詢回應的方式和內容：
 
@@ -264,7 +264,7 @@ ApiKey={API_KEY}
 |套件類型|HTTP 指令動詞|路由|查詢參數|
 |--|--|--|--|
 |已發行|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)、 [POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|`/luis/v2.0/apps/{appId}?`|`q={q}`<br>`&staging`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]<br>|
-|變化|GET、POST|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
+|版本|GET、POST|`/luis/v2.0/apps/{appId}/versions/{versionId}?`|`q={q}`<br>[`&timezoneOffset`]<br>[`&verbose`]<br>[`&log`]|
 
 查詢參數會設定傳回查詢回應的方式和內容：
 
@@ -294,7 +294,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-若要對**預備**環境進行查詢，請 `production` 將路由中的取代為 `staging` ：
+若要對 **預備** 環境進行查詢，請 `production` 在路由中使用 `staging` 下列內容取代：
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
@@ -334,7 +334,7 @@ curl -X GET \
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>匯入用於主動式學習的端點記錄
 
-如果為 LUIS 容器指定輸出裝載，應用程式查詢記錄檔會儲存在輸出目錄中，其中 `{INSTANCE_ID}` 是容器識別碼。 應用程式查詢記錄中包含已提交至 LUIS 容器的每個預測查詢的查詢、回應和時間戳記。
+如果已針對 LUIS 容器指定輸出掛接，則會將應用程式查詢記錄檔儲存在輸出目錄中，其中 `{INSTANCE_ID}` 是容器識別碼。 應用程式查詢記錄中包含已提交至 LUIS 容器的每個預測查詢的查詢、回應和時間戳記。
 
 下列位置會顯示容器記錄檔的巢狀目錄結構。
 ```
@@ -363,7 +363,7 @@ curl -X GET \
 
 ## <a name="billing"></a>計費
 
-LUIS 容器會使用您 Azure 帳戶上的_認知服務_資源，將帳單資訊傳送至 azure。
+LUIS 容器會使用您 Azure 帳戶上的 _認知服務_ 資源，將計費資訊傳送至 azure。
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
@@ -372,7 +372,7 @@ LUIS 容器會使用您 Azure 帳戶上的_認知服務_資源，將帳單資訊
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 在本文中，您已了解下載、安裝及執行 Language Understanding (LUIS) 容器的概念和工作流程。 摘要說明：
 
@@ -385,10 +385,10 @@ LUIS 容器會使用您 Azure 帳戶上的_認知服務_資源，將帳單資訊
 > [!IMPORTANT]
 > 認知服務容器在未連線至 Azure 以進行計量的情況下，將無法被授權以執行。 客戶必須啟用容器以持續與計量服務進行帳單資訊的通訊。 認知服務容器不會將客戶資料 (例如正在分析的影像或文字) 傳送至 Microsoft。
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* 請參閱[設定容器](luis-container-configuration.md)以進行配置設定。
-* 如需已知功能限制，請參閱[LUIS 容器限制](luis-container-limitations.md)。
+* 請參閱 [設定容器](luis-container-configuration.md) 以進行設定。
+* 如需已知功能限制，請參閱 [LUIS 容器限制](luis-container-limitations.md) 。
 * 請參閱[疑難排解](troubleshooting.md)來解決與 LUIS 功能相關的問題。
 * 使用更多[認知服務容器](../cognitive-services-container-support.md)
 

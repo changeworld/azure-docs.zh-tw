@@ -1,14 +1,14 @@
 ---
 title: 如何建立 Windows 的客體設定原則
 description: 了解如何建立 Windows 的 Azure 原則客體設定原則。
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 4ee0c9d1912338235e53eb287bfc86a14b75cc97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236534"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547659"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 的客體設定原則
 
@@ -16,8 +16,7 @@ ms.locfileid: "88236534"
  
 若要了解如何建立 Linux 的客體設定原則，請參閱[如何建立 Linux 的客體設定原則](./guest-configuration-create-linux.md)頁面
 
-在稽核 Windows 時，客體設定會使用[預期狀態設定](/powershell/scripting/dsc/overview/overview) (DSC) 資源模組來建立設定檔。 DSC 設定會定義電腦所應處的條件。
-如果設定的評估失敗，則會觸發 **auditIfNotExists** 的原則效果，並將該電腦視為**不符合規範**。
+在稽核 Windows 時，客體設定會使用[預期狀態設定](/powershell/scripting/dsc/overview/overview) (DSC) 資源模組來建立設定檔。 DSC 設定會定義電腦所應處的條件。 如果設定的評估失敗，則會觸發 **auditIfNotExists** 的原則效果，並將該電腦視為**不符合規範**。
 
 [Azure 原則客體設定](../concepts/guest-configuration.md)目前只會稽核電腦內的設定， 尚不提供補救電腦內的設定。
 
@@ -56,7 +55,7 @@ ms.locfileid: "88236534"
 
 - PowerShell 6.2 或更新版本。 如果尚未安裝，請依照[這些指示](/powershell/scripting/install/installing-powershell)操作。
 - Azure PowerShell 1.5.0 或更新版本。 如果尚未安裝，請依照[這些指示](/powershell/azure/install-az-ps)操作。
-  - 只需要 AZ 模組的 'Az.Accounts' 與 'Az.Resources'。
+  - 只有 Az 模組 ' Az. Accounts ' 和 ' Az. Resources ' 是必要的。
 
 ### <a name="install-the-module"></a>安裝模組
 
@@ -84,14 +83,13 @@ ms.locfileid: "88236534"
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>客體設定模組與 Windows PowerShell DSC 模組有何不同
 
-當來賓設定審核電腦時，事件的順序會與 Windows PowerShell DSC 中的不同。
+當來賓設定審核機器時，事件的順序會與 Windows PowerShell DSC 中的事件順序不同。
 
 1. 代理程式會先執行 `Test-TargetResource` 來判斷設定是否處於正確狀態。
 1. 函式所傳回布林值會判斷客體指派的 Azure Resource Manager 狀態是否符合規範。
 1. 提供者會執行 `Get-TargetResource` 以傳回每個設定的目前狀態，藉此得知為何電腦不符合規範以及確認目前的狀態是否符合規範，這兩項詳細資料。
 
-在 Azure 原則中，將值傳遞給來賓設定指派的參數必須是 _字串_ 類型。
-即使 DSC 資源支援陣列，也無法透過參數傳遞陣列。
+在傳遞值給來賓設定指派的 Azure 原則中，參數必須是 _字串_ 類型。 即使 DSC 資源支援陣列，也無法透過參數傳遞陣列。
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource 需求
 
@@ -121,7 +119,7 @@ return @{
 }
 ```
 
-您也必須將 Reasons 屬性作為內嵌的類別來新增至資源結構描述 MOF 中。
+[原因] 屬性必須加入至資源的架構 MOF 中，做為內嵌類別。
 
 ```mof
 [ClassVersion("1.0.0.0")] 
@@ -141,7 +139,7 @@ class ResourceName : OMI_BaseResource
 
 ### <a name="configuration-requirements"></a>組態需求
 
-自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔案名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本 (ARM 範本) 中的來賓指派名稱必須相同。
+自訂設定的名稱在任何位置都必須一致。 內容套件的 .zip 檔名稱、MOF 檔案中的設定名稱，以及 Azure Resource Manager 範本 (ARM 範本) 的來賓指派名稱必須相同。
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>為客體設定專案建立結構
 
@@ -166,8 +164,7 @@ PowerShell Cmdlet 可協助建立此套件，
 ### <a name="storing-guest-configuration-artifacts"></a>儲存客體設定成品
 
 .zip 套件必須儲存於受控虛擬機器可存取的位置。
-例如 GitHub 存放庫、Azure 存放庫或 Azure 儲存體。 如果不想讓套件公開，您可在 URL 中包含 [SAS 權杖](../../../storage/common/storage-sas-overview.md)。
-您也可以為私人網路中的電腦實作[服務端點](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)，但此設定僅適用於存取套件，且無法與服務通訊。
+例如 GitHub 存放庫、Azure 存放庫或 Azure 儲存體。 如果不想讓套件公開，您可在 URL 中包含 [SAS 權杖](../../../storage/common/storage-sas-overview.md)。 您也可以為私人網路中的電腦實作[服務端點](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)，但此設定僅適用於存取套件，且無法與服務通訊。
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>逐步建立 Windows 的自訂客體設定稽核原則
 
@@ -372,7 +369,7 @@ New-AzRoleDefinition -Role $role
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>使用標籤來篩選客體設定原則
 
-在客體設定模組中，由 Cmdlet 所建立的原則定義可選擇性地包含標籤篩選。 `New-GuestConfigurationPolicy` 的 **Tag** 參數支援包含個別標籤項目的雜湊表陣列。 標籤會新增至原則定義的 `If` 區段，且無法由原則指派加以修改。
+在客體設定模組中，由 Cmdlet 所建立的原則定義可選擇性地包含標籤篩選。 `New-GuestConfigurationPolicy` 的 **Tag** 參數支援包含個別標籤項目的雜湊表陣列。 這些標記會新增至 `If` 原則定義的區段，而且無法由原則指派修改。
 
 以下提供篩選標籤的原則定義範例程式碼片段。
 
@@ -402,7 +399,7 @@ New-AzRoleDefinition -Role $role
 
 客體設定支援在執行階段覆寫設定的屬性。 這項功能表示套件中 MOF 檔案的值不一定要被視為靜態。 覆寫值是透過 Azure 原則提供，且不會影響撰寫或編譯設定的方式。
 
-Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名為 **參數**的參數。 此參數會採納雜湊表定義，包括每個參數的所有詳細資料，並為每個檔案建立必要區段，以用於 Azure 原則定義。
+Cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含參數命名 **參數**。 此參數會採納雜湊表定義，包括每個參數的所有詳細資料，並為每個檔案建立必要區段，以用於 Azure 原則定義。
 
 下列範例會建立原則定義來稽核服務，使用者可在原則指派時從清單中進行選取。
 
@@ -440,7 +437,7 @@ New-GuestConfigurationPolicy
   - 轉換輸出
 - 工具的正確格式內容，以便以原生方式使用
 
-如果社群解決方案尚不存在，則需要自訂開發 DSC 資源。
+如果未存在社區解決方案，DSC 資源需要自訂開發。
 在 PowerShell 資源庫中搜尋 [GuestConfiguration](https://www.powershellgallery.com/packages?q=Tags%3A%22GuestConfiguration%22) 標籤，即可探索社群解決方案。
 
 > [!Note]
@@ -498,7 +495,7 @@ end
 
 ```
 
-將此檔案儲存 `wmi_service.rb` 在目錄內名為的新資料夾中 `controls` `wmi_service` 。
+將此檔案儲存 `wmi_service.rb` 在目錄中名為的新資料夾中 `controls` `wmi_service` 。
 
 最後，建立設定、匯入 **GuestConfiguration** 資源模組，並使用 `gcInSpec` 資源來設定 InSpec 設定檔的名稱。
 
@@ -536,7 +533,7 @@ wmi_service -out ./Config
 
 支援的檔案必須封裝在一起。 客體設定會使用完成的套件來建立 Azure 原則定義。
 
-`New-GuestConfigurationPackage` Cmdlet 會建立套件。 針對第三方內容，請使用 **FilesToInclude** 參數，將 InSpec 內容新增至套件。 您不需要為 Linux 套件指定 **ChefProfilePath**。
+`New-GuestConfigurationPackage` Cmdlet 會建立套件。 針對第三方內容，請使用 **FilesToInclude** 參數，將 InSpec 內容新增至套件。 您不需要為 Linux 套件指定 **ChefProfilePath** 。
 
 - **Name**：客體設定套件名稱。
 - **設定**：已編譯的設定文件完整路徑。
@@ -602,5 +599,5 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ## <a name="next-steps"></a>後續步驟
 
 - 了解如何使用[客體設定](../concepts/guest-configuration.md)來稽核 VM。
-- 了解如何[以程式設計方式建立原則](programmatically-create.md)。
-- 了解如何[取得合規性資料](get-compliance-data.md)。
+- 了解如何[以程式設計方式建立原則](./programmatically-create.md)。
+- 了解如何[取得合規性資料](./get-compliance-data.md)。

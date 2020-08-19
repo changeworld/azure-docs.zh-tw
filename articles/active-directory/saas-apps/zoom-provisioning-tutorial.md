@@ -1,84 +1,80 @@
 ---
-title: 教學課程：使用 Azure Active Directory 設定 Zoom 進行自動使用者布建 |Microsoft Docs
-description: 瞭解如何自動布建和取消布建使用者帳戶，從 Azure AD 到縮放。
+title: 教學課程：使用 Azure Active Directory 設定 Zoom 來自動布建使用者 |Microsoft Docs
+description: 瞭解如何從 Azure AD 將使用者帳戶自動布建和取消布建至縮放。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 52700df5c2977f33c988fcb34cdc3d67844d1d49
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 15e3d72661ad35335c744fbaf0ab39627d254750
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257582"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545976"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的 Zoom
 
-本教學課程說明您必須在 Zoom 和 Azure Active Directory (Azure AD) 中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會自動布建及取消布建使用者和群組，以使用 Azure AD 布建服務進行 [縮放](https://zoom.us/pricing/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教學課程說明在 [縮放] 和 [Azure Active Directory] (Azure AD) 設定自動使用者布建時所需執行的步驟。 當設定時，Azure AD 會自動布建及取消布建使用者和群組，以使用 Azure AD 布建服務進行 [縮放](https://zoom.us/pricing/) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支援的功能
 > [!div class="checklist"]
-> * 以 Zoom 建立使用者
-> * 當使用者不再需要存取權時，移除 Zoom 中的使用者
+> * 在 Zoom 中建立使用者
+> * 當使用者不再需要存取權時，以 Zoom 移除使用者
 > * 讓使用者屬性在 Azure AD 和 Zoom 之間保持同步
-> *  (建議使用[單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial)來進行 Zoom) 
+> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial) 以縮放 (建議) 
 
 ## <a name="prerequisites"></a>Prerequisites
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 租](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)使用者。
+* [Azure AD 的租](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)使用者。
 * Azure AD 中具有設定佈建[權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶 (例如，應用程式管理員、雲端應用程式管理員、應用程式擁有者或全域管理員)。 
 * [Zoom 租](https://zoom.us/pricing)使用者。
-* 以 [系統管理員] 許可權縮放的使用者帳戶。
+* 以系統管理員許可權縮放的使用者帳戶。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃佈建部署
 1. 了解[佈建服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) \(部分機器翻譯\)。
 2. 判斷誰會在[佈建範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
 3. 判斷要 [在 Azure AD 和 Zoom 之間對應](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的資料。 
 
-## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Zoom 以支援以 Azure AD 布建
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Zoom 以支援 Azure AD 的布建
 
-1. 登入您的 [Zoom 管理主控台](https://zoom.us/signin)。 在左側流覽窗格中，流覽至 [ **Advanced > 應用程式** ] [Marketplace]。
+1. 登入您的 [Zoom 管理主控台](https://zoom.us/signin)。 在左側流覽窗格中，流覽至 **Advanced > App Marketplace** 。
 
     ![縮放整合](media/zoom-provisioning-tutorial/zoom01.png)
 
-2. 流覽至頁面右上角的 [ **管理** ]。 
+2. 在頁面右上角流覽至 [ **管理** ]。 
 
     ![縮放安裝](media/zoom-provisioning-tutorial/zoom02.png)
 
 3. 流覽至您建立的 Azure AD 應用程式。 
     
-    ![縮放應用程式](media/zoom-provisioning-tutorial/zoom03.png)
+    ![Zoom 應用程式](media/zoom-provisioning-tutorial/zoom03.png)
 
 4. 在左側流覽窗格中選取 [ **應用程式認證** ]。
 
-    ![縮放應用程式](media/zoom-provisioning-tutorial/zoom04.png)
+    ![Zoom 應用程式](media/zoom-provisioning-tutorial/zoom04.png)
 
-5. 複製並儲存 **JWT 權杖**。 此值將會在 [Azure 入口網站的 Zoom 應用程式之 [布建] 索引標籤的 [ **密碼權杖** ] 欄位中輸入。 如果您需要新的非過期權杖，您將需要重新設定會自動產生新權杖的到期時間。 
+5. 複製並儲存 **JWT 權杖**。 此值將會在 Azure 入口網站中縮放應用程式之 [布建] 索引標籤的 [ **秘密權杖** ] 欄位中輸入。 如果您需要新的非即將過期的權杖，您將需要重新設定將自動產生新權杖的到期時間。 
 
     ![縮放安裝](media/zoom-provisioning-tutorial/zoom05.png)
 
-## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Zoom
+## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式資源庫新增縮放
 
-從 Azure AD 應用程式庫新增 Zoom，開始管理布建到縮放。 如果您先前已設定 [縮放為 SSO]，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
+從 Azure AD 應用程式資源庫新增 Zoom，以開始管理布建至縮放。 如果您先前已設定 Zoom 的 SSO，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入了解從資源庫新增應用程式。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在佈建範圍內的人員 
 
 Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/群組的屬性，界定將要佈建的人員。 如果您選擇根據指派來界定將佈建至應用程式的人員，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)將使用者和群組指派給應用程式。 如果您選擇僅根據使用者或群組的屬性來界定將要佈建的人員，可以使用如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選條件。 
 
-* 將使用者和群組指派給 Zoom 時，您必須選取 [ **預設存取**] 以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
+* 將使用者和群組指派給 Zoom 時，您必須選取 **預設存取**以外的角色。 具有預設存取角色的使用者會從佈建中排除，而且會在佈建記錄中被標示為沒有效率。 如果應用程式上唯一可用的角色是 [預設存取] 角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) \(部分機器翻譯\) 以新增其他角色。 
 
 * 從小規模開始。 在推出給所有人之前，先使用一小部分的使用者和群組進行測試。 當佈建範圍設為已指派的使用者和群組時，您可將一或兩個使用者或群組指派給應用程式來控制這點。 當範圍設為所有使用者和群組時，您可指定[以屬性為基礎的範圍篩選條件](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
@@ -87,7 +83,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 此節將引導您逐步設定 Azure AD 佈建服務，以根據 Azure AD 中的使用者和/或群組指派，在 TestApp 中建立、更新和停用使用者和/或群組。
 
-### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>若要設定自動使用者布建以進行縮放 Azure AD：
+### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>若要設定縮放 Azure AD 的自動使用者布建：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [企業應用程式]，然後選取 [所有應用程式]。
 
@@ -105,7 +101,7 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
     ![佈建索引標籤](common/provisioning-automatic.png)
 
-5. 在 [ **管理員認證** ] 區段下，輸入 `https://api.zoom.us/scim` **租使用者 URL**。 輸入稍早在**秘密權杖**中所取得的**JWT 權杖**值。 按一下 [ **測試連接** ] 以確保 Azure AD 可以連接到 Zoom。 如果連線失敗，請確定您的縮放帳戶具有系統管理員許可權，然後再試一次。
+5. 在 [系統 **管理員認證** ] 區段下，輸入 [ `https://api.zoom.us/scim` 租使用者 **URL**]。 輸入稍早在**秘密權杖**中取出的**JWT 權杖**值。 按一下 [ **測試連接** ]，以確保 Azure AD 可以連接到 [縮放]。 如果連接失敗，請確定您的縮放帳戶具有系統管理員許可權，然後再試一次。
 
     ![縮放布建](./media/zoom-provisioning-tutorial/provisioning.png)
 
@@ -115,9 +111,9 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 7. 選取 [儲存]。
 
-8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者以縮放**]。
+8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者] 以縮放**。
 
-9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理到 Zoom 的使用者屬性。 選取為 [比對] 屬性 **的屬性會** 用來比對 [縮放] 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的 [目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，則必須確定 Zoom API 支援根據該屬性來篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
+9. 在 [ **屬性對應** ] 區段中，檢查從 Azure AD 同步處理的使用者屬性。 選取為 [比對] 屬性 **的屬性，** 會用來比對使用者帳戶的 Zoom 中的更新作業。 如果您選擇變更相符的 [目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，您將必須確定 Zoom API 支援根據該屬性篩選使用者。 選取 [儲存] 按鈕以認可所有變更。
 
    |屬性|類型|
    |---|---|
@@ -130,11 +126,11 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 
 10. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-11. 若要啟用 Zoom 的 Azure AD 布建服務，請在 [**設定**] 區段中將 [布建**狀態**] 變更為 [**開啟**]。
+11. 若要啟用縮放 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-12. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建的使用者和/或群組。
+12. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建至縮放的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
@@ -152,10 +148,10 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
 3. 如果佈建設定似乎處於狀況不良的狀態，應用程式將會進入隔離狀態。 [在此](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) \(部分機器翻譯\) 深入了解隔離狀態。  
 
 ## <a name="connector-limitations"></a>連接器限制
-* [縮放] 僅允許目前最多9999個基本使用者。
+* Zoom 目前最多隻允許9999的基本使用者。
 
 ## <a name="change-log"></a>變更記錄
-* 05/14/2020-已針對電子郵件 [type eq "work"] 屬性新增更新作業的支援。
+* 05/14/2020-對電子郵件 [type eq "work"] 屬性新增的更新作業支援。
 
 ## <a name="additional-resources"></a>其他資源
 

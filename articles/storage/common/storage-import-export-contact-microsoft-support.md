@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 20ac33a26bfe24eb60e2febc1344859f4e54cdd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee30e9bba35ad39606fbe201c49e4eed3e656c97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514418"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548268"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>針對匯入/匯出作業開啟支援票證
 
@@ -26,7 +26,7 @@ ms.locfileid: "85514418"
 
 執行下列步驟來建立支援要求：
 
-1. 移至您的匯入/匯出作業。 瀏覽至 [支援與疑難排解] 區段，然後按一下 [新增支援要求]。
+1. 移至您的匯入/匯出作業。 流覽至 [ **支援 + 疑難排解** ] 區段，然後選取 [ **新增支援要求**]。
      
     ![基本概念](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
@@ -40,7 +40,7 @@ ms.locfileid: "85514418"
         - 如果您選擇 [Blob]****，請選取 [資源]****、[容器名稱]**** (選擇性) 及 [支援方案]****。
             ![選擇 [Blob]](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - 如果您選擇 [檔案]****，請選取 [資源]****、[檔案共用名稱]**** (選擇性) 及[ 支援方案]**。** ![選擇 [檔案]](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. 按 [下一步] 。
+    4. 選取 [下一步] 。
 
 3. 在 [新增支援要求] 中，選取 [步驟 2 問題]。 在 [問題] 中，執行下列步驟：
     
@@ -49,22 +49,22 @@ ms.locfileid: "85514418"
     3. 針對 [類別]**** 選擇 [匯入 - 匯出]****。
     4. 為問題提供 [標題] 和更多 [詳細資料]。
     5. 提供問題開始日期與時間。
-    6. 在 [檔案上傳] 中，按一下資料夾圖示以瀏覽至任何其他您想要上傳的檔案。
+    6. 在 [檔案上傳] 中，選取資料夾圖示以瀏覽至任何其他您想要上傳的檔案。
     7. 勾選 [共用診斷資訊]。
-    8. 按 [下一步] 。
+    8. 選取 [下一步] 。
 
        ![問題](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. 在 [新增支援要求] 中，按一下 [步驟 3 連絡人資訊]。 在 [連絡人資訊] 中，執行下列步驟：
+4. 在 [ **新增支援要求**] 中，選取 [ **步驟3連絡人資訊**]。 在 [連絡人資訊] 中，執行下列步驟：
 
    1. 在 [連絡人選項] 中，提供您偏好的連絡方法 (電話或電子郵件) 以及語言。 會根據您的訂用帳戶方案自動選擇回應時間。
    2. 在 [連絡人資訊] 中，提供姓名、電子郵件、選用連絡方法、國家/地區。 選取 [儲存連絡人變更，以供後續支援要求使用]**** 核取方塊。
-   3. 按一下 [建立]。
+   3. 選取 [建立]。
    
        ![連絡人資訊](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
       Microsoft 支援服務會利用此資訊來連絡您，以取得進一步資訊、進行診斷及解決。
-      提交您的要求之後，支援工程師會儘速連絡您來處理您的要求。
+      提交您的要求之後，支援工程師會與您聯繫，以繼續您的要求。
 
 ## <a name="manage-a-support-request"></a>管理支援要求
 
@@ -80,11 +80,11 @@ ms.locfileid: "85514418"
 
     ![管理支援要求](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
-3. 選取並按一下支援要求。 您可以檢視此要求的狀態與詳細資料。 如果您想要追蹤此要求，請按一下 [+ New message]\(+ 新訊息\)。
+3. 選取並按一下支援要求。 您可以檢視此要求的狀態與詳細資料。 如果您想要追蹤此要求，請選取 [ **+ 新增訊息** ]。
 
     ![管理支援要求](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-了解如何[針對匯入/匯出服務的相關問題進行疑難](storage-import-export-tool-troubleshooting-v1.md)。
+瞭解如何 [使用 Azure 匯入/匯出，將資料傳入和傳出 Azure 儲存體](storage-import-export-service.md)。

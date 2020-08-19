@@ -2,25 +2,20 @@
 title: 教學課程︰以 Azure Active Directory 設定 Jive 來自動佈建使用者 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Jive 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 6fbfdbe7-d66c-4305-9fea-76d6a6a92830
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602eed65745eea1fd9096508c442a27ea79bcba9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec959ee34f9491b6510390d4b390e652690897e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057729"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547081"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>教學課程︰設定 Jive 來自動佈建使用者
 
@@ -60,7 +55,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 本節的目的是要說明如何對 Jive 啟用 Active Directory 使用者帳戶的使用者佈建。
 在此程序中，您必須提供從 Jive.com 要求所需的使用者安全性權杖。
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [ **Azure Active Directory > 企業應用程式] > [所有應用程式**] 區段。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至 **Azure Active Directory > 企業應用程式 > 所有應用程式** ] 區段。
 
 1. 如果您已將 Jive 設定為單一登入，請使用 [搜尋] 欄位搜尋您的 Jive 執行個體。 否則，請選取 [新增]****，並在應用程式庫中搜尋 [Jive]****。 從搜尋結果中選取 Jive，並將它新增至您的應用程式清單。
 
@@ -80,7 +75,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
       
       > [!NOTE]
       > Jive 租用戶 URL 是您的組織登入 Jive 所使用的 URL。  
-      > 通常，URL 的格式如下： **www. \<organization\> 。jive.com**。          
+      > URL 的格式通常如下： **www. \<organization\> 。jive.com**。          
 
 1. 在 Azure 入口網站中，按一下 [測試連線]****，以確保 Azure AD 可以連線至您的 Jive 應用程式。
 
