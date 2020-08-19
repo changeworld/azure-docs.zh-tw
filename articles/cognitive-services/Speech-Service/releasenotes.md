@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8985d8ab0b5fa8477a636254d1a5179cd2187963
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505800"
+ms.locfileid: "88525916"
 ---
 # <a name="speech-service-release-notes"></a>語音服務版本資訊
 
@@ -26,13 +26,13 @@ ms.locfileid: "88505800"
 
 * 類**神經 TTS：的 `en-US` 新說話樣式Aria 語音**。 在閱讀新聞時，AriaNeural 聽起來可能像 newscaster。 「Newscast 型」樣式聽起來更嚴重，而「newscast」的樣式比較寬鬆且非正式。 瞭解 [如何在 SSML 中使用說話樣式](speech-synthesis-markup.md)。
 
-* **自訂語音：會發行新的功能，以自動檢查定型資料品質**。 當您上傳資料時，資料檢查功能將檢查您的音訊和文字記錄的各個層面，並自動修正或篩選具有問題的資料，以改善語音模型的品質。 這涵蓋音訊的音量、雜訊等級、語音的發音精確度、具有正規化文字的語音對齊、音訊的無回應，以及音訊和腳本的格式。 
+* **自訂語音：會發行新的功能，以自動檢查定型資料品質**。 當您上傳資料時，系統會檢查音訊和文字記錄資料的各個層面，並自動修正或篩選問題，以改善語音模型的品質。 這涵蓋音訊的音量、雜訊等級、語音的發音精確度、具有正規化文字的語音對齊、音訊的無回應，以及音訊和腳本的格式。 
 
 * 建立**音訊內容：一組新功能，可讓您更強大的語音微調和音訊管理功能**。
 
     * 發音：發音微調功能已更新為最新的音素集。 您可以從程式庫挑選正確的音素元素，並精簡您所選取文字的發音。 
 
-    * 下載：音訊「下載」/「匯出」功能已增強，可支援每個段落產生音訊。 您可以輕鬆地在相同的檔案/SSML 中編輯不同的內容，同時產生多個音訊輸出。 [下載] 的檔案結構也會進行調整。 現在，您可以輕鬆地取得一個資料夾中的所有音訊。 
+    * 下載：音訊「下載」/「匯出」功能已增強，可支援依段落產生音訊。 您可以在相同的檔案/SSML 中編輯內容，同時產生多個音訊輸出。 [下載] 的檔案結構也會進行調整。 現在，您可以輕鬆地取得一個資料夾中的所有音訊。 
 
     * 工作狀態：已改善多檔案匯出體驗。 當您在過去匯出多個檔案時，如果其中一個檔案失敗，則整個工作將會失敗。 但現在，所有其他檔案都將成功匯出。 工作報表會以更詳細的結構化資訊來擴充。 您可以立即使用報表檢查所有失敗檔案和句子的記錄。 
 
@@ -62,9 +62,9 @@ ms.locfileid: "88505800"
 ### <a name="bug-fixes"></a>錯誤修正
 
 * 使用音訊內容建立工具修正了許多 bug 
-    * 修正自動重新整理的問題。 
-    * 修正了 zh 中的樣式語音在南東亞地區的-CN 問題
-    * 修正穩定性的問題，包括具有「中斷」標記的匯出錯誤、標點符號中的錯誤    
+    * 已修正自動重新整理的問題。 
+    * 修正了 zh 中的語音樣式在南東亞地區的-CN 問題。
+    * 修正穩定性問題，包括具有「中斷」標記的匯出錯誤，以及標點符號中的錯誤。    
 
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>新的語音轉換文字地區設定： 2020-8 月版本
 語音轉換文字已于8月發行26個新的地區設定：2個歐洲語言， `cs-CZ` 以及 `hu-HU` 5 個英文地區設定和19個西班牙文的地區設定，涵蓋大部分的南美洲國家/地區。 以下是新的地區設定清單。 請參閱 [這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)的完整語言清單。
@@ -164,7 +164,7 @@ ms.locfileid: "88505800"
 
 * 改進5種語言的單字層級發音精確度。
 
-    | Language | 發音錯誤減少 |
+    | 語言 | 發音錯誤減少 |
     |---|---|
     | `en-GB` | 51% |
     | `ko-KR` | 17% |
@@ -177,7 +177,7 @@ ms.locfileid: "88505800"
 * 貨幣讀取
     * 修正了和的貨幣讀取問題 `es-ES``es-MX`
      
-    | Language | 輸入 | 改進後讀出 |
+    | 語言 | 輸入 | 改進後讀出 |
     |---|---|---|
     | `es-MX` | $1.58 | un 比索 cincuenta y ocho centavos |
     | `es-ES` | $1.58 | un dólar cincuenta y ocho centavos |

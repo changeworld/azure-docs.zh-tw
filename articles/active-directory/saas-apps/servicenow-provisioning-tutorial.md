@@ -2,25 +2,21 @@
 title: 教學課程：以 Azure Active Directory 設定 ServiceNow 來自動佈建使用者 | Microsoft Docs
 description: 了解如何將使用者帳戶從 Azure AD 自動佈建和取消佈建至 ServiceNow。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
-ms.assetid: 4d6f06dd-a798-4c22-b84f-8a11f1b8592a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 099216d5ffde48c404ae733c09b568b3859c25ad
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 218a3ad04d4f7366604784e06c558a9c568ad77e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922161"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528058"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教學課程：設定 ServiceNow 來自動佈建使用者
 
@@ -60,13 +56,13 @@ ms.locfileid: "87922161"
 
    ![ServiceNow 管理員角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-3. 請檢查並確定已在 ServiceNow 中**停用**下列設定：
+3. 請檢查以確定 ServiceNow 中 **已停用** 下列設定：
 
-   1. 針對傳入架構要求，選取 [**系統安全性**] [  >  **高安全性設定**] [  >  **需要基本驗證**]。
-   2. 選取 [**系統屬性**] [  >  **Web 服務**  >  **需要對傳入 SOAP 要求進行基本授權**]。
+   1. 選取 [**系統安全性**  >  **高安全性設定**  >  **需要驗證傳入架構要求的基本驗證**]。
+   2. 選取 [**系統屬性**]  >  **Web 服務**  >  **需要連入 SOAP 要求的基本授權**。
      
    > [!IMPORTANT]
-   > 如果*已啟用*這些設定，布建引擎將無法與 ServiceNow 通訊。
+   > 如果 *啟用*這些設定，布建引擎將無法與 ServiceNow 進行通訊。
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 ServiceNow
 
@@ -153,10 +149,10 @@ Azure AD 佈建服務可供根據對應用程式的指派，或根據使用者/�
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   此錯誤表示與 ServiceNow 實例通訊時發生問題。 再次檢查以確保 ServiceNow 中的下列設定已*停用*：
+   此錯誤表示與 ServiceNow 實例通訊時發生問題。 請仔細檢查以確定 ServiceNow 中 *已停用* 下列設定：
    
-   1. 針對傳入架構要求，選取 [**系統安全性**] [  >  **高安全性設定**] [  >  **需要基本驗證**]。
-   2. 選取 [**系統屬性**] [  >  **Web 服務**  >  **需要對傳入 SOAP 要求進行基本授權**]。
+   1. 選取 [**系統安全性**  >  **高安全性設定**  >  **需要驗證傳入架構要求的基本驗證**]。
+   2. 選取 [**系統屬性**]  >  **Web 服務**  >  **需要連入 SOAP 要求的基本授權**。
 
 ## <a name="additional-resources"></a>其他資源
 

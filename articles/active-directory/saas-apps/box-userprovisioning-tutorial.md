@@ -2,25 +2,20 @@
 title: 教學課程︰以 Azure Active Directory 設定 Box 來自動佈建使用者 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Box 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 1c959595-6e57-4954-9c0d-67ba03ee212b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0be9298e56cf2e5c816c45fcb7e84eb20c11ef4d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 76c0f4f021646b4cbf1a09559e085176353a4a3c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018174"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525607"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>教學課程︰設定 Box 來自動佈建使用者
 
@@ -29,7 +24,7 @@ ms.locfileid: "87018174"
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 若要設定 Azure AD 與 Box 整合，您需要下列項目：
 
@@ -90,7 +85,7 @@ Azure 入口網站的 [Box] > [使用者和群組]**** 索引標籤可讓您指�
 
 本節的目的是要說明如何對 Box 啟用 Active Directory 使用者帳戶的佈建。
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [ **Azure Active Directory > 企業應用程式] > [所有應用程式**] 區段。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至 **Azure Active Directory > 企業應用程式 > 所有應用程式** ] 區段。
 
 2. 如果您已經設定單一登入的 Box，使用 [搜尋] 欄位搜尋您的 Box 執行個體。 否則，請選取 [新增]****，並在應用程式庫中搜尋 [Box]****。 從搜尋結果中選取 Box，並將它新增至您的應用程式清單。
 
