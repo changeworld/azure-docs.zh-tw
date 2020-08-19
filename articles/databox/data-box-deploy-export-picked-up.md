@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 332b4fdb6e0a26437edbf4309ee0b89b79f7eb23
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845794"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142106"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>教學課程：送回 Azure 資料箱 (預覽)
 
@@ -176,7 +176,7 @@ ms.locfileid: "87845794"
 
 ## <a name="self-managed"></a>[自我管理](#tab/in-selfmanaged)
 
-如果您在日本、新加坡、韓國和西歐使用資料箱，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。
+如果您在日本、新加坡、韓國、印度、南非或西歐使用資料箱，並已在建立訂單期間選取自我管理寄送選項，請遵循下列指示。
 
 1. 在此步驟成功完成之後，請記下資料箱本機 Web UI [準備寄送] 頁面上所顯示的授權碼。
 2. 關閉裝置電源並移除纜線。 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。

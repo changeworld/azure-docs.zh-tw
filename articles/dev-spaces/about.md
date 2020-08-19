@@ -6,12 +6,12 @@ ms.topic: overview
 description: 了解 Azure Dev Spaces 可為 Azure Kubernetes Service 叢集中的小組提供快速、反覆的 Kubernetes 開發體驗。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 691845cd888e4d24c1144f2805402a3baf14a86e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ad884d5e054f23269b238b791e250c732d70a9b8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006959"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210634"
 ---
 # <a name="what-is-azure-dev-spaces"></a>什麼是 Azure Dev Spaces？
 
@@ -42,8 +42,10 @@ Azure Dev Spaces 提供可為您的專案產生 Docker 和 Kubernetes 資產的�
 
 ## <a name="next-steps"></a>後續步驟
 
-透過[小組開發快速入門][team-development-quickstart]，深入了解小組成員如何使用 Azure Dev Spaces 進行快速的反覆式開發。
+深入了解 Azure Dev Spaces 的運作方式。
+
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces 如何運作](how-dev-spaces-works.md)
 
 [how-dev-spaces-works]: how-dev-spaces-works.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[team-development-quickstart]: quickstart-team-development.md

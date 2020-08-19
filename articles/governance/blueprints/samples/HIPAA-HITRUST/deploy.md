@@ -1,14 +1,14 @@
 ---
 title: 部署 HIPAA HITRUST 藍圖範例
 description: HIPAA HITRUST4 藍圖範例的部署步驟，其中包括藍圖成品參數的詳細資料。
-ms.date: 12/03/2019
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: b3101d67e281f3b613b95e3f3ef5f620ae44cec7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f41827d687beb583ea6402d517e88b8cf69903a0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044833"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211523"
 ---
 # <a name="deploy-the-hipaa-hitrust-blueprint-sample"></a>部署 HIPAA HITRUST 藍圖範例
 
@@ -106,6 +106,8 @@ ms.locfileid: "86044833"
 |在 SQL 伺服器上部署稽核 |原則指派 |儲存體帳戶用於 SQL 伺服器稽核的資源群組名稱 |稽核會將資料庫事件寫入您 Azure 儲存體帳戶的稽核記錄中 (儲存體帳戶會建立於 SQL Server 建立所在的每個區域中，並由該區域中的所有伺服器共用)。 重要 - 為使稽核作業正常運作，請勿刪除或重新命名資源群組或儲存體帳戶。 |
 |部署網路安全性群組的診斷設定 |原則指派 |網路安全性群組診斷的儲存體帳戶前置詞 |此前置詞會與網路安全性群組位置結合，構成所建立的儲存體帳戶名稱。 |
 |部署網路安全性群組的診斷設定 |原則指派 |儲存體帳戶用於網路安全性群組診斷的資源群組名稱 (必須存在) |在其中建立儲存體帳戶的資源群組。 此資源群組必須已存在。 |
+|\[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式 |原則指派 |Linux VM 擴展集 (VMSS) 的 Log Analytics 工作區 |如果工作區是在指派的範圍之外，您必須手動將「Log Analytics 參與者」權限 (或類似權限) 授與原則指派的主體識別碼。 |
+|\[預覽\]：為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式 |原則指派 |Linux VM 擴展集 (VMSS) 的 Log Analytics 工作區 |如果工作區是在指派的範圍之外，您必須手動將「Log Analytics 參與者」權限 (或類似權限) 授與原則指派的主體識別碼。 |
 
 ## <a name="next-steps"></a>後續步驟
 

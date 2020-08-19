@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6933321ad402104fa5529af2b7fdf38e329e0168
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830910"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212738"
 ---
 # <a name="what-is-azure-maps"></a>什麼是 Azure 地圖服務？
 
@@ -76,7 +76,7 @@ Azure 地圖服務行動服務可加速開發出具有大眾運輸功能的應�
 
 ### <a name="render-service"></a>轉譯服務
 
-現在為預覽狀態的[轉譯服務 V2](https://docs.microsoft.com/est/api/maps/renderv2) 引進了新版本的[取得地圖底圖 V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)。 取得地圖底圖 V2 API 現在允許客戶要求 Azure 地圖服務的道路底圖、氣象底圖，或使用 Azure 地圖服務建立工具建立的地圖底圖。 建議您使用新的取得地圖底圖 V2 API。  
+現在為預覽狀態的[轉譯服務 V2](https://docs.microsoft.com/rest/api/maps/renderv2) 引進了新版本的[取得地圖底圖 V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)。 取得地圖底圖 V2 API 現在允許客戶要求 Azure 地圖服務的道路底圖、氣象底圖，或使用 Azure 地圖服務建立工具建立的地圖底圖。 建議您使用新的取得地圖底圖 V2 API。  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="從轉譯服務 V2 建立的地圖範例":::
 

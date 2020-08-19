@@ -4,16 +4,16 @@ description: 了解 Azure Analysis Services，此為完全受控的平台即服�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/24/2020
+ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: f1e70c5b7eb4efdde1bfc20b1ec3e058bfa5b054
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 7878ecd2b1ce223a95c229b93713a875636daa09
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918957"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164303"
 ---
 # <a name="what-is-azure-analysis-services"></a>什麼是 Azure Analysis Services？
 
@@ -88,6 +88,7 @@ Azure Analysis Services 會以**開發人員**、**基本**及**標準**層提�
 |美國東部 2     |     S8、S9、S8v2、S9v2   |    1    |
 |美國中北部     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|美國中部     |    S8v2、S9v2     |    1     |
 |美國中南部     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |美國中西部   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |美國西部     |    B1, B2, S0, S1, S2, S4, D1    |    7   |

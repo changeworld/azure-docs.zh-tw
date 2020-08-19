@@ -4,14 +4,15 @@ description: 了解如何使用 Azure Cache for Redis 搭配下列程式碼範�
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
+ms.custom: devx-track-dotnet
 ms.topic: sample
 ms.date: 01/23/2017
-ms.openlocfilehash: 8057a7db3d1a2db0e51ec15e4966ed0b31c84226
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 553850173f463a05b13768eb3b9e17703bfa2886
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75433395"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212298"
 ---
 # <a name="azure-cache-for-redis-samples"></a>Azure Cache for Redis 範例
 本主題提供「Azure Redis 快取」範例清單，其中涵蓋下列這類案例：連線至快取、對快取進行資料讀取和寫入，以及使用 ASP.NET「Azure Redis 快取」提供者。 有些範例是可下載的專案，有些則提供逐步指導並包括程式碼片段，但沒有可下載專案的連結。

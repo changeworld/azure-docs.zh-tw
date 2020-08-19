@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120859"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140797"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入門：設定用戶端應用程式以存取 Web API
 
@@ -148,7 +148,7 @@ ms.locfileid: "88120859"
 
 ## <a name="add-permissions-to-access-web-apis"></a>新增用來存取 Web API 的權限
 
-依預設會選取[圖形 API 登入及讀取使用者設定檔權限](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions)。 針對每一個 Web API，您可以從[兩種權限類型](developer-glossary.md#permissions)中做選擇：
+依預設會選取[圖形 API 登入及讀取使用者設定檔權限](/graph/permissions-reference#user-permissions)。 針對每一個 Web API，您可以從[兩種權限類型](developer-glossary.md#permissions)中做選擇：
 
 * **應用程式權限**。 您的用戶端應用程式本身需要直接存取 Web API (沒有使用者內容)。 這種類型的權限需要系統管理員同意。 傳統型和行動用戶端應用程式無法使用此權限。
 * **委派權限**。 您的用戶端應用程式需要存取 Web API 作為已登入的使用者，但其存取權受到選取權限的限制。 這種類型的權限可由使用者授與，除非權限需要系統管理員的同意。
