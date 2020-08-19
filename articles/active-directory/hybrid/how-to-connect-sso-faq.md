@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019726"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589039"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 無縫單一登入：常見問題集
 
@@ -104,7 +104,7 @@ ms.locfileid: "87019726"
    2. 呼叫 `Update-AzureADSSOForest -OnPremCredentials $creds`。 此命令會更新此特定 AD 樹系中 `AZUREADSSO` 電腦帳戶的 Kerberos 解密金鑰，並且在 Azure AD 中更新它。
    
    >[!NOTE]
-   >如果您不是網域系統管理員，而且您已被網域系統管理員指派許可權，則應該呼叫`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+   >如果您不是網域系統管理員，而且您已被網域系統管理員指派許可權，您應該呼叫 `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. 針對您已設定此功能的每個 AD 樹系，重複上述步驟。
 
@@ -135,6 +135,8 @@ ms.locfileid: "87019726"
    3. 使用此命令匯入順暢 SSO PowerShell 模組：`Import-Module .\AzureADSSO.psd1`。
    4. 以系統管理員身分執行 PowerShell。 在 PowerShell 中，呼叫 `New-AzureADSSOAuthenticationContext`。 此命令應提供一個快顯視窗，以便輸入租用戶的全域管理員認證。
    5. 呼叫 `Enable-AzureADSSO -Enable $false`。
+   
+   此時，已停用無縫 SSO，但如果您想要啟用無縫 SSO，網域仍會保持設定。 如果您想要完全移除無縫 SSO 設定中的網域，請在完成上述步驟5之後，呼叫下列 Cmdlet： `Disable-AzureADSSOForest -DomainFqdn <fqdn>` 。
 
    >[!IMPORTANT]
    >使用 PowerShell 停用無縫 SSO 不會變更 Azure AD Connect 中的狀態。 在 [變更使用者登入] 頁面中，無縫 SSO 會顯示為已啟用。

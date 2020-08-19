@@ -1,6 +1,6 @@
 ---
-title: 執行 OpenShift 4 的 Azure Red Hat OpenShift-使用命令列設定 Azure Active Directory 驗證
-description: 瞭解如何使用命令列為執行 OpenShift 4 的 Azure Red Hat OpenShift 叢集設定 Azure Active Directory 驗證
+title: Azure Red Hat OpenShift 執行 OpenShift 4-使用命令列設定 Azure Active Directory authentication
+description: 瞭解如何使用命令列為執行 OpenShift 4 的 Azure Red Hat OpenShift 叢集設定 Azure Active Directory authentication
 ms.service: container-service
 ms.topic: article
 ms.date: 03/12/2020
@@ -8,23 +8,23 @@ author: sabbour
 ms.author: asabbour
 keywords: aro, openshift, az aro, red hat, cli
 ms.custom: mvc
-ms.openlocfilehash: 45da3034891e5a82fb8423adb6bcd5e867f9d4e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 393185d2167e18df3f8c1319e7367efbc437de1a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204997"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590331"
 ---
-# <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>設定 Azure Red Hat OpenShift 4 叢集的 Azure Active Directory 驗證（CLI）
+# <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>設定 Azure Red Hat OpenShift 4 叢集 (CLI 的 Azure Active Directory authentication) 
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 版2.0.75 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.6.0 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-抓取即將用來設定 Azure Active Directory 應用程式的叢集特定 Url。
+取出即將用來設定 Azure Active Directory 應用程式的叢集特定 Url。
 
-建立叢集的 OAuth 回呼 URL，並將它儲存在變數**oauthCallbackURL**中。 請務必以您的資源群組名稱取代**aro-rg** ，並以您的叢集名稱取代**aro-cluster** 。
+建立叢集的 OAuth 回呼 URL，並將它儲存在變數 **oauthCallbackURL**中。 請務必以您的資源群組名稱取代 **aro-rg** ，並以叢集的名稱取代 **aro** 叢集。
 
 > [!NOTE]
-> `AAD`Oauth 回呼 URL 中的區段應符合您稍後將會設定的 oauth 身分識別提供者名稱。
+> `AAD`Oauth 回呼 URL 中的區段應該符合您稍後將設定的 oauth 身分識別提供者名稱。
 
 ```azurecli-interactive
 domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
@@ -34,9 +34,9 @@ webConsole=$(az aro show -g aro-rg -n aro-cluster --query consoleProfile.url -o 
 oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
 ```
 
-## <a name="create-an-azure-active-directory-application-for-authentication"></a>建立用於驗證的 Azure Active Directory 應用程式
+## <a name="create-an-azure-active-directory-application-for-authentication"></a>建立 Azure Active Directory 應用程式以進行驗證
 
-建立 Azure Active Directory 應用程式，並取出已建立的應用程式識別碼。 **\<ClientSecret>** 以安全密碼取代。
+建立 Azure Active Directory 應用程式，並取出建立的應用程式識別碼。 **\<ClientSecret>** 以安全密碼取代。
 
 ```azurecli-interactive
 az ad app create \
@@ -46,7 +46,7 @@ az ad app create \
   --password '<ClientSecret>'
 ```
 
-您應該會得到類似下面的內容。 請記下它，因為這是您在後續步驟中需要的**AppId** 。
+您應取回如下的內容。 請記下它，因為這是您在後續步驟中需要的 **AppId** 。
 
 ```output
 6a4cb4b2-f102-4125-b5f5-9ad6689f7224
@@ -58,15 +58,15 @@ az ad app create \
 az account show --query tenantId -o tsv
 ```
 
-您應該會得到類似下面的內容。 請記下它，因為這是您在後續步驟中需要的**TenantId** 。
+您應取回如下的內容。 請記下它，因為這是您在後續步驟中需要的 **TenantId** 。
 
 ```output
 72f999sx-8sk1-8snc-js82-2d7cj902db47
 ```
 
-## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>建立資訊清單檔，以定義要包含在識別碼權杖中的選擇性宣告
+## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>建立資訊清單檔案，以定義要包含在識別碼權杖中的選擇性宣告
 
-應用程式開發人員可以在其 Azure AD 應用程式中使用[選擇性宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)，在傳送至其應用程式的權杖中指定他們想要的宣告。
+應用程式開發人員可以在其 Azure AD 應用程式中使用 [選擇性宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) ，以指定要在傳送至其應用程式的權杖中使用的宣告。
 
 您可以使用選擇性宣告來：
 
@@ -74,9 +74,9 @@ az account show --query tenantId -o tsv
 - 變更 Azure AD 在權杖中傳回之特定宣告的行為。
 - 新增和存取應用程式的自訂宣告。
 
-我們會將 OpenShift 設定為使用宣告 `email` ，並藉 `upn` 由將新增 `upn` 為 Azure Active Directory 所傳回之識別碼權杖的一部分，來切換回以設定慣用的使用者名稱。
+我們會將 OpenShift 設定為使用宣告 `email` ，並切換回以 `upn` 設定慣用的使用者名稱，方法是將加入 `upn` 成為 Azure Active Directory 所傳回之識別碼權杖的一部分。
 
-在檔案**上建立manifest.js** ，以設定 Azure Active Directory 應用程式。
+建立檔案 **manifest.js** ，以設定 Azure Active Directory 應用程式。
 
 ```bash
 cat > manifest.json<< EOF
@@ -97,7 +97,7 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>使用資訊清單更新 Azure Active Directory 應用程式的 optionalClaims
 
-**\<AppID>** 將取代為您稍早所提供的識別碼。
+取代 **\<AppID>** 為您稍早取得的識別碼。
 
 ```azurecli-interactive
 az ad app update \
@@ -107,11 +107,11 @@ az ad app update \
 
 ## <a name="update-the-azure-active-directory-application-scope-permissions"></a>更新 Azure Active Directory 應用程式範圍許可權
 
-為了能夠從 Azure Active Directory 讀取使用者資訊，我們必須定義適當的範圍。
+為了能夠從 Azure Active Directory 讀取使用者資訊，我們需要定義適當的範圍。
 
-**\<AppID>** 將取代為您稍早所提供的識別碼。
+取代 **\<AppID>** 為您稍早取得的識別碼。
 
-Azure Active Directory Graph 的 [新增] 許可權。 [**使用者]** 的 [讀取範圍]，以啟用登入和讀取使用者設定檔。
+新增 **Azure Active Directory Graph** 的許可權。若要啟用登入和讀取使用者設定檔，請參閱範圍。
 
 ```azurecli-interactive
 az ad app permission add \
@@ -121,13 +121,13 @@ az ad app permission add \
 ```
 
 > [!NOTE]
-> 除非您是以此 Azure Active Directory 的全域管理員身分進行驗證，否則可以忽略訊息以授與同意，因為當您登入自己的帳戶時，系統會要求您執行此動作。
+> 除非您是以此 Azure Active Directory 的全域系統管理員身分進行驗證，否則您可以忽略訊息以授與同意，因為當您登入自己的帳戶時，系統會要求您這樣做。
 
-## <a name="assign-users-and-groups-to-the-cluster-optional"></a>將使用者和群組指派給叢集（選擇性）
+## <a name="assign-users-and-groups-to-the-cluster-optional"></a>將使用者和群組指派給叢集 (選擇性) 
 
 根據預設，在 Azure Active Directory (Azure AD) 租用戶中註冊的應用程式可供成功通過驗證的所有租用戶使用者使用。 Azure AD 可讓租用戶系統管理員和開發人員將應用程式限制為僅供租用戶中的一組特定使用者或安全性群組存取。
 
-依照 Azure Active Directory 檔中的指示，[將使用者和群組指派給應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)。
+遵循 Azure Active Directory 檔中的指示， [將使用者和群組指派給應用程式](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)。
 
 ## <a name="configure-openshift-openid-authentication"></a>設定 OpenShift OpenID 驗證
 
@@ -148,21 +148,21 @@ az aro list-credentials \
 }
 ```
 
-使用下列命令登入 OpenShift 叢集的 API 伺服器。 `$apiServer`變數[先前]()已設定。 **\<kubeadmin password>** 以您所抓取的密碼取代。
+使用下列命令來登入 OpenShift 叢集的 API 伺服器。 `$apiServer`[先前]()已設定變數。 **\<kubeadmin password>** 以您取出的密碼取代。
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>
 ```
 
-建立 OpenShift 秘密來儲存 Azure Active Directory 應用程式密碼， **\<ClientSecret>** 並將取代為您稍早取得的密碼。
+建立 OpenShift 秘密來儲存 Azure Active Directory 應用程式密碼， **\<ClientSecret>** 並以您稍早取出的密碼取代。
 
 ```azurecli-interactive
 oc create secret generic openid-client-secret-azuread \
   --namespace openshift-config \
   --from-literal=clientSecret=<ClientSecret>
-```    
+```
 
-建立**oidc yaml**檔案，針對 Azure Active Directory 設定 OpenShift OpenID 驗證。 **\<AppID>** 將和取代 **\<TenantId>** 為您稍早取得的值。
+建立 **oidc yaml** 檔案，以針對 Azure Active Directory 設定 OpenShift OpenID 驗證。 **\<AppID>** **\<TenantId>** 以您稍早取出的值取代和。
 
 ```bash
 cat > oidc.yaml<< EOF
@@ -177,20 +177,20 @@ spec:
     type: OpenID
     openID:
       clientID: <AppId>
-      clientSecret: 
+      clientSecret:
         name: openid-client-secret-azuread
-      extraScopes: 
+      extraScopes:
       - email
       - profile
-      extraAuthorizeParameters: 
+      extraAuthorizeParameters:
         include_granted_scopes: "true"
       claims:
-        preferredUsername: 
+        preferredUsername:
         - email
         - upn
-        name: 
+        name:
         - name
-        email: 
+        email:
         - email
       issuer: https://login.microsoftonline.com/<TenantId>
 EOF
@@ -202,14 +202,14 @@ EOF
 oc apply -f oidc.yaml
 ```
 
-您會收到如下所示的回應。
+您將會得到類似以下的回應。
 
 ```output
 oauth.config.openshift.io/cluster configured
 ```
 
-## <a name="verify-login-through-azure-active-directory"></a>驗證透過 Azure Active Directory 登入
+## <a name="verify-login-through-azure-active-directory"></a>確認登入 Azure Active Directory
 
-如果您現在登出 OpenShift Web 主控台並嘗試再次登入，您將會看到新的選項，可供您使用**AAD**登入。 您可能需要等候幾分鐘的時間。
+如果您現在登出 OpenShift Web 主控台，然後再次嘗試登入，您將會看到使用 **AAD**登入的新選項。 您可能需要等候幾分鐘的時間。
 
-![具有 Azure Active Directory 選項的登入畫面](media/aro4-login-2.png)
+![具有 Azure Active Directory 選項的 [登入] 畫面](media/aro4-login-2.png)

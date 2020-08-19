@@ -8,12 +8,12 @@ ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c144442ecd93ca87683179adef496a5d68cce98e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c48c48ef438f99f3b144c3300cb2415e4d387e7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525892"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586676"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>設定 Azure 檔案儲存體網路端點
 
@@ -136,7 +136,7 @@ Address: 192.168.0.5
 
 #### <a name="disable-access-to-the-public-endpoint"></a>停用公用端點的存取權
 
-當公用端點的存取權停用時，仍然可以透過其私人端點來存取儲存體帳戶。 否則，以儲存體帳戶公用端點為目標的有效要求將會遭到拒絕。 
+當公用端點的存取權停用時，仍然可以透過其私人端點來存取儲存體帳戶。 否則將會拒絕對儲存體帳戶的公用端點的有效要求，除非它們來自于 [特別允許的來源](#restrict-access-to-the-public-endpoint-to-specific-virtual-networks)。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-disable-portal](../../../includes/storage-files-networking-endpoints-public-disable-portal.md)]

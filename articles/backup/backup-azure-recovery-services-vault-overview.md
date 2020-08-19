@@ -3,12 +3,12 @@ title: 復原服務保存庫概觀
 description: 復原服務保存庫和 Azure 備份保存庫之間的概觀與比較。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b292a39e38ef5e298f45c2babbee9fbd20c39ea
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 5334bc2aea5ddbf734c3fd3ef314ff4da609d61d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261866"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587747"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
 
@@ -32,10 +32,19 @@ ms.locfileid: "88261866"
 
 - 若要深入瞭解儲存體冗余，請參閱這些有關 [地理](../storage/common/storage-redundancy.md) 位置和 [本機](../storage/common/storage-redundancy.md) 冗余的文章。
 
-### <a name="additional-resources"></a>其他資源
+## <a name="encryption-settings-in-the-recovery-services-vault"></a>復原服務保存庫中的加密設定
 
-- [保存庫支援和不支援的案例](backup-support-matrix.md#vault-support)
-- [保存庫的常見問題](backup-azure-backup-faq.md)
+本節討論可用來將儲存在復原服務保存庫中的備份資料加密的選項。
+
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>使用平臺管理的金鑰來加密備份資料
+
+根據預設，您的所有資料都會使用平臺管理的金鑰進行加密。 您不需要從您的一端採取任何明確的動作，就能啟用此加密。 其適用於備份到復原服務保存庫的所有工作負載。
+
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客戶管理的金鑰來加密備份資料
+
+您可以選擇使用由您所擁有和管理的加密金鑰來加密您的資料。 Azure 備份可讓您使用儲存在 Azure Key Vault 中的 RSA 金鑰來加密您的備份。 用於加密備份的加密金鑰可能與用於來源的加密金鑰不同。 使用 AES 256 型資料加密金鑰來保護資料 (DEK) ，也就是使用您的金鑰加以保護。 這可讓您完整控制資料和金鑰。 若要允許加密，必須將 Azure Key Vault 中的加密金鑰存取權授與復原服務保存庫。 您可以在需要時停用金鑰或撤銷存取權。 不過，在您嘗試保護任何專案至保存庫之前，必須先使用您的金鑰啟用加密。
+
+深入瞭解如何 [使用客戶管理的金鑰](encryption-at-rest-with-cmk.md)來加密您的備份資料。
 
 ## <a name="azure-advisor"></a>Azure Advisor
 
@@ -45,9 +54,15 @@ Azure Advisor 針對未備份的 Vm 提供每小時 [建議](../advisor/advisor-
 
 ![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
+## <a name="additional-resources"></a>其他資源
+
+- [保存庫支援和不支援的案例](backup-support-matrix.md#vault-support)
+- [保存庫的常見問題](backup-azure-backup-faq.md)
+
 ## <a name="next-steps"></a>後續步驟
 
-使用下列文章進行：</br>
-[備份 IaaS VM](backup-azure-arm-vms-prepare.md)</br>
-[備份 Azure 備份伺服器](backup-azure-microsoft-azure-backup.md)</br>
-[備份 Windows Server](backup-windows-with-mars-agent.md)
+使用下列文章進行：
+
+- [備份 IaaS VM](backup-azure-arm-vms-prepare.md)
+- [備份 Azure 備份伺服器](backup-azure-microsoft-azure-backup.md)
+- [備份 Windows Server](backup-windows-with-mars-agent.md)

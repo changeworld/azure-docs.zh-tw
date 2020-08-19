@@ -5,15 +5,15 @@ description: 開始學習如何設定和管理 Azure Load Balancer 的後端集�
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: overview
+ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 1ab0fd2ff4a2105cdfc4a19b7307cd9817878156
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 81fad1c77b917c1e3eaf7ddd200c3fea83cb0e0a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421785"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589668"
 ---
 # <a name="backend-pool-management"></a>後端集區管理
 後端集區是負載平衡器的重要元件。 後端集區會定義將為指定負載平衡規則提供流量的資源群組。

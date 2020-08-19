@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: ee8a34e70cfbbd0df233f21c89bc0e877174d3ce
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0d91146ecdc1bac606d030841987a85b1336a047
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847205"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590093"
 ---
 # <a name="azure-cosmos-db-net-sdk-v2-for-sql-api-download-and-release-notes"></a>適用于 SQL API 的 Azure Cosmos DB .NET SDK v2：下載和版本資訊
 > [!div class="op_single_selector"]
@@ -25,7 +25,8 @@ ms.locfileid: "87847205"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
+> * [春季資料 v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -48,7 +49,7 @@ ms.locfileid: "87847205"
 > [!NOTE]
 > 如果您使用 .NET Framework，請參閱以 .NET Standard 為目標的最新 3.x 版 [.NET SDK](sql-api-sdk-dotnet-standard.md)。
 
-下列 .NET Sdk 的子版本適用于2.x 版：
+2.x 版下提供下列 .NET Sdk 的子版本：
 
 [!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v2/changelog.md)]
 

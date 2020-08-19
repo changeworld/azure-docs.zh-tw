@@ -2,28 +2,37 @@
 title: 在 Azure 實驗室服務中設定 VM 的自動關機
 description: 本文說明如何在實驗室帳戶中設定 VM 的自動關機。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 783e3b310b3ad06f637453f0e1b11f6a78beec3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/17/2020
+ms.openlocfilehash: 9fd93d383ba6a2d57057a3b45f8b517c84990043
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445809"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589789"
 ---
-# <a name="configure-automatic-shutdown-of-vms-on-disconnect-setting-for-a-lab-account"></a>在實驗室帳戶的中斷連線設定上設定 VM 的自動關機
-您可以在遠端桌面連線中斷之後，啟用或停用 Windows 實驗室 VM (範本或學生) 的自動關機。 您也可以指定實驗室服務在自動關機之前，應該等候使用者重新連線的時間長度。
+# <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>設定實驗室帳戶的 Vm 自動關機
+
+您可以啟用數個自動關機成本控制功能，以在虛擬機器未主動使用時主動預防額外的成本。 下列三個自動關機和中斷連線功能的組合，會攔截使用者不小心讓虛擬機器執行的大部分情況：
+ 
+- 自動中斷使用者與 OS 認為閒置 (Windows) 的虛擬機器連線。
+- 當使用者中斷 (Windows & Linux) 的連線時，自動關閉虛擬機器。
+- 自動關閉已啟動但使用者未連接的虛擬機器。
+
+在 [ [使用自動關機設定的最大化成本控制](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) ] 區段中，查看自動關機功能的更多詳細資料。
 
 ## <a name="enable-automatic-shutdown"></a>啟用自動關機
 
-1. 在 [實驗室帳戶] 頁面上，選取左側功能表上的 [實驗室設定]。
-2. 選取 [在使用者中斷連線時自動將虛擬機器關機] 選項。
-3. 指定實驗室服務在將 VM 自動關機之前，應該等候使用者重新連線的時間長度。
+1. 在 [Azure 入口網站](https://portal.azure.com/) 流覽至 [ **實驗室帳戶** ] 頁面。
+1. 選取左側功能表上的 [ **實驗室設定** ]。
+1. 選取適用于您案例的自動關機設定 (s) 。  
 
-    ![實驗室帳戶的自動關機設定](./media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+    > [!div class="mx-imgBorder"]
+    > ![實驗室帳戶的自動關機設定](./media/how-to-configure-lab-accounts/automatic-shutdown-vm-disconnect.png)
+    
+    設定 (s) 適用于在實驗室帳戶中建立的所有實驗室。 實驗室建立者 (授課者) 可以在實驗室層級覆寫此設定。 對於實驗室帳戶的此設定所進行的變更，只會影響在進行變更之後所建立的實驗室。
 
-    此設定適用於在實驗室帳戶中建立的所有實驗室。 實驗室建立者 (授課者) 可以在實驗室層級覆寫此設定。 對於實驗室帳戶的此設定所進行的變更，只會影響在進行變更之後所建立的實驗室。
-
-    若要停用此設定，請取消核取此頁面上的 [在使用者中斷連線時自動將虛擬機器關機] 選項核取方塊。 
+    若要停用 (s) 的設定，請取消核取此頁面上)  (s 的核取方塊。 
 
 ## <a name="next-steps"></a>後續步驟
-若要了解實驗室擁有者該如何在實驗室層級設定或覆寫這項設定，請參閱[這篇文章](how-to-enable-shutdown-disconnect.md)
+
+若要瞭解實驗室擁有者在實驗室層級如何設定或覆寫此設定，請參閱 [在中斷連線時啟用 vm 的自動關機](how-to-enable-shutdown-disconnect.md)

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 43858015857303d404b1abc0fe410aa462671587
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: b60a777960f3c6f8a2415ca551217d35b7f3497d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340193"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588017"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 支援的語言與區域
 
@@ -24,16 +24,16 @@ LUIS 在服務內有各種不同的功能。 並非所有功能都有相同的�
 
 ## <a name="multi-language-luis-apps"></a>多語言 LUIS 應用程式
 
-如果您需要多語言 LUIS 用戶端應用程式 (例如聊天機器人)，您會有幾個選項可用。 如果 LUIS 支援所有語言，請針對每種語言開發 LUIS 應用程式。 每個 LUIS 應用程式都有唯一的應用程式識別碼和端點記錄。 如果您需要提供語言 LUIS 不支援的語言理解，您可以使用[翻譯工具服務](../Translator/translator-info-overview.md)將語句轉譯為支援的語言、將語句提交至 LUIS 端點，以及接收產生的分數。
+如果您需要多語言 LUIS 用戶端應用程式 (例如聊天機器人)，您會有幾個選項可用。 如果 LUIS 支援所有語言，請針對每種語言開發 LUIS 應用程式。 每個 LUIS 應用程式都有唯一的應用程式識別碼和端點記錄。 如果您需要為語言 LUIS 提供不支援的語言理解，您可以使用 [Translator 服務](../Translator/translator-info-overview.md) 將語句轉譯成支援的語言、將語句提交至 LUIS 端點，並接收產生的分數。
 
 ## <a name="languages-supported"></a>支援的語言
 
 LUIS 可理解下列語言的語句：
 
-| 語言 |地區設定  |  預建網域 | 預建實體 | 片語清單建議 | **[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
+| 語言 |Locale  |  預建網域 | 預建實體 | 片語清單建議 | **[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英文 (美國) |`en-US` | ✔ | ✔  |✔|✔|
-| 阿拉伯文（預覽-現代化標準阿拉伯文） |`ar-AR`|-|-|-|-|
+| 阿拉伯文 (preview-新式標準阿拉伯文)  |`ar-AR`|-|-|-|-|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | 荷蘭文 |`nl-NL` |✔|-|-|✔|
 | 法文 (法國) |`fr-FR` |✔| ✔ |✔ |✔|
@@ -113,13 +113,13 @@ LUIS 可理解下列語言的語句：
 
 |文化特性|版本|目的|
 |--|--|--|
-|德文<br>`de-de`|1.0.0|使用以機器學習為基礎的 tokenizer 來分割它們，以嘗試將複合單字細分成單一元件，以 token 化單字。<br>如果使用者輸入 `Ich fahre einen krankenwagen` 做為語句，就會變成 `Ich fahre einen kranken wagen` 。 允許將 `kranken` 和獨立標記 `wagen` 為不同的實體。|
-|德文<br>`de-de`|1.0.2|藉由在空間上分割來 token 化單字。<br> 如果使用者輸入 `Ich fahre einen krankenwagen` 做為語句，它會保持為單一權杖。 因此 `krankenwagen` ，會標示為單一實體。 |
-|荷蘭文<br>`de-de`|1.0.0|使用以機器學習為基礎的 tokenizer 來分割它們，以嘗試將複合單字細分成單一元件，以 token 化單字。<br>如果使用者輸入 `Ik ga naar de kleuterschool` 做為語句，就會變成 `Ik ga naar de kleuter school` 。 允許將 `kleuter` 和獨立標記 `school` 為不同的實體。|
-|荷蘭文<br>`de-de`|1.0.1|藉由在空間上分割來 token 化單字。<br> 如果使用者輸入 `Ik ga naar de kleuterschool` 做為語句，它會保持為單一權杖。 因此 `kleuterschool` ，會標示為單一實體。 |
+|德文<br>`de-de`|1.0.0|Token 化文字，方法是使用以機器學習為基礎的 tokenizer 來分割它們，以嘗試將複合字細分成單一元件。<br>如果使用者輸入 `Ich fahre einen krankenwagen` 為語句，則會變成 `Ich fahre einen kranken wagen` 。 允許將 `kranken` 和獨立標記 `wagen` 為不同的實體。|
+|德文<br>`de-de`|1.0.2|在空格上分割以 token 化單字。<br> 如果使用者輸入 `Ich fahre einen krankenwagen` 為語句，它會維持單一權杖。 因此 `krankenwagen` ，會標示為單一實體。 |
+|荷蘭文<br>`nl-nl`|1.0.0|Token 化文字，方法是使用以機器學習為基礎的 tokenizer 來分割它們，以嘗試將複合字細分成單一元件。<br>如果使用者輸入 `Ik ga naar de kleuterschool` 為語句，則會變成 `Ik ga naar de kleuter school` 。 允許將 `kleuter` 和獨立標記 `school` 為不同的實體。|
+|荷蘭文<br>`nl-nl`|1.0.1|在空格上分割以 token 化單字。<br> 如果使用者輸入 `Ik ga naar de kleuterschool` 為語句，它會維持單一權杖。 因此 `kleuterschool` ，會標示為單一實體。 |
 
 
-### <a name="migrating-between-tokenizer-versions"></a>在 tokenizer 版本之間遷移
+### <a name="migrating-between-tokenizer-versions"></a>在 tokenizer 版本之間進行遷移
 <!--
 Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID.
 
@@ -222,6 +222,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-Token 化會在應用層級發生。 不支援版本層級 token 化。
+Token 化會在應用層級進行。 不支援版本層級 token 化。
 
-將檔案匯[入為新的應用程式](luis-how-to-start-new-app.md)，而不是版本。 此動作表示新的應用程式具有不同的應用程式識別碼，但使用檔案中指定的 tokenizer 版本。
+將檔案匯[入為新的應用程式](luis-how-to-start-new-app.md)，而不是版本。 此動作表示新的應用程式有不同的應用程式識別碼，但使用檔案中指定的 tokenizer 版本。

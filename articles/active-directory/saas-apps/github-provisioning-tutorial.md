@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: cfcf68b1e00e9f3333a8cd1fdb21ec71712f0e95
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7408d7609cbceb4ac39298680b6d3854a2d71306
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550665"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589209"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教學課程︰設定 GitHub 來自動佈建使用者
 
@@ -29,6 +29,7 @@ ms.locfileid: "88550665"
 * 在 [GitHub Enterprise 雲端](https://help.github.com/articles/github-s-products/#github-enterprise)中建立的 GitHub 組織，需使用 [GitHub Enterprise 的計費方案](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
 * GitHub 中具有組織管理員許可權的使用者帳戶
 * 請確定已為您的組織提供 OAuth 存取權， [如下所述](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)
+* 只有在組織層級啟用 SSO 時，才支援 SCIM 布建至單一組織
 
 > [!NOTE]
 > Azure AD 布建整合依賴 [GITHUB SCIM API](https://developer.github.com/v3/scim/)，此 API 可供 [GitHub Enterprise 雲端](https://help.github.com/articles/github-s-products/#github-enterprise) 客戶使用 [GitHub Enterprise 計費方案](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)。

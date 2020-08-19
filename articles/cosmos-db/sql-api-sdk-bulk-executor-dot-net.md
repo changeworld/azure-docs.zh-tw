@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 6644a62252c715bc8c09079edf8f0b98c50736ab
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 5944cbeea2e26d7209cde7c926f862683c7cab7e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852662"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590195"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET 大量執行工具程式庫：下載資訊 
 
@@ -26,7 +26,8 @@ ms.locfileid: "87852662"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
+> * [春季資料 v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -79,7 +80,7 @@ ms.locfileid: "87852662"
 
 ### <a name="189"></a><a name="1.8.9"></a>1.8.9
 
-* 已修正當以輸入參數傳遞具有轉義引號的值時，BulkDeleteAsync 的問題。
+* 修正當以引號括住的值做為輸入參數傳遞時，BulkDeleteAsync 的問題。
 
 ### <a name="188"></a><a name="1.8.8"></a>1.8.8
 

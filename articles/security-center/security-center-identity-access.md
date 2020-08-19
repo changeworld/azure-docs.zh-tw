@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 57e13f3ed619fa88f29397fe44b783bd3650f636
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 313f10c77da499f4c405134028b975900d2d2a9e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759161"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590229"
 ---
 # <a name="monitor-identity-and-access"></a>監視身分識別和存取
 
@@ -60,7 +60,7 @@ ms.locfileid: "83759161"
 
 - 如果您有進階版的 AD，請使用[條件式存取](../active-directory/conditional-access/concept-conditional-access-policy-common.md)來啟用 MFA。
 
-- AD 免費版的使用者可以在 Azure Active Directory 中啟用 **安全性預設值**，如 [AD 文件](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)所述，但仍然會看到資訊安全中心建議啟用 MFA。
+- 如果您使用的是 AD free edition，請在 Azure Active Directory 中啟用 **安全性預設值** ，如 [AD 檔](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)中所述。
 
 
 ## <a name="next-steps"></a>後續步驟

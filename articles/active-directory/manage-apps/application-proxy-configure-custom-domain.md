@@ -1,27 +1,22 @@
 ---
-title: Azure AD 應用程式 Proxy 中的自訂網域 | Microsoft Docs
+title: Azure AD 應用程式 Proxy 中的自訂網域
 description: 在 Azure AD 應用程式 Proxy 中設定和管理自訂網域。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764905"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587764"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 設定自訂網域
 
@@ -91,11 +86,11 @@ ms.locfileid: "84764905"
    
    ![選取自訂網域](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. 如果網域已經具有憑證，則 [憑證] 欄位會顯示憑證資訊。 否則，選取 [憑證] 欄位。 
+6. 如果網域已經具有憑證，則 [憑證] 欄位會顯示憑證資訊。 否則，選取 [憑證] 欄位。
    
    ![按一下以上傳憑證](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. 在 [SSL 憑證] 頁面上，瀏覽並選取您的 PFX 憑證檔案。 輸入憑證的密碼，然後選取 [上傳憑證]。 如需憑證的詳細資訊，請參閱[自訂網域的憑證](#certificates-for-custom-domains)一節。
+7. 在 [SSL 憑證] 頁面上，瀏覽並選取您的 PFX 憑證檔案。 輸入憑證的密碼，然後選取 [上傳憑證]。 如需憑證的詳細資訊，請參閱[自訂網域的憑證](#certificates-for-custom-domains)一節。 如果憑證無效或密碼有問題，您會看到錯誤訊息。 [應用程式 PROXY 常見問題](application-proxy-faq.md#application-configuration)包含一些您可以嘗試的疑難排解步驟。
    
    ![Upload Certificate](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
@@ -126,7 +121,7 @@ ms.locfileid: "84764905"
 
 您必須使用 PFX 憑證，以確保包含所有必要的中繼憑證。 憑證必須包含私密金鑰。
 
-憑證簽章方法沒有任何限制。 橢圓曲線密碼編譯 (ECC)、主體別名 (SAN) 和其他常見的憑證類型均可支援。 
+支援最常見的憑證簽章方法，例如 (SAN) 的主體替代名稱。 
 
 只要萬用字元符合外部 URL，便可使用萬用字元憑證。 您必須對[萬用字元應用程式](application-proxy-wildcard.md)使用萬用字元憑證。 如果您要使用憑證來同時存取子網域，則必須新增子網域萬用字元作為在相同憑證中的主體替代名稱。 例如， *\*.adventure-works.com* 的憑證將無法用於 *\*.apps.adventure-works.com*，除非您新增 *\*.apps.adventure-works.com* 作為主體替代名稱。 
 
@@ -138,7 +133,7 @@ ms.locfileid: "84764905"
 
 所有憑證管理都是透過個別的應用程式頁面進行。 移至應用程式的 [應用程式 Proxy] 頁面，以存取 [憑證] 欄位。
 
-一旦將憑證上傳至應用程式，它也會自動套用至使用相同憑證設定的**新**應用程式。 您必須重新上傳租使用者中現有應用程式的憑證。
+上傳應用程式的憑證後，也會自動套用至使用相同憑證設定的 **新** 應用程式。 您必須為您租使用者中現有的應用程式重新上傳憑證。
 
 您會在憑證到期時收到警告，告知您上傳另一個憑證。 如果已撤銷憑證，使用者在存取應用程式時可能會看到安全性警告。 若要更新應用程式的憑證，請瀏覽至應用程式的 [應用程式 Proxy] 頁面，選取 [憑證]，然後上傳新的憑證。 如果其他應用程式並未使用舊憑證，則系統會自動予以刪除。 
 

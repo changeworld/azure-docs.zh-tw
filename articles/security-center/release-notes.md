@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: a635f32c5e5f1132d70fb503058267c8b33beb7c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: dbd040bf7caf3dbe9ed9820bf189bc1f74475c09
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272055"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586889"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -35,6 +35,7 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 8月更新包括：
 
 - [資產清查-您資產安全性狀態的強大新觀點](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
+- [新增對多重要素驗證 (Azure Active Directory 安全性預設值的支援) ](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
 - [已新增服務主體建議](#service-principals-recommendation-added)
 - [Vm 上的弱點評定-合併的建議和原則](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
 
@@ -50,11 +51,27 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 深入瞭解 [資產清查](asset-inventory.md)。
 
 
+### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>新增對多重要素驗證 (Azure Active Directory 安全性預設值的支援) 
+
+資訊安全中心已新增對 [安全性預設值](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)的完整支援，也就是 Microsoft 的免費身分識別安全性保護。
+
+安全性預設值提供預先設定的身分識別安全性設定，以保護您的組織免于遭受常見的身分識別相關攻擊。 安全性預設值已全部保護超過5000000的租使用者;50000租使用者也受到了安全中心的保護。
+
+當安全中心識別未啟用安全性預設值的 Azure 訂用帳戶時，現在會提供安全性建議。 到目前為止，安全性中心建議使用條件式存取啟用多重要素驗證，這是 Azure Active Directory (AD) premium 授權的一部分。 針對使用免費 Azure AD 的客戶，我們現在建議啟用安全性預設值。 
+
+我們的目標是鼓勵更多客戶使用 MFA 來保護其雲端環境，並減輕其 [安全分數](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)最具影響力的其中一個最高風險。
+
+深入瞭解 [安全性預設值](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)。
+
+
 ### <a name="service-principals-recommendation-added"></a>已新增服務主體建議
 
-使用管理憑證管理其訂用帳戶的新安全中心客戶建議。
+我們新增了新的建議，建議使用管理憑證來管理其訂用帳戶的安全性中心客戶會切換至服務主體。
 
 建議使用 **服務主體來保護您的訂用帳戶，而不是管理憑證** 建議您使用服務主體或 Azure Resource Manager 來更安全地管理您的訂閱。 
+
+深入瞭解 [Azure Active Directory 中的應用程式和服務主體物件](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。
+
 
 ### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Vm 上的弱點評定-合併的建議和原則
 

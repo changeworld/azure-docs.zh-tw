@@ -8,17 +8,17 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/05/2020
 ms.author: cynthn
-ms.openlocfilehash: 176aa925e4662731342ec3269e61ce9c7f71cf30
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 16f2bc2cc22fa38ece78b4a07298235abd7d629d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003843"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587084"
 ---
 # <a name="powershell-how-to-use-packer-to-create-virtual-machine-images-in-azure"></a>PowerShell：如何使用 Packer 在 Azure 中建立虛擬機器映射
 Azure 中的每個虛擬機器 (VM) 都是透過映像所建立，而映像則會定義 Windows 散發套件和作業系統版本。 映像中可包含預先安裝的應用程式與組態。 Azure Marketplace 提供了許多第一方和第三方映像，這些映像適用於最常見的作業系統和應用程式環境，而您也可以建立自己自訂的映像，以符合您的需求。 本文詳述如何使用開放原始碼工具 [Packer](https://www.packer.io/) \(英文\)，在 Azure 中定義和建置自訂映像。
 
-這篇文章上次是使用[Packer](https://www.packer.io/docs/install)版本1.6.1 在8/5/2020 上進行測試。
+本文上次使用 [Packer](https://www.packer.io/docs/install) 版本1.6.1 在8/5/2020 上進行測試。
 
 > [!NOTE]
 > Azure 現在有一個服務，也就是 Azure Image Builder (預覽)，用來定義和建立您自己的自訂映像。 Azure Image Builder 建置在 Packer 上，因此您甚至可以搭配使用現有的 Packer 殼層佈建指令碼。 若要開始使用 Azure Image Builder，請參閱[使用 Azure Image Builder 建立 Windows VM](image-builder.md)。
@@ -26,7 +26,7 @@ Azure 中的每個虛擬機器 (VM) 都是透過映像所建立，而映像則�
 ## <a name="create-azure-resource-group"></a>建立 Azure 資源群組
 建置程序進行期間，Packer 會在建置來源 VM 時建立暫存的 Azure 資源。 若要擷取該來源 VM 以作為映像，您必須定義資源群組。 Packer 建置程序所產生的輸出會儲存在此資源群組中。
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下列範例會在*eastus*位置中建立名為*myPackerGroup*的資源群組：
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下列範例會在*eastus*位置建立名為*myPackerGroup*的資源群組：
 
 ```azurepowershell
 $rgName = "myPackerGroup"
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>建立 Azure 認證
 Packer 會使用服務主體來向 Azure 驗證。 Azure 服務主體是安全性識別，可供您與應用程式、服務及諸如 Packer 等自動化工具搭配使用。 您可以控制和定義對於服務主體可以在 Azure 中執行哪些作業的權限。
 
-使用[new-azadserviceprincipal](/powershell/module/az.resources/new-azadserviceprincipal)建立服務主體。 `-DisplayName` 的值必須是唯一的；視需求將其取代為您自己的值。  
+使用 [New->get-azadserviceprincipal](/powershell/module/az.resources/new-azadserviceprincipal)建立服務主體。 `-DisplayName` 的值必須是唯一的；視需求將其取代為您自己的值。  
 
 ```azurepowershell
 $sp = New-AzADServicePrincipal -DisplayName "PackerSP$(Get-Random)"
@@ -84,7 +84,7 @@ Get-AzSubscription
     "tenant_id": "zzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz",
     "subscription_id": "yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy",
 
-    "managed_image_resource_group_name": "myResourceGroup",
+    "managed_image_resource_group_name": "myPackerGroup",
     "managed_image_name": "myPackerImage",
 
     "os_type": "Windows",
@@ -121,7 +121,7 @@ Get-AzSubscription
 
 此範本會建置 Windows Server 2016 VM、安裝 IIS，然後使用 Sysprep 將 VM 一般化。 IIS 安裝會示範如何使用 PowerShell 佈建程式來執行其他命令。 最終的 Packer 映像則會包含必要的軟體安裝和設定。
 
-Windows 來賓代理程式會參與 Sysprep 進程。 必須完整安裝代理程式，然後才能以 sysprep 準備 VM。 若要確保這是 true，在執行 sysprep.exe 之前，所有 agent 服務都必須執行。 前面的 JSON 程式碼片段會顯示在 PowerShell 布建程式中執行這項操作的一種方式。 只有在 VM 設定為安裝代理程式（預設值）時，才需要此程式碼片段。
+Windows 來賓代理程式參與 Sysprep 流程。 代理程式必須在 VM 可以以 sysprep 準備之前完整安裝。 為了確保這是正確的，您必須先執行所有的代理程式服務，才能執行 sysprep.exe。 上述 JSON 程式碼片段顯示在 PowerShell 布建程式中進行這項作業的一種方式。 只有在 VM 設定為安裝代理程式（預設值）時，才需要此程式碼片段。
 
 
 ## <a name="build-packer-image"></a>建置 Packer 映像

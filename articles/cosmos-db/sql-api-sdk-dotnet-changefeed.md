@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: f38b2715115efadef4e09a95e9392b1dfd4c68b0
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6d25eb2965e31211c0d30ec8d5e3e376176147c0
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135737"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590042"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 變更摘要處理器 SDK：下載和版本資訊
 
@@ -27,7 +27,8 @@ ms.locfileid: "88135737"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [非同步 Java SDK v2](sql-api-sdk-async-java.md)
 > * [同步 Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [春季資料 v2](sql-api-sdk-java-spring-v2.md)
+> * [春季資料 v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 連接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST] (/rest/api
@@ -51,11 +52,11 @@ ms.locfileid: "88135737"
 ### <a name="v2-builds"></a>v2 組建
 
 ### <a name="232"></a><a name="2.3.2"/>2.3.2
-* 已新增與[V3 SDK](sql-api-sdk-dotnet-standard.md)的租用存放區相容性，可啟用熱遷移路徑。 應用程式可以遷移至 V3 SDK，並遷移回變更摘要處理器程式庫，而不會遺失任何狀態。
+* 已新增使用 [V3 SDK](sql-api-sdk-dotnet-standard.md) 的租用存放區相容性，可啟用經常性遷移路徑。 應用程式可以遷移至 V3 SDK 並遷移回變更摘要處理器程式庫，而不會遺失任何狀態。
 
 ### <a name="231"></a><a name="2.3.1"/>2.3.1
-* 已更正當 `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` 找不到分割區， `FeedProcessing.IChangeFeedObserver.CloseAsync` 或目標複本不是最新的讀取會話時，將關閉原因傳送到的情況。 在這些情況下 `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ， `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` 現在會使用關閉的原因。
-* 已加入新的關閉原因 `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` ，當目標複本不是讀取會話的最新狀態時，就會傳送此資料來關閉變更摘要觀察者。
+* 已更正當 `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` 找不到分割區， `FeedProcessing.IChangeFeedObserver.CloseAsync` 或目標複本與讀取會話不是最新狀態時，所傳送的關閉原因的案例。 在這些情況下 `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ， `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` 現在會使用關閉原因。
+* 加入新的關閉原因 `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` ，當目標複本與讀取會話不是最新狀態時，就會傳送此關閉原因以關閉變更摘要觀察者。
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
 * 已新增新方法 `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` 和對應的公用介面 `ICheckpointPartitionProcessorFactory`。 這可讓 `IPartitionProcessor` 介面進行實作，以使用內建的檢查點機制。 新的處理站與現有的 `IPartitionProcessorFactory` 類似，不同之處在於其 `Create` 方法還會採用 `ILeaseCheckpointer` 參數。
@@ -190,13 +191,13 @@ ms.locfileid: "88135737"
 Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。 新的功能與最佳化項目只會新增至目前的 SDK，因此建議您一律盡早升級至最新的 SDK 版本。
 
 > [!WARNING]
-> 2022年8月31日之後，Azure Cosmos DB 將不再進行 bug 修正、加入新功能，以及提供支援給 SQL API 的 Azure Cosmos DB .NET 或 .NET Core SDK 版本1.x。 如果您不想升級，從版本 1.x SDK 傳送的要求將會繼續由 Azure Cosmos DB 服務提供服務。
+> 2022年8月31日之後，Azure Cosmos DB 將不再進行錯誤修正、新增功能，以及為 SQL API 的 Azure Cosmos DB .NET 或 .NET Core SDK 版本提供支援。 如果您不想要進行升級，Azure Cosmos DB 服務會繼續提供從第1.x 版 SDK 傳送的要求。
 
 <br/>
 
 | 版本 | 發行日期 | 停用日期 |
 | --- | --- | --- |
-| [2.3.2](#2.3.2) |2020年8月11日 |--- |
+| [2.3.2](#2.3.2) |2020 年 8 月 11 日 |--- |
 | [2.3.1](#2.3.1) |2020年7月30日 |--- |
 | [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |
 | [2.2.8](#2.2.8) |2019 年 10 月 28 日 |--- |

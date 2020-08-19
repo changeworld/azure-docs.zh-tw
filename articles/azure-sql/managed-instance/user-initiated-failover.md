@@ -9,39 +9,39 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/12/2020
-ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 08/18/2020
+ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191192"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589498"
 ---
-# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>在 SQL 受控執行個體上由使用者起始的手動容錯移轉
+# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 受控執行個體上使用者起始的手動容錯移轉
 
-本文說明如何以手動方式容錯移轉 SQL 受控執行個體一般用途 (GP) 和商務關鍵性 (BC) 服務層級的主要節點，以及如何手動容錯移轉 BC 服務層級的次要唯讀複本節點。
+本文說明如何在 SQL 受控執行個體一般用途 (GP) 和業務關鍵 (BC) 服務層級，手動容錯移轉主要節點，以及如何在 BC 服務層上手動容錯移轉次要唯讀複本節點。
 
 ## <a name="when-to-use-manual-failover"></a>使用手動容錯移轉的時機
 
-[高可用性](../database/high-availability-sla.md) 是 SQL 受控執行個體平臺的基本部分，可讓您的資料庫應用程式以透明的方式運作。 當節點降低或偵測錯誤時，從主要節點容錯移轉到次要節點，或在每月定期執行軟體更新時，都是在 Azure 中使用 SQL 受控執行個體的所有應用程式的預期發生。
+[高可用性](../database/high-availability-sla.md) 是 SQL 受控執行個體平臺的基本部分，可針對您的資料庫應用程式以透明方式運作。 在節點降級或錯誤偵測時，從主要節點容錯移轉至次要節點，或在一般每月軟體更新期間，在 Azure 中使用 SQL 受控執行個體的所有應用程式都必須發生此情況。
 
 基於下列原因，您可能會考慮在 SQL 受控執行個體上執行 [手動容錯移轉](../database/high-availability-sla.md#testing-application-fault-resiliency) ：
-- 在部署至生產環境之前，先測試應用程式的容錯移轉復原
+- 在部署至生產環境之前，測試容錯移轉復原的應用程式
 - 測試端對端系統，以在自動容錯移轉時復原錯誤
 - 測試容錯移轉如何影響現有的資料庫會話
-- 確認容錯移轉是否因網路延遲的變更而變更端對端效能
-- 在某些情況下，在查詢效能降低中，手動容錯移轉有助於減輕效能問題。
+- 確認容錯移轉是否因為網路延遲的變更而變更端對端效能
+- 在查詢效能降低的某些情況下，手動容錯移轉有助於減輕效能問題。
 
 > [!NOTE]
-> 在部署至生產環境之前，確保您的應用程式能夠復原，將有助於降低生產環境中應用程式錯誤的風險，並將為您的客戶提供應用程式可用性。
+> 在部署至生產環境之前，確保您的應用程式具有容錯移轉復原能力，有助於降低生產環境中應用程式錯誤的風險，並且會為您的客戶提供應用程式可用性。
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>在 SQL 受控執行個體上起始手動容錯移轉
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
-Az. Sql 的最低版本必須是 [v 2.9.0 版](https://www.powershellgallery.com/packages/Az.Sql/2.9.0)。 請考慮使用一律具有最新 PowerShell 版本的 Azure 入口網站中的 [Azure Cloud Shell](../../cloud-shell/overview.md) 。 
+Az. Sql 的最小版本必須是 [v 2.9.0 版](https://www.powershellgallery.com/packages/Az.Sql/2.9.0)。 請考慮使用一律具有最新 PowerShell 版本的 Azure 入口網站 [Azure Cloud Shell](../../cloud-shell/overview.md) 。 
 
-如需必要條件，請使用下列 PowerShell 腳本來安裝必要的 Azure 模組。 此外，請選取您想要容錯移轉受控執行個體所在的訂用帳戶。
+作為必要條件，請使用下列 PowerShell 腳本來安裝所需的 Azure 模組。 此外，請選取您想要容錯移轉受控執行個體所在的訂用帳戶。
 
 ```powershell
 $subscription = 'enter your subscription ID here'
@@ -53,7 +53,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId $subscription
 ```
 
-使用 PowerShell 命令叫用 [-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) 與下列範例來起始主要節點的容錯移轉，適用于 BC 和 GP 服務層。
+使用 PowerShell 命令 [調用-AzSqlInstanceFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlinstancefailover) 搭配下列範例，以起始主要節點的容錯移轉，同時適用于 BC 和 GP 服務層級。
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -61,7 +61,7 @@ $ManagedInstanceName = 'enter MI name'
 Invoke-AzSqlInstanceFailover -ResourceGroupName $ResourceGroup -Name $ManagedInstanceName
 ```
 
-使用下列 PS 命令來容錯移轉讀取次要節點，僅適用于 BC 服務層。
+使用下列 PS 命令以容錯移轉讀取次要節點（僅適用于 BC 服務層）。
 
 ```powershell
 $ResourceGroup = 'enter resource group of your MI'
@@ -71,15 +71,15 @@ Invoke-AzSqlInstanceFailover -ResourceGroupName $ResourceGroup -Name $ManagedIns
 
 ### <a name="using-cli"></a>使用 CLI
 
-請確定已安裝最新的 CLI 腳本。
+確定已安裝最新的 CLI 腳本。
 
-使用 az sql mi 容錯移轉 CLI 命令搭配下列範例，以起始主要節點的容錯移轉（適用于 BC 和 GP 服務層）。
+使用 az sql mi 容錯移轉 CLI 命令搭配下列範例，以起始主要節點的容錯移轉，同時適用于 BC 和 GP 服務層級。
 
 ```cli
 az sql mi failover -g myresourcegroup -n myinstancename
 ```
 
-使用下列 CLI 命令來容錯移轉讀取次要節點，僅適用于 BC 服務層。
+使用下列 CLI 命令來容錯移轉讀取次要節點（僅適用于 BC 服務層）。
 
 ```cli
 az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableSecondary
@@ -87,9 +87,9 @@ az sql mi failover -g myresourcegroup -n myinstancename --replica-type ReadableS
 
 ### <a name="using-rest-api"></a>使用 Rest API
 
-對於可能需要針對執行連續測試管線或自動化效能 mitigators 的 SQL 受控實例進行自動容錯移轉的高階使用者，可以透過 API 呼叫來起始容錯移轉來完成此功能。 如需詳細資訊，請參閱 [受控實例-容錯移轉 REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) 。
+針對可能需要自動容錯移轉其 SQL 受控實例以進行持續測試管線，或自動化效能 mitigators 的 advanced 使用者，此函式可以透過 API 呼叫來初始容錯移轉來完成。 如需詳細資料，請參閱 [受控實例-容錯移轉 REST API](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover) 。
 
-若要使用 REST API 呼叫來起始容錯移轉，請先使用您選擇的 API 用戶端來產生驗證權杖。 產生的驗證權杖會當做 API 要求標頭中的 Authorization 屬性使用，而且是必要的。
+若要使用 REST API 呼叫來起始容錯移轉，請先使用您選擇的 API 用戶端來產生驗證權杖。 產生的驗證權杖會在 API 要求標頭中用來做為授權屬性，而且是必要的。
 
 下列程式碼是要呼叫的 API URI 範例：
 
@@ -101,38 +101,41 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 | **API 屬性** | **參數** |
 | --- | --- |
-| subscriptionId | 已部署受控實例的訂用帳戶識別碼 |
+| subscriptionId | 部署受控實例的訂用帳戶識別碼 |
 | resourceGroupName | 包含受控實例的資源群組 |
 | managedInstanceName | 受控實例的名稱 |
-| replicaType |  (選擇性)  (主要或 ReadableSecondary) 。 這些參數代表要故障切換的複本類型：主要或可讀取的次要。 如果未指定，預設會在主要複本上起始容錯移轉。 |
+| replicaType |  (選用)  (主要或 ReadableSecondary) 。 這些參數代表要進行容錯移轉的複本類型：主要或可讀取的次要資料庫。 如果未指定，則預設會在主要複本上起始容錯移轉。 |
 | api-version | 靜態值，目前必須是 "2019-06-01-preview" |
 
-API 回應將會是下列其中一種：
+API 回應會是下列其中一種：
 
 - 202 已接受
-- 其中一個400要求錯誤。
+- 400要求的其中一個錯誤。
 
-您可以透過在回應標頭中審查 API 回應來追蹤作業狀態。 如需詳細資訊，請參閱 [非同步 Azure 作業的狀態](../../azure-resource-manager/management/async-operations.md)。
+您可以透過審核回應標頭中的 API 回應來追蹤作業狀態。 如需詳細資訊，請參閱 [非同步 Azure 作業的狀態](../../azure-resource-manager/management/async-operations.md)。
 
 ## <a name="monitor-the-failover"></a>監視容錯移轉
 
-若要監視使用者起始的手動容錯移轉進度，請在您最愛的用戶端中執行下列 T-SQL 查詢 (例如 SQL 受控執行個體上的 SSMS) 。 它會讀取實例上可用的系統檢視 sys.databases dm_hadr_fabric_replica_states 和報表複本。 在起始手動容錯移轉之後，重新整理相同的查詢。
+若要監視使用者起始的手動容錯移轉進度，請在您最愛的用戶端中執行下列 T-SQL 查詢 (例如 SQL 受控執行個體上的 SSMS) 。 它會讀取 system view sys. dm_hadr_fabric_replica_states 以及實例上可用的報表複本。 初始化手動容錯移轉之後，請重新整理相同的查詢。
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
 ```
 
-在起始容錯移轉之前，您的輸出將會指出 BC 服務層上目前的主要複本，其中包含 AlwaysOn 可用性群組中的一個主要和三個次要資料庫。 執行容錯移轉時，再次執行此查詢將需要指出主要節點的變更。
+在起始容錯移轉之前，您的輸出將會指出 BC 服務層上目前的主要複本，其中包含 AlwaysOn 可用性群組中的一個主要和三個次要資料庫。 執行容錯移轉時，再次執行此查詢需要指出主要節點的變更。
 
-您將無法看到與上述適用于 BC 的 GP 服務層相同的輸出。 這是因為 GP 服務層僅以單一節點為基礎。 GP 服務層級的 t-SQL 查詢輸出只會在容錯移轉之前和之後顯示單一節點。 在容錯移轉期間，用戶端的連線中斷（通常會在一分鐘內穩定）將會指出容錯移轉執行的指示。
+您將看不到與上述的「BC 服務層」相同的輸出，如下所示。 這是因為 GP 服務層級只以單一節點為基礎。 GP 服務層級的 t-SQL 查詢輸出只會顯示容錯移轉之前和之後的單一節點。 在容錯移轉期間從您的用戶端中斷連線（通常會在一分鐘內持續執行）將會是容錯移轉執行的指示。
+
+> [!NOTE]
+> 完成容錯移轉程式 (不是實際的短時間無法使用) 可能需要幾分鐘的時間來處理 **高強度** 的工作負載。 這是因為實例引擎會處理主要節點上的所有目前交易，並在容錯移轉之前趕上次要節點上的所有交易。
 
 > [!IMPORTANT]
-> 使用者起始的手動容錯移轉功能限制包括：
-> - 每隔30分鐘就會在相同的受控執行個體上起始一個 (1) 容錯移轉。
+> 使用者起始的手動容錯移轉的功能限制如下：
+> - 每隔 **30 分鐘**可能會有一個 (1) 容錯移轉起始于相同的受控執行個體。
 > - 對於 BC 實例，必須有複本的仲裁，才能接受容錯移轉要求。
-> - 對於 BC 實例，無法指定要在哪個可讀取的次要複本上起始容錯移轉。
+> - 對於 BC 實例，無法指定要在哪個可讀取次要複本上起始容錯移轉。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解 [AZURE SQL 受控執行個體](../database/high-availability-sla.md)的受控實例高可用性高可用性。
+- 深入瞭解 [AZURE SQL 受控執行個體受控實例高可用性](../database/high-availability-sla.md)的高可用性。
 - 如需總覽，請參閱 [什麼是 AZURE SQL 受控執行個體？](sql-managed-instance-paas-overview.md)。
