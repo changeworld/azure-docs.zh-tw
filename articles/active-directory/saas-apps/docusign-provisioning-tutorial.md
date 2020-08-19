@@ -2,25 +2,20 @@
 title: 教學課程︰以 Azure Active Directory 設定 DocuSign 來自動佈建使用者 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 DocuSign 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 294cd6b8-74d7-44bc-92bc-020ccd13ff12
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c0a6302383240f65d900369128337a41a13ecfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b4e74d5db2d1454360370c05d75cdf826875143
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805077"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535929"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教學課程︰設定 DocuSign 來自動佈建使用者
 
@@ -62,7 +57,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 本節的目的是要說明如何對 DocuSign 啟用 Active Directory 使用者帳戶的使用者佈建。
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [ **Azure Active Directory > 企業應用程式] > [所有應用程式**] 區段。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至 **Azure Active Directory > 企業應用程式 > 所有應用程式** ] 區段。
 
 1. 如果您已經設定單一登入的 DocuSign，使用 [搜尋] 欄位搜尋您的 DocuSign 執行個體。 否則，請選取 [新增]****，並在應用程式庫中搜尋 [DocuSign]****。 從搜尋結果中選取 DocuSign，並將它新增至您的應用程式清單。
 
@@ -79,7 +74,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
     b. 在 [管理員密碼]**** 文字方塊中，輸入這個帳戶的密碼。
 
 > [!NOTE]
-> 如果同時設定了 SSO 和使用者布建，則用於布建的授權認證必須設定為使用 SSO 和使用者名稱/密碼。
+> 如果已設定 SSO 和使用者布建，則用於布建的授權認證必須設定為使用 SSO 和使用者名稱/密碼。
 
 1. 在 Azure 入口網站中，按一下 [測試連線]**** 以確保 Azure AD 可以連線到您的 DocuSign 應用程式。
 
