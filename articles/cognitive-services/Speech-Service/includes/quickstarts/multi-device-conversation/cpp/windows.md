@@ -7,12 +7,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
-ms.openlocfilehash: 015986ffa687142cf20ca18cff175ac6c5952a11
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1999100be3dd65518db7b5496ad5aaa1a407ee9e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671329"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226205"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -199,15 +199,15 @@ ms.locfileid: "80671329"
 
 1. 在相同檔案中，以您的訂用帳戶金鑰取代 `YourSubscriptionKey` 字串。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
+1. 將字串 `YourServiceRegion` 取代為與您的訂用帳戶相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)。
 
-1. 從功能表列中，選擇 [檔案]   > [全部儲存]  。
+1. 從功能表列中，選擇 [檔案] > [全部儲存]。
 
 ## <a name="build-and-run-the-application-to-create-a-new-conversation"></a>建置並執行應用程式以建立新的交談
 
-1. 從功能表列中，選取 [建置]   > [建置方案]  來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
+1. 從功能表列中，選取 [建置] > [建置方案] 來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
 
-1. 選擇 [偵錯]   > [開始偵錯]  (或按 <kbd>F5</kbd>) 以啟動 **helloworld** 應用程式。
+1. 選擇 [偵錯] > [開始偵錯] (或按 <kbd>F5</kbd>) 以啟動 **helloworld** 應用程式。
 
 1. 一旦看到 `Started transcribing` 訊息出現，您就可以開始說話。 當您說話時，您會看到文字記錄出現
     - 如果您與其他人共用交談程式碼，而且這些人加入交談，您也會看到他們的文字記錄。

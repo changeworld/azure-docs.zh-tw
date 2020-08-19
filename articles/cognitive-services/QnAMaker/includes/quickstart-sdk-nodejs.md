@@ -4,12 +4,12 @@ description: 本快速入門示範如何開始使用適用於 Node.js 的 QnA Ma
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 76d0587c68ac46253dbd937c661b06bdb8c495c8
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 4085ec5aaff75f33fc7a87708693084831ff5d8d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404070"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246340"
 ---
 使用適用於 Node.js 的 QnA Maker 用戶端程式庫來：
 
@@ -28,7 +28,7 @@ ms.locfileid: "87404070"
 
 ## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * 最新版的 [Node.js](https://nodejs.org)。
 * 擁有 Azure 訂用帳戶之後，請在 Azure 入口網站中建立 [QnA Maker 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以取得您的撰寫金鑰和資源。 在其部署後，選取 [前往資源]。
     * 您需要來自所建立資源的金鑰和資源名稱，以將應用程式連線至 QnA Maker API。 您稍後會在快速入門中將金鑰和資源名稱貼到下列程式碼中。

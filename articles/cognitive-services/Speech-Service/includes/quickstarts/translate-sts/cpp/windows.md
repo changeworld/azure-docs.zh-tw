@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: b9311d605d07bbf3844963aed97e9fc510a4897a
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 472bf122288fede5cccc27f73b2e73466ef0caad
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671644"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226450"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
@@ -27,7 +27,7 @@ ms.locfileid: "80671644"
 
 ## <a name="add-sample-code"></a>新增範例程式碼
 
-1. 開啟來源檔案 helloworld.cpp  。
+1. 開啟來源檔案 helloworld.cpp。
 
 1. 使用下列程式碼片段取代所有程式碼：
 
@@ -113,15 +113,15 @@ ms.locfileid: "80671644"
 
 1. 在相同檔案中，以您的訂用帳戶金鑰取代 `YourSubscriptionKey` 字串。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
+1. 將字串 `YourServiceRegion` 取代為與您的訂用帳戶相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)。
 
-1. 從功能表列中，選擇 [檔案]   > [全部儲存]  。
+1. 從功能表列中，選擇 [檔案] > [全部儲存]。
 
 ## <a name="build-and-run-the-application"></a>建置並執行應用程式
 
-1. 從功能表列中，選取 [建置]   > [建置方案]  來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
+1. 從功能表列中，選取 [建置] > [建置方案] 來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
 
-1. 選擇 [偵錯]   > [開始偵錯]  (或按 **F5**) 以啟動 **helloworld** 應用程式。
+1. 選擇 [偵錯] > [開始偵錯] (或按 **F5**) 以啟動 **helloworld** 應用程式。
 
 1. 請說英文片語或句子。 應用程式會將您的語音傳送到語音服務，語音服務會進行翻譯並轉換為文字 (在此案例中，是轉換為德文)。 語音服務接著會將合成音訊和文字傳送回應用程式以供顯示。
 

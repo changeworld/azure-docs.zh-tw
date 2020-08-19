@@ -1,5 +1,5 @@
 ---
-title: 使用 Node.js 連線 - 適用於 MySQL 的 Azure 資料庫
+title: 快速入門：使用 Node.js 連線 - 適用於 MySQL 的 Azure 資料庫
 description: 本快速入門提供數個 Node.js 程式碼範例，供您用來在從 Azure Database for MySQL 連線和查詢資料。
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-t
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 9d3e2d744c4800c06503483c6e7270ad1ca60e2c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1f8f4dee2ed1e6dc5cdf6985c1149db0dcaed7c2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423179"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185922"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 Node.js 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料
 
@@ -33,7 +33,7 @@ ms.locfileid: "87423179"
 
 根據您的平台，依照適當小節中的指示安裝 [Node.js](https://nodejs.org)。 使用 npm 將 [mysql](https://www.npmjs.com/package/mysql) 套件及其相依性安裝到您的專案資料夾中。
 
-### <a name="windows"></a>**Windows**
+### <a name="windows"></a>Windows
 
 1. 造訪 [Node.js 下載頁面](https://nodejs.org/en/download/) \(英文\)，然後選取您需要的 Windows 安裝程式選項。
 2. 建立本機專案資料夾，例如 `nodejsmysql`。 
@@ -48,7 +48,7 @@ ms.locfileid: "87423179"
 
 5. 檢查`npm list` 輸出文字，以確認安裝。 版本號碼可能會隨著新的修補檔案發行而有所不同。
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
 1. 執行下列命令，以安裝 **Node.js** 和適用於 Node.js 的 **npm** 套件管理員。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87423179"
    ```
 3. 檢查 npm 清單輸出文字，以確認安裝。 版本號碼可能會隨著新的修補檔案發行而有所不同。
 
-### <a name="mac-os"></a>**Mac OS**
+### <a name="mac-os"></a>Mac OS
 
 1. 輸入下列命令以安裝 **brew**、適用於 Mac OS X 的簡易使用封裝管理員和 **Node.js**。
 

@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 4ad28bd65fe9bc240e963f103ca5bd658e90fdfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10fedaf5680976ae93984c9b2c607882f650019d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77529614"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213268"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>保留折扣如何套用至 Azure Cache for Redis
 
-購買 Azure Cache for Redis 保留容量之後，保留折扣就會自動套用至符合保留屬性和數量的快取執行個體。 保留僅涵蓋 Azure Cache for Redis 的計算成本。 您必須依標準費率支付儲存體和網路的費用。 保留容量僅供[進階層](/azure/azure-cache-for-redis/cache-premium-tier-intro)快取使用。
+購買 Azure Cache for Redis 保留容量之後，保留折扣就會自動套用至符合保留屬性和數量的快取執行個體。 保留僅涵蓋 Azure Cache for Redis 的計算成本。 您必須依標準費率支付儲存體和網路的費用。 保留容量僅供[進階層](/https://docs.microsoft.com/azure/azure-cache-for-redis/quickstart-create-redis)快取使用。
 
 ## <a name="how-reservation-discount-is-applied"></a>保留折扣的套用方式
 

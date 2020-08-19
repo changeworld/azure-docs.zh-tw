@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
 ms.author: johndaw
-ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 93333f2f0a2ef4aaf44884aa30afaa959459aaad
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512498"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257425"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教學課程 – 使用 PowerShell 將 HSM 部署至現有的虛擬網路
 
@@ -40,7 +40,7 @@ Azure 專用 HSM 服務提供實體裝置以供單獨客戶使用，其具有完
 
 ## <a name="prerequisites"></a>Prerequisites
 
-Azure 入口網站目前不提供 Azure 專用 HSM ，因此與服務的所有互動都是透過命令列或使用 PowerShell 進行。 本教學課程會在 Azure Cloud Shell 中使用 PowerShell。 如果您不熟悉 PowerShell，請遵循以下的使用者入門指示：[Azure PowerShell 使用者入門](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+Azure 入口網站目前不提供 Azure 專用 HSM ，因此與服務的所有互動都是透過命令列或使用 PowerShell 進行。 本教學課程會在 Azure Cloud Shell 中使用 PowerShell。 如果您不熟悉 PowerShell，請遵循以下的使用者入門指示：[Azure PowerShell 使用者入門](/powershell/azure/get-started-azureps)。
 
 假設：
 

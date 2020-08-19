@@ -11,16 +11,16 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
-ms.openlocfilehash: b8263e0445f7997469ba9165decbaccfa9ed2d6e
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 95ab400d645a2a2761e39c191cdb85e49e1c7a27
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027844"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245599"
 ---
 # <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>教學課程：使用 Azure Databricks 對串流資料進行異常情況偵測
 
-[Azure Databricks](https://azure.microsoft.com/services/databricks/) 是快速、簡單且共同作業的 Apache Spark 架構分析服務。 Anomaly Detector API 是 Azure 認知服務的組件，可供監視您的時間序列資料。 在本教學課程中，使用 Azure Databricks 對資料流執行近乎即時的異常偵測。 您將使用 Azure 事件中樞內嵌推文資料，並使用 Spark 事件中樞連接器將其匯入 Azure Databricks 中。 之後，您將使用 API 來偵測串流資料的異常狀況。 
+[Azure Databricks](https://azure.microsoft.com/services/databricks/) 是快速、簡單且共同作業的 Apache Spark 架構分析服務。 Anomaly Detector API 是 Azure 認知服務的組件，可供監視您的時間序列資料。 在本教學課程中，使用 Azure Databricks 對資料流執行近乎即時的異常偵測。 您將使用 Azure 事件中樞內嵌推文資料，並使用 Spark 事件中樞連接器將其匯入 Azure Databricks 中。 之後，您將使用 API 來偵測串流資料的異常狀況。
 
 下圖顯示此應用程式流程：
 
@@ -41,9 +41,9 @@ ms.locfileid: "86027844"
 
 > [!Note]
 > * 本教學課程介紹一種方法來對 Anomaly Detector API 實作建議的[解決方案架構](https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/)。
-> * 您無法使用 Anomaly Detector API 或 Azure Databricks 的免費層 (`F0`) 完成教學課程。 
+> * 您無法使用 Anomaly Detector API 或 Azure Databricks 的免費層 (`F0`) 完成教學課程。
 
-如果您沒有 Azure 訂用帳戶，請建立一個 [Azure 訂用帳戶](https://azure.microsoft.com/free/)。
+如果您沒有 Azure 訂用帳戶，請建立一個 [Azure 訂用帳戶](https://azure.microsoft.com/free/cognitive-services)。
 
 ## <a name="prerequisites"></a>必要條件
 
@@ -51,7 +51,7 @@ ms.locfileid: "86027844"
 
 - 用來存取事件中樞命名空間的[連接字串](../../../event-hubs/event-hubs-get-connection-string.md)。 連接字串的格式應類似於：
 
-    第 1 課：建立 Windows Azure 儲存體物件`Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`。 
+    第 1 課：建立 Windows Azure 儲存體物件`Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`。
 
 - 事件中樞的共用存取原則名稱和原則金鑰。
 
@@ -78,7 +78,7 @@ ms.locfileid: "86027844"
 
     選取 [建立]。
 
-4. 工作區建立需要幾分鐘的時間。 
+4. 工作區建立需要幾分鐘的時間。
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>在 Databricks 中建立 Spark 叢集
 
@@ -98,7 +98,7 @@ ms.locfileid: "86027844"
    * 針對本文，使用 **5.2** 執行階段建立叢集。 請勿選取 **5.3** 執行階段。
    * 請確定已選取 [在活動\_\_分鐘後終止] 核取方塊。 若未使用叢集，請提供據以終止叢集的持續時間 (以分鐘為單位)。
 
-     選取 [建立叢集]。 
+     選取 [建立叢集]。
 4. 叢集建立可能需要數分鐘的時間。 叢集在執行後，您就可以將 Notebook 連結至叢集，並執行 Spark 作業。
 
 ## <a name="create-a-twitter-application"></a>建立 Twitter 應用程式
@@ -285,7 +285,7 @@ while (!finished) {
       maxStatusId = Math.max(status.getId(), maxStatusId)
     }
   }
-  
+
   if (lowestStatusId == Long.MaxValue) {
     preMaxStatusId = maxStatusId
   }
@@ -325,7 +325,7 @@ pool.shutdown()
 
 在 **AnalyzeTweetsFromEventHub** Notebook 中，貼上下列程式碼，並將預留位置取代為您稍早所建立 Anomaly Detector 資源的值。 此 Notebook 會讀取您稍早使用 **SendTweetsToEventHub** Notebook 串流至事件中樞的推文。
 
-首先，撰寫用戶端來呼叫 Anomaly Detector。 
+首先，撰寫用戶端來呼叫 Anomaly Detector。
 ```scala
 
 //
@@ -451,25 +451,25 @@ import scala.collection.immutable.ListMap
 
 class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
   override def inputSchema: StructType = new StructType().add("timestamp", TimestampType).add("value", FloatType)
-  
+
   override def bufferSchema: StructType = new StructType().add("point", MapType(TimestampType, FloatType))
-  
+
   override def dataType: DataType = BooleanType
-  
+
   override def deterministic: Boolean = false
-  
+
   override def initialize(buffer: MutableAggregationBuffer): Unit = {
     buffer(0) = Map()
   }
-  
+
   override def update(buffer: MutableAggregationBuffer, input: Row): Unit = {
     buffer(0) = buffer.getAs[Map[java.sql.Timestamp, Float]](0) + (input.getTimestamp(0) -> input.getFloat(1))
   }
-  
+
   override def merge(buffer1: MutableAggregationBuffer, buffer2: Row): Unit = {
     buffer1(0) = buffer1.getAs[Map[java.sql.Timestamp, Float]](0) ++ buffer2.getAs[Map[java.sql.Timestamp, Float]](0)
   }
-  
+
   override def evaluate(buffer: Row): Any = {
     val points = buffer.getAs[Map[java.sql.Timestamp, Float]](0)
     if (points.size > 12) {
@@ -478,19 +478,19 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
       sorted_points.keys.foreach {
         key => detect_points = detect_points :+ new Point(key, sorted_points(key))
       }
-      
-      
+
+
       // 0.25 is maxAnomalyRatio. It represents 25%, max anomaly ratio in a time series.
       // 95 is the sensitivity of the algorithms.
       // Check Anomaly detector API reference (https://aka.ms/anomaly-detector-rest-api-ref)
-      
+
       val series: Series = new Series(detect_points.toArray, 0.25, 95, "hourly")
       val response: Option[AnomalySingleResponse] = AnomalyDetector.detectLatestPoint(series)
       if (!response.isEmpty) {
         return response.get.isAnomaly
       }
     }
-    
+
     return None
   }
 }
@@ -562,7 +562,7 @@ display(msgStream)
 // Aggregate Metric Count by Hour
 //
 
-// If you want to change granularity, change the groupBy window. 
+// If you want to change granularity, change the groupBy window.
 val groupStream = msgStream.groupBy(window($"timestamp", "1 hour"))
   .agg(avg("favorite").alias("average"))
   .withColumn("groupTime", $"window.start")
@@ -584,7 +584,8 @@ groupTime                       average
 
 ```
 
-然後取得差異的彙總輸出結果。 因為異常偵測需要較長的歷程記錄時段，所以我們使用差異來為您要偵測的資料點保留歷程記錄資料。 以要建立的合格差異資料表名稱 (例如，"tweets") 取代 "[Placeholder: table name]"。 以您每次執行此程式碼時唯一的字串值 (例如，"etl-from-eventhub-20190605") 取代 "[Placeholder: folder name for checkpoints]"。
+然後取得差異的彙總輸出結果。 因為異常偵測需要較長的歷程記錄時段，所以我們使用差異來為您要偵測的資料點保留歷程記錄資料。
+以要建立的合格差異資料表名稱 (例如，"tweets") 取代 "[Placeholder: table name]"。 以您每次執行此程式碼時唯一的字串值 (例如，"etl-from-eventhub-20190605") 取代 "[Placeholder: folder name for checkpoints]"。
 若要深入了解 Azure Databricks 上的 Delta Lake，請參閱 [Delta Lake 指南](https://docs.azuredatabricks.net/delta/index.html)
 
 
@@ -615,7 +616,7 @@ twitterData.show(200, false)
 
 display(twitterData)
 ```
-輸出如下所示： 
+輸出如下所示：
 ```
 groupTime                       average
 2019-04-08T01:00:00.000+0000    25.6
@@ -628,7 +629,8 @@ groupTime                       average
 
 ```
 
-現在，彙總時間序列資料會持續內嵌到差異中。 然後您可以排程每小時作業，以偵測最新資料點的異常狀況。 以您在上面選取的相同差異資料表名稱取代 "[Placeholder: table name]"。
+現在，彙總時間序列資料會持續內嵌到差異中。 然後您可以排程每小時作業，以偵測最新資料點的異常狀況。
+以您在上面選取的相同差異資料表名稱取代 "[Placeholder: table name]"。
 
 ```scala
 //
@@ -667,7 +669,7 @@ spark.udf.register("anomalydetect", new AnomalyDetectorAggregationFunction)
 val adResult = spark.sql("SELECT '" + endTime.toString + "' as datetime, anomalydetect(groupTime, average) as anomaly FROM series")
 adResult.show()
 ```
-結果如下所示： 
+結果如下所示：
 
 ```
 +--------------------+-------+
@@ -678,7 +680,7 @@ adResult.show()
 ```
 
 就這麼簡單！ 您已使用 Azure Databricks 成功地以近乎即時的速度將資料串流到 Azure 事件中樞、使用事件中樞連接器取用串流資料，然後對串流資料執行異常偵測。
-雖然在本教學課程中，細微性為每小時，您可以隨時變更細微度以符合您的需求。 
+雖然在本教學課程中，細微性為每小時，您可以隨時變更細微度以符合您的需求。
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -690,7 +692,7 @@ adResult.show()
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教學課程中，您已了解如何使用 Azure Databricks 將資料串流到 Azure 事件中樞，然後從事件中樞即時讀取串流資料。 前進到下一個教學課程，以了解如何使用 Power BI Desktop 呼叫 Anomaly Detector API，並將異常狀況視覺化。 
+在本教學課程中，您已了解如何使用 Azure Databricks 將資料串流到 Azure 事件中樞，然後從事件中樞即時讀取串流資料。 前進到下一個教學課程，以了解如何使用 Power BI Desktop 呼叫 Anomaly Detector API，並將異常狀況視覺化。
 
 > [!div class="nextstepaction"]
 >[透過 Power BI Desktop 批次處理異常偵測](batch-anomaly-detection-powerbi.md)

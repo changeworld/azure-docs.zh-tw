@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 85124a51b986b6e3d6444b35aa264e136abcdb76
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a1cf8bbda448dd991e805456ce8fb942077e8553
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81400488"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226518"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -109,7 +109,7 @@ ms.locfileid: "81400488"
 
 1. 將字串 `YourSubscriptionKey` 取代為您的訂用帳戶金鑰。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
+1. 將字串 `YourServiceRegion` 取代為與您的訂用帳戶相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)。
 
 1. 以您自己的檔案名稱取代字串 `whatstheweatherlike.wav`。
 

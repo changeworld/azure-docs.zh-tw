@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
 ms.custom: devx-track-python
-ms.openlocfilehash: daee5a921e25dc74d6e869ca3feb6c66d8c4ce7d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 38c2b3cdf40f1924a36ffd84d9dc5f9b2f7f319d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851026"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245701"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入門：使用異常偵測器 REST API 與 Python 偵測時間序列資料中的異常行為
 
@@ -31,7 +31,7 @@ ms.locfileid: "87851026"
 
 ## <a name="prerequisites"></a>必要條件
 
-- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 - 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="建立異常偵測器資源"  target="_blank">建立異常偵測器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
     - 您需要來自所建立資源的金鑰和端點，以將應用程式連線至異常偵測器 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
@@ -85,7 +85,7 @@ ms.locfileid: "87851026"
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>偵測最新資料點的異常狀態
 
-1. 建立名為 `detect_latest()` 的方法，以判斷時間序列中最新的資料點是否為異常。 使用端點、URL、訂用帳戶金鑰和 json 資料呼叫上方的 `send_request()` 方法。 
+1. 建立名為 `detect_latest()` 的方法，以判斷時間序列中最新的資料點是否為異常。 使用端點、URL、訂用帳戶金鑰和 json 資料呼叫上方的 `send_request()` 方法。
 
 2. 在結果上呼叫 `json.dumps()` 以將其格式化，並列印到主控台。
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 297241c5f939ae15fc77b29614b55d9b2bd63c84
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 36d8d6afde8b1178963b33b9514e53ce0ffccf6f
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445904"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224453"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教學課程：保護 Azure 遠端轉譯和模型儲存體
 
@@ -116,9 +116,27 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 
     ```csharp
     private bool loadingLinkedCustomModel = false;
-    public string StorageAccountName;
-    public string BlobContainerName;
-    public string ModelPath;
+
+    [SerializeField]
+    private string storageAccountName;
+    public string StorageAccountName {
+        get => storageAccountName.Trim();
+        set => storageAccountName = value;
+    }
+
+    [SerializeField]
+    private string blobContainerName;
+    public string BlobContainerName {
+        get => blobContainerName.Trim();
+        set => blobContainerName = value;
+    }
+
+    [SerializeField]
+    private string modelPath;
+    public string ModelPath {
+        get => modelPath.Trim();
+        set => modelPath = value;
+    }
 
     [ContextMenu("Load Linked Custom Model")]
     public async void LoadLinkedCustomModel()
@@ -205,17 +223,41 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
 
     public class AADAuthentication : BaseARRAuthentication
     {
-        public string accountDomain;
+        [SerializeField]
+        private string accountDomain;
+        public string AccountDomain
+        {
+            get => accountDomain.Trim();
+            set => accountDomain = value;
+        }
 
-        public string activeDirectoryApplicationClientID;
+        [SerializeField]
+        private string activeDirectoryApplicationClientID;
+        public string ActiveDirectoryApplicationClientID
+        {
+            get => activeDirectoryApplicationClientID.Trim();
+            set => activeDirectoryApplicationClientID = value;
+        }
 
-        public string azureTenantID;
+        [SerializeField]
+        private string azureTenantID;
+        public string AzureTenantID
+        {
+            get => azureTenantID.Trim();
+            set => azureTenantID = value;
+        }
 
-        public string azureRemoteRenderingAccountID;
+        [SerializeField]
+        private string azureRemoteRenderingAccountID;
+        public string AzureRemoteRenderingAccountID
+        {
+            get => azureRemoteRenderingAccountID.Trim();
+            set => azureRemoteRenderingAccountID = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
-        string authority => "https://login.microsoftonline.com/" + azureTenantID;
+        string authority => "https://login.microsoftonline.com/" + AzureTenantID;
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
@@ -236,7 +278,7 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(accountDomain, azureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -260,7 +302,7 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
 
         public override async Task<AuthenticationResult> TryLogin()
         {
-            var clientApplication = PublicClientApplicationBuilder.Create(activeDirectoryApplicationClientID).WithAuthority(authority).WithRedirectUri(redirect_uri).Build();
+            var clientApplication = PublicClientApplicationBuilder.Create(ActiveDirectoryApplicationClientID).WithAuthority(authority).WithRedirectUri(redirect_uri).Build();
             AuthenticationResult result = null;
             try
             {
@@ -323,7 +365,7 @@ AAD 驗證可讓您以更受控制的方式判斷使用 ARR 的個人或群組�
 從 ARR 觀點來看，這個類別最重要的部分就是這一行：
 
 ```csharp
-return await Task.FromResult(new AzureFrontendAccountInfo(accountDomain, azureRemoteRenderingAccountID, "", AD_Token, ""));
+return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
 在這裡，我們會使用帳戶網域、帳戶識別碼和存取權杖建立新的 **AzureFrontendAccountInfo** 物件。 只要使用者已根據稍早設定的角色型權限獲得授權，ARR 服務就會使用此權杖來查詢、建立和加入遠端轉譯工作階段。

@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 527ce1c7d434ae94c91c78c865c00aa0687a73cb
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921931"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245497"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>教學課程：使用批次偵測與 Power BI 將異常狀況視覺化
 
@@ -29,10 +29,10 @@ ms.locfileid: "85921931"
 > * 將您資料中的異常狀況視覺化，包括預期和所見的值，以及異常偵測界限。
 
 ## <a name="prerequisites"></a>必要條件
-* [Azure 訂用帳戶](https://azure.microsoft.com/free/)
+* [Azure 訂用帳戶](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/)(免費提供)。
 * 包含時間序列資料點的 Excel 檔案 (.xlsx)。 此快速入門的範例資料可以在 [GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) 上找到。
-* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="建立異常偵測器資源"  target="_blank">建立異常偵測器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 
+* 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="建立異常偵測器資源"  target="_blank">建立異常偵測器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至異常偵測器 API。 您稍後會在快速入門中執行此動作。
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
@@ -52,19 +52,19 @@ ms.locfileid: "85921931"
 
 ![Power BI 中資料來源 [導覽] 畫面的影像](../media/tutorials/navigator-dialog-box.png)
 
-Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 這些時間戳記必須轉換成文字，才能傳送到 Anomaly Detector API。 如果 Power Query 編輯器不會自動開啟，請按一下首頁索引標籤上的 [編輯查詢]****。 
+Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 這些時間戳記必須轉換成文字，才能傳送到 Anomaly Detector API。 如果 Power Query 編輯器不會自動開啟，請按一下首頁索引標籤上的 [編輯查詢]****。
 
 按一下 Power Query 編輯器中的 [轉換]**** 功能區。 在 [任何資料行]**** 群組中，開啟 [資料類型:]**** 下拉式功能表，然後選取 [文字]****。
 
 ![Power BI 中資料來源 [導覽] 畫面的影像](../media/tutorials/data-type-drop-down.png)
 
-當您取得有關變更資料行類型的通知時，請按一下 [取代目前]****。 接著，按一下 [首頁]**** 功能區中的 [關閉並套用]**** 或 [套用]****。 
+當您取得有關變更資料行類型的通知時，請按一下 [取代目前]****。 接著，按一下 [首頁]**** 功能區中的 [關閉並套用]**** 或 [套用]****。
 
 ## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>建立函式以傳送資料並將回應格式化
 
 若要將資料檔案格式化並傳送到 Anomaly Detector API，您可以在上面建立的資料表上叫用查詢。 在 Power Query 編輯器中，從 [首頁]**** 功能區開啟 [新增來源]**** 下拉式功能表，然後選取 [空白查詢]****。
 
-確定已選取您的新查詢，然後按一下 [進階編輯器]****。 
+確定已選取您的新查詢，然後按一下 [進階編輯器]****。
 
 ![Power BI 中 [進階編輯器] 按鈕的影像](../media/tutorials/advanced-editor-screen.png)
 
@@ -84,7 +84,7 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
-                    
+
                      Table.Column(inputTable, "Timestamp")
                      ,Table.Column(inputTable, "Value")
                      , Record.Field(jsonresp, "IsAnomaly") as list
@@ -96,7 +96,7 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
 
                   }, {"Timestamp", "Value", "IsAnomaly", "ExpectedValues", "UpperMargin", "LowerMargin", "IsPositiveAnomaly", "IsNegativeAnomaly"}
                ),
-    
+
     respTable1 = Table.AddColumn(respTable , "UpperMargins", (row) => row[ExpectedValues] + row[UpperMargin]),
     respTable2 = Table.AddColumn(respTable1 , "LowerMargins", (row) => row[ExpectedValues] -  row[LowerMargin]),
     respTable3 = Table.RemoveColumns(respTable2, "UpperMargin"),
@@ -112,7 +112,7 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
  in results
 ```
 
-選取 [輸入參數]**** 下方的 `Sheet1`，然後按一下 [叫用]****，以在您的資料工作表上叫用查詢。 
+選取 [輸入參數]**** 下方的 `Sheet1`，然後按一下 [叫用]****，以在您的資料工作表上叫用查詢。
 
 ![[進階編輯器] 按鈕的影像](../media/tutorials/invoke-function-screenshot.png)
 
@@ -121,23 +121,23 @@ Power BI 會將第一欄中的時間戳記轉換為 `Date/Time` 資料類型。 
 > [!NOTE]
 > 請留意貴組織的資料隱私性和存取原則。 如需詳細資訊，請參閱 [Power BI Desktop 隱私權等級](https://docs.microsoft.com/power-bi/desktop-privacy-levels)。
 
-您在嘗試執行查詢時，可能會收到一則警告訊息，因為它會利用外部資料來源。 
+您在嘗試執行查詢時，可能會收到一則警告訊息，因為它會利用外部資料來源。
 
 ![顯示 Power BI 所建立警告的影像](../media/tutorials/blocked-function.png)
 
-若要修正此問題，按一下 [檔案]****，然後按一下 [選項與設定]****。 然後按一下 [選項]****。 在 [目前檔案]**** 下方，選取 [隱私權]****，然後選取 [忽略隱私權等級並可能改善效能]****。 
+若要修正此問題，按一下 [檔案]****，然後按一下 [選項與設定]****。 然後按一下 [選項]****。 在 [目前檔案]**** 下方，選取 [隱私權]****，然後選取 [忽略隱私權等級並可能改善效能]****。
 
 此外，您可能會收到訊息，要求您指定連線到 API 的方式。
 
 ![顯示要求指定存取認證的影像](../media/tutorials/edit-credentials-message.png)
 
-若要修正此問題，按一下訊息中的 [編輯認證]****。 在對話方塊出現之後，選取 [匿名]**** 以匿名方式連線到 API。 然後按一下 [ **連接**]。 
+若要修正此問題，按一下訊息中的 [編輯認證]****。 在對話方塊出現之後，選取 [匿名]**** 以匿名方式連線到 API。 然後按一下 [ **連接**]。
 
 接著，按一下 [首頁]**** 功能區中的 [關閉並套用]****，或套用變更。
 
 ## <a name="visualize-the-anomaly-detector-api-response"></a>將 Anomaly Detector API 回應視覺化
 
-在 Power BI 主畫面中，開始使用上面建立的查詢將資料視覺化。 先選取 [視覺效果]**** 中的 [折線圖]****。 然後從叫用的函式，將時間戳記新增到折線圖的 [軸]****。 以滑鼠右鍵按一下它，然後選取 [時間戳記]****。 
+在 Power BI 主畫面中，開始使用上面建立的查詢將資料視覺化。 先選取 [視覺效果]**** 中的 [折線圖]****。 然後從叫用的函式，將時間戳記新增到折線圖的 [軸]****。 以滑鼠右鍵按一下它，然後選取 [時間戳記]****。
 
 ![以滑鼠右鍵按一下 [時間戳記] 值。](../media/tutorials/timestamp-right-click.png)
 

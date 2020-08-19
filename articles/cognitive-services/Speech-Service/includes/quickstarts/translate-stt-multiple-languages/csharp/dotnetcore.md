@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: ebf24829c02d2dbf5ff2c04d6548e2004d6c3f21
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bc1805202696fda2d57374e08e269045e1fe044c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671538"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226361"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -106,7 +106,7 @@ ms.locfileid: "80671538"
 
 1. 在相同檔案中，以您的訂用帳戶金鑰取代 `YourSubscriptionKey` 字串。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
+1. 將字串 `YourServiceRegion` 取代為與您的訂用帳戶相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)。
 
 1. 從功能表列中，選擇 [檔案]   > [全部儲存]  。
 

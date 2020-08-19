@@ -3,16 +3,16 @@ title: Azure 企業版 REST API
 description: 本文將說明要與您 Azure 企業註冊搭配使用的 REST API。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 06848ee18b610c6199d7add720c7ffb386aa4633
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 38662109b03caf63f72f2c1ad3132611ee91d1c3
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075141"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244086"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure 企業版 REST API
 

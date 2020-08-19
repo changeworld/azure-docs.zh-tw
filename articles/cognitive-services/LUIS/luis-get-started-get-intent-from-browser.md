@@ -3,12 +3,12 @@ title: 快速入門：使用瀏覽器查詢預測 - LUIS
 description: 在本快速入門中，使用可用的公用 LUIS 應用程式，從瀏覽器中的交談文字判斷使用者的意圖。
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 24c7a8aca410ad10b8a9299c4bca2f13d0feb780
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769974"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245990"
 ---
 # <a name="quickstart-query-prediction-runtime-with-user-text"></a>快速入門：具有使用者文字的查詢預測執行階段
 
@@ -19,7 +19,7 @@ ms.locfileid: "81769974"
 若要查詢公用應用程式，您需要：
 
 * 您的 Language Understanding (LUIS) 資源資訊：
-    * **預測金鑰** - 可以從 [LUIS 入口網站](https://www.luis.ai/)取得。 若您還沒有訂用帳戶可建立金鑰，您可以註冊[免費帳戶](https://azure.microsoft.com/free/)。
+    * **預測金鑰** - 可以從 [LUIS 入口網站](https://www.luis.ai/)取得。 若您還沒有訂用帳戶可建立金鑰，您可以註冊[免費帳戶](https://azure.microsoft.com/free/cognitive-services)。
     * **預測端點子網域** - 該子網域也是 LUIS 資源的**名稱**。
 * LUIS 應用程式識別碼 - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公用 IoT 應用程式識別碼。 快速入門程式碼中使用的使用者查詢是該應用程式所專屬。
 

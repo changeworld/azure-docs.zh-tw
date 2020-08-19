@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: ee897a22ceda4378ea9dba4579d5108a2ddf0b0d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c0129ff25f1df492ab6eba9f49add18d5321a3e8
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156521"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246182"
 ---
-開始使用適用於 Go 的 Bing 自動建議用戶端程式庫。 請遵循下列步驟來安裝程式庫，並試用我們的基本工作範例。 
+開始使用適用於 Go 的 Bing 自動建議用戶端程式庫。 請遵循下列步驟來安裝程式庫，並試用我們的基本工作範例。
 
 使用適用於 Go 的 Bing 自動建議用戶端程式庫，以根據部分查詢字串來取得搜尋建議。
 
@@ -23,7 +23,7 @@ ms.locfileid: "86156521"
 
 ## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，[您可以建立免費帳戶](https://azure.microsoft.com/free/)。
+* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，[您可以建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)。
 * 最新版的 [Go](https://golang.org/dl/)。
 
 藉由建立 Azure 資源，開始使用 Bing 自動建議用戶端程式庫。 在下方選擇適合您的資源類型：
@@ -33,12 +33,12 @@ ms.locfileid: "86156521"
 ## <a name="create-environment-variables"></a>建立環境變數
 
 >[!NOTE]
-> 在 2019 年 7 月 1 日之後建立的資源端點使用下面顯示的自訂子網域格式。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
+> 在 2019 年 7 月 1 日之後建立的資源端點使用下面顯示的自訂子網域格式。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。
 
 在您建立的資源中，使用金鑰和端點來建立兩個環境變數以進行驗證：
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`:用來驗證要求的資源金鑰。
-* `AUTOSUGGEST_ENDPOINT`:用來傳送 API 要求的資源端點。 應該會顯示如下：`https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
+* `AUTOSUGGEST_ENDPOINT`:用來傳送 API 要求的資源端點。 應該會顯示如下：`https://<your-custom-subdomain>.api.cognitive.microsoft.com`
 
 請使用適合您作業系統的指示。
 <!-- replace the below endpoint and key examples -->
@@ -74,7 +74,7 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 ## <a name="create-a-new-go-project"></a>建立新的 Go 專案
 
-在主控台視窗 (cmd、PowerShell、Bash) 中，為您的 Go 專案建立新的工作區，並瀏覽至該工作區。 您的工作區將包含三個資料夾： 
+在主控台視窗 (cmd、PowerShell、Bash) 中，為您的 Go 專案建立新的工作區，並瀏覽至該工作區。 您的工作區將包含三個資料夾：
 
 * **src**：此目錄包含原始程式碼和套件。 任何使用 `go get` 命令安裝的套件都將位於此處。
 * **pkg**：此目錄包含已編譯的 Go 套件物件。 這些檔案都具有 `.a` 副檔名。
@@ -92,7 +92,7 @@ $ cd my-app
 
 ## <a name="install-the-client-library-for-go"></a>安裝適用於 Go 的用戶端程式庫
 
-現在，讓我們安裝適用於 Go 的用戶端程式庫： 
+現在，讓我們安裝適用於 Go 的用戶端程式庫：
 
 ```bash
 $ go get -u <library-location-or-url>
@@ -154,10 +154,10 @@ func main() {
 
 ### <a name="authenticate-the-client"></a>驗證用戶端
 
-> [!NOTE] 
+> [!NOTE]
 > 本快速入門假設您已為 Bing 自動建議金鑰[建立環境變數](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) (名為 `BING_AUTOSUGGEST_SUBSCRIPTION_KEY`)，並為端點建立名為 `BING_AUTOSUGGEST_ENDPOINT` 的環境變數。
 
-在 `main()` 函式中，使用端點和金鑰來具現化用戶端。 
+在 `main()` 函式中，使用端點和金鑰來具現化用戶端。
 
 ```go
 // Get the context, which is required by the SDK methods.

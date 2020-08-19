@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 2af0d0eb2411c5ffe9f80498a3e93d48fe0a769b
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0434ddb1e90789628d14d4782eccb6514fccf8d8
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057792"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226195"
 ---
 ## <a name="prerequisites"></a>必要條件
 
@@ -43,7 +43,7 @@ ms.locfileid: "88057792"
 
 1. 在此檔案的 `SpeechTranslationFromMicrophone_ButtonClicked` 處理常式中，尋找 `YourSubscriptionKey` 字串，並以您的訂用帳戶金鑰取代它。
 
-1. 在 `SpeechTranslationFromMicrophone_ButtonClicked` 處理常式中，尋找字串 `YourServiceRegion`，並將它取代為與您的訂用帳戶相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)。 (例如，針對免費試用訂用帳戶使用 `westus`。)
+1. 在 `SpeechTranslationFromMicrophone_ButtonClicked` 處理常式中，尋找字串 `YourServiceRegion`，並將它取代為與您的訂用帳戶相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)。
 
 1. 從功能表列中，選擇 [檔案]   > [全部儲存]  來儲存變更。
 

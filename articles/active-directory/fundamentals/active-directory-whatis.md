@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd63e82788856624c3babe078de52e698f190ce0
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 91e89f274615e75fec818ec9e3ecf785aa6e804f
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87796620"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262953"
 ---
 # <a name="what-is-azure-active-directory"></a>什麼是 Azure Active Directory？
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) 是 Microsoft 的雲端式身分識別和存�
 
 - 內部資源，例如公司網路和內部網路上的應用程式，以及您自己的組織所開發的任何雲端應用程式。 如需有關為您的組織建立租用戶的詳細資訊，請參閱[快速入門：在 Azure Active Directory 中建立新的租用戶](active-directory-access-create-new-tenant.md)。
 
-若要了解 Azure AD 與 Active Directory Domain Services 之間的差異，請參閱[比較 Active Directory 與 Azure Active Directory](active-directory-compare-azure-ad-to-ad.md)。 您可以使用各種 [Microsoft Cloud for Enterprise Architects 系列](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity)的海報，來深入了解 Azure、Azure AD 與 Office 365 中的核心識別服務。
+若要了解 Azure AD 與 Active Directory Domain Services 之間的差異，請參閱[比較 Active Directory 與 Azure Active Directory](active-directory-compare-azure-ad-to-ad.md)。 您可以使用各種 [Microsoft Cloud for Enterprise Architects 系列](https://docs.microsoft.com/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide)的海報，來深入了解 Azure、Azure AD 與 Office 365 中的核心識別服務。
 
 ## <a name="who-uses-azure-ad"></a>誰會使用 Azure AD？
 

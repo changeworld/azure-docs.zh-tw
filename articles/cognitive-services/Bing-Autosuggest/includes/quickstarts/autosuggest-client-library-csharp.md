@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 5d325ac8da43f020f4ab39244d2e6a7dc6ed72b7
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: a6ae9d8975c36e7ffa8e3eadf880b4685390c5fc
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156573"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246420"
 ---
 開始使用適用於 .NET 的 Bing 自動建議用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
 
@@ -23,7 +23,7 @@ ms.locfileid: "86156573"
 
 ## <a name="prerequisites"></a>必要條件
 
-* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，[您可以建立免費帳戶](https://azure.microsoft.com/free/)。
+* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，[您可以建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)。
 * 最新版 [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
 
 [!INCLUDE [cognitive-services-bing-autosuggest-signup-requirements](~/includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
@@ -31,12 +31,12 @@ ms.locfileid: "86156573"
 ## <a name="create-environment-variables"></a>建立環境變數
 
 >[!NOTE]
-> 在 2019 年 7 月 1 日之後建立的資源端點使用下面顯示的自訂子網域格式。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。 
+> 在 2019 年 7 月 1 日之後建立的資源端點使用下面顯示的自訂子網域格式。 如需詳細資訊和完整的區域端點清單，請參閱[認知服務的自訂子網域名稱](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)。
 
 在您建立的資源中，使用金鑰和端點來建立兩個環境變數以進行驗證：
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`:用來驗證要求的資源金鑰。
-* `AUTOSUGGEST_ENDPOINT`:用來傳送 API 要求的資源端點。 它看起來應該像這樣：`https://<your-custom-subdomain>.api.cognitive.microsoft.com`。 
+* `AUTOSUGGEST_ENDPOINT`:用來傳送 API 要求的資源端點。 它看起來應該像這樣：`https://<your-custom-subdomain>.api.cognitive.microsoft.com`。
 
 請使用適合您作業系統的指示。
 <!-- replace the below endpoint and key examples -->
@@ -72,9 +72,9 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 ## <a name="create-a-new-c-application"></a>建立新的 C# 應用程式
 
-在您慣用的編輯器或 IDE 中，建立新的 .NET Core 應用程式。 
+在您慣用的編輯器或 IDE 中，建立新的 .NET Core 應用程式。
 
-在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `bing-autosuggest-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*program.cs*。 
+在主控台視窗中 (例如 cmd、PowerShell 或 Bash)，使用 `dotnet new` 命令建立名為 `bing-autosuggest-quickstart` 的新主控台應用程式。 此命令會建立簡單的 "Hello World" C# 專案，內含單一原始程式檔：*program.cs*。
 
 ```console
 dotnet new console -n bing-autosuggest-quickstart
@@ -86,7 +86,7 @@ dotnet new console -n bing-autosuggest-quickstart
 dotnet build
 ```
 
-建置輸出應該不會有警告或錯誤。 
+建置輸出應該不會有警告或錯誤。
 
 ```console
 ...

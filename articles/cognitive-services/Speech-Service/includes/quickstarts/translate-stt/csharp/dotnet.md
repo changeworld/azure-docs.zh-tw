@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: aac3921c3c994994bf90cd974683094b28ad4866
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 2d2c1558ea142feacfb509acdf4145b79a2b64e7
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80671317"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226131"
 ---
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>必要條件
 
 開始之前，請務必：
 
@@ -103,15 +103,15 @@ ms.locfileid: "80671317"
 
 1. 在相同檔案中，以您的訂用帳戶金鑰取代 `YourSubscriptionKey` 字串。
 
-1. 以與您的訂用帳戶 (例如，免費試用訂用帳戶的 `westus`) 相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)取代 `YourServiceRegion` 字串。
+1. 將字串 `YourServiceRegion` 取代為與您的訂用帳戶相關聯的[區域](~/articles/cognitive-services/Speech-Service/regions.md)。
 
-1. 從功能表列中，選擇 [檔案]   > [全部儲存]  。
+1. 從功能表列中，選擇 [檔案] > [全部儲存]。
 
 ## <a name="build-and-run-the-application"></a>建置並執行應用程式
 
-1. 從功能表列中，選取 [建置]   > [建置方案]  來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
+1. 從功能表列中，選取 [建置] > [建置方案] 來建置應用程式。 程式碼現在應該可以編譯，而且不會出現任何錯誤。
 
-1. 選擇 [偵錯]   > [開始偵錯]  (或按 **F5**) 以啟動 **helloworld** 應用程式。
+1. 選擇 [偵錯] > [開始偵錯] (或按 **F5**) 以啟動 **helloworld** 應用程式。
 
 1. 請說英文片語或句子。 應用程式會將您的語音傳送到語音服務，語音服務會進行翻譯並轉換為文字 (在此案例中，是轉換為德文)。 語音服務接著會將文字傳送回應用程式以供顯示。
 

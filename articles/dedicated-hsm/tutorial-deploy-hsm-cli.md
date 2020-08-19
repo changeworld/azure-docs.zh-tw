@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 02b15f88e05abc918100f5e6b1ad1cdd60954a9d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e4403252396aab91fa960ed7258d433e27db950a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486981"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258236"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>教學課程：使用 CLI 將 HSM 部署至現有的虛擬網路
 
@@ -38,7 +38,7 @@ Azure 專用 HSM 提供實體裝置以供單獨客戶使用，其具有完整的
 
 ## <a name="prerequisites"></a>Prerequisites
 
-Azure 入口網站中目前尚未提供 Azure 專用 HSM。 所有與服務的互動都會透過命令列或使用 PowerShell 進行。 本教學課程會使用 Azure Cloud Shell 中的命令列 (CLI) 介面。 如果您不熟悉 Azure CLI，請遵循以下的入門指示：[Azure CLI 2.0 使用者入門](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
+Azure 入口網站中目前尚未提供 Azure 專用 HSM。 所有與服務的互動都會透過命令列或使用 PowerShell 進行。 本教學課程會使用 Azure Cloud Shell 中的命令列 (CLI) 介面。 如果您不熟悉 Azure CLI，請遵循以下的入門指示：[Azure CLI 2.0 使用者入門](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)。
 
 假設：
 

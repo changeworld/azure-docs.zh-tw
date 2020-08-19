@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 2fd4faf9fa553f8fb7b6553c0d1435bf003b5578
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: fd3f53520c3cd865fcbd0e38fffdfb14ecf03392
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986094"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246437"
 ---
 開始使用適用於 Python 的 Anomaly Detector 用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。 Anomaly Detector 服務可藉由自動對時間序列資料使用最適合的模型，而讓您找出其中的異常狀況，不論是什麼產業、情境或資料量都沒問題。
 
@@ -28,12 +28,12 @@ ms.locfileid: "85986094"
 
 * [Python 3.x](https://www.python.org/)
 * [Pandas 資料分析程式庫](https://pandas.pydata.org/)
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 * 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="建立異常偵測器資源"  target="_blank">建立異常偵測器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
     * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至異常偵測器 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
- 
+
 ## <a name="setting-up"></a>設定
 
 [!INCLUDE [anomaly-detector-environment-variables](../environment-variables.md)]
@@ -44,7 +44,7 @@ ms.locfileid: "85986094"
 
 [!code-python[import declarations](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=imports)]
 
-為您的金鑰建立變數作為環境變數、時間序列資料檔案的路徑，以及您訂用帳戶的 Azure 位置。 例如： `westus2` 。 
+為您的金鑰建立變數作為環境變數、時間序列資料檔案的路徑，以及您訂用帳戶的 Azure 位置。 例如： `westus2` 。
 
 [!code-python[Vars for the key, path location and data path](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=initVars)]
 
@@ -58,19 +58,19 @@ pip install --upgrade azure-cognitiveservices-anomalydetector
 
 ## <a name="object-model"></a>物件模型
 
-Anomaly Detector 用戶端是一種 [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) 物件，其使用您的金鑰向 Azure 進行驗證。 此用戶端會提供兩種異常偵測方法：使用 [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)在整個資料集上進行，以及使用 [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) 在最新的資料點上進行。 
+Anomaly Detector 用戶端是一種 [AnomalyDetectorClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python) 物件，其使用您的金鑰向 Azure 進行驗證。 此用戶端會提供兩種異常偵測方法：使用 [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-)在整個資料集上進行，以及使用 [Last_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#last-detect-body--custom-headers-none--raw-false----operation-config-) 在最新的資料點上進行。
 
-時間序列資料會透過 [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) 物件以 [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) 序列的形式來傳送。 `Request` 物件包含用來說明資料的屬性 (例如，[細微性](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python))，以及供異常偵測使用的參數。 
+時間序列資料會透過 [Request](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.request(class)?view=azure-python) 物件以 [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point(class)?view=azure-python) 序列的形式來傳送。 `Request` 物件包含用來說明資料的屬性 (例如，[細微性](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.granularity?view=azure-python))，以及供異常偵測使用的參數。
 
-Anomaly Detector 回應是 [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) 或 [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) 物件 (端視所使用的方法而定)。 
+Anomaly Detector 回應是 [LastDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.lastdetectresponse?view=azure-python) 或 [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) 物件 (端視所使用的方法而定)。
 
-## <a name="code-examples"></a>程式碼範例 
+## <a name="code-examples"></a>程式碼範例
 
 這些程式碼片段會示範如何使用適用於 Python 的 Anomaly Detector 用戶端程式庫來執行下列動作：
 
 * [驗證用戶端](#authenticate-the-client)
 * [從檔案載入時間序列資料集](#load-time-series-data-from-a-file)
-* [偵測整個資料集內的異常](#detect-anomalies-in-the-entire-data-set) 
+* [偵測整個資料集內的異常](#detect-anomalies-in-the-entire-data-set)
 * [偵測最新資料點的異常狀態](#detect-the-anomaly-status-of-the-latest-data-point)
 
 ## <a name="authenticate-the-client"></a>驗證用戶端
@@ -88,7 +88,7 @@ Anomaly Detector 回應是 [LastDetectResponse](https://docs.microsoft.com/pytho
 
 此時間序列資料會格式化為 .csv 檔案，且會傳送至 Anomaly Detector API。
 
-使用 Pandas 程式庫的 `read_csv()` 方法載入您的資料檔案，並製作空白清單變數來儲存您的資料序列。 逐一查看檔案，並附加資料作為 [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) 物件。 此物件會包含 .csv 資料檔的資料列中的時間戳記和數值。 
+使用 Pandas 程式庫的 `read_csv()` 方法載入您的資料檔案，並製作空白清單變數來儲存您的資料序列。 逐一查看檔案，並附加資料作為 [Point](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.point%28class%29?view=azure-python) 物件。 此物件會包含 .csv 資料檔的資料列中的時間戳記和數值。
 
 [!code-python[Load the data file](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=loadDataFile)]
 
@@ -96,7 +96,7 @@ Anomaly Detector 回應是 [LastDetectResponse](https://docs.microsoft.com/pytho
 
 [!code-python[Create the request object](~/samples-anomaly-detector/quickstarts/sdk/python-sdk-sample.py?name=request)]
 
-## <a name="detect-anomalies-in-the-entire-data-set"></a>偵測整個資料集內的異常 
+## <a name="detect-anomalies-in-the-entire-data-set"></a>偵測整個資料集內的異常
 
 使用用戶端的 [entire_detect()](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.anomalydetectorclient?view=azure-python#entire-detect-body--custom-headers-none--raw-false----operation-config-) 方法，呼叫 API 來偵測整個時間序列資料的異常情形。 儲存傳回的 [EntireDetectResponse](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector.models.entiredetectresponse?view=azure-python) 物件。 逐一查看回應的 `is_anomaly` 清單，然後列印任何 `true` 值的索引。 如果有找到，這些值會對應到異常資料點的索引。
 
@@ -111,5 +111,5 @@ Anomaly Detector 回應是 [LastDetectResponse](https://docs.microsoft.com/pytho
 ## <a name="run-the-application"></a>執行應用程式
 
 使用 `python` 命令及您的檔案名稱來執行應用程式。
- 
+
 [!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]

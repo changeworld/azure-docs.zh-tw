@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 585731212fa31be2757d5b5d4c4e0a2ef1212ca8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 86742568d8f0c7c951d872e7df23b8ce1cb0920f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980206"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244222"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入門：使用 Anomaly Detector REST API 與 C# 偵測時間序列資料中的異常狀況 
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入門：使用 Anomaly Detector REST API 與 C# 偵測時間序列資料中的異常狀況
 
 使用本快速入門以開始使用 Anomaly Detector API 的兩個偵測模式，來偵測時間序列資料中的異常狀況。 此 C# 應用程式會傳送包含 JSON 格式時間序列資料的兩個 API 要求，並取得回應。
 
@@ -30,13 +30,13 @@ ms.locfileid: "85980206"
 
 ## <a name="prerequisites"></a>必要條件
 
-- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
+- Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/cognitive-services)
 - 擁有 Azure 訂用帳戶之後，在 Azure 入口網站中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="建立異常偵測器資源"  target="_blank">建立異常偵測器資源<span class="docon docon-navigate-external x-hidden-focus"></span></a>，以取得您的金鑰和端點。 部署完成後，按一下 [移至資源] 按鈕。
     - 您需要來自所建立資源的金鑰和端點，以將應用程式連線至異常偵測器 API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
     您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 - [Visual Studio 2017 或更新版本](https://visualstudio.microsoft.com/downloads/)的任何版本
 - [Json.NET](https://www.newtonsoft.com/json) 架構 (以 NuGet 套件形式提供)。 若要在 Visual Studio 中安裝 Newtonsoft.Json 作為 NuGet 套件：
-    
+
     1. 在 [方案總管] 中，以滑鼠右鍵按一下您的專案。
     2. 選取 [管理 NuGet 套件]。
     3. 搜尋 Newtonsoft.Json 並安裝套件
@@ -49,7 +49,7 @@ ms.locfileid: "85980206"
 
 ## <a name="create-a-new-application"></a>建立新的應用程式
 
-1. 在 Visual Studio 中，建立新的主控台解決方案並新增下列套件。 
+1. 在 Visual Studio 中，建立新的主控台解決方案並新增下列套件。
 
     [!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=usingStatements)]
 
@@ -60,7 +60,7 @@ ms.locfileid: "85980206"
     |------------------------------------|--------------------------------------------------|
     | 批次偵測                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | 最新資料點上的偵測 | `/anomalydetector/v1.0/timeseries/last/detect`   |
-        
+
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>建立傳送要求的函式
@@ -79,7 +79,7 @@ ms.locfileid: "85980206"
 
 2. 將 JSON 物件還原序列化，並將它寫入到主控台。
 
-3. 如果回應包含 `code` 欄位，則列印錯誤碼和錯誤訊息。 
+3. 如果回應包含 `code` 欄位，則列印錯誤碼和錯誤訊息。
 
 4. 否則，在資料集中尋找異常狀況的位置。 回應的 `isAnomaly` 欄位包含布林值陣列，其中每個值都表示資料點是否異常。 使用回應物件的 `ToObject<bool[]>()` 函式，將其轉換成字串陣列。 逐一查看陣列，並列印任何 `true` 值的索引。 如果有找到，這些值會對應到異常資料點的索引。
 
@@ -93,10 +93,10 @@ ms.locfileid: "85980206"
 2. 將 JSON 物件還原序列化，並將它寫入到主控台。
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
- 
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>載入時間序列資料，並傳送要求
 
-1. 在您應用程式的主要方法中，使用 `File.ReadAllText()` 載入 JSON 時間序列資料。 
+1. 在您應用程式的主要方法中，使用 `File.ReadAllText()` 載入 JSON 時間序列資料。
 
 2. 呼叫上面建立的異常偵測函式。 使用 `System.Console.ReadKey()`，讓主控台視窗在執行應用程式後保持開啟。
 

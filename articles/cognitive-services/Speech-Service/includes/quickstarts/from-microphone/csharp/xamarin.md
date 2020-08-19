@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: c9bcd301b19252cedd9ac9a1867ccf132a537587
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 709efa3fb4f85ab5d0c3d345fd9a5ceada274459
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81275533"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226253"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -47,9 +47,9 @@ ms.locfileid: "81275533"
 1. 在來源檔案的 `OnRecognitionButtonClicked` 處理常式中，尋找字串 `YourSubscriptionKey`，並將其取代為與您的訂用帳戶金鑰相關聯的區域。
 
 
-1. 在 `OnRecognitionButtonClicked` 處理常式中，尋找 `YourServiceregion` 字串，並將其取代為訂用帳戶所關聯[區域](https://aka.ms/speech/sdkregion)中的 [區域識別碼]  。 (例如，針對免費試用訂用帳戶使用 `westus`。)
+1. 在 `OnRecognitionButtonClicked` 處理常式中，尋找 `YourServiceregion` 字串，並將其取代為訂用帳戶所關聯[區域](https://aka.ms/speech/sdkregion)中的 [區域識別碼]  。 
 
-1. 接下來，您必須建立 [Xamarin 服務](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)，以用來查詢不同平台專案 (例如 UWP、Android 和 iOS) 的麥克風權限。 若要這麼做，請在 helloworld 專案下新增名為 Services  的新資料夾，並在其中建立新的 C# 原始程式檔。 您可以用滑鼠右鍵按一下 [Services]  資料夾，然後選取 [新增]   > [新增項目]   > [程式碼檔案]  。 重新命名 `IMicrophoneService.cs` 檔案，並將下列程式碼片段中的所有程式碼放在該檔案中：
+1. 接下來，您必須建立 [Xamarin 服務](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)，以用來查詢不同平台專案 (例如 UWP、Android 和 iOS) 的麥克風權限。 若要這麼做，請在 helloworld 專案下新增名為 Services** 的新資料夾，並在其中建立新的 C# 原始程式檔。 您可以用滑鼠右鍵按一下 [Services]** 資料夾，然後選取 [新增]**** > [新增項目]**** > [程式碼檔案]****。 重新命名 `IMicrophoneService.cs` 檔案，並將下列程式碼片段中的所有程式碼放在該檔案中：
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
@@ -58,17 +58,17 @@ ms.locfileid: "81275533"
 
 現在，新增 C# 程式碼以定義應用程式的 Android 特定部分。
 
-1. 在 [方案總管]  中的 helloworld.Android 專案下方，開啟 `MainActivity.cs`。
+1. 在 [方案總管]**** 中的 helloworld.Android 專案下方，開啟 `MainActivity.cs`。
 
 1. 將其中的所有程式碼取代為下列程式碼片段：
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.Android/MainActivity.cs)]
 
-1. 接著，在 helloworld.Android 專案下建立新的 Services  資料夾，以新增 `MicrophoneService` 的 Android 特定實作。 之後，在其中建立新的 C# 原始程式檔。 重新命名 `MicrophoneService.cs`檔案。 將以下程式碼片段複製並貼上到該檔案中：
+1. 接著，在 helloworld.Android 專案下建立新的 Services** 資料夾，以新增 `MicrophoneService` 的 Android 特定實作。 之後，在其中建立新的 C# 原始程式檔。 重新命名 `MicrophoneService.cs`檔案。 將以下程式碼片段複製並貼上到該檔案中：
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.Android/Services/MicrophoneService.cs)]
 
-1. 之後，請在 [Properties]  資料夾底下開啟 `AndroidManifest.xml`。 在 `<manifest>` 與 `</manifest>` 之間新增麥克風的下列使用權限設定：
+1. 之後，請在 [Properties]** 資料夾底下開啟 `AndroidManifest.xml`。 在 `<manifest>` 與 `</manifest>` 之間新增麥克風的下列使用權限設定：
 
    ```xml
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -79,13 +79,13 @@ ms.locfileid: "81275533"
 
 現在，新增 C# 程式碼以定義應用程式的 iOS 特定部分。 另請建立 helloworld.iOS 專案的 Apple 裝置特定設定。
 
-1. 在 [方案總管]  中的 helloworld.iOS 專案下方，開啟 `AppDelegate.cs`。
+1. 在 [方案總管]**** 中的 helloworld.iOS 專案下方，開啟 `AppDelegate.cs`。
 
 1. 將其中的所有程式碼取代為下列程式碼片段：
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.iOS/AppDelegate.cs)]
 
-1. 接著，在 helloworld.iOS 專案下建立新的 Services  資料夾，以新增 `MicrophoneService` 的 iOS 特定實作。 之後，在其中建立新的 C# 原始程式檔。 重新命名 `MicrophoneService.cs`檔案。 將以下程式碼片段複製並貼上到該檔案中：
+1. 接著，在 helloworld.iOS 專案下建立新的 Services** 資料夾，以新增 `MicrophoneService` 的 iOS 特定實作。 之後，在其中建立新的 C# 原始程式檔。 重新命名 `MicrophoneService.cs`檔案。 將以下程式碼片段複製並貼上到該檔案中：
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.iOS/Services/MicrophoneService.cs)]
 
@@ -97,7 +97,7 @@ ms.locfileid: "81275533"
    > [!NOTE]
    > 如果您是針對 iPhone 裝置進行建置，請確定 `Bundle Identifier` 符合您裝置的佈建設定檔應用程式識別碼。 否則，建置將會失敗。 對於 iPhoneSimulator，您可以將它保持原狀。
 
-1. 如果您是在 Windows 電腦上建置，則必須與 Mac 裝置建立連線，以透過 [工具]   > [iOS]   > [與 Mac 配對]  進行建置。 請依照 Visual Studio 提供的指示精靈操作，以啟用 Mac 裝置的連線。
+1. 如果您是在 Windows 電腦上建置，則必須與 Mac 裝置建立連線，以透過 [工具] > [iOS] > [與 Mac 配對] 進行建置。 請依照 Visual Studio 提供的指示精靈操作，以啟用 Mac 裝置的連線。
 
 #### <a name="uwp"></a>[UWP](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>新增 `helloworld.UWP` 專案的範例程式碼
@@ -106,36 +106,36 @@ ms.locfileid: "81275533"
 
 現在，新增 C# 程式碼以定義應用程式的 UWP 特定部分。
 
-1. 在 [方案總管]  中的 helloworld.UWP 專案下方，開啟 `MainPage.xaml.cs`。
+1. 在 [方案總管]**** 中的 helloworld.UWP 專案下方，開啟 `MainPage.xaml.cs`。
 
 1. 將其中的所有程式碼取代為下列程式碼片段：
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.UWP/MainPage.xaml.cs)]
 
-1. 接著，在 helloworld.UWP 專案下建立新的 Services  資料夾，以新增 `MicrophoneService` 的 UWP 特定實作。 之後，在其中建立新的 C# 原始程式檔。 重新命名 `MicrophoneService.cs`檔案。 將以下程式碼片段複製並貼上到該檔案中：
+1. 接著，在 helloworld.UWP 專案下建立新的 Services** 資料夾，以新增 `MicrophoneService` 的 UWP 特定實作。 之後，在其中建立新的 C# 原始程式檔。 重新命名 `MicrophoneService.cs`檔案。 將以下程式碼片段複製並貼上到該檔案中：
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld.UWP/Services/MicrophoneService.cs)]
 
-1. 接下來，在 Visual Studio 中的 helloworld.UWP 專案底下按兩下 `Package.appxmanifest` 檔案。 在 [功能]  底下，確認已選取 [麥克風]  ，然後儲存檔案。
+1. 接下來，在 Visual Studio 中的 helloworld.UWP 專案底下按兩下 `Package.appxmanifest` 檔案。 在 [功能]**** 底下，確認已選取 [麥克風]****，然後儲存檔案。
 
-1. 接下來，在 Visual Studio 中按兩下 `helloworld.UWP` 專案下的 `Package.appxmanifest` 檔案，並在勾選 [功能]   > [麥克風]  後儲存檔案。
+1. 接下來，在 Visual Studio 中按兩下 `helloworld.UWP` 專案下的 `Package.appxmanifest` 檔案，並在勾選 [功能] > [麥克風] 後儲存檔案。
    > 注意:如果您看到警告：憑證檔案不存在：helloworld.UWP_TemporaryKey.pfx，請檢查 [語音轉文字](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)範例以取得詳細資訊。
 
-1. 從功能表列中選取 [檔案]   > [全部儲存]  來儲存變更。
+1. 從功能表列中選取 [檔案] > [全部儲存] 來儲存變更。
 
 ## <a name="build-and-run-the-uwp-application"></a>建置並執行 UWP 應用程式
 
-1. 將 helloworld.UWP 設定為啟始專案。 以滑鼠右鍵按一下 helloworld.UWP 專案，然後選取 [建置]  來建置應用程式。
+1. 將 helloworld.UWP 設定為啟始專案。 以滑鼠右鍵按一下 helloworld.UWP 專案，然後選取 [建置]**** 來建置應用程式。
 
-1. 選取 [偵錯]   > [開始偵錯]  (或選取 **F5**) 以啟動應用程式。 **helloworld** 視窗會出現。
+1. 選取 [偵錯] > [開始偵錯] (或選取 **F5**) 以啟動應用程式。 **helloworld** 視窗會出現。
 
    ![C# 範例 UWP 語音辨識應用程式 - 快速入門](../../../../media/sdk/qs-csharp-xamarin-helloworld-uwp-window.png)
 
-1. 選取 [啟用麥克風]  。 當存取權限的要求出現時，請選取 [是]  。
+1. 選取 [啟用麥克風]****。 當存取權限的要求出現時，請選取 [是]****。
 
    ![麥克風存取權限要求](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. 選取 [啟動語音辨識]  ，然後對裝置的麥克風說出英文片語或句子。 您的語音會傳送到語音服務，並且轉譯為文字，出現在視窗中。
+1. 選取 [啟動語音辨識]****，然後對裝置的麥克風說出英文片語或句子。 您的語音會傳送到語音服務，並且轉譯為文字，出現在視窗中。
 
    ![語音辨識使用者介面](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *

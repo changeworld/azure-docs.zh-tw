@@ -2,18 +2,18 @@
 title: 快速入門 - 在 Azure 入口網站中建立 Azure 儲存體資料表
 description: 在本快速入門中，使用 Azure 入口網站中的表格服務來建立 Azure 儲存體資料表。 另請參閱如何建立 Azure 儲存體帳戶。
 services: storage
-author: MarkMcGeeAtAquent
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 3117a1ff24dd0a2a91768844bea41670ced8ff90
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d592dd6ac705d0f1a0b3ed55e115d06023b0a511
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033524"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236262"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>快速入門：在 Azure 入口網站中建立 Azure 儲存體資料表 
 
