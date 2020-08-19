@@ -6,6 +6,11 @@
       href: overview.md
     - name: 支援的資料存放區
       href: supported-data-stores.md
+- name: 快速入門
+  items:
+    - name: 建立資料共用 - ARM 範本
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: 教學課程
   expanded: true
   items:

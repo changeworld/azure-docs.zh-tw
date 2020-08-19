@@ -116,6 +116,14 @@
       href: faq.md
     - name: Windows 10 企業版的多重工作階段常見問題集
       href: windows-10-multisession-faq.md
+    - name: MSIX 應用程式附加
+      items:
+        - name: 什麼是 MSIX 應用程式附加？
+          href: what-is-app-attach.md
+        - name: 詞彙
+          href: app-attach-glossary.md
+        - name: 常見問題集
+          href: app-attach-faq.md
     - name: 資料地點
       href: data-locations.md
 - name: 疑難排解
@@ -150,6 +158,8 @@
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure 命令列介面 (CLI)
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+    - name: Azure 範例案例
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
 - name: 資源
   items:
     - name: PowerShell

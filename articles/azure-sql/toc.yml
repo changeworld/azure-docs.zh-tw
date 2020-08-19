@@ -65,6 +65,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: 弱點評估規則
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: 在儲存體中儲存弱點掃描
+                  href: database/sql-database-vulnerability-assessment-storage.md
             - name: 登入、使用者帳戶、角色和權限
               href: database/logins-create-manage.md
             - name: Azure AD 驗證
@@ -80,6 +82,8 @@
                   href: database/conditional-access-configure.md
                 - name: 服務主體 (應用程式)
                   href: database/authentication-aad-service-principal.md
+                - name: 目錄讀取者角色
+                  href: database/authentication-aad-directory-readers-role.md
             - name: 透明資料加密 (TDE)
               items:
                 - name: 概觀
@@ -143,12 +147,14 @@
               href: database/long-term-backup-retention-configure.md
         - name: 安全性
           items:
-            - name: 建立 Azure AD 來賓使用者，並將其設定為 Azure AD 管理員
-              href: database/authentication-aad-guest-users.md
+            - name: Azure AD 驗證
+              items:
+                - name: 建立 Azure AD 來賓使用者，並將其設定為 Azure AD 管理員
+                  href: database/authentication-aad-guest-users.md
+                - name: 將目錄讀取者角色指派給群組
+                  href: database/authentication-aad-directory-readers-role-tutorial.md
             - name: 使用 BYOK 設定 TDE
               href: database/transparent-data-encryption-byok-configure.md
-            - name: 在儲存體中儲存弱點掃描
-              href: database/sql-database-vulnerability-assessment-storage.md
             - name: Always Encrypted
               items:
                 - name: 使用 Azure Key Vault
@@ -207,12 +213,14 @@
               href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
             - name: Java
               items:
+                - name: 使用 Java 和 JDBC
+                  href: database/connect-query-java.md
                 - name: 使用 Spring Data JDBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: 使用 Spring Data JPA
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: 使用 Spring Data R2DBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
 - name: SQL Database (SQL DB)
   items:
     - name: 文件
@@ -402,11 +410,11 @@
                 - name: Java
                   href: database/connect-query-java.md
                 - name: Java with Spring Data JDBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java with Spring Data JPA
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java with Spring Data R2DBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP
@@ -1026,7 +1034,7 @@
                       href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
                     - name: 手動設定
                       items:
-                        - name: Prerequisites
+                        - name: 必要條件
                           href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
                         - name: 教學課程
                           href: virtual-machines/windows/availability-group-manually-configure-tutorial.md

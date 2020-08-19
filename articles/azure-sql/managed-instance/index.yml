@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: carlrab
   ms.date: 05/27/2020
-  ms.openlocfilehash: 33d6acf888c7335c282e53201e6219e4e044cc8e
-  ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+  ms.openlocfilehash: 6c02f1f12ed32cbced046f9937d4b8a28d74f97a
+  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/12/2020
-  ms.locfileid: "88136281"
+  ms.lasthandoff: 08/19/2020
+  ms.locfileid: "88590416"
 landingContent:
 - title: Azure SQL 受控執行個體
   linkLists:
@@ -25,6 +25,10 @@ landingContent:
     links:
     - text: 建立 SQL 受控執行個體
       url: instance-create-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure SQL 受控執行個體概觀
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61
   - linkListType: concept
     links:
     - text: 新功能
@@ -61,12 +65,22 @@ landingContent:
       url: ../database/dynamic-data-masking-overview.md
     - text: 公用端點
       url: public-endpoint-overview.md
-- title: 參考
+- title: 了解 Azure SQL
   linkLists:
   - linkListType: learn
     links:
+    - text: 適用於初學者的 Azure SQL
+      url: https://aka.ms/azuresql4beginners
+    - text: Azure SQL 基本概念
+      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+    - text: Azure SQL 實際操作實驗室
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL 集訓
+      url: https://aka.ms/azuresqlbootcamp
     - text: 教育性 SQL 資源
       url: /sql/sql-server/educational-sql-resources
+- title: 參考
+  linkLists:
   - linkListType: deploy
     links:
     - text: Azure CLI 範例

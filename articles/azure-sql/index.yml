@@ -14,12 +14,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: carlrab
   ms.date: 10/30/2019
-  ms.openlocfilehash: 131be4c87e0274050b6c7b374f75757c8d3f94f2
-  ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+  ms.openlocfilehash: 03f1f908983487bb3ee5be88ced36a0848a731cc
+  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 08/13/2020
-  ms.locfileid: "88167839"
+  ms.lasthandoff: 08/19/2020
+  ms.locfileid: "88590433"
 landingContent:
 - title: Azure SQL Database
   linkLists:
@@ -37,6 +37,10 @@ landingContent:
       url: database/single-database-create-quickstart.md
     - text: 設定防火牆
       url: database/firewall-create-server-level-portal-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure SQL Database 概觀
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61
   - linkListType: concept
     links:
     - text: 從 SQL Server 移轉
@@ -67,6 +71,10 @@ landingContent:
       url: managed-instance/connect-vm-instance-configure.md
     - text: 還原範例資料庫
       url: managed-instance/restore-sample-database-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure SQL 受控執行個體概觀
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61
   - linkListType: concept
     links:
     - text: 從 SQL Server 移轉
@@ -95,6 +103,10 @@ landingContent:
       url: virtual-machines/windows/sql-vm-create-portal-quickstart.md
     - text: 在 Azure VM 上建立 SQL (Linux)
       url: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure VM 上的 SQL Server 概觀
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61
   - linkListType: concept
     links:
     - text: 從 SQL Server 移轉
@@ -145,14 +157,22 @@ landingContent:
       url: database/design-first-database-tutorial.md
     - text: 設計第一個資料庫 (C#)
       url: database/design-first-database-csharp-tutorial.md
-- title: 參考
+- title: 了解 Azure SQL
   linkLists:
   - linkListType: learn
     links:
-    - text: 教育性 SQL 資源
-      url: /sql/sql-server/educational-sql-resources
+    - text: 適用於初學者的 Azure SQL
+      url: https://aka.ms/azuresql4beginners
     - text: Azure SQL 基本概念
       url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+    - text: Azure SQL 實際操作實驗室
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL 集訓
+      url: https://aka.ms/azuresqlbootcamp
+    - text: 教育性 SQL 資源
+      url: /sql/sql-server/educational-sql-resources
+- title: 參考
+  linkLists:
   - linkListType: deploy
     links:
     - text: Azure CLI 範例

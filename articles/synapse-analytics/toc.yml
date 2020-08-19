@@ -74,10 +74,10 @@
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: 資料科學家
       items:
-        - name: 預測 NYC Taxi 的計程車小費
+        - name: 使用 Azure AutoML 執行迴歸實驗
+          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+        - name: 使用 Apache Spark MLlib 建立分類模型
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-        - name: 使用其他程式庫擴充 Apache Spark
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
     - name: 資料分析師
       items:
         - name: 使用 SQL 隨選進行分析，並使用 Synapse Studio 以視覺效果呈現
@@ -202,8 +202,6 @@
               href: ./spark/apache-spark-overview.md
             - name: Apache Spark 概念
               href: ./spark/apache-spark-concepts.md
-            - name: 執行階段語言和程式庫支援
-              href: ./spark/apache-spark-version-support.md
             - name: 什麼是 Delta Lake
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: Apache Spark 效能
@@ -212,6 +210,12 @@
               href: ./spark/apache-spark-autoscale.md
         - name: 部署
           items:
+            - name: 程式庫
+              items:
+                - name: 新增和管理程式庫
+                  href: ./spark/apache-spark-azure-portal-add-libraries.md
+                - name: 執行階段語言和程式庫支援
+                  href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio 筆記本
               href: ./spark/apache-spark-development-using-notebooks.md
             - name: 適用於 Apache Spark 的 .NET
