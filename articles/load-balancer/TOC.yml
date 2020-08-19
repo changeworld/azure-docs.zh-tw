@@ -1,4 +1,4 @@
-- name: 負載平衡器文件
+- name: Load Balancer 文件
   href: index.yml
 - name: 概觀
   items:
@@ -6,8 +6,6 @@
       href: load-balancer-overview.md
     - name: 新功能
       href: whats-new.md
-    - name: 常見問題集
-      href: load-balancer-faqs.md
 - name: 快速入門
   items:
     - name: 建立公用 Load Balancer - 入口網站
@@ -130,14 +128,14 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: 僅輸出負載平衡器組態
       href: egress-only.md
-- name: 疑難排解
-  items:
-    - name: 針對 Azure Load Balancer 進行疑難排解
-      href: load-balancer-troubleshoot.md
-    - name: 針對一般部署錯誤進行疑難排解
-      href: load-balancer-common-deployment-errors.md
-    - name: 解決常見的輸出連線問題
-      href: troubleshoot-outbound-connection.md
+    - name: 疑難排解
+      items:
+        - name: 針對 Azure Load Balancer 進行疑難排解
+          href: load-balancer-troubleshoot.md
+        - name: 針對一般部署錯誤進行疑難排解
+          href: load-balancer-common-deployment-errors.md
+        - name: 解決常見的輸出連線問題
+          href: troubleshoot-outbound-connection.md
 - name: 參考
   items:
     - name: 程式碼範例
@@ -175,3 +173,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 產品更新
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'
+    - name: 常見問題集
+      href: load-balancer-faqs.md

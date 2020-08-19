@@ -11,12 +11,12 @@ metadata:
   author: memildin
   ms.author: memildin
   ms.date: 11/04/2019
-  ms.openlocfilehash: 13a7ca317630a5a1b0606fa0d2e2022f065fbd4d
-  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+  ms.openlocfilehash: fa0ef29a1ae9e7fa7fbb1798927b01383f891c29
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85317179"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88262087"
 landingContent:
 - title: 關於資訊安全中心
   linkLists:
@@ -32,13 +32,13 @@ landingContent:
     links:
     - text: 資訊安全中心版本資訊
       url: release-notes.md
-    - text: 適用於 SQL 機器的進階資料安全性
-      url: security-center-iaas-advanced-data.md
-    - text: 重複警示歸併規則
-      url: alerts-suppression-rules.md
+    - text: 利用資產清查來管理您的資源
+      url: asset-inventory.md
+    - text: 自適性應用程式控制頁面重寫
+      url: security-center-adaptive-application.md
     - text: 新安全性控制的完整描述
       url: secure-score-security-controls.md#security-controls-and-their-recommendations
-    - text: 新安全分數 API
+    - text: 安全分數 API
       url: secure-score-security-controls.md#getting-your-secure-score-from-the-rest-api
 - title: 開始使用
   linkLists:

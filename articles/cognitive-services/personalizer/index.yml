@@ -12,12 +12,12 @@ metadata:
   title: 個人化工具文件
   titleSuffix: Azure Cognitive Services
   description: Azure 個人化工具是雲端式 API 服務，可讓您選擇最佳體驗來對使用者展現，進而從其即時行為中學習。
-  ms.openlocfilehash: 0c8e99ab2817cd9aaa2de60b9996b3d47b10a1ff
-  ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+  ms.openlocfilehash: 28197f7408ea93ed07d09e1ae44e7924f4605a14
+  ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 06/11/2020
-  ms.locfileid: "84717912"
+  ms.lasthandoff: 08/18/2020
+  ms.locfileid: "88506543"
 landingContent:
 - title: 關於個人化工具
   linkLists:
@@ -49,7 +49,7 @@ landingContent:
     links:
     - text: 在 .NET Web 應用程式中使用個人化工具
       url: tutorial-use-personalizer-web-app.md
-    - text: 使用 Azure Notebook 搭配個人化工具
+    - text: 使用 Azure Notebooks 檔案搭配個人化工具
       url: tutorial-use-azure-notebook-generate-loop-data.md
   - linkListType: how-to-guide
     links:

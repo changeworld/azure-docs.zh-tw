@@ -232,6 +232,8 @@
       href: ../extensions/troubleshoot.md
     - name: 離線安裝 Windows VM 代理程式
       href: install-vm-agent-offline.md
+    - name: 針對 Windows VM 代理程式進行疑難排解
+      href: windows-azure-guest-agent.md
 - name: 備份與還原
   items:
     - name: 針對 Azure VM 上的備份失敗進行疑難排解

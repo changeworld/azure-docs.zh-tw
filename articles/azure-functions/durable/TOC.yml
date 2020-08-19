@@ -22,6 +22,9 @@
     - name: 建立 Durable Functions - Python
       displayName: 'get started, chaining'
       href: quickstart-python-vscode.md
+    - name: 建立 Durable Functions - PowerShell
+      displayName: 'get started, chaining'
+      href: quickstart-powershell-vscode.md
 - name: 教學課程
   items:
     - name: 函式鏈結

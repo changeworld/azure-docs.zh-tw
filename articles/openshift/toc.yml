@@ -79,6 +79,8 @@
   items:
     - name: Azure Red Hat OpenShift 4 叢集內的網路
       href: concepts-networking.md
+    - name: 從 Azure Red Hat OpenShift 3.11 遷移至 Azure Red Hat OpenShift 4
+      href: migration.md
 - name: 參考
   items:
     - name: Azure Red Hat OpenShift CLI

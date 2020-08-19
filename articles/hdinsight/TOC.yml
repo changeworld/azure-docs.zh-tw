@@ -3,7 +3,7 @@
 - name: HDInsight 服務
   expanded: true
   items:
-    - name: 概觀
+    - name: 總覽
       items:
         - name: 什麼是 Azure HDInsight？
           href: ./hdinsight-overview.md
@@ -356,6 +356,8 @@
               href: ./set-up-pyspark-interactive-environment.md
         - name: 開發
           items:
+            - name: 使用 SparkCruise 將查詢最佳化
+              href: ./spark/spark-cruise.md
             - name: 使用互動式 Apache Spark Shell
               href: ./spark/apache-spark-shell.md
             - name: 使用 Apache Livy 的遠端作業
