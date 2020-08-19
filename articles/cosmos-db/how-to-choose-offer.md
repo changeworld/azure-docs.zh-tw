@@ -4,14 +4,14 @@ description: 了解如何針對工作負載，在標準 (手動) 佈建輸送量
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116803"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605200"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>如何在標準 (手動) 和自動調整佈建輸送量之間進行選擇 
 
@@ -37,7 +37,10 @@ Azure Cosmos DB 支援兩種佈建輸送量類型或供應項目：標準 (手�
 ## <a name="understand-your-traffic-patterns"></a>了解流量模式
 
 ### <a name="new-applications"></a>新的應用程式 ###
-如果要建置新的應用程式，但還不知道流量模式，則可能會想要從進入點 RU/秒 (或最小 RU/秒) 開始，以避免一開始就過度佈建。 或者，如果有不需要高度調整的小型應用程式，則可能只想要佈建最小進入點 RU/秒，以將成本最佳化。 在這兩種情況下，標準 (手動) 或自動調整都適用。 以下是應該考慮的事項：
+
+如果要建置新的應用程式，但還不知道流量模式，則可能會想要從進入點 RU/秒 (或最小 RU/秒) 開始，以避免一開始就過度佈建。 或者，如果有不需要高度調整的小型應用程式，則可能只想要佈建最小進入點 RU/秒，以將成本最佳化。 針對具有低預期流量的小型應用程式，您也可以考慮 [無伺服器](throughput-serverless.md) 容量模式。
+
+無論您是否打算使用標準 (手動) 或自動調整，以下是您應該考慮的事項：
 
 如果在 400 RU/秒的進入點佈建標準 (手動) RU/秒，除非手動變更輸送量，否則將無法使用超過 400 RU/秒。 我們會每小時依標準 (手動) 佈建輸送量費率來收取 400 RU/秒的費用。
 

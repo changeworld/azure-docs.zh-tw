@@ -3,12 +3,12 @@ title: 在 Azure 實驗室服務中設定實驗室的 Vm 自動關機
 description: 了解如何在遠端桌面連線已中斷時，啟用或停用 VM 的自動關機。
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 7941a3eed502f2329f5d2acf244eec7cef322615
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3188117ac651f31057b4db88e32dfb42c45abb60
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589755"
+ms.locfileid: "88604881"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>設定實驗室的 Vm 自動關機
 
@@ -22,7 +22,7 @@ ms.locfileid: "88589755"
 
 在 [ [使用自動關機設定的最大化成本控制](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) ] 區段中，查看自動關機功能的更多詳細資料。
 
-實驗室帳戶管理員可以針對您用來建立實驗室的實驗室帳戶進行此設定。 如需詳細資訊，請參閱[針對實驗室帳戶設定已中斷連線時的 VM 自動關機](how-to-configure-lab-accounts.md)。 身為實驗室擁有者，您可以在建立實驗室時或在實驗室建立好之後覆寫設定。 
+實驗室帳戶管理員可以針對您用來建立實驗室的實驗室帳戶進行此設定。 如需詳細資訊，請參閱 [設定實驗室帳戶的 vm 自動關機](how-to-configure-lab-accounts.md)。 身為實驗室擁有者，您可以在建立實驗室時或在實驗室建立好之後覆寫設定。 
 
 ## <a name="configure-for-the-lab-level"></a>設定實驗室層級
 

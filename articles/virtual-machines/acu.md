@@ -9,16 +9,16 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: 072e42f642de3daf3d0d03a706435cffa8953888
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 07d222139f48e91637405660ae0e0c65ef3acdb6
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543617"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605025"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure 計算單位 (ACU)
 
-「Azure 計算單位」(ACU) 的概念可提供一種比較各個 Azure SKU 之計算 (CPU) 效能的方法。 這將可協助您輕鬆識別哪個 SKU 最可能符合您的效能需求。 ACU 目前是在小型（Standard_A1） VM 上標準化為100，而所有其他 Sku 則代表該 SKU 可執行標準基準的速度快得多
+「Azure 計算單位」(ACU) 的概念可提供一種比較各個 Azure SKU 之計算 (CPU) 效能的方法。 這將可協助您輕鬆識別哪個 SKU 最可能符合您的效能需求。 ACU 目前標準化于小型 (Standard_A1) VM 為100，而所有其他 Sku 則表示該 SKU 可執行標準基準測試的速度大約快得多
 
 *ACU 使用「Intel® 渦輪」技術來提高 CPU 頻率及提升效能。  效能提升的程度會依據 VM 大小、工作負載及在相同主機上執行的其他工作負載而有所不同。
 
@@ -64,12 +64,12 @@ ms.locfileid: "87543617"
 | [G1 - G5](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [GS1 - GS5](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [H](h-series.md) |290 - 300* | 1:1 |
-| [HB](hb-series.md) |199-216 * * | 1:1 |
-| [HC](hc-series.md) |297-315 * | 1:1 |
+| [Hb](hb-series.md) |199-216 * * | 1:1 |
+| [Hc](hc-series.md) |297-315 * | 1:1 |
 | [L4s - L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 - L80s_v2](lsv2-series.md) |150 - 175** | 2:1 |
 | [M](m-series.md) | 160-180 | 2:1\*\*\* |
-| [NV4](nvv4-series.md) |230-260 * * | 2:1 |
+| [NVv4](nvv4-series.md) |230-260 * * | 2:1 |
 
 以下是有關不同大小的詳細資訊連結：
 

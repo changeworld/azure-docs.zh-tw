@@ -3,12 +3,12 @@ title: 在 Azure 實驗室服務中設定 VM 的自動關機
 description: 本文說明如何在實驗室帳戶中設定 VM 的自動關機。
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 9fd93d383ba6a2d57057a3b45f8b517c84990043
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8dbc54ad14530006b56bf336d9d78e7d59843485
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589789"
+ms.locfileid: "88603886"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>設定實驗室帳戶的 Vm 自動關機
 
@@ -35,4 +35,4 @@ ms.locfileid: "88589789"
 
 ## <a name="next-steps"></a>後續步驟
 
-若要瞭解實驗室擁有者在實驗室層級如何設定或覆寫此設定，請參閱 [在中斷連線時啟用 vm 的自動關機](how-to-enable-shutdown-disconnect.md)
+若要瞭解實驗室擁有者在實驗室層級如何設定或覆寫此設定，請參閱 [設定實驗室的 vm 自動關機](how-to-enable-shutdown-disconnect.md)

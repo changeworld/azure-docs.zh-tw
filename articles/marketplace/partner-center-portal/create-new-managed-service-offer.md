@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 4d2a884bd6fd4cb62aa7cae5f3e53b865082fde8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 75c604df2f44e9c732fa9c2ce2093237e4e484a4
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166598"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606064"
 ---
 # <a name="create-a-managed-service-offer"></a>建立受控服務供應項目
 
@@ -29,7 +29,7 @@ ms.locfileid: "88166598"
     ![說明左側導覽功能表。](./media/new-offer-managed-service.png)
 
 >[!NOTE]
->發佈供應項目之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應項目之後出現在店面中。 請務必在進行變更之後，一律重新發佈。
+>供應專案發佈之後，在合作夥伴中心中進行的編輯，只會在重新發佈供應專案之後出現在線上商店中。 請務必在進行變更之後，一律重新發佈。
 
 ## <a name="new-offer"></a>新增供應項目
 
@@ -79,13 +79,13 @@ ms.locfileid: "88166598"
 > [!NOTE]
 > 供應項目清單內容 (例如描述、文件、螢幕擷取畫面與使用規定) 不一定要使用英文，只要供應項目用以下句子描述開頭即可：「此應用程式僅適用於 [非英文語言]」。 也可利用不同於供應項目清單內容中所使用的語言，來提供供應項目內容的「有用連結 URL」。
 
-以下是如何在 Azure 入口網站中顯示供應專案資訊的範例：
+以下是供應專案資訊出現在 Azure 入口網站中的範例：
 
-:::image type="content" source="media/example-managed-services.png" alt-text="說明此供應專案在 Azure 入口網站中的顯示方式。":::
+:::image type="content" source="media/example-managed-services.png" alt-text="說明這項供應專案如何出現在 Azure 入口網站中。":::
 
-#### <a name="call-out-descriptions"></a>向外撥說明
+#### <a name="call-out-descriptions"></a>撥出描述
 
-1. 標題
+1. Title
 2. 描述
 3. 實用的連結
 4. 螢幕擷取畫面
@@ -144,7 +144,7 @@ ms.locfileid: "88166598"
 - **大型** (216 x 216)
 - **寬型** (255 x 115)
 
-這些標誌會用於 Azure Marketplace 中的不同位置：
+這些標誌可用於 Azure Marketplace 中的不同位置：
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
@@ -176,7 +176,7 @@ ms.locfileid: "88166598"
 
 每個供應專案都必須有一或多個方案 (先前稱為 Sku) 。 您可以新增多個方案來支援設定為不同價格的不同功能，或為特定客戶的限定對象自訂特定方案。 客戶可以檢視父代供應項目下可供他們使用的方案。
 
-您最多可以為每個供應專案建立100方案：最多可以是私人的45。 深入瞭解[Microsoft 商業 Marketplace 私人](../private-offers.md)方案中的私用計畫。
+您最多可以為每個供應專案建立100個方案：這些供應專案的最高45個都可以是私用。 深入瞭解 [Microsoft 商業市場中私](../private-offers.md)用供應專案的私人方案。
 
 在 [方案概觀] 頁面上，選取 [+ 建立新方案]。 然後，輸入**方案識別碼**和**方案名稱**。 這兩個值都只能包含小寫英數字元、連字號與底線，且最多 50 個字元。 這些值可能會向客戶顯示，而且在您發佈供應項目之後，即無法變更。
 
@@ -195,7 +195,7 @@ ms.locfileid: "88166598"
 [方案可視性] 區段可讓您指出此方案是否應為[私人](../../marketplace/private-offers.md)。 如果您未核取 [這是私人方案] 方塊，則您的方案將不限於特定客戶 (或特定數目的客戶)。
 
 > [!NOTE]
-> 透過雲端解決方案提供者的轉銷商所建立的訂用帳戶不支援私人方案 (CSP) 方案。
+> 透過雲端解決方案提供者 (CSP) 計畫的轉銷商所建立的訂用帳戶不支援私人方案。
 
 若要使此方案只有特定客戶才能取得，請選取 [是]。 當您這麼做時，必須提供訂用帳戶識別碼來識別客戶。 您可以逐一輸入 (最多 10 個訂用帳戶)，或上傳 .csv 檔案 (在所有方案中，上限為 10,000 個)。 請務必在此包含您自己的訂用帳戶，以便您可以測試及驗證供應項目。
 
@@ -232,7 +232,7 @@ ms.locfileid: "88166598"
 
 - **Azure AD 物件識別碼**：使用者、使用者群組或應用程式的 Azure AD 識別碼，系統將會授與其您客戶資源的特定權限 (按角色定義所定義)。
 - **Azure AD 物件顯示名稱**：協助客戶了解此授權用途的易記名稱。 客戶會在委派資源時看到此名稱。
-- **角色定義**：從清單中選取其中一個可用的 Azure AD 內建角色。 此角色將會決定 [Azure AD 物件識別碼] 欄位中的使用者，對於您的客戶資源會有那些權限。 如需這些角色的說明，請參閱 Azure 燈塔的[內建角色](../../role-based-access-control/built-in-roles.md)和[角色支援](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)。
+- **角色定義**：從清單中選取其中一個可用的 Azure AD 內建角色。 此角色將會決定 [Azure AD 物件識別碼] 欄位中的使用者，對於您的客戶資源會有那些權限。 如需這些角色的說明，請參閱 Azure Lighthouse 的 [內建角色](../../role-based-access-control/built-in-roles.md) 和 [角色支援](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-lighthouse)。
   > [!NOTE]
   > 當適用的新內建角色新增至 Azure 時，將會在這裡加以提供，雖然其出現之前可能會有所延遲。
 - **可指派的角色**：如果您為此授權在 [角色定義] 中選取 [使用者存取系統管理員]，才會顯示此選項。 若是如此，您必須在此新增一或多個可指派的角色。 [Azure AD 物件識別碼] 欄位中的使用者將能夠將這些角色指派給[受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，[部署可補救的原則](../../lighthouse/how-to/deploy-policy-remediation.md)時需要這些角色。 請注意，不會有其他一般與「使用者存取系統管理員」角色相關聯的權限套用至此使用者。

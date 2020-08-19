@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 5b9752107aac1f90a67fb7c87a14492a74a124aa
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030741"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604639"
 ---
-# <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應專案
+# <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應項目
 
 此文章描述如何針對 Microsoft [AppSource](https://appsource.microsoft.com/) 建立並發佈 Power BI 應用程式供應項目。
 
@@ -29,7 +29,7 @@ ms.locfileid: "88030741"
    ![說明左側導覽功能表。](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
-> 發佈供應項目之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應項目之後出現在店面中。 請務必在進行變更之後，一律重新發佈。
+> 供應專案發佈之後，在合作夥伴中心中進行的編輯，只會在重新發佈供應專案之後出現在線上商店中。 請務必在進行變更之後，一律重新發佈。
 
 > [!IMPORTANT]
 > 如果 [Power BI 服務應用程式] 未顯示或未啟用，表示您的帳戶沒有建立此類供應項目的權限。 請檢查您是否已符合此類供應項目的所有[需求](create-power-bi-app-overview.md)，包括註冊開發人員帳戶。
@@ -55,10 +55,10 @@ ms.locfileid: "88030741"
 
 其包含根據您所做的選擇，在此供應項目上執行作業的連結。 例如：
 
-- 如果供應專案為草稿-[刪除草稿供應](update-existing-offer.md#delete-a-draft-offer)專案) 
-- 如果供應專案是 live-[停止銷售供應](update-existing-offer.md#stop-selling-an-offer-or-plan)專案) 
-- 如果供應專案處於預覽階段，[請](publishing-status.md#publisher-approval)) 
-- 如果您尚未完成發行者登出，請[取消發佈](update-existing-offer.md#cancel-publishing)) 
+- 如果供應專案為草稿- [刪除草稿供應](update-existing-offer.md#delete-a-draft-offer) 專案) 
+- 如果供應專案是即時的，則會 [停止銷售供應](update-existing-offer.md#stop-selling-an-offer-or-plan) 專案) 
+- 如果供應專案處於預覽[階段) ](publishing-status.md#publisher-approval)
+- 如果您尚未完成發行者登出- [取消發佈](update-existing-offer.md#cancel-publishing)) 
 
 ## <a name="offer-setup"></a>供應項目設定
 
@@ -94,12 +94,12 @@ ms.locfileid: "88030741"
 
 ### <a name="category"></a>類別
 
-選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
+選取類別和子類別，以將您的供應專案放在適當的 marketplace 搜尋區域中。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
-- 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
+- 至少一個和多個類別，包括主要和次要類別 (選擇性) 。
+- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用**]。
 
-請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
+請參閱 [供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
 
 ### <a name="industry"></a>產業
 
@@ -128,11 +128,11 @@ ms.locfileid: "88030741"
 > [!NOTE]
 > 如果供應項目描述開頭為以下詞句：「此應用程式僅適用於 [非英文語言]。」，則供應項目詳細資料不需要為英文。 也可利用不同於供應項目清單中所使用的語言，來提供供應項目內容的有用連結。
 
-以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
+以下是供應專案資訊在 Microsoft AppSource 中的顯示方式範例 (任何列出的價格僅供範例用途，不適合反映實際成本) ：
 
-:::image type="content" source="media/example-power-bi-app.png" alt-text="說明此供應專案在 Microsoft AppSource 中的顯示方式。":::
+:::image type="content" source="media/example-power-bi-app.png" alt-text="說明這項供應專案在 Microsoft AppSource 中的顯示方式。":::
 
-#### <a name="call-out-descriptions"></a>向外撥說明
+#### <a name="call-out-descriptions"></a>撥出描述
 
 1. 標誌
 2. 產品
@@ -209,7 +209,7 @@ ms.locfileid: "88030741"
 
 #### <a name="store-logos"></a>儲存標誌
 
-以兩個圖元大小提供供應專案標誌的 PNG 檔案：
+以兩個圖元的大小提供供應專案標誌的 PNG 檔案：
 - **小型** (48 x 48)
 - **大型** (216 x 216)
 
@@ -223,7 +223,7 @@ ms.locfileid: "88030741"
 
 #### <a name="videos-optional"></a>影片 (選擇性)
 
-新增最多五個示範您供應項目的影片。 以 1280 x 720 圖元的大小，輸入影片的名稱、其網址和影片的縮圖 PNG 影像。
+新增最多五個示範您供應項目的影片。 輸入影片的名稱、其網址和影片的縮圖 PNG 影像，其大小為 1280 x 720 圖元。
 
 #### <a name="additional-marketplace-listing-resources"></a>其他市集清單資源
 
@@ -257,4 +257,4 @@ ms.locfileid: "88030741"
 
 若要提交供應項目進行發佈，請選取 [發佈]。
 
-我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應專案發佈至公用，請移至合作夥伴中心，然後選取 [**上線**]。
+我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。 若要將您的供應專案發佈至公用，請移至合作夥伴中心並選取 [ **上線**]。

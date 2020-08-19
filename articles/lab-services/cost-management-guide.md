@@ -5,12 +5,12 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 98ce4d5e82d65d911984dc45615253ddcae33ae1
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0aaa454df05cd8981b314abe238163caced7864c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589844"
+ms.locfileid: "88604595"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure 實驗室服務的成本管理
 
@@ -129,8 +129,8 @@ ms.locfileid: "88589844"
     
 如需有關如何在中斷連線時設定和啟用 Vm 自動關機的詳細資訊，請參閱下列文章：
 
-* [在實驗室帳戶的中斷連線設定上設定 VM 的自動關機](how-to-configure-lab-accounts.md)
-* [在中斷連線時啟用 VM 的自動關機](how-to-enable-shutdown-disconnect.md)
+* [設定實驗室帳戶的 Vm 自動關機](how-to-configure-lab-accounts.md)
+* [設定實驗室的 Vm 自動關機](how-to-enable-shutdown-disconnect.md)
 
 ### <a name="quota-vs-scheduled-time"></a>配額與排程時間
 

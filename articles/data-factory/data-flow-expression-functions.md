@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 43623e6841c3776e6e83453ad9cb47549fc16021
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b48fc6ad448b829bb399c151d3f1507c804ad471
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170287"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605107"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>對應資料流程中的資料轉換運算式
 
@@ -49,7 +49,7 @@ ___
 ___
 ### <code>addDays</code>
 <code><b>addDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to add&gt;</i> : integral) => datetime</b></code><br/><br/>
-在日期或時間戳記中增加天數。 與 date 的 + 運算子相同。  
+在日期或時間戳記中增加天數。 與日期的 + 運算子相同。  
 * ``addDays(toDate('2016-08-08'), 1) -> toDate('2016-08-09')``  
 ___
 ### <code>addMonths</code>
@@ -84,7 +84,7 @@ ___
 ___
 ### <code>atan2</code>
 <code><b>atan2(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-傳回平面的正 X 軸與座標所指定的點之間的角度（以弧度為單位）。  
+傳回平面的正 X 軸和座標所指定的點之間的角度（以弧度為單位）。  
 * ``atan2(0, 0) -> 0.0``  
 ___
 ### <code>byName</code>
@@ -101,26 +101,18 @@ ___
 <code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
 在資料流中依名稱選取資料行陣列。 您可以傳遞選擇性資料流名稱作為第二個引數。 如有多個相符項目，則傳回第一個相符項目。 如果資料行沒有相符項目，則整個輸出會是 NULL 值。 傳回的值需要類型轉換函式 (toDate、toString、...)。在設計階段已知的資料行名稱，應該只依據其名稱來處理。 不支援計算的輸入，但您可使用參數替換。
 * ``toString(byNames(['parent', 'child']))``
-* ````
 * ``byNames(['parent']) ? string``
-* ````
 * ``toLong(byNames(['income']))``
-* ````
 * ``byNames(['income']) ? long``
-* ````
 * ``toBoolean(byNames(['foster']))``
-* ````
 * ``toLong(byNames($debtCols))``
-* ````
 * ``toString(byNames(['a Column']))``
-* ````
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
-* ````
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
 ### <code>byPosition</code>
 <code><b>byPosition(<i>&lt;position&gt;</i> : integer) => any</b></code><br/><br/>
-依其在資料流中的相對位置 (從 1 開始) 來選取資料行值。 如果位置超出範圍，則會傳回 Null 值。 傳回的值必須是由其中一個類型轉換函數轉換的類型 (TO_DATE，TO_STRING ... ) 計算輸入不受支援，但您可以使用參數替代。  
+依其在資料流中的相對位置 (從 1 開始) 來選取資料行值。 如果位置超出範圍，則會傳回 Null 值。 傳回的值必須是類型轉換函式的轉換類型 (TO_DATE，TO_STRING ... ) 計算輸入不受支援，但您可以使用參數替代。  
 * ``toString(byPosition(1))``  
 * ``toDecimal(byPosition(2), 10, 2)``  
 * ``toBoolean(byName(4))``  
@@ -129,7 +121,7 @@ ___
 ___
 ### <code>case</code>
 <code><b>case(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, <i>&lt;false_expression&gt;</i> : any, ...) => any</b></code><br/><br/>
-根據替代條件套用一個值或另一個值。 如果輸入的數目為偶數，則會針對最後一個條件預設為 Null。  
+根據替代條件套用一個值或另一個值。 如果輸入的數目為偶數，則另一個是最後一個條件的預設值為 Null。  
 * ``case(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
 * ``case(10 + 20 == 25, 'bojjus', 'do' < 'go', 'gunchus') -> 'gunchus'``  
 * ``isNull(case(10 + 20 == 25, 'bojjus', 'do' > 'go', 'gunchus')) -> true``  
@@ -137,7 +129,7 @@ ___
 ___
 ### <code>cbrt</code>
 <code><b>cbrt(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-計算數位的 cube 根。  
+計算數位的立方根。  
 * ``cbrt(8) -> 2.0``  
 ___
 ### <code>ceil</code>
@@ -147,13 +139,13 @@ ___
 ___
 ### <code>coalesce</code>
 <code><b>coalesce(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
-從一組輸入傳回第一個非 null 值。 所有輸入都應該是相同的類型。  
+從一組輸入傳回第一個非 null 值。 所有輸入的類型都應該相同。  
 * ``coalesce(10, 20) -> 10``  
 * ``coalesce(toString(null), toString(null), 'dumbo', 'bo', 'go') -> 'dumbo'``  
 ___
 ### <code>collect</code>
 <code><b>collect(<i>&lt;value1&gt;</i> : any) => array</b></code><br/><br/>
-將彙總群組中運算式的所有值收集到陣列中。 在此過程中，可以收集結構並將其轉換成替代結構。 項目數會等於該群組中的資料列數，而且可包含 Null 值。 收集的專案數應該很小。  
+將彙總群組中運算式的所有值收集到陣列中。 在此過程中，可以收集結構並將其轉換成替代結構。 項目數會等於該群組中的資料列數，而且可包含 Null 值。 收集的專案數目應該很小。  
 * ``collect(salesPerson)``
 * ``collect(firstName + lastName))``
 * ``collect(@(name = salesPerson, sales = salesAmount) )``
@@ -173,7 +165,7 @@ ___
 ___
 ### <code>compare</code>
 <code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code><br/><br/>
-比較相同類型的兩個值。 如果 value1 < value2，則會傳回負整數，如果 value1 = = value2，則傳回 0; 如果 value1 > value2，則為正值。  
+比較相同類型的兩個值。 如果 value1 < value2，則會傳回負整數，如果 value1 = = value2，則會傳回0，如果 value1 > value2，則會傳回正值。  
 * ``(compare(12, 24) < 1) -> true``  
 * ``(compare('dumbo', 'dum') > 0) -> true``  
 ___
@@ -193,7 +185,7 @@ ___
 ___
 ### <code>contains</code>
 <code><b>contains(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => boolean</b></code><br/><br/>
-如果所提供陣列中的任何元素在所提供的述詞中評估為 true，則傳回 true。 Contains 需要述詞函式中某個元素的參考做為 #item。  
+如果所提供陣列中的任何元素在所提供的述詞中評估為 true，則傳回 true。 Contains 需要述詞函式中一個元素的參考，做為 #item。  
 * ``contains([1, 2, 3, 4], #item == 3) -> true``  
 * ``contains([1, 2, 3, 4], #item > 5) -> false``  
 ___
@@ -204,12 +196,12 @@ ___
 ___
 ### <code>cosh</code>
 <code><b>cosh(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-計算值的雙曲余弦。  
+計算值的雙曲余弦值。  
 * ``cosh(0) -> 1.0``  
 ___
 ### <code>crc32</code>
 <code><b>crc32(<i>&lt;value1&gt;</i> : any, ...) => long</b></code><br/><br/>
-以指定的位元長度為不同基本資料類型的一組資料行計算 CRC32 雜湊，值只能是 0(256)、224、256、384、512。 它可以用來計算資料列的指紋。  
+以指定的位元長度為不同基本資料類型的一組資料行計算 CRC32 雜湊，值只能是 0(256)、224、256、384、512。 可以用來計算資料列的指紋。  
 * ``crc32(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 3630253689L``  
 ___
 ### <code>currentDate</code>
@@ -221,7 +213,7 @@ ___
 ___
 ### <code>currentTimestamp</code>
 <code><b>currentTimestamp() => timestamp</b></code><br/><br/>
-取得作業開始以當地時區執行時的目前時間戳記。  
+取得作業開始以本地時區執行時的目前時間戳記。  
 * ``currentTimestamp() == toTimestamp('2250-12-31 12:12:12') -> false``  
 ___
 ### <code>currentUTC</code>
@@ -233,17 +225,17 @@ ___
 ___
 ### <code>dayOfMonth</code>
 <code><b>dayOfMonth(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
-取得給定日期的月份日期。  
+取得指定日期的當月日期。  
 * ``dayOfMonth(toDate('2018-06-08')) -> 8``  
 ___
 ### <code>dayOfWeek</code>
 <code><b>dayOfWeek(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
-取得指定日期的星期日期。 1-星期日，2-星期一 ...，7-星期六。  
+取得指定日期的星期日期。 1-星期日、2-星期一 ...、7-星期六。  
 * ``dayOfWeek(toDate('2018-06-08')) -> 6``  
 ___
 ### <code>dayOfYear</code>
 <code><b>dayOfYear(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
-取得給定日期的一年中的第幾天。  
+取得指定日期的年中的日期。  
 * ``dayOfYear(toDate('2016-04-09')) -> 100``  
 ___
 ### <code>days</code>
@@ -289,13 +281,13 @@ ___
 ___
 ### <code>false</code>
 <code><b>false() => boolean</b></code><br/><br/>
-一律傳回 false 值。 如果有名為 ' false ' 的資料行，請使用函數語法 (false ( # A2 # A3。  
+一律傳回 false 值。 如果有一個名為 ' false ' 的資料行，請使用函數語法 (false ( # A2 # A3。  
 * ``(10 + 20 > 30) -> false``  
 * ``(10 + 20 > 30) -> false()``  
 ___
 ### <code>filter</code>
 <code><b>filter(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => array</b></code><br/><br/>
-從陣列中篩選出不符合所提供述詞的元素。 篩選準則預期述詞函式中某個元素的參考 #item。  
+從陣列中篩選出不符合所提供述詞的元素。 篩選準則必須參考述詞函式中的一個元素做為 #item。  
 * ``filter([1, 2, 3, 4], #item > 2) -> [3, 4]``  
 * ``filter(['a', 'b', 'c', 'd'], #item == 'a' || #item == 'b') -> ['a', 'b']``  
 ___
@@ -330,7 +322,7 @@ ___
 ___
 ### <code>greatest</code>
 <code><b>greatest(<i>&lt;value1&gt;</i> : any, ...) => any</b></code><br/><br/>
-傳回值清單中的最大值作為輸入 (跳過 Null 值)。 如果所有輸入都是 null，則會傳回 null。  
+傳回值清單中的最大值作為輸入 (跳過 Null 值)。 如果所有輸入皆為 null，則傳回 null。  
 * ``greatest(10, 30, 15, 20) -> 30``  
 * ``greatest(10, toInteger(null), 20) -> 20``  
 * ``greatest(toDate('2010-12-12'), toDate('2011-12-12'), toDate('2000-12-12')) -> toDate('2011-12-12')``  
@@ -354,7 +346,7 @@ ___
 ___
 ### <code>iif</code>
 <code><b>iif(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, [<i>&lt;false_expression&gt;</i> : any]) => any</b></code><br/><br/>
-根據條件套用一個值或另一個值。 如果未指定其他值，則會將其視為 Null。 這兩個值都必須相容 (numeric，string ... ) 。* ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
+根據條件套用一個值或另一個值。 如果未指定其他值，則會將其視為 Null。 這兩個值都必須相容 (數值、字串 ... ) 。 * ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
 * ``iif(10 > 30, 'dumbo', 'gumbo') -> 'gumbo'``  
 * ``iif(month(toDate('2018-12-01')) == 12, 345.12, 102.67) -> 345.12``  
 ___
@@ -374,43 +366,43 @@ ___
 ___
 ### <code>initCap</code>
 <code><b>initCap(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-將每個單字的第一個字母轉換成大寫。 系統會將文字識別為以空格分隔。  
+將每個單字的第一個字母轉換成大寫。 文字會被識別為以空格分隔。  
 * ``initCap('cool iceCREAM') -> 'Cool Icecream'``  
 ___
 ### <code>instr</code>
 <code><b>instr(<i>&lt;string&gt;</i> : string, <i>&lt;substring to find&gt;</i> : string) => integer</b></code><br/><br/>
-尋找子字串在字串中的位置 (從 1 開始)。 如果找不到，則會傳回0。  
+尋找子字串在字串中的位置 (從 1 開始)。 如果找不到，則傳回0。  
 * ``instr('dumbo', 'mbo') -> 3``  
 * ``instr('microsoft', 'o') -> 5``  
 * ``instr('good', 'bad') -> 0``  
 ___
 ### <code>isDelete</code>
 <code><b>isDelete([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-檢查資料列是否有刪除標示。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，且預設值為1。  
+檢查資料列是否有刪除標示。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，而預設值是1。  
 * ``isDelete()``  
 * ``isDelete(1)``  
 ___
 ### <code>isError</code>
 <code><b>isError([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-檢查資料列是否標示為錯誤。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，且預設值為1。  
+檢查資料列是否標示為錯誤。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，而預設值是1。  
 * ``isError()``  
 * ``isError(1)``  
 ___
 ### <code>isIgnore</code>
 <code><b>isIgnore([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-檢查資料列是否標示為要忽略。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，且預設值為1。  
+檢查資料列是否標示為要忽略。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，而預設值是1。  
 * ``isIgnore()``  
 * ``isIgnore(1)``  
 ___
 ### <code>isInsert</code>
 <code><b>isInsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-檢查資料列是否有插入標示。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，且預設值為1。  
+檢查資料列是否有插入標示。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，而預設值是1。  
 * ``isInsert()``  
 * ``isInsert(1)``  
 ___
 ### <code>isMatch</code>
 <code><b>isMatch([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-檢查在查閱時是否比對資料列。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，且預設值為1。  
+檢查在查閱時是否比對資料列。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，而預設值是1。  
 * ``isMatch()``  
 * ``isMatch(1)``  
 ___
@@ -422,19 +414,19 @@ ___
 ___
 ### <code>isUpdate</code>
 <code><b>isUpdate([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-檢查資料列是否有更新標示。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，且預設值為1。  
+檢查資料列是否有更新標示。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，而預設值是1。  
 * ``isUpdate()``  
 * ``isUpdate(1)``  
 ___
 ### <code>isUpsert</code>
 <code><b>isUpsert([<i>&lt;value1&gt;</i> : integer]) => boolean</b></code><br/><br/>
-檢查資料列是否有插入標示。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，且預設值為1。  
+檢查資料列是否有插入標示。 對於取用多個輸入資料流的轉換，您可傳遞資料流 (從 1 開始) 的索引。 資料流程索引應該是1或2，而預設值是1。  
 * ``isUpsert()``  
 * ``isUpsert(1)``  
 ___
 ### <code>lastDayOfMonth</code>
 <code><b>lastDayOfMonth(<i>&lt;value1&gt;</i> : datetime) => date</b></code><br/><br/>
-取得給定日期的當月最後一個日期。  
+取得指定日期的當月最後一個日期。  
 * ``lastDayOfMonth(toDate('2009-01-12')) -> toDate('2009-01-31')``  
 ___
 ### <code>least</code>
@@ -480,19 +472,19 @@ ___
 ___
 ### <code>locate</code>
 <code><b>locate(<i>&lt;substring to find&gt;</i> : string, <i>&lt;string&gt;</i> : string, [<i>&lt;from index - 1-based&gt;</i> : integral]) => integer</b></code><br/><br/>
-尋找子字串在字串中從特定位置起算的位置 (從 1 開始)。 如果省略位置，則視為字串的開頭。 如果找不到，則會傳回0。  
+尋找子字串在字串中從特定位置起算的位置 (從 1 開始)。 如果省略位置，則視為字串的開頭。 如果找不到，則傳回0。  
 * ``locate('mbo', 'dumbo') -> 3``  
 * ``locate('o', 'microsoft', 6) -> 7``  
 * ``locate('bad', 'good') -> 0``  
 ___
 ### <code>log</code>
 <code><b>log(<i>&lt;value1&gt;</i> : number, [<i>&lt;value2&gt;</i> : number]) => double</b></code><br/><br/>
-計算對數值。 可以提供選擇性的基底，否則會使用歐拉數位（如果有的話）。  
+計算對數值。 如果有使用，則可以提供選擇性的基底，否則為歐拉號碼。  
 * ``log(100, 10) -> 2``  
 ___
 ### <code>log10</code>
 <code><b>log10(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-根據10個基底來計算記錄值。  
+根據10基底計算記錄值。  
 * ``log10(100) -> 2``  
 ___
 ### <code>lower</code>
@@ -502,7 +494,7 @@ Lowercases 字串。
 ___
 ### <code>lpad</code>
 <code><b>lpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
-從左側為字串填補提供的填補內容，直到達到特定長度。 如果字串等於或大於長度，則會修剪到長度。  
+從左側為字串填補提供的填補內容，直到達到特定長度。 如果字串等於或大於長度，則會修剪為長度。  
 * ``lpad('dumbo', 10, '-') -> '-----dumbo'``  
 * ``lpad('dumbo', 4, '-') -> 'dumb'``  
 * ``lpad('dumbo', 8, '<>') -> '<><dumbo'``  
@@ -515,18 +507,18 @@ ___
 ___
 ### <code>map</code>
 <code><b>map(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : unaryfunction) => any</b></code><br/><br/>
-使用所提供的運算式，將陣列的每個元素對應至新的元素。 對應預期運算式函數中的一個元素參考為 #item。  
+使用所提供的運算式，將陣列的每個元素對應至新的元素。 Map 預期 expression 函式中一個元素的參考是 #item。  
 * ``map([1, 2, 3, 4], #item + 2) -> [3, 4, 5, 6]``  
 * ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
 ___
 ### <code>mapIndex</code>
 <code><b>mapIndex(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => any</b></code><br/><br/>
-使用所提供的運算式，將陣列的每個元素對應至新的元素。 對應預期運算式函式中的一個元素參考為 #item，而元素索引的參考為 #index。  
+使用所提供的運算式，將陣列的每個元素對應至新的元素。 Map 必須參考 expression 函式中的一個元素做為 #item，並將元素索引的參考視為 #index。  
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
 ___
 ### <code>md5</code>
 <code><b>md5(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
-為不同基本資料類型的一組資料行計算 MD5 摘要，並傳回 32 個字元的十六進位字串。 它可以用來計算資料列的指紋。  
+為不同基本資料類型的一組資料行計算 MD5 摘要，並傳回 32 個字元的十六進位字串。 可以用來計算資料列的指紋。  
 * ``md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '4ce8a880bd621a1ffad0bca905e1bc5a'``  
 ___
 ### <code>millisecond</code>
@@ -584,17 +576,17 @@ ___
 ___
 ### <code>negate</code>
 <code><b>negate(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-將數字轉換為負數。 將正數變成負值，反之亦然。  
+將數字轉換為負數。 將正數變成負數，反之亦然。  
 * ``negate(13) -> -13``  
 ___
 ### <code>nextSequence</code>
 <code><b>nextSequence() => long</b></code><br/><br/>
-傳回下一個唯一序列。 此數位只會在資料分割內連續，而且前面會加上 partitionId。  
+傳回下一個唯一序列。 此數位只會在資料分割內是連續的，而且前面會加上 partitionId。  
 * ``nextSequence() == 12313112 -> false``  
 ___
 ### <code>normalize</code>
 <code><b>normalize(<i>&lt;String to normalize&gt;</i> : string) => string</b></code><br/><br/>
-將字串值正規化，以分隔重音的 unicode 字元。  
+將字串值正規化以區分重音 unicode 字元。  
 * ``regexReplace(normalize('bo²s'), `\p{M}`, '') -> 'boys'``  
 ___
 ### <code>not</code>
@@ -637,40 +629,40 @@ ___
 ___
 ### <code>partitionId</code>
 <code><b>partitionId() => integer</b></code><br/><br/>
-傳回輸入資料列所在的目前分割區識別碼。  
+傳回輸入資料列所在的目前資料分割識別碼。  
 * ``partitionId()``  
 ___
 ### <code>power</code>
 <code><b>power(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-將一個數位提高至另一個的乘冪。  
+將一個數位引發至另一個數位。  
 * ``power(10, 2) -> 100``  
 ___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/>
-累加陣列中的元素。 減少預期第一個運算式函式中的累計和一個元素的參考是 #acc 和 #item，而且它預期產生的值會當做第二個運算式函式中使用的 #result。  
+累加陣列中的元素。 減少預期第一個運算式函數中的累積和一個元素的參考為 #acc 和 #item，而且它預期產生的值會是在第二個 expression 函數中使用 #result。  
 * ``toString(reduce(['1', '2', '3', '4'], '0', #acc + #item, #result)) -> '01234'``  
 ___
 ### <code>regexExtract</code>
 <code><b>regexExtract(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, [<i>&lt;match group 1-based index&gt;</i> : integral]) => string</b></code><br/><br/>
-擷取指定規則運算式模式的相符子字串。 最後一個參數會識別比對群組，如果省略則預設為 1。 使用 ' <regex> ' (後引號) 來比對字串而不進行轉義。  
+擷取指定規則運算式模式的相符子字串。 最後一個參數會識別比對群組，如果省略則預設為 1。 使用 ' <regex> ' (後引號) 來比對字串，而不進行任何轉義。  
 * ``regexExtract('Cost is between 600 and 800 dollars', '(\\d+) and (\\d+)', 2) -> '800'``  
 * ``regexExtract('Cost is between 600 and 800 dollars', `(\d+) and (\d+)`, 2) -> '800'``  
 ___
 ### <code>regexMatch</code>
 <code><b>regexMatch(<i>&lt;string&gt;</i> : string, <i>&lt;regex to match&gt;</i> : string) => boolean</b></code><br/><br/>
-檢查字串是否符合指定的規則運算式模式。 使用 ' <regex> ' (後引號) 來比對字串而不進行轉義。  
+檢查字串是否符合指定的規則運算式模式。 使用 ' <regex> ' (後引號) 來比對字串，而不進行任何轉義。  
 * ``regexMatch('200.50', '(\\d+).(\\d+)') -> true``  
 * ``regexMatch('200.50', `(\d+).(\d+)`) -> true``  
 ___
 ### <code>regexReplace</code>
 <code><b>regexReplace(<i>&lt;string&gt;</i> : string, <i>&lt;regex to find&gt;</i> : string, <i>&lt;substring to replace&gt;</i> : string) => string</b></code><br/><br/>
-以指定之字串中的另一個子字串取代所有出現的 RegEx 模式，並使用 ' <regex> ' (後引號) 以比對字串而不進行轉義。  
+以指定字串中的另一個子字串取代所有出現的 RegEx 模式，使用 ' <regex> ' (後引號) 來比對字串，而不進行轉義。  
 * ``regexReplace('100 and 200', '(\\d+)', 'bojjus') -> 'bojjus and bojjus'``  
 * ``regexReplace('100 and 200', `(\d+)`, 'gunchus') -> 'gunchus and gunchus'``  
 ___
 ### <code>regexSplit</code>
 <code><b>regexSplit(<i>&lt;string to split&gt;</i> : string, <i>&lt;regex expression&gt;</i> : string) => array</b></code><br/><br/>
-根據以 RegEx 為基礎的分隔符號分割字串，並傳回字串陣列。  
+根據以 RegEx 為基礎的分隔符號來分割字串，並傳回字串陣列。  
 * ``regexSplit('bojjusAgunchusBdumbo', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo']``  
 * ``regexSplit('bojjusAgunchusBdumboC', `[CAB]`) -> ['bojjus', 'gunchus', 'dumbo', '']``  
 * ``(regexSplit('bojjusAgunchusBdumboC', `[CAB]`)[1]) -> 'bojjus'``  
@@ -702,14 +694,14 @@ ___
 ___
 ### <code>round</code>
 <code><b>round(<i>&lt;number&gt;</i> : number, [<i>&lt;scale to round&gt;</i> : number], [<i>&lt;rounding option&gt;</i> : integral]) => double</b></code><br/><br/>
-以指定的選擇性小數位數和選擇性的捨入模式將數字捨入進位。 如果省略小數位數，則預設為 0。  如果省略捨入模式，則預設為 ROUND_HALF_UP(5)。 進位的值包括 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6-ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8 ROUND_UNNECESSARY。  
+以指定的選擇性小數位數和選擇性的捨入模式將數字捨入進位。 如果省略小數位數，則預設為 0。  如果省略捨入模式，則預設為 ROUND_HALF_UP(5)。 舍入的值包括 1-ROUND_UP 2-ROUND_DOWN 3-ROUND_CEILING 4-ROUND_FLOOR 5-ROUND_HALF_UP 6-ROUND_HALF_DOWN 7-ROUND_HALF_EVEN 8 ROUND_UNNECESSARY。  
 * ``round(100.123) -> 100.0``  
 * ``round(2.5, 0) -> 3.0``  
 * ``round(5.3999999999999995, 2, 7) -> 5.40``  
 ___
 ### <code>rpad</code>
 <code><b>rpad(<i>&lt;string to pad&gt;</i> : string, <i>&lt;final padded length&gt;</i> : integral, <i>&lt;padding&gt;</i> : string) => string</b></code><br/><br/>
-從右側為字串填補提供的填補內容，直到達到特定長度。 如果字串等於或大於長度，則會修剪到長度。  
+從右側為字串填補提供的填補內容，直到達到特定長度。 如果字串等於或大於長度，則會修剪為長度。  
 * ``rpad('dumbo', 10, '-') -> 'dumbo-----'``  
 * ``rpad('dumbo', 4, '-') -> 'dumb'``  
 * ``rpad('dumbo', 8, '<>') -> 'dumbo<><'``  
@@ -732,12 +724,12 @@ ___
 ___
 ### <code>sha1</code>
 <code><b>sha1(<i>&lt;value1&gt;</i> : any, ...) => string</b></code><br/><br/>
-為不同基本資料類型的一組資料行計算 SHA-1 摘要，並傳回 40 個字元的十六進位字串。 它可以用來計算資料列的指紋。  
+為不同基本資料類型的一組資料行計算 SHA-1 摘要，並傳回 40 個字元的十六進位字串。 可以用來計算資料列的指紋。  
 * ``sha1(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> '46d3b478e8ec4e1f3b453ac3d8e59d5854e282bb'``  
 ___
 ### <code>sha2</code>
 <code><b>sha2(<i>&lt;value1&gt;</i> : integer, <i>&lt;value2&gt;</i> : any, ...) => string</b></code><br/><br/>
-以指定的位元長度為不同基本資料類型的一組資料行計算 SHA-2 摘要，值只能是 0(256)、224、256、384、512。 它可以用來計算資料列的指紋。  
+以指定的位元長度為不同基本資料類型的一組資料行計算 SHA-2 摘要，值只能是 0(256)、224、256、384、512。 可以用來計算資料列的指紋。  
 * ``sha2(256, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4')) -> 'afe8a553b1761c67d76f8c31ceef7f71b66a1ee6f4e6d3b5478bf68b47d06bd3'``  
 ___
 ### <code>sin</code>
@@ -762,13 +754,13 @@ ___
 ___
 ### <code>sort</code>
 <code><b>sort(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => array</b></code><br/><br/>
-使用所提供的述詞函式來排序陣列。 排序需要運算式函式中兩個連續元素的參考做為 #item1 和 #item2。  
+使用所提供的述詞函式來排序陣列。 排序需要運算式函數中兩個連續元素的參考，做為 #item1 和 #item2。  
 * ``sort([4, 8, 2, 3], compare(#item1, #item2)) -> [2, 3, 4, 8]``  
 * ``sort(['a3', 'b2', 'c1'], iif(right(#item1, 1) >= right(#item2, 1), 1, -1)) -> ['c1', 'b2', 'a3']``  
 ___
 ### <code>soundex</code>
 <code><b>soundex(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
-取得字串的 soundex 代碼。  
+取得字串的 soundex 程式碼。  
 * ``soundex('genius') -> 'G520'``  
 ___
 ### <code>split</code>
@@ -794,7 +786,7 @@ ___
 ___
 ### <code>subDays</code>
 <code><b>subDays(<i>&lt;date/timestamp&gt;</i> : datetime, <i>&lt;days to subtract&gt;</i> : integral) => datetime</b></code><br/><br/>
-從日期或時間戳記中減去月數。 與 date 的-operator 相同。  
+從日期或時間戳記中減去月數。 與日期的-運算子相同。  
 * ``subDays(toDate('2016-08-08'), 1) -> toDate('2016-08-07')``  
 ___
 ### <code>subMonths</code>
@@ -827,12 +819,12 @@ ___
 ___
 ### <code>toBinary</code>
 <code><b>toBinary(<i>&lt;value1&gt;</i> : any) => binary</b></code><br/><br/>
-將任何數值/日期/時間戳記/字串轉換為二進位表示。  
+將任何數值/日期/時間戳記/字串轉換為二進位標記法。  
 * ``toBinary(3) -> [0x11]``  
 ___
 ### <code>toBoolean</code>
 <code><b>toBoolean(<i>&lt;value1&gt;</i> : string) => boolean</b></code><br/><br/>
-將 ( t '、' true '、' y '、' yes '、' 1 ' ) 的值轉換為 true，並將 ( ' f '、' false '、' n '、' no '、' 0 ' ) 設為 false，並為任何其他值傳回 Null。  
+將 ( t '、' true '、' y '、' yes '、' 1 ' ) 的值轉換為 true，並 ( ' f '、' false '、' n '、' no '、' 0 ' ) 設為 false，並將 Null 用於任何其他值。  
 * ``toBoolean('true') -> true``  
 * ``toBoolean('n') -> false``  
 * ``isNull(toBoolean('truthy')) -> true``  
@@ -845,7 +837,7 @@ ___
 ___
 ### <code>toDecimal</code>
 <code><b>toDecimal(<i>&lt;value&gt;</i> : any, [<i>&lt;precision&gt;</i> : integral], [<i>&lt;scale&gt;</i> : integral], [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => decimal(10,0)</b></code><br/><br/>
-將任何數值或字串轉換為小數值。 若未指定有效位數和小數位數，則預設為 (10,2)。可使用選用的 Java 十進位格式進行轉換。 選擇性地區設定格式，採用 BCP47 語言，例如 en-us、de、zh-CN。  
+將任何數值或字串轉換為小數值。 若未指定有效位數和小數位數，則預設為 (10,2)。可使用選用的 Java 十進位格式進行轉換。 >BCP47 語言格式的選擇性地區設定格式，例如 en-us、de、zh-CN。  
 * ``toDecimal(123.45) -> 123.45``  
 * ``toDecimal('123.45', 8, 4) -> 123.4500``  
 * ``toDecimal('$123.45', 8, 4,'$###.00') -> 123.4500``  
@@ -853,7 +845,7 @@ ___
 ___
 ### <code>toDouble</code>
 <code><b>toDouble(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => double</b></code><br/><br/>
-將任何數值或字串轉換為雙精準數值。 可使用選擇性的 Java 十進位格式進行轉換。 選擇性地區設定格式，採用 BCP47 語言，例如 en-us、de、zh-CN。  
+將任何數值或字串轉換為雙精準數值。 可使用選擇性的 Java 十進位格式進行轉換。 >BCP47 語言格式的選擇性地區設定格式，例如 en-us、de、zh-CN。  
 * ``toDouble(123.45) -> 123.45``  
 * ``toDouble('123.45') -> 123.45``  
 * ``toDouble('$123.45', '$###.00') -> 123.45``  
@@ -875,21 +867,21 @@ ___
 ___
 ### <code>toLong</code>
 <code><b>toLong(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => long</b></code><br/><br/>
-將任何數值或字串轉換為長值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷任何 float、double。  
+將任何數值或字串轉換為長值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷任何浮點數、雙精度浮點數。  
 * ``toLong(123) -> 123``  
 * ``toLong('123') -> 123``  
 * ``toLong('$123', '$###') -> 123``  
 ___
 ### <code>toShort</code>
 <code><b>toShort(<i>&lt;value&gt;</i> : any, [<i>&lt;format&gt;</i> : string], [<i>&lt;locale&gt;</i> : string]) => short</b></code><br/><br/>
-將任何數值或字串轉換為短值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷任何整數、long、float、double。  
+將任何數值或字串轉換為短值。 可使用選擇性的 Java 十進位格式進行轉換。 截斷任何整數、長值、浮點數、雙精度浮點數。  
 * ``toShort(123) -> 123``  
 * ``toShort('123') -> 123``  
 * ``toShort('$123', '$###') -> 123``  
 ___
 ### <code>toString</code>
 <code><b>toString(<i>&lt;value&gt;</i> : any, [<i>&lt;number format/date format&gt;</i> : string]) => string</b></code><br/><br/>
-將基本資料類型轉換為字串。 針對數字和日期，可以指定格式。 若未指定，則會選擇系統預設值。對於數字會使用 Java 十進位格式。 如需所有可能的日期格式，請參閱 JAVA SimpleDateFormat。預設格式為 yyyy-mm-dd。  
+將基本資料類型轉換為字串。 針對數字和日期，可以指定格式。 若未指定，則會選擇系統預設值。對於數字會使用 Java 十進位格式。 請參閱 JAVA SimpleDateFormat 以取得所有可能的日期格式;預設格式為 yyyy-mm-dd。  
 * ``toString(10) -> '10'``  
 * ``toString('engineer') -> 'engineer'``  
 * ``toString(123456.789, '##,###.##') -> '123,456.79'``  
@@ -915,7 +907,7 @@ ___
 ___
 ### <code>translate</code>
 <code><b>translate(<i>&lt;string to translate&gt;</i> : string, <i>&lt;lookup characters&gt;</i> : string, <i>&lt;replace characters&gt;</i> : string) => string</b></code><br/><br/>
-將字串中的一組字元取代為另一組字元。 字元的取代為1到1。  
+將字串中的一組字元取代為另一組字元。 字元有1到1的取代。  
 * ``translate('(bojjus)', '()', '[]') -> '[bojjus]'``  
 * ``translate('(gunchus)', '()', '[') -> '[gunchus'``  
 ___
@@ -927,13 +919,13 @@ ___
 ___
 ### <code>true</code>
 <code><b>true() => boolean</b></code><br/><br/>
-一律傳回 true 值。 如果有名為 ' true ' 的資料行，請使用函數語法 (true ( # A2 # A3。  
+一律傳回 true 值。 如果有一個名為 ' true ' 的資料行，請使用函數語法 (true ( # A2 # A3。  
 * ``(10 + 20 == 30) -> true``  
 * ``(10 + 20 == 30) -> true()``  
 ___
 ### <code>typeMatch</code>
 <code><b>typeMatch(<i>&lt;type&gt;</i> : string, <i>&lt;base type&gt;</i> : string) => boolean</b></code><br/><br/>
-比對資料行的類型。 只能用於模式運算式。數位符合 short、integer、long、double、float 或 decimal、integer 符合 short、integer、long、小數符合 double、float、decimal 和 datetime 符合日期或時間戳記類型。  
+比對資料行的類型。 只能在模式運算式中使用。數位符合 short、integer、long、double、float 或 decimal、整數相符的 short、integer、long、decimal 符合 double、float、decimal 和 datetime 與 date 或 timestamp 類型。  
 * ``typeMatch(type, 'number')``  
 * ``typeMatch('date', 'datetime')``  
 ___
@@ -949,7 +941,7 @@ ___
 ___
 ### <code>weekOfYear</code>
 <code><b>weekOfYear(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
-取得給定日期的年份周。  
+取得指定日期的年中的周。  
 * ``weekOfYear(toDate('2008-02-20')) -> 8``  
 ___
 ### <code>weeks</code>
@@ -968,7 +960,7 @@ ___
 <code><b>year(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
 取得日期的年份值。  
 * ``year(toDate('2012-8-8')) -> 2012``  
-##彙總函式：下列函數僅適用于匯總、資料透視、unpivot 和視窗轉換。
+## 彙總函式：下列函數僅適用于匯總、pivot、unpivot 和視窗轉換。
 ___
 ### <code>avg</code>
 <code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -982,7 +974,7 @@ ___
 ___
 ### <code>count</code>
 <code><b>count([<i>&lt;value1&gt;</i> : any]) => long</b></code><br/><br/>
-取得值的彙總計數。 如果指定了選擇性的資料行 (s) ，它會忽略計數中的 Null 值。  
+取得值的彙總計數。 如果指定了選擇性資料行 (s) ，它會忽略計數中的 Null 值。  
 * ``count(custId)``  
 * ``count(custId, custName)``  
 * ``count()``  
@@ -990,22 +982,22 @@ ___
 ___
 ### <code>countDistinct</code>
 <code><b>countDistinct(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => long</b></code><br/><br/>
-取得一組資料行相異值的匯總計數。  
+取得一組資料行之相異值的匯總計數。  
 * ``countDistinct(custId, custName)``  
 ___
 ### <code>countIf</code>
 <code><b>countIf(<i>&lt;value1&gt;</i> : boolean, [<i>&lt;value2&gt;</i> : any]) => long</b></code><br/><br/>
-根據條件取得值的彙總計數。 如果指定了選擇性的資料行，則會忽略計數中的 Null 值。  
+根據條件取得值的彙總計數。 如果指定了選擇性資料行，則會忽略計數中的 Null 值。  
 * ``countIf(state == 'CA' && commission < 10000, name)``  
 ___
 ### <code>covariancePopulation</code>
 <code><b>covariancePopulation(<i>&lt;value1&gt;</i> : number, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-取得兩個數據行之間的人口共變數。  
+取得兩個數據行之間的擴展共變數。  
 * ``covariancePopulation(sales, profit)``  
 ___
 ### <code>covariancePopulationIf</code>
 <code><b>covariancePopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number, <i>&lt;value3&gt;</i> : number) => double</b></code><br/><br/>
-根據條件，取得兩個數據行的人口共變數。  
+根據條件取得兩個數據行的人口共變數。  
 * ``covariancePopulationIf(region == 'West', sales)``  
 ___
 ### <code>covarianceSample</code>
@@ -1015,7 +1007,7 @@ ___
 ___
 ### <code>covarianceSampleIf</code>
 <code><b>covarianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number, <i>&lt;value3&gt;</i> : number) => double</b></code><br/><br/>
-根據條件，取得兩個數據行的樣本共變數。  
+根據條件取得兩個數據行的樣本共變數。  
 * ``covarianceSampleIf(region == 'West', sales, profit)``  
 ___
 ### <code>first</code>
@@ -1047,7 +1039,7 @@ ___
 ___
 ### <code>maxIf</code>
 <code><b>maxIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-根據條件取得資料行的最大值。  
+根據準則，取得資料行的最大值。  
 * ``maxIf(region == 'West', sales)``  
 ___
 ### <code>mean</code>
@@ -1067,17 +1059,17 @@ ___
 ___
 ### <code>minIf</code>
 <code><b>minIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-根據條件取得資料行的最小值。  
+根據準則，取得資料行的最小值。  
 * ``minIf(region == 'West', sales)``  
 ___
 ### <code>skewness</code>
 <code><b>skewness(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
-取得資料行的偏斜。  
+取得資料行的不對稱。  
 * ``skewness(sales)``  
 ___
 ### <code>skewnessIf</code>
 <code><b>skewnessIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-根據條件，取得資料行的偏斜度。  
+根據條件取得資料行的不對稱。  
 * ``skewnessIf(region == 'West', sales)``  
 ___
 ### <code>stddev</code>
@@ -1087,7 +1079,7 @@ ___
 ___
 ### <code>stddevIf</code>
 <code><b>stddevIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-根據條件，取得資料行的標準差。  
+根據準則，取得資料行的標準差。  
 * ``stddevIf(region == 'West', sales)``  
 ___
 ### <code>stddevPopulation</code>
@@ -1097,7 +1089,7 @@ ___
 ___
 ### <code>stddevPopulationIf</code>
 <code><b>stddevPopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-根據條件，取得資料行的人口標準差。  
+根據準則，取得資料行的人口標準差。  
 * ``stddevPopulationIf(region == 'West', sales)``  
 ___
 ### <code>stddevSample</code>
@@ -1107,7 +1099,7 @@ ___
 ___
 ### <code>stddevSampleIf</code>
 <code><b>stddevSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-根據條件，取得資料行的樣本標準差。  
+根據準則，取得資料行的樣本標準差。  
 * ``stddevSampleIf(region == 'West', sales)``  
 ___
 ### <code>sum</code>
@@ -1117,7 +1109,7 @@ ___
 ___
 ### <code>sumDistinct</code>
 <code><b>sumDistinct(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-取得數值資料行之相異值的匯總總和。  
+取得數值資料行相異值的匯總總和。  
 * ``sumDistinct(col)``  
 ___
 ### <code>sumDistinctIf</code>
@@ -1139,7 +1131,7 @@ ___
 ___
 ### <code>varianceIf</code>
 <code><b>varianceIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-根據條件取得資料行的變異數。  
+根據準則，取得資料行的變異數。  
 * ``varianceIf(region == 'West', sales)``  
 ___
 ### <code>variancePopulation</code>
@@ -1149,7 +1141,7 @@ ___
 ___
 ### <code>variancePopulationIf</code>
 <code><b>variancePopulationIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-根據條件，取得資料行的擴展變異數。  
+根據準則，取得資料行的擴展變異數。  
 * ``variancePopulationIf(region == 'West', sales)``  
 ___
 ### <code>varianceSample</code>
@@ -1159,9 +1151,9 @@ ___
 ___
 ### <code>varianceSampleIf</code>
 <code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
-根據條件，取得資料行的非偏誤變異數。  
+根據準則，取得資料行的非偏誤變異數。  
 * ``varianceSampleIf(region == 'West', sales)``  
-##視窗函式：下列函數僅適用于視窗轉換。
+## 視窗函數：下列函式僅適用于視窗轉換。
 ___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>
@@ -1170,18 +1162,18 @@ CumeDist 函式會計算某個值與分割區中所有值的相對位置。 依�
 ___
 ### <code>denseRank</code>
 <code><b>denseRank() => integer</b></code><br/><br/>
-在視窗的 order by 子句中指定的值群組中，計算某個值的順位。 依照分割區的排序，將目前資料列 (含此列) 之前的列數加一，即為結果。 這些值不會在序列中產生間距。 即使資料未排序，還是會在值中尋找變更時，密集排名也可以運作。  
+在視窗的 order by 子句中指定的值群組中，計算某個值的順位。 依照分割區的排序，將目前資料列 (含此列) 之前的列數加一，即為結果。 這些值不會在序列中產生間距。 即使資料未排序，且在值中尋找變更，密集排名仍可運作。  
 * ``denseRank()``  
 ___
 ### <code>lag</code>
 <code><b>lag(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look before&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
-取得第一個參數對目前資料列之前的 n 個資料列評估的值。 第二個參數是要回溯查看的資料列數目，預設值為 1。 如果沒有多個資料列，除非指定了預設值，否則會傳回 null 值。  
+取得第一個參數對目前資料列之前的 n 個資料列評估的值。 第二個參數是要回溯查看的資料列數目，預設值為 1。 如果沒有任何資料列，除非指定了預設值，否則會傳回 null 值。  
 * ``lag(amount, 2)``  
 * ``lag(amount, 2000, 100)``  
 ___
 ### <code>lead</code>
 <code><b>lead(<i>&lt;value&gt;</i> : any, [<i>&lt;number of rows to look after&gt;</i> : number], [<i>&lt;default value&gt;</i> : any]) => any</b></code><br/><br/>
-取得第一個參數對目前資料列之後的 n 個資料列評估的值。 第二個參數是要正向查看的資料列數目，預設值為 1。 如果沒有多個資料列，除非指定了預設值，否則會傳回 null 值。  
+取得第一個參數對目前資料列之後的 n 個資料列評估的值。 第二個參數是要正向查看的資料列數目，預設值為 1。 如果沒有任何資料列，除非指定了預設值，否則會傳回 null 值。  
 * ``lead(amount, 2)``  
 * ``lead(amount, 2000, 100)``  
 ___
@@ -1193,12 +1185,12 @@ NTile 函式會將每個視窗分割區中的資料列分成從 1 到 `n` 的 `n
 ___
 ### <code>rank</code>
 <code><b>rank() => integer</b></code><br/><br/>
-在視窗的 order by 子句中指定的值群組中，計算某個值的順位。 依照分割區的排序，將目前資料列 (含此列) 之前的列數加一，即為結果。 這些值會在序列中產生間距。 即使資料未排序，也會進行排名，並尋找值的變更。  
+在視窗的 order by 子句中指定的值群組中，計算某個值的順位。 依照分割區的排序，將目前資料列 (含此列) 之前的列數加一，即為結果。 這些值會在序列中產生間距。 即使資料未排序，並在值中尋找變更，排名仍可運作。  
 * ``rank()``  
 ___
 ### <code>rowNumber</code>
 <code><b>rowNumber() => integer</b></code><br/><br/>
-從1開始，為視窗中的資料列指派連續的資料列編號。  
+為視窗中的資料列指派以1為開頭的連續資料列編號。  
 * ``rowNumber()``  
 
 ## <a name="next-steps"></a>後續步驟

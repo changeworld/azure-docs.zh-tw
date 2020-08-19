@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 DateTimeToTicks
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 DateTimeToTicks。
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 DateTimeToTicks。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: a6fcff691ee5278ed0a9e1c132f8ecebbee9431c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 2e2c9e8f2bf0d4760bf030fb19a90737cdb54525
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227049"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605144"
 ---
 # <a name="datetimetoticks-azure-cosmos-db"></a>DateTimeToTicks (Azure Cosmos DB) 
 
-將指定的日期時間轉換為刻度。 單一滴答代表100毫微秒或 1 10-百萬分之一秒的秒數。
-  
+將指定的日期時間轉換為刻度。 單一刻度代表100毫微秒或 1 10-百萬分之一秒秒。 
+
 ## <a name="syntax"></a>語法
   
 ```sql
@@ -31,17 +31,17 @@ DateTimeToTicks (<DateTime>)
 
 ## <a name="return-types"></a>傳回類型
 
-傳回正整數值。
+傳回已簽署的數值，這是自 Unix epoch 以來經過的目前 100-毫微秒滴答數。 換句話說，DateTimeToTicks 會傳回自00:00:00 星期四（1月1970）以來經過的 100-毫微秒滴答數。
 
 ## <a name="remarks"></a>備註
 
-`undefined`如果 datetime 不是有效的 ISO 8601 日期時間，則 DateTimeDateTimeToTicks 會傳回
+`undefined`如果日期時間不是有效的 ISO 8601 日期時間，DateTimeDateTimeToTicks 會傳回
 
-這個系統函數不會使用索引。
+這個系統函數將不會使用索引。
 
 ## <a name="examples"></a>範例
 
-以下範例會傳回刻度的數目：
+以下是傳回刻度數目的範例：
 
 ```sql
 SELECT DateTimeToTicks("2020-01-02T03:04:05.6789123Z") AS Ticks
@@ -55,7 +55,7 @@ SELECT DateTimeToTicks("2020-01-02T03:04:05.6789123Z") AS Ticks
 ]
 ```
 
-以下範例會傳回滴答數，但不指定小數秒數：
+以下範例會傳回刻度數目，而不指定小數秒數：
 
 ```sql
 SELECT DateTimeToTicks("2020-01-02T03:04:05Z") AS Ticks

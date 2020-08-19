@@ -5,37 +5,40 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.openlocfilehash: 296f212e26d066613c54f7d69802654e5f7b5090
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/19/2020
+ms.openlocfilehash: 0ebd3d97c3d7a2218bcfd821e1cc81c6bd74adf6
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85391837"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605763"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
 本文概述提供給 Azure Cosmos DB 中不同資源的預設配額。
 
-## <a name="storage-and-throughput"></a>儲存體和輸送量
+## <a name="storage-and-database-operations"></a>儲存體和資料庫作業
 
-在訂用帳戶下建立 Azure Cosmos DB 帳戶之後，即可透過[建立資料庫、容器和項目](databases-containers-items.md)來管理帳戶中的資料。 您可在容器層級或資料庫層級依據[要求單位 (RU/秒或 RU)](request-units.md) 佈建輸送量。 下表列出每個容器/資料庫的儲存體和輸送量限制。
+在訂用帳戶下建立 Azure Cosmos DB 帳戶之後，即可透過[建立資料庫、容器和項目](databases-containers-items.md)來管理帳戶中的資料。
+
+### <a name="provisioned-throughput"></a>佈建的輸送量
+
+您可在容器層級或資料庫層級依據[要求單位 (RU/秒或 RU)](request-units.md) 佈建輸送量。 下表列出每個容器/資料庫的儲存體和輸送量限制。
 
 | 資源 | 預設限制 |
 | --- | --- |
 | 每個容器的 RU 數上限 ([專用輸送量佈建模式](databases-containers-items.md#azure-cosmos-containers)) | 預設為 1,000,000。 您可藉由[提出 Azure 支援票證](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)來增加此值 |
 | 每個資料庫的 RU 數上限 ([共用輸送量佈建模式](databases-containers-items.md#azure-cosmos-containers)) | 預設為 1,000,000。 您可藉由[提出 Azure 支援票證](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)來增加此值 |
-| 每個 (邏輯) 分割區索引鍵的 RU 數上限 | 10,000 |
-| 每個 (邏輯) 分割區索引鍵在所有項目上的儲存體上限| 20 GB |
+| 每 (邏輯) 分割區的 ru 上限 | 10,000 |
+| 每 (邏輯) 分割區中所有專案的最大儲存空間 | 20 GB |
 | 相異 (邏輯) 分割區索引鍵的數目上限 | 無限制 |
 | 每個容器的儲存體上限 | 無限制 |
 | 每個資料庫的儲存體上限 | 無限制 |
-| 每個帳戶的附件大小上限 (附件功能即將停用) | 2 GB |
+| 每個帳戶的附件大小上限 (附件功能即將淘汰)  | 2 GB |
 | 每 1 GB 所需的 RU 數下限 | 10 RU/秒 |
 
 > [!NOTE]
 > 若要了解管理工作負載 (所含分割區索引鍵需要更高儲存體或輸送量限制) 的最佳做法，請參閱[建立綜合分割區索引鍵](synthetic-partition-keys.md)。
->
 
 Cosmos 容器 (或共用輸送量資料庫) 的最小輸送量必須為 400 RU/秒。 當容器成長時，支援的最小輸送量也取決於下列因素：
 
@@ -47,7 +50,6 @@ Cosmos 容器 (或共用輸送量資料庫) 的最小輸送量必須為 400 RU/�
 
 > [!NOTE]
 > 在某些情況下，您能夠將輸送量降低到低於10%。 使用 API 來取得每個容器的 RU 數下限。
->
 
 總而言之，以下是佈建的 RU 下限。 
 
@@ -58,6 +60,18 @@ Cosmos 容器 (或共用輸送量資料庫) 的最小輸送量必須為 400 RU/�
 | 共用輸送量資料庫內每個容器的 RU 數下限 | 100 |
 
 Cosmos DB 可透過 SDK 或入口網站，支援彈性調整每個容器或資料庫的輸送量 (RU)。 每個容器可在最小值與最大值之間，於 10 到 100 倍的調整範圍內，以同步方式立即進行調整。 如果要求的輸送量值超出範圍，則會以非同步方式執行調整。 視容器中所要求的輸送量和資料儲存體大小而定，非同步調整可能需要數分鐘到數小時的時間才能完成。  
+
+### <a name="serverless"></a>無伺服器
+
+[無伺服器](serverless.md) 可讓您以耗用量為基礎的方式來使用 Azure Cosmos DB 資源。 下表列出每個容器/資料庫 burstability 的儲存體和輸送量限制。
+
+| 資源 | 限制 |
+| --- | --- |
+| 每個容器的 RU/秒上限 | 5,000 |
+| 每 (邏輯) 分割區的最大 RU/秒 | 5,000 |
+| 每 (邏輯) 分割區中所有專案的最大儲存空間 | 20 GB |
+| 相異 (邏輯) 分割區索引鍵的數目上限 | 無限制 |
+| 每個容器的儲存體上限 | 50 GB |
 
 ## <a name="control-plane-operations"></a>控制平面作業
 
@@ -75,12 +89,22 @@ Cosmos DB 會自動定期備份資料。 如需備份保留間隔和時段的詳
 
 ## <a name="per-account-limits"></a>每個帳戶的限制
 
+### <a name="provisioned-throughput"></a>佈建的輸送量
+
 | 資源 | 預設限制 |
 | --- | --- |
 | 資料庫的數目上限 | 無限制 |
 | 每個資料庫 (具有共用輸送量) 的容器數目上限 |25 |
 | 每個資料庫或帳戶 (具有專用輸送量) 的容器數目上限  |無限制 |
 | 區域數目上限 | 無限制 (所有 Azure 區域) |
+
+### <a name="serverless"></a>無伺服器
+
+| 資源 | 限制 |
+| --- | --- |
+| 資料庫的數目上限 | 無限制 |
+| 每個帳戶的容器數目上限  | 100 |
+| 區域數目上限 | 1 (任何 Azure 區域)  |
 
 ## <a name="per-container-limits"></a>每個容器的限制
 

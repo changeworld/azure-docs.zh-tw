@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/17/2020
+ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5cee26f9c1674030903e8be6dac80f6615317a67
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 538ea1746e92b3ec7d45f06031cfdc965e286d7a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551662"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603849"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載及執行 SAP 工作負載案例
 
@@ -88,6 +88,7 @@ ms.locfileid: "88551662"
 
 ## <a name="change-log"></a>變更記錄檔
 
+- 08/18/2020：[在 RHEL 上使用 ANF 擴大 SAP Hana 的 HA](./sap-hana-high-availability-netapp-files-red-hat.md)版本
 - 08/17/2020：新增有關使用 Azure Site Recovery 的資訊，以將 SAP NetWeaver 系統從內部部署移至 Azure 的 [Azure 虛擬機器規劃和實行 Sap NetWeaver](./planning-guide.md)
 - 08/14/2020：為[SAP 工作負載的 IBM Db2 Azure 虛擬機器 DBMS 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)文章中的 db2 新增磁片設定建議
 - 08/11/2020：將 RHEL 7.6 新增至適用于 [HANA 大型實例的作業系統](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) ，作為 I 類型的

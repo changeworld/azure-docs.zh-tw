@@ -1,18 +1,18 @@
 ---
 title: 建立 Dynamics 365 Business Central 供應項目 - Microsoft 商業市集
-description: 瞭解在合作夥伴中心的 Microsoft 商業 marketplace 中建立新 Dynamics 365 Business Central 供應專案的步驟和考慮。 您可以在 Azure Marketplace 中或透過雲端解決方案提供者 (CSP) 方案，列出或銷售您的供應項目。
+description: 瞭解在合作夥伴中心的 Microsoft 商用 marketplace 中建立新的 Dynamics 365 Business Central 供應專案的步驟和考慮。 您可以在 Azure Marketplace 中或透過雲端解決方案提供者 (CSP) 方案，列出或銷售您的供應項目。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: ff93a336b50ceac1106b31726d865ed3e0b41108
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 0d00f779031ec294523c861a4e9868f7cbbe790d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031467"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606140"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>建立 Dynamics 365 Business Central 供應項目
 
@@ -29,7 +29,7 @@ ms.locfileid: "88031467"
     ![說明左側導覽功能表。](./media/new-offer-dynamics-365-business-central.png)
 
 > [!NOTE]
-> 發佈供應項目之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應項目之後出現在店面中。 請務必在進行變更之後，一律重新發佈。
+> 供應專案發佈之後，在合作夥伴中心中進行的編輯，只會在重新發佈供應專案之後出現在線上商店中。 請務必在進行變更之後，一律重新發佈。
 
 ## <a name="new-offer"></a>新增供應項目
 
@@ -60,7 +60,7 @@ ms.locfileid: "88031467"
 
 #### <a name="free-trial-listing"></a>免費試用版 (清單)
 
-藉由提供有效的 URL (開始， `http` 或 `https`) 可以在何處取得試用版，將您的供應專案向客戶列出免費試用的連結。  例如： `https://contoso.com/trial/my-app` 。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
+提供有效的 URL (開頭 `http` 或 `https`) 可取得試用版的有效 URL，向客戶列出您的供應專案。  例如： `https://contoso.com/trial/my-app` 。 供應項目清單免費試用版是由您的服務所建立、管理及設定，且沒有由 Microsoft 管理的訂閱。
 
 > [!NOTE]
 > 您的應用程式透過試用連結所接收的權杖，只能經由 Azure Active Directory (Azure AD) 取得使用者資訊，以便在應用程式中自動建立帳戶。 Microsoft 帳戶不支援使用此權杖進行驗證。
@@ -71,7 +71,7 @@ ms.locfileid: "88031467"
 
 ### <a name="test-drive"></a>試用產品
 
-試用產品是向潛在客戶展示供應項目的絕佳方式，藉由提供他們「先試用再購買」的選項，進而增加轉換，並且獲得最適合的潛在客戶。 若要深入瞭解，請從[什麼是試用](../what-is-test-drive.md)產品開始。
+試用產品是向潛在客戶展示供應項目的絕佳方式，藉由提供他們「先試用再購買」的選項，進而增加轉換，並且獲得最適合的潛在客戶。 若要深入瞭解，請從 [什麼是試用](../what-is-test-drive.md)產品著手。
 
 若要在固定時間啟用試用產品，請選取 [啟用試用產品] 核取方塊。 若要從您的供應項目中移除試用產品，請清除此核取方塊。
 
@@ -89,12 +89,12 @@ ms.locfileid: "88031467"
 
 ### <a name="category"></a>類別
 
-選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
+選取類別和子類別，以將您的供應專案放在適當的 marketplace 搜尋區域中。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
-- 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
+- 至少一個和多個類別，包括主要和次要類別 (選擇性) 。
+- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用**]。
 
-請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
+請參閱 [供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。
 
 ### <a name="industry"></a>業界
 
@@ -117,11 +117,11 @@ ms.locfileid: "88031467"
 > [!NOTE]
 > 您只能以一種語言提供供應項目清單的詳細資料。 如果供應項目描述開頭為以下詞句：「此應用程式僅適用於 [非英文語言]。」，則供應項目詳細資料不一定要使用英文。 也可利用不同於供應項目清單內容中所使用的語言，來提供供應項目內容的「說明連結 URL」。
 
-以下範例說明如何在 Microsoft AppSource 中顯示供應專案資訊 (任何列出的價格僅供範例之用，而不是用來反映) 的實際成本：
+以下是供應專案資訊在 Microsoft AppSource 中的顯示方式範例 (任何列出的價格僅供範例用途，不適合反映實際成本) ：
 
-:::image type="content" source="media/example-d365-business-central.png" alt-text="說明此供應專案在 Microsoft AppSource 中的顯示方式。":::
+:::image type="content" source="media/example-d365-business-central.png" alt-text="說明這項供應專案在 Microsoft AppSource 中的顯示方式。":::
 
-#### <a name="call-out-descriptions"></a>向外撥說明
+#### <a name="call-out-descriptions"></a>撥出描述
 
 1. 標誌
 2. 產品
@@ -270,11 +270,11 @@ ms.locfileid: "88031467"
 
 ## <a name="test-drive-technical-configuration"></a>試用產品技術設定
 
-此頁面可讓您設定示範 (即「試用產品」)，讓客戶在購買之前先試用您的供應項目。 在[什麼是試用](../what-is-test-drive.md)產品中深入瞭解。
+此頁面可讓您設定示範 (即「試用產品」)，讓客戶在購買之前先試用您的供應項目。 深入瞭解 [什麼是試用](../what-is-test-drive.md)產品。
 
 若要啟用試用產品，請在 [供應項目設定](#test-drive) 索引標籤中，選取 [啟用試用產品] 核取方塊。若要從您的供應項目中移除試用產品，請清除此核取方塊。
 
-當您完成試用產品的設定後，請選取 [**儲存草稿**] 再繼續。
+當您完成試用產品的設定之後，請選取 [ **儲存草稿** ]，然後再繼續。
 
 ## <a name="supplemental-content"></a>補充內容
 
@@ -313,7 +313,7 @@ ms.locfileid: "88031467"
     - *不完整* – 表示此區段中有需要修正的錯誤，或是需要您提供更多詳細資訊。 回到上一個區段並加以更新。
     - *完成* – 表示此區段已完成，並已提供所有必要的資料且沒有任何錯誤。 供應項目的所有區段皆需為完成狀態，您才能提交供應項目。
 - 在 [認證注意事項] 區段中，請將測試指示提供給認證小組，以確保您的應用程式已正確測試，並加上有助於了解應用程式的任何補充注意事項。
-- 若要提交供應項目以進行發佈，請選取 [提交]。 當供應項目的預覽版本可供檢閱及核准時，我們會向您傳送一封電子郵件。 返回 [合作夥伴中心]，並選取供應專案的 [**上線**]，將您的供應專案發佈至 [公開]。
+- 若要提交供應項目以進行發佈，請選取 [提交]。 當供應項目的預覽版本可供檢閱及核准時，我們會向您傳送一封電子郵件。 返回 [合作夥伴中心]， **然後選取供應** 專案的 [上線]，將您的供應專案發佈到公用。
 
 ## <a name="next-steps"></a>後續步驟
 

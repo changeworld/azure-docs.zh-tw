@@ -4,15 +4,15 @@ description: 了解如何在 .NET 函式中使用相依性插入來註冊和使�
 author: craigshoemaker
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 09/05/2019
+ms.date: 08/15/2020
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: ee3caef30c573763db56f89aa4900aa62b8a436a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4919dc8f08a745a029eb6c3755f8cfc9c39f827f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206097"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603856"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用相依性插入
 
@@ -72,7 +72,7 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>使用插入的相依性
 
-您可使用建構函式插入，讓相依性可供函式使用。 使用「處理常式」插入時，您不需要針對插入的服務或您的函式類別使用靜態類別。
+您可使用建構函式插入，讓相依性可供函式使用。 使用「函式插入」時，您不需要針對插入的服務或函數類別使用靜態類別。
 
 下列範例示範如何將 `IMyService` 和 `HttpClient` 相依性插入 HTTP 觸發的函式中。
 
@@ -126,7 +126,7 @@ Azure Functions 應用程式提供與 [ASP.NET 相依性插入](/aspnet/core/fun
 
 ## <a name="logging-services"></a>記錄服務
 
-如果您需要自己的記錄提供者，請將自訂類型註冊為的實例 [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，這可透過 [Microsoft Extensions. 記錄抽象](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) NuGet 封裝取得。
+如果您需要自己的記錄提供者，請將自訂類型註冊為的實例 [`ILoggerProvider`](/dotnet/api/microsoft.extensions.logging.iloggerfactory) ，此實例可透過「 [記錄檔抽象概念](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/) 」 NuGet 套件取得。
 
 Azure Functions 會自動新增 Application Insights。
 
@@ -136,9 +136,9 @@ Azure Functions 會自動新增 Application Insights。
 
 ### <a name="iloggert-and-iloggerfactory"></a>ILogger<T> 和 ILoggerFactory
 
-主機會將 `ILogger<T>` 和 `ILoggerFactory` 服務插入至函式。  不過，根據預設，這些新的記錄篩選器會篩選掉函數記錄。  您必須修改檔案 `host.json` ，以加入宣告其他篩選準則和類別目錄。
+主機會將 `ILogger<T>` 和 `ILoggerFactory` 服務插入至函式。  不過，根據預設，這些新的記錄篩選器會篩選掉函數記錄。  您需要修改檔案 `host.json` ，以加入其他篩選準則和類別。
 
-下列範例示範如何加入 `ILogger<HttpTrigger>` 具有記錄檔的，而這些記錄會公開至主機。
+下列範例示範如何 `ILogger<HttpTrigger>` 使用公開給主機的記錄來新增。
 
 ```csharp
 namespace MyNamespace
@@ -163,7 +163,7 @@ namespace MyNamespace
 }
 ```
 
-下列範例檔案會 `host.json` 加入記錄篩選器。
+下列範例檔案會 `host.json` 加入記錄篩選。
 
 ```json
 {
@@ -226,10 +226,10 @@ public class MyOptions
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                                           {
-                                                configuration.GetSection("MyOptions").Bind(settings);
-                                           });
+    .Configure<IConfiguration>((settings, configuration) =>
+    {
+        configuration.GetSection("MyOptions").Bind(settings);
+    });
 ```
 
 呼叫 `Bind` 會將具有相符屬性名稱的值從設定複製到自訂執行個體中。 選項執行個體現在可供 IoC 容器用來插入函式中。
@@ -253,8 +253,57 @@ public class HttpTrigger
 
 如需使用選項的詳細資訊，請參閱 [ASP.NET Core 中的選項模式](/aspnet/core/fundamentals/configuration/options)。
 
-> [!WARNING]
-> 避免嘗試從取用方案上的 *local.settings.json* 或 *appsettings.{environment}.json* 等檔案讀取值。 從這些與觸發程式連線相關之檔案中讀取的值，無法在應用程式調整時提供，因為在調整控制器建立應用程式的新實例時，裝載基礎結構無法存取設定資訊。
+### <a name="customizing-configuration-sources"></a>自訂設定來源
+
+> [!NOTE]
+> 從 Azure Functions 主機版本2.0.14192.0 和3.0.14191.0 開始，可以開始進行設定來源自訂。
+
+若要指定其他設定來源，請覆寫函式 `ConfigureAppConfiguration` 應用程式類別中的方法 `StartUp` 。
+
+下列範例會新增基底的設定值，以及選用的環境專屬應用程式佈建檔。
+
+```csharp
+using System.IO;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
+
+namespace MyNamespace
+{
+    public class Startup : FunctionsStartup
+    {
+        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+        {
+            FunctionsHostBuilderContext context = builder.GetContext();
+
+            builder.ConfigurationBuilder
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true, reloadOnChange: false)
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false);
+        }
+    }
+}
+```
+
+將設定提供者加入的 `ConfigurationBuilder` 屬性 `IFunctionsConfigurationBuilder` 。 如需使用設定提供者的詳細資訊，請參閱 [ASP.NET Core 中](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)的設定。
+
+`FunctionsHostBuilderContext`從取得 `IFunctionsConfigurationBuilder.GetContext()` 。 使用此內容可取得目前的環境名稱，並解析函數應用程式資料夾中的設定檔位置。
+
+根據預設，設定檔（例如 *appsettings.js* ）不會自動複製到函數應用程式的輸出檔案夾。 更新 *.csproj* 檔案以符合下列範例，以確定檔案已複製。
+
+```xml
+<None Update="appsettings.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>      
+</None>
+<None Update="appsettings.Development.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+</None>
+```
+
+> [!IMPORTANT]
+> 針對在耗用量或高階方案中執行的函式應用程式，修改觸發程式中使用的設定值可能會導致調整錯誤。 類別對這些屬性所做的任何變更都會導致函式 `FunctionsStartup` 應用程式啟動錯誤。
 
 ## <a name="next-steps"></a>後續步驟
 
