@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 73b568057bbb846958b6fe95f11c285326fe3688
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bfc18332553d1aee713ccb8fc269ba63d2b5af12
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495177"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540591"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>設定區塊 Blob 的物件複寫 (預覽)
 
@@ -29,7 +29,7 @@ ms.locfileid: "87495177"
 
 在您設定物件複寫之前，請先建立來源和目的地儲存體帳戶 (如果尚未建立)。 這兩個帳戶都必須為一般用途 v2 儲存體帳戶。 如需詳細資訊，請參閱[建立 Azure 儲存體帳戶](../common/storage-account-create.md)。
 
-儲存體帳戶最多可作為兩個目的地帳戶的來源帳戶。 而目的地帳戶可能不會有兩個以上的來源帳戶。 來源和目的地帳戶可能都在不同的區域中。 您可以設定個別的複寫原則，將資料複寫到每個目的地帳戶。
+儲存體帳戶最多可作為兩個目的地帳戶的來源帳戶。 目的地帳戶可能不會有兩個以上的來源帳戶。 來源和目的地帳戶可能都在不同的區域中。 您可以設定個別的複寫原則，將資料複寫到每個目的地帳戶。
 
 開始之前，請確定您已註冊下列功能預覽：
 
@@ -44,7 +44,7 @@ ms.locfileid: "87495177"
 若要在 Azure 入口網站中建立複寫原則，請遵循下列步驟：
 
 1. 巡覽至 Azure 入口網站的 [來源儲存體帳戶]。
-1. 在 [ **Blob 服務**] 底下，選取 [**物件**複寫]。
+1. 在 [ **Blob 服務**] 底下，選取 [ **物件**複寫]。
 1. 選取 [設定複寫]。
 1. 選取 [目的地訂用帳戶] 和 [目的地儲存體帳戶]。
 1. 在 [容器配對] 區段中，從來源帳戶中選取 [來源容器]，並從目的地帳戶中選取 [目的地容器]。 每個複寫原則最多可建立 10 組容器配對。
@@ -69,7 +69,7 @@ ms.locfileid: "87495177"
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 建立複寫原則，請先安裝「 [2.0.1 版-預覽](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview)」或「更新版本」的 Az PowerShell 模組。 請遵循下列步驟安裝此預覽模組：
+若要使用 PowerShell 建立複寫原則，請先安裝 [2.0.1](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) 版/preview 版或更新版本的 Az PowerShell 模組。 請遵循下列步驟安裝此預覽模組：
 
 1. 使用 [設定] 下的 [應用程式與功能]，從 Windows 解除任何先前安裝的 Azure PowerShell。
 
@@ -175,15 +175,18 @@ az login
 在來源和目的地儲存體帳戶上啟用 Blob 版本設定，並在來源帳戶上啟用變更摘要。 請記得以自有值來取代角括弧中的值：
 
 ```azurecli
-az storage blob service-properties update --resource-group <resource-group> \
+az storage blob service-properties update \
+    --resource-group <resource-group> \
     --account-name <source-storage-account> \
     --enable-versioning
 
-az storage blob service-properties update --resource-group <resource-group> \
+az storage blob service-properties update \
+    --resource-group <resource-group> \
     --account-name <source-storage-account> \
     --enable-change-feed
 
-az storage blob service-properties update --resource-group <resource-group> \
+az storage blob service-properties update \
+    --resource-group <resource-group> \
     --account-name <dest-storage-account> \
     --enable-versioning
 ```
@@ -191,17 +194,30 @@ az storage blob service-properties update --resource-group <resource-group> \
 在各自的儲存體帳戶中建立來源和目的地容器。
 
 ```azurecli
-az storage container create --account-name <source-storage-account> --name source-container3 --auth-mode login
-az storage container create --account-name <source-storage-account> --name source-container4 --auth-mode login
+az storage container create \
+    --account-name <source-storage-account> \
+    --name source-container3 \
+    --auth-mode login
+az storage container create \
+    --account-name <source-storage-account> \
+    --name source-container4 \
+    --auth-mode login
 
-az storage container create --account-name <dest-storage-account> --name source-container3 --auth-mode login
-az storage container create --account-name <dest-storage-account> --name source-container4 --auth-mode login
+az storage container create \
+    --account-name <dest-storage-account> \
+    --name source-container3 \
+    --auth-mode login
+az storage container create \
+    --account-name <dest-storage-account> \
+    --name source-container4 \
+    --auth-mode login
 ```
 
 在目的地帳戶上建立新複寫原則及相關聯的規則。
 
 ```azurecli
-az storage account or-policy create --account-name <dest-storage-account> \
+az storage account or-policy create \
+    --account-name <dest-storage-account> \
     --resource-group <resource-group> \
     --source-account <source-storage-account> \
     --destination-account <dest-storage-account> \
@@ -210,7 +226,8 @@ az storage account or-policy create --account-name <dest-storage-account> \
     --min-creation-time '2020-05-10T00:00:00Z' \
     --prefix-match a
 
-az storage account or-policy rule add --account-name <dest-storage-account> \
+az storage account or-policy rule add \
+    --account-name <dest-storage-account> \
     --destination-container dest-container4 \
     --policy-id <policy-id> \
     --resource-group <resource-group> \
@@ -221,7 +238,8 @@ az storage account or-policy rule add --account-name <dest-storage-account> \
 使用原則識別碼，在來源帳戶上建立原則。
 
 ```azurecli
-az storage account or-policy show --resource-group <resource-group> \
+az storage account or-policy show \
+    --resource-group <resource-group> \
     --name <dest-storage-account> \
     --policy-id <policy-id> |
     --az storage account or-policy create --resource-group <resource-group> \

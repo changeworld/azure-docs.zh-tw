@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a020163347babfc68ac9aab0514352a35f5831c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72931762"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542933"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>在 C# 中使用自訂影像清單進行仲裁
 
@@ -32,9 +32,9 @@ ms.locfileid: "72931762"
 > [!NOTE]
 > 上限是 **5 個影像清單**，且每個清單**不可超過 10,000 個影像**。
 
-本指南的主控台應用程式會模擬一些您可以使用影像清單 API 來執行的工作。
+本指南的主控台應用程式會模擬您可以使用影像清單 API 執行的一些工作。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。 
 
 ## <a name="sign-up-for-content-moderator-services"></a>註冊 Content Moderator 服務
 
@@ -72,7 +72,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>建立 Content Moderator 用戶端
 
-新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。 使用您`AzureEndpoint`的`CMSubscriptionKey`端點 URL 和訂用帳戶金鑰值，更新和欄位。 您可以在 Azure 入口網站資源的 [**快速入門**] 索引標籤中找到這些選項。
+新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。 `AzureEndpoint` `CMSubscriptionKey` 使用您的端點 URL 和訂用帳戶金鑰的值來更新和欄位。 您可以在 Azure 入口網站中資源的 [ **快速入門** ] 索引標籤中找到這些選項。
 
 ```csharp
 /// <summary>
@@ -292,7 +292,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>建立方法以將影像集合新增至清單
 
-將下列方法新增至 **Program** 類別。 本指南不會示範如何將標籤套用至清單中的影像。 
+將下列方法新增至 **Program** 類別。 本指南不會示範如何將標記套用至清單中的影像。 
 
 ```csharp
 /// <summary>
@@ -587,7 +587,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>新增程式碼以模擬影像清單的使用
 
-將下列程式碼新增至**Main**方法。 此程式碼會模擬許多您在定義和管理清單，以及使用清單來過濾影像時，會執行的作業。 記錄功能可讓您查看對 Content Moderator 服務發出的 SDK 呼叫所產生的回應物件。
+將下列程式碼新增至 **Main** 方法。 此程式碼會模擬許多您在定義和管理清單，以及使用清單來過濾影像時，會執行的作業。 記錄功能可讓您查看對 Content Moderator 服務發出的 SDK 呼叫所產生的回應物件。
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.
@@ -1078,6 +1078,6 @@ Response:
 []
 ```
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
 針對這個及其他適用於 .NET 的 Content Moderator 快速入門取得 [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 和 [Visual Studio 解決方案](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)，並開始進行您的整合。

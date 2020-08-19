@@ -1,14 +1,14 @@
 ---
 title: 資源陣列屬性編寫原則
 description: 瞭解如何使用陣列參數和陣列語言運算式、評估 [*] 別名，以及附加具有 Azure 原則定義規則的元素。
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: f3d30f76d555386e5ab8041a0b8cc82b5b60e28e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f3ba5179ca7acc60042d23e88d42a504d4d05f08
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684250"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544582"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>對於 Azure 資源編寫陣列屬性的原則
 

@@ -2,25 +2,20 @@
 title: 教學課程︰以 Azure Active Directory 設定 Salesforce 沙箱來自動佈建使用者 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Salesforce Sandbox 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: bab73fda-6754-411d-9288-f73ecdaa486d
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48df954f680c6774b0aa189453615156f4f0b4a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4666768d7e975e976601810bbbfadb1685fa91ff
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77063266"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543518"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>教學課程︰設定 Salesforce 沙箱來自動佈建使用者
 
@@ -60,7 +55,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 本節的目的是要說明如何對 Salesforce 沙箱啟用 Active Directory 使用者帳戶的使用者佈建。
 
-1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [ **Azure Active Directory > 企業應用程式] > [所有應用程式**] 區段。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，流覽至 **Azure Active Directory > 企業應用程式 > 所有應用程式** ] 區段。
 
 1. 如果您已經設定單一登入的 Salesforce 沙箱，請使用 [搜尋] 欄位搜尋您的 Salesforce 沙箱執行個體。 否則，請選取 [新增]****，並在應用程式庫中搜尋 [Salesforce 沙箱]****。 從搜尋結果中選取 Salesforce 沙箱，並將它新增至您的應用程式清單。
 

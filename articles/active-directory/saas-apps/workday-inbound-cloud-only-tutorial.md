@@ -3,51 +3,47 @@ title: 教學課程：在 Azure Active Directory 中設定 Workday 輸入布建 
 description: 瞭解如何設定從 Workday 到 Azure AD 的輸入布建
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: fac4f61e-d942-4429-a297-9ba74db95077
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026499"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540961"
 ---
-# <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>教學課程：設定 Workday 以 Azure AD 使用者布建
-本教學課程的目的是要示範將工作者資料從 Workday 布建到 Azure Active Directory 所需執行的步驟。 
+# <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>教學課程：將 Workday 設定為 Azure AD 使用者布建
+本教學課程的目的是要說明將背景工作資料從 Workday 布建至 Azure Active Directory 所需執行的步驟。 
 
 >[!NOTE]
->如果您想要從 Workday 布建的使用者是不需要內部部署 AD 帳戶的僅限雲端使用者，請使用本教學課程。 如果使用者只需要內部部署 AD 帳戶或 AD 和 Azure AD 帳戶，請參閱[設定 Workday 以 Active Directory](workday-inbound-tutorial.md)使用者布建教學課程。 
+>如果您想要從 Workday 布建的使用者是僅限雲端的使用者，而不需要內部部署 AD 帳戶，請使用此教學課程。 如果使用者只需要內部部署 AD 帳戶或 AD 和 Azure AD 帳戶，請參閱將 [Workday 設定為 Active Directory](workday-inbound-tutorial.md) 使用者布建的教學課程。 
 
 ## <a name="overview"></a>概觀
 
 [Azure Active Directory 使用者佈建服務](../app-provisioning/user-provisioning.md)與 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 整合以佈建使用者帳戶。 Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，可讓下列人力資源和身分識別生命週期管理案例的自動化：
 
-* **雇用新員工**-將新員工新增至 workday 時，系統會自動在 Azure Active Directory 中建立使用者帳戶，並選擇性地在 Azure AD 支援的 Office 365 和[其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中，將電子郵件地址寫回至 Workday。
+* **雇用新員工** ：當新的員工加入 workday 時，會自動在 Azure Active Directory 和 Azure AD 支援的 Office 365 和 [其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)中建立使用者帳戶，並將電子郵件地址寫回至 Workday。
 
-* **員工屬性和設定檔更新**-員工記錄在 Workday 中更新時（例如其名稱、標題或管理員），其使用者帳戶將會自動更新 Azure Active Directory 並可選擇 Office 365 和[Azure AD 支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
+* **員工屬性和設定檔更新** ：當員工記錄在 Workday 中更新時 (例如姓名、職稱或管理員) ，其使用者帳戶將會自動更新 Azure Active Directory 以及選擇性地更新 [Azure AD 所支援的 Office 365 和其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
-* **員工終止**-當員工離職時，其使用者帳戶會在 Azure Active Directory 中自動停用，並可選擇 Office 365 和[其他 Azure AD 支援的 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
+* **員工終止** -當員工在 Workday 結束時，其使用者帳戶會在 Azure Active Directory 中自動停用，並選擇性地停用 Azure AD 所支援的 Office 365 和 [其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
 
-* **Employee rehires** -員工在 Workday 中 workday 時，其舊帳戶可以自動重新開機或重新布建（視您的喜好設定而定），以 Azure Active Directory 和選擇性的 Office 365 和[其他 Azure AD 支援的 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
+* **員工重新雇用** -當員工在 Workday 中 workday 重新雇用時，可以根據您的喜好設定) ，自動重新開機或重新布建 (，視您的喜好設定到 Azure Active Directory 365 以及 [Azure AD 所支援的其他 SaaS 應用程式](../app-provisioning/user-provisioning.md)而定。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>誰最適合使用此使用者佈建解決方案？
 
-此 Workday Azure Active Directory 使用者布建解決方案最適合下列情況：
+此 Workday 可 Azure Active Directory 使用者布建解決方案，最適合用於：
 
 * 需要以預先建置的雲端式解決方案進行 Workday 使用者佈建的組織
 
-* 需要將使用者從 Workday 直接布建到 Azure Active Directory 的組織
+* 需要從 Workday 直接布建使用者至 Azure Active Directory 的組織
 
-* 需要使用者使用從 Workday 取得的資料進行布建的組織
+* 需要使用從 Workday 取得的資料來布建使用者的組織
 
 * 使用 Office 365 處理電子郵件的組織
 
@@ -55,33 +51,33 @@ ms.locfileid: "84026499"
 
 本節說明僅限雲端使用者的端對端使用者布建解決方案架構。 有兩個相關的流程：
 
-* **授權 HR 資料流程–從 Workday 到 Azure Active Directory：** 在此流程中，背景工作事件（例如新進員工、轉移、終止）會先發生在 Workday 中，然後事件資料會流入 Azure Active Directory。 視事件而定，它可能會導致在 Azure AD 中建立/更新/啟用/停用作業。
-* **回寫流程–從內部部署 Active Directory 到 Workday：** 在 Active Directory 中完成帳戶建立之後，它會透過 Azure AD Connect 與 Azure AD 同步處理，而電子郵件、使用者名稱和電話號碼等資訊則可回寫到 Workday。
+* **權威 HR 資料流程–從 Workday 到 Azure Active Directory：** 在這個流程中，背景工作事件 (例如新進員工、轉移、終止) 先發生在 Workday 中，然後事件資料會流入 Azure Active Directory。 視事件而定，可能會導致在 Azure AD 中建立/更新/啟用/停用作業。
+* **回寫流程–從內部部署 Active Directory 到 Workday：** 在 Active Directory 中完成帳戶建立後，它會透過 Azure AD Connect 與 Azure AD 同步處理，例如電子郵件、使用者名稱和電話號碼等資訊都可以回寫至 Workday。
 
   ![概觀](./media/workday-inbound-tutorial/workday-cloud-only-provisioning.png)
 
 ### <a name="end-to-end-user-data-flow"></a>端對端使用者資料流程
 
-1. HR 小組在 Workday 員工中部執行背景工作交易（權變/移動/權變或新進/轉移/終止）
-2. Azure AD 布建服務會從 Workday EC 執行排程的識別同步處理，並識別需要針對與內部部署 Active Directory 同步的變更。
-3. Azure AD 布建服務會決定變更，並在 Azure AD 中叫用使用者的建立/更新/啟用/停用作業。
-4. 如果已設定[Workday 回寫](workday-writeback-tutorial.md)應用程式，它會從 Azure AD 抓取電子郵件、使用者名稱和電話號碼等屬性。 
+1. HR 團隊在 Workday 員工中心 (權變/移動/權變或新進員工/轉移/終止) 執行背景工作交易
+2. Azure AD 布建服務會從 Workday EC 執行已排程的身分識別同步處理，並識別需要處理以與內部部署 Active Directory 同步的變更。
+3. Azure AD 布建服務會判斷變更，並針對 Azure AD 中的使用者叫用建立/更新/啟用/停用作業。
+4. 如果已設定 [Workday 回寫](workday-writeback-tutorial.md) 應用程式，則會從 Azure AD 抓取電子郵件、使用者名稱和電話號碼等屬性。 
 5. Azure AD 布建服務會在 Workday 中設定電子郵件、使用者名稱和電話號碼。
 
 ## <a name="planning-your-deployment"></a>規劃您的部署
 
-將雲端 HR 驅動的使用者布建從 Workday 設定為 Azure AD 需要大量規劃，涵蓋不同層面，例如：
+將雲端 HR 導向的使用者布建從 Workday 設定為 Azure AD 需要大量的規劃來涵蓋不同的層面，例如：
 
 * 判斷相符的識別碼 
 * 屬性對應
 * 屬性轉換 
 * 範圍篩選器
 
-如需有關這些主題的完整指導方針，請參閱[雲端人力資源部署計畫](../app-provisioning/plan-cloud-hr-provision.md)。 
+如需有關這些主題的完整指導方針，請參閱 [雲端 HR 部署計畫](../app-provisioning/plan-cloud-hr-provision.md) 。 
 
 ## <a name="configure-integration-system-user-in-workday"></a>在 Workday 中設定整合系統使用者
 
-請參閱[設定整合系統使用者](workday-inbound-tutorial.md#configure-integration-system-user-in-workday)以建立 Workday 整合系統使用者帳戶一節，其具有取得背景工作資料的許可權。 
+請參閱 [設定整合系統使用者](workday-inbound-tutorial.md#configure-integration-system-user-in-workday) ，以建立具有取得背景工作資料許可權的 Workday 整合系統使用者帳戶。 
 
 ## <a name="configure-user-provisioning-from-workday-to-azure-ad"></a>設定從 Workday 到 Azure AD 的使用者布建
 
@@ -103,7 +99,7 @@ ms.locfileid: "84026499"
 
 4. 選取 [新增應用程式]，然後選取 [全部] 類別。
 
-5. 搜尋**Workday 以 Azure AD 使用者**布建，並從資源庫新增該應用程式。
+5. 搜尋 **Workday 以 Azure AD 使用者**布建，並從資源庫新增該應用程式。
 
 6. 新增應用程式且出現應用程式詳細資料畫面之後，請選取 [佈建]。
 
@@ -115,7 +111,7 @@ ms.locfileid: "84026499"
 
    * **Workday 密碼** – 輸入 Workday 整合系統帳戶的密碼
 
-   * **Workday Web 服務 API URL –** 輸入租使用者 Workday web 服務端點的 URL。 URL 會決定連接器所使用的 Workday Web 服務 API 版本。 
+   * **Workday Web 服務 API URL –** 輸入租使用者 Workday web 服務端點的 URL。 URL 會決定連接器使用的 Workday Web 服務 API 版本。 
    
      | URL 格式 | 使用的 WWS API 版本 | 需要 XPATH 變更 |
      |------------|----------------------|------------------------|
@@ -124,9 +120,9 @@ ms.locfileid: "84026499"
      | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | Yes |
 
       > [!NOTE]
-     > 如果 URL 中未指定任何版本資訊，則應用程式會使用 Workday Web 服務（WWS） v 21.1，而且應用程式隨附的預設 XPATH API 運算式不需要任何變更。 若要使用特定的 WWS API 版本，請在 URL 中指定版本號碼 <br>
-     > 範例：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
-     > <br> 如果您使用 WWS API v 30.0 +，在開啟布建作業之前，請先更新 [屬性對應->] [設定] [選項] 下的 [ **XPATH API 運算式**]-請參閱[管理您](workday-inbound-tutorial.md#managing-your-configuration)的設定和[workday 屬性參考](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)一節中的**Workday > 編輯屬性清單**。  
+     > 如果未在 URL 中指定任何版本資訊，應用程式會使用 Workday Web 服務 (WWS) v 21.1，而且應用程式隨附的預設 XPATH API 運算式不需要進行任何變更。 若要使用特定的 WWS API 版本，請在 URL 中指定版本號碼 <br>
+     > 範例： `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
+     > <br> 如果您是使用 WWS API v 30.0 +，在開啟布建作業之前，請更新 [屬性對應] 下的 **XPATH API 運算式** **-> Advanced Options-> 編輯屬性清單（workday** 參考 [管理您](workday-inbound-tutorial.md#managing-your-configuration) 的設定和 [Workday 屬性參考](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)的區段）。  
 
    * **通知電子郵件** – 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
 
@@ -201,22 +197,22 @@ ms.locfileid: "84026499"
 
 2. 按一下 [檔案] 。
 
-3. 此作業會啟動初始同步，所需花費的時數會視 Workday 租用戶中的使用者人數而定。 您可以檢查進度列以追蹤同步處理週期的進度。 
+3. 此作業會啟動初始同步，所需花費的時數會視 Workday 租用戶中的使用者人數而定。 您可以檢查進度列，以追蹤同步處理週期的進度。 
 
-4. 您可隨時檢查 Azure 入口網站中的 [稽核記錄] 索引標籤，查看佈建服務執行了哪些動作。 Audit 記錄會列出布建服務所執行的所有個別同步事件，例如哪些使用者從 Workday 讀取，然後新增或更新為 Azure Active Directory。 
+4. 您可隨時檢查 Azure 入口網站中的 [稽核記錄] 索引標籤，查看佈建服務執行了哪些動作。 Audit 記錄檔會列出布建服務所執行的所有個別同步處理事件，例如哪些使用者即將從 Workday 讀取，然後新增或更新至 Azure Active Directory。 
 
 5. 在初始同步完成之後，它會在 [佈建] 索引標籤中寫入稽核摘要報告，如下所示。
 
    > [!div class="mx-imgBorder"]
    > ![布建進度列](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)
 
-## <a name="next-steps"></a>後續步驟
+## <a name="next-steps"></a>接下來的步驟
 
-* [深入瞭解支援的 Workday 屬性以進行輸入布建](../app-provisioning/workday-attribute-reference.md)
+* [深入瞭解輸入布建支援的 Workday 屬性](../app-provisioning/workday-attribute-reference.md)
 * [瞭解如何設定 Workday 回寫](workday-writeback-tutorial.md)
 * [瞭解如何針對佈建活動檢閱記錄和取得報告](../app-provisioning/check-status-user-account-provisioning.md)
 * [了解如何設定 Workday 與 Azure Active Directory 之間的單一登入](workday-tutorial.md)
 * [了解如何將其他 SaaS 應用程式與 Azure Active Directory 整合](tutorial-list.md)
-* [瞭解如何匯出和匯入您的布建設定](../app-provisioning/export-import-provisioning-configuration.md)
+* [瞭解如何匯出和匯入布建設定](../app-provisioning/export-import-provisioning-configuration.md)
 
 
