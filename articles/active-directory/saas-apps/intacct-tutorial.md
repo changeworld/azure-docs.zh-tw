@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Sage Intacct 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Sage Intacct 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 92518e02-a62c-4b1b-a8e9-2803eb2b49ac
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7e81b636690ced9baafc79de110f78c7258c36e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 79a77d3c55ee4ac545712329f0054123bec8fcae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056292"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88535816"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教學課程：整合 Sage Intacct 與 Azure Active Directory
 

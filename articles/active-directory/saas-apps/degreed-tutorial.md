@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Degreed 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Degreed 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1eda2d1c-b5e2-4c53-ad46-bbeb91cd119a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f98c9881726188980bedf2a1a1b0b2b6d7ae1d4
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 52f2cc6a528e0d765178d71e8c2d196df71738d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902417"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88536917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-degreed"></a>教學課程：Azure Active Directory 與 Degreed 整合
 
