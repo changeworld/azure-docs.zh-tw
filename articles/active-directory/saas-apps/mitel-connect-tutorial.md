@@ -2,24 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Mitel Connect 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Mitel Connect 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 204f540b-09f1-452b-a52f-78143710ef76
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 60e81bed348289f560b6341398bf4fe9bdaff0eb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054603"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>教學課程：Azure Active Directory 與 Mitel MiCloud Connect 或 CloudLink Platform 整合
 

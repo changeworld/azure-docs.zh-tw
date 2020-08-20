@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Expensify 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Expensify 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1e761484-7a2f-4321-91f4-6d5d0b69344e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9ed129bccbd763bf4459fa7818e0dba4e7e65b5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0be39ebc765efe968f27d948dada1304c0d6d711
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73156533"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555239"
 ---
 # <a name="tutorial-integrate-expensify-with-azure-active-directory"></a>教學課程：整合 Expensify 與 Azure Active Directory
 

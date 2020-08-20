@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 FirmPlay - Employee Advocacy for Recruiting 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 FirmPlay - Employee Advocacy for Recruiting 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a6799629-7546-43f8-a966-956db32864b1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 2bdc3a13582f079cc9325ef1c6949c3ae10138eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 522de4f3e9d82be91290fef7ea900998cb4d1d8f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67102531"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555037"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>教學課程：Azure Active Directory 與 FirmPlay - Employee Advocacy for Recruiting 整合
 

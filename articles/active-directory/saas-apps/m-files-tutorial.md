@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 M-Files 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 M-Files 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4536fd49-3a65-4cff-9620-860904f726d0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 41877db250cd6c56d80dbdf98fa0d78562686bfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77c83e82577cb1d6d07c90a0260a5fa006fd8625
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159457"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554817"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>教學課程：Azure Active Directory 與 M-Files 整合
 

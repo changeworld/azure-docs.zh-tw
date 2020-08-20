@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 IWT Procurement Suite 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 IWT Procurement Suite 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 53e37c8d-85f4-4a9c-a46a-d4cdd91e38a1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f938c4e8692ce5836a46a990a607cfe229c3a705
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 97e246020aa1afe2b1e37eb7034638e213d44932
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204720"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552631"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iwt-procurement-suite"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 IWT Procurement Suite 整合
 

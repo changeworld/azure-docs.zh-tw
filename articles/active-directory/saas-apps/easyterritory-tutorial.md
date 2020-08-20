@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 EasyTerritory 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 EasyTerritory 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d29b362d-e986-4f67-8ff2-e158e49353aa
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0cde3fc47e961e6bc1ff41c1a3f58634144f8c4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8152244d2e05d6e05843a2b84151d6b6a8df7f26
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158403"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>教學課程：Azure Active Directory 與 EasyTerritory 整合
 

@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Perceptyx 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Perceptyx 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3b542350-0d2a-4213-90a2-b08225a51d86
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fba95add63a0784712b4c5b0d3989ae7b987ffb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 837c1c1a3bac064ddc808c7c083fcaa56e60f210
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67112870"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553881"
 ---
 # <a name="tutorial-integrate-perceptyx-with-azure-active-directory"></a>教學課程：整合 Perceptyx 與 Azure Active Directory
 

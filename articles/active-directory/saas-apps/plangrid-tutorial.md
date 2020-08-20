@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 PlanGrid 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 PlanGrid 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0ba72432-9b49-4358-b756-14c982422be8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 16b87018b86d9734a066d2cb5361602c9be0f00c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e072d036c99b06e8d774f1305137687f315363c6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67094378"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-plangrid"></a>教學課程：Azure Active Directory 與 PlanGrid 整合
 

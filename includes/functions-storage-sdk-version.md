@@ -11,7 +11,7 @@ ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 6a37850eb6536c5399d63144e60ea210fbc194d8
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "77198408"
