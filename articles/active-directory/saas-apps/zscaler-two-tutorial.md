@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Zscaler Two 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Zscaler Two 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1fd8a940-7320-47e0-a176-2dd4eeca6db2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 7ea4eecd5c27b6a9f14bc358c7db61da544e7530
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c76e37e56adc9fc282b0c6b869db1a2ad8e7ebad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68825104"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-two"></a>教學課程：Azure Active Directory 與 Zscaler Two 整合
 

@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Talentsoft 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Talentsoft 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9807bf77-fd2a-41fe-86d0-d746a8736b2c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f1384d23f77407d2d20066cc2fa086037d546f6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3fa173d6191334fd4944966730ec1617ca2ec7e5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648480"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546486"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-talentsoft"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Talentsoft 整合
 

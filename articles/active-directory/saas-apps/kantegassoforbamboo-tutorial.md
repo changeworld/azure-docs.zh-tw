@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Kantega SSO for Bamboo 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Kantega SSO for Bamboo 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e238b574-9e9b-43b7-ab98-d2a87ff89d48
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 8c951d7f5f1629447b1b5c1fc6e8a1c202246d74
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b8bf8ef1affc42027ef0bec149f8e7c9eb9b2b90
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67099098"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>教學課程：Azure Active Directory 與 Kantega SSO for Bamboo 整合
 

@@ -2,25 +2,21 @@
 title: 教學課程：以 Azure Active Directory 設定 Zscaler ZSCloud 來自動佈建使用者 | Microsoft Docs
 description: 在此教學課程中，您將了解如何設定 Azure Active Directory 來對 Zscaler ZSCloud 自動佈建及取消佈建使用者帳戶。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: a752be80-d3ef-45d1-ac8f-4fb814c07b07
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: af9d4aa15a4ff2784d2e1ca1334d9c24a8d12251
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5e8571da46ca188e975119c387fa4ee0695c4fde
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77062671"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545704"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler ZSCloud 來自動佈建使用者
 

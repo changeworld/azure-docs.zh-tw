@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Jive 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Jive 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9fc5659a-c116-4a1b-a601-333325a26b46
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87488c05aa5f7503529d2bf24c0af6a12fa92bc8
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 432ca72a667caa9c2a78b08396884d957b4c650b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848599"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Jive 整合
 

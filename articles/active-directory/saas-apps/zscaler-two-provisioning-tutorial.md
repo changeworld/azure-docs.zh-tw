@@ -2,25 +2,21 @@
 title: 教學課程：以 Azure Active Directory 設定 Zscaler Two 來自動佈建使用者 | Microsoft Docs
 description: 在本教學課程中，您將了解如何設定 Azure Active Directory 來對 Zscaler Two 自動佈建及取消佈建使用者帳戶。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 0a250fcd-6ca1-47c2-a780-7a6278186a69
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 364b106e7c1f01269ac02b0c2851f8824ea0f58c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bea34b2a8b8827b709cc637c0a33132477419a83
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77062688"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545730"
 ---
 # <a name="tutorial-configure-zscaler-two-for-automatic-user-provisioning"></a>教學課程：設定 Zscaler Two 來自動佈建使用者
 

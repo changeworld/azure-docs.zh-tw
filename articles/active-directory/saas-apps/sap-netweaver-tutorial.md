@@ -2,26 +2,21 @@
 title: 教學課程：教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP NetWeaver 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 SAP NetWeaver 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 1b9e59e3-e7ae-4e74-b16c-8c1a7ccfdef3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 700f2ca4d46b3483531fa0784cb78699befb20ca
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 38ac4f1bf6a1dd4656b4e7d5783051f3b381940c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897741"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546809"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-netweaver"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP NetWeaver 整合
 

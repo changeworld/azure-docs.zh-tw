@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Soloinsight-CloudGate SSO 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Soloinsight-CloudGate SSO 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 9263c241-85a4-4724-afac-0351d6275958
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b88822f164e0fe8cdf55eddfa981644f725e01f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5ac0f0777ea341036950550e19c5d8e7fb71a91f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159923"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545058"
 ---
 # <a name="tutorial-integrate-soloinsight-cloudgate-sso-with-azure-active-directory"></a>教學課程：整合 Soloinsight-CloudGate SSO 與 Azure Active Directory
 

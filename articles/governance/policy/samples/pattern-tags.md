@@ -1,14 +1,14 @@
 ---
 title: 模式：使用原則定義中的標記
 description: 此 Azure 原則模式提供如何在原則定義中新增參數化標記或從資源群組繼承標記的範例。
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: b71a21fadfc8dec3da2feabbce127303174a95d3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 3016fc7889f68fd13e993c67ca645a4af055c651
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83704341"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545551"
 ---
 # <a name="azure-policy-pattern-tags"></a>Azure 原則模式：標記
 

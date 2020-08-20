@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Yuhu 資產管理平台整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Yuhu 資產管理平台之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5f7846fe-49f8-48b4-abda-a3719cb18c15
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0f15dfa36c24c7a84e254b110e9cceae54c8786
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2427d474f4a36dc518680518a10cace290c0136
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75532161"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546118"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-yuhu-property-management-platform"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Yuhu 資產管理平台整合
 

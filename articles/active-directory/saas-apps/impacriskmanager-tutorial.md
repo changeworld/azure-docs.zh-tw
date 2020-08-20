@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 IMPAC Risk Manager 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 IMPAC Risk Manager 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4d77390e-898c-4258-a562-a1181dfe2880
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: c2c153d8e67ff952add177d8a98b7561c3165774
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 28b754a90b20a26d55b3c905f7cddafee4f0aa3d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100389"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>教學課程：Azure Active Directory 與 IMPAC Risk Manager 整合
 

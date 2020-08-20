@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Box 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Box 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3b565c8d-35e2-482a-b2f4-bf8fd7d8731f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54964759d9afbacd0e410b713336cdd8d5b2c6c6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8045076ce77e98345c0db3cd19293b4ef76293e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018208"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548182"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Box 整合
 
@@ -96,7 +92,7 @@ ms.locfileid: "87018208"
     > [!NOTE]
     > [登入 URL] 的值不是真正的值。 請使用實際的「登入 URL」來更新此值。 請連絡 [Box 用戶端支援小組](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
-1. 在 [以 SAML 設定單一登入] 頁面上的 [SAML 簽署憑證] 區段中，尋找 [同盟中繼資料 XML]，然後選取 [下載]，以下載憑證並將其儲存在電腦上。
+1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [同盟中繼資料 XML]  ，然後選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/metadataxml.png)
 
@@ -104,7 +100,7 @@ ms.locfileid: "87018208"
 
 在本節中，您將在 Azure 入口網站中建立名為 B.Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
 1. 在畫面頂端選取 [新增使用者]。
 1. 在 [使用者] 屬性中，執行下列步驟：
    1. 在 [名稱] 欄位中，輸入 `B.Simon`。  

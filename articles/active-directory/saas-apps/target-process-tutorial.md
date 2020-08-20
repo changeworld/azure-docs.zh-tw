@@ -2,25 +2,21 @@
 title: 教學課程：將 Azure Active Directory 與 TargetProcess 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 TargetProcess 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7cb91628-e758-480d-a233-7a3caaaff50d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 60cd043c34ba2aee365c59feb38cc9dd02d45746
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d5b0be147b8aa25e6c737d423eaf4a8a23cde083
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67089049"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546520"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>教學課程：將 Azure Active Directory 與 TargetProcess 整合
 
@@ -70,7 +66,7 @@ ms.locfileid: "67089049"
 
      ![結果清單中的 TargetProcess](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>設定和測試 Azure AD 單一登入
+## <a name="configure-and-test-azure-ad-sso"></a>設定並測試 Azure AD SSO
 
 在本節中，您會以名為 **Britta Simon** 的測試使用者為基礎，設定及測試與 TargetProcess 搭配運作的 Azure AD 單一登入。
 若要讓單一登入能夠運作，必須建立 Azure AD 使用者與 TargetProcess 中相關使用者之間的連結關聯性。
@@ -133,47 +129,49 @@ ms.locfileid: "67089049"
 
     ![image](./media/target-process-tutorial/install_extension.png)
 
-2. 將延伸模組新增至瀏覽器之後，按一下 [安裝 TargetProcess]  便會將您導向到 TargetProcess 應用程式。 請從該處提供用以登入 TargetProcess 的管理員認證。 瀏覽器延伸模組將會自動為您設定應用程式，並自動執行步驟 3 到 7。
+1. 將延伸模組新增至瀏覽器之後，按一下 [安裝 TargetProcess]  便會將您導向到 TargetProcess 應用程式。 請從該處提供用以登入 TargetProcess 的管理員認證。 瀏覽器延伸模組將會自動為您設定應用程式，並自動執行步驟 3 到 7。
+
+    ![設定組態](common/setup-sso.png)
 
     **如果您想要手動設定應用程式，請執行下列步驟：**
 
-3. 以系統管理員身分登入您的 TargetProcess 應用程式。
+1. 以系統管理員身分登入您的 TargetProcess 應用程式。
 
-4. 在頂端的功能表中，按一下 [安裝]  。
+1. 在上方功能表中，按一下 [設定]****。
 
     ![安裝程式](./media/target-process-tutorial/tutorial_target_process_05.png)
 
-5. 按一下 [設定]  索引標籤。
+1. 按一下 [設定]**** 索引標籤。
 
     ![設定](./media/target-process-tutorial/tutorial_target_process_06.png)
 
-6. 按一下 [單一登入]  索引標籤。
+1. 按一下 [單一登入] **** 索引標籤。
 
     ![按一下 [單一登入]](./media/target-process-tutorial/tutorial_target_process_07.png)
 
-7. 在 [單一登入設定] 對話方塊上，執行下列步驟：
+1. 在 [單一登入設定] 對話方塊上，執行下列步驟：
 
     ![設定單一登入](./media/target-process-tutorial/tutorial_target_process_08.png)
 
-    a. 按一下 [啟用單一登入]  。
+    a. 按一下 [啟用單一登入]****。
 
-    b. 在 [登入 URL]  文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]  值。
+    b. 在 [登入 URL]**** 文字方塊中，貼上您從 Azure 入口網站複製的 [登入 URL]**** 值。
 
-    c. 在記事本中開啟下載的憑證，複製其內容，然後貼到 [憑證]  文字方塊中。
+    c. 在記事本中開啟下載的憑證，複製其內容，然後貼到 [憑證] 文字方塊中。
 
     d. 按一下 [ **啟用 JIT 佈建**]。
 
-    e. 按一下 [檔案]  。
+    e. 按一下 [檔案] 。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
 
 本節的目標是要在 Azure 入口網站中建立一個名為 Britta Simon 的測試使用者。
 
-1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]  、[使用者]  和 [所有使用者]  。
+1. 在 Azure 入口網站的左窗格中，依序選取 [Azure Active Directory]、[使用者] 和 [所有使用者]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](common/users.png)
 
-2. 在畫面頂端選取 [新增使用者]  。
+2. 在畫面頂端選取 [新增使用者]。
 
     ![[新增使用者] 按鈕](common/new-user.png)
 
@@ -181,28 +179,28 @@ ms.locfileid: "67089049"
 
     ![[使用者] 對話方塊](common/user-properties.png)
 
-    a. 在 [名稱]  欄位中，輸入 **BrittaSimon**。
+    a. 在 [名稱] 欄位中，輸入 **BrittaSimon**。
   
-    b. 在 [使用者名稱]  欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在 [使用者名稱] 欄位中，輸入 **brittasimon\@yourcompanydomain.extension**  
     例如， BrittaSimon@contoso.com
 
-    c. 選取 [顯示密碼]  核取方塊，然後記下 [密碼] 方塊中顯示的值。
+    c. 選取 [顯示密碼] 核取方塊，然後記下 [密碼] 方塊中顯示的值。
 
-    d. 按一下頁面底部的 [新增]  。
+    d. 按一下 [建立]。
 
 ### <a name="assign-the-azure-ad-test-user"></a>指派 Azure AD 測試使用者
 
 在本節中，您會將 TargetProcess 的存取權授與 Britta Simon，讓她能夠使用 Azure 單一登入。
 
-1. 在 Azure 入口網站中，依序選取 [企業應用程式]  、[所有應用程式]  及 [TargetProcess]  。
+1. 在 Azure 入口網站中，依序選取 [企業應用程式]****、[所有應用程式]**** 及 [TargetProcess]****。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選取 [TargetProcess]  。
+2. 在應用程式清單中，選取 [TargetProcess] ****。
 
     ![應用程式清單中的 TargetProcess 連結](common/all-applications.png)
 
-3. 在左側功能表中，選取 [使用者和群組]  。
+3. 在左側功能表中，選取 [使用者和群組]。
 
     ![[使用者和群組] 連結](common/users-groups-blade.png)
 
@@ -210,11 +208,11 @@ ms.locfileid: "67089049"
 
     ![[新增指派] 窗格](common/add-assign-user.png)
 
-5. 在 [使用者和群組]  對話方塊的 [使用者] 清單中，選取 [Britta Simon]  ，然後按一下畫面底部的 [選取]  按鈕。
+5. 在 [使用者和群組] 對話方塊的 [使用者] 清單中，選取 [Britta Simon]，然後按一下畫面底部的 [選取] 按鈕。
 
-6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色]  對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取]  按鈕。
+6. 如果您預期使用 SAML 判斷提示中的任何角色值，請在 [選取角色] 對話方塊的清單中選取適當使用者角色，然後按一下畫面底部的 [選取] 按鈕。
 
-7. 在 [新增指派]  對話方塊中，按一下 [指派]  按鈕。
+7. 在 [新增指派] 對話方塊中，按一下 [指派] 按鈕。
 
 ### <a name="create-targetprocess-test-user"></a>建立 TargetProcess 測試使用者
 

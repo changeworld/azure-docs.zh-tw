@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: ec39b4c6a478af22363e7ff30fee81ae3509f724
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: ff56a3e9c15d6f4bf04765c30084a9ca68df0e73
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85555865"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544752"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教學課程：使用 Azure Content Moderator 仲裁電子商務產品影像
 
@@ -32,7 +32,7 @@ ms.locfileid: "85555865"
 
 GitHub 上的[範例電子商務目錄仲裁](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)存放庫會提供完整的範例程式碼。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
