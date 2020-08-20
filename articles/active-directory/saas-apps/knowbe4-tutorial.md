@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 KnowBe4 Security Awareness Training 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 KnowBe4 Security Awareness Training 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: b80d2212-cc5f-4adb-836c-570640810c39
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f774357dc2fd1e37466c2c338e8e8616ae599d12
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c6e70268dcc252964a0b046488c399f474660ca5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159665"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540046"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowbe4-security-awareness-training"></a>教學課程：Azure Active Directory 與 KnowBe4 Security Awareness Training 整合
 

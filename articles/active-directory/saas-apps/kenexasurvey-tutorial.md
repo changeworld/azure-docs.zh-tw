@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 IBM Kenexa Survey Enterprise 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 IBM Kenexa Survey Enterprise 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c7aac6da-f4bf-419e-9e1a-16b460641a52
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: jeedes
-ms.openlocfilehash: c649b966b3e210f6b026b06a9654761e0f97aea1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ed4725a98939e160f42d3087b86e591b09c026c4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67099047"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540162"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>教學課程：Azure Active Directory 與 IBM Kenexa Survey Enterprise 整合
 
