@@ -1,6 +1,6 @@
 ---
 title: HB 系列和 HC 系列 Vm 的已知問題-Azure 虛擬機器 |Microsoft Docs
-description: 瞭解 Azure 中 HB 系列 VM 大小的已知問題。
+description: 瞭解 Azure 中的 HB 系列 VM 大小已知問題。
 services: virtual-machines
 documentationcenter: ''
 author: vermagit
@@ -10,38 +10,39 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/19/2020
 ms.author: amverma
-ms.openlocfilehash: e85ae50321b9aa034f6a6d2cadcc329a24dafa62
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.reviewer: cynthn
+ms.openlocfilehash: 2de2680ccd0ecf385598080747e80eed5ead3bc8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500013"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652860"
 ---
-# <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB-系列和 HC 系列 VM 的已知問題
+# <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知問題
 
-本文提供使用 HB 系列和 HC 系列 Vm 時最常見的問題和解決方案。
+本文提供使用 [H 系列](../../sizes-hpc.md) 和 [N 系列](../../sizes-gpu.md) vm 時最常見的問題和解決方案。
 
 ## <a name="dram-on-hb-series"></a>HB 系列上的 DRAM
 
-HB 系列 Vm 目前只能對來賓 Vm 公開 228 GB 的 RAM。 這是因為 Azure 虛擬機器的已知限制，導致無法將頁面指派給為來賓 VM 保留的 AMD CCX （NUMA 網域）的本機 DRAM。
+HB 系列 Vm 目前只能將 228 GB 的 RAM 公開給來賓 Vm。 這是因為 Azure 虛擬程式的已知限制，可防止將頁面指派給 AMD CCX (NUMA 網域的本機 DRAM，) 保留給來賓 VM。
 
 ## <a name="accelerated-networking"></a>加速網路
 
-目前未啟用 Azure 加速網路，但我們會在預覽期間進行。 當支援這項功能時，我們會通知客戶。
+Azure 加速網路目前未啟用，但我們會在預覽期間進行。 當支援這項功能時，我們會通知客戶。
 
 ## <a name="qp0-access-restriction"></a>qp0 存取限制
 
-為防止可能導致安全性弱點的低層級硬體存取，來賓 Vm 無法存取佇列配對0。 這只會影響通常與 ConnectX-5 NIC 的管理相關的動作，並執行一些不受 ibdiagnet 的診斷（例如，而不是終端使用者應用程式本身）。
+為了防止可能導致安全性弱點的低層級硬體存取，來賓 Vm 無法存取佇列配對0。 這應該只會影響與 ConnectX-5 NIC 的系統管理相關的動作，以及執行一些像是 ibdiagnet，但不是終端使用者應用程式本身的非等量診斷。
 
 ## <a name="ud-transport"></a>UD 傳輸
 
-在啟動時，HB 和 HC 系列不支援動態連線的傳輸（DCT）。 DCT 的支援將會在一段時間後執行。 支援可靠連接（RC）和不可靠的資料包（UD）傳輸。
+在啟動時，HB 和 HC 系列不支援動態連接的傳輸 (DCT) 。 DCT 的支援將在一段時間內實行。 支援可靠連接 (RC) 和不可靠的資料包 (UD) 傳輸。
 
 ## <a name="gss-proxy"></a>GSS Proxy
 
-GSS Proxy 在 CentOS/RHEL 7.5 中有已知的錯誤，可在搭配 NFS 使用時，將其資訊清單為顯著的效能和回應性的影響。 這可以透過下列方式減輕：
+GSS Proxy 在 CentOS/RHEL 7.5 中有已知的錯誤，可在與 NFS 搭配使用時，將其視為顯著的效能和回應性。 這可透過下列方式降低：
 
 ```console
 sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
@@ -49,11 +50,11 @@ sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 
 ## <a name="cache-cleaning"></a>快取清除
 
-在 HPC 系統上，在下一次使用者指派相同節點之前，在作業完成後清除記憶體通常會很有用。 在 Linux 中執行應用程式之後，您可能會發現您的可用記憶體會在緩衝區記憶體增加時減少，但不會執行任何應用程式。
+在 HPC 系統上，在作業完成後清除記憶體，直到下一個使用者被指派相同的節點時，通常會很有用。 在 Linux 中執行應用程式之後，您可能會發現您的可用記憶體會在緩衝區記憶體增加時減少，儘管不會執行任何應用程式。
 
 ![命令提示字元的螢幕擷取畫面](./media/known-issues/cache-cleaning-1.png)
 
-使用 `numactl -H` 將會顯示記憶體緩衝處理的 NUMAnode （可能全部）。 在 Linux 中，使用者可以用三種方式清除快取，以將緩衝或快取的記憶體傳回「免費」。 您必須是 root 或具有 sudo 許可權。
+使用 `numactl -H` 將會顯示哪些 NUMAnode (s) 記憶體會 (可能的所有) 進行緩衝處理。 在 Linux 中，使用者可以用三種方式清除快取，以將緩衝或快取的記憶體傳回「free」。 您必須是 root 或具有 sudo 許可權。
 
 ```console
 echo 1 > /proc/sys/vm/drop_caches [frees page-cache]
@@ -65,7 +66,7 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 
 ## <a name="kernel-warnings"></a>核心警告
 
-在 Linux 底下啟動 HB 系列 VM 時，您可能會看到下列內核警告訊息。
+當您在 Linux 下啟動 HB 系列 VM 時，可能會看到下列核心警告訊息。
 
 ```console
 [  0.004000] WARNING: CPU: 4 PID: 0 at arch/x86/kernel/smpboot.c:376 topology_sane.isra.3+0x80/0x90
@@ -85,8 +86,17 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 [  0.004000] ---[ end trace 73fc0e0825d4ca1f ]---
 ```
 
-您可以忽略此警告。 這是因為 Azure 虛擬機器的已知限制，將會在一段時間後解決。
+您可以忽略此警告。 這是因為 Azure 虛擬程式在一段時間內將會解決的已知限制。
+
+
+## <a name="infiniband-driver-installation-on-infiniband-enabled-n-series-vm-sizes"></a>在已啟用的已啟用 N 系列 VM 大小上安裝的無駕駛驅動程式
+
+NC24r_v3 和 ND40r_v2 會在 NC24r 且 NC24r_v2 未啟用 SR-IOV 的情況下啟用 SR-IOV。 [以下](../../sizes-hpc.md#rdma-capable-instances)是有關分叉的詳細資料。
+使用 OFED 驅動程式時，您可以在啟用 SR-IOV 的 VM 大小上設定自動調整 (IB) ，而非 SR-IOV VM 的大小則需要 ND 驅動程式。 此 IB 支援已在 [CentOS-HPC VMIs](configure.md)上適當地提供。 針對 Ubuntu，請參閱[此處的指示](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，以安裝 OFED 和 ND 驅動程式，如檔中所[述。](enable-infiniband.md#vm-images-with-infiniband-drivers)
+
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解 Azure 中的[高效](/azure/architecture/topics/high-performance-computing/)能運算。
+- 請檢閱 [HB 系列概觀](hb-series-overview.md)和 [HC 系列概觀](hc-series-overview.md)，了解如何以最佳方式設定工作負載以獲得效能和可擴縮性。
+- 請參閱 [Azure 運算技術社群部落格](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 範例和結果。
+- 如需執行中 HPC 工作負載較高階的架構檢視，請參閱 [Azure 上的高效能運算 (HPC)](/azure/architecture/topics/high-performance-computing/)。
