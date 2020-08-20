@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 TigerText Secure Messenger 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 TigerText Secure Messenger 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 03f1e128-5bcb-4e49-b6a3-fe22eedc6d5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: ea3bda1dd51a7c3a2e5e3f8b669d7138898f1595
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9dff60767e923bad1322b689acd98e69eb9c2ac6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67088666"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>教學課程：Azure Active Directory 與 TigerText Secure Messenger 整合
 
@@ -148,7 +144,7 @@ TigerText Secure Messenger 支援由 SP 起始的單一登入 (SSO)。
 
     1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
   
-    1. 在 [使用者名稱]  方塊中，輸入 **BrittaSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BrittaSimon\@contoso.com**。
+    1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon\@\<yourcompanydomain>.\<extension>** 。 例如 **BrittaSimon\@contoso.com**。
 
     1. 選取 [顯示密碼]  核取方塊，然後記下 [密碼]  方塊中顯示的值。
 

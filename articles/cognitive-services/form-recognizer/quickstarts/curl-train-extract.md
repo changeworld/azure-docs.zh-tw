@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 94873a3ea1349a9dfac199d98fd109b1a97f72f9
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d0bf5da3633ce8f34e34cbdf0cee12a94c128d72
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904729"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517960"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>快速入門：搭配使用 REST API 與 cURL 將表單辨識器模型定型並擷取表單資料
 
 在本快速入門中，您將搭配使用 Azure 表單辨識器的 REST API 與 cURL 來定型及評分表單，以擷取金鑰/值組和資料表。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -49,7 +49,7 @@ ms.locfileid: "87904729"
 curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0/custom/models" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
-您會收到含有**位置**標頭的 `201 (Success)` 回應。 此標頭的值是要定型之新模型的識別碼。 
+您會收到含有**位置**標頭的 `201 (Success)` 回應。 此標頭的值是要定型之新模型的識別碼。
 
 ## <a name="get-training-results"></a>取得定型結果
 
@@ -66,64 +66,64 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>" -H
 您將會收到 `200 (Success)` 回應，內含下列格式的 JSON 本文。 請留意 `"status"` 欄位。 定型完成後，其值將是 `"ready"`。 如果模型未完成定型，您必須重新執行命令，以重新查詢服務。 我們建議您在每個呼叫之前間隔一秒以上的時間。
 
 `"modelId"` 欄位包含您要定型之模型的識別碼。 下一個步驟將需要這項資料。
-    
+
 ```json
-{ 
-  "modelInfo":{ 
+{
+  "modelInfo":{
     "status":"ready",
     "createdDateTime":"2019-10-08T10:20:31.957784",
     "lastUpdatedDateTime":"2019-10-08T14:20:41+00:00",
     "modelId":"1cfb372bab404ba3aa59481ab2c63da5"
   },
-  "trainResult":{ 
-    "trainingDocuments":[ 
-      { 
+  "trainResult":{
+    "trainingDocuments":[
+      {
         "documentName":"invoices\\Invoice_1.pdf",
         "pages":1,
-        "errors":[ 
+        "errors":[
 
         ],
         "status":"succeeded"
       },
-      { 
+      {
         "documentName":"invoices\\Invoice_2.pdf",
         "pages":1,
-        "errors":[ 
+        "errors":[
 
         ],
         "status":"succeeded"
       },
-      { 
+      {
         "documentName":"invoices\\Invoice_3.pdf",
         "pages":1,
-        "errors":[ 
+        "errors":[
 
         ],
         "status":"succeeded"
       },
-      { 
+      {
         "documentName":"invoices\\Invoice_4.pdf",
         "pages":1,
-        "errors":[ 
+        "errors":[
 
         ],
         "status":"succeeded"
       },
-      { 
+      {
         "documentName":"invoices\\Invoice_5.pdf",
         "pages":1,
-        "errors":[ 
+        "errors":[
 
         ],
         "status":"succeeded"
       }
     ],
-    "errors":[ 
+    "errors":[
 
     ]
   },
-  "keys":{ 
-    "0":[ 
+  "keys":{
+    "0":[
       "Address:",
       "Invoice For:",
       "Microsoft",
@@ -166,18 +166,18 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
 
 ```json
 {
-  "analyzeResult":{ 
-    "readResults":[ 
-      { 
+  "analyzeResult":{
+    "readResults":[
+      {
         "page":1,
         "width":8.5,
         "height":11.0,
         "angle":0,
         "unit":"inch",
-        "lines":[ 
-          { 
+        "lines":[
+          {
             "text":"Contoso",
-            "boundingBox":[ 
+            "boundingBox":[
               0.5278,
               1.0597,
               1.4569,
@@ -187,10 +187,10 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
               0.5278,
               1.4347
             ],
-            "words":[ 
-              { 
+            "words":[
+              {
                 "text":"Contoso",
-                "boundingBox":[ 
+                "boundingBox":[
                   0.5278,
                   1.0597,
                   1.4569,
@@ -204,9 +204,9 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
             ]
           },
           ...
-          { 
+          {
             "text":"PT",
-            "boundingBox":[ 
+            "boundingBox":[
               6.2181,
               3.3528,
               6.3944,
@@ -216,10 +216,10 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
               6.2181,
               3.5417
             ],
-            "words":[ 
-              { 
+            "words":[
+              {
                 "text":"PT",
-                "boundingBox":[ 
+                "boundingBox":[
                   6.2181,
                   3.3528,
                   6.3944,
@@ -236,21 +236,21 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
       }
     ],
     "version":"2.0.0",
-    "errors":[ 
+    "errors":[
 
     ],
-    "documentResults":[ 
+    "documentResults":[
 
     ],
-    "pageResults":[ 
-      { 
+    "pageResults":[
+      {
         "page":1,
         "clusterId":1,
-        "keyValuePairs":[ 
-          { 
-            "key":{ 
+        "keyValuePairs":[
+          {
+            "key":{
               "text":"Address:",
-              "boundingBox":[ 
+              "boundingBox":[
                 0.7972,
                 1.5125,
                 1.3958,
@@ -260,13 +260,13 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
                 0.7972,
                 1.6431
               ],
-              "elements":[ 
+              "elements":[
                 "#/readResults/0/lines/1/words/0"
               ]
             },
-            "value":{ 
+            "value":{
               "text":"1 Redmond way Suite 6000 Redmond, WA 99243",
-              "boundingBox":[ 
+              "boundingBox":[
                 0.7972,
                 1.6764,
                 2.15,
@@ -276,7 +276,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
                 0.7972,
                 2.2181
               ],
-              "elements":[ 
+              "elements":[
                 "#/readResults/0/lines/4/words/0",
                 "#/readResults/0/lines/4/words/1",
                 "#/readResults/0/lines/4/words/2",
@@ -289,10 +289,10 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
             },
             "confidence":0.86
           },
-          { 
-            "key":{ 
+          {
+            "key":{
               "text":"Invoice For:",
-              "boundingBox":[ 
+              "boundingBox":[
                 4.3903,
                 1.5125,
                 5.1139,
@@ -302,14 +302,14 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
                 4.3903,
                 1.6431
               ],
-              "elements":[ 
+              "elements":[
                 "#/readResults/0/lines/2/words/0",
                 "#/readResults/0/lines/2/words/1"
               ]
             },
-            "value":{ 
+            "value":{
               "text":"Microsoft 1020 Enterprise Way Sunnayvale, CA 87659",
-              "boundingBox":[ 
+              "boundingBox":[
                 5.1917,
                 1.4458,
                 6.6583,
@@ -319,7 +319,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
                 5.1917,
                 2.0347
               ],
-              "elements":[ 
+              "elements":[
                 "#/readResults/0/lines/3/words/0",
                 "#/readResults/0/lines/5/words/0",
                 "#/readResults/0/lines/5/words/1",
@@ -333,18 +333,18 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
           },
           ...
         ],
-        "tables":[ 
-          { 
+        "tables":[
+          {
             "caption":null,
             "rows":2,
             "columns":5,
-            "cells":[ 
-              { 
+            "cells":[
+              {
                 "rowIndex":0,
                 "colIndex":0,
                 "header":true,
                 "text":"Invoice Number",
-                "boundingBox":[ 
+                "boundingBox":[
                   0.5347,
                   2.8722,
                   1.575,
@@ -354,17 +354,17 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
                   0.5347,
                   3.0028
                 ],
-                "elements":[ 
+                "elements":[
                   "#/readResults/0/lines/9/words/0",
                   "#/readResults/0/lines/9/words/1"
                 ]
               },
-              { 
+              {
                 "rowIndex":0,
                 "colIndex":1,
                 "header":true,
                 "text":"Invoice Date",
-                "boundingBox":[ 
+                "boundingBox":[
                   1.9403,
                   2.8722,
                   2.7569,
@@ -374,17 +374,17 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
                   1.9403,
                   3.0028
                 ],
-                "elements":[ 
+                "elements":[
                   "#/readResults/0/lines/10/words/0",
                   "#/readResults/0/lines/10/words/1"
                 ]
               },
-              { 
+              {
                 "rowIndex":0,
                 "colIndex":2,
                 "header":true,
                 "text":"Invoice Due Date",
-                "boundingBox":[ 
+                "boundingBox":[
                   3.3403,
                   2.8722,
                   4.4583,
@@ -394,7 +394,7 @@ curl -X GET "https://<Endpoint>/formrecognizer/v2.0/custom/models/<model ID>/ana
                   3.3403,
                   3.0028
                 ],
-                "elements":[ 
+                "elements":[
                   "#/readResults/0/lines/11/words/0",
                   "#/readResults/0/lines/11/words/1",
                   "#/readResults/0/lines/11/words/2"
