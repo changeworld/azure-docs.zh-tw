@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 3024c79b6295762636518e3f77d506ad45f73682
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d300252893a72ef6296e941f5a573a67807779f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090751"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652571"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure 資料箱：常見問題集
 
@@ -38,15 +38,15 @@ A.  Azure 資料箱服務是針對離線資料擷取而設計的。 此服務管
 ### <a name="q-what-is-azure-data-box"></a>Q. 什麼是 Azure 資料箱？
 A. Azure 資料箱可讓您快速、實惠且安全地將數 TB 的資料輸入 Azure 中。 您可以透過 Azure 入口網站訂購資料箱裝置。 Microsoft 會透過區域性貨運公司，將有 80 TB 可用容量的存放裝置寄送給您。 
 
-一旦收到裝置之後，您就可以快速地使用本機 Web UI 來設定它。 將資料從您的伺服器複製到裝置，或從裝置複製到伺服器，然後將裝置寄回 Azure。 針對匯入順序，在 Azure 資料中心內，您的資料會自動從裝置上傳至 Azure。 Azure 入口網站中的資料箱服務會以端對端的方式追蹤這整個程序。
+一旦收到裝置之後，您就可以快速地使用本機 Web UI 來設定它。 將您伺服器的資料複製到裝置，或從裝置複製到伺服器，並將裝置寄回 Azure。 針對匯入順序，在 Azure 資料中心內，您的資料會自動從裝置上傳至 Azure。 Azure 入口網站中的資料箱服務會以端對端的方式追蹤這整個程序。
 
 ### <a name="q-when-should-i-use-data-box"></a>Q. 何時應使用資料箱？
-A. 如果您有 40-500 TB 的資料，而您想要在 Azure 中進行傳輸，您可以使用資料箱受益。 若資料大小 < 40 TB，請使用資料箱磁碟；若資料大小 > 500 TB，請註冊 [Data Box Heavy](data-box-heavy-overview.md)。
+A. 如果您有 40-500 TB 的資料要傳輸至 Azure 或從 Azure 傳輸，您將會受益于使用資料箱。 若資料大小 < 40 TB，請使用資料箱磁碟；若資料大小 > 500 TB，請註冊 [Data Box Heavy](data-box-heavy-overview.md)。
 
 ### <a name="q-what-is-the-price-of-data-box"></a>Q. 資料箱的價格為何？
-A. 資料箱僅收取少許費用，提供 10 天使用。 當您在 Azure 入口網站中建立訂單時，選取產品型號會顯示該裝置的費用。 Azure 儲存體的標準運送費用和費用也適用。 匯出訂單會遵循類似于匯入訂單的價格模型，但可能會有額外的輸出費用。 
+A. 資料箱僅收取少許費用，提供 10 天使用。 當您在 Azure 入口網站中建立訂單時，選取產品型號會顯示該裝置的費用。 Azure 儲存體的標準出貨費用和費用也適用。 匯出訂單會遵循類似于匯入訂單的定價模型，但可能會收取額外的輸出費用。 
 
-如需詳細資訊，請移至[Azure 資料箱定價](https://azure.microsoft.com/pricing/details/storage/databox/)和輸出[費用](https://azure.microsoft.com/pricing/details/bandwidth/)。 
+如需詳細資訊，請移至 [Azure 資料箱定價](https://azure.microsoft.com/pricing/details/storage/databox/) 和輸出 [費用](https://azure.microsoft.com/pricing/details/bandwidth/)。 
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-in-one-instance"></a>Q. 使用資料箱一次最多可以傳輸多少資料量？
 A. 資料箱擁有 100 TB 的原始容量，而可用容量則為 80 TB。 您可以使用資料箱傳輸最多 80 TB 的資料。 若要傳輸更多資料，您必須訂購更多裝置。
@@ -56,6 +56,18 @@ A.  如需哪些國家/地區提供資料箱的資訊，請移至[區域可用�
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>Q. 在哪些區域中可以使用資料箱來儲存資料？
 A. 美國、西歐、北歐、法國、英國、日本、澳大利亞和加拿大內的所有區域都支援資料箱。 如需詳細資訊，請移至[區域可用性](data-box-overview.md#region-availability)。
+
+### <a name="q-how-can-i-import-my-on-premises-source-data-to-an-azure-region-in-a-different-countryregion-or-export-data-from-an-azure-region-in-one-country-to-a-different-countryregion"></a>Q. 如何將內部部署來源資料匯入至不同國家/地區的 Azure 區域，或將資料從一個國家/地區的 Azure 區域匯出到不同的國家/地區？
+
+資料箱僅支援在與目的地相同的國家/地區內內嵌或輸出資料，而且不會跨越任何國際框線。 唯一的例外狀況是歐盟 (EU) 中的訂單，資料箱可以在任何歐盟國家/地區運送。
+
+例如，在匯入案例中，如果您在加拿大有您想要移至 Azure WestUS 儲存體帳戶的內部部署資料，您可以透過下列方式來達成：
+
+1. 在 [Cananda] 中選擇儲存體帳戶，以在加拿大訂購資料箱。 裝置會從加拿大的 Azure 資料中心寄送至加拿大) 在訂單建立期間提供的運送位址 (。
+
+2. 將內部部署資料複製到資料箱之後，請將裝置退回至加拿大的 Azure 資料中心。 然後，資料箱上的資料會上傳至在訂單建立期間所選擇的加拿大 Azure 區域中的目的地儲存體帳戶。
+
+3. 然後，您可以使用 AzCopy 之類的工具，將資料複製到 WestUS 中的儲存體帳戶。 此步驟會產生不包含在資料箱計費中的 [標準儲存體](https://azure.microsoft.com/pricing/details/storage/) 和 [頻寬費用](https://azure.microsoft.com/pricing/details/bandwidth/) 。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>Q. 如果遇到任何資料箱方面的問題，該與誰連絡？
 A. 如果您遇到任何資料箱方面的問題，請連絡 [Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)。
@@ -86,7 +98,7 @@ A. 這表示您選取的國家/地區和區域組合無法提供資料箱服務�
 A. 當您下單時，我們會檢查裝置是否可供您的訂單使用。 如果裝置可用，我們將會在 10 天內寄出。 可以想見的是可能會有需求高峰期間。 在此情況下，您的訂單將會排入佇列，而且您可以在 Azure 入口網站中追蹤狀態變更。 如果您的訂單在 90 天後仍未完成，訂單將會自動取消。
 
 ### <a name="q-i-have-filled-up-my-data-box-with-data-and-need-to-order-another-one-is-there-a-way-to-quickly-place-the-order"></a>Q. 我已將資料箱填滿資料，而需要再訂購一個資料箱。 有快速下訂單的方法嗎？
-A. 您可以複製您的上一筆訂單。 複製會建立與之前相同的訂單，因此您只需編輯訂單詳細資料即可，而不需要輸入地址、連絡人和通知詳細資料。 只有匯入訂單才允許複製。
+A. 您可以複製您的上一筆訂單。 複製會建立與之前相同的訂單，因此您只需編輯訂單詳細資料即可，而不需要輸入地址、連絡人和通知詳細資料。 只允許匯入順序的複製。
 
 ## <a name="configure-and-connect"></a>設定和連線
 
@@ -183,7 +195,7 @@ A.  是。 資料箱可支援最多 10 個儲存體帳戶、一般用途、傳�
 A. 如果您收到的裝置已損毀，或是有遭到竄改的跡象，請勿使用該裝置。 請[連絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)並儘快送回裝置。 您也可以建立新的資料箱訂單來更換裝置。 在此情況下，將不會對您收取更換裝置的費用。
 
 ### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. 我可以自取我的資料箱訂單嗎？ 我可以透過我選擇的貨運公司寄回資料箱嗎？
-A. 是。 Microsoft 也提供自我管理的運送。 當您對資料箱下訂單時，您可以選擇自我管理的運送選項。 如需詳細資訊，請參閱[資料箱的自我管理運送](data-box-portal-customer-managed-shipping.md)。
+A. 是。 Microsoft 也提供自我管理的運送。 當您對資料箱下訂單時，您可以選擇自我管理的運送選項。 如需詳細資訊，請參閱 [自我管理資料箱的運送](data-box-portal-customer-managed-shipping.md)。
 
 ### <a name="q-will-my-data-box-devices-cross-countryregion-borders-during-shipping"></a>Q. 我的資料箱服務在運送期間可以跨國家/區域邊界使用嗎？
 A. 所有的資料箱裝置都是在與目的地相同的國家/區域內寄送，並不會跨越任何跨國界。 唯一的例外狀況是位於歐盟 (EU) 的訂單，該地區的裝置可以在任何歐盟國家/區域之間運送。 這適用於資料箱及 Data Box Heavy 裝置。
@@ -204,7 +216,7 @@ A.  在傳輸期間，資料箱上的下列功能可協助保護資料。
  - 裝置已鎖定，且需要解除鎖定密碼才能進入並存取資料。
 如需詳細資訊，請移至[資料箱安全性功能](data-box-security.md)。  
 
-### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Q. 我已完成針對匯入順序出貨並關閉裝置的準備工作。 是否還可以將更多資料新增到資料箱中？
+### <a name="q-i-have-finished-prepare-to-ship-for-my-import-order-and-shut-down-the-device-can-i-still-add-more-data-to-data-box"></a>Q. 我已完成匯入順序的準備，並關閉裝置。 是否還可以將更多資料新增到資料箱中？
 A. 是。 您可以將裝置開機，並新增更多資料。 一旦您完成資料複製，將需要再次執行**準備寄送**。
 
 ### <a name="q-i-received-my-device-and-it-is-not-booting-up-how-do-i-ship-the-device-back"></a>Q. 我收到我的裝置，但無法開機？ 如何將裝置送回？
@@ -244,7 +256,7 @@ A.  下列報表類型可用來支援監管鏈：
 
 - UPS 的運輸物流。
 - 開啟電源和使用者共用存取的記錄。
-- 具有64位迴圈冗余檢查（CRC-64）的 BOM 或資訊清單檔，或每個檔案內嵌成功進入資料箱的總和檢查碼。
+- 具有64位迴圈冗余的 BOM 或資訊清單檔會檢查 (CRC-64) ，或將每個檔案成功內嵌至資料箱的總和檢查碼。
 - 無法上傳到 Azure 儲存體帳戶的檔案報表。
 - 在資料複製到 Azure 儲存體帳戶後，對資料箱裝置的清理 (根據 NIST 800 88R1 標準)。
 
@@ -252,9 +264,9 @@ A.  下列報表類型可用來支援監管鏈：
 A.  貨運公司追蹤記錄可從資料箱訂單記錄中擷取。 當您的裝置送回到 Azure 資料中心，並清除裝置上的資料之後，就會將此報表提供給您。 若立即需要，您也可以直接移至貨運公司的網站，使用訂單追蹤號碼來取得追蹤資訊。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我是否可以親自將資料箱送到 Azure 資料中心？ 
-A.  否。 如果您已選擇 Microsoft 管理的出貨，就無法傳輸資料。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
+A.  否。 如果您選擇 Microsoft 管理的出貨，則無法傳輸資料。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
 
-如果您選擇 [自我管理] [運送]，則可以從 Azure 資料中心收取或捨棄您的資料箱。
+如果您選擇自行管理的運送，則可以從 Azure 資料中心挑選或卸載資料箱。
 
 
 ## <a name="next-steps"></a>後續步驟
