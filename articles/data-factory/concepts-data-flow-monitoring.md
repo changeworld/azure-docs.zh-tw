@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/03/2020
-ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/19/2020
+ms.openlocfilehash: 77dda42b27aa6f5fb505fe65667876523cb3f5d2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475544"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650888"
 ---
 # <a name="monitor-data-flows"></a>監視資料流程
 
@@ -60,9 +60,9 @@ ms.locfileid: "87475544"
 
 ## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>總接收處理時間與轉換處理時間
 
-每個轉換階段都會包含該階段完成的總時間，並將每個分割區執行時間匯總在一起。 當您按一下接收器時，您會看到「接收處理時間」。 這一次包含轉換時間的總計，*加上*將資料寫入目的地存放區所花費的 i/o 時間。 接收處理時間和轉換總計之間的差異是寫入資料的 i/o 時間。
+每個轉換階段都包含該階段完成的總時間，並將每個分割區執行時間匯總在一起。 當您按一下接收時，您會看到「接收處理時間」。 這段時間包括轉換時間的總計 *加上* 將資料寫入目的地存放區所花費的 i/o 時間。 接收處理時間與轉換總數之間的差異，是寫入資料的 i/o 時間。
 
-如果您在 [ADF 管線監視] 視圖中開啟資料流程活動的 JSON 輸出，您也可以查看每個分割區轉換步驟的詳細計時。 JSON 會包含每個分割區的毫秒時間，而 UX 監視視圖則是一種新增的磁碟分割的匯總時機：
+如果您在 ADF 管線監視視圖中開啟資料流程活動的 JSON 輸出，也可以查看每個資料分割轉換步驟的詳細時機。 JSON 包含每個資料分割的毫秒時間，而 UX 監視視圖則是將資料分割相加的匯總時間：
 
 ```
  {
@@ -76,6 +76,10 @@ ms.locfileid: "87475544"
          ]
 }
 ```
+
+### <a name="post-processing-time"></a>後續處理時間
+
+當您在對應中選取 [接收轉換] 圖示時，右邊的滑入面板會在底部顯示稱為「後續處理時間」的其他資料點。 這是在您的資料載入、轉換和寫入 *之後* ，在 Spark 叢集上執行作業所花費的時間量。 這段時間可能包括關閉連接集區、驅動程式關閉、刪除檔案、聯合檔案等等。當您在流程中執行動作（例如「移動檔案」和「輸出至單一檔案」）時，您可能會看到 post 處理時間值增加。
   
 ## <a name="monitor-icons"></a>監視器圖示
 

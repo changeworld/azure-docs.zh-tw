@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 093f86f0373791326cf4658bdab7179fbca1307d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e0cb9492f6e0b52cb0816d16be5d67d3b92cfe56
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849653"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651398"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>設定及使用計算目標來將模型定型 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Azure Machine Learning 在不同計算目標上提供不同的支援。 一般�
 
 
 > [!NOTE]
-> Azure Machine Learning 計算叢集可以建立為持續性資源，或在您要求執行時以動態方式建立。 回合型建立會在定型回合完成後移除計算目標，因此您無法重複使用以此方式建立的計算目標。
+> Azure Machine Learning 計算叢集可以建立為持續性資源，或在您要求執行時動態建立。 回合型建立會在定型回合完成後移除計算目標，因此您無法重複使用以此方式建立的計算目標。
 
 ## <a name="whats-a-run-configuration"></a>什麼是回合組態？
 
@@ -94,7 +94,7 @@ ML 管線是由多個**步驟**所建構而成，這些步驟是管線中的相�
 
 ### <a name="azure-machine-learning-compute-cluster"></a><a id="amlcompute"></a>Azure Machine Learning 計算叢集
 
-Azure Machine Learning 計算叢集是受控計算基礎結構，可讓您輕鬆建立單一或多重節點的計算。 計算會在工作區的區域內建立為能夠與工作區中的其他使用者共用的資源。 計算會在提交作業時自動相應增加，而且可以放在 Azure 虛擬網路中。 計算會在容器化環境中執行，並在 [Docker 容器](https://www.docker.com/why-docker)中封裝模型的相依性。
+Azure Machine Learning 計算叢集是受控的計算基礎結構，可讓您輕鬆建立單一或多重節點計算。 計算會在工作區的區域內建立為能夠與工作區中的其他使用者共用的資源。 計算會在提交作業時自動相應增加，而且可以放在 Azure 虛擬網路中。 計算會在容器化環境中執行，並在 [Docker 容器](https://www.docker.com/why-docker)中封裝模型的相依性。
 
 您可以使用 Azure Machine Learning Compute 在雲端中的 CPU 或 GPU 計算節點叢集散發定型程序。 如需包含 GPU 的 VM 大小有關的詳細資訊，請參閱 [GPU 最佳化虛擬機器大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)。 
 
@@ -102,7 +102,7 @@ Azure Machine Learning Compute 有預設限制，例如可配置的核心數目�
 
 
 > [!TIP]
-> 只要有足夠的配額可滿足所需的核心數目，叢集一般可以擴大為 100 個節點。 例如，叢集預設會設定為已在叢集節點之間啟用節點間通訊，以便支援 MPI 作業。 不過，您可以直接[提出支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並要求允許列出您的訂用帳戶或工作區，或用來停用節點間通訊的特定叢集，將叢集調整為數千個的節點。 
+> 只要有足夠的配額可滿足所需的核心數目，叢集一般可以擴大為 100 個節點。 例如，叢集預設會設定為已在叢集節點之間啟用節點間通訊，以便支援 MPI 作業。 不過，您可以直接 [提出支援票證](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)，並要求允許列出您的訂用帳戶或工作區，或使用特定叢集來停用節點間通訊，藉此將叢集調整為數千個節點。 
 
 Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作區中的其他使用者共用，並在回合之間保留，且會根據所提交的回合數目以及叢集上設定的 max_nodes 自動擴大或縮小節點。 min_nodes 設定可以控制可用的節點數目下限。
 
@@ -127,15 +127,15 @@ Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作
 
 現在您已連結計算並設定執行，下一步是[提交定型回合](#submit)。
 
- ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a>降低您的計算叢集成本
+ ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> 降低您的計算叢集成本
 
-您也可以選擇使用[低優先順序的 vm](concept-plan-manage-cost.md#low-pri-vm)來執行部分或所有的工作負載。 這些 VM 沒有保證可用性，可能會在使用時被佔用。 被佔用的作業會重新開機，不會繼續。 
+您也可以選擇使用 [低優先順序的 vm](concept-plan-manage-cost.md#low-pri-vm) 來執行部分或所有工作負載。 這些 VM 沒有保證可用性，可能會在使用時被佔用。 被佔用的作業會重新開機，不會繼續。 
 
 使用下列任何一種方式來指定低優先順序的 VM：
     
-* 在 studio 中，當您建立 VM 時，請選擇 [**低優先順序**]。
+* 在 studio 中，當您建立 VM 時，請選擇 **低優先順序** 。
     
-* 使用 Python SDK，在您的布建 `vm_priority` 配置中設定屬性。  
+* 使用 Python SDK，在布建設定 `vm_priority` 中設定屬性。  
     
     ```python
     compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_D2_V2',
@@ -153,11 +153,11 @@ Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作
 
 ### <a name="azure-machine-learning-compute-instance"></a><a id="instance"></a>Azure Machine Learning 計算執行個體
 
-[Azure Machine Learning 計算實例](concept-compute-instance.md)是受控計算基礎結構，可讓您輕鬆地建立單一 VM。 計算是在您的工作區區域內建立，但與計算叢集不同的是，實例無法與您工作區中的其他使用者共用。 此外，實例也不會自動相應減少。  您必須停止資源，以避免持續的費用。
+[Azure Machine Learning 計算實例](concept-compute-instance.md) 是一種受控的計算基礎結構，可讓您輕鬆地建立單一 VM。 計算是在您的工作區區域內建立，但不同于計算叢集，無法與您工作區中的其他使用者共用實例。 此外，實例不會自動縮小。  您必須停止資源以防止持續收費。
 
 計算實例可以平行執行多個作業，並具有作業佇列。 
 
-計算實例可以安全地在[虛擬網路環境](how-to-enable-virtual-network.md#compute-instance)中執行作業，而不需要企業開啟 SSH 埠。 作業會在容器化環境中執行，並將您的模型相依性封裝在 Docker 容器中。 
+計算實例可以在 [虛擬網路環境](how-to-enable-virtual-network.md#compute-instance)中安全地執行工作，而不需要企業開啟 SSH 埠。 作業會在容器化環境中執行，並將您的模型相依性封裝在 Docker 容器中。 
 
 1. **建立並連結**： 
     
@@ -181,9 +181,7 @@ Azure Machine Learning Compute 可以跨回合重複使用。 計算可與工作
     run = experiment.submit(config=src)
     ```
 
-如需更多適用于計算實例的命令，請參閱[computeinstance 上](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)的筆記本訓練。 此筆記本也適用于*computeinstance 訓練/訓練*中的 studio **Samples**資料夾。
-
-既然您已附加計算並設定執行，下一步就是[提交定型](#submit)回合
+現在您已附加計算並設定執行，下一步是[提交定型](#submit)回合
 
 
 ### <a name="remote-virtual-machines"></a><a id="vm"></a>遠端虛擬機器
@@ -192,14 +190,14 @@ Azure Machine Learning 也支援提供您自己的計算資源，並將其附加
 
 您可以使用系統建立的 Conda 環境、現有的 Python 環境或 Docker 容器。 若要在 Docker 容器上執行，您必須在虛擬機器上執行的 Docker 引擎。 您想要比本機電腦的更有彈性、以雲端為基礎的開發/測試環境時，這項功能特別有用。
 
-使用 Azure 資料科學虛擬機器 (DSVM) 作為此案例選擇的 Azure VM。 此虛擬機器是 Azure 中預先設定的資料科學和 AI 開發環境。 VM 會針對整個生命週期的機器學習開發，提供精心選擇的工具和架構。 如需有關如何使用 DSVM 搭配 Azure Machine Learning 的詳細資訊，請參閱[設定開發環境](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm)。
+針對此案例，請使用 Azure 資料科學虛擬機器 (DSVM) 作為選擇的 Azure VM。 此虛擬機器是 Azure 中預先設定的資料科學和 AI 開發環境。 VM 會針對整個生命週期的機器學習開發，提供精心選擇的工具和架構。 如需有關如何使用 DSVM 搭配 Azure Machine Learning 的詳細資訊，請參閱[設定開發環境](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#dsvm)。
 
 1. **建立**：先建立 DSVM，才能使用它定型模型。 若要建立此資源，請參閱[佈建適用於 Linux (Ubuntu) 的資料科學虛擬機器](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)。
 
     > [!WARNING]
-    > Azure Machine Learning 只支援執行**Ubuntu**的虛擬機器。 當您建立 VM 或選擇現有的 VM 時，您必須選取使用 Ubuntu 的 VM。
+    > Azure Machine Learning 僅支援執行 **Ubuntu**的虛擬機器。 當您建立 VM 或選擇現有的 VM 時，您必須選取使用 Ubuntu 的 VM。
     > 
-    > Azure Machine Learning 也需要虛擬機器具有__公用 IP 位址__。
+    > Azure Machine Learning 也需要虛擬機器具有 __公用 IP 位址__。
 
 1. **連結**：若要附加現有的虛擬機器作為計算目標，您必須提供虛擬機器的資源識別碼、使用者名稱與密碼。 您可以使用訂用帳戶識別碼、資源群組名稱和 VM 名稱，以下列字串格式建構 VM 的資源識別碼：`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
@@ -237,11 +235,11 @@ Azure HDInsight 是巨量資料分析的常用平台。 此平台會提供 Apach
 1. **建立**：先建立 HDInsight 叢集，才能使用它定型模型。 若要在 HDInsight 叢集上建立 Spark，請參閱[在 HDInsight 中建立 Spark 叢集](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql)。 
 
     > [!WARNING]
-    > Azure Machine Learning 需要 HDInsight 叢集具有__公用 IP 位址__。
+    > Azure Machine Learning 要求 HDInsight 叢集必須有 __公用 IP 位址__。
 
     建立叢集時，必須指定 SSH 使用者名稱與密碼。 請記下這些值，因為使用 HDInsight 作為計算目標時會需要它們。
     
-    建立叢集之後，使用主機名稱 ssh.azurehdinsight.net 來連線到該叢集， \<clustername> 其中 \<clustername> 是您為叢集提供的名稱。 
+    叢集建立之後，請使用主機名稱 ssh.azurehdinsight.net 連接到該叢集 \<clustername> ，其中 \<clustername> 是您為叢集提供的名稱。 
 
 1. **連結**：若要連結 HDInsight 叢集作為計算目標，必須提供 HDInsight 叢集的資源識別碼、使用者名稱與密碼。 您可以使用訂用帳戶識別碼、資源群組名稱和 HDInsight 叢集名稱，以下列字串格式建構 HDInsight 叢集的資源識別碼：`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 

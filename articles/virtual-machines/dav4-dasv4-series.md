@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 570e2798cf2ae5a20d55973622cca9344ea4a4a3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2548f002b2006b5d241c323ae880704bbe95301e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837137"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649919"
 ---
 # <a name="dav4-and-dasv4-series"></a>Dav4 和 Dasv4 系列
 
-Dav4 系列和 Dasv4 系列是在多執行緒設定中使用 AMD 的2.35 版 Ghz EPYC<sup>TM</sup> 7452 處理器的新大小，最多有 256 MB 的 l3 快取，每8個核心可增加客戶選項，以執行其一般用途的工作負載。 Dav4 系列和 Dasv4 系列具有與 D 和 Dsv3 系列相同的記憶體和磁碟設定。
+Dav4 系列和 Dasv4 系列是在多執行緒設定中使用 AMD 的採用 2.35 Ghz EPYC<sup>TM</sup> 7452 處理器的新大小，最多可達 256 mb l3 快取，其中每8個核心專用於執行其一般用途工作負載的客戶選項。 Dav4 系列和 Dasv4 系列具有與 D 和 Dsv3 系列相同的記憶體和磁碟設定。
 
 ## <a name="dav4-series"></a>Dav4 系列
 
@@ -30,7 +30,7 @@ ACU：230-260
 
 記憶體保留更新：支援
 
-Dav4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達到最高的 3.35 ghz 的提升頻率。 Dav4 系列大小提供 vCPU、記憶體和暫存儲存體的組合，可用於大部分的生產環境工作負載。 資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium SSD，請使用 Dasv4 大小。 Dasv4 大小的定價和計費方式與 Dav4 系列相同。
+Dav4 系列大小以採用 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達到最大的 3.35 ghz 頻率。 Dav4 系列大小提供 vCPU、記憶體和暫存儲存體的組合，適用于大多數生產工作負載。 資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium SSD，請使用 Dasv4 大小。 Dasv4 大小的定價和計費方式與 Dav4 系列相同。
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 |-----|-----|-----|-----|-----|-----|-----|-----|
@@ -55,7 +55,7 @@ ACU：230-260
 
 記憶體保留更新：支援
 
-Dasv4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達成 3.35 ghz 的提升頻率，並使用 premium SSD。 Dasv4 系列大小提供 vCPU、記憶體和暫存儲存體的組合，可用於大部分的生產環境工作負載。
+Dasv4 系列大小以採用 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達到最大的 3.35 ghz 頻率，並使用 premium SSD。 Dasv4 系列大小提供 vCPU、記憶體和暫存儲存體的組合，適用于大多數生產工作負載。
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -79,9 +79,9 @@ Dasv4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎�
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
 
-定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+定價計算機： [定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
+磁片類型的詳細資訊： [磁片類型](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>後續步驟
 

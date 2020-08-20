@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290033"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652095"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什麼是自動化機器學習 (AutoML)？
 
@@ -37,7 +37,7 @@ ms.locfileid: "87290033"
 
 分類是一個常見的機器學習工作。 分類是一種監督式學習，其中模型會學習使用定型資料，並將那些學習套用至新的資料。 Azure Machine Learning 特別針對這些工作提供特徵化，例如用於分類的深度類神經網路文字功能。 深入了解[特徵化選項](how-to-configure-auto-features.md#featurization)。 
 
-分類模型的主要目標，是根據從其定型資料中的學習，來預測新資料將屬於哪些類別。 常見的分類範例包括詐騙偵測、手寫辨識和物件偵測。 若要深入瞭解，請參閱[使用自動化 ML 建立分類模型](tutorial-first-experiment-automated-ml.md)中的範例。
+分類模型的主要目標，是根據從其定型資料中的學習，來預測新資料將屬於哪些類別。 常見的分類範例包括詐騙偵測、手寫辨識和物件偵測。 深入瞭解並查看 [使用自動化 ML 建立分類模型](tutorial-first-experiment-automated-ml.md)的範例。
 
 請參閱下列 Python 筆記本中的分類和自動化機器學習的範例：[詐騙偵測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) \(英文\)、[行銷預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) \(英文\)，以及[新聞群組資料分類](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb) \(英文\)
 
@@ -98,25 +98,25 @@ ms.locfileid: "87290033"
 
 在自動化模型建置的同時，您還可以了解對產生的模型而言，[功能的重要性或相關性](how-to-configure-auto-train.md#explain)。
 
-瞭解如何使用[遠端計算目標](how-to-auto-train-remote.md)。
+瞭解如何使用 [遠端計算目標](how-to-auto-train-remote.md)。
 
 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
 
-## <a name="feature-engineering"></a>特色工程
+## <a name="feature-engineering"></a>特徵設計
 
-特色工程是使用資料的領域知識來建立功能的程式，以協助 ML 演算法更深入瞭解。 在 Azure Machine Learning 中，會套用調整和正規化技術，以促進功能設計。 這些技術和特徵設計統稱為特徵化。
+特徵工程是使用資料的領域知識來建立功能，以協助 ML 演算法更深入瞭解的程式。 在 Azure Machine Learning 中，會套用調整規模和正規化技巧，以促進特徵工程。 這些技術和特性工程統稱統稱為特徵化。
 
 針對自動化機器學習實驗，特徵化會自動套用，但也可以根據您的資料進行自訂。 [深入了解包含哪些特徵化](how-to-configure-auto-features.md#featurization)。  
 
 > [!NOTE]
 > 自動化機器學習特徵化步驟 (功能標準化、處理遺漏的資料、將文字轉換為數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同特徵化步驟會自動套用至您的輸入資料。
 
-### <a name="automatic-featurization-standard"></a>自動特徵化（標準）
+### <a name="automatic-featurization-standard"></a>自動特徵化 (標準) 
 
-在每個自動化機器學習實驗中，您的資料都會自動調整或正規化，以協助演算法執行良好。 在模型定型期間，下列其中一個調整或正規化技術將會套用至每個模型。 瞭解 AutoML 如何協助[防止過度調整和不平衡](concept-manage-ml-pitfalls.md)模型中的資料。
+在每個自動化機器學習實驗中，您的資料都會自動調整或正規化，以協助演算法執行良好。 在模型定型期間，下列其中一個調整或正規化技術將會套用至每個模型。 瞭解 AutoML 如何協助 [防止過度調整及不平衡](concept-manage-ml-pitfalls.md) 模型中的資料。
 
 |調整&nbsp;&&nbsp;正規化| 描述 |
 | ------------- | ------------- |
@@ -130,13 +130,13 @@ ms.locfileid: "87290033"
 
 ### <a name="customize-featurization"></a>自訂特徵化
 
-還有其他功能工程技術，例如，編碼和轉換也可供使用。 
+您也可以使用其他功能工程技術，例如，編碼和轉換。 
 
 啟用此設定的方式：
 
 + Azure Machine Learning Studio：[透過這些步驟](how-to-use-automated-ml-for-ml-models.md#customize-featurization)，在 [檢視其他設定] 區段中啟用 [自動特徵化]。
 
-+ Python SDK： `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` 在您的[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)物件中指定。 深入瞭解[啟用特徵化](how-to-configure-auto-features.md)。 
++ Python SDK： `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` 在您的 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 物件中指定。 深入瞭解如何 [啟用特徵化](how-to-configure-auto-features.md)。 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> 集團模型
 
@@ -202,8 +202,6 @@ ms.locfileid: "87290033"
 * 對數百個油井進行預測性維護
 * 為個別使用者量身打造體驗。
 
-如需詳細資訊，請參閱 GitHub 上的 [Many Models Solution Accelerator](https://aka.ms/many-models) \(英文\)。
-
 ## <a name="automl-in-azure-machine-learning"></a>Azure Machine Learning 中的 AutoML
 
 Azure Machine Learning 提供兩種使用自動化 ML 的體驗
@@ -224,7 +222,7 @@ Azure Machine Learning 提供兩種使用自動化 ML 的體驗
 |**支援 ML 工作：分類、迴歸和預測**| ✓| ✓
 |**根據主要計量最佳化**| ✓| ✓
 |**支援 AML 計算作為計算目標** | ✓|✓
-|**設定預測水準，目標延遲 & 滾動時間範圍**|✓|✓
+|**設定預測範圍，目標延遲 & 滾動時間範圍**|✓|✓
 |**設定允出準則** |✓|✓ 
 |**設定並行反覆項目**| ✓|✓
 |**置放資料行**| ✓|✓
@@ -274,27 +272,27 @@ ONNX 執行階段也支援 C#，因此您可以使用在 C# 應用程式中自�
 有多個資源可讓您開始使用 AutoML。 
 
 ### <a name="tutorials-how-tos"></a>教學課程/how-to
-教學課程是 AutoML 案例的端對端簡介範例。
-+ **如需程式碼的第一個體驗**，請遵循[教學課程：使用 Azure Machine Learning Python SDK 自動定型回歸模型](tutorial-auto-train-models.md)。
+教學課程是 AutoML 案例的端對端入門範例。
++ **如需程式碼優先體驗**，請遵循 [教學課程：使用 Azure Machine Learning Python SDK 自動定型回歸模型](tutorial-auto-train-models.md)。
 
- + **如需低或無程式碼的體驗**，請參閱[教學課程：使用 Azure Machine Learning STUDIO 建立自動化 ML 分類模型](tutorial-first-experiment-automated-ml.md)。
+ + **如需低或無程式碼的體驗**，請參閱 [教學課程：使用 Azure Machine Learning STUDIO 建立自動化 ML 分類模型](tutorial-first-experiment-automated-ml.md)。
 
-如何文章提供 AutoML 所提供功能的其他詳細資料。 例如 
+How to 文章提供 AutoML 所提供之功能的其他詳細資料。 例如， 
 
-+ 設定自動訓練實驗的設定
++ 設定自動定型實驗的設定
     + 在 Azure Machine Learning Studio 中，[使用這些步驟](how-to-use-automated-ml-for-ml-models.md)。 
     + 針對 Python SDK，[使用這些步驟](how-to-configure-auto-train.md)。
 
-+  瞭解如何使用時間序列資料，[以這些步驟](how-to-auto-train-forecast.md)自動定型。
++  瞭解如何使用時間序列資料，以及 [這些步驟](how-to-auto-train-forecast.md)來自動定型。
 
 ### <a name="jupyter-notebook-samples"></a>Jupyter 筆記本範例 
 
-[如需自動化機器學習範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)，請參閱 GitHub 筆記本存放庫中的詳細程式碼範例和使用案例。
+請參閱 GitHub 筆記本存放庫中的詳細程式碼範例和使用案例， [以取得自動化機器學習範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)。
 
 ### <a name="python-sdk-reference"></a>Python SDK 參考 
 
-透過[AutoML 類別參考檔](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)，加深您 SDK 設計模式和類別規格的專業知識。 
+使用 [AutoML 類別參考檔](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)，加深 SDK 設計模式與類別規格的專業知識。 
 
 > [!Note]
-> 自動化機器學習功能也適用于其他 Microsoft 解決方案，例如[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、 [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、 [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)和[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
+> 自動化的機器學習功能也可在其他 Microsoft 解決方案中使用，例如 [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、 [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、 [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) 和 [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
 

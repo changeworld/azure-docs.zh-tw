@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 75573cb49bcc0aca206ad8f13f060121e70a0621
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: dd245ddfa7f6be90e37bacc0797a3af4adc8bb96
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760612"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650429"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>針對 SAP 應用程式使用 Azure NetApp Files 在 SUSE Linux Enterprise Server 上的 Azure VM 達到 SAP NetWeaver 高可用性
 
@@ -163,7 +163,7 @@ Azure NetApp 檔案可在數個 [Azure 區域](https://azure.microsoft.com/globa
    7. 磁碟區 sap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>aas)
 
    
-在本範例中，我們針對所有 SAP Netweaver 檔案系統使用了 Azure NetApp Files 來示範使用 Azure NetApp Files 的方式。 不需要透過 NFS 掛接的 SAP 檔案系統也可作為 [Azure 磁碟儲存體](../../windows/disks-types.md#premium-ssd)來部署。 在本範例中，<b>a-e</b> 必須位於 Azure NetApp Files 上，<b>f-g</b> (即 /usr/sap/<b>QAS</b>/D<b>02</b>、/usr/sap<b>QAS</b>/D<b>03</b>) 可以作為 Azure 磁碟儲存體部署。 
+在本範例中，我們針對所有 SAP Netweaver 檔案系統使用了 Azure NetApp Files 來示範使用 Azure NetApp Files 的方式。 不需要透過 NFS 掛接的 SAP 檔案系統也可作為 [Azure 磁碟儲存體](../../disks-types.md#premium-ssd)來部署。 在本範例中，<b>a-e</b> 必須位於 Azure NetApp Files 上，<b>f-g</b> (即 /usr/sap/<b>QAS</b>/D<b>02</b>、/usr/sap<b>QAS</b>/D<b>03</b>) 可以作為 Azure 磁碟儲存體部署。 
 
 ### <a name="important-considerations"></a>重要考量︰
 
@@ -648,7 +648,7 @@ Azure NetApp 檔案可在數個 [Azure 區域](https://azure.microsoft.com/globa
    enque/encni/set_so_keepalive = true
    </code></pre>
 
-   針對 ENSA1 和 ENSA2，請確定 `keepalive` OS 參數設定如 SAP 附注[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述。  
+   針對 ENSA1 和 ENSA2，請確定 `keepalive` 作業系統參數已設定為 SAP note [1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述。  
 
    * ERS 設定檔
 

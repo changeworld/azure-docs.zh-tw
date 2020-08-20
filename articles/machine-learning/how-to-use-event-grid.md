@@ -1,5 +1,5 @@
 ---
-title: 在 ML 工作流程中觸發事件（預覽）
+title: '在 ML 工作流程中觸發事件 (預覽) '
 titleSuffix: Azure Machine Learning
 description: 在 Azure Machine Learning 中設定事件驅動的應用程式、程序或 CI/CD 機器學習工作流程。
 services: machine-learning
@@ -11,14 +11,14 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 3b6f115e27b5cf956a524bd1a610797c689b5d6c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319485"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650412"
 ---
-# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>根據 Azure Machine Learning 事件來觸發應用程式、進程或 CI/CD 工作流程（預覽）
+# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>根據 Azure Machine Learning 事件來觸發應用程式、進程或 CI/CD 工作流程 (preview) 
 
 在本文中，您將瞭解如何在 [Azure 事件方格](https://docs.microsoft.com/azure/event-grid/)偵測到特定條件時，根據 Azure Machine Learning 事件 (例如失敗通知電子郵件、ML 管線執行) 來設定事件驅動的應用程式、程序或 CI/CD 工作流程。
 
@@ -199,7 +199,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 開始之前，請執行下列動作：
 
-* 設定資料集監視以[偵測工作區中的資料漂移]( https://aka.ms/datadrift)
+* 設定資料集監視以[偵測工作區中的資料漂移](how-to-monitor-datasets.md)
 * 建立已發佈的 [Azure Data Factory 管線](https://docs.microsoft.com/azure/data-factory/)。
 
 在此範例中，會使用簡單的 Data Factory 管線將檔案複製到 blob 存放區，並執行已發佈的 Machine Learning 管線。 如需此案例的詳細資訊，請參閱如何[在 Azure Data Factory 中設定 Machine Learning 步驟](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)。

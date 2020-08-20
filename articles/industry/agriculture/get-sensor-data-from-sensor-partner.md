@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 08099ede82f8ebd9c1cd6e585a16800ee1626f65
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3452641b336308ddf46349064345b154e55aa53c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508782"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649154"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>從感應器夥伴取得感應器資料
 
@@ -88,6 +88,10 @@ Azure FarmBeats 可協助您將 IoT 裝置和感應器的串流資料帶入 Data
 
     ```
 
+> [!NOTE]
+> 1. Datahub API 端點名稱的大小寫必須是小寫。
+> 2. 如果您要複製 Datahub API 端點的 farmbeats 網站名稱 url，請確定沒有尾端的斜線 (/) 。
+
 9. 遵循畫面上的指示來捕捉 **API 端點**、租使用者 **識別碼**、 **用戶端識別碼**、 **用戶端密碼**和 **EventHub 連接字串**的值。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>使用產生的認證來整合裝置資料
@@ -120,7 +124,7 @@ FarmBeats 目前支援下列裝置：
 - **節點**：一或多個感應器所連接的裝置。
 - **閘道**：一或多個節點所連接的裝置。
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 在首頁上，從功能表中選取 [ **裝置** ]。
   [ **裝置** ] 頁面會顯示裝置類型、模型、狀態、所放置的伺服器陣列，以及中繼資料的上次更新日期。 根據預設，伺服器陣列資料行會設定為 *Null*。 您可以選擇將裝置指派給伺服器陣列。 如需詳細資訊，請參閱 [指派裝置](#assign-devices)。
@@ -130,7 +134,7 @@ FarmBeats 目前支援下列裝置：
 
 ### <a name="view-sensors"></a>觀看感應器
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 在首頁上，從功能表中選取 [ **感應器** ]。
   [ **感應器** ] 頁面會顯示有關感應器類型、其所連接的伺服器陣列、父裝置、埠名稱、埠類型，以及上次更新狀態的詳細資料。
@@ -159,7 +163,7 @@ FarmBeats 目前支援下列裝置：
 
 ### <a name="visualize-sensor-data"></a>將感應器資料視覺化
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 在首頁上，從功能表中選取 [ **伺服器** 陣列] 以查看 [ **伺服器** 陣列] 頁面。
 2. 選取您要查看感應器資料的 **伺服器** 陣列。
@@ -169,7 +173,7 @@ FarmBeats 目前支援下列裝置：
 
 ## <a name="delete-a-sensor"></a>刪除感應器
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 在首頁上，從功能表中選取 [ **感應器** ] 以查看 [ **感應器** ] 頁面。
 2. 選取您要刪除的裝置，然後在確認視窗中選取 [ **刪除** ]。
@@ -180,7 +184,7 @@ FarmBeats 目前支援下列裝置：
 
 ## <a name="delete-devices"></a>刪除裝置
 
-遵循下列步驟：
+請遵循下列步驟：
 
 1. 在首頁上，從功能表中選取 [ **裝置** ] 以查看 [ **裝置** ] 頁面。
 2. 選取您要刪除的裝置，然後在確認視窗中選取 [ **刪除** ]。

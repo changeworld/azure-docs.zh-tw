@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284722"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650548"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure 中虛擬機器的區域
 
@@ -30,7 +30,7 @@ Azure 在世界各地多個資料中心運作。 這些資料中心會依據地�
 * **US Gov 維吉尼亞州**和 **US Gov 愛荷華州**
   * 由經篩選的美國人士所操作、適用於 US Gov 機構及其合作夥伴的實體與邏輯網路隔離 Azure 執行個體。 包含其他法規遵循認證，例如 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) 和 [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA)。 深入了解 [Azure Government](https://azure.microsoft.com/features/gov/)。
 * **中國東部**和**中國北部**
-  * 這些區域是透過 Microsoft 與 21Vianet 之間的唯一合作關係提供，其中 Microsoft 不會直接維護資料中心。 查看更多有關[Azure 中國世紀](https://www.windowsazure.cn/)的資訊。
+  * 這些區域是透過 Microsoft 與 21Vianet 之間的唯一合作關係提供，其中 Microsoft 不會直接維護資料中心。 [Azure 中國的世紀](https://www.windowsazure.cn/)詳細資訊，請參閱。
 * **德國中部**和**德國東北部**
   * 這些區域透過資料信任者模型提供，其中客戶資料會留在德國受到 T-Systems 控管，這是 Deutsche Telekom 旗下的公司，扮演德國資料信任者的角色。
 
@@ -43,7 +43,7 @@ Azure 在世界各地多個資料中心運作。 這些資料中心會依據地�
 
 區域配對的範例包括：
 
-| 主要 | 次要 |
+| Primary | 次要 |
 |:--- |:--- |
 | 美國西部 |美國東部 |
 | 北歐 |西歐 |
@@ -58,11 +58,11 @@ Azure 在世界各地多個資料中心運作。 這些資料中心會依據地�
 在您考慮可用的儲存體複寫選項時，了解 Azure 區域和地理位置會變得相當重要。 根據儲存體類型，您會有不同的複寫選項。
 
 **Azure 受控磁碟**
-* 本地備援儲存體 (LRS)
+* 本機備援儲存體 (LRS)
   * 此選項會在您建立儲存體帳戶的區域內複寫資料三次。
 
 **儲存體帳戶型磁碟**
-* 本地備援儲存體 (LRS)
+* 本機備援儲存體 (LRS)
   * 此選項會在您建立儲存體帳戶的區域內複寫資料三次。
 * 區域備援儲存體 (ZRS)
   * 此選項會在單一區域或兩個區域內的兩個到三個設備複寫資料三次。
@@ -79,9 +79,9 @@ Azure 在世界各地多個資料中心運作。 這些資料中心會依據地�
 | 可從次要位置及主要位置讀取資料。 |否 |否 |否 |是 |
 | 可在不同的節點上維護的資料副本數量。 |3 |3 |6 |6 |
 
-您可以 [在這裡深入了解 Azure 儲存體複寫選項](../storage/common/storage-redundancy.md)。 如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟概觀](./windows/managed-disks-overview.md)。
+您可以 [在這裡深入了解 Azure 儲存體複寫選項](../storage/common/storage-redundancy.md)。 如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟概觀](./managed-disks-overview.md)。
 
-### <a name="storage-costs"></a>儲存體費用
+### <a name="storage-costs"></a>儲存體成本
 價格會依據您選取的儲存體類型和可用性而有所不同。
 
 **Azure 受控磁碟**

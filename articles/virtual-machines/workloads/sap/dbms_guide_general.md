@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 15c0368b2d0bd85f6fee65ffa2c9d6776d07f162
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510227"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650610"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考量
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -111,10 +111,7 @@ Azure 提供其他有關 SAP 工作負載的文章。 開始[在 Azure 上 使�
 ## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>用於 RDBMS 部署的 VM 儲存體結構
 為遵循本章內容，請閱讀並了解[部署指南][deployment-guide][本章][deployment-guide-3]中提供的資訊。 閱讀本章之前，您必須先了解及認識不同 VM 系列以及標準和進階儲存體之間的差異。 
 
-若要了解 Azure VM 的 Azure 儲存體，請參閱：
-
-- [適用於 Azure Windows VM 的受控磁碟簡介](../../windows/managed-disks-overview.md)。
-- [適用於 Azure Linux VM 的受控磁碟簡介](../../linux/managed-disks-overview.md)。
+若要深入瞭解 Azure Vm 的 Azure 儲存體，請參閱 [Azure vm 的受控磁片簡介](../../managed-disks-overview.md)。
 
 基本設定通常建議以下的部署結構：作業系統、DBMS 和與資料庫檔案分隔開的最終 SAP 二進位檔。 我們建議在 Azure 虛擬機器中執行的 SAP 系統，隨作業系統、資料庫管理系統可執行檔和 SAP 可執行檔，一起安裝基底 VHD (或磁碟)。 
 

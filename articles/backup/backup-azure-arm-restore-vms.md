@@ -4,12 +4,12 @@ description: 使用 Azure 入口網站從復原點還原 Azure 虛擬機器
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4aca863dd4e9c418872cd67bdf54df616a7a0c5b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263005"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651143"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 入口網站中還原 Azure VM 資料
 
@@ -43,7 +43,7 @@ Azure 備份提供數種方法來還原 VM。
   - 還原非 premium Vm 時，不支援 premium 儲存體帳戶。
   - 還原受管理的 Vm 時，不支援以網路規則設定的 premium 儲存體帳戶。
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+## <a name="before-you-start"></a>開始之前
 
 若要 (建立新的 VM) 來還原 VM，請確定您有正確的 Azure 角色型存取控制 (Azure RBAC) 還原 VM 操作的 [許可權](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) 。
 
@@ -184,7 +184,7 @@ Azure 備份提供數種方法來還原 VM。
 
 ## <a name="restoring-unmanaged-vms-and-disks-as-managed"></a>將非受控 Vm 和磁片還原為受控
 
-系統會提供選項，在還原期間將 [非受控磁片](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) 還原為 [受控磁片](../virtual-machines/windows/managed-disks-overview.md) 。 依預設，非受控 Vm/磁片會還原為非受控 Vm/磁片。 但是，如果您選擇還原為受管理的 Vm/磁片，現在可以這麼做。 這些還原不會從快照集階段觸發，而只會從保存庫階段觸發。 這項功能不適用於未受管理的加密 Vm。
+系統會提供選項，在還原期間將 [非受控磁片](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) 還原為 [受控磁片](../virtual-machines/managed-disks-overview.md) 。 依預設，非受控 Vm/磁片會還原為非受控 Vm/磁片。 但是，如果您選擇還原為受管理的 Vm/磁片，現在可以這麼做。 這些還原不會從快照集階段觸發，而只會從保存庫階段觸發。 這項功能不適用於未受管理的加密 Vm。
 
 ![還原為受控磁片](./media/backup-azure-arm-restore-vms/restore-as-managed-disks.png)
 

@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: fcbcb89505130dddb42d97c153b172a22a9b29b2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ac3f31fecd53ddf1dd8bb81229c67cb4bb60c34e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831476"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650633"
 ---
 # <a name="av2-series"></a>Av2 系列
 
-Av2 系列 VM 可以部署在各種不同的硬體類型和處理器上。 Av2 系列 Vm 的 CPU 效能和記憶體設定最適合用於進入層級的工作負載，例如開發和測試。 大小會進行節流，為執行中的實例提供一致的處理器效能，不論其部署所在的硬體為何。 若要判斷此大小部署所在的實體硬體，請從虛擬機器內查詢虛擬硬體。 一些使用案例範例包括開發與測試伺服器、低流量網頁伺服器、小型至中型資料庫、概念證明，以及程式碼存放庫。
+Av2 系列 VM 可以部署在各種不同的硬體類型和處理器上。 Av2 系列 Vm 具有最適合專案層級工作負載（例如開發和測試）的 CPU 效能和記憶體設定。 大小會受到節流，以針對執行中的實例提供一致的處理器效能，不論其部署所在的硬體為何。 若要判斷此大小部署所在的實體硬體，請從虛擬機器內查詢虛擬硬體。 某些使用案例範例包括開發與測試伺服器、低流量網頁伺服器、小型至中型資料庫、概念證明和程式碼存放庫。
 
 ACU：100
 
@@ -50,9 +50,9 @@ ACU：100
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
 
-定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+定價計算機： [定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
+磁片類型的詳細資訊： [磁片類型](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>後續步驟
 

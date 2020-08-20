@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93587c6bbed20982bd96d04f58106ec1617542d3
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: b5438132f32117e0ec48a6f985c3b9d2045a9da2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506425"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649681"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA 在 Azure 上的基礎結構設定和作業
 此文件提供設定 Azure 基礎結構和已部署在 Azure 原生虛擬機器 (VM) 上之 SAP Hana 系統的作業指導方針。 此文件也包含 M128s VM SKU 的 SAP HANA 相應放大設定資訊。 這份文件並非用以取代標準 SAP 文件，包含下列內容：
@@ -243,7 +243,7 @@ SAP HANA 認證 M 系列 VM 與所支援 DT 2.0 VM (M64-32ms 和 E32sv3) 的所�
 
 必須將多個 Azure 磁碟連結至 DT 2.0 VM，並在 OS 層級建立軟體 raid (等量分割)，以達到每個 VM 的磁碟輸送量最大限制。 單一 Azure 磁碟無法提供可達到這方面最大 VM 限制的輸送量。 需有 Azure 進階儲存體才能執行 DT 2.0。 
 
-- 如需 Azure 磁碟類型的詳細資訊，請參閱[這裡](../../windows/disks-types.md)
+- 如需 Azure 磁碟類型的詳細資訊，請參閱[這裡](../../disks-types.md)
 - 有關透過 mdadm 建立軟體 raid 的詳細資訊，請參閱[這裡](../../linux/configure-raid.md)
 - 有關設定 LVM 來建立等量磁碟區以達到最大輸送量的詳細資訊，請參閱[這裡](../../linux/configure-lvm.md)
 

@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506391"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650463"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虛擬機器儲存體設定
 
 Azure 針對執行 SAP Hana 的 Azure VM，提供不同儲存體類型。 **SAP Hana 認證的 Azure 儲存體類型**，可考慮用於 SAP Hana 部署清單，例如： 
 
 - Azure premium SSD 或 premium 儲存體 
-- [Ultra 磁碟](../../linux/disks-enable-ultra-ssd.md)
+- [Ultra 磁碟](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
-若要深入瞭解這些磁片類型，請參閱[AZURE 儲存體 SAP 工作負載類型](./planning-guide-storage.md)和[選取磁片類型](../../linux/disks-types.md)的相關文章
+若要深入瞭解這些磁片類型，請參閱[AZURE 儲存體 SAP 工作負載類型](./planning-guide-storage.md)和[選取磁片類型](../../disks-types.md)的相關文章
 
 Azure 針對 Azure Standard 和 premium 儲存體上的 Vhd 提供兩種部署方法。 我們希望您利用 [azure 受控磁片](https://azure.microsoft.com/services/managed-disks/) 來進行 azure 區塊儲存體部署。 
 
@@ -59,7 +59,7 @@ Azure 針對 Azure Standard 和 premium 儲存體上的 Vhd 提供兩種部署�
 
 針對 HANA 選取儲存體設定的一些指導原則可能會如下所示：
 
-- 根據 [SAP 工作負載的 Azure 儲存體類型](./planning-guide-storage.md) 決定儲存體類型，並 [選取磁片類型](../../linux/disks-types.md)
+- 根據 [SAP 工作負載的 Azure 儲存體類型](./planning-guide-storage.md) 決定儲存體類型，並 [選取磁片類型](../../disks-types.md)
 - 當調整大小或決定 VM 時，會考慮整體 VM 的 i/o 輸送量和 IOPS 限制。 整體 VM 儲存體輸送量記載于一文 [記憶體優化的虛擬機器大小](../../sizes-memory.md)
 - 當您決定儲存設定時，請嘗試使用您的 **/hana/data** 磁片區設定來維持低於 VM 的整體輸送量。 寫入儲存點、SAP Hana 可能會主動發出 i/o。 當您寫入儲存點時，很容易就能推送至 **/hana/data** 磁片區的輸送量限制。 如果建立 **/hana/data** (磁片區的磁片) 的輸送量高於您 VM 所允許的輸送量，您可能會遇到由儲存點寫入所使用的輸送量會干擾重做記錄寫入的輸送量需求的情況。 可能會影響應用程式輸送量的情況
 - 如果您使用 Azure premium 儲存體，最便宜的設定是使用邏輯磁片區管理員來建立等量集來建立 **/hana/data** 和 **/hana/log** 磁片區
@@ -218,7 +218,7 @@ Azure 寫入加速器只能與 [Azure 受控磁碟](https://azure.microsoft.com/
 
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>適用於 SAP Hana 的 Azure Ultra 磁碟儲存體設定
-另一個 Azure 儲存體類型稱為 [Azure Ultra 磁片](../../windows/disks-types.md#ultra-disk)。 迄今所提供的 Azure 儲存體與 Ultra 磁碟之間的顯著差異，在於磁碟功能不會再繫結到磁碟大小。 身為客戶的您可以為 Ultra 磁碟定義這些功能：
+另一個 Azure 儲存體類型稱為 [Azure Ultra 磁片](../../disks-types.md#ultra-disk)。 迄今所提供的 Azure 儲存體與 Ultra 磁碟之間的顯著差異，在於磁碟功能不會再繫結到磁碟大小。 身為客戶的您可以為 Ultra 磁碟定義這些功能：
 
 - 磁碟的大小，範圍從 4 GiB 到 65,536 GiB
 - IOPS 的範圍從 100 IOPS 到 160K IOPS (最大值也取決於 VM 類型)

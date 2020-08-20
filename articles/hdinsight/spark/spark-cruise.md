@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: d5417bfcfbaa183c34808d9017d5863506429a81
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642277"
+ms.locfileid: "88649052"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight 上的 SparkCruise
 
@@ -58,7 +58,7 @@ ms.locfileid: "88642277"
     sudo /opt/peregrine/analyze/peregrine.sh show
     ```
 
-此 `analyze` 命令會剖析查詢計劃，並建立工作負載的表格式標記法。 然後，此 `views` 命令會識別常見的子計畫運算式，並選取有趣的子計畫運算式，以供未來具體化和重複使用。 輸出是包含未來 Spark SQL 查詢附注的意見檔。 
+此 `analyze` 命令會剖析查詢計劃，並建立工作負載的表格式標記法。 您可以使用[HDInsight SparkCruise 範例](https://github.com/Azure-Samples/azure-sparkcruise-samples)存放庫中包含的*WorkloadInsights*筆記本來查詢此工作負載資料表。 然後，此 `views` 命令會識別常見的子計畫運算式，並選取有趣的子計畫運算式，以供未來具體化和重複使用。 輸出是包含未來 Spark SQL 查詢附注的意見檔。 
 
 此 `show` 命令會顯示類似下列文字的輸出：
 

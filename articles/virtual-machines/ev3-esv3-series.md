@@ -7,20 +7,20 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 86de6f94dc5bf44836fad37680a439d26d66ce6d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f9ef048fa7cc4b795f409326988e3276743b6992
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837069"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648950"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 和 Esv3 系列
 
-Ev3 和 Esv3 系列是在 Intel®的®白金 8272CL (Cascade Lake) 上執行。或 Intel®的2673® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-v4 2.3 g h z (Broadwell 在超執行緒設定中) 處理器，為大多數一般用途的工作負載提供更好的價值主張，並使 Ev3 與大部分其他雲端的一般用途 Vm 保持一致。  除了記憶體已擴充 (從 7 GiB/vCPU 到 8 GiB/vCPU)，磁碟和網路限制也已就個別核心進行調整，以符合移轉至超執行緒的需求。 Ev3 承襲了 D/Dv2 系列的高記憶體 VM 大小。
+Ev3 和 Esv3 系列執行于 Intel®) ®白金級 8272CL (Cascade Lake、或 Intel®) ® 8171M 2.1 GHz (Skylake，或 Intel®® E5-2673 v4 2.3 GHz (Broadwell) 處理器在超執行緒設定中，為大部分的一般用途工作負載提供更好的價值主張，並讓 Ev3 與大部分其他雲端的一般用途 Vm 保持一致。  除了記憶體已擴充 (從 7 GiB/vCPU 到 8 GiB/vCPU)，磁碟和網路限制也已就個別核心進行調整，以符合移轉至超執行緒的需求。 Ev3 承襲了 D/Dv2 系列的高記憶體 VM 大小。
 
 ## <a name="ev3-series"></a>Ev3 系列
 
-Ev3 系列實例是在 Intel®（r）®白金 8272CL (Cascade Lake) 、Intel®（r）® 8171M 2.1 g h z (Skylake) 或 Intel®® E5-2673 v4 2.3 GHz (Broadwell) 處理器和功能 Intel Turbo 加速技術2.0 上執行。 Ev3 系列執行個體很適合記憶體密集型的企業應用程式。
+Ev3 系列實例是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-2673 v4 2.3 g h (Broadwell) 處理器，以及功能 Intel Turbo 加速技術2.0。 Ev3 系列執行個體很適合記憶體密集型的企業應用程式。
 
 資料磁碟儲存體與虛擬機器分開計費。 若要使用進階儲存體磁碟，請使用 ESv3 大小。 ESv3 大小的定價及計費方式與 Ev3 系列相同。
 
@@ -48,13 +48,13 @@ ACU：160 - 190
 | Standard_E64_v3 | 64 | 432 | 1600 | 32 | 96000/1000/500 | 8|30000 |
 | Standard_E64i_v3 <sup>1、2</sup> | 64 | 432 | 1600 | 32 | 96000/1000/500 | 8|30000 |
 
-<sup>1</sup>可用的限制核心大小。
+<sup>1</sup> 個可用的有限核心大小。
 
 <sup>2</sup> 執行個體會隔離至單一客戶專用的硬體。
 
 ## <a name="esv3-series"></a>Esv3 系列
 
-Esv3 系列實例是在 Intel®（r）®白金 8272CL (Cascade Lake) 、Intel®高達® 8171M 2.1 GHz (Skylake) ，或 Intel®的® E5-2673 v4 2.3 g h z (Broadwell) 處理器、功能 Intel Turbo 加速技術2.0 和使用 premium storage。 Esv3 系列實例很適合記憶體密集型的企業應用程式。
+Esv3 系列實例是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-2673 v4 2.3 GHz (Broadwell) 處理器，搭載 Intel Turbo 加速技術2.0 並使用 premium 儲存體。 Esv3 系列實例很適合記憶體密集型企業應用程式。
 
 Esv3 系列 VM 的功能 Intel®超執行緒技術。
 
@@ -68,7 +68,7 @@ ACU：160-190
 
 記憶體保留更新：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
 | Standard_E2s_v3 | 2 | 16 | 32 | 4 | 4000/32 (50)  | 3200/48 | 2/1000 |
 | Standard_E4s_v3 <sup>1</sup>  | 4  | 32  | 64  | 8  | 8000/64 (100)    | 6400/96   | 2|2000 |
@@ -80,7 +80,7 @@ ACU：160-190
 | Standard_E64s_v3 <sup>1</sup>  | 64 | 432 | 864 | 32 | 128000/1024 (1600)  | 80000/1200 | 8|30000 |
 | Standard_E64is_v3 <sup>2</sup> | 64 | 432 | 864 | 32 | 128000/1024 (1600)  | 80000/1200 | 8|30000 |
 
-<sup>1</sup>可用的限制核心大小。
+<sup>1</sup> 個可用的有限核心大小。
 
 <sup>2</sup> 執行個體會隔離至單一客戶專用的硬體。
 
@@ -95,9 +95,9 @@ ACU：160-190
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
 
-定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+定價計算機： [定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
+磁片類型的詳細資訊： [磁片類型](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>後續步驟

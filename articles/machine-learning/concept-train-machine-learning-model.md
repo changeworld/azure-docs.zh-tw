@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dee74c787f6546494d12ea582eab383fbd99079d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876898"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651755"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -30,7 +30,7 @@ Azure Machine Learning 提供數種方式供您將模型定型，從使用 SDK �
     | [估算器](#estimators) | 估算器類別**可讓您輕鬆地根據熱門機器學習架構來將模型定型**。 **Scikit-learn**、**PyTorch**、**TensorFlow**、**Chainer** 和 **Ray RLlib** 均有估算器類別。 另外還有一種泛型估算器，這種估算器可與尚未擁有專用估算器類別的架構搭配運作。 使用估算器時，您不必擔心要如何定義回合組態。 |
     | [機器學習管線](#machine-learning-pipeline) | 管線並非不同的定型方法，而是**使用模組化、可重複使用的步驟來定義工作流程的一種方法**，其可將定型作業納入作為工作流程的一部分。 機器學習管線可支援使用自動化機器學習、估算器和回合組態來將模型定型。 由於管線並非特別聚焦在定型上，因此會使用管線的理由比其他定型方法更為多樣。 一般而言，您可能會在下列情況使用管線：<br>* 您想要**排程自動程序**，例如長時間執行的定型作業或資料準備。<br>* 使用**多個步驟**，這些步驟會跨異質計算資源和儲存位置彼此協調。<br>* 針對重新定型或批次評分等特定案例，使用管線作為**可重複使用的範本**。<br>針對工作流程來* **追蹤資料來源、輸入和輸出並設定其版本**。<br>* 您的工作流程是**由不同小組實作的，而這些小組會獨立處理特定步驟**。 然後，這些步驟可在管線中聯結在一起以實作工作流程。 |
 
-+ [適用于 r 的 AZURE MACHINE LEARNING sdk](#r-sdk)：適用于 r 的 sdk 會使用 reticulate 套件來系結至 Azure Machine Learning 的 Python SDK。 這可讓您從任何 R 環境存取在 Python SDK 中實作的核心物件和方法。
++ [適用于 r 的 AZURE MACHINE LEARNING sdk](#r-sdk)：適用于 r 的 sdk 會使用 reticulate 套件系結至 Azure Machine Learning 的 Python SDK。 這可讓您從任何 R 環境存取在 Python SDK 中實作的核心物件和方法。
 
 + **設計工具**：Azure Machine Learning 設計工具 (預覽) 可讓您輕鬆地進入機器學習領域來建置概念證明，或讓幾乎沒有程式碼撰寫經驗的使用者進入機器學習領域。 其可讓您使用拖放式的 Web 型 UI 來將模型定型。 您可以將 Python 程式碼作為設計的一部分，或在不撰寫任何程式碼的情況下將模型定型。
 
@@ -90,33 +90,33 @@ Azure Machine Learning 提供數種方式供您將模型定型，從使用 SDK �
 * [教學課程：使用 Azure Machine Learning 管線來進行批次評分](tutorial-pipeline-batch-scoring-classification.md)
 * [範例：機器學習管線的 Jupyter Notebook 範例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [範例：管線與自動化機器學習](https://aka.ms/pl-automl)
-* [範例：管線與估算器](https://aka.ms/pl-estimator)
+* [範例：管線與估算器](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb)
 
 ### <a name="understand-what-happens-when-you-submit-a-training-job"></a>瞭解當您提交定型作業時會發生什麼事
 
-Azure 訓練週期由下列各項組成：
+Azure 訓練生命週期是由下列各項所組成：
 
-1. 壓縮專案資料夾中的檔案，忽略 amlignore 或 _. .gitignore_中指定的檔案 _。_
-1. 相應增加您的計算叢集 
+1. 壓縮專案資料夾中的檔案，並忽略_amlignore_或 _. .gitignore_中所指定的檔案。
+1. 擴充您的計算叢集 
 1. 建立或下載 dockerfile 至計算節點 
-    1. 系統會計算的雜湊： 
+    1. 系統會計算下列雜湊： 
         - 基底映射 
-        - 自訂 docker 步驟 (參閱[使用自訂的 docker 基底映射部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
-        - Conda 定義 YAML (參閱[建立 & 在 Azure Machine Learning 中使用軟體環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
-    1. 系統會使用此雜湊作為 Azure Container Registry (ACR 的工作區查閱中的索引鍵) 
-    1. 如果找不到，它會在全域 ACR 中尋找相符的
+        - 自訂 docker 步驟 (參閱 [使用自訂 docker 基底映射部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
+        - Conda 定義 YAML (參閱 [在 Azure Machine Learning 中建立 & 使用軟體環境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
+    1. 系統會使用此雜湊作為 (ACR Azure Container Registry 工作區查閱中的索引鍵) 
+    1. 如果找不到，則會在全域 ACR 中尋找相符的
     1. 如果找不到，系統會建立新的映射， (將會快取並向工作區 ACR 註冊) 
-1. 將壓縮的專案檔案下載到計算節點上的暫存儲存體
-1. 解壓縮專案檔案
-1. 執行的計算節點`python <entry script> <arguments>`
-1. 將記錄檔、模型檔案和其他寫入的檔案儲存 `./outputs` 至與工作區相關聯的儲存體帳戶
-1. 相應減少計算，包括移除暫存儲存體 
+1. 將壓縮的專案檔案下載至計算節點上的暫存儲存體
+1. 解壓縮專案檔
+1. 執行中的計算節點 `python <entry script> <arguments>`
+1. 將記錄、模型檔案和其他寫入的檔案儲存到 `./outputs` 與工作區相關聯的儲存體帳戶
+1. 縮小計算範圍，包括移除暫存儲存體 
 
-如果您選擇在本機電腦上定型 ( 「設定為本機執行」 ) ，則不需要使用 Docker。 如果您選擇 (請參閱為範例) [設定 ML 管線](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline )一節，您可以在本機使用 Docker。
+如果您選擇在本機電腦上定型 ( 「設定為本機執行」 ) ，則不需要使用 Docker。 如果您選擇 (請參閱 [設定 ML 管線](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline ) 以取得範例) 一節，您可以在本機使用 Docker。
 
 ## <a name="r-sdk"></a>R SDK
 
-R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用網狀套件來繫結至 Azure Machine Learning 的 Python SDK。 這可讓您從任何 R 環境存取在 Python SDK 中執行的核心物件和方法。
+R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用網狀套件來繫結至 Azure Machine Learning 的 Python SDK。 這可讓您從任何 R 環境存取 Python SDK 中所執行的核心物件和方法。
 
 如需詳細資訊，請參閱下列文章：
 
@@ -156,7 +156,7 @@ R SDK 可讓您搭配使用 R 語言與 Azure Machine Learning。 SDK 會使用�
 
 ## <a name="vs-code"></a>VS 程式碼
 
-您可以使用 VS Code 擴充功能來執行和管理訓練作業。 若要深入瞭解，請參閱[VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#experiments)。
+您可以使用 VS Code 擴充功能來執行和管理定型作業。 若要深入瞭解，請參閱 [VS Code 資源管理操作指南](how-to-manage-resources-vscode.md#experiments) 。
 
 ## <a name="next-steps"></a>後續步驟
 

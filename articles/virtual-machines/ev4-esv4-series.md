@@ -9,28 +9,28 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: aa7e773cb45ea23d0e091ce12cc8488114ddfbdf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 94c47369d7b638640fab1971801177103779e896
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837052"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648933"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4 和 Esv4 系列
 
-Ev4 和 Esv4 系列會在 Intel 8272CL 白金級 &reg; 上執行 &reg; ，在超執行緒設定中 (Cascade Lake) 處理器，適用于各種需要大量記憶體的企業應用程式和功能，最高可達504GIB 的 RAM。
+Ev4 和 Esv4 系列是在 Intel 8272CL 白金級 &reg; &reg; (在超執行緒設定中的串聯式 Lake) 處理器上執行，適用于各種需要大量記憶體的企業應用程式和功能，最高可達504GIB 的 RAM。
 
 > [!NOTE]
-> 如需常見問題，請參閱[沒有本機暫存磁片的 AZURE VM 大小](azure-vms-no-temp-disk.md)。
+> 關於常見問題，請參閱  [沒有本機暫存磁片的 AZURE VM 大小](azure-vms-no-temp-disk.md)。
 
 ## <a name="ev4-series"></a>Ev4 系列
 
-Ev4 系列大小是在 Intel 的 &reg; 白金 8272CL (Cascade Lake) 上執行。 Ev4 系列實例很適合記憶體密集型的企業應用程式。 Ev4 系列 Vm 功能 Intel &reg; 超執行緒技術。
+Ev4 系列大小會在 Intel &reg; 8272CL (Cascade Lake) 上執行。 Ev4 系列實例很適合記憶體密集型企業應用程式。 Ev4 系列 Vm 功能 Intel &reg; 超執行緒技術。
 
 遠端資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium 儲存體磁片，請使用 Esv4 大小。 Esv4 大小的定價和計費方式與 Ev4 系列相同。
 
 > [!IMPORTANT]
-> 這些新的大小目前僅限公開預覽。 您可以在[這裡](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)註冊這些 Ev4 和 Esv4 系列。 
+> 這些新的大小目前僅處於公開預覽狀態。 您可以在 [這裡](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)註冊這些 Ev4 和 Esv4 系列。 
 
 ACU：195 - 210
 
@@ -56,10 +56,10 @@ ACU：195 - 210
 
 ## <a name="esv4-series"></a>Esv4 系列
 
-Esv4 系列大小是在 Intel 的 &reg; &reg; 白金 8272CL (Cascade Lake) 上執行。 Esv4 系列實例很適合記憶體密集型的企業應用程式。 Evs4 系列 Vm 功能 Intel &reg; 超執行緒技術。 遠端資料磁碟儲存體與虛擬機器分開計費。
+Esv4 系列大小會在 Intel &reg; &reg; 8272CL (Cascade Lake) 上執行。 Esv4 系列實例很適合記憶體密集型企業應用程式。 Evs4 系列 Vm 功能 Intel &reg; 超執行緒技術。 遠端資料磁碟儲存體與虛擬機器分開計費。
 
 > [!IMPORTANT]
-> 這些新的大小目前僅限公開預覽。 您可以在[這裡](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)註冊這些 Ev4 和 Esv4 系列。 
+> 這些新的大小目前僅處於公開預覽狀態。 您可以在 [這裡](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRURE1ZSkdDUzg1VzJDN0cwWUlKTkcyUlo5Mi4u)註冊這些 Ev4 和 Esv4 系列。 
 
 ACU：195-210
 
@@ -71,7 +71,7 @@ ACU：195-210
 
 記憶體保留更新：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
 | Standard_E2s_v4  | 2 | 16  | 僅限遠端存放 | 4 | 19000/120 (50)  | 3200/48 | 2|1000  |
 | Standard_E4s_v4  | 4 | 32  | 僅限遠端存放 | 8 | 38500/242 (100)  | 6400/96 | 2|2000  |
@@ -82,7 +82,7 @@ ACU：195-210
 | Standard_E48s_v4 | 48 | 384 | 僅限遠端存放 | 32 | 462000/2904 (1200)  | 76800/1152 | 8|24000 |
 | Standard_E64s_v4 <sup>1</sup> | 64 | 504| 僅限遠端存放 | 32 | 615000/3872 (1600)  | 80000/1200 | 8|30000 |
 
-<sup>1</sup> [可用的限制核心大小](./windows/constrained-vcpu.md)。
+<sup>1</sup>個 [可用的有限核心大小](./windows/constrained-vcpu.md)。
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
@@ -95,9 +95,9 @@ ACU：195-210
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
 
-定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+定價計算機： [定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
+磁片類型的詳細資訊： [磁片類型](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>後續步驟
