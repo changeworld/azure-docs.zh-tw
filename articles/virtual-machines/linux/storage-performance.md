@@ -10,18 +10,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 520754c08fc9bf89949739987b41974eccdcd29d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292137"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654764"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>將 Lsv2 系列虛擬機器上的效能最佳化
+# <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>優化 Lsv2 系列 Linux 虛擬機器的效能
 
 Lsv2 系列虛擬機器支援各種不同的工作負載，其在各種應用程式和產業的本機儲存體上需要高 I/O 和輸送量。  Lsv2 系列適用於巨量資料、SQL、NoSQL 資料庫、資料倉儲和大型交易資料庫，包括 Cassandra、MongoDB、Cloudera 和 Redis。
 
-Lsv2 系列虛擬機器 (VM) 的設計可將 AMD EPYC™7551 處理器最大化，以提供處理器、記憶體、NVMe 裝置和 VM 之間的最佳效能。 在 Linux 中使用合作夥伴，Azure Marketplace 提供數個組建，其中已針對 Lsv2 系列效能進行優化，且目前包含：
+Lsv2 系列虛擬機器 (VM) 的設計可將 AMD EPYC™7551 處理器最大化，以提供處理器、記憶體、NVMe 裝置和 VM 之間的最佳效能。 在 Linux 中使用合作夥伴，Azure Marketplace 提供數個組建，這些組建已針對 Lsv2 系列效能進行優化，且目前包含：
 
 - Ubuntu 18.04
 - Ubuntu 16.04
@@ -37,7 +37,7 @@ Lsv2 系列 VM 會使用以 Zen 微架構為基礎的 AMD EYPC™ 伺服器處�
 
 ## <a name="tips-to-maximize-performance"></a>最大化效能的秘訣
 
-* 如果您要上傳工作負載的自訂 Linux GuestOS，請注意，加速網路預設會**關閉**。 如果您想要啟用加速網路，請在建立 VM 時啟用它以達到最佳效能。
+* 如果您要上傳工作負載的自訂 Linux GuestOS，請注意，根據預設，加速網路將會 **關閉** 。 如果您想要啟用加速網路，請在建立 VM 時啟用它以獲得最佳效能。
 
 * 為 Lsv2 系列 VM 提供動力的硬體，會利用具有 8 個 I/O 佇列配對 (QP) 的 NVMe 裝置。 每個 NVMe 裝置 I/O 佇列實際上都是成對的：提交佇列和完成佇列。 NVMe 驅動程式已設定為透過散發循環配置資源排程中的 I/O，將這八個 I/O QP 的使用率最佳化。 若要獲得最大效能，請在每部裝置上執行八個作業以進行比對。
 
@@ -83,7 +83,7 @@ Lsv2 系列 VM 會使用以 Zen 微架構為基礎的 AMD EYPC™ 伺服器處�
 - VM 會變得狀況不良，而且由於硬體問題而必須對另一個節點進行服務修復。
 - 需要將 VM 重新配置給另一部主機以進行服務的少數計劃性維護作業。
 
-若要深入了解在本機儲存體中備份資料的選項，請參閱 [Azure IaaS 磁碟的備份和災害復原](backup-and-disaster-recovery-for-azure-iaas-disks.md)。
+若要深入了解在本機儲存體中備份資料的選項，請參閱 [Azure IaaS 磁碟的備份和災害復原](../backup-and-disaster-recovery-for-azure-iaas-disks.md)。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -93,20 +93,20 @@ Lsv2 系列 VM 會使用以 Zen 微架構為基礎的 AMD EYPC™ 伺服器處�
 * **單一 NVMe 磁碟失敗是否會導致主機上的所有 VM 失敗？**  
    如果在硬體節點上偵測到磁碟失敗，則硬體會處於失敗狀態。 發生這種情況時，節點上的所有 VM 都會自動解除配置，並移至狀況良好的節點。 對於 Lsv2 系列 VM，這表示客戶在失敗節點上的資料也會安全地清除，且必須由客戶在新節點上重新建立。 如先前所述，在 Lsv2 上推出「即時移轉」之前，失敗節點上的資料會在 VM 傳輸至另一個節點時，主動隨之移動。
 
-* **我是否需要對效能 rq_affinity 進行調整？**  
-   當使用每秒最大的輸入/輸出作業（IOPS）時，rq_affinity 設定是次要調整。 一旦所有其他專案都正常運作，請嘗試將 rq_affinity 設定為0，以查看是否有差異。
+* **我是否需要對效能進行調整以進行 rq_affinity？**  
+   使用每秒的絕對最大輸入/輸出作業 (IOPS) 時，rq_affinity 設定為次要調整。 一旦一切正常運作，請嘗試將 rq_affinity 設定為0，以查看是否有差異。
 
-* **我需要變更 blk_mq 設定嗎？**  
-   RHEL/CentOS 7.x 會自動為 NVMe 裝置使用 blk-mq。 不需要進行任何設定變更或設定。 [Scsi_mod] use_blk_mq 設定僅適用于 SCSI，而且是在 Lsv2 預覽期間使用，因為 NVMe 裝置在來賓 Vm 中會顯示為 SCSI 裝置。 目前 NVMe 裝置會顯示為 NVMe 裝置，因此 SCSI blk-mq 設定是不相關的。
+* **我是否需要變更 blk_mq 設定？**  
+   RHEL/CentOS 7.x 會自動針對 NVMe 裝置使用 blk-mq。 不需要進行任何設定變更或設定。 Scsi_mod use_blk_mq 設定僅適用于 SCSI，在 Lsv2 預覽期間使用，因為 NVMe 裝置在來賓 Vm 中顯示為 SCSI 裝置。 目前 NVMe 裝置會顯示為 NVMe 裝置，因此 SCSI blk-mq 設定是不相關的。
 
 * **我需要變更 "fio" 嗎？**  
-   若要以 L64v2 和 L80v2 VM 大小中的效能測量工具（例如 ' fio '）取得最大 IOPS，請在每個 NVMe 裝置上將 "rq_affinity" 設定為0。  例如，此命令列會將 L80v2 VM 中所有10個 NVMe 裝置的 "rq_affinity" 設定為零：
+   若要使用效能測量工具（例如 L64v2 和 L80v2 VM 大小中的 ' fio '）來取得最大 IOPS，請在每個 NVMe 裝置上將 "rq_affinity" 設定為0。  例如，此命令列將 L80v2 VM 中所有10部 NVMe 裝置的 "rq_affinity" 設定為零：
 
    ```console
    for i in `seq 0 9`; do echo 0 >/sys/block/nvme${i}n1/queue/rq_affinity; done
    ```
 
-   另請注意，當 i/o 直接完成到每個未經分割、沒有檔案系統、沒有 RAID 0 config 等的原始 NVMe 裝置時，會取得最佳效能。開始測試會話之前，請先確定已在 `blkdiscard` 每個 NVMe 裝置上執行，以確保設定處於已知的全新/全新狀態。
+   另請注意，當 i/o 直接對每個原始 NVMe 裝置（沒有磁碟分割、無檔案系統、無 RAID 0 設定等）進行時，就會取得最佳效能。開始測試會話之前，請先在 NVMe 裝置上執行，以確定 configuration 處於已知的全新/清除狀態 `blkdiscard` 。
    
 ## <a name="next-steps"></a>後續步驟
 

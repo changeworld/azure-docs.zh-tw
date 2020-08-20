@@ -7,23 +7,23 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 64f1de178e2b1e1692ddad316e6c1c1d20517b78
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835828"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654747"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
 Lsv2 系列以在全核心加速為 2.55GHz 且最大加速為 3.0GHz 之 [AMD EPYC<sup>TM</sup> 7551 處理器](https://www.amd.com/en/products/epyc-7000-series)上執行的高輸送量、低延遲、直接對應的本機 NVMe 儲存體為特色。 Lsv2 系列 VM 提供採用同時多執行緒設定且具有 8 到 80 個 vCPU 的大小。  每一 vCPU 有 8 GiB 記憶體，每 8 個 vCPU 有一個 1.92 TB NVMe SSD M.2 裝置，在 L80s v2 上最高可達 19.2 TB (10 x 1.92 TB)。
 
 > [!NOTE]
-> Lsv2 系列 Vm 已優化，可在直接連接到 VM 的節點上使用本機磁片，而不是使用持久的資料磁片。 這可提升您工作負載的 IOPS/輸送量。 Lsv2 和 Ls 系列不支援建立本機快取，以增加耐用資料磁片所能達到的 IOPs。
+> Lsv2 系列 Vm 已優化，可使用直接連接至 VM 之節點上的本機磁片，而不是使用永久性資料磁片。 這可提升您工作負載的 IOPS/輸送量。 Lsv2 和 Ls 系列不支援建立本機快取，以提高永久性資料磁片所能實現的 IOPs。
 >
-> 本機磁片的高輸送量和 IOPs 讓 Lsv2 系列 Vm 適用于 NoSQL 存放區（例如 Apache Cassandra 和 MongoDB），其會將資料複寫到多個 Vm，以在單一 VM 失敗時達到持續性。
+> 本機磁片的高輸送量和 IOPs 讓 Lsv2 系列 Vm 適用于 NoSQL 存放區（例如 Apache Cassandra 和 MongoDB），可將資料複寫到多個 Vm，以在單一 VM 失敗時達到持續性。
 >
-> 若要深入瞭解，請參閱在適用于[Windows](../virtual-machines/windows/storage-performance.md)或[Linux](../virtual-machines/linux/storage-performance.md)的 Lsv2 系列虛擬機器上優化效能。  
+> 若要深入瞭解，請參閱在適用于 [Windows](../virtual-machines/windows/storage-performance.md) 或 [Linux](../virtual-machines/linux/storage-performance.md)的 Lsv2 系列虛擬機器上優化效能。  
 
 ACU：150-175
 
@@ -54,18 +54,18 @@ ACU：150-175
 
 <sup>4</sup> Lsv2 系列 VM 並未針對資料磁碟提供主機快取，因為這對 Lsv2 工作負載沒有幫助。
 
-<sup>5</sup> Lsv2 系列 vm 一次最[多可以有30分鐘的磁片](linux/disk-bursting.md)效能。 
+<sup>5 個</sup> Lsv2 系列 vm 一次最 [多可將](linux/disk-bursting.md) 磁片效能提高到30分鐘。 
 
-<sup>6</sup>個 vcpu 超過64的 vm 需要下列其中一種支援的客體作業系統：
+<sup>6</sup> 個具有64以上個 vcpu 的 vm 需要其中一種支援的客體作業系統：
 
 - Windows Server 2016 或更新版本
-- Ubuntu 16.04 LTS 或更新版本，其中包含 Azure 微調的核心 (4.15 核心或更新版本) 
+- Ubuntu 16.04 LTS 或更新版本，搭配 Azure 微調核心 (4.15 核心或更新版本) 
 - SLES 12 SP2 或更新版本
-- RHEL 或 CentOS 版本6.7 至6.10，並已安裝 Microsoft 提供的 .LIS 套件 4.3.1 (或更新版本) 
-- RHEL 或 CentOS 7.3 版，並已安裝 Microsoft 提供的 .LIS 套件 4.2.1 (或更新版本) 
+- RHEL 或 CentOS 版本6.7 至6.10，並安裝 Microsoft 提供的 .LIS 套件 4.3.1 (或更新版本) 
+- RHEL 或 CentOS 7.3 版，並安裝 Microsoft 提供的 .LIS 套件 4.2.1 (或更新版本) 
 - RHEL 或 CentOS 7.6 版或更新版本
 - 使用 UEK4 或更新版本的 Oracle Linux
-- 具有反向移植核心 Debian 10 或更新版本的 Debian 9
+- Debian 9 反向移植 kernel，Debian 10 或更新版本
 - 使用4.14 核心或更新版本的 CoreOS
 
 ## <a name="size-table-definitions"></a>資料表大小定義
@@ -85,9 +85,9 @@ ACU：150-175
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
 
-定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+定價計算機： [定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
+磁片類型的詳細資訊： [磁片類型](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>後續步驟

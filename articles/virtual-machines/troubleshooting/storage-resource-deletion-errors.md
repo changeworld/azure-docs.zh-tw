@@ -11,24 +11,24 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8f145dcf8d476009d81056b3f4f970460209a5bc
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71058161"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649732"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>針對儲存體資源刪除錯誤進行疑難排解
 
 在某些情況下，當您在 Azure Resource Manager 部署中嘗試刪除 Azure 儲存體帳戶、容器或 Blob 時，可能會發生下列其中一個錯誤：
 
-> **無法刪除儲存體帳戶 ' StorageAccountName '。錯誤：因為儲存體帳戶的成品正在使用中，所以無法將其刪除。**
+> **無法刪除儲存體帳戶 ' StorageAccountName '。錯誤：因為儲存體帳戶的成品正在使用中，所以無法刪除。**
 > 
 > **無法刪除 # 個容器 (共 # 個)：<br>vhds：目前容器上有租用，但要求中沒有指定任何租用識別碼。**
 > 
 > **無法刪除 # 個 Blob (共 # 個)：<br>：目前 Blob 上有租用，但要求中沒有指定任何租用識別碼。**
 
-Azure VM 中使用的 VHD 是以分頁 Blob 形式儲存在 Azure 標準或進階儲存體帳戶中的 .vhd 檔案。 如需 Azure 磁碟的詳細資訊，請參閱我們的[受控磁碟簡介](../linux/managed-disks-overview.md)。
+Azure VM 中使用的 VHD 是以分頁 Blob 形式儲存在 Azure 標準或進階儲存體帳戶中的 .vhd 檔案。 如需 Azure 磁碟的詳細資訊，請參閱我們的[受控磁碟簡介](../managed-disks-overview.md)。
 
 Azure 能預防刪除已連接 VM 的磁碟，以避免損毀。 它也能預防刪除分頁 Blob 已連結 VM 的容器和儲存體帳戶。 
 
@@ -60,7 +60,7 @@ Azure 能預防刪除已連接 VM 的磁碟，以避免損毀。 它也能預防
 
 ### <a name="scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms"></a>案例 2：刪除容器 - 識別連接 VM 之容器內的所有 Blob
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 在 [中樞] 功能表中，選取 [所有資源]。 移至儲存體帳戶，在 [ **Blob 服務**] 下選取 [**容器**]，然後尋找要刪除的容器。
+2. 在 [中樞] 功能表中，選取 [所有資源]。 移至儲存體帳戶，在 [ **Blob 服務** ] 底下選取 [ **容器**]，然後尋找要刪除的容器。
 3. 按一下開啟容器，容器內的 Blob 清單將會出現。 在清單中識別 Blob 類型 = **分頁 Blob** 且租用狀態 = **已租用**的所有 Blob。 遵循案例 1 以辨識分別與這些 Blob 相關聯的 VM。
 
     ![入口網站的螢幕擷取畫面，反白顯示儲存體帳戶 Blob、[租用狀態] 和 [已租用]](./media/troubleshoot-vhds/utd-disks-sm.png)

@@ -1,37 +1,37 @@
 ---
-title: '在 Azure Kubernetes Service (AKS 上啟用 Ultra 磁片支援) '
+title: 在 Azure Kubernetes Service (AKS) 上啟用 Ultra 磁片支援
 description: 瞭解如何在 Azure Kubernetes Service (AKS) 叢集中啟用和設定 Ultra 磁片
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: f74da764f5a0b021199782dbad03e6e95cceb7f2
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6ad739a128839eac4d664ffb6f9e3b2fcd07f2d9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986826"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650174"
 ---
-# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>在 Azure Kubernetes Service (preview 上使用 Azure ultra 磁片) 
+# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes Service (preview 上使用 Azure ultra 磁片) 
 
-[Azure ultra 磁片](../virtual-machines/linux/disks-enable-ultra-ssd.md)為具狀態應用程式提供高輸送量、高 IOPS 以及一致的低延遲磁片儲存體。 Ultra 磁片的一個主要優點是能夠以動態方式變更 SSD 的效能，以及您的工作負載，而不需要重新開機您的代理程式節點。 Ultra 磁片適用于需要大量資料的工作負載。
+[Azure ultra 磁片](../virtual-machines/disks-enable-ultra-ssd.md) 針對具狀態應用程式提供高輸送量、高 IOPS 和一致的低延遲磁片儲存體。 Ultra 磁片的一個主要優點是能夠以動態方式變更 SSD 的效能以及您的工作負載，而不需要重新開機您的代理程式節點。 Ultra 磁片適用于需要大量資料的工作負載。
 
 ## <a name="before-you-begin"></a>開始之前
 
-這項功能只能在叢集建立或節點集區建立時設定。
+這項功能只能在建立叢集時設定，或在建立節點集區時設定。
 
 > [!IMPORTANT]
-> Azure ultra 磁片需要部署于可用性區域中的 nodepools，以及支援這些磁片的區域，以及僅限特定的 VM 系列。 請參閱[**Ultra 磁片 GA 範圍和限制**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations)。
+> Azure ultra 磁片需要在支援這些磁片的可用性區域和區域中部署 nodepools，以及僅限特定的 VM 系列。 請參閱 [**Ultra 磁片 GA 範圍和限制**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 
-- 請確定已 `EnableUltraSSD` 啟用功能旗標。
-- 請確定您已安裝最新的 `aks-preview` [CLI 擴充][az-extension-add]功能。
+- 確定已 `EnableUltraSSD` 啟用功能旗標。
+- 確定您已安裝最新的 `aks-preview` [CLI 擴充][az-extension-add] 功能。
 
 ### <a name="register-the-enableultrassd-preview-feature"></a>註冊 `EnableUltraSSD` 預覽功能
 
-若要建立可利用 Ultra 磁片的 AKS 叢集或節點集區，您必須 `EnableUltraSSD` 在您的訂用帳戶上啟用功能旗標。
+若要建立可利用 Ultra 磁片的 AKS 叢集或節點集區，您必須 `EnableUltraSSD` 在訂用帳戶上啟用功能旗標。
 
-`EnableUltraSSD`使用[az feature register][az-feature-register]命令來註冊功能旗標，如下列範例所示：
+`EnableUltraSSD`使用[az feature register][az-feature-register]命令註冊功能旗標，如下列範例所示：
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "EnableUltraSSD"
@@ -53,7 +53,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>安裝 aks-preview CLI 延伸模組
 
-若要建立可使用 Ultra 磁片的 AKS 叢集或節點集區，您需要最新的*AKS-preview* CLI 擴充功能。 使用[az extension add][az-extension-add]命令來安裝*aks-preview* Azure CLI 擴充功能，或使用[az extension update][az-extension-update]命令安裝任何可用的更新：
+若要建立可使用 Ultra 磁片的 AKS 叢集或節點集區，您需要最新的 *AKS-preview* CLI 擴充功能。 使用[az extension add][az-extension-add]命令安裝*aks-preview* Azure CLI 擴充功能，或使用[az extension update][az-extension-update]命令安裝任何可用的更新：
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -64,12 +64,12 @@ az extension update --name aks-preview
 ``` 
 
 ### <a name="limitations"></a>限制
-- 請參閱[ **ULTRA 磁片 GA 範圍和限制**](../virtual-machines/linux/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
-- Ultra 磁片支援的大小範圍介於100到1500之間
+- 查看[ **ULTRA 磁片 GA 範圍和限制**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations)
+- Ultra 磁片的支援大小範圍介於100到1500之間
 
 ## <a name="create-a-new-cluster-that-can-use-ultra-disks"></a>建立可使用 Ultra 磁片的新叢集
 
-使用下列 CLI 命令，建立能夠運用 Ultra 磁片的 AKS 叢集。 使用 `--aks-custom-headers` 旗標來設定 `EnableUltraSSD` 功能。
+使用下列 CLI 命令，建立能夠利用 Ultra 磁片的 AKS 叢集。 使用 `--aks-custom-headers` 旗標來設定此 `EnableUltraSSD` 功能。
 
 建立 Azure 資源群組：
 
@@ -78,34 +78,34 @@ az extension update --name aks-preview
 az group create --name myResourceGroup --location westus2
 ```
 
-建立具有受控 Azure AD 整合的 AKS 叢集和適用于 Kubernetes 授權的 Azure RBAC。
+使用受控 Azure AD 整合和適用于 Kubernetes 授權的 Azure RBAC 來建立 AKS 叢集。
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
 az aks create -g MyResourceGroup -n MyManagedCluster -l westus2 --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
-如果您想要建立不含 ultra 磁片支援的叢集，您可以省略自訂參數來執行這項操作 `--aks-custom-headers` 。
+如果您想要建立沒有 ultra 磁片支援的叢集，您可以省略自訂參數來進行 `--aks-custom-headers` 。
 
-## <a name="enable-ultra-disks-on-an-existing-cluster"></a>在現有叢集上啟用 Ultra 磁片
+## <a name="enable-ultra-disks-on-an-existing-cluster"></a>在現有的叢集上啟用 Ultra 磁片
 
-您可以藉由將新的節點集區新增至支援 ultra 磁片的叢集，在現有的叢集上啟用 ultra 磁片。 設定新的節點集區，以使用以主機為基礎的加密（使用旗標） `--aks-custom-headers` 。
+您可以藉由將新的節點集區新增至支援 ultra 磁片的叢集，在現有的叢集上啟用 ultra 磁片。 使用旗標，將新的節點集區設定為使用主機型加密 `--aks-custom-headers` 。
 
 ```azurecli
 az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
-如果您想要建立新的節點集區，但不支援 ultra 磁片，您可以省略自訂參數來這麼做 `--aks-custom-headers` 。
+如果您想要在不支援 ultra 磁片的情況下建立新的節點集區，您可以省略自訂參數來這麼做 `--aks-custom-headers` 。
 
-## <a name="use-ultra-disks-dynamically-with-a-storage-class"></a>以儲存類別動態使用 ultra 磁片
+## <a name="use-ultra-disks-dynamically-with-a-storage-class"></a>以儲存體類別動態使用 ultra 磁片
 
-若要在我們的部署或具狀態的集合中使用 ultra 磁片，您可以使用[儲存類別來進行動態](azure-disks-dynamic-pv.md)布建。
+若要在我們的部署或具狀態集合中使用 ultra 磁片，您可以使用 [儲存類別來進行動態](azure-disks-dynamic-pv.md)布建。
 
 ### <a name="create-the-storage-class"></a>建立儲存類別
 
 儲存體類別可用來定義如何搭配永續性磁碟區動態建立儲存體單位。 如需有關 Kubernetes 儲存體類別的詳細資訊，請參閱 [Kubernetes 儲存體類別][kubernetes-storage-classes]。
 
-在此情況下，我們將建立參照 ultra 磁片的儲存類別。 建立名為 `azure-ultra-disk-sc.yaml` 的檔案，然後將下列資訊清單複製進來。
+在此情況下，我們將建立參考 ultra 磁片的儲存類別。 建立名為 `azure-ultra-disk-sc.yaml` 的檔案，然後將下列資訊清單複製進來。
 
 ```yaml
 kind: StorageClass
@@ -122,7 +122,7 @@ parameters:
   diskMbpsReadWrite: "320"   # minimum value: 0.032/GiB
 ```
 
-使用[kubectl apply][kubectl-apply]命令來建立儲存體類別，並指定您*的 yaml*檔案：
+使用 [kubectl apply][kubectl-apply] 命令建立儲存體類別，並指定您的 *yaml* 檔案：
 
 ```console
 $ kubectl apply -f azure-ultra-disk-sc.yaml
@@ -135,7 +135,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 永續性磁碟區宣告 (PVC) 可用來根據儲存體類別，動態佈建儲存體。 在此情況下，PVC 可以使用其中一個預先建立的儲存體類別，來建立標準或進階 Azure 受控磁碟。
 
-建立名為 `azure-ultra-disk-pvc.yaml` 的檔案，然後將下列資訊清單複製進來。 宣告會要求名為 `ultra-disk` 的磁片，其大小為*1000 GB*且具有*readwriteonce 來*存取權。 已將*ultra 磁片 sc*儲存類別指定為儲存類別。
+建立名為 `azure-ultra-disk-pvc.yaml` 的檔案，然後將下列資訊清單複製進來。 宣告會要求名為 `ultra-disk` 的磁片，其大小為 *1000 GB* ，且具有 *>readwriteonce* 存取權。 *Ultra 磁片 sc*儲存類別會指定為儲存類別。
 
 ```yaml
 apiVersion: v1
@@ -151,7 +151,7 @@ spec:
       storage: 1000Gi
 ```
 
-使用[kubectl apply][kubectl-apply]命令建立持續性磁片區宣告，並指定您的*yaml*檔案：
+使用 [kubectl apply][kubectl-apply] 命令建立永久性磁片區宣告，並指定您的 *azure-yaml* 檔案：
 
 ```console
 $ kubectl apply -f azure-ultra-disk-pvc.yaml
@@ -161,7 +161,7 @@ persistentvolumeclaim/ultra-disk created
 
 ## <a name="use-the-persistent-volume"></a>使用永續性磁碟區
 
-建立永續性磁碟區宣告，並成功佈建磁碟之後，就能建立可存取磁碟的 Pod。 下列資訊清單所建立的基本 NGINX pod，會使用名為 ultra 的持續性*磁片*區宣告，將 Azure 磁片掛接在路徑上 `/mnt/azure` 。
+建立永續性磁碟區宣告，並成功佈建磁碟之後，就能建立可存取磁碟的 Pod。 下列資訊清單所建立的基本 NGINX pod，會使用名為 *ultra 磁片* 的永久性磁片區宣告，將 Azure 磁片掛接在路徑上 `/mnt/azure` 。
 
 建立名為 `nginx-ultra.yaml` 的檔案，然後將下列資訊清單複製進來。
 
@@ -226,8 +226,8 @@ Events:
 
 ## <a name="next-steps"></a>後續步驟
 
-- 如需 ultra 磁片的詳細資訊，請參閱[使用 Azure ultra 磁片](../virtual-machines/linux/disks-enable-ultra-ssd.md)。
-- 如需儲存體最佳做法的詳細資訊，請參閱[Azure Kubernetes Service (AKS 中儲存和備份的最佳作法) ][operator-best-practices-storage]
+- 如需 ultra 磁片的詳細資訊，請參閱 [使用 Azure ultra 磁片](../virtual-machines/disks-enable-ultra-ssd.md)。
+- 如需儲存體最佳作法的詳細資訊，請參閱 [Azure Kubernetes Service (AKS 中儲存體和備份的最佳作法) ][operator-best-practices-storage]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
@@ -240,7 +240,7 @@ Events:
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

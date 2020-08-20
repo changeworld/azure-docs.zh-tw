@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中建立 SAP 高可用性多 SID 設定
+title: 在 Azure 中建立 SAP 高可用性多重 SID 設定
 description: Windows 虛擬機器上的 SAP NetWeaver 多 SID 組態的高可用性指南
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2016
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: af5459d7d3943258d5ea0143c39ddc0277330cc1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e5c3c0d9872fb4d50a0d4770e2c87b7be16c20bf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051794"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652945"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>建立 SAP NetWeaver 多 SID 組態
 
@@ -378,7 +378,7 @@ ms.locfileid: "87051794"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md

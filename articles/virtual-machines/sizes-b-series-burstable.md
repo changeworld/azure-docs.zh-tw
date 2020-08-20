@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 81bfde964fa993b69bc464214dab0810a8f2bfe5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a5a3887efe9b8f19608fac63216ca53576d9ec3f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832581"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654730"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列高載虛擬機器大小
 
@@ -29,7 +29,7 @@ B 系列有下列 VM 大小：
 
 記憶體保留更新：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | VM 的基礎 CPU 效能 | VM 的最大 CPU 效能 | 初始信用額度 | 點數存款/小時 | 最大累積點數 | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS/MBps | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | VM 的基礎 CPU 效能 | VM 的最大 CPU 效能 | 初始點數 | 信用額度存款/小時 | 最大累積點數 | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS/MBps | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Standard_B1ls<sup>1</sup> | 1  | 0.5 | 4   | 5%   | 100%  | 30  | 3   | 72   | 2  | 200/10    | 160/10    | 2  |
 | Standard_B1s              | 1  | 1   | 4   | 10%  | 100%  | 30  | 6   | 144  | 2  | 400/10    | 320/10    | 2  |
@@ -42,13 +42,13 @@ B 系列有下列 VM 大小：
 | Standard_B16ms            | 16 | 64  | 128 | 270% | 1600% | 480 | 162 | 3888 | 32 | 8640/100  | 4320/50   | 8  |
 | Standard_B20ms            | 20 | 80  | 160 | 337% | 2000% | 600 | 203 | 4860 | 32 | 10800/125 | 4320/50   | 8  |
 
-<sup>1</sup>只有在 Linux 上才支援 B1ls
+只有 Linux 上支援<sup>1</sup> B1ls
 
 ## <a name="workload-example"></a>工作負載範例
 
-請考慮使用 office 簽入/取出應用程式。 應用程式需要上班時間內的 CPU 高載，但在下班時間則不會有大量的計算能力。 在此範例中，工作負載需要具有 64GiB RAM 的16vCPU 虛擬機器，才能有效率地運作。
+考慮使用 office 簽入/輸出應用程式。 應用程式在上班時間需要 CPU 高載，但在下班時間不需要大量運算能力。 在此範例中，工作負載需要具有 64GiB RAM 的16vCPU 虛擬機器才能有效率地運作。
 
-此表格顯示每小時的流量資料，而圖表則是該流量的視覺標記法。
+資料表會顯示每小時的流量資料，而圖表則是該流量的視覺標記法。
 
 B16 特性：
 
@@ -58,9 +58,9 @@ B16 特性：
 
 ![每小時流量資料的圖表](./media/b-series-burstable/office-workload.png)
 
-| 案例 | Time | CPU 使用量 (% )  | 累積的信用額度<sup>1</sup> | 可用點數 |
+| 案例 | 時間 | CPU 使用量 (% )  | 累積的點數<sup>1</sup> | 可用的點數 |
 | --- | --- | --- | --- | --- |
-| B16ms 部署 | 部署 | 部署  | 480 (初始信用額度)  | 480 |
+| B16ms 部署 | 部署 | 部署  | 480 (初始點數)  | 480 |
 | 沒有流量 | 0:00 | 0 | 162 | 642 |
 | 沒有流量 | 1:00 | 0 | 162 | 804 |
 | 沒有流量 | 2:00 | 0 | 162 | 966 |
@@ -69,7 +69,7 @@ B16 特性：
 | 沒有流量 | 5:00 | 0 | 162 | 1452 |
 | 低流量 | 6:00 | 270 | 0 | 1452 |
 | 員工進入 office (應用程式需要 80% vCPU)  | 7:00 | 1280 | -606 | 846 |
-| 員工繼續進入 office (應用程式需要 80% vCPU)  | 8:00 | 1280 | -606 | 240 |
+| 員工持續進入 office (應用程式需要 80% vCPU)  | 8:00 | 1280 | -606 | 240 |
 | 低流量 | 9:00 | 270 | 0 | 240 |
 | 低流量 | 10:00 | 100 | 102 | 342 |
 | 低流量 | 11:00 | 50 | 132 | 474 |
@@ -86,14 +86,14 @@ B16 特性：
 | 沒有流量 | 22:00 | 0 | 162 | 642 |
 | 沒有流量 | 23:00 | 0 | 162 | 804 |
 
-<sup>1</sup>小時內累積的信用額度/信用額度相當於： `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` 。  
+<sup>1</sup> 小時的累積點數/點數相當於： `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` 。  
 
-針對具有16個 vcpu 和 64 GiB 記憶體的 D16s_v3，每小時速率為 $0.936 (每月 $673.92) ，而 B16ms 具有16個 vcpu 和 64 GiB 記憶體時，速率為每小時 $0.794 (每個月 $547.86) 。 <b>這會導致15% 的節約！</b>
+對於具有16個 vcpu 和 64 GiB 記憶體的 D16s_v3，每小時的每小時費率為 $0.936 (每月 $673.92) 以及16個 vcpu 和 64 GiB 記憶體的 B16ms，速率為每小時 $0.794 (每月 $547.86) 。 <b> 這會節省15% 的費用！</b>
 
 ## <a name="q--a"></a>問答集
 
-### <a name="q-what-happens-if-the-credits-run-out"></a>問：如果信用額度用盡，會發生什麼事？
-**答**：當點數用完時，VM 會回到基準效能。
+### <a name="q-what-happens-if-the-credits-run-out"></a>問：當點數用盡時，會發生什麼事？
+**答**：當點數用盡時，VM 會回到基準效能。
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>問：如何從 VM 取得 135% 的基準效能？
 
@@ -106,7 +106,7 @@ B16 特性：
 
 如需如何存取 Azure 計量資料的詳細資訊，請參閱 [Microsoft Azure 的計量概觀](../azure-monitor/platform/data-platform.md)。
 
-### <a name="q-how-are-credits-accumulated-and-consumed"></a>問：如何累積和取用信用額度？
+### <a name="q-how-are-credits-accumulated-and-consumed"></a>問：點數如何累積和取用？
 
 **答**：VM 累積與消耗率設定的方式，是以基礎效能層級執行的 VM 會具有高載點數的淨累積或耗用量。  每當 VM 在其基礎效能層級下執行時，點數淨值都會增加，且每當 VM 利用 CPU 超過其基礎效能層級時，點數淨值就會降低。
 
@@ -118,13 +118,13 @@ B16 特性：
 
 如果我用離峰時間所獲得的 120 個點數減去尖峰時間使用的 96 個點數，每天就可以額外累積 24 個點數，能用於其他高載的活動。
 
-### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>問：如何計算累積和使用的信用額度？
+### <a name="q-how-can-i-calculate-credits-accumulated-and-used"></a>問：如何計算已累積和使用的點數？
 
 **答**：您可以使用下列公式：
 
- (VM 的基礎 CPU 效能-CPU 使用量) /100 = 信用額度 bank 或每分鐘使用量
+VM 的 (基礎 CPU 效能-CPU 使用量) /100 = 點數 bank 或每分鐘使用
 
-例如，在上述情況中，您的基準為20%，如果您使用10% 的 CPU，則會累積 (20%-10% ) /100 = 每分鐘0.1 個點數。
+例如，在上述情況中，您的基準為20%，如果您使用10% 的 CPU，則 (20%-10% ) /100 = 0.1 點數（每分鐘）累積。
 
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>問：B 系列是否支援進階儲存體資料磁碟？
 
@@ -136,7 +136,7 @@ B16 特性：
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>問：如果我在 B1ls 上部署不支援的 OS 映射，會發生什麼事？
 
-**答**： B1ls 只支援 Linux 映射，如果您部署任何另一個作業系統映射，您可能無法取得最佳的客戶體驗。
+**答** ： B1ls 僅支援 Linux 映射，如果您部署任何其他的作業系統映射，則可能無法獲得最佳的客戶體驗。
 
 ## <a name="other-sizes-and-information"></a>其他大小和資訊
 
@@ -147,9 +147,9 @@ B16 特性：
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)
 
-定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+定價計算機： [定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
+磁片類型的詳細資訊： [磁片類型](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>後續步驟
 

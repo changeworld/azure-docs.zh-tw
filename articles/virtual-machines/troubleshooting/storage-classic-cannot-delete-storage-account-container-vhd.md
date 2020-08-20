@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e7469f0d53a154f605480b811d36937e3d4ad6c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77915024"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649834"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>針對傳統儲存體資源刪除錯誤進行疑難排解
 本文章提供疑難排解指引，協助您排解在嘗試刪除 Azure 傳統儲存體帳戶、容器或 *.vhd 分頁 Blob 檔案時發生的以下任一錯誤。 
@@ -21,7 +21,7 @@ ms.locfileid: "77915024"
 
 本文僅涵蓋傳統儲存體資源的問題。 如果使用者使用 Azure 入口網站、PowerShell 或 CLI 刪除傳統虛擬機器，則磁碟不會自動刪除。 使用者可以選取刪除「磁碟」資源。 如果未選取該選項，「磁碟」資源會防止存儲體帳戶、容器和實際 *.vhd 分頁 Blob 檔案遭到刪除。
 
-如需 Azure 磁碟的詳細資訊，[請參閱](../../virtual-machines/windows/managed-disks-overview.md)。 Azure 能預防刪除已連接 VM 的磁碟，以避免損毀。 它也能預防刪除分頁 Blob 已連接 VM 的容器和儲存體帳戶。 
+如需 Azure 磁碟的詳細資訊，[請參閱](../../virtual-machines/managed-disks-overview.md)。 Azure 能預防刪除已連接 VM 的磁碟，以避免損毀。 它也能預防刪除分頁 Blob 已連接 VM 的容器和儲存體帳戶。 
 
 ## <a name="what-is-a-disk"></a>什麼是「磁碟」？
 「磁碟」資源是用來將 *.vhd 分頁 Blob 檔案裝載到虛擬機器，作為作業系統磁碟或資料磁碟。 在刪除之前，作業系統磁碟或資料磁碟資源將繼續租用 *.vhd 檔案。 如果「磁碟」資源指向下圖所示路徑中的任何儲存體資源，則該儲存體資源無法刪除。
@@ -65,7 +65,7 @@ ms.locfileid: "77915024"
 
 > <span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
 > 
-> <span style="color:red">AzureStorageAccount： BadRequest：儲存體帳戶 myclassicaccount 有一些作用中的映射及/或磁片，例如  
+> <span style="color:red">New-azurestorageaccount： BadRequest：儲存體帳戶 myclassicaccount 有一些作用中的映射 (s) 和/或磁片 (s) ，例如  
 > myclassicaccount. 確認這些映像及/或磁碟已移除之後再刪除此儲存體帳戶。</span>
 
 ## <a name="unable-to-delete-storage-container"></a>無法刪除儲存體容器
@@ -83,7 +83,7 @@ ms.locfileid: "77915024"
 
 > <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
 > 
-> <span style="color:red">New-azurestoragecontainer：遠端伺服器傳回錯誤：（412）容器上目前有租用，而且要求中沒有指定任何租用識別碼。。HTTP 狀態碼： 412-HTTP 錯誤訊息：目前容器上有租用，而且要求中未指定租用識別碼。</span>
+> <span style="color:red">>new-azurestoragecontainer：遠端伺服器傳回錯誤： (412) 容器上目前有租用，且要求中沒有指定任何租用識別碼。HTTP 狀態碼： 412-HTTP 錯誤訊息：目前容器上有租用，且要求中沒有指定任何租用識別碼。</span>
 
 ## <a name="unable-to-delete-a-vhd"></a>無法刪除 vhd 
 
@@ -105,7 +105,7 @@ ms.locfileid: "77915024"
 
 > <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
 > 
-> <span style="color:red">Get-azurestorageblob：遠端伺服器傳回錯誤：（412） blob 目前有租用，而且要求中沒有指定任何租用識別碼。。HTTP 狀態碼： 412-HTTP 錯誤訊息：目前 blob 上有租用，而且要求中未指定租用識別碼。</span>
+> <span style="color:red">>get-azurestorageblob：遠端伺服器傳回錯誤： (412) blob 上目前有租用，且要求中沒有指定任何租用識別碼。HTTP 狀態碼： 412-HTTP 錯誤訊息： blob 上目前有租用，且要求中沒有指定任何租用識別碼。</span>
 
 
 ## <a name="resolution-steps"></a>解決步驟
@@ -114,7 +114,7 @@ ms.locfileid: "77915024"
 在 Azure 入口網站中遵循下列步驟：
 1.  瀏覽至 [Azure 入口網站](https://portal.azure.com)。
 2.  瀏覽至磁碟 (傳統)。 
-3.  按一下 [磁片] 索引標籤。 ![開啟容器 blob 「清單」窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  按一下 [磁片] 索引標籤。 ![入口網站的螢幕擷取畫面，其中已開啟容器 blob 「清單」窗格](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  選取資料磁碟，然後按一下 [刪除磁碟]。
  ![開啟容器 Blob「清單」窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)

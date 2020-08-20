@@ -7,16 +7,16 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 31bc9a5f38d50318f858a4d7169391e9d2e5e610
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 775b296185f9f0f0e967ada2688e24158f36360e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848725"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648355"
 ---
 # <a name="eav4-and-easv4-series"></a>Eav4 和 Easv4 系列
 
-Eav4 系列和 Easv4 系列利用 AMD 的2.35 版 Ghz EPYC<sup>TM</sup> 7452 處理器，以多執行緒的方式設定，最多可達 256mb L3 快取，增加執行大部分記憶體優化工作負載的選項。 Eav4 系列和 Easv4 系列具有與 Ev3 和 Esv3 系列相同的記憶體與磁碟設定。
+Eav4 系列和 Easv4 系列在多執行緒設定中使用 AMD 的採用 2.35 Ghz EPYC<sup>TM</sup> 7452 處理器，最多可達 256mb L3 快取，並增加執行大部分記憶體優化工作負載的選項。 Eav4 系列和 Easv4 系列具有與 Ev3 和 Esv3 系列相同的記憶體與磁碟設定。
 
 ## <a name="eav4-series"></a>Eav4 系列
 
@@ -30,7 +30,7 @@ ACU： 230-260
 
 記憶體保留更新：支援
 
-Eav4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達成 3.35 ghz 的提升頻率，並使用 premium SSD。 Eav4 系列大小非常適合記憶體密集型的企業應用程式。 資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium SSD，請使用 Easv4 系列大小。 Easv4 大小的定價和計費方式與 Eav3 系列相同。
+Eav4 系列大小以採用 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達到最大的 3.35 ghz 頻率，並使用 premium SSD。 Eav4 系列大小適合記憶體密集型企業應用程式。 資料磁碟儲存體與虛擬機器分開計費。 若要使用 premium SSD，請使用 Easv4 系列大小。 Easv4 大小的定價和計費方式與 Eav3 系列相同。
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大暫存儲存體輸送量：IOPS / 讀取 MBps / 寫入 MBps | 最大 NIC | 預期的網路頻寬 (Mbps)  |
 | -----|-----|-----|-----|-----|-----|-----|-----|
@@ -56,7 +56,7 @@ ACU： 230-260
 
 記憶體保留更新：支援
 
-Easv4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達成 3.35 ghz 的提升頻率，並使用 premium SSD。 Easv4 系列大小非常適合記憶體密集型的企業應用程式。
+Easv4 系列大小以採用 2.35 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎，可達到最大的 3.35 ghz 頻率，並使用 premium SSD。 Easv4 系列大小適合記憶體密集型企業應用程式。
 
 | 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量IOPS / MBps (快取大小，以 GiB 為單位) | 最大取消快取的磁碟輸送量︰IOPS / MBps | 最大 NIC | 預期的網路頻寬 (MBps)  |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -81,9 +81,9 @@ Easv4 系列大小以2.35 版 Ghz AMD EPYC<sup>TM</sup> 7452 處理器為基礎�
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
 
-定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+定價計算機： [定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
+磁片類型的詳細資訊： [磁片類型](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>後續步驟
 

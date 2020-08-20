@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: b7f03c11b53c6dc61fad6b916e7c08086917b416
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 51e6c74a8b80b94ca552645cfbb76bd4e162a62b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565735"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650055"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用常見事件格式連接您的外部解決方案
 
@@ -44,12 +44,12 @@ ms.locfileid: "88565735"
 
 ## <a name="security-considerations"></a>安全性考量
 
-請務必根據您組織的安全性原則來設定電腦的安全性。 例如，您可以設定您的網路，使其符合您的公司網路安全性原則，並變更 daemon 中的埠和通訊協定，以符合您的需求。 您可以使用下列指示來改進您的電腦安全性性設定：  [Azure 中的安全 VM](../virtual-machines/linux/security-policy.md)、 [網路安全性的最佳做法](../security/fundamentals/network-best-practices.md)。
+請務必根據您組織的安全性原則來設定電腦的安全性。 例如，您可以設定您的網路，使其符合您的公司網路安全性原則，並變更 daemon 中的埠和通訊協定，以符合您的需求。 您可以使用下列指示來改進您的電腦安全性性設定：  [Azure 中的安全 VM](../virtual-machines/security-policy.md)、 [網路安全性的最佳做法](../security/fundamentals/network-best-practices.md)。
 
 若要在安全性解決方案和 Syslog 電腦之間使用 TLS 通訊，您必須設定 Syslog daemon (rsyslog 或 syslog-ng) 在 TLS 中進行通訊： [使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)、 [使用 tls 加密記錄訊息-Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
  
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 請確定您用來作為 proxy 的 Linux 機器正在執行下列其中一個作業系統：
 
 - 64 位元

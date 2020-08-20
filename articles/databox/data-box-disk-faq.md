@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3d4b51445e0859fe90a81eecb95625d41009b6eb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745788"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649409"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure 資料箱磁碟：常見問題集
 
@@ -58,6 +58,23 @@ A. 美國、加拿大、澳大利亞、西歐和北歐、南韓和日本內的�
 
 ### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>Q. 我的資料箱磁碟在運送期間可以跨國家/區域邊界使用嗎？
 A. 資料箱磁碟是在與目的地相同的國家/區域內寄送，並不會跨越任何跨國界。 唯一的例外狀況是位於歐盟 (EU) 的訂單，該地區的磁碟可以在任何歐盟國家/區域之間運送。
+
+### <a name="q-how-can-i-import-my-on-premises-source-data-in-one-countryregion-to-an-azure-region-in-a-different-countryregion"></a>Q. 如何將一個國家/地區中的內部部署來源資料匯入至不同國家/地區的 Azure 區域？
+A. 資料箱磁碟僅支援在相同區域內內嵌資料 (commerce 界限) 。 在所有其他情況下，您可能需要採取其他動作。 
+
+例如，如果您在加拿大的內部部署資料想要移至 Azure WestUS 儲存體帳戶，則您可以透過下列方式達成：
+
+### <a name="option-1"></a>選項 1： 
+
+使用[azure 匯入/匯出服務](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)，從加拿大的來源位置將包含資料的[支援磁片](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks)傳送到 azure WestUS 資料中心。
+
+### <a name="option-2"></a>選項 2：
+
+1. 選擇儲存體帳戶（例如 Cananda Central），以在加拿大訂購資料箱磁碟。 SSD 磁片 (s) 會從 Azure 資料中心寄送至 Azure 資料中心，並加拿大中部在訂單建立期間于加拿大) 提供寄送位址 (。
+
+2. 當您將內部部署伺服器的資料複製到磁片之後，請使用 Microsoft 提供的退貨標籤，將資料返回加拿大的 Azure 資料中心。 資料箱磁碟 (s 上的資料) 然後上傳至訂單建立期間所選擇之加拿大 Azure 區域中的目的地儲存體帳戶。
+
+3. 然後，您可以使用 AzCopy 之類的工具，將資料複製到 WestUS 中的儲存體帳戶。 此步驟會產生不包含在資料箱磁碟帳單中的 [標準儲存體](https://azure.microsoft.com/pricing/details/storage/) 和 [頻寬費用](https://azure.microsoft.com/pricing/details/bandwidth/) 。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. 如果遇到任何資料箱磁碟方面的問題，該與誰連絡？
 A. 如果您遇到任何資料箱磁碟方面的問題，請[連絡 Microsoft 支援服務](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)。

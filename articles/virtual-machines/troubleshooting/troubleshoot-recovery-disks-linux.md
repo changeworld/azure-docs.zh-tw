@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 1b91a39e1297d8952da67a4f8d3b8568cefe04ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f05804785435824970d90410d9a1c9490a3d6c06
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73620569"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654713"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>透過 Azure CLI 將 OS 磁碟連結到復原 VM，以對 Linux VM 進行疑難排解
 如果 Linux 虛擬機器 (VM) 發生開機或磁碟錯誤，您可能需要對虛擬硬碟本身執行疑難排解步驟。 常見的例子是 `/etc/fstab` 中的項目無效，導致 VM 無法成功開機。 本文詳細說明如何使用 Azure CLI 將虛擬硬碟連接至另一個 Linux VM，以修正任何錯誤，然後重新建立原始 VM。 
@@ -27,17 +27,17 @@ ms.locfileid: "73620569"
 疑難排解程序如下所示︰
 
 1. 停止受影響的 VM。
-1. 從 VM 的 OS 磁片建立快照集。
+1. 從 VM 的 OS 磁片取得快照。
 1. 從 OS 磁碟快照集建立磁碟。
-1. 將新的 OS 磁片連結並掛接至另一個 Linux VM，以供疑難排解之用。
-1. 連接至疑難排解 VM。 編輯檔案或執行任何工具來修正新作業系統磁片上的問題。
-1. 從疑難排解 VM 卸載和卸離新的 OS 磁片。
+1. 將新的 OS 磁片連接並掛接至另一個 Linux VM，以供疑難排解之用。
+1. 連接至疑難排解 VM。 編輯檔案或執行任何工具來修正新 OS 磁片上的問題。
+1. 從疑難排解 VM 卸載並卸離新的 OS 磁片。
 1. 變更受影響 VM 的 OS 磁碟。
 
 若要執行這些疑難排解步驟，您需要安裝最新的 [Azure CLI](/cli/azure/install-az-cli2)，並且使用 [az login](/cli/azure/reference-index) 登入 Azure 帳戶。
 
 > [!Important]
-> 本文中的指令碼只適用於使用[受控磁碟](../linux/managed-disks-overview.md)的 VM。 
+> 本文中的指令碼只適用於使用[受控磁碟](../managed-disks-overview.md)的 VM。 
 
 在下列範例中，將參數名稱取代為您自己的值，例如 `myResourceGroup` 和 `myVM` 。
 
@@ -59,7 +59,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 ```azurecli
 az vm stop --resource-group MyResourceGroup --name MyVm
 ```
-## <a name="take-a-snapshot-from-the-os-disk-of-the-affected-vm"></a>從受影響 VM 的 OS 磁片建立快照集
+## <a name="take-a-snapshot-from-the-os-disk-of-the-affected-vm"></a>從受影響 VM 的 OS 磁片取得快照集
 
 快照集是完整的 VHD 唯讀複本。 無法將它連結至 VM。 在下一個步驟中，我們將從此快照集建立磁碟。 下列範例會從 'myVM' VM 的 OS 磁碟建立名為 `mySnapshot` 的快照集。 
 
@@ -105,12 +105,12 @@ az disk create --resource-group $resourceGroup --name $osDisk --sku $storageType
 
 ```
 
-如果資源群組和來源快照集不在相同的區域中，當您執行時，您會收到「找不到資源」錯誤 `az disk create` 。 在此情況下，您必須指定， `--location <region>` 將磁片建立到與來源快照集相同的區域中。
+如果資源群組和來源快照集不在相同的區域中，當您執行時，將會收到「找不到資源」錯誤 `az disk create` 。 在此情況下，您必須指定 `--location <region>` 將磁片建立為與來源快照集相同的區域。
 
-您現在有原始 OS 磁碟的複本。 您可以將這個新的磁片掛接至另一個 Windows VM，以進行疑難排解。
+您現在有原始 OS 磁碟的複本。 您可以將這個新磁片掛接至另一個 Windows VM，以進行疑難排解。
 
-## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>將新的虛擬硬碟連結至另一個 VM
-在接下來幾個步驟中，您將使用另一個 VM 進行疑難排解。 您會將磁片連結到此疑難排解 VM，以流覽和編輯磁片的內容。 此程式可讓您更正任何設定錯誤，或檢查其他應用程式或系統記錄檔。
+## <a name="attach-the-new-virtual-hard-disk-to-another-vm"></a>將新的虛擬硬碟連接至另一個 VM
+在接下來幾個步驟中，您將使用另一個 VM 進行疑難排解。 您將磁片連接到這個疑難排解 VM，以流覽和編輯磁片的內容。 此程式可讓您更正任何設定錯誤，或查看其他應用程式或系統記錄檔。
 
 此腳本會將磁片連結 `myNewOSDisk` 至 VM `MyTroubleshootVM` ：
 
@@ -160,11 +160,11 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
     > 最佳做法是使用虛擬硬碟的通用唯一識別碼 (UUID)，將資料磁碟掛接在 Azure 中的 VM。 在這個簡短的疑難排解案例中，不需要使用 UUID 來掛接虛擬硬碟。 但在正常使用情況下，如果編輯 `/etc/fstab` 來使用裝置名稱掛接虛擬硬碟，而不是使用 UUID，可能會造成 VM 無法開機。
 
 
-## <a name="fix-issues-on-the-new-os-disk"></a>修正新作業系統磁片上的問題
+## <a name="fix-issues-on-the-new-os-disk"></a>修正新 OS 磁片上的問題
 已掛接現有的虛擬硬碟掛，您現在可以視需要執行任何維護和疑難排解步驟。 解決問題之後，請繼續進行下列步驟。
 
 
-## <a name="unmount-and-detach-the-new-os-disk"></a>取消掛接和卸離新的 OS 磁片
+## <a name="unmount-and-detach-the-new-os-disk"></a>卸載並卸離新的 OS 磁片
 一旦解決錯誤，您就要從疑難排解 VM 卸載中斷連結並現有的虛擬硬碟。 直到將虛擬硬碟連結至疑難排解 VM 的租用釋放，您才能將虛擬硬碟用於其他任何 VM。
 
 1. 從疑難排解 VM 的 SSH 工作階段，卸載現有的虛擬硬碟。 首先離開掛接點的上層目錄︰
@@ -179,7 +179,7 @@ az vm disk attach --disk $diskId --resource-group MyResourceGroup --size-gb 128 
     sudo umount /dev/sdc1
     ```
 
-2. 現在從 VM 中斷連結虛擬硬碟。 結束疑難排解 VM 的 SSH 會話：
+2. 現在從 VM 中斷連結虛擬硬碟。 結束您疑難排解 VM 的 SSH 會話：
 
     ```azurecli
     az vm disk detach -g MyResourceGroup --vm-name MyTroubleShootVm --name myNewOSDisk

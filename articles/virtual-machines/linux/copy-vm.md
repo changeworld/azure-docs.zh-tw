@@ -7,22 +7,22 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: ec8fd91dc768b44b027c96efead6924782eb0f75
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c7d93ee928653cc1656e3e9a7cdb0d2fd6d7094b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368603"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654407"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>使用 Azure CLI 和受控磁碟來建立 Azure Linux VM 的複本
 
-本文說明如何使用 Azure CLI 來建立執行 Linux 的 Azure 虛擬機器（VM）複本。 若要大規模複製、建立、儲存及共用 VM 映射，請參閱[共用映射資源庫](../shared-images-cli.md)。
+本文說明如何使用 Azure CLI，建立 Azure 虛擬機器 (VM) 執行 Linux 的複本。 若要大規模複製、建立、儲存及共用 VM 映射，請參閱 [共用映射資源庫](../shared-images-cli.md)。
 
 您也可以[上傳 VHD 並從中建立 VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 ## <a name="prerequisites"></a>先決條件
 
--   安裝[Azure CLI](/cli/azure/install-az-cli2)。
+-   安裝 [Azure CLI](/cli/azure/install-az-cli2)。
 
 -   使用 [az login](/cli/azure/reference-index#az-login) 登入 Azure 帳戶。
 
@@ -43,7 +43,7 @@ az vm deallocate \
 
 若要複製 VM，您可建立基礎虛擬硬碟的複本。 此程序會建立特製化虛擬硬碟 (VHD) 作為受控磁碟，其包含與來源 VM 相同的組態和設定。
 
-如需 Azure 受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟概觀](../windows/managed-disks-overview.md)。 
+如需 Azure 受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟概觀](../managed-disks-overview.md)。 
 
 1.  使用 [az vm list](/cli/azure/vm#az-vm-list) 列出每部 VM 及其 OS 磁碟的名稱。 下列範例會列出名為 *myResourceGroup* 的資源群組中的所有 VM：
     
@@ -126,4 +126,4 @@ az vm create --resource-group myResourceGroup \
 
 ## <a name="next-steps"></a>後續步驟
 
-以瞭解如何使用[共用映射資源庫](../shared-images-cli.md)來管理 VM 映射。
+若要瞭解如何使用 [共用映射庫](../shared-images-cli.md) 來管理 VM 映射。
