@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 2de2680ccd0ecf385598080747e80eed5ead3bc8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6316bcc91bb381facb4f77b2d8dbd8b22f9ed387
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652860"
+ms.locfileid: "88660090"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知問題
 
@@ -35,10 +35,6 @@ Azure 加速網路目前未啟用，但我們會在預覽期間進行。 當支�
 ## <a name="qp0-access-restriction"></a>qp0 存取限制
 
 為了防止可能導致安全性弱點的低層級硬體存取，來賓 Vm 無法存取佇列配對0。 這應該只會影響與 ConnectX-5 NIC 的系統管理相關的動作，以及執行一些像是 ibdiagnet，但不是終端使用者應用程式本身的非等量診斷。
-
-## <a name="ud-transport"></a>UD 傳輸
-
-在啟動時，HB 和 HC 系列不支援動態連接的傳輸 (DCT) 。 DCT 的支援將在一段時間內實行。 支援可靠連接 (RC) 和不可靠的資料包 (UD) 傳輸。
 
 ## <a name="gss-proxy"></a>GSS Proxy
 

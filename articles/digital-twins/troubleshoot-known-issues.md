@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 9130a3248e881c9d4e2c9bfe9017f43198d50f51
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590161"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661481"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 數位 Twins 的已知問題
 
@@ -69,9 +69,9 @@ Cloud Shell 中的命令可能會間歇性失敗，並出現錯誤「400用戶�
 
 ### <a name="possible-causes"></a>可能的原因
 
-這是 Azure 數位 Twins 與最新版本的 Azure 身分識別程式庫（版本 **1.2.0**）之間的不相容性。 
+這與最新版 Azure 的 open 問題有關， (版本 **1.2.0**) ： [*當使用 InteractiveBrowserCredential 時無法進行驗證*](https://github.com/Azure/azure-sdk-for-net/issues/13940)。
 
-如果您在應用程式中使用版本 **1.2.0** ，或將程式庫新增至您的專案，但未指定 (的版本，這也會預設為此最新版本) ，您將會看到此問題。
+如果您在 Azure 數位 Twins 應用程式中使用版本 **1.2.0** ，或將程式庫新增至您的專案，但未指定 (的版本，這也會預設為此最新版本) ，您將會看到此問題。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,12 +3,12 @@ title: 範本函式 - 資源
 description: 描述 Azure Resource Manager 範本中用來擷取資源相關值的函式。
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: 89241558164505573e098bdf580af6542c6095c5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7f485d258074959c4a0a17449c65c38fa9648502
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372377"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661396"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM 範本的資源函式
 
@@ -120,7 +120,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 ### <a name="valid-uses"></a>有效用法
 
-清單函數可用於資源定義的屬性。 請勿使用 list 函式，在範本的輸出區段中公開機密資訊。 輸出值會儲存在部署歷程記錄中，並可由惡意使用者抓取。
+清單函數可以在資源定義的屬性中使用。 請勿使用在範本的輸出區段中公開機密資訊的清單函式。 輸出值會儲存在部署歷程記錄中，而且可能會由惡意使用者取出。
 
 與[屬性反覆運算](copy-properties.md)搭配使用時，您可以將 list 函式用於 `input`，因為運算式會指派給資源屬性。 您無法將這些函式用於 `count`，因為在解析 list 函式之前就必須確定計數。
 
@@ -138,7 +138,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 | Microsoft.BatchAI/workspaces/experiments/jobs | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
 | Microsoft.Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft.Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
-| BotService/botServices/通道 | [listChannelWithKeys](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/botservice/resource-manager/Microsoft.BotService/stable/2020-06-02/botservice.json#L553) |
+| BotService/>botservices.cs/通道 | [listChannelWithKeys](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/botservice/resource-manager/Microsoft.BotService/stable/2020-06-02/botservice.json#L553) |
 | Microsoft.Cache/redis | [listKeys](/rest/api/redis/redis/listkeys) |
 | Microsoft.CognitiveServices/accounts | [listKeys](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
@@ -166,8 +166,8 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 | Microsoft.DevTestLab/labs/schedules | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Microsoft.DevTestLab/labs/users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Microsoft.DevTestLab/labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listconnectionstrings) |
+| Microsoft.DocumentDB/databaseAccounts | [listKeys](/rest/api/cosmos-db-resource-provider/2020-06-01-preview/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft.EventGrid/domains | [listKeys](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
@@ -287,7 +287,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 ### <a name="list-example"></a>清單範例
 
-下列範例會在設定[部署腳本](deployment-script-template.md)的值時使用 listKeys。
+下列範例會在設定 [部署腳本](deployment-script-template.md)的值時使用 listKeys。
 
 ```json
 "storageAccountSettings": {
@@ -296,7 +296,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 }
 ```
 
-下一個範例顯示接受參數的清單函式。 在此情況下，函式為**listAccountSas**。 針對到期時間傳遞物件。 到期時間必須是未來的時間。
+下一個範例顯示接受參數的 list 函數。 在此情況下，函數是 **listAccountSas**。 傳遞物件的到期時間。 到期時間必須是未來的時間。
 
 ```json
 "parameters": {
@@ -399,7 +399,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | resourceName 或 resourceIdentifier |是 |字串 |資源的名稱或唯一識別碼。 當參考目前範本中的資源時，只會提供資源名稱做為參數。 參考先前部署的資源時，或資源的名稱不明確時，請提供資源識別碼。 |
 | apiVersion |否 |字串 |指定的資源的 API 版本。 **如果在相同的範本內未供應資源，則需要此參數。** 一般而言，格式為 **yyyy-mm-dd**。 如需資源的有效 API 版本，請參閱[範本參考](/azure/templates/)。 |
@@ -458,7 +458,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 您無法使用 reference 函式在複製迴圈中設定 `count` 屬性的值。 您可以使用該函式來設定迴圈中的其他屬性。 計數屬性的參考遭到封鎖，因為在解析 reference 函式之前就必須決定該屬性。
 
-若要在嵌套範本的輸出區段中使用 reference 函式或任何 list * 函式，您必須將設定 ```expressionEvaluationOptions``` 為使用[內部範圍](linked-templates.md#expression-evaluation-scope-in-nested-templates)評估，或使用連結而不是嵌套的範本。
+若要在嵌套範本的輸出區段中使用 reference 函式或任何 list * 函式，您必須將設定  ```expressionEvaluationOptions``` 為使用 [內部範圍](linked-templates.md#expression-evaluation-scope-in-nested-templates) 評估，或使用連結而不是嵌套的範本。
 
 如果您在有條件部署的資源中使用 **reference** 函式，即使未部署資源，也會評估該函式。  如果 **reference** 函式參考不存在的資源，就會發生錯誤。 請使用 **if** 函式，以確保只有在部署資源時才會評估函式。 如需對有條件部署的資源搭配使用 if 和 reference 的範例範本，請參閱 [if 函式](template-functions-logical.md#if)。
 
@@ -504,7 +504,7 @@ Resource Manager 提供下列函式，以在您的 Azure Resource Manager (ARM) 
 
 `"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
 
-例如，若要取得套用至虛擬機器之受控識別的主體識別碼，請使用：
+例如，若要取得適用于虛擬機器之受控識別的主體識別碼，請使用：
 
 ```json
 "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')),'2019-12-01', 'Full').identity.principalId]",
@@ -918,7 +918,7 @@ resourceGroup 函式的常見用法是在和資源群組相同的位置中建立
 
 ### <a name="parameters"></a>參數
 
-| 參數 | 必要 | 類型 | 說明 |
+| 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |否 |字串 (GUID 格式) |預設值為目前的訂用帳戶。 需要擷取另一個訂用帳戶中的資源群組時，請指定此值。 |
 | resourceType |是 |字串 |資源的類型 (包括資源提供者命名空間)。 |

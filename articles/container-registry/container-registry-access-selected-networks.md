@@ -2,13 +2,13 @@
 title: 設定公用登錄存取
 description: 設定 IP 規則，以允許從選取的公用 IP 位址或位址範圍存取 Azure 容器登錄。
 ms.topic: article
-ms.date: 05/19/2020
-ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: 0fbca1ec2734bf8275e12249f63ab134837fea12
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523820"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660920"
 ---
 # <a name="configure-public-ip-network-rules"></a>設定公用 IP 網路規則
 
@@ -61,12 +61,12 @@ az acr network-rule add \
 
 您可選擇停用登錄上的公用端點。 停用公用端點會覆寫所有防火牆設定。 例如，您可能會想要使用[私人連結](container-registry-private-link.md)來停用虛擬網路中受保護登錄的公用存取。
 
+> [!NOTE]
+> 如果登錄是在具有 [服務端點](container-registry-vnet.md)的虛擬網路中設定，則停用登錄的公用端點的存取權也會停用虛擬網路內登錄的存取。
+
 ### <a name="disable-public-access---cli"></a>停用公用存取 - CLI
 
-若要使用 Azure CLI 停用公用存取，請執行 [az acr update][az-acr-update]，並將 `--public-network-enabled` 設定為 `false`。 
-
-> [!NOTE]
-> `public-network-enabled` 引數需要 Azure CLI 2.6.0 或更新版本。 
+若要使用 Azure CLI 停用公用存取，請執行 [az acr update][az-acr-update]，並將 `--public-network-enabled` 設定為 `false`。 `public-network-enabled` 引數需要 Azure CLI 2.6.0 或更新版本。 
 
 ```azurecli
 az acr update --name myContainerRegistry --public-network-enabled false
@@ -104,9 +104,9 @@ az acr update --name myContainerRegistry --public-network-enabled true
 
 ## <a name="troubleshoot"></a>疑難排解
 
-如果已設定公用網路規則，或拒絕對登錄的公用存取，則嘗試從不允許的公用網路登入登錄將會失敗。 如果未設定 proxy 的存取規則，則從 HTTPS proxy 後方的用戶端存取也會失敗。 您會看到類似或的錯誤訊息 `Error response from daemon: login attempt failed with status: 403 Forbidden` `Looks like you don't have access to registry` 。
+如果設定了公用網路規則，或拒絕對登錄的公用存取，則嘗試從不允許的公用網路登入登錄將會失敗。 如果未設定 proxy 的存取規則，從 HTTPS proxy 後方的用戶端存取也會失敗。 您會看到類似于或的錯誤 `Error response from daemon: login attempt failed with status: 403 Forbidden` 訊息 `Looks like you don't have access to registry` 。
 
-如果您使用網路存取規則所允許的 HTTPS proxy，但用戶端環境中未正確設定 proxy，也可能會發生這些錯誤。 檢查您的 Docker 用戶端和 Docker daemon 是否已設定 proxy 行為。 如需詳細資訊，請參閱 Docker 檔中的[HTTP/HTTPS proxy](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) 。
+如果您使用網路存取規則所允許的 HTTPS proxy，但未在用戶端環境中正確設定 proxy，也可能會發生這些錯誤。 確認您的 Docker 用戶端和 Docker daemon 都已針對 proxy 行為進行設定。 如需詳細資訊，請參閱 Docker 檔中的 [HTTP/HTTPS proxy](https://docs.docker.com/config/daemon/systemd/#httphttps-proxy) 。
 
 
 ## <a name="next-steps"></a>後續步驟

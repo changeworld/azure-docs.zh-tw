@@ -5,23 +5,23 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 8/16/2020
+ms.date: 8/20/2020
 ms.subservice: alerts
-ms.openlocfilehash: 877134fb1d4417c04da3bf6a96267b413389ecb2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 05586f95de03b09b95eb589812935970126b12f2
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258445"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661311"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure 監視器中計量警示所支援的資源
 
 Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)，此類型具有遠優於[傳統計量警示](./alerts-classic.overview.md)的優點。 計量適用於 [Azure 服務的大型清單](./metrics-supported.md)。 新版警示則可支援該資源類型 (不斷增長) 的子集。 本文將列出該子集。
 
-您也可以針對儲存在 Log Analytics 工作區中的熱門記錄資料，使用新的計量警示，並將其解壓縮為度量。 如需詳細資訊，請檢視[記錄的計量警示](./alerts-metric-logs.md)。
+您也可以針對儲存在 Log Analytics 工作區中的熱門記錄資料使用較新的計量警示，並將其當作計量來解壓縮。 如需詳細資訊，請檢視[記錄的計量警示](./alerts-metric-logs.md)。
 
 ## <a name="portal-powershell-cli-rest-support"></a>入口網站、PowerShell、CLI、REST 支援
-目前，您只能在 [Azure 入口網站]、[ [REST API](/rest/api/monitor/metricalerts/)] 或 [Resource Manager] [範本](./alerts-metric-create-templates.md)中建立較新的計量警示。 即將支援使用 PowerShell 和 Azure CLI 2.0 版與更新版本來設定新版警示。
+目前，您只能在 Azure 入口網站、 [REST API](/rest/api/monitor/metricalerts/)或 [Resource Manager 範本](./alerts-metric-create-templates.md)中建立較新的計量警示。 即將支援使用 PowerShell 和 Azure CLI 2.0 版與更新版本來設定新版警示。
 
 ## <a name="metrics-and-dimensions-supported"></a>支援的計量和維度
 新版計量警示支援針對使用維度的計量發出警示。 您可以使用維度來將計量篩選到正確層級。 從 [Azure 監視器 - 計量瀏覽器](./metrics-charts.md)，即可探索並以視覺化方式檢視所有支援的計量及適用的維度。
@@ -44,7 +44,7 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.ClassicStorage/storageAccounts/queueServices | 是 | 否 | |
 |Microsoft.ClassicStorage/storageAccounts/tableServices | 是 | 否 | |
 |Microsoft.CognitiveServices/accounts | 是 | 否 | [認知服務](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
-|Microsoft.Compute/virtualMachines | 是 | 是 | [虛擬機器](./metrics-supported.md#microsoftcomputevirtualmachines) |
+|Microsoft.Compute/virtualMachines | 是 | 是<sup>1</sup> | [虛擬機器](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | 是 | 否 |[虛擬機器擴展集](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft.ContainerInstance/containerGroups | 是| 否 | [容器群組](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft.ContainerRegistry/registries | 否 | 否 | [容器登錄](./metrics-supported.md#microsoftcontainerregistryregistries) |
@@ -53,15 +53,15 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.DataFactory/datafactories| 是| 否 | [資料處理站 V1](./metrics-supported.md#microsoftdatafactorydatafactories) |
 |Microsoft.DataFactory/factories |是 | 否 | [資料處理站 (V2)](./metrics-supported.md#microsoftdatafactoryfactories) |
 |Microsoft.DataShare/accounts | 是 | 否 | |
-|Microsoft.DBforMariaDB/servers | 否 | 否 | [適用于適用于 mariadb 的 DB](./metrics-supported.md#microsoftdbformariadbservers) |
+|Microsoft.DBforMariaDB/servers | 否 | 否 | [適用于 mariadb 的 DB](./metrics-supported.md#microsoftdbformariadbservers) |
 |Microsoft.DBforMySQL/servers | 否 | 否 |[適用於 MySQL 的 DB](./metrics-supported.md#microsoftdbformysqlservers)|
 |DBforPostgreSQL/flexibleServers | 是 | 否 | |
 |Microsoft.DBforPostgreSQL/servers | 否 | 否 | [適用於 PostgreSQL 的 DB](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft.DBforPostgreSQL/serversv2 | 否 | 否 | [適用于于 postgresql V2 的 DB](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|DBforPostgreSQL/singleservers | 否 | 否 | [適用于于 postgresql (單一伺服器的 DB) ](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
+|DBforPostgreSQL/singleservers | 否 | 否 | [適用于于 postgresql 的 DB (單一伺服器) ](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
 |Microsoft.Devices/IotHubs | 是 | 否 |[IoT 中心](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft.Devices/provisioningServices| 是 | 否 | [裝置布建服務](./metrics-supported.md#microsoftdevicesprovisioningservices) |
-|選取/digitalTwinsInstances | 是 | 否 | |
+|DigitalTwins/digitalTwinsInstances | 是 | 否 | |
 |Microsoft.DocumentDB/databaseAccounts | 是 | 否 | [Cosmos DB](./metrics-supported.md#microsoftdocumentdbdatabaseaccounts) |
 |Microsoft.EventGrid/domains | 是 | 否 | 「事件方格網域」 |
 |EventGrid/systemTopics | 是 | 否 | [事件方格系統主題](./metrics-supported.md#microsofteventgridsystemtopics) |
@@ -81,18 +81,18 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |Microsoft.NetApp/netAppAccounts/capacityPools | 是 | 是 | [Azure NetApp 容量集區](./metrics-supported.md#microsoftnetappnetappaccountscapacitypools) |
 |Microsoft.NetApp/netAppAccounts/capacityPools/volumes | 是 | 是 | [Azure NetApp 磁片區](./metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) |
 |Microsoft.Network/applicationGateways | 是 | 否 | [應用程式閘道](./metrics-supported.md#microsoftnetworkapplicationgateways) |
-|Microsoft.Network/azurefirewalls | 是 | 否 | [道](./metrics-supported.md#microsoftnetworkazurefirewalls) |
+|Microsoft.Network/azurefirewalls | 是 | 否 | [防火牆](./metrics-supported.md#microsoftnetworkazurefirewalls) |
 |Microsoft.Network/dnsZones | 否 | 否 | [DNS 區域](./metrics-supported.md#microsoftnetworkdnszones) |
 |Microsoft.Network/expressRouteCircuits | N/A | 否 |[ExpressRoute 線路](./metrics-supported.md#microsoftnetworkexpressroutecircuits) |
 |Microsoft.Network/loadBalancers (僅適用於標準 SKU)| 是| 否 | [負載平衡器](./metrics-supported.md#microsoftnetworkloadbalancers) |
-|Microsoft 網路/natGateways| 否 | 否 | |
-|Microsoft 網路/privateEndpoints| 否 | 否 | |
+|Microsoft. Network/natGateways| 否 | 否 | |
+|Microsoft. Network/privateEndpoints| 否 | 否 | |
 |Microsoft.Network/privateLinkServices| 否 | 否 |
 |Microsoft.Network/publicipaddresses | 否 | 否 |[公用 IP 位址](./metrics-supported.md#microsoftnetworkpublicipaddresses)|
 |Microsoft.Network/trafficManagerProfiles | 是 | 否 | [流量管理員設定檔](./metrics-supported.md#microsoftnetworktrafficmanagerprofiles) |
 |Microsoft.OperationalInsights/workspaces| 是 | 否 | [Log Analytics 工作區](./metrics-supported.md#microsoftoperationalinsightsworkspaces)|
-|Microsoft。對等互連/對等互連 | 是 | 否 | [對等互連](./metrics-supported.md#microsoftpeeringpeerings) |
-|Microsoft。對等互連/peeringServices | 是 | 否 | [對等互連服務](./metrics-supported.md#microsoftpeeringpeeringservices) |
+|Microsoft 對等互連/對等互連 | 是 | 否 | [對等互連](./metrics-supported.md#microsoftpeeringpeerings) |
+|Microsoft 對等互連/peeringServices | 是 | 否 | [對等互連服務](./metrics-supported.md#microsoftpeeringpeeringservices) |
 |Microsoft.PowerBIDedicated/capacities | 否 | 否 | [容量](./metrics-supported.md#microsoftpowerbidedicatedcapacities) |
 |Microsoft.Relay/namespaces | 是 | 否 | [轉送](./metrics-supported.md#microsoftrelaynamespaces) |
 |Microsoft.Search/searchServices | 否 | 否 | [搜尋服務](./metrics-supported.md#microsoftsearchsearchservices) |
@@ -108,14 +108,16 @@ Azure 監視器現已可支援[新的計量警示類型](./alerts-overview.md)�
 |VMWareCloudSimple/virtualMachines | 是 | 否 | [CloudSimple 虛擬機器](./metrics-supported.md#microsoftvmwarecloudsimplevirtualmachines) |
 |Microsoft.Web/hostingEnvironments/multiRolePools | 是 | 否 | [App Service 環境多角色集區](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft.Web/hostingEnvironments/workerPools | 是 | 否 | [App Service 環境背景工作集區](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
-|Microsoft.Web/serverfarms | 是 | 否 | [App Service 計畫](./metrics-supported.md#microsoftwebserverfarms)|
+|Microsoft.Web/serverfarms | 是 | 否 | [App Service 方案](./metrics-supported.md#microsoftwebserverfarms)|
 |Microsoft.Web/sites | 是 | 否 | [App Service](./metrics-supported.md#microsoftwebsites-excluding-functions) 與[函式](./metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | 是 | 否 | [App Service 位置](./metrics-supported.md#microsoftwebsitesslots)|
+
+<sup>1</sup> 僅支援平臺計量 (非自訂計量) 
 
 ## <a name="payload-schema"></a>承載結構描述
 
 > [!NOTE]
-> 您也可以使用 [一般警示架構](https://aka.ms/commonAlertSchemaDocs)，讓您的 webhook 整合能夠在 Azure 監視器的所有警示服務中擁有單一可延伸和整合的警示承載。 [瞭解常見的警示架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
+> 您也可以使用 [常見的警示架構](https://aka.ms/commonAlertSchemaDocs)，讓您能夠在 Azure 監視器中的所有警示服務上擁有單一可延伸和整合的警示承載，以供您的 webhook 整合使用。 [深入瞭解常見的警示架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
 
 
 當使用已適當設定的[動作群組](./action-groups.md)時，POST 作業會針對所有新版計量警示，包含下列 JSON 承載和結構描述：

@@ -9,15 +9,16 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/04/2020
+ms.date: 08/20/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 754d456f557b6c9500cdb64ee01a42124a18ab9c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+metadata ms.custom: contperfq1
+ms.openlocfilehash: b21b2a9f2d2bd483ed48a4c30b504908bb54a101
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036669"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661432"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>雙因素驗證和您的公司或學校帳戶常見問題
 
@@ -31,14 +32,10 @@ ms.locfileid: "88036669"
 
 2FV 比單純密碼更安全，因為2FV 需要您 _知道_ 的一些東西，以及您 _擁有_的東西。 沒有任何駭客都有您的實體電話。
 
-<center>
-
-![概念性驗證方法圖](../authentication/media/concept-mfa-howitworks/methods.png)</center>
-
 >[!Important]
 >如果您是系統管理員，可以在 [Azure AD 文件](https://docs.microsoft.com/azure/active-directory)中找到更多關於如何設定和管理 Azure AD 環境的資訊。
->
->此內容也僅適用於您的公司或學校帳戶，這是貴組織提供給您的帳戶 (例如 alain@contoso.com)。 如果您遇到雙因素驗證和您自行設定的個人 Microsoft 帳戶 (例如 danielle@outlook.com) 問題，請參閱[開啟或關閉 Microsoft 帳戶的雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+
+此內容旨在協助您使用工作或學校帳戶，也就是您組織提供給您的帳戶 (例如 dritan@contoso.com) 。 如果您在個人 Microsoft 帳戶上遇到雙因素驗證的問題，也就是您自行設定的帳戶 (例如 danielle@outlook.com) ，請參閱開啟 [或關閉 Microsoft 帳戶的雙因素驗證](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>我的行動裝置不在身邊
 

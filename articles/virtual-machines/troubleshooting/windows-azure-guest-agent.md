@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/07/2020
 ms.author: genli
-ms.openlocfilehash: c3295365859ad3291a95b616cccc6fa265237a01
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 38bf652ccefe98c2bd0fb28e8018d41df21651dc
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263915"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659461"
 ---
 # <a name="troubleshooting-windows-azure-guest-agent"></a>針對 Windows Azure 來賓代理程式進行疑難排解
 
@@ -102,7 +102,7 @@ Windows Azure 來賓代理程式具有自動更新功能。 它會自動檢查�
 
 1. 將任何名為封裝或 GuestAgent 的資料夾移到舊資料夾中。
 
-1. 從 [這裡](https://go.microsoft.comfwlink/?linkid=394789&clcid=0x409)下載並安裝最新版的代理程式安裝套件。 您必須擁有系統管理員權限，才能完成安裝。
+1. 從 [這裡](https://go.microsoft.com/fwlink/?linkid=394789&clcid=0x409)下載並安裝最新版的代理程式安裝套件。 您必須擁有系統管理員權限，才能完成安裝。
 
 1. 使用下列命令來安裝來賓代理程式：
 

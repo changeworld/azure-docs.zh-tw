@@ -1,21 +1,21 @@
 ---
 title: 文字轉換語音常見問題集
 titleSuffix: Azure Cognitive Services
-description: 取得文字轉換語音服務相關常見問題的解答。
+description: 取得文字轉換語音服務之常見問題的解答。
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: f647727c01bbddafe3b10877af3e1d5652bedd29
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f06fda777cbebd8034ac4fd9254a4bd172d011a4
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833582"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661498"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>文字轉換語音常見問題集
 
@@ -29,7 +29,7 @@ ms.locfileid: "85833582"
 
 **問：如果我想要使用標準語音模型，該從何處著手？**
 
-**答**：透過 HTTP 要求可提供超過 45 種語言的 80 餘種標準語音模型。 首先，取得訂用帳戶[金鑰](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)。 若要對預先部署的語音模型進行 REST 呼叫，請參閱 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
+**答**：透過 HTTP 要求可提供超過 45 種語言的 80 餘種標準語音模型。 首先，取得訂用帳戶 [金鑰](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)。 若要對預先部署的語音模型進行 REST 呼叫，請參閱 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
 
 **問：如果我想要使用自訂語音模型，API 是否與標準語音所用的相同？**
 
@@ -41,7 +41,7 @@ ms.locfileid: "85833582"
 
 建立自訂語音模型需要有語音資料集合。 此集合包含一組語音錄製的音訊檔案，以及各音訊檔案文字記錄的文字檔。 數位語音的結果與定型資料的品質息息相關。 若要產生良好的文字轉換語音，請務必在備有高品質站立式麥克風的安靜房間內完成錄音。 一致的音量、讀出速率、讀出音調，甚至一致的語音表達方式是建立絕佳數位語音不可或缺的一部分。 強烈建議在錄音室錄製語音。
 
-目前我們不提供線上錄音支援，也沒有任何錄音室建議。 如需格式需求，請參閱[如何準備錄音和文字記錄](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice)。
+目前我們不提供線上錄音支援，也沒有任何錄音室建議。 如需格式需求，請參閱 [如何準備錄製和文字記錄](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice)。
 
 **問：我應該使用哪些腳本錄製語音資料以進行自訂語音定型？**
 
@@ -59,7 +59,7 @@ ms.locfileid: "85833582"
 
 **問：我的要求會被節流嗎？**
 
-**答**： REST API 將標準訂閱的要求限制為每5秒25個。 免費層（F0）的限制為每分鐘20個要求。
+**答**：請參閱 [語音服務配額和限制](speech-services-quotas-and-limits.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

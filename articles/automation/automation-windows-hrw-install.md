@@ -3,14 +3,14 @@ title: 在 Azure 自動化中部署 Windows 混合式 Runbook 背景工作角色
 description: 本文說明如何部署混合式 Runbook 背景工作角色，讓您可以在本機資料中心或雲端環境中，用來在 Windows 電腦上執行 runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 90b16f10cfa94ce427a9f6249c72842f8ef6278a
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270575"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660507"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合式 Runbook 背景工作角色
 
@@ -29,6 +29,9 @@ ms.locfileid: "88270575"
 如果您沒有 Azure 監視器 Log Analytics 工作區，請在建立工作區之前，先參閱 [Azure 監視器記錄檔設計指引](../azure-monitor/platform/design-logs-deployment.md) 。
 
 如果您有工作區，但未連結至您的自動化帳戶，則啟用自動化功能會新增 Azure 自動化的功能，包括混合式 Runbook 背景工作角色的支援。 當您在 Log Analytics 工作區中啟用其中一項 Azure 自動化功能時（特別是 [更新管理](update-management/update-mgmt-overview.md) 或 [變更追蹤和清查](change-tracking.md)），背景工作元件會自動推送至代理程式電腦。
+
+> [!NOTE]
+> 啟用更新管理或變更追蹤和清查功能時，Azure 自動化只支援特定區域以連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](how-to/region-mappings.md)。 啟用這兩項功能之前，請先參閱 Azure 自動化的 [Azure 定價](https://azure.microsoft.com/pricing/details/automation/) 資訊。
 
    若要將更新管理功能新增至您的工作區，請執行下列 PowerShell Cmdlet：
 
@@ -123,9 +126,6 @@ Windows 混合式 Runbook 背景工作角色已正式支援下列 Windows 作業
 | `SubscriptionID` | 強制性 | 識別碼，代表與自動化帳戶相關聯的 Azure 訂用帳戶。 |
 | `TenantID` | 選用 | 識別碼，代表與自動化帳戶相關聯的租用戶組織。 |
 | `WorkspaceName` | 選用 | Log Analytics 工作區名稱。 如果您沒有 Log Analytics 工作區，此指令碼就會建立並設定一個 Log Analytics 工作區。 |
-
-> [!NOTE]
-> 啟用功能時，Azure 自動化只支援特定區域才能連結 Log Analytics 工作區和自動化帳戶。 如需支援的對應配對清單，請參閱[自動化帳戶和 Log Analytics 工作區的區域對應](how-to/region-mappings.md)。
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>步驟 2 - 開啟 Windows PowerShell 命令列殼層
 

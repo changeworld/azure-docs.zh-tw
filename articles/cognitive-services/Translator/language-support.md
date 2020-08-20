@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a0ea0a7580bbb7a6106880d2733f36f5ab7a7690
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: cc5964bb243216233300e8616b0460b7a1a043d9
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88639778"
+ms.locfileid: "88661532"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -75,6 +75,8 @@ Translator 支援下列適用于文字到文字翻譯的語言。
 |克林貢文|   `tlh-Latn`  |
 |克林貢文 (plqaD)|   `tlh-Piqd`  |
 |韓文 |`ko`   |
+|庫爾德 (中部)   |`ku`   |
+|德文 (北)  |`kmr`  |
 |拉脫維亞文|   `lv`    |
 |立陶宛文|    `lt`    |
 |馬達加斯加文|  `mg`    |
@@ -190,10 +192,10 @@ Translator 會偵測下列翻譯和音譯語言。
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯文 | `ar` | 阿拉伯文 `Arab` | <--> | 拉丁文 `Latn` |
 | 孟加拉文  | `bn` | 孟加拉文 `Beng` | <--> | 拉丁文 `Latn` |
-| 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 拉丁文 `Latn` |
-| 簡體中文 | `zh-Hans` | 簡體中文 `Hans`| <--> | 繁體中文 `Hant`|
-| 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
-| 繁體中文 | `zh-Hant` | 繁體中文 `Hant`| <--> | 簡體中文 `Hans` |
+| 中文 (簡體) | `zh-Hans` | 簡體中文 `Hans`| <--> | 拉丁文 `Latn` |
+| 中文 (簡體) | `zh-Hans` | 簡體中文 `Hans`| <--> | 繁體中文 `Hant`|
+| 和 SharePoint 2010 顯示的 | `zh-Hant` | 繁體中文 `Hant`| <--> | 拉丁文 `Latn` |
+| 和 SharePoint 2010 顯示的 | `zh-Hant` | 繁體中文 `Hant`| <--> | 簡體中文 `Hans` |
 | 古吉拉特文 | `gu`  | 古吉拉特文 `Gujr` | --> | 拉丁文 `Latn` |
 | Hebrew | `he` | 希伯來文 `Hebr` | <--> | 拉丁文 `Latn` |
 | Hindi | `hi` | 梵文字母 `Deva` | <--> | 拉丁文 `Latn` |

@@ -1,7 +1,7 @@
 ---
 title: 在入口網站中建立工作區
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure 入口網站中建立、查看和刪除 Azure Machine Learning 的工作區。
+description: 瞭解如何建立、查看和刪除 Azure 入口網站中的 Azure Machine Learning 工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: sdgilley
 ms.date: 12/27/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: c852d416b73ba29b22efe63996835deac3a5277d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e1f97fddb07e56946e37c04d9b9685412782c560
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167669"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88659750"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理 Azure Machine Learning 工作區
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，您將會在[Azure Machine Learning](overview-what-is-azure-ml.md)的 Azure 入口網站中建立、查看和刪除[**Azure Machine Learning 的工作區**](concept-workspace.md)。  入口網站是開始使用工作區的最簡單方式，但隨著您的需求變更或自動化的需求增加，您也可以[使用 CLI](reference-azure-machine-learning-cli.md)、Python 程式[代碼](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)或透過[VS Code 延伸](tutorial-setup-vscode-extension.md)模組來建立和刪除工作區。
+在本文中，您將會在[Azure Machine Learning](overview-what-is-azure-ml.md)的 Azure 入口網站中建立、查看和刪除[**Azure Machine Learning 工作區**](concept-workspace.md)。  入口網站是開始使用工作區的最簡單方式，但隨著您的需求變更或自動化需求的增加，您也可以 [使用 CLI](reference-azure-machine-learning-cli.md)、Python 程式 [代碼](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 或透過 [VS Code 擴充](tutorial-setup-vscode-extension.md)功能來建立和刪除工作區。
 
 ## <a name="create-a-workspace"></a>建立工作區
 
@@ -44,14 +44,15 @@ ms.locfileid: "88167669"
    ---|---
    工作區名稱 |輸入可識別您工作區的唯一名稱。 在此範例中，我們使用 **docs-ws**。 名稱必須是整個資源群組中唯一的。 請使用可輕鬆回想並且與其他人建立的工作區有所區別的名稱。 工作區名稱不區分大小寫。
    訂用帳戶 |選取您要使用的 Azure 訂用帳戶。
-   資源群組 | 在您的訂用帳戶中使用現有的資源群組，或輸入名稱來建立新的資源群組。 資源群組會保留 Azure 方案的相關資源。 在此範例中，我們使用 **docs-aml**。 
-   Location | 選取最接近您的使用者與資料資源的位置，以建立工作區。
-   工作區版本 | 選取 [**基本**] 或 [**企業**]。  此工作區版本會決定您可以存取和定價的功能。 深入瞭解[基本和企業版供應](overview-what-is-azure-ml.md#sku)專案。 
+   資源群組 | 在您的訂用帳戶中使用現有的資源群組，或輸入名稱來建立新的資源群組。 資源群組會保留 Azure 方案的相關資源。 在此範例中，我們使用 **docs-aml**。 您需要 *參與者* 或 *擁有* 者角色，才能使用現有的資源群組。  如需存取的詳細資訊，請參閱 [管理 Azure Machine Learning 工作區的存取權](how-to-assign-roles.md)。
+   位置 | 選取最接近您的使用者與資料資源的位置，以建立工作區。
+   位置 | 選取最接近您的使用者與資料資源的位置，以建立工作區。
+   工作區版本 | 選取 [ **基本** ] 或 [ **企業**]。  此工作區版本會決定您將擁有存取權和定價的功能。 深入瞭解 [基本和企業版的供應](overview-what-is-azure-ml.md#sku)專案。 
 
     ![設定您的工作區](./media/how-to-manage-workspace/select-edition.png)
 
-1. 當您完成設定工作區時，請選取 [**審查 + 建立**]。
-2. 檢查設定，並進行任何其他變更或更正。 當您對設定感到滿意時，請選取 [**建立**]。
+1. 當您完成工作區的設定時，請選取 [ **審核 + 建立**]。
+2. 檢查設定，並進行任何額外的變更或修正。 當您對設定感到滿意之後，請選取 [ **建立**]。
 
    > [!Warning] 
    > 在雲端中建立工作區可能需要數分鐘的時間。
@@ -62,7 +63,7 @@ ms.locfileid: "88167669"
 
 ### <a name="download-a-configuration-file"></a>下載設定檔
 
-1. 如果您將建立[計算實例](tutorial-1st-experiment-sdk-setup.md#azure)，請略過此步驟。
+1. 如果您將建立 [計算實例](tutorial-1st-experiment-sdk-setup.md#azure)，請略過此步驟。
 
 1. 如果您打算在參考此工作區的本機環境上使用程式碼， 請從工作區的 [概觀]**** 區段中，選取 [下載 config.xml]****。  
 
@@ -72,27 +73,27 @@ ms.locfileid: "88167669"
 
 ## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>升級至 Enterprise edition
 
-您可以將工作區從基本版本升級至 Enterprise edition，以利用增強功能，例如低程式碼體驗和增強的安全性功能。
+您可以將工作區從基本版升級至 Enterprise edition，以利用增強功能，例如低程式碼體驗和增強的安全性功能。
 
 1. 登入 [Azure Machine Learning Studio](https://ml.azure.com)。
 
-1. 選取您想要升級的工作區。
+1. 選取您要升級的工作區。
 
-1. 選取頁面右上方的 [**深入瞭解**]。
+1. 選取頁面右上方的 [ **深入瞭解**  ]。
 
    [![升級工作區 ](./media/how-to-manage-workspace/upgrade.png)](./media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. 在出現的視窗中選取 [**升級**]。
+1. 在出現的視窗中選取 [ **升級** ]。
 
 
 > [!IMPORTANT]
-> 您無法將 Enterprise edition 工作區降級為基本版本工作區。 
+> 您無法將企業版工作區降級至基本版工作區。 
 
 ## <a name="find-a-workspace"></a><a name="view"></a>尋找工作區
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 在 [頂端搜尋] 欄位中，輸入**Machine Learning**。  
+1. 在 [頂端搜尋] 欄位中，輸入 **Machine Learning**。  
 
 1. 選取 [Machine Learning]****。
 
@@ -104,7 +105,7 @@ ms.locfileid: "88167669"
 
 ## <a name="delete-a-workspace"></a>刪除工作區
 
-在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您想要刪除的工作區頂端的 [**刪除**]。
+在 [ [Azure 入口網站](https://portal.azure.com/)中，選取您要刪除的工作區頂端的 [ **刪除**  ]。
 
 :::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="刪除工作區":::
 

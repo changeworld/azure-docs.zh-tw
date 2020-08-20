@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/4/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921018"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661515"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>語音轉換文字常見問題集
 
@@ -45,7 +45,7 @@ ms.locfileid: "85921018"
 
 **A**：您可以在集合中擁有的模型數目沒有限制。
 
-**問：我發現我犯了一個錯誤。如何? 取消進行中的資料匯入或模型建立嗎？**
+**問：我發現我犯了錯誤。如何? 取消進行中的資料匯入或模型建立？**
 
 **答**：目前，您無法復原原音或語言調節程序。 您可以在匯入的資料與模型處於終止狀態之後予以刪除。
 
@@ -59,7 +59,7 @@ ms.locfileid: "85921018"
 
 舊的資料集和新的資料集必須合併到單一 .zip 檔案 (適用於原音資料) 或 .txt 檔案 (適用於語言資料)。 調節完成之後，必須重新部署新的更新模型，才能取得新的端點
 
-**問：有新版本的基準可用時，我的部署是否會自動更新？**
+**問：當有新版本的基準可用時，我的部署是否會自動更新？**
 
 **答**：部署「不會」自動更新。
 
@@ -71,72 +71,34 @@ ms.locfileid: "85921018"
 
 **問：我的要求會被記錄嗎？**
 
-**答**：根據預設，不會記錄要求（不包括音訊，也不會轉譯）。 如有需要，您可以在[建立自訂端點](how-to-custom-speech-deploy-model.md)以啟用追蹤時，選取 [*從這個端點的記錄內容*] 選項。 然後，系統會將要求記錄在 Azure 的安全儲存體中。
+**答**：根據預設，不會將要求記錄 (音訊，也不會) 轉譯。 如果有需要，您可以在[建立自訂端點](how-to-custom-speech-deploy-model.md)以啟用追蹤時，*從這個端點選項中選取 [記錄內容*]。 然後，會在 Azure 中將要求記錄在安全的儲存體中。
 
 **問：我的要求會被節流嗎？**
 
-**答**：REST API 限制每 5 秒 25 個要求。 詳情請參閱我們的[語音轉換文字](speech-to-text.md)頁面。
+**答**：請參閱 [語音服務配額和限制](speech-services-quotas-and-limits.md)。
 
 **問：雙聲道音訊的收費方式為何？**
 
-**答**：如果您分別提交每個通道（每個通道都在自己的檔案中），則會向您收取每個檔案的持續時間。 如果您提交單一檔案，並將每個通道一起多工處理，則會向您收取單一檔案持續時間的費用。 如需定價的詳細資訊，請參閱[Azure 認知服務定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+**答**：如果您將每個通道個別提交 (各自檔案) 中的每個通道，將會依每個檔案的持續時間向您收費。 如果您提交的單一檔案中的每個通道都有多工，則會向您收取單一檔案持續時間的費用。 如需定價的詳細資訊，請參閱 [Azure 認知服務定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 > [!IMPORTANT]
 > 如果您有其他隱私權考量禁止您使用自訂語音服務，請連絡其中一個支援通道。
 
 ## <a name="increasing-concurrency"></a>增加並行
+請參閱 [語音服務配額和限制](speech-services-quotas-and-limits.md)。
 
-**問：如果我需要針對已部署模型使用的並行處理比入口網站所提供的還高，該怎麼辦？**
-
-**答**：您可以使用 20 個並行要求的增量調升模型規模。
-
-使用必要的資訊，在[Azure 支援入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)中建立支援要求。 請勿將資訊張貼在[支援頁面](support.md)上所提及的任何公用通道（GitHub、Stackoverflow、...）。
-
-若要增加***自訂模型***的平行存取，我們需要下列資訊：
-
-- 部署模型的區域，
-- 已部署模型的端點識別碼：
-  - 到達[自訂語音入口網站](https://aka.ms/customspeech)，
-  - 登入（如有必要）、
-  - 選取您的專案和部署，
-  - 選取您需要並行增加的端點，
-  - 複製 `Endpoint ID` 。
-
-若要增加***基底模型***的平行存取，我們需要下列資訊：
-
-- 服務的區域，
-
-不論是
-
-- 訂用帳戶的存取權杖（請參閱[這裡](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)）、
-
-或
-
-- 您的訂用帳戶的資源識別碼：
-  - 前往[Azure 入口網站](https://portal.azure.com)，
-  - `Cognitive Services`在搜尋方塊中選取，
-  - 從顯示的服務挑選您想要增加並行的語音服務，
-  - 顯示 `Properties` 此服務的。
-  - 複製 [完成] `Resource ID` 。
-  
-**問：增加我的平行存取限制會增加我的成本嗎？**
-
-**答**：不會，成本是以使用量為基礎。 增加平行存取並不會產生較高的成本。 如需成本的詳細資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。 
-  
->[!NOTE]
->[容器](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto)不需要增加並行限制，因為容器僅受到其裝載所在硬體的 cpu 所限制。
 
 ## <a name="importing-data"></a>匯入資料
 
 **問：資料集大小限制為何？為什麼要有限制？**
 
-**答**：資料集目前的上限為 2 GB。 限制是由於 HTTP 上傳的檔案大小限制。
+**答**：限制是因為 HTTP 上傳的檔案大小限制所致。 請參閱 [語音服務配額和](speech-services-quotas-and-limits.md) 實際限制的限制。
 
 **問：我可以壓縮文字檔來上傳更大的文字檔嗎？**
 
 **答**：否。 目前僅允許未壓縮的文字檔。
 
-**問：資料包告指出有失敗的語句。問題是什麼？**
+**問：資料包告指出有失敗的語句。問題出在哪裡？**
 
 **答**：無法上傳檔案中 100% 的語句，並不會構成問題。 如果原音或語言資料集中絕大部分的語句 (例如超過 95%) 已成功匯入，則可以使用資料集。 不過，建議您嘗試了解語句失敗的原因並修正問題。 您可以輕鬆修正最常見的問題，例如格式錯誤。
 
@@ -190,17 +152,17 @@ ms.locfileid: "85921018"
 
 **答**：上傳字組清單會將字組納入詞彙中，但不會告知系統這些字組的通常用法。 藉由提供完整或部分語句 (使用者可能會說的句子或片語)，語言模型可以學習新的字組及其用法。 自訂語言模型不僅對於新增系統中的新字組很有幫助，也可用於調整您應用程式中已知字組的可能性。 提供完整語句有助於提升系統的學習能力。
 
-## <a name="tenant-model-custom-speech-with-office-365-data"></a>租使用者模型（使用 Office 365 資料的自訂語音）
+## <a name="tenant-model-custom-speech-with-office-365-data"></a>使用 Office 365 資料) 的租使用者模型 (自訂語音
 
-**問：租使用者模型中所包含的資訊及其建立方式為何？**
+**問：租使用者模型中包含哪些資訊，以及如何建立它？**
 
-**答：** 租使用者模型是使用[公用群組](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)電子郵件和檔所建立的，您組織中的任何人都可以看到此功能。
+**答：** 租使用者模型是使用 [公用組](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) 電子郵件和檔建立的，您組織中的任何人都可以看到該模型。
 
-**問：租使用者模型改進了哪些語音體驗？**
+**問：租使用者模型改善了哪些語音體驗？**
 
-**答：** 當租使用者模型已啟用、建立和發佈時，它可用來改善使用語音服務所建立之任何企業應用程式的辨識;這也會傳遞使用者 AAD 權杖，指出企業的成員資格。
+**答：** 當租使用者模型已啟用、建立併發布時，它會用來改善使用語音服務建立之任何企業應用程式的辨識;這也會傳遞使用者 Azure AD 權杖，指出企業的成員資格。
 
-當您建立語音服務應用程式的租使用者模型時，不會變更內建于 Office 365 的語音體驗（例如聽寫和 PowerPoint 字幕）。
+當您為語音服務應用程式建立租使用者模型時，不會變更 Office 365 內建的語音體驗，例如聽寫和 PowerPoint 字幕。
 
 ## <a name="next-steps"></a>後續步驟
 

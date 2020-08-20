@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea568acdf356064dc603d30ffba7df3c02bde621
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 0fd416c844ac93ffb77eded98448b2e93e9acd30
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449985"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660903"
 ---
 # <a name="update-management-overview"></a>更新管理概觀
 
@@ -61,7 +61,7 @@ ms.locfileid: "87449985"
 
 您可以藉由建立排定的部署，在需要更新的機器上部署和安裝軟體更新。 歸類為選擇性的更新不會包含在 Windows 機器的部署範圍內。 部署範圍中僅包含必要更新。
 
-排定的部署會定義哪些目標機器要收到適用的更新。 其執行方式是明確指定特定電腦，或選取以一組特定電腦的記錄搜尋為基礎的[電腦群組](../../azure-monitor/platform/computer-groups.md)（或在 [Azure 查詢] 更新-管理-logs.md）上，根據指定的準則動態選取 Azure vm）。 這些群組與[範圍設定](../../azure-monitor/insights/solution-targeting.md) \(部分機器翻譯\) 不同，其可用來控制接收設定以啟用更新管理之機器的目標。 這可防止其執行及回報更新合規性，以及安裝已核准的必要更新。
+排定的部署會定義哪些目標機器要收到適用的更新。 其運作方式是明確指定特定的電腦，或選取以一組特定電腦之記錄搜尋為基礎的 [電腦群組](../../azure-monitor/platform/computer-groups.md) (或在 [Azure 查詢] 的 [logs.md]) 上，根據指定的準則) 動態選取 Azure vm。 這些群組與[範圍設定](../../azure-monitor/insights/solution-targeting.md) \(部分機器翻譯\) 不同，其可用來控制接收設定以啟用更新管理之機器的目標。 這可防止其執行及回報更新合規性，以及安裝已核准的必要更新。
 
 定義部署時，您也可以指定排程，以核准並設定一段可安裝更新的期間。 這段期間稱為維護時間範圍。 假設您需要維護且已選取適當的重新開機選項，則會保留 20 分鐘的維護時間範圍來重新開機。 如果修補所花費的時間超出預期，且維護時間範圍少於 20 分鐘，則不會重新開機。
 
@@ -83,7 +83,7 @@ ms.locfileid: "87449985"
 |作業系統  |注意  |
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2(Datacenter/Standard)<br><br>Windows Server 2012 ||
-|Windows Server 2008 R2 (RTM 和 SP1 Standard)| 更新管理支援此作業系統的評量和修補。 Windows Server 2008 R2 支援[混合式 Runbook 背景工作角色](../automation-windows-hrw-install.md)。 |
+|Windows Server 2008 R2 (RTM 和 SP1 Standard)| 更新管理支援此作業系統的評量和修補。 Windows Server 2008 R2 支援 [混合式 Runbook 背景工作角色](../automation-windows-hrw-install.md) 。 |
 |CentOS 6 (x86/x64) 和 7 (x64)      | Linux 代理程式需要存取更新存放庫。 分類型修補需要 `yum`，才能傳回 CentOS 在其 RTM 版本中沒有的安全性資料。 如需 CentOS 上分類型修補的詳細資訊，請參閱 [Linux 上的更新分類](update-mgmt-view-update-assessments.md#linux)。          |
 |Red Hat Enterprise 6 (x86/x64) 和 7 (x64)     | Linux 代理程式需要存取更新存放庫。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) 和 12 (x64)     | Linux 代理程式需要存取更新存放庫。        |
@@ -98,13 +98,13 @@ ms.locfileid: "87449985"
 
 |作業系統  |注意  |
 |---------|---------|
-|Windows 用戶端     | 不支援用戶端作業系統 (例如 Windows 7 和 Windows 10)。<br> 針對 Azure Windows 虛擬桌面 (WVD)，建議用來<br> 若要管理更新， [Microsoft Endpoint Configuration Manager](../../virtual-desktop/configure-automatic-updates.md)適用于 Windows 10 用戶端機器修補程式管理。 |
+|Windows 用戶端     | 不支援用戶端作業系統 (例如 Windows 7 和 Windows 10)。<br> 針對 Azure Windows 虛擬桌面 (WVD)，建議用來<br> 若要管理更新，請 [Microsoft Endpoint Configuration Manager](../../virtual-desktop/configure-automatic-updates.md) Windows 10 用戶端電腦修補程式管理。 |
 |Windows Server 2016 Nano Server     | 不支援。       |
 |Azure Kubernetes Service 節點 | 不支援。 使用[在 Azure Kubernetes Service (AKS) 中將安全性和核心更新套用至 Linux 節點](../../aks/node-updates-kured.md)中所述的修補程序。|
 
 ### <a name="client-requirements"></a>用戶端需求
 
-下列資訊描述作業系統特有的用戶端需求。 如需其他指導方針，請參閱[網路規劃](#ports)。 若要瞭解 TLS 1.2 的用戶端需求，請參閱[Azure 自動化的 tls 1.2 強制](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+下列資訊描述作業系統特有的用戶端需求。 如需其他指導方針，請參閱[網路規劃](#ports)。 若要瞭解 TLS 1.2 的用戶端需求，請參閱 [Azure 自動化的 tls 1.2 強制](../automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 #### <a name="windows"></a>Windows
 
@@ -166,7 +166,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 下表描述更新管理所支援的連線來源：
 
-| 連線的來源 | 支援 | 說明 |
+| 連線的來源 | 支援 | 描述 |
 | --- | --- | --- |
 | Windows 代理程式 |是 |更新管理會從 Windows 代理程式收集系統更新的相關資訊，然後開始安裝必要更新。 |
 | Linux 代理程式 |是 |更新管理會從 Linux 代理程式收集系統更新的相關資訊，然後在支援的發行版本上開始安裝必要更新。 |
@@ -180,7 +180,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 * 每部 Linux 機器：更新管理每小時都會執行一次掃描。
 
-針對使用更新管理的機器，透過 Azure 監視器記錄所取得的平均資料使用量大約是每個月 25 MB。 這只是個近似值，其會根據您的環境而變更。 我們建議您監視環境，以持續追蹤確切的使用量。 如需分析資料使用量的詳細資訊，請參閱[管理使用量與成本](../../azure-monitor/platform/manage-cost-storage.md)。
+針對使用更新管理的機器，透過 Azure 監視器記錄所取得的平均資料使用量大約是每個月 25 MB。 這只是個近似值，其會根據您的環境而變更。 我們建議您監視環境，以持續追蹤確切的使用量。 如需分析 Azure 監視器記錄資料使用量的詳細資訊，請參閱 [管理使用量和成本](../../azure-monitor/platform/manage-cost-storage.md)。
 
 ## <a name="network-planning"></a><a name="ports"></a>網路規劃
 
@@ -193,7 +193,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 |`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
 |`*.azure-automation.net` | `*.azure-automation.us`|
 
-當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量傳送至自動化服務和 Log Analytics 工作區時，請使用[服務標記](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement**和**AzureMonitor**。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連線到自動化服務，請參閱[使用 Azure 私用連結](../how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入內部部署防火牆設定的一部分，請參閱[可下載的 JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
+當您建立網路群組安全性規則或設定 Azure 防火牆以允許流量流向自動化服務和 Log Analytics 工作區時，請使用 [服務](../../virtual-network/service-tags-overview.md#available-service-tags)標籤 **GuestAndHybridManagement** 和 **AzureMonitor**。 這可簡化網路安全性規則的持續管理。 若要安全且私下地從您的 Azure Vm 連接到自動化服務，請參閱 [使用 Azure Private Link](../how-to/private-link-security.md)。 若要取得目前的服務標籤和範圍資訊，以納入您的內部部署防火牆設定，請參閱 [可下載的 JSON](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)檔案。
 
 對於 Windows 機器，您也必須允許流量傳送到 Windows Update 所需的任何端點。 您可以在[與 HTTP/Proxy 相關的問題](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)中，找到所需端點的更新清單。 如果您有本機 [Windows Update 伺服器](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment)，也必須允許流量傳送到您 [WSUS 金鑰](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry)中指定的伺服器。
 
@@ -201,7 +201,7 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 
 如需混合式 Runbook 背景工作角色所需連接埠的詳細資訊，請參閱[混合式 Runbook 背景工作角色的更新管理位址](../automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker)。
 
-如果您的 IT 安全性原則不允許網路上的電腦連線到網際網路，您可以設定[Log Analytics 閘道](../../azure-monitor/platform/gateway.md)，然後將電腦設定為透過閘道連接，以 Azure 自動化和 Azure 監視器。
+如果您的 IT 安全性原則不允許網路上的電腦連線到網際網路，您可以設定 [Log Analytics 閘道](../../azure-monitor/platform/gateway.md) ，然後將機器設定為透過閘道進行連線，以 Azure 自動化和 Azure 監視器。
 
 ## <a name="update-classifications"></a>更新分類
 
@@ -226,11 +226,11 @@ Windows 代理程式必須設定為可與 WSUS 伺服器通訊，或需要存取
 |其他更新     | 本質上不重要或非安全性更新的所有其他更新。        |
 
 >[!NOTE]
->只有在支援的 Azure 公用雲端區域中使用時，才可以使用適用于 Linux 機器的更新分類。 使用下列國家雲端區域中的更新管理時：
+>只有在支援的 Azure 公用雲端區域中使用時，才能使用適用于 Linux 機器的更新分類。 使用下列國家/地區雲端區域中的更新管理時：
 >* Azure 美國政府
 >* 中國的世紀
 >
-> Linux 更新沒有任何分類，而且會在 [**其他更新**] 類別之下回報。 更新管理使用支援的發行版本所發佈的資料，特別是其發行的[OVAL](https://oval.mitre.org/) （開放弱點和評估語言）檔案。 因為網際網路存取受到這些國家雲端的限制，所以更新管理無法存取和使用這些檔案。
+> 沒有 Linux 更新的分類，而且它們會在 [ **其他更新** ] 類別下回報。 更新管理使用支援的發行版本所發佈的資料，尤其是其發行的 [橢圓](https://oval.mitre.org/) (開放式弱點和評定語言) 檔。 因為網際網路存取受限於這些國家雲端，所以更新管理無法存取及使用這些檔案。
 
 針對 Linux，更新管理可以區分雲端中的重大更新和安全性更新，同時基於雲端中的資料擴充顯示評量資料。 針對修補，「更新管理」仰賴機器上可用的分類資料。 與其他發行版本不同，CentOS 在 RTM 版本中沒有此資訊可供使用。 如果您將 CentOS 機器設定為傳回以下命令的安全性資料，更新管理就能根據分類進行修補。
 
@@ -262,6 +262,6 @@ Azure [Resource Manager 範本](update-mgmt-enable-template.md)可用來協助�
 
 ## <a name="next-steps"></a>後續步驟
 
-* 如需使用更新管理的詳細資訊，請參閱[管理 vm 的更新](update-mgmt-manage-updates-for-vm.md)。
+* 如需使用更新管理的詳細資訊，請參閱 [管理 vm 的更新](update-mgmt-manage-updates-for-vm.md)。
 
 * 檢閱 [Azure 自動化常見問題](../automation-faq.md)中有關更新管理的常見問題集。

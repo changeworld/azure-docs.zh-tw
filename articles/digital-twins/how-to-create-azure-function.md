@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ab013a310997f43d1019d849e87c0cf1b0d151ee
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589396"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661090"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>連接 Azure Functions apps 以處理資料
 
@@ -95,8 +95,8 @@ namespace FunctionSample
 將下列 using 語句新增至您的 Azure 函數。
 
 ```csharp
-using Azure.Identity;
 using Azure.DigitalTwins.Core;
+using Azure.Identity;
 using System.Net.Http;
 using Azure.Core.Pipeline;
 ```
@@ -157,7 +157,7 @@ namespace FunctionSample
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-在下列命令中，使用 *principalId* 值將函數應用程式的身分識別指派給 Azure Digital Twins 執行個體的「擁有者」角色：
+使用下列命令中的 *principalId* 值，將函式應用程式的身分識別指派給 Azure 數位 *Twins 擁有者 (預覽版) * 角色的 azure 數位 Twins 實例。 這會提供實例中的函數應用程式許可權，以執行資料平面活動。
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
