@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 ClearCompany 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 ClearCompany 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2819da18-c7eb-43cf-aac3-1403a540bf6e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57fbbd86347d9fcf2465694dc2fcf43c1bd9f2e3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3af97f6620ff2108a9561155e3952653c93dee66
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157391"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520384"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>教學課程：Azure Active Directory 與 ClearCompany 整合
 

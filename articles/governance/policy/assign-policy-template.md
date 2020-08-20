@@ -1,15 +1,15 @@
 ---
 title: 快速入門：使用範本進行新原則指派
 description: 在本快速入門中，使用 Azure Resource Manager 範本 (ARM 範本) 建立原則指派以識別不符合規範的資源。
-ms.date: 05/21/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: f4cb4cb1fc56d06ab1e061b2d0e9a031e0e511dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 93c8e907190a3e87c3c0ce3392ccfd7fd4d2e515
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242044"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520867"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>快速入門：使用 ARM 範本建立原則指派以識別不相容資源
 

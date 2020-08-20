@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Claromentis 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Claromentis 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7980e0c5-e4d8-4678-afa2-7ec219432114
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4ae8462a3905c63ece1e010fa021c3ab7b6b0fa
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608816"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520306"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Claromentis 整合
 
