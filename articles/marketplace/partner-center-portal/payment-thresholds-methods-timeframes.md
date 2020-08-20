@@ -1,22 +1,22 @@
 ---
 title: 依區域的支付詳細資料 - Microsoft 商業市集
-description: 了解付款轉帳的預估時間，以及可供您收取付款的 Microsoft 店面 (視您所在的國家/地區和支付帳戶類型而定)。
+description: 瞭解傳送款項的預估時間，以及您可以接收付款的 Microsoft 線上商店，會根據您的國家/地區和支付帳戶類型而有所不同。
 author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 44246fa122b7c602e47c44e48c43c2a42d01de77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327322"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607283"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>付款閾值、方法和時間範圍
 
-預估的付款轉帳時間，以及可供您收取付款的店面，可能會根據您所在的國家/地區和支付帳戶類型而有所不同。 本文將概述每個國家/地區和區域支援的付款方式。
+傳送付款的預估時間，以及您可以從中接收款項的線上商店，可能會根據您的國家/地區和支付帳戶類型而有所不同。 本文將概述每個國家/地區和區域支援的付款方式。
 
 對於任何指定的國家/地區和區域，我們會使用 ACH/SEPA 或電匯來付款。 某些國家/地區和區域也支援以 PayPal 作為付款方式。
 

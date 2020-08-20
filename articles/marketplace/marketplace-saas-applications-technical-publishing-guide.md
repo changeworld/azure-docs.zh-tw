@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 20d14d656132b2809fe5a79d909c27799438a247
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9f488675e4f2437982e2426da73b4db1a713905d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280931"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607298"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS 應用程式供應項目發佈指南
 
@@ -21,10 +21,10 @@ ms.locfileid: "87280931"
 
 ## <a name="offer-overview"></a>供應項目概觀  
 
-SaaS 應用程式可在 Microsoft AppSource 和 Azure Marketplace 中使用。  這兩個店面皆支援清單、試用版和交易供應項目。
+SaaS 應用程式可在 Microsoft AppSource 和 Azure Marketplace 中使用。  線上商店都支援清單、試用版和交易供應專案。
 
 **列出清單：** 「列出清單」發行選項包含「與我連絡」的供應項目類型，當試用版層級或交易層級的參與方式不可行時，適用此方法。 此方法的優點是可讓發行者的解決方案上市，立即開始接收可能產生交易的潛在客戶，進而提升業績。  
-**試用版/交易：** 客戶可以選擇直接購買或要求試用您的解決方案。 提供試用版體驗會提升客戶的參與度，並可讓客戶先探索您的解決方案，再進行購買。 使用試用版體驗，較可能在店面獲得推廣機會，而且從客戶參與而來的潛在客戶也應會更多、更廣泛。 試用版必須至少包括在試用期間提供免費支援。  
+**試用版/交易：** 客戶可以選擇直接購買或要求試用您的解決方案。 提供試用版體驗會提升客戶的參與度，並可讓客戶先探索您的解決方案，再進行購買。 使用試用版體驗，您將會在線上商店中獲得更佳的升級機會，而且您應該會期望客戶參與的潛在客戶更豐富。 試用版必須至少包括在試用期間提供免費支援。  
 
 | SaaS 應用程式供應項目 | 商業需求 | 技術需求 |  
 | --- | --- | --- |  

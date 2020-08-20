@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082796"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607490"
 ---
 # <a name="cloud-solution-provider-program"></a>雲端解決方案提供者計畫
 
-本文說明如何將您的供應項目設定為適用於雲端解決方案提供者 (CSP) 計畫。 除了透過[商業市集網路店面](comparing-appsource-azure-marketplace.md)發佈供應項目外，您也可以透過 CSP 計畫來銷售，以觸及該計畫所服務的數百萬個合格 Microsoft 客戶。
+本文說明如何將您的供應項目設定為適用於雲端解決方案提供者 (CSP) 計畫。 除了透過 [商業 marketplace 線上商店](comparing-appsource-azure-marketplace.md)發佈您的供應專案，您也可以透過 CSP 方案銷售，以觸及方案所提供的數百萬個合格 Microsoft 客戶。
 
 您可以設定新的或現有的供應項目來選擇讓供應項目加入 CSP 計畫，這可讓 CSP 合作夥伴銷售您的產品，並為客戶建立配套的解決方案。
 
@@ -30,25 +30,25 @@ ms.locfileid: "87082796"
 - 受控應用程式
 
 > [!NOTE]
-> 根據預設，容器和自備授權（BYOL） VM 方案已加入宣告至 CSP 方案中的合作夥伴。
+> 容器和自備授權 (BYOL) VM 方案依預設會加入宣告至 CSP 方案中的合作夥伴銷售。
 
 ## <a name="how-to-configure-an-offer"></a>如何設定供應專案
 
-當您在合作夥伴中心建立供應專案時，請設定 CSP 方案加入宣告。 [深入了解如何變更發行者體驗](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
+當您在合作夥伴中心中建立供應專案時，請設定 CSP 方案加入宣告。 [深入了解如何變更發行者體驗](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/Cloud-Marketplace-In-Partner-Center/m-p/9738#M293)。
 
 ### <a name="partner-center-opt-in"></a>合作夥伴中心選擇加入
 
-加入宣告體驗位於 CSP 轉銷商的物件模組底下：
+加入宣告的體驗位於 CSP 轉銷商的物件課程模組底下：
 
 ![CSP 轉銷商對象](media/marketplace-publishers-guide/csp-reseller-audience.png)
 
-有三個選項可以選擇：
+從三個選項中選擇：
 
-1. CSP 計畫中的任何合作夥伴。
-2. 我選取 CSP 方案中的特定合作夥伴。
-3. CSP 計畫中沒有任何合作夥伴。
+1. CSP 方案中的任何合作夥伴。
+2. 我選取的 CSP 方案中的特定合作夥伴。
+3. CSP 方案中沒有任何合作夥伴。
 
-#### <a name="option-1-any-partner-in-the-csp-program"></a>選項1： CSP 計畫中的任何合作夥伴
+#### <a name="option-1-any-partner-in-the-csp-program"></a>選項1： CSP 方案中的任何合作夥伴
 
 ![CSP 計畫中的任何合作夥伴](media/marketplace-publishers-guide/csp-reseller-option-one.png)
 
@@ -87,7 +87,7 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 
 如果您的供應項目已有授權合作夥伴清單，而您想要讓其他供應項目使用同一份清單，請使用**匯入/匯出**。 瀏覽至具有 CSP 清單的供應項目，然後選取 [匯出 CSP]。 此功能會開發可供匯入至其他供應項目的 .csv 檔案。
 
-#### <a name="option-3-no-partners-in-the-csp-program"></a>選項3： CSP 計畫中沒有任何合作夥伴
+#### <a name="option-3-no-partners-in-the-csp-program"></a>選項3： CSP 方案中沒有合作夥伴
 
 ![不提供給 CSP 計畫中的任何合作夥伴](media/marketplace-publishers-guide/csp-reseller-option-three.png)
 
@@ -166,7 +166,7 @@ CSP 轉銷商的對象頁面上隨即會出現資料表，裡面會顯示您所�
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>與 CSP 計畫合作夥伴共用銷售和支援材料
 
-若要協助雲端解決方案提供者方案中的合作夥伴最有效地代表您的供應專案，並與您的組織互動，您必須提交可供轉銷商使用的銷售和支援材料。 這些資源不會向市集店面中的客戶公開。
+為了協助雲端解決方案提供者計畫中的合作夥伴最有效地表示您的供應專案，並與您的組織互動，您必須提交可提供給轉售商的銷售和支援材料。 這些資源將不會對線上商店中的客戶公開。
 
 ### <a name="partner-center-csp-channel"></a>合作夥伴中心 CSP 通道
 

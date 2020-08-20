@@ -4,8 +4,6 @@
   items:
     - name: 什麼是 Azure Load Balancer？
       href: load-balancer-overview.md
-    - name: 新功能
-      href: whats-new.md
 - name: 快速入門
   items:
     - name: 建立公用 Load Balancer - 入口網站
@@ -45,6 +43,8 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 新功能
+      href: whats-new.md
     - name: 元件
       href: components.md
     - name: 概念

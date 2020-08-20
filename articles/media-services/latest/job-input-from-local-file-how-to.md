@@ -1,22 +1,22 @@
 ---
-title: 從本機檔案建立 Azure 媒體服務作業輸入 |Microsoft Docs
-description: 本文示範如何從本機檔案建立 Azure 媒體服務作業輸入。
+title: 從本機檔案建立 Azure 媒體服務工作輸入 |Microsoft Docs
+description: 本文示範如何從本機檔案建立 Azure 媒體服務工作輸入。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/26/2020
-ms.author: juliako
-ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4d7e6d9daa5d30c5cbf5b198a147564d0c05c074
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001123"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607237"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>從本機檔案建立工作輸入
 
@@ -25,7 +25,6 @@ ms.locfileid: "87001123"
 ## <a name="prerequisites"></a>Prerequisites 
 
 * [建立媒體服務帳戶](./create-account-howto.md)。
-* 請參閱[管理資產](manage-asset-concept.md)。
 
 ## <a name="net-sample"></a>.NET 範例
 
@@ -41,7 +40,7 @@ ms.locfileid: "87001123"
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
-下列程式碼片段會提交編碼作業：
+下列程式碼片段會提交編碼工作：
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#SubmitJob)]
 
@@ -49,6 +48,6 @@ ms.locfileid: "87001123"
 
 請參閱[錯誤碼](/rest/api/media/jobs/get#joberrorcode) \(英文\)。
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 [從 HTTPS URL 建立作業輸入](job-input-from-http-how-to.md)。

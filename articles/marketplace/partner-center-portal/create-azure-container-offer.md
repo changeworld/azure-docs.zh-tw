@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9196bea663d037f269316dc108f99d3f2c282ec7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166734"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606370"
 ---
-# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 容器供應專案
+# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中建立 Azure 容器供應項目
 
 本文說明如何建立及發佈 Azure Marketplace 的容器供應項目。 開始之前，請先[在合作夥伴中心建立商業市集帳戶](create-account.md) (如果您尚未有帳戶)。 請確定您已在商業市集方案中註冊帳戶。
 
@@ -29,7 +29,7 @@ ms.locfileid: "88166734"
    ![說明左側導覽功能表。](./media/new-offer-azure-container.png)
 
 > [!TIP]
-> 發佈供應項目之後，在合作夥伴中心對其進行的編輯，只會在重新發佈供應項目之後出現在店面中。 請務必在進行變更之後，一律重新發佈。
+> 供應專案發佈之後，在合作夥伴中心中進行的編輯，只會在重新發佈供應專案之後出現在線上商店中。 請務必在進行變更之後，一律重新發佈。
 
 ### <a name="offer-id-and-alias"></a>供應項目識別碼和別名
 
@@ -93,12 +93,12 @@ ms.locfileid: "88166734"
 
 #### <a name="category"></a>類別
 
-選取 [類別] 和 [子類別]，將您的供應專案放在適當的 marketplace 搜尋區域。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
+選取類別和子類別，以將您的供應專案放在適當的 marketplace 搜尋區域中。 請務必在供應項目描述中描述您的供應項目如何支援這些類別。 選取：
 
-- 至少一個和最多兩個類別，包括主要和次要類別 (選擇性) 。
-- 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您的供應專案沒有適用的子類別，請選取 [**不適用**]。
+- 至少一個和多個類別，包括主要和次要類別 (選擇性) 。
+- 每個主要和/或次要類別最多可有兩個子類別。 如果沒有任何子類別適用于您的供應專案，請選取 [ **不適用**]。
 
-請參閱[供應專案清單最佳作法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。 容器一律會出現在 [**容器**] 和 [**容器映射**] 類別之下。
+請參閱 [供應專案清單最佳做法](../gtm-offer-listing-best-practices.md)中的類別和子類別的完整清單。 容器一律會出現在 **[容器] 和 [** **容器映射** ] 類別之下。
 
 #### <a name="legal"></a>法律
 
@@ -113,7 +113,7 @@ ms.locfileid: "88166734"
 
 若要深入了解標準合約，請參閱 [Microsoft 商業市集的標準合約](../standard-contract.md)。 您也可以下載[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178) PDF (請確定您的快顯封鎖程式已關閉)。
 
-若要使用標準合約，請選取 [使用 Microsoft 商用 marketplace 的標準合約] (]。/standard-contract.md) 
+若要使用標準合約，請選取 [使用 Microsoft 商用 marketplace 的標準合約] (。/standard-contract.md) 
 
 > [!NOTE]
 > 當您使用 Microsoft 商業市集的標準合約發佈供應項目之後，就無法使用自己的自訂條款及條件。 請根據標準合約或您自己的條款及條件來提供您的解決方案。
@@ -254,15 +254,15 @@ ms.locfileid: "88166734"
 
 ## <a name="plan-overview"></a>方案概觀
 
-此索引標籤可讓您在相同供應項目中提供不同的方案選項。 方案 (先前稱為 Sku) 在可用的雲端（例如全域雲端、政府雲端，以及方案所參考的影像）方面可能有所不同。 若要在商業市集中列出您的供應項目，至少必須設定一個方案。
+此索引標籤可讓您在相同供應項目中提供不同的方案選項。  (先前稱為 Sku 的方案) 在有哪些雲端可用，例如全域雲端、政府雲端，以及方案所參考的映射方面，會有所不同。 若要在商業市集中列出您的供應項目，至少必須設定一個方案。
 
-您最多可以為每個供應專案建立100方案：最多可以是私人的45。 深入瞭解[Microsoft 商業 Marketplace 私人](../private-offers.md)方案中的私用計畫。
+您最多可以為每個供應專案建立100個方案：這些供應專案的最高45個都可以是私用。 深入瞭解 [Microsoft 商業市場中私](../private-offers.md)用供應專案的私人方案。
 
 建立方案之後，隨即顯示 [方案概觀] 索引標籤：
 
 - 方案名稱
 - 定價模式
--  (全域或政府) 的 Azure 區域
+- Azure 區域 (全球或政府) 
 - 目前的發佈狀態
 - 任何可用的動作
 
@@ -288,16 +288,16 @@ ms.locfileid: "88166734"
 
 #### <a name="azure-regions"></a>Azure 區域
 
-Azure 容器供應專案的所有方案都會自動在**Azure 全域**提供。  您的方案可供使用商用 marketplace 的所有全球 Azure 區域中的客戶使用。 如需詳細資料，請參閱[地理可用性和貨幣支援](../marketplace-geo-availability-currencies.md) \(部分機器翻譯\)。
+Azure 容器供應專案的所有方案都會自動在 **Azure Global**中提供。  您的方案可供所有使用商用 marketplace 的全球 Azure 區域中的客戶使用。 如需詳細資料，請參閱[地理可用性和貨幣支援](../marketplace-geo-availability-currencies.md) \(部分機器翻譯\)。
 
-選取 [ [Azure Government](../../azure-government/documentation-government-welcome.md) ] 選項，讓您的解決方案顯示在這裡。 這是政府社群雲端，U.S. 聯邦政府、州和地方或部落政府機關的客戶，以及符合資格可提供服務的合作夥伴，擁有此雲端的控管權限。 身為發行者，您必須負責此雲端社區的任何合規性控制、安全性措施和最佳做法。 Azure Government 會使用實際隔離的資料中心和網路 (僅限位於美國地區)。 在[發佈](../../azure-government/documentation-government-manage-marketplace-partners.md)至 Azure Government 之前，請先在該區域內測試並確認您的解決方案，因為結果可能不同。 若要建立並測試您的解決方案，請從 [Microsoft Azure Government 試用版](https://azure.microsoft.com/global-infrastructure/government/request/)要求試用帳戶。
+選取 [ [Azure Government](../../azure-government/documentation-government-welcome.md) ] 選項，讓您的解決方案顯示于此處。 這是政府社群雲端，U.S. 聯邦政府、州和地方或部落政府機關的客戶，以及符合資格可提供服務的合作夥伴，擁有此雲端的控管權限。 身為發行者，您必須負責此雲端社區的任何合規性控制、安全性措施和最佳做法。 Azure Government 會使用實際隔離的資料中心和網路 (僅限位於美國地區)。 在[發佈](../../azure-government/documentation-government-manage-marketplace-partners.md)至 Azure Government 之前，請先在該區域內測試並確認您的解決方案，因為結果可能不同。 若要建立並測試您的解決方案，請從 [Microsoft Azure Government 試用版](https://azure.microsoft.com/global-infrastructure/government/request/)要求試用帳戶。
 
 > [!NOTE]
-> 當您的方案發佈並可在特定區域中使用之後，您就無法移除該區域。
+> 在您的方案發佈並可在特定區域中使用之後，您就無法移除該區域。
 
 #### <a name="azure-government-certifications"></a>Azure Government 認證
 
-只有在 [ **Azure 區域**] 底下選取 [ **Azure Government** ] 時，才會看到此選項。
+只有在**Azure 區域**下選取**Azure Government**時，才會看到此選項。
 
 Azure Government 服務會處理受限於特定政府法規和需求的資料。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。
 
@@ -339,7 +339,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 此欄位是在下列情況下使用：
 
-- 供應專案的目的是要在透過其他應用程式參考時，間接使用。
+- 這項供應專案是要在透過另一個應用程式參考時間接使用。
 - 供應項目不應個別購買。
 - 此方案用於初始測試，且不再相關。
 - 此方案用於暫時或季節性的供應項目，因此不應再提供。
@@ -360,7 +360,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 **Azure Container Registry 名稱** - 提供具有您容器映像的 [Azure Container Registry](../../container-registry/container-registry-intro.md) 名稱。 容器登錄必須位於您稍早提供的 Azure 資源群組中。 僅包括登錄名稱，而非完整登入伺服器名稱。 請務必從名稱中省略 **azurecr.io**。 您可以在 Azure 入口網站的[容器登錄頁面](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到登錄名稱。
 
-**Azure Container Registry 的系統管理員使用者名稱**–提供系統[管理員使用者名稱](../../container-registry/container-registry-authentication.md#admin-account)) 與具有容器映射的 Azure Container Registry 連結。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True**。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
+**Azure Container Registry** 的系統管理員使用者名稱–提供系統 [管理員使用者名稱](../../container-registry/container-registry-authentication.md#admin-account)) 與具有容器映射的 Azure Container Registry 連結。 需要使用者名稱和密碼，以確保貴公司有權存取登錄。 若要取得管理使用者名稱和密碼，請使用 Azure 命令列介面 (CLI)，將 **admin-enabled** 屬性設定為 **True**。 您可以選擇性地將 Azure 入口網站中的 [管理使用者] 設定為 [啟用]。
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="說明 [更新容器登錄] 對話方塊。":::
 
@@ -404,7 +404,7 @@ Azure Government 服務會處理受限於特定政府法規和需求的資料。
 
 我們會傳送一封電子郵件給您，讓您知道供應項目的預覽版本何時可供檢閱及核准。
 
-若要將您的供應專案發佈至公用，請移至合作夥伴中心，然後選取 [**上線**]。
+若要將您的供應專案發佈至公用，請移至合作夥伴中心並選取 [ **上線**]。
 
 ## <a name="next-step"></a>後續步驟
 

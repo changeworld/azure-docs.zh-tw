@@ -7,24 +7,24 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 37647a9591c0f686e4fc3f1fd858baa46e01f7ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498067"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607435"
 ---
 # <a name="determine-your-publishing-option"></a>決定您的發佈選項
 
 您為供應項目選擇的發佈選項，與資格需求和商業市集 GTM 權益直接相關。 更重要的是，發佈選項和供應項目類型的選取項目，會定義使用者與您的商業市集供應項目互動的方式。
 
-若要設定您的供應項目，您必須了解下列主要商業市集概念：發佈選項、供應項目類型和組態及呼籲行動，這些項目控制您的供應項目在商業市集店面展示的方式和位置。
+若要設定您的供應專案，您必須瞭解下列主要的商業 marketplace 概念：發佈選項、供應專案類型和設定，以及可控制您的供應專案在商業 marketplace 線上商店中的顯示方式和位置的行動動作。
 
 在本文中，您將了解：
 
-- 如何為解決方案決定適當的店面
-- 每個店面中有哪些發佈選項和呼籲行動可用
-- 每個發佈選項有哪些供應項目類型可用
+- 如何為您的解決方案判斷適當的線上商店。
+- 每個線上商店都有提供哪些發佈選項和行動動作。
+- 每個發佈選項都有提供哪些供應專案類型。
 
 ## <a name="commercial-marketplace-publishing-options"></a>商業市集發佈選項
 
@@ -37,8 +37,8 @@ ms.locfileid: "87498067"
 | **容器映像** |  |  | Azure Marketplace | Azure Marketplace |   |
 | **IoT Edge 模組** |  |  | Azure Marketplace | Azure Marketplace |   |
 | **受控服務** |  |  |  | Azure Marketplace |   |
-| **諮詢服務** | 兩個店面 |  |  |  |   |
-| **SaaS 應用程式** | 兩個店面 | 兩個店面 | 兩個店面 |  | 兩個店面* |
+| **諮詢服務** | 這兩個線上商店 |  |  |  |   |
+| **SaaS 應用程式** | 這兩個線上商店 | 這兩個線上商店 | 這兩個線上商店 |  | 兩個線上商店 * |
 | **Microsoft 365 應用程式** | AppSource | AppSource |  |  | AppSource**  |
 | **Dynamics 365 增益集** |  AppSource | AppSource |  |  |   |
 | **PowerApps** | AppSource |AppSource  |  |  |   |
@@ -61,40 +61,40 @@ ms.locfileid: "87498067"
 > [!Note]
 > 當使用交易發佈選項時，請務必了解定價、計費、發票處理和付款考量，然後再選取供應項目類型與建立供應項目。 若要深入了解，請參閱[商業市集交易功能](./marketplace-commercial-transaction-capabilities-and-considerations.md)一文。
 
-## <a name="selecting-a-storefront"></a>選取店面
+## <a name="selecting-an-online-store"></a>選取線上商店
 
-每個店面分別可滿足不同的客戶需求，並以特定對象為目標。 您的供應專案類型、交易功能和類別將會決定您的供應專案發佈位置。 類別和子類別會根據目標物件對應至每個店面：
+每個線上商店都提供獨特的客戶需求，並以特定的物件為目標。 您的供應專案類型、交易功能和類別將會決定您供應專案的發佈位置。 類別和子類別會根據目標物件對應至每個線上商店：
 
-**Microsoft AppSource**以商務使用者為目標，尋找企業營運或產業解決方案，以及 Dynamics 365、Microsoft 365 和 Power 平臺的諮詢服務。
+**Microsoft AppSource** 以商務使用者為目標，尋找適用于 Dynamics 365、Microsoft 365 和 Power Platform 的企業營運或產業解決方案及諮詢服務。
 
-**Azure Marketplace**的目標是 IT 專業人員和開發人員，尋找在 azure 上建立的解決方案，以及可加速使用 azure 的諮詢服務。
+**Azure Marketplace** 的目標是 IT 專業人員和開發人員，尋求在 azure 上建立的解決方案，以及可加速使用 azure 的諮詢服務。
 
-選取最符合目標物件的類別和子類別。 例如，web 應用程式防火牆應該發佈到安全性類別下的 Azure Marketplace，因為目標物件是 IT 專業人員。 合約管理應用程式應改為發行至 [Sales] 類別之下的 [AppSource]，因為目標物件是商務使用者。 選取不正確的類別或子類別可能會導致您的供應專案發佈至錯誤的店面。
+選取最符合您目標物件的類別和子類別。 例如，web 應用程式防火牆應該發佈到安全性類別下的 Azure Marketplace，因為目標物件是 IT 專業人員。 合約管理應用程式應該改為發行至 Sales 類別下的 AppSource，因為預期的物件是商務使用者。 選取不正確的類別或子類別目錄，可能會導致您的供應專案發佈至錯誤的線上商店。
 
-### <a name="publishing-to-both-storefronts-saas-offers-only"></a>發行至兩個店面（僅限 SaaS 提供）
+### <a name="publishing-to-both-online-stores-saas-offers-only"></a>發佈至 (SaaS 提供的線上商店) 
 
-SaaS 供應專案可以發佈至 Azure Marketplace 或 AppSource。 如果您的 SaaS 供應專案適用*于技術*物件（Azure Marketplace）和企業物件（AppSource），請選取適用于每個店面的類別及/或子類別。 發佈給這兩個店面的供應專案都應該有一個價值主張，可延伸至 IT 專業人員*和*商務使用者。
+SaaS 供應專案可以發佈至 Azure Marketplace 或 AppSource。 如果您的 SaaS 供應專案適用 *于技術* 物件 (Azure Marketplace) 和企業物件 (AppSource) ，請選取適用于每個線上商店的類別及/或子類別。 發佈至兩個線上商店的供應專案應該具有可延伸至 IT 專業人員 *和* 商務使用者的價值主張。
 
 > [!IMPORTANT]
-> 具有計量付費的 SaaS 供應專案可透過 Azure Marketplace 和 Azure 入口網站取得。 只有私人方案的 SaaS 供應專案可透過 Azure 入口網站取得。
+> 具有計量計費的 SaaS 供應專案可透過 Azure Marketplace 和 Azure 入口網站取得。 只有私人方案提供的 SaaS 供應專案可透過 Azure 入口網站取得。
 
-| 計量付費計費 | 公用方案 | 私用計畫 | 適用于： |
+| 計量付費 | 公用方案 | 私人方案 | 適用于： |
 |---|---|---|---|
 | 是             | 是         | 否           | Azure Marketplace 和 Azure 入口網站 |
 | 是             | 是         | 是          | Azure Marketplace 和 Azure 入口網站 * |
 | 是             | 否          | 是          | 僅 Azure 入口網站 |
 | 否              | 否          | 是          | 僅 Azure 入口網站 |
 
-&#42; 供應專案的私用計畫將只能透過 Azure 入口網站
+&#42; 供應專案的私用方案將只能透過 Azure 入口網站取得
 
-例如，只有計量付費的供應專案和私人方案（不公開方案），才會由 Azure 入口網站的客戶購買。 深入瞭解[Microsoft 商業 marketplace 中的私人](private-offers.md)供應專案。
+例如，使用計量付費帳單和私人方案的供應專案僅 (沒有公用方案) ，將由客戶在 Azure 入口網站中購買。 深入瞭解 [Microsoft 商業市集中的私人優惠](private-offers.md)。
 
 ### <a name="categories"></a>類別
 
-類別和子類別會根據目標物件對應至每個店面。 選取最符合您供應專案和預定物件的類別和子類別。 您可以選取：
+類別和子類別會根據目標物件對應至每個線上商店。 選取最符合您供應專案和預定物件的類別和子類別。 您可以選取：
 
-- 至少一個和最多兩個類別。 您可以選擇 [主要] 和 [次要] 類別。
-- 針對每個主要和/或次要類別，最多可有兩個子類別。 如果您未選取任何子類別，則您的供應專案仍然可以在選取的類別下找到。
+- 至少一個和最多兩個類別。 您可以選擇主要和次要類別。
+- 每個主要和/或次要類別最多可有兩個子類別。 如果您未選取任何子類別，則您的供應專案仍可在所選類別下找到。
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
@@ -102,4 +102,4 @@ SaaS 供應專案可以發佈至 Azure Marketplace 或 AppSource。 如果您的
 
 - 一旦您決定發佈選項，就能夠選取要用於展示供應項目的[供應項目類型](./publisher-guide-by-offer-type.md)。
 - 請依據供應項目類型區段，檢閱發佈選項中的資格需求，以完成供應項目的選取和設定。
-- 請依據店面檢閱發佈模式，以取得解決方案如何對應至供應項目類型和組態的範例。
+- 請參閱線上商店的發佈模式，以取得解決方案如何對應至供應專案類型和設定的範例。

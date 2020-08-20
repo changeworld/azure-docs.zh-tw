@@ -1,32 +1,38 @@
 ---
-title: Azure Cosmos DB 查詢語言中的 GetCurrentDateTime
-description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 GetCurrentDateTime。
-author: ginamr
+title: Azure Cosmos DB 查詢語言中的 TicksToDateTime
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 TicksToDateTime。
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.author: girobins
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: ec0b8ccaceed4abe3dd2784463f507f3bc76d890
+ms.openlocfilehash: 89a8dba97725049b86fc6b38c09e0dd125bb48d1
 ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606951"
+ms.locfileid: "88608736"
 ---
-# <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB) 
+# <a name="tickstodatetime-azure-cosmos-db"></a>TicksToDateTime (Azure Cosmos DB) 
 
-傳回目前的 UTC (國際標準時間) 日期和時間做為 ISO 8601 字串。
+將指定的刻度值轉換成日期時間。
   
 ## <a name="syntax"></a>語法
   
 ```sql
-GetCurrentDateTime ()
+TicksToDateTime (<Ticks>)
 ```
 
+## <a name="arguments"></a>引數
+
+*蜱*  
+
+帶正負號的數值，這是自 Unix epoch 以來經過的目前100毫微秒滴答數。 換句話說，它是自00:00:00 星期四（1月1970）以來經過的100毫微秒滴答數。
+
 ## <a name="return-types"></a>傳回類型
-  
-  以下列格式傳回目前的 UTC 日期和時間 ISO 8601 字串值 `YYYY-MM-DDThh:mm:ss.fffffffZ` ：
+
+以下列格式傳回 UTC 日期和時間 ISO 8601 字串值 `YYYY-MM-DDThh:mm:ss.fffffffZ` ：
   
   |格式|描述|
   |-|-|
@@ -44,24 +50,22 @@ GetCurrentDateTime ()
 
 ## <a name="remarks"></a>備註
 
-GetCurrentDateTime ( # A1 是不具決定性的函數。 傳回的結果為 UTC。 精確度為7位數，精確度為100毫微秒。
-
-這個系統函數將不會使用索引。
+`undefined`如果指定的刻度值無效，TicksToDateTime 就會傳回。
 
 ## <a name="examples"></a>範例
   
-下列範例顯示如何使用 GetCurrentDateTime ( # A1 內建函數取得目前的 UTC 日期時間。
-  
+下列範例會將刻度轉換成 DateTime：
+
 ```sql
-SELECT GetCurrentDateTime() AS currentUtcDateTime
-```  
-  
- 以下是範例結果集。
-  
+SELECT TicksToDateTime(15943368134575530) AS DateTime
+```
+
 ```json
-[{
-  "currentUtcDateTime": "2019-05-03T20:36:17.1234567Z"
-}]  
+[
+    {
+        "DateTime": "2020-07-09T23:20:13.4575530Z"
+    }
+]
 ```  
 
 ## <a name="next-steps"></a>後續步驟

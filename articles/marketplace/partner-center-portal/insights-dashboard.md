@@ -1,5 +1,5 @@
 ---
-title: Marketplace 深入解析-Microsoft 商業 marketplace、Microsoft AppSource 和 Azure Marketplace
+title: Marketplace 見解-Microsoft 商業 marketplace、Microsoft AppSource 和 Azure Marketplace
 description: 存取市集 Web 分析的摘要，其可供測量 Microsoft AppSource 和 Azure Marketplace 中的客戶參與度。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 877d5436628fdeb973f6d7f30cc71e91eeb92364
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323276"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607138"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>合作夥伴中心的 [Marketplace 見解] 儀表板
 
-本文提供合作夥伴中心內 [Marketplace 見解] 儀表板的相關資訊。 此儀表板會顯示 marketplace web 分析的摘要，可讓發行者針對其在商業 marketplace 店面上列出的產品詳細資料頁面，測量客戶參與： Microsoft AppSource 和 Azure Marketplace。
+本文提供合作夥伴中心內 [Marketplace 見解] 儀表板的相關資訊。 此儀表板會顯示 marketplace web 分析的摘要，可讓發行者針對商業 marketplace 線上商店上所列的個別產品詳細資料頁面，測量客戶參與： Microsoft AppSource 和 Azure Marketplace。
 
 ## <a name="marketplace-insights-dashboard"></a>Marketplace 見解儀表板
 
@@ -27,26 +27,26 @@ ms.locfileid: "87323276"
 - [Marketplace 見解的摘要](#marketplace-insights-summary)
 - [頁面瀏覽數 (依地理位置)](#page-visits-by-geography)  
 - [頁面瀏覽數與非重複訪客數趨勢](#page-visits-versus-unique-visitors-trend)
-- [使用 CTAs 的呼叫動作（CTA）與唯一的訪客](#call-to-action-versus-unique-visitors-with-ctas)
+- [使用 CTAs (CTA) 與唯一訪客的呼叫動作](#call-to-action-versus-unique-visitors-with-ctas)
 - [頁面瀏覽數與動作呼叫 (依供應項目)](#page-visits-and-calls-to-action-by-offers)
 - [動作呼叫百分比趨勢](#call-to-action-percentage-trend)
 - [頁面瀏覽數與動作呼叫數 (依轉介網域)](#page-visits-and-calls-to-action-by-referral-domains)
 - [Marketplace 見解的詳細資料資料表](#marketplace-insights-details-table)
 
-在合作夥伴中心流覽 Azure Marketplace 或 AppSource 和報告供應專案的使用者之間的最大延遲為48小時。
+在合作夥伴中心中，使用者造訪 Azure Marketplace 或 AppSource 和報告之間的最大延遲為48小時。
 
 >[!NOTE]
 > 如需分析術語的詳細定義，請參閱[商業市集分析的常見問題集與術語](./faq-terminology.md)。
 
 ### <a name="insights-dashboard-layout"></a>[見解] 儀表板版面配置
 
-以各種不同的方式來觀看商業 marketplace 計量：
+以各種不同的方式觀看商業市場計量：
 
-- 店面索引標籤
+- 線上商店索引標籤
 - 頁面篩選
 - 日期篩選
 
-**店面索引標籤**：您可透過 [AppSource] 與 [Azure Marketplace] 索引標籤，分別檢視供應項目的計量。 從右側的 [供應項目] 下拉式清單中選取供應項目，以查看所選供應項目的計量視覺效果。 依預設會選取所有供應項目。
+[**線上商店]** 索引標籤：您可以透過 [AppSource &] Azure Marketplace 索引標籤，分別查看供應專案的計量。 從右側的 [供應項目] 下拉式清單中選取供應項目，以查看所選供應項目的計量視覺效果。 依預設會選取所有供應項目。
 
 ![合作夥伴中心見解儀表板的 [供應項目] 下拉式清單](./media/insights-offer-dropdown.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "87323276"
 
 ### <a name="call-to-action"></a>對動作的呼叫
 
-此數字代表在供應專案頁面 (產品詳細資料頁面) 上，已完成 [動作呼叫] 按鈕點選的計數。 當使用者選取 [**立即取得**]、[**免費試用**]、[**聯絡我**] 或 [**試用**產品] 按鈕時，會計算**動作的呼叫**。
+此數字代表在供應專案頁面 (產品詳細資料頁面) 上，已完成 [動作呼叫] 按鈕點選的計數。 當使用者選取 [**立即取得**]、[**免費試用**]、[**連絡人** **] 或 [試用**產品] 按鈕時，會計算**動作的呼叫**。
 
 ![合作夥伴中心見解的動作呼叫摘要](./media/insights-summary.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "87323276"
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>頁面瀏覽數與非重複訪客數趨勢
 
-下列資料行代表每月頁面瀏覽數，其顯示在 Y 軸 (位於圖表左側的軸) 上。 趨勢線則代表非重複訪客數的每月趨勢，這會針對店面中發佈的供應項目顯示在次要 Y 軸 (位於圖表右側的軸) 上：Azure Marketplace 和 AppSource。
+下列資料行代表每月頁面瀏覽數，其顯示在 Y 軸 (位於圖表左側的軸) 上。 趨勢線代表唯一訪客的每月趨勢，這會顯示在圖表右邊的次要 Y 軸 (軸) ，適用于您在線上商店中發佈的供應專案： Azure Marketplace 和 AppSource。
 
 ![合作夥伴中心見解的頁面瀏覽數與非重複訪客數趨勢](./media/insights-page-vists-unique-visitors.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "87323276"
 
 - 如果記錄計數小於 1000，則可將資料擷取至 CSV 檔案。
 - 如果記錄計數超過 1000，則匯出的資料會在接下來 30 天內以非同步方式放置在下載頁面中。
-- 依據供應專案名稱和行銷活動名稱來篩選資料，以顯示您感興趣的資料。
+- 依供應專案名稱和活動名稱篩選資料，以顯示您感興趣的資料。
 
 ## <a name="next-steps"></a>後續步驟
 

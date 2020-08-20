@@ -5,29 +5,36 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bf041163c6b2759b3d38e48ee98a0d528ec601db
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964578"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606899"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解您的 Azure Cosmos DB 帳單
 
-Azure Cosmos DB 是一個完全受控的雲端原生資料庫服務，透過只針對已佈建輸送量與已取用儲存體收費以簡化計費流程。 相較於內部部署或 IaaS 主控的替代方案，它沒有任何額外的授權費用、硬體、公共事業成本或設備成本需求。 相較於現有的內部部署或 IaaS 解決方案，當您考慮 Azure Cosmos DB 的多重區域功能時，資料庫服務也能大幅降低成本。
+Azure Cosmos DB 是完全受控的雲端原生資料庫服務，只針對您的資料庫作業和取用的儲存體付費，以簡化帳單。 相較於內部部署或 IaaS 主控的替代方案，它沒有任何額外的授權費用、硬體、公共事業成本或設備成本需求。 相較於現有的內部部署或 IaaS 解決方案，當您考慮 Azure Cosmos DB 的多重區域功能時，資料庫服務也能大幅降低成本。
 
-採用 Azure Cosmos DB 之後，系統會依時數向您收取已佈建輸送量與已取用儲存體的費用。 針對布建的輸送量，計費單位為每小時 100 RU/秒，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)以取得最新的定價資訊。 針對已取用的儲存體，您每個月會按 1 GB 的儲存體計費，如需最新的定價資訊，請參閱[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。
+- **資料庫作業**：您對資料庫作業收費的方式取決於您所使用的 Azure Cosmos 帳戶類型。
 
-此文章使用一些範例協助您了解在每月帳單中看到的詳細資料。 如果您的 Azure Cosmos 容器佈建了不同數量的輸送量、跨越多個區域，或是在一個月的不同期間執行，實際數字可能會與範例中所示數字不一樣。 本文中的所有範例都會根據[定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)中所顯示的定價資訊來計算帳單。
+  - 布**建的輸送量**：針對指定的小時，以每小時計費，以 100 RU/秒為單位遞增。
+  - **無伺服器**：針對您的資料庫作業所耗用的要求單位總數，以每小時計費。
+
+- **儲存體**：依您的資料和索引) 在指定的一小時內耗用的總 (儲存體量，以固定費率計費。
+
+如需最新定價資訊，請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 。
+
+此文章使用一些範例協助您了解在每月帳單中看到的詳細資料。 如果您的 Azure Cosmos 容器佈建了不同數量的輸送量、跨越多個區域，或是在一個月的不同期間執行，實際數字可能會與範例中所示數字不一樣。 本文中的所有範例都會根據 [定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)中顯示的定價資訊來計算帳單。
 
 > [!NOTE]
-> 計費適用於時鐘小時的任何部分，而不是 60 分鐘的持續時間。 本檔中所顯示的所有範例，都是以美國非政府區域中部署的 Azure Cosmos 帳戶價格為基礎。 定價和計算會根據您所使用的區域而有所不同，如需最新的定價資訊，請參閱[Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/)。
+> 計費適用於時鐘小時的任何部分，而不是 60 分鐘的持續時間。 本檔中顯示的所有範例都是根據在美國非政府區域中部署的 Azure Cosmos 帳戶的價格。 定價和計算會依據您所使用的區域而有所不同，請參閱 [Azure Cosmos DB 定價頁面](https://azure.microsoft.com/pricing/details/cosmos-db/) 以取得最新的定價資訊。
 
 ## <a name="billing-examples"></a>計費範例
 
-### <a name="billing-example---throughput-on-a-container-full-month"></a>計費範例 - 容器的輸送量 (完整月份)
+### <a name="billing-example---provisioned-throughput-on-a-container-full-month"></a>計費範例-容器上布建的輸送量 (全月) 
 
 * 假設您在容器上設定了 1,000 RU/秒的輸送量，且其存在時間為 24 小時 * 一個月 30 天 = 總計 720 個小時。  
 
@@ -39,13 +46,21 @@ Azure Cosmos DB 是一個完全受控的雲端原生資料庫服務，透過只�
 
 * 每月帳單總計會顯示 7,200 個單位 (每 100 個 RU 為一個單位)，費用為 $57.60。
 
-### <a name="billing-example---throughput-on-a-container-partial-month"></a>計費範例 - 容器的輸送量 (非完整月份)
+### <a name="billing-example---provisioned-throughput-on-a-container-partial-month"></a>計費範例-容器上布建的輸送量 (部分月份) 
 
 * 假設我們建立了一個具備 2,500 RU/秒已佈建輸送量的容器。容器一個月的存留時間為 24 小時 (例如，我們建立容器並在 24 小時後將它刪除)。  
 
 * 我們會在帳單上看到 600 個單位 (2,500 RU/秒 / 100 RU/秒/單位 * 24 小時)。 費用為 $4.80 (600 個單位 * $0.008/單位)。
 
 * 一個月的帳單總額為 $4.80。
+
+### <a name="billing-example---serverless-container"></a>帳單範例-無伺服器容器
+
+* 假設我們建立無伺服器容器。 
+
+* 在一個月內，我們發出的資料庫要求總共耗用500000個要求單位。 成本會是 $0.125 (500000 * $ 0.25/百萬) 。
+
+* 月份的帳單總計為 $0.125。
 
 ### <a name="billing-rate-if-storage-size-changes"></a>儲存體大小變更的費率
 
@@ -55,7 +70,7 @@ Azure Cosmos DB 是一個完全受控的雲端原生資料庫服務，透過只�
 
 不論使用量多寡或是容器或資料庫使用時間是否不到一個小時，容器或資料庫存在的每個小時都會以均一價費率計費。 例如，假設您建立容器或資料庫並在 5 分鐘後將它刪除，您的帳單將會包含 1 小時。
 
-### <a name="billing-rate-when-throughput-on-a-container-or-database-scales-updown"></a>容器或資料庫的輸送量相應增加/減少時的費率
+### <a name="billing-rate-when-provisioned-throughput-on-a-container-or-database-scales-updown"></a>當容器或資料庫上的布建輸送量相應增加/減少時的計費費率
 
 如果您在上午 9:30 將佈建的輸送量從 400 RU/秒增加到 1,000 RU/秒，然後在上午 10:45 將佈建的輸送量降回 400 RU/秒，您必須支付兩小時的 1,000 RU/秒費用。 
 
@@ -75,7 +90,7 @@ Azure Cosmos DB 是一個完全受控的雲端原生資料庫服務，透過只�
 
 :::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="專用輸送量帳單範例":::
 
-### <a name="billing-example-containers-with-shared-throughput-mode"></a>計費範例：使用共用輸送量模式的容器
+### <a name="billing-example-containers-with-shared-provisioned-throughput-mode"></a>計費範例：共用 (布建) 輸送量模式的容器
 
 * 如果您在美國東部 2 建立有兩個 Azure Cosmos 資料庫 (含在資料庫層級共用輸送量的一組容器) 的 Azure Cosmos 帳戶，分別佈建了 50-K RU/秒與 70-K RU/秒的輸送量，您的總佈建輸送量會是 120-K RU/秒。  
 
@@ -236,10 +251,10 @@ Azure Cosmos DB 是一個完全受控的雲端原生資料庫服務，透過只�
 
 **儲存體成本**
 
-* 平均記錄大小（KB） = 1 
+* 平均記錄大小 (KB) = 1 
 * 記錄數目 = 100000000 
-* 儲存體總計（GB） = 100 
-* 每月每 GB 的成本 = $0.25 
+* 總儲存體 (GB) = 100 
+* 每 GB 每月成本 = $0.25 
 * 儲存體的預期每月成本 = $25.00 
 
 **輸送量成本**

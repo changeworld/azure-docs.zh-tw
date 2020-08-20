@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797860"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607452"
 ---
 # <a name="consulting-service-offers"></a>諮詢服務供應項目
 
@@ -22,7 +22,7 @@ ms.locfileid: "87797860"
 
 ## <a name="compare-consulting-services"></a>比較諮詢服務
 
-商業市集店面、Microsoft AppSource 和 Azure Marketplace 是專為目標對象與雲端產品提供的，可協助客戶找到所需的項目。 每個店面都有專屬的發行選項，有助於讓發行投資發揮最大效用。 若要深入瞭解兩個店面之間的差異，請參閱[比較 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
+商業 marketplace 線上商店、Microsoft AppSource 和 Azure Marketplace 會與物件和雲端產品保持一致，以協助客戶找到所需的內容。 每個線上商店都有專門的發佈選項，可協助您將發佈投資最大化。 若要深入瞭解這兩個線上商店之間的差異，請參閱 [比較 Microsoft AppSource 和 Azure Marketplace](comparing-appsource-azure-marketplace.md)。
 
 以 Dynamics 365、Power Apps 和 Power BI 為基礎的諮詢服務供應項目有資格在 AppSource 上列出。 如需詳細資訊，請參閱 [Microsoft AppSource 諮詢服務清單清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF 檔案。
 
@@ -34,7 +34,7 @@ ms.locfileid: "87797860"
 > AppSource 中的諮詢服務應專注於具備專業知識而有能力提供高品質的 Dynamics 365、Power BI 或 Power 應用程式解決方案的使用者所適用的供應項目。
  
 > [!TIP]
-> 若要發佈至 Azure Marketplace 店面，請在合作夥伴中心的 [主要產品] 下拉式清單中選取 [Azure]。
+> 若要發佈至 Azure Marketplace，請在 [合作夥伴中心 **主要產品** ] 下拉式清單中選取 [ **Azure**]。
 >
 > 若要發佈至 AppSource，請在合作夥伴中心的 [主要產品] 下拉式清單中，選取 [Dynamics 365]、[Power BI] 或 [Power Apps]。
 
@@ -70,9 +70,9 @@ ms.locfileid: "87797860"
 
 如需專長認證的詳細資訊，請移至 [Microsoft 合作夥伴網路專長認證](https://partner.microsoft.com/membership/competencies)頁面。
 
-系統整合者合作夥伴可以提交適用于下列20個國家/地區的諮詢服務供應專案：
+系統整合者合作夥伴可以針對下列20個國家/地區提交諮詢服務供應專案：
 
-| 國家/地區  |  (繼續。)    |  (繼續。)   |  (繼續。)   |
+| 國家/地區  |  (繼續 .。。)    |  (繼續 .。。)   |  (繼續 .。。)   |
 |---------|----------|----------|----------|
 | 澳大利亞 | 比利時 | Canada | 丹麥 |
 | 芬蘭  | 法國 | 德國  | 印度   |
@@ -86,12 +86,12 @@ ms.locfileid: "87797860"
 首先，在市集中[註冊](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)您的公司資訊。 如需註冊需求的完整檢查清單，請參閱[成為市集中的發行者](become-publisher.md)。 
 
 ## <a name="prepare-your-publishing-artifacts"></a>準備您的發佈成品
-註冊前，您可以開始收集及準備相關內容，幫助您向目標客戶闡述您的服務和解決方案的價值。
+註冊前，您可以開始收集及準備相關內容，幫助您向目標客戶闡述您的服務和解決方案的價值。 
 
 |新發行者的設定  |
 |---------|
 |MPN 識別碼     |
-|公司標誌： 48 x 48 圖元 (選擇性) 、216 x 216 圖元– 350 x 350 圖元 (必要)   |
+|公司標誌 (48 x 48、216 x 216 像素)     |
 |潛在客戶目的地     |
 ||
 

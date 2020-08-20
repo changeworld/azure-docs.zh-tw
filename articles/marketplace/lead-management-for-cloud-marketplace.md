@@ -1,5 +1,5 @@
 ---
-title: 商用 marketplace 的潛在客戶管理 |Azure Marketplace 和 AppSource
+title: 商業 marketplace 的潛在客戶管理 |Azure Marketplace 和 AppSource
 description: 向 Azure Marketplace 和 AppSource 發佈供應項目和技術成品的各種相關主題概觀
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: d0aea0594a97990c7c89434e73fcd4982b01e20f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035173"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606887"
 ---
-# <a name="lead-management-for-the-commercial-marketplace"></a>商用 marketplace 的潛在客戶管理
+# <a name="lead-management-for-the-commercial-marketplace"></a>商業 marketplace 的潛在客戶管理
 
 客戶是所有優秀企業的核心。 在現今的產品併購變革中，行銷人員需要著重在直接與客戶連結，建立關係。 這也是為什麼產生高品質潛在客戶，對您的銷售循環而言是一個相當關鍵的工具。 在 [合作夥伴中心](https://partner.microsoft.com/)中列出您的供應項目後，系統會為您啟用工具，讓您在客戶對您市集中的產品表達興趣，或部署您的產品後，能以程式化方式，立即收到客戶連絡資訊。 
 
@@ -131,20 +131,20 @@ title = MSFT_TEST_636573304831318844
 每位潛在客戶都會將資料傳入所選潛在客戶目的地中的欄位，潛在客戶會以下列格式顯示：**來源動作|供應項目**
 
 - 來源：
-  - AzureMarketplace
+  - >azuremarketplace.microsoft.com
   - AzurePortal
   - 試用  
   - AppSource) 的 SPZA (縮寫
 
 - 動作：
-  - "INS"-代表安裝。 這代表客戶在 Azure Marketplace 或 AppSource按下按鈕，取得您的產品。
-  - 「PLT」-代表合作夥伴 Led 試用版。 這代表客戶在 AppSource 按下「與我連絡」按鈕。
-  - 「DNC」-代表「不要聯絡」。 這代表在 AppSource，交叉列於您的應用程式頁面的合作夥伴，收到連絡要求。 我們分享此客戶交叉列於您的應用程式的通知，但無須連絡他們。
-  - 「建立」-這僅在 Azure 入口網站內，而且客戶會在其帳戶中購買您的供應專案。
-  - "StartTestDrive"-這僅適用于試用產品，而且是客戶啟動其試用產品的時候。
+  - 「INS」-代表安裝。 這代表客戶在 Azure Marketplace 或 AppSource按下按鈕，取得您的產品。
+  - "PLT"-代表合作夥伴主導的試用。 這代表客戶在 AppSource 按下「與我連絡」按鈕。
+  - "DNC"-代表「請勿聯絡」。 這代表在 AppSource，交叉列於您的應用程式頁面的合作夥伴，收到連絡要求。 我們分享此客戶交叉列於您的應用程式的通知，但無須連絡他們。
+  - "Create"-這只會在 Azure 入口網站內部，而且客戶會在其帳戶中購買您的供應專案時使用。
+  - "StartTestDrive"-這只適用于測試磁片磁碟機，而且每次客戶啟動其試用產品時都是如此。
 
 - 供應項目：
-  - 「檢查點 r77-10sg-byol」，
+  - "checkpoint. r77-10sg-byol"，
   - "bitnami. openedxcypress"，
   - "docusign. 3701c77e-1cfa-4c56-91e6-3ed0b622145a"
 
@@ -170,7 +170,7 @@ title = MSFT_TEST_636573304831318844
 
 **我已從 Marketplace 收到一封電子郵件，為什麼在我的 CRM 中找不到潛在客戶？**  
 
-終端使用者的電子郵件網域可能來自 .edu。 基於隱私原因，我們不會從 .edu 網域傳遞個人識別資料。 在[說明及支援](https://aka.ms/marketplacepublishersupport)中提交支援票證。
+終端使用者的電子郵件網域可能來自 .edu。 基於隱私權原因，我們不會從 edu 網域傳遞個人標識資料。 在[說明及支援](https://aka.ms/marketplacepublishersupport)中提交支援票證。
 
 **我已將 Azure 表格/Azure BLOB 設定為我的潛在客戶目的地，該如何檢視潛在客戶？** 
 

@@ -1,6 +1,6 @@
 ---
-title: Marketplace 獎勵-您的商業 marketplace 權益 |Azure
-description: Marketplace 報酬的設計是為了在您的特定成長階段支援您。
+title: Marketplace 獎勵-您的商業 marketplace 權益 |蔚藍
+description: Marketplace Rewards 的設計是為了在您的特定成長階段支援您。
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,18 +8,18 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 25a164fc8709d7c9f6249336ece34bd8a5378f23
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496010"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606751"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
-Marketplace 獎勵支援您在特定的成長階段，從認知活動開始，協助您取得第一位客戶。 當您透過商業 marketplace 成長時，會將新的權益解除鎖定，以協助您轉換客戶和關閉交易。
+Marketplace Rewards 在您的特定成長階段支援您，從認知活動開始，以協助您取得第一位客戶。 當您透過商業 marketplace 成長時，您可以將新的權益解除鎖定，其設計目的是要協助您轉換客戶並關閉交易。
 
-此程式會建立正面的意見反應迴圈：每個成長階段的權益可協助您進行下一個階段，讓您可以將企業拓展到 Microsoft 的客戶、Microsoft 的領域，以及利用商業 marketplace 作為您的平臺，透過 Microsoft 的管道。
+此程式會建立正面的意見反應迴圈：每個成長階段的權益都可協助您進行下一個階段，讓您可以利用 Microsoft 的現場來拓展業務給 Microsoft 客戶，並透過 Microsoft 的通路利用商業市場作為您的平臺。
 
 您的權益會視供應項目是[上市、試用或交易](../determine-your-listing-type.md#choose-a-call-to-action)而有所不同。
 
@@ -27,11 +27,11 @@ Marketplace 獎勵支援您在特定的成長階段，從認知活動開始，�
 
 若為交易合作夥伴，當您透過市集平台拓展開單銷售，就能在每一層級解鎖更多權益。
 
-在店面中發佈的最低需求是 MPNID，因此無論 MPN 專長認證狀態或合作夥伴類型為何，所有合作夥伴都可使用這些權益。 每位合作夥伴都能以平台的形式，透過市集拓展業務。
+在線上商店中發佈的最低需求是 MPNID，因此無論 MPN 專長認證狀態或合作夥伴類型為何，所有合作夥伴都可以使用這些權益。 每位合作夥伴都能以平台的形式，透過市集拓展業務。
 
 我們會協助您了解可供使用的資源及如何執行最佳做法，您也可以[自我檢查](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
 
-請在[這裡](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)檢查您的 Marketplace 獎勵方案資格。
+請在 [這裡](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)檢查您對 Marketplace Rewards 計畫的資格。
 
 開始使用的步驟很簡單：
 
@@ -47,10 +47,10 @@ Marketplace 獎勵支援您在特定的成長階段，從認知活動開始，�
 
 ## <a name="technical-benefits"></a>技術權益
 
-1. 您可以在雲端和混合式解決方案的售前、設計、部署和應用程式開發階段中，使用您的技術優勢來要求技術協助。 若要請求協助，請填寫要求表單，然後選取 [提交要求]。
+1. 您可以在雲端和混合式解決方案的售前、設計、部署和應用程式開發階段，使用您的技術權益來要求技術協助。 若要請求協助，請填寫要求表單，然後選取 [提交要求]。
 2. 當您解鎖這些權益時，我們會透過電子郵件分享如何利用 Azure 贊助權益。
 
 >[!NOTE]
->如果您的供應專案已上線超過四周，而且您未收到訊息，請檢查合作夥伴中心，以尋找貴組織擁有該供應專案的人員。 對方應已收到通知和後續步驟。 如果您無法判斷擁有者，或擁有者已離開貴公司，請在上開啟支援票證 https://aka.ms/marketplacepublishersupport 。
+>如果您的供應專案已上線超過四周，而且您尚未收到訊息，請簽入合作夥伴中心以找出您的組織擁有該供應專案的人員。 對方應已收到通知和後續步驟。 如果您無法判斷擁有者，或擁有者已離開您的公司，請開啟支援票證 https://aka.ms/marketplacepublishersupport 。
 
 隨著您在市集中增加供應項目，您可以使用的活動範圍也會擴展。 所有上市項目都會收到基本等級的最佳化建議和推廣，屬於資源和最佳做法自助電子郵件的一環。

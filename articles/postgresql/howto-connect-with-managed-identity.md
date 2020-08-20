@@ -6,22 +6,22 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: ec9e53ecaa95f6407a00c149abb6ed7e4a671d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 173633e16648bce262051947ec2bc9c1f61fbb9c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102288"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606772"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>使用受控識別連線到適用於 PostgreSQL 的 Azure 資料庫
 
-本文說明如何將使用者指派的身分識別用於 Azure 虛擬機器 (VM)，以存取適用於 PostgreSQL 的 Azure 資料庫伺服器。 受控服務身分識別由 Azure 自動管理，並可讓您驗證支援 Azure AD 驗證的服務，而不需要將認證插入程式碼中。 您會了解如何：
+本文說明如何將使用者指派的身分識別用於 Azure 虛擬機器 (VM)，以存取適用於 PostgreSQL 的 Azure 資料庫伺服器。 受控服務身分識別由 Azure 自動管理，並可讓您驗證支援 Azure AD 驗證的服務，而不需要將認證插入程式碼中。 
 
-> [!div class="checklist"]
-> * 將您的 VM 存取權授與適用於 PostgreSQL 的 Azure 資料庫伺服器
-> * 在資料庫中建立使用者，以代表 VM 使用者指派的身分識別
-> * 使用 VM 身分識別取得存取權杖，並使用其查詢適用於 PostgreSQL 的 Azure 資料庫伺服器
-> * 在 C# 範例應用程式中實作權杖擷取
+您會了解如何：
+- 將您的 VM 存取權授與適用於 PostgreSQL 的 Azure 資料庫伺服器
+- 在資料庫中建立使用者，以代表 VM 使用者指派的身分識別
+- 使用 VM 身分識別取得存取權杖，並使用其查詢適用於 PostgreSQL 的 Azure 資料庫伺服器
+- 在 C# 範例應用程式中實作權杖擷取
 
 ## <a name="prerequisites"></a>Prerequisites
 

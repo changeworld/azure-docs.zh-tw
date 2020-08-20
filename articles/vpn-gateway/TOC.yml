@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概觀
   items:
-    - name: 關於 VPN 閘道
+    - name: 什麼是 VPN 閘道？
       href: vpn-gateway-about-vpngateways.md
 - name: 教學課程
   items:

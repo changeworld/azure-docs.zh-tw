@@ -4,12 +4,12 @@ description: 了解如何使用 Azure Migrate 準備內部部署電腦以進行�
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: b92a26732f59235dac4c03f4e648d36dadd6c4ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8acbb867d98a547787e207c410d4e1a852aa68f3
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077976"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606825"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>準備內部部署電腦以移轉至 Azure
 
@@ -129,6 +129,7 @@ ms.locfileid: "87077976"
 **啟用 ssh** | 確定已啟用 ssh，而且 sshd 服務已設定為在重新開機時自動啟動。<br/><br/> 確定傳入的 ssh 連線要求未遭到 OS 防火牆或可編寫指令碼的規則封鎖。| 對所有版本 (上述版本除外) 進行手動啟用。
 
 下表摘要說明針對上列作業系統自動執行的步驟。
+
 
 | 動作                                      | 以代理程式為基礎的 VMware 移轉\- | 無代理程式的 VMware 移轉 | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|

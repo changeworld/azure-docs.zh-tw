@@ -13,61 +13,61 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: 83a5289e17243fc7d89dd463b10916fb73046947
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184987"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607016"
 ---
-# <a name="endorsed-linux-distributions-on-azure"></a>Azure 上背書的 Linux 散發套件
+# <a name="endorsed-linux-distributions-on-azure"></a>Azure 上經背書的 Linux 發行版本
 
-合作夥伴會在 Azure Marketplace 中提供 Linux 映像。 Microsoft 與各種 Linux 團體合作，將更多的類別新增至背書的通訊群組清單。 針對 Marketplace 中無法使用的散發套件，您可以隨時遵循[建立和上傳包含 linux 作業系統的虛擬硬碟](./create-upload-generic.md)中的指導方針，自備您自己的 linux。
+合作夥伴會在 Azure Marketplace 中提供 Linux 映射。 Microsoft 與各種 Linux 團體合作，在背書的通訊群組清單中新增更多的類別。 針對 Marketplace 中無法使用的散發套件，您可以遵循 [建立和上傳包含 linux 作業系統的虛擬硬碟](./create-upload-generic.md)上的指導方針，來自備您自己的 linux。
 
 ## <a name="supported-distributions-and-versions"></a>支援的發佈和版本
 
-下表列出 Azure 上支援的 Linux 散發套件和版本。 如需 Azure 中 Linux 和開放原始碼技術支援的詳細資訊，請參閱[Microsoft Azure 中的 linux 映射支援](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)。
+下表列出 Azure 上支援的 Linux 散發套件和版本。 如需詳細資訊，請參閱 [Microsoft Azure 中的 Linux 映射支援](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)。
 
-適用於 Hyper-V 和 Azure 的 Linux Integration Services (LIS) 驅動程式是核心模組，Microsoft 會直接提供給上游 Linux Kernel。 根據預設，有些 LIS 驅動程式會建置到發佈的核心。 以 Red Hat Enterprise (RHEL)/CentOS 作為基礎的較舊分佈可用在[適用於 Hyper-V 和 Azure 的 Linux 整合服務 4.2 版](https://www.microsoft.com/download/details.aspx?id=55106)作為個別下載。 如需關於 LIS 驅動程式的詳細資訊，請參閱 [Linux 核心需求](create-upload-generic.md#linux-kernel-requirements)。
+適用於 Hyper-V 和 Azure 的 Linux Integration Services (LIS) 驅動程式是核心模組，Microsoft 會直接提供給上游 Linux Kernel。 根據預設，有些 LIS 驅動程式會建置到發佈的核心。 以 Red Hat Enterprise (RHEL)/CentOS 作為基礎的較舊分佈可用在[適用於 Hyper-V 和 Azure 的 Linux 整合服務 4.2 版](https://www.microsoft.com/download/details.aspx?id=55106)作為個別下載。 如需詳細資訊，請參閱 [Linux 核心需求](create-upload-generic.md#linux-kernel-requirements)。
 
-Azure Linux 代理程式已預先安裝於 Azure Marketplace 映像上，而且通常可透過發佈的套件存放庫來取得。 您可以在 [GitHub](https://github.com/azure/walinuxagent)上找到原始程式碼。
+Azure Linux 代理程式已預先安裝在 Azure Marketplace 映射上，而且通常可從散發套件的套件存放庫中取得。 您可以在 [GitHub](https://github.com/azure/walinuxagent)上找到原始程式碼。
 
 | 散發 | 版本 | 驅動程式 | 代理程式 |
 | --- | --- | --- | --- |
-| 由 Rogue Wave 軟體 CentOS |CentOS 6.x、7.x、8。x |CentOS 6.3： [.lis 下載](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +：在核心中 |封裝[：在 "WALinuxAgent" 下的](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)存放庫中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
-| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS 現已于 2020 5 月26日[結束](https://coreos.com/os/eol/)。 |不再提供 | | |
+| 由 Rogue Wave 軟體 CentOS |CentOS 6.x、7.x、8。x |CentOS 6.3： [.lis 版下載](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +：在核心中 |封裝 [：在 "WALinuxAgent" 下的](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) 存放庫中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> CoreOS 的存留 [期即將結束](https://coreos.com/os/eol/) ，從2020月26日開始。 |無法再使用 | | |
 | Credativ 的 Debian |8.x、9.x |在核心中 |套件：在「waagent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
-|Flatcar 容器 Linux by Kinvolk| Stable、Edge| | |
-| Oracle Oracle Linux |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| 由 Red Hat Red Hat Enterprise Linux |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
-| Suse Linux Enterprise （依 SUSE） |適用于 SAP 11. x、12. x、15. x 的 SLES/SLES <br/> [SUSE 公用雲端映射生命週期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |在核心中 |套件：<p> 適用於 11：在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 儲存機制中<br>適用於 12：包含在 "Public Cloud" 模組中的 "python-azure-agent" 底下<br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+|依 Kinvolk Flatcar 容器 Linux| Stable、Edge| | |
+| 由 Oracle Oracle Linux |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| [Red Hat Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x、7.x、8.x |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| Suse Linux Enterprise by SUSE |SLES/SLES for SAP 11. x、12. x、6。x <br/> [SUSE Public Cloud 映射生命週期](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |在核心中 |套件：<p> 適用於 11：在 [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) 儲存機制中<br>適用於 12：包含在 "Public Cloud" 模組中的 "python-azure-agent" 底下<br/>原始程式碼：[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | 由 SUSE openSUSE |openSUSE Leap 15.x |在核心中 |封裝：在 "python-azure-agent" 下的[雲端：工具](https://build.opensuse.org/project/show/Cloud:Tools)儲存機制中 <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
-| 依標準的 Ubuntu |Ubuntu Server 和 Pro。 16. x、18. x、20. x<p>您可以在這裡找到有關 Ubuntu 12.04 和14.04 擴充支援的資訊： [Ubuntu 擴充安全性維護](https://www.ubuntu.com/esm)。 |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
+| 依標準的 Ubuntu |Ubuntu Server 和 Pro。 16. x、18. x、20. x<p>您可以在這裡找到 Ubuntu 12.04 和14.04 延伸支援的相關資訊： [Ubuntu 擴充安全性維護](https://www.ubuntu.com/esm)。 |在核心中 |套件：在「WALinuxAgent」下的儲存機制中  <br/>原始程式碼：[GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>映射更新步調
 
-Azure 要求經背書的 Linux 散發套件發行者定期以最新的修補程式和安全性修正程式更新其映射 Azure Marketplace，每季或更快的步調。 Azure Marketplace 中的已更新映射會自動提供給客戶，做為映射 SKU 的新版本。 有關如何尋找 Linux 映射的詳細資訊：[在 Azure Marketplace 中尋找 LINUX VM 映射](./cli-ps-findimage.md)。
+Azure 需要經背書之 Linux 散發套件的發行者定期以每季或更快的頻率，以最新的修補程式和安全性修正程式更新其 Azure Marketplace 的映射。 新版本的映射 SKU 會自動將 Marketplace 中的更新映射提供給客戶。 有關如何尋找 Linux 映射的詳細資訊： [在 Azure Marketplace 中尋找 LINUX VM 映射](./cli-ps-findimage.md)。
 
-## <a name="azure-tuned-kernels"></a>Azure 微調的核心
+## <a name="azure-tuned-kernels"></a>Azure 調整的核心
 
-Azure 與各種經背書的 Linux 散發套件密切合作，將其發佈至 Azure Marketplace 的映射優化。 此共同作業的其中一個層面是開發已針對 Azure 平臺優化的「微調」 Linux 核心，並以 Linux 散發套件的完整支援元件來提供。 Azure 微調的核心結合了新功能和效能改進，而且速度更快 (通常每季) 步調，相較于散發所提供的預設或一般核心。
+Azure 與各種背書的 Linux 散發套件密切合作，以將其發佈至 Azure Marketplace 的映射優化。 這項共同作業的其中一個層面是開發已針對 Azure 平臺優化的「微調」 Linux 核心，並以 Linux 散發套件的完整支援元件形式提供。 經過 Azure 調整的核心結合了新功能和效能改進，相較于可從散發套件取得的預設或一般核心，通常每季) 步調通常會有更快速的 (。
 
-在大部分情況下，您會發現這些核心已預先安裝在 Azure Marketplace 的預設映射中，因此客戶會立即獲得這些優化核心的優勢。 這些 Azure 微調核心的詳細資訊可在下列連結中找到：
+在大多數情況下，您會發現這些核心已預先安裝在 Azure Marketplace 的預設映射中，因此客戶會立即獲得這些優化核心的優點。 您可以在下列連結中找到這些 Azure 微調核心的詳細資訊：
 
-- [CentOS Azure 微調的核心-透過 CentOS 虛擬化 SIG 提供](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
-- [Debian 雲端核心-適用于 Azure 上的 Debian 10 和 Debian 9 "反向移植" 映射](https://wiki.debian.org/Cloud/MicrosoftAzure)
-- [SLES Azure 微調核心](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
-- [Ubuntu Azure 微調核心](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [CentOS 經 Azure 調整的核心-可透過 CentOS Virtualization SIG 取得](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+- [Debian Cloud Kernel-可在 Azure 上使用 Debian 10 和 Debian 9 "反向移植" 映射](https://wiki.debian.org/Cloud/MicrosoftAzure)
+- [SLES Azure 調整的核心](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+- [Ubuntu Azure 調整的核心](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 ## <a name="partners"></a>合作夥伴
 
 ### <a name="coreos"></a>CoreOS
 
-CoreOS 已排程為在2020的5月26日[結束生命週期](https://coreos.com/os/eol/)。
-Microsoft 有兩個 (2) CoreOS 使用者的遷移通路。
+CoreOS 已排程為 [生命週期的生命週期](https://coreos.com/os/eol/) ，2020 5 月26日結束。
+針對 CoreOS 使用者，Microsoft 有兩個 (2) 的遷移通道。
 
-- Flatcar by Kinvolk (查看「Flatcar Container Linux by Kinvolk」專案。 ) 
-- [Fedora 核心作業系統](https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-azure/) (客戶必須上傳自己的映射。 以下是) 的[遷移檔](https://docs.fedoraproject.org/en-US/fedora-coreos/migrate-cl/)。
+- 依 Kinvolk (的 Flatcar，請參閱「Flatcar 容器 Linux by Kinvolk」專案。 ) 
+- [Fedora 核心作業系統](https://docs.fedoraproject.org/en-US/fedora-coreos/provisioning-azure/) (客戶必須上傳自己的映射。 以下是) 的 [遷移檔](https://docs.fedoraproject.org/en-US/fedora-coreos/migrate-cl/) 。
 
 ### <a name="credativ"></a>Credativ
 
@@ -78,22 +78,22 @@ Credativ 是一家獨立的顧問暨服務公司，專長為使用免費的軟�
 ### <a name="kinvolk"></a>Kinvolk
 [https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
 
-Kinvolk 是 Flatcar 容器 Linux 背後的公司，針對容器化應用程式繼續進行最基本、不可變和自動更新的原始 CoreOS 願景。 最基本的散發版本是，Flatcar 只包含部署容器所需的套件。 它的不可變檔案系統保證一致性和安全性，而其自動更新功能可讓您隨時掌握最新的安全性修正程式。 
+Kinvolk 是 Flatcar 容器 Linux 後方的公司，針對容器化應用程式，繼續進行原始 CoreOS 願景，以獲得最基本、不可變和自動更新的基礎。 在基本發行版本中，Flatcar 只包含部署容器所需的套件。 它不可變的檔案系統可保證一致性和安全性，同時也可讓您隨時掌握最新的安全性修正程式，以保持最新狀態。 
 
-Flatcar Container Linux 是由 Kinvolk 的全球 Linux 團隊和容器技術專家所備份，其提供選擇性的商業支援訂用帳戶，其中包含全天候的回應、安全性和技術警示，以及專屬的 Azure 優化映射，包括長期支援通道。
+Flatcar Container Linux 是由 Kinvolk 的全球 Linux 和容器技術專家團隊所備份，這些專家會提供選擇性的商業支援訂用帳戶，其中包括全天候回應、安全性和技術警示，以及專屬的 Azure 優化映射（包括長期支援通道）。
 
 
 ### <a name="oracle"></a>Oracle
 
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
 
-Oracle 的策略是為公用和私用雲端提供廣泛的解決方案組合。 策略可讓客戶在 Oracle 雲端和其他雲端中部署 Oracle 軟體時能有所選擇且更有彈性。 Oracle 與 Microsoft 的合作關係，可讓客戶在 Microsoft 公用和私用雲端部署 Oracle 軟體，並安心提供 Oracle 的認證與支援。  Oracle 對於 Oracle 公用和私用雲端解決方案的承諾和投資不變。
+Oracle 的策略是為公用和私用雲端提供廣泛的解決方案組合。 策略可讓客戶在 Oracle 雲端和其他雲端中部署 Oracle 軟體時能有所選擇且更有彈性。 Oracle 與 Microsoft 的合作關係，可讓客戶在 Microsoft 公用和私人雲端中部署 Oracle 軟體，並信賴 Oracle 的認證和支援。  Oracle 對 Oracle 公用和私用雲端解決方案的承諾和投資沒有改變。
 
 ### <a name="red-hat"></a>Red Hat
 
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-Red Hat 是全球領先的開放原始碼解決方案提供者，可協助超過90% 的財富500公司解決商務挑戰、配合其 IT 與業務策略，並為未來的技術做好準備。 Red Hat 藉由透過開放的商務模型及可預測且價格實惠的訂閱模型，提供安全的解決方案來做到這點。
+Red Hat 是世界頂尖的開放原始碼解決方案提供者，可協助超過90% 的財富500公司解決商務挑戰、使 IT 和商務策略更一致，以及為技術未來做好準備。 Red Hat 透過開放式商務模型和經濟實惠且可預測的訂用帳戶模型，提供安全的解決方案來達成此結果。
 
 ### <a name="suse"></a>SUSE
 

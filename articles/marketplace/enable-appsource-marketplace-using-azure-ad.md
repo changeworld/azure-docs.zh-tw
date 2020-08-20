@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
-ms.openlocfilehash: 4c700a61de80968b17585faf92e268fef8d86f0e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323259"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607415"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>整合您的商業市集清單與 Azure Active Directory
 
@@ -20,7 +20,7 @@ ms.locfileid: "87323259"
 
 ## <a name="azure-ad-benefits"></a>Azure AD 的優點
 
-Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜尋店面清單目錄。 這些動作需要客戶登入產品。 Azure DNS 整合提供下列優點：
+Microsoft AppSource 與 Azure Marketplace 客戶使用產品內體驗來搜尋線上商店清單目錄。 這些動作需要客戶登入產品。 Azure DNS 整合提供下列優點：
 
 - 更快速的業務開發和最佳化客戶體驗
 - 數百萬企業使用者適用的單一登入 (SSO)
@@ -31,20 +31,20 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 
 各種商業市集[清單選項和供應項目類型](determine-your-listing-type.md)對於 Azure AD 實作有不同的需求。 如需詳細資訊，請參閱下表。
 
-| 供應項目類型    | 需要與我聯繫的 Azure AD SSO 嗎？  | 試用版需要 Azure AD SSO 嗎？ | 試用產品需要 Azure AD SSO 嗎？  | 交易需要 Azure AD SSO |
+| 供應項目類型    | 需要 Azure AD SSO 才能聯絡我嗎？  | 試用版需要 Azure AD SSO 嗎？ | 測試磁片需要 Azure AD SSO 嗎？  | 交易需要 Azure AD SSO |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
 | 虛擬機器 | N/A | 否 | 否 | 否 |
-| Azure 應用程式 (解決方案範本)  | 不適用 | N/A | N/A | N/A |
-| 受管理的應用程式  | 不適用 | N/A | N/A | 否 |
+| Azure 應用程式 (解決方案範本)  | N/A | N/A | N/A | N/A |
+| 受管理的應用程式  | N/A | N/A | N/A | 否 |
 | SaaS  | 否 | 是 | 是 | 是 |
-| 容器  | 不適用 | N/A | N/A | 否 |
-| 諮詢服務  | 否 | 不適用 | N/A | N/A |
+| 容器  | N/A | N/A | N/A | 否 |
+| 諮詢服務  | 否 | N/A | N/A | N/A |
 
-如需有關 SaaS 技術需求的詳細資訊，請參閱在[商業 marketplace 中 Azure AD 和 Transactable SaaS](./azure-ad-saas.md)供應專案。
+如需 SaaS 技術需求的詳細資訊，請參閱 [在商業市場中 Azure AD 和可交易 SaaS](./azure-ad-saas.md)供應專案。
 
 ## <a name="azure-ad-integration"></a>Azure AD 整合
 
-- 如需如何整合 transactable software as a service （SaaS）供應專案 Azure AD 的詳細資訊，請參閱[商用 marketplace 中的 Azure AD 和 Transactable SaaS](./azure-ad-saas.md)供應專案。
+- 如需有關如何整合可交易 software as a service (SaaS) 供應專案 Azure AD 的詳細資訊，請參閱在 [商業市場中 Azure AD 和可交易 saas](./azure-ad-saas.md)供應專案。
 - 如需如何將 Azure AD 整合到您的清單以啟用單一登入的相關資訊，請參閱[開發人員適用的 Azure Active Directory](../active-directory/develop/index.yml)。
 - 如需關於 Azure AD 單一登入的詳細資料，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../active-directory/manage-apps/what-is-single-sign-on.md)。
 
@@ -56,8 +56,8 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 
 當您使用 Azure AD 在應用程式或試用版清單中啟用單鍵驗證時，您可以：
 
-- 簡化客戶從 Marketplace 到試用版清單的體驗。
-- 即使將使用者從 Marketplace 重新導向到您的網域或試用版環境，仍讓使用者感覺是在產品內部。
+- 簡化從商用 marketplace 到試用版清單的客戶體驗。
+- 即使將使用者從商用 marketplace 重新導向至您的網域或試用版環境，仍可維持產品內體驗的感覺。
 - 由於無須進行任何額外的登入步驟，因此可降低使用者在重新導向時放棄的可能性。
 - 減少眾多 Azure AD 使用者的部署障礙。
 
@@ -67,12 +67,12 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 
 使用 Azure AD 來支援下列動作：
 
-- 在其中一個 Marketplace 店面中註冊您的應用程式。 如需詳細資訊，請檢視[應用程式註冊](../active-directory/develop/quickstart-register-app.md) 或 [AppSource 認證](../active-directory/azuread-dev/howto-get-appsource-certified.md)。
+- 在其中一個商業市線上商店註冊您的應用程式。 如需詳細資訊，請檢視[應用程式註冊](../active-directory/develop/quickstart-register-app.md) 或 [AppSource 認證](../active-directory/azuread-dev/howto-get-appsource-certified.md)。
 - 在 Azure AD 中啟用多租用戶支援功能，以獲得單鍵試用體驗。
 
 如果您不熟悉 Azure AD 同盟單一登入的用法，請採取下列步驟：
 
-1. 在 Marketplace 中註冊您的應用程式。
+1. 在商業 marketplace 中註冊您的應用程式。
 1. 使用 [OAuth 2.0](../active-directory/azuread-dev/v1-protocols-oauth-code.md) 或 [OpenID Connect](../active-directory/azuread-dev/v1-protocols-openid-connect-code.md) 來開發搭配 Azure AD 的 SSO。
 1. 在 Azure AD 中啟用多租用戶支援功能，以提供單鍵試用體驗。
 
@@ -89,7 +89,7 @@ Microsoft AppSource 和 Azure Marketplace 客戶會使用產品內體驗來搜�
 
 如果您還沒有這麼做，請 
 
-- [了解](https://azuremarketplace.microsoft.com/sell)市集。
+- [瞭解](https://azuremarketplace.microsoft.com/sell) 商用 marketplace。
 
 若要在合作夥伴中心註冊，請開始建立新供應項目或使用現有供應項目：
 

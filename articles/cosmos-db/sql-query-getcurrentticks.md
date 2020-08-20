@@ -1,22 +1,22 @@
 ---
 title: Azure Cosmos DB 查詢語言中的 GetCurrentTicks
-description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 GetCurrentTicks。
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數 GetCurrentTicks。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 6b3cd5ab5849c33172e4a629c79fb792b82f1255
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 2ca76d75edba6688dbe93f11a51a0ad67942677a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227072"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606939"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB) 
 
-傳回目前的日期和時間（以刻度為單位）。
+傳回自00:00:00 星期四（1月1970）以來經過的 100-毫微秒滴答數。
   
 ## <a name="syntax"></a>語法
   
@@ -26,15 +26,17 @@ GetCurrentTicks ()
 
 ## <a name="return-types"></a>傳回類型
 
-傳回正整數值。
+傳回已簽署的數值，這是自 Unix epoch 以來經過的目前 100-毫微秒滴答數。 換句話說，GetCurrentTicks 會傳回自00:00:00 星期四（1月1970）以來經過的100毫微秒滴答數。
 
 ## <a name="remarks"></a>備註
 
-這個系統函數不會使用索引。
+GetCurrentTicks ( # A1 是不具決定性的函數。 傳回的結果為 UTC (國際標準時間) 。
+
+這個系統函數將不會使用索引。
 
 ## <a name="examples"></a>範例
 
-以下範例會傳回目前的時間（以刻度為單位）：
+以下範例會傳回目前的時間，以刻度測量：
 
 ```sql
 SELECT GetCurrentTicks() AS CurrentTimeInTicks

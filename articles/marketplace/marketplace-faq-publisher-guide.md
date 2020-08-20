@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036567"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607324"
 ---
-# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>有關 Microsoft 商業 marketplace 的常見問題
+# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>關於 Microsoft 商業 marketplace 的常見問題
 
 本文將回答商業市集的常見問題。
 
@@ -46,7 +46,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業市集是否有清單費用嗎？
 
-否，可以免費在我們的商業市集中發佈供應項目。 我們會以交易費用的形式保留少量的銷售百分比，並將其投資在市集獎勵計畫、平台創新和商業市集作業中。 [AZURE IP 共同銷售](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)受到激勵供應專案的交易費用已降低。
+否，可以免費在我們的商業市集中發佈供應項目。 我們會以交易費用的形式保留少量的銷售百分比，並將其投資在市集獎勵計畫、平台創新和商業市集作業中。 [AZURE IP 共同銷售](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)受到激勵優惠會減少此交易費用。
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>如何註冊為 Microsoft 商業市集中的發行者？
 
@@ -60,7 +60,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 - 對於您自動提供的解決方案，無論它們是付費、自備授權 (BYOL) 或免費，都會激勵客戶*立即取得*。
 - 支援試用產品 (示範) 的供應項目會要求客戶*試用產品*。 
-- 軟體即服務 (SaaS) 供應專案，可在商業市場外提供試用版，例如*免費試用版*。
+- 軟體即服務 (SaaS) 供應專案，可在商業市場外部提供試用版，例如 *免費試用版*。
 - 簡單清單可讓客戶要求「與我連絡」。
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>如何為商業市集建立供應項目？
@@ -77,7 +77,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>我的組織可以從商業市集取得哪些分析？
 
-我們會在商業市場中提供您供應專案的報告。 若要存取客戶、訂單、商店業務開發等等的相關資料，請前往[合作夥伴中心商業市集的分析](partner-center-portal/analytics.md)。
+我們會針對您在商業市場中提供的供應專案提供報告。 若要存取客戶、訂單、商店業務開發等等的相關資料，請前往[合作夥伴中心商業市集的分析](partner-center-portal/analytics.md)。
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Microsoft 與我客戶之間的關係為何？
 
@@ -120,11 +120,11 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 在發佈過程中，提供您預覽供應項目的存取權。 只有您在 [預覽] 索引標籤中指定的使用者才能存取供應項目，而且任何其他人都無法檢視此供應項目。 您可以購買預覽並測試程序，但會根據您的供應項目設定向您收取完整金額。
 
-若要以非常低廉的價格完成購買，建議您發佈私人方案，讓您可以單獨檢視，並以您可以接受的價格做為測試成本。 支援 $0.00 的價格，但不會反映完整體驗，只有付費訂用帳戶才能如此反映，因此我們建議您將價格設定在 $1.00。
+若要以低廉的價格完成購買，建議您發佈一份私人方案，並以您可以接受的價格作為測試成本。 支援 $0.00 的價格，但不會反映完整體驗，只有付費訂用帳戶才能如此反映，因此我們建議您將價格設定在 $1.00。
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>什麼是商業市集的潛在客戶，我該怎麼處理他們？
 
-當客戶在 Microsoft AppSource 和 Azure Marketplace 店面上使用您的供應項目時，就會擷取資訊。 在客戶展現出足夠的興趣之後，就會建立潛在客戶，並將商機傳送至您選擇的系統。 成功使用商用 marketplace 的發行者通常會尋求潛在客戶、開發關係，並將重點放在交易中。
+當客戶在 Microsoft AppSource 上使用您的供應專案，並 Azure Marketplace 線上商店時，就會捕捉資訊。 在客戶展現出足夠的興趣之後，就會建立潛在客戶，並將商機傳送至您選擇的系統。 成功使用商用 marketplace 的發行者通常會採用潛在客戶、開發關聯性，並將感興趣的交易轉變成利益。
 
 如需詳細資訊，請參閱[來自您市集供應項目的潛在客戶](partner-center-portal/commercial-marketplace-get-customer-leads.md)。
 
@@ -140,7 +140,7 @@ Azure Marketplace 包括建置在 Azure 或在 Azure 訂用帳戶內使用的 IT
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>我的供應項目可以同時出現在 Microsoft AppSource 和 Azure Marketplace 嗎？
 
-Microsoft AppSource 是商務和產業解決方案的目的地，而 Azure Marketplace 則是針對 IT 和開發人員解決方案所設計。 根據您在建立供應項目期間選取的類別和產業，每個店面都會提供供應項目。 在極少數的情況下，此供應項目會與這兩個店面的使用者有關，這時其可以同時出現在兩者中。
+Microsoft AppSource 是商務和產業解決方案的目的地，而 Azure Marketplace 則是針對 IT 和開發人員解決方案所設計。 每個線上商店都有提供供應專案，這些供應專案是根據您在供應專案建立期間選取的類別和產業。 在極少數的情況下，供應專案與兩個線上商店的使用者有關，它可能會出現在兩者中。
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>什麼是雲端解決方案提供者計畫？
 
@@ -274,18 +274,18 @@ Microsoft AppSource 支援信用卡付款。 Azure Marketplace 支援信用卡�
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>多常透過商業市集收到銷售的支出？
 
-支出每月發生一次。 如需付款排程的詳細資料、在合作夥伴中心尋找即將推出的支出，以及如何處理客戶的非付款，請參閱[支出原則詳細資料](partner-center-portal/payout-policy-details.md)。
+支出每月發生一次。 如需付款排程的詳細資訊、尋找合作夥伴中心中即將推出的支出，以及我們如何處理客戶的非款項，請參閱付款 [原則詳細資料](partner-center-portal/payout-policy-details.md)。
 
-- 對於客戶使用 Enterprise 合約的交易，支出會在下一期的付款週期中，于客戶發票後30天內發行。 
-- 對於客戶使用信用卡的交易，我們會在收到付款以確保資金清楚，而且沒有任何退款或可疑的詐騙後，有30天的額外申請期間。
+- 對於客戶使用 Enterprise 合約的交易，支出會在下一期的客戶發票30天內發出。 
+- 若為客戶使用信用卡的交易，在我們收到付款之後，會有額外的30天的申請期，以確保資金清楚，而且沒有任何退款或疑似詐騙。
 
-只有在 sales 已達到最小結合值 $50.00 時，才會發出支出。
+只有當銷售達到最小合併值 $50.00 時，才會發出支出。
 
 如需詳細資訊，請參閱[付款閾值、方法和時間範圍](partner-center-portal/payment-thresholds-methods-timeframes.md)。
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>在哪些國家/地區中，可代表我管理稅賦？
 
-客戶可以從世界各地的商業 marketplace 尋找解決方案，並在許多位置管理稅金。 
+客戶可以從全球各地的商業市場尋找解決方案，並在許多地點管理稅金。 
 
 若要檢閱完整位置清單，請前往[商業市集發行者的稅賦詳細資料](partner-center-portal/tax-details-paid-transactions.md)。
 

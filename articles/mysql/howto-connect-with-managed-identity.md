@@ -6,25 +6,26 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: af63ef6f33cc0e3dfe7f186ad2e36b854a728c6b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3c13d37e62da8abfa860d5fdbdf186302519c93e
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120571"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606491"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>使用受控識別連線到適用於 MySQL 的 Azure 資料庫
 
-此文章說明如何將使用者指派的身分識別用於 Azure 虛擬機器 (VM)，以存取適用於 MySQL 的 Azure 資料庫伺服器。 受控服務身分識別由 Azure 自動管理，並可讓您驗證支援 Azure AD 驗證的服務，而不需要將認證插入程式碼中。 您會了解如何：
+此文章說明如何將使用者指派的身分識別用於 Azure 虛擬機器 (VM)，以存取適用於 MySQL 的 Azure 資料庫伺服器。 受控服務身分識別由 Azure 自動管理，並可讓您驗證支援 Azure AD 驗證的服務，而不需要將認證插入程式碼中。 
 
-> [!div class="checklist"]
-> * 將您的 VM 存取權授與適用於 MySQL 的 Azure 資料庫伺服器
-> * 在資料庫中建立使用者，以代表 VM 使用者指派的身分識別
-> * 使用 VM 身分識別取得存取權杖，並使用其查詢適用於 MySQL 的 Azure 資料庫伺服器
-> * 在 C# 範例應用程式中實作權杖擷取
+您會了解如何：
+
+- 將您的 VM 存取權授與適用於 MySQL 的 Azure 資料庫伺服器
+- 在資料庫中建立使用者，以代表 VM 使用者指派的身分識別
+- 使用 VM 身分識別取得存取權杖，並使用其查詢適用於 MySQL 的 Azure 資料庫伺服器
+- 在 C# 範例應用程式中實作權杖擷取
 
 > [!IMPORTANT]
-> 使用受控識別進行連線僅適用于 MySQL 5.7 和更新版本。
+> 使用受控識別進行連線時，僅適用于 MySQL 5.7 和更新版本。
 
 ## <a name="prerequisites"></a>Prerequisites
 

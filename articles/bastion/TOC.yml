@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概觀
   items:
-    - name: 關於 Azure Bastion
+    - name: 何謂 Azure Bastion？
       href: bastion-overview.md
 - name: 快速入門
   items:

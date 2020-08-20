@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/15/2020
-ms.openlocfilehash: 0b707b2aed68359f8c04f6cd6bee6c95b495178b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 168d343ea4582d8c19a577cedadf6f1bc3c39971
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119475"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607369"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模組
 
@@ -38,9 +38,9 @@ IoT Edge 模組供應項目類型是一種在 IoT Edge 裝置上執行的特定�
 
 ## <a name="publishing-your-iot-edge-module"></a>發佈您的 IoT Edge 模組
 
-**選取正確的店面**
+**選取正確的線上商店**
 
-IoT Edge 模組只會發佈至 Azure Marketplace，AppSource 則不適用。  如需有關各店面之差異和目標對象的詳細資訊，請參閱[決定您解決方案的發佈選項](determine-your-listing-type.md)。
+IoT Edge 模組只會發佈至 Azure Marketplace，AppSource 則不適用。  如需跨線上商店的差異與目標物件的詳細資訊，請參閱 [決定您的發佈選項](determine-your-listing-type.md)。
  
 **帳單選項**
 
@@ -73,17 +73,9 @@ Marketplace 目前針對 IoT Edge 模組支援 [免費] 和 [自備授權 (BYOL)
 
 [準備 IoT Edge 模組技術資產](./partner-center-portal/create-iot-edge-module-asset.md)詳細說明了 IoT Edge 模組的主要技術需求，以便讓該模組通過認證並發佈於 Azure Marketplace 中。
 
-## <a name="documentation-and-resources"></a>文件和資源
-
-[建立 IoT Edge 模組供應項目](./partner-center-portal/azure-iot-edge-module-creation.md) - 在合作夥伴中心發佈新 IoT Edge 模組供應項目的步驟。
-
 ## <a name="next-steps"></a>後續步驟
 
-如果您還沒有這麼做，請
-
-- [了解](https://azuremarketplace.microsoft.com/sell)市集。
-
-若要在合作夥伴中心註冊，並開始建立新供應項目或使用現有供應項目，
-
+- [瞭解](https://azuremarketplace.microsoft.com/sell) 商用 marketplace。
+- [在合作夥伴中心中建立 IoT Edge 模組供應專案]。
 - 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)，以建立或完成您的供應項目。
 - 如需如何發佈 IoT Edge 模組供應項目的詳細資訊，請參閱[建立 IoT Edge 模組供應項目](./partner-center-portal/azure-iot-edge-module-creation.md)。
