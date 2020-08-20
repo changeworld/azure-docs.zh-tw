@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 666f84da8f0999268b09dfd06ff5b3fe21bbef96
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82554982cd55b6c5fb2b96b2752b00401cb896d8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525563"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653625"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>將 Lsv2 系列虛擬機器上的效能最佳化
+# <a name="optimize-performance-on-the-lsv2-series-windows-virtual-machines"></a>優化 Lsv2 系列 Windows 虛擬機器的效能
 
 Lsv2 系列虛擬機器支援各種不同的工作負載，其在各種應用程式和產業的本機儲存體上需要高 I/O 和輸送量。  Lsv2 系列適用於巨量資料、SQL、NoSQL 資料庫、資料倉儲和大型交易資料庫，包括 Cassandra、MongoDB、Cloudera 和 Redis。
 
@@ -75,7 +75,7 @@ Lsv2 系列 VM 會使用以 Zen 微架構為基礎的 AMD EYPC™ 伺服器處�
 - VM 會變得狀況不良，而且由於硬體問題而必須對另一個節點進行服務修復。
 - 需要將 VM 重新配置給另一部主機以進行服務的少數計劃性維護作業。
 
-若要深入了解在本機儲存體中備份資料的選項，請參閱 [Azure IaaS 磁碟的備份和災害復原](backup-and-disaster-recovery-for-azure-iaas-disks.md)。
+若要深入了解在本機儲存體中備份資料的選項，請參閱 [Azure IaaS 磁碟的備份和災害復原](../backup-and-disaster-recovery-for-azure-iaas-disks.md)。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 

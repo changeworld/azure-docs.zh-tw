@@ -3,18 +3,18 @@ title: 使用儲存體總管將 VHD 檔案上傳至 Azure DevTest Labs
 description: 使用 Microsoft Azure 儲存體總管將 VHD 檔案上傳到實驗室的儲存體帳戶
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ccdf27488147bc4840d1e505ba2761bf328d6a32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480757"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654509"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 儲存體總管將 VHD 檔案上傳到實驗室的儲存體帳戶
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-在 Azure DevTest Labs 中，可以使用 VHD 檔案來建立自訂映像，這些映像可用來佈建虛擬機器。 本文說明如何使用 [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md)將 VHD 檔案上傳到實驗室的儲存體帳戶。 在您上傳 VHD 檔案之後，[後續步驟](#next-steps)一節會列出一些說明如何從所上傳的 VHD 檔案建立自訂映像的文章。 如需 Azure 中磁碟和 VHD 的詳細資訊，請參閱[受控磁碟簡介](../virtual-machines/linux/managed-disks-overview.md)
+在 Azure DevTest Labs 中，可以使用 VHD 檔案來建立自訂映像，這些映像可用來佈建虛擬機器。 本文說明如何使用 [Microsoft Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md)將 VHD 檔案上傳到實驗室的儲存體帳戶。 在您上傳 VHD 檔案之後，[後續步驟](#next-steps)一節會列出一些說明如何從所上傳的 VHD 檔案建立自訂映像的文章。 如需 Azure 中磁碟和 VHD 的詳細資訊，請參閱[受控磁碟簡介](../virtual-machines/managed-disks-overview.md)
 
 ## <a name="step-by-step-instructions"></a>逐步指示
 
@@ -26,7 +26,7 @@ ms.locfileid: "85480757"
 
     1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
     
-    1. 選取 [**所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
+    1. 選取 [ **所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
     
     1. 從實驗室清單中，選取所需的實驗室。  
     
@@ -34,7 +34,7 @@ ms.locfileid: "85480757"
     
     1. 在實驗室的 [組態]**** 刀鋒視窗上，選取 [自訂映像 (VHD)]****。
     
-    1. 在 [**自訂映射**] 分頁上，選取 [ **+ 新增**]。 
+    1. 在 [ **自訂映射** ] 分頁上，選取 [ **+ 新增**]。 
     
     1. 在 [自訂映像]**** 刀鋒視窗上，選取 [VHD]****。
     
@@ -80,7 +80,7 @@ ms.locfileid: "85480757"
 
     1. 展開實驗室的儲存體帳戶節點，以顯示 [Blob 容器]****、[檔案共用]****、[佇列]**** 和 [資料表]**** 的節點。
     
-    1. 展開 [Blob 容器]**** 節點。
+    1. 展開 [Blob 容器] 節點。
     
     1. 選取上傳 Blob 容器以在右窗格中顯示其內容。
         

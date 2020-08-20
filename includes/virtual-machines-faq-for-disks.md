@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: efec7656675b649d365a479c184de06a67d33db0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5994e9741340c6fef662f7037efa142c5684b6cb
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544947"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655289"
 ---
 此文章將回答有關 Azure 受控磁碟和 Azure 進階 SSD 磁碟的一些常見問題。
 
@@ -21,7 +21,7 @@ ms.locfileid: "86544947"
 
 **何謂 Azure 受控磁碟？**
 
-受控磁碟是可以為您管理儲存體帳戶而簡化 Azure IaaS VM 磁碟管理的一項功能。 如需詳細資訊，請參閱[受控磁碟概觀](../articles/virtual-machines/windows/managed-disks-overview.md)。
+受控磁碟是可以為您管理儲存體帳戶而簡化 Azure IaaS VM 磁碟管理的一項功能。 如需詳細資訊，請參閱[受控磁碟概觀](../articles/virtual-machines/managed-disks-overview.md)。
 
 **如果我從現有的 VHD (大小為 80 GB) 建立標準受控磁碟，需要多少費用？**
 
@@ -95,7 +95,7 @@ ms.locfileid: "86544947"
 
 是，受控磁碟和非受控磁碟都受到支援。 我們建議您使用受控磁碟來處理新的工作負載，並將您目前的工作負載移轉至受控磁碟。
 
-**我可以在相同的 VM 上共置非受控和受控磁片嗎？**
+**是否可以在相同的 VM 上共置非受控和受控磁片？**
 
 否。
 
@@ -166,11 +166,11 @@ Azure 磁碟保留是針對特定區域和 SKU (例如美國東部 2 中的 P30)
 
 **針對非受控磁碟或分頁 blob，是否支援共用磁碟功能？**
 
-否，只有 ultra 磁片和 premium SSD 受控磁片才支援。
+否，僅支援 ultra 磁片和 premium SSD 受控磁片。
 
 **哪些區域支援共用磁碟？**
 
-如需區域資訊，請參閱我們的[概念性文章](../articles/virtual-machines/linux/disks-shared.md)。
+如需區域資訊，請參閱我們的 [概念性文章](../articles/virtual-machines/linux/disks-shared.md)。
 
 **可使用共用磁碟作為 OS 磁碟嗎？**
 
@@ -178,11 +178,11 @@ Azure 磁碟保留是針對特定區域和 SKU (例如美國東部 2 中的 P30)
 
 **哪些磁碟大小支援共用磁碟？**
 
-如需支援的大小，請參閱我們的[概念性文章](../articles/virtual-machines/linux/disks-shared.md)。
+如需支援的大小，請參閱我們的 [概念性文章](../articles/virtual-machines/linux/disks-shared.md)。
 
 **如果我有現有的磁片，可以在其上啟用共用磁片嗎？**
 
-使用 API 版本 2019-07-01 或更高版本建立的所有受控磁碟都可以啟用共用磁碟。 若要這樣做，則必須將磁碟從其連結的所有 VM 卸載。 接下來，編輯磁片上的**maxShares**屬性。
+使用 API 版本 2019-07-01 或更高版本建立的所有受控磁碟都可以啟用共用磁碟。 若要這樣做，則必須將磁碟從其連結的所有 VM 卸載。 接下來，編輯磁片上的 **maxShares** 屬性。
 
 **如果不再想要以共用模式使用磁碟，該如何加以停用？**
 
@@ -198,7 +198,7 @@ Azure 磁碟保留是針對特定區域和 SKU (例如美國東部 2 中的 P30)
 
 **可為已啟用共用磁碟的磁碟啟用主機快取嗎？**
 
-唯一支援的主機快取選項為 [**無**]。
+唯一支援的主機快取選項為 **None**。
 
 ## <a name="ultra-disks"></a>Ultra 磁碟
 
@@ -206,13 +206,13 @@ Azure 磁碟保留是針對特定區域和 SKU (例如美國東部 2 中的 P30)
 如果不確定要如何設定磁碟輸送量，則建議先從假設 IO 大小為 16 KiB 開始，並在監視應用程式時從該處調整效能。 公式為：輸送量 (以 MBps 為單位) = IOPS 數目 * 16 / 1000。
 
 **我將磁碟設定為 40000 IOPS，但只顯示了 12800 IOPS，為什麼看不到磁碟的效能？**
-除了磁碟節流之外，還有在 VM 層級所實施的 IO 節流。 請確定您使用的 VM 大小可支援磁片上所設定的層級。 如需有關 VM 所實施 IO 限制的詳細資料，請參閱 [Azure 中 Windows 虛擬機器的大小](../articles/virtual-machines/windows/sizes.md)。
+除了磁碟節流之外，還有在 VM 層級所實施的 IO 節流。 確定您使用的 VM 大小可支援在您的磁片上設定的層級。 如需有關 VM 所實施 IO 限制的詳細資料，請參閱 [Azure 中 Windows 虛擬機器的大小](../articles/virtual-machines/windows/sizes.md)。
 
 **可在 Ultra 磁碟上使用快取層級嗎？**
-不可以，Ultra 磁碟不支援其他磁碟類型支援的不同快取方法。 將磁碟快取設定為 [**無**]。
+不可以，Ultra 磁碟不支援其他磁碟類型支援的不同快取方法。 將磁碟快取設定為 [ **無**]。
 
 **可將 Ultra 磁碟連結至現有 VM 嗎？**
-可能的話，VM 必須位於支援 Ultra 磁碟的區域和可用性區域配對中。 如需詳細資料，請參閱[開始使用 Ultra 磁碟](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md)。
+可能的話，VM 必須位於支援 Ultra 磁碟的區域和可用性區域配對中。 如需詳細資料，請參閱[開始使用 Ultra 磁碟](../articles/virtual-machines/disks-enable-ultra-ssd.md)。
 
 **可使用 Ultra 磁碟作為 VM 的 OS 磁碟嗎？**
 不可以，Ultra 磁碟僅支援作為資料磁碟，且僅支援作為 4K 原生磁碟。
@@ -452,39 +452,39 @@ Azure 備份支援的最大磁碟大小為 32 TiB (4 TiB 用於加密磁碟)。 
 
 **是否支援在所在磁碟大小上啟用主機快取？**
 
-小於 4 TiB 的磁片大小支援主機快取（**唯讀**和**讀取/寫入**）。 這表示任何布建到 4095 GiB 的磁片都可以利用主機快取。 對於大於或等於 4096 GiB 的磁片大小，不支援主機快取。 例如，布建于 4095 GiB 的 P50 premium 磁片可以利用主機快取，而布建于 4096 GiB 的 P50 磁片則無法利用主機快取。 建議您利用快取較小型磁碟大小的方式，以便您透過快取到 VM 的資料增進效能。
+主機快取 (**ReadOnly** 和 **讀取/寫入**) 在小於 4 TiB 的磁片大小上受到支援。 這表示任何布建至 4095 GiB 的磁片都可以利用主機快取。 磁片大小不支援大於或等於 4096 GiB 的主機快取。 例如，在 4095 GiB 布建的 P50 premium 磁片可以利用主機快取，而在 4096 GiB 布建的 P50 磁片無法利用主機快取。 建議您利用快取較小型磁碟大小的方式，以便您透過快取到 VM 的資料增進效能。
 
-## <a name="private-links-for-securely-exporting-and-importing-managed-disks"></a>可安全匯出和匯入受控磁碟的私人連結
+## <a name="private-links-for-securely-exporting-and-importing-managed-disks"></a>安全匯出和匯入受控磁碟的私人連結
 
-**使用私人連結匯出和匯入受控磁碟的優點為何？**
+**使用私用連結來匯出和匯入受控磁碟有何好處？**
 
-您可以利用私人連結，限制只能從您的 Azure 虛擬網路匯出和匯入受控磁碟。 
+您可以利用私用連結來限制只從 Azure 虛擬網路進行匯出和匯入受控磁碟。 
 
 **我可以確保只能透過私人連結匯出或匯入磁片嗎？**
 
-您必須將 `DiskAccessId` 屬性設定為磁片存取物件的實例，同時將 NetworkAccessPolicy 屬性設定為 `AllowPrivate` 。
+您必須將 `DiskAccessId` 屬性設定為磁片存取物件的實例，同時也將 NetworkAccessPolicy 屬性設定為 `AllowPrivate` 。
 
 **我可以將多個虛擬網路連結到相同的磁片存取物件嗎？**
 
 否。 目前，您只能將磁片存取物件連結至一個虛擬網路。
 
-**我可以將虛擬網路連結到另一個訂用帳戶中的磁片存取物件嗎？**
+**我可以將虛擬網路連結至另一個訂用帳戶中的磁片存取物件嗎？**
 
 否。 目前，您可以將磁片存取物件連結至相同訂用帳戶中的虛擬網路。
 
-**我可以將虛擬網路連結到另一個訂用帳戶中的磁片存取物件嗎？**
+**我可以將虛擬網路連結至另一個訂用帳戶中的磁片存取物件嗎？**
 
 否。 目前，您可以將磁片存取物件連結至相同訂用帳戶中的虛擬網路。
 
-**有多少使用相同磁片存取物件的匯出或匯入會同時發生？**
+**使用相同磁片存取物件的匯出或匯入次數可能會同時發生？**
 
 5
 
-**我可以使用磁片/快照集的 SAS URI，在與該磁片相關聯之私人端點的子網中，下載相同子網中 VM 的基礎 VHD 嗎？**
+**我可以使用磁片/快照集的 SAS URI，將 VM 的基礎 VHD 下載為與該磁片相關聯之私人端點的子網嗎？**
 
 是。
 
-**我可以使用磁片/快照集的 SAS URI 來下載 VM 的基礎 VHD，而不是在與該磁片相關聯之私人端點的子網中嗎？**
+**我可以使用磁片/快照集的 SAS URI，將不在相同子網中的 VM 基礎 VHD 下載為與該磁片沒有關聯之私人端點的子網嗎？**
 
 否。
 

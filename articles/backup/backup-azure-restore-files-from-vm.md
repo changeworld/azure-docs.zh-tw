@@ -4,12 +4,12 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611835"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654152"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 
@@ -398,7 +398,7 @@ mount [RAID Disk Path] [/mountpath]
 
 任何檔案存取控制清單 (ACL) 存在於父/備份 VM 中，也會保留在裝載的檔案系統中。
 
-此指令碼會對復原點提供唯讀存取權，且只在 12 小時內有效。 如果您想要更早移除存取權，請登入 Azure 入口網站/PowerShell/CLI，並針對該特定復原點執行**卸載磁碟**。 此指令碼將會立即失效。
+此指令碼會對復原點提供唯讀存取權，且只在 12 小時內有效。 如果您想要移除先前的存取權，請登入 Azure 入口網站/PowerShell/CLI，並針對該特定復原點執行 **卸載磁片** 。 此指令碼將會立即失效。
 
 ## <a name="next-steps"></a>後續步驟
 

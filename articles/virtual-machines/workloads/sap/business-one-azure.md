@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831102"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654645"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虛擬機器上的 SAP Business One
 本文提供在 Azure 虛擬機器上部署 SAP Business One 的指引。 本文無法取代 SAP Business One 的安裝文件。 本文應涵蓋在 Azure 基礎結構上執行 Business One 應用程式的基本規劃與部署指引。
@@ -77,7 +77,7 @@ Business One 是兩層式的應用程式：
 
 因為 Azure 虛擬機器負責裝載 Business One 用戶端元件與 DBMS 主機，因此只允許支援 SAP NetWeaver 的 VM。 若要尋找支援 SAP NetWeaver 的 Azure VM 清單，請閱讀 [SAP 附註 #1928533](https://launchpad.support.sap.com/#/notes/1928533) \(英文\)。
 
-執行 SAP Hana 做為 Business One 的 DBMS 後端，HANA 僅支援在 hana[認證 IaaS 平臺清單](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One)中針對 hana 上所列的商務用 vm。 將 SAP HANA 作為 DBMS 系統才有的這項較嚴格限制，不會影響 Business One 用戶端元件。
+以適用于 Business One 的 DBMS 後端形式執行 SAP Hana，HANA 僅支援在 hana [認證 IaaS 平臺清單](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) 中針對 hana 上的商務所列的 vm。 將 SAP HANA 作為 DBMS 系統才有的這項較嚴格限制，不會影響 Business One 用戶端元件。
 
 ### <a name="operating-system-releases-to-use-for-sap-business-one"></a>要用於 SAP Business One 的作業系統版本
 
@@ -107,7 +107,7 @@ Business One 是兩層式的應用程式：
 若使用者是透過網際網路連線來連至 Azure，而非透過私人連線，則 Azure 中的網路設計應符合 [Azure 和網際網路之間的 DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz) 所述 Azure 參考架構中記載的原則。
 
 ### <a name="business-one-database-server"></a>Business One 資料庫伺服器
-SQL Server 與 SAP HANA 均為可用的資料庫類型。 與 DBMS 無關，您應該閱讀[適用于 SAP 工作負載的 Azure 虛擬機器 DBMS 部署考慮](./dbms_guide_general.md)檔，以深入瞭解 azure vm 中的 dbms 部署，以及相關的網路和儲存體主題。
+SQL Server 與 SAP HANA 均為可用的資料庫類型。 與 DBMS 無關，您應閱讀適用于 [SAP 工作負載的 Azure 虛擬機器 DBMS 部署檔考慮](./dbms_guide_general.md) ，以瞭解 azure vm 中的 dbms 部署以及相關的網路和儲存體主題。
 
 雖然已在特定和一般資料庫文件中強調，但您應熟悉下列主題：
 
@@ -118,7 +118,7 @@ SQL Server 與 SAP HANA 均為可用的資料庫類型。 與 DBMS 無關，您�
 
 基本上，您應該：
 
-- 優先使用進階 SSD 來取代標準 HDD。 若要深入了解可用的磁碟類型，請參閱[選取磁碟類型](../../windows/disks-types.md)一文
+- 優先使用進階 SSD 來取代標準 HDD。 若要深入了解可用的磁碟類型，請參閱[選取磁碟類型](../../disks-types.md)一文
 - 使用 Azure 受控磁碟，而不是非受控磁碟
 - 確定磁碟設定中設定了充足的 IOPS 與 I/O 輸送量
 - 合併 /hana/data 與 /hana/log 磁碟區，以便有高成本效益的儲存體設定
@@ -136,7 +136,7 @@ SQL Server 的 DBMS 端粗略估算如下：
 | 最多 80 人 | 16 | 64 GB | D16s_v3、E16s_v3 |
 | 最多 150 人 | 32 | 128 GB | D32s_v3、E32s_v3 |
 
-由以上所列的大小，應可大致了解要從哪裡開始著手。 這可能是您需要較少或更多的資源，在此情況下，Azure 上的音很容易。 只要重新啟動 VM，即可在 VM 類型之間進行變更。
+由以上所列的大小，應可大致了解要從哪裡開始著手。 可能是您需要較少或更多的資源，在此情況下，Azure 上的音很簡單。 只要重新啟動 VM，即可在 VM 類型之間進行變更。
 
 #### <a name="sap-hana-as-dbms"></a>SAP HANA 作為 DBMS
 使用 SAP HANA 作為 DBMS 時，您應在下列各節遵循 [Azure 上的 SAP Hana 作業指南](./hana-vm-operations.md)一文中的考量。
@@ -150,6 +150,6 @@ SQL Server 的 DBMS 端粗略估算如下：
 對於這些元件而言，儲存體考量並非其主要的考量。 不過，您仍然需要可靠的平台。 因此，即使是基底 VHD，此 VM 也應使用 Azure 進階儲存體。 使用 [SAP Business One 硬體需求指南](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf) \(英文\) 中所提供的資料來調整 VM 大小。 對於 Azure，您必須著重於計算文件的第 2.4 章中所述的需求。 計算需求時，您必須對照下列文件，以找出理想的 VM：
 
 - [Azure 中的 Windows 虛擬機器大小](../../sizes.md)
-- [SAP 附注 #1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 針對 CPU 與記憶體，比較所需的數量與 Microsoft 記載的數量。 在選擇 VM 時，也請記得考量網路輸送量。

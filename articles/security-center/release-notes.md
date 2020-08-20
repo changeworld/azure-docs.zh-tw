@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: dbd040bf7caf3dbe9ed9820bf189bc1f74475c09
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 7bec65867373293ff06a2295f08a05db6ffaa480
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586889"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653829"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 資訊安全中心的新功能
 
@@ -38,6 +38,7 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 - [新增對多重要素驗證 (Azure Active Directory 安全性預設值的支援) ](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
 - [已新增服務主體建議](#service-principals-recommendation-added)
 - [Vm 上的弱點評定-合併的建議和原則](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
+- [新增至 ASC_default 計畫的新 AKS 安全性原則-僅供私人預覽客戶使用](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
 
 
 ### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>資產清查-您資產安全性狀態的強大新觀點
@@ -59,7 +60,7 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 當安全中心識別未啟用安全性預設值的 Azure 訂用帳戶時，現在會提供安全性建議。 到目前為止，安全性中心建議使用條件式存取啟用多重要素驗證，這是 Azure Active Directory (AD) premium 授權的一部分。 針對使用免費 Azure AD 的客戶，我們現在建議啟用安全性預設值。 
 
-我們的目標是鼓勵更多客戶使用 MFA 來保護其雲端環境，並減輕其 [安全分數](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)最具影響力的其中一個最高風險。
+我們的目標是鼓勵更多客戶使用 MFA 來保護其雲端環境，並減輕也是您的 [安全分數](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)最具影響力的其中一項最高風險。
 
 深入瞭解 [安全性預設值](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)。
 
@@ -97,7 +98,7 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 ##### <a name="before-august-2020"></a>2020年8月之前
 
-|建議|影響範圍|
+|建議|範圍|
 |----|:----|
 |**在 Qualys 支援的虛擬機器上啟用內建弱點評定解決方案 () **<br>機碼：550e890b-e652-4d22-8274-60b3bdb24c63|內建|
 |**補救在您的虛擬機器上發現的弱點 (Qualys 技術提供)**<br>機碼：1195afff-c881-495e-9bc5-1486211ae03f|內建|
@@ -106,7 +107,7 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 ||||
 
 
-|原則|影響範圍|
+|原則|範圍|
 |----|:----|
 |**虛擬機器上應啟用弱點評定**<br>原則識別碼：501541f7-f7e7-4cd6-868c-4190fdad3ac9|內建|
 |**弱點評估解決方案應補救的弱點**<br>原則識別碼：760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
@@ -115,17 +116,28 @@ Azure 安全性持續再開發改良。 為了讓您隨時掌握最新的開發�
 
 ##### <a name="from-august-2020"></a>自2020年8月
 
-|建議|影響範圍|
+|建議|範圍|
 |----|:----|
 |**應在您的虛擬機器上啟用弱點評定解決方案**<br>機碼： ffff0522-1e88-47fc-8382-2a80ba848f5d|內建 + BYOL|
 |**應補救您虛擬機器中的弱點**<br>機碼：1195afff-c881-495e-9bc5-1486211ae03f|內建 + BYOL|
 ||||
 
-|原則|影響範圍|
+|原則|範圍|
 |----|:----|
 |[**虛擬機器上應啟用弱點評定**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>原則識別碼：501541f7-f7e7-4cd6-868c-4190fdad3ac9 |內建 + BYOL|
 ||||
 
+
+### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>新增至 ASC_default 計畫的新 AKS 安全性原則-僅供私人預覽客戶使用
+
+為了確保 Kubernetes 工作負載預設是安全的，「安全性中心」會新增 Kubernetes 層級原則和強化建議，包括 Kubernetes 許可控制的強制選項。
+
+此專案的初期階段包括私人預覽，以及將新的 (預設為停用 ASC_default 方案) 原則。
+
+您可以放心地忽略這些原則，而不會對您的環境造成任何影響。 如果您想要啟用它們，請註冊預覽， https://aka.ms/SecurityPrP 然後從下列選項中選取：
+
+1. **單一預覽版** –僅加入此私人預覽。 明確提及「ASC 連續掃描」作為您想要加入的預覽。
+1. **持續** 進行的程式–新增至此和未來的私人預覽。 您將需要完成設定檔和隱私權協定。
 
 
 ## <a name="july-2020"></a>2020 年 7 月

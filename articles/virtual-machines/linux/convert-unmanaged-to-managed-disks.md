@@ -1,22 +1,22 @@
 ---
 title: 將 Linux VM 從非受控磁片轉換為受控磁片
-description: 如何使用 Azure CLI，將 Linux VM 從非受控磁片轉換為受控磁片。
+description: 如何使用 Azure CLI 將 Linux VM 從非受控磁片轉換為受控磁片。
 author: roygara
 ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 072b0e3bcf4da8e2c71082a549d42d105c06ea8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5695e866b0b6182d7b46b3206a7d8e672d49ab5c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659811"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654424"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>將 Linux 虛擬機器從非受控磁碟轉換成受控磁碟
 
-如果您現有的 Linux 虛擬機器 (VM) 使用非受控磁碟，您可以將 VM 轉換為使用 [Azure 受控磁碟](../linux/managed-disks-overview.md)。 此程序會轉換 OS 磁碟和任何附加的資料磁碟。
+如果您現有的 Linux 虛擬機器 (VM) 使用非受控磁碟，您可以將 VM 轉換為使用 [Azure 受控磁碟](../managed-disks-overview.md)。 此程序會轉換 OS 磁碟和任何附加的資料磁碟。
 
 本文說明如何使用 Azure CLI 來轉換 VM。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
 
@@ -25,10 +25,10 @@ ms.locfileid: "84659811"
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
-* VM 在傳換前使用的原始 VHD 和儲存體帳戶不會遭到刪除。 這些項目會繼續產生費用。 若要避免為這些成果支付費用，請在確認轉換完成之後，刪除原始的 VHD Blob。 如果您需要尋找這些未連結的磁片以刪除它們，請參閱[尋找及刪除未連結的 Azure 受控和非受控磁片](find-unattached-disks.md)一文。
+* VM 在傳換前使用的原始 VHD 和儲存體帳戶不會遭到刪除。 這些項目會繼續產生費用。 若要避免為這些成果支付費用，請在確認轉換完成之後，刪除原始的 VHD Blob。 如果您需要尋找這些未連結的磁片以將其刪除，請參閱我們的文章： [尋找及刪除未連結的 Azure 受控和非受控磁片](find-unattached-disks.md)。
 
 ## <a name="convert-single-instance-vms"></a>轉換單一執行個體 VM
-本節說明如何將單一執行個體 Azure VM 從非受控磁碟轉換為受控磁碟。 （如果您的 Vm 位於可用性設定組中，請參閱下一節）。您可以使用此程式將虛擬機器從 premium （SSD）非受控磁片轉換為高階受控磁片，或從標準（HDD）非受控磁片轉換為標準受控磁片。
+本節說明如何將單一執行個體 Azure VM 從非受控磁碟轉換為受控磁碟。  (如果您的 Vm 位於可用性設定組中，請參閱下一節。 ) 您可以使用此程式，將 Vm 從 premium (SSD) 非受控磁片轉換成高階受控磁片，或從標準 (HDD) 非受控磁片轉換為標準受控磁片。
 
 1. 使用 [az vm deallocate](/cli/azure/vm) 將 VM 解除配置。 下列範例會解除配置 `myResourceGroup` 資源群組中名為 `myVM` 的 VM：
 
@@ -104,4 +104,4 @@ VM 將會停止，並且在移轉完成後重新啟動。
 
 ## <a name="next-steps"></a>後續步驟
 
-如需儲存體選項的詳細資訊，請參閱[Azure 受控磁碟總覽](../windows/managed-disks-overview.md)。
+如需儲存體選項的詳細資訊，請參閱 [Azure 受控磁碟總覽](../managed-disks-overview.md)。

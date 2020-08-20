@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e73bc3791ceb75685275af99f888136315c6e50d
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0fc7d62cc89e240d931f3d0f255a917a73a4114c
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505553"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654577"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>適用於 SAP NetWeaver 的 SQL Server Azure 虛擬機器 DBMS 部署
 
@@ -247,7 +247,7 @@ ms.locfileid: "88505553"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -381,7 +381,7 @@ SQL Server 2014 及更新版本可以直接在 Azure Blob Store上儲存資料�
 * 稍早列出有關將 VHD 分散到不同 Azure 儲存體帳戶的考量，也適用於這種部署方法。 表示對 Azure 儲存體帳戶限制的 I/O 作業計數。
 * 不要針對 VM 的儲存體 I/O 配額來結算，那些針對儲存體 blob (代表 SQL Server 資料和記錄檔) 所產生的流量，都將計入特定 VM 類型的 VM 網路頻寬。 針對特定的 VM 類型的網路和儲存頻寬，請參閱 [Azure 中 Windows 虛擬機器的大小](../../sizes.md)一文。
 * 由於透過網路配額推送檔案 I/O 的關係，您大部分的儲存體配額都已耗損，因此 VM 的整體頻寬僅部分使用。
-* Azure 進階儲存體針對不同磁碟大小所設定的 IOPS 和 I/O 輸送量效能目標，不會再套用。 即便您建立的 blob 是位於「Azure 進階儲存體」也是如此。 [VM 高效能進階儲存體與受控磁碟](../../windows/disks-types.md#premium-ssd) \(機器翻譯\) 文章有相關目標的記載。 由於將 SQL Server 資料檔案和記錄檔直接放在 Azure 進階儲存體所儲存的 blob 上，因此相較於 Azure 進階儲存體上的 VHD，效能特性會不一樣。
+* Azure 進階儲存體針對不同磁碟大小所設定的 IOPS 和 I/O 輸送量效能目標，不會再套用。 即便您建立的 blob 是位於「Azure 進階儲存體」也是如此。 [VM 高效能進階儲存體與受控磁碟](../../disks-types.md#premium-ssd) \(機器翻譯\) 文章有相關目標的記載。 由於將 SQL Server 資料檔案和記錄檔直接放在 Azure 進階儲存體所儲存的 blob 上，因此相較於 Azure 進階儲存體上的 VHD，效能特性會不一樣。
 * 將 SQL Server 資料檔案直接放置在 Azure Blob 上時，適用於 Azure 進階儲存體磁碟的主機型快取將無法使用。
 * 在 M 系列 VM 上，無法使用 Azure Write Accelerator 來支援 SQL Server 交易記錄檔的子毫秒寫入。 
 

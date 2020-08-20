@@ -1,5 +1,5 @@
 ---
-title: 設定 Azure 媒體服務 v3 REST API 呼叫的 Postman
+title: 針對 Azure 媒體服務 v3 REST API 呼叫設定 Postman
 description: 本文說明如何設定 Postman，以便用來呼叫 Azure 媒體服務 (AMS) REST API。
 services: media-services
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: 16c74e10e88d3f8eacd8f59222adbdb19be813ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e35a5fe2243c3a9880359900c63f74c6dc90e586
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053203"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654356"
 ---
-# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>設定媒體服務 v3 REST API 呼叫的 Postman
+# <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>針對媒體服務 v3 REST API 呼叫設定 Postman
 
 本文說明如何設定 **Postman**，以便用來呼叫 Azure 媒體服務 (AMS) REST API。 本文說明如何將環境和集合檔案匯入 **Postman**。 集合包含呼叫 Azure 媒體服務 (AMS) REST API 之 HTTP 要求的分組定義。 環境檔案包含集合所使用的變數。
 
-在您開始開發之前，請先參閱[使用媒體服務 V3 api 進行開發](media-services-apis-overview.md)。
+開始開發之前，請先參閱 [使用媒體服務 V3 api 進行開發](media-services-apis-overview.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -35,7 +35,7 @@ ms.locfileid: "87053203"
     我們使用的是 **Postman**，但任何 REST 工具都適用。 其他替代方案為：搭配 REST 外掛程式的 **Visual Studio Code**，或 **Telerik Fiddler**。 
 
 > [!IMPORTANT]
-> 檢查[命名慣例](media-services-apis-overview.md#naming-conventions)。
+> 複習 [命名慣例](media-services-apis-overview.md#naming-conventions)。
 
 ## <a name="download-postman-files"></a>下載 Postman 檔案
 
@@ -49,7 +49,7 @@ ms.locfileid: "87053203"
 
 ### <a name="configure-the-environment"></a>建立環境 
 
-1. 開啟**Postman**應用程式。
+1. 開啟 **Postman** 應用程式。
 2. 選取畫面右側的 [管理環境]**** 選項。
 
     ![管理 env](./media/develop-with-postman/postman-import-env.png)
@@ -80,7 +80,7 @@ ms.locfileid: "87053203"
 
 1. 在 Postman 應用程式的左側視窗中，選取 [步驟1：取得 AAD 驗證權杖]。
 2. 然後，選取 [取得服務主體驗證的 Azure AD 權杖]。
-3. 按 [傳送]。
+3. 按 [傳送]  。
 
     此時會傳送下列 **POST** 作業。
 
@@ -94,12 +94,11 @@ ms.locfileid: "87053203"
 
 ## <a name="troubleshooting"></a>疑難排解 
 
-* 如果您的應用程式因「HTTP 504：閘道超時」而失敗，請確定 location 變數尚未明確設定為媒體服務帳戶的預期位置以外的值。 
-* 如果您收到「找不到帳戶」錯誤，也請檢查並確定主體 JSON 訊息中的 location 屬性已設定為媒體服務帳戶所在的位置。 
+* 如果您的應用程式失敗，並出現「HTTP 504：閘道超時」，請確定位置變數未明確設定為媒體服務帳戶預期位置以外的值。 
+* 如果您收到「找不到帳戶」錯誤，也請檢查以確定本文 JSON 訊息中的 location 屬性已設定為媒體服務帳戶所在的位置。 
 
 ## <a name="see-also"></a>請參閱
 
-- [將檔案上傳至媒體服務帳戶 - REST](upload-files-rest-how-to.md)
 - [使用媒體服務建立篩選 - REST](filters-dynamic-manifest-rest-howto.md)
 - [以 Azure Resource Manager 為基礎的 REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 

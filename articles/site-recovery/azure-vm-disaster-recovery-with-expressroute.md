@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: bf12a5b7850a56d945e1082be6c522c31738669c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e1f670f2ba5ad31f29d56b2de40acd6e2bf18a9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73954090"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654373"
 ---
 # <a name="integrate-expressroute-with-disaster-recovery-for-azure-vms"></a>整合 ExpressRoute 與 Azure Vm 的嚴重損壞修復
 
@@ -22,7 +22,7 @@ ms.locfileid: "73954090"
 
 Site Recovery 可藉由將 Azure VM 資料複寫至 Azure 來啟用 Azure VM 的災害復原。
 
-- 如果 Azure VM 使用 [Azure 受控磁碟](../virtual-machines/windows/managed-disks-overview.md)，則 VM 資料會複寫到次要區域中已複寫的受控磁碟。
+- 如果 Azure VM 使用 [Azure 受控磁碟](../virtual-machines/managed-disks-overview.md)，則 VM 資料會複寫到次要區域中已複寫的受控磁碟。
 - 如果 Azure VM 未使用受控磁碟，則 VM 資料會複寫至 Azure 儲存體帳戶。
 - 複寫端點是公用的，但 Azure VM 的複寫流量不會通過網際網路。
 
@@ -36,9 +36,9 @@ ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部�
 
 開始之前，請確定您了解下列概念︰
 
-- ExpressRoute[線路](../expressroute/expressroute-circuit-peerings.md)
-- ExpressRoute[路由網域](../expressroute/expressroute-circuit-peerings.md#routingdomains)
-- ExpressRoute[位置](../expressroute/expressroute-locations.md)。
+- ExpressRoute [線路](../expressroute/expressroute-circuit-peerings.md)
+- ExpressRoute [路由網域](../expressroute/expressroute-circuit-peerings.md#routingdomains)
+- ExpressRoute [位置](../expressroute/expressroute-locations.md)。
 - Azure VM [複寫架構](azure-to-azure-architecture.md)
 - 如何為 Azure VM [設定複寫](azure-to-azure-tutorial-enable-replication.md)。
 - 如何執行 Azure VM 的[容錯移轉](azure-to-azure-tutorial-failover-failback.md)。
@@ -104,23 +104,23 @@ ExpressRoute 可讓您透過連線提供者所提供的私人連線，將內部�
 
 #### <a name="spoke-to-hub"></a>輪輻至中樞
 
-[方向] | **設定** | **State**
+**方向** | **設定** | **State**
 --- | --- | ---
 輪輻至中樞 | 允許虛擬網路位址 | 已啟用
 輪輻至中樞 | 允許轉送的流量 | 已啟用
-輪輻至中樞 | 允許閘道傳輸 | 停用
+輪輻至中樞 | 允許閘道傳輸 | 已停用
 輪輻至中樞 | 使用移除閘道 | 已啟用
 
  ![輪輻到中樞對等互連設定](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
 #### <a name="hub-to-spoke"></a>中樞至輪輻
 
-[方向] | **設定** | **State**
+**方向** | **設定** | **State**
 --- | --- | ---
 中樞至輪輻 | 允許虛擬網路位址 | 已啟用
 中樞至輪輻 | 允許轉送的流量 | 已啟用
 中樞至輪輻 | 允許閘道傳輸 | 已啟用
-中樞至輪輻 | 使用移除閘道 | 停用
+中樞至輪輻 | 使用移除閘道 | 已停用
 
  ![中樞到輪輻對等互連設定](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)
 

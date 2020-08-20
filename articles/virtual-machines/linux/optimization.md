@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 662475bdcb6b1ea9809f4501d144fb94e21e945e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84659468"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654186"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>在 Azure 上最佳化 Linux VM
 您可以從命令列或入口網站，輕鬆建立 Linux 虛擬機器 (VM)。 本教學課程示範如何在 Microsoft Azure 平台上設定，以確保將其效能最佳化。 本主題會使用 Ubuntu Server VM，但您也可以使用 [自己的映像做為範本](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)來建立 Linux 虛擬機器。  
@@ -34,7 +34,7 @@ ms.locfileid: "84659468"
 * 如果您使用 **XFS**，請使用掛接選項 `nobarrier` 停用阻礙 (若要啟用阻礙，請使用 `barrier` 選項)
 
 ## <a name="unmanaged-storage-account-considerations"></a>非受控儲存體帳戶考量事項
-使用 Azure CLI 建立 VM 時的預設動作是使用 Azure 受控磁碟。  這些磁碟是由 Azure 平台處理，不需要任何準備或位置來儲存它們。  非受控磁碟需要儲存體帳戶，且具有一些額外的效能注意事項。  如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟概觀](../windows/managed-disks-overview.md)。  下一節概述使用非受控磁碟時才會有的效能注意事項。  同樣地，預設且建議的儲存體解決方案是使用受控磁碟。
+使用 Azure CLI 建立 VM 時的預設動作是使用 Azure 受控磁碟。  這些磁碟是由 Azure 平台處理，不需要任何準備或位置來儲存它們。  非受控磁碟需要儲存體帳戶，且具有一些額外的效能注意事項。  如需受控磁碟的詳細資訊，請參閱 [Azure 受控磁碟概觀](../managed-disks-overview.md)。  下一節概述使用非受控磁碟時才會有的效能注意事項。  同樣地，預設且建議的儲存體解決方案是使用受控磁碟。
 
 如果您使用非受控磁碟建立 VM，請務必從區域與 VM 相同的儲存體帳戶連結磁碟，以確保高度鄰近性及降低網路延遲。  每個標準儲存體帳戶都有最高 20k 的 IOps 和 500 TB 大小的容量。  此限制大約等同於 40 個頻繁使用的磁碟，包括 OS 磁碟和您建立的任何資料磁碟。 進階儲存體帳戶沒有 IOps 上限，不過有 32 TB 的大小限制。 
 

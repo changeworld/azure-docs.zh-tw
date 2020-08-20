@@ -4,12 +4,12 @@ description: 瞭解如何使用 Azure 備份服務管理和監視 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 581141ea5ffaecf774d292f66a05da5e40c8dc54
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 71cec82550ae8ca2bc6ddd7bda6452870e5e0818
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263294"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654220"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 備份服務來管理 Microsoft Azure 復原服務 (MARS) 代理程式備份
 
@@ -92,7 +92,7 @@ ms.locfileid: "88263294"
   - 此選項將會停止所有未來的備份作業進行保護。
   - Azure 備份服務會繼續保留所有現有的復原點。  
   - 您將能夠針對未到期的復原點還原已備份的資料。
-  - 如果您決定繼續保護，則可以使用 *重新啟用備份排程* 選項。 之後，會根據新的保留原則來保留資料。
+  - 如果您決定繼續保護，則可以使用 *重新啟用備份排程* 選項。 之後，將會根據新的保留原則來保留資料。
 - **停止保護並刪除備份資料**。
   - 此選項將會停止所有未來的備份作業以保護您的資料，並刪除所有復原點。
   - 您將會收到刪除備份資料警示電子郵件，其中包含已 *刪除此備份專案資料的訊息。這項資料將暫時可供14天使用，之後將會永久刪除* ，並且建議您 *在14天內重新保護備份專案以復原您的資料。*

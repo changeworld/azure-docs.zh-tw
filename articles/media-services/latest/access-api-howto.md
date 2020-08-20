@@ -3,7 +3,7 @@ title: 開始使用 Azure AD 驗證
 description: 了解如何存取 Azure Active Directory (Azure AD) 驗證，以使用 Azure 媒體服務 API。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
-ms.author: juliako
-ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.author: inhenkel
+ms.openlocfilehash: 9528efb0ce7dd9df57db21ccdcf19e54a969d2e4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035786"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654832"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>取得認證以存取媒體服務 API  
 
@@ -38,14 +38,14 @@ ms.locfileid: "88035786"
 - 一個 Azure 帳戶。 如果您沒有帳戶，請先從 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)開始。 
 - 媒體服務帳戶。 如需詳細資訊，請參閱[使用 Azure 入口網站建立 Azure 媒體服務帳戶](create-account-howto.md)。
 
-## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
+## <a name="portal"></a>[入口網站](#tab/portal/)
 
-### <a name="api-access"></a>API 存取 
+### <a name="api-access"></a>API 存取
 
 [API 存取] 頁面可讓您選取要用來連線到 API 的驗證方法。 此頁面也會提供連線到 API 所需的值。
 
 1. 在 [Azure 入口網站](https://portal.azure.com/)中，選取您的媒體服務帳戶。
-2. 選取左側導覽列上的 [ **API 存取] ([新增) ** ] 分頁。
+2. 選取左側導覽列上 ** (新) 分頁的 API 存取 ** 。
 3. 在 [連線到媒體服務 API] 下，選取要連線的媒體服務 API 版本 (V3 是最新的服務版本)。
 
 ### <a name="service-principal-authentication--recommended"></a>服務主體驗證 (建議)
@@ -70,7 +70,7 @@ ms.locfileid: "88035786"
 
 複製您的認證，以將使用者應用程式從**連線到媒體服務 API**區段連線。 您可以取得文字值，或複製 JSON 或 XML 區塊。
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
+## <a name="cli"></a>[CLI](#tab/cli/)
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 

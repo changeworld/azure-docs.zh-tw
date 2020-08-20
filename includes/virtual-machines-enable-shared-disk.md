@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 37d9cf0b0ac7145e389f9fc768ff0b593b27ae1a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 93c97c70a65be40b5801b202ba277b8f86ad1566
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88515232"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655166"
 ---
 ## <a name="limitations"></a>限制
 
@@ -137,7 +137,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 使用部署共用磁片之後 `maxShares>1` ，您就可以將磁片掛接到您的一或多個 vm。
 
 > [!NOTE]
-> 如果您要部署 ultra 磁片，請確定它符合必要的需求。 如需詳細資料，請參閱 ultra 磁片文章的 [PowerShell](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) 或 [CLI](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) 一節。
+> 如果您要部署 ultra 磁片，請確定它符合必要的需求。 如需詳細資料，請參閱 ultra 磁片文章的 [PowerShell](../articles/virtual-machines/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) 或 [CLI](../articles/virtual-machines/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) 一節。
 
 ```azurepowershell-interactive
 
@@ -196,7 +196,7 @@ PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS
 使用 PR_RESERVE、PR_REGISTER_AND_IGNORE、PR_REGISTER_KEY、PR_PREEMPT_RESER加值稅ION、PR_CLEAR_RESER加值稅ION 或 PR_RELEASE 保留時，您也需要提供持續保留索引鍵。
 
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 如果您想要使用 Azure Resource Manager 範本來部署磁片，則可以使用下列範例範本：
 - [進階 SSD](https://aka.ms/SharedPremiumDiskARMtemplate)

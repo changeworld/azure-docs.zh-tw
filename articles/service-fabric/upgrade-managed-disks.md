@@ -1,40 +1,40 @@
 ---
-title: 升級叢集節點以使用 Azure 受控磁片
-description: 以下說明如何將現有的 Service Fabric 叢集升級為使用 Azure 受控磁片，但您的叢集幾乎不會停機。
+title: 將叢集節點升級為使用 Azure 受控磁片
+description: 以下說明如何將現有的 Service Fabric 叢集升級為使用 Azure 受控磁片，而不需要叢集停機。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 74b4ec803229ceb0168da6540fcbda685f0df16e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192308"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653693"
 ---
-# <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>升級叢集節點以使用 Azure 受控磁片
+# <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>將叢集節點升級為使用 Azure 受控磁片
 
-[Azure 受控磁片](../virtual-machines/windows/managed-disks-overview.md) 是建議的磁片儲存體供應專案，可與 azure 虛擬機器搭配使用，以進行資料的持續性儲存。 您可以升級做為節點類型基礎的虛擬機器擴展集，以使用受控磁片，藉此改善 Service Fabric 工作負載的復原能力。 以下說明如何將現有的 Service Fabric 叢集升級為使用 Azure 受控磁片，但您的叢集幾乎不會停機。
+[Azure 受控磁片](../virtual-machines/managed-disks-overview.md) 是建議的磁片儲存體供應專案，可與 azure 虛擬機器搭配使用，以進行資料的持續性儲存。 您可以藉由升級節點類型的虛擬機器擴展集來使用受控磁片，來改善 Service Fabric 工作負載的復原能力。 以下說明如何將現有的 Service Fabric 叢集升級為使用 Azure 受控磁片，而不需要叢集停機。
 
 將 Service Fabric 叢集節點升級為使用受控磁片的一般策略是：
 
-1. 部署該節點類型的其他重複虛擬機器擴展集，但將 [managedDisk](/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) 物件新增至 `osDisk` 虛擬機器擴展集部署範本的區段。 新的擴展集應系結至與原始相同的負載平衡器/IP，讓您的客戶不會在遷移期間遇到服務中斷的情況。
+1. 部署該節點類型的另一個重複的虛擬機器擴展集，但 [managedDisk](/azure/templates/microsoft.compute/2019-07-01/virtualmachinescalesets/virtualmachines#ManagedDiskParameters) 物件已新增至 `osDisk` 虛擬機器擴展集部署範本的區段。 新的擴展集應系結至與原始相同的負載平衡器/IP，如此您的客戶就不會在遷移期間遇到服務中斷。
 
-2. 一旦原始和升級的擴展集並存執行，請一次停用一個原始節點實例，讓系統服務 (或具狀態服務的複本) 遷移至新的擴展集。
+2. 一旦原始和升級的擴展集同時執行，就會一次停用一個原始節點實例，讓系統服務 (或具狀態服務的複本) 遷移至新的擴展集。
 
 3. 確認叢集和新節點的狀況良好，然後移除已刪除節點的原始擴展集和節點狀態。
 
-本文將逐步引導您將範例叢集的主要節點類型升級為使用受控磁片，同時避免任何叢集停機 (請參閱下面) 的附注。 範例測試叢集的初始狀態是由一個具有五個節點的單一擴展集所支援的 [銀級耐久性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)節點類型所組成。
+本文將逐步引導您完成將範例叢集的主要節點類型升級為使用受控磁片的步驟，同時避免任何叢集停機 (請參閱以下) 的附注。 範例測試叢集的初始狀態是由一種具有 [銀級持久性](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)的節點類型所組成，由具有五個節點的單一擴展集提供支援。
 
 > [!NOTE]
-> 基本 SKU 負載平衡器的限制可防止新增額外的擴展集。 建議改為使用標準 SKU 負載平衡器。 如需詳細資訊，請參閱 [這兩個 sku 的比較](/azure/load-balancer/skus)。
+> 基本 SKU 負載平衡器的限制，可防止新增額外的擴展集。 建議您改為使用標準 SKU 負載平衡器。 如需詳細資訊，請參閱 [這兩個 sku 的比較](/azure/load-balancer/skus)。
 
 > [!CAUTION]
-> 只有當您對叢集 DNS (（例如存取 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)) 時）有相依性時，才會遇到此程式中斷的情況。 [前端服務的架構最佳做法](/azure/architecture/microservices/design/gateway)是在您的節點類型前面有某種類型的[負載平衡器](/azure/architecture/guide/technology-choices/load-balancing-overview)，讓節點交換可行而不會中斷。
+> 只有當您有叢集 DNS (的相依性時（例如存取 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)) 時），您才會遇到此程式中斷。 [前端服務的架構最佳做法](/azure/architecture/microservices/design/gateway)是在您的節點類型前面加上某種[負載平衡器](/azure/architecture/guide/technology-choices/load-balancing-overview)，以便在不中斷的情況下交換節點。
 
-以下是我們將用來完成升級案例之 Azure Resource Manager 的 [範本和 Cmdlet](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) 。 在下面的 [主要節點類型部署升級的擴展集](#deploy-an-upgraded-scale-set-for-the-primary-node-type)  時，將會說明範本的變更。
+以下是我們將用來完成升級案例的 Azure Resource Manager [範本和 Cmdlet](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) 。 範本變更將在 [為以下主要節點類型部署升級的擴展集](#deploy-an-upgraded-scale-set-for-the-primary-node-type)  時說明。
 
 ## <a name="set-up-the-test-cluster"></a>設定測試叢集
 
-讓我們設定初始的 Service Fabric 測試叢集。 首先， [下載](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) 要用來完成此案例的 Azure Resource Manager 範例範本。
+讓我們設定初始 Service Fabric 測試叢集。 首先，請 [下載](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) 將用來完成此案例的 Azure Resource Manager 範例範本。
 
 接著，登入您的 Azure 帳戶。
 
@@ -43,7 +43,7 @@ ms.locfileid: "88192308"
 Login-AzAccount -SubscriptionId "<subscription ID>"
 ```
 
-下列命令會引導您產生新的自我簽署憑證，並部署測試叢集。 如果您已經有想要使用的憑證，請跳至 [使用現有的憑證來部署](#use-an-existing-certificate-to-deploy-the-cluster)叢集。
+下列命令會引導您產生新的自我簽署憑證，並部署測試叢集。 如果您已經有想要使用的憑證，請略過 [使用現有的憑證來部署](#use-an-existing-certificate-to-deploy-the-cluster)叢集。
 
 ### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>產生自我簽署憑證及部署叢集
 
@@ -89,11 +89,11 @@ Import-PfxCertificate `
      -Password (ConvertTo-SecureString Password!1 -AsPlainText -Force)
 ```
 
-作業會傳回憑證指紋，您將用它來連線 [到新](#connect-to-the-new-cluster-and-check-health-status) 叢集並檢查其健康狀態。  (略過下一節，這是叢集部署的替代方法。 ) 
+此作業會傳回憑證指紋，您將使用它來連線 [至新的](#connect-to-the-new-cluster-and-check-health-status) 叢集並檢查其健康情況狀態。  (略過下一節，這是叢集部署的替代方法。 ) 
 
 ### <a name="use-an-existing-certificate-to-deploy-the-cluster"></a>使用現有的憑證來部署叢集
 
-您也可以使用現有的 Azure Key Vault 憑證來部署測試叢集。 若要這麼做，您必須 [取得 Key Vault](#obtain-your-key-vault-references) 和憑證指紋的參考。
+您也可以使用現有的 Azure Key Vault 憑證來部署測試叢集。 若要這樣做，您必須 [取得 Key Vault](#obtain-your-key-vault-references) 和憑證指紋的參考。
 
 ```powershell
 # Key Vault variables
@@ -102,12 +102,12 @@ $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourc
 $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
 ```
 
-開啟檔案 [* 上的Initial-1NodeType-UnmanagedDisks.parameters.js*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) ，並將和的值變更 `clusterName` `dnsName` 為唯一的。
+開啟檔案 [*Initial-1NodeType-UnmanagedDisks.parameters.js*](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Initial-1NodeType-UnmanagedDisks.parameters.json) ，並將和的值變更 `clusterName` `dnsName` 為唯一的值。
 
-最後，指定叢集的資源組名，並設定 `templateFilePath` `parameterFilePath` *初始 1NodeType UnmanagedDisks* 檔案的和位置：
+最後，指定叢集的資源組名，並設定您的 `templateFilePath` `parameterFilePath` *初始 1NodeType UnmanagedDisks* 檔案的和位置：
 
 > [!NOTE]
-> 指定的資源群組必須已存在，且位於與您 Key Vault 相同的區域中。
+> 指定的資源群組必須已存在，且與您的 Key Vault 位於相同的區域中。
 
 ```powershell
 # Deploy the new scale set (upgraded to use managed disks) into the primary node type.
@@ -116,7 +116,7 @@ $templateFilePath = "C:\Upgrade-1NodeType-2ScaleSets-ManagedDisks.json"
 $parameterFilePath = "C:\Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json"
 ```
 
-最後，執行下列命令來部署初始測試叢集：
+最後，執行下列命令以部署初始測試叢集：
 
 ```powershell
 New-AzResourceGroupDeployment `
@@ -131,7 +131,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="connect-to-the-new-cluster-and-check-health-status"></a>連線到新叢集並檢查健全狀態
 
-連接到叢集，並確定其所有節點都是狀況良好的 (取代叢集 `clusterName`) 的和 `thumb` 變數：
+連線到叢集，並確保其所有節點的狀況良好 (取代叢集) 的 `clusterName` 和 `thumb` 變數：
 
 ```powershell
 # Connect to the cluster
@@ -154,21 +154,21 @@ Get-ServiceFabricClusterHealth
 
 如此一來，我們就可以開始進行升級程式。
 
-## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>為主要節點類型部署升級的擴展集
+## <a name="deploy-an-upgraded-scale-set-for-the-primary-node-type"></a>針對主要節點類型部署升級的擴展集
 
-為了升級或 *垂直調整*節點類型，我們必須部署該節點類型之虛擬機器擴展集的複本，這與原始的擴展集相同 (包括對相同 `nodeTypeRef` 、和) 的參考， `subnet` `loadBalancerBackendAddressPools` 但它包含所需的升級/變更和自己的個別子網和輸入 NAT 位址集區。 因為我們要升級主要節點類型，所以新的擴展集將會標示為主要 (`isPrimary: true`) ，就像原始的擴展集一樣。  (非主要節點類型升級，請直接省略此。 ) 
+若要升級或 *垂直調整*節點類型，我們必須部署該節點類型的虛擬機器擴展集的複本，也就是與原始擴展集相同的 (包括相同 `nodeTypeRef` 、和) 的參考， `subnet` `loadBalancerBackendAddressPools` 但它包含所需的升級/變更和它自己的個別子網和輸入 NAT 位址集區。 由於我們要升級主要節點類型，因此新的擴展集將會標示為主要 (`isPrimary: true`) ，就像原始擴展集一樣。 針對非主要節點類型升級 (，只要省略此 ) 。
 
-為了方便起見，您已在 *1NodeType-2ScaleSets-ManagedDisks* [範本](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json) 和 [參數](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json) 檔案中為您進行必要的變更。
+為了方便起見，您已在 *1NodeType-2ScaleSets-ManagedDisks* [範本](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.json) 和 [參數](https://github.com/erikadoyle/service-fabric-scripts-and-templates/blob/managed-disks/templates/nodetype-upgrade-no-outage/Upgrade-1NodeType-2ScaleSets-ManagedDisks.parameters.json) 檔案中為您完成所需的變更。
 
-下列各節將詳細說明範本的變更。 如果您想要的話，可以略過說明，並繼續進行升級程式的 [下一個步驟](#obtain-your-key-vault-references)。
+下列各節將詳細說明範本變更。 如果您想要的話，可以略過說明，然後繼續進行升級程式的 [下一個步驟](#obtain-your-key-vault-references)。
 
 ### <a name="update-the-cluster-template-with-the-upgraded-scale-set"></a>以升級的擴展集更新叢集範本
 
-以下是針對主要節點類型新增升級擴展集的原始叢集部署範本的逐區段修改。
+以下是針對主要節點類型新增升級的擴展集之原始叢集部署範本的章節修改。
 
 #### <a name="parameters"></a>參數
 
-為新擴展集的實例名稱、計數和大小新增參數。 請注意， `vmNodeType1Name` 對於新的擴展集而言是唯一的，而 [計數] 和 [大小] 值則與原始的擴展集相同。
+加入新擴展集實例名稱、計數和大小的參數。 請注意，對於 `vmNodeType1Name` 新的擴展集而言是唯一的，而計數和大小值則與原始擴展集相同。
 
 **範本檔案**
 
@@ -217,15 +217,15 @@ Get-ServiceFabricClusterHealth
 
 ### <a name="resources"></a>資源
 
-在 [部署範本 *資源* ] 區段中，新增新的虛擬機器擴展集，並記住下列事項：
+在 [部署範本 *資源* ] 區段中，新增新的虛擬機器擴展集，請記住下列事項：
 
-* 新的擴展集會參考與原始相同的節點類型：
+* 新的擴展集所參考的節點類型與原始的相同：
 
     ```json
     "nodeTypeRef": "[parameters('vmNodeType0Name')]",
     ```
 
-* 新的擴展集會參照相同的負載平衡器後端位址和子網 (但使用不同的負載平衡器輸入 NAT 集區) ：
+* 新的擴展集會參考相同的負載平衡器後端位址和子網 (，但會使用不同的負載平衡器輸入 NAT 集區) ：
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -243,13 +243,13 @@ Get-ServiceFabricClusterHealth
     }
    ```
 
-* 就像原始的擴展集一樣，新的擴展集會標示為主要節點類型。  (在升級非主要節點類型時，請省略此變更。 ) 
+* 如同原始的擴展集，新的擴展集會標示為主要節點類型。  (升級非主要節點類型時，請省略此變更。 ) 
 
     ```json
     "isPrimary": true,
     ```
 
-* 不同于原始擴展集，新的擴展集會升級為使用受控磁片。
+* 不同于原始的擴展集，新的擴展集會升級為使用受控磁片。
 
     ```json
     "managedDisk": {
@@ -257,25 +257,25 @@ Get-ServiceFabricClusterHealth
     }
     ```
 
-在您完成範本和參數檔案中的所有變更之後，請繼續下一節以取得您的 Key Vault 參照，並將更新部署至您的叢集。
+在您完成範本和參數檔案中的所有變更之後，請繼續下一節，以取得您的 Key Vault 參考，並將更新部署至您的叢集。
 
 ### <a name="obtain-your-key-vault-references"></a>取得您的 Key Vault 參考
 
-若要部署更新的設定，您必須先取得 Key Vault 中儲存的叢集憑證的幾個參考。 尋找這些值最簡單的方式是透過 Azure 入口網站。 您將需要：
+若要部署更新的設定，您必須先取得儲存在 Key Vault 中的多個叢集憑證參考。 尋找這些值最簡單的方式是透過 Azure 入口網站。 您將需要：
 
-* **叢集憑證的 Key Vault URL。** 從您在 Azure 入口網站的 Key Vault 中，選取 [**憑證**  >  *您所需的憑證*  >  **秘密識別碼**]：
+* **叢集憑證的 Key Vault URL。** 從 Azure 入口網站的 Key Vault 中，選取 [**憑證**  >  *您需要的憑證*  >  **秘密識別碼**：
 
     ```powershell
     $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
     ```
 
-* **叢集憑證的指紋。** 如果您已[連線到初始](#connect-to-the-new-cluster-and-check-health-status)叢集以檢查其健康狀態， (您可能已經有這項功能。從相同的憑證分頁 ) ， (**憑證**  >  *您所需的憑證*) 在 Azure 入口網站中，**以十六進位 (複製 x.509 sha-1 指紋) **：
+* **叢集憑證的指紋。** 如果您已[連線至初始](#connect-to-the-new-cluster-and-check-health-status)叢集以檢查其健康狀態， (您可能已經有這種情況 ) 。請從相同的憑證分頁 (**憑證**  >  *Your desired certificate*) 在 Azure 入口網站中，複製**x.509 sha-1 指紋 (，以十六進位) **：
 
     ```powershell
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
     ```
 
-* **Key Vault 的資源識別碼。** 從您在 Azure 入口網站的 Key Vault 中，選取 [**屬性**] [  >  **資源識別碼**]：
+* **Key Vault 的資源識別碼。** 從 Azure 入口網站的 Key Vault 中，選取 [**屬性**  >  **資源識別碼**：
 
     ```powershell
     $sourceVaultValue = "/subscriptions/########-####-####-####-############/resourceGroups/sftestupgradegroup/providers/Microsoft.KeyVault/vaults/sftestupgradegroup"
@@ -300,7 +300,7 @@ New-AzResourceGroupDeployment `
     -Verbose
 ```
 
-當部署完成時，請再次檢查叢集健康情況，並確保新的擴展集上的10個節點 (五個，) 狀況良好。
+當部署完成時，請再次檢查叢集健康情況，並確保新擴展集上的所有十個節點 (五個節點) 狀況良好。
 
 ```powershell
 Get-ServiceFabricClusterHealth
@@ -345,7 +345,7 @@ Write-Host "Removed scale set $scaleSetName"
 
 在 Service Fabric Explorer 中，已移除的節點 (從而 [叢集健全狀態]) 現在會出現在 [錯誤] 狀態中。
 
-![顯示處於錯誤狀態的已停用節點 Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-disabled-nodes-error-state.png)
+![Service Fabric Explorer 顯示處於錯誤狀態的停用節點](./media/upgrade-managed-disks/service-fabric-explorer-disabled-nodes-error-state.png)
 
 從 Service Fabric 叢集移除過時的節點，將叢集健全狀況狀態還原為 *[確定]*。
 
@@ -357,7 +357,7 @@ foreach($name in $nodeNames){
 }
 ```
 
-![已移除錯誤狀態下的關閉節點的 Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
+![已移除錯誤狀態下節點的 Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-healthy-cluster.png)
 
 ## <a name="next-steps"></a>後續步驟
 

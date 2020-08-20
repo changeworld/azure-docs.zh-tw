@@ -14,18 +14,18 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2a25625e085ee07a2dc036fd40f70e6b0376b42a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c4a43d113df09d88e8b93028c68dcf04f718fad
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003877"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653982"
 ---
-# <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>如何使用 Azure PowerShell 在 Azure 上布建 SQL Server 虛擬機器
+# <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>如何使用 Azure PowerShell 在 Azure 虛擬機器上布建 SQL Server
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-本指南涵蓋使用 PowerShell 在 Azure 虛擬機器（Vm）上布建 SQL Server 的選項。 如需依賴預設值的精簡 Azure PowerShell 範例，請參閱[SQL VM Azure PowerShell 快速入門](sql-vm-create-powershell-quickstart.md)。
+本指南涵蓋的選項可讓您使用 PowerShell，在 Azure 虛擬機器上布建 SQL Server (Vm) 。 如需依賴預設值的簡化 Azure PowerShell 範例，請參閱 [SQL VM Azure PowerShell 快速入門](sql-vm-create-powershell-quickstart.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -60,7 +60,7 @@ $ResourceGroupName = "sqlvm2"
 
 定義儲存體帳戶和虛擬機器所要使用的儲存體類型。
 
-視需要修改，然後執行下列 Cmdlet 來初始化這些變數。 我們建議針為生產環境工作負載使用[進階 SSD](../../../virtual-machines/windows/disks-types.md#premium-ssd)。
+視需要進行修改，然後執行下列 Cmdlet 來初始化這些變數。 我們建議針為生產環境工作負載使用[進階 SSD](../../../virtual-machines/disks-types.md#premium-ssd)。
 
 ```powershell
 $StorageName = $ResourceGroupName + "storage"
@@ -114,7 +114,7 @@ $OSDiskName = $VMName + "OSDisk"
 
 使用下列變數來定義用於虛擬機器的 SQL Server 映像。 
 
-1. 首先，使用命令來列出所有 SQL Server 的映射供應專案 `Get-AzVMImageOffer` 。 此命令會列出 Azure 入口網站中目前可用的映射，以及只能與 PowerShell 一起安裝的舊版映射：
+1. 首先，使用命令列出所有的 SQL Server 映射供應專案 `Get-AzVMImageOffer` 。 此命令會列出 Azure 入口網站中可用的目前映射，以及只能使用 PowerShell 安裝的較舊映射：
 
    ```powershell
    Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
@@ -152,7 +152,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-虛擬機器需要作業系統磁碟和 SQL Server 資料和記錄檔的儲存體資源。 為了簡單起見，您會針對兩者建立單一磁碟。 您可以在之後使用 [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) Cmdlet 來附加額外的磁碟，以將您的 SQL Server 資料和記錄檔放在專用的磁碟上。 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) \(英文\) Cmdlet，在新的資源群組中建立標準儲存體帳戶。 針對 [儲存體帳戶名稱]、[儲存體 SKU 名稱] 和 [位置]，指定您先前已初始化的變數。
+虛擬機器需要作業系統磁碟和 SQL Server 資料和記錄檔的儲存體資源。 為了簡單起見，您會針對兩者建立單一磁碟。 您可以在之後使用 [Add-Azure Disk](/powershell/module/servicemanagement/azure.service/add-azuredisk) Cmdlet 來附加額外的磁碟，以將您的 SQL Server 資料和記錄檔放在專用的磁碟上。 使用 [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) \(英文\) Cmdlet，在新的資源群組中建立標準儲存體帳戶。 指定您先前針對儲存體帳戶名稱、儲存體 SKU 名稱和位置所初始化的變數。
 
 執行此 Cmdlet 來建立新的儲存體帳戶。
 
@@ -217,7 +217,7 @@ $PublicIp = New-AzPublicIpAddress -Name $InterfaceName `
 
 若要保護 VM 和 SQL Server 的流量，請建立網路安全性群組。
 
-1. 首先，建立遠端桌面（RDP）的網路安全性群組規則，以允許 RDP 連線。
+1. 首先，建立遠端桌面 (RDP) 的網路安全性群組規則，以允許 RDP 連線。
 
    ```powershell
    $NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
@@ -242,7 +242,7 @@ $PublicIp = New-AzPublicIpAddress -Name $InterfaceName `
 
 ### <a name="create-the-network-interface"></a>建立網路介面
 
-現在您已經準備好建立虛擬機器的網路介面。 使用[new-aznetworkinterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) Cmdlet，在新的資源群組中建立網路介面。 指定先前所定義的名稱、位置、子網路及公用 IP 位址。
+現在您已經準備好建立虛擬機器的網路介面。 使用 [get-aznetworkinterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) Cmdlet，在新的資源群組中建立網路介面。 指定先前所定義的名稱、位置、子網路及公用 IP 位址。
 
 執行此 Cmdlet 來建立網路介面。
 
@@ -276,7 +276,7 @@ $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 
 在您可以設定虛擬機器的作業系統屬性之前，您必須先以安全字串的形式提供本機系統管理員帳戶的認證。 為了達成此目的，要使用 [Get-Credential](https://technet.microsoft.com/library/hh849815.aspx) Cmdlet。
 
-執行下列 Cmdlet。 您必須在 [PowerShell 認證要求] 視窗中輸入 VM 的本機系統管理員名稱和密碼。
+執行下列 Cmdlet。 您必須在 PowerShell 認證要求視窗中輸入 VM 的本機系統管理員名稱和密碼。
 
 ```powershell
 $Credential = Get-Credential -Message "Type the name and password of the local administrator account."
@@ -366,7 +366,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 
 ## <a name="install-the-sql-iaas-agent"></a>安裝 SQL IaaS 代理程式
 
-SQL Server 虛擬機器能以 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)支援自動化管理功能。 若要在新的 VM 上安裝代理程式，並向資源提供者註冊，請在建立虛擬機器之後，執行[AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm)命令。 指定 SQL Server VM 的授權類型，透過 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 選擇「隨用隨付」或「自備授權」。 如需授權的詳細資訊，請參閱[授權模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
+SQL Server 虛擬機器能以 [SQL Server IaaS 代理程式延伸模組](sql-server-iaas-agent-extension-automate-management.md)支援自動化管理功能。 若要在新的 VM 上安裝代理程式，並向資源提供者註冊它，請在建立虛擬機器之後，執行 [AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) 命令。 指定 SQL Server VM 的授權類型，透過 [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) 選擇「隨用隨付」或「自備授權」。 如需授權的詳細資訊，請參閱[授權模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
 
 
    ```powershell

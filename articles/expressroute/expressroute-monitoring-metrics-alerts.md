@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：監視、計量和警示
-description: 瞭解使用 Azure 監視器的 Azure ExpressRoute 監視、計量和警示，這項功能會在 Azure 之間停止所有計量、警示、診斷記錄。
+description: 深入瞭解使用 Azure 監視器的 Azure ExpressRoute 監視、計量和警示，這會在 Azure 中停止所有計量、警示、診斷記錄。
 services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 49e5acb7fc0cfe947d846f2943fb5071d6554ea5
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: b3c42901b4ef503a6099b49db84012521a7eba9f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192463"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654560"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 監視、計量和警示
 
@@ -24,36 +24,38 @@ ms.locfileid: "88192463"
 
 ## <a name="expressroute-metrics"></a>ExpressRoute 計量
 
-若要查看 **計量**，請流覽至 [ *Azure 監視器* ] 頁面，然後按一下 [ *計量*]。 若要查看 **expressroute** 計量，請依資源類型的 *expressroute 線路*進行篩選。 若要查看 **全球** 觸達計量，請依資源類型的 *expressroute 線路* 進行篩選，然後選取已啟用全域觸達的 ExpressRoute 線路資源。 若要查看 **Expressroute Direct** 計量，請依 *Expressroute 埠*篩選資源類型。 
+若要查看 **度量**，請流覽至 [ *Azure 監視器* ] 頁面，然後按一下 [ *計量*]。 若要查看 **expressroute** 計量，請依資源類型的 *expressroute 線路*進行篩選。 若要查看 **全球** 觸達計量，請依資源類型的 *expressroute 線路* 進行篩選，然後選取啟用全球存取範圍的 expressroute 線路資源。 若要查看 **Expressroute Direct** 計量，請依 *Expressroute 埠*篩選資源類型。 
 
-選取度量之後，將會套用預設匯總。 （選擇性）您可以套用 [分割]，這將會顯示具有不同維度的度量。
+一旦選取度量，將會套用預設匯總。 （選擇性）您可以套用分割，這會顯示具有不同維度的度量。
 
 ### <a name="available-metrics"></a>可用的度量
 |**計量**|**類別**|**維度 (s) **|**功能 (s) **|
 | --- | --- | --- | --- |
 |ARP 可用性|可用性|<ui><li>對等 (主要/次要 ExpressRoute 路由器) </ui></li><ui><li> 對等互連類型 (私用/公用/Microsoft) </ui></li>|ExpressRoute|
 |Bgp 可用性|可用性|<ui><li> 對等 (主要/次要 ExpressRoute 路由器) </ui></li><ui><li> 對等互連類型</ui></li>|ExpressRoute|
-|BitsInPerSecond|交通流量|<ui><li> ExpressRoute)  (對等互連類型 </ui></li><ui><li>連結 (ExpressRoute Direct) </ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|交通流量| <ui><li>ExpressRoute)  (對等互連類型 </ui></li><ui><li> 連結 (ExpressRoute Direct)  | <ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|BitsInPerSecond|交通流量|<ui><li> ExpressRoute)  (對等互連類型 </ui></li><ui><li> (ExpressRoute Direct) 連結 </ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct|
+|BitsOutPerSecond|交通流量| <ui><li>ExpressRoute)  (對等互連類型 </ui></li><ui><li>  (ExpressRoute Direct) 連結 |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|CPU 使用率|效能| <ui><li>執行個體</ui></li>|ExpressRoute 虛擬網路閘道|
+|每秒封包數|效能| <ui><li>執行個體</ui></li>|ExpressRoute 虛擬網路閘道|
 |GlobalReachBitsInPerSecond|交通流量|<ui><li>對等互連線路 Skey (服務金鑰) </ui></li>|Global Reach|
 |GlobalReachBitsOutPerSecond|交通流量|<ui><li>對等互連線路 Skey (服務金鑰) </ui></li>|Global Reach|
 |AdminState|實體連線能力|連結|ExpressRoute Direct|
 |LineProtocol|實體連線能力|連結|ExpressRoute Direct|
-|RxLightLevel|實體連線能力|<ui><li>Link</ui></li><ui><li>Lane</ui></li>|ExpressRoute Direct|
-|TxLightLevel|實體連線能力|<ui><li>Link</ui></li><ui><li>Lane</ui></li>|ExpressRoute Direct|
+|RxLightLevel|實體連線能力|<ui><li>連結</ui></li><ui><li>車道</ui></li>|ExpressRoute Direct|
+|TxLightLevel|實體連線能力|<ui><li>連結</ui></li><ui><li>車道</ui></li>|ExpressRoute Direct|
 >[!NOTE]
->只有在至少建立了一個全域連線時，才會顯示使用 *GlobalGlobalReachBitsInPerSecond* 和 *GlobalGlobalReachBitsOutPerSecond* 。
+>只有在建立至少一個全球觸達連接時，才會顯示使用 *GlobalGlobalReachBitsInPerSecond* 和 *GlobalGlobalReachBitsOutPerSecond* 。
 >
 
-## <a name="circuits-metrics"></a>線路計量
+## <a name="circuits-metrics"></a>電路計量
 
-### <a name="bits-in-and-out---metrics-across-all-peerings"></a>位 In 和 Out-所有對等互連之間的計量
+### <a name="bits-in-and-out---metrics-across-all-peerings"></a>跨所有對等互連的位 In 和 Out 計量
 
-您可以跨給定 ExpressRoute 線路上的所有對等互連來查看計量。
+您可以在特定 ExpressRoute 線路的所有對等互連上查看計量。
 
 ![線路計量](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 
-### <a name="bits-in-and-out---metrics-per-peering"></a>位 In 和 Out-每個對等互連的計量
+### <a name="bits-in-and-out---metrics-per-peering"></a>每個對等互連的位和輸出計量
 
 您可以檢視私用、公用及 Microsoft 對等互連的計量 (以位元/秒為單位)。
 
@@ -61,47 +63,55 @@ ms.locfileid: "88192463"
 
 ### <a name="bgp-availability---split-by-peer"></a>BGP 可用性-依對等分割  
 
-您可以在對等互連和對等 (主要和次要 ExpressRoute 路由器) ，查看 BGP 的即時可用性。 此儀表板會顯示私人對等互連的主要 BGP 會話，以及針對私人對等互連關閉的第二個 BGP 會話。 
+您可以跨對等互連和對等互連 (主要和次要 ExpressRoute 路由器) ，以近乎即時地查看 BGP 的可用性。 此儀表板會顯示私人對等互連的主要 BGP 會話，以及私人對等互連的第二個 BGP 會話。 
 
 ![每個對等的 BGP 可用性](./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg) 
 
 ### <a name="arp-availability---split-by-peering"></a>ARP 可用性-依對等互連分割  
 
-您可以在對等互連和對等 () 的主要和次要 ExpressRoute 路由器之間，查看 [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) 的即時可用性。 此儀表板會顯示在這兩個對等互連之間的私用對等互連 ARP 會話，但會在對等互連的 Microsoft 對等互連完成 預設匯總 (平均) 在兩個對等之間使用。  
+您可以在對等互連和對等 (主要和次要 ExpressRoute 路由器) ，全面觀看 [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) 的即時可用性。 此儀表板會顯示在這兩個對等之間的私用對等 ARP 會話，但會在對等互連之間完成 Microsoft 對等互連。 預設匯總 (平均) 在兩個對等之間使用。  
 
 ![每個對等的 ARP 可用性](./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg) 
 
 ## <a name="expressroute-direct-metrics"></a>ExpressRoute Direct 計量
 
-### <a name="admin-state---split-by-link"></a>系統管理狀態-依連結分割
-您可以查看每個 ExpressRoute Direct 埠配對連結的系統管理狀態。
+### <a name="admin-state---split-by-link"></a>管理狀態-依連結分割
+您可以查看 ExpressRoute Direct 埠配對的每個連結的管理狀態。
 
 ![er 直接管理狀態](./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg)
 
-### <a name="bits-in-per-second---split-by-link"></a>每秒的位-依連結分割
-您可以跨兩個 ExpressRoute Direct 埠配對的連結來查看每秒的位。 
+### <a name="bits-in-per-second---split-by-link"></a>每秒的位數-依連結分割
+您可以在 ExpressRoute Direct 埠配對的兩個連結中，每秒查看位。 
 
-![每秒的 er 直接位數](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
+![每秒的 er 直接位](./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg)
 
 ### <a name="bits-out-per-second---split-by-link"></a>每秒的位數-依連結分割
-您也可以在 ExpressRoute Direct 埠配對的兩個連結中，查看每秒的位。 
+您也可以在 ExpressRoute Direct 埠配對的兩個連結中，每秒查看位。 
 
-![每秒的 er direct 位](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
+![每秒的 er 位元組](./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg)
 
-### <a name="line-protocol---split-by-link"></a>線路通訊協定-依連結分割
+### <a name="line-protocol---split-by-link"></a>Line Protocol-依連結分割
 您可以跨 ExpressRoute Direct 埠配對的每個連結來查看線路通訊協定。
 
 ![er direct line 通訊協定](./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg)
 
-### <a name="rx-light-level---split-by-link"></a>Rx Light 層級-依連結分割
-您可以 (ExpressRoute Direct 埠 **接收** 的每個埠) 的「Rx light」層級。 狀況良好的 Rx 光線層級通常落在-10 到 0 dBm 的範圍內
+### <a name="rx-light-level---split-by-link"></a>Rx 燈光層級-依連結分割
+您可以針對每個 **埠) 的** ExpressRoute Direct 埠 (的燈光，查看每個埠的 Rx 光等級。 狀況良好的 Rx 燈通常落在-10 到 0 dBm 的範圍內
 
-![er direct line Rx Light 層級](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
+![er direct line Rx Light 等級](./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg)
 
-### <a name="tx-light-level---split-by-link"></a>Tx 光線層級-依連結分割
-您可以針對每個埠) ExpressRoute Direct 埠正在 **傳輸** 的光線層級 (。 狀況良好的 Tx 光線層級通常落在-10 到 0 dBm 的範圍內
+### <a name="tx-light-level---split-by-link"></a>Tx Light-依連結分割
+您可以在 ExpressRoute Direct 埠 (的光線層級中，查看每個埠 **) 的** Tx 燈。 狀況良好的 Tx 淺色通常落在-10 到 0 dBm 的範圍內
 
-![er direct line Rx Light 層級](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+![er direct line Rx Light 等級](./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg)
+
+## <a name="expressroute-virtual-network-gateway-metrics"></a>ExpressRoute 虛擬網路閘道計量
+
+### <a name="cpu-utilization---split-instance"></a>CPU 使用率-分割實例
+您可以查看閘道實例的 CPU 使用率。
+
+### <a name="packets-per-second---split-by-instance"></a>每秒封包數-依實例分割
+您可以每秒查看閘道的每秒封包。
 
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute 閘道連線 (以位元/秒為單位)
 

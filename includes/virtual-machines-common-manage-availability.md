@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: f1517fd577c5e6bd7341e5dde0204456524ba976
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2c8f2d95e7e06f2fff3d8344a3fffa5b19648ede
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87545294"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655067"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重新開機 - 維護與停機時間
 有三種情況可能會導致 Azure 中的虛擬機器受到影響：未規劃的硬體維護、未預期的停機時間以及規劃的維護。
@@ -67,7 +67,7 @@ Azure 區域中的可用性區域是由**容錯網域**和**更新網域**組成
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>將受控磁碟使用於可用性設定組中的 VM
 如果您目前使用 VM 搭配非受控磁碟，強烈建議您[將可用性設定組中的 VM 轉換為受控磁碟](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)。
 
-[受控磁碟](../articles/virtual-machines/windows/managed-disks-overview.md)可確保可用性設定組中的 VM 磁碟彼此充分隔離，以避免單一失敗點，為可用性設定組提供更高的可靠性。 作法是自動將磁碟置於不同的儲存體容錯網域 (儲存體叢集)，並將它們與 VM 容錯網域對齊。 如果因為硬體或軟體失敗而造成儲存體容錯網域失敗，則只有磁碟是在這些儲存體容錯網域上的 VM 執行個體才會失敗。
+[受控磁碟](../articles/virtual-machines/managed-disks-overview.md)可確保可用性設定組中的 VM 磁碟彼此充分隔離，以避免單一失敗點，為可用性設定組提供更高的可靠性。 作法是自動將磁碟置於不同的儲存體容錯網域 (儲存體叢集)，並將它們與 VM 容錯網域對齊。 如果因為硬體或軟體失敗而造成儲存體容錯網域失敗，則只有磁碟是在這些儲存體容錯網域上的 VM 執行個體才會失敗。
 ![受控磁碟 FD](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 > [!IMPORTANT]

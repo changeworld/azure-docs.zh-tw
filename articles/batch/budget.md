@@ -3,12 +3,12 @@ title: 成本分析和預算
 description: 了解如何取得成本分析，並針對用來執行 Batch 工作負載的基礎計算資源和軟體授權設定預算。
 ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 50ca1ecfd0a973ff39dabfcb62175ce820d0a0d6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725766"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654237"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch 的成本分析和預算
 
@@ -68,7 +68,7 @@ Batch 集區會使用網路資源。 特別是，系統會針對 **VirtualMachin
 
 ### <a name="virtual-machine-os-disk-type"></a>虛擬機器 OS 磁碟類型
 
-[VM OS 磁碟類型](../virtual-machines/windows/disks-types.md)有很多種。 大部分的 VM 系列大小都同時支援進階和標準儲存體。 為集區選取「s」VM 大小時，Batch 會設定進階 SSD OS 磁碟。 選取「非 s」VM 大小時，則會使用較便宜的標準 HDD 磁碟類型。 例如，進階 SSD OS 磁碟用於 `Standard_D2s_v3`，而標準 HDD OS 磁碟則用於 `Standard_D2_v3`。
+[VM OS 磁碟類型](../virtual-machines/disks-types.md)有很多種。 大部分的 VM 系列大小都同時支援進階和標準儲存體。 為集區選取「s」VM 大小時，Batch 會設定進階 SSD OS 磁碟。 選取「非 s」VM 大小時，則會使用較便宜的標準 HDD 磁碟類型。 例如，進階 SSD OS 磁碟用於 `Standard_D2s_v3`，而標準 HDD OS 磁碟則用於 `Standard_D2_v3`。
 
 進階 SSD OS 磁碟較昂貴，但效能更高，而且相較於具有標準 HDD OS 磁碟的 VM，具有進階磁碟 VM 的啟動速度可以稍微快一點。 使用 Batch 時，不會常使用 OS 磁碟，因為應用程式與工作檔案位於 VM 的暫存 SSD 磁碟上。 因此在許多情況下，不需要為指定「s」VM 大小所佈建的進階 SSD 支付更多的成本。
 

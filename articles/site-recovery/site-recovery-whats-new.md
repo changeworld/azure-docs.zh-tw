@@ -3,12 +3,12 @@ title: Azure Site Recovery 的新功能
 description: 提供新功能的摘要，以及 Azure Site Recovery 服務中的最新更新。
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: d7e3a8e29800943b28c64848fc66f27f888d439f
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 09afd4416efc8e6904b7c487d5ed2f3be22db081
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611733"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654815"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 最新功能
 
@@ -378,7 +378,7 @@ Site Recovery 現在支援針對快取儲存體或目標儲存體使用一般用
 **功能** | **詳細資料**
 --- | ---
 **網路對應** | 針對 Azure VM 嚴重損壞修復，您現在可以在啟用複寫時使用任何可用的目標網路。
-**標準 SSD** | 您現在可以使用 [標準 SSD 磁片](../virtual-machines/windows/disks-types.md#standard-ssd)來設定 Azure vm 的嚴重損壞修復。
+**標準 SSD** | 您現在可以使用 [標準 SSD 磁片](../virtual-machines/disks-types.md#standard-ssd)來設定 Azure vm 的嚴重損壞修復。
 **儲存空間直接存取** | 您可以使用 [儲存空間直接存取](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) 高可用性，為在 Azure VM 應用程式上執行的應用程式設定嚴重損壞修復。  使用儲存空間直接存取 (S2D) 搭配 Site Recovery 可提供完整的 Azure VM 工作負載保護。 S2D 可讓您在 Azure 中裝載來賓叢集。 當 VM 裝載重要的應用程式，例如 SAP ASCS 層、SQL Server 或向外延展檔案伺服器時，這特別有用。
 
 

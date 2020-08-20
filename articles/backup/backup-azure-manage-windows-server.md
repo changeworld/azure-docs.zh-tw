@@ -3,12 +3,12 @@ title: 管理 Azure 復原服務保存庫與伺服器
 description: 在本文中，您將瞭解如何使用復原服務保存庫總覽儀表板來監視和管理您的復原服務保存庫。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 68c6354fa15ee2a6873b57e5c1622afb108b9a10
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ee96acf624f1c313c85b21840c142e1e2d6f40d8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263322"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654203"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>監視及管理復原服務保存庫
 
@@ -96,7 +96,7 @@ ms.locfileid: "88263322"
 | 警示層級 | 產生警示的事件 |
 | ----------- | ----------- |
 | 重大 | 您會在下列情況中收到重大警示：備份作業失敗、復原作業失敗，以及當您在伺服器停止保護時，但保留資料。|
-| 警告 | 您會在下列情況收到警告警示：備份作業完成但出現警告，例如，因為損毀問題而未備份100檔案，或超過1000000檔案) 成功備份時。 |
+| 警告 | 您會在下列情況收到警告警示：備份作業完成但出現警告。 例如，當不是因為損毀問題而未備份超過100的檔案時，或當) 的1000000檔案成功備份時。 |
 | 資訊 | 目前沒有使用中的資訊警示。 |
 
 ### <a name="viewing-alert-details"></a>檢閱警示詳細資料
@@ -226,7 +226,7 @@ ms.locfileid: "88263322"
 * Azure 儲存體
 * Azure 工作負載
 
-#### <a name="operation"></a>作業
+#### <a name="operation"></a>操作
 
 您可以檢視一項作業或所有作業。 您無法選取兩項或三項作業。 可用的作業如下：
 

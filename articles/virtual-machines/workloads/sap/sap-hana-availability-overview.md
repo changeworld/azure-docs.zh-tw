@@ -15,18 +15,18 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e44edff9ac81588e4f861b7a1d1ae1a1628d5e04
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035633"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653540"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 虛擬機器的 SAP Hana 高可用性
 
 您可以使用許多 Azure 功能，在 Azure 虛擬機器上部署像是 SAP Hana 的任務關鍵性資料庫。 本文提供的指引會引導您達成 Azure 虛擬機器中裝載之 SAP Hana 執行個體的可用性。 本文說明可以使用 Azure 基礎結構實作以提高 Azure 中 SAP Hana 可用性的幾個案例。 
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本文假設您已熟悉 Azure 上的基礎結構即服務 (IaaS) 基本知識，包括： 
 
@@ -58,11 +58,11 @@ ms.locfileid: "87035633"
 
 Azure 對不同的元件 (例如網路、儲存體和虛擬機器) 有不同的可用性 SLA。 所有的 SLA 都會記錄下來。 如需詳細資訊，請參閱 [Microsoft Azure 服務等級協定](https://azure.microsoft.com/support/legal/sla/)。 
 
-[虛擬機器的 sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)描述三種不同的 sla，適用于三種不同的設定：
+[虛擬機器的 sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) 描述三種不同的 sla，適用于三種不同的設定：
 
-- 針對 OS 磁碟和所有資料磁碟使用 [Azure 進階 SSD](../../windows/managed-disks-overview.md) 的單一 VM。 此選項提供每月 99.9% 的執行時間。
+- 針對 OS 磁碟和所有資料磁碟使用 [Azure 進階 SSD](../../managed-disks-overview.md) 的單一 VM。 此選項提供每月 99.9% 的執行時間。
 - 在 [Azure 可用性設定組](../../windows/tutorial-availability-sets.md)中組織的多個 (至少兩個) 虛擬機器。 此選項提供每月 99.95% 的執行時間。
-- 在[可用性區域](../../../availability-zones/az-overview.md)中組織的多個（至少兩個） vm。 此選項提供99.99% 的每月執行時間。
+- 多 (至少兩部在 [可用性區域](../../../availability-zones/az-overview.md)中組織的) vm。 此選項提供了99.99% 的每月執行時間。
 
 針對 Azure 元件可以提供的 SLA 測量您的可用性需求。 然後，針對 SAP Hana 選擇您的案例，以達到所需的可用性層級。
 

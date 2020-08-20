@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4a22771f7880c48722f410f3a2fae0c66e9c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035786"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653591"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性區域的 SAP 工作負載設定
 [Azure 可用性區域](../../../availability-zones/az-overview.md)是 Azure 提供的高可用性功能之一。 使用可用性區域可改善 Azure 上的 SAP 工作負載整體的可用性。 已功能已在部分 [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)推出。 未來將可在更多區域提供此功能。
@@ -30,7 +30,7 @@ ms.locfileid: "87035786"
 
 ![標準高可用性組態](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-SAP 應用層會部署在一個 Azure[可用性設定組](../../windows/manage-availability.md)上。 為了讓 SAP 中央服務具有高可用性，您在個別可用性設定組中部署兩部 VM。 使用 Windows Server 容錯移轉叢集或 Pacemaker (Linux)，在發生基礎結構或軟體問題時作為具有自動容錯移轉的高可用性架構。 若要深入了解這些部署，請參閱︰
+SAP 應用層會部署在單一 Azure [可用性設定組](../../windows/manage-availability.md)中。 為了讓 SAP 中央服務具有高可用性，您在個別可用性設定組中部署兩部 VM。 使用 Windows Server 容錯移轉叢集或 Pacemaker (Linux)，在發生基礎結構或軟體問題時作為具有自動容錯移轉的高可用性架構。 若要深入了解這些部署，請參閱︰
 
 - [使用叢集共用磁片在 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 實例叢集](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-file-share.md)
@@ -57,8 +57,8 @@ SAP 應用層會部署在一個 Azure[可用性設定組](../../windows/manage-a
 
 - 部署至 Azure 可用性區域時，必須使用 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)。 
 - 針對實體區域的區域列舉對應是依 Azure 訂用帳戶來決定。 如果您使用不同的訂用帳戶來部署 SAP 系統，則必須為每個訂用帳戶定義理想的區域。
-- 除非您使用[Azure 鄰近放置群組](../../linux/co-location.md)，否則無法在 Azure 可用性區域中部署 azure 可用性設定組。 如何跨區域部署 SAP DBMS 層和中央服務的方式，同時使用可用性設定組來部署 SAP 應用層，而且仍然達到 Vm 的近近性，請參閱[Azure 鄰近放置群組，以取得 sap 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)一文。 如果您不利用 Azure 鄰近放置群組，則需要選擇其中一個，做為虛擬機器的部署架構。
-- 您無法使用 [Azure 基本 Load Balancer](../../../load-balancer/load-balancer-overview.md) 來建立以 Windows Server 容錯移轉叢集或 Linux Pacemaker 為基礎的容錯移轉叢集解決方案。 相反地，您必須使用[Azure STANDARD LOAD BALANCER SKU](../../../load-balancer/load-balancer-standard-availability-zones.md)。
+- 除非您使用 [Azure 鄰近放置群組](../../linux/co-location.md)，否則無法在 Azure 可用性區域內部署 azure 可用性設定組。 如何跨區域部署 SAP DBMS 層和中央服務的方式，同時使用可用性設定組部署 SAP 應用層，並仍能達到 Vm 的近近距離，請參閱 [Azure 鄰近放置群組以取得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。 如果您不想使用 Azure 鄰近放置群組，則需要選擇其中一個，作為虛擬機器的部署架構。
+- 您無法使用 [Azure 基本 Load Balancer](../../../load-balancer/load-balancer-overview.md) 來建立以 Windows Server 容錯移轉叢集或 Linux Pacemaker 為基礎的容錯移轉叢集解決方案。 相反地，您必須使用 [Azure STANDARD LOAD BALANCER SKU](../../../load-balancer/load-balancer-standard-availability-zones.md)。
 
 
 
@@ -76,7 +76,7 @@ SAP 應用層會部署在一個 Azure[可用性設定組](../../windows/manage-a
 - 當您找到具有最低網路延遲的兩個區域時，請部署 VM SKU 中的另外三個 VM，作為要跨三個可用性區域的應用程式層 VM。 在您所選取的兩個 DBMS 區域中，對兩個 DBMS VM 測量網路延遲。 
 - 使用 **niping** 作為測量工具。 此為來自 SAP 的工具，相關說明請見 SAP 支援附註 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)。 請將重點放在文件中的延遲測量命令上。 由於 **ping** 無法在 Azure 加速網路程式碼路徑中運作，因此不建議使用。
 
-您不需要手動執行這些測試。 您可以找到 PowerShell 程式[可用性區域延遲測試](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test)，以自動化所述的延遲測試。 
+您不需要手動執行這些測試。 您可以找到可將所述延遲測試自動化的 PowerShell 程式 [可用性區域延遲測試](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) 。 
 
 根據測量結果和 VM SKU 在可用性區域中的可用情形，您必須做出某些決定：
 
@@ -104,23 +104,23 @@ SAP 應用層會部署在一個 Azure[可用性設定組](../../windows/manage-a
 
 此設定需要考慮下列事項：
 
-- 不使用[Azure 鄰近放置群組](../../linux/co-location.md)，您會將 Azure 可用性區域視為所有 vm 的容錯和更新網域，因為無法在 Azure 可用性區域中部署可用性設定組。
-- 如果您想要將 DBMS 層和中央服務的區域部署結合在一起，但想要使用應用層的 Azure 可用性設定組，您需要使用 azure 鄰近性群組，如[適用于 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)一文所述。
+- 若未使用 [Azure 鄰近放置群組](../../linux/co-location.md)，則會將 Azure 可用性區域視為所有 vm 的容錯和更新網域，因為可用性設定組無法在 Azure 可用性區域中部署。
+- 如果您想要合併 DBMS 層和中央服務的區域部署，但想要使用應用層的 Azure 可用性設定組，您必須使用 azure 鄰近放置群組一文中所述的 Azure 相近群組， [以獲得 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
 - 針對 SAP 中央服務和 DBMS 層的容錯移轉叢集所使用的負載平衡器，必須是[標準 SKU Azure 負載平衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本負載平衡器將無法跨區域運作。
 - 您部署用以裝載 SAP 系統的 Azure 虛擬網路，會連同其子網路擴展至各個區域。 您的每個區域不需要個別的虛擬網路。
-- 針對您部署的所有虛擬機器，您需要使用[Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)。 非受控磁碟不支援區域部署。
-- Azure 進階儲存體和 [Ultra SSD 儲存體](../../windows/disks-types.md#ultra-disk)不支援跨區域進行任何類型的儲存體複寫。 應用程式 (DBMS 或 SAP 中央服務) 必須複寫重要的資料。
+- 針對您部署的所有虛擬機器，您必須使用 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)。 非受控磁碟不支援區域部署。
+- Azure 進階儲存體和 [Ultra SSD 儲存體](../../disks-types.md#ultra-disk)不支援跨區域進行任何類型的儲存體複寫。 應用程式 (DBMS 或 SAP 中央服務) 必須複寫重要的資料。
 - 共用的 sapmnt 目錄也是如此，包括共用磁碟 (Windows)、CIFS 共用 (Windows) 或 NFS 共用 (Linux)。 您必須使用可在區域之間複寫這些共用磁碟或共用的技術。 支援的技術如下：
   - 在 Windows 中，支援使用 SIOS Datakeeper 的叢集解決方案，如[在 Azure 中使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-shared-disk.md)中所說明。
   - 在 SUSE Linux 中，支援依據 [SUSE Linux Enterprise Server 上的 Azure VM 針對 NFS 提供的高可用性](./high-availability-guide-suse-nfs.md)所說明的方式建置的 NFS 共用。
     
     目前，使用 Microsoft 向外延展檔案伺服器的解決方案 (如[使用 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用，為 SAP 高可用性準備 Azure 基礎結構](./sap-high-availability-infrastructure-wsfc-file-share.md)中所說明) 並不支援跨區域使用。
 - 第三個區域是用來在您建置 [SUSE Linux pacemaker 叢集](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device)或額外應用程式執行個體的情況下裝載 SBD 裝置。
-- 若要達到重要商務程式的執行時間一致性，您可以嘗試使用 SAP 批次伺服器群組、SAP 登入群組或 RFC 群組，將特定批次作業和使用者導向至與作用中 DBMS 實例相同區域中的應用程式實例。 不過，在發生區域容錯移轉的情況下，您必須手動將這些群組移至在 VM 上執行的執行個體 (其位於與作用中 DB VM 相同的區域中)。  
+- 若要達到重要商務程式的執行時間一致性，您可以嘗試使用 SAP 批次伺服器群組、SAP 登入群組或 RFC 群組，將特定批次作業和使用者導向至使用中 DBMS 實例所在區域的應用程式實例。 不過，在發生區域容錯移轉的情況下，您必須手動將這些群組移至在 VM 上執行的執行個體 (其位於與作用中 DB VM 相同的區域中)。  
 - 您可以在每個區域中部署休眠對話方塊執行個體。 如此，當您的部分應用程式執行個體所使用的區域服務中斷時，就能立即恢復先前的資源容量。
 
 > [!IMPORTANT]
-> 在此主動/主動案例中，頻寬的額外費用會由 Microsoft 從04/01/2020 宣佈。 請參閱檔[頻寬定價詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。 SAP 應用層與 SAP DBMS 層之間的資料傳輸相當耗費資源。 因此，主動/主動案例可能會對成本有相當的貢獻。 請繼續查看這篇文章以取得確切的成本 
+> 在這種主動/主動案例中，頻寬的額外費用是由 Microsoft 從04/01/2020 宣佈。 請查看檔 [頻寬定價詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。 SAP 應用層和 SAP DBMS 層之間的資料傳輸相當密集。 因此主動/主動案例可能會對成本造成很大的貢獻。 繼續查看這篇文章以取得確切的成本 
 
 
 ## <a name="activepassive-deployment"></a>主動/被動部署
@@ -132,12 +132,12 @@ SAP 應用層會部署在一個 Azure[可用性設定組](../../windows/manage-a
 
 此設定需要考慮下列事項：
 
-- 可用性設定組無法部署到 Azure 可用性區域中。 為了補償這一點，您可以使用 azure 鄰近放置群組，如[適用于 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)一文所述。
+- 可用性設定組無法部署到 Azure 可用性區域中。 若要彌補這一點，您可以使用 azure 鄰近放置群組（如 Azure 鄰近放置群組中所述），以提供 [SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
 - 使用此架構時，您必須嚴密監視狀態，並嘗試將作用中的 DBMS 和 SAP 中央服務執行個體維持在已部署的應用程式層所在的區域中。 當 SAP 中央服務或 DBMS 執行個體進行容錯移轉時，您應確保能夠盡快手動容錯回復到部署 SAP 應用程式層的區域中。
 - 針對 SAP 中央服務和 DBMS 層的容錯移轉叢集所使用的負載平衡器，必須是[標準 SKU Azure 負載平衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本負載平衡器將無法跨區域運作。
 - 您部署用以裝載 SAP 系統的 Azure 虛擬網路，會連同其子網路擴展至各個區域。 您的每個區域不需要個別的虛擬網路。
-- 針對您部署的所有虛擬機器，您需要使用[Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)。 非受控磁碟不支援區域部署。
-- Azure 進階儲存體和 [Ultra SSD 儲存體](../../windows/disks-types.md#ultra-disk)不支援跨區域進行任何類型的儲存體複寫。 應用程式 (DBMS 或 SAP 中央服務) 必須複寫重要的資料。
+- 針對您部署的所有虛擬機器，您必須使用 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)。 非受控磁碟不支援區域部署。
+- Azure 進階儲存體和 [Ultra SSD 儲存體](../../disks-types.md#ultra-disk)不支援跨區域進行任何類型的儲存體複寫。 應用程式 (DBMS 或 SAP 中央服務) 必須複寫重要的資料。
 - 共用的 sapmnt 目錄也是如此，包括共用磁碟 (Windows)、CIFS 共用 (Windows) 或 NFS 共用 (Linux)。 您必須使用可在區域之間複寫這些共用磁碟或共用的技術。 支援的技術如下：
     - 在 Windows 中，支援使用 SIOS Datakeeper 的叢集解決方案，如[在 Azure 中使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-shared-disk.md)中所說明。
     - 在 SUSE Linux 中，支援依據 [SUSE Linux Enterprise Server 上的 Azure VM 針對 NFS 提供的高可用性](./high-availability-guide-suse-nfs.md)所說明的方式建置的 NFS 共用。
@@ -160,14 +160,14 @@ SAP 應用層會部署在一個 Azure[可用性設定組](../../windows/manage-a
 
 此設定需要考慮下列事項：
 
-- 您應假設裝載可用性區域的設施之間的距離很大，或是您不能離開特定 Azure 區域。 可用性設定組無法部署到 Azure 可用性區域中。 為了補償這一點，您可以使用 azure 鄰近放置群組，如[適用于 SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)一文所述。
+- 您應假設裝載可用性區域的設施之間的距離很大，或是您不能離開特定 Azure 區域。 可用性設定組無法部署到 Azure 可用性區域中。 若要彌補這一點，您可以使用 azure 鄰近放置群組（如 Azure 鄰近放置群組中所述），以提供 [SAP 應用程式的最佳網路延遲](sap-proximity-placement-scenarios.md)。
 - 使用此架構時，您必須嚴密監視狀態，並嘗試將作用中的 DBMS 和 SAP 中央服務執行個體維持在已部署的應用程式層所在的區域中。 當 SAP 中央服務或 DBMS 執行個體進行容錯移轉時，您應確保能夠盡快手動容錯回復到部署 SAP 應用程式層的區域中。
 - 您應在執行作用中 QA 應用程式執行個體的 VM 中預先安裝生產環境應用程式執行個體。
 - 當某個區域失敗時，請關閉 QA 應用程式執行個體，並改為啟動生產環境執行個體。 請注意，您必須使用應用程式執行個體的虛擬名稱才能達成此目的。
 - 針對 SAP 中央服務和 DBMS 層的容錯移轉叢集所使用的負載平衡器，必須是[標準 SKU Azure 負載平衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本負載平衡器將無法跨區域運作。
 - 您部署用以裝載 SAP 系統的 Azure 虛擬網路，會連同其子網路擴展至各個區域。 您的每個區域不需要個別的虛擬網路。
-- 針對您部署的所有虛擬機器，您需要使用[Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)。 非受控磁碟不支援區域部署。
-- Azure 進階儲存體和 [Ultra SSD 儲存體](../../windows/disks-types.md#ultra-disk)不支援跨區域進行任何類型的儲存體複寫。 應用程式 (DBMS 或 SAP 中央服務) 必須複寫重要的資料。
+- 針對您部署的所有虛擬機器，您必須使用 [Azure 受控磁碟](https://azure.microsoft.com/services/managed-disks/)。 非受控磁碟不支援區域部署。
+- Azure 進階儲存體和 [Ultra SSD 儲存體](../../disks-types.md#ultra-disk)不支援跨區域進行任何類型的儲存體複寫。 應用程式 (DBMS 或 SAP 中央服務) 必須複寫重要的資料。
 - 共用的 sapmnt 目錄也是如此，包括共用磁碟 (Windows)、CIFS 共用 (Windows) 或 NFS 共用 (Linux)。 您必須使用可在區域之間複寫這些共用磁碟或共用的技術。 支援的技術如下：
     - 在 Windows 中，支援使用 SIOS Datakeeper 的叢集解決方案，如[在 Azure 中使用叢集共用磁碟於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理](./sap-high-availability-guide-wsfc-shared-disk.md)中所說明。
     - 在 SUSE Linux 中，支援依據 [SUSE Linux Enterprise Server 上的 Azure VM 針對 NFS 提供的高可用性](./high-availability-guide-suse-nfs.md)所說明的方式建置的 NFS 共用。

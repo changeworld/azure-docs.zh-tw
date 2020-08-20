@@ -4,12 +4,12 @@ description: 摘要說明如何使用 Azure Site Recovery 將 Azure VM 災害復
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 823e116b659a582ceb9a09b752179ee5a78f4ebd
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6cb2f3d099c328f00fab335e1cbe9ea146c0fc55
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607043"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653642"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 災害復原支援矩陣
 
@@ -206,8 +206,8 @@ RBAC 原則 | 不支援 | 以角色為基礎的存取控制 (Vm 上的 RBAC) 原
 
 **元件** | **支援** | **詳細資料**
 --- | --- | ---
-OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/windows/managed-disks-overview.md) VM 磁碟。
-暫存磁碟 | 不支援 | 暫存磁碟一律排除在複寫之外。<br/><br/> 請不要將任何永續性資料儲存於暫存磁碟上。 [深入了解](../virtual-machines/windows/managed-disks-overview.md)。
+OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/managed-disks-overview.md) VM 磁碟。
+暫存磁碟 | 不支援 | 暫存磁碟一律排除在複寫之外。<br/><br/> 請不要將任何永續性資料儲存於暫存磁碟上。 [深入了解](../virtual-machines/managed-disks-overview.md)。
 資料磁碟的大小上限 | 8192 GB (若為受控磁碟)<br></br>4095 GB (若為非受控磁碟)|
 資料磁碟的大小下限 | 非受控磁碟沒有限制。 2 GB (若為受控磁碟) |
 資料磁碟的數目上限 | 最多 64 個 (根據特定的 Azure VM 大小支援) | [深入了解](../virtual-machines/sizes.md) VM 大小。
