@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Hootsuite 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Hootsuite 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d14c4539-f8fe-4722-a143-609fcb605dbb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b282f8e592ffa6b5c8cb36b2f3b2276bdeb0f58
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 6404fb9d08fbc0215dafb7f646df10a4b8ac4f4f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799134"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521700"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hootsuite"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Hootsuite 整合
 
