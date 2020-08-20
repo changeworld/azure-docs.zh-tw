@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020 藍圖範例控制項
 description: SWIFT CSP-CSCF v2020 藍圖範例的控制項對應。 每個控制項都會對應至一或多個可協助評量的 Azure 原則。
-ms.date: 05/13/2020
+ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: 0ef53a570190afa2b27193bdc741e70bad5554a4
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ee9ba86c41f37aac8eba3dbf973d2853a493547a
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926632"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612736"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 藍圖範例的控制項對應
 
@@ -31,17 +31,17 @@ ms.locfileid: "87926632"
 
 ## <a name="26-51-64-and-65a-account-management--role-based-schemes"></a>2.6、5.1、6.4 和 6.5A 帳戶管理 | 角色型配置
 
-Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖還指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此外，此藍圖指派了一項 Azure 原則定義來稽核自訂 RBAC 規則的使用情形。 了解自訂 RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 RBAC 規則很容易發生錯誤。
+Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖還指派了 [Azure 原則](../../../policy/overview.md)定義，用以稽核將 Azure Active Directory 驗證用於 SQL Server 和 Service Fabric 的情形。 使用 Azure Active Directory 驗證可針對資料庫使用者及其他 Microsoft 服務，簡化權限管理及集中管理身分識別。 此外，此藍圖指派了一項 Azure 原則定義來稽核自訂 RBAC 規則的使用情形。 了解自訂 RBAC 規則的實作之處，有助於您確認需求和適當的實作，因為自訂的 RBAC 規則很容易發生錯誤。
 
 - 應針對 SQL 伺服器佈建 Azure Active Directory 管理員
-- 稽核自訂 RBAC 規則的使用方式
+- 稽核不是使用受控磁碟的 VM
 - Service Fabric 叢集應只能使用 Azure Active Directory 進行用戶端驗證
 
 ## <a name="29a--account-management--account-monitoring--atypical-usage"></a>2.9A 帳戶管理 | 帳戶監視 / 非典型的使用方式
 
 Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量、降低暴露於攻擊的風險，同時能夠視需要輕鬆連線至 VM。 存取虛擬機器的所有 JIT 要求都會都記錄在「活動記錄」中，讓您監視非典型的使用方式。 此藍圖指派 [Azure 原則](../../../policy/overview.md)定義，可協助您監視可支援但尚未設定 Just-In-Time 存取的虛擬機器。
 
-- Just-In-Time 網路存取控制應套用在虛擬機器上
+- 應使用 Just-In-Time 網路存取控制來保護虛擬機器的管理連接埠
 
 ## <a name="13-51-and-64-separation-of-duties"></a>1.3、5.1 和 6.4 職責區分
 
@@ -54,11 +54,11 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 
 ## <a name="13-51-and-64-least-privilege--review-of-user-privileges"></a>1.3、5.1 和 6.4 最小權限 | 檢閱使用者權限
 
-Azure 會實作 [Azure 角色型存取控制 (Azure RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核應該優先檢閱的帳戶。 檢閱這些帳戶指標，可協助您確保會實作最低權限控制措施。
+Azure 會實作[角色型存取控制 (RBAC)](../../../../role-based-access-control/overview.md)，以協助您管理有權存取 Azure 資源的人員。 您可以使用 Azure 入口網站，檢閱可存取 Azure 資源的人員及其權限。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核應該優先檢閱的帳戶。 檢閱這些帳戶指標，可協助您確保會實作最低權限控制措施。
 
 - 應針對您的訂用帳戶指定最多 3 位擁有者
-- 從其中 Administrators 群組不包含任何指定成員的 Windows VM 顯示稽核結果
-- 部署必要條件以稽核其中 Administrators 群組不包含任何指定成員的 Windows VM
+- 顯示稽核未加入指定網域 Windows VM 的結果
+- 部署必要條件，以稽核未加入指定網域的 Windows VM
 - 應將一個以上的擁有者指派給您的訂用帳戶
 
 ## <a name="22-and-27-security-attributes"></a>2.2 和 2.7 安全性屬性
@@ -72,9 +72,9 @@ Azure SQL Database 進階資料安全性的資料探索和分類功能提供一�
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，監視 Azure App Service 應用程式的遠端偵錯已關閉，而且指派原則定義，稽核允許帳戶無需密碼便可從遠端連線的 Linux 虛擬機器，來協助您監視和控制遠端存取。 這個藍圖還指派一個 Azure 原則定義，協助您監視無限制地存取儲存體帳戶。 監視這些指標可協助您確保遠端存取方法符合安全性原則。
 
-- \[預覽\]：從允許不使用密碼從帳戶遠端連線的 Linux VM 顯示稽核結果
-- \[預覽\]：部署必要條件以稽核允許不使用密碼從帳戶遠端連線的 Linux VM
-- 稽核不受限制的儲存體帳戶網路存取
+- 從允許不使用密碼從帳戶遠端連線的 Linux VM 顯示稽核結果
+- 部署必要條件以稽核允許不使用密碼從帳戶遠端連線的 Linux VM
+- 儲存體帳戶應限制網路存取
 - 應關閉 API 應用程式的遠端偵錯
 - 函式應用程式的遠端偵錯應關閉
 - Web 應用程式的遠端偵錯應關閉
@@ -84,10 +84,8 @@ Azure SQL Database 進階資料安全性的資料探索和分類功能提供一�
 「Azure 監視器」所收集的記錄資料會儲存在 Log Analytics 工作區中，進而啟用集中化設定與管理。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核和強制要求在 Azure 虛擬機器上部署 Log Analytics 代理程式，協助您確保會記錄事件。
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
-- \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
-- \[預覽\]：為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
-- \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
+- 部署適用於 Linux VM 的 Log Analytics 代理程式
+- 部署適用於 Windows VM 的 Log Analytics 代理程式
 
 ## <a name="22-27-and-64-response-to-audit-processing-failures"></a>2.2、2.7 和 6.4 稽核處理失敗時的回應
 
@@ -95,51 +93,50 @@ Azure SQL Database 進階資料安全性的資料探索和分類功能提供一�
 
 - 應在 SQL 伺服器上啟用進階資料安全性
 - 稽核診斷設定
-- 在 SQL 伺服器上部署稽核
+- 應啟用 SQL 伺服器上的稽核
 
 ## <a name="13-and-64-audit-review-analysis-and-reporting--central-review-and-analysis"></a>1.3 和 6.4 稽核檢閱、分析和報告 | 集中檢閱與分析
 
 Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中，進而啟用集中化報告與分析。 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核和強制要求在 Azure 虛擬機器上部署 Log Analytics 代理程式，協助您確保會記錄事件。
 
 - \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
-- \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
-- \[預覽\]：為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
-- \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
+- 部署適用於 Linux VM 的 Log Analytics 代理程式
+- 部署適用於 Windows VM 的 Log Analytics 代理程式
 
 ## <a name="13-22-27-64-and-65a-audit-generation"></a>1.3、2.2、2.7、6.4 和 6.5A 稽核產生
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核 Azure 資源的記錄設定，以協助您確保會記錄系統事件。 這些原則定義會稽核並強制要求在 Azure 虛擬機器上部署 Log Analytics 代理程式，以及設定其他 Azure 資源類型的稽核設定。 這些原則定義也會稽核診斷記錄的設定，以深入解析 Azure 資源內所執行的作業。 此外，會在 SQL 伺服器上設定稽核與「進階資料安全性」。
 
-- \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
-- \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
-- \[預覽\]：為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
-- \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
+- 稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
+- 為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 部署適用於 Linux VM 的 Log Analytics 代理程式
+- 為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 部署適用於 Windows VM 的 Log Analytics 代理程式
 - 稽核診斷設定
 - 稽核 SQL 伺服器層級稽核設定
 - 應在 SQL 伺服器上啟用進階資料安全性
 - 在 SQL 伺服器上部署進階資料安全性
-- 在 SQL 伺服器上部署稽核
+- 應啟用 SQL 伺服器上的稽核
 - 部署網路安全性群組的診斷設定
 
 ## <a name="11-least-functionality--prevent-program-execution"></a>1.1 最少的功能 | 防止程式執行
 
 「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制能以強制模式執行，禁止執行未經核准的應用程式。 此藍圖指派一個 Azure 原則定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
-- 應在虛擬機器上啟用自適性應用程式控制
+- 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
 
 ## <a name="11-least-functionality--authorized-software--whitelisting"></a>1.1 最少的功能 | 已授權的軟體/加入允許清單
 
 「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您建立虛擬機器的已核准應用程式清單。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
-- 應在虛擬機器上啟用自適性應用程式控制
+- 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
 
 ## <a name="11-user-installed-software"></a>1.1 使用者安裝的軟體
 
 「Azure 資訊安全中心」的自適性應用程式控制是智慧型的自動化端對端應用程式允許清單解決方案，可封鎖或防止在虛擬機器上執行特定軟體。 應用程式控制可協助您強制執行軟體限制原則，並監視其合規性。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，協助您監視已建議但尚未設定允許清單解決方案的虛擬機器。
 
-- 應在虛擬機器上啟用自適性應用程式控制
+- 您的電腦應啟用自適性應用程式控制，以定義安全應用程式
+- 虛擬機器應移轉到新的 Azure Resource Manager 資源
 
 ## <a name="42-identification-and-authentication-organizational-users--network-access-to-privileged-accounts"></a>4.2 識別與驗證 (組織使用者) | 授權帳戶的網路存取
 
@@ -158,36 +155,36 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核允許帳戶無需密碼便可從遠端連線和/或在 passwd 檔案設定不正確權限的 Linux 虛擬機器。 此藍圖還指派了原則定義，稽核 Windows 虛擬機器的密碼加密類型搭配。 監視這些指標可協助您確保系統驗證器符合貴組織的識別與驗證原則。
 
-- \[預覽\]：從密碼檔權限未設為 0644 的 Linux VM 顯示稽核結果
-- \[預覽\]：部署需求以稽核密碼檔權限未設為 0644 的 Linux VM
-- \[預覽\]：從帳戶沒有密碼的 Linux VM 顯示稽核結果
-- \[預覽\]：部署需求以稽核有不具密碼帳戶的 Linux VM
-- \[預覽\]：從未使用可逆加密來儲存密碼的 Windows VM 顯示結果
-- \[預覽\]：部署需求以稽核未使用可逆加密來儲存密碼的 Windows VM
+- 從密碼檔權限未設為 0644 的 Linux VM 顯示稽核結果
+- 部署需求以稽核密碼檔權限未設為 0644 的 Linux VM
+- 從帳戶沒有密碼的 Linux VM 顯示稽核結果
+- 部署需求以稽核有不具密碼帳戶的 Linux VM
+- 從未使用可逆加密來儲存密碼的 Windows VM 顯示結果
+- 部署需求以稽核未使用可逆加密來儲存密碼的 Windows VM
 
 ## <a name="23-and-41-authenticator-management--password-based-authentication"></a>2.3 和 4.1 驗證器管理 | 密碼型驗證
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，稽核未強制執行最低強度和其他密碼需求的 Windows 虛擬機器，以協助您強制要求使用強式密碼。 了解有哪些虛擬機器違反密碼強度原則可協助您採取矯正措施，以確保所有虛擬機器使用者帳戶的密碼都符合貴組織的密碼原則。
 
-- \[預覽\]：從允許重複使用前 24 個舊密碼的 Windows VM 顯示稽核結果
-- \[預覽\]：從最大密碼存留期不是 70 天的 Windows VM 顯示稽核結果
-- \[預覽\]：從最小密碼存留期不是 1 天的 Windows VM 顯示稽核結果
-- \[預覽\]：從未啟用密碼複雜度設定的 Windows VM 顯示稽核結果
-- \[預覽\]：從最小密碼長度未限制為 14 個字元的 Windows VM 顯示稽核結果
-- \[預覽\]：從未使用可逆加密來儲存密碼的 Windows VM 顯示結果
-- \[預覽\]：部署必要條件以稽核允許重複使用前 24 個舊密碼的 Windows VM
-- \[預覽\]：部署必要條件以稽核最大密碼存留期不是 70 天的 Windows VM
-- \[預覽\]：部署必要條件以稽核最小密碼存留期不是 1 天的 Windows VM
-- \[預覽\]：部署必要條件以稽核未啟用密碼複雜度設定的 Windows VM
-- \[預覽\]：部署必要條件以稽核最小密碼長度未限制為 14 個字元的 Windows VM
-- \[預覽\]：部署必要條件以稽核未使用可逆加密來儲存密碼的 Windows VM
+- 從允許重複使用前 24 個舊密碼的 Windows VM 顯示稽核結果
+- 從最大密碼存留期不是 70 天的 Windows VM 顯示稽核結果
+- 從最小密碼存留期不是 1 天的 Windows VM 顯示稽核結果
+- 從未啟用密碼複雜度設定的 Windows VM 顯示稽核結果
+- 從最小密碼長度未限制為 14 個字元的 Windows VM 顯示稽核結果
+- 從未使用可逆加密來儲存密碼的 Windows VM 顯示結果
+- 部署必要條件以稽核允許重複使用前 24 個舊密碼的 Windows VM
+- 部署必要條件以稽核最大密碼存留期不是 70 天的 Windows VM
+- 部署必要條件以稽核最小密碼存留期不是 1 天的 Windows VM
+- 部署必要條件以稽核未啟用密碼複雜度設定的 Windows VM
+- 部署必要條件以稽核最小密碼長度未限制為 14 個字元的 Windows VM
+- 部署必要條件以稽核未使用可逆加密來儲存密碼的 Windows VM
 
 ## <a name="22-and-27-vulnerability-scanning"></a>2.2 和 2.7 弱點掃描
 
 此藍圖指派了 [Azure 原則](../../../policy/overview.md)定義，監視 Azure 資訊安全中心內的作業系統弱點、SQL 弱點與虛擬機器弱點，以協助您管理資訊系統弱點。 Azure 資訊安全中心提供報告功能，可讓您即時深入檢視已部署 Azure 資源的安全性狀態。 此藍圖還指派原則定義，針對 SQL 伺服器稽核並強制套用「進階資料安全性」。 「進階資料安全性」包含弱點評定和進階威脅防護功能，可協助您了解所部署資源的弱點。
 
 - 應在 SQL 伺服器上啟用進階資料安全性
-- 在 SQL 伺服器上部署進階資料安全性
+- 應啟用 SQL 伺服器上的稽核
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - 應修復 SQL 資料庫的弱點 
 - 您應在機器上修復安全性組態的弱點
@@ -196,14 +193,14 @@ Azure 監視器所收集的記錄資料會儲存在 Log Analytics 工作區中�
 
 Azure 的分散式阻斷服務 (DDoS) 標準層提供基本服務層以外的額外功能與防護功能。 這些額外的功能包括「Azure 監視器」整合以及能夠檢閱攻擊後風險降低報告。 此藍圖指派一個 [Azure 原則](../../../policy/overview.md)定義，稽核是否已啟用 DDoS 標準層。 了解服務層之間的功能差異，協助您為 Azure 環境選取解決阻斷服務保護的最佳解決方案。
 
-- 應啟用 DDoS 保護標準
+- 應啟用 Azure DDoS 保護標準
 
 ## <a name="11-and-61-boundary-protection"></a>1.1 和 6.1 界限保護
 
 此藍圖藉由指派 [Azure 原則](../../../policy/overview.md)定義在 Azure 資訊安全中心監視網路安全性群組強化建議，以協助您管理和控制系統界限。 「Azure 資訊安全中心」會分析網際網路面向虛擬機器的流量模式，並提供網路安全群組規則建議，以降低潛在的受攻擊面。
 此外，此藍圖還指派原則定義，以監視未受保護的端點、應用程式與儲存體帳戶。 不受防火牆保護的端點和應用程式，以及存取不受限制的儲存體帳戶，都可能允許資訊系統內所包含的資訊受到非預期的存取。
 
-- 應強化與虛擬機器互動的網際網路網路安全性群組規則
+- 應在網際網路對應虛擬機器中套用自適性網路強化建議
 - 應限制透過網際網路面向端點存取
 - 稽核不受限制的儲存體帳戶網路存取
 
@@ -211,13 +208,13 @@ Azure 的分散式阻斷服務 (DDoS) 標準層提供基本服務層以外的額
 
 Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量、降低暴露於攻擊的風險，同時能夠視需要輕鬆連線至 VM。 JIT 虛擬機器存取可協助您限制 Azure 中資源的外部連線數目。 此藍圖指派 [Azure 原則](../../../policy/overview.md)定義，可協助您監視可支援但尚未設定 Just-In-Time 存取的虛擬機器。
 
-- Just-In-Time 網路存取控制應套用在虛擬機器上
+- 應使用 Just-In-Time 網路存取控制來保護虛擬機器的管理連接埠
 
 ## <a name="29a-boundary-protection--external-telecommunications-services"></a>2.9A 界限保護 | 外部電信服務
 
 Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量、降低暴露於攻擊的風險，同時能夠視需要輕鬆連線至 VM。 JIT 虛擬機器存取可加快存取要求與核准程序，協助您管理流量原則的例外。 此藍圖指派 [Azure 原則](../../../policy/overview.md)定義，可協助您監視可支援但尚未設定 Just-In-Time 存取的虛擬機器。
 
-- Just-In-Time 網路存取控制應套用在虛擬機器上
+- 應使用 Just-In-Time 網路存取控制來保護虛擬機器的管理連接埠
 
 ## <a name="21-24-24a-25a-and-26-transmission-confidentiality-and-integrity--cryptographic-or-alternate-physical-protection"></a>2.1、2.4、2.4A、2.5A 和 2.6 傳輸機密性和完整性 | 密碼編譯或替代實體保護
 
@@ -247,6 +244,8 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 - 虛擬機器擴展集需要自動 OS 映像修補
 - 應在虛擬機器擴展集上安裝系統更新
 - 應在虛擬機器上安裝系統更新
+- 稽核虛擬機器擴展集中的 Dependency Agent 部署 - 未列出的 VM 映像 (OS)
+- 應加密自動化帳戶變數
 - 應修復虛擬機器擴展集上安全性組態的弱點
 - 應修復虛擬機器上安全性組態的弱點
 - 應修復 SQL 資料庫的弱點
@@ -258,6 +257,7 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 - 為 Windows Server 部署預設的 Microsoft IaaSAntimalware 延伸模組
 - 應在虛擬機器擴展集上安裝端點保護解決方案
 - 在 Azure 資訊安全中心中監視缺少的 Endpoint Protection
+- 儲存體帳戶應移轉至新的 Azure Resource Manager 資源
 
 ## <a name="61-malicious-code-protection--central-management"></a>6.1 惡意程式碼防護 | 集中管理
 
@@ -270,11 +270,11 @@ Just-In-Time (JIT) 虛擬機器存取可鎖定 Azure 虛擬機器的連入流量
 
 此藍圖可稽核並強制執行所有 Azure 資源的記錄和資料安全性，協助您監視系統。 具體來說，指派的原則會稽核並強制部署 Log Analytics 代理程式，以及 SQL 資料庫、儲存體帳戶與網路資源的增強式安全性設定。 這些功能可協助您偵測異常行為和攻擊的指標，以便採取適當動作。
 
-- \[預覽\]：稽核記錄分析代理程式部署 - 未列出的 VM 映像 (OS)
-- \[預覽\]：為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
-- \[預覽\]：部署適用於 Linux VM 的 Log Analytics 代理程式
-- \[預覽\]：為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
-- \[預覽\]：部署適用於 Windows VM 的 Log Analytics 代理程式
+- 顯示 Log Analytics 代理程式未如預期連線的 Windows VM 稽核結果
+- 為 Linux VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 部署適用於 Linux VM 的 Log Analytics 代理程式
+- 為 Windows VM 擴展集 (VMSS) 部署 Log Analytics 代理程式
+- 部署適用於 Windows VM 的 Log Analytics 代理程式
 - 應在 SQL 伺服器上啟用進階資料安全性
 - SQL 伺服器的進階資料安全性設定應包含用來接收安全性警示的電子郵件地址
 - 應啟用 Azure 串流分析中的診斷記錄

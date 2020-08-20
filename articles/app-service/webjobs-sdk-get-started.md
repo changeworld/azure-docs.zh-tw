@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 08cf736e533486b765f3b1a1173fcfe06c03306f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: ded612fb79001adf2ada1a289603bc8a7561d38f
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212853"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612481"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>開始使用 Azure WebJobs SDK 進行事件驅動幕後處理
 
@@ -188,7 +188,7 @@ ms.locfileid: "88212853"
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
 
-在本機執行的 Azure 儲存體模擬器沒有 WebJobs SDK 所需的全部功能。 所以在本節中，您會在 Azure 中建立儲存體帳戶，並設定專案來使用。 如果您已經有儲存體帳戶，請跳至步驟 6。
+在本機執行的 Azure 儲存體模擬器沒有 Webjob SDK 所需的所有功能。 所以在本節中，您會在 Azure 中建立儲存體帳戶，並設定專案來使用。 如果您已經有儲存體帳戶，請跳至步驟 6。
 
 1. 在 Visual Studio 中開啟 [伺服器總管] 並登入 Azure。 以滑鼠右鍵按一下 **Azure** 節點，然後選取 [連線至 Microsoft Azure 訂用帳戶]。
 

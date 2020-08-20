@@ -4,12 +4,12 @@ description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922311"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612515"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -32,7 +32,7 @@ Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會�
 **功能** | **詳細資料**
 --- | ---
 **訂用帳戶中的保存庫** | 一個訂用帳戶中最多可以有 500 個復原服務保存庫。
-**保存庫中的機器** | 在所有工作負載中，最多2000個數據源 (例如 Azure Vm、SQL Server VM、MABS 伺服器等) 可以在單一保存庫中受到保護。<br><br>一個保存庫中最多可以有 1,000 個 Azure VM。<br/><br/> 可在單一保存庫中註冊最多 50 個 MABS 伺服器。
+**保存庫中的機器** | 所有工作負載的最多2000資料來源 (例如 Azure Vm、SQL Server VM、MABS 伺服器等) 可以在單一保存庫中受到保護。<br><br>一個保存庫中最多可以有 1,000 個 Azure VM。<br/><br/> 可在單一保存庫中註冊最多 50 個 MABS 伺服器。
 **資料來源** | 個別[資料來源](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined)的大小上限是 54,400 GB。 此限制不適用於 Azure VM 備份。 您可以備份至保存庫的資料總量不會有任何限制。
 **備份至保存庫** | **Azure VM：** 一天一次。<br/><br/>**受 DPM/MABS 保護的電腦：** 一天兩次。<br/><br/> **使用 MARS 代理程式直接備份的電腦：** 一天三次。
 **保存庫之間的備份** | 在區域內備份。<br/><br/> 您在每個 Azure 區域中都必須有一個保存庫包含您想要備份的 VM。 您無法備份至不同的區域。
@@ -79,13 +79,13 @@ Azure 備份會使用復原服務保存庫來協調和管理備份。 其也會�
 --- | ---
 **直接備份執行 Linux 的內部部署電腦** | 不支援。 MARS 代理程式只能安裝在 Windows 電腦上。
 **使用代理程式延伸模組備份執行 Linux 的 Azure VM** | 使用[自訂指令碼](backup-azure-linux-app-consistent.md)進行應用程式一致備份。<br/><br/> 檔案層級復原。<br/><br/> 從復原點或磁碟建立 VM 以進行還原。
-**使用 DPM 備份執行 Linux 的內部部署電腦** | Hyper-V 和 VMWare 上 Linux 客體 VM 的檔案一致性備份。<br/><br/> Hyper-V 和 VMWare Linux 客體 VM 的 VM 還原。
-**使用 MABS 備份執行 Linux 的內部部署電腦** | Hyper-V 和 VMWare 上 Linux 客體 VM 的檔案一致性備份。<br/><br/> Hyper-V 和 VMWare Linux 客體 VM 的 VM 還原。
+**使用 DPM 備份執行 Linux 的內部部署電腦** | Hyper-v 和 VMware 上 Linux 來賓 Vm 的檔案一致備份。<br/><br/> Hyper-v 和 VMware Linux 來賓 Vm 的 VM 還原。
+**使用 MABS 備份執行 Linux 的內部部署電腦** | Hyper-v 和 VMware 上 Linux 來賓 Vm 的檔案一致備份。<br/><br/> Hyper-v 和 VMware Linux 來賓 Vm 的 VM 還原。
 **使用 MABS 或 DPM 備份 Linux Azure VM** | 不支援。
 
 ## <a name="daylight-saving-time-support"></a>日光節約時間支援
 
-Azure 備份在進行 Azure VM 備份時不支援依據日光節約時間而自動調整時鐘。 它不會向前或向後移動備份的小時。 為確保備份在所需的時間執行，請視需要，手動修改備份原則。
+Azure 備份在進行 Azure VM 備份時不支援依據日光節約時間而自動調整時鐘。 它不會將備份的小時向前或向後移動。 為確保備份在所需的時間執行，請視需要，手動修改備份原則。
 
 ## <a name="disk-deduplication-support"></a>磁碟重複資料刪除支援
 
@@ -106,7 +106,7 @@ Azure 備份支援傳輸中和待用資料的加密。
 ### <a name="data-security"></a>資料安全性
 
 - 備份資料會在復原服務保存庫中以加密格式儲存。
-- 當使用 MARS 代理程式從內部部署伺服器備份資料時，會先使用複雜密碼加密資料，然後再上傳至 Azure 備份，而且只有在從 Azure 備份下載之後才會解密。
+- 使用 MARS 代理程式從內部部署伺服器備份資料時，資料會在上傳至 Azure 備份時以複雜密碼加密，而且只有在從 Azure 備份下載時才會解密。
 - 備份 Azure VM 時，您必須在虛擬機器*內*設定加密。
 - Azure 備份支援 Azure 磁碟加密，其會在 Windows 虛擬機器上使用 BitLocker，而在 Linux 虛擬機器上使用 **dm-crypt**。
 - 在後端，Azure 備份會使用 [Azure 儲存體服務加密](../storage/common/storage-service-encryption.md)，保護待用資料。

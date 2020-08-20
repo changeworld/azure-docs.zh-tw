@@ -4,12 +4,12 @@ description: 在此文章中，您將了解如何從 Azure 虛擬機器復原點
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262665"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611835"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>從 Azure 虛擬機器備份復原檔案
 

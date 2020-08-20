@@ -4,12 +4,12 @@ description: 摘要說明 Azure Migrate 服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: fae5af9c8717604d71ec2bf2628ea25125d5b2d5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022713"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612107"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支援矩陣
 
@@ -22,8 +22,8 @@ ms.locfileid: "87022713"
 **部署** | **詳細資料** 
 --- | --- 
 **探索** | 您可以探索電腦中繼資料和動態效能資料。
-**應用程式探索** | 您可以探索在 VMware VM 上執行的應用程式、角色和功能。 這項功能目前僅限於探索。 評量功能目前位於機器層級。 我們尚未提供以應用程式、角色或功能為基礎的評量。 
-**評量** | 評估在 VMware VM、Hyper-V VM 和實體伺服器上執行的內部部署工作負載和資料。 評估使用 Azure Migrate Server 評估、Microsoft Data Migration Assistant （DMA），以及其他工具和 ISV 供應專案。
+**應用程式探索** | 您可以探索在 VMware VM 上執行的應用程式、角色和功能。 這項功能目前僅限於探索。 評量功能目前位於機器層級。 我們尚未提供應用程式、角色或以功能為基礎的評量。 
+**評量** | 評估在 VMware VM、Hyper-V VM 和實體伺服器上執行的內部部署工作負載和資料。 使用 Azure Migrate Server 評量、Microsoft Data Migration Assistant (DMA) 以及其他工具和 ISV 供應專案來評估。
 **移轉** | 將實體伺服器、VMware VM、Hyper-V VM、實體伺服器和雲端式 VM 上執行的工作負載和資料遷移至 Azure。 使用 Azure Migrate 伺服器評量和 Azure 資料庫移轉服務 (DMS)，以及其他工具和 ISV 供應項目來進行遷移。
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Azure Migrate 伺服器移轉 | NA | 遷移 [VMware VM](tutorial-migrate-vmware.
 [DMA](/sql/dma/dma-overview?view=sql-server-2017) | 評估 SQL Server 資料庫。 | NA
 [DMS](../dms/dms-overview.md) | NA | 遷移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 評估虛擬桌面基礎結構 (VDI) | NA
-[Movere](https://www.movere.io/) | 評估 VMWare VM、Hyper-V VM、Xen VM、實體機器、工作站 (包括 VDI)、公用雲端工作負載 | NA
+[Movere](https://www.movere.io/) | 評定 VMware Vm、Hyper-v Vm、Xen Vm、實體機器、工作站 (包括 VDI) 、公用雲端工作負載 | NA
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | 遷移 VMWare VM、Hyper-V VM、Xen Vm、KVM VM、實體機器、公用雲端工作負載 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295) \(英文\)  | 評估 VMware VM、Hyper-V VM、實體伺服器、公用雲端工作負載。 | NA
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) \(英文\) | 評估 VMware VM、Hyper-V VM、實體伺服器、公用雲端工作負載和 SQL Server 資料庫。 | NA
@@ -79,7 +79,7 @@ Hyper-V VM    | 在單一專案中評估最多 35,000 個 Hyper-V VM。
 
 - 雖然您只能在這些地理位置中建立專案，但您可以評估或遷移其他目標位置的機器。
 - 專案地理位置只會用來儲存探索到的資料。
-- 當您建立專案時，您會選取一個地理位置。 專案和相關的資源會建立在地理位置的其中一個區域中。 區域是由 Azure Migrate 服務所配置。
+- 當您建立專案時，您會選取一個地理位置。 專案和相關資源會建立在地理位置的其中一個區域中。 區域是由 Azure Migrate 服務所配置。
 
 **地理位置** | **中繼資料儲存位置**
 --- | ---

@@ -3,12 +3,12 @@ title: 準備 DPM 服務器來備份工作負載
 description: 在本文中，您將瞭解如何使用 Azure 備份服務來準備 System Center Data Protection Manager (DPM) 備份至 Azure。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: a61112f04d3faef83a80395a7d316c63130e7758
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 7043b4411856addf0fae26ee5402c4d3878e7f12
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263260"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612651"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>準備使用 System Center DPM 將工作負載備份到 Azure
 
@@ -42,7 +42,7 @@ Azure VM 上的 DPM | System Center 2012 R2 (含 DPM 2012 R2 更新彙總套件 
 實體伺服器上的 DPM | System Center 2012 SP1 或更新版本；System Center 2012 R2。
 Hyper-V VM 上的 DPM | System Center 2012 SP1 或更新版本；System Center 2012 R2。
 VMware VM 上的 DPM | System Center 2012 R2 (含更新彙總套件 5 或更新版本)。
-單元 | DPM 服務器應安裝 Windows PowerShell 和 .NET Framework 4.5。
+元件 | DPM 服務器應安裝 Windows PowerShell 和 .NET Framework 4.5。
 支援的應用程式 | [了解](/system-center/dpm/dpm-protection-matrix) DPM 可備份的項目。
 支援的檔案類型 | 以下是可使用 Azure 備份來備份的檔案類型：<br> <li>加密 (只) 完整備份<li> 支援的壓縮 (增量備份)  <li> 支援的稀疏 (增量備份) <li> 壓縮和稀疏 (視為稀疏) 
 不支援的檔案類型 | <li>區分大小寫的檔案系統上的伺服器<li> 永久連結 (略過) <li>  (跳過的重新分析點) <li> 已略過加密和壓縮 () <li> 已略過加密和稀疏 () <li> 壓縮資料流<li> 剖析資料流程
@@ -182,4 +182,4 @@ Azure 備份所備份的每部電腦都必須安裝備份代理程式，也就�
 如果您遇到不正確保存庫認證錯誤 (例如「提供的保存庫認證無效」 ) 檔案可能已損毀或沒有與復原服務相關聯的最新認證。
 
 - 從入口網站下載新的保存庫認證檔後重試作業。
-- 當您在 Azure 入口網站中選取 [ **下載保存庫認證** ] 選項時（快速連續兩次），通常會出現此錯誤。 在此情況下，僅第二個保存庫認證檔為有效。
+- 當您在 Azure 入口網站中選取 [下載保存 **庫認證** ] 選項時，通常會出現此錯誤，快速連續兩次。 在此情況下，僅第二個保存庫認證檔為有效。

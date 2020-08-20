@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: efb793898da03d2a024b559075a2d55e79b20d65
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208525"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611172"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火牆常見問題集
 
@@ -97,7 +97,7 @@ $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
 $publicip1 = Get-AzPublicIpAddress -Name "Public IP1 Name" -ResourceGroupName "RG Name"
 $publicip2 = Get-AzPublicIpAddress -Name "Public IP2 Name" -ResourceGroupName "RG Name"
-$azfw.Allocate($vnet,@($publicip,$publicip2))
+$azfw.Allocate($vnet,@($publicip1,$publicip2))
 
 Set-AzFirewall -AzureFirewall $azfw
 ```
@@ -172,9 +172,9 @@ Azure 防火牆的初始輸送量容量為 2.5 - 3 Gbps，並擴增為 30 Gbps�
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure 防火牆需要多久的時間來擴增？
 
-當平均輸送量或 CPU 耗用量在 60% 時，Azure 防火牆會逐漸調整。 預設部署的最大輸送量大約是 2.5-3 Gbps，而當達到該數位的60% 時，就會開始相應放大。 擴增需要五到七分鐘。 
+當平均輸送量或 CPU 耗用量在 60% 時，Azure 防火牆會逐漸調整。 預設部署的最大輸送量大約是 2.5-3 Gbps，當達到該數目的60% 時，就會開始相應放大。 擴增需要五到七分鐘。 
 
-執行效能測試時，請確定您至少測試了10到15分鐘，並開始新的連線以利用新建立的防火牆節點。
+當效能測試時，請務必測試至少10到15分鐘的時間，並開始新的連線，以利用新建立的防火牆節點。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>根據預設，Azure 防火牆允許存取 Active Directory 嗎？
 
@@ -185,9 +185,9 @@ Azure 防火牆的初始輸送量容量為 2.5 - 3 Gbps，並擴增為 30 Gbps�
 是，您可以使用 Azure PowerShell 來執行此動作：
 
 ```azurepowershell
-# Add a Threat Intelligence Whitelist to an Existing Azure Firewall
+# Add a Threat Intelligence allow list to an Existing Azure Firewall
 
-## Create the Whitelist with both FQDN and IPAddresses
+## Create the allow list with both FQDN and IPAddresses
 
 $fw = Get-AzFirewall -Name "Name_of_Firewall" -ResourceGroupName "Name_of_ResourceGroup"
 $fw.ThreatIntelWhitelist = New-AzFirewallThreatIntelWhitelist `
@@ -211,15 +211,15 @@ TCP Ping 不會實際連線到目標 FQDN。 這是因為 Azure 防火牆的背�
 
 是。 如需詳細資訊，請參閱 [Azure 訂用帳戶和服務限制、配額與條件約束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)
 
-## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>我可以將 IP 群組移到另一個資源群組嗎？
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>是否可以將 IP 群組移至另一個資源群組？
 
 否，目前不支援將 IP 群組移至另一個資源群組。
 
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure 防火牆的 TCP 閒置超時為何？
 
-網路防火牆的標準行為是確保 TCP 連線保持運作狀態，並在沒有活動時立即關閉。 Azure 防火牆 TCP 閒置超時時間為4分鐘。 這是無法設定的。 如果閒置時間超過超時值，則不保證會維護 TCP 或 HTTP 會話。 常見作法是使用 TCP Keep-Alive。 此作法可讓連線保持長時間連線。 如需詳細資訊，請參閱 [.net 範例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
+網路防火牆的標準行為是確保 TCP 連接保持運作，並在沒有任何活動時立即關閉。 Azure 防火牆 TCP 閒置超時時間為四分鐘。 這是無法設定的設定。 如果閒置期間超過 timeout 值，就不保證會保留 TCP 或 HTTP 會話。 常見作法是使用 TCP Keep-Alive。 此作法可讓連線保持長時間連線。 如需詳細資訊，請參閱 [.net 範例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
 
-## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>我可以在沒有公用 IP 位址的情況下部署 Azure 防火牆嗎？
+## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>是否可以在不使用公用 IP 位址的情況下部署 Azure 防火牆？
 
 否，目前您必須部署具有公用 IP 位址的 Azure 防火牆。
 

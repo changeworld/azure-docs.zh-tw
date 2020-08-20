@@ -5,12 +5,12 @@ description: 了解如何透過 Azure 檔案服務以動態方式建立永續性
 services: container-service
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 5e9e686d8da420c650709d3bedc103d0043fa679
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0c11748c6faa0b94ff84dfc944e475116a2a1bd4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287112"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611393"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中以動態方式建立和使用 Azure 檔案服務的永續性磁碟區
 
@@ -78,7 +78,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
+  storageClassName: my-azurefile
   resources:
     requests:
       storage: 5Gi
@@ -104,7 +104,7 @@ my-azurefile   Bound     pvc-8436e62e-a0d9-11e5-8521-5a8664dc0477   5Gi        R
 
 ## <a name="use-the-persistent-volume"></a>使用永續性磁碟區
 
-下列 YAML 會建立一個 pod，其使用持續性磁片區宣告*azurefile* ，在 */Mnt/azure*路徑掛接 Azure 檔案共用。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath*，例如 *'D:'* 。
+下列 YAML 會建立使用永久性磁片區宣告 *azurefile* 的 pod，以在 */mnt/azure* 路徑上掛接 Azure 檔案共用。 對於 Windows Server 容器，請採用 Windows 路徑慣例來指定 *mountPath*，例如 *'D:'* 。
 
 建立名為 `azure-pvc-files.yaml` 的檔案，然後將下列 YAML 複製進來。 請確定claimName 與最後一個步驟中建立的 PVC 相符。
 
@@ -187,7 +187,7 @@ parameters:
 
 如需相關的最佳做法，請參閱 [AKS 中的儲存和備份最佳做法][operator-best-practices-storage]。
 
-如需儲存類別參數，請參閱[動態](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#dynamic-provision)布建。
+如需儲存類別參數，請參閱 [動態](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/driver-parameters.md#dynamic-provision)布建。
 
 使用「Azure 檔案」來深入了解 Kubernetes 永續性磁碟區。
 

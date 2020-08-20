@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 01/31/2020
-ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 08/19/2020
+ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225966"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607529"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模擬器進行本機開發和測試
 
@@ -35,12 +35,13 @@ Azure Cosmos 模擬器提供 Azure Cosmos DB 服務的高逼真度模擬。 它�
 
 * 模擬器中的 [資料總管] 目前支援 SQL API 的用戶端。 [資料總管] 檢視和適用於 Azure Cosmos DB API (例如 MongoDB、資料表、圖表及 Cassandra API) 的作業並未受到完全支援。
 * Azure Cosmos 模擬器僅支援單一固定帳戶及一個已知的主要金鑰。 Azure Cosmos 模擬器中無法重新產生金鑰，但您可以使用命令列選項來變更預設金鑰。
+* Azure Cosmos 模擬器在布 [建的輸送量](set-throughput.md) 模式下支援 azure Cosmos 帳戶;它目前不支援 [無伺服器](serverless.md) 模式下的 Azure Cosmos 帳戶。
 * Azure Cosmos 模擬器是一項無法擴充的服務，也不支援大量容器。
 * Azure Cosmos 模擬器未提供不同的 [Azure Cosmos DB 一致性層級](consistency-levels.md)。
 * Azure Cosmos 模擬器未提供[多重區域複寫](distribute-data-globally.md)。
 * 因為 Azure Cosmos DB 服務最新的變更，您的 Azure Cosmos 模擬器複本可能不會一直是最新狀態，您應該參閱 [Azure Cosmos DB 容量規劃工具](https://www.documentdb.com/capacityplanner) \(英文\)，準確地評估應用程式的生產輸送量 (RU) 需求。
 * 使用 Azure Cosmos 模擬器時，根據預設，您最多可以建立 25 個固定大小的容器 (僅支援使用 Azure Cosmos DB SDK)，或者，使用 Azure Cosmos 模擬器來建立 5 個無限制的容器。 如需變更此值的詳細資訊，請參閱[設定 PartitionCount 值](#set-partitioncount)。
-* 模擬器支援的 id 屬性大小上限為 254 個字元。
+* 模擬器最多可支援254個字元的識別碼屬性大小。
 
 ## <a name="system-requirements"></a>系統需求
 
@@ -429,7 +430,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 ## <a name="running-on-mac-or-linux"></a>在 Mac 或 Linux 上執行<a id="mac"></a>
 
-目前 Cosmos 模擬器只能在 Windows 上執行。 執行 Mac 或 Linux 的使用者可以在裝載于管理程式的 Windows 虛擬機器（例如，平行或 VirtualBox）中執行模擬器。 以下是此功能的啟用步驟。
+目前 Cosmos 模擬器只能在 Windows 上執行。 執行 Mac 或 Linux 的使用者可以在裝載于執行程式管理的 Windows 虛擬機器中執行模擬器，例如，平行或 VirtualBox。 以下是此功能的啟用步驟。
 
 在 Windows VM 內執行下列命令，並記下 IPv4 位址。
 
@@ -445,25 +446,25 @@ ipconfig.exe
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-最後，我們需要解析在 Linux 或 Mac 環境上執行的應用程式與模擬器之間的憑證信任程式。 我們有兩個選擇：
+最後，我們必須在 Linux 或 Mac 環境與模擬器上執行的應用程式之間，解決憑證信任程式。 我們有兩個選擇：
 
 1. 停用應用程式中的 SSL 驗證：
 
 # <a name="net-standard-21"></a>[.NET Standard 2.1 +](#tab/ssl-netstd21)
 
-   對於在與 .NET Standard 2.1 或更新版本相容的架構中執行的任何應用程式，我們都可以利用 `CosmosClientOptions.HttpClientFactory` ：
+   針對在與 .NET Standard 2.1 或更新版本相容的架構中執行的任何應用程式，我們可以利用 `CosmosClientOptions.HttpClientFactory` ：
 
    [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
 
 # <a name="net-standard-20"></a>[.NET Standard 2.0](#tab/ssl-netstd20)
 
-   對於在與 .NET Standard 2.0 相容的架構中執行的任何應用程式，我們都可以利用 `CosmosClientOptions.HttpClientFactory` ：
+   針對在與 .NET Standard 2.0 相容的架構中執行的任何應用程式，我們可以利用 `CosmosClientOptions.HttpClientFactory` ：
 
    [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
 
 # <a name="nodejs"></a>[Node.js](#tab/ssl-nodejs)
 
-   針對 Node.js 的應用程式，您可以在 `package.json` `NODE_TLS_REJECT_UNAUTHORIZED` 啟動應用程式時修改檔案以設定：
+   針對 Node.js 的應用程式，您可以在 `package.json` `NODE_TLS_REJECT_UNAUTHORIZED` 啟動應用程式時修改您的檔案，以設定：
 
    ```json
    "start": NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js
@@ -472,7 +473,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 --- 
 
 > [!NOTE]
-> 基於開發目的，只建議停用 SSL 驗證，在生產環境中執行時則不應該這麼做。
+> 基於開發目的，只建議停用 SSL 驗證，且不應在生產環境中執行時進行。
 
 2. 將模擬器 CA 憑證匯入至 Linux 或 Mac 環境：
 
@@ -538,7 +539,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 - 如果您收到**服務無法使用**訊息，模擬器可能無法初始化網路堆疊。 由於 Pulse 安全用戶端或 Juniper 網路用戶端的網路篩選驅動程式可能會造成問題，因此請檢查是否已安裝這些驅動程式。 解除安裝協力廠商網路篩選驅動程式通常便會修正問題。 或者，使用 /DisableRIO 來啟動模擬器，將模擬器網路通訊切換為一般 Winsock。 
 
-- 如果您遇到「禁止」的 **訊息，則會以傳輸通訊協定或加密中禁止的加密來提出要求。請檢查帳戶 SSL/TLS 的最小允許通訊協定設定 ...** 」連線問題，這可能是因為 OS (中的全域變更（例如 Insider Preview 組建 20170) 或啟用 TLS 1.3 的瀏覽器設定為預設值）所造成。 使用 SDK 對 Cosmos 模擬器執行要求時可能會發生類似的錯誤，例如 **Microsoft.Azure.Documents.DocumentClientException：要求是以傳輸通訊協定或加密中禁止的加密進行。檢查 [帳戶 SSL/TLS 允許的最低通訊協定] 設定**。 這是預期的情況，因為 Cosmos 模擬器只接受並搭配 TLS 1.2 通訊協定使用。 建議的解決方法是變更設定並預設為 TLS 1.2;例如，在 IIS 管理員中，流覽至 [網站]-> [預設的網站]，並找出埠8081的 [網站系結]，然後編輯以停用 TLS 1.3。 您可以透過 [設定] 選項，針對網頁瀏覽器執行類似的作業。
+- 如果您遇到「 **禁止」，則會使用傳輸通訊協定或加密中禁止的加密來發出「訊息」： "要求。檢查帳戶 SSL/TLS 的最小允許通訊協定設定 ...** 」連線問題，這可能是 OS 中的全域變更所造成的 (例如 Insider Preview 組建 20170) ，或啟用 TLS 1.3 作為預設值的瀏覽器設定。 使用 SDK 對 Cosmos 模擬器執行要求時，可能會發生類似的錯誤，例如 **Microsoft.Azure.Documents.DocumentClientException：使用傳輸通訊協定或加密中的禁止加密提出要求。檢查帳戶 SSL/TLS 允許的最小通訊協定設定**。 這是預期的情況，因為 Cosmos 模擬器只接受並可搭配使用 TLS 1.2 通訊協定。 建議的解決辦法是將設定和預設值變更為 TLS 1.2;例如，在 [IIS 管理員] 中，流覽至 [網站]-> [預設的網站]，並找出埠8081的「網站系結」，並加以編輯以停用 TLS 1.3。 您可以透過 [設定] 選項來執行網頁瀏覽器的類似操作。
 
 - 當模擬器執行時，如果您的電腦進入睡眠模式或執行任何作業系統更新，您應該會看見**服務目前無法使用**的訊息。 以滑鼠右鍵按一下視窗通知匣上出現的圖示，然後選取 [重設資料]，來重設模擬器的資料。
 

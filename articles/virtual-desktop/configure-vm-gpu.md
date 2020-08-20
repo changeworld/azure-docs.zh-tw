@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: dd5eb8acb76fe5901149d90a6d551d8d14d363cc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 8a253723367681d947a9bd94c1505ab4cc156c08
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007771"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612634"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>設定 Windows 虛擬桌面的圖形處理器 (GPU) 加速
 
@@ -51,14 +51,14 @@ Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，針對�
 1. 使用具有本機系統管理員權限的帳戶連線到 VM 桌面。
 2. 開啟 [開始] 功能表，然後輸入 "gpedit.msc" 以開啟 [群組原則編輯器]。
 3. 瀏覽樹狀結構至 [電腦設定] > [系統管理範本] > [Windows 元件] > [遠端桌面服務] > [遠端桌面工作階段主機] > [遠端工作階段環境]。
-4. 選取 [針對所有遠端桌面服務工作階段使用硬體預設圖形卡] 原則，並將此原則設定為 [啟用]，以在遠端工作階段中啟用 GPU 轉譯。
+4. 選取 [原則 **使用硬體圖形配接器進行所有遠端桌面服務會話** ]，並將此原則設為 [ **啟用** ]，以在遠端會話中啟用 GPU 轉譯。
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>設定 GPU 加速的畫面編碼
 
-遠端桌面會針對應用程式和桌上型電腦所轉譯的所有圖形進行編碼 (無論以 GPU 或 CPU 轉譯)，以傳輸到遠端桌面用戶端。 當畫面的一部分經常更新時，畫面的這個部分會使用 (h.264/AVC) 的視頻編碼器進行編碼。 根據預設，遠端桌面不會利用可用的 GPU 來進行此編碼。 您可以設定工作階段主機的群組原則來啟用 GPU 加速的畫面編碼。 繼續上述步驟：
+遠端桌面會針對應用程式和桌上型電腦所轉譯的所有圖形進行編碼 (無論以 GPU 或 CPU 轉譯)，以傳輸到遠端桌面用戶端。 當畫面的一部分經常更新時，畫面的這個部分會以 (h.264/AVC) 的影片編解碼器編碼。 根據預設，遠端桌面不會利用可用的 GPU 來進行此編碼。 您可以設定工作階段主機的群組原則來啟用 GPU 加速的畫面編碼。 繼續上述步驟：
 
 >[!NOTE]
->NVv4 系列 Vm 中不提供 GPU 加速的框架編碼。
+>NVv4 系列 Vm 中無法使用 GPU 加速的畫面編碼。
 
 1. 選取 [針對遠端桌面連線設定 H.264/AVC 硬體編碼的優先權] 原則，並將此原則設定為 [啟用]，以在遠端工作階段中啟用 AVC/H.264 的硬體編碼。
 
@@ -75,7 +75,7 @@ Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，針對�
 
 ## <a name="configure-fullscreen-video-encoding"></a>設定全螢幕影片編碼
 
-如果您經常使用會產生高框架速率內容的應用程式（例如3D 模型化、CAD/CAM 和影片應用程式），您可以選擇啟用遠端會話的全螢幕視頻編碼。 「全螢幕」影片設定檔可為這類應用程式提供更高的畫面播放速率和更佳的使用者體驗，並以網路頻寬和工作階段主機和用戶端資源為代價。 建議使用 GPU 加速的框架編碼來進行全螢幕的影片編碼。 設定工作階段主機的群組原則，以啟用全螢幕影片編碼。 繼續上述步驟：
+如果您經常使用產生高框架速率內容的應用程式（例如3D 模型、CAD/攝影機和影片應用程式），您可以選擇啟用遠端會話的全螢幕影片編碼。 全螢幕視頻設定檔可為這類應用程式提供更高的畫面播放速率和更好的使用者體驗，同時也會花費網路頻寬和工作階段主機和用戶端資源。 建議使用 GPU 加速的框架編碼來進行全螢幕的影片編碼。 設定工作階段主機的群組原則，以啟用全螢幕的影片編碼。 繼續上述步驟：
 
 1. 選取 [針對遠端桌面連線設定 H.264/AVC 444 圖形模式的優先權] 原則，並將此原則設定為 [啟用]，以在遠端工作階段中強制執行 H.264/AVC 444 轉碼器。
 2. 編輯群組原則之後，您就可以強制執行群組原則更新。 開啟命令提示字元，然後輸入：
@@ -89,7 +89,7 @@ Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，針對�
 
 若要驗證應用程式是否使用 GPU 進行轉譯，請嘗試下列任一方式：
 
-* 針對具有 NVIDIA GPU 的 Azure Vm，請依照 `nvidia-smi` [確認驅動程式安裝](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)中所述，使用公用程式來檢查執行應用程式時的 GPU 使用量。
+* 針對具有 NVIDIA GPU 的 Azure Vm，請使用 `nvidia-smi` 在執行應用程式時， [確認驅動程式安裝](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) 中所述的公用程式來檢查 GPU 使用量。
 * 在支援的作業系統版本上，您可以使用工作管理員來檢查 GPU 使用率。 在 [效能] 索引標籤中選取 GPU，即可查看應用程式是否正在利用 GPU。
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>驗證 GPU 加速的畫面編碼
@@ -102,11 +102,11 @@ Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 此外，針對�
 
 ## <a name="verify-fullscreen-video-encoding"></a>驗證全螢幕影片編碼
 
-若要確認遠端桌面使用的是全螢幕視頻編碼：
+若要驗證遠端桌面是否使用全螢幕的影片編碼：
 
 1. 使用 Windows 虛擬桌面用戶端連線到 VM 桌面。
 2. 啟動事件檢視器並瀏覽至下列節點：[應用程式和服務記錄檔] > [Microsoft] > [Windows] > [RemoteDesktopServices-RdpCoreCDV][Operational] > 
-3. 若要判斷是否使用全螢幕視頻編碼，請尋找事件識別碼162。 如果您看到「AVC 可供使用：1 個初始設定檔：2048」，則表示使用 AVC 444。
+3. 若要判斷是否使用全螢幕影片編碼，請尋找事件識別碼162。 如果您看到「AVC 可供使用：1 個初始設定檔：2048」，則表示使用 AVC 444。
 
 ## <a name="next-steps"></a>後續步驟
 

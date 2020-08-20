@@ -3,12 +3,12 @@ title: 透過 Azure 資源健康狀態支援的資源類型 | Microsoft Docs
 description: 透過 Azure 資源健康狀態支援的資源類型
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: b6420283f3d3c07182faa2cb2a82ba7b2d784055
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 2c002ab89b1cae4db6d3337908bb401039cb2295
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272649"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611937"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure 資源健康狀態中的資源類型和健康情況檢查
 以下是依資源類型透過資源健康狀態執行之所有檢查的完整清單。
@@ -46,7 +46,7 @@ ms.locfileid: "88272649"
 ## <a name="microsoftclassiccomputedomainnames"></a>Microsoft.classiccompute/domainnames
 |執行的檢查|
 |---|
-|<ul><li>雲端服務裝載的名稱是否已啟動且正在執行？</li><li>主機 OS 是否已開機完成？</li><li>虛擬機器容器是否已佈建和啟動？</li><li>主機和儲存體帳戶之間是否有網路連線能力？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li><li>主機硬體的效能是否降低且預期即將失敗？</li></ul>|
+|<ul><li>生產位置部署在所有角色實例之間是否狀況良好？</li><li>角色在其所有 VM 實例中是否狀況良好？</li><li>雲端服務角色內每個 VM 的健康情況狀態為何？</li><li>VM 狀態是否因為平臺或客戶起始的操作而變更？</li><li>客體 OS 是否已完成開機？</li><li>是否有持續性的規劃維護？</li><li>主機硬體的效能是否降低且預期即將失敗？</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |執行的檢查|

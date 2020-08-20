@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: c7cd3ed863153762e42a0b6420623fec52e779e1
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: cfa8a6c7cb2da35929151dfce09c0bc31ee69bb2
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566313"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611529"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -141,7 +141,7 @@ VM 大小 |至少有 2 個 CPU 核心和 1 GB RAM 的任何 Azure VM 大小。<b
 備份[可用性設定組](../virtual-machines/availability.md#availability-sets)中的 VM | 支援。<br/><br/> 您無法使用快速建立 VM 的選項來還原可用性設定組中 VM。 在還原 VM 時，您必須還原磁碟並將其用來部署 VM，或還原磁碟並將其用來取代現有的磁碟。
 備份使用 [Hybrid Use Benefit (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) (機器翻譯) 部署的 VM | 支援。
 備份在[擴展集](../virtual-machine-scale-sets/overview.md)中部署的 VM |支援。 容錯網域的[協調流程模式](../virtual-machine-scale-sets/orchestration-modes.md)應該設定為2。 不支援可用性設定組。
-備份從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) 部署的 VM<br/><br/> (由 Microsoft 或第三方發佈) |支援。<br/><br/> VM 必須執行支援的作業系統。<br/><br/> 復原 VM 上的檔案時，只能還原至相容的作業系統 (而非較舊或較新版的作業系統)。 我們不會還原作為 Vm 的 Azure Marketplace Vm，因為這些 Vm 需要購買資訊。 它們只會還原為磁片。
+備份從[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images)部署的 vm<br/><br/> (由 Microsoft 或第三方發佈) |支援。<br/><br/> VM 必須執行支援的作業系統。<br/><br/> 復原 VM 上的檔案時，只能還原至相容的作業系統 (而非較舊或較新版的作業系統)。 我們不會還原作為 Vm 的 Azure Marketplace Vm，因為這些 Vm 需要購買資訊。 它們只會還原為磁片。
 備份從自訂映像 (第三方) 部署的 VM |支援。<br/><br/> VM 必須執行支援的作業系統。<br/><br/> 復原 VM 上的檔案時，只能還原至相容的作業系統 (而非較舊或較新版的作業系統)。
 備份已移轉至 Azure 的 VM| 支援。<br/><br/> 若要備份 VM，必須在已移轉的機器上安裝 VM 代理程式。
 備份多部 VM 一致性 | Azure 備份不會跨多個 Vm 提供資料和應用程式一致性。

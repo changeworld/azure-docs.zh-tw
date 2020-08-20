@@ -3,12 +3,12 @@ title: 備份和還原已加密的 Azure Vm
 description: 說明如何使用 Azure 備份服務來備份和還原已加密的 Azure Vm。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 304196f6b517c353cb4fc142129fa4d3007a1d9c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585318"
+ms.locfileid: "88611291"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>備份和還原已加密的 Azure 虛擬機器
 
@@ -69,7 +69,7 @@ Azure 備份可以使用具有和沒有 Azure AD 應用程式的 ADE 來備份�
 1. 在 [**備份目標**] 中  >  **，您的工作負載在何處執行？** 選取 [ **Azure**]。
 1. 在 [ **您要備份什麼？** ] 中，選取 [ **虛擬機器**]。 然後選取 [ **備份**]。
 
-      ![案例刀鋒視窗](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
+      ![案例窗格](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
 1. 在 [**備份原則**] 中  >  ，**選擇 [備份原則**]，選取您要與保存庫相關聯的原則。 然後選取 [確定]。
     - 備份原則會指定執行備份的時間，以及它們的儲存時間長度。
@@ -131,7 +131,7 @@ Azure 備份需要唯讀存取權來備份金鑰和密碼，以及相關聯的 V
 
     ![Azure 備份選取項目](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. 選取 [加入]。 **備份管理服務** 已新增至 **存取原則**。
+1. 選取 [新增]。 **備份管理服務** 已新增至 **存取原則**。
 
     ![存取原則](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 

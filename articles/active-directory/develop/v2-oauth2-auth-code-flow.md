@@ -13,12 +13,12 @@ ms.date: 08/14/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6cf9f7a005a80ab34e05ee293c20209e9d0b3f01
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258577"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612311"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 身分識別平台和 OAuth 2.0 授權碼流程
 
@@ -36,9 +36,9 @@ OAuth 2.0 授權碼授與可用於裝置上所安裝的應用程式中，以存�
 
 ## <a name="redirect-uri-setup-required-for-single-page-apps"></a>單一頁面應用程式所需的重新導向 URI 設定
 
-單頁應用程式的授權碼流程需要一些額外的設定。  依照指示來 [建立單一頁面應用程式](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow) ，以正確地將重新導向 URI 標示為已針對 CORS 啟用。 若要更新現有的重新導向 URI 以啟用 CORS，請開啟資訊清單編輯器，並 `type` `spa` 在區段中將重新導向 uri 的欄位設定為 `replyUrlsWithType` 。 您也可以在 [驗證] 索引標籤的 [Web] 區段中，按一下 [重新導向 URI]，然後選取您想要使用授權碼流程遷移到的 Uri。
+單頁應用程式的授權碼流程需要一些額外的設定。  請依照指示來 [建立單一頁面應用程式](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow) ，以正確地將您的重新導向 URI 標示為針對 CORS 啟用。 若要更新現有的重新導向 URI 以啟用 CORS，請開啟資訊清單編輯器，並將 `type` 您重新導向 uri 的欄位設定為 `spa` 區段中的 `replyUrlsWithType` 。 您也可以在 [驗證] 索引標籤的 [Web] 區段中，按一下 [重新導向 URI]，然後選取您想要遷移至的 Uri，以使用授權碼流程。
 
-重新 `spa` 導向類型與隱含流程具有回溯相容性。 目前使用隱含流程來取得權杖的應用程式，可以移至重新 `spa` 導向 URI 類型而不會發生問題，並繼續使用隱含流程。
+重新 `spa` 導向類型可回溯相容于隱含流程。 目前使用隱含流程來取得權杖的應用程式可移至重新 `spa` 導向 URI 類型，而不會發生問題，並繼續使用隱含流程。
 
 如果您嘗試使用授權碼流程，並看到此錯誤：
 
@@ -81,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `login_hint`  | 選用    | 如果您事先知道其使用者名稱，可用來預先填入使用者登入頁面的使用者名稱/電子郵件地址欄位。 通常應用程式會在重新驗證期間使用此參數，已經使用 `preferred_username` 宣告從上一個登入擷取使用者名稱。   |
 | `domain_hint`  | 選用    | 如果包含，它會略過使用者在登入頁面上以電子郵件為基礎的探索程序，藉以提供稍微更有效率的使用者體驗，例如，將使用者傳送到同盟識別提供者。 通常應用程式會在重新驗證 (擷取上一次登入的 `tid` ) 期間使用此參數。 如果 `tid` 宣告值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，您應該使用 `domain_hint=consumers`。 否則，使用 `domain_hint=organizations`。  |
 | `code_challenge`  | 建議 / 必要 | 用來透過「代碼交換的證明金鑰」(PKCE) 保護授權碼授與。 如果包含 `code_challenge_method`，則為必要參數。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 現在建議所有的應用程式類型，包括原生應用程式、SPA 和機密用戶端 (例如 Web 應用程式)。 |
-| `code_challenge_method` | 建議 / 必要 | 用來為 `code_challenge` 參數編碼 `code_verifier` 的方法。 這 *應該* 是 `S256` ，但 `plain` 如果基於某些原因而導致用戶端無法支援 SHA256，則此規格允許使用。 <br/><br/>如果排除，則當包含 `code_challenge` 時，會假設 `code_challenge` 是純文字。 Microsoft 身分識別平台同時支援 `plain` 和 `S256`。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 這是使用[授權碼流程單頁應用程式](reference-third-party-cookies-spas.md)所需的必要條件。|
+| `code_challenge_method` | 建議 / 必要 | 用來為 `code_challenge` 參數編碼 `code_verifier` 的方法。 這 *應該* 是 `S256` ，但 `plain` 如果基於某些原因而導致用戶端無法支援 SHA256，則規格允許使用。 <br/><br/>如果排除，則當包含 `code_challenge` 時，會假設 `code_challenge` 是純文字。 Microsoft 身分識別平台同時支援 `plain` 和 `S256`。 如需詳細資訊，請參閱 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 這是使用[授權碼流程單頁應用程式](reference-third-party-cookies-spas.md)所需的必要條件。|
 
 
 此時，會要求使用者輸入其認證並完成驗證。 Microsoft 身分識別平台端點也會確認使用者已經同意 `scope` 查詢參數所指出的權限。 如果使用者未曾同意這些權限的任何一項，就會要求使用者同意要求的權限。 [這裡提供權限、同意與多租用戶應用程式](v2-permissions-and-consent.md)的詳細資料。
@@ -164,7 +164,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`   | required   | 要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id` | required  | [Azure 入口網站 - 應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面指派給您應用程式的應用程式 (用戶端) 識別碼。 |
 | `grant_type` | required   | 必須是授權碼流程的 `authorization_code` 。   |
-| `scope`      | 選用   | 以空格分隔的範圍清單。 範圍必須全部來自單一資源，以及 OIDC 範圍 (`profile`、`openid`、`email`)。 如需範圍的詳盡說明，請參閱 [權限、同意和範圍](v2-permissions-and-consent.md)。 這是授權碼流程的 Microsoft 擴充功能，目的是要允許應用程式在權杖兌換期間宣告他們想要權杖的資源。|
+| `scope`      | 選用   | 以空格分隔的範圍清單。 範圍必須全部來自單一資源，以及 OIDC 範圍 (`profile`、`openid`、`email`)。 如需範圍的詳盡說明，請參閱 [權限、同意和範圍](v2-permissions-and-consent.md)。 這是授權碼流程的 Microsoft 擴充功能，目的是讓應用程式在權杖兌換期間宣告他們想要權杖的資源。|
 | `code`          | required  | 您在流程的第一個階段中取得的 authorization_code。 |
 | `redirect_uri`  | required  | 用來取得 authorization_code 的相同 redirect_uri 值。 |
 | `client_secret` | 機密 Web 應用程式所需 | 您在應用程式註冊入口網站中為應用程式建立的應用程式密碼。 您不應該在原生應用程式或單頁應用程式中使用應用程式密碼，因為 client_secrets 無法可靠地儲存在裝置或網頁上。 這是 Web 應用程式和 Web API 的必要參數，能夠將 client_secret 安全地儲存在伺服器端。  用戶端密碼必須在傳送之前先進行 URL 編碼。 如需有關 URI 編碼的詳細資訊，請參閱 [URI 一般語法規格](https://tools.ietf.org/html/rfc3986#page-12)。 |
@@ -190,9 +190,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `access_token`  | 所要求的存取權杖。 應用程式可以使用這個權杖驗證受保護的資源，例如 Web API。  |
 | `token_type`    | 表示權杖類型值。 Azure AD 唯一支援的類型是 Bearer。 |
 | `expires_in`    | 存取權杖的有效期 (以秒為單位)。 |
-| `scope`         | access_token 有效的範圍。 選擇性-這不是標準的，而且如果省略，則權杖將會用於流程初始階段所要求的範圍。 |
+| `scope`         | access_token 有效的範圍。 選擇性-這是非標準的，而且如果省略，則會針對在流程的初始階段要求的範圍提供權杖。 |
 | `refresh_token` | OAuth 2.0 重新整理權杖。 應用程式可以使用這個權杖，在目前的存取權杖過期之後，取得其他的存取權杖。 Refresh_token 的有效期很長，而且可以用來延長保留資源存取權的時間。 如需有關重新整理存取權杖的詳細資訊，請參閱[下一節](#refresh-the-access-token)。 <br> **注意：** 只在要求 `offline_access` 範圍時提供。 |
-| `id_token`      | JSON Web 權杖 (JWT)。 應用程式可以將這個權杖的區段解碼，來要求已登入使用者的相關資訊。 應用程式可以快取值並加以顯示，而機密用戶端可以將其用於授權。 如需有關 id_token 的詳細資訊，請參閱 [`id_token reference`](id-tokens.md)。 <br> **注意：** 只在要求 `openid` 範圍時提供。 |
+| `id_token`      | JSON Web 權杖 (JWT)。 應用程式可以將這個權杖的區段解碼，來要求已登入使用者的相關資訊。 應用程式可以快取這些值並加以顯示，而機密用戶端可以使用此值來進行授權。 如需有關 id_token 的詳細資訊，請參閱 [`id_token reference`](id-tokens.md)。 <br> **注意：** 只在要求 `openid` 範圍時提供。 |
 
 ### <a name="error-response"></a>錯誤回應
 
@@ -230,9 +230,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `invalid_client` | 用戶端驗證失敗。  | 用戶端認證無效。 若要修正，應用程式系統管理員必須更新認證。   |
 | `unsupported_grant_type` | 授權伺服器不支援授權授與類型。 | 變更要求中的授與類型。 這種類型的錯誤應該只會在開發期間發生，並且會在初始測試期間偵測出來。 |
 | `invalid_resource` | 目標資源無效，因為它不存在、Azure AD 無法找到它，或是它並未正確設定。 | 這表示尚未在租用戶中設定資源 (如果存在)。 應用程式可以對使用者提示關於安裝應用程式，並將它加入至 Azure AD 的指示。  |
-| `interaction_required` | 非標準，因為 OIDC 規格只會在端點上呼叫此 `/authorize` 。要求需要使用者互動。 例如，必須進行其他驗證步驟。 | 請 `/authorize` 使用相同的範圍重試要求。 |
-| `temporarily_unavailable` | 伺服器暫時過於忙碌而無法處理要求。 | 請在短暫的延遲後重試要求。 用戶端應用程式可能會向使用者解釋其回應因暫時性狀況而延遲。 |
-|`consent_required` | 要求需要使用者同意。 此錯誤並非標準，因為它通常只會在 `/authorize` 每個 OIDC 規格的端點上傳回。 在 `scope` 用戶端應用程式沒有許可權要求的程式碼兌換流程上使用參數時傳回。  | 用戶端應將使用者傳回 `/authorize` 具有正確範圍的端點，才能觸發同意。 |
+| `interaction_required` | 非標準，因為 OIDC 規格只會在端點上呼叫這一點 `/authorize` 。要求需要使用者互動。 例如，必須進行其他驗證步驟。 | `/authorize`使用相同的範圍重試要求。 |
+| `temporarily_unavailable` | 伺服器暫時過於忙碌而無法處理要求。 | 請在短暫延遲後重試要求。 用戶端應用程式可能會向使用者解釋其回應因暫時性狀況而延遲。 |
+|`consent_required` | 要求需要使用者同意。 此錯誤為非標準，因為它通常只會在 `/authorize` 每個 OIDC 規格的端點上傳回。 在 `scope` 用戶端應用程式沒有許可權要求的程式碼兌換流程上使用參數時傳回。  | 用戶端應將使用者傳回 `/authorize` 具有正確範圍的端點，以便觸發同意。 |
+|`invalid_scope` | 應用程式所要求的範圍無效。  | 將驗證要求中的範圍參數值更新為有效的值。 |
 
 > [!NOTE]
 > 單頁應用程式可能會收到 `invalid_request` 錯誤，指出只允許「單頁應用程式」用戶端類型的跨原始來源權杖兌換。  這表示用來要求權杖的重新導向 URI 尚未標示為 `spa` 重新導向 URI。  關於如何啟用此流程，請參閱[應用程式註冊步驟](#redirect-uri-setup-required-for-single-page-apps)。

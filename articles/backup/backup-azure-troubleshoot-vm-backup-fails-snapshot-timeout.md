@@ -4,12 +4,12 @@ description: 與代理程式、延伸模組及磁碟相關之 Azure 備份失敗
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585555"
+ms.locfileid: "88611852"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
