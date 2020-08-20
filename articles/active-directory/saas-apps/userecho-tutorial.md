@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 UserEcho 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 UserEcho 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bedd916b-8f69-4b50-9b8d-56f4ee3bd3ed
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 59d61eda7002fe46cf99fac63822b2333b2d64b5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6708fcbe6f756a92984ee8aa48c181e1103f2046
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67087774"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>教學課程：Azure Active Directory 與 UserEcho 整合
 

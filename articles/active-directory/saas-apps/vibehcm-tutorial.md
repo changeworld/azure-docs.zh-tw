@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Vibe HCM 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Vibe HCM 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4379bef7-adc9-4b6d-9384-c46d9a914bfe
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4267b75be72c1d162b4abaf7184afcdd02c38720
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8908b411155cbe3d4b2f3677d2305b2872574014
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68943095"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531985"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>教學課程：Azure Active Directory 與 Vibe HCM 整合
 

@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Clarity 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Clarity 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: ca9d5e71-e429-4891-8d10-3498e7210e89
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/05/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89700ccac8e197b393cb1e96cdbf5e04877c4a44
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 969fb8c688fe26e1aa830cab2bbc35c5712b060e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484607"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530693"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarity"></a>教學課程：Azure Active Directory 與 Clarity 整合
 
