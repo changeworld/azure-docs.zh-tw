@@ -3,12 +3,15 @@ title: 使用入口網站上傳、編碼和串流內容 - Azure
 description: 本快速入門說明如何搭配 Azure 媒體服務使用入口網站來上傳、編碼和串流內容。
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: IngridAtMicrosoft
+ms.author: inhenkel
+manager: femila
+ms.openlocfilehash: 7aebc6e52ec7fac97c6f1e8fb9b30cc63b74e860
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053347"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605666"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>快速入門：使用入口網站上傳、編碼和串流內容
 
@@ -28,7 +31,6 @@ ms.locfileid: "87053347"
 
   * [雲端上傳和儲存體](storage-account-concept.md)
   * [資產概念](assets-concept.md)
-  * [管理資產](manage-asset-concept.md)
 * 一旦您將高品質數位媒體檔案上傳至資產 (輸入資產)，就可以處理此檔案 (編碼或分析)。 處理的內容會進入另一個資產 (輸出資產)。 
     * 將您上傳的檔案[編碼](encoding-concept.md)成可在各種不同瀏覽器和裝置上播放的格式。
     * [分析](analyzing-video-audio-files-concept.md)您上傳的檔案。 

@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概觀
   items:
-    - name: 關於虛擬 WAN
+    - name: 什麼是虛擬 WAN？
       href: virtual-wan-about.md
     - name: 架構
       items:
