@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Airstack 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Airstack 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6a7b5675-f09d-4c1f-8f20-1a60cb8f9187
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 310a6a14cf8d1dbe66c28e6529e4ae6993896177
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a9890bd8eecf67ffab1f454803a016e600861ac
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73153679"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542831"
 ---
 # <a name="tutorial-integrate-airstack-with-azure-active-directory"></a>教學課程：整合 Airstack 與 Azure Active Directory
 

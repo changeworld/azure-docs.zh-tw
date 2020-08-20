@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 OpenText Directory Services 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 OpenText Directory Services 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4293efd0-9f8c-48b8-8080-87bbb7ff2552
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20f61ece728e698e2dd404ef5c6e1449c908c3fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: edd81e3a08f5855b1436b74fcad0bd340709bb57
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293320"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543885"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opentext-directory-services"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 OpenText Directory Services 整合
 

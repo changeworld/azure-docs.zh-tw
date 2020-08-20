@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入與 F5 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 F5 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9c5fb47a-1c5d-437a-b4c1-dbf739eaf5e3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e9a112f3f8cb7ba22201f4e5f05f21af30df039
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2e0e727e73fa1eff21a4b2e481738be49306676a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018577"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542972"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>教學課程：Azure Active Directory (AD) 單一登入 (SSO) 與 F5 整合
 
