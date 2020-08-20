@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de173d6dc25610cd397cd719fe4c1c9db33a02f6
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168194"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641835"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 資料表 .NET Standard API：下載和版本資訊
 > [!div class="op_single_selector"]
@@ -27,48 +27,56 @@ ms.locfileid: "84168194"
 |   |   |
 |---|---|
 |**SDK 下載**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
-|**抽樣**|[Cosmos DB 資料表 API .NET 範例](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
+|**範例**|[Cosmos DB 資料表 API .NET 範例](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
 |**快速入門**|[快速入門](create-table-dotnet.md)|
 |**教學課程**|[教學課程](tutorial-develop-table-dotnet.md)|
 |**目前支援的架構**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 |**報告問題**|[報告問題](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
 
 ## <a name="release-notes-for-200-series"></a>2.0.0 系列的版本資訊
-2.0.0 系列會依賴[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)，並改善效能，並將命名空間匯總到 Cosmos DB 端點。
+2.0.0 系列採用 [Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的相依性，並將效能改進和命名空間合併到 Cosmos DB 端點。
 
 ### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0-preview
-* 2.0.0 Table SDK 的初始預覽，它會相依于[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)，並改善效能，並將命名空間匯總到 Cosmos DB 端點。 公用 API 保持不變。
+* 2.0.0 資料表 SDK 的初始預覽，其相依于 [Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)，其效能改進和命名空間匯總可 Cosmos DB 端點。 公用 API 維持不變。
 
 ## <a name="release-notes-for-100-series"></a>1.0.0 系列的版本資訊
-1.0.0 系列會依賴[Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)。
+1.0.0 系列會相依于[Microsoft.Azure.DocumentDB。](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)
+
+### <a name="108"></a><a name="1.0.8"></a>1.0.8
+* 新增支援以設定 TTL 屬性（如果它是 cosmosdb 端點） 
+* 在超時和工作取消的例外狀況時接受重試原則
+* 修正 asp .net 應用程式中出現的間歇性工作已取消例外狀況
+* 從次要端點僅限位置模式修正 azure 資料表儲存體取出
+* 將相依性 `Microsoft.Azure.DocumentDB.Core` 版本更新為2.11.2，以修正間歇的 null 參考例外狀況
+* `Odata.Core`將相依性版本更新為7.6.4，以修正與 azure shell 的相容性衝突
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
-* 藉由將資料表 SDK 預設追蹤層級設定為 SourceLevels 來改善效能，您可以透過將其加入至 app.config
+* 將資料表 SDK 預設追蹤層級設定為 System.diagnostics.sourcelevels>，以改善效能，您可以選擇透過 app.config
 
 ### <a name="105"></a><a name="1.0.5"></a>1.0.5
-* 在 TableClientConfiguration 下引進新的設定，以使用 Rest 執行程式來與 Cosmos DB 進行通訊資料表 API
+* 在 TableClientConfiguration 下引進新的設定，以使用 Rest 執行程式來與 Cosmos DB 通訊資料表 API
 
 ### <a name="105-preview"></a><a name="1.0.5-preview"></a>1.0.5-預覽
-* Bug 修正
+* 錯誤修正
 
 ### <a name="104"></a><a name="1.0.4"></a>1.0.4
-* Bug 修正
+* 錯誤修正
 * 提供 RestExecutorConfiguration 的 HttpClientTimeout 選項。
 
 ### <a name="104-preview"></a><a name="1.0.4-preview"></a>1.0.4-預覽
-* Bug 修正
+* 錯誤修正
 * 提供 RestExecutorConfiguration 的 HttpClientTimeout 選項。
 
 ### <a name="101"></a><a name="1.0.1"></a>1.0.1
-* Bug 修正
+* 錯誤修正
 
 ### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * 公開上市版本
 
 ### <a name="0110-preview"></a><a name="0.11.0-preview"></a>0.11.0-預覽
-* 已變更 CloudTableClient 的設定方式。 它現在會在結構中取得 TableClientConfiguration 物件。 TableClientConfiguration 提供不同的屬性來設定用戶端行為，取決於目標端點是 Cosmos DB 資料表 API 還是 Azure 儲存體資料表 API。
-* 已將支援新增至 TableQuery，以便在自訂資料行上以排序次序傳回結果。 只有 Cosmos DB 資料表端點上才支援這項功能。
-* 已新增在各種結果類型上公開 RequestCharges 的支援。 只有 Cosmos DB 資料表端點上才支援這項功能。
+* 變更 CloudTableClient 的設定方式。 在結構中，它現在會採用 TableClientConfiguration 物件。 TableClientConfiguration 提供不同的屬性來設定用戶端行為，視目標端點是否 Cosmos DB 資料表 API 或 Azure 儲存體資料表 API 而定。
+* 新增對 >tablequery 的支援，以便在自訂資料行上以排序的順序傳回結果。 只有 Cosmos DB 資料表端點支援這項功能。
+* 已新增在各種結果類型上公開 RequestCharges 的支援。 只有 Cosmos DB 資料表端點支援這項功能。
 
 ### <a name="0101-preview"></a><a name="0.10.1-preview"></a>0.10.1 - 預覽
 * 針對 Azure 儲存體資料表端點新增 SAS 權杖、TablePermissions、ServiceProperties 和 ServiceStats 作業支援。 
@@ -88,7 +96,7 @@ ms.locfileid: "84168194"
 ## <a name="release-and-retirement-dates"></a>發行和停用日期
 Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供順利轉換至較新/支援的版本。
 
-這種跨平臺 .NET Standard 程式庫[Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)會取代 .NET Framework 程式庫[CosmosDB. table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
+此跨平臺 .NET Standard 程式庫 [Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) 將會取代 .NET Framework 程式庫 [CosmosDB. 資料表](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。
 
 ### <a name="200-series"></a>2.0.0 系列
 | 版本 | 發行日期 | 停用日期 |
@@ -100,9 +108,9 @@ Microsoft 至少會在停用 SDK 的 **12 個月** 之前提供通知，以供�
 | --- | --- | --- |
 | [1.0.5](#1.0.5) |2019 年 9 月 13 日 |--- |
 | [1.0.5-預覽](#1.0.5-preview) |Auguest 20，2019 |--- |
-| [1.0.4](#1.0.4) |Auguest 12、2019 |--- |
+| [1.0.4](#1.0.4) |Auguest 12，2019 |--- |
 | [1.0.4-預覽](#1.0.4-preview) |2019 年 7 月 26 日 |--- |
-| 1.0.2-preview |2019 5 月2日 |--- |
+| 1.0.2-preview |5月2日，2019 |--- |
 | [1.0.1](#1.0.1) |2019年4月19日 |--- |
 | [1.0.0](#1.0.0) |2019 年 3 月 13 日 |--- |
 | [0.11.0-預覽](#0.11.0-preview) |2019 年 3 月 5 日 |--- |

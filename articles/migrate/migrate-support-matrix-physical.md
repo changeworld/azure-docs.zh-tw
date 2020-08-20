@@ -1,31 +1,31 @@
 ---
 title: Azure Migrate 中的實體伺服器評量支援
-description: 瞭解 Azure Migrate Server 評估的實體伺服器評量支援
+description: 瞭解 Azure Migrate Server 評定的實體伺服器評量支援
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 97da09fa88cc3e69965237cb5b4326b8b59739bd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2b96bff7468f0705f2b80f60dcd5248960495f16
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423774"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640118"
 ---
-# <a name="support-matrix-for-physical-server-assessment"></a>實體伺服器評估的支援矩陣 
+# <a name="support-matrix-for-physical-server-assessment"></a>實體伺服器評量的支援矩陣 
 
-本文摘要說明當您使用[Azure Migrate： Server 評估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具來評估要遷移至 Azure 的實體伺服器時的必要條件和支援需求。 如果您想要將實體伺服器遷移至 Azure，請參閱[遷移支援矩陣](migrate-support-matrix-physical-migration.md)。
+本文摘要說明當您使用 [Azure Migrate：伺服器評估](migrate-services-overview.md#azure-migrate-server-assessment-tool) 工具來評估要遷移至 Azure 的實體伺服器時的必要條件和支援需求。 如果您想要將實體伺服器遷移至 Azure，請參閱 [遷移支援矩陣](migrate-support-matrix-physical-migration.md)。
 
 
-若要評估實體伺服器，您可以建立 Azure Migrate 專案，並將伺服器評估工具加入至專案。 新增工具之後，請部署 [Azure Migrate 設備](migrate-appliance.md)。 設備會持續探索內部部署機器，並將機器的中繼資料和效能資料傳送至 Azure。 探索完成之後，請將探索到的機器收集到群組中，然後為群組執行評估。
+若要評估實體伺服器，請建立 Azure Migrate 專案，並將伺服器評定工具新增至專案。 新增工具之後，請部署 [Azure Migrate 設備](migrate-appliance.md)。 設備會持續探索內部部署機器，並將機器的中繼資料和效能資料傳送至 Azure。 探索完成之後，請將探索到的機器收集到群組中，然後為群組執行評估。
 
 
 ## <a name="limitations"></a>限制
 
 **支援** | **詳細資料**
 --- | ---
-**評量限制** | 您可以在單一[Azure Migrate 專案](migrate-support-matrix.md#azure-migrate-projects)中探索及評估最多35000部實體伺服器。
-**專案限制** | 您可以在 Azure 訂用帳戶中建立多個專案。 除了實體伺服器之外，專案還可以包含 VMware Vm 和 Hyper-v Vm，最多可達每個虛擬機器的評量限制。
-**探索** | Azure Migrate 設備可以探索最多1000部實體伺服器。
-**評量** | 您最多可以在單一群組中新增 35,000 部機器。<br/><br/> 您可以在單一評估中評估多達35000部機器。
+**評量限制** | 您可以在單一 [Azure Migrate 專案](migrate-support-matrix.md#azure-migrate-projects)中探索及評定最多35000個實體伺服器。
+**專案限制** | 您可以在 Azure 訂用帳戶中建立多個專案。 除了實體伺服器之外，專案也可以包含 VMware Vm 和 Hyper-v Vm，最多可達每個 vm 的評量限制。
+**探索** | Azure Migrate 設備最多可探索1000部實體伺服器。
+**評量** | 您最多可以在單一群組中新增 35,000 部機器。<br/><br/> 您最多可以在單一評估中評估35000部機器。
 
 [深入了解](concepts-assessment-calculation.md)評估。
 
@@ -33,32 +33,32 @@ ms.locfileid: "87423774"
 
 | **支援**                | **詳細資料**               
 | :-------------------       | :------------------- |
-| **實體伺服器部署**       | 實體伺服器可以是獨立的，或部署在叢集中。 |
-| **權限**           | **Windows：** 針對加入網域的電腦使用網域帳戶，並針對未加入網域的電腦使用本機帳戶。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。 <br/><br/> **Linux：** 您在要探索的 Linux 伺服器上必須要有根帳戶。 |
-| **作業系統** | 除了 Windows Server 2003 和 SUSE Linux 以外的所有作業系統都可以進行評估以進行遷移。 |
+| **實體伺服器部署**       | 實體伺服器可以是獨立的，也可以部署在叢集中。 |
+| **權限**           | **Windows：** 針對已加入網域的電腦使用網域帳戶，並針對未加入網域的電腦使用本機帳戶。 使用者帳戶應新增至下列群組：遠端管理使用者、效能監視器使用者，以及效能記錄使用者。 <br/><br/> **Linux：** 您在要探索的 Linux 伺服器上必須要有根帳戶。 <br/> 或者，請務必使用下列命令來設定所需的功能。 <br/> setcap CAP_DAC_READ_SEARCH + eip/usr/sbin/fdisk <br/> setcap CAP_DAC_READ_SEARCH + eip/sbin/fdisk (是否有/usr/sbin/fdisk)  <br/> setcap "cap_dac_override，cap_dac_read_search，cap_fowner，cap_fsetid，cap_setuid，cap_setpcap，cap_net_bind_service，cap_net_admin，cap_sys_chroot，cap_sys_admin，cap_sys_resource，cap_audit_control，cap_setfcap = + eip"/sbin/lvm <br/> setcap CAP_DAC_READ_SEARCH + eip/usr/sbin/dmidecode <br/> chmod a + r/sys/class/dmi/id/product_uuid
+| **作業系統** | 除了 Windows Server 2003 和 SUSE Linux 以外的所有作業系統都可以評估以進行遷移。 |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 設備需求
 
 Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探索和評估。 實體伺服器的設備可以在 VM 或實體機器上執行。 
 
-- 瞭解實體伺服器的[設備需求](migrate-appliance.md#appliance---physical)。
+- 瞭解實體伺服器的 [設備需求](migrate-appliance.md#appliance---physical) 。
 - 了解設備必須在[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端中存取的 URL。
-- 您可以使用從 Azure 入口網站下載的[PowerShell 腳本](how-to-set-up-appliance-physical.md)來設定設備。
-在 Azure Government 中，[使用此腳本](deploy-appliance-script-government.md)部署應用裝置。
+- 您可以使用從 Azure 入口網站下載的 [PowerShell 腳本](how-to-set-up-appliance-physical.md) 來設定設備。
+在 Azure Government 中， [使用此腳本](deploy-appliance-script-government.md)部署設備。
 
 ## <a name="port-access"></a>連接埠存取
 
-下表摘要說明評量的通訊埠需求。
+下表摘要說明評量的埠需求。
 
 **裝置** | **[連接]**
 --- | ---
-**設備** | TCP 通訊埠3389上的輸入連線，以允許遠端桌面連線到應用裝置。<br/><br/> 埠44368上的輸入連線，可使用 URL 從遠端存取應用裝置管理應用程式：``` https://<appliance-ip-or-name>:44368 ```<br/><br/> 埠443（HTTPS）上的輸出連線，以將探索和效能中繼資料傳送至 Azure Migrate。
-**實體伺服器** | **Windows：** WinRM 埠5985（HTTP）上的輸入連線，可從 Windows 伺服器提取設定和效能中繼資料。 <br/><br/> **Linux：** 埠22（TCP）上的輸入連線，以從 Linux 伺服器提取設定和效能中繼資料。 |
+**設備** | TCP 埠3389上的輸入連線，以允許設備的遠端桌面連線。<br/><br/> 埠44368上的輸入連線，用來從遠端存取使用 URL 的設備管理應用程式： ``` https://<appliance-ip-or-name>:44368 ```<br/><br/> 埠443上的輸出連線 (HTTPS) ，以將探索和效能中繼資料傳送至 Azure Migrate。
+**實體伺服器** | **Windows：** WinRM 埠5985上的輸入連線 (HTTP) ，從 Windows 伺服器提取設定和效能中繼資料。 <br/><br/> **Linux：**  埠22上的輸入連線 (TCP) ，以從 Linux 伺服器提取設定和效能中繼資料。 |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>代理程式型相依性分析需求
 
-[相依性分析](concepts-dependency-visualization.md)可協助您識別所要評估並遷移至 Azure 的內部部署機器之間的相依性。 下表摘要說明用於設定代理程式型相依性分析的需求。 實體伺服器目前僅支援以代理程式為基礎的相依性分析。
+[相依性分析](concepts-dependency-visualization.md)可協助您識別所要評估並遷移至 Azure 的內部部署機器之間的相依性。 下表摘要說明用於設定代理程式型相依性分析的需求。 目前只有以代理程式為基礎的相依性分析支援實體伺服器。
 
 **需求** | **詳細資料** 
 --- | --- 
@@ -74,4 +74,4 @@ Azure Migrate 會使用 [Azure Migrate 設備](migrate-appliance.md)來進行探
 
 ## <a name="next-steps"></a>後續步驟
 
-[準備進行實體伺服器評估](tutorial-prepare-physical.md)。
+[準備進行實體伺服器評](tutorial-prepare-physical.md)量。

@@ -4,12 +4,12 @@ description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 776355ce981ba5cc2a24bfe473da2f55427eadf6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850741"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642192"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -87,7 +87,6 @@ Python 函式專案的建議資料夾結構看起來像下列範例：
 * *requirements.txt*：包含在發佈至 Azure 時系統安裝的套件清單。
 * *host.json*：包含會對函式應用程式中所有函式產生影響的全域組態選項。 此檔案會發行至 Azure。 在本機執行時，不支援所有選項。 若要深入了解，請參閱[host.json](functions-host-json.md)。
 * *.funcignore*：(選擇性) 宣告不應發佈至 Azure 的檔案。
-* *.gitignore*：(選擇性) 宣告從 Git 存放庫排除的檔案，例如 local.settings.json。
 * *Dockerfile*：(選擇性) 在[自訂容器](functions-create-function-linux-custom-image.md)中發佈專案時使用。
 
 每個函式都具有本身的程式碼檔案和繫結設定檔 (function.json)。
@@ -428,15 +427,15 @@ pip install -r requirements.txt
 
 從發佈中排除的專案檔案和資料夾 (包括虛擬環境資料夾) 會列在 .funcignore 檔案中。
 
-有三個組建動作支援將 Python 專案發行至 Azure：遠端組建、本機組建，以及使用自訂相依性的組建。
+有三個組建動作支援將 Python 專案發佈至 Azure：遠端組建、本機組建和使用自訂相依性的組建。
 
-您也可以使用 Azure Pipelines 來建立相依性，並使用持續傳遞 (CD) 來發行。 若要深入瞭解，請參閱[使用 Azure DevOps 持續傳遞](functions-how-to-azure-devops.md)。
+您也可以使用 Azure Pipelines 來建立相依性，並使用持續傳遞 (CD) 發佈。 若要深入瞭解，請參閱 [使用 Azure DevOps 的持續傳遞](functions-how-to-azure-devops.md)。
 
 ### <a name="remote-build"></a>遠端組建
 
-使用遠端組建時，在伺服器上還原的相依性和原生相依性會符合生產環境。 這會導致較小的部署套件上傳。 在 Windows 上開發 Python 應用程式時使用遠端組建。 如果您的專案有自訂相依性，您可以[使用遠端組建搭配額外的索引 URL](#remote-build-with-extra-index-url)。
+使用遠端組建時，伺服器上還原的相依性和原生相依性會符合生產環境。 這會導致較小的部署套件上傳。 在 Windows 上開發 Python 應用程式時，請使用遠端組建。 如果您的專案有自訂相依性，您可以 [使用具有額外索引 URL 的遠端組建](#remote-build-with-extra-index-url)。
 
-系統會根據 requirements.txt 檔案的內容，從遠端取得相依性。 [遠端組建](functions-deployment-technologies.md#remote-build)是建議的組建方法。 根據預設，當您使用下列 [func Azure functionapp publish](functions-run-local.md#publish) 命令，將 Python 專案發佈至 Azure 時，Azure Functions Core Tools 會要求遠端組建。
+相依性是根據 requirements.txt 檔案的內容從遠端取得的。 [遠端組建](functions-deployment-technologies.md#remote-build)是建議的組建方法。 根據預設，當您使用下列 [func Azure functionapp publish](functions-run-local.md#publish) 命令，將 Python 專案發佈至 Azure 時，Azure Functions Core Tools 會要求遠端組建。
 
 ```bash
 func azure functionapp publish <APP_NAME>
@@ -448,7 +447,7 @@ func azure functionapp publish <APP_NAME>
 
 ### <a name="local-build"></a>本機組建
 
-系統會根據 requirements.txt 檔案的內容，在本機取得相依性。 您可以使用下列 [func azure functionapp publish](functions-run-local.md#publish) 命令，搭配本機組建進行發佈，以防止執行遠端組建。
+相依性是根據 requirements.txt 檔案的內容在本機取得的。 您可以使用下列 [func azure functionapp publish](functions-run-local.md#publish) 命令，搭配本機組建進行發佈，以防止執行遠端組建。
 
 ```command
 func azure functionapp publish <APP_NAME> --build local
@@ -462,13 +461,13 @@ func azure functionapp publish <APP_NAME> --build local
 
 ### <a name="custom-dependencies"></a>自訂相依性
 
-當您的專案在[Python 套件索引](https://pypi.org/)中找不到相依性時，有兩種方式可以建立專案。 Build 方法視您建立專案的方式而定。
+當您的專案在 [Python 封裝索引](https://pypi.org/)中找不到相依性時，有兩種方式可建立專案。 組建方法取決於您建立專案的方式。
 
 #### <a name="remote-build-with-extra-index-url"></a>具有額外索引 URL 的遠端組建
 
-當您的套件可從可存取的自訂套件索引取得時，請使用遠端組建。 發行之前，請務必先建立名為的[應用程式設定](functions-how-to-use-azure-function-app-settings.md#settings) `PIP_EXTRA_INDEX_URL` 。 此設定的值是自訂封裝索引的 URL。 使用此設定時，會使用選項來指示遠端組建執行 `pip install` `--extra-index-url` 。 若要深入瞭解，請參閱[Python pip 安裝檔](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)。
+當您的封裝可從可存取的自訂套件索引中使用時，請使用遠端組建。 在發佈之前，請務必建立名為的 [應用程式設定](functions-how-to-use-azure-function-app-settings.md#settings) `PIP_EXTRA_INDEX_URL` 。 這項設定的值是自訂套件索引的 URL。 使用此設定會告訴您要使用選項來執行遠端組建 `pip install` `--extra-index-url` 。 若要深入瞭解，請參閱 [Python pip 安裝檔](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)。
 
-您也可以搭配使用基本驗證認證與額外的套件索引 Url。 若要深入瞭解，請參閱 Python 檔中的[基本驗證認證](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials)。
+您也可以搭配使用基本驗證認證與額外的套件索引 Url。 若要深入瞭解，請參閱 Python 檔中的 [基本驗證認證](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) 。
 
 #### <a name="install-local-packages"></a>安裝本機套件
 
@@ -478,7 +477,7 @@ func azure functionapp publish <APP_NAME> --build local
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
 ```
 
-使用自訂相依性時，您應該使用 [ `--no-build` 發行] 選項，因為您已將相依性安裝到專案資料夾。
+使用自訂相依性時，您應該使用 `--no-build` 發行選項，因為您已經將相依性安裝在專案資料夾中。
 
 ```command
 func azure functionapp publish <APP_NAME> --no-build
@@ -642,30 +641,30 @@ from os import listdir
 
 ## <a name="preinstalled-libraries"></a>預先安裝的程式庫
 
-Python 函式執行時間隨附幾個程式庫。
+有一些程式庫隨附于 Python 函式執行時間。
 
 ### <a name="python-standard-library"></a>Python 標準程式庫
 
 Python 標準程式庫包含每個 Python 散發套件隨附的內建 Python 模組清單。 這些程式庫大多可協助您存取系統功能，例如檔案 i/o。 在 Windows 系統上，這些程式庫會隨 Python 安裝。 在以 Unix 為基礎的系統上，它們是由套件集合提供。
 
-若要查看這些程式庫清單的完整詳細資料，請造訪下列連結：
+若要查看這些程式庫清單的完整詳細資料，請流覽下列連結：
 
 * [Python 3.6 標準程式庫](https://docs.python.org/3.6/library/)
 * [Python 3.7 標準程式庫](https://docs.python.org/3.7/library/)
 * [Python 3.8 標準程式庫](https://docs.python.org/3.8/library/)
 
-### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python 工作者相依性
+### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python 背景工作相依性
 
-功能 Python 背景工作角色需要一組特定的程式庫。 您也可以在函式中使用這些程式庫，但它們不是 Python 標準的一部分。 如果您的函式依賴這些程式庫，則在 Azure Functions 外部執行時，您的程式碼可能無法使用它們。 您可以在[setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282)檔案中的 [**安裝 \_ 需要**] 區段中找到相依性的詳細清單。
+Python 背景工作角色需要一組特定的程式庫。 您也可以在函式中使用這些程式庫，但它們不是 Python 標準的一部分。 如果您的函式依賴任何這些程式庫，則您的程式碼在 Azure Functions 外部執行時可能無法使用這些程式庫。 您可以在[setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282)檔案的 [**安裝 \_ 需要**] 區段中找到詳細的相依性清單。
 
 > [!NOTE]
-> 如果函數應用程式的 requirements.txt 包含 `azure-functions-worker` 專案，請將它移除。 函式背景工作會由 Azure Functions 平臺自動管理，而我們會定期使用新功能和錯誤修正來進行更新。 以手動方式在 requirements.txt 中安裝舊版本的背景工作角色可能會造成未預期的問題。
+> 如果函數應用程式的 requirements.txt 包含 `azure-functions-worker` 專案，請將它移除。 函式背景工作會由 Azure Functions 平臺自動管理，並定期以新功能和 bug 修正進行更新。 在 requirements.txt 中手動安裝舊版本的背景工作角色可能會造成未預期的問題。
 
 ### <a name="azure-functions-python-library"></a>Azure Functions Python 程式庫
 
-每個 Python 背景工作角色更新都包含新版的[Azure Functions Python 程式庫， (Azure. 函數) ](https://github.com/Azure/azure-functions-python-library)。 這種方法可讓您更輕鬆地持續更新 Python 函式應用程式，因為每個更新都有回溯相容性。 此程式庫的版本清單可在[azure 函式 PyPi](https://pypi.org/project/azure-functions/#history)中找到。
+每個 Python 背景工作更新都包含新版本的 [Azure Functions Python 程式庫 (Azure. ](https://github.com/Azure/azure-functions-python-library)函式) 。 這種方法可讓您更輕鬆地持續更新 Python 函數應用程式，因為每個更新都是回溯相容的。 您可以在 [azure 函式 PyPi](https://pypi.org/project/azure-functions/#history)中找到此程式庫的版本清單。
 
-執行時間程式庫版本由 Azure 修正，而且無法由 requirements.txt 覆寫。 `azure-functions`requirements.txt 中的專案僅適用于 linting 和客戶認知。
+執行時間程式庫版本是由 Azure 所修正，且無法由 requirements.txt 覆寫。 `azure-functions`requirements.txt 中的專案僅供 linting 和客戶感知之用。
 
 使用下列程式碼，在您的執行時間中追蹤 Python 函式程式庫的實際版本：
 
@@ -675,12 +674,12 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 
 ### <a name="runtime-system-libraries"></a>執行時間系統程式庫
 
-如需 Python 背景工作 Docker 映射中預先安裝的系統程式庫清單，請遵循下列連結：
+如需 Python 背景工作 Docker 映射中預先安裝系統程式庫的清單，請遵循下列連結：
 
 |  Functions 執行階段  | Debian 版本 | Python 版本 |
 |------------|------------|------------|
 | 2.x 版 | 延展  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| 3.x 版 | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| 3.x 版 | 剋星 | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>跨原始資源共用
 

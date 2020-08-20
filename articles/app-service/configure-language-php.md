@@ -1,22 +1,22 @@
 ---
 title: 設定 PHP 應用程式
-description: 瞭解如何在 Azure App Service 中，于原生 Windows 實例或預先建立的 PHP 容器中設定 PHP 應用程式。 本文說明最常見的設定工作。
+description: 瞭解如何在原生 Windows 實例中或在預先建立的 PHP 容器（Azure App Service 中）設定 PHP 應用程式。 本文說明最常見的設定工作。
 ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 306afb2bfba7c222798bbfd1bef334387b6f9771
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 440815d7d24cde9708c214bf407a2dd9206a1706
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080074"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642039"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 PHP 應用程式
 
 本指南說明如何在 Azure App Service 中設定您的 PHP web 應用程式、行動後端和 API 應用程式。
 
-本指南提供將應用程式部署至 App Service 的 PHP 開發人員的重要概念和指示。 如果您從未使用過 Azure App Service，請先遵循 [PHP 快速入門](quickstart-php.md)和[搭配使用 PHP 和 MySQL 教學課程](tutorial-php-mysql-app.md)。
+本指南針對將應用程式部署至 App Service 的 PHP 開發人員提供重要概念和指示。 如果您從未使用過 Azure App Service，請先遵循 [PHP 快速入門](quickstart-php.md)和[搭配使用 PHP 和 MySQL 教學課程](tutorial-php-mysql-app.md)。
 
 ## <a name="show-php-version"></a>顯示 PHP 版本
 
@@ -56,7 +56,7 @@ az webapp list-runtimes --linux | grep PHP
 
 ::: zone pivot="platform-windows"  
 
-在[Cloud Shell](https://shell.azure.com)中執行下列命令，將 PHP 版本設定為7.4：
+在 [Cloud Shell](https://shell.azure.com) 中執行下列命令，以將 PHP 版本設定為7.4：
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --php-version 7.4
@@ -78,20 +78,20 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="run-composer"></a>執行編輯器
 
-如果您想要 App Service 在部署階段執行[編輯器](https://getcomposer.org/)，最簡單的方式是在您的存放庫中包含編輯器。
+如果您想要 App Service 在部署階段執行 [編輯器](https://getcomposer.org/) ，最簡單的方式就是在您的存放庫中包含編輯器。
 
-從本機終端機視窗中，將目錄變更為您的存放庫根目錄，並遵循[下載編輯器](https://getcomposer.org/download/)中的指示，將*composer.phar*下載至目錄根目錄。
+從本機終端機視窗中，將目錄變更為您的存放庫根目錄，然後依照 [下載編輯器](https://getcomposer.org/download/) 中的指示，將 *>composer.phar* 下載至目錄根目錄。
 
-執行下列命令 (您需要安裝的[npm](https://www.npmjs.com/get-npm)) ：
+ (您需要安裝 [npm](https://www.npmjs.com/get-npm)) ，請執行下列命令：
 
 ```bash
 npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-您的存放庫根目錄現在有兩個額外的檔案： *. deployment*和*deploy.sh*。
+您的存放庫根目錄現在有兩個額外的檔案： *. deployment* 和 *deploy.sh*。
 
-開啟*deploy.sh* ，並尋找 `Deployment` 區段，如下所示：
+開啟 *deploy.sh* 並尋找 `Deployment` 區段，如下所示：
 
 ```bash
 ##################################################################################################################################
@@ -99,7 +99,7 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-在區段*結尾處*，新增您需要執行必要工具的程式碼區段 `Deployment` ：
+在區段 *結尾* 新增執行必要工具所需的程式碼區段 `Deployment` ：
 
 ```bash
 # 4. Use composer
@@ -113,13 +113,13 @@ if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
 fi
 ```
 
-認可所有變更，並使用 Git 部署您的程式碼，或使用已啟用組建自動化的 Zip 部署。 「編輯器」現在應該會當做「部署自動化」的一部分來執行。
+認可所有變更，並使用 Git 部署您的程式碼，或使用啟用組建自動化的 Zip 部署。 編輯器現在應該在部署自動化中執行。
 
 ## <a name="run-gruntbowergulp"></a>執行 Grunt/Bower/Gulp
 
-如果您想要 App Service 在部署期間執行熱門的自動化工具，例如 Grunt、Bower 或 Gulp，您必須提供[自訂部署腳本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。 當您使用 Git 部署，或在已啟用組建自動化的[Zip 部署](deploy-zip.md)時，App Service 執行此腳本。 
+如果您想要 App Service 在部署期間執行熱門的自動化工具，例如 Grunt、Bower 或 Gulp，您需要提供 [自訂部署腳本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。 當您使用 Git 進行部署，或使用啟用組建自動化的 [Zip 部署](deploy-zip.md) 時，App Service 執行此腳本。 
 
-若要讓您的存放庫執行這些工具，您需要將它們新增至*package.js上*的相依性。 例如：
+若要讓您的存放庫能夠執行這些工具，您必須將它們新增至*package.js*的相依性。 例如：
 
 ```json
 "dependencies": {
@@ -130,16 +130,16 @@ fi
 }
 ```
 
-從本機終端機視窗中，將目錄切換到您的存放庫根目錄，然後執行下列命令 (您需要安裝的[npm](https://www.npmjs.com/get-npm)) ：
+從本機終端機視窗中，將目錄變更為您的存放庫根目錄，然後執行下列命令 (您需要安裝 [npm](https://www.npmjs.com/get-npm)) ：
 
 ```bash
 npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-您的存放庫根目錄現在有兩個額外的檔案： *. deployment*和*deploy.sh*。
+您的存放庫根目錄現在有兩個額外的檔案： *. deployment* 和 *deploy.sh*。
 
-開啟*deploy.sh* ，並尋找 `Deployment` 區段，如下所示：
+開啟 *deploy.sh* 並尋找 `Deployment` 區段，如下所示：
 
 ```bash
 ##################################################################################################################################
@@ -147,13 +147,13 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-本節結束于執行 `npm install --production` 。 在區段*結尾處*，新增您需要執行必要工具的程式碼區段 `Deployment` ：
+本節的結尾是執行 `npm install --production` 。 在區段 *結尾* 新增執行必要工具所需的程式碼區段 `Deployment` ：
 
 - [Bower](#bower)
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
-請參閱[MEAN.js 範例中的範例](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135)，其中部署腳本也會執行自訂 `npm install` 命令。
+請參閱 [MEAN.js 範例中的範例](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135)，其中部署腳本也會執行自訂 `npm install` 命令。
 
 ### <a name="bower"></a>Bower
 
@@ -241,9 +241,9 @@ getenv("DB_HOST")
 
 ::: zone pivot="platform-windows"  
 
-您選擇的 web 架構可能會使用子目錄作為網站根目錄。 例如， [Laravel](https://laravel.com/)會使用*公用/* 子目錄作為網站根目錄。
+您選擇的 web 架構可能會使用子目錄作為網站根目錄。 例如， [Laravel](https://laravel.com/)會使用 *公用/* 子目錄作為網站根目錄。
 
-若要自訂網站根目錄，請使用命令來設定應用程式的虛擬應用程式路徑 [`az resource update`](/cli/azure/resource#az-resource-update) 。 下列範例會將網站根目錄設定為存放庫中的*公用/* 子目錄。 
+若要自訂網站根目錄，請使用命令來設定應用程式的虛擬應用程式路徑 [`az resource update`](/cli/azure/resource#az-resource-update) 。 下列範例會將網站根目錄設定為存放庫中的 *公用/* 子目錄。 
 
 ```azurecli-interactive
 az resource update --name web --resource-group <group-name> --namespace Microsoft.Web --resource-type config --parent sites/<app-name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
@@ -276,8 +276,8 @@ App Service 的預設 PHP 映像會使用 Apache，且不會讓您自訂應用�
 在 App Service 中，[SSL 終止](https://wikipedia.org/wiki/TLS_termination_proxy)會在網路負載平衡器上發生，因此所有的 HTTPS 要求都會以未加密 HTTP 要求的形式進入您的應用程式。 如果您的應用程式邏輯需要檢查使用者要求是否有加密，請檢查 `X-Forwarded-Proto` 標頭。
 
 ```php
-if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'https') {
-  // Do something when HTTPS is used
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+// Do something when HTTPS is used
 }
 ```
 
@@ -295,7 +295,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 ::: zone pivot="platform-windows"  
 
-若要自訂 PHP_INI_USER、PHP_INI_PERDIR 和 PHP_INI_ALL 指示詞 (參閱[php.ini](https://www.php.net/manual/ini.list.php)指示詞) ，請將檔案新增 `.user.ini` 至應用程式的根目錄。
+若要自訂 PHP_INI_USER、PHP_INI_PERDIR 和 PHP_INI_ALL 指示詞 (查看 [php.ini](https://www.php.net/manual/ini.list.php) 指示詞) ，請將檔案新增 `.user.ini` 至您應用程式的根目錄。
 
 使用在 `php.ini` 檔案中使用的相同語法，將組態設定新增至 `.user.ini` 檔案。 例如，如果您要開啟 `display_errors` 設定，並將 `upload_max_filesize` 設定設為 10M，則 `.user.ini` 檔案將包含下列文字：
 
@@ -310,7 +310,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 經由變更重新部署應用程式，並重新啟動應用程式。
 
-除了使用檔案之外 `.user.ini` ，您也可以在應用程式中使用[ini_set ( # B1](https://www.php.net/manual/function.ini-set.php)來自訂這些非 PHP_INI_SYSTEM 的指示詞。
+除了使用檔案 `.user.ini` 以外，您也可以在應用程式中使用 [ini_set ( # B1 ](https://www.php.net/manual/function.ini-set.php) 來自訂這些非 PHP_INI_SYSTEM 指示詞。
 
 ::: zone-end
 
@@ -452,7 +452,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 
 ::: zone pivot="platform-windows"  
 
-使用標準[error_log ( # B1](https://php.net/manual/function.error-log.php)公用程式，讓您的診斷記錄顯示在 Azure App Service 中。
+使用標準 [error_log ( # B1 ](https://php.net/manual/function.error-log.php) 公用程式，讓您的診斷記錄顯示在 Azure App Service 中。
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
@@ -469,7 +469,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 當運作中的 PHP 應用程式在 App Service 中有不同的行為或發生錯誤時，請嘗試下列動作：
 
 - [存取記錄資料流](#access-diagnostic-logs)。
-- 在生產模式中於本機測試應用程式。 App Service 會在生產模式中執行您的應用程式，因此您必須確定您的專案在本機的生產模式中如預期般運作。 例如：
+- 在生產模式中於本機測試應用程式。 App Service 在生產模式中執行您的應用程式，因此您必須確定您的專案會在本機的生產模式中如預期般運作。 例如：
     - 視 *composer.json* 而定，可能會為生產模式安裝不同的套件 (`require` 與 `require-dev`)。
     - 某些 web 架構可以在生產模式中以不同的方式部署靜態檔案。
     - 在生產模式中執行時，某些 web 架構可能會使用自訂啟動指令碼。

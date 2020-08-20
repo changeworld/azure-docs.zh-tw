@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c66c1fc9a9b93d5b4d3af0440ec3fdc276a9b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d662689d44bcdbd468c882de0679fd60c9ab4f4
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763409"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640441"
 ---
 # <a name="develop-line-of-business-apps-for-azure-active-directory"></a>開發適用於 Azure Active Directory 的企業營運應用程式
 本指南提供開發適用於 Azure Active Directory (AD) 的企業營運 (LoB) 應用程式的概觀。適用對象為 Active Directory/Office 365 全域系統管理員。
 
-## <a name="overview"></a>總覽
-建置整合 Azure AD 的應用程式，可讓您組織的使用者使用 Office 365 單一登入。 將應用程式置於 Azure AD 中可讓您掌控應用程式設定的驗證原則。 若要深入瞭解條件式存取，以及如何使用多重要素驗證（MFA）來保護應用程式，請參閱設定[存取規則](../conditional-access/app-based-mfa.md)。
+## <a name="overview"></a>概觀
+建置整合 Azure AD 的應用程式，可讓您組織的使用者使用 Office 365 單一登入。 將應用程式置於 Azure AD 中可讓您掌控應用程式設定的驗證原則。 若要深入瞭解條件式存取，以及如何使用多重要素驗證保護應用程式 (MFA) 請參閱設定 [存取規則](../conditional-access/app-based-mfa.md)。
 
 註冊應用程式以使用 Azure Active Directory。 註冊應用程式意謂著開發人員可以使用 Azure AD 來驗證使用者，以及要求對使用者資源 (例如電子郵件、行事曆及文件) 的存取權。
 
@@ -58,7 +58,7 @@ ms.locfileid: "84763409"
 針對您的 SaaS 應用程式設定每個應用程式的存取規則 例如，您可以要求執行 MFA 或只允許受信任網路上的使用者進行存取。 如需這方面的詳細資料，請參閱[設定存取規則](../conditional-access/app-based-mfa.md)文件。
 
 ## <a name="configure-the-app-to-require-user-assignment-and-assign-users"></a>設定應用程式要求指派使用者並指派使用者
-根據預設，使用者不須獲得指派，即可存取應用程式。 不過，如果應用程式公開角色或您希望應用程式出現在使用者的存取面板上，則應該要求指派使用者。
+根據預設，使用者不須獲得指派，即可存取應用程式。 但是，如果應用程式公開角色，或您想要讓應用程式出現在使用者的我的應用程式上，您應該需要使用者指派。
 
 如果您是 Azure AD Premium 或 Enterprise Mobility Suite (EMS) 的訂閱者，則強烈建議使用群組。 將群組指派給應用程式，可讓您將持續進行的存取管理委派給群組擁有者。 您可以建立群組，或使用群組管理功能要求您組織中負責的對象建立群組。
 

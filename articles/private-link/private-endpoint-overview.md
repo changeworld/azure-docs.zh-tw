@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1566de36d6176568b148fde965bb7d3051e6b500
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543464"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639829"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什麼是 Azure 私人端點？
 
@@ -22,7 +22,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  私人端點指定了下列屬性： 
 
 
-|屬性  |說明 |
+|屬性  |描述 |
 |---------|---------|
 |名稱    |    資源群組內的唯一名稱。      |
 |子網路    |  要從虛擬網路部署和配置私人 IP 位址的子網路。 如需子網路需求，請參閱此文章的＜限制＞一節。         |
@@ -47,6 +47,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  
 - 可以在相同虛擬網路內的相同或不同的子網路上建立多個私人端點。 您可以在訂用帳戶中建立的私人端點數目有所限制。 如需詳細資訊，請參閱  [Azure 限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits) \(部分機器翻譯\)。
 
+- 私人連結資源的訂用帳戶也必須向 Micosoft （網路資源提供者）註冊。 如需詳細資訊，請參閱 [Azure 資源提供者](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)。
 
  
 ## <a name="private-link-resource"></a>Private Link 資源 
@@ -71,8 +72,8 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |**Azure Container Registry** | Microsoft.ContainerRegistry/registries    | 登錄 |
 |**Azure 應用程式組態** | Microsoft.Appconfiguration/configurationStores    | configurationStores |
 |**Azure 備份** | Microsoft.RecoveryServices/vaults    | 保存庫 |
-|**Azure 事件中樞** | Microsoft.EventHub/namespaces    | namespace |
-|**Azure 服務匯流排** | Microsoft.ServiceBus/namespaces | namespace |
+|**Azure 事件中樞** | Microsoft.EventHub/namespaces    | 命名空間 |
+|**Azure 服務匯流排** | Microsoft.ServiceBus/namespaces | 命名空間 |
 |**Azure 轉送** | Microsoft.Relay/namespaces | 命名空間 |
 |**事件格線** | Microsoft.EventGrid/topics    | 主題 |
 |**事件格線** | Microsoft.EventGrid/domains    | 網域 |
@@ -80,7 +81,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 |**Azure Machine Learning** | Microsoft.MachineLearningServices/workspaces    | 工作區 |
 |**SignalR** | Microsoft.SignalRService/SignalR    | signalR |
 |**Azure 監視器** | Microsoft Insights/privateLinkScopes    | azuremonitor |
-|**認知服務** | （CognitiveServices/帳戶    | account |
+|**認知服務** |  (CognitiveServices/帳戶    | account |
 |**Azure 檔案同步** | Microsoft.storagesync/storageSyncServices    | Afs |
     
   
@@ -94,7 +95,7 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>使用核准工作流程存取私人連結資源 
 您可以使用下列連線核准方法來連線到私人連結資源：
-- **自動**核准，當您擁有或擁有特定私人連結資源的權限時。 所需的許可權是以下列格式的私用連結資源類型為基礎： Microsoft。 \<Provider>/<resource_type>/privateEndpointConnectionApproval/action
+- **自動**核准，當您擁有或擁有特定私人連結資源的權限時。 所需的許可權是以下列格式的 private link 資源類型為基礎： Microsoft。 \<Provider>/<resource_type>/privateEndpointConnectionApproval/action
 - **手動**要求，當您沒有必要的權限，而且想要要求存取權時。 已起始核准工作流程。 私人端點和後續的私人端點連線將會以「擱置」狀態來建立。 私人連結資源的擁有者會負責核准連線。 獲得核准後，私人端點便能正常傳送流量，如下列核准工作流程圖所示。  
 
 ![工作流程核准](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -132,9 +133,9 @@ Azure 私人端點是一種網路介面，可讓您以私人且安全地方式�
 
 
 ## <a name="next-steps"></a>後續步驟
-- [使用入口網站建立 SQL Database 的私用端點](create-private-endpoint-portal.md)
-- [使用 PowerShell 建立 SQL Database 的私用端點](create-private-endpoint-powershell.md)
-- [使用 CLI 建立 SQL Database 的私用端點](create-private-endpoint-cli.md)
+- [使用入口網站建立 SQL Database 的私人端點 ](create-private-endpoint-portal.md)
+- [使用 PowerShell 建立 SQL Database 的私人端點 ](create-private-endpoint-powershell.md)
+- [使用 CLI 建立 SQL Database 的私人端點 ](create-private-endpoint-cli.md)
 - [使用入口網站建立適用於儲存體帳戶的私人端點](create-private-endpoint-storage-portal.md)
 - [使用入口網站建立適用於 Azure Cosmos 帳戶的私人端點](../cosmos-db/how-to-configure-private-endpoints.md)
 - [使用 Azure PowerShell 建立您自己的 Private Link 服務](create-private-link-service-powershell.md)

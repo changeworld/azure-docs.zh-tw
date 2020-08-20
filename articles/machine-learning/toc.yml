@@ -153,6 +153,8 @@
       href: concept-ml-pipelines.md
     - name: 企業整備與安全性
       items:
+        - name: 安全性基準
+          href: security-baseline.md
         - name: 企業安全性和指導方針
           items:
             - name: 企業安全性概觀

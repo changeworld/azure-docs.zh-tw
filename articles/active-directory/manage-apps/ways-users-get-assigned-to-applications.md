@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45124862fffa3a1ef6f601733407fbbea4eb5e74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 516bffa7057f8fee3b8e38d46f3b2da905880044
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762950"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639931"
 ---
 # <a name="how-to-assign-users-to-applications"></a>將使用者指派至應用程式
 
@@ -44,9 +44,9 @@ ms.locfileid: "84762950"
 
     * [所有使用者](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)群組
 
-3.  系統管理員啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者利用[應用程式存取面板的](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **新增應用程式**功能新增應用程式，而**不需要商務核准**
+3.  系統管理員可啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者使用[我的應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)**新增**應用程式功能來新增應用程式，**而不需要商務核准**
 
-4.  系統管理員啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者利用[應用程式存取面板的](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **新增應用程式**功能新增應用程式，但需要經過**一群選定商務核准者的事先核准**
+4.  系統管理員可啟用[自助應用程式存取](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)，以允許使用者使用[我的應用程式](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)**新增應用**程式功能來新增應用程式，但只需要**一組所選商務核准者的先前核准**（w）
 
 5.  系統管理員啟用[自助群組管理](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)，以允許使用者加入已指派應用程式的群組，而**不需要商務核准**
 

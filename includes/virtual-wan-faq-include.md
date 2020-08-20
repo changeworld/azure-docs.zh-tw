@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c1a8fbb5558d5b9069c5b8103bca2fc3f8bcddf3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375246"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507567"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
 
@@ -187,7 +187,7 @@ ms.locfileid: "87375246"
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>使用 Azure 虛擬 WAN 時是否有網路輸送量或連線限制？
 
-網路輸送量是根據虛擬 WAN 中樞中的服務。 雖然您可以擁有任意數量的虛擬 WAN，但是每個虛擬 WAN 針對每個區域只允許 1 個中樞。 在每個中樞中，VPN 彙總輸送量最高可達 20 Gbps，ExpressRoute 彙總輸送量最高可達 20 Gbps，使用者 VPN/點對站 VPN 彙總輸送量最高可達 20 Gbps。 虛擬中樞內的路由器最多可支援 50 Gbps 的 VNet 對 VNet 流量，並假設虛擬 WAN 中樞的所有 VNet 有總計 2000 個 VM 工作負載。
+網路輸送量是根據虛擬 WAN 中樞中的服務。 雖然您可以擁有任意數量的虛擬 WAN，但是每個虛擬 WAN 針對每個區域只允許 1 個中樞。 在每個中樞中，VPN 彙總輸送量最高可達 20 Gbps，ExpressRoute 彙總輸送量最高可達 20 Gbps，使用者 VPN/點對站 VPN 彙總輸送量最高可達 20 Gbps。 虛擬中樞內的路由器最多可支援 50 Gbps 的 VNet 對 VNet 流量，並假設連線至單一虛擬中樞的所有 VNet 之間有總計 2000 個 VM 工作負載。
 
 當 VPN 網站連線到中樞時，會使用連線來執行此動作。 虛擬 WAN 支援每個虛擬中樞最多 1000 個連線或 2000 個 IPsec 通道。 當遠端使用者連線到虛擬中樞時，他們會連線到 P2S VPN 閘道，該閘道最多可支援 10000 個使用者，這取決於針對虛擬中樞內 P2S VPN 閘道所選擇的縮放單位 (頻寬)。
 

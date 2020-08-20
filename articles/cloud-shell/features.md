@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: e7324bfec32368e952af8f24afabe893011454df
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea11dddd83651e233f008197ffa23a3becd978de
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538168"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642345"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -44,24 +44,24 @@ Cloud Shell 會安全地自動驗證 Azure CLI 和 Azure PowerShell 的帳戶存
 
 ### <a name="azure-drive-azure"></a>Azure 磁碟機 (Azure:)
 
-Cloud Shell 中的 PowerShell 會提供 Azure 磁片磁碟機（ `Azure:` ）。 您可以使用切換至 Azure 磁片磁碟機，並將其 `cd Azure:` 返回您的主目錄 `cd  ~` 。
+Cloud Shell 中的 PowerShell 提供 () 的 Azure 磁片磁碟機 `Azure:` 。 您可以使用來切換至您的 `cd Azure:` 主目錄並切換回 Azure 磁片磁碟機 `cd  ~` 。
 Azure 磁碟機可讓您輕鬆探索和導覽與檔案系統導覽類似的 Azure 資源 (例如計算、網路、儲存體等等)。
 無論您使用哪個磁碟機，都可以繼續使用熟悉的 [Azure PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure) 來管理這些資源。
 對 Azure 資源進行的任何變更 (在 Azure 入口網站中直接進行，或透過 Azure PowerShell Cmdlet) 都會反映在 Azure 磁碟機中。  您可以執行 `dir -Force` 以重新整理您的資源。
 
-![要初始化的 Azure Cloud Shell 的螢幕擷取畫面，以及目錄資源的清單。](media/features-powershell/azure-drive.png)
+![正在初始化的 Azure Cloud Shell 的螢幕擷取畫面，以及目錄資源的清單。](media/features-powershell/azure-drive.png)
 
 ### <a name="manage-exchange-online"></a>管理 Exchange Online
 
 Cloud Shell 中的 PowerShell 包含 Exchange Online 模組的私用組建。  執行 `Connect-EXOPSSession` 以取得您的 Exchange Cmdlet。
 
-![執行命令 EXOPSSession 和 Get-User 之 Azure Cloud Shell 的螢幕擷取畫面。](media/features-powershell/exchangeonline.png)
+![執行命令 EXOPSSession 和取得使用者的 Azure Cloud Shell 螢幕擷取畫面。](media/features-powershell/exchangeonline.png)
 
  `Get-Command -Module tmp_*`執行
 > [!NOTE]
-> 模組名稱的開頭應該是 `tmp_` ，如果您已安裝具有相同前置詞的模組，則也會顯示其 Cmdlet。 
+> 模組名稱的開頭應該是 `tmp_` ，如果您已安裝具有相同前置詞的模組，也會顯示它們的 Cmdlet。 
 
-![執行命令的 Azure Cloud Shell 螢幕擷取畫面 tmp_ *。](media/features-powershell/exchangeonlinecmdlets.png)
+![執行命令 Get-Command-Module tmp_ * Azure Cloud Shell 的螢幕擷取畫面。](media/features-powershell/exchangeonlinecmdlets.png)
 
 ### <a name="deep-integration-with-open-source-tooling"></a>與開放原始碼工具深度整合
 
@@ -78,17 +78,17 @@ Cloud Shell 包含預先設定的驗證，可用於開放原始碼工具，例�
 |建置工具            |make<br> maven<br> npm<br> pip         |
 |容器             |[Docker 機器](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
 |資料庫              |MySQL 用戶端<br> PostgreSql 用戶端<br> [sqlcmd 公用程式](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|其他                  |iPython 用戶端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) \(英文\)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet 的螺栓](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)<br> [Office 365 CLI](https://pnp.github.io/office365-cli/)|
+|其他                  |iPython 用戶端<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli) \(英文\)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)<br> [Chef InSpec](https://www.chef.io/inspec/)<br> [Puppet 螺栓](https://puppet.com/docs/bolt/latest/bolt.html)<br> [HashiCorp Packer](https://www.packer.io/)<br> [Office 365 CLI](https://pnp.github.io/office365-cli/)|
 
 ## <a name="language-support"></a>語言支援
 
 |Language   |版本   |
 |---|---|
-|.NET Core  |2.2.402       |
+|.NET Core  |[3.1.302](https://github.com/dotnet/core/blob/master/release-notes/3.1/3.1.6/3.1.302-download.md)       |
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
-|PowerShell |[版](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[7.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 和 3.5 (預設)|
 
 ## <a name="next-steps"></a>後續步驟

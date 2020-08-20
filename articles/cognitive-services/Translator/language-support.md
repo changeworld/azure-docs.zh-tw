@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a0ea0a7580bbb7a6106880d2733f36f5ab7a7690
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510788"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639778"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文字和語音翻譯的語言和區域支援
 
@@ -296,6 +296,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | 法文      | `fr`          |
 | 德文      | `de`          |
 | 希臘文      | `el`          |
+| 古吉拉特文| `gu`    |
 | Hebrew      | `he`          |
 | Hindi      | `hi`          |
 | 匈牙利文      | `hu`          |
@@ -309,11 +310,14 @@ Translator 會偵測下列翻譯和音譯語言。
 | 拉脫維亞文      | `lv`          |
 | 立陶宛文      | `lt`          |
 | 馬達加斯加文| `mg`    |
+| 馬來文|    `ms`        |
 | 毛利文| `mi`  |
+| 馬拉地文| `mr`  |
 | 挪威文      | `nb`          |
 | 波斯文      | `fa`          |
 | 波蘭文      | `pl`          |
 | 葡萄牙文 (巴西) | `pt-br` |
+| 旁遮普文|`pa`|
 | 羅馬尼亞文      | `ro`          |
 | 俄文      | `ru`          |
 | 薩摩亞文|   `sm`    |
@@ -325,6 +329,7 @@ Translator 會偵測下列翻譯和音譯語言。
 | 泰文      | `th`          |
 | 土耳其文      | `tr`          |
 | 烏克蘭文      | `uk`          |
+| 烏都文| `ur`    |
 | 越南文      | `vi`          |
 | 威爾斯文 | `cy` |
 

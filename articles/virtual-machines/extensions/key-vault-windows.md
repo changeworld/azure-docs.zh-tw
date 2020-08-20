@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 18ca9244f818fa745725f13d79a23c1a232e01ed
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c41207bedbea96c76f0a9a6ffd45ea6efa09138b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545381"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641767"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>適用於 Windows 的金鑰保存庫虛擬機器擴充功能
 
@@ -89,7 +89,7 @@ Key Vault VM 擴充功能支援下列 Windows 版本：
 | pollingIntervalInS | 3600 | 字串 |
 | certificateStoreName | MY | 字串 |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | 字串 |
+| certificateStoreLocation  | LocalMachine 或 CurrentUser (區分大小寫)  | 字串 |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字串陣列
 | msiEndpoint | http://169.254.169.254/metadata/identity | 字串 |

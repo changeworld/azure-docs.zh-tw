@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: 1b19f4aae7bf7477dbe5950f2d4df31e2de81372
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 7738bd2f2dc169ab52677928c6fecbc193ff2f35
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562560"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639914"
 ---
 # <a name="managing-access-to-apps"></a>管理應用程式的存取
 
@@ -45,7 +45,7 @@ Azure AD 的應用程式指派著重於兩種主要的指派模式：
 * 使用 Azure Active Directory 預先驗證的應用程式 Proxy 應用程式
 * 在 Azure AD 應用程式平台上建置的應用程式，在使用者或管理員同意應用程式之後，應用程式將使用 OAuth 2.0/OpenID Connect 驗證。
 
-「不需要」指派使用者時，未指派的使用者在 [我的應用程式] 存取面板上看不到該應用程式，但仍可登入應用程式本身 (也稱為 SP 起始的登入)，或在應用程式的 [屬性] 頁面中使用 [使用者存取 URL] (也稱為 IDP 起始的登入)。
+*不需要*使用者指派時，未指派的使用者就不會在其我的應用程式上看到應用程式，但仍可登入應用程式本身 (也稱為 SP 起始登入) 或可以使用應用程式 [內容 **] 頁面中**的 [**使用者存取 URL** ] (也稱為 IDP 起始的 [登入]) 。
 
 在某些應用程式中，應用程式的屬性中不提供需要指派使用者的選項。 在這些情況下，您可以使用 PowerShell 在服務主體上設定 appRoleAssignmentRequired 屬性。
 
@@ -53,12 +53,12 @@ Azure AD 的應用程式指派著重於兩種主要的指派模式：
 
 Azure AD 為組織中的終端使用者提供[幾種可自訂的應用程式部署方式](end-user-experiences.md)：
 
-* Azure AD 我的應用程式存取面板
+* Azure AD 我的應用程式
 * Office 365 應用程式啟動程式
 * 直接登入同盟應用程式 (service-pr)
 * 同盟、密碼或現有應用程式的深層連結
 
-您可以決定指派給企業應用程式的使用者，是否可以在存取面板和 Office 365 應用程式啟動器中看到此應用程式。
+您可以判斷指派給企業應用程式的使用者是否可以在我的應用程式和 Office 365 應用程式啟動器中看到它。
 
 ## <a name="example-complex-application-assignment-with-azure-ad"></a>範例：Azure AD 的複雜應用程式指派
 考慮 Salesforce 之類的應用程式。 在許多組織中，Salesforce 主要是供行銷和銷售團隊使用。 通常，行銷小組的成員對 Salesforce 具有高特殊權限存取權，而銷售小組的成員具有限制存取權。 在許多情況下，為數眾多的資訊工作者對應用程式的存取都會受到限制。 這些規則的例外狀況會使情況更加複雜。 它通常是行銷或銷售領導小組的特權，用來授與使用者存取或在這些一般規則以外個別變更其角色。
@@ -72,7 +72,7 @@ Azure AD 為組織中的終端使用者提供[幾種可自訂的應用程式部�
 
 * 若要啟用例外狀況機制，可以為每個角色建立自助群組。 例如，可以將「Salesforce 行銷例外狀況」群組建立為自助群組。 群組可以指派給 Salesforce 行銷角色，而行銷領導小組則可成為擁有者。 行銷領導小組的成員可以加入或移除使用者、設定聯結原則或甚至核准或拒絕個別使用者加入的要求。 此機制透過不需要經過擁有者或成員特殊訓練的資訊工作者適當的體驗來支援。
 
-在此情況下，所有指派的使用者會自動佈建至 Salesforce，因為當他們加入至不同群組時，他們的角色指派會在 Salesforce 中更新。 使用者就能夠透過 Microsoft 應用程式存取面板、Office Web 用戶端或甚至是藉由瀏覽至其組織的 Salesforce 登入頁面來探索及存取 Salesforce。 系統管理員能夠使用 Azure AD 報告輕鬆檢視使用方式和指派狀態。
+在此情況下，所有指派的使用者會自動佈建至 Salesforce，因為當他們加入至不同群組時，他們的角色指派會在 Salesforce 中更新。 使用者可以透過我的應用程式、Office web 用戶端或甚至藉由流覽至其組織 Salesforce 登入頁面，來探索及存取 Salesforce。 系統管理員能夠使用 Azure AD 報告輕鬆檢視使用方式和指派狀態。
 
 管理員可以利用 [Azure AD 條件式存取](../conditional-access/concept-conditional-access-users-groups.md)，為特定角色設定存取原則。 這些原則可以包括是否允許公司環境外部的存取，甚至是 Multi-Factor Authentication 或裝置需求，以在各種情況下達成存取。
 
@@ -88,7 +88,7 @@ Microsoft 應用程式 (如 Office 365 Exchange、SharePoint、Yammer 等) 在�
 
 有些應用程式會結合這些方法。 例如，某些 Microsoft 應用程式雖然是 Office 365 訂用帳戶的一部分，但仍需要同意。
 
-使用者可以透過 Office 365 入口網站存取 Office 365 應用程式。 您也可以在目錄的 [使用者設定] 中使用 [[Office 365 可見性切換]](hide-application-from-user-portal.md)，以決定在 **[我的應用程式]** 存取面板中顯示或隱藏 Office 365 應用程式。 
+使用者可以透過 Office 365 入口網站存取 Office 365 應用程式。 您也可以使用您目錄的**使用者設定**中的[office 365 可見度切換](hide-application-from-user-portal.md)，在我的應用程式中顯示或隱藏 office 365 應用程式。 
 
 對於企業應用程式，您可以透過 Azure 入口網站，[指派使用者](assign-user-or-group-access-portal.md)給特定的 Microsoft 應用程式，或者，如果無法使用入口網站選項，您也可以透過 PowerShell 來指派。
 

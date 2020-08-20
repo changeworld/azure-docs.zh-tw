@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/18/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: edb84810b7391242e9ac90b1502c18f9af4e4698
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 0eabe147563ee712e20e57aafc1029daf2a8610a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433181"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641036"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure 串流分析中常見的查詢模式
 
@@ -289,7 +289,7 @@ FROM
 
 ## <a name="data-aggregation-over-time"></a>一段時間的資料彙總
 
-若要計算一段時間範圍的資訊，可以將資料彙總在一起。 在此範例中，會針對每個特定汽車的時間，計算過去10秒內的計數。
+若要計算一段時間範圍的資訊，可以將資料彙總在一起。 在此範例中，會針對每個特定汽車所產生的過去10秒計算一次計數。
 
 **輸入**：
 
@@ -547,7 +547,7 @@ WHERE
 
 **輸入**：  
 
-| DeviceId | Time | 屬性 | 值 |
+| deviceId | Time | 屬性 | 值 |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000Z |溫度 |50 |
 | 1 |2018-07-27T00:00:01.0000000Z |溫度 |50 |
@@ -863,10 +863,10 @@ From
 
 ```SQL
 SELECT *
-FROM intput TIMESTAMP BY time OVER ATM_id
+FROM input TIMESTAMP BY time OVER ATM_id
 MATCH_RECOGNIZE (
-    PARTITON BY ATM_id
     LIMIT DURATION(minute, 1)
+    PARTITON BY ATM_id
     MEASURES
         First(Warning.ATM_id) AS ATM_id,
         First(Warning.Operation_Id) AS First_Warning_Operation_id,

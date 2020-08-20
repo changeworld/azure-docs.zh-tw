@@ -12,23 +12,23 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7875bfc55d4530f7f56a96599491cab4a98ced04
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799497"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642022"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中將使用者或群組指派給企業應用程式
 
-本文說明如何從 Azure 入口網站或使用 PowerShell，將使用者或群組指派給 Azure Active Directory (Azure AD) 中的企業應用程式。 當您將使用者指派給應用程式時，應用程式會顯示在使用者的[我的應用程式存取面板](https://myapps.microsoft.com/)中以便存取。 如果應用程式公開角色，您也可以將特定角色指派給使用者。
+本文說明如何從 Azure 入口網站或使用 PowerShell，將使用者或群組指派給 Azure Active Directory (Azure AD) 中的企業應用程式。 當您將使用者指派給應用程式時，應用程式會出現在使用者的 [我的應用程式](https://myapps.microsoft.com/) 中，以方便存取。 如果應用程式公開角色，您也可以將特定角色指派給使用者。
 
 若要進行更好的控制，可以將特定類型的企業應用程式設為[需要使用者指派](#configure-an-application-to-require-user-assignment)。 
 
 若要[將使用者或群組指派給企業應用程式](#assign-users-or-groups-to-an-app-via-the-azure-portal)，您必須以全域管理員、應用程式管理員、雲端應用程式管理員或企業應用程式的指派擁有者身分登入。
 
 > [!IMPORTANT]
-> 當您將群組指派給應用程式時，只有群組中的使用者才有存取權。 指派不會串聯成嵌套的群組。
+> 當您將群組指派給應用程式時，只有群組中的使用者才會擁有存取權。 指派不會串聯到嵌套群組。
 
 > [!NOTE]
 > 以群組為基礎的指派需要 Azure Active Directory Premium P1 或 P2 版本。 以群組為基礎的指派僅支援安全性群組。 目前不支援巢狀群組成員資格和 Office 365 群組。 如需本文所討論功能的詳細授權需求，請參閱 [Azure Active Directory 定價頁面](https://azure.microsoft.com/pricing/details/active-directory)。 
@@ -45,7 +45,7 @@ ms.locfileid: "87799497"
 
 如果因為您已將此選項設為 [否]，或因為應用程式使用另一個 SSO 模式，而「不需要」指派，任何使用者只要具有應用程式的直接連結，或具有應用程式的 [屬性] 頁面中的 [使用者存取 URL]，都可以存取應用程式。 
 
-此設定不會影響應用程式是否出現在 [我的應用程式] 存取面板上。 當您將使用者或群組指派給應用程式後，應用程式就會出現在使用者的 [我的應用程式] 存取面板上。 如需背景，請參閱[管理對應用程式的存取](what-is-access-management.md)。
+此設定不會影響應用程式是否會出現在我的應用程式上。 當您將使用者或群組指派給應用程式後，應用程式就會出現在使用者的 [我的應用程式] 存取面板上。 如需背景，請參閱[管理對應用程式的存取](what-is-access-management.md)。
 
 
 若要對應用程式要求使用者指派：
@@ -161,7 +161,7 @@ ms.locfileid: "87799497"
 ## <a name="related-articles"></a>相關文章
 
 - [深入了解終端使用者對應用程式的存取](end-user-experiences.md)
-- [規劃 Azure AD 存取面板部署](access-panel-deployment-plan.md)
+- [規劃 Azure AD 我的應用程式部署](access-panel-deployment-plan.md)
 - [管理應用程式的存取](what-is-access-management.md)
  
 ## <a name="next-steps"></a>後續步驟

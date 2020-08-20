@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164575"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640509"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 應用程式 Proxy 來為遠端使用者發佈內部部署應用程式
 
@@ -76,7 +76,7 @@ Azure Active Directory (Azure AD) 提供了許多功能來保護雲端和內部�
 
 這項功能的元件包括應用程式 Proxy 服務 (在雲端中執行)、應用程式 Proxy 連接器 (在內部部署伺服器上執行的輕量型代理程式) 和 Azure AD (作為識別提供者)。 這三個元件一起運作，便可為使用者提供用來存取內部部署 Web 應用程式的單一登入體驗。
 
-外部使用者登入之後，可藉由從其桌面或 iOS/MAC 裝置使用熟悉的 URL 或 [MyApps 存取面板](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)來存取內部部署 Web 應用程式。 例如，應用程式 Proxy 可以為遠端桌面、SharePoint 網站、Tableau、Qlik、Outlook 網頁版和企業營運 (LOB) 應用程式提供遠端存取和單一登入。
+登入之後，外部使用者可以使用熟悉的 URL 或 [我的應用程式](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) 從其桌面或 IOS/MAC 裝置存取內部部署 web 應用程式。 例如，應用程式 Proxy 可以為遠端桌面、SharePoint 網站、Tableau、Qlik、Outlook 網頁版和企業營運 (LOB) 應用程式提供遠端存取和單一登入。
 
 ![Azure AD 應用程式 Proxy 的架構](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 

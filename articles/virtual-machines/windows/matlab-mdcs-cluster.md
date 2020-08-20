@@ -8,26 +8,29 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: a3f3dbd74ef74f091ca923f8c09680c6913ac300
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c2561a6dc3ad8c0af1c266b3822a80c76f45c174
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074226"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639676"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>在 Azure VM 上建立 MATLAB Distributed Computing Server 叢集
 使用 Microsoft Azure 虛擬機器建立一或多個 MATLAB Distributed Computing Server 叢集，以執行需密集計算的平行 MATLAB 工作負載。 在 VM 上安裝 MATLAB Distributed Computing Server 軟體來作為基礎映像，並使用 Azure 快速入門範本或 Azure PowerShell 指令碼 (可在 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)上取得) 來部署和管理叢集。 在部署之後，連接到叢集以執行工作負載。
+
+> [!IMPORTANT]
+> 本文經過撰寫後，現已正式支援在 Azure 中使用 MATLAB 應用程式。 建議使用這些較新的功能，而不是本文中參考的範本和腳本。 搜尋 [Azure Marketplace](https://azuremarketplace.microsoft.com/) "matlab";您可以從 [MathWorks](https://www.mathworks.com/solutions/cloud.html#public-cloud)取得在 Azure 上執行 MATLAB 應用程式的進一步資訊。
 
 ## <a name="about-matlab-and-matlab-distributed-computing-server"></a>關於 MATLAB 和 MATLAB Distributed Computing Server
 [MATLAB](https://www.mathworks.com/products/matlab/) 平台最適合解決工程及科學問題。 MATLAB 使用者如需要進行大規模的模擬和資料處理工作，可以使用 MathWorks 平行計算產品，利用計算叢集與計算格線服務來加快其密集計算工作負載的執行速度。 [Parallel Computing Toolbox](https://www.mathworks.com/products/parallel-computing/) 可讓 MATLAB 使用者平行處理應用程式，並利用多核心處理器、GPU 和計算叢集。 [MATLAB Distributed Computing Server](https://www.mathworks.com/products/distriben/) 則可讓 MATLAB 使用者利用計算叢集內的許多電腦。
 
 藉由使用 Azure 虛擬機器，您可以建立 MATLAB Distributed Computing Server 叢集，讓其擁有所有可供提交平行工作的相同機制以作為內部部署叢集，例如互動式作業、批次作業、獨立的工作和通訊工作。 相較於佈建和使用傳統內部部署硬體，搭配使用 Azure 與 MATLAB 平台有許多好處︰能因應各種虛擬機器大小、可隨選建立叢集以便只針對使用的計算資源付費，以及能夠大規模測試模型。  
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 * **用戶端電腦** - 您將需要以 Windows 為基礎的用戶端電腦，以便在部署之後與 Azure 和 MATLAB Distributed Computing Server 叢集通訊。
 * **Azure PowerShell** - 請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/) 以將其安裝在您的用戶端電腦上。
 * **Azure 訂用帳戶** - 如果您沒有訂用帳戶，只需要幾分鐘就可以建立 [免費帳戶](https://azure.microsoft.com/free/) 。 針對較大的叢集，請考慮隨用隨付訂用帳戶或其他購買選項。
-* **vCPU 配額** -您可能需要增加 vCPU 配額，以部署大型叢集或多個 MATLAB Distributed Computing Server 叢集。 若要增加配額，可免費[開啟線上客戶支援要求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。
+* **vCPU 配額** -您可能需要增加 vCPU 配額，以部署大型叢集或多個 MATLAB Distributed Computing Server 叢集。 若要增加配額，請免費 [開啟線上客戶支援要求](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) 。
 * **MATLAB、Parallel Computing Toolbox 和 MATLAB Distributed Computing Server 授權** - 指令碼假設所有授權皆使用 [MathWorks Hosted License Manager](https://www.mathworks.com/help/install/license-management.html) 。  
 * **MATLAB Distributed Computing Server 軟體** - 將會安裝在作為叢集 VM 之基礎 VM 映像的 VM 上。
 

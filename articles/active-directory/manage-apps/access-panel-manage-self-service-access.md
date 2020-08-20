@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1c5a003eb113289bcb798423ff649b944dcf186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ff3ca98c0fa5929a5e1c0ad5678222253130b6
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84761063"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641784"
 ---
 # <a name="how-to-use-self-service-application-access"></a>如何使用自助應用程式存取
 
-對於您想要允許使用者自行探索和要求存取的任何應用程式，您必須啟用**自助應用程式存取**，使用者才能從存取面板自行探索應用程式。
+您必須啟用 **自助應用程式存取** 權，讓使用者能夠自行探索和要求存取，才能讓您的使用者從我的應用程式自我探索應用程式。
 
 此功能極有助於節省 IT 群組的時間和成本，非常建議在搭配 Azure Active Directory 進行現代化應用程式部署時使用。
 
@@ -49,7 +49,7 @@ ms.locfileid: "84761063"
 
 若要啟用對應用程式的自助存取，請依照下列步驟執行：
 
-1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，然後以**全域管理員**身分登入。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)並以**全域系統管理員**身分登入。
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
