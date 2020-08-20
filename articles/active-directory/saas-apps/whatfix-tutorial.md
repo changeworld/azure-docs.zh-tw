@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Whatfix 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Whatfix 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: f4272f1e-7639-4bdd-9a86-e7208099da6c
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc061cca3a2c57d2ebccb0fc09f8168c2fad253
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 273151cf08bd149da427e9631764f4dae2759b12
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67163971"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523249"
 ---
 # <a name="tutorial-integrate-whatfix-with-azure-active-directory"></a>教學課程：整合 Whatfix 與 Azure Active Directory
 

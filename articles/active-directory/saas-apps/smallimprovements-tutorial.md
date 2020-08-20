@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Small Improvements 整合| Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Small Improvements 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 59c8a112-41e1-4337-9ef3-3d7029780d61
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d2d0bbc7a6e1c680434041d1b9d55e39a96b6f44
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c659af83034a2406449e586723341e1ae535934f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67090365"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525355"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>教學課程：Azure Active Directory 與 Small Improvements 整合
 

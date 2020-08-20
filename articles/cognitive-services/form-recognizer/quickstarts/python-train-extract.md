@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 702a97b035f7a727b0d8def638fb409305ea0593
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 83adc5afa0cdf783b45c324ad15a0a95dc3ff464
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905103"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522686"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>快速入門：搭配使用 REST API 與 Python 將表單辨識器模型定型並擷取表單資料
 
 在本快速入門中，您將搭配使用 Azure 表單辨識器的 REST API 與 Python 來定型及評分表單，以擷取金鑰/值組和資料表。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>必要條件
 

@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/20/2020
+ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: 0c5302f35665b034bffa343ee90fd4fd609f56e5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290143"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236182"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教學課程：使用 Azure 入口網站建立和設定應用程式閘道以裝載多個網站
 
@@ -33,9 +33,9 @@ ms.locfileid: "87290143"
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="sign-in-to-azure"></a>登入 Azure
+## <a name="prerequisites"></a>必要條件
 
-在 [https://portal.azure.com](https://portal.azure.com) 登入 Azure 入口網站
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="create-an-application-gateway"></a>建立應用程式閘道
 
@@ -237,7 +237,7 @@ ms.locfileid: "87290143"
 1. 在 Azure 入口網站的左側功能表上，選取 [資源群組]  。
 2. 在 [資源群組]  頁面上，在清單中搜尋 **myResourceGroupAG** 並加以選取。
 3. 在 [資源群組]  頁面上，選取 [刪除資源群組]  。
-4. 針對 [輸入資源群組名稱]  輸入 myResourceGroupAG  ，然後選取 [刪除]
+4. 針對 [輸入資源群組名稱] 輸入 myResourceGroupAG，然後選取 [刪除]。
 
 ## <a name="next-steps"></a>後續步驟
 

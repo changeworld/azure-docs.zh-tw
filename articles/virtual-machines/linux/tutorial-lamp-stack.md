@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: cynthn
-ms.openlocfilehash: 5a3b3d7c0bf61ea0aa9b85965c11e572e9e2d999
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d0d86e1a9c40eb6860508cf136ab9d466cc28ecd
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085396"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225898"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>教學課程：在 Azure 中的 Linux 虛擬機器上安裝 LAMP 網頁伺服器
 
-本文會逐步引導您在 Azure 中的 Ubuntu VM 上部署 Apache 網頁伺服器、MySQL 和 PHP (LAMP 堆疊)。 如果您偏好使用 NGINX 網頁伺服器，請參閱 [LEMP 堆疊]()教學課程。 若要查看作用中的 LAMP 伺服器，您可以選擇安裝及設定 WordPress 網站。 在本教學課程中，您將了解如何：
+本文會逐步引導您在 Azure 中的 Ubuntu VM 上部署 Apache 網頁伺服器、MySQL 和 PHP (LAMP 堆疊)。 若要查看作用中的 LAMP 伺服器，您可以選擇安裝及設定 WordPress 網站。 在本教學課程中，您將了解如何：
 
 > [!div class="checklist"]
 > * 建立 Ubuntu VM (LAMP 堆疊中的 'L')
@@ -35,7 +35,7 @@ ms.locfileid: "87085396"
 
 此安裝程式適用於快速測試或概念證明。 如需 LAMP 堆疊的詳細資訊 (包括適用於生產環境的建議)，請參閱 [Ubuntu 文件](https://help.ubuntu.com/community/ApacheMySQLPHP)。
 
-本教學課程會使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]  。
+本教學課程會使用 [Azure Cloud Shell](../../cloud-shell/overview.md) 內的 CLI，這會不斷更新至最新版本。 若要開啟 Cloud Shell，請選取任何程式碼區塊頂端的 [試試看]。
 
 如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.30 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 

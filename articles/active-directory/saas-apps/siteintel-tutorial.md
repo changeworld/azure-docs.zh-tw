@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 SiteIntel 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 SiteIntel 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c987f101-8746-467e-ad12-75cf2920af2b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45b3f6bbda9923b7f4f19dda505e799cb8b102ca
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: f681dd2931300ec00fd6388b4636015c87f38170
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424324"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525066"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SiteIntel 整合
 
