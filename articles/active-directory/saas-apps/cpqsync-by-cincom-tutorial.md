@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 CPQSync by Cincom 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 CPQSync by Cincom 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d9411095-859c-4223-8d0b-36d1f89b04d5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fc9cf236beab78d666f634489a205828050fae4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: db8f7e77570ade206633781c9ba4726f881bff02
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68886385"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549189"
 ---
 # <a name="tutorial-integrate-cpqsync-by-cincom-with-azure-active-directory"></a>教學課程：整合 CPQSync by Cincom 與 Azure Active Directory
 

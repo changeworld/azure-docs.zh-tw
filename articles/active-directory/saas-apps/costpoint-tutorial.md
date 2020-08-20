@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Costpoint 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Costpoint 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 9ecc5f58-4462-4ade-ab73-0a4f61027504
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01168540e27605db0d240c0774159a710b5d5254
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1db1589561968cf1e2974edcee2bfe1cccb4a327
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71840061"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549240"
 ---
 # <a name="tutorial-integrate-costpoint-with-azure-active-directory"></a>教學課程：整合 Costpoint 與 Azure Active Directory
 

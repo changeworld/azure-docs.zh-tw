@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 01a5714cb78959a982ad73deb401edbafeebe8f9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834451"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549542"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>快速入門：如何使用自訂視覺建置物件偵測器
 
 在本快速入門中，您將了解如何透過自訂視覺網站建置物件偵測器。 建立偵測器模型之後，您就可以使用自訂視覺服務進行物件偵測。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 

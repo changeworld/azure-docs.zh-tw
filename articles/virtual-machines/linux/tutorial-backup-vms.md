@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526991"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551702"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>教學課程：在 Azure 中備份和還原 Linux 虛擬機器的檔案
 
@@ -45,7 +45,7 @@ Azure 備份服務開始備份時，會觸發備份擴充功能以建立時間�
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 在左邊的功能表上，選取 [虛擬機器]  。 
 3. 從清單中選取要備份的 VM。
-4. 在 VM 刀鋒視窗的 [設定] 區段中，按一下 [備份]。 [啟用備份]  刀鋒視窗隨即開啟。
+4. 在 VM 刀鋒視窗的 [作業]**** 區段中，按一下 [備份]****。 [啟用備份]  刀鋒視窗隨即開啟。
 5. 在 [復原服務保存庫] 中，按一下 [新建] 並提供新保存庫的名稱。 新保存庫已在與虛擬機器相同的資源群組和位置中建立。
 6. 按一下 [備份原則]  。 在此範例中請保留預設值，按一下 [確定]  。
 7. 在 [啟用備份]  刀鋒視窗上，按一下 [啟用備份]  。 這會根據預設排程建立每日備份。

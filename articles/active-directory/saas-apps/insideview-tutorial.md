@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 InsideView 整合 | Microsoft Docs
 description: 在本教學課程中，您會了解如何設定 Azure Active Directory 與 InsideView 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c489a7ab-6b1f-4efb-8a66-8bc13bca78c3
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 4278f00b1026fe4d1b95634540d6d035d43ca5ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 17c9672663cae4df7eacb72779e6caf6476e3d24
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202327"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550464"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>教學課程：Azure Active Directory 與 InsideView 整合
 
@@ -171,7 +167,7 @@ ms.locfileid: "82202327"
 
     1. 在 [名稱]  方塊中，輸入 **BrittaSimon**。
   
-    1. 在 [使用者名稱]  方塊中，輸入 **BrittaSimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
+    1. 在 [使用者名稱] 方塊中，輸入 **BrittaSimon@\<yourcompanydomain>.\<extension>** 。 (例如，BrittaSimon@contoso.com)。
 
     1. 選取 [顯示密碼]  ，然後記下 [密碼]  方塊中的值。
 

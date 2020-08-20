@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 FreshDesk 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 FreshDesk 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7188708c44d00d075a02d54b0a3b10cbc81954
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 71c1bea58f17b457f417a5b050640d04d44019d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513509"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>教學課程：Azure Active Directory 與 FreshDesk 整合
 

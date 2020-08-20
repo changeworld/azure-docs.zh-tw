@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Insider Track 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Insider Track 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 53b6a928-e8a4-4cf1-9952-50cd3f013b7c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 414b2862d91f54ed5df96e4e814c7a634dfc7cbe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3af1bab0ec5b6fa92a494126b4a529d03c660d06
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100124"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550441"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insider-track"></a>教學課程：Azure Active Directory 與 Insider Track 整合
 

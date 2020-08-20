@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 ShareVault 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 ShareVault 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: eae0ecc1-29c3-47d6-9864-e61bd3135100
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/04/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7b8fc62744b8e0f4f088522bdef5fb484aa7a8d
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: dcf67ce9c9e63fdbba8db565113cf3380e4142dd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465434"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548662"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharevault"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 ShareVault 整合
 

@@ -2,26 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Trello 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Trello 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: cd5ae365-9ed6-43a6-920b-f7814b993949
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4f82617784fa782d37b915800498f44f8222bb2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: de37b4b958ab1139d46d476889ffdf8e3b4f7e4a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71121847"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551897"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trello"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Trello 整合
 
@@ -79,7 +74,7 @@ ms.locfileid: "71121847"
 在本節中，您會在 Azure 入口網站中啟用 Azure AD 單一登入。
 
 > [!NOTE]
-> 您應該會從 Trello 取得 **\<enterprise\>** slug。 如果您沒有 Slug 值，請連絡 [Trello 支援小組](mailto:support@trello.com)以取得貴企業的 Slug。
+> 您應該會從 Trello 取得 **\<enterprise\>** Slug。 如果您沒有 Slug 值，請連絡 [Trello 支援小組](mailto:support@trello.com)以取得貴企業的 Slug。
 
 若要設定與 Trello 搭配運作的 Azure AD 單一登入，請執行下列步驟：
 

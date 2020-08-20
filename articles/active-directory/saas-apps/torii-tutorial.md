@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 Torii 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Torii 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f4827170-023b-4ad3-b6f2-70ed9cedaeef
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccd9b1bebd1ac702d9b4e89db6f8a3e5e363ffab
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0295b70e4290ccae78c25e6741fc6cd61fdc0aa2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983960"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551960"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-torii"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Torii 整合
 

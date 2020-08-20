@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 TrackVia 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 TrackVia 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e7010023-bdda-4a19-a335-19904e75b813
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 2e63b209f24e2bdc54c809caaaa4fb5faa80b43a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fd103fa0ce3fe2a27e094f66d573571e79f83ea3
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67088369"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552054"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>教學課程：Azure Active Directory 與 TrackVia 整合
 

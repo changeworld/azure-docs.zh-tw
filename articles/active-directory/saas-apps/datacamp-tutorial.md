@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 DataCamp 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 DataCamp 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c4331f51-e2e1-478c-97cd-fe69635e61f6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/10/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2e903cf8afdd7c879222c0c7fded53cd2590ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d1e6cf95ac723cfe178e6e3f7240aa0ef2bcf8fc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76157299"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551178"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datacamp"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 DataCamp 整合
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118644"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548509"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>教學課程：使用 Azure Content Moderator 仲裁 Facebook 文章和留言
 
@@ -28,7 +28,7 @@ ms.locfileid: "84118644"
 > * 建立接聽來自 Content Moderator 和 Facebook 之 HTTP 事件的 Azure Functions。
 > * 使用 Facebook 應用程式將 Facebook 頁面連結至 Content Moderator。
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/cognitive-services/)。
 
 此圖說明此案例中的每個元件：
 

@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 ForeSee CX Suite 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 ForeSee CX Suite 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5f4b7830-6186-4d17-b77b-504d4192bfde
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fb0ed4a48eaef2168791abbaf94fb8991fa14132
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67550398"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>教學課程：Azure Active Directory 與 ForeSee CX Suite 整合
 
@@ -119,7 +115,7 @@ ms.locfileid: "67550398"
 
     a. 在 [登入 URL]  文字方塊中，輸入 URL：`https://cxsuite.foresee.com/`
 
-    b. 在 [識別碼]  文字方塊中，使用下列模式來輸入 URL：https:\//www.okta.com/saml2/service-provider/\<UniqueID>
+    b. 在 [識別碼]**** 文字方塊中，使用下列模式來輸入 URL：https:\//www.okta.com/saml2/service-provider/\<UniqueID>
 
     > [!Note]
     > 如果 [識別碼]  值未自動填入，請根據上述模式手動填入這些值。 識別碼值不是實際值。 請使用實際的「識別碼」來更新此值。 請連絡 [ForeSee CX Suite 用戶端支援小組](mailto:support@foresee.com)以取得此值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。

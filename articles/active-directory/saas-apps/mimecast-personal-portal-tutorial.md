@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Mimecast Personal Portal 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Mimecast Personal Portal 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 345b22be-d87e-45a4-b4c0-70a67eaf9bfd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d28835472198a1fddc5f7ed0fe5f0037b602f039
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: c14a519be112e61ed7055debe7a1a454e465bd9b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848302"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549087"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-personal-portal"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Mimecast Personal Portal 整合
 

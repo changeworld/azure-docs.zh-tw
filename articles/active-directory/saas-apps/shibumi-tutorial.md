@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 與 Shibumi 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 Shibumi 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4644612b-025f-4c71-9482-341cc570d7d1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: dc8c06d5c38092ee74367b40415f1fc2bb616633
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d03b9ba3a78664e7050313f361c94c2930a87c9f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67090936"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548696"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shibumi"></a>教學課程：Azure Active Directory 與 Shibumi 整合
 

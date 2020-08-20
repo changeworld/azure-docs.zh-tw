@@ -2,25 +2,21 @@
 title: 教學課程：Azure Active Directory 單一登入 (SSO) 與 MailGates 整合 | Microsoft Docs
 description: 了解如何設定 Azure Active Directory 與 MailGates 之間的單一登入。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a16e5e1f-53b7-4bff-a9e5-22d214dc1c61
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0587f804bc033cdd0dd741c1ab2a3f8fefa40c0b
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: a8d5925c80263109dc7e9f75da235605e51a63c1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85101625"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549629"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mailgates"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 MailGates 整合
 
