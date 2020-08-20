@@ -7,20 +7,20 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dfb10e3f8386b4ab022d419d356f841a9ea7ea66
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ede5b84620217e472d930d86eaebfaad2397ca6b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825662"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648423"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 和 DSv2 系列
 
-Dv2 和 Dsv2 系列是原始 D 系列的後續操作，其功能更強大的 CPU 和最佳的 CPU 對記憶體設定，使其適用于大部分的生產工作負載。 Dv2 系列比 D 系列快約 35%。 Dv2 系列執行于 Intel®，®白金 8272CL (串聯 Lake) 、Intel®® 8171M 2.1 GHz (Skylake) 、Intel®® E5-2673 v4 2.3 g h z (Broadwell) ，或 Intel®（）® E5-2673 v3 2.4 g h z (Haswell) 處理器與 Intel Turbo 加速技術2.0。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
+Dv2 和 Dsv2 系列（原始 D 系列的後續操作）提供功能更強大的 CPU 和最佳的 CPU 對記憶體設定，使其適用于大部分的生產工作負載。 Dv2 系列比 D 系列快約 35%。 Dv2 系列執行于 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) 、Intel®® E5-2673 v4 2.3 GHz (Broadwell) ，或 Intel®® E5-2673 v3 2.4 GHz (Haswell) 處理器與 Intel Turbo 加速技術2.0。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
 
 ## <a name="dv2-series"></a>Dv2 系列
 
-Dv2 系列大小是在 Intel®（r）®白金 8272CL (Cascade Lake) 、Intel®® 8171M 2.1 GHz (Skylake) 或 Intel®的® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel®的® E5-2673 v3 2.4 g h z (Haswell) 處理器與 Intel Turbo 加速技術2.0。
+Dv2 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) 或 Intel®® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel®® E5-2673 v3 2.4 GHz (Haswell) 處理器搭配 Intel Turbo 加速技術2.0。
 
 ACU：210 - 250
 
@@ -42,7 +42,7 @@ ACU：210 - 250
 
 ## <a name="dsv2-series"></a>DSv2 系列
 
-DSv2 系列大小是在 Intel®（r）®白金 8272CL (Cascade Lake) 、Intel®® 8171M 2.1 GHz (Skylake) 或 Intel®的® E5-2673 v4 2.3 g h z (Broadwell) 或 Intel®（）® E5-2673 v3 2.4 g h z (Haswell) 處理器與 Intel Turbo 加速技術2.0 並使用 premium storage。
+DSv2 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) 或 Intel®最高® E5-2673 v4 2.3 GHz (Broadwell) 或 Intel®® E5-2673 v3 2.4 GHz (Haswell) 處理器搭配 Intel Turbo 加速技術2.0 和使用 premium 儲存體。
 
 ACU：210 - 250
 
@@ -54,7 +54,7 @@ ACU：210 - 250
 
 記憶體保留更新：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
 | Standard_DS1_v2 | 1  | 3.5 | 7   | 4  | 4000/32 (43)     | 3200/48   | 2|750   |
 | Standard_DS2_v2 | 2  | 7   | 14  | 8  | 8000/64 (86)     | 6400/96   | 2|1500  |
@@ -73,9 +73,9 @@ ACU：210 - 250
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
 
-定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+定價計算機： [定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
+磁片類型的詳細資訊： [磁片類型](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>後續步驟
 

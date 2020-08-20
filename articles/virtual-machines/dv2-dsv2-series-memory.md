@@ -7,20 +7,20 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bcefe19183ea5f511ce8255914b3ea8edd4306e8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2c1b9bb8d8fa1e7b82bebfa31963be19d9024af
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837086"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648491"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>記憶體優化 Dv2 和 Dsv2 系列
 
-Dv2 和 Dsv2 系列是原始 D 系列的後續操作，具備功能更強大的 CPU。 DSv2 系列大小執行于 Intel®，®白金 8272CL (串聯 Lake) 、Intel®® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-2673 v4 2.3 g h z (Broadwell) 或 Intel®的® E5-2673 v3 2.4 GHz (Haswell) 處理器。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
+Dv2 和 Dsv2 系列是原始 D 系列的後續操作，具有更強大的 CPU。 DSv2 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-2673 v4 2.3 g h (Broadwell) ，或 Intel®® E5-2673 v3 2.4 GHz (Haswell) 處理器上執行。 Dv2 系列的記憶體和磁碟組態和 D 系列一樣。
 
 ## <a name="dv2-series-11-15"></a>Dv2 系列 11-15
 
-Dv2 系列大小執行于 Intel®，®白金 8272CL (串聯 Lake) 、Intel®® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-2673 v4 2.3 g h z (Broadwell) 或 Intel®的® E5-2673 v3 2.4 GHz (Haswell) 處理器。
+Dv2 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-2673 v4 2.3 g h (Broadwell) ，或 Intel®® E5-2673 v3 2.4 GHz (Haswell) 處理器上執行。
 
 ACU：210 - 250
 
@@ -45,7 +45,7 @@ ACU：210 - 250
 
 ## <a name="dsv2-series-11-15"></a>DSv2 系列 11-15
 
-DSv2 系列大小執行于 Intel®，®白金 8272CL (串聯 Lake) 、Intel®® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-2673 v4 2.3 g h z (Broadwell) 或 Intel®的® E5-2673 v3 2.4 GHz (Haswell) 處理器。
+DSv2 系列大小是在 Intel®) ®白金級 8272CL (串聯 Lake、Intel®® 8171M 2.1 GHz (Skylake) ，或 Intel®® E5-2673 v4 2.3 g h (Broadwell) ，或 Intel®® E5-2673 v3 2.4 GHz (Haswell) 處理器上執行。
 
 ACU：210 - 250 <sup>1</sup>
 
@@ -57,7 +57,7 @@ ACU：210 - 250 <sup>1</sup>
 
 記憶體保留更新：支援
 
-| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： GiB 中的 IOPS/MBps (快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps (GiB 中的快取大小)  | 最大取消快取的磁碟輸送量：IOPS/MBps | 最大 NIC|預期的網路頻寬 (Mbps)  |
 | --- | --- | --- | --- | --- | --- | --- | --- |---|
 | Standard_DS11_v2 <sup>3</sup> | 2  | 14  | 28  | 8  | 8000/64 (72)     | 6400/96   | 2|1500  |
 | Standard_DS12_v2 <sup>3</sup> | 4  | 28  | 56  | 16 | 16000/128 (144)  | 12800/192 | 4|3000  |
@@ -66,7 +66,7 @@ ACU：210 - 250 <sup>1</sup>
 | Standard_DS15_v2 <sup>2</sup> | 20 | 140 | 280 | 64 | 80000/640 (720)  | 64000/960 | 8|25000 <sup>4</sup> |
 
 <sup>1</sup> DSv2 系列 VM 的最大磁碟輸送量 (IOPS 或 MBps)，可能會受到所連接磁碟的數量、大小和串接所限制。  如需詳細資訊，請參閱[為高效能而設計](./windows/premium-storage-performance.md) \(英文\)。
-<sup>2</sup>實例會隔離至 Intel Haswell 型硬體，並專屬於單一客戶。  
+<sup>2</sup>  個實例會隔離到 Intel Haswell 型硬體，並專屬於單一客戶。  
 <sup>3</sup> 可用限制核心大小。  
 <sup>4</sup> 25000 Mbps (含加速網路)。
 
@@ -81,9 +81,9 @@ ACU：210 - 250 <sup>1</sup>
 - [高效能計算](sizes-hpc.md)
 - [前幾代](sizes-previous-gen.md)
 
-定價計算機：[定價計算機](https://azure.microsoft.com/pricing/calculator/)
+定價計算機： [定價計算機](https://azure.microsoft.com/pricing/calculator/)
 
-磁片類型的詳細資訊：[磁片類型](./linux/disks-types.md#ultra-disk)
+磁片類型的詳細資訊： [磁片類型](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>後續步驟

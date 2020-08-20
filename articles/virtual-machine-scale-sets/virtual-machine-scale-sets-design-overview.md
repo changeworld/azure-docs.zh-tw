@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 5aad73db2f01cec8c1c8b0144d29c105b6e8ae0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080500"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648559"
 ---
 # <a name="design-considerations-for-scale-sets"></a>擴展集的設計考量
 本文會討論虛擬機器擴展集的設計考量。 如需虛擬機器擴展集的相關資訊，請參閱 [虛擬機器擴展集概觀](./overview.md)。
@@ -25,7 +25,7 @@ ms.locfileid: "87080500"
 
 ### <a name="scale-set-specific-features"></a>擴展集特定的功能
 
-- 指定擴展集設定後，您可以更新*容量*屬性，以平行方式部署更多 vm。 比起撰寫指令碼，此程序更適合用來協調同時部署許多個別 VM 的作業。
+- 指定擴展集設定後，您可以更新 *容量* 屬性，以平行方式部署更多 vm。 比起撰寫指令碼，此程序更適合用來協調同時部署許多個別 VM 的作業。
 - 您可以[使用 Azure 自動調整規模自動調整擴展集](./virtual-machine-scale-sets-autoscale-overview.md)，但無法針對個別 VM 執行。
 - 您可以[重新安裝擴展集 VM 的映像](/rest/api/compute/virtualmachinescalesets/reimage)，但[無法針對個別 VM](/rest/api/compute/virtualmachines) 執行。
 - 您可以[過度佈建](#overprovisioning)擴展集 VM，以提高可靠性並加快部署速度。 除非您撰寫自訂程式碼來執行這個動作，否則無法過度佈建個別 VM。
@@ -39,10 +39,10 @@ ms.locfileid: "87080500"
 - 您可以將個別 VM 從原生磁碟移轉至受控磁碟，但無法移轉擴展集中的 VM 執行個體。
 - 您可以將 IPv6 公用 IP 位址指派給個別 VM 虛擬網路介面卡 (NIC)，但無法針對擴展集中的 VM 執行個體執行此操作。 您可以將 IPv6 公用 IP 位址指派給個別 VM或擴展集 VM 之前的負載平衡器。
 
-## <a name="storage"></a>儲存體
+## <a name="storage"></a>存放裝置
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>包含 Azure 受控磁碟的擴展集
-擴展集可以使用 [Azure 受控磁碟](../virtual-machines/windows/managed-disks-overview.md)來建立，而不是傳統的 Azure 儲存體帳戶。 受控磁碟可提供下列優點：
+擴展集可以使用 [Azure 受控磁碟](../virtual-machines/managed-disks-overview.md)來建立，而不是傳統的 Azure 儲存體帳戶。 受控磁碟可提供下列優點：
 - 您不必為擴展集 VM 預先建立一組 Azure 儲存體帳戶。
 - 您可以為擴展集中的 VM 定義[附加的資料磁碟](virtual-machine-scale-sets-attached-disks.md)。
 - 可以設定擴展集以[支援集合中多達 1,000 個 VM](virtual-machine-scale-sets-placement-groups.md)。 
